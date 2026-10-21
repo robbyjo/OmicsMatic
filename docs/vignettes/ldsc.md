@@ -38,7 +38,7 @@ to capture local LD. Tiny tutorial inputs do not establish genome-wide calibrati
 ## Run the checked-in example
 
 ```powershell
-java -jar build/cli/jlinalg-0.3.6.jar ldsc --input examples/xwas/ldsc.tsv --traits A,B,C,D --reference-variants 100000 --blocks 30 --out build/xwas/ldsc.tsv
+java -jar build/cli/jlinalg-0.3.7.jar ldsc --input examples/xwas/ldsc.tsv --traits A,B,C,D --reference-variants 100000 --blocks 30 --out build/xwas/ldsc.tsv
 ```
 
 The synthetic example has 1,200 variants and four quantitative traits. Its

@@ -9,8 +9,8 @@
 <p>This source-build feature does not make every biological question answerable automatically. In particular, choosing a valid molecular QTL, interpreting an unusual result, establishing instrument validity, or obtaining restricted data may require the scientist. Missing evidence is reported as a prerequisite, not fabricated and not interpreted as a null finding.</p>
 <h2 id="quick-start">Quick start</h2>
 <p>The smallest real-study entry point remains a study contract plus the input result files and a current executable JAR:</p>
-<div class="code-window"><div class="code-bar"><span>sh</span></div><pre><code>java -jar jlinalg-0.3.6.jar study auto study.yaml
-java -jar jlinalg-0.3.6.jar study verify --project .
+<div class="code-window"><div class="code-bar"><span>sh</span></div><pre><code>java -jar jlinalg-0.3.7.jar study auto study.yaml
+java -jar jlinalg-0.3.7.jar study verify --project .
 </code></pre></div>
 <p><code>analysis.mode</code> defaults to <code>auto</code>. Existing discovery/replication, meta-analysis, enrichment and diagnostic operations remain available. Auto mode now also plans <code>source_discovery</code> when genetic support is relevant, <code>bioinformatics_investigation</code>, and <code>literature_search</code>. They are independent branches: a retired QTL service does not prevent an available literature or protein investigation. Optional LLM literature interpretation is a separate <code>literature_support</code> operation.</p>
 <p>Use <code>--offline</code> to prevent built-in network access. Repeat the same command after supplying an approved amendment or restoring connectivity. Completed operations are reused only when their inputs, implementation and outputs still match. Waiting operations are retried at operation granularity; a partial public search may repeat its earlier queries. <code>--rerun</code> requests new attempts while preserving history.</p>
@@ -178,7 +178,7 @@ analysis:
 <h2 id="results-and-evidence-packaging">Results and evidence packaging</h2>
 <p><code>index/index.html</code> and its JSON counterpart show available findings, source statuses, citations and required inputs. Candidate tables keep association ranking, per-feature contextual evidence and operation availability separate. A structure or paper match is not counted as causal validation. All statistical claims should cite the result ID, source snapshot, command and hashed output—not just the dashboard.</p>
 <p>To produce a local audit snapshot:</p>
-<div class="code-window"><div class="code-bar"><span>sh</span></div><pre><code>java -jar jlinalg-0.3.6.jar study export --project . --out evidence.zip --acknowledge-sensitive
+<div class="code-window"><div class="code-bar"><span>sh</span></div><pre><code>java -jar jlinalg-0.3.7.jar study export --project . --out evidence.zip --acknowledge-sensitive
 </code></pre></div>
 <p>The archive includes the contract, ledger, notebook, questions/answers, plans, amendments, operation artifacts and index. <code>EVIDENCE_BUNDLE.json</code> lists checksums and omissions. Original dataset files outside those evidence directories, reference caches and software binaries are not copied automatically. Intermediate outputs, answer text and LLM interactions may still be sensitive. External preprocessing and unrecorded software remain explicit audit gaps; retain their scripts, versions and input/output hashes.</p>
 <p>The command does not upload the ZIP or assert journal/FDA readiness, anonymity, identity authentication or regulatory compliance. It refuses to overwrite an existing archive. The project records the export and its hash after the snapshot has been written.</p>

@@ -18,7 +18,7 @@ Copy this directory before running it if you want to keep the checked-in example
 clean. In the copied directory, run:
 
 ```powershell
-$jar = "D:\path\to\JLinAlg\build\cli\jlinalg-0.3.6.jar"
+$jar = "D:\path\to\JLinAlg\build\cli\jlinalg-0.3.7.jar"
 java -jar $jar study auto study.yaml --project . --actor-id scientist-1
 ```
 

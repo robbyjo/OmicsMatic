@@ -9,7 +9,7 @@ separation do not produce successful inference outputs. Build with
 ## Censored Gaussian regression (Tobit)
 
 ```shell
-java -jar build/cli/jlinalg-0.3.6.jar censored-regression --input src/test/resources/r-reference/regression-inference/censored.tsv --response tobit --censor cens --predictors c,z1 --distribution gaussian --predict src/test/resources/r-reference/regression-inference/censored.tsv --lower -0.4 --upper 2.5 --out build/inference/tobit.tsv
+java -jar build/cli/jlinalg-0.3.7.jar censored-regression --input src/test/resources/r-reference/regression-inference/censored.tsv --response tobit --censor cens --predictors c,z1 --distribution gaussian --predict src/test/resources/r-reference/regression-inference/censored.tsv --lower -0.4 --upper 2.5 --out build/inference/tobit.tsv
 ```
 
 The synthetic table contains a normally distributed latent response censored
@@ -32,9 +32,9 @@ Do not use this model for truncation or for a structural point mass at zero.
 ## Parametric accelerated-failure-time models
 
 ```shell
-java -jar build/cli/jlinalg-0.3.6.jar censored-regression --input src/test/resources/r-reference/regression-inference/censored.tsv --response time --censor censTime --predictors c,z1 --distribution weibull --predict src/test/resources/r-reference/regression-inference/censored.tsv --time 2 --out build/inference/weibull.tsv
-java -jar build/cli/jlinalg-0.3.6.jar censored-regression --input src/test/resources/r-reference/regression-inference/censored.tsv --response time --censor censTime --predictors c,z1 --distribution lognormal --out build/inference/lognormal.tsv
-java -jar build/cli/jlinalg-0.3.6.jar censored-regression --input src/test/resources/r-reference/regression-inference/censored.tsv --response time --censor censTime --predictors c,z1 --distribution exponential --out build/inference/exponential.tsv
+java -jar build/cli/jlinalg-0.3.7.jar censored-regression --input src/test/resources/r-reference/regression-inference/censored.tsv --response time --censor censTime --predictors c,z1 --distribution weibull --predict src/test/resources/r-reference/regression-inference/censored.tsv --time 2 --out build/inference/weibull.tsv
+java -jar build/cli/jlinalg-0.3.7.jar censored-regression --input src/test/resources/r-reference/regression-inference/censored.tsv --response time --censor censTime --predictors c,z1 --distribution lognormal --out build/inference/lognormal.tsv
+java -jar build/cli/jlinalg-0.3.7.jar censored-regression --input src/test/resources/r-reference/regression-inference/censored.tsv --response time --censor censTime --predictors c,z1 --distribution exponential --out build/inference/exponential.tsv
 ```
 
 Times and censoring limits must be positive. Here `censTime=1` means right
@@ -72,8 +72,8 @@ guarantee identification.
 ## Ordered logit or probit by maximum likelihood
 
 ```shell
-java -jar build/cli/jlinalg-0.3.6.jar ordinal-regression --input src/test/resources/r-reference/regression-inference/ordinal.tsv --response ordinal --predictors c,z1 --categories 4 --link logit --predict src/test/resources/r-reference/regression-inference/ordinal.tsv --out build/inference/ordered-logit.tsv
-java -jar build/cli/jlinalg-0.3.6.jar ordinal-regression --input src/test/resources/r-reference/regression-inference/ordinal.tsv --response ordinal --predictors c,z1 --categories 4 --link probit --out build/inference/ordered-probit.tsv
+java -jar build/cli/jlinalg-0.3.7.jar ordinal-regression --input src/test/resources/r-reference/regression-inference/ordinal.tsv --response ordinal --predictors c,z1 --categories 4 --link logit --predict src/test/resources/r-reference/regression-inference/ordinal.tsv --out build/inference/ordered-logit.tsv
+java -jar build/cli/jlinalg-0.3.7.jar ordinal-regression --input src/test/resources/r-reference/regression-inference/ordinal.tsv --response ordinal --predictors c,z1 --categories 4 --link probit --out build/inference/ordered-probit.tsv
 ```
 
 Responses are prespecified integers 0 through K-1, with every category observed.

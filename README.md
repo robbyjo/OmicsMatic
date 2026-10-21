@@ -6,6 +6,24 @@ It uses [JDistlib](https://github.com/robbyjo/JDistlib) for numerical computatio
 Rare-variant APIs and the `rare-meta` CLI include Burden, SKAT, SKAT-O,
 ACAT-V, and canonical six-component ACAT-O tests.
 
+## Choose your degree of AI collaboration
+
+JLinAlg v0.3.7 combines deterministic statistical execution with optional AI
+collaboration. Start with one of three worked guides:
+
+| Mode | Who plans and decides | Worked guide |
+| --- | --- | --- |
+| No AI | The investigator defines and approves a reproducible local workflow. | [Run without AI](docs/vignettes/ai-no-ai.md) |
+| AI as an advisor | The built-in, opt-in adapter provides bounded advice through browser handoff or an explicitly selected API; the investigator reviews proposals. | [Collaborate with an advisor](docs/vignettes/ai-advisor.md) |
+| AI as a driver | A separately managed agent coordinates existing CLI commands; scientific approval and data-access enforcement remain explicit. | [Coordinate an external agent](docs/vignettes/ai-driver.md) |
+
+The built-in advisor never uploads patient files or grants shell or sample-matrix
+access. It uses a bounded allowlisted preview subject to project policy;
+aggregate findings and metadata still require disclosure review. External agents
+need separate operating-system and network controls. The driver guide describes
+a supervised use pattern, not a bundled autonomous agent or privacy certification.
+These collaboration modes are distinct from deterministic `analysis.mode` planning.
+
 ## Requirements
 
 - JDK 17 or newer.
@@ -28,7 +46,7 @@ Use the included Gradle wrapper; no separate Gradle installation is required.
 .\gradlew.bat check executableJar
 ```
 
-The self-contained executable is `build/cli/jlinalg-0.3.6.jar`.
+The self-contained executable is `build/cli/jlinalg-0.3.7.jar`.
 [Published releases](https://github.com/robbyjo/JLinAlg/releases) are also
 available; newer source-build features may not be in the latest release asset.
 
@@ -37,7 +55,7 @@ available; newer source-build features may not be in the latest release asset.
 Fit a linear regression using the included synthetic phenotype table:
 
 ```shell
-java -jar build/cli/jlinalg-0.3.6.jar --pheno examples/quickstart/phenotype.tsv --id sample --formula "trait ~ age" --out build/quickstart/results.tsv
+java -jar build/cli/jlinalg-0.3.7.jar --pheno examples/quickstart/phenotype.tsv --id sample --formula "trait ~ age" --out build/quickstart/results.tsv
 ```
 
 The result contains coefficient estimates, standard errors, and p-values,
@@ -53,7 +71,7 @@ network, chord, bundled-edge, Sankey, and two-set Venn diagrams. Palettes, line 
 patterns, marker shapes, and point sizes are configurable from the CLI.
 
 ```powershell
-java -jar build/cli/jlinalg-0.3.6.jar plot `
+java -jar build/cli/jlinalg-0.3.7.jar plot `
   --type scatter --input results.csv --x estimate --y negative_log10_p `
   --group cohort --title "Association results" --out associations.pdf
 ```

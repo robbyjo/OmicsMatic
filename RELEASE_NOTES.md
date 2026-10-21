@@ -1,4 +1,45 @@
-# Unreleased
+# JLinAlg 0.3.7
+
+## Three degrees of AI collaboration
+
+- Added a worked vignette for each mode: deterministic analysis without AI,
+  opt-in AI as a scientific advisor, and a separately managed AI agent as a
+  supervised workflow driver through existing CLI commands.
+- Featured the three guides on the homepage, vignette landing page, primary
+  navigation and README, with explicit patient-data and disclosure boundaries.
+- Documented the built-in browser handoff and API adapters, exact-prompt review,
+  immutable receipts, actor attribution and scientist-approved plan changes.
+  The external-driver pattern does not bundle an autonomous agent runtime;
+  whole-environment data isolation needs separate access and network controls.
+
+## Auditable study execution and integrated evidence
+
+- Released the versioned study contract, deterministic matrix/result-first
+  planning, plan approval, resumable operations, immutable amendments, scientific
+  questions and checked answers, hash-chained ledger and research notebook.
+- Added public-reference discovery/caching, reviewed genetic-evidence workflows,
+  aggregate AI advice, cited literature support and optional manuscript drafts
+  with evidence-linked revisions and reviewed editorial handoffs.
+- Added local evidence archives, searchable indexes, bounded HTML previews,
+  plotting exports including PNG/PDF, pairwise effect comparisons and explicit
+  leave-one-cohort-out sensitivity summaries.
+- MR defaults to all eligible significant measured features unless an explicit
+  cap is configured. Missing genetic prerequisites stay visible as questions;
+  candidate review is distinct from completed MR or colocalization.
+- Added conservative, scale-aware extreme-effect QC with an auditable exclusion
+  log; retain an unfiltered sensitivity analysis and review units and models.
+- Includes inference, allele/LD validation, generated-artifact reading and resource
+  reuse/scalability fixes landed since v0.3.6. Numerical and fixture validation
+  remains distinct from live external-provider or clinical execution.
+
+
+## Release validation
+
+- The clean build, website checks and packaging passed; the report contains
+  1,166 tests with zero failures/errors and five optional or live-test skips.
+- Packaged synthetic checks cover no-AI execution, browser-advisor preparation,
+  external-driver rehearsal, approval gates, audit integrity and deny-all policy.
+  No live model requests were made. See [validation details](docs/release-0.3.7-validation.md).
 
 ## Replicated single-cell and physical spatial RNA
 
@@ -29,7 +70,8 @@
   independent-group differential correlation, and WGCNA/GENIE3/CARNIVAL adapters.
   Outputs include typed tables, GraphML and manifests; R engines retain session versions.
 - Added synthetic examples, independent R numerical fixtures, an adapter validation
-  script, three tutorials/site pages and scientific references. LLM integration is deferred.
+  script, three tutorials/site pages and scientific references. These adapters
+  remain deterministic; optional AI collaboration uses the separate study assistance layer.
   See [network scope](docs/vignettes/network-followup.md) and
   [variant scope](docs/vignettes/variant-followup.md) for explicit limits.
 

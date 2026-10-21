@@ -11,7 +11,7 @@ Build the executable before using these examples:
 
 ```powershell
 .\gradlew.bat clean check executableJar --no-daemon --no-parallel
-$jar = 'build/cli/jlinalg-0.3.6.jar'
+$jar = 'build/cli/jlinalg-0.3.7.jar'
 ```
 
 The commands below are included in v0.3.6 and later.

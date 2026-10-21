@@ -75,7 +75,7 @@ lower that limit; <code>--max-samples</code> can raise the sample limit within t
 These are bounded follow-up workflows, not a validated 30,000-gene dense engine.
 Filter by an outcome-blind rule and document the feature universe.</p>
 <h2 id="reference-networks-and-candidate-key-drivers">Reference networks and candidate key drivers</h2>
-<div class="code-window"><div class="code-bar"><span>shell</span></div><pre><code>java -jar build/cli/jlinalg-0.3.6.jar network --method reference --edges examples/followup/edges.tsv --hits examples/followup/hits.tsv --permutations 999 --seed 19 --out build/followup/reference
+<div class="code-window"><div class="code-bar"><span>shell</span></div><pre><code>java -jar build/cli/jlinalg-0.3.7.jar network --method reference --edges examples/followup/edges.tsv --hits examples/followup/hits.tsv --permutations 999 --seed 19 --out build/followup/reference
 </code></pre></div>
 <p>Edges require <code>source,target,weight,type</code>, with positive weights, distinct nodes,
 and no duplicate pair. Delimit fields with tabs. Set <code>--directed true</code> for directed
@@ -113,7 +113,7 @@ BiocManager::install(c(&quot;WGCNA&quot;, &quot;GENIE3&quot;, &quot;CARNIVAL&quo
 use a quoted absolute path such as <code>C:/Program Files/R/R-4.6.1/bin/Rscript.exe</code>.
 <code>--r-library DIRECTORY</code> prepends a separately installed library; no package
 installation or source download happens during analysis.</p>
-<div class="code-window"><div class="code-bar"><span>shell</span></div><pre><code>java -jar build/cli/jlinalg-0.3.6.jar network --method wgcna --matrix examples/followup/discovery.tsv --power 6 --min-module-size 5 --pheno examples/followup/phenotype.tsv --trait trait --reference-matrix examples/followup/replication.tsv --permutations 100 --rscript Rscript --out build/followup/wgcna
+<div class="code-window"><div class="code-bar"><span>shell</span></div><pre><code>java -jar build/cli/jlinalg-0.3.7.jar network --method wgcna --matrix examples/followup/discovery.tsv --power 6 --min-module-size 5 --pheno examples/followup/phenotype.tsv --trait trait --reference-matrix examples/followup/replication.tsv --permutations 100 --rscript Rscript --out build/followup/wgcna
 </code></pre></div>
 <p>This calls WGCNA <code>blockwiseModules</code> with signed Pearson adjacency and signed TOM,
 one block and one thread. Soft-threshold power is <strong>required</strong>, not selected to
@@ -139,7 +139,7 @@ module. Preservation Z summaries are not association p-values. Permutation count
 and random seed are explicit; the small test fixture uses 10 permutations only
 to exercise the interface, not as an adequate scientific analysis.</p>
 <h2 id="sparse-conditional-association-networks">Sparse conditional-association networks</h2>
-<div class="code-window"><div class="code-bar"><span>shell</span></div><pre><code>java -jar build/cli/jlinalg-0.3.6.jar network --method sparse --matrix examples/followup/discovery.tsv --lambda 0.15 --rule and --bootstraps 20 --seed 19 --out build/followup/sparse
+<div class="code-window"><div class="code-bar"><span>shell</span></div><pre><code>java -jar build/cli/jlinalg-0.3.7.jar network --method sparse --matrix examples/followup/discovery.tsv --lambda 0.15 --rule and --bootstraps 20 --seed 19 --out build/followup/sparse
 </code></pre></div>
 <p>Every feature is centered/scaled to population variance one and regressed on the
 remaining features with Gaussian LASSO. Positive lambda is required and should be
@@ -155,7 +155,7 @@ fails the run rather than dropping inconvenient replicates. Work is bounded by
 not include coordinate-descent iterations and is not a runtime guarantee.
 The public Java API is <code>org.jlinalg.network.NetworkAnalysis.neighborhoodLasso</code>.</p>
 <h2 id="regulatory-networks-with-genie3">Regulatory networks with GENIE3</h2>
-<div class="code-window"><div class="code-bar"><span>shell</span></div><pre><code>java -jar build/cli/jlinalg-0.3.6.jar network --method regulatory --matrix examples/followup/discovery.tsv --regulators examples/followup/regulators.tsv --trees 1000 --seed 19 --rscript Rscript --out build/followup/regulatory
+<div class="code-window"><div class="code-bar"><span>shell</span></div><pre><code>java -jar build/cli/jlinalg-0.3.7.jar network --method regulatory --matrix examples/followup/discovery.tsv --regulators examples/followup/regulators.tsv --trees 1000 --seed 19 --rscript Rscript --out build/followup/regulatory
 </code></pre></div>
 <p>The regulator file has a unique <code>gene</code> column; every candidate regulator must be
 measured. The adapter transposes to GENIE3's feature-by-sample orientation and
@@ -165,7 +165,7 @@ does not infer activation/inhibition. <code>weights.rds</code> preserves the ful
 This adapter is GENIE3, not a claim of SCENIC motif pruning, SCENIC+ multiome
 support, or GRNBoost2 equivalence. Those are separate future adapters.</p>
 <h2 id="contextual-signaling-with-inverse-carnival">Contextual signaling with inverse CARNIVAL</h2>
-<div class="code-window"><div class="code-bar"><span>shell</span></div><pre><code>java -jar build/cli/jlinalg-0.3.6.jar network --method signaling --edges examples/followup/signaling.tsv --activities examples/followup/activities.tsv --solver lpSolve --rscript Rscript --out build/followup/signaling
+<div class="code-window"><div class="code-bar"><span>shell</span></div><pre><code>java -jar build/cli/jlinalg-0.3.7.jar network --method signaling --edges examples/followup/signaling.tsv --activities examples/followup/activities.tsv --solver lpSolve --rscript Rscript --out build/followup/signaling
 </code></pre></div>
 <p>The prior has <code>source,target,sign</code>, sign +1/-1, unique directed pairs, and no self
 loops. The activity table has <code>gene,activity</code>, with discretized regulator activity
@@ -184,7 +184,7 @@ Artificial <code>Perturbation</code> edges are separated into <code>proposed-per
 unfiltered engine evidence. An inferred upstream regulator is a hypothesis for
 perturbation follow-up, not an experimentally established driver.</p>
 <h2 id="differential-connectivity">Differential connectivity</h2>
-<div class="code-window"><div class="code-bar"><span>shell</span></div><pre><code>java -jar build/cli/jlinalg-0.3.6.jar network --method differential --matrix examples/followup/discovery.tsv --matrix-b examples/followup/replication.tsv --out build/followup/differential
+<div class="code-window"><div class="code-bar"><span>shell</span></div><pre><code>java -jar build/cli/jlinalg-0.3.7.jar network --method differential --matrix examples/followup/discovery.tsv --matrix-b examples/followup/replication.tsv --out build/followup/differential
 </code></pre></div>
 <p>This example compares independent synthetic cohorts. A biological application
 would use appropriately matched conditions/cohorts. Matrices must contain the

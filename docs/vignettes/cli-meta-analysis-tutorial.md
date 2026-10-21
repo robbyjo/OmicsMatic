@@ -2,7 +2,7 @@
 
 These commands are available in v0.3.6 and later. Build the executable
 with `./gradlew executableJar` (`.\gradlew.bat executableJar` on Windows).
-The examples below use the resulting `build/cli/jlinalg-0.3.6.jar`.
+The examples below use the resulting `build/cli/jlinalg-0.3.7.jar`.
 
 For a complete expression-effects example using both files and primitive arrays,
 see [omics meta-analysis in the main vignette](meta-analysis.md#omics-example-expression-effects-across-cohorts).
@@ -48,7 +48,7 @@ nonpositive SEs fail with a file/line diagnostic.
 From the repository root, run the supplied six-cohort example:
 
 ```powershell
-java -jar build/cli/jlinalg-0.3.6.jar meta-analysis --cohort c1=examples/meta-analysis/c1.tsv --cohort c2=examples/meta-analysis/c2.tsv --cohort c3=examples/meta-analysis/c3.tsv --cohort c4=examples/meta-analysis/c4.tsv --cohort c5=examples/meta-analysis/c5.tsv --cohort c6=examples/meta-analysis/c6.tsv --model fixed --out fixed-meta.tsv
+java -jar build/cli/jlinalg-0.3.7.jar meta-analysis --cohort c1=examples/meta-analysis/c1.tsv --cohort c2=examples/meta-analysis/c2.tsv --cohort c3=examples/meta-analysis/c3.tsv --cohort c4=examples/meta-analysis/c4.tsv --cohort c5=examples/meta-analysis/c5.tsv --cohort c6=examples/meta-analysis/c6.tsv --model fixed --out fixed-meta.tsv
 ```
 
 `gene1` has five complete cohorts and direction `++--?-`. `single` has
@@ -85,7 +85,7 @@ The regression direction string and `n_cohorts` describe these complete cases.
 Encode categorical moderators as numeric contrasts before running.
 
 ```powershell
-java -jar build/cli/jlinalg-0.3.6.jar meta-regression --cohort c1=examples/meta-analysis/c1.tsv --cohort c2=examples/meta-analysis/c2.tsv --cohort c3=examples/meta-analysis/c3.tsv --cohort c4=examples/meta-analysis/c4.tsv --cohort c5=examples/meta-analysis/c5.tsv --cohort c6=examples/meta-analysis/c6.tsv --moderator-file examples/meta-analysis/moderators.tsv --moderators age --model random --out meta-regression.tsv
+java -jar build/cli/jlinalg-0.3.7.jar meta-regression --cohort c1=examples/meta-analysis/c1.tsv --cohort c2=examples/meta-analysis/c2.tsv --cohort c3=examples/meta-analysis/c3.tsv --cohort c4=examples/meta-analysis/c4.tsv --cohort c5=examples/meta-analysis/c5.tsv --cohort c6=examples/meta-analysis/c6.tsv --moderator-file examples/meta-analysis/moderators.tsv --moderators age --model random --out meta-regression.tsv
 ```
 
 Use `--moderators age,proportion_female` for multiple moderators.

@@ -685,25 +685,25 @@ instructions rather than redistributed.</p>
 <h2 id="current-cli-workflow">Current CLI workflow</h2>
 <p>Build the executable and inspect the study commands:</p>
 <div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>.\gradlew.bat executableJar
-java -jar build/cli/jlinalg-0.3.6.jar study --help
+java -jar build/cli/jlinalg-0.3.7.jar study --help
 </code></pre></div>
 <p>Create a template or validate an existing YAML/JSON contract. <code>--check-files</code>
 also verifies every declared file path relative to the study file.</p>
-<div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>java -jar build/cli/jlinalg-0.3.6.jar study init --template association-results --out study.yaml
-java -jar build/cli/jlinalg-0.3.6.jar study validate study.yaml --check-files
-java -jar build/cli/jlinalg-0.3.6.jar study resolve study.yaml --actor-id scientist-1
-java -jar build/cli/jlinalg-0.3.6.jar study plan --project . --actor-id scientist-1
-java -jar build/cli/jlinalg-0.3.6.jar study status --project .
+<div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>java -jar build/cli/jlinalg-0.3.7.jar study init --template association-results --out study.yaml
+java -jar build/cli/jlinalg-0.3.7.jar study validate study.yaml --check-files
+java -jar build/cli/jlinalg-0.3.7.jar study resolve study.yaml --actor-id scientist-1
+java -jar build/cli/jlinalg-0.3.7.jar study plan --project . --actor-id scientist-1
+java -jar build/cli/jlinalg-0.3.7.jar study status --project .
 </code></pre></div>
 <p>Review <code>resolved-study.yaml</code>, its pending assumptions, and the generated plan.
 Approval is a separate human event. If the plan contains default relationship
 assumptions, accepting them must be explicit.</p>
-<div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>java -jar build/cli/jlinalg-0.3.6.jar study approve --project . --approved-by scientist-1 --accept-assumptions
-java -jar build/cli/jlinalg-0.3.6.jar study run --project . --actor-id scientist-1
-java -jar build/cli/jlinalg-0.3.6.jar study verify --project .
+<div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>java -jar build/cli/jlinalg-0.3.7.jar study approve --project . --approved-by scientist-1 --accept-assumptions
+java -jar build/cli/jlinalg-0.3.7.jar study run --project . --actor-id scientist-1
+java -jar build/cli/jlinalg-0.3.7.jar study verify --project .
 </code></pre></div>
 <p>The default end-to-end lifecycle is also available as one idempotent command:</p>
-<div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>java -jar build/cli/jlinalg-0.3.6.jar study auto study.yaml --project . --actor-id scientist-1
+<div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>java -jar build/cli/jlinalg-0.3.7.jar study auto study.yaml --project . --actor-id scientist-1
 </code></pre></div>
 <p>This validates declared files, resolves the contract, compiles and records the
 command-line approval, executes every eligible branch, verifies the audit chain,
@@ -726,8 +726,8 @@ deleting history; <code>--offline</code> disables built-in network requests. The
 distinguishes current from historical attempts and reports connection/policy
 failures separately from absent scientific evidence.</p>
 <p>Amendments have a read-only impact preview and require a named human approver:</p>
-<div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>java -jar build/cli/jlinalg-0.3.6.jar study amend amendment-add-whi.yaml --project . --check
-java -jar build/cli/jlinalg-0.3.6.jar study amend amendment-add-whi.yaml --project . --approved-by scientist-1
+<div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>java -jar build/cli/jlinalg-0.3.7.jar study amend amendment-add-whi.yaml --project . --check
+java -jar build/cli/jlinalg-0.3.7.jar study amend amendment-add-whi.yaml --project . --approved-by scientist-1
 </code></pre></div>
 <p>An amendment immediately supersedes the active plan. Compile and approve a new
 plan before further execution. Once a project is resolved, direct edits to the
@@ -736,7 +736,7 @@ auditable.</p>
 <p>Record an unusual artifact with its competing explanations and a proposed
 direction. An LLM actor must supply its reported model identifier or local model
 hash; this records attribution but does not give the LLM approval authority.</p>
-<div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>java -jar build/cli/jlinalg-0.3.6.jar study observe --project . `
+<div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>java -jar build/cli/jlinalg-0.3.7.jar study observe --project . `
   --id off-diagonal-1 --type off_diagonal_streak --artifact plots/effects.png `
   --hypothesis H1 --description &quot;Off-diagonal effect streak&quot; `
   --explanation &quot;processing batch&quot; --explanation &quot;biological subgroup&quot; `

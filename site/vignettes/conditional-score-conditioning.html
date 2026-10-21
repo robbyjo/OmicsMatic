@@ -20,7 +20,7 @@ often the clearest way to guarantee that scope. The block size cannot exceed
 512 variants.</p>
 <div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>./gradlew.bat executableJar
 
-java -jar build/cli/jlinalg-0.3.6.jar `
+java -jar build/cli/jlinalg-0.3.7.jar `
   --omics cohort-a-locus.vcf.gz --pheno cohort-a-phenotype.tsv --id IID `
   --formula &quot;case_status ~ age + sex + PC1 + PC2 + &lt;omics&gt;&quot; `
   --family binomial --case-value case --control-value control `
@@ -47,7 +47,7 @@ cohort_b    cohort-b-gwas.tsv   cohort-b-gwas.tsv.score-cov.tsv cohort-b-gwas.ts
 cohorts must not be entered as though their scores were independent.</p>
 <h2 id="3-condition-and-pool">3. Condition and pool</h2>
 <p>Specify allele-aware keys in the orientation wanted in the output:</p>
-<div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>java -jar build/cli/jlinalg-0.3.6.jar conditional-score `
+<div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>java -jar build/cli/jlinalg-0.3.7.jar conditional-score `
   --cohorts cohorts.tsv `
   --targets 1:456789:A:G,1:456950:C:T `
   --condition-on 1:455100:G:A `

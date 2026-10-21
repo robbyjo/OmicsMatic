@@ -41,8 +41,8 @@ These commands are included in v0.3.6 and later. Run from the repository root,
 using fresh output paths:
 
 ```shell
-java -jar build/cli/jlinalg-0.3.6.jar meta-analysis --cohort A=examples/meta-analysis/omics/cohort-a.tsv --cohort B=examples/meta-analysis/omics/cohort-b.tsv --cohort C=examples/meta-analysis/omics/cohort-c.tsv --model fixed --min-cohorts 2 --out build/omics-meta/fixed.tsv
-java -jar build/cli/jlinalg-0.3.6.jar meta-analysis --cohort A=examples/meta-analysis/omics/cohort-a.tsv --cohort B=examples/meta-analysis/omics/cohort-b.tsv --cohort C=examples/meta-analysis/omics/cohort-c.tsv --model random --tau-estimator reml --min-cohorts 2 --out build/omics-meta/random.tsv
+java -jar build/cli/jlinalg-0.3.7.jar meta-analysis --cohort A=examples/meta-analysis/omics/cohort-a.tsv --cohort B=examples/meta-analysis/omics/cohort-b.tsv --cohort C=examples/meta-analysis/omics/cohort-c.tsv --model fixed --min-cohorts 2 --out build/omics-meta/fixed.tsv
+java -jar build/cli/jlinalg-0.3.7.jar meta-analysis --cohort A=examples/meta-analysis/omics/cohort-a.tsv --cohort B=examples/meta-analysis/omics/cohort-b.tsv --cohort C=examples/meta-analysis/omics/cohort-c.tsv --model random --tau-estimator reml --min-cohorts 2 --out build/omics-meta/random.tsv
 ```
 
 Gene A has direction `+++`, gene B `---`, and gene C `+??`. Gene C remains in
@@ -74,7 +74,7 @@ System.out.println(batch.direction(2)); // +??; result arrays contain NaN for ge
 Run the full example with a JDK and the built executable as its classpath:
 
 ```shell
-java --class-path build/cli/jlinalg-0.3.6.jar examples/meta-analysis/omics/OmicsMetaExample.java
+java --class-path build/cli/jlinalg-0.3.7.jar examples/meta-analysis/omics/OmicsMetaExample.java
 ```
 
 The Java example prints fixed/random beta and SE for each gene, cohort counts,

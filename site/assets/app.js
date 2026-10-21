@@ -29,7 +29,7 @@ class SiteHeader extends HTMLElement {
             <a href="${root}vignettes/index.html">Vignettes</a>
             <a href="${root}verification.html">Verification</a>
             <a href="${root}citations.html">Citations</a>
-            <a href="${root}index.html#architecture">Architecture</a>
+            <a href="${root}index.html#ai-collaboration">AI collaboration</a>
           </nav>
           <div class="nav-actions">
             <label>

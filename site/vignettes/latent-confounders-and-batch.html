@@ -49,7 +49,7 @@ Measurements must already be normalized and approximately continuous.</p>
 <p>PCA, SVA, AutoSVA, and PEER return sample covariates. ComBat returns an adjusted
 feature matrix. They are not interchangeable meanings of "batch correction."</p>
 <h2 id="pca">PCA</h2>
-<div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>java -jar jlinalg-0.3.6.jar confounders `
+<div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>java -jar jlinalg-0.3.7.jar confounders `
   --method pca `
   --omics expression.tsv `
   --factors 10 `
@@ -76,7 +76,7 @@ positive.</p>
 <p>The full design contains the variables whose effects must be retained. The
 null design contains adjustment variables but omits the biological term being
 tested:</p>
-<div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>java -jar jlinalg-0.3.6.jar confounders `
+<div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>java -jar jlinalg-0.3.7.jar confounders `
   --method sva `
   --omics methylation.tsv `
   --pheno phenotype.tsv `
@@ -98,7 +98,7 @@ empirical local-FDR control probabilities, feature reweighting, and repeated
 sample-factor decomposition. <code>feature-weights.tsv</code> makes the final empirical
 control weights auditable.</p>
 <h2 id="autosva">AutoSVA</h2>
-<div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>java -jar jlinalg-0.3.6.jar confounders `
+<div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>java -jar jlinalg-0.3.7.jar confounders `
   --method autosva `
   --omics methylation.tsv `
   --pheno phenotype.tsv `
@@ -124,7 +124,7 @@ injecting random noise. It also interprets the source stopping expression as
 <code>length(f_ratios) - index_max &gt; 5</code>, which is the intended distance from the
 most recent improvement.</p>
 <h2 id="peer">PEER</h2>
-<div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>java -jar jlinalg-0.3.6.jar confounders `
+<div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>java -jar jlinalg-0.3.7.jar confounders `
   --method peer `
   --omics expression.tsv `
   --pheno phenotype.tsv `
@@ -145,7 +145,7 @@ official implementation initializes hidden factors and loadings randomly.</p>
 and the residual-variance path. Factors can capture ancestry or protected
 biology if those variables are not supplied as observed covariates.</p>
 <h2 id="combat">ComBat</h2>
-<div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>java -jar jlinalg-0.3.6.jar batch-adjust `
+<div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>java -jar jlinalg-0.3.7.jar batch-adjust `
   --method combat `
   --omics expression.tsv `
   --pheno phenotype.tsv `
@@ -165,7 +165,7 @@ normalize appropriately or use a separately validated count model.</p>
 <h2 id="use-factors-in-association-models">Use factors in association models</h2>
 <p>The default scientific workflow is to merge <code>*.factors.tsv</code> into the phenotype
 table and include the factors explicitly:</p>
-<div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>java -jar jlinalg-0.3.6.jar `
+<div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>java -jar jlinalg-0.3.7.jar `
   --pheno phenotype-with-svs.tsv `
   --id IID `
   --omics expression.tsv `

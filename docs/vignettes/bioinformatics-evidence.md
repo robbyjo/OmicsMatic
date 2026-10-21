@@ -9,8 +9,8 @@ This source-build feature does not make every biological question answerable aut
 The smallest real-study entry point remains a study contract plus the input result files and a current executable JAR:
 
 ```sh
-java -jar jlinalg-0.3.6.jar study auto study.yaml
-java -jar jlinalg-0.3.6.jar study verify --project .
+java -jar jlinalg-0.3.7.jar study auto study.yaml
+java -jar jlinalg-0.3.7.jar study verify --project .
 ```
 
 `analysis.mode` defaults to `auto`. Existing discovery/replication, meta-analysis, enrichment and diagnostic operations remain available. Auto mode now also plans `source_discovery` when genetic support is relevant, `bioinformatics_investigation`, and `literature_search`. They are independent branches: a retired QTL service does not prevent an available literature or protein investigation. Optional LLM literature interpretation is a separate `literature_support` operation.
@@ -219,7 +219,7 @@ These are application-level controls, not a guarantee that unrelated software or
 To produce a local audit snapshot:
 
 ```sh
-java -jar jlinalg-0.3.6.jar study export --project . --out evidence.zip --acknowledge-sensitive
+java -jar jlinalg-0.3.7.jar study export --project . --out evidence.zip --acknowledge-sensitive
 ```
 
 The archive includes the contract, ledger, notebook, questions/answers, plans, amendments, operation artifacts and index. `EVIDENCE_BUNDLE.json` lists checksums and omissions. Original dataset files outside those evidence directories, reference caches and software binaries are not copied automatically. Intermediate outputs, answer text and LLM interactions may still be sensitive. External preprocessing and unrecorded software remain explicit audit gaps; retain their scripts, versions and input/output hashes.

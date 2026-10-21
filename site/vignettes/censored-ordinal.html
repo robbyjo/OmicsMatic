@@ -11,7 +11,7 @@ resolved score/Newton step. Failed convergence, unresolved information, and
 separation do not produce successful inference outputs. Build with
 <code>./gradlew executableJar</code> or <code>.\gradlew.bat executableJar</code> on Windows.</p>
 <h2 id="censored-gaussian-regression-tobit">Censored Gaussian regression (Tobit)</h2>
-<div class="code-window"><div class="code-bar"><span>shell</span></div><pre><code>java -jar build/cli/jlinalg-0.3.6.jar censored-regression --input src/test/resources/r-reference/regression-inference/censored.tsv --response tobit --censor cens --predictors c,z1 --distribution gaussian --predict src/test/resources/r-reference/regression-inference/censored.tsv --lower -0.4 --upper 2.5 --out build/inference/tobit.tsv
+<div class="code-window"><div class="code-bar"><span>shell</span></div><pre><code>java -jar build/cli/jlinalg-0.3.7.jar censored-regression --input src/test/resources/r-reference/regression-inference/censored.tsv --response tobit --censor cens --predictors c,z1 --distribution gaussian --predict src/test/resources/r-reference/regression-inference/censored.tsv --lower -0.4 --upper 2.5 --out build/inference/tobit.tsv
 </code></pre></div>
 <p>The synthetic table contains a normally distributed latent response censored
 at -0.4 and 2.5. The response column stores the observed value or censoring
@@ -29,9 +29,9 @@ in fitting because each row supplies its actual limit.</p>
 Fitting does not infer censoring from equality with a limit: supply the codes.
 Do not use this model for truncation or for a structural point mass at zero.</p>
 <h2 id="parametric-accelerated-failure-time-models">Parametric accelerated-failure-time models</h2>
-<div class="code-window"><div class="code-bar"><span>shell</span></div><pre><code>java -jar build/cli/jlinalg-0.3.6.jar censored-regression --input src/test/resources/r-reference/regression-inference/censored.tsv --response time --censor censTime --predictors c,z1 --distribution weibull --predict src/test/resources/r-reference/regression-inference/censored.tsv --time 2 --out build/inference/weibull.tsv
-java -jar build/cli/jlinalg-0.3.6.jar censored-regression --input src/test/resources/r-reference/regression-inference/censored.tsv --response time --censor censTime --predictors c,z1 --distribution lognormal --out build/inference/lognormal.tsv
-java -jar build/cli/jlinalg-0.3.6.jar censored-regression --input src/test/resources/r-reference/regression-inference/censored.tsv --response time --censor censTime --predictors c,z1 --distribution exponential --out build/inference/exponential.tsv
+<div class="code-window"><div class="code-bar"><span>shell</span></div><pre><code>java -jar build/cli/jlinalg-0.3.7.jar censored-regression --input src/test/resources/r-reference/regression-inference/censored.tsv --response time --censor censTime --predictors c,z1 --distribution weibull --predict src/test/resources/r-reference/regression-inference/censored.tsv --time 2 --out build/inference/weibull.tsv
+java -jar build/cli/jlinalg-0.3.7.jar censored-regression --input src/test/resources/r-reference/regression-inference/censored.tsv --response time --censor censTime --predictors c,z1 --distribution lognormal --out build/inference/lognormal.tsv
+java -jar build/cli/jlinalg-0.3.7.jar censored-regression --input src/test/resources/r-reference/regression-inference/censored.tsv --response time --censor censTime --predictors c,z1 --distribution exponential --out build/inference/exponential.tsv
 </code></pre></div>
 <p>Times and censoring limits must be positive. Here <code>censTime=1</code> means right
 censored, <strong>not an event</strong>; event indicators must be converted before use.
@@ -60,8 +60,8 @@ are supplied by this new fitter. Censoring must be independent conditional on
 the design. At least two exact observations are required; this does not alone
 guarantee identification.</p>
 <h2 id="ordered-logit-or-probit-by-maximum-likelihood">Ordered logit or probit by maximum likelihood</h2>
-<div class="code-window"><div class="code-bar"><span>shell</span></div><pre><code>java -jar build/cli/jlinalg-0.3.6.jar ordinal-regression --input src/test/resources/r-reference/regression-inference/ordinal.tsv --response ordinal --predictors c,z1 --categories 4 --link logit --predict src/test/resources/r-reference/regression-inference/ordinal.tsv --out build/inference/ordered-logit.tsv
-java -jar build/cli/jlinalg-0.3.6.jar ordinal-regression --input src/test/resources/r-reference/regression-inference/ordinal.tsv --response ordinal --predictors c,z1 --categories 4 --link probit --out build/inference/ordered-probit.tsv
+<div class="code-window"><div class="code-bar"><span>shell</span></div><pre><code>java -jar build/cli/jlinalg-0.3.7.jar ordinal-regression --input src/test/resources/r-reference/regression-inference/ordinal.tsv --response ordinal --predictors c,z1 --categories 4 --link logit --predict src/test/resources/r-reference/regression-inference/ordinal.tsv --out build/inference/ordered-logit.tsv
+java -jar build/cli/jlinalg-0.3.7.jar ordinal-regression --input src/test/resources/r-reference/regression-inference/ordinal.tsv --response ordinal --predictors c,z1 --categories 4 --link probit --out build/inference/ordered-probit.tsv
 </code></pre></div>
 <p>Responses are prespecified integers 0 through K-1, with every category observed.
 The likelihood is <code>P(Y &lt;= k | x) = F(threshold[k] - x beta)</code>. Increasing a

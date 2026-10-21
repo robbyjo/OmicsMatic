@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Review bounded aggregate evidence through audited browser handoff or an explicitly selected API."><title>AI as a scientific advisor · JLinAlg v0.3.7</title>
+<link rel="stylesheet" href="../assets/styles.css"><script src="../assets/app.js" defer></script></head>
+<body><site-header root="../"></site-header><main id="main">
+<section class="page-hero"><div class="container"><div class="breadcrumbs"><a href="../index.html">Home</a><span>/</span><a href="index.html">Vignettes</a><span>/</span><span>AI collaboration</span></div>
+<span class="eyebrow">Three collaboration modes · v0.3.7</span><h1>AI as a scientific advisor</h1><p>Review bounded aggregate evidence through audited browser handoff or an explicitly selected API.</p></div></section>
+<div class="container page-layout"><article class="prose"><p>JLinAlg v0.3.7 offers opt-in AI collaboration for bounded next-step advice,
+literature review and explicitly enabled first manuscript drafts. JLinAlg
+constructs the evidence preview, runs the statistics and records provenance.
+The model proposes interpretations and follow-up; its answer is not a numerical
+result or approval to change the study.</p>
+<h2 id="prepare-the-example-and-disclosure-policy">Prepare the example and disclosure policy</h2>
+<p>Start at the repository root with a new copy of the synthetic result-first study:</p>
+<pre><code class="language-powershell">.\gradlew.bat executableJar
+$jar = (Resolve-Path &quot;build/cli/jlinalg-0.3.7.jar&quot;).Path
+$project = Join-Path (Get-Location) &quot;build/ai-advisor&quot;
+if (Test-Path $project) { throw &quot;Choose a fresh project directory.&quot; }
+Copy-Item examples/study-pipeline $project -Recurse
+Set-Location $project
+</code></pre>
+<p>Before resolving this new study, merge the following <code>data_policy</code> into its
+existing <code>project</code> mapping, and add <code>assistance</code> at the top level. Preserve its
+datasets, cohorts, hypotheses and other project fields. Do not create a second
+<code>project</code> mapping.</p>
+<pre><code class="language-yaml">project:
+  data_policy:
+    llm:
+      remote_transmission: aggregate_results
+      remote_patient_level_data: deny
+assistance:
+  enabled: true
+  provider: browser
+  next_steps: true
+  literature: false
+  manuscript: false
+  response_files:
+    - responses/H1-advisor/receipt.yaml
+</code></pre>
+<p>This example enables advice only. Browser handoff is the default transport and
+needs no API credential to prepare. The policy permits consideration of a
+bounded aggregate preview; a scientist still reviews the exact prompt before
+manual disclosure. For an already resolved study, configure assistance through
+an approved amendment instead of rewriting its base file.</p>
+<h2 id="run-the-deterministic-analysis-first">Run the deterministic analysis first</h2>
+<pre><code class="language-powershell">java -jar $jar study validate study.yaml --check-files
+java -jar $jar study resolve study.yaml --actor-id scientist-1
+java -jar $jar study plan --project . --actor-id scientist-1
+Get-Content plans/*/analysis-plan.yaml
+java -jar $jar study approve --project . --approved-by scientist-1
+java -jar $jar study run --project . --actor-id scientist-1
+java -jar $jar study status --project .
+</code></pre>
+<p>The independent numerical work completes while advice waits for a browser
+response. The run command returns a nonzero exit status while required input is
+pending; inspect <code>study status</code> and the waiting operation rather than treating
+this as a failed numerical analysis. Open <code>index/index.html</code> to find its
+<code>handoff/index.html</code>. Set <code>$handoff</code> to that exact local directory:</p>
+<pre><code class="language-powershell">$handoff = &quot;FULL_PATH_FROM_THE_WAITING_OPERATION/handoff&quot;
+java -jar $jar study handoff-open --handoff $handoff --browser none
+</code></pre>
+<p><code>--browser none</code> reports the verified packet path for manual opening. Select an
+installed browser such as <code>edge</code> or <code>firefox</code> to request opening it. The adapter
+never submits the prompt or signs into a website for you.</p>
+<h2 id="review-and-import-the-answer">Review and import the answer</h2>
+<p>Inspect the complete prompt. Only if disclosure is authorized, copy that exact
+prompt into your chosen AI service. Copy <code>response-template.yaml</code> outside the
+frozen packet to <code>response.yaml</code>. Fill in the complete answer, provider/model
+declaration, timestamps, references, disposition and rationale. Advice must use
+the packet's requested JSON <code>proposals</code> contract. Confirm <code>exact_prompt_submitted</code>,
+<code>disclosure_approved</code> and <code>no_patient_data</code> only when true.</p>
+<pre><code class="language-powershell">java -jar $jar study handoff-import response.yaml --handoff $handoff --out responses/H1-advisor --actor-id scientist-1
+java -jar $jar study handoff-verify responses/H1-advisor/receipt.yaml
+java -jar $jar study run --project . --actor-id scientist-1
+java -jar $jar study verify --project .
+</code></pre>
+<p>The receipt preserves the reviewed exchange and matches the exact request.
+Completed upstream results are reused. Browser attribution, timestamps and
+citations are human-attested; hashes establish integrity rather than provider
+authenticity or scientific correctness. Unsupported or study-changing proposals
+require scientist review and an amendment. Model-generated code is not executed.
+Preapproved registered sensitivity analyses run locally under the study contract.</p>
+<h2 id="api-collaboration-and-patient-data-boundaries">API collaboration and patient-data boundaries</h2>
+<p>Explicit alternatives are OpenAI Responses, Gemini GenerateContent and
+OpenAI-compatible APIs. See the <a href="bioinformatics-evidence.html#optional-api-key-and-oauth-access-token-connections">connection instructions</a>
+for model, endpoint and environment-variable credentials. Provider calls can
+incur charges. Browser preparation remains local; sending its prompt is a
+separate human action.</p>
+<p>The built-in assistance adapter does not upload input files or grant filesystem,
+shell, phenotype-row or sample-matrix access. Its allowlisted preview omits raw
+feature identifiers, dictionary prose and local paths; it can include gene
+symbols, phenotype labels, structured study metadata and numeric aggregate
+findings. These can still be confidential. <code>deny_all</code> blocks remote advice and
+<code>--offline</code> blocks built-in network requests. Classification depends on correct
+input metadata; this is not automatic PHI detection or a regulatory certification.
+It cannot control a separate agent or a user's manual uploads.</p>
+<p>Compare <a href="ai-no-ai.html">no AI</a> and <a href="ai-driver.html">AI as an external driver</a>.</p>
+<!-- SCIENTIFIC-CITATIONS:START -->
+<h2 id="scientific-citations">Scientific citations</h2>
+<ul>
+<li><a href="../citations.html#sandve-reproducibility-2013">Sandve et al. (2013): reproducible computational research</a></li>
+<li><a href="../citations.html#w3c-prov-o-2013">W3C (2013): evidence provenance</a></li>
+<li><a href="../citations.html#hhs-hipaa-deidentification-2012">HHS OCR (2012): de-identification guidance</a></li>
+<li><a href="../citations.html#nist-genai-profile-2024">NIST (2024): generative AI risk management</a></li>
+</ul>
+<!-- SCIENTIFIC-CITATIONS:END --><div class="note"><strong>Explore the other modes</strong><a href="ai-no-ai.html">No AI: deterministic analysis</a> <a href="ai-driver.html">AI as an external workflow driver</a></div></article>
+<aside class="toc"><strong>On this page</strong><a href="#prepare-the-example-and-disclosure-policy">Prepare the example and disclosure policy</a><a href="#run-the-deterministic-analysis-first">Run the deterministic analysis first</a><a href="#review-and-import-the-answer">Review and import the answer</a><a href="#api-collaboration-and-patient-data-boundaries">API collaboration and patient-data boundaries</a><a href="#scientific-citations">Scientific citations</a></aside></div>
+</main><site-footer root="../"></site-footer></body></html>

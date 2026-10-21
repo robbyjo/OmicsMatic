@@ -1,5 +1,14 @@
 # JLinAlg vignettes
 
+## Featured: three degrees of AI collaboration
+
+- [No AI: deterministic analysis](ai-no-ai.md) — execute and verify a complete local study.
+- [AI as a scientific advisor](ai-advisor.md) — bounded, audited browser/API advice.
+- [AI as an external workflow driver](ai-driver.md) — coordinate existing CLI commands with separate scientist approval and enforced access controls.
+
+Available in v0.3.7. Read each guide for its patient-data boundary and implementation limits.
+
+
 New RNA workflows: [replicated single-cell analysis](single-cell.md) and
 [physical spatial analysis](spatial-analysis.md), with complete CLI examples and
 [independent validation](../cell-spatial-validation.md).
@@ -12,10 +21,10 @@ CLI examples, references, data contracts and validation boundaries.
 The source-build [auditable omics research pipeline](auditable-omics-pipeline.md)
 implements the minimal `study.yaml`, deterministic plan approval and execution,
 materialized project status, immutable amendments, evidence lineage, research
-notebook, unusual-result capture, and guarded attribution for future LLM use.
+notebook, unusual-result capture, and guarded attribution for opt-in LLM assistance.
 The companion [hands-on tutorial](study-pipeline-tutorial.md) runs the checked-in
 two-cohort example end to end and specifies a default-deny, independently
-verifiable patient-data boundary for future local or remote LLM assistance.
+verifiable patient-data boundary for local execution and optional remote LLM assistance.
 The [questions and decisions subsystem](study-questions-and-decisions.md)
 implements the first deterministic question rules, a local inbox, checked batch
 answers, answer-linked amendments, and exact question/answer notebooks. The
@@ -38,12 +47,12 @@ Run the complete verification suite before adapting an example:
 
 ## Choose a vignette
 
-The v0.3.6 release executable includes cohort and
-rare-variant meta-analysis, GRM construction, xWAS follow-up, latent-factor and
-batch adjustment, ACAT, differential/regional analysis, adaptive or hierarchical
-testing, and multiple-imputation inference. Pages explicitly marked source build,
-including the study/question subsystem, require a newly built executable even
-when its filename still contains `0.3.6`; they do not describe the published JAR.
+The v0.3.7 executable includes the study/question subsystem, opt-in AI
+assistance, plotting and cohort sensitivity, variant/network follow-up,
+single-cell/spatial commands and the earlier v0.3.6 inference methods. Some
+methods require separately installed R packages, reference resources or declared
+scientific inputs. External-agent orchestration remains a supervised integration
+pattern; autonomous orchestration and certified privacy isolation are not bundled.
 
 | Vignette | Features covered |
 | --- | --- |

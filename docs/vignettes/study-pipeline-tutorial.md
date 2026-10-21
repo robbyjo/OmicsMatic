@@ -491,7 +491,7 @@ From the repository root, build the executable JAR:
 
 ~~~powershell
 .\gradlew.bat executableJar
-$jar = (Resolve-Path "build/cli/jlinalg-0.3.6.jar").Path
+$jar = (Resolve-Path "build/cli/jlinalg-0.3.7.jar").Path
 ~~~
 
 Copy the example to a disposable working directory so the checked-in files stay

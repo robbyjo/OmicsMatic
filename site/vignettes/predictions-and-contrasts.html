@@ -31,7 +31,7 @@ representable floating-point range.</p>
 <h2 id="expected-responses">Expected responses</h2>
 <p>The same probit fit and response-scale estimands are available from a numeric
 table through the source-build CLI:</p>
-<div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>java -jar build/cli/jlinalg-0.3.6.jar glm-predict `
+<div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>java -jar build/cli/jlinalg-0.3.7.jar glm-predict `
   --input cohort.tsv `
   --response case `
   --predictors exposure,age,sex `
@@ -41,12 +41,12 @@ table through the source-build CLI:</p>
 </code></pre></div>
 <p>For standardized contrasts, reuse the observed rows and set one design column
 to each scenario value:</p>
-<div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>java -jar build/cli/jlinalg-0.3.6.jar glm-predict `
+<div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>java -jar build/cli/jlinalg-0.3.7.jar glm-predict `
   --input cohort.tsv --response case --predictors exposure,age,sex `
   --family probit --estimand difference `
   --scenario-column exposure --first 1 --second 0
 
-java -jar build/cli/jlinalg-0.3.6.jar glm-predict `
+java -jar build/cli/jlinalg-0.3.7.jar glm-predict `
   --input cohort.tsv --response case --predictors exposure,age,sex `
   --family probit --estimand ame --ame-column age
 </code></pre></div>

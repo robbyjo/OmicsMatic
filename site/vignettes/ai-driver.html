@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Coordinate approved CLI steps with a separately managed agent and a distinct scientist approval step."><title>AI as an external workflow driver · JLinAlg v0.3.7</title>
+<link rel="stylesheet" href="../assets/styles.css"><script src="../assets/app.js" defer></script></head>
+<body><site-header root="../"></site-header><main id="main">
+<section class="page-hero"><div class="container"><div class="breadcrumbs"><a href="../index.html">Home</a><span>/</span><a href="index.html">Vignettes</a><span>/</span><span>AI collaboration</span></div>
+<span class="eyebrow">Three collaboration modes · v0.3.7</span><h1>AI as an external workflow driver</h1><p>Coordinate approved CLI steps with a separately managed agent and a distinct scientist approval step.</p></div></section>
+<div class="container page-layout"><article class="prose"><p>An external AI agent can help translate a research objective into a JLinAlg
+study contract, coordinate documented CLI commands, inspect authorized outputs
+and propose amendments. JLinAlg v0.3.7 supplies the deterministic planner,
+execution engine and evidence ledger. The agent is separately operated software;
+JLinAlg does not bundle an autonomous agent runtime or grant it access to data.
+This vignette describes a supervised collaboration pattern using existing CLI
+interfaces, not an autonomous scientific decision-maker.</p>
+<h2 id="agree-on-scope-and-access">Agree on scope and access</h2>
+<p>Specify the estimand, outcomes, cohort relationships, data sources, approved
+operations, resource limits and decisions reserved for the scientist. The agent
+may draft a study, but must leave unknown ancestry, LD, genome build, units and
+instrument validity unresolved rather than inventing them.</p>
+<p>For patient-level work, keep data and execution in an institution-controlled
+environment. Use a separate account or execution service with permissions that
+expose only reviewed aggregate artifacts to a remote agent. A prompt instruction
+is not an access boundary: if an agent can read raw files or invoke arbitrary
+networked shell commands, JLinAlg's assistance policy cannot prevent disclosure.
+Even <code>index/LLM_CONTEXT.md</code> and the generated <code>AGENTS.md</code> are local working
+artifacts, not automatically approved external payloads.</p>
+<h2 id="prepare-an-offline-synthetic-rehearsal">Prepare an offline synthetic rehearsal</h2>
+<p>From the repository root:</p>
+<pre><code class="language-powershell">.\gradlew.bat executableJar
+$jar = (Resolve-Path &quot;build/cli/jlinalg-0.3.7.jar&quot;).Path
+$project = Join-Path (Get-Location) &quot;build/ai-driver&quot;
+if (Test-Path $project) { throw &quot;Choose a fresh project directory.&quot; }
+Copy-Item examples/study-pipeline $project -Recurse
+Set-Location $project
+</code></pre>
+<p>The fixture contains synthetic association results. Its built-in assistance is
+disabled, so this rehearsal itself sends no model requests. A real external
+agent connection and its disclosure controls must be established independently.</p>
+<h2 id="let-the-agent-prepare-a-reviewable-plan">Let the agent prepare a reviewable plan</h2>
+<p>These commands show the agent's proposed actions. Replace <code>REPORTED_MODEL_ID</code>
+with the actual model identifier for an agent-run project:</p>
+<pre><code class="language-powershell">java -jar $jar study validate study.yaml --check-files
+java -jar $jar study resolve study.yaml --actor-type llm --actor-id external-agent --actor-model REPORTED_MODEL_ID
+java -jar $jar study plan --project . --actor-type llm --actor-id external-agent --actor-model REPORTED_MODEL_ID
+java -jar $jar study status --project .
+Get-Content resolved-study.yaml
+Get-Content plans/*/analysis-plan.yaml
+</code></pre>
+<p>Actor labels record who is reported to have performed a step. They are not
+authenticated identities or proof that an LLM ran. An ordinary scripted rehearsal
+should instead use <code>--actor-type external --actor-id rehearsal</code> and omit the
+model. Never attribute a human's actions to a model merely because this guide
+contains agent examples.</p>
+<p>The scientist reviews the exact contract and operation graph, including missing
+inputs, statistical assumptions and any proposed disclosure. The scientist then
+runs the separate approval command:</p>
+<pre><code class="language-powershell">java -jar $jar study approve --project . --approved-by scientist-1
+</code></pre>
+<p>Reserve this command for the authorized scientist through the surrounding
+execution environment. Do not give the agent an unrestricted approval shell.
+<code>study auto</code> records command-line approval as part of its convenience workflow;
+use the explicit lifecycle here to preserve a separate human review step.</p>
+<h2 id="coordinate-execution-and-evidence-review">Coordinate execution and evidence review</h2>
+<p>After approval, the agent can request the permitted run, status and verification
+commands through the controlled execution service:</p>
+<pre><code class="language-powershell">java -jar $jar study run --project . --offline --actor-type llm --actor-id external-agent --actor-model REPORTED_MODEL_ID
+java -jar $jar study status --project .
+java -jar $jar study questions --project .
+java -jar $jar study verify --project .
+</code></pre>
+<p>JLinAlg runs the registered numerical operations and writes manifests, hashes,
+diagnostics, reports, an append-only ledger and <code>SESSION_HISTORY.md</code>. The agent
+can summarize approved evidence using result IDs; each reported number must
+resolve to its actual source artifact. Missing MR, colocalization, fine-mapping
+or enrichment prerequisites remain questions, not successful analyses. Standalone
+network and other methods outside the study registry require separately reviewed
+commands and captured provenance.</p>
+<p>For new hypotheses, exclusions, phenotypes or data sources, prepare an amendment,
+show its impact and obtain scientist approval. Do not rewrite resolved contracts,
+approve on the scientist's behalf or execute arbitrary model-generated code.
+Keep post-hoc sensitivity findings distinct from the primary analysis.</p>
+<h2 id="boundaries-and-verification">Boundaries and verification</h2>
+<p><code>study verify</code> checks recorded local integrity; it does not certify scientific
+truth, remote-agent behavior or whole-computer non-egress. <code>--offline</code> controls
+built-in JLinAlg requests, not the agent's own network connection. Use operating
+system permissions, network controls and institution-approved disclosure review
+to enforce the wider boundary. No live external agent or remote provider is
+required to rehearse these CLI steps.</p>
+<p>Compare <a href="ai-no-ai.html">no AI</a> and <a href="ai-advisor.html">the built-in AI advisor</a>, whose
+allowlisted provider adapter has a narrower disclosure surface.</p>
+<!-- SCIENTIFIC-CITATIONS:START -->
+<h2 id="scientific-citations">Scientific citations</h2>
+<ul>
+<li><a href="../citations.html#sandve-reproducibility-2013">Sandve et al. (2013): reproducible computational research</a></li>
+<li><a href="../citations.html#w3c-prov-o-2013">W3C (2013): evidence provenance</a></li>
+<li><a href="../citations.html#hhs-hipaa-deidentification-2012">HHS OCR (2012): de-identification guidance</a></li>
+<li><a href="../citations.html#nist-genai-profile-2024">NIST (2024): generative AI risk management</a></li>
+</ul>
+<!-- SCIENTIFIC-CITATIONS:END --><div class="note"><strong>Explore the other modes</strong><a href="ai-no-ai.html">No AI: deterministic analysis</a> <a href="ai-advisor.html">AI as a scientific advisor</a></div></article>
+<aside class="toc"><strong>On this page</strong><a href="#agree-on-scope-and-access">Agree on scope and access</a><a href="#prepare-an-offline-synthetic-rehearsal">Prepare an offline synthetic rehearsal</a><a href="#let-the-agent-prepare-a-reviewable-plan">Let the agent prepare a reviewable plan</a><a href="#coordinate-execution-and-evidence-review">Coordinate execution and evidence review</a><a href="#boundaries-and-verification">Boundaries and verification</a><a href="#scientific-citations">Scientific citations</a></aside></div>
+</main><site-footer root="../"></site-footer></body></html>

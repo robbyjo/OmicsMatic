@@ -57,7 +57,7 @@ To respect irregular holes, use a reviewed supplied adjacency graph or explicitl
 partition the compartment labels. A radius alone cannot detect a hole crossed by
 a short straight edge.</p>
 <h2 id="build-graphs-and-inspect-tissue-maps">Build graphs and inspect tissue maps</h2>
-<div class="code-window"><div class="code-bar"><span>shell</span></div><pre><code>java -jar build/cli/jlinalg-0.3.6.jar spatial --method graph --counts examples/cell-spatial/counts.tsv --cells examples/cell-spatial/cells.tsv --samples examples/cell-spatial/samples.tsv --features examples/cell-spatial/features.tsv --units micrometer --coordinate-system synthetic-v1 --resolution cell --graph radius --radius 10.1 --out build/spatial-demo/graph
+<div class="code-window"><div class="code-bar"><span>shell</span></div><pre><code>java -jar build/cli/jlinalg-0.3.7.jar spatial --method graph --counts examples/cell-spatial/counts.tsv --cells examples/cell-spatial/cells.tsv --samples examples/cell-spatial/samples.tsv --features examples/cell-spatial/features.tsv --units micrometer --coordinate-system synthetic-v1 --resolution cell --graph radius --radius 10.1 --out build/spatial-demo/graph
 </code></pre></div>
 <p>Radius edges connect observations at Euclidean distance &lt;= the radius within the
 same section and compartment. Two- and three-dimensional distances are supported.
@@ -76,7 +76,7 @@ as explicitly labeled XY projections. Axes preserve aspect ratio; each map state
 its original coordinate range and physical units. Compare radius/k choices and
 compartment annotations before interpreting a graph.</p>
 <h2 id="spatially-variable-features">Spatially variable features</h2>
-<div class="code-window"><div class="code-bar"><span>shell</span></div><pre><code>java -jar build/cli/jlinalg-0.3.6.jar spatial --method autocorrelation --counts examples/cell-spatial/counts.tsv --cells examples/cell-spatial/cells.tsv --samples examples/cell-spatial/samples.tsv --features examples/cell-spatial/features.tsv --units micrometer --coordinate-system synthetic-v1 --resolution cell --radius 10.1 --feature-list examples/cell-spatial/selected-features.tsv --permutations 999 --seed 19 --out build/spatial-demo/autocorrelation
+<div class="code-window"><div class="code-bar"><span>shell</span></div><pre><code>java -jar build/cli/jlinalg-0.3.7.jar spatial --method autocorrelation --counts examples/cell-spatial/counts.tsv --cells examples/cell-spatial/cells.tsv --samples examples/cell-spatial/samples.tsv --features examples/cell-spatial/features.tsv --units micrometer --coordinate-system synthetic-v1 --resolution cell --radius 10.1 --feature-list examples/cell-spatial/selected-features.tsv --permutations 999 --seed 19 --out build/spatial-demo/autocorrelation
 </code></pre></div>
 <p>For each section and requested feature, the response is
 <code>log1p(10000*count/library)</code>. Moran's I and Geary's C use symmetric binary graph
@@ -103,8 +103,8 @@ not population-level differential expression or a condition effect. It is not a
 covariate-adjusted spatial process model. Mixed spots may use this pattern test,
 but spot variation also reflects mixtures and technical properties.</p>
 <h2 id="neighborhood-enrichment-and-replicated-comparisons">Neighborhood enrichment and replicated comparisons</h2>
-<div class="code-window"><div class="code-bar"><span>shell</span></div><pre><code>java -jar build/cli/jlinalg-0.3.6.jar spatial --method neighborhoods --counts examples/cell-spatial/counts.tsv --cells examples/cell-spatial/cells.tsv --samples examples/cell-spatial/samples.tsv --features examples/cell-spatial/features.tsv --units micrometer --coordinate-system synthetic-v1 --resolution cell --radius 10.1 --permutations 999 --seed 19 --out build/spatial-demo/neighborhoods
-java -jar build/cli/jlinalg-0.3.6.jar spatial --method compare --counts examples/cell-spatial/counts.tsv --cells examples/cell-spatial/cells.tsv --samples examples/cell-spatial/samples.tsv --features examples/cell-spatial/features.tsv --units micrometer --coordinate-system synthetic-v1 --resolution cell --radius 10.1 --reference control --tested case --out build/spatial-demo/compare
+<div class="code-window"><div class="code-bar"><span>shell</span></div><pre><code>java -jar build/cli/jlinalg-0.3.7.jar spatial --method neighborhoods --counts examples/cell-spatial/counts.tsv --cells examples/cell-spatial/cells.tsv --samples examples/cell-spatial/samples.tsv --features examples/cell-spatial/features.tsv --units micrometer --coordinate-system synthetic-v1 --resolution cell --radius 10.1 --permutations 999 --seed 19 --out build/spatial-demo/neighborhoods
+java -jar build/cli/jlinalg-0.3.7.jar spatial --method compare --counts examples/cell-spatial/counts.tsv --cells examples/cell-spatial/cells.tsv --samples examples/cell-spatial/samples.tsv --features examples/cell-spatial/features.tsv --units micrometer --coordinate-system synthetic-v1 --resolution cell --radius 10.1 --reference control --tested case --out build/spatial-demo/compare
 </code></pre></div>
 <p>Neighborhood tests permute cell-type labels within the same exchangeability
 groups. This preserves observed label counts within each stratum and graph
@@ -137,7 +137,7 @@ implemented. Labels must mean the same thing across samples. Testing the same
 features used to discover a domain is exploratory without independent validation.</p>
 <p>For a prespecified distance to an anatomical structure, provide a nonnegative
 cell-level distance column in the declared physical units:</p>
-<div class="code-window"><div class="code-bar"><span>shell</span></div><pre><code>java -jar build/cli/jlinalg-0.3.6.jar spatial --method gradient --counts examples/cell-spatial/counts.tsv --cells examples/cell-spatial/cells.tsv --samples examples/cell-spatial/samples.tsv --features examples/cell-spatial/features.tsv --units micrometer --coordinate-system synthetic-v1 --resolution cell --distance-column distance --feature-list examples/cell-spatial/selected-features.tsv --reference control --tested case --out build/spatial-demo/gradient
+<div class="code-window"><div class="code-bar"><span>shell</span></div><pre><code>java -jar build/cli/jlinalg-0.3.7.jar spatial --method gradient --counts examples/cell-spatial/counts.tsv --cells examples/cell-spatial/cells.tsv --samples examples/cell-spatial/samples.tsv --features examples/cell-spatial/features.tsv --units micrometer --coordinate-system synthetic-v1 --resolution cell --distance-column distance --feature-list examples/cell-spatial/selected-features.tsv --reference control --tested case --out build/spatial-demo/gradient
 </code></pre></div>
 <p>The command calculates a descriptive linear slope of normalized expression versus
 distance within each biological sample, pooling that sample's sections. It then
