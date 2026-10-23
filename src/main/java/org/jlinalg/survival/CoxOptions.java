@@ -1,5 +1,5 @@
 /* Copyright (C) 2026 JLinAlg contributors
- * SPDX-License-Identifier: GPL-2.0-or-later */
+ * SPDX-License-Identifier: GPL-3.0-or-later */
 package org.jlinalg.survival;
 
 /** Newton and tie-handling controls for Cox models. */

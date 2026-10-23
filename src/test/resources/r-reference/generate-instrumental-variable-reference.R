@@ -1,4 +1,4 @@
-# SPDX-License-Identifier: GPL-2.0-or-later
+# SPDX-License-Identifier: GPL-3.0-or-later
 # Independent base-R reference for individual-level 2SLS. No Java output is
 # consumed. The calculations use structural residuals and the GMM/IV sandwich,
 # not lm(y ~ fitted.endogenous) standard errors.

@@ -1,5 +1,5 @@
 # Copyright (C) 2026 JLinAlg contributors
-# SPDX-License-Identifier: GPL-2.0-or-later
+# SPDX-License-Identifier: GPL-3.0-or-later
 
 args <- commandArgs(trailingOnly = TRUE)
 warmups <- if (length(args) >= 1L) as.integer(args[[1L]]) else 3L

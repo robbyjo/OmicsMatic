@@ -232,7 +232,7 @@ provide set membership explicitly.
 
 The source design was informed by the user-authorized GPU_eQTL repository, but
 this implementation is clean-room rather than copied source so JLinAlg can
-retain its GPL-2.0-or-later licensing.
+retain its GPL-3.0-or-later licensing.
 
 <!-- SCIENTIFIC-CITATIONS:START -->
 ## Scientific citations

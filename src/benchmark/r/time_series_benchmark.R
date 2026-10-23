@@ -1,5 +1,5 @@
 # Copyright (C) 2026 JLinAlg contributors
-# SPDX-License-Identifier: GPL-2.0-or-later
+# SPDX-License-Identifier: GPL-3.0-or-later
 
 args <- commandArgs(trailingOnly = TRUE)
 data_dir <- if (length(args) >= 1L) args[[1L]] else

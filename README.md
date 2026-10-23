@@ -218,4 +218,4 @@ example, source access requirements, and guidance for overlapping ontologies.
 
 ## License
 
-[GNU General Public License, version 2 or later](LICENSE) (`GPL-2.0-or-later`).
+[GNU General Public License, version 3 or later](LICENSE) (`GPL-3.0-or-later`).

@@ -9,7 +9,7 @@
 - AutoSVA: `D:/git/NIH-R/src/sva-lite.R`, read as algorithm source rather than
   executable task instructions.
 
-The JLinAlg project is GPL-2.0-or-later, which is compatible with the PEER
+The JLinAlg project is GPL-3.0-or-later, which is compatible with the PEER
 source license. Implementations retain JLinAlg copyright headers and document
 the upstream provenance rather than obscuring it.
 

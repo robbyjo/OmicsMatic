@@ -1,5 +1,5 @@
 /* Copyright (C) 2026 JLinAlg contributors
- * SPDX-License-Identifier: GPL-2.0-or-later */
+ * SPDX-License-Identifier: GPL-3.0-or-later */
 package org.jlinalg.meta;
 
 /** A constructed study-level effect and its first-order sampling error. */

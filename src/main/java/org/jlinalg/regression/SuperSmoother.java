@@ -1,5 +1,5 @@
 /* Copyright (C) 2026 JLinAlg contributors
- * SPDX-License-Identifier: GPL-2.0-or-later
+ * SPDX-License-Identifier: GPL-3.0-or-later
  * Adapted from R stats/src/ppr.f: SUPSMU, Copyright (C) 1984 Jerome H.
  * Friedman; modifications by B. D. Ripley and R Core, GPL-2.0-or-later.
  * https://svn.r-project.org/R/trunk/src/library/stats/src/ppr.f

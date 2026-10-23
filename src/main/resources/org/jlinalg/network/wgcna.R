@@ -1,4 +1,4 @@
-# Copyright (C) 2026 JLinAlg contributors; SPDX-License-Identifier: GPL-2.0-or-later
+# Copyright (C) 2026 JLinAlg contributors; SPDX-License-Identifier: GPL-3.0-or-later
 settings <- read.delim("settings.tsv", colClasses="character", check.names=FALSE)
 opt <- setNames(settings$value, settings$key)
 if ("r-library" %in% names(opt)) .libPaths(c(opt[["r-library"]], .libPaths()))

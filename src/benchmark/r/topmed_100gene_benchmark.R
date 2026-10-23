@@ -1,5 +1,5 @@
 # Copyright (C) 2026 JLinAlg contributors
-# SPDX-License-Identifier: GPL-2.0-or-later
+# SPDX-License-Identifier: GPL-3.0-or-later
 
 local_reference_library <- file.path(getwd(), ".r-reference-lib")
 if (dir.exists(local_reference_library)) {

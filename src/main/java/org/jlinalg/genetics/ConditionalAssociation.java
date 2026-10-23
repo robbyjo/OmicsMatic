@@ -1,5 +1,5 @@
 /* Copyright (C) 2026 JLinAlg contributors
- * SPDX-License-Identifier: GPL-2.0-or-later */
+ * SPDX-License-Identifier: GPL-3.0-or-later */
 package org.jlinalg.genetics;
 
 /** Marginal association on the allele orientation of the supplied signed LD. */

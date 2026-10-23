@@ -1,5 +1,5 @@
 # Copyright (C) 2026 JLinAlg contributors
-# SPDX-License-Identifier: GPL-2.0-or-later
+# SPDX-License-Identifier: GPL-3.0-or-later
 # Export identical model matrices and benchmark glmmTMB's Salamanders examples.
 suppressPackageStartupMessages(library(glmmTMB))
 data(Salamanders, package = "glmmTMB")
