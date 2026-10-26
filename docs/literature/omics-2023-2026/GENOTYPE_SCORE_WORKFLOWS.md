@@ -48,7 +48,7 @@ parsing, including quoted fields. Unknown/duplicate columns and duplicate IDs fa
 
 In this audit checkout, the validated source executable is under
 `build/literature-review/validated-cli/`. A standard `gradlew.bat executableJar`
-source build writes `build/cli/jlinalg-0.3.7.jar` instead; use that path for a
+source build writes `build/cli/omicsmatic-0.3.7.jar` instead; use that path for a
 new source build. For an appropriately matched real cohort/model, run:
 
 ```powershell

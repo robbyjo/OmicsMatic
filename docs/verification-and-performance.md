@@ -1,6 +1,6 @@
 # Accuracy and performance verification
 
-JLinAlg 0.2.0 checks every shipped component family with automated correctness
+OmicsMatic 0.2.0 checks every shipped component family with automated correctness
 tests and an executable performance route. Independent cross-language
 fixtures are used whenever a directly comparable implementation exists.
 “Performance checked” means that a deterministic benchmark or representative
@@ -46,12 +46,12 @@ source versions are committed. Regeneration scripts live under
 ## Published measured results
 
 The table reports real medians from the linked workload documents on the
-project's Windows 11 Intel Core i9-9900K development host. “JLinAlg” is the
+project's Windows 11 Intel Core i9-9900K development host. “OmicsMatic” is the
 fastest documented production configuration for that row, commonly eight
 outer workers; native/R threads and timed-region exclusions are specified in
 each source document.
 
-| Workload | Reference | Reference time | JLinAlg time | Measured speedup |
+| Workload | Reference | Reference time | OmicsMatic time | Measured speedup |
 | --- | --- | ---: | ---: | ---: |
 | 20-gene OLS scan | R `lm` | 0.040 s | 0.006290 s | 6.36x |
 | 20-gene batch REML | R `lmer` | 0.860 s | 0.211906 s | 4.06x |
@@ -77,7 +77,7 @@ not establish speed for large groups or GRM construction.
 
 These ratios are not interchangeable: some time complete scans, others one
 fit, and each excludes only the preparation described in its source. The
-unusually large GEE ratio reflects large clusters and JLinAlg's structured
+unusually large GEE ratio reflects large clusters and OmicsMatic's structured
 equicorrelation solve rather than a general 3332x promise.
 
 ## Reproduce and interpret

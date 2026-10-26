@@ -1,6 +1,6 @@
 # Rare-variant cohort summaries and meta-analysis
 
-JLinAlg separates participant-level summary generation from the choice of
+OmicsMatic separates participant-level summary generation from the choice of
 association test. `rare-score` exports one cohort's variant scores and their
 covariances. `rare-meta` combines independent cohorts and performs the explicitly
 selected single-variant, burden, SKAT, SKAT-O, ACAT-V, ACAT-O,
@@ -34,7 +34,7 @@ documents the required extensions and the implemented metadata compatibility che
 No test is uniformly most powerful. Choose the primary test, windows/masks, MAF
 threshold, weights, and multiplicity correction before inspecting association
 results. SKAT-O adjusts its internal rho search, not searches across genes,
-overlapping windows, masks, or alternative tests. JLinAlg outputs unadjusted
+overlapping windows, masks, or alternative tests. OmicsMatic outputs unadjusted
 across-feature p-values; apply the chosen multiple-testing procedure downstream.
 
 SKAT and SKAT-O do not define a single signed window effect. They output no beta,
@@ -46,21 +46,21 @@ can cancel opposing effects even when SKAT detects a strong association.
 ## A complete small example
 
 Run from the repository root after `gradlew executableJar`. The executable uses
-the current project version, presently `build/cli/jlinalg-0.3.7.jar`; these commands
+the current project version, presently `build/cli/omicsmatic-0.3.7.jar`; these commands
 are included in v0.3.6 and later. Example
 cohorts have only six synthetic people, so `--maf 0.5` is used to retain variants
 for illustration. This is not a realistic rare-variant power study.
 
 ```shell
-java -jar build/cli/jlinalg-0.3.7.jar rare-score --vcf examples/rare-meta/cohort-a.vcf --pheno examples/rare-meta/cohort-a.tsv --id sample --response trait --genome-build GRCh38 --cov-window 100 --out build/rare-demo/a
-java -jar build/cli/jlinalg-0.3.7.jar rare-score --vcf examples/rare-meta/cohort-b.vcf --pheno examples/rare-meta/cohort-b.tsv --id sample --response trait --genome-build GRCh38 --cov-window 100 --out build/rare-demo/b
+java -jar build/cli/omicsmatic-0.3.7.jar rare-score --vcf examples/rare-meta/cohort-a.vcf --pheno examples/rare-meta/cohort-a.tsv --id sample --response trait --genome-build GRCh38 --cov-window 100 --out build/rare-demo/a
+java -jar build/cli/omicsmatic-0.3.7.jar rare-score --vcf examples/rare-meta/cohort-b.vcf --pheno examples/rare-meta/cohort-b.tsv --id sample --response trait --genome-build GRCh38 --cov-window 100 --out build/rare-demo/b
 
-java -jar build/cli/jlinalg-0.3.7.jar rare-meta --cohorts examples/rare-meta/cohorts.tsv --genome-build GRCh38 --test single --out build/rare-demo/single
-java -jar build/cli/jlinalg-0.3.7.jar rare-meta --cohorts examples/rare-meta/cohorts.tsv --genome-build GRCh38 --groups examples/rare-meta/groups.txt --test burden --weights equal --maf 0.5 --cohort-results --out build/rare-demo/burden
-java -jar build/cli/jlinalg-0.3.7.jar rare-meta --cohorts examples/rare-meta/cohorts.tsv --genome-build GRCh38 --groups examples/rare-meta/groups.txt --test burden --weights mb --maf 0.5 --out build/rare-demo/weighted
-java -jar build/cli/jlinalg-0.3.7.jar rare-meta --cohorts examples/rare-meta/cohorts.tsv --genome-build GRCh38 --groups examples/rare-meta/groups.txt --test skat --weights beta --maf 0.5 --out build/rare-demo/skat
-java -jar build/cli/jlinalg-0.3.7.jar rare-meta --cohorts examples/rare-meta/cohorts.tsv --genome-build GRCh38 --groups examples/rare-meta/groups.txt --test skat-o --weights beta --maf 0.5 --simulations 100000 --seed 1234 --out build/rare-demo/skato
-java -jar build/cli/jlinalg-0.3.7.jar rare-meta --cohorts examples/rare-meta/cohorts.tsv --genome-build GRCh38 --groups examples/rare-meta/groups.txt --test acat-v,acat-o --maf 0.5 --acat-mac-threshold 10 --out build/rare-demo/acat
+java -jar build/cli/omicsmatic-0.3.7.jar rare-meta --cohorts examples/rare-meta/cohorts.tsv --genome-build GRCh38 --test single --out build/rare-demo/single
+java -jar build/cli/omicsmatic-0.3.7.jar rare-meta --cohorts examples/rare-meta/cohorts.tsv --genome-build GRCh38 --groups examples/rare-meta/groups.txt --test burden --weights equal --maf 0.5 --cohort-results --out build/rare-demo/burden
+java -jar build/cli/omicsmatic-0.3.7.jar rare-meta --cohorts examples/rare-meta/cohorts.tsv --genome-build GRCh38 --groups examples/rare-meta/groups.txt --test burden --weights mb --maf 0.5 --out build/rare-demo/weighted
+java -jar build/cli/omicsmatic-0.3.7.jar rare-meta --cohorts examples/rare-meta/cohorts.tsv --genome-build GRCh38 --groups examples/rare-meta/groups.txt --test skat --weights beta --maf 0.5 --out build/rare-demo/skat
+java -jar build/cli/omicsmatic-0.3.7.jar rare-meta --cohorts examples/rare-meta/cohorts.tsv --genome-build GRCh38 --groups examples/rare-meta/groups.txt --test skat-o --weights beta --maf 0.5 --simulations 100000 --seed 1234 --out build/rare-demo/skato
+java -jar build/cli/omicsmatic-0.3.7.jar rare-meta --cohorts examples/rare-meta/cohorts.tsv --genome-build GRCh38 --groups examples/rare-meta/groups.txt --test acat-v,acat-o --maf 0.5 --acat-mac-threshold 10 --out build/rare-demo/acat
 ```
 
 Each selected test creates `PREFIX.TEST.tsv`; `PREFIX.qc.tsv` records group coverage and exclusions. `PREFIX.log` records settings,
@@ -86,7 +86,7 @@ performs single-variant, equal-weight burden, weighted burden, SKAT, and SKAT-O
 meta-analysis using primitive arrays. With a JDK and the source-built JAR:
 
 ```shell
-java --class-path build/cli/jlinalg-0.3.7.jar examples/rare-meta/RareMetaExample.java
+java --class-path build/cli/omicsmatic-0.3.7.jar examples/rare-meta/RareMetaExample.java
 ```
 
 Its two synthetic independent cohorts have scores for the same two variants.
@@ -158,7 +158,7 @@ Its program header identifies `JLinAlg (RareMetalWorker-compatible)` because
 RAREMETAL 4.15.1 detects the column layout from that substring. Covariances are
 divided by `AnalyzedSamples` on disk, as required by RMW/rvtests format, and are
 multiplied back on import. Diagonal covariance is checked against `SQRT_V_STAT^2`.
-The reader also accepts a `##CovarianceScale=score` header for JLinAlg-only,
+The reader also accepts a `##CovarianceScale=score` header for OmicsMatic-only,
 unscaled covariance files; do not send that extension directly to RAREMETAL.
 
 `rare-score` now writes version-1 quantitative model metadata into both files.
@@ -268,10 +268,10 @@ After generating the two cohort files in the complete example, these commands
 run directly from the repository root. Use a fresh output prefix on each run.
 
 ```shell
-java -jar build/cli/jlinalg-0.3.7.jar rare-meta --cohorts examples/rare-meta/cohorts.tsv --genome-build GRCh38 --groups examples/rare-meta/groups.txt --test burden,skat,skat-o,acat-v,acat-o,vt,het-skat,het-skat-o,burden-fixed,burden-random --weights equal --maf 0.5 --simulations 100000 --cohort-results --leave-variant-out --leave-cohort-out --threads 2 --cache-mb 16 --out build/rare-demo/advanced
-java -jar build/cli/jlinalg-0.3.7.jar rare-meta --cohorts examples/rare-meta/cohorts.tsv --genome-build GRCh38 --groups examples/rare-meta/conditional-groups.txt --condition examples/rare-meta/conditions.txt --test burden,skat-o --weights equal --maf 0.5 --skato-calibration deterministic --out build/rare-demo/conditional
-java -jar build/cli/jlinalg-0.3.7.jar rare-meta --cohorts examples/rare-meta/cohorts.tsv --genome-build GRCh38 --groups examples/rare-meta/groups.txt --test skat-o --weights equal --maf 0.5 --skato-calibration deterministic --out build/rare-demo/deterministic
-java --class-path build/cli/jlinalg-0.3.7.jar examples/rare-meta/AdvancedRareMetaExample.java
+java -jar build/cli/omicsmatic-0.3.7.jar rare-meta --cohorts examples/rare-meta/cohorts.tsv --genome-build GRCh38 --groups examples/rare-meta/groups.txt --test burden,skat,skat-o,acat-v,acat-o,vt,het-skat,het-skat-o,burden-fixed,burden-random --weights equal --maf 0.5 --simulations 100000 --cohort-results --leave-variant-out --leave-cohort-out --threads 2 --cache-mb 16 --out build/rare-demo/advanced
+java -jar build/cli/omicsmatic-0.3.7.jar rare-meta --cohorts examples/rare-meta/cohorts.tsv --genome-build GRCh38 --groups examples/rare-meta/conditional-groups.txt --condition examples/rare-meta/conditions.txt --test burden,skat-o --weights equal --maf 0.5 --skato-calibration deterministic --out build/rare-demo/conditional
+java -jar build/cli/omicsmatic-0.3.7.jar rare-meta --cohorts examples/rare-meta/cohorts.tsv --genome-build GRCh38 --groups examples/rare-meta/groups.txt --test skat-o --weights equal --maf 0.5 --skato-calibration deterministic --out build/rare-demo/deterministic
+java --class-path build/cli/omicsmatic-0.3.7.jar examples/rare-meta/AdvancedRareMetaExample.java
 ```
 
 The [Java example](../examples/rare-meta/AdvancedRareMetaExample.java) demonstrates
@@ -366,7 +366,7 @@ exact finite-sample calibration for sparse or non-Gaussian phenotypes.
 ### Related-sample export, QC, and memory
 
 ```shell
-java -jar build/cli/jlinalg-0.3.7.jar rare-score --vcf examples/rare-meta/cohort-a.vcf --pheno examples/rare-meta/cohort-a.tsv --id sample --response trait --genome-build GRCh38 --grm examples/rare-meta/cohort-a.grm.tsv --cov-window 100 --out build/rare-demo/a-related
+java -jar build/cli/omicsmatic-0.3.7.jar rare-score --vcf examples/rare-meta/cohort-a.vcf --pheno examples/rare-meta/cohort-a.tsv --id sample --response trait --genome-build GRCh38 --grm examples/rare-meta/cohort-a.grm.tsv --cov-window 100 --out build/rare-demo/a-related
 ```
 
 `--grm` accepts a labeled dense matrix or GCTA binary prefix, as described in
@@ -406,7 +406,7 @@ recommended; unindexed files are rescanned on cache misses.
 <!-- SCIENTIFIC-CITATIONS:START -->
 ## Scientific citations
 
-These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as JLinAlg when reporting results.
+These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as OmicsMatic when reporting results.
 
 - [B. E. Madsen and S. R. Browning (2009) — A groupwise association test for rare mutations using a weighted sum statistic](CITATIONS.md#madsen-browning-2009) — [PMID: 19214210](https://pubmed.ncbi.nlm.nih.gov/19214210/) · [PMCID: PMC2633048](https://pmc.ncbi.nlm.nih.gov/articles/PMC2633048/)
 - [Michael C. Wu et al. (2011) — Rare-variant association testing for sequencing data with the sequence kernel association test](CITATIONS.md#wu-skat-2011) — [PMID: 21737059](https://pubmed.ncbi.nlm.nih.gov/21737059/) · [PMCID: PMC3135811](https://pmc.ncbi.nlm.nih.gov/articles/PMC3135811/)

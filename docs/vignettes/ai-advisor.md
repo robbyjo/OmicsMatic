@@ -1,7 +1,7 @@
 # Mode 2: AI as a scientific advisor
 
-JLinAlg v0.3.7 offers opt-in AI collaboration for bounded next-step advice,
-literature review and explicitly enabled first manuscript drafts. JLinAlg
+OmicsMatic v0.3.7 offers opt-in AI collaboration for bounded next-step advice,
+literature review and explicitly enabled first manuscript drafts. OmicsMatic
 constructs the evidence preview, runs the statistics and records provenance.
 The model proposes interpretations and follow-up; its answer is not a numerical
 result or approval to change the study.
@@ -12,7 +12,7 @@ Start at the repository root with a new copy of the synthetic result-first study
 
 ~~~powershell
 .\gradlew.bat executableJar
-$jar = (Resolve-Path "build/cli/jlinalg-0.3.7.jar").Path
+$jar = (Resolve-Path "build/cli/omicsmatic-0.3.7.jar").Path
 $project = Join-Path (Get-Location) "build/ai-advisor"
 if (Test-Path $project) { throw "Choose a fresh project directory." }
 Copy-Item examples/study-pipeline $project -Recurse
@@ -118,7 +118,7 @@ Compare [no AI](ai-no-ai.md) and [AI as an external driver](ai-driver.md).
 <!-- SCIENTIFIC-CITATIONS:START -->
 ## Scientific citations
 
-These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as JLinAlg when reporting results.
+These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as OmicsMatic when reporting results.
 
 - [Geir Kjetil Sandve et al. (2013) — Ten Simple Rules for Reproducible Computational Research](../CITATIONS.md#sandve-reproducibility-2013)
 - [W3C Provenance Working Group (2013) — PROV-O: The PROV Ontology](../CITATIONS.md#w3c-prov-o-2013)

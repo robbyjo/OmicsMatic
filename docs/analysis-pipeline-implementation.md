@@ -1262,7 +1262,7 @@ all declared seeds, exit state and acceptance bounds are checked. Valid sealed
 batches can be reused from an incomplete prior operation. This is an adapter
 contract, not bundled AlphaFold inference or authenticated weights. The program's
 network intent and storage limits are recorded; OS isolation/resource quotas are
-not enforced by JLinAlg. New AlphaFold inference and broader structure/complex
+not enforced by OmicsMatic. New AlphaFold inference and broader structure/complex
 scientific validation remain unverified.
 
 The [protein tutorial](vignettes/study-pipeline-tutorial.md#exact-protein-sequences-structures-and-confidence)
@@ -1772,7 +1772,7 @@ is 30 and resolved default-policy version is 21.
 
 Seven independent reference fixtures enumerate individual outcome assignments
 with rational offset weights and stratum convolution. They contain 37 support
-masses and do not use JLinAlg or asymptotic tests as truth. The core also checks
+masses and do not use OmicsMatic or asymptotic tests as truth. The core also checks
 a binary Fisher reference, allele/outcome recoding, underflow-safe natural log
 P, numerical normalization failure and resource limits. The focused suite
 passed **40 tests**. The frozen full `check executableJar --no-daemon
@@ -2062,7 +2062,7 @@ failures/errors and 41 optional skips, in 9m24s. Its source snapshot is
 `build/binary-rare-source-20261024-r2/`; the seven conditional numerical, nine
 binary study and fourteen existing rare-set tests all passed. The archive
 passes CRC checks, contains no generated Python bytecode/cache entries, and
-its JLinAlg class bytes match the frozen tested classes. The packaged sampler
+its OmicsMatic class bytes match the frozen tested classes. The packaged sampler
 also reproduces the frozen raw-score inputs used by the independent sampled
 statistic/tail/interval oracle.
 
@@ -2919,7 +2919,7 @@ cannot borrow cohort P values or allele counts. Conflicts hold affected plots.
 Plot thinning and y limits do not truncate the numerical result tables.
 
 Typed supplied diagnostics retain the source summary and attribution; they are
-not marked as JLinAlg-executed inference. Primary and sensitivity contexts enter
+not marked as OmicsMatic-executed inference. Primary and sensitivity contexts enter
 the finding dossiers with fixed scientific caveats. Neither these diagnostics
 nor a lower lambda replace primary association statistics, exclude variants or
 promote another cohort set. Original private source prose stays in local records.

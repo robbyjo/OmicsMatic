@@ -39,7 +39,7 @@ description = (
 )
 page = f'''<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="{escape(description)}"><title>{escape(title)} · JLinAlg</title>
+<meta name="description" content="{escape(description)}"><title>{escape(title)} · OmicsMatic</title>
 <link rel="stylesheet" href="../assets/styles.css"><script src="../assets/app.js" defer></script>
 <style>.pipeline-spec .result-table table {{min-width: 580px; table-layout: fixed;}} .pipeline-spec .result-table th, .pipeline-spec .result-table td {{white-space: normal; overflow-wrap: anywhere;}}</style></head>
 <body><site-header root="../"></site-header><main id="main">
@@ -87,7 +87,7 @@ if status_source.is_file():
     for table in status_soup.find_all("table"):
         table.wrap(status_soup.new_tag("div", attrs={"class": "result-table"}))
     status_page = f'''<!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{escape(status_title)} · JLinAlg</title>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{escape(status_title)} · OmicsMatic</title>
 <link rel="stylesheet" href="assets/styles.css"><script src="assets/app.js" defer></script><style>.pipeline-spec .result-table th,.pipeline-spec .result-table td {{white-space:normal;overflow-wrap:anywhere;}}</style></head>
 <body><site-header root=""></site-header><main id="main"><section class="page-hero"><div class="container"><h1>{escape(status_title)}</h1><p>Requirement-by-requirement implementation and verification status.</p></div></section>
 <div class="container"><article class="prose pipeline-spec">{status_soup}</article></div></main><site-footer root=""></site-footer></body></html>'''

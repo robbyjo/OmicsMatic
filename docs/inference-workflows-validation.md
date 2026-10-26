@@ -30,7 +30,7 @@ and DESeq2 1.52.0. No cohort or downloaded analysis data are included.
 
 The local reference run emitted DESeq2's documented fallback from a parametric
 to a local dispersion trend for this small synthetic matrix. That behavior is
-part of the frozen comparator, not silently repaired in JLinAlg.
+part of the frozen comparator, not silently repaired in OmicsMatic.
 
 ## Reproduce
 
@@ -108,7 +108,7 @@ reproduction details and remaining inferential limits.
 <!-- SCIENTIFIC-CITATIONS:START -->
 ## Scientific citations
 
-These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as JLinAlg when reporting results.
+These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as OmicsMatic when reporting results.
 
 - [Gordon K. Smyth (2004) — Linear models and empirical Bayes methods for assessing differential expression in microarray experiments](CITATIONS.md#smyth-limma-2004) — [PMID: 16646809](https://pubmed.ncbi.nlm.nih.gov/16646809/)
 - [Charity W. Law, Yunshun Chen, Wei Shi, and Gordon K. Smyth (2014) — voom: precision weights unlock linear model analysis tools for RNA-seq read counts](CITATIONS.md#law-voom-2014) — [PMID: 24485249](https://pubmed.ncbi.nlm.nih.gov/24485249/) · [PMCID: PMC4053721](https://pmc.ncbi.nlm.nih.gov/articles/PMC4053721/)

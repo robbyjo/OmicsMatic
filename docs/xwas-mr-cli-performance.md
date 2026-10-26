@@ -98,8 +98,8 @@ workload-dependent number of follow-up hits.
 | Runtime | Threads | Median seconds | Pairs/second | Speedup vs R |
 | --- | ---: | ---: | ---: | ---: |
 | R base nested reference | 1 | 0.310000 | 145,161 | 1.00x |
-| JLinAlg | 1 | 0.140896 | 319,385 | 2.20x |
-| JLinAlg | 8 | 0.052365 | 859,353 | 5.92x |
+| OmicsMatic | 1 | 0.140896 | 319,385 | 2.20x |
+| OmicsMatic | 8 | 0.052365 | 859,353 | 5.92x |
 
 The eight-thread median includes one slower first measured iteration; no
 measurements were discarded. Raw timing CSV files are written under
@@ -123,13 +123,13 @@ Maximum absolute differences were:
 
 These differences are floating-point roundoff. The R reference implements the
 same zero-intercept inverse-outcome-variance regression and multiplicative
-dispersion `max(1, Q/(J-1))` used by JLinAlg. This is also the statistical
+dispersion `max(1, Q/(J-1))` used by OmicsMatic. This is also the statistical
 contract of the default multiplicative-random IVW method documented by
 [TwoSampleMR](https://github.com/MRCIEU/TwoSampleMR/blob/master/man/mr_ivw.Rd).
 
 ### Commands
 
-Single-thread JLinAlg:
+Single-thread OmicsMatic:
 
 ```powershell
 .\gradlew.bat benchmarkXwasMr --no-daemon `
@@ -137,7 +137,7 @@ Single-thread JLinAlg:
   '-Djlinalg.benchmark.output=build/benchmarks/xwas-mr/jlinalg-t1'
 ```
 
-Eight-thread JLinAlg:
+Eight-thread OmicsMatic:
 
 ```powershell
 .\gradlew.bat benchmarkXwasMr --no-daemon `

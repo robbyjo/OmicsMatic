@@ -130,7 +130,7 @@ double[] centerModes = mixed.randomEffects("center").modes();
 Several independent or precision-defined Gaussian terms may be supplied. The
 conditional modes use penalized partial likelihood. Variances are profiled by
 a Laplace approximation that integrates the Gaussian frailties; this is not
-REML. `fixef()` and `ranef()` aliases follow the rest of JLinAlg's mixed-model
+REML. `fixef()` and `ranef()` aliases follow the rest of OmicsMatic's mixed-model
 surface.
 
 ## Adjust for cryptic relatedness
@@ -262,7 +262,7 @@ the [audit evidence](../../src/benchmark/resources/remaining-model-audit-benchma
 <!-- SCIENTIFIC-CITATIONS:START -->
 ## Scientific citations
 
-These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as JLinAlg when reporting results.
+These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as OmicsMatic when reporting results.
 
 - [D. R. Cox (1972) — Regression models and life-tables](../CITATIONS.md#cox-1972)
 - [Bradley Efron (1977) — The efficiency of Cox's likelihood function for censored data](../CITATIONS.md#efron-1977)

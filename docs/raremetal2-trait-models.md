@@ -36,7 +36,7 @@ reader. The presence of four or six fields alone is therefore insufficient to
 identify RMW versus rvtests versus Raremetal2 encoding. These are source-level
 observations, not a successful native producer/consumer interoperability test.
 
-JLinAlg now checks declared covariance column names before reading a matrix.
+OmicsMatic now checks declared covariance column names before reading a matrix.
 It accepts the old RMW layout and rvtests
 `CHROM START_POS END_POS NUM_MARKER MARKER_POS COV`. Declared `EXP`, allele-aware,
 and unknown layouts fail with a dedicated-decoder diagnostic, including when

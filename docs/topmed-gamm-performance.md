@@ -19,11 +19,11 @@ inbreeding coefficients (maximum 0), so the memory-safe sparse benchmark's
 zero-inbreeding Henderson precision is exact for this pedigree.
 
 R batch GAMM used `mgcv::gam`, `bs="ps"`, `k=10`,
-`m=2`, `s(Batch,bs="re")`, and REML. JLinAlg used
+`m=2`, `s(Batch,bs="re")`, and REML. OmicsMatic used
 `PreparedGammPredictorScan`, sparse coefficient-space REML, CHOLMOD, and
 oneMKL. Data loading, structure preparation, and one warm-up fit were excluded.
 Each result is the median of three complete scans. Native math threads were
-fixed at one; JLinAlg workers parallelize across genes.
+fixed at one; OmicsMatic workers parallelize across genes.
 
 The machine was an Intel Core i9-9900K (8 cores, 16 logical processors), Java
 25, R 4.6.1, mgcv 1.9-4, and pedigreemm 0.3-5.
@@ -33,15 +33,15 @@ The machine was an Intel Core i9-9900K (8 cores, 16 logical processors), Java
 | Runtime | Workers | Median seconds | Genes/second | Speed vs R |
 |---|---:|---:|---:|---:|
 | R / mgcv | 1 | 21.940 | 4.56 | 1.00x |
-| JLinAlg / preferred | 1 | 1.624 | 61.57 | 13.51x |
-| JLinAlg / preferred | 8 | 0.559 | 178.86 | 39.24x |
+| OmicsMatic / preferred | 1 | 1.624 | 61.57 | 13.51x |
+| OmicsMatic / preferred | 8 | 0.559 | 178.86 | 39.24x |
 
-Eight JLinAlg workers delivered a 2.90x speedup over one worker. All 100 fits
+Eight OmicsMatic workers delivered a 2.90x speedup over one worker. All 100 fits
 converged. Single-worker and eight-worker result CSVs were bit-for-bit
 identical across smooth EDF, smoothing parameter, likelihood, fitted checksum,
 RSS, and every variance component.
 
-JLinAlg and mgcv use slightly different P-spline knot placement, penalty
+OmicsMatic and mgcv use slightly different P-spline knot placement, penalty
 scaling, and restricted-likelihood constants. Fitted-scale agreement across
 the 100 genes was:
 
@@ -57,8 +57,8 @@ genes per measurement. Those genes were retained in both runtimes.
 
 | Runtime | Workers | Median seconds | Genes/second | Worker speedup |
 |---|---:|---:|---:|---:|
-| JLinAlg / preferred | 1 | 86.089 | 1.16 | 1.00x |
-| JLinAlg / preferred | 8 | 23.662 | 4.23 | 3.64x |
+| OmicsMatic / preferred | 1 | 86.089 | 1.16 | 1.00x |
+| OmicsMatic / preferred | 8 | 23.662 | 4.23 | 3.64x |
 
 All 100 fits converged in every measurement. The single-worker and
 eight-worker per-gene outputs were bit-for-bit identical for every reported

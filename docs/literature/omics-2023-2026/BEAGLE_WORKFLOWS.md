@@ -16,7 +16,7 @@ suitability, posterior calibration or an entire published workflow.
 
 ## Setup and first run
 
-Use Java 17 or newer for JLinAlg. The four admitted original Beagle JARs require
+Use Java 17 or newer for OmicsMatic. The four admitted original Beagle JARs require
 Java 8 or newer; actual development checks use Java 21 and 25. The original GPL
 software is installed privately from the official HTTPS archives. No upstream
 executable, real reference panel or patient data is redistributed.
@@ -36,7 +36,7 @@ use a new private path instead of resealing changed binaries. Hashes are locally
 recorded pins from official downloads, not publisher signatures.
 
 Analysis never installs software. Supply `--home` or `JLINALG_BEAGLE_HOME`.
-`--java` selects the upstream JVM; it defaults to the JVM running JLinAlg. If
+`--java` selects the upstream JVM; it defaults to the JVM running OmicsMatic. If
 installation or downloads are forbidden, skip the dependent analysis until a
 permitted, matching runtime is supplied. The installer and analysis report the
 reason and exact required action in `WARNINGS.md`.

@@ -12,7 +12,7 @@ import java.util.Locale;
 /** Commands for discovering and installing LD reference databases. */
 final class LdDatabaseCli {
     private static final String DOWNLOAD_COMMAND =
-        "java -jar jlinalg-<version>.jar ld-db download "
+        "java -jar omicsmatic-<version>.jar ld-db download "
         + "--database 1000g-phase3 [--location DIRECTORY]";
     private static final String GRCH38_NOTE = "1000g-30x-grch38  1000 Genomes 30x high-coverage phased regional VCF; GRCh38; "
         + "indexed HTTPS retrieval during configured MR (not a whole-database ld-db download)";

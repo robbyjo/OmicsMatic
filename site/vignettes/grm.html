@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Build and interpret a genomic relationship matrix with JLinAlg: worked dosage and VCF examples, filtering, Java API, and mixed-model reuse."><title>GRM construction tutorial · JLinAlg</title><link rel="stylesheet" href="../assets/styles.css"><script src="../assets/app.js" defer></script></head>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Build and interpret a genomic relationship matrix with OmicsMatic: worked dosage and VCF examples, filtering, Java API, and mixed-model reuse."><title>GRM construction tutorial · OmicsMatic</title><link rel="stylesheet" href="../assets/styles.css"><script src="../assets/app.js" defer></script></head>
 <body><site-header root="../"></site-header><main id="main">
 <section class="page-hero"><div class="container"><div class="breadcrumbs"><a href="../index.html">Home</a><span>/</span><a href="index.html">Vignettes</a><span>/</span><span>GRM construction</span></div><h1>Build a genomic relationship matrix.</h1><p>Follow a small genotype table through filtering, standardization, labeled output, and mixed-model analysis. Use the CLI or the streaming Java API.</p></div></section>
 <div class="container page-layout"><article class="prose">
@@ -10,9 +10,9 @@
 <p>Use JDK 17 or newer. Run commands from the repository root; the first build needs network access for verified dependencies.</p>
 <div class="code-window"><div class="code-bar"><span>Linux / macOS</span></div><pre><code>./gradlew executableJar</code></pre></div>
 <div class="code-window"><div class="code-bar"><span>Windows PowerShell</span></div><pre><code>.\gradlew.bat executableJar</code></pre></div>
-<p>The executable is <code>build/cli/jlinalg-0.3.7.jar</code>. CPU use requires no accelerator runtime.</p>
+<p>The executable is <code>build/cli/omicsmatic-0.3.7.jar</code>. CPU use requires no accelerator runtime.</p>
 <h2 id="input">2. Inspect the dosage table</h2>
-<p>The supplied <a href="https://github.com/robbyjo/JLinAlg/blob/main/examples/grm/dosages.tsv">examples/grm/dosages.tsv</a> has variants in rows and samples in columns. Values count alternate alleles; <code>NA</code> is missing, not a reference call.</p>
+<p>The supplied <a href="https://github.com/robbyjo/OmicsMatic/blob/main/examples/grm/dosages.tsv">examples/grm/dosages.tsv</a> has variants in rows and samples in columns. Values count alternate alleles; <code>NA</code> is missing, not a reference call.</p>
 <div class="result-table"><table><thead><tr><th>Variant</th><th>a</th><th>b</th><th>c</th><th>d</th></tr></thead><tbody>
 <tr><td>v1</td><td>0</td><td>1</td><td>2</td><td>NA</td></tr>
 <tr><td>v2</td><td>0</td><td>0</td><td>1</td><td>1</td></tr>
@@ -22,7 +22,7 @@
 </tbody></table></div>
 <h2 id="construct">3. Construct and inspect the GRM</h2>
 <p>This teaching example deliberately permits a call rate of 0.5 and MAF of zero to illustrate a retained missing call. These are not proposed production QC thresholds. Choose a fresh output path for every run.</p>
-<div class="code-window"><div class="code-bar"><span>Construct from dosage TSV</span></div><pre><code>java -jar build/cli/jlinalg-0.3.7.jar grm --genotypes examples/grm/dosages.tsv --maf 0 --call-rate 0.5 --block-size 2 --backend cpu --out build/grm-tutorial/toy.tsv</code></pre></div>
+<div class="code-window"><div class="code-bar"><span>Construct from dosage TSV</span></div><pre><code>java -jar build/cli/omicsmatic-0.3.7.jar grm --genotypes examples/grm/dosages.tsv --maf 0 --call-rate 0.5 --block-size 2 --backend cpu --out build/grm-tutorial/toy.tsv</code></pre></div>
 <p><code>toy.tsv.log</code> reports <strong>5 considered, 3 used, 2 excluded</strong>. The monomorphic variant has no allele variance; the low-call-rate variant has only one of four samples called. At v1, the called mean dosage is 1, so sample d is imputed to 1 and contributes a standardized dosage of zero.</p>
 <p>The labeled output matrix, rounded here to six decimals:</p>
 <div class="result-table"><table><thead><tr><th>Sample</th><th>a</th><th>b</th><th>c</th><th>d</th></tr></thead><tbody>
@@ -36,17 +36,17 @@
 <p><code>K(a,b)=4/9</code>; the corresponding kinship coefficient is half that, <code>2/9</code>. Negative off-diagonal values can arise from centering and should not be clipped to zero. Diagonals need not equal one. This tiny example cannot establish pedigree categories or population relatedness cutoffs.</p>
 <p>Rows sum to zero because each dosage column was centered on these samples. Singularity of this constructed matrix is expected; a mixed model also includes its residual covariance component. External tools using pairwise-observed denominators or other normalization need not give the same matrix.</p>
 <h2 id="filters">4. Compare filtering choices</h2>
-<div class="code-window"><div class="code-bar"><span>Require 95% called samples</span></div><pre><code>java -jar build/cli/jlinalg-0.3.7.jar grm --genotypes examples/grm/dosages.tsv --maf 0 --call-rate 0.95 --block-size 2 --backend cpu --out build/grm-tutorial/strict.tsv</code></pre></div>
+<div class="code-window"><div class="code-bar"><span>Require 95% called samples</span></div><pre><code>java -jar build/cli/omicsmatic-0.3.7.jar grm --genotypes examples/grm/dosages.tsv --maf 0 --call-rate 0.95 --block-size 2 --backend cpu --out build/grm-tutorial/strict.tsv</code></pre></div>
 <p>Now v1 is excluded too: <strong>2 variants remain</strong>. The first diagonal and <code>K(a,b)</code> both become <code>2/3</code>. Changing filters changes the marker set and therefore the estimator. Changing only <code>--block-size</code> preserves the estimator up to floating-point summation differences.</p>
 <h2 id="model">5. Build from VCF and fit a mixed model</h2>
 <p>A second checked-in fixture provides six samples, a VCF, and aligned phenotype IDs:</p>
-<div class="code-window"><div class="code-bar"><span>Genotypes → GRM → Gaussian mixed model</span></div><pre><code>java -jar build/cli/jlinalg-0.3.7.jar grm --genotypes examples/rare-meta/cohort-a.vcf --maf 0.01 --call-rate 0.95 --block-size 256 --backend cpu --out build/grm-demo/cohort.tsv
-java -jar build/cli/jlinalg-0.3.7.jar --pheno examples/rare-meta/cohort-a.tsv --id sample --formula "trait ~ 1" --grm build/grm-demo/cohort.tsv --backend cpu --out build/grm-demo/model.tsv</code></pre></div>
+<div class="code-window"><div class="code-bar"><span>Genotypes → GRM → Gaussian mixed model</span></div><pre><code>java -jar build/cli/omicsmatic-0.3.7.jar grm --genotypes examples/rare-meta/cohort-a.vcf --maf 0.01 --call-rate 0.95 --block-size 256 --backend cpu --out build/grm-demo/cohort.tsv
+java -jar build/cli/omicsmatic-0.3.7.jar --pheno examples/rare-meta/cohort-a.tsv --id sample --formula "trait ~ 1" --grm build/grm-demo/cohort.tsv --backend cpu --out build/grm-demo/model.tsv</code></pre></div>
 <p>The <code>grm</code> subcommand creates the matrix; the <code>--grm</code> analysis option consumes it. The example tests file interoperability, not meaningful relatedness estimation. For real data, prespecify quality-controlled, LD-pruned diploid variants and sample selection. The command does not automatically prune LD, adjust ancestry, or construct leave-one-chromosome-out matrices.</p>
 <p>Rows and columns retain source sample IDs. The analysis aligns phenotype IDs to them. For repeated observations, use <code>--individual-id COLUMN</code> to name the phenotype column containing the GRM individual ID. See <a href="command-line.html#grm">GRM-adjusted scans</a> and <a href="mixed-models.html">mixed-model inference</a>.</p>
 <h2 id="java">Java vignette</h2>
-<p>The complete <a href="https://github.com/robbyjo/JLinAlg/blob/main/examples/grm/GrmExample.java">GrmExample.java</a> reproduces the four-sample matrix and prints counts, relationships, and kinship.</p>
-<div class="code-window"><div class="code-bar"><span>Run with a JDK</span></div><pre><code>java --class-path build/cli/jlinalg-0.3.7.jar examples/grm/GrmExample.java</code></pre></div>
+<p>The complete <a href="https://github.com/robbyjo/OmicsMatic/blob/main/examples/grm/GrmExample.java">GrmExample.java</a> reproduces the four-sample matrix and prints counts, relationships, and kinship.</p>
+<div class="code-window"><div class="code-bar"><span>Run with a JDK</span></div><pre><code>java --class-path build/cli/omicsmatic-0.3.7.jar examples/grm/GrmExample.java</code></pre></div>
 <div class="code-window"><div class="code-bar"><span>Streaming Java API</span></div><pre><code>var source = VariantSources.open(Path.of("examples/grm/dosages.tsv"));
 var grm = GenomicRelationshipMatrix.fromSource(source,
     new GenomicRelationshipOptions(0, 0.5), BackendPolicy.CPU, 2);
@@ -77,7 +77,7 @@ var component = grm.varianceComponent("genetic");</code></pre></div>
 <tr><td>Heap or array limit</td><td>Dense sample-matrix requirements, not just genotype block size.</td></tr>
 <tr><td>External matrix differs</td><td>Sample/marker sets, frequencies, imputation, denominator, and ploidy.</td></tr>
 </tbody></table></div>
-<p>Record sample/marker selection, LD pruning, filtering, normalization, missingness, and the run log with the analysis. The toy matrix is checked against analytic fractions; the VCF-to-mixed-model path has regression coverage. See <a href="../verification.html">numerical validation</a> and the <a href="https://github.com/robbyjo/JLinAlg/blob/main/docs/grm-cli.md">complete source guide</a>. This example does not establish a GRM speedup.</p>
+<p>Record sample/marker selection, LD pruning, filtering, normalization, missingness, and the run log with the analysis. The toy matrix is checked against analytic fractions; the VCF-to-mixed-model path has regression coverage. See <a href="../verification.html">numerical validation</a> and the <a href="https://github.com/robbyjo/OmicsMatic/blob/main/docs/grm-cli.md">complete source guide</a>. This example does not establish a GRM speedup.</p>
 <div class="next-links"><a href="association.html"><small>Related workflow</small><strong>Association scans</strong></a><a href="mixed-models.html"><small>Next step</small><strong>Fit a mixed model →</strong></a></div>
 </article><aside class="toc"><strong>On this page</strong><a href="#purpose">What a GRM represents</a><a href="#build">1. Build</a><a href="#input">2. Inspect genotypes</a><a href="#construct">3. Construct and interpret</a><a href="#filters">4. Compare filters</a><a href="#model">5. Use in a model</a><a href="#java">Java vignette</a><a href="#options">Options and memory</a><a href="#checks">Checks and troubleshooting</a></aside></div>
 
@@ -86,7 +86,7 @@ var component = grm.varianceComponent("genetic");</code></pre></div>
   <div class="container narrow">
     <span class="eyebrow">Scientific foundations</span>
     <h2 id="scientific-citations-grm">Primary method citations</h2>
-    <p>Cite the relevant method publication as well as JLinAlg when reporting results from this workflow.</p>
+    <p>Cite the relevant method publication as well as OmicsMatic when reporting results from this workflow.</p>
     <ul class="citation-links">
       <li><a href="../citations.html#vanraden-2008">VanRaden (2008) — genomic relationship matrix</a> <span class="citation-inline-identifiers">(<a href="https://pubmed.ncbi.nlm.nih.gov/18946147/">PMID: 18946147</a>)</span></li><li><a href="../citations.html#yang-gcta-2011">Yang et al. (2011) — GRM</a> <span class="citation-inline-identifiers">(<a href="https://pubmed.ncbi.nlm.nih.gov/21167468/">PMID: 21167468</a> · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3014363/">PMCID: PMC3014363</a>)</span></li>
     </ul>

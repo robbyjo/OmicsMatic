@@ -6,7 +6,7 @@
 > configuration fields, and schemas are proposals, not current CLI contracts.
 > No published-release or remote LLM execution claim is made here.
 
-JLinAlg should resolve what it can from evidence, ask the scientist only for
+OmicsMatic should resolve what it can from evidence, ask the scientist only for
 decisions or knowledge it cannot safely obtain, and keep independent work moving.
 Built-in rules and an optional LLM can propose questions; the same deterministic
 validation, permission, amendment, and provenance rules govern both. An answer
@@ -260,7 +260,7 @@ it does not grant permission or erase the blocker.
 
 Use YAML/JSON records with a version independent of `study.yaml`. The user
 normally sees a short question card and edits an exported answer template;
-JLinAlg generates identifiers, hashes, scope, and provenance.
+OmicsMatic generates identifiers, hashes, scope, and provenance.
 
 ### Question record
 
@@ -778,7 +778,7 @@ semantics. The proposed first tranche above is the recommended starting scope.
 <!-- SCIENTIFIC-CITATIONS:START -->
 ## Scientific citations
 
-These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as JLinAlg when reporting results.
+These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as OmicsMatic when reporting results.
 
 - [Geir Kjetil Sandve et al. (2013) — Ten Simple Rules for Reproducible Computational Research](../CITATIONS.md#sandve-reproducibility-2013)
 - [W3C Provenance Working Group (2013) — PROV-O: The PROV Ontology](../CITATIONS.md#w3c-prov-o-2013)

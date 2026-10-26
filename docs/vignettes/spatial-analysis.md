@@ -37,7 +37,7 @@ a short straight edge.
 ## Build graphs and inspect tissue maps
 
 ```shell
-java -jar build/cli/jlinalg-0.3.7.jar spatial --method graph --counts examples/cell-spatial/counts.tsv --cells examples/cell-spatial/cells.tsv --samples examples/cell-spatial/samples.tsv --features examples/cell-spatial/features.tsv --units micrometer --coordinate-system synthetic-v1 --resolution cell --graph radius --radius 10.1 --out build/spatial-demo/graph
+java -jar build/cli/omicsmatic-0.3.7.jar spatial --method graph --counts examples/cell-spatial/counts.tsv --cells examples/cell-spatial/cells.tsv --samples examples/cell-spatial/samples.tsv --features examples/cell-spatial/features.tsv --units micrometer --coordinate-system synthetic-v1 --resolution cell --graph radius --radius 10.1 --out build/spatial-demo/graph
 ```
 
 Radius edges connect observations at Euclidean distance <= the radius within the
@@ -62,7 +62,7 @@ compartment annotations before interpreting a graph.
 ## Spatially variable features
 
 ```shell
-java -jar build/cli/jlinalg-0.3.7.jar spatial --method autocorrelation --counts examples/cell-spatial/counts.tsv --cells examples/cell-spatial/cells.tsv --samples examples/cell-spatial/samples.tsv --features examples/cell-spatial/features.tsv --units micrometer --coordinate-system synthetic-v1 --resolution cell --radius 10.1 --feature-list examples/cell-spatial/selected-features.tsv --permutations 999 --seed 19 --out build/spatial-demo/autocorrelation
+java -jar build/cli/omicsmatic-0.3.7.jar spatial --method autocorrelation --counts examples/cell-spatial/counts.tsv --cells examples/cell-spatial/cells.tsv --samples examples/cell-spatial/samples.tsv --features examples/cell-spatial/features.tsv --units micrometer --coordinate-system synthetic-v1 --resolution cell --radius 10.1 --feature-list examples/cell-spatial/selected-features.tsv --permutations 999 --seed 19 --out build/spatial-demo/autocorrelation
 ```
 
 For each section and requested feature, the response is
@@ -98,8 +98,8 @@ but spot variation also reflects mixtures and technical properties.
 ## Neighborhood enrichment and replicated comparisons
 
 ```shell
-java -jar build/cli/jlinalg-0.3.7.jar spatial --method neighborhoods --counts examples/cell-spatial/counts.tsv --cells examples/cell-spatial/cells.tsv --samples examples/cell-spatial/samples.tsv --features examples/cell-spatial/features.tsv --units micrometer --coordinate-system synthetic-v1 --resolution cell --radius 10.1 --permutations 999 --seed 19 --out build/spatial-demo/neighborhoods
-java -jar build/cli/jlinalg-0.3.7.jar spatial --method compare --counts examples/cell-spatial/counts.tsv --cells examples/cell-spatial/cells.tsv --samples examples/cell-spatial/samples.tsv --features examples/cell-spatial/features.tsv --units micrometer --coordinate-system synthetic-v1 --resolution cell --radius 10.1 --reference control --tested case --out build/spatial-demo/compare
+java -jar build/cli/omicsmatic-0.3.7.jar spatial --method neighborhoods --counts examples/cell-spatial/counts.tsv --cells examples/cell-spatial/cells.tsv --samples examples/cell-spatial/samples.tsv --features examples/cell-spatial/features.tsv --units micrometer --coordinate-system synthetic-v1 --resolution cell --radius 10.1 --permutations 999 --seed 19 --out build/spatial-demo/neighborhoods
+java -jar build/cli/omicsmatic-0.3.7.jar spatial --method compare --counts examples/cell-spatial/counts.tsv --cells examples/cell-spatial/cells.tsv --samples examples/cell-spatial/samples.tsv --features examples/cell-spatial/features.tsv --units micrometer --coordinate-system synthetic-v1 --resolution cell --radius 10.1 --reference control --tested case --out build/spatial-demo/compare
 ```
 
 Neighborhood tests permute cell-type labels within the same exchangeability
@@ -140,7 +140,7 @@ For a prespecified distance to an anatomical structure, provide a nonnegative
 cell-level distance column in the declared physical units:
 
 ```shell
-java -jar build/cli/jlinalg-0.3.7.jar spatial --method gradient --counts examples/cell-spatial/counts.tsv --cells examples/cell-spatial/cells.tsv --samples examples/cell-spatial/samples.tsv --features examples/cell-spatial/features.tsv --units micrometer --coordinate-system synthetic-v1 --resolution cell --distance-column distance --feature-list examples/cell-spatial/selected-features.tsv --reference control --tested case --out build/spatial-demo/gradient
+java -jar build/cli/omicsmatic-0.3.7.jar spatial --method gradient --counts examples/cell-spatial/counts.tsv --cells examples/cell-spatial/cells.tsv --samples examples/cell-spatial/samples.tsv --features examples/cell-spatial/features.tsv --units micrometer --coordinate-system synthetic-v1 --resolution cell --distance-column distance --feature-list examples/cell-spatial/selected-features.tsv --reference control --tested case --out build/spatial-demo/gradient
 ```
 
 The command calculates a descriptive linear slope of normalized expression versus
@@ -185,7 +185,7 @@ uncertain-boundary modeling are still open [roadmap items](../../TODO.md).
 <!-- SCIENTIFIC-CITATIONS:START -->
 ## Scientific citations
 
-These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as JLinAlg when reporting results.
+These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as OmicsMatic when reporting results.
 
 - [P. A. P. Moran (1950) — Notes on continuous stochastic phenomena](../CITATIONS.md#moran-1950) — [PMID: 15420245](https://pubmed.ncbi.nlm.nih.gov/15420245/)
 - [R. C. Geary (1954) — The Contiguity Ratio and Statistical Mapping](../CITATIONS.md#geary-1954)

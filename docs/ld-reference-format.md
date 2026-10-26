@@ -1,4 +1,4 @@
-# JLinAlg LD reference format
+# OmicsMatic LD reference format
 
 Every downloadable linkage-disequilibrium reference is normalized to the same
 directory contract:
@@ -17,7 +17,7 @@ directory contract:
 
 The set of panel identifiers depends on the database. File names and encoding
 do not. LdReferenceLayout.panelPrefix(reference, panel) returns the prefix that
-JLinAlg and external PLINK-compatible tools can consume.
+OmicsMatic and external PLINK-compatible tools can consume.
 
 ## Version 1
 
@@ -30,7 +30,7 @@ JLinAlg and external PLINK-compatible tools can consume.
   build, source URI and checksum, panel identities, canonical prefixes, and
   validated sample and variant counts.
 
-During installation JLinAlg checks the archive checksum, normalizes source
+During installation OmicsMatic checks the archive checksum, normalizes source
 names into this layout, verifies the BED magic bytes and variant-major flag,
 and confirms that the BED length agrees exactly with the BIM and FAM counts.
 The manifest is written last, so its presence marks a complete installation.
@@ -88,7 +88,7 @@ removed. For compatibility with `ieugwasr::ld_clump`, a group containing only
 one candidate is returned without consulting the panel. The output contains
 the retained original rows and columns in input order.
 
-Use `--overwrite` to replace an existing output. JLinAlg validates the database
+Use `--overwrite` to replace an existing output. OmicsMatic validates the database
 manifest and BED/BIM/FAM sizes before clumping, and writes through a temporary
 file so a failed run cannot leave a partial result.
 

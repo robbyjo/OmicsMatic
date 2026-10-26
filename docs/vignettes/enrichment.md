@@ -14,7 +14,7 @@ The repository includes a small synthetic results table, probe annotation and
 GMT collection in `examples/enrichment`. Run from the repository root:
 
 ```shell
-java -jar build/cli/jlinalg-0.3.7.jar --enrichment Custom --enrichment-db examples/enrichment/sets.gmt --input examples/enrichment/results.csv --input-id probe --universe-selection "status == 'OK' && n_studies >= 3" --selection "p_value < bonferroni(0.05)" --annot examples/enrichment/annotation.csv --annot-id IlmnID --gene-col genes --annot-cols chromosome --gene-id-type symbol --min-set-size 1 --out build/enrichment-example/ora.tsv
+java -jar build/cli/omicsmatic-0.3.7.jar --enrichment Custom --enrichment-db examples/enrichment/sets.gmt --input examples/enrichment/results.csv --input-id probe --universe-selection "status == 'OK' && n_studies >= 3" --selection "p_value < bonferroni(0.05)" --annot examples/enrichment/annotation.csv --annot-id IlmnID --gene-col genes --annot-cols chromosome --gene-id-type symbol --min-set-size 1 --out build/enrichment-example/ora.tsv
 ```
 
 The six eligible probes define the feature-level testing family. Bonferroni uses
@@ -37,7 +37,7 @@ analysis, not just its significant rows. Its eligible IDs define the universe.
 For a meta-analysis, use the actual success/minimum-cohort requirements:
 
 ```shell
-java -jar build/cli/jlinalg-0.3.7.jar --enrichment GO:BP --enrichment-db databases/go-human --input meta.csv --input-id probe_id --universe-selection "status == 'OK' && n_studies >= 3" --selection "FDR < 0.05" --annot annotation.csv --annot-id probe_id --gene-col gene_symbol --gene-id-type symbol --out go-bp.tsv
+java -jar build/cli/omicsmatic-0.3.7.jar --enrichment GO:BP --enrichment-db databases/go-human --input meta.csv --input-id probe_id --universe-selection "status == 'OK' && n_studies >= 3" --selection "FDR < 0.05" --annot annotation.csv --annot-id probe_id --gene-col gene_symbol --gene-id-type symbol --out go-bp.tsv
 ```
 
 Adjust column names to the table you actually produced. Eligibility must reflect
@@ -70,7 +70,7 @@ If input is already a selected-only list, supply a complete, analysis-eligible
 background explicitly. Headerless files contain one ID per line:
 
 ```shell
-java -jar build/cli/jlinalg-0.3.7.jar --enrichment Custom --enrichment-db sets.gmt --input selected-genes.txt --background tested-genes.txt --out enrichment.tsv
+java -jar build/cli/omicsmatic-0.3.7.jar --enrichment Custom --enrichment-db sets.gmt --input selected-genes.txt --background tested-genes.txt --out enrichment.tsv
 ```
 
 Headered tables require `--input-id` and `--background-id`, respectively. Selected
@@ -145,7 +145,7 @@ choose `--enrichment-method gsameth` and provide the normalized, platform-approp
 probe-to-gene annotation used for **all eligible CpGs**:
 
 ```shell
-java -jar build/cli/jlinalg-0.3.7.jar --enrichment Custom --enrichment-db examples/enrichment/sets.gmt --enrichment-method gsameth --input examples/enrichment/results.csv --input-id probe --universe-selection "status == 'OK' && n_studies >= 3" --selection "p_value < bonferroni(0.05)" --annot examples/enrichment/annotation.csv --annot-id IlmnID --gene-col genes --min-set-size 1 --out build/enrichment-example/ewas.tsv
+java -jar build/cli/omicsmatic-0.3.7.jar --enrichment Custom --enrichment-db examples/enrichment/sets.gmt --enrichment-method gsameth --input examples/enrichment/results.csv --input-id probe --universe-selection "status == 'OK' && n_studies >= 3" --selection "p_value < bonferroni(0.05)" --annot examples/enrichment/annotation.csv --annot-id IlmnID --gene-col genes --min-set-size 1 --out build/enrichment-example/ewas.tsv
 ```
 
 The implementation follows missMethyl's `equiv.cpg=TRUE`, `fract.counts=TRUE`,
@@ -266,19 +266,19 @@ overall scores combine evidence and the threshold is an explicit analyst choice,
 not a significance test. `--association-min-score` changes that threshold.
 
 ```shell
-java -jar build/cli/jlinalg-0.3.7.jar --enrichment GO --download databases/go-human --species human --gene-id-type symbol
-java -jar build/cli/jlinalg-0.3.7.jar --enrichment Reactome --download databases/reactome-human --gene-id-type ensembl
-java -jar build/cli/jlinalg-0.3.7.jar --enrichment HPO --download databases/hpo-human
-java -jar build/cli/jlinalg-0.3.7.jar --enrichment GWASCatalog --download databases/gwas-catalog
-java -jar build/cli/jlinalg-0.3.7.jar --enrichment Monarch:Mondo --download databases/monarch-mondo
-java -jar build/cli/jlinalg-0.3.7.jar --enrichment OpenTargets --download databases/open-targets --association-min-score 0.5
-java -jar build/cli/jlinalg-0.3.7.jar --enrichment MSigDB:H --download databases/msigdb-h --source-file h.symbols.gmt --gene-id-type symbol
+java -jar build/cli/omicsmatic-0.3.7.jar --enrichment GO --download databases/go-human --species human --gene-id-type symbol
+java -jar build/cli/omicsmatic-0.3.7.jar --enrichment Reactome --download databases/reactome-human --gene-id-type ensembl
+java -jar build/cli/omicsmatic-0.3.7.jar --enrichment HPO --download databases/hpo-human
+java -jar build/cli/omicsmatic-0.3.7.jar --enrichment GWASCatalog --download databases/gwas-catalog
+java -jar build/cli/omicsmatic-0.3.7.jar --enrichment Monarch:Mondo --download databases/monarch-mondo
+java -jar build/cli/omicsmatic-0.3.7.jar --enrichment OpenTargets --download databases/open-targets --association-min-score 0.5
+java -jar build/cli/omicsmatic-0.3.7.jar --enrichment MSigDB:H --download databases/msigdb-h --source-file h.symbols.gmt --gene-id-type symbol
 ```
 
 For an authorized academic KEGG user:
 
 ```shell
-java -jar build/cli/jlinalg-0.3.7.jar --enrichment KEGG --download databases/kegg-human --species human --kegg-academic true
+java -jar build/cli/omicsmatic-0.3.7.jar --enrichment KEGG --download databases/kegg-human --species human --kegg-academic true
 ```
 
 KEGG uses a rate-limited REST download; clusterProfiler support does not imply a
@@ -310,7 +310,7 @@ GMT uses tab-separated term ID, description, then one gene per field. gzip is
 accepted. Input tables support quoted cells, but not embedded physical newlines.
 
 ```shell
-java -jar build/cli/jlinalg-0.3.7.jar --enrichment Custom --download databases/my-disease-sets --source-file disease-genes.tsv --db-format term2gene --gene-id-type entrez
+java -jar build/cli/omicsmatic-0.3.7.jar --enrichment Custom --download databases/my-disease-sets --source-file disease-genes.tsv --db-format term2gene --gene-id-type entrez
 ```
 
 Open Targets uses DuckDB JDBC to read local Parquet; its native libraries are
@@ -401,7 +401,7 @@ checking and corruption rejection are tested without a registered session.
 <!-- SCIENTIFIC-CITATIONS:START -->
 ## Scientific citations
 
-These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as JLinAlg when reporting results.
+These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as OmicsMatic when reporting results.
 
 - [Aravind Subramanian et al. (2005) — Gene set enrichment analysis: a knowledge-based approach for interpreting genome-wide expression profiles](../CITATIONS.md#subramanian-gsea-2005) — [PMID: 16199517](https://pubmed.ncbi.nlm.nih.gov/16199517/) · [PMCID: PMC1239896](https://pmc.ncbi.nlm.nih.gov/articles/PMC1239896/)
 - [Di Wu and Gordon K. Smyth (2012) — Camera: a competitive gene set test accounting for inter-gene correlation](../CITATIONS.md#wu-camera-2012) — [PMID: 22638577](https://pubmed.ncbi.nlm.nih.gov/22638577/) · [PMCID: PMC3458527](https://pmc.ncbi.nlm.nih.gov/articles/PMC3458527/)

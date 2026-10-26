@@ -155,7 +155,7 @@ the [benchmark guide](../performance-benchmarks.md) for the complete protocol.
 <!-- SCIENTIFIC-CITATIONS:START -->
 ## Scientific citations
 
-These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as JLinAlg when reporting results.
+These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as OmicsMatic when reporting results.
 
 - [G. N. Wilkinson and C. E. Rogers (1973) — Symbolic description of factorial models for analysis of variance](../CITATIONS.md#wilkinson-rogers-1973)
 - [J. A. Nelder and R. W. M. Wedderburn (1972) — Generalized linear models](../CITATIONS.md#nelder-wedderburn-1972)

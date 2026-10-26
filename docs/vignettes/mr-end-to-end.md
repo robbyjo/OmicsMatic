@@ -5,7 +5,7 @@ offers [aggregate conditional-GWAS exports and local null refits](../conditional
 These model-specific scores and covariance are a separate schema. They are not
 automatically imported by the existing Gaussian `mr-estimate` conditional path.
 
-This vignette joins JLinAlg's command-line data preparation to its Java MR
+This vignette joins OmicsMatic's command-line data preparation to its Java MR
 API. It covers instrument discovery or custom QTL input, ancestry-matched LD
 clumping, harmonization, estimation, diagnostics, plotting, bidirectional MR,
 and molecular-trait studies.
@@ -85,7 +85,7 @@ effect_allele=allele1,other_allele=allele2,pval=p_value
 Canonical output columns are `Phenotype`, `SNP`, `beta`, `se`, `eaf`,
 `effect_allele`, `other_allele`, `pval`, `units`, `ncase`, `ncontrol`,
 `samplesize`, and `gene`. Use `--effect-scale odds-ratio` or
-`--effect-scale hazard-ratio` when the mapped effect is a ratio; JLinAlg stores
+`--effect-scale hazard-ratio` when the mapped effect is a ratio; OmicsMatic stores
 the corresponding log effect for MR.
 
 When a file contains several molecular features, supply an `id.exposure`
@@ -132,7 +132,7 @@ Subset or query the outcome by the SNPs in `bmi.instruments.tsv`. For
 two-sample MR, prefer non-overlapping samples when practical. If samples
 overlap, record or estimate the per-variant covariance between exposure and
 outcome estimates; a sample-overlap percentage alone is not the covariance
-required by JLinAlg's overlap-aware estimator.
+required by OmicsMatic's overlap-aware estimator.
 
 ## 5. Map rows into the Java API and harmonize alleles
 
@@ -164,7 +164,7 @@ allele swaps and strand complements. Palindromic variants are retained only
 when the two effect-allele frequencies select an unambiguous orientation.
 Always retain the structured exclusions as analysis provenance.
 
-JLinAlg currently accepts biallelic SNP alleles `A`, `C`, `G`, and `T`, finite
+OmicsMatic currently accepts biallelic SNP alleles `A`, `C`, `G`, and `T`, finite
 effects, and positive finite standard errors. Resolve genome builds and variant
 identifiers before this step; harmonization does not perform liftover.
 
@@ -189,7 +189,7 @@ mr.warnings().forEach(System.out::println);
 ```
 
 The primary result should normally be chosen from the scientific design, not
-after comparing p-values. JLinAlg provides fixed IVW, multiplicative-random
+after comparing p-values. OmicsMatic provides fixed IVW, multiplicative-random
 IVW, MR-Egger, weighted median, and per-variant Wald ratios. Binary-outcome
 effects are on the log-odds scale when that was the outcome GWAS scale;
 `Math.exp(estimate)` converts a log-odds causal estimate to an odds ratio.
@@ -299,7 +299,7 @@ original LD covariance: joint effects have a different sampling covariance.
 No single diagnostic proves that all instruments are valid. Interpret the
 following together with biological annotation and study design.
 
-| Question | JLinAlg output or call | Interpretation |
+| Question | OmicsMatic output or call | Interpretation |
 | --- | --- | --- |
 | Instrument strength | `waldRatios().fStatistic()` and `meanFStatistic()` | Approximate per-SNP and mean `(betaX/seX)^2`; values below 10 trigger a warning, but a threshold is not a guarantee against weak-instrument bias. |
 | IVW heterogeneity | `ivwFixed().cochranQ()`, `heterogeneityDegreesOfFreedom()`, `heterogeneityPValue()`, `iSquared()` | Excess dispersion can reflect invalid instruments, different mechanisms, or model misspecification. Random IVW inflates uncertainty by `max(1, Q/df)`. |
@@ -334,7 +334,7 @@ ContaminationMixtureResult mixture = ContaminationMixture.fit(instruments, 1001)
 MrPressoResult presso = MrPresso.analyze(instruments, 0.05);
 ```
 
-Check `raps.converged()`. JLinAlg's PRESSO-style procedure is a fast analytic
+Check `raps.converged()`. OmicsMatic's PRESSO-style procedure is a fast analytic
 robust-center/outlier diagnostic; it is not the simulation-calibrated R
 MR-PRESSO algorithm. Report the raw and corrected results, global p-value,
 outliers, and distortion instead of silently deleting variants.
@@ -448,7 +448,7 @@ JDistlib jar without changing the Gradle build.
 
 ## 10. Plotting
 
-JLinAlg includes a dependency-free native SVG scatter renderer through the
+OmicsMatic includes a dependency-free native SVG scatter renderer through the
 `mr-estimate --plot FILE` path. The result objects also expose everything
 needed for conventional plots:
 
@@ -519,7 +519,7 @@ Recommended design points for high-throughput molecular MR:
   procedure; do not reinterpret nominal MR p-values as study-wide evidence.
 - For cis molecular MR, investigate colocalization or fine-mapping. LD clumping
   alone does not establish that the molecular trait and outcome share a causal
-  variant. JLinAlg's `ColocSusie` implements multi-signal colocalization for
+  variant. OmicsMatic's `ColocSusie` implements multi-signal colocalization for
   aligned SuSiE fits; see the
   [dedicated colocalization workflow](colocalization.md).
 - Consider correlated cis-MR rather than discarding all but one signal when a
@@ -570,7 +570,7 @@ For estimator definitions and numerical assumptions, see the
 <!-- SCIENTIFIC-CITATIONS:START -->
 ## Scientific citations
 
-These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as JLinAlg when reporting results.
+These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as OmicsMatic when reporting results.
 
 - [Jack Bowden, George Davey Smith, and Stephen Burgess (2015) — Mendelian randomization with invalid instruments: effect estimation and bias detection through Egger regression](../CITATIONS.md#bowden-mr-egger-2015) — [PMID: 26050253](https://pubmed.ncbi.nlm.nih.gov/26050253/) · [PMCID: PMC4469799](https://pmc.ncbi.nlm.nih.gov/articles/PMC4469799/)
 - [Jack Bowden et al. (2016) — Consistent estimation in Mendelian randomization with some invalid instruments using a weighted median estimator](../CITATIONS.md#bowden-weighted-median-2016) — [PMID: 27061298](https://pubmed.ncbi.nlm.nih.gov/27061298/) · [PMCID: PMC4849733](https://pmc.ncbi.nlm.nih.gov/articles/PMC4849733/)

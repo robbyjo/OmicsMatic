@@ -76,7 +76,7 @@ Conditional instrument p-values and causal-estimate p-values are different
 quantities with separate output names.
 
 ```powershell
-java -jar build/cli/jlinalg-<version>.jar mr-estimate `
+java -jar build/cli/omicsmatic-<version>.jar mr-estimate `
   --input harmonized.tsv --method conditional --joint --ld ld-correlation.tsv
 ```
 
@@ -134,7 +134,7 @@ explicit workload, initialization, and inference-work caveats in the report.
 <!-- SCIENTIFIC-CITATIONS:START -->
 ## Scientific citations
 
-These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as JLinAlg when reporting results.
+These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as OmicsMatic when reporting results.
 
 - [Craig K. Enders and Deborah L. Bandalos (2001) — The relative performance of full information maximum likelihood estimation for missing data in structural equation models](../CITATIONS.md#enders-bandalos-2001)
 - [Norman E. Breslow and David G. Clayton (1993) — Approximate inference in generalized linear mixed models](../CITATIONS.md#breslow-clayton-1993)

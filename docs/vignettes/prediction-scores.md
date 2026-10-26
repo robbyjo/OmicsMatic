@@ -2,7 +2,7 @@
 
 Released in v0.3.6. Train a Gaussian ridge/elastic-net score, save portable
 weights, and apply frozen weights to a separate cohort. Imported genetic
-weights can be used without training in JLinAlg. Score training can also learn
+weights can be used without training in OmicsMatic. Score training can also learn
 genotype-to-expression/protein weights for [TWAS/PWAS](predicted-omics.md).
 
 Source builds also register a [held-out study workflow](study-pipeline-tutorial.md#held-out-risk-scores-and-missing-related-phenotype-work)
@@ -27,7 +27,7 @@ sample ID is unique. Explicitly list the predictors, excluding the outcome and
 ID. All features and outcomes must be finite and complete.
 
 ```powershell
-java -jar build/cli/jlinalg-0.3.7.jar score-train --input examples/xwas/train.tsv --features x1,x2 --outcome y --lambdas 1,0.1,0.01 --alpha 0 --folds 5 --seed 42 --out build/xwas/score.tsv
+java -jar build/cli/omicsmatic-0.3.7.jar score-train --input examples/xwas/train.tsv --features x1,x2 --outcome y --lambdas 1,0.1,0.01 --alpha 0 --folds 5 --seed 42 --out build/xwas/score.tsv
 ```
 
 Alpha 0 fits ridge, alpha 1 fits lasso, and values between them fit elastic net.
@@ -54,7 +54,7 @@ features. Non-genetic features have dot placeholders for both alleles.
 Keep these sidecars with the model when moving it.
 
 ```powershell
-java -jar build/cli/jlinalg-0.3.7.jar score-apply --input examples/xwas/test.tsv --weights build/xwas/score.tsv --outcome y --out build/xwas/predictions.tsv
+java -jar build/cli/omicsmatic-0.3.7.jar score-apply --input examples/xwas/test.tsv --weights build/xwas/score.tsv --outcome y --out build/xwas/predictions.tsv
 ```
 
 Application joins model feature names to table columns, preserving sample order.
@@ -78,7 +78,7 @@ error relative to that baseline. Compare baseline and augmented models on the
 same prespecified test cohort. Do not use in-sample baseline predictions.
 
 Evaluation rejects overlapping IDs when the training sidecar is available.
-Trained JLinAlg model evaluation requires its sidecar (or `--training-ids FILE`).
+Trained OmicsMatic model evaluation requires its sidecar (or `--training-ids FILE`).
 External weight files may lack IDs; independence then remains the caller's
 responsibility. Different IDs do not detect relatives or cohort-level overlap.
 
@@ -96,7 +96,7 @@ can prepare variant selections. The scorer itself does not perform LD pruning.
 At application, `--alleles` describes the target table's dosage allele:
 
 ```powershell
-java -jar build/cli/jlinalg-0.3.7.jar score-apply --input examples/xwas/target-dosages.tsv --weights examples/xwas/polygenic-weights.tsv --alleles examples/xwas/target-alleles.tsv --outcome case_status --family binary --out build/xwas/polygenic.tsv
+java -jar build/cli/omicsmatic-0.3.7.jar score-apply --input examples/xwas/target-dosages.tsv --weights examples/xwas/polygenic-weights.tsv --alleles examples/xwas/target-alleles.tsv --outcome case_status --family binary --out build/xwas/polygenic.tsv
 ```
 
 An allele swap uses `2 - dosage`, preserving the constant term needed for raw
@@ -133,7 +133,7 @@ does not claim its full feature set.
 <!-- SCIENTIFIC-CITATIONS:START -->
 ## Scientific citations
 
-These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as JLinAlg when reporting results.
+These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as OmicsMatic when reporting results.
 
 - [Arthur E. Hoerl and Robert W. Kennard (1970) — Ridge regression: biased estimation for nonorthogonal problems](../CITATIONS.md#hoerl-kennard-1970)
 - [Hui Zou and Trevor Hastie (2005) — Regularization and variable selection via the elastic net](../CITATIONS.md#zou-hastie-2005)

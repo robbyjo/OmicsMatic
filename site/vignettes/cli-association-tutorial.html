@@ -2,15 +2,15 @@
 <html lang="en">
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="A gentle CLI-only JLinAlg tutorial from phenotype OLS and REML through omics, GWAS, pedigree, GLMM, Cox, ridge, lasso, and elastic net.">
-  <title>CLI association tutorial &middot; JLinAlg</title>
+  <meta name="description" content="A gentle CLI-only OmicsMatic tutorial from phenotype OLS and REML through omics, GWAS, pedigree, GLMM, Cox, ridge, lasso, and elastic net.">
+  <title>CLI association tutorial &middot; OmicsMatic</title>
   <link rel="stylesheet" href="../assets/styles.css"><script src="../assets/app.js" defer></script>
 </head>
 <body><site-header root="../"></site-header><main id="main">
 <section class="page-hero"><div class="container"><div class="breadcrumbs"><a href="../index.html">Home</a><span>/</span><a href="index.html">Vignettes</a><span>/</span><span>CLI association tutorial</span></div><h1>Start with one phenotype. Build toward xWAS.</h1><p>A gentle executable-JAR workflow for OLS, exact REML, numeric omics, common and rare variants, pedigree, GLM/GLMM, survival, and regularization.</p></div></section>
 <div class="container page-layout"><article class="prose">
 <div class="note"><strong>v0.3.5 release</strong><code>--max-maf</code>/<code>--max-mac</code>, phenotype-only <code>--dry-run</code>/<code>--explain</code>, and the <code>--link</code> validation described below are included.</div>
-<div class="note"><strong>Current source build</strong>Binary probit regression is now available as <code>--family probit</code> (or <code>binomial-probit</code>). Build with <code>./gradlew.bat executableJar</code> and use <code>build/cli/jlinalg-0.3.7.jar</code> for the probit command below.</div>
+<div class="note"><strong>Current source build</strong>Binary probit regression is now available as <code>--family probit</code> (or <code>binomial-probit</code>). Build with <code>./gradlew.bat executableJar</code> and use <code>build/cli/omicsmatic-0.3.7.jar</code> for the probit command below.</div>
 <div class="note"><strong>No Java code is required</strong>Replace <code>jlinalg-&lt;version&gt;.jar</code> with the downloaded filename. Website command blocks use the POSIX-shell <code>&#92;</code> line continuation; in PowerShell replace it with a backtick or put the command on one line. On the general <code>--pheno</code> command, <code>--dry-run</code> prints the resolved plan and stops before fitting; singular <code>--explain</code> prints it and continues. Specialized subcommands use their own <code>--help</code>.</div>
 <p>Both general-command switches read and align inputs, select complete phenotype rows, compile the formula, load a requested GRM or pedigree, validate the transform, and report model, variance-component route, output format, backend policy, and output path. Omics preflight also reports block and worker sizing. A dry run writes the normal log unless <code>--no-log</code> is set, but no result table or manifest. It cannot detect feature-specific numerical failures because it does not scan feature rows.</p>
 
@@ -36,7 +36,7 @@ S004,29.0,M,55,B</code></pre>
 <pre><code>gene_id,S001,S002,S003,S004
 GENE_A,5.2,5.7,4.9,5.1
 GENE_B,2.0,2.4,2.2,NA</code></pre>
-<p>JLinAlg intersects and reorders omics and phenotype IDs automatically and reports every alignment count.</p>
+<p>OmicsMatic intersects and reorders omics and phenotype IDs automatically and reports every alignment count.</p>
 <div class="code-window"><div class="code-bar"><i class="code-dot"></i><i class="code-dot"></i><i class="code-dot"></i><span>Omics OLS</span></div><pre><code>java -jar jlinalg-&lt;version&gt;.jar --pheno phenotype.csv --omics expression.csv &#92;
   --id sample_id --omics-type expression &#92;
   --formula "BMI ~ Sex + Age + &lt;omics&gt;" --model ols &#92;
@@ -92,7 +92,7 @@ F10,1003,1001,1002</code></pre>
   --sire-id parent1_id --dam-id parent2_id &#92;
   --out bmi-pedigree-expression.csv</code></pre></div>
 <p>The pedigree term must use the phenotype matching-column name, <code>(1|subject_id)</code>, not the omics ID or the pedigree file's column name. Blank, NA, 0, <code>.</code>, and -9 parents mean unknown. Pedigree members without phenotypes remain useful ancestors.</p>
-<p>Subject 9009 is truly absent from this pedigree, so JLinAlg adds it as an unrelated singleton and reports it on screen, in the log, and in the manifest. Repeated observations with the same absent subject ID share one singleton family and random effect. At least one aligned subject must match a source pedigree member; zero matches fail instead of producing an all-singleton model.</p>
+<p>Subject 9009 is truly absent from this pedigree, so OmicsMatic adds it as an unrelated singleton and reports it on screen, in the log, and in the manifest. Repeated observations with the same absent subject ID share one singleton family and random effect. At least one aligned subject must match a source pedigree member; zero matches fail instead of producing an all-singleton model.</p>
 <div class="note warning"><strong>Family disambiguation</strong>A globally unique member matches its raw ID automatically, and the exact <code>family_id:member_id</code> form, such as <code>F10:1003</code>, is also accepted. A raw ID that occurs in multiple families is ambiguous and fails until qualified. Parent links recursively define relatedness rather than the family label: a unique raw parent reference can connect rows carrying different family labels.</div>
 
 <h2 id="glm">6. GLM and GLMM</h2>
@@ -101,7 +101,7 @@ F10,1003,1001,1002</code></pre>
   --id omics_id --formula "case_status ~ Sex + Age + &lt;omics&gt;" &#92;
   --family binomial --case-value case --control-value control &#92;
   --out disease-expression.csv</code></pre></div>
-<div class="code-window"><div class="code-bar"><i class="code-dot"></i><i class="code-dot"></i><i class="code-dot"></i><span>Source-build probit GLM</span></div><pre><code>java -jar build/cli/jlinalg-0.3.7.jar --pheno phenotype.csv &#92;
+<div class="code-window"><div class="code-bar"><i class="code-dot"></i><i class="code-dot"></i><i class="code-dot"></i><span>Source-build probit GLM</span></div><pre><code>java -jar build/cli/omicsmatic-0.3.7.jar --pheno phenotype.csv &#92;
   --id omics_id --formula "case_status ~ Sex + Age" &#92;
   --family probit --case-value case --control-value control &#92;
   --out disease-probit.csv</code></pre></div>
@@ -145,7 +145,7 @@ java -jar jlinalg-&lt;version&gt;.jar penalized-regression --input predictors.cs
   <div class="container narrow">
     <span class="eyebrow">Scientific foundations</span>
     <h2 id="scientific-citations-cli-association-tutorial">Primary method citations</h2>
-    <p>Cite the relevant method publication as well as JLinAlg when reporting results from this workflow.</p>
+    <p>Cite the relevant method publication as well as OmicsMatic when reporting results from this workflow.</p>
     <ul class="citation-links">
       <li><a href="../citations.html#kang-emmax-2010">Kang et al. (2010) — EMMAX</a> <span class="citation-inline-identifiers">(<a href="https://pubmed.ncbi.nlm.nih.gov/20208533/">PMID: 20208533</a> · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3092069/">PMCID: PMC3092069</a>)</span></li><li><a href="../citations.html#zhang-p3d-2010">Zhang et al. (2010) — P3D</a> <span class="citation-inline-identifiers">(<a href="https://pubmed.ncbi.nlm.nih.gov/20208535/">PMID: 20208535</a> · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC2931336/">PMCID: PMC2931336</a>)</span></li><li><a href="../citations.html#wu-skat-2011">Wu et al. (2011) — SKAT</a> <span class="citation-inline-identifiers">(<a href="https://pubmed.ncbi.nlm.nih.gov/21737059/">PMID: 21737059</a> · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3135811/">PMCID: PMC3135811</a>)</span></li><li><a href="../citations.html#lee-skato-2012">Lee et al. (2012) — SKAT-O</a> <span class="citation-inline-identifiers">(<a href="https://pubmed.ncbi.nlm.nih.gov/22863193/">PMID: 22863193</a> · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3415556/">PMCID: PMC3415556</a>)</span></li><li><a href="../citations.html#liu-acat-2019">Liu et al. (2019) — ACAT</a> <span class="citation-inline-identifiers">(<a href="https://pubmed.ncbi.nlm.nih.gov/30849328/">PMID: 30849328</a> · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6407498/">PMCID: PMC6407498</a>)</span></li>
     </ul>

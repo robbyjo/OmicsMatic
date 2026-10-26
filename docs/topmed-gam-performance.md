@@ -7,32 +7,32 @@ eligible, nonconstant genes. The fitted model was:
         + Sex + Age + WBC_Pred + LY_PER_Pred + MO_PER_Pred
         + EO_PER_Pred + BA_PER_Pred
 
-R used mgcv::gam with bs="ps", k=10, m=2, and method="REML". JLinAlg used
+R used mgcv::gam with bs="ps", k=10, m=2, and method="REML". OmicsMatic used
 PreparedGamPredictorScan and exact Gaussian coefficient-space REML. Data
 loading, the one-time compute-context selection, and one warm-up gene are
 excluded. Each value below is the median of three complete 100-gene scans.
-Native math threads were fixed at one; JLinAlg parallelism is across genes.
+Native math threads were fixed at one; OmicsMatic parallelism is across genes.
 
 ## Results
 
 | Runtime | Workers | Median seconds | Genes/second | Speed vs R |
 |---|---:|---:|---:|---:|
 | R / mgcv | 1 | 16.620 | 6.02 | 1.00x |
-| JLinAlg / preferred | 1 | 1.160 | 86.20 | 14.33x |
-| JLinAlg / preferred | 8 | 0.337 | 297.09 | 49.38x |
+| OmicsMatic / preferred | 1 | 1.160 | 86.20 | 14.33x |
+| OmicsMatic / preferred | 8 | 0.337 | 297.09 | 49.38x |
 
-Eight workers delivered a 3.45x speedup over one JLinAlg worker. The first
+Eight workers delivered a 3.45x speedup over one OmicsMatic worker. The first
 parallel measurement was slower because only one worker had been JIT-warmed;
 the median retains the middle complete-scan observation rather than reporting
 the best run.
 
 ## Numerical checks
 
-All 100 JLinAlg fits were finite. One-worker and eight-worker results were
+All 100 OmicsMatic fits were finite. One-worker and eight-worker results were
 bit-for-bit identical for smooth EDF, smoothing parameter, likelihood, fitted
 checksum, and residual sum of squares.
 
-JLinAlg and mgcv use slightly different P-spline knot placement and penalty
+OmicsMatic and mgcv use slightly different P-spline knot placement and penalty
 scaling, so their raw smoothing parameters and restricted-likelihood constants
 are not directly comparable. Across the 100 fits:
 
@@ -43,7 +43,7 @@ are not directly comparable. Across the 100 fits:
 
 mgcv warned that some basis coefficients contained no information for three
 genes per measurement. Those genes were retained in both runtimes. A separate
-unit regression compares the new coefficient-space path against JLinAlg's
+unit regression compares the new coefficient-space path against OmicsMatic's
 former dense observation-space REML and matches fixed effects, variance
 components, fitted values, and random-effect prediction-error variances.
 

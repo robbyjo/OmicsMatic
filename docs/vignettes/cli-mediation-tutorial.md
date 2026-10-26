@@ -1,6 +1,6 @@
 # CLI-only mediation analysis
 
-JLinAlg's `mediation` command fits Gaussian linear mediation with optional
+OmicsMatic's `mediation` command fits Gaussian linear mediation with optional
 numeric covariates, grouped random intercepts, or pedigree relatedness. It
 reports the treatment-to-mediator path, mediator-to-outcome path, indirect
 effect, direct effect, and total effect. No Java code is required.
@@ -32,7 +32,7 @@ O003,1.1,2.2,4.7,61,0,P003
 
 Categorical covariates must currently be encoded into numeric indicator
 columns before using this specialized command. Do not include an intercept;
-JLinAlg supplies it.
+OmicsMatic supplies it.
 
 ## 2. Ordinary Gaussian mediation
 
@@ -168,7 +168,7 @@ broader model workflow.
 <!-- SCIENTIFIC-CITATIONS:START -->
 ## Scientific citations
 
-These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as JLinAlg when reporting results.
+These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as OmicsMatic when reporting results.
 
 - [Reuben M. Baron and David A. Kenny (1986) — The moderator-mediator variable distinction in social psychological research](../CITATIONS.md#baron-kenny-1986)
 - [Michael E. Sobel (1982) — Asymptotic confidence intervals for indirect effects in structural equation models](../CITATIONS.md#sobel-1982)

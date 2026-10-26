@@ -41,8 +41,8 @@ These commands are included in v0.3.6 and later. Run from the repository root,
 using fresh output paths:
 
 ```shell
-java -jar build/cli/jlinalg-0.3.7.jar meta-analysis --cohort A=examples/meta-analysis/omics/cohort-a.tsv --cohort B=examples/meta-analysis/omics/cohort-b.tsv --cohort C=examples/meta-analysis/omics/cohort-c.tsv --model fixed --min-cohorts 2 --out build/omics-meta/fixed.tsv
-java -jar build/cli/jlinalg-0.3.7.jar meta-analysis --cohort A=examples/meta-analysis/omics/cohort-a.tsv --cohort B=examples/meta-analysis/omics/cohort-b.tsv --cohort C=examples/meta-analysis/omics/cohort-c.tsv --model random --tau-estimator reml --min-cohorts 2 --out build/omics-meta/random.tsv
+java -jar build/cli/omicsmatic-0.3.7.jar meta-analysis --cohort A=examples/meta-analysis/omics/cohort-a.tsv --cohort B=examples/meta-analysis/omics/cohort-b.tsv --cohort C=examples/meta-analysis/omics/cohort-c.tsv --model fixed --min-cohorts 2 --out build/omics-meta/fixed.tsv
+java -jar build/cli/omicsmatic-0.3.7.jar meta-analysis --cohort A=examples/meta-analysis/omics/cohort-a.tsv --cohort B=examples/meta-analysis/omics/cohort-b.tsv --cohort C=examples/meta-analysis/omics/cohort-c.tsv --model random --tau-estimator reml --min-cohorts 2 --out build/omics-meta/random.tsv
 ```
 
 Gene A has direction `+++`, gene B `---`, and gene C `+??`. Gene C remains in
@@ -74,7 +74,7 @@ System.out.println(batch.direction(2)); // +??; result arrays contain NaN for ge
 Run the full example with a JDK and the built executable as its classpath:
 
 ```shell
-java --class-path build/cli/jlinalg-0.3.7.jar examples/meta-analysis/omics/OmicsMetaExample.java
+java --class-path build/cli/omicsmatic-0.3.7.jar examples/meta-analysis/omics/OmicsMetaExample.java
 ```
 
 The Java example prints fixed/random beta and SE for each gene, cohort counts,
@@ -443,7 +443,7 @@ unstable finite-sample inference.
 <!-- SCIENTIFIC-CITATIONS:START -->
 ## Scientific citations
 
-These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as JLinAlg when reporting results.
+These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as OmicsMatic when reporting results.
 
 - [Rebecca DerSimonian and Nan Laird (1986) — Meta-analysis in clinical trials](../CITATIONS.md#dersimonian-laird-1986) — [PMID: 3802833](https://pubmed.ncbi.nlm.nih.gov/3802833/)
 - [Robert C. Paule and John Mandel (1982) — Consensus values and weighting factors](../CITATIONS.md#paule-mandel-1982) — [PMID: 34566088](https://pubmed.ncbi.nlm.nih.gov/34566088/) · [PMCID: PMC6768160](https://pmc.ncbi.nlm.nih.gov/articles/PMC6768160/)

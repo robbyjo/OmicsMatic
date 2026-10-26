@@ -1,6 +1,6 @@
 # TOPMed observed-variable SEM validation and performance
 
-JLinAlg's SEM engine is a direct implementation of the observed-variable RAM
+OmicsMatic's SEM engine is a direct implementation of the observed-variable RAM
 covariance relationship
 
 `Sigma = (I - A)^-1 S (I - A)^-T`
@@ -46,7 +46,7 @@ All 12 variances are free. Other residual covariances are fixed to zero, giving
 36 free parameters and 42 degrees of freedom. This is a numerical and
 performance example, not a claim that the path directions are a
 domain-validated causal model. Binary `Sex` is treated as Gaussian because the
-current JLinAlg SEM scope is continuous observed-variable ML.
+current OmicsMatic SEM scope is continuous observed-variable ML.
 
 ## Numerical agreement
 
@@ -54,7 +54,7 @@ Both engines use normal-theory ML, no mean structure, listwise-complete data,
 random observed exogenous variables, expected-information standard errors, and
 the same residual-covariance constraints. The fitted results agree as follows:
 
-| Quantity | JLinAlg | lavaan 0.7-2 |
+| Quantity | OmicsMatic | lavaan 0.7-2 |
 | --- | ---: | ---: |
 | log likelihood | -70763.3172885 | -70763.3172885 |
 | chi-square | 4497.68284338 | 4497.68284338 |
@@ -78,10 +78,10 @@ fits with input loading and standardization excluded, median wall times were:
 
 | Runtime | Median seconds per fit |
 | --- | ---: |
-| JLinAlg CPU | 0.0081623 |
+| OmicsMatic CPU | 0.0081623 |
 | lavaan 0.7-2 | 0.0700000 |
 
-JLinAlg was 8.58 times faster in this run. The optimized engine uses an
+OmicsMatic was 8.58 times faster in this run. The optimized engine uses an
 analytic RAM likelihood gradient, BFGS updates, and analytic expected Fisher
 information for standard errors. It converged in 22 likelihood evaluations;
 the original implementation used derivative-free BOBYQA plus a finite-

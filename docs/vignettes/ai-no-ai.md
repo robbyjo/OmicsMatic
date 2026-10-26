@@ -1,9 +1,9 @@
 # Mode 1: reproducible analysis without AI
 
-JLinAlg v0.3.7 supports a complete deterministic workflow without an AI account,
+OmicsMatic v0.3.7 supports a complete deterministic workflow without an AI account,
 model, API key, or model-generated code. This is the default operating mode.
 The same statistical engines and evidence records are used when AI collaboration
-is added later. These three modes describe ways of working with JLinAlg; they
+is added later. These three modes describe ways of working with OmicsMatic; they
 are not values of `analysis.mode`, whose `manual` and `auto` settings control
 deterministic operation planning.
 
@@ -14,7 +14,7 @@ example into a fresh directory:
 
 ~~~powershell
 .\gradlew.bat executableJar
-$jar = (Resolve-Path "build/cli/jlinalg-0.3.7.jar").Path
+$jar = (Resolve-Path "build/cli/omicsmatic-0.3.7.jar").Path
 $project = Join-Path (Get-Location) "build/ai-no-ai"
 if (Test-Path $project) { throw "Choose a fresh project directory." }
 Copy-Item examples/study-pipeline $project -Recurse
@@ -58,7 +58,7 @@ silent edit to the resolved contract or completed results.
 
 ## Extend the analysis
 
-JLinAlg's CLI and APIs cover association analysis, regression and mixed models,
+OmicsMatic's CLI and APIs cover association analysis, regression and mixed models,
 differential analysis, enrichment, networks, MR, fine-mapping, colocalization,
 replication, meta-analysis and sensitivity analysis. The study planner connects
 registered operations when their scientific prerequisites are available;
@@ -73,7 +73,7 @@ No AI request is needed for this mode. On a sensitive project, explicitly set
 `project.data_policy.llm.remote_patient_level_data: deny` before resolution.
 Apply institution-controlled storage and account permissions to inputs, outputs
 and logs. These files can themselves contain sensitive information; local
-execution does not de-identify them. `--offline` governs JLinAlg's built-in
+execution does not de-identify them. `--offline` governs OmicsMatic's built-in
 requests, not unrelated software or external tools.
 
 Continue with [AI as an advisor](ai-advisor.md) or
@@ -83,7 +83,7 @@ Continue with [AI as an advisor](ai-advisor.md) or
 <!-- SCIENTIFIC-CITATIONS:START -->
 ## Scientific citations
 
-These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as JLinAlg when reporting results.
+These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as OmicsMatic when reporting results.
 
 - [Geir Kjetil Sandve et al. (2013) — Ten Simple Rules for Reproducible Computational Research](../CITATIONS.md#sandve-reproducibility-2013)
 - [W3C Provenance Working Group (2013) — PROV-O: The PROV Ontology](../CITATIONS.md#w3c-prov-o-2013)

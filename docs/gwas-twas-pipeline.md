@@ -231,13 +231,13 @@ provide set membership explicitly.
   [the compatibility roadmap](lme4-pedigreemm-roadmap.md).
 
 The source design was informed by the user-authorized GPU_eQTL repository, but
-this implementation is clean-room rather than copied source so JLinAlg can
+this implementation is clean-room rather than copied source so OmicsMatic can
 retain its GPL-3.0-or-later licensing.
 
 <!-- SCIENTIFIC-CITATIONS:START -->
 ## Scientific citations
 
-These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as JLinAlg when reporting results.
+These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as OmicsMatic when reporting results.
 
 - [Hyun Min Kang et al. (2010) — Variance component model to account for sample structure in genome-wide association studies](CITATIONS.md#kang-emmax-2010) — [PMID: 20208533](https://pubmed.ncbi.nlm.nih.gov/20208533/) · [PMCID: PMC3092069](https://pmc.ncbi.nlm.nih.gov/articles/PMC3092069/)
 - [Zhiwu Zhang et al. (2010) — Mixed linear model approach adapted for genome-wide association studies](CITATIONS.md#zhang-p3d-2010) — [PMID: 20208535](https://pubmed.ncbi.nlm.nih.gov/20208535/) · [PMCID: PMC2931336](https://pmc.ncbi.nlm.nih.gov/articles/PMC2931336/)

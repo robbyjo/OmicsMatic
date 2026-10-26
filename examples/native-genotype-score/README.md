@@ -21,7 +21,7 @@ output `WARNINGS.md`, sums, averages, observed/denominator alleles and orientati
 This is an arithmetic example, not a calibrated polygenic risk model.
 
 For a standard new source build, `gradlew.bat executableJar` writes
-`build/cli/jlinalg-0.3.7.jar`; substitute that path. No PLINK, Python or R runtime
+`build/cli/omicsmatic-0.3.7.jar`; substitute that path. No PLINK, Python or R runtime
 is needed by native scoring.
 
 `DiploidScoreExample.java` contains self-contained hand cases for supplied

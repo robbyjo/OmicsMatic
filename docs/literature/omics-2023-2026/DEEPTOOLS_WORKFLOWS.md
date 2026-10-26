@@ -371,7 +371,7 @@ paragraphs retain additional assay/settings evidence. Key distinctions include:
   R's inverse-normal `qnorm` function. UCSC bigWigMerge is a separate program.
 
 The eight-operation reference writer loads the original unmodified deepTools
-3.5.6 `getRatio.py` with NumPy scalar inputs, without JLinAlg result formulas or
+3.5.6 `getRatio.py` with NumPy scalar inputs, without OmicsMatic result formulas or
 an I/O stub. Frozen references and provenance are in
 `src/test/resources/deeptools`; `tools/literature/generate_deeptools_references.py`
 reproduces them from the pinned source. This is arithmetic validation, not

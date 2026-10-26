@@ -60,7 +60,7 @@ diagnostics; a successful build must not be described as warning-free.
 
 Separate raw `bdgpeakcall` and `bdgcmp ppois` smoke runs succeeded on small tracks.
 They do not validate the failed alignment-based caller, HMMRATAC, every score
-method or a JLinAlg adapter. The generic
+method or an OmicsMatic adapter. The generic
 [bdgpeakcall program](https://macs3-project.github.io/MACS/docs/bdgpeakcall.html)
 thresholds an already generated score track; it does not estimate the statistical
 background used by `callpeak`.

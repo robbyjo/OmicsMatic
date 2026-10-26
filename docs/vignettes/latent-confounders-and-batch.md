@@ -1,6 +1,6 @@
 # Latent confounders and known batch effects
 
-JLinAlg provides four sample-factor estimators and a separate known-batch
+OmicsMatic provides four sample-factor estimators and a separate known-batch
 adjuster. The matrix orientation is always **features by samples**: the first
 column contains feature IDs and the remaining header fields are sample IDs.
 Measurements must already be normalized and approximately continuous.
@@ -199,7 +199,7 @@ criteria, source provenance, performance choices, and unimplemented boundaries.
 <!-- SCIENTIFIC-CITATIONS:START -->
 ## Scientific citations
 
-These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as JLinAlg when reporting results.
+These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as OmicsMatic when reporting results.
 
 - [Jeffrey T. Leek and John D. Storey (2007) — Capturing heterogeneity in gene expression studies by surrogate variable analysis](../CITATIONS.md#leek-storey-2007) — [PMID: 17907809](https://pubmed.ncbi.nlm.nih.gov/17907809/) · [PMCID: PMC1994707](https://pmc.ncbi.nlm.nih.gov/articles/PMC1994707/)
 - [Oliver Stegle et al. (2012) — Using probabilistic estimation of expression residuals (PEER) to obtain increased power and interpretability of gene expression analyses](../CITATIONS.md#stegle-peer-2012) — [PMID: 22343431](https://pubmed.ncbi.nlm.nih.gov/22343431/) · [PMCID: PMC3398141](https://pmc.ncbi.nlm.nih.gov/articles/PMC3398141/)

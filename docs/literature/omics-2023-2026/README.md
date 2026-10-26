@@ -263,16 +263,16 @@ excludes concurrent uncommitted study-pipeline changes in the shared checkout.
 
 ```powershell
 .\gradlew.bat check executableJar --no-daemon --no-parallel
-java -jar build/cli/jlinalg-0.3.7.jar signature-score --help
-java -jar build/cli/jlinalg-0.3.7.jar intervals --help
-java -jar build/cli/jlinalg-0.3.7.jar cell-embed --help
-java -jar build/cli/jlinalg-0.3.7.jar sequence-qc --help
-java -jar build/cli/jlinalg-0.3.7.jar alignment-tools --help
-java -jar build/cli/jlinalg-0.3.7.jar hts-tools --help
-java -jar build/cli/jlinalg-0.3.7.jar read-align --help
-java -jar build/cli/jlinalg-0.3.7.jar gatk-tools --help
-java -jar build/cli/jlinalg-0.3.7.jar star-tools --help
-java -jar build/cli/jlinalg-0.3.7.jar genomic-signal --help
+java -jar build/cli/omicsmatic-0.3.7.jar signature-score --help
+java -jar build/cli/omicsmatic-0.3.7.jar intervals --help
+java -jar build/cli/omicsmatic-0.3.7.jar cell-embed --help
+java -jar build/cli/omicsmatic-0.3.7.jar sequence-qc --help
+java -jar build/cli/omicsmatic-0.3.7.jar alignment-tools --help
+java -jar build/cli/omicsmatic-0.3.7.jar hts-tools --help
+java -jar build/cli/omicsmatic-0.3.7.jar read-align --help
+java -jar build/cli/omicsmatic-0.3.7.jar gatk-tools --help
+java -jar build/cli/omicsmatic-0.3.7.jar star-tools --help
+java -jar build/cli/omicsmatic-0.3.7.jar genomic-signal --help
 ```
 
 ### Rank-based signature scores
@@ -282,7 +282,7 @@ column is `sample_id`, followed by finite measured feature values. Supply a GMT
 file containing signature name, description and unique feature IDs.
 
 ```powershell
-java -jar build/cli/jlinalg-0.3.7.jar signature-score --method ucell `
+java -jar build/cli/omicsmatic-0.3.7.jar signature-score --method ucell `
   --matrix src/test/resources/signature-scores/expression.tsv `
   --gene-sets src/test/resources/signature-scores/signatures.gmt `
   --max-rank 30 --out build/review-ucell-example
@@ -318,7 +318,7 @@ Coordinates are zero-based and half-open; intervals must be nonempty and IDs
 unique within an input. An augmented interval tree avoids an all-pairs scan.
 
 ```powershell
-java -jar build/cli/jlinalg-0.3.7.jar intervals --method intersect `
+java -jar build/cli/omicsmatic-0.3.7.jar intervals --method intersect `
   --input features.tsv --mask regulatory-regions.tsv --genome-build GRCh38 `
   --out build/review-intersections
 ```
@@ -338,7 +338,7 @@ and finite numeric component columns, typically PCA scores. Preprocessing is
 explicit: the command does not normalize counts, select features or run PCA.
 
 ```powershell
-java -jar build/cli/jlinalg-0.3.7.jar cell-embed --method tsne `
+java -jar build/cli/omicsmatic-0.3.7.jar cell-embed --method tsne `
   --matrix pca.tsv --perplexity 30 --iterations 1000 --seed 1 `
   --out build/review-tsne
 ```
@@ -386,7 +386,7 @@ seed, graph definition, result identities, input/output hashes and process logs.
 
 ```powershell
 python tools/literature/install_cell_dependencies.py --allow-install --allow-source-build
-java -jar build/cli/jlinalg-0.3.7.jar cell-embed --method umap `
+java -jar build/cli/omicsmatic-0.3.7.jar cell-embed --method umap `
   --matrix pca.tsv --python build/omics-cell-tools-env/Scripts/python.exe `
   --neighbors 15 --seed 1 --out build/review-umap
 ```
@@ -402,7 +402,7 @@ graphs. Exact graph construction has a documented work bound. Alternatively supp
 the original weighted graph directly:
 
 ```powershell
-java -jar build/cli/jlinalg-0.3.7.jar cell-embed --method leiden `
+java -jar build/cli/omicsmatic-0.3.7.jar cell-embed --method leiden `
   --nodes nodes.tsv --graph edges.tsv --resolution 1 --seed 17 `
   --python build/omics-cell-tools-env/Scripts/python.exe --out build/review-graph
 ```
@@ -455,16 +455,16 @@ options and strict SAM/BAM checks; it does not implement all Picard programs.
 
 ```powershell
 python tools/literature/install_picard.py --allow-download
-java -jar build/cli/jlinalg-0.3.7.jar alignment-tools --method sort `
+java -jar build/cli/omicsmatic-0.3.7.jar alignment-tools --method sort `
   --input aligned.sam --picard build/omics-picard/picard.jar `
   --create-index true --out build/review-sorted
-java -jar build/cli/jlinalg-0.3.7.jar alignment-tools --method mark-duplicates `
+java -jar build/cli/omicsmatic-0.3.7.jar alignment-tools --method mark-duplicates `
   --input build/review-sorted/alignment.bam --picard build/omics-picard/picard.jar `
   --remove-duplicates true --out build/review-deduplicated
-java -jar build/cli/jlinalg-0.3.7.jar alignment-tools --method validate `
+java -jar build/cli/omicsmatic-0.3.7.jar alignment-tools --method validate `
   --input build/review-deduplicated/alignment.bam --picard build/omics-picard/picard.jar `
   --out build/review-validation
-java -jar build/cli/jlinalg-0.3.7.jar alignment-tools --method alignment-summary `
+java -jar build/cli/omicsmatic-0.3.7.jar alignment-tools --method alignment-summary `
   --input build/review-deduplicated/alignment.bam --reference reference.fa `
   --picard build/omics-picard/picard.jar --out build/review-alignment-metrics
 ```
@@ -531,17 +531,17 @@ encoding. Each read is limited to ten million bases; processing streams without
 retaining the reads in memory.
 
 ```powershell
-java -jar build/cli/jlinalg-0.3.7.jar sequence-qc --method cutadapt `
+java -jar build/cli/omicsmatic-0.3.7.jar sequence-qc --method cutadapt `
   --python build/omics-sequence-tools-env/Scripts/python.exe `
   --reads R1.fastq.gz --reads2 R2.fastq.gz `
   --adapter3 AGATCGGAAGAGC --adapter3-2 AGATCGGAAGAGC `
   --minimum-length 20 --quality-cutoff 20 --out build/trimmed
 
-java -jar build/cli/jlinalg-0.3.7.jar sequence-qc --method fastqc `
+java -jar build/cli/omicsmatic-0.3.7.jar sequence-qc --method fastqc `
   --fastqc-home build/omics-fastqc/FastQC `
   --reads R1.fastq.gz --reads2 R2.fastq.gz --out build/read-qc
 
-java -jar build/cli/jlinalg-0.3.7.jar sequence-qc --method multiqc `
+java -jar build/cli/omicsmatic-0.3.7.jar sequence-qc --method multiqc `
   --python build/omics-sequence-tools-env/Scripts/python.exe `
   --reports qc-reports.tsv --out build/combined-qc
 ```
@@ -597,7 +597,7 @@ paper-specific option is reproduced.
 It exposes the P001 FASTX-Trimmer role as an independent post-adapter step:
 
 ```powershell
-java -jar build/cli/jlinalg-0.3.7.jar sequence-qc --method trim-fixed `
+java -jar build/cli/omicsmatic-0.3.7.jar sequence-qc --method trim-fixed `
   --reads build/trimmed/trimmed_R1.fastq.gz --first-base 2 `
   --out build/post-adapter-clipped
 ```
@@ -630,7 +630,7 @@ the R engine explicitly; no automatic result substitution occurs.
   tools/literature/install_harmony_dependencies.R `
   build/omics-harmony-r build/literature-review/harmony-r-dependency allow
 
-java -jar build/cli/jlinalg-0.3.7.jar cell-embed --method harmony --engine r `
+java -jar build/cli/omicsmatic-0.3.7.jar cell-embed --method harmony --engine r `
   --rscript 'C:/Program Files/R/R-4.6.1/bin/Rscript.exe' `
   --r-library build/omics-harmony-r --matrix pca.tsv `
   --metadata cells.tsv --batch batch --seed 1 --out build/harmony-r-results

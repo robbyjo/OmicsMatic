@@ -107,8 +107,8 @@ Use these settings only for R-backed network methods. Native methods reject
 From the repository root:
 
 ```shell
-java -jar build/cli/jlinalg-0.3.7.jar config --command network --config examples/followup/jlinalg.yaml
-java -jar build/cli/jlinalg-0.3.7.jar network --config examples/followup/jlinalg.yaml --lambda 0.2 --out build/followup/configured-sparse
+java -jar build/cli/omicsmatic-0.3.7.jar config --command network --config examples/followup/jlinalg.yaml
+java -jar build/cli/omicsmatic-0.3.7.jar network --config examples/followup/jlinalg.yaml --lambda 0.2 --out build/followup/configured-sparse
 ```
 
 The first command prints source paths/hashes and the configured argument expansion;
@@ -145,7 +145,7 @@ manager and LLM integration are not part of this addition.
 <!-- SCIENTIFIC-CITATIONS:START -->
 ## Scientific citations
 
-These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as JLinAlg when reporting results.
+These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as OmicsMatic when reporting results.
 
 - [Geir Kjetil Sandve et al. (2013) — Ten Simple Rules for Reproducible Computational Research](../CITATIONS.md#sandve-reproducibility-2013)
 

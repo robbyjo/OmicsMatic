@@ -25,10 +25,10 @@ use a new output directory. Native annotation needs no external runtime.
 ## Runtime and verification
 
 The authors provide MAGMA 1.10 for Windows x86_64. Their current terms prohibit
-redistribution and modification of its source and binaries. JLinAlg downloads the
+redistribution and modification of its source and binaries. OmicsMatic downloads the
 unmodified official archive into an ignored private build directory; the program,
 source and manual are not bundled in the executable JAR or repository. The authors
-request mailing-list subscription; JLinAlg sends no email. See the
+request mailing-list subscription; OmicsMatic sends no email. See the
 [official MAGMA page](https://cncr.nl/research/magma/) for terms and citation.
 
 ```powershell

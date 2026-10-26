@@ -1,18 +1,18 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Separate coefficient and prevalence corrections, and model sampling weights, strata and PSUs explicitly."><title>Rare-event and survey inference · JLinAlg</title>
+<meta name="description" content="Separate coefficient and prevalence corrections, and model sampling weights, strata and PSUs explicitly."><title>Rare-event and survey inference Â· OmicsMatic</title>
 <link rel="stylesheet" href="../assets/styles.css"><script src="../assets/app.js" defer></script></head>
 <body><site-header root="../"></site-header><main id="main">
 <section class="page-hero"><div class="container"><div class="breadcrumbs"><a href="../index.html">Home</a><span>/</span><a href="../vignettes/index.html">Vignettes</a><span>/</span><span>Rare-event and survey inference</span></div>
-<span class="eyebrow">CLI + Java · Source build</span><h1>Rare-event and survey inference</h1><p>Separate coefficient and prevalence corrections, and model sampling weights, strata and PSUs explicitly.</p></div></section>
+<span class="eyebrow">CLI + Java Â· Source build</span><h1>Rare-event and survey inference</h1><p>Separate coefficient and prevalence corrections, and model sampling weights, strata and PSUs explicitly.</p></div></section>
 <div class="container page-layout"><article class="prose"><p>Build these source additions with <code>./gradlew executableJar</code> (Windows:
 <code>.\gradlew.bat executableJar</code>). The examples use a synthetic 240-row fixture.
 Input is CSV/TSV with explicit numeric predictors and complete finite outcomes.
 Both commands include an intercept and write coefficient, metadata and log files.</p>
 <h2 id="rare-event-logistic-coefficient-and-prevalence-corrections">Rare-event logistic coefficient and prevalence corrections</h2>
-<div class="code-window"><div class="code-bar"><span>shell</span></div><pre><code>java -jar build/cli/jlinalg-0.3.7.jar rare-events-logit --input src/test/resources/r-reference/regression-inference/survey.tsv --response rare --predictors c,z1 --out build/inference/rare-bias.tsv
-java -jar build/cli/jlinalg-0.3.7.jar rare-events-logit --input src/test/resources/r-reference/regression-inference/survey.tsv --response rare --predictors c,z1 --bias-correction false --prevalence 0.04 --out build/inference/rare-prior.tsv
-java -jar build/cli/jlinalg-0.3.7.jar rare-events-logit --input src/test/resources/r-reference/regression-inference/survey.tsv --response rare --predictors c,z1 --prevalence 0.04 --out build/inference/rare-both.tsv
+<div class="code-window"><div class="code-bar"><span>shell</span></div><pre><code>java -jar build/cli/omicsmatic-0.3.7.jar rare-events-logit --input src/test/resources/r-reference/regression-inference/survey.tsv --response rare --predictors c,z1 --out build/inference/rare-bias.tsv
+java -jar build/cli/omicsmatic-0.3.7.jar rare-events-logit --input src/test/resources/r-reference/regression-inference/survey.tsv --response rare --predictors c,z1 --bias-correction false --prevalence 0.04 --out build/inference/rare-prior.tsv
+java -jar build/cli/omicsmatic-0.3.7.jar rare-events-logit --input src/test/resources/r-reference/regression-inference/survey.tsv --response rare --predictors c,z1 --prevalence 0.04 --out build/inference/rare-both.tsv
 </code></pre></div>
 <p>Responses must be individual 0/1 observations. <code>--bias-correction true</code> is the
 default King–Zeng first-order coefficient correction. <code>--prevalence</code> separately
@@ -32,8 +32,8 @@ Supply a unit intercept as the first design column and <code>null</code> to omit
 adjustment. The result exposes the coefficient-bias vector and prior shift
 separately from the corrected coefficients.</p>
 <h2 id="survey-regression-with-weights-strata-and-psus">Survey regression with weights, strata and PSUs</h2>
-<div class="code-window"><div class="code-bar"><span>shell</span></div><pre><code>java -jar build/cli/jlinalg-0.3.7.jar survey-regression --input src/test/resources/r-reference/regression-inference/survey.tsv --response y --predictors c,z1 --weights weight --strata stratum --psu cluster --family gaussian --out build/inference/survey-gaussian.tsv
-java -jar build/cli/jlinalg-0.3.7.jar survey-regression --input src/test/resources/r-reference/regression-inference/survey.tsv --response rare --predictors c,z1 --weights weight --strata stratum --psu cluster --family logit --out build/inference/survey-logit.tsv
+<div class="code-window"><div class="code-bar"><span>shell</span></div><pre><code>java -jar build/cli/omicsmatic-0.3.7.jar survey-regression --input src/test/resources/r-reference/regression-inference/survey.tsv --response y --predictors c,z1 --weights weight --strata stratum --psu cluster --family gaussian --out build/inference/survey-gaussian.tsv
+java -jar build/cli/omicsmatic-0.3.7.jar survey-regression --input src/test/resources/r-reference/regression-inference/survey.tsv --response rare --predictors c,z1 --weights weight --strata stratum --psu cluster --family logit --out build/inference/survey-logit.tsv
 </code></pre></div>
 <p>Here <code>weight</code> contains positive sampling weights; <code>stratum</code> identifies sampling
 strata and <code>cluster</code> identifies primary sampling units (PSUs). PSU labels are
@@ -66,7 +66,7 @@ int df = fit.degreesOfFreedom();
   <div class="container narrow">
     <span class="eyebrow">Scientific foundations</span>
     <h2 id="scientific-citations-sampling-models">Primary method citations</h2>
-    <p>Cite the relevant method publication as well as JLinAlg when reporting results from this workflow.</p>
+    <p>Cite the relevant method publication as well as OmicsMatic when reporting results from this workflow.</p>
     <ul class="citation-links">
       <li><a href="../citations.html#king-zeng-2001">King (2001) — rare-events logistic regression</a></li><li><a href="../citations.html#king-zeng-isq-2001">King (2001) — case-control sampling</a></li><li><a href="../citations.html#lumley-survey-2004">Lumley (2004) — survey regression</a></li>
     </ul>

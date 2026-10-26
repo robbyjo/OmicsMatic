@@ -28,7 +28,7 @@ under the regular asymptotic moment model. Parameter covariance is
 ## Fit the synthetic example
 
 ```powershell
-java -jar build/cli/jlinalg-0.3.7.jar genomic-factor --s examples/xwas/factor-S.tsv --v examples/xwas/factor-V.tsv --traits A,B,C,D --out build/xwas/factor.tsv
+java -jar build/cli/omicsmatic-0.3.7.jar genomic-factor --s examples/xwas/factor-S.tsv --v examples/xwas/factor-V.tsv --traits A,B,C,D --out build/xwas/factor.tsv
 ```
 
 `OUT` contains loadings, residual genetic variances and their standard errors.
@@ -39,7 +39,7 @@ java -jar build/cli/jlinalg-0.3.7.jar genomic-factor --s examples/xwas/factor-S.
 To use LDSC output instead:
 
 ```powershell
-java -jar build/cli/jlinalg-0.3.7.jar genomic-factor --s build/xwas/ldsc.tsv.S.tsv --v build/xwas/ldsc.tsv.V.tsv --traits A,B,C,D --out build/xwas/ldsc-factor.tsv
+java -jar build/cli/omicsmatic-0.3.7.jar genomic-factor --s build/xwas/ldsc.tsv.S.tsv --v build/xwas/ldsc.tsv.V.tsv --traits A,B,C,D --out build/xwas/ldsc-factor.tsv
 ```
 
 S must be positive semidefinite and V positive definite. Negative genetic
@@ -59,7 +59,7 @@ usually require off-diagonal terms. This command assumes that the supplied
 error correlation applies across the scanned SNPs.
 
 ```powershell
-java -jar build/cli/jlinalg-0.3.7.jar genomic-factor --s examples/xwas/factor-S.tsv --v examples/xwas/factor-V.tsv --traits A,B,C,D --gwas examples/xwas/factor-gwas.tsv --sampling-correlation examples/xwas/sampling-correlation.tsv --out build/xwas/factor-scan.tsv
+java -jar build/cli/omicsmatic-0.3.7.jar genomic-factor --s examples/xwas/factor-S.tsv --v examples/xwas/factor-V.tsv --traits A,B,C,D --gwas examples/xwas/factor-gwas.tsv --sampling-correlation examples/xwas/sampling-correlation.tsv --out build/xwas/factor-scan.tsv
 ```
 
 `OUT.gwas.tsv` reports unadjusted p-values and the GLS common-factor effect
@@ -99,7 +99,7 @@ See [independent R validation](../xwas-followup-validation.md).
 <!-- SCIENTIFIC-CITATIONS:START -->
 ## Scientific citations
 
-These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as JLinAlg when reporting results.
+These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as OmicsMatic when reporting results.
 
 - [Brendan K. Bulik-Sullivan et al. (2015) — An atlas of genetic correlations across human diseases and traits](../CITATIONS.md#bulik-sullivan-rg-2015) — [PMID: 26414676](https://pubmed.ncbi.nlm.nih.gov/26414676/) · [PMCID: PMC4797329](https://pmc.ncbi.nlm.nih.gov/articles/PMC4797329/)
 - [Andrew D. Grotzinger et al. (2019) — Genomic structural equation modelling provides insights into the multivariate genetic architecture of complex traits](../CITATIONS.md#grotzinger-genomic-sem-2019) — [PMID: 30962613](https://pubmed.ncbi.nlm.nih.gov/30962613/) · [PMCID: PMC6520146](https://pmc.ncbi.nlm.nih.gov/articles/PMC6520146/)

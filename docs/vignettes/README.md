@@ -1,4 +1,4 @@
-# JLinAlg vignettes
+# OmicsMatic vignettes
 
 The source-build [250-paper omics/GWAS toolbox review](../literature/omics-2023-2026/README.md)
 includes a searchable paper/tool catalog, native signature/interval workflows,

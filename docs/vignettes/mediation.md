@@ -144,7 +144,7 @@ the matching Java task is:
   benchmarkMediation
 ```
 
-The OLS rows compare base R `lm` point estimates with JLinAlg's analytic
+The OLS rows compare base R `lm` point estimates with OmicsMatic's analytic
 `a`, `b`, indirect, direct, and total effects. The optional `lme4` block
 compares mixed-effect fixed effects. Run the R script with the same row and
 group counts on a host with R and `lme4`; timings are workload- and
@@ -167,7 +167,7 @@ or posterior simulation from an R mediation package.
 <!-- SCIENTIFIC-CITATIONS:START -->
 ## Scientific citations
 
-These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as JLinAlg when reporting results.
+These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as OmicsMatic when reporting results.
 
 - [Reuben M. Baron and David A. Kenny (1986) — The moderator-mediator variable distinction in social psychological research](../CITATIONS.md#baron-kenny-1986)
 - [Michael E. Sobel (1982) — Asymptotic confidence intervals for indirect effects in structural equation models](../CITATIONS.md#sobel-1982)

@@ -59,9 +59,9 @@ jobs:
         run: |
           mkdir -p build/release
           VERSION="${RELEASE_TAG#v}"
-          cp "build/cli/jlinalg-$VERSION.jar" build/release/
-          cp "build/libs/JLinAlg-$VERSION.jar" "build/release/JLinAlg-$VERSION-library.jar"
-          cp "build/libs/JLinAlg-$VERSION-sources.jar" "build/libs/JLinAlg-$VERSION-javadoc.jar" build/release/
+          cp "build/cli/omicsmatic-$VERSION.jar" build/release/
+          cp "build/libs/omicsmatic-$VERSION.jar" "build/release/omicsmatic-$VERSION-library.jar"
+          cp "build/libs/omicsmatic-$VERSION-sources.jar" "build/libs/omicsmatic-$VERSION-javadoc.jar" build/release/
           (cd build/release && sha256sum *.jar > SHA256SUMS.txt)
           awk 'BEGIN {sections=0} /^# / {sections++; if(sections>1) exit} {print}' RELEASE_NOTES.md > build/release-notes.md
       - name: Publish GitHub release
@@ -76,6 +76,6 @@ jobs:
             gh release create "$RELEASE_TAG" \
               build/release/* \
               --verify-tag \
-              --title "JLinAlg $RELEASE_TAG" \
+              --title "OmicsMatic $RELEASE_TAG" \
               --notes-file build/release-notes.md
           fi

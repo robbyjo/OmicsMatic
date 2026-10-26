@@ -55,7 +55,7 @@ For follow-up beyond replication and meta-analysis, see the [bioinformatics evid
 ## What you will build
 
 The example begins with two association-result tables rather than participant
-matrices. JLinAlg will standardize the inputs, compare discovery and replication
+matrices. OmicsMatic will standardize the inputs, compare discovery and replication
 effects, perform fixed-effect meta-analysis, run deterministic diagnostics, and
 write a traceable report. Every committed step is represented in the event
 ledger and the readable research notebook.
@@ -66,7 +66,7 @@ matrices, has more cohorts or tissues, or stops at a later evidence stage.
 
 The checked-in fixture uses `analysis.mode: manual` to stay small and completely
 offline. In a production study, omit that field or set `mode: auto`. Explicit
-goals then become the minimum requested work, and JLinAlg adds eligible
+goals then become the minimum requested work, and OmicsMatic adds eligible
 association, replication, meta-analysis, enrichment, genetic-evidence,
 literature, diagnostic, prioritization, and report branches from the objective
 and declared inputs.
@@ -76,7 +76,7 @@ block defaults to an audited manual browser handoff for bounded advice,
 literature review and a first manuscript draft. Explicit alternatives include
 OpenAI Responses, Gemini GenerateContent and OpenAI-compatible Chat Completions
 with an API key or provider-issued OAuth bearer token. Browser transcripts and
-citations are human-attested, not authenticated provider output. JLinAlg retains
+citations are human-attested, not authenticated provider output. OmicsMatic retains
 control. MCP, provider-specific OAuth login/refresh, general pipeline local-model
 adapters and autonomous LLM orchestration remain future work. The `llm` actor
 option alone never enables a call.
@@ -244,7 +244,7 @@ A selected-only export must retain the original complete-family `adjusted_p`,
 declare `family.coverage: selected_only`, the original `tested_count`, correction
 method and `adjusted_p_from_full_family: true`. For example, a row with
 `p_value: 0.000001` and source `adjusted_p: 0.4` remains unselected at 0.05.
-JLinAlg must not recompute BH on the selected rows or on their overlap with
+OmicsMatic must not recompute BH on the selected rows or on their overlap with
 validation results. Complete imported families preserve their source correction,
 including BY, Bonferroni or NONE, even when validation uses BH.
 
@@ -270,8 +270,8 @@ reproduce or certify the original analysis.
 Run the independent offline software regression with:
 
 ```powershell
-python -B examples/study-pipeline/frozen-discovery-workflow.py run build/frozen-discovery-example --jar build/cli/jlinalg-0.3.7.jar
-python -B examples/study-pipeline/frozen-discovery-workflow.py verify build/frozen-discovery-example --jar build/cli/jlinalg-0.3.7.jar
+python -B examples/study-pipeline/frozen-discovery-workflow.py run build/frozen-discovery-example --jar build/cli/omicsmatic-0.3.7.jar
+python -B examples/study-pipeline/frozen-discovery-workflow.py verify build/frozen-discovery-example --jar build/cli/omicsmatic-0.3.7.jar
 ```
 
 It checks selected-only and complete source families, native discovery pooling,
@@ -355,7 +355,7 @@ discovery reference requires a placeholder file, a reconstructed association fit
 or retrospective participant QC. `analysis-references.tsv` records reference
 ownership separately from actual harmonized cohort tables. Ordinary dataset
 stages retain their file requirements. A missing supplied file holds its import
-while independent work can proceed; JLinAlg does not select a native discovery
+while independent work can proceed; OmicsMatic does not select a native discovery
 replacement.
 
 Before validation uses an imported discovery pool, `discovery-scope-audit.yaml`
@@ -386,8 +386,8 @@ a supplied all-cohort primary meta-analysis remains a separate typed import.
 Run the offline acceptance example with:
 
 ```powershell
-python -B examples/study-pipeline/discovery-scope-workflow.py run build/discovery-scope-example --jar build/cli/jlinalg-0.3.7.jar
-python -B examples/study-pipeline/discovery-scope-workflow.py verify build/discovery-scope-example --jar build/cli/jlinalg-0.3.7.jar
+python -B examples/study-pipeline/discovery-scope-workflow.py run build/discovery-scope-example --jar build/cli/omicsmatic-0.3.7.jar
+python -B examples/study-pipeline/discovery-scope-workflow.py verify build/discovery-scope-example --jar build/cli/omicsmatic-0.3.7.jar
 ```
 
 It independently checks native validation coefficients, SEs, P values and sample
@@ -507,8 +507,8 @@ limitations; they provide study context rather than independent replication.
 Run the offline synthetic verifier with NumPy, SciPy and PyYAML:
 
 ```powershell
-python -B examples/study-pipeline/gwas-diagnostics-workflow.py run build/gwas-diagnostic-example --jar build/cli/jlinalg-0.3.7.jar
-python -B examples/study-pipeline/gwas-diagnostics-workflow.py verify build/gwas-diagnostic-example --jar build/cli/jlinalg-0.3.7.jar
+python -B examples/study-pipeline/gwas-diagnostics-workflow.py run build/gwas-diagnostic-example --jar build/cli/omicsmatic-0.3.7.jar
+python -B examples/study-pipeline/gwas-diagnostics-workflow.py verify build/gwas-diagnostic-example --jar build/cli/omicsmatic-0.3.7.jar
 ```
 
 The cases include native OLS, two-cohort pooling, supplied complete/selected
@@ -572,7 +572,7 @@ supplied_results:
 ```
 
 With dataset `a` bound to `graph_a` as an `analysis_reference` and a processed
-matrix dataset `b` in cohort B, JLinAlg reuses A's graph/memberships and fits
+matrix dataset `b` in cohort B, OmicsMatic reuses A's graph/memberships and fits
 only B's graph. It plans modules and module GO separately for each source.
 Available raw data for A do not cause its supplied graph to be refitted. A
 single supplied graph covering A and C remains one graph; its edges are not
@@ -598,8 +598,8 @@ general disclosure or scientific-validity certification.
 Run the offline synthetic acceptance with NumPy, SciPy and PyYAML:
 
 ```powershell
-python -B examples/study-pipeline/scoped-supplied-workflow.py run build/scoped-supplied-example --jar build/cli/jlinalg-0.3.7.jar
-python -B examples/study-pipeline/scoped-supplied-workflow.py verify build/scoped-supplied-example --jar build/cli/jlinalg-0.3.7.jar
+python -B examples/study-pipeline/scoped-supplied-workflow.py run build/scoped-supplied-example --jar build/cli/omicsmatic-0.3.7.jar
+python -B examples/study-pipeline/scoped-supplied-workflow.py verify build/scoped-supplied-example --jar build/cli/omicsmatic-0.3.7.jar
 ```
 
 It checks partial/all-supplied graph reuse, missing native work, signed residual
@@ -843,8 +843,8 @@ not suppress missing native comparisons.
 Run the offline NumPy/SciPy/PyYAML acceptance:
 
 ```powershell
-python -B examples/study-pipeline/network-preservation-workflow.py run build/network-preservation-example --jar build/cli/jlinalg-0.3.7.jar
-python -B examples/study-pipeline/network-preservation-workflow.py verify build/network-preservation-example --jar build/cli/jlinalg-0.3.7.jar
+python -B examples/study-pipeline/network-preservation-workflow.py run build/network-preservation-example --jar build/cli/omicsmatic-0.3.7.jar
+python -B examples/study-pipeline/network-preservation-workflow.py verify build/network-preservation-example --jar build/cli/omicsmatic-0.3.7.jar
 ```
 
 Its synthetic fixtures include native residual-correlation graphs, supplied and
@@ -1518,7 +1518,7 @@ distinct groups, Results links, explicit overrides and required partial-region
 caveats. This structural review does not certify biological interpretation or
 source appraisal. Incomplete current assessments remain review needs.
 
-The reproducible [impact protocol fixture](https://github.com/robbyjo/JLinAlg/blob/main/examples/study-pipeline/impact-workflow.py)
+The reproducible [impact protocol fixture](https://github.com/robbyjo/OmicsMatic/blob/main/examples/study-pipeline/impact-workflow.py)
 uses an explicitly labeled deterministic loopback server. It tests transport,
 cross-batch coverage, source/FDR lineage and manuscript gating; it does not run
 a real AI model or create human disclosure attestations.
@@ -1532,7 +1532,7 @@ bad association, and summary statistics cannot establish the cause. Do not hide
 these points by clipping a plot or choose exclusions to improve correlation or
 significance. Inspect predictor variation, units and upstream fit diagnostics.
 
-JLinAlg now applies an auditable, conservative effect-size QC screen to supplied
+OmicsMatic now applies an auditable, conservative effect-size QC screen to supplied
 association results during harmonization and to newly fitted association results
 before annotation. The defaults are:
 
@@ -1663,7 +1663,7 @@ can trigger the existing public metadata download to resolve gene names. This
 metadata provider does **not** supply genomic intervals: provide a local GTF or
 annotation table for those. Lifted GRCh37 and nonhuman resources require explicit
 local annotations. Resource/source hashes and declarations are recorded.
-JLinAlg does not infer genome build from a gene symbol, CpG probe, or rsID.
+OmicsMatic does not infer genome build from a gene symbol, CpG probe, or rsID.
 GWAS result tables with explicit chromosome/position columns can supply their
 own coordinates once build and coordinate convention are declared.
 
@@ -1704,10 +1704,10 @@ with provenance, and approve the resulting plan. Subgroup analyses additionally
 need enough cohorts and relevant metadata; result-only inputs cannot refit
 participant-level covariate or batch-adjustment models.
 
-## Advisory AI while JLinAlg controls execution
+## Advisory AI while OmicsMatic controls execution
 
 An optional advisor can suggest related phenotypes or sensitivity analyses
-without receiving execution authority. JLinAlg constructs a bounded request,
+without receiving execution authority. OmicsMatic constructs a bounded request,
 asks an official API for structured advice, and checks proposed operations against registered methods,
 available inputs, and the approved plan. Gemini supports JSON-schema-constrained
 [structured outputs](https://ai.google.dev/gemini-api/docs/structured-output);
@@ -1717,7 +1717,7 @@ A general-topic request might contain only a public phenotype term, modality,
 and tissue, with no cohort names, gene hit list, statistics, file paths, study
 description, or patient records. More detailed advice may require a separately
 permitted aggregate-results request. Even a topic-only request discloses the
-research topic; keeping execution in JLinAlg does not remove that transmission.
+research topic; keeping execution in OmicsMatic does not remove that transmission.
 `deny_all` must prohibit all remote advisor requests. A local model can be used
 under a no-network policy. Provider terms depend on the selected service and
 configuration; assess the [Gemini API terms](https://ai.google.dev/gemini-api/terms)
@@ -1726,7 +1726,7 @@ when implementing the connector.
 Advice should include proposed action, rationale, evidence sources, required
 inputs, expected benefit, and limitations. Exact prompts/responses, model ID,
 timestamps, disclosure manifests, and accepted/rejected decisions enter the
-audit trail. JLinAlg may execute already-approved, eligible operations; new
+audit trail. OmicsMatic may execute already-approved, eligible operations; new
 phenotypes, hypotheses, or changes to the estimand require an amendment. An
 empty valid response, an unavailable provider, denied transmission, and a search
 that was never run have different recorded dispositions. When public catalogs
@@ -1874,7 +1874,7 @@ inferred. Instructions and returned HTML-like text are escaped, not executed.
 
 ### Explaining observed results from the study contract
 
-JLinAlg records `study-context-review.yaml` for advisor requests and manuscript
+OmicsMatic records `study-context-review.yaml` for advisor requests and manuscript
 revisions. It compares declared tissues, compartments, assays, preparation,
 population metadata, upstream models, covariates, technical factors, scales,
 annotation versions and cohort relationships. Missing values are unknown, not
@@ -1993,7 +1993,7 @@ From the repository root, build the executable JAR:
 
 ~~~powershell
 .\gradlew.bat executableJar
-$jar = (Resolve-Path "build/cli/jlinalg-0.3.7.jar").Path
+$jar = (Resolve-Path "build/cli/omicsmatic-0.3.7.jar").Path
 ~~~
 
 Copy the example to a disposable working directory so the checked-in files stay
@@ -2005,7 +2005,7 @@ Copy-Item "examples/study-pipeline" $project -Recurse
 Set-Location $project
 ~~~
 
-If that destination already exists, choose another empty directory. JLinAlg
+If that destination already exists, choose another empty directory. OmicsMatic
 protects approved contracts and completed artifacts against silent overwrite.
 
 The full lifecycle can be run in one command:
@@ -2122,7 +2122,7 @@ come from the plan and should be discovered from the manifest rather than
 hard-coded in a downstream script.
 
 For `mode: auto`, functional and genetic follow-up branches are independent.
-JLinAlg runs local GO and Reactome enrichment when feature mapping is available;
+OmicsMatic runs local GO and Reactome enrichment when feature mapping is available;
 `annotation_release: GENCODE_v48`, for example, permits an audited public
 GENCODE transcript-ranking and HGNC-symbol mapping download. Public references
 are fetched by the HTTP client embedded in the executable JAR; curl, Python,
@@ -2435,7 +2435,7 @@ must correctly classify results; this is not general-purpose PHI detection.
 `deny_all` blocks every remote advisory request, including topic-only requests,
 and `--offline` also blocks built-in reference downloads.
 
-JLinAlg cannot truthfully prove that unrelated software, a separately launched
+OmicsMatic cannot truthfully prove that unrelated software, a separately launched
 agent, a shell command, or a user copied no data elsewhere. A defensible project
 claim therefore needs both application evidence and enforcement outside the
 application.
@@ -2443,7 +2443,7 @@ application.
 ### A controlled aggregate-results disclosure design
 
 A future LLM integration should never give a model process unrestricted access
-to the study directory. Instead, JLinAlg should implement a release boundary:
+to the study directory. Instead, OmicsMatic should implement a release boundary:
 
 ~~~text
 restricted project data
@@ -2586,7 +2586,7 @@ than claim end-to-end non-egress.
 For the full contract, amendment, provenance, and operation-registry design, see
 the [auditable omics research pipeline vignette](auditable-omics-pipeline.md).
 The runnable files are in the
-[study-pipeline example](https://github.com/robbyjo/JLinAlg/tree/main/examples/study-pipeline).
+[study-pipeline example](https://github.com/robbyjo/OmicsMatic/tree/main/examples/study-pipeline).
 
 ## Compatible effects and covariance-aware pooling
 
@@ -2911,7 +2911,7 @@ an interface.
 Residue substitutions may be registered as `variants` with `id`, `position`,
 `ref`, `alt`. REF must match the exact target. A `genomic_variant` additionally
 requires an exact matching target `transcript_id` and `mapping_provenance`;
-JLinAlg does not guess a genome-to-protein translation. All exact peptide
+OmicsMatic does not guess a genome-to-protein translation. All exact peptide
 occurrences are reported; one occurrence within a target does not establish
 proteome-wide uniqueness. Neither peptide/variant context nor pLDDT supplies a
 pathogenicity or causal-effect score.
@@ -2941,9 +2941,9 @@ no confidence-ranked subset is silently selected.
 Run the independent acceptance bundle with:
 
 ```powershell
-python examples/study-pipeline/protein-workflow.py run build/my-protein-check --jar build/cli/jlinalg-0.3.7.jar
+python examples/study-pipeline/protein-workflow.py run build/my-protein-check --jar build/cli/omicsmatic-0.3.7.jar
 # Optional live public TP53 retrieval, distinct from synthetic configured prediction:
-python examples/study-pipeline/protein-workflow.py run build/my-protein-live-check --jar build/cli/jlinalg-0.3.7.jar --live
+python examples/study-pipeline/protein-workflow.py run build/my-protein-live-check --jar build/cli/omicsmatic-0.3.7.jar --live
 ```
 
 The verifier pins the executable and its own source before execution, independently
@@ -3123,7 +3123,7 @@ the completed source table is retained; it cannot supply a negative alert for
 conditional omission. Original statistical calculations are not rerun by import.
 
 ```powershell
-python examples/study-pipeline/cohort-diagnostics-workflow.py run build/my-cohort-check --jar build/cli/jlinalg-0.3.7.jar
+python examples/study-pipeline/cohort-diagnostics-workflow.py run build/my-cohort-check --jar build/cli/omicsmatic-0.3.7.jar
 ```
 
 The independent offline verifier pins the executable and its own source before
@@ -3293,7 +3293,7 @@ independent SuSiE/LD calibration, broader assay/source adapters and full manuscr
 claim validation remain separate verification requirements.
 
 ```powershell
-python examples/study-pipeline/colocalization-workflow.py run build/my-coloc-check --jar build/cli/jlinalg-0.3.7.jar
+python examples/study-pipeline/colocalization-workflow.py run build/my-coloc-check --jar build/cli/omicsmatic-0.3.7.jar
 ```
 
 This verifier pins its own source and the executable before running. Fifteen offline
@@ -3365,7 +3365,7 @@ These scopes do not silently become manuscript primary association findings.
 The offline executable check is:
 
 ```powershell
-python examples/study-pipeline/primary-results-workflow.py run build/primary-acceptance-new --jar build/cli/jlinalg-0.3.7.jar
+python examples/study-pipeline/primary-results-workflow.py run build/primary-acceptance-new --jar build/cli/omicsmatic-0.3.7.jar
 ```
 
 It pins the executable and executing verifier before generating synthetic cases.
@@ -3664,8 +3664,8 @@ verifier and rational-enumeration fixtures before execution. Run it with a new
 output directory and verify using the same pinned JAR:
 
 ```powershell
-python examples/study-pipeline/exact-conditional-workflow.py run build/exact-example --jar build/cli/jlinalg-0.3.7.jar
-python examples/study-pipeline/exact-conditional-workflow.py verify build/exact-example --jar build/cli/jlinalg-0.3.7.jar
+python examples/study-pipeline/exact-conditional-workflow.py run build/exact-example --jar build/cli/omicsmatic-0.3.7.jar
+python examples/study-pipeline/exact-conditional-workflow.py verify build/exact-example --jar build/cli/omicsmatic-0.3.7.jar
 ```
 
 These fixtures test finite null masses and state/metadata propagation; they
@@ -3721,7 +3721,7 @@ likelihood or unregistered unpenalized binary fit is never substituted.
 Alpha 0 is ridge, 1 is lasso, and intermediate values are elastic net. The
 standard elastic-net objective is described by
 [Friedman, Hastie and Tibshirani](https://doi.org/10.18637/jss.v033.i01).
-JLinAlg uses bounded cyclic coordinate proximal-gradient steps with the global
+OmicsMatic uses bounded cyclic coordinate proximal-gradient steps with the global
 logistic one-quarter curvature bound and a recorded KKT stopping tolerance.
 This implementation is independently checked against convex SciPy optimization;
 it is not a claim of complete glmnet path/option parity. Tolerance and KKT
@@ -3800,8 +3800,8 @@ optimizer limits and incomplete related-test families. The original quantitative
 import workflow remains separately checked.
 
 ```powershell
-python examples/study-pipeline/binary-risk-score-workflow.py run build/binary-score-example --jar build/cli/jlinalg-0.3.7.jar
-python examples/study-pipeline/binary-risk-score-workflow.py verify build/binary-score-example --jar build/cli/jlinalg-0.3.7.jar
+python examples/study-pipeline/binary-risk-score-workflow.py run build/binary-score-example --jar build/cli/omicsmatic-0.3.7.jar
+python examples/study-pipeline/binary-risk-score-workflow.py verify build/binary-score-example --jar build/cli/omicsmatic-0.3.7.jar
 ```
 
 
@@ -3977,7 +3977,7 @@ external analysis was not reproduced.
 Run the offline packaged acceptance with a new output directory:
 
 ```powershell
-python examples/study-pipeline/gwas-enrichment-workflow.py run build/my-sldsc-acceptance --jar build/cli/jlinalg-0.3.7.jar
+python examples/study-pipeline/gwas-enrichment-workflow.py run build/my-sldsc-acceptance --jar build/cli/omicsmatic-0.3.7.jar
 ```
 
 The retained bundle pins the executable, verifier, independent QR reference and
@@ -4422,7 +4422,7 @@ do not constitute scientific source appraisal or independent replication.
 ## Complete missing MR features from supplied contributions
 
 Use `role: contribution` when an external MR analysis covers explicit molecular
-features and JLinAlg should complete the remaining eligible features. A supplied
+features and OmicsMatic should complete the remaining eligible features. A supplied
 `role: primary` still replaces the whole MR stage. Contributions currently
 support MR; they do not silently combine arbitrary partial analyses from other
 stages. The contribution requests a native MR completion operation even in a
@@ -4677,7 +4677,7 @@ Coverage has three explicit dispositions:
   requires `greater_than_or_equal`. A source exported at strictly greater
   than the same cutoff cannot establish coverage at the equality boundary.
   This disposition relies on reviewed source-declared export completeness;
-  JLinAlg does not reproduce it from participant genotypes.
+  OmicsMatic does not reproduce it from participant genotypes.
 - `positive_edges_only`: observed links are usable descriptively, but absence
   of a pair establishes no zero-LD value or independence.
 
@@ -5202,7 +5202,7 @@ defines the normalized version-1 packet. It records:
 - The KING between-family estimator, cutoff, action, source pair/support counts
   and explicit independent-basis/retained-population assertions. The current
   adapter requires the registered cutoff/action and support floors to agree.
-  These declarations remain source-reported; JLinAlg does not recompute the
+  These declarations remain source-reported; OmicsMatic does not recompute the
   source pairs or prove that its calibration and basis assertions are correct.
   Native hash-sampling, MAF, marker-call-rate and LD defaults are not attributed
   to an imported source. Its own declared filter/method parameters remain
@@ -5249,7 +5249,7 @@ to make a smaller native PCA problem fit.
 The supplied score table uses `sample_id` and the component names declared in
 `pca.columns`, for example `PC1`, `PC2`. Requested columns must be finite, IDs
 unique and all source-QC-retained samples covered. Extra projected scores may
-belong to source-QC-excluded members of the same matrix population. JLinAlg
+belong to source-QC-excluded members of the same matrix population. OmicsMatic
 normalizes requested components to the registered output names (`GPC1`,
 `GPC2` by default), joins by ID and never overwrites existing phenotype columns.
 `include_pcs: false` retains requested imported scores as diagnostics without
@@ -5294,7 +5294,7 @@ and attempts; a changed source hash invalidates reuse. An import work budget
 can likewise be explicitly amended. The offline acceptance script is:
 
 ```powershell
-python -B examples/study-pipeline/external-genotype-qc-workflow.py run build/external-qc-example --jar build/cli/jlinalg-0.3.7.jar
+python -B examples/study-pipeline/external-genotype-qc-workflow.py run build/external-qc-example --jar build/cli/omicsmatic-0.3.7.jar
 ```
 
 It pins its executable, verifier, source generator and numerical fixtures before
@@ -5411,7 +5411,7 @@ source bytes, hashes and the bounded safe-reader restrictions are retained.
 Use `role: primary` and `reported_status: complete` when the supplied literature
 stage should be reused in full. This can be a bibliography without search
 records; its references become usable while search coverage remains explicitly
-unestablished. JLinAlg honors that whole-stage choice and does not invent searches
+unestablished. OmicsMatic honors that whole-stage choice and does not invent searches
 to explain it. To finish partly completed searches, use `role: contribution` and
 register the exact input hash:
 
@@ -5589,7 +5589,7 @@ java -jar jlinalg.jar study references references.yaml --project STUDY --out REF
 
 The existing public-download/network policy applies; only public reference
 identifiers enter requests. Exact metadata matches must supply one unambiguous
-PMCID. JLinAlg requests its Europe PMC JATS XML, checks DOI/PMID identity, rejects
+PMCID. OmicsMatic requests its Europe PMC JATS XML, checks DOI/PMID identity, rejects
 external XML entities/DTDs, and retains the raw response, audit, license, text and
 hashes. The projection contains abstract/body text and textual captions, without
 inspecting image pixels or fetching external supplements. Text retrieval failure
@@ -6045,7 +6045,7 @@ FAF/grpmax, an allele-frequency confidence bound, pathogenicity classification o
 automatic ancestry inference. The [REGENIE AAF/mask documentation](https://rgcgithub.github.io/regenie/options/)
 uses ALT-specific frequencies. The [gnomAD v4.1 documentation](https://gnomad.broadinstitute.org/news/2024-04-gnomad-v4-1/)
 explains why an unobserved variant needs callable-site AN before zero counts can
-be interpreted. Prepare a correctly allele-resolved export; JLinAlg does not
+be interpreted. Prepare a correctly allele-resolved export; OmicsMatic does not
 download/convert a gnomAD release or infer absence/coverage from VCF omission.
 
 If every allele is conclusively excluded, the mask stage records an empty
@@ -6820,7 +6820,7 @@ workflow.
 <!-- SCIENTIFIC-CITATIONS:START -->
 ## Scientific citations
 
-These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as JLinAlg when reporting results.
+These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as OmicsMatic when reporting results.
 
 - [Aravind Subramanian et al. (2005) — Gene set enrichment analysis: a knowledge-based approach for interpreting genome-wide expression profiles](../CITATIONS.md#subramanian-gsea-2005) — [PMID: 16199517](https://pubmed.ncbi.nlm.nih.gov/16199517/) · [PMCID: PMC1239896](https://pmc.ncbi.nlm.nih.gov/articles/PMC1239896/)
 - [Yoav Benjamini and Yosef Hochberg (1995) — Controlling the false discovery rate: a practical and powerful approach to multiple testing](../CITATIONS.md#benjamini-hochberg-1995)
@@ -7019,7 +7019,7 @@ are not biological or clinical validation.
 The source build accepts standalone `network_modules` and
 `module_gene_ontology` artifacts in addition to graphs and the other typed
 completed stages above. A completed module GO import needs neither its original
-graph nor a raw assay matrix, membership export or local GO database. JLinAlg
+graph nor a raw assay matrix, membership export or local GO database. OmicsMatic
 retains its original testing family and adjusted values; it does not reconstruct
 or certify the source analysis. An entirely analyzed study can use `datasets: []`
 and explicit manual goals, then continue with finding inventory, impact review

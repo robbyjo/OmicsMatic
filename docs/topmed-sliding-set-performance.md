@@ -21,19 +21,19 @@ founders. Both null models included the pedigree additive relationship.
 ## Results
 
 Times are medians of three warmed measurements, each covering all ten windows.
-The speed ratio is R time divided by JLinAlg time, so a value above one favors
-JLinAlg.
+The speed ratio is R time divided by OmicsMatic time, so a value above one favors
+OmicsMatic.
 
-| Outcome | Analysis | JLinAlg oneMKL (s) | R GMMAT (s) | Speed ratio |
+| Outcome | Analysis | OmicsMatic oneMKL (s) | R GMMAT (s) | Speed ratio |
 |---|---|---:|---:|---:|
-| BMI | Burden | 5.051 | 40.390 | 8.00x JLinAlg |
-| BMI | SKAT | 5.374 | 40.390 | 7.52x JLinAlg |
-| BMI | SKAT-O | 7.676 | 41.260 | 5.37x JLinAlg |
-| BMI | shared suite | 7.899 | 42.220 | 5.35x JLinAlg |
-| Obesity | Burden | 4.964 | 43.710 | 8.81x JLinAlg |
-| Obesity | SKAT | 5.345 | 44.890 | 8.40x JLinAlg |
-| Obesity | SKAT-O | 7.774 | 45.890 | 5.90x JLinAlg |
-| Obesity | shared suite | 8.075 | 45.780 | 5.67x JLinAlg |
+| BMI | Burden | 5.051 | 40.390 | 8.00x OmicsMatic |
+| BMI | SKAT | 5.374 | 40.390 | 7.52x OmicsMatic |
+| BMI | SKAT-O | 7.676 | 41.260 | 5.37x OmicsMatic |
+| BMI | shared suite | 7.899 | 42.220 | 5.35x OmicsMatic |
+| Obesity | Burden | 4.964 | 43.710 | 8.81x OmicsMatic |
+| Obesity | SKAT | 5.345 | 44.890 | 8.40x OmicsMatic |
+| Obesity | SKAT-O | 7.774 | 45.890 | 5.90x OmicsMatic |
+| Obesity | shared suite | 8.075 | 45.780 | 5.67x OmicsMatic |
 
 The optimized scan retains one backend selected and owned by the null model;
 component eigensolves and SKAT-O calibration no longer perform hardware
@@ -63,9 +63,9 @@ difference on that scale.
 | Obesity | SKAT-O | 0.998954 | 0.0756 |
 
 SKAT-O agreement improved substantially after adopting analytic calibration.
-The remaining small differences reflect Imhof component tails in JLinAlg
+The remaining small differences reflect Imhof component tails in OmicsMatic
 versus GMMAT's preferred Davies tails. Binary-model shifts also reflect the
-independently fitted first-order Laplace/PQL-style null in JLinAlg versus
+independently fitted first-order Laplace/PQL-style null in OmicsMatic versus
 GMMAT's binary mixed-model null.
 
 ## Selected windows
@@ -90,16 +90,16 @@ rare variants.
 ## Runtime and implementation
 
 - Host: Intel Core i9-9900K, 8 cores / 16 logical processors, 64 GiB RAM.
-- JLinAlg: Java 21, JDistlib 0.10.1, strict oneMKL 2023.1 backend with eight
+- OmicsMatic: Java 21, JDistlib 0.10.1, strict oneMKL 2023.1 backend with eight
   native threads. The installed NVIDIA RTX 2080 was not selected because the
   dense FP64 workload ran on the explicitly requested oneMKL path.
 - R: 4.6.1 and GMMAT 1.5.0, with native thread variables fixed at one.
-- BMI null: pedigree sparse REML in JLinAlg (genetic variance 13.29745,
+- BMI null: pedigree sparse REML in OmicsMatic (genetic variance 13.29745,
   residual variance 16.38419) and Gaussian `glmmkin` in R.
-- Obesity null: sparse first-order Laplace working model in JLinAlg (pedigree
+- Obesity null: sparse first-order Laplace working model in OmicsMatic (pedigree
   variance 0.64833) and binomial-logit `glmmkin` in R.
 
-The JLinAlg implementation exposes reusable prepared variant sets, generic
+The OmicsMatic implementation exposes reusable prepared variant sets, generic
 continuous/binary score-null projections, and a shared Burden/SKAT/SKAT-O
 suite. It uses a symmetric eigendecomposition for positive-semidefinite score
 covariances and a scan-owned backend for all window operations. Analytic

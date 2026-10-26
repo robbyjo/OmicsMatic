@@ -2,7 +2,7 @@
 
 `trimmomatic-tools` adds thirteen native Java quality/length operations and an
 adapter to original, hash-pinned Trimmomatic 0.39 and 0.41. Native execution needs
-only the JLinAlg executable JAR. Adapter clipping runs the original application;
+only the OmicsMatic executable JAR. Adapter clipping runs the original application;
 it is not approximated by the native quality steps. Both engines preserve
 literal step order and audit every retained read against the original trim span,
 header, bases and qualities, including duplicate headers and all paired/orphan
@@ -100,7 +100,7 @@ fields are adapter FASTA, seed mismatches, palindrome threshold, simple
 threshold, optional minimum palindrome length and optional keep-both boolean.
 Adapter paths resolve relative to the pipeline. `@NAME.fa` selects an adapter
 inside the verified private runtime; **stock Illumina adapter sequences have
-separate rights and are not bundled in JLinAlg**. Supply the actual assay
+separate rights and are not bundled in OmicsMatic**. Supply the actual assay
 adapter file. A safe relative copy avoids upstream's Windows drive-colon parser
 problem. Named adapter pairs and palindrome behavior remain upstream behavior.
 
@@ -138,7 +138,7 @@ Native tests compare 2,118 cases against **each** original release: 4,236 frozen
 outputs covering all thirteen operations, ordered pipelines, both Phred offsets,
 mate-specific cropping, `N`/`n`, boundary lengths and MAXINFO. A standalone
 reflection writer invokes actual upstream step objects; it does not calculate
-expected values with JLinAlg. Additional tests exercise original single/paired
+expected values with OmicsMatic. Additional tests exercise original single/paired
 programs, simple/palindrome clipping with keep-both choices, read fates, exact
 headers/qualities, all-filtered warnings, invalid contracts and Java21 recovery.
 Sources and reference hashes are in `src/test/resources/trimmomatic`.
@@ -161,4 +161,4 @@ under GPL-3.0-only with their copyright attribution and full license in
 [0.41](https://github.com/usadellab/Trimmomatic/releases/tag/v0.41) archives/JARs
 are hash-pinned by the installer. Their separate adapter exception is retained.
 No stock adapter sequence or external JRE/application binary is redistributed
-inside the JLinAlg JAR.
+inside the OmicsMatic JAR.

@@ -1,10 +1,10 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Fit linear 2SLS models with robust or clustered inference, instrument-strength diagnostics, and explicit identification limits."><title>Individual-level instrumental-variable regression · JLinAlg</title>
+<meta name="description" content="Fit linear 2SLS models with robust or clustered inference, instrument-strength diagnostics, and explicit identification limits."><title>Individual-level instrumental-variable regression Â· OmicsMatic</title>
 <link rel="stylesheet" href="../assets/styles.css"><script src="../assets/app.js" defer></script></head>
 <body><site-header root="../"></site-header><main id="main">
 <section class="page-hero"><div class="container"><div class="breadcrumbs"><a href="../index.html">Home</a><span>/</span><a href="../vignettes/index.html">Vignettes</a><span>/</span><span>Individual-level instrumental-variable regression</span></div>
-<span class="eyebrow">CLI + Java · v0.3.6</span><h1>Individual-level instrumental-variable regression</h1><p>Fit linear 2SLS models with robust or clustered inference, instrument-strength diagnostics, and explicit identification limits.</p></div></section>
+<span class="eyebrow">CLI + Java Â· v0.3.6</span><h1>Individual-level instrumental-variable regression</h1><p>Fit linear 2SLS models with robust or clustered inference, instrument-strength diagnostics, and explicit identification limits.</p></div></section>
 <div class="container page-layout"><article class="prose"><p>Use two-stage least squares (2SLS) when a linear outcome model contains a
 predictor that is correlated with the structural error, and you have excluded
 instruments that shift that predictor without directly shifting the outcome.
@@ -24,7 +24,7 @@ cannot verify:</p>
 <h2 id="fit-a-model">Fit a model</h2>
 <p>For a numeric observation table, the source-build CLI fits the same estimator
 and writes separate coefficient, strength-diagnostic, and manifest tables:</p>
-<div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>java -jar build/cli/jlinalg-0.3.7.jar iv-regression `
+<div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>java -jar build/cli/omicsmatic-0.3.7.jar iv-regression `
   --input cohort.tsv `
   --response outcome `
   --exogenous age,sex `
@@ -82,7 +82,7 @@ sandwich.</p>
 \hat\beta=(X'P_ZX)^{-1}X'P_Zy,
 ]</p>
 <p>where <code>X</code> contains included exogenous and endogenous regressors, while <code>Z</code>
-contains included exogenous regressors and excluded instruments. JLinAlg
+contains included exogenous regressors and excluded instruments. OmicsMatic
 computes the QR projections without forming the dense <code>P_Z</code> matrix. Fitted
 outcomes and residuals use the observed structural design <code>X</code>. This distinction
 matters: ordinary OLS software applied to first-stage fitted exposures can
@@ -117,7 +117,7 @@ first-stage diagnostics and numerical rank, but it does not provide
 weak-identification-robust Anderson-Rubin/CLR confidence sets. If weak
 identification is plausible, use a method designed for it rather than treating
 a conventional 2SLS Wald interval as conclusive.</p>
-<p>JLinAlg rejects all of these cases before returning a fit:</p>
+<p>OmicsMatic rejects all of these cases before returning a fit:</p>
 <ul>
 <li>fewer excluded instruments than endogenous regressors;</li>
 <li>a rank-deficient structural or instrument matrix;</li>
@@ -196,7 +196,7 @@ first-stage diagnostics, and identifying assumptions with the estimate.</p>
   <div class="container narrow">
     <span class="eyebrow">Scientific foundations</span>
     <h2 id="scientific-citations-instrumental-variable-regression">Primary method citations</h2>
-    <p>Cite the relevant method publication as well as JLinAlg when reporting results from this workflow.</p>
+    <p>Cite the relevant method publication as well as OmicsMatic when reporting results from this workflow.</p>
     <ul class="citation-links">
       <li><a href="../citations.html#staiger-stock-1997">Staiger (1997) — 2SLS</a></li><li><a href="../citations.html#white-1980">White (1980) — heteroskedasticity-robust covariance</a></li>
     </ul>

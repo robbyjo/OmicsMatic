@@ -1,4 +1,4 @@
-# JLinAlg 0.3.7 release validation
+# OmicsMatic 0.3.7 release validation
 
 Validated on 2026-10-21 from the release checkout, using Java 21 to build
 Java 17-compatible artifacts. The numerical implementation is unchanged by the
@@ -9,7 +9,7 @@ already committed since v0.3.6.
 
 ~~~powershell
 .\gradlew.bat clean check assemble --no-daemon --no-parallel
-java -jar build/cli/jlinalg-0.3.7.jar --version
+java -jar build/cli/omicsmatic-0.3.7.jar --version
 ~~~
 
 The full gate passed, including `checkWebsite`, executable/library packaging,

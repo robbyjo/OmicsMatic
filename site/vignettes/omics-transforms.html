@@ -1,8 +1,8 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Tutorial for JLinAlg command-line omics transforms: syntax, built-in stages, examples, missing values, and custom providers."><title>Omics transform tutorial · JLinAlg</title><link rel="stylesheet" href="../assets/styles.css"><script src="../assets/app.js" defer></script></head><body><site-header root="../"></site-header><main id="main">
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Tutorial for OmicsMatic command-line omics transforms: syntax, built-in stages, examples, missing values, and custom providers."><title>Omics transform tutorial · OmicsMatic</title><link rel="stylesheet" href="../assets/styles.css"><script src="../assets/app.js" defer></script></head><body><site-header root="../"></site-header><main id="main">
 <section class="page-hero"><div class="container"><div class="breadcrumbs"><a href="../index.html">Home</a><span>/</span><a href="index.html">Vignettes</a><span>/</span><span>Omics transforms</span></div><h1>Transform each molecular feature deliberately.</h1><p>Choose a built-in stage, compose stages from left to right, and keep the tested scale explicit in EWAS, TWAS, and PWAS command-line analyses.</p></div></section>
 <div class="container page-layout"><article class="prose">
 <div class="note"><strong>Scope</strong><code>--transform</code> applies only to the <code>&lt;omics&gt;</code> term in feature-by-sample CSV or TSV matrices. Genotype transforms are not supported for VCF, BCF, or BGEN inputs.</div>
-<h2 id="quick-start">CLI-only transform quick start</h2><div class="code-window"><div class="code-bar"><i class="code-dot"></i><i class="code-dot"></i><i class="code-dot"></i><span>PowerShell · EWAS</span></div><pre><code>java -jar build/cli/jlinalg-&lt;version&gt;.jar `
+<h2 id="quick-start">CLI-only transform quick start</h2><div class="code-window"><div class="code-bar"><i class="code-dot"></i><i class="code-dot"></i><i class="code-dot"></i><span>PowerShell · EWAS</span></div><pre><code>java -jar build/cli/omicsmatic-&lt;version&gt;.jar `
   --omics methylation.tsv `
   --pheno phenotype.tsv `
   --id IID `
@@ -13,7 +13,7 @@
 cg000001    0.12  0.20  NA    0.85
 cg000002    0.44  0.51  0.49  0.55</code></pre>
 <h2 id="syntax">Read the pipeline syntax</h2><pre><code>--transform "&lt;omics&gt; = stage(parameters) | next_stage()"</code></pre>
-<p>Use the literal target <code>&lt;omics&gt;</code> and quote the complete specification so the shell does not interpret <code>&lt;</code>, <code>&gt;</code>, or <code>|</code>. Whitespace around the target-assignment <code>=</code> and stage separator <code>|</code> is optional; the examples include it to make those boundaries clear. Stages run left to right. JLinAlg aligns sample IDs, omits phenotype rows with missing model values, and then applies the complete pipeline independently to every feature row. Thus <code>winsor_mad</code>, <code>zscore</code>, and other row-statistic transforms use the final analysis samples; values are never pooled across features. Repeating <code>--transform</code> appends stages in command-line order. Omitting the option is equivalent to <code>identity()</code>.</p>
+<p>Use the literal target <code>&lt;omics&gt;</code> and quote the complete specification so the shell does not interpret <code>&lt;</code>, <code>&gt;</code>, or <code>|</code>. Whitespace around the target-assignment <code>=</code> and stage separator <code>|</code> is optional; the examples include it to make those boundaries clear. Stages run left to right. OmicsMatic aligns sample IDs, omits phenotype rows with missing model values, and then applies the complete pipeline independently to every feature row. Thus <code>winsor_mad</code>, <code>zscore</code>, and other row-statistic transforms use the final analysis samples; values are never pooled across features. Repeating <code>--transform</code> appends stages in command-line order. Omitting the option is equivalent to <code>identity()</code>.</p>
 <h2 id="built-ins">Choose a built-in stage</h2>
 <div class="result-table"><table><thead><tr><th>Stage</th><th>Operation</th><th>Contract</th></tr></thead><tbody>
 <tr><td><code>identity()</code></td><td>Copy without changing values.</td><td><code>identity</code> is also accepted.</td></tr>
@@ -54,7 +54,7 @@ cg000002    0.44  0.51  0.49  0.55</code></pre>
 }</code></pre></div>
 <p>The service file contains the fully qualified provider class, for example <code>example.ScaleTransformProvider</code>. Load and compose it like this:</p><pre><code>--transform-plugin transforms.jar \
 --transform "&lt;omics&gt; = scale(factor=2) | zscore()"</code></pre><p>Plugin JARs execute arbitrary JVM code in the analysis process. Load only artifacts you trust.</p>
-<p><a href="https://github.com/robbyjo/JLinAlg/blob/main/docs/vignettes/omics-transforms.md">Markdown tutorial and complete provider example →</a></p>
+<p><a href="https://github.com/robbyjo/OmicsMatic/blob/main/docs/vignettes/omics-transforms.md">Markdown tutorial and complete provider example →</a></p>
 <div class="next-links"><a href="association.html"><small>Related</small><strong>Association pipelines</strong></a><a href="mendelian-randomization.html"><small>Next</small><strong>Mendelian randomization →</strong></a></div>
 </article><aside class="toc"><strong>On this page</strong><a href="#quick-start">Quick start</a><a href="#syntax">Syntax</a><a href="#built-ins">Built-ins</a><a href="#recipes">Recipes</a><a href="#missing">Missing values</a><a href="#plugins">Custom plugins</a></aside></div>
 
@@ -63,7 +63,7 @@ cg000002    0.44  0.51  0.49  0.55</code></pre>
   <div class="container narrow">
     <span class="eyebrow">Scientific foundations</span>
     <h2 id="scientific-citations-omics-transforms">Primary method citations</h2>
-    <p>Cite the relevant method publication as well as JLinAlg when reporting results from this workflow.</p>
+    <p>Cite the relevant method publication as well as OmicsMatic when reporting results from this workflow.</p>
     <ul class="citation-links">
       <li><a href="../citations.html#beasley-2009">Beasley (2009) — rank inverse-normal transform</a> <span class="citation-inline-identifiers">(<a href="https://pubmed.ncbi.nlm.nih.gov/19526352/">PMID: 19526352</a> · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC2921808/">PMCID: PMC2921808</a>)</span></li><li><a href="../citations.html#leek-storey-2007">Leek (2007) — SVA</a> <span class="citation-inline-identifiers">(<a href="https://pubmed.ncbi.nlm.nih.gov/17907809/">PMID: 17907809</a> · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC1994707/">PMCID: PMC1994707</a>)</span></li><li><a href="../citations.html#johnson-combat-2007">Johnson (2007) — ComBat</a> <span class="citation-inline-identifiers">(<a href="https://pubmed.ncbi.nlm.nih.gov/16632515/">PMID: 16632515</a>)</span></li>
     </ul>

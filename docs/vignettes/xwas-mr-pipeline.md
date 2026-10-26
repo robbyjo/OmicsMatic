@@ -309,7 +309,7 @@ failure accounting, BH denominator semantics, and raw timing measurements.
 <!-- SCIENTIFIC-CITATIONS:START -->
 ## Scientific citations
 
-These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as JLinAlg when reporting results.
+These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as OmicsMatic when reporting results.
 
 - [Jack Bowden, George Davey Smith, and Stephen Burgess (2015) — Mendelian randomization with invalid instruments: effect estimation and bias detection through Egger regression](../CITATIONS.md#bowden-mr-egger-2015) — [PMID: 26050253](https://pubmed.ncbi.nlm.nih.gov/26050253/) · [PMCID: PMC4469799](https://pmc.ncbi.nlm.nih.gov/articles/PMC4469799/)
 - [Jack Bowden et al. (2016) — Consistent estimation in Mendelian randomization with some invalid instruments using a weighted median estimator](../CITATIONS.md#bowden-weighted-median-2016) — [PMID: 27061298](https://pubmed.ncbi.nlm.nih.gov/27061298/) · [PMCID: PMC4849733](https://pmc.ncbi.nlm.nih.gov/articles/PMC4849733/)

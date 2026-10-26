@@ -11,7 +11,7 @@ The grouped GLMM added `(1|Levy_Set)`. The pedigree GLMM added both
 and absent pedigree members retained as unrelated founders.
 
 R used `glm(..., family=binomial)`, `glmer(..., family=binomial, nAGQ=1)`, and
-`pedigreemm(..., family=binomial)`. JLinAlg used exact binomial `Glm` and the
+`pedigreemm(..., family=binomial)`. OmicsMatic used exact binomial `Glm` and the
 first-order `SparseGlmmLaplace` implementation. The latter consumes grouped
 CSR designs and pedigree `A^-1` directly, owns one backend for the scan, and
 keeps one reusable numerical CHOLMOD factor per association worker. Native
@@ -20,16 +20,16 @@ linear-algebra threads were fixed at one. Times are medians of three warmed
 
 ## Sparse Laplace result
 
-The sparse JLinAlg GLMMs are faster than R on this workload, including with a
+The sparse OmicsMatic GLMMs are faster than R on this workload, including with a
 single association worker.
 
-| Model | R, 1 worker | JLinAlg, 1 worker | JLinAlg, 8 workers | JLinAlg/R, 1 worker | JLinAlg/R, 8 workers |
+| Model | R, 1 worker | OmicsMatic, 1 worker | OmicsMatic, 8 workers | OmicsMatic/R, 1 worker | OmicsMatic/R, 8 workers |
 |---|---:|---:|---:|---:|---:|
 | Laplace GLMM, `(1\|Levy_Set)` | 18.160 s | 2.897 s | 0.556 s | 6.27x faster | 32.69x faster |
 | Pedigree Laplace GLMM | 80.550 s | 40.593 s | 11.308 s | 1.98x faster | 7.12x faster |
 
 Eight association workers provided a 5.21x speedup for the grouped model and a
-3.59x speedup for the pedigree model over the JLinAlg single-worker runs.
+3.59x speedup for the pedigree model over the OmicsMatic single-worker runs.
 Every worker owns its own reusable numeric factor while all workers share the
 scan-owned backend and immutable symbolic pattern.
 

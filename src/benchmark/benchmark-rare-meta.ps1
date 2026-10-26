@@ -1,6 +1,6 @@
 param(
     [string]$LinuxWorkspace = '/mnt/e/Projects/JLinAlg',
-    [string]$Jar = 'build/cli/jlinalg-0.3.5.jar'
+    [string]$Jar = 'build/cli/omicsmatic-0.3.7.jar'
 )
 $ErrorActionPreference = 'Stop'
 $benchmark = Join-Path (Get-Location) 'build/rare-meta-benchmark'

@@ -42,12 +42,12 @@ R 4.6.1, `betareg` 3.2-6), the medians were:
 
 | Runtime | Median fit time | Relative speed |
 | --- | ---: | ---: |
-| JLinAlg specialized beta regression | 143.216 ms | 14.59x |
+| OmicsMatic specialized beta regression | 143.216 ms | 14.59x |
 | R `betareg` | 2,090 ms | 1.00x |
 
-The specialized JLinAlg solver and the existing generic distributional solver
+The specialized OmicsMatic solver and the existing generic distributional solver
 also agreed within `1.3e-14` on all coefficients. The specialized path was
-1.29x faster than that generic Java path. JLinAlg and R agreed within
+1.29x faster than that generic Java path. OmicsMatic and R agreed within
 `2.6e-13` on the benchmark coefficients. These are workload- and host-specific
 measurements, not universal guarantees.
 
@@ -63,7 +63,7 @@ $env:JLINALG_BETA_R_LIBRARY = 'build/r-library'
 <!-- SCIENTIFIC-CITATIONS:START -->
 ## Scientific citations
 
-These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as JLinAlg when reporting results.
+These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as OmicsMatic when reporting results.
 
 - [Silvia Ferrari and Francisco Cribari-Neto (2004) — Beta regression for modelling rates and proportions](CITATIONS.md#ferrari-cribari-neto-2004)
 

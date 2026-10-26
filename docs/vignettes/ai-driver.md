@@ -1,10 +1,10 @@
 # Mode 3: AI as an external workflow driver
 
-An external AI agent can help translate a research objective into a JLinAlg
+An external AI agent can help translate a research objective into an OmicsMatic
 study contract, coordinate documented CLI commands, inspect authorized outputs
-and propose amendments. JLinAlg v0.3.7 supplies the deterministic planner,
+and propose amendments. OmicsMatic v0.3.7 supplies the deterministic planner,
 execution engine and evidence ledger. The agent is separately operated software;
-JLinAlg does not bundle an autonomous agent runtime or grant it access to data.
+OmicsMatic does not bundle an autonomous agent runtime or grant it access to data.
 This vignette describes a supervised collaboration pattern using existing CLI
 interfaces, not an autonomous scientific decision-maker.
 
@@ -19,7 +19,7 @@ For patient-level work, keep data and execution in an institution-controlled
 environment. Use a separate account or execution service with permissions that
 expose only reviewed aggregate artifacts to a remote agent. A prompt instruction
 is not an access boundary: if an agent can read raw files or invoke arbitrary
-networked shell commands, JLinAlg's assistance policy cannot prevent disclosure.
+networked shell commands, OmicsMatic's assistance policy cannot prevent disclosure.
 Even `index/LLM_CONTEXT.md` and the generated `AGENTS.md` are local working
 artifacts, not automatically approved external payloads.
 
@@ -29,7 +29,7 @@ From the repository root:
 
 ~~~powershell
 .\gradlew.bat executableJar
-$jar = (Resolve-Path "build/cli/jlinalg-0.3.7.jar").Path
+$jar = (Resolve-Path "build/cli/omicsmatic-0.3.7.jar").Path
 $project = Join-Path (Get-Location) "build/ai-driver"
 if (Test-Path $project) { throw "Choose a fresh project directory." }
 Copy-Item examples/study-pipeline $project -Recurse
@@ -85,7 +85,7 @@ java -jar $jar study questions --project .
 java -jar $jar study verify --project .
 ~~~
 
-JLinAlg runs the registered numerical operations and writes manifests, hashes,
+OmicsMatic runs the registered numerical operations and writes manifests, hashes,
 diagnostics, reports, an append-only ledger and `SESSION_HISTORY.md`. The agent
 can summarize approved evidence using result IDs; each reported number must
 resolve to its actual source artifact. Missing MR, colocalization, fine-mapping
@@ -102,7 +102,7 @@ Keep post-hoc sensitivity findings distinct from the primary analysis.
 
 `study verify` checks recorded local integrity; it does not certify scientific
 truth, remote-agent behavior or whole-computer non-egress. `--offline` controls
-built-in JLinAlg requests, not the agent's own network connection. Use operating
+built-in OmicsMatic requests, not the agent's own network connection. Use operating
 system permissions, network controls and institution-approved disclosure review
 to enforce the wider boundary. No live external agent or remote provider is
 required to rehearse these CLI steps.
@@ -113,7 +113,7 @@ allowlisted provider adapter has a narrower disclosure surface.
 <!-- SCIENTIFIC-CITATIONS:START -->
 ## Scientific citations
 
-These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as JLinAlg when reporting results.
+These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as OmicsMatic when reporting results.
 
 - [Geir Kjetil Sandve et al. (2013) — Ten Simple Rules for Reproducible Computational Research](../CITATIONS.md#sandve-reproducibility-2013)
 - [W3C Provenance Working Group (2013) — PROV-O: The PROV Ontology](../CITATIONS.md#w3c-prov-o-2013)

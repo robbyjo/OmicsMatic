@@ -1,6 +1,6 @@
 # Runtime requirements
 
-JLinAlg requires JDK 17 or newer for source builds. The Gradle wrapper downloads
+OmicsMatic requires JDK 17 or newer for source builds. The Gradle wrapper downloads
 its pinned dependencies on the first build, including JDistlib 0.10.2, and
 verifies the JDistlib JAR's SHA-256 digest. The executable JAR bundles its Java
 dependencies; it does not install vendor GPU drivers or runtime libraries.

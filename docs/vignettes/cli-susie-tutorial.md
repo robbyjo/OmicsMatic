@@ -52,7 +52,7 @@ exact summary-row order:
 0.02,0.08,1.0
 ```
 
-A labeled matrix is safer because JLinAlg checks identifiers and reorders it
+A labeled matrix is safer because OmicsMatic checks identifiers and reorders it
 to the summary file:
 
 ```text
@@ -91,7 +91,7 @@ configured backend policy.
 
 ## 4. Read the three output files
 
-With `--out locus-susie.csv`, JLinAlg writes:
+With `--out locus-susie.csv`, OmicsMatic writes:
 
 1. `locus-susie.csv` in CSV because the name ends in `.csv`. It has
    `variant_id`, `pip`, and `posterior_mean`.
@@ -156,7 +156,7 @@ sufficient-statistic modes and the numerical validation in more depth.
 <!-- SCIENTIFIC-CITATIONS:START -->
 ## Scientific citations
 
-These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as JLinAlg when reporting results.
+These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as OmicsMatic when reporting results.
 
 - [Gao Wang, Abhishek Sarkar, Peter Carbonetto, and Matthew Stephens (2020) — A simple new approach to variable selection in regression, with application to genetic fine mapping](../CITATIONS.md#wang-susie-2020) — [PMID: 37220626](https://pubmed.ncbi.nlm.nih.gov/37220626/) · [PMCID: PMC10201948](https://pmc.ncbi.nlm.nih.gov/articles/PMC10201948/)
 

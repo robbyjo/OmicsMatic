@@ -352,7 +352,7 @@ substantive fit.
 <!-- SCIENTIFIC-CITATIONS:START -->
 ## Scientific citations
 
-These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as JLinAlg when reporting results.
+These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as OmicsMatic when reporting results.
 
 - [Sewall Wright (1921) — Correlation and causation](../CITATIONS.md#wright-1921)
 - [John J. McArdle and Roderick P. McDonald (1984) — Some algebraic properties of the Reticular Action Model for moment structures](../CITATIONS.md#mcardle-mcdonald-1984) — [PMID: 6509005](https://pubmed.ncbi.nlm.nih.gov/6509005/)

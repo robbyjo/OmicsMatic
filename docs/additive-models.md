@@ -1,6 +1,6 @@
 # Additive, additive mixed, and distributional models
 
-JLinAlg compiles smooths into numeric basis and penalty blocks before fitting.
+OmicsMatic compiles smooths into numeric basis and penalty blocks before fitting.
 The iterative path therefore performs dense linear algebra through JDistlib
 instead of interpreting formula terms. `BackendPolicy.PREFERRED` tries
 auto-routed GPU execution first, then oneMKL, OpenBLAS, and portable Java CPU.
@@ -187,7 +187,7 @@ documented there separately from the dense GAM paths.
 <!-- SCIENTIFIC-CITATIONS:START -->
 ## Scientific citations
 
-These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as JLinAlg when reporting results.
+These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as OmicsMatic when reporting results.
 
 - [William S. Cleveland (1979) — Robust locally weighted regression and smoothing scatterplots](CITATIONS.md#cleveland-1979)
 - [Trevor Hastie and Robert Tibshirani (1986) — Generalized additive models](CITATIONS.md#hastie-tibshirani-1986)

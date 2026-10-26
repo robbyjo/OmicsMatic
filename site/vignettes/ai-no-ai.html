@@ -1,21 +1,21 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Run and verify a complete synthetic study without a model account or API call."><title>No AI: deterministic analysis · JLinAlg v0.3.7</title>
+<meta name="description" content="Run and verify a complete synthetic study without a model account or API call."><title>No AI: deterministic analysis · OmicsMatic v0.3.7</title>
 <link rel="stylesheet" href="../assets/styles.css"><script src="../assets/app.js" defer></script></head>
 <body><site-header root="../"></site-header><main id="main">
 <section class="page-hero"><div class="container"><div class="breadcrumbs"><a href="../index.html">Home</a><span>/</span><a href="index.html">Vignettes</a><span>/</span><span>AI collaboration</span></div>
 <span class="eyebrow">Three collaboration modes · v0.3.7</span><h1>No AI: deterministic analysis</h1><p>Run and verify a complete synthetic study without a model account or API call.</p></div></section>
-<div class="container page-layout"><article class="prose"><p>JLinAlg v0.3.7 supports a complete deterministic workflow without an AI account,
+<div class="container page-layout"><article class="prose"><p>OmicsMatic v0.3.7 supports a complete deterministic workflow without an AI account,
 model, API key, or model-generated code. This is the default operating mode.
 The same statistical engines and evidence records are used when AI collaboration
-is added later. These three modes describe ways of working with JLinAlg; they
+is added later. These three modes describe ways of working with OmicsMatic; they
 are not values of <code>analysis.mode</code>, whose <code>manual</code> and <code>auto</code> settings control
 deterministic operation planning.</p>
 <h2 id="prepare-a-small-study">Prepare a small study</h2>
 <p>From the repository root, build the executable and copy the synthetic two-cohort
 example into a fresh directory:</p>
 <pre><code class="language-powershell">.\gradlew.bat executableJar
-$jar = (Resolve-Path &quot;build/cli/jlinalg-0.3.7.jar&quot;).Path
+$jar = (Resolve-Path &quot;build/cli/omicsmatic-0.3.7.jar&quot;).Path
 $project = Join-Path (Get-Location) &quot;build/ai-no-ai&quot;
 if (Test-Path $project) { throw &quot;Choose a fresh project directory.&quot; }
 Copy-Item examples/study-pipeline $project -Recurse
@@ -51,7 +51,7 @@ Repeating <code>study run --project . --offline --actor-id scientist-1</code> re
 completed operations. A scientific change goes through <code>study amend</code>, never a
 silent edit to the resolved contract or completed results.</p>
 <h2 id="extend-the-analysis">Extend the analysis</h2>
-<p>JLinAlg's CLI and APIs cover association analysis, regression and mixed models,
+<p>OmicsMatic's CLI and APIs cover association analysis, regression and mixed models,
 differential analysis, enrichment, networks, MR, fine-mapping, colocalization,
 replication, meta-analysis and sensitivity analysis. The study planner connects
 registered operations when their scientific prerequisites are available;
@@ -64,7 +64,7 @@ blockers. A broad method catalog does not make every conceivable pipeline valid.
 <code>project.data_policy.llm.remote_patient_level_data: deny</code> before resolution.
 Apply institution-controlled storage and account permissions to inputs, outputs
 and logs. These files can themselves contain sensitive information; local
-execution does not de-identify them. <code>--offline</code> governs JLinAlg's built-in
+execution does not de-identify them. <code>--offline</code> governs OmicsMatic's built-in
 requests, not unrelated software or external tools.</p>
 <p>Continue with <a href="ai-advisor.html">AI as an advisor</a> or
 <a href="ai-driver.html">AI as an external driver</a>, or follow the
@@ -74,7 +74,7 @@ requests, not unrelated software or external tools.</p>
   <div class="container narrow">
     <span class="eyebrow">Scientific foundations</span>
     <h2 id="scientific-citations-ai-no-ai">Primary method citations</h2>
-    <p>Cite the relevant method publication as well as JLinAlg when reporting results from this workflow.</p>
+    <p>Cite the relevant method publication as well as OmicsMatic when reporting results from this workflow.</p>
     <ul class="citation-links">
       <li><a href="../citations.html#sandve-reproducibility-2013">Sandve et al. (2013) — Configuration provenance</a></li><li><a href="../citations.html#w3c-prov-o-2013">W3C (2013) — Evidence provenance graph</a></li><li><a href="../citations.html#hhs-hipaa-deidentification-2012">HHS OCR (2012) — Safe Harbor and Expert Determination</a></li>
     </ul>

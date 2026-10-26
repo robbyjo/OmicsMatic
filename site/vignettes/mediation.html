@@ -1,4 +1,4 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Deterministic Gaussian mediation with Sobel delta inference, mixed effects, and pedigrees."><title>Mediation · JLinAlg 0.3.5</title><link rel="stylesheet" href="../assets/styles.css"><script src="../assets/app.js" defer></script></head><body><site-header root="../"></site-header><main id="main">
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Deterministic Gaussian mediation with Sobel delta inference, mixed effects, and pedigrees."><title>Mediation · OmicsMatic 0.3.5</title><link rel="stylesheet" href="../assets/styles.css"><script src="../assets/app.js" defer></script></head><body><site-header root="../"></site-header><main id="main">
 <section class="page-hero"><div class="container"><div class="breadcrumbs"><a href="../index.html">Home</a><span>/</span><a href="index.html">Vignettes</a></div><h1>Mediation without sampling.</h1><p>Three Gaussian models estimate the treatment-to-mediator, mediator-to-outcome, direct, and total paths.</p></div></section>
 <section class="section"><div class="container prose"><div class="note"><strong>CLI-only workflow</strong>The <a href="cli-mediation-tutorial.html">mediation tutorial</a> gives complete file-based commands for OLS, grouped REML, pedigrees, missing rows, and outputs. This command is included in v0.3.5 and later.</div><h2>Fit the component models</h2><pre><code>double[] treatment = {-2, -1, 0, 1, 2, 3};
 double[] mediator = {0.2, 1.1, 2.0, 3.2, 3.9, 5.1};
@@ -12,14 +12,14 @@ MediationMixedResult mixed = MediationAnalysis.fitMixed(
     outcome, treatment, mediator, covariates, List.of(subject),
     RemlOptions.defaults(), 0.95, BackendPolicy.CPU);</code></pre>
 <p><code>fitPedigree</code> accepts sparse numerator-relationship precision terms and optional ordinary terms. The same random structure is fitted separately in all three component models. Check each component's convergence and the assumptions behind cross-model independence before inference.</p>
-<p><a href="https://github.com/robbyjo/JLinAlg/blob/main/docs/vignettes/mediation.md">Complete model, pedigree example, and limitations →</a> · <a href="https://github.com/robbyjo/JLinAlg/blob/main/docs/release-0.3.0-audit.md">R accuracy and speed audit →</a></p></div></section>
+<p><a href="https://github.com/robbyjo/OmicsMatic/blob/main/docs/vignettes/mediation.md">Complete model, pedigree example, and limitations →</a> · <a href="https://github.com/robbyjo/OmicsMatic/blob/main/docs/release-0.3.0-audit.md">R accuracy and speed audit →</a></p></div></section>
 
 <!-- SCIENTIFIC-CITATIONS:START -->
 <section class="citation-strip" aria-labelledby="scientific-citations-mediation">
   <div class="container narrow">
     <span class="eyebrow">Scientific foundations</span>
     <h2 id="scientific-citations-mediation">Primary method citations</h2>
-    <p>Cite the relevant method publication as well as JLinAlg when reporting results from this workflow.</p>
+    <p>Cite the relevant method publication as well as OmicsMatic when reporting results from this workflow.</p>
     <ul class="citation-links">
       <li><a href="../citations.html#baron-kenny-1986">Baron (1986) — mediation</a></li><li><a href="../citations.html#sobel-1982">Sobel (1982) — Sobel test</a></li>
     </ul>

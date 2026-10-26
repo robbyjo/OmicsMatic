@@ -472,7 +472,7 @@ final class StudyCli {
 
     private static String help() {
         return """
-            Usage: java -jar jlinalg-<version>.jar study ACTION [options]
+            Usage: java -jar omicsmatic-<version>.jar study ACTION [options]
 
               study init [--template bulk-transcriptomics|epigenomics|gwas|single-cell|spatial|microbiome|multimodal|association-results] [--out study.yaml]
               study validate [study.yaml] [--check-files]

@@ -4,7 +4,7 @@ For a separate conditional permutation test of frozen graph wiring, see
 [the network-null guide](../../docs/vignettes/study-pipeline-tutorial.md#conditional-tests-of-frozen-network-wiring).
 
 ```powershell
-python -B examples/study-pipeline/network-null-workflow.py run build/network-null-example --jar build/cli/jlinalg-0.3.7.jar
+python -B examples/study-pipeline/network-null-workflow.py run build/network-null-example --jar build/cli/omicsmatic-0.3.7.jar
 ```
 
 It uses synthetic native/supplied graphs, independent exact enumeration,
@@ -16,7 +16,7 @@ For native fitting while downstream MR inputs are missing, see
 [stage-specific resume](../../docs/vignettes/study-pipeline-tutorial.md#resume-preparation-while-downstream-inputs-arrive).
 
 ```powershell
-python -B examples/study-pipeline/stage-resume-workflow.py run build/stage-resume-example --jar build/cli/jlinalg-0.3.7.jar
+python -B examples/study-pipeline/stage-resume-workflow.py run build/stage-resume-example --jar build/cli/omicsmatic-0.3.7.jar
 ```
 
 The offline synthetic example checks deferred source arrival, reuse across
@@ -27,7 +27,7 @@ For discovery cohorts represented by supplied pools, with no original cohort
 files, see [the reference and scope guide](../../docs/vignettes/study-pipeline-tutorial.md#discovery-cohorts-represented-by-supplied-pools).
 
 ```powershell
-python -B examples/study-pipeline/discovery-scope-workflow.py run build/discovery-scope-example --jar build/cli/jlinalg-0.3.7.jar
+python -B examples/study-pipeline/discovery-scope-workflow.py run build/discovery-scope-example --jar build/cli/omicsmatic-0.3.7.jar
 ```
 
 It checks missing native validation, exact source membership/trait contracts,
@@ -39,7 +39,7 @@ For supplied discovery pools and missing validation, see
 The offline regression example runs with:
 
 ```powershell
-python -B examples/study-pipeline/frozen-discovery-workflow.py run build/frozen-discovery-example --jar build/cli/jlinalg-0.3.7.jar
+python -B examples/study-pipeline/frozen-discovery-workflow.py run build/frozen-discovery-example --jar build/cli/omicsmatic-0.3.7.jar
 ```
 
 It independently checks discovery and validation adjustment, effect direction,
@@ -51,7 +51,7 @@ For completed external sample QC/PCA and missing native PCA, see
 The offline acceptance runs with:
 
 ```powershell
-python -B examples/study-pipeline/external-genotype-qc-workflow.py run build/external-qc-example --jar build/cli/jlinalg-0.3.7.jar
+python -B examples/study-pipeline/external-genotype-qc-workflow.py run build/external-qc-example --jar build/cli/omicsmatic-0.3.7.jar
 ```
 
 It checks exact source/sample binding, faithful PC reuse, explicitly selected
@@ -64,7 +64,7 @@ PCs, see the [registered sample-QC guide](../../docs/vignettes/study-pipeline-tu
 The offline synthetic acceptance runs with:
 
 ```powershell
-python -B examples/study-pipeline/genotype-sample-qc-workflow.py run build/sample-qc-example --jar build/cli/jlinalg-0.3.7.jar
+python -B examples/study-pipeline/genotype-sample-qc-workflow.py run build/sample-qc-example --jar build/cli/omicsmatic-0.3.7.jar
 ```
 
 It checks imputed versus observed calls, complete pair counts, PCA weights and
@@ -76,7 +76,7 @@ results, see the [subgroup interaction guide](../../docs/vignettes/study-pipelin
 The offline synthetic acceptance runs with:
 
 ```powershell
-python -B examples/study-pipeline/subgroup-interactions-workflow.py run build/subgroup-example --jar build/cli/jlinalg-0.3.7.jar
+python -B examples/study-pipeline/subgroup-interactions-workflow.py run build/subgroup-example --jar build/cli/omicsmatic-0.3.7.jar
 ```
 
 It checks classical/HC3 linear tests, ordinary/Firth logistic likelihood ratios,
@@ -88,7 +88,7 @@ For native MR, colocalization and fine-mapping pair completion, see
 The offline packaged acceptance example runs with:
 
 ```powershell
-python -B examples/study-pipeline/genetic-pair-reuse-workflow.py run build/pair-reuse-example --jar build/cli/jlinalg-0.3.7.jar
+python -B examples/study-pipeline/genetic-pair-reuse-workflow.py run build/pair-reuse-example --jar build/cli/omicsmatic-0.3.7.jar
 ```
 
 It pins the executable and scripts before execution, retains all attempts, and
@@ -153,7 +153,7 @@ configuration and permission; this fixture enables none of them. See the
 for privacy settings, recorded interactions, and preapproved local sensitivities.
 
 For a real end-to-end project, omit `mode: manual` or set `mode: auto`. Explicit
-goals then become a minimum rather than a ceiling: JLinAlg adds eligible
+goals then become a minimum rather than a ceiling: OmicsMatic adds eligible
 meta-analysis, functional enrichment, genetic-evidence, literature, diagnostics,
 and reporting branches. Public reference downloads default to automatic; an
 unavailable scientific input is indexed as a blocker while independent branches
@@ -380,7 +380,7 @@ refused. `verify` needs no running server.
 
 ## Manuscript depth, flexible targets and complete supplements
 
-`manuscript-depth-workflow.py run NEW_DIRECTORY --jar build/cli/jlinalg-0.3.7.jar`
+`manuscript-depth-workflow.py run NEW_DIRECTORY --jar build/cli/omicsmatic-0.3.7.jar`
 creates an offline synthetic association project and native manuscript revisions.
 It verifies complete supplementary prose, source/value bindings, separate word
 counts, retention of a draft above the default target, enforcement of an explicit
@@ -391,7 +391,7 @@ or implement arbitrary later-stage result imports.
 
 ## Supplied analyses and completion of missing work
 
-`supplied-results-workflow.py run NEW_DIRECTORY --jar build/cli/jlinalg-0.3.7.jar`
+`supplied-results-workflow.py run NEW_DIRECTORY --jar build/cli/omicsmatic-0.3.7.jar`
 creates three offline projects. The all-supplied case imports meta-analysis,
 GO, networks/modules, MR, partial-region colocalization and unsigned rare-set
 results, then verifies cache reuse without duplicate computations. A second
@@ -405,7 +405,7 @@ appraisal is performed, and this fixture is not full pipeline conformance.
 
 ## GWAS QQ, Manhattan and source calibration context
 
-`gwas-diagnostics-workflow.py run NEW_DIRECTORY --jar build/cli/jlinalg-0.3.7.jar`
+`gwas-diagnostics-workflow.py run NEW_DIRECTORY --jar build/cli/omicsmatic-0.3.7.jar`
 exercises native OLS and two-cohort pooled results, complete/unknown/selected
 exports, natural-log underflow and unresolved/conflicting P values, coordinate
 gaps/mixed builds, display/row bounds and typed supplied diagnostic reuse. It
@@ -418,7 +418,7 @@ certification or real AI appraisal is performed.
 
 ## Scoped reuse and missing cohort networks
 
-`scoped-supplied-workflow.py run NEW_DIRECTORY --jar build/cli/jlinalg-0.3.7.jar`
+`scoped-supplied-workflow.py run NEW_DIRECTORY --jar build/cli/omicsmatic-0.3.7.jar`
 exercises supplied A graphs with missing native B work, multiple supplied and
 pooled graphs, metadata-only references and an explicit supplied-only option.
 It checks scientific scope and row/dependency conflicts, preserves independent
@@ -431,7 +431,7 @@ are synthetic and project-local; no biological or real-AI appraisal is claimed.
 
 ## Native and supplied networks, modules and joint GO
 
-`network-workflow.py run NEW_DIRECTORY --jar build/cli/jlinalg-0.3.7.jar`
+`network-workflow.py run NEW_DIRECTORY --jar build/cli/omicsmatic-0.3.7.jar`
 exercises native covariate-adjusted molecular correlations, supplied module
 reuse with missing GO, pathway overlap from supplied GSEA, a bounded
 incomplete-clique case that must leave GO waiting, and empty-pathway/no-GO-test
@@ -444,7 +444,7 @@ validation, real AI appraisal or full pipeline conformance is claimed.
 
 ## Native preranked GSEA and automatic pathway/module completion
 
-`gsea-workflow.py run NEW_DIRECTORY --jar build/cli/jlinalg-0.3.7.jar` runs eight
+`gsea-workflow.py run NEW_DIRECTORY --jar build/cli/omicsmatic-0.3.7.jar` runs eight
 offline cases: exact complete rankings, BY preservation, finite Monte Carlo,
 supplied complete meta-analysis with nonsignificant genes, selected rankings,
 ties, requested phenotype null and zero eligible terms. Its independent Python
@@ -459,7 +459,7 @@ claim is made. All resources are explicitly project-local synthetic fixtures.
 
 ## Held-out scores and missing related-phenotype analyses
 
-`risk-score-workflow.py run NEW_DIRECTORY --jar build/cli/jlinalg-0.3.7.jar`
+`risk-score-workflow.py run NEW_DIRECTORY --jar build/cli/omicsmatic-0.3.7.jar`
 runs ten offline synthetic cases. It requires NumPy, SciPy and PyYAML. Independent
 calculations reconstruct baseline/ridge fitting, training-only means, tuning,
 cluster bootstrap intervals, CR1 t-tests and the complete BY related-trait
@@ -473,7 +473,7 @@ clinical/biological validity, real AI appraisal or R/other-risk-tool parity.
 
 ## Protein context, supplied structures and configured prediction
 
-`protein-workflow.py run NEW_DIRECTORY --jar build/cli/jlinalg-0.3.7.jar [--live]`
+`protein-workflow.py run NEW_DIRECTORY --jar build/cli/omicsmatic-0.3.7.jar [--live]`
 runs eleven synthetic supplied-model/summary/assessment, confidence, directional
 PAE, partial-sequence, wrong-input, configured-process and primary-family cases.
 It uses Python stdlib and PyYAML, pins the JAR and verifier before execution and
@@ -486,7 +486,7 @@ verification needs. Raw sequence/coordinate artifacts remain local.
 
 ## Multiway overlap, heterogeneity and paired cohort influence
 
-`cohort-diagnostics-workflow.py run NEW_DIRECTORY --jar build/cli/jlinalg-0.3.7.jar`
+`cohort-diagnostics-workflow.py run NEW_DIRECTORY --jar build/cli/omicsmatic-0.3.7.jar`
 uses NumPy, SciPy and PyYAML for independent synthetic arithmetic: exact
 2/3/4-way patterns, frozen validation families, fixed/known-covariance GLS
 estimates, Q/I-squared, registered alerts and common-feature influence. It also
@@ -498,7 +498,7 @@ source. No biological exclusion, real AI appraisal or new primary subset is clai
 
 ## Colocalization, complete regional coverage and supplied signal pairs
 
-`colocalization-workflow.py run NEW_DIRECTORY --jar build/cli/jlinalg-0.3.7.jar`
+`colocalization-workflow.py run NEW_DIRECTORY --jar build/cli/omicsmatic-0.3.7.jar`
 uses Python stdlib and PyYAML for fifteen offline synthetic source, model,
 coverage, import and missing-work cases. It independently enumerates H0–H4
 from native SuSiE effect log Bayes factors, retaining the distinction between

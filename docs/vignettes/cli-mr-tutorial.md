@@ -2,7 +2,7 @@
 
 This page is a file-by-file workflow for users who do not write Java. It
 covers public GWAS discovery, custom instrument files, normalization, LD
-clumping, allele harmonization inside JLinAlg, causal estimation, and output
+clumping, allele harmonization inside OmicsMatic, causal estimation, and output
 files. Replace `jlinalg-<version>.jar` with the downloaded executable JAR.
 
 ## 1. Decide the analysis before downloading data
@@ -15,7 +15,7 @@ the summary-statistic license permits the intended use.
 
 ## 2. Find a suitable public exposure GWAS
 
-JLinAlg searches the public NHGRI-EBI GWAS Catalog:
+OmicsMatic searches the public NHGRI-EBI GWAS Catalog:
 
 ```powershell
 java -jar jlinalg-<version>.jar mr-instruments search --trait "body mass index" --limit 20
@@ -43,7 +43,7 @@ error, effect allele, other allele, and p-value. Effect-allele frequency is
 optional but strongly recommended for resolving palindromic alleles. A trait
 label is required when several exposures share a file.
 
-JLinAlg's normalized columns are:
+OmicsMatic's normalized columns are:
 
 ```text
 Phenotype SNP beta se eaf effect_allele other_allele pval
@@ -66,7 +66,7 @@ The syntax is `TARGET=SOURCE`: do not rename the source file by hand unless
 you prefer to. `--trait` supplies `Phenotype` when the input lacks a trait
 column. If Effect contains odds ratios or hazard ratios rather than additive
 effects, add `--effect-scale odds-ratio` or
-`--effect-scale hazard-ratio`; JLinAlg logs the ratios for MR.
+`--effect-scale hazard-ratio`; OmicsMatic logs the ratios for MR.
 
 A file containing only chosen rsIDs is not sufficient for MR. Join those IDs
 to their exposure beta, SE, alleles, and preferably EAF first, then run the
@@ -241,7 +241,7 @@ details behind these commands.
 <!-- SCIENTIFIC-CITATIONS:START -->
 ## Scientific citations
 
-These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as JLinAlg when reporting results.
+These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as OmicsMatic when reporting results.
 
 - [Jack Bowden, George Davey Smith, and Stephen Burgess (2015) — Mendelian randomization with invalid instruments: effect estimation and bias detection through Egger regression](../CITATIONS.md#bowden-mr-egger-2015) — [PMID: 26050253](https://pubmed.ncbi.nlm.nih.gov/26050253/) · [PMCID: PMC4469799](https://pmc.ncbi.nlm.nih.gov/articles/PMC4469799/)
 - [Jack Bowden et al. (2016) — Consistent estimation in Mendelian randomization with some invalid instruments using a weighted median estimator](../CITATIONS.md#bowden-weighted-median-2016) — [PMID: 27061298](https://pubmed.ncbi.nlm.nih.gov/27061298/) · [PMCID: PMC4849733](https://pmc.ncbi.nlm.nih.gov/articles/PMC4849733/)

@@ -117,8 +117,8 @@ residual-variance estimation, tolerance, and credible-set settings:
 
 On Windows 11 with an Intel Core i9-9900K, Eclipse Adoptium Java 21.0.4, and
 R 4.6.1/susieR 0.14.2, three warmups followed by seven measurements produced
-median end-to-end times of 0.0704391 seconds for JLinAlg's portable CPU path
-and 0.340 seconds for R: JLinAlg was 4.83 times faster. Both fits converged in
+median end-to-end times of 0.0704391 seconds for OmicsMatic's portable CPU path
+and 0.340 seconds for R: OmicsMatic was 4.83 times faster. Both fits converged in
 nine iterations, returned three credible sets, and estimated residual variance
 as 6.36378419836.
 
@@ -166,7 +166,7 @@ other sizes. The benchmark retains coefficient-space `A^-1`; it never builds
 dense `A`, `G kron A`, or `ZAZ'`.
 
 Before outer-point caching, on the official 644-row `glmmTMB` Salamanders
-examples, the same development host measured warmed median JLinAlg fits of
+examples, the same development host measured warmed median OmicsMatic fits of
 0.032545 seconds for ZIP and
 0.211661 seconds for ZINB. Before zero-inflated hot-loop and outer-optimizer
 work these fits took 0.135456 and 2.364569 seconds, respectively. The optimized

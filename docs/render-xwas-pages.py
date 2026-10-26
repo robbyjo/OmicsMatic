@@ -11,38 +11,40 @@ import markdown
 
 ROOT = Path(__file__).resolve().parents[1]
 PAGES = {
-    "bioinformatics-evidence": ("Bioinformatics evidence workflow", "Audited source discovery, regional genetic inference, protein and sequence investigation, literature search and local evidence packaging.", "CLI tutorial · Source build"),
-    "single-cell": ("Replicated single-cell RNA analysis", "Sparse QC, pseudobulk, donor-aware state and abundance, functional scores and exploratory representations.", "CLI + Java/R · Source build"),
-    "spatial-analysis": ("Physical spatial RNA analysis", "Tissue graphs, Moran and Geary tests, neighborhoods, sample-aware comparisons and distance gradients.", "CLI + Java · Source build"),
-    "project-configuration": ("Project configuration", "Project-over-local YAML precedence and reproducible CLI runs.", "CLI · Source build"),
-    "auditable-omics-pipeline": ("Auditable omics research pipeline", "A deterministic study contract, approval-gated execution, amendments, provenance, and guarded future LLM assistance.", "CLI · Source build"),
-    "study-pipeline-tutorial": ("Auditable study pipeline tutorial", "Run a result-first study end to end, inspect its evidence chain, and design a defensible patient-data boundary for future LLM assistance.", "CLI tutorial · Source build"),
-    "study-questions-and-decisions": ("Study questions and decisions subsystem design", "Implemented deterministic scientist questions, audited batch answers and amendment proposals, followed by the broader subsystem design.", "Source build · First tranche and roadmap"),
-    "variant-followup": ("Variant annotation and scoring", "Local snapshots, POST/API lookup, VEP/ANNOVAR adapters and transparent evidence integration.", "CLI · Source build"),
-    "network-followup": ("Networks and candidate regulators", "Reference networks, WGCNA, sparse and differential associations, GENIE3 and CARNIVAL.", "CLI + Java/R · Source build"),
-    "censored-ordinal": ("Censored and ordinal regression", "Fit Tobit, parametric survival-time and ordered logit/probit likelihoods with validated covariance.", "CLI + Java · Source build"),
-    "sampling-models": ("Rare-event and survey inference", "Separate coefficient and prevalence corrections, and model sampling weights, strata and PSUs explicitly.", "CLI + Java · Source build"),
-    "acat-rare-variants": ("ACAT rare-variant tests", "Run ACAT-V and canonical six-component ACAT-O from pooled scores or participant-level null models.", "CLI + Java · v0.3.6"),
-    "enrichment": ("Gene-set enrichment", "Define analysis-specific backgrounds, select defensible tests, and interpret overlapping gene, disease and phenotype sets.", "CLI + Java · v0.3.6"),
-    "ldsc": ("LDSC genetic architecture", "Estimate heritability and shared genetic architecture, then carry sampling uncertainty into the next model.", "CLI + Java · v0.3.6"),
-    "predicted-omics": ("Genetically predicted TWAS and PWAS", "Connect molecular prediction weights to GWAS evidence with explicit allele, scale and LD alignment.", "CLI + Java · v0.3.6"),
-    "genomic-factor": ("Shared genetic factors", "Model shared genetic variation and inspect common-factor SNP effects alongside heterogeneity.", "CLI + Java · v0.3.6"),
-    "prediction-scores": ("Prediction scores", "Train portable scores and evaluate frozen predictions in an independent cohort.", "CLI + Java · v0.3.6"),
-    "predictions-and-contrasts": ("Predictions, scenarios, and marginal effects", "Report expected responses, standardized scenario contrasts, risk ratios, and marginal effects with covariance-aware uncertainty.", "CLI + Java · v0.3.6"),
-    "instrumental-variable-regression": ("Individual-level instrumental-variable regression", "Fit linear 2SLS models with robust or clustered inference, instrument-strength diagnostics, and explicit identification limits.", "CLI + Java · v0.3.6"),
-    "conditional-score-conditioning": ("Summary-only conditional score analysis", "Import compatible cohort score blocks, condition by Schur complement, and pool auditable aggregate-data results.", "CLI + Java · v0.3.6"),
-    "latent-confounders-and-batch": ("Latent confounders and batch effects", "Estimate unknown sample factors with PCA, SVA, AutoSVA, or PEER, and adjust known batches with ComBat.", "CLI + Java · v0.3.6"),
-    "differential-regions-testing-imputation": ("Differential, regional, multiple-testing, and imputation workflows", "Run moderated continuous or count differential analysis, spatial EWAS regions, prespecified adaptive or hierarchical testing, and uncertainty-aware multiple imputation.", "CLI + Java · v0.3.6"),
+    "bioinformatics-evidence": ("Bioinformatics evidence workflow", "Audited source discovery, regional genetic inference, protein and sequence investigation, literature search and local evidence packaging.", "CLI tutorial Â· Source build"),
+    "single-cell": ("Replicated single-cell RNA analysis", "Sparse QC, pseudobulk, donor-aware state and abundance, functional scores and exploratory representations.", "CLI + Java/R Â· Source build"),
+    "spatial-analysis": ("Physical spatial RNA analysis", "Tissue graphs, Moran and Geary tests, neighborhoods, sample-aware comparisons and distance gradients.", "CLI + Java Â· Source build"),
+    "project-configuration": ("Project configuration", "Project-over-local YAML precedence and reproducible CLI runs.", "CLI Â· Source build"),
+    "auditable-omics-pipeline": ("Auditable omics research pipeline", "A deterministic study contract, approval-gated execution, amendments, provenance, and guarded future LLM assistance.", "CLI Â· Source build"),
+    "study-pipeline-tutorial": ("Auditable study pipeline tutorial", "Run a result-first study end to end, inspect its evidence chain, and design a defensible patient-data boundary for future LLM assistance.", "CLI tutorial Â· Source build"),
+    "study-questions-and-decisions": ("Study questions and decisions subsystem design", "Implemented deterministic scientist questions, audited batch answers and amendment proposals, followed by the broader subsystem design.", "Source build Â· First tranche and roadmap"),
+    "variant-followup": ("Variant annotation and scoring", "Local snapshots, POST/API lookup, VEP/ANNOVAR adapters and transparent evidence integration.", "CLI Â· Source build"),
+    "network-followup": ("Networks and candidate regulators", "Reference networks, WGCNA, sparse and differential associations, GENIE3 and CARNIVAL.", "CLI + Java/R Â· Source build"),
+    "censored-ordinal": ("Censored and ordinal regression", "Fit Tobit, parametric survival-time and ordered logit/probit likelihoods with validated covariance.", "CLI + Java Â· Source build"),
+    "sampling-models": ("Rare-event and survey inference", "Separate coefficient and prevalence corrections, and model sampling weights, strata and PSUs explicitly.", "CLI + Java Â· Source build"),
+    "acat-rare-variants": ("ACAT rare-variant tests", "Run ACAT-V and canonical six-component ACAT-O from pooled scores or participant-level null models.", "CLI + Java Â· v0.3.6"),
+    "enrichment": ("Gene-set enrichment", "Define analysis-specific backgrounds, select defensible tests, and interpret overlapping gene, disease and phenotype sets.", "CLI + Java Â· v0.3.6"),
+    "ldsc": ("LDSC genetic architecture", "Estimate heritability and shared genetic architecture, then carry sampling uncertainty into the next model.", "CLI + Java Â· v0.3.6"),
+    "predicted-omics": ("Genetically predicted TWAS and PWAS", "Connect molecular prediction weights to GWAS evidence with explicit allele, scale and LD alignment.", "CLI + Java Â· v0.3.6"),
+    "genomic-factor": ("Shared genetic factors", "Model shared genetic variation and inspect common-factor SNP effects alongside heterogeneity.", "CLI + Java Â· v0.3.6"),
+    "prediction-scores": ("Prediction scores", "Train portable scores and evaluate frozen predictions in an independent cohort.", "CLI + Java Â· v0.3.6"),
+    "predictions-and-contrasts": ("Predictions, scenarios, and marginal effects", "Report expected responses, standardized scenario contrasts, risk ratios, and marginal effects with covariance-aware uncertainty.", "CLI + Java Â· v0.3.6"),
+    "instrumental-variable-regression": ("Individual-level instrumental-variable regression", "Fit linear 2SLS models with robust or clustered inference, instrument-strength diagnostics, and explicit identification limits.", "CLI + Java Â· v0.3.6"),
+    "conditional-score-conditioning": ("Summary-only conditional score analysis", "Import compatible cohort score blocks, condition by Schur complement, and pool auditable aggregate-data results.", "CLI + Java Â· v0.3.6"),
+    "latent-confounders-and-batch": ("Latent confounders and batch effects", "Estimate unknown sample factors with PCA, SVA, AutoSVA, or PEER, and adjust known batches with ComBat.", "CLI + Java Â· v0.3.6"),
+    "differential-regions-testing-imputation": ("Differential, regional, multiple-testing, and imputation workflows", "Run moderated continuous or count differential analysis, spatial EWAS regions, prespecified adaptive or hierarchical testing, and uncertainty-aware multiple imputation.", "CLI + Java Â· v0.3.6"),
 }
 
-def render(source, destination, title, description, root, eyebrow="CLI + Java · v0.3.6"):
+def render(source, destination, title, description, root, eyebrow="CLI + Java Â· v0.3.6"):
     text = source.read_text(encoding="utf-8").split("\n", 1)[1]
     md = markdown.Markdown(extensions=["fenced_code", "tables", "toc"])
     body = md.convert(text)
     def links(match):
         url = match.group(1)
         if url.endswith("TODO.md"):
-            url = "https://github.com/robbyjo/JLinAlg/blob/main/TODO.md"
+            url = "https://github.com/robbyjo/OmicsMatic/blob/main/TODO.md"
+        elif source.parent == ROOT / "docs" and url.startswith("../examples/"):
+            url = "https://github.com/robbyjo/OmicsMatic/blob/main/" + url[3:]
         elif not url.startswith("http"):
             url = re.sub(r"(?i)CITATIONS\.md", "citations.html", url)
             url = url.replace(".md", ".html")
@@ -60,7 +62,7 @@ def render(source, destination, title, description, root, eyebrow="CLI + Java ·
     toc = ''.join(f'<a href="#{toc_id(item)}">{html.escape(item["name"])}</a>' for item in md.toc_tokens)
     page = f'''<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="{html.escape(description)}"><title>{html.escape(title)} · JLinAlg</title>
+<meta name="description" content="{html.escape(description)}"><title>{html.escape(title)} Â· OmicsMatic</title>
 <link rel="stylesheet" href="{root}assets/styles.css"><script src="{root}assets/app.js" defer></script></head>
 <body><site-header root="{root}"></site-header><main id="main">
 <section class="page-hero"><div class="container"><div class="breadcrumbs"><a href="{root}index.html">Home</a><span>/</span><a href="{root}vignettes/index.html">Vignettes</a><span>/</span><span>{html.escape(title)}</span></div>
@@ -83,16 +85,20 @@ render(ROOT / "docs/xwas-followup-validation.md", ROOT / "site/xwas-followup-val
        "xWAS follow-up validation", "Independent numerical fixtures, reproducible checks and explicit estimator boundaries.", "./")
 render(ROOT / "docs/latent-confounder-validation.md", ROOT / "site/latent-confounder-validation.html",
        "Latent-confounder validation and source audit", "Pinned upstream sources, numerical reference gates, performance design, and explicit implementation boundaries.", "./",
-       "Source audit · Reproducible validation")
+       "Source audit Â· Reproducible validation")
 render(ROOT / "docs/regression-inference-validation.md", ROOT / "site/regression-inference-validation.html",
        "Regression inference validation", "Independent R fixtures, numerical checks, workload timings and estimator boundaries.", "./",
-       "Source build · Reproducible validation")
+       "Source build Â· Reproducible validation")
 render(ROOT / "docs/inference-workflows-validation.md", ROOT / "site/inference-workflows-validation.html",
        "Modern inference workflow validation", "Frozen Bioconductor comparisons, independent formula checks, reproducible commands, and explicit estimator boundaries.", "./",
-       "Source audit · Reproducible validation")
+       "Source audit Â· Reproducible validation")
 render(ROOT / "docs/audit-fixes-validation.md", ROOT / "site/audit-fixes-validation.html",
        "Statistical audit fixes", "Regression checks, bootstrap imputation contracts and measured smoothing performance.", "./",
-       "Source audit · Reproducible validation")
+       "Source audit Â· Reproducible validation")
 render(ROOT / "docs/cell-spatial-validation.md", ROOT / "site/cell-spatial-validation.html",
        "Single-cell and spatial validation", "Independent RNA and tissue workflow fixtures, scientific units and explicit remaining roadmap.", "./",
-       "Source build · Reproducible validation")
+       "Source build Â· Reproducible validation")
+
+render(ROOT / "docs/plotting.md", ROOT / "site/plotting.html",
+       "Command-line plotting", "Create plots from CSV or TSV tables, with worked commands, chart mappings and export options.", "./",
+       "CLI plotting")

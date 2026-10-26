@@ -1,32 +1,32 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Run ACAT-V and canonical six-component ACAT-O from pooled scores or participant-level null models."><title>ACAT rare-variant tests · JLinAlg</title>
+<meta name="description" content="Run ACAT-V and canonical six-component ACAT-O from pooled scores or participant-level null models."><title>ACAT rare-variant tests Â· OmicsMatic</title>
 <link rel="stylesheet" href="../assets/styles.css"><script src="../assets/app.js" defer></script></head>
 <body><site-header root="../"></site-header><main id="main">
 <section class="page-hero"><div class="container"><div class="breadcrumbs"><a href="../index.html">Home</a><span>/</span><a href="../vignettes/index.html">Vignettes</a><span>/</span><span>ACAT rare-variant tests</span></div>
-<span class="eyebrow">CLI + Java · v0.3.6</span><h1>ACAT rare-variant tests</h1><p>Run ACAT-V and canonical six-component ACAT-O from pooled scores or participant-level null models.</p></div></section>
+<span class="eyebrow">CLI + Java Â· v0.3.6</span><h1>ACAT rare-variant tests</h1><p>Run ACAT-V and canonical six-component ACAT-O from pooled scores or participant-level null models.</p></div></section>
 <div class="container page-layout"><article class="prose"><p>Use ACAT-V when a set may contain only a few associated variants. Use ACAT-O
 when the genetic architecture is not known in advance: it Cauchy-combines
 Burden, SKAT, and ACAT-V under Beta(1,25) and Beta(1,1) weighting. Both tests
 operate on nuisance-adjusted scores and covariance, so the same APIs work with
-one cohort, pooled independent cohorts, or an individual-level JLinAlg null
+one cohort, pooled independent cohorts, or an individual-level OmicsMatic null
 model.</p>
 <h2 id="1-build-the-current-executable">1. Build the current executable</h2>
 <div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>./gradlew.bat executableJar --no-daemon --no-parallel
 </code></pre></div>
 <p>The examples below use the source-built
-<code>build/cli/jlinalg-0.3.7.jar</code>. ACAT support is included in v0.3.6 and later.</p>
+<code>build/cli/omicsmatic-0.3.7.jar</code>. ACAT support is included in v0.3.6 and later.</p>
 <h2 id="2-export-one-score-file-per-cohort">2. Export one score file per cohort</h2>
 <p>The small checked-in example is quantitative and synthetic. Real analyses
 should use a prespecified rare-variant mask and compatible cohort null models.</p>
-<div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>java -jar build/cli/jlinalg-0.3.7.jar rare-score --vcf examples/rare-meta/cohort-a.vcf --pheno examples/rare-meta/cohort-a.tsv --id sample --response trait --genome-build GRCh38 --cov-window 100 --out build/rare-demo/a
-java -jar build/cli/jlinalg-0.3.7.jar rare-score --vcf examples/rare-meta/cohort-b.vcf --pheno examples/rare-meta/cohort-b.tsv --id sample --response trait --genome-build GRCh38 --cov-window 100 --out build/rare-demo/b
+<div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>java -jar build/cli/omicsmatic-0.3.7.jar rare-score --vcf examples/rare-meta/cohort-a.vcf --pheno examples/rare-meta/cohort-a.tsv --id sample --response trait --genome-build GRCh38 --cov-window 100 --out build/rare-demo/a
+java -jar build/cli/omicsmatic-0.3.7.jar rare-score --vcf examples/rare-meta/cohort-b.vcf --pheno examples/rare-meta/cohort-b.tsv --id sample --response trait --genome-build GRCh38 --cov-window 100 --out build/rare-demo/b
 </code></pre></div>
 <p>The cohort manifest is <code>examples/rare-meta/cohorts.tsv</code>; paths in a manifest are
 resolved relative to the manifest. Cohorts must be independent and use the same
 trait scale, genome build, null-model contract, and allele convention.</p>
 <h2 id="3-run-acat-v-and-acat-o">3. Run ACAT-V and ACAT-O</h2>
-<div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>java -jar build/cli/jlinalg-0.3.7.jar rare-meta --cohorts examples/rare-meta/cohorts.tsv --genome-build GRCh38 --groups examples/rare-meta/groups.txt --test acat-v,acat-o --maf 0.5 --acat-mac-threshold 10 --out build/rare-demo/acat
+<div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>java -jar build/cli/omicsmatic-0.3.7.jar rare-meta --cohorts examples/rare-meta/cohorts.tsv --genome-build GRCh38 --groups examples/rare-meta/groups.txt --test acat-v,acat-o --maf 0.5 --acat-mac-threshold 10 --out build/rare-demo/acat
 </code></pre></div>
 <p>The realistic default for <code>--maf</code> remains 0.05; this miniature example needs
 0.5 to retain its deliberately common synthetic variants. ACAT-V defaults to
@@ -36,7 +36,7 @@ and Cauchy component weights as in the reference R custom-weight interface.
 Canonical ACAT-O deliberately ignores that option and always reports
 <code>weights=canonical</code>, because its six components are fixed by the paper.</p>
 <p>Variants with pooled minor-allele count at or below
-<code>--acat-mac-threshold</code> are collapsed into one burden component. JLinAlg derives
+<code>--acat-mac-threshold</code> are collapsed into one burden component. OmicsMatic derives
 pooled MAC from the cohort allele counts used for the pooled MAF; it does not
 approximate MAC by multiplying one global sample count. Variants above the
 threshold contribute two-sided marginal score p-values. <code>acat-v.tsv</code> reports
@@ -86,7 +86,7 @@ of exact zero and exact one endpoints.</p>
 <p><code>src/test/R/acat-reference.R</code> independently regenerates four score-summary
 fixtures with R 4.6.1, the published ACAT/ACAT-V formulas, and CompQuadForm
 Davies tails. ACAT and ACAT-V match those fixtures at tight floating-point
-tolerance. ACAT-O inherits JLinAlg's existing positive-mixture tail; the tests
+tolerance. ACAT-O inherits OmicsMatic's existing positive-mixture tail; the tests
 therefore state a separate bounded tolerance for the known Imhof-versus-Davies
 SKAT component difference instead of attributing it to ACAT.</p>
 <p>The reproducible command</p>
@@ -107,7 +107,7 @@ dependence-robust approximation, not an exact finite-sample permutation test.</p
   <div class="container narrow">
     <span class="eyebrow">Scientific foundations</span>
     <h2 id="scientific-citations-acat-rare-variants">Primary method citations</h2>
-    <p>Cite the relevant method publication as well as JLinAlg when reporting results from this workflow.</p>
+    <p>Cite the relevant method publication as well as OmicsMatic when reporting results from this workflow.</p>
     <ul class="citation-links">
       <li><a href="../citations.html#liu-acat-2019">Liu et al. (2019) — ACAT</a> <span class="citation-inline-identifiers">(<a href="https://pubmed.ncbi.nlm.nih.gov/30849328/">PMID: 30849328</a> · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6407498/">PMCID: PMC6407498</a>)</span></li><li><a href="../citations.html#wu-skat-2011">Wu et al. (2011) — SKAT</a> <span class="citation-inline-identifiers">(<a href="https://pubmed.ncbi.nlm.nih.gov/21737059/">PMID: 21737059</a> · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3135811/">PMCID: PMC3135811</a>)</span></li><li><a href="../citations.html#lee-skato-2012">Lee et al. (2012) — SKAT-O</a> <span class="citation-inline-identifiers">(<a href="https://pubmed.ncbi.nlm.nih.gov/22863193/">PMID: 22863193</a> · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3415556/">PMCID: PMC3415556</a>)</span></li><li><a href="../citations.html#madsen-browning-2009">Madsen (2009) — weighted burden test</a> <span class="citation-inline-identifiers">(<a href="https://pubmed.ncbi.nlm.nih.gov/19214210/">PMID: 19214210</a> · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC2633048/">PMCID: PMC2633048</a>)</span></li>
     </ul>

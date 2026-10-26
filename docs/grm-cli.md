@@ -28,7 +28,7 @@ Use a JDK 17 or newer and run from the repository root:
 ```
 
 On Windows, use `.\gradlew.bat executableJar`. The examples refer to
-`build/cli/jlinalg-0.3.7.jar`, which includes the `grm` constructor command.
+`build/cli/omicsmatic-0.3.7.jar`, which includes the `grm` constructor command.
 
 ## Step 2: inspect the genotype table
 
@@ -50,7 +50,7 @@ so that a retained missing call illustrates imputation. These are not proposed
 production QC thresholds. Choose a fresh output path each time:
 
 ```shell
-java -jar build/cli/jlinalg-0.3.7.jar grm --genotypes examples/grm/dosages.tsv --maf 0 --call-rate 0.5 --block-size 2 --backend cpu --out build/grm-tutorial/toy.tsv
+java -jar build/cli/omicsmatic-0.3.7.jar grm --genotypes examples/grm/dosages.tsv --maf 0 --call-rate 0.5 --block-size 2 --backend cpu --out build/grm-tutorial/toy.tsv
 ```
 
 The log `build/grm-tutorial/toy.tsv.log` reports five variants considered, three
@@ -79,7 +79,7 @@ expected; a mixed model also includes its residual covariance component.
 ## Step 4: compare filtering choices
 
 ```shell
-java -jar build/cli/jlinalg-0.3.7.jar grm --genotypes examples/grm/dosages.tsv --maf 0 --call-rate 0.95 --block-size 2 --backend cpu --out build/grm-tutorial/strict.tsv
+java -jar build/cli/omicsmatic-0.3.7.jar grm --genotypes examples/grm/dosages.tsv --maf 0 --call-rate 0.95 --block-size 2 --backend cpu --out build/grm-tutorial/strict.tsv
 ```
 
 Now v1 is excluded too, leaving two variants. The first diagonal becomes `2/3`
@@ -93,8 +93,8 @@ without changing the matrix's sample dimension.
 Run this small example from the repository root, with fresh output paths:
 
 ```shell
-java -jar build/cli/jlinalg-0.3.7.jar grm --genotypes examples/rare-meta/cohort-a.vcf --maf 0.01 --call-rate 0.95 --block-size 256 --backend cpu --out build/grm-demo/cohort.tsv
-java -jar build/cli/jlinalg-0.3.7.jar --pheno examples/rare-meta/cohort-a.tsv --id sample --formula "trait ~ 1" --grm build/grm-demo/cohort.tsv --backend cpu --out build/grm-demo/model.tsv
+java -jar build/cli/omicsmatic-0.3.7.jar grm --genotypes examples/rare-meta/cohort-a.vcf --maf 0.01 --call-rate 0.95 --block-size 256 --backend cpu --out build/grm-demo/cohort.tsv
+java -jar build/cli/omicsmatic-0.3.7.jar --pheno examples/rare-meta/cohort-a.tsv --id sample --formula "trait ~ 1" --grm build/grm-demo/cohort.tsv --backend cpu --out build/grm-demo/model.tsv
 ```
 
 The six-person, two-variant fixture demonstrates file interoperability; it is
@@ -164,7 +164,7 @@ Run the complete [GrmExample.java](../examples/grm/GrmExample.java) from the
 repository root using a JDK and the built JAR:
 
 ```shell
-java --class-path build/cli/jlinalg-0.3.7.jar examples/grm/GrmExample.java
+java --class-path build/cli/omicsmatic-0.3.7.jar examples/grm/GrmExample.java
 ```
 
 The core API calls are:
@@ -206,7 +206,7 @@ no GRM speedup claim follows from this small tutorial.
 <!-- SCIENTIFIC-CITATIONS:START -->
 ## Scientific citations
 
-These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as JLinAlg when reporting results.
+These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as OmicsMatic when reporting results.
 
 - [Paul M. VanRaden (2008) — Efficient methods to compute genomic predictions](CITATIONS.md#vanraden-2008) — [PMID: 18946147](https://pubmed.ncbi.nlm.nih.gov/18946147/)
 - [Jian Yang et al. (2011) — GCTA: a tool for genome-wide complex trait analysis](CITATIONS.md#yang-gcta-2011) — [PMID: 21167468](https://pubmed.ncbi.nlm.nih.gov/21167468/) · [PMCID: PMC3014363](https://pmc.ncbi.nlm.nih.gov/articles/PMC3014363/)

@@ -18,7 +18,7 @@ math threads and R data-table threads were fixed at one. The host was an
 
 Times are medians of five complete scans.
 
-| Model | R vectorized, 1 thread | JLinAlg, 1 thread | JLinAlg, 8 threads | Java speedup, 1 thread | Java speedup, 8 threads |
+| Model | R vectorized, 1 thread | OmicsMatic, 1 thread | OmicsMatic, 8 threads | Java speedup, 1 thread | Java speedup, 8 threads |
 |---|---:|---:|---:|---:|---:|
 | Fixed effect | 0.130 s | 0.0730 s | 0.0172 s | 1.78x | 7.56x |
 | Random effects, profile REML | 8.470 s | 0.826 s | 0.159 s | 10.3x | 53.2x |
@@ -42,7 +42,7 @@ Tau-squared had a maximum absolute difference of `10.01` and maximum
 scale-adjusted difference of `9.53e-5`. These cases have unusually large,
 nearly flat REML profiles; the much smaller pooled-effect and standard-error
 differences above describe their inferential impact. On a separate 1,000-row
-direct comparison with the established JLinAlg scalar implementation, maximum
+direct comparison with the established OmicsMatic scalar implementation, maximum
 scale-adjusted differences were `9.29e-8` for beta, `1.29e-7` for standard
 error, `2.57e-8` for p-value, and `1.27e-6` for tau-squared.
 
