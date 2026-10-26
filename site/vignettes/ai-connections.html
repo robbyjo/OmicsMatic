@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Complete study.yaml connection examples, environment credentials, purpose controls and troubleshooting."><title>Connect an AI advisor: browser, API key or OAuth token · OmicsMatic</title>
+<link rel="stylesheet" href="../assets/styles.css"><script src="../assets/app.js" defer></script><style>.study-guide .result-table table{min-width:540px;table-layout:fixed}.study-guide .result-table th,.study-guide .result-table td{white-space:normal;overflow-wrap:anywhere}</style></head>
+<body><site-header root="../"></site-header><main id="main">
+<section class="page-hero"><div class="container"><div class="breadcrumbs"><a href="../index.html">Home</a><span>/</span><a href="../vignettes/index.html">Vignettes</a><span>/</span><span>Connect an AI advisor: browser, API key or OAuth token</span></div>
+<span class="eyebrow">AI setup · Current source build</span><h1>Connect an AI advisor: browser, API key or OAuth token</h1><p>Complete study.yaml connection examples, environment credentials, purpose controls and troubleshooting.</p></div></section>
+<div class="container page-layout"><article class="prose study-guide"><p>Use this page after <a href="study-getting-started.html">preparing your study</a>.
+These settings configure OmicsMatic's built-in advisor. An
+<a href="ai-driver.html">external driver</a> has its own application, login and tool permissions.</p>
+<p>Choose one transport below. Before resolving a new project, merge its YAML into
+your existing <code>study.yaml</code>. For an existing project, use an approved amendment.
+Do not replace your datasets or create duplicate top-level keys.</p>
+<h2 id="choose-a-connection">Choose a connection</h2>
+<div class="result-table"><table>
+<thead>
+<tr>
+<th>Connection</th>
+<th>What you need</th>
+<th>How an exchange happens</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Browser handoff</td>
+<td>Access to your chosen AI website</td>
+<td>OmicsMatic prepares a local packet; you review and manually submit its exact prompt, then import the response.</td>
+</tr>
+<tr>
+<td>OpenAI API</td>
+<td>An approved API model and API credential</td>
+<td>OmicsMatic calls the Responses API.</td>
+</tr>
+<tr>
+<td>Gemini API</td>
+<td>An approved API model and API credential</td>
+<td>OmicsMatic calls GenerateContent.</td>
+</tr>
+<tr>
+<td>OpenAI-compatible API with key</td>
+<td>A documented compatible HTTPS endpoint, model and key</td>
+<td>OmicsMatic calls non-streaming Chat Completions. Compatibility must include the required response format.</td>
+</tr>
+<tr>
+<td>OpenAI-compatible API with OAuth access token</td>
+<td>The same API plus an already issued access token accepted by that endpoint</td>
+<td>OmicsMatic sends the token as a bearer credential. It does not perform login or refresh.</td>
+</tr>
+</tbody>
+</table></div>
+<p>API access and browser sign-in are separate arrangements. Do not assume that a
+consumer chat subscription grants the API access your endpoint requires.
+An API connection can incur charges. Use an approved model identifier from your
+provider; <code>APPROVED_MODEL_ID</code> below is a placeholder, not a model name.</p>
+<h2 id="first-set-the-disclosure-policy">First set the disclosure policy</h2>
+<p>For remote aggregate assistance, merge this into the existing project:</p>
+<div class="code-window"><div class="code-bar"><span>yaml</span></div><pre><code>project:
+  data_policy:
+    llm:
+      remote_transmission: aggregate_results
+      remote_patient_level_data: deny
+</code></pre></div>
+<p>The built-in adapter constructs a bounded evidence preview. It does not upload
+input files or give the model a filesystem, shell, participant table or sample
+matrix. The preview can include gene symbols, phenotype labels, study metadata
+and aggregate statistics; these can still be confidential. Raw feature IDs,
+dictionary prose and local paths are omitted by the preview adapter.</p>
+<p>This policy is permission for the configured bounded route, not automatic
+identification or removal of sensitive information. Review what your study can
+disclose. <code>deny_all</code> blocks remote requests even when a key is present.
+Policies requiring extra per-request checks that the adapter cannot enforce
+remain blocking. A separate agent or a manual upload is outside this adapter's
+control. See the <a href="study-yaml-reference.html#reference-resources-and-network-policy">data-policy field guide</a>.</p>
+<h2 id="browser-handoff-no-api-key-required">Browser handoff: no API key required</h2>
+<p>Add this at the top level:</p>
+<div class="code-window"><div class="code-bar"><span>yaml</span></div><pre><code>assistance:
+  enabled: true
+  provider: browser
+  next_steps: true
+  literature: false
+  impact: false
+  manuscript: false
+  response_files:
+    - responses/H1-advisor/receipt.yaml
+</code></pre></div>
+<p>The receipt path can be declared before it exists. After deterministic work,
+the advisor operation waits for that response. Preparing the packet does not
+sign into a website or submit a prompt.</p>
+<p>Follow the <a href="ai-advisor.html#complete-a-browser-exchange">complete advisor handoff</a>,
+including response-template fields, import, verification and resume.
+This is a practical way to use an institution-approved browser account while
+reviewing each exact disclosure.</p>
+<h2 id="openai-with-an-api-key">OpenAI with an API key</h2>
+<p>Use this top-level mapping in place of the browser mapping:</p>
+<div class="code-window"><div class="code-bar"><span>yaml</span></div><pre><code>assistance:
+  enabled: true
+  provider: openai
+  model: APPROVED_MODEL_ID
+  auth: api_key
+  api_key_env: RESEARCH_AI_KEY
+  next_steps: true
+  literature: false
+  impact: false
+  manuscript: false
+</code></pre></div>
+<p><code>api_key_env</code> contains the <strong>name of an environment variable</strong>, never the secret.
+The process that runs Java must receive that variable.</p>
+<p>In PowerShell 7, set a session-only value without showing it in the command:</p>
+<div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>$env:RESEARCH_AI_KEY = Read-Host &quot;Paste the approved API key&quot; -MaskInput
+</code></pre></div>
+<p>If <code>-MaskInput</code> is unavailable in your PowerShell version, use a secure prompt:</p>
+<div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>$credential = Get-Credential -UserName &quot;api&quot; -Message &quot;Enter the API key in the password field&quot;
+$env:RESEARCH_AI_KEY = $credential.GetNetworkCredential().Password
+Remove-Variable credential
+</code></pre></div>
+<p>Both methods create a plaintext environment value for the Java process.
+Use your institution's secret manager for production. Do not echo it, commit it,
+put it in YAML, or include it in screenshots. Check presence without printing it:</p>
+<div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>if ([string]::IsNullOrWhiteSpace($env:RESEARCH_AI_KEY)) { throw &quot;Credential is missing.&quot; }
+</code></pre></div>
+<p>After configuring the policy and reviewing/resolving/approving the study, run
+from the same terminal:</p>
+<div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>java -jar $jar study run --project . --actor-id scientist-1
+</code></pre></div>
+<p>This can send a real provider request. <code>--offline</code> blocks it.
+When finished with the session:</p>
+<div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>Remove-Item Env:RESEARCH_AI_KEY
+</code></pre></div>
+<p>Removing your environment value does not revoke the provider's key.
+See the official <a href="https://developers.openai.com/api/reference/overview">API authentication reference</a>
+for credential handling. The adapter uses Responses with <code>store: false</code>;
+that setting alone is not a guarantee of zero provider retention.</p>
+<h2 id="gemini-with-an-api-key">Gemini with an API key</h2>
+<p>Use the same environment-variable procedure, then this alternative mapping:</p>
+<div class="code-window"><div class="code-bar"><span>yaml</span></div><pre><code>assistance:
+  enabled: true
+  provider: gemini
+  model: APPROVED_MODEL_ID
+  auth: api_key
+  api_key_env: RESEARCH_AI_KEY
+  next_steps: true
+  literature: false
+  impact: false
+  manuscript: false
+</code></pre></div>
+<p>The adapter selects the Gemini endpoint; do not add <code>endpoint</code> for either
+<code>gemini</code> or <code>openai</code>. Omitting <code>api_key_env</code> uses the built-in defaults
+<code>GEMINI_API_KEY</code> or <code>OPENAI_API_KEY</code>, respectively. Explicitly naming your
+variable makes shared instructions easier to audit.</p>
+<h2 id="an-openai-compatible-api-with-a-key">An OpenAI-compatible API with a key</h2>
+<p>Your institution may provide a compatible gateway. Ask its administrator for
+the exact endpoint, model ID and credential procedure. Replace the example URL:</p>
+<div class="code-window"><div class="code-bar"><span>yaml</span></div><pre><code>assistance:
+  enabled: true
+  provider: openai_compatible
+  model: APPROVED_MODEL_ID
+  endpoint: https://gateway.example.org/v1/chat/completions
+  auth: api_key
+  api_key_env: RESEARCH_AI_KEY
+  next_steps: true
+  literature: false
+  impact: false
+  manuscript: false
+</code></pre></div>
+<p>The endpoint must be HTTPS and end in <code>/chat/completions</code>, with no embedded
+credentials, query string or fragment. Redirects are disabled.
+This adapter requests a non-streaming response; a service requiring a different
+protocol or a streaming-only endpoint is not interchangeable.</p>
+<h2 id="oauth-use-an-already-issued-api-access-token">OAuth: use an already issued API access token</h2>
+<p>Use this only when the gateway officially accepts an OAuth access token for
+the declared model API:</p>
+<div class="code-window"><div class="code-bar"><span>yaml</span></div><pre><code>assistance:
+  enabled: true
+  provider: openai_compatible
+  model: APPROVED_MODEL_ID
+  endpoint: https://gateway.example.org/v1/chat/completions
+  auth: oauth
+  oauth_token_env: RESEARCH_AI_ACCESS_TOKEN
+  next_steps: true
+  literature: false
+  impact: false
+  manuscript: false
+</code></pre></div>
+<ol>
+<li>Obtain access through your institution's or provider's approved login tooling.
+   The token needs the audience and scopes required by that API.</li>
+<li>Put the <strong>access token</strong> in the terminal environment; do not use an ID token,
+   refresh token, browser cookie or unrelated application's saved credential.</li>
+<li>Validate the contract, review and approve the plan, then run Java in that
+   environment. Renew expired tokens using the issuer's tooling.</li>
+</ol>
+<p>For PowerShell 7:</p>
+<div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>$env:RESEARCH_AI_ACCESS_TOKEN = Read-Host &quot;Paste the approved API access token&quot; -MaskInput
+java -jar $jar study run --project . --actor-id scientist-1
+Remove-Item Env:RESEARCH_AI_ACCESS_TOKEN
+</code></pre></div>
+<p>OmicsMatic does not register an OAuth application, open a device login,
+request consent, refresh a token or silently fall back to an API key.
+<code>auth: oauth</code> is accepted only with <code>provider: openai_compatible</code>.
+Use <code>oauth_token_env</code> and omit <code>api_key_env</code>; do not configure both.</p>
+<p>A ChatGPT or Codex sign-in is not an access token to copy into this mapping.
+If your workflow uses an external signed-in agent, configure it in that client
+and follow the <a href="ai-driver.html#connect-the-external-driver">driver guide</a>.
+The <a href="bioinformatics-evidence.html#optional-api-key-and-oauth-access-token-connections">advanced connection notes</a>
+explain the distinction from separately registered sign-in integrations.</p>
+<h2 id="turn-on-only-the-assistance-you-want">Turn on only the assistance you want</h2>
+<div class="result-table"><table>
+<thead>
+<tr>
+<th>Key</th>
+<th>What it requests</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>next_steps: true</code></td>
+<td>Bounded proposals, scientific questions and follow-up advice.</td>
+</tr>
+<tr>
+<td><code>literature: true</code></td>
+<td>A separate AI literature interpretation/search exchange; requires mapped genes and retrieval evidence.</td>
+</tr>
+<tr>
+<td><code>related_phenotypes: true</code></td>
+<td>Cited phenotype-label suggestions for bounded public GWAS discovery; suggestions remain unreviewed.</td>
+</tr>
+<tr>
+<td><code>impact: true</code></td>
+<td>Study-wide comparative impact assessment from the finding inventory.</td>
+</tr>
+<tr>
+<td><code>manuscript: true</code></td>
+<td>An explicitly enabled first draft; also requests impact assessment.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Start with <code>next_steps</code>. Adding purposes may create more calls, browser packets,
+prerequisites and costs. A key alone enables none of them.
+The schema defines call, payload, output-token and timeout bounds.
+<code>manuscript: true</code> requests impact even if you also write <code>impact: false</code>;
+leave manuscript disabled when you want advice only.</p>
+<p>The OpenAI literature/related-phenotype route requests hosted <code>web_search</code>;
+Gemini requests Google Search grounding. The compatible adapter does not attach
+an equivalent search tool. A chat response without usable retrieval evidence
+does not complete a literature review. See
+<a href="https://developers.openai.com/api/docs/guides/tools-web-search">the official OpenAI web-search guide</a>
+and <a href="study-tools-literature.html">the local tool-control guide</a>.</p>
+<h2 id="diagnose-a-connection-without-guessing">Diagnose a connection without guessing</h2>
+<p>Validate locally first; <code>study validate</code> does not test your credentials.
+After an actual attempt, inspect the operation's <code>llm/</code> artifacts and status:
+the request/prompt, redacted response, requested/returned model and decision
+show what happened.</p>
+<div class="result-table"><table>
+<thead>
+<tr>
+<th>Problem</th>
+<th>Check</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Missing credential</td>
+<td>Variable name and the terminal that launched Java.</td>
+</tr>
+<tr>
+<td>HTTP denial or authentication error</td>
+<td>Correct endpoint, token audience/scope, model access and expiry.</td>
+</tr>
+<tr>
+<td>Policy or offline block</td>
+<td>Resolved disclosure/resource policy and <code>--offline</code>.</td>
+</tr>
+<tr>
+<td>Truncated, malformed or unsupported reply</td>
+<td>Provider response contract, model capabilities and output budget.</td>
+</tr>
+<tr>
+<td>Literature still waiting</td>
+<td>Gene annotation, retrieved source metadata, browser receipts and search availability.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Do not weaken the study policy to make an error disappear. Resolve the cause
+and resume; retain unsuccessful attempts. Local adapter tests do not establish
+that your account, chosen model or gateway works. No paid request is needed to
+rehearse the <a href="ai-advisor.html">browser advisor</a>.</p>
+<!-- SCIENTIFIC-CITATIONS:START -->
+<section class="citation-strip" aria-labelledby="scientific-citations-ai-connections">
+  <div class="container narrow">
+    <span class="eyebrow">Scientific foundations</span>
+    <h2 id="scientific-citations-ai-connections">Primary method citations</h2>
+    <p>Cite the relevant method publication as well as OmicsMatic when reporting results from this workflow.</p>
+    <ul class="citation-links">
+      <li><a href="../citations.html#sandve-reproducibility-2013">Sandve et al. (2013) — Configuration provenance</a></li><li><a href="../citations.html#w3c-prov-o-2013">W3C (2013) — Evidence provenance graph</a></li><li><a href="../citations.html#hhs-hipaa-deidentification-2012">HHS OCR (2012) — Safe Harbor and Expert Determination</a></li><li><a href="../citations.html#nist-genai-profile-2024">NIST (2024) — Generative-AI data provenance</a></li>
+    </ul>
+    <a class="text-link" href="../citations.html">Search all scientific citations →</a>
+  </div>
+</section>
+<!-- SCIENTIFIC-CITATIONS:END --></article>
+<aside class="toc"><strong>On this page</strong><a href="#choose-a-connection">Choose a connection</a><a href="#first-set-the-disclosure-policy">First set the disclosure policy</a><a href="#browser-handoff-no-api-key-required">Browser handoff: no API key required</a><a href="#openai-with-an-api-key">OpenAI with an API key</a><a href="#gemini-with-an-api-key">Gemini with an API key</a><a href="#an-openai-compatible-api-with-a-key">An OpenAI-compatible API with a key</a><a href="#oauth-use-an-already-issued-api-access-token">OAuth: use an already issued API access token</a><a href="#turn-on-only-the-assistance-you-want">Turn on only the assistance you want</a><a href="#diagnose-a-connection-without-guessing">Diagnose a connection without guessing</a><a href="#scientific-citations-ai-connections">Scientific citations</a></aside></div>
+</main><site-footer root="../"></site-footer></body></html>

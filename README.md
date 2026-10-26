@@ -8,13 +8,15 @@ capabilities, worked vignettes, validation results, and scientific citations.
 
 ## Choose your degree of AI collaboration
 
-Choose how to plan and review an analysis:
+Begin with **[your first study.yaml](docs/vignettes/study-getting-started.md)**: minimum configuration, data placement, completed-analysis reuse, and running all or selected work. Then choose how to plan and review the analysis:
 
 | Mode | Who plans and decides | Worked guide |
 | --- | --- | --- |
 | No AI | The investigator defines and approves a reproducible local workflow. | [Run without AI](docs/vignettes/ai-no-ai.md) |
 | AI as an advisor | The built-in, opt-in adapter provides bounded advice through browser handoff or an explicitly selected API; the investigator reviews proposals. | [Collaborate with an advisor](docs/vignettes/ai-advisor.md) |
 | AI as a driver | A separately managed agent coordinates existing CLI commands; scientific approval and data-access enforcement remain explicit. | [Coordinate an external agent](docs/vignettes/ai-driver.md) |
+
+For configuration details, see the [study.yaml field guide](docs/vignettes/study-yaml-reference.md), [browser/API/OAuth setup](docs/vignettes/ai-connections.md), and [literature, tool choices and finding priorities](docs/vignettes/study-tools-literature.md).
 
 The built-in advisor uses a bounded, policy-approved evidence preview and never
 uploads patient files or grants shell or sample-matrix access. Aggregate findings

@@ -1,93 +1,210 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Coordinate approved CLI steps with a separately managed agent and a distinct scientist approval step."><title>AI as an external workflow driver · OmicsMatic v0.3.7</title>
-<link rel="stylesheet" href="../assets/styles.css"><script src="../assets/app.js" defer></script></head>
+<meta name="description" content="Connect a supervised external agent, scope its tools, prepare a reviewable plan and coordinate approved execution."><title>Mode 3: AI as an external workflow driver · OmicsMatic</title>
+<link rel="stylesheet" href="../assets/styles.css"><script src="../assets/app.js" defer></script><style>.study-guide .result-table table{min-width:540px;table-layout:fixed}.study-guide .result-table th,.study-guide .result-table td{white-space:normal;overflow-wrap:anywhere}</style></head>
 <body><site-header root="../"></site-header><main id="main">
-<section class="page-hero"><div class="container"><div class="breadcrumbs"><a href="../index.html">Home</a><span>/</span><a href="index.html">Vignettes</a><span>/</span><span>AI collaboration</span></div>
-<span class="eyebrow">Three collaboration modes · v0.3.7</span><h1>AI as an external workflow driver</h1><p>Coordinate approved CLI steps with a separately managed agent and a distinct scientist approval step.</p></div></section>
-<div class="container page-layout"><article class="prose"><p>An external AI agent can help translate a research objective into an OmicsMatic
-study contract, coordinate documented CLI commands, inspect authorized outputs
-and propose amendments. OmicsMatic v0.3.7 supplies the deterministic planner,
-execution engine and evidence ledger. The agent is separately operated software;
-OmicsMatic does not bundle an autonomous agent runtime or grant it access to data.
-This vignette describes a supervised collaboration pattern using existing CLI
-interfaces, not an autonomous scientific decision-maker.</p>
-<h2 id="agree-on-scope-and-access">Agree on scope and access</h2>
-<p>Specify the estimand, outcomes, cohort relationships, data sources, approved
-operations, resource limits and decisions reserved for the scientist. The agent
-may draft a study, but must leave unknown ancestry, LD, genome build, units and
-instrument validity unresolved rather than inventing them.</p>
-<p>For patient-level work, keep data and execution in an institution-controlled
-environment. Use a separate account or execution service with permissions that
-expose only reviewed aggregate artifacts to a remote agent. A prompt instruction
-is not an access boundary: if an agent can read raw files or invoke arbitrary
-networked shell commands, OmicsMatic's assistance policy cannot prevent disclosure.
-Even <code>index/LLM_CONTEXT.md</code> and the generated <code>AGENTS.md</code> are local working
-artifacts, not automatically approved external payloads.</p>
-<h2 id="prepare-an-offline-synthetic-rehearsal">Prepare an offline synthetic rehearsal</h2>
+<section class="page-hero"><div class="container"><div class="breadcrumbs"><a href="../index.html">Home</a><span>/</span><a href="../vignettes/index.html">Vignettes</a><span>/</span><span>Mode 3: AI as an external workflow driver</span></div>
+<span class="eyebrow">Beginner guide · Current source build</span><h1>Mode 3: AI as an external workflow driver</h1><p>Connect a supervised external agent, scope its tools, prepare a reviewable plan and coordinate approved execution.</p></div></section>
+<div class="container page-layout"><article class="prose study-guide"><p>A driver is a separately operated agent that helps prepare a study, coordinates
+permitted CLI commands, reviews authorized outputs and proposes next steps.
+OmicsMatic supplies the deterministic planner, numerical operations and evidence
+ledger. You retain scientific decisions and approval.</p>
+<p><strong>Start with the same recipe.</strong> A <code>study.yaml</code> contains <code>schema_version</code>,
+<code>project</code>, <code>datasets</code> and <code>hypotheses</code>: the study identity, file locations,
+scientific questions and requested goals. Read
+<a href="study-getting-started.html">Start here</a> before giving an agent a task.
+The <a href="study-yaml-reference.html">field guide</a> lists optional configuration.</p>
+<p>This guide targets the current source build. Driver mode is a supervised
+integration pattern using the existing CLI. OmicsMatic does not bundle an
+autonomous agent runtime or enable one with an <code>analysis.mode: driver</code> setting.</p>
+<h2 id="understand-which-connection-goes-where">Understand which connection goes where</h2>
+<div class="result-table"><table>
+<thead>
+<tr>
+<th>Connection</th>
+<th>Where you configure it</th>
+<th>What it authorizes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>External driver login, API key or OAuth</td>
+<td>The external agent application's settings or approved execution service</td>
+<td>That agent's model connection. Its host controls tools and accessible data.</td>
+</tr>
+<tr>
+<td>OmicsMatic's optional built-in advisor</td>
+<td><code>study.yaml</code> → <code>assistance</code></td>
+<td>Only bounded assistance purposes such as next-step advice or literature support.</td>
+</tr>
+<tr>
+<td>Statistical/resource adapters</td>
+<td>The supported study method/resource configuration</td>
+<td>Registered numerical or public-evidence operations, subject to prerequisites and policy.</td>
+</tr>
+</tbody>
+</table></div>
+<p>An external driver can coordinate a study with built-in assistance disabled.
+Its login is not something to paste into the study file.
+If you want both driver and advisor, configure the second connection using
+<a href="ai-connections.html">API-key/OAuth study examples</a>; that can produce additional
+calls and costs. Setting <code>--actor-type llm</code> only records attribution and never
+connects a model.</p>
+<h2 id="connect-the-external-driver">Connect the external driver</h2>
+<p>Choose an institution-approved agent and follow that client's documented sign-in
+or API setup. If it supports OAuth, perform its login and token management there.
+If it uses an API key, provide the secret through its documented secure settings
+or environment. OmicsMatic does not maintain those credentials.</p>
+<p>The surrounding environment should expose only the inputs and tools that the
+agent needs. For a synthetic rehearsal it may inspect all synthetic files.
+For patient-level work, use a controlled execution account or service: keep
+restricted inputs local and disclose only reviewed aggregate artifacts.</p>
+<p>A prompt saying “do not read patient data” is not an enforced boundary.
+An agent with a general shell and unrestricted filesystem can bypass the
+built-in assistance preview entirely. Limit file access, commands and network
+destinations in the host. The built-in <code>deny_all</code> policy and <code>--offline</code> flag
+cannot govern the agent's separate model connection.</p>
+<p>Do not assume <code>index/LLM_CONTEXT.md</code> or a generated project <code>AGENTS.md</code> is
+automatically approved for remote transmission. They are local working records;
+review their actual contents and provenance.</p>
+<h2 id="prepare-a-synthetic-rehearsal">Prepare a synthetic rehearsal</h2>
 <p>From the repository root:</p>
-<pre><code class="language-powershell">.\gradlew.bat executableJar
+<div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>.\gradlew.bat executableJar --no-daemon --no-parallel
 $jar = (Resolve-Path &quot;build/cli/omicsmatic-0.3.7.jar&quot;).Path
 $project = Join-Path (Get-Location) &quot;build/ai-driver&quot;
-if (Test-Path $project) { throw &quot;Choose a fresh project directory.&quot; }
+if (Test-Path -LiteralPath $project) { throw &quot;Choose a fresh project directory.&quot; }
 Copy-Item examples/study-pipeline $project -Recurse
 Set-Location $project
-</code></pre>
-<p>The fixture contains synthetic association results. Its built-in assistance is
-disabled, so this rehearsal itself sends no model requests. A real external
-agent connection and its disclosure controls must be established independently.</p>
-<h2 id="let-the-agent-prepare-a-reviewable-plan">Let the agent prepare a reviewable plan</h2>
-<p>These commands show the agent's proposed actions. Replace <code>REPORTED_MODEL_ID</code>
-with the actual model identifier for an agent-run project:</p>
-<pre><code class="language-powershell">java -jar $jar study validate study.yaml --check-files
+</code></pre></div>
+<p>The copied study contains completed synthetic association tables and a manual
+replication/meta-analysis goal list. Built-in assistance is disabled.
+The CLI steps below can be rehearsed by a human or script without a live agent.</p>
+<p>For real files, supply the agent a reviewed manifest of permitted paths and
+scientific metadata. If work is already completed, declare
+<a href="study-pipeline-tutorial.html#reuse-completed-analyses-and-run-missing-work">typed supplied results</a>;
+ask it to plan missing work instead of recomputing completed stages by default.</p>
+<h2 id="give-the-driver-a-concrete-task">Give the driver a concrete task</h2>
+<p>Use a task brief like this, replacing the bracketed scope with actual permissions:</p>
+<div class="code-window"><div class="code-bar"><span>text</span></div><pre><code>Prepare an OmicsMatic plan for this study.
+Scientific question: [explicit question and estimand].
+Starting inputs: [approved matrices, association tables or completed stages].
+Requested work: [explicit goals, or review all eligible registered branches].
+Permitted files: [exact paths and approved aggregate outputs].
+Permitted actions: validate, resolve, plan, status, questions and verify.
+After scientist approval, request run through the controlled executor.
+Do not call approve, accept assumptions, upload files or run new executables.
+Do not change hypotheses, thresholds, cohorts, units or exclusions silently.
+Leave unknown ancestry, build, LD, overlap and instrument validity unresolved.
+Return the contract, plan, missing inputs and exact source artifacts for review.
+</code></pre></div>
+<p>The brief communicates your intent; the host's permissions must enforce it.
+For more automation, expose a small command wrapper or service rather than a
+general shell. The wrapper is deployment work outside the built-in advisor.
+There is no supported study YAML list of arbitrary MCP servers or agent tools.</p>
+<p>Useful tool choices for a driver include read-only inspection of approved
+artifacts, the documented OmicsMatic CLI and an approved public-literature search.
+Install or expose additional bioinformatics software only when its task,
+version, license, inputs and outputs have been reviewed. See
+<a href="study-tools-literature.html#choose-and-limit-the-tools">tool selection and blocking</a>.</p>
+<h2 id="let-the-driver-prepare-the-contract-and-plan">Let the driver prepare the contract and plan</h2>
+<p>The agent can help translate your question into a draft study description,
+but it must not invent sample sizes, independence, annotation versions or methods.
+Use the actual starting stage: a table of completed meta-analysis results is
+not a participant matrix.</p>
+<p>These examples attribute actions to an actual agent. Replace
+<code>REPORTED_MODEL_ID</code> with its reported model identity:</p>
+<div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>java -jar $jar study validate study.yaml --check-files
 java -jar $jar study resolve study.yaml --actor-type llm --actor-id external-agent --actor-model REPORTED_MODEL_ID
 java -jar $jar study plan --project . --actor-type llm --actor-id external-agent --actor-model REPORTED_MODEL_ID
 java -jar $jar study status --project .
 Get-Content resolved-study.yaml
 Get-Content plans/*/analysis-plan.yaml
-</code></pre>
-<p>Actor labels record who is reported to have performed a step. They are not
-authenticated identities or proof that an LLM ran. An ordinary scripted rehearsal
-should instead use <code>--actor-type external --actor-id rehearsal</code> and omit the
-model. Never attribute a human's actions to a model merely because this guide
-contains agent examples.</p>
-<p>The scientist reviews the exact contract and operation graph, including missing
-inputs, statistical assumptions and any proposed disclosure. The scientist then
-runs the separate approval command:</p>
-<pre><code class="language-powershell">java -jar $jar study approve --project . --approved-by scientist-1
-</code></pre>
-<p>Reserve this command for the authorized scientist through the surrounding
-execution environment. Do not give the agent an unrestricted approval shell.
-<code>study auto</code> records command-line approval as part of its convenience workflow;
-use the explicit lifecycle here to preserve a separate human review step.</p>
-<h2 id="coordinate-execution-and-evidence-review">Coordinate execution and evidence review</h2>
-<p>After approval, the agent can request the permitted run, status and verification
-commands through the controlled execution service:</p>
-<pre><code class="language-powershell">java -jar $jar study run --project . --offline --actor-type llm --actor-id external-agent --actor-model REPORTED_MODEL_ID
+</code></pre></div>
+<p>If you are manually rehearsing these steps, use
+<code>--actor-type human --actor-id scientist-1</code>. For a non-AI script, use
+<code>--actor-type external --actor-id rehearsal</code> and omit <code>--actor-model</code>.
+Actor labels are recorded declarations, not authenticated identity or proof that
+a model performed the work.</p>
+<p>For a full analysis, the agent may propose <code>analysis.mode: auto</code>, then explain
+the inferred branches. For a partial analysis it should use <code>manual</code> and a
+specific goal list. There is no general <code>study run --only</code> shortcut.
+For remaining work, repeat the approved run or import completed results and
+request missing goals. See <a href="study-getting-started.html#run-everything-the-rest-or-one-part">the execution choices</a>.</p>
+<h2 id="keep-scientist-approval-separate">Keep scientist approval separate</h2>
+<p>The scientist reviews the exact study and plan, including input lineage,
+effect definitions, testing family, cohort dependence, missing prerequisites,
+tool configuration and permitted disclosure. The scientist then runs:</p>
+<div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>java -jar $jar study approve --project . --approved-by scientist-1
+</code></pre></div>
+<p>Reserve this action through the surrounding permissions. A person-name string
+does not authenticate the person or prevent an unrestricted agent from invoking
+the command. Do not let the driver fill unknown assumptions just to clear a gate.</p>
+<p>For this supervised pattern, prefer the explicit lifecycle.
+<code>study auto</code> records command-line approval as part of its convenience workflow,
+so it is unsuitable as an unrestricted driver command when a separate human
+approval step is required.</p>
+<h2 id="execute-and-continue-the-approved-work">Execute and continue the approved work</h2>
+<p>After approval, the permitted execution service can run:</p>
+<div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>java -jar $jar study run --project . --offline --actor-type llm --actor-id external-agent --actor-model REPORTED_MODEL_ID
 java -jar $jar study status --project .
 java -jar $jar study questions --project .
 java -jar $jar study verify --project .
-</code></pre>
-<p>OmicsMatic runs the registered numerical operations and writes manifests, hashes,
-diagnostics, reports, an append-only ledger and <code>SESSION_HISTORY.md</code>. The agent
-can summarize approved evidence using result IDs; each reported number must
-resolve to its actual source artifact. Missing MR, colocalization, fine-mapping
-or enrichment prerequisites remain questions, not successful analyses. Standalone
-network and other methods outside the study registry require separately reviewed
-commands and captured provenance.</p>
-<p>For new hypotheses, exclusions, phenotypes or data sources, prepare an amendment,
-show its impact and obtain scientist approval. Do not rewrite resolved contracts,
-approve on the scientist's behalf or execute arbitrary model-generated code.
-Keep post-hoc sensitivity findings distinct from the primary analysis.</p>
-<h2 id="boundaries-and-verification">Boundaries and verification</h2>
-<p><code>study verify</code> checks recorded local integrity; it does not certify scientific
-truth, remote-agent behavior or whole-computer non-egress. <code>--offline</code> controls
-built-in OmicsMatic requests, not the agent's own network connection. Use operating
-system permissions, network controls and institution-approved disclosure review
-to enforce the wider boundary. No live external agent or remote provider is
-required to rehearse these CLI steps.</p>
-<p>Compare <a href="ai-no-ai.html">no AI</a> and <a href="ai-advisor.html">the built-in AI advisor</a>, whose
-allowlisted provider adapter has a narrower disclosure surface.</p>
+</code></pre></div>
+<p>The rehearsal remains offline. A real literature or public-resource branch
+requires approved online execution or supplied local resources.
+If the scientist or a non-AI service actually invokes the command, record that actor.</p>
+<p>The agent can inspect authorized manifests and summarize completed evidence.
+Each reported number should link to the actual artifact and operation; a model's
+narrative is not the statistical output. A waiting operation is not negative
+biological evidence. Independent eligible branches can still finish.</p>
+<p>On interruption, repeat the same <code>study run</code> command. Verified completed work is
+reused by default. Do not use <code>--rerun</code> unless deliberate recomputation is wanted.
+New inputs or changed scientific scope require the appropriate amendment rather
+than edits to frozen results.</p>
+<h2 id="literature-and-bioinformatics-with-a-driver">Literature and bioinformatics with a driver</h2>
+<p>Ask the driver first to propose the registered goals, references and resource
+needs. Native <code>literature_search</code>, source discovery and supported bioinformatics
+operations can run under an approved plan without an AI account.</p>
+<p>A separate agent may also search literature through tools that its host exposes.
+That search is not automatically an OmicsMatic evidence operation. Preserve exact
+queries, dates, source IDs, source text and appraisal, and use the
+<a href="study-pipeline-tutorial.html#reuse-supplied-literature-and-complete-missing-searches">supplied-literature route</a>
+when incorporating it. Do not label an automated exchange as a human-transcribed
+browser receipt.</p>
+<p>For external tool execution, record the executable and version, command,
+parameters, inputs, output hashes, references and limitations. Use a supported
+typed import for completed results. A standalone command appearing in a vignette
+does not make it an automatic study operation or an approved agent tool.</p>
+<p>If a method needs LD, full regional QTL/GWAS statistics or valid instruments, the
+agent should present the missing contract. It must not substitute lead SNPs for
+complete regions or a gene eQTL for an unreviewed splicing QTL.</p>
+<h2 id="steer-priorities-and-handle-new-directions">Steer priorities and handle new directions</h2>
+<p>Tell the driver your primary question and reasons for prioritizing particular
+evidence in the task brief. For example: “Discuss replicated molecular signals
+first, compare contrary studies, and keep exploratory mechanisms distinct.”
+Ask it to justify priority using uncertainty and evidence rather than P values alone.</p>
+<p>For recorded manuscript emphasis, use
+<a href="study-tools-literature.html#emphasize-findings-with-an-evidence-trail">principal-finding revision fields</a>.
+If built-in <code>impact</code> assistance is enabled, review its rankings before accepting
+them. There is no generic study <code>emphasize</code> prompt field.</p>
+<p>When the driver proposes a new phenotype, exclusion, input source or analysis:</p>
+<ol>
+<li>Record the observation or question with its source artifact.</li>
+<li>Draft an amendment containing the exact change, rationale and current study hash.</li>
+<li>Show the amendment's impact to the scientist.</li>
+<li>Apply only after scientist approval, then re-plan, review and approve the new graph.</li>
+</ol>
+<p>The <a href="ai-no-ai.html#add-an-analysis-later">deterministic amendment example</a> shows
+the syntax. A driver can prepare the proposal and review materials; it should
+not impersonate the approver or execute arbitrary model-generated code.</p>
+<h2 id="check-what-was-actually-established">Check what was actually established</h2>
+<p><code>study verify</code> checks local recorded integrity, not whole-computer non-egress,
+agent behavior or scientific truth. Preserve the ledger, <code>SESSION_HISTORY.md</code>,
+contracts and source artifacts alongside the report. Keep the external driver's
+own exchanges and tool logs under the approved retention policy.</p>
+<p>Compare <a href="ai-no-ai.html">deterministic mode</a> and
+<a href="ai-advisor.html">the built-in advisor</a>, or return to
+<a href="study-getting-started.html">study setup</a> and <a href="ai-connections.html">AI connections</a>.</p>
 <!-- SCIENTIFIC-CITATIONS:START -->
 <section class="citation-strip" aria-labelledby="scientific-citations-ai-driver">
   <div class="container narrow">
@@ -100,6 +217,6 @@ allowlisted provider adapter has a narrower disclosure surface.</p>
     <a class="text-link" href="../citations.html">Search all scientific citations →</a>
   </div>
 </section>
-<!-- SCIENTIFIC-CITATIONS:END --><div class="note"><strong>Explore the other modes</strong><a href="ai-no-ai.html">No AI: deterministic analysis</a> <a href="ai-advisor.html">AI as a scientific advisor</a></div></article>
-<aside class="toc"><strong>On this page</strong><a href="#agree-on-scope-and-access">Agree on scope and access</a><a href="#prepare-an-offline-synthetic-rehearsal">Prepare an offline synthetic rehearsal</a><a href="#let-the-agent-prepare-a-reviewable-plan">Let the agent prepare a reviewable plan</a><a href="#coordinate-execution-and-evidence-review">Coordinate execution and evidence review</a><a href="#boundaries-and-verification">Boundaries and verification</a><a href="#scientific-citations-ai-driver">Scientific citations</a></aside></div>
+<!-- SCIENTIFIC-CITATIONS:END --></article>
+<aside class="toc"><strong>On this page</strong><a href="#understand-which-connection-goes-where">Understand which connection goes where</a><a href="#connect-the-external-driver">Connect the external driver</a><a href="#prepare-a-synthetic-rehearsal">Prepare a synthetic rehearsal</a><a href="#give-the-driver-a-concrete-task">Give the driver a concrete task</a><a href="#let-the-driver-prepare-the-contract-and-plan">Let the driver prepare the contract and plan</a><a href="#keep-scientist-approval-separate">Keep scientist approval separate</a><a href="#execute-and-continue-the-approved-work">Execute and continue the approved work</a><a href="#literature-and-bioinformatics-with-a-driver">Literature and bioinformatics with a driver</a><a href="#steer-priorities-and-handle-new-directions">Steer priorities and handle new directions</a><a href="#check-what-was-actually-established">Check what was actually established</a><a href="#scientific-citations-ai-driver">Scientific citations</a></aside></div>
 </main><site-footer root="../"></site-footer></body></html>

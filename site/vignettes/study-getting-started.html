@@ -1,0 +1,378 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Understand the minimum study contract, place data or completed analyses, and run all, selected or remaining work."><title>Start here: your first study.yaml · OmicsMatic</title>
+<link rel="stylesheet" href="../assets/styles.css"><script src="../assets/app.js" defer></script><style>.study-guide .result-table table{min-width:540px;table-layout:fixed}.study-guide .result-table th,.study-guide .result-table td{white-space:normal;overflow-wrap:anywhere}</style></head>
+<body><site-header root="../"></site-header><main id="main">
+<section class="page-hero"><div class="container"><div class="breadcrumbs"><a href="../index.html">Home</a><span>/</span><a href="../vignettes/index.html">Vignettes</a><span>/</span><span>Start here: your first study.yaml</span></div>
+<span class="eyebrow">Beginner guide · Current source build</span><h1>Start here: your first study.yaml</h1><p>Understand the minimum study contract, place data or completed analyses, and run all, selected or remaining work.</p></div></section>
+<div class="container page-layout"><article class="prose study-guide"><p>This is the shared starting point for all three modes: <a href="ai-no-ai.html">deterministic analysis</a>,
+<a href="ai-advisor.html">AI as an advisor</a>, and <a href="ai-driver.html">AI as a driver</a>.
+You need the same study description and scientific inputs in every mode.
+Start with the small offline example below; then substitute your own files.</p>
+<p>These instructions target the <strong>current source build</strong> of OmicsMatic.
+The executable is still named <code>omicsmatic-0.3.7.jar</code>; that filename does not
+mean every source-build feature is in the previously published v0.3.7 binary.
+In particular, the typed completed-analysis imports described here require a
+current source build. See <a href="https://github.com/robbyjo/OmicsMatic/blob/main/docs/runtime-requirements.md">runtime requirements</a>
+for Java and optional software.</p>
+<h2 id="what-is-studyyaml">What is study.yaml?</h2>
+<p>A <code>study.yaml</code> is a text file describing your study, its inputs and the work you
+want done. It is a recipe, not a data table or a program. OmicsMatic reads it,
+checks references and scientific prerequisites, and compiles an analysis plan.</p>
+<p>YAML uses indentation to express containment. Use spaces, not tabs.
+A dash starts a list item. An <code>id</code> is a stable machine-readable name:
+<code>discovery-results</code> is a dataset ID; <code>data/discovery.tsv</code> is its file path.
+A hypothesis refers to the ID, not the filename. Values in square brackets,
+such as <code>[discovery_replication, meta_analysis]</code>, form a list.</p>
+<p>There are three different records:</p>
+<div class="result-table"><table>
+<thead>
+<tr>
+<th>Record</th>
+<th>Who prepares it</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>study.yaml</code></td>
+<td>You, with optional AI help</td>
+<td>Describe known facts and requested analyses.</td>
+</tr>
+<tr>
+<td><code>resolved-study.yaml</code></td>
+<td>OmicsMatic</td>
+<td>Freeze resolved paths, defaults, assumptions and the study hash.</td>
+</tr>
+<tr>
+<td><code>plans/&lt;plan-id&gt;/analysis-plan.yaml</code></td>
+<td>OmicsMatic</td>
+<td>Record the exact operations and their dependencies for approval.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Edit your draft before resolution. Once the project exists, scientific changes
+go through an <a href="ai-no-ai.html#add-an-analysis-later">amendment</a>; preserve the frozen records.</p>
+<h2 id="the-minimum-needed-to-begin">The minimum needed to begin</h2>
+<p>The required top-level keys are <code>schema_version</code>, <code>project</code>, <code>datasets</code> and
+<code>hypotheses</code>. A useful study also needs actual files, enough metadata to interpret
+them, and the inputs required by its goals. A structurally valid file can still
+wait for a missing scientific input.</p>
+<p>This complete small contract starts from <strong>already calculated association results</strong>.
+It runs diagnostics and an evidence report; it cannot perform independent replication
+with just one dataset.</p>
+<div class="code-window"><div class="code-bar"><span>yaml</span></div><pre><code>schema_version: 1
+project:
+  id: first-study
+  title: My first result-first study
+  description: Inspect completed molecular association estimates.
+datasets:
+  - id: discovery-results
+    type: transcriptomics
+    stage: association_results
+    feature_id_type: gene_symbol
+    files:
+      results: data/discovery.tsv
+      data_dictionary: data-dictionary.yaml
+hypotheses:
+  - id: H1
+    description: Review the completed discovery associations.
+    inputs:
+      discovery: [discovery-results]
+    analysis:
+      mode: manual
+      goals: []
+</code></pre></div>
+<p>Here <code>goals: []</code> deliberately requests no extra scientific branch.
+Harmonization, diagnostic review, reporting and applicable safety/sensitivity
+steps may still appear in the plan. For meaningful replication, add a second
+dataset, its cohort relationship and <code>discovery_replication</code>; the complete
+two-cohort example below does that.</p>
+<p>The associated <code>data-dictionary.yaml</code> explains the result headers:</p>
+<div class="code-window"><div class="code-bar"><span>yaml</span></div><pre><code>columns:
+  feature_id: feature_id
+  effect: beta
+  standard_error: se
+  p_value: p_value
+descriptions:
+  feature_id: Molecular feature identifier, not a participant identifier.
+  beta: Association coefficient on the recorded analysis scale.
+  se: Standard error of beta, not its variance.
+  p_value: Two-sided association P value from the original analysis.
+</code></pre></div>
+<p>The results are a tab-separated file, with one feature per row and a header:</p>
+<div class="code-window"><div class="code-bar"><span>text</span></div><pre><code>feature_id    beta    se    p_value
+GENE1         0.50    0.10  0.000001
+GENE2        -0.20    0.10  0.040000
+</code></pre></div>
+<p>The spacing above is illustrative; use real tab separators in a TSV.
+These invented teaching values and identifiers are not biological evidence.
+For real studies record the phenotype, units, transformations, covariates,
+model, population and testing family. An odds ratio must not be silently treated
+as a linear coefficient or a log odds ratio.</p>
+<p><strong>Want all the options?</strong> Read the <a href="study-yaml-reference.html">study.yaml field guide</a>
+for a map of optional sections and the machine-readable schema.</p>
+<h2 id="where-do-i-put-my-data">Where do I put my data?</h2>
+<p>Use a dedicated analysis directory. Keep inputs in a stable folder; OmicsMatic
+creates its own plans, operations and indexes beside them.</p>
+<div class="code-window"><div class="code-bar"><span>text</span></div><pre><code>my-study/
+  study.yaml
+  data-dictionary.yaml
+  data/
+    discovery.tsv
+    replication.tsv
+    feature-annotation.tsv
+  inputs/
+    completed-meta.tsv
+  responses/                   # imported, reviewed browser AI receipts
+</code></pre></div>
+<p>File paths in your initial contract are resolved relative to the directory
+containing that contract. This is why <code>data/discovery.tsv</code> works even when the
+repository is elsewhere. Absolute paths can point to an institution-controlled
+data store; you do not have to copy large or restricted files into the repository.
+Use forward slashes inside YAML paths for portability. Keep original files
+immutable, and use new versions when their content changes.</p>
+<p>The commands here run from the study directory and use <code>--project .</code>, so the
+contract and generated project records stay together. A separate project output
+directory is supported, but adds path choices that a first rehearsal does not need.</p>
+<p>Do not put patient records, credentials or private analysis directories in a public
+GitHub repository. Keep a project backup containing the contracts, input provenance,
+ledger and outputs; the HTML index alone is not the analysis archive.</p>
+<h2 id="choose-your-starting-point">Choose your starting point</h2>
+<div class="result-table"><table>
+<thead>
+<tr>
+<th>What you already have</th>
+<th>Declare it as</th>
+<th>What OmicsMatic can do next</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Quantified or processed participant measurements plus phenotypes</td>
+<td>A dataset with a supported matrix stage and its matrix/phenotype mappings</td>
+<td>Fit supported models, then continue downstream.</td>
+</tr>
+<tr>
+<td>Per-cohort beta, SE and P-value tables</td>
+<td><code>stage: association_results</code>, <code>files.results</code>, and header mappings</td>
+<td>Reuse those estimates for harmonization, replication, pooling and follow-up.</td>
+</tr>
+<tr>
+<td>Completed meta-analysis, enrichment, networks, MR or other supported stages</td>
+<td><code>analysis.supplied_results</code> with its typed <code>kind</code> and provenance</td>
+<td>Import the completed stage and run the requested missing work.</td>
+</tr>
+</tbody>
+</table></div>
+<p>For matrices, start with a template rather than adapting the result-table
+example by changing only its stage:</p>
+<div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>java -jar $jar study init --template bulk-transcriptomics --out draft-matrix-study.yaml
+java -jar $jar study init --template association-results --out draft-results-study.yaml
+</code></pre></div>
+<p>Replace placeholders before running. Other templates include <code>gwas</code>,
+<code>epigenomics</code>, <code>single-cell</code>, <code>spatial</code>, <code>microbiome</code> and <code>multimodal</code>.
+A template is a starting description, not evidence that every raw-data processing
+step for that assay is implemented. See the
+<a href="auditable-omics-pipeline.html#minimal-study-schema">matrix and result contracts</a>.</p>
+<p>For completed work, use the
+<a href="study-pipeline-tutorial.html#reuse-completed-analyses-and-run-missing-work">worked supplied-results example</a>.
+It shows the entire contract for reusing an external meta-analysis and calculating
+only missing GO enrichment, including <code>datasets: []</code>, column mappings, method,
+cohort scope and full testing-family declaration. Merely listing a PDF or setting
+<code>stage: meta_analysis_results</code> does not import a completed analysis.</p>
+<h2 id="start-from-a-completed-meta-analysis">Start from a completed meta-analysis</h2>
+<p>If the cohort fits and meta-analysis are already finished, preserve them.
+Here is a complete small <strong>synthetic</strong> import contract. Put it in a new study
+directory and place the completed table at <code>inputs/completed-meta.tsv</code>:</p>
+<div class="code-window"><div class="code-bar"><span>yaml</span></div><pre><code>schema_version: 1
+project:
+  id: completed-meta-example
+  title: Inspect a completed synthetic meta-analysis
+  description: Import externally produced teaching estimates without refitting them.
+datasets: []
+hypotheses:
+  - id: H1
+    description: Preserve externally calculated estimates for review.
+    outcome: synthetic
+    analysis:
+      mode: manual
+      goals: []
+      supplied_results:
+        - id: existing-meta
+          kind: meta_analysis
+          role: primary
+          files:
+            results: inputs/completed-meta.tsv
+          scope:
+            phenotype: synthetic
+            feature_id_type: gene_symbol
+            species: human
+          method:
+            name: Completed synthetic meta-analysis
+            software: teaching-fixture
+            version: &quot;1&quot;
+          family:
+            id: synthetic-full-family
+            coverage: complete
+            tested_count: 2
+            adjustment: BH
+          provenance:
+            producer: teaching-fixture
+          limitations:
+            - Synthetic estimates; original cohort analyses are not reproduced.
+</code></pre></div>
+<p>For this teaching example, the table has exactly two tests and canonical
+headers <code>feature_id</code>, <code>beta</code>, <code>se</code>, <code>p_value</code>:</p>
+<div class="code-window"><div class="code-bar"><span>text</span></div><pre><code>feature_id    beta    se    p_value
+GENE1         0.50    0.10  0.000001
+GENE2        -0.20    0.10  0.040000
+</code></pre></div>
+<p>Use real tab separators. The lifecycle commands below also apply to this
+directory: validate, resolve, plan, review, approve, run and verify.
+The meta-analysis stage is imported with external attribution; OmicsMatic does
+not claim to have refitted it.</p>
+<p>For your own study, replace every synthetic declaration with the actual source
+records. <code>tested_count: 2</code> is correct only for this two-row full-family example.
+If the source is a selected-hit export, declare its selected-only coverage and
+original full-family adjusted P values instead. Never relabel it complete.</p>
+<p>To perform only missing enrichment, add the appropriate goal, feature annotation
+and a verified gene-set resource. Follow the
+<a href="study-pipeline-tutorial.html#reuse-completed-analyses-and-run-missing-work">complete meta-to-GO example</a>;
+a table of significant genes alone cannot supply the enrichment background.</p>
+<h2 id="run-a-complete-offline-rehearsal">Run a complete offline rehearsal</h2>
+<p>From the <strong>repository root</strong>, open PowerShell and run:</p>
+<div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>.\gradlew.bat executableJar --no-daemon --no-parallel
+$jar = (Resolve-Path &quot;build/cli/omicsmatic-0.3.7.jar&quot;).Path
+$project = Join-Path (Get-Location) &quot;build/my-first-study&quot;
+if (Test-Path -LiteralPath $project) { throw &quot;Choose a fresh project directory.&quot; }
+Copy-Item examples/study-pipeline $project -Recurse
+Set-Location $project
+</code></pre></div>
+<p>This copies synthetic results and a complete two-cohort <code>study.yaml</code>.
+<code>$jar</code> is an absolute path, so changing directories does not lose the executable.
+Keep this PowerShell window open: the later examples use that variable.
+In another window, set it again to your executable's absolute path.</p>
+<p>Validate, freeze and inspect the plan:</p>
+<div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>java -jar $jar study validate study.yaml --check-files
+java -jar $jar study resolve study.yaml --actor-id scientist-1
+java -jar $jar study plan --project . --actor-id scientist-1
+Get-Content resolved-study.yaml
+Get-Content plans/*/analysis-plan.yaml
+</code></pre></div>
+<p>Check the cohorts' independence, effect scale, phenotype, selected inputs and
+requested operations. The synthetic example explicitly declares independent
+cohorts. For a real study, resolve uncertain overlap or relatedness with your
+supervisor; <code>--accept-assumptions</code> is an explicit acceptance, not a repair for
+missing knowledge.</p>
+<p>After review, approve and execute:</p>
+<div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>java -jar $jar study approve --project . --approved-by scientist-1
+java -jar $jar study run --project . --offline --actor-id scientist-1
+java -jar $jar study status --project .
+java -jar $jar study verify --project .
+Start-Process index/index.html
+</code></pre></div>
+<p>The report links replication, meta-analysis, plots, diagnostics and source
+manifests. <code>study verify</code> checks recorded integrity; it does not validate your
+study design or prove a scientific claim.</p>
+<p>For a contract you have already reviewed, the convenience command is:</p>
+<div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>java -jar $jar study auto study.yaml --project . --offline --actor-id scientist-1
+</code></pre></div>
+<p><code>study auto</code> validates, resolves, plans, <strong>records command-line approval</strong>, runs
+eligible work, verifies and rebuilds the index. It is useful for a trusted
+recipe; the explicit steps above make first-time review easier.
+The command name <code>study auto</code> does not override <code>analysis.mode: manual</code>.</p>
+<h2 id="run-everything-the-rest-or-one-part">Run everything, the rest, or one part</h2>
+<div class="result-table"><table>
+<thead>
+<tr>
+<th>Your intention</th>
+<th>Configuration or command</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Run every eligible registered branch</td>
+<td>Set the hypothesis's <code>analysis.mode: auto</code>; review the resulting plan. Missing prerequisites remain visible.</td>
+</tr>
+<tr>
+<td>Run a small set of branches</td>
+<td>Set <code>analysis.mode: manual</code> and list only the desired <code>analysis.goals</code>. Inspect prerequisites and additional diagnostic/report operations.</td>
+</tr>
+<tr>
+<td>Finish work after an interruption or missing input</td>
+<td>Repeat <code>study run --project .</code> or the same <code>study auto</code> command. Verified completed operations are reused by default.</td>
+</tr>
+<tr>
+<td>Continue from analyses completed elsewhere</td>
+<td>Declare <code>analysis.supplied_results</code>, then request the missing goals.</td>
+</tr>
+<tr>
+<td>Recompute completed work intentionally</td>
+<td>Use <code>--rerun</code>; previous attempts remain in history.</td>
+</tr>
+<tr>
+<td>Run a standalone method outside the study planner</td>
+<td>Use its documented CLI; record inputs, command, software version and outputs before importing a supported result type.</td>
+</tr>
+</tbody>
+</table></div>
+<p>There is no general <code>study run --only</code> or <code>--from-step</code> switch.
+Goals specify requested work; dependencies are still necessary.
+For example, <code>goals: [meta_analysis]</code> still needs compatible per-cohort estimates
+or a typed completed meta-analysis. For a resolved project, change goals through an
+amendment, re-plan and approve. See the <a href="ai-no-ai.html">deterministic recipes</a>.</p>
+<h2 id="if-the-run-stops-or-waits">If the run stops or waits</h2>
+<p>Run <code>study status --project .</code>, <code>study questions --project .</code>, and open
+<code>index/index.html</code>. Follow the operation's input request.</p>
+<div class="result-table"><table>
+<thead>
+<tr>
+<th>Message</th>
+<th>Meaning and next step</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Missing file or mapping</td>
+<td>Check the declared path and dictionary; supply the right immutable input.</td>
+</tr>
+<tr>
+<td><code>waiting_for_input</code></td>
+<td>A scientific prerequisite or response is absent. Inspect the request; do not treat it as a null result.</td>
+</tr>
+<tr>
+<td><code>waiting_for_browser_response</code></td>
+<td>A local AI handoff was prepared; complete the <a href="ai-advisor.html">advisor workflow</a>.</td>
+</tr>
+<tr>
+<td><code>offline_policy</code> or <code>policy_denied</code></td>
+<td>The requested network action is blocked. Use approved local inputs or a reviewed policy amendment.</td>
+</tr>
+<tr>
+<td>Failure or integrity mismatch</td>
+<td>Read the operation manifest and verification report before continuing. Do not edit frozen outputs to clear the error.</td>
+</tr>
+</tbody>
+</table></div>
+<p><code>study run</code> can return a nonzero exit code when work is waiting.
+<code>--allow-partial</code> permits batch success for eligible partial completion; it does
+not make missing scientific evidence complete. See the
+<a href="study-pipeline-tutorial.html#6-verify-and-safely-resume">detailed status and exit-code guide</a>.</p>
+<p>Next: <a href="ai-no-ai.html">mode 1</a>, <a href="ai-advisor.html">mode 2</a>, <a href="ai-driver.html">mode 3</a>,
+<a href="ai-connections.html">AI connections</a>, or <a href="study-tools-literature.html">literature and tool choices</a>.</p>
+<!-- SCIENTIFIC-CITATIONS:START -->
+<section class="citation-strip" aria-labelledby="scientific-citations-study-getting-started">
+  <div class="container narrow">
+    <span class="eyebrow">Scientific foundations</span>
+    <h2 id="scientific-citations-study-getting-started">Primary method citations</h2>
+    <p>Cite the relevant method publication as well as OmicsMatic when reporting results from this workflow.</p>
+    <ul class="citation-links">
+      <li><a href="../citations.html#sandve-reproducibility-2013">Sandve et al. (2013) — Configuration provenance</a></li><li><a href="../citations.html#w3c-prov-o-2013">W3C (2013) — Evidence provenance graph</a></li>
+    </ul>
+    <a class="text-link" href="../citations.html">Search all scientific citations →</a>
+  </div>
+</section>
+<!-- SCIENTIFIC-CITATIONS:END --></article>
+<aside class="toc"><strong>On this page</strong><a href="#what-is-studyyaml">What is study.yaml?</a><a href="#the-minimum-needed-to-begin">The minimum needed to begin</a><a href="#where-do-i-put-my-data">Where do I put my data?</a><a href="#choose-your-starting-point">Choose your starting point</a><a href="#start-from-a-completed-meta-analysis">Start from a completed meta-analysis</a><a href="#run-a-complete-offline-rehearsal">Run a complete offline rehearsal</a><a href="#run-everything-the-rest-or-one-part">Run everything, the rest, or one part</a><a href="#if-the-run-stops-or-waits">If the run stops or waits</a><a href="#scientific-citations-study-getting-started">Scientific citations</a></aside></div>
+</main><site-footer root="../"></site-footer></body></html>

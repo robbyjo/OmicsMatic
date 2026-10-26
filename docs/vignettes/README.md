@@ -7,11 +7,16 @@ dependency warnings with recovery steps.
 
 ## Featured: three degrees of AI collaboration
 
+Start with **[your first study.yaml](study-getting-started.md)** for the minimum
+contract, file placement and complete/partial/resumed execution. Continue with
+the [field guide](study-yaml-reference.md), [AI connections](ai-connections.md)
+and [literature, tools and finding priorities](study-tools-literature.md).
+
 - [No AI: deterministic analysis](ai-no-ai.md) — execute and verify a complete local study.
 - [AI as a scientific advisor](ai-advisor.md) — bounded, audited browser/API advice.
 - [AI as an external workflow driver](ai-driver.md) — coordinate existing CLI commands with separate scientist approval and enforced access controls.
 
-Available in v0.3.7. Read each guide for its patient-data boundary and implementation limits.
+These expanded walkthroughs target the current source build. The three collaboration patterns are available in v0.3.7; newer completed-analysis and publication features require the source build. Each guide identifies its patient-data boundary.
 
 
 New RNA workflows: [replicated single-cell analysis](single-cell.md) and
