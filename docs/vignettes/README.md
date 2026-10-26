@@ -16,6 +16,8 @@ and [literature, tools and finding priorities](study-tools-literature.md).
 - [AI as a scientific advisor](ai-advisor.md) — bounded, audited browser/API advice.
 - [AI as an external workflow driver](ai-driver.md) — coordinate existing CLI commands with separate scientist approval and enforced access controls.
 
+Saved AI credentials can use [password-encrypted files and supported automatic renewal](ai-credentials.md), with setup for OpenAI, Claude, Grok and Gemini.
+
 These expanded walkthroughs target the current source build. The three collaboration patterns are available in v0.3.7; newer completed-analysis and publication features require the source build. Each guide identifies its patient-data boundary.
 
 

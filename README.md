@@ -18,6 +18,8 @@ Begin with **[your first study.yaml](docs/vignettes/study-getting-started.md)**:
 
 For configuration details, see the [study.yaml field guide](docs/vignettes/study-yaml-reference.md), [browser/API/OAuth setup](docs/vignettes/ai-connections.md), and [literature, tool choices and finding priorities](docs/vignettes/study-tools-literature.md).
 
+Saved AI credentials can use [password-encrypted files and supported automatic renewal](docs/vignettes/ai-credentials.md), with setup for OpenAI, Claude, Grok and Gemini.
+
 The built-in advisor uses a bounded, policy-approved evidence preview and never
 uploads patient files or grants shell or sample-matrix access. Aggregate findings
 still require disclosure review; external agents need separate access controls.

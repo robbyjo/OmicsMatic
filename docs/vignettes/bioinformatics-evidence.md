@@ -1069,6 +1069,12 @@ a new `study manuscript` revision and citing the receipt in its rationale.
 
 ### Optional API key and OAuth access token connections
 
+The current source build also supports [password-encrypted credential files and
+provider-specific renewal](ai-credentials.md). For editorial commands use
+--credential-file ABSOLUTE_FILE with an optional --credential-password-env NAME
+instead of an API-key/token environment flag. Source disclosure restrictions
+and exact payload-hash approval still apply.
+
 Use an API connection only when explicitly selected. `--provider openai` uses
 the OpenAI Responses API; `--provider gemini` uses the Gemini API. Each needs its
 model and environment-variable credential. The portable alternative is
@@ -1092,8 +1098,9 @@ manuscripts or browser transcripts. The [OpenAI authentication reference](https:
 documents bearer authentication; individual compatible gateways may differ.
 
 OAuth here means **using an already issued API access token**. OmicsMatic does not
-implement provider registration, browser/device login, consent or token refresh,
-and does not claim that a ChatGPT/Google consumer subscription grants API access.
+implement provider registration, browser/device login or consent. Environment-only
+tokens are not refreshed; supported encrypted profiles can renew. Account access
+and granted scopes must authorize the selected API route.
 Use the provider's supported authentication tooling. An expired/denied token is
 recorded, with no silent API-key/provider fallback. Generic Chat Completions does
 not guarantee web search or retrieval citations; the literature branch remains

@@ -301,27 +301,39 @@ public final class StudyValidator {
     private static void assistance(Object value, List<StudyValidation.Issue> issues) {
         if (value == null) return;
         Map<String, Object> config = mapping(value, "assistance", true, issues);
-        unknown(config, Set.of("enabled", "provider", "model", "api_key_env", "endpoint", "auth", "oauth_token_env", "response_files",
+        unknown(config, Set.of("enabled", "provider", "model", "api_key_env", "endpoint", "auth", "oauth_token_env", "credential_file", "credential_password_env", "response_files",
             "next_steps", "related_phenotypes", "literature", "manuscript", "manuscript_max_output_tokens", "impact", "impact_batch_size", "impact_max_payload_chars", "impact_max_calls", "impact_max_output_tokens", "allow_analyses", "timeout_seconds"),
             "assistance", issues);
-        enumValue(config.get("provider"), "assistance.provider", Set.of("browser", "openai", "gemini", "openai_compatible", "local", "llama_cpp"), issues);
+        enumValue(config.get("provider"), "assistance.provider", Set.of("browser", "openai", "gemini", "anthropic", "xai", "openai_compatible", "local", "llama_cpp"), issues);
         for (String key : List.of("enabled", "next_steps", "related_phenotypes", "literature", "manuscript", "impact"))
             if (config.containsKey(key) && !(config.get(key) instanceof Boolean))
                 issues.add(issue(ERROR, "assistance." + key, "must be true or false"));
         if (Boolean.TRUE.equals(config.get("enabled")) && !"browser".equals(config.getOrDefault("provider", "browser"))) {
             requiredText(config.get("model"), "assistance.model", issues);
         }
-        for (String key : List.of("api_key_env", "oauth_token_env")) {
+        for (String key : List.of("api_key_env", "oauth_token_env", "credential_password_env")) {
         Object env = config.get(key);
         if (env != null && (!(env instanceof String text) || !text.matches("[A-Za-z_][A-Za-z0-9_]*")))
             issues.add(issue(ERROR, "assistance." + key, "must be an environment variable name, not a credential"));
         }
         enumValue(config.get("auth"), "assistance.auth", Set.of("api_key", "oauth"), issues);
         if ("oauth".equals(config.get("auth"))) {
-            if (!"openai_compatible".equals(config.get("provider"))) issues.add(issue(ERROR, "assistance.auth", "OAuth requires a provider-authorized OpenAI-compatible endpoint"));
-            requiredText(config.get("oauth_token_env"), "assistance.oauth_token_env", issues);
+            if (!Set.of("openai_compatible","openai","gemini","anthropic").contains(config.getOrDefault("provider","browser"))) issues.add(issue(ERROR, "assistance.auth", "OAuth requires a supported provider flow"));
+            if (!config.containsKey("credential_file")) requiredText(config.get("oauth_token_env"), "assistance.oauth_token_env", issues);
             if (config.containsKey("api_key_env")) issues.add(issue(ERROR, "assistance.api_key_env", "Do not combine API key and OAuth authentication"));
         } else if (config.containsKey("oauth_token_env")) issues.add(issue(ERROR, "assistance.auth", "oauth_token_env requires auth: oauth"));
+        if (config.containsKey("credential_password_env") && !config.containsKey("credential_file"))
+            issues.add(issue(ERROR,"assistance.credential_password_env","requires credential_file"));
+        if (config.containsKey("credential_file")) {
+            Object file=config.get("credential_file");
+            try {
+                if (!(file instanceof String path) || path.isBlank() || !Path.of(path).isAbsolute()) throw new IllegalArgumentException();
+            } catch (RuntimeException invalid) { issues.add(issue(ERROR,"assistance.credential_file","must be an absolute credential-file path outside the project")); }
+            if (config.containsKey("api_key_env") || config.containsKey("oauth_token_env"))
+                issues.add(issue(ERROR,"assistance.credential_file","choose an encrypted file or an environment credential, never both"));
+            if (Set.of("browser","local","llama_cpp").contains(config.getOrDefault("provider","browser")))
+                issues.add(issue(ERROR,"assistance.credential_file","encrypted credentials require a remote API provider"));
+        }
         if (Set.of("local", "llama_cpp").contains(config.getOrDefault("provider", "browser"))) {
             requiredText(config.get("endpoint"), "assistance.endpoint", issues);
             try {

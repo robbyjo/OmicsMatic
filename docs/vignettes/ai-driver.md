@@ -26,7 +26,7 @@ autonomous agent runtime or enable one with an `analysis.mode: driver` setting.
 An external driver can coordinate a study with built-in assistance disabled.
 Its login is not something to paste into the study file.
 If you want both driver and advisor, configure the second connection using
-[API-key/OAuth study examples](ai-connections.md); that can produce additional
+[API-key/OAuth study examples](ai-connections.md) or [encrypted credentials and renewal](ai-credentials.md); that can produce additional
 calls and costs. Setting `--actor-type llm` only records attribution and never
 connects a model.
 

@@ -4,6 +4,11 @@ Use this page after [preparing your study](study-getting-started.md).
 These settings configure OmicsMatic's built-in advisor. An
 [external driver](ai-driver.md) has its own application, login and tool permissions.
 
+**Save credentials once:** the current source build supports
+[password-encrypted files and automatic renewal](ai-credentials.md), including
+OpenAI OAuth, Google OAuth and Claude federation. That guide also covers
+Claude and Grok API keys. The environment-variable alternatives remain below.
+
 Choose one transport below. Before resolving a new project, merge its YAML into
 your existing `study.yaml`. For an existing project, use an approved amendment.
 Do not replace your datasets or create duplicate top-level keys.
@@ -16,7 +21,7 @@ Do not replace your datasets or create duplicate top-level keys.
 | OpenAI API | An approved API model and API credential | OmicsMatic calls the Responses API. |
 | Gemini API | An approved API model and API credential | OmicsMatic calls GenerateContent. |
 | OpenAI-compatible API with key | A documented compatible HTTPS endpoint, model and key | OmicsMatic calls non-streaming Chat Completions. Compatibility must include the required response format. |
-| OpenAI-compatible API with OAuth access token | The same API plus an already issued access token accepted by that endpoint | OmicsMatic sends the token as a bearer credential. It does not perform login or refresh. |
+| OpenAI-compatible API with OAuth access token | The same API plus an already issued access token accepted by that endpoint | OmicsMatic sends the token as a bearer credential. Environment-token mode does not perform login or refresh; encrypted provider profiles can renew supported credentials. |
 
 API access and browser sign-in are separate arrangements. Do not assume that a
 consumer chat subscription grants the API access your endpoint requires.
@@ -214,10 +219,12 @@ java -jar $jar study run --project . --actor-id scientist-1
 Remove-Item Env:RESEARCH_AI_ACCESS_TOKEN
 ~~~
 
-OmicsMatic does not register an OAuth application, open a device login,
-request consent, refresh a token or silently fall back to an API key.
-`auth: oauth` is accepted only with `provider: openai_compatible`.
-Use `oauth_token_env` and omit `api_key_env`; do not configure both.
+OmicsMatic does not register an OAuth application, open a device login or
+request consent. Tokens supplied only through environment variables are not
+renewed. For persistent credentials, use the [encrypted-file workflow](ai-credentials.md).
+OAuth is supported for OpenAI, Gemini, Claude's federated API route and an
+authorized compatible gateway; Grok uses API keys.
+Choose credential_file or the appropriate token variable, not both.
 
 A ChatGPT or Codex sign-in is not an access token to copy into this mapping.
 If your workflow uses an external signed-in agent, configure it in that client

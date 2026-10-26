@@ -155,10 +155,9 @@ mappings and PowerShell credential setup for:
 
 Choose one mapping instead of the browser mapping. API configurations omit browser
 `response_files`. Keep the aggregate disclosure policy and enable only intended
-purposes. Credentials stay in environment variables, not YAML values.
+purposes. Credentials stay in environment variables or an [encrypted credential file](ai-credentials.md); YAML contains only the reference.
 
-OAuth means an already issued access token for the declared compatible API.
-OmicsMatic does not log into a provider or refresh the token. An external
+OAuth uses credentials legitimately issued for the configured API. OmicsMatic can [renew supported encrypted credentials](ai-credentials.md) for OpenAI, Gemini and Claude federation; environment-only tokens need external renewal. Initial provider sign-in is separate. An external
 agent's or chat website's sign-in is a separate connection.
 
 After review and approval, `study run` can make the enabled requests automatically.

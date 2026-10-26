@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Audited source discovery, regional genetic inference, protein and sequence investigation, literature search and local evidence packaging."><title>Bioinformatics evidence workflow Â· OmicsMatic</title>
+<meta name="description" content="Audited source discovery, regional genetic inference, protein and sequence investigation, literature search and local evidence packaging."><title>Bioinformatics evidence workflow · OmicsMatic</title>
 <link rel="stylesheet" href="../assets/styles.css"><script src="../assets/app.js" defer></script></head>
 <body><site-header root="../"></site-header><main id="main">
 <section class="page-hero"><div class="container"><div class="breadcrumbs"><a href="../index.html">Home</a><span>/</span><a href="../vignettes/index.html">Vignettes</a><span>/</span><span>Bioinformatics evidence workflow</span></div>
@@ -947,6 +947,11 @@ unverified, not provider-retrieved evidence. Empty citations are not proof of no
 relevant literature. Editorial receipt suggestions are incorporated by creating
 a new <code>study manuscript</code> revision and citing the receipt in its rationale.</p>
 <h3 id="optional-api-key-and-oauth-access-token-connections">Optional API key and OAuth access token connections</h3>
+<p>The current source build also supports <a href="ai-credentials.html">password-encrypted credential files and
+provider-specific renewal</a>. For editorial commands use
+--credential-file ABSOLUTE_FILE with an optional --credential-password-env NAME
+instead of an API-key/token environment flag. Source disclosure restrictions
+and exact payload-hash approval still apply.</p>
 <p>Use an API connection only when explicitly selected. <code>--provider openai</code> uses
 the OpenAI Responses API; <code>--provider gemini</code> uses the Gemini API. Each needs its
 model and environment-variable credential. The portable alternative is
@@ -966,8 +971,9 @@ redacted from stored responses. Never place credentials in YAML, CLI arguments,
 manuscripts or browser transcripts. The <a href="https://developers.openai.com/api/reference/overview">OpenAI authentication reference</a>
 documents bearer authentication; individual compatible gateways may differ.</p>
 <p>OAuth here means <strong>using an already issued API access token</strong>. OmicsMatic does not
-implement provider registration, browser/device login, consent or token refresh,
-and does not claim that a ChatGPT/Google consumer subscription grants API access.
+implement provider registration, browser/device login or consent. Environment-only
+tokens are not refreshed; supported encrypted profiles can renew. Account access
+and granted scopes must authorize the selected API route.
 Use the provider's supported authentication tooling. An expired/denied token is
 recorded, with no silent API-key/provider fallback. Generic Chat Completions does
 not guarantee web search or retrieval citations; the literature branch remains

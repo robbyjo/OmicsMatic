@@ -8,6 +8,10 @@
 <div class="container page-layout"><article class="prose study-guide"><p>Use this page after <a href="study-getting-started.html">preparing your study</a>.
 These settings configure OmicsMatic's built-in advisor. An
 <a href="ai-driver.html">external driver</a> has its own application, login and tool permissions.</p>
+<p><strong>Save credentials once:</strong> the current source build supports
+<a href="ai-credentials.html">password-encrypted files and automatic renewal</a>, including
+OpenAI OAuth, Google OAuth and Claude federation. That guide also covers
+Claude and Grok API keys. The environment-variable alternatives remain below.</p>
 <p>Choose one transport below. Before resolving a new project, merge its YAML into
 your existing <code>study.yaml</code>. For an existing project, use an approved amendment.
 Do not replace your datasets or create duplicate top-level keys.</p>
@@ -44,7 +48,7 @@ Do not replace your datasets or create duplicate top-level keys.</p>
 <tr>
 <td>OpenAI-compatible API with OAuth access token</td>
 <td>The same API plus an already issued access token accepted by that endpoint</td>
-<td>OmicsMatic sends the token as a bearer credential. It does not perform login or refresh.</td>
+<td>OmicsMatic sends the token as a bearer credential. Environment-token mode does not perform login or refresh; encrypted provider profiles can renew supported credentials.</td>
 </tr>
 </tbody>
 </table></div>
@@ -194,10 +198,12 @@ the declared model API:</p>
 java -jar $jar study run --project . --actor-id scientist-1
 Remove-Item Env:RESEARCH_AI_ACCESS_TOKEN
 </code></pre></div>
-<p>OmicsMatic does not register an OAuth application, open a device login,
-request consent, refresh a token or silently fall back to an API key.
-<code>auth: oauth</code> is accepted only with <code>provider: openai_compatible</code>.
-Use <code>oauth_token_env</code> and omit <code>api_key_env</code>; do not configure both.</p>
+<p>OmicsMatic does not register an OAuth application, open a device login or
+request consent. Tokens supplied only through environment variables are not
+renewed. For persistent credentials, use the <a href="ai-credentials.html">encrypted-file workflow</a>.
+OAuth is supported for OpenAI, Gemini, Claude's federated API route and an
+authorized compatible gateway; Grok uses API keys.
+Choose credential_file or the appropriate token variable, not both.</p>
 <p>A ChatGPT or Codex sign-in is not an access token to copy into this mapping.
 If your workflow uses an external signed-in agent, configure it in that client
 and follow the <a href="ai-driver.html#connect-the-external-driver">driver guide</a>.

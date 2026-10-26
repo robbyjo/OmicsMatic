@@ -32,16 +32,22 @@ import org.yaml.snakeyaml.Yaml;
 final class StudyCli {
     private StudyCli() { }
 
+    @SuppressWarnings("try")
     static int run(String[] arguments, PrintStream output, PrintStream error) {
-        try {
+        try (var credentialSession = StudyCredentials.session()) {
             if (arguments.length == 0 || Set.of("help", "--help", "-h")
                     .contains(arguments[0])) {
                 output.println(help());
                 return 0;
             }
             String action = arguments[0];
+            if (Set.of("credentials-save","credentials-check").contains(action))
+                return StudyCredentialCli.run(action, java.util.Arrays.copyOfRange(arguments,1,arguments.length),output);
             Options options = Options.parse(
                 java.util.Arrays.copyOfRange(arguments, 1, arguments.length));
+            if (!action.equals("manuscript-editorial")
+                    && (options.one("credential-file", null) != null || options.one("credential-password-env", null) != null))
+                throw new IllegalArgumentException("Configure credential_file and credential_password_env in study.yaml; these CLI flags are for manuscript-editorial");
             return switch (action) {
                 case "init" -> init(options, output);
                 case "validate" -> validate(options, output);
@@ -144,11 +150,9 @@ final class StudyCli {
         options.noPositionals("manuscript-editorial");
         String provider = options.one("provider", "browser");
         boolean local = StudyAssistance.isLocal(provider);
-        if (!Set.of("browser", "openai", "gemini", "local", "llama_cpp", "openai_compatible").contains(provider)) throw new IllegalArgumentException("Unsupported editorial provider");
-        if (provider.equals("browser")) for (String key : List.of("model", "api-key-env", "oauth-token-env", "auth", "endpoint"))
+        if (!Set.of("browser", "openai", "gemini", "anthropic", "xai", "local", "llama_cpp", "openai_compatible").contains(provider)) throw new IllegalArgumentException("Unsupported editorial provider");
+        if (provider.equals("browser")) for (String key : List.of("model", "api-key-env", "oauth-token-env", "auth", "endpoint", "credential-file", "credential-password-env"))
             if (options.one(key, null) != null) throw new IllegalArgumentException("Browser handoff does not use --" + key + "; choose an API provider explicitly");
-        if (!Set.of("openai_compatible", "browser").contains(provider) && (options.one("auth", null) != null || options.one("oauth-token-env", null) != null))
-            throw new IllegalArgumentException("--auth and --oauth-token-env require --provider openai_compatible");
         if (!local && !Set.of("openai_compatible", "browser").contains(provider) && options.one("endpoint", null) != null)
             throw new IllegalArgumentException("--endpoint requires --provider openai_compatible (or explicit local adapter)");
         if (local && options.one("api-key-env", null) != null) throw new IllegalArgumentException("Local adapter does not use API credentials");
@@ -157,15 +161,30 @@ final class StudyCli {
         if (!provider.equals("browser")) config.put("model", options.required("model"));
         config.put("timeout_seconds", local ? 300 : 60);
         if (local) config.put("endpoint", StudyAssistance.localEndpoint(options.required("endpoint")).toString());
-        else if (provider.equals("openai_compatible")) {
-            config.put("endpoint", StudyAssistance.compatibleEndpoint(options.required("endpoint")).toString());
-            String auth = options.one("auth", "api_key"); config.put("auth", auth);
-            if (!Set.of("api_key", "oauth").contains(auth)) throw new IllegalArgumentException("--auth must be api_key or oauth");
-            if (auth.equals("oauth") && options.one("api-key-env", null) != null || auth.equals("api_key") && options.one("oauth-token-env", null) != null)
-                throw new IllegalArgumentException("Choose only the credential option belonging to --auth");
-            if (auth.equals("oauth")) config.put("oauth_token_env", options.required("oauth-token-env"));
-            else config.put("api_key_env", options.one("api-key-env", "OPENAI_API_KEY"));
-        } else if (!provider.equals("browser")) config.put("api_key_env", options.one("api-key-env", provider.equals("openai") ? "OPENAI_API_KEY" : "GEMINI_API_KEY"));
+        else if (provider.equals("openai_compatible")) config.put("endpoint", StudyAssistance.compatibleEndpoint(options.required("endpoint")).toString());
+        if (!provider.equals("browser") && !local) {
+            String auth = options.one("auth","api_key");
+            if (!Set.of("api_key","oauth").contains(auth) || provider.equals("xai") && auth.equals("oauth"))
+                throw new IllegalArgumentException("Unsupported provider authentication");
+            config.put("auth",auth);
+            String file=options.one("credential-file",null);
+            if (file!=null) {
+                if (options.one("api-key-env",null)!=null || options.one("oauth-token-env",null)!=null)
+                    throw new IllegalArgumentException("Choose credential file or environment token");
+                config.put("credential_file",file);
+                if (options.one("credential-password-env",null)!=null) config.put("credential_password_env",options.one("credential-password-env",null));
+            } else {
+                if (options.one("credential-password-env",null)!=null) throw new IllegalArgumentException("--credential-password-env requires --credential-file");
+                if (auth.equals("oauth")) {
+                    if(options.one("api-key-env",null)!=null) throw new IllegalArgumentException("OAuth does not use --api-key-env");
+                    config.put("oauth_token_env",options.required("oauth-token-env"));
+                } else {
+                    if(options.one("oauth-token-env",null)!=null) throw new IllegalArgumentException("API key does not use --oauth-token-env");
+                    config.put("api_key_env",options.one("api-key-env",provider.equals("gemini")?"GEMINI_API_KEY":provider.equals("anthropic")?"ANTHROPIC_API_KEY":provider.equals("xai")?"XAI_API_KEY":"OPENAI_API_KEY"));
+                }
+            }
+        } else if (local && (options.one("credential-file",null)!=null || options.one("credential-password-env",null)!=null || options.one("auth",null)!=null || options.one("oauth-token-env",null)!=null))
+            throw new IllegalArgumentException("Local models do not use credentials");
         Path out = StudyEditorialReview.request(options.project(Path.of(".")), Path.of(options.required("out")),
             options.required("approved-payload-sha256"), config, options.actor(), options.flag("offline"), new StudyAssistance());
         output.println("Editorial attempt recorded: " + out.resolve("artifacts/index.html"));
@@ -474,6 +493,15 @@ final class StudyCli {
         return """
             Usage: java -jar omicsmatic-<version>.jar study ACTION [options]
 
+              study credentials-save --out ABSOLUTE_FILE --provider openai|gemini|anthropic|xai|openai_compatible
+                [--auth api_key|oauth] [--password-env NAME] [--token-env NAME]
+                [--renewal none|openai|google|anthropic_wif] [--client-id ID]
+                [--refresh-token-env NAME] [--client-secret-env NAME] [--expires-at UTC]
+                [--earliest-refresh-at UTC] [--endpoint HTTPS_CHAT_COMPLETIONS_URL]
+                [--identity-token-file ABSOLUTE_FILE] [--federation-rule-id ID]
+                [--organization-id ID] [--service-account-id ID] [--workspace-id ID]
+              study credentials-check --file ABSOLUTE_FILE [--password-env NAME]
+                Missing secret inputs are requested through a masked console. Existing files are never overwritten.
               study init [--template bulk-transcriptomics|epigenomics|gwas|single-cell|spatial|microbiome|multimodal|association-results] [--out study.yaml]
               study validate [study.yaml] [--check-files]
               study resolve [study.yaml] [--project DIRECTORY]
@@ -496,9 +524,9 @@ final class StudyCli {
               study references references.yaml --project DIRECTORY --out NEW_REFERENCE_BUNDLE [--offline]
               study manuscript-verify --project REVISION_BUNDLE
               study manuscript-editorial --project REVISION_BUNDLE --out NEW_REVIEW_BUNDLE
-                --approved-payload-sha256 HASH [--provider browser|openai|gemini|openai_compatible|local|llama_cpp]
+                --approved-payload-sha256 HASH [--provider browser|openai|gemini|anthropic|xai|openai_compatible|local|llama_cpp]
                 [--model MODEL] [--api-key-env VARIABLE] [--endpoint URL] [--auth api_key|oauth]
-                [--oauth-token-env VARIABLE] [--offline]
+                [--oauth-token-env VARIABLE | --credential-file ABSOLUTE_FILE] [--credential-password-env VARIABLE] [--offline]
                 Default provider browser prepares a local handoff; it never submits a prompt.
               study handoff-import RESPONSE.yaml --handoff PACKET_DIRECTORY --out NEW_RECEIPT_DIRECTORY --actor-id SCIENTIST
               study handoff-verify RECEIPT_DIRECTORY/receipt.yaml
@@ -531,7 +559,7 @@ final class StudyCli {
             "template", "out", "project", "actor-type", "actor-id", "actor-model", "model",
             "approved-by", "plan", "artifact", "type", "id", "description",
             "explanation", "hypothesis", "proposed-direction", "amendment-id",
-            "provider", "api-key-env", "approved-payload-sha256", "endpoint", "auth", "oauth-token-env", "handoff", "browser");
+            "provider", "api-key-env", "approved-payload-sha256", "endpoint", "auth", "oauth-token-env", "credential-file", "credential-password-env", "handoff", "browser");
         private final Map<String, List<String>> values = new LinkedHashMap<>();
         private final Set<String> flags = new java.util.HashSet<>();
         private final List<String> positional = new ArrayList<>();
