@@ -331,5 +331,5 @@ These are the primary sources for the methods used in this workflow. Cite the re
 - [J. A. Nelder and R. W. M. Wedderburn (1972) — Generalized linear models](../CITATIONS.md#nelder-wedderburn-1972)
 - [C. I. Bliss (1934) — The method of probits](../CITATIONS.md#bliss-1934) — [PMID: 17813446](https://pubmed.ncbi.nlm.nih.gov/17813446/)
 
-[Search the complete scientific bibliography](https://robbyjo.github.io/JLinAlg/citations.html).
+[Search the complete scientific bibliography](https://robbyjo.github.io/OmicsMatic/citations.html).
 <!-- SCIENTIFIC-CITATIONS:END -->

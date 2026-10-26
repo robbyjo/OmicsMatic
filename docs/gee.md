@@ -115,5 +115,5 @@ These are the primary sources for the methods used in this workflow. Cite the re
 - [C. I. Bliss (1934) — The method of probits](CITATIONS.md#bliss-1934) — [PMID: 17813446](https://pubmed.ncbi.nlm.nih.gov/17813446/)
 - [Kung-Yee Liang and Scott L. Zeger (1986) — Longitudinal data analysis using generalized linear models](CITATIONS.md#liang-zeger-1986)
 
-[Search the complete scientific bibliography](https://robbyjo.github.io/JLinAlg/citations.html).
+[Search the complete scientific bibliography](https://robbyjo.github.io/OmicsMatic/citations.html).
 <!-- SCIENTIFIC-CITATIONS:END -->

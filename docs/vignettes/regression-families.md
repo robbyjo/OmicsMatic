@@ -212,5 +212,5 @@ These are the primary sources for the methods used in this workflow. Cite the re
 - [E. A. Nadaraya (1964) — On estimating regression](../CITATIONS.md#nadaraya-1964)
 - [Peter M. Robinson (1988) — Root-N-consistent semiparametric regression](../CITATIONS.md#robinson-1988)
 
-[Search the complete scientific bibliography](https://robbyjo.github.io/JLinAlg/citations.html).
+[Search the complete scientific bibliography](https://robbyjo.github.io/OmicsMatic/citations.html).
 <!-- SCIENTIFIC-CITATIONS:END -->

@@ -414,5 +414,5 @@ These are the primary sources for the methods used in this workflow. Cite the re
 - [Yaowu Liu et al. (2019) — ACAT: A fast and powerful p value combination method for rare-variant analysis in sequencing studies](CITATIONS.md#liu-acat-2019) — [PMID: 30849328](https://pubmed.ncbi.nlm.nih.gov/30849328/) · [PMCID: PMC6407498](https://pmc.ncbi.nlm.nih.gov/articles/PMC6407498/)
 - [Rebecca DerSimonian and Nan Laird (1986) — Meta-analysis in clinical trials](CITATIONS.md#dersimonian-laird-1986) — [PMID: 3802833](https://pubmed.ncbi.nlm.nih.gov/3802833/)
 
-[Search the complete scientific bibliography](https://robbyjo.github.io/JLinAlg/citations.html).
+[Search the complete scientific bibliography](https://robbyjo.github.io/OmicsMatic/citations.html).
 <!-- SCIENTIFIC-CITATIONS:END -->

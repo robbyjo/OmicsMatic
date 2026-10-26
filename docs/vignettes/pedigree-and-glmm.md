@@ -462,5 +462,5 @@ These are the primary sources for the methods used in this workflow. Cite the re
 - [Norman E. Breslow and David G. Clayton (1993) — Approximate inference in generalized linear mixed models](../CITATIONS.md#breslow-clayton-1993)
 - [Diane Lambert (1992) — Zero-inflated Poisson regression, with an application to defects in manufacturing](../CITATIONS.md#lambert-1992)
 
-[Search the complete scientific bibliography](https://robbyjo.github.io/JLinAlg/citations.html).
+[Search the complete scientific bibliography](https://robbyjo.github.io/OmicsMatic/citations.html).
 <!-- SCIENTIFIC-CITATIONS:END -->

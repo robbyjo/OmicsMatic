@@ -1540,7 +1540,7 @@ These are the primary sources for the methods used in this workflow. Cite the re
 - [PGS Catalog team (2026) — PGS Catalog download information and scoring file format](../CITATIONS.md#pgs-catalog-scoring-format)
 - [Global Alliance for Genomics and Health file-format contributors (2026) — The Variant Call Format specification: VCFv4.5 and BCFv2.2](../CITATIONS.md#hts-vcf-bcf-specification)
 
-[Search the complete scientific bibliography](https://robbyjo.github.io/JLinAlg/citations.html).
+[Search the complete scientific bibliography](https://robbyjo.github.io/OmicsMatic/citations.html).
 <!-- SCIENTIFIC-CITATIONS:END -->
 
 The source build adds [frozen-module transfer across cohort graphs](study-pipeline-tutorial.md#cross-cohort-module-preservation)

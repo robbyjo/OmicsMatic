@@ -172,5 +172,5 @@ These are the primary sources for the methods used in this workflow. Cite the re
 - [Reuben M. Baron and David A. Kenny (1986) — The moderator-mediator variable distinction in social psychological research](../CITATIONS.md#baron-kenny-1986)
 - [Michael E. Sobel (1982) — Asymptotic confidence intervals for indirect effects in structural equation models](../CITATIONS.md#sobel-1982)
 
-[Search the complete scientific bibliography](https://robbyjo.github.io/JLinAlg/citations.html).
+[Search the complete scientific bibliography](https://robbyjo.github.io/OmicsMatic/citations.html).
 <!-- SCIENTIFIC-CITATIONS:END -->

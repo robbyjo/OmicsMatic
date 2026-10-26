@@ -5,7 +5,7 @@ The `grm` command constructs an additive genomic relationship matrix. The existi
 or a Cox kinship frailty. Construction is included in v0.3.6 and later;
 build with `./gradlew executableJar` (Windows: `.\gradlew.bat executableJar`).
 
-Read the [website version](https://robbyjo.github.io/JLinAlg/vignettes/grm.html)
+Read the [website version](https://robbyjo.github.io/OmicsMatic/vignettes/grm.html)
 for the same workflow with step-by-step navigation. Start with the small dosage
 example below to understand filtering and matrix entries, then build a GRM from
 VCF and use it in a mixed model. The [Java example](#java-vignette) uses the same
@@ -211,5 +211,5 @@ These are the primary sources for the methods used in this workflow. Cite the re
 - [Paul M. VanRaden (2008) — Efficient methods to compute genomic predictions](CITATIONS.md#vanraden-2008) — [PMID: 18946147](https://pubmed.ncbi.nlm.nih.gov/18946147/)
 - [Jian Yang et al. (2011) — GCTA: a tool for genome-wide complex trait analysis](CITATIONS.md#yang-gcta-2011) — [PMID: 21167468](https://pubmed.ncbi.nlm.nih.gov/21167468/) · [PMCID: PMC3014363](https://pmc.ncbi.nlm.nih.gov/articles/PMC3014363/)
 
-[Search the complete scientific bibliography](https://robbyjo.github.io/JLinAlg/citations.html).
+[Search the complete scientific bibliography](https://robbyjo.github.io/OmicsMatic/citations.html).
 <!-- SCIENTIFIC-CITATIONS:END -->

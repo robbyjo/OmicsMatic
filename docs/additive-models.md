@@ -196,5 +196,5 @@ These are the primary sources for the methods used in this workflow. Cite the re
 - [Robert A. Rigby and D. Mikis Stasinopoulos (2005) — Generalized additive models for location, scale and shape](CITATIONS.md#rigby-stasinopoulos-2005)
 - [Thomas W. Yee (2010) — The VGAM package for categorical data analysis](CITATIONS.md#yee-2010)
 
-[Search the complete scientific bibliography](https://robbyjo.github.io/JLinAlg/citations.html).
+[Search the complete scientific bibliography](https://robbyjo.github.io/OmicsMatic/citations.html).
 <!-- SCIENTIFIC-CITATIONS:END -->

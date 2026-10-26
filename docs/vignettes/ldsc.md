@@ -113,5 +113,5 @@ These are the primary sources for the methods used in this workflow. Cite the re
 - [Brendan K. Bulik-Sullivan et al. (2015) — LD Score regression distinguishes confounding from polygenicity in genome-wide association studies](../CITATIONS.md#bulik-sullivan-ldsc-2015) — [PMID: 25642630](https://pubmed.ncbi.nlm.nih.gov/25642630/) · [PMCID: PMC4495769](https://pmc.ncbi.nlm.nih.gov/articles/PMC4495769/)
 - [Brendan K. Bulik-Sullivan et al. (2015) — An atlas of genetic correlations across human diseases and traits](../CITATIONS.md#bulik-sullivan-rg-2015) — [PMID: 26414676](https://pubmed.ncbi.nlm.nih.gov/26414676/) · [PMCID: PMC4797329](https://pmc.ncbi.nlm.nih.gov/articles/PMC4797329/)
 
-[Search the complete scientific bibliography](https://robbyjo.github.io/JLinAlg/citations.html).
+[Search the complete scientific bibliography](https://robbyjo.github.io/OmicsMatic/citations.html).
 <!-- SCIENTIFIC-CITATIONS:END -->

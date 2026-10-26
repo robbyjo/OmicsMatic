@@ -583,5 +583,5 @@ These are the primary sources for the methods used in this workflow. Cite the re
 - [Stephen Burgess, Neil M. Davies, and Simon G. Thompson (2016) — Bias due to participant overlap in two-sample Mendelian randomization](../CITATIONS.md#burgess-overlap-2016) — [PMID: 27625185](https://pubmed.ncbi.nlm.nih.gov/27625185/) · [PMCID: PMC5082560](https://pmc.ncbi.nlm.nih.gov/articles/PMC5082560/)
 - [Gibran Hemani et al. (2018) — The MR-Base platform supports systematic causal inference across the human phenome](../CITATIONS.md#hemani-mrbase-2018) — [PMID: 29846171](https://pubmed.ncbi.nlm.nih.gov/29846171/) · [PMCID: PMC5976434](https://pmc.ncbi.nlm.nih.gov/articles/PMC5976434/)
 
-[Search the complete scientific bibliography](https://robbyjo.github.io/JLinAlg/citations.html).
+[Search the complete scientific bibliography](https://robbyjo.github.io/OmicsMatic/citations.html).
 <!-- SCIENTIFIC-CITATIONS:END -->

@@ -111,5 +111,5 @@ These are the primary sources for the methods used in this workflow. Cite the re
 - [Quinn McNemar (1947) — Note on the sampling error of the difference between correlated proportions or percentages](../CITATIONS.md#mcnemar-1947) — [PMID: 20254758](https://pubmed.ncbi.nlm.nih.gov/20254758/)
 - [Milton Friedman (1937) — The use of ranks to avoid the assumption of normality implicit in the analysis of variance](../CITATIONS.md#friedman-1937)
 
-[Search the complete scientific bibliography](https://robbyjo.github.io/JLinAlg/citations.html).
+[Search the complete scientific bibliography](https://robbyjo.github.io/OmicsMatic/citations.html).
 <!-- SCIENTIFIC-CITATIONS:END -->

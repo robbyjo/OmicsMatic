@@ -141,5 +141,5 @@ These are the primary sources for the methods used in this workflow. Cite the re
 - [Guido Knapp and Joachim Hartung (2003) — Improved tests for a random effects meta-regression with a single covariate](../CITATIONS.md#knapp-hartung-2003) — [PMID: 12939780](https://pubmed.ncbi.nlm.nih.gov/12939780/)
 - [Julian P. T. Higgins and Simon G. Thompson (2002) — Quantifying heterogeneity in a meta-analysis](../CITATIONS.md#higgins-thompson-2002) — [PMID: 12111919](https://pubmed.ncbi.nlm.nih.gov/12111919/)
 
-[Search the complete scientific bibliography](https://robbyjo.github.io/JLinAlg/citations.html).
+[Search the complete scientific bibliography](https://robbyjo.github.io/OmicsMatic/citations.html).
 <!-- SCIENTIFIC-CITATIONS:END -->

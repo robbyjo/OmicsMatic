@@ -315,5 +315,5 @@ These are the primary sources for the methods used in this workflow. Cite the re
 - [Norman E. Breslow and David G. Clayton (1993) — Approximate inference in generalized linear mixed models](../CITATIONS.md#breslow-clayton-1993)
 - [Hyun Min Kang et al. (2010) — Variance component model to account for sample structure in genome-wide association studies](../CITATIONS.md#kang-emmax-2010) — [PMID: 20208533](https://pubmed.ncbi.nlm.nih.gov/20208533/) · [PMCID: PMC3092069](https://pmc.ncbi.nlm.nih.gov/articles/PMC3092069/)
 
-[Search the complete scientific bibliography](https://robbyjo.github.io/JLinAlg/citations.html).
+[Search the complete scientific bibliography](https://robbyjo.github.io/OmicsMatic/citations.html).
 <!-- SCIENTIFIC-CITATIONS:END -->

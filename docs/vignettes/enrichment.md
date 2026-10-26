@@ -408,5 +408,5 @@ These are the primary sources for the methods used in this workflow. Cite the re
 - [Christiaan A. de Leeuw et al. (2015) — MAGMA: generalized gene-set analysis of GWAS data](../CITATIONS.md#deleeuw-magma-2015) — [PMID: 25885710](https://pubmed.ncbi.nlm.nih.gov/25885710/) · [PMCID: PMC4401657](https://pmc.ncbi.nlm.nih.gov/articles/PMC4401657/)
 - [Yoav Benjamini and Yosef Hochberg (1995) — Controlling the false discovery rate: a practical and powerful approach to multiple testing](../CITATIONS.md#benjamini-hochberg-1995)
 
-[Search the complete scientific bibliography](https://robbyjo.github.io/JLinAlg/citations.html).
+[Search the complete scientific bibliography](https://robbyjo.github.io/OmicsMatic/citations.html).
 <!-- SCIENTIFIC-CITATIONS:END -->

@@ -524,7 +524,7 @@ public final class JLinAlgCli {
               --transform SPEC             Row-wise <omics> stages, left to right
                 Built-ins: identity(), winsor(...), winsor_mad(k=4),
                 log1p(), log(offset=...), zscore(), int(), mvalue(epsilon=...)
-                Guide: https://robbyjo.github.io/JLinAlg/vignettes/omics-transforms.html
+                Guide: https://robbyjo.github.io/OmicsMatic/vignettes/omics-transforms.html
               --transform-plugin JAR       Trusted Java transform provider
               --omics-type auto|gwas|ewas|expression|proteomics|generic
               --annot FILE --annot-id COLUMN --annot-cols c1,c2,...

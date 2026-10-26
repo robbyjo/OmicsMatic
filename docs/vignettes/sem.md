@@ -359,5 +359,5 @@ These are the primary sources for the methods used in this workflow. Cite the re
 - [Craig K. Enders and Deborah L. Bandalos (2001) — The relative performance of full information maximum likelihood estimation for missing data in structural equation models](../CITATIONS.md#enders-bandalos-2001)
 - [Myrsini Katsikatsou et al. (2012) — Pairwise likelihood estimation for factor analysis models with ordinal data](../CITATIONS.md#katsikatsou-2012)
 
-[Search the complete scientific bibliography](https://robbyjo.github.io/JLinAlg/citations.html).
+[Search the complete scientific bibliography](https://robbyjo.github.io/OmicsMatic/citations.html).
 <!-- SCIENTIFIC-CITATIONS:END -->

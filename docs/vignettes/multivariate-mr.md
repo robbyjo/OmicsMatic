@@ -206,5 +206,5 @@ These are the primary sources for the methods used in this workflow. Cite the re
 - [Yangqing Deng et al. (2023) — Two-stage multivariate Mendelian randomization on multiple outcomes with mixed distributions](../CITATIONS.md#deng-mrmo-2023) — [PMID: 37338962](https://pubmed.ncbi.nlm.nih.gov/37338962/) · [PMCID: PMC10515454](https://pmc.ncbi.nlm.nih.gov/articles/PMC10515454/)
 - [Marie Verbanck et al. (2018) — Detection of widespread horizontal pleiotropy in causal relationships inferred from Mendelian randomization](../CITATIONS.md#verbanck-mr-presso-2018) — [PMID: 29686387](https://pubmed.ncbi.nlm.nih.gov/29686387/) · [PMCID: PMC6083837](https://pmc.ncbi.nlm.nih.gov/articles/PMC6083837/)
 
-[Search the complete scientific bibliography](https://robbyjo.github.io/JLinAlg/citations.html).
+[Search the complete scientific bibliography](https://robbyjo.github.io/OmicsMatic/citations.html).
 <!-- SCIENTIFIC-CITATIONS:END -->

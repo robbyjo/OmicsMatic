@@ -267,5 +267,5 @@ These are the primary sources for the methods used in this workflow. Cite the re
 - [D. R. Cox (1972) — Regression models and life-tables](../CITATIONS.md#cox-1972)
 - [Bradley Efron (1977) — The efficiency of Cox's likelihood function for censored data](../CITATIONS.md#efron-1977)
 
-[Search the complete scientific bibliography](https://robbyjo.github.io/JLinAlg/citations.html).
+[Search the complete scientific bibliography](https://robbyjo.github.io/OmicsMatic/citations.html).
 <!-- SCIENTIFIC-CITATIONS:END -->

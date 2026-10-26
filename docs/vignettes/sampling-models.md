@@ -83,5 +83,5 @@ These are the primary sources for the methods used in this workflow. Cite the re
 - [Gary King and Langche Zeng (2001) — Explaining Rare Events in International Relations](../CITATIONS.md#king-zeng-isq-2001)
 - [Thomas Lumley (2004) — Analysis of Complex Survey Samples](../CITATIONS.md#lumley-survey-2004)
 
-[Search the complete scientific bibliography](https://robbyjo.github.io/JLinAlg/citations.html).
+[Search the complete scientific bibliography](https://robbyjo.github.io/OmicsMatic/citations.html).
 <!-- SCIENTIFIC-CITATIONS:END -->

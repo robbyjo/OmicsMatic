@@ -143,5 +143,5 @@ These are the primary sources for the methods used in this workflow. Cite the re
 - [Yuankai Zhang et al. (2026) — Multivariate Mendelian randomization for joint inferences of correlated outcomes](../CITATIONS.md#zhang-multivariate-mr-2026) — [PMID: 42207415](https://pubmed.ncbi.nlm.nih.gov/42207415/)
 - [Jason D. Lee, Dennis L. Sun, Yuekai Sun, and Jonathan E. Taylor (2016) — Exact post-selection inference, with application to the lasso](../CITATIONS.md#lee-2016)
 
-[Search the complete scientific bibliography](https://robbyjo.github.io/JLinAlg/citations.html).
+[Search the complete scientific bibliography](https://robbyjo.github.io/OmicsMatic/citations.html).
 <!-- SCIENTIFIC-CITATIONS:END -->

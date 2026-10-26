@@ -50,7 +50,7 @@ require a dataframe runtime.
 
 Every vignette ends with method-specific primary sources. The complete bibliography is
 available in the [scientific citation index](../CITATIONS.md) and on the
-[searchable website](https://robbyjo.github.io/JLinAlg/citations.html).
+[searchable website](https://robbyjo.github.io/OmicsMatic/citations.html).
 
 Run the complete verification suite before adapting an example:
 
@@ -86,7 +86,7 @@ pattern; autonomous orchestration and certified privacy isolation are not bundle
 | [Individual-level instrumental-variable regression](instrumental-variable-regression.md) | linear 2SLS, QR/SVD identification checks, robust/cluster inference, and instrument-strength diagnostics (v0.3.6+) |
 | [Summary-only conditional score analysis](conditional-score-conditioning.md) | versioned score-block import, strict allele/model checks, cohort-wise Schur conditioning, and independent-cohort pooling (v0.3.6+) |
 | [ACAT rare-variant tests](acat-rare-variants.md) | stable generic ACAT, ACAT-V ultra-rare collapsing, canonical ACAT-O, CLI/API workflows, R fixtures, and fused performance (v0.3.6+) |
-| [GRM tutorial and Java vignette](../grm-cli.md) | worked dosage matrix, filtering, VCF input, Java/CLI construction, interpretation, and mixed-model reuse ([website](https://robbyjo.github.io/JLinAlg/vignettes/grm.html); v0.3.6+) |
+| [GRM tutorial and Java vignette](../grm-cli.md) | worked dosage matrix, filtering, VCF input, Java/CLI construction, interpretation, and mixed-model reuse ([website](https://robbyjo.github.io/OmicsMatic/vignettes/grm.html); v0.3.6+) |
 | [Progressive CLI association tutorial](cli-association-tutorial.md) | phenotype-only OLS/REML, numeric omics, common and rare-variant GWAS, pedigree IDs, GLM/GLMM, Cox, and penalized regression |
 | [CLI-only mediation tutorial](cli-mediation-tutorial.md) | tabular OLS mediation, common complete-case filtering, grouped REML, pedigrees, output files, and causal interpretation limits |
 | [CLI-only Mendelian-randomization tutorial](cli-mr-tutorial.md) | public or custom GWAS inputs, canonical columns, LD-panel installation, clumping, harmonization, estimation, and outputs |

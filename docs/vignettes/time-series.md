@@ -399,5 +399,5 @@ These are the primary sources for the methods used in this workflow. Cite the re
 - [Greta M. Ljung and George E. P. Box (1978) — On a measure of lack of fit in time series models](../CITATIONS.md#ljung-box-1978)
 - [Rob J. Hyndman and Yeasmin Khandakar (2008) — Automatic time series forecasting: the forecast package for R](../CITATIONS.md#hyndman-khandakar-2008)
 
-[Search the complete scientific bibliography](https://robbyjo.github.io/JLinAlg/citations.html).
+[Search the complete scientific bibliography](https://robbyjo.github.io/OmicsMatic/citations.html).
 <!-- SCIENTIFIC-CITATIONS:END -->

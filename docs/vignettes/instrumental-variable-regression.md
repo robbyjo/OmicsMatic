@@ -231,5 +231,5 @@ These are the primary sources for the methods used in this workflow. Cite the re
 - [Douglas Staiger and James H. Stock (1997) — Instrumental variables regression with weak instruments](../CITATIONS.md#staiger-stock-1997)
 - [Halbert White (1980) — A heteroskedasticity-consistent covariance matrix estimator and a direct test for heteroskedasticity](../CITATIONS.md#white-1980)
 
-[Search the complete scientific bibliography](https://robbyjo.github.io/JLinAlg/citations.html).
+[Search the complete scientific bibliography](https://robbyjo.github.io/OmicsMatic/citations.html).
 <!-- SCIENTIFIC-CITATIONS:END -->

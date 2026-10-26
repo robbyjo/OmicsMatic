@@ -123,5 +123,5 @@ These are the primary sources for the methods used in this workflow. Cite the re
 - [Stef van Buuren and Karin Groothuis-Oudshoorn (2011) — mice: Multivariate Imputation by Chained Equations in R](CITATIONS.md#vanbuuren-mice-2011)
 - [John Barnard and Donald B. Rubin (1999) — Small-sample degrees of freedom with multiple imputation](CITATIONS.md#barnard-rubin-1999)
 
-[Search the complete scientific bibliography](https://robbyjo.github.io/JLinAlg/citations.html).
+[Search the complete scientific bibliography](https://robbyjo.github.io/OmicsMatic/citations.html).
 <!-- SCIENTIFIC-CITATIONS:END -->

@@ -93,5 +93,5 @@ These are the primary sources for the methods used in this workflow. Cite the re
 - [Oliver Stegle et al. (2012) — Using probabilistic estimation of expression residuals (PEER) to obtain increased power and interpretability of gene expression analyses](CITATIONS.md#stegle-peer-2012) — [PMID: 22343431](https://pubmed.ncbi.nlm.nih.gov/22343431/) · [PMCID: PMC3398141](https://pmc.ncbi.nlm.nih.gov/articles/PMC3398141/)
 - [W. Evan Johnson, Cheng Li, and Ariel Rabinovic (2007) — Adjusting batch effects in microarray expression data using empirical Bayes methods](CITATIONS.md#johnson-combat-2007) — [PMID: 16632515](https://pubmed.ncbi.nlm.nih.gov/16632515/)
 
-[Search the complete scientific bibliography](https://robbyjo.github.io/JLinAlg/citations.html).
+[Search the complete scientific bibliography](https://robbyjo.github.io/OmicsMatic/citations.html).
 <!-- SCIENTIFIC-CITATIONS:END -->

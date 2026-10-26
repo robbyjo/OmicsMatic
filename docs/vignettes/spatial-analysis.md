@@ -193,5 +193,5 @@ These are the primary sources for the methods used in this workflow. Cite the re
 - [Jordan W. Squair et al. (2021) — Confronting false discoveries in single-cell differential expression](../CITATIONS.md#squair-pseudoreplication-2021) — [PMID: 34584091](https://pubmed.ncbi.nlm.nih.gov/34584091/)
 - [Yoav Benjamini and Yosef Hochberg (1995) — Controlling the false discovery rate: a practical and powerful approach to multiple testing](../CITATIONS.md#benjamini-hochberg-1995)
 
-[Search the complete scientific bibliography](https://robbyjo.github.io/JLinAlg/citations.html).
+[Search the complete scientific bibliography](https://robbyjo.github.io/OmicsMatic/citations.html).
 <!-- SCIENTIFIC-CITATIONS:END -->

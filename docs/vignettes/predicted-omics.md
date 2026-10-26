@@ -114,5 +114,5 @@ These are the primary sources for the methods used in this workflow. Cite the re
 - [Eric R. Gamazon et al. (2015) — A gene-based association method for mapping traits using reference transcriptome data](../CITATIONS.md#gamazon-predixcan-2015) — [PMID: 26258848](https://pubmed.ncbi.nlm.nih.gov/26258848/) · [PMCID: PMC4552594](https://pmc.ncbi.nlm.nih.gov/articles/PMC4552594/)
 - [Alexander Gusev et al. (2016) — Integrative approaches for large-scale transcriptome-wide association studies](../CITATIONS.md#gusev-fusion-2016) — [PMID: 26854917](https://pubmed.ncbi.nlm.nih.gov/26854917/) · [PMCID: PMC4767558](https://pmc.ncbi.nlm.nih.gov/articles/PMC4767558/)
 
-[Search the complete scientific bibliography](https://robbyjo.github.io/JLinAlg/citations.html).
+[Search the complete scientific bibliography](https://robbyjo.github.io/OmicsMatic/citations.html).
 <!-- SCIENTIFIC-CITATIONS:END -->

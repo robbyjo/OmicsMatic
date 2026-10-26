@@ -345,5 +345,5 @@ These are the primary sources for the methods used in this workflow. Cite the re
 - [Seunggeun Lee et al. (2012) — Optimal unified approach for rare-variant association testing](../CITATIONS.md#lee-skato-2012) — [PMID: 22863193](https://pubmed.ncbi.nlm.nih.gov/22863193/) · [PMCID: PMC3415556](https://pmc.ncbi.nlm.nih.gov/articles/PMC3415556/)
 - [Yaowu Liu et al. (2019) — ACAT: A fast and powerful p value combination method for rare-variant analysis in sequencing studies](../CITATIONS.md#liu-acat-2019) — [PMID: 30849328](https://pubmed.ncbi.nlm.nih.gov/30849328/) · [PMCID: PMC6407498](https://pmc.ncbi.nlm.nih.gov/articles/PMC6407498/)
 
-[Search the complete scientific bibliography](https://robbyjo.github.io/JLinAlg/citations.html).
+[Search the complete scientific bibliography](https://robbyjo.github.io/OmicsMatic/citations.html).
 <!-- SCIENTIFIC-CITATIONS:END -->

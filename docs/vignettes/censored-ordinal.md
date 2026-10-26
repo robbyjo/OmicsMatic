@@ -102,5 +102,5 @@ These are the primary sources for the methods used in this workflow. Cite the re
 - [John D. Kalbfleisch and Ross L. Prentice (2002) — The Statistical Analysis of Failure Time Data, Second Edition](../CITATIONS.md#kalbfleisch-prentice-2002)
 - [Peter McCullagh (1980) — Regression Models for Ordinal Data](../CITATIONS.md#mccullagh-1980)
 
-[Search the complete scientific bibliography](https://robbyjo.github.io/JLinAlg/citations.html).
+[Search the complete scientific bibliography](https://robbyjo.github.io/OmicsMatic/citations.html).
 <!-- SCIENTIFIC-CITATIONS:END -->

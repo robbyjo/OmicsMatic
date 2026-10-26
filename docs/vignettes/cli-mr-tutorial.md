@@ -251,5 +251,5 @@ These are the primary sources for the methods used in this workflow. Cite the re
 - [Stephen Burgess and Simon G. Thompson (2015) — Multivariable Mendelian randomization: the use of pleiotropic genetic variants to estimate causal effects](../CITATIONS.md#burgess-mvmr-2015) — [PMID: 25632051](https://pubmed.ncbi.nlm.nih.gov/25632051/) · [PMCID: PMC4325677](https://pmc.ncbi.nlm.nih.gov/articles/PMC4325677/)
 - [Yuankai Zhang et al. (2026) — Multivariate Mendelian randomization for joint inferences of correlated outcomes](../CITATIONS.md#zhang-multivariate-mr-2026) — [PMID: 42207415](https://pubmed.ncbi.nlm.nih.gov/42207415/)
 
-[Search the complete scientific bibliography](https://robbyjo.github.io/JLinAlg/citations.html).
+[Search the complete scientific bibliography](https://robbyjo.github.io/OmicsMatic/citations.html).
 <!-- SCIENTIFIC-CITATIONS:END -->

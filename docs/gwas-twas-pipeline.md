@@ -250,5 +250,5 @@ These are the primary sources for the methods used in this workflow. Cite the re
 - [Genome Reference Consortium (2026) — Human Genome Overview: GRCh38 and GRCh37 pseudoautosomal regions](CITATIONS.md#grc-human-par-intervals)
 - [PLINK developers (2026) — PLINK 2.0 human chromosome ploidy and dosage input](CITATIONS.md#plink2-human-ploidy-documentation)
 
-[Search the complete scientific bibliography](https://robbyjo.github.io/JLinAlg/citations.html).
+[Search the complete scientific bibliography](https://robbyjo.github.io/OmicsMatic/citations.html).
 <!-- SCIENTIFIC-CITATIONS:END -->

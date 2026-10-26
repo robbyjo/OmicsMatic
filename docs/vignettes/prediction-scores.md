@@ -142,5 +142,5 @@ These are the primary sources for the methods used in this workflow. Cite the re
 - [Sudhir Varma and Richard Simon (2006) — Bias in error estimation when using cross-validation for model selection](../CITATIONS.md#varma-simon-nested-cv-2006)
 - [scikit-learn developers (2026) — Cross-validation: nested model selection and grouped observations](../CITATIONS.md#sklearn-grouped-nested-cv)
 
-[Search the complete scientific bibliography](https://robbyjo.github.io/JLinAlg/citations.html).
+[Search the complete scientific bibliography](https://robbyjo.github.io/OmicsMatic/citations.html).
 <!-- SCIENTIFIC-CITATIONS:END -->

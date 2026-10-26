@@ -67,5 +67,5 @@ These are the primary sources for the methods used in this workflow. Cite the re
 
 - [Silvia Ferrari and Francisco Cribari-Neto (2004) — Beta regression for modelling rates and proportions](CITATIONS.md#ferrari-cribari-neto-2004)
 
-[Search the complete scientific bibliography](https://robbyjo.github.io/JLinAlg/citations.html).
+[Search the complete scientific bibliography](https://robbyjo.github.io/OmicsMatic/citations.html).
 <!-- SCIENTIFIC-CITATIONS:END -->

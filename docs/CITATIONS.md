@@ -2,7 +2,7 @@
 
 This bibliography links JLinAlg features to the primary publications that introduced or established their statistical methods. Cite both the relevant method paper and JLinAlg when reporting an analysis. Inclusion here documents methodological provenance; it is not a claim that every implementation detail is identical to the cited software.
 
-The website provides a [searchable citation index](https://robbyjo.github.io/JLinAlg/citations.html). This file and the per-vignette citation panels are generated from [citations.json](citations.json).
+The website provides a [searchable citation index](https://robbyjo.github.io/OmicsMatic/citations.html). This file and the per-vignette citation panels are generated from [citations.json](citations.json).
 
 PMID and PMCID values are retrieved from [NCBI PubMed](https://pubmed.ncbi.nlm.nih.gov/) with [enrich-citation-identifiers.py](enrich-citation-identifiers.py).
 

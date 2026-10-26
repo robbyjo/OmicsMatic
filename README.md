@@ -1,7 +1,8 @@
-# JLinAlg
+# OmicsMatic
 
-JLinAlg is a Java library and command-line toolkit for statistical analysis,
-including regression, mixed models, omics association, and meta-analysis.
+OmicsMatic (formerly JLinAlg) is a Java library and command-line toolkit
+for statistical analysis, including regression, mixed models, omics association,
+and meta-analysis.
 It uses [JDistlib](https://github.com/robbyjo/JDistlib) for numerical computation.
 Rare-variant APIs and the `rare-meta` CLI include Burden, SKAT, SKAT-O,
 ACAT-V, and canonical six-component ACAT-O tests.
@@ -105,7 +106,7 @@ Use the included Gradle wrapper; no separate Gradle installation is required.
 ```
 
 The self-contained executable is `build/cli/jlinalg-0.3.7.jar`.
-[Published releases](https://github.com/robbyjo/JLinAlg/releases) are also
+[Published releases](https://github.com/robbyjo/OmicsMatic/releases) are also
 available; newer source-build features may not be in the latest release asset.
 
 ## Run an analysis
@@ -137,10 +138,10 @@ java -jar build/cli/jlinalg-0.3.7.jar plot `
 See the [command-line plotting guide](docs/plotting.md) for mappings, themes,
 axis and legend controls, missing-value behavior, and chart-specific examples.
 
-Visit the **[JLinAlg website](https://robbyjo.github.io/JLinAlg/)** for the
-complete feature guide, **[tutorials and vignettes](https://robbyjo.github.io/JLinAlg/vignettes/)**,
-and Java/CLI examples, including [GRM construction](https://robbyjo.github.io/JLinAlg/vignettes/grm.html).
-The [searchable scientific citation index](https://robbyjo.github.io/JLinAlg/citations.html)
+Visit the **[OmicsMatic website](https://robbyjo.github.io/OmicsMatic/)** for the
+complete feature guide, **[tutorials and vignettes](https://robbyjo.github.io/OmicsMatic/vignettes/)**,
+and Java/CLI examples, including [GRM construction](https://robbyjo.github.io/OmicsMatic/vignettes/grm.html).
+The [searchable scientific citation index](https://robbyjo.github.io/OmicsMatic/citations.html)
 links each method family to its primary publication.
 
 ## Numerical accuracy and performance

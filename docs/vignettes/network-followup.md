@@ -241,5 +241,5 @@ These are the primary sources for the methods used in this workflow. Cite the re
 - [Jesse Hemerik and Jelle Goeman (2018) — Exact testing with random permutations](../CITATIONS.md#hemerik-goeman-2018) — [PMID: 30930620](https://pubmed.ncbi.nlm.nih.gov/30930620/) · [PMCID: PMC6405018](https://pmc.ncbi.nlm.nih.gov/articles/PMC6405018/)
 - [C. J. Clopper and E. S. Pearson (1934) — The Use of Confidence or Fiducial Limits Illustrated in the Case of the Binomial](../CITATIONS.md#clopper-pearson-1934)
 
-[Search the complete scientific bibliography](https://robbyjo.github.io/JLinAlg/citations.html).
+[Search the complete scientific bibliography](https://robbyjo.github.io/OmicsMatic/citations.html).
 <!-- SCIENTIFIC-CITATIONS:END -->

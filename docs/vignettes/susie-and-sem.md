@@ -202,5 +202,5 @@ These are the primary sources for the methods used in this workflow. Cite the re
 - [Sewall Wright (1921) — Correlation and causation](../CITATIONS.md#wright-1921)
 - [John J. McArdle and Roderick P. McDonald (1984) — Some algebraic properties of the Reticular Action Model for moment structures](../CITATIONS.md#mcardle-mcdonald-1984) — [PMID: 6509005](https://pubmed.ncbi.nlm.nih.gov/6509005/)
 
-[Search the complete scientific bibliography](https://robbyjo.github.io/JLinAlg/citations.html).
+[Search the complete scientific bibliography](https://robbyjo.github.io/OmicsMatic/citations.html).
 <!-- SCIENTIFIC-CITATIONS:END -->

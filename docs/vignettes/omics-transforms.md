@@ -198,5 +198,5 @@ These are the primary sources for the methods used in this workflow. Cite the re
 - [Jeffrey T. Leek and John D. Storey (2007) — Capturing heterogeneity in gene expression studies by surrogate variable analysis](../CITATIONS.md#leek-storey-2007) — [PMID: 17907809](https://pubmed.ncbi.nlm.nih.gov/17907809/) · [PMCID: PMC1994707](https://pmc.ncbi.nlm.nih.gov/articles/PMC1994707/)
 - [W. Evan Johnson, Cheng Li, and Ariel Rabinovic (2007) — Adjusting batch effects in microarray expression data using empirical Bayes methods](../CITATIONS.md#johnson-combat-2007) — [PMID: 16632515](https://pubmed.ncbi.nlm.nih.gov/16632515/)
 
-[Search the complete scientific bibliography](https://robbyjo.github.io/JLinAlg/citations.html).
+[Search the complete scientific bibliography](https://robbyjo.github.io/OmicsMatic/citations.html).
 <!-- SCIENTIFIC-CITATIONS:END -->
