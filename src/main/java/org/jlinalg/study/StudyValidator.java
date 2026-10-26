@@ -32,7 +32,7 @@ public final class StudyValidator {
         "assumptions", "resources", "assistance", "_resolution");
     private static final Set<String> PROJECT = Set.of(
         "id", "title", "description", "objective", "investigators",
-        "organization", "tags", "data_policy");
+        "organization", "tags", "data_policy", "manuscript_policy", "finding_grouping", "mr_testing_families");
     private static final Set<String> COHORT = Set.of(
         "id", "parent", "name", "literature_name", "references", "description", "species", "population", "metadata",
         "status", "retired_reason");
@@ -41,12 +41,12 @@ public final class StudyValidator {
         "shared_participants", "metadata", "status", "retired_reason");
     private static final Set<String> DATASET = Set.of(
         "id", "cohort", "cohorts", "type", "modality", "tissue",
-        "stage", "description", "files", "columns", "analysis_description",
+        "stage", "supplied_result_id", "description", "files", "columns", "analysis_description",
         "provenance", "source", "anatomical_site", "compartment",
         "preparation", "assay", "species", "donor", "specimen",
         "condition", "visit", "time", "batch", "cell_type", "genome_build",
         "annotation_release", "feature_id_type", "coordinate_system", "units", "detection_limit", "feature_universe",
-        "spatial_resolution", "metadata", "status", "retired_reason");
+        "spatial_resolution", "metadata", "effect_contract", "status", "retired_reason");
     private static final Set<String> HYPOTHESIS = Set.of(
         "id", "description", "outcome", "exposure", "covariates", "inputs",
         "analysis", "depends_on", "origin", "validation_requirement",
@@ -62,16 +62,16 @@ public final class StudyValidator {
         "id", "between", "type", "statement", "source", "review_status",
         "metadata");
     private static final Set<String> GOALS = Set.of(
-        "association", "effect_comparison", "discovery_replication", "meta_analysis",
+        "association", "assay_qc", "gwas_diagnostics", "rare_variant_analysis", "rare_set_omnibus", "subgroup_interactions", "finding_inventory", "impact_assessment", "effect_comparison", "cohort_overlap", "rare_cohort_overlap", "heterogeneity_review", "discovery_replication", "meta_analysis",
         "gene_ontology", "pathway_enrichment", "variant_scoring",
         "fine_mapping", "colocalization", "mendelian_randomization",
         "genetic_support", "literature_support", "candidate_prioritization",
-        "source_discovery", "bioinformatics_investigation", "literature_search");
+        "source_discovery", "bioinformatics_investigation", "literature_search", "ranked_gsea", "gwas_enrichment", "network_analysis", "network_modules", "module_gene_ontology", "network_preservation", "network_preservation_null", "pathway_network", "risk_score_evaluation", "risk_score_related_phenotypes", "protein_structure", "protein_structure_assessment", "variant_annotation");
     private static final Set<String> STAGES = Set.of(
         "raw_quantified", "quantified_matrix", "processed_matrix",
         "association_results", "annotated_results", "meta_analysis_results",
         "enrichment_results", "variant_scores", "fine_mapping_results",
-        "colocalization_results", "mr_results", "evidence_results");
+        "colocalization_results", "mr_results", "evidence_results", "rare_score_summary", "set_association_results", "analysis_reference");
     private static final Set<String> TYPES = Set.of(
         "transcriptomics", "expression", "mirna", "lincrna", "lncrna",
         "extracellular_rna", "epigenomics", "ewas", "gwas", "genomics",
@@ -80,6 +80,16 @@ public final class StudyValidator {
         "multimodal", "phenotype", "generic");
 
     public static StudyValidation validate(Path path, boolean checkFiles)
+            throws IOException {
+        return validate(path, checkFiles, false);
+    }
+
+    /** Missing inputs gate their consuming stages; malformed contracts still fail before execution. */
+    public static StudyValidation validateForExecution(Path path) throws IOException {
+        return validate(path, true, true);
+    }
+
+    private static StudyValidation validate(Path path, boolean checkFiles, boolean allowMissing)
             throws IOException {
         List<StudyValidation.Issue> issues = new ArrayList<>();
         Map<String, Object> document;
@@ -90,7 +100,7 @@ public final class StudyValidator {
             return new StudyValidation(issues);
         }
         validate(document, path.toAbsolutePath().normalize().getParent(),
-            checkFiles, issues);
+            checkFiles, allowMissing, issues);
         return new StudyValidation(issues);
     }
 
@@ -116,6 +126,11 @@ public final class StudyValidator {
 
     private static void validate(Map<String, Object> document, Path root,
             boolean checkFiles, List<StudyValidation.Issue> issues) {
+        validate(document, root, checkFiles, false, issues);
+    }
+
+    private static void validate(Map<String, Object> document, Path root,
+            boolean checkFiles, boolean allowMissing, List<StudyValidation.Issue> issues) {
         unknown(document, TOP, "$", issues);
         if (!Integer.valueOf(1).equals(document.get("schema_version")))
             issues.add(issue(ERROR, "schema_version",
@@ -128,6 +143,12 @@ public final class StudyValidator {
         requiredText(project.get("title"), "project.title", issues);
         requiredText(project.get("description"), "project.description", issues);
         scalarOrList(project.get("objective"), "project.objective", issues);
+        if (project.containsKey("manuscript_policy")) {
+            try { StudyWorkflowPolicy.manuscript(mapping(project.get("manuscript_policy"), "project.manuscript_policy", true, issues)); }
+            catch (IllegalArgumentException failure) { issues.add(issue(ERROR, "project.manuscript_policy", failure.getMessage())); }
+        }
+        if(project.containsKey("finding_grouping"))try{StudyFindingGroupingPolicy.resolve(mapping(project.get("finding_grouping"),"project.finding_grouping",true,issues));}catch(IllegalArgumentException invalid){issues.add(issue(ERROR,"project.finding_grouping",invalid.getMessage()));}
+        if(project.containsKey("mr_testing_families"))try{StudyMrFamilyPolicy.resolve(document);}catch(IllegalArgumentException invalid){issues.add(issue(ERROR,"project.mr_testing_families",invalid.getMessage()));}
         Map<String, Object> privacy = mapping(project.get("data_policy"), "project.data_policy", false, issues);
         Map<String, Object> llmPrivacy = mapping(privacy.get("llm"), "project.data_policy.llm", false, issues);
         enumValue(privacy.get("remote_transmission"), "project.data_policy.remote_transmission", Set.of("aggregate_results", "deny_all"), issues);
@@ -174,16 +195,37 @@ public final class StudyValidator {
             requiredText(relationship.get("type"), path + ".type", issues);
         }
 
+        boolean supplied = document.get("hypotheses") instanceof List<?> hs && hs.stream().anyMatch(raw -> raw instanceof Map<?, ?> h
+            && h.get("analysis") instanceof Map<?, ?> a && (a.get("supplied_results") instanceof List<?> imports && !imports.isEmpty()
+                || a.get("gsea") instanceof Map<?,?> gsea && gsea.get("ranking") instanceof Map<?,?> ranking && ranking.get("file") instanceof String
+                || a.get("gwas_enrichment") instanceof Map<?,?> ge && ge.get("summary") instanceof Map<?,?> gs && gs.get("file") instanceof String
+                || a.get("risk_score") instanceof Map<?,?> risk && risk.get("file") instanceof String
+                || a.get("protein_structure") instanceof Map<?,?> protein && protein.get("manifest") instanceof String));
         Map<String, Map<String, Object>> datasets = objects(
-            document.get("datasets"), "datasets", DATASET, true, issues);
+            document.get("datasets"), "datasets", DATASET, !supplied, issues);
+        if (supplied && !(document.get("datasets") instanceof List<?>))
+            issues.add(issue(ERROR, "datasets", "datasets must be a list; an empty list is allowed with supplied analyses or a registered complete ranking"));
         for (Map.Entry<String, Map<String, Object>> entry : datasets.entrySet())
             dataset(entry.getKey(), entry.getValue(), cohorts, root,
-                checkFiles, issues);
+                checkFiles, allowMissing, issues);
 
         Map<String, Map<String, Object>> hypotheses = objects(
             document.get("hypotheses"), "hypotheses", HYPOTHESIS, true, issues);
-        for (Map.Entry<String, Map<String, Object>> entry : hypotheses.entrySet())
+        if(project.containsKey("finding_grouping"))try{for(Object rawReference:StudyIO.optionalList(StudyFindingGroupingPolicy.resolve(StudyIO.optionalMap(project.get("finding_grouping"),"finding_grouping")).get("references"),"references"))for(Object h:StudyIO.list(StudyIO.map(rawReference,"reference").get("hypotheses"),"hypotheses"))if(!hypotheses.containsKey(String.valueOf(h)))issues.add(issue(ERROR,"project.finding_grouping.references","Unknown hypothesis: "+h));}catch(IllegalArgumentException ignored){/* Structural issues are reported above. */}
+        for (Map.Entry<String, Map<String, Object>> entry : hypotheses.entrySet()) {
             hypothesis(entry.getKey(), entry.getValue(), datasets, issues);
+            try {
+                var analysis = StudyIO.optionalMap(entry.getValue().get("analysis"), "analysis");
+                StudyAnalysisReferences.validate(entry.getValue(), analysis, datasets);
+                for (var imported : StudySuppliedResultPolicy.resolve(analysis)) {
+                    if (checkFiles) for (var file : StudyIO.map(imported.get("files"), "files").entrySet())
+                        if (!Files.isRegularFile(root.resolve(String.valueOf(file.getValue())).normalize()))
+                            issues.add(issue(WARNING, "hypotheses." + entry.getKey() + ".analysis.supplied_results." + imported.get("id") + ".files." + file.getKey(), "supplied result file does not exist; this import will wait while independent branches can run: " + file.getValue()));
+                }
+            } catch (IllegalArgumentException invalid) {
+                issues.add(issue(ERROR, "hypotheses." + entry.getKey() + ".analysis.supplied_results", invalid.getMessage()));
+            }
+        }
         for (Map.Entry<String, Map<String, Object>> entry : hypotheses.entrySet()) {
             List<Object> dependencies = sequence(entry.getValue().get("depends_on"),
                 "hypotheses." + entry.getKey() + ".depends_on", false, issues);
@@ -260,10 +302,10 @@ public final class StudyValidator {
         if (value == null) return;
         Map<String, Object> config = mapping(value, "assistance", true, issues);
         unknown(config, Set.of("enabled", "provider", "model", "api_key_env", "endpoint", "auth", "oauth_token_env", "response_files",
-            "next_steps", "related_phenotypes", "literature", "manuscript", "allow_analyses", "timeout_seconds"),
+            "next_steps", "related_phenotypes", "literature", "manuscript", "manuscript_max_output_tokens", "impact", "impact_batch_size", "impact_max_payload_chars", "impact_max_calls", "impact_max_output_tokens", "allow_analyses", "timeout_seconds"),
             "assistance", issues);
-        enumValue(config.get("provider"), "assistance.provider", Set.of("browser", "openai", "gemini", "openai_compatible"), issues);
-        for (String key : List.of("enabled", "next_steps", "related_phenotypes", "literature", "manuscript"))
+        enumValue(config.get("provider"), "assistance.provider", Set.of("browser", "openai", "gemini", "openai_compatible", "local", "llama_cpp"), issues);
+        for (String key : List.of("enabled", "next_steps", "related_phenotypes", "literature", "manuscript", "impact"))
             if (config.containsKey(key) && !(config.get(key) instanceof Boolean))
                 issues.add(issue(ERROR, "assistance." + key, "must be true or false"));
         if (Boolean.TRUE.equals(config.get("enabled")) && !"browser".equals(config.getOrDefault("provider", "browser"))) {
@@ -280,7 +322,14 @@ public final class StudyValidator {
             requiredText(config.get("oauth_token_env"), "assistance.oauth_token_env", issues);
             if (config.containsKey("api_key_env")) issues.add(issue(ERROR, "assistance.api_key_env", "Do not combine API key and OAuth authentication"));
         } else if (config.containsKey("oauth_token_env")) issues.add(issue(ERROR, "assistance.auth", "oauth_token_env requires auth: oauth"));
-        if ("openai_compatible".equals(config.get("provider"))) {
+        if (Set.of("local", "llama_cpp").contains(config.getOrDefault("provider", "browser"))) {
+            requiredText(config.get("endpoint"), "assistance.endpoint", issues);
+            try {
+                var endpoint = java.net.URI.create(String.valueOf(config.get("endpoint")));
+                if (!"http".equals(endpoint.getScheme()) || !"127.0.0.1".equals(endpoint.getHost()) || endpoint.getPort() < 1 || endpoint.getPort() > 65535
+                    || !"/v1/chat/completions".equals(endpoint.getPath()) || endpoint.getUserInfo() != null || endpoint.getQuery() != null || endpoint.getFragment() != null) throw new IllegalArgumentException();
+            } catch (IllegalArgumentException bad) { issues.add(issue(ERROR, "assistance.endpoint", "requires http://127.0.0.1:PORT/v1/chat/completions with no credentials, query or fragment")); }
+        } else if ("openai_compatible".equals(config.get("provider"))) {
             try {
                 java.net.URI uri = java.net.URI.create(String.valueOf(config.get("endpoint")));
                 if (!"https".equals(uri.getScheme()) || uri.getHost() == null || uri.getUserInfo() != null || uri.getQuery() != null || uri.getFragment() != null || !uri.getPath().endsWith("/chat/completions")) throw new IllegalArgumentException();
@@ -288,6 +337,12 @@ public final class StudyValidator {
         } else if (config.containsKey("endpoint")) issues.add(issue(ERROR, "assistance.endpoint", "custom endpoints require provider: openai_compatible"));
         if ("browser".equals(config.getOrDefault("provider", "browser")) && (config.containsKey("api_key_env") || config.containsKey("auth") || config.containsKey("model")))
             issues.add(issue(ERROR, "assistance", "browser handoff does not use model or credential settings; model label is recorded on import"));
+        for (String field : List.of("impact_batch_size", "impact_max_payload_chars", "impact_max_calls", "impact_max_output_tokens", "manuscript_max_output_tokens")) if (config.containsKey(field)) {
+            int min = field.equals("impact_max_payload_chars") ? 5000 : field.endsWith("output_tokens") ? 1000 : field.equals("impact_batch_size") ? 2 : 1;
+            int max = field.equals("impact_max_payload_chars") ? 2000000 : field.endsWith("output_tokens") ? 100000 : field.equals("impact_batch_size") ? 1000 : 10000;
+            if (!(config.get(field) instanceof Number optionValue) || optionValue.doubleValue() != optionValue.intValue() || optionValue.intValue() < min || optionValue.intValue() > max)
+                issues.add(issue(ERROR, "assistance." + field, "must be an integer from " + min + " to " + max));
+        }
         List<Object> responseFiles = sequence(config.get("response_files"), "assistance.response_files", false, issues);
         if (!responseFiles.isEmpty() && !"browser".equals(config.getOrDefault("provider", "browser"))) issues.add(issue(ERROR, "assistance.response_files", "browser receipts require provider: browser"));
         Set<Object> seenResponses = new HashSet<>();
@@ -310,7 +365,7 @@ public final class StudyValidator {
 
     private static void dataset(String id, Map<String, Object> dataset,
             Map<String, Map<String, Object>> cohorts, Path root,
-            boolean checkFiles, List<StudyValidation.Issue> issues) {
+            boolean checkFiles, boolean allowMissing, List<StudyValidation.Issue> issues) {
         String path = "datasets." + id;
         Object cohort = dataset.get("cohort");
         if (cohort != null && (!(cohort instanceof String text)
@@ -346,14 +401,19 @@ public final class StudyValidator {
             if (checkFiles) try {
                 Path resolved = root.resolve(name).normalize();
                 if (!Files.isRegularFile(resolved))
-                    issues.add(issue(ERROR, path + ".files." + file.getKey(),
-                        "file is absent: " + resolved));
+                    issues.add(issue(allowMissing ? WARNING : ERROR, path + ".files." + file.getKey(),
+                        "file is absent" + (allowMissing ? "; its consuming stage will wait" : "") + ": " + resolved));
             } catch (InvalidPathException invalid) {
                 issues.add(issue(ERROR, path + ".files." + file.getKey(),
                     "invalid path: " + name));
             }
         }
         String stage = text(dataset.getOrDefault("stage", "processed_matrix"));
+        if (StudyAnalysisReferences.STAGE.equals(stage)) {
+            requiredText(dataset.get("supplied_result_id"), path + ".supplied_result_id", issues);
+            if (!files.isEmpty()) issues.add(issue(ERROR, path + ".files", "analysis_reference requires files: {}"));
+        } else if (dataset.containsKey("supplied_result_id"))
+            issues.add(issue(ERROR, path + ".supplied_result_id", "dataset supplied_result_id requires stage: analysis_reference"));
         if (stage != null && Set.of("raw_quantified", "quantified_matrix",
                 "processed_matrix").contains(stage.toLowerCase())
                 && !files.containsKey("matrix"))
@@ -363,8 +423,19 @@ public final class StudyValidator {
                 && !files.containsKey("results"))
             issues.add(issue(ERROR, path + ".files",
                 "result input stages require files.results"));
+        if ("rare_score_summary".equals(stage) && (!files.containsKey("scores") || !files.containsKey("covariance")))
+            issues.add(issue(ERROR, path + ".files", "rare score summaries require files.scores and files.covariance"));
         Map<String, Object> columns = mapping(dataset.get("columns"),
             path + ".columns", false, issues);
+        if (dataset.containsKey("effect_contract")) try {
+            StudyPoolingPolicy.effectContract(mapping(dataset.get("effect_contract"), path + ".effect_contract", true, issues));
+        } catch (IllegalArgumentException invalid) { issues.add(issue(ERROR, path + ".effect_contract", invalid.getMessage())); }
+        if(columns.containsKey("result_mode")&&!Set.of("signed_effect","p_value_only").contains(columns.get("result_mode")))issues.add(issue(ERROR,path+".columns.result_mode","must be signed_effect or p_value_only"));
+        if (columns.containsKey("result_metadata")) {
+            var metadata = mapping(columns.get("result_metadata"), path + ".columns.result_metadata", true, issues);
+            unknown(metadata, StudyResultMetadataPolicy.names(), path + ".columns.result_metadata", issues);
+            metadata.forEach((key, value) -> requiredText(value, path + ".columns.result_metadata." + key, issues));
+        }
         enumValue(dataset.get("feature_id_type"), path + ".feature_id_type",
             Set.of("auto", "probe", "ensembl_gene", "ensembl_transcript",
                 "gene_symbol", "variant", "protein", "metabolite"), issues);
@@ -409,18 +480,74 @@ public final class StudyValidator {
             path + ".analysis", false, issues);
         enumValue(analysis.get("mode"), path + ".analysis.mode",
             Set.of("auto", "manual"), issues);
+        if (analysis.containsKey("association")) {
+            try { StudyWorkflowPolicy.validateAssociation(mapping(analysis.get("association"), path + ".analysis.association", true, issues)); }
+            catch (IllegalArgumentException failure) { issues.add(issue(ERROR, path + ".analysis.association", failure.getMessage())); }
+            try {var policy=StudyHumanPloidyPolicy.resolve(StudyIO.optionalMap(analysis.get("association"),"association"));if(!policy.isEmpty())for(var dataset:datasets.values())if(Set.of("raw_quantified","quantified_matrix","processed_matrix").contains(String.valueOf(dataset.getOrDefault("stage","processed_matrix")))&&(inputs.isEmpty()||inputs.values().stream().anyMatch(v->v instanceof String s?s.equals(dataset.get("id")):v instanceof List<?> values&&values.contains(dataset.get("id")))))StudyHumanPloidyPolicy.dataset(dataset,policy);}
+            catch(IllegalArgumentException failure){issues.add(issue(ERROR,path+".analysis.association.human_ploidy",failure.getMessage()));}
+        }
+        if (analysis.containsKey("pooling")) try {
+            StudyPoolingPolicy.resolve(mapping(analysis.get("pooling"), path + ".analysis.pooling", true, issues));
+        } catch (IllegalArgumentException invalid) { issues.add(issue(ERROR, path + ".analysis.pooling", invalid.getMessage())); }
+        if (analysis.containsKey("network")) try {
+            StudyNetworkPolicy.resolve(mapping(analysis.get("network"), path + ".analysis.network", true, issues));
+        } catch (IllegalArgumentException invalid) { issues.add(issue(ERROR, path + ".analysis.network", invalid.getMessage())); }
+        if(analysis.containsKey("network_preservation"))try{StudyNetworkPreservationPolicy.resolve(mapping(analysis.get("network_preservation"),path+".analysis.network_preservation",true,issues));}
+        catch(IllegalArgumentException invalid){issues.add(issue(ERROR,path+".analysis.network_preservation",invalid.getMessage()));}
+        if(analysis.containsKey("network_preservation_null"))try{StudyNetworkNullPolicy.resolve(mapping(analysis.get("network_preservation_null"),path+".analysis.network_preservation_null",true,issues));}
+        catch(IllegalArgumentException invalid){issues.add(issue(ERROR,path+".analysis.network_preservation_null",invalid.getMessage()));}
+        if(analysis.containsKey("rare_omnibus"))try{StudyRareOmnibusPolicy.resolve(mapping(analysis.get("rare_omnibus"),path+".analysis.rare_omnibus",true,issues));}
+        catch(IllegalArgumentException invalid){issues.add(issue(ERROR,path+".analysis.rare_omnibus",invalid.getMessage()));}
+        if(analysis.containsKey("gwas_diagnostics"))try{StudyGwasDiagnosticPolicy.resolve(mapping(analysis.get("gwas_diagnostics"),path+".analysis.gwas_diagnostics",true,issues));}
+        catch(IllegalArgumentException invalid){issues.add(issue(ERROR,path+".analysis.gwas_diagnostics",invalid.getMessage()));}
+        if(analysis.containsKey("gwas_enrichment"))try{StudyGwasEnrichmentPolicy.resolve(mapping(analysis.get("gwas_enrichment"),path+".analysis.gwas_enrichment",true,issues));}
+        catch(IllegalArgumentException invalid){issues.add(issue(ERROR,path+".analysis.gwas_enrichment",invalid.getMessage()));}
+        if(analysis.containsKey("gsea"))try{StudyGseaPolicy.resolve(mapping(analysis.get("gsea"),path+".analysis.gsea",true,issues));}
+        catch(IllegalArgumentException invalid){issues.add(issue(ERROR,path+".analysis.gsea",invalid.getMessage()));}
+        if(analysis.containsKey("risk_score"))try{StudyRiskScorePolicy.resolve(mapping(analysis.get("risk_score"),path+".analysis.risk_score",true,issues));}
+        catch(IllegalArgumentException invalid){issues.add(issue(ERROR,path+".analysis.risk_score",invalid.getMessage()));}
+        if(analysis.containsKey("protein_structure"))try{StudyProteinPolicy.resolve(mapping(analysis.get("protein_structure"),path+".analysis.protein_structure",true,issues));}
+        catch(IllegalArgumentException invalid){issues.add(issue(ERROR,path+".analysis.protein_structure",invalid.getMessage()));}
+        if(analysis.containsKey("subgroup_interactions"))try{StudySubgroupInteractionPolicy.resolve(mapping(analysis.get("subgroup_interactions"),path+".analysis.subgroup_interactions",true,issues));}
+        catch(IllegalArgumentException invalid){issues.add(issue(ERROR,path+".analysis.subgroup_interactions",invalid.getMessage()));}
+        if(analysis.containsKey("assay_qc"))try{StudyAssayQcPolicy.resolve(mapping(analysis.get("assay_qc"),path+".analysis.assay_qc",true,issues));}
+        catch(IllegalArgumentException invalid){issues.add(issue(ERROR,path+".analysis.assay_qc",invalid.getMessage()));}
+        if(analysis.containsKey("genotype_sample_qc"))try{StudyGenotypeSampleQcPolicy.resolve(mapping(analysis.get("genotype_sample_qc"),path+".analysis.genotype_sample_qc",true,issues));}
+        catch(IllegalArgumentException invalid){issues.add(issue(ERROR,path+".analysis.genotype_sample_qc",invalid.getMessage()));}
+        if(analysis.containsKey("cohort_overlap"))try{StudyCohortPolicy.overlap(mapping(analysis.get("cohort_overlap"),path+".analysis.cohort_overlap",true,issues));}
+        catch(IllegalArgumentException invalid){issues.add(issue(ERROR,path+".analysis.cohort_overlap",invalid.getMessage()));}
+        if(analysis.containsKey("primary_result"))try{StudyPrimaryPolicy.resolve(mapping(analysis.get("primary_result"),path+".analysis.primary_result",true,issues));}
+        catch(IllegalArgumentException invalid){issues.add(issue(ERROR,path+".analysis.primary_result",invalid.getMessage()));}
+        if(analysis.containsKey("colocalization"))try{StudyColocalizationPolicy.resolve(mapping(analysis.get("colocalization"),path+".analysis.colocalization",true,issues));}
+        catch(IllegalArgumentException invalid){issues.add(issue(ERROR,path+".analysis.colocalization",invalid.getMessage()));}
+        if(analysis.containsKey("heterogeneity"))try{StudyCohortPolicy.heterogeneity(mapping(analysis.get("heterogeneity"),path+".analysis.heterogeneity",true,issues));}
+        catch(IllegalArgumentException invalid){issues.add(issue(ERROR,path+".analysis.heterogeneity",invalid.getMessage()));}
+        if (analysis.containsKey("variant_followup")) {
+            try { StudyVariantFollowupPolicy.resolve(mapping(analysis.get("variant_followup"), path + ".analysis.variant_followup", true, issues)); }
+            catch (IllegalArgumentException failure) { issues.add(issue(ERROR, path + ".analysis.variant_followup", failure.getMessage())); }
+        }
+        if (analysis.containsKey("rare_variants")) {
+            try { StudyRareVariantPolicy.resolve(mapping(analysis.get("rare_variants"), path + ".analysis.rare_variants", true, issues),
+                mapping(analysis.get("association"), path + ".analysis.association", false, issues), true); }
+            catch (IllegalArgumentException failure) { issues.add(issue(ERROR, path + ".analysis.rare_variants", failure.getMessage())); }
+        }
         Object goals = analysis.get("goals");
         if (analysis.containsKey("bioinformatics")) {
             String where = path + ".analysis.bioinformatics";
             Map<String, Object> bio = mapping(analysis.get("bioinformatics"), where, true, issues);
-            unknown(bio, Set.of("max_features", "max_pages", "max_sequence_bp", "max_regional_snps", "window_bp", "fdr", "phenotype_terms", "relevant_tissues", "literature_terms", "remote_feature_queries", "genetic_pairs", "mr", "colocalization"), where, issues);
+            unknown(bio, Set.of("max_features", "literature_max_features", "literature_max_queries", "literature_selection", "max_pages", "max_sequence_bp", "max_regional_snps", "window_bp", "fdr", "phenotype_terms", "relevant_tissues", "literature_terms", "remote_feature_queries", "feature_source", "genetic_pairs", "mr", "mr_testing", "colocalization"), where, issues);
+            if (bio.containsKey("mr_testing")) try {
+                StudyMrTestingPolicy.resolve(mapping(bio.get("mr_testing"), where + ".mr_testing", true, issues));
+            } catch (IllegalArgumentException invalid) { issues.add(issue(ERROR, where + ".mr_testing", invalid.getMessage())); }
+            enumValue(bio.get("feature_source"),where+".feature_source",Set.of("auto","association","rare_sets"),issues);
+            enumValue(bio.get("literature_selection"),where+".literature_selection",Set.of("auto","impact","p_value"),issues);
             if (bio.containsKey("remote_feature_queries")
                     && !(bio.get("remote_feature_queries") instanceof Boolean))
                 issues.add(issue(ERROR, where + ".remote_feature_queries",
                     "must be true or false"));
-            for (String field : List.of("max_features", "max_pages", "max_sequence_bp", "max_regional_snps", "window_bp")) if (bio.containsKey(field)) {
+            for (String field : List.of("max_features", "literature_max_features", "literature_max_queries", "max_pages", "max_sequence_bp", "max_regional_snps", "window_bp")) if (bio.containsKey(field)) {
                 Object number = bio.get(field);
-                int max = Set.of("max_features", "max_regional_snps").contains(field) ? 100 : field.equals("max_pages") ? 20 : field.equals("window_bp") ? 5000000 : 1000000;
+                int max = Set.of("max_features", "literature_max_features", "max_regional_snps").contains(field) ? 100 : field.equals("literature_max_queries") ? 10000 : field.equals("max_pages") ? 20 : field.equals("window_bp") ? 5000000 : 1000000;
                 if (!(number instanceof Number value) || value.doubleValue() != value.intValue() || value.intValue() < (field.equals("window_bp") ? 0 : 1) || value.intValue() > max)
                     issues.add(issue(ERROR, where + "." + field, "must be an integer from 1 to " + max));
             }
@@ -438,7 +565,6 @@ public final class StudyValidator {
             }
             if (bio.containsKey("genetic_pairs")) {
                 List<Object> pairs = sequence(bio.get("genetic_pairs"), where + ".genetic_pairs", true, issues);
-                if (pairs.size() > 100) issues.add(issue(ERROR, where + ".genetic_pairs", "at most 100 reviewed regional pairs are allowed"));
                 Set<String> seen = new HashSet<>();
                 for (Object value : pairs) {
                     Map<String, Object> pair = mapping(value, where + ".genetic_pairs", true, issues);
@@ -446,6 +572,9 @@ public final class StudyValidator {
                     if (!(key instanceof String name) || !name.matches("[A-Za-z0-9][A-Za-z0-9_-]{0,63}") || !seen.add(name))
                         issues.add(issue(ERROR, where + ".genetic_pairs.id", "IDs must be unique safe identifiers"));
                     for (String field : List.of("feature_id", "rationale")) requiredText(pair.get(field), where + ".genetic_pairs." + field, issues);
+                    if (pair.containsKey("feature_location")) try {
+                        StudyFeatureLocationPolicy.resolve(mapping(pair.get("feature_location"), where + ".genetic_pairs.feature_location", true, issues));
+                    } catch (IllegalArgumentException invalid) { issues.add(issue(ERROR, where + ".genetic_pairs.feature_location", invalid.getMessage())); }
                 }
             }
             if (bio.containsKey("mr")) {

@@ -1,0 +1,1072 @@
+{
+  "status": "passed-native-running-score-and-original-enrichment-subsets",
+  "jar_sha256": "a104651636deb59493cddc92ce433629d4ef7b0c755f6ee065a3e0c75365c5e2",
+  "recorded_utc": "2026-10-25T14:18:39.170849+00:00",
+  "source_sha256": {
+    "src/main/java/org/jlinalg/enrichment/GseaStatistics.java": "bc8ac2fc81323bf3b78463e548b93bedf08aa8f7722b78871af11f6b4a71eab4",
+    "src/main/java/org/jlinalg/cli/EnrichmentToolsCli.java": "471106135c4f5efb06266cc3c19303f80d4ef368e584eda054ef8bb5fba02730",
+    "src/main/java/org/jlinalg/cli/EnrichmentRuntime.java": "a7a1a79033a5fe8ed4ccf857c2b1b3762464230aba5a95d9a1f0ea12c0dd4a03",
+    "src/main/java/org/jlinalg/cli/EnrichmentResultAudit.java": "180d7967caa09c35d40caf9db3047a5c1a2ddcb242ecf90ebc9ca547c41710db",
+    "src/main/resources/org/jlinalg/omics/enrichment_engines.R": "ad7fb763e4ccdb0be55583ebc98fb53d9cf57064ec5afd72d33eeda713841dde",
+    "src/main/resources/META-INF/NOTICE-enrichment.txt": "97cb2aa4187b23cab757dabd9e52dd31692ffa6a303ec6d9836e5d9234a670dc",
+    "src/main/resources/META-INF/LICENSE-fgsea.txt": "49aa8c7e841b32a4f0df55d2c40d8cf245797aea656064fde51bf115ad73a97e",
+    "src/test/java/org/jlinalg/enrichment/GseaStatisticsTest.java": "32dfcd38183477e2349922cfb3977d0aed43c5ae63e894a02e614a3675b09d91",
+    "src/test/java/org/jlinalg/cli/EnrichmentToolsCliTest.java": "3165709723ef74486a5b602e764bb733729b0cf1864c0e0032f0908c598a73b5",
+    "tools/literature/install_enrichment_dependencies.R": "c85523f5f33ae35997bc43da0d6c2fa48ae2975e3a4a7a0104cbd31f0b498e18",
+    "tools/literature/install_dose_legacy.R": "feacb003cc3301e753a544cd8b2ef33eb3f8f79aab26f624d0b01c9f0f678aae",
+    "tools/literature/test_enrichment_dependency_policy.py": "b3f68883bf2dc2e441f27f9f74b7110e1761867b4aee289a800231c4ce0515a7",
+    "tools/literature/generate_enrichment_references.R": "79fa684edfba8ddbc5a49d5079f995f8ef7153bb2213a9ced259044fc91108bd",
+    "tools/literature/verify_enrichment_workflows.py": "d14d9c1b21b0bd39e21c8f3f68f2b78c42767de9a530d5a175d87558a42b24ee",
+    "tools/literature/curate_enrichment_uses.py": "e481662aba71634617f54c5ff9bd267a4d3c47a8f41e66d33f77a0aad76fccfa",
+    "tools/literature/prepare_enrichment_workflow_inputs.py": "fcb8fd508a2137a95ec8143b7800c4f0a76a16bf38a3a8524ba5beda4672daf6",
+    "tools/literature/fixtures/enrichment/memberships.tsv": "9054092442aed9986bbb59fe7f4f7a185644252af8f72402c0c03109667de64a",
+    "tools/literature/fixtures/enrichment/names.tsv": "d215aeaa1cb68e9f61505c638b17155d0fb0944735fc79a1153dc61bb400015e",
+    "tools/literature/fixtures/enrichment/provenance.json": "6f4ab0df53892e01f1fcbf0164f517b6b39f67929152570551d234a7e59e5dd8",
+    "tools/literature/fixtures/enrichment/ranking.tsv": "9d2401f62385d882f5f1655c1e67a3f25313b8db27320951dd7b86d666f7edcb",
+    "tools/literature/fixtures/enrichment/selected.tsv": "5c50b20b35a3ce881cc1931566e40b542264146eafa04e1c8695eab80cae0dfb",
+    "tools/literature/fixtures/enrichment/universe.tsv": "b61bc4ab7e7f016bfe56a29bb7508a8fb72e9a770acd2e7098a872298acb1fac"
+  },
+  "current_full_gate_suites": {
+    "org.jlinalg.enrichment.GseaStatisticsTest": {
+      "suite_name": "org.jlinalg.enrichment.GseaStatisticsTest",
+      "suite": {
+        "tests": 7,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "junit_sha256": "391337f3be5da5909f3309e886e51c3c859d44dafc8fd92b2bd78346755c1beb",
+      "testcases": [
+        "reusesValidatedWeightsWithoutMutableInputAliases()",
+        "matchesActualRAdjustmentFamiliesIncludingMissingValues()",
+        "independentlyChecksSignedExtremaLeadingEdgesAndZeroMass()",
+        "preservesInputsAndDefensivelyCopiesResults()",
+        "rejectsUndefinedRankingsInvalidMembersAndImpossibleTables()",
+        "matchesActualOriginalFgseaAndEnrichitArithmetic()",
+        "matchesOriginalRHypergeometricLogTails()"
+      ]
+    },
+    "org.jlinalg.cli.EnrichmentToolsCliTest": {
+      "suite_name": "org.jlinalg.cli.EnrichmentToolsCliTest",
+      "suite": {
+        "tests": 9,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "junit_sha256": "e1b630e5f9827f8e72c1ae58e25fe0f06cfee495982561ce0770984c28b12261",
+      "testcases": [
+        "zeroOneTailedScoresRetainOriginalDirectionalCoreGenes()",
+        "emptyAndResourcePoliciesRetainDiagnosticsWithoutInventedInference()",
+        "nativeTsvRnkGmtAndNumericLookingIdentifiersNeedNoR()",
+        "tiesDuplicateMembershipAndZeroWeightsHaveExplicitProtocols()",
+        "missingDependencySkipsAndNamesRecoveryWithoutAResult()",
+        "originalOraPreservesLiteralIdsDescriptionsAndKnownTail()",
+        "helpAndInapplicableOptionsDoNotHideIgnoredParameters()",
+        "originalUnannotatedQueryRulesKeepEngineSpecificDenominators()",
+        "originalGseaRetainsDistinctBalancedScoresAndLegacyCoreDefinition()"
+      ]
+    }
+  },
+  "api_cli_tests": 16,
+  "original_reference_cases": {
+    "gsea": 768,
+    "hypergeometric": 94,
+    "adjustment": 35
+  },
+  "original_reference_provenance": {
+    "status": "passed-original-deterministic-arithmetic-reference-generation",
+    "r_version": "R version 4.6.1 (2026-06-24 ucrt)",
+    "fgsea": "1.38.0",
+    "enrichit": "0.2.6",
+    "gsea_cases": 768,
+    "ora_cases": 94,
+    "adjustment_cases": 35,
+    "generator_sha256": "79fa684edfba8ddbc5a49d5079f995f8ef7153bb2213a9ced259044fc91108bd",
+    "runtime_marker_sha256": "42d085c03b76a56333a2e92d80d2d980b273d56dce537f6f795720e2c6f6d16e",
+    "reference_sha256": {
+      "gsea.tsv": "3da3f7434ff75f9373d715ae6347d23c7649d6525771d5cc89836328508851f3",
+      "ora.tsv": "f3067a9981bb7cb44656399a26d6a772ed1a15e43ce9c8b4e835f9d29f3defbd",
+      "adjust.tsv": "ee4418100c50f9d6ab7f6c17f227164c6e767475bd6d94e64652d81391bd8190"
+    },
+    "warnings": [
+      "All values in the stats vector are greater than zero and scoreType is \"std\", maybe you should switch to scoreType = \"pos\".",
+      "There are ties in the preranked stats (44.44% of the list).\nThe order of those tied genes will be arbitrary, which may produce unexpected results."
+    ],
+    "scope": "Actual original fgsea::prepareStats/calcGseaStat,enrichit::gseaScores,stats::phyper and stats::p.adjust. Deterministic arithmetic only;no permutation P-values,NES,annotation or whole-paper equivalence inferred."
+  },
+  "original_inferential_api_calls": 29,
+  "native_score_mode_calls": 6,
+  "noninferential_empty_dependency_calls": 2,
+  "workflow_input_fixture_provenance": {
+    "schema": "jlinalg-enrichment-workflow-inputs-v1",
+    "scope": "Synthetic100gene/6set inputs used by original R and actual packaged workflows;no patient data. LF normalization changes no field or order.",
+    "genes": 100,
+    "sets": 6,
+    "memberships": 142,
+    "selected": 3,
+    "files": {
+      "ranking.tsv": "9d2401f62385d882f5f1655c1e67a3f25313b8db27320951dd7b86d666f7edcb",
+      "memberships.tsv": "9054092442aed9986bbb59fe7f4f7a185644252af8f72402c0c03109667de64a",
+      "names.tsv": "d215aeaa1cb68e9f61505c638b17155d0fb0944735fc79a1153dc61bb400015e",
+      "selected.tsv": "5c50b20b35a3ce881cc1931566e40b542264146eafa04e1c8695eab80cae0dfb",
+      "universe.tsv": "b61bc4ab7e7f016bfe56a29bb7508a8fb72e9a770acd2e7098a872298acb1fac"
+    },
+    "original_probe_input_sha256": {
+      "ranking.tsv": "e5e5bbad8d2027be55a11df72d827f2aa66f976a73904102438b2aa07fc7e736",
+      "memberships.tsv": "5926a97f21045c94ff8ceb619aaa449a2bee5b8f7cd9e796f324f143262e26e6",
+      "names.tsv": "a1b1b49e3a4a676ad33bc74a477b951bf5fc13c04248b7ae938ade8508c68151",
+      "selected.tsv": "da873419e55ca6f41127ef675be846fd6ff2ded42077de6280f62acc808f9d44",
+      "universe.tsv": "c9880029dcc4e0f4f9aed9181f101e598a19f8ab8407abc6833a6bac01bd17b1"
+    },
+    "definition": "gene001..gene100;stats50.25..-48.75 descendingstep1;top1..10,bottom91..100,mixed1,2,16..23,middle46..55,backgroundall,unmatchedoutside1/outside2;selected1..3;universeall100",
+    "known_ora": "top overlap3,set10,query3,universe100: P=120/161700;BH for3reportedterms=360/161700"
+  },
+  "fixture_preparation_validation": {
+    "status": "passed-synthetic-fixture-preparation;no-analysis",
+    "checks": 4,
+    "source_sha256": "fcb8fd508a2137a95ec8143b7800c4f0a76a16bf38a3a8524ba5beda4672daf6",
+    "steps": [
+      {
+        "command": [
+          "C:/Users/User/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+          "-X",
+          "utf8",
+          "D:\\projects\\JLinAlg\\tools\\literature\\prepare_enrichment_workflow_inputs.py",
+          "--destination",
+          "D:\\projects\\JLinAlg\\build\\literature-review\\tmp44k9f2kg\\new"
+        ],
+        "exit_code": 0,
+        "expected": 0,
+        "stdout": "Synthetic workflow inputs prepared; no scientific analysis was run: D:\\projects\\JLinAlg\\build\\literature-review\\tmp44k9f2kg\\new\n",
+        "stderr": ""
+      },
+      {
+        "command": [
+          "C:/Users/User/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+          "-X",
+          "utf8",
+          "D:\\projects\\JLinAlg\\tools\\literature\\prepare_enrichment_workflow_inputs.py",
+          "--destination",
+          "D:\\projects\\JLinAlg\\build\\literature-review\\tmp44k9f2kg\\new"
+        ],
+        "exit_code": 0,
+        "expected": 0,
+        "stdout": "Matching synthetic workflow inputs reused; existing bytes and outputs preserved: D:\\projects\\JLinAlg\\build\\literature-review\\tmp44k9f2kg\\new\n",
+        "stderr": ""
+      },
+      {
+        "command": [
+          "C:/Users/User/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+          "-X",
+          "utf8",
+          "D:\\projects\\JLinAlg\\tools\\literature\\prepare_enrichment_workflow_inputs.py",
+          "--destination",
+          "D:\\projects\\JLinAlg\\build\\literature-review\\tmp44k9f2kg\\new"
+        ],
+        "exit_code": 2,
+        "expected": 2,
+        "stdout": "",
+        "stderr": "INPUT PREPARATION FAILED: Existing input is incomplete or changed: D:\\projects\\JLinAlg\\build\\literature-review\\tmp44k9f2kg\\new\\ranking.tsv; preserve it and select a NEW --destination\n"
+      },
+      {
+        "command": [
+          "C:/Users/User/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+          "-X",
+          "utf8",
+          "D:\\projects\\JLinAlg\\tools\\literature\\prepare_enrichment_workflow_inputs.py",
+          "--destination",
+          "D:\\projects\\JLinAlg\\build\\literature-review\\enrichment-runtime\\original-clusterprofiler-probe"
+        ],
+        "exit_code": 0,
+        "expected": 0,
+        "stdout": "Matching synthetic workflow inputs reused; existing bytes and outputs preserved: D:\\projects\\JLinAlg\\build\\literature-review\\enrichment-runtime\\original-clusterprofiler-probe\n",
+        "stderr": ""
+      }
+    ],
+    "scope": "Fresh setup,reuse,changed-input refusal and unchanged real original probe inputs/outputs;not scientific tests."
+  },
+  "full_gate": {
+    "tests": 1593,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 5
+  },
+  "required_suites": 72,
+  "packaged_workflow_calls": 37,
+  "packaged_independent_checks": 11,
+  "scope": "Native score/log-tail/adjustment arithmetic and original clusterProfiler4.20.3/enrichit0.2.6,fgsea1.38 and explicitly separate legacyDOSE4.5generic ORA/GSEA. Exact ID/UTF8/rank/weight/count/core/family audits;seed/tail/algorithm/q/undefined/empty/missing dependency cases. No native NES/P simulation,phenotype-label permutations,online annotation,historical/full-paper parity or VIPER/aREA runtime validation.",
+  "refreshed_utc": "2026-10-26T02:01:51.919373+00:00",
+  "current_validation": {
+    "full_gate": {
+      "tests": 1593,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 5
+    },
+    "required_suites": 72,
+    "all_required_without_skips": true,
+    "raw_snapshot": "D:\\projects\\JLinAlg\\build\\literature-review\\plink-runtime\\configured-native-full-gate-1",
+    "prior_packaged_regressions": "D:\\projects\\JLinAlg\\build\\literature-review\\plink-runtime\\prior-packaged-regressions-1\\verification.json",
+    "original_trim_rechecks": "D:\\projects\\JLinAlg\\build\\literature-review\\plink-runtime\\original-trim-rechecks-1\\verification.json",
+    "scope": "This exact candidate was executed. All prior owned compiled method sources are unchanged and retested. Historical reference-generation/version scopes remain in their original fields and validation_history;no full-paper parity is inferred."
+  },
+  "verification_timeout_recovery": {
+    "previous_attempt": "D:\\projects\\JLinAlg\\build\\literature-review\\flash-runtime\\enrichment-timeout-attempt",
+    "new_watchdog_seconds": 600,
+    "changed_scope": "Outer Python verifier watchdog and timing records only;all37scientificcases,parameters andassertions unchanged. Complete retry passed;initial180second timeout remainsfailed evidence.",
+    "new_packaged_report": "D:\\projects\\JLinAlg\\build\\literature-review\\flash-packaged-regressions\\enrichment-packaged-validation.json"
+  },
+  "validation_history": [
+    {
+      "status": "passed-native-running-score-and-original-enrichment-subsets",
+      "jar_sha256": "5680cbc4e457007f8903d1d4db3e74ecc890a150b350870f0b82d5650bdc0fec",
+      "recorded_utc": "2026-10-25T14:18:39.170849+00:00",
+      "source_sha256": {
+        "src/main/java/org/jlinalg/enrichment/GseaStatistics.java": "bc8ac2fc81323bf3b78463e548b93bedf08aa8f7722b78871af11f6b4a71eab4",
+        "src/main/java/org/jlinalg/cli/EnrichmentToolsCli.java": "471106135c4f5efb06266cc3c19303f80d4ef368e584eda054ef8bb5fba02730",
+        "src/main/java/org/jlinalg/cli/EnrichmentRuntime.java": "a7a1a79033a5fe8ed4ccf857c2b1b3762464230aba5a95d9a1f0ea12c0dd4a03",
+        "src/main/java/org/jlinalg/cli/EnrichmentResultAudit.java": "180d7967caa09c35d40caf9db3047a5c1a2ddcb242ecf90ebc9ca547c41710db",
+        "src/main/resources/org/jlinalg/omics/enrichment_engines.R": "ad7fb763e4ccdb0be55583ebc98fb53d9cf57064ec5afd72d33eeda713841dde",
+        "src/main/resources/META-INF/NOTICE-enrichment.txt": "97cb2aa4187b23cab757dabd9e52dd31692ffa6a303ec6d9836e5d9234a670dc",
+        "src/main/resources/META-INF/LICENSE-fgsea.txt": "49aa8c7e841b32a4f0df55d2c40d8cf245797aea656064fde51bf115ad73a97e",
+        "src/test/java/org/jlinalg/enrichment/GseaStatisticsTest.java": "32dfcd38183477e2349922cfb3977d0aed43c5ae63e894a02e614a3675b09d91",
+        "src/test/java/org/jlinalg/cli/EnrichmentToolsCliTest.java": "3165709723ef74486a5b602e764bb733729b0cf1864c0e0032f0908c598a73b5",
+        "tools/literature/install_enrichment_dependencies.R": "c85523f5f33ae35997bc43da0d6c2fa48ae2975e3a4a7a0104cbd31f0b498e18",
+        "tools/literature/install_dose_legacy.R": "feacb003cc3301e753a544cd8b2ef33eb3f8f79aab26f624d0b01c9f0f678aae",
+        "tools/literature/test_enrichment_dependency_policy.py": "b3f68883bf2dc2e441f27f9f74b7110e1761867b4aee289a800231c4ce0515a7",
+        "tools/literature/generate_enrichment_references.R": "79fa684edfba8ddbc5a49d5079f995f8ef7153bb2213a9ced259044fc91108bd",
+        "tools/literature/verify_enrichment_workflows.py": "0873411a22c04b3ddb4660973e9003b3af4a1d46e6e1016c808aa9dbe43c0c9a",
+        "tools/literature/curate_enrichment_uses.py": "e481662aba71634617f54c5ff9bd267a4d3c47a8f41e66d33f77a0aad76fccfa",
+        "tools/literature/prepare_enrichment_workflow_inputs.py": "fcb8fd508a2137a95ec8143b7800c4f0a76a16bf38a3a8524ba5beda4672daf6",
+        "tools/literature/fixtures/enrichment/memberships.tsv": "9054092442aed9986bbb59fe7f4f7a185644252af8f72402c0c03109667de64a",
+        "tools/literature/fixtures/enrichment/names.tsv": "d215aeaa1cb68e9f61505c638b17155d0fb0944735fc79a1153dc61bb400015e",
+        "tools/literature/fixtures/enrichment/provenance.json": "6f4ab0df53892e01f1fcbf0164f517b6b39f67929152570551d234a7e59e5dd8",
+        "tools/literature/fixtures/enrichment/ranking.tsv": "9d2401f62385d882f5f1655c1e67a3f25313b8db27320951dd7b86d666f7edcb",
+        "tools/literature/fixtures/enrichment/selected.tsv": "5c50b20b35a3ce881cc1931566e40b542264146eafa04e1c8695eab80cae0dfb",
+        "tools/literature/fixtures/enrichment/universe.tsv": "b61bc4ab7e7f016bfe56a29bb7508a8fb72e9a770acd2e7098a872298acb1fac"
+      },
+      "current_full_gate_suites": {
+        "org.jlinalg.enrichment.GseaStatisticsTest": {
+          "suite_name": "org.jlinalg.enrichment.GseaStatisticsTest",
+          "suite": {
+            "tests": 7,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "04a18b9f740e7ce18053760ab951803a2a2f5e10427248b59bcf4b316f4d1710",
+          "testcases": [
+            "reusesValidatedWeightsWithoutMutableInputAliases()",
+            "matchesActualRAdjustmentFamiliesIncludingMissingValues()",
+            "independentlyChecksSignedExtremaLeadingEdgesAndZeroMass()",
+            "preservesInputsAndDefensivelyCopiesResults()",
+            "rejectsUndefinedRankingsInvalidMembersAndImpossibleTables()",
+            "matchesActualOriginalFgseaAndEnrichitArithmetic()",
+            "matchesOriginalRHypergeometricLogTails()"
+          ]
+        },
+        "org.jlinalg.cli.EnrichmentToolsCliTest": {
+          "suite_name": "org.jlinalg.cli.EnrichmentToolsCliTest",
+          "suite": {
+            "tests": 9,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "6735ffa8880c745489e3ec02b522d68c5b5d6905c7e5ffff61a79be67ea88f6e",
+          "testcases": [
+            "zeroOneTailedScoresRetainOriginalDirectionalCoreGenes()",
+            "emptyAndResourcePoliciesRetainDiagnosticsWithoutInventedInference()",
+            "nativeTsvRnkGmtAndNumericLookingIdentifiersNeedNoR()",
+            "tiesDuplicateMembershipAndZeroWeightsHaveExplicitProtocols()",
+            "missingDependencySkipsAndNamesRecoveryWithoutAResult()",
+            "originalOraPreservesLiteralIdsDescriptionsAndKnownTail()",
+            "helpAndInapplicableOptionsDoNotHideIgnoredParameters()",
+            "originalUnannotatedQueryRulesKeepEngineSpecificDenominators()",
+            "originalGseaRetainsDistinctBalancedScoresAndLegacyCoreDefinition()"
+          ]
+        }
+      },
+      "api_cli_tests": 16,
+      "original_reference_cases": {
+        "gsea": 768,
+        "hypergeometric": 94,
+        "adjustment": 35
+      },
+      "original_reference_provenance": {
+        "status": "passed-original-deterministic-arithmetic-reference-generation",
+        "r_version": "R version 4.6.1 (2026-06-24 ucrt)",
+        "fgsea": "1.38.0",
+        "enrichit": "0.2.6",
+        "gsea_cases": 768,
+        "ora_cases": 94,
+        "adjustment_cases": 35,
+        "generator_sha256": "79fa684edfba8ddbc5a49d5079f995f8ef7153bb2213a9ced259044fc91108bd",
+        "runtime_marker_sha256": "42d085c03b76a56333a2e92d80d2d980b273d56dce537f6f795720e2c6f6d16e",
+        "reference_sha256": {
+          "gsea.tsv": "3da3f7434ff75f9373d715ae6347d23c7649d6525771d5cc89836328508851f3",
+          "ora.tsv": "f3067a9981bb7cb44656399a26d6a772ed1a15e43ce9c8b4e835f9d29f3defbd",
+          "adjust.tsv": "ee4418100c50f9d6ab7f6c17f227164c6e767475bd6d94e64652d81391bd8190"
+        },
+        "warnings": [
+          "All values in the stats vector are greater than zero and scoreType is \"std\", maybe you should switch to scoreType = \"pos\".",
+          "There are ties in the preranked stats (44.44% of the list).\nThe order of those tied genes will be arbitrary, which may produce unexpected results."
+        ],
+        "scope": "Actual original fgsea::prepareStats/calcGseaStat,enrichit::gseaScores,stats::phyper and stats::p.adjust. Deterministic arithmetic only;no permutation P-values,NES,annotation or whole-paper equivalence inferred."
+      },
+      "original_inferential_api_calls": 29,
+      "native_score_mode_calls": 6,
+      "noninferential_empty_dependency_calls": 2,
+      "workflow_input_fixture_provenance": {
+        "schema": "jlinalg-enrichment-workflow-inputs-v1",
+        "scope": "Synthetic100gene/6set inputs used by original R and actual packaged workflows;no patient data. LF normalization changes no field or order.",
+        "genes": 100,
+        "sets": 6,
+        "memberships": 142,
+        "selected": 3,
+        "files": {
+          "ranking.tsv": "9d2401f62385d882f5f1655c1e67a3f25313b8db27320951dd7b86d666f7edcb",
+          "memberships.tsv": "9054092442aed9986bbb59fe7f4f7a185644252af8f72402c0c03109667de64a",
+          "names.tsv": "d215aeaa1cb68e9f61505c638b17155d0fb0944735fc79a1153dc61bb400015e",
+          "selected.tsv": "5c50b20b35a3ce881cc1931566e40b542264146eafa04e1c8695eab80cae0dfb",
+          "universe.tsv": "b61bc4ab7e7f016bfe56a29bb7508a8fb72e9a770acd2e7098a872298acb1fac"
+        },
+        "original_probe_input_sha256": {
+          "ranking.tsv": "e5e5bbad8d2027be55a11df72d827f2aa66f976a73904102438b2aa07fc7e736",
+          "memberships.tsv": "5926a97f21045c94ff8ceb619aaa449a2bee5b8f7cd9e796f324f143262e26e6",
+          "names.tsv": "a1b1b49e3a4a676ad33bc74a477b951bf5fc13c04248b7ae938ade8508c68151",
+          "selected.tsv": "da873419e55ca6f41127ef675be846fd6ff2ded42077de6280f62acc808f9d44",
+          "universe.tsv": "c9880029dcc4e0f4f9aed9181f101e598a19f8ab8407abc6833a6bac01bd17b1"
+        },
+        "definition": "gene001..gene100;stats50.25..-48.75 descendingstep1;top1..10,bottom91..100,mixed1,2,16..23,middle46..55,backgroundall,unmatchedoutside1/outside2;selected1..3;universeall100",
+        "known_ora": "top overlap3,set10,query3,universe100: P=120/161700;BH for3reportedterms=360/161700"
+      },
+      "fixture_preparation_validation": {
+        "status": "passed-synthetic-fixture-preparation;no-analysis",
+        "checks": 4,
+        "source_sha256": "fcb8fd508a2137a95ec8143b7800c4f0a76a16bf38a3a8524ba5beda4672daf6",
+        "steps": [
+          {
+            "command": [
+              "C:/Users/User/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+              "-X",
+              "utf8",
+              "D:\\projects\\JLinAlg\\tools\\literature\\prepare_enrichment_workflow_inputs.py",
+              "--destination",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\tmp44k9f2kg\\new"
+            ],
+            "exit_code": 0,
+            "expected": 0,
+            "stdout": "Synthetic workflow inputs prepared; no scientific analysis was run: D:\\projects\\JLinAlg\\build\\literature-review\\tmp44k9f2kg\\new\n",
+            "stderr": ""
+          },
+          {
+            "command": [
+              "C:/Users/User/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+              "-X",
+              "utf8",
+              "D:\\projects\\JLinAlg\\tools\\literature\\prepare_enrichment_workflow_inputs.py",
+              "--destination",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\tmp44k9f2kg\\new"
+            ],
+            "exit_code": 0,
+            "expected": 0,
+            "stdout": "Matching synthetic workflow inputs reused; existing bytes and outputs preserved: D:\\projects\\JLinAlg\\build\\literature-review\\tmp44k9f2kg\\new\n",
+            "stderr": ""
+          },
+          {
+            "command": [
+              "C:/Users/User/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+              "-X",
+              "utf8",
+              "D:\\projects\\JLinAlg\\tools\\literature\\prepare_enrichment_workflow_inputs.py",
+              "--destination",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\tmp44k9f2kg\\new"
+            ],
+            "exit_code": 2,
+            "expected": 2,
+            "stdout": "",
+            "stderr": "INPUT PREPARATION FAILED: Existing input is incomplete or changed: D:\\projects\\JLinAlg\\build\\literature-review\\tmp44k9f2kg\\new\\ranking.tsv; preserve it and select a NEW --destination\n"
+          },
+          {
+            "command": [
+              "C:/Users/User/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+              "-X",
+              "utf8",
+              "D:\\projects\\JLinAlg\\tools\\literature\\prepare_enrichment_workflow_inputs.py",
+              "--destination",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\enrichment-runtime\\original-clusterprofiler-probe"
+            ],
+            "exit_code": 0,
+            "expected": 0,
+            "stdout": "Matching synthetic workflow inputs reused; existing bytes and outputs preserved: D:\\projects\\JLinAlg\\build\\literature-review\\enrichment-runtime\\original-clusterprofiler-probe\n",
+            "stderr": ""
+          }
+        ],
+        "scope": "Fresh setup,reuse,changed-input refusal and unchanged real original probe inputs/outputs;not scientific tests."
+      },
+      "full_gate": {
+        "tests": 1461,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 5
+      },
+      "required_suites": 55,
+      "packaged_workflow_calls": 37,
+      "packaged_independent_checks": 11,
+      "scope": "Native score/log-tail/adjustment arithmetic and original clusterProfiler4.20.3/enrichit0.2.6,fgsea1.38 and explicitly separate legacyDOSE4.5generic ORA/GSEA. Exact ID/UTF8/rank/weight/count/core/family audits;seed/tail/algorithm/q/undefined/empty/missing dependency cases. No native NES/P simulation,phenotype-label permutations,online annotation,historical/full-paper parity or VIPER/aREA runtime validation."
+    },
+    {
+      "status": "passed-native-running-score-and-original-enrichment-subsets",
+      "jar_sha256": "c7e5fc6412ef02a82e409b43f344bff506f873ff5ebea92bc055d498ebda8dae",
+      "recorded_utc": "2026-10-25T14:18:39.170849+00:00",
+      "source_sha256": {
+        "src/main/java/org/jlinalg/enrichment/GseaStatistics.java": "bc8ac2fc81323bf3b78463e548b93bedf08aa8f7722b78871af11f6b4a71eab4",
+        "src/main/java/org/jlinalg/cli/EnrichmentToolsCli.java": "471106135c4f5efb06266cc3c19303f80d4ef368e584eda054ef8bb5fba02730",
+        "src/main/java/org/jlinalg/cli/EnrichmentRuntime.java": "a7a1a79033a5fe8ed4ccf857c2b1b3762464230aba5a95d9a1f0ea12c0dd4a03",
+        "src/main/java/org/jlinalg/cli/EnrichmentResultAudit.java": "180d7967caa09c35d40caf9db3047a5c1a2ddcb242ecf90ebc9ca547c41710db",
+        "src/main/resources/org/jlinalg/omics/enrichment_engines.R": "ad7fb763e4ccdb0be55583ebc98fb53d9cf57064ec5afd72d33eeda713841dde",
+        "src/main/resources/META-INF/NOTICE-enrichment.txt": "97cb2aa4187b23cab757dabd9e52dd31692ffa6a303ec6d9836e5d9234a670dc",
+        "src/main/resources/META-INF/LICENSE-fgsea.txt": "49aa8c7e841b32a4f0df55d2c40d8cf245797aea656064fde51bf115ad73a97e",
+        "src/test/java/org/jlinalg/enrichment/GseaStatisticsTest.java": "32dfcd38183477e2349922cfb3977d0aed43c5ae63e894a02e614a3675b09d91",
+        "src/test/java/org/jlinalg/cli/EnrichmentToolsCliTest.java": "3165709723ef74486a5b602e764bb733729b0cf1864c0e0032f0908c598a73b5",
+        "tools/literature/install_enrichment_dependencies.R": "c85523f5f33ae35997bc43da0d6c2fa48ae2975e3a4a7a0104cbd31f0b498e18",
+        "tools/literature/install_dose_legacy.R": "feacb003cc3301e753a544cd8b2ef33eb3f8f79aab26f624d0b01c9f0f678aae",
+        "tools/literature/test_enrichment_dependency_policy.py": "b3f68883bf2dc2e441f27f9f74b7110e1761867b4aee289a800231c4ce0515a7",
+        "tools/literature/generate_enrichment_references.R": "79fa684edfba8ddbc5a49d5079f995f8ef7153bb2213a9ced259044fc91108bd",
+        "tools/literature/verify_enrichment_workflows.py": "0873411a22c04b3ddb4660973e9003b3af4a1d46e6e1016c808aa9dbe43c0c9a",
+        "tools/literature/curate_enrichment_uses.py": "e481662aba71634617f54c5ff9bd267a4d3c47a8f41e66d33f77a0aad76fccfa",
+        "tools/literature/prepare_enrichment_workflow_inputs.py": "fcb8fd508a2137a95ec8143b7800c4f0a76a16bf38a3a8524ba5beda4672daf6",
+        "tools/literature/fixtures/enrichment/memberships.tsv": "9054092442aed9986bbb59fe7f4f7a185644252af8f72402c0c03109667de64a",
+        "tools/literature/fixtures/enrichment/names.tsv": "d215aeaa1cb68e9f61505c638b17155d0fb0944735fc79a1153dc61bb400015e",
+        "tools/literature/fixtures/enrichment/provenance.json": "6f4ab0df53892e01f1fcbf0164f517b6b39f67929152570551d234a7e59e5dd8",
+        "tools/literature/fixtures/enrichment/ranking.tsv": "9d2401f62385d882f5f1655c1e67a3f25313b8db27320951dd7b86d666f7edcb",
+        "tools/literature/fixtures/enrichment/selected.tsv": "5c50b20b35a3ce881cc1931566e40b542264146eafa04e1c8695eab80cae0dfb",
+        "tools/literature/fixtures/enrichment/universe.tsv": "b61bc4ab7e7f016bfe56a29bb7508a8fb72e9a770acd2e7098a872298acb1fac"
+      },
+      "current_full_gate_suites": {
+        "org.jlinalg.enrichment.GseaStatisticsTest": {
+          "suite_name": "org.jlinalg.enrichment.GseaStatisticsTest",
+          "suite": {
+            "tests": 7,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "7bcc7448a54d8b29d16b194a4a0921ef072137ebbf16b6aded2a79eca3ebf2ea",
+          "testcases": [
+            "reusesValidatedWeightsWithoutMutableInputAliases()",
+            "matchesActualRAdjustmentFamiliesIncludingMissingValues()",
+            "independentlyChecksSignedExtremaLeadingEdgesAndZeroMass()",
+            "preservesInputsAndDefensivelyCopiesResults()",
+            "rejectsUndefinedRankingsInvalidMembersAndImpossibleTables()",
+            "matchesActualOriginalFgseaAndEnrichitArithmetic()",
+            "matchesOriginalRHypergeometricLogTails()"
+          ]
+        },
+        "org.jlinalg.cli.EnrichmentToolsCliTest": {
+          "suite_name": "org.jlinalg.cli.EnrichmentToolsCliTest",
+          "suite": {
+            "tests": 9,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "a457bea43134f2fc389c8567c294ca028dcf5c51cddec89f7c01dc4121dc25fb",
+          "testcases": [
+            "zeroOneTailedScoresRetainOriginalDirectionalCoreGenes()",
+            "emptyAndResourcePoliciesRetainDiagnosticsWithoutInventedInference()",
+            "nativeTsvRnkGmtAndNumericLookingIdentifiersNeedNoR()",
+            "tiesDuplicateMembershipAndZeroWeightsHaveExplicitProtocols()",
+            "missingDependencySkipsAndNamesRecoveryWithoutAResult()",
+            "originalOraPreservesLiteralIdsDescriptionsAndKnownTail()",
+            "helpAndInapplicableOptionsDoNotHideIgnoredParameters()",
+            "originalUnannotatedQueryRulesKeepEngineSpecificDenominators()",
+            "originalGseaRetainsDistinctBalancedScoresAndLegacyCoreDefinition()"
+          ]
+        }
+      },
+      "api_cli_tests": 16,
+      "original_reference_cases": {
+        "gsea": 768,
+        "hypergeometric": 94,
+        "adjustment": 35
+      },
+      "original_reference_provenance": {
+        "status": "passed-original-deterministic-arithmetic-reference-generation",
+        "r_version": "R version 4.6.1 (2026-06-24 ucrt)",
+        "fgsea": "1.38.0",
+        "enrichit": "0.2.6",
+        "gsea_cases": 768,
+        "ora_cases": 94,
+        "adjustment_cases": 35,
+        "generator_sha256": "79fa684edfba8ddbc5a49d5079f995f8ef7153bb2213a9ced259044fc91108bd",
+        "runtime_marker_sha256": "42d085c03b76a56333a2e92d80d2d980b273d56dce537f6f795720e2c6f6d16e",
+        "reference_sha256": {
+          "gsea.tsv": "3da3f7434ff75f9373d715ae6347d23c7649d6525771d5cc89836328508851f3",
+          "ora.tsv": "f3067a9981bb7cb44656399a26d6a772ed1a15e43ce9c8b4e835f9d29f3defbd",
+          "adjust.tsv": "ee4418100c50f9d6ab7f6c17f227164c6e767475bd6d94e64652d81391bd8190"
+        },
+        "warnings": [
+          "All values in the stats vector are greater than zero and scoreType is \"std\", maybe you should switch to scoreType = \"pos\".",
+          "There are ties in the preranked stats (44.44% of the list).\nThe order of those tied genes will be arbitrary, which may produce unexpected results."
+        ],
+        "scope": "Actual original fgsea::prepareStats/calcGseaStat,enrichit::gseaScores,stats::phyper and stats::p.adjust. Deterministic arithmetic only;no permutation P-values,NES,annotation or whole-paper equivalence inferred."
+      },
+      "original_inferential_api_calls": 29,
+      "native_score_mode_calls": 6,
+      "noninferential_empty_dependency_calls": 2,
+      "workflow_input_fixture_provenance": {
+        "schema": "jlinalg-enrichment-workflow-inputs-v1",
+        "scope": "Synthetic100gene/6set inputs used by original R and actual packaged workflows;no patient data. LF normalization changes no field or order.",
+        "genes": 100,
+        "sets": 6,
+        "memberships": 142,
+        "selected": 3,
+        "files": {
+          "ranking.tsv": "9d2401f62385d882f5f1655c1e67a3f25313b8db27320951dd7b86d666f7edcb",
+          "memberships.tsv": "9054092442aed9986bbb59fe7f4f7a185644252af8f72402c0c03109667de64a",
+          "names.tsv": "d215aeaa1cb68e9f61505c638b17155d0fb0944735fc79a1153dc61bb400015e",
+          "selected.tsv": "5c50b20b35a3ce881cc1931566e40b542264146eafa04e1c8695eab80cae0dfb",
+          "universe.tsv": "b61bc4ab7e7f016bfe56a29bb7508a8fb72e9a770acd2e7098a872298acb1fac"
+        },
+        "original_probe_input_sha256": {
+          "ranking.tsv": "e5e5bbad8d2027be55a11df72d827f2aa66f976a73904102438b2aa07fc7e736",
+          "memberships.tsv": "5926a97f21045c94ff8ceb619aaa449a2bee5b8f7cd9e796f324f143262e26e6",
+          "names.tsv": "a1b1b49e3a4a676ad33bc74a477b951bf5fc13c04248b7ae938ade8508c68151",
+          "selected.tsv": "da873419e55ca6f41127ef675be846fd6ff2ded42077de6280f62acc808f9d44",
+          "universe.tsv": "c9880029dcc4e0f4f9aed9181f101e598a19f8ab8407abc6833a6bac01bd17b1"
+        },
+        "definition": "gene001..gene100;stats50.25..-48.75 descendingstep1;top1..10,bottom91..100,mixed1,2,16..23,middle46..55,backgroundall,unmatchedoutside1/outside2;selected1..3;universeall100",
+        "known_ora": "top overlap3,set10,query3,universe100: P=120/161700;BH for3reportedterms=360/161700"
+      },
+      "fixture_preparation_validation": {
+        "status": "passed-synthetic-fixture-preparation;no-analysis",
+        "checks": 4,
+        "source_sha256": "fcb8fd508a2137a95ec8143b7800c4f0a76a16bf38a3a8524ba5beda4672daf6",
+        "steps": [
+          {
+            "command": [
+              "C:/Users/User/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+              "-X",
+              "utf8",
+              "D:\\projects\\JLinAlg\\tools\\literature\\prepare_enrichment_workflow_inputs.py",
+              "--destination",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\tmp44k9f2kg\\new"
+            ],
+            "exit_code": 0,
+            "expected": 0,
+            "stdout": "Synthetic workflow inputs prepared; no scientific analysis was run: D:\\projects\\JLinAlg\\build\\literature-review\\tmp44k9f2kg\\new\n",
+            "stderr": ""
+          },
+          {
+            "command": [
+              "C:/Users/User/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+              "-X",
+              "utf8",
+              "D:\\projects\\JLinAlg\\tools\\literature\\prepare_enrichment_workflow_inputs.py",
+              "--destination",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\tmp44k9f2kg\\new"
+            ],
+            "exit_code": 0,
+            "expected": 0,
+            "stdout": "Matching synthetic workflow inputs reused; existing bytes and outputs preserved: D:\\projects\\JLinAlg\\build\\literature-review\\tmp44k9f2kg\\new\n",
+            "stderr": ""
+          },
+          {
+            "command": [
+              "C:/Users/User/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+              "-X",
+              "utf8",
+              "D:\\projects\\JLinAlg\\tools\\literature\\prepare_enrichment_workflow_inputs.py",
+              "--destination",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\tmp44k9f2kg\\new"
+            ],
+            "exit_code": 2,
+            "expected": 2,
+            "stdout": "",
+            "stderr": "INPUT PREPARATION FAILED: Existing input is incomplete or changed: D:\\projects\\JLinAlg\\build\\literature-review\\tmp44k9f2kg\\new\\ranking.tsv; preserve it and select a NEW --destination\n"
+          },
+          {
+            "command": [
+              "C:/Users/User/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+              "-X",
+              "utf8",
+              "D:\\projects\\JLinAlg\\tools\\literature\\prepare_enrichment_workflow_inputs.py",
+              "--destination",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\enrichment-runtime\\original-clusterprofiler-probe"
+            ],
+            "exit_code": 0,
+            "expected": 0,
+            "stdout": "Matching synthetic workflow inputs reused; existing bytes and outputs preserved: D:\\projects\\JLinAlg\\build\\literature-review\\enrichment-runtime\\original-clusterprofiler-probe\n",
+            "stderr": ""
+          }
+        ],
+        "scope": "Fresh setup,reuse,changed-input refusal and unchanged real original probe inputs/outputs;not scientific tests."
+      },
+      "full_gate": {
+        "tests": 1486,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 5
+      },
+      "required_suites": 59,
+      "packaged_workflow_calls": 37,
+      "packaged_independent_checks": 11,
+      "scope": "Native score/log-tail/adjustment arithmetic and original clusterProfiler4.20.3/enrichit0.2.6,fgsea1.38 and explicitly separate legacyDOSE4.5generic ORA/GSEA. Exact ID/UTF8/rank/weight/count/core/family audits;seed/tail/algorithm/q/undefined/empty/missing dependency cases. No native NES/P simulation,phenotype-label permutations,online annotation,historical/full-paper parity or VIPER/aREA runtime validation.",
+      "refreshed_utc": "2026-10-25T18:28:13.412726+00:00",
+      "current_validation": {
+        "full_gate": {
+          "tests": 1486,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 5
+        },
+        "required_suites": 59,
+        "all_required_without_skips": true,
+        "raw_snapshot": "D:\\projects\\JLinAlg\\build\\literature-review\\trimgalore-runtime\\original-warning-full-gate-snapshot",
+        "prior_packaged_regressions": "D:\\projects\\JLinAlg\\build\\literature-review\\trim-galore-warning-packaged-regressions\\verification.json",
+        "scope": "Current unchanged owned method sources retested on this JAR. Historical reference-generation counts/options remain scoped to their original fixtures;prior reports remain in validation_history."
+      }
+    },
+    {
+      "status": "passed-native-running-score-and-original-enrichment-subsets",
+      "jar_sha256": "2bfb8abfea10e53ce7b0e1035b0a7954feb9bed990d63578e817882a6d0541c0",
+      "recorded_utc": "2026-10-25T14:18:39.170849+00:00",
+      "source_sha256": {
+        "src/main/java/org/jlinalg/enrichment/GseaStatistics.java": "bc8ac2fc81323bf3b78463e548b93bedf08aa8f7722b78871af11f6b4a71eab4",
+        "src/main/java/org/jlinalg/cli/EnrichmentToolsCli.java": "471106135c4f5efb06266cc3c19303f80d4ef368e584eda054ef8bb5fba02730",
+        "src/main/java/org/jlinalg/cli/EnrichmentRuntime.java": "a7a1a79033a5fe8ed4ccf857c2b1b3762464230aba5a95d9a1f0ea12c0dd4a03",
+        "src/main/java/org/jlinalg/cli/EnrichmentResultAudit.java": "180d7967caa09c35d40caf9db3047a5c1a2ddcb242ecf90ebc9ca547c41710db",
+        "src/main/resources/org/jlinalg/omics/enrichment_engines.R": "ad7fb763e4ccdb0be55583ebc98fb53d9cf57064ec5afd72d33eeda713841dde",
+        "src/main/resources/META-INF/NOTICE-enrichment.txt": "97cb2aa4187b23cab757dabd9e52dd31692ffa6a303ec6d9836e5d9234a670dc",
+        "src/main/resources/META-INF/LICENSE-fgsea.txt": "49aa8c7e841b32a4f0df55d2c40d8cf245797aea656064fde51bf115ad73a97e",
+        "src/test/java/org/jlinalg/enrichment/GseaStatisticsTest.java": "32dfcd38183477e2349922cfb3977d0aed43c5ae63e894a02e614a3675b09d91",
+        "src/test/java/org/jlinalg/cli/EnrichmentToolsCliTest.java": "3165709723ef74486a5b602e764bb733729b0cf1864c0e0032f0908c598a73b5",
+        "tools/literature/install_enrichment_dependencies.R": "c85523f5f33ae35997bc43da0d6c2fa48ae2975e3a4a7a0104cbd31f0b498e18",
+        "tools/literature/install_dose_legacy.R": "feacb003cc3301e753a544cd8b2ef33eb3f8f79aab26f624d0b01c9f0f678aae",
+        "tools/literature/test_enrichment_dependency_policy.py": "b3f68883bf2dc2e441f27f9f74b7110e1761867b4aee289a800231c4ce0515a7",
+        "tools/literature/generate_enrichment_references.R": "79fa684edfba8ddbc5a49d5079f995f8ef7153bb2213a9ced259044fc91108bd",
+        "tools/literature/verify_enrichment_workflows.py": "d14d9c1b21b0bd39e21c8f3f68f2b78c42767de9a530d5a175d87558a42b24ee",
+        "tools/literature/curate_enrichment_uses.py": "e481662aba71634617f54c5ff9bd267a4d3c47a8f41e66d33f77a0aad76fccfa",
+        "tools/literature/prepare_enrichment_workflow_inputs.py": "fcb8fd508a2137a95ec8143b7800c4f0a76a16bf38a3a8524ba5beda4672daf6",
+        "tools/literature/fixtures/enrichment/memberships.tsv": "9054092442aed9986bbb59fe7f4f7a185644252af8f72402c0c03109667de64a",
+        "tools/literature/fixtures/enrichment/names.tsv": "d215aeaa1cb68e9f61505c638b17155d0fb0944735fc79a1153dc61bb400015e",
+        "tools/literature/fixtures/enrichment/provenance.json": "6f4ab0df53892e01f1fcbf0164f517b6b39f67929152570551d234a7e59e5dd8",
+        "tools/literature/fixtures/enrichment/ranking.tsv": "9d2401f62385d882f5f1655c1e67a3f25313b8db27320951dd7b86d666f7edcb",
+        "tools/literature/fixtures/enrichment/selected.tsv": "5c50b20b35a3ce881cc1931566e40b542264146eafa04e1c8695eab80cae0dfb",
+        "tools/literature/fixtures/enrichment/universe.tsv": "b61bc4ab7e7f016bfe56a29bb7508a8fb72e9a770acd2e7098a872298acb1fac"
+      },
+      "current_full_gate_suites": {
+        "org.jlinalg.enrichment.GseaStatisticsTest": {
+          "suite_name": "org.jlinalg.enrichment.GseaStatisticsTest",
+          "suite": {
+            "tests": 7,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "d6a593b8fcdb438f2a89b7de0d961df8f9da24675cee077981dcde2a2f04c413",
+          "testcases": [
+            "reusesValidatedWeightsWithoutMutableInputAliases()",
+            "matchesActualRAdjustmentFamiliesIncludingMissingValues()",
+            "independentlyChecksSignedExtremaLeadingEdgesAndZeroMass()",
+            "preservesInputsAndDefensivelyCopiesResults()",
+            "rejectsUndefinedRankingsInvalidMembersAndImpossibleTables()",
+            "matchesActualOriginalFgseaAndEnrichitArithmetic()",
+            "matchesOriginalRHypergeometricLogTails()"
+          ]
+        },
+        "org.jlinalg.cli.EnrichmentToolsCliTest": {
+          "suite_name": "org.jlinalg.cli.EnrichmentToolsCliTest",
+          "suite": {
+            "tests": 9,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "0053709cf45c13e74bf4de8d5b8f10240ff4d74ef51c0c75fcb7caaba6d57d0a",
+          "testcases": [
+            "zeroOneTailedScoresRetainOriginalDirectionalCoreGenes()",
+            "emptyAndResourcePoliciesRetainDiagnosticsWithoutInventedInference()",
+            "nativeTsvRnkGmtAndNumericLookingIdentifiersNeedNoR()",
+            "tiesDuplicateMembershipAndZeroWeightsHaveExplicitProtocols()",
+            "missingDependencySkipsAndNamesRecoveryWithoutAResult()",
+            "originalOraPreservesLiteralIdsDescriptionsAndKnownTail()",
+            "helpAndInapplicableOptionsDoNotHideIgnoredParameters()",
+            "originalUnannotatedQueryRulesKeepEngineSpecificDenominators()",
+            "originalGseaRetainsDistinctBalancedScoresAndLegacyCoreDefinition()"
+          ]
+        }
+      },
+      "api_cli_tests": 16,
+      "original_reference_cases": {
+        "gsea": 768,
+        "hypergeometric": 94,
+        "adjustment": 35
+      },
+      "original_reference_provenance": {
+        "status": "passed-original-deterministic-arithmetic-reference-generation",
+        "r_version": "R version 4.6.1 (2026-06-24 ucrt)",
+        "fgsea": "1.38.0",
+        "enrichit": "0.2.6",
+        "gsea_cases": 768,
+        "ora_cases": 94,
+        "adjustment_cases": 35,
+        "generator_sha256": "79fa684edfba8ddbc5a49d5079f995f8ef7153bb2213a9ced259044fc91108bd",
+        "runtime_marker_sha256": "42d085c03b76a56333a2e92d80d2d980b273d56dce537f6f795720e2c6f6d16e",
+        "reference_sha256": {
+          "gsea.tsv": "3da3f7434ff75f9373d715ae6347d23c7649d6525771d5cc89836328508851f3",
+          "ora.tsv": "f3067a9981bb7cb44656399a26d6a772ed1a15e43ce9c8b4e835f9d29f3defbd",
+          "adjust.tsv": "ee4418100c50f9d6ab7f6c17f227164c6e767475bd6d94e64652d81391bd8190"
+        },
+        "warnings": [
+          "All values in the stats vector are greater than zero and scoreType is \"std\", maybe you should switch to scoreType = \"pos\".",
+          "There are ties in the preranked stats (44.44% of the list).\nThe order of those tied genes will be arbitrary, which may produce unexpected results."
+        ],
+        "scope": "Actual original fgsea::prepareStats/calcGseaStat,enrichit::gseaScores,stats::phyper and stats::p.adjust. Deterministic arithmetic only;no permutation P-values,NES,annotation or whole-paper equivalence inferred."
+      },
+      "original_inferential_api_calls": 29,
+      "native_score_mode_calls": 6,
+      "noninferential_empty_dependency_calls": 2,
+      "workflow_input_fixture_provenance": {
+        "schema": "jlinalg-enrichment-workflow-inputs-v1",
+        "scope": "Synthetic100gene/6set inputs used by original R and actual packaged workflows;no patient data. LF normalization changes no field or order.",
+        "genes": 100,
+        "sets": 6,
+        "memberships": 142,
+        "selected": 3,
+        "files": {
+          "ranking.tsv": "9d2401f62385d882f5f1655c1e67a3f25313b8db27320951dd7b86d666f7edcb",
+          "memberships.tsv": "9054092442aed9986bbb59fe7f4f7a185644252af8f72402c0c03109667de64a",
+          "names.tsv": "d215aeaa1cb68e9f61505c638b17155d0fb0944735fc79a1153dc61bb400015e",
+          "selected.tsv": "5c50b20b35a3ce881cc1931566e40b542264146eafa04e1c8695eab80cae0dfb",
+          "universe.tsv": "b61bc4ab7e7f016bfe56a29bb7508a8fb72e9a770acd2e7098a872298acb1fac"
+        },
+        "original_probe_input_sha256": {
+          "ranking.tsv": "e5e5bbad8d2027be55a11df72d827f2aa66f976a73904102438b2aa07fc7e736",
+          "memberships.tsv": "5926a97f21045c94ff8ceb619aaa449a2bee5b8f7cd9e796f324f143262e26e6",
+          "names.tsv": "a1b1b49e3a4a676ad33bc74a477b951bf5fc13c04248b7ae938ade8508c68151",
+          "selected.tsv": "da873419e55ca6f41127ef675be846fd6ff2ded42077de6280f62acc808f9d44",
+          "universe.tsv": "c9880029dcc4e0f4f9aed9181f101e598a19f8ab8407abc6833a6bac01bd17b1"
+        },
+        "definition": "gene001..gene100;stats50.25..-48.75 descendingstep1;top1..10,bottom91..100,mixed1,2,16..23,middle46..55,backgroundall,unmatchedoutside1/outside2;selected1..3;universeall100",
+        "known_ora": "top overlap3,set10,query3,universe100: P=120/161700;BH for3reportedterms=360/161700"
+      },
+      "fixture_preparation_validation": {
+        "status": "passed-synthetic-fixture-preparation;no-analysis",
+        "checks": 4,
+        "source_sha256": "fcb8fd508a2137a95ec8143b7800c4f0a76a16bf38a3a8524ba5beda4672daf6",
+        "steps": [
+          {
+            "command": [
+              "C:/Users/User/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+              "-X",
+              "utf8",
+              "D:\\projects\\JLinAlg\\tools\\literature\\prepare_enrichment_workflow_inputs.py",
+              "--destination",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\tmp44k9f2kg\\new"
+            ],
+            "exit_code": 0,
+            "expected": 0,
+            "stdout": "Synthetic workflow inputs prepared; no scientific analysis was run: D:\\projects\\JLinAlg\\build\\literature-review\\tmp44k9f2kg\\new\n",
+            "stderr": ""
+          },
+          {
+            "command": [
+              "C:/Users/User/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+              "-X",
+              "utf8",
+              "D:\\projects\\JLinAlg\\tools\\literature\\prepare_enrichment_workflow_inputs.py",
+              "--destination",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\tmp44k9f2kg\\new"
+            ],
+            "exit_code": 0,
+            "expected": 0,
+            "stdout": "Matching synthetic workflow inputs reused; existing bytes and outputs preserved: D:\\projects\\JLinAlg\\build\\literature-review\\tmp44k9f2kg\\new\n",
+            "stderr": ""
+          },
+          {
+            "command": [
+              "C:/Users/User/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+              "-X",
+              "utf8",
+              "D:\\projects\\JLinAlg\\tools\\literature\\prepare_enrichment_workflow_inputs.py",
+              "--destination",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\tmp44k9f2kg\\new"
+            ],
+            "exit_code": 2,
+            "expected": 2,
+            "stdout": "",
+            "stderr": "INPUT PREPARATION FAILED: Existing input is incomplete or changed: D:\\projects\\JLinAlg\\build\\literature-review\\tmp44k9f2kg\\new\\ranking.tsv; preserve it and select a NEW --destination\n"
+          },
+          {
+            "command": [
+              "C:/Users/User/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+              "-X",
+              "utf8",
+              "D:\\projects\\JLinAlg\\tools\\literature\\prepare_enrichment_workflow_inputs.py",
+              "--destination",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\enrichment-runtime\\original-clusterprofiler-probe"
+            ],
+            "exit_code": 0,
+            "expected": 0,
+            "stdout": "Matching synthetic workflow inputs reused; existing bytes and outputs preserved: D:\\projects\\JLinAlg\\build\\literature-review\\enrichment-runtime\\original-clusterprofiler-probe\n",
+            "stderr": ""
+          }
+        ],
+        "scope": "Fresh setup,reuse,changed-input refusal and unchanged real original probe inputs/outputs;not scientific tests."
+      },
+      "full_gate": {
+        "tests": 1504,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 5
+      },
+      "required_suites": 61,
+      "packaged_workflow_calls": 37,
+      "packaged_independent_checks": 11,
+      "scope": "Native score/log-tail/adjustment arithmetic and original clusterProfiler4.20.3/enrichit0.2.6,fgsea1.38 and explicitly separate legacyDOSE4.5generic ORA/GSEA. Exact ID/UTF8/rank/weight/count/core/family audits;seed/tail/algorithm/q/undefined/empty/missing dependency cases. No native NES/P simulation,phenotype-label permutations,online annotation,historical/full-paper parity or VIPER/aREA runtime validation.",
+      "refreshed_utc": "2026-10-25T20:32:57.454823+00:00",
+      "current_validation": {
+        "full_gate": {
+          "tests": 1504,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 5
+        },
+        "required_suites": 61,
+        "all_required_without_skips": true,
+        "raw_snapshot": "D:\\projects\\JLinAlg\\build\\literature-review\\flash-runtime\\full-gate-2-snapshot",
+        "prior_packaged_regressions": "D:\\projects\\JLinAlg\\build\\literature-review\\flash-packaged-regressions\\verification.json",
+        "scope": "Current unchanged owned method sources retested on this JAR. Historical reference-generation counts/options remain scoped to their original fixtures;prior reports remain in validation_history."
+      },
+      "verification_timeout_recovery": {
+        "previous_attempt": "D:\\projects\\JLinAlg\\build\\literature-review\\flash-runtime\\enrichment-timeout-attempt",
+        "new_watchdog_seconds": 600,
+        "changed_scope": "Outer Python verifier watchdog and timing records only;all37scientificcases,parameters andassertions unchanged. Complete retry passed;initial180second timeout remainsfailed evidence.",
+        "new_packaged_report": "D:\\projects\\JLinAlg\\build\\literature-review\\flash-packaged-regressions\\enrichment-packaged-validation.json"
+      }
+    },
+    {
+      "status": "passed-native-running-score-and-original-enrichment-subsets",
+      "jar_sha256": "66be181d854806d9ae64d6f060e8defba8af5bdf594d3d352c9c76097a2a8d2e",
+      "recorded_utc": "2026-10-25T14:18:39.170849+00:00",
+      "source_sha256": {
+        "src/main/java/org/jlinalg/enrichment/GseaStatistics.java": "bc8ac2fc81323bf3b78463e548b93bedf08aa8f7722b78871af11f6b4a71eab4",
+        "src/main/java/org/jlinalg/cli/EnrichmentToolsCli.java": "471106135c4f5efb06266cc3c19303f80d4ef368e584eda054ef8bb5fba02730",
+        "src/main/java/org/jlinalg/cli/EnrichmentRuntime.java": "a7a1a79033a5fe8ed4ccf857c2b1b3762464230aba5a95d9a1f0ea12c0dd4a03",
+        "src/main/java/org/jlinalg/cli/EnrichmentResultAudit.java": "180d7967caa09c35d40caf9db3047a5c1a2ddcb242ecf90ebc9ca547c41710db",
+        "src/main/resources/org/jlinalg/omics/enrichment_engines.R": "ad7fb763e4ccdb0be55583ebc98fb53d9cf57064ec5afd72d33eeda713841dde",
+        "src/main/resources/META-INF/NOTICE-enrichment.txt": "97cb2aa4187b23cab757dabd9e52dd31692ffa6a303ec6d9836e5d9234a670dc",
+        "src/main/resources/META-INF/LICENSE-fgsea.txt": "49aa8c7e841b32a4f0df55d2c40d8cf245797aea656064fde51bf115ad73a97e",
+        "src/test/java/org/jlinalg/enrichment/GseaStatisticsTest.java": "32dfcd38183477e2349922cfb3977d0aed43c5ae63e894a02e614a3675b09d91",
+        "src/test/java/org/jlinalg/cli/EnrichmentToolsCliTest.java": "3165709723ef74486a5b602e764bb733729b0cf1864c0e0032f0908c598a73b5",
+        "tools/literature/install_enrichment_dependencies.R": "c85523f5f33ae35997bc43da0d6c2fa48ae2975e3a4a7a0104cbd31f0b498e18",
+        "tools/literature/install_dose_legacy.R": "feacb003cc3301e753a544cd8b2ef33eb3f8f79aab26f624d0b01c9f0f678aae",
+        "tools/literature/test_enrichment_dependency_policy.py": "b3f68883bf2dc2e441f27f9f74b7110e1761867b4aee289a800231c4ce0515a7",
+        "tools/literature/generate_enrichment_references.R": "79fa684edfba8ddbc5a49d5079f995f8ef7153bb2213a9ced259044fc91108bd",
+        "tools/literature/verify_enrichment_workflows.py": "d14d9c1b21b0bd39e21c8f3f68f2b78c42767de9a530d5a175d87558a42b24ee",
+        "tools/literature/curate_enrichment_uses.py": "e481662aba71634617f54c5ff9bd267a4d3c47a8f41e66d33f77a0aad76fccfa",
+        "tools/literature/prepare_enrichment_workflow_inputs.py": "fcb8fd508a2137a95ec8143b7800c4f0a76a16bf38a3a8524ba5beda4672daf6",
+        "tools/literature/fixtures/enrichment/memberships.tsv": "9054092442aed9986bbb59fe7f4f7a185644252af8f72402c0c03109667de64a",
+        "tools/literature/fixtures/enrichment/names.tsv": "d215aeaa1cb68e9f61505c638b17155d0fb0944735fc79a1153dc61bb400015e",
+        "tools/literature/fixtures/enrichment/provenance.json": "6f4ab0df53892e01f1fcbf0164f517b6b39f67929152570551d234a7e59e5dd8",
+        "tools/literature/fixtures/enrichment/ranking.tsv": "9d2401f62385d882f5f1655c1e67a3f25313b8db27320951dd7b86d666f7edcb",
+        "tools/literature/fixtures/enrichment/selected.tsv": "5c50b20b35a3ce881cc1931566e40b542264146eafa04e1c8695eab80cae0dfb",
+        "tools/literature/fixtures/enrichment/universe.tsv": "b61bc4ab7e7f016bfe56a29bb7508a8fb72e9a770acd2e7098a872298acb1fac"
+      },
+      "current_full_gate_suites": {
+        "org.jlinalg.enrichment.GseaStatisticsTest": {
+          "suite_name": "org.jlinalg.enrichment.GseaStatisticsTest",
+          "suite": {
+            "tests": 7,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "acfc115f79db839959f78048901ae9c50f5ce32a0e22c3209b150d267e9b466c",
+          "testcases": [
+            "reusesValidatedWeightsWithoutMutableInputAliases()",
+            "matchesActualRAdjustmentFamiliesIncludingMissingValues()",
+            "independentlyChecksSignedExtremaLeadingEdgesAndZeroMass()",
+            "preservesInputsAndDefensivelyCopiesResults()",
+            "rejectsUndefinedRankingsInvalidMembersAndImpossibleTables()",
+            "matchesActualOriginalFgseaAndEnrichitArithmetic()",
+            "matchesOriginalRHypergeometricLogTails()"
+          ]
+        },
+        "org.jlinalg.cli.EnrichmentToolsCliTest": {
+          "suite_name": "org.jlinalg.cli.EnrichmentToolsCliTest",
+          "suite": {
+            "tests": 9,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "8234cc92d563d3d958505e72988eece16347279f9ebe13f5e7f7c6f28b1fdd98",
+          "testcases": [
+            "zeroOneTailedScoresRetainOriginalDirectionalCoreGenes()",
+            "emptyAndResourcePoliciesRetainDiagnosticsWithoutInventedInference()",
+            "nativeTsvRnkGmtAndNumericLookingIdentifiersNeedNoR()",
+            "tiesDuplicateMembershipAndZeroWeightsHaveExplicitProtocols()",
+            "missingDependencySkipsAndNamesRecoveryWithoutAResult()",
+            "originalOraPreservesLiteralIdsDescriptionsAndKnownTail()",
+            "helpAndInapplicableOptionsDoNotHideIgnoredParameters()",
+            "originalUnannotatedQueryRulesKeepEngineSpecificDenominators()",
+            "originalGseaRetainsDistinctBalancedScoresAndLegacyCoreDefinition()"
+          ]
+        }
+      },
+      "api_cli_tests": 16,
+      "original_reference_cases": {
+        "gsea": 768,
+        "hypergeometric": 94,
+        "adjustment": 35
+      },
+      "original_reference_provenance": {
+        "status": "passed-original-deterministic-arithmetic-reference-generation",
+        "r_version": "R version 4.6.1 (2026-06-24 ucrt)",
+        "fgsea": "1.38.0",
+        "enrichit": "0.2.6",
+        "gsea_cases": 768,
+        "ora_cases": 94,
+        "adjustment_cases": 35,
+        "generator_sha256": "79fa684edfba8ddbc5a49d5079f995f8ef7153bb2213a9ced259044fc91108bd",
+        "runtime_marker_sha256": "42d085c03b76a56333a2e92d80d2d980b273d56dce537f6f795720e2c6f6d16e",
+        "reference_sha256": {
+          "gsea.tsv": "3da3f7434ff75f9373d715ae6347d23c7649d6525771d5cc89836328508851f3",
+          "ora.tsv": "f3067a9981bb7cb44656399a26d6a772ed1a15e43ce9c8b4e835f9d29f3defbd",
+          "adjust.tsv": "ee4418100c50f9d6ab7f6c17f227164c6e767475bd6d94e64652d81391bd8190"
+        },
+        "warnings": [
+          "All values in the stats vector are greater than zero and scoreType is \"std\", maybe you should switch to scoreType = \"pos\".",
+          "There are ties in the preranked stats (44.44% of the list).\nThe order of those tied genes will be arbitrary, which may produce unexpected results."
+        ],
+        "scope": "Actual original fgsea::prepareStats/calcGseaStat,enrichit::gseaScores,stats::phyper and stats::p.adjust. Deterministic arithmetic only;no permutation P-values,NES,annotation or whole-paper equivalence inferred."
+      },
+      "original_inferential_api_calls": 29,
+      "native_score_mode_calls": 6,
+      "noninferential_empty_dependency_calls": 2,
+      "workflow_input_fixture_provenance": {
+        "schema": "jlinalg-enrichment-workflow-inputs-v1",
+        "scope": "Synthetic100gene/6set inputs used by original R and actual packaged workflows;no patient data. LF normalization changes no field or order.",
+        "genes": 100,
+        "sets": 6,
+        "memberships": 142,
+        "selected": 3,
+        "files": {
+          "ranking.tsv": "9d2401f62385d882f5f1655c1e67a3f25313b8db27320951dd7b86d666f7edcb",
+          "memberships.tsv": "9054092442aed9986bbb59fe7f4f7a185644252af8f72402c0c03109667de64a",
+          "names.tsv": "d215aeaa1cb68e9f61505c638b17155d0fb0944735fc79a1153dc61bb400015e",
+          "selected.tsv": "5c50b20b35a3ce881cc1931566e40b542264146eafa04e1c8695eab80cae0dfb",
+          "universe.tsv": "b61bc4ab7e7f016bfe56a29bb7508a8fb72e9a770acd2e7098a872298acb1fac"
+        },
+        "original_probe_input_sha256": {
+          "ranking.tsv": "e5e5bbad8d2027be55a11df72d827f2aa66f976a73904102438b2aa07fc7e736",
+          "memberships.tsv": "5926a97f21045c94ff8ceb619aaa449a2bee5b8f7cd9e796f324f143262e26e6",
+          "names.tsv": "a1b1b49e3a4a676ad33bc74a477b951bf5fc13c04248b7ae938ade8508c68151",
+          "selected.tsv": "da873419e55ca6f41127ef675be846fd6ff2ded42077de6280f62acc808f9d44",
+          "universe.tsv": "c9880029dcc4e0f4f9aed9181f101e598a19f8ab8407abc6833a6bac01bd17b1"
+        },
+        "definition": "gene001..gene100;stats50.25..-48.75 descendingstep1;top1..10,bottom91..100,mixed1,2,16..23,middle46..55,backgroundall,unmatchedoutside1/outside2;selected1..3;universeall100",
+        "known_ora": "top overlap3,set10,query3,universe100: P=120/161700;BH for3reportedterms=360/161700"
+      },
+      "fixture_preparation_validation": {
+        "status": "passed-synthetic-fixture-preparation;no-analysis",
+        "checks": 4,
+        "source_sha256": "fcb8fd508a2137a95ec8143b7800c4f0a76a16bf38a3a8524ba5beda4672daf6",
+        "steps": [
+          {
+            "command": [
+              "C:/Users/User/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+              "-X",
+              "utf8",
+              "D:\\projects\\JLinAlg\\tools\\literature\\prepare_enrichment_workflow_inputs.py",
+              "--destination",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\tmp44k9f2kg\\new"
+            ],
+            "exit_code": 0,
+            "expected": 0,
+            "stdout": "Synthetic workflow inputs prepared; no scientific analysis was run: D:\\projects\\JLinAlg\\build\\literature-review\\tmp44k9f2kg\\new\n",
+            "stderr": ""
+          },
+          {
+            "command": [
+              "C:/Users/User/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+              "-X",
+              "utf8",
+              "D:\\projects\\JLinAlg\\tools\\literature\\prepare_enrichment_workflow_inputs.py",
+              "--destination",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\tmp44k9f2kg\\new"
+            ],
+            "exit_code": 0,
+            "expected": 0,
+            "stdout": "Matching synthetic workflow inputs reused; existing bytes and outputs preserved: D:\\projects\\JLinAlg\\build\\literature-review\\tmp44k9f2kg\\new\n",
+            "stderr": ""
+          },
+          {
+            "command": [
+              "C:/Users/User/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+              "-X",
+              "utf8",
+              "D:\\projects\\JLinAlg\\tools\\literature\\prepare_enrichment_workflow_inputs.py",
+              "--destination",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\tmp44k9f2kg\\new"
+            ],
+            "exit_code": 2,
+            "expected": 2,
+            "stdout": "",
+            "stderr": "INPUT PREPARATION FAILED: Existing input is incomplete or changed: D:\\projects\\JLinAlg\\build\\literature-review\\tmp44k9f2kg\\new\\ranking.tsv; preserve it and select a NEW --destination\n"
+          },
+          {
+            "command": [
+              "C:/Users/User/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+              "-X",
+              "utf8",
+              "D:\\projects\\JLinAlg\\tools\\literature\\prepare_enrichment_workflow_inputs.py",
+              "--destination",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\enrichment-runtime\\original-clusterprofiler-probe"
+            ],
+            "exit_code": 0,
+            "expected": 0,
+            "stdout": "Matching synthetic workflow inputs reused; existing bytes and outputs preserved: D:\\projects\\JLinAlg\\build\\literature-review\\enrichment-runtime\\original-clusterprofiler-probe\n",
+            "stderr": ""
+          }
+        ],
+        "scope": "Fresh setup,reuse,changed-input refusal and unchanged real original probe inputs/outputs;not scientific tests."
+      },
+      "full_gate": {
+        "tests": 1552,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 5
+      },
+      "required_suites": 68,
+      "packaged_workflow_calls": 37,
+      "packaged_independent_checks": 11,
+      "scope": "Native score/log-tail/adjustment arithmetic and original clusterProfiler4.20.3/enrichit0.2.6,fgsea1.38 and explicitly separate legacyDOSE4.5generic ORA/GSEA. Exact ID/UTF8/rank/weight/count/core/family audits;seed/tail/algorithm/q/undefined/empty/missing dependency cases. No native NES/P simulation,phenotype-label permutations,online annotation,historical/full-paper parity or VIPER/aREA runtime validation.",
+      "refreshed_utc": "2026-10-25T23:24:57.944602+00:00",
+      "current_validation": {
+        "full_gate": {
+          "tests": 1552,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 5
+        },
+        "required_suites": 68,
+        "all_required_without_skips": true,
+        "raw_snapshot": "D:\\projects\\JLinAlg\\build\\literature-review\\fimo-runtime\\configured-full-gate-1",
+        "prior_packaged_regressions": "D:\\projects\\JLinAlg\\build\\literature-review\\fimo-runtime\\prior-packaged-regressions-1\\verification.json",
+        "scope": "Current unchanged owned method sources retested on this JAR. Historical reference-generation counts/options remain scoped to their original fixtures;prior reports remain in validation_history."
+      },
+      "verification_timeout_recovery": {
+        "previous_attempt": "D:\\projects\\JLinAlg\\build\\literature-review\\flash-runtime\\enrichment-timeout-attempt",
+        "new_watchdog_seconds": 600,
+        "changed_scope": "Outer Python verifier watchdog and timing records only;all37scientificcases,parameters andassertions unchanged. Complete retry passed;initial180second timeout remainsfailed evidence.",
+        "new_packaged_report": "D:\\projects\\JLinAlg\\build\\literature-review\\flash-packaged-regressions\\enrichment-packaged-validation.json"
+      }
+    }
+  ]
+}

@@ -33,9 +33,12 @@ final class StudyBioinformatics implements StudyOperationExecutor {
     static final String UCSC = "https://genome.ucsc.edu/goldenPath/help/api.html";
     static final String LITERATURE = "https://europepmc.org/RestfulWebService";
     private final StudyPublicEvidence client;
+    private final StudyAssistance assistance;
     private final Set<String> excerptedArticles = new LinkedHashSet<>();
+    private StudyLiteratureReuse suppliedLiterature;
     StudyBioinformatics() { this(new StudyPublicEvidence()); }
-    StudyBioinformatics(StudyPublicEvidence client) { this.client = client; }
+    StudyBioinformatics(StudyPublicEvidence client) { this(client,new StudyAssistance()); }
+    StudyBioinformatics(StudyPublicEvidence client,StudyAssistance assistance) { this.client = client; this.assistance=assistance; }
 
     @Override public Result execute(Context context) throws IOException {
         Files.createDirectories(context.outputDirectory());
@@ -44,10 +47,18 @@ final class StudyBioinformatics implements StudyOperationExecutor {
         Map<String, Object> hypothesis = hypothesis(context);
         Map<String, Object> config = config(context);
         String operation = text(context.operation().get("type"));
-        List<Feature> features = features(context);
+        boolean literature = operation.equals("literature_search");
+        suppliedLiterature=literature?StudyLiteratureReuse.load(context):null;
+        if(suppliedLiterature!=null){evidence.addAll(suppliedLiterature.bibliography());for(String problem:suppliedLiterature.needs())needs.add(review(context,"supplied-literature","Resolve the supplied literature receipt",problem));}
+        List<Feature> literatureInventory = literature ? features(context, Integer.MAX_VALUE, true) : List.of();
+        StudyLiteraturePriority.Selection priority=literature?new StudyLiteraturePriority(assistance).select(context,literatureInventory,literatureFeatureLimit(context)):null;
+        List<Feature> features = literature ? priority.features() : features(context);
+        if(priority!=null&&!priority.need().isBlank())needs.add(review(context,"literature-priority","Resolve provisional literature prioritization",priority.need()));
         Map<String, String> termOrigins = phenotypeTerms(context, hypothesis, config,
             operation.equals("source_discovery"));
         List<String> terms = new ArrayList<>(termOrigins.keySet());
+        boolean rareSelectionUnavailable=Set.of("literature_search","bioinformatics_investigation").contains(operation)&&StudyRareFollowup.planned(context)&&StudyRareFollowup.view(context)==null&&(!text(config.getOrDefault("feature_source","auto")).equals("association"))&&(literature||text(config.getOrDefault("feature_source","auto")).equals("rare_sets")||StudyPrimaryResults.official(context)==null);
+        if(rareSelectionUnavailable){needs.add(review(context,"rare-set-source","Resolve the rare-set primary family and gene mappings","A planned rare-set follow-up source is incomplete or unavailable; no eligible/negative gene conclusion can be drawn from its absence."));evidence.add(Map.of("kind","rare_set_selection","status","source_family_unavailable","reason","Await the verified primary rare-set projection; independent field/method retrieval may continue."));}
         if (operation.equals("source_discovery")) {
             String taxon = species(context);
             if (!taxon.equals("9606")) {
@@ -91,7 +102,9 @@ final class StudyBioinformatics implements StudyOperationExecutor {
             for (Feature feature : features) if (!feature.symbol().isBlank())
                 for (String term : terms) literature(context, feature, term, evidence);
         } else throw new IllegalArgumentException("Unsupported bioinformatics operation: " + operation);
-        if (features.isEmpty() && !operation.equals("source_discovery")) {
+        if(literature&&Files.isRegularFile(context.outputDirectory().resolve("literature-source-unavailable.yaml")))needs.add(review(context,"incomplete-association-source","Resolve the unavailable association source","Separately complete rare-set literature retrieval is retained, but the association-source primary family remains unavailable; no negative result or replacement primary was inferred."));
+        if(literature&&Files.isRegularFile(context.outputDirectory().resolve("literature-source-conflicts.tsv")))needs.add(review(context,"conflicting-source-genes","Resolve conflicting gene identities across result sources","Inspect literature-source-conflicts.tsv. Other source-linked genes remain searchable; an identifier collision cannot authorize a guessed gene."));
+        if (features.isEmpty() && !operation.equals("source_discovery") && !rareSelectionUnavailable && (priority==null||priority.need().isBlank())) {
             evidence.add(Map.of("status", "no_eligible_features", "reason",
                 "No unambiguously annotated feature passed the full-family BH threshold in an available primary/meta table. No arbitrary top hit is called significant."));
         }
@@ -111,8 +124,9 @@ final class StudyBioinformatics implements StudyOperationExecutor {
         Map<String, Object> summary = new LinkedHashMap<>();
         summary.put("schema_version", 1);
         summary.put("hypothesis", context.operation().get("hypothesis"));
-        summary.put("selection", "BH across every valid tested feature per primary table, or the full meta table; deterministic p-value ordering. Selection is exploratory and not independent validation.");
-        summary.put("feature_limit", integer(config, "max_features", 10, 1, 100));
+        summary.put("selection", "Registered full-source correction and complete primary family; rare-set eligibility preserves original joint set/mask/test adjustment and does not estimate a combined gene-level FDR. Retrieval allocation is separate from statistical eligibility, scientific appraisal and independent validation.");
+        if(priority!=null)summary.put("provisional_literature_priority",priority.report());
+        summary.put("feature_limit", literature ? literatureFeatureLimit(context) : featureLimit(context));
         summary.put("features_selected", features.stream().map(Feature::document).toList());
         summary.put("phenotype_search_terms", termOrigins.entrySet().stream()
             .map(entry -> Map.of("phenotype", entry.getKey(), "origin", entry.getValue())).toList());
@@ -124,6 +138,11 @@ final class StudyBioinformatics implements StudyOperationExecutor {
         String name = operation.replace('_', '-') + ".yaml";
         List<String> outputs = new ArrayList<>(List.of(name));
         if (operation.equals("literature_search")) {
+            outputs.add("literature-priority/selection.yaml");
+            summary.put("supplied_search_reuse",suppliedLiterature.report());
+            write(context.outputDirectory().resolve("literature-reuse.yaml"),suppliedLiterature.report());outputs.add("literature-reuse.yaml");
+            summary.put("literature_selection", literatureInventory(context, literatureInventory, features, evidence,priority));
+            outputs.add("literature-selection.tsv");
             Map<String, Object> catalog = StudyReferenceCatalog.build(evidence);
             summary.put("reference_catalog", catalog);
             write(context.outputDirectory().resolve("reference-catalog.yaml"), catalog);
@@ -421,6 +440,7 @@ final class StudyBioinformatics implements StudyOperationExecutor {
     private void literatureQueries(Context context, String featureId, String symbol, String term,
             Map<String, String> strategies, List<Object> out, Map<String, Object> scope) throws IOException {
         for (Map.Entry<String, String> strategy : strategies.entrySet()) {
+            if(suppliedLiterature!=null){var reused=suppliedLiterature.take(featureId,symbol,term,strategy.getKey(),strategy.getValue(),scope);if(!reused.isEmpty()){out.add(reused);continue;}}
             String cursor = "*";
             int pages = integer(config(context), "max_pages", 3, 1, 20);
             long seen = 0;
@@ -550,6 +570,55 @@ final class StudyBioinformatics implements StudyOperationExecutor {
         return integer(config(context), "max_features", 10, 1, 100);
     }
 
+    static int literatureFeatureLimit(Context context) {
+        var settings = config(context);
+        // Preserve an existing explicitly bounded contextual contract unless a
+        // dedicated literature budget overrides it. Unconfigured studies use 100.
+        int legacy = settings.containsKey("max_features") ? featureLimit(context) : 100;
+        return integer(settings, "literature_max_features", legacy, 1, 100);
+    }
+
+    static int literatureQueryLimit(Context context) {
+        return integer(config(context), "literature_max_queries", 1000, 1, 10000);
+    }
+
+    private static Map<String, Object> literatureInventory(Context context, List<Feature> inventory, List<Feature> selected, List<Object> evidence,StudyLiteraturePriority.Selection priority) throws IOException {
+        Set<String> chosen = new LinkedHashSet<>(selected.stream().map(Feature::id).toList());
+        boolean pending=priority!=null&&!priority.need().isBlank();String basis=priority==null?"source_p_value":text(priority.report().get("mode"));
+        Map<String,Integer> reviewRanks=new LinkedHashMap<>();for(int i=0;i<selected.size();i++)reviewRanks.put(selected.get(i).id(),i+1);
+        List<String[]> rows = new ArrayList<>(); int rank = 0;
+        for (Feature feature : inventory) {
+            List<Map<String, Object>> records = evidence.stream().map(StudyPublicEvidence::map)
+                .filter(row -> feature.id().equals(row.get("feature_id")) && "literature".equals(row.get("kind"))).toList();
+            boolean bounded = records.stream().anyMatch(row -> Boolean.TRUE.equals(row.get("search_limited")));
+            boolean failed = records.stream().anyMatch(row -> !StudySuppliedLiterature.completed(row));
+            long suppliedRecords=records.stream().filter(row->"externally_produced".equals(row.get("execution_origin"))).count();
+            String status = pending ? "provisional_priority_pending" : !chosen.contains(feature.id()) ? "outside_review_budget"
+                : !safeSymbol(feature.symbol()) ? "annotation_required"
+                : records.isEmpty() || failed ? "retrieval_incomplete"
+                : bounded ? "bounded_search_limited_unreviewed"
+                : records.stream().allMatch(row -> Set.of("no_matches","supplied_no_matches").contains(row.get("status"))) ? "bounded_search_no_matches" : "sources_retrieved_unreviewed";
+            if(!records.isEmpty()&&suppliedRecords==records.size()&&!failed&&!bounded)status=status.equals("bounded_search_no_matches")?"source_reported_search_no_matches":"source_reported_candidates_unreviewed";
+            rows.add(new String[] {Integer.toString(++rank), feature.id(), feature.symbol(), feature.gene(), stringNumber(feature.p()), stringNumber(feature.fdr()),
+                Boolean.toString(chosen.contains(feature.id())), status, Integer.toString(records.size()),
+                records.stream().map(row -> text(row.get("audit"))).filter(value -> !value.isBlank()).distinct().collect(java.util.stream.Collectors.joining(";")),
+                pending?"priority_pending":chosen.contains(feature.id()) ? "scientific_appraisal_pending" : "not_selected_for_review",StudyAssistance.json(feature.selection()),Long.toString(suppliedRecords),Long.toString(records.size()-suppliedRecords),reviewRanks.containsKey(feature.id())?reviewRanks.get(feature.id()).toString():"NA",basis});
+        }
+        FollowupSupport.table(context.outputDirectory().resolve("literature-selection.tsv"), List.of("rank", "feature_id", "gene_symbol", "gene_id", "p_value", "FDR",
+            "selected_for_review", "retrieval_status", "search_records", "source_audits", "appraisal_status","selection_context","source_reported_search_records","native_or_legacy_search_records","review_rank","selection_basis"), rows);
+        Map<String, Object> summary = new LinkedHashMap<>();
+        summary.put("candidate_inventory", "literature-selection.tsv"); summary.put("eligible_significant_mapped_features", inventory.size());
+        summary.put("selected_features", selected.size()); summary.put("outside_review_budget", pending?0:inventory.size() - selected.size());summary.put("pending_priority",pending?inventory.size():0);
+        summary.put("max_features", literatureFeatureLimit(context)); summary.put("max_queries", literatureQueryLimit(context));
+        summary.put("fdr", config(context).getOrDefault("fdr", .05)); summary.put("threshold_comparison", "less_than");
+        summary.put("ordering", basis.equals("provisional_AI_impact")?"provisional_AI_comparative_retrieval_priority; statistical rank and original family remain separate":"source_p_value_then_feature_id_after_original_full_family_adjustment; every qualifying rare primary mask/test retained in selection_context");
+        summary.put("scientific_appraisal", "pending; retrieval or no_matches does not establish support, contradiction or novelty");
+        summary.put("interpretation", "Uncapped inventory of FDR-eligible unambiguously mapped features; annotation-ineligible and non-significant rows remain in upstream full result/annotation artifacts. Review is bounded by feature, page and query budgets; unqueried, pending and incomplete searches remain explicit. Provisional retrieval priority and search results do not replace the later full-evidence manuscript impact review.");
+        return summary;
+    }
+
+    private static String stringNumber(double value) { return Double.isFinite(value) ? Double.toString(value) : "NA"; }
+
     static int mrFeatureLimit(Context context) {
         Map<String, Object> mr = map(config(context).get("mr"));
         // No implicit top-N screen, including the separate contextual-search cap.
@@ -558,7 +627,8 @@ final class StudyBioinformatics implements StudyOperationExecutor {
     }
 
     static int geneticFeatureLimit(Context context) {
-        return mrRequested(context) ? Math.max(featureLimit(context), mrFeatureLimit(context)) : featureLimit(context);
+        int limit = mrRequested(context) ? Math.max(featureLimit(context), mrFeatureLimit(context)) : featureLimit(context);
+        return colocalizationRequested(context) ? Math.max(limit, colocalizationFeatureLimit(context)) : limit;
     }
 
     static boolean mrRequested(Context context) {
@@ -575,20 +645,39 @@ final class StudyBioinformatics implements StudyOperationExecutor {
         return Map.of("scope", capped ? "significant_features_with_explicit_cap" : "all_significant_features",
             "max_features", capped ? (Object) mrFeatureLimit(context) : "unlimited",
             "fdr_threshold", config(context).getOrDefault("fdr", 0.05), "fdr_comparison", "less_than",
-            "adjustment", "BH across every valid tested feature in the full meta-analysis or primary table before annotation, QTL matching or capping",
-            "ordering", "p_value_then_feature_id", "contextual_feature_limit_applies", false);
+            "adjustment", "Declared native correction, or source-provided full-family adjusted P values, across valid tests before annotation, QTL matching or capping",
+            "native_adjustment", StudyCohortResults.method(context), "source_provided_adjustment_preserved", true,
+            "ordering", "p_value_then_feature_id", "contextual_feature_limit_applies", false, "annotation_filter_applies", false);
     }
 
     static List<Feature> mrFeatures(Context context) throws IOException {
-        return features(context, mrFeatureLimit(context), true);
+        return features(context, mrFeatureLimit(context), true, true);
     }
+
+    static List<Feature> mrAllFeatures(Context context) throws IOException {
+        return features(context, Integer.MAX_VALUE, true, true);
+    }
+
+    static int colocalizationFeatureLimit(Context context) {
+        var policy = StudyColocalizationReview.policy(context);
+        return policy.containsKey("max_features") ? ((Number) policy.get("max_features")).intValue() : Integer.MAX_VALUE;
+    }
+    static List<Feature> colocalizationFeatures(Context context) throws IOException {
+        return features(context, colocalizationFeatureLimit(context), true);
+    }
+    private static boolean colocalizationRequested(Context context) {
+        return "colocalization".equals(context.operation().get("type")) || config(context).containsKey("colocalization")
+            || list(map(hypothesis(context).get("analysis")).get("goals")).contains("colocalization")
+            || list(context.plan().get("operations")).stream().map(StudyPublicEvidence::map).anyMatch(operation -> "colocalization".equals(operation.get("type")) && java.util.Objects.equals(context.operation().get("hypothesis"), operation.get("hypothesis")));
+    }
+
 
     /** Review the union needed by MR and the independently bounded contextual work. */
     static List<Feature> geneticFeatures(Context context) throws IOException {
-        if (!mrRequested(context)) return features(context);
         Map<String, Feature> union = new LinkedHashMap<>();
         for (Feature feature : features(context)) union.put(feature.id(), feature);
-        for (Feature feature : mrFeatures(context)) union.put(feature.id(), feature);
+        if (mrRequested(context)) for (Feature feature : mrFeatures(context)) union.put(feature.id(), feature);
+        if (colocalizationRequested(context)) for (Feature feature : colocalizationFeatures(context)) union.put(feature.id(), feature);
         return union.values().stream().sorted(Comparator.comparingDouble(Feature::p).thenComparing(Feature::id)).toList();
     }
     private static String label(Object value) {
@@ -607,9 +696,11 @@ final class StudyBioinformatics implements StudyOperationExecutor {
         return StudyNeed.review("bioinformatics:" + context.operation().get("hypothesis") + ":" + key, prompt, reason, true);
     }
 
-    record Feature(String id, String symbol, String gene, String chromosome, String start, String end, String build, String status, double p, double fdr) {
-        Map<String, Object> document() { return Map.of("feature_id", id, "gene_symbol", symbol, "gene_id", gene, "chromosome", chromosome,
-            "start", start, "end", end, "genome_build", build, "mapping_status", status, "p_value", p, "FDR", fdr); }
+    record Feature(String id, String symbol, String gene, String chromosome, String start, String end, String build, String status, double p, double fdr,Map<String,Object> selection) {
+        Feature(String id,String symbol,String gene,String chromosome,String start,String end,String build,String status,double p,double fdr){this(id,symbol,gene,chromosome,start,end,build,status,p,fdr,Map.of());}
+        Feature { selection=Map.copyOf(selection); }
+        Map<String, Object> document() { var out=new LinkedHashMap<String,Object>(Map.of("feature_id", id, "gene_symbol", symbol, "gene_id", gene, "chromosome", chromosome,
+            "start", start, "end", end, "genome_build", build, "mapping_status", status, "p_value", p, "FDR", fdr));if(!selection.isEmpty())out.put("selection_context",selection);return out; }
     }
 
     static List<Feature> features(Context context) throws IOException {
@@ -620,26 +711,35 @@ final class StudyBioinformatics implements StudyOperationExecutor {
         return features(context, limit, false);
     }
 
-    private static List<Feature> features(Context context, int limit, boolean mrSelection) throws IOException {
+    private static List<Feature> features(Context context, int limit, boolean strictPrimarySelection) throws IOException {
+        return features(context, limit, strictPrimarySelection, false);
+    }
+
+    private static List<Feature> features(Context context, int limit, boolean strictPrimarySelection, boolean retainUnannotated) throws IOException {
         if (limit < 1) throw new IllegalArgumentException("feature limit must be positive");
+        String requested=text(config(context).getOrDefault("feature_source","auto"));
+        if(!Set.of("auto","association","rare_sets").contains(requested))throw new IllegalArgumentException("bioinformatics.feature_source must be auto, association or rare_sets");
+        boolean contextual=Set.of("literature_search","bioinformatics_investigation").contains(context.operation().get("type"));
+        if(contextual&&requested.equals("rare_sets"))return StudyRareFollowup.features(context,limit,strictPrimarySelection);
+        StudyPrimaryResults.Selection primary;
+        try { primary=StudyPrimaryResults.official(context); }
+        catch(StudyPrimaryResults.Unavailable unavailable){
+            if(!"literature_search".equals(context.operation().get("type"))||!requested.equals("auto")||StudyRareFollowup.view(context)==null)throw unavailable;
+            write(context.outputDirectory().resolve("literature-source-unavailable.yaml"),Map.of("source","association_primary","reason",unavailable.getMessage(),"interpretation","Separately complete rare-set contextual retrieval continues; an unavailable association family is not a negative result or a substituted primary estimate."));primary=null;
+        }
+        if (primary == null) return contextual&&!requested.equals("association")&&StudyRareFollowup.planned(context)?StudyRareFollowup.features(context,limit,strictPrimarySelection):List.of();
         Map<String, List<String>> annotations = new LinkedHashMap<>();
         Set<String> ambiguous = new LinkedHashSet<>();
-        List<Path> primary = new ArrayList<>();
-        Path meta = null;
         for (Path directory : context.dependencyDirectories().values()) {
             Path manifest = directory.resolve("manifest.yaml");
             if (!Files.isRegularFile(manifest)) continue;
-            Map<String, Object> declared;
-            try (var reader = Files.newBufferedReader(manifest)) { declared = map(new Yaml().load(reader)); }
-            if (!"complete".equals(declared.get("state"))) continue;
-            String type = text(declared.get("operation_type"));
-            if (type.equals("meta_analysis") && Files.isRegularFile(directory.resolve("meta-analysis.tsv"))) meta = directory.resolve("meta-analysis.tsv");
-            if (!Set.of("validate_harmonize", "association").contains(type)) continue;
-            Path standard = directory.resolve("standard-results");
-            if (Files.isDirectory(standard)) try (var files = Files.list(standard)) { primary.addAll(files.filter(Files::isRegularFile).sorted().toList()); }
-            Path annotation = directory.resolve("feature-annotation.tsv");
-            if (!Files.isRegularFile(annotation)) continue;
-            DelimitedData table = DelimitedData.read(annotation);
+            var declared = StudyYaml.loadArtifact(manifest);
+            if (!"complete".equals(declared.get("state")) || !context.operation().get("hypothesis").equals(declared.get("hypothesis"))) continue;
+            if("rare_set_followup".equals(declared.get("operation_type")))continue;
+            var hashes = map(declared.get("output_sha256"));
+            if (!hashes.containsKey("feature-annotation.tsv")) continue;
+            Path annotation = StudyFindingInventory.verified(directory, "feature-annotation.tsv", text(hashes.get("feature-annotation.tsv")));
+            DelimitedData table = DelimitedData.readResult(annotation);
             for (String[] row : table.rows()) {
                 String id = row[table.column("feature_id")];
                 List<String> fields = List.of("gene_symbol", "gene_id", "chromosome", "start", "end", "genome_build", "mapping_status").stream()
@@ -648,33 +748,34 @@ final class StudyBioinformatics implements StudyOperationExecutor {
                 if (old != null && !old.equals(fields)) ambiguous.add(id);
             }
         }
-        if (meta != null) primary = List.of(meta);
         Map<String, Feature> chosen = new LinkedHashMap<>();
         double threshold = ((Number) config(context).getOrDefault("fdr", 0.05)).doubleValue();
         if (!(threshold > 0 && threshold <= 1)) throw new IllegalArgumentException("bioinformatics.fdr must be in (0,1]");
-        for (Path source : primary) {
-            DelimitedData table = DelimitedData.read(source);
-            Map<String, Double> probabilities = new LinkedHashMap<>();
-            for (String[] row : table.rows()) {
-                String id = row[table.column("feature_id")];
-                if (mrSelection && meta != null && table.header().contains("term")
-                        && !"pooled".equals(row[table.column("term")])) continue;
-                if (table.header().contains("status") && !Set.of("ok", "single_cohort").contains(row[table.column("status")])) continue;
-                try { double p = Double.parseDouble(row[table.column("p_value")]); if (Double.isFinite(p) && p >= 0 && p <= 1) probabilities.put(id, p); }
-                catch (NumberFormatException ignored) { /* Invalid/not-estimable tests are not findings. */ }
-            }
-            List<Map.Entry<String, Double>> ranked = probabilities.entrySet().stream().sorted(Map.Entry.<String, Double>comparingByValue().thenComparing(Map.Entry::getKey)).toList();
-            double adjusted = 1;
-            for (int i = ranked.size() - 1; i >= 0; i--) {
-                var entry = ranked.get(i);
-                adjusted = Math.min(adjusted, entry.getValue() * ranked.size() / (i + 1));
-                List<String> a = annotations.get(entry.getKey());
-                if ((mrSelection ? adjusted >= threshold : adjusted > threshold) || a == null || ambiguous.contains(entry.getKey()) || !Set.of("located", "missing_location").contains(a.get(6))) continue;
-                Feature f = new Feature(entry.getKey(), a.get(0), a.get(1), a.get(2), a.get(3), a.get(4), a.get(5), a.get(6), entry.getValue(), adjusted);
-                chosen.merge(f.id(), f, (left, right) -> left.p() <= right.p() ? left : right);
-            }
+        for (var entry : primary.probabilities().entrySet()) {
+            double q = primary.adjusted().get(entry.getKey());
+            List<String> a = annotations.get(entry.getKey());
+            if (strictPrimarySelection ? q >= threshold : q > threshold) continue;
+            String status = ambiguous.contains(entry.getKey()) ? "ambiguous_annotation" : a == null ? "missing_annotation" : a.get(6);
+            boolean mapped = Set.of("located", "missing_location").contains(status);
+            if (!mapped && !retainUnannotated) continue;
+            var selection = retainUnannotated ? Map.<String,Object>of("kind", "association_primary", "source_sha256", primary.source().sha256(),
+                "adjustment", primary.adjustment(), "testing_denominator", primary.receipt().get("testing_denominator"), "annotation_status", status,
+                "annotation_filter_applied", false) : Map.<String,Object>of();
+            chosen.put(entry.getKey(), new Feature(entry.getKey(), mapped ? a.get(0) : "", mapped ? a.get(1) : "", mapped ? a.get(2) : "",
+                mapped ? a.get(3) : "", mapped ? a.get(4) : "", mapped ? a.get(5) : "", status, entry.getValue(), q, selection));
         }
-        return chosen.values().stream().sorted(Comparator.comparingDouble(Feature::p).thenComparing(Feature::id))
-            .limit(limit).toList();
+        if("literature_search".equals(context.operation().get("type"))&&requested.equals("auto")&&StudyRareFollowup.view(context)!=null){
+            var conflicts=new ArrayList<String[]>();
+            for(var rare:StudyRareFollowup.features(context,Integer.MAX_VALUE,strictPrimarySelection)){
+                var old=chosen.get(rare.id());if(old==null){chosen.put(rare.id(),rare);continue;}
+                boolean same=old.symbol().equals(rare.symbol())&&(old.gene().isBlank()||rare.gene().isBlank()||old.gene().replaceFirst("\\.\\d+$","").equals(rare.gene().replaceFirst("\\.\\d+$","")));
+                if(!same){chosen.remove(rare.id());conflicts.add(new String[]{rare.id(),old.gene(),old.symbol(),rare.gene(),rare.symbol(),"conflicting_source_gene_identity_requires_review"});continue;}
+                var association=Map.<String,Object>of("kind","association_primary","p_value",old.p(),"source_adjusted_p",old.fdr(),"source_sha256",primary.source().sha256(),"adjustment",primary.adjustment(),"testing_denominator",primary.receipt().get("testing_denominator"));
+                var selection=Map.<String,Object>of("kind","separate_source_families","association",association,"rare_sets",rare.selection(),"source_dependence","Families may share participants, genes and variants; sampling independence and independent replication are not established","probability_scope","Display P/adjusted P belong to one original source test and only order contextual retrieval; no combined gene-level P or FDR estimated");var display=old.p()<=rare.p()?old:rare;
+                chosen.put(rare.id(),new Feature(display.id(),display.symbol(),display.gene(),display.chromosome(),display.start(),display.end(),display.build(),display.status(),display.p(),display.fdr(),selection));
+            }
+            if(!conflicts.isEmpty())FollowupSupport.table(context.outputDirectory().resolve("literature-source-conflicts.tsv"),List.of("feature_id","association_gene","association_symbol","rare_gene","rare_symbol","disposition"),conflicts);
+        }
+        return chosen.values().stream().sorted(Comparator.comparingDouble(Feature::p).thenComparing(Feature::id)).limit(limit).toList();
     }
 }

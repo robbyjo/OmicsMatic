@@ -1,0 +1,959 @@
+{
+  "status": "passed-original-ordinary-and-hardtrim-subsets",
+  "jar_sha256": "a104651636deb59493cddc92ce433629d4ef7b0c755f6ee065a3e0c75365c5e2",
+  "recorded_utc": "2026-10-25T23:24:57.944602+00:00",
+  "source_sha256": {
+    "src/main/java/org/jlinalg/cli/TrimGaloreToolsCli.java": "d166ab2f84fa7554b23997c362ab87bcfed444e0e622ddd7f10e1aa76ea32b46",
+    "src/main/java/org/jlinalg/cli/TrimGaloreRuntime.java": "aefc702d5e200ad8859ae72f59deafb4e791b59f4ef6d7eb938c22d8d70fa085",
+    "src/main/java/org/jlinalg/cli/TrimGaloreAudit.java": "c648d5dfe321c64f2c6d3a59413d0a90f2ffd11d8bd96a8afa69ba2a578a7ec0",
+    "src/main/java/org/jlinalg/cli/SequenceToolsCli.java": "7c57684e774894dd1c6532a1eef575e0fe16cc18683e557088daf296ddc49f29",
+    "src/main/resources/org/jlinalg/omics/trim_galore_original.py": "616733df60cc2b67e0a3f6ba535611acdd60c0fd908950a4ca3eb1c0ce164233",
+    "src/main/resources/org/jlinalg/omics/trim_galore_runtime_lock.json": "a6b1cda8c1d2ccd09633eca3eddb00cac90a3c57ff107be8132de8e319d57811",
+    "src/test/java/org/jlinalg/cli/TrimGaloreToolsCliTest.java": "e6971a0356682cd55bf822dd94c15e5eb5da9afac1913d4d919f544bd5fab6a2",
+    "src/test/java/org/jlinalg/cli/TrimGaloreAuditTest.java": "5fdf48578197111fef89b9cf7d03ade4a0374acbb933d9d3fc87e692f557c720",
+    "tools/literature/install_trim_galore.py": "311b3f4ef9c2e08aa93db158ec212336af16cafd6e1498911c0e5bee7e102dde",
+    "tools/literature/trim-galore-runtime-lock.json": "a6b1cda8c1d2ccd09633eca3eddb00cac90a3c57ff107be8132de8e319d57811",
+    "tools/literature/test_trim_galore_dependency_policy.py": "e435f767b0c95d24fe0c40a1a0f085425f20b2dc2ed9a3a99bf7394656bf927c",
+    "tools/literature/verify_trim_galore_workflows.py": "ab0c52683b804d5ccd3576dbf32f887fdfc11475089717cb5bb2a052bbfdf25c"
+  },
+  "current_full_gate_suites": {
+    "org.jlinalg.cli.TrimGaloreAuditTest": {
+      "suite_name": "org.jlinalg.cli.TrimGaloreAuditTest",
+      "suite": {
+        "tests": 3,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "junit_sha256": "c061b6fa22e4c18642d6fbb7eea08632eb9fa81b2891a7aa433a0583b2061e32",
+      "testcases": [
+        "sourceSpanRequiresCompleteHeaderAndPairedSequenceQualityPositions()",
+        "repetitiveMegabaseReadAuditAvoidsQuadraticSpanSearch()",
+        "repeatedAndEmptySpansAreReportedAsAmbiguousWithoutInventingCoordinates()"
+      ]
+    },
+    "org.jlinalg.cli.TrimGaloreToolsCliTest": {
+      "suite_name": "org.jlinalg.cli.TrimGaloreToolsCliTest",
+      "suite": {
+        "tests": 9,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "junit_sha256": "1571170f88a7182affbbac0f56a4301018ed4e329fe3260391f4182630341152",
+      "testcases": [
+        "originalAutoSmallRnaResolvesItsOwnEighteenBaseDefault()",
+        "original067TrimsActualAdaptersQualityAndRunsOriginalFastqcWithSpacePaths()",
+        "missingProfileSkipsProminentlyAndInvalidInputsFailWithOriginalPartialData()",
+        "originalHardtrimKeepsShortAndEmptyReadsWithoutQualityOrLengthFiltering()",
+        "original610PairedWgbsCutsKeepActualOrphansIncludingOriginalOversizedRescue()",
+        "originalCutadaptIncompleteAdapterWarningIsPromotedWithoutChangingRetainedReads()",
+        "ordinaryAsciiContractFailsBeforeExecutionWhileOriginalHardtrimPreservesUtf8Headers()",
+        "actualPhred64QualityAndDistinctNextseqTrimPreserveOriginalQualityBytes()",
+        "utf8OptionsFilePreservesUnicodeDataPathsAndExplicitCliOverridesWithoutRenamingReads()"
+      ]
+    }
+  },
+  "api_cli_tests": 12,
+  "full_gate": {
+    "tests": 1593,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 5
+  },
+  "required_suites": 72,
+  "packaged_calls": 25,
+  "independent_original_runs": 22,
+  "original_reference_scope": "Actual packaged Java adapter compared with separately launched unmodified original Perl scripts and native Cutadapt console launcher using an older independent LF bridge. Literal original flags and hand-checked golden streams. FastQC ZIP flags are separately matched to the promoted QC table. Negative ordinary-ASCII contract and dependency cases are explicit. No RRBS,explicit poly-A,old-version/old-FastQC or full-paper parity.",
+  "runtime_marker_sha256": "4d625c788b4f6c47d7b5f8bbca81c78748da5ff48ecef3b861d109fdc9048aeb",
+  "native_helper_validation": "../../trim-galore-native-validation.json",
+  "scope": "Unmodified Perl0.6.7/0.6.10 with originalCutadapt5.2,ordinary single/paired adapter/quality processing,auto/preset/literal adapters,typed fixed cuts,N/length/rescue and hardtrim. Optional originalFastQC0.13.0 flags and diagnostics. Actual source/quality/span/identity/stream audits and explicit ASCIIordinary-header/UTF8recipe input contract. No RRBS,explicitpolyA,clock/UMI,multicore,Rust,historicalCutadapt/oldFastQC or complete-paper parity.",
+  "additional_utf8_input_output_checks": {
+    "status": "passed",
+    "jar_sha256": "66be181d854806d9ae64d6f060e8defba8af5bdf594d3d352c9c76097a2a8d2e",
+    "steps": [
+      {
+        "name": "temurin21",
+        "command": [
+          "C:/Program Files/Eclipse Adoptium/jdk-21.0.4.7-hotspot/bin/java.exe",
+          "-jar",
+          "D:\\projects\\JLinAlg\\build\\literature-review\\fimo-candidate\\jlinalg-0.3.7.jar",
+          "trim-galore-tools",
+          "--options-file",
+          "D:\\projects\\JLinAlg\\build\\literature-review\\fimo-runtime\\trim-galore-unicode-output-smoke\\temurin21-options.json"
+        ],
+        "exit_code": 0,
+        "source_sha256": "6b74f35c8cfac23ab3bfff5f609377ccd13146f76eae1bd50dab821780378885",
+        "recipe_sha256": "c07eb7f4c92d2e020642191ea372844644d6313ef5537e189236c1fedc55e809",
+        "version_sha256": "2ce8c9c87571e0ccf6f799aa701598fadcece73897f0569fec973861fc1c9a0f",
+        "output": "D:\\projects\\JLinAlg\\build\\literature-review\\fimo-runtime\\trim-galore-unicode-output-smoke\\temurin21-output-μ"
+      },
+      {
+        "name": "oracle25",
+        "command": [
+          "C:/Program Files/Common Files/Oracle/Java/javapath/java.EXE",
+          "-jar",
+          "D:\\projects\\JLinAlg\\build\\literature-review\\fimo-candidate\\jlinalg-0.3.7.jar",
+          "trim-galore-tools",
+          "--options-file",
+          "D:\\projects\\JLinAlg\\build\\literature-review\\fimo-runtime\\trim-galore-unicode-output-smoke\\oracle25-options.json"
+        ],
+        "exit_code": 0,
+        "source_sha256": "6b74f35c8cfac23ab3bfff5f609377ccd13146f76eae1bd50dab821780378885",
+        "recipe_sha256": "9631c6ab23d581e3af2080211f38dc69382c0d5770bcc606efaacdf386cec4b1",
+        "version_sha256": "2f31acc03961549e6b6ed1103bcd941fd42ca836780e78a329904388f31ff1b7",
+        "output": "D:\\projects\\JLinAlg\\build\\literature-review\\fimo-runtime\\trim-galore-unicode-output-smoke\\oracle25-output-μ"
+      }
+    ],
+    "producer_sha256": "9b556a4defd93441d59a63af2f80f3301b3be95229d8653b786c7161a8f8987b",
+    "scope": "Two actual packaged checks with Unicode input/output paths inside strictUTF8JSON and ASCIIrecipepath. Exact headers,bases and qualities preserved under actual Temurin21 and Oracle25. No native Windows Unicode-argv round-trip claim."
+  },
+  "fresh_private_python_scientific_validation": {
+    "status": "passed-original-trimming-warning-and-FastQC-on-fresh-pinned-Python",
+    "jar_sha256": "66be181d854806d9ae64d6f060e8defba8af5bdf594d3d352c9c76097a2a8d2e",
+    "profile": "D:\\projects\\JLinAlg\\build\\omics-trim-galore-fresh-fixed",
+    "marker_sha256": "5119831a18bba3756501709a27cf7c8211296e5fa7d20bc30647fa2ef7e9449e",
+    "sealed_external_files": 3811,
+    "command": [
+      "C:/Program Files/Eclipse Adoptium/jdk-21.0.4.7-hotspot/bin/java.exe",
+      "-jar",
+      "D:\\projects\\JLinAlg\\build\\literature-review\\fimo-candidate\\jlinalg-0.3.7.jar",
+      "trim-galore-tools",
+      "--home",
+      "D:\\projects\\JLinAlg\\build\\omics-trim-galore-fresh-fixed",
+      "--release",
+      "0.6.10",
+      "--reads",
+      "D:\\projects\\JLinAlg\\build\\literature-review\\trimgalore-runtime\\warning-fresh-python-scientific-smoke\\reads.fastq",
+      "--phred",
+      "33",
+      "--minimum-length",
+      "20",
+      "--adapter-kind",
+      "custom",
+      "--adapter1",
+      "AGATCGGAAGAGC",
+      "--fastqc",
+      "true",
+      "--out",
+      "D:\\projects\\JLinAlg\\build\\literature-review\\fimo-runtime\\trim-galore-fresh-python-scientific-smoke\\result"
+    ],
+    "exit_code": 0,
+    "input_reads": 32,
+    "retained_reads": 32,
+    "scope": "Actual original0.6.10/Cutadapt5.2/FastQC0.13.0 through newFIMO-enabled JAR using unchanged3811file fresh-pinned-Python profile. Exact32retainedread/quality bytes equal priorindependentlyvalidatedoriginal science,primer-context warning andQCconsole/status retained. No installation or profilemutation.",
+    "input_sha256": "91be9fc744e643fff727787126e41460704707e8d2de2382fc7324418370fbef",
+    "producer_sha256": "9de48788698377fd0190b813b6a36b54e7dd7115085790747a93a327dfb1ca00"
+  },
+  "warning_promotion_regression": {
+    "before_fix_jar_sha256": "b98fdc04d61c8dcad8ba5cdcbe8102c2f256119bd3513a0f44ce3d2f1d352a1c",
+    "before_fix_observation": "D:\\projects\\JLinAlg\\build\\literature-review\\trimgalore-runtime\\unpromoted-cutadapt-warning\\observed.json",
+    "current_behavior": "Original WARN/WARNING blocks and their indented context are copied into the warning summary and session metadata. Actual32read incomplete-adapter warning,primer caveat,unchanged retained reads,console and completed-with-qc-warnings status are verified in the current CLI suite and independent original workflow fixture."
+  },
+  "refreshed_utc": "2026-10-26T02:01:51.919373+00:00",
+  "current_validation": {
+    "full_gate": {
+      "tests": 1593,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 5
+    },
+    "required_suites": 72,
+    "all_required_without_skips": true,
+    "raw_snapshot": "D:\\projects\\JLinAlg\\build\\literature-review\\plink-runtime\\configured-native-full-gate-1",
+    "prior_packaged_regressions": "D:\\projects\\JLinAlg\\build\\literature-review\\plink-runtime\\prior-packaged-regressions-1\\verification.json",
+    "original_trim_rechecks": "D:\\projects\\JLinAlg\\build\\literature-review\\plink-runtime\\original-trim-rechecks-1\\verification.json",
+    "scope": "This exact candidate was executed. All prior owned compiled method sources are unchanged and retested. Historical reference-generation/version scopes remain in their original fields and validation_history;no full-paper parity is inferred."
+  },
+  "validation_history": [
+    {
+      "status": "passed-original-ordinary-and-hardtrim-subsets",
+      "jar_sha256": "c7e5fc6412ef02a82e409b43f344bff506f873ff5ebea92bc055d498ebda8dae",
+      "recorded_utc": "2026-10-25T18:28:13.412726+00:00",
+      "source_sha256": {
+        "src/main/java/org/jlinalg/cli/TrimGaloreToolsCli.java": "d166ab2f84fa7554b23997c362ab87bcfed444e0e622ddd7f10e1aa76ea32b46",
+        "src/main/java/org/jlinalg/cli/TrimGaloreRuntime.java": "aefc702d5e200ad8859ae72f59deafb4e791b59f4ef6d7eb938c22d8d70fa085",
+        "src/main/java/org/jlinalg/cli/TrimGaloreAudit.java": "c648d5dfe321c64f2c6d3a59413d0a90f2ffd11d8bd96a8afa69ba2a578a7ec0",
+        "src/main/java/org/jlinalg/cli/SequenceToolsCli.java": "7c57684e774894dd1c6532a1eef575e0fe16cc18683e557088daf296ddc49f29",
+        "src/main/resources/org/jlinalg/omics/trim_galore_original.py": "616733df60cc2b67e0a3f6ba535611acdd60c0fd908950a4ca3eb1c0ce164233",
+        "src/main/resources/org/jlinalg/omics/trim_galore_runtime_lock.json": "a6b1cda8c1d2ccd09633eca3eddb00cac90a3c57ff107be8132de8e319d57811",
+        "src/test/java/org/jlinalg/cli/TrimGaloreToolsCliTest.java": "e6971a0356682cd55bf822dd94c15e5eb5da9afac1913d4d919f544bd5fab6a2",
+        "src/test/java/org/jlinalg/cli/TrimGaloreAuditTest.java": "5fdf48578197111fef89b9cf7d03ade4a0374acbb933d9d3fc87e692f557c720",
+        "tools/literature/install_trim_galore.py": "311b3f4ef9c2e08aa93db158ec212336af16cafd6e1498911c0e5bee7e102dde",
+        "tools/literature/trim-galore-runtime-lock.json": "a6b1cda8c1d2ccd09633eca3eddb00cac90a3c57ff107be8132de8e319d57811",
+        "tools/literature/test_trim_galore_dependency_policy.py": "e435f767b0c95d24fe0c40a1a0f085425f20b2dc2ed9a3a99bf7394656bf927c",
+        "tools/literature/verify_trim_galore_workflows.py": "ab0c52683b804d5ccd3576dbf32f887fdfc11475089717cb5bb2a052bbfdf25c"
+      },
+      "current_full_gate_suites": {
+        "org.jlinalg.cli.TrimGaloreAuditTest": {
+          "suite_name": "org.jlinalg.cli.TrimGaloreAuditTest",
+          "suite": {
+            "tests": 3,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "8944c6de9c0f9bb4450b5370456819655715d03da25a0d211f2bb6a4beb63b48",
+          "testcases": [
+            "sourceSpanRequiresCompleteHeaderAndPairedSequenceQualityPositions()",
+            "repetitiveMegabaseReadAuditAvoidsQuadraticSpanSearch()",
+            "repeatedAndEmptySpansAreReportedAsAmbiguousWithoutInventingCoordinates()"
+          ]
+        },
+        "org.jlinalg.cli.TrimGaloreToolsCliTest": {
+          "suite_name": "org.jlinalg.cli.TrimGaloreToolsCliTest",
+          "suite": {
+            "tests": 9,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "1edcc233b66c475c3c77ef69c4aca1db0e5f59d8b365c1b6e08c46dedb61e152",
+          "testcases": [
+            "originalAutoSmallRnaResolvesItsOwnEighteenBaseDefault()",
+            "original067TrimsActualAdaptersQualityAndRunsOriginalFastqcWithSpacePaths()",
+            "missingProfileSkipsProminentlyAndInvalidInputsFailWithOriginalPartialData()",
+            "originalHardtrimKeepsShortAndEmptyReadsWithoutQualityOrLengthFiltering()",
+            "original610PairedWgbsCutsKeepActualOrphansIncludingOriginalOversizedRescue()",
+            "originalCutadaptIncompleteAdapterWarningIsPromotedWithoutChangingRetainedReads()",
+            "ordinaryAsciiContractFailsBeforeExecutionWhileOriginalHardtrimPreservesUtf8Headers()",
+            "actualPhred64QualityAndDistinctNextseqTrimPreserveOriginalQualityBytes()",
+            "utf8OptionsFilePreservesUnicodeDataPathsAndExplicitCliOverridesWithoutRenamingReads()"
+          ]
+        }
+      },
+      "api_cli_tests": 12,
+      "full_gate": {
+        "tests": 1486,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 5
+      },
+      "required_suites": 59,
+      "packaged_calls": 25,
+      "independent_original_runs": 22,
+      "original_reference_scope": "Actual packaged Java adapter compared with separately launched unmodified original Perl scripts and native Cutadapt console launcher using an older independent LF bridge. Literal original flags and hand-checked golden streams. FastQC ZIP flags are separately matched to the promoted QC table. Negative ordinary-ASCII contract and dependency cases are explicit. No RRBS,explicit poly-A,old-version/old-FastQC or full-paper parity.",
+      "runtime_marker_sha256": "4d625c788b4f6c47d7b5f8bbca81c78748da5ff48ecef3b861d109fdc9048aeb",
+      "native_helper_validation": "../../trim-galore-native-validation.json",
+      "scope": "Unmodified Perl0.6.7/0.6.10 with originalCutadapt5.2,ordinary single/paired adapter/quality processing,auto/preset/literal adapters,typed fixed cuts,N/length/rescue and hardtrim. Optional originalFastQC0.13.0 flags and diagnostics. Actual source/quality/span/identity/stream audits and explicit ASCIIordinary-header/UTF8recipe input contract. No RRBS,explicitpolyA,clock/UMI,multicore,Rust,historicalCutadapt/oldFastQC or complete-paper parity.",
+      "additional_utf8_input_output_checks": {
+        "status": "passed",
+        "jar_sha256": "c7e5fc6412ef02a82e409b43f344bff506f873ff5ebea92bc055d498ebda8dae",
+        "steps": [
+          {
+            "name": "temurin21",
+            "command": [
+              "C:/Program Files/Eclipse Adoptium/jdk-21.0.4.7-hotspot/bin/java.exe",
+              "-jar",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\trim-galore-warning-candidate\\jlinalg-0.3.7.jar",
+              "trim-galore-tools",
+              "--options-file",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\trimgalore-runtime\\warning-unicode-output-smoke\\temurin21-options.json"
+            ],
+            "exit_code": 0,
+            "source_sha256": "6b74f35c8cfac23ab3bfff5f609377ccd13146f76eae1bd50dab821780378885",
+            "recipe_sha256": "82c77870f0e90c8dc2becddf539b8d664946f790283cd661370bacdb0ea193c1",
+            "version_sha256": "2ce8c9c87571e0ccf6f799aa701598fadcece73897f0569fec973861fc1c9a0f",
+            "output": "D:\\projects\\JLinAlg\\build\\literature-review\\trimgalore-runtime\\warning-unicode-output-smoke\\temurin21-output-μ"
+          },
+          {
+            "name": "oracle25",
+            "command": [
+              "C:/Program Files/Common Files/Oracle/Java/javapath/java.EXE",
+              "-jar",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\trim-galore-warning-candidate\\jlinalg-0.3.7.jar",
+              "trim-galore-tools",
+              "--options-file",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\trimgalore-runtime\\warning-unicode-output-smoke\\oracle25-options.json"
+            ],
+            "exit_code": 0,
+            "source_sha256": "6b74f35c8cfac23ab3bfff5f609377ccd13146f76eae1bd50dab821780378885",
+            "recipe_sha256": "938e938aa96ba8a1f9092f1588a2dd0d261be18ec48a4cceeb4fad4b95952a82",
+            "version_sha256": "2f31acc03961549e6b6ed1103bcd941fd42ca836780e78a329904388f31ff1b7",
+            "output": "D:\\projects\\JLinAlg\\build\\literature-review\\trimgalore-runtime\\warning-unicode-output-smoke\\oracle25-output-μ"
+          }
+        ],
+        "producer_sha256": "75790a5b856121f0797e97cea8b399d8d9b4470e8b9f16c1868e4614c00822c0",
+        "scope": "Two actual packaged checks with Unicode input/output paths inside strictUTF8JSON and ASCIIrecipepath. Exact headers,bases and qualities preserved under actual Temurin21 and Oracle25. No native Windows Unicode-argv round-trip claim."
+      },
+      "fresh_private_python_scientific_validation": {
+        "status": "passed-original-trimming-warning-and-FastQC-on-fresh-pinned-Python",
+        "jar_sha256": "c7e5fc6412ef02a82e409b43f344bff506f873ff5ebea92bc055d498ebda8dae",
+        "profile": "D:\\projects\\JLinAlg\\build\\omics-trim-galore-fresh-fixed",
+        "marker_sha256": "5119831a18bba3756501709a27cf7c8211296e5fa7d20bc30647fa2ef7e9449e",
+        "sealed_external_files": 3811,
+        "command": [
+          "C:/Program Files/Eclipse Adoptium/jdk-21.0.4.7-hotspot/bin/java.exe",
+          "-jar",
+          "D:\\projects\\JLinAlg\\build\\literature-review\\trim-galore-warning-candidate\\jlinalg-0.3.7.jar",
+          "trim-galore-tools",
+          "--home",
+          "D:\\projects\\JLinAlg\\build\\omics-trim-galore-fresh-fixed",
+          "--release",
+          "0.6.10",
+          "--reads",
+          "D:\\projects\\JLinAlg\\build\\literature-review\\trimgalore-runtime\\warning-fresh-python-scientific-smoke\\reads.fastq",
+          "--phred",
+          "33",
+          "--minimum-length",
+          "20",
+          "--adapter-kind",
+          "custom",
+          "--adapter1",
+          "AGATCGGAAGAGC",
+          "--fastqc",
+          "true",
+          "--out",
+          "D:\\projects\\JLinAlg\\build\\literature-review\\trimgalore-runtime\\warning-fresh-python-scientific-smoke\\result"
+        ],
+        "exit_code": 0,
+        "input_reads": 32,
+        "retained_reads": 32,
+        "scope": "Actual freshly prepared privateCPython3.13 pinned6wheel runtime at final path;original0610,Cutadapt5.2 andFastQC0.13.0 run through currentC7JAR. Exact read/quality outputs,original incomplete-adapter warning with primer context,QC flags/diagnostics and console prominence verified. No global installation or profile mutation;earlier failed relocated-venv experiment retained."
+      },
+      "warning_promotion_regression": {
+        "before_fix_jar_sha256": "b98fdc04d61c8dcad8ba5cdcbe8102c2f256119bd3513a0f44ce3d2f1d352a1c",
+        "before_fix_observation": "D:\\projects\\JLinAlg\\build\\literature-review\\trimgalore-runtime\\unpromoted-cutadapt-warning\\observed.json",
+        "current_behavior": "Original WARN/WARNING blocks and their indented context are copied into the warning summary and session metadata. Actual32read incomplete-adapter warning,primer caveat,unchanged retained reads,console and completed-with-qc-warnings status are verified in the current CLI suite and independent original workflow fixture."
+      }
+    },
+    {
+      "status": "passed-original-ordinary-and-hardtrim-subsets",
+      "jar_sha256": "2bfb8abfea10e53ce7b0e1035b0a7954feb9bed990d63578e817882a6d0541c0",
+      "recorded_utc": "2026-10-25T18:28:13.412726+00:00",
+      "source_sha256": {
+        "src/main/java/org/jlinalg/cli/TrimGaloreToolsCli.java": "d166ab2f84fa7554b23997c362ab87bcfed444e0e622ddd7f10e1aa76ea32b46",
+        "src/main/java/org/jlinalg/cli/TrimGaloreRuntime.java": "aefc702d5e200ad8859ae72f59deafb4e791b59f4ef6d7eb938c22d8d70fa085",
+        "src/main/java/org/jlinalg/cli/TrimGaloreAudit.java": "c648d5dfe321c64f2c6d3a59413d0a90f2ffd11d8bd96a8afa69ba2a578a7ec0",
+        "src/main/java/org/jlinalg/cli/SequenceToolsCli.java": "7c57684e774894dd1c6532a1eef575e0fe16cc18683e557088daf296ddc49f29",
+        "src/main/resources/org/jlinalg/omics/trim_galore_original.py": "616733df60cc2b67e0a3f6ba535611acdd60c0fd908950a4ca3eb1c0ce164233",
+        "src/main/resources/org/jlinalg/omics/trim_galore_runtime_lock.json": "a6b1cda8c1d2ccd09633eca3eddb00cac90a3c57ff107be8132de8e319d57811",
+        "src/test/java/org/jlinalg/cli/TrimGaloreToolsCliTest.java": "e6971a0356682cd55bf822dd94c15e5eb5da9afac1913d4d919f544bd5fab6a2",
+        "src/test/java/org/jlinalg/cli/TrimGaloreAuditTest.java": "5fdf48578197111fef89b9cf7d03ade4a0374acbb933d9d3fc87e692f557c720",
+        "tools/literature/install_trim_galore.py": "311b3f4ef9c2e08aa93db158ec212336af16cafd6e1498911c0e5bee7e102dde",
+        "tools/literature/trim-galore-runtime-lock.json": "a6b1cda8c1d2ccd09633eca3eddb00cac90a3c57ff107be8132de8e319d57811",
+        "tools/literature/test_trim_galore_dependency_policy.py": "e435f767b0c95d24fe0c40a1a0f085425f20b2dc2ed9a3a99bf7394656bf927c",
+        "tools/literature/verify_trim_galore_workflows.py": "ab0c52683b804d5ccd3576dbf32f887fdfc11475089717cb5bb2a052bbfdf25c"
+      },
+      "current_full_gate_suites": {
+        "org.jlinalg.cli.TrimGaloreAuditTest": {
+          "suite_name": "org.jlinalg.cli.TrimGaloreAuditTest",
+          "suite": {
+            "tests": 3,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "6b0d02387a9d2d1b2a28496a660c2c46edf66b47310a27071d9b0c1bdb6696a3",
+          "testcases": [
+            "sourceSpanRequiresCompleteHeaderAndPairedSequenceQualityPositions()",
+            "repetitiveMegabaseReadAuditAvoidsQuadraticSpanSearch()",
+            "repeatedAndEmptySpansAreReportedAsAmbiguousWithoutInventingCoordinates()"
+          ]
+        },
+        "org.jlinalg.cli.TrimGaloreToolsCliTest": {
+          "suite_name": "org.jlinalg.cli.TrimGaloreToolsCliTest",
+          "suite": {
+            "tests": 9,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "42265b2e602120bcae72b42286124f4a0be7a1b96d684891476fdde588c1ba1b",
+          "testcases": [
+            "originalAutoSmallRnaResolvesItsOwnEighteenBaseDefault()",
+            "original067TrimsActualAdaptersQualityAndRunsOriginalFastqcWithSpacePaths()",
+            "missingProfileSkipsProminentlyAndInvalidInputsFailWithOriginalPartialData()",
+            "originalHardtrimKeepsShortAndEmptyReadsWithoutQualityOrLengthFiltering()",
+            "original610PairedWgbsCutsKeepActualOrphansIncludingOriginalOversizedRescue()",
+            "originalCutadaptIncompleteAdapterWarningIsPromotedWithoutChangingRetainedReads()",
+            "ordinaryAsciiContractFailsBeforeExecutionWhileOriginalHardtrimPreservesUtf8Headers()",
+            "actualPhred64QualityAndDistinctNextseqTrimPreserveOriginalQualityBytes()",
+            "utf8OptionsFilePreservesUnicodeDataPathsAndExplicitCliOverridesWithoutRenamingReads()"
+          ]
+        }
+      },
+      "api_cli_tests": 12,
+      "full_gate": {
+        "tests": 1504,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 5
+      },
+      "required_suites": 61,
+      "packaged_calls": 25,
+      "independent_original_runs": 22,
+      "original_reference_scope": "Actual packaged Java adapter compared with separately launched unmodified original Perl scripts and native Cutadapt console launcher using an older independent LF bridge. Literal original flags and hand-checked golden streams. FastQC ZIP flags are separately matched to the promoted QC table. Negative ordinary-ASCII contract and dependency cases are explicit. No RRBS,explicit poly-A,old-version/old-FastQC or full-paper parity.",
+      "runtime_marker_sha256": "4d625c788b4f6c47d7b5f8bbca81c78748da5ff48ecef3b861d109fdc9048aeb",
+      "native_helper_validation": "../../trim-galore-native-validation.json",
+      "scope": "Unmodified Perl0.6.7/0.6.10 with originalCutadapt5.2,ordinary single/paired adapter/quality processing,auto/preset/literal adapters,typed fixed cuts,N/length/rescue and hardtrim. Optional originalFastQC0.13.0 flags and diagnostics. Actual source/quality/span/identity/stream audits and explicit ASCIIordinary-header/UTF8recipe input contract. No RRBS,explicitpolyA,clock/UMI,multicore,Rust,historicalCutadapt/oldFastQC or complete-paper parity.",
+      "additional_utf8_input_output_checks": {
+        "status": "passed",
+        "jar_sha256": "c7e5fc6412ef02a82e409b43f344bff506f873ff5ebea92bc055d498ebda8dae",
+        "steps": [
+          {
+            "name": "temurin21",
+            "command": [
+              "C:/Program Files/Eclipse Adoptium/jdk-21.0.4.7-hotspot/bin/java.exe",
+              "-jar",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\trim-galore-warning-candidate\\jlinalg-0.3.7.jar",
+              "trim-galore-tools",
+              "--options-file",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\trimgalore-runtime\\warning-unicode-output-smoke\\temurin21-options.json"
+            ],
+            "exit_code": 0,
+            "source_sha256": "6b74f35c8cfac23ab3bfff5f609377ccd13146f76eae1bd50dab821780378885",
+            "recipe_sha256": "82c77870f0e90c8dc2becddf539b8d664946f790283cd661370bacdb0ea193c1",
+            "version_sha256": "2ce8c9c87571e0ccf6f799aa701598fadcece73897f0569fec973861fc1c9a0f",
+            "output": "D:\\projects\\JLinAlg\\build\\literature-review\\trimgalore-runtime\\warning-unicode-output-smoke\\temurin21-output-μ"
+          },
+          {
+            "name": "oracle25",
+            "command": [
+              "C:/Program Files/Common Files/Oracle/Java/javapath/java.EXE",
+              "-jar",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\trim-galore-warning-candidate\\jlinalg-0.3.7.jar",
+              "trim-galore-tools",
+              "--options-file",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\trimgalore-runtime\\warning-unicode-output-smoke\\oracle25-options.json"
+            ],
+            "exit_code": 0,
+            "source_sha256": "6b74f35c8cfac23ab3bfff5f609377ccd13146f76eae1bd50dab821780378885",
+            "recipe_sha256": "938e938aa96ba8a1f9092f1588a2dd0d261be18ec48a4cceeb4fad4b95952a82",
+            "version_sha256": "2f31acc03961549e6b6ed1103bcd941fd42ca836780e78a329904388f31ff1b7",
+            "output": "D:\\projects\\JLinAlg\\build\\literature-review\\trimgalore-runtime\\warning-unicode-output-smoke\\oracle25-output-μ"
+          }
+        ],
+        "producer_sha256": "75790a5b856121f0797e97cea8b399d8d9b4470e8b9f16c1868e4614c00822c0",
+        "scope": "Two actual packaged checks with Unicode input/output paths inside strictUTF8JSON and ASCIIrecipepath. Exact headers,bases and qualities preserved under actual Temurin21 and Oracle25. No native Windows Unicode-argv round-trip claim."
+      },
+      "fresh_private_python_scientific_validation": {
+        "status": "passed-original-trimming-warning-and-FastQC-on-fresh-pinned-Python",
+        "jar_sha256": "c7e5fc6412ef02a82e409b43f344bff506f873ff5ebea92bc055d498ebda8dae",
+        "profile": "D:\\projects\\JLinAlg\\build\\omics-trim-galore-fresh-fixed",
+        "marker_sha256": "5119831a18bba3756501709a27cf7c8211296e5fa7d20bc30647fa2ef7e9449e",
+        "sealed_external_files": 3811,
+        "command": [
+          "C:/Program Files/Eclipse Adoptium/jdk-21.0.4.7-hotspot/bin/java.exe",
+          "-jar",
+          "D:\\projects\\JLinAlg\\build\\literature-review\\trim-galore-warning-candidate\\jlinalg-0.3.7.jar",
+          "trim-galore-tools",
+          "--home",
+          "D:\\projects\\JLinAlg\\build\\omics-trim-galore-fresh-fixed",
+          "--release",
+          "0.6.10",
+          "--reads",
+          "D:\\projects\\JLinAlg\\build\\literature-review\\trimgalore-runtime\\warning-fresh-python-scientific-smoke\\reads.fastq",
+          "--phred",
+          "33",
+          "--minimum-length",
+          "20",
+          "--adapter-kind",
+          "custom",
+          "--adapter1",
+          "AGATCGGAAGAGC",
+          "--fastqc",
+          "true",
+          "--out",
+          "D:\\projects\\JLinAlg\\build\\literature-review\\trimgalore-runtime\\warning-fresh-python-scientific-smoke\\result"
+        ],
+        "exit_code": 0,
+        "input_reads": 32,
+        "retained_reads": 32,
+        "scope": "Actual freshly prepared privateCPython3.13 pinned6wheel runtime at final path;original0610,Cutadapt5.2 andFastQC0.13.0 run through currentC7JAR. Exact read/quality outputs,original incomplete-adapter warning with primer context,QC flags/diagnostics and console prominence verified. No global installation or profile mutation;earlier failed relocated-venv experiment retained."
+      },
+      "warning_promotion_regression": {
+        "before_fix_jar_sha256": "b98fdc04d61c8dcad8ba5cdcbe8102c2f256119bd3513a0f44ce3d2f1d352a1c",
+        "before_fix_observation": "D:\\projects\\JLinAlg\\build\\literature-review\\trimgalore-runtime\\unpromoted-cutadapt-warning\\observed.json",
+        "current_behavior": "Original WARN/WARNING blocks and their indented context are copied into the warning summary and session metadata. Actual32read incomplete-adapter warning,primer caveat,unchanged retained reads,console and completed-with-qc-warnings status are verified in the current CLI suite and independent original workflow fixture."
+      },
+      "refreshed_utc": "2026-10-25T20:32:57.454823+00:00",
+      "current_validation": {
+        "full_gate": {
+          "tests": 1504,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 5
+        },
+        "required_suites": 61,
+        "all_required_without_skips": true,
+        "raw_snapshot": "D:\\projects\\JLinAlg\\build\\literature-review\\flash-runtime\\full-gate-2-snapshot",
+        "prior_packaged_regressions": "D:\\projects\\JLinAlg\\build\\literature-review\\flash-packaged-regressions\\verification.json",
+        "scope": "Current unchanged owned method sources retested on this JAR. Historical reference-generation counts/options remain scoped to their original fixtures;prior reports remain in validation_history."
+      }
+    },
+    {
+      "status": "passed-original-ordinary-and-hardtrim-subsets",
+      "jar_sha256": "2bfb8abfea10e53ce7b0e1035b0a7954feb9bed990d63578e817882a6d0541c0",
+      "recorded_utc": "2026-10-25T20:32:57.454823+00:00",
+      "source_sha256": {
+        "src/main/java/org/jlinalg/cli/TrimGaloreToolsCli.java": "d166ab2f84fa7554b23997c362ab87bcfed444e0e622ddd7f10e1aa76ea32b46",
+        "src/main/java/org/jlinalg/cli/TrimGaloreRuntime.java": "aefc702d5e200ad8859ae72f59deafb4e791b59f4ef6d7eb938c22d8d70fa085",
+        "src/main/java/org/jlinalg/cli/TrimGaloreAudit.java": "c648d5dfe321c64f2c6d3a59413d0a90f2ffd11d8bd96a8afa69ba2a578a7ec0",
+        "src/main/java/org/jlinalg/cli/SequenceToolsCli.java": "7c57684e774894dd1c6532a1eef575e0fe16cc18683e557088daf296ddc49f29",
+        "src/main/resources/org/jlinalg/omics/trim_galore_original.py": "616733df60cc2b67e0a3f6ba535611acdd60c0fd908950a4ca3eb1c0ce164233",
+        "src/main/resources/org/jlinalg/omics/trim_galore_runtime_lock.json": "a6b1cda8c1d2ccd09633eca3eddb00cac90a3c57ff107be8132de8e319d57811",
+        "src/test/java/org/jlinalg/cli/TrimGaloreToolsCliTest.java": "e6971a0356682cd55bf822dd94c15e5eb5da9afac1913d4d919f544bd5fab6a2",
+        "src/test/java/org/jlinalg/cli/TrimGaloreAuditTest.java": "5fdf48578197111fef89b9cf7d03ade4a0374acbb933d9d3fc87e692f557c720",
+        "tools/literature/install_trim_galore.py": "311b3f4ef9c2e08aa93db158ec212336af16cafd6e1498911c0e5bee7e102dde",
+        "tools/literature/trim-galore-runtime-lock.json": "a6b1cda8c1d2ccd09633eca3eddb00cac90a3c57ff107be8132de8e319d57811",
+        "tools/literature/test_trim_galore_dependency_policy.py": "e435f767b0c95d24fe0c40a1a0f085425f20b2dc2ed9a3a99bf7394656bf927c",
+        "tools/literature/verify_trim_galore_workflows.py": "ab0c52683b804d5ccd3576dbf32f887fdfc11475089717cb5bb2a052bbfdf25c"
+      },
+      "current_full_gate_suites": {
+        "org.jlinalg.cli.TrimGaloreAuditTest": {
+          "suite_name": "org.jlinalg.cli.TrimGaloreAuditTest",
+          "suite": {
+            "tests": 3,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "6b0d02387a9d2d1b2a28496a660c2c46edf66b47310a27071d9b0c1bdb6696a3",
+          "testcases": [
+            "sourceSpanRequiresCompleteHeaderAndPairedSequenceQualityPositions()",
+            "repetitiveMegabaseReadAuditAvoidsQuadraticSpanSearch()",
+            "repeatedAndEmptySpansAreReportedAsAmbiguousWithoutInventingCoordinates()"
+          ]
+        },
+        "org.jlinalg.cli.TrimGaloreToolsCliTest": {
+          "suite_name": "org.jlinalg.cli.TrimGaloreToolsCliTest",
+          "suite": {
+            "tests": 9,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "42265b2e602120bcae72b42286124f4a0be7a1b96d684891476fdde588c1ba1b",
+          "testcases": [
+            "originalAutoSmallRnaResolvesItsOwnEighteenBaseDefault()",
+            "original067TrimsActualAdaptersQualityAndRunsOriginalFastqcWithSpacePaths()",
+            "missingProfileSkipsProminentlyAndInvalidInputsFailWithOriginalPartialData()",
+            "originalHardtrimKeepsShortAndEmptyReadsWithoutQualityOrLengthFiltering()",
+            "original610PairedWgbsCutsKeepActualOrphansIncludingOriginalOversizedRescue()",
+            "originalCutadaptIncompleteAdapterWarningIsPromotedWithoutChangingRetainedReads()",
+            "ordinaryAsciiContractFailsBeforeExecutionWhileOriginalHardtrimPreservesUtf8Headers()",
+            "actualPhred64QualityAndDistinctNextseqTrimPreserveOriginalQualityBytes()",
+            "utf8OptionsFilePreservesUnicodeDataPathsAndExplicitCliOverridesWithoutRenamingReads()"
+          ]
+        }
+      },
+      "api_cli_tests": 12,
+      "full_gate": {
+        "tests": 1504,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 5
+      },
+      "required_suites": 61,
+      "packaged_calls": 25,
+      "independent_original_runs": 22,
+      "original_reference_scope": "Actual packaged Java adapter compared with separately launched unmodified original Perl scripts and native Cutadapt console launcher using an older independent LF bridge. Literal original flags and hand-checked golden streams. FastQC ZIP flags are separately matched to the promoted QC table. Negative ordinary-ASCII contract and dependency cases are explicit. No RRBS,explicit poly-A,old-version/old-FastQC or full-paper parity.",
+      "runtime_marker_sha256": "4d625c788b4f6c47d7b5f8bbca81c78748da5ff48ecef3b861d109fdc9048aeb",
+      "native_helper_validation": "../../trim-galore-native-validation.json",
+      "scope": "Unmodified Perl0.6.7/0.6.10 with originalCutadapt5.2,ordinary single/paired adapter/quality processing,auto/preset/literal adapters,typed fixed cuts,N/length/rescue and hardtrim. Optional originalFastQC0.13.0 flags and diagnostics. Actual source/quality/span/identity/stream audits and explicit ASCIIordinary-header/UTF8recipe input contract. No RRBS,explicitpolyA,clock/UMI,multicore,Rust,historicalCutadapt/oldFastQC or complete-paper parity.",
+      "additional_utf8_input_output_checks": {
+        "status": "passed",
+        "jar_sha256": "2bfb8abfea10e53ce7b0e1035b0a7954feb9bed990d63578e817882a6d0541c0",
+        "steps": [
+          {
+            "name": "temurin21",
+            "command": [
+              "C:/Program Files/Eclipse Adoptium/jdk-21.0.4.7-hotspot/bin/java.exe",
+              "-jar",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\flash-candidate\\jlinalg-0.3.7.jar",
+              "trim-galore-tools",
+              "--options-file",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\flash-runtime\\trim-galore-unicode-output-smoke\\temurin21-options.json"
+            ],
+            "exit_code": 0,
+            "source_sha256": "6b74f35c8cfac23ab3bfff5f609377ccd13146f76eae1bd50dab821780378885",
+            "recipe_sha256": "91eb0f7c33a558127ba048de798b2a5a7fd81d97cd44ce1e67243eebcc7911d5",
+            "version_sha256": "2ce8c9c87571e0ccf6f799aa701598fadcece73897f0569fec973861fc1c9a0f",
+            "output": "D:\\projects\\JLinAlg\\build\\literature-review\\flash-runtime\\trim-galore-unicode-output-smoke\\temurin21-output-μ"
+          },
+          {
+            "name": "oracle25",
+            "command": [
+              "C:/Program Files/Common Files/Oracle/Java/javapath/java.EXE",
+              "-jar",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\flash-candidate\\jlinalg-0.3.7.jar",
+              "trim-galore-tools",
+              "--options-file",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\flash-runtime\\trim-galore-unicode-output-smoke\\oracle25-options.json"
+            ],
+            "exit_code": 0,
+            "source_sha256": "6b74f35c8cfac23ab3bfff5f609377ccd13146f76eae1bd50dab821780378885",
+            "recipe_sha256": "58e350ff3d1ca55895712198adc91fff14d0ef9cfe928fd071dfe1accb6630a8",
+            "version_sha256": "2f31acc03961549e6b6ed1103bcd941fd42ca836780e78a329904388f31ff1b7",
+            "output": "D:\\projects\\JLinAlg\\build\\literature-review\\flash-runtime\\trim-galore-unicode-output-smoke\\oracle25-output-μ"
+          }
+        ],
+        "producer_sha256": "80afd58f45588ffec0c19a8f41986634a7ee561661677b8867621c9768a5cb1d",
+        "scope": "Two actual packaged checks with Unicode input/output paths inside strictUTF8JSON and ASCIIrecipepath. Exact headers,bases and qualities preserved under actual Temurin21 and Oracle25. No native Windows Unicode-argv round-trip claim."
+      },
+      "fresh_private_python_scientific_validation": {
+        "status": "passed-original-trimming-warning-and-FastQC-on-fresh-pinned-Python",
+        "jar_sha256": "2bfb8abfea10e53ce7b0e1035b0a7954feb9bed990d63578e817882a6d0541c0",
+        "profile": "D:\\projects\\JLinAlg\\build\\omics-trim-galore-fresh-fixed",
+        "marker_sha256": "5119831a18bba3756501709a27cf7c8211296e5fa7d20bc30647fa2ef7e9449e",
+        "sealed_external_files": 3811,
+        "command": [
+          "C:/Program Files/Eclipse Adoptium/jdk-21.0.4.7-hotspot/bin/java.exe",
+          "-jar",
+          "D:\\projects\\JLinAlg\\build\\literature-review\\flash-candidate\\jlinalg-0.3.7.jar",
+          "trim-galore-tools",
+          "--home",
+          "D:\\projects\\JLinAlg\\build\\omics-trim-galore-fresh-fixed",
+          "--release",
+          "0.6.10",
+          "--reads",
+          "D:\\projects\\JLinAlg\\build\\literature-review\\trimgalore-runtime\\warning-fresh-python-scientific-smoke\\reads.fastq",
+          "--phred",
+          "33",
+          "--minimum-length",
+          "20",
+          "--adapter-kind",
+          "custom",
+          "--adapter1",
+          "AGATCGGAAGAGC",
+          "--fastqc",
+          "true",
+          "--out",
+          "D:\\projects\\JLinAlg\\build\\literature-review\\flash-runtime\\trim-galore-fresh-python-scientific-smoke\\result"
+        ],
+        "exit_code": 0,
+        "input_reads": 32,
+        "retained_reads": 32,
+        "scope": "Actual original0.6.10/Cutadapt5.2/FastQC0.13.0 through newFLASH-enabled JAR using unchanged3811file fresh-pinned-Python profile. Exact32retainedread/quality bytes equal priorindependentlyvalidatedoriginal science,primer-context warning andQCconsole/status retained. No installation or profilemutation.",
+        "input_sha256": "91be9fc744e643fff727787126e41460704707e8d2de2382fc7324418370fbef",
+        "producer_sha256": "ee69b6018963ca0210aec253cf2eb5d9e0cd085dd003597a9c0e394903385c4e"
+      },
+      "warning_promotion_regression": {
+        "before_fix_jar_sha256": "b98fdc04d61c8dcad8ba5cdcbe8102c2f256119bd3513a0f44ce3d2f1d352a1c",
+        "before_fix_observation": "D:\\projects\\JLinAlg\\build\\literature-review\\trimgalore-runtime\\unpromoted-cutadapt-warning\\observed.json",
+        "current_behavior": "Original WARN/WARNING blocks and their indented context are copied into the warning summary and session metadata. Actual32read incomplete-adapter warning,primer caveat,unchanged retained reads,console and completed-with-qc-warnings status are verified in the current CLI suite and independent original workflow fixture."
+      }
+    },
+    {
+      "status": "passed-original-ordinary-and-hardtrim-subsets",
+      "jar_sha256": "66be181d854806d9ae64d6f060e8defba8af5bdf594d3d352c9c76097a2a8d2e",
+      "recorded_utc": "2026-10-25T20:32:57.454823+00:00",
+      "source_sha256": {
+        "src/main/java/org/jlinalg/cli/TrimGaloreToolsCli.java": "d166ab2f84fa7554b23997c362ab87bcfed444e0e622ddd7f10e1aa76ea32b46",
+        "src/main/java/org/jlinalg/cli/TrimGaloreRuntime.java": "aefc702d5e200ad8859ae72f59deafb4e791b59f4ef6d7eb938c22d8d70fa085",
+        "src/main/java/org/jlinalg/cli/TrimGaloreAudit.java": "c648d5dfe321c64f2c6d3a59413d0a90f2ffd11d8bd96a8afa69ba2a578a7ec0",
+        "src/main/java/org/jlinalg/cli/SequenceToolsCli.java": "7c57684e774894dd1c6532a1eef575e0fe16cc18683e557088daf296ddc49f29",
+        "src/main/resources/org/jlinalg/omics/trim_galore_original.py": "616733df60cc2b67e0a3f6ba535611acdd60c0fd908950a4ca3eb1c0ce164233",
+        "src/main/resources/org/jlinalg/omics/trim_galore_runtime_lock.json": "a6b1cda8c1d2ccd09633eca3eddb00cac90a3c57ff107be8132de8e319d57811",
+        "src/test/java/org/jlinalg/cli/TrimGaloreToolsCliTest.java": "e6971a0356682cd55bf822dd94c15e5eb5da9afac1913d4d919f544bd5fab6a2",
+        "src/test/java/org/jlinalg/cli/TrimGaloreAuditTest.java": "5fdf48578197111fef89b9cf7d03ade4a0374acbb933d9d3fc87e692f557c720",
+        "tools/literature/install_trim_galore.py": "311b3f4ef9c2e08aa93db158ec212336af16cafd6e1498911c0e5bee7e102dde",
+        "tools/literature/trim-galore-runtime-lock.json": "a6b1cda8c1d2ccd09633eca3eddb00cac90a3c57ff107be8132de8e319d57811",
+        "tools/literature/test_trim_galore_dependency_policy.py": "e435f767b0c95d24fe0c40a1a0f085425f20b2dc2ed9a3a99bf7394656bf927c",
+        "tools/literature/verify_trim_galore_workflows.py": "ab0c52683b804d5ccd3576dbf32f887fdfc11475089717cb5bb2a052bbfdf25c"
+      },
+      "current_full_gate_suites": {
+        "org.jlinalg.cli.TrimGaloreAuditTest": {
+          "suite_name": "org.jlinalg.cli.TrimGaloreAuditTest",
+          "suite": {
+            "tests": 3,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "a7585cb718b4adf3daf5ab62661cefa90acc1b3a494bec513385066b7e31963d",
+          "testcases": [
+            "sourceSpanRequiresCompleteHeaderAndPairedSequenceQualityPositions()",
+            "repetitiveMegabaseReadAuditAvoidsQuadraticSpanSearch()",
+            "repeatedAndEmptySpansAreReportedAsAmbiguousWithoutInventingCoordinates()"
+          ]
+        },
+        "org.jlinalg.cli.TrimGaloreToolsCliTest": {
+          "suite_name": "org.jlinalg.cli.TrimGaloreToolsCliTest",
+          "suite": {
+            "tests": 9,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "067f61aba03eb87e06fc1151d474bf2e705ccded9a725475bddf99136a0760cd",
+          "testcases": [
+            "originalAutoSmallRnaResolvesItsOwnEighteenBaseDefault()",
+            "original067TrimsActualAdaptersQualityAndRunsOriginalFastqcWithSpacePaths()",
+            "missingProfileSkipsProminentlyAndInvalidInputsFailWithOriginalPartialData()",
+            "originalHardtrimKeepsShortAndEmptyReadsWithoutQualityOrLengthFiltering()",
+            "original610PairedWgbsCutsKeepActualOrphansIncludingOriginalOversizedRescue()",
+            "originalCutadaptIncompleteAdapterWarningIsPromotedWithoutChangingRetainedReads()",
+            "ordinaryAsciiContractFailsBeforeExecutionWhileOriginalHardtrimPreservesUtf8Headers()",
+            "actualPhred64QualityAndDistinctNextseqTrimPreserveOriginalQualityBytes()",
+            "utf8OptionsFilePreservesUnicodeDataPathsAndExplicitCliOverridesWithoutRenamingReads()"
+          ]
+        }
+      },
+      "api_cli_tests": 12,
+      "full_gate": {
+        "tests": 1552,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 5
+      },
+      "required_suites": 68,
+      "packaged_calls": 25,
+      "independent_original_runs": 22,
+      "original_reference_scope": "Actual packaged Java adapter compared with separately launched unmodified original Perl scripts and native Cutadapt console launcher using an older independent LF bridge. Literal original flags and hand-checked golden streams. FastQC ZIP flags are separately matched to the promoted QC table. Negative ordinary-ASCII contract and dependency cases are explicit. No RRBS,explicit poly-A,old-version/old-FastQC or full-paper parity.",
+      "runtime_marker_sha256": "4d625c788b4f6c47d7b5f8bbca81c78748da5ff48ecef3b861d109fdc9048aeb",
+      "native_helper_validation": "../../trim-galore-native-validation.json",
+      "scope": "Unmodified Perl0.6.7/0.6.10 with originalCutadapt5.2,ordinary single/paired adapter/quality processing,auto/preset/literal adapters,typed fixed cuts,N/length/rescue and hardtrim. Optional originalFastQC0.13.0 flags and diagnostics. Actual source/quality/span/identity/stream audits and explicit ASCIIordinary-header/UTF8recipe input contract. No RRBS,explicitpolyA,clock/UMI,multicore,Rust,historicalCutadapt/oldFastQC or complete-paper parity.",
+      "additional_utf8_input_output_checks": {
+        "status": "passed",
+        "jar_sha256": "2bfb8abfea10e53ce7b0e1035b0a7954feb9bed990d63578e817882a6d0541c0",
+        "steps": [
+          {
+            "name": "temurin21",
+            "command": [
+              "C:/Program Files/Eclipse Adoptium/jdk-21.0.4.7-hotspot/bin/java.exe",
+              "-jar",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\flash-candidate\\jlinalg-0.3.7.jar",
+              "trim-galore-tools",
+              "--options-file",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\flash-runtime\\trim-galore-unicode-output-smoke\\temurin21-options.json"
+            ],
+            "exit_code": 0,
+            "source_sha256": "6b74f35c8cfac23ab3bfff5f609377ccd13146f76eae1bd50dab821780378885",
+            "recipe_sha256": "91eb0f7c33a558127ba048de798b2a5a7fd81d97cd44ce1e67243eebcc7911d5",
+            "version_sha256": "2ce8c9c87571e0ccf6f799aa701598fadcece73897f0569fec973861fc1c9a0f",
+            "output": "D:\\projects\\JLinAlg\\build\\literature-review\\flash-runtime\\trim-galore-unicode-output-smoke\\temurin21-output-μ"
+          },
+          {
+            "name": "oracle25",
+            "command": [
+              "C:/Program Files/Common Files/Oracle/Java/javapath/java.EXE",
+              "-jar",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\flash-candidate\\jlinalg-0.3.7.jar",
+              "trim-galore-tools",
+              "--options-file",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\flash-runtime\\trim-galore-unicode-output-smoke\\oracle25-options.json"
+            ],
+            "exit_code": 0,
+            "source_sha256": "6b74f35c8cfac23ab3bfff5f609377ccd13146f76eae1bd50dab821780378885",
+            "recipe_sha256": "58e350ff3d1ca55895712198adc91fff14d0ef9cfe928fd071dfe1accb6630a8",
+            "version_sha256": "2f31acc03961549e6b6ed1103bcd941fd42ca836780e78a329904388f31ff1b7",
+            "output": "D:\\projects\\JLinAlg\\build\\literature-review\\flash-runtime\\trim-galore-unicode-output-smoke\\oracle25-output-μ"
+          }
+        ],
+        "producer_sha256": "80afd58f45588ffec0c19a8f41986634a7ee561661677b8867621c9768a5cb1d",
+        "scope": "Two actual packaged checks with Unicode input/output paths inside strictUTF8JSON and ASCIIrecipepath. Exact headers,bases and qualities preserved under actual Temurin21 and Oracle25. No native Windows Unicode-argv round-trip claim."
+      },
+      "fresh_private_python_scientific_validation": {
+        "status": "passed-original-trimming-warning-and-FastQC-on-fresh-pinned-Python",
+        "jar_sha256": "2bfb8abfea10e53ce7b0e1035b0a7954feb9bed990d63578e817882a6d0541c0",
+        "profile": "D:\\projects\\JLinAlg\\build\\omics-trim-galore-fresh-fixed",
+        "marker_sha256": "5119831a18bba3756501709a27cf7c8211296e5fa7d20bc30647fa2ef7e9449e",
+        "sealed_external_files": 3811,
+        "command": [
+          "C:/Program Files/Eclipse Adoptium/jdk-21.0.4.7-hotspot/bin/java.exe",
+          "-jar",
+          "D:\\projects\\JLinAlg\\build\\literature-review\\flash-candidate\\jlinalg-0.3.7.jar",
+          "trim-galore-tools",
+          "--home",
+          "D:\\projects\\JLinAlg\\build\\omics-trim-galore-fresh-fixed",
+          "--release",
+          "0.6.10",
+          "--reads",
+          "D:\\projects\\JLinAlg\\build\\literature-review\\trimgalore-runtime\\warning-fresh-python-scientific-smoke\\reads.fastq",
+          "--phred",
+          "33",
+          "--minimum-length",
+          "20",
+          "--adapter-kind",
+          "custom",
+          "--adapter1",
+          "AGATCGGAAGAGC",
+          "--fastqc",
+          "true",
+          "--out",
+          "D:\\projects\\JLinAlg\\build\\literature-review\\flash-runtime\\trim-galore-fresh-python-scientific-smoke\\result"
+        ],
+        "exit_code": 0,
+        "input_reads": 32,
+        "retained_reads": 32,
+        "scope": "Actual original0.6.10/Cutadapt5.2/FastQC0.13.0 through newFLASH-enabled JAR using unchanged3811file fresh-pinned-Python profile. Exact32retainedread/quality bytes equal priorindependentlyvalidatedoriginal science,primer-context warning andQCconsole/status retained. No installation or profilemutation.",
+        "input_sha256": "91be9fc744e643fff727787126e41460704707e8d2de2382fc7324418370fbef",
+        "producer_sha256": "ee69b6018963ca0210aec253cf2eb5d9e0cd085dd003597a9c0e394903385c4e"
+      },
+      "warning_promotion_regression": {
+        "before_fix_jar_sha256": "b98fdc04d61c8dcad8ba5cdcbe8102c2f256119bd3513a0f44ce3d2f1d352a1c",
+        "before_fix_observation": "D:\\projects\\JLinAlg\\build\\literature-review\\trimgalore-runtime\\unpromoted-cutadapt-warning\\observed.json",
+        "current_behavior": "Original WARN/WARNING blocks and their indented context are copied into the warning summary and session metadata. Actual32read incomplete-adapter warning,primer caveat,unchanged retained reads,console and completed-with-qc-warnings status are verified in the current CLI suite and independent original workflow fixture."
+      },
+      "refreshed_utc": "2026-10-25T23:24:57.944602+00:00",
+      "current_validation": {
+        "full_gate": {
+          "tests": 1552,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 5
+        },
+        "required_suites": 68,
+        "all_required_without_skips": true,
+        "raw_snapshot": "D:\\projects\\JLinAlg\\build\\literature-review\\fimo-runtime\\configured-full-gate-1",
+        "prior_packaged_regressions": "D:\\projects\\JLinAlg\\build\\literature-review\\fimo-runtime\\prior-packaged-regressions-1\\verification.json",
+        "scope": "Current unchanged owned method sources retested on this JAR. Historical reference-generation counts/options remain scoped to their original fixtures;prior reports remain in validation_history."
+      }
+    },
+    {
+      "status": "passed-original-ordinary-and-hardtrim-subsets",
+      "jar_sha256": "66be181d854806d9ae64d6f060e8defba8af5bdf594d3d352c9c76097a2a8d2e",
+      "recorded_utc": "2026-10-25T23:24:57.944602+00:00",
+      "source_sha256": {
+        "src/main/java/org/jlinalg/cli/TrimGaloreToolsCli.java": "d166ab2f84fa7554b23997c362ab87bcfed444e0e622ddd7f10e1aa76ea32b46",
+        "src/main/java/org/jlinalg/cli/TrimGaloreRuntime.java": "aefc702d5e200ad8859ae72f59deafb4e791b59f4ef6d7eb938c22d8d70fa085",
+        "src/main/java/org/jlinalg/cli/TrimGaloreAudit.java": "c648d5dfe321c64f2c6d3a59413d0a90f2ffd11d8bd96a8afa69ba2a578a7ec0",
+        "src/main/java/org/jlinalg/cli/SequenceToolsCli.java": "7c57684e774894dd1c6532a1eef575e0fe16cc18683e557088daf296ddc49f29",
+        "src/main/resources/org/jlinalg/omics/trim_galore_original.py": "616733df60cc2b67e0a3f6ba535611acdd60c0fd908950a4ca3eb1c0ce164233",
+        "src/main/resources/org/jlinalg/omics/trim_galore_runtime_lock.json": "a6b1cda8c1d2ccd09633eca3eddb00cac90a3c57ff107be8132de8e319d57811",
+        "src/test/java/org/jlinalg/cli/TrimGaloreToolsCliTest.java": "e6971a0356682cd55bf822dd94c15e5eb5da9afac1913d4d919f544bd5fab6a2",
+        "src/test/java/org/jlinalg/cli/TrimGaloreAuditTest.java": "5fdf48578197111fef89b9cf7d03ade4a0374acbb933d9d3fc87e692f557c720",
+        "tools/literature/install_trim_galore.py": "311b3f4ef9c2e08aa93db158ec212336af16cafd6e1498911c0e5bee7e102dde",
+        "tools/literature/trim-galore-runtime-lock.json": "a6b1cda8c1d2ccd09633eca3eddb00cac90a3c57ff107be8132de8e319d57811",
+        "tools/literature/test_trim_galore_dependency_policy.py": "e435f767b0c95d24fe0c40a1a0f085425f20b2dc2ed9a3a99bf7394656bf927c",
+        "tools/literature/verify_trim_galore_workflows.py": "ab0c52683b804d5ccd3576dbf32f887fdfc11475089717cb5bb2a052bbfdf25c"
+      },
+      "current_full_gate_suites": {
+        "org.jlinalg.cli.TrimGaloreAuditTest": {
+          "suite_name": "org.jlinalg.cli.TrimGaloreAuditTest",
+          "suite": {
+            "tests": 3,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "a7585cb718b4adf3daf5ab62661cefa90acc1b3a494bec513385066b7e31963d",
+          "testcases": [
+            "sourceSpanRequiresCompleteHeaderAndPairedSequenceQualityPositions()",
+            "repetitiveMegabaseReadAuditAvoidsQuadraticSpanSearch()",
+            "repeatedAndEmptySpansAreReportedAsAmbiguousWithoutInventingCoordinates()"
+          ]
+        },
+        "org.jlinalg.cli.TrimGaloreToolsCliTest": {
+          "suite_name": "org.jlinalg.cli.TrimGaloreToolsCliTest",
+          "suite": {
+            "tests": 9,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "067f61aba03eb87e06fc1151d474bf2e705ccded9a725475bddf99136a0760cd",
+          "testcases": [
+            "originalAutoSmallRnaResolvesItsOwnEighteenBaseDefault()",
+            "original067TrimsActualAdaptersQualityAndRunsOriginalFastqcWithSpacePaths()",
+            "missingProfileSkipsProminentlyAndInvalidInputsFailWithOriginalPartialData()",
+            "originalHardtrimKeepsShortAndEmptyReadsWithoutQualityOrLengthFiltering()",
+            "original610PairedWgbsCutsKeepActualOrphansIncludingOriginalOversizedRescue()",
+            "originalCutadaptIncompleteAdapterWarningIsPromotedWithoutChangingRetainedReads()",
+            "ordinaryAsciiContractFailsBeforeExecutionWhileOriginalHardtrimPreservesUtf8Headers()",
+            "actualPhred64QualityAndDistinctNextseqTrimPreserveOriginalQualityBytes()",
+            "utf8OptionsFilePreservesUnicodeDataPathsAndExplicitCliOverridesWithoutRenamingReads()"
+          ]
+        }
+      },
+      "api_cli_tests": 12,
+      "full_gate": {
+        "tests": 1552,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 5
+      },
+      "required_suites": 68,
+      "packaged_calls": 25,
+      "independent_original_runs": 22,
+      "original_reference_scope": "Actual packaged Java adapter compared with separately launched unmodified original Perl scripts and native Cutadapt console launcher using an older independent LF bridge. Literal original flags and hand-checked golden streams. FastQC ZIP flags are separately matched to the promoted QC table. Negative ordinary-ASCII contract and dependency cases are explicit. No RRBS,explicit poly-A,old-version/old-FastQC or full-paper parity.",
+      "runtime_marker_sha256": "4d625c788b4f6c47d7b5f8bbca81c78748da5ff48ecef3b861d109fdc9048aeb",
+      "native_helper_validation": "../../trim-galore-native-validation.json",
+      "scope": "Unmodified Perl0.6.7/0.6.10 with originalCutadapt5.2,ordinary single/paired adapter/quality processing,auto/preset/literal adapters,typed fixed cuts,N/length/rescue and hardtrim. Optional originalFastQC0.13.0 flags and diagnostics. Actual source/quality/span/identity/stream audits and explicit ASCIIordinary-header/UTF8recipe input contract. No RRBS,explicitpolyA,clock/UMI,multicore,Rust,historicalCutadapt/oldFastQC or complete-paper parity.",
+      "additional_utf8_input_output_checks": {
+        "status": "passed",
+        "jar_sha256": "66be181d854806d9ae64d6f060e8defba8af5bdf594d3d352c9c76097a2a8d2e",
+        "steps": [
+          {
+            "name": "temurin21",
+            "command": [
+              "C:/Program Files/Eclipse Adoptium/jdk-21.0.4.7-hotspot/bin/java.exe",
+              "-jar",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\fimo-candidate\\jlinalg-0.3.7.jar",
+              "trim-galore-tools",
+              "--options-file",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\fimo-runtime\\trim-galore-unicode-output-smoke\\temurin21-options.json"
+            ],
+            "exit_code": 0,
+            "source_sha256": "6b74f35c8cfac23ab3bfff5f609377ccd13146f76eae1bd50dab821780378885",
+            "recipe_sha256": "c07eb7f4c92d2e020642191ea372844644d6313ef5537e189236c1fedc55e809",
+            "version_sha256": "2ce8c9c87571e0ccf6f799aa701598fadcece73897f0569fec973861fc1c9a0f",
+            "output": "D:\\projects\\JLinAlg\\build\\literature-review\\fimo-runtime\\trim-galore-unicode-output-smoke\\temurin21-output-μ"
+          },
+          {
+            "name": "oracle25",
+            "command": [
+              "C:/Program Files/Common Files/Oracle/Java/javapath/java.EXE",
+              "-jar",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\fimo-candidate\\jlinalg-0.3.7.jar",
+              "trim-galore-tools",
+              "--options-file",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\fimo-runtime\\trim-galore-unicode-output-smoke\\oracle25-options.json"
+            ],
+            "exit_code": 0,
+            "source_sha256": "6b74f35c8cfac23ab3bfff5f609377ccd13146f76eae1bd50dab821780378885",
+            "recipe_sha256": "9631c6ab23d581e3af2080211f38dc69382c0d5770bcc606efaacdf386cec4b1",
+            "version_sha256": "2f31acc03961549e6b6ed1103bcd941fd42ca836780e78a329904388f31ff1b7",
+            "output": "D:\\projects\\JLinAlg\\build\\literature-review\\fimo-runtime\\trim-galore-unicode-output-smoke\\oracle25-output-μ"
+          }
+        ],
+        "producer_sha256": "9b556a4defd93441d59a63af2f80f3301b3be95229d8653b786c7161a8f8987b",
+        "scope": "Two actual packaged checks with Unicode input/output paths inside strictUTF8JSON and ASCIIrecipepath. Exact headers,bases and qualities preserved under actual Temurin21 and Oracle25. No native Windows Unicode-argv round-trip claim."
+      },
+      "fresh_private_python_scientific_validation": {
+        "status": "passed-original-trimming-warning-and-FastQC-on-fresh-pinned-Python",
+        "jar_sha256": "66be181d854806d9ae64d6f060e8defba8af5bdf594d3d352c9c76097a2a8d2e",
+        "profile": "D:\\projects\\JLinAlg\\build\\omics-trim-galore-fresh-fixed",
+        "marker_sha256": "5119831a18bba3756501709a27cf7c8211296e5fa7d20bc30647fa2ef7e9449e",
+        "sealed_external_files": 3811,
+        "command": [
+          "C:/Program Files/Eclipse Adoptium/jdk-21.0.4.7-hotspot/bin/java.exe",
+          "-jar",
+          "D:\\projects\\JLinAlg\\build\\literature-review\\fimo-candidate\\jlinalg-0.3.7.jar",
+          "trim-galore-tools",
+          "--home",
+          "D:\\projects\\JLinAlg\\build\\omics-trim-galore-fresh-fixed",
+          "--release",
+          "0.6.10",
+          "--reads",
+          "D:\\projects\\JLinAlg\\build\\literature-review\\trimgalore-runtime\\warning-fresh-python-scientific-smoke\\reads.fastq",
+          "--phred",
+          "33",
+          "--minimum-length",
+          "20",
+          "--adapter-kind",
+          "custom",
+          "--adapter1",
+          "AGATCGGAAGAGC",
+          "--fastqc",
+          "true",
+          "--out",
+          "D:\\projects\\JLinAlg\\build\\literature-review\\fimo-runtime\\trim-galore-fresh-python-scientific-smoke\\result"
+        ],
+        "exit_code": 0,
+        "input_reads": 32,
+        "retained_reads": 32,
+        "scope": "Actual original0.6.10/Cutadapt5.2/FastQC0.13.0 through newFIMO-enabled JAR using unchanged3811file fresh-pinned-Python profile. Exact32retainedread/quality bytes equal priorindependentlyvalidatedoriginal science,primer-context warning andQCconsole/status retained. No installation or profilemutation.",
+        "input_sha256": "91be9fc744e643fff727787126e41460704707e8d2de2382fc7324418370fbef",
+        "producer_sha256": "9de48788698377fd0190b813b6a36b54e7dd7115085790747a93a327dfb1ca00"
+      },
+      "warning_promotion_regression": {
+        "before_fix_jar_sha256": "b98fdc04d61c8dcad8ba5cdcbe8102c2f256119bd3513a0f44ce3d2f1d352a1c",
+        "before_fix_observation": "D:\\projects\\JLinAlg\\build\\literature-review\\trimgalore-runtime\\unpromoted-cutadapt-warning\\observed.json",
+        "current_behavior": "Original WARN/WARNING blocks and their indented context are copied into the warning summary and session metadata. Actual32read incomplete-adapter warning,primer caveat,unchanged retained reads,console and completed-with-qc-warnings status are verified in the current CLI suite and independent original workflow fixture."
+      }
+    }
+  ]
+}

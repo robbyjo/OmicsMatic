@@ -12,6 +12,15 @@ import org.jlinalg.internal.MatrixOps;
 public final class CoxRegression {
     private CoxRegression() { }
 
+    /** The ordinary fit reports numerical convergence; this API additionally requires a finite-MPLE certificate. */
+    public record CheckedFit(CoxResult fit,CoxLikelihoodExistence.Result likelihood) { }
+    public static CheckedFit fitChecked(CoxSurvivalData survival,double[][] covariates,double[] offset,
+            CoxOptions options,BackendPolicy backendPolicy,CoxLikelihoodExistence.Options existenceOptions){
+        var existence=CoxLikelihoodExistence.analyze(survival,covariates,existenceOptions);
+        if(!existence.finiteMaximum())throw new CoxLikelihoodException(existence);
+        return new CheckedFit(fit(survival,covariates,offset,options,backendPolicy),existence);
+    }
+
     public static CoxResult fit(
             CoxSurvivalData survival, double[][] covariates) {
         return fit(survival, covariates, null,
@@ -97,11 +106,20 @@ public final class CoxRegression {
         if (covariates == null || covariates.length == 0)
             throw new IllegalArgumentException("Cox covariates are required");
         int rows = survival.observations();
-        if (covariates.length != rows || covariates[0] == null
-                || covariates[0].length == 0)
+        if (covariates.length != rows || covariates[0] == null)
             throw new IllegalArgumentException(
                 "covariate rows must match survival observations");
         int columns = covariates[0].length;
+        if (columns == 0) {
+            for (double[] row : covariates) if (row == null || row.length != 0)
+                throw new IllegalArgumentException("Null-only Cox design rows must all have zero columns");
+            double[] offsets = offset == null ? new double[rows] : MatrixOps.finiteCopy(offset,"offset");
+            if(offsets.length != rows)throw new IllegalArgumentException("one Cox offset is required per observation");
+            double[] empty=new double[0];
+            var evaluation=CoxPartialLikelihood.evaluate(survival,empty,0,empty,offsets,options.ties(),riskSets,countingRiskSets);
+            return new CoxResult(empty,empty,CoxPartialLikelihood.baseline(survival,empty,0,empty,offsets,options.ties(),riskSets,countingRiskSets),
+                evaluation.logLikelihood(),options,0,true,"no regression coefficients to estimate",provenance);
+        }
         double[] design = MatrixOps.rowMajor(covariates, rows);
         validateColumns(design, rows, columns);
         double[] originalDesign=design.clone(), columnScale=new double[columns];

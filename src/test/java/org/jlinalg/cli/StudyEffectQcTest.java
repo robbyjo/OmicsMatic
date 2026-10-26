@@ -86,8 +86,21 @@ class StudyEffectQcTest {
                 Map.<String,Object>of("robust_z",Double.NaN),Map.<String,Object>of("min_features",2),Map.<String,Object>of("min_features",3.5),Map.<String,Object>of("max_abs_effect",-1)))
             assertThrows(IllegalArgumentException.class,()->apply(path,settings));
         Files.writeString(path,"feature_id\tbeta\tse\tp_value\na\t1\t1\t.5\nb\t2\t1\t.5\n");
-        assertThrows(IOException.class,()->apply(path,Map.of("max_abs_effect",1e-12)));
+        var empty = apply(path,Map.of("max_abs_effect",1e-12));
+        assertEquals(2, empty.document().get("excluded_rows"));
+        assertTrue(DelimitedData.readResult(path).rows().isEmpty());
+        assertEquals(2, DelimitedData.readResult(directory.resolve("pre-effect-qc-results/data.tsv")).rows().size());
         assertTrue(Files.exists(directory.resolve("effect-outlier-qc.yaml")));
+    }
+
+    @Test void validEmptyFamilyIsNotMistakenForFailedEffectQc() throws Exception {
+        Path path = directory.resolve("empty.tsv");
+        Files.writeString(path, "feature_id\tbeta\tse\tp_value\n");
+        var qc = apply(path, Map.of());
+        assertEquals(false, qc.document().get("performed"));
+        assertEquals(0, qc.document().get("tested_rows"));
+        assertTrue(qc.document().toString().contains("no_estimable_input"));
+        assertTrue(DelimitedData.readResult(path).rows().isEmpty());
     }
 
     @Test void harmonizationPropagatesExclusionsThroughCommonUniverseComparisonsMetaAndMr() throws Exception {
@@ -104,6 +117,7 @@ class StudyEffectQcTest {
         for(String dataset:List.of("left","right"))assertFalse(Files.readString(output.resolve("standard-results/"+dataset+".tsv")).contains("extreme"));
         assertFalse(Files.readString(output.resolve("feature-annotation.tsv")).contains("extreme"));
         assertTrue(result.details().containsKey("method_report"));
+        StudyTestSources.seal(output,"validate_harmonize","harmonize","h");
         Path comparisons=Files.createDirectory(directory.resolve("comparisons"));
         var compared=new StudyCliExecutor().execute(new Context(directory,comparisons,Map.of("type","effect_comparison","hypothesis","h"),study,Map.of(),Map.of("harmonized",output)));
         assertEquals(State.COMPLETE,compared.state());
@@ -114,6 +128,8 @@ class StudyEffectQcTest {
         Files.writeString(meta.resolve("manifest.yaml"),"operation_type: meta_analysis\nstate: complete\n");
         Files.writeString(output.resolve("manifest.yaml"),"operation_type: validate_harmonize\nstate: complete\n");
         Files.writeString(output.resolve("feature-annotation.tsv"),"feature_id\tgene_symbol\tgene_id\tchromosome\tstart\tend\tgenome_build\tmapping_status\nfeature-0\tTEST\tGENE\t1\t100\t300\tGRCh38\tlocated\n");
+        StudyTestSources.seal(output,"validate_harmonize","harmonize","h");
+        StudyTestSources.seal(meta,"meta_analysis","meta","h");
         Context mr=new Context(directory,meta,Map.of("type","mendelian_randomization","hypothesis","h"),study,Map.of(),Map.of("harmonized",output,"meta",meta));
         assertFalse(StudyBioinformatics.mrFeatures(mr).isEmpty());
         assertFalse(StudyBioinformatics.mrFeatures(mr).stream().anyMatch(feature->feature.id().equals("extreme")));

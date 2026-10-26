@@ -46,7 +46,7 @@ final class StudyFeatureAnnotations {
             String id = text(dataset.get("id"));
             Path standardized = results.get(id);
             if (standardized == null) continue;
-            DelimitedData rows = DelimitedData.read(standardized);
+            DelimitedData rows = DelimitedData.readResult(standardized);
             int featureColumn = rows.column("feature_id");
             Set<String> features = new LinkedHashSet<>();
             for (String[] row : rows.rows()) features.add(row[featureColumn]);

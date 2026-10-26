@@ -30,6 +30,8 @@ public final class FastCoxAssociation {
     private final double[] offset;
     private final CoxOptions coxOptions;
     private final CoxResult nullModel;
+    private final CoxAdaptiveLikelihood.Result nullLikelihood;
+    private final double[] nullCoefficients, nullCovariance;
     private final CoxRiskSetPlan rightCensoredPlan;
     private final CoxCountingProcessPlan countingProcessPlan;
     private final List<String> clusterIds;
@@ -37,7 +39,7 @@ public final class FastCoxAssociation {
 
     private FastCoxAssociation(CoxSurvivalData survival, int observations,
             int covariateCount, double[] covariates, double[] offset,
-            CoxOptions coxOptions, CoxResult nullModel,
+            CoxOptions coxOptions, CoxResult nullModel,CoxAdaptiveLikelihood.Result nullLikelihood,
             List<String> clusterIds, double[] scoreCorrelation) {
         this.survival = survival;
         this.observations = observations;
@@ -46,6 +48,19 @@ public final class FastCoxAssociation {
         this.offset = offset;
         this.coxOptions = coxOptions;
         this.nullModel = nullModel;
+        this.nullLikelihood = nullLikelihood;
+        this.nullCoefficients=nullModel.beta();this.nullCovariance=nullModel.covariance();double[] units=new double[covariateCount];
+        for(int j=0;j<covariateCount;j++){
+            double low=Double.POSITIVE_INFINITY,high=Double.NEGATIVE_INFINITY;for(int i=0;i<observations;i++){low=Math.min(low,covariates[i*covariateCount+j]);high=Math.max(high,covariates[i*covariateCount+j]);}
+            double center=.5*low+.5*high,unit=Math.max(Math.abs(high-center),Math.abs(low-center));units[j]=unit;
+            if(!(unit>0)||!Double.isFinite(unit))throw new IllegalArgumentException("nonvarying or unrepresentable Cox null covariate");
+            for(int i=0;i<observations;i++)this.covariates[i*covariateCount+j]=(this.covariates[i*covariateCount+j]-center)/unit;
+            nullCoefficients[j]*=unit;if(!Double.isFinite(nullCoefficients[j]))throw new IllegalArgumentException("unrepresentable standardized Cox null coefficient");
+        }
+        for(int j=0;j<covariateCount;j++)for(int k=0;k<covariateCount;k++){
+            nullCovariance[j*covariateCount+k]=(nullCovariance[j*covariateCount+k]*units[j])*units[k];
+            if(!Double.isFinite(nullCovariance[j*covariateCount+k])||j==k&&!(nullCovariance[j*covariateCount+k]>0))throw new IllegalArgumentException("Cox null covariance is not representable in source units; rescale covariates");
+        }
         this.rightCensoredPlan = CoxRiskSetPlan.prepare(survival);
         this.countingProcessPlan = rightCensoredPlan == null
             ? CoxCountingProcessPlan.prepare(survival) : null;
@@ -71,13 +86,21 @@ public final class FastCoxAssociation {
             double[] offset, CoxOptions coxOptions,
             AssociationEngineOptions engineOptions,
             List<String> clusterIds, double[] scoreCorrelation) {
+        return prepare(survival,covariates,offset,coxOptions,engineOptions,clusterIds,scoreCorrelation,CoxLikelihoodExistence.Options.defaults());
+    }
+    /** Explicit certificate bounds; no score scan is prepared from an uncertified nuisance maximum. */
+    public static FastCoxAssociation prepare(CoxSurvivalData survival,double[][] covariates,double[] offset,CoxOptions coxOptions,
+            AssociationEngineOptions engineOptions,List<String> clusterIds,double[] scoreCorrelation,CoxLikelihoodExistence.Options existenceOptions) {
         if (survival == null || covariates == null || coxOptions == null
                 || engineOptions == null
                 || covariates.length != survival.observations())
             throw new IllegalArgumentException(
                 "Cox score-scan inputs are required and row-aligned");
         int rows = survival.observations();
-        double[] fixed = MatrixOps.rowMajor(covariates, rows);
+        int columns=covariates[0]==null?-1:covariates[0].length;
+        double[] fixed;
+        if(columns==0){for(double[] row:covariates)if(row==null||row.length!=0)throw new IllegalArgumentException("rectangular null-only Cox design required");fixed=new double[0];}
+        else fixed = MatrixOps.rowMajor(covariates, rows);
         double[] offsets = offset == null ? new double[rows] : offset.clone();
         if (offsets.length != rows)
             throw new IllegalArgumentException("one Cox offset is required per row");
@@ -89,13 +112,15 @@ public final class FastCoxAssociation {
                 && scoreCorrelation.length != Math.multiplyExact(rows, rows))
             throw new IllegalArgumentException(
                 "score correlation must be an observation-square matrix");
+        for(double value:offsets)if(!Double.isFinite(value))throw new IllegalArgumentException("finite Cox offsets required");
+        var likelihood=CoxAdaptiveLikelihood.analyze(survival,covariates,existenceOptions);if(!likelihood.finiteMaximum())throw new CoxLikelihoodException(likelihood.proof());
         CoxResult nullModel = CoxRegression.fit(survival, covariates,
             offsets, coxOptions, engineOptions.backendPolicy());
         if (!nullModel.converged())
             throw new IllegalArgumentException("Cox null model did not converge: "
                 + nullModel.convergenceMessage());
         return new FastCoxAssociation(survival, rows, covariates[0].length,
-            fixed, offsets, coxOptions, nullModel,
+            fixed, offsets, coxOptions, nullModel,likelihood,
             clusterIds == null ? null : List.copyOf(clusterIds),
             scoreCorrelation == null ? null : scoreCorrelation.clone());
     }
@@ -160,6 +185,7 @@ public final class FastCoxAssociation {
     }
 
     public CoxResult nullModel() { return nullModel; }
+    public CoxAdaptiveLikelihood.Result nullLikelihood() { return nullLikelihood; }
     public BackendProvenance backend() { return nullModel.backend(); }
     public int observations() { return observations; }
 
@@ -171,18 +197,21 @@ public final class FastCoxAssociation {
         if(clusterIds!=null || scoreCorrelation!=null)throw new IllegalArgumentException("full score export currently requires model-based Cox variance");
         int m=variants.length,p=covariateCount,k=p+m;
         double[] design=new double[observations*k],coefficients=new double[k];
-        System.arraycopy(nullModel.beta(),0,coefficients,0,p);
+        System.arraycopy(nullCoefficients,0,coefficients,0,p);double[] units=new double[m];
         for(int i=0;i<observations;i++)System.arraycopy(covariates,i*p,design,i*k,p);
         for(int j=0;j<m;j++) {
             if(variants[j]==null || variants[j].length!=observations)throw new IllegalArgumentException("variant sample alignment differs from null");
+            double low=Double.POSITIVE_INFINITY,high=Double.NEGATIVE_INFINITY;
             for(int i=0;i<observations;i++) {
                 if(!Double.isFinite(variants[j][i]))throw new IllegalArgumentException("finite imputed variants required");
-                design[i*k+p+j]=variants[j][i];
+                low=Math.min(low,variants[j][i]);high=Math.max(high,variants[j][i]);
             }
+            double center=.5*low+.5*high,unit=Math.max(Math.abs(high-center),Math.abs(low-center));if(unit==0)unit=1;units[j]=unit;
+            for(int i=0;i<observations;i++)design[i*k+p+j]=(variants[j][i]-center)/unit;
         }
         var evaluation=CoxPartialLikelihood.evaluate(survival,design,k,coefficients,offset,
             coxOptions.ties(),rightCensoredPlan,countingProcessPlan);
-        double[] inverse=nullModel.covariance(),information=evaluation.information(),scores=evaluation.score();
+        double[] inverse=nullCovariance,information=evaluation.information(),scores=evaluation.score();
         double[] u=new double[m],v=new double[m*m];double[][] projection=new double[m][p];
         for(int j=0;j<m;j++) {
             for(int c=0;c<p;c++)for(int d=0;d<p;d++)projection[j][c]+=information[(p+j)*k+d]*inverse[d*p+c];
@@ -191,6 +220,14 @@ public final class FastCoxAssociation {
                 double value=information[(p+j)*k+p+h];
                 for(int c=0;c<p;c++)value-=projection[j][c]*information[c*k+p+h];
                 v[j*m+h]=v[h*m+j]=value;
+            }
+        }
+        for(int j=0;j<m;j++){
+            u[j]*=units[j];if(!Double.isFinite(u[j]))throw new IllegalArgumentException("Cox score is not representable in source units; rescale predictors");
+            for(int k2=0;k2<=j;k2++){
+                double original=v[j*m+k2],restored=(original*units[j])*units[k2];
+                if(!Double.isFinite(restored)||j==k2&&original>0&&!(restored>0))throw new IllegalArgumentException("Cox score covariance is not representable in source units; rescale predictors");
+                v[j*m+k2]=restored;v[k2*m+j]=restored;
             }
         }
         return new org.jlinalg.settest.SetTestScoreState(u,v,m);
@@ -203,18 +240,19 @@ public final class FastCoxAssociation {
         int columns = covariateCount + count;
         double[] design = new double[observations * columns];
         boolean[] valid = new boolean[count];
+        double[] units=new double[count];
         Arrays.fill(valid, true);
         for (int row = 0; row < observations; row++)
             System.arraycopy(covariates, row * covariateCount, design,
                 row * columns, covariateCount);
         for (int variable = 0; variable < count; variable++) {
             int source = first + variable;
-            double sum = 0.0;
+            double low=Double.POSITIVE_INFINITY,high=Double.NEGATIVE_INFINITY;
             int finite = 0;
             int missing = -1;
             for (int row = 0; row < observations; row++) {
                 double value = predictors[row * total + source];
-                if (Double.isFinite(value)) { sum += value; finite++; }
+                if (Double.isFinite(value)) { low=Math.min(low,value);high=Math.max(high,value);finite++; }
                 else if (missing < 0) missing = row;
             }
             String failure = finite == 0 ? "predictor has no finite values"
@@ -226,20 +264,21 @@ public final class FastCoxAssociation {
                 valid[variable] = false;
                 continue;
             }
-            double mean = sum / finite;
+            double center=.5*low+.5*high,unit=Math.max(Math.abs(high-center),Math.abs(low-center));
+            if(!(unit>0)||!Double.isFinite(unit)){fail(source,names.get(source),"predictor is constant or unrepresentable",options,failures);valid[variable]=false;continue;}units[variable]=unit;
+            double mean=0;for(int row=0;row<observations;row++){double value=predictors[row*total+source];if(Double.isFinite(value))mean+=(value-center)/unit;}mean/=finite;
             for (int row = 0; row < observations; row++) {
                 double value = predictors[row * total + source];
                 design[row * columns + covariateCount + variable] =
-                    Double.isFinite(value) ? value : mean;
+                    Double.isFinite(value) ? (value-center)/unit : mean;
             }
         }
         double[] coefficients = new double[columns];
-        System.arraycopy(nullModel.beta(), 0, coefficients, 0, covariateCount);
+        System.arraycopy(nullCoefficients, 0, coefficients, 0, covariateCount);
         CoxPartialLikelihood.Evaluation evaluation =
             CoxPartialLikelihood.evaluate(survival, design, columns,
                 coefficients, offset, coxOptions.ties(), rightCensoredPlan,
                 countingProcessPlan);
-        double[] nullCovariance = nullModel.covariance();
         double[] residuals = variance == CoxScoreVariance.MODEL_BASED ? null
             : CoxDiagnostics.scoreResiduals(survival, design, columns,
                 coefficients, offset, coxOptions.ties());
@@ -265,7 +304,8 @@ public final class FastCoxAssociation {
                 continue;
             }
             double score = evaluation.score()[predictor];
-            beta[destination] = score / information;
+            for(int column=0;column<covariateCount;column++)score-=projection[column]*evaluation.score()[column];
+            double estimate=score/information/units[variable];
             double varianceValue = 1.0 / information;
             if (residuals != null) {
                 double[] efficient = new double[observations];
@@ -279,8 +319,9 @@ public final class FastCoxAssociation {
                     ? clusterMeat(efficient) : relatednessMeat(efficient);
                 varianceValue = meat / (information * information);
             }
-            standardErrors[destination] = Math.sqrt(Math.max(0.0,
-                varianceValue));
+            double se=Math.sqrt(Math.max(0.0,varianceValue))/units[variable];
+            if(!Double.isFinite(estimate)||!Double.isFinite(se)||!(se>0)){fail(destination,names.get(destination),"Cox one-step effect/SE is not representable in source units",options,failures);continue;}
+            beta[destination]=estimate;standardErrors[destination]=se;
         }
     }
 

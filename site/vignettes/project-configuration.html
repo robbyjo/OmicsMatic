@@ -33,7 +33,8 @@ commands:
     input: {path: variants.tsv}
     genome-build: GRCh38
 </code></pre></div>
-<p>The only root keys are <code>schema_version</code>, <code>defaults</code>, and <code>commands</code>. <code>defaults</code>
+<p>The root keys are <code>schema_version</code>, <code>defaults</code>, <code>commands</code>, and the optional
+machine-resource section <code>resources</code>. <code>defaults</code>
 contains CLI options common to the commands you intend to run; prefer command
 sections because commands reject inapplicable options. Use <code>association</code> for the
 original formula CLI and <code>enrichment</code> for <code>--enrichment</code> commands. Other section
@@ -56,6 +57,26 @@ always remain relative to the working directory. Environment-variable expansion,
 shell commands, YAML object tags, duplicate keys and aliases are not supported.
 Store credentials outside these files; HTTP commands accept an environment-variable
 <strong>name</strong> through <code>token-env</code>, never a literal token.</p>
+<h3 id="shared-public-resource-cache">Shared public-resource cache</h3>
+<p>Large non-secret reference resources can be shared by every study project through
+the user/machine file:</p>
+<div class="code-window"><div class="code-bar"><span>yaml</span></div><pre><code>schema_version: 1
+resources:
+  directory: {path: D:/Research/jlinalg-resources}
+</code></pre></div>
+<p><code>resources.directory</code> is resolved relative to the configuration file when it is
+relative, and may be an absolute path. A study contract's explicit
+<code>resources.directory</code> takes precedence; without either setting, the study keeps
+using its project-local <code>resources/</code> directory. No credentials, cohort paths, or
+participant data belong in the global configuration.</p>
+<p>Study resolution preserves an omitted directory as omitted. It does not insert
+the project-local fallback into <code>resolved-study.yaml</code>, so an installed global
+cache remains distinguishable from an explicit study-level override.</p>
+<p>Provider installers place complete public files, indexes, source URLs, sizes and
+checksums below this directory. Analyses open the installed local files and work
+with <code>--offline</code>; they do not substitute provider-side regional byte-range reads.
+Installation may contact approved public hosts, but its URLs identify only public
+datasets, releases, accessions or whole chromosomes—not study variants or regions.</p>
 <p>A machine file can supply R installation details without embedding them in a
 shared project:</p>
 <div class="code-window"><div class="code-bar"><span>yaml</span></div><pre><code>schema_version: 1

@@ -115,14 +115,18 @@ public final class BgenVariantSource implements VariantSource {
                 throw new IOException(
                     "BGEN multiallelic records are not yet supported: "
                     + displayId(variantId, rsid, chromosome, position, alleles));
-            double[] sourceDosages = decode(probabilityData,
+            Decoded decoded = decode(probabilityData,
                 header.sampleCount(), alleleCount);
             double[] selected = new double[order.length];
-            for (int index = 0; index < order.length; index++)
-                selected[index] = sourceDosages[order[index]];
+            byte[] selectedPloidies = new byte[order.length];
+            for (int index = 0; index < order.length; index++) {
+                selected[index] = decoded.dosages()[order[index]];
+                selectedPloidies[index]=decoded.ploidies()[order[index]];
+            }
             String id = displayId(variantId, rsid, chromosome, position, alleles);
             return new VariantRecord(id, chromosome, position,
-                alleles.get(0), alleles.get(1), selected, Double.NaN);
+                alleles.get(0), alleles.get(1), selected, Double.NaN,
+                new VariantGenotypeMetadata(VariantGenotypeMetadata.Origin.DOSAGE,false,selectedPloidies));
         }
 
         @Override public void close() throws IOException {
@@ -190,7 +194,8 @@ public final class BgenVariantSource implements VariantSource {
             offset + 4, compression);
     }
 
-    private static double[] decode(
+    private record Decoded(double[] dosages,byte[] ploidies) { }
+    private static Decoded decode(
             byte[] block, int expectedSamples, int expectedAlleles)
             throws IOException {
         Bytes input = new Bytes(block);
@@ -216,9 +221,11 @@ public final class BgenVariantSource implements VariantSource {
         double denominator = bits == 32
             ? 4294967295.0 : (1L << bits) - 1.0;
         double[] dosages = new double[samples];
+        byte[] observedPloidies=new byte[samples];
         for (int sample = 0; sample < samples; sample++) {
             int copies = ploidy[sample];
-            if (copies < 1)
+            observedPloidies[sample]=(byte)copies;
+            if (copies < 1&&!missing[sample])
                 throw new IOException("BGEN sample ploidy must be positive");
             double dosage;
             if (phased == 1) {
@@ -245,7 +252,7 @@ public final class BgenVariantSource implements VariantSource {
             }
             dosages[sample] = missing[sample] ? Double.NaN : dosage;
         }
-        return dosages;
+        return new Decoded(dosages,observedPloidies);
     }
 
     private static byte[] decompress(

@@ -1,0 +1,105 @@
+/* Copyright (C) 2026 JLinAlg contributors; SPDX-License-Identifier: GPL-3.0-or-later */
+package org.jlinalg.cli;
+
+import static org.junit.jupiter.api.Assertions.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import org.jlinalg.study.StudyOperationExecutor.*;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.io.TempDir;
+
+class StudyRareFollowupTest {
+    @TempDir Path root;
+    private Map<String,Object> study;
+    private Path source;
+    private Context context(String name,String type,Map<String,Path> deps)throws Exception {
+        Path out=root.resolve(name);Files.createDirectories(out);
+        return new Context(root,out,Map.of("id",name,"type",type,"hypothesis","H","datasets",List.of("a")),study,Map.of(),deps);
+    }
+    private static void seal(Context c,Result r)throws Exception {
+        StudyTestSources.seal(c.outputDirectory(),c.operation().get("type").toString(),c.operation().get("id").toString(),"H");var m=StudyYaml.loadArtifact(c.outputDirectory().resolve("manifest.yaml"));m.put("details",r.details());m.put("state",r.state().value());StudyPublicEvidence.write(c.outputDirectory().resolve("manifest.yaml"),m);
+    }
+    private void setup(int count,boolean allSignificant)throws Exception {
+        var analysis=new LinkedHashMap<String,Object>(Map.of("multiple_testing",Map.of("method","BY","alpha",.05),"rare_variants",Map.of("followup",Map.of("minimum_term_genes",1)),"bioinformatics",Map.of("phenotype_terms",List.of("synthetic disease"),"literature_terms",List.of("rare genetic variants"))));
+        study=new LinkedHashMap<>(Map.of("resources",Map.of("network","offline","downloads","deny","directory","fixture-resources"),"datasets",List.of(Map.of("id","a","species","human","type","gwas")),"hypotheses",List.of(Map.of("id","H","outcome","synthetic disease","analysis",analysis))));
+        source=Files.createDirectory(root.resolve("source"));var values=new ArrayList<double[]>();var raw=new ArrayList<String[]>();
+        for(String mask:List.of("lof","missense"))for(int i=0;i<count;i++)for(String test:List.of("burden","acat-o")) {
+            double p=test.equals("burden")?(i==4?1e-9:.9):allSignificant?1e-8:mask.equals("lof")?(i==0?1e-5:i==1?2e-5:.8):(i==0?3e-5:.8);
+            raw.add(new String[]{"primary","set"+i,mask,test,String.valueOf(p),"NA",String.valueOf(test.equals("acat-o")),"unsigned_set","ok"});values.add(new double[]{p,raw.size()-1});
+        }
+        values.sort(java.util.Comparator.comparingDouble(a->a[0]));double harmonic=0;for(int i=1;i<=values.size();i++)harmonic+=1.0/i;double q=1;for(int i=values.size();i>0;i--){double[] v=values.get(i-1);q=Math.min(q,v[0]*values.size()*harmonic/i);raw.get((int)v[1])[5]=String.valueOf(q);}
+        FollowupSupport.table(source.resolve("rare-results.tsv"),List.of("scope","feature_id","mask_id","test","p_value","adjusted_p","is_primary_test","result_type","status"),raw);
+        StringBuilder mapping=new StringBuilder("feature_id\tgene_id\tgene_symbol\tchromosome\tstart\tend\tgenome_build\tmapping_status\n");for(int i=0;i<count;i++)mapping.append("set").append(i).append("\tENSG").append(1000+i).append("\tG").append(i).append("\t1\t100\t200\tGRCh38\tlocated\n");Files.writeString(source.resolve("feature-annotation.tsv"),mapping);
+        StudyTestSources.seal(source,"rare_variant_analysis","rare","H");var m=StudyYaml.loadArtifact(source.resolve("manifest.yaml"));m.put("details",Map.of("families",List.of(Map.of("scope","primary","testing_denominator",raw.size(),"adjustment","BY","complete",true))));StudyPublicEvidence.write(source.resolve("manifest.yaml"),m);
+        collection("go-human","GO","symbol",count);collection("reactome-human","Reactome","ensembl",count);
+    }
+    private void collection(String folder,String provider,String namespace,int count)throws Exception {
+        Path db=root.resolve("fixture-resources/enrichment/"+folder);Files.createDirectories(db);String prefix=namespace.equals("symbol")?"G":"ENSG";int offset=namespace.equals("symbol")?0:1000;
+        StringBuilder gmt=new StringBuilder("T1\tSynthetic first pair\t"+prefix+offset+"\t"+prefix+(offset+1)+"\nT2\tSynthetic second pair\t"+prefix+(offset+2)+"\t"+prefix+(offset+3)+"\nT3\tSynthetic singleton\t"+prefix+(offset+4)+"\nROOT\tSynthetic full universe");for(int i=0;i<count;i++)gmt.append('\t').append(prefix).append(offset+i);gmt.append('\n');Files.writeString(db.resolve("data.gmt"),gmt);
+        Files.writeString(db.resolve("manifest.properties"),"format_version=1\nprovider="+provider+"\nspecies=human\ngene_id_type="+namespace+"\ndata_format=gmt\ndata_file=data.gmt\nsha256.data.gmt="+FollowupSupport.hash(db.resolve("data.gmt"))+"\n");
+    }
+    private Context projection(String name)throws Exception {
+        var c=context(name,"rare_set_followup",Map.of("rare",source));var r=new StudyCliExecutor().execute(c);assertEquals(State.COMPLETE,r.state(),r.summary());seal(c,r);return c;
+    }
+    @Test void sourceJointCorrectionSurvivesProjectionAndAllMasksReceiveOneTermFamily()throws Exception {
+        setup(30,false);String hash=FollowupSupport.hash(source.resolve("rare-results.tsv"));var p=projection("projected");var t=DelimitedData.readResult(p.outputDirectory().resolve("rare-followup-results.tsv"));assertEquals(60,t.rows().size());assertEquals(120,((Number)StudyPublicEvidence.map(StudyYaml.loadArtifact(p.outputDirectory().resolve("rare-followup.yaml")).get("source_testing_family")).get("tested_count")).intValue());
+        var c=context("go","gene_ontology",Map.of("projection",p.outputDirectory()));var r=new StudyCliExecutor().execute(c);assertEquals(State.COMPLETE,r.state(),r.summary());seal(c,r);var go=DelimitedData.readResult(c.outputDirectory().resolve("gene-ontology.tsv"));assertEquals(8,go.rows().size());String[] target=go.rows().stream().filter(row->row[go.column("term_id")].equals("T1")&&row[go.column("mask_id")].equals("lof")).findFirst().orElseThrow();double expected=1.0/435,h=0;for(int i=1;i<=8;i++)h+=1.0/i;assertEquals(expected,Double.parseDouble(target[go.column("p_value")]),1e-14);assertEquals(expected*8*h,Double.parseDouble(target[go.column("adjusted_p")]),1e-13);assertEquals("120",target[go.column("association_testing_denominator")]);assertTrue(go.rows().stream().anyMatch(row->row[go.column("overlap_genes")].equals("0")&&row[go.column("p_value")].equals("1.0")));
+        assertEquals(hash,FollowupSupport.hash(source.resolve("rare-results.tsv")));var inventory=context("inventory","finding_inventory",Map.of("rare",source,"mapped",p.outputDirectory(),"go",c.outputDirectory()));var ir=new StudyFindingInventory().execute(inventory);assertEquals(State.COMPLETE,ir.state());String json=Files.readString(inventory.outputDirectory().resolve("finding-inventory.jsonl"));assertTrue(json.contains("gene_ontology:rare-mask-"));assertTrue(json.contains("association_testing_denominator"));assertTrue(json.contains("Gene length"));
+    }
+    @Test void reactomeUsesExplicitGeneIdsAndDoesNotReinterpretSymbols()throws Exception {
+        setup(30,false);var p=projection("projected");var c=context("reactome","pathway_enrichment",Map.of("projection",p.outputDirectory()));assertEquals(State.COMPLETE,new StudyCliExecutor().execute(c).state());var t=DelimitedData.readResult(c.outputDirectory().resolve("pathway-enrichment.tsv"));assertEquals(8,t.rows().size());assertTrue(t.rows().stream().anyMatch(r->r[t.column("hit_genes")].contains("ENSG1000")));
+    }
+    @Test void selectedOnlyFamilyCanSupportContextualLiteratureButCannotDefineOraBackground()throws Exception {
+        setup(30,false);StudyPublicEvidence.write(source.resolve("supplied-analysis.yaml"),Map.of("kind","rare_variant_analysis","canonical_results","rare-results.tsv","canonical_sha256",FollowupSupport.hash(source.resolve("rare-results.tsv")),"primary_selection_eligible",true,"resolved_family",Map.of("id","full","coverage","selected_only","tested_count",99999,"adjustment","BY","adjusted_p_from_full_family",true)));resealSource();
+        var p=projection("projected");var c=context("go","gene_ontology",Map.of("projection",p.outputDirectory()));assertEquals(State.WAITING_FOR_INPUT,new StudyCliExecutor().execute(c).state());assertFalse(Files.exists(c.outputDirectory().resolve("gene-ontology.tsv")));var literature=context("literature","literature_search",Map.of("projection",p.outputDirectory()));var features=StudyBioinformatics.features(literature);assertEquals(2,features.size());assertEquals(99999,((Number)StudyPublicEvidence.map(StudyPublicEvidence.list(features.get(0).selection().get("qualifying_source_tests")).get(0)).get("testing_denominator")).intValue());
+    }
+    @Test void contextualCapRetainsEveryEligibleSetAndAllMaskEvidenceWithoutGeneLevelFdr()throws Exception {
+        setup(105,true);var p=projection("projected");var c=context("literature","literature_search",Map.of("projection",p.outputDirectory()));var client=new StudyPublicEvidence(uri->{throw new AssertionError("Offline fixture attempted network access");});var r=new StudyBioinformatics(client).execute(c);assertEquals(State.WAITING_FOR_INPUT,r.state());var t=DelimitedData.readResult(c.outputDirectory().resolve("literature-selection.tsv"));assertEquals(105,t.rows().size());assertEquals(100,t.rows().stream().filter(row->row[t.column("selected_for_review")].equals("true")).count());for(String[] row:t.rows()){var context=StudyPublicEvidence.map(SimpleJson.parse(row[t.column("selection_context")]));assertEquals(2,StudyPublicEvidence.list(context.get("qualifying_source_tests")).size());assertTrue(context.get("probability_scope").toString().contains("no combined gene-level"));}
+    }
+    @Test void completePrimaryCanBeMappedWhileOtherSourceScopesRemainUnresolved()throws Exception {
+        setup(30,false);var m=StudyYaml.loadArtifact(source.resolve("manifest.yaml"));m.put("state","waiting_for_input");var d=StudyPublicEvidence.map(m.get("details"));d.put("rare_primary_complete",true);m.put("details",d);StudyPublicEvidence.write(source.resolve("manifest.yaml"),m);var p=projection("projected");assertTrue(Files.readString(p.outputDirectory().resolve("rare-followup.yaml")).contains("Other requested source scopes remain unresolved"));
+    }
+    @Test void anUnresolvedPrimaryCannotAcquireSelectionFromSuccessfulSubsetRows()throws Exception {
+        setup(30,false);var m=StudyYaml.loadArtifact(source.resolve("manifest.yaml"));m.put("state","waiting_for_input");StudyPublicEvidence.write(source.resolve("manifest.yaml"),m);var c=context("projection","rare_set_followup",Map.of("rare",source));assertEquals(State.WAITING_FOR_INPUT,new StudyCliExecutor().execute(c).state());assertFalse(Files.exists(c.outputDirectory().resolve("rare-followup-results.tsv")));
+    }
+    @Test void rawSourceTamperingIsRejectedRatherThanResealed()throws Exception {
+        setup(30,false);Files.writeString(source.resolve("rare-results.tsv"),"changed\n");var c=context("projection","rare_set_followup",Map.of("rare",source));assertThrows(java.io.IOException.class,()->new StudyCliExecutor().execute(c));
+    }
+    private void resealSource()throws Exception {var old=StudyYaml.loadArtifact(source.resolve("manifest.yaml"));StudyTestSources.seal(source,"rare_variant_analysis","rare","H");var m=StudyYaml.loadArtifact(source.resolve("manifest.yaml"));m.put("details",old.get("details"));StudyPublicEvidence.write(source.resolve("manifest.yaml"),m);}
+    private void analysis(Map<String,Object> value){var h=StudyPublicEvidence.map(StudyPublicEvidence.list(study.get("hypotheses")).get(0));h.put("analysis",value);study.put("hypotheses",List.of(h));}
+    @Test void unmappedSetsRemainExplicitAndCannotBecomeACompleteOraBackground()throws Exception {
+        setup(30,false);Files.delete(source.resolve("feature-annotation.tsv"));resealSource();var p=projection("projected");var dispositions=DelimitedData.readResult(p.outputDirectory().resolve("rare-feature-dispositions.tsv"));assertEquals(60,dispositions.rows().size());assertTrue(dispositions.rows().stream().allMatch(r->r[dispositions.column("mapping_status")].equals("unmapped")));var c=context("go","gene_ontology",Map.of("projection",p.outputDirectory()));assertEquals(State.WAITING_FOR_INPUT,new StudyCliExecutor().execute(c).state());assertFalse(Files.exists(c.outputDirectory().resolve("gene-ontology.tsv")));
+    }
+    @Test void multipleSetsForTheSameGeneRequireAProtocolInsteadOfMinimumPSelection()throws Exception {
+        setup(30,false);Path annotation=source.resolve("feature-annotation.tsv");Files.writeString(annotation,Files.readString(annotation).replace("\tG1\t","\tG0\t"));resealSource();var p=projection("projected");var c=context("go","gene_ontology",Map.of("projection",p.outputDirectory()));var r=new StudyCliExecutor().execute(c);assertEquals(State.WAITING_FOR_INPUT,r.state());assertTrue(r.summary().contains("multiple tested sets per gene"));assertTrue(Files.readString(c.outputDirectory().resolve("rare-gene-dispositions.tsv")).contains("multiple_sets_map_to_one_gene"));
+    }
+    @Test void emptySelectionsKeepTheRegisteredMaskByTermFamilyWithPValuesOne()throws Exception {
+        setup(30,false);var a=StudyPublicEvidence.map(StudyPublicEvidence.map(StudyPublicEvidence.list(study.get("hypotheses")).get(0)).get("analysis"));a.put("multiple_testing",Map.of("method","BY","alpha",1e-8));analysis(a);var p=projection("projected");var c=context("go","gene_ontology",Map.of("projection",p.outputDirectory()));assertEquals(State.COMPLETE,new StudyCliExecutor().execute(c).state());var t=DelimitedData.readResult(c.outputDirectory().resolve("gene-ontology.tsv"));assertEquals(8,t.rows().size());for(String[] r:t.rows()){assertEquals("0",r[t.column("selected_genes")]);assertEquals(1,Double.parseDouble(r[t.column("p_value")]));assertEquals(1,Double.parseDouble(r[t.column("adjusted_p")]));}
+    }
+    @Test void nativeAnnotationFilesAreJoinedToSetsWithoutTreatingSetNamesAsGeneSymbols()throws Exception {
+        setup(30,false);Files.move(source.resolve("feature-annotation.tsv"),root.resolve("genes.tsv"));resealSource();study.put("datasets",List.of(Map.of("id","a","species","human","type","gwas","genome_build","GRCh38","coordinate_system","1-based-closed","annotation_release","synthetic-genes","files",Map.of("annotation","genes.tsv"))));var p=projection("projected");String annotation=Files.readString(p.outputDirectory().resolve("feature-annotation.tsv"));assertTrue(annotation.contains("set0\tENSG1000\tG0\t"));assertFalse(annotation.contains("set0\t\tset0"));assertTrue(Files.readString(p.outputDirectory().resolve("annotation-summary.yaml")).contains("synthetic-genes"));
+    }
+    @Test void suppliedMaskSpecificEnrichmentRetainsItsOriginalJointAdjustmentAndIdentities()throws Exception {
+        setup(30,false);var p=projection("projected");var go=context("go","gene_ontology",Map.of("projection",p.outputDirectory()));assertEquals(State.COMPLETE,new StudyCliExecutor().execute(go).state());Path provided=root.resolve("provided-go.tsv");Files.copy(go.outputDirectory().resolve("gene-ontology.tsv"),provided);
+        var definition=Map.<String,Object>of("id","external-go","kind","gene_ontology","files",Map.of("results","provided-go.tsv"),"scope",Map.of("phenotype","synthetic disease","cohorts",List.of("A"),"species","human"),"method",Map.of("name","Synthetic complete mask-by-term ORA","software","fixture","version","1"),"provenance",Map.of("producer","synthetic test"),"limitations",List.of("Synthetic numerical fixture; no biology or source appraisal"),"family",Map.of("id","all-mask-terms","coverage","complete","tested_count",8,"adjustment","BY","adjusted_p_from_full_family",true));var a=StudyPublicEvidence.map(StudyPublicEvidence.map(StudyPublicEvidence.list(study.get("hypotheses")).get(0)).get("analysis"));a.put("supplied_results",List.of(definition));analysis(a);var base=context("imported","gene_ontology",Map.of());var op=new LinkedHashMap<String,Object>(base.operation());op.put("supplied_result_id","external-go");var imported=new Context(root,base.outputDirectory(),op,study,Map.of(),Map.of());var result=new StudyCliExecutor().execute(imported);assertEquals(State.COMPLETE,result.state(),result.summary());seal(imported,result);var t=DelimitedData.readResult(imported.outputDirectory().resolve("gene-ontology.tsv"));assertEquals(8,t.rows().size());assertEquals(8,t.rows().stream().map(r->r[t.column("enrichment_id")]).distinct().count());assertEquals(4,t.rows().stream().map(r->r[t.column("term_id")]).distinct().count());var inv=context("inventory","finding_inventory",Map.of("provided",imported.outputDirectory()));assertEquals(State.COMPLETE,new StudyFindingInventory().execute(inv).state());assertEquals(8,Files.readAllLines(inv.outputDirectory().resolve("finding-inventory.jsonl")).size());assertTrue(Files.readString(inv.outputDirectory().resolve("finding-inventory.jsonl")).contains("association_testing_denominator"));
+    }
+    @Test void anUnadjustedSecondaryTestMakesTheJointSourceFamilyUnavailable()throws Exception {
+        setup(30,false);var t=DelimitedData.readResult(source.resolve("rare-results.tsv"));t.rows().get(0)[t.column("adjusted_p")]="NA";FollowupSupport.table(source.resolve("rare-results.tsv"),t.header(),t.rows());resealSource();var c=context("projection","rare_set_followup",Map.of("rare",source));var r=new StudyCliExecutor().execute(c);assertEquals(State.WAITING_FOR_INPUT,r.state());assertTrue(r.summary().contains("joint family is unresolved"));
+    }
+    @Test void missingPrimaryFlagsCannotPromoteSignificantSecondaryTests()throws Exception {
+        setup(30,false);Path path=source.resolve("rare-results.tsv");Files.writeString(path,Files.readString(path).replace("\ttrue\t","\tfalse\t"));resealSource();var c=context("projection","rare_set_followup",Map.of("rare",source));var r=new StudyCliExecutor().execute(c);assertEquals(State.WAITING_FOR_INPUT,r.state());assertTrue(r.summary().contains("prespecified primary test"));
+    }
+    @Test void automaticLiteratureRetainsIndependentAssociationAndRareMaskEvidenceForOneGene()throws Exception {
+        setup(30,false);var p=projection("projected");Path meta=Files.createDirectory(root.resolve("meta"));Files.writeString(meta.resolve("meta-analysis.tsv"),"feature_id\tbeta\tse\tp_value\nset0\t.1\t.1\t1e-6\n");Files.copy(source.resolve("feature-annotation.tsv"),meta.resolve("feature-annotation.tsv"));StudyTestSources.seal(meta,"meta_analysis","meta","H");var c=context("literature","literature_search",Map.of("meta",meta,"projection",p.outputDirectory()));var selected=StudyBioinformatics.features(c);assertEquals(2,selected.size());var gene=selected.stream().filter(f->f.id().equals("set0")).findFirst().orElseThrow();assertEquals("separate_source_families",gene.selection().get("kind"));assertEquals(2,StudyPublicEvidence.list(StudyPublicEvidence.map(gene.selection().get("rare_sets")).get("qualifying_source_tests")).size());assertEquals(1e-6,gene.p());assertTrue(gene.selection().get("probability_scope").toString().contains("no combined gene-level"));
+    }
+    @Test void unavailableAssociationDoesNotDiscardIndependentRareLiteratureOrClaimCompletion()throws Exception {
+        setup(30,false);var p=projection("projected");Path meta=Files.createDirectory(root.resolve("meta"));Files.writeString(meta.resolve("meta-analysis.tsv"),"feature_id\tbeta\tse\tp_value\nset0\t.1\t.1\t1e-6\n");StudyTestSources.seal(meta,"meta_analysis","meta","H");var m=StudyYaml.loadArtifact(meta.resolve("manifest.yaml"));m.put("state","waiting_for_input");StudyPublicEvidence.write(meta.resolve("manifest.yaml"),m);var c=context("literature","literature_search",Map.of("meta",meta,"projection",p.outputDirectory()));var result=new StudyBioinformatics(new StudyPublicEvidence(uri->{throw new AssertionError("offline");})).execute(c);assertEquals(State.WAITING_FOR_INPUT,result.state());assertEquals(2,DelimitedData.readResult(c.outputDirectory().resolve("literature-selection.tsv")).rows().size());assertTrue(Files.exists(c.outputDirectory().resolve("literature-source-unavailable.yaml")));assertTrue(String.valueOf(result.details().get("needs")).contains("unavailable association"));
+    }
+    @Test void differentDownstreamPrerequisitesHaveDistinctStableQuestionContracts()throws Exception {
+        setup(30,false);var projection=context("projection","rare_set_followup",Map.of());var go=context("go","gene_ontology",Map.of());var reactome=context("reactome","pathway_enrichment",Map.of());var a=StudyRareFollowup.waiting(projection,"Primary family is unavailable");var b=StudyRareFollowup.waiting(go,"Primary family is unavailable");var c=StudyRareFollowup.waiting(reactome,"Gene namespace is unavailable");var keys=new java.util.HashSet<>();for(var r:List.of(a,b,c))keys.add(StudyPublicEvidence.map(StudyPublicEvidence.list(r.details().get("needs")).get(0)).get("semantic_key"));assertEquals(3,keys.size());assertEquals(a.details(),StudyRareFollowup.waiting(projection,"Primary family is unavailable").details());
+    }
+}

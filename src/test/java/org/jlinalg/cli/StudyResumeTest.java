@@ -29,7 +29,7 @@ class StudyResumeTest {
             return new StudyCliExecutor().execute(context);
         };
         var first = StudyExecutionEngine.run(root, actor, executor, true);
-        assertEquals(1, first.waiting());
+        assertEquals(2, first.waiting()); // Primary pooling and its dependent heterogeneity review.
         Path original = root.resolve("runs").resolve(first.runId());
         byte[] manifest = Files.readAllBytes(find(original, "manifest.yaml"));
         var resumed = StudyExecutionEngine.run(root, actor, executor, true);
@@ -38,10 +38,10 @@ class StudyResumeTest {
         assertNotEquals(first.runId(), resumed.runId());
         assertArrayEquals(manifest, Files.readAllBytes(find(original, "manifest.yaml")));
         var repeated = StudyExecutionEngine.run(root, actor, executor, true);
-        assertEquals(4, repeated.reused());
+        assertEquals(6, repeated.reused());
         assertEquals(0, repeated.completed());
         var redo = StudyExecutionEngine.run(root, actor, executor, false);
-        assertEquals(4, redo.completed());
+        assertEquals(6, redo.completed());
         assertEquals(0, redo.reused());
         StudyProject.verify(root);
         Map<?, ?> index = (Map<?, ?>) SimpleJson.parse(Files.readString(root.resolve("index/index.json")));
@@ -55,7 +55,7 @@ class StudyResumeTest {
         Files.writeString(root.resolve("results.tsv"), "feature_id\tbeta\tse\tp_value\nGENE1\t2\t.1\t.001\n");
         var changed = StudyExecutionEngine.run(root, actor, new StudyCliExecutor(), true);
         assertEquals(0, changed.reused());
-        assertEquals(4, changed.completed());
+        assertEquals(6, changed.completed());
         Path original = find(root.resolve("runs").resolve(first.runId()), "meta-analysis.tsv");
         Files.writeString(original, "tampered evidence");
         assertThrows(IOException.class, () -> StudyExecutionEngine.run(root, actor, new StudyCliExecutor(), false));

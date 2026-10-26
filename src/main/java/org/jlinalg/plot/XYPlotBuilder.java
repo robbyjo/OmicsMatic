@@ -15,10 +15,16 @@ import org.knowm.xchart.style.markers.SeriesMarkers;
 public final class XYPlotBuilder {
     private final List<Layer> layers = new ArrayList<>();
     private PlotOptions options = PlotOptions.defaults();
+    private java.util.function.Function<Double,String> xAxisFormatter;
 
     public XYPlotBuilder options(PlotOptions value) {
         options = Objects.requireNonNull(value);
         return this;
+    }
+
+    /** Formats displayed x-axis ticks, without changing series coordinates. */
+    public XYPlotBuilder xAxisFormatter(java.util.function.Function<Double,String> formatter) {
+        xAxisFormatter=Objects.requireNonNull(formatter);return this;
     }
 
     public XYPlotBuilder points(String name, double[] x, double[] y) {
@@ -92,6 +98,7 @@ public final class XYPlotBuilder {
             series.setSmooth(layer.smooth());
         }
         PlotSupport.style(chart, options, layers.size() > 1);
+        if(xAxisFormatter!=null)chart.setCustomXAxisTickLabelsFormatter(xAxisFormatter);
         return new Plot(chart);
     }
 

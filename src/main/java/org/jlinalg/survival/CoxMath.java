@@ -31,7 +31,8 @@ final class CoxMath {
             scale = Math.max(scale,
                 Math.abs(matrix[index * dimension + index]));
         scale = Math.max(1, scale);
-        for (int attempt = 0; attempt < 10; attempt++) {
+        int attempts=baseRidge==0?1:10;
+        for (int attempt = 0; attempt < attempts; attempt++) {
             double[] regularized = matrix.clone();
             double ridge = attempt == 0 ? 0
                 : Math.max(baseRidge, 1e-12)
@@ -46,7 +47,7 @@ final class CoxMath {
                     ? factorSmall(regularized, dimension)
                     : backend.dpotrf(regularized, dimension);
             } catch (IllegalArgumentException | ArithmeticException exception) {
-                if (attempt == 9) throw new IllegalArgumentException(
+                if (attempt == attempts-1) throw new IllegalArgumentException(
                     "Cox information matrix is not positive definite", exception);
             }
         }

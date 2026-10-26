@@ -1,0 +1,266 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://robbyjo.github.io/JLinAlg/schemas/supplied-literature-v1.schema.json",
+  "title": "Supplied public bibliography and externally completed searches",
+  "description": "Typed input to analysis.supplied_results kind literature_search. Full primary import reuses the stage; contribution reuses only complete exact-scope Europe PMC searches and performs missing native retrieval. Public declaration does not authenticate source or authorize transmission. Native runtime checks identities, counts, cross-links, hashes and duplicates.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "public_metadata"
+  ],
+  "anyOf": [
+    {
+      "required": [
+        "references"
+      ],
+      "properties": {
+        "references": {
+          "minItems": 1
+        }
+      }
+    },
+    {
+      "required": [
+        "queries"
+      ],
+      "properties": {
+        "queries": {
+          "minItems": 1
+        }
+      }
+    }
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "public_metadata": {
+      "const": true
+    },
+    "references": {
+      "type": "array",
+      "maxItems": 5000,
+      "items": {
+        "$ref": "#/$defs/reference"
+      }
+    },
+    "queries": {
+      "type": "array",
+      "maxItems": 2000,
+      "items": {
+        "$ref": "#/$defs/query"
+      }
+    },
+    "notes": {
+      "type": "string",
+      "maxLength": 16000
+    }
+  },
+  "$defs": {
+    "reference": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "title"
+      ],
+      "anyOf": [
+        {
+          "required": [
+            "doi"
+          ]
+        },
+        {
+          "required": [
+            "pmid"
+          ]
+        },
+        {
+          "required": [
+            "pmcid"
+          ]
+        }
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_.-]{0,99}$"
+        },
+        "doi": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000
+        },
+        "pmid": {
+          "type": "string",
+          "pattern": "^[1-9][0-9]*$"
+        },
+        "pmcid": {
+          "type": "string",
+          "pattern": "^PMC[0-9]+$"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4000
+        },
+        "authors": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4000
+        },
+        "year": {
+          "oneOf": [
+            {
+              "type": "integer",
+              "minimum": 1000,
+              "maximum": 2999
+            },
+            {
+              "type": "string",
+              "pattern": "^[12][0-9]{3}$"
+            }
+          ]
+        },
+        "journal": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000
+        },
+        "abstract_text": {
+          "type": "string",
+          "maxLength": 40000
+        },
+        "notes": {
+          "type": "string",
+          "maxLength": 16000
+        }
+      }
+    },
+    "query": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "provider",
+        "query",
+        "search_strategy",
+        "status",
+        "coverage",
+        "hit_count",
+        "references",
+        "searched_at",
+        "reuse_rationale"
+      ],
+      "properties": {
+        "phenotype": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000
+        },
+        "gene_symbol": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000
+        },
+        "feature_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000
+        },
+        "methods_role": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000
+        },
+        "cohort_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000
+        },
+        "cohort_name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000
+        },
+        "requested_reference": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000
+        },
+        "id": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_.-]{0,99}$"
+        },
+        "provider": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "query": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 8000
+        },
+        "search_strategy": {
+          "enum": [
+            "field_background",
+            "hypothesis_relevance",
+            "similar_studies",
+            "field_conflicting_evidence",
+            "direct_gene_phenotype",
+            "molecular_mechanism",
+            "contradictions_and_replication",
+            "cohort_description",
+            "analysis_method",
+            "method_reference"
+          ]
+        },
+        "status": {
+          "enum": [
+            "complete",
+            "partial",
+            "unavailable"
+          ]
+        },
+        "coverage": {
+          "enum": [
+            "complete",
+            "selected_only",
+            "unknown"
+          ]
+        },
+        "hit_count": {
+          "type": "integer",
+            "minimum": 0,
+            "maximum": 9223372036854775807,
+            "description": "Exact nonnegative count within the signed 64-bit range; fractional or rounded source tokens are rejected by the runtime."
+        },
+        "references": {
+          "type": "array",
+          "maxItems": 5000,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          }
+        },
+        "searched_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "reuse_rationale": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4000
+        },
+        "notes": {
+          "type": "string",
+          "maxLength": 16000
+        }
+      }
+    }
+  }
+}

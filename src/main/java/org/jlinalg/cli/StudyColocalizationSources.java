@@ -73,7 +73,7 @@ final class StudyColocalizationSources {
         Path root = context.outputDirectory().resolve("automatic-colocalization-sources");
         Files.createDirectories(root);
         List<Object> pairs = new ArrayList<>(), featureAudit = new ArrayList<>();
-        for (StudyBioinformatics.Feature feature : StudyBioinformatics.features(context)) {
+        for (StudyBioinformatics.Feature feature : StudyBioinformatics.colocalizationFeatures(context)) {
             if (!"located".equals(feature.status()) || !"GRCh38".equals(feature.build())) {
                 featureAudit.add(Map.of("feature_id", feature.id(), "status", "verified_grch38_location_required"));
                 continue;

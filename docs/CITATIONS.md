@@ -42,6 +42,12 @@ Chained equations, Rubin variance pooling, and finite-sample degrees of freedom.
 - [Buuren (2011) — mice: Multivariate Imputation by Chained Equations in R](#vanbuuren-mice-2011)
 - [Barnard (1999) — Small-sample degrees of freedom with multiple imputation](#barnard-rubin-1999)
 
+## Mechanistic interpretation and discussion depth
+
+<a id="wickenhagen-oas1-2021"></a>
+- **Wickenhagen A, et al. (2021).** A prenylated dsRNA sensor protects against severe COVID-19. *Science 374(6567), eabj3624.* [DOI: 10.1126/science.abj3624](https://doi.org/10.1126/science.abj3624) · [PMID: 34581622](https://pubmed.ncbi.nlm.nih.gov/34581622/) · [PMCID: PMC7612834](https://pmc.ncbi.nlm.nih.gov/articles/PMC7612834/)
+  - JLinAlg methods: Gene and isoform mechanism, Experimental and clinical evidence, Discussion depth benchmark.
+
 ## Bioinformatics evidence resources
 
 <a id="gwas-catalog-api-v2"></a>
@@ -300,6 +306,14 @@ Chained equations, Rubin variance pooling, and finite-sample degrees of freedom.
 - **1000 Genomes Project Consortium (2015).** A global reference for human genetic variation. *Nature 526:68-74.* [DOI: 10.1038/nature15393](https://doi.org/10.1038/nature15393) · [PMID: 26432245](https://pubmed.ncbi.nlm.nih.gov/26432245/) · [PMCID: PMC4750478](https://pmc.ncbi.nlm.nih.gov/articles/PMC4750478/)
   - JLinAlg methods: 1000 Genomes Phase 3, ancestry-stratified LD reference.
 
+<a id="finucane-sldsc-2015"></a>
+- **Hilary K. Finucane et al. (2015).** Partitioning heritability by functional annotation using genome-wide association summary statistics. *Nature Genetics 47:1228-1235.* [DOI: 10.1038/ng.3404](https://doi.org/10.1038/ng.3404) · [PMID: 26414678](https://pubmed.ncbi.nlm.nih.gov/26414678/) · [PMCID: PMC4626285](https://pmc.ncbi.nlm.nih.gov/articles/PMC4626285/)
+  - JLinAlg methods: Stratified LD score regression, Overlapping binary annotation heritability enrichment, GWAS functional-category testing.
+
+<a id="hemerik-goeman-2018"></a>
+- **Jesse Hemerik and Jelle Goeman (2018).** Exact testing with random permutations. *TEST 27:811-825.* [DOI: 10.1007/s11749-017-0571-1](https://doi.org/10.1007/s11749-017-0571-1) · [PMID: 30930620](https://pubmed.ncbi.nlm.nih.gov/30930620/) · [PMCID: PMC6405018](https://pmc.ncbi.nlm.nih.gov/articles/PMC6405018/)
+  - JLinAlg methods: Conditional Monte Carlo test validity, Random permutation P values.
+
 ## Latent variation and batch correction
 
 <a id="leek-storey-2007"></a>
@@ -397,6 +411,10 @@ Chained equations, Rubin variance pooling, and finite-sample degrees of freedom.
 <a id="higgins-thompson-2002"></a>
 - **Julian P. T. Higgins and Simon G. Thompson (2002).** Quantifying heterogeneity in a meta-analysis. *Statistics in Medicine 21:1539-1558.* [DOI: 10.1002/sim.1186](https://doi.org/10.1002/sim.1186) · [PMID: 12111919](https://pubmed.ncbi.nlm.nih.gov/12111919/)
   - JLinAlg methods: I-squared, heterogeneity.
+
+<a id="cochrane-meta-analysis-2024"></a>
+- **Jonathan J. Deeks, Julian P. T. Higgins, Douglas G. Altman, Joanne E. McKenzie and Areti Angeliki Veroniki (2024).** Chapter 10: Analysing data and undertaking meta-analyses. *Cochrane Handbook for Systematic Reviews of Interventions, version 6.5; updated November 2024.* [Primary source](https://www.cochrane.org/authors/handbooks-and-manuals/handbook/current/chapter-10)
+  - JLinAlg methods: Prespecified synthesis and sensitivity analyses, Heterogeneity uncertainty and Q-test power, Interpretation with few studies.
 
 ## Time series
 
@@ -504,6 +522,10 @@ Chained equations, Rubin variance pooling, and finite-sample degrees of freedom.
 - **Nicolai Meinshausen (2008).** Hierarchical testing of variable importance. *Biometrika 95:265-278.* [DOI: 10.1093/biomet/asn007](https://doi.org/10.1093/biomet/asn007)
   - JLinAlg methods: hierarchical testing, familywise error control.
 
+<a id="benjamini-yekutieli-2001"></a>
+- **Yoav Benjamini and Daniel Yekutieli (2001).** The control of the false discovery rate in multiple testing under dependency. *The Annals of Statistics 29(4):1165-1188.* [DOI: 10.1214/aos/1013699998](https://doi.org/10.1214/aos/1013699998)
+  - JLinAlg methods: BY harmonic correction, Full declared testing families.
+
 ## Missing-data inference
 
 <a id="rubin-mi-1987"></a>
@@ -593,7 +615,7 @@ Chained equations, Rubin variance pooling, and finite-sample degrees of freedom.
   - JLinAlg methods: Gaussian neighborhood selection, Sparse conditional association.
 
 <a id="huynh-thu-genie3-2010"></a>
-- **Vân Anh Huynh-Thu et al. (2010).** Inferring Regulatory Networks from Expression Data Using Tree-Based Methods. *PLoS ONE 5:e12776.* [DOI: 10.1371/journal.pone.0012776](https://doi.org/10.1371/journal.pone.0012776)
+- **VÃ¢n Anh Huynh-Thu et al. (2010).** Inferring Regulatory Networks from Expression Data Using Tree-Based Methods. *PLoS ONE 5:e12776.* [DOI: 10.1371/journal.pone.0012776](https://doi.org/10.1371/journal.pone.0012776)
   - JLinAlg methods: GENIE3 regulatory networks.
 
 <a id="liu-carnival-2019"></a>
@@ -629,3 +651,157 @@ Chained equations, Rubin variance pooling, and finite-sample degrees of freedom.
 <a id="geary-1954"></a>
 - **R. C. Geary (1954).** The Contiguity Ratio and Statistical Mapping. *The Incorporated Statistician 5(3).* [DOI: 10.2307/2986645](https://doi.org/10.2307/2986645)
   - JLinAlg methods: Geary spatial autocorrelation.
+
+## Prediction and risk-score reporting
+
+<a id="wand-prs-reporting-2021"></a>
+- **Hannah Wand, Samuel A. Lambert, et al. (2021).** Improving reporting standards for polygenic scores in risk prediction studies. *Nature 591, 211-219.* [DOI: 10.1038/s41586-021-03243-6](https://doi.org/10.1038/s41586-021-03243-6) · [PMID: 33692554](https://pubmed.ncbi.nlm.nih.gov/33692554/) · [PMCID: PMC8609771](https://pmc.ncbi.nlm.nih.gov/articles/PMC8609771/)
+  - JLinAlg methods: PRS reporting standards, Development and validation populations, Score reporting and limitations.
+
+## Set overlap visualization
+
+<a id="lex-upset-2014"></a>
+- **Alexander Lex, Nils Gehlenborg, Hendrik Strobelt, Romain Vuillemot and Hanspeter Pfister (2014).** UpSet: Visualization of Intersecting Sets. *IEEE Transactions on Visualization and Computer Graphics 20(12), 1983-1992.* [DOI: 10.1109/TVCG.2014.2346248](https://doi.org/10.1109/TVCG.2014.2346248)
+  - JLinAlg methods: Exclusive intersection membership matrices, Multi-cohort overlap displays.
+
+## Genotype quality control
+
+<a id="wigginton-hwe-2005"></a>
+- **Wigginton JE, Cutler DJ, Abecasis GR (2005).** A note on exact tests of Hardy-Weinberg equilibrium. *American Journal of Human Genetics 76(5), 887-893.* [DOI: 10.1086/429864](https://doi.org/10.1086/429864) · [PMID: 15789306](https://pubmed.ncbi.nlm.nih.gov/15789306/) · [PMCID: PMC1199378](https://pmc.ncbi.nlm.nih.gov/articles/PMC1199378/)
+  - JLinAlg methods: Exact hard-call HWE, Conditional genotype-count enumeration.
+
+<a id="plink2-qc-documentation"></a>
+- **PLINK developers (2026).** PLINK 2.0 input filtering and basic statistics. *Official documentation, accessed 2026-10-23.* [Primary source](https://www.cog-genomics.org/plink/2.0/filter#hwe)
+  - JLinAlg methods: Prespecified HWE thresholds and sample scope, Founder and control subset considerations, Distinct sex chromosome procedures.
+
+## Genotype input formats
+
+<a id="bgen-layout2-specification"></a>
+- **BGEN developers (2026).** The BGEN format: layout 2 specification. *Official format specification, accessed 2026-10-23.* [Primary source](https://www.chg.ox.ac.uk/~gav/bgen_format/spec/latest.html)
+  - JLinAlg methods: Per-sample ploidy and missingness, Genotype probability representations.
+
+<a id="hts-vcf-bcf-specification"></a>
+- **Global Alliance for Genomics and Health file-format contributors (2026).** The Variant Call Format specification: VCFv4.5 and BCFv2.2. *Official HTS specification, e821e4f, 2026-02-25.* [Primary source](https://samtools.github.io/hts-specs/VCFv4.5.pdf)
+  - JLinAlg methods: Variant and genotype field semantics, BCF framing, sample dimensions and BGZF representation.
+
+## Genetic association calibration
+
+<a id="regenie-binary-methods"></a>
+- **REGENIE developers (2026).** REGENIE overview: quantitative and binary association methods. *Official documentation, accessed 2026-10-23.* [Primary source](https://rgcgithub.github.io/regenie/overview/)
+  - JLinAlg methods: Design-specific binary testing, Firth and saddlepoint corrections, Separation of QC from association calibration.
+
+## Bias-reduced logistic association
+
+<a id="firth-bias-reduction-1993"></a>
+- **David Firth (1993).** Bias reduction of maximum likelihood estimates. *Biometrika 80(1):27-38.* [DOI: 10.1093/biomet/80.1.27](https://doi.org/10.1093/biomet/80.1.27)
+  - JLinAlg methods: Jeffreys penalized likelihood, First-order bias reduction.
+
+<a id="heinze-schemper-separation-2002"></a>
+- **Georg Heinze and Michael Schemper (2002).** A solution to the problem of separation in logistic regression. *Statistics in Medicine 21(16):2409-2419.* [Primary source](https://pubmed.ncbi.nlm.nih.gov/12210625/) · [PMID: 12210625](https://pubmed.ncbi.nlm.nih.gov/12210625/)
+  - JLinAlg methods: Separated logistic data, Penalized likelihood inference.
+
+<a id="logistf-reference-documentation"></a>
+- **Georg Heinze and logistf contributors (2026).** logistf: Firth logistic regression and constrained penalized likelihood tests. *Official CRAN package documentation, accessed 2026-10-23.* [Primary source](https://search.r-project.org/CRAN/refmans/logistf/html/logistftest.html)
+  - JLinAlg methods: Full and constrained penalized fits, Independent reference implementation.
+
+## Exact conditional binary inference
+
+<a id="r-fisher-exact-documentation"></a>
+- **R Core Team and survival contributors (2026).** Fisher's exact test: fixed margins and probability-ordering two-sided tails. *R reference documentation.* [Primary source](https://stat.ethz.ch/R-manual/R-devel/library/stats/html/fisher.test.html)
+  - JLinAlg methods: Finite conditional binary-genotype reference, Two-sided tail definition.
+
+<a id="r-survival-clogit-documentation"></a>
+- **R Core Team and survival contributors (2026).** Conditional logistic regression: exact conditional likelihood. *R reference documentation.* [Primary source](https://search.r-project.org/CRAN/refmans/survival/html/clogit.html)
+  - JLinAlg methods: Stratum case-count conditioning, Distinguish conditional likelihood from finite test calibration.
+
+## Regularized prediction and independent score evaluation
+
+<a id="friedman-glmnet-2010"></a>
+- **Jerome Friedman, Trevor Hastie and Robert Tibshirani (2010).** Regularization Paths for Generalized Linear Models via Coordinate Descent. *Journal of Statistical Software 33(1), 1-22.* [DOI: 10.18637/jss.v033.i01](https://doi.org/10.18637/jss.v033.i01) · [PMID: 20808728](https://pubmed.ncbi.nlm.nih.gov/20808728/) · [PMCID: PMC2929880](https://pmc.ncbi.nlm.nih.gov/articles/PMC2929880/)
+  - JLinAlg methods: Binomial elastic-net objective, Coordinate optimization, Prediction penalty selection.
+
+## Adjusted subgroup effect modification
+
+<a id="altman-bland-interaction-2003"></a>
+- **Douglas G Altman and J Martin Bland (2003).** Interaction revisited: the difference between two estimates. *BMJ 326(7382):219.* [Primary source](https://pubmed.ncbi.nlm.nih.gov/12543843/) · [PMID: 12543843](https://pubmed.ncbi.nlm.nih.gov/12543843/) · [PMCID: PMC1125071](https://pmc.ncbi.nlm.nih.gov/articles/PMC1125071/)
+  - JLinAlg methods: Compare effects rather than subgroup P values.
+
+<a id="keller-interaction-confounding-2014"></a>
+- **Matthew C Keller (2014).** Gene x environment interaction studies have not properly controlled for potential confounders: the problem and the (simple) solution. *Biological Psychiatry 75(1):18-24.* [Primary source](https://pubmed.ncbi.nlm.nih.gov/24135711/) · [PMID: 24135711](https://pubmed.ncbi.nlm.nih.gov/24135711/) · [PMCID: PMC3859520](https://pmc.ncbi.nlm.nih.gov/articles/PMC3859520/)
+  - JLinAlg methods: Covariate by feature and covariate by group interaction terms.
+
+## Genotype sample quality control
+
+<a id="manichaikul-king-2010"></a>
+- **Ani Manichaikul et al. (2010).** Robust relationship inference in genome-wide association studies. *Bioinformatics 26(22):2867-2873.* [Primary source](https://pubmed.ncbi.nlm.nih.gov/20926424/) · [PMID: 20926424](https://pubmed.ncbi.nlm.nih.gov/20926424/) · [PMCID: PMC3025716](https://pmc.ncbi.nlm.nih.gov/articles/PMC3025716/)
+  - JLinAlg methods: KING between-family estimator, Missing-aware genotype pair counts.
+
+<a id="price-pca-stratification-2006"></a>
+- **Alkes L Price et al. (2006).** Principal components analysis corrects for stratification in genome-wide association studies. *Nature Genetics 38:904-909.* [Primary source](https://www.nature.com/articles/ng1847) · [PMID: 16862161](https://pubmed.ncbi.nlm.nih.gov/16862161/)
+  - JLinAlg methods: Genotype principal components, Population structure adjustment.
+
+## Human genome coordinates and ploidy
+
+<a id="grc-human-par-intervals"></a>
+- **Genome Reference Consortium (2026).** Human Genome Overview: GRCh38 and GRCh37 pseudoautosomal regions. *Official reference assembly documentation, accessed 2026-10-25.* [Primary source](https://www.ncbi.nlm.nih.gov/grc/human)
+  - JLinAlg methods: Build-specific 1-based closed X and Y PAR intervals, Chromosome-coordinate stability across patch releases.
+
+<a id="plink2-human-ploidy-documentation"></a>
+- **PLINK developers (2026).** PLINK 2.0 human chromosome ploidy and dosage input. *Official documentation, accessed 2026-10-25.* [Primary source](https://www.cog-genomics.org/plink/2.0/input)
+  - JLinAlg methods: Explicit haploid versus diploid dosage interpretation, Sex-chromosome and pseudoautosomal input handling.
+
+## Exact statistical inference
+
+<a id="clopper-pearson-1934"></a>
+- **C. J. Clopper and E. S. Pearson (1934).** The Use of Confidence or Fiducial Limits Illustrated in the Case of the Binomial. *Biometrika 26(4):404-413.* [DOI: 10.1093/biomet/26.4.404](https://doi.org/10.1093/biomet/26.4.404)
+  - JLinAlg methods: Exact binomial confidence intervals, Conditional Monte Carlo tail precision.
+
+## Rare-variant frequency eligibility
+
+<a id="gnomad-v4-1-allele-number"></a>
+- **Katherine Chao, Michael Wilson, Julia Goodrich and the gnomAD Production Team (2024).** gnomAD v4.1: allele numbers across called sites and joint frequencies. *gnomAD release documentation.* [Primary source](https://gnomad.broadinstitute.org/news/2024-04-gnomad-v4-1/)
+  - JLinAlg methods: Variant and nonvariant site coverage, Explicit allele-number provenance, Absence versus zero allele count.
+
+<a id="regenie-mask-frequency-documentation"></a>
+- **REGENIE developers (2026).** REGENIE documentation: external AAF file and mask definitions. *Official software documentation.* [Primary source](https://rgcgithub.github.io/regenie/options/)
+  - JLinAlg methods: External ALT allele frequencies, Prespecified functional masks, ALT frequency versus minor allele frequency.
+
+## Survival association and diagnostics
+
+<a id="r-coxph-survival-documentation"></a>
+- **Terry M. Therneau and survival contributors (2026).** survival: Cox proportional hazards regression and survival endpoint documentation. *Official R package documentation.* [Primary source](https://stat.ethz.ch/R-manual/R-devel/library/survival/html/coxph.html)
+  - JLinAlg methods: Partial likelihood and tie methods, Delayed entry and baseline strata, Offsets and interpretation limits.
+
+<a id="r-cox-zph-documentation"></a>
+- **Terry M. Therneau and survival contributors (2026).** survival: proportional-hazards efficient score tests and transforms. *Official R package documentation and implementation.* [Primary source](https://stat.ethz.ch/R-manual/R-devel/library/survival/html/cox.zph.html)
+  - JLinAlg methods: Fitted-coefficient nuisance adjustment, Coefficient-specific and global diagnostics, Explicit log-time transformation.
+
+<a id="chen-ibrahim-shao-2009"></a>
+- **Ming-Hui Chen, Joseph G. Ibrahim and Qi-Man Shao (2009).** Maximum likelihood inference for the Cox regression model with applications to missing covariates. *Journal of Multivariate Analysis 100:2018-2030.* [Primary source](https://pmc.ncbi.nlm.nih.gov/articles/PMC2744117/)
+  - JLinAlg methods: Finite MPLE existence and full rank, Positive risk-contrast balance, Monotone partial likelihood.
+
+<a id="heinze-schemper-2001-cox"></a>
+- **Georg Heinze and Michael Schemper (2001).** A solution to the problem of monotone likelihood in Cox regression. *Biometrics 57:114-119.* [Primary source](https://pubmed.ncbi.nlm.nih.gov/11252585/)
+  - JLinAlg methods: Monotone likelihood and infinite coefficient estimates, Bias-reduced Cox methods are separate estimators, not silently substituted.
+
+## Prediction model selection and evaluation
+
+<a id="varma-simon-nested-cv-2006"></a>
+- **Sudhir Varma and Richard Simon (2006).** Bias in error estimation when using cross-validation for model selection. *BMC Bioinformatics 7, 91.* [DOI: 10.1186/1471-2105-7-91](https://doi.org/10.1186/1471-2105-7-91)
+  - JLinAlg methods: Nested model selection, Repeat all development steps inside validation folds.
+
+## Prediction validation implementation guidance
+
+<a id="sklearn-grouped-nested-cv"></a>
+- **scikit-learn developers (2026).** Cross-validation: nested model selection and grouped observations. *scikit-learn official documentation.* [Primary source](https://scikit-learn.org/stable/modules/cross_validation.html#cross-validation-iterators-for-grouped-data)
+  - JLinAlg methods: Group boundaries, Nested cross-validation, Independent test set.
+
+## Frozen genetic score application
+
+<a id="plink2-linear-scoring"></a>
+- **PLINK 2 developers (2026).** Linear scoring. *PLINK 2 official documentation, accessed 2026-10-25.* [Primary source](https://www.cog-genomics.org/plink/2.0/score)
+  - JLinAlg methods: Additive allele score sums and allele-normalized averages, Missing-genotype conventions.
+
+<a id="pgs-catalog-scoring-format"></a>
+- **PGS Catalog team (2026).** PGS Catalog download information and scoring file format. *PGS Catalog official documentation, accessed 2026-10-25.* [Primary source](https://www.pgscatalog.org/downloads/)
+  - JLinAlg methods: Explicit genome-build, coordinate and effect-allele weights, Author-reported and harmonized scores; nonadditive flags.

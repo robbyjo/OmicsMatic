@@ -62,6 +62,7 @@ public final class StudyEvidenceIndex {
                     Object findings = keyFindings(path.getParent(),
                         String.valueOf(manifest.get("operation_type")));
                     if (findings != null) entry.put("key_findings", findings);
+                    if(Set.of("protein_structure","protein_structure_assessment").contains(manifest.get("operation_type")))entry.put("details",findings==null?Map.of("interpretation","See the retained protein sources; raw sequences, peptides and coordinates are excluded from aggregate previews"):findings);
                     List<Object> artifacts = new ArrayList<>();
                     Map<String, Object> hashes = StudyIO.optionalMap(
                         manifest.get("output_sha256"), "output_sha256");
@@ -169,6 +170,67 @@ public final class StudyEvidenceIndex {
 
     public static Object keyFindings(Path operationDirectory,
             String operationType) throws IOException {
+        if(Set.of("cohort_overlap","heterogeneity_review").contains(operationType)){
+            String file=operationType.equals("cohort_overlap")?"cohort-overlap.yaml":"heterogeneity-review.yaml";Path source=operationDirectory.resolve(file);if(!Files.isRegularFile(source))return null;var data=StudyIO.loadArtifact(source);var result=new LinkedHashMap<String,Object>();
+            for(String key:List.of("execution_origin","analysis_executed_by_jlinalg","source_alert_rule","selection_origin","alert_assessment_complete","registered_common_family_policy","set_order","observed_union_features","common_estimable_features","analysis_universe","universe_features","validation_family","direction_rule","threshold_comparison","discovery_alpha","validation_alpha","frozen_discovery_features","selected_union_features","all_sets_selected_features","observed_patterns","nonempty_patterns","displayed_patterns","zero_overlap_alerts","plot_disposition","metric","requested_metric","q_test_definitions","q_adjustment","q_testing_denominator","q_family_complete","source_family_complete","assessment_complete","feature_scope","association_alpha","candidate_multisource_features","eligible_features","scope_features","high_features","observed_high_features","high_fraction","widespread_alert","alert_disposition","interpretation","required_manuscript_caveat"))if(data.containsKey(key))result.put(key,data.get(key));result.put("full_summary_artifact",file);return jsonSafe(result);
+        }
+        if(Set.of("protein_structure","protein_structure_assessment").contains(operationType)&&Files.isRegularFile(operationDirectory.resolve("protein-analysis.yaml"))){var data=StudyIO.loadArtifact(operationDirectory.resolve("protein-analysis.yaml"));var summary=new LinkedHashMap<String,Object>();for(String key:List.of("source_scope","assessment_only","requested_targets","completed_targets","assessed_models","structure_retrievals","new_prediction_processes","prediction_batches_reused","interpretation","required_manuscript_caveat"))if(data.containsKey(key))summary.put(key,data.get(key));summary.put("full_summary_artifact","protein-analysis.yaml");return jsonSafe(summary);}
+        Path imported = operationDirectory.resolve("supplied-analysis.yaml");
+        if(operationType.equals("mr_family_adjustment")){
+            Path familyManifest=operationDirectory.resolve("manifest.yaml");boolean failedFamily=Files.isRegularFile(familyManifest)&&!Set.of("complete","waiting_for_input").contains(String.valueOf(StudyIO.loadArtifact(familyManifest).get("state")));
+            if(failedFamily||!Files.isRegularFile(operationDirectory.resolve("mr-family.yaml")))return Map.of("status","unavailable","interpretation","The MR family producer has no promoted summary; inspect its state and execution error. No joint discoveries are established.");
+            var data=StudyIO.loadArtifact(operationDirectory.resolve("mr-family.yaml"));var summary=new LinkedHashMap<String,Object>();
+            for(String key:List.of("status","coverage","family_size","known_member_test_count","estimable_primary_tests","observed_rows","source_adjustments_preserved","required_manuscript_caveat"))if(data.containsKey(key))summary.put(key,data.get(key));
+            var policy=StudyIO.optionalMap(data.get("policy"),"policy");var selected=new LinkedHashMap<String,Object>();for(String key:List.of("id","hypotheses","adjustment","alpha"))if(policy.containsKey(key))selected.put(key,policy.get(key));summary.put("policy",selected);summary.put("full_results_artifact","mr-family-results.tsv");return jsonSafe(summary);
+        }
+        if (Files.isRegularFile(imported) && (!operationType.equals("meta_analysis") || !Files.isRegularFile(operationDirectory.resolve("meta-analysis.tsv")))) {
+            var metadata = StudyIO.loadArtifact(imported);
+            var summary = new LinkedHashMap<String, Object>();
+            for (String field : List.of("artifact_id", "kind", "role", "reported_status", "execution_origin", "analysis_executed_by_jlinalg", "scope", "resolved_family", "result_rows", "nodes", "edges", "evidence_grade", "required_manuscript_caveat", "primary_selection_eligible"))
+                if (metadata.containsKey(field)) summary.put(field, metadata.get(field));
+            var method = StudyIO.optionalMap(metadata.get("method"), "method");
+            var externalMethod = new LinkedHashMap<String, Object>();
+            for (String field : List.of("name", "software", "version", "citation")) if (method.containsKey(field)) externalMethod.put(field, method.get(field));
+            summary.put("external_method", externalMethod);
+            if(operationType.equals("literature_search")&&metadata.get("evidence") instanceof List<?>) {
+                for(String field:List.of("evidence","reference_records","query_records","public_metadata_declared"))if(metadata.containsKey(field))summary.put(field,metadata.get(field));
+            }
+            Object result = metadata.get("canonical_results");
+            if (result instanceof String name && !name.contains("/") && !name.contains("\\")) {
+                summary.put("supplied_result_preview", topRows(operationDirectory.resolve(name), 20, List.of()));
+                summary.put("preview_rule", "At most 20 rows from the typed imported result. Immutable complete source and canonical table remain in the operation manifest; preview length is not the tested denominator.");
+            }
+            return summary;
+        }
+        if (Set.of("variant_annotation", "variant_scoring").contains(operationType)) {
+            Path path = operationDirectory.resolve("variant-followup.yaml");
+            if (Files.isRegularFile(path)) return jsonSafe(StudyIO.loadArtifact(path));
+        }
+        if (Set.of("network_analysis","pathway_network","network_modules","module_gene_ontology").contains(operationType)) {
+            String filename=switch(operationType){case "network_modules"->"module-analysis.yaml";case "module_gene_ontology"->"module-go.yaml";default->"network-analysis.yaml";};
+            Path path=operationDirectory.resolve(filename);if(!Files.isRegularFile(path))return null;
+            var source=StudyIO.loadArtifact(path);var summary=new LinkedHashMap<String,Object>();
+            for(String field:List.of("network_type","dataset_id","species","nodes","edges","analysis_samples","eligible_features","correlation","threshold","bootstrap_replicates","source_kind","membership_basis","connected_components","maximal_cliques","clique_search_complete","search_limit","module_origin","memberships","modules","background_genes","mapped_nodes","unmapped_nodes","tested_module_term_pairs","testing_family","adjustment","required_manuscript_caveat"))if(source.containsKey(field))summary.put(field,source.get(field));
+            summary.put("full_summary_artifact",filename);return jsonSafe(summary);
+        }
+        if(Set.of("risk_score_evaluation","risk_score_related_phenotypes").contains(operationType)){
+            Path path=operationDirectory.resolve("risk-score-analysis.yaml");if(!Files.isRegularFile(path))return null;var data=StudyIO.loadArtifact(path);var summary=new LinkedHashMap<String,Object>();
+            for(String key:List.of("score_id","mode","family","analysis_stage","score_evaluation_performed","training_rows","tuning_rows","development_rows","evaluation_rows_declared","evaluation_rows","evaluation_independent_units","selected_lambda","feature_count","model_refitted","preprocessing_fit_scope","independence_evidence_status","evaluation_metrics","bootstrap_replicates","related_phenotypes_registered","related_testing_family_complete","related_adjustment","related_testing_family","interpretation","required_manuscript_caveat"))if(data.containsKey(key))summary.put(key,data.get(key));
+            summary.put("full_summary_artifact","risk-score-analysis.yaml");return jsonSafe(summary);
+        }
+        if(operationType.equals("ranked_gsea")){
+            Path path=operationDirectory.resolve("gsea-analysis.yaml");if(!Files.isRegularFile(path))return null;var data=StudyIO.loadArtifact(path);var summary=new LinkedHashMap<String,Object>();
+            for(String key:List.of("null_model","gene_id_type","species","dataset_id","ranking_origin","rank_interpretation","ranked_genes","source_estimable_features","mapped_genes","genes_with_multiple_features","tested_terms","complete_testing_family","adjustment","tied_genes","work_units","score_rule","p_value_rule","normalization","analysis_performed","diagnostic_curve_count","interpretation","required_manuscript_caveat"))if(data.containsKey(key))summary.put(key,data.get(key));
+            summary.put("full_summary_artifact","gsea-analysis.yaml");return jsonSafe(summary);
+        }
+        if (Set.of("finding_inventory", "impact_assessment").contains(operationType)) {
+            Path path = operationDirectory.resolve(operationType.equals("finding_inventory") ? "finding-inventory.yaml" : "impact-assessment.yaml");
+            if (!Files.isRegularFile(path)) return null;
+            var data = StudyIO.loadArtifact(path); var result = new LinkedHashMap<String, Object>();
+            for (String field : List.of("scope", "findings", "candidates", "scientific_scope", "literature_coverage", "candidate_count", "assessed_candidate_count", "selected_findings", "selected_ids", "selection_note", "review_status", "manuscript_policy", "method_limitations")) if (data.containsKey(field)) result.put(field, data.get(field));
+            result.put("full_artifact", operationType.equals("finding_inventory") ? "finding-inventory.jsonl" : "impact-assessment.yaml");
+            return result;
+        }
         if (operationType.equals("participant_characteristics") || operationType.equals("irqtl_candidate_review")) {
             Path summary = operationDirectory.resolve(operationType.equals("participant_characteristics")
                 ? "participant-characteristics.yaml" : "irqtl-review.yaml");
@@ -219,6 +281,30 @@ public final class StudyEvidenceIndex {
         }
         if (operationType.equals("meta_analysis"))
             return associationFindings(operationDirectory.resolve("meta-analysis.tsv"));
+        if (operationType.equals("rare_variant_analysis")) {
+            Path summaryPath = operationDirectory.resolve("rare-analysis.yaml");
+            if (!Files.isRegularFile(summaryPath)) return null;
+            var summary = StudyIO.loadArtifact(summaryPath);
+            @SuppressWarnings("unchecked") List<Object> rows = (List<Object>) topRows(operationDirectory.resolve("rare-results.tsv"), Integer.MAX_VALUE, List.of());
+            var primary = rows.stream().map(row -> StudyIO.map(row, "set result"))
+                .filter(row -> "primary".equals(row.get("scope")) && "true".equals(row.get("is_primary_test")) && numeric(row.get("p_value")) <= 1).toList();
+            List<Object> preview = new ArrayList<>();
+            for (var row : primary.subList(0, Math.min(20, primary.size()))) {
+                var displayed = new LinkedHashMap<>(row);
+                if ("unsigned_set".equals(row.get("result_type"))) { displayed.remove("beta"); displayed.remove("se"); displayed.remove("direction"); }
+                preview.add(displayed);
+            }
+            double alpha = .05;
+            Map<String, Object> method = StudyIO.optionalMap(summary.get("method_report"), "method_report");
+            Map<String, Object> parameters = StudyIO.optionalMap(method.get("parameters"), "parameters");
+            if (parameters.get("alpha") instanceof Number value) alpha = value.doubleValue();
+            double threshold = alpha;
+            return Map.of("primary_identity", summary.get("primary_identity"), "families", summary.get("families"),
+                "tested_primary_sets", primary.size(), "significant_primary_sets", primary.stream().filter(row -> numeric(row.get("adjusted_p")) < threshold).count(),
+                "cohort_influence", summary.getOrDefault("cohort_influence", Map.of("performed", false, "reason", "Not available in this historical artifact")),
+                "top_primary_sets", preview, "interpretation", summary.get("unsigned_semantics"),
+                "display_rule", "Top 20 primary-test sets by P; adjusted_p is retained from the complete joint gene/mask/test family, never recomputed on the preview or primary-test subset.");
+        }
         if (operationType.equals("effect_comparison"))
             return topRows(operationDirectory.resolve("effect-comparisons.tsv"),
                 100, List.of());
@@ -291,18 +377,33 @@ public final class StudyEvidenceIndex {
             .filter(row -> Set.of("pooled", "NA", "").contains(String.valueOf(row.getOrDefault("term", "pooled"))))
             .filter(row -> numeric(row.get("p_value")) >= 0 && numeric(row.get("p_value")) <= 1).toList();
         double previous = 1;
+        var importedFamily = StudySuppliedResultPolicy.family(path);
+        boolean imported = !importedFamily.isEmpty();
+        boolean bhFamily = !imported || "BH".equalsIgnoreCase(String.valueOf(importedFamily.get("adjustment")));
         for (int i = tested.size() - 1; i >= 0; i--) {
             previous = Math.min(previous, numeric(tested.get(i).get("p_value")) * tested.size() / (i + 1.0));
-            tested.get(i).put("BH_FDR", previous);
+            if (imported) {
+                double supplied = numeric(tested.get(i).get("adjusted_p"));
+                if (!(supplied >= 0 && supplied <= 1)) throw new IOException("Invalid source-adjusted P value in supplied primary results");
+                if (bhFamily) tested.get(i).put("BH_FDR", supplied);
+            } else tested.get(i).put("BH_FDR", previous);
         }
         Map<String, Object> findings = new LinkedHashMap<>();
-        findings.put("tested_features", tested.size());
-        findings.put("BH_FDR_0_05_features", tested.stream().filter(row -> numeric(row.get("BH_FDR")) <= 0.05).count());
-        findings.put("display_rule", "Top 20 eligible features by p-value; BH_FDR is descriptive across all eligible features in this table at the displayed 0.05 threshold. For meta-analysis only pooled rows are included; study selection rules remain in the plan.");
+        findings.put("tested_features", imported ? importedFamily.getOrDefault("tested_count", tested.size()) : tested.size());
+        if (!imported || bhFamily && "complete".equals(importedFamily.get("coverage")))
+            findings.put("BH_FDR_0_05_features", tested.stream().filter(row -> numeric(row.get("BH_FDR")) <= 0.05).count());
+        if (imported) {
+            findings.put("supplied_eligible_features", tested.size());
+            findings.put("supplied_significant_adjusted_0_05_features", tested.stream().filter(row -> numeric(row.get("adjusted_p")) <= .05).count());
+            findings.put("testing_family", importedFamily);
+        }
+        findings.put("display_rule", imported
+            ? "Top 20 among supplied eligible rows; source full-family adjusted P values and declared tested_count are retained. Counts of supplied significant rows are not total family discovery counts when only selected rows are available. External methods and QC were not independently reproduced."
+            : "Top 20 eligible features by p-value; BH_FDR is descriptive across all eligible features in this table at the displayed 0.05 threshold. For meta-analysis only pooled rows are included; study selection rules remain in the plan.");
         List<Object> preview = new ArrayList<>();
         for (Map<String, Object> row : tested.subList(0, Math.min(20, tested.size()))) {
             Map<String, Object> selected = new LinkedHashMap<>();
-            copy(row, selected, "feature_id", "beta", "se", "p_value", "BH_FDR", "n_cohorts", "direction", "i_squared");
+            copy(row, selected, "feature_id", "beta", "se", "p_value", "BH_FDR", "adjusted_p", "n_cohorts", "direction", "i_squared");
             preview.add(selected);
         }
         findings.put("top_features", preview);

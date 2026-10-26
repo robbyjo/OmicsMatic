@@ -233,11 +233,13 @@ These are the primary sources for the methods used in this workflow. Cite the re
 - [Peter Langfelder and Steve Horvath (2008) — WGCNA: an R package for weighted correlation network analysis](../CITATIONS.md#langfelder-wgcna-2008)
 - [Peter Langfelder et al. (2011) — Is My Network Module Preserved and Reproducible?](../CITATIONS.md#langfelder-preservation-2011)
 - [Nicolai Meinshausen and Peter Buhlmann (2006) — High-dimensional graphs and variable selection with the Lasso](../CITATIONS.md#meinshausen-networks-2006)
-- [Vân Anh Huynh-Thu et al. (2010) — Inferring Regulatory Networks from Expression Data Using Tree-Based Methods](../CITATIONS.md#huynh-thu-genie3-2010)
+- [VÃ¢n Anh Huynh-Thu et al. (2010) — Inferring Regulatory Networks from Expression Data Using Tree-Based Methods](../CITATIONS.md#huynh-thu-genie3-2010)
 - [Anika Liu et al. (2019) — From expression footprints to causal pathways: contextualizing large signaling networks with CARNIVAL](../CITATIONS.md#liu-carnival-2019)
 - [R. A. Fisher (1921) — On the probable error of a coefficient of correlation deduced from a small sample](../CITATIONS.md#fisher-correlation-1921)
 - [Sergey Brin and Lawrence Page (1998) — The anatomy of a large-scale hypertextual Web search engine](../CITATIONS.md#brin-pagerank-1998)
 - [Yoav Benjamini and Yosef Hochberg (1995) — Controlling the false discovery rate: a practical and powerful approach to multiple testing](../CITATIONS.md#benjamini-hochberg-1995)
+- [Jesse Hemerik and Jelle Goeman (2018) — Exact testing with random permutations](../CITATIONS.md#hemerik-goeman-2018) — [PMID: 30930620](https://pubmed.ncbi.nlm.nih.gov/30930620/) · [PMCID: PMC6405018](https://pmc.ncbi.nlm.nih.gov/articles/PMC6405018/)
+- [C. J. Clopper and E. S. Pearson (1934) — The Use of Confidence or Fiducial Limits Illustrated in the Case of the Binomial](../CITATIONS.md#clopper-pearson-1934)
 
 [Search the complete scientific bibliography](https://robbyjo.github.io/JLinAlg/citations.html).
 <!-- SCIENTIFIC-CITATIONS:END -->

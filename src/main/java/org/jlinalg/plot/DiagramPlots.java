@@ -33,6 +33,13 @@ public final class DiagramPlots {
         public int rightSize() { return rightOnly + overlap; }
     }
 
+    /** Exclusive counts in binary-label order: 100,010,001,110,101,011,111. */
+    public record ThreeSetVennData(List<String> labels,List<Long> counts) { }
+    /** An exclusive intersection; false means outside that set, not untested. */
+    public record SetIntersection(List<Boolean> included,long size) { public SetIntersection { included=List.copyOf(included); } }
+    /** Set sizes refer to the complete analysis, even when only some intersections are displayed. */
+    public record UpSetData(List<String> labels,List<Long> setSizes,List<SetIntersection> intersections,String caption) { }
+
     public static Plot heatmap(HeatmapData data, ClusterMode clustering,
             PlotOptions options) {
         return new Plot(new HeatmapChart(data, clustering, options));
@@ -79,4 +86,6 @@ public final class DiagramPlots {
     public static Plot venn(VennData data, PlotOptions options) {
         return new Plot(new VennChart(data, options));
     }
+    public static Plot venn(ThreeSetVennData data,PlotOptions options){return new Plot(new ThreeSetVennChart(data,options));}
+    public static Plot upset(UpSetData data,PlotOptions options){return new Plot(new UpSetChart(data,options));}
 }

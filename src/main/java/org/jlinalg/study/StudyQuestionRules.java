@@ -16,10 +16,14 @@ final class StudyQuestionRules {
     static List<StudyNeed> prerequisites(Map<String, Object> study, Map<String, Object> operation) {
         List<StudyNeed> result = new ArrayList<>();
         String type = String.valueOf(operation.get("type"));
+        if (operation.containsKey("supplied_result_id")) return result;
+        if ("study".equals(operation.get("scope")) && Set.of("finding_inventory", "impact_assessment", "manuscript_draft", "mr_family_adjustment").contains(type)) return result;
         String hypothesisId = String.valueOf(operation.get("hypothesis"));
         Map<String, Object> hypothesis = object(study, "hypotheses", hypothesisId);
         List<String> selected = strings(operation.get("datasets"));
-        if (type.equals("association")) {
+        boolean samplingCovariance = StudyPoolingPolicy.correlated(StudyIO.optionalMap(hypothesis.get("analysis"), "analysis"));
+        boolean supportedPooling = samplingCovariance && Set.of("meta_analysis", "discovery_meta_analysis", "sensitivity_analysis").contains(type);
+        if (Set.of("association", "participant_qc", "rare_variant_scores").contains(type)) {
             String id = String.valueOf(operation.get("dataset_id"));
             Map<String, Object> dataset = object(study, "datasets", id);
             Map<String, Object> files = StudyIO.optionalMap(dataset.get("files"), "files");
@@ -34,7 +38,7 @@ final class StudyQuestionRules {
                     "Specify the dictionary phenotype key or exact column, not a related phenotype.",
                     "text", List.of(), Map.of("collection", "hypotheses", "id", hypothesisId, "field", "outcome"), true));
         }
-        if (Set.of("meta_analysis", "discovery_replication", "sensitivity_analysis").contains(type)) {
+        if (Set.of("meta_analysis", "discovery_meta_analysis", "discovery_replication", "sensitivity_analysis", "rare_variant_analysis").contains(type)) {
             Set<String> cohorts = new java.util.TreeSet<>();
             for (String id : selected) {
                 Map<String, Object> dataset = object(study, "datasets", id);
@@ -45,7 +49,8 @@ final class StudyQuestionRules {
                 Map<String, Object> assumption = StudyIO.map(raw, "assumption");
                 List<String> between = strings(assumption.get("between"));
                 if (!"potentially_dependent".equals(assumption.get("type"))
-                        || between.size() != 2 || !cohorts.containsAll(between)) continue;
+                        || between.size() != 2 || !cohorts.containsAll(between) || supportedPooling
+                        || samplingCovariance && type.equals("discovery_replication") && discoveryOnly(study, hypothesis, between)) continue;
                 List<String> sorted = between.stream().sorted().toList();
                 result.add(new StudyNeed("cohort.relationship", "cohorts:" + String.join(":", sorted),
                     "What relationship exists between cohorts " + String.join(" and ", sorted) + "?",
@@ -58,12 +63,23 @@ final class StudyQuestionRules {
                 if ("retired".equals(relation.get("status")) || "independent".equals(relation.get("type"))) continue;
                 List<String> involved = strings(relation.get("between")).stream().filter(cohorts::contains).sorted().toList();
                 if (involved.size() < 2) continue;
+                if (supportedPooling || samplingCovariance && type.equals("discovery_replication") && discoveryOnly(study, hypothesis, involved)) continue;
                 result.add(StudyNeed.review("dependent-inference:" + hypothesisId + ":" + String.join(":", involved),
                     "How should dependence between " + String.join(" and ", involved) + " be handled for " + hypothesisId + "?",
                     "The built-in replication/meta-analysis adapters assume independent cohorts. Supply a justified revised cohort selection or a separately supported dependence-aware analysis; acknowledging dependence does not correct it.", true));
             }
         }
         return result;
+    }
+
+    private static boolean discoveryOnly(Map<String, Object> study, Map<String, Object> hypothesis, List<String> involved) {
+        var inputs = StudyIO.optionalMap(hypothesis.get("inputs"), "inputs");
+        Set<String> discovery = new java.util.HashSet<>(), validation = new java.util.HashSet<>();
+        for (String role : List.of("discovery", "replication")) for (String id : strings(inputs.get(role))) {
+            var dataset = object(study, "datasets", id); var target = role.equals("discovery") ? discovery : validation;
+            target.addAll(strings(dataset.get("cohorts"))); if (dataset.containsKey("cohort")) target.add(String.valueOf(dataset.get("cohort")));
+        }
+        return discovery.containsAll(involved) && involved.stream().noneMatch(validation::contains);
     }
 
     static Map<String, Object> object(Map<String, Object> study, String collection, String id) {

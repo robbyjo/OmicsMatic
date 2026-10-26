@@ -12,8 +12,13 @@ public record VariantFilterOptions(
         double maximumMac,
         double maximumMissingRate,
         double minimumImputationQuality,
-        boolean excludeMonomorphic) {
+        boolean excludeMonomorphic,
+        VariantQualityOptions quality) {
+    public VariantFilterOptions(double minimumMaf,double maximumMaf,double minimumMac,double maximumMac,double maximumMissingRate,double minimumImputationQuality,boolean excludeMonomorphic) {
+        this(minimumMaf,maximumMaf,minimumMac,maximumMac,maximumMissingRate,minimumImputationQuality,excludeMonomorphic,VariantQualityOptions.defaults());
+    }
     public VariantFilterOptions {
+        if(quality==null)throw new IllegalArgumentException("variant quality options are required");
         if (!Double.isFinite(minimumMaf) || !Double.isFinite(maximumMaf)
                 || minimumMaf < 0 || maximumMaf > 0.5
                 || minimumMaf > maximumMaf)
@@ -51,6 +56,7 @@ public record VariantFilterOptions(
         private double maximumMissingRate = 1;
         private double minimumImputationQuality = Double.NaN;
         private boolean excludeMonomorphic = true;
+        private VariantQualityOptions quality=VariantQualityOptions.defaults();
 
         private Builder() { }
         public Builder minimumMaf(double value) { minimumMaf = value; return this; }
@@ -66,10 +72,11 @@ public record VariantFilterOptions(
         public Builder excludeMonomorphic(boolean value) {
             excludeMonomorphic = value; return this;
         }
+        public Builder quality(VariantQualityOptions value){quality=value;return this;}
         public VariantFilterOptions build() {
             return new VariantFilterOptions(minimumMaf, maximumMaf,
                 minimumMac, maximumMac, maximumMissingRate,
-                minimumImputationQuality, excludeMonomorphic);
+                minimumImputationQuality, excludeMonomorphic,quality);
         }
     }
 }

@@ -1,0 +1,328 @@
+{
+  "status": "passed-native-FLASH-1.2.11-read-merging-contract",
+  "recorded_utc": "2026-10-25T20:34:03.273384+00:00",
+  "jar_sha256": "a104651636deb59493cddc92ce433629d4ef7b0c755f6ee065a3e0c75365c5e2",
+  "artifact": "D:\\projects\\JLinAlg\\build\\literature-review\\validated-cli\\jlinalg-0.3.7.jar",
+  "source_sha256": {
+    "src/main/java/org/jlinalg/sequence/FlashReads.java": "af6878e7b56effcf1c829ab1e708c4e4172c99e252f0bfb2a1ccb9a0710d0940",
+    "src/main/java/org/jlinalg/sequence/FlashFastqIO.java": "aeea528f3591b96275af8fc9919ebea091508e18353f15d60ad865266885cf7e",
+    "src/main/java/org/jlinalg/cli/FlashReadsCli.java": "58234251ff9a9f3cb2454849b4362dd14e9ce324235a8fd0e4f1fffb5efbd580",
+    "src/test/java/org/jlinalg/sequence/FlashReadsTest.java": "d87ea78568938417788d7aaa9a0d69966da0a1f76921e2cdb690ea172e2cda61",
+    "src/test/java/org/jlinalg/cli/FlashReadsCliTest.java": "d8e64df9232a6f21031a2c9d3e595d1aed493867d0b97b2736403658d0408e13",
+    "src/main/resources/META-INF/LICENSE-FLASH.txt": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+    "src/main/resources/META-INF/NOTICE-FLASH.txt": "f28be27a7774287657f418c48db233f7d51aa01457e24f8669eff44397f5618d",
+    "src/test/resources/org/jlinalg/sequence/flash/original-1.2.11-cases.tsv.gz": "055efc337996fed42ad2db3a2a5c03abc070d28675363d7869acd134c74daa3d",
+    "src/test/resources/org/jlinalg/sequence/flash/original-1.2.11-provenance.json": "6e7bcde540bb88b9e71dc48748763a77b339bfdf961f140acabb0ec4c24b17ef",
+    "tools/literature/freeze_flash_reference_cases.py": "d228c0cc9b4343053e04208434663c688521a132286a41ecafa319c174d08582",
+    "tools/literature/verify_flash_reads.py": "67d6c22e497bf0f0d086d2d31162acc90aacc042fb17df2e3856aa79027700da",
+    "tools/literature/curate_flash_uses.py": "b81b77075907d78c0eeeff1b1f2c9767c16f3679b506c3c3831a8daffd702070"
+  },
+  "current_full_gate_suites": {
+    "org.jlinalg.sequence.FlashReadsTest": {
+      "suite_name": "org.jlinalg.sequence.FlashReadsTest",
+      "suite": {
+        "tests": 8,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "junit_sha256": "abde4aa8a9476b87112497716a641e0dc8b5aec26f4774de29cd63764835ab91",
+      "testcases": [
+        "fullHeaderAndBarcodeRulesKeepOriginalSurprisesVisible()",
+        "unknownPositionsAreExcludedAndMinimumCountsCallableBases()",
+        "cleanupRetainsOriginalHeaderAndCountsEveryTransformation()",
+        "firstPerfectOverlapScalesBeyondTheFormerDraftLimit()",
+        "invalidEncodingBasesLengthsAndSettingsFailBeforeSearch()",
+        "gzipIsDetectedByMagicAndWriterRetainsUtf8AndHighQualities()",
+        "all5171ActualOriginalReferencesPreservePartitionConsensusAndQuality()",
+        "malformedFastqAndInvalidUtf8AreRejected()"
+      ]
+    },
+    "org.jlinalg.cli.FlashReadsCliTest": {
+      "suite_name": "org.jlinalg.cli.FlashReadsCliTest",
+      "suite": {
+        "tests": 10,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "junit_sha256": "2cd1019bde2cfda2f70c3bf12d71df8876d3e2806d86bbbd1ee80627f273b25d",
+      "testcases": [
+        "actualGoldenMergeKeepsBothPartitionsProvenanceAndActionableHeaderMapping()",
+        "strictMismatchQuarantinesAllScientificOutputs()",
+        "optionsRecipePreservesUnicodePathsHeadersSnapshotAndExplicitOverrides()",
+        "extraMateAndInvalidQualityArePersistedFailures()",
+        "normalizationBarcodeWhitespaceAndIgnoredPlusIdsAreCounted()",
+        "originalPositionalPairingRequiresExplicitChoiceAndProminentAction()",
+        "emptyAndUnmergeableInputsHaveDifferentFailureAndWarningStates()",
+        "refusesExistingDestinationDuplicateOptionsAndMissingEncodingWithoutOverwrite()",
+        "derivedCapUsesOriginalDefaultsAndWarnsWhenExplicitCapOverrides()",
+        "interleavedGzipAndDeclaredPhred64WorkAndOddMateFails()"
+      ]
+    }
+  },
+  "full_gate": {
+    "tests": 1593,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 5
+  },
+  "required_suites": 72,
+  "api_cli_tests": 18,
+  "frozen_actual_original_cases": 5171,
+  "packaged_calls": 53,
+  "independent_original_workflows": 45,
+  "packaged_reference_pairs": 5185,
+  "additional_unicode_recipe_calls": 2,
+  "original_executable_sha256": "2dbac87cf2f04721ef29e67ede061d6c0f17eae83297836e46f47bd209977ce6",
+  "original_version": "FLASH 1.2.11",
+  "original_reference_provenance": "../../../src/test/resources/org/jlinalg/sequence/flash/original-1.2.11-provenance.json",
+  "packaged_validation": "flash-native-packaged-validation.json",
+  "source_roles_report": "D:\\projects\\JLinAlg\\build\\literature-review\\flash-runtime\\reviewed-source-roles.json",
+  "original_reference_scope": "Complete ordered FASTQ headers, sequence, quality, merged/unmerged partitions, counts, ledger cardinality and merged-length histogram across captured original workflows. New original cases cover cleanup/barcodes/comments/Unicode, >1000 bases/outies, gzip interleaved Phred64 and explicit positional pairing. Six packaged invalid-input controls plus actual Unicode input/output recipe checks under the named JVMs. No whole-paper or original threading/text-report parity.",
+  "validator_dependency_control": {
+    "status": "skipped-unavailable-validation-dependency",
+    "missing": [
+      {
+        "role": "original FLASH validator",
+        "path": "build\\literature-review\\flash-runtime\\unavailable-flash.exe"
+      }
+    ],
+    "required_action": "Supply the named existing files. If downloads are permitted, obtain original FLASH 1.2.11 from https://ccb.jhu.edu/software/FLASH/index.shtml and authenticate its binary archive/member hashes; otherwise skip this original-program comparison. Native flash-reads itself needs no FLASH runtime. No installation was attempted."
+  },
+  "negative_controls": "Six actual packaged input failures,exit2,retained diagnostics and no successful results.tsv;separate unavailableoriginalvalidator exits3,while native merging has no externalFLASHdependency.",
+  "scope": "Native independentJava code following attributedFLASH1.2.11 algorithm and header/cleanup conventions. Corebinary32score/tie/quality,innie/outie,Nexclusion andPhred33/64;paired/interleaved ordinaryplain/gzipFASTQ. Bothunmergedstreams,allheader/decision/cleanup mappings,hashes andcounts retained. Source-attributed GPLv3+method;no externalruntime needed. Physicaloverlap canexceedscorecap. StrictIDsdefault;explicitoriginalpositionalpairing warns. Atmost10millionbases/mate;quadraticworstcase. No wrapped/tabinput,externalcompressors,originalmultithread/textreport,historical/fullpaperparity.",
+  "current_validation": {
+    "full_gate": {
+      "tests": 1593,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 5
+    },
+    "required_suites": 72,
+    "all_required_without_skips": true,
+    "raw_snapshot": "D:\\projects\\JLinAlg\\build\\literature-review\\plink-runtime\\configured-native-full-gate-1",
+    "prior_packaged_regressions": "D:\\projects\\JLinAlg\\build\\literature-review\\plink-runtime\\prior-packaged-regressions-1\\verification.json",
+    "original_trim_rechecks": "D:\\projects\\JLinAlg\\build\\literature-review\\plink-runtime\\original-trim-rechecks-1\\verification.json",
+    "scope": "This exact candidate was executed. All prior owned compiled method sources are unchanged and retested. Historical reference-generation/version scopes remain in their original fields and validation_history;no full-paper parity is inferred."
+  },
+  "refreshed_utc": "2026-10-26T02:01:51.919373+00:00",
+  "validation_history": [
+    {
+      "status": "passed-native-FLASH-1.2.11-read-merging-contract",
+      "recorded_utc": "2026-10-25T20:34:03.273384+00:00",
+      "jar_sha256": "2bfb8abfea10e53ce7b0e1035b0a7954feb9bed990d63578e817882a6d0541c0",
+      "artifact": "D:\\projects\\JLinAlg\\build\\literature-review\\validated-cli\\jlinalg-0.3.7.jar",
+      "source_sha256": {
+        "src/main/java/org/jlinalg/sequence/FlashReads.java": "af6878e7b56effcf1c829ab1e708c4e4172c99e252f0bfb2a1ccb9a0710d0940",
+        "src/main/java/org/jlinalg/sequence/FlashFastqIO.java": "aeea528f3591b96275af8fc9919ebea091508e18353f15d60ad865266885cf7e",
+        "src/main/java/org/jlinalg/cli/FlashReadsCli.java": "58234251ff9a9f3cb2454849b4362dd14e9ce324235a8fd0e4f1fffb5efbd580",
+        "src/test/java/org/jlinalg/sequence/FlashReadsTest.java": "d87ea78568938417788d7aaa9a0d69966da0a1f76921e2cdb690ea172e2cda61",
+        "src/test/java/org/jlinalg/cli/FlashReadsCliTest.java": "d8e64df9232a6f21031a2c9d3e595d1aed493867d0b97b2736403658d0408e13",
+        "src/main/resources/META-INF/LICENSE-FLASH.txt": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+        "src/main/resources/META-INF/NOTICE-FLASH.txt": "f28be27a7774287657f418c48db233f7d51aa01457e24f8669eff44397f5618d",
+        "src/test/resources/org/jlinalg/sequence/flash/original-1.2.11-cases.tsv.gz": "055efc337996fed42ad2db3a2a5c03abc070d28675363d7869acd134c74daa3d",
+        "src/test/resources/org/jlinalg/sequence/flash/original-1.2.11-provenance.json": "6e7bcde540bb88b9e71dc48748763a77b339bfdf961f140acabb0ec4c24b17ef",
+        "tools/literature/freeze_flash_reference_cases.py": "d228c0cc9b4343053e04208434663c688521a132286a41ecafa319c174d08582",
+        "tools/literature/verify_flash_reads.py": "67d6c22e497bf0f0d086d2d31162acc90aacc042fb17df2e3856aa79027700da",
+        "tools/literature/curate_flash_uses.py": "b81b77075907d78c0eeeff1b1f2c9767c16f3679b506c3c3831a8daffd702070"
+      },
+      "current_full_gate_suites": {
+        "org.jlinalg.sequence.FlashReadsTest": {
+          "suite_name": "org.jlinalg.sequence.FlashReadsTest",
+          "suite": {
+            "tests": 8,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "16c2317843db7cf3a35054c54ddd995a7fbda570d407588e104345d8cbf50f4c",
+          "testcases": [
+            "fullHeaderAndBarcodeRulesKeepOriginalSurprisesVisible()",
+            "unknownPositionsAreExcludedAndMinimumCountsCallableBases()",
+            "cleanupRetainsOriginalHeaderAndCountsEveryTransformation()",
+            "firstPerfectOverlapScalesBeyondTheFormerDraftLimit()",
+            "invalidEncodingBasesLengthsAndSettingsFailBeforeSearch()",
+            "gzipIsDetectedByMagicAndWriterRetainsUtf8AndHighQualities()",
+            "all5171ActualOriginalReferencesPreservePartitionConsensusAndQuality()",
+            "malformedFastqAndInvalidUtf8AreRejected()"
+          ]
+        },
+        "org.jlinalg.cli.FlashReadsCliTest": {
+          "suite_name": "org.jlinalg.cli.FlashReadsCliTest",
+          "suite": {
+            "tests": 10,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "4f8865d026b22069de14ac52aa3ece1b2b2ad57eb56bc95e5d7f5f1444a49857",
+          "testcases": [
+            "actualGoldenMergeKeepsBothPartitionsProvenanceAndActionableHeaderMapping()",
+            "strictMismatchQuarantinesAllScientificOutputs()",
+            "optionsRecipePreservesUnicodePathsHeadersSnapshotAndExplicitOverrides()",
+            "extraMateAndInvalidQualityArePersistedFailures()",
+            "normalizationBarcodeWhitespaceAndIgnoredPlusIdsAreCounted()",
+            "originalPositionalPairingRequiresExplicitChoiceAndProminentAction()",
+            "emptyAndUnmergeableInputsHaveDifferentFailureAndWarningStates()",
+            "refusesExistingDestinationDuplicateOptionsAndMissingEncodingWithoutOverwrite()",
+            "derivedCapUsesOriginalDefaultsAndWarnsWhenExplicitCapOverrides()",
+            "interleavedGzipAndDeclaredPhred64WorkAndOddMateFails()"
+          ]
+        }
+      },
+      "full_gate": {
+        "tests": 1504,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 5
+      },
+      "required_suites": 61,
+      "api_cli_tests": 18,
+      "frozen_actual_original_cases": 5171,
+      "packaged_calls": 53,
+      "independent_original_workflows": 45,
+      "packaged_reference_pairs": 5185,
+      "additional_unicode_recipe_calls": 2,
+      "original_executable_sha256": "2dbac87cf2f04721ef29e67ede061d6c0f17eae83297836e46f47bd209977ce6",
+      "original_version": "FLASH 1.2.11",
+      "original_reference_provenance": "../../../src/test/resources/org/jlinalg/sequence/flash/original-1.2.11-provenance.json",
+      "packaged_validation": "flash-native-packaged-validation.json",
+      "source_roles_report": "D:\\projects\\JLinAlg\\build\\literature-review\\flash-runtime\\reviewed-source-roles.json",
+      "original_reference_scope": "Complete ordered FASTQ headers, sequence, quality, merged/unmerged partitions, counts, ledger cardinality and merged-length histogram across captured original workflows. New original cases cover cleanup/barcodes/comments/Unicode, >1000 bases/outies, gzip interleaved Phred64 and explicit positional pairing. Six packaged invalid-input controls plus actual Unicode input/output recipe checks under the named JVMs. No whole-paper or original threading/text-report parity.",
+      "validator_dependency_control": {
+        "status": "skipped-unavailable-validation-dependency",
+        "missing": [
+          {
+            "role": "original FLASH validator",
+            "path": "build\\literature-review\\flash-runtime\\unavailable-flash.exe"
+          }
+        ],
+        "required_action": "Supply the named existing files. If downloads are permitted, obtain original FLASH 1.2.11 from https://ccb.jhu.edu/software/FLASH/index.shtml and authenticate its binary archive/member hashes; otherwise skip this original-program comparison. Native flash-reads itself needs no FLASH runtime. No installation was attempted."
+      },
+      "negative_controls": "Six actual packaged input failures,exit2,retained diagnostics and no successful results.tsv;separate unavailableoriginalvalidator exits3,while native merging has no externalFLASHdependency.",
+      "scope": "Native independentJava code following attributedFLASH1.2.11 algorithm and header/cleanup conventions. Corebinary32score/tie/quality,innie/outie,Nexclusion andPhred33/64;paired/interleaved ordinaryplain/gzipFASTQ. Bothunmergedstreams,allheader/decision/cleanup mappings,hashes andcounts retained. Source-attributed GPLv3+method;no externalruntime needed. Physicaloverlap canexceedscorecap. StrictIDsdefault;explicitoriginalpositionalpairing warns. Atmost10millionbases/mate;quadraticworstcase. No wrapped/tabinput,externalcompressors,originalmultithread/textreport,historical/fullpaperparity.",
+      "current_validation": {
+        "full_gate": {
+          "tests": 1504,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 5
+        },
+        "required_suites": 61,
+        "all_required_without_skips": true,
+        "raw_snapshot": "D:\\projects\\JLinAlg\\build\\literature-review\\flash-runtime\\full-gate-2-snapshot",
+        "prior_packaged_regressions": "D:\\projects\\JLinAlg\\build\\literature-review\\flash-packaged-regressions\\verification.json"
+      }
+    },
+    {
+      "status": "passed-native-FLASH-1.2.11-read-merging-contract",
+      "recorded_utc": "2026-10-25T20:34:03.273384+00:00",
+      "jar_sha256": "66be181d854806d9ae64d6f060e8defba8af5bdf594d3d352c9c76097a2a8d2e",
+      "artifact": "D:\\projects\\JLinAlg\\build\\literature-review\\validated-cli\\jlinalg-0.3.7.jar",
+      "source_sha256": {
+        "src/main/java/org/jlinalg/sequence/FlashReads.java": "af6878e7b56effcf1c829ab1e708c4e4172c99e252f0bfb2a1ccb9a0710d0940",
+        "src/main/java/org/jlinalg/sequence/FlashFastqIO.java": "aeea528f3591b96275af8fc9919ebea091508e18353f15d60ad865266885cf7e",
+        "src/main/java/org/jlinalg/cli/FlashReadsCli.java": "58234251ff9a9f3cb2454849b4362dd14e9ce324235a8fd0e4f1fffb5efbd580",
+        "src/test/java/org/jlinalg/sequence/FlashReadsTest.java": "d87ea78568938417788d7aaa9a0d69966da0a1f76921e2cdb690ea172e2cda61",
+        "src/test/java/org/jlinalg/cli/FlashReadsCliTest.java": "d8e64df9232a6f21031a2c9d3e595d1aed493867d0b97b2736403658d0408e13",
+        "src/main/resources/META-INF/LICENSE-FLASH.txt": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+        "src/main/resources/META-INF/NOTICE-FLASH.txt": "f28be27a7774287657f418c48db233f7d51aa01457e24f8669eff44397f5618d",
+        "src/test/resources/org/jlinalg/sequence/flash/original-1.2.11-cases.tsv.gz": "055efc337996fed42ad2db3a2a5c03abc070d28675363d7869acd134c74daa3d",
+        "src/test/resources/org/jlinalg/sequence/flash/original-1.2.11-provenance.json": "6e7bcde540bb88b9e71dc48748763a77b339bfdf961f140acabb0ec4c24b17ef",
+        "tools/literature/freeze_flash_reference_cases.py": "d228c0cc9b4343053e04208434663c688521a132286a41ecafa319c174d08582",
+        "tools/literature/verify_flash_reads.py": "67d6c22e497bf0f0d086d2d31162acc90aacc042fb17df2e3856aa79027700da",
+        "tools/literature/curate_flash_uses.py": "b81b77075907d78c0eeeff1b1f2c9767c16f3679b506c3c3831a8daffd702070"
+      },
+      "current_full_gate_suites": {
+        "org.jlinalg.sequence.FlashReadsTest": {
+          "suite_name": "org.jlinalg.sequence.FlashReadsTest",
+          "suite": {
+            "tests": 8,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "62963e9dfdccd2efdba3c97e26e7fb47e2f0605eb92b99e1fa82675d035b2a43",
+          "testcases": [
+            "fullHeaderAndBarcodeRulesKeepOriginalSurprisesVisible()",
+            "unknownPositionsAreExcludedAndMinimumCountsCallableBases()",
+            "cleanupRetainsOriginalHeaderAndCountsEveryTransformation()",
+            "firstPerfectOverlapScalesBeyondTheFormerDraftLimit()",
+            "invalidEncodingBasesLengthsAndSettingsFailBeforeSearch()",
+            "gzipIsDetectedByMagicAndWriterRetainsUtf8AndHighQualities()",
+            "all5171ActualOriginalReferencesPreservePartitionConsensusAndQuality()",
+            "malformedFastqAndInvalidUtf8AreRejected()"
+          ]
+        },
+        "org.jlinalg.cli.FlashReadsCliTest": {
+          "suite_name": "org.jlinalg.cli.FlashReadsCliTest",
+          "suite": {
+            "tests": 10,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "6b4f664b5025fea12ac190b740b9a4ce0b25861c3f910eae39ddd55444ba537a",
+          "testcases": [
+            "actualGoldenMergeKeepsBothPartitionsProvenanceAndActionableHeaderMapping()",
+            "strictMismatchQuarantinesAllScientificOutputs()",
+            "optionsRecipePreservesUnicodePathsHeadersSnapshotAndExplicitOverrides()",
+            "extraMateAndInvalidQualityArePersistedFailures()",
+            "normalizationBarcodeWhitespaceAndIgnoredPlusIdsAreCounted()",
+            "originalPositionalPairingRequiresExplicitChoiceAndProminentAction()",
+            "emptyAndUnmergeableInputsHaveDifferentFailureAndWarningStates()",
+            "refusesExistingDestinationDuplicateOptionsAndMissingEncodingWithoutOverwrite()",
+            "derivedCapUsesOriginalDefaultsAndWarnsWhenExplicitCapOverrides()",
+            "interleavedGzipAndDeclaredPhred64WorkAndOddMateFails()"
+          ]
+        }
+      },
+      "full_gate": {
+        "tests": 1552,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 5
+      },
+      "required_suites": 68,
+      "api_cli_tests": 18,
+      "frozen_actual_original_cases": 5171,
+      "packaged_calls": 53,
+      "independent_original_workflows": 45,
+      "packaged_reference_pairs": 5185,
+      "additional_unicode_recipe_calls": 2,
+      "original_executable_sha256": "2dbac87cf2f04721ef29e67ede061d6c0f17eae83297836e46f47bd209977ce6",
+      "original_version": "FLASH 1.2.11",
+      "original_reference_provenance": "../../../src/test/resources/org/jlinalg/sequence/flash/original-1.2.11-provenance.json",
+      "packaged_validation": "flash-native-packaged-validation.json",
+      "source_roles_report": "D:\\projects\\JLinAlg\\build\\literature-review\\flash-runtime\\reviewed-source-roles.json",
+      "original_reference_scope": "Complete ordered FASTQ headers, sequence, quality, merged/unmerged partitions, counts, ledger cardinality and merged-length histogram across captured original workflows. New original cases cover cleanup/barcodes/comments/Unicode, >1000 bases/outies, gzip interleaved Phred64 and explicit positional pairing. Six packaged invalid-input controls plus actual Unicode input/output recipe checks under the named JVMs. No whole-paper or original threading/text-report parity.",
+      "validator_dependency_control": {
+        "status": "skipped-unavailable-validation-dependency",
+        "missing": [
+          {
+            "role": "original FLASH validator",
+            "path": "build\\literature-review\\flash-runtime\\unavailable-flash.exe"
+          }
+        ],
+        "required_action": "Supply the named existing files. If downloads are permitted, obtain original FLASH 1.2.11 from https://ccb.jhu.edu/software/FLASH/index.shtml and authenticate its binary archive/member hashes; otherwise skip this original-program comparison. Native flash-reads itself needs no FLASH runtime. No installation was attempted."
+      },
+      "negative_controls": "Six actual packaged input failures,exit2,retained diagnostics and no successful results.tsv;separate unavailableoriginalvalidator exits3,while native merging has no externalFLASHdependency.",
+      "scope": "Native independentJava code following attributedFLASH1.2.11 algorithm and header/cleanup conventions. Corebinary32score/tie/quality,innie/outie,Nexclusion andPhred33/64;paired/interleaved ordinaryplain/gzipFASTQ. Bothunmergedstreams,allheader/decision/cleanup mappings,hashes andcounts retained. Source-attributed GPLv3+method;no externalruntime needed. Physicaloverlap canexceedscorecap. StrictIDsdefault;explicitoriginalpositionalpairing warns. Atmost10millionbases/mate;quadraticworstcase. No wrapped/tabinput,externalcompressors,originalmultithread/textreport,historical/fullpaperparity.",
+      "current_validation": {
+        "full_gate": {
+          "tests": 1552,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 5
+        },
+        "required_suites": 68,
+        "all_required_without_skips": true,
+        "raw_snapshot": "D:\\projects\\JLinAlg\\build\\literature-review\\fimo-runtime\\configured-full-gate-1",
+        "prior_packaged_regressions": "D:\\projects\\JLinAlg\\build\\literature-review\\fimo-runtime\\prior-packaged-regressions-1\\verification.json",
+        "scope": "Current unchanged owned method sources retested on this JAR. Historical reference-generation counts/options remain scoped to their original fixtures;prior reports remain in validation_history."
+      },
+      "refreshed_utc": "2026-10-25T23:24:57.944602+00:00"
+    }
+  ]
+}

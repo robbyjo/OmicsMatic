@@ -209,6 +209,7 @@ class JLinAlgCliTest {
             "--omics", variants.toString(), "--pheno", phenotype.toString(),
             "--id", "IID", "--formula", "case ~ <omics>",
             "--family", "binomial", "--threads", "1", "--block-size", "1",
+            "--min-mac", "0",
             "--out", output.toString()
         });
 
@@ -217,11 +218,12 @@ class JLinAlgCliTest {
         assertEquals(3, lines.size());
         String[] header = lines.get(0).split("\t", -1);
         String[] row = lines.get(1).split("\t", -1);
+        assertEquals("ok",row[index(header,"status")]);
         assertEquals("G", row[index(header, "effect_allele")]);
         assertFalse(row[index(header, "hwe_p_all")].isEmpty());
         assertFalse(row[index(header, "hwe_p_cases")].isEmpty());
         assertFalse(row[index(header, "hwe_p_controls")].isEmpty());
-        assertFalse(List.of(header).contains("statistic_type"));
+        assertEquals("z",row[index(header,"statistic_type")]);
         String log = Files.readString(Path.of(output + ".log"));
         assertTrue(log.contains("statistic_type=z"));
         assertTrue(log.contains("df_method=asymptotic"));
@@ -247,7 +249,7 @@ class JLinAlgCliTest {
         int status = JLinAlgCli.run(new String[] {
             "--omics", variants.toString(), "--pheno", phenotype.toString(),
             "--id", "IID", "--formula", "y ~ age + <omics>",
-            "--max-maf", "0.1", "--max-mac", "2",
+            "--min-mac", "0", "--max-maf", "0.1", "--max-mac", "2",
             "--threads", "1", "--block-size", "1",
             "--out", output.toString()
         });

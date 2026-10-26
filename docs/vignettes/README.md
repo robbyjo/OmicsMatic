@@ -1,5 +1,10 @@
 # JLinAlg vignettes
 
+The source-build [250-paper omics/GWAS toolbox review](../literature/omics-2023-2026/README.md)
+includes a searchable paper/tool catalog, native signature/interval workflows,
+optional upstream cell representations, an implementation queue and prominent
+dependency warnings with recovery steps.
+
 ## Featured: three degrees of AI collaboration
 
 - [No AI: deterministic analysis](ai-no-ai.md) — execute and verify a complete local study.
@@ -17,6 +22,14 @@ New source-build follow-up workflows: [project configuration](project-configurat
 [variant annotation and scoring](variant-followup.md), and
 [networks and candidate regulators](network-followup.md). Each includes runnable
 CLI examples, references, data contracts and validation boundaries.
+
+The [analysis pipeline specification](analysis-pipeline-specification.md) describes
+the end-to-end scientific workflow, improved pseudocode, decision rules,
+GWAS QC/rare variants, functional/structural follow-up, AI selection of 3–5
+principal findings, an 8,000-word manuscript budget and implementation gaps.
+The [completed-study guide](study-pipeline-tutorial.md#completed-analyses-through-manuscript)
+shows how to reuse completed analyses, fill missing module GO and continue to
+principal-finding discussions with linked supplements.
 
 The source-build [auditable omics research pipeline](auditable-omics-pipeline.md)
 implements the minimal `study.yaml`, deterministic plan approval and execution,
@@ -56,6 +69,7 @@ pattern; autonomous orchestration and certified privacy isolation are not bundle
 
 | Vignette | Features covered |
 | --- | --- |
+| [Analysis pipeline specification](analysis-pipeline-specification.md) | End-to-end pseudocode, GWAS QC/MAC and rare-set testing, discovery/validation, meta-analysis, enrichment/networks, scores, ANNOVAR/AlphaGenome, AlphaFold, MR/colocalization, AI ranking of 3–5 findings and 8,000-word manuscript; current support versus extensions |
 | [Auditable omics research pipeline](auditable-omics-pipeline.md) | Implemented minimal study contract, matrix/result-first planning, approvals, resumable execution, `project-status.yaml`, `amendment-XXX.yaml`, provenance, evidence index, unusual-result capture, and future LLM-assisted drafting |
 | [Auditable study pipeline tutorial](study-pipeline-tutorial.md) | Runnable result-first project, contract and plan review, approval, execution, resume, verification, amendments, unusual-result capture, and patient-level LLM non-egress assurance design |
 | [Bioinformatics evidence workflow](bioinformatics-evidence.md) | Public-source discovery, reviewed regional genetics, protein and reference sequence investigation, non-LLM literature search, auditable AI proposals and evidence archives |

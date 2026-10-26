@@ -20,8 +20,9 @@ import org.jlinalg.settest.SetTestScoreState;
 /** Cohort-side score exports; only aggregate values are written. Covariance
  * blocks are explicit coverage units, never a claim of zero cross-block LD. */
 final class ConditionalGwasExport implements AutoCloseable {
+    // n_cases/n_controls are shared base QC columns, including on filtered rows.
     static final List<String> COLUMNS=List.of("score_variant_key","score_u","score_variance",
-        "n_analyzed","n_cases","n_controls","effect_ac_cases","effect_ac_controls",
+        "n_analyzed","effect_ac_cases","effect_ac_controls",
         "n_called_cases","n_called_controls","n_events","beta_score","se_score",
         "p_score_normal","p_score_calibrated","calibration_method","calibration_status",
         "null_model_id","conditioning_set_id","score_covariance_block");
@@ -94,11 +95,11 @@ final class ConditionalGwasExport implements AutoCloseable {
         if(!keysAtPosition.add(key))throw new IllegalArgumentException("duplicate score variant key: "+key);
         previousChromosome=variant.chromosome();previousPosition=variant.position();
         if(!retained.isEmpty() && (!retained.get(0).chromosome().equals(variant.chromosome()) || retained.size()>=options.scoreBlockSize))flush();
-        double[] raw=variant.dosages(),g=impute(raw);int nc=0,nn=0,calledCases=0,calledControls=0;double ac=0,an=0;
+        double[] raw=variant.dosages(),g=impute(raw);int calledCases=0,calledControls=0;double ac=0,an=0;
         if(raw.length!=response.length)throw new IllegalArgumentException("summary genotype/phenotype alignment differs");
         if(binary)for(int i=0;i<raw.length;i++) {
-            if(response[i]==1){nc++;if(Double.isFinite(raw[i])){calledCases++;ac+=raw[i];}}
-            else {nn++;if(Double.isFinite(raw[i])){calledControls++;an+=raw[i];}}
+            if(response[i]==1){if(Double.isFinite(raw[i])){calledCases++;ac+=raw[i];}}
+            else {if(Double.isFinite(raw[i])){calledControls++;an+=raw[i];}}
         }
         SetTestScoreState state=scorer.apply(new double[][]{g});double u=state.scores()[0],v=state.information()[0];
         if(!Double.isFinite(u) || !(v>0) || !Double.isFinite(v))throw new IllegalArgumentException("invalid efficient score for "+key);
@@ -106,8 +107,7 @@ final class ConditionalGwasExport implements AutoCloseable {
             throw new IllegalArgumentException("nonfinite one-step score estimate for "+key);
         retained.add(variant);imputed.add(g);variances.add(v);variants++;
         double z=u/Math.sqrt(v),p=2*jdistlib.Normal.cumulative(-Math.abs(z),0,1,true,false);
-        return List.of(key,number(u),number(v),Integer.toString(response.length),binary?Integer.toString(nc):"",
-            binary?Integer.toString(nn):"",binary?number(ac):"",binary?number(an):"",
+        return List.of(key,number(u),number(v),Integer.toString(response.length),binary?number(ac):"",binary?number(an):"",
             binary?Integer.toString(calledCases):"",binary?Integer.toString(calledControls):"",events<0?"":Integer.toString(events),
             number(u/v),number(1/Math.sqrt(v)),number(p),"","normal-score","normal_only",
             modelId,conditioningId,Long.toString(block));
@@ -157,6 +157,8 @@ final class ConditionalGwasExport implements AutoCloseable {
             for(VariantBlock block;(block=reader.read(128))!=null;)for(VariantRecord variant:block.variants()) {
                 for(int j=0;j<requested.size();j++)if(requested.get(j).equals(variant.id()) || (variant.genomic() && requested.get(j).equals(key(variant)))) {
                     if(g[j]!=null)throw new IllegalArgumentException("ambiguous conditioning variant: "+requested.get(j));
+                    if(variant.genotypeMetadata().nonDiploidSamples()>0 || variant.genotypeMetadata().splitMultiallelic())
+                        throw new IllegalArgumentException("conditioning requires a supported diploid biallelic source: "+requested.get(j));
                     keys[j]=key(variant);g[j]=impute(variant.dosages());
                 }
             }

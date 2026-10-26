@@ -32,6 +32,7 @@ public final class CoxDiagnostics {
                 "survival, covariates, and fitted Cox result are required");
         int rows = survival.observations();
         int columns = fit.beta().length;
+        if(columns==0)throw new IllegalArgumentException("A null-only Cox model has no coefficient-specific residual or PH tests");
         double[] design = MatrixOps.rowMajor(covariates, rows);
         if (design.length != rows * columns)
             throw new IllegalArgumentException(
@@ -197,15 +198,34 @@ public final class CoxDiagnostics {
         int events = groups.stream().mapToInt(EventGroup::deaths).sum();
         double mean = groups.stream().mapToDouble(group ->
             group.deaths() * Math.log(group.time())).sum() / events;
-        double[] score = new double[columns];
-        double[] information = new double[columns * columns];
+        double[] score = new double[columns], baselineScore = new double[columns];
+        double[] information = new double[columns * columns], baselineInformation = new double[columns * columns], crossInformation = new double[columns * columns];
         for (EventGroup group : groups) {
             double transformed = Math.log(group.time()) - mean;
-            for (int column = 0; column < columns; column++)
+            for (int column = 0; column < columns; column++) {
                 score[column] += transformed * group.residualSum()[column];
+                baselineScore[column] += group.residualSum()[column];
+            }
             double squared = transformed * transformed;
-            for (int index = 0; index < information.length; index++)
+            for (int index = 0; index < information.length; index++) {
                 information[index] += squared * group.information()[index];
+                baselineInformation[index] += group.information()[index];
+                crossInformation[index] += transformed * group.information()[index];
+            }
+        }
+        // beta is fitted, so the log-time interaction score must profile beta.
+        // Centering time over deaths alone does not make I_gamma,beta zero.
+        try(BackendContext context=BackendContext.select(BackendPolicy.CPU)) {
+            double[] inverse=CoxMath.inversePositive(context.backend(),baselineInformation,columns,0);
+            double[] projection=matrixMultiply(crossInformation,inverse,columns);
+            for(int i=0;i<columns;i++) {
+                for(int j=0;j<columns;j++)score[i]-=projection[i*columns+j]*baselineScore[j];
+                for(int j=0;j<columns;j++)for(int k=0;k<columns;k++)information[i*columns+j]-=projection[i*columns+k]*crossInformation[j*columns+k];
+            }
+            for(int i=0;i<columns;i++)for(int j=0;j<i;j++)information[i*columns+j]=information[j*columns+i]=.5*(information[i*columns+j]+information[j*columns+i]);
+        }catch(IllegalArgumentException unavailable){
+            double[] missing=new double[columns];Arrays.fill(missing,Double.NaN);
+            return new CoxProportionalHazardsTest(missing,missing,Double.NaN,columns,Double.NaN,events,"log(time)");
         }
         double[] statistics = new double[columns];
         double[] pValues = new double[columns];
@@ -220,13 +240,13 @@ public final class CoxDiagnostics {
         double global;
         try (BackendContext context = BackendContext.select(BackendPolicy.CPU)) {
             double[] solved = CoxMath.solvePositive(context.backend(),
-                information, columns, score, 1e-10);
+                information, columns, score, 0);
             global = 0.0;
             for (int column = 0; column < columns; column++)
                 global += score[column] * solved[column];
-        }
+        }catch(IllegalArgumentException unavailable){global=Double.NaN;}
         return new CoxProportionalHazardsTest(statistics, pValues, global,
-            columns, ChiSquare.cumulative(global, columns, false, false),
+            columns, Double.isFinite(global)?ChiSquare.cumulative(global, columns, false, false):Double.NaN,
             events, "log(time)");
     }
 

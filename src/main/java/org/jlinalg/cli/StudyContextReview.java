@@ -42,6 +42,7 @@ final class StudyContextReview {
             var projected = project(h, List.of("id", "outcome", "exposure", "covariates", "inputs", "estimand", "contrasts", "population", "timepoint", "validation_requirement"), "hypotheses/" + h.get("id"), omitted);
             // Scientific settings only, never resource paths or assistance credentials nested in the analysis plan.
             var analysis = project(map(h.get("analysis")), List.of("mode", "goals", "multiple_testing", "replication", "meta_analysis", "transformations", "model", "covariates", "technical_factors"), "hypotheses/" + h.get("id") + "/analysis", omitted);
+            var ploidy=org.jlinalg.study.StudyHumanPloidyPolicy.resolve(map(map(h.get("analysis")).get("association")));if(!ploidy.isEmpty())analysis.put("human_ploidy",Map.of("region",ploidy.get("region"),"genome_build",ploidy.get("genome_build"),"haploid_source_scale",ploidy.get("haploid_source_scale"),"invalid_calls",ploidy.get("invalid_calls"),"unknown_complement_action",ploidy.get("unknown_samples"),"complement_origin","caller_declared_not_certified"));
             if (!analysis.isEmpty()) projected.put("analysis", analysis); hypotheses.add(projected);
         }
         Set<String> usedCohorts = new LinkedHashSet<>();

@@ -1,0 +1,1552 @@
+{
+  "status": "passed",
+  "jar_sha256": "a104651636deb59493cddc92ce433629d4ef7b0c755f6ee065a3e0c75365c5e2",
+  "source_sha256": {
+    "src/main/java/org/jlinalg/sequence/NegativeBinomialResiduals.java": "121f01192ee734d918e43159c7d96881b926814ec35f7d97e9fc5b71a47d69f3",
+    "src/main/java/org/jlinalg/sequence/SparseCounts.java": "248994f2881797b326776956150642a3936ada5eaf4f02a765f9cc463f52387a",
+    "src/main/java/org/jlinalg/sequence/DoubletScores.java": "9ee3210076b48e74f2ecb854691c86a80c0a7d221b61357d23f94fd4c56563cf",
+    "src/main/java/org/jlinalg/cli/SingleCellQcCli.java": "064a7bdf463c8d20217a3c034783e9519604d33a62dfd7f08790e999ef2458eb",
+    "src/main/resources/org/jlinalg/omics/sctransform_qc.R": "d5b75eedc1ff696195ce293c85f52f80e116e950aaefa8629ada9bce3b374746",
+    "src/main/resources/org/jlinalg/omics/scrublet_qc.py": "5e4cd556b9816dc23e8179b2a8089f3517c2388c4708a8201e8f550770c1e96d"
+  },
+  "current_full_gate_suites": {
+    "org.jlinalg.sequence.SparseCountsTest": {
+      "suite_name": "org.jlinalg.sequence.SparseCountsTest",
+      "suite": {
+        "tests": 4,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "junit_sha256": "ec8c78993179cdc0cc272d143f1b531f14477c9b9efaaa5b712a17b9bd25bc25",
+      "testcases": [
+        "gzipInputsFractionalEstimatesAndZeroEntriesAreExplicit()",
+        "allZeroSparseMatrixRetainsEveryDeclaredCell()",
+        "diskSpillMergesDuplicatesBeforeCountsAndFiltersOnlySelectedFeatureType()",
+        "invalidDimensionsValuesDuplicatesAndDeclaredEntryCountsFail()"
+      ]
+    },
+    "org.jlinalg.sequence.DoubletScoresTest": {
+      "suite_name": "org.jlinalg.sequence.DoubletScoresTest",
+      "suite": {
+        "tests": 3,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "junit_sha256": "f16cd71cbfa46c5886239f76d8ee3dc3fd03633d0b1702b28674d769df1588c1",
+      "testcases": [
+        "invalidNeighborhoodRateAndRatiosFail()",
+        "independentBayesEndpointAndMonotonicityChecks()",
+        "actualScrubletPipelineNeighborhoodScoresAndErrorsAgree()"
+      ]
+    },
+    "org.jlinalg.sequence.NegativeBinomialResidualsTest": {
+      "suite_name": "org.jlinalg.sequence.NegativeBinomialResidualsTest",
+      "suite": {
+        "tests": 3,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "junit_sha256": "99131daba01a0d1ca33f98ddeff6bb9a476d0bccba7cc7fdac38019c1fcdd927",
+      "testcases": [
+        "actualStoredSctransformV1AndV2ModelsMatchNativeResiduals()",
+        "invalidInputsAndArithmeticFailuresAreExplicit()",
+        "handCalculatedNbPoissonFloorAndClipping()"
+      ]
+    },
+    "org.jlinalg.cli.SingleCellQcCliTest": {
+      "suite_name": "org.jlinalg.cli.SingleCellQcCliTest",
+      "suite": {
+        "tests": 11,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "junit_sha256": "948fcd5816e5aa3acafe3cd39871c32a4270f4684a18e73852a8987a6172568d",
+      "testcases": [
+        "seuratV1AndV2KeepPhaseRegressionSeparateAndMatchFrozenReferences()",
+        "tooManyComponentsFailWithRetainedPartialsAndNoSilentReduction()",
+        "exactCellLabelsAndSeuratFeatureAliasesPreventLanguageLevelRewriting()",
+        "originalScrubletExactNeighborsMatchFrozenFullPipelineScores()",
+        "missingRuntimeAndMissingPrivateLibrarySkipWithExactActions()",
+        "metadataMismatchAndResidualSizeLimitFailBeforeRunningR()",
+        "approximateCosineAndExplicitNoCallThresholdHaveRetainedWarnings()",
+        "standaloneVstV1AndV2MatchFrozenActualModelResiduals()",
+        "nativeScoresAndResidualsHaveIndependentKnownValues()",
+        "nativeCountsPreserveZeroCellsAndCanonicalCoordinatesWithoutRuntime()",
+        "incompatibleOptionsFailBeforeOutputCreation()"
+      ]
+    }
+  },
+  "tests": 21,
+  "versions": {
+    "Scrublet": "0.2.3",
+    "sctransform": "0.4.3",
+    "Seurat": "5.6.0",
+    "SeuratObject": "5.4.0",
+    "glmGamPoi": "1.24.0"
+  },
+  "direct_reference_reproduction": {
+    "status": "passed",
+    "byte_identical_fixtures": {
+      "scrublet-neighbor-scores.tsv": "6900da3b4c28a64a30e88ecdd8c54766589345553615431189113be3c4de627a",
+      "sctransform-residuals.tsv": "e3f286286e9d07c13c70c1d1ca77665a3c48ce9128d1d86f2fa6095b8c303f82",
+      "seurat-regressed-residuals.tsv": "c6a601055417ca7ba9904da56384a96df32d079833315da945fb167e20f00fd7",
+      "phase-covariates.tsv": "2f4ff80b75b5a56ec2101a9c5be9bc0d5d597f646c3a86895f9f88a68a0fbe86"
+    }
+  },
+  "packaged_steps": 13,
+  "independent_packaged_checks": 12,
+  "packaged_validation": "single-cell-qc-packaged-validation.json",
+  "dependency_evidence": "single-cell-qc-dependency-status.json",
+  "recorded_utc": "2026-10-25T02:15:39.832466+00:00",
+  "scope": "Native count canonicalization/Bayesian uncertainty/supplied-model NB residuals and distinct original upstream pipelines. Synthetic600gene252cell direct references;756 score/error,400 vst residual and400 Seurat phase-regressed positions. No old-version, biological accuracy or full-paper parity; model warnings retained.",
+  "refreshed_utc": "2026-10-26T02:01:51.919373+00:00",
+  "current_validation": {
+    "full_gate": {
+      "tests": 1593,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 5
+    },
+    "required_suites": 72,
+    "all_required_without_skips": true,
+    "raw_snapshot": "D:\\projects\\JLinAlg\\build\\literature-review\\plink-runtime\\configured-native-full-gate-1",
+    "prior_packaged_regressions": "D:\\projects\\JLinAlg\\build\\literature-review\\plink-runtime\\prior-packaged-regressions-1\\verification.json",
+    "original_trim_rechecks": "D:\\projects\\JLinAlg\\build\\literature-review\\plink-runtime\\original-trim-rechecks-1\\verification.json",
+    "scope": "This exact candidate was executed. All prior owned compiled method sources are unchanged and retested. Historical reference-generation/version scopes remain in their original fields and validation_history;no full-paper parity is inferred."
+  },
+  "validation_history": [
+    {
+      "status": "passed",
+      "jar_sha256": "095e5fecbb0beaabc2e67134d980d2e1841210c0b92c708b3a21ab0dfb866c61",
+      "source_sha256": {
+        "src/main/java/org/jlinalg/sequence/NegativeBinomialResiduals.java": "121f01192ee734d918e43159c7d96881b926814ec35f7d97e9fc5b71a47d69f3",
+        "src/main/java/org/jlinalg/sequence/SparseCounts.java": "248994f2881797b326776956150642a3936ada5eaf4f02a765f9cc463f52387a",
+        "src/main/java/org/jlinalg/sequence/DoubletScores.java": "9ee3210076b48e74f2ecb854691c86a80c0a7d221b61357d23f94fd4c56563cf",
+        "src/main/java/org/jlinalg/cli/SingleCellQcCli.java": "064a7bdf463c8d20217a3c034783e9519604d33a62dfd7f08790e999ef2458eb",
+        "src/main/resources/org/jlinalg/omics/sctransform_qc.R": "d5b75eedc1ff696195ce293c85f52f80e116e950aaefa8629ada9bce3b374746",
+        "src/main/resources/org/jlinalg/omics/scrublet_qc.py": "5e4cd556b9816dc23e8179b2a8089f3517c2388c4708a8201e8f550770c1e96d"
+      },
+      "current_full_gate_suites": {
+        "org.jlinalg.sequence.SparseCountsTest": {
+          "suite_name": "org.jlinalg.sequence.SparseCountsTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "6325164377d8ea35028dc3f492ab4d3f9b6114d11c856acf0e1ffcf460c23905",
+          "testcases": [
+            "gzipInputsFractionalEstimatesAndZeroEntriesAreExplicit()",
+            "allZeroSparseMatrixRetainsEveryDeclaredCell()",
+            "diskSpillMergesDuplicatesBeforeCountsAndFiltersOnlySelectedFeatureType()",
+            "invalidDimensionsValuesDuplicatesAndDeclaredEntryCountsFail()"
+          ]
+        },
+        "org.jlinalg.sequence.DoubletScoresTest": {
+          "suite_name": "org.jlinalg.sequence.DoubletScoresTest",
+          "suite": {
+            "tests": 3,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "cf11b641df7567cf821883bd2beca92b42df87ba7de85ecf9209c194f6747f2c",
+          "testcases": [
+            "invalidNeighborhoodRateAndRatiosFail()",
+            "independentBayesEndpointAndMonotonicityChecks()",
+            "actualScrubletPipelineNeighborhoodScoresAndErrorsAgree()"
+          ]
+        },
+        "org.jlinalg.sequence.NegativeBinomialResidualsTest": {
+          "suite_name": "org.jlinalg.sequence.NegativeBinomialResidualsTest",
+          "suite": {
+            "tests": 3,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "0900d537c9a4a08784f6888a5e1f863329cf208e1fdc442a809fe024e020a915",
+          "testcases": [
+            "actualStoredSctransformV1AndV2ModelsMatchNativeResiduals()",
+            "invalidInputsAndArithmeticFailuresAreExplicit()",
+            "handCalculatedNbPoissonFloorAndClipping()"
+          ]
+        },
+        "org.jlinalg.cli.SingleCellQcCliTest": {
+          "suite_name": "org.jlinalg.cli.SingleCellQcCliTest",
+          "suite": {
+            "tests": 11,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "1ab3e6bc0a8fd29be9564424a1a842e0184c44aee752f0e35dce3aca393d5356",
+          "testcases": [
+            "seuratV1AndV2KeepPhaseRegressionSeparateAndMatchFrozenReferences()",
+            "tooManyComponentsFailWithRetainedPartialsAndNoSilentReduction()",
+            "exactCellLabelsAndSeuratFeatureAliasesPreventLanguageLevelRewriting()",
+            "originalScrubletExactNeighborsMatchFrozenFullPipelineScores()",
+            "missingRuntimeAndMissingPrivateLibrarySkipWithExactActions()",
+            "metadataMismatchAndResidualSizeLimitFailBeforeRunningR()",
+            "approximateCosineAndExplicitNoCallThresholdHaveRetainedWarnings()",
+            "standaloneVstV1AndV2MatchFrozenActualModelResiduals()",
+            "nativeScoresAndResidualsHaveIndependentKnownValues()",
+            "nativeCountsPreserveZeroCellsAndCanonicalCoordinatesWithoutRuntime()",
+            "incompatibleOptionsFailBeforeOutputCreation()"
+          ]
+        }
+      },
+      "tests": 21,
+      "versions": {
+        "Scrublet": "0.2.3",
+        "sctransform": "0.4.3",
+        "Seurat": "5.6.0",
+        "SeuratObject": "5.4.0",
+        "glmGamPoi": "1.24.0"
+      },
+      "direct_reference_reproduction": {
+        "status": "passed",
+        "byte_identical_fixtures": {
+          "scrublet-neighbor-scores.tsv": "6900da3b4c28a64a30e88ecdd8c54766589345553615431189113be3c4de627a",
+          "sctransform-residuals.tsv": "e3f286286e9d07c13c70c1d1ca77665a3c48ce9128d1d86f2fa6095b8c303f82",
+          "seurat-regressed-residuals.tsv": "c6a601055417ca7ba9904da56384a96df32d079833315da945fb167e20f00fd7",
+          "phase-covariates.tsv": "2f4ff80b75b5a56ec2101a9c5be9bc0d5d597f646c3a86895f9f88a68a0fbe86"
+        }
+      },
+      "packaged_steps": 13,
+      "independent_packaged_checks": 12,
+      "packaged_validation": "single-cell-qc-packaged-validation.json",
+      "dependency_evidence": "single-cell-qc-dependency-status.json",
+      "recorded_utc": "2026-10-25T02:15:39.832466+00:00",
+      "scope": "Native count canonicalization/Bayesian uncertainty/supplied-model NB residuals and distinct original upstream pipelines. Synthetic600gene252cell direct references;756 score/error,400 vst residual and400 Seurat phase-regressed positions. No old-version, biological accuracy or full-paper parity; model warnings retained."
+    },
+    {
+      "status": "passed",
+      "jar_sha256": "fc6c5769770609b38ffd8e5f22e701efcf0aeb13261c594a070ee5b6b777232b",
+      "source_sha256": {
+        "src/main/java/org/jlinalg/sequence/NegativeBinomialResiduals.java": "121f01192ee734d918e43159c7d96881b926814ec35f7d97e9fc5b71a47d69f3",
+        "src/main/java/org/jlinalg/sequence/SparseCounts.java": "248994f2881797b326776956150642a3936ada5eaf4f02a765f9cc463f52387a",
+        "src/main/java/org/jlinalg/sequence/DoubletScores.java": "9ee3210076b48e74f2ecb854691c86a80c0a7d221b61357d23f94fd4c56563cf",
+        "src/main/java/org/jlinalg/cli/SingleCellQcCli.java": "064a7bdf463c8d20217a3c034783e9519604d33a62dfd7f08790e999ef2458eb",
+        "src/main/resources/org/jlinalg/omics/sctransform_qc.R": "d5b75eedc1ff696195ce293c85f52f80e116e950aaefa8629ada9bce3b374746",
+        "src/main/resources/org/jlinalg/omics/scrublet_qc.py": "5e4cd556b9816dc23e8179b2a8089f3517c2388c4708a8201e8f550770c1e96d"
+      },
+      "current_full_gate_suites": {
+        "org.jlinalg.sequence.SparseCountsTest": {
+          "suite_name": "org.jlinalg.sequence.SparseCountsTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "b60205d70e52a591de49f7c4c1e740e44801b697bac909d639e182b3b7d1e6ad",
+          "testcases": [
+            "gzipInputsFractionalEstimatesAndZeroEntriesAreExplicit()",
+            "allZeroSparseMatrixRetainsEveryDeclaredCell()",
+            "diskSpillMergesDuplicatesBeforeCountsAndFiltersOnlySelectedFeatureType()",
+            "invalidDimensionsValuesDuplicatesAndDeclaredEntryCountsFail()"
+          ]
+        },
+        "org.jlinalg.sequence.DoubletScoresTest": {
+          "suite_name": "org.jlinalg.sequence.DoubletScoresTest",
+          "suite": {
+            "tests": 3,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "970fc5c515132a803e89ed179f1bdcdccfdd9ff89d94c4289f7142f948161073",
+          "testcases": [
+            "invalidNeighborhoodRateAndRatiosFail()",
+            "independentBayesEndpointAndMonotonicityChecks()",
+            "actualScrubletPipelineNeighborhoodScoresAndErrorsAgree()"
+          ]
+        },
+        "org.jlinalg.sequence.NegativeBinomialResidualsTest": {
+          "suite_name": "org.jlinalg.sequence.NegativeBinomialResidualsTest",
+          "suite": {
+            "tests": 3,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "7dfdf02a26cc70434874ad60989a4c01f9003f3d48145604b8e4eebb7b8ee066",
+          "testcases": [
+            "actualStoredSctransformV1AndV2ModelsMatchNativeResiduals()",
+            "invalidInputsAndArithmeticFailuresAreExplicit()",
+            "handCalculatedNbPoissonFloorAndClipping()"
+          ]
+        },
+        "org.jlinalg.cli.SingleCellQcCliTest": {
+          "suite_name": "org.jlinalg.cli.SingleCellQcCliTest",
+          "suite": {
+            "tests": 11,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "eaab90bf2aa8e34e316a51bb6acf261752c09d938b2764bc73db7eb555f5a54a",
+          "testcases": [
+            "seuratV1AndV2KeepPhaseRegressionSeparateAndMatchFrozenReferences()",
+            "tooManyComponentsFailWithRetainedPartialsAndNoSilentReduction()",
+            "exactCellLabelsAndSeuratFeatureAliasesPreventLanguageLevelRewriting()",
+            "originalScrubletExactNeighborsMatchFrozenFullPipelineScores()",
+            "missingRuntimeAndMissingPrivateLibrarySkipWithExactActions()",
+            "metadataMismatchAndResidualSizeLimitFailBeforeRunningR()",
+            "approximateCosineAndExplicitNoCallThresholdHaveRetainedWarnings()",
+            "standaloneVstV1AndV2MatchFrozenActualModelResiduals()",
+            "nativeScoresAndResidualsHaveIndependentKnownValues()",
+            "nativeCountsPreserveZeroCellsAndCanonicalCoordinatesWithoutRuntime()",
+            "incompatibleOptionsFailBeforeOutputCreation()"
+          ]
+        }
+      },
+      "tests": 21,
+      "versions": {
+        "Scrublet": "0.2.3",
+        "sctransform": "0.4.3",
+        "Seurat": "5.6.0",
+        "SeuratObject": "5.4.0",
+        "glmGamPoi": "1.24.0"
+      },
+      "direct_reference_reproduction": {
+        "status": "passed",
+        "byte_identical_fixtures": {
+          "scrublet-neighbor-scores.tsv": "6900da3b4c28a64a30e88ecdd8c54766589345553615431189113be3c4de627a",
+          "sctransform-residuals.tsv": "e3f286286e9d07c13c70c1d1ca77665a3c48ce9128d1d86f2fa6095b8c303f82",
+          "seurat-regressed-residuals.tsv": "c6a601055417ca7ba9904da56384a96df32d079833315da945fb167e20f00fd7",
+          "phase-covariates.tsv": "2f4ff80b75b5a56ec2101a9c5be9bc0d5d597f646c3a86895f9f88a68a0fbe86"
+        }
+      },
+      "packaged_steps": 13,
+      "independent_packaged_checks": 12,
+      "packaged_validation": "single-cell-qc-packaged-validation.json",
+      "dependency_evidence": "single-cell-qc-dependency-status.json",
+      "recorded_utc": "2026-10-25T02:15:39.832466+00:00",
+      "scope": "Native count canonicalization/Bayesian uncertainty/supplied-model NB residuals and distinct original upstream pipelines. Synthetic600gene252cell direct references;756 score/error,400 vst residual and400 Seurat phase-regressed positions. No old-version, biological accuracy or full-paper parity; model warnings retained.",
+      "refreshed_utc": "2026-10-25T02:57:16.310858+00:00"
+    },
+    {
+      "status": "passed",
+      "jar_sha256": "faa28146756d077aa691977585fd3349c390f49ff609179a94e355cb13cca667",
+      "source_sha256": {
+        "src/main/java/org/jlinalg/sequence/NegativeBinomialResiduals.java": "121f01192ee734d918e43159c7d96881b926814ec35f7d97e9fc5b71a47d69f3",
+        "src/main/java/org/jlinalg/sequence/SparseCounts.java": "248994f2881797b326776956150642a3936ada5eaf4f02a765f9cc463f52387a",
+        "src/main/java/org/jlinalg/sequence/DoubletScores.java": "9ee3210076b48e74f2ecb854691c86a80c0a7d221b61357d23f94fd4c56563cf",
+        "src/main/java/org/jlinalg/cli/SingleCellQcCli.java": "064a7bdf463c8d20217a3c034783e9519604d33a62dfd7f08790e999ef2458eb",
+        "src/main/resources/org/jlinalg/omics/sctransform_qc.R": "d5b75eedc1ff696195ce293c85f52f80e116e950aaefa8629ada9bce3b374746",
+        "src/main/resources/org/jlinalg/omics/scrublet_qc.py": "5e4cd556b9816dc23e8179b2a8089f3517c2388c4708a8201e8f550770c1e96d"
+      },
+      "current_full_gate_suites": {
+        "org.jlinalg.sequence.SparseCountsTest": {
+          "suite_name": "org.jlinalg.sequence.SparseCountsTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "3be47fd3ae30f47c51373928749e87f6c5089c2cb5e387bcad52ae69b220c44c",
+          "testcases": [
+            "gzipInputsFractionalEstimatesAndZeroEntriesAreExplicit()",
+            "allZeroSparseMatrixRetainsEveryDeclaredCell()",
+            "diskSpillMergesDuplicatesBeforeCountsAndFiltersOnlySelectedFeatureType()",
+            "invalidDimensionsValuesDuplicatesAndDeclaredEntryCountsFail()"
+          ]
+        },
+        "org.jlinalg.sequence.DoubletScoresTest": {
+          "suite_name": "org.jlinalg.sequence.DoubletScoresTest",
+          "suite": {
+            "tests": 3,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "e79bd0a96a9ab2f073903a9267d4544559dc85e7e87efcf4a69cc0686f4e3dd6",
+          "testcases": [
+            "invalidNeighborhoodRateAndRatiosFail()",
+            "independentBayesEndpointAndMonotonicityChecks()",
+            "actualScrubletPipelineNeighborhoodScoresAndErrorsAgree()"
+          ]
+        },
+        "org.jlinalg.sequence.NegativeBinomialResidualsTest": {
+          "suite_name": "org.jlinalg.sequence.NegativeBinomialResidualsTest",
+          "suite": {
+            "tests": 3,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "a5cf07976f12ec2039c0d1a54b5e5426d877c1fdc8eaf90f8d9a54395508da0a",
+          "testcases": [
+            "actualStoredSctransformV1AndV2ModelsMatchNativeResiduals()",
+            "invalidInputsAndArithmeticFailuresAreExplicit()",
+            "handCalculatedNbPoissonFloorAndClipping()"
+          ]
+        },
+        "org.jlinalg.cli.SingleCellQcCliTest": {
+          "suite_name": "org.jlinalg.cli.SingleCellQcCliTest",
+          "suite": {
+            "tests": 11,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "8e303de87476cded926087133a9652972a3eb7603f98d697d5fc1af7fe642304",
+          "testcases": [
+            "seuratV1AndV2KeepPhaseRegressionSeparateAndMatchFrozenReferences()",
+            "tooManyComponentsFailWithRetainedPartialsAndNoSilentReduction()",
+            "exactCellLabelsAndSeuratFeatureAliasesPreventLanguageLevelRewriting()",
+            "originalScrubletExactNeighborsMatchFrozenFullPipelineScores()",
+            "missingRuntimeAndMissingPrivateLibrarySkipWithExactActions()",
+            "metadataMismatchAndResidualSizeLimitFailBeforeRunningR()",
+            "approximateCosineAndExplicitNoCallThresholdHaveRetainedWarnings()",
+            "standaloneVstV1AndV2MatchFrozenActualModelResiduals()",
+            "nativeScoresAndResidualsHaveIndependentKnownValues()",
+            "nativeCountsPreserveZeroCellsAndCanonicalCoordinatesWithoutRuntime()",
+            "incompatibleOptionsFailBeforeOutputCreation()"
+          ]
+        }
+      },
+      "tests": 21,
+      "versions": {
+        "Scrublet": "0.2.3",
+        "sctransform": "0.4.3",
+        "Seurat": "5.6.0",
+        "SeuratObject": "5.4.0",
+        "glmGamPoi": "1.24.0"
+      },
+      "direct_reference_reproduction": {
+        "status": "passed",
+        "byte_identical_fixtures": {
+          "scrublet-neighbor-scores.tsv": "6900da3b4c28a64a30e88ecdd8c54766589345553615431189113be3c4de627a",
+          "sctransform-residuals.tsv": "e3f286286e9d07c13c70c1d1ca77665a3c48ce9128d1d86f2fa6095b8c303f82",
+          "seurat-regressed-residuals.tsv": "c6a601055417ca7ba9904da56384a96df32d079833315da945fb167e20f00fd7",
+          "phase-covariates.tsv": "2f4ff80b75b5a56ec2101a9c5be9bc0d5d597f646c3a86895f9f88a68a0fbe86"
+        }
+      },
+      "packaged_steps": 13,
+      "independent_packaged_checks": 12,
+      "packaged_validation": "single-cell-qc-packaged-validation.json",
+      "dependency_evidence": "single-cell-qc-dependency-status.json",
+      "recorded_utc": "2026-10-25T02:15:39.832466+00:00",
+      "scope": "Native count canonicalization/Bayesian uncertainty/supplied-model NB residuals and distinct original upstream pipelines. Synthetic600gene252cell direct references;756 score/error,400 vst residual and400 Seurat phase-regressed positions. No old-version, biological accuracy or full-paper parity; model warnings retained.",
+      "refreshed_utc": "2026-10-25T03:50:24.675422+00:00"
+    },
+    {
+      "status": "passed",
+      "jar_sha256": "68a623dc455abf0608f50ca5977a44cd3c6d0db6489f8db726569675c46abdc2",
+      "source_sha256": {
+        "src/main/java/org/jlinalg/sequence/NegativeBinomialResiduals.java": "121f01192ee734d918e43159c7d96881b926814ec35f7d97e9fc5b71a47d69f3",
+        "src/main/java/org/jlinalg/sequence/SparseCounts.java": "248994f2881797b326776956150642a3936ada5eaf4f02a765f9cc463f52387a",
+        "src/main/java/org/jlinalg/sequence/DoubletScores.java": "9ee3210076b48e74f2ecb854691c86a80c0a7d221b61357d23f94fd4c56563cf",
+        "src/main/java/org/jlinalg/cli/SingleCellQcCli.java": "064a7bdf463c8d20217a3c034783e9519604d33a62dfd7f08790e999ef2458eb",
+        "src/main/resources/org/jlinalg/omics/sctransform_qc.R": "d5b75eedc1ff696195ce293c85f52f80e116e950aaefa8629ada9bce3b374746",
+        "src/main/resources/org/jlinalg/omics/scrublet_qc.py": "5e4cd556b9816dc23e8179b2a8089f3517c2388c4708a8201e8f550770c1e96d"
+      },
+      "current_full_gate_suites": {
+        "org.jlinalg.sequence.SparseCountsTest": {
+          "suite_name": "org.jlinalg.sequence.SparseCountsTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "727c2fea670df4c21658808fbe98556c69bc8e2896a463878a99e98533c88de6",
+          "testcases": [
+            "gzipInputsFractionalEstimatesAndZeroEntriesAreExplicit()",
+            "allZeroSparseMatrixRetainsEveryDeclaredCell()",
+            "diskSpillMergesDuplicatesBeforeCountsAndFiltersOnlySelectedFeatureType()",
+            "invalidDimensionsValuesDuplicatesAndDeclaredEntryCountsFail()"
+          ]
+        },
+        "org.jlinalg.sequence.DoubletScoresTest": {
+          "suite_name": "org.jlinalg.sequence.DoubletScoresTest",
+          "suite": {
+            "tests": 3,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "0c62d29953f8461925a9a6d133cf37e9b5cdaef2dd63c08f86b5db16b6acf144",
+          "testcases": [
+            "invalidNeighborhoodRateAndRatiosFail()",
+            "independentBayesEndpointAndMonotonicityChecks()",
+            "actualScrubletPipelineNeighborhoodScoresAndErrorsAgree()"
+          ]
+        },
+        "org.jlinalg.sequence.NegativeBinomialResidualsTest": {
+          "suite_name": "org.jlinalg.sequence.NegativeBinomialResidualsTest",
+          "suite": {
+            "tests": 3,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "1585c8814eebd57c832e61e21ddc872798f643fb05d3d006e321b9d122feb9b8",
+          "testcases": [
+            "actualStoredSctransformV1AndV2ModelsMatchNativeResiduals()",
+            "invalidInputsAndArithmeticFailuresAreExplicit()",
+            "handCalculatedNbPoissonFloorAndClipping()"
+          ]
+        },
+        "org.jlinalg.cli.SingleCellQcCliTest": {
+          "suite_name": "org.jlinalg.cli.SingleCellQcCliTest",
+          "suite": {
+            "tests": 11,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "f2584bced033cdc6acb4810a193413e9efbc315bb598034d442a9b6ddc6a632f",
+          "testcases": [
+            "seuratV1AndV2KeepPhaseRegressionSeparateAndMatchFrozenReferences()",
+            "tooManyComponentsFailWithRetainedPartialsAndNoSilentReduction()",
+            "exactCellLabelsAndSeuratFeatureAliasesPreventLanguageLevelRewriting()",
+            "originalScrubletExactNeighborsMatchFrozenFullPipelineScores()",
+            "missingRuntimeAndMissingPrivateLibrarySkipWithExactActions()",
+            "metadataMismatchAndResidualSizeLimitFailBeforeRunningR()",
+            "approximateCosineAndExplicitNoCallThresholdHaveRetainedWarnings()",
+            "standaloneVstV1AndV2MatchFrozenActualModelResiduals()",
+            "nativeScoresAndResidualsHaveIndependentKnownValues()",
+            "nativeCountsPreserveZeroCellsAndCanonicalCoordinatesWithoutRuntime()",
+            "incompatibleOptionsFailBeforeOutputCreation()"
+          ]
+        }
+      },
+      "tests": 21,
+      "versions": {
+        "Scrublet": "0.2.3",
+        "sctransform": "0.4.3",
+        "Seurat": "5.6.0",
+        "SeuratObject": "5.4.0",
+        "glmGamPoi": "1.24.0"
+      },
+      "direct_reference_reproduction": {
+        "status": "passed",
+        "byte_identical_fixtures": {
+          "scrublet-neighbor-scores.tsv": "6900da3b4c28a64a30e88ecdd8c54766589345553615431189113be3c4de627a",
+          "sctransform-residuals.tsv": "e3f286286e9d07c13c70c1d1ca77665a3c48ce9128d1d86f2fa6095b8c303f82",
+          "seurat-regressed-residuals.tsv": "c6a601055417ca7ba9904da56384a96df32d079833315da945fb167e20f00fd7",
+          "phase-covariates.tsv": "2f4ff80b75b5a56ec2101a9c5be9bc0d5d597f646c3a86895f9f88a68a0fbe86"
+        }
+      },
+      "packaged_steps": 13,
+      "independent_packaged_checks": 12,
+      "packaged_validation": "single-cell-qc-packaged-validation.json",
+      "dependency_evidence": "single-cell-qc-dependency-status.json",
+      "recorded_utc": "2026-10-25T02:15:39.832466+00:00",
+      "scope": "Native count canonicalization/Bayesian uncertainty/supplied-model NB residuals and distinct original upstream pipelines. Synthetic600gene252cell direct references;756 score/error,400 vst residual and400 Seurat phase-regressed positions. No old-version, biological accuracy or full-paper parity; model warnings retained.",
+      "refreshed_utc": "2026-10-25T05:28:16.019770+00:00"
+    },
+    {
+      "status": "passed",
+      "jar_sha256": "6ff7cc767bc62f2489947a34fbf3bc99129e4d444242eb217294764587c7e491",
+      "source_sha256": {
+        "src/main/java/org/jlinalg/sequence/NegativeBinomialResiduals.java": "121f01192ee734d918e43159c7d96881b926814ec35f7d97e9fc5b71a47d69f3",
+        "src/main/java/org/jlinalg/sequence/SparseCounts.java": "248994f2881797b326776956150642a3936ada5eaf4f02a765f9cc463f52387a",
+        "src/main/java/org/jlinalg/sequence/DoubletScores.java": "9ee3210076b48e74f2ecb854691c86a80c0a7d221b61357d23f94fd4c56563cf",
+        "src/main/java/org/jlinalg/cli/SingleCellQcCli.java": "064a7bdf463c8d20217a3c034783e9519604d33a62dfd7f08790e999ef2458eb",
+        "src/main/resources/org/jlinalg/omics/sctransform_qc.R": "d5b75eedc1ff696195ce293c85f52f80e116e950aaefa8629ada9bce3b374746",
+        "src/main/resources/org/jlinalg/omics/scrublet_qc.py": "5e4cd556b9816dc23e8179b2a8089f3517c2388c4708a8201e8f550770c1e96d"
+      },
+      "current_full_gate_suites": {
+        "org.jlinalg.sequence.SparseCountsTest": {
+          "suite_name": "org.jlinalg.sequence.SparseCountsTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "22bae7efd014ae8f90a2e78a7db376b1077832f92fa438da6ff754ed6b5ee159",
+          "testcases": [
+            "gzipInputsFractionalEstimatesAndZeroEntriesAreExplicit()",
+            "allZeroSparseMatrixRetainsEveryDeclaredCell()",
+            "diskSpillMergesDuplicatesBeforeCountsAndFiltersOnlySelectedFeatureType()",
+            "invalidDimensionsValuesDuplicatesAndDeclaredEntryCountsFail()"
+          ]
+        },
+        "org.jlinalg.sequence.DoubletScoresTest": {
+          "suite_name": "org.jlinalg.sequence.DoubletScoresTest",
+          "suite": {
+            "tests": 3,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "55e3b82c45fef19ef4e2f662c0fa3ff7995bd15ca4675bbc0dc96cbd52635a72",
+          "testcases": [
+            "invalidNeighborhoodRateAndRatiosFail()",
+            "independentBayesEndpointAndMonotonicityChecks()",
+            "actualScrubletPipelineNeighborhoodScoresAndErrorsAgree()"
+          ]
+        },
+        "org.jlinalg.sequence.NegativeBinomialResidualsTest": {
+          "suite_name": "org.jlinalg.sequence.NegativeBinomialResidualsTest",
+          "suite": {
+            "tests": 3,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "2d16435a3edc7acaa0f3c83367a8e118c767fbc1f1fdc73845e5d60435aebdb3",
+          "testcases": [
+            "actualStoredSctransformV1AndV2ModelsMatchNativeResiduals()",
+            "invalidInputsAndArithmeticFailuresAreExplicit()",
+            "handCalculatedNbPoissonFloorAndClipping()"
+          ]
+        },
+        "org.jlinalg.cli.SingleCellQcCliTest": {
+          "suite_name": "org.jlinalg.cli.SingleCellQcCliTest",
+          "suite": {
+            "tests": 11,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "458bcdef51005a248384a3aac861dc041a541e40c51a9895b79a9535284cfdbb",
+          "testcases": [
+            "seuratV1AndV2KeepPhaseRegressionSeparateAndMatchFrozenReferences()",
+            "tooManyComponentsFailWithRetainedPartialsAndNoSilentReduction()",
+            "exactCellLabelsAndSeuratFeatureAliasesPreventLanguageLevelRewriting()",
+            "originalScrubletExactNeighborsMatchFrozenFullPipelineScores()",
+            "missingRuntimeAndMissingPrivateLibrarySkipWithExactActions()",
+            "metadataMismatchAndResidualSizeLimitFailBeforeRunningR()",
+            "approximateCosineAndExplicitNoCallThresholdHaveRetainedWarnings()",
+            "standaloneVstV1AndV2MatchFrozenActualModelResiduals()",
+            "nativeScoresAndResidualsHaveIndependentKnownValues()",
+            "nativeCountsPreserveZeroCellsAndCanonicalCoordinatesWithoutRuntime()",
+            "incompatibleOptionsFailBeforeOutputCreation()"
+          ]
+        }
+      },
+      "tests": 21,
+      "versions": {
+        "Scrublet": "0.2.3",
+        "sctransform": "0.4.3",
+        "Seurat": "5.6.0",
+        "SeuratObject": "5.4.0",
+        "glmGamPoi": "1.24.0"
+      },
+      "direct_reference_reproduction": {
+        "status": "passed",
+        "byte_identical_fixtures": {
+          "scrublet-neighbor-scores.tsv": "6900da3b4c28a64a30e88ecdd8c54766589345553615431189113be3c4de627a",
+          "sctransform-residuals.tsv": "e3f286286e9d07c13c70c1d1ca77665a3c48ce9128d1d86f2fa6095b8c303f82",
+          "seurat-regressed-residuals.tsv": "c6a601055417ca7ba9904da56384a96df32d079833315da945fb167e20f00fd7",
+          "phase-covariates.tsv": "2f4ff80b75b5a56ec2101a9c5be9bc0d5d597f646c3a86895f9f88a68a0fbe86"
+        }
+      },
+      "packaged_steps": 13,
+      "independent_packaged_checks": 12,
+      "packaged_validation": "single-cell-qc-packaged-validation.json",
+      "dependency_evidence": "single-cell-qc-dependency-status.json",
+      "recorded_utc": "2026-10-25T02:15:39.832466+00:00",
+      "scope": "Native count canonicalization/Bayesian uncertainty/supplied-model NB residuals and distinct original upstream pipelines. Synthetic600gene252cell direct references;756 score/error,400 vst residual and400 Seurat phase-regressed positions. No old-version, biological accuracy or full-paper parity; model warnings retained.",
+      "refreshed_utc": "2026-10-25T06:53:04.578303+00:00"
+    },
+    {
+      "status": "passed",
+      "jar_sha256": "53399f4be52ad5bb882f5acfea53d5a2a037ac80a6e93d1f7d7fdbc118051860",
+      "source_sha256": {
+        "src/main/java/org/jlinalg/sequence/NegativeBinomialResiduals.java": "121f01192ee734d918e43159c7d96881b926814ec35f7d97e9fc5b71a47d69f3",
+        "src/main/java/org/jlinalg/sequence/SparseCounts.java": "248994f2881797b326776956150642a3936ada5eaf4f02a765f9cc463f52387a",
+        "src/main/java/org/jlinalg/sequence/DoubletScores.java": "9ee3210076b48e74f2ecb854691c86a80c0a7d221b61357d23f94fd4c56563cf",
+        "src/main/java/org/jlinalg/cli/SingleCellQcCli.java": "064a7bdf463c8d20217a3c034783e9519604d33a62dfd7f08790e999ef2458eb",
+        "src/main/resources/org/jlinalg/omics/sctransform_qc.R": "d5b75eedc1ff696195ce293c85f52f80e116e950aaefa8629ada9bce3b374746",
+        "src/main/resources/org/jlinalg/omics/scrublet_qc.py": "5e4cd556b9816dc23e8179b2a8089f3517c2388c4708a8201e8f550770c1e96d"
+      },
+      "current_full_gate_suites": {
+        "org.jlinalg.sequence.SparseCountsTest": {
+          "suite_name": "org.jlinalg.sequence.SparseCountsTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "b53f13bdee4f69eb7841052e383196f217126a8e641266b8d9d6d0d1a7f90304",
+          "testcases": [
+            "gzipInputsFractionalEstimatesAndZeroEntriesAreExplicit()",
+            "allZeroSparseMatrixRetainsEveryDeclaredCell()",
+            "diskSpillMergesDuplicatesBeforeCountsAndFiltersOnlySelectedFeatureType()",
+            "invalidDimensionsValuesDuplicatesAndDeclaredEntryCountsFail()"
+          ]
+        },
+        "org.jlinalg.sequence.DoubletScoresTest": {
+          "suite_name": "org.jlinalg.sequence.DoubletScoresTest",
+          "suite": {
+            "tests": 3,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "88c4c3039c126dfbb055bbf6e6686283ae68204dc36859710242f5f11fdf2d36",
+          "testcases": [
+            "invalidNeighborhoodRateAndRatiosFail()",
+            "independentBayesEndpointAndMonotonicityChecks()",
+            "actualScrubletPipelineNeighborhoodScoresAndErrorsAgree()"
+          ]
+        },
+        "org.jlinalg.sequence.NegativeBinomialResidualsTest": {
+          "suite_name": "org.jlinalg.sequence.NegativeBinomialResidualsTest",
+          "suite": {
+            "tests": 3,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "60e962771969a554de876b9012f6125ca5518d4d351e20ec2de85071d8f4b9ad",
+          "testcases": [
+            "actualStoredSctransformV1AndV2ModelsMatchNativeResiduals()",
+            "invalidInputsAndArithmeticFailuresAreExplicit()",
+            "handCalculatedNbPoissonFloorAndClipping()"
+          ]
+        },
+        "org.jlinalg.cli.SingleCellQcCliTest": {
+          "suite_name": "org.jlinalg.cli.SingleCellQcCliTest",
+          "suite": {
+            "tests": 11,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "e410cd4ce4aaba14b6f41baeefd71766b12dda6dcd190e599d52bb24154ce675",
+          "testcases": [
+            "seuratV1AndV2KeepPhaseRegressionSeparateAndMatchFrozenReferences()",
+            "tooManyComponentsFailWithRetainedPartialsAndNoSilentReduction()",
+            "exactCellLabelsAndSeuratFeatureAliasesPreventLanguageLevelRewriting()",
+            "originalScrubletExactNeighborsMatchFrozenFullPipelineScores()",
+            "missingRuntimeAndMissingPrivateLibrarySkipWithExactActions()",
+            "metadataMismatchAndResidualSizeLimitFailBeforeRunningR()",
+            "approximateCosineAndExplicitNoCallThresholdHaveRetainedWarnings()",
+            "standaloneVstV1AndV2MatchFrozenActualModelResiduals()",
+            "nativeScoresAndResidualsHaveIndependentKnownValues()",
+            "nativeCountsPreserveZeroCellsAndCanonicalCoordinatesWithoutRuntime()",
+            "incompatibleOptionsFailBeforeOutputCreation()"
+          ]
+        }
+      },
+      "tests": 21,
+      "versions": {
+        "Scrublet": "0.2.3",
+        "sctransform": "0.4.3",
+        "Seurat": "5.6.0",
+        "SeuratObject": "5.4.0",
+        "glmGamPoi": "1.24.0"
+      },
+      "direct_reference_reproduction": {
+        "status": "passed",
+        "byte_identical_fixtures": {
+          "scrublet-neighbor-scores.tsv": "6900da3b4c28a64a30e88ecdd8c54766589345553615431189113be3c4de627a",
+          "sctransform-residuals.tsv": "e3f286286e9d07c13c70c1d1ca77665a3c48ce9128d1d86f2fa6095b8c303f82",
+          "seurat-regressed-residuals.tsv": "c6a601055417ca7ba9904da56384a96df32d079833315da945fb167e20f00fd7",
+          "phase-covariates.tsv": "2f4ff80b75b5a56ec2101a9c5be9bc0d5d597f646c3a86895f9f88a68a0fbe86"
+        }
+      },
+      "packaged_steps": 13,
+      "independent_packaged_checks": 12,
+      "packaged_validation": "single-cell-qc-packaged-validation.json",
+      "dependency_evidence": "single-cell-qc-dependency-status.json",
+      "recorded_utc": "2026-10-25T02:15:39.832466+00:00",
+      "scope": "Native count canonicalization/Bayesian uncertainty/supplied-model NB residuals and distinct original upstream pipelines. Synthetic600gene252cell direct references;756 score/error,400 vst residual and400 Seurat phase-regressed positions. No old-version, biological accuracy or full-paper parity; model warnings retained.",
+      "refreshed_utc": "2026-10-25T08:02:41.668775+00:00"
+    },
+    {
+      "status": "passed",
+      "jar_sha256": "9650afd13cf486aba84285ba6d2f1a0a06eca8f08d3e33b4c2338567f5372de2",
+      "source_sha256": {
+        "src/main/java/org/jlinalg/sequence/NegativeBinomialResiduals.java": "121f01192ee734d918e43159c7d96881b926814ec35f7d97e9fc5b71a47d69f3",
+        "src/main/java/org/jlinalg/sequence/SparseCounts.java": "248994f2881797b326776956150642a3936ada5eaf4f02a765f9cc463f52387a",
+        "src/main/java/org/jlinalg/sequence/DoubletScores.java": "9ee3210076b48e74f2ecb854691c86a80c0a7d221b61357d23f94fd4c56563cf",
+        "src/main/java/org/jlinalg/cli/SingleCellQcCli.java": "064a7bdf463c8d20217a3c034783e9519604d33a62dfd7f08790e999ef2458eb",
+        "src/main/resources/org/jlinalg/omics/sctransform_qc.R": "d5b75eedc1ff696195ce293c85f52f80e116e950aaefa8629ada9bce3b374746",
+        "src/main/resources/org/jlinalg/omics/scrublet_qc.py": "5e4cd556b9816dc23e8179b2a8089f3517c2388c4708a8201e8f550770c1e96d"
+      },
+      "current_full_gate_suites": {
+        "org.jlinalg.sequence.SparseCountsTest": {
+          "suite_name": "org.jlinalg.sequence.SparseCountsTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "1539eda0936260e1ad35a286fcb3ddea6b9c9438023b58b608efb23b9512f2f7",
+          "testcases": [
+            "gzipInputsFractionalEstimatesAndZeroEntriesAreExplicit()",
+            "allZeroSparseMatrixRetainsEveryDeclaredCell()",
+            "diskSpillMergesDuplicatesBeforeCountsAndFiltersOnlySelectedFeatureType()",
+            "invalidDimensionsValuesDuplicatesAndDeclaredEntryCountsFail()"
+          ]
+        },
+        "org.jlinalg.sequence.DoubletScoresTest": {
+          "suite_name": "org.jlinalg.sequence.DoubletScoresTest",
+          "suite": {
+            "tests": 3,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "571d79e7165dedb3ea2bb0cc7a2790f98adfee57c61c086e82ec153066b836bd",
+          "testcases": [
+            "invalidNeighborhoodRateAndRatiosFail()",
+            "independentBayesEndpointAndMonotonicityChecks()",
+            "actualScrubletPipelineNeighborhoodScoresAndErrorsAgree()"
+          ]
+        },
+        "org.jlinalg.sequence.NegativeBinomialResidualsTest": {
+          "suite_name": "org.jlinalg.sequence.NegativeBinomialResidualsTest",
+          "suite": {
+            "tests": 3,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "e0bfb3851da2523c7238389ceb33b75623670ce28cd87bca4141e13f24b550fb",
+          "testcases": [
+            "actualStoredSctransformV1AndV2ModelsMatchNativeResiduals()",
+            "invalidInputsAndArithmeticFailuresAreExplicit()",
+            "handCalculatedNbPoissonFloorAndClipping()"
+          ]
+        },
+        "org.jlinalg.cli.SingleCellQcCliTest": {
+          "suite_name": "org.jlinalg.cli.SingleCellQcCliTest",
+          "suite": {
+            "tests": 11,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "020af676fe73c68be3b973d826a3853c2e8c72ad7d601666da3786b8f7289674",
+          "testcases": [
+            "seuratV1AndV2KeepPhaseRegressionSeparateAndMatchFrozenReferences()",
+            "tooManyComponentsFailWithRetainedPartialsAndNoSilentReduction()",
+            "exactCellLabelsAndSeuratFeatureAliasesPreventLanguageLevelRewriting()",
+            "originalScrubletExactNeighborsMatchFrozenFullPipelineScores()",
+            "missingRuntimeAndMissingPrivateLibrarySkipWithExactActions()",
+            "metadataMismatchAndResidualSizeLimitFailBeforeRunningR()",
+            "approximateCosineAndExplicitNoCallThresholdHaveRetainedWarnings()",
+            "standaloneVstV1AndV2MatchFrozenActualModelResiduals()",
+            "nativeScoresAndResidualsHaveIndependentKnownValues()",
+            "nativeCountsPreserveZeroCellsAndCanonicalCoordinatesWithoutRuntime()",
+            "incompatibleOptionsFailBeforeOutputCreation()"
+          ]
+        }
+      },
+      "tests": 21,
+      "versions": {
+        "Scrublet": "0.2.3",
+        "sctransform": "0.4.3",
+        "Seurat": "5.6.0",
+        "SeuratObject": "5.4.0",
+        "glmGamPoi": "1.24.0"
+      },
+      "direct_reference_reproduction": {
+        "status": "passed",
+        "byte_identical_fixtures": {
+          "scrublet-neighbor-scores.tsv": "6900da3b4c28a64a30e88ecdd8c54766589345553615431189113be3c4de627a",
+          "sctransform-residuals.tsv": "e3f286286e9d07c13c70c1d1ca77665a3c48ce9128d1d86f2fa6095b8c303f82",
+          "seurat-regressed-residuals.tsv": "c6a601055417ca7ba9904da56384a96df32d079833315da945fb167e20f00fd7",
+          "phase-covariates.tsv": "2f4ff80b75b5a56ec2101a9c5be9bc0d5d597f646c3a86895f9f88a68a0fbe86"
+        }
+      },
+      "packaged_steps": 13,
+      "independent_packaged_checks": 12,
+      "packaged_validation": "single-cell-qc-packaged-validation.json",
+      "dependency_evidence": "single-cell-qc-dependency-status.json",
+      "recorded_utc": "2026-10-25T02:15:39.832466+00:00",
+      "scope": "Native count canonicalization/Bayesian uncertainty/supplied-model NB residuals and distinct original upstream pipelines. Synthetic600gene252cell direct references;756 score/error,400 vst residual and400 Seurat phase-regressed positions. No old-version, biological accuracy or full-paper parity; model warnings retained.",
+      "refreshed_utc": "2026-10-25T09:04:26.213216+00:00"
+    },
+    {
+      "status": "passed",
+      "jar_sha256": "938e928161f850a7f23d38ced10b6ed53c15392b16f79c3d6caeab2ae8906c84",
+      "source_sha256": {
+        "src/main/java/org/jlinalg/sequence/NegativeBinomialResiduals.java": "121f01192ee734d918e43159c7d96881b926814ec35f7d97e9fc5b71a47d69f3",
+        "src/main/java/org/jlinalg/sequence/SparseCounts.java": "248994f2881797b326776956150642a3936ada5eaf4f02a765f9cc463f52387a",
+        "src/main/java/org/jlinalg/sequence/DoubletScores.java": "9ee3210076b48e74f2ecb854691c86a80c0a7d221b61357d23f94fd4c56563cf",
+        "src/main/java/org/jlinalg/cli/SingleCellQcCli.java": "064a7bdf463c8d20217a3c034783e9519604d33a62dfd7f08790e999ef2458eb",
+        "src/main/resources/org/jlinalg/omics/sctransform_qc.R": "d5b75eedc1ff696195ce293c85f52f80e116e950aaefa8629ada9bce3b374746",
+        "src/main/resources/org/jlinalg/omics/scrublet_qc.py": "5e4cd556b9816dc23e8179b2a8089f3517c2388c4708a8201e8f550770c1e96d"
+      },
+      "current_full_gate_suites": {
+        "org.jlinalg.sequence.SparseCountsTest": {
+          "suite_name": "org.jlinalg.sequence.SparseCountsTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "fc87368d9c7c2f2ead900449b868cb3b245a1254a7ee5d985dd0bf4e95d1d63c",
+          "testcases": [
+            "gzipInputsFractionalEstimatesAndZeroEntriesAreExplicit()",
+            "allZeroSparseMatrixRetainsEveryDeclaredCell()",
+            "diskSpillMergesDuplicatesBeforeCountsAndFiltersOnlySelectedFeatureType()",
+            "invalidDimensionsValuesDuplicatesAndDeclaredEntryCountsFail()"
+          ]
+        },
+        "org.jlinalg.sequence.DoubletScoresTest": {
+          "suite_name": "org.jlinalg.sequence.DoubletScoresTest",
+          "suite": {
+            "tests": 3,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "c9e192e10e33b1d8ce39c385135fa8689961a80f3141cd7f36af028466cdbd1f",
+          "testcases": [
+            "invalidNeighborhoodRateAndRatiosFail()",
+            "independentBayesEndpointAndMonotonicityChecks()",
+            "actualScrubletPipelineNeighborhoodScoresAndErrorsAgree()"
+          ]
+        },
+        "org.jlinalg.sequence.NegativeBinomialResidualsTest": {
+          "suite_name": "org.jlinalg.sequence.NegativeBinomialResidualsTest",
+          "suite": {
+            "tests": 3,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "d45767f875023fde259278c31d79f1fb80d3ca7839f7ada893ab7af536ff0137",
+          "testcases": [
+            "actualStoredSctransformV1AndV2ModelsMatchNativeResiduals()",
+            "invalidInputsAndArithmeticFailuresAreExplicit()",
+            "handCalculatedNbPoissonFloorAndClipping()"
+          ]
+        },
+        "org.jlinalg.cli.SingleCellQcCliTest": {
+          "suite_name": "org.jlinalg.cli.SingleCellQcCliTest",
+          "suite": {
+            "tests": 11,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "622cf6c036bc515313630aac9e9a7bf55fd3ccbb22de40cf4292ee6f805b09c8",
+          "testcases": [
+            "seuratV1AndV2KeepPhaseRegressionSeparateAndMatchFrozenReferences()",
+            "tooManyComponentsFailWithRetainedPartialsAndNoSilentReduction()",
+            "exactCellLabelsAndSeuratFeatureAliasesPreventLanguageLevelRewriting()",
+            "originalScrubletExactNeighborsMatchFrozenFullPipelineScores()",
+            "missingRuntimeAndMissingPrivateLibrarySkipWithExactActions()",
+            "metadataMismatchAndResidualSizeLimitFailBeforeRunningR()",
+            "approximateCosineAndExplicitNoCallThresholdHaveRetainedWarnings()",
+            "standaloneVstV1AndV2MatchFrozenActualModelResiduals()",
+            "nativeScoresAndResidualsHaveIndependentKnownValues()",
+            "nativeCountsPreserveZeroCellsAndCanonicalCoordinatesWithoutRuntime()",
+            "incompatibleOptionsFailBeforeOutputCreation()"
+          ]
+        }
+      },
+      "tests": 21,
+      "versions": {
+        "Scrublet": "0.2.3",
+        "sctransform": "0.4.3",
+        "Seurat": "5.6.0",
+        "SeuratObject": "5.4.0",
+        "glmGamPoi": "1.24.0"
+      },
+      "direct_reference_reproduction": {
+        "status": "passed",
+        "byte_identical_fixtures": {
+          "scrublet-neighbor-scores.tsv": "6900da3b4c28a64a30e88ecdd8c54766589345553615431189113be3c4de627a",
+          "sctransform-residuals.tsv": "e3f286286e9d07c13c70c1d1ca77665a3c48ce9128d1d86f2fa6095b8c303f82",
+          "seurat-regressed-residuals.tsv": "c6a601055417ca7ba9904da56384a96df32d079833315da945fb167e20f00fd7",
+          "phase-covariates.tsv": "2f4ff80b75b5a56ec2101a9c5be9bc0d5d597f646c3a86895f9f88a68a0fbe86"
+        }
+      },
+      "packaged_steps": 13,
+      "independent_packaged_checks": 12,
+      "packaged_validation": "single-cell-qc-packaged-validation.json",
+      "dependency_evidence": "single-cell-qc-dependency-status.json",
+      "recorded_utc": "2026-10-25T02:15:39.832466+00:00",
+      "scope": "Native count canonicalization/Bayesian uncertainty/supplied-model NB residuals and distinct original upstream pipelines. Synthetic600gene252cell direct references;756 score/error,400 vst residual and400 Seurat phase-regressed positions. No old-version, biological accuracy or full-paper parity; model warnings retained.",
+      "refreshed_utc": "2026-10-25T10:07:59.705580+00:00"
+    },
+    {
+      "status": "passed",
+      "jar_sha256": "baaacad03f35a01f7d53aba9568e0ce03a89d37f2169ab89e25628f38b8b3b44",
+      "source_sha256": {
+        "src/main/java/org/jlinalg/sequence/NegativeBinomialResiduals.java": "121f01192ee734d918e43159c7d96881b926814ec35f7d97e9fc5b71a47d69f3",
+        "src/main/java/org/jlinalg/sequence/SparseCounts.java": "248994f2881797b326776956150642a3936ada5eaf4f02a765f9cc463f52387a",
+        "src/main/java/org/jlinalg/sequence/DoubletScores.java": "9ee3210076b48e74f2ecb854691c86a80c0a7d221b61357d23f94fd4c56563cf",
+        "src/main/java/org/jlinalg/cli/SingleCellQcCli.java": "064a7bdf463c8d20217a3c034783e9519604d33a62dfd7f08790e999ef2458eb",
+        "src/main/resources/org/jlinalg/omics/sctransform_qc.R": "d5b75eedc1ff696195ce293c85f52f80e116e950aaefa8629ada9bce3b374746",
+        "src/main/resources/org/jlinalg/omics/scrublet_qc.py": "5e4cd556b9816dc23e8179b2a8089f3517c2388c4708a8201e8f550770c1e96d"
+      },
+      "current_full_gate_suites": {
+        "org.jlinalg.sequence.SparseCountsTest": {
+          "suite_name": "org.jlinalg.sequence.SparseCountsTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "ecf35670f9dceb18fea4f1b6615bfb0c43803d22ab4ad8b0e594bae24cd7323c",
+          "testcases": [
+            "gzipInputsFractionalEstimatesAndZeroEntriesAreExplicit()",
+            "allZeroSparseMatrixRetainsEveryDeclaredCell()",
+            "diskSpillMergesDuplicatesBeforeCountsAndFiltersOnlySelectedFeatureType()",
+            "invalidDimensionsValuesDuplicatesAndDeclaredEntryCountsFail()"
+          ]
+        },
+        "org.jlinalg.sequence.DoubletScoresTest": {
+          "suite_name": "org.jlinalg.sequence.DoubletScoresTest",
+          "suite": {
+            "tests": 3,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "27816e368c452e25e3b9b04ceec248a63a90967a8bbc008531aca6b6f774cf92",
+          "testcases": [
+            "invalidNeighborhoodRateAndRatiosFail()",
+            "independentBayesEndpointAndMonotonicityChecks()",
+            "actualScrubletPipelineNeighborhoodScoresAndErrorsAgree()"
+          ]
+        },
+        "org.jlinalg.sequence.NegativeBinomialResidualsTest": {
+          "suite_name": "org.jlinalg.sequence.NegativeBinomialResidualsTest",
+          "suite": {
+            "tests": 3,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "0db3c01a50817de42735d2d26fbdac9c0e140f6401937bdf2962f11c0998c4fa",
+          "testcases": [
+            "actualStoredSctransformV1AndV2ModelsMatchNativeResiduals()",
+            "invalidInputsAndArithmeticFailuresAreExplicit()",
+            "handCalculatedNbPoissonFloorAndClipping()"
+          ]
+        },
+        "org.jlinalg.cli.SingleCellQcCliTest": {
+          "suite_name": "org.jlinalg.cli.SingleCellQcCliTest",
+          "suite": {
+            "tests": 11,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "a4920d9269bca4b15d5369850adbcb3bebe45fe8ab8a659f93efb237c21fabc0",
+          "testcases": [
+            "seuratV1AndV2KeepPhaseRegressionSeparateAndMatchFrozenReferences()",
+            "tooManyComponentsFailWithRetainedPartialsAndNoSilentReduction()",
+            "exactCellLabelsAndSeuratFeatureAliasesPreventLanguageLevelRewriting()",
+            "originalScrubletExactNeighborsMatchFrozenFullPipelineScores()",
+            "missingRuntimeAndMissingPrivateLibrarySkipWithExactActions()",
+            "metadataMismatchAndResidualSizeLimitFailBeforeRunningR()",
+            "approximateCosineAndExplicitNoCallThresholdHaveRetainedWarnings()",
+            "standaloneVstV1AndV2MatchFrozenActualModelResiduals()",
+            "nativeScoresAndResidualsHaveIndependentKnownValues()",
+            "nativeCountsPreserveZeroCellsAndCanonicalCoordinatesWithoutRuntime()",
+            "incompatibleOptionsFailBeforeOutputCreation()"
+          ]
+        }
+      },
+      "tests": 21,
+      "versions": {
+        "Scrublet": "0.2.3",
+        "sctransform": "0.4.3",
+        "Seurat": "5.6.0",
+        "SeuratObject": "5.4.0",
+        "glmGamPoi": "1.24.0"
+      },
+      "direct_reference_reproduction": {
+        "status": "passed",
+        "byte_identical_fixtures": {
+          "scrublet-neighbor-scores.tsv": "6900da3b4c28a64a30e88ecdd8c54766589345553615431189113be3c4de627a",
+          "sctransform-residuals.tsv": "e3f286286e9d07c13c70c1d1ca77665a3c48ce9128d1d86f2fa6095b8c303f82",
+          "seurat-regressed-residuals.tsv": "c6a601055417ca7ba9904da56384a96df32d079833315da945fb167e20f00fd7",
+          "phase-covariates.tsv": "2f4ff80b75b5a56ec2101a9c5be9bc0d5d597f646c3a86895f9f88a68a0fbe86"
+        }
+      },
+      "packaged_steps": 13,
+      "independent_packaged_checks": 12,
+      "packaged_validation": "single-cell-qc-packaged-validation.json",
+      "dependency_evidence": "single-cell-qc-dependency-status.json",
+      "recorded_utc": "2026-10-25T02:15:39.832466+00:00",
+      "scope": "Native count canonicalization/Bayesian uncertainty/supplied-model NB residuals and distinct original upstream pipelines. Synthetic600gene252cell direct references;756 score/error,400 vst residual and400 Seurat phase-regressed positions. No old-version, biological accuracy or full-paper parity; model warnings retained.",
+      "refreshed_utc": "2026-10-25T11:27:56.771609+00:00"
+    },
+    {
+      "status": "passed",
+      "jar_sha256": "5680cbc4e457007f8903d1d4db3e74ecc890a150b350870f0b82d5650bdc0fec",
+      "source_sha256": {
+        "src/main/java/org/jlinalg/sequence/NegativeBinomialResiduals.java": "121f01192ee734d918e43159c7d96881b926814ec35f7d97e9fc5b71a47d69f3",
+        "src/main/java/org/jlinalg/sequence/SparseCounts.java": "248994f2881797b326776956150642a3936ada5eaf4f02a765f9cc463f52387a",
+        "src/main/java/org/jlinalg/sequence/DoubletScores.java": "9ee3210076b48e74f2ecb854691c86a80c0a7d221b61357d23f94fd4c56563cf",
+        "src/main/java/org/jlinalg/cli/SingleCellQcCli.java": "064a7bdf463c8d20217a3c034783e9519604d33a62dfd7f08790e999ef2458eb",
+        "src/main/resources/org/jlinalg/omics/sctransform_qc.R": "d5b75eedc1ff696195ce293c85f52f80e116e950aaefa8629ada9bce3b374746",
+        "src/main/resources/org/jlinalg/omics/scrublet_qc.py": "5e4cd556b9816dc23e8179b2a8089f3517c2388c4708a8201e8f550770c1e96d"
+      },
+      "current_full_gate_suites": {
+        "org.jlinalg.sequence.SparseCountsTest": {
+          "suite_name": "org.jlinalg.sequence.SparseCountsTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "74e18c10a312eee3f20163212cfdebc8165dad447c4245854b63968a570bef03",
+          "testcases": [
+            "gzipInputsFractionalEstimatesAndZeroEntriesAreExplicit()",
+            "allZeroSparseMatrixRetainsEveryDeclaredCell()",
+            "diskSpillMergesDuplicatesBeforeCountsAndFiltersOnlySelectedFeatureType()",
+            "invalidDimensionsValuesDuplicatesAndDeclaredEntryCountsFail()"
+          ]
+        },
+        "org.jlinalg.sequence.DoubletScoresTest": {
+          "suite_name": "org.jlinalg.sequence.DoubletScoresTest",
+          "suite": {
+            "tests": 3,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "a1fd4a6839d061aa704ebbc78d3d22c94961210392627926caaa2aa95afa82b6",
+          "testcases": [
+            "invalidNeighborhoodRateAndRatiosFail()",
+            "independentBayesEndpointAndMonotonicityChecks()",
+            "actualScrubletPipelineNeighborhoodScoresAndErrorsAgree()"
+          ]
+        },
+        "org.jlinalg.sequence.NegativeBinomialResidualsTest": {
+          "suite_name": "org.jlinalg.sequence.NegativeBinomialResidualsTest",
+          "suite": {
+            "tests": 3,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "cbbd6b5f726644a5d86a11a88521887e8a65da1cbc0766bddda6773bda250f4d",
+          "testcases": [
+            "actualStoredSctransformV1AndV2ModelsMatchNativeResiduals()",
+            "invalidInputsAndArithmeticFailuresAreExplicit()",
+            "handCalculatedNbPoissonFloorAndClipping()"
+          ]
+        },
+        "org.jlinalg.cli.SingleCellQcCliTest": {
+          "suite_name": "org.jlinalg.cli.SingleCellQcCliTest",
+          "suite": {
+            "tests": 11,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "96548f0bed48383a7502a29d3c64ce78dab46c7dd35c5f831c4f9e27e1fcca45",
+          "testcases": [
+            "seuratV1AndV2KeepPhaseRegressionSeparateAndMatchFrozenReferences()",
+            "tooManyComponentsFailWithRetainedPartialsAndNoSilentReduction()",
+            "exactCellLabelsAndSeuratFeatureAliasesPreventLanguageLevelRewriting()",
+            "originalScrubletExactNeighborsMatchFrozenFullPipelineScores()",
+            "missingRuntimeAndMissingPrivateLibrarySkipWithExactActions()",
+            "metadataMismatchAndResidualSizeLimitFailBeforeRunningR()",
+            "approximateCosineAndExplicitNoCallThresholdHaveRetainedWarnings()",
+            "standaloneVstV1AndV2MatchFrozenActualModelResiduals()",
+            "nativeScoresAndResidualsHaveIndependentKnownValues()",
+            "nativeCountsPreserveZeroCellsAndCanonicalCoordinatesWithoutRuntime()",
+            "incompatibleOptionsFailBeforeOutputCreation()"
+          ]
+        }
+      },
+      "tests": 21,
+      "versions": {
+        "Scrublet": "0.2.3",
+        "sctransform": "0.4.3",
+        "Seurat": "5.6.0",
+        "SeuratObject": "5.4.0",
+        "glmGamPoi": "1.24.0"
+      },
+      "direct_reference_reproduction": {
+        "status": "passed",
+        "byte_identical_fixtures": {
+          "scrublet-neighbor-scores.tsv": "6900da3b4c28a64a30e88ecdd8c54766589345553615431189113be3c4de627a",
+          "sctransform-residuals.tsv": "e3f286286e9d07c13c70c1d1ca77665a3c48ce9128d1d86f2fa6095b8c303f82",
+          "seurat-regressed-residuals.tsv": "c6a601055417ca7ba9904da56384a96df32d079833315da945fb167e20f00fd7",
+          "phase-covariates.tsv": "2f4ff80b75b5a56ec2101a9c5be9bc0d5d597f646c3a86895f9f88a68a0fbe86"
+        }
+      },
+      "packaged_steps": 13,
+      "independent_packaged_checks": 12,
+      "packaged_validation": "single-cell-qc-packaged-validation.json",
+      "dependency_evidence": "single-cell-qc-dependency-status.json",
+      "recorded_utc": "2026-10-25T02:15:39.832466+00:00",
+      "scope": "Native count canonicalization/Bayesian uncertainty/supplied-model NB residuals and distinct original upstream pipelines. Synthetic600gene252cell direct references;756 score/error,400 vst residual and400 Seurat phase-regressed positions. No old-version, biological accuracy or full-paper parity; model warnings retained.",
+      "refreshed_utc": "2026-10-25T14:18:39.170849+00:00"
+    },
+    {
+      "status": "passed",
+      "jar_sha256": "c7e5fc6412ef02a82e409b43f344bff506f873ff5ebea92bc055d498ebda8dae",
+      "source_sha256": {
+        "src/main/java/org/jlinalg/sequence/NegativeBinomialResiduals.java": "121f01192ee734d918e43159c7d96881b926814ec35f7d97e9fc5b71a47d69f3",
+        "src/main/java/org/jlinalg/sequence/SparseCounts.java": "248994f2881797b326776956150642a3936ada5eaf4f02a765f9cc463f52387a",
+        "src/main/java/org/jlinalg/sequence/DoubletScores.java": "9ee3210076b48e74f2ecb854691c86a80c0a7d221b61357d23f94fd4c56563cf",
+        "src/main/java/org/jlinalg/cli/SingleCellQcCli.java": "064a7bdf463c8d20217a3c034783e9519604d33a62dfd7f08790e999ef2458eb",
+        "src/main/resources/org/jlinalg/omics/sctransform_qc.R": "d5b75eedc1ff696195ce293c85f52f80e116e950aaefa8629ada9bce3b374746",
+        "src/main/resources/org/jlinalg/omics/scrublet_qc.py": "5e4cd556b9816dc23e8179b2a8089f3517c2388c4708a8201e8f550770c1e96d"
+      },
+      "current_full_gate_suites": {
+        "org.jlinalg.sequence.SparseCountsTest": {
+          "suite_name": "org.jlinalg.sequence.SparseCountsTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "0d7a987fb9feef81bdf9b8990da09327fde1ce5631ed415d79d64045308ae11e",
+          "testcases": [
+            "gzipInputsFractionalEstimatesAndZeroEntriesAreExplicit()",
+            "allZeroSparseMatrixRetainsEveryDeclaredCell()",
+            "diskSpillMergesDuplicatesBeforeCountsAndFiltersOnlySelectedFeatureType()",
+            "invalidDimensionsValuesDuplicatesAndDeclaredEntryCountsFail()"
+          ]
+        },
+        "org.jlinalg.sequence.DoubletScoresTest": {
+          "suite_name": "org.jlinalg.sequence.DoubletScoresTest",
+          "suite": {
+            "tests": 3,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "eaeb8b32dd93732ad8028756ab5a37c9f094439f350f2768f5072c0b5ae1d5d3",
+          "testcases": [
+            "invalidNeighborhoodRateAndRatiosFail()",
+            "independentBayesEndpointAndMonotonicityChecks()",
+            "actualScrubletPipelineNeighborhoodScoresAndErrorsAgree()"
+          ]
+        },
+        "org.jlinalg.sequence.NegativeBinomialResidualsTest": {
+          "suite_name": "org.jlinalg.sequence.NegativeBinomialResidualsTest",
+          "suite": {
+            "tests": 3,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "3e191eef749c7f4f4fbe0996b9996b0481561d3afe54ae083c5760bad6ac0380",
+          "testcases": [
+            "actualStoredSctransformV1AndV2ModelsMatchNativeResiduals()",
+            "invalidInputsAndArithmeticFailuresAreExplicit()",
+            "handCalculatedNbPoissonFloorAndClipping()"
+          ]
+        },
+        "org.jlinalg.cli.SingleCellQcCliTest": {
+          "suite_name": "org.jlinalg.cli.SingleCellQcCliTest",
+          "suite": {
+            "tests": 11,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "a98cacdc6a2e0e6f683abd8e7189cf47190cff0a5608da9783ec868435c8932d",
+          "testcases": [
+            "seuratV1AndV2KeepPhaseRegressionSeparateAndMatchFrozenReferences()",
+            "tooManyComponentsFailWithRetainedPartialsAndNoSilentReduction()",
+            "exactCellLabelsAndSeuratFeatureAliasesPreventLanguageLevelRewriting()",
+            "originalScrubletExactNeighborsMatchFrozenFullPipelineScores()",
+            "missingRuntimeAndMissingPrivateLibrarySkipWithExactActions()",
+            "metadataMismatchAndResidualSizeLimitFailBeforeRunningR()",
+            "approximateCosineAndExplicitNoCallThresholdHaveRetainedWarnings()",
+            "standaloneVstV1AndV2MatchFrozenActualModelResiduals()",
+            "nativeScoresAndResidualsHaveIndependentKnownValues()",
+            "nativeCountsPreserveZeroCellsAndCanonicalCoordinatesWithoutRuntime()",
+            "incompatibleOptionsFailBeforeOutputCreation()"
+          ]
+        }
+      },
+      "tests": 21,
+      "versions": {
+        "Scrublet": "0.2.3",
+        "sctransform": "0.4.3",
+        "Seurat": "5.6.0",
+        "SeuratObject": "5.4.0",
+        "glmGamPoi": "1.24.0"
+      },
+      "direct_reference_reproduction": {
+        "status": "passed",
+        "byte_identical_fixtures": {
+          "scrublet-neighbor-scores.tsv": "6900da3b4c28a64a30e88ecdd8c54766589345553615431189113be3c4de627a",
+          "sctransform-residuals.tsv": "e3f286286e9d07c13c70c1d1ca77665a3c48ce9128d1d86f2fa6095b8c303f82",
+          "seurat-regressed-residuals.tsv": "c6a601055417ca7ba9904da56384a96df32d079833315da945fb167e20f00fd7",
+          "phase-covariates.tsv": "2f4ff80b75b5a56ec2101a9c5be9bc0d5d597f646c3a86895f9f88a68a0fbe86"
+        }
+      },
+      "packaged_steps": 13,
+      "independent_packaged_checks": 12,
+      "packaged_validation": "single-cell-qc-packaged-validation.json",
+      "dependency_evidence": "single-cell-qc-dependency-status.json",
+      "recorded_utc": "2026-10-25T02:15:39.832466+00:00",
+      "scope": "Native count canonicalization/Bayesian uncertainty/supplied-model NB residuals and distinct original upstream pipelines. Synthetic600gene252cell direct references;756 score/error,400 vst residual and400 Seurat phase-regressed positions. No old-version, biological accuracy or full-paper parity; model warnings retained.",
+      "refreshed_utc": "2026-10-25T18:28:13.412726+00:00",
+      "current_validation": {
+        "full_gate": {
+          "tests": 1486,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 5
+        },
+        "required_suites": 59,
+        "all_required_without_skips": true,
+        "raw_snapshot": "D:\\projects\\JLinAlg\\build\\literature-review\\trimgalore-runtime\\original-warning-full-gate-snapshot",
+        "prior_packaged_regressions": "D:\\projects\\JLinAlg\\build\\literature-review\\trim-galore-warning-packaged-regressions\\verification.json",
+        "scope": "Current unchanged owned method sources retested on this JAR. Historical reference-generation counts/options remain scoped to their original fixtures;prior reports remain in validation_history."
+      }
+    },
+    {
+      "status": "passed",
+      "jar_sha256": "2bfb8abfea10e53ce7b0e1035b0a7954feb9bed990d63578e817882a6d0541c0",
+      "source_sha256": {
+        "src/main/java/org/jlinalg/sequence/NegativeBinomialResiduals.java": "121f01192ee734d918e43159c7d96881b926814ec35f7d97e9fc5b71a47d69f3",
+        "src/main/java/org/jlinalg/sequence/SparseCounts.java": "248994f2881797b326776956150642a3936ada5eaf4f02a765f9cc463f52387a",
+        "src/main/java/org/jlinalg/sequence/DoubletScores.java": "9ee3210076b48e74f2ecb854691c86a80c0a7d221b61357d23f94fd4c56563cf",
+        "src/main/java/org/jlinalg/cli/SingleCellQcCli.java": "064a7bdf463c8d20217a3c034783e9519604d33a62dfd7f08790e999ef2458eb",
+        "src/main/resources/org/jlinalg/omics/sctransform_qc.R": "d5b75eedc1ff696195ce293c85f52f80e116e950aaefa8629ada9bce3b374746",
+        "src/main/resources/org/jlinalg/omics/scrublet_qc.py": "5e4cd556b9816dc23e8179b2a8089f3517c2388c4708a8201e8f550770c1e96d"
+      },
+      "current_full_gate_suites": {
+        "org.jlinalg.sequence.SparseCountsTest": {
+          "suite_name": "org.jlinalg.sequence.SparseCountsTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "99596054dc013d2287f914afc5c5dc0c650e82b92b65078d5bdad7c6f982162a",
+          "testcases": [
+            "gzipInputsFractionalEstimatesAndZeroEntriesAreExplicit()",
+            "allZeroSparseMatrixRetainsEveryDeclaredCell()",
+            "diskSpillMergesDuplicatesBeforeCountsAndFiltersOnlySelectedFeatureType()",
+            "invalidDimensionsValuesDuplicatesAndDeclaredEntryCountsFail()"
+          ]
+        },
+        "org.jlinalg.sequence.DoubletScoresTest": {
+          "suite_name": "org.jlinalg.sequence.DoubletScoresTest",
+          "suite": {
+            "tests": 3,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "ca6bbe9514eef46eae2d450b7817de2d131eca9f02b8ab7b6b9da0bd59557993",
+          "testcases": [
+            "invalidNeighborhoodRateAndRatiosFail()",
+            "independentBayesEndpointAndMonotonicityChecks()",
+            "actualScrubletPipelineNeighborhoodScoresAndErrorsAgree()"
+          ]
+        },
+        "org.jlinalg.sequence.NegativeBinomialResidualsTest": {
+          "suite_name": "org.jlinalg.sequence.NegativeBinomialResidualsTest",
+          "suite": {
+            "tests": 3,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "f7dcc44829b367ca56e068254d6203e19950b8613b2753e4674ae69fd8c4adf4",
+          "testcases": [
+            "actualStoredSctransformV1AndV2ModelsMatchNativeResiduals()",
+            "invalidInputsAndArithmeticFailuresAreExplicit()",
+            "handCalculatedNbPoissonFloorAndClipping()"
+          ]
+        },
+        "org.jlinalg.cli.SingleCellQcCliTest": {
+          "suite_name": "org.jlinalg.cli.SingleCellQcCliTest",
+          "suite": {
+            "tests": 11,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "e01f8476530b3d6f908d8f7a57c76657dea4222a3b2eb07d4c8a4e9d9ea5221f",
+          "testcases": [
+            "seuratV1AndV2KeepPhaseRegressionSeparateAndMatchFrozenReferences()",
+            "tooManyComponentsFailWithRetainedPartialsAndNoSilentReduction()",
+            "exactCellLabelsAndSeuratFeatureAliasesPreventLanguageLevelRewriting()",
+            "originalScrubletExactNeighborsMatchFrozenFullPipelineScores()",
+            "missingRuntimeAndMissingPrivateLibrarySkipWithExactActions()",
+            "metadataMismatchAndResidualSizeLimitFailBeforeRunningR()",
+            "approximateCosineAndExplicitNoCallThresholdHaveRetainedWarnings()",
+            "standaloneVstV1AndV2MatchFrozenActualModelResiduals()",
+            "nativeScoresAndResidualsHaveIndependentKnownValues()",
+            "nativeCountsPreserveZeroCellsAndCanonicalCoordinatesWithoutRuntime()",
+            "incompatibleOptionsFailBeforeOutputCreation()"
+          ]
+        }
+      },
+      "tests": 21,
+      "versions": {
+        "Scrublet": "0.2.3",
+        "sctransform": "0.4.3",
+        "Seurat": "5.6.0",
+        "SeuratObject": "5.4.0",
+        "glmGamPoi": "1.24.0"
+      },
+      "direct_reference_reproduction": {
+        "status": "passed",
+        "byte_identical_fixtures": {
+          "scrublet-neighbor-scores.tsv": "6900da3b4c28a64a30e88ecdd8c54766589345553615431189113be3c4de627a",
+          "sctransform-residuals.tsv": "e3f286286e9d07c13c70c1d1ca77665a3c48ce9128d1d86f2fa6095b8c303f82",
+          "seurat-regressed-residuals.tsv": "c6a601055417ca7ba9904da56384a96df32d079833315da945fb167e20f00fd7",
+          "phase-covariates.tsv": "2f4ff80b75b5a56ec2101a9c5be9bc0d5d597f646c3a86895f9f88a68a0fbe86"
+        }
+      },
+      "packaged_steps": 13,
+      "independent_packaged_checks": 12,
+      "packaged_validation": "single-cell-qc-packaged-validation.json",
+      "dependency_evidence": "single-cell-qc-dependency-status.json",
+      "recorded_utc": "2026-10-25T02:15:39.832466+00:00",
+      "scope": "Native count canonicalization/Bayesian uncertainty/supplied-model NB residuals and distinct original upstream pipelines. Synthetic600gene252cell direct references;756 score/error,400 vst residual and400 Seurat phase-regressed positions. No old-version, biological accuracy or full-paper parity; model warnings retained.",
+      "refreshed_utc": "2026-10-25T20:32:57.454823+00:00",
+      "current_validation": {
+        "full_gate": {
+          "tests": 1504,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 5
+        },
+        "required_suites": 61,
+        "all_required_without_skips": true,
+        "raw_snapshot": "D:\\projects\\JLinAlg\\build\\literature-review\\flash-runtime\\full-gate-2-snapshot",
+        "prior_packaged_regressions": "D:\\projects\\JLinAlg\\build\\literature-review\\flash-packaged-regressions\\verification.json",
+        "scope": "Current unchanged owned method sources retested on this JAR. Historical reference-generation counts/options remain scoped to their original fixtures;prior reports remain in validation_history."
+      }
+    },
+    {
+      "status": "passed",
+      "jar_sha256": "66be181d854806d9ae64d6f060e8defba8af5bdf594d3d352c9c76097a2a8d2e",
+      "source_sha256": {
+        "src/main/java/org/jlinalg/sequence/NegativeBinomialResiduals.java": "121f01192ee734d918e43159c7d96881b926814ec35f7d97e9fc5b71a47d69f3",
+        "src/main/java/org/jlinalg/sequence/SparseCounts.java": "248994f2881797b326776956150642a3936ada5eaf4f02a765f9cc463f52387a",
+        "src/main/java/org/jlinalg/sequence/DoubletScores.java": "9ee3210076b48e74f2ecb854691c86a80c0a7d221b61357d23f94fd4c56563cf",
+        "src/main/java/org/jlinalg/cli/SingleCellQcCli.java": "064a7bdf463c8d20217a3c034783e9519604d33a62dfd7f08790e999ef2458eb",
+        "src/main/resources/org/jlinalg/omics/sctransform_qc.R": "d5b75eedc1ff696195ce293c85f52f80e116e950aaefa8629ada9bce3b374746",
+        "src/main/resources/org/jlinalg/omics/scrublet_qc.py": "5e4cd556b9816dc23e8179b2a8089f3517c2388c4708a8201e8f550770c1e96d"
+      },
+      "current_full_gate_suites": {
+        "org.jlinalg.sequence.SparseCountsTest": {
+          "suite_name": "org.jlinalg.sequence.SparseCountsTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "3c1a3db993e352bf5952a72c47778d05b8cb38b98b116671d4499f6ad9949a7c",
+          "testcases": [
+            "gzipInputsFractionalEstimatesAndZeroEntriesAreExplicit()",
+            "allZeroSparseMatrixRetainsEveryDeclaredCell()",
+            "diskSpillMergesDuplicatesBeforeCountsAndFiltersOnlySelectedFeatureType()",
+            "invalidDimensionsValuesDuplicatesAndDeclaredEntryCountsFail()"
+          ]
+        },
+        "org.jlinalg.sequence.DoubletScoresTest": {
+          "suite_name": "org.jlinalg.sequence.DoubletScoresTest",
+          "suite": {
+            "tests": 3,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "01507cc8099d6be49ff87670dba8885208db09e2e9af294a0c5e31eed73c2d2e",
+          "testcases": [
+            "invalidNeighborhoodRateAndRatiosFail()",
+            "independentBayesEndpointAndMonotonicityChecks()",
+            "actualScrubletPipelineNeighborhoodScoresAndErrorsAgree()"
+          ]
+        },
+        "org.jlinalg.sequence.NegativeBinomialResidualsTest": {
+          "suite_name": "org.jlinalg.sequence.NegativeBinomialResidualsTest",
+          "suite": {
+            "tests": 3,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "de87855207b7625c92b780e50a367c38961c3dd1c8434f890e66ce7bb47f17c5",
+          "testcases": [
+            "actualStoredSctransformV1AndV2ModelsMatchNativeResiduals()",
+            "invalidInputsAndArithmeticFailuresAreExplicit()",
+            "handCalculatedNbPoissonFloorAndClipping()"
+          ]
+        },
+        "org.jlinalg.cli.SingleCellQcCliTest": {
+          "suite_name": "org.jlinalg.cli.SingleCellQcCliTest",
+          "suite": {
+            "tests": 11,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "ac7df08ec2bfc6a00f2e9401b6ca6ea41738a926b2bd0e9fe8d0530e5f345263",
+          "testcases": [
+            "seuratV1AndV2KeepPhaseRegressionSeparateAndMatchFrozenReferences()",
+            "tooManyComponentsFailWithRetainedPartialsAndNoSilentReduction()",
+            "exactCellLabelsAndSeuratFeatureAliasesPreventLanguageLevelRewriting()",
+            "originalScrubletExactNeighborsMatchFrozenFullPipelineScores()",
+            "missingRuntimeAndMissingPrivateLibrarySkipWithExactActions()",
+            "metadataMismatchAndResidualSizeLimitFailBeforeRunningR()",
+            "approximateCosineAndExplicitNoCallThresholdHaveRetainedWarnings()",
+            "standaloneVstV1AndV2MatchFrozenActualModelResiduals()",
+            "nativeScoresAndResidualsHaveIndependentKnownValues()",
+            "nativeCountsPreserveZeroCellsAndCanonicalCoordinatesWithoutRuntime()",
+            "incompatibleOptionsFailBeforeOutputCreation()"
+          ]
+        }
+      },
+      "tests": 21,
+      "versions": {
+        "Scrublet": "0.2.3",
+        "sctransform": "0.4.3",
+        "Seurat": "5.6.0",
+        "SeuratObject": "5.4.0",
+        "glmGamPoi": "1.24.0"
+      },
+      "direct_reference_reproduction": {
+        "status": "passed",
+        "byte_identical_fixtures": {
+          "scrublet-neighbor-scores.tsv": "6900da3b4c28a64a30e88ecdd8c54766589345553615431189113be3c4de627a",
+          "sctransform-residuals.tsv": "e3f286286e9d07c13c70c1d1ca77665a3c48ce9128d1d86f2fa6095b8c303f82",
+          "seurat-regressed-residuals.tsv": "c6a601055417ca7ba9904da56384a96df32d079833315da945fb167e20f00fd7",
+          "phase-covariates.tsv": "2f4ff80b75b5a56ec2101a9c5be9bc0d5d597f646c3a86895f9f88a68a0fbe86"
+        }
+      },
+      "packaged_steps": 13,
+      "independent_packaged_checks": 12,
+      "packaged_validation": "single-cell-qc-packaged-validation.json",
+      "dependency_evidence": "single-cell-qc-dependency-status.json",
+      "recorded_utc": "2026-10-25T02:15:39.832466+00:00",
+      "scope": "Native count canonicalization/Bayesian uncertainty/supplied-model NB residuals and distinct original upstream pipelines. Synthetic600gene252cell direct references;756 score/error,400 vst residual and400 Seurat phase-regressed positions. No old-version, biological accuracy or full-paper parity; model warnings retained.",
+      "refreshed_utc": "2026-10-25T23:24:57.944602+00:00",
+      "current_validation": {
+        "full_gate": {
+          "tests": 1552,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 5
+        },
+        "required_suites": 68,
+        "all_required_without_skips": true,
+        "raw_snapshot": "D:\\projects\\JLinAlg\\build\\literature-review\\fimo-runtime\\configured-full-gate-1",
+        "prior_packaged_regressions": "D:\\projects\\JLinAlg\\build\\literature-review\\fimo-runtime\\prior-packaged-regressions-1\\verification.json",
+        "scope": "Current unchanged owned method sources retested on this JAR. Historical reference-generation counts/options remain scoped to their original fixtures;prior reports remain in validation_history."
+      }
+    }
+  ]
+}

@@ -9,6 +9,19 @@
 weights, and apply frozen weights to a separate cohort. Imported genetic
 weights can be used without training in JLinAlg. Score training can also learn
 genotype-to-expression/protein weights for <a href="predicted-omics.html">TWAS/PWAS</a>.</p>
+<p>Source builds also register a <a href="study-pipeline-tutorial.html#held-out-risk-scores-and-missing-related-phenotype-work">held-out study workflow</a>
+with explicit group-safe development/tuning/evaluation partitions, direct cohort
+matrices, portable complete frozen models, conditional cluster-bootstrap
+performance, subgroups and a separate related-trait testing family. Supplied
+performance can be reused while only missing related analyses execute. The
+standalone commands below retain their documented independent-row CV and file
+contracts; study support is newer than the released command functionality.</p>
+<p>The study workflow also supports <a href="study-pipeline-tutorial.html#native-binary-risk-score-development-and-frozen-probabilities">native binary risk-score development</a>
+with a joint binomial elastic net, an explicit covariate ridge penalty, tuning
+log loss, frozen probabilities/comparator, complete model reuse and the same
+held-out related-trait analysis. Tuning identities remain development records
+even without final refitting. Predictive weights do not establish association
+effects or population absolute-risk calibration.</p>
 <h2 id="train-a-score">Train a score</h2>
 <p>The input is a CSV/TSV with sample rows and named numeric feature columns. Each
 sample ID is unique. Explicitly list the predictors, excluding the outcome and
@@ -100,7 +113,7 @@ does not claim its full feature set.</p>
     <h2 id="scientific-citations-prediction-scores">Primary method citations</h2>
     <p>Cite the relevant method publication as well as JLinAlg when reporting results from this workflow.</p>
     <ul class="citation-links">
-      <li><a href="../citations.html#hoerl-kennard-1970">Hoerl (1970) — ridge regression</a></li><li><a href="../citations.html#zou-hastie-2005">Zou (2005) — elastic net</a></li><li><a href="../citations.html#euesden-prsice-2015">Euesden (2015) — polygenic scores</a> <span class="citation-inline-identifiers">(<a href="https://pubmed.ncbi.nlm.nih.gov/25550326/">PMID: 25550326</a> · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4410663/">PMCID: PMC4410663</a>)</span></li>
+      <li><a href="../citations.html#hoerl-kennard-1970">Hoerl (1970) — ridge regression</a></li><li><a href="../citations.html#zou-hastie-2005">Zou (2005) — elastic net</a></li><li><a href="../citations.html#euesden-prsice-2015">Euesden (2015) — polygenic scores</a> <span class="citation-inline-identifiers">(<a href="https://pubmed.ncbi.nlm.nih.gov/25550326/">PMID: 25550326</a> · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4410663/">PMCID: PMC4410663</a>)</span></li><li><a href="../citations.html#friedman-glmnet-2010">Friedman (2010) — Binomial elastic-net objective</a> <span class="citation-inline-identifiers">(<a href="https://pubmed.ncbi.nlm.nih.gov/20808728/">PMID: 20808728</a> · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC2929880/">PMCID: PMC2929880</a>)</span></li><li><a href="../citations.html#varma-simon-nested-cv-2006">Varma (2006) — Nested model selection</a></li><li><a href="../citations.html#sklearn-grouped-nested-cv">developers (2026) — Group boundaries</a></li>
     </ul>
     <a class="text-link" href="../citations.html">Search all scientific citations →</a>
   </div>

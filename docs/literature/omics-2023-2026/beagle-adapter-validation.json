@@ -1,0 +1,80 @@
+{
+  "status": "passed-validated-development-subset",
+  "command": "beagle-tools",
+  "candidate": "build/literature-review/beagle-candidate-1/jlinalg-0.3.7.jar",
+  "candidate_sha256": "5ed54e44acc9d50bb5af240418a5497b9c235506ecc45f318bad9168bd867cac",
+  "canonical_executable_unchanged_sha256": "a104651636deb59493cddc92ce433629d4ef7b0c755f6ee065a3e0c75365c5e2",
+  "new_full_project_gate_claimed": false,
+  "release_claimed": false,
+  "profiles": [
+    "5.4-29Oct24",
+    "5.1-18May20",
+    "4.1-08Jun17",
+    "4.1-21Jan17"
+  ],
+  "runtime_lock_sha256": "3247dfee3b8ecb76f7c2f3adc664e11605cb26ae8a7a844b6084693e9b8aa66a",
+  "focused_tests": {
+    "tests": 176,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "required_focused_suites": 19,
+  "standalone_tests_per_JVM": 11,
+  "standalone_JVMs": [
+    "21",
+    "25"
+  ],
+  "installer_policy_tests": 14,
+  "original_reference_workflows": 24,
+  "original_reference_independent_totals": {
+    "genotype_cells": 144096,
+    "observed_genotypes_preserved": 84128,
+    "prior_phased_genotypes_preserved": 40709,
+    "prior_phased_genotype_order_changes": 1899,
+    "samples_with_relative_phase_changes": 34,
+    "adjacent_input_phase_orientation_switches": 66,
+    "missing_or_untyped_genotypes_completed": 59968,
+    "posterior_fields_checked": 460800,
+    "allele_probability_fields_checked": 115200,
+    "GT_GP_argmax_disagreements_not_rewritten": 36
+  },
+  "successful_packaged_workflows": 42,
+  "packaged_failure_controls": 24,
+  "packaged_independent_totals": {
+    "variants": 10208,
+    "genotype_cells": 244992,
+    "observed_calls_preserved": 146360,
+    "completed_calls": 98632,
+    "provided_phase_order_changes": 3798,
+    "posterior_fields": 950400,
+    "naive_GP_argmax_differences": 64,
+    "strict_GP_nonmax_genotypes": 14,
+    "variant_ledger_rows": 11442,
+    "sample_ledger_rows": 2096
+  },
+  "unchanged_shared_PCA_archive_entries": 16143,
+  "changed_shared_PCA_archive_entries": [
+    "org/jlinalg/cli/JLinAlgCli.class"
+  ],
+  "source_roles_reviewed": 9,
+  "source_role_validation_sha256": "964bb6fbf39790970f37af73195dfef71684a2ac1a240df013b5e4e6cf885a36",
+  "source_java_sha256": {
+    "src/main/java/org/jlinalg/cli/BeagleRuntime.java": "8e9fe1cd7b1b33b7159089ad08aae77325a6157afe2c55856152cc86eaed7e5c",
+    "src/main/java/org/jlinalg/cli/BeagleInputs.java": "6573df8c1a777e480b25aa50bb2183e508765d9649cc77b2faebc6763495a3c4",
+    "src/main/java/org/jlinalg/cli/BeagleOutputs.java": "cbde1fda8ed711170371b2fd8a30dfbd90c1894d46477bc5fdef335ab4469249",
+    "src/main/java/org/jlinalg/cli/BeagleToolsCli.java": "bf56d897bd92e4e7bc02cca858335711f650bf7f3c1fd09d60671a891bb207c4"
+  },
+  "test_sha256": "5d060051d0c2ba88dfd3caa6d6e009bafb38abc71de7a4552ed02d6597170ec6",
+  "proof_sha256": {
+    "build/literature-review/beagle-runtime/adapter-focused-1/observed.json": "e495048f41d1cec70e0ba6e6010d02c2e714696ec02986b7ce47917c8197cb99",
+    "build/literature-review/beagle-runtime/adapter-standalone-2/observed.json": "22a154af03fb9bbeb3608c84782b5adcc82ba221d92a3abed92031c151fd6cc2",
+    "build/literature-review/beagle-runtime/packaged-workflows-1/verification.json": "7b625023841c83daf1da89e19fb5af445c61f3d3ac5f50a60dc888c134eb7585",
+    "build/literature-review/beagle-runtime/archive-compatibility-1/verification.json": "14c1e728a0bbda08b30831f001410c3953d13b09d931d2069f42ffc63bd7ef9a",
+    "build/literature-review/beagle-runtime/independent-math-2/verification.json": "cd4764c7d3d2c964d1e28a704b49d8a0568fec433ded3d369055e1f317ff8925",
+    "build/literature-review/beagle-runtime/installer-validation-2/verification.json": "f3cfe4652ba09f4c958a0d3fd3592bdaf032b627b41376bba93d907ba2eadcf6",
+    "build/literature-review/beagle-runtime/public-curation-apply-1/verification.json": "964bb6fbf39790970f37af73195dfef71684a2ac1a240df013b5e4e6cf885a36",
+    "build/literature-review/beagle-runtime/catalog-promotion-1/example-doc-bridge.json": "edcb243fd2b38595096594eeaacf714dc3062517b8289dc551722e584aa86d56"
+  },
+  "scope": "Original four-profile GT-only single-chromosome biallelic diploid phasing/reference imputation, explicit map/model/phase/exclusion choices, native call/posterior/identity validation, exact original comparisons and actionable skip/failure controls. Synthetic contract checks only. No GL/PL, IBD, polyploid/pedigree model, automatic reference retrieval, biological calibration, full-project gate, canonical promotion or whole-paper/historical replay claim."
+}

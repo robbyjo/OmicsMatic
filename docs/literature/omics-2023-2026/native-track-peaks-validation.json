@@ -1,0 +1,1547 @@
+{
+  "status": "passed",
+  "engine": "Native Java",
+  "jar_sha256": "a104651636deb59493cddc92ce433629d4ef7b0c755f6ee065a3e0c75365c5e2",
+  "api_suite": {
+    "suite_name": "org.jlinalg.genetics.ThresholdPeaksTest",
+    "suite": {
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "junit_sha256": "d27788b4875f95f836f10461605ab516cc58cd08b2a06185d9bb97b2d03fb216",
+    "testcases": [
+      "geometryAndSummitsMatch129ActualUpstreamCallsIncludingTiesAndBoundaryRounding()",
+      "float32ChangesBoundaryMembershipBeforeCoalescingButFloat64RetainsInput()",
+      "longCoordinatesAndLargeFiniteScoresDoNotRequireGenomeSizeArraysOrIntegrals()",
+      "ambiguousInvalidAndNonfiniteContractsAreRejected()",
+      "spanGapInclusionAndPlateauCoalescingHaveIndependentKnownAnswers()",
+      "sparseUniverseIsExplicitAndZeroSignedSummitsUseTheMathematicalMaximum()"
+    ]
+  },
+  "cli_suite": {
+    "suite_name": "org.jlinalg.cli.TrackPeakCliTest",
+    "suite": {
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "junit_sha256": "47c241c0c161fa2c46811270fa055c11a269f55426b92cd626c6560fc2f177aa",
+    "testcases": [
+      "referenceOverlapAndNumericFailuresKeepRecoveryAndNoSuccessfulResults()",
+      "sparseZeroPrecisionAndEmptyFindingsRemainProminent()",
+      "executableContractProducesKnownBedAndSummitWithoutFabricatedSignificance()"
+    ]
+  },
+  "packaged_validation": "native-track-peaks-packaged-validation.json",
+  "packaged_checks": 11,
+  "packaged_verifier_sha256": "2ed449c623a30b4d62fafdac109464e725c92d9ce614e833bee1d26161975ca6",
+  "source_sha256": {
+    "src/main/java/org/jlinalg/genetics/ThresholdPeaks.java": "ec2b839cc0dfb9df65a053e997206c57e432c2a1f63e718ce57d006b242a8fd5",
+    "src/main/java/org/jlinalg/cli/TrackPeakCli.java": "68ebb73321a25356367a64ee202f2dfc0bbde7c1fc80cd71ddace92e1d79cb52"
+  },
+  "actual_upstream_reference_cases": 129,
+  "reference_fixture_sha256": "1e3dd6a597dc4683971e58a8585c53536b1e14ebe7b86c48ee5359fed3ce8c40",
+  "upstream_notice_sha256": "6b642122b1286229372eaef08c353b76f3bfa687e6c2057339229c1293a96ddc",
+  "scope": "Native supplied-track inclusive cutoff/gap/span, coalesced maximum plateaus and lower-median summit convention; explicit float32/float64, missing universe, 64-bit arithmetic and recovery. Actual MACS3 positive-float32 geometry/summit references. Zero/signed mathematical-maximum convention is intentionally distinct; no alignment-based caller, HMMRATAC, P/Q estimation, old-version or whole-paper equivalence.",
+  "refreshed_utc": "2026-10-26T02:01:51.919373+00:00",
+  "current_full_gate_suites": {
+    "org.jlinalg.genetics.ThresholdPeaksTest": {
+      "suite_name": "org.jlinalg.genetics.ThresholdPeaksTest",
+      "suite": {
+        "tests": 6,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "junit_sha256": "d27788b4875f95f836f10461605ab516cc58cd08b2a06185d9bb97b2d03fb216",
+      "testcases": [
+        "geometryAndSummitsMatch129ActualUpstreamCallsIncludingTiesAndBoundaryRounding()",
+        "float32ChangesBoundaryMembershipBeforeCoalescingButFloat64RetainsInput()",
+        "longCoordinatesAndLargeFiniteScoresDoNotRequireGenomeSizeArraysOrIntegrals()",
+        "ambiguousInvalidAndNonfiniteContractsAreRejected()",
+        "spanGapInclusionAndPlateauCoalescingHaveIndependentKnownAnswers()",
+        "sparseUniverseIsExplicitAndZeroSignedSummitsUseTheMathematicalMaximum()"
+      ]
+    },
+    "org.jlinalg.cli.TrackPeakCliTest": {
+      "suite_name": "org.jlinalg.cli.TrackPeakCliTest",
+      "suite": {
+        "tests": 3,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "junit_sha256": "47c241c0c161fa2c46811270fa055c11a269f55426b92cd626c6560fc2f177aa",
+      "testcases": [
+        "referenceOverlapAndNumericFailuresKeepRecoveryAndNoSuccessfulResults()",
+        "sparseZeroPrecisionAndEmptyFindingsRemainProminent()",
+        "executableContractProducesKnownBedAndSummitWithoutFabricatedSignificance()"
+      ]
+    }
+  },
+  "current_validation": {
+    "full_gate": {
+      "tests": 1593,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 5
+    },
+    "required_suites": 72,
+    "all_required_without_skips": true,
+    "raw_snapshot": "D:\\projects\\JLinAlg\\build\\literature-review\\plink-runtime\\configured-native-full-gate-1",
+    "prior_packaged_regressions": "D:\\projects\\JLinAlg\\build\\literature-review\\plink-runtime\\prior-packaged-regressions-1\\verification.json",
+    "original_trim_rechecks": "D:\\projects\\JLinAlg\\build\\literature-review\\plink-runtime\\original-trim-rechecks-1\\verification.json",
+    "scope": "This exact candidate was executed. All prior owned compiled method sources are unchanged and retested. Historical reference-generation/version scopes remain in their original fields and validation_history;no full-paper parity is inferred."
+  },
+  "validation_history": [
+    {
+      "status": "passed",
+      "engine": "Native Java",
+      "jar_sha256": "06d9ff0a5fa1cacd21c17dac0cb0182b2de10c086f84b51ff92cae969e819e8a",
+      "api_suite": {
+        "suite": {
+          "tests": 6,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "4da19bd701528708bdcb24e689187683694cab62a11348673e37d378937d1e1d",
+        "testcases": [
+          "geometryAndSummitsMatch129ActualUpstreamCallsIncludingTiesAndBoundaryRounding()",
+          "float32ChangesBoundaryMembershipBeforeCoalescingButFloat64RetainsInput()",
+          "longCoordinatesAndLargeFiniteScoresDoNotRequireGenomeSizeArraysOrIntegrals()",
+          "ambiguousInvalidAndNonfiniteContractsAreRejected()",
+          "spanGapInclusionAndPlateauCoalescingHaveIndependentKnownAnswers()",
+          "sparseUniverseIsExplicitAndZeroSignedSummitsUseTheMathematicalMaximum()"
+        ]
+      },
+      "cli_suite": {
+        "suite": {
+          "tests": 3,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "22baaca604ecaf8368d2d0270e6c308900eac5399a00c8b74574c2be29c802c7",
+        "testcases": [
+          "referenceOverlapAndNumericFailuresKeepRecoveryAndNoSuccessfulResults()",
+          "sparseZeroPrecisionAndEmptyFindingsRemainProminent()",
+          "executableContractProducesKnownBedAndSummitWithoutFabricatedSignificance()"
+        ]
+      },
+      "packaged_validation": "native-track-peaks-packaged-validation.json",
+      "packaged_checks": 11,
+      "packaged_verifier_sha256": "2ed449c623a30b4d62fafdac109464e725c92d9ce614e833bee1d26161975ca6",
+      "source_sha256": {
+        "src/main/java/org/jlinalg/genetics/ThresholdPeaks.java": "ec2b839cc0dfb9df65a053e997206c57e432c2a1f63e718ce57d006b242a8fd5",
+        "src/main/java/org/jlinalg/cli/TrackPeakCli.java": "68ebb73321a25356367a64ee202f2dfc0bbde7c1fc80cd71ddace92e1d79cb52"
+      },
+      "actual_upstream_reference_cases": 129,
+      "reference_fixture_sha256": "1e3dd6a597dc4683971e58a8585c53536b1e14ebe7b86c48ee5359fed3ce8c40",
+      "upstream_notice_sha256": "6b642122b1286229372eaef08c353b76f3bfa687e6c2057339229c1293a96ddc",
+      "scope": "Native supplied-track inclusive cutoff/gap/span, coalesced maximum plateaus and lower-median summit convention; explicit float32/float64, missing universe, 64-bit arithmetic and recovery. Actual MACS3 positive-float32 geometry/summit references. Zero/signed mathematical-maximum convention is intentionally distinct; no alignment-based caller, HMMRATAC, P/Q estimation, old-version or whole-paper equivalence."
+    },
+    {
+      "status": "passed",
+      "engine": "Native Java",
+      "jar_sha256": "2f748eb4328a871f339fecc25fe41db7fa38a063718277e4d8eeb81d69e70985",
+      "api_suite": {
+        "suite_name": "org.jlinalg.genetics.ThresholdPeaksTest",
+        "suite": {
+          "tests": 6,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "161bf38271f8e956044f1eb846b56c67eb0752baed24210235ccb36e1f6d6e6d",
+        "testcases": [
+          "geometryAndSummitsMatch129ActualUpstreamCallsIncludingTiesAndBoundaryRounding()",
+          "float32ChangesBoundaryMembershipBeforeCoalescingButFloat64RetainsInput()",
+          "longCoordinatesAndLargeFiniteScoresDoNotRequireGenomeSizeArraysOrIntegrals()",
+          "ambiguousInvalidAndNonfiniteContractsAreRejected()",
+          "spanGapInclusionAndPlateauCoalescingHaveIndependentKnownAnswers()",
+          "sparseUniverseIsExplicitAndZeroSignedSummitsUseTheMathematicalMaximum()"
+        ]
+      },
+      "cli_suite": {
+        "suite_name": "org.jlinalg.cli.TrackPeakCliTest",
+        "suite": {
+          "tests": 3,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "d587904e6170bc1ec7eb0de6392e9c4a16933df7b127d3f6a0312d0b731cc17c",
+        "testcases": [
+          "referenceOverlapAndNumericFailuresKeepRecoveryAndNoSuccessfulResults()",
+          "sparseZeroPrecisionAndEmptyFindingsRemainProminent()",
+          "executableContractProducesKnownBedAndSummitWithoutFabricatedSignificance()"
+        ]
+      },
+      "packaged_validation": "native-track-peaks-packaged-validation.json",
+      "packaged_checks": 11,
+      "packaged_verifier_sha256": "2ed449c623a30b4d62fafdac109464e725c92d9ce614e833bee1d26161975ca6",
+      "source_sha256": {
+        "src/main/java/org/jlinalg/genetics/ThresholdPeaks.java": "ec2b839cc0dfb9df65a053e997206c57e432c2a1f63e718ce57d006b242a8fd5",
+        "src/main/java/org/jlinalg/cli/TrackPeakCli.java": "68ebb73321a25356367a64ee202f2dfc0bbde7c1fc80cd71ddace92e1d79cb52"
+      },
+      "actual_upstream_reference_cases": 129,
+      "reference_fixture_sha256": "1e3dd6a597dc4683971e58a8585c53536b1e14ebe7b86c48ee5359fed3ce8c40",
+      "upstream_notice_sha256": "6b642122b1286229372eaef08c353b76f3bfa687e6c2057339229c1293a96ddc",
+      "scope": "Native supplied-track inclusive cutoff/gap/span, coalesced maximum plateaus and lower-median summit convention; explicit float32/float64, missing universe, 64-bit arithmetic and recovery. Actual MACS3 positive-float32 geometry/summit references. Zero/signed mathematical-maximum convention is intentionally distinct; no alignment-based caller, HMMRATAC, P/Q estimation, old-version or whole-paper equivalence.",
+      "refreshed_utc": "2026-10-24T23:03:19.823475+00:00",
+      "current_full_gate_suites": {
+        "org.jlinalg.genetics.ThresholdPeaksTest": {
+          "suite_name": "org.jlinalg.genetics.ThresholdPeaksTest",
+          "suite": {
+            "tests": 6,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "161bf38271f8e956044f1eb846b56c67eb0752baed24210235ccb36e1f6d6e6d",
+          "testcases": [
+            "geometryAndSummitsMatch129ActualUpstreamCallsIncludingTiesAndBoundaryRounding()",
+            "float32ChangesBoundaryMembershipBeforeCoalescingButFloat64RetainsInput()",
+            "longCoordinatesAndLargeFiniteScoresDoNotRequireGenomeSizeArraysOrIntegrals()",
+            "ambiguousInvalidAndNonfiniteContractsAreRejected()",
+            "spanGapInclusionAndPlateauCoalescingHaveIndependentKnownAnswers()",
+            "sparseUniverseIsExplicitAndZeroSignedSummitsUseTheMathematicalMaximum()"
+          ]
+        },
+        "org.jlinalg.cli.TrackPeakCliTest": {
+          "suite_name": "org.jlinalg.cli.TrackPeakCliTest",
+          "suite": {
+            "tests": 3,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "d587904e6170bc1ec7eb0de6392e9c4a16933df7b127d3f6a0312d0b731cc17c",
+          "testcases": [
+            "referenceOverlapAndNumericFailuresKeepRecoveryAndNoSuccessfulResults()",
+            "sparseZeroPrecisionAndEmptyFindingsRemainProminent()",
+            "executableContractProducesKnownBedAndSummitWithoutFabricatedSignificance()"
+          ]
+        }
+      }
+    },
+    {
+      "status": "passed",
+      "engine": "Native Java",
+      "jar_sha256": "7fc22cd33b22500b0e0360ee93c6e416ce27444f32691fed470e280e95f7f70d",
+      "api_suite": {
+        "suite_name": "org.jlinalg.genetics.ThresholdPeaksTest",
+        "suite": {
+          "tests": 6,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "d68a93dc9d1142107d6ea063f81d321dfc2ddda06560d416865d78e264150e2d",
+        "testcases": [
+          "geometryAndSummitsMatch129ActualUpstreamCallsIncludingTiesAndBoundaryRounding()",
+          "float32ChangesBoundaryMembershipBeforeCoalescingButFloat64RetainsInput()",
+          "longCoordinatesAndLargeFiniteScoresDoNotRequireGenomeSizeArraysOrIntegrals()",
+          "ambiguousInvalidAndNonfiniteContractsAreRejected()",
+          "spanGapInclusionAndPlateauCoalescingHaveIndependentKnownAnswers()",
+          "sparseUniverseIsExplicitAndZeroSignedSummitsUseTheMathematicalMaximum()"
+        ]
+      },
+      "cli_suite": {
+        "suite_name": "org.jlinalg.cli.TrackPeakCliTest",
+        "suite": {
+          "tests": 3,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "e8b96d18cfb134d74a8bc22c02d0fb74061c86ba71b20a5c2ffd847e4f794e19",
+        "testcases": [
+          "referenceOverlapAndNumericFailuresKeepRecoveryAndNoSuccessfulResults()",
+          "sparseZeroPrecisionAndEmptyFindingsRemainProminent()",
+          "executableContractProducesKnownBedAndSummitWithoutFabricatedSignificance()"
+        ]
+      },
+      "packaged_validation": "native-track-peaks-packaged-validation.json",
+      "packaged_checks": 11,
+      "packaged_verifier_sha256": "2ed449c623a30b4d62fafdac109464e725c92d9ce614e833bee1d26161975ca6",
+      "source_sha256": {
+        "src/main/java/org/jlinalg/genetics/ThresholdPeaks.java": "ec2b839cc0dfb9df65a053e997206c57e432c2a1f63e718ce57d006b242a8fd5",
+        "src/main/java/org/jlinalg/cli/TrackPeakCli.java": "68ebb73321a25356367a64ee202f2dfc0bbde7c1fc80cd71ddace92e1d79cb52"
+      },
+      "actual_upstream_reference_cases": 129,
+      "reference_fixture_sha256": "1e3dd6a597dc4683971e58a8585c53536b1e14ebe7b86c48ee5359fed3ce8c40",
+      "upstream_notice_sha256": "6b642122b1286229372eaef08c353b76f3bfa687e6c2057339229c1293a96ddc",
+      "scope": "Native supplied-track inclusive cutoff/gap/span, coalesced maximum plateaus and lower-median summit convention; explicit float32/float64, missing universe, 64-bit arithmetic and recovery. Actual MACS3 positive-float32 geometry/summit references. Zero/signed mathematical-maximum convention is intentionally distinct; no alignment-based caller, HMMRATAC, P/Q estimation, old-version or whole-paper equivalence.",
+      "refreshed_utc": "2026-10-24T23:44:47.238929+00:00",
+      "current_full_gate_suites": {
+        "org.jlinalg.genetics.ThresholdPeaksTest": {
+          "suite_name": "org.jlinalg.genetics.ThresholdPeaksTest",
+          "suite": {
+            "tests": 6,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "d68a93dc9d1142107d6ea063f81d321dfc2ddda06560d416865d78e264150e2d",
+          "testcases": [
+            "geometryAndSummitsMatch129ActualUpstreamCallsIncludingTiesAndBoundaryRounding()",
+            "float32ChangesBoundaryMembershipBeforeCoalescingButFloat64RetainsInput()",
+            "longCoordinatesAndLargeFiniteScoresDoNotRequireGenomeSizeArraysOrIntegrals()",
+            "ambiguousInvalidAndNonfiniteContractsAreRejected()",
+            "spanGapInclusionAndPlateauCoalescingHaveIndependentKnownAnswers()",
+            "sparseUniverseIsExplicitAndZeroSignedSummitsUseTheMathematicalMaximum()"
+          ]
+        },
+        "org.jlinalg.cli.TrackPeakCliTest": {
+          "suite_name": "org.jlinalg.cli.TrackPeakCliTest",
+          "suite": {
+            "tests": 3,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "e8b96d18cfb134d74a8bc22c02d0fb74061c86ba71b20a5c2ffd847e4f794e19",
+          "testcases": [
+            "referenceOverlapAndNumericFailuresKeepRecoveryAndNoSuccessfulResults()",
+            "sparseZeroPrecisionAndEmptyFindingsRemainProminent()",
+            "executableContractProducesKnownBedAndSummitWithoutFabricatedSignificance()"
+          ]
+        }
+      }
+    },
+    {
+      "status": "passed",
+      "engine": "Native Java",
+      "jar_sha256": "19c4ed620c230c4c520c10bcbf3d88cbd1484d640103d2109e25f4db0ee621be",
+      "api_suite": {
+        "suite_name": "org.jlinalg.genetics.ThresholdPeaksTest",
+        "suite": {
+          "tests": 6,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "b37950883b9a0baef3ce223a1ef6cf0179c9c2e09bc1a2618a6e7d21f292abf8",
+        "testcases": [
+          "geometryAndSummitsMatch129ActualUpstreamCallsIncludingTiesAndBoundaryRounding()",
+          "float32ChangesBoundaryMembershipBeforeCoalescingButFloat64RetainsInput()",
+          "longCoordinatesAndLargeFiniteScoresDoNotRequireGenomeSizeArraysOrIntegrals()",
+          "ambiguousInvalidAndNonfiniteContractsAreRejected()",
+          "spanGapInclusionAndPlateauCoalescingHaveIndependentKnownAnswers()",
+          "sparseUniverseIsExplicitAndZeroSignedSummitsUseTheMathematicalMaximum()"
+        ]
+      },
+      "cli_suite": {
+        "suite_name": "org.jlinalg.cli.TrackPeakCliTest",
+        "suite": {
+          "tests": 3,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "1b8c7cce2c390bffd2f08d98b1da1e51a0d49ec8f0cdd4fc6f5fcf4bd4969f70",
+        "testcases": [
+          "referenceOverlapAndNumericFailuresKeepRecoveryAndNoSuccessfulResults()",
+          "sparseZeroPrecisionAndEmptyFindingsRemainProminent()",
+          "executableContractProducesKnownBedAndSummitWithoutFabricatedSignificance()"
+        ]
+      },
+      "packaged_validation": "native-track-peaks-packaged-validation.json",
+      "packaged_checks": 11,
+      "packaged_verifier_sha256": "2ed449c623a30b4d62fafdac109464e725c92d9ce614e833bee1d26161975ca6",
+      "source_sha256": {
+        "src/main/java/org/jlinalg/genetics/ThresholdPeaks.java": "ec2b839cc0dfb9df65a053e997206c57e432c2a1f63e718ce57d006b242a8fd5",
+        "src/main/java/org/jlinalg/cli/TrackPeakCli.java": "68ebb73321a25356367a64ee202f2dfc0bbde7c1fc80cd71ddace92e1d79cb52"
+      },
+      "actual_upstream_reference_cases": 129,
+      "reference_fixture_sha256": "1e3dd6a597dc4683971e58a8585c53536b1e14ebe7b86c48ee5359fed3ce8c40",
+      "upstream_notice_sha256": "6b642122b1286229372eaef08c353b76f3bfa687e6c2057339229c1293a96ddc",
+      "scope": "Native supplied-track inclusive cutoff/gap/span, coalesced maximum plateaus and lower-median summit convention; explicit float32/float64, missing universe, 64-bit arithmetic and recovery. Actual MACS3 positive-float32 geometry/summit references. Zero/signed mathematical-maximum convention is intentionally distinct; no alignment-based caller, HMMRATAC, P/Q estimation, old-version or whole-paper equivalence.",
+      "refreshed_utc": "2026-10-25T00:57:19.120198+00:00",
+      "current_full_gate_suites": {
+        "org.jlinalg.genetics.ThresholdPeaksTest": {
+          "suite_name": "org.jlinalg.genetics.ThresholdPeaksTest",
+          "suite": {
+            "tests": 6,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "b37950883b9a0baef3ce223a1ef6cf0179c9c2e09bc1a2618a6e7d21f292abf8",
+          "testcases": [
+            "geometryAndSummitsMatch129ActualUpstreamCallsIncludingTiesAndBoundaryRounding()",
+            "float32ChangesBoundaryMembershipBeforeCoalescingButFloat64RetainsInput()",
+            "longCoordinatesAndLargeFiniteScoresDoNotRequireGenomeSizeArraysOrIntegrals()",
+            "ambiguousInvalidAndNonfiniteContractsAreRejected()",
+            "spanGapInclusionAndPlateauCoalescingHaveIndependentKnownAnswers()",
+            "sparseUniverseIsExplicitAndZeroSignedSummitsUseTheMathematicalMaximum()"
+          ]
+        },
+        "org.jlinalg.cli.TrackPeakCliTest": {
+          "suite_name": "org.jlinalg.cli.TrackPeakCliTest",
+          "suite": {
+            "tests": 3,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "1b8c7cce2c390bffd2f08d98b1da1e51a0d49ec8f0cdd4fc6f5fcf4bd4969f70",
+          "testcases": [
+            "referenceOverlapAndNumericFailuresKeepRecoveryAndNoSuccessfulResults()",
+            "sparseZeroPrecisionAndEmptyFindingsRemainProminent()",
+            "executableContractProducesKnownBedAndSummitWithoutFabricatedSignificance()"
+          ]
+        }
+      }
+    },
+    {
+      "status": "passed",
+      "engine": "Native Java",
+      "jar_sha256": "095e5fecbb0beaabc2e67134d980d2e1841210c0b92c708b3a21ab0dfb866c61",
+      "api_suite": {
+        "suite_name": "org.jlinalg.genetics.ThresholdPeaksTest",
+        "suite": {
+          "tests": 6,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "746e06a4e5f85b69b4d19a9cfd0e6316c04a79c96b28bd18234912a00ef06f9c",
+        "testcases": [
+          "geometryAndSummitsMatch129ActualUpstreamCallsIncludingTiesAndBoundaryRounding()",
+          "float32ChangesBoundaryMembershipBeforeCoalescingButFloat64RetainsInput()",
+          "longCoordinatesAndLargeFiniteScoresDoNotRequireGenomeSizeArraysOrIntegrals()",
+          "ambiguousInvalidAndNonfiniteContractsAreRejected()",
+          "spanGapInclusionAndPlateauCoalescingHaveIndependentKnownAnswers()",
+          "sparseUniverseIsExplicitAndZeroSignedSummitsUseTheMathematicalMaximum()"
+        ]
+      },
+      "cli_suite": {
+        "suite_name": "org.jlinalg.cli.TrackPeakCliTest",
+        "suite": {
+          "tests": 3,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "53be5e1d76cdfb7c3357249ba3a8ddd517383f8d83ea4886b83fd10c7e768625",
+        "testcases": [
+          "referenceOverlapAndNumericFailuresKeepRecoveryAndNoSuccessfulResults()",
+          "sparseZeroPrecisionAndEmptyFindingsRemainProminent()",
+          "executableContractProducesKnownBedAndSummitWithoutFabricatedSignificance()"
+        ]
+      },
+      "packaged_validation": "native-track-peaks-packaged-validation.json",
+      "packaged_checks": 11,
+      "packaged_verifier_sha256": "2ed449c623a30b4d62fafdac109464e725c92d9ce614e833bee1d26161975ca6",
+      "source_sha256": {
+        "src/main/java/org/jlinalg/genetics/ThresholdPeaks.java": "ec2b839cc0dfb9df65a053e997206c57e432c2a1f63e718ce57d006b242a8fd5",
+        "src/main/java/org/jlinalg/cli/TrackPeakCli.java": "68ebb73321a25356367a64ee202f2dfc0bbde7c1fc80cd71ddace92e1d79cb52"
+      },
+      "actual_upstream_reference_cases": 129,
+      "reference_fixture_sha256": "1e3dd6a597dc4683971e58a8585c53536b1e14ebe7b86c48ee5359fed3ce8c40",
+      "upstream_notice_sha256": "6b642122b1286229372eaef08c353b76f3bfa687e6c2057339229c1293a96ddc",
+      "scope": "Native supplied-track inclusive cutoff/gap/span, coalesced maximum plateaus and lower-median summit convention; explicit float32/float64, missing universe, 64-bit arithmetic and recovery. Actual MACS3 positive-float32 geometry/summit references. Zero/signed mathematical-maximum convention is intentionally distinct; no alignment-based caller, HMMRATAC, P/Q estimation, old-version or whole-paper equivalence.",
+      "refreshed_utc": "2026-10-25T02:15:39.832466+00:00",
+      "current_full_gate_suites": {
+        "org.jlinalg.genetics.ThresholdPeaksTest": {
+          "suite_name": "org.jlinalg.genetics.ThresholdPeaksTest",
+          "suite": {
+            "tests": 6,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "746e06a4e5f85b69b4d19a9cfd0e6316c04a79c96b28bd18234912a00ef06f9c",
+          "testcases": [
+            "geometryAndSummitsMatch129ActualUpstreamCallsIncludingTiesAndBoundaryRounding()",
+            "float32ChangesBoundaryMembershipBeforeCoalescingButFloat64RetainsInput()",
+            "longCoordinatesAndLargeFiniteScoresDoNotRequireGenomeSizeArraysOrIntegrals()",
+            "ambiguousInvalidAndNonfiniteContractsAreRejected()",
+            "spanGapInclusionAndPlateauCoalescingHaveIndependentKnownAnswers()",
+            "sparseUniverseIsExplicitAndZeroSignedSummitsUseTheMathematicalMaximum()"
+          ]
+        },
+        "org.jlinalg.cli.TrackPeakCliTest": {
+          "suite_name": "org.jlinalg.cli.TrackPeakCliTest",
+          "suite": {
+            "tests": 3,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "53be5e1d76cdfb7c3357249ba3a8ddd517383f8d83ea4886b83fd10c7e768625",
+          "testcases": [
+            "referenceOverlapAndNumericFailuresKeepRecoveryAndNoSuccessfulResults()",
+            "sparseZeroPrecisionAndEmptyFindingsRemainProminent()",
+            "executableContractProducesKnownBedAndSummitWithoutFabricatedSignificance()"
+          ]
+        }
+      }
+    },
+    {
+      "status": "passed",
+      "engine": "Native Java",
+      "jar_sha256": "fc6c5769770609b38ffd8e5f22e701efcf0aeb13261c594a070ee5b6b777232b",
+      "api_suite": {
+        "suite_name": "org.jlinalg.genetics.ThresholdPeaksTest",
+        "suite": {
+          "tests": 6,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "291901ae2c41ecd66bfb9c2d3a1ea4e8fc376b8aa48ab4f2332c4032924b2d13",
+        "testcases": [
+          "geometryAndSummitsMatch129ActualUpstreamCallsIncludingTiesAndBoundaryRounding()",
+          "float32ChangesBoundaryMembershipBeforeCoalescingButFloat64RetainsInput()",
+          "longCoordinatesAndLargeFiniteScoresDoNotRequireGenomeSizeArraysOrIntegrals()",
+          "ambiguousInvalidAndNonfiniteContractsAreRejected()",
+          "spanGapInclusionAndPlateauCoalescingHaveIndependentKnownAnswers()",
+          "sparseUniverseIsExplicitAndZeroSignedSummitsUseTheMathematicalMaximum()"
+        ]
+      },
+      "cli_suite": {
+        "suite_name": "org.jlinalg.cli.TrackPeakCliTest",
+        "suite": {
+          "tests": 3,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "d88327d3637931acb900b7707427397ea86aabfb3cb32f183c5e4c24cb025475",
+        "testcases": [
+          "referenceOverlapAndNumericFailuresKeepRecoveryAndNoSuccessfulResults()",
+          "sparseZeroPrecisionAndEmptyFindingsRemainProminent()",
+          "executableContractProducesKnownBedAndSummitWithoutFabricatedSignificance()"
+        ]
+      },
+      "packaged_validation": "native-track-peaks-packaged-validation.json",
+      "packaged_checks": 11,
+      "packaged_verifier_sha256": "2ed449c623a30b4d62fafdac109464e725c92d9ce614e833bee1d26161975ca6",
+      "source_sha256": {
+        "src/main/java/org/jlinalg/genetics/ThresholdPeaks.java": "ec2b839cc0dfb9df65a053e997206c57e432c2a1f63e718ce57d006b242a8fd5",
+        "src/main/java/org/jlinalg/cli/TrackPeakCli.java": "68ebb73321a25356367a64ee202f2dfc0bbde7c1fc80cd71ddace92e1d79cb52"
+      },
+      "actual_upstream_reference_cases": 129,
+      "reference_fixture_sha256": "1e3dd6a597dc4683971e58a8585c53536b1e14ebe7b86c48ee5359fed3ce8c40",
+      "upstream_notice_sha256": "6b642122b1286229372eaef08c353b76f3bfa687e6c2057339229c1293a96ddc",
+      "scope": "Native supplied-track inclusive cutoff/gap/span, coalesced maximum plateaus and lower-median summit convention; explicit float32/float64, missing universe, 64-bit arithmetic and recovery. Actual MACS3 positive-float32 geometry/summit references. Zero/signed mathematical-maximum convention is intentionally distinct; no alignment-based caller, HMMRATAC, P/Q estimation, old-version or whole-paper equivalence.",
+      "refreshed_utc": "2026-10-25T02:57:16.310858+00:00",
+      "current_full_gate_suites": {
+        "org.jlinalg.genetics.ThresholdPeaksTest": {
+          "suite_name": "org.jlinalg.genetics.ThresholdPeaksTest",
+          "suite": {
+            "tests": 6,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "291901ae2c41ecd66bfb9c2d3a1ea4e8fc376b8aa48ab4f2332c4032924b2d13",
+          "testcases": [
+            "geometryAndSummitsMatch129ActualUpstreamCallsIncludingTiesAndBoundaryRounding()",
+            "float32ChangesBoundaryMembershipBeforeCoalescingButFloat64RetainsInput()",
+            "longCoordinatesAndLargeFiniteScoresDoNotRequireGenomeSizeArraysOrIntegrals()",
+            "ambiguousInvalidAndNonfiniteContractsAreRejected()",
+            "spanGapInclusionAndPlateauCoalescingHaveIndependentKnownAnswers()",
+            "sparseUniverseIsExplicitAndZeroSignedSummitsUseTheMathematicalMaximum()"
+          ]
+        },
+        "org.jlinalg.cli.TrackPeakCliTest": {
+          "suite_name": "org.jlinalg.cli.TrackPeakCliTest",
+          "suite": {
+            "tests": 3,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "d88327d3637931acb900b7707427397ea86aabfb3cb32f183c5e4c24cb025475",
+          "testcases": [
+            "referenceOverlapAndNumericFailuresKeepRecoveryAndNoSuccessfulResults()",
+            "sparseZeroPrecisionAndEmptyFindingsRemainProminent()",
+            "executableContractProducesKnownBedAndSummitWithoutFabricatedSignificance()"
+          ]
+        }
+      }
+    },
+    {
+      "status": "passed",
+      "engine": "Native Java",
+      "jar_sha256": "faa28146756d077aa691977585fd3349c390f49ff609179a94e355cb13cca667",
+      "api_suite": {
+        "suite_name": "org.jlinalg.genetics.ThresholdPeaksTest",
+        "suite": {
+          "tests": 6,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "8a7128b0e89a3694755b785409d3c0854fcd5ab5f1860aadfc77d75bf2bb816d",
+        "testcases": [
+          "geometryAndSummitsMatch129ActualUpstreamCallsIncludingTiesAndBoundaryRounding()",
+          "float32ChangesBoundaryMembershipBeforeCoalescingButFloat64RetainsInput()",
+          "longCoordinatesAndLargeFiniteScoresDoNotRequireGenomeSizeArraysOrIntegrals()",
+          "ambiguousInvalidAndNonfiniteContractsAreRejected()",
+          "spanGapInclusionAndPlateauCoalescingHaveIndependentKnownAnswers()",
+          "sparseUniverseIsExplicitAndZeroSignedSummitsUseTheMathematicalMaximum()"
+        ]
+      },
+      "cli_suite": {
+        "suite_name": "org.jlinalg.cli.TrackPeakCliTest",
+        "suite": {
+          "tests": 3,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "969f34a65b041281fc4c4fdccdae6416a0800ceb9f06a8ca6c53874c36fae462",
+        "testcases": [
+          "referenceOverlapAndNumericFailuresKeepRecoveryAndNoSuccessfulResults()",
+          "sparseZeroPrecisionAndEmptyFindingsRemainProminent()",
+          "executableContractProducesKnownBedAndSummitWithoutFabricatedSignificance()"
+        ]
+      },
+      "packaged_validation": "native-track-peaks-packaged-validation.json",
+      "packaged_checks": 11,
+      "packaged_verifier_sha256": "2ed449c623a30b4d62fafdac109464e725c92d9ce614e833bee1d26161975ca6",
+      "source_sha256": {
+        "src/main/java/org/jlinalg/genetics/ThresholdPeaks.java": "ec2b839cc0dfb9df65a053e997206c57e432c2a1f63e718ce57d006b242a8fd5",
+        "src/main/java/org/jlinalg/cli/TrackPeakCli.java": "68ebb73321a25356367a64ee202f2dfc0bbde7c1fc80cd71ddace92e1d79cb52"
+      },
+      "actual_upstream_reference_cases": 129,
+      "reference_fixture_sha256": "1e3dd6a597dc4683971e58a8585c53536b1e14ebe7b86c48ee5359fed3ce8c40",
+      "upstream_notice_sha256": "6b642122b1286229372eaef08c353b76f3bfa687e6c2057339229c1293a96ddc",
+      "scope": "Native supplied-track inclusive cutoff/gap/span, coalesced maximum plateaus and lower-median summit convention; explicit float32/float64, missing universe, 64-bit arithmetic and recovery. Actual MACS3 positive-float32 geometry/summit references. Zero/signed mathematical-maximum convention is intentionally distinct; no alignment-based caller, HMMRATAC, P/Q estimation, old-version or whole-paper equivalence.",
+      "refreshed_utc": "2026-10-25T03:50:24.675422+00:00",
+      "current_full_gate_suites": {
+        "org.jlinalg.genetics.ThresholdPeaksTest": {
+          "suite_name": "org.jlinalg.genetics.ThresholdPeaksTest",
+          "suite": {
+            "tests": 6,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "8a7128b0e89a3694755b785409d3c0854fcd5ab5f1860aadfc77d75bf2bb816d",
+          "testcases": [
+            "geometryAndSummitsMatch129ActualUpstreamCallsIncludingTiesAndBoundaryRounding()",
+            "float32ChangesBoundaryMembershipBeforeCoalescingButFloat64RetainsInput()",
+            "longCoordinatesAndLargeFiniteScoresDoNotRequireGenomeSizeArraysOrIntegrals()",
+            "ambiguousInvalidAndNonfiniteContractsAreRejected()",
+            "spanGapInclusionAndPlateauCoalescingHaveIndependentKnownAnswers()",
+            "sparseUniverseIsExplicitAndZeroSignedSummitsUseTheMathematicalMaximum()"
+          ]
+        },
+        "org.jlinalg.cli.TrackPeakCliTest": {
+          "suite_name": "org.jlinalg.cli.TrackPeakCliTest",
+          "suite": {
+            "tests": 3,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "969f34a65b041281fc4c4fdccdae6416a0800ceb9f06a8ca6c53874c36fae462",
+          "testcases": [
+            "referenceOverlapAndNumericFailuresKeepRecoveryAndNoSuccessfulResults()",
+            "sparseZeroPrecisionAndEmptyFindingsRemainProminent()",
+            "executableContractProducesKnownBedAndSummitWithoutFabricatedSignificance()"
+          ]
+        }
+      }
+    },
+    {
+      "status": "passed",
+      "engine": "Native Java",
+      "jar_sha256": "68a623dc455abf0608f50ca5977a44cd3c6d0db6489f8db726569675c46abdc2",
+      "api_suite": {
+        "suite_name": "org.jlinalg.genetics.ThresholdPeaksTest",
+        "suite": {
+          "tests": 6,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "28abf91cecc6166ea6ec01dae480196b1a45a8bafb1842cebb561761d4087829",
+        "testcases": [
+          "geometryAndSummitsMatch129ActualUpstreamCallsIncludingTiesAndBoundaryRounding()",
+          "float32ChangesBoundaryMembershipBeforeCoalescingButFloat64RetainsInput()",
+          "longCoordinatesAndLargeFiniteScoresDoNotRequireGenomeSizeArraysOrIntegrals()",
+          "ambiguousInvalidAndNonfiniteContractsAreRejected()",
+          "spanGapInclusionAndPlateauCoalescingHaveIndependentKnownAnswers()",
+          "sparseUniverseIsExplicitAndZeroSignedSummitsUseTheMathematicalMaximum()"
+        ]
+      },
+      "cli_suite": {
+        "suite_name": "org.jlinalg.cli.TrackPeakCliTest",
+        "suite": {
+          "tests": 3,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "0a3ba5e690c944f040b56a4cc3cbd57d817f8ece3424bd5d023462a2ccf8df62",
+        "testcases": [
+          "referenceOverlapAndNumericFailuresKeepRecoveryAndNoSuccessfulResults()",
+          "sparseZeroPrecisionAndEmptyFindingsRemainProminent()",
+          "executableContractProducesKnownBedAndSummitWithoutFabricatedSignificance()"
+        ]
+      },
+      "packaged_validation": "native-track-peaks-packaged-validation.json",
+      "packaged_checks": 11,
+      "packaged_verifier_sha256": "2ed449c623a30b4d62fafdac109464e725c92d9ce614e833bee1d26161975ca6",
+      "source_sha256": {
+        "src/main/java/org/jlinalg/genetics/ThresholdPeaks.java": "ec2b839cc0dfb9df65a053e997206c57e432c2a1f63e718ce57d006b242a8fd5",
+        "src/main/java/org/jlinalg/cli/TrackPeakCli.java": "68ebb73321a25356367a64ee202f2dfc0bbde7c1fc80cd71ddace92e1d79cb52"
+      },
+      "actual_upstream_reference_cases": 129,
+      "reference_fixture_sha256": "1e3dd6a597dc4683971e58a8585c53536b1e14ebe7b86c48ee5359fed3ce8c40",
+      "upstream_notice_sha256": "6b642122b1286229372eaef08c353b76f3bfa687e6c2057339229c1293a96ddc",
+      "scope": "Native supplied-track inclusive cutoff/gap/span, coalesced maximum plateaus and lower-median summit convention; explicit float32/float64, missing universe, 64-bit arithmetic and recovery. Actual MACS3 positive-float32 geometry/summit references. Zero/signed mathematical-maximum convention is intentionally distinct; no alignment-based caller, HMMRATAC, P/Q estimation, old-version or whole-paper equivalence.",
+      "refreshed_utc": "2026-10-25T05:28:16.019770+00:00",
+      "current_full_gate_suites": {
+        "org.jlinalg.genetics.ThresholdPeaksTest": {
+          "suite_name": "org.jlinalg.genetics.ThresholdPeaksTest",
+          "suite": {
+            "tests": 6,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "28abf91cecc6166ea6ec01dae480196b1a45a8bafb1842cebb561761d4087829",
+          "testcases": [
+            "geometryAndSummitsMatch129ActualUpstreamCallsIncludingTiesAndBoundaryRounding()",
+            "float32ChangesBoundaryMembershipBeforeCoalescingButFloat64RetainsInput()",
+            "longCoordinatesAndLargeFiniteScoresDoNotRequireGenomeSizeArraysOrIntegrals()",
+            "ambiguousInvalidAndNonfiniteContractsAreRejected()",
+            "spanGapInclusionAndPlateauCoalescingHaveIndependentKnownAnswers()",
+            "sparseUniverseIsExplicitAndZeroSignedSummitsUseTheMathematicalMaximum()"
+          ]
+        },
+        "org.jlinalg.cli.TrackPeakCliTest": {
+          "suite_name": "org.jlinalg.cli.TrackPeakCliTest",
+          "suite": {
+            "tests": 3,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "0a3ba5e690c944f040b56a4cc3cbd57d817f8ece3424bd5d023462a2ccf8df62",
+          "testcases": [
+            "referenceOverlapAndNumericFailuresKeepRecoveryAndNoSuccessfulResults()",
+            "sparseZeroPrecisionAndEmptyFindingsRemainProminent()",
+            "executableContractProducesKnownBedAndSummitWithoutFabricatedSignificance()"
+          ]
+        }
+      }
+    },
+    {
+      "status": "passed",
+      "engine": "Native Java",
+      "jar_sha256": "6ff7cc767bc62f2489947a34fbf3bc99129e4d444242eb217294764587c7e491",
+      "api_suite": {
+        "suite_name": "org.jlinalg.genetics.ThresholdPeaksTest",
+        "suite": {
+          "tests": 6,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "6a776da65a754804fc34f4d1f35d5f8dc60139d1bbc7facefdd6d0640e3590b1",
+        "testcases": [
+          "geometryAndSummitsMatch129ActualUpstreamCallsIncludingTiesAndBoundaryRounding()",
+          "float32ChangesBoundaryMembershipBeforeCoalescingButFloat64RetainsInput()",
+          "longCoordinatesAndLargeFiniteScoresDoNotRequireGenomeSizeArraysOrIntegrals()",
+          "ambiguousInvalidAndNonfiniteContractsAreRejected()",
+          "spanGapInclusionAndPlateauCoalescingHaveIndependentKnownAnswers()",
+          "sparseUniverseIsExplicitAndZeroSignedSummitsUseTheMathematicalMaximum()"
+        ]
+      },
+      "cli_suite": {
+        "suite_name": "org.jlinalg.cli.TrackPeakCliTest",
+        "suite": {
+          "tests": 3,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "6caa3f19758504bf1a12574126ae2624b321b2ef073ec393d27d66c8b1faf454",
+        "testcases": [
+          "referenceOverlapAndNumericFailuresKeepRecoveryAndNoSuccessfulResults()",
+          "sparseZeroPrecisionAndEmptyFindingsRemainProminent()",
+          "executableContractProducesKnownBedAndSummitWithoutFabricatedSignificance()"
+        ]
+      },
+      "packaged_validation": "native-track-peaks-packaged-validation.json",
+      "packaged_checks": 11,
+      "packaged_verifier_sha256": "2ed449c623a30b4d62fafdac109464e725c92d9ce614e833bee1d26161975ca6",
+      "source_sha256": {
+        "src/main/java/org/jlinalg/genetics/ThresholdPeaks.java": "ec2b839cc0dfb9df65a053e997206c57e432c2a1f63e718ce57d006b242a8fd5",
+        "src/main/java/org/jlinalg/cli/TrackPeakCli.java": "68ebb73321a25356367a64ee202f2dfc0bbde7c1fc80cd71ddace92e1d79cb52"
+      },
+      "actual_upstream_reference_cases": 129,
+      "reference_fixture_sha256": "1e3dd6a597dc4683971e58a8585c53536b1e14ebe7b86c48ee5359fed3ce8c40",
+      "upstream_notice_sha256": "6b642122b1286229372eaef08c353b76f3bfa687e6c2057339229c1293a96ddc",
+      "scope": "Native supplied-track inclusive cutoff/gap/span, coalesced maximum plateaus and lower-median summit convention; explicit float32/float64, missing universe, 64-bit arithmetic and recovery. Actual MACS3 positive-float32 geometry/summit references. Zero/signed mathematical-maximum convention is intentionally distinct; no alignment-based caller, HMMRATAC, P/Q estimation, old-version or whole-paper equivalence.",
+      "refreshed_utc": "2026-10-25T06:53:04.578303+00:00",
+      "current_full_gate_suites": {
+        "org.jlinalg.genetics.ThresholdPeaksTest": {
+          "suite_name": "org.jlinalg.genetics.ThresholdPeaksTest",
+          "suite": {
+            "tests": 6,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "6a776da65a754804fc34f4d1f35d5f8dc60139d1bbc7facefdd6d0640e3590b1",
+          "testcases": [
+            "geometryAndSummitsMatch129ActualUpstreamCallsIncludingTiesAndBoundaryRounding()",
+            "float32ChangesBoundaryMembershipBeforeCoalescingButFloat64RetainsInput()",
+            "longCoordinatesAndLargeFiniteScoresDoNotRequireGenomeSizeArraysOrIntegrals()",
+            "ambiguousInvalidAndNonfiniteContractsAreRejected()",
+            "spanGapInclusionAndPlateauCoalescingHaveIndependentKnownAnswers()",
+            "sparseUniverseIsExplicitAndZeroSignedSummitsUseTheMathematicalMaximum()"
+          ]
+        },
+        "org.jlinalg.cli.TrackPeakCliTest": {
+          "suite_name": "org.jlinalg.cli.TrackPeakCliTest",
+          "suite": {
+            "tests": 3,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "6caa3f19758504bf1a12574126ae2624b321b2ef073ec393d27d66c8b1faf454",
+          "testcases": [
+            "referenceOverlapAndNumericFailuresKeepRecoveryAndNoSuccessfulResults()",
+            "sparseZeroPrecisionAndEmptyFindingsRemainProminent()",
+            "executableContractProducesKnownBedAndSummitWithoutFabricatedSignificance()"
+          ]
+        }
+      }
+    },
+    {
+      "status": "passed",
+      "engine": "Native Java",
+      "jar_sha256": "53399f4be52ad5bb882f5acfea53d5a2a037ac80a6e93d1f7d7fdbc118051860",
+      "api_suite": {
+        "suite_name": "org.jlinalg.genetics.ThresholdPeaksTest",
+        "suite": {
+          "tests": 6,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "e6abf72a82b1056e13cdf2b99367a251fab0128946e93cedf67a5bee155d8d38",
+        "testcases": [
+          "geometryAndSummitsMatch129ActualUpstreamCallsIncludingTiesAndBoundaryRounding()",
+          "float32ChangesBoundaryMembershipBeforeCoalescingButFloat64RetainsInput()",
+          "longCoordinatesAndLargeFiniteScoresDoNotRequireGenomeSizeArraysOrIntegrals()",
+          "ambiguousInvalidAndNonfiniteContractsAreRejected()",
+          "spanGapInclusionAndPlateauCoalescingHaveIndependentKnownAnswers()",
+          "sparseUniverseIsExplicitAndZeroSignedSummitsUseTheMathematicalMaximum()"
+        ]
+      },
+      "cli_suite": {
+        "suite_name": "org.jlinalg.cli.TrackPeakCliTest",
+        "suite": {
+          "tests": 3,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "4df624db9817856041042ec74204f2dfea54da7b2a1449742fef739b19a7807b",
+        "testcases": [
+          "referenceOverlapAndNumericFailuresKeepRecoveryAndNoSuccessfulResults()",
+          "sparseZeroPrecisionAndEmptyFindingsRemainProminent()",
+          "executableContractProducesKnownBedAndSummitWithoutFabricatedSignificance()"
+        ]
+      },
+      "packaged_validation": "native-track-peaks-packaged-validation.json",
+      "packaged_checks": 11,
+      "packaged_verifier_sha256": "2ed449c623a30b4d62fafdac109464e725c92d9ce614e833bee1d26161975ca6",
+      "source_sha256": {
+        "src/main/java/org/jlinalg/genetics/ThresholdPeaks.java": "ec2b839cc0dfb9df65a053e997206c57e432c2a1f63e718ce57d006b242a8fd5",
+        "src/main/java/org/jlinalg/cli/TrackPeakCli.java": "68ebb73321a25356367a64ee202f2dfc0bbde7c1fc80cd71ddace92e1d79cb52"
+      },
+      "actual_upstream_reference_cases": 129,
+      "reference_fixture_sha256": "1e3dd6a597dc4683971e58a8585c53536b1e14ebe7b86c48ee5359fed3ce8c40",
+      "upstream_notice_sha256": "6b642122b1286229372eaef08c353b76f3bfa687e6c2057339229c1293a96ddc",
+      "scope": "Native supplied-track inclusive cutoff/gap/span, coalesced maximum plateaus and lower-median summit convention; explicit float32/float64, missing universe, 64-bit arithmetic and recovery. Actual MACS3 positive-float32 geometry/summit references. Zero/signed mathematical-maximum convention is intentionally distinct; no alignment-based caller, HMMRATAC, P/Q estimation, old-version or whole-paper equivalence.",
+      "refreshed_utc": "2026-10-25T08:02:41.668775+00:00",
+      "current_full_gate_suites": {
+        "org.jlinalg.genetics.ThresholdPeaksTest": {
+          "suite_name": "org.jlinalg.genetics.ThresholdPeaksTest",
+          "suite": {
+            "tests": 6,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "e6abf72a82b1056e13cdf2b99367a251fab0128946e93cedf67a5bee155d8d38",
+          "testcases": [
+            "geometryAndSummitsMatch129ActualUpstreamCallsIncludingTiesAndBoundaryRounding()",
+            "float32ChangesBoundaryMembershipBeforeCoalescingButFloat64RetainsInput()",
+            "longCoordinatesAndLargeFiniteScoresDoNotRequireGenomeSizeArraysOrIntegrals()",
+            "ambiguousInvalidAndNonfiniteContractsAreRejected()",
+            "spanGapInclusionAndPlateauCoalescingHaveIndependentKnownAnswers()",
+            "sparseUniverseIsExplicitAndZeroSignedSummitsUseTheMathematicalMaximum()"
+          ]
+        },
+        "org.jlinalg.cli.TrackPeakCliTest": {
+          "suite_name": "org.jlinalg.cli.TrackPeakCliTest",
+          "suite": {
+            "tests": 3,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "4df624db9817856041042ec74204f2dfea54da7b2a1449742fef739b19a7807b",
+          "testcases": [
+            "referenceOverlapAndNumericFailuresKeepRecoveryAndNoSuccessfulResults()",
+            "sparseZeroPrecisionAndEmptyFindingsRemainProminent()",
+            "executableContractProducesKnownBedAndSummitWithoutFabricatedSignificance()"
+          ]
+        }
+      }
+    },
+    {
+      "status": "passed",
+      "engine": "Native Java",
+      "jar_sha256": "9650afd13cf486aba84285ba6d2f1a0a06eca8f08d3e33b4c2338567f5372de2",
+      "api_suite": {
+        "suite_name": "org.jlinalg.genetics.ThresholdPeaksTest",
+        "suite": {
+          "tests": 6,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "33d48e00867a3e26c671b81a85bfcead8034d79d6f6ecdcb5a0c1bad03b64696",
+        "testcases": [
+          "geometryAndSummitsMatch129ActualUpstreamCallsIncludingTiesAndBoundaryRounding()",
+          "float32ChangesBoundaryMembershipBeforeCoalescingButFloat64RetainsInput()",
+          "longCoordinatesAndLargeFiniteScoresDoNotRequireGenomeSizeArraysOrIntegrals()",
+          "ambiguousInvalidAndNonfiniteContractsAreRejected()",
+          "spanGapInclusionAndPlateauCoalescingHaveIndependentKnownAnswers()",
+          "sparseUniverseIsExplicitAndZeroSignedSummitsUseTheMathematicalMaximum()"
+        ]
+      },
+      "cli_suite": {
+        "suite_name": "org.jlinalg.cli.TrackPeakCliTest",
+        "suite": {
+          "tests": 3,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "d5ff1d621d1719d202ebbe4696c9cde752d5d69494e2bbc666f20918d740908d",
+        "testcases": [
+          "referenceOverlapAndNumericFailuresKeepRecoveryAndNoSuccessfulResults()",
+          "sparseZeroPrecisionAndEmptyFindingsRemainProminent()",
+          "executableContractProducesKnownBedAndSummitWithoutFabricatedSignificance()"
+        ]
+      },
+      "packaged_validation": "native-track-peaks-packaged-validation.json",
+      "packaged_checks": 11,
+      "packaged_verifier_sha256": "2ed449c623a30b4d62fafdac109464e725c92d9ce614e833bee1d26161975ca6",
+      "source_sha256": {
+        "src/main/java/org/jlinalg/genetics/ThresholdPeaks.java": "ec2b839cc0dfb9df65a053e997206c57e432c2a1f63e718ce57d006b242a8fd5",
+        "src/main/java/org/jlinalg/cli/TrackPeakCli.java": "68ebb73321a25356367a64ee202f2dfc0bbde7c1fc80cd71ddace92e1d79cb52"
+      },
+      "actual_upstream_reference_cases": 129,
+      "reference_fixture_sha256": "1e3dd6a597dc4683971e58a8585c53536b1e14ebe7b86c48ee5359fed3ce8c40",
+      "upstream_notice_sha256": "6b642122b1286229372eaef08c353b76f3bfa687e6c2057339229c1293a96ddc",
+      "scope": "Native supplied-track inclusive cutoff/gap/span, coalesced maximum plateaus and lower-median summit convention; explicit float32/float64, missing universe, 64-bit arithmetic and recovery. Actual MACS3 positive-float32 geometry/summit references. Zero/signed mathematical-maximum convention is intentionally distinct; no alignment-based caller, HMMRATAC, P/Q estimation, old-version or whole-paper equivalence.",
+      "refreshed_utc": "2026-10-25T09:04:26.213216+00:00",
+      "current_full_gate_suites": {
+        "org.jlinalg.genetics.ThresholdPeaksTest": {
+          "suite_name": "org.jlinalg.genetics.ThresholdPeaksTest",
+          "suite": {
+            "tests": 6,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "33d48e00867a3e26c671b81a85bfcead8034d79d6f6ecdcb5a0c1bad03b64696",
+          "testcases": [
+            "geometryAndSummitsMatch129ActualUpstreamCallsIncludingTiesAndBoundaryRounding()",
+            "float32ChangesBoundaryMembershipBeforeCoalescingButFloat64RetainsInput()",
+            "longCoordinatesAndLargeFiniteScoresDoNotRequireGenomeSizeArraysOrIntegrals()",
+            "ambiguousInvalidAndNonfiniteContractsAreRejected()",
+            "spanGapInclusionAndPlateauCoalescingHaveIndependentKnownAnswers()",
+            "sparseUniverseIsExplicitAndZeroSignedSummitsUseTheMathematicalMaximum()"
+          ]
+        },
+        "org.jlinalg.cli.TrackPeakCliTest": {
+          "suite_name": "org.jlinalg.cli.TrackPeakCliTest",
+          "suite": {
+            "tests": 3,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "d5ff1d621d1719d202ebbe4696c9cde752d5d69494e2bbc666f20918d740908d",
+          "testcases": [
+            "referenceOverlapAndNumericFailuresKeepRecoveryAndNoSuccessfulResults()",
+            "sparseZeroPrecisionAndEmptyFindingsRemainProminent()",
+            "executableContractProducesKnownBedAndSummitWithoutFabricatedSignificance()"
+          ]
+        }
+      }
+    },
+    {
+      "status": "passed",
+      "engine": "Native Java",
+      "jar_sha256": "938e928161f850a7f23d38ced10b6ed53c15392b16f79c3d6caeab2ae8906c84",
+      "api_suite": {
+        "suite_name": "org.jlinalg.genetics.ThresholdPeaksTest",
+        "suite": {
+          "tests": 6,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "30baa397fdd78bfcb706b009c5878db70ebf61f3bd3e807745fe011726387fca",
+        "testcases": [
+          "geometryAndSummitsMatch129ActualUpstreamCallsIncludingTiesAndBoundaryRounding()",
+          "float32ChangesBoundaryMembershipBeforeCoalescingButFloat64RetainsInput()",
+          "longCoordinatesAndLargeFiniteScoresDoNotRequireGenomeSizeArraysOrIntegrals()",
+          "ambiguousInvalidAndNonfiniteContractsAreRejected()",
+          "spanGapInclusionAndPlateauCoalescingHaveIndependentKnownAnswers()",
+          "sparseUniverseIsExplicitAndZeroSignedSummitsUseTheMathematicalMaximum()"
+        ]
+      },
+      "cli_suite": {
+        "suite_name": "org.jlinalg.cli.TrackPeakCliTest",
+        "suite": {
+          "tests": 3,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "a7426e97fa3f1c0a559a4847b3933e5e718fd917f8ed9dc0cebf1e9d8adb7281",
+        "testcases": [
+          "referenceOverlapAndNumericFailuresKeepRecoveryAndNoSuccessfulResults()",
+          "sparseZeroPrecisionAndEmptyFindingsRemainProminent()",
+          "executableContractProducesKnownBedAndSummitWithoutFabricatedSignificance()"
+        ]
+      },
+      "packaged_validation": "native-track-peaks-packaged-validation.json",
+      "packaged_checks": 11,
+      "packaged_verifier_sha256": "2ed449c623a30b4d62fafdac109464e725c92d9ce614e833bee1d26161975ca6",
+      "source_sha256": {
+        "src/main/java/org/jlinalg/genetics/ThresholdPeaks.java": "ec2b839cc0dfb9df65a053e997206c57e432c2a1f63e718ce57d006b242a8fd5",
+        "src/main/java/org/jlinalg/cli/TrackPeakCli.java": "68ebb73321a25356367a64ee202f2dfc0bbde7c1fc80cd71ddace92e1d79cb52"
+      },
+      "actual_upstream_reference_cases": 129,
+      "reference_fixture_sha256": "1e3dd6a597dc4683971e58a8585c53536b1e14ebe7b86c48ee5359fed3ce8c40",
+      "upstream_notice_sha256": "6b642122b1286229372eaef08c353b76f3bfa687e6c2057339229c1293a96ddc",
+      "scope": "Native supplied-track inclusive cutoff/gap/span, coalesced maximum plateaus and lower-median summit convention; explicit float32/float64, missing universe, 64-bit arithmetic and recovery. Actual MACS3 positive-float32 geometry/summit references. Zero/signed mathematical-maximum convention is intentionally distinct; no alignment-based caller, HMMRATAC, P/Q estimation, old-version or whole-paper equivalence.",
+      "refreshed_utc": "2026-10-25T10:07:59.705580+00:00",
+      "current_full_gate_suites": {
+        "org.jlinalg.genetics.ThresholdPeaksTest": {
+          "suite_name": "org.jlinalg.genetics.ThresholdPeaksTest",
+          "suite": {
+            "tests": 6,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "30baa397fdd78bfcb706b009c5878db70ebf61f3bd3e807745fe011726387fca",
+          "testcases": [
+            "geometryAndSummitsMatch129ActualUpstreamCallsIncludingTiesAndBoundaryRounding()",
+            "float32ChangesBoundaryMembershipBeforeCoalescingButFloat64RetainsInput()",
+            "longCoordinatesAndLargeFiniteScoresDoNotRequireGenomeSizeArraysOrIntegrals()",
+            "ambiguousInvalidAndNonfiniteContractsAreRejected()",
+            "spanGapInclusionAndPlateauCoalescingHaveIndependentKnownAnswers()",
+            "sparseUniverseIsExplicitAndZeroSignedSummitsUseTheMathematicalMaximum()"
+          ]
+        },
+        "org.jlinalg.cli.TrackPeakCliTest": {
+          "suite_name": "org.jlinalg.cli.TrackPeakCliTest",
+          "suite": {
+            "tests": 3,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "a7426e97fa3f1c0a559a4847b3933e5e718fd917f8ed9dc0cebf1e9d8adb7281",
+          "testcases": [
+            "referenceOverlapAndNumericFailuresKeepRecoveryAndNoSuccessfulResults()",
+            "sparseZeroPrecisionAndEmptyFindingsRemainProminent()",
+            "executableContractProducesKnownBedAndSummitWithoutFabricatedSignificance()"
+          ]
+        }
+      }
+    },
+    {
+      "status": "passed",
+      "engine": "Native Java",
+      "jar_sha256": "baaacad03f35a01f7d53aba9568e0ce03a89d37f2169ab89e25628f38b8b3b44",
+      "api_suite": {
+        "suite_name": "org.jlinalg.genetics.ThresholdPeaksTest",
+        "suite": {
+          "tests": 6,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "7cbe8583d298d0d39ccb6399335dcbd104260b1923c3d5bf89d10dc1dc26bac3",
+        "testcases": [
+          "geometryAndSummitsMatch129ActualUpstreamCallsIncludingTiesAndBoundaryRounding()",
+          "float32ChangesBoundaryMembershipBeforeCoalescingButFloat64RetainsInput()",
+          "longCoordinatesAndLargeFiniteScoresDoNotRequireGenomeSizeArraysOrIntegrals()",
+          "ambiguousInvalidAndNonfiniteContractsAreRejected()",
+          "spanGapInclusionAndPlateauCoalescingHaveIndependentKnownAnswers()",
+          "sparseUniverseIsExplicitAndZeroSignedSummitsUseTheMathematicalMaximum()"
+        ]
+      },
+      "cli_suite": {
+        "suite_name": "org.jlinalg.cli.TrackPeakCliTest",
+        "suite": {
+          "tests": 3,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "6e076bcadfa88e7efd877203014228211179565cd09a01150ae8a3430bbd8b77",
+        "testcases": [
+          "referenceOverlapAndNumericFailuresKeepRecoveryAndNoSuccessfulResults()",
+          "sparseZeroPrecisionAndEmptyFindingsRemainProminent()",
+          "executableContractProducesKnownBedAndSummitWithoutFabricatedSignificance()"
+        ]
+      },
+      "packaged_validation": "native-track-peaks-packaged-validation.json",
+      "packaged_checks": 11,
+      "packaged_verifier_sha256": "2ed449c623a30b4d62fafdac109464e725c92d9ce614e833bee1d26161975ca6",
+      "source_sha256": {
+        "src/main/java/org/jlinalg/genetics/ThresholdPeaks.java": "ec2b839cc0dfb9df65a053e997206c57e432c2a1f63e718ce57d006b242a8fd5",
+        "src/main/java/org/jlinalg/cli/TrackPeakCli.java": "68ebb73321a25356367a64ee202f2dfc0bbde7c1fc80cd71ddace92e1d79cb52"
+      },
+      "actual_upstream_reference_cases": 129,
+      "reference_fixture_sha256": "1e3dd6a597dc4683971e58a8585c53536b1e14ebe7b86c48ee5359fed3ce8c40",
+      "upstream_notice_sha256": "6b642122b1286229372eaef08c353b76f3bfa687e6c2057339229c1293a96ddc",
+      "scope": "Native supplied-track inclusive cutoff/gap/span, coalesced maximum plateaus and lower-median summit convention; explicit float32/float64, missing universe, 64-bit arithmetic and recovery. Actual MACS3 positive-float32 geometry/summit references. Zero/signed mathematical-maximum convention is intentionally distinct; no alignment-based caller, HMMRATAC, P/Q estimation, old-version or whole-paper equivalence.",
+      "refreshed_utc": "2026-10-25T11:27:56.771609+00:00",
+      "current_full_gate_suites": {
+        "org.jlinalg.genetics.ThresholdPeaksTest": {
+          "suite_name": "org.jlinalg.genetics.ThresholdPeaksTest",
+          "suite": {
+            "tests": 6,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "7cbe8583d298d0d39ccb6399335dcbd104260b1923c3d5bf89d10dc1dc26bac3",
+          "testcases": [
+            "geometryAndSummitsMatch129ActualUpstreamCallsIncludingTiesAndBoundaryRounding()",
+            "float32ChangesBoundaryMembershipBeforeCoalescingButFloat64RetainsInput()",
+            "longCoordinatesAndLargeFiniteScoresDoNotRequireGenomeSizeArraysOrIntegrals()",
+            "ambiguousInvalidAndNonfiniteContractsAreRejected()",
+            "spanGapInclusionAndPlateauCoalescingHaveIndependentKnownAnswers()",
+            "sparseUniverseIsExplicitAndZeroSignedSummitsUseTheMathematicalMaximum()"
+          ]
+        },
+        "org.jlinalg.cli.TrackPeakCliTest": {
+          "suite_name": "org.jlinalg.cli.TrackPeakCliTest",
+          "suite": {
+            "tests": 3,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "6e076bcadfa88e7efd877203014228211179565cd09a01150ae8a3430bbd8b77",
+          "testcases": [
+            "referenceOverlapAndNumericFailuresKeepRecoveryAndNoSuccessfulResults()",
+            "sparseZeroPrecisionAndEmptyFindingsRemainProminent()",
+            "executableContractProducesKnownBedAndSummitWithoutFabricatedSignificance()"
+          ]
+        }
+      }
+    },
+    {
+      "status": "passed",
+      "engine": "Native Java",
+      "jar_sha256": "5680cbc4e457007f8903d1d4db3e74ecc890a150b350870f0b82d5650bdc0fec",
+      "api_suite": {
+        "suite_name": "org.jlinalg.genetics.ThresholdPeaksTest",
+        "suite": {
+          "tests": 6,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "f8a312f4204624da170f4f177dda873a7873f4459033ad678da3b58636cc7324",
+        "testcases": [
+          "geometryAndSummitsMatch129ActualUpstreamCallsIncludingTiesAndBoundaryRounding()",
+          "float32ChangesBoundaryMembershipBeforeCoalescingButFloat64RetainsInput()",
+          "longCoordinatesAndLargeFiniteScoresDoNotRequireGenomeSizeArraysOrIntegrals()",
+          "ambiguousInvalidAndNonfiniteContractsAreRejected()",
+          "spanGapInclusionAndPlateauCoalescingHaveIndependentKnownAnswers()",
+          "sparseUniverseIsExplicitAndZeroSignedSummitsUseTheMathematicalMaximum()"
+        ]
+      },
+      "cli_suite": {
+        "suite_name": "org.jlinalg.cli.TrackPeakCliTest",
+        "suite": {
+          "tests": 3,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "2ff209799d469898c31a71aa3589f1986219eebeb97d243cb64abdf7c04c65ad",
+        "testcases": [
+          "referenceOverlapAndNumericFailuresKeepRecoveryAndNoSuccessfulResults()",
+          "sparseZeroPrecisionAndEmptyFindingsRemainProminent()",
+          "executableContractProducesKnownBedAndSummitWithoutFabricatedSignificance()"
+        ]
+      },
+      "packaged_validation": "native-track-peaks-packaged-validation.json",
+      "packaged_checks": 11,
+      "packaged_verifier_sha256": "2ed449c623a30b4d62fafdac109464e725c92d9ce614e833bee1d26161975ca6",
+      "source_sha256": {
+        "src/main/java/org/jlinalg/genetics/ThresholdPeaks.java": "ec2b839cc0dfb9df65a053e997206c57e432c2a1f63e718ce57d006b242a8fd5",
+        "src/main/java/org/jlinalg/cli/TrackPeakCli.java": "68ebb73321a25356367a64ee202f2dfc0bbde7c1fc80cd71ddace92e1d79cb52"
+      },
+      "actual_upstream_reference_cases": 129,
+      "reference_fixture_sha256": "1e3dd6a597dc4683971e58a8585c53536b1e14ebe7b86c48ee5359fed3ce8c40",
+      "upstream_notice_sha256": "6b642122b1286229372eaef08c353b76f3bfa687e6c2057339229c1293a96ddc",
+      "scope": "Native supplied-track inclusive cutoff/gap/span, coalesced maximum plateaus and lower-median summit convention; explicit float32/float64, missing universe, 64-bit arithmetic and recovery. Actual MACS3 positive-float32 geometry/summit references. Zero/signed mathematical-maximum convention is intentionally distinct; no alignment-based caller, HMMRATAC, P/Q estimation, old-version or whole-paper equivalence.",
+      "refreshed_utc": "2026-10-25T14:18:39.170849+00:00",
+      "current_full_gate_suites": {
+        "org.jlinalg.genetics.ThresholdPeaksTest": {
+          "suite_name": "org.jlinalg.genetics.ThresholdPeaksTest",
+          "suite": {
+            "tests": 6,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "f8a312f4204624da170f4f177dda873a7873f4459033ad678da3b58636cc7324",
+          "testcases": [
+            "geometryAndSummitsMatch129ActualUpstreamCallsIncludingTiesAndBoundaryRounding()",
+            "float32ChangesBoundaryMembershipBeforeCoalescingButFloat64RetainsInput()",
+            "longCoordinatesAndLargeFiniteScoresDoNotRequireGenomeSizeArraysOrIntegrals()",
+            "ambiguousInvalidAndNonfiniteContractsAreRejected()",
+            "spanGapInclusionAndPlateauCoalescingHaveIndependentKnownAnswers()",
+            "sparseUniverseIsExplicitAndZeroSignedSummitsUseTheMathematicalMaximum()"
+          ]
+        },
+        "org.jlinalg.cli.TrackPeakCliTest": {
+          "suite_name": "org.jlinalg.cli.TrackPeakCliTest",
+          "suite": {
+            "tests": 3,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "2ff209799d469898c31a71aa3589f1986219eebeb97d243cb64abdf7c04c65ad",
+          "testcases": [
+            "referenceOverlapAndNumericFailuresKeepRecoveryAndNoSuccessfulResults()",
+            "sparseZeroPrecisionAndEmptyFindingsRemainProminent()",
+            "executableContractProducesKnownBedAndSummitWithoutFabricatedSignificance()"
+          ]
+        }
+      }
+    },
+    {
+      "status": "passed",
+      "engine": "Native Java",
+      "jar_sha256": "c7e5fc6412ef02a82e409b43f344bff506f873ff5ebea92bc055d498ebda8dae",
+      "api_suite": {
+        "suite_name": "org.jlinalg.genetics.ThresholdPeaksTest",
+        "suite": {
+          "tests": 6,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "a2f6756a24a3083ad22fc5ac6cb189773160dd6c6c79329ea2910909c24f01b7",
+        "testcases": [
+          "geometryAndSummitsMatch129ActualUpstreamCallsIncludingTiesAndBoundaryRounding()",
+          "float32ChangesBoundaryMembershipBeforeCoalescingButFloat64RetainsInput()",
+          "longCoordinatesAndLargeFiniteScoresDoNotRequireGenomeSizeArraysOrIntegrals()",
+          "ambiguousInvalidAndNonfiniteContractsAreRejected()",
+          "spanGapInclusionAndPlateauCoalescingHaveIndependentKnownAnswers()",
+          "sparseUniverseIsExplicitAndZeroSignedSummitsUseTheMathematicalMaximum()"
+        ]
+      },
+      "cli_suite": {
+        "suite_name": "org.jlinalg.cli.TrackPeakCliTest",
+        "suite": {
+          "tests": 3,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "b18b1a2de8f46a558aaafe579d8afd0325c43902add680ba807a83ca988e73cd",
+        "testcases": [
+          "referenceOverlapAndNumericFailuresKeepRecoveryAndNoSuccessfulResults()",
+          "sparseZeroPrecisionAndEmptyFindingsRemainProminent()",
+          "executableContractProducesKnownBedAndSummitWithoutFabricatedSignificance()"
+        ]
+      },
+      "packaged_validation": "native-track-peaks-packaged-validation.json",
+      "packaged_checks": 11,
+      "packaged_verifier_sha256": "2ed449c623a30b4d62fafdac109464e725c92d9ce614e833bee1d26161975ca6",
+      "source_sha256": {
+        "src/main/java/org/jlinalg/genetics/ThresholdPeaks.java": "ec2b839cc0dfb9df65a053e997206c57e432c2a1f63e718ce57d006b242a8fd5",
+        "src/main/java/org/jlinalg/cli/TrackPeakCli.java": "68ebb73321a25356367a64ee202f2dfc0bbde7c1fc80cd71ddace92e1d79cb52"
+      },
+      "actual_upstream_reference_cases": 129,
+      "reference_fixture_sha256": "1e3dd6a597dc4683971e58a8585c53536b1e14ebe7b86c48ee5359fed3ce8c40",
+      "upstream_notice_sha256": "6b642122b1286229372eaef08c353b76f3bfa687e6c2057339229c1293a96ddc",
+      "scope": "Native supplied-track inclusive cutoff/gap/span, coalesced maximum plateaus and lower-median summit convention; explicit float32/float64, missing universe, 64-bit arithmetic and recovery. Actual MACS3 positive-float32 geometry/summit references. Zero/signed mathematical-maximum convention is intentionally distinct; no alignment-based caller, HMMRATAC, P/Q estimation, old-version or whole-paper equivalence.",
+      "refreshed_utc": "2026-10-25T18:28:13.412726+00:00",
+      "current_full_gate_suites": {
+        "org.jlinalg.genetics.ThresholdPeaksTest": {
+          "suite_name": "org.jlinalg.genetics.ThresholdPeaksTest",
+          "suite": {
+            "tests": 6,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "a2f6756a24a3083ad22fc5ac6cb189773160dd6c6c79329ea2910909c24f01b7",
+          "testcases": [
+            "geometryAndSummitsMatch129ActualUpstreamCallsIncludingTiesAndBoundaryRounding()",
+            "float32ChangesBoundaryMembershipBeforeCoalescingButFloat64RetainsInput()",
+            "longCoordinatesAndLargeFiniteScoresDoNotRequireGenomeSizeArraysOrIntegrals()",
+            "ambiguousInvalidAndNonfiniteContractsAreRejected()",
+            "spanGapInclusionAndPlateauCoalescingHaveIndependentKnownAnswers()",
+            "sparseUniverseIsExplicitAndZeroSignedSummitsUseTheMathematicalMaximum()"
+          ]
+        },
+        "org.jlinalg.cli.TrackPeakCliTest": {
+          "suite_name": "org.jlinalg.cli.TrackPeakCliTest",
+          "suite": {
+            "tests": 3,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "b18b1a2de8f46a558aaafe579d8afd0325c43902add680ba807a83ca988e73cd",
+          "testcases": [
+            "referenceOverlapAndNumericFailuresKeepRecoveryAndNoSuccessfulResults()",
+            "sparseZeroPrecisionAndEmptyFindingsRemainProminent()",
+            "executableContractProducesKnownBedAndSummitWithoutFabricatedSignificance()"
+          ]
+        }
+      },
+      "current_validation": {
+        "full_gate": {
+          "tests": 1486,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 5
+        },
+        "required_suites": 59,
+        "all_required_without_skips": true,
+        "raw_snapshot": "D:\\projects\\JLinAlg\\build\\literature-review\\trimgalore-runtime\\original-warning-full-gate-snapshot",
+        "prior_packaged_regressions": "D:\\projects\\JLinAlg\\build\\literature-review\\trim-galore-warning-packaged-regressions\\verification.json",
+        "scope": "Current unchanged owned method sources retested on this JAR. Historical reference-generation counts/options remain scoped to their original fixtures;prior reports remain in validation_history."
+      }
+    },
+    {
+      "status": "passed",
+      "engine": "Native Java",
+      "jar_sha256": "2bfb8abfea10e53ce7b0e1035b0a7954feb9bed990d63578e817882a6d0541c0",
+      "api_suite": {
+        "suite_name": "org.jlinalg.genetics.ThresholdPeaksTest",
+        "suite": {
+          "tests": 6,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "779f2754fd860ded9933969280f0ad3649f1190eb125486a5324a3a75be651bf",
+        "testcases": [
+          "geometryAndSummitsMatch129ActualUpstreamCallsIncludingTiesAndBoundaryRounding()",
+          "float32ChangesBoundaryMembershipBeforeCoalescingButFloat64RetainsInput()",
+          "longCoordinatesAndLargeFiniteScoresDoNotRequireGenomeSizeArraysOrIntegrals()",
+          "ambiguousInvalidAndNonfiniteContractsAreRejected()",
+          "spanGapInclusionAndPlateauCoalescingHaveIndependentKnownAnswers()",
+          "sparseUniverseIsExplicitAndZeroSignedSummitsUseTheMathematicalMaximum()"
+        ]
+      },
+      "cli_suite": {
+        "suite_name": "org.jlinalg.cli.TrackPeakCliTest",
+        "suite": {
+          "tests": 3,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "986a5f283306219d0a8e36dced8c84971336a6b5c09570a1dd868417901595d2",
+        "testcases": [
+          "referenceOverlapAndNumericFailuresKeepRecoveryAndNoSuccessfulResults()",
+          "sparseZeroPrecisionAndEmptyFindingsRemainProminent()",
+          "executableContractProducesKnownBedAndSummitWithoutFabricatedSignificance()"
+        ]
+      },
+      "packaged_validation": "native-track-peaks-packaged-validation.json",
+      "packaged_checks": 11,
+      "packaged_verifier_sha256": "2ed449c623a30b4d62fafdac109464e725c92d9ce614e833bee1d26161975ca6",
+      "source_sha256": {
+        "src/main/java/org/jlinalg/genetics/ThresholdPeaks.java": "ec2b839cc0dfb9df65a053e997206c57e432c2a1f63e718ce57d006b242a8fd5",
+        "src/main/java/org/jlinalg/cli/TrackPeakCli.java": "68ebb73321a25356367a64ee202f2dfc0bbde7c1fc80cd71ddace92e1d79cb52"
+      },
+      "actual_upstream_reference_cases": 129,
+      "reference_fixture_sha256": "1e3dd6a597dc4683971e58a8585c53536b1e14ebe7b86c48ee5359fed3ce8c40",
+      "upstream_notice_sha256": "6b642122b1286229372eaef08c353b76f3bfa687e6c2057339229c1293a96ddc",
+      "scope": "Native supplied-track inclusive cutoff/gap/span, coalesced maximum plateaus and lower-median summit convention; explicit float32/float64, missing universe, 64-bit arithmetic and recovery. Actual MACS3 positive-float32 geometry/summit references. Zero/signed mathematical-maximum convention is intentionally distinct; no alignment-based caller, HMMRATAC, P/Q estimation, old-version or whole-paper equivalence.",
+      "refreshed_utc": "2026-10-25T20:32:57.454823+00:00",
+      "current_full_gate_suites": {
+        "org.jlinalg.genetics.ThresholdPeaksTest": {
+          "suite_name": "org.jlinalg.genetics.ThresholdPeaksTest",
+          "suite": {
+            "tests": 6,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "779f2754fd860ded9933969280f0ad3649f1190eb125486a5324a3a75be651bf",
+          "testcases": [
+            "geometryAndSummitsMatch129ActualUpstreamCallsIncludingTiesAndBoundaryRounding()",
+            "float32ChangesBoundaryMembershipBeforeCoalescingButFloat64RetainsInput()",
+            "longCoordinatesAndLargeFiniteScoresDoNotRequireGenomeSizeArraysOrIntegrals()",
+            "ambiguousInvalidAndNonfiniteContractsAreRejected()",
+            "spanGapInclusionAndPlateauCoalescingHaveIndependentKnownAnswers()",
+            "sparseUniverseIsExplicitAndZeroSignedSummitsUseTheMathematicalMaximum()"
+          ]
+        },
+        "org.jlinalg.cli.TrackPeakCliTest": {
+          "suite_name": "org.jlinalg.cli.TrackPeakCliTest",
+          "suite": {
+            "tests": 3,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "986a5f283306219d0a8e36dced8c84971336a6b5c09570a1dd868417901595d2",
+          "testcases": [
+            "referenceOverlapAndNumericFailuresKeepRecoveryAndNoSuccessfulResults()",
+            "sparseZeroPrecisionAndEmptyFindingsRemainProminent()",
+            "executableContractProducesKnownBedAndSummitWithoutFabricatedSignificance()"
+          ]
+        }
+      },
+      "current_validation": {
+        "full_gate": {
+          "tests": 1504,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 5
+        },
+        "required_suites": 61,
+        "all_required_without_skips": true,
+        "raw_snapshot": "D:\\projects\\JLinAlg\\build\\literature-review\\flash-runtime\\full-gate-2-snapshot",
+        "prior_packaged_regressions": "D:\\projects\\JLinAlg\\build\\literature-review\\flash-packaged-regressions\\verification.json",
+        "scope": "Current unchanged owned method sources retested on this JAR. Historical reference-generation counts/options remain scoped to their original fixtures;prior reports remain in validation_history."
+      }
+    },
+    {
+      "status": "passed",
+      "engine": "Native Java",
+      "jar_sha256": "66be181d854806d9ae64d6f060e8defba8af5bdf594d3d352c9c76097a2a8d2e",
+      "api_suite": {
+        "suite_name": "org.jlinalg.genetics.ThresholdPeaksTest",
+        "suite": {
+          "tests": 6,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "7772d5ffca59290392541b87520f4c72095b3475fa5bf66b388ae69979b1eca7",
+        "testcases": [
+          "geometryAndSummitsMatch129ActualUpstreamCallsIncludingTiesAndBoundaryRounding()",
+          "float32ChangesBoundaryMembershipBeforeCoalescingButFloat64RetainsInput()",
+          "longCoordinatesAndLargeFiniteScoresDoNotRequireGenomeSizeArraysOrIntegrals()",
+          "ambiguousInvalidAndNonfiniteContractsAreRejected()",
+          "spanGapInclusionAndPlateauCoalescingHaveIndependentKnownAnswers()",
+          "sparseUniverseIsExplicitAndZeroSignedSummitsUseTheMathematicalMaximum()"
+        ]
+      },
+      "cli_suite": {
+        "suite_name": "org.jlinalg.cli.TrackPeakCliTest",
+        "suite": {
+          "tests": 3,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "d942f425ed7744af67db4226f01b6077e22ec758af9a4ad96d43a33c64cc8dd0",
+        "testcases": [
+          "referenceOverlapAndNumericFailuresKeepRecoveryAndNoSuccessfulResults()",
+          "sparseZeroPrecisionAndEmptyFindingsRemainProminent()",
+          "executableContractProducesKnownBedAndSummitWithoutFabricatedSignificance()"
+        ]
+      },
+      "packaged_validation": "native-track-peaks-packaged-validation.json",
+      "packaged_checks": 11,
+      "packaged_verifier_sha256": "2ed449c623a30b4d62fafdac109464e725c92d9ce614e833bee1d26161975ca6",
+      "source_sha256": {
+        "src/main/java/org/jlinalg/genetics/ThresholdPeaks.java": "ec2b839cc0dfb9df65a053e997206c57e432c2a1f63e718ce57d006b242a8fd5",
+        "src/main/java/org/jlinalg/cli/TrackPeakCli.java": "68ebb73321a25356367a64ee202f2dfc0bbde7c1fc80cd71ddace92e1d79cb52"
+      },
+      "actual_upstream_reference_cases": 129,
+      "reference_fixture_sha256": "1e3dd6a597dc4683971e58a8585c53536b1e14ebe7b86c48ee5359fed3ce8c40",
+      "upstream_notice_sha256": "6b642122b1286229372eaef08c353b76f3bfa687e6c2057339229c1293a96ddc",
+      "scope": "Native supplied-track inclusive cutoff/gap/span, coalesced maximum plateaus and lower-median summit convention; explicit float32/float64, missing universe, 64-bit arithmetic and recovery. Actual MACS3 positive-float32 geometry/summit references. Zero/signed mathematical-maximum convention is intentionally distinct; no alignment-based caller, HMMRATAC, P/Q estimation, old-version or whole-paper equivalence.",
+      "refreshed_utc": "2026-10-25T23:24:57.944602+00:00",
+      "current_full_gate_suites": {
+        "org.jlinalg.genetics.ThresholdPeaksTest": {
+          "suite_name": "org.jlinalg.genetics.ThresholdPeaksTest",
+          "suite": {
+            "tests": 6,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "7772d5ffca59290392541b87520f4c72095b3475fa5bf66b388ae69979b1eca7",
+          "testcases": [
+            "geometryAndSummitsMatch129ActualUpstreamCallsIncludingTiesAndBoundaryRounding()",
+            "float32ChangesBoundaryMembershipBeforeCoalescingButFloat64RetainsInput()",
+            "longCoordinatesAndLargeFiniteScoresDoNotRequireGenomeSizeArraysOrIntegrals()",
+            "ambiguousInvalidAndNonfiniteContractsAreRejected()",
+            "spanGapInclusionAndPlateauCoalescingHaveIndependentKnownAnswers()",
+            "sparseUniverseIsExplicitAndZeroSignedSummitsUseTheMathematicalMaximum()"
+          ]
+        },
+        "org.jlinalg.cli.TrackPeakCliTest": {
+          "suite_name": "org.jlinalg.cli.TrackPeakCliTest",
+          "suite": {
+            "tests": 3,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "d942f425ed7744af67db4226f01b6077e22ec758af9a4ad96d43a33c64cc8dd0",
+          "testcases": [
+            "referenceOverlapAndNumericFailuresKeepRecoveryAndNoSuccessfulResults()",
+            "sparseZeroPrecisionAndEmptyFindingsRemainProminent()",
+            "executableContractProducesKnownBedAndSummitWithoutFabricatedSignificance()"
+          ]
+        }
+      },
+      "current_validation": {
+        "full_gate": {
+          "tests": 1552,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 5
+        },
+        "required_suites": 68,
+        "all_required_without_skips": true,
+        "raw_snapshot": "D:\\projects\\JLinAlg\\build\\literature-review\\fimo-runtime\\configured-full-gate-1",
+        "prior_packaged_regressions": "D:\\projects\\JLinAlg\\build\\literature-review\\fimo-runtime\\prior-packaged-regressions-1\\verification.json",
+        "scope": "Current unchanged owned method sources retested on this JAR. Historical reference-generation counts/options remain scoped to their original fixtures;prior reports remain in validation_history."
+      }
+    }
+  ]
+}

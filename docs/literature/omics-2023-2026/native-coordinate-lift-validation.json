@@ -1,0 +1,1456 @@
+{
+  "status": "passed",
+  "jar_sha256": "a104651636deb59493cddc92ce433629d4ef7b0c755f6ee065a3e0c75365c5e2",
+  "engine": "Java HTSJDK basic LiftOver, declared dependency5.0.0",
+  "api_suite": {
+    "suite_name": "org.jlinalg.genetics.ChainLiftoverTest",
+    "suite": {
+      "tests": 7,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "junit_sha256": "ecb38d65a69ff1ef3af6c1d91514fec6d7a821cb8e1b6105722cd416270b0784",
+    "testcases": [
+      "gzipBytesHaveIdenticalMappingAndReferenceDirectionIsStrict()",
+      "reverseChainUsesHalfOpenEndpointsAndXorsKnownStrands()",
+      "malformedChainGeometryAndDuplicateIdsFailWithoutChangingSource()",
+      "integerBoundaryAndInvalidQueriesDoNotOverflowOrGuessAliases()",
+      "multipleHitsAndEntirelyUnalignedGapsNeverProduceAPreferredHit()",
+      "realUcscChainsAgreeWithIndependentPrimaryDbSnpCoordinatesBothDirections()",
+      "handCalculatedForwardBlocksAndGapFractionsUseExactThresholds()"
+    ]
+  },
+  "cli_suite": {
+    "suite_name": "org.jlinalg.cli.CoordinateLiftCliTest",
+    "suite": {
+      "tests": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "junit_sha256": "894365bec3aaf2629c3f1af7658f872aedec6fc4fb2a604e5b10f11394f5cd66",
+    "testcases": [
+      "errorPolicyRetainsPartialTablesAndNoSuccessfulResults()",
+      "reciprocalOverlapThresholdAppliesToBothSpansAndDoesNotClaimPeakIdentity()",
+      "exactReciprocalAndExplicitTargetLengthCapHaveDifferentOutcomes()",
+      "everyInputIsRetainedAndAcceptedBedUsesExactCoordinatesAndStrands()",
+      "wrongReferencesAndInvalidRowsFailWithProminentRecovery()"
+    ]
+  },
+  "source_sha256": {
+    "src/main/java/org/jlinalg/genetics/ChainLiftover.java": "4d80c98277cdb0b58b81a0662e47e0aef83145cbcd04efa5725ffa8f1fc2d714",
+    "src/main/java/org/jlinalg/cli/CoordinateLiftCli.java": "c9cdab99dd1f64b36b62f6ae9feda6a9db4b2c92710dd803911b07cac9f51ac0"
+  },
+  "packaged_validation": "native-coordinate-lift-packaged-validation.json",
+  "packaged_checks": 10,
+  "independent_primary_coordinate_checks": 8,
+  "packaged_verifier_sha256": "945afbb6aa7ac89e859c7a0e043de232818e55f301574dc5cd01fa6d56a04b12",
+  "fixture_sha256": "0eb3937ce14c4f73b1ddaf241f246681e1b7316a2e403375f3beb4a29c64fbe5",
+  "scope": "Single qualifying chain, exact full directional dictionaries and geometry/32-bit bounds; every row/status retained. Explicit aligned-source minMatch/unmapped policy, target-span cap and exact/overlap reciprocal checks. Hand-calculated and independent primary dbSNP point coordinates both directions through real UCSC chains. Existing SNP-instrument engine reused. No split/BED12, allele/REF/indel/metadata harmonization, original-peak-identity or whole-tool/paper/old-version parity.",
+  "refreshed_utc": "2026-10-26T02:01:51.919373+00:00",
+  "current_full_gate_suites": {
+    "org.jlinalg.genetics.ChainLiftoverTest": {
+      "suite_name": "org.jlinalg.genetics.ChainLiftoverTest",
+      "suite": {
+        "tests": 7,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "junit_sha256": "ecb38d65a69ff1ef3af6c1d91514fec6d7a821cb8e1b6105722cd416270b0784",
+      "testcases": [
+        "gzipBytesHaveIdenticalMappingAndReferenceDirectionIsStrict()",
+        "reverseChainUsesHalfOpenEndpointsAndXorsKnownStrands()",
+        "malformedChainGeometryAndDuplicateIdsFailWithoutChangingSource()",
+        "integerBoundaryAndInvalidQueriesDoNotOverflowOrGuessAliases()",
+        "multipleHitsAndEntirelyUnalignedGapsNeverProduceAPreferredHit()",
+        "realUcscChainsAgreeWithIndependentPrimaryDbSnpCoordinatesBothDirections()",
+        "handCalculatedForwardBlocksAndGapFractionsUseExactThresholds()"
+      ]
+    },
+    "org.jlinalg.cli.CoordinateLiftCliTest": {
+      "suite_name": "org.jlinalg.cli.CoordinateLiftCliTest",
+      "suite": {
+        "tests": 5,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "junit_sha256": "894365bec3aaf2629c3f1af7658f872aedec6fc4fb2a604e5b10f11394f5cd66",
+      "testcases": [
+        "errorPolicyRetainsPartialTablesAndNoSuccessfulResults()",
+        "reciprocalOverlapThresholdAppliesToBothSpansAndDoesNotClaimPeakIdentity()",
+        "exactReciprocalAndExplicitTargetLengthCapHaveDifferentOutcomes()",
+        "everyInputIsRetainedAndAcceptedBedUsesExactCoordinatesAndStrands()",
+        "wrongReferencesAndInvalidRowsFailWithProminentRecovery()"
+      ]
+    }
+  },
+  "current_validation": {
+    "full_gate": {
+      "tests": 1593,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 5
+    },
+    "required_suites": 72,
+    "all_required_without_skips": true,
+    "raw_snapshot": "D:\\projects\\JLinAlg\\build\\literature-review\\plink-runtime\\configured-native-full-gate-1",
+    "prior_packaged_regressions": "D:\\projects\\JLinAlg\\build\\literature-review\\plink-runtime\\prior-packaged-regressions-1\\verification.json",
+    "original_trim_rechecks": "D:\\projects\\JLinAlg\\build\\literature-review\\plink-runtime\\original-trim-rechecks-1\\verification.json",
+    "scope": "This exact candidate was executed. All prior owned compiled method sources are unchanged and retested. Historical reference-generation/version scopes remain in their original fields and validation_history;no full-paper parity is inferred."
+  },
+  "validation_history": [
+    {
+      "status": "passed",
+      "jar_sha256": "7fc22cd33b22500b0e0360ee93c6e416ce27444f32691fed470e280e95f7f70d",
+      "engine": "Java HTSJDK basic LiftOver, declared dependency5.0.0",
+      "api_suite": {
+        "suite_name": "org.jlinalg.genetics.ChainLiftoverTest",
+        "suite": {
+          "tests": 7,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "28851b9718a91c4c2783e8c8534f57414faa3edbc23f76ea56a2e0c25b539540",
+        "testcases": [
+          "gzipBytesHaveIdenticalMappingAndReferenceDirectionIsStrict()",
+          "reverseChainUsesHalfOpenEndpointsAndXorsKnownStrands()",
+          "malformedChainGeometryAndDuplicateIdsFailWithoutChangingSource()",
+          "integerBoundaryAndInvalidQueriesDoNotOverflowOrGuessAliases()",
+          "multipleHitsAndEntirelyUnalignedGapsNeverProduceAPreferredHit()",
+          "realUcscChainsAgreeWithIndependentPrimaryDbSnpCoordinatesBothDirections()",
+          "handCalculatedForwardBlocksAndGapFractionsUseExactThresholds()"
+        ]
+      },
+      "cli_suite": {
+        "suite_name": "org.jlinalg.cli.CoordinateLiftCliTest",
+        "suite": {
+          "tests": 5,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "8ba69727c8423065aa802c2c699c8720170747f69dff5fb95a826902deae45fc",
+        "testcases": [
+          "errorPolicyRetainsPartialTablesAndNoSuccessfulResults()",
+          "reciprocalOverlapThresholdAppliesToBothSpansAndDoesNotClaimPeakIdentity()",
+          "exactReciprocalAndExplicitTargetLengthCapHaveDifferentOutcomes()",
+          "everyInputIsRetainedAndAcceptedBedUsesExactCoordinatesAndStrands()",
+          "wrongReferencesAndInvalidRowsFailWithProminentRecovery()"
+        ]
+      },
+      "source_sha256": {
+        "src/main/java/org/jlinalg/genetics/ChainLiftover.java": "4d80c98277cdb0b58b81a0662e47e0aef83145cbcd04efa5725ffa8f1fc2d714",
+        "src/main/java/org/jlinalg/cli/CoordinateLiftCli.java": "c9cdab99dd1f64b36b62f6ae9feda6a9db4b2c92710dd803911b07cac9f51ac0"
+      },
+      "packaged_validation": "native-coordinate-lift-packaged-validation.json",
+      "packaged_checks": 10,
+      "independent_primary_coordinate_checks": 8,
+      "packaged_verifier_sha256": "945afbb6aa7ac89e859c7a0e043de232818e55f301574dc5cd01fa6d56a04b12",
+      "fixture_sha256": "0eb3937ce14c4f73b1ddaf241f246681e1b7316a2e403375f3beb4a29c64fbe5",
+      "scope": "Single qualifying chain, exact full directional dictionaries and geometry/32-bit bounds; every row/status retained. Explicit aligned-source minMatch/unmapped policy, target-span cap and exact/overlap reciprocal checks. Hand-calculated and independent primary dbSNP point coordinates both directions through real UCSC chains. Existing SNP-instrument engine reused. No split/BED12, allele/REF/indel/metadata harmonization, original-peak-identity or whole-tool/paper/old-version parity."
+    },
+    {
+      "status": "passed",
+      "jar_sha256": "19c4ed620c230c4c520c10bcbf3d88cbd1484d640103d2109e25f4db0ee621be",
+      "engine": "Java HTSJDK basic LiftOver, declared dependency5.0.0",
+      "api_suite": {
+        "suite_name": "org.jlinalg.genetics.ChainLiftoverTest",
+        "suite": {
+          "tests": 7,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "67c872c70a316b28fff53ef651254568645c3f5ce553e17dd9861e43096ecbb4",
+        "testcases": [
+          "gzipBytesHaveIdenticalMappingAndReferenceDirectionIsStrict()",
+          "reverseChainUsesHalfOpenEndpointsAndXorsKnownStrands()",
+          "malformedChainGeometryAndDuplicateIdsFailWithoutChangingSource()",
+          "integerBoundaryAndInvalidQueriesDoNotOverflowOrGuessAliases()",
+          "multipleHitsAndEntirelyUnalignedGapsNeverProduceAPreferredHit()",
+          "realUcscChainsAgreeWithIndependentPrimaryDbSnpCoordinatesBothDirections()",
+          "handCalculatedForwardBlocksAndGapFractionsUseExactThresholds()"
+        ]
+      },
+      "cli_suite": {
+        "suite_name": "org.jlinalg.cli.CoordinateLiftCliTest",
+        "suite": {
+          "tests": 5,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "7d51d49562c7185371e27e95cd511a8cba2d899c29ab823acace3e14f282b65e",
+        "testcases": [
+          "errorPolicyRetainsPartialTablesAndNoSuccessfulResults()",
+          "reciprocalOverlapThresholdAppliesToBothSpansAndDoesNotClaimPeakIdentity()",
+          "exactReciprocalAndExplicitTargetLengthCapHaveDifferentOutcomes()",
+          "everyInputIsRetainedAndAcceptedBedUsesExactCoordinatesAndStrands()",
+          "wrongReferencesAndInvalidRowsFailWithProminentRecovery()"
+        ]
+      },
+      "source_sha256": {
+        "src/main/java/org/jlinalg/genetics/ChainLiftover.java": "4d80c98277cdb0b58b81a0662e47e0aef83145cbcd04efa5725ffa8f1fc2d714",
+        "src/main/java/org/jlinalg/cli/CoordinateLiftCli.java": "c9cdab99dd1f64b36b62f6ae9feda6a9db4b2c92710dd803911b07cac9f51ac0"
+      },
+      "packaged_validation": "native-coordinate-lift-packaged-validation.json",
+      "packaged_checks": 10,
+      "independent_primary_coordinate_checks": 8,
+      "packaged_verifier_sha256": "945afbb6aa7ac89e859c7a0e043de232818e55f301574dc5cd01fa6d56a04b12",
+      "fixture_sha256": "0eb3937ce14c4f73b1ddaf241f246681e1b7316a2e403375f3beb4a29c64fbe5",
+      "scope": "Single qualifying chain, exact full directional dictionaries and geometry/32-bit bounds; every row/status retained. Explicit aligned-source minMatch/unmapped policy, target-span cap and exact/overlap reciprocal checks. Hand-calculated and independent primary dbSNP point coordinates both directions through real UCSC chains. Existing SNP-instrument engine reused. No split/BED12, allele/REF/indel/metadata harmonization, original-peak-identity or whole-tool/paper/old-version parity.",
+      "refreshed_utc": "2026-10-25T00:57:19.120198+00:00",
+      "current_full_gate_suites": {
+        "org.jlinalg.genetics.ChainLiftoverTest": {
+          "suite_name": "org.jlinalg.genetics.ChainLiftoverTest",
+          "suite": {
+            "tests": 7,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "67c872c70a316b28fff53ef651254568645c3f5ce553e17dd9861e43096ecbb4",
+          "testcases": [
+            "gzipBytesHaveIdenticalMappingAndReferenceDirectionIsStrict()",
+            "reverseChainUsesHalfOpenEndpointsAndXorsKnownStrands()",
+            "malformedChainGeometryAndDuplicateIdsFailWithoutChangingSource()",
+            "integerBoundaryAndInvalidQueriesDoNotOverflowOrGuessAliases()",
+            "multipleHitsAndEntirelyUnalignedGapsNeverProduceAPreferredHit()",
+            "realUcscChainsAgreeWithIndependentPrimaryDbSnpCoordinatesBothDirections()",
+            "handCalculatedForwardBlocksAndGapFractionsUseExactThresholds()"
+          ]
+        },
+        "org.jlinalg.cli.CoordinateLiftCliTest": {
+          "suite_name": "org.jlinalg.cli.CoordinateLiftCliTest",
+          "suite": {
+            "tests": 5,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "7d51d49562c7185371e27e95cd511a8cba2d899c29ab823acace3e14f282b65e",
+          "testcases": [
+            "errorPolicyRetainsPartialTablesAndNoSuccessfulResults()",
+            "reciprocalOverlapThresholdAppliesToBothSpansAndDoesNotClaimPeakIdentity()",
+            "exactReciprocalAndExplicitTargetLengthCapHaveDifferentOutcomes()",
+            "everyInputIsRetainedAndAcceptedBedUsesExactCoordinatesAndStrands()",
+            "wrongReferencesAndInvalidRowsFailWithProminentRecovery()"
+          ]
+        }
+      }
+    },
+    {
+      "status": "passed",
+      "jar_sha256": "095e5fecbb0beaabc2e67134d980d2e1841210c0b92c708b3a21ab0dfb866c61",
+      "engine": "Java HTSJDK basic LiftOver, declared dependency5.0.0",
+      "api_suite": {
+        "suite_name": "org.jlinalg.genetics.ChainLiftoverTest",
+        "suite": {
+          "tests": 7,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "2b214284f69b6c4412f92c668bbd4e5ec9f9d11e1db9590ed277ae66b190892e",
+        "testcases": [
+          "gzipBytesHaveIdenticalMappingAndReferenceDirectionIsStrict()",
+          "reverseChainUsesHalfOpenEndpointsAndXorsKnownStrands()",
+          "malformedChainGeometryAndDuplicateIdsFailWithoutChangingSource()",
+          "integerBoundaryAndInvalidQueriesDoNotOverflowOrGuessAliases()",
+          "multipleHitsAndEntirelyUnalignedGapsNeverProduceAPreferredHit()",
+          "realUcscChainsAgreeWithIndependentPrimaryDbSnpCoordinatesBothDirections()",
+          "handCalculatedForwardBlocksAndGapFractionsUseExactThresholds()"
+        ]
+      },
+      "cli_suite": {
+        "suite_name": "org.jlinalg.cli.CoordinateLiftCliTest",
+        "suite": {
+          "tests": 5,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "3671d852a1644d9cc81c95c210cb563ba2137b264bd2750d9ba9890d6327b9b9",
+        "testcases": [
+          "errorPolicyRetainsPartialTablesAndNoSuccessfulResults()",
+          "reciprocalOverlapThresholdAppliesToBothSpansAndDoesNotClaimPeakIdentity()",
+          "exactReciprocalAndExplicitTargetLengthCapHaveDifferentOutcomes()",
+          "everyInputIsRetainedAndAcceptedBedUsesExactCoordinatesAndStrands()",
+          "wrongReferencesAndInvalidRowsFailWithProminentRecovery()"
+        ]
+      },
+      "source_sha256": {
+        "src/main/java/org/jlinalg/genetics/ChainLiftover.java": "4d80c98277cdb0b58b81a0662e47e0aef83145cbcd04efa5725ffa8f1fc2d714",
+        "src/main/java/org/jlinalg/cli/CoordinateLiftCli.java": "c9cdab99dd1f64b36b62f6ae9feda6a9db4b2c92710dd803911b07cac9f51ac0"
+      },
+      "packaged_validation": "native-coordinate-lift-packaged-validation.json",
+      "packaged_checks": 10,
+      "independent_primary_coordinate_checks": 8,
+      "packaged_verifier_sha256": "945afbb6aa7ac89e859c7a0e043de232818e55f301574dc5cd01fa6d56a04b12",
+      "fixture_sha256": "0eb3937ce14c4f73b1ddaf241f246681e1b7316a2e403375f3beb4a29c64fbe5",
+      "scope": "Single qualifying chain, exact full directional dictionaries and geometry/32-bit bounds; every row/status retained. Explicit aligned-source minMatch/unmapped policy, target-span cap and exact/overlap reciprocal checks. Hand-calculated and independent primary dbSNP point coordinates both directions through real UCSC chains. Existing SNP-instrument engine reused. No split/BED12, allele/REF/indel/metadata harmonization, original-peak-identity or whole-tool/paper/old-version parity.",
+      "refreshed_utc": "2026-10-25T02:15:39.832466+00:00",
+      "current_full_gate_suites": {
+        "org.jlinalg.genetics.ChainLiftoverTest": {
+          "suite_name": "org.jlinalg.genetics.ChainLiftoverTest",
+          "suite": {
+            "tests": 7,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "2b214284f69b6c4412f92c668bbd4e5ec9f9d11e1db9590ed277ae66b190892e",
+          "testcases": [
+            "gzipBytesHaveIdenticalMappingAndReferenceDirectionIsStrict()",
+            "reverseChainUsesHalfOpenEndpointsAndXorsKnownStrands()",
+            "malformedChainGeometryAndDuplicateIdsFailWithoutChangingSource()",
+            "integerBoundaryAndInvalidQueriesDoNotOverflowOrGuessAliases()",
+            "multipleHitsAndEntirelyUnalignedGapsNeverProduceAPreferredHit()",
+            "realUcscChainsAgreeWithIndependentPrimaryDbSnpCoordinatesBothDirections()",
+            "handCalculatedForwardBlocksAndGapFractionsUseExactThresholds()"
+          ]
+        },
+        "org.jlinalg.cli.CoordinateLiftCliTest": {
+          "suite_name": "org.jlinalg.cli.CoordinateLiftCliTest",
+          "suite": {
+            "tests": 5,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "3671d852a1644d9cc81c95c210cb563ba2137b264bd2750d9ba9890d6327b9b9",
+          "testcases": [
+            "errorPolicyRetainsPartialTablesAndNoSuccessfulResults()",
+            "reciprocalOverlapThresholdAppliesToBothSpansAndDoesNotClaimPeakIdentity()",
+            "exactReciprocalAndExplicitTargetLengthCapHaveDifferentOutcomes()",
+            "everyInputIsRetainedAndAcceptedBedUsesExactCoordinatesAndStrands()",
+            "wrongReferencesAndInvalidRowsFailWithProminentRecovery()"
+          ]
+        }
+      }
+    },
+    {
+      "status": "passed",
+      "jar_sha256": "fc6c5769770609b38ffd8e5f22e701efcf0aeb13261c594a070ee5b6b777232b",
+      "engine": "Java HTSJDK basic LiftOver, declared dependency5.0.0",
+      "api_suite": {
+        "suite_name": "org.jlinalg.genetics.ChainLiftoverTest",
+        "suite": {
+          "tests": 7,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "44e8def954a4b6e0671556ccebf7143065c2863f684753622d6d838776e7ede1",
+        "testcases": [
+          "gzipBytesHaveIdenticalMappingAndReferenceDirectionIsStrict()",
+          "reverseChainUsesHalfOpenEndpointsAndXorsKnownStrands()",
+          "malformedChainGeometryAndDuplicateIdsFailWithoutChangingSource()",
+          "integerBoundaryAndInvalidQueriesDoNotOverflowOrGuessAliases()",
+          "multipleHitsAndEntirelyUnalignedGapsNeverProduceAPreferredHit()",
+          "realUcscChainsAgreeWithIndependentPrimaryDbSnpCoordinatesBothDirections()",
+          "handCalculatedForwardBlocksAndGapFractionsUseExactThresholds()"
+        ]
+      },
+      "cli_suite": {
+        "suite_name": "org.jlinalg.cli.CoordinateLiftCliTest",
+        "suite": {
+          "tests": 5,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "ef9a05c8163d6ea036159b41f8e189b89760e9c5443e04a251654a3fa951d260",
+        "testcases": [
+          "errorPolicyRetainsPartialTablesAndNoSuccessfulResults()",
+          "reciprocalOverlapThresholdAppliesToBothSpansAndDoesNotClaimPeakIdentity()",
+          "exactReciprocalAndExplicitTargetLengthCapHaveDifferentOutcomes()",
+          "everyInputIsRetainedAndAcceptedBedUsesExactCoordinatesAndStrands()",
+          "wrongReferencesAndInvalidRowsFailWithProminentRecovery()"
+        ]
+      },
+      "source_sha256": {
+        "src/main/java/org/jlinalg/genetics/ChainLiftover.java": "4d80c98277cdb0b58b81a0662e47e0aef83145cbcd04efa5725ffa8f1fc2d714",
+        "src/main/java/org/jlinalg/cli/CoordinateLiftCli.java": "c9cdab99dd1f64b36b62f6ae9feda6a9db4b2c92710dd803911b07cac9f51ac0"
+      },
+      "packaged_validation": "native-coordinate-lift-packaged-validation.json",
+      "packaged_checks": 10,
+      "independent_primary_coordinate_checks": 8,
+      "packaged_verifier_sha256": "945afbb6aa7ac89e859c7a0e043de232818e55f301574dc5cd01fa6d56a04b12",
+      "fixture_sha256": "0eb3937ce14c4f73b1ddaf241f246681e1b7316a2e403375f3beb4a29c64fbe5",
+      "scope": "Single qualifying chain, exact full directional dictionaries and geometry/32-bit bounds; every row/status retained. Explicit aligned-source minMatch/unmapped policy, target-span cap and exact/overlap reciprocal checks. Hand-calculated and independent primary dbSNP point coordinates both directions through real UCSC chains. Existing SNP-instrument engine reused. No split/BED12, allele/REF/indel/metadata harmonization, original-peak-identity or whole-tool/paper/old-version parity.",
+      "refreshed_utc": "2026-10-25T02:57:16.310858+00:00",
+      "current_full_gate_suites": {
+        "org.jlinalg.genetics.ChainLiftoverTest": {
+          "suite_name": "org.jlinalg.genetics.ChainLiftoverTest",
+          "suite": {
+            "tests": 7,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "44e8def954a4b6e0671556ccebf7143065c2863f684753622d6d838776e7ede1",
+          "testcases": [
+            "gzipBytesHaveIdenticalMappingAndReferenceDirectionIsStrict()",
+            "reverseChainUsesHalfOpenEndpointsAndXorsKnownStrands()",
+            "malformedChainGeometryAndDuplicateIdsFailWithoutChangingSource()",
+            "integerBoundaryAndInvalidQueriesDoNotOverflowOrGuessAliases()",
+            "multipleHitsAndEntirelyUnalignedGapsNeverProduceAPreferredHit()",
+            "realUcscChainsAgreeWithIndependentPrimaryDbSnpCoordinatesBothDirections()",
+            "handCalculatedForwardBlocksAndGapFractionsUseExactThresholds()"
+          ]
+        },
+        "org.jlinalg.cli.CoordinateLiftCliTest": {
+          "suite_name": "org.jlinalg.cli.CoordinateLiftCliTest",
+          "suite": {
+            "tests": 5,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "ef9a05c8163d6ea036159b41f8e189b89760e9c5443e04a251654a3fa951d260",
+          "testcases": [
+            "errorPolicyRetainsPartialTablesAndNoSuccessfulResults()",
+            "reciprocalOverlapThresholdAppliesToBothSpansAndDoesNotClaimPeakIdentity()",
+            "exactReciprocalAndExplicitTargetLengthCapHaveDifferentOutcomes()",
+            "everyInputIsRetainedAndAcceptedBedUsesExactCoordinatesAndStrands()",
+            "wrongReferencesAndInvalidRowsFailWithProminentRecovery()"
+          ]
+        }
+      }
+    },
+    {
+      "status": "passed",
+      "jar_sha256": "faa28146756d077aa691977585fd3349c390f49ff609179a94e355cb13cca667",
+      "engine": "Java HTSJDK basic LiftOver, declared dependency5.0.0",
+      "api_suite": {
+        "suite_name": "org.jlinalg.genetics.ChainLiftoverTest",
+        "suite": {
+          "tests": 7,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "f0451579beb1ccae34a7425a4bdb0de7dc371f67b1ef934f64403535aa0bda05",
+        "testcases": [
+          "gzipBytesHaveIdenticalMappingAndReferenceDirectionIsStrict()",
+          "reverseChainUsesHalfOpenEndpointsAndXorsKnownStrands()",
+          "malformedChainGeometryAndDuplicateIdsFailWithoutChangingSource()",
+          "integerBoundaryAndInvalidQueriesDoNotOverflowOrGuessAliases()",
+          "multipleHitsAndEntirelyUnalignedGapsNeverProduceAPreferredHit()",
+          "realUcscChainsAgreeWithIndependentPrimaryDbSnpCoordinatesBothDirections()",
+          "handCalculatedForwardBlocksAndGapFractionsUseExactThresholds()"
+        ]
+      },
+      "cli_suite": {
+        "suite_name": "org.jlinalg.cli.CoordinateLiftCliTest",
+        "suite": {
+          "tests": 5,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "04d4a8c18059547e55795a058fe25f541321c73bcc9e37f5aca51b8eec27fdf2",
+        "testcases": [
+          "errorPolicyRetainsPartialTablesAndNoSuccessfulResults()",
+          "reciprocalOverlapThresholdAppliesToBothSpansAndDoesNotClaimPeakIdentity()",
+          "exactReciprocalAndExplicitTargetLengthCapHaveDifferentOutcomes()",
+          "everyInputIsRetainedAndAcceptedBedUsesExactCoordinatesAndStrands()",
+          "wrongReferencesAndInvalidRowsFailWithProminentRecovery()"
+        ]
+      },
+      "source_sha256": {
+        "src/main/java/org/jlinalg/genetics/ChainLiftover.java": "4d80c98277cdb0b58b81a0662e47e0aef83145cbcd04efa5725ffa8f1fc2d714",
+        "src/main/java/org/jlinalg/cli/CoordinateLiftCli.java": "c9cdab99dd1f64b36b62f6ae9feda6a9db4b2c92710dd803911b07cac9f51ac0"
+      },
+      "packaged_validation": "native-coordinate-lift-packaged-validation.json",
+      "packaged_checks": 10,
+      "independent_primary_coordinate_checks": 8,
+      "packaged_verifier_sha256": "945afbb6aa7ac89e859c7a0e043de232818e55f301574dc5cd01fa6d56a04b12",
+      "fixture_sha256": "0eb3937ce14c4f73b1ddaf241f246681e1b7316a2e403375f3beb4a29c64fbe5",
+      "scope": "Single qualifying chain, exact full directional dictionaries and geometry/32-bit bounds; every row/status retained. Explicit aligned-source minMatch/unmapped policy, target-span cap and exact/overlap reciprocal checks. Hand-calculated and independent primary dbSNP point coordinates both directions through real UCSC chains. Existing SNP-instrument engine reused. No split/BED12, allele/REF/indel/metadata harmonization, original-peak-identity or whole-tool/paper/old-version parity.",
+      "refreshed_utc": "2026-10-25T03:50:24.675422+00:00",
+      "current_full_gate_suites": {
+        "org.jlinalg.genetics.ChainLiftoverTest": {
+          "suite_name": "org.jlinalg.genetics.ChainLiftoverTest",
+          "suite": {
+            "tests": 7,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "f0451579beb1ccae34a7425a4bdb0de7dc371f67b1ef934f64403535aa0bda05",
+          "testcases": [
+            "gzipBytesHaveIdenticalMappingAndReferenceDirectionIsStrict()",
+            "reverseChainUsesHalfOpenEndpointsAndXorsKnownStrands()",
+            "malformedChainGeometryAndDuplicateIdsFailWithoutChangingSource()",
+            "integerBoundaryAndInvalidQueriesDoNotOverflowOrGuessAliases()",
+            "multipleHitsAndEntirelyUnalignedGapsNeverProduceAPreferredHit()",
+            "realUcscChainsAgreeWithIndependentPrimaryDbSnpCoordinatesBothDirections()",
+            "handCalculatedForwardBlocksAndGapFractionsUseExactThresholds()"
+          ]
+        },
+        "org.jlinalg.cli.CoordinateLiftCliTest": {
+          "suite_name": "org.jlinalg.cli.CoordinateLiftCliTest",
+          "suite": {
+            "tests": 5,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "04d4a8c18059547e55795a058fe25f541321c73bcc9e37f5aca51b8eec27fdf2",
+          "testcases": [
+            "errorPolicyRetainsPartialTablesAndNoSuccessfulResults()",
+            "reciprocalOverlapThresholdAppliesToBothSpansAndDoesNotClaimPeakIdentity()",
+            "exactReciprocalAndExplicitTargetLengthCapHaveDifferentOutcomes()",
+            "everyInputIsRetainedAndAcceptedBedUsesExactCoordinatesAndStrands()",
+            "wrongReferencesAndInvalidRowsFailWithProminentRecovery()"
+          ]
+        }
+      }
+    },
+    {
+      "status": "passed",
+      "jar_sha256": "68a623dc455abf0608f50ca5977a44cd3c6d0db6489f8db726569675c46abdc2",
+      "engine": "Java HTSJDK basic LiftOver, declared dependency5.0.0",
+      "api_suite": {
+        "suite_name": "org.jlinalg.genetics.ChainLiftoverTest",
+        "suite": {
+          "tests": 7,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "7e73b53b227c65eeb9b9e29591d743626d261b4042896ae9eb9b6c4225c1fef8",
+        "testcases": [
+          "gzipBytesHaveIdenticalMappingAndReferenceDirectionIsStrict()",
+          "reverseChainUsesHalfOpenEndpointsAndXorsKnownStrands()",
+          "malformedChainGeometryAndDuplicateIdsFailWithoutChangingSource()",
+          "integerBoundaryAndInvalidQueriesDoNotOverflowOrGuessAliases()",
+          "multipleHitsAndEntirelyUnalignedGapsNeverProduceAPreferredHit()",
+          "realUcscChainsAgreeWithIndependentPrimaryDbSnpCoordinatesBothDirections()",
+          "handCalculatedForwardBlocksAndGapFractionsUseExactThresholds()"
+        ]
+      },
+      "cli_suite": {
+        "suite_name": "org.jlinalg.cli.CoordinateLiftCliTest",
+        "suite": {
+          "tests": 5,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "70335f5f5f9de2bd5a2900c6dd9bbe07a7d07a7b0a8f222f985aa1bcd437a423",
+        "testcases": [
+          "errorPolicyRetainsPartialTablesAndNoSuccessfulResults()",
+          "reciprocalOverlapThresholdAppliesToBothSpansAndDoesNotClaimPeakIdentity()",
+          "exactReciprocalAndExplicitTargetLengthCapHaveDifferentOutcomes()",
+          "everyInputIsRetainedAndAcceptedBedUsesExactCoordinatesAndStrands()",
+          "wrongReferencesAndInvalidRowsFailWithProminentRecovery()"
+        ]
+      },
+      "source_sha256": {
+        "src/main/java/org/jlinalg/genetics/ChainLiftover.java": "4d80c98277cdb0b58b81a0662e47e0aef83145cbcd04efa5725ffa8f1fc2d714",
+        "src/main/java/org/jlinalg/cli/CoordinateLiftCli.java": "c9cdab99dd1f64b36b62f6ae9feda6a9db4b2c92710dd803911b07cac9f51ac0"
+      },
+      "packaged_validation": "native-coordinate-lift-packaged-validation.json",
+      "packaged_checks": 10,
+      "independent_primary_coordinate_checks": 8,
+      "packaged_verifier_sha256": "945afbb6aa7ac89e859c7a0e043de232818e55f301574dc5cd01fa6d56a04b12",
+      "fixture_sha256": "0eb3937ce14c4f73b1ddaf241f246681e1b7316a2e403375f3beb4a29c64fbe5",
+      "scope": "Single qualifying chain, exact full directional dictionaries and geometry/32-bit bounds; every row/status retained. Explicit aligned-source minMatch/unmapped policy, target-span cap and exact/overlap reciprocal checks. Hand-calculated and independent primary dbSNP point coordinates both directions through real UCSC chains. Existing SNP-instrument engine reused. No split/BED12, allele/REF/indel/metadata harmonization, original-peak-identity or whole-tool/paper/old-version parity.",
+      "refreshed_utc": "2026-10-25T05:28:16.019770+00:00",
+      "current_full_gate_suites": {
+        "org.jlinalg.genetics.ChainLiftoverTest": {
+          "suite_name": "org.jlinalg.genetics.ChainLiftoverTest",
+          "suite": {
+            "tests": 7,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "7e73b53b227c65eeb9b9e29591d743626d261b4042896ae9eb9b6c4225c1fef8",
+          "testcases": [
+            "gzipBytesHaveIdenticalMappingAndReferenceDirectionIsStrict()",
+            "reverseChainUsesHalfOpenEndpointsAndXorsKnownStrands()",
+            "malformedChainGeometryAndDuplicateIdsFailWithoutChangingSource()",
+            "integerBoundaryAndInvalidQueriesDoNotOverflowOrGuessAliases()",
+            "multipleHitsAndEntirelyUnalignedGapsNeverProduceAPreferredHit()",
+            "realUcscChainsAgreeWithIndependentPrimaryDbSnpCoordinatesBothDirections()",
+            "handCalculatedForwardBlocksAndGapFractionsUseExactThresholds()"
+          ]
+        },
+        "org.jlinalg.cli.CoordinateLiftCliTest": {
+          "suite_name": "org.jlinalg.cli.CoordinateLiftCliTest",
+          "suite": {
+            "tests": 5,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "70335f5f5f9de2bd5a2900c6dd9bbe07a7d07a7b0a8f222f985aa1bcd437a423",
+          "testcases": [
+            "errorPolicyRetainsPartialTablesAndNoSuccessfulResults()",
+            "reciprocalOverlapThresholdAppliesToBothSpansAndDoesNotClaimPeakIdentity()",
+            "exactReciprocalAndExplicitTargetLengthCapHaveDifferentOutcomes()",
+            "everyInputIsRetainedAndAcceptedBedUsesExactCoordinatesAndStrands()",
+            "wrongReferencesAndInvalidRowsFailWithProminentRecovery()"
+          ]
+        }
+      }
+    },
+    {
+      "status": "passed",
+      "jar_sha256": "6ff7cc767bc62f2489947a34fbf3bc99129e4d444242eb217294764587c7e491",
+      "engine": "Java HTSJDK basic LiftOver, declared dependency5.0.0",
+      "api_suite": {
+        "suite_name": "org.jlinalg.genetics.ChainLiftoverTest",
+        "suite": {
+          "tests": 7,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "0d1b3ed73247fe7295a290a2973c5c9bdc03656b2409a3851b3e1a473afcc9f0",
+        "testcases": [
+          "gzipBytesHaveIdenticalMappingAndReferenceDirectionIsStrict()",
+          "reverseChainUsesHalfOpenEndpointsAndXorsKnownStrands()",
+          "malformedChainGeometryAndDuplicateIdsFailWithoutChangingSource()",
+          "integerBoundaryAndInvalidQueriesDoNotOverflowOrGuessAliases()",
+          "multipleHitsAndEntirelyUnalignedGapsNeverProduceAPreferredHit()",
+          "realUcscChainsAgreeWithIndependentPrimaryDbSnpCoordinatesBothDirections()",
+          "handCalculatedForwardBlocksAndGapFractionsUseExactThresholds()"
+        ]
+      },
+      "cli_suite": {
+        "suite_name": "org.jlinalg.cli.CoordinateLiftCliTest",
+        "suite": {
+          "tests": 5,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "cee64bdd6b846099882675c72a5ec5e811357337f88dc08e048f3d674f19bc59",
+        "testcases": [
+          "errorPolicyRetainsPartialTablesAndNoSuccessfulResults()",
+          "reciprocalOverlapThresholdAppliesToBothSpansAndDoesNotClaimPeakIdentity()",
+          "exactReciprocalAndExplicitTargetLengthCapHaveDifferentOutcomes()",
+          "everyInputIsRetainedAndAcceptedBedUsesExactCoordinatesAndStrands()",
+          "wrongReferencesAndInvalidRowsFailWithProminentRecovery()"
+        ]
+      },
+      "source_sha256": {
+        "src/main/java/org/jlinalg/genetics/ChainLiftover.java": "4d80c98277cdb0b58b81a0662e47e0aef83145cbcd04efa5725ffa8f1fc2d714",
+        "src/main/java/org/jlinalg/cli/CoordinateLiftCli.java": "c9cdab99dd1f64b36b62f6ae9feda6a9db4b2c92710dd803911b07cac9f51ac0"
+      },
+      "packaged_validation": "native-coordinate-lift-packaged-validation.json",
+      "packaged_checks": 10,
+      "independent_primary_coordinate_checks": 8,
+      "packaged_verifier_sha256": "945afbb6aa7ac89e859c7a0e043de232818e55f301574dc5cd01fa6d56a04b12",
+      "fixture_sha256": "0eb3937ce14c4f73b1ddaf241f246681e1b7316a2e403375f3beb4a29c64fbe5",
+      "scope": "Single qualifying chain, exact full directional dictionaries and geometry/32-bit bounds; every row/status retained. Explicit aligned-source minMatch/unmapped policy, target-span cap and exact/overlap reciprocal checks. Hand-calculated and independent primary dbSNP point coordinates both directions through real UCSC chains. Existing SNP-instrument engine reused. No split/BED12, allele/REF/indel/metadata harmonization, original-peak-identity or whole-tool/paper/old-version parity.",
+      "refreshed_utc": "2026-10-25T06:53:04.578303+00:00",
+      "current_full_gate_suites": {
+        "org.jlinalg.genetics.ChainLiftoverTest": {
+          "suite_name": "org.jlinalg.genetics.ChainLiftoverTest",
+          "suite": {
+            "tests": 7,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "0d1b3ed73247fe7295a290a2973c5c9bdc03656b2409a3851b3e1a473afcc9f0",
+          "testcases": [
+            "gzipBytesHaveIdenticalMappingAndReferenceDirectionIsStrict()",
+            "reverseChainUsesHalfOpenEndpointsAndXorsKnownStrands()",
+            "malformedChainGeometryAndDuplicateIdsFailWithoutChangingSource()",
+            "integerBoundaryAndInvalidQueriesDoNotOverflowOrGuessAliases()",
+            "multipleHitsAndEntirelyUnalignedGapsNeverProduceAPreferredHit()",
+            "realUcscChainsAgreeWithIndependentPrimaryDbSnpCoordinatesBothDirections()",
+            "handCalculatedForwardBlocksAndGapFractionsUseExactThresholds()"
+          ]
+        },
+        "org.jlinalg.cli.CoordinateLiftCliTest": {
+          "suite_name": "org.jlinalg.cli.CoordinateLiftCliTest",
+          "suite": {
+            "tests": 5,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "cee64bdd6b846099882675c72a5ec5e811357337f88dc08e048f3d674f19bc59",
+          "testcases": [
+            "errorPolicyRetainsPartialTablesAndNoSuccessfulResults()",
+            "reciprocalOverlapThresholdAppliesToBothSpansAndDoesNotClaimPeakIdentity()",
+            "exactReciprocalAndExplicitTargetLengthCapHaveDifferentOutcomes()",
+            "everyInputIsRetainedAndAcceptedBedUsesExactCoordinatesAndStrands()",
+            "wrongReferencesAndInvalidRowsFailWithProminentRecovery()"
+          ]
+        }
+      }
+    },
+    {
+      "status": "passed",
+      "jar_sha256": "53399f4be52ad5bb882f5acfea53d5a2a037ac80a6e93d1f7d7fdbc118051860",
+      "engine": "Java HTSJDK basic LiftOver, declared dependency5.0.0",
+      "api_suite": {
+        "suite_name": "org.jlinalg.genetics.ChainLiftoverTest",
+        "suite": {
+          "tests": 7,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "c8f0fbbba099d80dcb0b771f837d534283ea352c9c85cbd53a29eed8ed17fc89",
+        "testcases": [
+          "gzipBytesHaveIdenticalMappingAndReferenceDirectionIsStrict()",
+          "reverseChainUsesHalfOpenEndpointsAndXorsKnownStrands()",
+          "malformedChainGeometryAndDuplicateIdsFailWithoutChangingSource()",
+          "integerBoundaryAndInvalidQueriesDoNotOverflowOrGuessAliases()",
+          "multipleHitsAndEntirelyUnalignedGapsNeverProduceAPreferredHit()",
+          "realUcscChainsAgreeWithIndependentPrimaryDbSnpCoordinatesBothDirections()",
+          "handCalculatedForwardBlocksAndGapFractionsUseExactThresholds()"
+        ]
+      },
+      "cli_suite": {
+        "suite_name": "org.jlinalg.cli.CoordinateLiftCliTest",
+        "suite": {
+          "tests": 5,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "5eadfb85dc14dbf5a4e16b2642d1f2400db61f998d5ac1c2653b2c5f40be7a8e",
+        "testcases": [
+          "errorPolicyRetainsPartialTablesAndNoSuccessfulResults()",
+          "reciprocalOverlapThresholdAppliesToBothSpansAndDoesNotClaimPeakIdentity()",
+          "exactReciprocalAndExplicitTargetLengthCapHaveDifferentOutcomes()",
+          "everyInputIsRetainedAndAcceptedBedUsesExactCoordinatesAndStrands()",
+          "wrongReferencesAndInvalidRowsFailWithProminentRecovery()"
+        ]
+      },
+      "source_sha256": {
+        "src/main/java/org/jlinalg/genetics/ChainLiftover.java": "4d80c98277cdb0b58b81a0662e47e0aef83145cbcd04efa5725ffa8f1fc2d714",
+        "src/main/java/org/jlinalg/cli/CoordinateLiftCli.java": "c9cdab99dd1f64b36b62f6ae9feda6a9db4b2c92710dd803911b07cac9f51ac0"
+      },
+      "packaged_validation": "native-coordinate-lift-packaged-validation.json",
+      "packaged_checks": 10,
+      "independent_primary_coordinate_checks": 8,
+      "packaged_verifier_sha256": "945afbb6aa7ac89e859c7a0e043de232818e55f301574dc5cd01fa6d56a04b12",
+      "fixture_sha256": "0eb3937ce14c4f73b1ddaf241f246681e1b7316a2e403375f3beb4a29c64fbe5",
+      "scope": "Single qualifying chain, exact full directional dictionaries and geometry/32-bit bounds; every row/status retained. Explicit aligned-source minMatch/unmapped policy, target-span cap and exact/overlap reciprocal checks. Hand-calculated and independent primary dbSNP point coordinates both directions through real UCSC chains. Existing SNP-instrument engine reused. No split/BED12, allele/REF/indel/metadata harmonization, original-peak-identity or whole-tool/paper/old-version parity.",
+      "refreshed_utc": "2026-10-25T08:02:41.668775+00:00",
+      "current_full_gate_suites": {
+        "org.jlinalg.genetics.ChainLiftoverTest": {
+          "suite_name": "org.jlinalg.genetics.ChainLiftoverTest",
+          "suite": {
+            "tests": 7,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "c8f0fbbba099d80dcb0b771f837d534283ea352c9c85cbd53a29eed8ed17fc89",
+          "testcases": [
+            "gzipBytesHaveIdenticalMappingAndReferenceDirectionIsStrict()",
+            "reverseChainUsesHalfOpenEndpointsAndXorsKnownStrands()",
+            "malformedChainGeometryAndDuplicateIdsFailWithoutChangingSource()",
+            "integerBoundaryAndInvalidQueriesDoNotOverflowOrGuessAliases()",
+            "multipleHitsAndEntirelyUnalignedGapsNeverProduceAPreferredHit()",
+            "realUcscChainsAgreeWithIndependentPrimaryDbSnpCoordinatesBothDirections()",
+            "handCalculatedForwardBlocksAndGapFractionsUseExactThresholds()"
+          ]
+        },
+        "org.jlinalg.cli.CoordinateLiftCliTest": {
+          "suite_name": "org.jlinalg.cli.CoordinateLiftCliTest",
+          "suite": {
+            "tests": 5,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "5eadfb85dc14dbf5a4e16b2642d1f2400db61f998d5ac1c2653b2c5f40be7a8e",
+          "testcases": [
+            "errorPolicyRetainsPartialTablesAndNoSuccessfulResults()",
+            "reciprocalOverlapThresholdAppliesToBothSpansAndDoesNotClaimPeakIdentity()",
+            "exactReciprocalAndExplicitTargetLengthCapHaveDifferentOutcomes()",
+            "everyInputIsRetainedAndAcceptedBedUsesExactCoordinatesAndStrands()",
+            "wrongReferencesAndInvalidRowsFailWithProminentRecovery()"
+          ]
+        }
+      }
+    },
+    {
+      "status": "passed",
+      "jar_sha256": "9650afd13cf486aba84285ba6d2f1a0a06eca8f08d3e33b4c2338567f5372de2",
+      "engine": "Java HTSJDK basic LiftOver, declared dependency5.0.0",
+      "api_suite": {
+        "suite_name": "org.jlinalg.genetics.ChainLiftoverTest",
+        "suite": {
+          "tests": 7,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "372f35db9b99da8f3f0136b724703a1dbb8f0985e08734b03df6f8e684751c36",
+        "testcases": [
+          "gzipBytesHaveIdenticalMappingAndReferenceDirectionIsStrict()",
+          "reverseChainUsesHalfOpenEndpointsAndXorsKnownStrands()",
+          "malformedChainGeometryAndDuplicateIdsFailWithoutChangingSource()",
+          "integerBoundaryAndInvalidQueriesDoNotOverflowOrGuessAliases()",
+          "multipleHitsAndEntirelyUnalignedGapsNeverProduceAPreferredHit()",
+          "realUcscChainsAgreeWithIndependentPrimaryDbSnpCoordinatesBothDirections()",
+          "handCalculatedForwardBlocksAndGapFractionsUseExactThresholds()"
+        ]
+      },
+      "cli_suite": {
+        "suite_name": "org.jlinalg.cli.CoordinateLiftCliTest",
+        "suite": {
+          "tests": 5,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "30b49271746db7e2ed3c0ae11fcaec584ef618cbadb25f8dad49b7152f190096",
+        "testcases": [
+          "errorPolicyRetainsPartialTablesAndNoSuccessfulResults()",
+          "reciprocalOverlapThresholdAppliesToBothSpansAndDoesNotClaimPeakIdentity()",
+          "exactReciprocalAndExplicitTargetLengthCapHaveDifferentOutcomes()",
+          "everyInputIsRetainedAndAcceptedBedUsesExactCoordinatesAndStrands()",
+          "wrongReferencesAndInvalidRowsFailWithProminentRecovery()"
+        ]
+      },
+      "source_sha256": {
+        "src/main/java/org/jlinalg/genetics/ChainLiftover.java": "4d80c98277cdb0b58b81a0662e47e0aef83145cbcd04efa5725ffa8f1fc2d714",
+        "src/main/java/org/jlinalg/cli/CoordinateLiftCli.java": "c9cdab99dd1f64b36b62f6ae9feda6a9db4b2c92710dd803911b07cac9f51ac0"
+      },
+      "packaged_validation": "native-coordinate-lift-packaged-validation.json",
+      "packaged_checks": 10,
+      "independent_primary_coordinate_checks": 8,
+      "packaged_verifier_sha256": "945afbb6aa7ac89e859c7a0e043de232818e55f301574dc5cd01fa6d56a04b12",
+      "fixture_sha256": "0eb3937ce14c4f73b1ddaf241f246681e1b7316a2e403375f3beb4a29c64fbe5",
+      "scope": "Single qualifying chain, exact full directional dictionaries and geometry/32-bit bounds; every row/status retained. Explicit aligned-source minMatch/unmapped policy, target-span cap and exact/overlap reciprocal checks. Hand-calculated and independent primary dbSNP point coordinates both directions through real UCSC chains. Existing SNP-instrument engine reused. No split/BED12, allele/REF/indel/metadata harmonization, original-peak-identity or whole-tool/paper/old-version parity.",
+      "refreshed_utc": "2026-10-25T09:04:26.213216+00:00",
+      "current_full_gate_suites": {
+        "org.jlinalg.genetics.ChainLiftoverTest": {
+          "suite_name": "org.jlinalg.genetics.ChainLiftoverTest",
+          "suite": {
+            "tests": 7,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "372f35db9b99da8f3f0136b724703a1dbb8f0985e08734b03df6f8e684751c36",
+          "testcases": [
+            "gzipBytesHaveIdenticalMappingAndReferenceDirectionIsStrict()",
+            "reverseChainUsesHalfOpenEndpointsAndXorsKnownStrands()",
+            "malformedChainGeometryAndDuplicateIdsFailWithoutChangingSource()",
+            "integerBoundaryAndInvalidQueriesDoNotOverflowOrGuessAliases()",
+            "multipleHitsAndEntirelyUnalignedGapsNeverProduceAPreferredHit()",
+            "realUcscChainsAgreeWithIndependentPrimaryDbSnpCoordinatesBothDirections()",
+            "handCalculatedForwardBlocksAndGapFractionsUseExactThresholds()"
+          ]
+        },
+        "org.jlinalg.cli.CoordinateLiftCliTest": {
+          "suite_name": "org.jlinalg.cli.CoordinateLiftCliTest",
+          "suite": {
+            "tests": 5,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "30b49271746db7e2ed3c0ae11fcaec584ef618cbadb25f8dad49b7152f190096",
+          "testcases": [
+            "errorPolicyRetainsPartialTablesAndNoSuccessfulResults()",
+            "reciprocalOverlapThresholdAppliesToBothSpansAndDoesNotClaimPeakIdentity()",
+            "exactReciprocalAndExplicitTargetLengthCapHaveDifferentOutcomes()",
+            "everyInputIsRetainedAndAcceptedBedUsesExactCoordinatesAndStrands()",
+            "wrongReferencesAndInvalidRowsFailWithProminentRecovery()"
+          ]
+        }
+      }
+    },
+    {
+      "status": "passed",
+      "jar_sha256": "938e928161f850a7f23d38ced10b6ed53c15392b16f79c3d6caeab2ae8906c84",
+      "engine": "Java HTSJDK basic LiftOver, declared dependency5.0.0",
+      "api_suite": {
+        "suite_name": "org.jlinalg.genetics.ChainLiftoverTest",
+        "suite": {
+          "tests": 7,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "8dd87d4d6b9b2d5622bafbc19ce6c12d0f77d4caf456a1d4d807b9a9c4151591",
+        "testcases": [
+          "gzipBytesHaveIdenticalMappingAndReferenceDirectionIsStrict()",
+          "reverseChainUsesHalfOpenEndpointsAndXorsKnownStrands()",
+          "malformedChainGeometryAndDuplicateIdsFailWithoutChangingSource()",
+          "integerBoundaryAndInvalidQueriesDoNotOverflowOrGuessAliases()",
+          "multipleHitsAndEntirelyUnalignedGapsNeverProduceAPreferredHit()",
+          "realUcscChainsAgreeWithIndependentPrimaryDbSnpCoordinatesBothDirections()",
+          "handCalculatedForwardBlocksAndGapFractionsUseExactThresholds()"
+        ]
+      },
+      "cli_suite": {
+        "suite_name": "org.jlinalg.cli.CoordinateLiftCliTest",
+        "suite": {
+          "tests": 5,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "4e1485cd6b63597535d5c87ba87b1c9ff27112db4c8170780dc3dd2326aedd8c",
+        "testcases": [
+          "errorPolicyRetainsPartialTablesAndNoSuccessfulResults()",
+          "reciprocalOverlapThresholdAppliesToBothSpansAndDoesNotClaimPeakIdentity()",
+          "exactReciprocalAndExplicitTargetLengthCapHaveDifferentOutcomes()",
+          "everyInputIsRetainedAndAcceptedBedUsesExactCoordinatesAndStrands()",
+          "wrongReferencesAndInvalidRowsFailWithProminentRecovery()"
+        ]
+      },
+      "source_sha256": {
+        "src/main/java/org/jlinalg/genetics/ChainLiftover.java": "4d80c98277cdb0b58b81a0662e47e0aef83145cbcd04efa5725ffa8f1fc2d714",
+        "src/main/java/org/jlinalg/cli/CoordinateLiftCli.java": "c9cdab99dd1f64b36b62f6ae9feda6a9db4b2c92710dd803911b07cac9f51ac0"
+      },
+      "packaged_validation": "native-coordinate-lift-packaged-validation.json",
+      "packaged_checks": 10,
+      "independent_primary_coordinate_checks": 8,
+      "packaged_verifier_sha256": "945afbb6aa7ac89e859c7a0e043de232818e55f301574dc5cd01fa6d56a04b12",
+      "fixture_sha256": "0eb3937ce14c4f73b1ddaf241f246681e1b7316a2e403375f3beb4a29c64fbe5",
+      "scope": "Single qualifying chain, exact full directional dictionaries and geometry/32-bit bounds; every row/status retained. Explicit aligned-source minMatch/unmapped policy, target-span cap and exact/overlap reciprocal checks. Hand-calculated and independent primary dbSNP point coordinates both directions through real UCSC chains. Existing SNP-instrument engine reused. No split/BED12, allele/REF/indel/metadata harmonization, original-peak-identity or whole-tool/paper/old-version parity.",
+      "refreshed_utc": "2026-10-25T10:07:59.705580+00:00",
+      "current_full_gate_suites": {
+        "org.jlinalg.genetics.ChainLiftoverTest": {
+          "suite_name": "org.jlinalg.genetics.ChainLiftoverTest",
+          "suite": {
+            "tests": 7,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "8dd87d4d6b9b2d5622bafbc19ce6c12d0f77d4caf456a1d4d807b9a9c4151591",
+          "testcases": [
+            "gzipBytesHaveIdenticalMappingAndReferenceDirectionIsStrict()",
+            "reverseChainUsesHalfOpenEndpointsAndXorsKnownStrands()",
+            "malformedChainGeometryAndDuplicateIdsFailWithoutChangingSource()",
+            "integerBoundaryAndInvalidQueriesDoNotOverflowOrGuessAliases()",
+            "multipleHitsAndEntirelyUnalignedGapsNeverProduceAPreferredHit()",
+            "realUcscChainsAgreeWithIndependentPrimaryDbSnpCoordinatesBothDirections()",
+            "handCalculatedForwardBlocksAndGapFractionsUseExactThresholds()"
+          ]
+        },
+        "org.jlinalg.cli.CoordinateLiftCliTest": {
+          "suite_name": "org.jlinalg.cli.CoordinateLiftCliTest",
+          "suite": {
+            "tests": 5,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "4e1485cd6b63597535d5c87ba87b1c9ff27112db4c8170780dc3dd2326aedd8c",
+          "testcases": [
+            "errorPolicyRetainsPartialTablesAndNoSuccessfulResults()",
+            "reciprocalOverlapThresholdAppliesToBothSpansAndDoesNotClaimPeakIdentity()",
+            "exactReciprocalAndExplicitTargetLengthCapHaveDifferentOutcomes()",
+            "everyInputIsRetainedAndAcceptedBedUsesExactCoordinatesAndStrands()",
+            "wrongReferencesAndInvalidRowsFailWithProminentRecovery()"
+          ]
+        }
+      }
+    },
+    {
+      "status": "passed",
+      "jar_sha256": "baaacad03f35a01f7d53aba9568e0ce03a89d37f2169ab89e25628f38b8b3b44",
+      "engine": "Java HTSJDK basic LiftOver, declared dependency5.0.0",
+      "api_suite": {
+        "suite_name": "org.jlinalg.genetics.ChainLiftoverTest",
+        "suite": {
+          "tests": 7,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "0992be837c909913852d348254fea56f6104a1824f0626397cba39819f809e64",
+        "testcases": [
+          "gzipBytesHaveIdenticalMappingAndReferenceDirectionIsStrict()",
+          "reverseChainUsesHalfOpenEndpointsAndXorsKnownStrands()",
+          "malformedChainGeometryAndDuplicateIdsFailWithoutChangingSource()",
+          "integerBoundaryAndInvalidQueriesDoNotOverflowOrGuessAliases()",
+          "multipleHitsAndEntirelyUnalignedGapsNeverProduceAPreferredHit()",
+          "realUcscChainsAgreeWithIndependentPrimaryDbSnpCoordinatesBothDirections()",
+          "handCalculatedForwardBlocksAndGapFractionsUseExactThresholds()"
+        ]
+      },
+      "cli_suite": {
+        "suite_name": "org.jlinalg.cli.CoordinateLiftCliTest",
+        "suite": {
+          "tests": 5,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "01d93f6021472a77070bacce1ab6ade01fe33d0c56ac4abcaf3369fa4eb8fa14",
+        "testcases": [
+          "errorPolicyRetainsPartialTablesAndNoSuccessfulResults()",
+          "reciprocalOverlapThresholdAppliesToBothSpansAndDoesNotClaimPeakIdentity()",
+          "exactReciprocalAndExplicitTargetLengthCapHaveDifferentOutcomes()",
+          "everyInputIsRetainedAndAcceptedBedUsesExactCoordinatesAndStrands()",
+          "wrongReferencesAndInvalidRowsFailWithProminentRecovery()"
+        ]
+      },
+      "source_sha256": {
+        "src/main/java/org/jlinalg/genetics/ChainLiftover.java": "4d80c98277cdb0b58b81a0662e47e0aef83145cbcd04efa5725ffa8f1fc2d714",
+        "src/main/java/org/jlinalg/cli/CoordinateLiftCli.java": "c9cdab99dd1f64b36b62f6ae9feda6a9db4b2c92710dd803911b07cac9f51ac0"
+      },
+      "packaged_validation": "native-coordinate-lift-packaged-validation.json",
+      "packaged_checks": 10,
+      "independent_primary_coordinate_checks": 8,
+      "packaged_verifier_sha256": "945afbb6aa7ac89e859c7a0e043de232818e55f301574dc5cd01fa6d56a04b12",
+      "fixture_sha256": "0eb3937ce14c4f73b1ddaf241f246681e1b7316a2e403375f3beb4a29c64fbe5",
+      "scope": "Single qualifying chain, exact full directional dictionaries and geometry/32-bit bounds; every row/status retained. Explicit aligned-source minMatch/unmapped policy, target-span cap and exact/overlap reciprocal checks. Hand-calculated and independent primary dbSNP point coordinates both directions through real UCSC chains. Existing SNP-instrument engine reused. No split/BED12, allele/REF/indel/metadata harmonization, original-peak-identity or whole-tool/paper/old-version parity.",
+      "refreshed_utc": "2026-10-25T11:27:56.771609+00:00",
+      "current_full_gate_suites": {
+        "org.jlinalg.genetics.ChainLiftoverTest": {
+          "suite_name": "org.jlinalg.genetics.ChainLiftoverTest",
+          "suite": {
+            "tests": 7,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "0992be837c909913852d348254fea56f6104a1824f0626397cba39819f809e64",
+          "testcases": [
+            "gzipBytesHaveIdenticalMappingAndReferenceDirectionIsStrict()",
+            "reverseChainUsesHalfOpenEndpointsAndXorsKnownStrands()",
+            "malformedChainGeometryAndDuplicateIdsFailWithoutChangingSource()",
+            "integerBoundaryAndInvalidQueriesDoNotOverflowOrGuessAliases()",
+            "multipleHitsAndEntirelyUnalignedGapsNeverProduceAPreferredHit()",
+            "realUcscChainsAgreeWithIndependentPrimaryDbSnpCoordinatesBothDirections()",
+            "handCalculatedForwardBlocksAndGapFractionsUseExactThresholds()"
+          ]
+        },
+        "org.jlinalg.cli.CoordinateLiftCliTest": {
+          "suite_name": "org.jlinalg.cli.CoordinateLiftCliTest",
+          "suite": {
+            "tests": 5,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "01d93f6021472a77070bacce1ab6ade01fe33d0c56ac4abcaf3369fa4eb8fa14",
+          "testcases": [
+            "errorPolicyRetainsPartialTablesAndNoSuccessfulResults()",
+            "reciprocalOverlapThresholdAppliesToBothSpansAndDoesNotClaimPeakIdentity()",
+            "exactReciprocalAndExplicitTargetLengthCapHaveDifferentOutcomes()",
+            "everyInputIsRetainedAndAcceptedBedUsesExactCoordinatesAndStrands()",
+            "wrongReferencesAndInvalidRowsFailWithProminentRecovery()"
+          ]
+        }
+      }
+    },
+    {
+      "status": "passed",
+      "jar_sha256": "5680cbc4e457007f8903d1d4db3e74ecc890a150b350870f0b82d5650bdc0fec",
+      "engine": "Java HTSJDK basic LiftOver, declared dependency5.0.0",
+      "api_suite": {
+        "suite_name": "org.jlinalg.genetics.ChainLiftoverTest",
+        "suite": {
+          "tests": 7,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "7be2c296fa6f47d15704349c70d7f1c235074d25a4b65522a881247b7342fa19",
+        "testcases": [
+          "gzipBytesHaveIdenticalMappingAndReferenceDirectionIsStrict()",
+          "reverseChainUsesHalfOpenEndpointsAndXorsKnownStrands()",
+          "malformedChainGeometryAndDuplicateIdsFailWithoutChangingSource()",
+          "integerBoundaryAndInvalidQueriesDoNotOverflowOrGuessAliases()",
+          "multipleHitsAndEntirelyUnalignedGapsNeverProduceAPreferredHit()",
+          "realUcscChainsAgreeWithIndependentPrimaryDbSnpCoordinatesBothDirections()",
+          "handCalculatedForwardBlocksAndGapFractionsUseExactThresholds()"
+        ]
+      },
+      "cli_suite": {
+        "suite_name": "org.jlinalg.cli.CoordinateLiftCliTest",
+        "suite": {
+          "tests": 5,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "ccfe383e57ddb60a506f8bc1d4dee781078aa8a28c42553bec4368b39bb162b5",
+        "testcases": [
+          "errorPolicyRetainsPartialTablesAndNoSuccessfulResults()",
+          "reciprocalOverlapThresholdAppliesToBothSpansAndDoesNotClaimPeakIdentity()",
+          "exactReciprocalAndExplicitTargetLengthCapHaveDifferentOutcomes()",
+          "everyInputIsRetainedAndAcceptedBedUsesExactCoordinatesAndStrands()",
+          "wrongReferencesAndInvalidRowsFailWithProminentRecovery()"
+        ]
+      },
+      "source_sha256": {
+        "src/main/java/org/jlinalg/genetics/ChainLiftover.java": "4d80c98277cdb0b58b81a0662e47e0aef83145cbcd04efa5725ffa8f1fc2d714",
+        "src/main/java/org/jlinalg/cli/CoordinateLiftCli.java": "c9cdab99dd1f64b36b62f6ae9feda6a9db4b2c92710dd803911b07cac9f51ac0"
+      },
+      "packaged_validation": "native-coordinate-lift-packaged-validation.json",
+      "packaged_checks": 10,
+      "independent_primary_coordinate_checks": 8,
+      "packaged_verifier_sha256": "945afbb6aa7ac89e859c7a0e043de232818e55f301574dc5cd01fa6d56a04b12",
+      "fixture_sha256": "0eb3937ce14c4f73b1ddaf241f246681e1b7316a2e403375f3beb4a29c64fbe5",
+      "scope": "Single qualifying chain, exact full directional dictionaries and geometry/32-bit bounds; every row/status retained. Explicit aligned-source minMatch/unmapped policy, target-span cap and exact/overlap reciprocal checks. Hand-calculated and independent primary dbSNP point coordinates both directions through real UCSC chains. Existing SNP-instrument engine reused. No split/BED12, allele/REF/indel/metadata harmonization, original-peak-identity or whole-tool/paper/old-version parity.",
+      "refreshed_utc": "2026-10-25T14:18:39.170849+00:00",
+      "current_full_gate_suites": {
+        "org.jlinalg.genetics.ChainLiftoverTest": {
+          "suite_name": "org.jlinalg.genetics.ChainLiftoverTest",
+          "suite": {
+            "tests": 7,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "7be2c296fa6f47d15704349c70d7f1c235074d25a4b65522a881247b7342fa19",
+          "testcases": [
+            "gzipBytesHaveIdenticalMappingAndReferenceDirectionIsStrict()",
+            "reverseChainUsesHalfOpenEndpointsAndXorsKnownStrands()",
+            "malformedChainGeometryAndDuplicateIdsFailWithoutChangingSource()",
+            "integerBoundaryAndInvalidQueriesDoNotOverflowOrGuessAliases()",
+            "multipleHitsAndEntirelyUnalignedGapsNeverProduceAPreferredHit()",
+            "realUcscChainsAgreeWithIndependentPrimaryDbSnpCoordinatesBothDirections()",
+            "handCalculatedForwardBlocksAndGapFractionsUseExactThresholds()"
+          ]
+        },
+        "org.jlinalg.cli.CoordinateLiftCliTest": {
+          "suite_name": "org.jlinalg.cli.CoordinateLiftCliTest",
+          "suite": {
+            "tests": 5,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "ccfe383e57ddb60a506f8bc1d4dee781078aa8a28c42553bec4368b39bb162b5",
+          "testcases": [
+            "errorPolicyRetainsPartialTablesAndNoSuccessfulResults()",
+            "reciprocalOverlapThresholdAppliesToBothSpansAndDoesNotClaimPeakIdentity()",
+            "exactReciprocalAndExplicitTargetLengthCapHaveDifferentOutcomes()",
+            "everyInputIsRetainedAndAcceptedBedUsesExactCoordinatesAndStrands()",
+            "wrongReferencesAndInvalidRowsFailWithProminentRecovery()"
+          ]
+        }
+      }
+    },
+    {
+      "status": "passed",
+      "jar_sha256": "c7e5fc6412ef02a82e409b43f344bff506f873ff5ebea92bc055d498ebda8dae",
+      "engine": "Java HTSJDK basic LiftOver, declared dependency5.0.0",
+      "api_suite": {
+        "suite_name": "org.jlinalg.genetics.ChainLiftoverTest",
+        "suite": {
+          "tests": 7,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "04fda0f7cf9aec90aa8bae4dcf2d451c5c672f756cf12b95c9738bef3964e8d8",
+        "testcases": [
+          "gzipBytesHaveIdenticalMappingAndReferenceDirectionIsStrict()",
+          "reverseChainUsesHalfOpenEndpointsAndXorsKnownStrands()",
+          "malformedChainGeometryAndDuplicateIdsFailWithoutChangingSource()",
+          "integerBoundaryAndInvalidQueriesDoNotOverflowOrGuessAliases()",
+          "multipleHitsAndEntirelyUnalignedGapsNeverProduceAPreferredHit()",
+          "realUcscChainsAgreeWithIndependentPrimaryDbSnpCoordinatesBothDirections()",
+          "handCalculatedForwardBlocksAndGapFractionsUseExactThresholds()"
+        ]
+      },
+      "cli_suite": {
+        "suite_name": "org.jlinalg.cli.CoordinateLiftCliTest",
+        "suite": {
+          "tests": 5,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "a3d78aee962544440158716211cdae88af15855e3d9337f9030cdf3ae95e1f02",
+        "testcases": [
+          "errorPolicyRetainsPartialTablesAndNoSuccessfulResults()",
+          "reciprocalOverlapThresholdAppliesToBothSpansAndDoesNotClaimPeakIdentity()",
+          "exactReciprocalAndExplicitTargetLengthCapHaveDifferentOutcomes()",
+          "everyInputIsRetainedAndAcceptedBedUsesExactCoordinatesAndStrands()",
+          "wrongReferencesAndInvalidRowsFailWithProminentRecovery()"
+        ]
+      },
+      "source_sha256": {
+        "src/main/java/org/jlinalg/genetics/ChainLiftover.java": "4d80c98277cdb0b58b81a0662e47e0aef83145cbcd04efa5725ffa8f1fc2d714",
+        "src/main/java/org/jlinalg/cli/CoordinateLiftCli.java": "c9cdab99dd1f64b36b62f6ae9feda6a9db4b2c92710dd803911b07cac9f51ac0"
+      },
+      "packaged_validation": "native-coordinate-lift-packaged-validation.json",
+      "packaged_checks": 10,
+      "independent_primary_coordinate_checks": 8,
+      "packaged_verifier_sha256": "945afbb6aa7ac89e859c7a0e043de232818e55f301574dc5cd01fa6d56a04b12",
+      "fixture_sha256": "0eb3937ce14c4f73b1ddaf241f246681e1b7316a2e403375f3beb4a29c64fbe5",
+      "scope": "Single qualifying chain, exact full directional dictionaries and geometry/32-bit bounds; every row/status retained. Explicit aligned-source minMatch/unmapped policy, target-span cap and exact/overlap reciprocal checks. Hand-calculated and independent primary dbSNP point coordinates both directions through real UCSC chains. Existing SNP-instrument engine reused. No split/BED12, allele/REF/indel/metadata harmonization, original-peak-identity or whole-tool/paper/old-version parity.",
+      "refreshed_utc": "2026-10-25T18:28:13.412726+00:00",
+      "current_full_gate_suites": {
+        "org.jlinalg.genetics.ChainLiftoverTest": {
+          "suite_name": "org.jlinalg.genetics.ChainLiftoverTest",
+          "suite": {
+            "tests": 7,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "04fda0f7cf9aec90aa8bae4dcf2d451c5c672f756cf12b95c9738bef3964e8d8",
+          "testcases": [
+            "gzipBytesHaveIdenticalMappingAndReferenceDirectionIsStrict()",
+            "reverseChainUsesHalfOpenEndpointsAndXorsKnownStrands()",
+            "malformedChainGeometryAndDuplicateIdsFailWithoutChangingSource()",
+            "integerBoundaryAndInvalidQueriesDoNotOverflowOrGuessAliases()",
+            "multipleHitsAndEntirelyUnalignedGapsNeverProduceAPreferredHit()",
+            "realUcscChainsAgreeWithIndependentPrimaryDbSnpCoordinatesBothDirections()",
+            "handCalculatedForwardBlocksAndGapFractionsUseExactThresholds()"
+          ]
+        },
+        "org.jlinalg.cli.CoordinateLiftCliTest": {
+          "suite_name": "org.jlinalg.cli.CoordinateLiftCliTest",
+          "suite": {
+            "tests": 5,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "a3d78aee962544440158716211cdae88af15855e3d9337f9030cdf3ae95e1f02",
+          "testcases": [
+            "errorPolicyRetainsPartialTablesAndNoSuccessfulResults()",
+            "reciprocalOverlapThresholdAppliesToBothSpansAndDoesNotClaimPeakIdentity()",
+            "exactReciprocalAndExplicitTargetLengthCapHaveDifferentOutcomes()",
+            "everyInputIsRetainedAndAcceptedBedUsesExactCoordinatesAndStrands()",
+            "wrongReferencesAndInvalidRowsFailWithProminentRecovery()"
+          ]
+        }
+      },
+      "current_validation": {
+        "full_gate": {
+          "tests": 1486,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 5
+        },
+        "required_suites": 59,
+        "all_required_without_skips": true,
+        "raw_snapshot": "D:\\projects\\JLinAlg\\build\\literature-review\\trimgalore-runtime\\original-warning-full-gate-snapshot",
+        "prior_packaged_regressions": "D:\\projects\\JLinAlg\\build\\literature-review\\trim-galore-warning-packaged-regressions\\verification.json",
+        "scope": "Current unchanged owned method sources retested on this JAR. Historical reference-generation counts/options remain scoped to their original fixtures;prior reports remain in validation_history."
+      }
+    },
+    {
+      "status": "passed",
+      "jar_sha256": "2bfb8abfea10e53ce7b0e1035b0a7954feb9bed990d63578e817882a6d0541c0",
+      "engine": "Java HTSJDK basic LiftOver, declared dependency5.0.0",
+      "api_suite": {
+        "suite_name": "org.jlinalg.genetics.ChainLiftoverTest",
+        "suite": {
+          "tests": 7,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "4a4e783e3119cda461d2d86a213972767805048e0c09b59a2c4baf635c11ce1e",
+        "testcases": [
+          "gzipBytesHaveIdenticalMappingAndReferenceDirectionIsStrict()",
+          "reverseChainUsesHalfOpenEndpointsAndXorsKnownStrands()",
+          "malformedChainGeometryAndDuplicateIdsFailWithoutChangingSource()",
+          "integerBoundaryAndInvalidQueriesDoNotOverflowOrGuessAliases()",
+          "multipleHitsAndEntirelyUnalignedGapsNeverProduceAPreferredHit()",
+          "realUcscChainsAgreeWithIndependentPrimaryDbSnpCoordinatesBothDirections()",
+          "handCalculatedForwardBlocksAndGapFractionsUseExactThresholds()"
+        ]
+      },
+      "cli_suite": {
+        "suite_name": "org.jlinalg.cli.CoordinateLiftCliTest",
+        "suite": {
+          "tests": 5,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "52ec1729074d5eabb0eb8addbc6699d7f62ce68713458a7867aa7378f1c7694c",
+        "testcases": [
+          "errorPolicyRetainsPartialTablesAndNoSuccessfulResults()",
+          "reciprocalOverlapThresholdAppliesToBothSpansAndDoesNotClaimPeakIdentity()",
+          "exactReciprocalAndExplicitTargetLengthCapHaveDifferentOutcomes()",
+          "everyInputIsRetainedAndAcceptedBedUsesExactCoordinatesAndStrands()",
+          "wrongReferencesAndInvalidRowsFailWithProminentRecovery()"
+        ]
+      },
+      "source_sha256": {
+        "src/main/java/org/jlinalg/genetics/ChainLiftover.java": "4d80c98277cdb0b58b81a0662e47e0aef83145cbcd04efa5725ffa8f1fc2d714",
+        "src/main/java/org/jlinalg/cli/CoordinateLiftCli.java": "c9cdab99dd1f64b36b62f6ae9feda6a9db4b2c92710dd803911b07cac9f51ac0"
+      },
+      "packaged_validation": "native-coordinate-lift-packaged-validation.json",
+      "packaged_checks": 10,
+      "independent_primary_coordinate_checks": 8,
+      "packaged_verifier_sha256": "945afbb6aa7ac89e859c7a0e043de232818e55f301574dc5cd01fa6d56a04b12",
+      "fixture_sha256": "0eb3937ce14c4f73b1ddaf241f246681e1b7316a2e403375f3beb4a29c64fbe5",
+      "scope": "Single qualifying chain, exact full directional dictionaries and geometry/32-bit bounds; every row/status retained. Explicit aligned-source minMatch/unmapped policy, target-span cap and exact/overlap reciprocal checks. Hand-calculated and independent primary dbSNP point coordinates both directions through real UCSC chains. Existing SNP-instrument engine reused. No split/BED12, allele/REF/indel/metadata harmonization, original-peak-identity or whole-tool/paper/old-version parity.",
+      "refreshed_utc": "2026-10-25T20:32:57.454823+00:00",
+      "current_full_gate_suites": {
+        "org.jlinalg.genetics.ChainLiftoverTest": {
+          "suite_name": "org.jlinalg.genetics.ChainLiftoverTest",
+          "suite": {
+            "tests": 7,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "4a4e783e3119cda461d2d86a213972767805048e0c09b59a2c4baf635c11ce1e",
+          "testcases": [
+            "gzipBytesHaveIdenticalMappingAndReferenceDirectionIsStrict()",
+            "reverseChainUsesHalfOpenEndpointsAndXorsKnownStrands()",
+            "malformedChainGeometryAndDuplicateIdsFailWithoutChangingSource()",
+            "integerBoundaryAndInvalidQueriesDoNotOverflowOrGuessAliases()",
+            "multipleHitsAndEntirelyUnalignedGapsNeverProduceAPreferredHit()",
+            "realUcscChainsAgreeWithIndependentPrimaryDbSnpCoordinatesBothDirections()",
+            "handCalculatedForwardBlocksAndGapFractionsUseExactThresholds()"
+          ]
+        },
+        "org.jlinalg.cli.CoordinateLiftCliTest": {
+          "suite_name": "org.jlinalg.cli.CoordinateLiftCliTest",
+          "suite": {
+            "tests": 5,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "52ec1729074d5eabb0eb8addbc6699d7f62ce68713458a7867aa7378f1c7694c",
+          "testcases": [
+            "errorPolicyRetainsPartialTablesAndNoSuccessfulResults()",
+            "reciprocalOverlapThresholdAppliesToBothSpansAndDoesNotClaimPeakIdentity()",
+            "exactReciprocalAndExplicitTargetLengthCapHaveDifferentOutcomes()",
+            "everyInputIsRetainedAndAcceptedBedUsesExactCoordinatesAndStrands()",
+            "wrongReferencesAndInvalidRowsFailWithProminentRecovery()"
+          ]
+        }
+      },
+      "current_validation": {
+        "full_gate": {
+          "tests": 1504,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 5
+        },
+        "required_suites": 61,
+        "all_required_without_skips": true,
+        "raw_snapshot": "D:\\projects\\JLinAlg\\build\\literature-review\\flash-runtime\\full-gate-2-snapshot",
+        "prior_packaged_regressions": "D:\\projects\\JLinAlg\\build\\literature-review\\flash-packaged-regressions\\verification.json",
+        "scope": "Current unchanged owned method sources retested on this JAR. Historical reference-generation counts/options remain scoped to their original fixtures;prior reports remain in validation_history."
+      }
+    },
+    {
+      "status": "passed",
+      "jar_sha256": "66be181d854806d9ae64d6f060e8defba8af5bdf594d3d352c9c76097a2a8d2e",
+      "engine": "Java HTSJDK basic LiftOver, declared dependency5.0.0",
+      "api_suite": {
+        "suite_name": "org.jlinalg.genetics.ChainLiftoverTest",
+        "suite": {
+          "tests": 7,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "03a8dfef0eededafa64674d9daa5cfea8608a01efab4d768090a1f848e4cd941",
+        "testcases": [
+          "gzipBytesHaveIdenticalMappingAndReferenceDirectionIsStrict()",
+          "reverseChainUsesHalfOpenEndpointsAndXorsKnownStrands()",
+          "malformedChainGeometryAndDuplicateIdsFailWithoutChangingSource()",
+          "integerBoundaryAndInvalidQueriesDoNotOverflowOrGuessAliases()",
+          "multipleHitsAndEntirelyUnalignedGapsNeverProduceAPreferredHit()",
+          "realUcscChainsAgreeWithIndependentPrimaryDbSnpCoordinatesBothDirections()",
+          "handCalculatedForwardBlocksAndGapFractionsUseExactThresholds()"
+        ]
+      },
+      "cli_suite": {
+        "suite_name": "org.jlinalg.cli.CoordinateLiftCliTest",
+        "suite": {
+          "tests": 5,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "0070432bbef258a5d8a0dd4693f8d3c96bedaca03f2d0cd82f4430f500689be1",
+        "testcases": [
+          "errorPolicyRetainsPartialTablesAndNoSuccessfulResults()",
+          "reciprocalOverlapThresholdAppliesToBothSpansAndDoesNotClaimPeakIdentity()",
+          "exactReciprocalAndExplicitTargetLengthCapHaveDifferentOutcomes()",
+          "everyInputIsRetainedAndAcceptedBedUsesExactCoordinatesAndStrands()",
+          "wrongReferencesAndInvalidRowsFailWithProminentRecovery()"
+        ]
+      },
+      "source_sha256": {
+        "src/main/java/org/jlinalg/genetics/ChainLiftover.java": "4d80c98277cdb0b58b81a0662e47e0aef83145cbcd04efa5725ffa8f1fc2d714",
+        "src/main/java/org/jlinalg/cli/CoordinateLiftCli.java": "c9cdab99dd1f64b36b62f6ae9feda6a9db4b2c92710dd803911b07cac9f51ac0"
+      },
+      "packaged_validation": "native-coordinate-lift-packaged-validation.json",
+      "packaged_checks": 10,
+      "independent_primary_coordinate_checks": 8,
+      "packaged_verifier_sha256": "945afbb6aa7ac89e859c7a0e043de232818e55f301574dc5cd01fa6d56a04b12",
+      "fixture_sha256": "0eb3937ce14c4f73b1ddaf241f246681e1b7316a2e403375f3beb4a29c64fbe5",
+      "scope": "Single qualifying chain, exact full directional dictionaries and geometry/32-bit bounds; every row/status retained. Explicit aligned-source minMatch/unmapped policy, target-span cap and exact/overlap reciprocal checks. Hand-calculated and independent primary dbSNP point coordinates both directions through real UCSC chains. Existing SNP-instrument engine reused. No split/BED12, allele/REF/indel/metadata harmonization, original-peak-identity or whole-tool/paper/old-version parity.",
+      "refreshed_utc": "2026-10-25T23:24:57.944602+00:00",
+      "current_full_gate_suites": {
+        "org.jlinalg.genetics.ChainLiftoverTest": {
+          "suite_name": "org.jlinalg.genetics.ChainLiftoverTest",
+          "suite": {
+            "tests": 7,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "03a8dfef0eededafa64674d9daa5cfea8608a01efab4d768090a1f848e4cd941",
+          "testcases": [
+            "gzipBytesHaveIdenticalMappingAndReferenceDirectionIsStrict()",
+            "reverseChainUsesHalfOpenEndpointsAndXorsKnownStrands()",
+            "malformedChainGeometryAndDuplicateIdsFailWithoutChangingSource()",
+            "integerBoundaryAndInvalidQueriesDoNotOverflowOrGuessAliases()",
+            "multipleHitsAndEntirelyUnalignedGapsNeverProduceAPreferredHit()",
+            "realUcscChainsAgreeWithIndependentPrimaryDbSnpCoordinatesBothDirections()",
+            "handCalculatedForwardBlocksAndGapFractionsUseExactThresholds()"
+          ]
+        },
+        "org.jlinalg.cli.CoordinateLiftCliTest": {
+          "suite_name": "org.jlinalg.cli.CoordinateLiftCliTest",
+          "suite": {
+            "tests": 5,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "0070432bbef258a5d8a0dd4693f8d3c96bedaca03f2d0cd82f4430f500689be1",
+          "testcases": [
+            "errorPolicyRetainsPartialTablesAndNoSuccessfulResults()",
+            "reciprocalOverlapThresholdAppliesToBothSpansAndDoesNotClaimPeakIdentity()",
+            "exactReciprocalAndExplicitTargetLengthCapHaveDifferentOutcomes()",
+            "everyInputIsRetainedAndAcceptedBedUsesExactCoordinatesAndStrands()",
+            "wrongReferencesAndInvalidRowsFailWithProminentRecovery()"
+          ]
+        }
+      },
+      "current_validation": {
+        "full_gate": {
+          "tests": 1552,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 5
+        },
+        "required_suites": 68,
+        "all_required_without_skips": true,
+        "raw_snapshot": "D:\\projects\\JLinAlg\\build\\literature-review\\fimo-runtime\\configured-full-gate-1",
+        "prior_packaged_regressions": "D:\\projects\\JLinAlg\\build\\literature-review\\fimo-runtime\\prior-packaged-regressions-1\\verification.json",
+        "scope": "Current unchanged owned method sources retested on this JAR. Historical reference-generation counts/options remain scoped to their original fixtures;prior reports remain in validation_history."
+      }
+    }
+  ]
+}

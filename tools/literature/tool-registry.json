@@ -1,0 +1,3728 @@
+[
+  {
+    "id": "plink",
+    "name": "PLINK",
+    "pattern": "(?<![A-Za-z0-9_])PLINK(?!\\s*(?:\\(\\s*)?(?:(?:version|v\\.?)\\s*)?2(?:\\.|\\b))(?:\\s*(?:\\(\\s*)?(?:(?:version|v\\.?)\\s*)?1(?:\\.[0-9]+)*(?:[ab][0-9][A-Za-z0-9._-]*)?)?(?![A-Za-z0-9_])",
+    "role": "Genotype QC, association, relatedness, LD or score calculations",
+    "current_coverage": "method-overlap",
+    "existing_source": "src/main/java/org/jlinalg/genetics/PlinkBedLdClumper.java",
+    "coverage_note": "Related native method; upstream software options and numerical equivalence require separate validation."
+  },
+  {
+    "id": "plink2",
+    "name": "PLINK 2",
+    "pattern": "(?<![A-Za-z0-9_])PLINK\\s*(?:\\(\\s*)?(?:(?:version|v\\.?)\\s*)?2(?:\\.[0-9]+)*(?:[ab][0-9][A-Za-z0-9._-]*)?(?![A-Za-z0-9_]|\\.[A-Za-z0-9])",
+    "role": "Genotype QC, association and score calculation",
+    "current_coverage": "method-overlap",
+    "existing_source": "src/main/java/org/jlinalg/cli/CliOptions.java",
+    "coverage_note": "Related native method; upstream software options and numerical equivalence require separate validation."
+  },
+  {
+    "id": "bolt-lmm",
+    "name": "BOLT-LMM",
+    "pattern": "(?<![A-Za-z0-9_])(?:BOLT[- ]?LMM)(?![A-Za-z0-9_])",
+    "role": "Linear mixed-model GWAS",
+    "current_coverage": "method-overlap",
+    "existing_source": "src/main/java/org/jlinalg/gwas/RemlAssociationScanner.java",
+    "coverage_note": "Related native method; upstream software options and numerical equivalence require separate validation."
+  },
+  {
+    "id": "regenie",
+    "name": "REGENIE",
+    "pattern": "(?<![A-Za-z0-9_])(?:REGENIE)(?![A-Za-z0-9_])",
+    "role": "Whole-genome regression association testing",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "saige",
+    "name": "SAIGE",
+    "pattern": "(?<![A-Za-z0-9_])(?:SAIGE(?![- ]GENE))(?![A-Za-z0-9_])",
+    "role": "Case-control mixed-model association",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "saige-gene",
+    "name": "SAIGE-GENE",
+    "pattern": "(?<![A-Za-z0-9_])(?:SAIGE[- ]GENE\\+?)(?![A-Za-z0-9_])",
+    "role": "Rare-variant mixed-model gene tests",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "gemma",
+    "name": "GEMMA",
+    "pattern": "(?-i:(?<![A-Za-z0-9_])(?:GEMMA)(?![A-Za-z0-9_]))",
+    "role": "Mixed-model association or variance components",
+    "current_coverage": "method-overlap",
+    "existing_source": "src/main/java/org/jlinalg/gwas/RemlAssociationScanner.java",
+    "coverage_note": "Related native method; upstream software options and numerical equivalence require separate validation."
+  },
+  {
+    "id": "gcta",
+    "name": "GCTA",
+    "pattern": "(?<![A-Za-z0-9_])(?:GCTA)(?![A-Za-z0-9_])",
+    "role": "Heritability, mixed-model association or conditional analysis",
+    "current_coverage": "method-overlap",
+    "existing_source": "src/main/java/org/jlinalg/genetics/ConditionalAssociation.java",
+    "coverage_note": "Related native method; upstream software options and numerical equivalence require separate validation."
+  },
+  {
+    "id": "cojo",
+    "name": "GCTA-COJO",
+    "pattern": "(?<![A-Za-z0-9_])(?:(?:GCTA[- ]?)?COJO)(?![A-Za-z0-9_])",
+    "role": "LD-adjusted conditional or joint GWAS analysis",
+    "current_coverage": "method-overlap",
+    "existing_source": "src/main/java/org/jlinalg/genetics/ConditionalAssociation.java",
+    "coverage_note": "Related native method; upstream software options and numerical equivalence require separate validation."
+  },
+  {
+    "id": "metal",
+    "name": "METAL",
+    "pattern": "(?-i:(?<![A-Za-z0-9_])(?:METAL)(?![A-Za-z0-9_]))",
+    "role": "GWAS meta-analysis",
+    "current_coverage": "method-overlap",
+    "existing_source": "src/main/java/org/jlinalg/cli/MetaCli.java",
+    "coverage_note": "Related native method; upstream software options and numerical equivalence require separate validation."
+  },
+  {
+    "id": "metasoft",
+    "name": "METASOFT",
+    "pattern": "(?<![A-Za-z0-9_])(?:METASOFT)(?![A-Za-z0-9_])",
+    "role": "Meta-analysis and heterogeneity assessment",
+    "current_coverage": "method-overlap",
+    "existing_source": "src/main/java/org/jlinalg/cli/MetaCli.java",
+    "coverage_note": "Related native method; upstream software options and numerical equivalence require separate validation."
+  },
+  {
+    "id": "gwama",
+    "name": "GWAMA",
+    "pattern": "(?<![A-Za-z0-9_])(?:GWAMA)(?![A-Za-z0-9_])",
+    "role": "GWAS meta-analysis",
+    "current_coverage": "method-overlap",
+    "existing_source": "src/main/java/org/jlinalg/cli/MetaCli.java",
+    "coverage_note": "Related native method; upstream software options and numerical equivalence require separate validation."
+  },
+  {
+    "id": "ldsc",
+    "name": "LDSC",
+    "pattern": "(?<![A-Za-z0-9_])(?:(?:LD[- ]?[Ss]core regression|LDSC|ldsc))(?![A-Za-z0-9_])",
+    "role": "SNP heritability, genetic correlation or functional partitioning",
+    "current_coverage": "method-overlap",
+    "existing_source": "src/main/java/org/jlinalg/xwas/LdScoreRegression.java",
+    "coverage_note": "Related native method; upstream software options and numerical equivalence require separate validation."
+  },
+  {
+    "id": "ldak",
+    "name": "LDAK",
+    "pattern": "(?<![A-Za-z0-9_])(?:LDAK)(?![A-Za-z0-9_])",
+    "role": "SNP heritability and polygenic modelling",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "hess",
+    "name": "HESS",
+    "pattern": "(?-i:(?<![A-Za-z0-9_])(?:\\b(?:rho[- ]?)?HESS\\b)(?![A-Za-z0-9_]))",
+    "role": "Local heritability or genetic correlation",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "lava",
+    "name": "LAVA",
+    "pattern": "(?-i:(?<![A-Za-z0-9_])(?:LAVA)(?![A-Za-z0-9_]))",
+    "role": "Local genetic correlation",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "mixer",
+    "name": "MiXeR",
+    "pattern": "(?-i:(?<![A-Za-z0-9_])(?:(?:univariate |bivariate )?(?<!GSA-)(?<!GSA )MiXeR)(?![A-Za-z0-9_]))",
+    "role": "Polygenic mixture modelling and genetic overlap",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "susie",
+    "name": "SuSiE",
+    "pattern": "(?<![A-Za-z0-9_])(?:SuSiE(?:[-_ ]?(?:RSS|R))?|susieR)(?![A-Za-z0-9_])",
+    "role": "Bayesian fine-mapping and credible sets",
+    "current_coverage": "method-overlap",
+    "existing_source": "src/main/java/org/jlinalg/susie/Susie.java",
+    "coverage_note": "Related native method; upstream software options and numerical equivalence require separate validation."
+  },
+  {
+    "id": "finemap",
+    "name": "FINEMAP",
+    "pattern": "(?<![A-Za-z0-9_])(?:FINEMAP)(?![A-Za-z0-9_])",
+    "role": "Bayesian fine-mapping of association loci",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "dap-g",
+    "name": "DAP-G",
+    "pattern": "(?<![A-Za-z0-9_])(?:DAP[- ]G)(?![A-Za-z0-9_])",
+    "role": "Bayesian fine-mapping",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "caviar",
+    "name": "CAVIAR",
+    "pattern": "(?-i:(?<![A-Za-z0-9_])(?:(?<!e)CAVIAR)(?![A-Za-z0-9_]))",
+    "role": "Fine-mapping credible variants",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "coloc",
+    "name": "coloc",
+    "pattern": "(?<![A-Za-z0-9_])(?:coloc(?:\\.abf|\\.susie)?)(?![A-Za-z0-9_])",
+    "role": "Shared-signal colocalization analysis",
+    "current_coverage": "method-overlap",
+    "existing_source": "src/main/java/org/jlinalg/coloc/ColocSusie.java",
+    "coverage_note": "Related native method; upstream software options and numerical equivalence require separate validation."
+  },
+  {
+    "id": "ecaviar",
+    "name": "eCAVIAR",
+    "pattern": "(?<![A-Za-z0-9_])(?:eCAVIAR)(?![A-Za-z0-9_])",
+    "role": "Fine-mapping and colocalization",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "fastenloc",
+    "name": "fastENLOC",
+    "pattern": "(?<![A-Za-z0-9_])(?:fastENLOC|(?<!fast)\\bENLOC\\b)(?![A-Za-z0-9_])",
+    "role": "Molecular QTL and GWAS colocalization",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "polyfun",
+    "name": "PolyFun",
+    "pattern": "(?<![A-Za-z0-9_])(?:PolyFun)(?![A-Za-z0-9_])",
+    "role": "Functional-prior fine-mapping",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "fgwas",
+    "name": "fgwas",
+    "pattern": "(?<![A-Za-z0-9_])(?:fgwas)(?![A-Za-z0-9_])",
+    "role": "Functional annotation enrichment and fine-mapping",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "torus",
+    "name": "TORUS",
+    "pattern": "(?-i:(?<![A-Za-z0-9_])(?:TORUS)(?![A-Za-z0-9_]))",
+    "role": "Functional prior estimation for genetic fine-mapping",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "predixcan",
+    "name": "PrediXcan",
+    "pattern": "(?<![A-Za-z0-9_])(?:(?<!Multi)(?<!S-)PrediXcan|S[-_ ]PrediXcan)(?![A-Za-z0-9_])",
+    "role": "Genetically predicted expression association",
+    "current_coverage": "method-overlap",
+    "existing_source": "src/main/java/org/jlinalg/xwas/PredictedOmics.java",
+    "coverage_note": "Related native method; upstream software options and numerical equivalence require separate validation."
+  },
+  {
+    "id": "multixcan",
+    "name": "MultiXcan",
+    "pattern": "(?<![A-Za-z0-9_])(?:(?:S[-_ ])?MultiXcan)(?![A-Za-z0-9_])",
+    "role": "Joint tissue predicted expression association",
+    "current_coverage": "method-overlap",
+    "existing_source": "src/main/java/org/jlinalg/xwas/PredictedOmics.java",
+    "coverage_note": "Related native method; upstream software options and numerical equivalence require separate validation."
+  },
+  {
+    "id": "fusion",
+    "name": "FUSION",
+    "pattern": "(?-i:(?<![A-Za-z0-9_])(?:FUSION)(?![A-Za-z0-9_]))",
+    "role": "Transcriptome-wide association and conditional follow-up",
+    "current_coverage": "method-overlap",
+    "existing_source": "src/main/java/org/jlinalg/xwas/PredictedOmics.java",
+    "coverage_note": "Related native method; upstream software options and numerical equivalence require separate validation."
+  },
+  {
+    "id": "smr",
+    "name": "SMR",
+    "pattern": "(?<![A-Za-z0-9_])(?:SMR)(?![A-Za-z0-9_])",
+    "role": "Summary-data molecular association or Mendelian randomization",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "heidi",
+    "name": "HEIDI",
+    "pattern": "(?<![A-Za-z0-9_])(?:HEIDI)(?![A-Za-z0-9_])",
+    "role": "Heterogeneity test distinguishing pleiotropy from linkage",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "twosamplemr",
+    "name": "TwoSampleMR",
+    "pattern": "(?<![A-Za-z0-9_])(?:TwoSampleMR)(?![A-Za-z0-9_])",
+    "role": "Instrument harmonization and two-sample Mendelian randomization",
+    "current_coverage": "method-overlap",
+    "existing_source": "src/main/java/org/jlinalg/cli/MrEstimatorCli.java",
+    "coverage_note": "Related native method; upstream software options and numerical equivalence require separate validation."
+  },
+  {
+    "id": "mrpresso",
+    "name": "MR-PRESSO",
+    "pattern": "(?<![A-Za-z0-9_])(?:MR[- ]?PRESSO)(?![A-Za-z0-9_])",
+    "role": "MR pleiotropy/outlier sensitivity",
+    "current_coverage": "method-overlap",
+    "existing_source": "src/main/java/org/jlinalg/cli/MultivariateMrCli.java",
+    "coverage_note": "Related native method; upstream software options and numerical equivalence require separate validation."
+  },
+  {
+    "id": "mrlap",
+    "name": "MRlap",
+    "pattern": "(?<![A-Za-z0-9_])(?:MRlap)(?![A-Za-z0-9_])",
+    "role": "MR adjustment for overlap, weak instruments and selection",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "mrmega",
+    "name": "MR-MEGA",
+    "pattern": "(?<![A-Za-z0-9_])(?:MR[- ]MEGA)(?![A-Za-z0-9_])",
+    "role": "Trans-ancestry meta-regression",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "mtag",
+    "name": "MTAG",
+    "pattern": "(?<![A-Za-z0-9_])(?:MTAG)(?![A-Za-z0-9_])",
+    "role": "Multi-trait GWAS analysis",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "genomicsem",
+    "name": "Genomic SEM",
+    "pattern": "(?<![A-Za-z0-9_])(?:Genomic\\s*SEM)(?![A-Za-z0-9_])",
+    "role": "Genetic covariance and structural equation modelling",
+    "current_coverage": "method-overlap",
+    "existing_source": "src/main/java/org/jlinalg/xwas/GenomicFactor.java",
+    "coverage_note": "Related native method; upstream software options and numerical equivalence require separate validation."
+  },
+  {
+    "id": "magma",
+    "name": "MAGMA",
+    "pattern": "(?-i:(?<![A-Za-z0-9_])(?:MAGMA)(?![A-Za-z0-9_]))",
+    "role": "LD-aware gene and gene-set association",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "fuma",
+    "name": "FUMA",
+    "pattern": "(?<![A-Za-z0-9_])(?:FUMA)(?![A-Za-z0-9_])",
+    "role": "Functional mapping, annotation and gene prioritization",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "depict",
+    "name": "DEPICT",
+    "pattern": "(?-i:(?<![A-Za-z0-9_])(?:DEPICT)(?![A-Za-z0-9_]))",
+    "role": "Gene-set and tissue enrichment of GWAS loci",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "garfield",
+    "name": "GARFIELD",
+    "pattern": "(?<![A-Za-z0-9_])(?:GARFIELD)(?![A-Za-z0-9_])",
+    "role": "Regulatory annotation enrichment of GWAS loci",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "prsice",
+    "name": "PRSice",
+    "pattern": "(?<![A-Za-z0-9_])(?:PRSice(?:[- ]?2)?)(?![A-Za-z0-9_])",
+    "role": "Clumping and thresholding polygenic score construction",
+    "current_coverage": "method-overlap",
+    "existing_source": "src/main/java/org/jlinalg/xwas/PredictionScores.java",
+    "coverage_note": "Related native method; upstream software options and numerical equivalence require separate validation."
+  },
+  {
+    "id": "prscs",
+    "name": "PRS-CS",
+    "pattern": "(?<![A-Za-z0-9_])(?:PRS[- ]CS(?!x))(?![A-Za-z0-9_])",
+    "role": "Bayesian continuous-shrinkage polygenic scoring",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "prscsx",
+    "name": "PRS-CSx",
+    "pattern": "(?<![A-Za-z0-9_])(?:PRS[- ]CSx)(?![A-Za-z0-9_])",
+    "role": "Cross-population Bayesian polygenic scoring",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "ldpred",
+    "name": "LDpred",
+    "pattern": "(?<![A-Za-z0-9_])(?:LDpred(?:[- ]?2)?)(?![A-Za-z0-9_])",
+    "role": "LD-aware Bayesian polygenic score construction",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "lassosum",
+    "name": "lassosum",
+    "pattern": "(?<![A-Za-z0-9_])(?:lassosum(?:2)?)(?![A-Za-z0-9_])",
+    "role": "Penalized summary-statistic polygenic scoring",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "sbayesr",
+    "name": "SBayesR",
+    "pattern": "(?<![A-Za-z0-9_])(?:SBayesR|SBayesRC)(?![A-Za-z0-9_])",
+    "role": "Bayesian mixture polygenic score estimation",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "skat",
+    "name": "SKAT",
+    "pattern": "(?<![A-Za-z0-9_])(?:SKAT(?![- ]O))(?![A-Za-z0-9_])",
+    "role": "Rare-variant sequence-kernel association",
+    "current_coverage": "method-overlap",
+    "existing_source": "src/main/java/org/jlinalg/cli/RareMetaCli.java",
+    "coverage_note": "Related native method; upstream software options and numerical equivalence require separate validation."
+  },
+  {
+    "id": "skato",
+    "name": "SKAT-O",
+    "pattern": "(?<![A-Za-z0-9_])(?:SKAT[- ]O)(?![A-Za-z0-9_])",
+    "role": "Adaptive burden/kernel rare-variant testing",
+    "current_coverage": "method-overlap",
+    "existing_source": "src/main/java/org/jlinalg/cli/RareMetaCli.java",
+    "coverage_note": "Related native method; upstream software options and numerical equivalence require separate validation."
+  },
+  {
+    "id": "staar",
+    "name": "STAAR",
+    "pattern": "(?-i:(?<![A-Za-z0-9_])(?:STAAR(?:pipeline)?(?:[- ]O)?)(?![A-Za-z0-9_]))",
+    "role": "Annotation-informed rare-variant set tests",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "acat",
+    "name": "ACAT",
+    "pattern": "(?<![A-Za-z0-9_])(?:ACAT(?:[- ]O|[- ]V)?)(?![A-Za-z0-9_])",
+    "role": "Cauchy aggregation of association evidence",
+    "current_coverage": "method-overlap",
+    "existing_source": "src/main/java/org/jlinalg/cli/RareMetaCli.java",
+    "coverage_note": "Related native method; upstream software options and numerical equivalence require separate validation."
+  },
+  {
+    "id": "tensorqtl",
+    "name": "tensorQTL",
+    "pattern": "(?<![A-Za-z0-9_])(?:tensorQTL)(?![A-Za-z0-9_])",
+    "role": "Molecular QTL mapping",
+    "current_coverage": "method-overlap",
+    "existing_source": "src/main/java/org/jlinalg/pipeline/StreamingOmicsAssociationPipeline.java",
+    "coverage_note": "Related native method; upstream software options and numerical equivalence require separate validation."
+  },
+  {
+    "id": "qtltools",
+    "name": "QTLtools",
+    "pattern": "(?<![A-Za-z0-9_])(?:QTLtools)(?![A-Za-z0-9_])",
+    "role": "Molecular QTL mapping and QC",
+    "current_coverage": "method-overlap",
+    "existing_source": "src/main/java/org/jlinalg/pipeline/StreamingOmicsAssociationPipeline.java",
+    "coverage_note": "Related native method; upstream software options and numerical equivalence require separate validation."
+  },
+  {
+    "id": "fastqtl",
+    "name": "FastQTL",
+    "pattern": "(?<![A-Za-z0-9_])(?:FastQTL)(?![A-Za-z0-9_])",
+    "role": "Permutation-based molecular QTL mapping",
+    "current_coverage": "method-overlap",
+    "existing_source": "src/main/java/org/jlinalg/pipeline/StreamingOmicsAssociationPipeline.java",
+    "coverage_note": "Related native method; upstream software options and numerical equivalence require separate validation."
+  },
+  {
+    "id": "matrixeqtl",
+    "name": "Matrix eQTL",
+    "pattern": "(?<![A-Za-z0-9_])(?:Matrix\\s*eQTL)(?![A-Za-z0-9_])",
+    "role": "Matrix-based QTL association",
+    "current_coverage": "method-overlap",
+    "existing_source": "src/main/java/org/jlinalg/pipeline/StreamingOmicsAssociationPipeline.java",
+    "coverage_note": "Related native method; upstream software options and numerical equivalence require separate validation."
+  },
+  {
+    "id": "leafcutter",
+    "name": "LeafCutter",
+    "pattern": "(?<![A-Za-z0-9_])(?:LeafCutter)(?![A-Za-z0-9_])",
+    "role": "Intron excision quantification and splicing analysis",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "bwa",
+    "name": "BWA",
+    "pattern": "(?<![A-Za-z0-9_])BWA(?![- _]?MEM[- ]?[23])(?:[- ]MEM)?(?![A-Za-z0-9_])",
+    "role": "DNA read alignment",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "bowtie2",
+    "name": "Bowtie 2",
+    "pattern": "(?<![A-Za-z0-9_])(?:Bowtie\\s*2)(?![A-Za-z0-9_])",
+    "role": "Short-read alignment",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "star",
+    "name": "STAR",
+    "pattern": "(?-i:(?<![A-Za-z0-9_])STAR(?![A-Za-z0-9_]))",
+    "role": "Splice-aware bulk RNA read alignment and optional raw gene counts",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "hisat2",
+    "name": "HISAT2",
+    "pattern": "(?<![A-Za-z0-9_])(?:HISAT2)(?![A-Za-z0-9_])",
+    "role": "Splice-aware read alignment",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "minimap2",
+    "name": "minimap2",
+    "pattern": "(?<![A-Za-z0-9_])(?:minimap2)(?![A-Za-z0-9_])",
+    "role": "Long-read or sequence alignment",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "salmon",
+    "name": "Salmon",
+    "pattern": "(?-i:(?<![A-Za-z0-9_])(?:Salmon)(?![A-Za-z0-9_]))",
+    "role": "Transcript abundance quantification",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "kallisto",
+    "name": "kallisto",
+    "pattern": "(?<![A-Za-z0-9_])(?:kallisto)(?![A-Za-z0-9_])",
+    "role": "Transcript abundance quantification",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "rsem",
+    "name": "RSEM",
+    "pattern": "(?-i:(?<![A-Za-z0-9_])(?:RSEM)(?![A-Za-z0-9_]))",
+    "role": "Transcript abundance estimation",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "featurecounts",
+    "name": "featureCounts",
+    "pattern": "(?<![A-Za-z0-9_])(?:featureCounts)(?![A-Za-z0-9_])",
+    "role": "Read assignment to genes/features",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "htseq",
+    "name": "HTSeq",
+    "pattern": "(?<![A-Za-z0-9_])(?:HTSeq(?:[- ]count)?)(?![A-Za-z0-9_])",
+    "role": "Read counting and sequence processing",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "stringtie",
+    "name": "StringTie",
+    "pattern": "(?<![A-Za-z0-9_])(?:StringTie(?:2)?)(?![A-Za-z0-9_])",
+    "role": "Transcript assembly and quantification",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "deseq2",
+    "name": "DESeq2",
+    "pattern": "(?<![A-Za-z0-9_])(?:DESeq2)(?![A-Za-z0-9_])",
+    "role": "Count-based differential expression analysis",
+    "current_coverage": "method-overlap",
+    "existing_source": "src/main/java/org/jlinalg/differential/EmpiricalBayesDifferential.java",
+    "coverage_note": "Related native method; upstream software options and numerical equivalence require separate validation."
+  },
+  {
+    "id": "edger",
+    "name": "edgeR",
+    "pattern": "(?<![A-Za-z0-9_])(?:edgeR)(?![A-Za-z0-9_])",
+    "role": "Count-based differential expression analysis",
+    "current_coverage": "method-overlap",
+    "existing_source": "src/main/java/org/jlinalg/differential/EmpiricalBayesDifferential.java",
+    "coverage_note": "Related native method; upstream software options and numerical equivalence require separate validation."
+  },
+  {
+    "id": "limma",
+    "name": "limma",
+    "pattern": "(?<![A-Za-z0-9_])(?:limma)(?![A-Za-z0-9_])",
+    "role": "Linear modelling and empirical-Bayes differential analysis",
+    "current_coverage": "method-overlap",
+    "existing_source": "src/main/java/org/jlinalg/differential/EmpiricalBayesDifferential.java",
+    "coverage_note": "Related native method; upstream software options and numerical equivalence require separate validation."
+  },
+  {
+    "id": "voom",
+    "name": "voom",
+    "pattern": "(?<![A-Za-z0-9_])(?:voom)(?![A-Za-z0-9_])",
+    "role": "Mean-variance weights for expression linear models",
+    "current_coverage": "method-overlap",
+    "existing_source": "src/main/java/org/jlinalg/differential/VoomTrend.java",
+    "coverage_note": "Related native method; upstream software options and numerical equivalence require separate validation."
+  },
+  {
+    "id": "tximport",
+    "name": "tximport",
+    "pattern": "(?<![A-Za-z0-9_])(?:tximport)(?![A-Za-z0-9_])",
+    "role": "Transcript abundance import and summarization",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "dexseq",
+    "name": "DEXSeq",
+    "pattern": "(?<![A-Za-z0-9_])(?:DEXSeq)(?![A-Za-z0-9_])",
+    "role": "Differential exon usage",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "majiq",
+    "name": "MAJIQ",
+    "pattern": "(?<![A-Za-z0-9_])(?:MAJIQ)(?![A-Za-z0-9_])",
+    "role": "Splicing quantification and differential analysis",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "suppa2",
+    "name": "SUPPA2",
+    "pattern": "(?<![A-Za-z0-9_])(?:SUPPA2?)(?![A-Za-z0-9_])",
+    "role": "Alternative splicing quantification",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "rmats",
+    "name": "rMATS",
+    "pattern": "(?<![A-Za-z0-9_])(?:rMATS(?:[- ]turbo)?)(?![A-Za-z0-9_])",
+    "role": "Differential alternative splicing",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "seurat",
+    "name": "Seurat",
+    "pattern": "(?<![A-Za-z0-9_])(?:Seurat)(?![A-Za-z0-9_])",
+    "role": "Single-cell QC, normalization, integration, clustering or annotation",
+    "current_coverage": "method-overlap",
+    "existing_source": "src/main/java/org/jlinalg/cli/SingleCellCli.java",
+    "coverage_note": "Related native method; upstream software options and numerical equivalence require separate validation."
+  },
+  {
+    "id": "scanpy",
+    "name": "Scanpy",
+    "pattern": "(?<![A-Za-z0-9_])(?:Scanpy)(?![A-Za-z0-9_])",
+    "role": "Single-cell expression processing and analysis",
+    "current_coverage": "method-overlap",
+    "existing_source": "src/main/java/org/jlinalg/cli/SingleCellCli.java",
+    "coverage_note": "Related native method; upstream software options and numerical equivalence require separate validation."
+  },
+  {
+    "id": "cellranger",
+    "name": "Cell Ranger",
+    "pattern": "(?<![A-Za-z0-9_])(?:Cell\\s*Ranger|CellRanger)(?![A-Za-z0-9_])",
+    "role": "Single-cell read processing and gene/cell quantification",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "sctransform",
+    "name": "sctransform",
+    "pattern": "(?<![A-Za-z0-9_])(?:sctransform|SCTransform)(?![A-Za-z0-9_])",
+    "role": "Regularized single-cell variance normalization",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "harmony",
+    "name": "Harmony",
+    "pattern": "(?<![A-Za-z0-9_])(?:Harmony)(?![A-Za-z0-9_])",
+    "role": "Batch integration of cell embeddings",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "scvi",
+    "name": "scVI",
+    "pattern": "(?<![A-Za-z0-9_])(?:scVI(?:[- ]tools)?)(?![A-Za-z0-9_])",
+    "role": "Variational single-cell integration or expression modelling",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "scvelo",
+    "name": "scVelo",
+    "pattern": "(?<![A-Za-z0-9_])(?:scVelo)(?![A-Za-z0-9_])",
+    "role": "RNA velocity analysis",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "velocyto",
+    "name": "velocyto",
+    "pattern": "(?<![A-Za-z0-9_])(?:velocyto)(?![A-Za-z0-9_])",
+    "role": "Spliced/unspliced counting and RNA velocity",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "monocle",
+    "name": "Monocle",
+    "pattern": "(?<![A-Za-z0-9_])(?:Monocle\\s*[23]?)(?![A-Za-z0-9_])",
+    "role": "Single-cell trajectory or pseudotime inference",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "slingshot",
+    "name": "Slingshot",
+    "pattern": "(?<![A-Za-z0-9_])(?:Slingshot)(?![A-Za-z0-9_])",
+    "role": "Lineage and pseudotime inference",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "cellchat",
+    "name": "CellChat",
+    "pattern": "(?<![A-Za-z0-9_])(?:CellChat)(?![A-Za-z0-9_])",
+    "role": "Ligand-receptor cell communication inference",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "cellphonedb",
+    "name": "CellPhoneDB",
+    "pattern": "(?<![A-Za-z0-9_])(?:CellPhoneDB)(?![A-Za-z0-9_])",
+    "role": "Ligand-receptor cell communication analysis",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "nichenet",
+    "name": "NicheNet",
+    "pattern": "(?<![A-Za-z0-9_])(?:NicheNet)(?![A-Za-z0-9_])",
+    "role": "Ligand-target communication modelling",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "scrublet",
+    "name": "Scrublet",
+    "pattern": "(?<![A-Za-z0-9_])(?:Scrublet)(?![A-Za-z0-9_])",
+    "role": "Single-cell doublet detection",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "doubletfinder",
+    "name": "DoubletFinder",
+    "pattern": "(?<![A-Za-z0-9_])(?:DoubletFinder)(?![A-Za-z0-9_])",
+    "role": "Single-cell doublet detection",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "soupx",
+    "name": "SoupX",
+    "pattern": "(?<![A-Za-z0-9_])(?:SoupX)(?![A-Za-z0-9_])",
+    "role": "Ambient RNA contamination correction",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "cellbender",
+    "name": "CellBender",
+    "pattern": "(?<![A-Za-z0-9_])(?:CellBender)(?![A-Za-z0-9_])",
+    "role": "Ambient count background removal",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "scdblfinder",
+    "name": "scDblFinder",
+    "pattern": "(?<![A-Za-z0-9_])(?:scDblFinder)(?![A-Za-z0-9_])",
+    "role": "Single-cell doublet detection",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "scater",
+    "name": "scater",
+    "pattern": "(?<![A-Za-z0-9_])(?:scater)(?![A-Za-z0-9_])",
+    "role": "Single-cell QC and expression summaries",
+    "current_coverage": "method-overlap",
+    "existing_source": "src/main/java/org/jlinalg/cli/SingleCellCli.java",
+    "coverage_note": "Related native method; upstream software options and numerical equivalence require separate validation."
+  },
+  {
+    "id": "scran",
+    "name": "scran",
+    "pattern": "(?<![A-Za-z0-9_])(?:scran)(?![A-Za-z0-9_])",
+    "role": "Single-cell normalization and variance modelling",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "muscat",
+    "name": "muscat",
+    "pattern": "(?<![A-Za-z0-9_])(?:muscat)(?![A-Za-z0-9_])",
+    "role": "Sample-aware single-cell differential state",
+    "current_coverage": "method-overlap",
+    "existing_source": "src/main/java/org/jlinalg/singlecell/SampleInference.java",
+    "coverage_note": "Related native method; upstream software options and numerical equivalence require separate validation."
+  },
+  {
+    "id": "milo",
+    "name": "Milo",
+    "pattern": "(?-i:(?<![A-Za-z0-9_])(?:miloR|Milo)(?![A-Za-z0-9_]))",
+    "role": "Single-cell neighborhood differential abundance",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "scenic",
+    "name": "SCENIC",
+    "pattern": "(?<![A-Za-z0-9_])(?:pySCENIC|SCENIC)(?![A-Za-z0-9_+])",
+    "role": "Single-cell regulatory network inference",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "aucell",
+    "name": "AUCell",
+    "pattern": "(?<![A-Za-z0-9_])(?:AUCell)(?![A-Za-z0-9_])",
+    "role": "Rank-based gene-set activity scoring",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "ucell",
+    "name": "UCell",
+    "pattern": "(?<![A-Za-z0-9_])(?:UCell)(?![A-Za-z0-9_])",
+    "role": "Rank-based single-cell gene-set scoring",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "singler",
+    "name": "SingleR",
+    "pattern": "(?<![A-Za-z0-9_])(?:SingleR)(?![A-Za-z0-9_])",
+    "role": "Reference-based cell annotation",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "celltypist",
+    "name": "CellTypist",
+    "pattern": "(?<![A-Za-z0-9_])(?:CellTypist)(?![A-Za-z0-9_])",
+    "role": "Reference-based cell-type classification",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "azimuth",
+    "name": "Azimuth",
+    "pattern": "(?<![A-Za-z0-9_])(?:Azimuth)(?![A-Za-z0-9_])",
+    "role": "Reference mapping and cell annotation",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "leiden",
+    "name": "Leiden",
+    "pattern": "(?<![A-Za-z0-9_])(?:Leiden)(?![A-Za-z0-9_])",
+    "role": "Graph community clustering of cells",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "louvain",
+    "name": "Louvain",
+    "pattern": "(?<![A-Za-z0-9_])(?:Louvain)(?![A-Za-z0-9_])",
+    "role": "Graph community clustering",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "umap",
+    "name": "UMAP",
+    "pattern": "(?<![A-Za-z0-9_])(?:UMAP)(?![A-Za-z0-9_])",
+    "role": "Low-dimensional exploratory embedding",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "tsne",
+    "name": "t-SNE",
+    "pattern": "(?<![A-Za-z0-9_])(?:t[- ]SNE|tSNE)(?![A-Za-z0-9_])",
+    "role": "Low-dimensional exploratory embedding",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "spaceranger",
+    "name": "Space Ranger",
+    "pattern": "(?<![A-Za-z0-9_])(?:Space\\s*Ranger)(?![A-Za-z0-9_])",
+    "role": "Spatial transcriptomics read processing",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "squidpy",
+    "name": "Squidpy",
+    "pattern": "(?<![A-Za-z0-9_])(?:Squidpy)(?![A-Za-z0-9_])",
+    "role": "Spatial neighborhood and expression analysis",
+    "current_coverage": "method-overlap",
+    "existing_source": "src/main/java/org/jlinalg/spatial/SpatialStatistics.java",
+    "coverage_note": "Related native method; upstream software options and numerical equivalence require separate validation."
+  },
+  {
+    "id": "cell2location",
+    "name": "cell2location",
+    "pattern": "(?<![A-Za-z0-9_])(?:cell2location)(?![A-Za-z0-9_])",
+    "role": "Spatial cell-type deconvolution",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "rctd",
+    "name": "RCTD",
+    "pattern": "(?-i:(?<![A-Za-z0-9_])(?:RCTD)(?![A-Za-z0-9_]))",
+    "role": "Spatial cell-type deconvolution",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "tangram",
+    "name": "Tangram",
+    "pattern": "(?-i:(?<![A-Za-z0-9_])(?:Tangram)(?![A-Za-z0-9_]))",
+    "role": "Mapping single-cell expression to spatial measurements",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "destvi",
+    "name": "DestVI",
+    "pattern": "(?<![A-Za-z0-9_])(?:DestVI)(?![A-Za-z0-9_])",
+    "role": "Spatial cell-type and state deconvolution",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "spatialde",
+    "name": "SpatialDE",
+    "pattern": "(?<![A-Za-z0-9_])(?:SpatialDE(?:2)?)(?![A-Za-z0-9_])",
+    "role": "Spatially variable expression testing",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "spark",
+    "name": "SPARK",
+    "pattern": "(?-i:(?<![A-Za-z0-9_])(?:SPARK(?:[- ]X)?)(?![A-Za-z0-9_]))",
+    "role": "Spatially variable gene testing",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "macs",
+    "name": "MACS",
+    "pattern": "(?<![A-Za-z0-9_])(?:MACS(?:2|3))(?![A-Za-z0-9_])",
+    "role": "Chromatin peak calling",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "homer",
+    "name": "HOMER",
+    "pattern": "(?-i:(?<![A-Za-z0-9_])(?:HOMER|Homer(?=\\s+package))(?![A-Za-z0-9_]))",
+    "role": "Motif and regulatory enrichment analysis",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "meme",
+    "name": "MEME",
+    "pattern": "(?-i:(?<![A-Za-z0-9_])(?:MEME(?:[- ]Suite)?)(?![A-Za-z0-9_]))",
+    "role": "Motif discovery and scanning",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "fimo",
+    "name": "FIMO",
+    "pattern": "(?<![A-Za-z0-9_])(?:FIMO)(?![A-Za-z0-9_])",
+    "role": "DNA motif occurrence scanning",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "chromvar",
+    "name": "chromVAR",
+    "pattern": "(?<![A-Za-z0-9_])(?:chromVAR)(?![A-Za-z0-9_])",
+    "role": "Chromatin motif accessibility deviation scores",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "archr",
+    "name": "ArchR",
+    "pattern": "(?<![A-Za-z0-9_])(?:ArchR)(?![A-Za-z0-9_])",
+    "role": "Single-cell ATAC-seq analysis",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "signac",
+    "name": "Signac",
+    "pattern": "(?<![A-Za-z0-9_])(?:Signac)(?![A-Za-z0-9_])",
+    "role": "Single-cell chromatin accessibility analysis",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "deeptools",
+    "name": "deepTools",
+    "pattern": "(?<![A-Za-z0-9_])(?:deepTools2?)(?![A-Za-z0-9_])",
+    "role": "Sequencing coverage and signal analysis",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "bedtools",
+    "name": "BEDTools",
+    "pattern": "(?<![A-Za-z0-9_])(?:BEDTools|bedtools)(?![A-Za-z0-9_])",
+    "role": "Genomic interval manipulation and overlap",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "samtools",
+    "name": "SAMtools",
+    "pattern": "(?<![A-Za-z0-9_])(?:SAMtools|samtools)(?![A-Za-z0-9_])",
+    "role": "Alignment manipulation and QC",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "bcftools",
+    "name": "BCFtools",
+    "pattern": "(?<![A-Za-z0-9_])(?:BCFtools|bcftools)(?![A-Za-z0-9_])",
+    "role": "Variant manipulation, calling, normalization and filtering",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "gatk",
+    "name": "GATK",
+    "pattern": "(?<![A-Za-z0-9_])(?:GATK|Genome Analysis Toolkit)(?![A-Za-z0-9_])",
+    "role": "Variant discovery and recalibration",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "picard",
+    "name": "Picard",
+    "pattern": "(?<![A-Za-z0-9_])(?:Picard)(?![A-Za-z0-9_])",
+    "role": "Alignment QC, duplicates and sequence processing",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "fastqc",
+    "name": "FastQC",
+    "pattern": "(?<![A-Za-z0-9_])(?:FastQC)(?![A-Za-z0-9_])",
+    "role": "Sequencing read quality assessment",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "multiqc",
+    "name": "MultiQC",
+    "pattern": "(?<![A-Za-z0-9_])(?:MultiQC)(?![A-Za-z0-9_])",
+    "role": "Aggregation of QC reports",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "fastp",
+    "name": "fastp",
+    "pattern": "(?<![A-Za-z0-9_])(?:fastp)(?![A-Za-z0-9_])",
+    "role": "Read filtering and adapter trimming",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "cutadapt",
+    "name": "Cutadapt",
+    "pattern": "(?<![A-Za-z0-9_])(?:Cutadapt)(?![A-Za-z0-9_])",
+    "role": "Adapter trimming",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "trimgalore",
+    "name": "Trim Galore",
+    "pattern": "(?<![A-Za-z0-9_])(?:Trim[\\s_]*Galore)(?![A-Za-z0-9_])",
+    "role": "Read trimming and QC",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "The original pre-expansion source inventory lacked this workflow. Current source adds a bounded original Perl0.6.7/0.6.10 adapter with Cutadapt5.2 and optional originalFastQC0.13.0, plus native ordinary post-Cutadapt finalization and first/last-base hardtrim. See docs/literature/omics-2023-2026/TRIM_GALORE_WORKFLOWS.md and its exact artifact/validation records. Historical versions,RRBS,explicit poly-A and whole-paper parity remain unvalidated."
+  },
+  {
+    "id": "trimmomatic",
+    "name": "Trimmomatic",
+    "pattern": "(?<![A-Za-z0-9_])(?:Trimmomatic)(?![A-Za-z0-9_])",
+    "role": "Read trimming and filtering",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "shapeit",
+    "name": "SHAPEIT",
+    "pattern": "(?<![A-Za-z0-9_])(?:SHAPEIT\\s*[245]?)(?![A-Za-z0-9_])",
+    "role": "Genotype haplotype phasing",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "eagle",
+    "name": "Eagle",
+    "pattern": "(?-i:(?<![A-Za-z0-9_])(?:Eagle\\s*2?)(?![A-Za-z0-9_]))",
+    "role": "Genotype phasing",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "beagle",
+    "name": "Beagle",
+    "pattern": "(?-i:(?<![A-Za-z0-9_])(?:Beagle\\s*[45]?)(?![A-Za-z0-9_]))",
+    "role": "Genotype phasing or imputation",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "impute",
+    "name": "IMPUTE",
+    "pattern": "(?<![A-Za-z0-9_])(?:IMPUTE\\s*[245])(?![A-Za-z0-9_])",
+    "role": "Genotype imputation",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "minimac",
+    "name": "Minimac",
+    "pattern": "(?<![A-Za-z0-9_])(?:Minimac\\s*[34]?)(?![A-Za-z0-9_])",
+    "role": "Genotype imputation",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "king",
+    "name": "KING",
+    "pattern": "(?-i:(?<![A-Za-z0-9_])(?:KING)(?![A-Za-z0-9_]))",
+    "role": "Genetic kinship and relatedness estimation",
+    "current_coverage": "method-overlap",
+    "existing_source": "src/main/java/org/jlinalg/genetics/GenomicRelationshipMatrix.java",
+    "coverage_note": "Related native method; upstream software options and numerical equivalence require separate validation."
+  },
+  {
+    "id": "flashpca",
+    "name": "FlashPCA",
+    "pattern": "(?<![A-Za-z0-9_])(?:FlashPCA\\s*2?)(?![A-Za-z0-9_])",
+    "role": "Genetic principal components",
+    "current_coverage": "method-overlap",
+    "existing_source": "src/main/java/org/jlinalg/cli/ConfounderCli.java",
+    "coverage_note": "Related native method; upstream software options and numerical equivalence require separate validation."
+  },
+  {
+    "id": "smartpca",
+    "name": "smartpca",
+    "pattern": "(?<![A-Za-z0-9_])(?:smartpca|EIGENSOFT)(?![A-Za-z0-9_])",
+    "role": "Genetic ancestry principal components",
+    "current_coverage": "method-overlap",
+    "existing_source": "src/main/java/org/jlinalg/cli/ConfounderCli.java",
+    "coverage_note": "Related native method; upstream software options and numerical equivalence require separate validation."
+  },
+  {
+    "id": "admixture",
+    "name": "ADMIXTURE",
+    "pattern": "(?-i:(?<![A-Za-z0-9_])(?:ADMIXTURE)(?![A-Za-z0-9_]))",
+    "role": "Population ancestry mixture inference",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "rfmix",
+    "name": "RFMix",
+    "pattern": "(?<![A-Za-z0-9_])(?:RFMix\\s*2?)(?![A-Za-z0-9_])",
+    "role": "Local ancestry inference",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "vep",
+    "name": "Ensembl VEP",
+    "pattern": "(?<![A-Za-z0-9_])(?:Ensembl Variant Effect Predictor|Variant Effect Predictor|\\bVEP\\b)(?![A-Za-z0-9_])",
+    "role": "Variant consequence annotation",
+    "current_coverage": "existing-adapter",
+    "existing_source": "src/main/java/org/jlinalg/cli/VariantFollowupCli.java",
+    "coverage_note": "Scope limited to the existing adapter, lookup or export; upstream software is not bundled."
+  },
+  {
+    "id": "annovar",
+    "name": "ANNOVAR",
+    "pattern": "(?<![A-Za-z0-9_])(?:ANNOVAR)(?![A-Za-z0-9_])",
+    "role": "Variant functional annotation",
+    "current_coverage": "existing-adapter",
+    "existing_source": "src/main/java/org/jlinalg/cli/VariantFollowupCli.java",
+    "coverage_note": "Scope limited to the existing adapter, lookup or export; upstream software is not bundled."
+  },
+  {
+    "id": "cadd",
+    "name": "CADD",
+    "pattern": "(?<![A-Za-z0-9_])(?:CADD)(?![A-Za-z0-9_])",
+    "role": "Variant deleteriousness annotation",
+    "current_coverage": "existing-lookup",
+    "existing_source": "src/main/java/org/jlinalg/cli/VariantFollowupCli.java",
+    "coverage_note": "Scope limited to the existing adapter, lookup or export; upstream software is not bundled."
+  },
+  {
+    "id": "spliceai",
+    "name": "SpliceAI",
+    "pattern": "(?<![A-Za-z0-9_])(?:SpliceAI)(?![A-Za-z0-9_])",
+    "role": "Variant splice-impact prediction",
+    "current_coverage": "existing-lookup",
+    "existing_source": "src/main/java/org/jlinalg/cli/VariantFollowupCli.java",
+    "coverage_note": "Scope limited to the existing adapter, lookup or export; upstream software is not bundled."
+  },
+  {
+    "id": "sift",
+    "name": "SIFT",
+    "pattern": "(?<![A-Za-z0-9_])(?:SIFT)(?![A-Za-z0-9_])",
+    "role": "Missense variant effect annotation",
+    "current_coverage": "existing-lookup",
+    "existing_source": "src/main/java/org/jlinalg/cli/VariantFollowupCli.java",
+    "coverage_note": "Scope limited to the existing adapter, lookup or export; upstream software is not bundled."
+  },
+  {
+    "id": "polyphen",
+    "name": "PolyPhen-2",
+    "pattern": "(?<![A-Za-z0-9_])(?:PolyPhen(?:[- ]?2)?)(?![A-Za-z0-9_])",
+    "role": "Missense variant effect annotation",
+    "current_coverage": "existing-lookup",
+    "existing_source": "src/main/java/org/jlinalg/cli/VariantFollowupCli.java",
+    "coverage_note": "Scope limited to the existing adapter, lookup or export; upstream software is not bundled."
+  },
+  {
+    "id": "revel",
+    "name": "REVEL",
+    "pattern": "(?<![A-Za-z0-9_])(?:REVEL)(?![A-Za-z0-9_])",
+    "role": "Missense variant effect prediction",
+    "current_coverage": "existing-lookup",
+    "existing_source": "src/main/java/org/jlinalg/cli/VariantFollowupCli.java",
+    "coverage_note": "Scope limited to the existing adapter, lookup or export; upstream software is not bundled."
+  },
+  {
+    "id": "alphamissense",
+    "name": "AlphaMissense",
+    "pattern": "(?<![A-Za-z0-9_])(?:AlphaMissense)(?![A-Za-z0-9_])",
+    "role": "Missense variant pathogenicity prediction",
+    "current_coverage": "existing-lookup",
+    "existing_source": "src/main/java/org/jlinalg/cli/VariantFollowupCli.java",
+    "coverage_note": "Scope limited to the existing adapter, lookup or export; upstream software is not bundled."
+  },
+  {
+    "id": "alphafold",
+    "name": "AlphaFold",
+    "pattern": "(?<![A-Za-z0-9_])(?:AlphaFold\\s*[23]?)(?![A-Za-z0-9_])",
+    "role": "Protein structure prediction or supplied model interpretation",
+    "current_coverage": "existing-lookup",
+    "existing_source": "src/main/java/org/jlinalg/cli/StudyProteinPrediction.java",
+    "coverage_note": "Scope limited to the existing adapter, lookup or export; upstream software is not bundled."
+  },
+  {
+    "id": "alphagenome",
+    "name": "AlphaGenome",
+    "pattern": "(?<![A-Za-z0-9_])(?:AlphaGenome)(?![A-Za-z0-9_])",
+    "role": "Sequence-based functional prediction",
+    "current_coverage": "existing-adapter",
+    "existing_source": "src/main/java/org/jlinalg/cli/StudyAlphaGenome.java",
+    "coverage_note": "Scope limited to the existing adapter, lookup or export; upstream software is not bundled."
+  },
+  {
+    "id": "gsea",
+    "name": "GSEA",
+    "pattern": "(?<![A-Za-z0-9_])(?:(?:preranked[- ]?)?GSEA)(?![A-Za-z0-9_])",
+    "role": "Ranked gene-set enrichment",
+    "current_coverage": "method-overlap",
+    "existing_source": "src/main/java/org/jlinalg/enrichment/RankedEnrichment.java",
+    "coverage_note": "Related native method; upstream software options and numerical equivalence require separate validation."
+  },
+  {
+    "id": "fgsea",
+    "name": "fgsea",
+    "pattern": "(?<![A-Za-z0-9_])(?:fgsea)(?![A-Za-z0-9_])",
+    "role": "Fast ranked gene-set enrichment",
+    "current_coverage": "method-overlap",
+    "existing_source": "src/main/java/org/jlinalg/enrichment/RankedEnrichment.java",
+    "coverage_note": "Related native method; upstream software options and numerical equivalence require separate validation."
+  },
+  {
+    "id": "gsva",
+    "name": "GSVA",
+    "pattern": "(?<![A-Za-z0-9_])(?:GSVA|ssGSEA)(?![A-Za-z0-9_])",
+    "role": "Per-sample gene-set activity scoring",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "clusterprofiler",
+    "name": "clusterProfiler",
+    "pattern": "(?<![A-Za-z0-9_])(?:clusterProfiler)(?![A-Za-z0-9_])",
+    "role": "Functional enrichment and pathway interpretation",
+    "current_coverage": "method-overlap",
+    "existing_source": "src/main/java/org/jlinalg/enrichment/EnrichmentAnalysis.java",
+    "coverage_note": "Related native method; upstream software options and numerical equivalence require separate validation."
+  },
+  {
+    "id": "gprofiler",
+    "name": "g:Profiler",
+    "pattern": "(?<![A-Za-z0-9_])(?:g:Profiler|gprofiler2?)(?![A-Za-z0-9_])",
+    "role": "Functional gene-set enrichment",
+    "current_coverage": "method-overlap",
+    "existing_source": "src/main/java/org/jlinalg/enrichment/EnrichmentAnalysis.java",
+    "coverage_note": "Related native method; upstream software options and numerical equivalence require separate validation."
+  },
+  {
+    "id": "enrichr",
+    "name": "Enrichr",
+    "pattern": "(?<![A-Za-z0-9_])(?:Enrichr)(?![A-Za-z0-9_])",
+    "role": "Gene-set enrichment",
+    "current_coverage": "method-overlap",
+    "existing_source": "src/main/java/org/jlinalg/enrichment/EnrichmentAnalysis.java",
+    "coverage_note": "Related native method; upstream software options and numerical equivalence require separate validation."
+  },
+  {
+    "id": "david",
+    "name": "DAVID",
+    "pattern": "(?-i:(?<![A-Za-z0-9_])(?:DAVID)(?![A-Za-z0-9_]))",
+    "role": "Gene functional enrichment",
+    "current_coverage": "method-overlap",
+    "existing_source": "src/main/java/org/jlinalg/enrichment/EnrichmentAnalysis.java",
+    "coverage_note": "Related native method; upstream software options and numerical equivalence require separate validation."
+  },
+  {
+    "id": "goseq",
+    "name": "goseq",
+    "pattern": "(?<![A-Za-z0-9_])(?:goseq)(?![A-Za-z0-9_])",
+    "role": "Gene-length-biased RNA-seq gene-set enrichment",
+    "current_coverage": "method-overlap",
+    "existing_source": "src/main/java/org/jlinalg/enrichment/Wallenius.java",
+    "coverage_note": "Related native method; upstream software options and numerical equivalence require separate validation."
+  },
+  {
+    "id": "great",
+    "name": "GREAT",
+    "pattern": "(?-i:(?<![A-Za-z0-9_])(?:GREAT)(?![A-Za-z0-9_]))",
+    "role": "Regulatory-region functional enrichment",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "wgcna",
+    "name": "WGCNA",
+    "pattern": "(?<![A-Za-z0-9_])(?:WGCNA)(?![A-Za-z0-9_])",
+    "role": "Weighted coexpression networks and modules",
+    "current_coverage": "existing-adapter",
+    "existing_source": "src/main/java/org/jlinalg/cli/NetworkCli.java",
+    "coverage_note": "Scope limited to the existing adapter, lookup or export; upstream software is not bundled."
+  },
+  {
+    "id": "genie3",
+    "name": "GENIE3",
+    "pattern": "(?<![A-Za-z0-9_])(?:GENIE3)(?![A-Za-z0-9_])",
+    "role": "Regulatory network inference",
+    "current_coverage": "existing-adapter",
+    "existing_source": "src/main/java/org/jlinalg/cli/NetworkCli.java",
+    "coverage_note": "Scope limited to the existing adapter, lookup or export; upstream software is not bundled."
+  },
+  {
+    "id": "carnival",
+    "name": "CARNIVAL",
+    "pattern": "(?<![A-Za-z0-9_])(?:CARNIVAL)(?![A-Za-z0-9_])",
+    "role": "Causal signaling network inference",
+    "current_coverage": "existing-adapter",
+    "existing_source": "src/main/java/org/jlinalg/cli/NetworkCli.java",
+    "coverage_note": "Scope limited to the existing adapter, lookup or export; upstream software is not bundled."
+  },
+  {
+    "id": "cytoscape",
+    "name": "Cytoscape",
+    "pattern": "(?<![A-Za-z0-9_])(?:Cytoscape)(?![A-Za-z0-9_])",
+    "role": "Network visualization and analysis",
+    "current_coverage": "existing-export",
+    "existing_source": "src/main/java/org/jlinalg/cli/NetworkCli.java",
+    "coverage_note": "Scope limited to the existing adapter, lookup or export; upstream software is not bundled."
+  },
+  {
+    "id": "mofa",
+    "name": "MOFA",
+    "pattern": "(?<![A-Za-z0-9_])(?:MOFA\\+|MOFA2?|Multi[- ]Omics Factor Analysis)(?![A-Za-z0-9_])",
+    "role": "Multi-omics latent factor integration",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "mixomics",
+    "name": "mixOmics",
+    "pattern": "(?<![A-Za-z0-9_])(?:mixOmics|DIABLO)(?![A-Za-z0-9_])",
+    "role": "Multivariate multi-omics integration",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "sva",
+    "name": "sva",
+    "pattern": "(?<![A-Za-z0-9_])(?:\\bsva\\b|surrogate variable analysis)(?![A-Za-z0-9_])",
+    "role": "Latent confounder adjustment",
+    "current_coverage": "method-overlap",
+    "existing_source": "src/main/java/org/jlinalg/cli/ConfounderCli.java",
+    "coverage_note": "Related native method; upstream software options and numerical equivalence require separate validation."
+  },
+  {
+    "id": "combat",
+    "name": "ComBat",
+    "pattern": "(?<![A-Za-z0-9_])(?:ComBat(?:[- ]seq)?)(?![A-Za-z0-9_])",
+    "role": "Batch-effect adjustment",
+    "current_coverage": "method-overlap",
+    "existing_source": "src/main/java/org/jlinalg/cli/ConfounderCli.java",
+    "coverage_note": "Related native method; upstream software options and numerical equivalence require separate validation."
+  },
+  {
+    "id": "peer",
+    "name": "PEER",
+    "pattern": "(?-i:(?<![A-Za-z0-9_])(?:PEER)(?![A-Za-z0-9_]))",
+    "role": "Latent confounder estimation",
+    "current_coverage": "method-overlap",
+    "existing_source": "src/main/java/org/jlinalg/cli/ConfounderCli.java",
+    "coverage_note": "Related native method; upstream software options and numerical equivalence require separate validation."
+  },
+  {
+    "id": "maxquant",
+    "name": "MaxQuant",
+    "pattern": "(?<![A-Za-z0-9_])(?:MaxQuant)(?![A-Za-z0-9_])",
+    "role": "Mass-spectrometry proteomic identification and quantification",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "diann",
+    "name": "DIA-NN",
+    "pattern": "(?<![A-Za-z0-9_])(?:DIA[- ]NN)(?![A-Za-z0-9_])",
+    "role": "Data-independent acquisition proteomic quantification",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "spectronaut",
+    "name": "Spectronaut",
+    "pattern": "(?<![A-Za-z0-9_])(?:Spectronaut)(?![A-Za-z0-9_])",
+    "role": "Data-independent acquisition proteomic quantification",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "msstats",
+    "name": "MSstats",
+    "pattern": "(?<![A-Za-z0-9_])(?:MSstats)(?![A-Za-z0-9_])",
+    "role": "Statistical proteomic differential analysis",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "xcms",
+    "name": "XCMS",
+    "pattern": "(?<![A-Za-z0-9_])(?:XCMS)(?![A-Za-z0-9_])",
+    "role": "LC-MS metabolomics feature processing",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "metaboanalyst",
+    "name": "MetaboAnalyst",
+    "pattern": "(?<![A-Za-z0-9_])(?:MetaboAnalyst)(?![A-Za-z0-9_])",
+    "role": "Metabolomic statistics and pathway analysis",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "mummichog",
+    "name": "mummichog",
+    "pattern": "(?<![A-Za-z0-9_])(?:mummichog)(?![A-Za-z0-9_])",
+    "role": "Untargeted metabolomic pathway inference",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "dss",
+    "name": "DSS",
+    "pattern": "(?-i:(?<![A-Za-z0-9_])(?:\\bDSS\\b)(?![A-Za-z0-9_]))",
+    "role": "Differential methylation testing",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "dmrcate",
+    "name": "DMRcate",
+    "pattern": "(?<![A-Za-z0-9_])(?:DMRcate)(?![A-Za-z0-9_])",
+    "role": "Differential methylated region detection",
+    "current_coverage": "method-overlap",
+    "existing_source": "src/main/java/org/jlinalg/ewas/RegionLevelEwas.java",
+    "coverage_note": "Related native method; upstream software options and numerical equivalence require separate validation."
+  },
+  {
+    "id": "minfi",
+    "name": "minfi",
+    "pattern": "(?<![A-Za-z0-9_])(?:minfi)(?![A-Za-z0-9_])",
+    "role": "Methylation-array preprocessing",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "sesame",
+    "name": "SeSAMe",
+    "pattern": "(?<![A-Za-z0-9_])(?:SeSAMe|sesame)(?![A-Za-z0-9_])",
+    "role": "Methylation-array preprocessing",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "bismark",
+    "name": "Bismark",
+    "pattern": "(?<![A-Za-z0-9_])(?:Bismark)(?![A-Za-z0-9_])",
+    "role": "Bisulfite sequencing alignment and methylation calling",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "snpeff",
+    "name": "SnpEff",
+    "pattern": "(?<![A-Za-z0-9_])(?:SnpEff)(?![A-Za-z0-9_])",
+    "role": "Variant consequence annotation",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "snpsift",
+    "name": "SnpSift",
+    "pattern": "(?<![A-Za-z0-9_])(?:SnpSift)(?![A-Za-z0-9_])",
+    "role": "Variant annotation manipulation and filtering",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "hail",
+    "name": "Hail",
+    "pattern": "(?<![A-Za-z0-9_])(?:Hail)(?![A-Za-z0-9_])",
+    "role": "Distributed genotype QC and association",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Additional software identified during full-text/code-link completeness review; integration and independent validation pending."
+  },
+  {
+    "id": "loftee",
+    "name": "LOFTEE",
+    "pattern": "(?<![A-Za-z0-9_])(?:LOFTEE)(?![A-Za-z0-9_])",
+    "role": "Loss-of-function variant annotation",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Additional software identified during full-text/code-link completeness review; integration and independent validation pending."
+  },
+  {
+    "id": "dndscv",
+    "name": "dndscv",
+    "pattern": "(?<![A-Za-z0-9_])(?:dndscv)(?![A-Za-z0-9_])",
+    "role": "Somatic mutation selection analysis",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Additional software identified during full-text/code-link completeness review; integration and independent validation pending."
+  },
+  {
+    "id": "ascat",
+    "name": "ASCAT",
+    "pattern": "(?<![A-Za-z0-9_])(?:ASCAT)(?![A-Za-z0-9_])",
+    "role": "Allele-specific tumor copy-number analysis",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Additional software identified during full-text/code-link completeness review; integration and independent validation pending."
+  },
+  {
+    "id": "graphtyper",
+    "name": "Graphtyper",
+    "pattern": "(?<![A-Za-z0-9_])(?:Graphtyper2?)(?![A-Za-z0-9_])",
+    "role": "Graph-based genotyping",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Additional software identified during full-text/code-link completeness review; integration and independent validation pending."
+  },
+  {
+    "id": "deeprvat",
+    "name": "DeepRVAT",
+    "pattern": "(?<![A-Za-z0-9_])(?:DeepRVAT)(?![A-Za-z0-9_])",
+    "role": "Deep-learning rare-variant association",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Additional software identified during full-text/code-link completeness review; integration and independent validation pending."
+  },
+  {
+    "id": "shap",
+    "name": "SHAP",
+    "pattern": "(?<![A-Za-z0-9_])(?:(?-i:SHAP))(?![A-Za-z0-9_])",
+    "role": "Model feature attribution",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Additional software identified during full-text/code-link completeness review; integration and independent validation pending."
+  },
+  {
+    "id": "seqtk",
+    "name": "seqtk",
+    "pattern": "(?<![A-Za-z0-9_])(?:seqtk)(?![A-Za-z0-9_])",
+    "role": "Sequence file processing",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Additional software identified during full-text/code-link completeness review; integration and independent validation pending."
+  },
+  {
+    "id": "pbmm2",
+    "name": "pbmm2",
+    "pattern": "(?<![A-Za-z0-9_])(?:pbmm2)(?![A-Za-z0-9_])",
+    "role": "PacBio read alignment",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Additional software identified during full-text/code-link completeness review; integration and independent validation pending."
+  },
+  {
+    "id": "popcorn",
+    "name": "Popcorn",
+    "pattern": "(?<![A-Za-z0-9_])(?:(?-i:Popcorn|popcorn))(?![A-Za-z0-9_])",
+    "role": "Cross-population genetic correlation",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Additional software identified during full-text/code-link completeness review; integration and independent validation pending."
+  },
+  {
+    "id": "cause",
+    "name": "CAUSE",
+    "pattern": "(?<![A-Za-z0-9_])(?:(?-i:CAUSE))(?![A-Za-z0-9_])",
+    "role": "Causal inference with correlated pleiotropy",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Additional software identified during full-text/code-link completeness review; integration and independent validation pending."
+  },
+  {
+    "id": "apex",
+    "name": "APEX",
+    "pattern": "(?<![A-Za-z0-9_])(?:(?-i:APEX|apex))(?![A-Za-z0-9_])",
+    "role": "Molecular QTL analysis and meta-analysis",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Additional software identified during full-text/code-link completeness review; integration and independent validation pending."
+  },
+  {
+    "id": "qctool",
+    "name": "QCTOOL",
+    "pattern": "(?<![A-Za-z0-9_])(?:QCTOOL)(?![A-Za-z0-9_])",
+    "role": "Genotype file conversion and QC",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Additional software identified during full-text/code-link completeness review; integration and independent validation pending."
+  },
+  {
+    "id": "snptest",
+    "name": "SNPTEST",
+    "pattern": "(?<![A-Za-z0-9_])(?:SNPTEST)(?![A-Za-z0-9_])",
+    "role": "Genotype association testing",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Additional software identified during full-text/code-link completeness review; integration and independent validation pending."
+  },
+  {
+    "id": "fastgwa",
+    "name": "fastGWA",
+    "pattern": "(?<![A-Za-z0-9_])(?:fastGWA(?:[- ]GLMM)?)(?![A-Za-z0-9_])",
+    "role": "Sparse-relationship mixed-model GWAS",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Additional software identified during full-text/code-link completeness review; integration and independent validation pending."
+  },
+  {
+    "id": "ldstore",
+    "name": "LDstore",
+    "pattern": "(?<![A-Za-z0-9_])(?:LDstore2?)(?![A-Za-z0-9_])",
+    "role": "Linkage disequilibrium matrix calculation",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Additional software identified during full-text/code-link completeness review; integration and independent validation pending."
+  },
+  {
+    "id": "vireo",
+    "name": "Vireo",
+    "pattern": "(?<![A-Za-z0-9_])(?:vireo(?:SNP)?)(?![A-Za-z0-9_])",
+    "role": "Genotype-based cell demultiplexing",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Additional software identified during full-text/code-link completeness review; integration and independent validation pending."
+  },
+  {
+    "id": "souporcell",
+    "name": "souporcell",
+    "pattern": "(?<![A-Za-z0-9_])(?:souporcell)(?![A-Za-z0-9_])",
+    "role": "Genotype-based cell demultiplexing",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Additional software identified during full-text/code-link completeness review; integration and independent validation pending."
+  },
+  {
+    "id": "demuxlet",
+    "name": "demuxlet",
+    "pattern": "(?<![A-Za-z0-9_])(?:demuxlet)(?![A-Za-z0-9_])",
+    "role": "Genotype-based cell assignment and doublet identification",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Additional software identified during full-text/code-link completeness review; integration and independent validation pending."
+  },
+  {
+    "id": "scarches",
+    "name": "scArches",
+    "pattern": "(?<![A-Za-z0-9_])(?:scArches)(?![A-Za-z0-9_])",
+    "role": "Single-cell reference transfer",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Additional software identified during full-text/code-link completeness review; integration and independent validation pending."
+  },
+  {
+    "id": "totalvi",
+    "name": "totalVI",
+    "pattern": "(?<![A-Za-z0-9_])(?:totalVI)(?![A-Za-z0-9_])",
+    "role": "Joint RNA and protein variational integration",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Additional software identified during full-text/code-link completeness review; integration and independent validation pending."
+  },
+  {
+    "id": "multivi",
+    "name": "MultiVI",
+    "pattern": "(?<![A-Za-z0-9_])(?:MultiVI)(?![A-Za-z0-9_])",
+    "role": "Multi-modal variational single-cell integration",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Additional software identified during full-text/code-link completeness review; integration and independent validation pending."
+  },
+  {
+    "id": "tradeseq",
+    "name": "tradeSeq",
+    "pattern": "(?<![A-Za-z0-9_])(?:tradeSeq)(?![A-Za-z0-9_])",
+    "role": "Trajectory-dependent differential expression",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Additional software identified during full-text/code-link completeness review; integration and independent validation pending."
+  },
+  {
+    "id": "numbat",
+    "name": "Numbat",
+    "pattern": "(?<![A-Za-z0-9_])(?:Numbat)(?![A-Za-z0-9_])",
+    "role": "Single-cell copy-number inference",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Additional software identified during full-text/code-link completeness review; integration and independent validation pending."
+  },
+  {
+    "id": "infercnv",
+    "name": "inferCNV",
+    "pattern": "(?<![A-Za-z0-9_])(?:inferCNV)(?![A-Za-z0-9_])",
+    "role": "Expression-derived copy-number inference",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Additional software identified during full-text/code-link completeness review; integration and independent validation pending."
+  },
+  {
+    "id": "copykat",
+    "name": "CopyKAT",
+    "pattern": "(?<![A-Za-z0-9_])(?:CopyKAT)(?![A-Za-z0-9_])",
+    "role": "Single-cell aneuploidy inference",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Additional software identified during full-text/code-link completeness review; integration and independent validation pending."
+  },
+  {
+    "id": "cellect",
+    "name": "CELLECT",
+    "pattern": "(?<![A-Za-z0-9_])(?:CELLECT)(?![A-Za-z0-9_])",
+    "role": "Cell-type enrichment of GWAS",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Additional software identified during full-text/code-link completeness review; integration and independent validation pending."
+  },
+  {
+    "id": "cellex",
+    "name": "CELLEX",
+    "pattern": "(?<![A-Za-z0-9_])(?:CELLEX)(?![A-Za-z0-9_])",
+    "role": "Cell expression specificity estimation",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Additional software identified during full-text/code-link completeness review; integration and independent validation pending."
+  },
+  {
+    "id": "rolypoly",
+    "name": "RolyPoly",
+    "pattern": "(?<![A-Za-z0-9_])(?:RolyPoly)(?![A-Za-z0-9_])",
+    "role": "Cell-type enrichment of genetic associations",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Additional software identified during full-text/code-link completeness review; integration and independent validation pending."
+  },
+  {
+    "id": "scdrs",
+    "name": "scDRS",
+    "pattern": "(?<![A-Za-z0-9_])(?:scDRS)(?![A-Za-z0-9_])",
+    "role": "Single-cell disease relevance scoring",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Additional software identified during full-text/code-link completeness review; integration and independent validation pending."
+  },
+  {
+    "id": "cibersort",
+    "name": "CIBERSORT",
+    "pattern": "(?<![A-Za-z0-9_])(?:CIBERSORTx?)(?![A-Za-z0-9_])",
+    "role": "Cell-type deconvolution",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Additional software identified during full-text/code-link completeness review; integration and independent validation pending."
+  },
+  {
+    "id": "music",
+    "name": "MuSiC",
+    "pattern": "(?<![A-Za-z0-9_])(?:(?-i:MuSiC))(?![A-Za-z0-9_])",
+    "role": "Reference-based expression deconvolution",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Additional software identified during full-text/code-link completeness review; integration and independent validation pending."
+  },
+  {
+    "id": "bisque",
+    "name": "BisqueRNA",
+    "pattern": "(?<![A-Za-z0-9_])(?:BisqueRNA)(?![A-Za-z0-9_])",
+    "role": "Reference-based expression deconvolution",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Additional software identified during full-text/code-link completeness review; integration and independent validation pending."
+  },
+  {
+    "id": "mcp-counter",
+    "name": "MCP-counter",
+    "pattern": "(?<![A-Za-z0-9_])(?:MCP[- ]counter|MCPcounter)(?![A-Za-z0-9_])",
+    "role": "Cell population abundance scoring",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Additional software identified during full-text/code-link completeness review; integration and independent validation pending."
+  },
+  {
+    "id": "nextflow",
+    "name": "Nextflow",
+    "pattern": "(?<![A-Za-z0-9_])(?:Nextflow)(?![A-Za-z0-9_])",
+    "role": "Analysis pipeline orchestration",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Additional software identified during full-text/code-link completeness review; integration and independent validation pending."
+  },
+  {
+    "id": "snakemake",
+    "name": "Snakemake",
+    "pattern": "(?<![A-Za-z0-9_])(?:Snakemake)(?![A-Za-z0-9_])",
+    "role": "Analysis workflow execution",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Additional software identified during full-text/code-link completeness review; integration and independent validation pending."
+  },
+  {
+    "id": "nfcore",
+    "name": "nf-core",
+    "pattern": "(?<![A-Za-z0-9_])(?:nf[- ]core)(?![A-Za-z0-9_])",
+    "role": "Reusable sequencing analysis pipelines",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Additional software identified during full-text/code-link completeness review; integration and independent validation pending."
+  },
+  {
+    "id": "cooltools",
+    "name": "cooltools",
+    "pattern": "(?<![A-Za-z0-9_])(?:cooltools)(?![A-Za-z0-9_])",
+    "role": "Chromosome conformation analysis",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Additional software identified during full-text/code-link completeness review; integration and independent validation pending."
+  },
+  {
+    "id": "juicer",
+    "name": "Juicer",
+    "pattern": "(?<![A-Za-z0-9_])(?:Juicer)(?![A-Za-z0-9_])",
+    "role": "Hi-C read processing and contact maps",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Additional software identified during full-text/code-link completeness review; integration and independent validation pending."
+  },
+  {
+    "id": "hicpro",
+    "name": "HiC-Pro",
+    "pattern": "(?<![A-Za-z0-9_])(?:HiC[- ]Pro)(?![A-Za-z0-9_])",
+    "role": "Hi-C read processing",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Additional software identified during full-text/code-link completeness review; integration and independent validation pending."
+  },
+  {
+    "id": "nanoseq",
+    "name": "NanoSeq",
+    "pattern": "(?<![A-Za-z0-9_])(?:NanoSeq)(?![A-Za-z0-9_])",
+    "role": "Low-error somatic mutation sequencing analysis",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Additional software identified during full-text/code-link completeness review; integration and independent validation pending."
+  },
+  {
+    "id": "hapibd",
+    "name": "hap-ibd",
+    "pattern": "(?<![A-Za-z0-9_])(?:hap[- ]ibd)(?![A-Za-z0-9_])",
+    "role": "Identity-by-descent segment detection",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Additional software identified during full-text/code-link completeness review; integration and independent validation pending."
+  },
+  {
+    "id": "selscan",
+    "name": "selscan",
+    "pattern": "(?<![A-Za-z0-9_])(?:selscan)(?![A-Za-z0-9_])",
+    "role": "Haplotype-based selection scans",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Additional software identified during full-text/code-link completeness review; integration and independent validation pending."
+  },
+  {
+    "id": "stitch",
+    "name": "STITCH",
+    "pattern": "(?<![A-Za-z0-9_])(?:(?-i:STITCH))(?![A-Za-z0-9_])",
+    "role": "Low-coverage sequence genotype imputation",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Additional software identified during full-text/code-link completeness review; integration and independent validation pending."
+  },
+  {
+    "id": "glimpse",
+    "name": "GLIMPSE",
+    "pattern": "(?<![A-Za-z0-9_])(?:GLIMPSE2?)(?![A-Za-z0-9_])",
+    "role": "Low-coverage sequence genotype imputation",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Additional software identified during full-text/code-link completeness review; integration and independent validation pending."
+  },
+  {
+    "id": "hifiasm",
+    "name": "hifiasm",
+    "pattern": "(?<![A-Za-z0-9_])(?:hifiasm)(?![A-Za-z0-9_])",
+    "role": "Haplotype-resolved long-read assembly",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Additional software identified during full-text/code-link completeness review; integration and independent validation pending."
+  },
+  {
+    "id": "manta",
+    "name": "Manta",
+    "pattern": "(?<![A-Za-z0-9_])(?:(?-i:Manta|manta))(?![A-Za-z0-9_])",
+    "role": "Structural variant detection",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Additional software identified during full-text/code-link completeness review; integration and independent validation pending."
+  },
+  {
+    "id": "delly",
+    "name": "DELLY",
+    "pattern": "(?<![A-Za-z0-9_])(?:DELLY)(?![A-Za-z0-9_])",
+    "role": "Structural variant discovery",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Additional software identified during full-text/code-link completeness review; integration and independent validation pending."
+  },
+  {
+    "id": "sniffles",
+    "name": "Sniffles",
+    "pattern": "(?<![A-Za-z0-9_])(?:Sniffles2?)(?![A-Za-z0-9_])",
+    "role": "Long-read structural variant discovery",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Additional software identified during full-text/code-link completeness review; integration and independent validation pending."
+  },
+  {
+    "id": "expansionhunter",
+    "name": "ExpansionHunter",
+    "pattern": "(?<![A-Za-z0-9_])(?:ExpansionHunter(?:Denovo)?)(?![A-Za-z0-9_])",
+    "role": "Repeat expansion genotyping",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Additional software identified during full-text/code-link completeness review; integration and independent validation pending."
+  },
+  {
+    "id": "gangstr",
+    "name": "GangSTR",
+    "pattern": "(?<![A-Za-z0-9_])(?:GangSTR)(?![A-Za-z0-9_])",
+    "role": "Tandem repeat genotyping",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Additional software identified during full-text/code-link completeness review; integration and independent validation pending."
+  },
+  {
+    "id": "rvtests",
+    "name": "RVTESTS",
+    "pattern": "(?<![A-Za-z0-9_])(?:RVTESTS)(?![A-Za-z0-9_])",
+    "role": "Rare-variant association testing",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Additional software identified during full-text/code-link completeness review; integration and independent validation pending."
+  },
+  {
+    "id": "raremetal",
+    "name": "RAREMETAL",
+    "pattern": "(?<![A-Za-z0-9_])(?:RAREMETAL(?:WORKER)?)(?![A-Za-z0-9_])",
+    "role": "Rare-variant association and meta-analysis",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Additional software identified during full-text/code-link completeness review; integration and independent validation pending."
+  },
+  {
+    "id": "metaskat",
+    "name": "MetaSKAT",
+    "pattern": "(?<![A-Za-z0-9_])(?:MetaSKAT)(?![A-Za-z0-9_])",
+    "role": "Rare-variant kernel-test meta-analysis",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Additional software identified during full-text/code-link completeness review; integration and independent validation pending."
+  },
+  {
+    "id": "metaxcan",
+    "name": "MetaXcan",
+    "pattern": "(?<![A-Za-z0-9_])(?:MetaXcan)(?![A-Za-z0-9_])",
+    "role": "Predicted expression association",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Additional software identified during full-text/code-link completeness review; integration and independent validation pending."
+  },
+  {
+    "id": "mashr",
+    "name": "mashr",
+    "pattern": "(?<![A-Za-z0-9_])(?:mashr)(?![A-Za-z0-9_])",
+    "role": "Multivariate adaptive shrinkage",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Additional software identified during full-text/code-link completeness review; integration and independent validation pending."
+  },
+  {
+    "id": "ashr",
+    "name": "ashr",
+    "pattern": "(?<![A-Za-z0-9_])(?:ashr)(?![A-Za-z0-9_])",
+    "role": "Adaptive effect-size shrinkage",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Additional software identified during full-text/code-link completeness review; integration and independent validation pending."
+  },
+  {
+    "id": "memento",
+    "name": "memento",
+    "pattern": "(?<![A-Za-z0-9_])(?:(?-i:memento))(?![A-Za-z0-9_])",
+    "role": "Single-cell differential expression",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Additional software identified during full-text/code-link completeness review; integration and independent validation pending."
+  },
+  {
+    "id": "presto",
+    "name": "Presto",
+    "pattern": "(?<![A-Za-z0-9_])(?:(?-i:Presto|presto))(?![A-Za-z0-9_])",
+    "role": "Fast single-cell marker testing",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Additional software identified during full-text/code-link completeness review; integration and independent validation pending."
+  },
+  {
+    "id": "variancepartition",
+    "name": "variancePartition",
+    "pattern": "(?<![A-Za-z0-9_])(?:variancePartition)(?![A-Za-z0-9_])",
+    "role": "Expression variance partitioning",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Additional software identified during full-text/code-link completeness review; integration and independent validation pending."
+  },
+  {
+    "id": "ancibd",
+    "name": "ancIBD",
+    "pattern": "(?<![A-Za-z0-9_])(?:ancIBD)(?![A-Za-z0-9_])",
+    "role": "Identity-by-descent detection in ancient genomes",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Discovered during per-paper completeness review; integration and independent validation pending."
+  },
+  {
+    "id": "sprinter",
+    "name": "SPRINTER",
+    "pattern": "(?<![A-Za-z0-9_])(?:SPRINTER)(?![A-Za-z0-9_])",
+    "role": "Single-cell replication and copy-number analysis",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Discovered during per-paper completeness review; integration and independent validation pending."
+  },
+  {
+    "id": "temr",
+    "name": "TEMR",
+    "pattern": "(?<![A-Za-z0-9_])(?:(?-i:TEMR))(?![A-Za-z0-9_])",
+    "role": "Trans-ethnic Mendelian randomization",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Discovered during per-paper completeness review; integration and independent validation pending."
+  },
+  {
+    "id": "discodivas",
+    "name": "DiscoDivas",
+    "pattern": "(?<![A-Za-z0-9_])(?:DiscoDivas)(?![A-Za-z0-9_])",
+    "role": "Polygenic scoring across a genetic ancestry continuum",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Discovered during per-paper completeness review; integration and independent validation pending."
+  },
+  {
+    "id": "diamond",
+    "name": "DIAMOND",
+    "pattern": "(?<![A-Za-z0-9_])(?:(?-i:DIAMOND))(?![A-Za-z0-9_])",
+    "role": "Protein sequence alignment",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Discovered during per-paper completeness review; integration and independent validation pending."
+  },
+  {
+    "id": "fastx",
+    "name": "FASTX-Toolkit",
+    "pattern": "(?<![A-Za-z0-9_])(?:FASTX[- ](?:Toolkit|Trimmer|trimmer))(?![A-Za-z0-9_])",
+    "role": "Sequence read trimming and processing",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Discovered during per-paper completeness review; integration and independent validation pending."
+  },
+  {
+    "id": "autodock",
+    "name": "AutoDock Vina",
+    "pattern": "(?<![A-Za-z0-9_])(?:AutoDock(?: Vina)?)(?![A-Za-z0-9_])",
+    "role": "Molecular docking",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Discovered during per-paper completeness review; integration and independent validation pending."
+  },
+  {
+    "id": "chimerax",
+    "name": "ChimeraX",
+    "pattern": "(?<![A-Za-z0-9_])(?:ChimeraX)(?![A-Za-z0-9_])",
+    "role": "Molecular structure visualization and model building",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Discovered during per-paper completeness review; integration and independent validation pending."
+  },
+  {
+    "id": "pymol",
+    "name": "PyMOL",
+    "pattern": "(?<![A-Za-z0-9_])(?:PyMOL)(?![A-Za-z0-9_])",
+    "role": "Molecular structure visualization",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Discovered during per-paper completeness review; integration and independent validation pending."
+  },
+  {
+    "id": "bridgeprs",
+    "name": "BridgePRS",
+    "pattern": "(?<![A-Za-z0-9_])(?:BridgePRS)(?![A-Za-z0-9_])",
+    "role": "Cross-ancestry polygenic score transfer using shared genetic effects",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Paper-specific method identified during title and code-link review; authentic integration and scientific validation pending."
+  },
+  {
+    "id": "archmap",
+    "name": "ArchMap",
+    "pattern": "(?<![A-Za-z0-9_])(?:ArchMap)(?![A-Za-z0-9_])",
+    "role": "Reference-based single-cell analysis",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Paper-specific method identified during title and code-link review; authentic integration and scientific validation pending."
+  },
+  {
+    "id": "popv",
+    "name": "popV",
+    "pattern": "(?<![A-Za-z0-9_])(?:popV)(?![A-Za-z0-9_])",
+    "role": "Consensus single-cell type annotation",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Paper-specific method identified during title and code-link review; authentic integration and scientific validation pending."
+  },
+  {
+    "id": "metasaige",
+    "name": "Meta-SAIGE",
+    "pattern": "(?<![A-Za-z0-9_])(?:Meta[- ]?SAIGE)(?![A-Za-z0-9_])",
+    "role": "Rare-variant association meta-analysis",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Paper-specific method identified during title and code-link review; authentic integration and scientific validation pending."
+  },
+  {
+    "id": "isotwas",
+    "name": "isotwas",
+    "pattern": "(?<![A-Za-z0-9_])(?:isotwas)(?![A-Za-z0-9_])",
+    "role": "Isoform-level transcriptome-wide association",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Paper-specific method identified during title and code-link review; authentic integration and scientific validation pending."
+  },
+  {
+    "id": "metastaar",
+    "name": "MetaSTAAR",
+    "pattern": "(?<![A-Za-z0-9_])(?:MetaSTAAR)(?![A-Za-z0-9_])",
+    "role": "Summary-statistic gene-based rare-variant meta-analysis",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Paper-specific method identified during title and code-link review; authentic integration and scientific validation pending."
+  },
+  {
+    "id": "pops",
+    "name": "PoPS",
+    "pattern": "(?<![A-Za-z0-9_])(?:(?-i:PoPS))(?![A-Za-z0-9_])",
+    "role": "Effector-gene prioritization using polygenic features",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Paper-specific method identified during title and code-link review; authentic integration and scientific validation pending."
+  },
+  {
+    "id": "lcv",
+    "name": "LCV",
+    "pattern": "(?<![A-Za-z0-9_])(?:LCV)(?![A-Za-z0-9_])",
+    "role": "Latent causal-variable genetic analysis",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Paper-specific method identified during title and code-link review; authentic integration and scientific validation pending."
+  },
+  {
+    "id": "gsmap",
+    "name": "gsMap",
+    "pattern": "(?<![A-Za-z0-9_])(?:gsMap)(?![A-Za-z0-9_])",
+    "role": "Spatial mapping of genetic trait associations",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Paper-specific method identified during title and code-link review; authentic integration and scientific validation pending."
+  },
+  {
+    "id": "rarity",
+    "name": "RARity",
+    "pattern": "(?<![A-Za-z0-9_])(?:(?-i:RARity))(?![A-Za-z0-9_])",
+    "role": "Rare-variant effect estimation and polygenic prediction",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Paper-specific method identified during title and code-link review; authentic integration and scientific validation pending."
+  },
+  {
+    "id": "ltpi",
+    "name": "LTPI",
+    "pattern": "(?<![A-Za-z0-9_])(?:LTPI)(?![A-Za-z0-9_])",
+    "role": "Liability-threshold phenotype imputation",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Paper-specific method identified during title and code-link review; authentic integration and scientific validation pending."
+  },
+  {
+    "id": "autocomplete",
+    "name": "AutoComplete",
+    "pattern": "(?<![A-Za-z0-9_])(?:(?-i:AutoComplete))(?![A-Za-z0-9_])",
+    "role": "Deep learning-based phenotype imputation",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Paper-specific method identified during title and code-link review; authentic integration and scientific validation pending."
+  },
+  {
+    "id": "popeve",
+    "name": "popEVE",
+    "pattern": "(?<![A-Za-z0-9_])(?:popEVE)(?![A-Za-z0-9_])",
+    "role": "Proteome-scale variant effect modelling",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Paper-specific method identified during title and code-link review; authentic integration and scientific validation pending."
+  },
+  {
+    "id": "sce2g",
+    "name": "scE2G",
+    "pattern": "(?<![A-Za-z0-9_])(?:scE2G)(?![A-Za-z0-9_])",
+    "role": "Single-cell enhancer-to-gene prediction",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Paper-specific method identified during title and code-link review; authentic integration and scientific validation pending."
+  },
+  {
+    "id": "hapcut2",
+    "name": "HapCUT2",
+    "pattern": "(?<![A-Za-z0-9_])(?:HapCUT2)(?![A-Za-z0-9_])",
+    "role": "Read-based haplotype phasing",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Paper-specific method identified during title and code-link review; authentic integration and scientific validation pending."
+  },
+  {
+    "id": "whatshap",
+    "name": "WhatsHap",
+    "pattern": "(?<![A-Za-z0-9_])(?:WhatsHap)(?![A-Za-z0-9_])",
+    "role": "Read-based haplotype phasing",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Paper-specific method identified during title and code-link review; authentic integration and scientific validation pending."
+  },
+  {
+    "id": "bowtie1",
+    "name": "Bowtie 1",
+    "pattern": "\\bBowtie[\\s-]*(?:v(?:ersion)?\\.?\\s*)?1(?:\\.\\d+){0,2}\\b",
+    "role": "Short-read alignment with the Bowtie version 1 family",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Primary-methods software recovered during citation-boundary and per-paper completeness review; implementation and upstream validation pending."
+  },
+  {
+    "id": "ribowaltz",
+    "name": "riboWaltz",
+    "pattern": "\\briboWaltz\\b",
+    "role": "Ribosome-profiling offset estimation and periodicity assessment",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Primary-methods software recovered during citation-boundary and per-paper completeness review; implementation and upstream validation pending."
+  },
+  {
+    "id": "scenicplus",
+    "name": "SCENIC+",
+    "pattern": "(?<![A-Za-z0-9_])SCENIC\\+(?![A-Za-z0-9_])",
+    "role": "Multiomic regulatory-network tools and motif reference resources",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Individually identified in primary Methods during completeness review; scientific role, resource-only use and runtime requirements must be checked per paper; integration pending."
+  },
+  {
+    "id": "cemba-data",
+    "name": "cemba-data / YAP",
+    "pattern": "\\bcemba[-_]data\\b",
+    "role": "Single-cell methylome and chromatin-contact read mapping workflow",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Individually identified in primary Methods during completeness review; scientific role, resource-only use and runtime requirements must be checked per paper; integration pending."
+  },
+  {
+    "id": "allcools",
+    "name": "ALLCools",
+    "pattern": "\\bALLCools\\b",
+    "role": "Methylome datasets, clustering, integration and differential methylation",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Individually identified in primary Methods during completeness review; scientific role, resource-only use and runtime requirements must be checked per paper; integration pending."
+  },
+  {
+    "id": "schicluster",
+    "name": "scHiCluster",
+    "pattern": "\\bscHiCluster\\b",
+    "role": "Single-cell chromosome-conformation imputation and analysis",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Individually identified in primary Methods during completeness review; scientific role, resource-only use and runtime requirements must be checked per paper; integration pending."
+  },
+  {
+    "id": "cistarget",
+    "name": "cisTarget",
+    "pattern": "\\bcisTarget\\b",
+    "role": "Recovery-curve motif enrichment and regulatory target analysis",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Individually identified in primary Methods during completeness review; scientific role, resource-only use and runtime requirements must be checked per paper; integration pending."
+  },
+  {
+    "id": "clusterbuster",
+    "name": "Cluster-Buster",
+    "pattern": "\\bCluster[- ]Buster\\b",
+    "role": "Clustered DNA motif scanning",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Individually identified in primary Methods during completeness review; scientific role, resource-only use and runtime requirements must be checked per paper; integration pending."
+  },
+  {
+    "id": "skypilot",
+    "name": "SkyPilot",
+    "pattern": "\\bSkyPilot\\b",
+    "role": "Cloud execution environment orchestration for analysis workflows",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Individually identified in primary Methods during completeness review; scientific role, resource-only use and runtime requirements must be checked per paper; integration pending."
+  },
+  {
+    "id": "bwa-mem2",
+    "name": "BWA-MEM2",
+    "pattern": "(?<![A-Za-z0-9_])BWA[- _]?MEM[- ]?2(?![A-Za-z0-9_])",
+    "role": "Short-read DNA alignment with the distinct accelerated BWA-MEM2 implementation",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Separate upstream implementation; the BWA 0.7.19 adapter does not supply or establish equivalence with BWA-MEM2. Typed integration and real upstream validation remain pending."
+  },
+  {
+    "id": "nfcore-eager",
+    "name": "nf-core/eager",
+    "pattern": "(?<![A-Za-z0-9_])nf[- ]core[/ -]eager(?![A-Za-z0-9_])",
+    "role": "Ancient-DNA preprocessing, mapping and downstream analysis workflow",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Recovered from individually read primary alignment Methods. Exact workflow/input/platform integration and real upstream validation remain pending; no standalone CLI or complete pipeline equivalence is assumed."
+  },
+  {
+    "id": "mondrian",
+    "name": "Mondrian",
+    "pattern": "(?<![A-Za-z0-9_])Mondrian(?![A-Za-z0-9_])",
+    "role": "Single-cell whole-genome sequencing processing workflow",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Recovered from individually read primary alignment Methods. Exact workflow/input/platform integration and real upstream validation remain pending; no standalone CLI or complete pipeline equivalence is assumed."
+  },
+  {
+    "id": "isabl",
+    "name": "Isabl",
+    "pattern": "(?<![A-Za-z0-9_])Isabl(?![A-Za-z0-9_])",
+    "role": "Genomics data and analysis orchestration platform",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Recovered from individually read primary alignment Methods. Exact workflow/input/platform integration and real upstream validation remain pending; no standalone CLI or complete pipeline equivalence is assumed."
+  },
+  {
+    "id": "destruct",
+    "name": "DeStruct",
+    "pattern": "(?<![A-Za-z0-9_])DeStruct(?![A-Za-z0-9_])",
+    "role": "Structural-variant discovery from short-read sequencing",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Recovered from individually read primary alignment Methods. Exact workflow/input/platform integration and real upstream validation remain pending; no standalone CLI or complete pipeline equivalence is assumed."
+  },
+  {
+    "id": "lush-dnaseq",
+    "name": "LUSH-DNASeq-pipeline",
+    "pattern": "(?<![A-Za-z0-9_])LUSH[- ]DNASeq[- ]pipeline(?![A-Za-z0-9_])",
+    "role": "SNP and short-indel genotyping workflow with variant filtering",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Recovered from individually read primary alignment Methods. Exact workflow/input/platform integration and real upstream validation remain pending; no standalone CLI or complete pipeline equivalence is assumed."
+  },
+  {
+    "id": "ice-analysis",
+    "name": "ICE Analysis",
+    "pattern": "(?<![A-Za-z0-9_])ICE\\s+Analysis(?![A-Za-z0-9_])",
+    "role": "CRISPR editing-efficiency analysis from Sanger sequencing traces",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Recovered from individually read primary alignment Methods. Exact workflow/input/platform integration and real upstream validation remain pending; no standalone CLI or complete pipeline equivalence is assumed."
+  },
+  {
+    "id": "umi-tools",
+    "name": "UMI-tools",
+    "pattern": "(?<![A-Za-z0-9_])(?:UMI[_ -]?tools)(?![A-Za-z0-9_])",
+    "role": "UMI counting and duplicate handling",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Named primary-source workflow recovered during semantic review. Upstream integration, exact input/settings and meaningful validation remain pending."
+  },
+  {
+    "id": "rseqc",
+    "name": "RSeQC",
+    "pattern": "(?<![A-Za-z0-9_])(?:RSeQC)(?![A-Za-z0-9_])",
+    "role": "RNA-seq quality metrics",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Named primary-source workflow recovered during semantic review. Upstream integration, exact input/settings and meaningful validation remain pending."
+  },
+  {
+    "id": "merqury",
+    "name": "Merqury",
+    "pattern": "(?<![A-Za-z0-9_])(?:Merqury)(?![A-Za-z0-9_])",
+    "role": "Assembly k-mer completeness assessment",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Named primary-source workflow recovered during semantic review. Upstream integration, exact input/settings and meaningful validation remain pending."
+  },
+  {
+    "id": "yak",
+    "name": "Yak",
+    "pattern": "(?<![A-Za-z0-9_])(?:Yak(?=\\s*\\(?\\s*(?:v\\.?\\s*)?0\\.))(?![A-Za-z0-9_])",
+    "role": "K-mer-based haplotype separation error evaluation",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Named primary-source workflow recovered during semantic review. Upstream integration, exact input/settings and meaningful validation remain pending."
+  },
+  {
+    "id": "winnowmap",
+    "name": "Winnowmap",
+    "pattern": "(?<![A-Za-z0-9_])(?:Winnowmap)(?![A-Za-z0-9_])",
+    "role": "Long-read or chromosome alignment supporting assembly curation",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Named primary-source workflow recovered during semantic review. Upstream integration, exact input/settings and meaningful validation remain pending."
+  },
+  {
+    "id": "verkko",
+    "name": "Verkko",
+    "pattern": "(?<![A-Za-z0-9_])(?:Verkko)(?![A-Za-z0-9_])",
+    "role": "Genome assembly",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Named primary-source workflow recovered during semantic review. Upstream integration, exact input/settings and meaningful validation remain pending."
+  },
+  {
+    "id": "pretextmap",
+    "name": "PretextMap",
+    "pattern": "(?<![A-Za-z0-9_])(?:PretextMap)(?![A-Za-z0-9_])",
+    "role": "Hi-C contact map generation",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Named primary-source workflow recovered during semantic review. Upstream integration, exact input/settings and meaningful validation remain pending."
+  },
+  {
+    "id": "pretextview",
+    "name": "PretextView",
+    "pattern": "(?<![A-Za-z0-9_])(?:PretextView)(?![A-Za-z0-9_])",
+    "role": "Hi-C contact map visualization and manual assembly curation",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Named primary-source workflow recovered during semantic review. Upstream integration, exact input/settings and meaningful validation remain pending."
+  },
+  {
+    "id": "mashmap",
+    "name": "MashMap",
+    "pattern": "(?<![A-Za-z0-9_])(?:MashMap)(?![A-Za-z0-9_])",
+    "role": "Sequence similarity mapping for chromosome assignment",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Named primary-source workflow recovered during semantic review. Upstream integration, exact input/settings and meaningful validation remain pending."
+  },
+  {
+    "id": "repeatmasker",
+    "name": "RepeatMasker",
+    "pattern": "(?<![A-Za-z0-9_])(?:RepeatMasker)(?![A-Za-z0-9_])",
+    "role": "Repetitive sequence annotation",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Named primary-source workflow recovered during semantic review. Upstream integration, exact input/settings and meaningful validation remain pending."
+  },
+  {
+    "id": "rustybam",
+    "name": "rustybam",
+    "pattern": "(?<![A-Za-z0-9_])(?:rustybam)(?![A-Za-z0-9_])",
+    "role": "Alignment coordinate identification and processing",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Named primary-source workflow recovered during semantic review. Upstream integration, exact input/settings and meaningful validation remain pending."
+  },
+  {
+    "id": "mafft",
+    "name": "MAFFT",
+    "pattern": "(?<![A-Za-z0-9_])(?:MAFFT)(?![A-Za-z0-9_])",
+    "role": "Multiple sequence alignment",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Named primary-source workflow recovered during semantic review. Upstream integration, exact input/settings and meaningful validation remain pending."
+  },
+  {
+    "id": "jalview",
+    "name": "Jalview",
+    "pattern": "(?<![A-Za-z0-9_])(?:Jalview)(?![A-Za-z0-9_])",
+    "role": "Alignment visualization and manual inspection",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Named primary-source workflow recovered during semantic review. Upstream integration, exact input/settings and meaningful validation remain pending."
+  },
+  {
+    "id": "iqtree",
+    "name": "IQ-TREE",
+    "pattern": "(?<![A-Za-z0-9_])(?:IQ[- ]?TREE2?)(?![A-Za-z0-9_])",
+    "role": "Maximum-likelihood phylogenetic tree and divergence analyses",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Named primary-source workflow recovered during semantic review. Upstream integration, exact input/settings and meaningful validation remain pending."
+  },
+  {
+    "id": "ggtree",
+    "name": "ggtree",
+    "pattern": "(?<![A-Za-z0-9_])(?:ggtree)(?![A-Za-z0-9_])",
+    "role": "Phylogenetic tree visualization",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Named primary-source workflow recovered during semantic review. Upstream integration, exact input/settings and meaningful validation remain pending."
+  },
+  {
+    "id": "laddr",
+    "name": "LaDDR",
+    "pattern": "(?<![A-Za-z0-9_])(?:LaDDR)(?![A-Za-z0-9_])",
+    "role": "Analysis of simulated read-length/depth datasets before molecular QTL mapping",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Named primary-source workflow recovered during semantic review. Upstream integration, exact input/settings and meaningful validation remain pending."
+  },
+  {
+    "id": "snpad",
+    "name": "snpAD",
+    "pattern": "(?<![A-Za-z0-9_])(?:snpAD)(?![A-Za-z0-9_])",
+    "role": "Ancient-DNA error-aware genotype calling",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Specific named workflow recovered from primary methods. GATK germline calling does not supply this distinct caller/model, platform or complete pipeline; integration and upstream validation remain pending."
+  },
+  {
+    "id": "mutect2",
+    "name": "Mutect2",
+    "pattern": "(?<![A-Za-z0-9_])(?:Mutect\\s*2)(?![A-Za-z0-9_])",
+    "role": "Somatic SNV and short-indel calling",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Specific named workflow recovered from primary methods. GATK germline calling does not supply this distinct caller/model, platform or complete pipeline; integration and upstream validation remain pending."
+  },
+  {
+    "id": "strelka2",
+    "name": "Strelka2",
+    "pattern": "(?<![A-Za-z0-9_])(?:Strelka\\s*2)(?![A-Za-z0-9_])",
+    "role": "Somatic SNV and short-indel calling",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Specific named workflow recovered from primary methods. GATK germline calling does not supply this distinct caller/model, platform or complete pipeline; integration and upstream validation remain pending."
+  },
+  {
+    "id": "cancervision",
+    "name": "CancerVision",
+    "pattern": "(?<![A-Za-z0-9_])(?:CancerVision)(?![A-Za-z0-9_])",
+    "role": "Cancer genome analysis and interpretation platform",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Specific named workflow recovered from primary methods. GATK germline calling does not supply this distinct caller/model, platform or complete pipeline; integration and upstream validation remain pending."
+  },
+  {
+    "id": "beast2",
+    "name": "BEAST",
+    "pattern": "(?<![A-Za-z0-9_])(?:BEAST(?:\\s*2)?)(?![A-Za-z0-9_])",
+    "role": "Bayesian phylogenetic inference and divergence analysis",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Specific named workflow recovered from primary methods. GATK germline calling does not supply this distinct caller/model, platform or complete pipeline; integration and upstream validation remain pending."
+  },
+  {
+    "id": "treeannotator",
+    "name": "TreeAnnotator",
+    "pattern": "(?<![A-Za-z0-9_])(?:TreeAnnotator)(?![A-Za-z0-9_])",
+    "role": "Posterior tree summary and maximum clade credibility trees",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Specific named workflow recovered from primary methods. GATK germline calling does not supply this distinct caller/model, platform or complete pipeline; integration and upstream validation remain pending."
+  },
+  {
+    "id": "exome-germline-single-sample",
+    "name": "Exome Germline Single Sample",
+    "pattern": "(?<![A-Za-z0-9_])(?:Exome Germline Single Sample)(?![A-Za-z0-9_])",
+    "role": "Single-sample exome preprocessing and germline gVCF workflow",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Specific named workflow recovered from primary methods. GATK germline calling does not supply this distinct caller/model, platform or complete pipeline; integration and upstream validation remain pending."
+  },
+  {
+    "id": "starsolo",
+    "name": "STARsolo",
+    "pattern": "(?-i:(?<![A-Za-z0-9_])STARsolo(?![A-Za-z0-9_]))",
+    "role": "Single-cell or single-nucleus RNA alignment, barcode/UMI processing and quantification",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Distinct single-cell barcode/UMI workflow; the bulk STAR adapter does not implement STARsolo."
+  },
+  {
+    "id": "wasp",
+    "name": "WASP",
+    "pattern": "(?-i:(?<![A-Za-z0-9_])WASP(?![A-Za-z0-9_]))",
+    "role": "Allele-swapped read remapping for allelic mapping-bias filtering",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Named allelic mapping-bias method remains missing; bulk STAR alignment and gene counts do not implement the required variant-aware filtering."
+  },
+  {
+    "id": "hornet",
+    "name": "Hornet",
+    "pattern": "(?-i:(?<![A-Za-z0-9_])Hornet(?![A-Za-z0-9_]))",
+    "role": "Modified WASP allele-specific RNA mapping pipeline",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Study-specific modified WASP pipeline remains missing; source/version, allele swaps and species-specific variants require separate integration."
+  },
+  {
+    "id": "clapanalysis",
+    "name": "CLAPAnalysis",
+    "pattern": "(?-i:(?<![A-Za-z0-9_])CLAPAnalysis(?![A-Za-z0-9_]))",
+    "role": "Workflow for sequencing preprocessing and RNA alignment",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Named workflow remains missing; independently validated tool stages do not reproduce its complete orchestration or study modifications."
+  },
+  {
+    "id": "hmmratac",
+    "name": "HMMRATAC",
+    "pattern": "(?<![A-Za-z0-9_])(?:HMMRATAC)(?![A-Za-z0-9_])",
+    "role": "Hidden-Markov-model ATAC peak calling",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Original HMMRATAC and the MACS3 hmmratac program need version/model-specific integration; ordinary MACS callpeak is a different workflow."
+  },
+  {
+    "id": "pycistopic",
+    "name": "pycisTopic",
+    "pattern": "(?<![A-Za-z0-9_])(?:pycistopic)(?![A-Za-z0-9_])",
+    "role": "Single-cell ATAC pseudobulk peaks and latent-Dirichlet-allocation topic modelling",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Full pycisTopic orchestration, topic selection, consensus peaks and cell-state handling remain missing."
+  },
+  {
+    "id": "pycistarget",
+    "name": "pycisTarget",
+    "pattern": "(?<![A-Za-z0-9_])(?:pycistarget)(?![A-Za-z0-9_])",
+    "role": "Regulatory motif enrichment from ranked region/gene resources",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "The specific Python motif workflow and its supplied databases remain missing."
+  },
+  {
+    "id": "avocado",
+    "name": "Avocado",
+    "pattern": "(?<![A-Za-z0-9_])(?:(?-i:Avocado))(?![A-Za-z0-9_])",
+    "role": "Epigenomic signal imputation or reuse of supplied imputed tracks",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Reusing published imputed tracks is distinct from running Avocado or recreating its model."
+  },
+  {
+    "id": "fithichip",
+    "name": "FitHiChIP",
+    "pattern": "(?<![A-Za-z0-9_])(?:FitHiChIP)(?![A-Za-z0-9_])",
+    "role": "Peak-anchored chromatin interaction calling",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "FitHiChIP contact models, input contracts and study configuration remain missing."
+  },
+  {
+    "id": "chip-zwart",
+    "name": "ChIP_Zwart",
+    "pattern": "(?<![A-Za-z0-9_])(?:ChIP_Zwart)(?![A-Za-z0-9_])",
+    "role": "ChIP-seq processing and differential-peak workflow",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Workflow orchestration and exact archived source/version require separate integration; individual adapters do not reproduce it."
+  },
+  {
+    "id": "bamtools",
+    "name": "BAMTools",
+    "pattern": "(?<![A-Za-z0-9_])(?:Bamtools)(?![A-Za-z0-9_])",
+    "role": "BAM processing and sorting",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Related SAM/BAM operations exist through other programs; actual BAMTools integration and published-version compatibility remain missing."
+  },
+  {
+    "id": "bamscale",
+    "name": "BAMscale",
+    "pattern": "(?<![A-Za-z0-9_])(?:BAMscale)(?![A-Za-z0-9_])",
+    "role": "Alignment coverage tracks with library-size normalization",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Coverage generation and the specific BAMscale normalization workflow remain missing."
+  },
+  {
+    "id": "bedops",
+    "name": "BEDOPS",
+    "pattern": "(?<![A-Za-z0-9_])(?:(?:BEDOPS|bedmap|wig2bed))(?![A-Za-z0-9_])",
+    "role": "Genomic interval/coverage processing and signal aggregation",
+    "current_coverage": "method-overlap",
+    "existing_source": "src/main/java/org/jlinalg/genetics/GenomicIntervals.java",
+    "coverage_note": "Native interval and signal helpers overlap with some mathematics; BEDOPS command, file-format and whole-workflow equivalence is unvalidated."
+  },
+  {
+    "id": "deepstarr",
+    "name": "DeepSTARR",
+    "pattern": "(?<![A-Za-z0-9_])(?:DeepSTARR)(?![A-Za-z0-9_])",
+    "role": "Sequence-based neural prediction of regulatory activity",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Neural architecture, training/evaluation splits and exact model inference remain missing."
+  },
+  {
+    "id": "goodpeakanalysis",
+    "name": "GoodpeakAnalysis",
+    "pattern": "(?<![A-Za-z0-9_])(?:GoodpeakAnalysis|GoodpeaksScript)(?![A-Za-z0-9_])",
+    "role": "Differential peak analysis workflow",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Study-specific R workflow/source and statistical contracts require separate integration."
+  },
+  {
+    "id": "ataqv",
+    "name": "ataqv",
+    "pattern": "(?<![A-Za-z0-9_])(?:ataqv)(?![A-Za-z0-9_])",
+    "role": "ATAC-seq library and alignment quality metrics",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "The named ATAC QC workflow and its metric definitions remain missing."
+  },
+  {
+    "id": "sambamba",
+    "name": "Sambamba",
+    "pattern": "(?<![A-Za-z0-9_])(?:Sambamba)(?![A-Za-z0-9_])",
+    "role": "Alignment processing and duplicate removal",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Actual Sambamba execution and study-specific duplicate semantics remain missing; SAMtools/Picard are distinct implementations."
+  },
+  {
+    "id": "stainedglass",
+    "name": "StainedGlass",
+    "pattern": "(?<![A-Za-z0-9_])(?:(?-i:StainedGlass))(?![A-Za-z0-9_])",
+    "role": "Visualization of tandem-repeat/centromere genome structure",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "The exact repeat-structure visualization workflow remains missing."
+  },
+  {
+    "id": "maps-contact",
+    "name": "MAPS",
+    "pattern": "(?<![A-Za-z0-9_])(?:(?-i:MAPS))(?![A-Za-z0-9_])",
+    "role": "PLAC-seq chromatin-interaction calling",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "The specific MAPS chromatin-contact pipeline and its AND/XOR/background model remain missing."
+  },
+  {
+    "id": "hprep",
+    "name": "HPRep",
+    "pattern": "(?<![A-Za-z0-9_])(?:HPRep)(?![A-Za-z0-9_])",
+    "role": "Biological-replicate concordance of chromatin interaction data",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "The specific contact-reproducibility metric and sampling/normalization contracts remain missing."
+  },
+  {
+    "id": "ls-gkm",
+    "name": "LS-GKM",
+    "pattern": "(?<![A-Za-z0-9_])(?:LS[-– ]GKM)(?![A-Za-z0-9_])",
+    "role": "Gapped-kmer SVM training and sequence prediction",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "LS-GKM training/prediction and deltaSVM sequence-scoring workflows remain missing."
+  },
+  {
+    "id": "chipseeker",
+    "name": "ChIPseeker",
+    "pattern": "(?<![A-Za-z0-9_])(?:ChIPseeker)(?![A-Za-z0-9_])",
+    "role": "Peak annotation relative to genes and genomic features",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Genome/annotation editions and specific R ChIPseeker annotation functions require separate integration."
+  },
+  {
+    "id": "diffbind",
+    "name": "DiffBind",
+    "pattern": "(?<![A-Za-z0-9_])(?:DiffBind)(?![A-Za-z0-9_])",
+    "role": "Differential binding or accessibility across peak-count libraries",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "The exact replicate/design/count/filter/statistical workflow remains missing."
+  },
+  {
+    "id": "bcl2fastq",
+    "name": "bcl2fastq",
+    "pattern": "(?<![A-Za-z0-9_])(?:bcl2fastq)(?![A-Za-z0-9_])",
+    "role": "Base-call conversion and sample demultiplexing",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Upstream runtime availability and instrument/sample-sheet contracts require separate integration."
+  },
+  {
+    "id": "ucsc-bedgraphtobigwig",
+    "name": "UCSC bedGraphToBigWig",
+    "pattern": "(?<![A-Za-z0-9_])(?:bedGraphToBigWig)(?![A-Za-z0-9_])",
+    "role": "Conversion of genomic signal tracks to indexed bigWig",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "The upstream converter or independently validated native bigWig writer remains missing; signal summaries do not write bigWig."
+  },
+  {
+    "id": "ucsc-bigwigtowig",
+    "name": "UCSC bigWigToWig",
+    "pattern": "(?<![A-Za-z0-9_])(?:bigWigToWig)(?![A-Za-z0-9_])",
+    "role": "Conversion of indexed bigWig signal to WIG",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "The named converter and indexed signal decoder remain missing."
+  },
+  {
+    "id": "ucsc-liftover",
+    "name": "UCSC liftOver",
+    "pattern": "(?<![A-Za-z0-9_])(?:liftOver)(?![A-Za-z0-9_])",
+    "role": "Chain-based genome-assembly coordinate mapping",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Chain-aware mapping and ambiguous/unmapped interval handling remain missing; declaring a build label does not perform liftover."
+  },
+  {
+    "id": "igv",
+    "name": "Integrative Genomics Viewer (IGV)",
+    "pattern": "(?<![A-Za-z0-9_])(?:(?-i:IGV)(?:_\\d+(?:\\.\\d+)*)?|Integrative Genomics Viewer)(?![A-Za-z0-9_])",
+    "role": "Interactive inspection and visualization of genomic alignments, variants or signal tracks",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "The interactive viewer, exact track/reference loading and published versions require separate setup/integration; a BED export is not a tested IGV session."
+  },
+  {
+    "id": "nrsa",
+    "name": "Nascent RNA Sequencing Analysis (NRSA)",
+    "pattern": "(?<![A-Za-z0-9_])(?:NRSA|Nascent RNA Sequencing Analysis)(?![A-Za-z0-9_])",
+    "role": "Nascent transcription gene-body and promoter-proximal pausing analysis",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "The specific nascent RNA pipeline, normalization, gene-body and pause models require upstream workflow integration."
+  },
+  {
+    "id": "crossmap",
+    "name": "CrossMap",
+    "pattern": "(?<![A-Za-z0-9_])CrossMap(?:\\.py)?(?![A-Za-z0-9_])",
+    "role": "Genome-assembly coordinate conversion with format-specific interval, alignment and variant handling",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Independent CrossMap execution/input/output validation is required; a related Java interval mapper is not full CrossMap parity."
+  },
+  {
+    "id": "rtracklayer",
+    "name": "rtracklayer",
+    "pattern": "(?<![A-Za-z0-9_])rtracklayer(?![A-Za-z0-9_])",
+    "role": "R genomic-track import/export and chain-based GRanges coordinate mapping",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Specific R functions, split/multiple GRanges semantics, file formats and published versions require their own integration."
+  },
+  {
+    "id": "liftover-r-workflow",
+    "name": "liftOver R workflow (rtracklayer interface)",
+    "pattern": "\\bR\\s+package\\s+liftOver\\b",
+    "role": "Bioconductor liftOver workflow using rtracklayer::liftOver",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Named workflow is distinct from the UCSC executable and from the general rtracklayer package. Primary paper/citation identifies the R interface; versions remain explicit."
+  },
+  {
+    "id": "mungesumstats",
+    "name": "MungeSumstats",
+    "pattern": "(?<![A-Za-z0-9_])MungeSumstats(?![A-Za-z0-9_])",
+    "role": "GWAS summary-statistic formatting, QC and genome-build harmonization",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Paper-specific formatting, allele/strand/reference rules and R workflow orchestration require separate integration; coordinate mapping alone does not implement this package."
+  },
+  {
+    "id": "genomicranges",
+    "name": "GenomicRanges",
+    "pattern": "(?<![A-Za-z0-9_])GenomicRanges(?![A-Za-z0-9_])",
+    "role": "Genomic-range containers and overlap operations in R",
+    "current_coverage": "method-overlap",
+    "existing_source": "src/main/java/org/jlinalg/genetics/GenomicIntervals.java",
+    "coverage_note": "Native interval intersection/coverage provides related arithmetic, not R GRanges/S4/metadata/sequence-info or full package equivalence."
+  },
+  {
+    "id": "iranges",
+    "name": "IRanges",
+    "pattern": "(?<![A-Za-z0-9_])IRanges(?![A-Za-z0-9_])",
+    "role": "Integer-range containers and overlap operations in R",
+    "current_coverage": "method-overlap",
+    "existing_source": "src/main/java/org/jlinalg/genetics/GenomicIntervals.java",
+    "coverage_note": "Related native interval arithmetic exists; R IntegerRanges/Rle, grouping and package-specific metadata/recycling semantics require separate work."
+  },
+  {
+    "id": "pumice",
+    "name": "PUMICE",
+    "pattern": "(?<![A-Za-z0-9_])(?-i:PUMICE)(?![A-Za-z0-9_])",
+    "role": "Transcriptome prediction using functional annotation and 3D regulatory regions",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "The essential/nonessential predictor and regulatory-region modeling workflow remains missing."
+  },
+  {
+    "id": "re2c",
+    "name": "RE2C",
+    "pattern": "(?<![A-Za-z0-9_])(?-i:RE2C)(?![A-Za-z0-9_])",
+    "role": "Overlap-aware GWAS meta-analysis",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Source-specific Lin-Sullivan/sample-overlap behavior requires its own implementation and validation; independent-cohort inverse-variance meta-analysis is not equivalent."
+  },
+  {
+    "id": "gwas-sumstats-harmoniser",
+    "name": "gwas-sumstats-harmoniser",
+    "pattern": "(?<![A-Za-z0-9_])gwas[- ]sumstats[- ]harmoni[sz]er(?![A-Za-z0-9_])",
+    "role": "GWAS Catalog reference-strand and allele harmonization",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Named procedure/code execution and reference-consensus rules must be distinguished; genomic coordinate conversion alone is insufficient."
+  },
+  {
+    "id": "easyqc",
+    "name": "EasyQC",
+    "pattern": "(?<![A-Za-z0-9_])EasyQC(?![A-Za-z0-9_])",
+    "role": "GWAS summary-statistic QC against reference variants",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Exact source filtering, reference/allele/duplicate/INFO rules and published version require a tested profile."
+  },
+  {
+    "id": "mvmapit",
+    "name": "mvMAPIT",
+    "pattern": "(?<![A-Za-z0-9_])mvMAPIT(?![A-Za-z0-9_])",
+    "role": "R implementation of MAPIT tests",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Marginal epistasis scientific model, covariance/trace estimates and test calibration require separate implementation and validation."
+  },
+  {
+    "id": "biobambam2",
+    "name": "biobambam2",
+    "pattern": "(?<![A-Za-z0-9_])biobambam2(?![A-Za-z0-9_])",
+    "role": "Alignment-processing suite, including adapter clipping and duplicate marking",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Related BAM/QC tools do not establish biobambam2 clipping, duplicate semantics or published-version equivalence."
+  },
+  {
+    "id": "fame",
+    "name": "FAME",
+    "pattern": "(?<![A-Za-z0-9_])(?-i:FAME)(?![A-Za-z0-9_])",
+    "role": "Fast marginal epistasis testing with stochastic variance-component estimates",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "The epistasis model and stochastic estimators/trace reuse require independent scientific validation; no substitute ordinary interaction regression."
+  },
+  {
+    "id": "sme",
+    "name": "Sparse marginal epistasis (SME)",
+    "pattern": "(?<![A-Za-z0-9_])(?-i:SME)(?![A-Za-z0-9_])",
+    "role": "Functional-mask sparse marginal epistasis testing",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Annotation mask, variance-component model, stochastic traces/shared random vectors and one-sided test require distinct implementation and calibration."
+  },
+  {
+    "id": "rsubread",
+    "name": "Rsubread",
+    "pattern": "(?<![A-Za-z0-9_])(?:R\\s*subread)(?![A-Za-z0-9_])",
+    "role": "R interface for read mapping, feature/junction counting and variant analysis",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Additional named software from primary alignment/quantification source review; a related adapter, installed executable or generic Java helper does not establish this workflow. Integration and independent validation pending."
+  },
+  {
+    "id": "subread-suite",
+    "name": "Subread suite",
+    "pattern": "(?<![A-Za-z0-9_])(?:(?-i:Subread|SubRead|subread-(?:align|buildindex)))(?![A-Za-z0-9_])",
+    "role": "Named Subread suite or explicit Subread alignment/index program; distinguish counting-library attribution",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Additional named software from primary alignment/quantification source review; a related adapter, installed executable or generic Java helper does not establish this workflow. Integration and independent validation pending."
+  },
+  {
+    "id": "subjunc",
+    "name": "Subjunc",
+    "pattern": "(?<![A-Za-z0-9_])(?:Subjunc)(?![A-Za-z0-9_])",
+    "role": "Splice-aware RNA read alignment",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Additional named software from primary alignment/quantification source review; a related adapter, installed executable or generic Java helper does not establish this workflow. Integration and independent validation pending."
+  },
+  {
+    "id": "seqinr",
+    "name": "seqinr",
+    "pattern": "(?<![A-Za-z0-9_])(?:seqinr)(?![A-Za-z0-9_])",
+    "role": "R sequence retrieval and biological sequence analysis",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Additional named software from primary alignment/quantification source review; a related adapter, installed executable or generic Java helper does not establish this workflow. Integration and independent validation pending."
+  },
+  {
+    "id": "dragen",
+    "name": "DRAGEN",
+    "pattern": "(?<![A-Za-z0-9_])(?:DRAGEN)(?![A-Za-z0-9_])",
+    "role": "Sequencing alignment, variant or RNA processing platform; named workflow must be identified",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Additional named software from primary alignment/quantification source review; a related adapter, installed executable or generic Java helper does not establish this workflow. Integration and independent validation pending."
+  },
+  {
+    "id": "bclconvert",
+    "name": "BCLConvert",
+    "pattern": "(?<![A-Za-z0-9_])(?:BCL[ -]?Convert)(?![A-Za-z0-9_])",
+    "role": "Sequencer BCL demultiplexing and FASTQ conversion",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Additional named software from primary alignment/quantification source review; a related adapter, installed executable or generic Java helper does not establish this workflow. Integration and independent validation pending."
+  },
+  {
+    "id": "tpmcalculator",
+    "name": "TPMCalculator",
+    "pattern": "(?<![A-Za-z0-9_])(?:TPMCalculator)(?![A-Za-z0-9_])",
+    "role": "Expression-count and TPM normalization workflow",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Additional named software from primary alignment/quantification source review; a related adapter, installed executable or generic Java helper does not establish this workflow. Integration and independent validation pending."
+  },
+  {
+    "id": "proteinpaint",
+    "name": "ProteinPaint",
+    "pattern": "(?<![A-Za-z0-9_])(?:ProteinPaint)(?![A-Za-z0-9_])",
+    "role": "Genomic result and molecular-data visualization",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Additional named software from primary alignment/quantification source review; a related adapter, installed executable or generic Java helper does not establish this workflow. Integration and independent validation pending."
+  },
+  {
+    "id": "arriba",
+    "name": "Arriba",
+    "pattern": "(?<![A-Za-z0-9_])(?:Arriba)(?![A-Za-z0-9_])",
+    "role": "RNA-seq gene-fusion detection",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Additional named software from primary alignment/quantification source review; a related adapter, installed executable or generic Java helper does not establish this workflow. Integration and independent validation pending."
+  },
+  {
+    "id": "interproscan",
+    "name": "InterProScan",
+    "pattern": "(?<![A-Za-z0-9_])(?:InterProScan)(?![A-Za-z0-9_])",
+    "role": "Protein domain and functional annotation",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Additional named software from primary alignment/quantification source review; a related adapter, installed executable or generic Java helper does not establish this workflow. Integration and independent validation pending."
+  },
+  {
+    "id": "blastkoala",
+    "name": "BlastKOALA",
+    "pattern": "(?<![A-Za-z0-9_])(?:BlastKOALA)(?![A-Za-z0-9_])",
+    "role": "KEGG orthology and pathway functional annotation",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Additional named software from primary alignment/quantification source review; a related adapter, installed executable or generic Java helper does not establish this workflow. Integration and independent validation pending."
+  },
+  {
+    "id": "kofamkoala",
+    "name": "KofamKOALA",
+    "pattern": "(?<![A-Za-z0-9_])(?:KofamKOALA)(?![A-Za-z0-9_])",
+    "role": "Profile-HMM KEGG orthology annotation",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Additional named software from primary alignment/quantification source review; a related adapter, installed executable or generic Java helper does not establish this workflow. Integration and independent validation pending."
+  },
+  {
+    "id": "dupradar",
+    "name": "dupRadar",
+    "pattern": "(?<![A-Za-z0-9_])(?:dupRadar)(?![A-Za-z0-9_])",
+    "role": "RNA-seq duplication and expression-dependent duplicate QC",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Additional named software from primary alignment/quantification source review; a related adapter, installed executable or generic Java helper does not establish this workflow. Integration and independent validation pending."
+  },
+  {
+    "id": "isoquant",
+    "name": "IsoQuant",
+    "pattern": "(?<![A-Za-z0-9_])(?:IsoQuant)(?![A-Za-z0-9_])",
+    "role": "Long-read transcript model identification, correction and quantification",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Additional named software from primary alignment/quantification source review; a related adapter, installed executable or generic Java helper does not establish this workflow. Integration and independent validation pending."
+  },
+  {
+    "id": "guppy",
+    "name": "Guppy",
+    "pattern": "(?<![A-Za-z0-9_])(?:Guppy)(?![A-Za-z0-9_])",
+    "role": "Nanopore basecalling; distinguish the fish name",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Additional named software from primary alignment/quantification source review; a related adapter, installed executable or generic Java helper does not establish this workflow. Integration and independent validation pending."
+  },
+  {
+    "id": "metabat2",
+    "name": "MetaBAT2",
+    "pattern": "(?<![A-Za-z0-9_])(?:MetaBAT2?)(?![A-Za-z0-9_])",
+    "role": "Metagenomic assembly binning and read-depth processing",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Additional named software from primary alignment/quantification source review; a related adapter, installed executable or generic Java helper does not establish this workflow. Integration and independent validation pending."
+  },
+  {
+    "id": "singlem",
+    "name": "SingleM",
+    "pattern": "(?<![A-Za-z0-9_])(?:(?-i:SingleM))(?![A-Za-z0-9_])",
+    "role": "Metagenomic microbial community marker profiling",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Additional named software from primary alignment/quantification source review; a related adapter, installed executable or generic Java helper does not establish this workflow. Integration and independent validation pending."
+  },
+  {
+    "id": "binchicken",
+    "name": "BinChicken",
+    "pattern": "(?<![A-Za-z0-9_])(?:BinChicken)(?![A-Za-z0-9_])",
+    "role": "Metagenomic assembly/binning orchestration",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Additional named software from primary alignment/quantification source review; a related adapter, installed executable or generic Java helper does not establish this workflow. Integration and independent validation pending."
+  },
+  {
+    "id": "syri",
+    "name": "SyRI",
+    "pattern": "(?<![A-Za-z0-9_])(?:(?-i:SyRI))(?![A-Za-z0-9_])",
+    "role": "Assembly-to-assembly structural rearrangement analysis",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Additional named software from primary alignment/quantification source review; a related adapter, installed executable or generic Java helper does not establish this workflow. Integration and independent validation pending."
+  },
+  {
+    "id": "plotsr",
+    "name": "plotsr",
+    "pattern": "(?<![A-Za-z0-9_])(?:plotsr)(?![A-Za-z0-9_])",
+    "role": "Synteny and structural-rearrangement visualization",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Additional named software from primary alignment/quantification source review; a related adapter, installed executable or generic Java helper does not establish this workflow. Integration and independent validation pending."
+  },
+  {
+    "id": "hifiadapterfilt",
+    "name": "HiFiAdapterFilt",
+    "pattern": "(?<![A-Za-z0-9_])(?:HiFiAdapterFilt)(?![A-Za-z0-9_])",
+    "role": "Adapter-contamination filtering for PacBio HiFi reads",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Additional named software from primary alignment/quantification source review; a related adapter, installed executable or generic Java helper does not establish this workflow. Integration and independent validation pending."
+  },
+  {
+    "id": "locityper",
+    "name": "Locityper",
+    "pattern": "(?<![A-Za-z0-9_])(?:Locityper)(?![A-Za-z0-9_])",
+    "role": "Read recruitment and probabilistic WGS locus/haplotype genotyping",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Additional named software from primary alignment/quantification source review; a related adapter, installed executable or generic Java helper does not establish this workflow. Integration and independent validation pending."
+  },
+  {
+    "id": "strobealign",
+    "name": "Strobealign",
+    "pattern": "(?<![A-Za-z0-9_])(?:Strobealign)(?![A-Za-z0-9_])",
+    "role": "Short-read DNA mapping",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Additional named software from primary alignment/quantification source review; a related adapter, installed executable or generic Java helper does not establish this workflow. Integration and independent validation pending."
+  },
+  {
+    "id": "ciriquant",
+    "name": "CIRIquant",
+    "pattern": "(?<![A-Za-z0-9_])(?:CIRIquant)(?![A-Za-z0-9_])",
+    "role": "Pseudo-circular reference RNA realignment and circRNA quantification",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Additional named software from primary alignment/quantification source review; a related adapter, installed executable or generic Java helper does not establish this workflow. Integration and independent validation pending."
+  },
+  {
+    "id": "ciri2",
+    "name": "CIRI2",
+    "pattern": "(?<![A-Za-z0-9_])(?:CIRI2)(?![A-Za-z0-9_])",
+    "role": "Back-splice junction and circular-RNA detection",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Additional named software from primary alignment/quantification source review; a related adapter, installed executable or generic Java helper does not establish this workflow. Integration and independent validation pending."
+  },
+  {
+    "id": "ballgown",
+    "name": "Ballgown",
+    "pattern": "(?<![A-Za-z0-9_])(?:Ballgown)(?![A-Za-z0-9_])",
+    "role": "Transcript expression analysis with assembled RNA transcripts",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Additional named software from primary alignment/quantification source review; a related adapter, installed executable or generic Java helper does not establish this workflow. Integration and independent validation pending."
+  },
+  {
+    "id": "snapatac2",
+    "name": "SnapATAC2",
+    "pattern": "(?<![A-Za-z0-9_])(?:SnapATAC2)(?![A-Za-z0-9_])",
+    "role": "ATAC processing, modified doublet detection and embedding",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No validated equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "dropest",
+    "name": "DropEst",
+    "pattern": "(?<![A-Za-z0-9_])(?:DropEst)(?![A-Za-z0-9_])",
+    "role": "Droplet RNA count processing",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No validated equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "sysvi",
+    "name": "SysVI",
+    "pattern": "(?<![A-Za-z0-9_])(?:SysVI)(?![A-Za-z0-9_])",
+    "role": "Variational single-cell integration",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No validated equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "pywgcna",
+    "name": "PyWGCNA",
+    "pattern": "(?<![A-Za-z0-9_])(?:PyWGCNA)(?![A-Za-z0-9_])",
+    "role": "Python coexpression network analysis",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No validated equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "gseapy",
+    "name": "gseapy",
+    "pattern": "(?<![A-Za-z0-9_])(?:gseapy)(?![A-Za-z0-9_])",
+    "role": "Python gene-set enrichment analysis",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No validated equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "magic",
+    "name": "MAGIC",
+    "pattern": "(?<![A-Za-z0-9_])(?:(?-i:MAGIC|magic(?=[ -]imputed)))(?![A-Za-z0-9_])",
+    "role": "Graph-based expression imputation",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No validated equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "splitpipe",
+    "name": "splitpipe",
+    "pattern": "(?<![A-Za-z0-9_])(?:split[- ]?pipe)(?![A-Za-z0-9_])",
+    "role": "Combinatorial single-cell read processing",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No validated equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "scds",
+    "name": "scds",
+    "pattern": "(?<![A-Za-z0-9_])(?:scds)(?![A-Za-z0-9_])",
+    "role": "Single-cell doublet detection",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No validated equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "scdist",
+    "name": "scDist",
+    "pattern": "(?<![A-Za-z0-9_])(?:scDist)(?![A-Za-z0-9_])",
+    "role": "Differential single-cell state analysis",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No validated equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "sccoda",
+    "name": "scCODA",
+    "pattern": "(?<![A-Za-z0-9_])(?:scCODA)(?![A-Za-z0-9_])",
+    "role": "Compositional single-cell abundance analysis",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No validated equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "ns-forest",
+    "name": "NS-Forest",
+    "pattern": "(?<![A-Za-z0-9_])(?:NS[- ]Forest)(?![A-Za-z0-9_])",
+    "role": "Random-forest cell-type marker selection",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No validated equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "trailmaker",
+    "name": "Trailmaker",
+    "pattern": "(?<![A-Za-z0-9_])(?:Trailmaker)(?![A-Za-z0-9_])",
+    "role": "Parse read processing and reference quantification",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No validated equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "mapmycells",
+    "name": "MapMyCells",
+    "pattern": "(?<![A-Za-z0-9_])(?:MapMyCells)(?![A-Za-z0-9_])",
+    "role": "Reference-based cell annotation",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No validated equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "sccomp",
+    "name": "sccomp",
+    "pattern": "(?<![A-Za-z0-9_])(?:sccomp)(?![A-Za-z0-9_])",
+    "role": "Differential cell-composition analysis",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No validated equivalent workflow identified in the current source inventory."
+  },
+  {
+    "id": "magma-celltyping",
+    "name": "MAGMA.Celltyping",
+    "pattern": "(?<![A-Za-z0-9_])(?:MAGMA\\.Celltyping)(?![A-Za-z0-9_])",
+    "role": "R MAGMA expression/cell-type enrichment wrapper",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Distinct source-named method/wrapper; integration and independent scientific validation pending."
+  },
+  {
+    "id": "ewce",
+    "name": "EWCE",
+    "pattern": "(?<![A-Za-z0-9_])(?:(?-i:EWCE))(?![A-Za-z0-9_])",
+    "role": "Expression-weighted cell-type enrichment",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Distinct source-named method/wrapper; integration and independent scientific validation pending."
+  },
+  {
+    "id": "gsa-mixer",
+    "name": "GSA-MiXeR",
+    "pattern": "(?<![A-Za-z0-9_])(?:GSA[- ]MiXeR)(?![A-Za-z0-9_])",
+    "role": "Gene-set heritability enrichment",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Distinct source-named method/wrapper; integration and independent scientific validation pending."
+  },
+  {
+    "id": "favor",
+    "name": "FAVOR",
+    "pattern": "(?<![A-Za-z0-9_])(?:(?-i:FAVOR))(?![A-Za-z0-9_])",
+    "role": "Variant annotation and gene-prioritization pipeline",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Distinct source-named method/wrapper; integration and independent scientific validation pending."
+  },
+  {
+    "id": "mendelvar",
+    "name": "MendelVar",
+    "pattern": "(?<![A-Za-z0-9_])(?:MendelVar)(?![A-Za-z0-9_])",
+    "role": "Mendelian disease-gene enrichment",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Distinct source-named method/wrapper; integration and independent scientific validation pending."
+  },
+  {
+    "id": "flash-merge",
+    "name": "FLASH",
+    "pattern": "(?<![A-Za-z0-9_])(?-i:FLASH)(?![A-Za-z0-9_])",
+    "role": "Overlap-based paired-read merging",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Distinct paired-read merger; not FlashPCA or HEADCROP. Integration and independent scientific validation pending."
+  },
+  {
+    "id": "pybigwig",
+    "name": "pyBigWig",
+    "pattern": "(?<![A-Za-z0-9_])(?:pyBigWig)(?![A-Za-z0-9_])",
+    "role": "Indexed bigWig/bigBed library access and interval summaries",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Distinct source-named library/program; integration and independent scientific validation pending."
+  },
+  {
+    "id": "qnorm",
+    "name": "qnorm",
+    "pattern": "(?<![A-Za-z0-9_])(?:(?-i:qnorm))(?![A-Za-z0-9_])",
+    "role": "Quantile normalization of numeric matrices",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Distinct source-named library/program; integration and independent scientific validation pending."
+  },
+  {
+    "id": "ucsc-bigwigmerge",
+    "name": "UCSC bigWigMerge",
+    "pattern": "(?<![A-Za-z0-9_])(?:bigWigMerge)(?![A-Za-z0-9_])",
+    "role": "Merge bigWig tracks into a bedGraph signal",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Distinct source-named library/program; integration and independent scientific validation pending."
+  },
+  {
+    "id": "biomart",
+    "name": "biomaRt",
+    "pattern": "(?<![A-Za-z0-9_])(?:(?-i:biomaRt))(?![A-Za-z0-9_])",
+    "role": "Programmatic BioMart annotation/data retrieval through the named R package; BioMart web/database names are not execution evidence",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Distinct named algorithm/annotation/IO/support package recovered in individually reviewed primary methods. Supporting dependency versus scientific analysis is explicit; integration and independent validation pending."
+  },
+  {
+    "id": "shortread",
+    "name": "ShortRead",
+    "pattern": "(?<![A-Za-z0-9_])(?:(?-i:ShortRead))(?![A-Za-z0-9_])",
+    "role": "Sequencing-read quality assessment and IO in R/Bioconductor; ordinary short-read terminology is not package evidence",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Distinct named algorithm/annotation/IO/support package recovered in individually reviewed primary methods. Supporting dependency versus scientific analysis is explicit; integration and independent validation pending."
+  },
+  {
+    "id": "metaviper",
+    "name": "metaVIPER",
+    "pattern": "(?<![A-Za-z0-9_])(?:metaVIPER)(?![A-Za-z0-9_])",
+    "role": "Protein/regulator activity inference across multiple regulatory networks",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Distinct named algorithm/annotation/IO/support package recovered in individually reviewed primary methods. Supporting dependency versus scientific analysis is explicit; integration and independent validation pending."
+  },
+  {
+    "id": "aracne",
+    "name": "ARACNe",
+    "pattern": "(?<![A-Za-z0-9_])(?:ARACNe(?:-AP)?)(?![A-Za-z0-9_])",
+    "role": "Regulatory-network inference from expression profiles",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Distinct named algorithm/annotation/IO/support package recovered in individually reviewed primary methods. Supporting dependency versus scientific analysis is explicit; integration and independent validation pending."
+  },
+  {
+    "id": "annotationhub",
+    "name": "AnnotationHub",
+    "pattern": "(?<![A-Za-z0-9_])(?:AnnotationHub)(?![A-Za-z0-9_])",
+    "role": "Discovery and retrieval of versioned annotation resources",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Distinct named algorithm/annotation/IO/support package recovered in individually reviewed primary methods. Supporting dependency versus scientific analysis is explicit; integration and independent validation pending."
+  },
+  {
+    "id": "biocfilecache",
+    "name": "BiocFileCache",
+    "pattern": "(?<![A-Za-z0-9_])(?:BiocFileCache)(?![A-Za-z0-9_])",
+    "role": "Local cache management for retrieved research resources",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Distinct named algorithm/annotation/IO/support package recovered in individually reviewed primary methods. Supporting dependency versus scientific analysis is explicit; integration and independent validation pending."
+  },
+  {
+    "id": "biocgenerics",
+    "name": "BiocGenerics",
+    "pattern": "(?<![A-Za-z0-9_])(?:BiocGenerics)(?![A-Za-z0-9_])",
+    "role": "Bioconductor S4 generic infrastructure; named supporting dependency,not a stand-alone scientific analysis",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Distinct named algorithm/annotation/IO/support package recovered in individually reviewed primary methods. Supporting dependency versus scientific analysis is explicit; integration and independent validation pending."
+  },
+  {
+    "id": "dose",
+    "name": "DOSE",
+    "pattern": "(?<![A-Za-z0-9_])(?-i:DOSE)(?![A-Za-z0-9_])",
+    "role": "Named DOSE enrichment package; generic pathway GSEA with explicit source sets",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Explicit package name; generic drug dose is excluded. Current and historical generic APIs require separate validation."
+  },
+  {
+    "id": "viper",
+    "name": "VIPER",
+    "pattern": "(?<![A-Za-z0-9_])(?-i:VIPER)(?![A-Za-z0-9_])",
+    "role": "VIPER regulatory/protein-activity package and expression-signature routines",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Separate from metaVIPER and msVIPER. Original runtime held pending applicable restricted-license eligibility confirmation; no installation or original-engine numerical validation claimed."
+  },
+  {
+    "id": "area",
+    "name": "aREA",
+    "pattern": "(?<![A-Za-z0-9_])(?-i:aREA)(?![A-Za-z0-9_])",
+    "role": "Analytic rank-based enrichment of signed molecular signatures",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Distinct named analytic method; ordinary area and GSEA running scores are excluded. Original VIPER/aREA runtime eligibility is pending."
+  }
+]

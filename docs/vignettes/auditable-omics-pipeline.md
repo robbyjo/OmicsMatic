@@ -9,6 +9,10 @@
 
 ## Purpose
 
+The [analysis pipeline specification](analysis-pipeline-specification.md) defines
+the end-to-end scientific workflow and decision rules, with improved pseudocode
+and an explicit map of current capabilities and proposed extensions.
+
 The pipeline starts from quantified or processed molecular matrices,
 previously calculated association results, or later-stage evidence. A scientist
 describes the study and hypotheses; JLinAlg validates the description, constructs
@@ -824,12 +828,15 @@ modality-specific operation. Likewise, raw or merely quantified matrices require
 an explicit `analysis.association` model and preprocessing decision. For
 discovery/replication, both discovery selection and replication significance use
 the declared family correction (`BH` by default, or explicit `NONE`). By default,
-adjustment covers every result, significance is compared inclusively with alpha,
+adjustment covers every result; newly resolved workflows use strict significance thresholds,
 and sign concordance is required. A study may instead declare
 `analysis.replication.adjustment_scope: discovery_subset`,
-`threshold_comparison: less_than`, or `require_same_sign: false`; the comparison
+`threshold_comparison: less_than_or_equal`, or `require_same_sign: false`; the comparison
 output still reports direction. `analysis.operations.meta_analysis` may set
-`model: fixed|random` and `min_cohorts`. A prespecified
+`model: fixed|random`, `min_cohorts`, tau/inference/confidence options and numerical
+controls. The [pooling contract](study-pipeline-tutorial.md#compatible-effects-and-covariance-aware-pooling)
+adds effect comparability audits and explicit sampling-covariance GLS; correcting
+pooling dependence does not establish independent validation. A prespecified
 `analysis.operations.sensitivity_analysis.min_cohorts` may be lower than the
 primary threshold for leave-one-cohort-out reruns (for example, primary 4 and
 sensitivity 3); the all-cohort primary analysis and its threshold remain

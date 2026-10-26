@@ -17,10 +17,120 @@ import org.junit.jupiter.api.io.TempDir;
 class StudyManuscriptRevisionTest {
     @TempDir Path directory;
 
+    @Test void publicDiscussionSourcesAreSnapshottedLocallyAndInheritedWithoutRereadingChangedOriginals()throws Exception {
+        Path p=project(),refs=directory.resolve("source-refs.yaml");Files.writeString(refs,"schema_version: 1\nreferences:\n  - {id: 'pmid:123', rationale: 'Synthetic source context.'}\n");Path policy=directory.resolve("source-policy");Files.createDirectory(policy);Files.writeString(policy.resolve("resolved-study.yaml"),"resources: {downloads: automatic}\n");
+        Path acquired=StudyCitationSources.fetch(policy,refs,directory.resolve("source-references"),StudyProject.Actor.human("test"),false,new StudyPublicEvidence(uri->new StudyPublicEvidence.Reply(200,"{\"resultList\":{\"result\":[{\"source\":\"MED\",\"id\":\"123\",\"title\":\"Synthetic context\",\"pubYear\":\"2020\"}]}}")));
+        Path raw=directory.resolve("public-discussion-source.txt");Files.writeString(raw,"PMID: 123\nCaller-declared synthetic public source. PRIVATE_DISCUSSION_BODY_SENTINEL\n");String hash=FollowupSupport.hash(raw);Path r=request();var edit=StudyYaml.loadArtifact(r);Path manifest=acquired.resolve("metadata/manifest.yaml");edit.put("reference_bundles",List.of(Map.of("manifest",manifest.toString(),"sha256",FollowupSupport.hash(manifest))));edit.put("finding_review",Map.of("mode","review","source_texts",List.of(Map.of("id","paper","reference","pmid:123","path",raw.toString(),"sha256",hash,"scope","full_text","public_literature",true,"provenance","Synthetic public source declaration, not actual retrieved full text"))));StudyPublicEvidence.write(r,edit);
+        Path first=directory.resolve("discussion-first");StudyManuscriptRevision.create(p,r,first,StudyProject.Actor.human("test"));StudyManuscriptRevision.verifyBundle(first);assertEquals(hash,FollowupSupport.hash(first.resolve("metadata/discussion-sources/paper.txt")));assertTrue(Files.exists(first.resolve("artifacts/finding-discussion-review.html")));assertTrue(Files.readString(first.resolve("artifacts/index.html")).contains("finding-discussion-review.html"));assertFalse(Files.readString(first.resolve("artifacts/editorial-payload.json")).contains("PRIVATE_DISCUSSION_BODY_SENTINEL"));assertTrue(Files.readString(first.resolve("metadata/change-log.yaml")).contains("finding_review_replaced"));
+        Files.writeString(raw,"Changed original source\n");Files.writeString(acquired.resolve("artifacts/queries.yaml"),"Changed original acquisition\n");
+        Path next=directory.resolve("next-review.yaml");StudyPublicEvidence.write(next,Map.of("schema_version",1,"id","discussion-second","title","Synthetic manuscript","rationale","Inherit the verified local source snapshot","previous_revision",Map.of("manifest",first.resolve("metadata/manifest.yaml").toString(),"sha256",FollowupSupport.hash(first.resolve("metadata/manifest.yaml")))));Path second=directory.resolve("discussion-second");StudyManuscriptRevision.create(p,next,second,StudyProject.Actor.human("test"));StudyManuscriptRevision.verifyBundle(second);assertEquals(hash,FollowupSupport.hash(second.resolve("metadata/discussion-sources/paper.txt")));
+    }
+
+    @Test void strictFindingReviewRejectsMissingGroundingBeforeCreatingABundle()throws Exception {
+        Path p=project(),r=request();var edit=StudyYaml.loadArtifact(r);edit.put("finding_review",Map.of("mode","strict"));StudyPublicEvidence.write(r,edit);Path out=directory.resolve("missing-finding-grounding");assertThrows(java.io.IOException.class,()->StudyManuscriptRevision.create(p,r,out,StudyProject.Actor.human("test")));assertFalse(Files.exists(out));
+    }
+
+    @Test void extendedFindingDiscussionIsRetainedInLinkedSupplementWithBindingsAndSeparateCounts() throws Exception {
+        Path p = project(), r = request();
+        var revision = StudyYaml.loadArtifact(r);
+        var sections = new ArrayList<Object>(StudyPublicEvidence.list(revision.get("sections")));
+        String extended = "Detailed evidence ".repeat(4500);
+        sections.add(Map.of("id", "extended-gene", "section", "supplementary",
+            "title", "Extended finding discussion", "text", extended
+                + "\n\nDerived estimate count {{H1.meta_analysis#/tested_features}}. Literal <script>not executable</script>.",
+            "sources", List.of("H1.meta_analysis"), "rationale", "Preserve the complete discussion and its source bindings."));
+        revision.put("sections", sections);
+        revision.put("manuscript_policy", Map.of("max_main_words", 8000, "word_limit_mode", "strict"));
+        revision.put("editorial_payload", Map.of("mode", "omit", "rationale", "Keep the complete extended discussion local."));
+        StudyPublicEvidence.write(r, revision);
+        String ledger = FollowupSupport.hash(p.resolve("ledger/events.jsonl"));
+        Path out = directory.resolve("extended-finding");
+        StudyManuscriptRevision.create(p, r, out, StudyProject.Actor.human("scientist"));
+        StudyManuscriptRevision.verifyBundle(out);
+        String main = Files.readString(out.resolve("artifacts/manuscript.html"));
+        String supplement = Files.readString(out.resolve("artifacts/supplement.html"));
+        assertTrue(main.contains("supplement.html#supplement-note-extended-gene"));
+        assertFalse(main.contains(extended));
+        assertTrue(supplement.contains(extended));
+        assertTrue(supplement.contains("Derived estimate count 1"));
+        assertTrue(supplement.contains("&lt;script&gt;not executable&lt;/script&gt;"));
+        var counts = StudyYaml.loadArtifact(out.resolve("artifacts/word-counts.yaml"));
+        assertTrue(((Number) counts.get("supplement_words")).intValue() > 9000);
+        assertTrue(((Number) counts.get("main_text_words")).intValue() < 8000);
+        assertEquals(false, counts.get("blocks_publication"));
+        assertEquals(ledger, FollowupSupport.hash(p.resolve("ledger/events.jsonl")));
+        assertTrue(Files.readString(out.resolve("artifacts/publication-claims.yaml")).contains("extended-gene"));
+        Files.writeString(r, Files.readString(r).replace("#/tested_features", "#/missing"));
+        assertThrows(java.io.IOException.class, () -> StudyManuscriptRevision.create(p, r,
+            directory.resolve("bad-supplement"), StudyProject.Actor.human("scientist")));
+        assertFalse(Files.exists(directory.resolve("bad-supplement")));
+    }
+
+    @Test void flexibleDefaultRetainsLongMainTextAndExplicitJournalLimitStillBlocks() throws Exception {
+        Path p = project(), r = request();
+        Files.writeString(r, Files.readString(r).replace("<script>alert('not executable')</script> Editorial context.",
+            "Evidence ".repeat(8500)) + "\neditorial_payload: {mode: omit, rationale: Keep the complete working draft local.}\n");
+        Path out = directory.resolve("long-target-draft");
+        StudyManuscriptRevision.create(p, r, out, StudyProject.Actor.human("scientist"));
+        StudyManuscriptRevision.verifyBundle(out);
+        var report = StudyYaml.loadArtifact(out.resolve("artifacts/word-counts.yaml"));
+        assertEquals(false, report.get("within_limit"));
+        assertEquals(false, report.get("blocks_publication"));
+        Files.writeString(r, Files.readString(r) + "\nmanuscript_policy: {max_main_words: 8000, word_limit_mode: strict}\n");
+        assertThrows(java.io.IOException.class, () -> StudyManuscriptRevision.create(p, r,
+            directory.resolve("strict-journal"), StudyProject.Actor.human("scientist")));
+        assertFalse(Files.exists(directory.resolve("strict-journal")));
+    }
+
+    @Test void importedAssociationsRemainReportableWhenOptionalEffectScreeningIsDisabled() throws Exception {
+        Path p = directory.resolve("imported-results"); Files.createDirectory(p);
+        Files.writeString(p.resolve("results.tsv"), "feature_id\tbeta\tse\tp_value\nGENE1\t.6\t.1\t.00001\n");
+        Files.writeString(p.resolve("study.yaml"), """
+            schema_version: 1
+            project: {id: imported-results, title: Imported associations, description: Check reporting independently of optional effect screening.}
+            resources: {network: offline, downloads: deny}
+            datasets:
+              - {id: a, type: generic, stage: association_results, files: {results: results.tsv}}
+            hypotheses:
+              - id: H1
+                description: Report the imported association family with provenance.
+                analysis:
+                  mode: manual
+                  goals: []
+                  harmonization: {effect_outliers: {enabled: false}}
+            """);
+        ByteArrayOutputStream err = new ByteArrayOutputStream();
+        assertEquals(0, StudyCli.run(new String[]{"auto", p.resolve("study.yaml").toString(), "--project", p.toString(), "--offline"},
+            new PrintStream(new ByteArrayOutputStream()), new PrintStream(err)), err.toString());
+        String ledger = FollowupSupport.hash(p.resolve("ledger/events.jsonl"));
+        Path r = directory.resolve("imported-revision.yaml"), out = directory.resolve("imported-revision");
+        Files.writeString(r, """
+            schema_version: 1
+            id: imported-revision
+            title: Imported result reporting
+            rationale: A disabled optional screen does not undo completed import and validation.
+            sections:
+              - id: imported
+                section: results
+                results_role: association
+                text: Imported associations are retained with their source provenance.
+                sources: [H1.validate_harmonize]
+                rationale: Link the completed imported family without claiming a native model fit.
+            """);
+        StudyManuscriptRevision.create(p, r, out, new StudyProject.Actor("external", "protocol-fixture", null));
+        StudyManuscriptRevision.verifyBundle(out);
+        assertEquals(ledger, FollowupSupport.hash(p.resolve("ledger/events.jsonl")));
+        assertTrue(Files.readString(out.resolve("artifacts/manuscript.html")).contains("Imported associations are retained"));
+        assertFalse(StudyResultsDiscussion.completed(Map.of("operation_type", "validate_harmonize", "state", "waiting_for_input", "key_findings", Map.of("primary_results", Map.of("a", "pending")))));
+        assertFalse(StudyResultsDiscussion.completed(Map.of("operation_type", "association", "state", "complete", "details", Map.of("method_report", Map.of("performed", false)))));
+    }
+
     @Test void explicitLocalOnlyRevisionRetainsFullTextWithoutWeakeningEditorialLimits() throws Exception {
         Path p=project(), r=request(); String ledger=FollowupSupport.hash(p.resolve("ledger/events.jsonl"));
         String longText="Complete local manuscript context ".repeat(4500);
         Files.writeString(r,Files.readString(r).replace("<script>alert('not executable')</script> Editorial context.",longText));
+        // This fixture isolates the independent editorial character budget.
+        Files.writeString(r, Files.readString(r) + "\nmanuscript_policy: {max_main_words: 25000}\n");
         var oversized=assertThrows(java.io.IOException.class,()->StudyManuscriptRevision.create(p,r,directory.resolve("too-large"),StudyProject.Actor.human("test")));
         assertTrue(oversized.getMessage().contains("120000"));assertFalse(Files.exists(directory.resolve("too-large")));
         Files.writeString(r,Files.readString(r)+"\neditorial_payload: {mode: omit, rationale: Keep the complete manuscript local without an external editorial handoff.}\n");

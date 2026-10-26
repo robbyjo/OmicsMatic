@@ -97,16 +97,21 @@ final class ExternalBh implements AutoCloseable {
 
     long tests() { return tests; }
 
-    void finish() throws IOException {
+    void finish() throws IOException { finish(true); }
+
+    /** Incomplete test families retain raw P values but publish no adjusted values. */
+    void finish(boolean completeFamily) throws IOException {
         if (finished) return;
         if (closed || !headerWritten) throw new IOException("BH output is closed or lacks a header");
         closed = true;
         rawWriter.close();
         initialQ.close();
-        flushChunk();
-        Path sorted = work.resolve("sorted.bin");
-        merge(sorted);
-        assign(sorted);
+        if (completeFamily) {
+            flushChunk();
+            Path sorted = work.resolve("sorted.bin");
+            merge(sorted);
+            assign(sorted);
+        }
         Path complete = work.resolve("complete.tmp");
         try (BufferedReader input = Files.newBufferedReader(
                     raw, StandardCharsets.UTF_8);

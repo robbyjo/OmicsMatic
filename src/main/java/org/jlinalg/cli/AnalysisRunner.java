@@ -90,6 +90,8 @@ final class AnalysisRunner {
     private int pedigreeMembers;
     private int pedigreeFileObservationsMatched;
     private int pedigreeAliasesResolved;
+    private long unresolvedExactTests;
+    private org.jlinalg.survival.CoxAdaptiveLikelihood.Result coxLikelihood;
 
     AnalysisRunner(CliOptions options, FormulaPlan plan, RunLog log,
             PrintStream output) {
@@ -100,6 +102,7 @@ final class AnalysisRunner {
     }
 
     int execute() throws IOException {
+        if(plan.isCox()&&(options.caseValue!=null||options.controlValue!=null))throw new IllegalArgumentException("Standalone Cox events require 0 (censored) or 1 (event); recode explicitly or use the study survival event_value/censor_value contract");
         return options.omics == null ? phenotypeOnly() : omics();
     }
 
@@ -119,6 +122,7 @@ final class AnalysisRunner {
         info("annotation_rows=" + annotation.size());
 
         boolean genotype = detection.type().equals("gwas");
+        if(!genotype&&(options.minimumHweP>0||options.minimumMissingnessP>0||options.hweSampleFile!=null||options.autosomesOnly||!options.genotypeKind.equals("auto")))throw new IllegalArgumentException("Genotype QC controls require --omics-type gwas");
         List<String> sourceIds;
         VariantSource variantSource = null;
         NumericMatrixSource numericSource = null;
@@ -134,21 +138,32 @@ final class AnalysisRunner {
             sourceIds = numericSource.metadata().sampleIds();
         }
 
-        boolean binomial = isBinomialFamily(options.family);
+        boolean binomial = !plan.isCox() && isBinomialFamily(options.family);
         PhenotypeData phenotype = PhenotypeData.read(
             options.phenotype, options.idColumn);
         PhenotypeData.Prepared prepared = phenotype.prepare(sourceIds,
             plan.response(), binomial, options.caseValue, options.controlValue,
-            options.individualId);
+            options.exactStrataColumn!=null?options.exactStrataColumn:options.individualId);
         int idAlignedSamples = prepared.ids().size();
         prepared = completeCases(
             phenotype, prepared, plan.response(), binomial);
+        var humanProfile=options.humanPloidyProfile();
+        HumanPloidySamples ploidySamples=null;HumanPloidySamples.Selection ploidySelection=null;
+        if(humanProfile!=null){if(!genotype)throw new IllegalArgumentException("Human ploidy requires genotype data");ploidySamples=new HumanPloidySamples(options.ploidySamples);ploidySelection=ploidySamples.select(prepared.ids(),humanProfile);if(ploidySelection.ids().isEmpty())throw new IllegalArgumentException("No eligible participants in the registered human ploidy contrast");prepared=phenotype.prepare(ploidySelection.ids(),plan.response(),binomial,options.caseValue,options.controlValue,options.exactStrataColumn!=null?options.exactStrataColumn:options.individualId);prepared=completeCases(phenotype,prepared,plan.response(),binomial);}
         reportSampleAlignment(sourceIds.size(), phenotype.originalIds().size(),
             idAlignedSamples, prepared.ids().size());
         logBinary(prepared);
         GrmContext grm = grm(phenotype, prepared);
         PedigreeContext pedigree = pedigree(phenotype, prepared);
         String model = resolveModel();
+        if(humanProfile!=null&&(!Set.of("ols","glm").contains(model)||plan.hasRandomEffects()||grm!=null||pedigree!=null))throw new IllegalArgumentException("Registered human ploidy contrasts require independent OLS or GLM; no mixed-model or survival substitution is inferred");
+        if(options.explicitBinaryTest&&(!genotype||!model.equals("glm")))throw new IllegalArgumentException("--binary-test requires a genotype GLM");
+        if(!options.binaryTest.equals("efficient-score")) {
+            if(!genotype||!model.equals("glm")||!options.family.equals("binomial")||grm!=null||pedigree!=null||plan.hasRandomEffects()||options.individualId!=null)
+                throw new IllegalArgumentException("Firth/exact logit requires independent Bernoulli genotype observations; related/clustered and other families require a matching estimator");
+            if(!java.util.Set.of(org.jlinalg.compute.BackendPolicy.CPU,org.jlinalg.compute.BackendPolicy.AUTO,org.jlinalg.compute.BackendPolicy.PREFERRED).contains(options.backend))
+                throw new IllegalArgumentException("Firth logit currently uses the portable CPU; a strict accelerator backend cannot be honored");
+        }
         if(model.equals("cox") && !plan.isCox())
             throw new IllegalArgumentException("Cox genotype scans require a Surv(time,event) or Surv(start,stop,event) response");
         if((model.equals("cox") || options.conditionalGwasSummary) && options.individualId!=null) {
@@ -169,6 +184,8 @@ final class AnalysisRunner {
         }
         double[][] covariates = matrix(
             fixed.design(), fixed.rows(), fixed.columns());
+        if(!options.binaryTest.equals("efficient-score")&&fixed.weights()!=null&&Arrays.stream(fixed.weights()).anyMatch(w->w!=1))
+            throw new IllegalArgumentException("Firth genotype inference requires individual Bernoulli outcomes with unit trial weights");
         List<String> nullCovariateNames=new ArrayList<>(fixed.coefficientNames());
         if(model.equals("cox")) {
             // Encode factors with ordinary reference contrasts before removing
@@ -187,10 +204,15 @@ final class AnalysisRunner {
                     && Set.of("binomial", "probit", "binomial-probit",
                         "poisson", "gaussian").contains(options.family))))
             throw new IllegalArgumentException("--conditional-gwas-summary supports unrelated genotype OLS, Gaussian/binomial-logit/binomial-probit/Poisson GLM, and model-based Cox scans; mixed/robust models need separate score exporters");
-        if(model.equals("cox") && (!genotype || grm!=null || plan.hasRandomEffects()))
-            throw new IllegalArgumentException("Cox omics scans currently require unrelated genotype data");
+        if(model.equals("cox") && (grm!=null || plan.hasRandomEffects()))
+            throw new IllegalArgumentException("Cox omics score scans currently require an unrelated-participant null");
+        if(model.equals("cox")){String notice="Cox association uses efficient null score tests with one-step log-HR approximations, not full alternative-model maximum-likelihood effects. The nuisance null requires a finite-maximum proof. Event-tail calibration and independent-censoring/PH assumptions require separate review.";output.println(notice);warning(notice);}
         if(genotype && (model.equals("cox") || (model.equals("glm") || model.equals("glmm")) && !options.family.equals("gaussian"))) {
-            String notice=options.conditionalGwasSummary
+            String notice=options.binaryTest.equals("exact-conditional")
+                ?"Exact conditional inference conditions on stratum case counts and known offsets. Missing genotypes are omitted with variant-specific margins. Approximate Firth effects are separate; valid exact tests can be P-only. Uncomputed tests suppress final FDR."
+                :options.binaryTest.equals("firth-lrt")
+                ?"Firth genotype inference uses full/constrained penalized fits with chi-square LRT P values and ordinary Fisher SE at the penalized estimate. These P values are not Wald tests; no ordinary-null score/covariance export is supplied by this route."
+                :options.conditionalGwasSummary
                 ?"Conditional-GWAS export enabled: scores and within-block covariance are local to the fitted null; nonlinear refits for new conditioning sets and rare-event calibration are not supplied by these columns."
                 :"If MR conditional GWAS is planned, the current standard output is insufficient for this outcome model. Use --conditional-gwas-summary with --score-genome-build to export model-specific scores, covariance and metadata; new nonlinear conditioning sets require cohort-side refitting.";
             if(!options.conditionalGwasSummary && (model.equals("glmm") || model.equals("glm")
@@ -242,6 +264,9 @@ final class AnalysisRunner {
             throw new IllegalArgumentException(
                 "partial output lacks resumable block metadata; "
                     + "use --overwrite to restart");
+        HumanPloidySession ploidySession=humanProfile==null?null:new HumanPloidySession(options.output,humanProfile,ploidySamples,ploidySelection);
+        try {
+        if(ploidySession!=null)variantSource=ploidySession.wrap(variantSource,options.genotypeKind.equals("hard_calls"));
         List<String> conditioningKeys=List.of();
         if(options.conditionalGwasSummary) {
             var conditioned=ConditionalGwasExport.conditioning(variantSource,prepared.ids(),options.conditionOn,covariates);
@@ -255,6 +280,7 @@ final class AnalysisRunner {
             options.threads, associationChunkSize,
             options.backend, AssociationFailurePolicy.RECORD_NAN,
             VariableMissingPolicy.MEAN_IMPUTE);
+        var genotypeQuality=genotype?new org.jlinalg.pipeline.VariantQualityOptions(options.minimumHweP,options.hweFilterScope,prepared.caseControlGroups(),hwePanel(prepared.ids(),sourceIds),options.minimumMissingnessP,options.maximumMissingnessStates,options.genotypeKind,options.autosomesOnly,humanProfile==null?"diploid":humanProfile.qualityModel()):org.jlinalg.pipeline.VariantQualityOptions.defaults();
         VariantFilterOptions filters = VariantFilterOptions.builder()
             .minimumMaf(options.minimumMaf)
             .maximumMaf(options.maximumMaf)
@@ -262,12 +288,12 @@ final class AnalysisRunner {
             .maximumMac(options.maximumMac)
             .maximumMissingRate(options.maximumMissingRate)
             .minimumImputationQuality(options.minimumInfo)
+            .quality(genotypeQuality)
             .build();
         AssociationPipelineOptions pipeline =
             new AssociationPipelineOptions(blockSize, filters);
         org.jlinalg.survival.FastCoxAssociation cox=null;int eventCount=-1;
         if(model.equals("cox")) {
-            if(covariates[0].length==0)throw new IllegalArgumentException("Cox genotype scans currently require at least one varying null covariate or conditioning variant");
             if(fixed.weights()!=null)throw new IllegalArgumentException("Cox genotype scans do not support formula weights");
             FormulaPlan.Survival survival=plan.survival();
             double[] stop=fixed.response(),start=survival.start()==null?new double[stop.length]
@@ -280,6 +306,8 @@ final class AnalysisRunner {
             }
             cox=org.jlinalg.survival.FastCoxAssociation.prepare(new CoxSurvivalData(start,stop,observed,null),covariates,
                 fixed.offset(),CoxOptions.defaults().withTies(CoxTies.valueOf(options.ties.toUpperCase(Locale.ROOT))),engine);
+            coxLikelihood=cox.nullLikelihood();
+            info("cox_null_finite_maximum="+cox.nullLikelihood().status()+" supporting_rows="+cox.nullLikelihood().supportingRows().size()+" certificate_work="+cox.nullLikelihood().proof().work());
         }
         ConditionalGwasExport scoreExport=null;
         if(options.conditionalGwasSummary) {
@@ -298,7 +326,7 @@ final class AnalysisRunner {
         Counts counts;
         try (ConditionalGwasExport summaries=scoreExport;CliResultSink sink = new CliResultSink(options.output,
                 options.overwrite, genotype, resolvedStatisticType,
-                annotation, genotype ? prepared.caseControlGroups() : null,summaries)) {
+                annotation, genotype ? prepared.caseControlGroups() : null,summaries,genotypeQuality)) {
             counts = switch (model) {
                 case "ols" -> scanOls(variantSource, numericSource, genotype,
                     prepared.ids(), fixed, covariates, transform, blockSize,
@@ -312,11 +340,15 @@ final class AnalysisRunner {
                 case "glmm" -> scanGlmm(variantSource, numericSource, genotype,
                     prepared.ids(), fixed, mixed, grm, pedigree, covariates,
                     transform, blockSize, engine, sink);
-                case "cox" -> Counts.of(StreamingAssociationPipeline.fastCoxTo(variantSource,prepared.ids(),cox,engine,pipeline,sink));
+                case "cox" -> genotype?Counts.of(StreamingAssociationPipeline.fastCoxTo(variantSource,prepared.ids(),cox,engine,pipeline,sink)):
+                    Counts.of(StreamingOmicsAssociationPipeline.scanPredictorsCoxTo(numericSource,prepared.ids(),cox,org.jlinalg.survival.CoxScoreVariance.MODEL_BASED,transform,OmicsMissingPolicy.MEAN_IMPUTE,blockSize,engine,sink));
                 default -> throw new IllegalArgumentException(
                     "omics model is not yet supported: " + model);
             };
+            if(ploidySession!=null)ploidySession.finish();
             sink.finish();
+            unresolvedExactTests=sink.unresolvedTests();
+            if(unresolvedExactTests>0)warning("Exact test family is incomplete: "+unresolvedExactTests+" budget/numerical failures; all BH values suppressed");
             if(summaries!=null)summaries.finish();
             info("fdr_tests=" + sink.adjustedTests());
         }
@@ -326,6 +358,7 @@ final class AnalysisRunner {
         manifest(model, detection.type(), blockSize, associationChunkSize,
             scanWorkerCapacity, counts);
         return 0;
+        } finally {if(ploidySession!=null)ploidySession.close();}
     }
 
     private Counts scanOls(
@@ -361,6 +394,18 @@ final class AnalysisRunner {
             throws IOException {
         GlmFamily family = family(options.family);
         if (genotype) {
+            if(options.binaryTest.equals("exact-conditional")) {
+                int[] strata=new int[ids.size()];
+                if(options.exactStrataColumn!=null) {
+                    var phenotype=PhenotypeData.read(options.phenotype,options.idColumn);var labels=phenotype.alignedValues(ids,options.exactStrataColumn);var levels=new java.util.LinkedHashMap<String,Integer>();
+                    for(int i=0;i<strata.length;i++)strata[i]=levels.computeIfAbsent(labels.get(i),ignored->levels.size());
+                }
+                return Counts.of(StreamingAssociationPipeline.exactConditionalLogitTo(variant,ids,fixed.response(),covariates,strata,fixed.offset(),
+                    new org.jlinalg.regression.ExactConditionalLogit.Options(options.exactMaximumStates,options.exactMaximumWork,1e-7),
+                    new org.jlinalg.regression.FirthLogistic.Options(options.firthMaximumIterations,40,options.firthTolerance,5),options.exactEffectMaximumParameters,engine,pipeline,sink));
+            }
+            if(options.binaryTest.equals("firth-lrt"))return Counts.of(StreamingAssociationPipeline.firthLogisticTo(
+                variant,ids,fixed.response(),covariates,fixed.offset(),new org.jlinalg.regression.FirthLogistic.Options(options.firthMaximumIterations,40,options.firthTolerance,5),engine,pipeline,sink));
             AssociationPipelineSummary summary =
                 StreamingAssociationPipeline.fastGlmTo(
                     variant, ids, fixed.response(), covariates, family,
@@ -545,12 +590,13 @@ final class AnalysisRunner {
             ? plan.survival().event() : plan.response();
         PhenotypeData phenotype = PhenotypeData.read(
             options.phenotype, options.idColumn);
+        boolean binomial=!plan.isCox() && isBinomialFamily(options.family);
         PhenotypeData.Prepared prepared = phenotype.prepare(null,
-            preparedResponse, isBinomialFamily(options.family) || plan.isCox(),
+            preparedResponse, binomial,
             options.caseValue, options.controlValue, options.individualId);
         int phenotypeSamples = prepared.ids().size();
         prepared = completeCases(phenotype, prepared, preparedResponse,
-            isBinomialFamily(options.family) || plan.isCox());
+            binomial);
         reportPhenotypeSamples(phenotypeSamples, prepared.ids().size());
         GrmContext grm = grm(phenotype, prepared);
         PedigreeContext pedigree = pedigree(phenotype, prepared);
@@ -773,16 +819,17 @@ final class AnalysisRunner {
             plan.withoutOmics().indexOf('~') + 1);
         FormulaPlan.Survival survival = plan.survival();
         CompiledFormula design = Formula.compile(
-            survival.stop() + "~0+" + rhs, prepared.modelTable());
+            survival.stop() + "~" + rhs, prepared.modelTable());
+        if(design.weights()!=null)throw new IllegalArgumentException("Cox coefficient models do not support formula weights");
+        var coefficientNames=new ArrayList<>(design.coefficientNames());double[][] covariates=matrix(design.design(),design.rows(),design.columns());int intercept=coefficientNames.indexOf("(Intercept)");
+        if(intercept>=0){double[][] reduced=new double[design.rows()][design.columns()-1];for(int i=0;i<reduced.length;i++)for(int j=0,k=0;j<design.columns();j++)if(j!=intercept)reduced[i][k++]=covariates[i][j];covariates=reduced;coefficientNames.remove(intercept);}
         double[] stop = design.response();
         double[] start = survival.start() == null ? new double[stop.length]
             : Formula.compile(survival.start() + "~1",
                 prepared.modelTable()).response();
         double[] eventValues = Formula.compile(
             survival.event() + "~1", prepared.modelTable()).response();
-        boolean[] event = new boolean[eventValues.length];
-        for (int index = 0; index < event.length; index++)
-            event[index] = eventValues[index] == 1.0;
+        boolean[] event = CoxSurvivalData.eventIndicators(eventValues);
         CoxTies ties = CoxTies.valueOf(
             options.ties.toUpperCase(Locale.ROOT));
         CoxSurvivalData survivalData =
@@ -795,9 +842,13 @@ final class AnalysisRunner {
         boolean converged;
         String convergenceMessage;
         if (grm == null) {
+            var likelihood=org.jlinalg.survival.CoxAdaptiveLikelihood.analyze(survivalData,covariates);
+            if(!likelihood.finiteMaximum())throw new org.jlinalg.survival.CoxLikelihoodException(likelihood.proof());
+            coxLikelihood=likelihood;
+            info("cox_finite_maximum="+likelihood.status()+" supporting_rows="+likelihood.supportingRows().size()+" certificate_work="+likelihood.proof().work());
             CoxResult fit = CoxRegression.fit(
                 survivalData,
-                matrix(design.design(), design.rows(), design.columns()),
+                covariates,
                 design.offset(), CoxOptions.defaults().withTies(ties),
                 options.backend);
             beta = fit.beta();
@@ -817,7 +868,7 @@ final class AnalysisRunner {
                 defaults.maximumVariance());
             CoxMixedResult fit = CoxKinshipFrailty.fit(
                 survivalData,
-                matrix(design.design(), design.rows(), design.columns()),
+                covariates,
                 grm.observationIds(), grm.matrix(), design.offset(),
                 mixedOptions, 1e-8, options.backend);
             beta = fit.beta();
@@ -828,11 +879,10 @@ final class AnalysisRunner {
             converged = fit.converged();
             convergenceMessage = fit.convergenceMessage();
         }
-        if (!converged)
-            warning("cox_convergence=" + convergenceMessage);
+        requireConverged(converged,"Cox: "+convergenceMessage);
         return CoefficientOutput.write(options.output, options.overwrite,
-            design.coefficientNames(), beta, standardErrors,
-            statistics, filled(design.columns(), Double.POSITIVE_INFINITY),
+            coefficientNames, beta, standardErrors,
+            statistics, filled(coefficientNames.size(), Double.POSITIVE_INFINITY),
             pValues, "z", hazardRatios, "hazard_ratio");
     }
 
@@ -878,6 +928,10 @@ final class AnalysisRunner {
 
     private void resolveOutputMetadata(
             String model, boolean genotype) {
+        if(genotype&&model.equals("glm")&&options.binaryTest.equals("firth-lrt")) {
+            resolvedStatisticType="chi_square";resolvedDfMethod="asymptotic-chi-square-1df";resolvedPartialR2Method="not-applicable";return;
+        }
+        if(genotype&&model.equals("glm")&&options.binaryTest.equals("exact-conditional")){resolvedStatisticType="conditional_centered_allele_score";resolvedDfMethod="finite_conditional_distribution";resolvedPartialR2Method="not-applicable";return;}
         resolvedStatisticType = switch (model) {
             case "glmm", "cox" -> "z";
             case "glm" -> family(options.family).fixedDispersion()
@@ -1203,7 +1257,7 @@ final class AnalysisRunner {
         List<String> ids = new ArrayList<>(retained.length);
         for (int row : retained) ids.add(prepared.ids().get(row));
         return phenotype.prepare(ids, response, encodeBinomial,
-            options.caseValue, options.controlValue, options.individualId);
+            options.caseValue, options.controlValue, options.exactStrataColumn!=null?options.exactStrataColumn:options.individualId);
     }
 
     private int[] completeCaseRows(org.jlinalg.formula.ModelTable table) {
@@ -1257,10 +1311,27 @@ final class AnalysisRunner {
         return Arrays.copyOf(result, count);
     }
 
+    private String hwePanelSha256;
+    private int hwePanelSourceSamples,hwePanelAnalyzedSamples;
+    private boolean[] hwePanel(List<String> analyzed,List<String> sourceIds)throws IOException {
+        if(options.hweSampleFile==null)return null;
+        hwePanelSha256=FollowupSupport.hash(options.hweSampleFile);
+        List<String> panel=SampleFiles.read(options.hweSampleFile);var unique=new java.util.HashSet<>(panel);
+        if(!hwePanelSha256.equals(FollowupSupport.hash(options.hweSampleFile)))throw new IOException("HWE sample panel changed while reading");
+        if(unique.size()!=panel.size()||panel.isEmpty()||panel.stream().anyMatch(String::isBlank))throw new IllegalArgumentException("HWE sample panel must contain unique nonblank IDs");
+        if(!new java.util.HashSet<>(sourceIds).containsAll(unique))throw new IllegalArgumentException("HWE sample panel contains IDs absent from the genotype source");
+        boolean[] mask=new boolean[analyzed.size()];int retained=0;
+        for(int i=0;i<mask.length;i++)if(unique.contains(analyzed.get(i))){mask[i]=true;retained++;}
+        if(retained==0)throw new IllegalArgumentException("No HWE panel samples remain in the analyzed cohort");
+        hwePanelSourceSamples=panel.size();hwePanelAnalyzedSamples=retained;
+        info("hwe_panel_source_samples="+panel.size());info("hwe_panel_analyzed_samples="+retained);return mask;
+    }
+
     private void manifest(
             String model, String omicsType, int blockSize,
             int associationChunkSize, int scanWorkerCapacity, Counts counts)
             throws IOException {
+        if(options.hweSampleFile!=null&&!hwePanelSha256.equals(FollowupSupport.hash(options.hweSampleFile)))throw new IOException("HWE sample panel changed during analysis");
         new ManifestWriter()
             .put("run_id", log == null ? null : log.runId())
             .put("version", JLinAlgCli.version())
@@ -1296,7 +1367,49 @@ final class AnalysisRunner {
                 : "sparse_additive_relationship_inverse")
             .put("formula", options.formula)
             .put("model", model)
+            .put("cox_test",!model.equals("cox")?null:options.omics==null?"coefficient_Wald_normal":"efficient_null_score_normal")
+            .put("cox_effect_estimator",!model.equals("cox")?null:options.omics==null?"fitted_full_model_coefficient":"one_step_Ueff_over_Ieff_at_fitted_null")
+            .put("cox_ties",model.equals("cox")?options.ties:null)
+            .put("cox_event_coding",model.equals("cox")?"0=censored; 1=event; other codes rejected":null)
+            .put("cox_finite_maximum_scope",coxLikelihood==null?null:options.omics==null?"full_independent_coefficient_model":"nuisance_null_only; alternative_MPLE_not_required")
+            .put("cox_finite_maximum_status",coxLikelihood==null?null:coxLikelihood.status())
+            .put("cox_likelihood_certificate_method",coxLikelihood==null?null:"adaptive_support_exact_full_risk_direction")
+            .put("cox_likelihood_supporting_rows",coxLikelihood==null?null:coxLikelihood.supportingRows().size())
+            .put("cox_likelihood_work",coxLikelihood==null?null:coxLikelihood.proof().work())
+            .put("cox_tail_calibration",model.equals("cox")?"asymptotic_normal_only; no_sparse_event_correction":null)
             .put("family", options.family)
+            .put("binary_test",options.binaryTest)
+            .put("association_family_status",unresolvedExactTests>0?"incomplete_exact_tests":"complete")
+            .put("unresolved_exact_tests",unresolvedExactTests)
+            .put("exact_strata_column",options.exactStrataColumn)
+            .put("exact_maximum_states",options.binaryTest.equals("exact-conditional")?options.exactMaximumStates:null)
+            .put("exact_maximum_work",options.binaryTest.equals("exact-conditional")?options.exactMaximumWork:null)
+            .put("exact_effect_maximum_parameters",options.binaryTest.equals("exact-conditional")?options.exactEffectMaximumParameters:null)
+            .put("exact_two_sided_tolerance",options.binaryTest.equals("exact-conditional")?1e-7:null)
+            .put("firth_maximum_iterations",!options.binaryTest.equals("efficient-score")?options.firthMaximumIterations:null)
+            .put("firth_tolerance",!options.binaryTest.equals("efficient-score")?options.firthTolerance:null)
+            .put("firth_maximum_step",!options.binaryTest.equals("efficient-score")?5:null)
+            .put("firth_maximum_step_halvings",!options.binaryTest.equals("efficient-score")?40:null)
+            .put("firth_numerical_backend",!options.binaryTest.equals("efficient-score")?"portable_java_cpu":null)
+            .put("firth_column_scaling",!options.binaryTest.equals("efficient-score")?"max_abs_per_column; coefficient steps/tolerance use scaled coordinates":null)
+            .put("case_value",options.caseValue)
+            .put("control_value",options.controlValue)
+            .put("genotype_kind",options.genotypeKind)
+            .put("human_ploidy_region",options.humanPloidyRegion)
+            .put("human_ploidy_build",options.humanPloidyBuild)
+            .put("human_ploidy_haploid_source_scale",options.humanPloidyRegion==null?null:options.haploidSourceScale)
+            .put("minimum_mac",options.minimumMac)
+            .put("maximum_marker_missing",options.maximumMissingRate)
+            .put("minimum_info",Double.isFinite(options.minimumInfo)?options.minimumInfo:null)
+            .put("minimum_hwe_p",options.minimumHweP)
+            .put("hwe_filter_scope",options.hweFilterScope)
+            .put("hwe_sample_file",options.hweSampleFile)
+            .put("hwe_sample_file_sha256",hwePanelSha256)
+            .put("hwe_panel_source_samples",options.hweSampleFile==null?null:hwePanelSourceSamples)
+            .put("hwe_panel_analyzed_samples",options.hweSampleFile==null?null:hwePanelAnalyzedSamples)
+            .put("minimum_missingness_p",options.minimumMissingnessP)
+            .put("missingness_max_states",options.maximumMissingnessStates)
+            .put("chromosome_scope",options.autosomesOnly?"human_autosomes":"all_supplied")
             .put("omics_type", omicsType)
             .put("variance_components", resolvedVarianceComponents)
             .put("mixed_fit", resolvedMixedFit)

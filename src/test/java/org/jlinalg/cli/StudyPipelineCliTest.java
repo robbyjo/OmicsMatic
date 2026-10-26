@@ -44,11 +44,12 @@ class StudyPipelineCliTest {
             B\t4\t.1\t.01
             C\t6\t.1\t.01
             """);
+        StudyTestSources.seal(upstream,"validate_harmonize","harmonize","H");
         Map<String, Object> study = Map.of("datasets", List.of(
             Map.of("id", "bmi", "cohort", "FHS"),
             Map.of("id", "waist", "cohort", "FHS")));
         var context = new org.jlinalg.study.StudyOperationExecutor.Context(
-            directory, output, Map.of("type", "effect_comparison"), study,
+            directory, output, Map.of("type", "effect_comparison", "hypothesis", "H"), study,
             Map.of(), Map.of("harmonized", upstream));
         var result = new StudyCliExecutor().execute(context);
         assertEquals(org.jlinalg.study.StudyOperationExecutor.State.COMPLETE,
@@ -69,7 +70,7 @@ class StudyPipelineCliTest {
         Path output = directory.resolve("prioritization");
         Files.createDirectories(meta); Files.createDirectories(literature); Files.createDirectories(output);
         Files.writeString(meta.resolve("meta-analysis.tsv"),
-            "feature_id\tbeta\tp_value\ti_squared\tstatus\nGENE1\t.2\t.001\t0\tok\n");
+            "feature_id\tbeta\tse\tp_value\ti_squared\tstatus\nGENE1\t.2\t.1\t.001\t0\tok\n");
         Files.writeString(meta.resolve("manifest.yaml"), """
             operation_type: meta_analysis
             state: complete
@@ -85,8 +86,10 @@ class StudyPipelineCliTest {
             state: waiting_for_input
             output_sha256: {literature-search.yaml: fixture}
             """);
+        StudyTestSources.seal(meta,"meta_analysis","meta","H");
+        StudyTestSources.seal(literature,"literature_search","literature","H");
         var context = new org.jlinalg.study.StudyOperationExecutor.Context(
-            directory, output, Map.of("type", "candidate_prioritization"),
+            directory, output, Map.of("type", "candidate_prioritization", "hypothesis", "H"),
             Map.of(), Map.of(), Map.of("meta", meta, "literature", literature));
         var result = new StudyCliExecutor().execute(context);
         assertEquals(org.jlinalg.study.StudyOperationExecutor.State.COMPLETE,
@@ -102,7 +105,7 @@ class StudyPipelineCliTest {
         Path output = directory.resolve("large-prioritization");
         Files.createDirectories(meta); Files.createDirectories(genetics); Files.createDirectories(output);
         Files.writeString(meta.resolve("meta-analysis.tsv"),
-            "feature_id\tbeta\tp_value\ti_squared\tstatus\nGENE1\t.2\t.001\t0\tok\n");
+            "feature_id\tbeta\tse\tp_value\ti_squared\tstatus\nGENE1\t.2\t.1\t.001\t0\tok\n");
         Files.writeString(meta.resolve("manifest.yaml"), """
             operation_type: meta_analysis
             state: complete
@@ -116,8 +119,10 @@ class StudyPipelineCliTest {
             state: complete
             output_sha256: {genetic-evidence.yaml: fixture}
             """);
+        StudyTestSources.seal(meta,"meta_analysis","meta","H");
+        StudyTestSources.seal(genetics,"mendelian_randomization","genetics","H");
         var context = new org.jlinalg.study.StudyOperationExecutor.Context(
-            directory, output, Map.of("type", "candidate_prioritization"),
+            directory, output, Map.of("type", "candidate_prioritization", "hypothesis", "H"),
             Map.of(), Map.of(), Map.of("meta", meta, "genetics", genetics));
         var result = new StudyCliExecutor().execute(context);
         assertEquals(org.jlinalg.study.StudyOperationExecutor.State.COMPLETE,
@@ -161,17 +166,17 @@ class StudyPipelineCliTest {
         assertTrue(disposition.contains("leave_one_cohort_out"));
         assertTrue(disposition.contains("fixed_random_comparison"));
         try (var paths = Files.walk(decision.getParent())) {
-            assertEquals(6, paths.filter(path -> path.getFileName().toString().equals("meta-analysis.tsv")).count());
+            assertEquals(7, paths.filter(path -> path.getFileName().toString().equals("meta-analysis.tsv")).count());
         }
         String fixed = Files.readString(decision.getParent().resolve("fixed_random_comparison/analysis-1/meta-analysis.tsv"));
         String random = Files.readString(decision.getParent().resolve("fixed_random_comparison/analysis-2/meta-analysis.tsv"));
         assertNotEquals(fixed, random);
         assertEquals(0, run("study", "verify", "--project", project.toString()), stderr);
         assertEquals(0, run("study", "auto", study.toString(), "--offline"), stderr);
-        assertTrue(stdout.contains("reused: 6"), stdout);
+        assertTrue(stdout.contains("reused: 8"), stdout);
     }
 
-    @Test void automaticLeaveOneCohortOutFlagsJointReplicationAndHeterogeneityImprovement()
+    @Test void automaticLeaveOneCohortOutReportsCommonUniverseInfluenceWithoutReplacingPrimary()
             throws Exception {
         Path project = directory.resolve("automatic-odd-cohort");
         Files.createDirectories(project);
@@ -574,7 +579,7 @@ class StudyPipelineCliTest {
 
         assertEquals(0, run("study", "run", "--project", project.toString(),
             "--resume", "--actor-id", "scientist-1"));
-        assertTrue(stdout.contains("reused: 6"));
+        assertTrue(stdout.contains("reused: 9"), stdout);
         assertEquals("completed", StudyProject.status(project).get("state"));
     }
 
@@ -785,6 +790,7 @@ class StudyPipelineCliTest {
                 analysis:
                   mode: manual
                   goals: [association]
+                  association: {model: ols}
             """);
         assertEquals(0, run("study", "resolve", study.toString()));
         assertEquals(0, run("study", "plan", "--project", project.toString()));
@@ -850,6 +856,7 @@ class StudyPipelineCliTest {
               id: single-cell-wait
               title: Single-cell contract
               description: Do not route a specialized raw matrix to bulk OLS.
+            resources: {network: offline, downloads: deny}
             datasets:
               - id: cells
                 type: single_cell_rna
@@ -876,6 +883,7 @@ class StudyPipelineCliTest {
         Path request = find(project.resolve("runs"), "request.yaml");
         assertTrue(Files.readString(request).contains(
             "No automatic association adapter is registered"));
+        try(var files=Files.walk(project.resolve("runs"))){assertFalse(files.anyMatch(path->path.getFileName().toString().equals("model-review.yaml")));}
         assertEquals(0, run("study", "run", "--project", project.toString(),
             "--resume", "--allow-partial"));
         assertTrue(stdout.contains("state: waiting_for_input"));

@@ -32,13 +32,22 @@ final class StudyEffectQc {
         double absolute = settings.containsKey("max_abs_effect")
             ? positive(settings.get("max_abs_effect"), "max_abs_effect") : Double.POSITIVE_INFINITY;
         List<Object> summaries = new ArrayList<>();
+        List<String> outputs = new ArrayList<>();
+        Path unfiltered = directory.resolve("pre-effect-qc-results");
+        Files.createDirectories(unfiltered);
         StringBuilder summary = new StringBuilder("dataset_id\ttested_rows\tmedian_beta\trobust_scale\tscale_method\trobust_z_cutoff\tmax_abs_effect\tstatus\texcluded_rows\tretained_rows\n");
         StringBuilder exclusions = new StringBuilder("dataset_id\tfeature_id\tbeta\tse\tp_value\trobust_z\treason\n");
-        int total = 0;
+        int total = 0, tested = 0;
         for (var entry : tables.entrySet()) {
-            DelimitedData table = DelimitedData.read(entry.getValue());
+            Path snapshot = unfiltered.resolve(entry.getKey() + ".tsv").normalize();
+            if (!snapshot.getParent().equals(unfiltered) || snapshot.toAbsolutePath().equals(entry.getValue().toAbsolutePath()))
+                throw new IOException("Unsafe effect-QC snapshot identity: " + entry.getKey());
+            Files.copy(entry.getValue(), snapshot, java.nio.file.StandardCopyOption.REPLACE_EXISTING);
+            outputs.add("pre-effect-qc-results/" + snapshot.getFileName());
+            DelimitedData table = DelimitedData.readResult(entry.getValue());
             int beta = table.column("beta"), id = table.column("feature_id");
-            double[] values = table.rows().stream().mapToDouble(row -> Double.parseDouble(row[beta])).sorted().toArray();
+            int pOnly=(int)table.rows().stream().filter(row->StudyResultShape.pOnly(table,row)).count();
+            double[] values = table.rows().stream().filter(row->!StudyResultShape.pOnly(table,row)).mapToDouble(row -> Double.parseDouble(row[beta])).sorted().toArray();
             double center = quantile(values, .5);
             double[] deviations = Arrays.stream(values).map(value -> Math.abs(value - center)).sorted().toArray();
             double scale = quantile(deviations, .5) * MAD_NORMAL;
@@ -48,11 +57,13 @@ final class StudyEffectQc {
                 scaleMethod = "normal_consistent_IQR";
             }
             boolean relative = enabled && values.length >= minimum && scale > 0 && Double.isFinite(scale);
-            String status = !enabled ? "disabled" : values.length < minimum ? "insufficient_features"
+            tested += values.length;
+            String status = values.length == 0 ? pOnly>0?"not_applicable_p_value_only":"no_estimable_input" : !enabled ? "disabled" : values.length < minimum ? "insufficient_features"
                 : !relative ? "zero_or_nonfinite_robust_scale" : "ready";
             List<String[]> retained = new ArrayList<>();
             int removed = 0;
             for (String[] row : table.rows()) {
+                if(StudyResultShape.pOnly(table,row)){if(!StudyResultShape.missingEffects(table,row))throw new IOException("P-only rows cannot contain effect estimates");retained.add(row);continue;}
                 double effect = Double.parseDouble(row[beta]);
                 double score = relative ? Math.abs(effect - center) / scale : Double.NaN;
                 List<String> reasons = new ArrayList<>();
@@ -74,9 +85,12 @@ final class StudyEffectQc {
             total += removed;
             Map<String, Object> item = new LinkedHashMap<>();
             item.put("dataset_id", entry.getKey()); item.put("tested_rows", values.length);
+            item.put("p_value_only_rows",pOnly);
             item.put("median_beta", number(center)); item.put("robust_scale", number(scale));
             item.put("scale_method", scaleMethod); item.put("status", status);
             item.put("excluded_rows", removed); item.put("retained_rows", retained.size()); summaries.add(item);
+            item.put("unfiltered_table", "pre-effect-qc-results/" + snapshot.getFileName());
+            item.put("unfiltered_sha256", FollowupSupport.hash(snapshot));
             summary.append(entry.getKey()).append('\t').append(values.length).append('\t').append(number(center))
                 .append('\t').append(number(scale)).append('\t').append(scaleMethod).append('\t').append(cutoff)
                 .append('\t').append(number(absolute)).append('\t').append(status).append('\t').append(removed)
@@ -90,15 +104,16 @@ final class StudyEffectQc {
         parameters.put("comparison", "strictly_greater_than"); parameters.put("scope", "per_dataset_association_estimate");
         Map<String, Object> audit = new LinkedHashMap<>();
         audit.put("method", "conservative robust effect-size QC"); audit.put("parameters", parameters);
-        audit.put("performed", enabled && !tables.isEmpty());
+        audit.put("performed", enabled && tested > 0);
+        audit.put("tested_rows", tested);
         audit.put("software", "JLinAlg " + JLinAlgCli.version());
         audit.put("parameter_justification", "Software QC heuristic; no universal biological cutoff or scientist-specific justification is inferred. Review units, exclusions and an unfiltered sensitivity analysis, especially for a post hoc change.");
         audit.put("datasets", summaries); audit.put("excluded_rows", total);
-        audit.put("interpretation", "Scale-aware heuristic, not proof of invalidity or a causal finding. Computed on all numerically eligible rows before FDR, annotation or QTL matching, without using P values, effect significance or cross-cohort agreement. MAD scale=1.482602218505602*median(abs(beta-median(beta))); zero MAD falls back to IQR/1.348979500392164. Insufficient or zero-scale families skip relative screening; an explicit absolute bound still applies. Inspect units, predictor variation and model diagnostics. Raw inputs are unchanged. Excluded estimates are absent from every downstream standardized table; common_universe=intersection also removes their features from all cohorts. Historical sealed outputs are not repaired automatically.");
+        audit.put("unfiltered_scope", "Numerically/status-eligible estimates before effect-outlier screening and common-universe selection; upstream genotype/sample QC and model failures remain excluded.");
+        audit.put("interpretation", "Scale-aware heuristic, not proof of invalidity or a causal finding. Computed on all numerically eligible rows before FDR, annotation or QTL matching, without using P values, effect significance or cross-cohort agreement. MAD scale=1.482602218505602*median(abs(beta-median(beta))); zero MAD falls back to IQR/1.348979500392164. Insufficient or zero-scale families skip relative screening; an explicit absolute bound still applies. Inspect units, predictor variation and model diagnostics. Raw inputs and a pre-effect-QC snapshot are preserved. Excluded estimates are absent from primary standardized tables; a separate unfiltered sensitivity may retain them without promoting them to primary evidence. Each branch computes its own declared common universe over its selected cohorts. Historical sealed outputs are not repaired automatically.");
         StudyPublicEvidence.write(directory.resolve("effect-outlier-qc.yaml"), audit);
-        if (summaries.stream().map(StudyPublicEvidence::map).anyMatch(item -> ((Number) item.get("retained_rows")).intValue() == 0))
-            throw new IOException("No analyzable association rows after effect-outlier QC; inspect effect-outlier-qc.yaml");
-        return new Result(audit, List.of("effect-outlier-summary.tsv", "effect-outlier-exclusions.tsv", "effect-outlier-qc.yaml"));
+        outputs.addAll(List.of("effect-outlier-summary.tsv", "effect-outlier-exclusions.tsv", "effect-outlier-qc.yaml"));
+        return new Result(audit, outputs);
     }
 
     private static double positive(Object value, String key) {

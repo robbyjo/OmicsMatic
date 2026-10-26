@@ -1,0 +1,96 @@
+package org.jlinalg.cli;
+
+import static org.junit.jupiter.api.Assertions.*;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import org.jlinalg.study.StudyOperationExecutor.Context;
+import org.jlinalg.study.StudyOperationExecutor.Result;
+import org.jlinalg.study.StudyOperationExecutor.State;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.io.TempDir;
+
+class StudyNetworkPreservationTest {
+    @TempDir Path root;
+    private static final String NODES="node_id\na\nb\nc\nd\ne\n";
+    private static final String LEFT="source\ttarget\tweight\na\tb\t.9\na\tc\t-.8\nb\tc\t-.75\n";
+    private static final String RIGHT="source\ttarget\tweight\na\tb\t.85\na\tc\t.9\n";
+    private record Fixture(Context context,Path a,Path b,Path am,Path bm) { }
+    private Map<String,Object> policy(){return Map.of("references",List.of("dataset:a"),"graph_namespaces",Map.of("dataset:a","HGNC:symbol:2026","dataset:b","HGNC:symbol:2026"));}
+    private Fixture fixture(String name,Map<String,Object> policy,String bnodes,String bedges,Map<String,Object> bm)throws Exception{
+        Path project=Files.createDirectory(root.resolve(name));var datasets=List.of(Map.<String,Object>of("id","a","type","expression","stage","processed_matrix","cohort","A","species","human","feature_id_type","gene_symbol","genome_build","GRCh38","files",Map.of()),Map.<String,Object>of("id","b","type","expression","stage","processed_matrix","cohort","B","species","human","feature_id_type","gene_symbol","genome_build","GRCh38","files",Map.of()));
+        var study=new LinkedHashMap<String,Object>(Map.of("schema_version",1,"project",Map.of("id","preservation","title","Synthetic graph preservation","description","Software fixture only"),"datasets",datasets,"hypotheses",List.of(Map.of("id","H","description","Compare frozen graph memberships","analysis",Map.of("network_preservation",policy,"network",Map.of())))));
+        Path a=graph(project,"a",NODES,LEFT,Map.of()),b=graph(project,"b",bnodes,bedges,bm);Path am=modules(project,"a",a),bmod=modules(project,"b",b);
+        var c=new Context(project,Files.createDirectory(project.resolve("output")),Map.of("id","preservation","type","network_preservation","hypothesis","H","datasets",List.of("a","b")),study,Map.of(),Map.of("a",a,"b",b,"am",am,"bm",bmod));return new Fixture(c,a,b,am,bmod);
+    }
+    private Path graph(Path project,String id,String nodes,String edges,Map<String,Object> changes)throws Exception{
+        Path p=Files.createDirectory(project.resolve("graph-"+id));Files.writeString(p.resolve("network-nodes.tsv"),nodes);Files.writeString(p.resolve("network-edges.tsv"),edges);
+        var metadata=new LinkedHashMap<String,Object>(Map.of("dataset_id",id,"network_type","molecular_correlation","correlation","pearson","threshold",.7));metadata.putAll(changes);StudyPublicEvidence.write(p.resolve("network-analysis.yaml"),metadata);seal(p,"network_analysis","complete",metadata);return p;
+    }
+    private Path modules(Path project,String id,Path graph)throws Exception{
+        Path p=Files.createDirectory(project.resolve("modules-"+id));var nodes=DelimitedData.readResult(graph.resolve("network-nodes.tsv"));var rows=new ArrayList<String[]>();for(String[] r:nodes.rows())rows.add(new String[]{r[0],r[0].equals("d")||r[0].equals("e")?"outside":"core","supplied_module"});FollowupSupport.table(p.resolve("network-modules.tsv"),List.of("node_id","module_id","module_type"),rows);seal(p,"network_modules","complete",Map.of("source_network_sha256",FollowupSupport.hash(graph.resolve("manifest.yaml")),"source_network_output_sha256",StudyPublicEvidence.map(StudyYaml.loadArtifact(graph.resolve("manifest.yaml")).get("output_sha256"))));return p;
+    }
+    private static void seal(Path dir,String type,String state,Map<String,Object> details)throws Exception{
+        var hashes=new LinkedHashMap<String,Object>();try(var files=Files.list(dir)){for(Path p:files.filter(Files::isRegularFile).filter(p->!p.getFileName().toString().equals("manifest.yaml")).toList())hashes.put(p.getFileName().toString(),FollowupSupport.hash(p));}
+        StudyPublicEvidence.write(dir.resolve("manifest.yaml"),Map.of("operation_id",dir.getFileName().toString(),"operation_type",type,"hypothesis","H","state",state,"output_sha256",hashes,"details",details));
+    }
+    private static String[] core(Context c)throws Exception{var t=DelimitedData.readResult(c.outputDirectory().resolve("network-preservation.tsv"));return t.rows().stream().filter(r->r[t.column("module_id")].equals("core")).findFirst().orElseThrow();}
+    @Test void frozenReferenceTransferRetainsMissingEdgesAndSignedWeightDisagreement()throws Exception{
+        var f=fixture("signed",policy(),NODES,RIGHT,Map.of());Result result=new StudyCliExecutor().execute(f.context);assertEquals(State.COMPLETE,result.state(),result.details().toString());var row=core(f.context);
+        assertEquals("3",row[8]);assertEquals("2",row[9]);assertEquals("2",row[10]);assertEquals(2.0/3,Double.parseDouble(row[11]),1e-14);assertEquals(2.0/3,Double.parseDouble(row[12]),1e-14);assertEquals(.5,Double.parseDouble(row[13]),1e-14);
+        assertEquals((.9*.85-.8*.9)/Math.sqrt((.9*.9+.8*.8+.75*.75)*(.85*.85+.9*.9)),Double.parseDouble(row[14]),1e-14);assertEquals("assessed",row[15]);assertEquals(2,((Number)result.details().get("comparisons")).intValue());assertEquals(true,StudyPublicEvidence.map(result.details().get("method_report")).get("performed"));
+        assertTrue(Files.isRegularFile(f.context.outputDirectory().resolve("graph-001-network-edges.tsv")));assertEquals(LEFT,Files.readString(f.a.resolve("network-edges.tsv")));
+    }
+    @Test void missingNodesLimitCoverageRatherThanBecomingZeroCorrelations()throws Exception{
+        var f=fixture("coverage",policy(),"node_id\na\nb\nd\ne\n","source\ttarget\tweight\na\tb\t.85\n",Map.of());Result result=new StudyCliExecutor().execute(f.context);assertEquals(State.COMPLETE,result.state());var row=core(f.context);assertEquals("2",row[5]);assertEquals(2.0/3,Double.parseDouble(row[6]),1e-14);assertEquals("below_minimum_nodes",row[15]);for(int i=8;i<15;i++)assertEquals("NA",row[i]);assertEquals(false,StudyPublicEvidence.map(result.details().get("method_report")).get("performed"));
+    }
+    @Test void unknownNamespaceEstimatorThresholdAndKnownSpeciesContextsHoldComparisons()throws Exception{
+        var cases=List.of(Map.<String,Object>of("correlation","spearman"),Map.<String,Object>of("threshold",.8));int i=0;
+        for(var change:cases){var f=fixture("method"+(i++),policy(),NODES,RIGHT,change);Result result=new StudyCliExecutor().execute(f.context);assertEquals(State.WAITING_FOR_INPUT,result.state());assertEquals("held_source_context",core(f.context)[15]);}
+        var missing=fixture("namespace",Map.of(),NODES,RIGHT,Map.of());assertEquals(State.WAITING_FOR_INPUT,new StudyCliExecutor().execute(missing.context).state());assertEquals("NA",core(missing.context)[11]);
+        var f=fixture("species",policy(),NODES,RIGHT,Map.of());var study=new LinkedHashMap<>(f.context.study());var datasets=new ArrayList<Object>(StudyPublicEvidence.list(study.get("datasets")));var changed=new LinkedHashMap<>(StudyPublicEvidence.map(datasets.get(1)));changed.put("species","mouse");datasets.set(1,changed);study.put("datasets",datasets);Context c=new Context(f.context.project(),f.context.outputDirectory(),f.context.operation(),study,f.context.plan(),f.context.dependencyDirectories());assertEquals(State.WAITING_FOR_INPUT,new StudyCliExecutor().execute(c).state());assertEquals("held_source_context",core(c)[15]);
+        var same=fixture("taxonomy-alias",policy(),NODES,RIGHT,Map.of());var sameStudy=new LinkedHashMap<>(same.context.study());var sameDatasets=new ArrayList<Object>(StudyPublicEvidence.list(sameStudy.get("datasets")));var right=new LinkedHashMap<>(StudyPublicEvidence.map(sameDatasets.get(1)));right.put("species","9606");right.put("genome_build","hg38");sameDatasets.set(1,right);sameStudy.put("datasets",sameDatasets);var canonical=new Context(same.context.project(),same.context.outputDirectory(),same.context.operation(),sameStudy,same.context.plan(),same.context.dependencyDirectories());assertEquals(State.COMPLETE,new StudyCliExecutor().execute(canonical).state());
+        right.put("species","NA");sameDatasets.set(1,right);sameStudy.put("datasets",sameDatasets);Path na=Files.createDirectory(same.context.project().resolve("missing-species"));var unresolved=new Context(same.context.project(),na,same.context.operation(),sameStudy,same.context.plan(),same.context.dependencyDirectories());assertEquals(State.WAITING_FOR_INPUT,new StudyCliExecutor().execute(unresolved).state());assertTrue(Files.readString(na.resolve("graph-comparability.tsv")).contains("unknown_species"));assertThrows(IllegalArgumentException.class,()->org.jlinalg.study.StudyNetworkPreservationPolicy.resolve(Map.of("graph_namespaces",Map.of("dataset:a","NA"))));
+    }
+    @Test void workBoundsRetainSnapshotsButNeverSelectAFavorablePrefix()throws Exception{
+        var p=new LinkedHashMap<>(policy());p.put("max_comparisons",1);var f=fixture("bound",p,NODES,RIGHT,Map.of());Result result=new StudyCliExecutor().execute(f.context);assertEquals(State.WAITING_FOR_INPUT,result.state());assertTrue(DelimitedData.readResult(f.context.outputDirectory().resolve("network-preservation.tsv")).rows().isEmpty());assertEquals(false,StudyPublicEvidence.map(result.details().get("method_report")).get("performed"));assertTrue(Files.isRegularFile(f.context.outputDirectory().resolve("graph-001-network-edges.tsv")));
+    }
+    @Test void simultaneousSourceBoundsProduceDistinctStableReviewContracts()throws Exception{
+        var p=new LinkedHashMap<>(policy());p.put("max_nodes",4);var f=fixture("many-needs",p,NODES,RIGHT,Map.of());Result result=new StudyCliExecutor().execute(f.context);assertEquals(State.WAITING_FOR_INPUT,result.state());var needs=StudyPublicEvidence.list(result.details().get("needs")).stream().map(StudyPublicEvidence::map).toList();assertTrue(needs.size()>1);assertEquals(needs.size(),needs.stream().map(n->n.get("semantic_key")).distinct().count());
+        Path second=Files.createDirectory(f.context.project().resolve("repeat-output"));var c=new Context(f.context.project(),second,f.context.operation(),f.context.study(),f.context.plan(),f.context.dependencyDirectories());var again=new StudyCliExecutor().execute(c);assertEquals(needs,StudyPublicEvidence.list(again.details().get("needs")));
+    }
+    @Test void tamperedOrUnsealedDependenciesFailBeforeUse()throws Exception{
+        var f=fixture("tampered",policy(),NODES,RIGHT,Map.of());Files.writeString(f.b.resolve("network-edges.tsv"),RIGHT.replace(".85",".95"));assertThrows(IOException.class,()->new StudyCliExecutor().execute(f.context));
+        var g=fixture("unsealed",policy(),NODES,RIGHT,Map.of());var m=new LinkedHashMap<>(StudyYaml.loadArtifact(g.a.resolve("manifest.yaml")));var hashes=new LinkedHashMap<>(StudyPublicEvidence.map(m.get("output_sha256")));hashes.remove("network-edges.tsv");m.put("output_sha256",hashes);StudyPublicEvidence.write(g.a.resolve("manifest.yaml"),m);assertThrows(IOException.class,()->new StudyCliExecutor().execute(g.context));
+    }
+    @Test void cachedReceiptsBindIdenticalGraphOutputsButNotAChangedGraph()throws Exception{
+        var f=fixture("cached",policy(),NODES,RIGHT,Map.of());String original=FollowupSupport.hash(f.a.resolve("manifest.yaml"));var receipt=new LinkedHashMap<>(StudyYaml.loadArtifact(f.a.resolve("manifest.yaml")));receipt.put("reused_from_cache",true);StudyPublicEvidence.write(f.a.resolve("manifest.yaml"),receipt);assertNotEquals(original,FollowupSupport.hash(f.a.resolve("manifest.yaml")));assertEquals(State.COMPLETE,new StudyCliExecutor().execute(f.context).state());
+        Files.writeString(f.a.resolve("network-edges.tsv"),LEFT.replace(".9",".95"));seal(f.a,"network_analysis","complete",Map.of());Path output=Files.createDirectory(f.context.project().resolve("changed-output"));var c=new Context(f.context.project(),output,f.context.operation(),f.context.study(),f.context.plan(),f.context.dependencyDirectories());Result held=new StudyCliExecutor().execute(c);assertEquals(State.WAITING_FOR_INPUT,held.state());assertEquals(0,((Number)held.details().get("assessed_comparisons")).intValue());
+    }
+    @Test void partialReferenceMembershipsAndIncompleteGraphExportsStayUnavailable()throws Exception{
+        var f=fixture("partial",policy(),NODES,RIGHT,Map.of());seal(f.am,"network_modules","waiting_for_input",Map.of("source_network_sha256",FollowupSupport.hash(f.a.resolve("manifest.yaml"))));assertEquals(State.WAITING_FOR_INPUT,new StudyCliExecutor().execute(f.context).state());assertEquals("held_source_context",core(f.context)[15]);
+        var g=fixture("missing",policy(),NODES,RIGHT,Map.of());Files.delete(g.b.resolve("network-edges.tsv"));seal(g.b,"network_analysis","waiting_for_input",Map.of());assertEquals(State.WAITING_FOR_INPUT,new StudyCliExecutor().execute(g.context).state());assertEquals(0,((Number)new java.util.LinkedHashMap<>(StudyYaml.loadArtifact(g.context.outputDirectory().resolve("network-preservation.yaml"))).get("assessed_comparisons")).intValue());
+    }
+    @Test void emptyEdgeSetsDoNotBecomePerfectPreservation()throws Exception{
+        var f=fixture("empty",policy(),NODES,"source\ttarget\tweight\n",Map.of());Files.writeString(f.a.resolve("network-edges.tsv"),"source\ttarget\tweight\n");seal(f.a,"network_analysis","complete",Map.of());seal(f.am,"network_modules","complete",Map.of("source_network_sha256",FollowupSupport.hash(f.a.resolve("manifest.yaml"))));assertEquals(State.COMPLETE,new StudyCliExecutor().execute(f.context).state());var row=core(f.context);assertEquals("assessed_no_reference_edges",row[15]);for(int i=11;i<15;i++)assertEquals("NA",row[i]);
+    }
+    @Test void unweightedGraphsRetainScopeWithoutInventingSignedCorrelations()throws Exception{
+        var f=fixture("unweighted",policy(),NODES,"source\ttarget\na\tb\na\tc\n",Map.of());Result result=new StudyCliExecutor().execute(f.context);assertEquals(State.WAITING_FOR_INPUT,result.state());var row=core(f.context);assertEquals("held_source_context",row[15]);for(int i=8;i<15;i++)assertEquals("NA",row[i]);assertTrue(Files.readString(f.context.outputDirectory().resolve("graph-comparability.tsv")).contains("unavailable_signed_edge_weights"));
+    }
+    @Test void typedReuseValidatesCountsRatiosAndExplicitSourceRounding()throws Exception{
+        var f=fixture("native",policy(),NODES,RIGHT,Map.of());new StudyCliExecutor().execute(f.context);String[] valid=core(f.context);StudyNetworkPreservation.validateSupplied(StudyNetworkPreservation.COLUMNS,valid,Map.of());StudyNetworkPreservation.validateSupplied(StudyNetworkPreservation.COLUMNS,valid,Map.of("method",Map.of("precision_tolerance",0)));String[] rounded=valid.clone();rounded[11]=".67";rounded[12]=".67";assertThrows(IOException.class,()->StudyNetworkPreservation.validateSupplied(StudyNetworkPreservation.COLUMNS,rounded,Map.of()));StudyNetworkPreservation.validateSupplied(StudyNetworkPreservation.COLUMNS,rounded,Map.of("method",Map.of("precision_tolerance",.005)));
+        String[] invalid=valid.clone();invalid[10]="3";assertThrows(IOException.class,()->StudyNetworkPreservation.validateSupplied(StudyNetworkPreservation.COLUMNS,invalid,Map.of()));
+        var definition=Map.of("id","external","kind","network_preservation","files",Map.of("results","native/output/network-preservation.tsv"),"scope",Map.of("species","human"),"method",Map.of("name","Provided thresholded graph comparison"));var study=new LinkedHashMap<>(f.context.study());study.put("hypotheses",List.of(Map.of("id","H","analysis",Map.of("supplied_results",List.of(definition)))));var c=new Context(root,Files.createDirectory(root.resolve("imported")),Map.of("id","external","type","network_preservation","hypothesis","H","supplied_result_id","external"),study,Map.of(),Map.of());Result imported=new StudyCliExecutor().execute(c);assertEquals(State.COMPLETE,imported.state(),imported.details().toString());assertEquals(false,imported.details().get("analysis_executed_by_jlinalg"));assertEquals(false,imported.details().get("primary_selection_eligible"));assertEquals(2,DelimitedData.readResult(c.outputDirectory().resolve("network-preservation.tsv")).rows().size());
+    }
+    @Test void automaticPlanningAndSuppliedStageReuseKeepGraphPrerequisitesScoped()throws Exception{
+        var f=fixture("planning",policy(),NODES,RIGHT,Map.of());var document=new LinkedHashMap<>(f.context.study());var datasets=new ArrayList<Object>();for(Object raw:StudyPublicEvidence.list(document.get("datasets"))){var d=new LinkedHashMap<>(StudyPublicEvidence.map(raw));d.put("files",Map.of("matrix",d.get("id")+".tsv"));datasets.add(d);}document.put("datasets",datasets);document.put("hypotheses",List.of(Map.of("id","H","description","Compare complete source graphs","inputs",Map.of("discovery",List.of("a"),"replication",List.of("b")),"analysis",Map.of("mode","auto","network_preservation",policy()))));Path path=root.resolve("study.yaml");StudyPublicEvidence.write(path,document);var ops=operations(path);var preservation=ops.stream().filter(op->"network_preservation".equals(op.get("type"))).findFirst().orElseThrow();assertEquals(3,StudyPublicEvidence.list(preservation.get("depends_on")).size());assertEquals(2,ops.stream().filter(op->"network_analysis".equals(op.get("type"))).count());
+        var manual=Map.<String,Object>of("id","H","description","Only a frozen reference is needed","inputs",Map.of("discovery",List.of("a"),"replication",List.of("b")),"analysis",Map.of("mode","manual","goals",List.of("network_preservation"),"network_preservation",policy()));document.put("hypotheses",List.of(manual));StudyPublicEvidence.write(path,document);var minimal=operations(path);assertEquals(1,minimal.stream().filter(op->"network_modules".equals(op.get("type"))).count());
+        var h=new LinkedHashMap<>(manual);h.put("analysis",Map.of("mode","auto","network_preservation",Map.of("enabled",false)));document.put("hypotheses",List.of(h));StudyPublicEvidence.write(path,document);assertFalse(operations(path).stream().anyMatch(op->"network_preservation".equals(op.get("type"))));
+        h.put("analysis",Map.of("mode","manual","goals",List.of("network_preservation"),"supplied_results",List.of(Map.of("id","provided","kind","network_preservation","files",Map.of("results","provided.tsv"),"scope",Map.of(),"method",Map.of("name","External comparison")))));document.put("hypotheses",List.of(h));StudyPublicEvidence.write(path,document);ops=operations(path);assertEquals(1,ops.stream().filter(op->"network_preservation".equals(op.get("type"))).count());assertFalse(ops.stream().anyMatch(op->"network_analysis".equals(op.get("type"))||"network_modules".equals(op.get("type"))));
+    }
+    private List<Map<String,Object>> operations(Path path)throws Exception{return StudyPublicEvidence.list(org.jlinalg.study.StudyPlanner.compile(org.jlinalg.study.StudyResolver.resolve(path)).document().get("operations")).stream().map(StudyPublicEvidence::map).toList();}
+}

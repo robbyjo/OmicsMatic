@@ -200,6 +200,14 @@ public final class StreamingOmicsAssociationPipeline {
         FastCoxAssociation prepared = FastCoxAssociation.prepare(survival,
             covariates, offset, coxOptions, engineOptions,
             clusterIds, scoreCorrelation);
+        return scanPredictorsCoxTo(source,analysisSampleIds,prepared,scoreVariance,transform,missingPolicy,featureBlockSize,engineOptions,sink);
+    }
+    /** Reuses an already fitted and finite-maximum-checked null for aligned omics blocks. */
+    public static OmicsAssociationSummary scanPredictorsCoxTo(NumericMatrixSource source,List<String> analysisSampleIds,
+            FastCoxAssociation prepared,CoxScoreVariance scoreVariance,OmicsTransform transform,OmicsMissingPolicy missingPolicy,
+            int featureBlockSize,AssociationEngineOptions engineOptions,OmicsAssociationSink sink)throws IOException {
+        validate(source,analysisSampleIds,featureBlockSize,transform,missingPolicy);
+        if(prepared==null||prepared.observations()!=analysisSampleIds.size()||sink==null)throw new IllegalArgumentException("checked Cox null and sink must match analysis samples");
         return scanTo(source, analysisSampleIds, featureBlockSize,
             transform, missingPolicy, (matrix, names) -> prepared.scan(
                 matrix, names, engineOptions, scoreVariance), sink);

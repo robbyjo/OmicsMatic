@@ -38,9 +38,13 @@ class StudyGeneticEvidenceTest {
         assertTrue(Files.isRegularFile(context.outputDirectory().resolve("pair/mr-loo-0-estimate.tsv")));
         assertTrue(Files.readString(context.outputDirectory().resolve("pair/harmonization.tsv")).contains("rs2\t1\t200\tA\tG\t0.2\t0.1\t-1\t1"));
         assertTrue(Files.readString(context.outputDirectory().resolve("pair/exposure-source.tsv.source.yaml")).contains("sha256"));
+        assertEquals(1, ((Map<?, ?>) result.details().get("mr_testing")).get("family_size"));
+        var primary = DelimitedData.readResult(context.outputDirectory().resolve("mr-primary-results.tsv"));
+        assertEquals(1, primary.rows().size()); assertEquals("ivw-fixed", primary.rows().get(0)[primary.column("primary_estimator")]);
+        assertEquals(Double.parseDouble(primary.rows().get(0)[primary.column("causal_p_value")]), Double.parseDouble(primary.rows().get(0)[primary.column("adjusted_p")]));
     }
 
-    @Test void reviewedMrPairBeyondContextualTopTenStillRunsWithoutAnExplicitCap() throws Exception {
+    @Test void reviewedMrPairBeyondTopTenRunsWhileUnpairedEligibleFindingsRemainPending() throws Exception {
         Context context=context("mendelian_randomization",Map.of());
         Path upstream=context.dependencyDirectories().get("harmonize");
         StringBuilder primary=new StringBuilder("feature_id\tp_value\n");
@@ -49,12 +53,14 @@ class StudyGeneticEvidenceTest {
         Files.writeString(upstream.resolve("standard-results/d1.tsv"),primary);
         String annotation=Files.readString(upstream.resolve("feature-annotation.tsv"));
         for(int i=0;i<15;i++)annotation+="other-"+i+"\tTEST\tENSG1\t1\t100\t300\tGRCh38\tlocated\n";
-        Files.writeString(upstream.resolve("feature-annotation.tsv"),annotation);
+        Files.writeString(upstream.resolve("feature-annotation.tsv"),annotation);StudyTestSources.seal(upstream,"validate_harmonize","harmonize","h1");
         assertFalse(StudyBioinformatics.features(context).stream().anyMatch(f->f.id().equals("probe1")));
         var result=new StudyGeneticEvidence().execute(context);
-        assertEquals(State.COMPLETE,result.state(),result.details().toString());
+        assertEquals(State.WAITING_FOR_INPUT,result.state(),result.details().toString());
         assertTrue(Files.isRegularFile(context.outputDirectory().resolve("pair/mr-ivw-fixed.tsv")));
         assertEquals("all_significant_features",((Map<?,?>)result.details().get("feature_selection")).get("scope"));
+        assertEquals(16, ((Map<?, ?>) result.details().get("mr_testing")).get("family_size"));
+        assertEquals(15, ((Map<?, ?>) result.details().get("mr_testing")).get("unresolved_tests"));
     }
 
     @Test void runsFineMappingAndColocalizationWithPriorSensitivity() throws Exception {
@@ -64,6 +70,8 @@ class StudyGeneticEvidenceTest {
         assertTrue(Files.isRegularFile(context.outputDirectory().resolve("pair/exposure-fine-mapping.tsv")));
         assertTrue(Files.isRegularFile(context.outputDirectory().resolve("pair/colocalization.tsv")));
         assertTrue(Files.isRegularFile(context.outputDirectory().resolve("pair/colocalization-prior-sensitivity.tsv")));
+        var canonical=DelimitedData.readResult(context.outputDirectory().resolve("colocalization-results.tsv"));assertFalse(canonical.rows().isEmpty());
+        for(String[] row:canonical.rows()){assertEquals("true",row[canonical.column("exposure_converged")]);assertEquals("regional_analysis_with_declared_complete_sources",row[canonical.column("evidence_grade")]);assertEquals("not_classified_no_registered_threshold",row[canonical.column("prior_stability")]);}
     }
 
     @Test @SuppressWarnings("unchecked")
@@ -234,6 +242,11 @@ class StudyGeneticEvidenceTest {
         var result = new StudyGeneticEvidence().execute(context);
         assertEquals(State.COMPLETE, result.state(), result.details().toString());
         assertFalse(result.details().toString().contains("5000-variant"));
+        var pair=StudyPublicEvidence.map(StudyPublicEvidence.list(result.details().get("pairs")).get(0));
+        assertEquals(5004,pair.get("outcome_variants"));assertEquals(3,pair.get("outcome_retained_for_alignment"));
+        assertEquals(3.0/5004,((Number)pair.get("outcome_variant_match_fraction")).doubleValue(),1e-15);
+        assertEquals(1.0,((Number)pair.get("outcome_candidate_match_fraction")).doubleValue());
+        assertEquals(5005,Files.readAllLines(context.outputDirectory().resolve("pair/outcome-regional-variants.tsv")).size());
     }
 
     @Test void convergedFineMappingWithoutCredibleSignalIsCompletedNotEstimable() throws Exception {
@@ -320,6 +333,19 @@ class StudyGeneticEvidenceTest {
         assertFalse(instruments.contains("chr1:100"));
     }
 
+    private Context withAnalysis(Context base,Map<String,Object> extra) {
+        var h=new LinkedHashMap<>(StudyPublicEvidence.map(StudyPublicEvidence.list(base.study().get("hypotheses")).get(0)));var a=new LinkedHashMap<>(StudyPublicEvidence.map(h.get("analysis")));a.putAll(extra);h.put("analysis",a);var study=new LinkedHashMap<>(base.study());study.put("hypotheses",List.of(h));return new Context(base.project(),base.outputDirectory(),base.operation(),study,base.plan(),base.dependencyDirectories());
+    }
+    @Test void anExplicitPartialRequestCannotBePromotedByCompleteSourceDeclarations()throws Exception {
+        var c=context("colocalization",Map.of("partial_colocalization",true));var result=new StudyGeneticEvidence().execute(c);assertEquals(State.COMPLETE,result.state(),result.details().toString());var table=DelimitedData.readResult(c.outputDirectory().resolve("colocalization-results.tsv"));assertFalse(table.rows().isEmpty());assertTrue(table.rows().stream().allMatch(row->row[table.column("evidence_grade")].equals("exploratory_partial_region_major_limitation")&&row[table.column("required_manuscript_caveat")].contains("observed, selected variants")));
+    }
+    @Test void nonconvergenceRetainsItsAttemptAndCoverageWithoutAColocalizationPosterior()throws Exception {
+        var c=withAnalysis(context("colocalization",Map.of()),Map.of("colocalization",Map.of("maximum_iterations",1)));var result=new StudyGeneticEvidence().execute(c);assertEquals(State.WAITING_FOR_INPUT,result.state());var pair=StudyPublicEvidence.map(StudyPublicEvidence.list(result.details().get("pairs")).get(0));var fine=StudyPublicEvidence.map(StudyPublicEvidence.map(pair.get("effective_parameters")).get("exposure_fine_mapping"));assertEquals(false,fine.get("converged"));assertEquals(1,StudyPublicEvidence.list(fine.get("attempts")).size());assertTrue(Files.isRegularFile(c.outputDirectory().resolve("pair/regional-coverage.yaml")));assertTrue(DelimitedData.readResult(c.outputDirectory().resolve("colocalization-results.tsv")).rows().isEmpty());
+    }
+    @Test void reviewedColocalizationPairBeyondTheContextualCapExecutesWithUnrequestedDispositions()throws Exception {
+        var c=context("colocalization",Map.of());Path upstream=c.dependencyDirectories().get("harmonize");var table=new StringBuilder("feature_id\tp_value\n");String annotation=Files.readString(upstream.resolve("feature-annotation.tsv"));for(int i=0;i<15;i++){table.append("other-").append(i).append("\t1e-10\n");annotation+="other-"+i+"\tTEST\tENSG1\t1\t100\t300\tGRCh38\tlocated\n";}table.append("probe1\t1e-9\n");Files.writeString(upstream.resolve("standard-results/d1.tsv"),table);Files.writeString(upstream.resolve("feature-annotation.tsv"),annotation);StudyTestSources.seal(upstream,"validate_harmonize","harmonize","h1");assertFalse(StudyBioinformatics.features(c).stream().anyMatch(f->f.id().equals("probe1")));assertEquals(16,StudyBioinformatics.colocalizationFeatures(c).size());var result=new StudyGeneticEvidence().execute(c);assertEquals(State.COMPLETE,result.state(),result.details().toString());assertEquals(15L,StudyPublicEvidence.map(result.details().get("colocalization_review")).get("unrequested_features"));assertEquals(16,DelimitedData.readResult(c.outputDirectory().resolve("colocalization-feature-dispositions.tsv")).rows().size());
+    }
+
     private Map<String, Object> source(String role, String build) {
         Map<String, Object> source = new LinkedHashMap<>();
         source.put("dataset_id", "d1"); source.put("file_role", role); source.put("source_id", "synthetic-" + role);
@@ -335,6 +361,26 @@ class StudyGeneticEvidenceTest {
             "A", "G", 0.1, 0.01, 1e-12);
         return new StudyGeneticEvidence.Aligned(variant, variant, 1, 1);
     }
+    private Map<String,Object> reviewedLocation() {
+        return Map.of("feature_id","probe1","genome_build","GRCh38","chromosome","1","start",100,"end",300,"coordinate_system","1-based-closed","source_id","synthetic-locus-v1","citation","Synthetic source; no biological claim","rationale","Exact simulated feature interval");
+    }
+    @Test void reviewedExactFeatureLocationEnablesMrWithoutGuessingMissingOrAmbiguousGenes() throws Exception {
+        for(String status:List.of("missing_annotation","ambiguous","conflicting_rows")) {
+            var c=context("mendelian_randomization",Map.of("feature_location",reviewedLocation()));var upstream=c.dependencyDirectories().get("harmonize");var annotation=upstream.resolve("feature-annotation.tsv");
+            if(status.equals("missing_annotation"))Files.delete(annotation);else if(status.equals("ambiguous"))Files.writeString(annotation,Files.readString(annotation).replace("located","ambiguous"));else Files.writeString(annotation,Files.readString(annotation)+"probe1\tOTHER\tENSG2\t2\t100\t300\tGRCh38\tlocated\n");
+            StudyTestSources.seal(upstream,"validate_harmonize","harmonize","h1");var result=new StudyGeneticEvidence().execute(c);assertEquals(State.COMPLETE,result.state(),result.details().toString());var pair=StudyPublicEvidence.map(StudyPublicEvidence.list(result.details().get("pairs")).get(0));var location=StudyPublicEvidence.map(pair.get("measured_feature_location"));assertEquals("reviewed_pair_feature_location",location.get("origin"));assertEquals(false,location.get("gene_annotation_inferred"));assertEquals("",StudyPublicEvidence.map(pair.get("primary_feature_selection")).get("gene_id"));
+            var table=DelimitedData.readResult(c.outputDirectory().resolve("mr-primary-results.tsv"));assertEquals(.5,Double.parseDouble(table.rows().get(0)[table.column("estimate")]),1e-12);assertEquals(1,table.rows().size());assertTrue(result.details().toString().contains("synthetic-locus-v1"));
+        }
+    }
+    @Test void anUnlocatedEligibleFeatureWithoutAReviewedLocationRemainsPendingRatherThanAbsent() throws Exception {
+        var c=context("mendelian_randomization",Map.of());var upstream=c.dependencyDirectories().get("harmonize");Files.delete(upstream.resolve("feature-annotation.tsv"));StudyTestSources.seal(upstream,"validate_harmonize","harmonize","h1");var result=new StudyGeneticEvidence().execute(c);assertEquals(State.WAITING_FOR_INPUT,result.state());assertEquals(1,StudyPublicEvidence.map(result.details().get("mr_testing")).get("family_size"));assertEquals(1,StudyPublicEvidence.map(result.details().get("mr_testing")).get("unresolved_tests"));assertFalse(Files.exists(c.outputDirectory().resolve("pair/exposure-source.tsv")));
+    }
+    @Test void conflictingIdentityBuildApprovalAndIntervalCannotBeBypassedWithAReviewedLocation() throws Exception {
+        for(String bad:List.of("feature_id","genome_build","start","region","approved")) {
+            var location=new LinkedHashMap<>(reviewedLocation());var extra=new LinkedHashMap<String,Object>();if(bad.equals("feature_id"))location.put(bad,"other");if(bad.equals("genome_build"))location.put(bad,"GRCh37");if(bad.equals("start"))location.put(bad,101);if(bad.equals("region"))extra.put("region",Map.of("chromosome","1","start",101,"end",500));if(bad.equals("approved"))extra.put("approved",false);extra.put("feature_location",location);
+            var c=context("mendelian_randomization",extra);var result=new StudyGeneticEvidence().execute(c);assertEquals(State.WAITING_FOR_INPUT,result.state(),bad);assertFalse(Files.exists(c.outputDirectory().resolve("pair/exposure-source.tsv")),bad);assertEquals(1,StudyPublicEvidence.map(result.details().get("mr_testing")).get("unresolved_tests"));
+        }
+    }
     private Context context(String operation, Map<String, Object> changes) throws Exception {
         String header = "variant_id\tchromosome\tposition\teffect_allele\tother_allele\tbeta\tse\tp_value\n";
         Files.writeString(project.resolve("exposure.tsv"), header + "rs1\t1\t100\tA\tG\t0.1\t0.01\t1e-12\nrs2\t1\t200\tA\tG\t0.2\t0.01\t1e-12\nrs3\t1\t300\tA\tG\t0.3\t0.01\t1e-12\n");
@@ -347,7 +393,7 @@ class StudyGeneticEvidenceTest {
         pair.put("sample_overlap", "none"); pair.put("sample_overlap_basis", "Separate simulated samples"); pair.put("instrument_validity_rationale", "Simulation only");
         pair.put("region", Map.of("chromosome", "1", "start", 1, "end", 500));
         pair.put("exposure", source("exposure", "GRCh38")); pair.put("outcome", source("outcome", "GRCh38")); pair.put("ld", ld); pair.putAll(changes);
-        Map<String, Object> study = Map.of("resources", Map.of("network", "offline"),
+        Map<String, Object> study = Map.of("resources", Map.of("directory","fixture-resources","network", "offline","downloads","deny"),
             "datasets", List.of(Map.of("id", "d1", "files", Map.of("exposure", "exposure.tsv", "outcome", "outcome.tsv", "ld", "ld.tsv", "alleles", "alleles.tsv"))),
             "hypotheses", List.of(Map.of("id", "h1", "outcome", "BMI", "analysis", Map.of("bioinformatics", Map.of("genetic_pairs", List.of(pair))))));
         Path upstream = Files.createTempDirectory(project, "upstream-");
@@ -355,6 +401,7 @@ class StudyGeneticEvidenceTest {
         Files.writeString(upstream.resolve("manifest.yaml"), "operation_type: validate_harmonize\nstate: complete\n");
         Files.writeString(upstream.resolve("standard-results/d1.tsv"), "feature_id\tp_value\nprobe1\t1e-9\n");
         Files.writeString(upstream.resolve("feature-annotation.tsv"), "feature_id\tgene_symbol\tgene_id\tchromosome\tstart\tend\tgenome_build\tmapping_status\nprobe1\tTEST\tENSG1\t1\t100\t300\tGRCh38\tlocated\n");
+        StudyTestSources.seal(upstream,"validate_harmonize","harmonize","h1");
         return new Context(project, Files.createTempDirectory(project, "output-"), Map.of("hypothesis", "h1", "type", operation, "datasets", List.of("d1")), study, Map.of(), Map.of("harmonize", upstream));
     }
 }

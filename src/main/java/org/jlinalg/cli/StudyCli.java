@@ -262,7 +262,7 @@ final class StudyCli {
             throws IOException {
         Path study = options.studyPath();
         Path project = options.project(study.getParent());
-        StudyValidation validation = StudyValidator.validate(study, true);
+        StudyValidation validation = StudyValidator.validateForExecution(study);
         if (!validation.valid())
             throw new IllegalArgumentException(
                 "Study validation failed:\n" + validation.report());

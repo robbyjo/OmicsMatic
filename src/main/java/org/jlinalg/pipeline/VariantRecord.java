@@ -14,7 +14,11 @@ public record VariantRecord(
         String referenceAllele,
         String alternateAllele,
         double[] dosages,
-        double imputationQuality) {
+        double imputationQuality,
+        VariantGenotypeMetadata genotypeMetadata) {
+    public VariantRecord(String id,String chromosome,long position,String referenceAllele,String alternateAllele,double[] dosages,double imputationQuality) {
+        this(id,chromosome,position,referenceAllele,alternateAllele,dosages,imputationQuality,VariantGenotypeMetadata.unspecified());
+    }
     public VariantRecord {
         id = require(id, "variant ID");
         chromosome = chromosome == null ? "" : chromosome.trim();
@@ -24,6 +28,8 @@ public record VariantRecord(
         Objects.requireNonNull(dosages, "dosages");
         if (dosages.length == 0)
             throw new IllegalArgumentException("dosages cannot be empty");
+        Objects.requireNonNull(genotypeMetadata,"genotype metadata");
+        genotypeMetadata.requireSamples(dosages.length);
         if (!Double.isNaN(imputationQuality)
                 && (!Double.isFinite(imputationQuality)
                     || imputationQuality < 0 || imputationQuality > 1)) {

@@ -143,6 +143,8 @@ class ConditionalGwasExportTest {
         assertEquals(4,summary.rows().size());
         String[] missing=summary.rows().get(2);
         assertEquals("filtered",missing[summary.column("status")]);
+        assertEquals(179,value(summary,missing,"n_cases")+value(summary,missing,"n_controls"));
+        assertEquals(179,value(summary,missing,"n_samples"));
         for(String column:ConditionalGwasExport.COLUMNS)assertEquals("",missing[summary.column(column)]);
         assertEquals(6,DelimitedData.read(Path.of(out+".score-cov.tsv")).rows().size());
     }
@@ -159,6 +161,19 @@ class ConditionalGwasExportTest {
         args=arguments("binomial",temporary.resolve("quasi.tsv"),true);
         args.set(args.indexOf("--family")+1,"quasi-binomial");
         result=run(args);assertNotEquals(0,result.code);assertTrue(result.console.contains("separate score exporters"),result.console);
+    }
+
+    @Test void conditioningRejectsObservedPloidyAndMultiallelicSources() throws Exception {
+        for(boolean multiallelic:List.of(false,true)) {
+            Path vcf=temporary.resolve("unsupported-"+multiallelic+".vcf");
+            Files.writeString(vcf,"##fileformat=VCFv4.2\n##FORMAT=<ID=GT,Number=1,Type=String,Description=\"Genotype\">\n"
+                +"#CHROM\tPOS\tID\tREF\tALT\tQUAL\tFILTER\tINFO\tFORMAT\ts1\ts2\ts3\n"
+                +"1\t100\tg1\tA\t"+(multiallelic?"G,T":"G")+"\t.\tPASS\t.\tGT\t"+(multiallelic?"0/1":"1")+"\t0/1\t0/0\n");
+            var source=org.jlinalg.pipeline.VcfVariantSource.open(vcf);
+            String requested=multiallelic?"g1:G":"g1";
+            var error=assertThrows(IllegalArgumentException.class,()->ConditionalGwasExport.conditioning(source,List.of("s1","s2","s3"),List.of(requested),new double[][]{{1},{1},{1}}));
+            assertTrue(error.getMessage().contains("diploid biallelic"),error.getMessage());
+        }
     }
 
     @Test void coxCategoricalCovariatesUseIdentifiableReferenceContrasts() throws Exception {

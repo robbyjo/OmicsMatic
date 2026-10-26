@@ -1,0 +1,1672 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="End-to-end workflow, GWAS QC and rare variants, functional follow-up, AI selection of 3–5 findings, an 8,000-word manuscript budget and implementation gaps."><title>Analysis pipeline specification · JLinAlg</title>
+<link rel="stylesheet" href="../assets/styles.css"><script src="../assets/app.js" defer></script>
+<style>.pipeline-spec .result-table table {min-width: 580px; table-layout: fixed;} .pipeline-spec .result-table th, .pipeline-spec .result-table td {white-space: normal; overflow-wrap: anywhere;}</style></head>
+<body><site-header root="../"></site-header><main id="main">
+<section class="page-hero"><div class="container"><div class="breadcrumbs"><a href="../index.html">Home</a><span>/</span><a href="index.html">Vignettes</a><span>/</span><span>Analysis pipeline specification</span></div>
+<span class="eyebrow">Scientific workflow specification · 2026-10-26</span><h1>Analysis pipeline specification</h1><p>End-to-end workflow, GWAS QC and rare variants, functional follow-up, AI selection of 3–5 findings, an 8,000-word manuscript budget and implementation gaps.</p></div></section>
+<div class="container page-layout"><article class="prose pipeline-spec">
+<blockquote>
+<p><strong>Scientific workflow specification, updated 2026-10-26.</strong> This document
+improves the proposed end-to-end pseudocode and maps it to the current source
+build. Requirements describe the intended workflow; they do not imply that
+every branch is already automatic. Documenting this specification performs no
+analyses, downloads or model predictions.</p>
+</blockquote>
+<p>JLinAlg should turn a declared scientific question and available data into
+reproducible association, replication, functional, genetic and literature
+results, followed by a manuscript draft. It should accept participant-level
+data, existing association results or later-stage evidence, and execute the
+branches supported by those inputs. The rules apply across phenotypes, cohorts,
+tissues and molecular assays.</p>
+<p>Use the <a href="auditable-omics-pipeline.html">study kernel</a> for contracts and provenance,
+the <a href="study-pipeline-tutorial.html">runnable tutorial</a> for existing commands, and
+the <a href="bioinformatics-evidence.html">bioinformatics workflow</a> for source acquisition
+and genetic inference. This pseudocode is a specification, not a new command
+or additional accepted <code>study.yaml</code> syntax.</p>
+<h2 id="changes-to-the-original-pseudocode">Changes to the original pseudocode</h2>
+<div class="result-table"><table>
+<thead>
+<tr>
+<th>Proposed step</th>
+<th>Refined rule</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Official meta-analysis has the least heterogeneity</td>
+<td>Prespecify the primary cohort set and model. Retain all eligible cohorts; report alternative subsets as sensitivity analyses.</td>
+</tr>
+<tr>
+<td>Fixed/random effects depend on cohort count</td>
+<td>Choose the estimand and model from scientific assumptions. Cohort count affects reliability, not which assumptions are true.</td>
+</tr>
+<tr>
+<td>Exclude a cohort with no overlapping hits</td>
+<td>Investigate power, coverage, scale, ancestry, tissue and model differences. Hit overlap alone cannot justify exclusion.</td>
+</tr>
+<tr>
+<td>Remove outlying betas</td>
+<td>Use explicit QC, exclusion records and an unfiltered sensitivity analysis. Large effects alone do not establish errors.</td>
+</tr>
+<tr>
+<td>Subgroup histogram P values trigger sensitivities</td>
+<td>Describe distributions; register justified subgroups; assess effect modification with adjusted interaction tests and multiplicity control.</td>
+</tr>
+<tr>
+<td>Perform every enrichment analysis</td>
+<td>Run each declared analysis with suitable inputs, gene mapping and background; record other dispositions.</td>
+</tr>
+<tr>
+<td>Build risk scores from significant results</td>
+<td>Keep feature selection, preprocessing and tuning inside training data, then evaluate frozen scores independently.</td>
+</tr>
+<tr>
+<td>GSEA networks and correlation cliques are modules</td>
+<td>Distinguish enrichment, pathway-overlap networks, molecular networks, connected components and overlapping maximal cliques.</td>
+</tr>
+<tr>
+<td>MR on all significant features</td>
+<td>Attempt all eligible features with association FDR &lt; 0.05; require valid instruments and a separate MR testing policy.</td>
+</tr>
+<tr>
+<td>Colocalization on thresholded QTL data anyway</td>
+<td>Attempt exploratory partial-region analysis when numerical prerequisites hold; preserve a mandatory major limitation.</td>
+</tr>
+<tr>
+<td>Score GWAS SNPs using ANNOVAR/AlphaGenome</td>
+<td>Annotate all eligible variants and preserve functional predictions by transcript, tissue and output.</td>
+</tr>
+<tr>
+<td>Use AlphaFold for proteins</td>
+<td>Verify the measured protein/isoform, structure coverage and confidence; distinguish retrieval from new prediction.</td>
+</tr>
+<tr>
+<td>Treat every GWAS variant with the same association test</td>
+<td>Route by phenotype, frequency/count, relatedness and case/control imbalance; keep single-variant and set-test eligibility separate.</td>
+</tr>
+<tr>
+<td>Recompute completed lab QC or filter using changing denominators</td>
+<td>Reuse complete source-bound decisions, or audit/filter once using the original source populations; preserve derived data, masks and assay limitations.</td>
+</tr>
+<tr>
+<td>Omit concrete genotype QC</td>
+<td>Use an explicit filter profile, including a default single-variant minimum MAC of 20, with per-cohort/per-phenotype counts and exclusions.</td>
+</tr>
+<tr>
+<td>Choose manuscript findings by P-value rank</td>
+<td>Ask AI to compare scientific impact and evidence strength, then select 3–5 distinct findings across the manuscript with recorded reasons.</td>
+</tr>
+<tr>
+<td>Draft without a length contract</td>
+<td>Use an adjustable 8,000-word main-text target, honor explicit journal limits, and retain complete finding discussions and spillover in supplements.</td>
+</tr>
+<tr>
+<td>Require the entire analysis to start from raw data</td>
+<td>Accept typed, validated results at any supported stage and compute only requested missing work; preserve external provenance and unavailable upstream checks.</td>
+</tr>
+<tr>
+<td>Fit every principal finding into a short summary</td>
+<td>Develop a complete source-linked discussion for each selected story, keeping essential reasoning in main text and extended evidence in finding-specific supplements.</td>
+</tr>
+</tbody>
+</table></div>
+<p>These primary/sensitivity rules are scientific design choices for this workflow.
+The <a href="https://training.cochrane.org/handbook/current/chapter-10">Cochrane meta-analysis guidance</a>
+also explains model assumptions and why heterogeneity tests should not select
+between fixed and random effects.</p>
+<h2 id="end-to-end-pseudocode">End-to-end pseudocode</h2>
+<pre><code class="language-text">initialize study:
+    declare hypotheses, phenotype definitions, effect direction and units
+    declare cohorts, overlap, kinship, visits, tissues and assay versions
+    assign discovery and validation roles before inspecting their results
+    register models, QC, testing families, primary analysis and sensitivity rules
+    register applicable follow-up branches, sources and computational budgets
+    register GWAS single-variant MAC &gt;= 20 and separate rare-set eligibility
+    use 8000 main-text words as an adjustable target; honor strict journal limits
+    retain complete finding discussions and spillover in linked supplements
+    inventory user-supplied results/artifacts at every analysis stage
+    validate their types, exact scopes, provenance, families and dependencies
+    hold known scope conflicts; record missing declarations without inventing them
+    mark accepted supplied results as external evidence, not native re-execution
+    plan requested missing operations from supplied and previously verified outputs
+    if all requested analyses are supplied, perform validation/reporting only
+    check each requested operation against its model/input/source capabilities
+    resolve the contract and preserve the approved plan
+    inventory availability separately from operation-specific content hashes
+    defer unavailable downstream files to their consuming branches
+    reuse verified native work only under an audited input/context contract
+    retain conservative full-study scope for other adapters
+    preserve original execution provenance and immutable historical attempts
+
+partition hypotheses into blocks with compatible estimands, assays and effects
+for each phenotype/hypothesis and compatible analysis block:
+    execute a following analysis only when requested and not already satisfied
+    use accepted supplied artifacts without requiring unavailable upstream raw data
+    allow cohort metadata references bound to their supplied primary analyses
+    never treat a pooled reference as a constituent cohort estimate
+    if starting with participant-level data:
+        for each cohort:
+            check sample/feature identity, units, coding, missingness and design
+            if a supported bulk molecular matrix will actually be consumed:
+                share source-only QC for matching dataset/policy across phenotypes
+                reuse complete current-matrix sample/feature QC decisions when supplied
+                otherwise audit measurement scale, missingness, constants and detection
+                use all original features for sample missingness denominators
+                use all original samples for feature statistics; do not iterate selection
+                filter/mask only under an explicit policy, without imputation
+                retain original data and verify the sealed derived matrix in consumers
+                hold incomplete, invalid or empty selected scopes
+            summarize the actual analysis population and participant flow
+            if genotype data are involved:
+                reuse accepted cohort-scoped sample-QC/PCA components
+                complete only explicitly requested missing components
+                retain external populations, PCA bases and source limitations
+                perform sample, genotype, variant and ancestry/batch QC
+                recompute allele counts in this phenotype's analyzed samples
+                load versioned functional annotations needed for rare-set masks
+                apply prespecified external ALT-frequency/panel/coverage rules when declared
+                hold the complete native mask family for unresolved external frequencies
+                retain upstream frequency-policy attribution for completed supplied analyses
+                define MAC &gt;= 20 single-variant eligibility and rare-set masks
+            plot phenotype/covariate distributions and declared subgroups
+            flag unusual values, imbalance and possible sensitivity analyses
+            if the association model is unspecified:
+                search current primary literature when network policy permits
+                save proposed models, references, assumptions and search limits
+                record a missing-model error; block association for this branch
+                continue independent diagnostics and other runnable branches
+            apply declared preprocessing and fit the appropriate null/design model
+            if this is a GWAS:
+                register chromosome, PAR and ploidy models before count QC
+                select the relevant participant population and physical allele scale
+                audit declared complements, invalid calls and structural absence
+                count MAC in the actual analyzed population before imputation
+                keep different chromosome contrasts as separate estimands/families
+                require supported models for mixed, rare-set and unusual ploidy designs
+                run eligible single-variant tests with calibrated sparse methods
+                for a registered survival endpoint, validate event/censoring and entry/strata
+                use the declared Cox estimator/test and separate PH diagnostic family
+                require finite-MPLE risk-contrast certificates before native signed Cox inference
+                retain local witnesses, shared family bounds and unresolved/nonfinite holds
+                retain unavailable/failed fits without a successful-subset FDR fallback
+                run declared rare-variant gene/region tests on their own QC set
+                retain score/covariance summaries for compatible rare-set pooling
+            else:
+                fit the declared feature-level association models
+            save N, effect/SE where defined, P, diagnostics and feature failures
+        if adjusted subgroup interactions are registered:
+            use explicit ordered contrasts and a compatible reviewed model
+            reject outcome-defined contrasts as inferential evidence
+            include justified covariate-by-group and covariate-by-feature terms
+            test the registered feature family independently of primary P values
+            check support and genotype MAC in each contrast level
+            retain every test disposition; withhold adjustment if scope is unresolved
+            retain group slopes, interaction uncertainty and separate family adjustment
+            send eligible interaction evidence to impact review with its own caveats
+            preserve primary association results and their significance labels
+    else:
+        import results and audit schema, estimand, model and provenance
+        identify participant-level checks that cannot be reconstructed
+
+    harmonize feature identity, effect coding, units and cohort comparability
+    validate each result type; do not require betas for unsigned set-test P values
+    exclude invalid estimates with explicit reasons
+    apply registered effect QC where betas are meaningful; retain exclusions
+    retain a separately identified unfiltered sensitivity analysis
+    define eligible feature universes and multiple-testing families after QC
+    calculate per-cohort association FDR over each full eligible testing family
+    for GWAS, also apply the declared genome-wide and gene/set significance rules
+    inspect Manhattan/QQ, frequency/count-stratified calibration and lead variants
+
+    if no eligible cohort estimates remain:
+        record no estimable primary result and retain completed diagnostics
+        queue independent branches and continue to the next phenotype
+    else if multiple comparable cohorts:
+        plot every cohort pair on matched features with comparable signed effects
+        save matched N, effect correlation and direction concordance
+        if a discovery/validation design is declared:
+            require at least one discovery and one validation cohort
+            combine discovery cohorts using the registered model when needed
+            calculate discovery FDR across its full eligible testing family
+            freeze discovery candidates, then test them in validation cohorts
+            preserve validated supplied discovery full-family adjusted P values
+            never recompute discovery FDR from a selected-only export or validation overlap
+            check source membership and trait against registered discovery scope
+            check independence using all role metadata, even without source cohort tables
+            report per-cohort and combined validation under declared FDR rules
+        show significant-set overlap with Venn/UpSet and exact membership
+        investigate unusual cohorts without selecting exclusions by hit overlap
+        for signed comparable effects:
+            fit primary inverse-variance meta-analysis of all eligible cohorts
+            save pooled effects, intervals, P, FDR, N and effect directions
+        for unsigned gene/set tests:
+            pool compatible scores/covariances or use a reviewed combination
+            save test-specific results without inventing beta or direction
+        save heterogeneity estimates and their limitations
+        run registered leave-one-cohort-out and other sensitivity analyses
+        flag effect/significance/heterogeneity changes without replacing primary
+    else:
+        designate eligible single-cohort association as the primary analysis
+        explicitly record that external replication was not performed
+
+    resolve one primary source per hypothesis and estimand before follow-up
+    require the registered primary meta-analysis when it is planned
+    never replace missing/incomplete primary work with cohort or sensitivity hits
+    resolve ambiguous producers/contrasts using a prespecified policy and rationale
+    freeze primary result identity, exact artifact/hash, metadata and producer type
+    allow a validated supplied primary result to satisfy the same scoped contract
+    retain replication/sensitivity evidence with their distinct result identities
+
+    for each declared eligible functional follow-up:
+        run GO/pathway ORA, ranked GSEA or GWAS enrichment as applicable
+        record mapping, tested background, resource release and multiplicity
+
+    if this is a GWAS:
+        annotate every QC-eligible SNP/variant with ANNOVAR or an equivalent
+        look up versioned AlphaGenome scores; predict eligible gaps within budget
+        retain per-variant status, per-output scores and missingness reasons
+        investigate fine-mapped candidates while retaining other annotations
+
+    if protein findings or supported protein mappings are available:
+        resolve organism, accession, exact isoform/sequence and ambiguity
+        retrieve matching AlphaFold structures and available confidence data
+        if a matching model is absent and new prediction is in scope:
+            run the configured prediction workflow with full provenance
+        retain coverage, sequence mismatches and uncertain regions
+
+    if suitable participant-level matrices are available:
+        train and independently evaluate a risk/prediction score as applicable
+        if grouped nested validation is registered for native quantitative/binary development:
+            keep independent evaluation absent from every development split and selection
+            relearn native preprocessing and penalties inside each training fold
+            retain all fold/model/loss audits; hold incomplete validation families
+            assess outer held-out development predictions separately from external evaluation
+            refit the selected model on the full registered development pool and freeze it
+        test frozen scores against registered related phenotypes with correction
+        construct declared molecular networks and assess stability/preservation
+        if a conditional frozen-wiring label null is registered:
+            fix reference patterns, common node universes and exchangeability strata
+            enumerate the whole group or use fixed independent sampled plus-one tails
+            retain null counts, precision, all test dispositions and source caveats
+            withhold corrected discoveries while the complete family is unresolved
+            keep topology evidence separate from association FDR and GO function
+        identify communities/modules and optional bounded maximal cliques
+        perform module/clique GO against the mapped network gene universe
+    build a pathway-overlap network from enrichment results when appropriate
+
+    discover and review phenotype-matched GWAS and assay-matched QTL sources
+    for every eligible mapped molecular feature with association FDR &lt; 0.05:
+        attempt the declared molecular-exposure -&gt; phenotype MR analysis
+        require valid alleles, ancestry/build, LD, instruments and overlap policy
+        save estimates, strength/pleiotropy/influence diagnostics and disposition
+    correct MR P values across the declared MR testing family
+
+    for each locus in the declared colocalization selection scope:
+        prefer dense regional GWAS/QTL data including nonsignificant variants
+        harmonize variants and LD and run the declared model
+        if only thresholded/partial data are available:
+            attempt the permitted exploratory partial-region computation
+            label outputs as conditional on selected observed variants
+            carry the major caveat into tables, reports and manuscript
+        record insufficient data or failed fits without inventing a null result
+
+    build an uncapped evidence inventory with findings/loci and caveats
+    where registered, attach allele-resolved LD redundancy evidence
+    preserve source statistics; retain unknown LD coverage as unavailable
+    ask AI for a provisional impact shortlist using the registered rubric
+    review literature for up to 100 eligible significant features per phenotype
+    retain queries, ranking, identifiers, citations and conflicting evidence
+
+for each declared cross-phenotype primary MR reporting family:
+    verify every member producer and its complete raw primary testing family
+    retain original source corrections, test identities and non-estimable tests
+    if any member is unresolved: withhold all official joint discoveries
+    else: apply the declared joint correction over the full registered family
+    attach separate joint/source results and limitations to manuscript dossiers
+
+assemble manuscript and supplements from frozen, verified evidence:
+    ask AI to rank supported findings across phenotypes and evidence branches
+    keep statistical eligibility, primary result identity and FDR families frozen
+    select 3 to 5 distinct principal findings, or fewer if evidence is insufficient
+    do not fill multiple slots with a shared registered LD component
+    record accepted/rejected candidates, reasons, uncertainty and source artifacts
+    thoroughly discuss each selected story; retain its full supplementary dossier
+    assess the adjustable 8000-word main-text target or explicit strict journal limit
+    report primary, replication, sensitivity, null and unavailable findings
+    distinguish association, prediction, colocalization and MR claims
+    link quantitative claims to exact versioned result artifacts
+    retain amendments, selection counts, limitations and reporting checklists
+    produce a draft for scientific review
+</code></pre>
+<p>Dependencies determine execution order. Source/literature discovery can proceed
+while an analysis waits; MR, colocalization, prediction and networks are
+conditional branches. A report may document incomplete work, but must identify
+requested analyses that remain unfinished.</p>
+<h3 id="execution-contracts-and-acceptance-criteria">Execution contracts and acceptance criteria</h3>
+<p>For each planned operation, resolve its exact model, input/result type,
+prerequisites, eligibility policy, thresholds/comparison operators, testing
+family, resource budget, outputs and failure disposition before execution.
+Check actual adapter capabilities rather than treating a registered operation
+name or a working standalone command as proof of study integration. Missing
+required quality metadata, unsupported ploidy/models, noncomparable effects or
+unresolved sample dependence must not silently select a convenient fallback.
+Independent operations can continue with their own recorded dispositions.</p>
+<p>A compatible analysis block is more specific than a phenotype label: declare
+molecular assay/feature definition, tissue, exposure/outcome orientation, effect
+units/transformations, model/estimand and ancestry/target-population strategy.
+Do not pool RNA abundance, isoform ratios and protein abundance because all were
+tested against BMI, or count multiple tissues from the same participants as
+independent validation cohorts. Record dependencies across blocks and combine
+their interpretation in the evidence inventory rather than mixing their effects.</p>
+<p>Define separate graph nodes for discovery-only pooling, frozen discovery
+selection, validation, and all-cohort estimation. Freeze each testing family and
+exact <code>&lt;</code> versus <code>&lt;=</code> threshold rule; report the evaluated denominator and losses
+from missing coverage. Association, validation, gene/mask and MR families are
+distinct contracts. AI impact ranking may change manuscript emphasis or propose
+an explicitly exploratory amendment, but must not retroactively redefine a
+primary result, testing family or cohort exclusion to improve the story.</p>
+<p>An implementation is conformant only when output manifests and integration
+tests establish the required behavior, not just command availability. Important
+acceptance cases include MAC 19 versus 20, preservation of eligible low-MAC set
+members, unsigned results without beta/SE, multiple discovery cohorts pooled
+without validation leakage, overlapping cohort rejection/handling, empty/null
+results, unavailable AI/resources, four/five ranked findings, and an over-budget
+manuscript. A passing structural test does not establish calibrated inference,
+successful external services or a validated scientific conclusion.</p>
+<h2 id="0-enter-at-any-analysis-stage-and-complete-missing-work">0. Enter at any analysis stage and complete missing work</h2>
+<p>Users may supply participant data, association or meta-analysis results,
+enrichment, networks/modules, risk-score evaluation, MR, colocalization,
+functional annotations or every completed analysis. A study can mix supplied
+and native work across hypotheses and stages. An all-results project should
+support validation, interpretation and manuscript construction without fitting
+associations, rebuilding networks, repeating MR or downloading new inputs
+unless those steps are explicitly requested.</p>
+<p>Treat each supplied analysis as a <strong>typed artifact with a scientific scope</strong>,
+separate from a source cohort. A meta-analysis covering four cohorts is a
+pooled result, not a fifth cohort. A network edge table is not an association
+table, and enrichment P values cannot enter a beta/SE harmonizer. Preserve
+original files and hashes, validate an immutable imported representation, and
+record externally produced versus natively executed evidence distinctly.</p>
+<p>The import contract must identify the artifact/result type; hypothesis and
+phenotype; feature/variant IDs, build and allele/isoform definitions where
+applicable; cohort/tissue/ancestry/sample scope and overlap; primary versus
+sensitivity role; method/model/version/parameters; resource releases; upstream
+artifact IDs/hashes; complete tested universe, selection/filtering and
+multiple-testing family; coverage, failures and existing limitations; and the
+producer/date/citation when available. Explicitly mark missing provenance;
+schema validity cannot certify calibration, prior QC or biological conclusions.</p>
+<div class="result-table"><table>
+<thead>
+<tr>
+<th>Supplied artifact</th>
+<th>Validation needed to reuse it</th>
+<th>Examples of remaining work</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Association or meta-analysis</td>
+<td>Result type, estimand/units/direction, source/cohort coverage, P/SE where defined, complete tested family and model/heterogeneity provenance</td>
+<td>Enrichment, annotation, independent validation if actually available, genetic follow-up, literature and drafting</td>
+</tr>
+<tr>
+<td>Enrichment or ranked GSEA</td>
+<td>Gene-set/resource release, mappings, tested background or ranked universe, method/null model, full correction family and term membership</td>
+<td>Term-overlap network, interpretation and manuscript integration</td>
+</tr>
+<tr>
+<td>Network, modules or cliques</td>
+<td>Node/edge IDs, directed/signed/weighted meaning, estimator/threshold, analyzed population, module membership/method and available stability evidence</td>
+<td>Missing module GO or preservation analyses when their required inputs exist</td>
+</tr>
+<tr>
+<td>Completed module GO</td>
+<td>Module/type/term identity, original module-by-term correction family, source-adjusted values and declared scope; keep unavailable background and graph checks explicit</td>
+<td>Finding context and discussion without requiring unavailable upstream raw data; missing native GO from memberships requires a full node universe and compatible mapping</td>
+</tr>
+<tr>
+<td>MR</td>
+<td>Exposure/outcome direction and units, QTL/GWAS sources, instruments/alleles/LD, method, instrument strength, overlap, complete primary testing family and limitations</td>
+<td>Source review, missing sensitivity or colocalization, interpretation</td>
+</tr>
+<tr>
+<td>Colocalization or fine-mapping</td>
+<td>Exact region/signals, alleles/build/LD, priors/model, complete versus thresholded coverage, convergence, PIPs/posteriors and sensitivity scope</td>
+<td>Missing prior/multiple-signal checks if dense inputs exist, evidence grading and discussion</td>
+</tr>
+<tr>
+<td>Risk scores or functional/structural results</td>
+<td>Frozen weights/preprocessing/evaluation partitions or exact sequence/variant/tissue/model context, source/version and coverage</td>
+<td>Independent validation or contextual interpretation supported by remaining inputs</td>
+</tr>
+<tr>
+<td>All requested analyses</td>
+<td>Each artifact's scope, dependencies, provenance and complete/partial/failed dispositions</td>
+<td>Evidence inventory, literature gaps, 3–5 finding dossiers, manuscript and supplements</td>
+</tr>
+</tbody>
+</table></div>
+<p>Plan a dependency graph around the <strong>requested outputs and validated available
+artifacts</strong>, not an obligatory linear rerun. For each required operation:</p>
+<pre><code class="language-text">if an accepted supplied artifact satisfies this exact scientific scope:
+    reuse its immutable imported representation; retain external attribution
+else if a verified prior native result matches the resolved contract and inputs:
+    reuse it under the existing cache/provenance rules
+else if the required inputs and a supported method are available:
+    execute the requested missing analysis
+else:
+    record the specific missing input/capability; continue independent branches
+</code></pre>
+<p>For cohort networks, apply that decision separately to each supplied graph's
+declared dataset/cohort coverage. Preserve a supplied pooled graph as one graph;
+do not fabricate constituent estimates. Complete only uncovered native datasets
+by default, or use an explicit supplied-only policy. Multiple primary supplied
+graphs need disjoint comparable scopes; unresolved coverage cannot silently
+choose a native rerun. See the source-build
+<a href="study-pipeline-tutorial.html#scientific-scope-and-missing-cohort-networks">scope and partial-network guide</a>.</p>
+<p>Independent completed native MR, colocalization and fine-mapping pairs can also
+be reused when the enclosing stage is incomplete. Verify each pair's current
+source bytes, scientific contract, eligible feature, implementation and all
+sealed outputs. Retain incomplete attempts, retry their missing work and
+recompute current stage-wide testing families and coverage; do not copy a
+previous joint correction or count reuse as replication. An explicit rerun
+bypasses native pair reuse. Automatic unversioned references require their own
+source identity before they qualify for pair-level reuse.</p>
+<p>An incomplete or conflicting import needs a recorded disposition and a precise
+repair request; it cannot silently trigger a replacement analysis or be treated
+as an empty/null result. Rerunning an accepted supplied analysis requires an
+explicit request or registered sensitivity/amendment. Do not reconstruct FDR
+from only supplied significant rows, invent a tested denominator, infer absent
+edges/variants as nulls, or describe unrecoverable participant QC as performed.
+Missing raw data blocks only analyses that require it; it need not block a
+report that honestly states the available evidence and its limits.</p>
+<p>Acceptance must cover meta-only input without association refitting; enrichment
+input without ORA rerunning; supplied graphs with missing module GO; supplied
+MR/colocalization with exact source/caveat retention; mixed native/imported
+branches; all-analyses-supplied reporting; changed hashes, wrong result types,
+conflicting scopes and missing tested universes; and deterministic resume
+without duplicate analyses or evidence. These remain target requirements for
+the complete scientific acceptance matrix. The current source implements
+per-hypothesis <code>analysis.supplied_results</code> with typed tables, immutable snapshots,
+external attribution, testing-family preservation and import dependencies.
+Native intake, participant QC and association also have scoped resume contracts
+that defer downstream genetic source files. Run-level file availability remains
+distinct from per-stage content hashes and original execution provenance.
+Reporting and unaudited adapters retain conservative full-study cache scope.
+The <a href="study-pipeline-tutorial.html#reuse-completed-analyses-and-run-missing-work">supplied-result tutorial</a>
+documents the syntax and supported columns. Legacy dataset stages such as
+<code>meta_analysis_results</code>, <code>enrichment_results</code> and <code>mr_results</code> now request
+migration to this contract instead of entering association normalization.
+Import validation does not independently reproduce the source analysis or
+certify its scientific scope, calibration or conclusions. Native module-GO
+orchestration now accepts supplied graphs/memberships under the
+<a href="study-pipeline-tutorial.html#molecular-networks-pathway-overlap-modules-and-module-go">network contract</a>.
+Complete external formats and source/claim appraisal remain open.</p>
+<h2 id="1-study-contract-and-participant-data">1. Study contract and participant data</h2>
+<p>Define the analysis unit, exposure, outcome, covariates, transformations,
+interactions, effect scale, reference categories and target population. Specify
+whether a molecular feature predicts the phenotype or is the response; those
+coefficients are not interchangeable. A model family such as OLS is insufficient
+without its formula and design.</p>
+<p>Check sample/feature uniqueness and alignment, visits, relatedness, cohort
+overlap, missingness, impossible values, constant predictors, design rank and
+preprocessing. Assay-specific checks are required; genotype checks include
+allele coding, call/imputation quality, frequency, population structure and a
+justified HWE policy. Use appropriate models for families, repeated measurements
+and single-cell donors. Report the actual analysis population, exclusions,
+case/control counts and feature-specific N. Summary-only data require upstream
+QC records; they cannot establish participant-level consistency retrospectively.</p>
+<p>Use histograms/density plots for continuous variables, category counts for
+categorical variables, and missingness summaries for both. Show raw/modeled
+scales when relevant. Flag outliers; a histogram alone should not delete
+participants. Prespecify handling and preserve sensitivity comparisons.</p>
+<p>Subgroups need explicit definitions. Comparing BMI between groups defined by a
+BMI obesity cutoff is circular and does not establish effect modification.
+Distribution comparisons can be descriptive; an inferential test must match
+the variable and dependence structure, report effect size/uncertainty and correct
+the declared comparison family. Assess association differences using an adjusted
+interaction/contrast. Significance in one subgroup and nonsignificance in another
+is not itself a significant subgroup difference. Data-driven proposals remain
+exploratory and do not gate every biologically justified sensitivity analysis.</p>
+<p>When the model is missing, preserve the requested error even if literature
+suggests one. Save the search date, primary sources, suitability, conflicting
+recommendations and search limitations. A literature/LLM suggestion or software
+default does not substitute for an explicit scientific model decision.</p>
+<p>Treat blank/null models as missing. Use the executable's accepted model names
+and request review before model-dependent QC when a native association is
+planned. Preserve standalone descriptive QC under its declared endpoint
+contract and the separate prerequisites for supplied/configured analyses and
+unsupported modalities.
+Preserve conditional requirements for endpoint, assay, dependence and
+calibration. Recent source queries should incorporate declared public assay
+and endpoint/design context, retaining a broad phenotype/method search and
+its bounded date order. Keep retrieval, candidate compatibility and scientific
+model appraisal distinct; unavailable searches must not authorize fitting.
+See the <a href="study-pipeline-tutorial.html#missing-model-review-and-explicit-continuation">missing-model guide</a>.</p>
+<h2 id="1a-gwas-qc-and-association-strategy">1a. GWAS QC and association strategy</h2>
+<p>GWAS requires explicit branches for array genotypes, imputed dosages and
+sequencing calls. Single-marker scans and rare-variant set tests have different
+eligibility rules. QC is performed before association, repeated after sample
+selection where counts or rates change, and retained as a sample/variant flow
+table. A missing required QC field is an unresolved input requirement, not a
+silent pass. For imported summaries, record which checks were performed upstream
+and which cannot be verified locally.</p>
+<h3 id="variant-identity-and-analysis-population">Variant identity and analysis population</h3>
+<p>Declare genome assembly, reference FASTA/version, assay/caller/imputation panel,
+chromosome naming, REF/ALT, dosage allele and ploidy. Normalize indels and split
+multiallelic sites under a documented policy; retain original-to-normalized
+identities. Resolve duplicates and incompatible alleles before joining cohorts.
+Strand-ambiguous SNPs need an allele-frequency/reference check or an explicit
+exclusion from allele-sensitive analyses. LD and functional annotations must
+match build, alleles and the population being analyzed.</p>
+<p>Apply phenotype/covariate eligibility, sample QC and declared ancestry/visit
+selection first. Compute AC, AN, MAC, MAF, call rate and available case/control
+counts in the resulting cohort/phenotype analysis sample. For a biallelic site,
+<code>MAC = min(AC, AN - AC)</code> and <code>MAF = MAC / AN</code>; AN counts observed allele copies
+under the applicable ploidy. Record hard-call versus dosage-derived quantities,
+founder/related-sample policy and genotype uncertainty. Do not infer carrier
+counts from MAC, round dosages to manufacture hard calls, or replace per-variant
+AN with <code>2 * total_enrolled_N</code> when observations/ploidy differ. For ancestry or
+subgroup scans, recompute eligibility in that stratum; a large pooled MAC does
+not make a sparse cohort estimate trustworthy.</p>
+<h3 id="default-qc-profile-and-required-decisions">Default QC profile and required decisions</h3>
+<p>These are <strong>proposed workflow defaults</strong>, not a claim about the current CLI's
+defaults or a universal optimum. A study may override them before inspecting
+associations, with reasons and a retained sensitivity comparison where needed.</p>
+<div class="result-table"><table>
+<thead>
+<tr>
+<th>Check</th>
+<th>Default action in the proposed workflow</th>
+<th>Important scope</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Single-variant MAC</td>
+<td>Exclude MAC &lt; 20; retain MAC = 20 if other requirements pass</td>
+<td>Apply per analyzed cohort/phenotype/stratum, including dosages with a declared count definition. This is not a guarantee of test calibration.</td>
+</tr>
+<tr>
+<td>Sample genotype call rate</td>
+<td>Exclude below 98% in the declared callable QC panel</td>
+<td>Record the panel/denominator and iterate sample/variant QC to a documented stable rule. Structural absence is not a random missing genotype.</td>
+</tr>
+<tr>
+<td>Variant genotype call rate</td>
+<td>Exclude below 98% among eligible analyzed samples</td>
+<td>Assess ancestry, case/control and batch missingness separately; a high overall rate can hide differential failure.</td>
+</tr>
+<tr>
+<td>Imputation quality</td>
+<td>Require a declared provider-specific quality metric, with 0.8 as the starting threshold for a compatible INFO/R-squared measure</td>
+<td>Confirm its definition and available range; stricter low-frequency sensitivity may be needed. Missing quality is not quality = 1. Sequenced hard calls do not receive an invented imputation score.</td>
+</tr>
+<tr>
+<td>Monomorphic/no-information sites</td>
+<td>Exclude from single-variant testing and remove uninformative set columns</td>
+<td>MAC = 0, no callable alleles, zero modeled variance or an empty usable genotype vector cannot produce an association estimate.</td>
+</tr>
+<tr>
+<td>HWE</td>
+<td>Record the test, eligible samples and ancestry; flag exact-test P &lt; 1e-6 for review rather than impose an unconditional universal exclusion</td>
+<td>Use appropriate controls/founders and ploidy. Large-sample, ancestry and excess-heterozygosity behavior matter; an exclusion rule requires a declared sample-size-aware policy.</td>
+</tr>
+<tr>
+<td>Phenotype/covariate availability</td>
+<td>Apply the declared complete-case or supported imputation strategy and report losses</td>
+<td>Recompute allele counts after the final analysis sample is selected. Do not silently impute outcomes.</td>
+</tr>
+<tr>
+<td>Genotype-level sequencing quality</td>
+<td>Apply caller/platform-specific FILTER, depth, genotype quality, allele-balance and callable-region rules before calculating site metrics</td>
+<td>No universal depth/GQ threshold is assumed. Low coverage is missing information, not homozygous reference.</td>
+</tr>
+<tr>
+<td>Identity, contamination and unusual heterozygosity</td>
+<td>Flag and resolve under declared assay-specific criteria; exclude confirmed failures</td>
+<td>Preserve duplicate/sample-swap decisions, genetic-versus-recorded sex/ploidy checks and family inconsistencies with their evidence.</td>
+</tr>
+<tr>
+<td>Population structure, relatedness and batch</td>
+<td>Use documented ancestry assessment, PCs/covariates and an appropriate relationship/cluster model</td>
+<td>Related or diverse participants are not automatically bad samples. Separate ancestry-specific inference and cross-population pooling need explicit plans.</td>
+</tr>
+</tbody>
+</table></div>
+<p>The <a href="https://www.cog-genomics.org/plink/2.0/filter">PLINK filtering documentation</a>
+describes count, missingness, HWE and quality filters and their differing sample
+definitions. In particular, its current HWE guidance cautions against fixed
+threshold misuse in large or stratified samples. The values above are this
+workflow's starting profile, not thresholds attributed to PLINK or another tool.</p>
+<p>Assess differential missingness and allele-frequency discrepancies by phenotype,
+ancestry, batch and cohort. Register a test/flag policy and its multiplicity;
+investigate technical causes without selecting exclusions to improve P values.
+Inspect lead variants in imputation/genotype clusters or read-level evidence
+when available, especially sparse carrier signals. Preserve audit-only fields
+and privacy-appropriate aggregates rather than disclose participant identities.</p>
+<h3 id="implemented-genotype-qc-boundary">Implemented genotype QC boundary</h3>
+<p>The optional registered <code>analysis.genotype_sample_qc</code> profile now connects an
+observed diploid common-autosomal panel to participant eligibility, missing-aware
+KING between-family estimates and unrelated-basis genotype PCA with projection.
+A separate hard-call source can accompany imputed association data. Initial
+sample call rates use observed autosomal calls, rather than dosage completeness;
+the denominator excludes structural sex-chromosome absence. All-pair support,
+prespecified relatedness actions, source completeness and work limits gate the
+approved population. Generated PCs enter regressions only when requested.
+Pre-existing PCs can remain declared covariates without native regeneration.
+See the <a href="study-pipeline-tutorial.html#registered-genotype-sample-qc-and-projected-pcs">sample-QC guide</a>
+for exact inputs, bounded native execution, held dispositions, source-linked
+aggregate context and remaining caller/sex/PAR/ancestry/scale limitations.
+This profile cannot retrospectively validate supplied downstream populations.
+The <a href="study-pipeline-tutorial.html#reuse-external-sample-qc-and-pca-and-complete-missing-work">external-QC/PCA contract</a>
+adds exact matrix/sample/hash binding, source-reported pair/support checks,
+imported scores, per-cohort source choices and explicit native completion of
+missing PCA. Imported PCs retain their source basis, including a declared
+external reference, rather than being refitted after phenotype subsetting.
+Full reuse has separate linear import bounds and performs no native KING/PCA.
+Source-specific limitations and private provenance stay local; aggregate
+finding context preserves external origin and the requirement for scientific
+source review. This does not certify that external QC was scientifically
+adequate or independently reproduce its computations.</p>
+<p>The source implementation now calculates allele number from source ploidy when
+VCF/BGEN provides it, after phenotype/covariate and participant selection. A
+dosage-only table without ploidy declares an assumed diploid denominator. The
+generic association adapter excludes observed non-diploid genotypes and split
+multiallelic sources with explicit reasons; supporting those inputs requires an
+appropriate association model. This exclusion does not establish biological
+sex, pseudoautosomal regions, ancestry, kinship or caller-level quality.</p>
+<p><code>analysis.association.minimum_hwe_p</code> and <code>minimum_missingness_p</code> default to zero
+(report only). A positive threshold activates an exclusion rule: an unavailable
+required statistic excludes the variant with an explicit unavailable reason.
+The HWE implementation uses the conditional exact diploid test on eligible human
+autosomes. Its declared scope is all samples, cases or controls; binomial/probit
+study defaults select controls. An optional <code>files.hwe_samples</code> ID list restricts
+this further to the intersection with analyzed participants. Its hash and source
+and analyzed counts are retained. Supplying a list does not certify founder,
+unrelatedness or ancestry status. Dosage-derived genotypes never acquire a hard
+call HWE P value merely because their values happen to be integers. See
+<a href="../citations.html#wigginton-hwe-2005">Wigginton et al.</a> and the
+<a href="https://www.cog-genomics.org/plink/2.0/filter#hwe">PLINK HWE guidance</a> when
+prespecifying the sample set and threshold; sample-size scaling, mid-P and
+specialized sex-chromosome HWE are not implemented by this adapter.</p>
+<p>Case/control missingness uses a two-sided Fisher exact test on called versus
+missing genotypes before mean imputation. Enumeration has an explicit state
+budget; exceeding it records an unavailable result without substituting an
+approximate P value. Group MACs count the same cohort-minor allele in both
+groups, and are not carrier counts or independent stratum-minor counts. No
+default requirement demands MAC 20 separately in both groups. A declared
+<code>genotype_kind: hard_calls</code> rejects fractional dosages; imputed data require the
+declared quality metric, including per-ALT VCF quality where supplied.</p>
+<p>The default GLM genotype route uses its documented efficient-score inference.
+An explicitly registered <code>binary_test: exact-conditional</code> now supports finite
+conditional hard-call score inference for independent Bernoulli observations
+with declared stratum intercepts and fixed known offsets. Optional approximate
+Firth effects remain separate; valid P-only tests survive downstream evidence
+selection. Resource/numerical failures withhold native BH for the complete
+family and put official selection into a waiting state. See the
+<a href="study-pipeline-tutorial.html#exact-conditional-tests-for-sparse-binary-gwas">exact-test tutorial</a>
+for its narrow model, import contract and scope. Continuous nuisance covariates,
+kinship, dosage-based exact inference and broader calibrated routing remain
+separate requirements.</p>
+<p>An explicitly registered <code>binary_test: firth-lrt</code> selects full Firth logit fits
+and constrained penalized likelihood-ratio inference for independent individual
+Bernoulli outcomes. This is separate from QC and does not implement saddlepoint
+or binary mixed-model inference. Method reports and mandatory manuscript caveats
+retain the estimator and its calibration limits. The
+<a href="https://rgcgithub.github.io/regenie/overview/">REGENIE methods</a> illustrate why
+sparse and imbalanced binary analyses need an explicitly suitable inferential
+route. Broader sparse-tail calibration and related-sample routes remain required work.
+The <a href="study-pipeline-tutorial.html#genotype-qc-scopes-and-unavailable-statistics">QC tutorial</a>
+shows the current configuration and packaged acceptance example.</p>
+<h3 id="explicit-firth-logit-inference">Explicit Firth logit inference</h3>
+<p>For independent individual binary GWAS observations, a supplied <code>glm</code> model
+with <code>family: binomial</code> can register <code>binary_test: firth-lrt</code>. The full
+Jeffreys-penalized objective is maximized separately for each eligible variant.
+The coefficient-zero constrained fit retains the same full design and penalty;
+deleting the genotype column would define a different objective. The test
+statistic is twice the penalized log-likelihood difference, with an asymptotic
+chi-square tail on one degree of freedom. See
+<a href="../citations.html#firth-bias-reduction-1993">Firth (1993)</a>,
+<a href="../citations.html#heinze-schemper-separation-2002">Heinze and Schemper (2002)</a>
+and the <a href="../citations.html#logistf-reference-documentation">reference fitter documentation</a>.</p>
+<p>No maximum-likelihood null must converge first, so separated nuisance designs
+can be fitted when the full design remains identifiable. Numerical singularity
+and nonconvergence stay explicit failures with no association P value. The
+ordinary Fisher-information standard error is evaluated at the penalized
+estimate; it is not derived from the LRT P value. Subsequent inverse-variance
+meta-analysis uses a separate Wald approximation. Preserve both methods and
+their original testing families. Profile likelihood confidence intervals and
+population-prevalence correction are not supplied by this route.</p>
+<p>The method has no implicit relatedness adjustment. It rejects GRM/pedigree,
+random-effect/cluster declarations, non-Bernoulli families and ordinary-null
+conditional score export. The implementation uses portable CPU fitting with
+bounded blocks and ordered parallel variant fits; production genome-scale
+throughput is a separate performance question. Study <code>offset_column</code> registers
+a fixed offset, adds it to participant complete-case QC and prevents accidental
+use as an estimated covariate. An offset alone does not establish valid LOCO,
+relatedness or population correction.</p>
+<p>Firth estimation does not guarantee nominal finite-sample tails for every rare
+design. The packaged acceptance audit enumerates an intercept-only fixed-margin
+null exactly. At N=1,000, five cases and 20 heterozygous carriers, the asymptotic
+Firth LRT rejects approximately 9.6264% of null datasets at a nominal 5% level.
+This is an explicit calibration limitation, not a biological finding. Register
+design-appropriate exact/permutation or other validated inference where needed;
+do not use point agreement with a reference fitter as proof of tail control.
+Automatic suitable-method selection, broader calibration and sparse/related
+set-test routing remain incomplete.</p>
+<h3 id="common-low-frequency-and-rare-single-variant-tests">Common, low-frequency and rare single-variant tests</h3>
+<p>Use an explicit frequency convention, for example common MAF &gt;= 5%, low-frequency
+1% &lt;= MAF &lt; 5%, and rare MAF &lt; 1%. These are descriptive bins; MAC, sample size,
+case/control allocation, imputation and the null model determine whether a
+particular test is adequate. Do not impose a minimum MAF of 1% on the entire
+workflow if rare-variant analysis is intended. A rare variant with MAC &gt;= 20 may
+still enter a properly calibrated single-variant scan.</p>
+<div class="result-table"><table>
+<thead>
+<tr>
+<th>Situation</th>
+<th>Required association strategy</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Quantitative phenotype, adequate information</td>
+<td>Fit the declared linear/mixed model with the registered covariates and relatedness/population structure controls; inspect sparse-carrier influence, residual assumptions and robust or transformed-model sensitivity where justified.</td>
+</tr>
+<tr>
+<td>Binary phenotype, sparse alleles, separation or strong case/control imbalance</td>
+<td>Use a method validated for that design, such as appropriate Firth logistic or saddlepoint-calibrated mixed-model testing. Specify test and effect-estimation methods separately; Firth alone does not model family dependence. Ordinary logistic Wald inference is not an automatic fallback.</td>
+</tr>
+<tr>
+<td>Related participants or large structured cohorts</td>
+<td>Use the registered mixed/whole-genome model, appropriate PCs and relationship handling. Declare LOCO/proximal-contamination controls and their marker construction; do not LD-prune away the variants being tested merely because pruning was used for PCs.</td>
+</tr>
+<tr>
+<td>Survival phenotype</td>
+<td>Use the declared Cox/frailty model with event/censoring checks and carrier/event information; MAC &gt;= 20 alone does not establish adequate event information.</td>
+</tr>
+<tr>
+<td>Sex chromosomes, mitochondrial or other nonautosomal data</td>
+<td>Use explicit ploidy, PAR boundaries, sex/ancestry strata, coding and test assumptions. Block an unsupported chromosome/model combination instead of treating it as diploid autosomal data.</td>
+</tr>
+<tr>
+<td>Sparse counts unsupported by the configured engine</td>
+<td>Record not estimable or route to a reviewed validated external method. Do not produce a routine nominal P value by changing models after seeing the signal.</td>
+</tr>
+</tbody>
+</table></div>
+<p>For binary traits save case/control allele and carrier counts when available.
+Do not require MAC &gt;= 20 separately in both cases and controls by default:
+that can remove real associations with carriers concentrated in one group.
+Instead require calibrated sparse-data inference and disclose concentration,
+separation and uncertainty. <a href="https://saigegit.github.io/SAIGE-doc/docs/single.html">SAIGE's single-variant guide</a>
+recommends MAC &gt;= 20 and a separate set-based rare-variant analysis. Its
+<a href="https://saigegit.github.io/SAIGE-doc/docs/single_step2.html">testing options</a>
+documents imbalance-aware testing and separate effect-size options; these
+capabilities should not be assumed of every JLinAlg model.</p>
+<h3 id="rare-variant-gene-and-region-tests">Rare-variant gene and region tests</h3>
+<p><strong>MAC &lt; 20 excludes a variant from the default single-variant branch; it does
+not delete a high-quality rare variant from the raw data or automatically remove
+it from gene/region tests.</strong> Define a separate set-test QC profile that retains
+informative rare/ultra-rare variants when the method supports them. Set tests do
+not rescue low-quality calls, systematic batch artifacts or uncallable samples.</p>
+<p>Define gene/transcript/region boundaries and annotation release before testing.
+Prespecify masks such as high-confidence predicted loss of function, a declared
+damaging-missense mask and their union, with explicit splice/noncoding masks
+where justified. Set frequency limits, for example MAF &lt;= 1% and optional nested
+0.1%/0.01% or singleton masks, using ancestry-appropriate internal/external
+frequencies and a declared rule for variants common in another population.
+The optional native <a href="study-pipeline-tutorial.html#external-population-frequency-eligibility-for-rare-masks">external-frequency screen</a>
+now applies a fixed versioned ALT AC/AN panel before masks/score pooling, with
+explicit populations, per-mask limits and adequate-AN requirements. Missing
+frequencies or coverage hold the complete mask family, while known source-QC
+failures exclude alleles. Retain source bytes, decisions and the original mask
+universe. This is point-frequency eligibility; it does not implement gnomAD FAF,
+confidence-bound filtering, automatic ancestry matching or resource conversion.
+Record weights, transcript aggregation, annotation confidence, overlapping masks
+and coverage. ANNOVAR/AlphaGenome predictions may define an a priori secondary
+mask or weight, but do not tune that choice using the association results.</p>
+<p>Use burden tests for a justified aggregate of similarly directed effects;
+SKAT permits mixed directions; SKAT-O and ACAT-O provide specified omnibus
+alternatives; ACAT-V is useful for sparse variant-level signals. Declare a
+primary test/omnibus rule rather than report whichever method has the smallest
+P value. Report all attempted masks/tests and correct across genes/regions,
+frequency masks, tests and phenotypes under an explicit family or valid
+hierarchical/omnibus strategy. A minimum P across masks is not already adjusted.</p>
+<p>A registered cross-mask stage may combine prespecified tests and correct across
+the complete resulting set/gene family. Retain original mask corrections,
+component coverage, independent eligibility and reviewed gene mappings.
+Missing/failed masks cannot define a smaller successful-test family. Freeze
+discovery unit selection before validation. Reuse supplied omnibus results with
+their original scoped family, without reconstructing variant scores. The
+<a href="study-pipeline-tutorial.html#cross-mask-rare-set-and-gene-omnibus">source-build guide</a>
+describes the current contract and limitations.</p>
+<p>Ultra-rare collapse is method-specific and distinct from the single-variant
+MAC threshold. The existing <a href="acat-rare-variants.html">ACAT workflow</a> collapses pooled
+MAC &lt;= 10 into a burden component by default; preserve its score orientation and
+covariance requirements. <a href="https://rgcgithub.github.io/regenie/options/">REGENIE's set-test documentation</a>
+and <a href="https://saigegit.github.io/SAIGE-doc/docs/set_step2.html">SAIGE's region-test documentation</a>
+also distinguish rare masks, collapse rules and set-level testing. Do not apply
+an upstream MAC &gt;= 20 export filter and then claim an inclusive ultra-rare test:
+lost variants and their joint scores cannot be reconstructed from retained hits.</p>
+<p>Record callable N, allele counts, distinct carriers when available, effective
+variant count, mask membership, collapsed components, test/null model and
+convergence/numerical failures. Minimum cumulative MAC/carriers and binary-trait
+calibration are method-specific requirements; a universal count of 20 is not
+silently transferred to every set test. A one-variant or empty set must follow
+the selected method's documented behavior and be identified as such.</p>
+<p>For replication, match gene/region definitions, annotation masks, frequency
+policies and tests, even if the exact rare alleles differ. Burden direction is
+meaningful only for the same burden definition/orientation. SKAT/ACAT P values
+have no signed beta; do not draw beta scatterplots or calculate inverse-variance
+meta-analysis from fabricated effects. Use compatible cohort scores/covariances
+for pooled rare tests, or a declared valid P-value combination with its dependence
+assumptions. Record variants absent versus unmeasured/uncallable. A single-variant
+MAC exclusion is branch-specific and must not erase the separate set-test input.</p>
+<h3 id="post-association-calibration-and-locus-follow-up">Post-association calibration and locus follow-up</h3>
+<p>Save sample/variant flow, effective N, AC/AN/MAC/MAF, quality, effect allele,
+method, beta/SE when meaningful, P/log P, convergence and exclusions. Check
+QQ/Manhattan plots by phenotype, ancestry, frequency/MAC and test class. Investigate
+inflation/deflation, sparse-tail artifacts, batch effects and proximal contamination;
+genomic inflation is not automatically population stratification or permission
+for a second blanket genomic-control correction. Use appropriate LD-score or
+null simulations/negative controls when supported; keep correction choices explicit.</p>
+<p>Declare single-variant and gene/set significance rules separately. Report the
+conventional common-variant GWAS threshold of P &lt; 5e-8 where applicable, alongside
+the declared FDR family. Dense sequencing, multiple traits and gene/mask tests
+may need different/more extensive correction; FDR &lt; 0.05 is not interchangeable
+with genome-wide significance. Keep exploratory FDR-selected findings labeled.</p>
+<p>Define independent loci using ancestry-matched LD and documented windows;
+conditional analysis/fine-mapping is needed to distinguish multiple signals
+within a locus. Replicate exact variants/alleles when appropriate and distinguish
+locus, gene-mask and molecular-feature replication. Use regional plots, leave-one-
+variant-out set sensitivity and carrier/quality review for leading findings.
+Retain credible-set uncertainty, secondary signals, ancestry differences and
+functional evidence; neither the nearest gene nor the smallest P identifies
+the causal mechanism automatically.</p>
+<h3 id="modality-specific-checks-beyond-gwas">Modality-specific checks beyond GWAS</h3>
+<p>The same intake must declare assay-appropriate checks rather than treating a
+generic finite matrix as sufficient QC:</p>
+<div class="result-table"><table>
+<thead>
+<tr>
+<th>Modality</th>
+<th>Required considerations before choosing the association model</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RNA abundance/splicing</td>
+<td>Library/sample quality, low abundance and informative junction coverage, normalization, compositional effects, transcript/cluster definitions, batch and cell composition; count, transformed expression and isoform ratios have different models.</td>
+</tr>
+<tr>
+<td>Methylation</td>
+<td>Detection/bead/coverage quality, cross-reactive or SNP-affected probes, sex-chromosome policy, beta/M-value scale, cell composition and array/batch effects.</td>
+</tr>
+<tr>
+<td>Proteins/metabolites</td>
+<td>Assay controls, detection limits/censoring, missingness, plate/batch/drift, dilution/transformation, target ambiguity and known binding artifacts; a pQTL may reflect binding rather than abundance.</td>
+</tr>
+<tr>
+<td>Microbiome or compositional assays</td>
+<td>Contamination, depth, sparsity, zero handling, taxonomic/feature definitions, compositional model and batch; ordinary correlations on raw proportions require justification.</td>
+</tr>
+<tr>
+<td>Single-cell/spatial</td>
+<td>Donor/sample/cell/spot QC, doublets, ambient signal, cell-state labels and spatial context; cells/spots do not provide independent donor replication.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Each family needs explicit thresholds, modeled scale, missingness and diagnostics
+in its contract or a documented external preprocessing record. Unsupported intake
+or models remain visible prerequisites; these rows do not imply automatic
+JLinAlg implementations for all assays.</p>
+<h2 id="2-result-qc-testing-families-and-comparisons">2. Result QC, testing families and comparisons</h2>
+<p>Audit field semantics as well as headers: beta versus R-squared, SE versus
+variance/SD, odds ratio versus log odds, effect allele, units, transformations,
+N and P-value calculation. Model rank and feature-specific degrees of freedom
+can explain legitimate reconstruction differences. Record numerical underflow;
+a rounded zero does not imply infinite evidence.</p>
+<p>Distinguish invalid estimates from heuristic outliers. Nonfinite betas,
+nonpositive SEs, invalid P values and failed fits need explicit dispositions.
+Apply these requirements by result type: unsigned gene/set tests can legitimately
+have no beta/SE, and cannot enter beta outlier screens, effect scatterplots,
+direction concordance or inverse-variance pooling as though they did.
+The current <a href="study-pipeline-tutorial.html#effect-size-quality-control-before-downstream-analysis">effect-QC policy</a>
+uses per-dataset median/MAD screening, IQR fallback and an optional unit-specific
+bound, with defaults <code>robust_z: 100</code> and <code>min_features: 20</code>. These are conservative
+audit settings, not biological thresholds. Preserve raw tables and every
+exclusion/reason; do not tune cutoffs to improve replication. Filtering on
+estimated effects can alter inference and does not guarantee calibrated FDR
+merely because the rule does not use P values. Retain an unfiltered sensitivity.</p>
+<p>Declare intersection versus available-cohort handling, minimum cohorts per
+pooled feature and each eligible testing family. An intersection follows QC and
+can propagate one cohort's exclusion to the common feature set. Missing,
+unmeasured, excluded and tested-nonsignificant remain distinct. Compute association
+FDR over the full declared eligible family before hit selection. State whether
+correction is per phenotype or across phenotypes; per-phenotype adjustment does
+not control a combined cross-phenotype claim.</p>
+<p>Effect comparisons use all matched eligible features before significance
+selection, with selected-hit overlays identified separately. Save units, matched
+N, Pearson correlation, sign concordance and optional declared rank correlation.
+Uncertainty requires a justified dependence model; genes/probes are not
+necessarily independent bootstrap units. Correlation is diagnostic, not a
+replication test. A fitted slope cannot justify rescaling incompatible estimates.</p>
+<h2 id="3-discovery-validation-and-primary-meta-analysis">3. Discovery, validation and primary meta-analysis</h2>
+<p>Assign at least one discovery and one validation cohort before inspecting a
+multi-cohort discovery/validation study. A declared meta-analysis-only design is
+possible, but cannot claim independent validation. A single cohort can support
+discovery while replication remains unavailable. Cohort labels alone do not
+establish independence: account for shared participants, families and reused
+public datasets using an appropriate covariance model or block unsupported pooling.</p>
+<p>Pool multiple discovery cohorts using discovery data alone. Freeze candidates
+before validation; prespecify per-cohort/combined validation, directional criteria
+and testing families. Under independence, a declared reduced validation family
+may use phenotype-specific discovery candidates within a predefined common tested
+universe. Never select it using validation P values. Report exact 1/2/3/all-cohort
+membership as appropriate. The all-cohort estimate may subsequently include
+validation cohorts; its stronger P value is not further independent replication.</p>
+<p>Use Venn for small cohort counts and UpSet for larger ones, with exact membership
+and tested-universe denominators. Hit overlap confounds effect agreement with
+power and coverage. A cohort with no significant overlap needs investigation,
+not automatic removal.</p>
+<p>Choose fixed/common-effect or random-effects pooling from the estimand and
+scientific comparability. Record the heterogeneity estimator and interval method;
+few cohorts make between-cohort variance and prediction intervals uncertain.
+One remaining cohort is a cohort estimate, not a meta-analysis. Report pooled
+beta, SE, interval, P, FDR, contributing cohorts/N, per-cohort directions,
+Cochran Q, I-squared and tau-squared when estimable. Add a prediction interval
+when justified by the model and available cohorts.</p>
+<p>Register leave-one-cohort-out analyses with at least three cohorts, minimum
+retained cohorts and a heterogeneity-alert rule. Define both a per-feature
+threshold and the fraction of eligible features constituting widespread
+heterogeneity. Compare a common feature universe where possible and retain all
+attempted omissions. Report changes in effects, intervals, direction, significance
+and heterogeneity. Fewer degrees of freedom and uncertainty can make a smaller
+heterogeneity statistic misleading. Do not search arbitrary subsets for the
+minimum I-squared or remove every disagreeing cohort.</p>
+<p>Primary exclusions need defensible reasons such as incompatible assays/estimands,
+duplicate participants or documented technical failure. A post hoc change needs
+an amendment, the original analysis and an all-cohort sensitivity comparison.
+The primary result is identified by its prespecified rule and exact artifact,
+not its rank among sensitivity analyses. Replicated findings are a separate tier.</p>
+<h2 id="4-enrichment-and-networks">4. Enrichment and networks</h2>
+<p>Use the frozen primary result and its actual eligible universe. For GO/pathway
+overrepresentation, specify feature-to-gene mapping, many-to-one/one-to-many
+handling and deduplication. Use genes that could have been selected as the
+background; transcript/probe multiplicity and assay biases may need specialized
+correction. Record species, resource/annotation release, set-size filters,
+term counts and correction family. The <a href="https://www.geneontology.org/docs/go-enrichment-analysis/">GO guide</a>
+explains reference lists. No significant hits is a valid outcome and need not
+prevent an eligible ranked analysis.</p>
+<p>Ranked GSEA uses a declared signed statistic over the eligible ranked universe,
+not only significant genes. Preserve probe-to-gene aggregation and the
+permutation/null model; see the <a href="https://docs.gsea-msigdb.org/GSEA/Data_Formats/">GSEA formats</a>
+and <a href="https://docs.gsea-msigdb.org/GSEA/GSEA_User_Guide/">user guide</a>.
+Define GWAS enrichment precisely: gene-set enrichment in GWAS, overlap with known
+GWAS loci/genes and omics-hit enrichment in GWAS-derived sets have different
+LD, mapping and background requirements. An unadjusted nearby-catalogue count
+does not answer all of these questions.</p>
+<p>A pathway network can connect enriched sets by declared gene/leading-edge
+overlap and cluster related terms. Ranked GSEA and pathway-overlap networks can
+use summary results. Molecular correlation networks require appropriate feature
+matrices or a documented external network. Normalize and address covariates,
+batch, tissue composition and relatedness under a declared model. Avoid building
+the entire network from outcome-selected hits unless that conditional analysis
+is the explicit scientific question.</p>
+<p>Declare Pearson/Spearman, signed/unsigned treatment, minimum observations,
+missingness and edge uncertainty. <code>abs(rho) &gt;= 0.7</code> is an exploratory starting
+threshold; inspect a prespecified range for stability rather than tune it for
+preferred GO terms. Preserve negative-edge signs. Connected components are
+networks; communities or WGCNA clusters are candidate modules. Optional maximal
+cliques are fully connected, potentially overlapping subgraphs, not a unique
+partition. Bound their minimum size, count and runtime and report limits reached.
+Assess stability and cross-cohort preservation, then run module/clique GO using
+the mapped network universe and declared multiplicity. Functional labels remain
+supported hypotheses rather than experimentally proven functions.</p>
+<p>The source build now registers separate correlation/pathway-overlap graph,
+bounded module and joint module-GO operations. Supported native bulk matrices
+receive per-dataset listwise selection and covariate residualization; supplied
+GSEA/graphs/memberships can satisfy upstream work. Count/state/depth limits,
+resource/species/namespace needs and conditional stability are explicit. See
+the <a href="study-pipeline-tutorial.html#molecular-networks-pathway-overlap-modules-and-module-go">network tutorial</a>.
+Native preranked GSEA now supplies complete scoped rankings, exact/Monte Carlo
+gene-set nulls, NES/leading edges, term-family correction and automatic pathway
+membership. Its precision, model and mapping contracts are documented in the
+<a href="study-pipeline-tutorial.html#native-ranked-gsea-and-leading-edge-pathway-networks">GSEA tutorial</a>.
+Phenotype/block-aware nulls, cross-cohort preservation, clustered resampling,
+integrated community/WGCNA orchestration and broader large-scale acceptance
+remain separate requirements.</p>
+<h2 id="5-gwas-annotation-and-alphagenome-scoring">5. GWAS annotation and AlphaGenome scoring</h2>
+<p>Attempt annotation of <strong>every QC-eligible tested variant</strong>, and retain a status
+for each original variant, including exclusions. Normalize representation,
+split multiallelic records as appropriate, and verify build, coordinates and
+REF/ALT against the reference. rsIDs alone are insufficient identity. Preserve
+transcript-specific consequences and ambiguous gene assignments.
+Include eligible low-MAC members of rare-variant sets even when they did not
+enter the single-variant scan; their annotations define the declared set masks.</p>
+<p>ANNOVAR supplies gene/region annotations and versioned annotation/score databases;
+it does not produce one universal SNP impact score. Save protocols, operations,
+database versions, score definitions and missing annotations. The <a href="https://annovar.openbioinformatics.org/en/latest/user-guide/startup/">official
+startup guide</a>
+describes its separate tool/database configuration.</p>
+<p>AlphaGenome complements annotation with predicted molecular effects. Use a
+versioned precomputed resource when build, variant and scoring context match;
+otherwise use a configured prediction service or external workflow. Google
+DeepMind describes <a href="https://deepmind.google/blog/alphagenome-atlas-a-predictive-map-of-every-possible-dna-letter-change-in-the-human-genome/">AlphaGenome Atlas and its variant-impact score</a>;
+the <a href="https://www.alphagenomedocs.com/colabs/variant_scoring_ui.html">official scoring guide</a>
+retains output/scorer and biological-context metadata. Preserve model/resource
+version, sequence window, build, REF/ALT, tissue/cell ontology, gene/transcript,
+output type, raw score, quantile/calibration and scoring options where available.
+An impact score or quantile is not an association P value or causal posterior.</p>
+<p>For a genome-wide pass, prefer compatible precomputed Atlas lookups and cache
+their resource version. Route eligible gaps to a bounded live-prediction queue;
+record its coverage separately from annotation coverage. The <a href="https://github.com/google-deepmind/alphagenome">official
+AlphaGenome client documentation</a>
+distinguishes precomputed Atlas queries from live predictions and advises
+against workloads requiring more than a million live predictions. Check the
+current provider limits when resolving the plan rather than assume that every
+tested SNP can receive a fresh prediction in one run.</p>
+<p>Target a per-variant annotation/scoring record across the eligible GWAS universe.
+If a declared budget restricts prediction to fine-mapped/credible-set candidates,
+report the rule, unscored count and reasons; do not claim all SNPs were predicted.
+Continue annotation of other eligible variants. Never restrict fine-mapping to
+functionally scored SNPs. Retain unsupported alleles, reference mismatches,
+missing predictions and service failures explicitly. Cache versioned public
+predictions under the study's external-query policy.</p>
+<p>Combine functional, association, fine-mapping, QTL and colocalization evidence
+in a transparent candidate table. Preserve components; any priority index needs
+declared weights and sensitivity checks. Correlated predictions are not
+independent corroboration. Scores cannot replace association FDR, establish
+the causal SNP or automatically identify its target gene. Public annotation
+does not require participant genotypes once the permissible variant list exists.</p>
+<h2 id="6-protein-interpretation-and-alphafold">6. Protein interpretation and AlphaFold</h2>
+<p>Resolve eligible protein findings to organism, UniProt accession, sequence and
+exact isoform where possible. Record ambiguous antibody/aptamer targets, peptide
+coverage, protein groups and sequence versions. A gene symbol alone does not
+establish which protein isoform was measured.</p>
+<p>Retrieve a matching AlphaFold DB model first; retain its identifier, sequence
+coverage, version and source. When available, retain per-residue pLDDT and PAE
+for relative-domain confidence, alongside a structure view. The <a href="https://www.alphafold.ebi.ac.uk/">AlphaFold DB
+documentation</a> describes confidence outputs.
+Mark missing confidence data and sequence mismatches explicitly.</p>
+<p>A missing exact isoform or separately justified complex may require a configured
+new AlphaFold prediction. Retain sequences, software/model version, templates/MSA
+provenance where applicable, seeds and confidence outputs. Retrieval is not new
+prediction. Variant-to-residue mapping requires exact transcript/sequence and
+residue numbering. Structural confidence does not establish pathogenicity,
+protein abundance changes, binding, druggability or efficacy. An isoform-ratio
+association alone does not establish a changed protein structure. Keep these
+predictions alongside pQTL/MR/colocalization evidence with distinct interpretations.</p>
+<p>For a missense-variant hypothesis, consider a suitable variant-effect predictor
+separately from the structure model. <a href="https://www.ebi.ac.uk/training/online/courses/alphafold/classifying-the-effects-of-missense-variants-using-alphamissense/">AlphaMissense is a separate
+system</a>
+that classifies missense variants; a confident AlphaFold structure is not a
+prediction of the effect of a point mutation. Preserve exact sequence/residue
+mapping, model version and uncertainty, and avoid treating correlated model
+outputs as independent experimental evidence.</p>
+<h2 id="7-risk-scores-and-related-phenotypes">7. Risk scores and related phenotypes</h2>
+<p>Distinguish molecular prediction, polygenic scoring and absolute-risk modeling.
+Define outcome, intended use, training population and evaluation population.
+Keep participant/family/cohort/visit groups intact across partitions. Full-data
+association selection, imputation, normalization, batch adjustment and tuning
+can leak evaluation information; fit them within training folds or use genuinely
+external frozen discovery weights. Nested validation is needed when both tuning
+and performance estimation use CV.</p>
+<p>Freeze feature definitions, transformations, weights and missing-feature handling
+before independent application. Report incremental performance over a declared
+covariate baseline, uncertainty and outcome-appropriate calibration: for example,
+R-squared/RMSE for quantitative outcomes, discrimination/calibration for binary
+risk, and time-dependent metrics for survival. Assess transportability/subgroup
+performance when supported. In-sample score association is not validation.</p>
+<p>Test frozen scores against registered related phenotypes, such as BMI or
+cardiovascular traits for a glucose score, using adjusted models and a separate
+multiple-testing family. Record shared participants and correlated outcomes.
+New related-trait suggestions need an exploratory label or amendment. Association,
+prediction and causality remain separate claims.</p>
+<h2 id="8-mr-and-colocalization">8. MR and colocalization</h2>
+<p>Find phenotype-matched GWAS and assay-matched QTL data: irQTL/sQTL for the actual
+isoform/splicing feature, eQTL for expression, pQTL for proteins and corresponding
+resources for other assays. Match tissue, organism, ancestry, build, trait,
+version and sample overlap. Prefer full summary statistics to catalogue lead-SNP
+lists. Download permissible sources with citations/checksums; unavailable or
+unsuitable sources are not negative biological evidence.</p>
+<p>Attempt MR for <strong>all</strong> unambiguously mapped primary features with association
+FDR strictly below 0.05 and valid available instruments. The literature cap of
+100 is not an MR cap. Save a feature-level disposition for every attempt.
+Declare direction, usually molecular exposure to phenotype; reverse/bidirectional
+MR requires a separate instrument set and hypothesis.</p>
+<p>That feature loop applies to molecular exposures. In a GWAS-only study, define
+trait-level exposure/outcome hypotheses and suitable instruments instead of
+treating every associated SNP as a separate molecular exposure. A GWAS may also
+provide the outcome statistics for the molecular-feature loop.</p>
+<p>Apply molecular-feature eligibility before gene annotation or source matching.
+Missing/ambiguous annotations and unlocated features need explicit dispositions
+inside the selected MR family; they cannot shrink its denominator or be called
+null. Reviewed exact-feature MR can use a sourced pair-level <code>feature_location</code>
+when a local annotation interval is unavailable. Retain its coordinate source
+and original annotation status, require the existing exact QTL/build/ancestry/
+instrument contract, and do not infer a gene mechanism from that declaration.
+The <a href="study-pipeline-tutorial.html#mr-coverage-before-gene-annotation">MR coverage tutorial</a>
+documents the implemented path, independent correction and dossier caveats.
+The literature-review cap does not cap reviewed MR pairs.</p>
+<p>Partial external MR coverage now has an explicit contribution contract: declare
+the exact completed features, source result digest, stable analysis identity,
+primary estimator and original testing family. Preserve the external rows and
+adjustments; run native MR only for uncovered eligible features. Conflicting or
+unavailable provided coverage stays pending rather than causing a native
+replacement. Compute and label the separate joint MR correction, with unresolved
+tests and completed unestimable tests kept distinct. The
+<a href="study-pipeline-tutorial.html#complete-missing-mr-features-from-supplied-contributions">MR completion tutorial</a>
+documents this branch; a full supplied primary still owns the entire stage.</p>
+<p>Prespecify cis/trans scope, instrument threshold, clumping/LD-aware method,
+strength, allele/palindrome handling and overlap policy. Do not select instruments
+or retrieve outcome effects only when outcome-significant. A thresholded QTL
+export can support instrument selection only if its threshold includes every
+instrument eligible under the rule; retain winner's-curse/selection limitations.
+A single instrument supports a ratio under a suitable reviewed method but not
+multi-instrument pleiotropy diagnostics. Unsupported/insufficient designs have
+explicit dispositions rather than substituted methods.</p>
+<p>Save estimates/intervals and method-appropriate strength, heterogeneity, pleiotropy
+and influence diagnostics. Adjust the declared family of primary MR tests
+separately from association selection; identify sensitivity estimators. Association
+FDR &lt; 0.05 establishes neither valid instruments nor MR FDR control. Registered <code>project.mr_testing_families</code> can combine complete primary MR test families across declared phenotypes, preserving source adjustments and withholding joint discoveries for unresolved members. See the <a href="study-pipeline-tutorial.html#declared-cross-hypothesis-primary-mr-families">cross-hypothesis MR tutorial</a>. Post-selection
+MR remains follow-up evidence. Use the <a href="https://www.bmj.com/content/375/bmj.n2233">STROBE-MR guidance</a>.</p>
+<p>Colocalization needs a regional locus, measured molecular feature, phenotype,
+selection scope and shared-variant coverage. Prefer dense statistics including
+nonsignificant variants, compatible alleles and appropriate LD for multi-signal
+methods. Report signal-specific posteriors, credible sets, convergence, prior
+sensitivity and missingness. Colocalization alone does not establish causal
+direction. The <a href="https://chr1swallace.github.io/coloc/articles/a02_data.html">coloc input guide</a>
+requires dense coverage without P-value thresholding.</p>
+<p>When only thresholded data exist, retain the requested exploratory partial-region
+attempt if sufficient aligned variants and LD remain. Save export cutoffs,
+observed counts, per-source matched fractions, regional gaps, overlap uncertainty
+and model/convergence choices. Use the existing evidence grade
+<code>exploratory_partial_region_major_limitation</code>. Carry this major caveat into all
+tables, reports and manuscript: <strong>posteriors are conditional on observed, selected
+variants; missing variants, significance filtering, unequal coverage, winner's
+curse and unknown overlap can materially bias them. A null result is not evidence
+against a shared causal variant.</strong> Numerical success does not promote partial
+results to conventional complete-region evidence. Insufficient aligned data are
+not estimable; missing required sources/declarations are waiting prerequisites.</p>
+<h2 id="9-literature-manuscript-and-evidence-disposition">9. Literature, manuscript and evidence disposition</h2>
+<h3 id="literature-scope">Literature scope</h3>
+<p>For each phenotype, review at most 100 eligible association-FDR-significant
+features after full-family adjustment, also retaining their declared GWAS or
+gene/set significance category. Preserve every significant feature and mark
+those outside the review budget as not reviewed. Use the provisional AI impact
+shortlist below to allocate this review budget. The native <code>auto</code> policy uses
+provisional impact assistance when enabled and the eligible pool exceeds the
+cap, otherwise retaining source-P/feature-ID ordering. An explicitly requested
+AI allocation that is incomplete or denied must wait, rather than silently
+falling back to a P-value prefix. Completed supplied literature remains reused.
+Record the final review order and every departure from that fallback. Merge
+duplicate gene searches while preserving distinct probes/transcripts and
+phenotype links. A study-wide rather than per-phenotype cap must be explicit.
+The 100-signal limit bounds detailed signal review, not statistical analysis,
+the full evidence inventory or the number of references in the manuscript.</p>
+<p>Save search dates, queries, synonym resolution, sources, budgets, deduplication
+and article identifiers. Verify cited claims against papers, identify abstract-only
+evidence, and retain contrary/null findings and known retractions. A failed or
+limited search cannot establish novelty. Optional LLM appraisal/drafting follows
+the existing assistance policy and still requires source and claim checks.</p>
+<p>Validate supplied hit counts as exact nonnegative integers before declaring a
+search completed or empty. Numeric underflow, overflow or fractional rounding
+must not become a zero or a different integer. Apply exact year validation to
+supplied citation metadata and retain the original source bytes and hashes.</p>
+<p>Carry a per-finding coverage ledger into final impact comparison, manuscript
+drafting and editorial review. Keep native allocation separate from completed
+supplied searches: nonselection by the current cap does not invalidate prior
+evidence. Distinguish pending, failed, limited, no-match, retrieved-unreviewed
+and bibliography-only states; deduplicate exact reused query receipts without
+discarding source links. Coverage records do not certify scientific appraisal
+or change statistical eligibility. See the <a href="study-pipeline-tutorial.html#literature-coverage-in-finding-dossiers">coverage guide</a>.</p>
+<h3 id="ai-assisted-selection-of-35-principal-findings">AI-assisted selection of 3–5 principal findings</h3>
+<p>AI is used here for comparative scientific interpretation: weigh the impact of
+the supported findings and propose <strong>3–5 distinct principal findings for the
+whole manuscript</strong>, across phenotypes and analysis branches. This is separate
+from numerical association testing and transparent statistical candidate tables.
+It is not a request for three to five findings per cohort, phenotype or method,
+nor for a five-paragraph Results limit. If fewer than three defensible findings
+exist, use fewer and record why; never invent findings to fill the quota.</p>
+<p>First create a complete finding inventory with stable IDs and exact source
+artifacts. Group linked SNPs into loci and overlapping molecular/pathway evidence
+into scientific stories where justified, preserving the underlying rows.
+Several significant SNPs in one LD block or several annotations of one protein
+should not become five supposedly distinct discoveries. Distinct conditional
+signals or genuinely different conclusions may still warrant separate findings,
+with their relationship explained.</p>
+<p>Each candidate dossier contains the hypothesis/estimand, cohort and sample
+coverage, effect magnitude and interval, adjusted significance/test family,
+replication and direction, sensitivity/heterogeneity, QC and allele/count flags,
+fine-mapping uncertainty, applicable MR/colocalization evidence grades,
+functional/structural predictions, literature support/conflict and missing
+evidence. Include a meaningful null result, failed replication or limitation
+when it changes the scientific interpretation. The AI should not see only a
+top-ten dashboard preview or rank a search-success status as a finding. If
+context limits require batches, preserve full inventory coverage, a consistent
+rubric and an explicit cross-batch comparison; record any unassessed candidates.</p>
+<p>Use this review rubric without presenting an arbitrary score as a calibrated
+impact probability:</p>
+<div class="result-table"><table>
+<thead>
+<tr>
+<th>Dimension</th>
+<th>Questions the AI must answer with evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Reliability and validation</td>
+<td>Is the signal estimable, QC-eligible, corrected for the appropriate testing family, replicated and robust to the registered sensitivities? Are the counts and model calibrated for this design?</td>
+</tr>
+<tr>
+<td>Effect and practical relevance</td>
+<td>How large and precise is the effect on an interpretable scale, for which population? Does absolute impact differ from statistical precision?</td>
+</tr>
+<tr>
+<td>Contribution and novelty</td>
+<td>Does it resolve a meaningful question, strengthen or contradict prior work, or reveal a supported new relationship? Is novelty backed by an adequate search rather than missing search results?</td>
+</tr>
+<tr>
+<td>Biological/clinical coherence</td>
+<td>Do tissue, assay, isoform, ancestry and direction fit the proposed interpretation? What mechanism is supported, and what remains speculative?</td>
+</tr>
+<tr>
+<td>Complementary evidence</td>
+<td>Do fine-mapping, QTL, MR, colocalization, pathways or structures add appropriate evidence? Are they dependent, partial-region, uncertain or only contextual?</td>
+</tr>
+<tr>
+<td>Distinctness and narrative value</td>
+<td>Does this add a different conclusion rather than repeat the same locus or the same evidence in another format? Does an important null/conflict change the main message?</td>
+</tr>
+<tr>
+<td>Limitations and next experiment</td>
+<td>What could reverse the conclusion, what evidence is missing, and which feasible validation would resolve the uncertainty?</td>
+</tr>
+</tbody>
+</table></div>
+<p>Apply evidence eligibility before narrative appeal. Retained invalid/unreportable
+results cannot be promoted to supported positive findings. Major partial-data
+limitations, weak instruments or an unreplicated result must remain explicit;
+novelty or an attractive mechanism cannot cancel them. Small P values, database
+availability and AI confidence are not sufficient evidence of high impact.
+The shortlist may contain well-labeled exploratory or null findings when those
+are scientifically consequential, with their weaker/different claim scope intact.</p>
+<p>Use two passes: provisional prioritization allocates bounded literature and
+follow-up effort; final prioritization uses verified results and source appraisal.
+Reassess any proposed main finding lacking a sufficient literature review within
+the declared budget, or explicitly qualify what has not been established. Save
+the ranked list, selected 3–5 finding IDs, supporting/counterevidence, selection
+reasons, near-miss/rejected alternatives, uncertainty and unresolved disputes.
+Keep an auditable scientist decision and any override rationale alongside the
+AI recommendation; review does not require asking for permission at every step
+of a workflow already authorized by the scientist.</p>
+<p>Record model/provider/version, prompts, supplied evidence IDs/hashes, responses,
+rubric and review decisions through the existing assistance/provenance boundary.
+Use permitted aggregate evidence; patient-level data are unnecessary for this
+ranking. If AI is required by the study and unavailable or disallowed by network
+policy, record ranking as pending or an explicit manual substitution. Do not
+silently label a smallest-P ordering as AI impact assessment.</p>
+<p>The source build now registers study-wide <code>finding_inventory</code> and
+<code>impact_assessment</code> operations with an uncapped primary/null/excluded inventory,
+full-family candidate eligibility, source-linked aggregate dossiers, mandatory
+caveats and bounded hierarchical AI comparisons. <code>impact-assessment.yaml</code>,
+<code>impact-candidate-dispositions.tsv</code> and <code>manuscript-outline.yaml</code> retain selected
+and unselected candidates, source/limitation links, comparative reasons and
+review disposition. The outline binds the selected IDs to Results/Discussion
+word allowances. Native revision <code>finding_ids</code> and explicit scientist override
+reasons enter <code>impact-selection-review.yaml</code>. See the
+<a href="study-pipeline-tutorial.html#study-wide-impact-assessment-and-manuscript-selection">runnable tutorial</a>
+for exact settings, local/remote/browser boundaries and limitations. Source
+appraisal, actual-model quality and broader assay/source acceptance remain
+separate requirements; a deterministic protocol fixture is not real AI review.</p>
+<p>For primary GWAS findings, registered local allele-resolved LD tables can add
+an independent redundancy constraint without changing significance or manual
+story labels. All supplied reference variants enter the graph, including
+unselected mediators. Two principal slots cannot share a positive-linkage
+component even if the genes or story labels differ. Source scope, missing
+variants/pairs, threshold/window coverage and ancestry/build/allele conflicts
+remain explicit. Connected components can be transitive and are not
+fine-mapped causal signals or proof of independence. The
+<a href="study-pipeline-tutorial.html#registered-ld-evidence-for-distinct-principal-findings">registered LD tutorial</a>
+documents complete and explicitly partial sources, source hashes, cache
+invalidation and both AI/native-prose constraints. Automatic reference
+retrieval, native LD extraction and scientific independence appraisal remain
+separate work.</p>
+<h3 id="thorough-principal-finding-discussions">Thorough principal-finding discussions</h3>
+<p>Use <a href="https://doi.org/10.1126/science.abj3624">Wickenhagen et al., <em>Science</em> 2021</a>
+as a depth benchmark; an <a href="https://eprints.gla.ac.uk/253009/">author-deposited published copy</a>
+is available. Its OAS1 account connects splice-acceptor variation and isoform
+prenylation/localization to RNase L-dependent antiviral experiments and patient
+observations. It also examines null results and limitations, including the
+relationship between blood measurements, infection-site biology and timing.
+The standard is an explicit evidence chain and serious discussion of alternatives,
+not an assertion that a pipeline association reproduces that experimental work.</p>
+<p>For each selected story, create a complete finding dossier and a developed
+discussion addressing:</p>
+<ol>
+<li><strong>What this study observed:</strong> the exact phenotype, feature/variant/isoform,
+   effect scale/magnitude/interval, population, correction family, replication
+   and registered sensitivity results, with exact artifact links.</li>
+<li><strong>What previous work established:</strong> relevant primary studies, their designs,
+   experimental systems, populations and specific results, with claim-level
+   citations. Resolve isoform, tissue, ancestry and disease-stage mismatches.</li>
+<li><strong>How the proposed mechanism works:</strong> explain each link from variant or
+   molecular change to cellular function and phenotype. Label each link as
+   directly demonstrated, supported indirectly, predicted or unresolved; show
+   which evidence comes from this study versus external work.</li>
+<li><strong>What could explain the result differently:</strong> competing genes/isoforms,
+   confounding, reverse causation, LD, pleiotropy, assay binding artifacts,
+   selection, model sensitivity, null findings and contradictory studies.</li>
+<li><strong>What follows and what does not:</strong> practical/biological importance with
+   appropriate uncertainty, generalizability and conditions on any clinical
+   or therapeutic interpretation.</li>
+<li><strong>What should be done next:</strong> concrete experiments or independent analyses
+   that distinguish competing mechanisms, identify required measurements and
+   specify what outcome would strengthen or weaken the interpretation.</li>
+</ol>
+<p>Give each story the space its evidence needs, potentially several paragraphs.
+The main text needs a self-contained synthesis, the strongest evidence,
+important counterevidence and every caveat that changes the conclusion. A
+linked finding-specific supplementary note retains the full evidence/claim
+ledger, detailed literature synthesis, secondary mechanisms, source/method
+comparisons, full sensitivity results and proposed follow-up. Equal per-finding
+word allowances are starting allocations, not caps on scientific depth. A
+large volume of prose, a checklist pass or an AI's self-rating does not certify
+thoroughness or accuracy; scientific review still checks every substantive
+claim against the underlying results and primary sources.</p>
+<p>The source build now adds a local claim/source ledger with frozen inventory and
+prose hashes, retained public texts, exact passage anchors, epistemic labels,
+dependency checks and eight prose-linked depth facets. Native reference
+acquisition can explicitly request a public full-text XML projection and retain
+its license/raw-response audit. The
+<a href="study-pipeline-tutorial.html#claim-bound-principal-finding-discussion">source-review guide</a>
+documents review/strict modes, source scope, inherited sealed copies and local
+disclosure boundaries. A mechanical pass always retains scientific-review status;
+actual-model appraisal and scientifically thorough real manuscripts remain
+separate acceptance requirements.</p>
+<p>Typed supplied bibliographies now feed the same citation catalog and native
+manuscript path. Explicit literature contributions can reuse complete,
+hash-bound searches and perform missing native queries, with exact scientific
+scope and separate source-reported/native coverage. Partial exports and provider
+or scope mismatches cannot suppress retrieval. See the
+<a href="study-pipeline-tutorial.html#reuse-supplied-literature-and-complete-missing-searches">supplied-literature guide</a>
+for the contract, source dates, public-metadata boundaries and limitations.</p>
+<h3 id="flexible-8000-word-main-text-target-and-unrestricted-supplements">Flexible 8,000-word main-text target and unrestricted supplements</h3>
+<p>Use <strong>8,000 words as an adjustable default main-text target</strong>, not a ceiling on
+the complete scientific account or a requirement to pad prose. A declared
+strict journal limit takes precedence. An over-target working draft is retained
+with word counts and an editorial disposition; it is not truncated or rejected
+solely for exceeding the default. By default the
+count includes Introduction, Methods, Results, Discussion and any Conclusion,
+with their headings and inline citations; exclude the title page, abstract,
+reference list, tables, figure legends and supplements. Record separate counts
+for those items. If the target journal counts them differently, apply its scope
+and retain the resulting section/total counts. This is a proposed document
+contract. The source build accepts <code>project.manuscript_policy.word_limit_mode</code>
+as <code>target</code> or <code>strict</code>. Newly resolved default manuscripts use <code>target</code>; an
+explicit legacy <code>max_main_words</code> without a mode remains strict so existing
+declared limits are preserved. Set the mode explicitly when changing that
+intent. No default supplement word ceiling is imposed.</p>
+<p>A starting allocation is:</p>
+<div class="result-table"><table>
+<thead>
+<tr>
+<th>Main-text section</th>
+<th style="text-align: right;">Default word allowance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Introduction</td>
+<td style="text-align: right;">900</td>
+</tr>
+<tr>
+<td>Methods</td>
+<td style="text-align: right;">2,200</td>
+</tr>
+<tr>
+<td>Results</td>
+<td style="text-align: right;">2,300</td>
+</tr>
+<tr>
+<td>Discussion</td>
+<td style="text-align: right;">2,400</td>
+</tr>
+<tr>
+<td>Conclusion, if separate</td>
+<td style="text-align: right;">200</td>
+</tr>
+<tr>
+<td>Total main text</td>
+<td style="text-align: right;">8,000</td>
+</tr>
+</tbody>
+</table></div>
+<p>These section allocations are adjustable planning targets. Fold the conclusion
+allowance into Discussion when there is no separate conclusion. Draft the
+abstract separately, provisionally up to 250 words unless the journal specifies
+otherwise. Allocate Results/Discussion space among the selected findings based
+on evidential importance and explanatory needs, not equal paragraph lengths or
+P-value rank. Fewer findings may deserve more room when uncertainty and contrary
+evidence require explanation.</p>
+<p>Start Results with participant/variant flow and the applicable global results,
+then retain the Methods-aligned analysis order. Emphasize the selected findings
+within those sections; open Discussion with their importance and supporting
+reasons. Preserve essential QC, null/discordant findings and limitations in main
+text even if they make a less attractive narrative. Place exhaustive variant,
+gene/mask, enrichment, sensitivity and ranking tables and extra figures in
+supplements, with explicit main-text links and full artifact provenance.</p>
+<p>Validate section and total word counts after citations, tables and revisions
+are finalized. If over budget, shorten repeated background and secondary detail
+and move detailed supporting discussion to linked supplements before removing
+essential evidence or caveats; record any further reduction in
+the selected finding set. The statistical result set and significant-signal
+tables do not shrink to match a word budget. AI ranking selects emphasis, not
+which analyses count as performed or which results are publicly retained.</p>
+<p>Build the manuscript from exact verified artifacts and citations. Include
+participant flow/Table 1, design/models, QC/exclusions, testing families,
+discovery/validation, direction, heterogeneity, all registered sensitivities,
+functional/network/score results, genetic evidence, predictions, limitations and
+data/code availability. Report null and incomplete branches. Numerical claims
+need phenotype, cohort set, feature universe, analysis version and artifact
+provenance. The draft requires scientific review of selection, causal wording
+and modality-specific reporting requirements.</p>
+<p>Distinguish completed results (including true null findings), completed-but-not-
+estimable results, waiting prerequisites, failed execution, inapplicable analyses,
+declined optional work and budget-limited work. These reporting dispositions do
+not introduce new executor-state enum values. Preserve immutable raw inputs,
+amendments, exclusions, resource versions, commands, seeds, hashes, warnings and
+attempted alternatives. Historical/invalidated results remain traceable.</p>
+<h2 id="implementation-map-and-remaining-work">Implementation map and remaining work</h2>
+<p>An optional separate <code>network_preservation_null</code> stage now tests frozen signed
+or unsigned edge patterns under a registered within-stratum target-label null.
+Exact or fixed-draw sampled tails, complete family correction and supplied-result
+reuse remain conditional graph evidence, separate from association discoveries,
+GO, participant-sampling stability and WGCNA Zsummary. See the
+<a href="study-pipeline-tutorial.html#conditional-tests-of-frozen-network-wiring">conditional wiring guide</a>.
+Broader network models and scientific exchangeability appraisal remain.</p>
+<p><strong>Current conformance is partial.</strong> The audited baseline was <code>57ec05d</code>;
+implementation is now proceeding on <code>codex/analysis-pipeline</code>. The source build
+adds prefit sample QC, explicit model gating, discovery-only pooling and manuscript
+policy enforcement alongside the existing kernel. There are still standalone
+methods, configured adapters and unimplemented requirements. The
+expanded pseudocode is the target workflow, not the behavior of every current
+<code>study auto</code> run. Local packaged examples verify the stated genotype-QC,
+pooling, rare-set influence, offline literature-selection and study-wide
+impact/native-manuscript protocol subsets; one real Europe PMC request verifies
+model-review retrieval. The impact fixture uses deterministic local responses,
+so it does not establish actual AI scientific appraisal.
+These checks do not validate the full workflow, other services, installed tools
+or biological findings. Exact evidence is retained in the implementation status.</p>
+<p>An earlier focused source audit ran 49 pipeline tests: 47 passed and two
+rare-variant assertions failed. The repeated-cohort test reaches its expected
+waiting state but fails a message assertion; the GRM reference fixture omits
+its required annotation declaration and does not reach numerical comparisons.
+Both fixture issues were subsequently corrected: the request is parsed as YAML
+and the GRM fixture declares its annotation input. All 11 tests then passed,
+including the independent GRM numerical comparison. Rare-set cohort influence
+has since been added; its refreshed acceptance evidence is recorded separately.
+This is not a claim of a passing full-pipeline gate. See the
+<a href="../analysis-pipeline-implementation.html#historical-conformance-audit-2026-10-21">dated conformance audit</a>
+for the precise scope, failures and distinction between local source and releases.</p>
+<div class="result-table"><table>
+<thead>
+<tr>
+<th>Area</th>
+<th>Current source capability</th>
+<th>Remaining work for this specification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Contracts/execution</td>
+<td><code>StudyContract</code>, <code>StudyPlanner</code>, <code>StudyExecutionEngine</code>, questions, amendments and evidence index</td>
+<td>Extend registered operations/contracts as needed; this pseudocode adds no executable settings.</td>
+</tr>
+<tr>
+<td>Association/model choice</td>
+<td>Every study association requires an explicit model. Missing models produce a bounded recent-literature/candidate-model review and a blocking need, including processed matrices. Offline and one live Europe PMC case were verified</td>
+<td>Extend assay/design-specific search and scientific model appraisal, and complete model-specific routing; the current broad phenotype search cannot establish suitability.</td>
+</tr>
+<tr>
+<td>GWAS QC</td>
+<td>MAC 20, marker missingness 0.02 and sample call rate 0.98 are captured for genetic studies; imputed studies declare INFO 0.8. Source ploidy, case/control counts, exact autosomal hard-call HWE with optional reference IDs, exact missingness and unavailable-statistic exclusions are retained. Generic association excludes observed non-diploid and split-multiallelic inputs</td>
+<td>Complete caller/assay, biological sex/PAR, ancestry/kinship QC and calibrated sparse binary/model routing. HWE/missingness thresholds remain prespecified optional filters, not universal defaults; low-level set-test eligibility stays separate.</td>
+</tr>
+<tr>
+<td>Rare-variant association</td>
+<td>Registered annotation-mask, Gaussian score and set-analysis nodes keep MAC 0 set eligibility separate from MAC 20 scans; run burden/SKAT/SKAT-O/ACAT-V/ACAT-O, strict score imports, discovery-only/all-cohort pooling, full set/mask/test correction and typed P-only result imports. Cohort omissions retain separate complete families, frequency eligibility, coverage and influence summaries without replacing the primary. Native consequences can now precede masks; unavailable direction/coverage and empty families remain explicit</td>
+<td>Conditional independent-participant binary sets now support fixed-stratum/known-offset exact or independently piloted sampled tests and sealed completed-gene reuse; see the <a href="study-pipeline-tutorial.html#conditional-binary-rare-variant-sets">binary rare-set guide</a>. Unknown-slope/kinship binary and survival adapters, genome-wide scale, broader consequence/confidence sources, ancestry/external-frequency masks, cross-phenotype multiplicity, bias-aware rare-set enrichment and broader acceptance remain. Native/supplied primary rare sets now connect to explicit gene mappings, exploratory per-mask GO/Reactome with a joint mask-by-term family, and source-FDR-preserving contextual literature; see the <a href="study-pipeline-tutorial.html#rare-set-findings-in-enrichment-and-contextual-literature">rare-set follow-up guide</a>. Masks use explicitly mapped supplied or verified consequence records and observed scope-specific frequencies; omission comparisons are exploratory.</td>
+</tr>
+<tr>
+<td>Participant QC/plots</td>
+<td>Shared source-only <code>assay_qc</code> now supports native measurement audit/filter, exact detection bounds/cutoffs, complete supplied current-matrix decisions, fixed original populations, exact count totals and verified downstream matrices. See the <a href="study-pipeline-tutorial.html#molecular-assay-qc-and-supplied-decisions">assay-QC guide</a>. Registered <code>participant_qc</code> gates association on aligned complete cases and genotype call rates, retaining exclusions and analysis membership. The optional observed-call profile adds complete-source hash/LD panels, missing-aware KING all-pair decisions and unrelated-basis projected PCs with explicit model inclusion and supplied-PC reuse. Typed external sample-QC/PCA records now support exact source binding, per-cohort choices, separate source counts and requested native missing-PCA completion. It generates numeric/categorical PNG/PDF distributions, robust outlier warnings and declared categorical/cutoff subgroups, with corrected diagnostic mean comparisons. Separate registered two-level OLS/HC3 and Bernoulli logit/Firth interaction routes retain full testing-family dispositions and typed supplied results; see the <a href="study-pipeline-tutorial.html#registered-adjusted-subgroup-interactions">interaction guide</a> and <a href="study-pipeline-tutorial.html#registered-genotype-sample-qc-and-projected-pcs">sample-QC guide</a></td>
+<td>Complete assay/caller/sex/PAR QC, ancestry-reference appraisal, larger-scale scientific acceptance and broader external formats, dependence-aware and broader interaction adapters remain. Outcome-defined groups cannot establish effect modification. Table 1 verification remains separate.</td>
+</tr>
+<tr>
+<td>Effect QC/comparisons</td>
+<td><code>StudyEffectQc</code> preserves pre-screen snapshots; automatic <code>effect-qc-unfiltered</code> sensitivity repeats cohort comparisons, completed primary meta-analysis, discovery pooling and validation. Branch-specific universes, adjusted-P denominators, primary/sensitivity differences and unchanged primary hashes are recorded</td>
+<td>Continue model/assay-specific diagnostics and broader modality acceptance; heuristic exclusion still does not establish invalidity or calibrated FDR.</td>
+</tr>
+<tr>
+<td>Replication/meta-analysis</td>
+<td>Separate discovery pooling excludes validation estimates; all-cohort pooling receives original sources. Typed effect/context audits and supplied-sampling-covariance GLS now guard compatible scalar-effect pooling, with separate independent-validation checks. Missing/invalid matrices retain source counts and wait; omission/unfiltered branches use their actual source subsets. Declared tau/inference/confidence settings reach both scalar backends.</td>
+<td>Complete automatic block partitioning, strict default completeness, source/model appraisal, unsigned-result dependence models, explicit primary designation and all declared influence diagnostics. Legacy incomplete contracts remain uncertified. See the <a href="study-pipeline-tutorial.html#compatible-effects-and-covariance-aware-pooling">pooling contract</a>.</td>
+</tr>
+<tr>
+<td>Sensitivity/overlap</td>
+<td>Native exact multiway memberships, two/three-set Venn and UpSet PNG/PDF, source/frozen validation families, explicit tested-universe coverage and registered I-squared or BH/BY Q alerts. Leave-one-cohort-out is default for at least three cohorts, with conditional/disabled policies, minimum retained cohorts and common-feature paired influence. Supplied diagnostics can skip refitting; missing source alert rules remain unavailable. Primary hashes and every fit disposition are retained</td>
+<td>Extend unsigned/rare-set and multicontrast overlap, uniform primary selection across remaining downstream consumers and broader scientific acceptance. Diagnostic improvement cannot automatically replace the primary. See the <a href="study-pipeline-tutorial.html#multiway-cohort-overlap-and-registered-heterogeneity">cohort tutorial</a>.</td>
+</tr>
+<tr>
+<td>Enrichment</td>
+<td>Native preranked GSEA consumes complete scoped gene rankings, including supplied primary meta-analysis, with exact/seeded gene-set nulls, conditional-tail precision, NES, BH/BY, leading edges, PNG/PDF curves and pathway/module-GO integration. GO/pathway ORA and supplied results retain their own universes and correction families</td>
+<td>Native binary or mixed-annotation S-LDSC now consumes a complete calibrated GWAS source and matched reference sums/cross-products, with joint binary category or continuous conditional-coefficient tests, standardized effects, log-space target correction, SNP QC and supplied-stage reuse. Native independent Gaussian OLS shared residual GSEA nulls and complete external model-null ranking reuse also connect. Broader native dependent/non-Gaussian GSEA nulls, multi-ancestry GWAS enrichment, LD/reference construction, broader weighting/scale/calibration acceptance and assay mappings remain. Native GSEA BH/BY is distinct from Broad's pooled-NES empirical FDR. See the <a href="study-pipeline-tutorial.html#native-ranked-gsea-and-leading-edge-pathway-networks">GSEA tutorial</a> and <a href="study-pipeline-tutorial.html#ld-aware-gwas-functional-category-enrichment">GWAS enrichment tutorial</a>.</td>
+</tr>
+<tr>
+<td>GWAS annotation/scoring</td>
+<td>Native <code>variant_scoring</code> connects reference checks, versioned consequence imports/ANNOVAR/VEP/Ensembl REST and the official AlphaGenome SDK bridge or score imports. It inventories primary variants and rare-QC candidates without significance selection, retains transcript/tissue/scorer context, hashes local inputs and reuses sealed complete batches. <code>variant_annotation</code> can supply prespecified rare masks before association.</td>
+<td>Complete real provider/installed-tool acceptance and broader formats/species/variant classes. SDK-format fixtures do not validate functional predictions; reference matching does not independently certify assembly. See the <a href="study-pipeline-tutorial.html#native-gwas-consequences-and-alphagenome-context">native annotation contract</a>.</td>
+</tr>
+<tr>
+<td>Proteins/structures</td>
+<td>Native exact accession/isoform/taxon/FASTA binding, supplied PDB/mmCIF assessment, versioned AlphaFold DB retrieval, explicit pLDDT/directional PAE, residue/peptide/variant mappings, local views and configured predictor contracts; supplied summaries and assessment-only work can skip acquisition. Synthetic configured-process and live public retrieval checks passed</td>
+<td>Real new AlphaFold inference and broader structure/complex scientific validation remain unverified. Confidence and exact sequence identity do not establish function or causality. See the <a href="study-pipeline-tutorial.html#exact-protein-sequences-structures-and-confidence">protein tutorial</a>.</td>
+</tr>
+<tr>
+<td>Scores</td>
+<td>Registered explicit-partition quantitative development from participant tables/cohort matrices; complete frozen-model and external weight/score application; held-out frozen-baseline metrics, conditional independent-unit bootstrap, subgroup reports and complete related-trait BH/BY families. Supplied evaluation can skip to missing related testing. Private participant records stay outside aggregate dossiers</td>
+<td>Native joint binomial elastic-net development and complete model reuse now connect; survival development, nested CV, genome-wide LD-aware scoring, broader calibration/transportability and real scientific acceptance remain. See the <a href="study-pipeline-tutorial.html#held-out-risk-scores-and-missing-related-phenotype-work">held-out score tutorial</a>.</td>
+</tr>
+<tr>
+<td>Networks</td>
+<td>Registered per-dataset residual correlation, native preranked GSEA to pathway overlap, bounded component/clique and joint module-GO operations; supplied graph/membership reuse, actual correction preservation, signed edges, threshold/optional-bootstrap diagnostics and GraphML</td>
+<td>Phenotype/block-aware GSEA nulls, participant-resampling and broader preservation calibration, clustered resampling, community/WGCNA study orchestration, broader mappings/scale and real scientific acceptance remain. Dense native matrices retain a 2,000-feature bound.</td>
+</tr>
+<tr>
+<td>Genetic evidence</td>
+<td>Reviewed pairing, supported public discovery, all-significant-feature MR selection and caveated partial-region colocalization. Native MR declares primary IVW/Wald, separate BH/BY/Bonferroni/nominal families, duplicate-source tests, eligible-feature dispositions and provisional-family gates. Colocalization now retains pre-restriction coverage/gaps, all signal pairs, registered priors, convergence/fallback and complete/partial source grades in canonical results/dossiers. Supplied multi-signal/source fields survive reuse</td>
+<td>Extend automatic assay/source adapters, cross-phenotype MR correction, LD-reference sensitivity and broader fine-mapping calibration. See the <a href="study-pipeline-tutorial.html#complete-colocalization-records-and-regional-coverage">colocalization tutorial</a>. Within-hypothesis correction does not establish instrument validity or remove selection bias.</td>
+</tr>
+<tr>
+<td>Literature/manuscript</td>
+<td>Study-wide inventory, full eligible-candidate AI comparisons, source/caveat validation, resumable sealed nodes and a 3–5-finding outline are registered. Typed normalization carries supported source-reported N/QC/interval fields into dossiers; pooled count sums have a distinct meaning. Native revisions link finding IDs and scientist overrides. Draft/rendered accounting supports a flexible 8,000-word target, explicit strict limits and separately counted authored supplementary discussions. Prompts require thorough mechanism, primary literature, alternatives and next experiments. Literature review defaults to 100 eligible mapped features with an uncapped eligible inventory and separate query budget; earlier explicit caps remain honored</td>
+<td>Verify actual-model scientific depth/source appraisal, locus/story grouping, all assay/source formats and the full manuscript acceptance matrix. An absent N remains unknown; copying a normalized field does not independently certify it. Hierarchical AI ranking is an unreviewed recommendation. Protein/sequence/contextual work retains its 10-feature default; MR is independently scoped.</td>
+</tr>
+</tbody>
+</table></div>
+<p>See <a href="variant-followup.html">variant follow-up</a>, <a href="prediction-scores.html">prediction scores</a>
+and <a href="network-followup.html">network follow-up</a> for existing commands and limits.
+Runner changes require implementation and acceptance checks tracked in
+<a href="../analysis-pipeline-implementation.html">the implementation status</a>. Existing
+sealed results are retained; new software/defaults do not regenerate historical
+studies or imply that old runs used the updated workflow.</p>
+<h3 id="implemented-source-build-settings">Implemented source-build settings</h3>
+<p>The following are accepted settings in the current source build; they are a
+configuration fragment, not a complete study. The explicit OLS choice here is
+only an example for an appropriate quantitative design. The resolver captures
+the displayed QC and manuscript defaults for newly resolved genetic studies;
+subgroups require explicit scientific justification.</p>
+<pre><code class="language-yaml">project:
+  manuscript_policy:
+    max_main_words: 8000
+    word_limit_mode: target
+    minimum_findings: 3
+    maximum_findings: 5
+hypotheses:
+  - id: H
+    analysis:
+      association:
+        model: ols
+        genotype_kind: imputed
+        minimum_mac: 20
+        maximum_marker_missing: 0.02
+        minimum_sample_call_rate: 0.98
+        minimum_info: 0.8
+      subgroups:
+        - id: obesity-threshold
+          column: BMI
+          cutoff: 30
+          comparison: greater_than_or_equal
+</code></pre>
+<p>The cutoff contract is exact; its clinical appropriateness depends on the study
+population. Outcome-defined group comparisons do not receive circular
+inferential P values. Local <code>participant_qc</code> artifacts contain the analyzed
+phenotype table, exclusions, aggregate diagnostics and PNG/PDF distributions.
+The association adapter consumes that selected table. Participant-bearing
+artifacts are not eligible remote assistance payloads.</p>
+<p>The default MAC filter applies to single-variant study/CLI scans. Rare-set input
+eligibility retains separate defaults. The source build registers quantitative
+and conditional-binary rare-set study branches; broader model/ploidy adapters
+remain listed in the <a href="../analysis-pipeline-implementation.html">implementation status</a>.
+Existing saved runs retain their original policies.</p>
+<p>The source build also adds <a href="study-pipeline-tutorial.html#gwas-qq-and-manhattan-diagnostics">GWAS QQ and Manhattan diagnostics</a>
+for available cohort and pooled sources. It retains declared coverage,
+frequency/count/INFO/test strata, finite-log P values, unresolved rows and
+coordinate/build limitations. Descriptive calibration summaries do not perform
+genomic control or replace the registered primary inference.</p>
+<!-- SCIENTIFIC-CITATIONS:START -->
+<section class="citation-strip" aria-labelledby="scientific-citations-analysis-pipeline-specification">
+  <div class="container narrow">
+    <span class="eyebrow">Scientific foundations</span>
+    <h2 id="scientific-citations-analysis-pipeline-specification">Primary method citations</h2>
+    <p>Cite the relevant method publication as well as JLinAlg when reporting results from this workflow.</p>
+    <ul class="citation-links">
+      <li><a href="../citations.html#wickenhagen-oas1-2021">A, et al. (2021) — Gene and isoform mechanism</a> <span class="citation-inline-identifiers">(<a href="https://pubmed.ncbi.nlm.nih.gov/34581622/">PMID: 34581622</a> · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7612834/">PMCID: PMC7612834</a>)</span></li><li><a href="../citations.html#sandve-reproducibility-2013">Sandve et al. (2013) — Configuration provenance</a></li><li><a href="../citations.html#benjamini-hochberg-1995">Benjamini (1995) — Benjamini-Hochberg FDR</a></li><li><a href="../citations.html#dersimonian-laird-1986">DerSimonian (1986) — random-effects meta-analysis</a> <span class="citation-inline-identifiers">(<a href="https://pubmed.ncbi.nlm.nih.gov/3802833/">PMID: 3802833</a>)</span></li><li><a href="../citations.html#higgins-thompson-2002">Higgins (2002) — I-squared</a> <span class="citation-inline-identifiers">(<a href="https://pubmed.ncbi.nlm.nih.gov/12111919/">PMID: 12111919</a>)</span></li><li><a href="../citations.html#subramanian-gsea-2005">Subramanian et al. (2005) — GSEA</a> <span class="citation-inline-identifiers">(<a href="https://pubmed.ncbi.nlm.nih.gov/16199517/">PMID: 16199517</a> · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC1239896/">PMCID: PMC1239896</a>)</span></li><li><a href="../citations.html#go-consortium-2021">Consortium (2021) — Gene Ontology</a> <span class="citation-inline-identifiers">(<a href="https://pubmed.ncbi.nlm.nih.gov/33290552/">PMID: 33290552</a>)</span></li><li><a href="../citations.html#wang-annovar-2010">Wang (2010) — ANNOVAR consequence adapter</a></li><li><a href="../citations.html#varadi-alphafold-2022">Varadi et al. (2022) — Predicted protein structure investigation</a></li><li><a href="../citations.html#wallace-coloc-2021">Wallace (2021) — SuSiE colocalization</a> <span class="citation-inline-identifiers">(<a href="https://pubmed.ncbi.nlm.nih.gov/34587156/">PMID: 34587156</a> · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8504726/">PMCID: PMC8504726</a>)</span></li><li><a href="../citations.html#bowden-mr-egger-2015">Bowden (2015) — MR-Egger</a> <span class="citation-inline-identifiers">(<a href="https://pubmed.ncbi.nlm.nih.gov/26050253/">PMID: 26050253</a> · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4469799/">PMCID: PMC4469799</a>)</span></li><li><a href="../citations.html#madsen-browning-2009">Madsen (2009) — weighted burden test</a> <span class="citation-inline-identifiers">(<a href="https://pubmed.ncbi.nlm.nih.gov/19214210/">PMID: 19214210</a> · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC2633048/">PMCID: PMC2633048</a>)</span></li><li><a href="../citations.html#wu-skat-2011">Wu et al. (2011) — SKAT</a> <span class="citation-inline-identifiers">(<a href="https://pubmed.ncbi.nlm.nih.gov/21737059/">PMID: 21737059</a> · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3135811/">PMCID: PMC3135811</a>)</span></li><li><a href="../citations.html#lee-skato-2012">Lee et al. (2012) — SKAT-O</a> <span class="citation-inline-identifiers">(<a href="https://pubmed.ncbi.nlm.nih.gov/22863193/">PMID: 22863193</a> · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3415556/">PMCID: PMC3415556</a>)</span></li><li><a href="../citations.html#liu-acat-2019">Liu et al. (2019) — ACAT</a> <span class="citation-inline-identifiers">(<a href="https://pubmed.ncbi.nlm.nih.gov/30849328/">PMID: 30849328</a> · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6407498/">PMCID: PMC6407498</a>)</span></li><li><a href="../citations.html#wand-prs-reporting-2021">Lambert, et al. (2021) — PRS reporting standards</a> <span class="citation-inline-identifiers">(<a href="https://pubmed.ncbi.nlm.nih.gov/33692554/">PMID: 33692554</a> · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8609771/">PMCID: PMC8609771</a>)</span></li><li><a href="../citations.html#hoerl-kennard-1970">Hoerl (1970) — ridge regression</a></li><li><a href="../citations.html#zou-hastie-2005">Zou (2005) — elastic net</a></li><li><a href="../citations.html#lex-upset-2014">Lex (2014) — Exclusive intersection membership matrices</a></li><li><a href="../citations.html#cochrane-meta-analysis-2024">Deeks (2024) — Prespecified synthesis and sensitivity analyses</a></li><li><a href="../citations.html#wang-susie-2020">Wang (2020) — SuSiE</a> <span class="citation-inline-identifiers">(<a href="https://pubmed.ncbi.nlm.nih.gov/37220626/">PMID: 37220626</a> · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10201948/">PMCID: PMC10201948</a>)</span></li><li><a href="../citations.html#giambartolomei-coloc-2014">Giambartolomei et al. (2014) — coloc</a> <span class="citation-inline-identifiers">(<a href="https://pubmed.ncbi.nlm.nih.gov/24830394/">PMID: 24830394</a> · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4022491/">PMCID: PMC4022491</a>)</span></li><li><a href="../citations.html#benjamini-yekutieli-2001">Benjamini (2001) — BY harmonic correction</a></li><li><a href="../citations.html#wigginton-hwe-2005">JE (2005) — Exact hard-call HWE</a> <span class="citation-inline-identifiers">(<a href="https://pubmed.ncbi.nlm.nih.gov/15789306/">PMID: 15789306</a> · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC1199378/">PMCID: PMC1199378</a>)</span></li><li><a href="../citations.html#plink2-qc-documentation">developers (2026) — Prespecified HWE thresholds and sample scope</a></li><li><a href="../citations.html#bgen-layout2-specification">developers (2026) — Per-sample ploidy and missingness</a></li><li><a href="../citations.html#regenie-binary-methods">developers (2026) — Design-specific binary testing</a></li><li><a href="../citations.html#firth-bias-reduction-1993">Firth (1993) — Jeffreys penalized likelihood</a></li><li><a href="../citations.html#heinze-schemper-separation-2002">Heinze (2002) — Separated logistic data</a> <span class="citation-inline-identifiers">(<a href="https://pubmed.ncbi.nlm.nih.gov/12210625/">PMID: 12210625</a>)</span></li><li><a href="../citations.html#logistf-reference-documentation">Heinze (2026) — Full and constrained penalized fits</a></li><li><a href="../citations.html#r-fisher-exact-documentation">Team (2026) — Finite conditional binary-genotype reference</a></li><li><a href="../citations.html#r-survival-clogit-documentation">Team (2026) — Stratum case-count conditioning</a></li><li><a href="../citations.html#friedman-glmnet-2010">Friedman (2010) — Binomial elastic-net objective</a> <span class="citation-inline-identifiers">(<a href="https://pubmed.ncbi.nlm.nih.gov/20808728/">PMID: 20808728</a> · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC2929880/">PMCID: PMC2929880</a>)</span></li><li><a href="../citations.html#finucane-sldsc-2015">Finucane et al. (2015) — Stratified LD score regression</a> <span class="citation-inline-identifiers">(<a href="https://pubmed.ncbi.nlm.nih.gov/26414678/">PMID: 26414678</a> · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4626285/">PMCID: PMC4626285</a>)</span></li><li><a href="../citations.html#hemerik-goeman-2018">Hemerik (2018) — Conditional Monte Carlo test validity</a> <span class="citation-inline-identifiers">(<a href="https://pubmed.ncbi.nlm.nih.gov/30930620/">PMID: 30930620</a> · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6405018/">PMCID: PMC6405018</a>)</span></li><li><a href="../citations.html#altman-bland-interaction-2003">Altman (2003) — Compare effects rather than subgroup P values</a> <span class="citation-inline-identifiers">(<a href="https://pubmed.ncbi.nlm.nih.gov/12543843/">PMID: 12543843</a> · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC1125071/">PMCID: PMC1125071</a>)</span></li><li><a href="../citations.html#keller-interaction-confounding-2014">Keller (2014) — Covariate by feature and covariate by group interaction terms</a> <span class="citation-inline-identifiers">(<a href="https://pubmed.ncbi.nlm.nih.gov/24135711/">PMID: 24135711</a> · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3859520/">PMCID: PMC3859520</a>)</span></li><li><a href="../citations.html#manichaikul-king-2010">Manichaikul et al. (2010) — KING between-family estimator</a> <span class="citation-inline-identifiers">(<a href="https://pubmed.ncbi.nlm.nih.gov/20926424/">PMID: 20926424</a> · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3025716/">PMCID: PMC3025716</a>)</span></li><li><a href="../citations.html#price-pca-stratification-2006">Price et al. (2006) — Genotype principal components</a> <span class="citation-inline-identifiers">(<a href="https://pubmed.ncbi.nlm.nih.gov/16862161/">PMID: 16862161</a>)</span></li><li><a href="../citations.html#grc-human-par-intervals">Consortium (2026) — Build-specific 1-based closed X and Y PAR intervals</a></li><li><a href="../citations.html#plink2-human-ploidy-documentation">developers (2026) — Explicit haploid versus diploid dosage interpretation</a></li><li><a href="../citations.html#langfelder-preservation-2011">Langfelder et al. (2011) — WGCNA module preservation</a></li><li><a href="../citations.html#clopper-pearson-1934">Clopper (1934) — Exact binomial confidence intervals</a></li><li><a href="../citations.html#gnomad-v4-1-allele-number">Chao (2024) — Variant and nonvariant site coverage</a></li><li><a href="../citations.html#regenie-mask-frequency-documentation">developers (2026) — External ALT allele frequencies</a></li><li><a href="../citations.html#cox-1972">Cox (1972) — Cox proportional hazards</a></li><li><a href="../citations.html#efron-1977">Efron (1977) — Efron ties</a></li><li><a href="../citations.html#r-coxph-survival-documentation">Therneau (2026) — Partial likelihood and tie methods</a></li><li><a href="../citations.html#r-cox-zph-documentation">Therneau (2026) — Fitted-coefficient nuisance adjustment</a></li><li><a href="../citations.html#chen-ibrahim-shao-2009">Chen (2009) — Finite MPLE existence and full rank</a></li><li><a href="../citations.html#heinze-schemper-2001-cox">Heinze (2001) — Monotone likelihood and infinite coefficient estimates</a></li><li><a href="../citations.html#varma-simon-nested-cv-2006">Varma (2006) — Nested model selection</a></li><li><a href="../citations.html#sklearn-grouped-nested-cv">developers (2026) — Group boundaries</a></li><li><a href="../citations.html#plink2-linear-scoring">developers (2026) — Additive allele score sums and allele-normalized averages</a></li><li><a href="../citations.html#pgs-catalog-scoring-format">team (2026) — Explicit genome-build, coordinate and effect-allele weights</a></li><li><a href="../citations.html#hts-vcf-bcf-specification">Genomics (2026) — Variant and genotype field semantics</a></li>
+    </ul>
+    <a class="text-link" href="../citations.html">Search all scientific citations →</a>
+  </div>
+</section>
+<!-- SCIENTIFIC-CITATIONS:END -->
+<p>The source build adds <a href="study-pipeline-tutorial.html#cross-cohort-module-preservation">frozen-module transfer across cohort graphs</a>
+with exact namespaces, source coverage, shared-node/edge/sign diagnostics and
+typed stage reuse. These descriptive comparisons do not provide null-calibrated
+preservation tests or select a new primary graph.</p></article>
+<aside class="toc"><strong>On this page</strong><a href="#changes-to-the-original-pseudocode">Changes to the original pseudocode</a><a href="#end-to-end-pseudocode">End-to-end pseudocode</a><a href="#0-enter-at-any-analysis-stage-and-complete-missing-work">0. Enter at any analysis stage and complete missing work</a><a href="#1-study-contract-and-participant-data">1. Study contract and participant data</a><a href="#1a-gwas-qc-and-association-strategy">1a. GWAS QC and association strategy</a><a href="#2-result-qc-testing-families-and-comparisons">2. Result QC, testing families and comparisons</a><a href="#3-discovery-validation-and-primary-meta-analysis">3. Discovery, validation and primary meta-analysis</a><a href="#4-enrichment-and-networks">4. Enrichment and networks</a><a href="#5-gwas-annotation-and-alphagenome-scoring">5. GWAS annotation and AlphaGenome scoring</a><a href="#6-protein-interpretation-and-alphafold">6. Protein interpretation and AlphaFold</a><a href="#7-risk-scores-and-related-phenotypes">7. Risk scores and related phenotypes</a><a href="#8-mr-and-colocalization">8. MR and colocalization</a><a href="#9-literature-manuscript-and-evidence-disposition">9. Literature, manuscript and evidence disposition</a><a href="#implementation-map-and-remaining-work">Implementation map and remaining work</a><a href="#scientific-citations-analysis-pipeline-specification">Scientific citations</a></aside></div>
+</main><site-footer root="../"></site-footer></body></html>

@@ -10,6 +10,30 @@ public final class Acat {
 
     private Acat() { }
 
+    /** Equal-weight ACAT from finite natural-log probabilities, retaining underflow tails. */
+    public static Result combineLog(double[] logPValues) {
+        if(logPValues==null||logPValues.length==0)throw new IllegalArgumentException("Nonempty log P values are required");
+        double positive=Double.NEGATIVE_INFINITY,negative=Double.NEGATIVE_INFINITY;boolean one=false;
+        for(double logP:logPValues){
+            if(!Double.isFinite(logP)||logP>0)throw new IllegalArgumentException("Log P values must be finite and nonpositive");
+            if(logP==0){one=true;continue;}
+            double sign,logMagnitude;
+            if(logP<Math.log(1e-15)){sign=1;logMagnitude=-logP-Math.log(Math.PI);}
+            else {double p=Math.exp(logP),q=-Math.expm1(logP);if(q<1e-15){sign=-1;logMagnitude=-Math.log(q)-Math.log(Math.PI);}else{if(p==.5)continue;double term=p<.5?1/Math.tan(Math.PI*p):-1/Math.tan(Math.PI*q);sign=Math.signum(term);logMagnitude=Math.log(Math.abs(term));}}
+            logMagnitude-=Math.log(logPValues.length);
+            if(sign>0)positive=logAdd(positive,logMagnitude);else negative=logAdd(negative,logMagnitude);
+        }
+        if(one)return new Result(Double.NEGATIVE_INFINITY,1,0,logPValues.length);
+        if(positive==negative)return new Result(0,.5,Math.log10(.5),logPValues.length);
+        boolean above=positive>negative;double larger=Math.max(positive,negative),smaller=Math.min(positive,negative);
+        double magnitude=larger+(smaller==Double.NEGATIVE_INFINITY?0:Math.log(-Math.expm1(smaller-larger)));
+        double statistic=Math.copySign(Math.exp(magnitude),above?1:-1),logP;
+        if(magnitude>350)logP=above?-Math.log(Math.PI)-magnitude:-Math.exp(-Math.log(Math.PI)-magnitude);
+        else {double tail=Math.atan(Math.exp(-magnitude))/Math.PI;logP=above?Math.log(tail):Math.log1p(-tail);}
+        return new Result(statistic,Math.exp(logP),logP/LOG_10,logPValues.length);
+    }
+    private static double logAdd(double a,double b){if(a==Double.NEGATIVE_INFINITY)return b;if(b==Double.NEGATIVE_INFINITY)return a;return Math.max(a,b)+Math.log1p(Math.exp(-Math.abs(a-b)));}
+
     /** Combines p-values with equal weights. */
     public static Result combine(double[] pValues) {
         if (pValues == null)

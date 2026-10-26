@@ -1,0 +1,201 @@
+{
+  "status": "passed-native-supplied-weight-diploid-score-subset",
+  "jar_sha256": "a104651636deb59493cddc92ce433629d4ef7b0c755f6ee065a3e0c75365c5e2",
+  "recorded_utc": "2026-10-26T02:01:51.919373+00:00",
+  "artifact": "D:\\projects\\JLinAlg\\build\\literature-review\\validated-cli\\jlinalg-0.3.7.jar",
+  "source_sha256": {
+    "src/main/java/org/jlinalg/genetics/DiploidScores.java": "8ba79c896bbb087d2ed9100e364bcc3eeaa75c2f4cc409e6ea78c9c278b92ed3",
+    "src/test/java/org/jlinalg/genetics/DiploidScoresTest.java": "d701701969c4bc0d08041e6400902895d2a99379bf6163e477eead6aa9c5aef6",
+    "src/test/java/org/jlinalg/genetics/DiploidScoresOriginalReferenceTest.java": "4d81312d2e6c5699b6da5ac4f635a4c55fb34a01b6cfcabdce1ce4005cf9eea6",
+    "src/test/resources/org/jlinalg/genetics/plink-scores/provenance.json": "3441db38a28c7bb83069ea2875c3dd2517f6abc5001bda48d82063317d2a45d3",
+    "src/test/resources/org/jlinalg/genetics/plink-scores/reference.tsv.gz": "522a6a84c554cf87de2d6fad65dc32d6c353e4030d9cfa4cb5357024fb405945",
+    "src/test/resources/org/jlinalg/genetics/plink-scores/samples.tsv.gz": "f792ed4cb3e52c664a53db2b348f2117d6e5837435cef52b492ce4bc9b1490bf",
+    "src/test/resources/org/jlinalg/genetics/plink-scores/variants.tsv.gz": "76f76dc1759a66186ae18b20d702e1567f9d2e1de8823d192aa4848f4c4e0f18",
+    "src/main/java/org/jlinalg/genetics/PlinkBedDataset.java": "801cd6240911661d8981fb59bdee2f3ffdb3da4eb8317714b4cce9a784001f31",
+    "src/test/java/org/jlinalg/genetics/PlinkBedDatasetTest.java": "12a43cab38f2d3e311e1922eb7554058c69eaca1156bdf4286bfd300e54d5dec",
+    "src/main/java/org/jlinalg/cli/GenotypeScoreCli.java": "08d8339fc44d854f13c256d5958a2e51a61b219f2d39914225aadd14877096e5",
+    "src/test/java/org/jlinalg/cli/GenotypeScoreCliTest.java": "ac898a3aac0d6a763640eb70babe305314281d5072496e2631c9f4b4b9a5d31b"
+  },
+  "current_full_gate_suites": {
+    "org.jlinalg.genetics.DiploidScoresTest": {
+      "suite_name": "org.jlinalg.genetics.DiploidScoresTest",
+      "suite": {
+        "tests": 17,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "junit_sha256": "d8d99f823aa2feb04041f0def745fd11ad1b2d27a2d44d35a0f6dbaa6aa3697f",
+      "testcases": [
+        "allMissingOmissionIsUnreportableRatherThanZero()",
+        "missingErrorDoesNotPartiallyMutateEarlierSamples()",
+        "workLimitsAreCheckedBeforeMutation()",
+        "omissionUsesOnlyObservedAlleles()",
+        "compensatedSumRetainsSmallContributionAcrossCancellation()",
+        "optionalSuppliedFrequencyStillMustBeValid()",
+        "arithmeticOverflowRejectsTheWholeVariant()",
+        "variantLimitIsIndependentOfSampleCellLimit()",
+        "nonfiniteWeightsAndWrongDimensionsAreRejected()",
+        "fullyImputedStatusRemainsVisible()",
+        "explicitFrequencyValidationDoesNotEstimateFromTargetSamples()",
+        "completeWeightsProduceSumsAndAlleleAverages()",
+        "emptyModelsAndSampleBoundsAreExplicit()",
+        "snapshotsAndInputsAreNotMutableAliases()",
+        "invalidLateDosageAndInfinityLeaveStateUnchanged()",
+        "oppositeAlleleMappingPreservesMissingAndRejectsInvalidDosage()",
+        "imputationUsesSuppliedFrequencyAndKeepsObservedDenominatorSeparate()"
+      ]
+    },
+    "org.jlinalg.genetics.DiploidScoresOriginalReferenceTest": {
+      "suite_name": "org.jlinalg.genetics.DiploidScoresOriginalReferenceTest",
+      "suite": {
+        "tests": 1,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "junit_sha256": "bdf09e8e1789eb8dcdbd2ae34368c949dea486df01fdc775d24cdce122f83e46",
+      "testcases": [
+        "actualOriginalScoreFieldsMatchAcrossBothReleasesAndMissingPolicies()"
+      ]
+    },
+    "org.jlinalg.genetics.PlinkBedDatasetTest": {
+      "suite_name": "org.jlinalg.genetics.PlinkBedDatasetTest",
+      "suite": {
+        "tests": 12,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "junit_sha256": "a4e618901ece8c79facce0d648ea440c1b893c6533c4344442906bd0e2ec9f77",
+      "testcases": [
+        "selectedRowsUseTheirOriginalOrdinalAndBimOrder()",
+        "unresolvedOrEqualSelectedAllelesAreRejected()",
+        "metadataFieldCountsNumbersAndControlsAreStrict()",
+        "actualBedBitCodesAndPaddingRespectAllele1Orientation()",
+        "closedDatasetCannotReadAndEmptyInputsAreRejected()",
+        "exactCompositeSampleIdsPermitSameIidInDifferentFamilies()",
+        "sampleVariantAndMetadataLimitsAreEnforced()",
+        "malformedUtf8AndOversizedMetadataLinesFail()",
+        "unusedPaddingBitsAreRejectedOnSelectedRead()",
+        "utf8AndCrLfMetadataArePreservedWithoutNormalizingIds()",
+        "absentAndDuplicatedSelectedIdsFail()",
+        "exactFileDimensionsAndVariantMajorHeaderAreRequired()"
+      ]
+    },
+    "org.jlinalg.cli.GenotypeScoreCliTest": {
+      "suite_name": "org.jlinalg.cli.GenotypeScoreCliTest",
+      "suite": {
+        "tests": 11,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "junit_sha256": "4f7376e256c16963d0642064cd4f928406afbdacd4fc6319b5bfe578077418b4",
+      "testcases": [
+        "helpAndInvalidOptionsExplainNativeContract()",
+        "nativeMeanScoringPreservesAllelesIdentitiesDenominatorsAndHashes()",
+        "allMissingOmissionFailsAndQuarantinesBlankScores()",
+        "existingOutputCannotBeOverwritten()",
+        "fullyImputedScoresRetainConditionalReferenceWarning()",
+        "missingErrorHasNoSuccessfulScientificStreams()",
+        "duplicateAbsentAndMismatchedWeightsFailRatherThanChangingModel()",
+        "utf8RecipeSupportsUnicodePathsAndCommandLineOverrides()",
+        "suppliedFrequenciesAndWorkBoundsAreExplicit()",
+        "omissionAverageUsesObservedAlleles()",
+        "scoredSexChromosomesAndBadPaddingAreRejected()"
+      ]
+    }
+  },
+  "full_gate": {
+    "tests": 1593,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 5
+  },
+  "required_suites": 72,
+  "api_reader_cli_tests": 41,
+  "frozen_original_rows": 388,
+  "frozen_original_sums": 291,
+  "frozen_original_averages": 291,
+  "packaged_original_workflows": 6,
+  "actual_original_processes": 12,
+  "compared_original_fields": 2007,
+  "compared_native_rows": 670,
+  "packaged_java_calls": 29,
+  "packaged_controls": 23,
+  "external_java_api_example": {
+    "status": "passed",
+    "jar_sha256": "a104651636deb59493cddc92ce433629d4ef7b0c755f6ee065a3e0c75365c5e2",
+    "example_sha256": "7292e5dfe530ca111bf159e6047ac5d961edfd4216e4285d48e3ff27a8bacb8b",
+    "compile_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "compile_command": [
+      "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin\\javac.exe",
+      "--release",
+      "17",
+      "-Xlint:all",
+      "-Werror"
+    ],
+    "runs": [
+      {
+        "runtime": "Temurin21",
+        "command": [
+          "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin\\java.exe",
+          "-cp",
+          "D:\\projects\\JLinAlg\\build\\literature-review\\plink-runtime\\native-score-public-api-1\\classes;D:\\projects\\JLinAlg\\build\\literature-review\\plink-native-candidate\\jlinalg-0.3.7.jar",
+          "DiploidScoreExample",
+          "D:\\projects\\JLinAlg\\build\\literature-review\\plink-runtime\\packaged-native-score-4\\input-complete\\known"
+        ],
+        "exit_code": 0,
+        "stdout_sha256": "a2f2d4b3437dd7e6e8515e70d86d6a961b66a8f01af7e385b3434b50517a9fff",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "runtime": "Oracle25",
+        "command": [
+          "C:\\Program Files\\Common Files\\Oracle\\Java\\javapath\\java.EXE",
+          "-cp",
+          "D:\\projects\\JLinAlg\\build\\literature-review\\plink-runtime\\native-score-public-api-1\\classes;D:\\projects\\JLinAlg\\build\\literature-review\\plink-native-candidate\\jlinalg-0.3.7.jar",
+          "DiploidScoreExample",
+          "D:\\projects\\JLinAlg\\build\\literature-review\\plink-runtime\\packaged-native-score-4\\input-complete\\known"
+        ],
+        "exit_code": 0,
+        "stdout_sha256": "a2f2d4b3437dd7e6e8515e70d86d6a961b66a8f01af7e385b3434b50517a9fff",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    ],
+    "recorded_utc": "2026-10-26T01:12:55.258964+00:00",
+    "scope": "Separately compiled Java17 API consumer on actual Java21/25;hand-calculated imputation/all-missing omission and strict selected BED rows. Separate from JUnit counts."
+  },
+  "public_input_example": {
+    "status": "passed",
+    "jar_sha256": "a104651636deb59493cddc92ce433629d4ef7b0c755f6ee065a3e0c75365c5e2",
+    "command": [
+      "C:/Program Files/Eclipse Adoptium/jdk-21.0.4.7-hotspot/bin/java.exe",
+      "-jar",
+      "D:\\projects\\JLinAlg\\build\\literature-review\\plink-native-candidate\\jlinalg-0.3.7.jar",
+      "genotype-score",
+      "--bfile",
+      "D:\\projects\\JLinAlg\\examples\\native-genotype-score\\inputs\\cohort",
+      "--weights",
+      "D:\\projects\\JLinAlg\\examples\\native-genotype-score\\inputs\\weights.tsv",
+      "--missing",
+      "mean-impute",
+      "--genome-build",
+      "unspecified",
+      "--out",
+      "D:\\projects\\JLinAlg\\build\\literature-review\\plink-runtime\\public-example-input-check-1"
+    ],
+    "exit_code": 0,
+    "input_files_sha256": {
+      "cohort.bed": "ee1b9eeaa6518121ae242d79447079d9da21935a7f614349a6861754c211cf5f",
+      "cohort.bim": "ecf2fa611d281564205db23e5880d90e36c60a072feb1d23e7684b4fc5e09a4f",
+      "cohort.fam": "93122f6ab16ec8912b8db60d7a86de8b6722810df2a28fb2cb2c98eff486d48d",
+      "weights.tsv": "c8b71060e46b8f01835a01ab3607971a1ea31966c1012e174f70ebf524a1fcd4"
+    },
+    "results_sha256": "706bd41350f9e576c41e726a16d5d57619d9cc1f8f5b591ca4d6b507e0251aef",
+    "recorded_utc": "2026-10-26T01:18:02.278296+00:00",
+    "scope": "Actual packaged run on public byte-identical synthetic input fixture;not an additional original reference workflow or JUnit test."
+  },
+  "scope": "Independent streaming supplied-weight diploid scores,strict selected BED/BIM/FAM reader and human-autosomal hard-call CLI. Exact effect/other allele pairs,explicit error/mean-impute/omit,observed versus denominator counts,all-missing unreportability,compensated finite sums,resource bounds,hashes and actionable failure quarantine. Java only. Not an upstream QC/PCA/GLM adapter,weight estimation,risk calibration,sex-chromosome/dosage import or historical/full-paper parity."
+}

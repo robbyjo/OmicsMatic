@@ -20,14 +20,35 @@ final class StudyMrSources {
 
     private StudyMrSources() { }
 
+    private static boolean located(StudyBioinformatics.Feature feature) {
+        return "located".equals(feature.status()) && "GRCh38".equals(feature.build());
+    }
+    private static Map<String,Object> locationNeed(StudyBioinformatics.Feature feature) {
+        return Map.of("feature_id", feature.id(), "status", "missing_verified_grch38_location", "annotation_status", feature.status(),
+            "reason", "Automatic cis-irQTL acquisition needs a verified GRCh38 interval for this exact feature. Resolve annotation or declare reviewed genetic_pairs with a sourced feature_location; no gene identity or null MR result was inferred.");
+    }
+
     static boolean configured(Context context) {
         return "mendelian_randomization".equals(context.operation().get("type"))
             && !map(StudyBioinformatics.config(context).get("mr")).isEmpty();
     }
 
     static Prepared prepare(Context context) throws IOException {
+        return prepare(context, java.util.Set.of());
+    }
+    static Prepared prepare(Context context, java.util.Set<String> completedFeatures) throws IOException {
         Map<String, Object> config = map(StudyBioinformatics.config(context).get("mr"));
         if (config.isEmpty()) return new Prepared(List.of(), Map.of());
+        var features = StudyBioinformatics.mrFeatures(context).stream().filter(f->!completedFeatures.contains(f.id())).toList();
+        if (features.stream().noneMatch(StudyMrSources::located)) {
+            var audit = new LinkedHashMap<String,Object>(); audit.put("interface", "analysis.bioinformatics.mr");
+            audit.put("status", features.isEmpty() ? completedFeatures.isEmpty() ? "no_eligible_primary_features" : "no_uncovered_eligible_features" : "feature_location_prerequisites_unresolved");
+            audit.put("features", features.stream().map(StudyMrSources::locationNeed).toList()); audit.put("generated_pairs", 0);
+            audit.put("feature_selection", StudyBioinformatics.mrFeatureSelection(context)); audit.put("source_lookup_attempted", false);
+            audit.put("features_owned_by_supplied_or_reviewed_pairs",new java.util.TreeSet<>(completedFeatures));
+            write(context.outputDirectory().resolve("automatic-mr-sources.yaml"), audit);
+            return new Prepared(List.of(), audit);
+        }
         String ancestry = ancestry(required(config, "exposure_ancestry"));
         String population = text(config.getOrDefault("ld_population", population(ancestry))).toUpperCase(Locale.ROOT);
         if (!ThousandGenomesGrch38Ld.ancestry(population).equals(ancestry))
@@ -65,9 +86,9 @@ final class StudyMrSources {
         Files.createDirectories(root);
         try (PanUkbbGwasOutcome.Lookup outcomeLookup =
                 PanUkbbGwasOutcome.lookup(context, outcomeProfile)) {
-          for (StudyBioinformatics.Feature feature : StudyBioinformatics.mrFeatures(context)) {
-            if (!"located".equals(feature.status())) {
-                featureAudit.add(Map.of("feature_id", feature.id(), "status", "missing_verified_grch38_location"));
+          for (StudyBioinformatics.Feature feature : features) {
+            if (!located(feature)) {
+                featureAudit.add(locationNeed(feature));
                 continue;
             }
             List<StudyGeneticCandidates.Candidate> available = new ArrayList<>(byFeature.getOrDefault(feature.id(), List.of()));
@@ -143,6 +164,7 @@ final class StudyMrSources {
         audit.put("sample_overlap", overlap); audit.put("sample_overlap_basis", overlapBasis); audit.put("candidate_file", candidates.toString());
         audit.put("candidate_exclusions", selection.exclusions());
         audit.put("feature_selection", StudyBioinformatics.mrFeatureSelection(context));
+        audit.put("features_owned_by_supplied_or_reviewed_pairs",new java.util.TreeSet<>(completedFeatures));
         audit.put("features", featureAudit); audit.put("generated_pairs", pairs.size());
         StudyPublicEvidence.write(context.outputDirectory().resolve("automatic-mr-sources.yaml"), audit);
         return new Prepared(List.copyOf(pairs), audit);

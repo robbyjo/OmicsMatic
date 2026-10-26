@@ -77,6 +77,74 @@ public final class JLinAlgCli {
 
     private static int dispatch(String[] arguments, PrintStream output,
             PrintStream errorOutput) {
+        if (arguments.length > 0 && arguments[0].equals("signature-score"))
+            return SignatureScoreCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("intervals"))
+            return GenomicIntervalCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("cell-embed"))
+            return CellEmbeddingCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("sequence-qc"))
+            return SequenceToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("sequence-tools"))
+            return SequenceUtilsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("alignment-tools"))
+            return AlignmentToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("hts-tools"))
+            return HtsToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("read-align"))
+            return ReadAlignmentCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("gatk-tools"))
+            return GatkToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("star-tools"))
+            return StarToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("genomic-signal"))
+            return GenomicSignalCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("track-peaks"))
+            return TrackPeakCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("regenie-tools"))
+            return RegenieToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("coordinate-lift"))
+            return CoordinateLiftCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("feature-counts"))
+            return FeatureCountsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("minimap-tools"))
+            return MinimapToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("hisat-tools"))
+            return HisatToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("trimmomatic-tools"))
+            return TrimmomaticToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("enrichment-tools"))
+            return EnrichmentToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("trim-galore-reads"))
+            return TrimGaloreReadsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("flash-reads"))
+            return FlashReadsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("motif-scan"))
+            return MotifScanCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("fimo-tools"))
+            return FimoToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("genotype-score"))
+            return GenotypeScoreCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("beagle-tools"))
+            return BeagleToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("prs-cs-tools"))
+            return PrsCsToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("plink-tools"))
+            return PlinkToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("trim-galore-tools"))
+            return TrimGaloreToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("kallisto-tools"))
+            return KallistoToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("transcript-import"))
+            return TranscriptImportCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("quantile-normalize"))
+            return QuantileNormalizeCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("deep-tools"))
+            return DeepToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("magma-tools"))
+            return MagmaToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("single-cell-qc"))
+            return SingleCellQcCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
         if (arguments.length > 0 && arguments[0].equals("plot"))
             try {
                 return PlotCli.run(Arrays.copyOfRange(
@@ -197,9 +265,6 @@ public final class JLinAlgCli {
             if (!plan.hasOmics() && options.omics != null)
                 throw new IllegalArgumentException(
                     "--omics requires a <omics> formula term");
-            if (options.minimumHweP > 0)
-                throw new IllegalArgumentException(
-                    "--min-hwe-p filtering is not yet available; HWE is reported");
             AnalysisRunner runner = new AnalysisRunner(
                 options, plan, log, output);
             int result = runner.execute();
@@ -249,6 +314,40 @@ public final class JLinAlgCli {
             Usage:
               java -jar jlinalg-<version>.jar plot --help
               java -jar jlinalg-<version>.jar study --help
+              java -jar jlinalg-<version>.jar signature-score --help
+              java -jar jlinalg-<version>.jar intervals --help
+              java -jar jlinalg-<version>.jar cell-embed --help
+              java -jar jlinalg-<version>.jar sequence-qc --help
+              java -jar jlinalg-<version>.jar sequence-tools --help
+              java -jar jlinalg-<version>.jar alignment-tools --help
+              java -jar jlinalg-<version>.jar hts-tools --help
+              java -jar jlinalg-<version>.jar read-align --help
+              java -jar jlinalg-<version>.jar gatk-tools --help
+              java -jar jlinalg-<version>.jar star-tools --help
+              java -jar jlinalg-<version>.jar genomic-signal --help
+              java -jar jlinalg-<version>.jar track-peaks --help
+              java -jar jlinalg-<version>.jar regenie-tools --help
+              java -jar jlinalg-<version>.jar coordinate-lift --help
+              java -jar jlinalg-<version>.jar feature-counts --help
+              java -jar jlinalg-<version>.jar minimap-tools --help
+              java -jar jlinalg-<version>.jar hisat-tools --help
+              java -jar jlinalg-<version>.jar single-cell-qc --help
+              java -jar jlinalg-<version>.jar magma-tools --help
+              java -jar jlinalg-<version>.jar trimmomatic-tools --help
+              java -jar jlinalg-<version>.jar deep-tools --help
+              java -jar jlinalg-<version>.jar enrichment-tools --help
+              java -jar jlinalg-<version>.jar trim-galore-reads --help
+              java -jar jlinalg-<version>.jar flash-reads --help
+              java -jar jlinalg-<version>.jar motif-scan --help
+              java -jar jlinalg-<version>.jar fimo-tools --help
+              java -jar jlinalg-<version>.jar genotype-score --help
+              java -jar jlinalg-<version>.jar beagle-tools --help
+              java -jar jlinalg-<version>.jar prs-cs-tools --help
+              java -jar jlinalg-<version>.jar plink-tools --help
+              java -jar jlinalg-<version>.jar trim-galore-tools --help
+              java -jar jlinalg-<version>.jar kallisto-tools --help
+              java -jar jlinalg-<version>.jar transcript-import --help
+              java -jar jlinalg-<version>.jar quantile-normalize --help
               java -jar jlinalg-<version>.jar config --command COMMAND
               java -jar jlinalg-<version>.jar variant-db --help
               java -jar jlinalg-<version>.jar variant-annotate --help
@@ -400,8 +499,28 @@ public final class JLinAlgCli {
               --overwrite
 
             Filtering and processing:
-              --min-maf X --max-maf X --min-mac X --max-mac X
+              --min-maf X --max-maf X --min-mac X --max-mac X  (minimum MAC defaults to 20)
               --max-marker-missing X --min-info X
+              --genotype-kind auto|hard_calls|imputed|sequenced
+              --min-hwe-p X --hwe-filter-scope all|controls|cases
+              --binary-test efficient-score|firth-lrt|exact-conditional (genotype binomial GLM)
+              --firth-max-iterations N --firth-tolerance X
+              --exact-strata-column NAME   Declared categorical stratum term in formula
+              --exact-max-states N --exact-max-work N
+              --exact-effect-max-parameters N (0 retains exact P values without effects)
+                                           Exact autosomal biallelic hard-call HWE;
+                                           unavailable requested QC fails that variant
+              --hwe-sample-file FILE        Optional independent QC panel intersected with analyzed samples
+              --min-missingness-p X         Optional case/control missingness Fisher filter
+              --missingness-max-states N    Exact conditional state bound (default 100000)
+              --autosomes-only             Keep known human chromosomes 1-22
+              --human-ploidy-region autosomes|par|x_nonpar_xx|x_nonpar_xy|y_nonpar_xy
+              --human-ploidy-build GRCh37|GRCh38 --ploidy-samples FILE
+                                           Local id/chromosome_complement table (XX/XY)
+              --haploid-source-scale observed|haploid|diploid (default observed)
+              --invalid-ploidy-calls error|missing --unknown-ploidy-samples error|exclude
+                                           One independent OLS/GLM contrast; physical allele copies
+                                           and local audits. PAR uses X coordinates. Haploid HWE undefined.
               --transform SPEC             Row-wise <omics> stages, left to right
                 Built-ins: identity(), winsor(...), winsor_mad(k=4),
                 log1p(), log(offset=...), zscore(), int(), mvalue(epsilon=...)

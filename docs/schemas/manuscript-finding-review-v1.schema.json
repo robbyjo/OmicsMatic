@@ -1,0 +1,413 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://robbyjo.github.io/JLinAlg/schemas/manuscript-finding-review-v1.schema.json",
+  "title": "Local principal-finding claim and source review fragment",
+  "description": "Validates finding_review syntax. Native runtime separately checks frozen inventory/prose/source hashes, literal passages, identity, dependencies, coverage and facets. These checks do not certify scientific truth or authorize transmission.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "mode": {
+      "enum": [
+        "review",
+        "strict",
+        "off"
+      ],
+      "default": "review"
+    },
+    "finding_inventory_sha256": {
+      "type": "string",
+      "pattern": "^[a-fA-F0-9]{64}$"
+    },
+    "rationale": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 4000
+    },
+    "source_texts": {
+      "type": "array",
+      "maxItems": 50,
+      "items": {
+        "$ref": "#/$defs/source"
+      }
+    },
+    "passages": {
+      "type": "array",
+      "maxItems": 200,
+      "items": {
+        "$ref": "#/$defs/passage"
+      }
+    },
+    "dossiers": {
+      "type": "array",
+      "maxItems": 20,
+      "items": {
+        "$ref": "#/$defs/dossier"
+      }
+    }
+  },
+  "$defs": {
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_.-]{0,99}$"
+        },
+        "reference": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000
+        },
+        "path": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 8000
+        },
+        "snapshot": {
+          "type": "string",
+          "pattern": "^discussion-sources/[A-Za-z][A-Za-z0-9_.-]{0,99}\\.txt$"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-fA-F0-9]{64}$"
+        },
+        "scope": {
+          "enum": [
+            "abstract",
+            "full_text"
+          ]
+        },
+        "public_literature": {
+          "const": true
+        },
+        "provenance": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 8000
+        },
+        "reference_bundle": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "manifest": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 8000
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^[a-fA-F0-9]{64}$"
+            }
+          },
+          "required": [
+            "manifest",
+            "sha256"
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "reference",
+        "path",
+        "sha256",
+        "scope",
+        "public_literature",
+        "provenance"
+      ]
+    },
+    "passage": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_.-]{0,99}$"
+        },
+        "source_text": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_.-]{0,99}$"
+        },
+        "reference": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000
+        },
+        "quote": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4000
+        },
+        "location": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000
+        }
+      },
+      "required": [
+        "id",
+        "quote",
+        "location"
+      ],
+      "anyOf": [
+        {
+          "required": [
+            "source_text"
+          ]
+        },
+        {
+          "required": [
+            "reference"
+          ]
+        }
+      ]
+    },
+    "claim": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_.-]{0,99}$"
+        },
+        "paragraph_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 300
+        },
+        "text": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 32000
+        },
+        "kind": {
+          "enum": [
+            "observed_result",
+            "literature_result",
+            "inference",
+            "hypothesis",
+            "limitation",
+            "proposed_experiment",
+            "editorial_context"
+          ]
+        },
+        "sources": {
+          "type": "array",
+          "maxItems": 500,
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 300
+          },
+          "uniqueItems": true
+        },
+        "depends_on": {
+          "type": "array",
+          "maxItems": 500,
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 300
+          },
+          "uniqueItems": true
+        },
+        "readings": {
+          "type": "array",
+          "maxItems": 500,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "passage": {
+                "type": "string",
+                "pattern": "^[A-Za-z][A-Za-z0-9_.-]{0,99}$"
+              },
+              "relationship": {
+                "enum": [
+                  "supports",
+                  "contradicts",
+                  "contextualizes"
+                ]
+              },
+              "assessment": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 8000
+              }
+            },
+            "required": [
+              "passage",
+              "relationship",
+              "assessment"
+            ]
+          }
+        },
+        "study_context": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "design": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 8000
+            },
+            "species": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 8000
+            },
+            "tissue": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 8000
+            },
+            "molecular_trait": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 8000
+            },
+            "phenotype": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 8000
+            },
+            "limitations": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 8000
+            }
+          }
+        },
+        "experiment": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "comparison": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 8000
+            },
+            "readout": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 8000
+            },
+            "discriminates": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 8000
+            },
+            "limitations": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 8000
+            }
+          }
+        }
+      },
+      "required": [
+        "id",
+        "paragraph_id",
+        "text",
+        "kind"
+      ]
+    },
+    "facet": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "enum": [
+            "addressed",
+            "not_established",
+            "not_applicable"
+          ]
+        },
+        "claim_ids": {
+          "type": "array",
+          "maxItems": 500,
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 300
+          },
+          "uniqueItems": true
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 8000
+        }
+      },
+      "required": [
+        "status",
+        "claim_ids",
+        "reason"
+      ]
+    },
+    "dossier": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "finding_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "paragraph_ids": {
+          "type": "array",
+          "maxItems": 500,
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 300
+          },
+          "uniqueItems": true
+        },
+        "claims": {
+          "type": "array",
+          "maxItems": 500,
+          "items": {
+            "$ref": "#/$defs/claim"
+          }
+        },
+        "facets": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "observation": {
+              "$ref": "#/$defs/facet"
+            },
+            "primary_evidence": {
+              "$ref": "#/$defs/facet"
+            },
+            "mechanism": {
+              "$ref": "#/$defs/facet"
+            },
+            "contrary_evidence": {
+              "$ref": "#/$defs/facet"
+            },
+            "alternatives": {
+              "$ref": "#/$defs/facet"
+            },
+            "relevance": {
+              "$ref": "#/$defs/facet"
+            },
+            "next_experiments": {
+              "$ref": "#/$defs/facet"
+            },
+            "limitations": {
+              "$ref": "#/$defs/facet"
+            }
+          }
+        }
+      },
+      "required": [
+        "finding_id",
+        "paragraph_ids",
+        "claims",
+        "facets"
+      ]
+    }
+  }
+}

@@ -363,8 +363,24 @@ class PipelineInputTest {
             .allMatch(value -> Double.isFinite(value.pValue())));
     }
 
+    @Test void bgenObservedPloidySurvivesReorderingAndCorrectsAlleleDenominators() throws Exception {
+        Path file=temporaryDirectory.resolve("ploidy.bgen");writeBgen(file,0,new byte[]{1,2,1},new byte[]{0,0,(byte)255,(byte)255});
+        var source=VariantSources.open(file);
+        try(var reader=source.open(new int[]{2,0,1})) {
+            var variant=reader.read(1).variants().get(0);assertArrayEquals(new double[]{0,1,1},variant.dosages(),0);
+            assertArrayEquals(new byte[]{1,1,2},variant.genotypeMetadata().observedPloidies());
+            assertEquals(VariantGenotypeMetadata.Origin.DOSAGE,variant.genotypeMetadata().origin());
+            var statistics=VariantStatistics.of(variant);assertEquals(4,statistics.calledAlleleNumber());assertEquals(.5,statistics.alternateAlleleFrequency());assertEquals(2,statistics.minorAlleleCount());
+            assertTrue(VariantFilters.evaluate(variant,VariantFilterOptions.defaults()).reasons().contains(VariantFilterReason.NON_DIPLOID_GENOTYPES));
+        }
+    }
+
     private static void writeBgen(Path path, int compression)
             throws IOException {
+        writeBgen(path,compression,new byte[]{2,2,2},new byte[]{(byte)255,0,0,(byte)255,0,0});
+    }
+
+    private static void writeBgen(Path path,int compression,byte[] ploidies,byte[] encoded) throws IOException {
         ByteArrayOutputStream output = new ByteArrayOutputStream();
         int headerLength = 20;
         int sampleBlockLength = 8 + 3 * 4;
@@ -390,16 +406,13 @@ class PipelineInputTest {
         ByteArrayOutputStream probabilities = new ByteArrayOutputStream();
         littleInt(probabilities, 3);
         littleShort(probabilities, 2);
-        probabilities.write(2);
-        probabilities.write(2);
-        probabilities.write(new byte[] {2, 2, 2});
+        int minimum=63,maximum=0;for(byte value:ploidies){minimum=Math.min(minimum,value&63);maximum=Math.max(maximum,value&63);}
+        probabilities.write(minimum);
+        probabilities.write(maximum);
+        probabilities.write(ploidies);
         probabilities.write(0);
         probabilities.write(8);
-        probabilities.write(new byte[] {
-            (byte) 255, 0,
-            0, (byte) 255,
-            0, 0
-        });
+        probabilities.write(encoded);
         byte[] raw = probabilities.toByteArray();
         if (compression == 0) {
             littleInt(output, raw.length);

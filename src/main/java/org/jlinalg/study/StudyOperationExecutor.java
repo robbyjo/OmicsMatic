@@ -13,9 +13,19 @@ import java.util.Map;
 public interface StudyOperationExecutor {
     Result execute(Context context) throws Exception;
 
+    /** Opt in only for adapters audited against the native stage input contracts. */
+    default boolean usesNativeStageInputContracts() { return false; }
+
     record Context(Path project, Path outputDirectory,
             Map<String, Object> operation, Map<String, Object> study,
-            Map<String, Object> plan, Map<String, Path> dependencyDirectories) {
+            Map<String, Object> plan, Map<String, Path> dependencyDirectories,
+            boolean resumeCompletedWork) {
+        /** Direct executor calls rerun work unless resume is explicitly requested. */
+        public Context(Path project, Path outputDirectory,
+                Map<String, Object> operation, Map<String, Object> study,
+                Map<String, Object> plan, Map<String, Path> dependencyDirectories) {
+            this(project, outputDirectory, operation, study, plan, dependencyDirectories, false);
+        }
         public Context {
             operation = Map.copyOf(operation);
             study = Map.copyOf(study);

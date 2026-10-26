@@ -1,0 +1,3226 @@
+{
+  "status": "passed",
+  "jar_sha256": "a104651636deb59493cddc92ce433629d4ef7b0c755f6ee065a3e0c75365c5e2",
+  "source_sha256": {
+    "src/main/java/org/jlinalg/genetics/MagmaTables.java": "93eaf24c77f57419ea85ec811cad67dba4bdbe6b371d11133b7a4b4bcb6b41fa",
+    "src/main/java/org/jlinalg/cli/MagmaToolsCli.java": "4bd0a754f129ad045d9b028e3a07feee271158aca1c1f87bf9931cc9d6b87b18",
+    "src/main/java/org/jlinalg/genetics/GeneWindowMapping.java": "75ff376d01d40cc5e5c3f228610da7d39326f0a815a9695b0b0d0e4bc487b851",
+    "src/main/java/org/jlinalg/cli/MagmaRuntime.java": "73616084bab25152070d346aff12cfd061f2ccf367a8f1aa8ecb52e767bb22e7"
+  },
+  "current_full_gate_suites": {
+    "org.jlinalg.genetics.GeneWindowMappingTest": {
+      "suite_name": "org.jlinalg.genetics.GeneWindowMappingTest",
+      "suite": {
+        "tests": 4,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "junit_sha256": "fd468964fca23cd37e90a64df7671a7a1bbdcb12e4a39e3c341a9eb16eb92ef7",
+      "testcases": [
+        "exactCurrentUpstreamAnnotationMatchesEverySyntheticMembership()",
+        "duplicateIdsUnknownStrandsOverflowAndAmbiguousChromosomeAliasesFail()",
+        "indexedMembershipAgreesWithIndependentBruteForceAcrossRandomChromosomes()",
+        "strandAwareAsymmetryClosedBoundariesAndZeroSentinelAreExplicit()"
+      ]
+    },
+    "org.jlinalg.genetics.MagmaTablesTest": {
+      "suite_name": "org.jlinalg.genetics.MagmaTablesTest",
+      "suite": {
+        "tests": 4,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "junit_sha256": "0eae973caef5d4ac3ed5cbfac0b6d5ffa279f9bc359c214b604b4c77afc682d8",
+      "testcases": [
+        "mismatchedCoordinatesDuplicatesZeroPAndSilentNSubstitutionAreRejected()",
+        "exactPanelAndVariableSampleSizesAreValidated()",
+        "originalCurrentModelTablesPreserveProbabilitiesAndCoordinates()",
+        "incompleteOrCorruptBedFamilyNeverReachesUpstream()"
+      ]
+    },
+    "org.jlinalg.cli.MagmaToolsCliTest": {
+      "suite_name": "org.jlinalg.cli.MagmaToolsCliTest",
+      "suite": {
+        "tests": 10,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "junit_sha256": "a80e6a6f31c3fd372bae0d938e70146e9e9db4cb1ecf9b7ba8b93286acc452d8",
+      "testcases": [
+        "undeclaredModelOptionsAndMissingCovariatesAreRejected()",
+        "actualCompetitiveSelfContainedAndPropertyModelsMatchIndependentReferences()",
+        "combinedConditionalAndJointModelsUseOnlyDeclaredVariables()",
+        "binaryZeroOneAndOneTwoPreserveControlsAndQuantitativeZeroOneIsNotInferredBinary()",
+        "rawPcRegressionUsesDeclaredPhenotypesAndPruning()",
+        "nativeMappingRetainsAllGenesAndNeedsNoRuntime()",
+        "missingDependencySkipsBeforeOpeningInputsAndGivesExactRecovery()",
+        "originalAnnotationExactlyAgreesWithNativeMembershipAndBounds()",
+        "changedBundleAndCoordinateMismatchFailWithoutSuccessfulResult()",
+        "summaryMeanTopAndMultiRecoverAllFrozenOriginalResults()"
+      ]
+    }
+  },
+  "tests": 18,
+  "version": "1.10 (win/s)",
+  "upstream_executable_sha256": "e05e3d963215a973064852ec33640118d65745884cc800a5119ca7cffe6cb859",
+  "reference_reproduction": {
+    "status": "passed",
+    "calls": [
+      {
+        "name": "annotation",
+        "command": [
+          "D:\\projects\\JLinAlg\\build\\omics-magma\\magma.exe",
+          "--annotate",
+          "window=0",
+          "--snp-loc",
+          "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\reference.bim",
+          "--gene-loc",
+          "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\genes.loc",
+          "--out",
+          "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\annotation"
+        ],
+        "exit_code": 0,
+        "console_sha256": "ed0a6331e1c2796f553e9c8e0c41873a25ec53813391e9ebeca621e98fb51673"
+      },
+      {
+        "name": "summary-mean",
+        "command": [
+          "D:\\projects\\JLinAlg\\build\\omics-magma\\magma.exe",
+          "--bfile",
+          "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\reference",
+          "--gene-annot",
+          "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\annotation.genes.annot.txt",
+          "--pval",
+          "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\pvalues.tsv",
+          "ncol=N",
+          "duplicate=error",
+          "--gene-model",
+          "snp-wise=mean",
+          "--seed",
+          "42",
+          "--out",
+          "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\summary-mean"
+        ],
+        "exit_code": 0,
+        "console_sha256": "44c6175432b6caf6b126a6d3d486d402c057b6026a51f56af9f211502722e567"
+      },
+      {
+        "name": "summary-top",
+        "command": [
+          "D:\\projects\\JLinAlg\\build\\omics-magma\\magma.exe",
+          "--bfile",
+          "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\reference",
+          "--gene-annot",
+          "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\annotation.genes.annot.txt",
+          "--pval",
+          "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\pvalues.tsv",
+          "ncol=N",
+          "duplicate=error",
+          "--gene-model",
+          "snp-wise=top",
+          "--seed",
+          "42",
+          "--out",
+          "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\summary-top"
+        ],
+        "exit_code": 0,
+        "console_sha256": "2431b0182dfcde77a527157d647067b8834757d5385a23eb3ee01f8146a2026a"
+      },
+      {
+        "name": "summary-multi",
+        "command": [
+          "D:\\projects\\JLinAlg\\build\\omics-magma\\magma.exe",
+          "--bfile",
+          "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\reference",
+          "--gene-annot",
+          "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\annotation.genes.annot.txt",
+          "--pval",
+          "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\pvalues.tsv",
+          "ncol=N",
+          "duplicate=error",
+          "--gene-model",
+          "snp-wise=multi",
+          "--seed",
+          "42",
+          "--out",
+          "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\summary-multi"
+        ],
+        "exit_code": 0,
+        "console_sha256": "b4638dc476bbbc899de66046c24db3a8becdaf6ae29955b310899045c5a2ee5e"
+      },
+      {
+        "name": "raw-linreg",
+        "command": [
+          "D:\\projects\\JLinAlg\\build\\omics-magma\\magma.exe",
+          "--bfile",
+          "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\reference",
+          "--gene-annot",
+          "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\annotation.genes.annot.txt",
+          "--gene-model",
+          "linreg",
+          "--gene-settings",
+          "prune=.999",
+          "--seed",
+          "42",
+          "--out",
+          "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\raw-linreg"
+        ],
+        "exit_code": 0,
+        "console_sha256": "50c9ef10f26a61d44b60eacb97cec6c51353aa9cdce2f687317887312529e339"
+      },
+      {
+        "name": "sets",
+        "command": [
+          "D:\\projects\\JLinAlg\\build\\omics-magma\\magma.exe",
+          "--gene-results",
+          "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\summary-mean.genes.raw",
+          "--set-annot",
+          "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\sets.annot",
+          "--model",
+          "direction=pos",
+          "correct=all",
+          "self-contained",
+          "--settings",
+          "gene-info",
+          "abbreviate=0",
+          "--seed",
+          "42",
+          "--out",
+          "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\sets"
+        ],
+        "exit_code": 0,
+        "console_sha256": "ac03ba6c87b522a2b02f49369200d881e5656148d28fd0b728e6bcd175eb98a8"
+      },
+      {
+        "name": "properties",
+        "command": [
+          "D:\\projects\\JLinAlg\\build\\omics-magma\\magma.exe",
+          "--gene-results",
+          "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\summary-mean.genes.raw",
+          "--gene-covar",
+          "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\properties.tsv",
+          "missing-values=drop",
+          "max-miss=0",
+          "--model",
+          "direction=pos",
+          "correct=all",
+          "--settings",
+          "gene-info",
+          "abbreviate=0",
+          "--seed",
+          "42",
+          "--out",
+          "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\properties"
+        ],
+        "exit_code": 0,
+        "console_sha256": "379724d7a1352562292df731286204c624cd2c3c1f37bb3aea58009e534d7688"
+      }
+    ],
+    "exact_reference_files": [
+      "annotation.genes.annot.txt",
+      "summary-mean.genes.out.txt",
+      "summary-top.genes.out.txt",
+      "summary-multi.genes.out.txt",
+      "raw-linreg.genes.out.txt",
+      "sets.gsa.out.txt",
+      "sets.gsa.self.out.txt",
+      "properties.gsa.out.txt"
+    ],
+    "executable_sha256": "e05e3d963215a973064852ec33640118d65745884cc800a5119ca7cffe6cb859",
+    "reproducer_sha256": "6ad5ff6f3971a223a965febd540a5377a952e36b2b2710234827aa7afc7f7202",
+    "scope": "Eight independently reproduced original-program annotation/association/set/property files; frozen synthetic source bytes unchanged. Program remains private and unmodified."
+  },
+  "reproducer_sha256": "6ad5ff6f3971a223a965febd540a5377a952e36b2b2710234827aa7afc7f7202",
+  "packaged_steps": 17,
+  "independent_packaged_checks": 12,
+  "packaged_validation": "magma-packaged-validation.json",
+  "dependency_evidence": "magma-dependency-status.json",
+  "recorded_utc": "2026-10-25T02:57:16.310858+00:00",
+  "scope": "Independent native closed-window/strand/ID/build and exact PLINK/GWAS contracts,804actual frozen association rows, gene sets/properties/conditional/joint, raw phenotype coding and sample universes. Unmodified private upstream program; no binary/source/manual redistribution, FUMA/R/PoPS/scDRS, meta/interaction, sex-chromosome scientific validation or historical/full-paper parity.",
+  "refreshed_utc": "2026-10-26T02:01:51.919373+00:00",
+  "current_validation": {
+    "full_gate": {
+      "tests": 1593,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 5
+    },
+    "required_suites": 72,
+    "all_required_without_skips": true,
+    "raw_snapshot": "D:\\projects\\JLinAlg\\build\\literature-review\\plink-runtime\\configured-native-full-gate-1",
+    "prior_packaged_regressions": "D:\\projects\\JLinAlg\\build\\literature-review\\plink-runtime\\prior-packaged-regressions-1\\verification.json",
+    "original_trim_rechecks": "D:\\projects\\JLinAlg\\build\\literature-review\\plink-runtime\\original-trim-rechecks-1\\verification.json",
+    "scope": "This exact candidate was executed. All prior owned compiled method sources are unchanged and retested. Historical reference-generation/version scopes remain in their original fields and validation_history;no full-paper parity is inferred."
+  },
+  "validation_history": [
+    {
+      "status": "passed",
+      "jar_sha256": "fc6c5769770609b38ffd8e5f22e701efcf0aeb13261c594a070ee5b6b777232b",
+      "source_sha256": {
+        "src/main/java/org/jlinalg/genetics/MagmaTables.java": "93eaf24c77f57419ea85ec811cad67dba4bdbe6b371d11133b7a4b4bcb6b41fa",
+        "src/main/java/org/jlinalg/cli/MagmaToolsCli.java": "4bd0a754f129ad045d9b028e3a07feee271158aca1c1f87bf9931cc9d6b87b18",
+        "src/main/java/org/jlinalg/genetics/GeneWindowMapping.java": "75ff376d01d40cc5e5c3f228610da7d39326f0a815a9695b0b0d0e4bc487b851",
+        "src/main/java/org/jlinalg/cli/MagmaRuntime.java": "73616084bab25152070d346aff12cfd061f2ccf367a8f1aa8ecb52e767bb22e7"
+      },
+      "current_full_gate_suites": {
+        "org.jlinalg.genetics.GeneWindowMappingTest": {
+          "suite_name": "org.jlinalg.genetics.GeneWindowMappingTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "5f9caaa52d89dc26fa8b46847378e7f55e2bfe305e750ac3d7b90fd7df2a554e",
+          "testcases": [
+            "exactCurrentUpstreamAnnotationMatchesEverySyntheticMembership()",
+            "duplicateIdsUnknownStrandsOverflowAndAmbiguousChromosomeAliasesFail()",
+            "indexedMembershipAgreesWithIndependentBruteForceAcrossRandomChromosomes()",
+            "strandAwareAsymmetryClosedBoundariesAndZeroSentinelAreExplicit()"
+          ]
+        },
+        "org.jlinalg.genetics.MagmaTablesTest": {
+          "suite_name": "org.jlinalg.genetics.MagmaTablesTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "818a7292f192373df3647d88a82bc93d8cd13faf5f413d476ea06dc1b9680209",
+          "testcases": [
+            "mismatchedCoordinatesDuplicatesZeroPAndSilentNSubstitutionAreRejected()",
+            "exactPanelAndVariableSampleSizesAreValidated()",
+            "originalCurrentModelTablesPreserveProbabilitiesAndCoordinates()",
+            "incompleteOrCorruptBedFamilyNeverReachesUpstream()"
+          ]
+        },
+        "org.jlinalg.cli.MagmaToolsCliTest": {
+          "suite_name": "org.jlinalg.cli.MagmaToolsCliTest",
+          "suite": {
+            "tests": 10,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "3753138e806754b4563d117e3cc1fde9e0e0230de183760f64603705467bd990",
+          "testcases": [
+            "undeclaredModelOptionsAndMissingCovariatesAreRejected()",
+            "actualCompetitiveSelfContainedAndPropertyModelsMatchIndependentReferences()",
+            "combinedConditionalAndJointModelsUseOnlyDeclaredVariables()",
+            "binaryZeroOneAndOneTwoPreserveControlsAndQuantitativeZeroOneIsNotInferredBinary()",
+            "rawPcRegressionUsesDeclaredPhenotypesAndPruning()",
+            "nativeMappingRetainsAllGenesAndNeedsNoRuntime()",
+            "missingDependencySkipsBeforeOpeningInputsAndGivesExactRecovery()",
+            "originalAnnotationExactlyAgreesWithNativeMembershipAndBounds()",
+            "changedBundleAndCoordinateMismatchFailWithoutSuccessfulResult()",
+            "summaryMeanTopAndMultiRecoverAllFrozenOriginalResults()"
+          ]
+        }
+      },
+      "tests": 18,
+      "version": "1.10 (win/s)",
+      "upstream_executable_sha256": "e05e3d963215a973064852ec33640118d65745884cc800a5119ca7cffe6cb859",
+      "reference_reproduction": {
+        "status": "passed",
+        "calls": [
+          {
+            "name": "annotation",
+            "command": [
+              "D:\\projects\\JLinAlg\\build\\omics-magma\\magma.exe",
+              "--annotate",
+              "window=0",
+              "--snp-loc",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\reference.bim",
+              "--gene-loc",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\genes.loc",
+              "--out",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\annotation"
+            ],
+            "exit_code": 0,
+            "console_sha256": "ed0a6331e1c2796f553e9c8e0c41873a25ec53813391e9ebeca621e98fb51673"
+          },
+          {
+            "name": "summary-mean",
+            "command": [
+              "D:\\projects\\JLinAlg\\build\\omics-magma\\magma.exe",
+              "--bfile",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\reference",
+              "--gene-annot",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\annotation.genes.annot.txt",
+              "--pval",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\pvalues.tsv",
+              "ncol=N",
+              "duplicate=error",
+              "--gene-model",
+              "snp-wise=mean",
+              "--seed",
+              "42",
+              "--out",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\summary-mean"
+            ],
+            "exit_code": 0,
+            "console_sha256": "44c6175432b6caf6b126a6d3d486d402c057b6026a51f56af9f211502722e567"
+          },
+          {
+            "name": "summary-top",
+            "command": [
+              "D:\\projects\\JLinAlg\\build\\omics-magma\\magma.exe",
+              "--bfile",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\reference",
+              "--gene-annot",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\annotation.genes.annot.txt",
+              "--pval",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\pvalues.tsv",
+              "ncol=N",
+              "duplicate=error",
+              "--gene-model",
+              "snp-wise=top",
+              "--seed",
+              "42",
+              "--out",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\summary-top"
+            ],
+            "exit_code": 0,
+            "console_sha256": "2431b0182dfcde77a527157d647067b8834757d5385a23eb3ee01f8146a2026a"
+          },
+          {
+            "name": "summary-multi",
+            "command": [
+              "D:\\projects\\JLinAlg\\build\\omics-magma\\magma.exe",
+              "--bfile",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\reference",
+              "--gene-annot",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\annotation.genes.annot.txt",
+              "--pval",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\pvalues.tsv",
+              "ncol=N",
+              "duplicate=error",
+              "--gene-model",
+              "snp-wise=multi",
+              "--seed",
+              "42",
+              "--out",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\summary-multi"
+            ],
+            "exit_code": 0,
+            "console_sha256": "b4638dc476bbbc899de66046c24db3a8becdaf6ae29955b310899045c5a2ee5e"
+          },
+          {
+            "name": "raw-linreg",
+            "command": [
+              "D:\\projects\\JLinAlg\\build\\omics-magma\\magma.exe",
+              "--bfile",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\reference",
+              "--gene-annot",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\annotation.genes.annot.txt",
+              "--gene-model",
+              "linreg",
+              "--gene-settings",
+              "prune=.999",
+              "--seed",
+              "42",
+              "--out",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\raw-linreg"
+            ],
+            "exit_code": 0,
+            "console_sha256": "50c9ef10f26a61d44b60eacb97cec6c51353aa9cdce2f687317887312529e339"
+          },
+          {
+            "name": "sets",
+            "command": [
+              "D:\\projects\\JLinAlg\\build\\omics-magma\\magma.exe",
+              "--gene-results",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\summary-mean.genes.raw",
+              "--set-annot",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\sets.annot",
+              "--model",
+              "direction=pos",
+              "correct=all",
+              "self-contained",
+              "--settings",
+              "gene-info",
+              "abbreviate=0",
+              "--seed",
+              "42",
+              "--out",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\sets"
+            ],
+            "exit_code": 0,
+            "console_sha256": "ac03ba6c87b522a2b02f49369200d881e5656148d28fd0b728e6bcd175eb98a8"
+          },
+          {
+            "name": "properties",
+            "command": [
+              "D:\\projects\\JLinAlg\\build\\omics-magma\\magma.exe",
+              "--gene-results",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\summary-mean.genes.raw",
+              "--gene-covar",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\properties.tsv",
+              "missing-values=drop",
+              "max-miss=0",
+              "--model",
+              "direction=pos",
+              "correct=all",
+              "--settings",
+              "gene-info",
+              "abbreviate=0",
+              "--seed",
+              "42",
+              "--out",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\properties"
+            ],
+            "exit_code": 0,
+            "console_sha256": "379724d7a1352562292df731286204c624cd2c3c1f37bb3aea58009e534d7688"
+          }
+        ],
+        "exact_reference_files": [
+          "annotation.genes.annot.txt",
+          "summary-mean.genes.out.txt",
+          "summary-top.genes.out.txt",
+          "summary-multi.genes.out.txt",
+          "raw-linreg.genes.out.txt",
+          "sets.gsa.out.txt",
+          "sets.gsa.self.out.txt",
+          "properties.gsa.out.txt"
+        ],
+        "executable_sha256": "e05e3d963215a973064852ec33640118d65745884cc800a5119ca7cffe6cb859",
+        "reproducer_sha256": "6ad5ff6f3971a223a965febd540a5377a952e36b2b2710234827aa7afc7f7202",
+        "scope": "Eight independently reproduced original-program annotation/association/set/property files; frozen synthetic source bytes unchanged. Program remains private and unmodified."
+      },
+      "reproducer_sha256": "6ad5ff6f3971a223a965febd540a5377a952e36b2b2710234827aa7afc7f7202",
+      "packaged_steps": 17,
+      "independent_packaged_checks": 12,
+      "packaged_validation": "magma-packaged-validation.json",
+      "dependency_evidence": "magma-dependency-status.json",
+      "recorded_utc": "2026-10-25T02:57:16.310858+00:00",
+      "scope": "Independent native closed-window/strand/ID/build and exact PLINK/GWAS contracts,804actual frozen association rows, gene sets/properties/conditional/joint, raw phenotype coding and sample universes. Unmodified private upstream program; no binary/source/manual redistribution, FUMA/R/PoPS/scDRS, meta/interaction, sex-chromosome scientific validation or historical/full-paper parity."
+    },
+    {
+      "status": "passed",
+      "jar_sha256": "faa28146756d077aa691977585fd3349c390f49ff609179a94e355cb13cca667",
+      "source_sha256": {
+        "src/main/java/org/jlinalg/genetics/MagmaTables.java": "93eaf24c77f57419ea85ec811cad67dba4bdbe6b371d11133b7a4b4bcb6b41fa",
+        "src/main/java/org/jlinalg/cli/MagmaToolsCli.java": "4bd0a754f129ad045d9b028e3a07feee271158aca1c1f87bf9931cc9d6b87b18",
+        "src/main/java/org/jlinalg/genetics/GeneWindowMapping.java": "75ff376d01d40cc5e5c3f228610da7d39326f0a815a9695b0b0d0e4bc487b851",
+        "src/main/java/org/jlinalg/cli/MagmaRuntime.java": "73616084bab25152070d346aff12cfd061f2ccf367a8f1aa8ecb52e767bb22e7"
+      },
+      "current_full_gate_suites": {
+        "org.jlinalg.genetics.GeneWindowMappingTest": {
+          "suite_name": "org.jlinalg.genetics.GeneWindowMappingTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "6ecbaed26e6e3390410d9b93d7147052c9b9c86c1e82a2a46469f120bc90e505",
+          "testcases": [
+            "exactCurrentUpstreamAnnotationMatchesEverySyntheticMembership()",
+            "duplicateIdsUnknownStrandsOverflowAndAmbiguousChromosomeAliasesFail()",
+            "indexedMembershipAgreesWithIndependentBruteForceAcrossRandomChromosomes()",
+            "strandAwareAsymmetryClosedBoundariesAndZeroSentinelAreExplicit()"
+          ]
+        },
+        "org.jlinalg.genetics.MagmaTablesTest": {
+          "suite_name": "org.jlinalg.genetics.MagmaTablesTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "34204297148f07ec5576f66a31cf0aa3ab37df581b9e188538298174277ac941",
+          "testcases": [
+            "mismatchedCoordinatesDuplicatesZeroPAndSilentNSubstitutionAreRejected()",
+            "exactPanelAndVariableSampleSizesAreValidated()",
+            "originalCurrentModelTablesPreserveProbabilitiesAndCoordinates()",
+            "incompleteOrCorruptBedFamilyNeverReachesUpstream()"
+          ]
+        },
+        "org.jlinalg.cli.MagmaToolsCliTest": {
+          "suite_name": "org.jlinalg.cli.MagmaToolsCliTest",
+          "suite": {
+            "tests": 10,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "8e61222a586392442205aac4d06abc0a69d1fa888e4fd3defc59849aaf5ad950",
+          "testcases": [
+            "undeclaredModelOptionsAndMissingCovariatesAreRejected()",
+            "actualCompetitiveSelfContainedAndPropertyModelsMatchIndependentReferences()",
+            "combinedConditionalAndJointModelsUseOnlyDeclaredVariables()",
+            "binaryZeroOneAndOneTwoPreserveControlsAndQuantitativeZeroOneIsNotInferredBinary()",
+            "rawPcRegressionUsesDeclaredPhenotypesAndPruning()",
+            "nativeMappingRetainsAllGenesAndNeedsNoRuntime()",
+            "missingDependencySkipsBeforeOpeningInputsAndGivesExactRecovery()",
+            "originalAnnotationExactlyAgreesWithNativeMembershipAndBounds()",
+            "changedBundleAndCoordinateMismatchFailWithoutSuccessfulResult()",
+            "summaryMeanTopAndMultiRecoverAllFrozenOriginalResults()"
+          ]
+        }
+      },
+      "tests": 18,
+      "version": "1.10 (win/s)",
+      "upstream_executable_sha256": "e05e3d963215a973064852ec33640118d65745884cc800a5119ca7cffe6cb859",
+      "reference_reproduction": {
+        "status": "passed",
+        "calls": [
+          {
+            "name": "annotation",
+            "command": [
+              "D:\\projects\\JLinAlg\\build\\omics-magma\\magma.exe",
+              "--annotate",
+              "window=0",
+              "--snp-loc",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\reference.bim",
+              "--gene-loc",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\genes.loc",
+              "--out",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\annotation"
+            ],
+            "exit_code": 0,
+            "console_sha256": "ed0a6331e1c2796f553e9c8e0c41873a25ec53813391e9ebeca621e98fb51673"
+          },
+          {
+            "name": "summary-mean",
+            "command": [
+              "D:\\projects\\JLinAlg\\build\\omics-magma\\magma.exe",
+              "--bfile",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\reference",
+              "--gene-annot",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\annotation.genes.annot.txt",
+              "--pval",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\pvalues.tsv",
+              "ncol=N",
+              "duplicate=error",
+              "--gene-model",
+              "snp-wise=mean",
+              "--seed",
+              "42",
+              "--out",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\summary-mean"
+            ],
+            "exit_code": 0,
+            "console_sha256": "44c6175432b6caf6b126a6d3d486d402c057b6026a51f56af9f211502722e567"
+          },
+          {
+            "name": "summary-top",
+            "command": [
+              "D:\\projects\\JLinAlg\\build\\omics-magma\\magma.exe",
+              "--bfile",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\reference",
+              "--gene-annot",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\annotation.genes.annot.txt",
+              "--pval",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\pvalues.tsv",
+              "ncol=N",
+              "duplicate=error",
+              "--gene-model",
+              "snp-wise=top",
+              "--seed",
+              "42",
+              "--out",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\summary-top"
+            ],
+            "exit_code": 0,
+            "console_sha256": "2431b0182dfcde77a527157d647067b8834757d5385a23eb3ee01f8146a2026a"
+          },
+          {
+            "name": "summary-multi",
+            "command": [
+              "D:\\projects\\JLinAlg\\build\\omics-magma\\magma.exe",
+              "--bfile",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\reference",
+              "--gene-annot",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\annotation.genes.annot.txt",
+              "--pval",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\pvalues.tsv",
+              "ncol=N",
+              "duplicate=error",
+              "--gene-model",
+              "snp-wise=multi",
+              "--seed",
+              "42",
+              "--out",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\summary-multi"
+            ],
+            "exit_code": 0,
+            "console_sha256": "b4638dc476bbbc899de66046c24db3a8becdaf6ae29955b310899045c5a2ee5e"
+          },
+          {
+            "name": "raw-linreg",
+            "command": [
+              "D:\\projects\\JLinAlg\\build\\omics-magma\\magma.exe",
+              "--bfile",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\reference",
+              "--gene-annot",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\annotation.genes.annot.txt",
+              "--gene-model",
+              "linreg",
+              "--gene-settings",
+              "prune=.999",
+              "--seed",
+              "42",
+              "--out",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\raw-linreg"
+            ],
+            "exit_code": 0,
+            "console_sha256": "50c9ef10f26a61d44b60eacb97cec6c51353aa9cdce2f687317887312529e339"
+          },
+          {
+            "name": "sets",
+            "command": [
+              "D:\\projects\\JLinAlg\\build\\omics-magma\\magma.exe",
+              "--gene-results",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\summary-mean.genes.raw",
+              "--set-annot",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\sets.annot",
+              "--model",
+              "direction=pos",
+              "correct=all",
+              "self-contained",
+              "--settings",
+              "gene-info",
+              "abbreviate=0",
+              "--seed",
+              "42",
+              "--out",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\sets"
+            ],
+            "exit_code": 0,
+            "console_sha256": "ac03ba6c87b522a2b02f49369200d881e5656148d28fd0b728e6bcd175eb98a8"
+          },
+          {
+            "name": "properties",
+            "command": [
+              "D:\\projects\\JLinAlg\\build\\omics-magma\\magma.exe",
+              "--gene-results",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\summary-mean.genes.raw",
+              "--gene-covar",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\properties.tsv",
+              "missing-values=drop",
+              "max-miss=0",
+              "--model",
+              "direction=pos",
+              "correct=all",
+              "--settings",
+              "gene-info",
+              "abbreviate=0",
+              "--seed",
+              "42",
+              "--out",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\properties"
+            ],
+            "exit_code": 0,
+            "console_sha256": "379724d7a1352562292df731286204c624cd2c3c1f37bb3aea58009e534d7688"
+          }
+        ],
+        "exact_reference_files": [
+          "annotation.genes.annot.txt",
+          "summary-mean.genes.out.txt",
+          "summary-top.genes.out.txt",
+          "summary-multi.genes.out.txt",
+          "raw-linreg.genes.out.txt",
+          "sets.gsa.out.txt",
+          "sets.gsa.self.out.txt",
+          "properties.gsa.out.txt"
+        ],
+        "executable_sha256": "e05e3d963215a973064852ec33640118d65745884cc800a5119ca7cffe6cb859",
+        "reproducer_sha256": "6ad5ff6f3971a223a965febd540a5377a952e36b2b2710234827aa7afc7f7202",
+        "scope": "Eight independently reproduced original-program annotation/association/set/property files; frozen synthetic source bytes unchanged. Program remains private and unmodified."
+      },
+      "reproducer_sha256": "6ad5ff6f3971a223a965febd540a5377a952e36b2b2710234827aa7afc7f7202",
+      "packaged_steps": 17,
+      "independent_packaged_checks": 12,
+      "packaged_validation": "magma-packaged-validation.json",
+      "dependency_evidence": "magma-dependency-status.json",
+      "recorded_utc": "2026-10-25T02:57:16.310858+00:00",
+      "scope": "Independent native closed-window/strand/ID/build and exact PLINK/GWAS contracts,804actual frozen association rows, gene sets/properties/conditional/joint, raw phenotype coding and sample universes. Unmodified private upstream program; no binary/source/manual redistribution, FUMA/R/PoPS/scDRS, meta/interaction, sex-chromosome scientific validation or historical/full-paper parity.",
+      "refreshed_utc": "2026-10-25T03:50:24.675422+00:00"
+    },
+    {
+      "status": "passed",
+      "jar_sha256": "68a623dc455abf0608f50ca5977a44cd3c6d0db6489f8db726569675c46abdc2",
+      "source_sha256": {
+        "src/main/java/org/jlinalg/genetics/MagmaTables.java": "93eaf24c77f57419ea85ec811cad67dba4bdbe6b371d11133b7a4b4bcb6b41fa",
+        "src/main/java/org/jlinalg/cli/MagmaToolsCli.java": "4bd0a754f129ad045d9b028e3a07feee271158aca1c1f87bf9931cc9d6b87b18",
+        "src/main/java/org/jlinalg/genetics/GeneWindowMapping.java": "75ff376d01d40cc5e5c3f228610da7d39326f0a815a9695b0b0d0e4bc487b851",
+        "src/main/java/org/jlinalg/cli/MagmaRuntime.java": "73616084bab25152070d346aff12cfd061f2ccf367a8f1aa8ecb52e767bb22e7"
+      },
+      "current_full_gate_suites": {
+        "org.jlinalg.genetics.GeneWindowMappingTest": {
+          "suite_name": "org.jlinalg.genetics.GeneWindowMappingTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "def7dd3c8f9c3a00faad199e76a02534a6c5f7427edc05086b079c620b6209b8",
+          "testcases": [
+            "exactCurrentUpstreamAnnotationMatchesEverySyntheticMembership()",
+            "duplicateIdsUnknownStrandsOverflowAndAmbiguousChromosomeAliasesFail()",
+            "indexedMembershipAgreesWithIndependentBruteForceAcrossRandomChromosomes()",
+            "strandAwareAsymmetryClosedBoundariesAndZeroSentinelAreExplicit()"
+          ]
+        },
+        "org.jlinalg.genetics.MagmaTablesTest": {
+          "suite_name": "org.jlinalg.genetics.MagmaTablesTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "76ecc5947eb85f7506323d5242fd356ecc9827d1d3c0f7f494ae2e131605e4f1",
+          "testcases": [
+            "mismatchedCoordinatesDuplicatesZeroPAndSilentNSubstitutionAreRejected()",
+            "exactPanelAndVariableSampleSizesAreValidated()",
+            "originalCurrentModelTablesPreserveProbabilitiesAndCoordinates()",
+            "incompleteOrCorruptBedFamilyNeverReachesUpstream()"
+          ]
+        },
+        "org.jlinalg.cli.MagmaToolsCliTest": {
+          "suite_name": "org.jlinalg.cli.MagmaToolsCliTest",
+          "suite": {
+            "tests": 10,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "1df22826ebac4a1a63a59191f193175928309307b3f288c3d723879640bebb85",
+          "testcases": [
+            "undeclaredModelOptionsAndMissingCovariatesAreRejected()",
+            "actualCompetitiveSelfContainedAndPropertyModelsMatchIndependentReferences()",
+            "combinedConditionalAndJointModelsUseOnlyDeclaredVariables()",
+            "binaryZeroOneAndOneTwoPreserveControlsAndQuantitativeZeroOneIsNotInferredBinary()",
+            "rawPcRegressionUsesDeclaredPhenotypesAndPruning()",
+            "nativeMappingRetainsAllGenesAndNeedsNoRuntime()",
+            "missingDependencySkipsBeforeOpeningInputsAndGivesExactRecovery()",
+            "originalAnnotationExactlyAgreesWithNativeMembershipAndBounds()",
+            "changedBundleAndCoordinateMismatchFailWithoutSuccessfulResult()",
+            "summaryMeanTopAndMultiRecoverAllFrozenOriginalResults()"
+          ]
+        }
+      },
+      "tests": 18,
+      "version": "1.10 (win/s)",
+      "upstream_executable_sha256": "e05e3d963215a973064852ec33640118d65745884cc800a5119ca7cffe6cb859",
+      "reference_reproduction": {
+        "status": "passed",
+        "calls": [
+          {
+            "name": "annotation",
+            "command": [
+              "D:\\projects\\JLinAlg\\build\\omics-magma\\magma.exe",
+              "--annotate",
+              "window=0",
+              "--snp-loc",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\reference.bim",
+              "--gene-loc",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\genes.loc",
+              "--out",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\annotation"
+            ],
+            "exit_code": 0,
+            "console_sha256": "ed0a6331e1c2796f553e9c8e0c41873a25ec53813391e9ebeca621e98fb51673"
+          },
+          {
+            "name": "summary-mean",
+            "command": [
+              "D:\\projects\\JLinAlg\\build\\omics-magma\\magma.exe",
+              "--bfile",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\reference",
+              "--gene-annot",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\annotation.genes.annot.txt",
+              "--pval",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\pvalues.tsv",
+              "ncol=N",
+              "duplicate=error",
+              "--gene-model",
+              "snp-wise=mean",
+              "--seed",
+              "42",
+              "--out",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\summary-mean"
+            ],
+            "exit_code": 0,
+            "console_sha256": "44c6175432b6caf6b126a6d3d486d402c057b6026a51f56af9f211502722e567"
+          },
+          {
+            "name": "summary-top",
+            "command": [
+              "D:\\projects\\JLinAlg\\build\\omics-magma\\magma.exe",
+              "--bfile",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\reference",
+              "--gene-annot",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\annotation.genes.annot.txt",
+              "--pval",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\pvalues.tsv",
+              "ncol=N",
+              "duplicate=error",
+              "--gene-model",
+              "snp-wise=top",
+              "--seed",
+              "42",
+              "--out",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\summary-top"
+            ],
+            "exit_code": 0,
+            "console_sha256": "2431b0182dfcde77a527157d647067b8834757d5385a23eb3ee01f8146a2026a"
+          },
+          {
+            "name": "summary-multi",
+            "command": [
+              "D:\\projects\\JLinAlg\\build\\omics-magma\\magma.exe",
+              "--bfile",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\reference",
+              "--gene-annot",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\annotation.genes.annot.txt",
+              "--pval",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\pvalues.tsv",
+              "ncol=N",
+              "duplicate=error",
+              "--gene-model",
+              "snp-wise=multi",
+              "--seed",
+              "42",
+              "--out",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\summary-multi"
+            ],
+            "exit_code": 0,
+            "console_sha256": "b4638dc476bbbc899de66046c24db3a8becdaf6ae29955b310899045c5a2ee5e"
+          },
+          {
+            "name": "raw-linreg",
+            "command": [
+              "D:\\projects\\JLinAlg\\build\\omics-magma\\magma.exe",
+              "--bfile",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\reference",
+              "--gene-annot",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\annotation.genes.annot.txt",
+              "--gene-model",
+              "linreg",
+              "--gene-settings",
+              "prune=.999",
+              "--seed",
+              "42",
+              "--out",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\raw-linreg"
+            ],
+            "exit_code": 0,
+            "console_sha256": "50c9ef10f26a61d44b60eacb97cec6c51353aa9cdce2f687317887312529e339"
+          },
+          {
+            "name": "sets",
+            "command": [
+              "D:\\projects\\JLinAlg\\build\\omics-magma\\magma.exe",
+              "--gene-results",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\summary-mean.genes.raw",
+              "--set-annot",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\sets.annot",
+              "--model",
+              "direction=pos",
+              "correct=all",
+              "self-contained",
+              "--settings",
+              "gene-info",
+              "abbreviate=0",
+              "--seed",
+              "42",
+              "--out",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\sets"
+            ],
+            "exit_code": 0,
+            "console_sha256": "ac03ba6c87b522a2b02f49369200d881e5656148d28fd0b728e6bcd175eb98a8"
+          },
+          {
+            "name": "properties",
+            "command": [
+              "D:\\projects\\JLinAlg\\build\\omics-magma\\magma.exe",
+              "--gene-results",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\summary-mean.genes.raw",
+              "--gene-covar",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\properties.tsv",
+              "missing-values=drop",
+              "max-miss=0",
+              "--model",
+              "direction=pos",
+              "correct=all",
+              "--settings",
+              "gene-info",
+              "abbreviate=0",
+              "--seed",
+              "42",
+              "--out",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\properties"
+            ],
+            "exit_code": 0,
+            "console_sha256": "379724d7a1352562292df731286204c624cd2c3c1f37bb3aea58009e534d7688"
+          }
+        ],
+        "exact_reference_files": [
+          "annotation.genes.annot.txt",
+          "summary-mean.genes.out.txt",
+          "summary-top.genes.out.txt",
+          "summary-multi.genes.out.txt",
+          "raw-linreg.genes.out.txt",
+          "sets.gsa.out.txt",
+          "sets.gsa.self.out.txt",
+          "properties.gsa.out.txt"
+        ],
+        "executable_sha256": "e05e3d963215a973064852ec33640118d65745884cc800a5119ca7cffe6cb859",
+        "reproducer_sha256": "6ad5ff6f3971a223a965febd540a5377a952e36b2b2710234827aa7afc7f7202",
+        "scope": "Eight independently reproduced original-program annotation/association/set/property files; frozen synthetic source bytes unchanged. Program remains private and unmodified."
+      },
+      "reproducer_sha256": "6ad5ff6f3971a223a965febd540a5377a952e36b2b2710234827aa7afc7f7202",
+      "packaged_steps": 17,
+      "independent_packaged_checks": 12,
+      "packaged_validation": "magma-packaged-validation.json",
+      "dependency_evidence": "magma-dependency-status.json",
+      "recorded_utc": "2026-10-25T02:57:16.310858+00:00",
+      "scope": "Independent native closed-window/strand/ID/build and exact PLINK/GWAS contracts,804actual frozen association rows, gene sets/properties/conditional/joint, raw phenotype coding and sample universes. Unmodified private upstream program; no binary/source/manual redistribution, FUMA/R/PoPS/scDRS, meta/interaction, sex-chromosome scientific validation or historical/full-paper parity.",
+      "refreshed_utc": "2026-10-25T05:28:16.019770+00:00"
+    },
+    {
+      "status": "passed",
+      "jar_sha256": "6ff7cc767bc62f2489947a34fbf3bc99129e4d444242eb217294764587c7e491",
+      "source_sha256": {
+        "src/main/java/org/jlinalg/genetics/MagmaTables.java": "93eaf24c77f57419ea85ec811cad67dba4bdbe6b371d11133b7a4b4bcb6b41fa",
+        "src/main/java/org/jlinalg/cli/MagmaToolsCli.java": "4bd0a754f129ad045d9b028e3a07feee271158aca1c1f87bf9931cc9d6b87b18",
+        "src/main/java/org/jlinalg/genetics/GeneWindowMapping.java": "75ff376d01d40cc5e5c3f228610da7d39326f0a815a9695b0b0d0e4bc487b851",
+        "src/main/java/org/jlinalg/cli/MagmaRuntime.java": "73616084bab25152070d346aff12cfd061f2ccf367a8f1aa8ecb52e767bb22e7"
+      },
+      "current_full_gate_suites": {
+        "org.jlinalg.genetics.GeneWindowMappingTest": {
+          "suite_name": "org.jlinalg.genetics.GeneWindowMappingTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "81bdc2dfb00c8b187a105cab038c22ed67cad8af64bf404d0b3d7ddd6e9f4602",
+          "testcases": [
+            "exactCurrentUpstreamAnnotationMatchesEverySyntheticMembership()",
+            "duplicateIdsUnknownStrandsOverflowAndAmbiguousChromosomeAliasesFail()",
+            "indexedMembershipAgreesWithIndependentBruteForceAcrossRandomChromosomes()",
+            "strandAwareAsymmetryClosedBoundariesAndZeroSentinelAreExplicit()"
+          ]
+        },
+        "org.jlinalg.genetics.MagmaTablesTest": {
+          "suite_name": "org.jlinalg.genetics.MagmaTablesTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "277f1986f38083eacda5a559b7c5b8a4d32212290c57cb21299a516b9b548187",
+          "testcases": [
+            "mismatchedCoordinatesDuplicatesZeroPAndSilentNSubstitutionAreRejected()",
+            "exactPanelAndVariableSampleSizesAreValidated()",
+            "originalCurrentModelTablesPreserveProbabilitiesAndCoordinates()",
+            "incompleteOrCorruptBedFamilyNeverReachesUpstream()"
+          ]
+        },
+        "org.jlinalg.cli.MagmaToolsCliTest": {
+          "suite_name": "org.jlinalg.cli.MagmaToolsCliTest",
+          "suite": {
+            "tests": 10,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "aed0f6e2937e3e35e299c16404b9f860413814d67b6e083a493ac37b0c0a7189",
+          "testcases": [
+            "undeclaredModelOptionsAndMissingCovariatesAreRejected()",
+            "actualCompetitiveSelfContainedAndPropertyModelsMatchIndependentReferences()",
+            "combinedConditionalAndJointModelsUseOnlyDeclaredVariables()",
+            "binaryZeroOneAndOneTwoPreserveControlsAndQuantitativeZeroOneIsNotInferredBinary()",
+            "rawPcRegressionUsesDeclaredPhenotypesAndPruning()",
+            "nativeMappingRetainsAllGenesAndNeedsNoRuntime()",
+            "missingDependencySkipsBeforeOpeningInputsAndGivesExactRecovery()",
+            "originalAnnotationExactlyAgreesWithNativeMembershipAndBounds()",
+            "changedBundleAndCoordinateMismatchFailWithoutSuccessfulResult()",
+            "summaryMeanTopAndMultiRecoverAllFrozenOriginalResults()"
+          ]
+        }
+      },
+      "tests": 18,
+      "version": "1.10 (win/s)",
+      "upstream_executable_sha256": "e05e3d963215a973064852ec33640118d65745884cc800a5119ca7cffe6cb859",
+      "reference_reproduction": {
+        "status": "passed",
+        "calls": [
+          {
+            "name": "annotation",
+            "command": [
+              "D:\\projects\\JLinAlg\\build\\omics-magma\\magma.exe",
+              "--annotate",
+              "window=0",
+              "--snp-loc",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\reference.bim",
+              "--gene-loc",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\genes.loc",
+              "--out",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\annotation"
+            ],
+            "exit_code": 0,
+            "console_sha256": "ed0a6331e1c2796f553e9c8e0c41873a25ec53813391e9ebeca621e98fb51673"
+          },
+          {
+            "name": "summary-mean",
+            "command": [
+              "D:\\projects\\JLinAlg\\build\\omics-magma\\magma.exe",
+              "--bfile",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\reference",
+              "--gene-annot",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\annotation.genes.annot.txt",
+              "--pval",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\pvalues.tsv",
+              "ncol=N",
+              "duplicate=error",
+              "--gene-model",
+              "snp-wise=mean",
+              "--seed",
+              "42",
+              "--out",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\summary-mean"
+            ],
+            "exit_code": 0,
+            "console_sha256": "44c6175432b6caf6b126a6d3d486d402c057b6026a51f56af9f211502722e567"
+          },
+          {
+            "name": "summary-top",
+            "command": [
+              "D:\\projects\\JLinAlg\\build\\omics-magma\\magma.exe",
+              "--bfile",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\reference",
+              "--gene-annot",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\annotation.genes.annot.txt",
+              "--pval",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\pvalues.tsv",
+              "ncol=N",
+              "duplicate=error",
+              "--gene-model",
+              "snp-wise=top",
+              "--seed",
+              "42",
+              "--out",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\summary-top"
+            ],
+            "exit_code": 0,
+            "console_sha256": "2431b0182dfcde77a527157d647067b8834757d5385a23eb3ee01f8146a2026a"
+          },
+          {
+            "name": "summary-multi",
+            "command": [
+              "D:\\projects\\JLinAlg\\build\\omics-magma\\magma.exe",
+              "--bfile",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\reference",
+              "--gene-annot",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\annotation.genes.annot.txt",
+              "--pval",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\pvalues.tsv",
+              "ncol=N",
+              "duplicate=error",
+              "--gene-model",
+              "snp-wise=multi",
+              "--seed",
+              "42",
+              "--out",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\summary-multi"
+            ],
+            "exit_code": 0,
+            "console_sha256": "b4638dc476bbbc899de66046c24db3a8becdaf6ae29955b310899045c5a2ee5e"
+          },
+          {
+            "name": "raw-linreg",
+            "command": [
+              "D:\\projects\\JLinAlg\\build\\omics-magma\\magma.exe",
+              "--bfile",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\reference",
+              "--gene-annot",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\annotation.genes.annot.txt",
+              "--gene-model",
+              "linreg",
+              "--gene-settings",
+              "prune=.999",
+              "--seed",
+              "42",
+              "--out",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\raw-linreg"
+            ],
+            "exit_code": 0,
+            "console_sha256": "50c9ef10f26a61d44b60eacb97cec6c51353aa9cdce2f687317887312529e339"
+          },
+          {
+            "name": "sets",
+            "command": [
+              "D:\\projects\\JLinAlg\\build\\omics-magma\\magma.exe",
+              "--gene-results",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\summary-mean.genes.raw",
+              "--set-annot",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\sets.annot",
+              "--model",
+              "direction=pos",
+              "correct=all",
+              "self-contained",
+              "--settings",
+              "gene-info",
+              "abbreviate=0",
+              "--seed",
+              "42",
+              "--out",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\sets"
+            ],
+            "exit_code": 0,
+            "console_sha256": "ac03ba6c87b522a2b02f49369200d881e5656148d28fd0b728e6bcd175eb98a8"
+          },
+          {
+            "name": "properties",
+            "command": [
+              "D:\\projects\\JLinAlg\\build\\omics-magma\\magma.exe",
+              "--gene-results",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\summary-mean.genes.raw",
+              "--gene-covar",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\properties.tsv",
+              "missing-values=drop",
+              "max-miss=0",
+              "--model",
+              "direction=pos",
+              "correct=all",
+              "--settings",
+              "gene-info",
+              "abbreviate=0",
+              "--seed",
+              "42",
+              "--out",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\properties"
+            ],
+            "exit_code": 0,
+            "console_sha256": "379724d7a1352562292df731286204c624cd2c3c1f37bb3aea58009e534d7688"
+          }
+        ],
+        "exact_reference_files": [
+          "annotation.genes.annot.txt",
+          "summary-mean.genes.out.txt",
+          "summary-top.genes.out.txt",
+          "summary-multi.genes.out.txt",
+          "raw-linreg.genes.out.txt",
+          "sets.gsa.out.txt",
+          "sets.gsa.self.out.txt",
+          "properties.gsa.out.txt"
+        ],
+        "executable_sha256": "e05e3d963215a973064852ec33640118d65745884cc800a5119ca7cffe6cb859",
+        "reproducer_sha256": "6ad5ff6f3971a223a965febd540a5377a952e36b2b2710234827aa7afc7f7202",
+        "scope": "Eight independently reproduced original-program annotation/association/set/property files; frozen synthetic source bytes unchanged. Program remains private and unmodified."
+      },
+      "reproducer_sha256": "6ad5ff6f3971a223a965febd540a5377a952e36b2b2710234827aa7afc7f7202",
+      "packaged_steps": 17,
+      "independent_packaged_checks": 12,
+      "packaged_validation": "magma-packaged-validation.json",
+      "dependency_evidence": "magma-dependency-status.json",
+      "recorded_utc": "2026-10-25T02:57:16.310858+00:00",
+      "scope": "Independent native closed-window/strand/ID/build and exact PLINK/GWAS contracts,804actual frozen association rows, gene sets/properties/conditional/joint, raw phenotype coding and sample universes. Unmodified private upstream program; no binary/source/manual redistribution, FUMA/R/PoPS/scDRS, meta/interaction, sex-chromosome scientific validation or historical/full-paper parity.",
+      "refreshed_utc": "2026-10-25T06:53:04.578303+00:00"
+    },
+    {
+      "status": "passed",
+      "jar_sha256": "53399f4be52ad5bb882f5acfea53d5a2a037ac80a6e93d1f7d7fdbc118051860",
+      "source_sha256": {
+        "src/main/java/org/jlinalg/genetics/MagmaTables.java": "93eaf24c77f57419ea85ec811cad67dba4bdbe6b371d11133b7a4b4bcb6b41fa",
+        "src/main/java/org/jlinalg/cli/MagmaToolsCli.java": "4bd0a754f129ad045d9b028e3a07feee271158aca1c1f87bf9931cc9d6b87b18",
+        "src/main/java/org/jlinalg/genetics/GeneWindowMapping.java": "75ff376d01d40cc5e5c3f228610da7d39326f0a815a9695b0b0d0e4bc487b851",
+        "src/main/java/org/jlinalg/cli/MagmaRuntime.java": "73616084bab25152070d346aff12cfd061f2ccf367a8f1aa8ecb52e767bb22e7"
+      },
+      "current_full_gate_suites": {
+        "org.jlinalg.genetics.GeneWindowMappingTest": {
+          "suite_name": "org.jlinalg.genetics.GeneWindowMappingTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "0978c2cbf836833bc3568684a538e58d9ef8c13c41a8c034ef3c5637e95d2782",
+          "testcases": [
+            "exactCurrentUpstreamAnnotationMatchesEverySyntheticMembership()",
+            "duplicateIdsUnknownStrandsOverflowAndAmbiguousChromosomeAliasesFail()",
+            "indexedMembershipAgreesWithIndependentBruteForceAcrossRandomChromosomes()",
+            "strandAwareAsymmetryClosedBoundariesAndZeroSentinelAreExplicit()"
+          ]
+        },
+        "org.jlinalg.genetics.MagmaTablesTest": {
+          "suite_name": "org.jlinalg.genetics.MagmaTablesTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "426622b70689d18c0129b1689d68ec824be7983032d3034b900a30389db79d3c",
+          "testcases": [
+            "mismatchedCoordinatesDuplicatesZeroPAndSilentNSubstitutionAreRejected()",
+            "exactPanelAndVariableSampleSizesAreValidated()",
+            "originalCurrentModelTablesPreserveProbabilitiesAndCoordinates()",
+            "incompleteOrCorruptBedFamilyNeverReachesUpstream()"
+          ]
+        },
+        "org.jlinalg.cli.MagmaToolsCliTest": {
+          "suite_name": "org.jlinalg.cli.MagmaToolsCliTest",
+          "suite": {
+            "tests": 10,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "4dafd031bdb0e6e67aa5ba5dc3aff003f79f9594746d4646f93d01d1be5794fd",
+          "testcases": [
+            "undeclaredModelOptionsAndMissingCovariatesAreRejected()",
+            "actualCompetitiveSelfContainedAndPropertyModelsMatchIndependentReferences()",
+            "combinedConditionalAndJointModelsUseOnlyDeclaredVariables()",
+            "binaryZeroOneAndOneTwoPreserveControlsAndQuantitativeZeroOneIsNotInferredBinary()",
+            "rawPcRegressionUsesDeclaredPhenotypesAndPruning()",
+            "nativeMappingRetainsAllGenesAndNeedsNoRuntime()",
+            "missingDependencySkipsBeforeOpeningInputsAndGivesExactRecovery()",
+            "originalAnnotationExactlyAgreesWithNativeMembershipAndBounds()",
+            "changedBundleAndCoordinateMismatchFailWithoutSuccessfulResult()",
+            "summaryMeanTopAndMultiRecoverAllFrozenOriginalResults()"
+          ]
+        }
+      },
+      "tests": 18,
+      "version": "1.10 (win/s)",
+      "upstream_executable_sha256": "e05e3d963215a973064852ec33640118d65745884cc800a5119ca7cffe6cb859",
+      "reference_reproduction": {
+        "status": "passed",
+        "calls": [
+          {
+            "name": "annotation",
+            "command": [
+              "D:\\projects\\JLinAlg\\build\\omics-magma\\magma.exe",
+              "--annotate",
+              "window=0",
+              "--snp-loc",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\reference.bim",
+              "--gene-loc",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\genes.loc",
+              "--out",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\annotation"
+            ],
+            "exit_code": 0,
+            "console_sha256": "ed0a6331e1c2796f553e9c8e0c41873a25ec53813391e9ebeca621e98fb51673"
+          },
+          {
+            "name": "summary-mean",
+            "command": [
+              "D:\\projects\\JLinAlg\\build\\omics-magma\\magma.exe",
+              "--bfile",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\reference",
+              "--gene-annot",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\annotation.genes.annot.txt",
+              "--pval",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\pvalues.tsv",
+              "ncol=N",
+              "duplicate=error",
+              "--gene-model",
+              "snp-wise=mean",
+              "--seed",
+              "42",
+              "--out",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\summary-mean"
+            ],
+            "exit_code": 0,
+            "console_sha256": "44c6175432b6caf6b126a6d3d486d402c057b6026a51f56af9f211502722e567"
+          },
+          {
+            "name": "summary-top",
+            "command": [
+              "D:\\projects\\JLinAlg\\build\\omics-magma\\magma.exe",
+              "--bfile",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\reference",
+              "--gene-annot",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\annotation.genes.annot.txt",
+              "--pval",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\pvalues.tsv",
+              "ncol=N",
+              "duplicate=error",
+              "--gene-model",
+              "snp-wise=top",
+              "--seed",
+              "42",
+              "--out",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\summary-top"
+            ],
+            "exit_code": 0,
+            "console_sha256": "2431b0182dfcde77a527157d647067b8834757d5385a23eb3ee01f8146a2026a"
+          },
+          {
+            "name": "summary-multi",
+            "command": [
+              "D:\\projects\\JLinAlg\\build\\omics-magma\\magma.exe",
+              "--bfile",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\reference",
+              "--gene-annot",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\annotation.genes.annot.txt",
+              "--pval",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\pvalues.tsv",
+              "ncol=N",
+              "duplicate=error",
+              "--gene-model",
+              "snp-wise=multi",
+              "--seed",
+              "42",
+              "--out",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\summary-multi"
+            ],
+            "exit_code": 0,
+            "console_sha256": "b4638dc476bbbc899de66046c24db3a8becdaf6ae29955b310899045c5a2ee5e"
+          },
+          {
+            "name": "raw-linreg",
+            "command": [
+              "D:\\projects\\JLinAlg\\build\\omics-magma\\magma.exe",
+              "--bfile",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\reference",
+              "--gene-annot",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\annotation.genes.annot.txt",
+              "--gene-model",
+              "linreg",
+              "--gene-settings",
+              "prune=.999",
+              "--seed",
+              "42",
+              "--out",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\raw-linreg"
+            ],
+            "exit_code": 0,
+            "console_sha256": "50c9ef10f26a61d44b60eacb97cec6c51353aa9cdce2f687317887312529e339"
+          },
+          {
+            "name": "sets",
+            "command": [
+              "D:\\projects\\JLinAlg\\build\\omics-magma\\magma.exe",
+              "--gene-results",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\summary-mean.genes.raw",
+              "--set-annot",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\sets.annot",
+              "--model",
+              "direction=pos",
+              "correct=all",
+              "self-contained",
+              "--settings",
+              "gene-info",
+              "abbreviate=0",
+              "--seed",
+              "42",
+              "--out",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\sets"
+            ],
+            "exit_code": 0,
+            "console_sha256": "ac03ba6c87b522a2b02f49369200d881e5656148d28fd0b728e6bcd175eb98a8"
+          },
+          {
+            "name": "properties",
+            "command": [
+              "D:\\projects\\JLinAlg\\build\\omics-magma\\magma.exe",
+              "--gene-results",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\summary-mean.genes.raw",
+              "--gene-covar",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\properties.tsv",
+              "missing-values=drop",
+              "max-miss=0",
+              "--model",
+              "direction=pos",
+              "correct=all",
+              "--settings",
+              "gene-info",
+              "abbreviate=0",
+              "--seed",
+              "42",
+              "--out",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\properties"
+            ],
+            "exit_code": 0,
+            "console_sha256": "379724d7a1352562292df731286204c624cd2c3c1f37bb3aea58009e534d7688"
+          }
+        ],
+        "exact_reference_files": [
+          "annotation.genes.annot.txt",
+          "summary-mean.genes.out.txt",
+          "summary-top.genes.out.txt",
+          "summary-multi.genes.out.txt",
+          "raw-linreg.genes.out.txt",
+          "sets.gsa.out.txt",
+          "sets.gsa.self.out.txt",
+          "properties.gsa.out.txt"
+        ],
+        "executable_sha256": "e05e3d963215a973064852ec33640118d65745884cc800a5119ca7cffe6cb859",
+        "reproducer_sha256": "6ad5ff6f3971a223a965febd540a5377a952e36b2b2710234827aa7afc7f7202",
+        "scope": "Eight independently reproduced original-program annotation/association/set/property files; frozen synthetic source bytes unchanged. Program remains private and unmodified."
+      },
+      "reproducer_sha256": "6ad5ff6f3971a223a965febd540a5377a952e36b2b2710234827aa7afc7f7202",
+      "packaged_steps": 17,
+      "independent_packaged_checks": 12,
+      "packaged_validation": "magma-packaged-validation.json",
+      "dependency_evidence": "magma-dependency-status.json",
+      "recorded_utc": "2026-10-25T02:57:16.310858+00:00",
+      "scope": "Independent native closed-window/strand/ID/build and exact PLINK/GWAS contracts,804actual frozen association rows, gene sets/properties/conditional/joint, raw phenotype coding and sample universes. Unmodified private upstream program; no binary/source/manual redistribution, FUMA/R/PoPS/scDRS, meta/interaction, sex-chromosome scientific validation or historical/full-paper parity.",
+      "refreshed_utc": "2026-10-25T08:02:41.668775+00:00"
+    },
+    {
+      "status": "passed",
+      "jar_sha256": "9650afd13cf486aba84285ba6d2f1a0a06eca8f08d3e33b4c2338567f5372de2",
+      "source_sha256": {
+        "src/main/java/org/jlinalg/genetics/MagmaTables.java": "93eaf24c77f57419ea85ec811cad67dba4bdbe6b371d11133b7a4b4bcb6b41fa",
+        "src/main/java/org/jlinalg/cli/MagmaToolsCli.java": "4bd0a754f129ad045d9b028e3a07feee271158aca1c1f87bf9931cc9d6b87b18",
+        "src/main/java/org/jlinalg/genetics/GeneWindowMapping.java": "75ff376d01d40cc5e5c3f228610da7d39326f0a815a9695b0b0d0e4bc487b851",
+        "src/main/java/org/jlinalg/cli/MagmaRuntime.java": "73616084bab25152070d346aff12cfd061f2ccf367a8f1aa8ecb52e767bb22e7"
+      },
+      "current_full_gate_suites": {
+        "org.jlinalg.genetics.GeneWindowMappingTest": {
+          "suite_name": "org.jlinalg.genetics.GeneWindowMappingTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "84e4290ad5155161e4cc6d994c63f8bcc9fa0902e6e151b0f7ef1b4e89333362",
+          "testcases": [
+            "exactCurrentUpstreamAnnotationMatchesEverySyntheticMembership()",
+            "duplicateIdsUnknownStrandsOverflowAndAmbiguousChromosomeAliasesFail()",
+            "indexedMembershipAgreesWithIndependentBruteForceAcrossRandomChromosomes()",
+            "strandAwareAsymmetryClosedBoundariesAndZeroSentinelAreExplicit()"
+          ]
+        },
+        "org.jlinalg.genetics.MagmaTablesTest": {
+          "suite_name": "org.jlinalg.genetics.MagmaTablesTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "d6948c5d8b940c12e1f7da5434b5839c3ac71bb632ab540a655bcaceb095bbff",
+          "testcases": [
+            "mismatchedCoordinatesDuplicatesZeroPAndSilentNSubstitutionAreRejected()",
+            "exactPanelAndVariableSampleSizesAreValidated()",
+            "originalCurrentModelTablesPreserveProbabilitiesAndCoordinates()",
+            "incompleteOrCorruptBedFamilyNeverReachesUpstream()"
+          ]
+        },
+        "org.jlinalg.cli.MagmaToolsCliTest": {
+          "suite_name": "org.jlinalg.cli.MagmaToolsCliTest",
+          "suite": {
+            "tests": 10,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "08dbb1dd84da216fed4900c37953d97cee7c80107830e1e0408709604c25f1f3",
+          "testcases": [
+            "undeclaredModelOptionsAndMissingCovariatesAreRejected()",
+            "actualCompetitiveSelfContainedAndPropertyModelsMatchIndependentReferences()",
+            "combinedConditionalAndJointModelsUseOnlyDeclaredVariables()",
+            "binaryZeroOneAndOneTwoPreserveControlsAndQuantitativeZeroOneIsNotInferredBinary()",
+            "rawPcRegressionUsesDeclaredPhenotypesAndPruning()",
+            "nativeMappingRetainsAllGenesAndNeedsNoRuntime()",
+            "missingDependencySkipsBeforeOpeningInputsAndGivesExactRecovery()",
+            "originalAnnotationExactlyAgreesWithNativeMembershipAndBounds()",
+            "changedBundleAndCoordinateMismatchFailWithoutSuccessfulResult()",
+            "summaryMeanTopAndMultiRecoverAllFrozenOriginalResults()"
+          ]
+        }
+      },
+      "tests": 18,
+      "version": "1.10 (win/s)",
+      "upstream_executable_sha256": "e05e3d963215a973064852ec33640118d65745884cc800a5119ca7cffe6cb859",
+      "reference_reproduction": {
+        "status": "passed",
+        "calls": [
+          {
+            "name": "annotation",
+            "command": [
+              "D:\\projects\\JLinAlg\\build\\omics-magma\\magma.exe",
+              "--annotate",
+              "window=0",
+              "--snp-loc",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\reference.bim",
+              "--gene-loc",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\genes.loc",
+              "--out",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\annotation"
+            ],
+            "exit_code": 0,
+            "console_sha256": "ed0a6331e1c2796f553e9c8e0c41873a25ec53813391e9ebeca621e98fb51673"
+          },
+          {
+            "name": "summary-mean",
+            "command": [
+              "D:\\projects\\JLinAlg\\build\\omics-magma\\magma.exe",
+              "--bfile",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\reference",
+              "--gene-annot",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\annotation.genes.annot.txt",
+              "--pval",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\pvalues.tsv",
+              "ncol=N",
+              "duplicate=error",
+              "--gene-model",
+              "snp-wise=mean",
+              "--seed",
+              "42",
+              "--out",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\summary-mean"
+            ],
+            "exit_code": 0,
+            "console_sha256": "44c6175432b6caf6b126a6d3d486d402c057b6026a51f56af9f211502722e567"
+          },
+          {
+            "name": "summary-top",
+            "command": [
+              "D:\\projects\\JLinAlg\\build\\omics-magma\\magma.exe",
+              "--bfile",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\reference",
+              "--gene-annot",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\annotation.genes.annot.txt",
+              "--pval",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\pvalues.tsv",
+              "ncol=N",
+              "duplicate=error",
+              "--gene-model",
+              "snp-wise=top",
+              "--seed",
+              "42",
+              "--out",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\summary-top"
+            ],
+            "exit_code": 0,
+            "console_sha256": "2431b0182dfcde77a527157d647067b8834757d5385a23eb3ee01f8146a2026a"
+          },
+          {
+            "name": "summary-multi",
+            "command": [
+              "D:\\projects\\JLinAlg\\build\\omics-magma\\magma.exe",
+              "--bfile",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\reference",
+              "--gene-annot",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\annotation.genes.annot.txt",
+              "--pval",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\pvalues.tsv",
+              "ncol=N",
+              "duplicate=error",
+              "--gene-model",
+              "snp-wise=multi",
+              "--seed",
+              "42",
+              "--out",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\summary-multi"
+            ],
+            "exit_code": 0,
+            "console_sha256": "b4638dc476bbbc899de66046c24db3a8becdaf6ae29955b310899045c5a2ee5e"
+          },
+          {
+            "name": "raw-linreg",
+            "command": [
+              "D:\\projects\\JLinAlg\\build\\omics-magma\\magma.exe",
+              "--bfile",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\reference",
+              "--gene-annot",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\annotation.genes.annot.txt",
+              "--gene-model",
+              "linreg",
+              "--gene-settings",
+              "prune=.999",
+              "--seed",
+              "42",
+              "--out",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\raw-linreg"
+            ],
+            "exit_code": 0,
+            "console_sha256": "50c9ef10f26a61d44b60eacb97cec6c51353aa9cdce2f687317887312529e339"
+          },
+          {
+            "name": "sets",
+            "command": [
+              "D:\\projects\\JLinAlg\\build\\omics-magma\\magma.exe",
+              "--gene-results",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\summary-mean.genes.raw",
+              "--set-annot",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\sets.annot",
+              "--model",
+              "direction=pos",
+              "correct=all",
+              "self-contained",
+              "--settings",
+              "gene-info",
+              "abbreviate=0",
+              "--seed",
+              "42",
+              "--out",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\sets"
+            ],
+            "exit_code": 0,
+            "console_sha256": "ac03ba6c87b522a2b02f49369200d881e5656148d28fd0b728e6bcd175eb98a8"
+          },
+          {
+            "name": "properties",
+            "command": [
+              "D:\\projects\\JLinAlg\\build\\omics-magma\\magma.exe",
+              "--gene-results",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\summary-mean.genes.raw",
+              "--gene-covar",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\properties.tsv",
+              "missing-values=drop",
+              "max-miss=0",
+              "--model",
+              "direction=pos",
+              "correct=all",
+              "--settings",
+              "gene-info",
+              "abbreviate=0",
+              "--seed",
+              "42",
+              "--out",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\properties"
+            ],
+            "exit_code": 0,
+            "console_sha256": "379724d7a1352562292df731286204c624cd2c3c1f37bb3aea58009e534d7688"
+          }
+        ],
+        "exact_reference_files": [
+          "annotation.genes.annot.txt",
+          "summary-mean.genes.out.txt",
+          "summary-top.genes.out.txt",
+          "summary-multi.genes.out.txt",
+          "raw-linreg.genes.out.txt",
+          "sets.gsa.out.txt",
+          "sets.gsa.self.out.txt",
+          "properties.gsa.out.txt"
+        ],
+        "executable_sha256": "e05e3d963215a973064852ec33640118d65745884cc800a5119ca7cffe6cb859",
+        "reproducer_sha256": "6ad5ff6f3971a223a965febd540a5377a952e36b2b2710234827aa7afc7f7202",
+        "scope": "Eight independently reproduced original-program annotation/association/set/property files; frozen synthetic source bytes unchanged. Program remains private and unmodified."
+      },
+      "reproducer_sha256": "6ad5ff6f3971a223a965febd540a5377a952e36b2b2710234827aa7afc7f7202",
+      "packaged_steps": 17,
+      "independent_packaged_checks": 12,
+      "packaged_validation": "magma-packaged-validation.json",
+      "dependency_evidence": "magma-dependency-status.json",
+      "recorded_utc": "2026-10-25T02:57:16.310858+00:00",
+      "scope": "Independent native closed-window/strand/ID/build and exact PLINK/GWAS contracts,804actual frozen association rows, gene sets/properties/conditional/joint, raw phenotype coding and sample universes. Unmodified private upstream program; no binary/source/manual redistribution, FUMA/R/PoPS/scDRS, meta/interaction, sex-chromosome scientific validation or historical/full-paper parity.",
+      "refreshed_utc": "2026-10-25T09:04:26.213216+00:00"
+    },
+    {
+      "status": "passed",
+      "jar_sha256": "938e928161f850a7f23d38ced10b6ed53c15392b16f79c3d6caeab2ae8906c84",
+      "source_sha256": {
+        "src/main/java/org/jlinalg/genetics/MagmaTables.java": "93eaf24c77f57419ea85ec811cad67dba4bdbe6b371d11133b7a4b4bcb6b41fa",
+        "src/main/java/org/jlinalg/cli/MagmaToolsCli.java": "4bd0a754f129ad045d9b028e3a07feee271158aca1c1f87bf9931cc9d6b87b18",
+        "src/main/java/org/jlinalg/genetics/GeneWindowMapping.java": "75ff376d01d40cc5e5c3f228610da7d39326f0a815a9695b0b0d0e4bc487b851",
+        "src/main/java/org/jlinalg/cli/MagmaRuntime.java": "73616084bab25152070d346aff12cfd061f2ccf367a8f1aa8ecb52e767bb22e7"
+      },
+      "current_full_gate_suites": {
+        "org.jlinalg.genetics.GeneWindowMappingTest": {
+          "suite_name": "org.jlinalg.genetics.GeneWindowMappingTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "8176eb83af239742fa4a2a2760c05786b74c530d39ffa1e322b0c7a00c4bb409",
+          "testcases": [
+            "exactCurrentUpstreamAnnotationMatchesEverySyntheticMembership()",
+            "duplicateIdsUnknownStrandsOverflowAndAmbiguousChromosomeAliasesFail()",
+            "indexedMembershipAgreesWithIndependentBruteForceAcrossRandomChromosomes()",
+            "strandAwareAsymmetryClosedBoundariesAndZeroSentinelAreExplicit()"
+          ]
+        },
+        "org.jlinalg.genetics.MagmaTablesTest": {
+          "suite_name": "org.jlinalg.genetics.MagmaTablesTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "b8961b5f0f993092207edf9197daaeab444cebcb778a2cb4772e5d748bc86789",
+          "testcases": [
+            "mismatchedCoordinatesDuplicatesZeroPAndSilentNSubstitutionAreRejected()",
+            "exactPanelAndVariableSampleSizesAreValidated()",
+            "originalCurrentModelTablesPreserveProbabilitiesAndCoordinates()",
+            "incompleteOrCorruptBedFamilyNeverReachesUpstream()"
+          ]
+        },
+        "org.jlinalg.cli.MagmaToolsCliTest": {
+          "suite_name": "org.jlinalg.cli.MagmaToolsCliTest",
+          "suite": {
+            "tests": 10,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "78e7a7284d677d2601fb04b0bce1bd3fa89865be09f842bd74a7c1cfcf7be5ea",
+          "testcases": [
+            "undeclaredModelOptionsAndMissingCovariatesAreRejected()",
+            "actualCompetitiveSelfContainedAndPropertyModelsMatchIndependentReferences()",
+            "combinedConditionalAndJointModelsUseOnlyDeclaredVariables()",
+            "binaryZeroOneAndOneTwoPreserveControlsAndQuantitativeZeroOneIsNotInferredBinary()",
+            "rawPcRegressionUsesDeclaredPhenotypesAndPruning()",
+            "nativeMappingRetainsAllGenesAndNeedsNoRuntime()",
+            "missingDependencySkipsBeforeOpeningInputsAndGivesExactRecovery()",
+            "originalAnnotationExactlyAgreesWithNativeMembershipAndBounds()",
+            "changedBundleAndCoordinateMismatchFailWithoutSuccessfulResult()",
+            "summaryMeanTopAndMultiRecoverAllFrozenOriginalResults()"
+          ]
+        }
+      },
+      "tests": 18,
+      "version": "1.10 (win/s)",
+      "upstream_executable_sha256": "e05e3d963215a973064852ec33640118d65745884cc800a5119ca7cffe6cb859",
+      "reference_reproduction": {
+        "status": "passed",
+        "calls": [
+          {
+            "name": "annotation",
+            "command": [
+              "D:\\projects\\JLinAlg\\build\\omics-magma\\magma.exe",
+              "--annotate",
+              "window=0",
+              "--snp-loc",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\reference.bim",
+              "--gene-loc",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\genes.loc",
+              "--out",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\annotation"
+            ],
+            "exit_code": 0,
+            "console_sha256": "ed0a6331e1c2796f553e9c8e0c41873a25ec53813391e9ebeca621e98fb51673"
+          },
+          {
+            "name": "summary-mean",
+            "command": [
+              "D:\\projects\\JLinAlg\\build\\omics-magma\\magma.exe",
+              "--bfile",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\reference",
+              "--gene-annot",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\annotation.genes.annot.txt",
+              "--pval",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\pvalues.tsv",
+              "ncol=N",
+              "duplicate=error",
+              "--gene-model",
+              "snp-wise=mean",
+              "--seed",
+              "42",
+              "--out",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\summary-mean"
+            ],
+            "exit_code": 0,
+            "console_sha256": "44c6175432b6caf6b126a6d3d486d402c057b6026a51f56af9f211502722e567"
+          },
+          {
+            "name": "summary-top",
+            "command": [
+              "D:\\projects\\JLinAlg\\build\\omics-magma\\magma.exe",
+              "--bfile",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\reference",
+              "--gene-annot",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\annotation.genes.annot.txt",
+              "--pval",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\pvalues.tsv",
+              "ncol=N",
+              "duplicate=error",
+              "--gene-model",
+              "snp-wise=top",
+              "--seed",
+              "42",
+              "--out",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\summary-top"
+            ],
+            "exit_code": 0,
+            "console_sha256": "2431b0182dfcde77a527157d647067b8834757d5385a23eb3ee01f8146a2026a"
+          },
+          {
+            "name": "summary-multi",
+            "command": [
+              "D:\\projects\\JLinAlg\\build\\omics-magma\\magma.exe",
+              "--bfile",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\reference",
+              "--gene-annot",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\annotation.genes.annot.txt",
+              "--pval",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\pvalues.tsv",
+              "ncol=N",
+              "duplicate=error",
+              "--gene-model",
+              "snp-wise=multi",
+              "--seed",
+              "42",
+              "--out",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\summary-multi"
+            ],
+            "exit_code": 0,
+            "console_sha256": "b4638dc476bbbc899de66046c24db3a8becdaf6ae29955b310899045c5a2ee5e"
+          },
+          {
+            "name": "raw-linreg",
+            "command": [
+              "D:\\projects\\JLinAlg\\build\\omics-magma\\magma.exe",
+              "--bfile",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\reference",
+              "--gene-annot",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\annotation.genes.annot.txt",
+              "--gene-model",
+              "linreg",
+              "--gene-settings",
+              "prune=.999",
+              "--seed",
+              "42",
+              "--out",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\raw-linreg"
+            ],
+            "exit_code": 0,
+            "console_sha256": "50c9ef10f26a61d44b60eacb97cec6c51353aa9cdce2f687317887312529e339"
+          },
+          {
+            "name": "sets",
+            "command": [
+              "D:\\projects\\JLinAlg\\build\\omics-magma\\magma.exe",
+              "--gene-results",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\summary-mean.genes.raw",
+              "--set-annot",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\sets.annot",
+              "--model",
+              "direction=pos",
+              "correct=all",
+              "self-contained",
+              "--settings",
+              "gene-info",
+              "abbreviate=0",
+              "--seed",
+              "42",
+              "--out",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\sets"
+            ],
+            "exit_code": 0,
+            "console_sha256": "ac03ba6c87b522a2b02f49369200d881e5656148d28fd0b728e6bcd175eb98a8"
+          },
+          {
+            "name": "properties",
+            "command": [
+              "D:\\projects\\JLinAlg\\build\\omics-magma\\magma.exe",
+              "--gene-results",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\summary-mean.genes.raw",
+              "--gene-covar",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\properties.tsv",
+              "missing-values=drop",
+              "max-miss=0",
+              "--model",
+              "direction=pos",
+              "correct=all",
+              "--settings",
+              "gene-info",
+              "abbreviate=0",
+              "--seed",
+              "42",
+              "--out",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\properties"
+            ],
+            "exit_code": 0,
+            "console_sha256": "379724d7a1352562292df731286204c624cd2c3c1f37bb3aea58009e534d7688"
+          }
+        ],
+        "exact_reference_files": [
+          "annotation.genes.annot.txt",
+          "summary-mean.genes.out.txt",
+          "summary-top.genes.out.txt",
+          "summary-multi.genes.out.txt",
+          "raw-linreg.genes.out.txt",
+          "sets.gsa.out.txt",
+          "sets.gsa.self.out.txt",
+          "properties.gsa.out.txt"
+        ],
+        "executable_sha256": "e05e3d963215a973064852ec33640118d65745884cc800a5119ca7cffe6cb859",
+        "reproducer_sha256": "6ad5ff6f3971a223a965febd540a5377a952e36b2b2710234827aa7afc7f7202",
+        "scope": "Eight independently reproduced original-program annotation/association/set/property files; frozen synthetic source bytes unchanged. Program remains private and unmodified."
+      },
+      "reproducer_sha256": "6ad5ff6f3971a223a965febd540a5377a952e36b2b2710234827aa7afc7f7202",
+      "packaged_steps": 17,
+      "independent_packaged_checks": 12,
+      "packaged_validation": "magma-packaged-validation.json",
+      "dependency_evidence": "magma-dependency-status.json",
+      "recorded_utc": "2026-10-25T02:57:16.310858+00:00",
+      "scope": "Independent native closed-window/strand/ID/build and exact PLINK/GWAS contracts,804actual frozen association rows, gene sets/properties/conditional/joint, raw phenotype coding and sample universes. Unmodified private upstream program; no binary/source/manual redistribution, FUMA/R/PoPS/scDRS, meta/interaction, sex-chromosome scientific validation or historical/full-paper parity.",
+      "refreshed_utc": "2026-10-25T10:07:59.705580+00:00"
+    },
+    {
+      "status": "passed",
+      "jar_sha256": "baaacad03f35a01f7d53aba9568e0ce03a89d37f2169ab89e25628f38b8b3b44",
+      "source_sha256": {
+        "src/main/java/org/jlinalg/genetics/MagmaTables.java": "93eaf24c77f57419ea85ec811cad67dba4bdbe6b371d11133b7a4b4bcb6b41fa",
+        "src/main/java/org/jlinalg/cli/MagmaToolsCli.java": "4bd0a754f129ad045d9b028e3a07feee271158aca1c1f87bf9931cc9d6b87b18",
+        "src/main/java/org/jlinalg/genetics/GeneWindowMapping.java": "75ff376d01d40cc5e5c3f228610da7d39326f0a815a9695b0b0d0e4bc487b851",
+        "src/main/java/org/jlinalg/cli/MagmaRuntime.java": "73616084bab25152070d346aff12cfd061f2ccf367a8f1aa8ecb52e767bb22e7"
+      },
+      "current_full_gate_suites": {
+        "org.jlinalg.genetics.GeneWindowMappingTest": {
+          "suite_name": "org.jlinalg.genetics.GeneWindowMappingTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "474adeec8798ce3a2d2f6fb36d1eddc38c87935e7688541d7067970513f0d694",
+          "testcases": [
+            "exactCurrentUpstreamAnnotationMatchesEverySyntheticMembership()",
+            "duplicateIdsUnknownStrandsOverflowAndAmbiguousChromosomeAliasesFail()",
+            "indexedMembershipAgreesWithIndependentBruteForceAcrossRandomChromosomes()",
+            "strandAwareAsymmetryClosedBoundariesAndZeroSentinelAreExplicit()"
+          ]
+        },
+        "org.jlinalg.genetics.MagmaTablesTest": {
+          "suite_name": "org.jlinalg.genetics.MagmaTablesTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "4916271d750cbb9777fbf4a314592d34ba6011704f1f2cd808bc04f38639f57a",
+          "testcases": [
+            "mismatchedCoordinatesDuplicatesZeroPAndSilentNSubstitutionAreRejected()",
+            "exactPanelAndVariableSampleSizesAreValidated()",
+            "originalCurrentModelTablesPreserveProbabilitiesAndCoordinates()",
+            "incompleteOrCorruptBedFamilyNeverReachesUpstream()"
+          ]
+        },
+        "org.jlinalg.cli.MagmaToolsCliTest": {
+          "suite_name": "org.jlinalg.cli.MagmaToolsCliTest",
+          "suite": {
+            "tests": 10,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "5b757629fd25cfeaf836fde10270e750dbfade35c70e9483380a9d86b9412f16",
+          "testcases": [
+            "undeclaredModelOptionsAndMissingCovariatesAreRejected()",
+            "actualCompetitiveSelfContainedAndPropertyModelsMatchIndependentReferences()",
+            "combinedConditionalAndJointModelsUseOnlyDeclaredVariables()",
+            "binaryZeroOneAndOneTwoPreserveControlsAndQuantitativeZeroOneIsNotInferredBinary()",
+            "rawPcRegressionUsesDeclaredPhenotypesAndPruning()",
+            "nativeMappingRetainsAllGenesAndNeedsNoRuntime()",
+            "missingDependencySkipsBeforeOpeningInputsAndGivesExactRecovery()",
+            "originalAnnotationExactlyAgreesWithNativeMembershipAndBounds()",
+            "changedBundleAndCoordinateMismatchFailWithoutSuccessfulResult()",
+            "summaryMeanTopAndMultiRecoverAllFrozenOriginalResults()"
+          ]
+        }
+      },
+      "tests": 18,
+      "version": "1.10 (win/s)",
+      "upstream_executable_sha256": "e05e3d963215a973064852ec33640118d65745884cc800a5119ca7cffe6cb859",
+      "reference_reproduction": {
+        "status": "passed",
+        "calls": [
+          {
+            "name": "annotation",
+            "command": [
+              "D:\\projects\\JLinAlg\\build\\omics-magma\\magma.exe",
+              "--annotate",
+              "window=0",
+              "--snp-loc",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\reference.bim",
+              "--gene-loc",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\genes.loc",
+              "--out",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\annotation"
+            ],
+            "exit_code": 0,
+            "console_sha256": "ed0a6331e1c2796f553e9c8e0c41873a25ec53813391e9ebeca621e98fb51673"
+          },
+          {
+            "name": "summary-mean",
+            "command": [
+              "D:\\projects\\JLinAlg\\build\\omics-magma\\magma.exe",
+              "--bfile",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\reference",
+              "--gene-annot",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\annotation.genes.annot.txt",
+              "--pval",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\pvalues.tsv",
+              "ncol=N",
+              "duplicate=error",
+              "--gene-model",
+              "snp-wise=mean",
+              "--seed",
+              "42",
+              "--out",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\summary-mean"
+            ],
+            "exit_code": 0,
+            "console_sha256": "44c6175432b6caf6b126a6d3d486d402c057b6026a51f56af9f211502722e567"
+          },
+          {
+            "name": "summary-top",
+            "command": [
+              "D:\\projects\\JLinAlg\\build\\omics-magma\\magma.exe",
+              "--bfile",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\reference",
+              "--gene-annot",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\annotation.genes.annot.txt",
+              "--pval",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\pvalues.tsv",
+              "ncol=N",
+              "duplicate=error",
+              "--gene-model",
+              "snp-wise=top",
+              "--seed",
+              "42",
+              "--out",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\summary-top"
+            ],
+            "exit_code": 0,
+            "console_sha256": "2431b0182dfcde77a527157d647067b8834757d5385a23eb3ee01f8146a2026a"
+          },
+          {
+            "name": "summary-multi",
+            "command": [
+              "D:\\projects\\JLinAlg\\build\\omics-magma\\magma.exe",
+              "--bfile",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\reference",
+              "--gene-annot",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\annotation.genes.annot.txt",
+              "--pval",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\pvalues.tsv",
+              "ncol=N",
+              "duplicate=error",
+              "--gene-model",
+              "snp-wise=multi",
+              "--seed",
+              "42",
+              "--out",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\summary-multi"
+            ],
+            "exit_code": 0,
+            "console_sha256": "b4638dc476bbbc899de66046c24db3a8becdaf6ae29955b310899045c5a2ee5e"
+          },
+          {
+            "name": "raw-linreg",
+            "command": [
+              "D:\\projects\\JLinAlg\\build\\omics-magma\\magma.exe",
+              "--bfile",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\reference",
+              "--gene-annot",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\annotation.genes.annot.txt",
+              "--gene-model",
+              "linreg",
+              "--gene-settings",
+              "prune=.999",
+              "--seed",
+              "42",
+              "--out",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\raw-linreg"
+            ],
+            "exit_code": 0,
+            "console_sha256": "50c9ef10f26a61d44b60eacb97cec6c51353aa9cdce2f687317887312529e339"
+          },
+          {
+            "name": "sets",
+            "command": [
+              "D:\\projects\\JLinAlg\\build\\omics-magma\\magma.exe",
+              "--gene-results",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\summary-mean.genes.raw",
+              "--set-annot",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\sets.annot",
+              "--model",
+              "direction=pos",
+              "correct=all",
+              "self-contained",
+              "--settings",
+              "gene-info",
+              "abbreviate=0",
+              "--seed",
+              "42",
+              "--out",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\sets"
+            ],
+            "exit_code": 0,
+            "console_sha256": "ac03ba6c87b522a2b02f49369200d881e5656148d28fd0b728e6bcd175eb98a8"
+          },
+          {
+            "name": "properties",
+            "command": [
+              "D:\\projects\\JLinAlg\\build\\omics-magma\\magma.exe",
+              "--gene-results",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\summary-mean.genes.raw",
+              "--gene-covar",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\properties.tsv",
+              "missing-values=drop",
+              "max-miss=0",
+              "--model",
+              "direction=pos",
+              "correct=all",
+              "--settings",
+              "gene-info",
+              "abbreviate=0",
+              "--seed",
+              "42",
+              "--out",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\properties"
+            ],
+            "exit_code": 0,
+            "console_sha256": "379724d7a1352562292df731286204c624cd2c3c1f37bb3aea58009e534d7688"
+          }
+        ],
+        "exact_reference_files": [
+          "annotation.genes.annot.txt",
+          "summary-mean.genes.out.txt",
+          "summary-top.genes.out.txt",
+          "summary-multi.genes.out.txt",
+          "raw-linreg.genes.out.txt",
+          "sets.gsa.out.txt",
+          "sets.gsa.self.out.txt",
+          "properties.gsa.out.txt"
+        ],
+        "executable_sha256": "e05e3d963215a973064852ec33640118d65745884cc800a5119ca7cffe6cb859",
+        "reproducer_sha256": "6ad5ff6f3971a223a965febd540a5377a952e36b2b2710234827aa7afc7f7202",
+        "scope": "Eight independently reproduced original-program annotation/association/set/property files; frozen synthetic source bytes unchanged. Program remains private and unmodified."
+      },
+      "reproducer_sha256": "6ad5ff6f3971a223a965febd540a5377a952e36b2b2710234827aa7afc7f7202",
+      "packaged_steps": 17,
+      "independent_packaged_checks": 12,
+      "packaged_validation": "magma-packaged-validation.json",
+      "dependency_evidence": "magma-dependency-status.json",
+      "recorded_utc": "2026-10-25T02:57:16.310858+00:00",
+      "scope": "Independent native closed-window/strand/ID/build and exact PLINK/GWAS contracts,804actual frozen association rows, gene sets/properties/conditional/joint, raw phenotype coding and sample universes. Unmodified private upstream program; no binary/source/manual redistribution, FUMA/R/PoPS/scDRS, meta/interaction, sex-chromosome scientific validation or historical/full-paper parity.",
+      "refreshed_utc": "2026-10-25T11:27:56.771609+00:00"
+    },
+    {
+      "status": "passed",
+      "jar_sha256": "5680cbc4e457007f8903d1d4db3e74ecc890a150b350870f0b82d5650bdc0fec",
+      "source_sha256": {
+        "src/main/java/org/jlinalg/genetics/MagmaTables.java": "93eaf24c77f57419ea85ec811cad67dba4bdbe6b371d11133b7a4b4bcb6b41fa",
+        "src/main/java/org/jlinalg/cli/MagmaToolsCli.java": "4bd0a754f129ad045d9b028e3a07feee271158aca1c1f87bf9931cc9d6b87b18",
+        "src/main/java/org/jlinalg/genetics/GeneWindowMapping.java": "75ff376d01d40cc5e5c3f228610da7d39326f0a815a9695b0b0d0e4bc487b851",
+        "src/main/java/org/jlinalg/cli/MagmaRuntime.java": "73616084bab25152070d346aff12cfd061f2ccf367a8f1aa8ecb52e767bb22e7"
+      },
+      "current_full_gate_suites": {
+        "org.jlinalg.genetics.GeneWindowMappingTest": {
+          "suite_name": "org.jlinalg.genetics.GeneWindowMappingTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "9678df8cda3b7e7d03e5510e52a73280b1377d2f7793f5f9f61b0e75defe0786",
+          "testcases": [
+            "exactCurrentUpstreamAnnotationMatchesEverySyntheticMembership()",
+            "duplicateIdsUnknownStrandsOverflowAndAmbiguousChromosomeAliasesFail()",
+            "indexedMembershipAgreesWithIndependentBruteForceAcrossRandomChromosomes()",
+            "strandAwareAsymmetryClosedBoundariesAndZeroSentinelAreExplicit()"
+          ]
+        },
+        "org.jlinalg.genetics.MagmaTablesTest": {
+          "suite_name": "org.jlinalg.genetics.MagmaTablesTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "d3dc902f60026d7558cb205d2f6e7f617128a4db792b2debc49e0d23ea79d687",
+          "testcases": [
+            "mismatchedCoordinatesDuplicatesZeroPAndSilentNSubstitutionAreRejected()",
+            "exactPanelAndVariableSampleSizesAreValidated()",
+            "originalCurrentModelTablesPreserveProbabilitiesAndCoordinates()",
+            "incompleteOrCorruptBedFamilyNeverReachesUpstream()"
+          ]
+        },
+        "org.jlinalg.cli.MagmaToolsCliTest": {
+          "suite_name": "org.jlinalg.cli.MagmaToolsCliTest",
+          "suite": {
+            "tests": 10,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "af6a5b0c275e4bd2ea34723dc3ac028364ff8037ae90f8af23f57d346b7aca63",
+          "testcases": [
+            "undeclaredModelOptionsAndMissingCovariatesAreRejected()",
+            "actualCompetitiveSelfContainedAndPropertyModelsMatchIndependentReferences()",
+            "combinedConditionalAndJointModelsUseOnlyDeclaredVariables()",
+            "binaryZeroOneAndOneTwoPreserveControlsAndQuantitativeZeroOneIsNotInferredBinary()",
+            "rawPcRegressionUsesDeclaredPhenotypesAndPruning()",
+            "nativeMappingRetainsAllGenesAndNeedsNoRuntime()",
+            "missingDependencySkipsBeforeOpeningInputsAndGivesExactRecovery()",
+            "originalAnnotationExactlyAgreesWithNativeMembershipAndBounds()",
+            "changedBundleAndCoordinateMismatchFailWithoutSuccessfulResult()",
+            "summaryMeanTopAndMultiRecoverAllFrozenOriginalResults()"
+          ]
+        }
+      },
+      "tests": 18,
+      "version": "1.10 (win/s)",
+      "upstream_executable_sha256": "e05e3d963215a973064852ec33640118d65745884cc800a5119ca7cffe6cb859",
+      "reference_reproduction": {
+        "status": "passed",
+        "calls": [
+          {
+            "name": "annotation",
+            "command": [
+              "D:\\projects\\JLinAlg\\build\\omics-magma\\magma.exe",
+              "--annotate",
+              "window=0",
+              "--snp-loc",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\reference.bim",
+              "--gene-loc",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\genes.loc",
+              "--out",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\annotation"
+            ],
+            "exit_code": 0,
+            "console_sha256": "ed0a6331e1c2796f553e9c8e0c41873a25ec53813391e9ebeca621e98fb51673"
+          },
+          {
+            "name": "summary-mean",
+            "command": [
+              "D:\\projects\\JLinAlg\\build\\omics-magma\\magma.exe",
+              "--bfile",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\reference",
+              "--gene-annot",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\annotation.genes.annot.txt",
+              "--pval",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\pvalues.tsv",
+              "ncol=N",
+              "duplicate=error",
+              "--gene-model",
+              "snp-wise=mean",
+              "--seed",
+              "42",
+              "--out",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\summary-mean"
+            ],
+            "exit_code": 0,
+            "console_sha256": "44c6175432b6caf6b126a6d3d486d402c057b6026a51f56af9f211502722e567"
+          },
+          {
+            "name": "summary-top",
+            "command": [
+              "D:\\projects\\JLinAlg\\build\\omics-magma\\magma.exe",
+              "--bfile",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\reference",
+              "--gene-annot",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\annotation.genes.annot.txt",
+              "--pval",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\pvalues.tsv",
+              "ncol=N",
+              "duplicate=error",
+              "--gene-model",
+              "snp-wise=top",
+              "--seed",
+              "42",
+              "--out",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\summary-top"
+            ],
+            "exit_code": 0,
+            "console_sha256": "2431b0182dfcde77a527157d647067b8834757d5385a23eb3ee01f8146a2026a"
+          },
+          {
+            "name": "summary-multi",
+            "command": [
+              "D:\\projects\\JLinAlg\\build\\omics-magma\\magma.exe",
+              "--bfile",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\reference",
+              "--gene-annot",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\annotation.genes.annot.txt",
+              "--pval",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\pvalues.tsv",
+              "ncol=N",
+              "duplicate=error",
+              "--gene-model",
+              "snp-wise=multi",
+              "--seed",
+              "42",
+              "--out",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\summary-multi"
+            ],
+            "exit_code": 0,
+            "console_sha256": "b4638dc476bbbc899de66046c24db3a8becdaf6ae29955b310899045c5a2ee5e"
+          },
+          {
+            "name": "raw-linreg",
+            "command": [
+              "D:\\projects\\JLinAlg\\build\\omics-magma\\magma.exe",
+              "--bfile",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\reference",
+              "--gene-annot",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\annotation.genes.annot.txt",
+              "--gene-model",
+              "linreg",
+              "--gene-settings",
+              "prune=.999",
+              "--seed",
+              "42",
+              "--out",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\raw-linreg"
+            ],
+            "exit_code": 0,
+            "console_sha256": "50c9ef10f26a61d44b60eacb97cec6c51353aa9cdce2f687317887312529e339"
+          },
+          {
+            "name": "sets",
+            "command": [
+              "D:\\projects\\JLinAlg\\build\\omics-magma\\magma.exe",
+              "--gene-results",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\summary-mean.genes.raw",
+              "--set-annot",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\sets.annot",
+              "--model",
+              "direction=pos",
+              "correct=all",
+              "self-contained",
+              "--settings",
+              "gene-info",
+              "abbreviate=0",
+              "--seed",
+              "42",
+              "--out",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\sets"
+            ],
+            "exit_code": 0,
+            "console_sha256": "ac03ba6c87b522a2b02f49369200d881e5656148d28fd0b728e6bcd175eb98a8"
+          },
+          {
+            "name": "properties",
+            "command": [
+              "D:\\projects\\JLinAlg\\build\\omics-magma\\magma.exe",
+              "--gene-results",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\summary-mean.genes.raw",
+              "--gene-covar",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\properties.tsv",
+              "missing-values=drop",
+              "max-miss=0",
+              "--model",
+              "direction=pos",
+              "correct=all",
+              "--settings",
+              "gene-info",
+              "abbreviate=0",
+              "--seed",
+              "42",
+              "--out",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\properties"
+            ],
+            "exit_code": 0,
+            "console_sha256": "379724d7a1352562292df731286204c624cd2c3c1f37bb3aea58009e534d7688"
+          }
+        ],
+        "exact_reference_files": [
+          "annotation.genes.annot.txt",
+          "summary-mean.genes.out.txt",
+          "summary-top.genes.out.txt",
+          "summary-multi.genes.out.txt",
+          "raw-linreg.genes.out.txt",
+          "sets.gsa.out.txt",
+          "sets.gsa.self.out.txt",
+          "properties.gsa.out.txt"
+        ],
+        "executable_sha256": "e05e3d963215a973064852ec33640118d65745884cc800a5119ca7cffe6cb859",
+        "reproducer_sha256": "6ad5ff6f3971a223a965febd540a5377a952e36b2b2710234827aa7afc7f7202",
+        "scope": "Eight independently reproduced original-program annotation/association/set/property files; frozen synthetic source bytes unchanged. Program remains private and unmodified."
+      },
+      "reproducer_sha256": "6ad5ff6f3971a223a965febd540a5377a952e36b2b2710234827aa7afc7f7202",
+      "packaged_steps": 17,
+      "independent_packaged_checks": 12,
+      "packaged_validation": "magma-packaged-validation.json",
+      "dependency_evidence": "magma-dependency-status.json",
+      "recorded_utc": "2026-10-25T02:57:16.310858+00:00",
+      "scope": "Independent native closed-window/strand/ID/build and exact PLINK/GWAS contracts,804actual frozen association rows, gene sets/properties/conditional/joint, raw phenotype coding and sample universes. Unmodified private upstream program; no binary/source/manual redistribution, FUMA/R/PoPS/scDRS, meta/interaction, sex-chromosome scientific validation or historical/full-paper parity.",
+      "refreshed_utc": "2026-10-25T14:18:39.170849+00:00"
+    },
+    {
+      "status": "passed",
+      "jar_sha256": "c7e5fc6412ef02a82e409b43f344bff506f873ff5ebea92bc055d498ebda8dae",
+      "source_sha256": {
+        "src/main/java/org/jlinalg/genetics/MagmaTables.java": "93eaf24c77f57419ea85ec811cad67dba4bdbe6b371d11133b7a4b4bcb6b41fa",
+        "src/main/java/org/jlinalg/cli/MagmaToolsCli.java": "4bd0a754f129ad045d9b028e3a07feee271158aca1c1f87bf9931cc9d6b87b18",
+        "src/main/java/org/jlinalg/genetics/GeneWindowMapping.java": "75ff376d01d40cc5e5c3f228610da7d39326f0a815a9695b0b0d0e4bc487b851",
+        "src/main/java/org/jlinalg/cli/MagmaRuntime.java": "73616084bab25152070d346aff12cfd061f2ccf367a8f1aa8ecb52e767bb22e7"
+      },
+      "current_full_gate_suites": {
+        "org.jlinalg.genetics.GeneWindowMappingTest": {
+          "suite_name": "org.jlinalg.genetics.GeneWindowMappingTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "db2122318f71570268df14d954e99ae06d326f2e26b116db97fb79a4628ba1b7",
+          "testcases": [
+            "exactCurrentUpstreamAnnotationMatchesEverySyntheticMembership()",
+            "duplicateIdsUnknownStrandsOverflowAndAmbiguousChromosomeAliasesFail()",
+            "indexedMembershipAgreesWithIndependentBruteForceAcrossRandomChromosomes()",
+            "strandAwareAsymmetryClosedBoundariesAndZeroSentinelAreExplicit()"
+          ]
+        },
+        "org.jlinalg.genetics.MagmaTablesTest": {
+          "suite_name": "org.jlinalg.genetics.MagmaTablesTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "f7018cf1817157a5d587e37e72e27d2576dfb079068ebba80157ccccc23633ae",
+          "testcases": [
+            "mismatchedCoordinatesDuplicatesZeroPAndSilentNSubstitutionAreRejected()",
+            "exactPanelAndVariableSampleSizesAreValidated()",
+            "originalCurrentModelTablesPreserveProbabilitiesAndCoordinates()",
+            "incompleteOrCorruptBedFamilyNeverReachesUpstream()"
+          ]
+        },
+        "org.jlinalg.cli.MagmaToolsCliTest": {
+          "suite_name": "org.jlinalg.cli.MagmaToolsCliTest",
+          "suite": {
+            "tests": 10,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "4a6ac80f476b44869a294588b27e6a4c244d802ec7ae232db34830d178e3c34d",
+          "testcases": [
+            "undeclaredModelOptionsAndMissingCovariatesAreRejected()",
+            "actualCompetitiveSelfContainedAndPropertyModelsMatchIndependentReferences()",
+            "combinedConditionalAndJointModelsUseOnlyDeclaredVariables()",
+            "binaryZeroOneAndOneTwoPreserveControlsAndQuantitativeZeroOneIsNotInferredBinary()",
+            "rawPcRegressionUsesDeclaredPhenotypesAndPruning()",
+            "nativeMappingRetainsAllGenesAndNeedsNoRuntime()",
+            "missingDependencySkipsBeforeOpeningInputsAndGivesExactRecovery()",
+            "originalAnnotationExactlyAgreesWithNativeMembershipAndBounds()",
+            "changedBundleAndCoordinateMismatchFailWithoutSuccessfulResult()",
+            "summaryMeanTopAndMultiRecoverAllFrozenOriginalResults()"
+          ]
+        }
+      },
+      "tests": 18,
+      "version": "1.10 (win/s)",
+      "upstream_executable_sha256": "e05e3d963215a973064852ec33640118d65745884cc800a5119ca7cffe6cb859",
+      "reference_reproduction": {
+        "status": "passed",
+        "calls": [
+          {
+            "name": "annotation",
+            "command": [
+              "D:\\projects\\JLinAlg\\build\\omics-magma\\magma.exe",
+              "--annotate",
+              "window=0",
+              "--snp-loc",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\reference.bim",
+              "--gene-loc",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\genes.loc",
+              "--out",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\annotation"
+            ],
+            "exit_code": 0,
+            "console_sha256": "ed0a6331e1c2796f553e9c8e0c41873a25ec53813391e9ebeca621e98fb51673"
+          },
+          {
+            "name": "summary-mean",
+            "command": [
+              "D:\\projects\\JLinAlg\\build\\omics-magma\\magma.exe",
+              "--bfile",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\reference",
+              "--gene-annot",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\annotation.genes.annot.txt",
+              "--pval",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\pvalues.tsv",
+              "ncol=N",
+              "duplicate=error",
+              "--gene-model",
+              "snp-wise=mean",
+              "--seed",
+              "42",
+              "--out",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\summary-mean"
+            ],
+            "exit_code": 0,
+            "console_sha256": "44c6175432b6caf6b126a6d3d486d402c057b6026a51f56af9f211502722e567"
+          },
+          {
+            "name": "summary-top",
+            "command": [
+              "D:\\projects\\JLinAlg\\build\\omics-magma\\magma.exe",
+              "--bfile",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\reference",
+              "--gene-annot",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\annotation.genes.annot.txt",
+              "--pval",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\pvalues.tsv",
+              "ncol=N",
+              "duplicate=error",
+              "--gene-model",
+              "snp-wise=top",
+              "--seed",
+              "42",
+              "--out",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\summary-top"
+            ],
+            "exit_code": 0,
+            "console_sha256": "2431b0182dfcde77a527157d647067b8834757d5385a23eb3ee01f8146a2026a"
+          },
+          {
+            "name": "summary-multi",
+            "command": [
+              "D:\\projects\\JLinAlg\\build\\omics-magma\\magma.exe",
+              "--bfile",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\reference",
+              "--gene-annot",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\annotation.genes.annot.txt",
+              "--pval",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\pvalues.tsv",
+              "ncol=N",
+              "duplicate=error",
+              "--gene-model",
+              "snp-wise=multi",
+              "--seed",
+              "42",
+              "--out",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\summary-multi"
+            ],
+            "exit_code": 0,
+            "console_sha256": "b4638dc476bbbc899de66046c24db3a8becdaf6ae29955b310899045c5a2ee5e"
+          },
+          {
+            "name": "raw-linreg",
+            "command": [
+              "D:\\projects\\JLinAlg\\build\\omics-magma\\magma.exe",
+              "--bfile",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\reference",
+              "--gene-annot",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\annotation.genes.annot.txt",
+              "--gene-model",
+              "linreg",
+              "--gene-settings",
+              "prune=.999",
+              "--seed",
+              "42",
+              "--out",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\raw-linreg"
+            ],
+            "exit_code": 0,
+            "console_sha256": "50c9ef10f26a61d44b60eacb97cec6c51353aa9cdce2f687317887312529e339"
+          },
+          {
+            "name": "sets",
+            "command": [
+              "D:\\projects\\JLinAlg\\build\\omics-magma\\magma.exe",
+              "--gene-results",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\summary-mean.genes.raw",
+              "--set-annot",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\sets.annot",
+              "--model",
+              "direction=pos",
+              "correct=all",
+              "self-contained",
+              "--settings",
+              "gene-info",
+              "abbreviate=0",
+              "--seed",
+              "42",
+              "--out",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\sets"
+            ],
+            "exit_code": 0,
+            "console_sha256": "ac03ba6c87b522a2b02f49369200d881e5656148d28fd0b728e6bcd175eb98a8"
+          },
+          {
+            "name": "properties",
+            "command": [
+              "D:\\projects\\JLinAlg\\build\\omics-magma\\magma.exe",
+              "--gene-results",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\summary-mean.genes.raw",
+              "--gene-covar",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\properties.tsv",
+              "missing-values=drop",
+              "max-miss=0",
+              "--model",
+              "direction=pos",
+              "correct=all",
+              "--settings",
+              "gene-info",
+              "abbreviate=0",
+              "--seed",
+              "42",
+              "--out",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\properties"
+            ],
+            "exit_code": 0,
+            "console_sha256": "379724d7a1352562292df731286204c624cd2c3c1f37bb3aea58009e534d7688"
+          }
+        ],
+        "exact_reference_files": [
+          "annotation.genes.annot.txt",
+          "summary-mean.genes.out.txt",
+          "summary-top.genes.out.txt",
+          "summary-multi.genes.out.txt",
+          "raw-linreg.genes.out.txt",
+          "sets.gsa.out.txt",
+          "sets.gsa.self.out.txt",
+          "properties.gsa.out.txt"
+        ],
+        "executable_sha256": "e05e3d963215a973064852ec33640118d65745884cc800a5119ca7cffe6cb859",
+        "reproducer_sha256": "6ad5ff6f3971a223a965febd540a5377a952e36b2b2710234827aa7afc7f7202",
+        "scope": "Eight independently reproduced original-program annotation/association/set/property files; frozen synthetic source bytes unchanged. Program remains private and unmodified."
+      },
+      "reproducer_sha256": "6ad5ff6f3971a223a965febd540a5377a952e36b2b2710234827aa7afc7f7202",
+      "packaged_steps": 17,
+      "independent_packaged_checks": 12,
+      "packaged_validation": "magma-packaged-validation.json",
+      "dependency_evidence": "magma-dependency-status.json",
+      "recorded_utc": "2026-10-25T02:57:16.310858+00:00",
+      "scope": "Independent native closed-window/strand/ID/build and exact PLINK/GWAS contracts,804actual frozen association rows, gene sets/properties/conditional/joint, raw phenotype coding and sample universes. Unmodified private upstream program; no binary/source/manual redistribution, FUMA/R/PoPS/scDRS, meta/interaction, sex-chromosome scientific validation or historical/full-paper parity.",
+      "refreshed_utc": "2026-10-25T18:28:13.412726+00:00",
+      "current_validation": {
+        "full_gate": {
+          "tests": 1486,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 5
+        },
+        "required_suites": 59,
+        "all_required_without_skips": true,
+        "raw_snapshot": "D:\\projects\\JLinAlg\\build\\literature-review\\trimgalore-runtime\\original-warning-full-gate-snapshot",
+        "prior_packaged_regressions": "D:\\projects\\JLinAlg\\build\\literature-review\\trim-galore-warning-packaged-regressions\\verification.json",
+        "scope": "Current unchanged owned method sources retested on this JAR. Historical reference-generation counts/options remain scoped to their original fixtures;prior reports remain in validation_history."
+      }
+    },
+    {
+      "status": "passed",
+      "jar_sha256": "2bfb8abfea10e53ce7b0e1035b0a7954feb9bed990d63578e817882a6d0541c0",
+      "source_sha256": {
+        "src/main/java/org/jlinalg/genetics/MagmaTables.java": "93eaf24c77f57419ea85ec811cad67dba4bdbe6b371d11133b7a4b4bcb6b41fa",
+        "src/main/java/org/jlinalg/cli/MagmaToolsCli.java": "4bd0a754f129ad045d9b028e3a07feee271158aca1c1f87bf9931cc9d6b87b18",
+        "src/main/java/org/jlinalg/genetics/GeneWindowMapping.java": "75ff376d01d40cc5e5c3f228610da7d39326f0a815a9695b0b0d0e4bc487b851",
+        "src/main/java/org/jlinalg/cli/MagmaRuntime.java": "73616084bab25152070d346aff12cfd061f2ccf367a8f1aa8ecb52e767bb22e7"
+      },
+      "current_full_gate_suites": {
+        "org.jlinalg.genetics.GeneWindowMappingTest": {
+          "suite_name": "org.jlinalg.genetics.GeneWindowMappingTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "fc50bdc2670c4f25deeec2602bd68a91eee06d8a26ae7004edfc84a6c0cdd446",
+          "testcases": [
+            "exactCurrentUpstreamAnnotationMatchesEverySyntheticMembership()",
+            "duplicateIdsUnknownStrandsOverflowAndAmbiguousChromosomeAliasesFail()",
+            "indexedMembershipAgreesWithIndependentBruteForceAcrossRandomChromosomes()",
+            "strandAwareAsymmetryClosedBoundariesAndZeroSentinelAreExplicit()"
+          ]
+        },
+        "org.jlinalg.genetics.MagmaTablesTest": {
+          "suite_name": "org.jlinalg.genetics.MagmaTablesTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "f0b72128ffef8320b1484a200a9933125a72c3bfc17435b4166bdc494c620431",
+          "testcases": [
+            "mismatchedCoordinatesDuplicatesZeroPAndSilentNSubstitutionAreRejected()",
+            "exactPanelAndVariableSampleSizesAreValidated()",
+            "originalCurrentModelTablesPreserveProbabilitiesAndCoordinates()",
+            "incompleteOrCorruptBedFamilyNeverReachesUpstream()"
+          ]
+        },
+        "org.jlinalg.cli.MagmaToolsCliTest": {
+          "suite_name": "org.jlinalg.cli.MagmaToolsCliTest",
+          "suite": {
+            "tests": 10,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "449d07115e81a5707f09a8165e0e3aecf2ff697a3573d613a39d3488f175cc6b",
+          "testcases": [
+            "undeclaredModelOptionsAndMissingCovariatesAreRejected()",
+            "actualCompetitiveSelfContainedAndPropertyModelsMatchIndependentReferences()",
+            "combinedConditionalAndJointModelsUseOnlyDeclaredVariables()",
+            "binaryZeroOneAndOneTwoPreserveControlsAndQuantitativeZeroOneIsNotInferredBinary()",
+            "rawPcRegressionUsesDeclaredPhenotypesAndPruning()",
+            "nativeMappingRetainsAllGenesAndNeedsNoRuntime()",
+            "missingDependencySkipsBeforeOpeningInputsAndGivesExactRecovery()",
+            "originalAnnotationExactlyAgreesWithNativeMembershipAndBounds()",
+            "changedBundleAndCoordinateMismatchFailWithoutSuccessfulResult()",
+            "summaryMeanTopAndMultiRecoverAllFrozenOriginalResults()"
+          ]
+        }
+      },
+      "tests": 18,
+      "version": "1.10 (win/s)",
+      "upstream_executable_sha256": "e05e3d963215a973064852ec33640118d65745884cc800a5119ca7cffe6cb859",
+      "reference_reproduction": {
+        "status": "passed",
+        "calls": [
+          {
+            "name": "annotation",
+            "command": [
+              "D:\\projects\\JLinAlg\\build\\omics-magma\\magma.exe",
+              "--annotate",
+              "window=0",
+              "--snp-loc",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\reference.bim",
+              "--gene-loc",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\genes.loc",
+              "--out",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\annotation"
+            ],
+            "exit_code": 0,
+            "console_sha256": "ed0a6331e1c2796f553e9c8e0c41873a25ec53813391e9ebeca621e98fb51673"
+          },
+          {
+            "name": "summary-mean",
+            "command": [
+              "D:\\projects\\JLinAlg\\build\\omics-magma\\magma.exe",
+              "--bfile",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\reference",
+              "--gene-annot",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\annotation.genes.annot.txt",
+              "--pval",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\pvalues.tsv",
+              "ncol=N",
+              "duplicate=error",
+              "--gene-model",
+              "snp-wise=mean",
+              "--seed",
+              "42",
+              "--out",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\summary-mean"
+            ],
+            "exit_code": 0,
+            "console_sha256": "44c6175432b6caf6b126a6d3d486d402c057b6026a51f56af9f211502722e567"
+          },
+          {
+            "name": "summary-top",
+            "command": [
+              "D:\\projects\\JLinAlg\\build\\omics-magma\\magma.exe",
+              "--bfile",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\reference",
+              "--gene-annot",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\annotation.genes.annot.txt",
+              "--pval",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\pvalues.tsv",
+              "ncol=N",
+              "duplicate=error",
+              "--gene-model",
+              "snp-wise=top",
+              "--seed",
+              "42",
+              "--out",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\summary-top"
+            ],
+            "exit_code": 0,
+            "console_sha256": "2431b0182dfcde77a527157d647067b8834757d5385a23eb3ee01f8146a2026a"
+          },
+          {
+            "name": "summary-multi",
+            "command": [
+              "D:\\projects\\JLinAlg\\build\\omics-magma\\magma.exe",
+              "--bfile",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\reference",
+              "--gene-annot",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\annotation.genes.annot.txt",
+              "--pval",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\pvalues.tsv",
+              "ncol=N",
+              "duplicate=error",
+              "--gene-model",
+              "snp-wise=multi",
+              "--seed",
+              "42",
+              "--out",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\summary-multi"
+            ],
+            "exit_code": 0,
+            "console_sha256": "b4638dc476bbbc899de66046c24db3a8becdaf6ae29955b310899045c5a2ee5e"
+          },
+          {
+            "name": "raw-linreg",
+            "command": [
+              "D:\\projects\\JLinAlg\\build\\omics-magma\\magma.exe",
+              "--bfile",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\reference",
+              "--gene-annot",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\annotation.genes.annot.txt",
+              "--gene-model",
+              "linreg",
+              "--gene-settings",
+              "prune=.999",
+              "--seed",
+              "42",
+              "--out",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\raw-linreg"
+            ],
+            "exit_code": 0,
+            "console_sha256": "50c9ef10f26a61d44b60eacb97cec6c51353aa9cdce2f687317887312529e339"
+          },
+          {
+            "name": "sets",
+            "command": [
+              "D:\\projects\\JLinAlg\\build\\omics-magma\\magma.exe",
+              "--gene-results",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\summary-mean.genes.raw",
+              "--set-annot",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\sets.annot",
+              "--model",
+              "direction=pos",
+              "correct=all",
+              "self-contained",
+              "--settings",
+              "gene-info",
+              "abbreviate=0",
+              "--seed",
+              "42",
+              "--out",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\sets"
+            ],
+            "exit_code": 0,
+            "console_sha256": "ac03ba6c87b522a2b02f49369200d881e5656148d28fd0b728e6bcd175eb98a8"
+          },
+          {
+            "name": "properties",
+            "command": [
+              "D:\\projects\\JLinAlg\\build\\omics-magma\\magma.exe",
+              "--gene-results",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\summary-mean.genes.raw",
+              "--gene-covar",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\properties.tsv",
+              "missing-values=drop",
+              "max-miss=0",
+              "--model",
+              "direction=pos",
+              "correct=all",
+              "--settings",
+              "gene-info",
+              "abbreviate=0",
+              "--seed",
+              "42",
+              "--out",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\properties"
+            ],
+            "exit_code": 0,
+            "console_sha256": "379724d7a1352562292df731286204c624cd2c3c1f37bb3aea58009e534d7688"
+          }
+        ],
+        "exact_reference_files": [
+          "annotation.genes.annot.txt",
+          "summary-mean.genes.out.txt",
+          "summary-top.genes.out.txt",
+          "summary-multi.genes.out.txt",
+          "raw-linreg.genes.out.txt",
+          "sets.gsa.out.txt",
+          "sets.gsa.self.out.txt",
+          "properties.gsa.out.txt"
+        ],
+        "executable_sha256": "e05e3d963215a973064852ec33640118d65745884cc800a5119ca7cffe6cb859",
+        "reproducer_sha256": "6ad5ff6f3971a223a965febd540a5377a952e36b2b2710234827aa7afc7f7202",
+        "scope": "Eight independently reproduced original-program annotation/association/set/property files; frozen synthetic source bytes unchanged. Program remains private and unmodified."
+      },
+      "reproducer_sha256": "6ad5ff6f3971a223a965febd540a5377a952e36b2b2710234827aa7afc7f7202",
+      "packaged_steps": 17,
+      "independent_packaged_checks": 12,
+      "packaged_validation": "magma-packaged-validation.json",
+      "dependency_evidence": "magma-dependency-status.json",
+      "recorded_utc": "2026-10-25T02:57:16.310858+00:00",
+      "scope": "Independent native closed-window/strand/ID/build and exact PLINK/GWAS contracts,804actual frozen association rows, gene sets/properties/conditional/joint, raw phenotype coding and sample universes. Unmodified private upstream program; no binary/source/manual redistribution, FUMA/R/PoPS/scDRS, meta/interaction, sex-chromosome scientific validation or historical/full-paper parity.",
+      "refreshed_utc": "2026-10-25T20:32:57.454823+00:00",
+      "current_validation": {
+        "full_gate": {
+          "tests": 1504,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 5
+        },
+        "required_suites": 61,
+        "all_required_without_skips": true,
+        "raw_snapshot": "D:\\projects\\JLinAlg\\build\\literature-review\\flash-runtime\\full-gate-2-snapshot",
+        "prior_packaged_regressions": "D:\\projects\\JLinAlg\\build\\literature-review\\flash-packaged-regressions\\verification.json",
+        "scope": "Current unchanged owned method sources retested on this JAR. Historical reference-generation counts/options remain scoped to their original fixtures;prior reports remain in validation_history."
+      }
+    },
+    {
+      "status": "passed",
+      "jar_sha256": "66be181d854806d9ae64d6f060e8defba8af5bdf594d3d352c9c76097a2a8d2e",
+      "source_sha256": {
+        "src/main/java/org/jlinalg/genetics/MagmaTables.java": "93eaf24c77f57419ea85ec811cad67dba4bdbe6b371d11133b7a4b4bcb6b41fa",
+        "src/main/java/org/jlinalg/cli/MagmaToolsCli.java": "4bd0a754f129ad045d9b028e3a07feee271158aca1c1f87bf9931cc9d6b87b18",
+        "src/main/java/org/jlinalg/genetics/GeneWindowMapping.java": "75ff376d01d40cc5e5c3f228610da7d39326f0a815a9695b0b0d0e4bc487b851",
+        "src/main/java/org/jlinalg/cli/MagmaRuntime.java": "73616084bab25152070d346aff12cfd061f2ccf367a8f1aa8ecb52e767bb22e7"
+      },
+      "current_full_gate_suites": {
+        "org.jlinalg.genetics.GeneWindowMappingTest": {
+          "suite_name": "org.jlinalg.genetics.GeneWindowMappingTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "e4e93548d8f12701144734ac9a14478bcea0aeed5da6c6ed97a7a46f83e175ba",
+          "testcases": [
+            "exactCurrentUpstreamAnnotationMatchesEverySyntheticMembership()",
+            "duplicateIdsUnknownStrandsOverflowAndAmbiguousChromosomeAliasesFail()",
+            "indexedMembershipAgreesWithIndependentBruteForceAcrossRandomChromosomes()",
+            "strandAwareAsymmetryClosedBoundariesAndZeroSentinelAreExplicit()"
+          ]
+        },
+        "org.jlinalg.genetics.MagmaTablesTest": {
+          "suite_name": "org.jlinalg.genetics.MagmaTablesTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "844f6cd62c4f6a580479876715642692d2491af4c6d6caf8ea94329f30aa4bd6",
+          "testcases": [
+            "mismatchedCoordinatesDuplicatesZeroPAndSilentNSubstitutionAreRejected()",
+            "exactPanelAndVariableSampleSizesAreValidated()",
+            "originalCurrentModelTablesPreserveProbabilitiesAndCoordinates()",
+            "incompleteOrCorruptBedFamilyNeverReachesUpstream()"
+          ]
+        },
+        "org.jlinalg.cli.MagmaToolsCliTest": {
+          "suite_name": "org.jlinalg.cli.MagmaToolsCliTest",
+          "suite": {
+            "tests": 10,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "84b1f16abc5a71c024c2b02d5af96b6dc3fb4a71a2681e7b6f4443f10e84a76b",
+          "testcases": [
+            "undeclaredModelOptionsAndMissingCovariatesAreRejected()",
+            "actualCompetitiveSelfContainedAndPropertyModelsMatchIndependentReferences()",
+            "combinedConditionalAndJointModelsUseOnlyDeclaredVariables()",
+            "binaryZeroOneAndOneTwoPreserveControlsAndQuantitativeZeroOneIsNotInferredBinary()",
+            "rawPcRegressionUsesDeclaredPhenotypesAndPruning()",
+            "nativeMappingRetainsAllGenesAndNeedsNoRuntime()",
+            "missingDependencySkipsBeforeOpeningInputsAndGivesExactRecovery()",
+            "originalAnnotationExactlyAgreesWithNativeMembershipAndBounds()",
+            "changedBundleAndCoordinateMismatchFailWithoutSuccessfulResult()",
+            "summaryMeanTopAndMultiRecoverAllFrozenOriginalResults()"
+          ]
+        }
+      },
+      "tests": 18,
+      "version": "1.10 (win/s)",
+      "upstream_executable_sha256": "e05e3d963215a973064852ec33640118d65745884cc800a5119ca7cffe6cb859",
+      "reference_reproduction": {
+        "status": "passed",
+        "calls": [
+          {
+            "name": "annotation",
+            "command": [
+              "D:\\projects\\JLinAlg\\build\\omics-magma\\magma.exe",
+              "--annotate",
+              "window=0",
+              "--snp-loc",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\reference.bim",
+              "--gene-loc",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\genes.loc",
+              "--out",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\annotation"
+            ],
+            "exit_code": 0,
+            "console_sha256": "ed0a6331e1c2796f553e9c8e0c41873a25ec53813391e9ebeca621e98fb51673"
+          },
+          {
+            "name": "summary-mean",
+            "command": [
+              "D:\\projects\\JLinAlg\\build\\omics-magma\\magma.exe",
+              "--bfile",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\reference",
+              "--gene-annot",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\annotation.genes.annot.txt",
+              "--pval",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\pvalues.tsv",
+              "ncol=N",
+              "duplicate=error",
+              "--gene-model",
+              "snp-wise=mean",
+              "--seed",
+              "42",
+              "--out",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\summary-mean"
+            ],
+            "exit_code": 0,
+            "console_sha256": "44c6175432b6caf6b126a6d3d486d402c057b6026a51f56af9f211502722e567"
+          },
+          {
+            "name": "summary-top",
+            "command": [
+              "D:\\projects\\JLinAlg\\build\\omics-magma\\magma.exe",
+              "--bfile",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\reference",
+              "--gene-annot",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\annotation.genes.annot.txt",
+              "--pval",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\pvalues.tsv",
+              "ncol=N",
+              "duplicate=error",
+              "--gene-model",
+              "snp-wise=top",
+              "--seed",
+              "42",
+              "--out",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\summary-top"
+            ],
+            "exit_code": 0,
+            "console_sha256": "2431b0182dfcde77a527157d647067b8834757d5385a23eb3ee01f8146a2026a"
+          },
+          {
+            "name": "summary-multi",
+            "command": [
+              "D:\\projects\\JLinAlg\\build\\omics-magma\\magma.exe",
+              "--bfile",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\reference",
+              "--gene-annot",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\annotation.genes.annot.txt",
+              "--pval",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\pvalues.tsv",
+              "ncol=N",
+              "duplicate=error",
+              "--gene-model",
+              "snp-wise=multi",
+              "--seed",
+              "42",
+              "--out",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\summary-multi"
+            ],
+            "exit_code": 0,
+            "console_sha256": "b4638dc476bbbc899de66046c24db3a8becdaf6ae29955b310899045c5a2ee5e"
+          },
+          {
+            "name": "raw-linreg",
+            "command": [
+              "D:\\projects\\JLinAlg\\build\\omics-magma\\magma.exe",
+              "--bfile",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\reference",
+              "--gene-annot",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\annotation.genes.annot.txt",
+              "--gene-model",
+              "linreg",
+              "--gene-settings",
+              "prune=.999",
+              "--seed",
+              "42",
+              "--out",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\raw-linreg"
+            ],
+            "exit_code": 0,
+            "console_sha256": "50c9ef10f26a61d44b60eacb97cec6c51353aa9cdce2f687317887312529e339"
+          },
+          {
+            "name": "sets",
+            "command": [
+              "D:\\projects\\JLinAlg\\build\\omics-magma\\magma.exe",
+              "--gene-results",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\summary-mean.genes.raw",
+              "--set-annot",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\sets.annot",
+              "--model",
+              "direction=pos",
+              "correct=all",
+              "self-contained",
+              "--settings",
+              "gene-info",
+              "abbreviate=0",
+              "--seed",
+              "42",
+              "--out",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\sets"
+            ],
+            "exit_code": 0,
+            "console_sha256": "ac03ba6c87b522a2b02f49369200d881e5656148d28fd0b728e6bcd175eb98a8"
+          },
+          {
+            "name": "properties",
+            "command": [
+              "D:\\projects\\JLinAlg\\build\\omics-magma\\magma.exe",
+              "--gene-results",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\summary-mean.genes.raw",
+              "--gene-covar",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\magma\\properties.tsv",
+              "missing-values=drop",
+              "max-miss=0",
+              "--model",
+              "direction=pos",
+              "correct=all",
+              "--settings",
+              "gene-info",
+              "abbreviate=0",
+              "--seed",
+              "42",
+              "--out",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\reproduced-references\\properties"
+            ],
+            "exit_code": 0,
+            "console_sha256": "379724d7a1352562292df731286204c624cd2c3c1f37bb3aea58009e534d7688"
+          }
+        ],
+        "exact_reference_files": [
+          "annotation.genes.annot.txt",
+          "summary-mean.genes.out.txt",
+          "summary-top.genes.out.txt",
+          "summary-multi.genes.out.txt",
+          "raw-linreg.genes.out.txt",
+          "sets.gsa.out.txt",
+          "sets.gsa.self.out.txt",
+          "properties.gsa.out.txt"
+        ],
+        "executable_sha256": "e05e3d963215a973064852ec33640118d65745884cc800a5119ca7cffe6cb859",
+        "reproducer_sha256": "6ad5ff6f3971a223a965febd540a5377a952e36b2b2710234827aa7afc7f7202",
+        "scope": "Eight independently reproduced original-program annotation/association/set/property files; frozen synthetic source bytes unchanged. Program remains private and unmodified."
+      },
+      "reproducer_sha256": "6ad5ff6f3971a223a965febd540a5377a952e36b2b2710234827aa7afc7f7202",
+      "packaged_steps": 17,
+      "independent_packaged_checks": 12,
+      "packaged_validation": "magma-packaged-validation.json",
+      "dependency_evidence": "magma-dependency-status.json",
+      "recorded_utc": "2026-10-25T02:57:16.310858+00:00",
+      "scope": "Independent native closed-window/strand/ID/build and exact PLINK/GWAS contracts,804actual frozen association rows, gene sets/properties/conditional/joint, raw phenotype coding and sample universes. Unmodified private upstream program; no binary/source/manual redistribution, FUMA/R/PoPS/scDRS, meta/interaction, sex-chromosome scientific validation or historical/full-paper parity.",
+      "refreshed_utc": "2026-10-25T23:24:57.944602+00:00",
+      "current_validation": {
+        "full_gate": {
+          "tests": 1552,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 5
+        },
+        "required_suites": 68,
+        "all_required_without_skips": true,
+        "raw_snapshot": "D:\\projects\\JLinAlg\\build\\literature-review\\fimo-runtime\\configured-full-gate-1",
+        "prior_packaged_regressions": "D:\\projects\\JLinAlg\\build\\literature-review\\fimo-runtime\\prior-packaged-regressions-1\\verification.json",
+        "scope": "Current unchanged owned method sources retested on this JAR. Historical reference-generation counts/options remain scoped to their original fixtures;prior reports remain in validation_history."
+      }
+    }
+  ]
+}

@@ -40,11 +40,14 @@ hypotheses:
         phenotype_terms: [sleep duration]
         relevant_tissues: [whole blood, brain]
         max_features: 10
+        literature_max_features: 100
+        literature_max_queries: 1000
         fdr: 0.05
         window_bp: 500000
 </code></pre></div>
 <p>This is a fragment to merge into a complete contract with <code>schema_version</code> and <code>project</code>. For an already-resolved project, make the change through <code>amendment-&lt;ID&gt;.yaml</code> and scientist approval rather than editing its base contract. The <a href="../schemas/study-v1.schema.json">study schema</a> describes the optional settings.</p>
-<p>Selection uses BH across the full valid tested family in the available meta-analysis, or separately within each primary table when no meta-analysis is available. It does not recalculate FDR on only the top hits. Primary-table selection is exploratory, not pooled evidence or an independent replication claim. Conflicting or ambiguous annotations are excluded. The feature limit defaults to 10 and is capped at 100; search budgets are visible in the result records.</p>
+<p>Selection uses BH across the full valid tested family in the available meta-analysis, or separately within each primary table when no meta-analysis is available. It does not recalculate FDR on only the top hits. Primary-table selection is exploratory, not pooled evidence or an independent replication claim. Conflicting or ambiguous annotations are excluded. Protein/sequence and contextual work use <code>max_features</code>, default 10 and capped at 100. Signal literature review has a separate <code>literature_max_features</code>, default 100 and capped at 100. An existing explicit <code>max_features</code> remains its fallback when no dedicated literature cap is supplied, preserving earlier deliberately bounded contracts.</p>
+<p>Literature selection requires FDR strictly below <code>fdr</code> (default 0.05) and uses pooled meta rows only when a meta table is present. The cap is applied after full-family correction in P-value/feature-ID order. <code>literature-selection.tsv</code> retains every eligible unambiguously mapped significant feature, including those outside the review budget, with original full-family FDR, selection status, query-audit links and appraisal disposition. Annotation-ineligible and nonsignificant rows remain in upstream full result/annotation artifacts. No signal becomes scientifically supported because retrieval completed; article appraisal and any AI impact ranking remain separate work.</p>
 <h2 id="feature-annotation">Feature annotation</h2>
 <p>Local annotation tables and GTFs take priority. Declare the coordinate convention for tables. Internal annotated intervals are 1-based and closed. Unknown probe IDs are never treated as gene symbols simply because they look plausible.</p>
 <p>For human Ensembl features with an explicit modern GENCODE release and GRCh38 build, JLinAlg can retrieve the release-specific GTF automatically, cache it, and record the source URL and checksum. This download requests a public reference release, not the project's feature list. It does not guess a genome build, lift coordinates, or download an arbitrary platform manifest. Other platforms and unsupported releases need a local <code>files.annotation</code> table/GTF.</p>
@@ -61,13 +64,13 @@ hypotheses:
 <tbody>
 <tr>
 <td>GWAS Catalog REST v2 and harmonized FTP</td>
-<td>Primary or related-trait study discovery, gene-associated hits, coordinate-window SNP discovery, and indexed retrieval of selected harmonized GRCh38 regional summary statistics</td>
-<td>REST associations are curated lead associations, not full regional results. Automatic regional use requires a downloadable, ancestry-matched, at-least-100,000-variant study with sorted harmonized data and a tabix index. Candidate ranking and database coverage are disclosed.</td>
+<td>Primary or related-trait study discovery by public phenotype label, followed by local regional extraction from selected complete harmonized GRCh38 files</td>
+<td>REST associations are curated lead associations, not full regional results. Automatic use requires a downloadable, ancestry-matched, at-least-100,000-variant study with sorted harmonized data and a tabix index. The complete selected file and index are installed in the shared cache and verified before local extraction.</td>
 </tr>
 <tr>
 <td>Pan-UK Biobank</td>
-<td>Automatic exposure-instrument lookup for the public BMI field 21001 EUR summary statistics; other traits remain discoverable candidates until a provider adapter or reviewed custom source is declared</td>
-<td>The native source is GRCh37. JLinAlg projects each biallelic exposure allele through NCBI SPDI, matches the indexed Pan-UKB row, and emits an audited GRCh38-coordinate adapter table. It does not lift positions by offset or treat a UKB-plus-external meta-analysis as independent of every cohort.</td>
+<td>Automatic exposure-instrument lookup for the public BMI field 21001 EUR or ICD-10 E66 obesity EUR summary statistics; other traits remain discoverable candidates until a provider adapter or reviewed custom source is declared</td>
+<td>The complete indexed source is installed in the shared cache. Its native build is GRCh37; JLinAlg projects biallelic exposure alleles locally with the installed hg38-to-hg19 chain, verifies exact Pan-UKB alleles, and emits an audited GRCh38-coordinate adapter table. It does not lift positions by offset or treat a UKB-plus-external meta-analysis as independent of every cohort.</td>
 </tr>
 <tr>
 <td>eQTL Catalogue</td>
@@ -86,7 +89,7 @@ hypotheses:
 </tr>
 <tr>
 <td>AlphaFold DB</td>
-<td>Predicted structure identifiers, versions, confidence metrics and model links</td>
+<td>Contextual metadata lookup; the separate <a href="study-pipeline-tutorial.html#exact-protein-sequences-structures-and-confidence">native protein branch</a> adds exact-sequence model/PAE retrieval, supplied-model assessment and configured prediction</td>
 <td>Prediction is not isoform equivalence, binding, druggability, safety or efficacy evidence.</td>
 </tr>
 <tr>
@@ -103,13 +106,14 @@ hypotheses:
 </table>
 <p>The same framework applies to different phenotypes, cohorts and tissues. For example, a blood/sleep study may declare brain as a follow-up tissue with a documented rationale. JLinAlg does not infer that all available brain QTLs are appropriate. Related phenotype suggestions from an LLM remain proposals until reviewed and incorporated into the study.</p>
 <p>The built-in GWAS Catalog/eQTL Catalogue/GTEx discovery branch requires explicitly human datasets. It does not substitute human genetic resources for another organism. Nonhuman studies need species-matched genetic-source adapters; the reviewed protein lookup currently supports human and mouse.</p>
-<p>Searches distinguish <code>no_matches</code>, <code>search_limited</code>, <code>not_found</code>, <code>endpoint_retired</code>, <code>access_denied</code>, <code>rate_limited</code>, <code>unavailable</code>, <code>offline_policy</code>, and <code>policy_denied</code>. HTTP 404/410, malformed responses and connectivity failures never become a scientific “no associations exist” conclusion. Search defaults are three pages per strategy, 20 regional catalogue SNPs per feature, 20 literature records per page, and a hard 200-request budget per operation. A search hitting its budget is not exhaustive. UCSC requests are limited to one per second and sequences to 100 kb by default.</p>
+<p>Searches distinguish <code>no_matches</code>, <code>search_limited</code>, <code>not_found</code>, <code>endpoint_retired</code>, <code>access_denied</code>, <code>rate_limited</code>, <code>unavailable</code>, <code>offline_policy</code>, and <code>policy_denied</code>. HTTP 404/410, malformed responses and connectivity failures never become a scientific “no associations exist” conclusion. Search defaults are three pages per strategy, 20 regional catalogue SNPs per feature and 20 literature records per page. <code>literature_search</code> has a separate <code>literature_max_queries</code> budget, default 1,000 (range 1–10,000), so a 100-signal direct/mechanism/counterevidence search is not silently constrained by the old 200-query ceiling. Native protein structure/assessment uses a separate default 500-query budget. Other public-evidence operations retain 200. Each request record includes its budget; audited cached uses also count. Budget exhaustion leaves retrieval incomplete and the operation waiting. Page-limited searches remain explicitly bounded, not exhaustive. UCSC requests are limited to one per second and sequences to 100 kb by default.</p>
 <h2 id="from-a-source-candidate-to-genetic-inference">From a source candidate to genetic inference</h2>
 <p><code>genetic_pairs</code> is the legacy/custom-source name for an analysis recipe, not a biological object. One entry binds an exact molecular exposure table, phenotype outcome table, LD reference, region, ancestry, build, sample-size and overlap declaration. It remains necessary for arbitrary sources and nonstandard designs, but supported public MR sources no longer require a hand-written entry per transcript.</p>
 <p>For an FHS irQTL exposure and BMI outcome, declare the concise source policy once:</p>
 <div class="code-window"><div class="code-bar"><span>yaml</span></div><pre><code>analysis:
   goals: [mendelian_randomization]
   bioinformatics:
+    fdr: 0.05
     mr:
       exposure_dataset: fhs-bmi
       exposure_ancestry: European
@@ -119,8 +123,14 @@ hypotheses:
       ld_provider: 1000g-30x-grch38
       ld_population: EUR
 </code></pre></div>
-<p>The actual irQTL analysis ancestry is deliberately required; JLinAlg does not infer it from the FHS cohort name. For BMI/EUR, <code>auto</code> selects the public Pan-UK Biobank field 21001 EUR analysis and its recorded sample size. A non-UKB exposure cohort plus the UKB-only outcome establishes the named-cohort basis for <code>sample_overlap: none</code>; an exposure that may include UK Biobank is rejected. The policy expands the reviewed irQTL candidate file into per-feature recipes, records every NCBI build projection and Pan-UKB lookup, and uses the GRCh38 LD provider below. The operation still stops if fewer than two strong, matched and LD-independent instruments remain.</p>
-<p>For colocalization, JLinAlg can use GWAS Catalog REST v2 to find studies and the Catalog's harmonized FTP collection for indexed regional retrieval. The REST API itself exposes metadata and curated lead associations, not arbitrary full-summary-statistic rows. JLinAlg therefore verifies the selected accession's harmonized metadata, GRCh38 build, sorted status and tabix index before requesting only the declared interval; it retains the Catalog MD5 while disclosing that the entire remote file was not downloaded and rehashed.</p>
+<p>The actual irQTL analysis ancestry is deliberately required; JLinAlg does not infer it from the FHS cohort name. For BMI/EUR, <code>auto</code> selects Pan-UK Biobank field 21001; for obesity/EUR it selects ICD-10 E66, including recorded case/control counts. A non-UKB exposure cohort plus the UKB-only outcome establishes the named-cohort basis for <code>sample_overlap: none</code>; an exposure that may include UK Biobank is rejected. MR defaults to investigating <strong>all eligible significant measured features</strong>, not a top-10 or top-1,000 subset. BH adjustment uses the complete valid tested meta-analysis family (pooled rows only), or each full primary table when meta-analysis is unavailable, before annotation/QTL matching. Selection requires FDR strictly below <code>bioinformatics.fdr</code>, which defaults to 0.05. The rule is feature-type agnostic for measured transcripts, proteins and probes; it does not remove annotation, molecular-assay, QTL, allele, ancestry or instrument-validity prerequisites. The built-in automatic source adapter remains cis-irQTL-specific; protein/probe exposures require appropriate reviewed custom sources, not substituted irQTLs.</p>
+<p>For a deliberately capped exploratory run, explicitly set <code>mr.max_features: 1000</code> (accepted range 1–10,000); existing explicit caps are honored, and caps are applied after full-family BH selection in deterministic P-value/feature-ID order. Omit that setting to use all eligible significant features, including families larger than 10,000. The separate <code>bioinformatics.max_features</code> limit still bounds contextual protein/sequence and colocalization work and never caps MR. Literature has its dedicated cap described above. Source audits record the threshold, strict comparison, selection scope and any explicit cap. This default change does not amend existing frozen study contracts or rerun prior results.</p>
+<p>The automatic adapter excludes every row not explicitly marked cis, then passes all genome-wide-significant cis-irQTL candidates for each transcript together to outcome matching and ancestry-matched GRCh38 LD clumping. One retained independent instrument produces a Wald ratio; multiple retained instruments produce the applicable multi-instrument estimators and sensitivity analyses. There is no arbitrary per-transcript instrument cap. Missing QTL or outcome coverage remains an audited exclusion or input requirement, not a negative causal finding.</p>
+<p>For colocalization, JLinAlg can use GWAS Catalog REST v2 to find studies by public phenotype label and the Catalog's harmonized FTP collection for complete summary-statistic files. The REST API itself exposes metadata and curated lead associations, not arbitrary full-summary-statistic rows. JLinAlg verifies the selected accession's harmonized metadata, GRCh38 build, sorted status and tabix index, installs the complete file and index in the shared cache, verifies the Catalog MD5 when available, and performs regional extraction locally.</p>
+<p>Complete public files are checksum-verified on first reuse in each JVM. Within that process, unchanged files reuse the verification after checking file identity, size, modification and creation times, the source manifest and any expected checksum. On Windows, where basic file keys are unavailable, a read-only no-write/no-delete handle protects the verified file while the JVM uses it; if identity cannot be tracked or protected, full checksum verification remains the fallback. A changed file or manifest forces full verification, and concurrent lookups share the verified installation. This process-local shortcut avoids hashing whole chromosome files for every transcript; a new analysis process starts with fresh checksum checks. Cache files must be treated as immutable while analyses run.</p>
+<p>Local GRCh38 VCF reads merge requested positions separated by at most 16,384 bp into coordinate-ordered queries, avoiding repeated decompression of nearby BGZF blocks. Unrequested records are ignored, and dosage filtering, requested-variant order, allele orientation and LD calculations are unchanged. This is an I/O grouping distance, <strong>not</strong> an LD-clumping window: all retained regional instruments still undergo the declared pairwise r-squared screen. Query counts and strategy are recorded in <code>ld-reference.yaml</code>.</p>
+<p>Full automatic-source lookup audits remain in <code>automatic-mr-sources.yaml</code> or <code>automatic-colocalization-sources.yaml</code>, covered by the operation's artifact hashes. Genetic evidence and manifests contain compact feature summaries plus the full audit's relative path and SHA-256, rather than duplicating every lookup row in derived reports. Generated operation manifests and evidence have a bounded 128 MiB reader budget; ordinary study contracts retain their 16-million-code-point limit. Both readers reject aliases, duplicate keys, unsafe YAML tags and excessive nesting.</p>
+<p>For an explicitly approved exploratory partial-region analysis, the exposure defines the candidate variant set. JLinAlg therefore filters the complete outcome region to those exposure identifiers before constructing LD; unrelated outcome-only rows do not consume the in-memory LD budget or become evidence of exposure coverage. Conventional complete-region colocalization retains the full-region overlap checks.</p>
 <h3 id="related-phenotype-colocalization-policy">Related-phenotype colocalization policy</h3>
 <p>Related phenotypes may be scientist-declared, or an optional LLM advisor can propose up to 20 search labels. The advisor prompt requests direct consequences, biomarkers, intermediate traits, common comorbidities and physiological domains, with one to five literature identifiers per phenotype. Every suggestion is stored as <code>advisor_proposal_unreviewed</code>; its literature still needs independent verification. The suggestion authorizes only bounded public-source discovery. It does not amend the hypothesis, approve a GWAS, or establish causality.</p>
 <div class="code-window"><div class="code-bar"><span>yaml</span></div><pre><code>assistance:
@@ -146,7 +156,7 @@ analysis:
       ld_population: EUR
       sample_overlap: unknown
 </code></pre></div>
-<p>The primary phenotype and every declared/advisor-proposed label are searched separately. For each label, the bounded automatic selector prefers the largest ancestry-matched study among the retrieved exact-trait GWAS Catalog pages when it has downloadable full summary statistics, at least 100,000 variants and no obvious CNV-only label. This is a reproducible availability/sample-size heuristic, not a claim that the chosen phenotype is the most biologically important. By default at most five traits proceed to colocalization; up to 20 can be searched or explicitly analyzed.</p>
+<p>The primary phenotype and every declared/advisor-proposed label are searched separately. Default discovery requests contain public phenotype labels only; selected genes, variants and regions are not submitted. <code>remote_feature_queries: true</code> is an explicit opt-in for feature-context searches. For each label, the bounded automatic selector prefers the largest ancestry-matched study among the retrieved exact-trait GWAS Catalog pages when it has downloadable full summary statistics, at least 100,000 variants and no obvious CNV-only label. This is a reproducible availability/sample-size heuristic, not a claim that the chosen phenotype is the most biologically important. By default at most five traits proceed to colocalization; up to 20 can be searched or explicitly analyzed.</p>
 <p>The irQTL export may be significance-filtered or otherwise incomplete. With <code>allow_partial_regions: true</code>, JLinAlg still performs harmonization, ancestry-matched GRCh38 LD extraction, fine-mapping mechanics and prior-sensitivity colocalization when at least two usable variants remain and the declared fraction of exported QTL variants matches. The result is labeled <code>exploratory_partial_region_major_limitation</code>, not conventional complete-region colocalization. The operation records exposure and outcome match fractions independently; it never calls missing database rows negative evidence.</p>
 <p>Every generated report/manuscript must retain this caveat: partial-data posterior probabilities are conditional on the observed selected variants; missing variants, significance filtering, unequal coverage, winner's curse and unknown sample overlap can materially bias them, and a null result is not evidence against a shared causal variant. Set <code>allow_partial_regions: false</code> when the scientific plan requires conventional full-region colocalization.</p>
 <p>The regional adapter runs after a scientist approves an exact exposure/outcome policy or pair. Its declarations can be short, but the required facts cannot be guessed: molecular feature, phenotype, assay, tissue, build, ancestry, sample size, source citation, regional coverage and sample overlap. See the complete checked-in example for custom-source YAML.</p>
@@ -161,12 +171,53 @@ analysis:
 <h3 id="ld-and-automatic-reference-downloads">LD and automatic reference downloads</h3>
 <p>For a supplied LD matrix, rows and columns must have matching variant IDs. An <code>alleles_file_role</code> table supplies <code>variant_id</code>, <code>effect_allele</code>, and <code>other_allele</code> defining the matrix's signed orientation. Matrix symmetry, bounds, diagonal and positive semidefiniteness are checked; invalid matrices are not silently replaced or regularized.</p>
 <p>Alternatively set <code>ld: {population: EUR}</code> (or AFR/AMR/EAS/SAS) and allow reference downloads. The existing pinned 1000 Genomes Phase 3 installer fetches a missing panel. The pipeline extracts signed Pearson A1-dosage correlation among founders, checks at least 95% observed calls per SNP and mean-imputes remaining missing reference calls. This is different from the haplotype r-squared used by the standalone clumping command. Alleles, reference coordinates and panel hashes are retained.</p>
-<p>The downloadable bundled panel is GRCh37. For GRCh38 MR, <code>ld_provider: 1000g-30x-grch38</code> instead queries the official 30x high-coverage phased 1000 Genomes chromosome VCF and tabix index by HTTPS. It restricts genotypes to the requested AFR/AMR/EAS/EUR/SAS superpopulation in the official 2,504-sample Phase 3 panel, thereby excluding the additional relatives in the 3,202-sample callset; applies call-rate and MAF checks; and records the regional source URLs, sample-panel hash, exclusions, alleles and resulting matrix hash. This is indexed regional retrieval, not a silent whole-genome download or coordinate liftover.</p>
-<p>JLinAlg will not apply GRCh37 LD to mismatching coordinates. Missing, monomorphic or incompatible reference variants remain actionable blockers. Population is never guessed; the source ancestry must agree with the selected panel. The public source definitions are documented by the <a href="https://www.internationalgenome.org/data-portal/data-collection/1000genomes_30x">1000 Genomes 30x GRCh38 collection</a>, <a href="https://pan.ukbb.broadinstitute.org/docs/per-phenotype-files/index.html">Pan-UK Biobank per-phenotype files</a>, and <a href="https://api.ncbi.nlm.nih.gov/variation/v0/">NCBI Variation Services</a>.</p>
+<p>The downloadable bundled panel is GRCh37. For GRCh38 MR, <code>ld_provider: 1000g-30x-grch38</code> installs the complete official 30x high-coverage phased 1000 Genomes VCF and tabix index for each required chromosome in the shared cache. It then restricts genotypes locally to the requested AFR/AMR/EAS/EUR/SAS superpopulation in the official 2,504-sample Phase 3 panel, thereby excluding the additional relatives in the 3,202-sample callset; applies call-rate and MAF checks; and records source and derived-file hashes, exclusions, alleles and the resulting matrix hash. Reuse works under <code>--offline</code>; the tradeoff is explicit chromosome-scale storage.</p>
+<p>JLinAlg will not apply GRCh37 LD to mismatching coordinates. Missing, monomorphic or incompatible reference variants remain actionable blockers. Population is never guessed; the source ancestry must agree with the selected panel. The public source definitions are documented by the <a href="https://www.internationalgenome.org/data-portal/data-collection/1000genomes_30x">1000 Genomes 30x GRCh38 collection</a> and <a href="https://pan.ukbb.broadinstitute.org/docs/per-phenotype-files/index.html">Pan-UK Biobank per-phenotype files</a>.</p>
 <h3 id="statistical-outputs">Statistical outputs</h3>
 <p>SuSiE fine-mapping runs on the harmonized overlapping SNP set for both traits and must converge. Colocalization uses those SuSiE effects, with a second shared-prior setting for sensitivity. Curated nearby lead SNPs or omics association coefficients alone are never presented as conventional colocalization. When a reviewed policy explicitly permits incomplete QTL data, the same computation may run as exploratory partial-data colocalization with the evidence-grade and mandatory caveat above.</p>
+<p>The study adapter permits up to 2,000 SuSiE iterations per attempt and records the effective ceiling. Conventional complete-region analyses require the declared maximum component count to converge. For explicitly approved exploratory partial-region analyses only, JLinAlg first attempts up to 10 components and, if necessary, steps down to select the largest component count that converges. Every attempted component count, the selected count, and whether the fallback was used are recorded. This convergence-conditioned model selection is an additional manuscript limitation; it must not be hidden or treated as equivalent to a prespecified component count. If a fit converges but produces no credible signal, the pair is recorded as completed but not estimable for signal-pair colocalization, rather than as a missing-input request or evidence against sharing.</p>
+<p>Once a prespecified public outcome and local LD source have been acquired and exhausted, fewer than two usable regional effect estimates, LD variants, or aligned variants are also recorded as completed but not estimable for exploratory partial-region colocalization. They are source-sufficiency limitations, not investigator input requests and not negative colocalization evidence. A missing declaration, inaccessible source, incompatible build, or unapproved scientific assumption still produces <code>waiting_for_input</code>.</p>
+<p>MR requires at least one strong, allele-aligned instrument after public outcome lookup and LD filtering. A single retained instrument produces a Wald ratio even when other candidates are absent, incompatible or excluded; the attrition and every exclusion remain recorded. A study may declare a stricter minimum lookup-overlap fraction. Multi-instrument diagnostics are never inferred from a one-instrument result.</p>
 <p>MR selects exposure instruments using p ≤ 5e-8 and F ≥ 10 by default, then LD-prunes at r-squared ≤ 0.001. It requires at least two remaining instruments for this automatic IVW branch. Outputs include fixed/random IVW, and, with at least three instruments, Egger, weighted median and leave-one-instrument-out estimates. Weak instruments, pleiotropy, selection bias, tissue specificity and exclusion-restriction assumptions still need scientific appraisal. Numerical success is not proof of a causal drug target.</p>
-<p>The current in-memory regional limit is 5,000 variants and the window cannot exceed 10 Mb. Multi-trait, multi-tissue and multiple-region analyses are separate declared pairs with separate provenance. No additional across-pair multiplicity adjustment is silently implied by their individual estimates.</p>
+<p>Fine-mapping, colocalization, and user-supplied LD matrices retain a 5,000-variant regional limit. Automatic MR with genotype-derived LD supports up to 20,000 variants per region; it streams LD rows and resolves column positions once, retaining only the aligned numeric matrix for pairwise clumping. These are memory budgets, not silent instrument truncation: an oversized family requires a different execution strategy rather than dropping eligible instruments. The window cannot exceed 10 Mb. Multi-trait, multi-tissue and multiple-region analyses retain separate source provenance and the primary testing policy below.</p>
+<h3 id="primary-mr-testing-and-complete-feature-dispositions">Primary MR testing and complete feature dispositions</h3>
+<p>Association FDR selects follow-up candidates; MR receives a separate declared
+testing family within each hypothesis:</p>
+<div class="code-window"><div class="code-bar"><span>yaml</span></div><pre><code>analysis:
+  bioinformatics:
+    mr_testing:
+      primary_estimator: ivw-fixed
+      adjustment: BH
+      alpha: 0.05
+</code></pre></div>
+<p>These are resolved defaults. A multi-instrument primary may instead be
+<code>ivw-random</code>; select it before examining estimates. A single retained instrument
+uses the recorded Wald-ratio fallback. Fixed/random IVW, Egger, weighted median
+and instrument-omission sensitivities retain their individual outputs; their
+P values are not searched for the best primary result. <code>BY</code>, <code>bonferroni</code> and
+explicit nominal <code>NONE</code> are also supported. BH requires the usual independence
+or suitable positive-dependence assumptions. Correction does not establish
+instrument validity, remove discovery selection bias or establish causal truth.</p>
+<p><code>mr-primary-results.tsv</code> reports one primary test for each selected eligible
+feature/source hypothesis. Exact duplicate source hypotheses share a test, with
+all pair aliases retained. Conflicting estimates, inconsistent estimability or a
+missing declared primary estimate require review. Different source definitions
+remain distinct tests. <code>mr-feature-dispositions.tsv</code> records every eligible
+mapped feature, including missing pairs, exhausted instrument/source families,
+and features outside an explicitly approved source cap. The default is uncapped.
+Source-analysis dispositions and primary-test dispositions are separate columns.</p>
+<p>The declared correction denominator retains hypotheses without an estimable
+P value. Their raw P and adjusted P remain unavailable. Treating an unavailable
+test as P=1 <strong>only inside the adjustment arithmetic</strong> gives conservative bounds;
+it does not turn missing evidence into a null finding. Unresolved inputs make
+the family provisional and prevent <code>significant_primary</code> certification.
+Definitively exhausted source/instrument families are not estimable, rather than
+waiting for nonexistent data or reporting an invented negative estimate.</p>
+<p><code>mr-testing.yaml</code> records policy, scope, denominator, coverage, duplicate aliases
+and completeness. Genetic evidence records and AI dossiers retain each primary
+estimate and its correction status. Provisional families carry an explicit
+caveat. This is a within-hypothesis MR family; cross-phenotype correction and
+broader automatic assay/source adapters remain separate work.</p>
 <h2 id="questions-and-optional-ai">Questions and optional AI</h2>
 <p>Built-in missing-input questions are recorded in <code>QUESTIONS.md</code>, the question inbox and <code>SESSION_HISTORY.md</code>. Use <code>study questions --out answers.yaml</code>, then <code>study answer answers.yaml --actor-id PERSON --check</code> and <code>--record</code>. Answers record statements and may propose amendments; they do not grant execution or transmission permission.</p>
 <p>Opt-in OpenAI/Gemini advice can produce a dedicated, typed list of up to 20 related phenotypes with literature identifiers, or separately propose cited QTL sources, up to three scientist questions, and bounded code text. Each proposal records the provider, returned model, prompt/response, retrieval citations and decision. Suggested phenotype labels may feed public GWAS discovery but remain explicitly unreviewed; they do not change the hypothesis or certify their references. Suggested questions are explicitly labelled as LLM suggestions. New scientific directions require review and amendments. Only registered analysis policies execute automatically.</p>
@@ -270,6 +321,12 @@ not truncation of the underlying evidence: result CSV files, YAML evidence and
 numerical claim bindings retain their original precision. The same formatter is
 available to native study figure-label generators; existing external figures
 are not rewritten by manuscript revision.</p>
+<p>Generated study YAML can be larger than SnakeYAML's general-purpose default when
+many regional evidence pairs and exclusion audits are retained. Downstream study
+operations use the same safe bounded reader as the project engine: duplicate
+keys and aliases are rejected, nesting is capped, and the document limit is 16
+million code points. The larger bound prevents valid generated evidence from
+breaking prioritization and reporting without accepting unbounded input.</p>
 <p>Table 1 places characteristics in rows and cohorts in columns. Multiple
 hypotheses can share a cohort column only when phenotype-file hashes, participant
 selection fingerprints, membership hashes, N, sex coding, units and overlapping
@@ -340,12 +397,13 @@ columns:
 <p>The current streaming adapter expects columns <code>SNP</code>, <code>SNP_Chr</code>, <code>SNP_Pos</code>, <code>EAF</code>,
 <code>N</code>, <code>Tx</code>, <code>Is_Cis</code>, <code>RSq</code>, <code>Fx</code>, <code>T</code>, and <code>log10P</code>, with SNP IDs such as
 <code>chr1:123:G:A:rs123</code>. It checks exact transcript versions, parses declared ALT
-effects, retains log10 probabilities to avoid underflow, and derives candidate
+effects, excludes rows whose <code>Is_Cis</code> value is not <code>1</code>, retains log10 probabilities to avoid underflow, and derives candidate
 standard errors as <code>abs(Fx/T)</code>. That derivation requires the statistic definition
 to be correct. Flags highlight rare alleles, near-perfect fits, extreme statistics,
 weak instruments and the usual MR instrument threshold. Flags are review aids,
-not proof of artifacts; their absence is not instrument approval. At most 50,000
-matching records are written, in source order, with truncation disclosed.</p>
+not proof of artifacts; their absence is not instrument approval. Every valid cis
+record for the selected feature scope is written in source order; no global
+50,000-row truncation can silently remove instruments from later-ranked transcripts.</p>
 <p>The output is <strong>candidate review, not by itself MR or colocalization inference</strong>. The
 candidate-review operation is complete when its audited candidate files exist;
 it no longer reports itself as waiting for downstream MR inputs. MR still needs
@@ -365,8 +423,12 @@ P-value: declare complete regional data or <code>selection_basis:
 exposure_instrument_lookup</code>. Harmonization coverage is measured against the
 exposure-variant set for MR; regional inference retains its full-region coverage
 check. These declarations do not themselves acquire missing data or approve
-instruments. The current automatic MR estimator requires at least two independent
-strong instruments; single-instrument follow-up remains a separate capability.</p>
+instruments. Automatic source preparation rejects unsupported non-SNP alleles,
+invalid standard errors and duplicate rsIDs row by row, and records exclusion
+counts instead of rejecting an otherwise usable feature. If LD clumping leaves
+one independent strong instrument, the pipeline reports a Wald ratio with an
+explicit limitation: heterogeneity, pleiotropy, Egger, weighted-median and
+leave-one-instrument-out diagnostics are not estimable.</p>
 <h2 id="literature-depth-and-excerpts">Literature depth and excerpts</h2>
 <p>The deterministic literature step starts with four field-level strategies:
 field background, hypothesis relevance, similar studies, and potentially

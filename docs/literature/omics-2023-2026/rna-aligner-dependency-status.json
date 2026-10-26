@@ -1,0 +1,541 @@
+{
+  "status": "available-with-recorded-build-warnings",
+  "records": [
+    {
+      "profile": "featurecounts",
+      "version": "2.1.1",
+      "status": "runtime-available-scientific-fixtures-passed",
+      "environment": "D:\\projects\\JLinAlg\\build\\omics-featurecounts",
+      "marker_sha256": "5bd073170835b17b77132f13b20367232ab767a9de2cb0ed47380a35f97cf54a",
+      "runtime_files": 190,
+      "source": "https://downloads.sourceforge.net/project/subread/subread-2.1.1/subread-2.1.1-Windows-x86_64.zip",
+      "archive_sha256": "16f04778c1ade1bfca0c594016527a7e73eaecd1b6724f4eace00c674921ab3e",
+      "compiler_warning_count": 0,
+      "installed_provenance": {
+        "source": "https://downloads.sourceforge.net/project/subread/subread-2.1.1/subread-2.1.1-Windows-x86_64.zip",
+        "archive_sha256": "16f04778c1ade1bfca0c594016527a7e73eaecd1b6724f4eace00c674921ab3e",
+        "source_policy": "Unmodified official Windows binaries; publisher SHA-256 checked",
+        "commands": [
+          {
+            "name": "version",
+            "command": [
+              "D:\\projects\\JLinAlg\\build\\.jlinalg-rna-featurecounts-ba25gtg1\\bin\\featureCounts.exe",
+              "-v"
+            ],
+            "cwd": "D:\\projects\\JLinAlg\\build\\literature-review\\featurecounts-dependency",
+            "log": "D:\\projects\\JLinAlg\\build\\literature-review\\featurecounts-dependency\\version.log",
+            "exit_code": 0,
+            "log_sha256": "7b72a0daeab84828816cbfd460904a85fd2427bfb9cc332bd2745f1e190107fd"
+          }
+        ]
+      },
+      "failed_attempts": [],
+      "required_action": "Skip dependent analyses when unavailable. Where permitted run python tools/literature/install_rna_aligners.py --profile featurecounts --allow-download. Missing build prerequisites require an existing permitted Cygwin toolchain (gcc-core, gcc-g++, make, zlib-devel), or a supported native host. Preserve failed logs/staging and existing runtimes; select a new destination after correcting the named cause. Version probes do not establish analysis validity."
+    },
+    {
+      "profile": "minimap2",
+      "version": "2.31-r1302",
+      "status": "runtime-available-scientific-fixtures-passed",
+      "environment": "D:\\projects\\JLinAlg\\build\\omics-minimap2",
+      "marker_sha256": "b439ecad8d6814373d623dfdbd7a919e256cf19ef22ee17ff0c73f724894a54d",
+      "runtime_files": 126,
+      "source": "https://github.com/lh3/minimap2/archive/refs/tags/v2.31.tar.gz",
+      "archive_sha256": "bff334a0e4512644e2f3e29944aeec408f49450f4f74dc39fe89e5273869255b",
+      "compiler_warning_count": 2,
+      "installed_provenance": {
+        "source": "https://github.com/lh3/minimap2/archive/refs/tags/v2.31.tar.gz",
+        "archive_sha256": "bff334a0e4512644e2f3e29944aeec408f49450f4f74dc39fe89e5273869255b",
+        "source_policy": "Unmodified tagged source; existing read-only Cygwin toolchain",
+        "original_source_files": 93,
+        "toolchain_sha256": {
+          "C:\\cygwin64\\bin\\gcc.exe": "babe5599c69d367fc65fd1a56c4da1f2dff57557c19ff47d438146a64fa60e9f",
+          "C:\\cygwin64\\bin\\g++.exe": "ccd7d799e609454d4e6bdd35b8e5f81a6c0a4e57f71bc47e9156073644521fe4",
+          "C:\\cygwin64\\bin\\make.exe": "c3458b0ba07afd8f0ce44f6f722d8386a50304df1df36cda4f1bd06662906c0b",
+          "C:\\cygwin64\\bin\\cygpath.exe": "3dd04c73a54a8b783e3105960e687990eb2dd733a097a14ffb5cd3304f8a6683",
+          "C:\\cygwin64\\bin\\objdump.exe": "c2cc47807de180fb931c4e41cce763a1684320f0b051b949ca81bf4959bfafbf"
+        },
+        "compiler_warning_count": 2,
+        "compiler_warnings_first_100": [
+          "index.c:661:48: warning: array subscript has type 'char' [-Wchar-subscripts]",
+          "index.c:716:54: warning: array subscript has type 'char' [-Wchar-subscripts]"
+        ],
+        "commands": [
+          {
+            "name": "build",
+            "command": [
+              "C:\\cygwin64\\bin\\make.exe",
+              "-j2"
+            ],
+            "cwd": "D:\\projects\\JLinAlg\\build\\.jlinalg-rna-minimap2-o42z9or7\\minimap2-2.31",
+            "log": "D:\\projects\\JLinAlg\\build\\literature-review\\minimap2-dependency\\build.log",
+            "exit_code": 0,
+            "log_sha256": "06d4060d9bc81846d4fa6728d766b95d4a7aad672fa5f484045a44c74838100d"
+          },
+          {
+            "name": "imports-1",
+            "command": [
+              "C:\\cygwin64\\bin\\objdump.exe",
+              "-p",
+              "C:\\cygwin64\\bin\\cygpath.exe"
+            ],
+            "cwd": "D:\\projects\\JLinAlg\\build\\.jlinalg-rna-minimap2-o42z9or7",
+            "log": "D:\\projects\\JLinAlg\\build\\literature-review\\minimap2-dependency\\imports-1.log",
+            "exit_code": 0,
+            "log_sha256": "e0594e9cb1df93698c6c040e5b8a59aa438be98fffce50b1ddb7dc248148b8b5"
+          },
+          {
+            "name": "imports-2",
+            "command": [
+              "C:\\cygwin64\\bin\\objdump.exe",
+              "-p",
+              "C:\\cygwin64\\bin\\cygwin1.dll"
+            ],
+            "cwd": "D:\\projects\\JLinAlg\\build\\.jlinalg-rna-minimap2-o42z9or7",
+            "log": "D:\\projects\\JLinAlg\\build\\literature-review\\minimap2-dependency\\imports-2.log",
+            "exit_code": 0,
+            "log_sha256": "fd990f375f17469871a5d8c11d46d46804d9c4dfd47c6ce707eb7b6e6e0cf640"
+          },
+          {
+            "name": "imports-3",
+            "command": [
+              "C:\\cygwin64\\bin\\objdump.exe",
+              "-p",
+              "D:\\projects\\JLinAlg\\build\\.jlinalg-rna-minimap2-o42z9or7\\minimap2-2.31\\minimap2.exe"
+            ],
+            "cwd": "D:\\projects\\JLinAlg\\build\\.jlinalg-rna-minimap2-o42z9or7",
+            "log": "D:\\projects\\JLinAlg\\build\\literature-review\\minimap2-dependency\\imports-3.log",
+            "exit_code": 0,
+            "log_sha256": "ec5469469f3c85d7b1d31faf03f28541fb5d12b4ce5efe8079c6b4022f2f360e"
+          },
+          {
+            "name": "imports-4",
+            "command": [
+              "C:\\cygwin64\\bin\\objdump.exe",
+              "-p",
+              "C:\\cygwin64\\bin\\cygz.dll"
+            ],
+            "cwd": "D:\\projects\\JLinAlg\\build\\.jlinalg-rna-minimap2-o42z9or7",
+            "log": "D:\\projects\\JLinAlg\\build\\literature-review\\minimap2-dependency\\imports-4.log",
+            "exit_code": 0,
+            "log_sha256": "af2aeecffca3116fc6fa40100909cf15f7ad813ab136cd09932081330d606683"
+          },
+          {
+            "name": "version",
+            "command": [
+              "D:\\projects\\JLinAlg\\build\\.jlinalg-rna-minimap2-o42z9or7\\bin\\minimap2.exe",
+              "--version"
+            ],
+            "cwd": "D:\\projects\\JLinAlg\\build\\literature-review\\minimap2-dependency",
+            "log": "D:\\projects\\JLinAlg\\build\\literature-review\\minimap2-dependency\\version.log",
+            "exit_code": 0,
+            "log_sha256": "741e4fe85b9e0667151c8d350b0f052ea74020babeee9462f35a8964ae53243a"
+          }
+        ]
+      },
+      "failed_attempts": [],
+      "required_action": "Skip dependent analyses when unavailable. Where permitted run python tools/literature/install_rna_aligners.py --profile minimap2 --allow-download --allow-source-build --cygwin-root C:/cygwin64. Missing build prerequisites require an existing permitted Cygwin toolchain (gcc-core, gcc-g++, make, zlib-devel), or a supported native host. Preserve failed logs/staging and existing runtimes; select a new destination after correcting the named cause. Version probes do not establish analysis validity."
+    },
+    {
+      "profile": "hisat2",
+      "version": "2.2.3",
+      "status": "runtime-available-scientific-fixtures-passed",
+      "environment": "D:\\projects\\JLinAlg\\build\\omics-hisat2",
+      "marker_sha256": "55c3cf2c40ad5ab56026b2586958ff1b999f9151d6fef234dc09e4e16848b314",
+      "runtime_files": 417,
+      "source": "https://github.com/DaehwanKimLab/hisat2/archive/refs/tags/v2.2.3.tar.gz",
+      "archive_sha256": "b53107422e5b44ebea4b20b1a77bb9e240d6b92d654fcd7e6a6ab5d1aae86c45",
+      "compiler_warning_count": 213,
+      "installed_provenance": {
+        "source": "https://github.com/DaehwanKimLab/hisat2/archive/refs/tags/v2.2.3.tar.gz",
+        "archive_sha256": "b53107422e5b44ebea4b20b1a77bb9e240d6b92d654fcd7e6a6ab5d1aae86c45",
+        "source_policy": "Unmodified tagged source; existing read-only Cygwin toolchain",
+        "original_source_files": 401,
+        "toolchain_sha256": {
+          "C:\\cygwin64\\bin\\gcc.exe": "babe5599c69d367fc65fd1a56c4da1f2dff57557c19ff47d438146a64fa60e9f",
+          "C:\\cygwin64\\bin\\g++.exe": "ccd7d799e609454d4e6bdd35b8e5f81a6c0a4e57f71bc47e9156073644521fe4",
+          "C:\\cygwin64\\bin\\make.exe": "c3458b0ba07afd8f0ce44f6f722d8386a50304df1df36cda4f1bd06662906c0b",
+          "C:\\cygwin64\\bin\\cygpath.exe": "3dd04c73a54a8b783e3105960e687990eb2dd733a097a14ffb5cd3304f8a6683",
+          "C:\\cygwin64\\bin\\objdump.exe": "c2cc47807de180fb931c4e41cce763a1684320f0b051b949ca81bf4959bfafbf"
+        },
+        "omitted_test_data_links": [
+          {
+            "name": "hisat2-2.2.3/evaluation/tests/CODIS/genome.fa",
+            "target": "../HLA_novel/genome.fa",
+            "reason": "Dangling external research test data; not required to build the six runtime programs"
+          },
+          {
+            "name": "hisat2-2.2.3/evaluation/tests/CODIS/genome.fa.fai",
+            "target": "../HLA_novel/genome.fa.fai",
+            "reason": "Dangling external research test data; not required to build the six runtime programs"
+          },
+          {
+            "name": "hisat2-2.2.3/evaluation/tests/CODIS/grch38",
+            "target": "../HLA_novel/grch38",
+            "reason": "Dangling external research test data; not required to build the six runtime programs"
+          },
+          {
+            "name": "hisat2-2.2.3/evaluation/tests/CODIS/hisatgenotype_convert_codis.py",
+            "target": "hisatgenotype_modules/hisatgenotype_convert_codis.py",
+            "reason": "Dangling external research test data; not required to build the six runtime programs"
+          },
+          {
+            "name": "hisat2-2.2.3/evaluation/tests/CODIS/hisatgenotype_extract_codis_data.py",
+            "target": "hisatgenotype_modules/hisatgenotype_extract_codis_data.py",
+            "reason": "Dangling external research test data; not required to build the six runtime programs"
+          },
+          {
+            "name": "hisat2-2.2.3/evaluation/tests/CODIS/hisatgenotype_extract_vars.py",
+            "target": "../../../hisatgenotype_extract_vars.py",
+            "reason": "Dangling external research test data; not required to build the six runtime programs"
+          },
+          {
+            "name": "hisat2-2.2.3/evaluation/tests/CODIS/hisatgenotype_locus.py",
+            "target": "../../../hisatgenotype_locus.py",
+            "reason": "Dangling external research test data; not required to build the six runtime programs"
+          },
+          {
+            "name": "hisat2-2.2.3/evaluation/tests/CODIS/hisatgenotype_modules",
+            "target": "../../../hisatgenotype_modules",
+            "reason": "Dangling external research test data; not required to build the six runtime programs"
+          },
+          {
+            "name": "hisat2-2.2.3/evaluation/tests/CYP/hisatgenotype_extract_vars.py",
+            "target": "../../../hisatgenotype_extract_vars.py",
+            "reason": "Dangling external research test data; not required to build the six runtime programs"
+          },
+          {
+            "name": "hisat2-2.2.3/evaluation/tests/CYP/hisatgenotype_locus.py",
+            "target": "../../../hisatgenotype_locus.py",
+            "reason": "Dangling external research test data; not required to build the six runtime programs"
+          },
+          {
+            "name": "hisat2-2.2.3/evaluation/tests/HLA_novel/hisatgenotype.py",
+            "target": "../../../hisatgenotype.py",
+            "reason": "Dangling external research test data; not required to build the six runtime programs"
+          },
+          {
+            "name": "hisat2-2.2.3/evaluation/tests/HLA_novel/hisatgenotype_build_genome.py",
+            "target": "../../../hisatgenotype_build_genome.py",
+            "reason": "Dangling external research test data; not required to build the six runtime programs"
+          },
+          {
+            "name": "hisat2-2.2.3/evaluation/tests/HLA_novel/hisatgenotype_extract_vars.py",
+            "target": "../../../hisatgenotype_extract_vars.py",
+            "reason": "Dangling external research test data; not required to build the six runtime programs"
+          },
+          {
+            "name": "hisat2-2.2.3/evaluation/tests/HLA_novel/hisatgenotype_locus.py",
+            "target": "../../../hisatgenotype_locus.py",
+            "reason": "Dangling external research test data; not required to build the six runtime programs"
+          },
+          {
+            "name": "hisat2-2.2.3/evaluation/tests/HLA_novel/hisatgenotype_modules",
+            "target": "../../../hisatgenotype_modules",
+            "reason": "Dangling external research test data; not required to build the six runtime programs"
+          },
+          {
+            "name": "hisat2-2.2.3/evaluation/tests/genotype_genome/hisatgenotype.py",
+            "target": "../../../hisatgenotype.py",
+            "reason": "Dangling external research test data; not required to build the six runtime programs"
+          },
+          {
+            "name": "hisat2-2.2.3/evaluation/tests/genotype_genome/hisatgenotype_build_genome.py",
+            "target": "../../../hisatgenotype_build_genome.py",
+            "reason": "Dangling external research test data; not required to build the six runtime programs"
+          },
+          {
+            "name": "hisat2-2.2.3/evaluation/tests/genotype_genome/hisatgenotype_extract_vars.py",
+            "target": "../../../hisatgenotype_extract_vars.py",
+            "reason": "Dangling external research test data; not required to build the six runtime programs"
+          },
+          {
+            "name": "hisat2-2.2.3/evaluation/tests/genotype_genome/hisatgenotype_locus.py",
+            "target": "../../../hisatgenotype_locus.py",
+            "reason": "Dangling external research test data; not required to build the six runtime programs"
+          },
+          {
+            "name": "hisat2-2.2.3/evaluation/tests/genotype_genome/hisatgenotype_modules",
+            "target": "../../../hisatgenotype_modules",
+            "reason": "Dangling external research test data; not required to build the six runtime programs"
+          }
+        ],
+        "compiler_warning_count": 213,
+        "compiler_warnings_first_100": [
+          "gfm.h:1185:17: warning: 'template<class> class std::auto_ptr' is deprecated: use 'std::unique_ptr' instead [-Wdeprecated-declarations]",
+          "gfm.h:1189:17: warning: 'template<class> class std::auto_ptr' is deprecated: use 'std::unique_ptr' instead [-Wdeprecated-declarations]",
+          "gfm.h:1185:17: warning: 'template<class> class std::auto_ptr' is deprecated: use 'std::unique_ptr' instead [-Wdeprecated-declarations]",
+          "gfm.h:1189:17: warning: 'template<class> class std::auto_ptr' is deprecated: use 'std::unique_ptr' instead [-Wdeprecated-declarations]",
+          "hisat2.cpp:1826:9: warning: 'template<class> class std::auto_ptr' is deprecated: use 'std::unique_ptr' instead [-Wdeprecated-declarations]",
+          "hisat2.cpp:3170:9: warning: 'template<class> class std::auto_ptr' is deprecated: use 'std::unique_ptr' instead [-Wdeprecated-declarations]",
+          "hisat2.cpp:3171:9: warning: 'template<class> class std::auto_ptr' is deprecated: use 'std::unique_ptr' instead [-Wdeprecated-declarations]",
+          "hisat2.cpp:3192:9: warning: 'template<class> class std::auto_ptr' is deprecated: use 'std::unique_ptr' instead [-Wdeprecated-declarations]",
+          "hisat2.cpp:1826:9: warning: 'template<class> class std::auto_ptr' is deprecated: use 'std::unique_ptr' instead [-Wdeprecated-declarations]",
+          "hisat2.cpp:4038:9: warning: 'template<class> class std::auto_ptr' is deprecated: use 'std::unique_ptr' instead [-Wdeprecated-declarations]",
+          "hisat2.cpp:3170:9: warning: 'template<class> class std::auto_ptr' is deprecated: use 'std::unique_ptr' instead [-Wdeprecated-declarations]",
+          "hisat2.cpp:3171:9: warning: 'template<class> class std::auto_ptr' is deprecated: use 'std::unique_ptr' instead [-Wdeprecated-declarations]",
+          "hisat2.cpp:3192:9: warning: 'template<class> class std::auto_ptr' is deprecated: use 'std::unique_ptr' instead [-Wdeprecated-declarations]",
+          "hisat2.cpp:4038:9: warning: 'template<class> class std::auto_ptr' is deprecated: use 'std::unique_ptr' instead [-Wdeprecated-declarations]",
+          "hi_aligner.h:5688:105: warning: comparison of integer expressions of different signedness: 'size_t' {aka 'long unsigned int'} and 'TRefOff' {aka 'long int'} [-Wsign-compare]",
+          "gfm.h:6935:13: warning: variable 'lastorig' set but not used [-Wunused-but-set-variable]",
+          "hi_aligner.h:4385:84: warning: comparison of integer expressions of different signedness: 'long unsigned int' and 'const THitInt' {aka 'const long int'} [-Wsign-compare]",
+          "hi_aligner.h:4404:55: warning: comparison of integer expressions of different signedness: 'long unsigned int' and 'TRefId' {aka 'long int'} [-Wsign-compare]",
+          "hi_aligner.h:4405:63: warning: comparison of integer expressions of different signedness: 'long unsigned int' and 'TRefOff' {aka 'long int'} [-Wsign-compare]",
+          "hi_aligner.h:4406:52: warning: comparison of integer expressions of different signedness: 'TRefOff' {aka 'long int'} and 'long unsigned int' [-Wsign-compare]",
+          "hi_aligner.h:4407:88: warning: comparison of integer expressions of different signedness: 'long unsigned int' and 'const THitInt' {aka 'const long int'} [-Wsign-compare]",
+          "hi_aligner.h:4489:92: warning: comparison of integer expressions of different signedness: 'long unsigned int' and 'const THitInt' {aka 'const long int'} [-Wsign-compare]",
+          "hi_aligner.h:4578:69: warning: comparison of integer expressions of different signedness: 'long unsigned int' and 'const THitInt' {aka 'const long int'} [-Wsign-compare]",
+          "hi_aligner.h:4584:83: warning: comparison of integer expressions of different signedness: 'long unsigned int' and 'const THitInt' {aka 'const long int'} [-Wsign-compare]",
+          "hi_aligner.h:4614:55: warning: comparison of integer expressions of different signedness: 'long unsigned int' and 'const THitInt' {aka 'const long int'} [-Wsign-compare]",
+          "hi_aligner.h:5990:51: warning: comparison of integer expressions of different signedness: 'long unsigned int' and 'TRefOff' {aka 'long int'} [-Wsign-compare]",
+          "hi_aligner.h:5991:52: warning: comparison of integer expressions of different signedness: 'long unsigned int' and 'TRefOff' {aka 'long int'} [-Wsign-compare]",
+          "hi_aligner.h:5661:33: warning: comparison of integer expressions of different signedness: 'long unsigned int' and 'const THitInt' {aka 'const long int'} [-Wsign-compare]",
+          "hi_aligner.h:5688:105: warning: comparison of integer expressions of different signedness: 'long unsigned int' and 'TRefOff' {aka 'long int'} [-Wsign-compare]",
+          "gfm.h:6935:13: warning: variable 'lastorig' set but not used [-Wunused-but-set-variable]",
+          "hi_aligner.h:5150:32: warning: comparison of integer expressions of different signedness: 'TRefId' {aka 'long int'} and 'long unsigned int' [-Wsign-compare]",
+          "hi_aligner.h:2267:47: warning: comparison of integer expressions of different signedness: 'TRefOff' {aka 'long int'} and 'long unsigned int' [-Wsign-compare]",
+          "group_walk.h:1147:60: warning: comparison of integer expressions of different signedness: 'int' and 'size_t' {aka 'long unsigned int'} [-Wsign-compare]",
+          "group_walk.h:1158:58: warning: comparison of integer expressions of different signedness: 'int' and 'size_t' {aka 'long unsigned int'} [-Wsign-compare]",
+          "group_walk.h:1213:69: warning: comparison of integer expressions of different signedness: 'int' and 'size_t' {aka 'long unsigned int'} [-Wsign-compare]",
+          "group_walk.h:1224:58: warning: comparison of integer expressions of different signedness: 'int' and 'size_t' {aka 'long unsigned int'} [-Wsign-compare]",
+          "hi_aligner.h:2801:14: warning: comparison of integer expressions of different signedness: 'int' and 'size_t' {aka 'long unsigned int'} [-Wsign-compare]",
+          "hi_aligner.h:2879:32: warning: comparison of integer expressions of different signedness: 'int' and 'size_t' {aka 'long unsigned int'} [-Wsign-compare]",
+          "hi_aligner.h:3044:42: warning: comparison of integer expressions of different signedness: 'int' and 'unsigned int' [-Wsign-compare]",
+          "hi_aligner.h:3085:25: warning: comparison of integer expressions of different signedness: 'int' and 'unsigned int' [-Wsign-compare]",
+          "hi_aligner.h:3161:31: warning: comparison of integer expressions of different signedness: 'unsigned int' and 'int' [-Wsign-compare]",
+          "hi_aligner.h:3197:32: warning: comparison of integer expressions of different signedness: 'unsigned int' and 'int' [-Wsign-compare]",
+          "hi_aligner.h:3202:39: warning: comparison of integer expressions of different signedness: 'unsigned int' and 'int' [-Wsign-compare]",
+          "hi_aligner.h:3454:35: warning: comparison of integer expressions of different signedness: 'int' and 'unsigned int' [-Wsign-compare]",
+          "group_walk.h:1147:60: warning: comparison of integer expressions of different signedness: 'int' and 'size_t' {aka 'long unsigned int'} [-Wsign-compare]",
+          "group_walk.h:1158:58: warning: comparison of integer expressions of different signedness: 'int' and 'size_t' {aka 'long unsigned int'} [-Wsign-compare]",
+          "group_walk.h:1213:69: warning: comparison of integer expressions of different signedness: 'int' and 'size_t' {aka 'long unsigned int'} [-Wsign-compare]",
+          "group_walk.h:1224:58: warning: comparison of integer expressions of different signedness: 'int' and 'size_t' {aka 'long unsigned int'} [-Wsign-compare]",
+          "hi_aligner.h:2801:14: warning: comparison of integer expressions of different signedness: 'int' and 'size_t' {aka 'long unsigned int'} [-Wsign-compare]",
+          "hi_aligner.h:2879:32: warning: comparison of integer expressions of different signedness: 'int' and 'size_t' {aka 'long unsigned int'} [-Wsign-compare]",
+          "hi_aligner.h:3044:42: warning: comparison of integer expressions of different signedness: 'int' and 'long unsigned int' [-Wsign-compare]",
+          "hi_aligner.h:3085:25: warning: comparison of integer expressions of different signedness: 'int' and 'long unsigned int' [-Wsign-compare]",
+          "hi_aligner.h:3161:31: warning: comparison of integer expressions of different signedness: 'long unsigned int' and 'int' [-Wsign-compare]",
+          "hi_aligner.h:3197:32: warning: comparison of integer expressions of different signedness: 'long unsigned int' and 'int' [-Wsign-compare]",
+          "hi_aligner.h:3202:39: warning: comparison of integer expressions of different signedness: 'long unsigned int' and 'int' [-Wsign-compare]",
+          "group_walk.h:785:26: warning: comparison of integer expressions of different signedness: 'int' and 'size_t' {aka 'long unsigned int'} [-Wsign-compare]",
+          "group_walk.h:789:34: warning: comparison of integer expressions of different signedness: 'int' and 'size_t' {aka 'long unsigned int'} [-Wsign-compare]",
+          "group_walk.h:795:26: warning: comparison of integer expressions of different signedness: 'int' and 'size_t' {aka 'long unsigned int'} [-Wsign-compare]",
+          "group_walk.h:801:34: warning: comparison of integer expressions of different signedness: 'int' and 'size_t' {aka 'long unsigned int'} [-Wsign-compare]",
+          "hi_aligner.h:3454:35: warning: comparison of integer expressions of different signedness: 'int' and 'long unsigned int' [-Wsign-compare]",
+          "hi_aligner.h:2660:23: warning: comparison of integer expressions of different signedness: 'int' and 'size_t' {aka 'long unsigned int'} [-Wsign-compare]",
+          "hi_aligner.h:2675:37: warning: comparison of integer expressions of different signedness: 'unsigned int' and 'int' [-Wsign-compare]",
+          "hi_aligner.h:2713:41: warning: comparison of integer expressions of different signedness: 'unsigned int' and 'int' [-Wsign-compare]",
+          "hi_aligner.h:2737:31: warning: comparison of integer expressions of different signedness: 'int' and 'size_t' {aka 'long unsigned int'} [-Wsign-compare]",
+          "hi_aligner.h:2744:41: warning: comparison of integer expressions of different signedness: 'unsigned int' and 'int' [-Wsign-compare]",
+          "group_walk.h:785:26: warning: comparison of integer expressions of different signedness: 'int' and 'size_t' {aka 'long unsigned int'} [-Wsign-compare]",
+          "group_walk.h:789:34: warning: comparison of integer expressions of different signedness: 'int' and 'size_t' {aka 'long unsigned int'} [-Wsign-compare]",
+          "group_walk.h:795:26: warning: comparison of integer expressions of different signedness: 'int' and 'size_t' {aka 'long unsigned int'} [-Wsign-compare]",
+          "group_walk.h:801:34: warning: comparison of integer expressions of different signedness: 'int' and 'size_t' {aka 'long unsigned int'} [-Wsign-compare]",
+          "hi_aligner.h:2660:23: warning: comparison of integer expressions of different signedness: 'int' and 'size_t' {aka 'long unsigned int'} [-Wsign-compare]",
+          "hi_aligner.h:2675:37: warning: comparison of integer expressions of different signedness: 'long unsigned int' and 'int' [-Wsign-compare]",
+          "hi_aligner.h:2713:41: warning: comparison of integer expressions of different signedness: 'long unsigned int' and 'int' [-Wsign-compare]",
+          "hi_aligner.h:2737:31: warning: comparison of integer expressions of different signedness: 'int' and 'size_t' {aka 'long unsigned int'} [-Wsign-compare]",
+          "hi_aligner.h:2744:41: warning: comparison of integer expressions of different signedness: 'long unsigned int' and 'int' [-Wsign-compare]",
+          "spliced_aligner.h:408:18: warning: variable 'another_spliced' set but not used [-Wunused-but-set-variable]",
+          "hi_aligner.h:1926:32: warning: comparison of integer expressions of different signedness: 'const uint64_t' {aka 'const long unsigned int'} and 'char' [-Wsign-compare]",
+          "spliced_aligner.h:408:18: warning: variable 'another_spliced' set but not used [-Wunused-but-set-variable]",
+          "spliced_aligner.h:782:65: warning: comparison of integer expressions of different signedness: 'long unsigned int' and 'int64_t' {aka 'long int'} [-Wsign-compare]",
+          "spliced_aligner.h:1465:105: warning: comparison of integer expressions of different signedness: 'long unsigned int' and 'int64_t' {aka 'long int'} [-Wsign-compare]",
+          "hi_aligner.h:1926:32: warning: comparison of integer expressions of different signedness: 'const uint64_t' {aka 'const long unsigned int'} and 'char' [-Wsign-compare]",
+          "hi_aligner.h:6719:85: warning: comparison of integer expressions of different signedness: 'long unsigned int' and 'const THitInt' {aka 'const long int'} [-Wsign-compare]",
+          "repeat.h:41:20: warning: 'cmp.RepeatCoord<unsigned int>::fw' may be used uninitialized [-Wmaybe-uninitialized]",
+          "repeat.h:43:26: warning: 'cmp.RepeatCoord<unsigned int>::alleleID' may be used uninitialized [-Wmaybe-uninitialized]",
+          "repeat.h:41:20: warning: 'cmp.RepeatCoord<long unsigned int>::fw' may be used uninitialized [-Wmaybe-uninitialized]",
+          "repeat.h:43:26: warning: 'cmp.RepeatCoord<long unsigned int>::alleleID' may be used uninitialized [-Wmaybe-uninitialized]",
+          "ref_read.cpp:367:22: warning: comparison of integer expressions of different signedness: 'int64_t' {aka 'long int'} and 'size_t' {aka 'long unsigned int'} [-Wsign-compare]",
+          "ref_read.cpp:440:22: warning: comparison of integer expressions of different signedness: 'int64_t' {aka 'long int'} and 'size_t' {aka 'long unsigned int'} [-Wsign-compare]",
+          "ref_read.cpp:367:22: warning: comparison of integer expressions of different signedness: 'int64_t' {aka 'long int'} and 'size_t' {aka 'long unsigned int'} [-Wsign-compare]",
+          "ref_read.cpp:440:22: warning: comparison of integer expressions of different signedness: 'int64_t' {aka 'long int'} and 'size_t' {aka 'long unsigned int'} [-Wsign-compare]",
+          "gfm.h:1185:17: warning: 'template<class> class std::auto_ptr' is deprecated: use 'std::unique_ptr' instead [-Wdeprecated-declarations]",
+          "gfm.h:1189:17: warning: 'template<class> class std::auto_ptr' is deprecated: use 'std::unique_ptr' instead [-Wdeprecated-declarations]",
+          "gfm.h:1185:17: warning: 'template<class> class std::auto_ptr' is deprecated: use 'std::unique_ptr' instead [-Wdeprecated-declarations]",
+          "gfm.h:1189:17: warning: 'template<class> class std::auto_ptr' is deprecated: use 'std::unique_ptr' instead [-Wdeprecated-declarations]",
+          "gfm.h:1185:17: warning: 'template<class> class std::auto_ptr' is deprecated: use 'std::unique_ptr' instead [-Wdeprecated-declarations]",
+          "gfm.h:1189:17: warning: 'template<class> class std::auto_ptr' is deprecated: use 'std::unique_ptr' instead [-Wdeprecated-declarations]",
+          "gfm.h:1185:17: warning: 'template<class> class std::auto_ptr' is deprecated: use 'std::unique_ptr' instead [-Wdeprecated-declarations]",
+          "gfm.h:1189:17: warning: 'template<class> class std::auto_ptr' is deprecated: use 'std::unique_ptr' instead [-Wdeprecated-declarations]",
+          "reference.cpp:522:26: warning: variable 'origBufOff' set but not used [-Wunused-but-set-variable]",
+          "reference.cpp:516:14: warning: variable 'binarySearched' set but not used [-Wunused-but-set-variable]",
+          "reference.cpp:522:26: warning: variable 'origBufOff' set but not used [-Wunused-but-set-variable]"
+        ],
+        "commands": [
+          {
+            "name": "build",
+            "command": [
+              "C:\\cygwin64\\bin\\make.exe",
+              "-j2",
+              "hisat2-align-s",
+              "hisat2-align-l",
+              "hisat2-build-s",
+              "hisat2-build-l",
+              "hisat2-inspect-s",
+              "hisat2-inspect-l"
+            ],
+            "cwd": "D:\\projects\\JLinAlg\\build\\.jlinalg-rna-hisat2-7kyfoccz\\hisat2-2.2.3",
+            "log": "D:\\projects\\JLinAlg\\build\\literature-review\\hisat2-dependency\\attempts\\20261025T001713.043092Z\\build.log",
+            "exit_code": 0,
+            "log_sha256": "f4ce3ae92ceddb8aa8a4571fc57a946644c3070152a195907b065c12cb7a9eb9"
+          },
+          {
+            "name": "imports-1",
+            "command": [
+              "C:\\cygwin64\\bin\\objdump.exe",
+              "-p",
+              "C:\\cygwin64\\bin\\cygpath.exe"
+            ],
+            "cwd": "D:\\projects\\JLinAlg\\build\\.jlinalg-rna-hisat2-7kyfoccz",
+            "log": "D:\\projects\\JLinAlg\\build\\literature-review\\hisat2-dependency\\attempts\\20261025T001713.043092Z\\imports-1.log",
+            "exit_code": 0,
+            "log_sha256": "e0594e9cb1df93698c6c040e5b8a59aa438be98fffce50b1ddb7dc248148b8b5"
+          },
+          {
+            "name": "imports-2",
+            "command": [
+              "C:\\cygwin64\\bin\\objdump.exe",
+              "-p",
+              "C:\\cygwin64\\bin\\cygwin1.dll"
+            ],
+            "cwd": "D:\\projects\\JLinAlg\\build\\.jlinalg-rna-hisat2-7kyfoccz",
+            "log": "D:\\projects\\JLinAlg\\build\\literature-review\\hisat2-dependency\\attempts\\20261025T001713.043092Z\\imports-2.log",
+            "exit_code": 0,
+            "log_sha256": "fd990f375f17469871a5d8c11d46d46804d9c4dfd47c6ce707eb7b6e6e0cf640"
+          },
+          {
+            "name": "imports-3",
+            "command": [
+              "C:\\cygwin64\\bin\\objdump.exe",
+              "-p",
+              "D:\\projects\\JLinAlg\\build\\.jlinalg-rna-hisat2-7kyfoccz\\hisat2-2.2.3\\hisat2-inspect-l.exe"
+            ],
+            "cwd": "D:\\projects\\JLinAlg\\build\\.jlinalg-rna-hisat2-7kyfoccz",
+            "log": "D:\\projects\\JLinAlg\\build\\literature-review\\hisat2-dependency\\attempts\\20261025T001713.043092Z\\imports-3.log",
+            "exit_code": 0,
+            "log_sha256": "4b3e7584b481abd6bf964965f626b399fac926d6f1ff152edf4a276e8bfb0c77"
+          },
+          {
+            "name": "imports-4",
+            "command": [
+              "C:\\cygwin64\\bin\\objdump.exe",
+              "-p",
+              "C:\\cygwin64\\bin\\cygstdc++-6.dll"
+            ],
+            "cwd": "D:\\projects\\JLinAlg\\build\\.jlinalg-rna-hisat2-7kyfoccz",
+            "log": "D:\\projects\\JLinAlg\\build\\literature-review\\hisat2-dependency\\attempts\\20261025T001713.043092Z\\imports-4.log",
+            "exit_code": 0,
+            "log_sha256": "545b1e42eae53a40ead87e21d8d15cef6bbb0a866a5f9681e12a9f50dcb3b4e9"
+          },
+          {
+            "name": "imports-5",
+            "command": [
+              "C:\\cygwin64\\bin\\objdump.exe",
+              "-p",
+              "C:\\cygwin64\\bin\\cyggcc_s-seh-1.dll"
+            ],
+            "cwd": "D:\\projects\\JLinAlg\\build\\.jlinalg-rna-hisat2-7kyfoccz",
+            "log": "D:\\projects\\JLinAlg\\build\\literature-review\\hisat2-dependency\\attempts\\20261025T001713.043092Z\\imports-5.log",
+            "exit_code": 0,
+            "log_sha256": "7e58d94a05459dae2c57ed86c1893bdc7de70351ac516bad92956316f01277f5"
+          },
+          {
+            "name": "imports-6",
+            "command": [
+              "C:\\cygwin64\\bin\\objdump.exe",
+              "-p",
+              "D:\\projects\\JLinAlg\\build\\.jlinalg-rna-hisat2-7kyfoccz\\hisat2-2.2.3\\hisat2-inspect-s.exe"
+            ],
+            "cwd": "D:\\projects\\JLinAlg\\build\\.jlinalg-rna-hisat2-7kyfoccz",
+            "log": "D:\\projects\\JLinAlg\\build\\literature-review\\hisat2-dependency\\attempts\\20261025T001713.043092Z\\imports-6.log",
+            "exit_code": 0,
+            "log_sha256": "14965ffc85bb35ae8458c6fee3bf59c8ff2827d379f93417643e1ff7808c6a75"
+          },
+          {
+            "name": "imports-7",
+            "command": [
+              "C:\\cygwin64\\bin\\objdump.exe",
+              "-p",
+              "D:\\projects\\JLinAlg\\build\\.jlinalg-rna-hisat2-7kyfoccz\\hisat2-2.2.3\\hisat2-build-l.exe"
+            ],
+            "cwd": "D:\\projects\\JLinAlg\\build\\.jlinalg-rna-hisat2-7kyfoccz",
+            "log": "D:\\projects\\JLinAlg\\build\\literature-review\\hisat2-dependency\\attempts\\20261025T001713.043092Z\\imports-7.log",
+            "exit_code": 0,
+            "log_sha256": "d616cd1debbbcbf9380c95462bcaf52ca75264eb92292ee043140ab0a0297724"
+          },
+          {
+            "name": "imports-8",
+            "command": [
+              "C:\\cygwin64\\bin\\objdump.exe",
+              "-p",
+              "D:\\projects\\JLinAlg\\build\\.jlinalg-rna-hisat2-7kyfoccz\\hisat2-2.2.3\\hisat2-build-s.exe"
+            ],
+            "cwd": "D:\\projects\\JLinAlg\\build\\.jlinalg-rna-hisat2-7kyfoccz",
+            "log": "D:\\projects\\JLinAlg\\build\\literature-review\\hisat2-dependency\\attempts\\20261025T001713.043092Z\\imports-8.log",
+            "exit_code": 0,
+            "log_sha256": "806fbd8a207179ba7550aecec04a7d4b004b922e0315cc60e2e9ece7deb44cb4"
+          },
+          {
+            "name": "imports-9",
+            "command": [
+              "C:\\cygwin64\\bin\\objdump.exe",
+              "-p",
+              "D:\\projects\\JLinAlg\\build\\.jlinalg-rna-hisat2-7kyfoccz\\hisat2-2.2.3\\hisat2-align-l.exe"
+            ],
+            "cwd": "D:\\projects\\JLinAlg\\build\\.jlinalg-rna-hisat2-7kyfoccz",
+            "log": "D:\\projects\\JLinAlg\\build\\literature-review\\hisat2-dependency\\attempts\\20261025T001713.043092Z\\imports-9.log",
+            "exit_code": 0,
+            "log_sha256": "28abf05b89b0629faec96673b2d2cf29a9be0660b31622e2ebec4a6fd1bfcdb5"
+          },
+          {
+            "name": "imports-10",
+            "command": [
+              "C:\\cygwin64\\bin\\objdump.exe",
+              "-p",
+              "D:\\projects\\JLinAlg\\build\\.jlinalg-rna-hisat2-7kyfoccz\\hisat2-2.2.3\\hisat2-align-s.exe"
+            ],
+            "cwd": "D:\\projects\\JLinAlg\\build\\.jlinalg-rna-hisat2-7kyfoccz",
+            "log": "D:\\projects\\JLinAlg\\build\\literature-review\\hisat2-dependency\\attempts\\20261025T001713.043092Z\\imports-10.log",
+            "exit_code": 0,
+            "log_sha256": "c39faf20b4e1b08d2161d5dbab34bd175ecdbdafdca8e038f3e635c7a0ae5cfc"
+          },
+          {
+            "name": "version",
+            "command": [
+              "D:\\projects\\JLinAlg\\build\\.jlinalg-rna-hisat2-7kyfoccz\\bin\\hisat2-align-s.exe",
+              "--version"
+            ],
+            "cwd": "D:\\projects\\JLinAlg\\build\\literature-review\\hisat2-dependency\\attempts\\20261025T001713.043092Z",
+            "log": "D:\\projects\\JLinAlg\\build\\literature-review\\hisat2-dependency\\attempts\\20261025T001713.043092Z\\version.log",
+            "exit_code": 0,
+            "log_sha256": "bffe7daac5846709647d4d55c6c19f53e9583117413b4e6e3cdeff8ccd233bd1"
+          }
+        ]
+      },
+      "failed_attempts": [
+        {
+          "status": "skipped-dependency-unavailable",
+          "error": "Unresolved archive links: [(WindowsPath('D:/projects/JLinAlg/build/.jlinalg-rna-hisat2-9iqi6vg9/hisat2-2.2.3/evaluation/tests/CODIS/genome.fa'), '../HLA_novel/genome.fa', True), (WindowsPath('D:/projects/JLinAlg/build/.jlinalg-rna-hisat2-9iqi6vg9/hisat2-2.2.3/evaluation/tests/CODIS/genome.fa.fai'), '../HLA_novel/genome.fa.fai', True), (WindowsPath('D:/projects/JLinAlg/build/.jlinalg-rna-hisat2-9iqi6vg9/hisat2-2.2.3/evaluation/tests/CODIS/grch38'), '../HLA_novel/grch38', True)]",
+          "staging": "D:\\projects\\JLinAlg\\build\\.jlinalg-rna-hisat2-9iqi6vg9",
+          "recorded_utc": "2026-10-25T00:05:15.417078+00:00"
+        },
+        {
+          "status": "skipped-dependency-unavailable",
+          "error": "Unresolved archive links: [(WindowsPath('D:/projects/JLinAlg/build/.jlinalg-rna-hisat2-dbh42pk9/hisat2-2.2.3/evaluation/tests/CODIS/hisatgenotype_convert_codis.py'), 'hisatgenotype_modules/hisatgenotype_convert_codis.py', True), (WindowsPath('D:/projects/JLinAlg/build/.jlinalg-rna-hisat2-dbh42pk9/hisat2-2.2.3/evaluation/tests/CODIS/hisatgenotype_extract_codis_data.py'), 'hisatgenotype_modules/hisatgenotype_extract_codis_data.py', True), (WindowsPath('D:/projects/JLinAlg/build/.jlinalg-rna-hisat2-dbh42pk9/hisat2-2.2.3/evaluation/tests/CODIS/hisatgenotype_extract_vars.py'), '../../../hisatgenotype_extract_vars.py', True)]",
+          "staging": "D:\\projects\\JLinAlg\\build\\.jlinalg-rna-hisat2-dbh42pk9",
+          "recorded_utc": "2026-10-25T00:06:29.760406+00:00"
+        },
+        {
+          "status": "skipped-dependency-unavailable",
+          "error": "[WinError 183] Cannot create a file when that file already exists: 'D:\\\\projects\\\\JLinAlg\\\\build\\\\.jlinalg-rna-hisat2-n9o8fol6\\\\bin'",
+          "staging": "D:\\projects\\JLinAlg\\build\\.jlinalg-rna-hisat2-n9o8fol6",
+          "recorded_utc": "2026-10-25T00:07:14.571066+00:00"
+        }
+      ],
+      "required_action": "Skip dependent analyses when unavailable. Where permitted run python tools/literature/install_rna_aligners.py --profile hisat2 --allow-download --allow-source-build --cygwin-root C:/cygwin64. Missing build prerequisites require an existing permitted Cygwin toolchain (gcc-core, gcc-g++, make, zlib-devel), or a supported native host. Preserve failed logs/staging and existing runtimes; select a new destination after correcting the named cause. Version probes do not establish analysis validity."
+    }
+  ],
+  "recorded_utc": "2026-10-25T00:52:24.772144+00:00",
+  "scope": "Private Windows runtimes; original source/package and read-only Cygwin build evidence retained. Java fixtures and packaged workflow checks are separate successful scientific evidence; old paper and native Linux/macOS behavior not certified."
+}

@@ -1,0 +1,2533 @@
+{
+  "status": "passed",
+  "baseline": "b0fb8e434dc02f71ef95fb4358acb7369568812e",
+  "suites": {
+    "org.jlinalg.sequence.FixedReadTrimmerTest": {
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "org.jlinalg.cli.FixedTrimCliTest": {
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  },
+  "detail": "80 independent actual Cutadapt clipping references plus native single/paired/empty/failure CLI fixtures",
+  "jar_sha256": "a104651636deb59493cddc92ce433629d4ef7b0c755f6ee065a3e0c75365c5e2",
+  "scope": "Synthetic/source-function fixtures and real upstream runtime validation; no real cohort analysis or full paper pipeline/legacy-package parity.",
+  "packaged_workflows": [
+    {
+      "name": "native-fixed-trim",
+      "command": [
+        "java",
+        "-jar",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\validated-cli\\jlinalg-0.3.7.jar",
+        "sequence-qc",
+        "--method",
+        "trim-fixed",
+        "--reads",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\adapter-free.fastq",
+        "--first-base",
+        "2",
+        "--out",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-trim",
+        "--no-config"
+      ],
+      "exit_code": 0,
+      "status": "passed",
+      "output_directory": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-trim",
+      "log": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-trim.log"
+    },
+    {
+      "name": "native-fixed-empty",
+      "command": [
+        "java",
+        "-jar",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\validated-cli\\jlinalg-0.3.7.jar",
+        "sequence-qc",
+        "--method",
+        "trim-fixed",
+        "--reads",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\adapter-free.fastq",
+        "--first-base",
+        "20",
+        "--out",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-empty",
+        "--no-config"
+      ],
+      "exit_code": 0,
+      "status": "passed",
+      "output_directory": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-empty",
+      "log": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-empty.log",
+      "qc_warnings": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-empty\\WARNINGS.md"
+    }
+  ],
+  "current_full_gate_suites": {
+    "org.jlinalg.sequence.FixedReadTrimmerTest": {
+      "suite_name": "org.jlinalg.sequence.FixedReadTrimmerTest",
+      "suite": {
+        "tests": 3,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "junit_sha256": "95fbfd8908b26b9e4598f37987bb3c7af5f779fee26f7d598be126607222dcd0",
+      "testcases": [
+        "oneBasedInclusiveCoordinatesClampToEndAndFilterAbsentSpans()",
+        "eightyOutputsAgreeWithIndependentActualCutadaptClipping()",
+        "invalidCoordinatesAndMismatchedQualityAreRejected()"
+      ]
+    },
+    "org.jlinalg.cli.FixedTrimCliTest": {
+      "suite_name": "org.jlinalg.cli.FixedTrimCliTest",
+      "suite": {
+        "tests": 3,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "junit_sha256": "43d9d5ca5c38073cff38f2be9becfa0a18a6d0ffea4a9ff84a85c845401c4962",
+      "testcases": [
+        "allFilteredOutputHasProminentWarningAndInvalidCoordinatesFailPersistently()",
+        "pairedFilteringIsSynchronizedAndMismatchesQuarantinePartialOutputs()",
+        "nativePostAdapterClippingPreservesHeadersQualityAndInputHashWithoutPython()"
+      ]
+    }
+  },
+  "refreshed_utc": "2026-10-26T02:01:51.919373+00:00",
+  "current_validation": {
+    "full_gate": {
+      "tests": 1593,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 5
+    },
+    "required_suites": 72,
+    "all_required_without_skips": true,
+    "raw_snapshot": "D:\\projects\\JLinAlg\\build\\literature-review\\plink-runtime\\configured-native-full-gate-1",
+    "prior_packaged_regressions": "D:\\projects\\JLinAlg\\build\\literature-review\\plink-runtime\\prior-packaged-regressions-1\\verification.json",
+    "original_trim_rechecks": "D:\\projects\\JLinAlg\\build\\literature-review\\plink-runtime\\original-trim-rechecks-1\\verification.json",
+    "scope": "This exact candidate was executed. All prior owned compiled method sources are unchanged and retested. Historical reference-generation/version scopes remain in their original fields and validation_history;no full-paper parity is inferred."
+  },
+  "validation_history": [
+    {
+      "status": "passed",
+      "baseline": "b0fb8e434dc02f71ef95fb4358acb7369568812e",
+      "suites": {
+        "org.jlinalg.sequence.FixedReadTrimmerTest": {
+          "tests": 3,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "org.jlinalg.cli.FixedTrimCliTest": {
+          "tests": 3,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        }
+      },
+      "detail": "80 independent actual Cutadapt clipping references plus native single/paired/empty/failure CLI fixtures",
+      "jar_sha256": "5ae4fac1f47a6c092df74d8c6c25c96adbe99ce6fc0fae3d561476c137ce8189",
+      "scope": "Synthetic/source-function fixtures and real upstream runtime validation; no real cohort analysis or full paper pipeline/legacy-package parity.",
+      "packaged_workflows": [
+        {
+          "name": "native-fixed-trim",
+          "command": [
+            "java",
+            "-jar",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\validated-cli\\jlinalg-0.3.7.jar",
+            "sequence-qc",
+            "--method",
+            "trim-fixed",
+            "--reads",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\adapter-free.fastq",
+            "--first-base",
+            "2",
+            "--out",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-trim",
+            "--no-config"
+          ],
+          "exit_code": 0,
+          "status": "passed",
+          "output_directory": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-trim",
+          "log": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-trim.log"
+        },
+        {
+          "name": "native-fixed-empty",
+          "command": [
+            "java",
+            "-jar",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\validated-cli\\jlinalg-0.3.7.jar",
+            "sequence-qc",
+            "--method",
+            "trim-fixed",
+            "--reads",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\adapter-free.fastq",
+            "--first-base",
+            "20",
+            "--out",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-empty",
+            "--no-config"
+          ],
+          "exit_code": 0,
+          "status": "passed",
+          "output_directory": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-empty",
+          "log": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-empty.log",
+          "qc_warnings": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-empty\\WARNINGS.md"
+        }
+      ]
+    },
+    {
+      "status": "passed",
+      "baseline": "b0fb8e434dc02f71ef95fb4358acb7369568812e",
+      "suites": {
+        "org.jlinalg.sequence.FixedReadTrimmerTest": {
+          "tests": 3,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "org.jlinalg.cli.FixedTrimCliTest": {
+          "tests": 3,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        }
+      },
+      "detail": "80 independent actual Cutadapt clipping references plus native single/paired/empty/failure CLI fixtures",
+      "jar_sha256": "665a006121ac3d5035f5f9a67c4bcf0ff69e5c94bf57329ef2aa1e20043de5ff",
+      "scope": "Synthetic/source-function fixtures and real upstream runtime validation; no real cohort analysis or full paper pipeline/legacy-package parity.",
+      "packaged_workflows": [
+        {
+          "name": "native-fixed-trim",
+          "command": [
+            "java",
+            "-jar",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\validated-cli\\jlinalg-0.3.7.jar",
+            "sequence-qc",
+            "--method",
+            "trim-fixed",
+            "--reads",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\adapter-free.fastq",
+            "--first-base",
+            "2",
+            "--out",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-trim",
+            "--no-config"
+          ],
+          "exit_code": 0,
+          "status": "passed",
+          "output_directory": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-trim",
+          "log": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-trim.log"
+        },
+        {
+          "name": "native-fixed-empty",
+          "command": [
+            "java",
+            "-jar",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\validated-cli\\jlinalg-0.3.7.jar",
+            "sequence-qc",
+            "--method",
+            "trim-fixed",
+            "--reads",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\adapter-free.fastq",
+            "--first-base",
+            "20",
+            "--out",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-empty",
+            "--no-config"
+          ],
+          "exit_code": 0,
+          "status": "passed",
+          "output_directory": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-empty",
+          "log": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-empty.log",
+          "qc_warnings": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-empty\\WARNINGS.md"
+        }
+      ],
+      "current_full_gate_suites": {
+        "org.jlinalg.sequence.FixedReadTrimmerTest": {
+          "suite": {
+            "tests": 3,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "3be37858df0fb0bd7c51f9a87dc916689eb55537f02d4c25fc9399e37f414514",
+          "testcases": [
+            "oneBasedInclusiveCoordinatesClampToEndAndFilterAbsentSpans()",
+            "eightyOutputsAgreeWithIndependentActualCutadaptClipping()",
+            "invalidCoordinatesAndMismatchedQualityAreRejected()"
+          ]
+        },
+        "org.jlinalg.cli.FixedTrimCliTest": {
+          "suite": {
+            "tests": 3,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "84b9c5eda9ef34289015adda1a003511bafa25606f35438b8a25ea6edbf36c36",
+          "testcases": [
+            "allFilteredOutputHasProminentWarningAndInvalidCoordinatesFailPersistently()",
+            "pairedFilteringIsSynchronizedAndMismatchesQuarantinePartialOutputs()",
+            "nativePostAdapterClippingPreservesHeadersQualityAndInputHashWithoutPython()"
+          ]
+        }
+      },
+      "refreshed_utc": "2026-10-24T17:01:15.585985+00:00"
+    },
+    {
+      "status": "passed",
+      "baseline": "b0fb8e434dc02f71ef95fb4358acb7369568812e",
+      "suites": {
+        "org.jlinalg.sequence.FixedReadTrimmerTest": {
+          "tests": 3,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "org.jlinalg.cli.FixedTrimCliTest": {
+          "tests": 3,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        }
+      },
+      "detail": "80 independent actual Cutadapt clipping references plus native single/paired/empty/failure CLI fixtures",
+      "jar_sha256": "551dcabf9486229cdba4ea30e3760196dc1a426a68fda549701fe50e26ed58c6",
+      "scope": "Synthetic/source-function fixtures and real upstream runtime validation; no real cohort analysis or full paper pipeline/legacy-package parity.",
+      "packaged_workflows": [
+        {
+          "name": "native-fixed-trim",
+          "command": [
+            "java",
+            "-jar",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\validated-cli\\jlinalg-0.3.7.jar",
+            "sequence-qc",
+            "--method",
+            "trim-fixed",
+            "--reads",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\adapter-free.fastq",
+            "--first-base",
+            "2",
+            "--out",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-trim",
+            "--no-config"
+          ],
+          "exit_code": 0,
+          "status": "passed",
+          "output_directory": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-trim",
+          "log": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-trim.log"
+        },
+        {
+          "name": "native-fixed-empty",
+          "command": [
+            "java",
+            "-jar",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\validated-cli\\jlinalg-0.3.7.jar",
+            "sequence-qc",
+            "--method",
+            "trim-fixed",
+            "--reads",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\adapter-free.fastq",
+            "--first-base",
+            "20",
+            "--out",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-empty",
+            "--no-config"
+          ],
+          "exit_code": 0,
+          "status": "passed",
+          "output_directory": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-empty",
+          "log": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-empty.log",
+          "qc_warnings": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-empty\\WARNINGS.md"
+        }
+      ],
+      "current_full_gate_suites": {
+        "org.jlinalg.sequence.FixedReadTrimmerTest": {
+          "suite": {
+            "tests": 3,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "7549a68198434d6413fee9e73d6f1aaa75c2ac071e8a2e476a34cc6f0ad2b7b1",
+          "testcases": [
+            "oneBasedInclusiveCoordinatesClampToEndAndFilterAbsentSpans()",
+            "eightyOutputsAgreeWithIndependentActualCutadaptClipping()",
+            "invalidCoordinatesAndMismatchedQualityAreRejected()"
+          ]
+        },
+        "org.jlinalg.cli.FixedTrimCliTest": {
+          "suite": {
+            "tests": 3,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "728ce3ef1446c8ade7a02ab445ee3f77880760a8b38157bca364bcb2ce2f5d5f",
+          "testcases": [
+            "allFilteredOutputHasProminentWarningAndInvalidCoordinatesFailPersistently()",
+            "pairedFilteringIsSynchronizedAndMismatchesQuarantinePartialOutputs()",
+            "nativePostAdapterClippingPreservesHeadersQualityAndInputHashWithoutPython()"
+          ]
+        }
+      },
+      "refreshed_utc": "2026-10-24T17:45:39.882229+00:00"
+    },
+    {
+      "status": "passed",
+      "baseline": "b0fb8e434dc02f71ef95fb4358acb7369568812e",
+      "suites": {
+        "org.jlinalg.sequence.FixedReadTrimmerTest": {
+          "tests": 3,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "org.jlinalg.cli.FixedTrimCliTest": {
+          "tests": 3,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        }
+      },
+      "detail": "80 independent actual Cutadapt clipping references plus native single/paired/empty/failure CLI fixtures",
+      "jar_sha256": "0a9ecf3e4cb0306ea0cc5c428bd92637db1be8a37cd48f46339cac964f757aaa",
+      "scope": "Synthetic/source-function fixtures and real upstream runtime validation; no real cohort analysis or full paper pipeline/legacy-package parity.",
+      "packaged_workflows": [
+        {
+          "name": "native-fixed-trim",
+          "command": [
+            "java",
+            "-jar",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\validated-cli\\jlinalg-0.3.7.jar",
+            "sequence-qc",
+            "--method",
+            "trim-fixed",
+            "--reads",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\adapter-free.fastq",
+            "--first-base",
+            "2",
+            "--out",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-trim",
+            "--no-config"
+          ],
+          "exit_code": 0,
+          "status": "passed",
+          "output_directory": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-trim",
+          "log": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-trim.log"
+        },
+        {
+          "name": "native-fixed-empty",
+          "command": [
+            "java",
+            "-jar",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\validated-cli\\jlinalg-0.3.7.jar",
+            "sequence-qc",
+            "--method",
+            "trim-fixed",
+            "--reads",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\adapter-free.fastq",
+            "--first-base",
+            "20",
+            "--out",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-empty",
+            "--no-config"
+          ],
+          "exit_code": 0,
+          "status": "passed",
+          "output_directory": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-empty",
+          "log": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-empty.log",
+          "qc_warnings": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-empty\\WARNINGS.md"
+        }
+      ],
+      "current_full_gate_suites": {
+        "org.jlinalg.sequence.FixedReadTrimmerTest": {
+          "suite": {
+            "tests": 3,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "a14ea4f31add27a57ffa7b5fddbb1fe08e324e2172e8a8a03b6c8b3102ad34de",
+          "testcases": [
+            "oneBasedInclusiveCoordinatesClampToEndAndFilterAbsentSpans()",
+            "eightyOutputsAgreeWithIndependentActualCutadaptClipping()",
+            "invalidCoordinatesAndMismatchedQualityAreRejected()"
+          ]
+        },
+        "org.jlinalg.cli.FixedTrimCliTest": {
+          "suite": {
+            "tests": 3,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "2e5d984d40bbeedb0fa6a1e021994868a6e3181a1d733546e1e36918af665827",
+          "testcases": [
+            "allFilteredOutputHasProminentWarningAndInvalidCoordinatesFailPersistently()",
+            "pairedFilteringIsSynchronizedAndMismatchesQuarantinePartialOutputs()",
+            "nativePostAdapterClippingPreservesHeadersQualityAndInputHashWithoutPython()"
+          ]
+        }
+      },
+      "refreshed_utc": "2026-10-24T18:17:39.688536+00:00"
+    },
+    {
+      "status": "passed",
+      "baseline": "b0fb8e434dc02f71ef95fb4358acb7369568812e",
+      "suites": {
+        "org.jlinalg.sequence.FixedReadTrimmerTest": {
+          "tests": 3,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "org.jlinalg.cli.FixedTrimCliTest": {
+          "tests": 3,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        }
+      },
+      "detail": "80 independent actual Cutadapt clipping references plus native single/paired/empty/failure CLI fixtures",
+      "jar_sha256": "941cd5b7c101ba4bde47b7b804a5fe5692103cc10d1be02d26c60d646999b52c",
+      "scope": "Synthetic/source-function fixtures and real upstream runtime validation; no real cohort analysis or full paper pipeline/legacy-package parity.",
+      "packaged_workflows": [
+        {
+          "name": "native-fixed-trim",
+          "command": [
+            "java",
+            "-jar",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\validated-cli\\jlinalg-0.3.7.jar",
+            "sequence-qc",
+            "--method",
+            "trim-fixed",
+            "--reads",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\adapter-free.fastq",
+            "--first-base",
+            "2",
+            "--out",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-trim",
+            "--no-config"
+          ],
+          "exit_code": 0,
+          "status": "passed",
+          "output_directory": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-trim",
+          "log": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-trim.log"
+        },
+        {
+          "name": "native-fixed-empty",
+          "command": [
+            "java",
+            "-jar",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\validated-cli\\jlinalg-0.3.7.jar",
+            "sequence-qc",
+            "--method",
+            "trim-fixed",
+            "--reads",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\adapter-free.fastq",
+            "--first-base",
+            "20",
+            "--out",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-empty",
+            "--no-config"
+          ],
+          "exit_code": 0,
+          "status": "passed",
+          "output_directory": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-empty",
+          "log": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-empty.log",
+          "qc_warnings": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-empty\\WARNINGS.md"
+        }
+      ],
+      "current_full_gate_suites": {
+        "org.jlinalg.sequence.FixedReadTrimmerTest": {
+          "suite": {
+            "tests": 3,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "6816ac3336ee6ed99be35f76a7f1a8dab088e6bc38824d6e994b0c914e46878b",
+          "testcases": [
+            "oneBasedInclusiveCoordinatesClampToEndAndFilterAbsentSpans()",
+            "eightyOutputsAgreeWithIndependentActualCutadaptClipping()",
+            "invalidCoordinatesAndMismatchedQualityAreRejected()"
+          ]
+        },
+        "org.jlinalg.cli.FixedTrimCliTest": {
+          "suite": {
+            "tests": 3,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "cc0dc128076273f55a6917abe7d16bf7c3c02884b7c582472c4584b8e71efac4",
+          "testcases": [
+            "allFilteredOutputHasProminentWarningAndInvalidCoordinatesFailPersistently()",
+            "pairedFilteringIsSynchronizedAndMismatchesQuarantinePartialOutputs()",
+            "nativePostAdapterClippingPreservesHeadersQualityAndInputHashWithoutPython()"
+          ]
+        }
+      },
+      "refreshed_utc": "2026-10-24T18:55:37.711724+00:00"
+    },
+    {
+      "status": "passed",
+      "baseline": "b0fb8e434dc02f71ef95fb4358acb7369568812e",
+      "suites": {
+        "org.jlinalg.sequence.FixedReadTrimmerTest": {
+          "tests": 3,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "org.jlinalg.cli.FixedTrimCliTest": {
+          "tests": 3,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        }
+      },
+      "detail": "80 independent actual Cutadapt clipping references plus native single/paired/empty/failure CLI fixtures",
+      "jar_sha256": "6f2f23518741d7325960529665fe720ed5f33ca5282e3fec88da8df6b2bb3bf3",
+      "scope": "Synthetic/source-function fixtures and real upstream runtime validation; no real cohort analysis or full paper pipeline/legacy-package parity.",
+      "packaged_workflows": [
+        {
+          "name": "native-fixed-trim",
+          "command": [
+            "java",
+            "-jar",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\validated-cli\\jlinalg-0.3.7.jar",
+            "sequence-qc",
+            "--method",
+            "trim-fixed",
+            "--reads",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\adapter-free.fastq",
+            "--first-base",
+            "2",
+            "--out",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-trim",
+            "--no-config"
+          ],
+          "exit_code": 0,
+          "status": "passed",
+          "output_directory": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-trim",
+          "log": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-trim.log"
+        },
+        {
+          "name": "native-fixed-empty",
+          "command": [
+            "java",
+            "-jar",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\validated-cli\\jlinalg-0.3.7.jar",
+            "sequence-qc",
+            "--method",
+            "trim-fixed",
+            "--reads",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\adapter-free.fastq",
+            "--first-base",
+            "20",
+            "--out",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-empty",
+            "--no-config"
+          ],
+          "exit_code": 0,
+          "status": "passed",
+          "output_directory": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-empty",
+          "log": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-empty.log",
+          "qc_warnings": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-empty\\WARNINGS.md"
+        }
+      ],
+      "current_full_gate_suites": {
+        "org.jlinalg.sequence.FixedReadTrimmerTest": {
+          "suite": {
+            "tests": 3,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "7bfa43750ac9caa221c4a26d8975b94959d044052c64aaa6ca5df6caa49d8c62",
+          "testcases": [
+            "oneBasedInclusiveCoordinatesClampToEndAndFilterAbsentSpans()",
+            "eightyOutputsAgreeWithIndependentActualCutadaptClipping()",
+            "invalidCoordinatesAndMismatchedQualityAreRejected()"
+          ]
+        },
+        "org.jlinalg.cli.FixedTrimCliTest": {
+          "suite": {
+            "tests": 3,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "6fb69406574f3ebdaf434011edf4fe06163649d0db359ab2cf1fb088d579d7db",
+          "testcases": [
+            "allFilteredOutputHasProminentWarningAndInvalidCoordinatesFailPersistently()",
+            "pairedFilteringIsSynchronizedAndMismatchesQuarantinePartialOutputs()",
+            "nativePostAdapterClippingPreservesHeadersQualityAndInputHashWithoutPython()"
+          ]
+        }
+      },
+      "refreshed_utc": "2026-10-24T19:47:04.779034+00:00"
+    },
+    {
+      "status": "passed",
+      "baseline": "b0fb8e434dc02f71ef95fb4358acb7369568812e",
+      "suites": {
+        "org.jlinalg.sequence.FixedReadTrimmerTest": {
+          "tests": 3,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "org.jlinalg.cli.FixedTrimCliTest": {
+          "tests": 3,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        }
+      },
+      "detail": "80 independent actual Cutadapt clipping references plus native single/paired/empty/failure CLI fixtures",
+      "jar_sha256": "5f9ab5d45f20156749fd62dd5bd740dabf1cb9c40649553150a0d7887aac46b6",
+      "scope": "Synthetic/source-function fixtures and real upstream runtime validation; no real cohort analysis or full paper pipeline/legacy-package parity.",
+      "packaged_workflows": [
+        {
+          "name": "native-fixed-trim",
+          "command": [
+            "java",
+            "-jar",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\validated-cli\\jlinalg-0.3.7.jar",
+            "sequence-qc",
+            "--method",
+            "trim-fixed",
+            "--reads",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\adapter-free.fastq",
+            "--first-base",
+            "2",
+            "--out",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-trim",
+            "--no-config"
+          ],
+          "exit_code": 0,
+          "status": "passed",
+          "output_directory": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-trim",
+          "log": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-trim.log"
+        },
+        {
+          "name": "native-fixed-empty",
+          "command": [
+            "java",
+            "-jar",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\validated-cli\\jlinalg-0.3.7.jar",
+            "sequence-qc",
+            "--method",
+            "trim-fixed",
+            "--reads",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\adapter-free.fastq",
+            "--first-base",
+            "20",
+            "--out",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-empty",
+            "--no-config"
+          ],
+          "exit_code": 0,
+          "status": "passed",
+          "output_directory": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-empty",
+          "log": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-empty.log",
+          "qc_warnings": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-empty\\WARNINGS.md"
+        }
+      ],
+      "current_full_gate_suites": {
+        "org.jlinalg.sequence.FixedReadTrimmerTest": {
+          "suite": {
+            "tests": 3,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "e368f5e5f780e5a605c9317ec45d77bfa10ddf725283296c3022b4fb481b8111",
+          "testcases": [
+            "oneBasedInclusiveCoordinatesClampToEndAndFilterAbsentSpans()",
+            "eightyOutputsAgreeWithIndependentActualCutadaptClipping()",
+            "invalidCoordinatesAndMismatchedQualityAreRejected()"
+          ]
+        },
+        "org.jlinalg.cli.FixedTrimCliTest": {
+          "suite": {
+            "tests": 3,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "dcd71c2305db83a7227260e1cd56c6be6c4ec86e727d4ee85098ef8d1486054b",
+          "testcases": [
+            "allFilteredOutputHasProminentWarningAndInvalidCoordinatesFailPersistently()",
+            "pairedFilteringIsSynchronizedAndMismatchesQuarantinePartialOutputs()",
+            "nativePostAdapterClippingPreservesHeadersQualityAndInputHashWithoutPython()"
+          ]
+        }
+      },
+      "refreshed_utc": "2026-10-24T21:05:05.737037+00:00"
+    },
+    {
+      "status": "passed",
+      "baseline": "b0fb8e434dc02f71ef95fb4358acb7369568812e",
+      "suites": {
+        "org.jlinalg.sequence.FixedReadTrimmerTest": {
+          "tests": 3,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "org.jlinalg.cli.FixedTrimCliTest": {
+          "tests": 3,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        }
+      },
+      "detail": "80 independent actual Cutadapt clipping references plus native single/paired/empty/failure CLI fixtures",
+      "jar_sha256": "06d9ff0a5fa1cacd21c17dac0cb0182b2de10c086f84b51ff92cae969e819e8a",
+      "scope": "Synthetic/source-function fixtures and real upstream runtime validation; no real cohort analysis or full paper pipeline/legacy-package parity.",
+      "packaged_workflows": [
+        {
+          "name": "native-fixed-trim",
+          "command": [
+            "java",
+            "-jar",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\validated-cli\\jlinalg-0.3.7.jar",
+            "sequence-qc",
+            "--method",
+            "trim-fixed",
+            "--reads",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\adapter-free.fastq",
+            "--first-base",
+            "2",
+            "--out",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-trim",
+            "--no-config"
+          ],
+          "exit_code": 0,
+          "status": "passed",
+          "output_directory": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-trim",
+          "log": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-trim.log"
+        },
+        {
+          "name": "native-fixed-empty",
+          "command": [
+            "java",
+            "-jar",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\validated-cli\\jlinalg-0.3.7.jar",
+            "sequence-qc",
+            "--method",
+            "trim-fixed",
+            "--reads",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\adapter-free.fastq",
+            "--first-base",
+            "20",
+            "--out",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-empty",
+            "--no-config"
+          ],
+          "exit_code": 0,
+          "status": "passed",
+          "output_directory": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-empty",
+          "log": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-empty.log",
+          "qc_warnings": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-empty\\WARNINGS.md"
+        }
+      ],
+      "current_full_gate_suites": {
+        "org.jlinalg.sequence.FixedReadTrimmerTest": {
+          "suite": {
+            "tests": 3,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "ce027c116e6a0aadb5ffc41d5d97f28215327efb1eb5cf4faf6b55a812f5a0d1",
+          "testcases": [
+            "oneBasedInclusiveCoordinatesClampToEndAndFilterAbsentSpans()",
+            "eightyOutputsAgreeWithIndependentActualCutadaptClipping()",
+            "invalidCoordinatesAndMismatchedQualityAreRejected()"
+          ]
+        },
+        "org.jlinalg.cli.FixedTrimCliTest": {
+          "suite": {
+            "tests": 3,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "af4dd00826d9e545631bcbd6274985f0f249810aa72f5b75c2a5dd487ae9a061",
+          "testcases": [
+            "allFilteredOutputHasProminentWarningAndInvalidCoordinatesFailPersistently()",
+            "pairedFilteringIsSynchronizedAndMismatchesQuarantinePartialOutputs()",
+            "nativePostAdapterClippingPreservesHeadersQualityAndInputHashWithoutPython()"
+          ]
+        }
+      },
+      "refreshed_utc": "2026-10-24T21:34:22.909000+00:00"
+    },
+    {
+      "status": "passed",
+      "baseline": "b0fb8e434dc02f71ef95fb4358acb7369568812e",
+      "suites": {
+        "org.jlinalg.sequence.FixedReadTrimmerTest": {
+          "tests": 3,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "org.jlinalg.cli.FixedTrimCliTest": {
+          "tests": 3,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        }
+      },
+      "detail": "80 independent actual Cutadapt clipping references plus native single/paired/empty/failure CLI fixtures",
+      "jar_sha256": "2f748eb4328a871f339fecc25fe41db7fa38a063718277e4d8eeb81d69e70985",
+      "scope": "Synthetic/source-function fixtures and real upstream runtime validation; no real cohort analysis or full paper pipeline/legacy-package parity.",
+      "packaged_workflows": [
+        {
+          "name": "native-fixed-trim",
+          "command": [
+            "java",
+            "-jar",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\validated-cli\\jlinalg-0.3.7.jar",
+            "sequence-qc",
+            "--method",
+            "trim-fixed",
+            "--reads",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\adapter-free.fastq",
+            "--first-base",
+            "2",
+            "--out",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-trim",
+            "--no-config"
+          ],
+          "exit_code": 0,
+          "status": "passed",
+          "output_directory": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-trim",
+          "log": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-trim.log"
+        },
+        {
+          "name": "native-fixed-empty",
+          "command": [
+            "java",
+            "-jar",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\validated-cli\\jlinalg-0.3.7.jar",
+            "sequence-qc",
+            "--method",
+            "trim-fixed",
+            "--reads",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\adapter-free.fastq",
+            "--first-base",
+            "20",
+            "--out",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-empty",
+            "--no-config"
+          ],
+          "exit_code": 0,
+          "status": "passed",
+          "output_directory": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-empty",
+          "log": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-empty.log",
+          "qc_warnings": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-empty\\WARNINGS.md"
+        }
+      ],
+      "current_full_gate_suites": {
+        "org.jlinalg.sequence.FixedReadTrimmerTest": {
+          "suite_name": "org.jlinalg.sequence.FixedReadTrimmerTest",
+          "suite": {
+            "tests": 3,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "6d20ad517f2b9582b3e986ff4edbfbb3cceb4f9478737614b6eedb6ca1a22af4",
+          "testcases": [
+            "oneBasedInclusiveCoordinatesClampToEndAndFilterAbsentSpans()",
+            "eightyOutputsAgreeWithIndependentActualCutadaptClipping()",
+            "invalidCoordinatesAndMismatchedQualityAreRejected()"
+          ]
+        },
+        "org.jlinalg.cli.FixedTrimCliTest": {
+          "suite_name": "org.jlinalg.cli.FixedTrimCliTest",
+          "suite": {
+            "tests": 3,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "7522c61d38eb45a1bffaf2066dc5890aaee23ca65450bb042474ebd759562cdd",
+          "testcases": [
+            "allFilteredOutputHasProminentWarningAndInvalidCoordinatesFailPersistently()",
+            "pairedFilteringIsSynchronizedAndMismatchesQuarantinePartialOutputs()",
+            "nativePostAdapterClippingPreservesHeadersQualityAndInputHashWithoutPython()"
+          ]
+        }
+      },
+      "refreshed_utc": "2026-10-24T23:03:19.823475+00:00"
+    },
+    {
+      "status": "passed",
+      "baseline": "b0fb8e434dc02f71ef95fb4358acb7369568812e",
+      "suites": {
+        "org.jlinalg.sequence.FixedReadTrimmerTest": {
+          "tests": 3,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "org.jlinalg.cli.FixedTrimCliTest": {
+          "tests": 3,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        }
+      },
+      "detail": "80 independent actual Cutadapt clipping references plus native single/paired/empty/failure CLI fixtures",
+      "jar_sha256": "7fc22cd33b22500b0e0360ee93c6e416ce27444f32691fed470e280e95f7f70d",
+      "scope": "Synthetic/source-function fixtures and real upstream runtime validation; no real cohort analysis or full paper pipeline/legacy-package parity.",
+      "packaged_workflows": [
+        {
+          "name": "native-fixed-trim",
+          "command": [
+            "java",
+            "-jar",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\validated-cli\\jlinalg-0.3.7.jar",
+            "sequence-qc",
+            "--method",
+            "trim-fixed",
+            "--reads",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\adapter-free.fastq",
+            "--first-base",
+            "2",
+            "--out",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-trim",
+            "--no-config"
+          ],
+          "exit_code": 0,
+          "status": "passed",
+          "output_directory": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-trim",
+          "log": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-trim.log"
+        },
+        {
+          "name": "native-fixed-empty",
+          "command": [
+            "java",
+            "-jar",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\validated-cli\\jlinalg-0.3.7.jar",
+            "sequence-qc",
+            "--method",
+            "trim-fixed",
+            "--reads",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\adapter-free.fastq",
+            "--first-base",
+            "20",
+            "--out",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-empty",
+            "--no-config"
+          ],
+          "exit_code": 0,
+          "status": "passed",
+          "output_directory": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-empty",
+          "log": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-empty.log",
+          "qc_warnings": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-empty\\WARNINGS.md"
+        }
+      ],
+      "current_full_gate_suites": {
+        "org.jlinalg.sequence.FixedReadTrimmerTest": {
+          "suite_name": "org.jlinalg.sequence.FixedReadTrimmerTest",
+          "suite": {
+            "tests": 3,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "0693fa6a7a58277dbf9b7734e6d4550bd236ee8606e41033e7613b4fcb9e28e4",
+          "testcases": [
+            "oneBasedInclusiveCoordinatesClampToEndAndFilterAbsentSpans()",
+            "eightyOutputsAgreeWithIndependentActualCutadaptClipping()",
+            "invalidCoordinatesAndMismatchedQualityAreRejected()"
+          ]
+        },
+        "org.jlinalg.cli.FixedTrimCliTest": {
+          "suite_name": "org.jlinalg.cli.FixedTrimCliTest",
+          "suite": {
+            "tests": 3,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "c3df3391326104a74c205042d724e1e52cbe4fe61afa87eacecc3f8c6504b4b9",
+          "testcases": [
+            "allFilteredOutputHasProminentWarningAndInvalidCoordinatesFailPersistently()",
+            "pairedFilteringIsSynchronizedAndMismatchesQuarantinePartialOutputs()",
+            "nativePostAdapterClippingPreservesHeadersQualityAndInputHashWithoutPython()"
+          ]
+        }
+      },
+      "refreshed_utc": "2026-10-24T23:44:47.238929+00:00"
+    },
+    {
+      "status": "passed",
+      "baseline": "b0fb8e434dc02f71ef95fb4358acb7369568812e",
+      "suites": {
+        "org.jlinalg.sequence.FixedReadTrimmerTest": {
+          "tests": 3,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "org.jlinalg.cli.FixedTrimCliTest": {
+          "tests": 3,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        }
+      },
+      "detail": "80 independent actual Cutadapt clipping references plus native single/paired/empty/failure CLI fixtures",
+      "jar_sha256": "19c4ed620c230c4c520c10bcbf3d88cbd1484d640103d2109e25f4db0ee621be",
+      "scope": "Synthetic/source-function fixtures and real upstream runtime validation; no real cohort analysis or full paper pipeline/legacy-package parity.",
+      "packaged_workflows": [
+        {
+          "name": "native-fixed-trim",
+          "command": [
+            "java",
+            "-jar",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\validated-cli\\jlinalg-0.3.7.jar",
+            "sequence-qc",
+            "--method",
+            "trim-fixed",
+            "--reads",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\adapter-free.fastq",
+            "--first-base",
+            "2",
+            "--out",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-trim",
+            "--no-config"
+          ],
+          "exit_code": 0,
+          "status": "passed",
+          "output_directory": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-trim",
+          "log": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-trim.log"
+        },
+        {
+          "name": "native-fixed-empty",
+          "command": [
+            "java",
+            "-jar",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\validated-cli\\jlinalg-0.3.7.jar",
+            "sequence-qc",
+            "--method",
+            "trim-fixed",
+            "--reads",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\adapter-free.fastq",
+            "--first-base",
+            "20",
+            "--out",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-empty",
+            "--no-config"
+          ],
+          "exit_code": 0,
+          "status": "passed",
+          "output_directory": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-empty",
+          "log": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-empty.log",
+          "qc_warnings": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-empty\\WARNINGS.md"
+        }
+      ],
+      "current_full_gate_suites": {
+        "org.jlinalg.sequence.FixedReadTrimmerTest": {
+          "suite_name": "org.jlinalg.sequence.FixedReadTrimmerTest",
+          "suite": {
+            "tests": 3,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "f3af5d8535d10902a5bfe2534b37f7f9d24fdc3d8bd3da15e3eca25578d27863",
+          "testcases": [
+            "oneBasedInclusiveCoordinatesClampToEndAndFilterAbsentSpans()",
+            "eightyOutputsAgreeWithIndependentActualCutadaptClipping()",
+            "invalidCoordinatesAndMismatchedQualityAreRejected()"
+          ]
+        },
+        "org.jlinalg.cli.FixedTrimCliTest": {
+          "suite_name": "org.jlinalg.cli.FixedTrimCliTest",
+          "suite": {
+            "tests": 3,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "294b206b7ee936adcb812fc06ca49c301258d7cbbac0e003ee67f84daed4691a",
+          "testcases": [
+            "allFilteredOutputHasProminentWarningAndInvalidCoordinatesFailPersistently()",
+            "pairedFilteringIsSynchronizedAndMismatchesQuarantinePartialOutputs()",
+            "nativePostAdapterClippingPreservesHeadersQualityAndInputHashWithoutPython()"
+          ]
+        }
+      },
+      "refreshed_utc": "2026-10-25T00:57:19.120198+00:00"
+    },
+    {
+      "status": "passed",
+      "baseline": "b0fb8e434dc02f71ef95fb4358acb7369568812e",
+      "suites": {
+        "org.jlinalg.sequence.FixedReadTrimmerTest": {
+          "tests": 3,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "org.jlinalg.cli.FixedTrimCliTest": {
+          "tests": 3,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        }
+      },
+      "detail": "80 independent actual Cutadapt clipping references plus native single/paired/empty/failure CLI fixtures",
+      "jar_sha256": "095e5fecbb0beaabc2e67134d980d2e1841210c0b92c708b3a21ab0dfb866c61",
+      "scope": "Synthetic/source-function fixtures and real upstream runtime validation; no real cohort analysis or full paper pipeline/legacy-package parity.",
+      "packaged_workflows": [
+        {
+          "name": "native-fixed-trim",
+          "command": [
+            "java",
+            "-jar",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\validated-cli\\jlinalg-0.3.7.jar",
+            "sequence-qc",
+            "--method",
+            "trim-fixed",
+            "--reads",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\adapter-free.fastq",
+            "--first-base",
+            "2",
+            "--out",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-trim",
+            "--no-config"
+          ],
+          "exit_code": 0,
+          "status": "passed",
+          "output_directory": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-trim",
+          "log": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-trim.log"
+        },
+        {
+          "name": "native-fixed-empty",
+          "command": [
+            "java",
+            "-jar",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\validated-cli\\jlinalg-0.3.7.jar",
+            "sequence-qc",
+            "--method",
+            "trim-fixed",
+            "--reads",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\adapter-free.fastq",
+            "--first-base",
+            "20",
+            "--out",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-empty",
+            "--no-config"
+          ],
+          "exit_code": 0,
+          "status": "passed",
+          "output_directory": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-empty",
+          "log": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-empty.log",
+          "qc_warnings": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-empty\\WARNINGS.md"
+        }
+      ],
+      "current_full_gate_suites": {
+        "org.jlinalg.sequence.FixedReadTrimmerTest": {
+          "suite_name": "org.jlinalg.sequence.FixedReadTrimmerTest",
+          "suite": {
+            "tests": 3,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "bbe08f766b81d4a5c804b09f0713058f2f656d69f310d2a85194b467b3e5d1ce",
+          "testcases": [
+            "oneBasedInclusiveCoordinatesClampToEndAndFilterAbsentSpans()",
+            "eightyOutputsAgreeWithIndependentActualCutadaptClipping()",
+            "invalidCoordinatesAndMismatchedQualityAreRejected()"
+          ]
+        },
+        "org.jlinalg.cli.FixedTrimCliTest": {
+          "suite_name": "org.jlinalg.cli.FixedTrimCliTest",
+          "suite": {
+            "tests": 3,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "7b09dc60534a472f37d1b3271f5a0a366376961b406f88b1510337342253dcc2",
+          "testcases": [
+            "allFilteredOutputHasProminentWarningAndInvalidCoordinatesFailPersistently()",
+            "pairedFilteringIsSynchronizedAndMismatchesQuarantinePartialOutputs()",
+            "nativePostAdapterClippingPreservesHeadersQualityAndInputHashWithoutPython()"
+          ]
+        }
+      },
+      "refreshed_utc": "2026-10-25T02:15:39.832466+00:00"
+    },
+    {
+      "status": "passed",
+      "baseline": "b0fb8e434dc02f71ef95fb4358acb7369568812e",
+      "suites": {
+        "org.jlinalg.sequence.FixedReadTrimmerTest": {
+          "tests": 3,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "org.jlinalg.cli.FixedTrimCliTest": {
+          "tests": 3,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        }
+      },
+      "detail": "80 independent actual Cutadapt clipping references plus native single/paired/empty/failure CLI fixtures",
+      "jar_sha256": "fc6c5769770609b38ffd8e5f22e701efcf0aeb13261c594a070ee5b6b777232b",
+      "scope": "Synthetic/source-function fixtures and real upstream runtime validation; no real cohort analysis or full paper pipeline/legacy-package parity.",
+      "packaged_workflows": [
+        {
+          "name": "native-fixed-trim",
+          "command": [
+            "java",
+            "-jar",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\validated-cli\\jlinalg-0.3.7.jar",
+            "sequence-qc",
+            "--method",
+            "trim-fixed",
+            "--reads",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\adapter-free.fastq",
+            "--first-base",
+            "2",
+            "--out",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-trim",
+            "--no-config"
+          ],
+          "exit_code": 0,
+          "status": "passed",
+          "output_directory": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-trim",
+          "log": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-trim.log"
+        },
+        {
+          "name": "native-fixed-empty",
+          "command": [
+            "java",
+            "-jar",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\validated-cli\\jlinalg-0.3.7.jar",
+            "sequence-qc",
+            "--method",
+            "trim-fixed",
+            "--reads",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\adapter-free.fastq",
+            "--first-base",
+            "20",
+            "--out",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-empty",
+            "--no-config"
+          ],
+          "exit_code": 0,
+          "status": "passed",
+          "output_directory": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-empty",
+          "log": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-empty.log",
+          "qc_warnings": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-empty\\WARNINGS.md"
+        }
+      ],
+      "current_full_gate_suites": {
+        "org.jlinalg.sequence.FixedReadTrimmerTest": {
+          "suite_name": "org.jlinalg.sequence.FixedReadTrimmerTest",
+          "suite": {
+            "tests": 3,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "3f0cfa9ffdcaf4a02e768a80525d1464730dceb570e0a7b5d4b689e5bfaffe4d",
+          "testcases": [
+            "oneBasedInclusiveCoordinatesClampToEndAndFilterAbsentSpans()",
+            "eightyOutputsAgreeWithIndependentActualCutadaptClipping()",
+            "invalidCoordinatesAndMismatchedQualityAreRejected()"
+          ]
+        },
+        "org.jlinalg.cli.FixedTrimCliTest": {
+          "suite_name": "org.jlinalg.cli.FixedTrimCliTest",
+          "suite": {
+            "tests": 3,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "1f59930ea04a77f6517b1c36cc2fd821b3c2ae722b9a43b79e305fc216322579",
+          "testcases": [
+            "allFilteredOutputHasProminentWarningAndInvalidCoordinatesFailPersistently()",
+            "pairedFilteringIsSynchronizedAndMismatchesQuarantinePartialOutputs()",
+            "nativePostAdapterClippingPreservesHeadersQualityAndInputHashWithoutPython()"
+          ]
+        }
+      },
+      "refreshed_utc": "2026-10-25T02:57:16.310858+00:00"
+    },
+    {
+      "status": "passed",
+      "baseline": "b0fb8e434dc02f71ef95fb4358acb7369568812e",
+      "suites": {
+        "org.jlinalg.sequence.FixedReadTrimmerTest": {
+          "tests": 3,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "org.jlinalg.cli.FixedTrimCliTest": {
+          "tests": 3,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        }
+      },
+      "detail": "80 independent actual Cutadapt clipping references plus native single/paired/empty/failure CLI fixtures",
+      "jar_sha256": "faa28146756d077aa691977585fd3349c390f49ff609179a94e355cb13cca667",
+      "scope": "Synthetic/source-function fixtures and real upstream runtime validation; no real cohort analysis or full paper pipeline/legacy-package parity.",
+      "packaged_workflows": [
+        {
+          "name": "native-fixed-trim",
+          "command": [
+            "java",
+            "-jar",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\validated-cli\\jlinalg-0.3.7.jar",
+            "sequence-qc",
+            "--method",
+            "trim-fixed",
+            "--reads",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\adapter-free.fastq",
+            "--first-base",
+            "2",
+            "--out",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-trim",
+            "--no-config"
+          ],
+          "exit_code": 0,
+          "status": "passed",
+          "output_directory": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-trim",
+          "log": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-trim.log"
+        },
+        {
+          "name": "native-fixed-empty",
+          "command": [
+            "java",
+            "-jar",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\validated-cli\\jlinalg-0.3.7.jar",
+            "sequence-qc",
+            "--method",
+            "trim-fixed",
+            "--reads",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\adapter-free.fastq",
+            "--first-base",
+            "20",
+            "--out",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-empty",
+            "--no-config"
+          ],
+          "exit_code": 0,
+          "status": "passed",
+          "output_directory": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-empty",
+          "log": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-empty.log",
+          "qc_warnings": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-empty\\WARNINGS.md"
+        }
+      ],
+      "current_full_gate_suites": {
+        "org.jlinalg.sequence.FixedReadTrimmerTest": {
+          "suite_name": "org.jlinalg.sequence.FixedReadTrimmerTest",
+          "suite": {
+            "tests": 3,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "9099c996ba878c9ecf84f31681f5f4bae45211d80518bfc1963980dcc5d530bf",
+          "testcases": [
+            "oneBasedInclusiveCoordinatesClampToEndAndFilterAbsentSpans()",
+            "eightyOutputsAgreeWithIndependentActualCutadaptClipping()",
+            "invalidCoordinatesAndMismatchedQualityAreRejected()"
+          ]
+        },
+        "org.jlinalg.cli.FixedTrimCliTest": {
+          "suite_name": "org.jlinalg.cli.FixedTrimCliTest",
+          "suite": {
+            "tests": 3,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "f253dca564c2ccf636604f7a5003644560cea5dfd45f85aa81dce65facdef77d",
+          "testcases": [
+            "allFilteredOutputHasProminentWarningAndInvalidCoordinatesFailPersistently()",
+            "pairedFilteringIsSynchronizedAndMismatchesQuarantinePartialOutputs()",
+            "nativePostAdapterClippingPreservesHeadersQualityAndInputHashWithoutPython()"
+          ]
+        }
+      },
+      "refreshed_utc": "2026-10-25T03:50:24.675422+00:00"
+    },
+    {
+      "status": "passed",
+      "baseline": "b0fb8e434dc02f71ef95fb4358acb7369568812e",
+      "suites": {
+        "org.jlinalg.sequence.FixedReadTrimmerTest": {
+          "tests": 3,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "org.jlinalg.cli.FixedTrimCliTest": {
+          "tests": 3,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        }
+      },
+      "detail": "80 independent actual Cutadapt clipping references plus native single/paired/empty/failure CLI fixtures",
+      "jar_sha256": "68a623dc455abf0608f50ca5977a44cd3c6d0db6489f8db726569675c46abdc2",
+      "scope": "Synthetic/source-function fixtures and real upstream runtime validation; no real cohort analysis or full paper pipeline/legacy-package parity.",
+      "packaged_workflows": [
+        {
+          "name": "native-fixed-trim",
+          "command": [
+            "java",
+            "-jar",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\validated-cli\\jlinalg-0.3.7.jar",
+            "sequence-qc",
+            "--method",
+            "trim-fixed",
+            "--reads",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\adapter-free.fastq",
+            "--first-base",
+            "2",
+            "--out",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-trim",
+            "--no-config"
+          ],
+          "exit_code": 0,
+          "status": "passed",
+          "output_directory": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-trim",
+          "log": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-trim.log"
+        },
+        {
+          "name": "native-fixed-empty",
+          "command": [
+            "java",
+            "-jar",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\validated-cli\\jlinalg-0.3.7.jar",
+            "sequence-qc",
+            "--method",
+            "trim-fixed",
+            "--reads",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\adapter-free.fastq",
+            "--first-base",
+            "20",
+            "--out",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-empty",
+            "--no-config"
+          ],
+          "exit_code": 0,
+          "status": "passed",
+          "output_directory": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-empty",
+          "log": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-empty.log",
+          "qc_warnings": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-empty\\WARNINGS.md"
+        }
+      ],
+      "current_full_gate_suites": {
+        "org.jlinalg.sequence.FixedReadTrimmerTest": {
+          "suite_name": "org.jlinalg.sequence.FixedReadTrimmerTest",
+          "suite": {
+            "tests": 3,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "d220f1f24f6b9e5be7f6f9847df96b253220ae4bd92650ec952179fe70d4649f",
+          "testcases": [
+            "oneBasedInclusiveCoordinatesClampToEndAndFilterAbsentSpans()",
+            "eightyOutputsAgreeWithIndependentActualCutadaptClipping()",
+            "invalidCoordinatesAndMismatchedQualityAreRejected()"
+          ]
+        },
+        "org.jlinalg.cli.FixedTrimCliTest": {
+          "suite_name": "org.jlinalg.cli.FixedTrimCliTest",
+          "suite": {
+            "tests": 3,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "7ce9bb1c80b2a300b84b14ac6d72800a390831a41bccb0c049aaf8365bc7eb41",
+          "testcases": [
+            "allFilteredOutputHasProminentWarningAndInvalidCoordinatesFailPersistently()",
+            "pairedFilteringIsSynchronizedAndMismatchesQuarantinePartialOutputs()",
+            "nativePostAdapterClippingPreservesHeadersQualityAndInputHashWithoutPython()"
+          ]
+        }
+      },
+      "refreshed_utc": "2026-10-25T05:28:16.019770+00:00"
+    },
+    {
+      "status": "passed",
+      "baseline": "b0fb8e434dc02f71ef95fb4358acb7369568812e",
+      "suites": {
+        "org.jlinalg.sequence.FixedReadTrimmerTest": {
+          "tests": 3,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "org.jlinalg.cli.FixedTrimCliTest": {
+          "tests": 3,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        }
+      },
+      "detail": "80 independent actual Cutadapt clipping references plus native single/paired/empty/failure CLI fixtures",
+      "jar_sha256": "6ff7cc767bc62f2489947a34fbf3bc99129e4d444242eb217294764587c7e491",
+      "scope": "Synthetic/source-function fixtures and real upstream runtime validation; no real cohort analysis or full paper pipeline/legacy-package parity.",
+      "packaged_workflows": [
+        {
+          "name": "native-fixed-trim",
+          "command": [
+            "java",
+            "-jar",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\validated-cli\\jlinalg-0.3.7.jar",
+            "sequence-qc",
+            "--method",
+            "trim-fixed",
+            "--reads",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\adapter-free.fastq",
+            "--first-base",
+            "2",
+            "--out",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-trim",
+            "--no-config"
+          ],
+          "exit_code": 0,
+          "status": "passed",
+          "output_directory": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-trim",
+          "log": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-trim.log"
+        },
+        {
+          "name": "native-fixed-empty",
+          "command": [
+            "java",
+            "-jar",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\validated-cli\\jlinalg-0.3.7.jar",
+            "sequence-qc",
+            "--method",
+            "trim-fixed",
+            "--reads",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\adapter-free.fastq",
+            "--first-base",
+            "20",
+            "--out",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-empty",
+            "--no-config"
+          ],
+          "exit_code": 0,
+          "status": "passed",
+          "output_directory": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-empty",
+          "log": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-empty.log",
+          "qc_warnings": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-empty\\WARNINGS.md"
+        }
+      ],
+      "current_full_gate_suites": {
+        "org.jlinalg.sequence.FixedReadTrimmerTest": {
+          "suite_name": "org.jlinalg.sequence.FixedReadTrimmerTest",
+          "suite": {
+            "tests": 3,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "7bd08cb27207da52cb767a45446bf58b9f2281600b0c465d0abf5bf066a72127",
+          "testcases": [
+            "oneBasedInclusiveCoordinatesClampToEndAndFilterAbsentSpans()",
+            "eightyOutputsAgreeWithIndependentActualCutadaptClipping()",
+            "invalidCoordinatesAndMismatchedQualityAreRejected()"
+          ]
+        },
+        "org.jlinalg.cli.FixedTrimCliTest": {
+          "suite_name": "org.jlinalg.cli.FixedTrimCliTest",
+          "suite": {
+            "tests": 3,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "4c6c2edc893c4e4b14c56a23de483bc072252f2cd7eb63768bafe16e62236a2b",
+          "testcases": [
+            "allFilteredOutputHasProminentWarningAndInvalidCoordinatesFailPersistently()",
+            "pairedFilteringIsSynchronizedAndMismatchesQuarantinePartialOutputs()",
+            "nativePostAdapterClippingPreservesHeadersQualityAndInputHashWithoutPython()"
+          ]
+        }
+      },
+      "refreshed_utc": "2026-10-25T06:53:04.578303+00:00"
+    },
+    {
+      "status": "passed",
+      "baseline": "b0fb8e434dc02f71ef95fb4358acb7369568812e",
+      "suites": {
+        "org.jlinalg.sequence.FixedReadTrimmerTest": {
+          "tests": 3,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "org.jlinalg.cli.FixedTrimCliTest": {
+          "tests": 3,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        }
+      },
+      "detail": "80 independent actual Cutadapt clipping references plus native single/paired/empty/failure CLI fixtures",
+      "jar_sha256": "53399f4be52ad5bb882f5acfea53d5a2a037ac80a6e93d1f7d7fdbc118051860",
+      "scope": "Synthetic/source-function fixtures and real upstream runtime validation; no real cohort analysis or full paper pipeline/legacy-package parity.",
+      "packaged_workflows": [
+        {
+          "name": "native-fixed-trim",
+          "command": [
+            "java",
+            "-jar",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\validated-cli\\jlinalg-0.3.7.jar",
+            "sequence-qc",
+            "--method",
+            "trim-fixed",
+            "--reads",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\adapter-free.fastq",
+            "--first-base",
+            "2",
+            "--out",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-trim",
+            "--no-config"
+          ],
+          "exit_code": 0,
+          "status": "passed",
+          "output_directory": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-trim",
+          "log": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-trim.log"
+        },
+        {
+          "name": "native-fixed-empty",
+          "command": [
+            "java",
+            "-jar",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\validated-cli\\jlinalg-0.3.7.jar",
+            "sequence-qc",
+            "--method",
+            "trim-fixed",
+            "--reads",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\adapter-free.fastq",
+            "--first-base",
+            "20",
+            "--out",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-empty",
+            "--no-config"
+          ],
+          "exit_code": 0,
+          "status": "passed",
+          "output_directory": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-empty",
+          "log": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-empty.log",
+          "qc_warnings": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-empty\\WARNINGS.md"
+        }
+      ],
+      "current_full_gate_suites": {
+        "org.jlinalg.sequence.FixedReadTrimmerTest": {
+          "suite_name": "org.jlinalg.sequence.FixedReadTrimmerTest",
+          "suite": {
+            "tests": 3,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "fcd52f68c398f2aa4cc45b9366c1851dbe43792a8194fee79ea732b6c0112752",
+          "testcases": [
+            "oneBasedInclusiveCoordinatesClampToEndAndFilterAbsentSpans()",
+            "eightyOutputsAgreeWithIndependentActualCutadaptClipping()",
+            "invalidCoordinatesAndMismatchedQualityAreRejected()"
+          ]
+        },
+        "org.jlinalg.cli.FixedTrimCliTest": {
+          "suite_name": "org.jlinalg.cli.FixedTrimCliTest",
+          "suite": {
+            "tests": 3,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "cf3883f3278b2092c7378d635941bd4421f93414db73de4c7e18eb9381025027",
+          "testcases": [
+            "allFilteredOutputHasProminentWarningAndInvalidCoordinatesFailPersistently()",
+            "pairedFilteringIsSynchronizedAndMismatchesQuarantinePartialOutputs()",
+            "nativePostAdapterClippingPreservesHeadersQualityAndInputHashWithoutPython()"
+          ]
+        }
+      },
+      "refreshed_utc": "2026-10-25T08:02:41.668775+00:00"
+    },
+    {
+      "status": "passed",
+      "baseline": "b0fb8e434dc02f71ef95fb4358acb7369568812e",
+      "suites": {
+        "org.jlinalg.sequence.FixedReadTrimmerTest": {
+          "tests": 3,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "org.jlinalg.cli.FixedTrimCliTest": {
+          "tests": 3,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        }
+      },
+      "detail": "80 independent actual Cutadapt clipping references plus native single/paired/empty/failure CLI fixtures",
+      "jar_sha256": "9650afd13cf486aba84285ba6d2f1a0a06eca8f08d3e33b4c2338567f5372de2",
+      "scope": "Synthetic/source-function fixtures and real upstream runtime validation; no real cohort analysis or full paper pipeline/legacy-package parity.",
+      "packaged_workflows": [
+        {
+          "name": "native-fixed-trim",
+          "command": [
+            "java",
+            "-jar",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\validated-cli\\jlinalg-0.3.7.jar",
+            "sequence-qc",
+            "--method",
+            "trim-fixed",
+            "--reads",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\adapter-free.fastq",
+            "--first-base",
+            "2",
+            "--out",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-trim",
+            "--no-config"
+          ],
+          "exit_code": 0,
+          "status": "passed",
+          "output_directory": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-trim",
+          "log": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-trim.log"
+        },
+        {
+          "name": "native-fixed-empty",
+          "command": [
+            "java",
+            "-jar",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\validated-cli\\jlinalg-0.3.7.jar",
+            "sequence-qc",
+            "--method",
+            "trim-fixed",
+            "--reads",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\adapter-free.fastq",
+            "--first-base",
+            "20",
+            "--out",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-empty",
+            "--no-config"
+          ],
+          "exit_code": 0,
+          "status": "passed",
+          "output_directory": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-empty",
+          "log": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-empty.log",
+          "qc_warnings": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-empty\\WARNINGS.md"
+        }
+      ],
+      "current_full_gate_suites": {
+        "org.jlinalg.sequence.FixedReadTrimmerTest": {
+          "suite_name": "org.jlinalg.sequence.FixedReadTrimmerTest",
+          "suite": {
+            "tests": 3,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "8980d89ad27725374c2b832115c73bc3574710e241f5be4b2b80151b7f10abba",
+          "testcases": [
+            "oneBasedInclusiveCoordinatesClampToEndAndFilterAbsentSpans()",
+            "eightyOutputsAgreeWithIndependentActualCutadaptClipping()",
+            "invalidCoordinatesAndMismatchedQualityAreRejected()"
+          ]
+        },
+        "org.jlinalg.cli.FixedTrimCliTest": {
+          "suite_name": "org.jlinalg.cli.FixedTrimCliTest",
+          "suite": {
+            "tests": 3,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "4d19abba7302e6f13d01ff57b4788b0187ec03727530e4fc554346bdf4797ea8",
+          "testcases": [
+            "allFilteredOutputHasProminentWarningAndInvalidCoordinatesFailPersistently()",
+            "pairedFilteringIsSynchronizedAndMismatchesQuarantinePartialOutputs()",
+            "nativePostAdapterClippingPreservesHeadersQualityAndInputHashWithoutPython()"
+          ]
+        }
+      },
+      "refreshed_utc": "2026-10-25T09:04:26.213216+00:00"
+    },
+    {
+      "status": "passed",
+      "baseline": "b0fb8e434dc02f71ef95fb4358acb7369568812e",
+      "suites": {
+        "org.jlinalg.sequence.FixedReadTrimmerTest": {
+          "tests": 3,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "org.jlinalg.cli.FixedTrimCliTest": {
+          "tests": 3,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        }
+      },
+      "detail": "80 independent actual Cutadapt clipping references plus native single/paired/empty/failure CLI fixtures",
+      "jar_sha256": "938e928161f850a7f23d38ced10b6ed53c15392b16f79c3d6caeab2ae8906c84",
+      "scope": "Synthetic/source-function fixtures and real upstream runtime validation; no real cohort analysis or full paper pipeline/legacy-package parity.",
+      "packaged_workflows": [
+        {
+          "name": "native-fixed-trim",
+          "command": [
+            "java",
+            "-jar",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\validated-cli\\jlinalg-0.3.7.jar",
+            "sequence-qc",
+            "--method",
+            "trim-fixed",
+            "--reads",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\adapter-free.fastq",
+            "--first-base",
+            "2",
+            "--out",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-trim",
+            "--no-config"
+          ],
+          "exit_code": 0,
+          "status": "passed",
+          "output_directory": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-trim",
+          "log": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-trim.log"
+        },
+        {
+          "name": "native-fixed-empty",
+          "command": [
+            "java",
+            "-jar",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\validated-cli\\jlinalg-0.3.7.jar",
+            "sequence-qc",
+            "--method",
+            "trim-fixed",
+            "--reads",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\adapter-free.fastq",
+            "--first-base",
+            "20",
+            "--out",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-empty",
+            "--no-config"
+          ],
+          "exit_code": 0,
+          "status": "passed",
+          "output_directory": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-empty",
+          "log": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-empty.log",
+          "qc_warnings": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-empty\\WARNINGS.md"
+        }
+      ],
+      "current_full_gate_suites": {
+        "org.jlinalg.sequence.FixedReadTrimmerTest": {
+          "suite_name": "org.jlinalg.sequence.FixedReadTrimmerTest",
+          "suite": {
+            "tests": 3,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "edc1ef1ed96c6716e1bd2287932b39360d351a0ae88ca5fc1575cff0f5d3d0c2",
+          "testcases": [
+            "oneBasedInclusiveCoordinatesClampToEndAndFilterAbsentSpans()",
+            "eightyOutputsAgreeWithIndependentActualCutadaptClipping()",
+            "invalidCoordinatesAndMismatchedQualityAreRejected()"
+          ]
+        },
+        "org.jlinalg.cli.FixedTrimCliTest": {
+          "suite_name": "org.jlinalg.cli.FixedTrimCliTest",
+          "suite": {
+            "tests": 3,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "8340dcf070bc13301c3c994b3693e8f23952aedf23a83729592baf91b2e88b44",
+          "testcases": [
+            "allFilteredOutputHasProminentWarningAndInvalidCoordinatesFailPersistently()",
+            "pairedFilteringIsSynchronizedAndMismatchesQuarantinePartialOutputs()",
+            "nativePostAdapterClippingPreservesHeadersQualityAndInputHashWithoutPython()"
+          ]
+        }
+      },
+      "refreshed_utc": "2026-10-25T10:07:59.705580+00:00"
+    },
+    {
+      "status": "passed",
+      "baseline": "b0fb8e434dc02f71ef95fb4358acb7369568812e",
+      "suites": {
+        "org.jlinalg.sequence.FixedReadTrimmerTest": {
+          "tests": 3,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "org.jlinalg.cli.FixedTrimCliTest": {
+          "tests": 3,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        }
+      },
+      "detail": "80 independent actual Cutadapt clipping references plus native single/paired/empty/failure CLI fixtures",
+      "jar_sha256": "baaacad03f35a01f7d53aba9568e0ce03a89d37f2169ab89e25628f38b8b3b44",
+      "scope": "Synthetic/source-function fixtures and real upstream runtime validation; no real cohort analysis or full paper pipeline/legacy-package parity.",
+      "packaged_workflows": [
+        {
+          "name": "native-fixed-trim",
+          "command": [
+            "java",
+            "-jar",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\validated-cli\\jlinalg-0.3.7.jar",
+            "sequence-qc",
+            "--method",
+            "trim-fixed",
+            "--reads",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\adapter-free.fastq",
+            "--first-base",
+            "2",
+            "--out",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-trim",
+            "--no-config"
+          ],
+          "exit_code": 0,
+          "status": "passed",
+          "output_directory": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-trim",
+          "log": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-trim.log"
+        },
+        {
+          "name": "native-fixed-empty",
+          "command": [
+            "java",
+            "-jar",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\validated-cli\\jlinalg-0.3.7.jar",
+            "sequence-qc",
+            "--method",
+            "trim-fixed",
+            "--reads",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\adapter-free.fastq",
+            "--first-base",
+            "20",
+            "--out",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-empty",
+            "--no-config"
+          ],
+          "exit_code": 0,
+          "status": "passed",
+          "output_directory": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-empty",
+          "log": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-empty.log",
+          "qc_warnings": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-empty\\WARNINGS.md"
+        }
+      ],
+      "current_full_gate_suites": {
+        "org.jlinalg.sequence.FixedReadTrimmerTest": {
+          "suite_name": "org.jlinalg.sequence.FixedReadTrimmerTest",
+          "suite": {
+            "tests": 3,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "1612a758d43be8f9538093d5b1f04d1f8c8b4d6e5c87429587dec3ea53ae5833",
+          "testcases": [
+            "oneBasedInclusiveCoordinatesClampToEndAndFilterAbsentSpans()",
+            "eightyOutputsAgreeWithIndependentActualCutadaptClipping()",
+            "invalidCoordinatesAndMismatchedQualityAreRejected()"
+          ]
+        },
+        "org.jlinalg.cli.FixedTrimCliTest": {
+          "suite_name": "org.jlinalg.cli.FixedTrimCliTest",
+          "suite": {
+            "tests": 3,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "49b456f499f0213894cb14547491d412e5b9c3b702fe9a1d7efc6f6f4c5d68a8",
+          "testcases": [
+            "allFilteredOutputHasProminentWarningAndInvalidCoordinatesFailPersistently()",
+            "pairedFilteringIsSynchronizedAndMismatchesQuarantinePartialOutputs()",
+            "nativePostAdapterClippingPreservesHeadersQualityAndInputHashWithoutPython()"
+          ]
+        }
+      },
+      "refreshed_utc": "2026-10-25T11:27:56.771609+00:00"
+    },
+    {
+      "status": "passed",
+      "baseline": "b0fb8e434dc02f71ef95fb4358acb7369568812e",
+      "suites": {
+        "org.jlinalg.sequence.FixedReadTrimmerTest": {
+          "tests": 3,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "org.jlinalg.cli.FixedTrimCliTest": {
+          "tests": 3,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        }
+      },
+      "detail": "80 independent actual Cutadapt clipping references plus native single/paired/empty/failure CLI fixtures",
+      "jar_sha256": "5680cbc4e457007f8903d1d4db3e74ecc890a150b350870f0b82d5650bdc0fec",
+      "scope": "Synthetic/source-function fixtures and real upstream runtime validation; no real cohort analysis or full paper pipeline/legacy-package parity.",
+      "packaged_workflows": [
+        {
+          "name": "native-fixed-trim",
+          "command": [
+            "java",
+            "-jar",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\validated-cli\\jlinalg-0.3.7.jar",
+            "sequence-qc",
+            "--method",
+            "trim-fixed",
+            "--reads",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\adapter-free.fastq",
+            "--first-base",
+            "2",
+            "--out",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-trim",
+            "--no-config"
+          ],
+          "exit_code": 0,
+          "status": "passed",
+          "output_directory": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-trim",
+          "log": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-trim.log"
+        },
+        {
+          "name": "native-fixed-empty",
+          "command": [
+            "java",
+            "-jar",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\validated-cli\\jlinalg-0.3.7.jar",
+            "sequence-qc",
+            "--method",
+            "trim-fixed",
+            "--reads",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\adapter-free.fastq",
+            "--first-base",
+            "20",
+            "--out",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-empty",
+            "--no-config"
+          ],
+          "exit_code": 0,
+          "status": "passed",
+          "output_directory": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-empty",
+          "log": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-empty.log",
+          "qc_warnings": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-empty\\WARNINGS.md"
+        }
+      ],
+      "current_full_gate_suites": {
+        "org.jlinalg.sequence.FixedReadTrimmerTest": {
+          "suite_name": "org.jlinalg.sequence.FixedReadTrimmerTest",
+          "suite": {
+            "tests": 3,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "60ad35d16971506a82b7803617b895ab55c8e1f82cd7fcfbc65292f4b83bf60a",
+          "testcases": [
+            "oneBasedInclusiveCoordinatesClampToEndAndFilterAbsentSpans()",
+            "eightyOutputsAgreeWithIndependentActualCutadaptClipping()",
+            "invalidCoordinatesAndMismatchedQualityAreRejected()"
+          ]
+        },
+        "org.jlinalg.cli.FixedTrimCliTest": {
+          "suite_name": "org.jlinalg.cli.FixedTrimCliTest",
+          "suite": {
+            "tests": 3,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "9a8f02a5e58a66258eca2e361b5d46c0b71fcbec0d97854e37085dffbe00e9eb",
+          "testcases": [
+            "allFilteredOutputHasProminentWarningAndInvalidCoordinatesFailPersistently()",
+            "pairedFilteringIsSynchronizedAndMismatchesQuarantinePartialOutputs()",
+            "nativePostAdapterClippingPreservesHeadersQualityAndInputHashWithoutPython()"
+          ]
+        }
+      },
+      "refreshed_utc": "2026-10-25T14:18:39.170849+00:00"
+    },
+    {
+      "status": "passed",
+      "baseline": "b0fb8e434dc02f71ef95fb4358acb7369568812e",
+      "suites": {
+        "org.jlinalg.sequence.FixedReadTrimmerTest": {
+          "tests": 3,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "org.jlinalg.cli.FixedTrimCliTest": {
+          "tests": 3,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        }
+      },
+      "detail": "80 independent actual Cutadapt clipping references plus native single/paired/empty/failure CLI fixtures",
+      "jar_sha256": "c7e5fc6412ef02a82e409b43f344bff506f873ff5ebea92bc055d498ebda8dae",
+      "scope": "Synthetic/source-function fixtures and real upstream runtime validation; no real cohort analysis or full paper pipeline/legacy-package parity.",
+      "packaged_workflows": [
+        {
+          "name": "native-fixed-trim",
+          "command": [
+            "java",
+            "-jar",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\validated-cli\\jlinalg-0.3.7.jar",
+            "sequence-qc",
+            "--method",
+            "trim-fixed",
+            "--reads",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\adapter-free.fastq",
+            "--first-base",
+            "2",
+            "--out",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-trim",
+            "--no-config"
+          ],
+          "exit_code": 0,
+          "status": "passed",
+          "output_directory": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-trim",
+          "log": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-trim.log"
+        },
+        {
+          "name": "native-fixed-empty",
+          "command": [
+            "java",
+            "-jar",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\validated-cli\\jlinalg-0.3.7.jar",
+            "sequence-qc",
+            "--method",
+            "trim-fixed",
+            "--reads",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\adapter-free.fastq",
+            "--first-base",
+            "20",
+            "--out",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-empty",
+            "--no-config"
+          ],
+          "exit_code": 0,
+          "status": "passed",
+          "output_directory": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-empty",
+          "log": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-empty.log",
+          "qc_warnings": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-empty\\WARNINGS.md"
+        }
+      ],
+      "current_full_gate_suites": {
+        "org.jlinalg.sequence.FixedReadTrimmerTest": {
+          "suite_name": "org.jlinalg.sequence.FixedReadTrimmerTest",
+          "suite": {
+            "tests": 3,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "fc8e8a23e3d246c9fc67ffb2033d03520199fa0010b7e59244d95e2726a3d7a9",
+          "testcases": [
+            "oneBasedInclusiveCoordinatesClampToEndAndFilterAbsentSpans()",
+            "eightyOutputsAgreeWithIndependentActualCutadaptClipping()",
+            "invalidCoordinatesAndMismatchedQualityAreRejected()"
+          ]
+        },
+        "org.jlinalg.cli.FixedTrimCliTest": {
+          "suite_name": "org.jlinalg.cli.FixedTrimCliTest",
+          "suite": {
+            "tests": 3,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "a4c18e61162c7bda36b185be459a3a359db0b455d7ff07b81e324cae8c5edfe1",
+          "testcases": [
+            "allFilteredOutputHasProminentWarningAndInvalidCoordinatesFailPersistently()",
+            "pairedFilteringIsSynchronizedAndMismatchesQuarantinePartialOutputs()",
+            "nativePostAdapterClippingPreservesHeadersQualityAndInputHashWithoutPython()"
+          ]
+        }
+      },
+      "refreshed_utc": "2026-10-25T18:28:13.412726+00:00",
+      "current_validation": {
+        "full_gate": {
+          "tests": 1486,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 5
+        },
+        "required_suites": 59,
+        "all_required_without_skips": true,
+        "raw_snapshot": "D:\\projects\\JLinAlg\\build\\literature-review\\trimgalore-runtime\\original-warning-full-gate-snapshot",
+        "prior_packaged_regressions": "D:\\projects\\JLinAlg\\build\\literature-review\\trim-galore-warning-packaged-regressions\\verification.json",
+        "scope": "Current unchanged owned method sources retested on this JAR. Historical reference-generation counts/options remain scoped to their original fixtures;prior reports remain in validation_history."
+      }
+    },
+    {
+      "status": "passed",
+      "baseline": "b0fb8e434dc02f71ef95fb4358acb7369568812e",
+      "suites": {
+        "org.jlinalg.sequence.FixedReadTrimmerTest": {
+          "tests": 3,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "org.jlinalg.cli.FixedTrimCliTest": {
+          "tests": 3,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        }
+      },
+      "detail": "80 independent actual Cutadapt clipping references plus native single/paired/empty/failure CLI fixtures",
+      "jar_sha256": "2bfb8abfea10e53ce7b0e1035b0a7954feb9bed990d63578e817882a6d0541c0",
+      "scope": "Synthetic/source-function fixtures and real upstream runtime validation; no real cohort analysis or full paper pipeline/legacy-package parity.",
+      "packaged_workflows": [
+        {
+          "name": "native-fixed-trim",
+          "command": [
+            "java",
+            "-jar",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\validated-cli\\jlinalg-0.3.7.jar",
+            "sequence-qc",
+            "--method",
+            "trim-fixed",
+            "--reads",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\adapter-free.fastq",
+            "--first-base",
+            "2",
+            "--out",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-trim",
+            "--no-config"
+          ],
+          "exit_code": 0,
+          "status": "passed",
+          "output_directory": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-trim",
+          "log": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-trim.log"
+        },
+        {
+          "name": "native-fixed-empty",
+          "command": [
+            "java",
+            "-jar",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\validated-cli\\jlinalg-0.3.7.jar",
+            "sequence-qc",
+            "--method",
+            "trim-fixed",
+            "--reads",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\adapter-free.fastq",
+            "--first-base",
+            "20",
+            "--out",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-empty",
+            "--no-config"
+          ],
+          "exit_code": 0,
+          "status": "passed",
+          "output_directory": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-empty",
+          "log": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-empty.log",
+          "qc_warnings": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-empty\\WARNINGS.md"
+        }
+      ],
+      "current_full_gate_suites": {
+        "org.jlinalg.sequence.FixedReadTrimmerTest": {
+          "suite_name": "org.jlinalg.sequence.FixedReadTrimmerTest",
+          "suite": {
+            "tests": 3,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "b1725c6cb2d8185a8cace043d9b467bc0f2b7c7b8d8f9792744524df35353d7e",
+          "testcases": [
+            "oneBasedInclusiveCoordinatesClampToEndAndFilterAbsentSpans()",
+            "eightyOutputsAgreeWithIndependentActualCutadaptClipping()",
+            "invalidCoordinatesAndMismatchedQualityAreRejected()"
+          ]
+        },
+        "org.jlinalg.cli.FixedTrimCliTest": {
+          "suite_name": "org.jlinalg.cli.FixedTrimCliTest",
+          "suite": {
+            "tests": 3,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "fe30cb224c43c63352cba69a6567e471070843e68eb1b462a64ab773e03a7c33",
+          "testcases": [
+            "allFilteredOutputHasProminentWarningAndInvalidCoordinatesFailPersistently()",
+            "pairedFilteringIsSynchronizedAndMismatchesQuarantinePartialOutputs()",
+            "nativePostAdapterClippingPreservesHeadersQualityAndInputHashWithoutPython()"
+          ]
+        }
+      },
+      "refreshed_utc": "2026-10-25T20:32:57.454823+00:00",
+      "current_validation": {
+        "full_gate": {
+          "tests": 1504,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 5
+        },
+        "required_suites": 61,
+        "all_required_without_skips": true,
+        "raw_snapshot": "D:\\projects\\JLinAlg\\build\\literature-review\\flash-runtime\\full-gate-2-snapshot",
+        "prior_packaged_regressions": "D:\\projects\\JLinAlg\\build\\literature-review\\flash-packaged-regressions\\verification.json",
+        "scope": "Current unchanged owned method sources retested on this JAR. Historical reference-generation counts/options remain scoped to their original fixtures;prior reports remain in validation_history."
+      }
+    },
+    {
+      "status": "passed",
+      "baseline": "b0fb8e434dc02f71ef95fb4358acb7369568812e",
+      "suites": {
+        "org.jlinalg.sequence.FixedReadTrimmerTest": {
+          "tests": 3,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "org.jlinalg.cli.FixedTrimCliTest": {
+          "tests": 3,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        }
+      },
+      "detail": "80 independent actual Cutadapt clipping references plus native single/paired/empty/failure CLI fixtures",
+      "jar_sha256": "66be181d854806d9ae64d6f060e8defba8af5bdf594d3d352c9c76097a2a8d2e",
+      "scope": "Synthetic/source-function fixtures and real upstream runtime validation; no real cohort analysis or full paper pipeline/legacy-package parity.",
+      "packaged_workflows": [
+        {
+          "name": "native-fixed-trim",
+          "command": [
+            "java",
+            "-jar",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\validated-cli\\jlinalg-0.3.7.jar",
+            "sequence-qc",
+            "--method",
+            "trim-fixed",
+            "--reads",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\adapter-free.fastq",
+            "--first-base",
+            "2",
+            "--out",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-trim",
+            "--no-config"
+          ],
+          "exit_code": 0,
+          "status": "passed",
+          "output_directory": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-trim",
+          "log": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-trim.log"
+        },
+        {
+          "name": "native-fixed-empty",
+          "command": [
+            "java",
+            "-jar",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\validated-cli\\jlinalg-0.3.7.jar",
+            "sequence-qc",
+            "--method",
+            "trim-fixed",
+            "--reads",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\adapter-free.fastq",
+            "--first-base",
+            "20",
+            "--out",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-empty",
+            "--no-config"
+          ],
+          "exit_code": 0,
+          "status": "passed",
+          "output_directory": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-empty",
+          "log": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-empty.log",
+          "qc_warnings": "D:\\projects\\JLinAlg\\build\\literature-review\\packaged-smoke-20261023T192836Z\\native-fixed-empty\\WARNINGS.md"
+        }
+      ],
+      "current_full_gate_suites": {
+        "org.jlinalg.sequence.FixedReadTrimmerTest": {
+          "suite_name": "org.jlinalg.sequence.FixedReadTrimmerTest",
+          "suite": {
+            "tests": 3,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "a4e60ab2988c68494a7cc4b2ff2e41788abff642fce501dd2276eec40902ab2f",
+          "testcases": [
+            "oneBasedInclusiveCoordinatesClampToEndAndFilterAbsentSpans()",
+            "eightyOutputsAgreeWithIndependentActualCutadaptClipping()",
+            "invalidCoordinatesAndMismatchedQualityAreRejected()"
+          ]
+        },
+        "org.jlinalg.cli.FixedTrimCliTest": {
+          "suite_name": "org.jlinalg.cli.FixedTrimCliTest",
+          "suite": {
+            "tests": 3,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "ab5237fa4f0624ad2bcaf8daacb016e50a01761f6d6ba9a5db81bbc39436c5f4",
+          "testcases": [
+            "allFilteredOutputHasProminentWarningAndInvalidCoordinatesFailPersistently()",
+            "pairedFilteringIsSynchronizedAndMismatchesQuarantinePartialOutputs()",
+            "nativePostAdapterClippingPreservesHeadersQualityAndInputHashWithoutPython()"
+          ]
+        }
+      },
+      "refreshed_utc": "2026-10-25T23:24:57.944602+00:00",
+      "current_validation": {
+        "full_gate": {
+          "tests": 1552,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 5
+        },
+        "required_suites": 68,
+        "all_required_without_skips": true,
+        "raw_snapshot": "D:\\projects\\JLinAlg\\build\\literature-review\\fimo-runtime\\configured-full-gate-1",
+        "prior_packaged_regressions": "D:\\projects\\JLinAlg\\build\\literature-review\\fimo-runtime\\prior-packaged-regressions-1\\verification.json",
+        "scope": "Current unchanged owned method sources retested on this JAR. Historical reference-generation counts/options remain scoped to their original fixtures;prior reports remain in validation_history."
+      }
+    }
+  ]
+}

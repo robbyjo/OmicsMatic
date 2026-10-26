@@ -37,16 +37,23 @@ final class StudyPublicEvidence {
     private final List<Object> requests = new ArrayList<>();
     private static long lastUcscRequest;
 
-    StudyPublicEvidence() { this(StudyPublicEvidence::send); }
+    StudyPublicEvidence() { this.transport = null; }
     StudyPublicEvidence(Transport transport) { this.transport = transport; }
     List<Object> requests() { return List.copyOf(requests); }
 
     Response get(Context context, String provider, String url, String citation, String rationale) throws IOException {
+        return request(context,provider,url,citation,rationale,true,8*1024*1024);
+    }
+    Response getText(Context context,String provider,String url,String citation,String rationale,int maximumBytes)throws IOException {
+        if(maximumBytes<1||maximumBytes>64*1024*1024)throw new IllegalArgumentException("Public text reply bound must be in 1..64 MiB");
+        return request(context,provider,url,citation,rationale,false,maximumBytes);
+    }
+    private Response request(Context context,String provider,String url,String citation,String rationale,boolean json,int maximumBytes)throws IOException {
         if (rationale == null || rationale.isBlank() || citation == null || citation.isBlank())
             throw new IllegalArgumentException("Every evidence request requires a scientific rationale and source citation");
         URI uri = URI.create(url);
         validate(uri);
-        String cacheKey = context.outputDirectory().toAbsolutePath().normalize() + "\n" + url;
+        String cacheKey = context.outputDirectory().toAbsolutePath().normalize() + "\n" + url + "\n" + json + ":" + maximumBytes;
         Path folder = context.outputDirectory().resolve("queries").resolve(String.format("%04d", requests.size() + 1));
         Files.createDirectories(folder);
         String relative = context.outputDirectory().relativize(folder).toString().replace('\\', '/');
@@ -59,9 +66,15 @@ final class StudyPublicEvidence {
         record.put("operation", context.operation().get("type"));
         record.put("started_at", Instant.now().toString());
         record.put("request_attempted", false);
+        record.put("response_format",json?"json":"text");record.put("maximum_response_bytes",maximumBytes);
+        record.put("accept",json?"application/json":"*/*");
         record.put("payload", "URL query containing public feature identifiers, phenotype labels or reference intervals only; no files or participant records");
         String status = blocked(context.study());
-        if (status.isEmpty() && requests.size() >= 200) status = "query_budget_exhausted";
+        int requestLimit = "literature_search".equals(context.operation().get("type")) ? StudyBioinformatics.literatureQueryLimit(context)
+            : Set.of("protein_structure","protein_structure_assessment").contains(context.operation().get("type"))
+                ? ((Number)org.jlinalg.study.StudyProteinPolicy.resolve(map(map(StudyBioinformatics.hypothesis(context).get("analysis")).get("protein_structure"))).get("max_queries")).intValue() : 200;
+        record.put("query_budget", requestLimit);
+        if (status.isEmpty() && requests.size() >= requestLimit) status = "query_budget_exhausted";
         String reason = status.isEmpty() ? "" : "Request not sent: " + status;
         Object data = Map.of();
         // Each use retains its own rationale. A cached response must not bypass a
@@ -75,14 +88,14 @@ final class StudyPublicEvidence {
             record.put("request_attempted", true);
             write(folder.resolve("request.yaml"), record);
             try {
-                Reply reply = transport.get(uri);
+                Reply reply = transport==null?send(uri,maximumBytes,json):transport.get(uri);
                 record.put("http_status", reply.status());
                 // Provider responses are untrusted data, never instructions or executable code.
-                if (reply.body().length() > 8 * 1024 * 1024) throw new IOException("Response exceeded 8 MiB limit");
+                if (reply.body().getBytes(StandardCharsets.UTF_8).length > maximumBytes) throw new IOException("Response exceeded registered byte limit");
                 Files.writeString(folder.resolve("response.txt"), reply.body());
                 record.put("response_sha256", FollowupSupport.hash(folder.resolve("response.txt")));
                 if (reply.status() >= 200 && reply.status() < 300) {
-                    data = SimpleJson.parse(reply.body());
+                    data = json?SimpleJson.parse(reply.body()):reply.body();
                     status = "retrieved";
                 } else {
                     status = switch (reply.status()) {
@@ -144,14 +157,14 @@ final class StudyPublicEvidence {
             throw new IllegalArgumentException("Evidence URL must use a supported public HTTPS host without credentials or redirects");
     }
 
-    private static Reply send(URI uri) throws IOException, InterruptedException {
+    private static Reply send(URI uri,int maximumBytes,boolean json) throws IOException, InterruptedException {
         validate(uri);
         if (uri.getHost().equals("api.genome.ucsc.edu")) synchronized (StudyPublicEvidence.class) {
             long remaining = 1000000000L - (System.nanoTime() - lastUcscRequest);
             if (remaining > 0) java.util.concurrent.TimeUnit.NANOSECONDS.sleep(remaining);
             lastUcscRequest = System.nanoTime();
         }
-        var response = PublicResourceDownloader.responseStrict(uri, 8 * 1024 * 1024);
+        var response = PublicResourceDownloader.responseStrict(uri, maximumBytes, json?"application/json":"*/*");
         return new Reply(response.status(), response.body());
     }
 

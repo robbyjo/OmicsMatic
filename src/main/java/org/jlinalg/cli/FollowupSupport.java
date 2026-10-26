@@ -53,10 +53,18 @@ final class FollowupSupport {
         return value.contains("/")||value.contains("\\")||Files.exists(Path.of(value))?Path.of(value).toAbsolutePath().normalize().toString():value;
     }
     static void transaction(Map<String,String> options,String operation,Job job) throws Exception {
+        transaction(options,operation,job,false);
+    }
+    /** External native processes can briefly delay Windows directory-handle release. */
+    static void externalTransaction(Map<String,String> options,String operation,Job job) throws Exception {
+        transaction(options,operation,job,true);
+    }
+    private static void transaction(Map<String,String> options,String operation,Job job,boolean external) throws Exception {
         Path destination=Path.of(required(options,"out")).toAbsolutePath().normalize();
         if(Files.exists(destination)) throw new IOException("Output already exists: "+destination);
         Files.createDirectories(destination.getParent());
         Path staging=Files.createTempDirectory(destination.getParent(),".jlinalg-followup-");
+        boolean retainStaging=false;
         try {
             Map<String,Object> manifest=new LinkedHashMap<>();
             manifest.put("schema_version",1); manifest.put("operation",operation); manifest.put("jlinalg_version",JLinAlgCli.version());
@@ -71,9 +79,33 @@ final class FollowupSupport {
             try(var paths=Files.walk(staging)) { for(Path p:paths.filter(Files::isRegularFile).toList()) outputs.put(staging.relativize(p).toString(),hash(p)); }
             manifest.put("output_sha256",outputs); manifest.put("completed_at",java.time.Instant.now().toString());
             Files.writeString(staging.resolve("manifest.yaml"),new org.yaml.snakeyaml.Yaml().dump(manifest));
-            Files.move(staging,destination);
+            if(!external) Files.move(staging,destination);
+            else try { publishExternal(staging,destination); }
+            catch(IOException failure) {
+                retainStaging=true;
+                manifest.put("analysis_status","failed-publication"); manifest.put("publication_error",failure.toString());
+                Path warnings=staging.resolve("WARNINGS.md");
+                String prior=Files.exists(warnings)?Files.readString(warnings):"";
+                Files.writeString(warnings,"# ANALYSIS FAILED - OUTPUT PUBLICATION\n\n"+failure+"\n\nRequired action: inspect this retained attempt, confirm no other process is holding its files or the destination, and select a new writable output directory. An existing destination was not overwritten. No successful result bundle was published.\n\n"+prior);
+                Files.writeString(staging.resolve("analysis-status.json"),"{\"status\":\"failed-publication\"}\n");
+                Map<String,String> retained=new TreeMap<>();
+                try(var paths=Files.walk(staging)) { for(Path p:paths.filter(Files::isRegularFile).filter(p->!p.getFileName().toString().equals("manifest.yaml")).toList())retained.put(staging.relativize(p).toString(),hash(p)); }
+                manifest.put("output_sha256",retained);
+                Files.writeString(staging.resolve("manifest.yaml"),new org.yaml.snakeyaml.Yaml().dump(manifest));
+                throw new IOException("OUTPUT PUBLICATION FAILED. Retained diagnostics: "+warnings+". Required action: release file/directory locks or choose a new writable output directory, then rerun. "+failure,failure);
+            }
         } finally {
-            if(Files.exists(staging)) try(var paths=Files.walk(staging)) { for(Path p:paths.sorted(Comparator.reverseOrder()).toList())Files.deleteIfExists(p); }
+            if(!retainStaging && Files.exists(staging)) try(var paths=Files.walk(staging)) { for(Path p:paths.sorted(Comparator.reverseOrder()).toList())Files.deleteIfExists(p); }
+        }
+    }
+    private static void publishExternal(Path staging,Path destination) throws IOException {
+        for(int attempt=0;;attempt++) {
+            try { Files.move(staging,destination); return; }
+            catch(AccessDeniedException failure) {
+                if(attempt>=7 || !System.getProperty("os.name").toLowerCase(Locale.ROOT).contains("win"))throw failure;
+                try { Thread.sleep(Math.min(400,25L<<attempt)); }
+                catch(InterruptedException interrupted) { Thread.currentThread().interrupt(); throw new IOException("Interrupted while publishing external analysis",interrupted); }
+            }
         }
     }
     static void table(Path file,List<String> header,List<String[]> rows) throws IOException {
@@ -103,7 +135,12 @@ final class FollowupSupport {
             builder.header("Authorization","Bearer "+token);
         }
         if(body!=null)builder.header("Content-Type",type).POST(HttpRequest.BodyPublishers.ofByteArray(body)); else builder.GET();
-        HttpClient client=HttpClient.newBuilder().connectTimeout(Duration.ofSeconds(timeout)).followRedirects(HttpClient.Redirect.NEVER).build();
+        // Ensembl's public REST route can close a negotiated HTTP/2 stream before
+        // headers on supported JVM/network combinations. Its HTTP/1.1 route is
+        // compatible; retain certificate verification and the no-redirect policy.
+        HttpClient.Builder clientBuilder=HttpClient.newBuilder().connectTimeout(Duration.ofSeconds(timeout)).followRedirects(HttpClient.Redirect.NEVER);
+        if(Set.of("rest.ensembl.org","grch37.rest.ensembl.org").contains(uri.getHost()))clientBuilder.version(HttpClient.Version.HTTP_1_1);
+        HttpClient client=clientBuilder.build();
         HttpResponse<InputStream> response=client.send(builder.build(),HttpResponse.BodyHandlers.ofInputStream());
         try(InputStream in=response.body()) {
             if(response.statusCode()!=200) throw new IOException("HTTP request failed: status="+response.statusCode()+" (redirects require an explicit final URL)");

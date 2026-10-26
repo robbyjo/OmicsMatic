@@ -198,6 +198,64 @@ tasks.withType(Javadoc).configureEach {
 
 test {
     useJUnitPlatform()
+    // Optional real-tool tests must not reuse a cache entry that skipped them.
+    inputs.property('bowtie2AdapterHome',
+        providers.environmentVariable('JLINALG_BOWTIE2_HOME').orElse(''))
+    inputs.property('bwaAdapterExecutable',
+        providers.environmentVariable('JLINALG_BWA').orElse(''))
+    inputs.property('gatkAdapterJar',
+        providers.environmentVariable('JLINALG_GATK_JAR').orElse(''))
+    inputs.property('starAdapterExecutable',
+        providers.environmentVariable('JLINALG_STAR').orElse(''))
+    inputs.property('regenieAdapterRuntime',
+        providers.environmentVariable('JLINALG_REGENIE_HOME').orElse(''))
+    inputs.property('liftoverReferenceInputs',
+        providers.environmentVariable('JLINALG_LIFTOVER_REFERENCE').orElse(''))
+    inputs.property('featureCountsRuntime',
+        providers.environmentVariable('JLINALG_FEATURECOUNTS_HOME').orElse(''))
+    inputs.property('minimap2Runtime',
+        providers.environmentVariable('JLINALG_MINIMAP2_HOME').orElse(''))
+    inputs.property('hisat2Runtime',
+        providers.environmentVariable('JLINALG_HISAT2_HOME').orElse(''))
+    inputs.property('scrubletRuntime',
+        providers.environmentVariable('JLINALG_SCRUBLET_PYTHON').orElse(''))
+    inputs.property('sctRscript',
+        providers.environmentVariable('JLINALG_SCT_RSCRIPT').orElse(''))
+    inputs.property('sctRLibrary',
+        providers.environmentVariable('JLINALG_SCT_R_LIBRARY').orElse(''))
+    inputs.property('magmaRuntime',
+        providers.environmentVariable('JLINALG_MAGMA_HOME').orElse(''))
+    inputs.property('trimmomatic039Runtime',
+        providers.environmentVariable('JLINALG_TRIMMOMATIC_039').orElse(''))
+    inputs.property('trimmomatic041Runtime',
+        providers.environmentVariable('JLINALG_TRIMMOMATIC_041').orElse(''))
+    inputs.property('trimmomaticOldJava',
+        providers.environmentVariable('JLINALG_TRIMMOMATIC_OLD_JAVA').orElse(''))
+    inputs.property('kallistoRuntime',
+        providers.environmentVariable('JLINALG_KALLISTO_HOME').orElse(''))
+    inputs.property('plinkRuntime', providers.environmentVariable('JLINALG_PLINK_HOME').orElse(''))
+    inputs.property('beagleRuntime', providers.environmentVariable('JLINALG_BEAGLE_HOME').orElse(''))
+    inputs.property('prsCsRuntime', providers.environmentVariable('JLINALG_PRSCS_HOME').orElse(''))
+    inputs.property('enrichmentRscript', providers.environmentVariable('JLINALG_ENRICHMENT_RSCRIPT').orElse(''))
+    inputs.property('enrichmentLibrary', providers.environmentVariable('JLINALG_ENRICHMENT_R_LIBRARY').orElse(''))
+    inputs.property('trimGaloreHome', providers.environmentVariable('JLINALG_TRIM_GALORE_HOME').orElse(''))
+    inputs.property('doseLegacyLibrary', providers.environmentVariable('JLINALG_DOSE_LEGACY_R_LIBRARY').orElse(''))
+    inputs.property('samtoolsAdapterExecutable',
+        providers.environmentVariable('JLINALG_SAMTOOLS').orElse(''))
+    inputs.property('bcftoolsAdapterExecutable',
+        providers.environmentVariable('JLINALG_BCFTOOLS').orElse(''))
+    inputs.property('picardAdapterJar',
+        providers.environmentVariable('JLINALG_PICARD_JAR').orElse(''))
+    inputs.property('cellAdapterPython',
+        providers.environmentVariable('JLINALG_CELL_PYTHON').orElse(''))
+    inputs.property('sequenceAdapterPython',
+        providers.environmentVariable('JLINALG_SEQUENCE_PYTHON').orElse(''))
+    inputs.property('fastqcHome',
+        providers.environmentVariable('JLINALG_FASTQC_HOME').orElse(''))
+    inputs.property('harmonyRscript',
+        providers.environmentVariable('JLINALG_HARMONY_RSCRIPT').orElse(''))
+    inputs.property('harmonyRLibrary',
+        providers.environmentVariable('JLINALG_HARMONY_R_LIBRARY').orElse(''))
     testLogging {
         events 'failed', 'skipped'
         exceptionFormat = 'full'
@@ -500,6 +558,12 @@ tasks.register('benchmarkRegressionInference', JavaExec) {
     classpath = sourceSets.benchmark.runtimeClasspath
     mainClass = 'org.jlinalg.benchmark.RegressionInferenceBenchmark'
     jvmArgs '-Xms64m', '-Xmx1g'
+}
+
+// Optional Python bridge checks can create bytecode beside extracted resources.
+// Generated interpreter caches are not source or distributable runtime assets.
+tasks.withType(Jar).configureEach {
+    exclude '**/__pycache__/**', '**/*.pyc', '**/*.pyo'
 }
 
 tasks.register('executableJar', Jar) {

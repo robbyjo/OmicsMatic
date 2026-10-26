@@ -20,6 +20,10 @@ final class CliOptions {
     Path pedigree;
     Path grm;
     Path bgenSamples;
+    Path hweSampleFile;
+    Path ploidySamples;
+    String humanPloidyRegion,humanPloidyBuild;
+    String haploidSourceScale="observed",invalidPloidyCalls="error",unknownPloidySamples="error";
     String idColumn;
     String formula;
     String model = "auto";
@@ -45,11 +49,23 @@ final class CliOptions {
     final List<Path> transformPlugins = new ArrayList<>();
     double minimumMaf;
     double maximumMaf = 0.5;
-    double minimumMac;
+    double minimumMac = 20;
     double maximumMac = Double.POSITIVE_INFINITY;
     double maximumMissingRate = 1.0;
     double minimumInfo = Double.NaN;
     double minimumHweP;
+    double minimumMissingnessP;
+    int maximumMissingnessStates=100000;
+    String genotypeKind="auto";
+    boolean autosomesOnly;
+    String binaryTest="efficient-score";
+    int firthMaximumIterations=300;
+    double firthTolerance=1e-8;
+    boolean explicitBinaryTest,explicitFirthControls;
+    String exactStrataColumn;
+    int exactMaximumStates=200000,exactEffectMaximumParameters=50;
+    long exactMaximumWork=50000000;
+    boolean explicitExactControls;
     int threads = Math.max(1, Runtime.getRuntime().availableProcessors());
     int blockSize;
     int checkpointEvery = 1000;
@@ -71,6 +87,12 @@ final class CliOptions {
         for (int index = 0; index < arguments.length; index++) {
             String option = arguments[index];
             switch (option) {
+                case "--ploidy-samples" -> result.ploidySamples=path(value(arguments,++index,option));
+                case "--human-ploidy-region" -> result.humanPloidyRegion=value(arguments,++index,option);
+                case "--human-ploidy-build" -> result.humanPloidyBuild=value(arguments,++index,option);
+                case "--haploid-source-scale" -> result.haploidSourceScale=value(arguments,++index,option);
+                case "--invalid-ploidy-calls" -> result.invalidPloidyCalls=value(arguments,++index,option);
+                case "--unknown-ploidy-samples" -> result.unknownPloidySamples=value(arguments,++index,option);
                 case "--conditional-gwas-summary" -> result.conditionalGwasSummary = true;
                 case "--score-block-size" -> {
                     result.scoreBlockSize = integer(arguments, ++index, option);
@@ -140,6 +162,11 @@ final class CliOptions {
                     result.hweSamples = lower(value(arguments, ++index, option));
                 case "--hwe-filter-scope" ->
                     result.hweFilterScope = lower(value(arguments, ++index, option));
+                case "--hwe-sample-file" -> result.hweSampleFile=path(value(arguments,++index,option));
+                case "--genotype-kind" -> result.genotypeKind=lower(value(arguments,++index,option));
+                case "--autosomes-only" -> result.autosomesOnly=true;
+                case "--min-missingness-p" -> result.minimumMissingnessP=number(arguments,++index,option);
+                case "--missingness-max-states" -> result.maximumMissingnessStates=positiveInteger(value(arguments,++index,option),option);
                 case "--min-maf" ->
                     result.minimumMaf = number(arguments, ++index, option);
                 case "--max-maf" ->
@@ -154,6 +181,13 @@ final class CliOptions {
                     result.minimumInfo = number(arguments, ++index, option);
                 case "--min-hwe-p" ->
                     result.minimumHweP = number(arguments, ++index, option);
+                case "--binary-test" -> {result.binaryTest=lower(value(arguments,++index,option));result.explicitBinaryTest=true;}
+                case "--exact-strata-column" -> {result.exactStrataColumn=value(arguments,++index,option);result.explicitExactControls=true;}
+                case "--exact-max-states" -> {result.exactMaximumStates=integer(arguments,++index,option);result.explicitExactControls=true;}
+                case "--exact-max-work" -> {result.exactMaximumWork=Long.parseLong(value(arguments,++index,option));result.explicitExactControls=true;}
+                case "--exact-effect-max-parameters" -> {result.exactEffectMaximumParameters=Integer.parseInt(value(arguments,++index,option));result.explicitExactControls=true;}
+                case "--firth-max-iterations" -> {result.firthMaximumIterations=integer(arguments,++index,option);result.explicitFirthControls=true;}
+                case "--firth-tolerance" -> {result.firthTolerance=number(arguments,++index,option);result.explicitFirthControls=true;}
                 case "--threads" ->
                     result.threads = integer(arguments, ++index, option);
                 case "--checkpoint-every" ->
@@ -178,6 +212,10 @@ final class CliOptions {
         if (threads < 1 || checkpointEvery < 1)
             throw new IllegalArgumentException(
                 "--threads and --checkpoint-every must be positive");
+        if(!Double.isFinite(minimumHweP)||!Double.isFinite(minimumMissingnessP)||minimumMissingnessP<0||minimumMissingnessP>1||maximumMissingnessStates<1)
+            throw new IllegalArgumentException("QC probabilities must be finite in [0,1] and the exact-state bound positive");
+        if(!java.util.Set.of("auto","hard_calls","imputed","sequenced").contains(genotypeKind))throw new IllegalArgumentException("--genotype-kind must be auto, hard_calls, imputed or sequenced");
+        if(omics==null&&(minimumHweP>0||minimumMissingnessP>0||hweSampleFile!=null||autosomesOnly||!genotypeKind.equals("auto")))throw new IllegalArgumentException("Genotype QC controls require --omics genotype input");
         if (minimumMaf < 0 || maximumMaf > 0.5
                 || minimumMaf > maximumMaf || minimumMac < 0
                 || minimumMac > maximumMac
@@ -190,6 +228,15 @@ final class CliOptions {
             throw new IllegalArgumentException(
                 "--variance-components must be auto, null-model, or refit");
         validateFamilyAndLink();
+        if(!java.util.Set.of("efficient-score","firth-lrt","exact-conditional").contains(binaryTest))throw new IllegalArgumentException("--binary-test must be efficient-score, firth-lrt or exact-conditional");
+        if((explicitBinaryTest||explicitFirthControls||explicitExactControls)&&(omics==null||!family.equals("binomial")))throw new IllegalArgumentException("Binary-test controls require genotype input with --family binomial");
+        if(explicitFirthControls&&binaryTest.equals("efficient-score"))throw new IllegalArgumentException("Firth controls require a Firth effect/inference route");
+        if(explicitExactControls&&!binaryTest.equals("exact-conditional"))throw new IllegalArgumentException("Exact controls require --binary-test exact-conditional");
+        if(exactStrataColumn!=null&&!exactStrataColumn.matches("[A-Za-z_][A-Za-z0-9_.]{0,199}"))throw new IllegalArgumentException("Exact stratum column must be a bounded column identifier");
+        if(exactEffectMaximumParameters<0||exactEffectMaximumParameters>10000||exactMaximumWork>9007199254740991L)throw new IllegalArgumentException("Exact effect/operation bounds are invalid");
+        new org.jlinalg.regression.ExactConditionalLogit.Options(exactMaximumStates,exactMaximumWork,1e-7);
+        new org.jlinalg.regression.FirthLogistic.Options(firthMaximumIterations,40,firthTolerance,5);
+        if(!binaryTest.equals("efficient-score")&&(conditionalGwasSummary||resume))throw new IllegalArgumentException("Firth/exact inference does not supply ordinary null score exports or resumable checkpoint state");
         if(conditionalGwasSummary) {
             if(omics==null || scoreGenomeBuild==null || scoreGenomeBuild.isBlank())
                 throw new IllegalArgumentException("--conditional-gwas-summary requires genotype --omics and --score-genome-build");
@@ -213,8 +260,10 @@ final class CliOptions {
                 || sireId == null || damId == null))
             throw new IllegalArgumentException(
                 "--pedigree requires --pedigree-id, --sire-id, and --dam-id");
+        humanPloidyProfile();
         PipelinePaths.validate(this);
     }
+    org.jlinalg.pipeline.HumanPloidyProfile humanPloidyProfile(){if(humanPloidyRegion==null){if(ploidySamples!=null||humanPloidyBuild!=null||!haploidSourceScale.equals("observed")||!invalidPloidyCalls.equals("error")||!unknownPloidySamples.equals("error"))throw new IllegalArgumentException("Ploidy controls require --human-ploidy-region");return null;}if(ploidySamples==null||humanPloidyBuild==null)throw new IllegalArgumentException("Human ploidy requires --ploidy-samples and --human-ploidy-build");var profile=new org.jlinalg.pipeline.HumanPloidyProfile(humanPloidyRegion,humanPloidyBuild,haploidSourceScale,invalidPloidyCalls,unknownPloidySamples);if(autosomesOnly||conditionalGwasSummary||resume||grm!=null||pedigree!=null)throw new IllegalArgumentException("Registered human ploidy contrasts use independent OLS/GLM without autosome-only, mixed, resume or conditional-summary controls");if(profile.haploid()&&minimumHweP>0)throw new IllegalArgumentException("Diploid HWE cannot filter a haploid contrast");return profile;}
 
     private void validateFamilyAndLink() {
         String canonical = switch (family) {

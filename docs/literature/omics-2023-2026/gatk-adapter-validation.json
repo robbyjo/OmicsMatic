@@ -1,0 +1,1806 @@
+{
+  "status": "passed",
+  "jar_sha256": "a104651636deb59493cddc92ce433629d4ef7b0c755f6ee065a3e0c75365c5e2",
+  "version": "4.7.0.0",
+  "gatk_jar_sha256": "882e180707e0e6887885853fc486fa54098620fe9a80bdcdaaa655c7e3861365",
+  "upstream_suite": {
+    "suite_name": "org.jlinalg.cli.GatkToolsCliTest",
+    "suite": {
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "junit_sha256": "6e609d85468be32ac2f41658a26f093eac38239703cd03688a528ae996f7e7bc",
+    "testcases": [
+      "realTypedHardFiltersPreserveAllRecordsGenotypesAndOldFiltersWithExplicitMissingPolicy()",
+      "unavailableOrWrongRuntimeSkipsAndInvalidModelDoesNotStart()",
+      "realGvcfCombinationAndGenotypingPreserveSamplesAndKnownDiploidGenotypes()",
+      "realHaploidAndTetraploidCallsRecoverKnownAlleleDosage()",
+      "referenceIndexMismatchFailsWithRetainedRecovery()",
+      "nativeReferencePreservesExistingSidecarsAndNeedsNoGatk()"
+    ]
+  },
+  "packaged_validation": "gatk-packaged-validation.json",
+  "packaged_checks": 12,
+  "dependency_evidence": "gatk-dependency-status.json",
+  "packaged_verifier_sha256": "e237d2e48ec8b5bbe404eb35672bb7835cfc318d1e2f38c4bd9a0d3dbbd7d4cc",
+  "scope": "Official local JAR, typed native reference metadata, explicit-ploidy HC, CombineGVCFs, GenotypeGVCFs and SNP/indel VariantFiltration with explicit missing policy. Known SNP/deletion and 1/2/4-ploidy truth. Initial Windows colon-parser failure retained and corrected through interval_list files; temp-probe warnings retained. No legacy/somatic/old-version/whole-study equivalence.",
+  "windows_temp_probe_source": {
+    "url": "https://github.com/broadinstitute/gatk/blob/4.7.0.0/src/main/java/org/broadinstitute/hellbender/cmdline/CommandLineProgram.java",
+    "sha256": "57b207419c1eab85b8387b1ac8a3d67c28079b400d09ada958a550af84a39b6f",
+    "explanation": "Non-POSIX executable probe skips file creation, then cleanup attempts a null path. Diagnostic retained in successful Windows truth fixtures."
+  },
+  "packaged_runtime_evidence": {
+    "gvcf-S1": {
+      "log_sha256": "9599b712e112c211b87decd7a347e5d9168f3088981e4efa13a08b45db93d6ad",
+      "kernel_runtime_lines": [
+        "17:24:49.860 INFO  HaplotypeCaller - Java runtime: Java HotSpot(TM) 64-Bit Server VM v25+37-LTS-3491",
+        "17:24:49.866 INFO  HaplotypeCaller - Deflater: JdkDeflater",
+        "17:24:49.867 INFO  HaplotypeCaller - Inflater: JdkInflater",
+        "17:24:50.135 INFO  PairHMM - Using the non-hardware-accelerated Java LOGLESS_CACHING PairHMM implementation",
+        "17:24:50.832 INFO  SmithWatermanAligner - Total compute time in java Smith-Waterman : 0.01 sec"
+      ]
+    },
+    "haploid-interval": {
+      "log_sha256": "17c5548751ef973448aeb276cc971dbf646d71438984c9be4d855ea18850c047",
+      "kernel_runtime_lines": [
+        "17:25:11.540 INFO  HaplotypeCaller - Java runtime: Java HotSpot(TM) 64-Bit Server VM v25+37-LTS-3491",
+        "17:25:11.545 INFO  HaplotypeCaller - Deflater: JdkDeflater",
+        "17:25:11.546 INFO  HaplotypeCaller - Inflater: JdkInflater",
+        "17:25:11.812 INFO  PairHMM - Using the non-hardware-accelerated Java LOGLESS_CACHING PairHMM implementation",
+        "17:25:12.247 INFO  SmithWatermanAligner - Total compute time in java Smith-Waterman : 0.01 sec"
+      ]
+    },
+    "tetraploid": {
+      "log_sha256": "433ec282bf20a3f64f20f7fbbfdad1b8bee759c3389e3bdd1682201b2faadcc2",
+      "kernel_runtime_lines": [
+        "17:25:17.485 INFO  HaplotypeCaller - Java runtime: Java HotSpot(TM) 64-Bit Server VM v25+37-LTS-3491",
+        "17:25:17.491 INFO  HaplotypeCaller - Deflater: JdkDeflater",
+        "17:25:17.492 INFO  HaplotypeCaller - Inflater: JdkInflater",
+        "17:25:17.761 INFO  PairHMM - Using the non-hardware-accelerated Java LOGLESS_CACHING PairHMM implementation",
+        "17:25:18.286 INFO  SmithWatermanAligner - Total compute time in java Smith-Waterman : 0.01 sec"
+      ]
+    }
+  },
+  "refreshed_utc": "2026-10-26T02:01:51.919373+00:00",
+  "current_full_gate_suites": {
+    "org.jlinalg.cli.GatkToolsCliTest": {
+      "suite_name": "org.jlinalg.cli.GatkToolsCliTest",
+      "suite": {
+        "tests": 6,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "junit_sha256": "6e609d85468be32ac2f41658a26f093eac38239703cd03688a528ae996f7e7bc",
+      "testcases": [
+        "realTypedHardFiltersPreserveAllRecordsGenotypesAndOldFiltersWithExplicitMissingPolicy()",
+        "unavailableOrWrongRuntimeSkipsAndInvalidModelDoesNotStart()",
+        "realGvcfCombinationAndGenotypingPreserveSamplesAndKnownDiploidGenotypes()",
+        "realHaploidAndTetraploidCallsRecoverKnownAlleleDosage()",
+        "referenceIndexMismatchFailsWithRetainedRecovery()",
+        "nativeReferencePreservesExistingSidecarsAndNeedsNoGatk()"
+      ]
+    }
+  },
+  "current_validation": {
+    "full_gate": {
+      "tests": 1593,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 5
+    },
+    "required_suites": 72,
+    "all_required_without_skips": true,
+    "raw_snapshot": "D:\\projects\\JLinAlg\\build\\literature-review\\plink-runtime\\configured-native-full-gate-1",
+    "prior_packaged_regressions": "D:\\projects\\JLinAlg\\build\\literature-review\\plink-runtime\\prior-packaged-regressions-1\\verification.json",
+    "original_trim_rechecks": "D:\\projects\\JLinAlg\\build\\literature-review\\plink-runtime\\original-trim-rechecks-1\\verification.json",
+    "scope": "This exact candidate was executed. All prior owned compiled method sources are unchanged and retested. Historical reference-generation/version scopes remain in their original fields and validation_history;no full-paper parity is inferred."
+  },
+  "validation_history": [
+    {
+      "status": "in-progress-with-failed-attempt",
+      "attempt": "initial-real-upstream-fixtures",
+      "tests": 13,
+      "failures": 1,
+      "skipped": 0,
+      "reason": "GATK interval parser tries a colon-containing region as a Windows path. Other GATK gVCF/genotyping/hard-filter fixtures and sequencing-warning tests passed. Typed region is now emitted as a Picard interval_list; rerun pending.",
+      "retained_junit_directory": "D:\\projects\\JLinAlg\\build\\literature-review\\gatk-first-attempt"
+    },
+    {
+      "status": "passed",
+      "jar_sha256": "941cd5b7c101ba4bde47b7b804a5fe5692103cc10d1be02d26c60d646999b52c",
+      "version": "4.7.0.0",
+      "gatk_jar_sha256": "882e180707e0e6887885853fc486fa54098620fe9a80bdcdaaa655c7e3861365",
+      "upstream_suite": {
+        "suite": {
+          "tests": 6,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "688f73831a151c927f3d5b00cb76bd5594fa883a0be177222b73adc4078edc9e",
+        "testcases": [
+          "realTypedHardFiltersPreserveAllRecordsGenotypesAndOldFiltersWithExplicitMissingPolicy()",
+          "unavailableOrWrongRuntimeSkipsAndInvalidModelDoesNotStart()",
+          "realGvcfCombinationAndGenotypingPreserveSamplesAndKnownDiploidGenotypes()",
+          "realHaploidAndTetraploidCallsRecoverKnownAlleleDosage()",
+          "referenceIndexMismatchFailsWithRetainedRecovery()",
+          "nativeReferencePreservesExistingSidecarsAndNeedsNoGatk()"
+        ]
+      },
+      "packaged_validation": "gatk-packaged-validation.json",
+      "packaged_checks": 12,
+      "dependency_evidence": "gatk-dependency-status.json",
+      "packaged_verifier_sha256": "e237d2e48ec8b5bbe404eb35672bb7835cfc318d1e2f38c4bd9a0d3dbbd7d4cc",
+      "scope": "Official local JAR, typed native reference metadata, explicit-ploidy HC, CombineGVCFs, GenotypeGVCFs and SNP/indel VariantFiltration with explicit missing policy. Known SNP/deletion and 1/2/4-ploidy truth. Initial Windows colon-parser failure retained and corrected through interval_list files; temp-probe warnings retained. No legacy/somatic/old-version/whole-study equivalence.",
+      "windows_temp_probe_source": {
+        "url": "https://github.com/broadinstitute/gatk/blob/4.7.0.0/src/main/java/org/broadinstitute/hellbender/cmdline/CommandLineProgram.java",
+        "sha256": "57b207419c1eab85b8387b1ac8a3d67c28079b400d09ada958a550af84a39b6f",
+        "explanation": "Non-POSIX executable probe skips file creation, then cleanup attempts a null path. Diagnostic retained in successful Windows truth fixtures."
+      },
+      "packaged_runtime_evidence": {
+        "gvcf-S1": {
+          "log_sha256": "7acc816e772e8d7ae82246fee3baafb33bd2617be27b5b5ea18b4f310a42364c",
+          "kernel_runtime_lines": [
+            "14:44:25.309 INFO  HaplotypeCaller - Java runtime: Java HotSpot(TM) 64-Bit Server VM v25+37-LTS-3491",
+            "14:44:25.314 INFO  HaplotypeCaller - Deflater: JdkDeflater",
+            "14:44:25.315 INFO  HaplotypeCaller - Inflater: JdkInflater",
+            "14:44:25.532 INFO  PairHMM - Using the non-hardware-accelerated Java LOGLESS_CACHING PairHMM implementation",
+            "14:44:26.094 INFO  SmithWatermanAligner - Total compute time in java Smith-Waterman : 0.01 sec"
+          ]
+        },
+        "haploid-interval": {
+          "log_sha256": "631e2b3e534174390c1c49df5e509d9b479a369f806a98b048452866a35eda5b",
+          "kernel_runtime_lines": [
+            "14:44:45.055 INFO  HaplotypeCaller - Java runtime: Java HotSpot(TM) 64-Bit Server VM v25+37-LTS-3491",
+            "14:44:45.061 INFO  HaplotypeCaller - Deflater: JdkDeflater",
+            "14:44:45.062 INFO  HaplotypeCaller - Inflater: JdkInflater",
+            "14:44:45.305 INFO  PairHMM - Using the non-hardware-accelerated Java LOGLESS_CACHING PairHMM implementation",
+            "14:44:45.691 INFO  SmithWatermanAligner - Total compute time in java Smith-Waterman : 0.01 sec"
+          ]
+        },
+        "tetraploid": {
+          "log_sha256": "21469b667000d6f9e6f32ff34b230497e44a8245bcc48825a112ce56e63b33d4",
+          "kernel_runtime_lines": [
+            "14:44:50.087 INFO  HaplotypeCaller - Java runtime: Java HotSpot(TM) 64-Bit Server VM v25+37-LTS-3491",
+            "14:44:50.092 INFO  HaplotypeCaller - Deflater: JdkDeflater",
+            "14:44:50.093 INFO  HaplotypeCaller - Inflater: JdkInflater",
+            "14:44:50.306 INFO  PairHMM - Using the non-hardware-accelerated Java LOGLESS_CACHING PairHMM implementation",
+            "14:44:50.775 INFO  SmithWatermanAligner - Total compute time in java Smith-Waterman : 0.01 sec"
+          ]
+        }
+      }
+    },
+    {
+      "status": "passed",
+      "jar_sha256": "6f2f23518741d7325960529665fe720ed5f33ca5282e3fec88da8df6b2bb3bf3",
+      "version": "4.7.0.0",
+      "gatk_jar_sha256": "882e180707e0e6887885853fc486fa54098620fe9a80bdcdaaa655c7e3861365",
+      "upstream_suite": {
+        "suite": {
+          "tests": 6,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "3ee656c52a842bb9289184a3806d79ac76bb001ec55e7bde1c31640e2ad3ed3e",
+        "testcases": [
+          "realTypedHardFiltersPreserveAllRecordsGenotypesAndOldFiltersWithExplicitMissingPolicy()",
+          "unavailableOrWrongRuntimeSkipsAndInvalidModelDoesNotStart()",
+          "realGvcfCombinationAndGenotypingPreserveSamplesAndKnownDiploidGenotypes()",
+          "realHaploidAndTetraploidCallsRecoverKnownAlleleDosage()",
+          "referenceIndexMismatchFailsWithRetainedRecovery()",
+          "nativeReferencePreservesExistingSidecarsAndNeedsNoGatk()"
+        ]
+      },
+      "packaged_validation": "gatk-packaged-validation.json",
+      "packaged_checks": 12,
+      "dependency_evidence": "gatk-dependency-status.json",
+      "packaged_verifier_sha256": "e237d2e48ec8b5bbe404eb35672bb7835cfc318d1e2f38c4bd9a0d3dbbd7d4cc",
+      "scope": "Official local JAR, typed native reference metadata, explicit-ploidy HC, CombineGVCFs, GenotypeGVCFs and SNP/indel VariantFiltration with explicit missing policy. Known SNP/deletion and 1/2/4-ploidy truth. Initial Windows colon-parser failure retained and corrected through interval_list files; temp-probe warnings retained. No legacy/somatic/old-version/whole-study equivalence.",
+      "windows_temp_probe_source": {
+        "url": "https://github.com/broadinstitute/gatk/blob/4.7.0.0/src/main/java/org/broadinstitute/hellbender/cmdline/CommandLineProgram.java",
+        "sha256": "57b207419c1eab85b8387b1ac8a3d67c28079b400d09ada958a550af84a39b6f",
+        "explanation": "Non-POSIX executable probe skips file creation, then cleanup attempts a null path. Diagnostic retained in successful Windows truth fixtures."
+      },
+      "packaged_runtime_evidence": {
+        "gvcf-S1": {
+          "log_sha256": "c602161e45c7e02a4a976dfbaf205b4799c1f8f7ebcf92889d32f2f44cab959b",
+          "kernel_runtime_lines": [
+            "15:41:51.335 INFO  HaplotypeCaller - Java runtime: Java HotSpot(TM) 64-Bit Server VM v25+37-LTS-3491",
+            "15:41:51.345 INFO  HaplotypeCaller - Deflater: JdkDeflater",
+            "15:41:51.346 INFO  HaplotypeCaller - Inflater: JdkInflater",
+            "15:41:51.686 INFO  PairHMM - Using the non-hardware-accelerated Java LOGLESS_CACHING PairHMM implementation",
+            "15:41:52.679 INFO  SmithWatermanAligner - Total compute time in java Smith-Waterman : 0.03 sec"
+          ]
+        },
+        "haploid-interval": {
+          "log_sha256": "6fcec7b772b56d1fbc314d234887e67fdc707ec531399f072e4195d423af3f14",
+          "kernel_runtime_lines": [
+            "15:42:19.974 INFO  HaplotypeCaller - Java runtime: Java HotSpot(TM) 64-Bit Server VM v25+37-LTS-3491",
+            "15:42:19.980 INFO  HaplotypeCaller - Deflater: JdkDeflater",
+            "15:42:19.982 INFO  HaplotypeCaller - Inflater: JdkInflater",
+            "15:42:20.290 INFO  PairHMM - Using the non-hardware-accelerated Java LOGLESS_CACHING PairHMM implementation",
+            "15:42:20.810 INFO  SmithWatermanAligner - Total compute time in java Smith-Waterman : 0.01 sec"
+          ]
+        },
+        "tetraploid": {
+          "log_sha256": "da223f8125c9eaf9bb186db50f810a4caaca0406f1cc6b58164c6861068d12fe",
+          "kernel_runtime_lines": [
+            "15:42:26.919 INFO  HaplotypeCaller - Java runtime: Java HotSpot(TM) 64-Bit Server VM v25+37-LTS-3491",
+            "15:42:26.927 INFO  HaplotypeCaller - Deflater: JdkDeflater",
+            "15:42:26.928 INFO  HaplotypeCaller - Inflater: JdkInflater",
+            "15:42:27.235 INFO  PairHMM - Using the non-hardware-accelerated Java LOGLESS_CACHING PairHMM implementation",
+            "15:42:27.942 INFO  SmithWatermanAligner - Total compute time in java Smith-Waterman : 0.01 sec"
+          ]
+        }
+      },
+      "refreshed_utc": "2026-10-24T19:47:04.767030+00:00"
+    },
+    {
+      "status": "passed",
+      "jar_sha256": "5f9ab5d45f20156749fd62dd5bd740dabf1cb9c40649553150a0d7887aac46b6",
+      "version": "4.7.0.0",
+      "gatk_jar_sha256": "882e180707e0e6887885853fc486fa54098620fe9a80bdcdaaa655c7e3861365",
+      "upstream_suite": {
+        "suite": {
+          "tests": 6,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "dc7628e1c88e14919795811df06648aa68d42c6c4747853037eb40b43690f430",
+        "testcases": [
+          "realTypedHardFiltersPreserveAllRecordsGenotypesAndOldFiltersWithExplicitMissingPolicy()",
+          "unavailableOrWrongRuntimeSkipsAndInvalidModelDoesNotStart()",
+          "realGvcfCombinationAndGenotypingPreserveSamplesAndKnownDiploidGenotypes()",
+          "realHaploidAndTetraploidCallsRecoverKnownAlleleDosage()",
+          "referenceIndexMismatchFailsWithRetainedRecovery()",
+          "nativeReferencePreservesExistingSidecarsAndNeedsNoGatk()"
+        ]
+      },
+      "packaged_validation": "gatk-packaged-validation.json",
+      "packaged_checks": 12,
+      "dependency_evidence": "gatk-dependency-status.json",
+      "packaged_verifier_sha256": "e237d2e48ec8b5bbe404eb35672bb7835cfc318d1e2f38c4bd9a0d3dbbd7d4cc",
+      "scope": "Official local JAR, typed native reference metadata, explicit-ploidy HC, CombineGVCFs, GenotypeGVCFs and SNP/indel VariantFiltration with explicit missing policy. Known SNP/deletion and 1/2/4-ploidy truth. Initial Windows colon-parser failure retained and corrected through interval_list files; temp-probe warnings retained. No legacy/somatic/old-version/whole-study equivalence.",
+      "windows_temp_probe_source": {
+        "url": "https://github.com/broadinstitute/gatk/blob/4.7.0.0/src/main/java/org/broadinstitute/hellbender/cmdline/CommandLineProgram.java",
+        "sha256": "57b207419c1eab85b8387b1ac8a3d67c28079b400d09ada958a550af84a39b6f",
+        "explanation": "Non-POSIX executable probe skips file creation, then cleanup attempts a null path. Diagnostic retained in successful Windows truth fixtures."
+      },
+      "packaged_runtime_evidence": {
+        "gvcf-S1": {
+          "log_sha256": "b6669f887f5b586720fba62704650087ba1c2d887265c78477bddc389ab9e6d9",
+          "kernel_runtime_lines": [
+            "16:57:19.324 INFO  HaplotypeCaller - Java runtime: Java HotSpot(TM) 64-Bit Server VM v25+37-LTS-3491",
+            "16:57:19.332 INFO  HaplotypeCaller - Deflater: JdkDeflater",
+            "16:57:19.333 INFO  HaplotypeCaller - Inflater: JdkInflater",
+            "16:57:19.623 INFO  PairHMM - Using the non-hardware-accelerated Java LOGLESS_CACHING PairHMM implementation",
+            "16:57:20.414 INFO  SmithWatermanAligner - Total compute time in java Smith-Waterman : 0.01 sec"
+          ]
+        },
+        "haploid-interval": {
+          "log_sha256": "a9ca84179cad94d5d3094f1fc61003ba8661b43f9f248714c637ae3a21f1c1e8",
+          "kernel_runtime_lines": [
+            "16:57:42.120 INFO  HaplotypeCaller - Java runtime: Java HotSpot(TM) 64-Bit Server VM v25+37-LTS-3491",
+            "16:57:42.126 INFO  HaplotypeCaller - Deflater: JdkDeflater",
+            "16:57:42.126 INFO  HaplotypeCaller - Inflater: JdkInflater",
+            "16:57:42.403 INFO  PairHMM - Using the non-hardware-accelerated Java LOGLESS_CACHING PairHMM implementation",
+            "16:57:42.868 INFO  SmithWatermanAligner - Total compute time in java Smith-Waterman : 0.01 sec"
+          ]
+        },
+        "tetraploid": {
+          "log_sha256": "12125a4a7964f163b71085cac7ed1d953c7d086480fe15c175106333d7cb2858",
+          "kernel_runtime_lines": [
+            "16:57:47.796 INFO  HaplotypeCaller - Java runtime: Java HotSpot(TM) 64-Bit Server VM v25+37-LTS-3491",
+            "16:57:47.802 INFO  HaplotypeCaller - Deflater: JdkDeflater",
+            "16:57:47.802 INFO  HaplotypeCaller - Inflater: JdkInflater",
+            "16:57:48.025 INFO  PairHMM - Using the non-hardware-accelerated Java LOGLESS_CACHING PairHMM implementation",
+            "16:57:48.549 INFO  SmithWatermanAligner - Total compute time in java Smith-Waterman : 0.01 sec"
+          ]
+        }
+      },
+      "refreshed_utc": "2026-10-24T21:05:05.726695+00:00"
+    },
+    {
+      "status": "passed",
+      "jar_sha256": "06d9ff0a5fa1cacd21c17dac0cb0182b2de10c086f84b51ff92cae969e819e8a",
+      "version": "4.7.0.0",
+      "gatk_jar_sha256": "882e180707e0e6887885853fc486fa54098620fe9a80bdcdaaa655c7e3861365",
+      "upstream_suite": {
+        "suite": {
+          "tests": 6,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "d3f129d5711f4d19d62aa92704d4428104ce0cc559743094640413b8fdcfc8d4",
+        "testcases": [
+          "realTypedHardFiltersPreserveAllRecordsGenotypesAndOldFiltersWithExplicitMissingPolicy()",
+          "unavailableOrWrongRuntimeSkipsAndInvalidModelDoesNotStart()",
+          "realGvcfCombinationAndGenotypingPreserveSamplesAndKnownDiploidGenotypes()",
+          "realHaploidAndTetraploidCallsRecoverKnownAlleleDosage()",
+          "referenceIndexMismatchFailsWithRetainedRecovery()",
+          "nativeReferencePreservesExistingSidecarsAndNeedsNoGatk()"
+        ]
+      },
+      "packaged_validation": "gatk-packaged-validation.json",
+      "packaged_checks": 12,
+      "dependency_evidence": "gatk-dependency-status.json",
+      "packaged_verifier_sha256": "e237d2e48ec8b5bbe404eb35672bb7835cfc318d1e2f38c4bd9a0d3dbbd7d4cc",
+      "scope": "Official local JAR, typed native reference metadata, explicit-ploidy HC, CombineGVCFs, GenotypeGVCFs and SNP/indel VariantFiltration with explicit missing policy. Known SNP/deletion and 1/2/4-ploidy truth. Initial Windows colon-parser failure retained and corrected through interval_list files; temp-probe warnings retained. No legacy/somatic/old-version/whole-study equivalence.",
+      "windows_temp_probe_source": {
+        "url": "https://github.com/broadinstitute/gatk/blob/4.7.0.0/src/main/java/org/broadinstitute/hellbender/cmdline/CommandLineProgram.java",
+        "sha256": "57b207419c1eab85b8387b1ac8a3d67c28079b400d09ada958a550af84a39b6f",
+        "explanation": "Non-POSIX executable probe skips file creation, then cleanup attempts a null path. Diagnostic retained in successful Windows truth fixtures."
+      },
+      "packaged_runtime_evidence": {
+        "gvcf-S1": {
+          "log_sha256": "9599b712e112c211b87decd7a347e5d9168f3088981e4efa13a08b45db93d6ad",
+          "kernel_runtime_lines": [
+            "17:24:49.860 INFO  HaplotypeCaller - Java runtime: Java HotSpot(TM) 64-Bit Server VM v25+37-LTS-3491",
+            "17:24:49.866 INFO  HaplotypeCaller - Deflater: JdkDeflater",
+            "17:24:49.867 INFO  HaplotypeCaller - Inflater: JdkInflater",
+            "17:24:50.135 INFO  PairHMM - Using the non-hardware-accelerated Java LOGLESS_CACHING PairHMM implementation",
+            "17:24:50.832 INFO  SmithWatermanAligner - Total compute time in java Smith-Waterman : 0.01 sec"
+          ]
+        },
+        "haploid-interval": {
+          "log_sha256": "17c5548751ef973448aeb276cc971dbf646d71438984c9be4d855ea18850c047",
+          "kernel_runtime_lines": [
+            "17:25:11.540 INFO  HaplotypeCaller - Java runtime: Java HotSpot(TM) 64-Bit Server VM v25+37-LTS-3491",
+            "17:25:11.545 INFO  HaplotypeCaller - Deflater: JdkDeflater",
+            "17:25:11.546 INFO  HaplotypeCaller - Inflater: JdkInflater",
+            "17:25:11.812 INFO  PairHMM - Using the non-hardware-accelerated Java LOGLESS_CACHING PairHMM implementation",
+            "17:25:12.247 INFO  SmithWatermanAligner - Total compute time in java Smith-Waterman : 0.01 sec"
+          ]
+        },
+        "tetraploid": {
+          "log_sha256": "433ec282bf20a3f64f20f7fbbfdad1b8bee759c3389e3bdd1682201b2faadcc2",
+          "kernel_runtime_lines": [
+            "17:25:17.485 INFO  HaplotypeCaller - Java runtime: Java HotSpot(TM) 64-Bit Server VM v25+37-LTS-3491",
+            "17:25:17.491 INFO  HaplotypeCaller - Deflater: JdkDeflater",
+            "17:25:17.492 INFO  HaplotypeCaller - Inflater: JdkInflater",
+            "17:25:17.761 INFO  PairHMM - Using the non-hardware-accelerated Java LOGLESS_CACHING PairHMM implementation",
+            "17:25:18.286 INFO  SmithWatermanAligner - Total compute time in java Smith-Waterman : 0.01 sec"
+          ]
+        }
+      },
+      "refreshed_utc": "2026-10-24T21:34:22.897850+00:00"
+    },
+    {
+      "status": "passed",
+      "jar_sha256": "2f748eb4328a871f339fecc25fe41db7fa38a063718277e4d8eeb81d69e70985",
+      "version": "4.7.0.0",
+      "gatk_jar_sha256": "882e180707e0e6887885853fc486fa54098620fe9a80bdcdaaa655c7e3861365",
+      "upstream_suite": {
+        "suite_name": "org.jlinalg.cli.GatkToolsCliTest",
+        "suite": {
+          "tests": 6,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "61f256ed7ec5998770c32fa4985bd98eb81f08cea9d1a18e5a10062fb383f8ca",
+        "testcases": [
+          "realTypedHardFiltersPreserveAllRecordsGenotypesAndOldFiltersWithExplicitMissingPolicy()",
+          "unavailableOrWrongRuntimeSkipsAndInvalidModelDoesNotStart()",
+          "realGvcfCombinationAndGenotypingPreserveSamplesAndKnownDiploidGenotypes()",
+          "realHaploidAndTetraploidCallsRecoverKnownAlleleDosage()",
+          "referenceIndexMismatchFailsWithRetainedRecovery()",
+          "nativeReferencePreservesExistingSidecarsAndNeedsNoGatk()"
+        ]
+      },
+      "packaged_validation": "gatk-packaged-validation.json",
+      "packaged_checks": 12,
+      "dependency_evidence": "gatk-dependency-status.json",
+      "packaged_verifier_sha256": "e237d2e48ec8b5bbe404eb35672bb7835cfc318d1e2f38c4bd9a0d3dbbd7d4cc",
+      "scope": "Official local JAR, typed native reference metadata, explicit-ploidy HC, CombineGVCFs, GenotypeGVCFs and SNP/indel VariantFiltration with explicit missing policy. Known SNP/deletion and 1/2/4-ploidy truth. Initial Windows colon-parser failure retained and corrected through interval_list files; temp-probe warnings retained. No legacy/somatic/old-version/whole-study equivalence.",
+      "windows_temp_probe_source": {
+        "url": "https://github.com/broadinstitute/gatk/blob/4.7.0.0/src/main/java/org/broadinstitute/hellbender/cmdline/CommandLineProgram.java",
+        "sha256": "57b207419c1eab85b8387b1ac8a3d67c28079b400d09ada958a550af84a39b6f",
+        "explanation": "Non-POSIX executable probe skips file creation, then cleanup attempts a null path. Diagnostic retained in successful Windows truth fixtures."
+      },
+      "packaged_runtime_evidence": {
+        "gvcf-S1": {
+          "log_sha256": "9599b712e112c211b87decd7a347e5d9168f3088981e4efa13a08b45db93d6ad",
+          "kernel_runtime_lines": [
+            "17:24:49.860 INFO  HaplotypeCaller - Java runtime: Java HotSpot(TM) 64-Bit Server VM v25+37-LTS-3491",
+            "17:24:49.866 INFO  HaplotypeCaller - Deflater: JdkDeflater",
+            "17:24:49.867 INFO  HaplotypeCaller - Inflater: JdkInflater",
+            "17:24:50.135 INFO  PairHMM - Using the non-hardware-accelerated Java LOGLESS_CACHING PairHMM implementation",
+            "17:24:50.832 INFO  SmithWatermanAligner - Total compute time in java Smith-Waterman : 0.01 sec"
+          ]
+        },
+        "haploid-interval": {
+          "log_sha256": "17c5548751ef973448aeb276cc971dbf646d71438984c9be4d855ea18850c047",
+          "kernel_runtime_lines": [
+            "17:25:11.540 INFO  HaplotypeCaller - Java runtime: Java HotSpot(TM) 64-Bit Server VM v25+37-LTS-3491",
+            "17:25:11.545 INFO  HaplotypeCaller - Deflater: JdkDeflater",
+            "17:25:11.546 INFO  HaplotypeCaller - Inflater: JdkInflater",
+            "17:25:11.812 INFO  PairHMM - Using the non-hardware-accelerated Java LOGLESS_CACHING PairHMM implementation",
+            "17:25:12.247 INFO  SmithWatermanAligner - Total compute time in java Smith-Waterman : 0.01 sec"
+          ]
+        },
+        "tetraploid": {
+          "log_sha256": "433ec282bf20a3f64f20f7fbbfdad1b8bee759c3389e3bdd1682201b2faadcc2",
+          "kernel_runtime_lines": [
+            "17:25:17.485 INFO  HaplotypeCaller - Java runtime: Java HotSpot(TM) 64-Bit Server VM v25+37-LTS-3491",
+            "17:25:17.491 INFO  HaplotypeCaller - Deflater: JdkDeflater",
+            "17:25:17.492 INFO  HaplotypeCaller - Inflater: JdkInflater",
+            "17:25:17.761 INFO  PairHMM - Using the non-hardware-accelerated Java LOGLESS_CACHING PairHMM implementation",
+            "17:25:18.286 INFO  SmithWatermanAligner - Total compute time in java Smith-Waterman : 0.01 sec"
+          ]
+        }
+      },
+      "refreshed_utc": "2026-10-24T23:03:19.823475+00:00",
+      "current_full_gate_suites": {
+        "org.jlinalg.cli.GatkToolsCliTest": {
+          "suite_name": "org.jlinalg.cli.GatkToolsCliTest",
+          "suite": {
+            "tests": 6,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "61f256ed7ec5998770c32fa4985bd98eb81f08cea9d1a18e5a10062fb383f8ca",
+          "testcases": [
+            "realTypedHardFiltersPreserveAllRecordsGenotypesAndOldFiltersWithExplicitMissingPolicy()",
+            "unavailableOrWrongRuntimeSkipsAndInvalidModelDoesNotStart()",
+            "realGvcfCombinationAndGenotypingPreserveSamplesAndKnownDiploidGenotypes()",
+            "realHaploidAndTetraploidCallsRecoverKnownAlleleDosage()",
+            "referenceIndexMismatchFailsWithRetainedRecovery()",
+            "nativeReferencePreservesExistingSidecarsAndNeedsNoGatk()"
+          ]
+        }
+      }
+    },
+    {
+      "status": "passed",
+      "jar_sha256": "7fc22cd33b22500b0e0360ee93c6e416ce27444f32691fed470e280e95f7f70d",
+      "version": "4.7.0.0",
+      "gatk_jar_sha256": "882e180707e0e6887885853fc486fa54098620fe9a80bdcdaaa655c7e3861365",
+      "upstream_suite": {
+        "suite_name": "org.jlinalg.cli.GatkToolsCliTest",
+        "suite": {
+          "tests": 6,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "426cd32f44610ad72c5ddc108458d3f1842dc1fda0ca63f610fbb30e76bb332e",
+        "testcases": [
+          "realTypedHardFiltersPreserveAllRecordsGenotypesAndOldFiltersWithExplicitMissingPolicy()",
+          "unavailableOrWrongRuntimeSkipsAndInvalidModelDoesNotStart()",
+          "realGvcfCombinationAndGenotypingPreserveSamplesAndKnownDiploidGenotypes()",
+          "realHaploidAndTetraploidCallsRecoverKnownAlleleDosage()",
+          "referenceIndexMismatchFailsWithRetainedRecovery()",
+          "nativeReferencePreservesExistingSidecarsAndNeedsNoGatk()"
+        ]
+      },
+      "packaged_validation": "gatk-packaged-validation.json",
+      "packaged_checks": 12,
+      "dependency_evidence": "gatk-dependency-status.json",
+      "packaged_verifier_sha256": "e237d2e48ec8b5bbe404eb35672bb7835cfc318d1e2f38c4bd9a0d3dbbd7d4cc",
+      "scope": "Official local JAR, typed native reference metadata, explicit-ploidy HC, CombineGVCFs, GenotypeGVCFs and SNP/indel VariantFiltration with explicit missing policy. Known SNP/deletion and 1/2/4-ploidy truth. Initial Windows colon-parser failure retained and corrected through interval_list files; temp-probe warnings retained. No legacy/somatic/old-version/whole-study equivalence.",
+      "windows_temp_probe_source": {
+        "url": "https://github.com/broadinstitute/gatk/blob/4.7.0.0/src/main/java/org/broadinstitute/hellbender/cmdline/CommandLineProgram.java",
+        "sha256": "57b207419c1eab85b8387b1ac8a3d67c28079b400d09ada958a550af84a39b6f",
+        "explanation": "Non-POSIX executable probe skips file creation, then cleanup attempts a null path. Diagnostic retained in successful Windows truth fixtures."
+      },
+      "packaged_runtime_evidence": {
+        "gvcf-S1": {
+          "log_sha256": "9599b712e112c211b87decd7a347e5d9168f3088981e4efa13a08b45db93d6ad",
+          "kernel_runtime_lines": [
+            "17:24:49.860 INFO  HaplotypeCaller - Java runtime: Java HotSpot(TM) 64-Bit Server VM v25+37-LTS-3491",
+            "17:24:49.866 INFO  HaplotypeCaller - Deflater: JdkDeflater",
+            "17:24:49.867 INFO  HaplotypeCaller - Inflater: JdkInflater",
+            "17:24:50.135 INFO  PairHMM - Using the non-hardware-accelerated Java LOGLESS_CACHING PairHMM implementation",
+            "17:24:50.832 INFO  SmithWatermanAligner - Total compute time in java Smith-Waterman : 0.01 sec"
+          ]
+        },
+        "haploid-interval": {
+          "log_sha256": "17c5548751ef973448aeb276cc971dbf646d71438984c9be4d855ea18850c047",
+          "kernel_runtime_lines": [
+            "17:25:11.540 INFO  HaplotypeCaller - Java runtime: Java HotSpot(TM) 64-Bit Server VM v25+37-LTS-3491",
+            "17:25:11.545 INFO  HaplotypeCaller - Deflater: JdkDeflater",
+            "17:25:11.546 INFO  HaplotypeCaller - Inflater: JdkInflater",
+            "17:25:11.812 INFO  PairHMM - Using the non-hardware-accelerated Java LOGLESS_CACHING PairHMM implementation",
+            "17:25:12.247 INFO  SmithWatermanAligner - Total compute time in java Smith-Waterman : 0.01 sec"
+          ]
+        },
+        "tetraploid": {
+          "log_sha256": "433ec282bf20a3f64f20f7fbbfdad1b8bee759c3389e3bdd1682201b2faadcc2",
+          "kernel_runtime_lines": [
+            "17:25:17.485 INFO  HaplotypeCaller - Java runtime: Java HotSpot(TM) 64-Bit Server VM v25+37-LTS-3491",
+            "17:25:17.491 INFO  HaplotypeCaller - Deflater: JdkDeflater",
+            "17:25:17.492 INFO  HaplotypeCaller - Inflater: JdkInflater",
+            "17:25:17.761 INFO  PairHMM - Using the non-hardware-accelerated Java LOGLESS_CACHING PairHMM implementation",
+            "17:25:18.286 INFO  SmithWatermanAligner - Total compute time in java Smith-Waterman : 0.01 sec"
+          ]
+        }
+      },
+      "refreshed_utc": "2026-10-24T23:44:47.238929+00:00",
+      "current_full_gate_suites": {
+        "org.jlinalg.cli.GatkToolsCliTest": {
+          "suite_name": "org.jlinalg.cli.GatkToolsCliTest",
+          "suite": {
+            "tests": 6,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "426cd32f44610ad72c5ddc108458d3f1842dc1fda0ca63f610fbb30e76bb332e",
+          "testcases": [
+            "realTypedHardFiltersPreserveAllRecordsGenotypesAndOldFiltersWithExplicitMissingPolicy()",
+            "unavailableOrWrongRuntimeSkipsAndInvalidModelDoesNotStart()",
+            "realGvcfCombinationAndGenotypingPreserveSamplesAndKnownDiploidGenotypes()",
+            "realHaploidAndTetraploidCallsRecoverKnownAlleleDosage()",
+            "referenceIndexMismatchFailsWithRetainedRecovery()",
+            "nativeReferencePreservesExistingSidecarsAndNeedsNoGatk()"
+          ]
+        }
+      }
+    },
+    {
+      "status": "passed",
+      "jar_sha256": "19c4ed620c230c4c520c10bcbf3d88cbd1484d640103d2109e25f4db0ee621be",
+      "version": "4.7.0.0",
+      "gatk_jar_sha256": "882e180707e0e6887885853fc486fa54098620fe9a80bdcdaaa655c7e3861365",
+      "upstream_suite": {
+        "suite_name": "org.jlinalg.cli.GatkToolsCliTest",
+        "suite": {
+          "tests": 6,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "3789f523abb8b706822b645e5a92de0e1d210ffb7e74693119359d4138337862",
+        "testcases": [
+          "realTypedHardFiltersPreserveAllRecordsGenotypesAndOldFiltersWithExplicitMissingPolicy()",
+          "unavailableOrWrongRuntimeSkipsAndInvalidModelDoesNotStart()",
+          "realGvcfCombinationAndGenotypingPreserveSamplesAndKnownDiploidGenotypes()",
+          "realHaploidAndTetraploidCallsRecoverKnownAlleleDosage()",
+          "referenceIndexMismatchFailsWithRetainedRecovery()",
+          "nativeReferencePreservesExistingSidecarsAndNeedsNoGatk()"
+        ]
+      },
+      "packaged_validation": "gatk-packaged-validation.json",
+      "packaged_checks": 12,
+      "dependency_evidence": "gatk-dependency-status.json",
+      "packaged_verifier_sha256": "e237d2e48ec8b5bbe404eb35672bb7835cfc318d1e2f38c4bd9a0d3dbbd7d4cc",
+      "scope": "Official local JAR, typed native reference metadata, explicit-ploidy HC, CombineGVCFs, GenotypeGVCFs and SNP/indel VariantFiltration with explicit missing policy. Known SNP/deletion and 1/2/4-ploidy truth. Initial Windows colon-parser failure retained and corrected through interval_list files; temp-probe warnings retained. No legacy/somatic/old-version/whole-study equivalence.",
+      "windows_temp_probe_source": {
+        "url": "https://github.com/broadinstitute/gatk/blob/4.7.0.0/src/main/java/org/broadinstitute/hellbender/cmdline/CommandLineProgram.java",
+        "sha256": "57b207419c1eab85b8387b1ac8a3d67c28079b400d09ada958a550af84a39b6f",
+        "explanation": "Non-POSIX executable probe skips file creation, then cleanup attempts a null path. Diagnostic retained in successful Windows truth fixtures."
+      },
+      "packaged_runtime_evidence": {
+        "gvcf-S1": {
+          "log_sha256": "9599b712e112c211b87decd7a347e5d9168f3088981e4efa13a08b45db93d6ad",
+          "kernel_runtime_lines": [
+            "17:24:49.860 INFO  HaplotypeCaller - Java runtime: Java HotSpot(TM) 64-Bit Server VM v25+37-LTS-3491",
+            "17:24:49.866 INFO  HaplotypeCaller - Deflater: JdkDeflater",
+            "17:24:49.867 INFO  HaplotypeCaller - Inflater: JdkInflater",
+            "17:24:50.135 INFO  PairHMM - Using the non-hardware-accelerated Java LOGLESS_CACHING PairHMM implementation",
+            "17:24:50.832 INFO  SmithWatermanAligner - Total compute time in java Smith-Waterman : 0.01 sec"
+          ]
+        },
+        "haploid-interval": {
+          "log_sha256": "17c5548751ef973448aeb276cc971dbf646d71438984c9be4d855ea18850c047",
+          "kernel_runtime_lines": [
+            "17:25:11.540 INFO  HaplotypeCaller - Java runtime: Java HotSpot(TM) 64-Bit Server VM v25+37-LTS-3491",
+            "17:25:11.545 INFO  HaplotypeCaller - Deflater: JdkDeflater",
+            "17:25:11.546 INFO  HaplotypeCaller - Inflater: JdkInflater",
+            "17:25:11.812 INFO  PairHMM - Using the non-hardware-accelerated Java LOGLESS_CACHING PairHMM implementation",
+            "17:25:12.247 INFO  SmithWatermanAligner - Total compute time in java Smith-Waterman : 0.01 sec"
+          ]
+        },
+        "tetraploid": {
+          "log_sha256": "433ec282bf20a3f64f20f7fbbfdad1b8bee759c3389e3bdd1682201b2faadcc2",
+          "kernel_runtime_lines": [
+            "17:25:17.485 INFO  HaplotypeCaller - Java runtime: Java HotSpot(TM) 64-Bit Server VM v25+37-LTS-3491",
+            "17:25:17.491 INFO  HaplotypeCaller - Deflater: JdkDeflater",
+            "17:25:17.492 INFO  HaplotypeCaller - Inflater: JdkInflater",
+            "17:25:17.761 INFO  PairHMM - Using the non-hardware-accelerated Java LOGLESS_CACHING PairHMM implementation",
+            "17:25:18.286 INFO  SmithWatermanAligner - Total compute time in java Smith-Waterman : 0.01 sec"
+          ]
+        }
+      },
+      "refreshed_utc": "2026-10-25T00:57:19.120198+00:00",
+      "current_full_gate_suites": {
+        "org.jlinalg.cli.GatkToolsCliTest": {
+          "suite_name": "org.jlinalg.cli.GatkToolsCliTest",
+          "suite": {
+            "tests": 6,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "3789f523abb8b706822b645e5a92de0e1d210ffb7e74693119359d4138337862",
+          "testcases": [
+            "realTypedHardFiltersPreserveAllRecordsGenotypesAndOldFiltersWithExplicitMissingPolicy()",
+            "unavailableOrWrongRuntimeSkipsAndInvalidModelDoesNotStart()",
+            "realGvcfCombinationAndGenotypingPreserveSamplesAndKnownDiploidGenotypes()",
+            "realHaploidAndTetraploidCallsRecoverKnownAlleleDosage()",
+            "referenceIndexMismatchFailsWithRetainedRecovery()",
+            "nativeReferencePreservesExistingSidecarsAndNeedsNoGatk()"
+          ]
+        }
+      }
+    },
+    {
+      "status": "passed",
+      "jar_sha256": "095e5fecbb0beaabc2e67134d980d2e1841210c0b92c708b3a21ab0dfb866c61",
+      "version": "4.7.0.0",
+      "gatk_jar_sha256": "882e180707e0e6887885853fc486fa54098620fe9a80bdcdaaa655c7e3861365",
+      "upstream_suite": {
+        "suite_name": "org.jlinalg.cli.GatkToolsCliTest",
+        "suite": {
+          "tests": 6,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "01d0f8ef0f33c0d401bbfb846348fba7af696d7462a586d5ba4726fd8cf36b59",
+        "testcases": [
+          "realTypedHardFiltersPreserveAllRecordsGenotypesAndOldFiltersWithExplicitMissingPolicy()",
+          "unavailableOrWrongRuntimeSkipsAndInvalidModelDoesNotStart()",
+          "realGvcfCombinationAndGenotypingPreserveSamplesAndKnownDiploidGenotypes()",
+          "realHaploidAndTetraploidCallsRecoverKnownAlleleDosage()",
+          "referenceIndexMismatchFailsWithRetainedRecovery()",
+          "nativeReferencePreservesExistingSidecarsAndNeedsNoGatk()"
+        ]
+      },
+      "packaged_validation": "gatk-packaged-validation.json",
+      "packaged_checks": 12,
+      "dependency_evidence": "gatk-dependency-status.json",
+      "packaged_verifier_sha256": "e237d2e48ec8b5bbe404eb35672bb7835cfc318d1e2f38c4bd9a0d3dbbd7d4cc",
+      "scope": "Official local JAR, typed native reference metadata, explicit-ploidy HC, CombineGVCFs, GenotypeGVCFs and SNP/indel VariantFiltration with explicit missing policy. Known SNP/deletion and 1/2/4-ploidy truth. Initial Windows colon-parser failure retained and corrected through interval_list files; temp-probe warnings retained. No legacy/somatic/old-version/whole-study equivalence.",
+      "windows_temp_probe_source": {
+        "url": "https://github.com/broadinstitute/gatk/blob/4.7.0.0/src/main/java/org/broadinstitute/hellbender/cmdline/CommandLineProgram.java",
+        "sha256": "57b207419c1eab85b8387b1ac8a3d67c28079b400d09ada958a550af84a39b6f",
+        "explanation": "Non-POSIX executable probe skips file creation, then cleanup attempts a null path. Diagnostic retained in successful Windows truth fixtures."
+      },
+      "packaged_runtime_evidence": {
+        "gvcf-S1": {
+          "log_sha256": "9599b712e112c211b87decd7a347e5d9168f3088981e4efa13a08b45db93d6ad",
+          "kernel_runtime_lines": [
+            "17:24:49.860 INFO  HaplotypeCaller - Java runtime: Java HotSpot(TM) 64-Bit Server VM v25+37-LTS-3491",
+            "17:24:49.866 INFO  HaplotypeCaller - Deflater: JdkDeflater",
+            "17:24:49.867 INFO  HaplotypeCaller - Inflater: JdkInflater",
+            "17:24:50.135 INFO  PairHMM - Using the non-hardware-accelerated Java LOGLESS_CACHING PairHMM implementation",
+            "17:24:50.832 INFO  SmithWatermanAligner - Total compute time in java Smith-Waterman : 0.01 sec"
+          ]
+        },
+        "haploid-interval": {
+          "log_sha256": "17c5548751ef973448aeb276cc971dbf646d71438984c9be4d855ea18850c047",
+          "kernel_runtime_lines": [
+            "17:25:11.540 INFO  HaplotypeCaller - Java runtime: Java HotSpot(TM) 64-Bit Server VM v25+37-LTS-3491",
+            "17:25:11.545 INFO  HaplotypeCaller - Deflater: JdkDeflater",
+            "17:25:11.546 INFO  HaplotypeCaller - Inflater: JdkInflater",
+            "17:25:11.812 INFO  PairHMM - Using the non-hardware-accelerated Java LOGLESS_CACHING PairHMM implementation",
+            "17:25:12.247 INFO  SmithWatermanAligner - Total compute time in java Smith-Waterman : 0.01 sec"
+          ]
+        },
+        "tetraploid": {
+          "log_sha256": "433ec282bf20a3f64f20f7fbbfdad1b8bee759c3389e3bdd1682201b2faadcc2",
+          "kernel_runtime_lines": [
+            "17:25:17.485 INFO  HaplotypeCaller - Java runtime: Java HotSpot(TM) 64-Bit Server VM v25+37-LTS-3491",
+            "17:25:17.491 INFO  HaplotypeCaller - Deflater: JdkDeflater",
+            "17:25:17.492 INFO  HaplotypeCaller - Inflater: JdkInflater",
+            "17:25:17.761 INFO  PairHMM - Using the non-hardware-accelerated Java LOGLESS_CACHING PairHMM implementation",
+            "17:25:18.286 INFO  SmithWatermanAligner - Total compute time in java Smith-Waterman : 0.01 sec"
+          ]
+        }
+      },
+      "refreshed_utc": "2026-10-25T02:15:39.832466+00:00",
+      "current_full_gate_suites": {
+        "org.jlinalg.cli.GatkToolsCliTest": {
+          "suite_name": "org.jlinalg.cli.GatkToolsCliTest",
+          "suite": {
+            "tests": 6,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "01d0f8ef0f33c0d401bbfb846348fba7af696d7462a586d5ba4726fd8cf36b59",
+          "testcases": [
+            "realTypedHardFiltersPreserveAllRecordsGenotypesAndOldFiltersWithExplicitMissingPolicy()",
+            "unavailableOrWrongRuntimeSkipsAndInvalidModelDoesNotStart()",
+            "realGvcfCombinationAndGenotypingPreserveSamplesAndKnownDiploidGenotypes()",
+            "realHaploidAndTetraploidCallsRecoverKnownAlleleDosage()",
+            "referenceIndexMismatchFailsWithRetainedRecovery()",
+            "nativeReferencePreservesExistingSidecarsAndNeedsNoGatk()"
+          ]
+        }
+      }
+    },
+    {
+      "status": "passed",
+      "jar_sha256": "fc6c5769770609b38ffd8e5f22e701efcf0aeb13261c594a070ee5b6b777232b",
+      "version": "4.7.0.0",
+      "gatk_jar_sha256": "882e180707e0e6887885853fc486fa54098620fe9a80bdcdaaa655c7e3861365",
+      "upstream_suite": {
+        "suite_name": "org.jlinalg.cli.GatkToolsCliTest",
+        "suite": {
+          "tests": 6,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "43b8b25740bfa8db4fb59f1d14ada60a1e0104bbf3f928f660491ec79b087ed4",
+        "testcases": [
+          "realTypedHardFiltersPreserveAllRecordsGenotypesAndOldFiltersWithExplicitMissingPolicy()",
+          "unavailableOrWrongRuntimeSkipsAndInvalidModelDoesNotStart()",
+          "realGvcfCombinationAndGenotypingPreserveSamplesAndKnownDiploidGenotypes()",
+          "realHaploidAndTetraploidCallsRecoverKnownAlleleDosage()",
+          "referenceIndexMismatchFailsWithRetainedRecovery()",
+          "nativeReferencePreservesExistingSidecarsAndNeedsNoGatk()"
+        ]
+      },
+      "packaged_validation": "gatk-packaged-validation.json",
+      "packaged_checks": 12,
+      "dependency_evidence": "gatk-dependency-status.json",
+      "packaged_verifier_sha256": "e237d2e48ec8b5bbe404eb35672bb7835cfc318d1e2f38c4bd9a0d3dbbd7d4cc",
+      "scope": "Official local JAR, typed native reference metadata, explicit-ploidy HC, CombineGVCFs, GenotypeGVCFs and SNP/indel VariantFiltration with explicit missing policy. Known SNP/deletion and 1/2/4-ploidy truth. Initial Windows colon-parser failure retained and corrected through interval_list files; temp-probe warnings retained. No legacy/somatic/old-version/whole-study equivalence.",
+      "windows_temp_probe_source": {
+        "url": "https://github.com/broadinstitute/gatk/blob/4.7.0.0/src/main/java/org/broadinstitute/hellbender/cmdline/CommandLineProgram.java",
+        "sha256": "57b207419c1eab85b8387b1ac8a3d67c28079b400d09ada958a550af84a39b6f",
+        "explanation": "Non-POSIX executable probe skips file creation, then cleanup attempts a null path. Diagnostic retained in successful Windows truth fixtures."
+      },
+      "packaged_runtime_evidence": {
+        "gvcf-S1": {
+          "log_sha256": "9599b712e112c211b87decd7a347e5d9168f3088981e4efa13a08b45db93d6ad",
+          "kernel_runtime_lines": [
+            "17:24:49.860 INFO  HaplotypeCaller - Java runtime: Java HotSpot(TM) 64-Bit Server VM v25+37-LTS-3491",
+            "17:24:49.866 INFO  HaplotypeCaller - Deflater: JdkDeflater",
+            "17:24:49.867 INFO  HaplotypeCaller - Inflater: JdkInflater",
+            "17:24:50.135 INFO  PairHMM - Using the non-hardware-accelerated Java LOGLESS_CACHING PairHMM implementation",
+            "17:24:50.832 INFO  SmithWatermanAligner - Total compute time in java Smith-Waterman : 0.01 sec"
+          ]
+        },
+        "haploid-interval": {
+          "log_sha256": "17c5548751ef973448aeb276cc971dbf646d71438984c9be4d855ea18850c047",
+          "kernel_runtime_lines": [
+            "17:25:11.540 INFO  HaplotypeCaller - Java runtime: Java HotSpot(TM) 64-Bit Server VM v25+37-LTS-3491",
+            "17:25:11.545 INFO  HaplotypeCaller - Deflater: JdkDeflater",
+            "17:25:11.546 INFO  HaplotypeCaller - Inflater: JdkInflater",
+            "17:25:11.812 INFO  PairHMM - Using the non-hardware-accelerated Java LOGLESS_CACHING PairHMM implementation",
+            "17:25:12.247 INFO  SmithWatermanAligner - Total compute time in java Smith-Waterman : 0.01 sec"
+          ]
+        },
+        "tetraploid": {
+          "log_sha256": "433ec282bf20a3f64f20f7fbbfdad1b8bee759c3389e3bdd1682201b2faadcc2",
+          "kernel_runtime_lines": [
+            "17:25:17.485 INFO  HaplotypeCaller - Java runtime: Java HotSpot(TM) 64-Bit Server VM v25+37-LTS-3491",
+            "17:25:17.491 INFO  HaplotypeCaller - Deflater: JdkDeflater",
+            "17:25:17.492 INFO  HaplotypeCaller - Inflater: JdkInflater",
+            "17:25:17.761 INFO  PairHMM - Using the non-hardware-accelerated Java LOGLESS_CACHING PairHMM implementation",
+            "17:25:18.286 INFO  SmithWatermanAligner - Total compute time in java Smith-Waterman : 0.01 sec"
+          ]
+        }
+      },
+      "refreshed_utc": "2026-10-25T02:57:16.310858+00:00",
+      "current_full_gate_suites": {
+        "org.jlinalg.cli.GatkToolsCliTest": {
+          "suite_name": "org.jlinalg.cli.GatkToolsCliTest",
+          "suite": {
+            "tests": 6,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "43b8b25740bfa8db4fb59f1d14ada60a1e0104bbf3f928f660491ec79b087ed4",
+          "testcases": [
+            "realTypedHardFiltersPreserveAllRecordsGenotypesAndOldFiltersWithExplicitMissingPolicy()",
+            "unavailableOrWrongRuntimeSkipsAndInvalidModelDoesNotStart()",
+            "realGvcfCombinationAndGenotypingPreserveSamplesAndKnownDiploidGenotypes()",
+            "realHaploidAndTetraploidCallsRecoverKnownAlleleDosage()",
+            "referenceIndexMismatchFailsWithRetainedRecovery()",
+            "nativeReferencePreservesExistingSidecarsAndNeedsNoGatk()"
+          ]
+        }
+      }
+    },
+    {
+      "status": "passed",
+      "jar_sha256": "faa28146756d077aa691977585fd3349c390f49ff609179a94e355cb13cca667",
+      "version": "4.7.0.0",
+      "gatk_jar_sha256": "882e180707e0e6887885853fc486fa54098620fe9a80bdcdaaa655c7e3861365",
+      "upstream_suite": {
+        "suite_name": "org.jlinalg.cli.GatkToolsCliTest",
+        "suite": {
+          "tests": 6,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "e91c7ab8c33b5d98be22985719af628f0bf3c7c6103bfd88b9ce98f68104ba98",
+        "testcases": [
+          "realTypedHardFiltersPreserveAllRecordsGenotypesAndOldFiltersWithExplicitMissingPolicy()",
+          "unavailableOrWrongRuntimeSkipsAndInvalidModelDoesNotStart()",
+          "realGvcfCombinationAndGenotypingPreserveSamplesAndKnownDiploidGenotypes()",
+          "realHaploidAndTetraploidCallsRecoverKnownAlleleDosage()",
+          "referenceIndexMismatchFailsWithRetainedRecovery()",
+          "nativeReferencePreservesExistingSidecarsAndNeedsNoGatk()"
+        ]
+      },
+      "packaged_validation": "gatk-packaged-validation.json",
+      "packaged_checks": 12,
+      "dependency_evidence": "gatk-dependency-status.json",
+      "packaged_verifier_sha256": "e237d2e48ec8b5bbe404eb35672bb7835cfc318d1e2f38c4bd9a0d3dbbd7d4cc",
+      "scope": "Official local JAR, typed native reference metadata, explicit-ploidy HC, CombineGVCFs, GenotypeGVCFs and SNP/indel VariantFiltration with explicit missing policy. Known SNP/deletion and 1/2/4-ploidy truth. Initial Windows colon-parser failure retained and corrected through interval_list files; temp-probe warnings retained. No legacy/somatic/old-version/whole-study equivalence.",
+      "windows_temp_probe_source": {
+        "url": "https://github.com/broadinstitute/gatk/blob/4.7.0.0/src/main/java/org/broadinstitute/hellbender/cmdline/CommandLineProgram.java",
+        "sha256": "57b207419c1eab85b8387b1ac8a3d67c28079b400d09ada958a550af84a39b6f",
+        "explanation": "Non-POSIX executable probe skips file creation, then cleanup attempts a null path. Diagnostic retained in successful Windows truth fixtures."
+      },
+      "packaged_runtime_evidence": {
+        "gvcf-S1": {
+          "log_sha256": "9599b712e112c211b87decd7a347e5d9168f3088981e4efa13a08b45db93d6ad",
+          "kernel_runtime_lines": [
+            "17:24:49.860 INFO  HaplotypeCaller - Java runtime: Java HotSpot(TM) 64-Bit Server VM v25+37-LTS-3491",
+            "17:24:49.866 INFO  HaplotypeCaller - Deflater: JdkDeflater",
+            "17:24:49.867 INFO  HaplotypeCaller - Inflater: JdkInflater",
+            "17:24:50.135 INFO  PairHMM - Using the non-hardware-accelerated Java LOGLESS_CACHING PairHMM implementation",
+            "17:24:50.832 INFO  SmithWatermanAligner - Total compute time in java Smith-Waterman : 0.01 sec"
+          ]
+        },
+        "haploid-interval": {
+          "log_sha256": "17c5548751ef973448aeb276cc971dbf646d71438984c9be4d855ea18850c047",
+          "kernel_runtime_lines": [
+            "17:25:11.540 INFO  HaplotypeCaller - Java runtime: Java HotSpot(TM) 64-Bit Server VM v25+37-LTS-3491",
+            "17:25:11.545 INFO  HaplotypeCaller - Deflater: JdkDeflater",
+            "17:25:11.546 INFO  HaplotypeCaller - Inflater: JdkInflater",
+            "17:25:11.812 INFO  PairHMM - Using the non-hardware-accelerated Java LOGLESS_CACHING PairHMM implementation",
+            "17:25:12.247 INFO  SmithWatermanAligner - Total compute time in java Smith-Waterman : 0.01 sec"
+          ]
+        },
+        "tetraploid": {
+          "log_sha256": "433ec282bf20a3f64f20f7fbbfdad1b8bee759c3389e3bdd1682201b2faadcc2",
+          "kernel_runtime_lines": [
+            "17:25:17.485 INFO  HaplotypeCaller - Java runtime: Java HotSpot(TM) 64-Bit Server VM v25+37-LTS-3491",
+            "17:25:17.491 INFO  HaplotypeCaller - Deflater: JdkDeflater",
+            "17:25:17.492 INFO  HaplotypeCaller - Inflater: JdkInflater",
+            "17:25:17.761 INFO  PairHMM - Using the non-hardware-accelerated Java LOGLESS_CACHING PairHMM implementation",
+            "17:25:18.286 INFO  SmithWatermanAligner - Total compute time in java Smith-Waterman : 0.01 sec"
+          ]
+        }
+      },
+      "refreshed_utc": "2026-10-25T03:50:24.675422+00:00",
+      "current_full_gate_suites": {
+        "org.jlinalg.cli.GatkToolsCliTest": {
+          "suite_name": "org.jlinalg.cli.GatkToolsCliTest",
+          "suite": {
+            "tests": 6,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "e91c7ab8c33b5d98be22985719af628f0bf3c7c6103bfd88b9ce98f68104ba98",
+          "testcases": [
+            "realTypedHardFiltersPreserveAllRecordsGenotypesAndOldFiltersWithExplicitMissingPolicy()",
+            "unavailableOrWrongRuntimeSkipsAndInvalidModelDoesNotStart()",
+            "realGvcfCombinationAndGenotypingPreserveSamplesAndKnownDiploidGenotypes()",
+            "realHaploidAndTetraploidCallsRecoverKnownAlleleDosage()",
+            "referenceIndexMismatchFailsWithRetainedRecovery()",
+            "nativeReferencePreservesExistingSidecarsAndNeedsNoGatk()"
+          ]
+        }
+      }
+    },
+    {
+      "status": "passed",
+      "jar_sha256": "68a623dc455abf0608f50ca5977a44cd3c6d0db6489f8db726569675c46abdc2",
+      "version": "4.7.0.0",
+      "gatk_jar_sha256": "882e180707e0e6887885853fc486fa54098620fe9a80bdcdaaa655c7e3861365",
+      "upstream_suite": {
+        "suite_name": "org.jlinalg.cli.GatkToolsCliTest",
+        "suite": {
+          "tests": 6,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "02e678ffa625d9ce0897d6076d85aa67395379b2cbdceeadac961770f2015810",
+        "testcases": [
+          "realTypedHardFiltersPreserveAllRecordsGenotypesAndOldFiltersWithExplicitMissingPolicy()",
+          "unavailableOrWrongRuntimeSkipsAndInvalidModelDoesNotStart()",
+          "realGvcfCombinationAndGenotypingPreserveSamplesAndKnownDiploidGenotypes()",
+          "realHaploidAndTetraploidCallsRecoverKnownAlleleDosage()",
+          "referenceIndexMismatchFailsWithRetainedRecovery()",
+          "nativeReferencePreservesExistingSidecarsAndNeedsNoGatk()"
+        ]
+      },
+      "packaged_validation": "gatk-packaged-validation.json",
+      "packaged_checks": 12,
+      "dependency_evidence": "gatk-dependency-status.json",
+      "packaged_verifier_sha256": "e237d2e48ec8b5bbe404eb35672bb7835cfc318d1e2f38c4bd9a0d3dbbd7d4cc",
+      "scope": "Official local JAR, typed native reference metadata, explicit-ploidy HC, CombineGVCFs, GenotypeGVCFs and SNP/indel VariantFiltration with explicit missing policy. Known SNP/deletion and 1/2/4-ploidy truth. Initial Windows colon-parser failure retained and corrected through interval_list files; temp-probe warnings retained. No legacy/somatic/old-version/whole-study equivalence.",
+      "windows_temp_probe_source": {
+        "url": "https://github.com/broadinstitute/gatk/blob/4.7.0.0/src/main/java/org/broadinstitute/hellbender/cmdline/CommandLineProgram.java",
+        "sha256": "57b207419c1eab85b8387b1ac8a3d67c28079b400d09ada958a550af84a39b6f",
+        "explanation": "Non-POSIX executable probe skips file creation, then cleanup attempts a null path. Diagnostic retained in successful Windows truth fixtures."
+      },
+      "packaged_runtime_evidence": {
+        "gvcf-S1": {
+          "log_sha256": "9599b712e112c211b87decd7a347e5d9168f3088981e4efa13a08b45db93d6ad",
+          "kernel_runtime_lines": [
+            "17:24:49.860 INFO  HaplotypeCaller - Java runtime: Java HotSpot(TM) 64-Bit Server VM v25+37-LTS-3491",
+            "17:24:49.866 INFO  HaplotypeCaller - Deflater: JdkDeflater",
+            "17:24:49.867 INFO  HaplotypeCaller - Inflater: JdkInflater",
+            "17:24:50.135 INFO  PairHMM - Using the non-hardware-accelerated Java LOGLESS_CACHING PairHMM implementation",
+            "17:24:50.832 INFO  SmithWatermanAligner - Total compute time in java Smith-Waterman : 0.01 sec"
+          ]
+        },
+        "haploid-interval": {
+          "log_sha256": "17c5548751ef973448aeb276cc971dbf646d71438984c9be4d855ea18850c047",
+          "kernel_runtime_lines": [
+            "17:25:11.540 INFO  HaplotypeCaller - Java runtime: Java HotSpot(TM) 64-Bit Server VM v25+37-LTS-3491",
+            "17:25:11.545 INFO  HaplotypeCaller - Deflater: JdkDeflater",
+            "17:25:11.546 INFO  HaplotypeCaller - Inflater: JdkInflater",
+            "17:25:11.812 INFO  PairHMM - Using the non-hardware-accelerated Java LOGLESS_CACHING PairHMM implementation",
+            "17:25:12.247 INFO  SmithWatermanAligner - Total compute time in java Smith-Waterman : 0.01 sec"
+          ]
+        },
+        "tetraploid": {
+          "log_sha256": "433ec282bf20a3f64f20f7fbbfdad1b8bee759c3389e3bdd1682201b2faadcc2",
+          "kernel_runtime_lines": [
+            "17:25:17.485 INFO  HaplotypeCaller - Java runtime: Java HotSpot(TM) 64-Bit Server VM v25+37-LTS-3491",
+            "17:25:17.491 INFO  HaplotypeCaller - Deflater: JdkDeflater",
+            "17:25:17.492 INFO  HaplotypeCaller - Inflater: JdkInflater",
+            "17:25:17.761 INFO  PairHMM - Using the non-hardware-accelerated Java LOGLESS_CACHING PairHMM implementation",
+            "17:25:18.286 INFO  SmithWatermanAligner - Total compute time in java Smith-Waterman : 0.01 sec"
+          ]
+        }
+      },
+      "refreshed_utc": "2026-10-25T05:28:16.019770+00:00",
+      "current_full_gate_suites": {
+        "org.jlinalg.cli.GatkToolsCliTest": {
+          "suite_name": "org.jlinalg.cli.GatkToolsCliTest",
+          "suite": {
+            "tests": 6,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "02e678ffa625d9ce0897d6076d85aa67395379b2cbdceeadac961770f2015810",
+          "testcases": [
+            "realTypedHardFiltersPreserveAllRecordsGenotypesAndOldFiltersWithExplicitMissingPolicy()",
+            "unavailableOrWrongRuntimeSkipsAndInvalidModelDoesNotStart()",
+            "realGvcfCombinationAndGenotypingPreserveSamplesAndKnownDiploidGenotypes()",
+            "realHaploidAndTetraploidCallsRecoverKnownAlleleDosage()",
+            "referenceIndexMismatchFailsWithRetainedRecovery()",
+            "nativeReferencePreservesExistingSidecarsAndNeedsNoGatk()"
+          ]
+        }
+      }
+    },
+    {
+      "status": "passed",
+      "jar_sha256": "6ff7cc767bc62f2489947a34fbf3bc99129e4d444242eb217294764587c7e491",
+      "version": "4.7.0.0",
+      "gatk_jar_sha256": "882e180707e0e6887885853fc486fa54098620fe9a80bdcdaaa655c7e3861365",
+      "upstream_suite": {
+        "suite_name": "org.jlinalg.cli.GatkToolsCliTest",
+        "suite": {
+          "tests": 6,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "c658d2dbfe810318114c2d54275a2bf89b8fd402072d377e2c9028920de5fab2",
+        "testcases": [
+          "realTypedHardFiltersPreserveAllRecordsGenotypesAndOldFiltersWithExplicitMissingPolicy()",
+          "unavailableOrWrongRuntimeSkipsAndInvalidModelDoesNotStart()",
+          "realGvcfCombinationAndGenotypingPreserveSamplesAndKnownDiploidGenotypes()",
+          "realHaploidAndTetraploidCallsRecoverKnownAlleleDosage()",
+          "referenceIndexMismatchFailsWithRetainedRecovery()",
+          "nativeReferencePreservesExistingSidecarsAndNeedsNoGatk()"
+        ]
+      },
+      "packaged_validation": "gatk-packaged-validation.json",
+      "packaged_checks": 12,
+      "dependency_evidence": "gatk-dependency-status.json",
+      "packaged_verifier_sha256": "e237d2e48ec8b5bbe404eb35672bb7835cfc318d1e2f38c4bd9a0d3dbbd7d4cc",
+      "scope": "Official local JAR, typed native reference metadata, explicit-ploidy HC, CombineGVCFs, GenotypeGVCFs and SNP/indel VariantFiltration with explicit missing policy. Known SNP/deletion and 1/2/4-ploidy truth. Initial Windows colon-parser failure retained and corrected through interval_list files; temp-probe warnings retained. No legacy/somatic/old-version/whole-study equivalence.",
+      "windows_temp_probe_source": {
+        "url": "https://github.com/broadinstitute/gatk/blob/4.7.0.0/src/main/java/org/broadinstitute/hellbender/cmdline/CommandLineProgram.java",
+        "sha256": "57b207419c1eab85b8387b1ac8a3d67c28079b400d09ada958a550af84a39b6f",
+        "explanation": "Non-POSIX executable probe skips file creation, then cleanup attempts a null path. Diagnostic retained in successful Windows truth fixtures."
+      },
+      "packaged_runtime_evidence": {
+        "gvcf-S1": {
+          "log_sha256": "9599b712e112c211b87decd7a347e5d9168f3088981e4efa13a08b45db93d6ad",
+          "kernel_runtime_lines": [
+            "17:24:49.860 INFO  HaplotypeCaller - Java runtime: Java HotSpot(TM) 64-Bit Server VM v25+37-LTS-3491",
+            "17:24:49.866 INFO  HaplotypeCaller - Deflater: JdkDeflater",
+            "17:24:49.867 INFO  HaplotypeCaller - Inflater: JdkInflater",
+            "17:24:50.135 INFO  PairHMM - Using the non-hardware-accelerated Java LOGLESS_CACHING PairHMM implementation",
+            "17:24:50.832 INFO  SmithWatermanAligner - Total compute time in java Smith-Waterman : 0.01 sec"
+          ]
+        },
+        "haploid-interval": {
+          "log_sha256": "17c5548751ef973448aeb276cc971dbf646d71438984c9be4d855ea18850c047",
+          "kernel_runtime_lines": [
+            "17:25:11.540 INFO  HaplotypeCaller - Java runtime: Java HotSpot(TM) 64-Bit Server VM v25+37-LTS-3491",
+            "17:25:11.545 INFO  HaplotypeCaller - Deflater: JdkDeflater",
+            "17:25:11.546 INFO  HaplotypeCaller - Inflater: JdkInflater",
+            "17:25:11.812 INFO  PairHMM - Using the non-hardware-accelerated Java LOGLESS_CACHING PairHMM implementation",
+            "17:25:12.247 INFO  SmithWatermanAligner - Total compute time in java Smith-Waterman : 0.01 sec"
+          ]
+        },
+        "tetraploid": {
+          "log_sha256": "433ec282bf20a3f64f20f7fbbfdad1b8bee759c3389e3bdd1682201b2faadcc2",
+          "kernel_runtime_lines": [
+            "17:25:17.485 INFO  HaplotypeCaller - Java runtime: Java HotSpot(TM) 64-Bit Server VM v25+37-LTS-3491",
+            "17:25:17.491 INFO  HaplotypeCaller - Deflater: JdkDeflater",
+            "17:25:17.492 INFO  HaplotypeCaller - Inflater: JdkInflater",
+            "17:25:17.761 INFO  PairHMM - Using the non-hardware-accelerated Java LOGLESS_CACHING PairHMM implementation",
+            "17:25:18.286 INFO  SmithWatermanAligner - Total compute time in java Smith-Waterman : 0.01 sec"
+          ]
+        }
+      },
+      "refreshed_utc": "2026-10-25T06:53:04.578303+00:00",
+      "current_full_gate_suites": {
+        "org.jlinalg.cli.GatkToolsCliTest": {
+          "suite_name": "org.jlinalg.cli.GatkToolsCliTest",
+          "suite": {
+            "tests": 6,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "c658d2dbfe810318114c2d54275a2bf89b8fd402072d377e2c9028920de5fab2",
+          "testcases": [
+            "realTypedHardFiltersPreserveAllRecordsGenotypesAndOldFiltersWithExplicitMissingPolicy()",
+            "unavailableOrWrongRuntimeSkipsAndInvalidModelDoesNotStart()",
+            "realGvcfCombinationAndGenotypingPreserveSamplesAndKnownDiploidGenotypes()",
+            "realHaploidAndTetraploidCallsRecoverKnownAlleleDosage()",
+            "referenceIndexMismatchFailsWithRetainedRecovery()",
+            "nativeReferencePreservesExistingSidecarsAndNeedsNoGatk()"
+          ]
+        }
+      }
+    },
+    {
+      "status": "passed",
+      "jar_sha256": "53399f4be52ad5bb882f5acfea53d5a2a037ac80a6e93d1f7d7fdbc118051860",
+      "version": "4.7.0.0",
+      "gatk_jar_sha256": "882e180707e0e6887885853fc486fa54098620fe9a80bdcdaaa655c7e3861365",
+      "upstream_suite": {
+        "suite_name": "org.jlinalg.cli.GatkToolsCliTest",
+        "suite": {
+          "tests": 6,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "96c33d7536ef2693fc451d1ec49c4f3dde31f446444cfa878f7ceda40ed6b873",
+        "testcases": [
+          "realTypedHardFiltersPreserveAllRecordsGenotypesAndOldFiltersWithExplicitMissingPolicy()",
+          "unavailableOrWrongRuntimeSkipsAndInvalidModelDoesNotStart()",
+          "realGvcfCombinationAndGenotypingPreserveSamplesAndKnownDiploidGenotypes()",
+          "realHaploidAndTetraploidCallsRecoverKnownAlleleDosage()",
+          "referenceIndexMismatchFailsWithRetainedRecovery()",
+          "nativeReferencePreservesExistingSidecarsAndNeedsNoGatk()"
+        ]
+      },
+      "packaged_validation": "gatk-packaged-validation.json",
+      "packaged_checks": 12,
+      "dependency_evidence": "gatk-dependency-status.json",
+      "packaged_verifier_sha256": "e237d2e48ec8b5bbe404eb35672bb7835cfc318d1e2f38c4bd9a0d3dbbd7d4cc",
+      "scope": "Official local JAR, typed native reference metadata, explicit-ploidy HC, CombineGVCFs, GenotypeGVCFs and SNP/indel VariantFiltration with explicit missing policy. Known SNP/deletion and 1/2/4-ploidy truth. Initial Windows colon-parser failure retained and corrected through interval_list files; temp-probe warnings retained. No legacy/somatic/old-version/whole-study equivalence.",
+      "windows_temp_probe_source": {
+        "url": "https://github.com/broadinstitute/gatk/blob/4.7.0.0/src/main/java/org/broadinstitute/hellbender/cmdline/CommandLineProgram.java",
+        "sha256": "57b207419c1eab85b8387b1ac8a3d67c28079b400d09ada958a550af84a39b6f",
+        "explanation": "Non-POSIX executable probe skips file creation, then cleanup attempts a null path. Diagnostic retained in successful Windows truth fixtures."
+      },
+      "packaged_runtime_evidence": {
+        "gvcf-S1": {
+          "log_sha256": "9599b712e112c211b87decd7a347e5d9168f3088981e4efa13a08b45db93d6ad",
+          "kernel_runtime_lines": [
+            "17:24:49.860 INFO  HaplotypeCaller - Java runtime: Java HotSpot(TM) 64-Bit Server VM v25+37-LTS-3491",
+            "17:24:49.866 INFO  HaplotypeCaller - Deflater: JdkDeflater",
+            "17:24:49.867 INFO  HaplotypeCaller - Inflater: JdkInflater",
+            "17:24:50.135 INFO  PairHMM - Using the non-hardware-accelerated Java LOGLESS_CACHING PairHMM implementation",
+            "17:24:50.832 INFO  SmithWatermanAligner - Total compute time in java Smith-Waterman : 0.01 sec"
+          ]
+        },
+        "haploid-interval": {
+          "log_sha256": "17c5548751ef973448aeb276cc971dbf646d71438984c9be4d855ea18850c047",
+          "kernel_runtime_lines": [
+            "17:25:11.540 INFO  HaplotypeCaller - Java runtime: Java HotSpot(TM) 64-Bit Server VM v25+37-LTS-3491",
+            "17:25:11.545 INFO  HaplotypeCaller - Deflater: JdkDeflater",
+            "17:25:11.546 INFO  HaplotypeCaller - Inflater: JdkInflater",
+            "17:25:11.812 INFO  PairHMM - Using the non-hardware-accelerated Java LOGLESS_CACHING PairHMM implementation",
+            "17:25:12.247 INFO  SmithWatermanAligner - Total compute time in java Smith-Waterman : 0.01 sec"
+          ]
+        },
+        "tetraploid": {
+          "log_sha256": "433ec282bf20a3f64f20f7fbbfdad1b8bee759c3389e3bdd1682201b2faadcc2",
+          "kernel_runtime_lines": [
+            "17:25:17.485 INFO  HaplotypeCaller - Java runtime: Java HotSpot(TM) 64-Bit Server VM v25+37-LTS-3491",
+            "17:25:17.491 INFO  HaplotypeCaller - Deflater: JdkDeflater",
+            "17:25:17.492 INFO  HaplotypeCaller - Inflater: JdkInflater",
+            "17:25:17.761 INFO  PairHMM - Using the non-hardware-accelerated Java LOGLESS_CACHING PairHMM implementation",
+            "17:25:18.286 INFO  SmithWatermanAligner - Total compute time in java Smith-Waterman : 0.01 sec"
+          ]
+        }
+      },
+      "refreshed_utc": "2026-10-25T08:02:41.668775+00:00",
+      "current_full_gate_suites": {
+        "org.jlinalg.cli.GatkToolsCliTest": {
+          "suite_name": "org.jlinalg.cli.GatkToolsCliTest",
+          "suite": {
+            "tests": 6,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "96c33d7536ef2693fc451d1ec49c4f3dde31f446444cfa878f7ceda40ed6b873",
+          "testcases": [
+            "realTypedHardFiltersPreserveAllRecordsGenotypesAndOldFiltersWithExplicitMissingPolicy()",
+            "unavailableOrWrongRuntimeSkipsAndInvalidModelDoesNotStart()",
+            "realGvcfCombinationAndGenotypingPreserveSamplesAndKnownDiploidGenotypes()",
+            "realHaploidAndTetraploidCallsRecoverKnownAlleleDosage()",
+            "referenceIndexMismatchFailsWithRetainedRecovery()",
+            "nativeReferencePreservesExistingSidecarsAndNeedsNoGatk()"
+          ]
+        }
+      }
+    },
+    {
+      "status": "passed",
+      "jar_sha256": "9650afd13cf486aba84285ba6d2f1a0a06eca8f08d3e33b4c2338567f5372de2",
+      "version": "4.7.0.0",
+      "gatk_jar_sha256": "882e180707e0e6887885853fc486fa54098620fe9a80bdcdaaa655c7e3861365",
+      "upstream_suite": {
+        "suite_name": "org.jlinalg.cli.GatkToolsCliTest",
+        "suite": {
+          "tests": 6,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "b63c12d56e62b71d3f9b35134003873c97c0c840b2063835a46ed2a288a7216e",
+        "testcases": [
+          "realTypedHardFiltersPreserveAllRecordsGenotypesAndOldFiltersWithExplicitMissingPolicy()",
+          "unavailableOrWrongRuntimeSkipsAndInvalidModelDoesNotStart()",
+          "realGvcfCombinationAndGenotypingPreserveSamplesAndKnownDiploidGenotypes()",
+          "realHaploidAndTetraploidCallsRecoverKnownAlleleDosage()",
+          "referenceIndexMismatchFailsWithRetainedRecovery()",
+          "nativeReferencePreservesExistingSidecarsAndNeedsNoGatk()"
+        ]
+      },
+      "packaged_validation": "gatk-packaged-validation.json",
+      "packaged_checks": 12,
+      "dependency_evidence": "gatk-dependency-status.json",
+      "packaged_verifier_sha256": "e237d2e48ec8b5bbe404eb35672bb7835cfc318d1e2f38c4bd9a0d3dbbd7d4cc",
+      "scope": "Official local JAR, typed native reference metadata, explicit-ploidy HC, CombineGVCFs, GenotypeGVCFs and SNP/indel VariantFiltration with explicit missing policy. Known SNP/deletion and 1/2/4-ploidy truth. Initial Windows colon-parser failure retained and corrected through interval_list files; temp-probe warnings retained. No legacy/somatic/old-version/whole-study equivalence.",
+      "windows_temp_probe_source": {
+        "url": "https://github.com/broadinstitute/gatk/blob/4.7.0.0/src/main/java/org/broadinstitute/hellbender/cmdline/CommandLineProgram.java",
+        "sha256": "57b207419c1eab85b8387b1ac8a3d67c28079b400d09ada958a550af84a39b6f",
+        "explanation": "Non-POSIX executable probe skips file creation, then cleanup attempts a null path. Diagnostic retained in successful Windows truth fixtures."
+      },
+      "packaged_runtime_evidence": {
+        "gvcf-S1": {
+          "log_sha256": "9599b712e112c211b87decd7a347e5d9168f3088981e4efa13a08b45db93d6ad",
+          "kernel_runtime_lines": [
+            "17:24:49.860 INFO  HaplotypeCaller - Java runtime: Java HotSpot(TM) 64-Bit Server VM v25+37-LTS-3491",
+            "17:24:49.866 INFO  HaplotypeCaller - Deflater: JdkDeflater",
+            "17:24:49.867 INFO  HaplotypeCaller - Inflater: JdkInflater",
+            "17:24:50.135 INFO  PairHMM - Using the non-hardware-accelerated Java LOGLESS_CACHING PairHMM implementation",
+            "17:24:50.832 INFO  SmithWatermanAligner - Total compute time in java Smith-Waterman : 0.01 sec"
+          ]
+        },
+        "haploid-interval": {
+          "log_sha256": "17c5548751ef973448aeb276cc971dbf646d71438984c9be4d855ea18850c047",
+          "kernel_runtime_lines": [
+            "17:25:11.540 INFO  HaplotypeCaller - Java runtime: Java HotSpot(TM) 64-Bit Server VM v25+37-LTS-3491",
+            "17:25:11.545 INFO  HaplotypeCaller - Deflater: JdkDeflater",
+            "17:25:11.546 INFO  HaplotypeCaller - Inflater: JdkInflater",
+            "17:25:11.812 INFO  PairHMM - Using the non-hardware-accelerated Java LOGLESS_CACHING PairHMM implementation",
+            "17:25:12.247 INFO  SmithWatermanAligner - Total compute time in java Smith-Waterman : 0.01 sec"
+          ]
+        },
+        "tetraploid": {
+          "log_sha256": "433ec282bf20a3f64f20f7fbbfdad1b8bee759c3389e3bdd1682201b2faadcc2",
+          "kernel_runtime_lines": [
+            "17:25:17.485 INFO  HaplotypeCaller - Java runtime: Java HotSpot(TM) 64-Bit Server VM v25+37-LTS-3491",
+            "17:25:17.491 INFO  HaplotypeCaller - Deflater: JdkDeflater",
+            "17:25:17.492 INFO  HaplotypeCaller - Inflater: JdkInflater",
+            "17:25:17.761 INFO  PairHMM - Using the non-hardware-accelerated Java LOGLESS_CACHING PairHMM implementation",
+            "17:25:18.286 INFO  SmithWatermanAligner - Total compute time in java Smith-Waterman : 0.01 sec"
+          ]
+        }
+      },
+      "refreshed_utc": "2026-10-25T09:04:26.213216+00:00",
+      "current_full_gate_suites": {
+        "org.jlinalg.cli.GatkToolsCliTest": {
+          "suite_name": "org.jlinalg.cli.GatkToolsCliTest",
+          "suite": {
+            "tests": 6,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "b63c12d56e62b71d3f9b35134003873c97c0c840b2063835a46ed2a288a7216e",
+          "testcases": [
+            "realTypedHardFiltersPreserveAllRecordsGenotypesAndOldFiltersWithExplicitMissingPolicy()",
+            "unavailableOrWrongRuntimeSkipsAndInvalidModelDoesNotStart()",
+            "realGvcfCombinationAndGenotypingPreserveSamplesAndKnownDiploidGenotypes()",
+            "realHaploidAndTetraploidCallsRecoverKnownAlleleDosage()",
+            "referenceIndexMismatchFailsWithRetainedRecovery()",
+            "nativeReferencePreservesExistingSidecarsAndNeedsNoGatk()"
+          ]
+        }
+      }
+    },
+    {
+      "status": "passed",
+      "jar_sha256": "938e928161f850a7f23d38ced10b6ed53c15392b16f79c3d6caeab2ae8906c84",
+      "version": "4.7.0.0",
+      "gatk_jar_sha256": "882e180707e0e6887885853fc486fa54098620fe9a80bdcdaaa655c7e3861365",
+      "upstream_suite": {
+        "suite_name": "org.jlinalg.cli.GatkToolsCliTest",
+        "suite": {
+          "tests": 6,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "e8d7c535d4e878c54f45490c07c1f57e751b4655e6590bc5f277571ce0c4dfde",
+        "testcases": [
+          "realTypedHardFiltersPreserveAllRecordsGenotypesAndOldFiltersWithExplicitMissingPolicy()",
+          "unavailableOrWrongRuntimeSkipsAndInvalidModelDoesNotStart()",
+          "realGvcfCombinationAndGenotypingPreserveSamplesAndKnownDiploidGenotypes()",
+          "realHaploidAndTetraploidCallsRecoverKnownAlleleDosage()",
+          "referenceIndexMismatchFailsWithRetainedRecovery()",
+          "nativeReferencePreservesExistingSidecarsAndNeedsNoGatk()"
+        ]
+      },
+      "packaged_validation": "gatk-packaged-validation.json",
+      "packaged_checks": 12,
+      "dependency_evidence": "gatk-dependency-status.json",
+      "packaged_verifier_sha256": "e237d2e48ec8b5bbe404eb35672bb7835cfc318d1e2f38c4bd9a0d3dbbd7d4cc",
+      "scope": "Official local JAR, typed native reference metadata, explicit-ploidy HC, CombineGVCFs, GenotypeGVCFs and SNP/indel VariantFiltration with explicit missing policy. Known SNP/deletion and 1/2/4-ploidy truth. Initial Windows colon-parser failure retained and corrected through interval_list files; temp-probe warnings retained. No legacy/somatic/old-version/whole-study equivalence.",
+      "windows_temp_probe_source": {
+        "url": "https://github.com/broadinstitute/gatk/blob/4.7.0.0/src/main/java/org/broadinstitute/hellbender/cmdline/CommandLineProgram.java",
+        "sha256": "57b207419c1eab85b8387b1ac8a3d67c28079b400d09ada958a550af84a39b6f",
+        "explanation": "Non-POSIX executable probe skips file creation, then cleanup attempts a null path. Diagnostic retained in successful Windows truth fixtures."
+      },
+      "packaged_runtime_evidence": {
+        "gvcf-S1": {
+          "log_sha256": "9599b712e112c211b87decd7a347e5d9168f3088981e4efa13a08b45db93d6ad",
+          "kernel_runtime_lines": [
+            "17:24:49.860 INFO  HaplotypeCaller - Java runtime: Java HotSpot(TM) 64-Bit Server VM v25+37-LTS-3491",
+            "17:24:49.866 INFO  HaplotypeCaller - Deflater: JdkDeflater",
+            "17:24:49.867 INFO  HaplotypeCaller - Inflater: JdkInflater",
+            "17:24:50.135 INFO  PairHMM - Using the non-hardware-accelerated Java LOGLESS_CACHING PairHMM implementation",
+            "17:24:50.832 INFO  SmithWatermanAligner - Total compute time in java Smith-Waterman : 0.01 sec"
+          ]
+        },
+        "haploid-interval": {
+          "log_sha256": "17c5548751ef973448aeb276cc971dbf646d71438984c9be4d855ea18850c047",
+          "kernel_runtime_lines": [
+            "17:25:11.540 INFO  HaplotypeCaller - Java runtime: Java HotSpot(TM) 64-Bit Server VM v25+37-LTS-3491",
+            "17:25:11.545 INFO  HaplotypeCaller - Deflater: JdkDeflater",
+            "17:25:11.546 INFO  HaplotypeCaller - Inflater: JdkInflater",
+            "17:25:11.812 INFO  PairHMM - Using the non-hardware-accelerated Java LOGLESS_CACHING PairHMM implementation",
+            "17:25:12.247 INFO  SmithWatermanAligner - Total compute time in java Smith-Waterman : 0.01 sec"
+          ]
+        },
+        "tetraploid": {
+          "log_sha256": "433ec282bf20a3f64f20f7fbbfdad1b8bee759c3389e3bdd1682201b2faadcc2",
+          "kernel_runtime_lines": [
+            "17:25:17.485 INFO  HaplotypeCaller - Java runtime: Java HotSpot(TM) 64-Bit Server VM v25+37-LTS-3491",
+            "17:25:17.491 INFO  HaplotypeCaller - Deflater: JdkDeflater",
+            "17:25:17.492 INFO  HaplotypeCaller - Inflater: JdkInflater",
+            "17:25:17.761 INFO  PairHMM - Using the non-hardware-accelerated Java LOGLESS_CACHING PairHMM implementation",
+            "17:25:18.286 INFO  SmithWatermanAligner - Total compute time in java Smith-Waterman : 0.01 sec"
+          ]
+        }
+      },
+      "refreshed_utc": "2026-10-25T10:07:59.705580+00:00",
+      "current_full_gate_suites": {
+        "org.jlinalg.cli.GatkToolsCliTest": {
+          "suite_name": "org.jlinalg.cli.GatkToolsCliTest",
+          "suite": {
+            "tests": 6,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "e8d7c535d4e878c54f45490c07c1f57e751b4655e6590bc5f277571ce0c4dfde",
+          "testcases": [
+            "realTypedHardFiltersPreserveAllRecordsGenotypesAndOldFiltersWithExplicitMissingPolicy()",
+            "unavailableOrWrongRuntimeSkipsAndInvalidModelDoesNotStart()",
+            "realGvcfCombinationAndGenotypingPreserveSamplesAndKnownDiploidGenotypes()",
+            "realHaploidAndTetraploidCallsRecoverKnownAlleleDosage()",
+            "referenceIndexMismatchFailsWithRetainedRecovery()",
+            "nativeReferencePreservesExistingSidecarsAndNeedsNoGatk()"
+          ]
+        }
+      }
+    },
+    {
+      "status": "passed",
+      "jar_sha256": "baaacad03f35a01f7d53aba9568e0ce03a89d37f2169ab89e25628f38b8b3b44",
+      "version": "4.7.0.0",
+      "gatk_jar_sha256": "882e180707e0e6887885853fc486fa54098620fe9a80bdcdaaa655c7e3861365",
+      "upstream_suite": {
+        "suite_name": "org.jlinalg.cli.GatkToolsCliTest",
+        "suite": {
+          "tests": 6,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "0b59617ec4eeb8bc160c01a9393b42889ebcb045f22b318e2de04a21ddb9b5ec",
+        "testcases": [
+          "realTypedHardFiltersPreserveAllRecordsGenotypesAndOldFiltersWithExplicitMissingPolicy()",
+          "unavailableOrWrongRuntimeSkipsAndInvalidModelDoesNotStart()",
+          "realGvcfCombinationAndGenotypingPreserveSamplesAndKnownDiploidGenotypes()",
+          "realHaploidAndTetraploidCallsRecoverKnownAlleleDosage()",
+          "referenceIndexMismatchFailsWithRetainedRecovery()",
+          "nativeReferencePreservesExistingSidecarsAndNeedsNoGatk()"
+        ]
+      },
+      "packaged_validation": "gatk-packaged-validation.json",
+      "packaged_checks": 12,
+      "dependency_evidence": "gatk-dependency-status.json",
+      "packaged_verifier_sha256": "e237d2e48ec8b5bbe404eb35672bb7835cfc318d1e2f38c4bd9a0d3dbbd7d4cc",
+      "scope": "Official local JAR, typed native reference metadata, explicit-ploidy HC, CombineGVCFs, GenotypeGVCFs and SNP/indel VariantFiltration with explicit missing policy. Known SNP/deletion and 1/2/4-ploidy truth. Initial Windows colon-parser failure retained and corrected through interval_list files; temp-probe warnings retained. No legacy/somatic/old-version/whole-study equivalence.",
+      "windows_temp_probe_source": {
+        "url": "https://github.com/broadinstitute/gatk/blob/4.7.0.0/src/main/java/org/broadinstitute/hellbender/cmdline/CommandLineProgram.java",
+        "sha256": "57b207419c1eab85b8387b1ac8a3d67c28079b400d09ada958a550af84a39b6f",
+        "explanation": "Non-POSIX executable probe skips file creation, then cleanup attempts a null path. Diagnostic retained in successful Windows truth fixtures."
+      },
+      "packaged_runtime_evidence": {
+        "gvcf-S1": {
+          "log_sha256": "9599b712e112c211b87decd7a347e5d9168f3088981e4efa13a08b45db93d6ad",
+          "kernel_runtime_lines": [
+            "17:24:49.860 INFO  HaplotypeCaller - Java runtime: Java HotSpot(TM) 64-Bit Server VM v25+37-LTS-3491",
+            "17:24:49.866 INFO  HaplotypeCaller - Deflater: JdkDeflater",
+            "17:24:49.867 INFO  HaplotypeCaller - Inflater: JdkInflater",
+            "17:24:50.135 INFO  PairHMM - Using the non-hardware-accelerated Java LOGLESS_CACHING PairHMM implementation",
+            "17:24:50.832 INFO  SmithWatermanAligner - Total compute time in java Smith-Waterman : 0.01 sec"
+          ]
+        },
+        "haploid-interval": {
+          "log_sha256": "17c5548751ef973448aeb276cc971dbf646d71438984c9be4d855ea18850c047",
+          "kernel_runtime_lines": [
+            "17:25:11.540 INFO  HaplotypeCaller - Java runtime: Java HotSpot(TM) 64-Bit Server VM v25+37-LTS-3491",
+            "17:25:11.545 INFO  HaplotypeCaller - Deflater: JdkDeflater",
+            "17:25:11.546 INFO  HaplotypeCaller - Inflater: JdkInflater",
+            "17:25:11.812 INFO  PairHMM - Using the non-hardware-accelerated Java LOGLESS_CACHING PairHMM implementation",
+            "17:25:12.247 INFO  SmithWatermanAligner - Total compute time in java Smith-Waterman : 0.01 sec"
+          ]
+        },
+        "tetraploid": {
+          "log_sha256": "433ec282bf20a3f64f20f7fbbfdad1b8bee759c3389e3bdd1682201b2faadcc2",
+          "kernel_runtime_lines": [
+            "17:25:17.485 INFO  HaplotypeCaller - Java runtime: Java HotSpot(TM) 64-Bit Server VM v25+37-LTS-3491",
+            "17:25:17.491 INFO  HaplotypeCaller - Deflater: JdkDeflater",
+            "17:25:17.492 INFO  HaplotypeCaller - Inflater: JdkInflater",
+            "17:25:17.761 INFO  PairHMM - Using the non-hardware-accelerated Java LOGLESS_CACHING PairHMM implementation",
+            "17:25:18.286 INFO  SmithWatermanAligner - Total compute time in java Smith-Waterman : 0.01 sec"
+          ]
+        }
+      },
+      "refreshed_utc": "2026-10-25T11:27:56.771609+00:00",
+      "current_full_gate_suites": {
+        "org.jlinalg.cli.GatkToolsCliTest": {
+          "suite_name": "org.jlinalg.cli.GatkToolsCliTest",
+          "suite": {
+            "tests": 6,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "0b59617ec4eeb8bc160c01a9393b42889ebcb045f22b318e2de04a21ddb9b5ec",
+          "testcases": [
+            "realTypedHardFiltersPreserveAllRecordsGenotypesAndOldFiltersWithExplicitMissingPolicy()",
+            "unavailableOrWrongRuntimeSkipsAndInvalidModelDoesNotStart()",
+            "realGvcfCombinationAndGenotypingPreserveSamplesAndKnownDiploidGenotypes()",
+            "realHaploidAndTetraploidCallsRecoverKnownAlleleDosage()",
+            "referenceIndexMismatchFailsWithRetainedRecovery()",
+            "nativeReferencePreservesExistingSidecarsAndNeedsNoGatk()"
+          ]
+        }
+      }
+    },
+    {
+      "status": "passed",
+      "jar_sha256": "5680cbc4e457007f8903d1d4db3e74ecc890a150b350870f0b82d5650bdc0fec",
+      "version": "4.7.0.0",
+      "gatk_jar_sha256": "882e180707e0e6887885853fc486fa54098620fe9a80bdcdaaa655c7e3861365",
+      "upstream_suite": {
+        "suite_name": "org.jlinalg.cli.GatkToolsCliTest",
+        "suite": {
+          "tests": 6,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "861abbf6727cc06847d170205ecb62b7e4c0c31916a2eb69c5ab9e884c62e8e0",
+        "testcases": [
+          "realTypedHardFiltersPreserveAllRecordsGenotypesAndOldFiltersWithExplicitMissingPolicy()",
+          "unavailableOrWrongRuntimeSkipsAndInvalidModelDoesNotStart()",
+          "realGvcfCombinationAndGenotypingPreserveSamplesAndKnownDiploidGenotypes()",
+          "realHaploidAndTetraploidCallsRecoverKnownAlleleDosage()",
+          "referenceIndexMismatchFailsWithRetainedRecovery()",
+          "nativeReferencePreservesExistingSidecarsAndNeedsNoGatk()"
+        ]
+      },
+      "packaged_validation": "gatk-packaged-validation.json",
+      "packaged_checks": 12,
+      "dependency_evidence": "gatk-dependency-status.json",
+      "packaged_verifier_sha256": "e237d2e48ec8b5bbe404eb35672bb7835cfc318d1e2f38c4bd9a0d3dbbd7d4cc",
+      "scope": "Official local JAR, typed native reference metadata, explicit-ploidy HC, CombineGVCFs, GenotypeGVCFs and SNP/indel VariantFiltration with explicit missing policy. Known SNP/deletion and 1/2/4-ploidy truth. Initial Windows colon-parser failure retained and corrected through interval_list files; temp-probe warnings retained. No legacy/somatic/old-version/whole-study equivalence.",
+      "windows_temp_probe_source": {
+        "url": "https://github.com/broadinstitute/gatk/blob/4.7.0.0/src/main/java/org/broadinstitute/hellbender/cmdline/CommandLineProgram.java",
+        "sha256": "57b207419c1eab85b8387b1ac8a3d67c28079b400d09ada958a550af84a39b6f",
+        "explanation": "Non-POSIX executable probe skips file creation, then cleanup attempts a null path. Diagnostic retained in successful Windows truth fixtures."
+      },
+      "packaged_runtime_evidence": {
+        "gvcf-S1": {
+          "log_sha256": "9599b712e112c211b87decd7a347e5d9168f3088981e4efa13a08b45db93d6ad",
+          "kernel_runtime_lines": [
+            "17:24:49.860 INFO  HaplotypeCaller - Java runtime: Java HotSpot(TM) 64-Bit Server VM v25+37-LTS-3491",
+            "17:24:49.866 INFO  HaplotypeCaller - Deflater: JdkDeflater",
+            "17:24:49.867 INFO  HaplotypeCaller - Inflater: JdkInflater",
+            "17:24:50.135 INFO  PairHMM - Using the non-hardware-accelerated Java LOGLESS_CACHING PairHMM implementation",
+            "17:24:50.832 INFO  SmithWatermanAligner - Total compute time in java Smith-Waterman : 0.01 sec"
+          ]
+        },
+        "haploid-interval": {
+          "log_sha256": "17c5548751ef973448aeb276cc971dbf646d71438984c9be4d855ea18850c047",
+          "kernel_runtime_lines": [
+            "17:25:11.540 INFO  HaplotypeCaller - Java runtime: Java HotSpot(TM) 64-Bit Server VM v25+37-LTS-3491",
+            "17:25:11.545 INFO  HaplotypeCaller - Deflater: JdkDeflater",
+            "17:25:11.546 INFO  HaplotypeCaller - Inflater: JdkInflater",
+            "17:25:11.812 INFO  PairHMM - Using the non-hardware-accelerated Java LOGLESS_CACHING PairHMM implementation",
+            "17:25:12.247 INFO  SmithWatermanAligner - Total compute time in java Smith-Waterman : 0.01 sec"
+          ]
+        },
+        "tetraploid": {
+          "log_sha256": "433ec282bf20a3f64f20f7fbbfdad1b8bee759c3389e3bdd1682201b2faadcc2",
+          "kernel_runtime_lines": [
+            "17:25:17.485 INFO  HaplotypeCaller - Java runtime: Java HotSpot(TM) 64-Bit Server VM v25+37-LTS-3491",
+            "17:25:17.491 INFO  HaplotypeCaller - Deflater: JdkDeflater",
+            "17:25:17.492 INFO  HaplotypeCaller - Inflater: JdkInflater",
+            "17:25:17.761 INFO  PairHMM - Using the non-hardware-accelerated Java LOGLESS_CACHING PairHMM implementation",
+            "17:25:18.286 INFO  SmithWatermanAligner - Total compute time in java Smith-Waterman : 0.01 sec"
+          ]
+        }
+      },
+      "refreshed_utc": "2026-10-25T14:18:39.170849+00:00",
+      "current_full_gate_suites": {
+        "org.jlinalg.cli.GatkToolsCliTest": {
+          "suite_name": "org.jlinalg.cli.GatkToolsCliTest",
+          "suite": {
+            "tests": 6,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "861abbf6727cc06847d170205ecb62b7e4c0c31916a2eb69c5ab9e884c62e8e0",
+          "testcases": [
+            "realTypedHardFiltersPreserveAllRecordsGenotypesAndOldFiltersWithExplicitMissingPolicy()",
+            "unavailableOrWrongRuntimeSkipsAndInvalidModelDoesNotStart()",
+            "realGvcfCombinationAndGenotypingPreserveSamplesAndKnownDiploidGenotypes()",
+            "realHaploidAndTetraploidCallsRecoverKnownAlleleDosage()",
+            "referenceIndexMismatchFailsWithRetainedRecovery()",
+            "nativeReferencePreservesExistingSidecarsAndNeedsNoGatk()"
+          ]
+        }
+      }
+    },
+    {
+      "status": "passed",
+      "jar_sha256": "c7e5fc6412ef02a82e409b43f344bff506f873ff5ebea92bc055d498ebda8dae",
+      "version": "4.7.0.0",
+      "gatk_jar_sha256": "882e180707e0e6887885853fc486fa54098620fe9a80bdcdaaa655c7e3861365",
+      "upstream_suite": {
+        "suite_name": "org.jlinalg.cli.GatkToolsCliTest",
+        "suite": {
+          "tests": 6,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "272705b575d655b88719b9eaead65e0ccd6b3746a02ab69edf2854c4af942e23",
+        "testcases": [
+          "realTypedHardFiltersPreserveAllRecordsGenotypesAndOldFiltersWithExplicitMissingPolicy()",
+          "unavailableOrWrongRuntimeSkipsAndInvalidModelDoesNotStart()",
+          "realGvcfCombinationAndGenotypingPreserveSamplesAndKnownDiploidGenotypes()",
+          "realHaploidAndTetraploidCallsRecoverKnownAlleleDosage()",
+          "referenceIndexMismatchFailsWithRetainedRecovery()",
+          "nativeReferencePreservesExistingSidecarsAndNeedsNoGatk()"
+        ]
+      },
+      "packaged_validation": "gatk-packaged-validation.json",
+      "packaged_checks": 12,
+      "dependency_evidence": "gatk-dependency-status.json",
+      "packaged_verifier_sha256": "e237d2e48ec8b5bbe404eb35672bb7835cfc318d1e2f38c4bd9a0d3dbbd7d4cc",
+      "scope": "Official local JAR, typed native reference metadata, explicit-ploidy HC, CombineGVCFs, GenotypeGVCFs and SNP/indel VariantFiltration with explicit missing policy. Known SNP/deletion and 1/2/4-ploidy truth. Initial Windows colon-parser failure retained and corrected through interval_list files; temp-probe warnings retained. No legacy/somatic/old-version/whole-study equivalence.",
+      "windows_temp_probe_source": {
+        "url": "https://github.com/broadinstitute/gatk/blob/4.7.0.0/src/main/java/org/broadinstitute/hellbender/cmdline/CommandLineProgram.java",
+        "sha256": "57b207419c1eab85b8387b1ac8a3d67c28079b400d09ada958a550af84a39b6f",
+        "explanation": "Non-POSIX executable probe skips file creation, then cleanup attempts a null path. Diagnostic retained in successful Windows truth fixtures."
+      },
+      "packaged_runtime_evidence": {
+        "gvcf-S1": {
+          "log_sha256": "9599b712e112c211b87decd7a347e5d9168f3088981e4efa13a08b45db93d6ad",
+          "kernel_runtime_lines": [
+            "17:24:49.860 INFO  HaplotypeCaller - Java runtime: Java HotSpot(TM) 64-Bit Server VM v25+37-LTS-3491",
+            "17:24:49.866 INFO  HaplotypeCaller - Deflater: JdkDeflater",
+            "17:24:49.867 INFO  HaplotypeCaller - Inflater: JdkInflater",
+            "17:24:50.135 INFO  PairHMM - Using the non-hardware-accelerated Java LOGLESS_CACHING PairHMM implementation",
+            "17:24:50.832 INFO  SmithWatermanAligner - Total compute time in java Smith-Waterman : 0.01 sec"
+          ]
+        },
+        "haploid-interval": {
+          "log_sha256": "17c5548751ef973448aeb276cc971dbf646d71438984c9be4d855ea18850c047",
+          "kernel_runtime_lines": [
+            "17:25:11.540 INFO  HaplotypeCaller - Java runtime: Java HotSpot(TM) 64-Bit Server VM v25+37-LTS-3491",
+            "17:25:11.545 INFO  HaplotypeCaller - Deflater: JdkDeflater",
+            "17:25:11.546 INFO  HaplotypeCaller - Inflater: JdkInflater",
+            "17:25:11.812 INFO  PairHMM - Using the non-hardware-accelerated Java LOGLESS_CACHING PairHMM implementation",
+            "17:25:12.247 INFO  SmithWatermanAligner - Total compute time in java Smith-Waterman : 0.01 sec"
+          ]
+        },
+        "tetraploid": {
+          "log_sha256": "433ec282bf20a3f64f20f7fbbfdad1b8bee759c3389e3bdd1682201b2faadcc2",
+          "kernel_runtime_lines": [
+            "17:25:17.485 INFO  HaplotypeCaller - Java runtime: Java HotSpot(TM) 64-Bit Server VM v25+37-LTS-3491",
+            "17:25:17.491 INFO  HaplotypeCaller - Deflater: JdkDeflater",
+            "17:25:17.492 INFO  HaplotypeCaller - Inflater: JdkInflater",
+            "17:25:17.761 INFO  PairHMM - Using the non-hardware-accelerated Java LOGLESS_CACHING PairHMM implementation",
+            "17:25:18.286 INFO  SmithWatermanAligner - Total compute time in java Smith-Waterman : 0.01 sec"
+          ]
+        }
+      },
+      "refreshed_utc": "2026-10-25T18:28:13.412726+00:00",
+      "current_full_gate_suites": {
+        "org.jlinalg.cli.GatkToolsCliTest": {
+          "suite_name": "org.jlinalg.cli.GatkToolsCliTest",
+          "suite": {
+            "tests": 6,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "272705b575d655b88719b9eaead65e0ccd6b3746a02ab69edf2854c4af942e23",
+          "testcases": [
+            "realTypedHardFiltersPreserveAllRecordsGenotypesAndOldFiltersWithExplicitMissingPolicy()",
+            "unavailableOrWrongRuntimeSkipsAndInvalidModelDoesNotStart()",
+            "realGvcfCombinationAndGenotypingPreserveSamplesAndKnownDiploidGenotypes()",
+            "realHaploidAndTetraploidCallsRecoverKnownAlleleDosage()",
+            "referenceIndexMismatchFailsWithRetainedRecovery()",
+            "nativeReferencePreservesExistingSidecarsAndNeedsNoGatk()"
+          ]
+        }
+      },
+      "current_validation": {
+        "full_gate": {
+          "tests": 1486,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 5
+        },
+        "required_suites": 59,
+        "all_required_without_skips": true,
+        "raw_snapshot": "D:\\projects\\JLinAlg\\build\\literature-review\\trimgalore-runtime\\original-warning-full-gate-snapshot",
+        "prior_packaged_regressions": "D:\\projects\\JLinAlg\\build\\literature-review\\trim-galore-warning-packaged-regressions\\verification.json",
+        "scope": "Current unchanged owned method sources retested on this JAR. Historical reference-generation counts/options remain scoped to their original fixtures;prior reports remain in validation_history."
+      }
+    },
+    {
+      "status": "passed",
+      "jar_sha256": "2bfb8abfea10e53ce7b0e1035b0a7954feb9bed990d63578e817882a6d0541c0",
+      "version": "4.7.0.0",
+      "gatk_jar_sha256": "882e180707e0e6887885853fc486fa54098620fe9a80bdcdaaa655c7e3861365",
+      "upstream_suite": {
+        "suite_name": "org.jlinalg.cli.GatkToolsCliTest",
+        "suite": {
+          "tests": 6,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "6ce1be8813f5721d4ad36ceec4961b4c098677f9913de6dc7af23d11656ed239",
+        "testcases": [
+          "realTypedHardFiltersPreserveAllRecordsGenotypesAndOldFiltersWithExplicitMissingPolicy()",
+          "unavailableOrWrongRuntimeSkipsAndInvalidModelDoesNotStart()",
+          "realGvcfCombinationAndGenotypingPreserveSamplesAndKnownDiploidGenotypes()",
+          "realHaploidAndTetraploidCallsRecoverKnownAlleleDosage()",
+          "referenceIndexMismatchFailsWithRetainedRecovery()",
+          "nativeReferencePreservesExistingSidecarsAndNeedsNoGatk()"
+        ]
+      },
+      "packaged_validation": "gatk-packaged-validation.json",
+      "packaged_checks": 12,
+      "dependency_evidence": "gatk-dependency-status.json",
+      "packaged_verifier_sha256": "e237d2e48ec8b5bbe404eb35672bb7835cfc318d1e2f38c4bd9a0d3dbbd7d4cc",
+      "scope": "Official local JAR, typed native reference metadata, explicit-ploidy HC, CombineGVCFs, GenotypeGVCFs and SNP/indel VariantFiltration with explicit missing policy. Known SNP/deletion and 1/2/4-ploidy truth. Initial Windows colon-parser failure retained and corrected through interval_list files; temp-probe warnings retained. No legacy/somatic/old-version/whole-study equivalence.",
+      "windows_temp_probe_source": {
+        "url": "https://github.com/broadinstitute/gatk/blob/4.7.0.0/src/main/java/org/broadinstitute/hellbender/cmdline/CommandLineProgram.java",
+        "sha256": "57b207419c1eab85b8387b1ac8a3d67c28079b400d09ada958a550af84a39b6f",
+        "explanation": "Non-POSIX executable probe skips file creation, then cleanup attempts a null path. Diagnostic retained in successful Windows truth fixtures."
+      },
+      "packaged_runtime_evidence": {
+        "gvcf-S1": {
+          "log_sha256": "9599b712e112c211b87decd7a347e5d9168f3088981e4efa13a08b45db93d6ad",
+          "kernel_runtime_lines": [
+            "17:24:49.860 INFO  HaplotypeCaller - Java runtime: Java HotSpot(TM) 64-Bit Server VM v25+37-LTS-3491",
+            "17:24:49.866 INFO  HaplotypeCaller - Deflater: JdkDeflater",
+            "17:24:49.867 INFO  HaplotypeCaller - Inflater: JdkInflater",
+            "17:24:50.135 INFO  PairHMM - Using the non-hardware-accelerated Java LOGLESS_CACHING PairHMM implementation",
+            "17:24:50.832 INFO  SmithWatermanAligner - Total compute time in java Smith-Waterman : 0.01 sec"
+          ]
+        },
+        "haploid-interval": {
+          "log_sha256": "17c5548751ef973448aeb276cc971dbf646d71438984c9be4d855ea18850c047",
+          "kernel_runtime_lines": [
+            "17:25:11.540 INFO  HaplotypeCaller - Java runtime: Java HotSpot(TM) 64-Bit Server VM v25+37-LTS-3491",
+            "17:25:11.545 INFO  HaplotypeCaller - Deflater: JdkDeflater",
+            "17:25:11.546 INFO  HaplotypeCaller - Inflater: JdkInflater",
+            "17:25:11.812 INFO  PairHMM - Using the non-hardware-accelerated Java LOGLESS_CACHING PairHMM implementation",
+            "17:25:12.247 INFO  SmithWatermanAligner - Total compute time in java Smith-Waterman : 0.01 sec"
+          ]
+        },
+        "tetraploid": {
+          "log_sha256": "433ec282bf20a3f64f20f7fbbfdad1b8bee759c3389e3bdd1682201b2faadcc2",
+          "kernel_runtime_lines": [
+            "17:25:17.485 INFO  HaplotypeCaller - Java runtime: Java HotSpot(TM) 64-Bit Server VM v25+37-LTS-3491",
+            "17:25:17.491 INFO  HaplotypeCaller - Deflater: JdkDeflater",
+            "17:25:17.492 INFO  HaplotypeCaller - Inflater: JdkInflater",
+            "17:25:17.761 INFO  PairHMM - Using the non-hardware-accelerated Java LOGLESS_CACHING PairHMM implementation",
+            "17:25:18.286 INFO  SmithWatermanAligner - Total compute time in java Smith-Waterman : 0.01 sec"
+          ]
+        }
+      },
+      "refreshed_utc": "2026-10-25T20:32:57.454823+00:00",
+      "current_full_gate_suites": {
+        "org.jlinalg.cli.GatkToolsCliTest": {
+          "suite_name": "org.jlinalg.cli.GatkToolsCliTest",
+          "suite": {
+            "tests": 6,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "6ce1be8813f5721d4ad36ceec4961b4c098677f9913de6dc7af23d11656ed239",
+          "testcases": [
+            "realTypedHardFiltersPreserveAllRecordsGenotypesAndOldFiltersWithExplicitMissingPolicy()",
+            "unavailableOrWrongRuntimeSkipsAndInvalidModelDoesNotStart()",
+            "realGvcfCombinationAndGenotypingPreserveSamplesAndKnownDiploidGenotypes()",
+            "realHaploidAndTetraploidCallsRecoverKnownAlleleDosage()",
+            "referenceIndexMismatchFailsWithRetainedRecovery()",
+            "nativeReferencePreservesExistingSidecarsAndNeedsNoGatk()"
+          ]
+        }
+      },
+      "current_validation": {
+        "full_gate": {
+          "tests": 1504,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 5
+        },
+        "required_suites": 61,
+        "all_required_without_skips": true,
+        "raw_snapshot": "D:\\projects\\JLinAlg\\build\\literature-review\\flash-runtime\\full-gate-2-snapshot",
+        "prior_packaged_regressions": "D:\\projects\\JLinAlg\\build\\literature-review\\flash-packaged-regressions\\verification.json",
+        "scope": "Current unchanged owned method sources retested on this JAR. Historical reference-generation counts/options remain scoped to their original fixtures;prior reports remain in validation_history."
+      }
+    },
+    {
+      "status": "passed",
+      "jar_sha256": "66be181d854806d9ae64d6f060e8defba8af5bdf594d3d352c9c76097a2a8d2e",
+      "version": "4.7.0.0",
+      "gatk_jar_sha256": "882e180707e0e6887885853fc486fa54098620fe9a80bdcdaaa655c7e3861365",
+      "upstream_suite": {
+        "suite_name": "org.jlinalg.cli.GatkToolsCliTest",
+        "suite": {
+          "tests": 6,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "34b73e443b6f08b85074002529fd4b05ea687eaf22fa1b0260a1274ab48fb758",
+        "testcases": [
+          "realTypedHardFiltersPreserveAllRecordsGenotypesAndOldFiltersWithExplicitMissingPolicy()",
+          "unavailableOrWrongRuntimeSkipsAndInvalidModelDoesNotStart()",
+          "realGvcfCombinationAndGenotypingPreserveSamplesAndKnownDiploidGenotypes()",
+          "realHaploidAndTetraploidCallsRecoverKnownAlleleDosage()",
+          "referenceIndexMismatchFailsWithRetainedRecovery()",
+          "nativeReferencePreservesExistingSidecarsAndNeedsNoGatk()"
+        ]
+      },
+      "packaged_validation": "gatk-packaged-validation.json",
+      "packaged_checks": 12,
+      "dependency_evidence": "gatk-dependency-status.json",
+      "packaged_verifier_sha256": "e237d2e48ec8b5bbe404eb35672bb7835cfc318d1e2f38c4bd9a0d3dbbd7d4cc",
+      "scope": "Official local JAR, typed native reference metadata, explicit-ploidy HC, CombineGVCFs, GenotypeGVCFs and SNP/indel VariantFiltration with explicit missing policy. Known SNP/deletion and 1/2/4-ploidy truth. Initial Windows colon-parser failure retained and corrected through interval_list files; temp-probe warnings retained. No legacy/somatic/old-version/whole-study equivalence.",
+      "windows_temp_probe_source": {
+        "url": "https://github.com/broadinstitute/gatk/blob/4.7.0.0/src/main/java/org/broadinstitute/hellbender/cmdline/CommandLineProgram.java",
+        "sha256": "57b207419c1eab85b8387b1ac8a3d67c28079b400d09ada958a550af84a39b6f",
+        "explanation": "Non-POSIX executable probe skips file creation, then cleanup attempts a null path. Diagnostic retained in successful Windows truth fixtures."
+      },
+      "packaged_runtime_evidence": {
+        "gvcf-S1": {
+          "log_sha256": "9599b712e112c211b87decd7a347e5d9168f3088981e4efa13a08b45db93d6ad",
+          "kernel_runtime_lines": [
+            "17:24:49.860 INFO  HaplotypeCaller - Java runtime: Java HotSpot(TM) 64-Bit Server VM v25+37-LTS-3491",
+            "17:24:49.866 INFO  HaplotypeCaller - Deflater: JdkDeflater",
+            "17:24:49.867 INFO  HaplotypeCaller - Inflater: JdkInflater",
+            "17:24:50.135 INFO  PairHMM - Using the non-hardware-accelerated Java LOGLESS_CACHING PairHMM implementation",
+            "17:24:50.832 INFO  SmithWatermanAligner - Total compute time in java Smith-Waterman : 0.01 sec"
+          ]
+        },
+        "haploid-interval": {
+          "log_sha256": "17c5548751ef973448aeb276cc971dbf646d71438984c9be4d855ea18850c047",
+          "kernel_runtime_lines": [
+            "17:25:11.540 INFO  HaplotypeCaller - Java runtime: Java HotSpot(TM) 64-Bit Server VM v25+37-LTS-3491",
+            "17:25:11.545 INFO  HaplotypeCaller - Deflater: JdkDeflater",
+            "17:25:11.546 INFO  HaplotypeCaller - Inflater: JdkInflater",
+            "17:25:11.812 INFO  PairHMM - Using the non-hardware-accelerated Java LOGLESS_CACHING PairHMM implementation",
+            "17:25:12.247 INFO  SmithWatermanAligner - Total compute time in java Smith-Waterman : 0.01 sec"
+          ]
+        },
+        "tetraploid": {
+          "log_sha256": "433ec282bf20a3f64f20f7fbbfdad1b8bee759c3389e3bdd1682201b2faadcc2",
+          "kernel_runtime_lines": [
+            "17:25:17.485 INFO  HaplotypeCaller - Java runtime: Java HotSpot(TM) 64-Bit Server VM v25+37-LTS-3491",
+            "17:25:17.491 INFO  HaplotypeCaller - Deflater: JdkDeflater",
+            "17:25:17.492 INFO  HaplotypeCaller - Inflater: JdkInflater",
+            "17:25:17.761 INFO  PairHMM - Using the non-hardware-accelerated Java LOGLESS_CACHING PairHMM implementation",
+            "17:25:18.286 INFO  SmithWatermanAligner - Total compute time in java Smith-Waterman : 0.01 sec"
+          ]
+        }
+      },
+      "refreshed_utc": "2026-10-25T23:24:57.944602+00:00",
+      "current_full_gate_suites": {
+        "org.jlinalg.cli.GatkToolsCliTest": {
+          "suite_name": "org.jlinalg.cli.GatkToolsCliTest",
+          "suite": {
+            "tests": 6,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "34b73e443b6f08b85074002529fd4b05ea687eaf22fa1b0260a1274ab48fb758",
+          "testcases": [
+            "realTypedHardFiltersPreserveAllRecordsGenotypesAndOldFiltersWithExplicitMissingPolicy()",
+            "unavailableOrWrongRuntimeSkipsAndInvalidModelDoesNotStart()",
+            "realGvcfCombinationAndGenotypingPreserveSamplesAndKnownDiploidGenotypes()",
+            "realHaploidAndTetraploidCallsRecoverKnownAlleleDosage()",
+            "referenceIndexMismatchFailsWithRetainedRecovery()",
+            "nativeReferencePreservesExistingSidecarsAndNeedsNoGatk()"
+          ]
+        }
+      },
+      "current_validation": {
+        "full_gate": {
+          "tests": 1552,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 5
+        },
+        "required_suites": 68,
+        "all_required_without_skips": true,
+        "raw_snapshot": "D:\\projects\\JLinAlg\\build\\literature-review\\fimo-runtime\\configured-full-gate-1",
+        "prior_packaged_regressions": "D:\\projects\\JLinAlg\\build\\literature-review\\fimo-runtime\\prior-packaged-regressions-1\\verification.json",
+        "scope": "Current unchanged owned method sources retested on this JAR. Historical reference-generation counts/options remain scoped to their original fixtures;prior reports remain in validation_history."
+      }
+    }
+  ]
+}

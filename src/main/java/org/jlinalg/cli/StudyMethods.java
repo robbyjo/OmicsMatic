@@ -14,7 +14,7 @@ import java.util.Set;
 /** Cohort-first Methods model. Reporting declarations never change analysis settings. */
 final class StudyMethods {
     static final List<String> ROLES = List.of("cohorts", "association", "discovery_replication", "meta_analysis",
-        "enrichment_ontology", "mendelian_randomization", "network", "fine_mapping", "colocalization", "sensitivity_analysis", "reproducibility");
+        "enrichment_ontology", "risk_scores", "protein_structure", "mendelian_randomization", "network", "fine_mapping", "colocalization", "sensitivity_analysis", "reproducibility");
     private static final Map<String, String> PUBLIC_COHORTS = Map.ofEntries(
         Map.entry("fhs", "Framingham Heart Study"), Map.entry("fhs-offspring", "Framingham Offspring Study"),
         Map.entry("fhs-gen3", "Framingham Heart Study Third Generation"),
@@ -39,11 +39,16 @@ final class StudyMethods {
             + "sample selection/missingness, pedigree/relatedness adjustment and multiple-testing rule. Report any executed effect-outlier QC, "
             + "its effective thresholds, robust-scale fallback or skipped screening, per-cohort exclusions and resulting testing universe; "
             + "identify post hoc QC changes and require sensitivity review rather than treating excluded large effects as proven artifacts. Meta-analysis needs effect scale, "
-            + "weighting, fixed/random-effects estimator, heterogeneity and cohort-overlap handling. Enrichment needs selection threshold, "
+            + "weighting, fixed/random-effects estimator, heterogeneity and cohort-overlap handling. Describe exact overlap universes, per-source/frozen validation families, missing coverage and direction criteria. Heterogeneity diagnostics need the registered per-feature metric/cutoff, Q correction family, minimum source/feature counts and widespread fraction. Influence comparisons use the declared common feature universe; fewer cohorts or larger Q P values do not establish improved biological homogeneity and cannot select the primary result. Enrichment needs selection threshold, "
             + "tested-gene universe, feature-to-gene mapping, database/release, test and multiplicity adjustment. MR needs molecular exposure/outcome "
             + "and tissue, GWAS/QTL sources, instrument P/F thresholds, LD clumping reference/r2/window, allele harmonization, overlap assumptions, estimator and sensitivity settings. "
-            + "Network analysis needs network source/version, nodes/edges, weights, filtering, algorithm and null model. Colocalization needs "
-            + "region/build, complete summary statistics, sample sizes, LD, signal model, priors, posterior threshold and prior sensitivity. "
+            + "GWAS diagnostics need the exact source/contrast and complete versus selected/unknown export, finite natural-log P handling and unresolved zeros, frequency/count/INFO/test strata, observed coordinate/build coverage and display thinning/caps. The median one-df chi-square P transform is descriptive; do not call it proof of confounding, claim LD-adjusted calibration or imply that genomic control changed the original P values. "
+            + "Survival association needs the event/censor definitions and codes, time axis/units, delayed entry, baseline strata, selected participant/event counts, baseline predictors and fixed offsets, exact Cox estimator, tie method and registered LRT or Wald test. State the log-hazard-ratio scale, independent-participant and censoring/PH assumptions, missing-predictor handling and unresolved-fit bounds. Distinguish exact finite-MPLE certificates from numerical convergence; record actual shared cohort-family certificate bounds and holds. Supplied estimates retain upstream attribution. Keep local risk-contrast witnesses and row indices in local supporting artifacts, outside aggregate model packets.  Report log-time efficient PH diagnostics with their separate predictor correction family and nominal global tests; diagnostics do not replace primary association P values or certify assumptions. Subsequent log-HR meta-analysis uses a separate Wald approximation even for source LRTs. "
+            + "Score methods need the outcome and intended use, independent development/tuning/evaluation populations, source-overlap declarations, within-development preprocessing and feature definitions, frozen model/baseline, outcome-appropriate metrics, conditional uncertainty, transportability and the separate related-trait correction family. Network analysis needs network source/version, nodes/edges, weights, filtering, algorithm and null model. "
+            + "Network preservation needs frozen reference memberships, exact source namespaces/species, complete thresholded edge coverage, matched correlation estimators/thresholds, shared-node coverage and edge/sign metrics. Absent thresholded edges are not zero raw correlations; these descriptive metrics are not preservation P values or independent replication and do not choose the official graph. "
+            + "When a separate conditional network-label null was tested, report its prespecified signed/unsigned edge statistic, shared-node universe, frozen memberships, label-exchangeability rationale and strata, exact group or sampled draw count/seed, tie-inclusive tail, plus-one sampled P, Monte Carlo tail interval, complete module/target denominator and correction. This is conditional topology evidence, not participant-sampling uncertainty, WGCNA Zsummary or an association discovery. Colocalization needs "
+            + "region/build, source selection/export cutoffs, observed pre-restriction variant counts versus alignment candidates, matched fractions and positional gaps, sample sizes, LD, all signal pairs and credible sets, convergence attempts/fallback, registered priors and their complete sensitivity grid. State whether any posterior decision rule was registered; posterior probabilities are not association FDR. Source-declared completeness is not independently certified, and partial-data grades/caveats must accompany every claim. "
+            + "Protein structure methods need exact accession/isoform/taxon and sequence hash/version, assay-to-sequence limitations, observed residue coverage and mapping, retrieval versus newly executed prediction, software/model/seed/MSA/template provenance, all assessed models, pLDDT source and missingness, directional PAE and region/token mapping. Confidence supplies model context and does not establish function, pathogenicity or an interface. "
             + "Do not infer settings from current software defaults for historical runs, substitute unrelated citations, invent a parameter rationale, "
             + "or present a query match as verified support. Missing source, parameter or required uncommon-parameter justification remains a review need. "
             + "Report the dataset tissue/sample compartment for each cohort and consider declared differences when interpreting heterogeneity; do not infer causation from a cohort-confounded tissue contrast. "
@@ -59,8 +64,18 @@ final class StudyMethods {
     static String role(String type) {
         return switch (type) {
             case "validate_harmonize" -> "association";
-            case "gene_ontology", "pathway_enrichment" -> "enrichment_ontology";
-            case "network_analysis", "network_followup" -> "network";
+            case "participant_qc" -> "association";
+            case "gwas_diagnostics" -> "association";
+            case "mr_family_adjustment" -> "mendelian_randomization";
+            case "rare_variant_analysis", "rare_variant_scores", "rare_variant_masks", "rare_set_omnibus" -> "association";
+            case "discovery_meta_analysis" -> "discovery_replication";
+            case "cohort_overlap" -> "discovery_replication";
+            case "heterogeneity_review" -> "meta_analysis";
+            case "gene_ontology", "pathway_enrichment", "ranked_gsea" -> "enrichment_ontology";
+            case "network_analysis", "network_followup", "pathway_network", "network_modules", "module_gene_ontology", "network_preservation", "network_preservation_null" -> "network";
+            case "variant_annotation", "variant_scoring" -> "reproducibility";
+            case "risk_score_evaluation", "risk_score_related_phenotypes" -> "risk_scores";
+            case "protein_structure", "protein_structure_assessment" -> "protein_structure";
             case "leave_one_cohort_out", "fixed_random_comparison" -> "sensitivity_analysis";
             default -> ROLES.contains(type) ? type : "";
         };

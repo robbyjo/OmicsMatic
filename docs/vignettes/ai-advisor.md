@@ -118,9 +118,12 @@ Compare [no AI](ai-no-ai.md) and [AI as an external driver](ai-driver.md).
 <!-- SCIENTIFIC-CITATIONS:START -->
 ## Scientific citations
 
-- [Sandve et al. (2013): reproducible computational research](../CITATIONS.md#sandve-reproducibility-2013)
-- [W3C (2013): evidence provenance](../CITATIONS.md#w3c-prov-o-2013)
-- [HHS OCR (2012): de-identification guidance](../CITATIONS.md#hhs-hipaa-deidentification-2012)
-- [NIST (2024): generative AI risk management](../CITATIONS.md#nist-genai-profile-2024)
+These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as JLinAlg when reporting results.
 
+- [Geir Kjetil Sandve et al. (2013) — Ten Simple Rules for Reproducible Computational Research](../CITATIONS.md#sandve-reproducibility-2013)
+- [W3C Provenance Working Group (2013) — PROV-O: The PROV Ontology](../CITATIONS.md#w3c-prov-o-2013)
+- [U.S. Department of Health and Human Services, Office for Civil Rights (2012) — Guidance Regarding Methods for De-identification of Protected Health Information in Accordance with the HIPAA Privacy Rule](../CITATIONS.md#hhs-hipaa-deidentification-2012)
+- [National Institute of Standards and Technology (2024) — Artificial Intelligence Risk Management Framework: Generative Artificial Intelligence Profile](../CITATIONS.md#nist-genai-profile-2024)
+
+[Search the complete scientific bibliography](https://robbyjo.github.io/JLinAlg/citations.html).
 <!-- SCIENTIFIC-CITATIONS:END -->

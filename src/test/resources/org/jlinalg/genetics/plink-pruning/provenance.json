@@ -1,0 +1,288 @@
+{
+  "scope": "Synthetic original --indep-pairwise partitions only;128input samples,125included,123recorded founders,91variants. Near/distant copied/reversed genotype rows and one missing-call contrast are deliberate. No patient data,biological linkage realism,native pruning algorithm or packaged public adapter claim.",
+  "runtime_profile": "original-official-windows-x86_64-20260927-20261024",
+  "source_proof_sha256": "66212c1a3b901a8a9829c9bdb643edaddac6a829228078b2153d6ed109bee711",
+  "standalone_proof_sha256": "776613171552c32de7a7efbed7d87c9f390a928582d5264cbd98530872c8b33c",
+  "producer_sha256": "d66832e382801a777de1038f1f5425b192ec079dafc000816292108b39978c08",
+  "reference_mutations": [
+    {
+      "variant": "V7",
+      "source": "V6",
+      "mode": "copy"
+    },
+    {
+      "variant": "V8",
+      "source": "V6",
+      "mode": "reverse"
+    },
+    {
+      "variant": "V9",
+      "source": "V6",
+      "mode": "copy-with-missing"
+    },
+    {
+      "variant": "V40",
+      "source": "V6",
+      "mode": "copy"
+    },
+    {
+      "variant": "V41",
+      "source": "V6",
+      "mode": "copy"
+    },
+    {
+      "variant": "V70",
+      "source": "V6",
+      "mode": "reverse"
+    }
+  ],
+  "actual_original_cases": [
+    {
+      "engine": "plink1",
+      "label": "count-legacy",
+      "command": [
+        "D:\\projects\\JLinAlg\\build\\omics-plink-official\\plink1\\plink.exe",
+        "--bfile",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\plink-runtime\\original-prune-contracts-2\\input\\known",
+        "--keep",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\plink-runtime\\original-prune-contracts-2\\input\\founders.keep",
+        "--extract",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\plink-runtime\\original-prune-contracts-2\\input\\variants.extract",
+        "--autosome",
+        "--threads",
+        "1",
+        "--memory",
+        "128",
+        "--keep-allele-order",
+        "--allow-no-sex",
+        "--indep-pairwise",
+        "20",
+        "5",
+        ".2",
+        "--out",
+        "result"
+      ],
+      "exit_code": 0,
+      "binary_sha256": "efc55270aba7216e4fcebdf781ee04e9fa556c2fe5be1f71c836ba73930a6b6b",
+      "retained": 87,
+      "removed": 4,
+      "files_sha256": {
+        "result.log": "c3746c56f162dbc0f29dea997b3f284b68f17820b8ec5306f5cba987f43ca635",
+        "result.nosex": "991e79f778828fb114236ca237af8b6986a4575a991ae85a4c922712689768e0",
+        "result.prune.in": "480f876b054ab3da21e714b8a24de33958eec6ce08266988b38e25f85a92d914",
+        "result.prune.out": "63118bae6b9e87306ae07e8fb1071e0349f65e394ec697f9ccc229f1f88ba1d7",
+        "stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout": "a1c7466af13a7e1ba93d263be6df4ea8fcbef51eff0cfb9f65d8fcecb6a28a88"
+      }
+    },
+    {
+      "engine": "plink1",
+      "label": "kb-legacy",
+      "command": [
+        "D:\\projects\\JLinAlg\\build\\omics-plink-official\\plink1\\plink.exe",
+        "--bfile",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\plink-runtime\\original-prune-contracts-2\\input\\known",
+        "--keep",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\plink-runtime\\original-prune-contracts-2\\input\\founders.keep",
+        "--extract",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\plink-runtime\\original-prune-contracts-2\\input\\variants.extract",
+        "--autosome",
+        "--threads",
+        "1",
+        "--memory",
+        "128",
+        "--keep-allele-order",
+        "--allow-no-sex",
+        "--indep-pairwise",
+        "50kb",
+        "1",
+        ".2",
+        "--out",
+        "result"
+      ],
+      "exit_code": 0,
+      "binary_sha256": "efc55270aba7216e4fcebdf781ee04e9fa556c2fe5be1f71c836ba73930a6b6b",
+      "retained": 86,
+      "removed": 5,
+      "files_sha256": {
+        "result.log": "2d3f5d1c1d22c6b1d748442a9381b8c242dfec90ed6a2d795a06a39269500c90",
+        "result.nosex": "991e79f778828fb114236ca237af8b6986a4575a991ae85a4c922712689768e0",
+        "result.prune.in": "45cd30a5c0355ad93d61ede038410d632ea3182b8614487fe72014f3da28ede2",
+        "result.prune.out": "db01c0c4584434c0a1700ec74842526eddf214ec279538e0380d8ea8ef7bf376",
+        "stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout": "1240cfa40345e35d92ca1a6b49ef6e7777b8284c215009c16029283a598c8987"
+      }
+    },
+    {
+      "engine": "plink2",
+      "label": "count-legacy",
+      "command": [
+        "D:\\projects\\JLinAlg\\build\\omics-plink-official\\plink2\\plink2.exe",
+        "--bfile",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\plink-runtime\\original-prune-contracts-2\\input\\known",
+        "--keep",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\plink-runtime\\original-prune-contracts-2\\input\\founders.keep",
+        "--extract",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\plink-runtime\\original-prune-contracts-2\\input\\variants.extract",
+        "--autosome",
+        "--threads",
+        "1",
+        "--memory",
+        "640",
+        "--no-psam-pheno",
+        "--indep-order",
+        "1",
+        "--indep-pairwise",
+        "20",
+        "5",
+        ".2",
+        "--out",
+        "result"
+      ],
+      "exit_code": 0,
+      "binary_sha256": "f498c754dd97b0010ae907fb92561f9cf5e2bca6fa15e0c527375077985f8105",
+      "retained": 87,
+      "removed": 4,
+      "files_sha256": {
+        "result.log": "1a0eee7b3d8d9041285212437a67df362f1412f177e6729f68d56dca64da8268",
+        "result.prune.in": "480f876b054ab3da21e714b8a24de33958eec6ce08266988b38e25f85a92d914",
+        "result.prune.out": "63118bae6b9e87306ae07e8fb1071e0349f65e394ec697f9ccc229f1f88ba1d7",
+        "stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout": "bea85422e1b43486e05567c26f07881ea5ee811ca80dabc8b9dde56a54340898"
+      }
+    },
+    {
+      "engine": "plink2",
+      "label": "kb-legacy",
+      "command": [
+        "D:\\projects\\JLinAlg\\build\\omics-plink-official\\plink2\\plink2.exe",
+        "--bfile",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\plink-runtime\\original-prune-contracts-2\\input\\known",
+        "--keep",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\plink-runtime\\original-prune-contracts-2\\input\\founders.keep",
+        "--extract",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\plink-runtime\\original-prune-contracts-2\\input\\variants.extract",
+        "--autosome",
+        "--threads",
+        "1",
+        "--memory",
+        "640",
+        "--no-psam-pheno",
+        "--indep-order",
+        "1",
+        "--indep-pairwise",
+        "50kb",
+        "1",
+        ".2",
+        "--out",
+        "result"
+      ],
+      "exit_code": 0,
+      "binary_sha256": "f498c754dd97b0010ae907fb92561f9cf5e2bca6fa15e0c527375077985f8105",
+      "retained": 86,
+      "removed": 5,
+      "files_sha256": {
+        "result.log": "e06a24a431d04846686c7923b9405ce3c17e3880d0ba41ea935599754c803ce0",
+        "result.prune.in": "45cd30a5c0355ad93d61ede038410d632ea3182b8614487fe72014f3da28ede2",
+        "result.prune.out": "db01c0c4584434c0a1700ec74842526eddf214ec279538e0380d8ea8ef7bf376",
+        "stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout": "fd49ef5af245530f7a60b1693056b6c97bd01cf70b5adc921bb2343c2f0a3ea2"
+      }
+    },
+    {
+      "engine": "plink2",
+      "label": "count-backward",
+      "command": [
+        "D:\\projects\\JLinAlg\\build\\omics-plink-official\\plink2\\plink2.exe",
+        "--bfile",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\plink-runtime\\original-prune-contracts-2\\input\\known",
+        "--keep",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\plink-runtime\\original-prune-contracts-2\\input\\founders.keep",
+        "--extract",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\plink-runtime\\original-prune-contracts-2\\input\\variants.extract",
+        "--autosome",
+        "--threads",
+        "1",
+        "--memory",
+        "640",
+        "--no-psam-pheno",
+        "--indep-order",
+        "2",
+        "--indep-pairwise",
+        "20",
+        "5",
+        ".2",
+        "--out",
+        "result"
+      ],
+      "exit_code": 0,
+      "binary_sha256": "f498c754dd97b0010ae907fb92561f9cf5e2bca6fa15e0c527375077985f8105",
+      "retained": 87,
+      "removed": 4,
+      "files_sha256": {
+        "result.log": "7758786f7188813eef9d7b5a081f8ac3c3f308e028abddb972a7b7b13a746096",
+        "result.prune.in": "480f876b054ab3da21e714b8a24de33958eec6ce08266988b38e25f85a92d914",
+        "result.prune.out": "63118bae6b9e87306ae07e8fb1071e0349f65e394ec697f9ccc229f1f88ba1d7",
+        "stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout": "1aa585ab0b80b41ea6aecfe06b9b7a5564d8fdc0f17f3e6707a68d4dd910c825"
+      }
+    },
+    {
+      "engine": "plink2",
+      "label": "kb-backward",
+      "command": [
+        "D:\\projects\\JLinAlg\\build\\omics-plink-official\\plink2\\plink2.exe",
+        "--bfile",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\plink-runtime\\original-prune-contracts-2\\input\\known",
+        "--keep",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\plink-runtime\\original-prune-contracts-2\\input\\founders.keep",
+        "--extract",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\plink-runtime\\original-prune-contracts-2\\input\\variants.extract",
+        "--autosome",
+        "--threads",
+        "1",
+        "--memory",
+        "640",
+        "--no-psam-pheno",
+        "--indep-order",
+        "2",
+        "--indep-pairwise",
+        "50kb",
+        "1",
+        ".2",
+        "--out",
+        "result"
+      ],
+      "exit_code": 0,
+      "binary_sha256": "f498c754dd97b0010ae907fb92561f9cf5e2bca6fa15e0c527375077985f8105",
+      "retained": 86,
+      "removed": 5,
+      "files_sha256": {
+        "result.log": "93b244b530c6cb91e8dcfdfb737fb8ccce1c0fc9fb2570c270bffb9a3e5ce97d",
+        "result.prune.in": "45cd30a5c0355ad93d61ede038410d632ea3182b8614487fe72014f3da28ede2",
+        "result.prune.out": "db01c0c4584434c0a1700ec74842526eddf214ec279538e0380d8ea8ef7bf376",
+        "stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout": "4884dcdb7dea1d853d29bf1b10d7d04249e4a3226588cb618965f3e858971dd1"
+      }
+    }
+  ],
+  "input_and_mask_sha256": {
+    "cases.tsv": "cf3ea44bb607caf95b9fcb63802413821b7e6efff2407893a106a6038e3145e2",
+    "known.bed": "c1572b2b7ff9776cf11ee061bc99b3e8c207a4ddda29b652b876b1a1195549b0",
+    "known.bim": "250fec46cfc1404e868577ef2aded450df8dfcb7655e25819f32c768ed0ef381",
+    "known.fam": "fadf6de77572f25939a7aa82fed44cd159fa050585c9ecfd002f95bc85de759b",
+    "plink1-count-legacy.in": "480f876b054ab3da21e714b8a24de33958eec6ce08266988b38e25f85a92d914",
+    "plink1-count-legacy.out": "63118bae6b9e87306ae07e8fb1071e0349f65e394ec697f9ccc229f1f88ba1d7",
+    "plink1-kb-legacy.in": "45cd30a5c0355ad93d61ede038410d632ea3182b8614487fe72014f3da28ede2",
+    "plink1-kb-legacy.out": "db01c0c4584434c0a1700ec74842526eddf214ec279538e0380d8ea8ef7bf376",
+    "plink2-count-backward.in": "480f876b054ab3da21e714b8a24de33958eec6ce08266988b38e25f85a92d914",
+    "plink2-count-backward.out": "63118bae6b9e87306ae07e8fb1071e0349f65e394ec697f9ccc229f1f88ba1d7",
+    "plink2-count-legacy.in": "480f876b054ab3da21e714b8a24de33958eec6ce08266988b38e25f85a92d914",
+    "plink2-count-legacy.out": "63118bae6b9e87306ae07e8fb1071e0349f65e394ec697f9ccc229f1f88ba1d7",
+    "plink2-kb-backward.in": "45cd30a5c0355ad93d61ede038410d632ea3182b8614487fe72014f3da28ede2",
+    "plink2-kb-backward.out": "db01c0c4584434c0a1700ec74842526eddf214ec279538e0380d8ea8ef7bf376",
+    "plink2-kb-legacy.in": "45cd30a5c0355ad93d61ede038410d632ea3182b8614487fe72014f3da28ede2",
+    "plink2-kb-legacy.out": "db01c0c4584434c0a1700ec74842526eddf214ec279538e0380d8ea8ef7bf376",
+    "samples.tsv": "c8fbcbdbc800bb7e36ee6e913cf86e6da0bb3f0616eabe8cbef10880829d00ad"
+  }
+}

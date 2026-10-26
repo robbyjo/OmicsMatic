@@ -4,9 +4,7 @@
  */
 package org.jlinalg.pipeline;
 
-import htsjdk.tribble.AbstractFeatureReader;
-import htsjdk.tribble.CloseableTribbleIterator;
-import htsjdk.tribble.FeatureReader;
+import htsjdk.tribble.readers.PositionalBufferedStream;
 import htsjdk.variant.bcf2.BCF2Codec;
 import htsjdk.variant.bcf2.BCFVersion;
 import htsjdk.variant.variantcontext.Allele;
@@ -16,12 +14,15 @@ import htsjdk.variant.vcf.VCFHeader;
 import htsjdk.variant.vcf.VCFIterator;
 import htsjdk.variant.vcf.VCFIteratorBuilder;
 import java.io.IOException;
+import java.io.BufferedInputStream;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
+import java.util.zip.GZIPInputStream;
 
 /**
  * Streaming VCF, BGZF VCF, or BCF additive dosage source backed by HTSJDK.
@@ -113,21 +114,29 @@ public final class VcfVariantSource implements VariantSource {
         String baseId = variant.hasID() ? variant.getID()
             : variant.getContig() + ":" + variant.getStart()
                 + ":" + variant.getReference().getDisplayString();
-        double quality = quality(variant);
         for (int alternateIndex = 0;
                 alternateIndex < alternates.size(); alternateIndex++) {
             Allele alternate = alternates.get(alternateIndex);
             double[] dosages = new double[order.length];
+            byte[] ploidies = new byte[order.length];
+            boolean fromDosage=false,fromCalls=false;
             for (int destination = 0; destination < order.length; destination++) {
                 Genotype genotype = variant.getGenotype(order[destination]);
-                dosages[destination] = dosage(genotype, alternate, alternateIndex,
-                    alternates.size());
+                Double ds=genotype==null?null:dosageAttribute(genotype.getAnyAttribute("DS"),alternateIndex,alternates.size());
+                dosages[destination] = ds!=null?ds:dosage(genotype, alternate, alternateIndex,alternates.size());
+                if(ds!=null)fromDosage=true;else if(genotype!=null)fromCalls=true;
+                int ploidy=genotype==null?0:genotype.getPloidy();
+                // A lone missing GT '.' does not establish haploidy.
+                if(ploidy==1&&genotype.getAlleles().stream().allMatch(Allele::isNoCall))ploidy=0;
+                if(ploidy>63)throw new IllegalArgumentException("VCF ploidy exceeds 63");
+                ploidies[destination]=(byte)ploidy;
             }
             String id = alternates.size() == 1 ? baseId
                 : baseId + ":" + alternate.getDisplayString();
             output.add(new VariantRecord(id, variant.getContig(),
                 variant.getStart(), variant.getReference().getDisplayString(),
-                alternate.getDisplayString(), dosages, quality));
+                alternate.getDisplayString(), dosages, quality(variant,alternateIndex,alternates.size()),
+                new VariantGenotypeMetadata(fromDosage?(fromCalls?VariantGenotypeMetadata.Origin.MIXED:VariantGenotypeMetadata.Origin.DOSAGE):VariantGenotypeMetadata.Origin.HARD_CALL,alternates.size()!=1,ploidies)));
         }
     }
 
@@ -178,11 +187,15 @@ public final class VcfVariantSource implements VariantSource {
         return Double.isFinite(value) ? value : null;
     }
 
-    private static double quality(VariantContext variant) {
+    private static double quality(VariantContext variant,int alternateIndex,int alternateCount) {
         for (String key : List.of("R2", "INFO", "DR2")) {
             if (!variant.hasAttribute(key)) continue;
-            double value = variant.getAttributeAsDouble(key, Double.NaN);
-            if (Double.isFinite(value) && value >= 0 && value <= 1) return value;
+            Object raw=variant.getAttribute(key);
+            if(raw==null)continue;
+            List<?> values=raw instanceof List<?> list?list:List.of(raw.toString().split(",",-1));
+            if(values.size()!=1&&values.size()!=alternateCount)continue;
+            Double value=parseDosage(values.get(values.size()==1?0:alternateIndex).toString());
+            if (value!=null && value >= 0 && value <= 1) return value;
         }
         return Double.NaN;
     }
@@ -206,25 +219,29 @@ public final class VcfVariantSource implements VariantSource {
     }
 
     private static final class BcfCursor implements Cursor {
-        private final FeatureReader<VariantContext> reader;
-        private final CloseableTribbleIterator<VariantContext> iterator;
+        private final Bcf21Or22Codec codec=new Bcf21Or22Codec();
+        private final PositionalBufferedStream source;
         private final VCFHeader header;
 
         private BcfCursor(Path path) throws IOException {
-            reader = AbstractFeatureReader.getFeatureReader(
-                path.toString(), new Bcf21Or22Codec(), false);
-            Object value = reader.getHeader();
-            if (!(value instanceof VCFHeader parsed))
-                throw new IOException("BCF header is missing or invalid: " + path);
-            header = parsed;
-            iterator = reader.iterator();
+            var raw=new BufferedInputStream(Files.newInputStream(path),65536);
+            PositionalBufferedStream opened=null;
+            try{
+                raw.mark(2);int a=raw.read(),b=raw.read();raw.reset();
+                // Standard BCF is BGZF-compressed despite using the plain .bcf suffix.
+                // Decode compression by magic; suffix-based FeatureReader selection
+                // otherwise passes the gzip header directly to the BCF codec.
+                opened=codec.makeSourceFromStream(a==31&&b==139?new GZIPInputStream(raw,65536):raw);source=opened;
+                Object value=codec.readHeader(source).getHeaderValue();
+                if(!(value instanceof VCFHeader parsed))throw new IOException("BCF header is missing or invalid: "+path);
+                header=parsed;
+            }catch(IOException|RuntimeException invalid){if(opened!=null)codec.close(opened);else try{raw.close();}catch(IOException close){invalid.addSuppressed(close);}throw invalid;}
         }
         @Override public VCFHeader header() { return header; }
-        @Override public boolean hasNext() { return iterator.hasNext(); }
-        @Override public VariantContext next() { return iterator.next(); }
+        @Override public boolean hasNext() { return !codec.isDone(source); }
+        @Override public VariantContext next() { return codec.decode(source); }
         @Override public void close() throws IOException {
-            iterator.close();
-            reader.close();
+            codec.close(source);
         }
     }
 

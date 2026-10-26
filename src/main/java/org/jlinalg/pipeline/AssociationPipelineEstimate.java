@@ -14,4 +14,10 @@ public record AssociationPipelineEstimate(
         double degreesOfFreedom,
         double pValue,
         double log10PValue,
-        double negativeLog10PValue) { }
+        double negativeLog10PValue,
+        java.util.Map<String,String> inference) {
+    public AssociationPipelineEstimate { inference=java.util.Map.copyOf(inference); }
+    public AssociationPipelineEstimate(VariantRecord variant,VariantStatistics statistics,double beta,double se,double statistic,double df,double p,double logP,double minusLogP) {
+        this(variant,statistics,beta,se,statistic,df,p,logP,minusLogP,java.util.Map.of());
+    }
+}

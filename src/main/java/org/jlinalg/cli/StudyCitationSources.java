@@ -29,7 +29,7 @@ final class StudyCitationSources {
             throw new IOException("Reference request needs schema_version: 1 and 1 to 50 references");
         for (Object raw : list(spec.get("references"))) {
             var r = map(raw); String id = StudyReferenceCatalog.normalize(text(r.get("id")));
-            if (!r.keySet().equals(Set.of("id", "rationale")) || text(r.get("rationale")).isBlank()
+            if (!r.keySet().containsAll(Set.of("id", "rationale")) || !Set.of("id","rationale","full_text").containsAll(r.keySet()) || r.containsKey("full_text")&&!(r.get("full_text") instanceof Boolean) || text(r.get("rationale")).isBlank()
                 || !(id.matches("pmid:[1-9][0-9]*") || id.matches("10\\.[0-9]{4,9}/[^\\s\\\"\\[\\]{}]+")))
                 throw new IOException("Each public reference needs a DOI or pmid:ID and a local scientific rationale");
         }
@@ -39,7 +39,7 @@ final class StudyCitationSources {
         for (String folder : List.of("metadata", "artifacts", "scripts", "logs")) Files.createDirectory(out.resolve(folder));
         Files.copy(request, out.resolve("metadata/request.yaml")); Files.copy(contract, out.resolve("metadata/resolved-study.yaml"));
         var context = new Context(project, out, Map.of("type", "reference_acquisition", "hypothesis", "manuscript"), study, Map.of(), Map.of());
-        List<Object> queries = new ArrayList<>(); boolean complete = true;
+        List<Object> queries = new ArrayList<>();List<Object> fullTexts=new ArrayList<>(); boolean complete = true;
         for (Object raw : list(spec.get("references"))) {
             var r = map(raw); String id = StudyReferenceCatalog.normalize(text(r.get("id"))), rationale = text(r.get("rationale"));
             String query = id.startsWith("pmid:") ? "EXT_ID:" + id.substring(5) + " AND SRC:MED" : "DOI:\"" + id + "\"";
@@ -59,16 +59,20 @@ final class StudyCitationSources {
                 }
             }
             complete &= !articles.isEmpty();
+            if(Boolean.TRUE.equals(r.get("full_text")))fullTexts.add(StudyReferenceText.fetch(context,client,articles,id,rationale,fullTexts.size()+1));
             queries.add(Map.of("requested_reference", id, "query", query, "scientific_rationale", rationale,
                 "status", articles.isEmpty() ? "unresolved" : "candidate_matches", "articles", articles, "audit", response.audit(),
                 "search_strategy", "exact_identifier", "source_manifest", "metadata/manifest.yaml"));
         }
         write(out.resolve("artifacts/queries.yaml"), Map.of("queries", queries));
+        write(out.resolve("artifacts/full-text-sources.yaml"),Map.of("sources",fullTexts,"interpretation","Bibliographic acquisition and full-text availability have separate statuses. Unavailable text is not evidence of absent biological support; title/abstract matches do not become full-text reads."));
+        var sourceTemplate=new ArrayList<Object>();for(Object raw:fullTexts){var source=map(raw);if(!"available".equals(source.get("status")))continue;sourceTemplate.add(Map.of("id",source.get("id"),"reference",source.get("reference"),"path",out.resolve(text(source.get("text_file"))).toString(),"sha256",source.get("sha256"),"scope","full_text","public_literature",true,"provenance","Native Europe PMC JATS projection; inspect the pinned acquisition manifest, raw response, license and scope limitations"));}
+        write(out.resolve("artifacts/finding-review-source-template.yaml"),Map.of("source_texts",sourceTemplate,"instructions","Copy these entries into finding_review.source_texts. Add reference_bundle: {manifest: ABSOLUTE_METADATA_MANIFEST, sha256: SHA256_OF_CLOSED_MANIFEST} to verify native acquisition membership; source interpretation remains unreviewed."));
         write(out.resolve("artifacts/reference-catalog.yaml"), StudyReferenceCatalog.build(queries));
         Files.writeString(out.resolve("artifacts/reference-catalog.html"), StudyReferenceCatalog.html(StudyReferenceCatalog.build(queries)));
         write(out.resolve("logs/requests.yaml"), Map.of("requests", client.requests()));
         write(out.resolve("metadata/software-versions.yaml"), Map.of("jlinalg", JLinAlgCli.version(), "java", System.getProperty("java.runtime.version"), "actor", actor.asMap()));
-        Files.writeString(out.resolve("metadata/README.md"), "# Native public reference acquisition\n\nExact public DOI/PMID queries only; no manuscript text, local rationale, study files or patient rows transmitted. Europe PMC core records and publisher-deposited Crossref fallback metadata are archived with requests, timing and response hashes. Retrieval is not verification of claim support. Unknown identifiers and blocked queries remain unresolved. This command respects the source study's transmission/download policy and --offline. Import the manifest with its SHA-256 as reference_bundles in a new offline manuscript revision. Source contract: " + contract + "\n");
+        Files.writeString(out.resolve("metadata/README.md"), "# Native public reference acquisition\n\nExact public DOI/PMID queries only; no manuscript text, local rationale, study files or patient rows transmitted. Europe PMC core records and publisher-deposited Crossref fallback metadata are archived with requests, timing and response hashes. Optional per-reference full_text: true requests PMCID-matched public JATS text under the same network/download policy. Raw responses, identity-checked local projections, licenses and unavailable dispositions are retained in full-text-sources.yaml; no image or external supplement is fetched. Metadata completion does not imply full-text availability. finding-review-source-template.yaml supplies local source entries; pin the closed native manifest when using reference_bundle source binding. Retrieval is not verification of claim support. Unknown identifiers and blocked queries remain unresolved. This command respects the source study's transmission/download policy and --offline. Import the manifest with its SHA-256 as reference_bundles in a new offline manuscript revision. Source contract: " + contract + "\n");
         Files.writeString(out.resolve("SESSION_HISTORY.md"), started + " - JLinAlg public reference acquisition; actor " + actor.asMap() + "; outcome " + (complete ? "complete" : "needs_input") + ". No analyses or source contract modified.\n");
         if (!requestHash.equals(FollowupSupport.hash(request)) || !contractHash.equals(FollowupSupport.hash(contract))) throw new IOException("Reference request or study policy changed during acquisition");
         Map<String, Object> hashes = new LinkedHashMap<>();

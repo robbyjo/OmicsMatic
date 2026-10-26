@@ -2,7 +2,7 @@
  * SPDX-License-Identifier: GPL-3.0-or-later */
 package org.jlinalg.survival;
 
-/** Log-time score tests for coefficient-specific and global PH departures. */
+/** Efficient log-time PH score tests after profiling fitted baseline coefficients. */
 public record CoxProportionalHazardsTest(
         double[] statistics,
         double[] pValues,

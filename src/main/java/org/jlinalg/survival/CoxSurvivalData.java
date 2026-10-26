@@ -4,6 +4,12 @@ package org.jlinalg.survival;
 
 /** Validated right-censored or counting-process survival response. */
 public final class CoxSurvivalData {
+    /** Explicit 0/1 coding; other conventions must be recoded, never silently censored. */
+    public static boolean[] eventIndicators(double[] values){
+        if(values==null)throw new IllegalArgumentException("Cox event indicators required");boolean[] result=new boolean[values.length];
+        for(int i=0;i<values.length;i++){if(values[i]!=0 && values[i]!=1)throw new IllegalArgumentException("Cox event indicators must be finite 0 (censored) or 1 (event); recode other conventions explicitly");result[i]=values[i]==1;}
+        return result;
+    }
     private final double[] start;
     private final double[] stop;
     private final boolean[] event;

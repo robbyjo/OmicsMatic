@@ -6,6 +6,64 @@ It uses [JDistlib](https://github.com/robbyjo/JDistlib) for numerical computatio
 Rare-variant APIs and the `rare-meta` CLI include Burden, SKAT, SKAT-O,
 ACAT-V, and canonical six-component ACAT-O tests.
 
+The source-build [250-paper omics/GWAS review](docs/literature/omics-2023-2026/README.md)
+catalogs recent Nature, Nature Genetics and AJHG tool use and tracks missing
+integrations. Open the [searchable local catalog](site/literature-review.html)
+and its [warnings and required actions](docs/literature/omics-2023-2026/WARNINGS.md).
+The [enrichment guide](docs/literature/omics-2023-2026/ENRICHMENT_WORKFLOWS.md)
+covers native Java running scores and typed original clusterProfiler, fgsea and
+legacy DOSE workflows, with explicit testing families, engine differences,
+private runtime setup and actionable skip/error reports. VIPER/aREA validation
+remains held pending applicable license eligibility.
+New source commands include `signature-score`, `intervals`, `cell-embed`, `sequence-qc`, `sequence-tools`, `alignment-tools`, `hts-tools`, `read-align`, and `gatk-tools`;
+`cell-embed --method tsne` provides native exact 2D t-SNE without Python.
+The [native FLASH guide](docs/literature/omics-2023-2026/FLASH_WORKFLOWS.md) adds
+`flash-reads` for Java paired-read merging without external software, with actual
+original-program references, explicit encoding, header mappings and failure recovery.
+The [PLINK source review](docs/literature/omics-2023-2026/PLINK_SOURCE_REVIEW.md)
+separates release families, cohort-specific QC/GWAS/score settings and data-format
+mentions, with explicit limits on the original reference work and pending adapter.
+The [native genotype-score guide](docs/literature/omics-2023-2026/GENOTYPE_SCORE_WORKFLOWS.md)
+adds Java supplied-weight BED scoring with explicit effect/other alleles,
+frequencies, missing policies and score denominators. It includes a small
+synthetic input bundle and tested Java API example. Failures quarantine partials
+and explain recovery; original QC/PCA/GWAS adapters remain in progress.
+The [DNA motif guide](docs/literature/omics-2023-2026/FIMO_WORKFLOWS.md) adds
+native Java `motif-scan` without external software and a tested original FIMO
+P/q adapter, `fimo-tools`. Explicit backgrounds, cohorts and P/q choices,
+dependency skips, stored-hit truncation, uncomputed-q placeholders and exact
+recovery instructions are prominent.
+The [original Trim Galore guide](docs/literature/omics-2023-2026/TRIM_GALORE_WORKFLOWS.md)
+adds tested original 0.6.7/0.6.10 adapter/quality workflows and optional FastQC,
+with explicit encoding, UTF-8 input recipes and actionable skip/error reports.
+The [native read guide](docs/trim-galore-native-reads.md) covers Java hard
+trimming and ordinary post-Cutadapt finalization without external dependencies.
+`sequence-qc` provides pinned Cutadapt, FastQC and MultiQC workflows with retained reports and actionable failure/skip diagnostics.
+`cell-embed` also accepts supplied weighted graphs for Leiden/Louvain. `alignment-tools` runs four typed, checksum-pinned Picard operations and prominently reports validation findings and recovery actions.
+The [SAMtools/BCFtools guide](docs/literature/omics-2023-2026/HTS_WORKFLOWS.md) covers native FASTA indexing and eleven tested alignment, pileup and variant workflows with private Windows runtime setup and explicit calling assumptions.
+The [BWA/Bowtie 2 guide](docs/literature/omics-2023-2026/ALIGNMENT_WORKFLOWS.md) adds reference-bound read mapping with tested paired, local, dovetail and split-read behavior, plus clear installation/build recovery steps.
+The [native sequence guide](docs/literature/omics-2023-2026/NATIVE_SEQUENCE_WORKFLOWS.md) adds Java subsampling, length/quality trimming, indexed extraction and terminal-repeat scoring with independent seqtk references and actionable warnings.
+The [GATK guide](docs/literature/omics-2023-2026/GATK_WORKFLOWS.md) covers germline calling, gVCF combination/genotyping, annotation filters and explicit model/missing-value contracts. Cutadapt empty outputs and source FastQC findings now remain prominent through MultiQC aggregation.
+The [STAR guide](docs/literature/omics-2023-2026/STAR_WORKFLOWS.md) adds native GTF checks, splice alignment, two-pass modes and raw strand-specific gene counts, with tested Windows source fixes and prominent filter/dependency warnings.
+The [native genomic-signal guide](docs/literature/omics-2023-2026/GENOMIC_SIGNAL_WORKFLOWS.md) adds length-weighted bedGraph summaries and state/genome enrichment with explicit missing-data, reference and pseudocount choices.
+The [native track-peak guide](docs/literature/omics-2023-2026/TRACK_PEAK_WORKFLOWS.md) adds threshold/gap/span calling and plateau summits, checked against actual MACS track-command references. Alignment-based MACS calling remains unavailable on the tested Windows runtime.
+
+The [REGENIE guide](docs/literature/omics-2023-2026/REGENIE_WORKFLOWS.md) adds native Java sample/table/model checks, sealed whole-genome fits, quantitative/binary variant tests and gene masks through a pinned upstream runtime. Phenotype coding, missingness, alleles and correction choices are explicit; unavailable dependencies skip with exact recovery steps.
+
+The [Java coordinate-conversion guide](docs/literature/omics-2023-2026/COORDINATE_LIFT_WORKFLOWS.md) adds explicit chain/reference mapping, reciprocal checks and per-interval unmapped diagnostics without an external runtime. Allele harmonization and complete UCSC/R/CrossMap workflows remain separate.
+
+The [RNA alignment and counting guide](docs/literature/omics-2023-2026/RNA_ALIGNMENT_COUNTING_WORKFLOWS.md) adds featureCounts gene/peak/junction counting, minimap2 read/assembly mapping, HISAT2 RNA alignment, and native Java annotation, splice, PAF and count-normalization helpers. Read/pair units, strand, missing tags, compiler warnings and dependency recovery are explicit.
+
+The [single-cell QC and SCTransform guide](docs/literature/omics-2023-2026/SINGLE_CELL_QC_WORKFLOWS.md) adds native sparse counts, doublet-score and NB residual helpers plus original Scrublet and distinct R VST/Seurat adapters. Exact cell identities, raw versus estimated counts, regression, expression layers and actionable runtime/model warnings are explicit.
+
+The [MAGMA guide](docs/literature/omics-2023-2026/MAGMA_WORKFLOWS.md) adds native gene-window mapping and tested original gene, gene-set, property and conditional/joint models. Build/LD/sample-size contracts, raw zero coding, excluded genes and private runtime terms are explicit.
+
+The [read-trimming guide](docs/literature/omics-2023-2026/TRIMMOMATIC_WORKFLOWS.md) adds thirteen native Java quality/length/MAXINFO steps and original Trimmomatic0.39/0.41 adapter clipping. Step order, forward-only cropping, Phred encoding, four paired/orphan outputs and exact Java/runtime recovery are explicit; older0.32/0.36 parity remains unvalidated.
+
+The [native quantile-normalization guide](docs/literature/omics-2023-2026/QNORM_WORKFLOWS.md) adds Java column normalization, explicit targets/ties, exact raw-integer checks and model warnings. The [native transcript-import guide](docs/literature/omics-2023-2026/TXIMPORT_WORKFLOWS.md) documents Salmon/kallisto/RSEM estimate import, gene summarization and tximport count scaling in Java, with exact IDs, explicit omissions, length-offset warnings and no R runtime requirement. The [deepTools guide](docs/literature/omics-2023-2026/DEEPTOOLS_WORKFLOWS.md) documents native signal arithmetic and eight tested original workflows through Java, including matrices, profiles, heatmaps, BAM summaries and correlations. Reusable model identities, missing/zero policies, ATAC sequence/quality/all-tag loss, figure limitations and dependency recovery are prominent.
+It also provides native fixed-span clipping (`--method trim-fixed`); Harmony has an explicit tested R engine for Windows (`--engine r`).
+The broader implementation goal remains in progress.
+
 ## Choose your degree of AI collaboration
 
 JLinAlg v0.3.7 combines deterministic statistical execution with optional AI
@@ -98,6 +156,16 @@ and [six network workflows](docs/vignettes/network-followup.md), including WGCNA
 GENIE3 and CARNIVAL adapters. These use explicit local/remote data sources and
 audited outputs. The study pipeline also offers separately opted-in AI assistance.
 
+The [analysis pipeline specification](docs/vignettes/analysis-pipeline-specification.md)
+describes the complete scientific workflow, improved pseudocode, primary and
+sensitivity rules, GWAS QC and rare-variant testing, annotation/AlphaGenome
+scoring, protein AlphaFold follow-up, AI selection of 3–5 principal findings
+and an 8,000-word manuscript budget. It distinguishes current capabilities
+from planned extensions. The source branch now enforces MAC >= 20 by default
+for CLI genotype scans and resolves explicit study QC/model/manuscript policies;
+the [implementation checklist](docs/analysis-pipeline-implementation.md) tracks
+the remaining workflow requirements and verification.
+
 The source build includes the [auditable omics research pipeline](docs/vignettes/auditable-omics-pipeline.md):
 a minimal versioned study contract, deterministic planning and approval,
 matrix- or result-first execution, immutable amendments, hash-chained evidence,
@@ -123,24 +191,78 @@ fine-mapping, colocalization, MR, or literature inputs become explicit indexed
 blockers while independent evidence branches continue. Autonomous LLM orchestration
 and certified submission workflows remain future work.
 
+See [cross-cohort module preservation](docs/vignettes/study-pipeline-tutorial.md#cross-cohort-module-preservation) for frozen-module node/edge/sign transfer across native and supplied graphs.
+
+Source builds add [source-specific GWAS QQ and Manhattan diagnostics](docs/vignettes/study-pipeline-tutorial.md#gwas-qq-and-manhattan-diagnostics),
+with declared export coverage, frequency/count/test strata and descriptive
+calibration context that preserves original P values and primary inference.
+
+Source builds support [scientific scope checks and partial cohort-network reuse](docs/vignettes/study-pipeline-tutorial.md#scientific-scope-and-missing-cohort-networks):
+retain supplied graph scopes, complete only uncovered dataset graphs, or select
+an explicit supplied-only policy. Known target/context conflicts hold imports;
+original source notes remain local for scientific review.
+
+Source builds also execute [native preranked GSEA](docs/vignettes/study-pipeline-tutorial.md#native-ranked-gsea-and-leading-edge-pathway-networks)
+from complete gene rankings or scoped association/meta-analysis results, with
+exact/seeded gene-set nulls, leading edges, BH/BY correction and PNG/PDF curves.
+The resulting pathways connect to overlap networks, modules and joint module GO.
+Supplied analyses can satisfy completed stages while missing work continues.
+Phenotype/block-aware GSEA nulls remain separate work; the native correction
+differs from Broad's empirical GSEA FDR.
+
+Source builds add [LD-aware GWAS functional-category enrichment](docs/vignettes/study-pipeline-tutorial.md#ld-aware-gwas-functional-category-enrichment)
+through overlapping binary-annotation S-LDSC, with a complete calibrated GWAS
+source, matched LD/reference moments, SNP QC, target-family correction,
+supplied-stage reuse and aggregate finding dossiers. Continuous annotation and
+multi-ancestry models, reference construction and real genome-wide acceptance
+remain separate work.
+
+The source build adds [held-out risk-score workflows](docs/vignettes/study-pipeline-tutorial.md#held-out-risk-scores-and-missing-related-phenotype-work):
+explicit training/tuning/evaluation partitions, quantitative molecular-score
+development from cohort matrices or participant tables, complete frozen-model
+reuse, external weights/scores, conditional cluster-bootstrap metrics and a
+separate related-phenotype correction family. Supplied score evaluation can
+remain intact while only missing related-trait tests run. Native binary/survival
+development, nested CV and genome-wide LD-aware scoring remain future work.
+
+The source build also adds [native protein structure context](docs/vignettes/study-pipeline-tutorial.md#exact-protein-sequences-structures-and-confidence):
+exact sequence/isoform/taxon checks, supplied PDB/mmCIF assessment, versioned
+AlphaFold DB retrieval, explicit pLDDT and directional PAE, residue/peptide/variant
+context and local PNG/PDF/HTML views. Supplied summaries skip execution; missing
+assessments and configured prediction can run independently. Configured-process
+fixtures and live retrieval are verified; new AlphaFold inference and biological
+structure/interface validation remain unverified.
+
 For hypotheses with two or more result tables, the study pipeline automatically
 creates every pairwise effect scatterplot as PNG and PDF, with the Pearson
 correlation shown to four decimals in the legend. Pairs sharing a cohort ID are
 labeled within-cohort phenotype comparisons; pairs from different cohorts are
 labeled cross-cohort comparisons. Discovery/replication operations also create
-two-set Venn diagrams. With at least three named cohorts and a completed
-meta-analysis, JLinAlg automatically reruns leave-one-cohort-out replication and
-meta-analysis. An omission that raises the pairwise replication fraction and
-lowers mean I-squared is featured as a labeled sensitivity result; the complete
-all-cohort analysis remains primary unless a prespecified rationale or reviewed
-amendment says otherwise.
+two-set Venn diagrams. Source builds add
+[multiway cohort overlap and registered heterogeneity diagnostics](docs/vignettes/study-pipeline-tutorial.md#multiway-cohort-overlap-and-registered-heterogeneity):
+exact membership tables, two/three-set Venn and UpSet PNG/PDF views, frozen
+validation families and configurable I-squared or corrected Q-test alerts.
+With at least three named cohorts, leave-one-cohort-out analysis runs by default;
+registered rules can make it conditional on completed diagnostic alerts or disable
+it. Paired influence uses the same eligible features in each comparison and
+retains directions, intervals, source counts and source-family adjusted P values.
+Supplied overlap/heterogeneity results can complete those stages without refitting.
+The registered all-cohort analysis remains primary; an exploratory omission
+cannot replace it merely by lowering heterogeneity or increasing hit overlap.
+Source builds add [complete colocalization records and regional coverage](docs/vignettes/study-pipeline-tutorial.md#complete-colocalization-records-and-regional-coverage):
+pre-restriction source inventories, observed versus candidate matching, position gaps,
+all signal pairs and registered prior grids, convergence/fallback and explicit
+partial-data grades/caveats. Supplied multi-signal results retain their source fields
+without refitting. Colocalization has its own optional feature cap and no default
+posterior decision threshold; it never supplies association FDR or causal direction.
+
 The [bioinformatics evidence workflow](docs/vignettes/bioinformatics-evidence.md)
 adds audited public-source discovery, reviewed regional fine-mapping/colocalization/MR,
 protein and reference-sequence investigation, non-LLM literature search, per-feature
 candidate evidence, and local evidence archives. A separate offline synthetic example
 exercises the numerical chain; missing scientific inputs remain explicit questions.
 MR defaults to all eligible measured transcripts, proteins or probes passing the
-configured full-family BH threshold (`FDR < 0.05` by default), independently of
+configured full-family adjusted-P threshold (BH `FDR < 0.05` by default), independently of
 contextual search limits. `analysis.bioinformatics.mr.max_features` is an optional
 explicit cap, not a default top-N selection; existing explicit caps remain honored.
 Source/assay and instrument prerequisites still apply. This changes future default

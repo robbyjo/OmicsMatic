@@ -345,6 +345,19 @@ public final class StatisticalTests {
             "exact conditional minimum-likelihood enumeration");
     }
 
+    /** Two-sided or directional central Fisher P value without odds-ratio/interval optimization. */
+    public static double fisherExactPValue(long[][] table,Alternative alternative) {
+        requireTwoByTwo(table);Objects.requireNonNull(alternative,"alternative");
+        if(StatisticsSupport.total(table,2,2)==0)throw new IllegalArgumentException("contingency table total must be positive");
+        ConditionalTableDistribution distribution=ConditionalTableDistribution.from(table);
+        int observed=Math.toIntExact(table[0][0]);double[] probabilities=distribution.probabilities(1.0);
+        return switch(alternative) {
+            case LESS -> distribution.tail(probabilities,observed,false);
+            case GREATER -> distribution.tail(probabilities,observed,true);
+            case TWO_SIDED -> distribution.minimumLikelihoodTail(probabilities,observed,FISHER_RELATIVE_ERROR);
+        };
+    }
+
     /** Fisher's exact conditional test for a 2-by-2 table. */
     public static StatisticalTestResult fisherExact(
             long[][] table, double nullOddsRatio, Alternative alternative,

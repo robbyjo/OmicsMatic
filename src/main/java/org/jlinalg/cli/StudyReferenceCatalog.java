@@ -37,9 +37,10 @@ final class StudyReferenceCatalog {
         for (Object raw : queries) {
             Map<String, Object> query = map(raw);
             if (query.containsKey("search_strategy")) searches.add(select(query, List.of("source_operation", "source_manifest", "query", "search_strategy",
-                "phenotype", "gene_symbol", "cohort_id", "cohort_name", "methods_role", "requested_reference", "page", "status", "hit_count", "search_limited", "audit", "retrieval", "scientific_rationale")));
+                "phenotype", "gene_symbol", "cohort_id", "cohort_name", "methods_role", "requested_reference", "page", "status", "hit_count", "search_limited", "audit", "retrieval", "scientific_rationale", "execution_origin", "supplied_artifact", "supplied_query_id", "searched_at", "declared_status", "declared_coverage", "supplied_source", "reuse_disposition")));
             for (Object item : list(query.get("articles"))) {
                 Map<String, Object> article = map(item); Set<String> ids = identifiers(article);
+                if(!article.containsKey("metadata_origins")&&map(query.get("retrieval")).containsKey("response_sha256"))article.put("metadata_origins",List.of("provider_response_metadata"));
                 if (ids.isEmpty()) ids.add("unresolved:" + digest(StudyAssistance.json(article)));
                 List<Map<String, Object>> matches = new ArrayList<>();
                 for (String id : ids) if (aliases.containsKey(id) && matches.stream().noneMatch(m -> m == aliases.get(id))) matches.add(aliases.get(id));
@@ -53,7 +54,7 @@ final class StudyReferenceCatalog {
                         aliases.replaceAll((key, value) -> value == other ? record : value);
                     }
                 }
-                Map<String, Object> occurrence = select(query, List.of("source_operation", "source_manifest", "search_strategy", "query", "scientific_rationale", "phenotype", "gene_symbol", "feature_id", "cohort_id", "cohort_name", "methods_role", "requested_reference", "page", "audit", "retrieval"));
+                Map<String, Object> occurrence = select(query, List.of("source_operation", "source_manifest", "search_strategy", "query", "scientific_rationale", "phenotype", "gene_symbol", "feature_id", "cohort_id", "cohort_name", "methods_role", "requested_reference", "page", "audit", "retrieval", "execution_origin", "supplied_artifact", "supplied_query_id", "searched_at", "declared_status", "declared_coverage", "supplied_source", "reuse_disposition"));
                 article.put("identifiers", new ArrayList<>(ids)); article.put("retrieval_context", List.of(occurrence));
                 merge(record, article);
                 for (Object id : list(record.get("identifiers"))) aliases.put(id.toString(), record);
@@ -82,7 +83,7 @@ final class StudyReferenceCatalog {
     private static void merge(Map<String, Object> target, Map<String, Object> source) {
         // Excerpt, offsets, status and audit must come from the same occurrence.
         // An earlier record may have no abstract, or a duplicate may lack its quote.
-        if (!target.containsKey("excerpt") && source.containsKey("excerpt")) {
+        if (source.containsKey("excerpt")&&(!target.containsKey("excerpt")||"verified_literal_substring_of_normalized_abstract".equals(source.get("excerpt_status"))&&!"verified_literal_substring_of_normalized_abstract".equals(target.get("excerpt_status")))) {
             target.keySet().removeIf(key -> key.startsWith("excerpt"));
             source.forEach((key, value) -> { if (key.startsWith("excerpt") || key.equals("source_audit")) target.put(key, value); });
             target.put("excerpt_retrieval_context", source.getOrDefault("excerpt_retrieval_context", source.getOrDefault("retrieval_context", List.of())));
@@ -90,7 +91,7 @@ final class StudyReferenceCatalog {
         for (var e : source.entrySet()) {
             String key = e.getKey(); Object value = e.getValue();
             if (target.containsKey("excerpt") && (key.startsWith("excerpt") || key.equals("source_audit"))) continue;
-            if (List.of("identifiers", "retrieval_context", "metadata_conflicts").contains(key)) {
+            if (List.of("identifiers", "retrieval_context", "metadata_conflicts", "metadata_origins").contains(key)) {
                 List<Object> merged = new ArrayList<>(list(target.get(key))); for (Object v : list(value)) if (!merged.contains(v)) merged.add(v); target.put(key, merged);
             } else if (!target.containsKey(key) || text(target.get(key)).isBlank()) target.put(key, value);
             else if (List.of("doi", "pmid", "pmcid", "title", "authorString", "pubYear", "journalInfo").contains(key)
@@ -118,16 +119,17 @@ final class StudyReferenceCatalog {
         return result;
     }
     private static Map<String, Object> strategyCoverage(List<Object> searches) {
-        List<Object> strategies = new ArrayList<>(); boolean incomplete = false;
+        List<Object> strategies = new ArrayList<>(); boolean incomplete = false;boolean hasSupplied=false,hasNative=false;
         for (String strategy : StudyIntroduction.SEARCH_STRATEGIES) {
             List<Map<String, Object>> rows = searches.stream().map(StudyPublicEvidence::map).filter(q -> strategy.equals(q.get("search_strategy"))).toList();
-            boolean blocked = rows.stream().anyMatch(q -> !Set.of("candidate_matches", "no_matches").contains(q.get("status")));
+            boolean blocked = rows.stream().anyMatch(q -> !StudySuppliedLiterature.completed(q));
             boolean limited = rows.stream().anyMatch(q -> Boolean.TRUE.equals(q.get("search_limited")));
-            String status = rows.isEmpty() ? "not_searched" : blocked ? "incomplete_connection_or_policy" : limited ? "bounded_results_truncated" : "bounded_search_completed";
-            strategies.add(Map.of("strategy", strategy, "status", status, "pages", rows.size()));
+            boolean external=rows.stream().anyMatch(q->"externally_produced".equals(q.get("execution_origin")));boolean nativeRows=rows.stream().anyMatch(q->!"externally_produced".equals(q.get("execution_origin")));hasSupplied|=external;hasNative|=nativeRows;
+            String status = rows.isEmpty() ? "not_searched" : blocked ? "incomplete_connection_or_policy" : limited ? "bounded_results_truncated" : external&&!nativeRows?"source_reported_bounded_search_completed":"bounded_search_completed";
+            strategies.add(Map.of("strategy", strategy, "status", status, "pages", rows.size(),"source_reported_records",rows.stream().filter(q->"externally_produced".equals(q.get("execution_origin"))).count(),"native_or_legacy_records",rows.stream().filter(q->!"externally_produced".equals(q.get("execution_origin"))).count()));
             incomplete |= rows.isEmpty() || blocked || limited;
         }
-        return Map.of("status", incomplete ? "additional_search_or_input_required" : "bounded_coverage_complete_scientific_review_required",
+        return Map.of("status", incomplete ? "additional_search_or_input_required" : hasSupplied&&!hasNative?"source_reported_coverage_complete_scientific_review_required":"bounded_coverage_complete_scientific_review_required",
             "strategies", strategies, "sufficiency", "Not established by article counts or query completion. Scientist/advisor must assess topic and synonym coverage, source quality, relevance, contrary findings and database/date limits.");
     }
     static Set<String> identifiers(Map<String, Object> article) {
@@ -149,7 +151,7 @@ final class StudyReferenceCatalog {
     }
     static Map<String, Object> publicMetadata(Map<String, Object> reference) {
         var result = select(reference, List.of("reference_id", "identifiers", "doi", "pmid", "pmcid", "title", "authorString", "pubYear", "journal",
-            "source_url", "excerpt", "excerpt_scope", "review_status", "citation_eligible", "metadata_conflicts", "commentCorrectionList"));
+            "source_url", "excerpt", "excerpt_scope", "excerpt_status", "metadata_origins", "source_authentication", "review_status", "citation_eligible", "metadata_conflicts", "commentCorrectionList"));
         result.put("citation_purposes", list(reference.get("retrieval_context")).stream().map(StudyPublicEvidence::map)
             .filter(q -> q.containsKey("methods_role")).map(q -> select(q, List.of("methods_role", "cohort_name"))).distinct().toList());
         return result;

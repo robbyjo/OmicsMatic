@@ -14,6 +14,9 @@ registered operations described below; unsupported evidence steps stop with a
 visible request rather than fabricating a result.</p>
 </blockquote>
 <h2 id="purpose">Purpose</h2>
+<p>The <a href="analysis-pipeline-specification.html">analysis pipeline specification</a> defines
+the end-to-end scientific workflow and decision rules, with improved pseudocode
+and an explicit map of current capabilities and proposed extensions.</p>
 <p>The pipeline starts from quantified or processed molecular matrices,
 previously calculated association results, or later-stage evidence. A scientist
 describes the study and hypotheses; JLinAlg validates the description, constructs
@@ -764,12 +767,19 @@ modality-specific operation. Likewise, raw or merely quantified matrices require
 an explicit <code>analysis.association</code> model and preprocessing decision. For
 discovery/replication, both discovery selection and replication significance use
 the declared family correction (<code>BH</code> by default, or explicit <code>NONE</code>). By default,
-adjustment covers every result, significance is compared inclusively with alpha,
+adjustment covers every result; newly resolved workflows use strict significance thresholds,
 and sign concordance is required. A study may instead declare
 <code>analysis.replication.adjustment_scope: discovery_subset</code>,
-<code>threshold_comparison: less_than</code>, or <code>require_same_sign: false</code>; the comparison
+<code>threshold_comparison: less_than_or_equal</code>, or <code>require_same_sign: false</code>; the comparison
 output still reports direction. <code>analysis.operations.meta_analysis</code> may set
-<code>model: fixed|random</code> and <code>min_cohorts</code>.</p>
+<code>model: fixed|random</code>, <code>min_cohorts</code>, tau/inference/confidence options and numerical
+controls. The <a href="study-pipeline-tutorial.html#compatible-effects-and-covariance-aware-pooling">pooling contract</a>
+adds effect comparability audits and explicit sampling-covariance GLS; correcting
+pooling dependence does not establish independent validation. A prespecified
+<code>analysis.operations.sensitivity_analysis.min_cohorts</code> may be lower than the
+primary threshold for leave-one-cohort-out reruns (for example, primary 4 and
+sensitivity 3); the all-cohort primary analysis and its threshold remain
+unchanged.</p>
 <p>The complete runnable result-first project is in the
 <a href="https://github.com/robbyjo/JLinAlg/tree/main/examples/study-pipeline">GitHub example directory</a>.
 The <a href="study-pipeline-tutorial.html">hands-on pipeline tutorial</a> walks through the

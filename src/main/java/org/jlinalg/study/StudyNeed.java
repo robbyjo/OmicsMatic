@@ -54,6 +54,14 @@ public record StudyNeed(String rule, String key, String prompt, String why,
     public static StudyNeed review(String key, String prompt, String why, boolean blocking) {
         return new StudyNeed("scientific_review", key, prompt, why, "text", List.of(), Map.of(), blocking);
     }
+    /** Keep independent review needs stable without reusing a different question contract. */
+    public static StudyNeed distinctReview(String namespace,String prompt,String why,boolean blocking) {
+        String identity=prompt.length()+":"+prompt+why.length()+":"+why+":"+blocking;
+        try {
+            String suffix=java.util.HexFormat.of().formatHex(java.security.MessageDigest.getInstance("SHA-256").digest(identity.getBytes(java.nio.charset.StandardCharsets.UTF_8)));
+            return review(namespace+":"+suffix,prompt,why,blocking);
+        } catch(java.security.NoSuchAlgorithmException unavailable) {throw new IllegalStateException("SHA-256 is unavailable",unavailable);}
+    }
 
     static StudyNeed from(Map<String, Object> record) {
         Map<String, Object> response = StudyIO.map(record.get("response"), "need.response");

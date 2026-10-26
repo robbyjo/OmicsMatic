@@ -47,13 +47,17 @@ hypotheses:
         phenotype_terms: [sleep duration]
         relevant_tissues: [whole blood, brain]
         max_features: 10
+        literature_max_features: 100
+        literature_max_queries: 1000
         fdr: 0.05
         window_bp: 500000
 ```
 
 This is a fragment to merge into a complete contract with `schema_version` and `project`. For an already-resolved project, make the change through `amendment-<ID>.yaml` and scientist approval rather than editing its base contract. The [study schema](../schemas/study-v1.schema.json) describes the optional settings.
 
-Selection uses BH across the full valid tested family in the available meta-analysis, or separately within each primary table when no meta-analysis is available. It does not recalculate FDR on only the top hits. Primary-table selection is exploratory, not pooled evidence or an independent replication claim. Conflicting or ambiguous annotations are excluded. The feature limit defaults to 10 and is capped at 100; search budgets are visible in the result records.
+Selection uses BH across the full valid tested family in the available meta-analysis, or separately within each primary table when no meta-analysis is available. It does not recalculate FDR on only the top hits. Primary-table selection is exploratory, not pooled evidence or an independent replication claim. Conflicting or ambiguous annotations are excluded. Protein/sequence and contextual work use `max_features`, default 10 and capped at 100. Signal literature review has a separate `literature_max_features`, default 100 and capped at 100. An existing explicit `max_features` remains its fallback when no dedicated literature cap is supplied, preserving earlier deliberately bounded contracts.
+
+Literature selection requires FDR strictly below `fdr` (default 0.05) and uses pooled meta rows only when a meta table is present. The cap is applied after full-family correction in P-value/feature-ID order. `literature-selection.tsv` retains every eligible unambiguously mapped significant feature, including those outside the review budget, with original full-family FDR, selection status, query-audit links and appraisal disposition. Annotation-ineligible and nonsignificant rows remain in upstream full result/annotation artifacts. No signal becomes scientifically supported because retrieval completed; article appraisal and any AI impact ranking remain separate work.
 
 ## Feature annotation
 
@@ -72,7 +76,7 @@ Annotation is not a claim that the feature is causal, that an sQTL exists, or th
 | eQTL Catalogue | Audited dataset discovery request, with a documented bulk-access fallback | An unavailable/retired API is reported as such. The measured feature and molecular assay must match; a gene eQTL is not automatically a splicing QTL. |
 | GTEx | Versioned tissue-availability metadata, filtered using declared study or follow-up tissues | Tissue availability is not evidence of a QTL for a particular feature. Full regional QTL input still needs selection and provenance. |
 | UniProt | Reviewed gene/species protein candidates | Multiple matches remain ambiguous; absence of reviewed entries does not mean no protein exists. |
-| AlphaFold DB | Predicted structure identifiers, versions, confidence metrics and model links | Prediction is not isoform equivalence, binding, druggability, safety or efficacy evidence. |
+| AlphaFold DB | Contextual metadata lookup; the separate [native protein branch](study-pipeline-tutorial.md#exact-protein-sequences-structures-and-confidence) adds exact-sequence model/PAE retrieval, supplied-model assessment and configured prediction | Prediction is not isoform equivalence, binding, druggability, safety or efficacy evidence. |
 | UCSC | Build-specific reference sequence and browser links for annotated intervals | Forward genomic sequence, not patient sequence or a reconstructed spliced transcript. |
 | Europe PMC | Bounded field/phenotype and gene/phenotype searches, article identifiers, bibliographic metadata and a deduplicated reference catalog | Candidate papers require reading and appraisal. This is not a systematic review or automatic confirmation of their conclusions. |
 
@@ -80,7 +84,7 @@ The same framework applies to different phenotypes, cohorts and tissues. For exa
 
 The built-in GWAS Catalog/eQTL Catalogue/GTEx discovery branch requires explicitly human datasets. It does not substitute human genetic resources for another organism. Nonhuman studies need species-matched genetic-source adapters; the reviewed protein lookup currently supports human and mouse.
 
-Searches distinguish `no_matches`, `search_limited`, `not_found`, `endpoint_retired`, `access_denied`, `rate_limited`, `unavailable`, `offline_policy`, and `policy_denied`. HTTP 404/410, malformed responses and connectivity failures never become a scientific “no associations exist” conclusion. Search defaults are three pages per strategy, 20 regional catalogue SNPs per feature, 20 literature records per page, and a hard 200-request budget per operation. A search hitting its budget is not exhaustive. UCSC requests are limited to one per second and sequences to 100 kb by default.
+Searches distinguish `no_matches`, `search_limited`, `not_found`, `endpoint_retired`, `access_denied`, `rate_limited`, `unavailable`, `offline_policy`, and `policy_denied`. HTTP 404/410, malformed responses and connectivity failures never become a scientific “no associations exist” conclusion. Search defaults are three pages per strategy, 20 regional catalogue SNPs per feature and 20 literature records per page. `literature_search` has a separate `literature_max_queries` budget, default 1,000 (range 1–10,000), so a 100-signal direct/mechanism/counterevidence search is not silently constrained by the old 200-query ceiling. Native protein structure/assessment uses a separate default 500-query budget. Other public-evidence operations retain 200. Each request record includes its budget; audited cached uses also count. Budget exhaustion leaves retrieval incomplete and the operation waiting. Page-limited searches remain explicitly bounded, not exhaustive. UCSC requests are limited to one per second and sequences to 100 kb by default.
 
 ## From a source candidate to genetic inference
 
@@ -105,7 +109,7 @@ analysis:
 
 The actual irQTL analysis ancestry is deliberately required; JLinAlg does not infer it from the FHS cohort name. For BMI/EUR, `auto` selects Pan-UK Biobank field 21001; for obesity/EUR it selects ICD-10 E66, including recorded case/control counts. A non-UKB exposure cohort plus the UKB-only outcome establishes the named-cohort basis for `sample_overlap: none`; an exposure that may include UK Biobank is rejected. MR defaults to investigating **all eligible significant measured features**, not a top-10 or top-1,000 subset. BH adjustment uses the complete valid tested meta-analysis family (pooled rows only), or each full primary table when meta-analysis is unavailable, before annotation/QTL matching. Selection requires FDR strictly below `bioinformatics.fdr`, which defaults to 0.05. The rule is feature-type agnostic for measured transcripts, proteins and probes; it does not remove annotation, molecular-assay, QTL, allele, ancestry or instrument-validity prerequisites. The built-in automatic source adapter remains cis-irQTL-specific; protein/probe exposures require appropriate reviewed custom sources, not substituted irQTLs.
 
-For a deliberately capped exploratory run, explicitly set `mr.max_features: 1000` (accepted range 1–10,000); existing explicit caps are honored, and caps are applied after full-family BH selection in deterministic P-value/feature-ID order. Omit that setting to use all eligible significant features, including families larger than 10,000. The separate `bioinformatics.max_features` limit still bounds contextual literature/protein/sequence and colocalization work and never caps MR. Source audits record the threshold, strict comparison, selection scope and any explicit cap. This default change does not amend existing frozen study contracts or rerun prior results.
+For a deliberately capped exploratory run, explicitly set `mr.max_features: 1000` (accepted range 1–10,000); existing explicit caps are honored, and caps are applied after full-family BH selection in deterministic P-value/feature-ID order. Omit that setting to use all eligible significant features, including families larger than 10,000. The separate `bioinformatics.max_features` limit still bounds contextual protein/sequence and colocalization work and never caps MR. Literature has its dedicated cap described above. Source audits record the threshold, strict comparison, selection scope and any explicit cap. This default change does not amend existing frozen study contracts or rerun prior results.
 
 The automatic adapter excludes every row not explicitly marked cis, then passes all genome-wide-significant cis-irQTL candidates for each transcript together to outcome matching and ancestry-matched GRCh38 LD clumping. One retained independent instrument produces a Wald ratio; multiple retained instruments produce the applicable multi-instrument estimators and sensitivity analyses. There is no arbitrary per-transcript instrument cap. Missing QTL or outcome coverage remains an audited exclusion or input requirement, not a negative causal finding.
 
@@ -194,7 +198,53 @@ MR requires at least one strong, allele-aligned instrument after public outcome 
 
 MR selects exposure instruments using p ≤ 5e-8 and F ≥ 10 by default, then LD-prunes at r-squared ≤ 0.001. It requires at least two remaining instruments for this automatic IVW branch. Outputs include fixed/random IVW, and, with at least three instruments, Egger, weighted median and leave-one-instrument-out estimates. Weak instruments, pleiotropy, selection bias, tissue specificity and exclusion-restriction assumptions still need scientific appraisal. Numerical success is not proof of a causal drug target.
 
-Fine-mapping, colocalization, and user-supplied LD matrices retain a 5,000-variant regional limit. Automatic MR with genotype-derived LD supports up to 20,000 variants per region; it streams LD rows and resolves column positions once, retaining only the aligned numeric matrix for pairwise clumping. These are memory budgets, not silent instrument truncation: an oversized family requires a different execution strategy rather than dropping eligible instruments. The window cannot exceed 10 Mb. Multi-trait, multi-tissue and multiple-region analyses are separate declared pairs with separate provenance. No additional across-pair multiplicity adjustment is silently implied by their individual estimates.
+Fine-mapping, colocalization, and user-supplied LD matrices retain a 5,000-variant regional limit. Automatic MR with genotype-derived LD supports up to 20,000 variants per region; it streams LD rows and resolves column positions once, retaining only the aligned numeric matrix for pairwise clumping. These are memory budgets, not silent instrument truncation: an oversized family requires a different execution strategy rather than dropping eligible instruments. The window cannot exceed 10 Mb. Multi-trait, multi-tissue and multiple-region analyses retain separate source provenance and the primary testing policy below.
+
+### Primary MR testing and complete feature dispositions
+
+Association FDR selects follow-up candidates; MR receives a separate declared
+testing family within each hypothesis:
+
+```yaml
+analysis:
+  bioinformatics:
+    mr_testing:
+      primary_estimator: ivw-fixed
+      adjustment: BH
+      alpha: 0.05
+```
+
+These are resolved defaults. A multi-instrument primary may instead be
+`ivw-random`; select it before examining estimates. A single retained instrument
+uses the recorded Wald-ratio fallback. Fixed/random IVW, Egger, weighted median
+and instrument-omission sensitivities retain their individual outputs; their
+P values are not searched for the best primary result. `BY`, `bonferroni` and
+explicit nominal `NONE` are also supported. BH requires the usual independence
+or suitable positive-dependence assumptions. Correction does not establish
+instrument validity, remove discovery selection bias or establish causal truth.
+
+`mr-primary-results.tsv` reports one primary test for each selected eligible
+feature/source hypothesis. Exact duplicate source hypotheses share a test, with
+all pair aliases retained. Conflicting estimates, inconsistent estimability or a
+missing declared primary estimate require review. Different source definitions
+remain distinct tests. `mr-feature-dispositions.tsv` records every eligible
+mapped feature, including missing pairs, exhausted instrument/source families,
+and features outside an explicitly approved source cap. The default is uncapped.
+Source-analysis dispositions and primary-test dispositions are separate columns.
+
+The declared correction denominator retains hypotheses without an estimable
+P value. Their raw P and adjusted P remain unavailable. Treating an unavailable
+test as P=1 **only inside the adjustment arithmetic** gives conservative bounds;
+it does not turn missing evidence into a null finding. Unresolved inputs make
+the family provisional and prevent `significant_primary` certification.
+Definitively exhausted source/instrument families are not estimable, rather than
+waiting for nonexistent data or reporting an invented negative estimate.
+
+`mr-testing.yaml` records policy, scope, denominator, coverage, duplicate aliases
+and completeness. Genetic evidence records and AI dossiers retain each primary
+estimate and its correction status. Provisional families carry an explicit
+caveat. This is a within-hypothesis MR family; cross-phenotype correction and
+broader automatic assay/source adapters remain separate work.
 
 ## Questions and optional AI
 

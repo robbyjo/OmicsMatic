@@ -26,7 +26,7 @@ import org.yaml.snakeyaml.constructor.SafeConstructor;
 /** Offline editorial revisions derived from verified evidence, never new analyses. */
 final class StudyManuscriptRevision {
     private StudyManuscriptRevision() { }
-    private static final Set<String> SECTIONS = Set.of("introduction", "methods", "results", "discussion", "conclusion");
+    private static final Set<String> SECTIONS = Set.of("introduction", "methods", "results", "discussion", "conclusion", "supplementary");
     private static final Pattern TOKEN = Pattern.compile("\\{\\{([A-Za-z0-9._-]+)#(/[^{}]*)}}" );
     private static final String LIMIT = "Unreviewed manuscript revision. Evidence integrity is checked; scientific interpretation, authorship, ethics, novelty and publication readiness are not certified. No network or external LLM call is made by this command.";
 
@@ -36,7 +36,7 @@ final class StudyManuscriptRevision {
         if (out.startsWith(root)) throw new IOException("Revision bundle must be outside the frozen source project");
         String requestHash = FollowupSupport.hash(request);
         Map<String, Object> edit = load(request);
-        keys(edit, Set.of("schema_version", "id", "title", "rationale", "previous_revision", "sections", "remove_sections", "comments", "abbreviations", "participant_project", "discussion_selection_note", "paragraph_order", "citation_policy", "reference_bundles", "editorial_payload"), "revision");
+        keys(edit, Set.of("schema_version", "id", "title", "rationale", "previous_revision", "sections", "remove_sections", "comments", "abbreviations", "participant_project", "discussion_selection_note", "impact_selection_override_reason", "paragraph_order", "citation_policy", "reference_bundles", "editorial_payload", "manuscript_policy", "finding_review"), "revision");
         if (!Integer.valueOf(1).equals(edit.get("schema_version"))) throw new IOException("Revision schema_version must be 1");
         identifier(required(edit, "id")); required(edit, "title"); required(edit, "rationale");
         String start = Instant.now().toString();
@@ -68,6 +68,7 @@ final class StudyManuscriptRevision {
         }
         Map<String, Object> merged = new LinkedHashMap<>(previous);
         merged.putAll(edit);
+        merged.putIfAbsent("manuscript_policy", map(map(study.get("project")).get("manuscript_policy")));
         // Explicit, hash-pinned native Table 1 refresh, without replacing association evidence.
         Path participantRoot = null;
         String participantLedgerHash = null;
@@ -94,6 +95,7 @@ final class StudyManuscriptRevision {
             if (participantSources.isEmpty()) throw new IOException("Participant project contains no current participant summaries");
         }
         List<Object> changes = new ArrayList<>();
+        if(edit.containsKey("finding_review"))changes.add(Map.of("action","finding_review_replaced","before",previous.getOrDefault("finding_review",Map.of()),"after",edit.get("finding_review"),"actor",actor.asMap()));
         Map<String, Object> paragraphs = new LinkedHashMap<>();
         for (Object p : list(previous.get("sections"))) paragraphs.put(required(map(p), "id"), p);
         Set<String> submitted = new LinkedHashSet<>();
@@ -102,8 +104,11 @@ final class StudyManuscriptRevision {
         for (Object value : list(edit.get("sections"))) {
             Map<String, Object> p = map(value); String id = required(p, "id"); identifier(id);
             if (!submitted.add(id)) throw new IOException("Duplicate section ID: " + id);
-            keys(p, Set.of("id", "section", "title", "text", "sources", "rationale", "references", "introduction_role", "methods_role", "cohort_ids", "parameters", "parameter_justifications", "uncommon_parameters", "results_role", "supporting_evidence", "discussion_role", "impact_rank", "impact_reason", "result_ids", "citation_basis"), "paragraph");
+            keys(p, Set.of("id", "section", "title", "text", "sources", "rationale", "references", "introduction_role", "methods_role", "cohort_ids", "parameters", "parameter_justifications", "uncommon_parameters", "results_role", "supporting_evidence", "discussion_role", "impact_rank", "impact_reason", "result_ids", "finding_ids", "citation_basis"), "paragraph");
             if (!SECTIONS.contains(required(p, "section"))) throw new IOException("Unknown manuscript section");
+            if ("supplementary".equals(p.get("section"))) keys(p,
+                Set.of("id", "section", "title", "text", "sources", "rationale", "references", "finding_ids", "citation_basis"),
+                "supplementary paragraph");
             required(p, "text"); required(p, "rationale");
             Object old = paragraphs.put(id, p);
             attribution.put(id, Map.of("actor", actor.asMap(), "revision", edit.get("id"), "recorded_at", start));
@@ -152,7 +157,17 @@ final class StudyManuscriptRevision {
         introductionReview.put("literature_search_coverage", catalog.get("search_coverage"));
         var methodsInventory = StudyMethods.inventory(study, evidence);
         var methodsReview = StudyMethods.assess(list(merged.get("sections")), methodsInventory);
-        var narrativeReview = StudyResultsDiscussion.assess(merged, evidence);
+        var narrativeReview = new LinkedHashMap<>(StudyResultsDiscussion.assess(merged, evidence, false));
+        var impactReview = StudyImpactNarrative.review(root, merged, evidence); narrativeReview.put("impact_selection", impactReview);
+        var findingReview=StudyFindingDiscussion.assess(root,request,predecessor,!edit.containsKey("finding_review"),merged,evidence,catalog);
+        for(var source:findingReview.sources()){var nativeRef=map(source.declaration().get("reference_bundle"));if(!nativeRef.isEmpty()){Path manifest=Path.of(nativeRef.get("manifest").toString());if(!referenceManifests.contains(manifest))referenceManifests.add(manifest);}}
+        findingReview.report().put("authorship",Map.of("current_actor",actor.asMap(),"dossier_origin",edit.containsKey("finding_review")?"current_revision_request":"inherited_or_not_supplied","source_revision",predecessor==null?"none":predecessor.toString(),"meaning","Attributed editorial assertions; no scientific approval inferred from actor labels"));
+        narrativeReview.put("finding_discussion",findingReview.report());
+        if("needs_input".equals(findingReview.report().get("status"))){var needs=new ArrayList<Object>(list(narrativeReview.get("needs")));needs.addAll(list(findingReview.report().get("needs")));narrativeReview.put("needs",needs);narrativeReview.put("status","needs_input");}
+        if ("needs_input".equals(impactReview.get("status"))) {
+            var needs = new ArrayList<Object>(list(narrativeReview.get("needs"))); needs.addAll(list(impactReview.get("needs")));
+            narrativeReview.put("needs", needs); narrativeReview.put("status", "needs_input");
+        }
         for (Object value : paragraphs.values()) {
             Map<String, Object> p = map(value);
             if (!(p.get("sources") instanceof List<?>)) throw new IOException("Paragraph sources must be a list (empty allowed for editorial context)");
@@ -183,6 +198,15 @@ final class StudyManuscriptRevision {
             if ("addressed".equals(c.get("status"))) required(c, "response");
         }
         // All semantic validation precedes publication. The unique output is never overwritten.
+        String manuscript = StudyPublication.expandAbbreviations(manuscript(merged, evidence, study, catalog), abbreviations);
+        String supplement = StudyPublication.expandAbbreviations(supplement(merged, evidence, catalog), abbreviations);
+        Map<String, Object> wordBudget = StudyWordBudget.assessRendered(manuscript, map(merged.get("manuscript_policy")));
+        Map<String, Object> supplementaryWords = StudyWordBudget.assessSupplementRendered(supplement);
+        wordBudget.put("supplement_words", supplementaryWords.get("supplement_words"));
+        wordBudget.put("supplement_section_words", supplementaryWords.get("section_words"));
+        if (Boolean.TRUE.equals(wordBudget.get("blocks_publication"))) throw new IOException("Rendered manuscript main text exceeds "
+            + map(wordBudget.get("policy")).get("max_main_words") + " words: " + wordBudget.get("main_text_words"));
+        narrativeReview.put("word_budget", wordBudget);
         Map<String, Object> payloadPolicy = map(merged.get("editorial_payload"));
         if (merged.containsKey("editorial_payload") && !(merged.get("editorial_payload") instanceof Map<?, ?>))
             throw new IOException("editorial_payload must be a mapping");
@@ -195,7 +219,7 @@ final class StudyManuscriptRevision {
         Files.createDirectories(out.getParent()); Files.createDirectory(out);
         for (String directory : List.of("artifacts", "scripts", "metadata", "logs", "previews")) Files.createDirectory(out.resolve(directory));
         Files.copy(request, out.resolve("metadata/revision-request.yaml"));
-        writeYaml(out.resolve("metadata/resolved-revision.yaml"), merged);
+        findingReview.snapshot(out,merged);
         writeYaml(out.resolve("metadata/section-attribution.yaml"), attribution);
         writeYaml(out.resolve("metadata/resolved-study.yaml"), study);
         writeYaml(out.resolve("metadata/change-log.yaml"), Map.of("changes", changes, "comments", list(merged.get("comments")),
@@ -203,10 +227,13 @@ final class StudyManuscriptRevision {
         Files.copy(ledger, out.resolve("metadata/source-ledger.jsonl"));
         if (predecessor != null) Files.copy(predecessor, out.resolve("metadata/predecessor-manifest.yaml"));
         List<Object> inputs = new ArrayList<>();
+        for(var source:findingReview.sources())inputs.add(input(source.path(),source.sha256(),"caller-declared public discussion source; not independently authenticated"));
         int referenceSequence = 0;
+        Map<String,String> copiedReferences = new LinkedHashMap<>();
         for (Path manifest : referenceManifests) {
             inputs.add(input(manifest, FollowupSupport.hash(manifest), "audited public reference acquisition"));
             Path copy = out.resolve("metadata/reference-bundles/" + (++referenceSequence)); Files.createDirectories(copy);
+            copiedReferences.put(manifest.toString(),copy.resolve("metadata/manifest.yaml").toString());
             Path referenceRoot = manifest.getParent().getParent();
             try (var paths = Files.walk(referenceRoot)) {
                 for (Path file : paths.filter(Files::isRegularFile).toList()) {
@@ -216,6 +243,19 @@ final class StudyManuscriptRevision {
                 }
             }
         }
+        // Future edits inherit this revision's sealed reference copies, independently
+        // of later changes to the acquisition directory or its caller-owned text.
+        if(merged.containsKey("reference_bundles")) {
+            var refs=new ArrayList<Object>();
+            for(Object raw:list(merged.get("reference_bundles"))){var ref=new LinkedHashMap<String,Object>(map(raw));String old=ref.get("manifest").toString();ref.put("manifest",copiedReferences.getOrDefault(old,old));refs.add(ref);}
+            merged.put("reference_bundles",refs);
+        }
+        if(merged.containsKey("finding_review")) {
+            var policy=new LinkedHashMap<String,Object>(map(merged.get("finding_review")));var texts=new ArrayList<Object>();
+            for(Object raw:list(policy.get("source_texts"))){var source=new LinkedHashMap<String,Object>(map(raw));if(source.containsKey("reference_bundle")){var ref=new LinkedHashMap<String,Object>(map(source.get("reference_bundle")));String old=ref.get("manifest").toString();ref.put("manifest",copiedReferences.getOrDefault(old,old));source.put("reference_bundle",ref);}texts.add(source);}
+            if(policy.containsKey("source_texts"))policy.put("source_texts",texts);merged.put("finding_review",policy);
+        }
+        writeYaml(out.resolve("metadata/resolved-revision.yaml"), merged);
         if (participantRoot != null) {
             inputs.add(input(participantRoot.resolve("ledger/events.jsonl"), participantLedgerHash, "explicit participant-summary refresh ledger"));
             Path participantStudy = participantRoot.resolve("resolved-study.yaml");
@@ -253,10 +293,14 @@ final class StudyManuscriptRevision {
         writeYaml(out.resolve("artifacts/methods-template.yaml"), StudyMethods.template(required(edit, "title"), methodsInventory, catalog));
         writeYaml(out.resolve("artifacts/results-discussion-inventory.yaml"), StudyResultsDiscussion.inventory(evidence));
         writeYaml(out.resolve("artifacts/results-discussion-review.yaml"), narrativeReview);
+        writeYaml(out.resolve("artifacts/impact-selection-review.yaml"), impactReview);
+        writeYaml(out.resolve("artifacts/finding-discussion-review.yaml"),findingReview.report());
+        writeYaml(out.resolve("artifacts/finding-discussion-template.yaml"),findingReview.template());
+        write(out.resolve("artifacts/finding-discussion-review.html"),start("Principal-finding source and depth review")+"<p>"+esc(StudyFindingDiscussion.LIMIT)+"</p>"+StudyPublication.render(findingReview.report())+end());
+        writeYaml(out.resolve("artifacts/word-counts.yaml"), map(narrativeReview.get("word_budget")));
         writeYaml(out.resolve("artifacts/results-discussion-template.yaml"), StudyResultsDiscussion.template(required(edit, "title"), evidence));
-        String manuscript = manuscript(merged, evidence, study, catalog);
-        write(out.resolve("artifacts/manuscript.html"), StudyPublication.expandAbbreviations(manuscript, abbreviations));
-        write(out.resolve("artifacts/supplement.html"), supplement(evidence));
+        write(out.resolve("artifacts/manuscript.html"), manuscript);
+        write(out.resolve("artifacts/supplement.html"), supplement);
         write(out.resolve("artifacts/participant-characteristics.csv"), StudyPublication.table1Csv(participantTables(evidence)));
         writeYaml(out.resolve("metadata/reporting-policy.yaml"), Map.of("decimal_places", 2, "scientific_notation", "lowercase e; two mantissa decimals; nonzero magnitudes below 0.01 or at least 1000000",
             "integer_counts", "unchanged", "machine_readable_precision", "unchanged; raw values and bindings retained", "participant_refresh", merged.getOrDefault("participant_project", Map.of())));
@@ -267,6 +311,7 @@ final class StudyManuscriptRevision {
         writeYaml(out.resolve("artifacts/introduction-template.yaml"), StudyIntroduction.template(required(edit, "title"),
             list(study.get("hypotheses")).stream().map(StudyManuscriptRevision::map).filter(h -> !"retired".equals(h.get("status"))).map(h -> String.valueOf(h.get("description"))).toList()));
         write(out.resolve("artifacts/index.html"), start("Manuscript revision evidence index")
+            + "<p><a href=\"finding-discussion-review.html\">Principal-finding evidence and depth review</a> · <a href=\"finding-discussion-template.yaml\">Claim/source dossier template</a></p>"
             + "<p><a href=\"results-discussion-template.yaml\">Results and Discussion template</a> · <a href=\"results-discussion-review.yaml\">Narrative review needs</a> · <a href=\"results-discussion-inventory.yaml\">Findings and contextual evidence</a></p>"
             + "<p><a href=\"methods-template.yaml\">Methods writing template</a> · <a href=\"methods-review.yaml\">Methods review needs</a> · <a href=\"methods-inventory.yaml\">Methods provenance</a></p>"
             + "<p>" + esc(LIMIT) + "</p><ul><li><a href=\"manuscript.html\">Revised manuscript</a></li><li><a href=\"supplement.html\">All evidence layers and limitations</a></li><li><a href=\"literature-review.html\">Literature review candidates</a></li><li><a href=\"reference-catalog.html\">Reference catalog and search coverage</a></li><li><a href=\"introduction-review.yaml\">Introduction structure and research needs</a></li><li><a href=\"introduction-template.yaml\">Introduction paragraph template</a></li><li><a href=\"publication-claims.yaml\">Claim and value provenance</a></li><li><a href=\"../metadata/change-log.yaml\">Editorial changes and responses</a></li><li><a href=\"../metadata/manifest.yaml\">Integrity manifest</a></li></ul>" + end());
@@ -287,7 +332,8 @@ final class StudyManuscriptRevision {
             + "\n\nThis is a reporting-only evidence snapshot, not a study amendment or new analysis. Source metadata and participant-population uncertainties cannot be fixed by editing prose. Use an approved study amendment and an analysis rerun for scientific changes."
             + "\n\nIntroduction development: artifacts/introduction-template.yaml supplies the ordered paragraph roles; artifacts/introduction-review.yaml records missing structure/citations and search coverage. artifacts/reference-catalog.html and .yaml retain deduplicated retrieved sources and query provenance. Catalog inclusion and structural completeness do not verify source support, sufficient literature coverage or novelty. Existing untagged Introduction prose is preserved for explicit review, not silently rewritten."
             + "\n\nMethods development: artifacts/methods-template.yaml follows cohort descriptions with the performed analyses. methods-inventory.yaml retains declared external models and recorded execution parameters; methods-review.yaml lists missing citations, parameters, justifications and cohort coverage. Historical gaps are not filled using current software defaults. Editorial parameters explicitly supplied in a revision are part of the hash-approved disclosure payload and require sensitivity review."
-            + "\n\nResults and Discussion: results-discussion-template.yaml follows Methods order after native Table 1. supporting_evidence links bioinformatics context beside its finding with an attributed relationship. Discussion prioritizes three distinct findings with impact reasons and Results paragraph links, then future potential, next steps, limitations and the overall conclusion. Fewer supported findings require a discussion_selection_note, not invented findings. results-discussion-review.yaml flags unclassified older prose and incomplete structure; no impact ranking is inferred from analysis type or P-values. These editorial fields enter the hash-approved payload; automatic native inventories do not."
+            + "\n\nResults and Discussion: results-discussion-template.yaml follows Methods order after native Table 1. supporting_evidence links bioinformatics context beside its finding with an attributed relationship. Discussion prioritizes three to five distinct findings with impact reasons and Results paragraph links, then future potential, next steps, limitations and the overall conclusion. Fewer supported findings require a discussion_selection_note, not invented findings. results-discussion-review.yaml flags unclassified older prose and incomplete structure; no impact ranking is inferred from analysis type or P-values. These editorial fields enter the hash-approved payload; automatic native inventories do not."
+            + "\n\nPrincipal-finding depth: finding-discussion-review.html/.yaml audits current paragraph spans, claim-local references, literal short passages, immutable caller-declared public source texts, claim dependencies and eight depth facets across the main text and linked supplements. finding-discussion-template.yaml is a fillable fragment. Review mode preserves legacy drafts with explicit needs; finding_review.mode: strict rejects incomplete mechanical grounding before creating a bundle. Source text scope, provenance, support assessments and scientific sufficiency require review; no word count or literal match certifies truth. Public source snapshots and this automatic review stay local and do not enter the existing editorial payload. Inherited dossiers and source snapshots are rechecked against the current prose."
             + "\n\nReproduction: java -jar scripts/jlinalg.jar study manuscript metadata/revision-request.yaml --project \"" + root + "\" --out NEW_BUNDLE --actor-type " + actor.type() + " --actor-id \"" + actor.id() + "\""
             + (actor.model() == null ? "" : " --model \"" + actor.model() + "\"")
             + "\n\nSee software-versions.yaml for exact versions and input/output manifests for SHA-256. All local evidence layers are retained in artifacts/evidence.yaml; original large result tables and public response caches remain in the predecessor project. Keep both bundles together. No patient-level files were copied or read by this revision command. Text fields may still contain sensitive information and must be reviewed before sharing."
@@ -336,12 +382,18 @@ final class StudyManuscriptRevision {
         if ("needs_input".equals(StudyIntroduction.assess(list(revision.get("sections"))).get("status")))
             h.append("<p class=\"notice\">Introduction development remains incomplete. See the introduction review for missing paragraphs or literature inputs; existing prose has been preserved.</p>");
         h.append("<p><a href=\"results-discussion-review.yaml\">Results and Discussion review</a> · <a href=\"results-discussion-template.yaml\">Writing template</a> · <a href=\"results-discussion-inventory.yaml\">Findings and context inventory</a></p>");
-        if ("needs_input".equals(StudyResultsDiscussion.assess(revision, evidence).get("status")))
+        for (Object raw : list(revision.get("sections"))) {
+            var note = map(raw);
+            if ("supplementary".equals(note.get("section"))) h.append("<p><a href=\"supplement.html#supplement-note-")
+                .append(esc(note.get("id"))).append("\">Extended discussion: ")
+                .append(esc(note.getOrDefault("title", note.get("id")))).append("</a></p>");
+        }
+        if ("needs_input".equals(StudyResultsDiscussion.assess(revision, evidence, false).get("status")))
             h.append("<p class=\"notice\">Results and Discussion need structural or scientific inputs; see the narrative review. Older prose is preserved, not silently rewritten.</p>");
         Set<String> previewed = new LinkedHashSet<>();
         for (String section : List.of("introduction", "methods", "results", "discussion", "conclusion")) {
             if (section.equals("conclusion") && list(revision.get("sections")).stream().map(StudyManuscriptRevision::map).noneMatch(p -> "conclusion".equals(p.get("section")))) continue;
-            h.append("<h2>").append(label(section)).append("</h2>");
+            h.append("<div data-manuscript-section=\"").append(section).append("\"><h2>").append(label(section)).append("</h2>");
             if (section.equals("methods")) {
                 if (list(revision.get("sections")).stream().map(StudyManuscriptRevision::map).noneMatch(p -> "cohorts".equals(p.get("methods_role")))) {
                     var template = StudyMethods.template("Methods", StudyMethods.inventory(study, evidence), catalog);
@@ -349,8 +401,9 @@ final class StudyManuscriptRevision {
                 }
             }
             if (section.equals("results")) {
-                h.append("<h3>Table 1. Participant characteristics</h3><p>SD means sample standard deviation. <a href=\"supplement.html#supplemental-table-1\">Supplemental Table 1</a> retains the detailed summaries.</p>");
+                h.append("<aside><h3>Table 1. Participant characteristics</h3><p>SD means sample standard deviation. <a href=\"supplement.html#supplemental-table-1\">Supplemental Table 1</a> retains the detailed summaries.</p>");
                 h.append(StudyPublication.table1(participantTables(evidence)));
+                h.append("</aside>");
             }
             for (Object raw : list(revision.get("sections"))) {
                 Map<String, Object> p = map(raw); if (!section.equals(p.get("section"))) continue;
@@ -400,9 +453,11 @@ final class StudyManuscriptRevision {
                 h.append("</p>");
             }
             if (section.equals("discussion") && list(revision.get("sections")).stream().map(StudyManuscriptRevision::map).noneMatch(p -> p.containsKey("discussion_role"))) appendLimitations(h, evidence);
+            h.append("</div><!-- end-main-text:").append(section).append(" -->");
         }
-        h.append("<h2>Reproducibility and use of artificial intelligence</h2><p>JLinAlg verified prior results and generated this revision locally. The revision request contains attributed editorial text; it may have been supplied by a scientist or an LLM advisor. The command made no remote model calls and read no patient-level phenotype rows. Checksums, comments, numeric bindings and before/after paragraph records are available in the audit bundle. This is integrity checking, not a guarantee that an editorial interpretation is correct.</p>");
+        h.append("<div data-manuscript-section=\"methods\"><h2>Reproducibility and use of artificial intelligence</h2><p>JLinAlg verified prior results and generated this revision locally. The revision request contains attributed editorial text; it may have been supplied by a scientist or an LLM advisor. The command made no remote model calls and read no patient-level phenotype rows. Checksums, comments, numeric bindings and before/after paragraph records are available in the audit bundle. This is integrity checking, not a guarantee that an editorial interpretation is correct.</p>");
         h.append("<p>Software: JLinAlg ").append(esc(JLinAlgCli.version())).append(". See <a href=\"../metadata/software-versions.yaml\">runtime and actor provenance</a>.</p>");
+        h.append("</div><!-- end-main-text:methods -->");
         h.append(citations.bibliography());
         return h.append(end()).toString();
     }
@@ -414,10 +469,30 @@ final class StudyManuscriptRevision {
         h.append("</ul><p>Missing evidence is not negative evidence. When JLinAlg reports exploratory partial-data colocalization, its posterior probabilities are conditional on observed selected variants rather than conventional complete-region evidence. Missing variants, significance filtering, unequal coverage and winner's curse can materially bias the result; a null colocalization result is not evidence against a shared causal variant. Candidate counts are not independent instruments or causal estimates. Association and gene-level literature do not establish isoform-specific causality or drug efficacy.</p></details>");
     }
 
-    private static String supplement(Map<String, Map<String, Object>> evidence) {
+    private static String supplement(Map<String, Object> revision,
+            Map<String, Map<String, Object>> evidence, Map<String, Object> catalog) throws IOException {
         StringBuilder h = new StringBuilder(start("Supplemental evidence and limitations"));
+        StudyCitations citations = new StudyCitations(catalog);
         h.append("<p><a href=\"manuscript.html\">Manuscript</a> · <a href=\"evidence.yaml\">Complete local evidence snapshot</a></p><p>All current operations are retained, including failed, waiting, null and contradictory evidence. Previews below are not exhaustive result tables. Original manifests record full result paths and hashes.</p><label>Find evidence <input id=\"search\" type=\"search\"></label>");
         h.append("<section class=\"evidence\" id=\"supplemental-table-1\"><h2>Supplemental Table 1. Detailed participant characteristics</h2>").append(StudyPublication.detailedTable1(participantTables(evidence))).append("</section>");
+        for (Object raw : list(revision.get("sections"))) {
+            var note = map(raw);
+            if (!"supplementary".equals(note.get("section"))) continue;
+            String id = required(note, "id");
+            h.append("<section data-manuscript-supplement=\"").append(esc(id))
+                .append("\"><div class=\"evidence\" id=\"supplement-note-").append(esc(id))
+                .append("\"><h2>").append(esc(note.getOrDefault("title", id))).append("</h2>");
+            String prose = expand(required(note, "text"), evidence, new ArrayList<>(), id, true);
+            String[] paragraphs = prose.split("\\R\\s*\\R");
+            for (int i = 0; i < paragraphs.length; i++) h.append("<p>")
+                .append(citations.render(paragraphs[i], i == paragraphs.length - 1
+                    ? list(note.get("references")).stream().filter(ref -> !StudyCitations.identifiers(
+                        Map.of("text", prose), "text").contains(ref.toString())).toList() : List.of()))
+                .append("</p>");
+            for (Object source : list(note.get("sources"))) h.append(sourceLink(source.toString()));
+            h.append("</div></section><!-- end-supplement:").append(esc(id)).append(" -->");
+        }
+        h.append(citations.bibliography());
         for (var entry : evidence.entrySet()) {
             Map<String, Object> e = entry.getValue();
             h.append("<section class=\"evidence\" id=\"").append(esc(entry.getKey())).append("\"><h2>").append(esc(entry.getKey())).append("</h2><p>").append(esc(e.get("state"))).append(": ").append(esc(e.get("summary"))).append("</p>")

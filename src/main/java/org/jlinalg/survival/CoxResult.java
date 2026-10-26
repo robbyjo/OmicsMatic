@@ -77,6 +77,7 @@ public final class CoxResult {
     public double logPartialLikelihood() { return logPartialLikelihood; }
     public CoxTies ties() { return ties; }
     public int iterations() { return iterations; }
+    /** Numerical convergence only; use CoxLikelihoodExistence to certify a finite maximum. */
     public boolean converged() { return converged; }
     public String convergenceMessage() { return convergenceMessage; }
     public BackendProvenance backend() { return backend; }

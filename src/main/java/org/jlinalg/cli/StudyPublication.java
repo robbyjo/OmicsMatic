@@ -29,6 +29,7 @@ final class StudyPublication {
             Object findings = StudyEvidenceIndex.keyFindings(directory, type);
             Map<String, Object> record = new LinkedHashMap<>();
             record.put("operation", type); record.put("state", state); record.put("summary", manifest.getOrDefault("summary", ""));
+            record.put("hypothesis", manifest.get("hypothesis"));
             record.put("details", manifest.getOrDefault("details", Map.of()));
             record.put("manifest", relative(context.outputDirectory(), manifestPath)); record.put("manifest_sha256", FollowupSupport.hash(manifestPath));
             record.put("output_sha256", manifest.getOrDefault("output_sha256", Map.of()));
@@ -55,8 +56,11 @@ final class StudyPublication {
             source.put("operation_type", r.get("operation")); source.put("key_findings", r.get("findings")); source.put("manifest", r.get("manifest"));
             source.put("state", r.get("state")); source.put("details", r.get("details"));
             source.put("summary", r.get("summary"));
-            references.put(text(hypothesis.get("id")) + "." + r.get("operation"), source);
+            source.put("hypothesis", r.get("hypothesis"));
+            references.put(text(r.get("hypothesis")) + "." + r.get("operation"), source);
         }
+        var impact = StudyImpactNarrative.impact(references);
+        if (!impact.isEmpty()) ledger.put("impact_ranking", impact);
         Map<String, Object> catalog = StudyReferenceCatalog.fromEvidence(references);
         StudyCitations citations = new StudyCitations(catalog);
         Map<String, Object> introduction = StudyIntroduction.template("Publication first draft", List.of(text(ledger.get("hypothesis"))));

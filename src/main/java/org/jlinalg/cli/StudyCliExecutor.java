@@ -33,10 +33,14 @@ import org.yaml.snakeyaml.Yaml;
 
 /** Concrete adapters from study operations to existing JLinAlg CLI workflows. */
 final class StudyCliExecutor implements StudyOperationExecutor {
+    @Override public boolean usesNativeStageInputContracts() { return true; }
     private static final Set<String> BULK_ASSOCIATION_TYPES = Set.of(
         "generic", "transcriptomics", "expression", "mirna", "lincrna",
         "lncrna", "extracellular_rna", "epigenomics", "ewas", "gwas",
         "genomics", "proteomics", "metabolomics", "phenotype");
+    static boolean supportsBulkAssociation(String type) {
+        return BULK_ASSOCIATION_TYPES.contains(type.toLowerCase(Locale.ROOT));
+    }
     private static final Set<String> CUSTOM_COMMANDS = Set.of(
         "enrichment", "variant-score", "susie", "coloc", "mr-estimate", "mr-xwas",
         "clump", "mr-instruments", "ldsc", "twas", "pwas", "genomic-factor", "network",
@@ -46,30 +50,57 @@ final class StudyCliExecutor implements StudyOperationExecutor {
     @Override
     public Result execute(Context context) throws Exception {
         Files.createDirectories(context.outputDirectory());
+        if (context.operation().containsKey("supplied_result_id")) return new StudySuppliedResults().execute(context);
         String type = text(context.operation().get("type"));
-        return switch (type) {
+        try { return switch (type) {
             case "validate_harmonize" -> harmonize(context);
             case "association" -> association(context);
+            case "finding_inventory" -> new StudyFindingInventory().execute(context);
+            case "impact_assessment" -> new StudyImpactAssessment().execute(context);
+            case "assay_qc" -> new StudyAssayQc().execute(context);
+            case "participant_qc" -> new StudyPrefitQc().execute(context);
+            case "network_preservation_null" -> new StudyNetworkNull().execute(context);
+            case "gwas_diagnostics" -> new StudyGwasDiagnostics().execute(context);
+            case "subgroup_interactions" -> new StudySubgroupInteractions().execute(context);
+            case "rare_variant_masks", "rare_variant_scores", "rare_variant_analysis" -> new StudyRareVariants().execute(context);
+            case "rare_set_followup" -> new StudyRareFollowup().execute(context);
+            case "rare_cohort_overlap" -> new StudyRareCohortOverlap().execute(context);
             case "effect_comparison" -> effectComparison(context);
+            case "cohort_overlap" -> new StudyCohortOverlap().execute(context);
+            case "heterogeneity_review" -> new StudyHeterogeneity().execute(context);
             case "discovery_replication" -> replication(context);
             case "meta_analysis" -> meta(context);
+            case "discovery_meta_analysis" -> discoveryMeta(context);
             case "diagnostic_review" -> diagnostics(context);
             case "report" -> report(context);
             case "participant_characteristics" -> new StudyParticipantCharacteristics().execute(context);
             case "irqtl_candidate_review" -> new StudyIrQtlReview().execute(context);
             case "candidate_prioritization" -> prioritization(context);
             case "source_discovery", "bioinformatics_investigation", "literature_search" -> new StudyBioinformatics().execute(context);
-            case "literature_support", "advisor_review", "related_phenotype_advice", "manuscript_draft" -> new StudyAssistance().execute(context);
+            case "literature_support", "advisor_review", "related_phenotype_advice" -> new StudyAssistance().execute(context);
+            case "manuscript_draft" -> "study".equals(context.operation().get("scope")) ? StudyImpactAssessment.manuscript(context) : new StudyAssistance().execute(context);
             case "sensitivity_analysis" -> sensitivity(context);
             case "gene_ontology" -> automaticOrConfiguredEnrichment(
                 context, "GO", "gene-ontology.tsv");
             case "pathway_enrichment" -> automaticOrConfiguredEnrichment(
                 context, "Reactome", "pathway-enrichment.tsv");
-            case "variant_scoring", "fine_mapping", "colocalization",
+            case "variant_annotation", "variant_scoring" -> optionalMap(context.operation().get("configuration"), "configuration").containsKey("command") ? configured(context) : new StudyVariantFollowup().execute(context);
+            case "rare_set_omnibus" -> new StudyRareOmnibus().execute(context);
+            case "mr_family_adjustment" -> new StudyMrFamilyAdjustment().execute(context);
+            case "network_preservation" -> new StudyNetworkPreservation().execute(context);
+            case "network_analysis", "pathway_network", "network_modules", "module_gene_ontology" ->
+                optionalMap(context.operation().get("configuration"), "configuration").containsKey("command") ? configured(context) : new StudyNetworks().execute(context);
+            case "gwas_enrichment" -> new StudyGwasEnrichment().execute(context);
+            case "ranked_gsea" -> optionalMap(context.operation().get("configuration"),"configuration").containsKey("command")?configured(context):new StudyGsea().execute(context);
+            case "risk_score_evaluation", "risk_score_related_phenotypes" -> optionalMap(context.operation().get("configuration"),"configuration").containsKey("command")?configured(context):new StudyRiskScores().execute(context);
+            case "protein_structure", "protein_structure_assessment" ->
+                optionalMap(context.operation().get("configuration"), "configuration").containsKey("command") ? configured(context)
+                    : new StudyProteinStructures().execute(context);
+            case "fine_mapping", "colocalization",
                     "mendelian_randomization" -> genetic(context);
             default -> throw new IllegalArgumentException(
                 "Unsupported study operation: " + type);
-        };
+        }; } catch (StudyPrimaryResults.Unavailable unavailable) { return StudyPrimaryResults.waiting(context, unavailable); }
     }
 
     private Result harmonize(Context context) throws IOException {
@@ -84,6 +115,7 @@ final class StudyCliExecutor implements StudyOperationExecutor {
             hypothesis.get("analysis"), "hypothesis.analysis");
         Map<String, Object> harmonization = optionalMap(
             analysis.get("harmonization"), "analysis.harmonization");
+        var referenceRows = new ArrayList<String[]>();
         String invalidRows = text(harmonization.getOrDefault(
             "invalid_rows", "error")).toLowerCase(Locale.ROOT);
         if (!Set.of("error", "exclude").contains(invalidRows))
@@ -100,7 +132,12 @@ final class StudyCliExecutor implements StudyOperationExecutor {
             "dataset_id\tfile_role\tpath\tsha256\n");
         for (String id : selected) {
             Map<String, Object> dataset = required(datasets, id, "dataset");
-            Map<String, Object> files = map(dataset.get("files"), "dataset.files");
+            Map<String, Object> declaredFiles = map(dataset.get("files"), "dataset.files");
+            Map<String, Object> files = org.jlinalg.study.StudyStageInputs.intakeFiles(dataset);
+            if (org.jlinalg.study.StudyAnalysisReferences.isReference(dataset)) {
+                if (!declaredFiles.isEmpty()) throw new IOException("An analysis reference cannot contain cohort data files");
+                referenceRows.add(new String[]{id,text(dataset.get("supplied_result_id")),String.join(",",StudyPoolingAudit.cohorts(dataset)),"metadata_only_no_cohort_estimates"});
+            }
             for (Map.Entry<String, Object> file : files.entrySet()) {
                 Path path = context.project().resolve(text(file.getValue())).normalize();
                 if (!Files.isRegularFile(path))
@@ -110,6 +147,9 @@ final class StudyCliExecutor implements StudyOperationExecutor {
                     .append(FollowupSupport.hash(path)).append('\n');
             }
             String stage = text(dataset.get("stage"));
+            if (stage.endsWith("_results") && !Set.of("association_results", "annotated_results").contains(stage))
+                return waiting(context, "Dataset stage " + stage + " describes a completed analysis, not per-cohort association estimates",
+                    Map.of("required_input", "Declare this scoped result in analysis.supplied_results with its kind, files, method, scope and testing family; it must not be normalized as another cohort"));
             if (stage.endsWith("_results")) {
                 Path result = context.project().resolve(
                     text(files.get("results"))).normalize();
@@ -119,6 +159,7 @@ final class StudyCliExecutor implements StudyOperationExecutor {
                 Standardization summary = standardize(result,
                     optionalMap(dataset.get("columns"), "dataset.columns"),
                     standard, invalidRows.equals("exclude"));
+                outputs.addAll(normalizationOutputs(context, standard));
                 summaries.put(id, summary);
                 standardized.put(id, standard);
                 if (exactCommon == null) {
@@ -141,14 +182,23 @@ final class StudyCliExecutor implements StudyOperationExecutor {
             else validCommon.retainAll(retained);
         }
         if (commonUniverse.equals("intersection")) {
-            if (validCommon == null || validCommon.isEmpty())
-                throw new IOException("Strict common feature universe is empty");
-            for (Path standard : standardized.values())
-                retainFeatures(standard, validCommon);
+            Path individual = context.outputDirectory().resolve("post-effect-qc-results");
+            Files.createDirectories(individual);
+            for (var entry : standardized.entrySet()) {
+                Path snapshot = individual.resolve(entry.getKey() + ".tsv");
+                Files.copy(entry.getValue(), snapshot);
+                outputs.add("post-effect-qc-results/" + snapshot.getFileName());
+                retainFeatures(entry.getValue(), validCommon == null ? Set.of() : validCommon);
+            }
         }
         Files.writeString(context.outputDirectory().resolve("inputs.tsv"),
             table, StandardCharsets.UTF_8);
         outputs.add("inputs.tsv");
+        if (!referenceRows.isEmpty()) {
+            FollowupSupport.table(context.outputDirectory().resolve("analysis-references.tsv"),
+                List.of("dataset_id","supplied_result_id","cohorts","disposition"),referenceRows);
+            outputs.add("analysis-references.tsv");
+        }
         if (!summaries.isEmpty()) {
             StringBuilder summary = new StringBuilder(
                 "dataset_id\tinput_rows\teligible_rows\texcluded_invalid"
@@ -160,7 +210,7 @@ final class StudyCliExecutor implements StudyOperationExecutor {
                     .append(value.eligibleFeatures().size()).append('\t')
                     .append(value.excludedInvalid()).append('\t')
                     .append(value.excludedStatus()).append('\t')
-                    .append(DelimitedData.read(standardized.get(entry.getKey())).rows().size())
+                    .append(DelimitedData.readResult(standardized.get(entry.getKey())).rows().size())
                     .append('\n');
             }
             summary.append("# exact_common_features\t")
@@ -192,7 +242,7 @@ final class StudyCliExecutor implements StudyOperationExecutor {
         Map<String, Object> hypothesis = hypothesis(context.study(),
             text(context.operation().get("hypothesis")));
         String datasetType = text(dataset.get("type")).toLowerCase(Locale.ROOT);
-        if (!BULK_ASSOCIATION_TYPES.contains(datasetType))
+        if (!supportsBulkAssociation(datasetType))
             return waiting(context, "No automatic association adapter is registered for "
                 + datasetType + "; configure a modality-specific operation");
         Map<String, Object> files = map(dataset.get("files"), "dataset.files");
@@ -202,19 +252,23 @@ final class StudyCliExecutor implements StudyOperationExecutor {
             hypothesis.get("analysis"), "hypothesis.analysis");
         Map<String, Object> options = optionalMap(
             analysis.get("association"), "analysis.association");
-        String stage = text(dataset.get("stage")).toLowerCase(Locale.ROOT);
-        if (!stage.equals("processed_matrix") && !options.containsKey("model"))
-            return waiting(context, "Association from " + stage
-                + " requires an explicit analysis.association model and preprocessing decision");
+        org.jlinalg.study.StudyWorkflowPolicy.validateAssociation(options);
+        if (StudyPublicEvidence.text(options.get("model")).isBlank())
+            return new StudyModelReview().execute(context, hypothesis, dataset);
+        if ("cox".equals(options.get("model"))) return new StudySurvivalAssociation().execute(context,dataset,hypothesis,options);
         if (!files.containsKey("phenotype"))
             return waiting(context,
                 "Matrix association requires files.phenotype");
         if (hypothesis.get("outcome") == null)
             return waiting(context,
                 "Matrix association requires hypothesis.outcome");
-        Path matrix = context.project().resolve(text(files.get("matrix"))).normalize();
+        Path matrix = StudyAssayQcSources.matrix(context,dataset).normalize();
         Path phenotype = context.project().resolve(
             text(files.get("phenotype"))).normalize();
+        Path selectedPhenotype = dependencyFile(context, "analysis-phenotype.tsv");
+        if (selectedPhenotype != null) phenotype = selectedPhenotype;
+        else if (Boolean.TRUE.equals(context.operation().get("requires_prefit_qc")))
+            return waiting(context, "Participant QC must produce the analyzed phenotype table before association");
         if (!Files.isRegularFile(matrix) || !Files.isRegularFile(phenotype))
             throw new IOException("Association requires existing matrix and phenotype files");
 
@@ -229,10 +283,15 @@ final class StudyCliExecutor implements StudyOperationExecutor {
         List<String> covariates = new ArrayList<>();
         for (String logical : strings(hypothesis.get("covariates")))
             covariates.add(text(covariateColumns.getOrDefault(logical, logical)));
+        String offset=options.containsKey("offset_column")?text(covariateColumns.getOrDefault(text(options.get("offset_column")),options.get("offset_column"))):"";
+        String exactStrata=options.containsKey("exact_strata_column")?text(covariateColumns.getOrDefault(text(options.get("exact_strata_column")),options.get("exact_strata_column"))):"";
+        if(!exactStrata.isEmpty()&&!covariates.contains(exactStrata))covariates.add(exactStrata);
+        if(!offset.isEmpty()&&covariates.contains(offset))throw new IOException("Declare the offset separately from estimated covariates");
         String formula = outcome + " ~ "
             + (covariates.isEmpty() ? "" : String.join(" + ", covariates) + " + ")
+            + (offset.isEmpty()?"":"offset("+offset+") + ")
             + "<omics>";
-        String model = text(options.getOrDefault("model", "ols"));
+        String model = text(options.get("model"));
         Path raw = context.outputDirectory().resolve("association.tsv");
         List<String> arguments = new ArrayList<>(List.of(
             "--pheno", phenotype.toString(), "--omics", matrix.toString(),
@@ -245,6 +304,30 @@ final class StudyCliExecutor implements StudyOperationExecutor {
             arguments.addAll(List.of("--family", text(options.get("family"))));
         if (options.get("link") != null)
             arguments.addAll(List.of("--link", text(options.get("link"))));
+        boolean genotype = Set.of("gwas", "genomics").contains(datasetType);
+        if(!genotype&&Set.of("firth-lrt","exact-conditional").contains(String.valueOf(options.get("binary_test"))))throw new IOException("The registered Firth/exact study adapter requires participant-level genotype data");
+        if (genotype) {
+            var humanPloidy=org.jlinalg.study.StudyHumanPloidyPolicy.resolve(options);org.jlinalg.study.StudyHumanPloidyPolicy.dataset(dataset,humanPloidy);
+            if(!humanPloidy.isEmpty())arguments.addAll(List.of("--human-ploidy-region",text(humanPloidy.get("region")),"--human-ploidy-build",text(humanPloidy.get("genome_build")),"--haploid-source-scale",text(humanPloidy.get("haploid_source_scale")),"--invalid-ploidy-calls",text(humanPloidy.get("invalid_calls")),"--unknown-ploidy-samples",text(humanPloidy.get("unknown_samples")),"--ploidy-samples",context.project().resolve(text(files.get("ploidy_samples"))).normalize().toString()));
+            arguments.addAll(List.of("--min-mac", text(options.getOrDefault("minimum_mac", 20)),
+                "--max-marker-missing", text(options.getOrDefault("maximum_marker_missing", 0.02))));
+            Map<String, String> switches = Map.of("minimum_maf", "--min-maf", "maximum_maf", "--max-maf",
+                "maximum_mac", "--max-mac", "minimum_info", "--min-info", "minimum_hwe_p", "--min-hwe-p",
+                "hwe_filter_scope", "--hwe-filter-scope");
+            for (var option : switches.entrySet()) if (options.containsKey(option.getKey()))
+                arguments.addAll(List.of(option.getValue(), text(options.get(option.getKey()))));
+            for(var option:Map.of("case_value","--case-value","control_value","--control-value","genotype_kind","--genotype-kind","minimum_missingness_p","--min-missingness-p","missingness_max_states","--missingness-max-states").entrySet())if(options.containsKey(option.getKey()))arguments.addAll(List.of(option.getValue(),text(options.get(option.getKey()))));
+            if("human_autosomes".equals(options.get("chromosome_scope")))arguments.add("--autosomes-only");
+            if(files.containsKey("hwe_samples"))arguments.addAll(List.of("--hwe-sample-file",context.project().resolve(text(files.get("hwe_samples"))).normalize().toString()));
+            for(var option:Map.of("binary_test","--binary-test","firth_maximum_iterations","--firth-max-iterations","firth_tolerance","--firth-tolerance","exact_maximum_states","--exact-max-states","exact_maximum_work","--exact-max-work","exact_effect_maximum_parameters","--exact-effect-max-parameters").entrySet())if(options.containsKey(option.getKey()))arguments.addAll(List.of(option.getValue(),options.get(option.getKey()) instanceof Number n&&!option.getKey().equals("firth_tolerance")?Long.toString(n.longValue()):text(options.get(option.getKey()))));
+            if(!exactStrata.isEmpty())arguments.addAll(List.of("--exact-strata-column",exactStrata));
+        }
+        for (String role : List.of("grm", "pedigree")) if (files.containsKey(role))
+            arguments.addAll(List.of("--" + role, context.project().resolve(text(files.get(role))).normalize().toString()));
+        if (files.containsKey("sample") || files.containsKey("samples")) {
+            String role = files.containsKey("sample") ? "sample" : "samples";
+            arguments.addAll(List.of("--sample-file", context.project().resolve(text(files.get(role))).normalize().toString()));
+        }
         ByteArrayOutputStream stdout = new ByteArrayOutputStream();
         ByteArrayOutputStream stderr = new ByteArrayOutputStream();
         int status = JLinAlgCli.run(arguments.toArray(String[]::new),
@@ -258,22 +341,79 @@ final class StudyCliExecutor implements StudyOperationExecutor {
         Path standard = context.outputDirectory()
             .resolve("standard-results").resolve(datasetId + ".tsv");
         Files.createDirectories(standard.getParent());
+        var safeMetadata=new LinkedHashMap<String,String>();
+        if(genotype)for(String label:List.of("hwe_method","hwe_filter_method","hwe_filter_scope","missingness_method","genotype_origin","ploidy_status","test_method","calibration","estimator","standard_error_method","statistic_type","convergence_reason","result_type","effect_estimation_status","exact_status","exact_reason","exact_alternative"))safeMetadata.put(label,label);
+        if(genotype&&"exact-conditional".equals(options.get("binary_test"))) {
+            safeMetadata.put("n","test_n_samples");safeMetadata.put("n_cases","test_n_cases");safeMetadata.put("n_controls","test_n_controls");
+            safeMetadata.put("qc_n_samples","n_samples");safeMetadata.put("qc_n_cases","n_cases");safeMetadata.put("qc_n_controls","n_controls");
+        }
         standardize(raw, Map.of("feature_id", "id", "effect", "beta",
             "standard_error", "standard_error", "p_value", "p_value",
-            "status", "status"), standard, false);
+            "status", "status", "result_metadata",safeMetadata), standard, false);
         List<String> outputs = new ArrayList<>(List.of("association.tsv",
             "standard-results/" + datasetId + ".tsv", "console.txt"));
+        var humanPloidy=org.jlinalg.study.StudyHumanPloidyPolicy.resolve(options);
+        if(!humanPloidy.isEmpty())for(String suffix:List.of(".human-ploidy.yaml",".human-ploidy-samples.tsv",".human-ploidy-variants.tsv",".human-ploidy-invalid-calls.tsv"))outputs.add("association.tsv"+suffix);
+        outputs.addAll(normalizationOutputs(context, standard));
         StudyEffectQc.Result effectQc = StudyEffectQc.apply(Map.of(datasetId, standard),
             optionalMap(analysis.get("harmonization"), "analysis.harmonization"), context.outputDirectory());
         outputs.addAll(effectQc.outputs());
         outputs.addAll(StudyFeatureAnnotations.write(context, Map.of(datasetId, standard)));
         var method = new LinkedHashMap<>(StudyMethods.record(model, Map.of("dataset", datasetId, "formula", formula, "model", model,
-            "covariates", covariates, "command_arguments", arguments, "threads", options.getOrDefault("threads", "1")),
+            "covariates", covariates, "offset_column",offset,"command_arguments", arguments, "threads", options.getOrDefault("threads", "1")),
             StudyPublicEvidence.list(options.get("references")), options.get("rationale"),
             model.equals("ols") ? List.of("linear regression") : List.of(model, "regression")));
         method.put("effect_outlier_qc", effectQc.document());
-        return new Result(State.COMPLETE, "Fitted association model for " + datasetId, outputs,
-            Map.of("method_report", method, "effect_outlier_qc", effectQc.document()));
+        if(!humanPloidy.isEmpty()){method.put("human_ploidy",humanPloidy);method.put("human_ploidy_interpretation",org.jlinalg.study.StudyHumanPloidyPolicy.profile(humanPloidy).interpretation());method.put("human_ploidy_audit","association.tsv.human-ploidy.yaml");}
+        if(genotype&&"firth-lrt".equals(options.get("binary_test"))) {
+            method.put("method","Firth Jeffreys-penalized Bernoulli logit with full-design constrained likelihood-ratio inference");
+            method.put("literature_terms",List.of("Firth 1993 bias reduction maximum likelihood","Heinze Schemper logistic regression separation 2002"));
+        }
+        boolean exact=genotype&&"exact-conditional".equals(options.get("binary_test"));
+        int unresolvedExact=0;
+        if(exact){
+            method.put("method","Finite conditional additive hard-call genotype score test with optional separate approximate Firth effects");
+            method.put("literature_terms",List.of("exact conditional logistic inference fixed stratum case counts","finite conditional score probability ordering"));
+            method.put("exact_controls",Map.of("maximum_states",options.getOrDefault("exact_maximum_states",200000),"maximum_work",options.getOrDefault("exact_maximum_work",50000000),"effect_maximum_parameters",options.getOrDefault("exact_effect_maximum_parameters",50),"probability_ordering_relative_tolerance",1e-7,"strata_column",exactStrata,"missing_genotypes","omitted before variant-specific case margins; not imputed"));
+            var rawTable=DelimitedData.readResult(raw);int exactStatus=rawTable.column("exact_status");
+            for(String[] row:rawTable.rows())if(Set.of("budget_exceeded","numerical_unavailable").contains(row[exactStatus]))unresolvedExact++;
+        }
+        if(genotype) {
+            var rawTable=DelimitedData.readResult(raw);var dispositions=new java.util.TreeMap<String,Integer>();
+            for(String[] row:rawTable.rows())dispositions.merge(row[rawTable.column("status")],1,Integer::sum);
+            method.put("genotype_qc",Map.of("performed",true,"variant_dispositions",dispositions,"full_qc_table","association.tsv",
+                "count_scope","Trait/covariate complete analyzed samples, before marker mean imputation; group MAC uses the same cohort-minor allele",
+                "hwe_scope",options.getOrDefault("hwe_filter_scope","all"),"hwe_reference",files.getOrDefault("hwe_samples","aligned analyzed samples"),
+                "requested_unavailable_qc","Retained as an explicit variant exclusion; no passing P value substituted",
+                "calibration_limit","QC does not establish sparse/imbalanced binary, relatedness, ancestry or sex/PAR model calibration; the fitted estimator and inferential method require the registered design"));
+        }
+        int retainedTests = DelimitedData.readResult(standard).rows().size();
+        var retainedTable=DelimitedData.readResult(standard);
+        long pOnly=retainedTable.rows().stream().filter(row->StudyResultShape.pOnly(retainedTable,row)).count();
+        method.put("retained_p_value_only_tests",pOnly);method.put("retained_signed_effects",retainedTests-pOnly);
+        method.put("retained_estimates", retainedTests);
+        if(exact)method.put("binary_inference",Map.of("registered_test","exact-conditional","null_conditioning","Independent Bernoulli observations, declared stratum case counts, fixed known offsets, observed integer 0/1/2 hard calls","p_value","Finite conditional ALT case-allele score distribution; two-sided probability ordering, no mid-P or chi-square approximation","effect","Optional unconditional Firth stratum logit coefficient and ordinary-Fisher SE are separate approximate estimates; their failure retains the exact P value","sample_scope","n/n_cases/n_controls describe called test samples; qc_n_* and called/missing describe source QC before genotype omission"));
+        else if(genotype)method.put("binary_inference",Map.of("registered_test",options.getOrDefault("binary_test","efficient-score"),
+            "firth_scope","Independent individual Bernoulli logit, unit trial weights; full and constrained fits retain the full-design Jeffreys penalty",
+            "firth_p_value","Penalized likelihood-ratio chi-square 1df asymptotic tail; not a Wald P value or finite-sample/relatedness guarantee",
+            "firth_standard_error","Inverse ordinary Fisher information at the penalized estimate; meta-analysis Wald inference is a separate approximation"));
+        if(genotype&&Set.of("firth-lrt","exact-conditional").contains(String.valueOf(options.get("binary_test"))))method.put("firth_controls",Map.of(
+            "maximum_iterations",options.getOrDefault("firth_maximum_iterations",300),"tolerance",options.getOrDefault("firth_tolerance",1e-8),
+            "maximum_step",5,"maximum_step_halvings",40,"column_scaling","max_abs; coefficient step/tolerance in scaled coordinates",
+            "genotype_missingness",exact?"omitted before variant-specific test and optional effect fit":"analysis-sample mean imputation after QC; original called/missing counts retained","numerical_backend","portable_java_cpu"));
+        if (retainedTests == 0) method.put("performed", false);
+        String exactCaveat="Exact P values condition on declared stratum case counts and fixed known offsets under independent individual Bernoulli observations with observed hard calls. They do not adjust arbitrary continuous covariates or kinship. Missing genotypes are omitted before variant-specific margins. The centered ALT score direction is separate from an effect estimate. Optional Firth effects and ordinary-Fisher SE are approximations; P-only tests establish no effect magnitude or beta direction and cannot enter inverse-variance meta-analysis. Calibration requires the declared null and does not establish validity of estimated offsets, population transfer or missingness assumptions.";
+        if(unresolvedExact>0){
+            method.put("association_family_status","incomplete_exact_tests");method.put("unresolved_exact_tests",unresolvedExact);method.put("primary_selection_eligible",false);
+            var pending=waiting(context,"Exact association family is incomplete; resolve resource/numerical failures before official FDR selection",Map.of("unresolved_exact_tests",unresolvedExact,"bh_suppressed",true),List.of(StudyNeed.review("exact-tests:"+datasetId,"Resolve exact conditional test budgets or numerical inputs and rerun the complete family","Retained partial P values cannot substitute for the registered complete testing family. Increase exact resource bounds only when feasible or register a reviewed alternative method; no approximate fallback was performed.",true)));
+            outputs.addAll(pending.outputs());var details=new LinkedHashMap<String,Object>(pending.details());details.put("method_report",method);details.put("effect_outlier_qc",effectQc.document());details.put("required_manuscript_caveat",exactCaveat);details.put("primary_selection_eligible",false);details.put("evidence_disposition","incomplete_test_family");
+            return new Result(State.WAITING_FOR_INPUT,pending.summary(),outputs,details);
+        }
+        return new Result(State.COMPLETE, retainedTests == 0 ? "No estimable association rows remained after declared QC for " + datasetId
+            : "Fitted association model for " + datasetId, outputs,
+            Map.of("method_report", method, "effect_outlier_qc", effectQc.document(),
+                "required_manuscript_caveat",exact?exactCaveat:genotype?"Genotype QC and source ploidy metadata do not establish ancestry/kinship correctness or biological sex/PAR interpretation. The native estimator/test route is "+model+"/"+options.getOrDefault("family","gaussian")+"/"+options.getOrDefault("binary_test","efficient-score")+". "+("firth-lrt".equals(options.get("binary_test"))?"Firth uses full/constrained Jeffreys penalized fits for independent Bernoulli logit observations. Its chi-square LRT P value is not a Wald test; its ordinary-Fisher SE and subsequent meta-analysis Wald inference are separate approximations. No finite-sample tail, relatedness or new-population calibration guarantee is inferred.":"No Firth/SPA correction or specialized binary mixed-model calibration is supplied by this configured route.")+" Case/control MAC uses one cohort-minor allele. HWE and differential missingness are QC statistics, not phenotype association evidence.":"",
+                "evidence_disposition", retainedTests == 0 ? "not_estimable" : "estimable"));
     }
 
     private Result replication(Context context) throws IOException {
@@ -282,6 +422,13 @@ final class StudyCliExecutor implements StudyOperationExecutor {
 
     private Result replication(Context context, Map<String, Path> results)
             throws IOException {
+        return replication(context, results, null);
+    }
+
+    Result replication(Context context, Map<String, Path> results, Path suppliedDiscovery)
+            throws IOException {
+        var poolingAudit = StudyPoolingAudit.assess(context, results, true);
+        if (!poolingAudit.needs().isEmpty()) return poolingAudit.waiting();
         Map<String, Object> roles = map(
             context.operation().get("roles"), "operation.roles");
         List<String> discovery = role(roles, "discovery");
@@ -289,6 +436,21 @@ final class StudyCliExecutor implements StudyOperationExecutor {
         if (discovery.isEmpty() || replication.isEmpty())
             return waiting(context,
                 "Discovery-replication comparison requires both discovery and replication roles");
+        List<String> originalDiscovery = List.copyOf(discovery);
+        StudyPrimaryResults.Selection frozenDiscovery = null;
+        StudyDiscoveryScope.Audit discoveryScope = null;
+        if (suppliedDiscovery != null || Boolean.TRUE.equals(context.operation().get("pooled_discovery"))) {
+            Path pooled = suppliedDiscovery == null ? dependencyFile(context, "discovery-results.tsv") : suppliedDiscovery;
+            if (pooled == null) return waiting(context, "Discovery-only meta-analysis must complete before validation selection");
+            if (suppliedDiscovery == null) {
+                frozenDiscovery = StudyPrimaryResults.discovery(context, pooled);
+                discoveryScope = StudyDiscoveryScope.assess(context, frozenDiscovery, results, originalDiscovery, replication);
+                if (!discoveryScope.needs().isEmpty()) return discoveryScope.waiting();
+            }
+            results = new LinkedHashMap<>(results);
+            results.put("__pooled_discovery__", pooled);
+            discovery = List.of("__pooled_discovery__");
+        }
         Map<String, Object> hypothesis = hypothesis(context.study(),
             text(context.operation().get("hypothesis")));
         Map<String, Object> analysis = map(
@@ -297,9 +459,9 @@ final class StudyCliExecutor implements StudyOperationExecutor {
             analysis.get("multiple_testing"), "analysis.multiple_testing");
         String method = text(testing.getOrDefault("method", "BH"))
             .toUpperCase(Locale.ROOT);
-        if (!Set.of("BH", "NONE").contains(method))
+        if (!Set.of("BH", "BY", "NONE").contains(method))
             throw new IllegalArgumentException(
-                "Discovery-replication currently supports multiple_testing method BH or NONE");
+                "Discovery-replication supports declared multiple_testing method BH, BY or NONE");
         double familyAlpha = number(testing.getOrDefault("alpha", 0.05),
             "multiple_testing.alpha");
         double discoveryAlpha = number(
@@ -331,7 +493,7 @@ final class StudyCliExecutor implements StudyOperationExecutor {
         Path output = context.outputDirectory().resolve("replication.tsv");
         Path vennDirectory = context.outputDirectory().resolve("replication-venn");
         Files.createDirectories(vennDirectory);
-        List<String> outputs = new ArrayList<>(List.of("replication.tsv"));
+        List<String> outputs = new ArrayList<>(List.of("replication.tsv", "pooling-audit.yaml", "pooling-compatibility.tsv", "pooling-variant-compatibility.tsv"));
         StringBuilder vennSummary = new StringBuilder(
             "discovery_dataset\treplication_dataset\tdiscovery_only"
                 + "\treplicated_overlap\treplication_criterion_only"
@@ -344,9 +506,23 @@ final class StudyCliExecutor implements StudyOperationExecutor {
                 + "\treplication_beta\treplication_p\treplication_adjusted_p"
                 + "\tdiscovery_selected\tsame_sign\treplicated\n");
             for (String discoveryId : discovery) {
-                Map<String, Estimate> left = estimates(required(
-                    results, discoveryId, "harmonized result"));
-                Map<String, Double> leftAdjusted = adjusted(left, method);
+                Map<String, Estimate> left;
+                Map<String, Double> leftAdjusted;
+                if (frozenDiscovery != null) {
+                    left = new LinkedHashMap<>();
+                    var source = frozenDiscovery.table();
+                    for (String[] row : source.rows()) {
+                        String id = row[source.column("feature_id")];
+                        if (!frozenDiscovery.probabilities().containsKey(id)) continue;
+                        boolean pOnly = StudyResultShape.pOnly(source, row);
+                        left.put(id, new Estimate(pOnly ? Double.NaN : finite(row[source.column("beta")], "beta", frozenDiscovery.source().path()),
+                            pOnly ? Double.NaN : finite(row[source.column("se")], "se", frozenDiscovery.source().path()), frozenDiscovery.probabilities().get(id)));
+                    }
+                    leftAdjusted = frozenDiscovery.adjusted();
+                } else {
+                    left = estimates(required(results, discoveryId, "harmonized result"));
+                    leftAdjusted = adjusted(left, method);
+                }
                 Set<String> selected = new LinkedHashSet<>();
                 for (Map.Entry<String, Double> value : leftAdjusted.entrySet())
                     if (significant(value.getValue(), discoveryAlpha,
@@ -377,7 +553,8 @@ final class StudyCliExecutor implements StudyOperationExecutor {
                             row.getKey(), Double.NaN);
                         boolean discoverySelected = significant(discoveryQ,
                             discoveryAlpha, strictThreshold);
-                        boolean same = Math.signum(first.beta)
+                        boolean signed=Double.isFinite(first.beta)&&Double.isFinite(other.beta);
+                        boolean same = signed&&Math.signum(first.beta)
                             == Math.signum(other.beta);
                         boolean replicationSelected = significant(replicationQ,
                             replicationAlpha, strictThreshold);
@@ -391,7 +568,7 @@ final class StudyCliExecutor implements StudyOperationExecutor {
                             + value(first.p) + "\t" + value(discoveryQ) + "\t"
                             + other.beta + "\t" + value(other.p) + "\t"
                             + value(replicationQ) + "\t" + discoverySelected + "\t"
-                            + same + "\t" + replicated + "\n");
+                            + (signed?Boolean.toString(same):"NA") + "\t" + replicated + "\n");
                     }
                     Set<String> discoveryOnly = new LinkedHashSet<>(selected);
                     discoveryOnly.removeAll(replicationCriterion);
@@ -433,12 +610,47 @@ final class StudyCliExecutor implements StudyOperationExecutor {
         Files.writeString(context.outputDirectory().resolve("replication-venn.tsv"),
             vennSummary, StandardCharsets.UTF_8);
         outputs.add(1, "replication-venn.tsv");
-        return Result.complete("Compared discovery and replication effects and generated overlap diagrams",
-            outputs);
+        Map<String,Object> details = new LinkedHashMap<>();
+        details.put("discovery_datasets", originalDiscovery); details.put("replication_datasets", replication);
+        details.put("discovery_selection", discovery); details.put("adjustment_scope", adjustmentScope);
+        details.put("discovery_alpha", discoveryAlpha); details.put("replication_alpha", replicationAlpha);
+        details.put("replication_adjustment", method);
+        details.put("threshold_comparison", thresholdComparison); details.put("validation_used_for_discovery_pool", false);
+        details.put("direction_scope", "P-only pairs retain P-based selection but have same_sign=NA; a required sign-concordance rule cannot be satisfied by unavailable effects");
+        if (frozenDiscovery != null) {
+            details.put("frozen_discovery_selection", frozenDiscovery.receipt());
+            details.put("required_manuscript_caveat", frozenDiscovery.receipt().get("required_manuscript_caveat"));
+            Map<String,Object> methodReport = new LinkedHashMap<>();
+            methodReport.put("performed", true);
+            methodReport.put("discovery_selection_origin", frozenDiscovery.receipt().get("adjusted_values_origin"));
+            methodReport.put("discovery_source_sha256", frozenDiscovery.source().sha256());
+            methodReport.put("discovery_adjustment", frozenDiscovery.adjustment());
+            methodReport.put("discovery_testing_denominator", frozenDiscovery.receipt().get("testing_denominator"));
+            methodReport.put("discovery_family_coverage", frozenDiscovery.family().getOrDefault("coverage", "complete_observed_input"));
+            methodReport.put("discovery_alpha", discoveryAlpha);
+            methodReport.put("validation_adjustment", method); methodReport.put("validation_alpha", replicationAlpha);
+            methodReport.put("validation_family_scope", adjustmentScope);
+            methodReport.put("source_analysis_reproduced", false);
+            if (discoveryScope != null) {
+                methodReport.put("discovery_scope_status", discoveryScope.receipt().get("status"));
+                methodReport.put("source_scope_checked", discoveryScope.receipt().get("external_scope_checked"));
+                methodReport.put("shared_variant_rows_checked", discoveryScope.receipt().get("shared_variant_rows"));
+                methodReport.put("variant_coding_fields_checked", discoveryScope.receipt().get("compared_variant_fields"));
+                details.put("required_manuscript_caveat", details.get("required_manuscript_caveat") + " " + discoveryScope.receipt().get("required_manuscript_caveat"));
+                outputs.add("discovery-scope-audit.yaml"); outputs.add("discovery-scope-compatibility.tsv");
+            }
+            details.put("method_report", methodReport);
+            outputs.add("primary-result-selection.yaml");
+        }
+        return new Result(State.COMPLETE, "Compared frozen discovery and replication effects and generated overlap diagrams",
+            outputs, details);
     }
 
     private Result effectComparison(Context context) throws IOException {
-        Map<String, Path> resultPaths = results(context);
+        return effectComparison(context, results(context));
+    }
+
+    Result effectComparison(Context context, Map<String, Path> resultPaths) throws IOException {
         if (resultPaths.size() < 2)
             return new Result(State.NOT_APPLICABLE,
                 "Effect comparison requires at least two result tables",
@@ -464,7 +676,7 @@ final class StudyCliExecutor implements StudyOperationExecutor {
                 Moment moment = new Moment();
                 for (Map.Entry<String, Estimate> entry : left.entrySet()) {
                     Estimate other = right.get(entry.getKey());
-                    if (other == null) continue;
+                    if (other == null||!Double.isFinite(entry.getValue().beta)||!Double.isFinite(other.beta)) continue;
                     xValues.add(entry.getValue().beta);
                     yValues.add(other.beta);
                     moment.add(entry.getValue().beta, other.beta, false, false);
@@ -488,6 +700,7 @@ final class StudyCliExecutor implements StudyOperationExecutor {
                 comparison.put("right_cohort", rightCohort);
                 comparison.put("comparison_type", comparisonType);
                 comparison.put("common_features", moment.n);
+                comparison.put("effect_scope","Pairs with finite signed estimates only; P-only tests cannot establish effect correlation or concordance");
                 comparison.put("pearson_r", Double.isFinite(correlation)
                     ? correlation : "NA");
                 if (!xValues.isEmpty()) {
@@ -497,6 +710,12 @@ final class StudyCliExecutor implements StudyOperationExecutor {
                     Path pdf = plotDirectory.resolve(stem + ".pdf");
                     double[] x = xValues.stream().mapToDouble(Double::doubleValue).toArray();
                     double[] y = yValues.stream().mapToDouble(Double::doubleValue).toArray();
+                    double largest=0;for(double v:x)largest=Math.max(largest,Math.abs(v));for(double v:y)largest=Math.max(largest,Math.abs(v));
+                    double displayUnit=largest>0&&(largest>=1e7||largest<1e-3)?Math.pow(10,Math.floor(Math.log10(largest))):1;
+                    if(!(displayUnit>0)||!Double.isFinite(displayUnit))displayUnit=largest;
+                    String unitLabel=displayUnit==1?"":" (x "+String.format(Locale.ROOT,"%.0e",displayUnit)+")";
+                    if(displayUnit!=1){for(int i=0;i<x.length;i++){x[i]/=displayUnit;y[i]/=displayUnit;}}
+                    comparison.put("plot_coordinate_divisor",displayUnit);comparison.put("plot_units","Displayed coordinates equal source effect divided by the common positive divisor; exported statistics and correlation retain source units");
                     double[] bounds = commonBounds(x, y);
                     String legend = "Pearson r = " + (Double.isFinite(correlation)
                         ? String.format(Locale.ROOT, "%.4f", correlation) : "NA")
@@ -505,7 +724,7 @@ final class StudyCliExecutor implements StudyOperationExecutor {
                         .title((comparisonType.equals("within_cohort")
                             ? "Within-cohort" : "Cross-cohort")
                             + " effect comparison")
-                        .xLabel(leftId + " effect").yLabel(rightId + " effect")
+                        .xLabel(leftId + " effect"+unitLabel).yLabel(rightId + " effect"+unitLabel)
                         .legend(LegendPosition.RIGHT).markerSize(7)
                         .xRange(bounds[0], bounds[1]).yRange(bounds[0], bounds[1])
                         .build();
@@ -542,11 +761,43 @@ final class StudyCliExecutor implements StudyOperationExecutor {
         return meta(context, results(context));
     }
 
-    private Result meta(Context context, Map<String, Path> results) throws IOException {
+    private Result discoveryMeta(Context context) throws IOException {
+        return discoveryMeta(context, results(context));
+    }
+
+    Result discoveryMeta(Context context, Map<String, Path> all) throws IOException {
+        Map<String, Path> discovery = new LinkedHashMap<>();
+        for (String id : strings(context.operation().get("datasets"))) {
+            if (!all.containsKey(id)) return waiting(context, "Discovery result is unavailable: " + id);
+            discovery.put(id, all.get(id));
+        }
+        if (discovery.size() < 2) return waiting(context, "Discovery pooling requires at least two discovery datasets");
+        Result pooled = meta(context, discovery);
+        if (pooled.state() != State.COMPLETE) return pooled;
+        Path standardized = context.outputDirectory().resolve("discovery-results.tsv");
+        standardize(context.outputDirectory().resolve("meta-analysis.tsv"),
+            Map.of("feature_id", "feature_id", "effect", "beta", "standard_error", "se", "p_value", "p_value", "status", "status"),
+            standardized, true);
+        List<String> outputs = new ArrayList<>(pooled.outputs());
+        outputs.add("discovery-results.tsv");
+        outputs.addAll(normalizationOutputs(context, standardized));
+        Map<String, Object> details = new LinkedHashMap<>(pooled.details());
+        details.put("discovery_datasets", List.copyOf(discovery.keySet()));
+        details.put("validation_used", false);
+        details.put("scientific_role", "discovery_only");
+        return new Result(State.COMPLETE, "Pooled discovery cohorts without validation estimates", outputs, details);
+    }
+
+    Result meta(Context context, Map<String, Path> results) throws IOException {
         if (results.isEmpty())
             return waiting(context, "Meta-analysis requires association results");
+        for(var source:results.entrySet()){var table=DelimitedData.readResult(source.getValue());if(table.rows().stream().anyMatch(row->StudyResultShape.pOnly(table,row)))return waiting(context,"The registered inverse-variance meta-analysis needs signed effects/SE. P-only tests remain retained; no unregistered P-value combination or cohort omission was substituted.",Map.of("p_value_only_source",source.getKey()));}
         Map<String, Object> configuration = optionalMap(
             context.operation().get("configuration"), "operation.configuration");
+        var poolingAudit = StudyPoolingAudit.assess(context, results, false);
+        if (!poolingAudit.needs().isEmpty()) return poolingAudit.waiting();
+        var metaOptions = StudyMetaOptions.resolve(configuration);
+        if (org.jlinalg.study.StudyPoolingPolicy.correlated(StudyResultTables.analysis(context))) return StudyCorrelatedMeta.execute(context, results, configuration, poolingAudit);
         String model = text(configuration.getOrDefault("model", "fixed"))
             .toLowerCase(Locale.ROOT);
         if (!Set.of("fixed", "random").contains(model))
@@ -565,6 +816,7 @@ final class StudyCliExecutor implements StudyOperationExecutor {
             "--id-column", "feature_id", "--effect-column", "beta",
             "--se-column", "se", "--min-cohorts", Integer.toString(minimum),
             "--model", model));
+        StudyMetaOptions.arguments(configuration, arguments);
         ByteArrayOutputStream console = new ByteArrayOutputStream();
         ByteArrayOutputStream error = new ByteArrayOutputStream();
         int status = MetaCli.run("meta-analysis",
@@ -576,7 +828,9 @@ final class StudyCliExecutor implements StudyOperationExecutor {
         if (status != 0)
             throw new IOException("Meta-analysis failed: "
                 + error.toString(StandardCharsets.UTF_8).trim());
-        var defaults = org.jlinalg.meta.MetaAnalysisOptions.builder().build();
+        List<String> outputs = new ArrayList<>(List.of("meta-analysis.tsv", "meta-analysis.tsv.log", "console.txt", "pooling-audit.yaml", "pooling-compatibility.tsv", "pooling-variant-compatibility.tsv"));
+        outputs.addAll(StudyMetaMetadata.attach(output, results));
+        var defaults = metaOptions;
         Map<String, Object> parameters = new LinkedHashMap<>();
         parameters.put("model", model); parameters.put("weighting", "inverse variance"); parameters.put("min_cohorts", minimum);
         parameters.put("inference", defaults.inferenceMethod().toString()); parameters.put("confidence_level", defaults.confidenceLevel());
@@ -584,10 +838,15 @@ final class StudyCliExecutor implements StudyOperationExecutor {
         parameters.put("maximum_iterations", defaults.maximumIterations()); parameters.put("tolerance", defaults.tolerance());
         parameters.put("command_arguments", arguments); parameters.put("effective_defaults", "Backend defaults captured at execution, not reconstructed for older runs.");
         parameters.put("overlap_handling", "No covariance-based correction; confirm cohort independence/overlap declarations.");
+        var method = new LinkedHashMap<>(StudyMethods.record(model + "-effect inverse-variance meta-analysis", parameters,
+            StudyPublicEvidence.list(configuration.get("references")), configuration.get("rationale"), List.of("meta-analysis", "inverse variance")));
+        var pooledTable = DelimitedData.readResult(output);
+        long fitted = pooledTable.rows().stream().filter(row -> Set.of("ok", "single_cohort").contains(row[pooledTable.column("status")])).count();
+        method.put("performed", fitted > 0); method.put("retained_estimates", fitted);
         return new Result(State.COMPLETE, "Pooled " + results.size() + " cohort result tables",
-            List.of("meta-analysis.tsv", "meta-analysis.tsv.log", "console.txt"), Map.of("method_report",
-                StudyMethods.record(model + "-effect inverse-variance meta-analysis", parameters,
-                    StudyPublicEvidence.list(configuration.get("references")), configuration.get("rationale"), List.of("meta-analysis", "inverse variance"))));
+            outputs, Map.of("method_report", method,
+                "pooling_audit", poolingAudit.details(),
+                "evidence_disposition", fitted > 0 ? "estimable" : "not_estimable"));
     }
 
     private Result sensitivity(Context context) throws IOException {
@@ -601,26 +860,36 @@ final class StudyCliExecutor implements StudyOperationExecutor {
         if (Boolean.TRUE.equals(configuration.get(
                 "automatic_leave_one_cohort_out")))
             actions.add("leave_one_cohort_out");
+        var heterogeneityPolicy=StudyHeterogeneity.policy(context);
+        boolean conditionalOmissions="on_alert".equals(heterogeneityPolicy.get("leave_one_cohort_out"));
+        boolean diagnosticAlert=StudyHeterogeneity.recordedAlert(context,"heterogeneity_review","heterogeneity-review.yaml")||StudyHeterogeneity.recordedAlert(context,"cohort_overlap","cohort-overlap.yaml");
+        boolean expectedOverlap=Boolean.TRUE.equals(org.jlinalg.study.StudyCohortPolicy.overlap(optionalMap(StudyResultTables.analysis(context).get("cohort_overlap"),"cohort_overlap")).get("enabled"));
+        boolean alertInputsComplete=(!Boolean.TRUE.equals(heterogeneityPolicy.get("enabled"))||StudyHeterogeneity.recordedComplete(context,"heterogeneity_review","heterogeneity-review.yaml"))&&(!expectedOverlap||StudyHeterogeneity.recordedComplete(context,"cohort_overlap","cohort-overlap.yaml"));
+        boolean omissionNotTriggered=conditionalOmissions&&!diagnosticAlert&&alertInputsComplete;
+        if(conditionalOmissions&&!diagnosticAlert||"disabled".equals(heterogeneityPolicy.get("leave_one_cohort_out")))actions.remove("leave_one_cohort_out");
         List<Object> dispositions = new ArrayList<>();
         List<String> outputs = new ArrayList<>();
-        boolean incomplete = false;
+        boolean incomplete = conditionalOmissions&&!diagnosticAlert&&!alertInputsComplete;
+        if(incomplete)dispositions.add(Map.of("action","leave_one_cohort_out","status","waiting_for_input","required_input","The registered on_alert rule needs complete heterogeneity/overlap reviews; unavailable review evidence is not a negative alert"));
         // These are supplementary influence diagnostics, never a silent
         // replacement for the all-cohort primary analysis.
-        boolean primaryReady = false;
-        Path primaryMeta = null;
-        Path primaryReplication = null;
-        for (Path dependency : context.dependencyDirectories().values()) {
-            if (Files.isRegularFile(dependency.resolve("replication.tsv")))
-                primaryReplication = dependency.resolve("replication.tsv");
-            if (Files.isRegularFile(dependency.resolve("meta-analysis.tsv"))) {
-                primaryMeta = dependency.resolve("meta-analysis.tsv");
-                primaryReady |= "complete".equals(StudyYaml.loadArtifact(
-                    dependency.resolve("manifest.yaml")).get("state"));
-            }
-        }
+        // Discovery pools and supplementary fits also write meta-analysis.tsv.
+        // A filename cannot identify the prespecified all-cohort baseline.
+        Path primaryMeta = StudyPrimaryResults.metaBaseline(context);
+        Path primaryReplication = StudyResultTables.artifact(context,
+            "discovery_replication", "replication.tsv");
+        boolean primaryReady = primaryMeta != null;
         ReplicationMetrics primaryReplicationMetrics = replicationMetrics(
             primaryReplication);
-        MetaMetrics primaryMetaMetrics = metaMetrics(primaryMeta);
+        MetaMetrics primaryMetaMetrics = metaMetrics(context,primaryMeta);
+        String suppliedPrimaryIssue = StudySuppliedFamilies.sensitivityIssue(context, primaryMeta, results);
+        Result effectSensitivity = null;
+        if (Boolean.TRUE.equals(configuration.get("automatic_unfiltered_effect_qc"))) {
+            effectSensitivity = suppliedPrimaryIssue == null ? new StudyEffectSensitivity().execute(context, this, results)
+                : Result.waiting("Supplied primary is not yet matched to the native sensitivity protocol", Map.of("required_input", suppliedPrimaryIssue));
+            outputs.addAll(effectSensitivity.outputs());
+            incomplete = effectSensitivity.state() == State.WAITING_FOR_INPUT;
+        }
         Map<String, Map<String, Object>> described = datasets(context.study());
         Map<String, List<String>> cohorts = new LinkedHashMap<>();
         boolean unambiguous = true;
@@ -640,6 +909,11 @@ final class StudyCliExecutor implements StudyOperationExecutor {
                 + "\todd_one_candidate\tmanuscript_disposition\n");
         List<Object> improvementCandidates = new ArrayList<>();
         for (String action : actions) {
+            if (suppliedPrimaryIssue != null) {
+                incomplete = true;
+                dispositions.add(Map.of("action", action, "status", "waiting_for_input", "required_input", suppliedPrimaryIssue));
+                continue;
+            }
             if (!primaryReady || results.size() < 2 || action.equals("leave_one_cohort_out") && (!unambiguous || cohorts.size() < 3)) {
                 incomplete = true;
                 dispositions.add(Map.of("action", action, "status", "waiting_for_input", "required_input",
@@ -654,6 +928,9 @@ final class StudyCliExecutor implements StudyOperationExecutor {
                 Files.createDirectories(folder);
                 Map<String, Path> selected = new LinkedHashMap<>(results);
                 if (action.equals("leave_one_cohort_out")) cohorts.get(variant).forEach(selected::remove);
+                if(action.equals("leave_one_cohort_out")&&cohorts.size()-1<((Number)heterogeneityPolicy.get("minimum_retained_cohorts")).intValue()){
+                    dispositions.add(Map.of("action",action,"variant",variant,"status","not_applicable","reason","Registered minimum_retained_cohorts is not met; no cohort estimate is relabeled as a meta-analysis"));continue;
+                }
                 Map<String, Object> operation = new LinkedHashMap<>(context.operation());
                 Map<String, Object> primary = optionalMap(map(hypothesis(context.study(), text(operation.get("hypothesis")))
                     .get("analysis"), "analysis").get("operations"), "operations");
@@ -671,6 +948,11 @@ final class StudyCliExecutor implements StudyOperationExecutor {
                 operation.put("configuration", settings);
                 Result result = meta(new Context(context.project(), folder, operation, context.study(), context.plan(), context.dependencyDirectories()), selected);
                 for (String output : result.outputs()) outputs.add(context.outputDirectory().relativize(folder.resolve(output)).toString().replace('\\', '/'));
+                if (result.state() != State.COMPLETE) {
+                    incomplete = true;
+                    dispositions.add(Map.of("action", action, "variant", variant, "status", result.state().value(), "details", result.details()));
+                    continue;
+                }
                 Path replicationOutput = null;
                 if (action.equals("leave_one_cohort_out")) {
                     Map<String, Object> sourceHypothesis = hypothesis(context.study(),
@@ -688,19 +970,44 @@ final class StudyCliExecutor implements StudyOperationExecutor {
                         Map<String, Object> replicationOperation = new LinkedHashMap<>(operation);
                         replicationOperation.put("type", "discovery_replication");
                         replicationOperation.put("roles", filteredRoles);
+                        Path pooledDiscovery = null;
+                        List<String> remainingDiscovery = role(filteredRoles, "discovery");
+                        if (remainingDiscovery.size() > 1) {
+                            Path poolFolder = folder.resolve("discovery");
+                            Files.createDirectories(poolFolder);
+                            Map<String, Object> poolOperation = new LinkedHashMap<>(replicationOperation);
+                            poolOperation.put("datasets", remainingDiscovery);
+                            Map<String, Object> poolSettings = optionalMap(primary.get("discovery_meta_analysis"), "discovery_meta_analysis");
+                            if (poolSettings.isEmpty()) poolSettings = optionalMap(primary.get("meta_analysis"), "meta_analysis");
+                            poolOperation.put("configuration", poolSettings);
+                            Result poolResult = discoveryMeta(new Context(context.project(), poolFolder, poolOperation,
+                                context.study(), context.plan(), context.dependencyDirectories()), selected);
+                            for (String output : poolResult.outputs()) outputs.add(context.outputDirectory().relativize(poolFolder.resolve(output)).toString().replace('\\', '/'));
+                            if (poolResult.state() != State.COMPLETE) {
+                                incomplete = true;
+                                dispositions.add(Map.of("action", action, "variant", variant, "stage", "discovery_pool", "status", poolResult.state().value(), "details", poolResult.details()));
+                                continue;
+                            }
+                            pooledDiscovery = poolFolder.resolve("discovery-results.tsv");
+                        }
                         Result replicationResult = replication(new Context(
                             context.project(), folder, replicationOperation,
                             context.study(), context.plan(),
-                            context.dependencyDirectories()), selected);
+                            context.dependencyDirectories()), selected, pooledDiscovery);
                         for (String output : replicationResult.outputs()) {
                             String relative = context.outputDirectory().relativize(
                                 folder.resolve(output)).toString().replace('\\', '/');
                             if (!outputs.contains(relative)) outputs.add(relative);
                         }
+                        if (replicationResult.state() != State.COMPLETE) {
+                            incomplete = true;
+                            dispositions.add(Map.of("action", action, "variant", variant, "stage", "validation", "status", replicationResult.state().value(), "details", replicationResult.details()));
+                            continue;
+                        }
                         replicationOutput = folder.resolve("replication.tsv");
                     }
                 }
-                MetaMetrics sensitivityMeta = metaMetrics(
+                MetaMetrics sensitivityMeta = metaMetrics(context,
                     folder.resolve("meta-analysis.tsv"));
                 ReplicationMetrics sensitivityReplication = replicationMetrics(
                     replicationOutput);
@@ -714,8 +1021,7 @@ final class StudyCliExecutor implements StudyOperationExecutor {
                     && replicationDelta > 1e-12;
                 boolean heterogeneityImproved = Double.isFinite(heterogeneityDelta)
                     && heterogeneityDelta < -1e-12;
-                boolean oddOneCandidate = action.equals("leave_one_cohort_out")
-                    && replicationImproved && heterogeneityImproved;
+                boolean oddOneCandidate = false; // assigned only after paired common-universe review below
                 String manuscriptDisposition = oddOneCandidate
                     ? "feature_in_sensitivity_section_primary_unchanged"
                     : "retain_in_supplementary_sensitivity_results";
@@ -757,27 +1063,46 @@ final class StudyCliExecutor implements StudyOperationExecutor {
                     .append('\t').append(manuscriptDisposition).append('\n');
             }
         }
-        Files.writeString(context.outputDirectory().resolve(
-            "sensitivity-comparison.tsv"), comparisonTable, StandardCharsets.UTF_8);
+        var influence=StudyCohortInfluence.write(context,primaryMeta,dispositions);outputs.addAll(influence.outputs());improvementCandidates.clear();improvementCandidates.addAll(influence.candidates());incomplete|=!influence.complete();
+        StudyCohortInfluence.legacyTable(context,dispositions);
         outputs.add(0, "sensitivity-comparison.tsv");
         Map<String, Object> decision = new LinkedHashMap<>();
+        Map<String, Object> primaryArtifacts = new LinkedHashMap<>();
+        if (primaryMeta != null) primaryArtifacts.put("meta_analysis",
+            primaryArtifact(context, primaryMeta));
+        if (primaryReplication != null) primaryArtifacts.put("discovery_replication",
+            primaryArtifact(context, primaryReplication));
+        decision.put("primary_artifacts", primaryArtifacts);
+        decision.put("primary_selection_rule",
+            "Use only the unique completed meta_analysis and discovery_replication producer artifacts verified against their manifests; discovery-only and supplementary pools cannot become the all-cohort baseline.");
+        if (effectSensitivity != null) {
+            decision.put("effect_qc_unfiltered", effectSensitivity.details());
+            decision.put("effect_qc_unfiltered_state", effectSensitivity.state().value());
+        }
         decision.put("analyses", dispositions);
+        decision.put("paired_meta_influence",influence.summary());decision.put("heterogeneity_policy",heterogeneityPolicy);decision.put("omission_alert_triggered",diagnosticAlert);decision.put("omission_not_triggered",omissionNotTriggered);decision.put("omission_alert_inputs_complete",alertInputsComplete);decision.put("replication_comparison_basis","Reselected discovery/validation families; fractions remain descriptive and are not used for cohort nomination");
         decision.put("primary_metrics", metrics(primaryReplicationMetrics,
             primaryMetaMetrics));
         decision.put("odd_one_candidates", improvementCandidates);
         decision.put("automatic_rule",
-            "Flag an omission only when its replication fraction increases and its mean I-squared decreases versus the unchanged all-cohort primary analysis");
+            "Review registered omissions only from paired common-feature influence: both mean/high I-squared reductions or a pooled direction change. Every attempted fit is retained; no Q-P-value, reselection-rate or minimum-heterogeneity primary optimization.");
         decision.put("authorization",
-            "Automatic leave-one-cohort-out influence diagnostics are part of the approved deterministic plan; other analyses require assistance.allow_analyses");
+            "Automatic leave-one-cohort-out and unfiltered effect-QC diagnostics are part of the approved deterministic plan; other analyses require assistance.allow_analyses");
         decision.put("manuscript_guidance", improvementCandidates.isEmpty()
             ? "No omission improved both registered criteria; retain all-cohort primary results and report the complete sensitivity table in supplementary material."
             : "Feature flagged omissions in a labeled sensitivity subsection with exact deltas and full-cohort primary results alongside them. Promotion to a primary analysis requires a prespecified rationale or a reviewed study amendment; outcome-selected exclusion is not automatic.");
         decision.put("interpretation",
             "Exploratory influence diagnostics; primary results unchanged. Every cohort omission is retained, and no effect-scale correction, selective exclusion, or new hypothesis is inferred.");
-        Files.writeString(context.outputDirectory().resolve("decision.yaml"), new Yaml().dump(decision));
+        StudyPublicEvidence.write(context.outputDirectory().resolve("decision.yaml"),decision);
         outputs.add("decision.yaml");
         return new Result(incomplete ? State.WAITING_FOR_INPUT : State.COMPLETE,
             incomplete ? "Some preapproved sensitivity analyses need additional inputs" : "Completed preapproved sensitivity analyses", outputs, decision);
+    }
+
+    private static Map<String, Object> primaryArtifact(Context context,
+            Path artifact) throws IOException {
+        return Map.of("artifact", context.project().relativize(artifact).toString()
+            .replace('\\', '/'), "sha256", FollowupSupport.hash(artifact));
     }
 
     private Result automaticOrConfiguredEnrichment(Context context,
@@ -785,32 +1110,23 @@ final class StudyCliExecutor implements StudyOperationExecutor {
         Map<String, Object> configuration = optionalMap(
             context.operation().get("configuration"), "operation.configuration");
         if (configuration.containsKey("command")) return configured(context);
-        Path source = dependencyFile(context, "meta-analysis.tsv");
-        if (source == null)
-            return waiting(context,
-                collection + " enrichment needs a completed association or meta-analysis table",
+        String resultSource=text(configuration.getOrDefault("result_source","auto"));
+        if(!Set.of("auto","association","rare_sets").contains(resultSource))throw new IllegalArgumentException("Enrichment result_source must be auto, association or rare_sets");
+        if(resultSource.equals("rare_sets"))return new StudyRareEnrichment().execute(context,collection,outputName);
+        var primary = StudyPrimaryResults.official(context);
+        if(primary==null&&!resultSource.equals("association")&&StudyRareFollowup.planned(context))return new StudyRareEnrichment().execute(context,collection,outputName);
+        if (primary == null)
+            return waiting(context, collection + " enrichment needs a completed association or meta-analysis table",
                 Map.of("required_input", "feature-level association results"));
-
-        DelimitedData table = DelimitedData.read(source);
-        int feature = table.column("feature_id");
-        int pValue = table.column("p_value");
-        int status = table.header().contains("status")
-            ? table.column("status") : -1;
-        int term = table.header().contains("term") ? table.column("term") : -1;
-        Map<String, Double> pValues = new LinkedHashMap<>();
-        for (String[] row : table.rows()) {
-            if (status >= 0 && !Set.of("ok", "single_cohort", "tested")
-                    .contains(row[status].toLowerCase(Locale.ROOT))) continue;
-            if (term >= 0 && !Set.of("pooled", "na", "")
-                    .contains(row[term].toLowerCase(Locale.ROOT))) continue;
-            if (missing(row[pValue])) continue;
-            pValues.putIfAbsent(row[feature], probability(row[pValue], source));
-        }
+        Path source = primary.source().path();
+        if (!primary.completeObservedFamily())
+            return waiting(context, collection + " enrichment needs the complete eligible tested background, beyond a selected-only supplied result table",
+                Map.of("required_input", "Complete eligible feature universe and compatible gene mappings for enrichment; source-adjusted P values remain usable for scoped literature/genetic selection"));
+        Map<String, Double> pValues = primary.probabilities();
         if (pValues.isEmpty())
-            return waiting(context,
-                "No eligible feature-level p-values were available for enrichment",
-                Map.of("source", source.toString()));
-        Map<String, Double> fdr = bh(pValues);
+            return new Result(State.NOT_APPLICABLE, "No eligible testing family remains for " + collection + " enrichment",
+                List.of("primary-result-selection.yaml"), Map.of("source", source.toString(), "reason", "no_eligible_hypotheses", "method_report", Map.of("performed", false)));
+        Map<String, Double> fdr = primary.adjusted();
         Map<String, Object> hypothesis = hypothesis(context.study(),
             text(context.operation().get("hypothesis")));
         Map<String, Object> analysis = map(
@@ -949,7 +1265,7 @@ final class StudyCliExecutor implements StudyOperationExecutor {
                 outputName + ".manifest.properties", "console.txt",
                 "resource-download.log", "reference-manifest.properties"), Map.of("method_report",
                     StudyMethods.record(collection + " gene-set overrepresentation", Map.of("collection", collection, "selection_alpha", alpha,
-                        "feature_selection", "Benjamini-Hochberg across all eligible tested features", "background", "All mapped tested genes",
+                        "feature_selection", primary.adjustment() + " from the registered scoped primary testing family; see primary-result-selection.yaml", "background", "All mapped tested genes",
                         "feature_mapping", "feature-to-gene.tsv", "selected_gene_count", selectedGenes.size(), "background_gene_count", backgroundGenes.size(),
                         "database_release_and_hashes", "reference-manifest.properties", "test_settings", outputName + ".manifest.properties", "command_log", outputName + ".log"),
                         StudyPublicEvidence.list(configuration.get("references")), configuration.get("rationale"), List.of(collection.equals("GO") ? "Gene Ontology" : "Reactome", "enrichment"))));
@@ -960,6 +1276,7 @@ final class StudyCliExecutor implements StudyOperationExecutor {
             context.operation().get("configuration"), "operation.configuration");
         if (configuration.containsKey("command")) return configured(context);
         String operation = text(context.operation().get("type"));
+        if (operation.equals("mendelian_randomization")) return new StudyGeneticEvidence().execute(context);
         if (!operation.equals("variant_scoring") && (!StudyPublicEvidence.list(StudyBioinformatics.config(context).get("genetic_pairs")).isEmpty()
                 || operation.equals("mendelian_randomization") && !StudyPublicEvidence.map(StudyBioinformatics.config(context).get("mr")).isEmpty()
                 || operation.equals("colocalization") && !StudyPublicEvidence.map(StudyBioinformatics.config(context).get("colocalization")).isEmpty()))
@@ -1065,15 +1382,20 @@ final class StudyCliExecutor implements StudyOperationExecutor {
     }
 
     private Result prioritization(Context context) throws IOException {
-        Path meta = dependencyFile(context, "meta-analysis.tsv");
+        var primary = StudyPrimaryResults.official(context);
+        Path meta = primary == null ? null : primary.source().path();
         Path output = context.outputDirectory().resolve(
             "candidate-prioritization.tsv");
         Map<String, String> evidence = dependencyStates(context);
         Map<String, List<String>> featureEvidence = new LinkedHashMap<>();
         for (Path directory : context.dependencyDirectories().values()) {
+            if (!Files.isRegularFile(directory.resolve("manifest.yaml"))) continue;
+            var producer = StudyYaml.loadArtifact(directory.resolve("manifest.yaml"));
+            if (!context.operation().get("hypothesis").equals(producer.get("hypothesis"))) continue;
+            var sealed = StudyPublicEvidence.map(producer.get("output_sha256"));
             for (String name : List.of("bioinformatics-investigation.yaml", "literature-search.yaml", "genetic-evidence.yaml")) {
-                Path path = directory.resolve(name);
-                if (!Files.isRegularFile(path)) continue;
+                if (!sealed.containsKey(name)) continue;
+                Path path = StudyFindingInventory.verified(directory, name, String.valueOf(sealed.get(name)));
                 Map<String, Object> summary;
                 summary = StudyYaml.loadArtifact(path);
                 for (Object raw : StudyPublicEvidence.list(summary.getOrDefault("evidence", summary.get("pairs")))) {
@@ -1096,25 +1418,17 @@ final class StudyCliExecutor implements StudyOperationExecutor {
                 + "\tevidence_layers_complete\tevidence_layers_blocked"
                 + "\tfeature_evidence\tinterpretation\n");
             if (meta != null) {
-                DelimitedData table = DelimitedData.read(meta);
-                int id = table.column("feature_id"), beta = table.column("beta");
-                int p = table.column("p_value");
-                int i2 = table.header().contains("i_squared")
-                    ? table.column("i_squared") : -1;
-                int status = table.header().contains("status")
-                    ? table.column("status") : -1;
+                DelimitedData table = primary.table();
+                int id = table.column("feature_id");
+                int beta = table.header().contains("beta") ? table.column("beta") : -1;
+                int i2 = table.header().contains("i_squared") ? table.column("i_squared") : -1;
                 Map<String, Candidate> candidates = new LinkedHashMap<>();
-                Map<String, Double> probabilities = new LinkedHashMap<>();
                 for (String[] row : table.rows()) {
-                    if (status >= 0 && !Set.of("ok", "single_cohort")
-                            .contains(row[status].toLowerCase(Locale.ROOT))) continue;
-                    if (missing(row[p])) continue;
-                    double probability = probability(row[p], meta);
-                    candidates.putIfAbsent(row[id], new Candidate(row[id],
-                        row[beta], probability, i2 < 0 ? "NA" : row[i2]));
-                    probabilities.putIfAbsent(row[id], probability);
+                    Double probability = primary.probabilities().get(row[id]);
+                    if (probability == null) continue;
+                    candidates.put(row[id], new Candidate(row[id], beta < 0 ? "NA" : row[beta], probability, i2 < 0 ? "NA" : row[i2]));
                 }
-                Map<String, Double> adjusted = bh(probabilities);
+                Map<String, Double> adjusted = primary.adjusted();
                 List<Candidate> ranked = candidates.values().stream()
                     .sorted(Comparator.comparingDouble(Candidate::pValue)
                         .thenComparing(Candidate::feature)).toList();
@@ -1144,11 +1458,10 @@ final class StudyCliExecutor implements StudyOperationExecutor {
             }
         }
         String methodology = "# Candidate prioritization method\n\n"
-            + "Candidates are ordered by meta-analysis p-value and retain FDR, "
+            + "Candidates are ordered by the registered primary source P value and retain its scoped adjustment, "
             + "effect, heterogeneity, and evidence-layer availability as separate "
             + "columns. No opaque composite score is used. Association ranking "
-            + "and feature-specific contextual evidence are kept separate from operation-level availability. A protein structure or keyword literature match is not target validation. Without meta-analysis, bounded FDR-selected annotated primary findings are listed with their original full-family FDR. "
-            + "alone is not causal evidence, target validation, safety evidence, "
+            + "and feature-specific contextual evidence are kept separate from operation-level availability. The primary-result-selection.yaml receipt identifies the producer, source hash, contrast and correction family. A protein structure or keyword literature match is not target validation. Association ranking alone is not causal evidence, target validation, safety evidence, "
             + "or a clinical recommendation.\n";
         Files.writeString(context.outputDirectory().resolve(
             "prioritization-method.md"), methodology);
@@ -1255,7 +1568,7 @@ final class StudyCliExecutor implements StudyOperationExecutor {
         List<String> outputs = new ArrayList<>();
         Path replication = dependencyFile(context, "replication.tsv");
         if (replication != null) {
-            DelimitedData table = DelimitedData.read(replication);
+            DelimitedData table = DelimitedData.readResult(replication);
             int feature = table.column("feature_id");
             int discoveryDataset = table.column("discovery_dataset");
             int replicationDataset = table.column("replication_dataset");
@@ -1303,6 +1616,8 @@ final class StudyCliExecutor implements StudyOperationExecutor {
                     summary.put("discovery_selected", moment.selected);
                     summary.put("replicated", moment.replicated);
                     summary.put("replication_fraction", replicationFraction);
+                    summary.replaceAll((key,entryValue)->entryValue instanceof Double numeric&&!Double.isFinite(numeric)?"NA":entryValue);
+                    summary.put("coefficient_diagnostics_status",Double.isFinite(correlation)&&Double.isFinite(slope)?"estimable":"not_estimable");
                     comparisons.add(summary);
                     writer.write(entry.getKey() + "\t" + moment.n
                         + "\t" + value(correlation) + "\t"
@@ -1363,35 +1678,12 @@ final class StudyCliExecutor implements StudyOperationExecutor {
             document.put("discovery_replication", comparisons);
             outputs.add("effect-correlations.tsv");
         }
-        Path meta = dependencyFile(context, "meta-analysis.tsv");
-        if (meta != null) {
-            DelimitedData table = DelimitedData.read(meta);
-            int p = table.column("p_value");
-            int feature = table.column("feature_id");
-            int i2 = table.header().contains("i_squared")
-                ? table.column("i_squared") : -1;
-            Map<String, Double> probabilities = new LinkedHashMap<>();
-            int highHeterogeneity = 0;
-            for (String[] row : table.rows()) {
-                if (!missing(row[p])) probabilities.putIfAbsent(row[feature],
-                    probability(row[p], meta));
-                if (i2 >= 0 && !missing(row[i2])
-                        && finite(row[i2], "i_squared", meta) >= 50.0)
-                    highHeterogeneity++;
-            }
-            long significant = bh(probabilities).values().stream()
-                .filter(value -> value <= 0.05).count();
-            document.put("meta_analysis", Map.of(
-                "tested_features", probabilities.size(),
-                "BH_FDR_0_05_features", significant,
-                "I2_at_least_50_rows", highHeterogeneity));
-            if (!probabilities.isEmpty()
-                    && highHeterogeneity > probabilities.size() / 10) {
-                observations.add(Map.of(
-                    "type", "widespread_meta_analysis_heterogeneity",
-                    "I2_at_least_50_rows", highHeterogeneity,
-                    "interpretation",
-                    "Review cohort, tissue, sex, ancestry, phenotype, and processing differences and consider random-effects sensitivity analysis"));
+        Path meta = StudyPrimaryResults.metaBaseline(context);
+        if(meta!=null){
+            var registered=StudyHeterogeneity.policy(context);
+            if(Boolean.TRUE.equals(registered.get("enabled"))){
+                var profile=StudyHeterogeneity.assess(context,meta,registered);var metaSummary=new LinkedHashMap<String,Object>(profile.summary());metaSummary.put("registered_rule",registered);metaSummary.put("tested_features",profile.table().adjusted().size());double alpha=((Number)profile.summary().get("association_alpha")).doubleValue();long selected=profile.table().adjusted().values().stream().filter(q->q<alpha).count();metaSummary.put("significant_features",selected);metaSummary.put("association_adjustment",profile.table().adjustment());if(profile.table().adjustment().equals("BH")&&alpha==.05)metaSummary.put("BH_FDR_0_05_features",selected);document.put("meta_analysis",metaSummary);
+                if(Boolean.TRUE.equals(profile.summary().get("widespread_alert")))observations.add(Map.of("type","widespread_meta_analysis_heterogeneity","metric",profile.metric(),"high_features",profile.summary().get("high_features"),"scope_features",profile.summary().get("scope_features"),"high_fraction",profile.summary().get("high_fraction"),"registered_rule",registered,"interpretation","Registered widespread-heterogeneity threshold met; inspect all prespecified influence fits, source assumptions and uncertainty without replacing the primary cohort set"));
             }
         }
         document.put("unusual_observations", observations);
@@ -1432,9 +1724,7 @@ final class StudyCliExecutor implements StudyOperationExecutor {
             "Aggregate screening cannot reliably classify streaks, clusters, or other plot morphology; record them with study observe and a reviewed amendment");
         document.put("note",
             "Automated flags are prompts for scientific review, not determinations of artifact or biology");
-        String text = new Yaml().dump(document);
-        Files.writeString(context.outputDirectory().resolve("diagnostics.yaml"),
-            text, StandardCharsets.UTF_8);
+        StudyPublicEvidence.write(context.outputDirectory().resolve("diagnostics.yaml"),document);
         outputs.add("diagnostics.yaml");
         List<StudyNeed> needs = new ArrayList<>();
         for (Object raw : observations) {
@@ -1520,12 +1810,16 @@ final class StudyCliExecutor implements StudyOperationExecutor {
             outputs);
     }
 
-    private Map<String, GeneMapping> geneMappings(Context context,
+    Map<String, GeneMapping> geneMappings(Context context,
             Set<String> features) throws IOException, InterruptedException {
         Map<String, GeneMapping> resolved = new LinkedHashMap<>();
         Set<String> excluded = new LinkedHashSet<>();
-        for (Path assessed : dependencyFiles(context, "feature-annotation.tsv")) {
-            DelimitedData table = DelimitedData.read(assessed);
+        var assessedFiles = new ArrayList<>(dependencyFiles(context, "feature-annotation.tsv"));
+        // A mapping produced within this running operation is sealed when the operation completes.
+        Path localMapping = context.outputDirectory().resolve("feature-annotation.tsv");
+        if (Files.isRegularFile(localMapping) && !assessedFiles.contains(localMapping)) assessedFiles.add(localMapping);
+        for (Path assessed : assessedFiles) {
+            DelimitedData table = DelimitedData.readResult(assessed);
             int id = table.column("feature_id"), gene = table.column("gene_id");
             int symbol = table.column("gene_symbol"), status = table.column("mapping_status");
             for (String[] row : table.rows()) {
@@ -1554,15 +1848,19 @@ final class StudyCliExecutor implements StudyOperationExecutor {
 
     private static List<Path> dependencyFiles(Context context, String name) throws IOException {
         List<Path> files = new ArrayList<>();
-        for (Path directory : context.dependencyDirectories().values())
-            try (var paths = Files.walk(directory)) {
-                files.addAll(paths.filter(Files::isRegularFile)
-                    .filter(path -> path.getFileName().toString().equals(name)).sorted().toList());
-            }
+        for (Path directory : context.dependencyDirectories().values()) {
+            if (!Files.isRegularFile(directory.resolve("manifest.yaml"))) continue;
+            var producer = StudyYaml.loadArtifact(directory.resolve("manifest.yaml"));
+            if (!context.operation().get("hypothesis").equals(producer.get("hypothesis")) || !"complete".equals(producer.get("state"))) continue;
+            var hashes = StudyPublicEvidence.map(producer.get("output_sha256"));
+            if (!hashes.containsKey(name)) continue;
+            Path file = StudyFindingInventory.verified(directory, name, String.valueOf(hashes.get(name)));
+            if (!files.contains(file)) files.add(file);
+        }
         return files;
     }
 
-    private static Map<String, Double> bh(Map<String, Double> pValues) {
+    static Map<String, Double> bh(Map<String, Double> pValues) {
         List<Map.Entry<String, Double>> sorted = pValues.entrySet().stream()
             .sorted(Map.Entry.comparingByValue()).toList();
         Map<String, Double> result = new LinkedHashMap<>();
@@ -1581,27 +1879,11 @@ final class StudyCliExecutor implements StudyOperationExecutor {
         String producer = switch (name) {
             case "replication.tsv" -> "discovery_replication";
             case "meta-analysis.tsv" -> "meta_analysis";
+            case "discovery-results.tsv" -> "discovery_meta_analysis";
+            case "analysis-phenotype.tsv" -> "participant_qc";
             default -> throw new IllegalArgumentException("No registered dependency artifact role for " + name);
         };
-        List<Path> candidates = new ArrayList<>();
-        for (Path directory : context.dependencyDirectories().values()) {
-            Path manifestPath = directory.resolve("manifest.yaml");
-            if (!Files.isRegularFile(manifestPath)) continue;
-            Map<String, Object> manifest = loadYaml(manifestPath);
-            if (!producer.equals(manifest.get("operation_type")) || !"complete".equals(manifest.get("state"))) continue;
-            Map<String, Object> outputs = optionalMap(manifest.get("output_sha256"), "output_sha256");
-            if (outputs.containsKey(name) && Files.isRegularFile(directory.resolve(name))) {
-                candidates.add(directory.resolve(name));
-                continue;
-            }
-            for (String output : outputs.keySet()) {
-                Path artifact = directory.resolve(output).normalize();
-                if (!artifact.startsWith(directory)) throw new IOException("Unsafe dependency artifact: " + output);
-                if (artifact.getFileName().toString().equals(name) && Files.isRegularFile(artifact)) candidates.add(artifact);
-            }
-        }
-        if (candidates.size() > 1) throw new IOException("Ambiguous " + producer + " dependency artifacts: " + candidates);
-        return candidates.isEmpty() ? null : candidates.get(0);
+        return StudyResultTables.artifact(context, producer, name);
     }
 
     private static List<Map<String, Object>> selectedDatasets(Context context) {
@@ -1677,25 +1959,33 @@ final class StudyCliExecutor implements StudyOperationExecutor {
         return new Result(State.WAITING_FOR_INPUT, message, List.of("request.yaml"), resultDetails);
     }
 
+    static void normalizeNativeAssociation(Context context,Path raw,Path standard,Map<String,Object> metadata) throws IOException {
+        Files.createDirectories(standard.getParent());
+        standardize(raw,Map.of("feature_id","id","effect","beta","standard_error","standard_error","p_value","p_value","status","status","result_metadata",metadata),standard,false);
+    }
+
     private static Standardization standardize(Path input,
             Map<String, Object> columns, Path output, boolean excludeInvalid)
             throws IOException {
         DelimitedData table = DelimitedData.readResult(input);
+        String resultMode=text(columns.getOrDefault("result_mode","signed_effect"));
+        if(!Set.of("signed_effect","p_value_only").contains(resultMode))throw new IOException("columns.result_mode must be signed_effect or p_value_only");
+        boolean filePOnly=resultMode.equals("p_value_only");
         String idName = configured(columns, "feature_id",
             table.header(), "feature_id", "id", "probe_id", "variant",
             "__row_name__");
-        String betaName = configured(columns, "effect",
-            table.header(), "beta", "effect", "estimate");
-        String seName = configured(columns, "standard_error",
-            table.header(), "se", "standard_error", "stderr");
+        String betaName = filePOnly?optionalEffectColumn(columns,"effect",table,"beta","effect","estimate"):configured(columns, "effect",table.header(), "beta", "effect", "estimate");
+        String seName = filePOnly?optionalEffectColumn(columns,"standard_error",table,"se","standard_error","stderr"):configured(columns, "standard_error",table.header(), "se", "standard_error", "stderr");
         String pName = configured(columns, "p_value",
             table.header(), "p_value", "p", "pvalue");
         String statusName = columns.get("status") == null ? null
             : text(columns.get("status"));
-        int id = table.column(idName), beta = table.column(betaName);
-        int se = table.column(seName), p = table.column(pName);
+        int id = table.column(idName), beta = betaName==null?-1:table.column(betaName);
+        int se = seName==null?-1:table.column(seName), p = table.column(pName);
         int status = statusName == null || !table.header().contains(statusName)
             ? -1 : table.column(statusName);
+        StudyResultMetadata metadata = new StudyResultMetadata(table, columns);
+        boolean syntheticType=filePOnly&&!metadata.header().contains("result_type");
         Set<String> seen = new LinkedHashSet<>();
         Set<String> eligible = new LinkedHashSet<>();
         Map<String, Object> validation = optionalMap(
@@ -1708,43 +1998,82 @@ final class StudyCliExecutor implements StudyOperationExecutor {
             validation.get("nonnegative"), "validation.nonnegative");
         List<Integer> probabilityColumns = columnIndexes(table,
             validation.get("probability"), "validation.probability");
-        int inputRows = 0, excludedInvalid = 0, excludedStatus = 0;
-        try (BufferedWriter writer = Files.newBufferedWriter(output)) {
-            writer.write("feature_id\tbeta\tse\tp_value\n");
+        int inputRows = 0, excludedInvalid = 0, excludedStatus = 0,pOnlyRows=0;
+        Path audit = normalizationAudit(output);
+        Files.createDirectories(audit.getParent());
+        Path exclusions = audit.resolveSibling(output.getFileName() + ".exclusions.tsv");
+        try (BufferedWriter writer = Files.newBufferedWriter(output);
+                BufferedWriter excluded = Files.newBufferedWriter(exclusions)) {
+            List<String> header = new ArrayList<>(List.of("feature_id", "beta", "se", "p_value"));
+            header.addAll(metadata.header());if(syntheticType)header.add("result_type");writer.write(String.join("\t", header) + "\n");
+            excluded.write("feature_id\tdisposition\treason\n");
             for (String[] row : table.rows()) {
                 inputRows++;
                 String feature = row[id].trim();
-                if (feature.isEmpty() || !seen.add(feature))
+                if (feature.isEmpty() || feature.matches("(?s).*[\\t\\r\\n].*") || !seen.add(feature))
                     throw new IOException("Blank or duplicate feature ID in " + input
                         + ": " + feature);
                 if (status >= 0 && !Set.of("ok", "tested", "complete")
                         .contains(row[status].toLowerCase(Locale.ROOT))) {
                     excludedStatus++;
+                    excluded.write(feature + "\texcluded_source_status\t" + row[status].replaceAll("[\\t\\r\\n]+", " ") + "\n");
                     continue;
                 }
                 try {
                     validate(row, finiteColumns, positiveColumns,
                         nonnegativeColumns, probabilityColumns, table, input);
-                    double effect = finite(row[beta], "effect", input);
-                    double error = finite(row[se], "standard error", input);
-                    if (!(error > 0.0))
+                    List<String> values = metadata.values(row);int type=metadata.header().indexOf("result_type");
+                    boolean pOnly=filePOnly||type>=0&&values.get(type).equals("p_value_only");
+                    if(filePOnly&&type>=0&&!values.get(type).equals("p_value_only"))throw new IOException("P-only file declaration conflicts with source result_type");
+                    if(pOnly&&(beta>=0&&!StudyResultShape.missing(row[beta])||se>=0&&!StudyResultShape.missing(row[se])))throw new IOException("P-only results must leave effect and standard error unavailable");
+                    double effect = pOnly?Double.NaN:finite(row[beta], "effect", input);
+                    double error = pOnly?Double.NaN:finite(row[se], "standard error", input);
+                    if (!pOnly&&!(error > 0.0))
                         throw new IOException(
                             "Standard errors must be positive in " + input);
                     String probability = missing(row[p]) ? "NA"
                         : Double.toString(probability(row[p], input));
-                    writer.write(feature + "\t" + effect + "\t" + error
-                        + "\t" + probability + "\n");
+                    if(pOnly&&probability.equals("NA"))throw new IOException("P-only association rows need an actual P value");
+                    writer.write(feature + "\t" + (pOnly?"NA":effect) + "\t" + (pOnly?"NA":error)
+                        + "\t" + probability + (values.isEmpty() ? "" : "\t" + String.join("\t", values)) + (syntheticType?"\tp_value_only":"")+"\n");
+                    if(pOnly)pOnlyRows++;
+                    metadata.retained(values);
                     eligible.add(feature);
                 } catch (IOException invalid) {
                     if (!excludeInvalid) throw invalid;
                     excludedInvalid++;
+                    excluded.write(feature + "\texcluded_invalid_row\t" + invalid.getMessage().replaceAll("[\\t\\r\\n]+", " ") + "\n");
                 }
             }
         }
-        if (eligible.isEmpty())
-            throw new IOException("No analyzable association rows in " + input);
+        Map<String, Object> normalization = new LinkedHashMap<>(metadata.audit());
+        normalization.put("stage", "numerically_valid_before_effect_qc_and_branch_universe_selection");
+        normalization.put("input_sha256", FollowupSupport.hash(input));
+        normalization.put("normalized_sha256", FollowupSupport.hash(output));
+        normalization.put("exclusions_sha256", FollowupSupport.hash(exclusions));
+        normalization.put("input_rows", inputRows); normalization.put("retained_rows", eligible.size());
+        normalization.put("excluded_invalid_rows", excludedInvalid); normalization.put("excluded_status_rows", excludedStatus);
+        normalization.put("result_mode",resultMode);normalization.put("p_value_only_rows",pOnlyRows);
+        StudyPublicEvidence.write(audit, normalization);
         return new Standardization(inputRows, excludedInvalid, excludedStatus,
             Set.copyOf(seen), Set.copyOf(eligible));
+    }
+
+    private static String optionalEffectColumn(Map<String,Object> columns,String key,DelimitedData table,String... aliases)throws IOException {
+        if(columns.containsKey(key)){String name=text(columns.get(key));table.column(name);return name;}
+        var matches=table.header().stream().filter(name->java.util.Arrays.stream(aliases).anyMatch(name::equalsIgnoreCase)).toList();if(matches.size()>1)throw new IOException("Ambiguous effect column in P-only input");return matches.isEmpty()?null:matches.get(0);
+    }
+
+    private static Path normalizationAudit(Path output) {
+        Path directory = output.getParent();
+        if (directory.getFileName().toString().equals("standard-results")) directory = directory.getParent();
+        return directory.resolve("result-normalization").resolve(output.getFileName() + ".yaml");
+    }
+
+    private static List<String> normalizationOutputs(Context context, Path output) {
+        Path audit = normalizationAudit(output);
+        return List.of(audit, audit.resolveSibling(output.getFileName() + ".exclusions.tsv")).stream()
+            .map(path -> context.outputDirectory().relativize(path).toString().replace('\\', '/')).toList();
     }
 
     private static List<Integer> columnIndexes(DelimitedData table,
@@ -1779,7 +2108,7 @@ final class StudyCliExecutor implements StudyOperationExecutor {
 
     private static void retainFeatures(Path path, Set<String> retained)
             throws IOException {
-        DelimitedData table = DelimitedData.read(path);
+        DelimitedData table = DelimitedData.readResult(path);
         int id = table.column("feature_id");
         try (BufferedWriter writer = Files.newBufferedWriter(path)) {
             writer.write(String.join("\t", table.header()));
@@ -1793,14 +2122,14 @@ final class StudyCliExecutor implements StudyOperationExecutor {
     }
 
     private static Map<String, Estimate> estimates(Path path) throws IOException {
-        DelimitedData table = DelimitedData.read(path);
+        DelimitedData table = DelimitedData.readResult(path);
         int id = table.column("feature_id"), beta = table.column("beta");
         int se = table.column("se"), p = table.column("p_value");
         Map<String, Estimate> result = new LinkedHashMap<>();
         for (String[] row : table.rows())
             result.put(row[id], new Estimate(
-                finite(row[beta], "beta", path),
-                finite(row[se], "se", path),
+                StudyResultShape.pOnly(table,row)?Double.NaN:finite(row[beta], "beta", path),
+                StudyResultShape.pOnly(table,row)?Double.NaN:finite(row[se], "se", path),
                 missing(row[p]) ? Double.NaN : probability(row[p], path)));
         return result;
     }
@@ -1810,36 +2139,16 @@ final class StudyCliExecutor implements StudyOperationExecutor {
         Map<String, Double> result = new LinkedHashMap<>();
         estimates.forEach((id, estimate) -> result.put(id, estimate.p));
         if (method.equals("NONE")) return result;
-        List<Map.Entry<String, Estimate>> finite = estimates.entrySet().stream()
-            .filter(entry -> Double.isFinite(entry.getValue().p))
-            .sorted(java.util.Comparator.comparingDouble(
-                entry -> entry.getValue().p)).toList();
-        double previous = 1.0;
-        for (int index = finite.size() - 1; index >= 0; index--) {
-            Map.Entry<String, Estimate> entry = finite.get(index);
-            double value = Math.min(previous,
-                entry.getValue().p * finite.size() / (index + 1.0));
-            previous = Math.min(1.0, value);
-            result.put(entry.getKey(), previous);
-        }
+        var finite = new LinkedHashMap<String,Double>();
+        estimates.forEach((id,estimate)->{if(Double.isFinite(estimate.p))finite.put(id,estimate.p);});
+        result.putAll(StudyCohortResults.adjust(finite,method));
         return result;
     }
 
     private static Map<String, Path> results(Context context) throws IOException {
         Map<String, Path> result = new LinkedHashMap<>();
-        for (Path directory : context.dependencyDirectories().values()) {
-            Path standard = directory.resolve("standard-results");
-            if (!Files.isDirectory(standard)) continue;
-            try (var paths = Files.list(standard)) {
-                for (Path path : paths.filter(Files::isRegularFile)
-                        .sorted().toList()) {
-                    String name = path.getFileName().toString();
-                    if (name.endsWith(".tsv"))
-                        result.put(name.substring(0, name.length() - 4), path);
-                }
-            }
-        }
-        return result;
+        StudyPrimaryResults.cohorts(context).forEach((id, source) -> result.put(id, source.path()));
+        return StudyResultTables.universe(context, result, "filtered-family-inputs");
     }
 
     private static Map<String, Map<String, Object>> datasets(
@@ -1889,7 +2198,7 @@ final class StudyCliExecutor implements StudyOperationExecutor {
             throws IOException {
         if (path == null || !Files.isRegularFile(path))
             return new ReplicationMetrics(0, 0, Double.NaN);
-        DelimitedData table = DelimitedData.read(path);
+        DelimitedData table = DelimitedData.readResult(path);
         int selectedColumn = table.column("discovery_selected");
         int replicatedColumn = table.column("replicated");
         int selected = 0, replicated = 0;
@@ -1901,33 +2210,10 @@ final class StudyCliExecutor implements StudyOperationExecutor {
             selected == 0 ? Double.NaN : replicated / (double) selected);
     }
 
-    private static MetaMetrics metaMetrics(Path path) throws IOException {
-        if (path == null || !Files.isRegularFile(path))
-            return new MetaMetrics(0, 0, Double.NaN, Double.NaN);
-        DelimitedData table = DelimitedData.read(path);
-        int feature = table.column("feature_id");
-        int p = table.column("p_value");
-        int iSquared = table.header().contains("i_squared")
-            ? table.column("i_squared") : -1;
-        Map<String, Double> pValues = new LinkedHashMap<>();
-        double iSquaredSum = 0.0;
-        int iSquaredCount = 0, highISquared = 0;
-        for (String[] row : table.rows()) {
-            if (!missing(row[p])) pValues.putIfAbsent(row[feature],
-                probability(row[p], path));
-            if (iSquared >= 0 && !missing(row[iSquared])) {
-                double value = finite(row[iSquared], "i_squared", path);
-                iSquaredSum += value;
-                iSquaredCount++;
-                if (value >= 50.0) highISquared++;
-            }
-        }
-        int significant = (int) bh(pValues).values().stream()
-            .filter(value -> value <= 0.05).count();
-        return new MetaMetrics(pValues.size(), significant,
-            iSquaredCount == 0 ? Double.NaN : iSquaredSum / iSquaredCount,
-            iSquaredCount == 0 ? Double.NaN
-                : highISquared / (double) iSquaredCount);
+    private static MetaMetrics metaMetrics(Context context,Path path) throws IOException {
+        if(path==null||!Files.isRegularFile(path))return new MetaMetrics(0,0,Double.NaN,Double.NaN,"unavailable",Double.NaN);
+        var profile=StudyHeterogeneity.assess(context,path,StudyHeterogeneity.policy(context));double alpha=((Number)profile.summary().get("association_alpha")).doubleValue();int significant=(int)profile.table().adjusted().values().stream().filter(q->q<alpha).count();double mean=0;int n=0,high=0;if(profile.metric().equals("i_squared"))for(String id:profile.scope()){n++;mean+=(profile.values().get(id)-mean)/n;if(Boolean.TRUE.equals(profile.high().get(id)))high++;}
+        return new MetaMetrics(profile.table().adjusted().size(),significant,n==0?Double.NaN:mean,n==0?Double.NaN:high/(double)n,profile.table().adjustment(),alpha);
     }
 
     private static Map<String, Object> metrics(ReplicationMetrics replication,
@@ -1937,7 +2223,8 @@ final class StudyCliExecutor implements StudyOperationExecutor {
         result.put("replicated_pairwise_tests", replication.replicated());
         result.put("replication_fraction", numeric(replication.fraction()));
         result.put("meta_tested_features", meta.tested());
-        result.put("meta_BH_FDR_0_05_features", meta.significant());
+        result.put("meta_significant_features",meta.significant());result.put("meta_adjustment",meta.adjustment());result.put("meta_alpha",numeric(meta.alpha()));
+        if(meta.adjustment().equals("BH")&&meta.alpha()==.05)result.put("meta_BH_FDR_0_05_features", meta.significant());
         result.put("mean_i_squared", numeric(meta.meanISquared()));
         result.put("high_i_squared_fraction", numeric(
             meta.highISquaredFraction()));
@@ -2107,31 +2394,31 @@ final class StudyCliExecutor implements StudyOperationExecutor {
             double fraction) { }
 
     private record MetaMetrics(int tested, int significant,
-            double meanISquared, double highISquaredFraction) { }
+            double meanISquared, double highISquaredFraction,String adjustment,double alpha) { }
 
-    private record GeneMapping(String ensembl, String symbol) { }
+    record GeneMapping(String ensembl, String symbol) { }
 
     private record Candidate(String feature, String beta, double pValue,
             String iSquared) { }
 
-    private static final class Moment {
+    static final class Moment {
         private long n, selected, replicated, sameSign;
-        private double x, y, xx, yy, xy;
+        private double x, y, xx, yy, xy,scaleX,scaleY;
 
         void add(double left, double right, boolean selectedValue,
                 boolean replicatedValue) {
-            n++; x += left; y += right; xx += left * left;
-            yy += right * right; xy += left * right;
+            double nextX=Math.max(scaleX,Math.abs(left)),nextY=Math.max(scaleY,Math.abs(right));
+            if(nextX>scaleX){double factor=scaleX/nextX;x*=factor;xx*=factor*factor;xy*=factor;scaleX=nextX;}
+            if(nextY>scaleY){double factor=scaleY/nextY;y*=factor;yy*=factor*factor;xy*=factor;scaleY=nextY;}
+            double a=scaleX>0?left/scaleX:0,b=scaleY>0?right/scaleY:0,dx=a-x,dy=b-y;
+            n++;x+=dx/n;y+=dy/n;xx+=dx*(a-x);yy+=dy*(b-y);xy+=dx*(b-y);
             if (Math.signum(left) == Math.signum(right)) sameSign++;
             if (selectedValue) selected++;
             if (replicatedValue) replicated++;
         }
 
         double correlation() {
-            double numerator = n * xy - x * y;
-            double denominator = Math.sqrt((n * xx - x * x)
-                * (n * yy - y * y));
-            return denominator > 0 ? numerator / denominator : Double.NaN;
+            return xx>0&&yy>0?Math.max(-1,Math.min(1,(xy/Math.sqrt(xx))/Math.sqrt(yy))):Double.NaN;
         }
 
         double replicationFraction() {
@@ -2140,22 +2427,20 @@ final class StudyCliExecutor implements StudyOperationExecutor {
         }
 
         double slope() {
-            double denominator = n * xx - x * x;
-            return denominator > 0 ? (n * xy - x * y) / denominator
-                : Double.NaN;
+            return xx>0?restoreRatio(xy/xx):Double.NaN;
         }
 
         double intercept() {
-            double slopeValue = slope();
-            return n > 0 && Double.isFinite(slopeValue)
-                ? (y - slopeValue * x) / n : Double.NaN;
+            return n>0&&xx>0?(y-(xy/xx)*x)*scaleY:Double.NaN;
         }
 
         double standardDeviationRatio() {
-            double left = n * xx - x * x;
-            double right = n * yy - y * y;
-            return left > 0 && right >= 0 ? Math.sqrt(right / left)
-                : Double.NaN;
+            return xx>0&&yy>=0?restoreRatio(Math.sqrt(yy)/Math.sqrt(xx)):Double.NaN;
+        }
+        private double restoreRatio(double value){
+            if(value==0)return 0;
+            double ratio=scaleY/scaleX;if(Double.isFinite(ratio)&&ratio>0)return value*ratio;
+            return Math.copySign(Math.exp(Math.log(Math.abs(value))+Math.log(scaleY)-Math.log(scaleX)),value);
         }
 
         double sameSignFraction() {

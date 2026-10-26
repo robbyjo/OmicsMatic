@@ -25,7 +25,7 @@ final class PipelinePaths {
 
     static void validate(CliOptions options) {
         List<Path> inputs = new ArrayList<>(Arrays.asList(options.phenotype, options.omics,
-            options.annotation, options.pedigree, options.grm, options.bgenSamples));
+            options.annotation, options.pedigree, options.grm, options.bgenSamples,options.hweSampleFile,options.ploidySamples));
         inputs.removeIf(java.util.Objects::isNull);
         inputs.addAll(options.transformPlugins);
         if (options.grm != null) {
@@ -39,6 +39,7 @@ final class PipelinePaths {
         List<Path> outputs = new ArrayList<>(List.of(options.output,
             Path.of(options.output + ".partial"), options.manifestPath()));
         if (!options.noLog) outputs.add(options.logPath());
+        if(options.humanPloidyRegion!=null)for(String suffix:List.of(".human-ploidy.yaml",".human-ploidy-samples.tsv",".human-ploidy-variants.tsv",".human-ploidy-invalid-calls.tsv"))outputs.add(Path.of(options.output+suffix));
         if(options.conditionalGwasSummary) {
             outputs.add(options.scoreCovariancePath());outputs.add(options.scoreManifestPath());
             outputs.add(Path.of(options.scoreCovariancePath()+".partial"));

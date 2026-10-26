@@ -31,6 +31,7 @@ class StudyColocalizationSourcesTest {
         Map<String, Object> study = Map.of("datasets", List.of(Map.of("id", "d1", "cohort", "FHS", "type", "transcriptomics",
                 "tissue", "Whole Blood", "files", Map.of("irqtl", "fixture"), "columns", Map.of("irqtl", Map.of("export_p_threshold", 1e-7)))),
             "hypotheses", List.of(Map.of("id", "h1", "outcome", "body mass index", "analysis", Map.of("bioinformatics", Map.of("colocalization", config)))));
+        StudyTestSources.seal(upstream,"validate_harmonize","harmonize","h1");
         Context context = new Context(project, project.resolve("output"), Map.of("hypothesis", "h1", "type", "colocalization", "datasets", List.of("d1")),
             study, Map.of(), Map.of("upstream", upstream, "discovery", discovery));
         var prepared = StudyColocalizationSources.prepare(context);

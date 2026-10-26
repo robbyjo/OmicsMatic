@@ -25,16 +25,21 @@ final class DelimitedData {
         this.rows = List.copyOf(rows);
     }
 
+    /** Scoped immutable view; selected rows keep the original column meanings. */
+    DelimitedData selectRows(List<String[]> selected) {
+        return new DelimitedData(header, selected.stream().map(String[]::clone).toList());
+    }
+
     static DelimitedData read(Path path) throws IOException {
-        return read(path, false);
+        return read(path, false, false);
     }
 
     /** Read a result table, accepting the conventional unnamed leading R row-name column. */
     static DelimitedData readResult(Path path) throws IOException {
-        return read(path, true);
+        return read(path, true, true);
     }
 
-    private static DelimitedData read(Path path, boolean allowLeadingRowName)
+    private static DelimitedData read(Path path, boolean allowLeadingRowName, boolean allowEmpty)
             throws IOException {
         String name = path.getFileName().toString().toLowerCase(Locale.ROOT);
         char delimiter = name.endsWith(".csv") ? ',' : '\t';
@@ -65,7 +70,7 @@ final class DelimitedData {
                         + lineNumber + " in " + path);
                 rows.add(fields.toArray(String[]::new));
             }
-            if (rows.isEmpty()) throw new IOException(
+            if (rows.isEmpty() && !allowEmpty) throw new IOException(
                 "table contains no data rows: " + path);
             return new DelimitedData(header, rows);
         }

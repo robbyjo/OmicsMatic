@@ -1,0 +1,18 @@
+{
+  "status": "passed-original-deterministic-arithmetic-reference-generation",
+  "r_version": "R version 4.6.1 (2026-06-24 ucrt)",
+  "fgsea": "1.38.0",
+  "enrichit": "0.2.6",
+  "gsea_cases": 768,
+  "ora_cases": 94,
+  "adjustment_cases": 35,
+  "generator_sha256": "79fa684edfba8ddbc5a49d5079f995f8ef7153bb2213a9ced259044fc91108bd",
+  "runtime_marker_sha256": "42d085c03b76a56333a2e92d80d2d980b273d56dce537f6f795720e2c6f6d16e",
+  "reference_sha256": {
+    "gsea.tsv": "3da3f7434ff75f9373d715ae6347d23c7649d6525771d5cc89836328508851f3",
+    "ora.tsv": "f3067a9981bb7cb44656399a26d6a772ed1a15e43ce9c8b4e835f9d29f3defbd",
+    "adjust.tsv": "ee4418100c50f9d6ab7f6c17f227164c6e767475bd6d94e64652d81391bd8190"
+  },
+  "warnings": ["All values in the stats vector are greater than zero and scoreType is \"std\", maybe you should switch to scoreType = \"pos\".", "There are ties in the preranked stats (44.44% of the list).\nThe order of those tied genes will be arbitrary, which may produce unexpected results."],
+  "scope": "Actual original fgsea::prepareStats/calcGseaStat,enrichit::gseaScores,stats::phyper and stats::p.adjust. Deterministic arithmetic only;no permutation P-values,NES,annotation or whole-paper equivalence inferred."
+}

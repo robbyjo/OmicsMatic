@@ -1,0 +1,351 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "analysis_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1000
+    },
+    "dataset_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1000
+    },
+    "analysis_matrix_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "genome_build": {
+      "enum": [
+        "GRCh37",
+        "GRCh38"
+      ]
+    },
+    "status": {
+      "enum": [
+        "complete",
+        "partial",
+        "not_estimable"
+      ]
+    },
+    "sample_universe": {
+      "enum": [
+        "complete",
+        "selected_only",
+        "unknown"
+      ]
+    },
+    "sample_qc": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "enum": [
+            "complete",
+            "partial",
+            "not_estimable"
+          ]
+        },
+        "software": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000
+        },
+        "software_version": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000
+        },
+        "call_rate_scope": {
+          "const": "observed_autosomal_hard_calls"
+        },
+        "minimum_call_rate": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "samples": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "parameters": {
+          "type": "object"
+        }
+      },
+      "required": [
+        "status",
+        "software",
+        "software_version",
+        "call_rate_scope",
+        "minimum_call_rate",
+        "samples"
+      ]
+    },
+    "relatedness": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "software": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000
+        },
+        "software_version": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000
+        },
+        "support": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000
+        },
+        "status": {
+          "enum": [
+            "complete",
+            "partial",
+            "not_estimable"
+          ]
+        },
+        "estimator": {
+          "const": "KING_between_family"
+        },
+        "kinship_threshold": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 0.499999
+        },
+        "action": {
+          "enum": [
+            "review",
+            "exclude",
+            "model"
+          ]
+        },
+        "parameters": {
+          "type": "object"
+        },
+        "minimum_shared_markers": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "minimum_pair_heterozygotes": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "evaluated_samples": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "evaluated_pairs": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "related_pairs": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "unresolved_pairs": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "independent_basis_complete": {
+          "type": "boolean"
+        },
+        "retained_population_compatible": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "software",
+        "software_version",
+        "support",
+        "status",
+        "estimator",
+        "kinship_threshold",
+        "action",
+        "minimum_shared_markers",
+        "minimum_pair_heterozygotes",
+        "evaluated_samples",
+        "evaluated_pairs",
+        "related_pairs",
+        "unresolved_pairs",
+        "independent_basis_complete",
+        "retained_population_compatible"
+      ]
+    },
+    "pca": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "enum": [
+            "complete",
+            "partial",
+            "not_performed",
+            "not_estimable"
+          ]
+        },
+        "software": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000
+        },
+        "software_version": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000
+        },
+        "basis": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000
+        },
+        "basis_samples": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "columns": {
+          "type": "array",
+          "maxItems": 100,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1000
+          }
+        },
+        "parameters": {
+          "type": "object"
+        },
+        "basis_scope": {
+          "enum": [
+            "matrix_population",
+            "external_reference"
+          ],
+          "default": "matrix_population"
+        },
+        "reference_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000
+        },
+        "reference_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      },
+      "required": [
+        "status"
+      ],
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "complete"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "software",
+              "software_version",
+              "basis",
+              "basis_samples",
+              "columns"
+            ],
+            "properties": {
+              "columns": {
+                "minItems": 1
+              },
+              "basis_samples": {
+                "minimum": 3
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "required": [
+              "basis_scope",
+              "status"
+            ],
+            "properties": {
+              "basis_scope": {
+                "const": "external_reference"
+              },
+              "status": {
+                "const": "complete"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "reference_id",
+              "reference_sha256"
+            ]
+          }
+        }
+      ]
+    },
+    "file_sha256": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "sample_qc_samples": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "sample_qc_pcs": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      },
+      "required": [
+        "sample_qc_samples"
+      ]
+    },
+    "provenance": {
+      "type": "object"
+    },
+    "limitations": {
+      "type": "array",
+      "maxItems": 500,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 4000
+      }
+    }
+  },
+  "required": [
+    "schema_version",
+    "analysis_id",
+    "dataset_id",
+    "analysis_matrix_sha256",
+    "genome_build",
+    "status",
+    "sample_universe",
+    "sample_qc",
+    "relatedness",
+    "pca",
+    "file_sha256"
+  ],
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://robbyjo.github.io/JLinAlg/schemas/genotype-sample-qc-v1.schema.json",
+  "title": "JLinAlg scoped external genotype sample-QC and PCA report version 1",
+  "description": "Externally produced evidence. Structural/hash/population validation does not reproduce or certify the source QC, calibration or scientific adequacy."
+}

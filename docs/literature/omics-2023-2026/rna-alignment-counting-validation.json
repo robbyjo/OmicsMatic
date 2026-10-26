@@ -1,0 +1,2019 @@
+{
+  "status": "passed",
+  "jar_sha256": "a104651636deb59493cddc92ce433629d4ef7b0c755f6ee065a3e0c75365c5e2",
+  "versions": {
+    "featurecounts": "2.1.1",
+    "minimap2": "2.31-r1302",
+    "hisat2": "2.2.3"
+  },
+  "source_sha256": {
+    "src/main/java/org/jlinalg/sequence/GeneFeatures.java": "d9000feb54688b504ab43079c14888eb3bf853434b9da89ea61b4ad3e4d9f4fe",
+    "src/main/java/org/jlinalg/sequence/ExpressionNormalization.java": "ac25ebbe30261748fd5d11efc69fa68b8867214d34fd81012121b920175fe485",
+    "src/main/java/org/jlinalg/cli/RnaToolRuntime.java": "aa6560e6a47c999cffe1486b04272271ae2612daf74e99058b8da5cb010f2b0b",
+    "src/main/java/org/jlinalg/cli/FeatureCountsCli.java": "db068a378929ccd8f0ed1aaef7fafa91a8e711d5572a015c8e853fdc93b26708",
+    "src/main/java/org/jlinalg/cli/MinimapToolsCli.java": "51d7c26ec183f196fb01c9c43869227b31a9e14b6d7c730d578c8b0bf3beed87",
+    "src/main/java/org/jlinalg/cli/HisatToolsCli.java": "3f21e840970e06516b99ec64ca93b53524e89c7ea022a04e66aa04da690086c3",
+    "src/main/java/org/jlinalg/sequence/PafAlignments.java": "6cde1e8581e5742353d103194bdb7c8912a0fd9e5484db7c5cb19c5f24f61356"
+  },
+  "current_full_gate_suites": {
+    "org.jlinalg.sequence.GeneFeaturesTest": {
+      "suite_name": "org.jlinalg.sequence.GeneFeaturesTest",
+      "suite": {
+        "tests": 5,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "junit_sha256": "71d019ab06d15e959de756b81475324cd37931618d5e7b77f3e01cd6d10316f2",
+      "testcases": [
+        "conflictingTranscriptAndMalformedReferenceRowsFail()",
+        "unionLengthDoesNotDoubleCountIsoformsOrStrandsAndSafRoundTrips()",
+        "spliceBoundariesUseExonicFlanksAndHandleNestedAndSingleBaseExons()",
+        "graphIndexExonUnionsMergeOverlapsAcrossGenesButNotGaps()",
+        "duplicateAttributesAndWrongFeatureSelectionsFail()"
+      ]
+    },
+    "org.jlinalg.sequence.ExpressionNormalizationTest": {
+      "suite_name": "org.jlinalg.sequence.ExpressionNormalizationTest",
+      "suite": {
+        "tests": 2,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "junit_sha256": "f341e26a40245c81f3adaa494dc65e6f547317efb3ef42880e7c5aa6bdf3b24b",
+      "testcases": [
+        "independentlyCalculatedTpmAndLibraryNormalization()",
+        "zeroTpmDenominatorAndInvalidCountsLengthsOrLibraryFailExplicitly()"
+      ]
+    },
+    "org.jlinalg.sequence.PafAlignmentsTest": {
+      "suite_name": "org.jlinalg.sequence.PafAlignmentsTest",
+      "suite": {
+        "tests": 2,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "junit_sha256": "6768cf4a7c8c7f4ce9ae741c1a14a21f7597b4d910595cd707c7ae439a8a49a5",
+      "testcases": [
+        "inconsistentLengthsCoordinatesAndCigarsFail()",
+        "reverseIndelAndSplicedCigarGeometryUseForwardCoordinates()"
+      ]
+    },
+    "org.jlinalg.cli.FeatureCountsCliTest": {
+      "suite_name": "org.jlinalg.cli.FeatureCountsCliTest",
+      "suite": {
+        "tests": 8,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "junit_sha256": "cbb44abb33b988827e91d65ae4f9686aec41e34e0ac80381f05eb65fec74b53a",
+      "testcases": [
+        "ambiguousGenesAndMultimappingHaveExplicitFractionalPolicies()",
+        "nativeAnnotationSpliceAndNormalizationWorkWithoutUpstreamRuntime()",
+        "safPeakCountingAndStrandPoliciesAreNotGeneOnly()",
+        "rawGeneAndJunctionCountsRecoverKnownSplitReads()",
+        "pairedReadsAndFragmentsAreDifferentExplicitUnits()",
+        "multiSampleStrandColumnsAndDuplicateFilteringKeepSeparateCounts()",
+        "unavailableRuntimeSkipsWithActionAndInvalidOptionsFailEarly()",
+        "missingNhRequiresAnExplicitAssumptionAndWrongLibraryFails()"
+      ]
+    },
+    "org.jlinalg.cli.MinimapToolsCliTest": {
+      "suite_name": "org.jlinalg.cli.MinimapToolsCliTest",
+      "suite": {
+        "tests": 7,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "junit_sha256": "5edc0489fc2b5eda269ab752b7a97cd32831bc1f70af11eb134e45b075c596cb",
+      "testcases": [
+        "splicedRnaRecoversKnownJunctionWithExplicitNoncanonicalPenalty()",
+        "duplicatePafIdsFailBeforeAlignment()",
+        "hifiReadsRetainReverseBasesQualitiesAndUnmappedRecords()",
+        "assemblyPafCigarsAndBedSpansIncludeReverseAndUnmappedQueries()",
+        "missingDependencySkipsWithInstructions()",
+        "shortReadPairsAndEmptyMappingsRetainCompleteInputAudit()",
+        "multiPartIndexMergingRetainsPrimaryContentAndRejectsIncompatibleTags()"
+      ]
+    },
+    "org.jlinalg.cli.HisatToolsCliTest": {
+      "suite_name": "org.jlinalg.cli.HisatToolsCliTest",
+      "suite": {
+        "tests": 6,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "junit_sha256": "636bca851a16546521422695b2e949976796c3ab45693fa2dbdc71fb22ef164c",
+      "testcases": [
+        "unsplicedAndZeroMappedModesRemainExplicit()",
+        "largeIndexFamilyAndLinearKnownSpliceListAreAudited()",
+        "pairedStrandAndDirectInputStagePreserveEveryMate()",
+        "unavailableDependencySkipsAndWrongStrandFailsEarly()",
+        "indexCorruptionAndPairMismatchFailWithoutPublishingResults()",
+        "annotatedGraphAndGzipRnaRecoverExactSpliceAndUnmappedRead()"
+      ]
+    }
+  },
+  "tests": 30,
+  "packaged_validation": "rna-alignment-counting-packaged-validation.json",
+  "packaged_steps": 18,
+  "independent_packaged_checks": 14,
+  "packaged_verifier_sha256": "f402b638187e7b69cfae52817c5e56dee7af0b228640116f76a574d21f53108e",
+  "dependency_evidence": "rna-aligner-dependency-status.json",
+  "recorded_utc": "2026-10-25T00:57:19.120198+00:00",
+  "scope": "Native annotation/union/splice/normalization/PAF checks plus typed actual upstream counting and read/assembly/RNA alignment. Windows source/binary runtime scientific fixtures passed; compiler warnings and omitted research links retained. R interfaces, complete study/downstream workflows, old versions and native Linux/macOS behavior remain separate.",
+  "refreshed_utc": "2026-10-26T02:01:51.919373+00:00",
+  "current_validation": {
+    "full_gate": {
+      "tests": 1593,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 5
+    },
+    "required_suites": 72,
+    "all_required_without_skips": true,
+    "raw_snapshot": "D:\\projects\\JLinAlg\\build\\literature-review\\plink-runtime\\configured-native-full-gate-1",
+    "prior_packaged_regressions": "D:\\projects\\JLinAlg\\build\\literature-review\\plink-runtime\\prior-packaged-regressions-1\\verification.json",
+    "original_trim_rechecks": "D:\\projects\\JLinAlg\\build\\literature-review\\plink-runtime\\original-trim-rechecks-1\\verification.json",
+    "scope": "This exact candidate was executed. All prior owned compiled method sources are unchanged and retested. Historical reference-generation/version scopes remain in their original fields and validation_history;no full-paper parity is inferred."
+  },
+  "validation_history": [
+    {
+      "status": "passed",
+      "jar_sha256": "19c4ed620c230c4c520c10bcbf3d88cbd1484d640103d2109e25f4db0ee621be",
+      "versions": {
+        "featurecounts": "2.1.1",
+        "minimap2": "2.31-r1302",
+        "hisat2": "2.2.3"
+      },
+      "source_sha256": {
+        "src/main/java/org/jlinalg/sequence/GeneFeatures.java": "d9000feb54688b504ab43079c14888eb3bf853434b9da89ea61b4ad3e4d9f4fe",
+        "src/main/java/org/jlinalg/sequence/ExpressionNormalization.java": "ac25ebbe30261748fd5d11efc69fa68b8867214d34fd81012121b920175fe485",
+        "src/main/java/org/jlinalg/cli/RnaToolRuntime.java": "aa6560e6a47c999cffe1486b04272271ae2612daf74e99058b8da5cb010f2b0b",
+        "src/main/java/org/jlinalg/cli/FeatureCountsCli.java": "db068a378929ccd8f0ed1aaef7fafa91a8e711d5572a015c8e853fdc93b26708",
+        "src/main/java/org/jlinalg/cli/MinimapToolsCli.java": "51d7c26ec183f196fb01c9c43869227b31a9e14b6d7c730d578c8b0bf3beed87",
+        "src/main/java/org/jlinalg/cli/HisatToolsCli.java": "3f21e840970e06516b99ec64ca93b53524e89c7ea022a04e66aa04da690086c3",
+        "src/main/java/org/jlinalg/sequence/PafAlignments.java": "6cde1e8581e5742353d103194bdb7c8912a0fd9e5484db7c5cb19c5f24f61356"
+      },
+      "current_full_gate_suites": {
+        "org.jlinalg.sequence.GeneFeaturesTest": {
+          "suite_name": "org.jlinalg.sequence.GeneFeaturesTest",
+          "suite": {
+            "tests": 5,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "8afeb06848621293809ef3e1ee7ca1a800ddfccf6d3c5f01816b1a81f29ed5b6",
+          "testcases": [
+            "conflictingTranscriptAndMalformedReferenceRowsFail()",
+            "unionLengthDoesNotDoubleCountIsoformsOrStrandsAndSafRoundTrips()",
+            "spliceBoundariesUseExonicFlanksAndHandleNestedAndSingleBaseExons()",
+            "graphIndexExonUnionsMergeOverlapsAcrossGenesButNotGaps()",
+            "duplicateAttributesAndWrongFeatureSelectionsFail()"
+          ]
+        },
+        "org.jlinalg.sequence.ExpressionNormalizationTest": {
+          "suite_name": "org.jlinalg.sequence.ExpressionNormalizationTest",
+          "suite": {
+            "tests": 2,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "2aaf18e6ee1451af596eab257d3724ece4cfd0bae49751e72bf4e4cf8955fe88",
+          "testcases": [
+            "independentlyCalculatedTpmAndLibraryNormalization()",
+            "zeroTpmDenominatorAndInvalidCountsLengthsOrLibraryFailExplicitly()"
+          ]
+        },
+        "org.jlinalg.sequence.PafAlignmentsTest": {
+          "suite_name": "org.jlinalg.sequence.PafAlignmentsTest",
+          "suite": {
+            "tests": 2,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "e8e1775957a3d395a65acfa37886a6df1fc2d2bbb14b6b35ac8981c1cc9f8eeb",
+          "testcases": [
+            "inconsistentLengthsCoordinatesAndCigarsFail()",
+            "reverseIndelAndSplicedCigarGeometryUseForwardCoordinates()"
+          ]
+        },
+        "org.jlinalg.cli.FeatureCountsCliTest": {
+          "suite_name": "org.jlinalg.cli.FeatureCountsCliTest",
+          "suite": {
+            "tests": 8,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "fdaef82676188d3908deca26a66b50974784d40eac1791e272184f6ca2bc7302",
+          "testcases": [
+            "ambiguousGenesAndMultimappingHaveExplicitFractionalPolicies()",
+            "nativeAnnotationSpliceAndNormalizationWorkWithoutUpstreamRuntime()",
+            "safPeakCountingAndStrandPoliciesAreNotGeneOnly()",
+            "rawGeneAndJunctionCountsRecoverKnownSplitReads()",
+            "pairedReadsAndFragmentsAreDifferentExplicitUnits()",
+            "multiSampleStrandColumnsAndDuplicateFilteringKeepSeparateCounts()",
+            "unavailableRuntimeSkipsWithActionAndInvalidOptionsFailEarly()",
+            "missingNhRequiresAnExplicitAssumptionAndWrongLibraryFails()"
+          ]
+        },
+        "org.jlinalg.cli.MinimapToolsCliTest": {
+          "suite_name": "org.jlinalg.cli.MinimapToolsCliTest",
+          "suite": {
+            "tests": 7,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "d798dcf970c2698592b6346c8a48c7108a9dcbbfce40d2c793ead026a690a630",
+          "testcases": [
+            "splicedRnaRecoversKnownJunctionWithExplicitNoncanonicalPenalty()",
+            "duplicatePafIdsFailBeforeAlignment()",
+            "hifiReadsRetainReverseBasesQualitiesAndUnmappedRecords()",
+            "assemblyPafCigarsAndBedSpansIncludeReverseAndUnmappedQueries()",
+            "missingDependencySkipsWithInstructions()",
+            "shortReadPairsAndEmptyMappingsRetainCompleteInputAudit()",
+            "multiPartIndexMergingRetainsPrimaryContentAndRejectsIncompatibleTags()"
+          ]
+        },
+        "org.jlinalg.cli.HisatToolsCliTest": {
+          "suite_name": "org.jlinalg.cli.HisatToolsCliTest",
+          "suite": {
+            "tests": 6,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "a800d92976e362b418047cdf6f44575967feaa911ef7255fc011fe6dfb067e95",
+          "testcases": [
+            "unsplicedAndZeroMappedModesRemainExplicit()",
+            "largeIndexFamilyAndLinearKnownSpliceListAreAudited()",
+            "pairedStrandAndDirectInputStagePreserveEveryMate()",
+            "unavailableDependencySkipsAndWrongStrandFailsEarly()",
+            "indexCorruptionAndPairMismatchFailWithoutPublishingResults()",
+            "annotatedGraphAndGzipRnaRecoverExactSpliceAndUnmappedRead()"
+          ]
+        }
+      },
+      "tests": 30,
+      "packaged_validation": "rna-alignment-counting-packaged-validation.json",
+      "packaged_steps": 18,
+      "independent_packaged_checks": 14,
+      "packaged_verifier_sha256": "f402b638187e7b69cfae52817c5e56dee7af0b228640116f76a574d21f53108e",
+      "dependency_evidence": "rna-aligner-dependency-status.json",
+      "recorded_utc": "2026-10-25T00:57:19.120198+00:00",
+      "scope": "Native annotation/union/splice/normalization/PAF checks plus typed actual upstream counting and read/assembly/RNA alignment. Windows source/binary runtime scientific fixtures passed; compiler warnings and omitted research links retained. R interfaces, complete study/downstream workflows, old versions and native Linux/macOS behavior remain separate."
+    },
+    {
+      "status": "passed",
+      "jar_sha256": "095e5fecbb0beaabc2e67134d980d2e1841210c0b92c708b3a21ab0dfb866c61",
+      "versions": {
+        "featurecounts": "2.1.1",
+        "minimap2": "2.31-r1302",
+        "hisat2": "2.2.3"
+      },
+      "source_sha256": {
+        "src/main/java/org/jlinalg/sequence/GeneFeatures.java": "d9000feb54688b504ab43079c14888eb3bf853434b9da89ea61b4ad3e4d9f4fe",
+        "src/main/java/org/jlinalg/sequence/ExpressionNormalization.java": "ac25ebbe30261748fd5d11efc69fa68b8867214d34fd81012121b920175fe485",
+        "src/main/java/org/jlinalg/cli/RnaToolRuntime.java": "aa6560e6a47c999cffe1486b04272271ae2612daf74e99058b8da5cb010f2b0b",
+        "src/main/java/org/jlinalg/cli/FeatureCountsCli.java": "db068a378929ccd8f0ed1aaef7fafa91a8e711d5572a015c8e853fdc93b26708",
+        "src/main/java/org/jlinalg/cli/MinimapToolsCli.java": "51d7c26ec183f196fb01c9c43869227b31a9e14b6d7c730d578c8b0bf3beed87",
+        "src/main/java/org/jlinalg/cli/HisatToolsCli.java": "3f21e840970e06516b99ec64ca93b53524e89c7ea022a04e66aa04da690086c3",
+        "src/main/java/org/jlinalg/sequence/PafAlignments.java": "6cde1e8581e5742353d103194bdb7c8912a0fd9e5484db7c5cb19c5f24f61356"
+      },
+      "current_full_gate_suites": {
+        "org.jlinalg.sequence.GeneFeaturesTest": {
+          "suite_name": "org.jlinalg.sequence.GeneFeaturesTest",
+          "suite": {
+            "tests": 5,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "a8cc32d5e6366b9de70ad36c2d164a021ec3b566151abb5210b1a7ad4abb8bd8",
+          "testcases": [
+            "conflictingTranscriptAndMalformedReferenceRowsFail()",
+            "unionLengthDoesNotDoubleCountIsoformsOrStrandsAndSafRoundTrips()",
+            "spliceBoundariesUseExonicFlanksAndHandleNestedAndSingleBaseExons()",
+            "graphIndexExonUnionsMergeOverlapsAcrossGenesButNotGaps()",
+            "duplicateAttributesAndWrongFeatureSelectionsFail()"
+          ]
+        },
+        "org.jlinalg.sequence.ExpressionNormalizationTest": {
+          "suite_name": "org.jlinalg.sequence.ExpressionNormalizationTest",
+          "suite": {
+            "tests": 2,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "d059dafe299644756a7ac0f1297411d3cb6ae759d008050a2ccb381086d24a37",
+          "testcases": [
+            "independentlyCalculatedTpmAndLibraryNormalization()",
+            "zeroTpmDenominatorAndInvalidCountsLengthsOrLibraryFailExplicitly()"
+          ]
+        },
+        "org.jlinalg.sequence.PafAlignmentsTest": {
+          "suite_name": "org.jlinalg.sequence.PafAlignmentsTest",
+          "suite": {
+            "tests": 2,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "c28df898b579769baf1d235d683df1420223aa8fdfda60e1e1d35e358de189b3",
+          "testcases": [
+            "inconsistentLengthsCoordinatesAndCigarsFail()",
+            "reverseIndelAndSplicedCigarGeometryUseForwardCoordinates()"
+          ]
+        },
+        "org.jlinalg.cli.FeatureCountsCliTest": {
+          "suite_name": "org.jlinalg.cli.FeatureCountsCliTest",
+          "suite": {
+            "tests": 8,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "bbea5f86a13af0116ca2a5a993c9643bfd39760a986a839b22fd967bd791f788",
+          "testcases": [
+            "ambiguousGenesAndMultimappingHaveExplicitFractionalPolicies()",
+            "nativeAnnotationSpliceAndNormalizationWorkWithoutUpstreamRuntime()",
+            "safPeakCountingAndStrandPoliciesAreNotGeneOnly()",
+            "rawGeneAndJunctionCountsRecoverKnownSplitReads()",
+            "pairedReadsAndFragmentsAreDifferentExplicitUnits()",
+            "multiSampleStrandColumnsAndDuplicateFilteringKeepSeparateCounts()",
+            "unavailableRuntimeSkipsWithActionAndInvalidOptionsFailEarly()",
+            "missingNhRequiresAnExplicitAssumptionAndWrongLibraryFails()"
+          ]
+        },
+        "org.jlinalg.cli.MinimapToolsCliTest": {
+          "suite_name": "org.jlinalg.cli.MinimapToolsCliTest",
+          "suite": {
+            "tests": 7,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "9b01dff5267370fda1a960d88f9fe910fdae70ec028786bd67a25412e2a11cee",
+          "testcases": [
+            "splicedRnaRecoversKnownJunctionWithExplicitNoncanonicalPenalty()",
+            "duplicatePafIdsFailBeforeAlignment()",
+            "hifiReadsRetainReverseBasesQualitiesAndUnmappedRecords()",
+            "assemblyPafCigarsAndBedSpansIncludeReverseAndUnmappedQueries()",
+            "missingDependencySkipsWithInstructions()",
+            "shortReadPairsAndEmptyMappingsRetainCompleteInputAudit()",
+            "multiPartIndexMergingRetainsPrimaryContentAndRejectsIncompatibleTags()"
+          ]
+        },
+        "org.jlinalg.cli.HisatToolsCliTest": {
+          "suite_name": "org.jlinalg.cli.HisatToolsCliTest",
+          "suite": {
+            "tests": 6,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "16b21928890d9013a96b82dfff2dfc064d6d028b21e495eaef010e97dec500d2",
+          "testcases": [
+            "unsplicedAndZeroMappedModesRemainExplicit()",
+            "largeIndexFamilyAndLinearKnownSpliceListAreAudited()",
+            "pairedStrandAndDirectInputStagePreserveEveryMate()",
+            "unavailableDependencySkipsAndWrongStrandFailsEarly()",
+            "indexCorruptionAndPairMismatchFailWithoutPublishingResults()",
+            "annotatedGraphAndGzipRnaRecoverExactSpliceAndUnmappedRead()"
+          ]
+        }
+      },
+      "tests": 30,
+      "packaged_validation": "rna-alignment-counting-packaged-validation.json",
+      "packaged_steps": 18,
+      "independent_packaged_checks": 14,
+      "packaged_verifier_sha256": "f402b638187e7b69cfae52817c5e56dee7af0b228640116f76a574d21f53108e",
+      "dependency_evidence": "rna-aligner-dependency-status.json",
+      "recorded_utc": "2026-10-25T00:57:19.120198+00:00",
+      "scope": "Native annotation/union/splice/normalization/PAF checks plus typed actual upstream counting and read/assembly/RNA alignment. Windows source/binary runtime scientific fixtures passed; compiler warnings and omitted research links retained. R interfaces, complete study/downstream workflows, old versions and native Linux/macOS behavior remain separate.",
+      "refreshed_utc": "2026-10-25T02:15:39.832466+00:00"
+    },
+    {
+      "status": "passed",
+      "jar_sha256": "fc6c5769770609b38ffd8e5f22e701efcf0aeb13261c594a070ee5b6b777232b",
+      "versions": {
+        "featurecounts": "2.1.1",
+        "minimap2": "2.31-r1302",
+        "hisat2": "2.2.3"
+      },
+      "source_sha256": {
+        "src/main/java/org/jlinalg/sequence/GeneFeatures.java": "d9000feb54688b504ab43079c14888eb3bf853434b9da89ea61b4ad3e4d9f4fe",
+        "src/main/java/org/jlinalg/sequence/ExpressionNormalization.java": "ac25ebbe30261748fd5d11efc69fa68b8867214d34fd81012121b920175fe485",
+        "src/main/java/org/jlinalg/cli/RnaToolRuntime.java": "aa6560e6a47c999cffe1486b04272271ae2612daf74e99058b8da5cb010f2b0b",
+        "src/main/java/org/jlinalg/cli/FeatureCountsCli.java": "db068a378929ccd8f0ed1aaef7fafa91a8e711d5572a015c8e853fdc93b26708",
+        "src/main/java/org/jlinalg/cli/MinimapToolsCli.java": "51d7c26ec183f196fb01c9c43869227b31a9e14b6d7c730d578c8b0bf3beed87",
+        "src/main/java/org/jlinalg/cli/HisatToolsCli.java": "3f21e840970e06516b99ec64ca93b53524e89c7ea022a04e66aa04da690086c3",
+        "src/main/java/org/jlinalg/sequence/PafAlignments.java": "6cde1e8581e5742353d103194bdb7c8912a0fd9e5484db7c5cb19c5f24f61356"
+      },
+      "current_full_gate_suites": {
+        "org.jlinalg.sequence.GeneFeaturesTest": {
+          "suite_name": "org.jlinalg.sequence.GeneFeaturesTest",
+          "suite": {
+            "tests": 5,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "415047b1270d6714895f4e9425fab6f8ed257c2f3e048bf88e7a381c79dc543b",
+          "testcases": [
+            "conflictingTranscriptAndMalformedReferenceRowsFail()",
+            "unionLengthDoesNotDoubleCountIsoformsOrStrandsAndSafRoundTrips()",
+            "spliceBoundariesUseExonicFlanksAndHandleNestedAndSingleBaseExons()",
+            "graphIndexExonUnionsMergeOverlapsAcrossGenesButNotGaps()",
+            "duplicateAttributesAndWrongFeatureSelectionsFail()"
+          ]
+        },
+        "org.jlinalg.sequence.ExpressionNormalizationTest": {
+          "suite_name": "org.jlinalg.sequence.ExpressionNormalizationTest",
+          "suite": {
+            "tests": 2,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "7afef998d0a28568c30ad315840e8c3246678356aa5f5462cb463dbcc50d0de1",
+          "testcases": [
+            "independentlyCalculatedTpmAndLibraryNormalization()",
+            "zeroTpmDenominatorAndInvalidCountsLengthsOrLibraryFailExplicitly()"
+          ]
+        },
+        "org.jlinalg.sequence.PafAlignmentsTest": {
+          "suite_name": "org.jlinalg.sequence.PafAlignmentsTest",
+          "suite": {
+            "tests": 2,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "d44cbf78a24dd7a5a2c4f4c9236fb8b6a57e9e43f204e5075fa3a0efa01caa14",
+          "testcases": [
+            "inconsistentLengthsCoordinatesAndCigarsFail()",
+            "reverseIndelAndSplicedCigarGeometryUseForwardCoordinates()"
+          ]
+        },
+        "org.jlinalg.cli.FeatureCountsCliTest": {
+          "suite_name": "org.jlinalg.cli.FeatureCountsCliTest",
+          "suite": {
+            "tests": 8,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "de2a32c16b4a4de943123bc548cb523d9d3275a3d00e5efd5ef58b5953e9d92d",
+          "testcases": [
+            "ambiguousGenesAndMultimappingHaveExplicitFractionalPolicies()",
+            "nativeAnnotationSpliceAndNormalizationWorkWithoutUpstreamRuntime()",
+            "safPeakCountingAndStrandPoliciesAreNotGeneOnly()",
+            "rawGeneAndJunctionCountsRecoverKnownSplitReads()",
+            "pairedReadsAndFragmentsAreDifferentExplicitUnits()",
+            "multiSampleStrandColumnsAndDuplicateFilteringKeepSeparateCounts()",
+            "unavailableRuntimeSkipsWithActionAndInvalidOptionsFailEarly()",
+            "missingNhRequiresAnExplicitAssumptionAndWrongLibraryFails()"
+          ]
+        },
+        "org.jlinalg.cli.MinimapToolsCliTest": {
+          "suite_name": "org.jlinalg.cli.MinimapToolsCliTest",
+          "suite": {
+            "tests": 7,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "827baba943bf80ab1b9fa569f935b2badc8c6a496b57e8620d7fdccc2ec68b9b",
+          "testcases": [
+            "splicedRnaRecoversKnownJunctionWithExplicitNoncanonicalPenalty()",
+            "duplicatePafIdsFailBeforeAlignment()",
+            "hifiReadsRetainReverseBasesQualitiesAndUnmappedRecords()",
+            "assemblyPafCigarsAndBedSpansIncludeReverseAndUnmappedQueries()",
+            "missingDependencySkipsWithInstructions()",
+            "shortReadPairsAndEmptyMappingsRetainCompleteInputAudit()",
+            "multiPartIndexMergingRetainsPrimaryContentAndRejectsIncompatibleTags()"
+          ]
+        },
+        "org.jlinalg.cli.HisatToolsCliTest": {
+          "suite_name": "org.jlinalg.cli.HisatToolsCliTest",
+          "suite": {
+            "tests": 6,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "4a3a5a987ca5ae68e45ef7778f71cb24f976c061e40aee7ba449945c073c4fb4",
+          "testcases": [
+            "unsplicedAndZeroMappedModesRemainExplicit()",
+            "largeIndexFamilyAndLinearKnownSpliceListAreAudited()",
+            "pairedStrandAndDirectInputStagePreserveEveryMate()",
+            "unavailableDependencySkipsAndWrongStrandFailsEarly()",
+            "indexCorruptionAndPairMismatchFailWithoutPublishingResults()",
+            "annotatedGraphAndGzipRnaRecoverExactSpliceAndUnmappedRead()"
+          ]
+        }
+      },
+      "tests": 30,
+      "packaged_validation": "rna-alignment-counting-packaged-validation.json",
+      "packaged_steps": 18,
+      "independent_packaged_checks": 14,
+      "packaged_verifier_sha256": "f402b638187e7b69cfae52817c5e56dee7af0b228640116f76a574d21f53108e",
+      "dependency_evidence": "rna-aligner-dependency-status.json",
+      "recorded_utc": "2026-10-25T00:57:19.120198+00:00",
+      "scope": "Native annotation/union/splice/normalization/PAF checks plus typed actual upstream counting and read/assembly/RNA alignment. Windows source/binary runtime scientific fixtures passed; compiler warnings and omitted research links retained. R interfaces, complete study/downstream workflows, old versions and native Linux/macOS behavior remain separate.",
+      "refreshed_utc": "2026-10-25T02:57:16.310858+00:00"
+    },
+    {
+      "status": "passed",
+      "jar_sha256": "faa28146756d077aa691977585fd3349c390f49ff609179a94e355cb13cca667",
+      "versions": {
+        "featurecounts": "2.1.1",
+        "minimap2": "2.31-r1302",
+        "hisat2": "2.2.3"
+      },
+      "source_sha256": {
+        "src/main/java/org/jlinalg/sequence/GeneFeatures.java": "d9000feb54688b504ab43079c14888eb3bf853434b9da89ea61b4ad3e4d9f4fe",
+        "src/main/java/org/jlinalg/sequence/ExpressionNormalization.java": "ac25ebbe30261748fd5d11efc69fa68b8867214d34fd81012121b920175fe485",
+        "src/main/java/org/jlinalg/cli/RnaToolRuntime.java": "aa6560e6a47c999cffe1486b04272271ae2612daf74e99058b8da5cb010f2b0b",
+        "src/main/java/org/jlinalg/cli/FeatureCountsCli.java": "db068a378929ccd8f0ed1aaef7fafa91a8e711d5572a015c8e853fdc93b26708",
+        "src/main/java/org/jlinalg/cli/MinimapToolsCli.java": "51d7c26ec183f196fb01c9c43869227b31a9e14b6d7c730d578c8b0bf3beed87",
+        "src/main/java/org/jlinalg/cli/HisatToolsCli.java": "3f21e840970e06516b99ec64ca93b53524e89c7ea022a04e66aa04da690086c3",
+        "src/main/java/org/jlinalg/sequence/PafAlignments.java": "6cde1e8581e5742353d103194bdb7c8912a0fd9e5484db7c5cb19c5f24f61356"
+      },
+      "current_full_gate_suites": {
+        "org.jlinalg.sequence.GeneFeaturesTest": {
+          "suite_name": "org.jlinalg.sequence.GeneFeaturesTest",
+          "suite": {
+            "tests": 5,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "82b9f3a1753d79593d886a26bb66a258617f348dc918e9d3a3cafa4ab193ff32",
+          "testcases": [
+            "conflictingTranscriptAndMalformedReferenceRowsFail()",
+            "unionLengthDoesNotDoubleCountIsoformsOrStrandsAndSafRoundTrips()",
+            "spliceBoundariesUseExonicFlanksAndHandleNestedAndSingleBaseExons()",
+            "graphIndexExonUnionsMergeOverlapsAcrossGenesButNotGaps()",
+            "duplicateAttributesAndWrongFeatureSelectionsFail()"
+          ]
+        },
+        "org.jlinalg.sequence.ExpressionNormalizationTest": {
+          "suite_name": "org.jlinalg.sequence.ExpressionNormalizationTest",
+          "suite": {
+            "tests": 2,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "f1386a9969a88023fc213419b65cf809be929890d625a7b8f7a98407ad4fae3d",
+          "testcases": [
+            "independentlyCalculatedTpmAndLibraryNormalization()",
+            "zeroTpmDenominatorAndInvalidCountsLengthsOrLibraryFailExplicitly()"
+          ]
+        },
+        "org.jlinalg.sequence.PafAlignmentsTest": {
+          "suite_name": "org.jlinalg.sequence.PafAlignmentsTest",
+          "suite": {
+            "tests": 2,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "26427c00fe7772b255957271afdfb40b51035ac64108af4103c26bd0cad60d60",
+          "testcases": [
+            "inconsistentLengthsCoordinatesAndCigarsFail()",
+            "reverseIndelAndSplicedCigarGeometryUseForwardCoordinates()"
+          ]
+        },
+        "org.jlinalg.cli.FeatureCountsCliTest": {
+          "suite_name": "org.jlinalg.cli.FeatureCountsCliTest",
+          "suite": {
+            "tests": 8,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "16cccf990d2f5ab5609b72beefc1fa1cae6d76bb0343345fd12caaed5b28555d",
+          "testcases": [
+            "ambiguousGenesAndMultimappingHaveExplicitFractionalPolicies()",
+            "nativeAnnotationSpliceAndNormalizationWorkWithoutUpstreamRuntime()",
+            "safPeakCountingAndStrandPoliciesAreNotGeneOnly()",
+            "rawGeneAndJunctionCountsRecoverKnownSplitReads()",
+            "pairedReadsAndFragmentsAreDifferentExplicitUnits()",
+            "multiSampleStrandColumnsAndDuplicateFilteringKeepSeparateCounts()",
+            "unavailableRuntimeSkipsWithActionAndInvalidOptionsFailEarly()",
+            "missingNhRequiresAnExplicitAssumptionAndWrongLibraryFails()"
+          ]
+        },
+        "org.jlinalg.cli.MinimapToolsCliTest": {
+          "suite_name": "org.jlinalg.cli.MinimapToolsCliTest",
+          "suite": {
+            "tests": 7,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "890d9058f5d119ccd9531de8515276d2c99a09e11a8aed3ce3467c620bb3956a",
+          "testcases": [
+            "splicedRnaRecoversKnownJunctionWithExplicitNoncanonicalPenalty()",
+            "duplicatePafIdsFailBeforeAlignment()",
+            "hifiReadsRetainReverseBasesQualitiesAndUnmappedRecords()",
+            "assemblyPafCigarsAndBedSpansIncludeReverseAndUnmappedQueries()",
+            "missingDependencySkipsWithInstructions()",
+            "shortReadPairsAndEmptyMappingsRetainCompleteInputAudit()",
+            "multiPartIndexMergingRetainsPrimaryContentAndRejectsIncompatibleTags()"
+          ]
+        },
+        "org.jlinalg.cli.HisatToolsCliTest": {
+          "suite_name": "org.jlinalg.cli.HisatToolsCliTest",
+          "suite": {
+            "tests": 6,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "290c8f20a6575c9959e608aa17456c9188114bde145d7f7c0fc3c49222c59247",
+          "testcases": [
+            "unsplicedAndZeroMappedModesRemainExplicit()",
+            "largeIndexFamilyAndLinearKnownSpliceListAreAudited()",
+            "pairedStrandAndDirectInputStagePreserveEveryMate()",
+            "unavailableDependencySkipsAndWrongStrandFailsEarly()",
+            "indexCorruptionAndPairMismatchFailWithoutPublishingResults()",
+            "annotatedGraphAndGzipRnaRecoverExactSpliceAndUnmappedRead()"
+          ]
+        }
+      },
+      "tests": 30,
+      "packaged_validation": "rna-alignment-counting-packaged-validation.json",
+      "packaged_steps": 18,
+      "independent_packaged_checks": 14,
+      "packaged_verifier_sha256": "f402b638187e7b69cfae52817c5e56dee7af0b228640116f76a574d21f53108e",
+      "dependency_evidence": "rna-aligner-dependency-status.json",
+      "recorded_utc": "2026-10-25T00:57:19.120198+00:00",
+      "scope": "Native annotation/union/splice/normalization/PAF checks plus typed actual upstream counting and read/assembly/RNA alignment. Windows source/binary runtime scientific fixtures passed; compiler warnings and omitted research links retained. R interfaces, complete study/downstream workflows, old versions and native Linux/macOS behavior remain separate.",
+      "refreshed_utc": "2026-10-25T03:50:24.675422+00:00"
+    },
+    {
+      "status": "passed",
+      "jar_sha256": "68a623dc455abf0608f50ca5977a44cd3c6d0db6489f8db726569675c46abdc2",
+      "versions": {
+        "featurecounts": "2.1.1",
+        "minimap2": "2.31-r1302",
+        "hisat2": "2.2.3"
+      },
+      "source_sha256": {
+        "src/main/java/org/jlinalg/sequence/GeneFeatures.java": "d9000feb54688b504ab43079c14888eb3bf853434b9da89ea61b4ad3e4d9f4fe",
+        "src/main/java/org/jlinalg/sequence/ExpressionNormalization.java": "ac25ebbe30261748fd5d11efc69fa68b8867214d34fd81012121b920175fe485",
+        "src/main/java/org/jlinalg/cli/RnaToolRuntime.java": "aa6560e6a47c999cffe1486b04272271ae2612daf74e99058b8da5cb010f2b0b",
+        "src/main/java/org/jlinalg/cli/FeatureCountsCli.java": "db068a378929ccd8f0ed1aaef7fafa91a8e711d5572a015c8e853fdc93b26708",
+        "src/main/java/org/jlinalg/cli/MinimapToolsCli.java": "51d7c26ec183f196fb01c9c43869227b31a9e14b6d7c730d578c8b0bf3beed87",
+        "src/main/java/org/jlinalg/cli/HisatToolsCli.java": "3f21e840970e06516b99ec64ca93b53524e89c7ea022a04e66aa04da690086c3",
+        "src/main/java/org/jlinalg/sequence/PafAlignments.java": "6cde1e8581e5742353d103194bdb7c8912a0fd9e5484db7c5cb19c5f24f61356"
+      },
+      "current_full_gate_suites": {
+        "org.jlinalg.sequence.GeneFeaturesTest": {
+          "suite_name": "org.jlinalg.sequence.GeneFeaturesTest",
+          "suite": {
+            "tests": 5,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "80521c11be3c7c3fa2ee1117fec744ab3dfebce62e93b4ba07da75286cf90ad9",
+          "testcases": [
+            "conflictingTranscriptAndMalformedReferenceRowsFail()",
+            "unionLengthDoesNotDoubleCountIsoformsOrStrandsAndSafRoundTrips()",
+            "spliceBoundariesUseExonicFlanksAndHandleNestedAndSingleBaseExons()",
+            "graphIndexExonUnionsMergeOverlapsAcrossGenesButNotGaps()",
+            "duplicateAttributesAndWrongFeatureSelectionsFail()"
+          ]
+        },
+        "org.jlinalg.sequence.ExpressionNormalizationTest": {
+          "suite_name": "org.jlinalg.sequence.ExpressionNormalizationTest",
+          "suite": {
+            "tests": 2,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "c226d7722121c6eda29ffc37b2839f00600cd44795b4faa1733ea8f8ec44ac88",
+          "testcases": [
+            "independentlyCalculatedTpmAndLibraryNormalization()",
+            "zeroTpmDenominatorAndInvalidCountsLengthsOrLibraryFailExplicitly()"
+          ]
+        },
+        "org.jlinalg.sequence.PafAlignmentsTest": {
+          "suite_name": "org.jlinalg.sequence.PafAlignmentsTest",
+          "suite": {
+            "tests": 2,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "768b0a009d81a15bfcddb0e416f4a91a72494bf567baf8d180d4f67fbb33bc20",
+          "testcases": [
+            "inconsistentLengthsCoordinatesAndCigarsFail()",
+            "reverseIndelAndSplicedCigarGeometryUseForwardCoordinates()"
+          ]
+        },
+        "org.jlinalg.cli.FeatureCountsCliTest": {
+          "suite_name": "org.jlinalg.cli.FeatureCountsCliTest",
+          "suite": {
+            "tests": 8,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "287a2b7081e9450dc7905cec35c909468d6bee3c6735e5cc99ef178e0ddd00ec",
+          "testcases": [
+            "ambiguousGenesAndMultimappingHaveExplicitFractionalPolicies()",
+            "nativeAnnotationSpliceAndNormalizationWorkWithoutUpstreamRuntime()",
+            "safPeakCountingAndStrandPoliciesAreNotGeneOnly()",
+            "rawGeneAndJunctionCountsRecoverKnownSplitReads()",
+            "pairedReadsAndFragmentsAreDifferentExplicitUnits()",
+            "multiSampleStrandColumnsAndDuplicateFilteringKeepSeparateCounts()",
+            "unavailableRuntimeSkipsWithActionAndInvalidOptionsFailEarly()",
+            "missingNhRequiresAnExplicitAssumptionAndWrongLibraryFails()"
+          ]
+        },
+        "org.jlinalg.cli.MinimapToolsCliTest": {
+          "suite_name": "org.jlinalg.cli.MinimapToolsCliTest",
+          "suite": {
+            "tests": 7,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "b12d355049f5d38d3441ceb3230068c4e4a1de875b739c064adabb51ea77de28",
+          "testcases": [
+            "splicedRnaRecoversKnownJunctionWithExplicitNoncanonicalPenalty()",
+            "duplicatePafIdsFailBeforeAlignment()",
+            "hifiReadsRetainReverseBasesQualitiesAndUnmappedRecords()",
+            "assemblyPafCigarsAndBedSpansIncludeReverseAndUnmappedQueries()",
+            "missingDependencySkipsWithInstructions()",
+            "shortReadPairsAndEmptyMappingsRetainCompleteInputAudit()",
+            "multiPartIndexMergingRetainsPrimaryContentAndRejectsIncompatibleTags()"
+          ]
+        },
+        "org.jlinalg.cli.HisatToolsCliTest": {
+          "suite_name": "org.jlinalg.cli.HisatToolsCliTest",
+          "suite": {
+            "tests": 6,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "cb92e185d8335cfb308b089273343f2d231edce0075f1a20e29705cb6d45e2f4",
+          "testcases": [
+            "unsplicedAndZeroMappedModesRemainExplicit()",
+            "largeIndexFamilyAndLinearKnownSpliceListAreAudited()",
+            "pairedStrandAndDirectInputStagePreserveEveryMate()",
+            "unavailableDependencySkipsAndWrongStrandFailsEarly()",
+            "indexCorruptionAndPairMismatchFailWithoutPublishingResults()",
+            "annotatedGraphAndGzipRnaRecoverExactSpliceAndUnmappedRead()"
+          ]
+        }
+      },
+      "tests": 30,
+      "packaged_validation": "rna-alignment-counting-packaged-validation.json",
+      "packaged_steps": 18,
+      "independent_packaged_checks": 14,
+      "packaged_verifier_sha256": "f402b638187e7b69cfae52817c5e56dee7af0b228640116f76a574d21f53108e",
+      "dependency_evidence": "rna-aligner-dependency-status.json",
+      "recorded_utc": "2026-10-25T00:57:19.120198+00:00",
+      "scope": "Native annotation/union/splice/normalization/PAF checks plus typed actual upstream counting and read/assembly/RNA alignment. Windows source/binary runtime scientific fixtures passed; compiler warnings and omitted research links retained. R interfaces, complete study/downstream workflows, old versions and native Linux/macOS behavior remain separate.",
+      "refreshed_utc": "2026-10-25T05:28:16.019770+00:00"
+    },
+    {
+      "status": "passed",
+      "jar_sha256": "6ff7cc767bc62f2489947a34fbf3bc99129e4d444242eb217294764587c7e491",
+      "versions": {
+        "featurecounts": "2.1.1",
+        "minimap2": "2.31-r1302",
+        "hisat2": "2.2.3"
+      },
+      "source_sha256": {
+        "src/main/java/org/jlinalg/sequence/GeneFeatures.java": "d9000feb54688b504ab43079c14888eb3bf853434b9da89ea61b4ad3e4d9f4fe",
+        "src/main/java/org/jlinalg/sequence/ExpressionNormalization.java": "ac25ebbe30261748fd5d11efc69fa68b8867214d34fd81012121b920175fe485",
+        "src/main/java/org/jlinalg/cli/RnaToolRuntime.java": "aa6560e6a47c999cffe1486b04272271ae2612daf74e99058b8da5cb010f2b0b",
+        "src/main/java/org/jlinalg/cli/FeatureCountsCli.java": "db068a378929ccd8f0ed1aaef7fafa91a8e711d5572a015c8e853fdc93b26708",
+        "src/main/java/org/jlinalg/cli/MinimapToolsCli.java": "51d7c26ec183f196fb01c9c43869227b31a9e14b6d7c730d578c8b0bf3beed87",
+        "src/main/java/org/jlinalg/cli/HisatToolsCli.java": "3f21e840970e06516b99ec64ca93b53524e89c7ea022a04e66aa04da690086c3",
+        "src/main/java/org/jlinalg/sequence/PafAlignments.java": "6cde1e8581e5742353d103194bdb7c8912a0fd9e5484db7c5cb19c5f24f61356"
+      },
+      "current_full_gate_suites": {
+        "org.jlinalg.sequence.GeneFeaturesTest": {
+          "suite_name": "org.jlinalg.sequence.GeneFeaturesTest",
+          "suite": {
+            "tests": 5,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "f1f5a7a23efac478c62bae79139e5c50e981cdef4c8dae94d745b12e077e4af6",
+          "testcases": [
+            "conflictingTranscriptAndMalformedReferenceRowsFail()",
+            "unionLengthDoesNotDoubleCountIsoformsOrStrandsAndSafRoundTrips()",
+            "spliceBoundariesUseExonicFlanksAndHandleNestedAndSingleBaseExons()",
+            "graphIndexExonUnionsMergeOverlapsAcrossGenesButNotGaps()",
+            "duplicateAttributesAndWrongFeatureSelectionsFail()"
+          ]
+        },
+        "org.jlinalg.sequence.ExpressionNormalizationTest": {
+          "suite_name": "org.jlinalg.sequence.ExpressionNormalizationTest",
+          "suite": {
+            "tests": 2,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "d05ca21bec0282659453e6bfea787410ee6c379387056c055c3dec2ebf900b53",
+          "testcases": [
+            "independentlyCalculatedTpmAndLibraryNormalization()",
+            "zeroTpmDenominatorAndInvalidCountsLengthsOrLibraryFailExplicitly()"
+          ]
+        },
+        "org.jlinalg.sequence.PafAlignmentsTest": {
+          "suite_name": "org.jlinalg.sequence.PafAlignmentsTest",
+          "suite": {
+            "tests": 2,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "2f3faacd269e02451dfc764026c671b9e48e5e80f88275c4aa81f6a8bae031ac",
+          "testcases": [
+            "inconsistentLengthsCoordinatesAndCigarsFail()",
+            "reverseIndelAndSplicedCigarGeometryUseForwardCoordinates()"
+          ]
+        },
+        "org.jlinalg.cli.FeatureCountsCliTest": {
+          "suite_name": "org.jlinalg.cli.FeatureCountsCliTest",
+          "suite": {
+            "tests": 8,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "b65aa3b8895335621dc96b1d2169e9d259fc567b115b95959b20c56cb658ece4",
+          "testcases": [
+            "ambiguousGenesAndMultimappingHaveExplicitFractionalPolicies()",
+            "nativeAnnotationSpliceAndNormalizationWorkWithoutUpstreamRuntime()",
+            "safPeakCountingAndStrandPoliciesAreNotGeneOnly()",
+            "rawGeneAndJunctionCountsRecoverKnownSplitReads()",
+            "pairedReadsAndFragmentsAreDifferentExplicitUnits()",
+            "multiSampleStrandColumnsAndDuplicateFilteringKeepSeparateCounts()",
+            "unavailableRuntimeSkipsWithActionAndInvalidOptionsFailEarly()",
+            "missingNhRequiresAnExplicitAssumptionAndWrongLibraryFails()"
+          ]
+        },
+        "org.jlinalg.cli.MinimapToolsCliTest": {
+          "suite_name": "org.jlinalg.cli.MinimapToolsCliTest",
+          "suite": {
+            "tests": 7,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "55c96bcef75c2e2b1ba8ebc62fb29c49d7f30fcc40645ce4d1a509521dd32396",
+          "testcases": [
+            "splicedRnaRecoversKnownJunctionWithExplicitNoncanonicalPenalty()",
+            "duplicatePafIdsFailBeforeAlignment()",
+            "hifiReadsRetainReverseBasesQualitiesAndUnmappedRecords()",
+            "assemblyPafCigarsAndBedSpansIncludeReverseAndUnmappedQueries()",
+            "missingDependencySkipsWithInstructions()",
+            "shortReadPairsAndEmptyMappingsRetainCompleteInputAudit()",
+            "multiPartIndexMergingRetainsPrimaryContentAndRejectsIncompatibleTags()"
+          ]
+        },
+        "org.jlinalg.cli.HisatToolsCliTest": {
+          "suite_name": "org.jlinalg.cli.HisatToolsCliTest",
+          "suite": {
+            "tests": 6,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "6230b53aacbaf8eaff75ff0496f13edd2645692c434200a9fd1587bd7b679650",
+          "testcases": [
+            "unsplicedAndZeroMappedModesRemainExplicit()",
+            "largeIndexFamilyAndLinearKnownSpliceListAreAudited()",
+            "pairedStrandAndDirectInputStagePreserveEveryMate()",
+            "unavailableDependencySkipsAndWrongStrandFailsEarly()",
+            "indexCorruptionAndPairMismatchFailWithoutPublishingResults()",
+            "annotatedGraphAndGzipRnaRecoverExactSpliceAndUnmappedRead()"
+          ]
+        }
+      },
+      "tests": 30,
+      "packaged_validation": "rna-alignment-counting-packaged-validation.json",
+      "packaged_steps": 18,
+      "independent_packaged_checks": 14,
+      "packaged_verifier_sha256": "f402b638187e7b69cfae52817c5e56dee7af0b228640116f76a574d21f53108e",
+      "dependency_evidence": "rna-aligner-dependency-status.json",
+      "recorded_utc": "2026-10-25T00:57:19.120198+00:00",
+      "scope": "Native annotation/union/splice/normalization/PAF checks plus typed actual upstream counting and read/assembly/RNA alignment. Windows source/binary runtime scientific fixtures passed; compiler warnings and omitted research links retained. R interfaces, complete study/downstream workflows, old versions and native Linux/macOS behavior remain separate.",
+      "refreshed_utc": "2026-10-25T06:53:04.578303+00:00"
+    },
+    {
+      "status": "passed",
+      "jar_sha256": "53399f4be52ad5bb882f5acfea53d5a2a037ac80a6e93d1f7d7fdbc118051860",
+      "versions": {
+        "featurecounts": "2.1.1",
+        "minimap2": "2.31-r1302",
+        "hisat2": "2.2.3"
+      },
+      "source_sha256": {
+        "src/main/java/org/jlinalg/sequence/GeneFeatures.java": "d9000feb54688b504ab43079c14888eb3bf853434b9da89ea61b4ad3e4d9f4fe",
+        "src/main/java/org/jlinalg/sequence/ExpressionNormalization.java": "ac25ebbe30261748fd5d11efc69fa68b8867214d34fd81012121b920175fe485",
+        "src/main/java/org/jlinalg/cli/RnaToolRuntime.java": "aa6560e6a47c999cffe1486b04272271ae2612daf74e99058b8da5cb010f2b0b",
+        "src/main/java/org/jlinalg/cli/FeatureCountsCli.java": "db068a378929ccd8f0ed1aaef7fafa91a8e711d5572a015c8e853fdc93b26708",
+        "src/main/java/org/jlinalg/cli/MinimapToolsCli.java": "51d7c26ec183f196fb01c9c43869227b31a9e14b6d7c730d578c8b0bf3beed87",
+        "src/main/java/org/jlinalg/cli/HisatToolsCli.java": "3f21e840970e06516b99ec64ca93b53524e89c7ea022a04e66aa04da690086c3",
+        "src/main/java/org/jlinalg/sequence/PafAlignments.java": "6cde1e8581e5742353d103194bdb7c8912a0fd9e5484db7c5cb19c5f24f61356"
+      },
+      "current_full_gate_suites": {
+        "org.jlinalg.sequence.GeneFeaturesTest": {
+          "suite_name": "org.jlinalg.sequence.GeneFeaturesTest",
+          "suite": {
+            "tests": 5,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "49f73d1a4387c2cf7c447f219fda9c29d1c8ce7ce9634662b635b30204264620",
+          "testcases": [
+            "conflictingTranscriptAndMalformedReferenceRowsFail()",
+            "unionLengthDoesNotDoubleCountIsoformsOrStrandsAndSafRoundTrips()",
+            "spliceBoundariesUseExonicFlanksAndHandleNestedAndSingleBaseExons()",
+            "graphIndexExonUnionsMergeOverlapsAcrossGenesButNotGaps()",
+            "duplicateAttributesAndWrongFeatureSelectionsFail()"
+          ]
+        },
+        "org.jlinalg.sequence.ExpressionNormalizationTest": {
+          "suite_name": "org.jlinalg.sequence.ExpressionNormalizationTest",
+          "suite": {
+            "tests": 2,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "1b033eb80537c3df0c315b994f6fd10c989059ea260c3b8e4fe2bfec2f02ee4b",
+          "testcases": [
+            "independentlyCalculatedTpmAndLibraryNormalization()",
+            "zeroTpmDenominatorAndInvalidCountsLengthsOrLibraryFailExplicitly()"
+          ]
+        },
+        "org.jlinalg.sequence.PafAlignmentsTest": {
+          "suite_name": "org.jlinalg.sequence.PafAlignmentsTest",
+          "suite": {
+            "tests": 2,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "97f7ff8eeb80f3666c5ebb76a2b7958113a0899730275593758f1fece5379082",
+          "testcases": [
+            "inconsistentLengthsCoordinatesAndCigarsFail()",
+            "reverseIndelAndSplicedCigarGeometryUseForwardCoordinates()"
+          ]
+        },
+        "org.jlinalg.cli.FeatureCountsCliTest": {
+          "suite_name": "org.jlinalg.cli.FeatureCountsCliTest",
+          "suite": {
+            "tests": 8,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "36c71de9a2e6a7f5413645ac69e4bf8c2bbeaa2cfbeeee783e63991b4d35b1e1",
+          "testcases": [
+            "ambiguousGenesAndMultimappingHaveExplicitFractionalPolicies()",
+            "nativeAnnotationSpliceAndNormalizationWorkWithoutUpstreamRuntime()",
+            "safPeakCountingAndStrandPoliciesAreNotGeneOnly()",
+            "rawGeneAndJunctionCountsRecoverKnownSplitReads()",
+            "pairedReadsAndFragmentsAreDifferentExplicitUnits()",
+            "multiSampleStrandColumnsAndDuplicateFilteringKeepSeparateCounts()",
+            "unavailableRuntimeSkipsWithActionAndInvalidOptionsFailEarly()",
+            "missingNhRequiresAnExplicitAssumptionAndWrongLibraryFails()"
+          ]
+        },
+        "org.jlinalg.cli.MinimapToolsCliTest": {
+          "suite_name": "org.jlinalg.cli.MinimapToolsCliTest",
+          "suite": {
+            "tests": 7,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "c0798522811f0101d7398e092e63bc8b62d2955a772472a8c26014f92c4e1b47",
+          "testcases": [
+            "splicedRnaRecoversKnownJunctionWithExplicitNoncanonicalPenalty()",
+            "duplicatePafIdsFailBeforeAlignment()",
+            "hifiReadsRetainReverseBasesQualitiesAndUnmappedRecords()",
+            "assemblyPafCigarsAndBedSpansIncludeReverseAndUnmappedQueries()",
+            "missingDependencySkipsWithInstructions()",
+            "shortReadPairsAndEmptyMappingsRetainCompleteInputAudit()",
+            "multiPartIndexMergingRetainsPrimaryContentAndRejectsIncompatibleTags()"
+          ]
+        },
+        "org.jlinalg.cli.HisatToolsCliTest": {
+          "suite_name": "org.jlinalg.cli.HisatToolsCliTest",
+          "suite": {
+            "tests": 6,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "077412e841068c32e53fa0ab8f40b06443030164ba326a564b4e28457b94330d",
+          "testcases": [
+            "unsplicedAndZeroMappedModesRemainExplicit()",
+            "largeIndexFamilyAndLinearKnownSpliceListAreAudited()",
+            "pairedStrandAndDirectInputStagePreserveEveryMate()",
+            "unavailableDependencySkipsAndWrongStrandFailsEarly()",
+            "indexCorruptionAndPairMismatchFailWithoutPublishingResults()",
+            "annotatedGraphAndGzipRnaRecoverExactSpliceAndUnmappedRead()"
+          ]
+        }
+      },
+      "tests": 30,
+      "packaged_validation": "rna-alignment-counting-packaged-validation.json",
+      "packaged_steps": 18,
+      "independent_packaged_checks": 14,
+      "packaged_verifier_sha256": "f402b638187e7b69cfae52817c5e56dee7af0b228640116f76a574d21f53108e",
+      "dependency_evidence": "rna-aligner-dependency-status.json",
+      "recorded_utc": "2026-10-25T00:57:19.120198+00:00",
+      "scope": "Native annotation/union/splice/normalization/PAF checks plus typed actual upstream counting and read/assembly/RNA alignment. Windows source/binary runtime scientific fixtures passed; compiler warnings and omitted research links retained. R interfaces, complete study/downstream workflows, old versions and native Linux/macOS behavior remain separate.",
+      "refreshed_utc": "2026-10-25T08:02:41.668775+00:00"
+    },
+    {
+      "status": "passed",
+      "jar_sha256": "9650afd13cf486aba84285ba6d2f1a0a06eca8f08d3e33b4c2338567f5372de2",
+      "versions": {
+        "featurecounts": "2.1.1",
+        "minimap2": "2.31-r1302",
+        "hisat2": "2.2.3"
+      },
+      "source_sha256": {
+        "src/main/java/org/jlinalg/sequence/GeneFeatures.java": "d9000feb54688b504ab43079c14888eb3bf853434b9da89ea61b4ad3e4d9f4fe",
+        "src/main/java/org/jlinalg/sequence/ExpressionNormalization.java": "ac25ebbe30261748fd5d11efc69fa68b8867214d34fd81012121b920175fe485",
+        "src/main/java/org/jlinalg/cli/RnaToolRuntime.java": "aa6560e6a47c999cffe1486b04272271ae2612daf74e99058b8da5cb010f2b0b",
+        "src/main/java/org/jlinalg/cli/FeatureCountsCli.java": "db068a378929ccd8f0ed1aaef7fafa91a8e711d5572a015c8e853fdc93b26708",
+        "src/main/java/org/jlinalg/cli/MinimapToolsCli.java": "51d7c26ec183f196fb01c9c43869227b31a9e14b6d7c730d578c8b0bf3beed87",
+        "src/main/java/org/jlinalg/cli/HisatToolsCli.java": "3f21e840970e06516b99ec64ca93b53524e89c7ea022a04e66aa04da690086c3",
+        "src/main/java/org/jlinalg/sequence/PafAlignments.java": "6cde1e8581e5742353d103194bdb7c8912a0fd9e5484db7c5cb19c5f24f61356"
+      },
+      "current_full_gate_suites": {
+        "org.jlinalg.sequence.GeneFeaturesTest": {
+          "suite_name": "org.jlinalg.sequence.GeneFeaturesTest",
+          "suite": {
+            "tests": 5,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "23e1003e7020767e8dac590b077124887b7f89fe42e57fefd284148a753c76c7",
+          "testcases": [
+            "conflictingTranscriptAndMalformedReferenceRowsFail()",
+            "unionLengthDoesNotDoubleCountIsoformsOrStrandsAndSafRoundTrips()",
+            "spliceBoundariesUseExonicFlanksAndHandleNestedAndSingleBaseExons()",
+            "graphIndexExonUnionsMergeOverlapsAcrossGenesButNotGaps()",
+            "duplicateAttributesAndWrongFeatureSelectionsFail()"
+          ]
+        },
+        "org.jlinalg.sequence.ExpressionNormalizationTest": {
+          "suite_name": "org.jlinalg.sequence.ExpressionNormalizationTest",
+          "suite": {
+            "tests": 2,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "fab8a2862e344194bf9a62fa74c3e6bb1a4f51dc91bf899d151bb29f2fc9629c",
+          "testcases": [
+            "independentlyCalculatedTpmAndLibraryNormalization()",
+            "zeroTpmDenominatorAndInvalidCountsLengthsOrLibraryFailExplicitly()"
+          ]
+        },
+        "org.jlinalg.sequence.PafAlignmentsTest": {
+          "suite_name": "org.jlinalg.sequence.PafAlignmentsTest",
+          "suite": {
+            "tests": 2,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "0cdf0a9163da9958e9975ef5e7975ac7bcf2bf2f38a5c90783d1bf8867ad5657",
+          "testcases": [
+            "inconsistentLengthsCoordinatesAndCigarsFail()",
+            "reverseIndelAndSplicedCigarGeometryUseForwardCoordinates()"
+          ]
+        },
+        "org.jlinalg.cli.FeatureCountsCliTest": {
+          "suite_name": "org.jlinalg.cli.FeatureCountsCliTest",
+          "suite": {
+            "tests": 8,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "9d7738a1417c6ea88ffae1f85da31e8c4d0c798e67cb2013b5ef0779f5b7c77d",
+          "testcases": [
+            "ambiguousGenesAndMultimappingHaveExplicitFractionalPolicies()",
+            "nativeAnnotationSpliceAndNormalizationWorkWithoutUpstreamRuntime()",
+            "safPeakCountingAndStrandPoliciesAreNotGeneOnly()",
+            "rawGeneAndJunctionCountsRecoverKnownSplitReads()",
+            "pairedReadsAndFragmentsAreDifferentExplicitUnits()",
+            "multiSampleStrandColumnsAndDuplicateFilteringKeepSeparateCounts()",
+            "unavailableRuntimeSkipsWithActionAndInvalidOptionsFailEarly()",
+            "missingNhRequiresAnExplicitAssumptionAndWrongLibraryFails()"
+          ]
+        },
+        "org.jlinalg.cli.MinimapToolsCliTest": {
+          "suite_name": "org.jlinalg.cli.MinimapToolsCliTest",
+          "suite": {
+            "tests": 7,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "1f89fd4638b70da00a046313462daa2cd12a487b6cd5801e0d254f63f871da52",
+          "testcases": [
+            "splicedRnaRecoversKnownJunctionWithExplicitNoncanonicalPenalty()",
+            "duplicatePafIdsFailBeforeAlignment()",
+            "hifiReadsRetainReverseBasesQualitiesAndUnmappedRecords()",
+            "assemblyPafCigarsAndBedSpansIncludeReverseAndUnmappedQueries()",
+            "missingDependencySkipsWithInstructions()",
+            "shortReadPairsAndEmptyMappingsRetainCompleteInputAudit()",
+            "multiPartIndexMergingRetainsPrimaryContentAndRejectsIncompatibleTags()"
+          ]
+        },
+        "org.jlinalg.cli.HisatToolsCliTest": {
+          "suite_name": "org.jlinalg.cli.HisatToolsCliTest",
+          "suite": {
+            "tests": 6,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "b0e22a278dd0b1a0d14f787363d137bcfcf2f77434f9b6f3ffc05764c3f144d8",
+          "testcases": [
+            "unsplicedAndZeroMappedModesRemainExplicit()",
+            "largeIndexFamilyAndLinearKnownSpliceListAreAudited()",
+            "pairedStrandAndDirectInputStagePreserveEveryMate()",
+            "unavailableDependencySkipsAndWrongStrandFailsEarly()",
+            "indexCorruptionAndPairMismatchFailWithoutPublishingResults()",
+            "annotatedGraphAndGzipRnaRecoverExactSpliceAndUnmappedRead()"
+          ]
+        }
+      },
+      "tests": 30,
+      "packaged_validation": "rna-alignment-counting-packaged-validation.json",
+      "packaged_steps": 18,
+      "independent_packaged_checks": 14,
+      "packaged_verifier_sha256": "f402b638187e7b69cfae52817c5e56dee7af0b228640116f76a574d21f53108e",
+      "dependency_evidence": "rna-aligner-dependency-status.json",
+      "recorded_utc": "2026-10-25T00:57:19.120198+00:00",
+      "scope": "Native annotation/union/splice/normalization/PAF checks plus typed actual upstream counting and read/assembly/RNA alignment. Windows source/binary runtime scientific fixtures passed; compiler warnings and omitted research links retained. R interfaces, complete study/downstream workflows, old versions and native Linux/macOS behavior remain separate.",
+      "refreshed_utc": "2026-10-25T09:04:26.213216+00:00"
+    },
+    {
+      "status": "passed",
+      "jar_sha256": "938e928161f850a7f23d38ced10b6ed53c15392b16f79c3d6caeab2ae8906c84",
+      "versions": {
+        "featurecounts": "2.1.1",
+        "minimap2": "2.31-r1302",
+        "hisat2": "2.2.3"
+      },
+      "source_sha256": {
+        "src/main/java/org/jlinalg/sequence/GeneFeatures.java": "d9000feb54688b504ab43079c14888eb3bf853434b9da89ea61b4ad3e4d9f4fe",
+        "src/main/java/org/jlinalg/sequence/ExpressionNormalization.java": "ac25ebbe30261748fd5d11efc69fa68b8867214d34fd81012121b920175fe485",
+        "src/main/java/org/jlinalg/cli/RnaToolRuntime.java": "aa6560e6a47c999cffe1486b04272271ae2612daf74e99058b8da5cb010f2b0b",
+        "src/main/java/org/jlinalg/cli/FeatureCountsCli.java": "db068a378929ccd8f0ed1aaef7fafa91a8e711d5572a015c8e853fdc93b26708",
+        "src/main/java/org/jlinalg/cli/MinimapToolsCli.java": "51d7c26ec183f196fb01c9c43869227b31a9e14b6d7c730d578c8b0bf3beed87",
+        "src/main/java/org/jlinalg/cli/HisatToolsCli.java": "3f21e840970e06516b99ec64ca93b53524e89c7ea022a04e66aa04da690086c3",
+        "src/main/java/org/jlinalg/sequence/PafAlignments.java": "6cde1e8581e5742353d103194bdb7c8912a0fd9e5484db7c5cb19c5f24f61356"
+      },
+      "current_full_gate_suites": {
+        "org.jlinalg.sequence.GeneFeaturesTest": {
+          "suite_name": "org.jlinalg.sequence.GeneFeaturesTest",
+          "suite": {
+            "tests": 5,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "5ee2170a99605b90d3634d037406c80bd52ad94aaca591d486459623a0742d13",
+          "testcases": [
+            "conflictingTranscriptAndMalformedReferenceRowsFail()",
+            "unionLengthDoesNotDoubleCountIsoformsOrStrandsAndSafRoundTrips()",
+            "spliceBoundariesUseExonicFlanksAndHandleNestedAndSingleBaseExons()",
+            "graphIndexExonUnionsMergeOverlapsAcrossGenesButNotGaps()",
+            "duplicateAttributesAndWrongFeatureSelectionsFail()"
+          ]
+        },
+        "org.jlinalg.sequence.ExpressionNormalizationTest": {
+          "suite_name": "org.jlinalg.sequence.ExpressionNormalizationTest",
+          "suite": {
+            "tests": 2,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "824f2d48ca60a7bc9f0e6b2ad8348bb611df8c3290c552fb2360bf4e7466fdf1",
+          "testcases": [
+            "independentlyCalculatedTpmAndLibraryNormalization()",
+            "zeroTpmDenominatorAndInvalidCountsLengthsOrLibraryFailExplicitly()"
+          ]
+        },
+        "org.jlinalg.sequence.PafAlignmentsTest": {
+          "suite_name": "org.jlinalg.sequence.PafAlignmentsTest",
+          "suite": {
+            "tests": 2,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "e554bd45c0da0e1260a5c49e0f2cb4eb136ec3a1cb7934291ac2f97eda9abf70",
+          "testcases": [
+            "inconsistentLengthsCoordinatesAndCigarsFail()",
+            "reverseIndelAndSplicedCigarGeometryUseForwardCoordinates()"
+          ]
+        },
+        "org.jlinalg.cli.FeatureCountsCliTest": {
+          "suite_name": "org.jlinalg.cli.FeatureCountsCliTest",
+          "suite": {
+            "tests": 8,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "51d5323d45325ec43b3e98ea85c03c08be26a9fb602773fd212ec256f03e5dd0",
+          "testcases": [
+            "ambiguousGenesAndMultimappingHaveExplicitFractionalPolicies()",
+            "nativeAnnotationSpliceAndNormalizationWorkWithoutUpstreamRuntime()",
+            "safPeakCountingAndStrandPoliciesAreNotGeneOnly()",
+            "rawGeneAndJunctionCountsRecoverKnownSplitReads()",
+            "pairedReadsAndFragmentsAreDifferentExplicitUnits()",
+            "multiSampleStrandColumnsAndDuplicateFilteringKeepSeparateCounts()",
+            "unavailableRuntimeSkipsWithActionAndInvalidOptionsFailEarly()",
+            "missingNhRequiresAnExplicitAssumptionAndWrongLibraryFails()"
+          ]
+        },
+        "org.jlinalg.cli.MinimapToolsCliTest": {
+          "suite_name": "org.jlinalg.cli.MinimapToolsCliTest",
+          "suite": {
+            "tests": 7,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "b662176ab3450a6593bd12088696acec06d77d40c9f2e560c07973a4fcd76029",
+          "testcases": [
+            "splicedRnaRecoversKnownJunctionWithExplicitNoncanonicalPenalty()",
+            "duplicatePafIdsFailBeforeAlignment()",
+            "hifiReadsRetainReverseBasesQualitiesAndUnmappedRecords()",
+            "assemblyPafCigarsAndBedSpansIncludeReverseAndUnmappedQueries()",
+            "missingDependencySkipsWithInstructions()",
+            "shortReadPairsAndEmptyMappingsRetainCompleteInputAudit()",
+            "multiPartIndexMergingRetainsPrimaryContentAndRejectsIncompatibleTags()"
+          ]
+        },
+        "org.jlinalg.cli.HisatToolsCliTest": {
+          "suite_name": "org.jlinalg.cli.HisatToolsCliTest",
+          "suite": {
+            "tests": 6,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "5380aac69995fd635ce94afc1d3a8abd1051bcbab1dc6522d2b7e92c5360360f",
+          "testcases": [
+            "unsplicedAndZeroMappedModesRemainExplicit()",
+            "largeIndexFamilyAndLinearKnownSpliceListAreAudited()",
+            "pairedStrandAndDirectInputStagePreserveEveryMate()",
+            "unavailableDependencySkipsAndWrongStrandFailsEarly()",
+            "indexCorruptionAndPairMismatchFailWithoutPublishingResults()",
+            "annotatedGraphAndGzipRnaRecoverExactSpliceAndUnmappedRead()"
+          ]
+        }
+      },
+      "tests": 30,
+      "packaged_validation": "rna-alignment-counting-packaged-validation.json",
+      "packaged_steps": 18,
+      "independent_packaged_checks": 14,
+      "packaged_verifier_sha256": "f402b638187e7b69cfae52817c5e56dee7af0b228640116f76a574d21f53108e",
+      "dependency_evidence": "rna-aligner-dependency-status.json",
+      "recorded_utc": "2026-10-25T00:57:19.120198+00:00",
+      "scope": "Native annotation/union/splice/normalization/PAF checks plus typed actual upstream counting and read/assembly/RNA alignment. Windows source/binary runtime scientific fixtures passed; compiler warnings and omitted research links retained. R interfaces, complete study/downstream workflows, old versions and native Linux/macOS behavior remain separate.",
+      "refreshed_utc": "2026-10-25T10:07:59.705580+00:00"
+    },
+    {
+      "status": "passed",
+      "jar_sha256": "baaacad03f35a01f7d53aba9568e0ce03a89d37f2169ab89e25628f38b8b3b44",
+      "versions": {
+        "featurecounts": "2.1.1",
+        "minimap2": "2.31-r1302",
+        "hisat2": "2.2.3"
+      },
+      "source_sha256": {
+        "src/main/java/org/jlinalg/sequence/GeneFeatures.java": "d9000feb54688b504ab43079c14888eb3bf853434b9da89ea61b4ad3e4d9f4fe",
+        "src/main/java/org/jlinalg/sequence/ExpressionNormalization.java": "ac25ebbe30261748fd5d11efc69fa68b8867214d34fd81012121b920175fe485",
+        "src/main/java/org/jlinalg/cli/RnaToolRuntime.java": "aa6560e6a47c999cffe1486b04272271ae2612daf74e99058b8da5cb010f2b0b",
+        "src/main/java/org/jlinalg/cli/FeatureCountsCli.java": "db068a378929ccd8f0ed1aaef7fafa91a8e711d5572a015c8e853fdc93b26708",
+        "src/main/java/org/jlinalg/cli/MinimapToolsCli.java": "51d7c26ec183f196fb01c9c43869227b31a9e14b6d7c730d578c8b0bf3beed87",
+        "src/main/java/org/jlinalg/cli/HisatToolsCli.java": "3f21e840970e06516b99ec64ca93b53524e89c7ea022a04e66aa04da690086c3",
+        "src/main/java/org/jlinalg/sequence/PafAlignments.java": "6cde1e8581e5742353d103194bdb7c8912a0fd9e5484db7c5cb19c5f24f61356"
+      },
+      "current_full_gate_suites": {
+        "org.jlinalg.sequence.GeneFeaturesTest": {
+          "suite_name": "org.jlinalg.sequence.GeneFeaturesTest",
+          "suite": {
+            "tests": 5,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "d758b814b16c4748ece0e9e1e143f6f82f27bce84f2e40091b347eebd68da5c5",
+          "testcases": [
+            "conflictingTranscriptAndMalformedReferenceRowsFail()",
+            "unionLengthDoesNotDoubleCountIsoformsOrStrandsAndSafRoundTrips()",
+            "spliceBoundariesUseExonicFlanksAndHandleNestedAndSingleBaseExons()",
+            "graphIndexExonUnionsMergeOverlapsAcrossGenesButNotGaps()",
+            "duplicateAttributesAndWrongFeatureSelectionsFail()"
+          ]
+        },
+        "org.jlinalg.sequence.ExpressionNormalizationTest": {
+          "suite_name": "org.jlinalg.sequence.ExpressionNormalizationTest",
+          "suite": {
+            "tests": 2,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "9de529553f6ee906c28b251ae69e56da0127ac7f51ac8c7fa8876b216622ecd5",
+          "testcases": [
+            "independentlyCalculatedTpmAndLibraryNormalization()",
+            "zeroTpmDenominatorAndInvalidCountsLengthsOrLibraryFailExplicitly()"
+          ]
+        },
+        "org.jlinalg.sequence.PafAlignmentsTest": {
+          "suite_name": "org.jlinalg.sequence.PafAlignmentsTest",
+          "suite": {
+            "tests": 2,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "16223b5865663075b83fbded4c1ecd836a0fc54526fec5a71ad22f2a5239a43b",
+          "testcases": [
+            "inconsistentLengthsCoordinatesAndCigarsFail()",
+            "reverseIndelAndSplicedCigarGeometryUseForwardCoordinates()"
+          ]
+        },
+        "org.jlinalg.cli.FeatureCountsCliTest": {
+          "suite_name": "org.jlinalg.cli.FeatureCountsCliTest",
+          "suite": {
+            "tests": 8,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "c1a6a4975373d1294729a4df7702c24875cbbd18c18d976a36a831b0ea3c931f",
+          "testcases": [
+            "ambiguousGenesAndMultimappingHaveExplicitFractionalPolicies()",
+            "nativeAnnotationSpliceAndNormalizationWorkWithoutUpstreamRuntime()",
+            "safPeakCountingAndStrandPoliciesAreNotGeneOnly()",
+            "rawGeneAndJunctionCountsRecoverKnownSplitReads()",
+            "pairedReadsAndFragmentsAreDifferentExplicitUnits()",
+            "multiSampleStrandColumnsAndDuplicateFilteringKeepSeparateCounts()",
+            "unavailableRuntimeSkipsWithActionAndInvalidOptionsFailEarly()",
+            "missingNhRequiresAnExplicitAssumptionAndWrongLibraryFails()"
+          ]
+        },
+        "org.jlinalg.cli.MinimapToolsCliTest": {
+          "suite_name": "org.jlinalg.cli.MinimapToolsCliTest",
+          "suite": {
+            "tests": 7,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "685a3a3e756e6d2895c4d483c7c226588cc6f90e2c4be1a367cbc9e86fb2c79d",
+          "testcases": [
+            "splicedRnaRecoversKnownJunctionWithExplicitNoncanonicalPenalty()",
+            "duplicatePafIdsFailBeforeAlignment()",
+            "hifiReadsRetainReverseBasesQualitiesAndUnmappedRecords()",
+            "assemblyPafCigarsAndBedSpansIncludeReverseAndUnmappedQueries()",
+            "missingDependencySkipsWithInstructions()",
+            "shortReadPairsAndEmptyMappingsRetainCompleteInputAudit()",
+            "multiPartIndexMergingRetainsPrimaryContentAndRejectsIncompatibleTags()"
+          ]
+        },
+        "org.jlinalg.cli.HisatToolsCliTest": {
+          "suite_name": "org.jlinalg.cli.HisatToolsCliTest",
+          "suite": {
+            "tests": 6,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "01fb006e6add22ec88a179219da2ab18c3a1321a833a470f901ab3cb5fa94fd5",
+          "testcases": [
+            "unsplicedAndZeroMappedModesRemainExplicit()",
+            "largeIndexFamilyAndLinearKnownSpliceListAreAudited()",
+            "pairedStrandAndDirectInputStagePreserveEveryMate()",
+            "unavailableDependencySkipsAndWrongStrandFailsEarly()",
+            "indexCorruptionAndPairMismatchFailWithoutPublishingResults()",
+            "annotatedGraphAndGzipRnaRecoverExactSpliceAndUnmappedRead()"
+          ]
+        }
+      },
+      "tests": 30,
+      "packaged_validation": "rna-alignment-counting-packaged-validation.json",
+      "packaged_steps": 18,
+      "independent_packaged_checks": 14,
+      "packaged_verifier_sha256": "f402b638187e7b69cfae52817c5e56dee7af0b228640116f76a574d21f53108e",
+      "dependency_evidence": "rna-aligner-dependency-status.json",
+      "recorded_utc": "2026-10-25T00:57:19.120198+00:00",
+      "scope": "Native annotation/union/splice/normalization/PAF checks plus typed actual upstream counting and read/assembly/RNA alignment. Windows source/binary runtime scientific fixtures passed; compiler warnings and omitted research links retained. R interfaces, complete study/downstream workflows, old versions and native Linux/macOS behavior remain separate.",
+      "refreshed_utc": "2026-10-25T11:27:56.771609+00:00"
+    },
+    {
+      "status": "passed",
+      "jar_sha256": "5680cbc4e457007f8903d1d4db3e74ecc890a150b350870f0b82d5650bdc0fec",
+      "versions": {
+        "featurecounts": "2.1.1",
+        "minimap2": "2.31-r1302",
+        "hisat2": "2.2.3"
+      },
+      "source_sha256": {
+        "src/main/java/org/jlinalg/sequence/GeneFeatures.java": "d9000feb54688b504ab43079c14888eb3bf853434b9da89ea61b4ad3e4d9f4fe",
+        "src/main/java/org/jlinalg/sequence/ExpressionNormalization.java": "ac25ebbe30261748fd5d11efc69fa68b8867214d34fd81012121b920175fe485",
+        "src/main/java/org/jlinalg/cli/RnaToolRuntime.java": "aa6560e6a47c999cffe1486b04272271ae2612daf74e99058b8da5cb010f2b0b",
+        "src/main/java/org/jlinalg/cli/FeatureCountsCli.java": "db068a378929ccd8f0ed1aaef7fafa91a8e711d5572a015c8e853fdc93b26708",
+        "src/main/java/org/jlinalg/cli/MinimapToolsCli.java": "51d7c26ec183f196fb01c9c43869227b31a9e14b6d7c730d578c8b0bf3beed87",
+        "src/main/java/org/jlinalg/cli/HisatToolsCli.java": "3f21e840970e06516b99ec64ca93b53524e89c7ea022a04e66aa04da690086c3",
+        "src/main/java/org/jlinalg/sequence/PafAlignments.java": "6cde1e8581e5742353d103194bdb7c8912a0fd9e5484db7c5cb19c5f24f61356"
+      },
+      "current_full_gate_suites": {
+        "org.jlinalg.sequence.GeneFeaturesTest": {
+          "suite_name": "org.jlinalg.sequence.GeneFeaturesTest",
+          "suite": {
+            "tests": 5,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "34f32f5ae01291128f46b14e0262040520f6b154f07e12c75f678050125ce0f4",
+          "testcases": [
+            "conflictingTranscriptAndMalformedReferenceRowsFail()",
+            "unionLengthDoesNotDoubleCountIsoformsOrStrandsAndSafRoundTrips()",
+            "spliceBoundariesUseExonicFlanksAndHandleNestedAndSingleBaseExons()",
+            "graphIndexExonUnionsMergeOverlapsAcrossGenesButNotGaps()",
+            "duplicateAttributesAndWrongFeatureSelectionsFail()"
+          ]
+        },
+        "org.jlinalg.sequence.ExpressionNormalizationTest": {
+          "suite_name": "org.jlinalg.sequence.ExpressionNormalizationTest",
+          "suite": {
+            "tests": 2,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "b599744839f77b0dad81e41fa440e8dc92fdc317a58e9612ce962fc59fadb977",
+          "testcases": [
+            "independentlyCalculatedTpmAndLibraryNormalization()",
+            "zeroTpmDenominatorAndInvalidCountsLengthsOrLibraryFailExplicitly()"
+          ]
+        },
+        "org.jlinalg.sequence.PafAlignmentsTest": {
+          "suite_name": "org.jlinalg.sequence.PafAlignmentsTest",
+          "suite": {
+            "tests": 2,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "4ecc71ccffa9afc64145efeeb903c91c47a9956cce53ca913a94ff34e4d02668",
+          "testcases": [
+            "inconsistentLengthsCoordinatesAndCigarsFail()",
+            "reverseIndelAndSplicedCigarGeometryUseForwardCoordinates()"
+          ]
+        },
+        "org.jlinalg.cli.FeatureCountsCliTest": {
+          "suite_name": "org.jlinalg.cli.FeatureCountsCliTest",
+          "suite": {
+            "tests": 8,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "58f765d36436f3c5b920810a6c838a43d7ab3c87ba08f1ceb62a64c2e3d1277f",
+          "testcases": [
+            "ambiguousGenesAndMultimappingHaveExplicitFractionalPolicies()",
+            "nativeAnnotationSpliceAndNormalizationWorkWithoutUpstreamRuntime()",
+            "safPeakCountingAndStrandPoliciesAreNotGeneOnly()",
+            "rawGeneAndJunctionCountsRecoverKnownSplitReads()",
+            "pairedReadsAndFragmentsAreDifferentExplicitUnits()",
+            "multiSampleStrandColumnsAndDuplicateFilteringKeepSeparateCounts()",
+            "unavailableRuntimeSkipsWithActionAndInvalidOptionsFailEarly()",
+            "missingNhRequiresAnExplicitAssumptionAndWrongLibraryFails()"
+          ]
+        },
+        "org.jlinalg.cli.MinimapToolsCliTest": {
+          "suite_name": "org.jlinalg.cli.MinimapToolsCliTest",
+          "suite": {
+            "tests": 7,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "affd7ee70717fd683bc4377dcc19073a6989076ac5f1d81b3acae0f9abb570bd",
+          "testcases": [
+            "splicedRnaRecoversKnownJunctionWithExplicitNoncanonicalPenalty()",
+            "duplicatePafIdsFailBeforeAlignment()",
+            "hifiReadsRetainReverseBasesQualitiesAndUnmappedRecords()",
+            "assemblyPafCigarsAndBedSpansIncludeReverseAndUnmappedQueries()",
+            "missingDependencySkipsWithInstructions()",
+            "shortReadPairsAndEmptyMappingsRetainCompleteInputAudit()",
+            "multiPartIndexMergingRetainsPrimaryContentAndRejectsIncompatibleTags()"
+          ]
+        },
+        "org.jlinalg.cli.HisatToolsCliTest": {
+          "suite_name": "org.jlinalg.cli.HisatToolsCliTest",
+          "suite": {
+            "tests": 6,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "3311366b7c7a8861a8e73037073f6b50e920261a7e674664dc83163e0b7f7424",
+          "testcases": [
+            "unsplicedAndZeroMappedModesRemainExplicit()",
+            "largeIndexFamilyAndLinearKnownSpliceListAreAudited()",
+            "pairedStrandAndDirectInputStagePreserveEveryMate()",
+            "unavailableDependencySkipsAndWrongStrandFailsEarly()",
+            "indexCorruptionAndPairMismatchFailWithoutPublishingResults()",
+            "annotatedGraphAndGzipRnaRecoverExactSpliceAndUnmappedRead()"
+          ]
+        }
+      },
+      "tests": 30,
+      "packaged_validation": "rna-alignment-counting-packaged-validation.json",
+      "packaged_steps": 18,
+      "independent_packaged_checks": 14,
+      "packaged_verifier_sha256": "f402b638187e7b69cfae52817c5e56dee7af0b228640116f76a574d21f53108e",
+      "dependency_evidence": "rna-aligner-dependency-status.json",
+      "recorded_utc": "2026-10-25T00:57:19.120198+00:00",
+      "scope": "Native annotation/union/splice/normalization/PAF checks plus typed actual upstream counting and read/assembly/RNA alignment. Windows source/binary runtime scientific fixtures passed; compiler warnings and omitted research links retained. R interfaces, complete study/downstream workflows, old versions and native Linux/macOS behavior remain separate.",
+      "refreshed_utc": "2026-10-25T14:18:39.170849+00:00"
+    },
+    {
+      "status": "passed",
+      "jar_sha256": "c7e5fc6412ef02a82e409b43f344bff506f873ff5ebea92bc055d498ebda8dae",
+      "versions": {
+        "featurecounts": "2.1.1",
+        "minimap2": "2.31-r1302",
+        "hisat2": "2.2.3"
+      },
+      "source_sha256": {
+        "src/main/java/org/jlinalg/sequence/GeneFeatures.java": "d9000feb54688b504ab43079c14888eb3bf853434b9da89ea61b4ad3e4d9f4fe",
+        "src/main/java/org/jlinalg/sequence/ExpressionNormalization.java": "ac25ebbe30261748fd5d11efc69fa68b8867214d34fd81012121b920175fe485",
+        "src/main/java/org/jlinalg/cli/RnaToolRuntime.java": "aa6560e6a47c999cffe1486b04272271ae2612daf74e99058b8da5cb010f2b0b",
+        "src/main/java/org/jlinalg/cli/FeatureCountsCli.java": "db068a378929ccd8f0ed1aaef7fafa91a8e711d5572a015c8e853fdc93b26708",
+        "src/main/java/org/jlinalg/cli/MinimapToolsCli.java": "51d7c26ec183f196fb01c9c43869227b31a9e14b6d7c730d578c8b0bf3beed87",
+        "src/main/java/org/jlinalg/cli/HisatToolsCli.java": "3f21e840970e06516b99ec64ca93b53524e89c7ea022a04e66aa04da690086c3",
+        "src/main/java/org/jlinalg/sequence/PafAlignments.java": "6cde1e8581e5742353d103194bdb7c8912a0fd9e5484db7c5cb19c5f24f61356"
+      },
+      "current_full_gate_suites": {
+        "org.jlinalg.sequence.GeneFeaturesTest": {
+          "suite_name": "org.jlinalg.sequence.GeneFeaturesTest",
+          "suite": {
+            "tests": 5,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "6a91f63d41d18ffc85ce10a7e5ffc4bca32336850f08f04be58b4cdb2c580b01",
+          "testcases": [
+            "conflictingTranscriptAndMalformedReferenceRowsFail()",
+            "unionLengthDoesNotDoubleCountIsoformsOrStrandsAndSafRoundTrips()",
+            "spliceBoundariesUseExonicFlanksAndHandleNestedAndSingleBaseExons()",
+            "graphIndexExonUnionsMergeOverlapsAcrossGenesButNotGaps()",
+            "duplicateAttributesAndWrongFeatureSelectionsFail()"
+          ]
+        },
+        "org.jlinalg.sequence.ExpressionNormalizationTest": {
+          "suite_name": "org.jlinalg.sequence.ExpressionNormalizationTest",
+          "suite": {
+            "tests": 2,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "f8a3ffbb4f91630624e91c1e553b4ed9937f04e528ff45193bb9c73a7936575a",
+          "testcases": [
+            "independentlyCalculatedTpmAndLibraryNormalization()",
+            "zeroTpmDenominatorAndInvalidCountsLengthsOrLibraryFailExplicitly()"
+          ]
+        },
+        "org.jlinalg.sequence.PafAlignmentsTest": {
+          "suite_name": "org.jlinalg.sequence.PafAlignmentsTest",
+          "suite": {
+            "tests": 2,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "d820638fa456766d6ba93a1184a3332ac02f01726033a0b585bbaa8714cd19d6",
+          "testcases": [
+            "inconsistentLengthsCoordinatesAndCigarsFail()",
+            "reverseIndelAndSplicedCigarGeometryUseForwardCoordinates()"
+          ]
+        },
+        "org.jlinalg.cli.FeatureCountsCliTest": {
+          "suite_name": "org.jlinalg.cli.FeatureCountsCliTest",
+          "suite": {
+            "tests": 8,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "ae867d46a12220a63860a24796a286b7ef39b328367733e02ab69c26fc0b7a57",
+          "testcases": [
+            "ambiguousGenesAndMultimappingHaveExplicitFractionalPolicies()",
+            "nativeAnnotationSpliceAndNormalizationWorkWithoutUpstreamRuntime()",
+            "safPeakCountingAndStrandPoliciesAreNotGeneOnly()",
+            "rawGeneAndJunctionCountsRecoverKnownSplitReads()",
+            "pairedReadsAndFragmentsAreDifferentExplicitUnits()",
+            "multiSampleStrandColumnsAndDuplicateFilteringKeepSeparateCounts()",
+            "unavailableRuntimeSkipsWithActionAndInvalidOptionsFailEarly()",
+            "missingNhRequiresAnExplicitAssumptionAndWrongLibraryFails()"
+          ]
+        },
+        "org.jlinalg.cli.MinimapToolsCliTest": {
+          "suite_name": "org.jlinalg.cli.MinimapToolsCliTest",
+          "suite": {
+            "tests": 7,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "d7db735b5dc3be820e67aea3a58f018f932a335ab94996d27a704614f5b32843",
+          "testcases": [
+            "splicedRnaRecoversKnownJunctionWithExplicitNoncanonicalPenalty()",
+            "duplicatePafIdsFailBeforeAlignment()",
+            "hifiReadsRetainReverseBasesQualitiesAndUnmappedRecords()",
+            "assemblyPafCigarsAndBedSpansIncludeReverseAndUnmappedQueries()",
+            "missingDependencySkipsWithInstructions()",
+            "shortReadPairsAndEmptyMappingsRetainCompleteInputAudit()",
+            "multiPartIndexMergingRetainsPrimaryContentAndRejectsIncompatibleTags()"
+          ]
+        },
+        "org.jlinalg.cli.HisatToolsCliTest": {
+          "suite_name": "org.jlinalg.cli.HisatToolsCliTest",
+          "suite": {
+            "tests": 6,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "df1d9f3fedae911bd901c6dca9fd74eaf20e82005b6b77f3ea97b56a6c509052",
+          "testcases": [
+            "unsplicedAndZeroMappedModesRemainExplicit()",
+            "largeIndexFamilyAndLinearKnownSpliceListAreAudited()",
+            "pairedStrandAndDirectInputStagePreserveEveryMate()",
+            "unavailableDependencySkipsAndWrongStrandFailsEarly()",
+            "indexCorruptionAndPairMismatchFailWithoutPublishingResults()",
+            "annotatedGraphAndGzipRnaRecoverExactSpliceAndUnmappedRead()"
+          ]
+        }
+      },
+      "tests": 30,
+      "packaged_validation": "rna-alignment-counting-packaged-validation.json",
+      "packaged_steps": 18,
+      "independent_packaged_checks": 14,
+      "packaged_verifier_sha256": "f402b638187e7b69cfae52817c5e56dee7af0b228640116f76a574d21f53108e",
+      "dependency_evidence": "rna-aligner-dependency-status.json",
+      "recorded_utc": "2026-10-25T00:57:19.120198+00:00",
+      "scope": "Native annotation/union/splice/normalization/PAF checks plus typed actual upstream counting and read/assembly/RNA alignment. Windows source/binary runtime scientific fixtures passed; compiler warnings and omitted research links retained. R interfaces, complete study/downstream workflows, old versions and native Linux/macOS behavior remain separate.",
+      "refreshed_utc": "2026-10-25T18:28:13.412726+00:00",
+      "current_validation": {
+        "full_gate": {
+          "tests": 1486,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 5
+        },
+        "required_suites": 59,
+        "all_required_without_skips": true,
+        "raw_snapshot": "D:\\projects\\JLinAlg\\build\\literature-review\\trimgalore-runtime\\original-warning-full-gate-snapshot",
+        "prior_packaged_regressions": "D:\\projects\\JLinAlg\\build\\literature-review\\trim-galore-warning-packaged-regressions\\verification.json",
+        "scope": "Current unchanged owned method sources retested on this JAR. Historical reference-generation counts/options remain scoped to their original fixtures;prior reports remain in validation_history."
+      }
+    },
+    {
+      "status": "passed",
+      "jar_sha256": "2bfb8abfea10e53ce7b0e1035b0a7954feb9bed990d63578e817882a6d0541c0",
+      "versions": {
+        "featurecounts": "2.1.1",
+        "minimap2": "2.31-r1302",
+        "hisat2": "2.2.3"
+      },
+      "source_sha256": {
+        "src/main/java/org/jlinalg/sequence/GeneFeatures.java": "d9000feb54688b504ab43079c14888eb3bf853434b9da89ea61b4ad3e4d9f4fe",
+        "src/main/java/org/jlinalg/sequence/ExpressionNormalization.java": "ac25ebbe30261748fd5d11efc69fa68b8867214d34fd81012121b920175fe485",
+        "src/main/java/org/jlinalg/cli/RnaToolRuntime.java": "aa6560e6a47c999cffe1486b04272271ae2612daf74e99058b8da5cb010f2b0b",
+        "src/main/java/org/jlinalg/cli/FeatureCountsCli.java": "db068a378929ccd8f0ed1aaef7fafa91a8e711d5572a015c8e853fdc93b26708",
+        "src/main/java/org/jlinalg/cli/MinimapToolsCli.java": "51d7c26ec183f196fb01c9c43869227b31a9e14b6d7c730d578c8b0bf3beed87",
+        "src/main/java/org/jlinalg/cli/HisatToolsCli.java": "3f21e840970e06516b99ec64ca93b53524e89c7ea022a04e66aa04da690086c3",
+        "src/main/java/org/jlinalg/sequence/PafAlignments.java": "6cde1e8581e5742353d103194bdb7c8912a0fd9e5484db7c5cb19c5f24f61356"
+      },
+      "current_full_gate_suites": {
+        "org.jlinalg.sequence.GeneFeaturesTest": {
+          "suite_name": "org.jlinalg.sequence.GeneFeaturesTest",
+          "suite": {
+            "tests": 5,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "a4eec9b669cbd8cc44e840e5cdcc7f8d262f8faec8543c8a377701ceca6cb772",
+          "testcases": [
+            "conflictingTranscriptAndMalformedReferenceRowsFail()",
+            "unionLengthDoesNotDoubleCountIsoformsOrStrandsAndSafRoundTrips()",
+            "spliceBoundariesUseExonicFlanksAndHandleNestedAndSingleBaseExons()",
+            "graphIndexExonUnionsMergeOverlapsAcrossGenesButNotGaps()",
+            "duplicateAttributesAndWrongFeatureSelectionsFail()"
+          ]
+        },
+        "org.jlinalg.sequence.ExpressionNormalizationTest": {
+          "suite_name": "org.jlinalg.sequence.ExpressionNormalizationTest",
+          "suite": {
+            "tests": 2,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "b2a7b3a06bed61c83630136aed527c1b7f22df2b5f155907e249660992b5ae2d",
+          "testcases": [
+            "independentlyCalculatedTpmAndLibraryNormalization()",
+            "zeroTpmDenominatorAndInvalidCountsLengthsOrLibraryFailExplicitly()"
+          ]
+        },
+        "org.jlinalg.sequence.PafAlignmentsTest": {
+          "suite_name": "org.jlinalg.sequence.PafAlignmentsTest",
+          "suite": {
+            "tests": 2,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "c6742b2a9375ed426e567679a4186f12b9f80a98cbb602507d0b07f7afb7312b",
+          "testcases": [
+            "inconsistentLengthsCoordinatesAndCigarsFail()",
+            "reverseIndelAndSplicedCigarGeometryUseForwardCoordinates()"
+          ]
+        },
+        "org.jlinalg.cli.FeatureCountsCliTest": {
+          "suite_name": "org.jlinalg.cli.FeatureCountsCliTest",
+          "suite": {
+            "tests": 8,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "91a0a2b45a68498313d826e42b45790aab4133cceaaea5023194327efee5e505",
+          "testcases": [
+            "ambiguousGenesAndMultimappingHaveExplicitFractionalPolicies()",
+            "nativeAnnotationSpliceAndNormalizationWorkWithoutUpstreamRuntime()",
+            "safPeakCountingAndStrandPoliciesAreNotGeneOnly()",
+            "rawGeneAndJunctionCountsRecoverKnownSplitReads()",
+            "pairedReadsAndFragmentsAreDifferentExplicitUnits()",
+            "multiSampleStrandColumnsAndDuplicateFilteringKeepSeparateCounts()",
+            "unavailableRuntimeSkipsWithActionAndInvalidOptionsFailEarly()",
+            "missingNhRequiresAnExplicitAssumptionAndWrongLibraryFails()"
+          ]
+        },
+        "org.jlinalg.cli.MinimapToolsCliTest": {
+          "suite_name": "org.jlinalg.cli.MinimapToolsCliTest",
+          "suite": {
+            "tests": 7,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "4b4881bfe94df5f41290e2860ddd00ada8f23dd01a2d2757d40303739200fc72",
+          "testcases": [
+            "splicedRnaRecoversKnownJunctionWithExplicitNoncanonicalPenalty()",
+            "duplicatePafIdsFailBeforeAlignment()",
+            "hifiReadsRetainReverseBasesQualitiesAndUnmappedRecords()",
+            "assemblyPafCigarsAndBedSpansIncludeReverseAndUnmappedQueries()",
+            "missingDependencySkipsWithInstructions()",
+            "shortReadPairsAndEmptyMappingsRetainCompleteInputAudit()",
+            "multiPartIndexMergingRetainsPrimaryContentAndRejectsIncompatibleTags()"
+          ]
+        },
+        "org.jlinalg.cli.HisatToolsCliTest": {
+          "suite_name": "org.jlinalg.cli.HisatToolsCliTest",
+          "suite": {
+            "tests": 6,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "058e8fb9ca1c5be1265f79a5eeb84d72b85f31a772acfd226106e358b98ab797",
+          "testcases": [
+            "unsplicedAndZeroMappedModesRemainExplicit()",
+            "largeIndexFamilyAndLinearKnownSpliceListAreAudited()",
+            "pairedStrandAndDirectInputStagePreserveEveryMate()",
+            "unavailableDependencySkipsAndWrongStrandFailsEarly()",
+            "indexCorruptionAndPairMismatchFailWithoutPublishingResults()",
+            "annotatedGraphAndGzipRnaRecoverExactSpliceAndUnmappedRead()"
+          ]
+        }
+      },
+      "tests": 30,
+      "packaged_validation": "rna-alignment-counting-packaged-validation.json",
+      "packaged_steps": 18,
+      "independent_packaged_checks": 14,
+      "packaged_verifier_sha256": "f402b638187e7b69cfae52817c5e56dee7af0b228640116f76a574d21f53108e",
+      "dependency_evidence": "rna-aligner-dependency-status.json",
+      "recorded_utc": "2026-10-25T00:57:19.120198+00:00",
+      "scope": "Native annotation/union/splice/normalization/PAF checks plus typed actual upstream counting and read/assembly/RNA alignment. Windows source/binary runtime scientific fixtures passed; compiler warnings and omitted research links retained. R interfaces, complete study/downstream workflows, old versions and native Linux/macOS behavior remain separate.",
+      "refreshed_utc": "2026-10-25T20:32:57.454823+00:00",
+      "current_validation": {
+        "full_gate": {
+          "tests": 1504,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 5
+        },
+        "required_suites": 61,
+        "all_required_without_skips": true,
+        "raw_snapshot": "D:\\projects\\JLinAlg\\build\\literature-review\\flash-runtime\\full-gate-2-snapshot",
+        "prior_packaged_regressions": "D:\\projects\\JLinAlg\\build\\literature-review\\flash-packaged-regressions\\verification.json",
+        "scope": "Current unchanged owned method sources retested on this JAR. Historical reference-generation counts/options remain scoped to their original fixtures;prior reports remain in validation_history."
+      }
+    },
+    {
+      "status": "passed",
+      "jar_sha256": "66be181d854806d9ae64d6f060e8defba8af5bdf594d3d352c9c76097a2a8d2e",
+      "versions": {
+        "featurecounts": "2.1.1",
+        "minimap2": "2.31-r1302",
+        "hisat2": "2.2.3"
+      },
+      "source_sha256": {
+        "src/main/java/org/jlinalg/sequence/GeneFeatures.java": "d9000feb54688b504ab43079c14888eb3bf853434b9da89ea61b4ad3e4d9f4fe",
+        "src/main/java/org/jlinalg/sequence/ExpressionNormalization.java": "ac25ebbe30261748fd5d11efc69fa68b8867214d34fd81012121b920175fe485",
+        "src/main/java/org/jlinalg/cli/RnaToolRuntime.java": "aa6560e6a47c999cffe1486b04272271ae2612daf74e99058b8da5cb010f2b0b",
+        "src/main/java/org/jlinalg/cli/FeatureCountsCli.java": "db068a378929ccd8f0ed1aaef7fafa91a8e711d5572a015c8e853fdc93b26708",
+        "src/main/java/org/jlinalg/cli/MinimapToolsCli.java": "51d7c26ec183f196fb01c9c43869227b31a9e14b6d7c730d578c8b0bf3beed87",
+        "src/main/java/org/jlinalg/cli/HisatToolsCli.java": "3f21e840970e06516b99ec64ca93b53524e89c7ea022a04e66aa04da690086c3",
+        "src/main/java/org/jlinalg/sequence/PafAlignments.java": "6cde1e8581e5742353d103194bdb7c8912a0fd9e5484db7c5cb19c5f24f61356"
+      },
+      "current_full_gate_suites": {
+        "org.jlinalg.sequence.GeneFeaturesTest": {
+          "suite_name": "org.jlinalg.sequence.GeneFeaturesTest",
+          "suite": {
+            "tests": 5,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "acf86ce2c06ff7d7ac681d429684890c6292cc6e2bd058e9792313741c3039ae",
+          "testcases": [
+            "conflictingTranscriptAndMalformedReferenceRowsFail()",
+            "unionLengthDoesNotDoubleCountIsoformsOrStrandsAndSafRoundTrips()",
+            "spliceBoundariesUseExonicFlanksAndHandleNestedAndSingleBaseExons()",
+            "graphIndexExonUnionsMergeOverlapsAcrossGenesButNotGaps()",
+            "duplicateAttributesAndWrongFeatureSelectionsFail()"
+          ]
+        },
+        "org.jlinalg.sequence.ExpressionNormalizationTest": {
+          "suite_name": "org.jlinalg.sequence.ExpressionNormalizationTest",
+          "suite": {
+            "tests": 2,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "ad7654d98c52903e15ebae5aa996fb2c6fa42f724fa83adee09305be2d59b036",
+          "testcases": [
+            "independentlyCalculatedTpmAndLibraryNormalization()",
+            "zeroTpmDenominatorAndInvalidCountsLengthsOrLibraryFailExplicitly()"
+          ]
+        },
+        "org.jlinalg.sequence.PafAlignmentsTest": {
+          "suite_name": "org.jlinalg.sequence.PafAlignmentsTest",
+          "suite": {
+            "tests": 2,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "431b4f3075eda70987aab89365999c1c877548eb9158338db473d65452f1617f",
+          "testcases": [
+            "inconsistentLengthsCoordinatesAndCigarsFail()",
+            "reverseIndelAndSplicedCigarGeometryUseForwardCoordinates()"
+          ]
+        },
+        "org.jlinalg.cli.FeatureCountsCliTest": {
+          "suite_name": "org.jlinalg.cli.FeatureCountsCliTest",
+          "suite": {
+            "tests": 8,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "e8da79beea15fe317f47aaa1cbd1ff7159ba57306f93de8d550343404eb81355",
+          "testcases": [
+            "ambiguousGenesAndMultimappingHaveExplicitFractionalPolicies()",
+            "nativeAnnotationSpliceAndNormalizationWorkWithoutUpstreamRuntime()",
+            "safPeakCountingAndStrandPoliciesAreNotGeneOnly()",
+            "rawGeneAndJunctionCountsRecoverKnownSplitReads()",
+            "pairedReadsAndFragmentsAreDifferentExplicitUnits()",
+            "multiSampleStrandColumnsAndDuplicateFilteringKeepSeparateCounts()",
+            "unavailableRuntimeSkipsWithActionAndInvalidOptionsFailEarly()",
+            "missingNhRequiresAnExplicitAssumptionAndWrongLibraryFails()"
+          ]
+        },
+        "org.jlinalg.cli.MinimapToolsCliTest": {
+          "suite_name": "org.jlinalg.cli.MinimapToolsCliTest",
+          "suite": {
+            "tests": 7,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "c3dadf2f80ca418de0a5518cfbce0b3a5e23fce97c5240183f1ba6b08018aea8",
+          "testcases": [
+            "splicedRnaRecoversKnownJunctionWithExplicitNoncanonicalPenalty()",
+            "duplicatePafIdsFailBeforeAlignment()",
+            "hifiReadsRetainReverseBasesQualitiesAndUnmappedRecords()",
+            "assemblyPafCigarsAndBedSpansIncludeReverseAndUnmappedQueries()",
+            "missingDependencySkipsWithInstructions()",
+            "shortReadPairsAndEmptyMappingsRetainCompleteInputAudit()",
+            "multiPartIndexMergingRetainsPrimaryContentAndRejectsIncompatibleTags()"
+          ]
+        },
+        "org.jlinalg.cli.HisatToolsCliTest": {
+          "suite_name": "org.jlinalg.cli.HisatToolsCliTest",
+          "suite": {
+            "tests": 6,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "147db7974c4c3cbff448edc1acf6dd6e9592555541caddaa3d3ead15b5c98bd5",
+          "testcases": [
+            "unsplicedAndZeroMappedModesRemainExplicit()",
+            "largeIndexFamilyAndLinearKnownSpliceListAreAudited()",
+            "pairedStrandAndDirectInputStagePreserveEveryMate()",
+            "unavailableDependencySkipsAndWrongStrandFailsEarly()",
+            "indexCorruptionAndPairMismatchFailWithoutPublishingResults()",
+            "annotatedGraphAndGzipRnaRecoverExactSpliceAndUnmappedRead()"
+          ]
+        }
+      },
+      "tests": 30,
+      "packaged_validation": "rna-alignment-counting-packaged-validation.json",
+      "packaged_steps": 18,
+      "independent_packaged_checks": 14,
+      "packaged_verifier_sha256": "f402b638187e7b69cfae52817c5e56dee7af0b228640116f76a574d21f53108e",
+      "dependency_evidence": "rna-aligner-dependency-status.json",
+      "recorded_utc": "2026-10-25T00:57:19.120198+00:00",
+      "scope": "Native annotation/union/splice/normalization/PAF checks plus typed actual upstream counting and read/assembly/RNA alignment. Windows source/binary runtime scientific fixtures passed; compiler warnings and omitted research links retained. R interfaces, complete study/downstream workflows, old versions and native Linux/macOS behavior remain separate.",
+      "refreshed_utc": "2026-10-25T23:24:57.944602+00:00",
+      "current_validation": {
+        "full_gate": {
+          "tests": 1552,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 5
+        },
+        "required_suites": 68,
+        "all_required_without_skips": true,
+        "raw_snapshot": "D:\\projects\\JLinAlg\\build\\literature-review\\fimo-runtime\\configured-full-gate-1",
+        "prior_packaged_regressions": "D:\\projects\\JLinAlg\\build\\literature-review\\fimo-runtime\\prior-packaged-regressions-1\\verification.json",
+        "scope": "Current unchanged owned method sources retested on this JAR. Historical reference-generation counts/options remain scoped to their original fixtures;prior reports remain in validation_history."
+      }
+    }
+  ]
+}

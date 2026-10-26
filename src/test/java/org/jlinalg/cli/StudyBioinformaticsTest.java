@@ -99,6 +99,7 @@ class StudyBioinformaticsTest {
         Context context = context("literature_search", Map.of());
         Path annotation = context.dependencyDirectories().get("harmonize").resolve("feature-annotation.tsv");
         Files.writeString(annotation, Files.readString(annotation).replace("located", "ambiguous"));
+        StudyTestSources.seal(annotation.getParent(), "validate_harmonize", "harmonize", "h1");
         List<String> queries = new ArrayList<>();
         var result = new StudyBioinformatics(new StudyPublicEvidence(uri -> {
             queries.add(java.net.URLDecoder.decode(uri.getQuery(), java.nio.charset.StandardCharsets.UTF_8));
@@ -273,6 +274,7 @@ class StudyBioinformaticsTest {
         assertEquals(1e-7, features.get(0).fdr(), 1e-15);
         Path annotation = context.dependencyDirectories().get("harmonize").resolve("feature-annotation.tsv");
         Files.writeString(annotation, Files.readString(annotation).replace("located", "ambiguous"));
+        StudyTestSources.seal(annotation.getParent(), "validate_harmonize", "harmonize", "h1");
         assertTrue(StudyBioinformatics.features(context).isEmpty());
     }
 
@@ -283,6 +285,72 @@ class StudyBioinformaticsTest {
         assertEquals(10, StudyBioinformatics.featureLimit(context));
         assertEquals(1000, StudyBioinformatics.mrFeatureLimit(context));
         assertEquals(1000, StudyBioinformatics.geneticFeatureLimit(context));
+    }
+
+    @Test void literatureDefaultsToOneHundredSignalsAndRetainsTheUncappedEligibleInventory() throws Exception {
+        Context context = context("literature_search", Map.of()); significantFeatures(context, 125);
+        Path annotation = context.dependencyDirectories().get("harmonize").resolve("feature-annotation.tsv");
+        List<String> lines = new ArrayList<>(Files.readAllLines(annotation));
+        for (int i = 1; i < lines.size(); i++) lines.set(i, lines.get(i).replace("\tTEST\t", "\tTEST" + i + "\t"));
+        Files.write(annotation, lines);
+        StudyTestSources.seal(annotation.getParent(), "validate_harmonize", "harmonize", "h1");
+        AtomicInteger requests = new AtomicInteger();
+        var result = new StudyBioinformatics(new StudyPublicEvidence(uri -> {
+            requests.incrementAndGet();
+            return new StudyPublicEvidence.Reply(200, "{\"hitCount\":0,\"resultList\":{\"result\":[]}}");
+        })).execute(context);
+        assertEquals(State.COMPLETE, result.state());
+        assertEquals(100, result.details().get("feature_limit"));
+        assertEquals(100, ((List<?>) result.details().get("features_selected")).size());
+        assertTrue(requests.get() > 200 && requests.get() <= 1000, "Every selected signal needs direct, mechanism and counterevidence queries");
+        var inventory = DelimitedData.readResult(context.outputDirectory().resolve("literature-selection.tsv"));
+        assertEquals(125, inventory.rows().size());
+        assertEquals(100, inventory.rows().stream().filter(row -> row[inventory.column("selected_for_review")].equals("true")).count());
+        assertEquals(25, inventory.rows().stream().filter(row -> row[inventory.column("retrieval_status")].equals("outside_review_budget")).count());
+        assertTrue(inventory.rows().stream().limit(100).allMatch(row -> row[inventory.column("appraisal_status")].equals("scientific_appraisal_pending")));
+        assertEquals(1000, StudyYaml.loadArtifact(context.outputDirectory().resolve("queries/0001/request.yaml")).get("query_budget"));
+        assertEquals(10, StudyBioinformatics.featureLimit(context));
+    }
+
+    @Test void literaturePreservesLegacyCapsAndRecordsIncompleteSearchesAtAnExplicitBudget() throws Exception {
+        Context context = context("literature_search", Map.of("hypotheses", List.of(Map.of("id", "h1", "outcome", "body mass index", "analysis",
+            Map.of("bioinformatics", Map.of("max_features", 2, "literature_max_features", 4, "literature_max_queries", 4))))));
+        significantFeatures(context, 7); AtomicInteger requests = new AtomicInteger();
+        var result = new StudyBioinformatics(new StudyPublicEvidence(uri -> {
+            requests.incrementAndGet(); return new StudyPublicEvidence.Reply(200, "{\"hitCount\":0,\"resultList\":{\"result\":[]}}");
+        })).execute(context);
+        assertEquals(State.WAITING_FOR_INPUT, result.state());
+        assertTrue(requests.get() <= 4);
+        assertEquals(2, StudyBioinformatics.featureLimit(context));
+        assertEquals(4, StudyBioinformatics.literatureFeatureLimit(context));
+        var inventory = DelimitedData.readResult(context.outputDirectory().resolve("literature-selection.tsv"));
+        assertEquals(7, inventory.rows().size());
+        assertEquals(4, inventory.rows().stream().filter(row -> row[inventory.column("retrieval_status")].equals("retrieval_incomplete")).count());
+        Context legacy = context("literature_search", Map.of("hypotheses", List.of(Map.of("id", "h1", "analysis", Map.of("bioinformatics", Map.of("max_features", 2))))));
+        assertEquals(2, StudyBioinformatics.literatureFeatureLimit(legacy));
+    }
+
+    @Test void literatureUsesStrictFdrOnTheCompletePooledFamilyBeforeApplyingItsCap() throws Exception {
+        Context base = context("literature_search", Map.of());
+        Path meta = Files.createTempDirectory(project, "literature-meta-");
+        Files.writeString(meta.resolve("manifest.yaml"), "operation_type: meta_analysis\nstate: complete\n");
+        String background = java.util.stream.IntStream.range(0,99).mapToObj(i -> "background-"+i+"\tpooled\tok\t0.5\n").collect(java.util.stream.Collectors.joining());
+        Path results = meta.resolve("meta-analysis.tsv");
+        Files.writeString(results, "feature_id\tterm\tstatus\tp_value\nbest\tpooled\tok\t0.0004\nbest\tcohort\tok\t0.9\n" + background);
+        StudyTestSources.seal(meta, "meta_analysis", "meta", "h1");
+        var dependencies = new LinkedHashMap<>(base.dependencyDirectories()); dependencies.put("meta", meta);
+        Context context = new Context(base.project(), base.outputDirectory(), base.operation(), base.study(), base.plan(), dependencies);
+        var result = new StudyBioinformatics(new StudyPublicEvidence(uri -> new StudyPublicEvidence.Reply(200, "{\"hitCount\":0,\"resultList\":{\"result\":[]}}"))).execute(context);
+        var inventory = DelimitedData.readResult(context.outputDirectory().resolve("literature-selection.tsv"));
+        assertEquals(1, inventory.rows().size());
+        assertEquals(.04, Double.parseDouble(inventory.rows().get(0)[inventory.column("FDR")]), 1e-12);
+        assertEquals(1, ((List<?>) result.details().get("features_selected")).size());
+        Files.writeString(results, Files.readString(results).replace("0.0004", "0.0005"));
+        StudyTestSources.seal(meta, "meta_analysis", "meta", "h1");
+        Path strictOutput = Files.createTempDirectory(project, "strict-output-");
+        Context strict = new Context(base.project(), strictOutput, base.operation(), base.study(), base.plan(), dependencies);
+        new StudyBioinformatics(new StudyPublicEvidence(uri -> new StudyPublicEvidence.Reply(200, "{\"hitCount\":0,\"resultList\":{\"result\":[]}}"))).execute(strict);
+        assertTrue(DelimitedData.readResult(strictOutput.resolve("literature-selection.tsv")).rows().isEmpty(), "FDR exactly .05 is not strictly below .05");
     }
 
     @Test void mrDefaultIncludesAllSignificantTranscriptsProteinsAndProbesBeyondOldLimits() throws Exception {
@@ -312,6 +380,7 @@ class StudyBioinformaticsTest {
         Path primary = context.dependencyDirectories().get("harmonize").resolve("standard-results/d1.tsv");
         Files.writeString(primary, "feature_id\tp_value\ntranscript-00000\t0.04\n" +
             java.util.stream.IntStream.range(0,99).mapToObj(i -> "background-"+i+"\t0.5\n").collect(java.util.stream.Collectors.joining()));
+        StudyTestSources.seal(primary.getParent().getParent(), "validate_harmonize", "harmonize", "h1"); context = freshAttempt(context);
         assertTrue(StudyBioinformatics.mrFeatures(context).isEmpty(), "BH must not be recomputed within the capped or annotated subset");
     }
 
@@ -319,13 +388,16 @@ class StudyBioinformaticsTest {
         Context context = context("mendelian_randomization", Map.of());
         Path primary = context.dependencyDirectories().get("harmonize").resolve("standard-results/d1.tsv");
         Files.writeString(primary, "feature_id\tp_value\nbest\t0.05\n");
+        StudyTestSources.seal(primary.getParent().getParent(), "validate_harmonize", "harmonize", "h1"); context = freshAttempt(context);
         assertTrue(StudyBioinformatics.mrFeatures(context).isEmpty());
         assertEquals(1, StudyBioinformatics.features(context).size(), "Contextual boundary behavior remains unchanged");
         Files.writeString(primary, "feature_id\tp_value\nbest\t0.049\n");
+        StudyTestSources.seal(primary.getParent().getParent(), "validate_harmonize", "harmonize", "h1"); context = freshAttempt(context);
         assertEquals(1, StudyBioinformatics.mrFeatures(context).size());
         Context custom = context("mendelian_randomization", Map.of("hypotheses", List.of(Map.of("id", "h1", "analysis", Map.of("bioinformatics", Map.of("fdr", .1))))));
         Path customPrimary = custom.dependencyDirectories().get("harmonize").resolve("standard-results/d1.tsv");
         Files.writeString(customPrimary, Files.readString(customPrimary).replace("1e-9", "0.0008"));
+        StudyTestSources.seal(customPrimary.getParent().getParent(), "validate_harmonize", "harmonize", "h1");
         assertEquals(.08, StudyBioinformatics.mrFeatures(custom).get(0).fdr(), 1e-12);
         assertEquals(.1, StudyBioinformatics.mrFeatureSelection(custom).get("fdr_threshold"));
     }
@@ -336,20 +408,22 @@ class StudyBioinformaticsTest {
         Files.writeString(meta.resolve("manifest.yaml"), "operation_type: meta_analysis\nstate: complete\n");
         String background = java.util.stream.IntStream.range(0,99).mapToObj(i -> "background-"+i+"\tpooled\tok\t0.5\n").collect(java.util.stream.Collectors.joining());
         Files.writeString(meta.resolve("meta-analysis.tsv"), "feature_id\tterm\tstatus\tp_value\nbest\tpooled\tok\t0.0004\nbest\tcohort\tok\t0.9\n"+background);
+        StudyTestSources.seal(meta, "meta_analysis", "meta", "h1");
         var dependencies = new LinkedHashMap<>(base.dependencyDirectories()); dependencies.put("meta", meta);
         Context context = new Context(base.project(),base.outputDirectory(),base.operation(),base.study(),base.plan(),dependencies);
         assertEquals(.04, StudyBioinformatics.mrFeatures(context).get(0).fdr(), 1e-12);
         Files.writeString(meta.resolve("meta-analysis.tsv"), Files.readString(meta.resolve("meta-analysis.tsv")).replace("0.0004", "0.0008"));
+        StudyTestSources.seal(meta, "meta_analysis", "meta", "h1"); context = freshAttempt(context);
         assertTrue(StudyBioinformatics.mrFeatures(context).isEmpty());
     }
 
-    @Test void qtlReviewExpandsForDeclaredOrPlannedMrButNotColocalizationAlone() throws Exception {
+    @Test void qtlReviewExpandsForDeclaredOrPlannedGeneticEvidenceWithoutTheContextualCap() throws Exception {
         Context base = context("irqtl_candidate_review", Map.of()); significantFeatures(base,30);
         assertEquals(10, StudyBioinformatics.geneticFeatures(base).size());
         for (String goal : List.of("mendelian_randomization", "colocalization")) {
             Context planned = new Context(base.project(),base.outputDirectory(),base.operation(),base.study(),
                 Map.of("operations",List.of(Map.of("hypothesis","h1","type",goal))),base.dependencyDirectories());
-            assertEquals(goal.equals("mendelian_randomization") ? 30 : 10,StudyBioinformatics.geneticFeatures(planned).size());
+            assertEquals(30,StudyBioinformatics.geneticFeatures(planned).size());
         }
         Map<String,Object> study = new LinkedHashMap<>(base.study());
         study.put("hypotheses",List.of(Map.of("id","h1","analysis",Map.of("goals",List.of("mendelian_randomization")))));
@@ -384,6 +458,7 @@ class StudyBioinformaticsTest {
         Path directory=context.dependencyDirectories().get("harmonize");
         Files.writeString(directory.resolve("standard-results/d1.tsv"),primary);
         Files.writeString(directory.resolve("feature-annotation.tsv"),annotation);
+        StudyTestSources.seal(directory, "validate_harmonize", "harmonize", "h1");
     }
 
     @Test void sequenceBudgetDoesNotMasqueradeAsMissingAnnotation() throws Exception {
@@ -392,6 +467,7 @@ class StudyBioinformaticsTest {
             .resolve("feature-annotation.tsv");
         Files.writeString(annotation, Files.readString(annotation)
             .replace("\t100\t103\t", "\t100\t200000\t"));
+        StudyTestSources.seal(annotation.getParent(), "validate_harmonize", "harmonize", "h1");
         var client = new StudyPublicEvidence(uri -> new StudyPublicEvidence.Reply(200,
             uri.getHost().equals("rest.uniprot.org")
                 ? "{\"results\":[{\"primaryAccession\":\"P04637\"}]}"
@@ -422,6 +498,10 @@ class StudyBioinformaticsTest {
         assertEquals(false, saved.get("request_attempted"));
     }
 
+    private Context freshAttempt(Context source) throws Exception {
+        return new Context(source.project(), Files.createTempDirectory(project, "new-attempt-"), source.operation(), source.study(), source.plan(), source.dependencyDirectories());
+    }
+
     private Context context(String operation, Map<String, Object> overrides) throws Exception {
         Path upstream = Files.createTempDirectory(project, "upstream-");
         Files.createDirectories(upstream.resolve("standard-results"));
@@ -430,6 +510,7 @@ class StudyBioinformaticsTest {
         for (int i = 0; i < 99; i++) results.append("background-").append(i).append("\t0.5\n");
         Files.writeString(upstream.resolve("standard-results/d1.tsv"), results);
         Files.writeString(upstream.resolve("feature-annotation.tsv"), "feature_id\tgene_symbol\tgene_id\tchromosome\tstart\tend\tgenome_build\tmapping_status\nbest\tTP53\tENSG00000141510\t1\t100\t103\tGRCh38\tlocated\n");
+        StudyTestSources.seal(upstream, "validate_harmonize", "harmonize", "h1");
         Map<String, Object> study = new LinkedHashMap<>();
         study.put("datasets", List.of(Map.of("id", "d1", "type", "transcriptomics", "species", "human", "tissue", "Whole Blood", "metadata", "PRIVATE_PATIENT_SECRET")));
         study.put("hypotheses", List.of(Map.of("id", "h1", "outcome", "body mass index", "analysis", Map.of())));

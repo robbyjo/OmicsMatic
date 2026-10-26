@@ -65,6 +65,8 @@ public final class StudyExecutionEngine {
         Path run = root.resolve("runs").resolve(runId);
         Path operationsRoot = run.resolve("operations");
         Files.createDirectories(operationsRoot);
+        Path availability = run.resolve("input-availability.yaml");
+        StudyIO.writeYaml(availability, StudyStageInputs.availability(root, study));
 
         Map<String, Object> started = new LinkedHashMap<>();
         started.put("run_id", runId);
@@ -73,6 +75,7 @@ public final class StudyExecutionEngine {
         started.put("state", "running");
         started.put("execution_mode", resume ? "resume" : "rerun");
         started.put("offline", offline);
+        started.put("input_availability_sha256", StudyIO.hash(availability));
         started.put("phase", "execution");
         started.put("summary", "Started approved plan " + plan.id());
         StudyProject.append(root, "run_started", initiator, started);
@@ -100,14 +103,18 @@ public final class StudyExecutionEngine {
                 Path directory = directories.get(dependency);
                 if (directory != null) dependencyDirectories.put(dependency, directory);
             });
+            StudyCacheScope.Scope scope = executor.usesNativeStageInputContracts()
+                ? StudyCacheScope.resolve(study, operation)
+                : new StudyCacheScope.Scope("full_study", study);
+            String contextHash = StudyIO.hash(scope.context());
             Map<String, String> inputs = inputHashes(
-                root, study, operation, dependencyDirectories);
+                root, study, operation, dependencyDirectories, scope);
             Map<String, Object> cacheIdentity = new LinkedHashMap<>();
             cacheIdentity.put("operation", operation);
-            cacheIdentity.put("resolved_study_hash",
-                planDocument.get("resolved_study_hash"));
+            cacheIdentity.put("context_hash", contextHash);
+            cacheIdentity.put("input_scope", scope.mode());
             cacheIdentity.put("input_sha256", inputs);
-            cacheIdentity.put("implementation", 3);
+            cacheIdentity.put("implementation", 79);
             cacheIdentity.put("software", software);
             String cacheKey = StudyIO.hash(cacheIdentity);
             List<StudyNeed> needs = StudyQuestionRules.prerequisites(study, operation);
@@ -127,6 +134,7 @@ public final class StudyExecutionEngine {
                 Map<String, Object> manifest = StudyIO.loadArtifact(
                     destination.resolve("manifest.yaml"));
                 manifest.put("run_id", runId);
+                manifest.put("current_resolved_study_hash", planDocument.get("resolved_study_hash"));
                 manifest.put("reused_from_cache", true);
                 manifest.put("reused_from", root.relativize(reusable).toString().replace('\\', '/'));
                 StudyIO.writeYaml(destination.resolve("manifest.yaml"), manifest);
@@ -149,14 +157,19 @@ public final class StudyExecutionEngine {
                     result = StudyOperationExecutor.Result.waiting(
                         "A prerequisite operation is incomplete",
                         Map.of("dependencies", dependencies));
+                } else if (!"full_study".equals(scope.mode()) && inputs.entrySet().stream().anyMatch(e -> e.getKey().startsWith("dataset:") && "missing".equals(e.getValue()))) {
+                    result = StudyOperationExecutor.Result.waiting(
+                        "Declared cohort preparation input is absent",
+                        Map.of("missing_inputs", inputs.entrySet().stream().filter(e -> e.getKey().startsWith("dataset:") && "missing".equals(e.getValue())).map(Map.Entry::getKey).toList()));
                 } else {
                     result = executor.execute(new StudyOperationExecutor.Context(
                         root, staging, operation, study, planDocument,
-                        dependencyDirectories));
+                        dependencyDirectories, resume));
                 }
                 Map<String, Object> manifest = manifest(runId, operation,
                     cacheKey, inputs, result, staging);
                 manifest.put("software", software);
+                provenance(manifest, scope, contextHash, planDocument);
                 StudyIO.writeYaml(staging.resolve("manifest.yaml"), manifest);
                 publish(staging, destination);
                 directories.put(id, destination);
@@ -193,6 +206,7 @@ public final class StudyExecutionEngine {
                 Map<String, Object> manifest = manifest(runId, operation,
                     cacheKey, inputs, result, staging);
                 manifest.put("software", software);
+                provenance(manifest, scope, contextHash, planDocument);
                 StudyIO.writeYaml(staging.resolve("manifest.yaml"), manifest);
                 if (Files.exists(destination)) throw failure instanceof IOException io
                     ? io : new IOException("Could not finalize published operation", failure);
@@ -221,6 +235,8 @@ public final class StudyExecutionEngine {
         runManifest.put("failed", failed);
         runManifest.put("skipped", skipped);
         runManifest.put("operation_states", states);
+        runManifest.put("input_availability", "input-availability.yaml");
+        runManifest.put("input_availability_sha256", StudyIO.hash(availability));
         StudyIO.writeYaml(run.resolve("run-manifest.yaml"), runManifest);
         Map<String, Object> finished = new LinkedHashMap<>(runManifest);
         finished.put("phase", state.equals("completed") ? "reporting" : "execution");
@@ -290,11 +306,36 @@ public final class StudyExecutionEngine {
         return manifest;
     }
 
+    private static void provenance(Map<String,Object> manifest, StudyCacheScope.Scope scope,
+            String contextHash, Map<String,Object> plan) {
+        manifest.put("input_scope", scope.mode());
+        manifest.put("context_hash", contextHash);
+        manifest.put("execution_resolved_study_hash", plan.get("resolved_study_hash"));
+        manifest.put("current_resolved_study_hash", plan.get("resolved_study_hash"));
+    }
+
     private static Map<String, String> inputHashes(Path project,
             Map<String, Object> study, Map<String, Object> operation,
-            Map<String, Path> dependencies) throws IOException {
+            Map<String, Path> dependencies, StudyCacheScope.Scope scope) throws IOException {
         Map<String, String> result = new LinkedHashMap<>();
-        if (Set.of("advisor_review", "literature_support", "manuscript_draft").contains(operation.get("type"))) {
+        result.putAll(org.jlinalg.cli.StudyAssayQcResources.inputHashes(project,study,operation));
+        result.putAll(org.jlinalg.cli.StudyNetworkResources.inputHashes(project,study,operation));
+        result.putAll(org.jlinalg.cli.StudyRareOmnibusResources.inputHashes(project,study,operation));
+        result.putAll(org.jlinalg.cli.StudyGseaResources.inputHashes(project,study,operation));
+        result.putAll(org.jlinalg.cli.StudyRareFollowupResources.inputHashes(project,study,operation));
+        result.putAll(org.jlinalg.cli.StudyRareFrequencyResources.inputHashes(project,study,operation));
+        result.putAll(org.jlinalg.cli.StudyGwasEnrichmentResources.inputHashes(project,study,operation));
+        result.putAll(org.jlinalg.cli.StudyRiskScoreResources.inputHashes(project,study,operation));
+        result.putAll(org.jlinalg.cli.StudyProteinResources.inputHashes(project,study,operation));
+        if (operation.containsKey("supplied_result_id")) {
+            var supplied = StudySuppliedResultPolicy.definition(study, String.valueOf(operation.get("hypothesis")),
+                String.valueOf(operation.get("supplied_result_id")));
+            for (var file : StudyIO.map(supplied.get("files"), "supplied result.files").entrySet()) {
+                Path path = project.resolve(String.valueOf(file.getValue())).normalize();
+                result.put("supplied:" + supplied.get("id") + ":" + file.getKey(), Files.isRegularFile(path) ? StudyIO.hash(path) : "missing");
+            }
+        }
+        if (Set.of("advisor_review", "literature_support", "manuscript_draft", "impact_assessment").contains(operation.get("type"))) {
             Map<String, Object> assistance = StudyIO.optionalMap(study.get("assistance"), "assistance");
             for (Object raw : StudyIO.optionalList(assistance.get("response_files"), "assistance.response_files")) {
                 Path receipt = project.resolve(String.valueOf(raw)).normalize();
@@ -305,6 +346,7 @@ public final class StudyExecutionEngine {
                 }
             }
         }
+        result.putAll(org.jlinalg.cli.StudyFindingGroupingResources.inputHashes(project,study,operation));
         Map<String, Map<String, Object>> datasets = new LinkedHashMap<>();
         for (Object value : StudyIO.list(study.get("datasets"), "datasets")) {
             Map<String, Object> dataset = StudyIO.map(value, "dataset");
@@ -313,12 +355,15 @@ public final class StudyExecutionEngine {
         for (String id : strings(operation.get("datasets"), "operation.datasets")) {
             Map<String, Object> dataset = datasets.get(id);
             if (dataset == null) continue;
-            Map<String, Object> files = StudyIO.map(dataset.get("files"), "dataset.files");
+            Map<String, Object> files = "full_study".equals(scope.mode())
+                ? StudyIO.map(dataset.get("files"), "dataset.files")
+                : StudyStageInputs.files(operation, dataset);
             for (Map.Entry<String, Object> file : files.entrySet()) {
                 Path path = project.resolve(String.valueOf(file.getValue())).normalize();
-                if (Files.isRegularFile(path))
-                    result.put("dataset:" + id + ":" + file.getKey(),
-                        StudyIO.hash(path));
+                result.put("dataset:" + id + ":" + file.getKey(),
+                    Files.isRegularFile(path) ? StudyIO.hash(path) : "missing");
+                if (Set.of("scores", "covariance").contains(file.getKey()) && Files.isRegularFile(Path.of(path + ".tbi")))
+                    result.put("dataset:" + id + ":" + file.getKey() + ":tabix", StudyIO.hash(Path.of(path + ".tbi")));
             }
         }
         for (Map.Entry<String, Path> dependency : dependencies.entrySet()) {
@@ -331,6 +376,38 @@ public final class StudyExecutionEngine {
                     identity.put(key, source.get(key));
                 result.put("operation:" + dependency.getKey(),
                     StudyIO.hash(identity));
+            }
+        }
+        if (Set.of("variant_annotation", "variant_scoring").contains(operation.get("type"))) {
+            for (Object raw : StudyIO.list(study.get("hypotheses"), "hypotheses")) {
+                var hypothesis = StudyIO.map(raw, "hypothesis");
+                if (!hypothesis.get("id").equals(operation.get("hypothesis"))) continue;
+                var followup = StudyIO.optionalMap(StudyIO.map(hypothesis.get("analysis"), "analysis").get("variant_followup"), "variant_followup");
+                var paths = new LinkedHashMap<String, Object>();
+                if (followup.containsKey("reference_fasta")) paths.put("reference_fasta", followup.get("reference_fasta"));
+                for (String provider : List.of("consequences", "alphagenome")) {
+                    var settings = StudyIO.optionalMap(followup.get(provider), provider);
+                    for (String field : List.of("annotations", "scores", "executable", "python", "perl", "database", "cache", "fasta"))
+                        if (settings.containsKey(field)) paths.put(provider + ":" + field, settings.get(field));
+                }
+                for (var entry : paths.entrySet()) {
+                    Path path = project.resolve(String.valueOf(entry.getValue())).normalize();
+                    String key = "variant_followup:" + entry.getKey();
+                    if (Files.isDirectory(path)) {
+                        try (var children = Files.walk(path)) {
+                            for (Path file : children.filter(Files::isRegularFile).sorted().toList()) result.put(key + ":" + path.relativize(file).toString().replace('\\', '/'), StudyIO.hash(file));
+                        }
+                    } else result.put(key, Files.isRegularFile(path) ? StudyIO.hash(path) : "unresolved_path_or_command");
+                    Path fai = Path.of(path + ".fai"); if (Files.isRegularFile(fai)) result.put(key + ":fai", StudyIO.hash(fai));
+                }
+            }
+        }
+        if (Set.of("meta_analysis", "discovery_meta_analysis", "discovery_replication", "sensitivity_analysis", "rare_variant_analysis").contains(operation.get("type"))) {
+            for (Object raw : StudyIO.list(study.get("hypotheses"), "hypotheses")) {
+                var hypothesis = StudyIO.map(raw, "hypothesis"); if (!hypothesis.get("id").equals(operation.get("hypothesis"))) continue;
+                var analysis = StudyIO.map(hypothesis.get("analysis"), "analysis");
+                var dependence = StudyIO.optionalMap(StudyPoolingPolicy.resolve(StudyIO.optionalMap(analysis.get("pooling"), "pooling")).get("dependence"), "dependence");
+                if (dependence.containsKey("matrix")) { Path path = project.resolve(String.valueOf(dependence.get("matrix"))).normalize(); result.put("pooling:sampling_matrix", Files.isRegularFile(path) ? StudyIO.hash(path) : "missing"); }
             }
         }
         if (Set.of("fine_mapping", "colocalization", "mendelian_randomization").contains(operation.get("type"))) {

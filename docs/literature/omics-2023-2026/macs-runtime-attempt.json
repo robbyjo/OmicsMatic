@@ -1,0 +1,161 @@
+{
+  "status": "failed-scientific-runtime-validation; affected-analyses-unavailable",
+  "version": "MACS3 3.1.0",
+  "platform": "Private Windows x86_64 UCRT64 GNU Python 3.14.9, one thread/serial backend",
+  "recorded_utc": "2026-10-24T21:02:25.789169+00:00",
+  "source": {
+    "url": "https://pypi.org/project/MACS3/3.1.0/",
+    "archive": "D:\\projects\\JLinAlg\\build\\literature-review\\macs3-runtime\\macs3-3.1.0.tar.gz",
+    "bytes": 897983,
+    "sha256": "aae548b86ab652717dca281fa2e33645fc1dc8091264ccbf7ce09cf8a13532e0"
+  },
+  "toolchain_lock": {
+    "path": "D:\\projects\\JLinAlg\\build\\literature-review\\macs3-runtime\\msys2-macs-build-lock.json",
+    "sha256": "110ff22102f2efacb5c106c3db9a8a05fd1ddb90c9ab9b462fe7f11d0d55a86a",
+    "repository_database_sha256": "5f513c54a8e1b86c8014ef941fabf596664f848d624c2e2fbd3b86a7a61505c9",
+    "packages": 73
+  },
+  "installation": {
+    "status": "installed; version/callpeak import/pip-check passed; scientific availability FAILED",
+    "runtime": "D:\\projects\\JLinAlg\\build\\omics-macs3-ucrt\\venv\\bin\\python.exe",
+    "interpreter_sha256": "cb4400b7ca17a8075d043dec11198ed8aad8d05ae351c3094222118bb052f27f",
+    "global_installation": false,
+    "global_path_changed": false,
+    "externally_managed_base_modified_by_pip": false
+  },
+  "failures": [
+    {
+      "analysis": "callpeak BEDPE treatment/control",
+      "status": "failed; no validated result",
+      "exit_code": 3221225477,
+      "windows_exception": "0xc0000005 access violation",
+      "last_logged_stage": "Pre-compute pvalue-qvalue table",
+      "known_truth_fragments": {
+        "treatment": 1200,
+        "control": 500
+      },
+      "command": [
+        "D:\\projects\\JLinAlg\\build\\omics-macs3-ucrt\\venv\\bin\\python.exe",
+        "-I",
+        "D:\\projects\\JLinAlg\\build\\omics-macs3-ucrt\\venv\\bin\\macs3",
+        "callpeak",
+        "-t",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\macs3-runtime\\truth-20261024T205000Z\\treatment.bedpe",
+        "-c",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\macs3-runtime\\truth-20261024T205000Z\\control.bedpe",
+        "-f",
+        "BEDPE",
+        "-g",
+        "100000",
+        "-n",
+        "test",
+        "--keep-dup",
+        "all",
+        "--nomodel",
+        "-q",
+        "0.05",
+        "--threads",
+        "1",
+        "--process-backend",
+        "serial",
+        "-B",
+        "--outdir",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\macs3-runtime\\truth-20261024T205000Z\\fragment-bed"
+      ],
+      "log": "D:\\projects\\JLinAlg\\build\\literature-review\\macs3-runtime\\truth-20261024T205000Z\\fragment-bed.log",
+      "log_sha256": "33df197663107ade050deb4afc8a7540c7cb5a216bf486bd588fc618ae5e6074"
+    },
+    {
+      "analysis": "AnnData/HDF5-dependent workflows, including HMMRATAC prerequisites",
+      "status": "unavailable; analysis skipped",
+      "error": "ImportError('DLL load failed while importing defs: The specified procedure could not be found.')",
+      "cause_status": "DLL procedure failure observed in h5py.defs; exact ABI cause unresolved",
+      "log": "D:\\projects\\JLinAlg\\build\\literature-review\\macs3-runtime\\hdf5-first-import.log",
+      "log_sha256": "d42faadb76068e14eed2a146e52138c07bd206c77527e50d1940317ba8566d21"
+    }
+  ],
+  "raw_truth_attempt": {
+    "path": "D:\\projects\\JLinAlg\\build\\literature-review\\macs3-runtime\\runtime-truth-validation.json",
+    "sha256": "3fe05d28725b799b7d13803dfd3c5cdecfd2804d9988dd810ef015d788ac9889"
+  },
+  "partial_smoke_only": {
+    "bdgpeakcall": {
+      "status": "passed raw upstream smoke, not project adapter validation",
+      "result_sha256": "575ffe7a477138cbb68b9b4b4b0d63e9ef482a63006db6cde6763bed335b795b",
+      "expected_peak_zero_based_half_open": [
+        10,
+        70
+      ],
+      "summit_offset": 10,
+      "settings": {
+        "cutoff": 3,
+        "min_length": 60,
+        "max_gap": 10
+      },
+      "log_sha256": "4404b110dee0d5c6616576265d3814ff60851ca1f49824edd7b771d5b9f56361"
+    },
+    "bdgcmp_ppois": {
+      "status": "passed raw upstream smoke, not full numerical validation",
+      "result_sha256": "75524ab938177d81f9870f0646800e237abfe16b1818190ad2f479b14cd99161",
+      "observed": [
+        0,
+        1,
+        5,
+        10
+      ],
+      "lambda": 1,
+      "reported_negative_log10_strict_upper_tail": [
+        "0.19920",
+        "0.57800",
+        "3.22608",
+        "7.99793"
+      ],
+      "log_sha256": "4f149bc42d502ca2246b4fce6a19220dbe1f1a840aa9dff789d31a0cb16b83c7"
+    }
+  },
+  "portability_work": {
+    "posix48": {
+      "status": "passed",
+      "cases": 710,
+      "reference": "Actual private MSYS2 POSIX libc drand48/srand48, default state and seeds -3..3",
+      "reference_sha256": "f91e3d49d5cad7100ff582a94eb69bfcccd9c6bb2e5f137b6226a0291b536cd2",
+      "compatibility_source_sha256": "199e1b201fb99a7bffdbcb398b74e7ef258856515d9140a9dd614ec650715ad1",
+      "comparison": "Exact binary64 values; no MACS scoring/alignment code changed.",
+      "source": "D:\\projects\\JLinAlg\\build\\literature-review\\macs3-runtime\\posix48.c"
+    },
+    "patches": {
+      "windows-serial-bgzf": {
+        "original_sha256": "e761d6ca1fdb431da604694ff27dd420897e4e28f989fce2c5c4daabf280e42f",
+        "patched_sha256": "46f29a16a0635f36abb6288ef7dff5601420b445f38ab0bab5eb8f302c08f243",
+        "scope": "Windows BGZF worker pool unavailable; decoder falls back to upstream serial path. Typed adapter must force one thread and serial process backend. No signal-mask emulation.",
+        "patch_sha256": "6330c00dcba8671f90d0ac10e08ff8a5242e8087df4982e09d9c7e3c7c12be57"
+      },
+      "windows-peak-memory": {
+        "original_sha256": "c968ffed87e632c3d28178ebaaf0da2c66ef49b7479c0824416709a7531a8238",
+        "patched_sha256": "49df4974ddcf4b61d8ac5af06e7443de1fb0310432b77795de1ccd169867f7c9",
+        "scope": "On Windows use actual psutil Process.memory_info().peak_wset in bytes instead of Unix-only resource.ru_maxrss. Original POSIX/macOS path is retained; no fabricated memory statistics or scientific scoring changes.",
+        "patch_sha256": "dcd866539fc374e2d02525fa1e74c6ebe101590b15a68d90155aa562eb0d0aad"
+      },
+      "numcodecs-sdist-version": {
+        "original_sha256": "de1cfc6c2a897b4f0fbb6b99bb5cdedcc7c0a76c1e35d1de18c64ed3a559855a",
+        "patched_sha256": "b2653b86363ecb3cf17c390013c72fe33e9b58e81d1bb0fdc23bdbb4cd21b2b4",
+        "release_version": "0.17.1",
+        "version_source_sha256": "f45ef74e97cea1ec7dc1a2efba8b1ace7a7dc5f60d214c2c8a16af580edaf094",
+        "scope": "Build metadata fallback reads the verified release PKG-INFO rather than incorrectly returning 0.0.0 when Git/SCM detection fails. No compression/runtime algorithm changes; the generated version must match the hash-pinned source release.",
+        "patch_sha256": "a9a148ad737249c4315ec4621d33efd3a1bf2201d2166fceb7bf5f45f38eed77"
+      },
+      "msgspec-mingw-c11": {
+        "original_sha256": "bc37d4f6cc3dff6514e7b36af70b87857270a027c1ed27f1f7836059a3c76e34",
+        "patched_sha256": "a56a68f4856903d9bf7d6ec118b37b133490499a2cb13df3034546b6d9743087",
+        "scope": "Use GNU -std=c11 for a mingw Python/compiler; retain the upstream MSVC flags on other Windows builds. No serialization/runtime algorithm changes.",
+        "patch_sha256": "9995c69d5b511380a2e76b275db7578e2cf405bdc980be8e8450f063224ea5ef"
+      }
+    },
+    "compiler_diagnostics": "Upstream -w flag suppresses diagnostics; do not claim warning-free compilation."
+  },
+  "affected_analyses_action": "Skip MACS callpeak on this Windows runtime and AnnData/HDF5/HMMRATAC-dependent analyses. Do not use research-only runtime for study data.",
+  "required_action": "Use permitted Linux/macOS with Python 3.12+, compiler/Python headers and a private pinned MACS3 environment; run intended scientific fixtures and HDF5/AnnData/HMM data checks before data analysis. If unavailable, retain skipped status. Project MACS adapter still pending.",
+  "official_setup": "https://macs3-project.github.io/MACS/docs/INSTALL.html",
+  "recovery_guide": "MACS_RUNTIME_STATUS.md",
+  "scope": "No validated MACS project adapter, Windows support, alignment-based peak output, HMMRATAC output, complete published-version parity or whole-paper reproduction is claimed. Working track subcommands and native Java signal summaries do not establish those capabilities."
+}

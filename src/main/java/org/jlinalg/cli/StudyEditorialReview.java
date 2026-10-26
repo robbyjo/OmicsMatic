@@ -37,7 +37,7 @@ final class StudyEditorialReview {
         for (Object raw : list(revision.get("sections"))) {
             Map<String, Object> p = map(raw);
             Map<String, Object> s = new LinkedHashMap<>();
-            for (String key : List.of("id", "section", "title", "rationale", "sources", "references", "citation_basis", "introduction_role", "methods_role", "cohort_ids", "parameters", "parameter_justifications", "uncommon_parameters", "results_role", "discussion_role", "impact_rank", "result_ids")) if (p.containsKey(key)) s.put(key, p.get(key));
+            for (String key : List.of("id", "section", "title", "rationale", "sources", "references", "citation_basis", "introduction_role", "methods_role", "cohort_ids", "parameters", "parameter_justifications", "uncommon_parameters", "results_role", "discussion_role", "impact_rank", "result_ids", "finding_ids")) if (p.containsKey(key)) s.put(key, p.get(key));
             s.put("text", StudyManuscriptRevision.expand(String.valueOf(p.get("text")), evidence, new ArrayList<>(), String.valueOf(p.get("id"))));
             if (p.containsKey("impact_reason")) s.put("impact_reason", StudyManuscriptRevision.expand(p.get("impact_reason").toString(), evidence, new ArrayList<>(), p.get("id").toString()));
             if (p.containsKey("supporting_evidence")) {
@@ -61,6 +61,7 @@ final class StudyEditorialReview {
         result.put("results_discussion_policy", StudyResultsDiscussion.policy());
         result.put("results_discussion_review", reviewSummary(StudyResultsDiscussion.assess(revision, evidence)));
         if (revision.containsKey("discussion_selection_note")) result.put("discussion_selection_note", revision.get("discussion_selection_note"));
+        if (revision.containsKey("impact_selection_override_reason")) result.put("impact_selection_override_reason", revision.get("impact_selection_override_reason"));
         result.put("methods_review", reviewSummary(StudyMethods.assess(list(revision.get("sections")), methodsInventory)));
         result.put("introduction_review", reviewSummary(StudyIntroduction.assess(list(revision.get("sections")))));
         result.put("editorial_comments", list(revision.get("comments")));
@@ -91,6 +92,20 @@ final class StudyEditorialReview {
                         if (!references.contains(doi) || !seen.add(doi)) continue;
                         papers.add(select(article, List.of("doi", "pmid", "title", "pubYear", "excerpt", "excerpt_scope", "assessment")));
                     }
+                }
+                case "impact_assessment" -> {
+                    var coverage = new ArrayList<Object>();
+                    for (Object raw : list(f.get("selected_findings"))) {
+                        var finding = map(raw);
+                        if (finding.containsKey("literature_coverage")) {
+                            var record = select(finding, List.of("finding_id", "hypothesis", "feature_id"));
+                            // This native dossier context contains typed coverage, without raw query or article text.
+                            record.put("literature_coverage", finding.get("literature_coverage"));
+                            coverage.add(record);
+                        }
+                    }
+                    summary.put("selected_finding_literature_coverage", coverage);
+                    summary.put("interpretation", StudyLiteratureCoverage.CAVEAT);
                 }
                 default -> summary.put("detail", "Omitted from remote payload; inspect local evidence. State alone does not establish positive or negative support.");
             }

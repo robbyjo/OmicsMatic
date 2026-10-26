@@ -1,0 +1,171 @@
+{
+  "source": "https://cncr.nl/research/magma/",
+  "version": "1.10 (win/s)",
+  "executable_sha256": "e05e3d963215a973064852ec33640118d65745884cc800a5119ca7cffe6cb859",
+  "reference_commands": [
+    {
+      "name": "annotation",
+      "exit_code": 0,
+      "command": [
+        "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\exploratory\\magma.exe",
+        "--annotate",
+        "window=0",
+        "--snp-loc",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\scientific-probe\\reference.bim",
+        "--gene-loc",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\scientific-probe\\genes.loc",
+        "--out",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\scientific-probe\\annotation"
+      ]
+    },
+    {
+      "name": "summary-mean",
+      "exit_code": 0,
+      "command": [
+        "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\exploratory\\magma.exe",
+        "--bfile",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\scientific-probe\\reference",
+        "--gene-annot",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\scientific-probe\\annotation.genes.annot",
+        "--pval",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\scientific-probe\\pvalues.tsv",
+        "ncol=N",
+        "duplicate=error",
+        "--gene-model",
+        "snp-wise=mean",
+        "--seed",
+        "42",
+        "--out",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\scientific-probe\\summary-mean"
+      ]
+    },
+    {
+      "name": "summary-top",
+      "exit_code": 0,
+      "command": [
+        "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\exploratory\\magma.exe",
+        "--bfile",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\scientific-probe\\reference",
+        "--gene-annot",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\scientific-probe\\annotation.genes.annot",
+        "--pval",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\scientific-probe\\pvalues.tsv",
+        "ncol=N",
+        "duplicate=error",
+        "--gene-model",
+        "snp-wise=top",
+        "--seed",
+        "42",
+        "--out",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\scientific-probe\\summary-top"
+      ]
+    },
+    {
+      "name": "summary-multi",
+      "exit_code": 0,
+      "command": [
+        "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\exploratory\\magma.exe",
+        "--bfile",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\scientific-probe\\reference",
+        "--gene-annot",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\scientific-probe\\annotation.genes.annot",
+        "--pval",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\scientific-probe\\pvalues.tsv",
+        "ncol=N",
+        "duplicate=error",
+        "--gene-model",
+        "snp-wise=multi",
+        "--seed",
+        "42",
+        "--out",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\scientific-probe\\summary-multi"
+      ]
+    },
+    {
+      "name": "raw-linreg",
+      "exit_code": 0,
+      "command": [
+        "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\exploratory\\magma.exe",
+        "--bfile",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\scientific-probe\\reference",
+        "--gene-annot",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\scientific-probe\\annotation.genes.annot",
+        "--gene-model",
+        "linreg",
+        "--gene-settings",
+        "prune=0.999",
+        "--seed",
+        "42",
+        "--out",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\scientific-probe\\raw-linreg"
+      ]
+    },
+    {
+      "name": "sets",
+      "exit_code": 0,
+      "command": [
+        "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\exploratory\\magma.exe",
+        "--gene-results",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\scientific-probe\\summary-mean.genes.raw",
+        "--set-annot",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\scientific-probe\\sets.annot",
+        "--model",
+        "direction=pos",
+        "correct=all",
+        "self-contained",
+        "--settings",
+        "gene-info",
+        "abbreviate=0",
+        "--seed",
+        "42",
+        "--out",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\scientific-probe\\sets"
+      ]
+    },
+    {
+      "name": "properties",
+      "exit_code": 0,
+      "command": [
+        "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\exploratory\\magma.exe",
+        "--gene-results",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\scientific-probe\\summary-mean.genes.raw",
+        "--gene-covar",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\scientific-probe\\properties.tsv",
+        "missing-values=drop",
+        "max-miss=0",
+        "--model",
+        "direction=pos",
+        "correct=all",
+        "--settings",
+        "gene-info",
+        "abbreviate=0",
+        "--seed",
+        "42",
+        "--out",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\magma-runtime\\scientific-probe\\properties"
+      ]
+    }
+  ],
+  "synthetic_seed": 1739,
+  "scope": "Unmodified upstream scientific output from independent synthetic genotypes/GWAS; no binaries/source/manuals redistributed, no patient data or paper reproduction. All original commands and inputs retained.",
+  "fixture_sha256": {
+    "annotation.genes.annot.txt": "97d6cafa8b39e917b0079afa85d25ddd319421e037ba364dfc21ad2235168989",
+    "fixture-provenance.json": "00c49b9241e00f39ea3a4036c1e691a2fb67cad12732509970bf238651f86788",
+    "genes.tsv": "5c0ade0743c17af56c854c7eb563cf3da46016e841e68ba95e7a5581ca550aa2",
+    "gwas.tsv": "929d25b5c5a55d4bd37362aa802efaac529bed860fdbb57814830aaced5e5332",
+    "properties.gsa.out.txt": "e2bd610c12c673448d4ff27b1683a3d324f62d660a59a28a8c1bc11bf12270a2",
+    "properties.tsv": "b9b2d4b0c9a635edea88bbdcacb92f00fc1beb9c450a3b2f5859197af0c285a2",
+    "pvalues.tsv": "371a2d03c0ec407c206de8b7f062992b9c6f5d382a89db4dae190c008caa2718",
+    "raw-linreg.genes.out.txt": "cf7aa2f63fbc1d44e81c70b3c32c8745b7a4e5fe1d56d0989f1bcbbe4b772ed9",
+    "reference.bed": "92525bef6a3cb5c573db8fb90c712cfa5325a641730050639210ebb79fdc7edc",
+    "reference.bim": "7bad78dd79f0903f3831e7eee68d2eeab6365c67aca4ad2df8d004eb2b20ce40",
+    "reference.fam": "927fb2adb43a9e17a43c197554ba624513ff3da0444e60877cb9987221ac659c",
+    "sets.annot": "6068a346f34148265b6971f689d2f202f808d03ce629919c5395962d94295bc5",
+    "sets.gsa.out.txt": "f8035c3f9e7f7a693ec622acd1eb3a2c9d7096c6fdb945c4bffe38a9081e9e94",
+    "sets.gsa.self.out.txt": "54aa92126cc58be8433c0036850fda4134ea79f477cd0b16095c3bcdd552a53e",
+    "snps.tsv": "835656ad5e70f37017aaa5ae54ea950914ec36ae10cceea7f6d6a1b668268247",
+    "summary-mean.genes.out.txt": "711d55372fbe09895f97465d1c1661aa5de49d2a6b28b7e25bd78548d46e2aa9",
+    "summary-multi.genes.out.txt": "1646bfab0a6f3118abf878b14907055ab5486d8d6944180a170dadcd12fca044",
+    "summary-top.genes.out.txt": "062da77289e83dad94d58496ca5048a8f7531a9dfad0708c081b8ff2da4f2ed4"
+  }
+}

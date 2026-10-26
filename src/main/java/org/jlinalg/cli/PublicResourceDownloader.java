@@ -205,10 +205,14 @@ final class PublicResourceDownloader {
 
     /** Preserve non-success bodies for the evidence audit without following redirects. */
     static Response responseStrict(URI source, long maximumBytes) throws IOException, InterruptedException {
+        return responseStrict(source, maximumBytes, "application/json");
+    }
+
+    static Response responseStrict(URI source, long maximumBytes, String accept) throws IOException, InterruptedException {
         StudyPublicEvidence.validate(source);
         validate(source, maximumBytes);
         HttpGet request = request(source, "JLinAlg-study/1");
-        request.addHeader("Accept", "application/json");
+        request.addHeader("Accept", accept);
         try (CloseableHttpClient client = client(false)) {
             try {
                 return client.execute(request, response -> {
