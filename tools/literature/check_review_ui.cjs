@@ -7,7 +7,7 @@ const browserPath = process.argv[3];
 const {chromium} = modules ? require(path.join(modules, 'playwright')) : require('playwright');
 const root = path.resolve(__dirname, '../..');
 const papers = JSON.parse(fs.readFileSync(path.join(root, 'docs/literature/omics-2023-2026/papers.json'), 'utf8'));
-const out = path.join(root, 'build/literature-review/ui');
+const out = process.env.JLINALG_REVIEW_UI_OUT ? path.resolve(process.env.JLINALG_REVIEW_UI_OUT) : path.join(root, 'build/literature-review/ui');
 fs.mkdirSync(out, {recursive: true});
 
 (async () => {
@@ -19,8 +19,8 @@ fs.mkdirSync(out, {recursive: true});
     await page.goto('http://127.0.0.1:8768/literature-review.html');
     await page.waitForFunction(() => document.querySelector('#count')?.textContent === '250 of 250 papers');
     assert.equal(await page.locator('#results article').count(), 250);
-    assert.match(await page.locator('#overview').innerText(), /376 named tools/);
-    assert.match(await page.locator('#overview').innerText(), /2422 tool observations/);
+    assert.match(await page.locator('#overview').innerText(), /377 named tools/);
+    assert.match(await page.locator('#overview').innerText(), /2426 tool observations/);
     assert.match(await page.locator('#P001 a[data-link]').first().getAttribute('href'), /^https:\/\/doi.org\/10\./);
     await page.screenshot({path: path.join(out, 'catalog-desktop.png')});
     await page.locator('#query').fill('10.1038/s41586-025-10058-2');
@@ -54,7 +54,7 @@ fs.mkdirSync(out, {recursive: true});
     assert.match(await page.locator('#results').innerText(), /620/);
     await page.locator('#query').fill('');
     await page.locator('#coverage').selectOption('upstream-adapter-validated');
-    assert.equal(await page.locator('#results article').count(), 31);
+    assert.equal(await page.locator('#results article').count(), 34);
     for (const [name, pattern] of [['clusterProfiler',/enrichit0\.2\.6/],['fgsea',/1\.38\.0/],['DOSE',/negative first-hit/]]) {
       await page.locator('#query').fill(name);
       const card=page.locator('#results article').filter({has:page.getByRole('heading',{name:new RegExp('^'+name+' \\(')})});
@@ -511,7 +511,7 @@ fs.mkdirSync(out, {recursive: true});
     await page.goto('http://127.0.0.1:8768/literature-review.html');
     await page.setViewportSize({width:1440,height:1600});await page.locator('#tools-tab').click();await page.locator('#coverage').selectOption('upstream-adapter-validated');await page.locator('#query').fill('PRS-CS');
     const prscs=page.locator('#results article').filter({has:page.getByRole('heading',{name:/^PRS-CS \(/})});assert.equal(await prscs.count(),1);
-    for(const pattern of [/prs-cs-tools/,/source-fbc9ec0/,/1\.1\.0/,/218 focused tests/,/30 native/,/208 output files/,/Twelve actual packaged/,/520posterior/,/offline-reproduction/,/unknown.numerical|unknown\/numerical|unknown or numerical/i,/canonical a104 is unchanged/,/PRSCS_WORKFLOWS/])assert.match(await prscs.innerText(),pattern);
+    for(const pattern of [/prs-cs-tools/,/source-fbc9ec0/,/1\.1\.0/,/218 focused tests/,/30 native/,/208 output files/,/Twelve actual packaged/,/520 posterior/,/offline-reproduction/,/unknown.numerical|unknown\/numerical|unknown or numerical/i,/canonical a104 is unchanged/,/PRSCS_WORKFLOWS/])assert.match(await prscs.innerText(),pattern);
     await prscs.screenshot({path:path.join(out,'prscs-workflow.png')});await page.evaluate(()=>document.documentElement.dataset.theme='dark');await prscs.screenshot({path:path.join(out,'prscs-workflow-dark.png')});
     await page.setViewportSize({width:390,height:900});report.prscs_mobile_layout=await page.evaluate(()=>({viewport:innerWidth,content:document.documentElement.scrollWidth}));assert(report.prscs_mobile_layout.content<=report.prscs_mobile_layout.viewport);
     await page.evaluate(()=>document.documentElement.dataset.theme='light');await page.setViewportSize({width:1440,height:1200});await page.locator('#papers-tab').click();await page.locator('#coverage').selectOption('');await page.locator('#query').fill(papers.find(p=>p.paper_id==='P074').doi);
@@ -520,12 +520,148 @@ fs.mkdirSync(out, {recursive: true});
     await page.goto('http://127.0.0.1:8768/literature-warnings.html');const prscsWarning=page.locator('#prscs-required-actions');assert.equal(await prscsWarning.isVisible(),true);
     for(const pattern of [/PRS-CS: required actions/,/33b26e76/,/skip analysis \(exit 3\)/,/Analysis never installs software/,/--allow-install/,/--allow-download/,/NEW_PRIVATE_HOME/,/offline-reproduction/,/out of support/,/unknown or numerical warnings fail/i,/exit 2/,/new directory/,/seven significant digits/])assert.match(await prscsWarning.innerText(),pattern);
     await prscsWarning.screenshot({path:path.join(out,'prscs-warning-actions.png')});await page.setViewportSize({width:390,height:900});report.prscs_warning_mobile_layout=await page.evaluate(()=>({viewport:innerWidth,content:document.documentElement.scrollWidth}));assert(report.prscs_warning_mobile_layout.content<=report.prscs_warning_mobile_layout.viewport);assert.equal(errors.length,0,errors.join('\n'));
-    report.screenshots.push('prscs-workflow.png','prscs-workflow-dark.png','prscs-P074-source.png','prscs-warning-actions.png');report.checks=report.checks.map(c=>c.replace('thirty upstream adapters','31 upstream adapters').replace('among30adapters','among31adapters'));
+    report.screenshots.push('prscs-workflow.png','prscs-workflow-dark.png','prscs-P074-source.png','prscs-warning-actions.png');report.checks=report.checks.map(c=>c.replace('thirty upstream adapters','32 upstream adapters').replace('among30adapters','among32adapters'));
     report.checks.push('PRS-CS three-profile development command discloses218focused tests,actual original/package comparisons and separate canonical history',
       'PRS-CS install/download permissions,skip/failure,unsupported historical Python and retained known versus rejected unknown/numerical warnings are prominent',
       'PRS-CS exact format,N/units,model/sampling/panel/allele/exclusion and downstream prediction-assessment choices remain explicit',
       'PRS-CS P074 primary and grid/version supporting paragraphs retain date-label and LDpred2 tuning distinctions',
       'PRS-CS light/dark cards and390px catalog/warning overflow checks pass');
+    await page.goto('http://127.0.0.1:8768/literature-review.html');
+    await page.setViewportSize({width:1440,height:1100});
+    const cellrangerBanner=page.locator('#cellranger-excluded');
+    assert.equal(await cellrangerBanner.isVisible(),true);
+    for(const pattern of [/skipped by user request/,/No Cell Ranger, ARC or ATAC runtime was downloaded, installed or executed/,/Required action: none/,/44 paper roles/])assert.match((await cellrangerBanner.innerText()).replace(/\s+/g,' '),pattern);
+    await cellrangerBanner.screenshot({path:path.join(out,'cellranger-exclusion.png')});
+    await page.locator('#tools-tab').click();await page.locator('#coverage').selectOption('excluded-by-user');
+    assert.equal(await page.locator('#results article').count(),1);
+    const excludedTool=page.locator('#results article');
+    for(const pattern of [/Cell Ranger/,/44 papers/,/excluded-by-user/,/26 supporting/,/Scientific runtime validation is skipped/])assert.match(await excludedTool.innerText(),pattern);
+    await excludedTool.screenshot({path:path.join(out,'cellranger-exclusion-card.png')});
+    await page.locator('#coverage').selectOption('missing');await page.locator('#query').fill('Cell Ranger');
+    assert.equal(await page.locator('#results article').count(),0);
+    await page.locator('#coverage').selectOption('excluded-by-user');await page.locator('#papers-tab').click();
+    await page.locator('#query').fill('10.1038/s41588-025-02352-6');
+    const demuxOnly=page.locator('#P160');assert.equal(await demuxOnly.count(),1);
+    for(const pattern of [/mkfastq v4\.0\.0/,/STARsolo v2\.7\.10a/,/not Cell Ranger count/,/excluded-by-user/])assert.match(await demuxOnly.innerText(),pattern);
+    await page.locator('#query').fill('10.1016/j.ajhg.2025.11.009');
+    await page.locator('#P187').getByText('Evidence locator',{exact:true}).click();
+    for(const pattern of [/CellRanger-ARC count v2/,/Supporting paragraph 18/,/approximated ARC alignment with BWA-mem/,/not a second ARC\/WASP run/])assert.match(await page.locator('#P187').innerText(),pattern);
+    await page.locator('#query').fill('10.1038/s41588-026-02709-5');
+    assert.match(await page.locator('#P145').innerText(),/probe-set version is not a Cell Ranger software version/);
+    await page.goto('http://127.0.0.1:8768/literature-warnings.html');
+    await page.setViewportSize({width:390,height:900});
+    const excludedWarning=page.locator('#cellranger-excluded');assert.equal(await excludedWarning.isVisible(),true);
+    await excludedWarning.screenshot({path:path.join(out,'cellranger-exclusion-mobile.png')});
+    report.cellranger_warning_mobile_layout=await page.evaluate(()=>({viewport:innerWidth,content:document.documentElement.scrollWidth}));
+    assert(report.cellranger_warning_mobile_layout.content<=report.cellranger_warning_mobile_layout.viewport);
+    assert.equal(errors.length,0,errors.join('\n'));
+    report.screenshots.push('cellranger-exclusion.png','cellranger-exclusion-card.png','cellranger-exclusion-mobile.png');
+    report.checks.push('Cell Ranger user exclusion and no-action recovery are prominent on catalog and warning pages',
+      'Exactly one user-excluded integration remains separate from missing and validated tools',
+      'Excluded family retains44 source roles and26 supporting pointers without a runtime-validation claim',
+      'P160 mkfastq-only use remains distinct from STARsolo counting',
+      'P187 ARC count remains distinct from BWA-mem approximation in WASP',
+      'P145 Flex probe-set version remains distinct from software version',
+      'Cell Ranger390px warning layout has no horizontal overflow or JavaScript errors');
+    await page.goto('http://127.0.0.1:8768/literature-review.html');await page.setViewportSize({width:1440,height:1200});
+    const geometryBanner=page.locator('#molecular-geometry-actions');assert.equal(await geometryBanner.isVisible(),true);
+    for(const pattern of [/798d3a08/,/needs only Java/,/angstrom/,/nanometer/,/allow-nonunique/,/Undefined measurements fail/,/Errors return 2/,/rerun to a new directory/,/Original typed PyMOL subset is available/])assert.match((await geometryBanner.innerText()).replace(/\s+/g,' '),pattern);
+    await geometryBanner.screenshot({path:path.join(out,'molecular-geometry-actions.png')});
+    const pymolValidation=JSON.parse(fs.readFileSync(path.join(root,'docs/literature/omics-2023-2026/pymol-adapter-validation.json'),'utf8'));
+    const pymolInventory=JSON.parse(fs.readFileSync(path.join(root,'docs/literature/omics-2023-2026/tool-inventory.json'),'utf8')).find(tool=>tool.id==='pymol');
+    assert.equal(pymolInventory.implementation_status,'upstream-adapter-validated');assert.equal(pymolInventory.project_adapter_available,true);assert.equal(pymolInventory.canonical_adapter_available,false);assert.equal(pymolInventory.development_adapter_cli,'pymol-tools');assert.equal(pymolInventory.development_candidate_sha256,pymolValidation.candidate_sha256);
+    const pymolActions=page.locator('#pymol-actions');assert.equal(await pymolActions.isVisible(),true);
+    for(const pattern of [new RegExp(pymolValidation.candidate_sha256.slice(0,8)),/pymol-tools/,/Ubuntu 24\.04/,/Linux Java/,/WSL/,/local validated build/,/--allow-install/,/--allow-download/,/Analysis never installs/,/skip analysis with exit 3/,/Export limitation/,/0\.001 Angstrom/,/omits bond categories/,/final-\*\.json/,/Typed APBS surface integration is available/,/failures return 2/,/rerun to a new directory/])assert.match((await pymolActions.innerText()).replace(/\s+/g,' '),pattern);
+    await pymolActions.screenshot({path:path.join(out,'pymol-actions-desktop.png')});
+    await page.locator('#tools-tab').click();await page.locator('#coverage').selectOption('upstream-adapter-validated');await page.locator('#query').fill('PyMOL');
+    const pymol=page.locator('#results article').filter({has:page.getByRole('heading',{name:/^PyMOL \(/})});assert.equal(await pymol.count(),1);
+    for(const pattern of [/20 papers/,/Validated development original PyMOL subset/,/molecular-geometry/,new RegExp(pymolValidation.standalone_tests_per_Java+' new tests'),/Twenty source roles/,/align\/super/,/APBS/,/quarantined partials/])assert.match(await pymol.innerText(),pattern);
+    await pymol.screenshot({path:path.join(out,'pymol-original-subset.png')});
+    await page.locator('#coverage').selectOption('');await page.locator('#papers-tab').click();await page.locator('#query').fill('10.1038/s41586-024-08333-9');
+    const pymolSource=page.locator('#P013 tr').filter({has:page.locator('td:first-child').filter({hasText:/^PyMOL/})});
+    await pymolSource.getByText('Evidence locator',{exact:true}).click();
+    for(const pattern of [/PyMOL/,/align/,/Supporting paragraph 124/,/APBS/,/Rendering a coloured surface alone does not reproduce APBS/])assert.match(await pymolSource.innerText(),pattern);
+    await pymolSource.screenshot({path:path.join(out,'pymol-P013-source.png')});
+    await page.locator('#query').fill('10.1016/j.ajhg.2023.11.010');const rotamer=page.locator('#P172 tr').filter({has:page.locator('td:first-child').filter({hasText:/^PyMOL/})});
+    for(const pattern of [/1\.7\.6\.0/,/Gln60 rotamer/,/K392/,/gauche/])assert.match(await rotamer.innerText(),pattern);
+    await page.locator('#query').fill('10.1016/j.ajhg.2026.06.016');const localRmsd=page.locator('#P178 tr').filter({has:page.locator('td:first-child').filter({hasText:/^PyMOL/})});
+    assert.match(await localRmsd.innerText(),/does not specify whether each local window was refitted/);
+    await page.locator('#query').fill('10.1038/s41588-025-02388-8');const palette=page.locator('#P133 tr').filter({has:page.locator('td:first-child').filter({hasText:/^PyMOL/})});
+    assert.match(await palette.innerText(),/red for very high and blue for very low/);
+    await page.goto('http://127.0.0.1:8768/literature-warnings.html');await page.setViewportSize({width:390,height:1100});
+    const pymolWarning=page.locator('#pymol-actions');assert.equal(await pymolWarning.isVisible(),true);assert.match(await pymolWarning.innerText(),/Typed APBS surface integration is available/);await pymolWarning.screenshot({path:path.join(out,'pymol-warning-mobile.png')});
+    const geometryWarning=page.locator('#molecular-geometry-actions');assert.equal(await geometryWarning.isVisible(),true);await geometryWarning.screenshot({path:path.join(out,'molecular-geometry-warning-mobile.png')});
+    report.geometry_warning_mobile_layout=await page.evaluate(()=>({viewport:innerWidth,content:document.documentElement.scrollWidth}));assert(report.geometry_warning_mobile_layout.content<=report.geometry_warning_mobile_layout.viewport);assert.equal(errors.length,0,errors.join('\n'));
+    report.screenshots.push('molecular-geometry-actions.png','pymol-original-subset.png','pymol-P013-source.png','molecular-geometry-warning-mobile.png','pymol-actions-desktop.png','pymol-warning-mobile.png');
+    report.checks.push('Native molecular geometry development command has prominent explicit units,pairs,nonunique-fit,failure and recovery actions',
+      'PyMOL original typed subset and separate native geometry helper are distinguished from the canonical executable and separately validated APBS surface workflow and unresolved manual roles',
+      'PyMOL Linux/WSL/private-wheel installation,explicit permission flags,dependency skip and failure recovery actions are prominent',
+      'PyMOL rounded coordinate export and omitted bond categories require authoritative full-precision final JSON ledgers',
+      'PyMOL nativeWindows skip boundary and mobile warnings remain visible without horizontal overflow or JavaScript errors',
+      'P013 align and APBS retain the supporting paragraph124 and separate electrostatics requirements',
+      'P172 open-source historical rotamer and manual chi-torsion choices remain explicit',
+      'P178 local RMSD refitting ambiguity remains unresolved rather than silently choosing a frame',
+      'P133 explicit reversed confidence palette is retained',
+      'Native geometry390px warning layout has no horizontal overflow or JavaScript errors');
+    await page.goto('http://127.0.0.1:8768/literature-review.html');await page.setViewportSize({width:1440,height:1200});
+    const apbsActions=page.locator('#apbs-actions');assert.equal(await apbsActions.isVisible(),true);
+    for(const pattern of [/b1c26fa4/,/APBS3\.5\.0/,/32bit x86/,/Windows x86_64/,/--allow-install/,/--allow-download/,/skip analysis with exit 3/,/Analysis never installs/,/Every node is audited/,/failures return 2/,/NOT solvation or binding/,/electrostatic-grid/,/needs only Java/,/PDB2PQR/,/remain in progress/])assert.match((await apbsActions.innerText()).replace(/\s+/g,' '),pattern);
+    await apbsActions.screenshot({path:path.join(out,'apbs-actions-desktop.png')});
+    await page.locator('#tools-tab').click();await page.locator('#coverage').selectOption('upstream-adapter-validated');await page.locator('#query').fill('APBS');
+    const apbs=page.locator('#results article').filter({has:page.getByRole('heading',{name:/^APBS \(/})});assert.equal(await apbs.count(),1);
+    for(const pattern of [/2 papers/,/apbs-tools/,/6,013,002/,/48 focused tests/,/P026 APBS74/,/not specify|neither specifies/,/raw total energy/i,/skip3/,/APBS_WORKFLOWS/])assert.match(await apbs.innerText(),pattern);
+    await apbs.screenshot({path:path.join(out,'apbs-original-subset.png')});
+    await page.locator('#coverage').selectOption('');await page.locator('#papers-tab').click();await page.locator('#query').fill('10.1038/s41586-024-08493-8');
+    const apbsSource=page.locator('#P026 tr').filter({has:page.locator('td:first-child').filter({hasText:/^APBS$/})});assert.equal(await apbsSource.count(),1);await apbsSource.getByText('Evidence locator',{exact:true}).click();
+    assert.match(await apbsSource.innerText(),/paragraph 54/);assert.match(await apbsSource.innerText(),/Generated electrostatic maps/);assert.doesNotMatch(await apbsSource.innerText(),/reported 2\.5\.4|reported 3\.0\.2|reported 74/);await apbsSource.screenshot({path:path.join(out,'apbs-P026-source.png')});
+    await page.goto('http://127.0.0.1:8768/literature-warnings.html');await page.setViewportSize({width:390,height:1100});const apbsWarning=page.locator('#apbs-actions');assert.equal(await apbsWarning.isVisible(),true);await apbsWarning.screenshot({path:path.join(out,'apbs-warning-mobile.png')});
+    assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));assert.equal(errors.length,0,errors.join('\n'));
+    report.screenshots.push('apbs-actions-desktop.png','apbs-original-subset.png','apbs-P026-source.png','apbs-warning-mobile.png');
+    report.checks.push('APBS original Windows32bit solver and Java-only grid helper have prominent permissions,dependency skips,NaN quarantine,raw-energy interpretation and recovery actions','APBS two source roles and P026 citation suffix retain unspecified solver versions separately from nearby PyMOL editions','APBS development card exposes48tests,6,013,002 original nodes and separate validated preparation/surface workflows','APBS390px warnings have no overflow or JavaScript errors');
+    report.checks=report.checks.map(check=>check.replace('32 upstream adapters','33 upstream adapters').replace('among32adapters','among33adapters'));
+    await page.goto('http://127.0.0.1:8768/literature-review.html');await page.setViewportSize({width:1440,height:1200});
+    const workflow=page.locator('#electrostatic-workflow-actions');assert.equal(await workflow.isVisible(),true);
+    for(const pattern of [/b1c26fa4/,/pdb2pqr-tools/,/PDB2PQR3\.8\.0/,/PROPKA3\.5\.1/,/Windows x86_64 CPython3\.12/,/potential-surface/,/Linux Java in WSL/,/--allow-install/,/--allow-download/,/Analysis never installs/,/skip analysis with exit 3/,/failures return 2/,/dependent stages skipped/,/source-pqr/,/zero-radius/,/probe-offset/,/render-grid\.dx/,/Every loaded field node/,/107 focused tests/,/44,940/,/1,647,750/,/Java25 Unicode/,/apbs-workflow-validation\.json/,/rerun to a new directory/])assert.match((await workflow.innerText()).replace(/\s+/g,' '),pattern);
+    await workflow.screenshot({path:path.join(out,'electrostatic-workflow-desktop.png')});
+    const workflowValidation=JSON.parse(fs.readFileSync(path.join(root,'docs/literature/omics-2023-2026/apbs-workflow-validation.json'),'utf8'));
+    const inventory=JSON.parse(fs.readFileSync(path.join(root,'docs/literature/omics-2023-2026/tool-inventory.json'),'utf8'));
+    for(const name of ['apbs','pymol']){const item=inventory.find(t=>t.id===name);assert.equal(item.workflow_candidate_sha256,workflowValidation.candidate_sha256);assert.equal(item.potential_surface_cli,'potential-surface');assert.equal(item.preparation_cli,'pdb2pqr-tools');}
+    await page.goto('http://127.0.0.1:8768/literature-warnings.html');await page.setViewportSize({width:390,height:1000});await page.evaluate(()=>document.documentElement.dataset.theme='dark');
+    const workflowWarning=page.locator('#electrostatic-workflow-actions');assert.equal(await workflowWarning.isVisible(),true);assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));await workflowWarning.screenshot({path:path.join(out,'electrostatic-workflow-warning-mobile-dark.png')});
+    const {pathToFileURL}=require('url');
+    for(const [name,relative,label] of [['full-chain','build/literature-review/apbs-workflow-runtime/end-to-end-2/结果 空间/surface/figure.svg',/potential \(kT\/e\)/],['volts','build/literature-review/apbs-workflow-runtime/packaged-surfaces-2/volts-asymmetric-ramp/figure.svg',/potential \(V\)/]]){
+      await page.setViewportSize({width:1280,height:1240});await page.goto(pathToFileURL(path.join(root,relative)).href);assert.equal(await page.locator('image').count(),1);assert.match(await page.locator('svg').textContent(),label);assert.equal(await page.locator('script').count(),0);assert((await page.locator('image').getAttribute('xlink:href')).startsWith('data:image/png;base64,'));await page.screenshot({path:path.join(out,'potential-figure-'+name+'.png')});
+    }
+    assert.equal(errors.length,0,errors.join('\n'));
+    report.checks.push('Typed preparation/solver/potential-surface commands and exact development artifact are visible','Windows preparation and Linux/WSL original rendering runtime boundaries are prominent','Explicit installation/download,skip3,failure2 and dependent-stage recovery remain visible','Source-PQR versus display radii,zero-radius atoms and probe-offset choices remain explicit','Raw DX and canonical short-float32 delivery retain full-node precision audit requirements','Workflow cards match the107-test validation artifact and original preparation/surface counts','390px dark workflow warnings have no horizontal overflow or JavaScript errors','Actual full-chain and converted-volts standalone SVG figures embed original PNG and correct unit labels');
+    report.screenshots.push('electrostatic-workflow-desktop.png','electrostatic-workflow-warning-mobile-dark.png','potential-figure-full-chain.png','potential-figure-volts.png');
+    await page.goto('http://127.0.0.1:8768/literature-review.html');await page.setViewportSize({width:1440,height:1200});
+    await page.locator('#tools-tab').click();await page.locator('#coverage').selectOption('upstream-adapter-validated');await page.locator('#query').fill('Integrative Genomics Viewer');
+    const igv=page.locator('#results article').filter({has:page.getByRole('heading',{name:/^Integrative Genomics Viewer \(IGV\)/})});assert.equal(await igv.count(),1);
+    for(const pattern of [/18 papers/,/igv-tools/,/P217/,/Java21/,/17packaged cases/,/IGV_SOURCE_REVIEW/,/18source roles\/7supporting pointers/,/2426observations/,/623reviewed/,/remain unfinished/])assert.match(await igv.innerText(),pattern);
+    await igv.screenshot({path:path.join(out,'igv-validated-card.png')});
+    await page.locator('#coverage').selectOption('');await page.locator('#papers-tab').click();await page.locator('#query').fill('10.1016/j.ajhg.2024.07.020');
+    const allele=page.locator('#P217 tr').filter({has:page.locator('td:first-child').filter({hasText:/^Integrative Genomics Viewer \(IGV\)$/})});assert.equal(await allele.count(),1);await allele.getByText('Evidence locator',{exact:true}).click();
+    for(const pattern of [/23,255/,/8,184/,/74%\/26%/,/paragraph 33/,/Supporting paragraph 20/,/Supporting paragraph 30/,/outside the displayed RNA/,/downsampling/,/generic pileup/,/upstream-adapter-validated/])assert.match(await allele.innerText(),pattern);
+    assert.doesNotMatch(await allele.innerText(),/reported 7\.1\.4|reported 2\.17/);await allele.screenshot({path:path.join(out,'igv-P217-reviewed-results.png')});
+    const igvInventory=JSON.parse(fs.readFileSync(path.join(root,'docs/literature/omics-2023-2026/tool-inventory.json'),'utf8')).find(t=>t.id==='igv');assert.equal(igvInventory.project_adapter_available,true);assert.equal(igvInventory.implementation_status,'upstream-adapter-validated');assert.equal(igvInventory.paper_count,18);
+    await page.goto('http://127.0.0.1:8768/literature-warnings.html');const igvWarning=page.locator('#igv-actions');assert.equal(await igvWarning.isVisible(),true);
+    for(const pattern of [/Validated bounded command/,/All587previous source reviews/,/P110/,/12scientific workflows/,/Required action/,/allow-install/,/SKIP the dependent analysis/,/coordinate-label/])assert.match(await igvWarning.innerText(),pattern);
+    await igvWarning.screenshot({path:path.join(out,'igv-required-status-desktop.png')});await page.setViewportSize({width:390,height:1000});await page.evaluate(()=>document.documentElement.dataset.theme='dark');assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));await igvWarning.screenshot({path:path.join(out,'igv-required-status-mobile-dark.png')});
+    assert.equal(errors.length,0,errors.join('\n'));report.checks.push('IGV bounded original development command and exact native audits match upstream-adapter-validated status','IGV eighteen paper roles and current2426observations/623reviews are visible','P217 direct Results evidence retains primary33 and supporting20/30 pointers','P217 allele-depth counts,linked-SNV/RNA boundary and unknown filtering/downsampling rules are explicit','IGV development card metadata matches validated bounded availability and18papers','IGV warnings preserve587earlier reviews and exclude P110session availability as execution','IGV390px dark warnings have no horizontal overflow or page errors');report.screenshots.push('igv-validated-card.png','igv-P217-reviewed-results.png','igv-required-status-desktop.png','igv-required-status-mobile-dark.png');
+    report.checks=report.checks.map(check=>check.replace('33 upstream adapters','34 upstream adapters').replace('among33adapters','among34adapters'));
+    await page.goto('http://127.0.0.1:8768/literature-review.html');await page.setViewportSize({width:1440,height:1200});await page.locator('#tools-tab').click();await page.locator('#coverage').selectOption('missing');await page.locator('#query').fill('SAIGE');
+    assert.equal(await page.locator('#results article').count(),3);const saigeInventory=JSON.parse(fs.readFileSync(path.join(root,'docs/literature/omics-2023-2026/tool-inventory.json'),'utf8'));
+    for(const [id,count] of [['saige',16],['saige-gene',2],['metasaige',1]]){const item=saigeInventory.find(t=>t.id===id);assert.equal(item.implementation_status,'missing');assert.equal(item.project_adapter_available,false);assert.equal(item.paper_count,count);}
+    const saigeItem=saigeInventory.find(t=>t.id==='saige');assert.equal(saigeItem.available_native_method,'unrelated-select');assert.equal(saigeItem.native_method_candidate_sha256,'9786ba29bd4dc92c43174af90e1ca643e5479cd5c8b824144a10635874059adf');const saigeCard=page.locator('#results article').filter({has:page.getByRole('heading',{name:/^SAIGE \(/})});assert.equal(await saigeCard.count(),1);
+    for(const pattern of [/16 papers/,/unrelated-select/,/501 independent/,/623 reviews/,/admitted runtime/,/maximal, not guaranteed largest/])assert.match(await saigeCard.innerText(),pattern);await saigeCard.screenshot({path:path.join(out,'saige-native-component-missing-adapter-card.png')});
+    await page.locator('#coverage').selectOption('');await page.locator('#papers-tab').click();await page.locator('#query').fill(papers.find(p=>p.paper_id==='P147').doi);const saigeReuse=page.locator('#P147 tr').filter({has:page.locator('td:first-child').filter({hasText:/^SAIGE(?:reported |$)/})});assert.equal(await saigeReuse.count(),1);await saigeReuse.getByText('Evidence locator',{exact:true}).click();for(const pattern of [/1,402|1402/,/published|Published/,/summary/,/paragraph 28/,/missing/])assert.match(await saigeReuse.innerText(),pattern);await saigeReuse.screenshot({path:path.join(out,'saige-P147-reviewed-summary-reuse.png')});
+    await page.locator('#query').fill(papers.find(p=>p.paper_id==='P191').doi);const saigeVersion=page.locator('#P191 tr').filter({has:page.locator('td:first-child').filter({hasText:/^SAIGE(?:reported |$)/})});await saigeVersion.getByText('Evidence locator',{exact:true}).click();for(const pattern of [/1\.3\.6/,/paragraph 16/,/Supporting paragraph 15/])assert.match(await saigeVersion.innerText(),pattern);assert.doesNotMatch(await saigeVersion.innerText(),/reported 16/);
+    await page.locator('#query').fill(papers.find(p=>p.paper_id==='P194').doi);const saigeGraph=page.locator('#P194 tr').filter({has:page.locator('td:first-child').filter({hasText:/^SAIGE(?:reported |$)/})});await saigeGraph.getByText('Evidence locator',{exact:true}).click();for(const pattern of [/complete/,/greedy/,/tie|ties/,/unstated|does not state/])assert.match(await saigeGraph.innerText(),pattern);
+    const nativeValidation=JSON.parse(fs.readFileSync(path.join(root,'docs/literature/omics-2023-2026/unrelated-selection-validation.json'),'utf8'));assert.equal(nativeValidation.candidate_sha256,saigeItem.native_method_candidate_sha256);assert.equal(nativeValidation.packaged_cases,21);assert.equal(nativeValidation.requires_external_runtime,false);const intake=JSON.parse(fs.readFileSync(path.join(root,'docs/literature/omics-2023-2026/saige-runtime-intake.json'),'utf8'));assert.equal(intake.project_adapter_available,false);assert.equal(intake.runtime_sealed,false);
+    const saigeActions=page.locator('#saige-actions');assert.equal(await saigeActions.isVisible(),true);for(const pattern of [/SKIP dependent/,/Required action/,/installer/,/forbidden/,/unrelated-select/,/No external runtime/,/complete additive-GRM/,/explicit ties/,/maximal, not guaranteed largest/,/failures return 2/,/All 604 earlier/,/2,426 observations/,/623 reviewed/,/153 supporting/,/29 centered-fast/,/3 projected-retest/])assert.match(await saigeActions.innerText(),pattern);await saigeActions.screenshot({path:path.join(out,'saige-required-actions-desktop.png')});
+    await page.goto('http://127.0.0.1:8768/literature-warnings.html');await page.setViewportSize({width:390,height:1000});await page.evaluate(()=>document.documentElement.dataset.theme='dark');assert.equal(await page.locator('#saige-actions').isVisible(),true);assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));await page.locator('#saige-actions').screenshot({path:path.join(out,'saige-required-actions-mobile-dark.png')});assert.equal(errors.length,0,errors.join('\n'));
+    report.checks.push('SAIGE16/SAIGE-GENE2/Meta-SAIGE1 remain missing with no project adapter','Native unrelated-select candidate and501references are distinct from SAIGE availability','P147 published-summary Results reuse retains primary28','P191 attached version1.3.6 and support15 retain correct citation identity','P194 custom eligibility/greedy graph role retains unknown tie/update limits','Native21packaged cases and unsealed original intake match inventory metadata','SAIGE skipped-analysis and explicit installation/coverage/tie/failure recovery are prominent','Current2426observations/623 reviews/153supports preserve604earlier reviews','SAIGE390px dark warnings have no horizontal overflow or page errors');report.screenshots.push('saige-native-component-missing-adapter-card.png','saige-P147-reviewed-summary-reuse.png','saige-required-actions-desktop.png','saige-required-actions-mobile-dark.png');
     fs.writeFileSync(path.join(out, 'ui-validation.json'), JSON.stringify(report, null, 2) + '\n');
     console.log(JSON.stringify(report));
   } finally { await browser.close(); }

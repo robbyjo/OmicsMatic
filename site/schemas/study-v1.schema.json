@@ -711,6 +711,30 @@
           },
           "description": "Paths to audited browser receipt.yaml files. May be absent initially; import then repeat the same run command."
         },
+        "public_literature_context": {
+          "type": "array",
+          "maxItems": 50,
+          "uniqueItems": true,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "file",
+              "sha256"
+            ],
+            "properties": {
+              "file": {
+                "type": "string",
+                "minLength": 1
+              },
+              "sha256": {
+                "type": "string",
+                "pattern": "^[a-fA-F0-9]{64}$"
+              }
+            }
+          },
+          "description": "Explicit hash-pinned public-literature context specifications. Only selected ranges from verified native full-text reference-bundle members can enter their declared impact/manuscript purposes; absent by default."
+        },
         "next_steps": {
           "type": "boolean",
           "default": false
@@ -2491,6 +2515,9 @@
               "type": "integer",
               "minimum": 1,
               "maximum": 3600
+            },
+            "installation": {
+              "$ref": "#/$defs/variantToolInstallation"
             }
           }
         },
@@ -2599,6 +2626,10 @@
                 "type": "string",
                 "pattern": "^[A-Za-z0-9_:.+-]{1,150}$"
               }
+            },
+            "installation": {
+              "$ref": "#/$defs/alphaGenomeToolInstallation",
+              "description": "Automatic private SDK setup by default when no external Python is supplied. Software installation does not provide model API credentials."
             }
           }
         }
@@ -7162,6 +7193,66 @@
           }
         }
       ]
+    },
+    "variantToolInstallation": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "mode": {
+          "enum": [
+            "automatic",
+            "external"
+          ]
+        },
+        "home": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4096
+        },
+        "python": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4096
+        },
+        "archive": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4096
+        },
+        "source_url_env": {
+          "type": "string",
+          "pattern": "^[A-Za-z_][A-Za-z0-9_]*$"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-fA-F0-9]{64}$"
+        },
+        "accept_license": {
+          "type": "boolean"
+        }
+      }
+    },
+    "alphaGenomeToolInstallation": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "mode": {
+          "enum": [
+            "automatic",
+            "external"
+          ]
+        },
+        "home": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4096
+        },
+        "python": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4096
+        }
+      }
     }
   }
 }

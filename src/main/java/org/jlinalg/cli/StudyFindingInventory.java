@@ -146,6 +146,8 @@ final class StudyFindingInventory implements StudyOperationExecutor {
         Map<String, Object> summary = new LinkedHashMap<>();
         summary.put("schema_version", 1); summary.put("scope", "study_wide_all_active_hypotheses"); summary.put("findings", findings.size());
         summary.put("candidates", findings.values().stream().filter(row -> Boolean.TRUE.equals(row.get("candidate"))).count());
+        var backgroundLiterature=literatureCoverage.background();if(!backgroundLiterature.isEmpty())summary.put("literature_background",backgroundLiterature);
+        var publicContext=StudyPublicLiteratureContext.read(context);if(!publicContext.isEmpty())summary.put("public_literature_context",publicContext);
         var literatureStates=new TreeMap<String,Long>();for(var finding:findings.values()){String state=text(map(finding.get("literature_coverage")).get("query_evidence_state"));if(!state.isBlank())literatureStates.merge(state,1L,Long::sum);}if(!literatureStates.isEmpty())summary.put("literature_coverage",Map.of("finding_rows_by_state",literatureStates,"interpretation",StudyLiteratureCoverage.CAVEAT));
         summary.put("finding_grouping",ldGrouping.summary());
         if(ldGrouping.summary().containsKey("needs"))summary.put("needs",ldGrouping.summary().get("needs"));

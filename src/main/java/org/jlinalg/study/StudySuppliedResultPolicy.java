@@ -125,6 +125,36 @@ public final class StudySuppliedResultPolicy {
             .anyMatch(h -> !StudyIO.optionalList(StudyIO.optionalMap(h.get("analysis"), "analysis").get("supplied_results"), "supplied_results").isEmpty());
     }
 
+    /** A partial primary is retained evidence, not an owner of the completed stage. */
+    public static boolean partialPrimary(Map<String, Object> definition) {
+        return "primary".equals(definition.get("role")) && "partial".equals(definition.get("reported_status"));
+    }
+
+    public static boolean ownsStage(Map<String, Object> definition) {
+        return "primary".equals(definition.get("role")) && !partialPrimary(definition);
+    }
+
+    public static String operationType(Map<String, Object> definition) {
+        if (partialPrimary(definition)) return "supplied_partial";
+        return "primary".equals(definition.get("role")) ? String.valueOf(definition.get("kind"))
+            : "contribution".equals(definition.get("role")) ? "supplied_contribution" : "supplied_sensitivity";
+    }
+
+    /** Automatic completion obeys explicitly disabled stage policies. */
+    public static boolean completionEnabled(Map<String, Object> analysis, String kind) {
+        String key = switch (kind) {
+            case "network_analysis", "network_modules", "module_gene_ontology" -> "network";
+            case "ranked_gsea" -> "gsea";
+            case "risk_score_evaluation", "risk_score_related_phenotypes" -> "risk_score";
+            case "rare_variant_analysis" -> "rare_variants";
+            case "rare_set_omnibus" -> "rare_omnibus";
+            case "variant_annotation", "variant_scoring" -> "variant_followup";
+            case "heterogeneity_review" -> "heterogeneity";
+            default -> kind;
+        };
+        return !Boolean.FALSE.equals(StudyIO.optionalMap(analysis.get(key), key).get("enabled"));
+    }
+
     /** Aggregate bookkeeping safe for automatic reports; original prose stays local. */
     public static Map<String,Object> aggregateFamily(Map<String,Object> family) {
         var result=new LinkedHashMap<>(family);

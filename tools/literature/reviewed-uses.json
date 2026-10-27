@@ -4970,6 +4970,1302 @@
       "use_summary": "Inferred PRS weights for metabolic-syndrome components and latent factors from UKB-excluded GWAS using phi=0.01,a European 1000 Genomes phase3 LD panel and effective N for binary phenotypes; reported a=1,b=0.5,1000/500/5 sampling settings preceded PLINK2 scoring.",
       "implementation_scope_note": "Effective N is a supplied study quantity,not silently substituted for total sample size. Genomic SEM,individual genotype scoring and predictive/clinical evaluation are separate; the exact PRS-CS source build is unstated.",
       "version_reported_near_name": ""
+    },
+    {
+      "pmcid": "PMC12823418",
+      "doi": "10.1038/s41586-025-09887-y",
+      "tool_id": "cellranger",
+      "evidence_paragraph_sha256": "7ac5f6a26cce7418153e9a7403abfdf334f35322d4e7eff88683c015cdd32779",
+      "use_summary": "Aligned sample snRNA-seq FASTQs with CellRanger against mm10-2020-A before independent cell/gene QC and analysis.",
+      "implementation_scope_note": "Scrublet doublet removal, Harmony correction and differential expression are downstream operations.",
+      "version_reported_near_name": "6.0.2"
+    },
+    {
+      "pmcid": "PMC12893920",
+      "doi": "10.1038/s41586-025-09875-2",
+      "tool_id": "cellranger",
+      "evidence_paragraph_sha256": "cb4d8e4d7e2df08dc7c4e0ed0ff513241ebce2cfb5c49d0987bed9d3b18b251a",
+      "use_summary": "Processed scATAC-seq libraries with Cell Ranger ATAC v2 for read filtering, alignment, barcode counting and cell calling against the 10x GRCh38 reference v3.1.0.",
+      "implementation_scope_note": "The reference version is separate from the ATAC software version. ArchR filtering, doublet handling, LSI, Leiden and UMAP are downstream; this is not the GEX count pipeline.",
+      "version_reported_near_name": "ATAC 2"
+    },
+    {
+      "pmcid": "PMC12893904",
+      "doi": "10.1038/s41586-025-09873-4",
+      "tool_id": "cellranger",
+      "evidence_paragraph_sha256": "9c58006afa72a0bc986b1a6d5c3d5483dca051b70061857cd93e5814e05fe9a4",
+      "use_summary": "Processed and aligned 5-prime single-cell sequencing reads to mouse GRCm39/mm39 using CellRanger v7.1.0 in the dissociated-cell and B16-OVA TIL experiments.",
+      "implementation_scope_note": "The second section describes scRNA-seq and V(D)J-seq, but does not name an exact CellRanger subcommand or VDJ reference. Do not infer those from the section title.",
+      "version_reported_near_name": "7.1.0",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 93,
+          "section": "Methods / scRNA-seq and V(D)J-seq analyses of B16-OVA TILs",
+          "paragraph_sha256": "442177999e6f83c8bc7e02d6b4f1bca5bec93b781aab2f56396d2002f10c6aae"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC11735409",
+      "doi": "10.1038/s41586-024-08332-w",
+      "tool_id": "cellranger",
+      "evidence_paragraph_sha256": "12239a45a3a5102f500f3694d56993e0ac20c388839035b0f0e3b3fc38c6587b",
+      "use_summary": "Aligned chick reads to a custom GRCg6a.101 10x reference and posterior-neuruloid reads to human GRCh38-3.0.0 using CellRanger v4.0.0.",
+      "implementation_scope_note": "DropEst, not CellRanger, supplied the explicitly described chick read counts. Custom reference biotypes and the human/chick references are distinct; Scanpy and trajectory analysis are downstream.",
+      "version_reported_near_name": "4.0.0",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 45,
+          "section": "Methods / Single-cell transcriptomics of posterior neuruloids",
+          "paragraph_sha256": "d4256b9f321ff9fffd046f692b0ab93ac63bd390980626b7f70513b8f13ac641"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC10765522",
+      "doi": "10.1038/s41586-023-06845-4",
+      "tool_id": "cellranger",
+      "evidence_paragraph_sha256": "708cf74cb6facc1a55dc55cc838274f6dc0a4c64aad1809ae80af3e2ae5c2b4f",
+      "use_summary": "Demultiplexed multiome data with cellranger-arc mkfastq, built an mm10 reference with extended olfactory-receptor GTF annotations using mkref, and aligned with count.",
+      "implementation_scope_note": "This is Cell Ranger ARC, with no exact software version stated in these paragraphs. Seurat/Signac weighted-neighbour analysis is separate.",
+      "version_reported_near_name": "",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 2,
+          "section": "GI accessibility changes with neuronal differentiation and genomic compartmentalization",
+          "paragraph_sha256": "5ac2ea2e273c71b3cba7a2715938da3bebd679d31944a1c77acfdf1684206377"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC12823447",
+      "doi": "10.1038/s41586-025-09770-w",
+      "tool_id": "cellranger",
+      "evidence_paragraph_sha256": "572b15ff7069ad69a919b2848259b42720107903bf5df06df44b6d71b732c490",
+      "use_summary": "Mapped snRNA-seq reads to mm10 with CellRanger count v8.0.1 and separately aggregated biological replicates with CellRanger aggr v8.0.1 using reported default normalization.",
+      "implementation_scope_note": "Replicates sequenced in different runs were aggregated separately. Seurat filtering, SCTransform and differential-expression inputs are independent choices.",
+      "version_reported_near_name": "8.0.1"
+    },
+    {
+      "pmcid": "PMC11754113",
+      "doi": "10.1038/s41586-024-08314-y",
+      "tool_id": "cellranger",
+      "evidence_paragraph_sha256": "8471b5286b1615535d672cbffdfc3580f43ce23d7efe3bb09e52a52514c41b7e",
+      "use_summary": "Counted Perturb-seq GEX, guide and antibody libraries using cellranger count v7.1.0, expect-cells=45000 and chemistry=SC5P-R2; aggr combined counts across wells.",
+      "implementation_scope_note": "The GEX reference is GRCh38-2020-A; guide patterns and antibody/hashtag feature references differ. Souporcell donor assignment is separate from Cell Ranger processing.",
+      "version_reported_near_name": "7.1.0"
+    },
+    {
+      "pmcid": "PMC10764288",
+      "doi": "10.1038/s41586-023-06837-4",
+      "tool_id": "cellranger",
+      "evidence_paragraph_sha256": "bbf1cfc8474da80b9e2cc28e63fcafcd827b36662211335a3e87dbbacbf24ab6",
+      "use_summary": "Used GEX v6.1.2 mkfastq/count with include-introns against GRCh38 or mm10, and ARC v2.0.2 mkfastq/count for human multiome data. GEX aggr adjusted sequencing-depth differences; its cell calls/barcodes also supported spatial matching and reproducibility denominators.",
+      "implementation_scope_note": "Keep GEX and ARC outputs separate. Spatial-barcode filtering/DBSCAN placement, CellBender correction and Signac/MACS2 recalled peaks are separate analyses; Cell Ranger did not implement those steps.",
+      "version_reported_near_name": "6.1.2; ARC 2.0.2",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 41,
+          "section": "Methods / Slide-tags data preprocessing / Multiomic snATAC-seq and snRNA-seq data",
+          "paragraph_sha256": "d5bc963c06fc96dd778f1fcdab60364b8d62932fd7621eaccc7ac88ddecb486b"
+        },
+        {
+          "paragraph_index": 42,
+          "section": "Methods / Slide-tags data preprocessing / Spatial barcode data",
+          "paragraph_sha256": "8deb9375269447ba1293128f3373b17607c394c1825ff18334eaf18b3dfcaa8b"
+        },
+        {
+          "paragraph_index": 43,
+          "section": "Methods / Slide-tags data preprocessing / Assignment of spatial locations to nuclei",
+          "paragraph_sha256": "df239353b8fffeb8354abda9043d5d9034fea5a8f34e46484fec521f9aed3a8f"
+        },
+        {
+          "paragraph_index": 53,
+          "section": "Methods / Mouse brain analysis / Comparison of Slide-tags snRNA-seq versus snRNA-seq data",
+          "paragraph_sha256": "f98d460eeafb363c073859af0731588f1909eb40090ecafe775710d1eb52cbf4"
+        },
+        {
+          "paragraph_index": 62,
+          "section": "Methods / Human brain analysis / Reproducibility analysis",
+          "paragraph_sha256": "3e70408a6a2b2138f10254dbfa998a7b53dc13e893cae1fd391a5ff8551cfd2e"
+        },
+        {
+          "paragraph_index": 74,
+          "section": "Methods / Melanoma analysis / Quality control and cell type assignment / Multiome ATAC and snRNA-seq data",
+          "paragraph_sha256": "000819d560d6ab0e6790c9b49047b73692ecb63f4285f10c91922af4ed2576d3"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC13645638",
+      "doi": "10.1038/s41586-026-10954-1",
+      "tool_id": "cellranger",
+      "evidence_paragraph_sha256": "714e13f3eade8a9bd3141aebe398639274b0ecfa431812a78b7410f4a6756a5a",
+      "use_summary": "Aligned and quantified GEM-X Universal 3-prime v4 on-chip-multiplexed mouse libraries against GRCm39-2024-A with CellRanger, reported as v9.01.",
+      "implementation_scope_note": "Retain the literal v9.01 report rather than silently converting it to a pinned v9.0.1 build. The paragraph does not specify a subcommand; Seurat/Harmony and annotation are downstream.",
+      "version_reported_near_name": "9.01"
+    },
+    {
+      "pmcid": "PMC13668669",
+      "doi": "10.1038/s41586-026-10987-6",
+      "tool_id": "cellranger",
+      "evidence_paragraph_sha256": "8c5b65f79b06cb4c8d9972f73bd83ef339594c2c353cc74a74c44e380f7f3b6b",
+      "use_summary": "Used Cell Ranger v9.0.1 multi for cell-barcode calling, read alignment and quality assessment with a custom GRCh38 GENCODE32/Ensembl98 reference containing eGFP.",
+      "implementation_scope_note": "Custom-reference construction settings are not fully specified here. CellBender ambient removal, scDblFinder and subsequent cell filtering are separate.",
+      "version_reported_near_name": "9.0.1"
+    },
+    {
+      "pmcid": "PMC11779626",
+      "doi": "10.1038/s41586-024-08290-3",
+      "tool_id": "cellranger",
+      "evidence_paragraph_sha256": "37aa8e3a444db74b088259a6ef098cdee9021497bc23bf63d8f4622928d06eb5",
+      "use_summary": "Processed human scRNA-seq with Cell Ranger v3 against GRCh38 and mouse scRNA-seq with v5 against GRCm38 before separate matrix analysis.",
+      "implementation_scope_note": "Only major versions are stated. Human and mouse pipelines/reference builds differ; CellBender, DoubletDetection, Scanpy and protein-activity work must not be assigned to Cell Ranger.",
+      "version_reported_near_name": "3; 5",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 37,
+          "section": "Methods / Mouse scRNA-seq analysis",
+          "paragraph_sha256": "86c82cc2624b79f2abea41bc22d0e74a059f8db8a83bd7f0b188d1cb64a15318"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC13668678",
+      "doi": "10.1038/s41586-026-10981-y",
+      "tool_id": "cellranger",
+      "evidence_paragraph_sha256": "8f03c054c747e967ac5f6ed3f4e0fff7b8f812598175b5d6614490432f358ea7",
+      "use_summary": "Generated sample count matrices with Cell Ranger v7.0.1 against human GRCh38-2020-A, including exonic and intronic reads.",
+      "implementation_scope_note": "CellBender ambient correction, Seurat RPCA integration and cluster-based scDblFinder filtering are separate.",
+      "version_reported_near_name": "7.0.1"
+    },
+    {
+      "pmcid": "PMC10719095",
+      "doi": "10.1038/s41586-023-06819-6",
+      "tool_id": "cellranger",
+      "evidence_paragraph_sha256": "1ddf90b323b08a35cd16ea874ec51e81ae36b0475f6c39279d27cf9ec3cdc898",
+      "use_summary": "Used cellranger-arc for multiome processing and sense intronic/exonic RNA UMI matrices. Separately, paired-tag libraries used ARC v2.0.0 mkfastq, ATAC v2.0.0 for DNA and GEX v6.1.2 for RNA, followed by manual barcode pairing.",
+      "implementation_scope_note": "The multiome paragraph does not specify an ARC version. Versions in the paired-tag paragraph apply to that distinct workflow; do not transfer them silently or treat manual paired-tag association as native multiome processing.",
+      "version_reported_near_name": "ARC 2.0.0; ATAC 2.0.0; GEX 6.1.2",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 85,
+          "section": "Methods / Analysis of paired-tag RNA and H3K27ac",
+          "paragraph_sha256": "c63891e7e054df6cb916f78db325e179801c9b8f9fe7fc40b21fcb20de682cb4"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC10719111",
+      "doi": "10.1038/s41586-023-06818-7",
+      "tool_id": "cellranger",
+      "evidence_paragraph_sha256": "46ed356a262b86b6f99abb449aaa6da467e7cb9894d269b047ef0431fd9934b2",
+      "use_summary": "Demultiplexed and aligned brain-wide snRNA-seq against GRCm39.103 using CellRanger v5.0.1 with an additional include-introns setting.",
+      "implementation_scope_note": "CellBender v3-alpha ambient-RNA handling is separate. Reported default settings do not identify an archived runtime checksum.",
+      "version_reported_near_name": "5.0.1"
+    },
+    {
+      "pmcid": "PMC10719099",
+      "doi": "10.1038/s41586-023-06817-8",
+      "tool_id": "cellranger",
+      "evidence_paragraph_sha256": "24819be2d5d2e99a4718542835c5081ecfb20b064286b0ae26996d6b63f36632",
+      "use_summary": "Aligned snRNA-seq to mm10-2020-A with CellRanger v6.1.2. Built separate GFP or mScarlet custom references with v5.0.1 mkref and used v6.1.2 in the reported 10x cloud workflow to detect reporter transcripts.",
+      "implementation_scope_note": "Reference-building and processing versions differ. Reporter choice depended on sorted signal; the study cloud upload is historical provenance and does not authorize this project to upload data.",
+      "version_reported_near_name": "6.1.2; mkref 5.0.1",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 46,
+          "section": "Methods / snRNA-seq / snRNA-seq preprocessing, quality control and removal of second-order nuclei",
+          "paragraph_sha256": "45f481d3fc9bd71ae755bb7aa42ff07a38c53cba7e2dc2e6f5dd9012ab975eb0"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC10719114",
+      "doi": "10.1038/s41586-023-06812-z",
+      "tool_id": "cellranger",
+      "evidence_paragraph_sha256": "8bd51e36853556ae03d375f8b874e2c5b9214dcb2f52ed530039da568a159517",
+      "use_summary": "Aligned scRNA-seq to M21/GRCm38.p6 using CellRanger v6.1.1 and processed separate 10x Multiome libraries with ARC v2.0 using GRCm38 v98 FASTA and GENCODE M23 GTF references.",
+      "implementation_scope_note": "GEX and ARC are distinct programs and reference families; retain their separate reported defaults.",
+      "version_reported_near_name": "6.1.1; ARC 2.0",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 84,
+          "section": "Methods / scRNA-seq / Sequencing data processing and QC",
+          "paragraph_sha256": "ef8aff2e9dcec0425dfe1218507212ca71da87dd9257d682c8bb69390054563e"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC13668712",
+      "doi": "10.1038/s41586-026-10964-z",
+      "tool_id": "cellranger",
+      "evidence_paragraph_sha256": "156ce5cdd243684cee27eff27e2bb4ce9e7d154e96613f9d32b8dcc54c4bcff7",
+      "use_summary": "Used Cell Ranger v8.0.1 mkfastq to demultiplex BCL files, count against mm10-2020-A for barcode/UMI expression processing and reported clustering/differential expression, then aggr for multiple sequencing runs.",
+      "implementation_scope_note": "The paper attributes secondary analysis to count here; do not replace it silently with independent Seurat analysis or change aggr normalization settings.",
+      "version_reported_near_name": "8.0.1"
+    },
+    {
+      "pmcid": "PMC12872466",
+      "doi": "10.1038/s41586-025-09932-w",
+      "tool_id": "cellranger",
+      "evidence_paragraph_sha256": "b0cd97817c1ce4c99562a2841e661eed380739caab9b75298474d78b036fc4c1",
+      "use_summary": "Used Cell Ranger multi v9.0.0 with GEX GRCh38-2020-A and VDJ GRCh38-alts-ensembl-5.0.0 references for GEX, antibody capture and TCR libraries; surface/hashtag barcodes were Antibody Capture features.",
+      "implementation_scope_note": "bcl2fastq conversion preceded multi. Seurat hashtag/pHLA demultiplexing, clonotype rescue and weighted-neighbour clustering were separate downstream procedures.",
+      "version_reported_near_name": "9.0.0"
+    },
+    {
+      "pmcid": "PMC10719112",
+      "doi": "10.1038/s41586-023-06638-9",
+      "tool_id": "cellranger",
+      "evidence_paragraph_sha256": "4da9f0419ae76f0aeaf9761dca026f02a04991dc95e0f503a031ccd9cd241355",
+      "use_summary": "Reported Cell Ranger v4.0.0 demultiplexing/alignment for nuclei libraries and v7.0 alignment of scRNA/snRNA datasets to species-specific transcriptomes to obtain BAMs.",
+      "implementation_scope_note": "Preserve the two reported stages/versions. Velocyto, rather than Cell Ranger, generated spliced and unspliced matrices that were summed into total expression.",
+      "version_reported_near_name": "4.0.0; 7.0",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 37,
+          "section": "Methods / Preprocessing of transcriptomic data",
+          "paragraph_sha256": "2117cb97fb22763891a27348d072799599fb34d44ea7fb34c205e669bde7acf5"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC10781646",
+      "doi": "10.1038/s41586-023-06816-9",
+      "tool_id": "cellranger",
+      "evidence_paragraph_sha256": "9d6def332870e52611e9815a912605de374486c789163f7726258bd1bd3bc7b2",
+      "use_summary": "Processed raw BCL data with the CellRanger v3.0 Gene Expression pipeline for demultiplexing, mm10 alignment and transcriptomic count matrices.",
+      "implementation_scope_note": "CITE-seq-Count handled hashtag FASTQs and Seurat MULTIseqDemux performed hashtag assignment; those are separate from CellRanger.",
+      "version_reported_near_name": "3.0"
+    },
+    {
+      "pmcid": "PMC7616500",
+      "doi": "10.1038/s41586-023-06806-x",
+      "tool_id": "cellranger",
+      "evidence_paragraph_sha256": "324c44429e9a8faba3a2b4e1c5a2e622e63b09b2d1ad820f4988f2774944105d",
+      "use_summary": "Aligned and quantified droplet scRNA-seq using Cell Ranger v3.0.2 with human GRCh38-3.0.0 or mouse mm10-2020-A references.",
+      "implementation_scope_note": "The additional Visium section uses the Cell Ranger-named hg38 reference resource in Space Ranger v1.1.0; it is not evidence of a Cell Ranger spatial analysis run.",
+      "version_reported_near_name": "3.0.2",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 34,
+          "section": "Methods / Alignment and quantification of human Visium data",
+          "paragraph_sha256": "d35ff9c5c5ba56c62e4bcbcecd553bc3762ba10e9bf407b3705fcd3b667913cd"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC11631754",
+      "doi": "10.1038/s41588-024-02019-8",
+      "tool_id": "cellranger",
+      "evidence_paragraph_sha256": "6c5a15c7768c481e5a275ef4be3b2c912c16b389c4b9382f102a505518cdc8db",
+      "use_summary": "Reported Cell Ranger v7.0.1 in the initial pooled 5-prime RNA-seq processing/QC workflow with DRAGEN and Freemuxlet, using GRCh38/GENCODE32. A Cell Ranger barcode whitelist was reused for separate STARsolo splicing alignment.",
+      "implementation_scope_note": "The primary paragraph does not assign every preprocessing/QC task among the three programs. STARsolo, WASP/Picard filtering and alternate-splicing quantification remain distinct from the Cell Ranger run.",
+      "version_reported_near_name": "7.0.1",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 36,
+          "section": "Methods / Quantification of mRNA AS",
+          "paragraph_sha256": "9f6c246887074018f9ce6843b74ec7bf793ec92d6333afe27f1e3cb73c305c53"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC11631769",
+      "doi": "10.1038/s41588-024-01999-x",
+      "tool_id": "cellranger",
+      "evidence_paragraph_sha256": "6b708f2cc55e286e1c42a4436d9cdae0d29e296e4661a36fc29d31a9c87ea9c4",
+      "use_summary": "Aligned CITE-seq reads to GRCh38, distinguished cells from background and generated a unified gene-expression/cell-surface-protein feature-barcode matrix with Cell Ranger v6.0.",
+      "implementation_scope_note": "The code-availability paragraph corroborates the version but is not a second independent run; downstream scNOVA/Seurat analyses are separate.",
+      "version_reported_near_name": "6.0",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 64,
+          "section": "Code availability",
+          "paragraph_sha256": "ca44d238ba149b628e05398ce1a466404ae438b1e859861e914d481d3a0e16b9"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC13649586",
+      "doi": "10.1038/s41588-026-02774-w",
+      "tool_id": "cellranger",
+      "evidence_paragraph_sha256": "b8253d18fe4b044da4bbb1cd0431f8f80923558e4fe69919b8c1b17d487c146c",
+      "use_summary": "Generated human feature-barcode matrices with Cell Ranger v7.0.0/GRCh38-2020-A, including liver-biopsy processing. Mouse CCl4 data used v3.0.2/mm10-3.0.0, whereas mouse BDL data used v7.0.0/mm10-2020-A.",
+      "implementation_scope_note": "Retain cohort/species-specific versions and references. SoupX correction, Harmony integration, iterative cell filtering and marker analysis are separate.",
+      "version_reported_near_name": "7.0.0; 3.0.2",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 59,
+          "section": "Methods / scRNA-seq analysis / Human biopsy scRNA-seq analysis",
+          "paragraph_sha256": "599fad93cc6ccafabe60173ecabc2302ba72a9d2230b7e59664a1939fc28fb47"
+        },
+        {
+          "paragraph_index": 60,
+          "section": "Methods / scRNA-seq analysis / Mouse CCl4 scRNA-seq analysis",
+          "paragraph_sha256": "61c64d3a704eca81a1699ea912988e2d50a8ca11bf41bb507387366a046afb47"
+        },
+        {
+          "paragraph_index": 61,
+          "section": "Methods / scRNA-seq analysis / Mouse BDL scRNA-seq analysis",
+          "paragraph_sha256": "0b8cdad7c9ca0a7aa10de92fce4f5ed3ff35d4fa7a2db7b4eaadbc45a8e9347a"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC13649587",
+      "doi": "10.1038/s41588-026-02755-z",
+      "tool_id": "cellranger",
+      "evidence_paragraph_sha256": "1316651e56d056160ec23c071cfaf7eeba1b702a32df3489b46588fe75e6dde3",
+      "use_summary": "Aligned scATAC-seq reads with Cell Ranger ATAC; the paragraph points to a Supplementary Note for preprocessing details.",
+      "implementation_scope_note": "An exact version and detailed fragment/doublet procedures are not supplied by this paragraph. Do not assign all referenced preprocessing to ATAC or infer a GEX run.",
+      "version_reported_near_name": ""
+    },
+    {
+      "pmcid": "PMC13649600",
+      "doi": "10.1038/s41588-026-02748-y",
+      "tool_id": "cellranger",
+      "evidence_paragraph_sha256": "4638e9ee03c4c2f2599e513d5bca666b9e7e2cb7adc62fffda6b87712d883c59",
+      "use_summary": "Used Cell Ranger ARC with reported default settings to align joint snRNA/ATAC data to human hg38 and obtain modality count matrices and fragment files.",
+      "implementation_scope_note": "The exact ARC version and reference package are unstated here. Seurat/Signac preprocessing and normalization are separate.",
+      "version_reported_near_name": ""
+    },
+    {
+      "pmcid": "PMC11631765",
+      "doi": "10.1038/s41588-024-01990-6",
+      "tool_id": "cellranger",
+      "evidence_paragraph_sha256": "e0809786aa77f291b8e599936fc489d5dc154187a738d9dbb869e1ffce26770d",
+      "use_summary": "Used Cell Ranger count v6.1.1 to align snRNA FASTQs to GRCh38, quantify gene expression with introns included and automatically filter very low-UMI background barcodes.",
+      "implementation_scope_note": "The source links a study script on Zenodo; this paragraph alone does not establish the full archived environment or every cell-calling option.",
+      "version_reported_near_name": "6.1.1"
+    },
+    {
+      "pmcid": "PMC10703679",
+      "doi": "10.1038/s41588-023-01572-y",
+      "tool_id": "cellranger",
+      "evidence_paragraph_sha256": "d27a1f55faf092a77587b66e9825acbad7009652c8485c27f2312220e914b4cf",
+      "use_summary": "Processed subsampled commercial 10x Chromium data with Cell Ranger as the comparator in an EasySci-RNA detection-depth benchmark.",
+      "implementation_scope_note": "The Cell Ranger version and full command are unstated. The EasySci and SPLiT-seq pipelines, benchmark subsampling and selection of high-quality cells are separate.",
+      "version_reported_near_name": "",
+      "usage_context": "benchmark-or-comparison"
+    },
+    {
+      "pmcid": "PMC13553293",
+      "doi": "10.1038/s41588-026-02741-5",
+      "tool_id": "cellranger",
+      "evidence_paragraph_sha256": "54250e2bfee44782c6e2f74e8119aa8d6d73151c5a7cac353341b9e5e4d7c95a",
+      "use_summary": "Processed droplet scRNA-seq libraries with Cell Ranger v7, aligned to GRCh38 using its STAR alignment and created raw count matrices.",
+      "implementation_scope_note": "Only a major version is reported. CellBender performed ambient removal/cell calling; Scrublet and scds removed putative doublets independently.",
+      "version_reported_near_name": "7"
+    },
+    {
+      "pmcid": "PMC10703699",
+      "doi": "10.1038/s41588-023-01554-0",
+      "tool_id": "cellranger",
+      "evidence_paragraph_sha256": "b8927c8882602bb4d26003be869bae03c9cd22a4d01c693bfe2c41d3a07a1b10",
+      "use_summary": "Processed/demultiplexed scRNA-seq and generated transcript and guide-RNA UMI counts per cell barcode using CellRanger v6.0.1.",
+      "implementation_scope_note": "The later guide-assignment threshold UMI>4, DoubletFinder and Seurat/MAST testing are downstream and are not implied CellRanger defaults.",
+      "version_reported_near_name": "6.0.1"
+    },
+    {
+      "pmcid": "PMC13553295",
+      "doi": "10.1038/s41588-026-02714-8",
+      "tool_id": "cellranger",
+      "evidence_paragraph_sha256": "484121c484a018bbd57fb37c9e14246e9de716435039b5167502387eb4ba0345",
+      "use_summary": "Processed lineage-tracing cell-line scRNA-seq with Cell Ranger v3.0.2, aligning FASTQs to human GRCh38-2020-A.",
+      "implementation_scope_note": "UMI-tools collapsed lineage-barcode clusters; subsequent UMI downsampling, barcode-based lineage comparison and metaVIPER activity inference are separate.",
+      "version_reported_near_name": "3.0.2"
+    },
+    {
+      "pmcid": "PMC12597822",
+      "doi": "10.1038/s41588-025-02374-0",
+      "tool_id": "cellranger",
+      "evidence_paragraph_sha256": "7e07457e0b18989bbba0c02a9878708355be8a8b738905ec76e9792259f1f0b3",
+      "use_summary": "Aligned joint single-cell RNA and ATAC reads to human GRCh38 using CellRanger-Arc v2.0.2.",
+      "implementation_scope_note": "mgatk genotyping/heteroplasmy estimation with a masked reference and Seurat expression processing are separate; they are not ARC variant-calling functions.",
+      "version_reported_near_name": "2.0.2"
+    },
+    {
+      "pmcid": "PMC13553309",
+      "doi": "10.1038/s41588-026-02709-5",
+      "tool_id": "cellranger",
+      "evidence_paragraph_sha256": "5a68459b14a61bacf18f49843426f128574e63f9d63472a17768a9ec22003714",
+      "use_summary": "Processed four multiplexed nuclei libraries using Cell Ranger multi in Multiplex Flex mode with GRCh38-2024-A and the v1.1.0_GRCh38-2024-A human probe set.",
+      "implementation_scope_note": "The probe-set version is not a Cell Ranger software version. Flex probe/reference and sample configuration must remain explicit; SoupX contamination estimation and correction are downstream.",
+      "version_reported_near_name": ""
+    },
+    {
+      "pmcid": "PMC13447104",
+      "doi": "10.1038/s41588-026-02695-8",
+      "tool_id": "cellranger",
+      "evidence_paragraph_sha256": "f404e152b38cf2317f3617405e55b193a24a77e221f253ae988b3222af27e8cb",
+      "use_summary": "Processed genomes/annotations with cellranger-arc mkref v2.0.2 and ran standard ARC pipelines to obtain multiome count matrices and fragments for public and newly generated datasets.",
+      "implementation_scope_note": "GRCh38 and mm10 references are distinguished. The mkref version does not by itself pin every pipeline build or source dataset conversion; preserve those separate provenance requirements.",
+      "version_reported_near_name": "2.0.2"
+    },
+    {
+      "pmcid": "PMC12597831",
+      "doi": "10.1038/s41588-025-02368-y",
+      "tool_id": "cellranger",
+      "evidence_paragraph_sha256": "fe4a48372e4d69c8e930c737612330e6dfb203b8e8bad97cb856660c40fa86b0",
+      "use_summary": "Aligned scATAC-seq reads and counted features with cellranger-atac count using reported default parameters.",
+      "implementation_scope_note": "An exact ATAC version/reference is unstated here. The separate Evercode RNA libraries used Parse Trailmaker, not Cell Ranger; Cas9 detection and MapMyCells annotation are separate.",
+      "version_reported_near_name": ""
+    },
+    {
+      "pmcid": "PMC12597827",
+      "doi": "10.1038/s41588-025-02352-6",
+      "tool_id": "cellranger",
+      "evidence_paragraph_sha256": "50c9e133ca686fb0a9149cd2ece7d73431bdf25392ec80a6b2ce21c8b581b147",
+      "use_summary": "Demultiplexed scRNA-seq libraries with cellranger mkfastq v4.0.0 before a separate index-hopping filter.",
+      "implementation_scope_note": "STARsolo v2.7.10a, not Cell Ranger count, determined the UMI counts in this workflow. Chemistry kit v2/v3 labels are distinct from software versions.",
+      "version_reported_near_name": "4.0.0"
+    },
+    {
+      "pmcid": "PMC13447095",
+      "doi": "10.1038/s41588-026-02665-0",
+      "tool_id": "cellranger",
+      "evidence_paragraph_sha256": "81f0565071304ccccd7b7f39837da81e1d7e62f4a04798c1ab6c16e78dd43184",
+      "use_summary": "Aligned scRNA-seq samples with CellRanger v7.2.0 to generate the expression matrix used for annotation and connectivity.",
+      "implementation_scope_note": "STARsolo v2.7.9a separately generated spliced/unspliced/ambiguous matrices. CellBender ambient removal and its training assessment are separate.",
+      "version_reported_near_name": "7.2.0"
+    },
+    {
+      "pmcid": "PMC11639091",
+      "doi": "10.1016/j.ajhg.2024.10.019",
+      "tool_id": "cellranger",
+      "evidence_paragraph_sha256": "f18880728edbf48755f61332524db5640f68313aab9ade57a631f68d4d5375a6",
+      "use_summary": "Processed fetal, pediatric and organoid FASTQs with CellRanger v3.0.2 using the human reference transcriptome reported as GRCh38-1.2.0.",
+      "implementation_scope_note": "The linked archive name instead ends GRCh38-3.0.0; retain this reference-version discrepancy for source resolution. SoupX/Seurat/Scrublet processing is separate.",
+      "version_reported_near_name": "3.0.2"
+    },
+    {
+      "pmcid": "PMC12805840",
+      "doi": "10.1016/j.ajhg.2025.11.009",
+      "tool_id": "cellranger",
+      "evidence_paragraph_sha256": "775f8fa53f5b757f93e7bd0c322aadf73a8c5ebbc5c9e31e2ec4f5e0ea9aa690",
+      "use_summary": "Aligned multiome reads with CellRanger-ARC count v2 against GRCh38-2020-A with filtered GENCODE32 annotations, supplying BAMs, barcodes and reference annotations for later donor/cell-type analyses.",
+      "implementation_scope_note": "The WASP stage explicitly approximated ARC alignment with BWA-mem because Cell Ranger could not run within WASP. That approximation is not a second ARC/WASP run; demuxlet, MACS2 and FastQTL are separate.",
+      "version_reported_near_name": "2",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 8,
+          "section": "Material and methods / Identification of singlet droplets and donor deconvolution",
+          "paragraph_sha256": "10930e94020231fce7c7c1eb06cf932b7a2bd4d06f00d915e61fa3669c3500d5"
+        },
+        {
+          "paragraph_index": 12,
+          "section": "Material and methods / Cell-type accessible chromatin regions",
+          "paragraph_sha256": "0074612cc7a74564dbf53627ccae7292e6898d80a8b2e4160be83765d942b3de"
+        },
+        {
+          "paragraph_index": 18,
+          "section": "Material and methods / Mapping caQTL",
+          "paragraph_sha256": "45cd41caa4c044909016b52cd2262f086615e118d7fdefd3ef3579494d047f3d"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC13277697",
+      "doi": "10.1016/j.ajhg.2026.04.003",
+      "tool_id": "cellranger",
+      "evidence_paragraph_sha256": "99ec8907e64001860c1085122ac81cc827a0c958e5ed0e38b16117f1fda38d9c",
+      "use_summary": "Reported OneK1K preprocessing with Cell Ranger v2.2.0 for pool demultiplexing and STAR-based mapping to GRCh37/hg19 release84.",
+      "implementation_scope_note": "This section describes the reused cohort processing. Do not infer a new Cell Ranger rerun or transfer later Seurat/Azimuth settings into its original pipeline.",
+      "version_reported_near_name": "2.2.0",
+      "usage_context": "reused-data-method-description"
+    },
+    {
+      "pmcid": "PMC11339655",
+      "doi": "10.1016/j.ajhg.2024.06.018",
+      "tool_id": "cellranger",
+      "evidence_paragraph_sha256": "2e5658b281bba2e9124522c83e8ab402ac90f954734156b8ebc3a1c3de774eda",
+      "use_summary": "Processed targeted scRNA-seq and guide-RNA sequencing files with cellranger v7.1.0 before integrating their count matrices in Seurat.",
+      "implementation_scope_note": "Target-panel enrichment is an experimental/library design choice, not a Cell Ranger default. The paragraph does not supply the exact reference or count command.",
+      "version_reported_near_name": "7.1.0"
+    },
+    {
+      "pmcid": "PMC11339625",
+      "doi": "10.1016/j.ajhg.2024.07.002",
+      "tool_id": "cellranger",
+      "evidence_paragraph_sha256": "f39e9bcce0d5e22ab87bb7dcdbc660eb29d8dc07f72ae35f38a791634d0fa24d",
+      "use_summary": "Reported Cell Ranger v6.1.1 in the snRNA-seq processing workflow against GRCh38-2020-A, and separately used CellRanger ARC v2.0.0 for multiome mapping to a reference labelled CRCh38-2020-A-2.0.0.",
+      "implementation_scope_note": "Keep the literal reference label and separate GEX/ARC workflows. SoupX/scds, Signac/Harmony and chromVAR motif activities are downstream operations.",
+      "version_reported_near_name": "6.1.1; ARC 2.0.0",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 11,
+          "section": "Material and methods / Bioinformatics analysis",
+          "paragraph_sha256": "ea6b96b238c9b348977788000db38a5572b4a14978855ca49cb5f4c8c029aead"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC12696504",
+      "doi": "10.1016/j.ajhg.2025.07.020",
+      "tool_id": "cellranger",
+      "evidence_paragraph_sha256": "9e7193eb474ac7e80e9dc1405924648b0235a0ed40749df1113df4fde07b735c",
+      "use_summary": "Used Cell Ranger count to align droplet reads to human GRCh38 and quantify annotated-gene transcripts per cell; its outputs also supplied later velocity counting.",
+      "implementation_scope_note": "No Cell Ranger version is stated. Velocyto computed spliced/unspliced counts and scVelo supplied velocity analysis; these are separate from count.",
+      "version_reported_near_name": "",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 13,
+          "section": "Material and methods / snRNA-seq and data analysis",
+          "paragraph_sha256": "aa8c0330a79d061eed602c897f834c1ce42ceb4dab82a0a46c1cbe01300b24f5"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC12461018",
+      "doi": "10.1016/j.ajhg.2025.07.018",
+      "tool_id": "cellranger",
+      "evidence_paragraph_sha256": "d63a03bda6013f0581df084b7283b0586612ca452199d90f210b255a2b7df4a4",
+      "use_summary": "Processed scRNA-seq files with Cell Ranger v3.1.0 to generate expression matrices, and also ran Cell Ranger on targeted GNAS sequencing files before barcode intersection and genotype assignment.",
+      "implementation_scope_note": "The targeted section does not restate a software version or command. Variant-read selection, transcript thresholds and GNAS genotype assignment are study-specific downstream steps, not a general Cell Ranger variant caller.",
+      "version_reported_near_name": "3.1.0",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 10,
+          "section": "Methods / Single-cell GNAS genotyping",
+          "paragraph_sha256": "5daf86df3c1c10cfc5e34d95b9898300555edf265b487e5c5c152eb793de5347"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC12222023",
+      "doi": "10.1038/s41586-024-08348-2",
+      "tool_id": "pymol",
+      "evidence_paragraph_sha256": "4e11620a1e7568f7d76c1d9146ce12528b7adabbb40c4a1a229b8c006eb42a63",
+      "use_summary": "Illustrated AutoDock Vina docking results for LCA and AlphaFold-predicted TULP3 using PyMOL v2.5.",
+      "implementation_scope_note": "Docking and structure prediction were separate programs. Structural alignments are mentioned as performed earlier, but the paragraph does not identify their exact PyMOL command or establish a docking calculation within PyMOL.",
+      "version_reported_near_name": "2.5"
+    },
+    {
+      "pmcid": "PMC11798873",
+      "doi": "10.1038/s41586-024-08333-9",
+      "tool_id": "pymol",
+      "evidence_paragraph_sha256": "2b6f80099c32e4890a76869ff328244d450e0da712f7db1fbbd6bb68c45a75ec",
+      "use_summary": "Visualized a mononucleosome based on PDB5NL0 with PyMOL v3.0; separately aligned the predicted MYC/MAX-TFAP2C complex to PDB8J0K with align and calculated electrostatic surface charge using the APBS plugin.",
+      "implementation_scope_note": "AlphaFold-Multimer/COSMIC2 prediction is separate. PyMOL align performs correspondence/refinement beyond a supplied-pair rigid fit; APBS electrostatics requires its own solver,charge/protonation and grid settings. Rendering a coloured surface alone does not reproduce APBS.",
+      "version_reported_near_name": "3.0",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 124,
+          "section": "Methods / Bioinformatics / Protein structure visualization",
+          "paragraph_sha256": "82aa951f83cc39513fb773065ca7bf4cd52cf7ad63bad8c266adfa8bf2ca7672"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC10765522",
+      "doi": "10.1038/s41586-023-06845-4",
+      "tool_id": "pymol",
+      "evidence_paragraph_sha256": "23918e998c3c0e4556f5017f5ca784b53b04c7ea882274a5cc5d1556e6b6ccd7",
+      "use_summary": "Reported three-dimensional reconstruction of Dip-C models in PyMOL v2.5.3, following a cited prior procedure.",
+      "implementation_scope_note": "Dip-C/hickit generated haplotype-imputed contacts in a separate pipeline. The named paragraph does not supply the PyMOL reconstruction script,coordinate representation or rendering settings; do not infer contact phasing or coordinate reconstruction algorithms from the program name.",
+      "version_reported_near_name": "2.5.3"
+    },
+    {
+      "pmcid": "PMC11779638",
+      "doi": "10.1038/s41586-024-07559-x",
+      "tool_id": "pymol",
+      "evidence_paragraph_sha256": "802804ed2575c1b11af38b4a24d7b0b0473336a8529b76f1be8256f012db7635",
+      "use_summary": "Linked two Pep-Fold ARM structural models in parallel using PyMOL v2.0 bond building before coarse-grained simulation.",
+      "implementation_scope_note": "CafeMol generated the molecular-dynamics trajectory and distance distribution. Adding an explicitly requested bond is distinct from peptide prediction,energy minimization or trajectory simulation.",
+      "version_reported_near_name": "2.0"
+    },
+    {
+      "pmcid": "PMC11946911",
+      "doi": "10.1038/s41586-024-08493-8",
+      "tool_id": "pymol",
+      "evidence_paragraph_sha256": "c3f3eda6c3511d6333cc9f6f7d34fca32457c99d98ea0141232b111dcef13ce0",
+      "use_summary": "Manually adjusted ZorA-tail conformations in PyMOL v2.5, inspected predicted structures with v2.5.4 to identify tail starts, prepared figures with v2.5.4/v3.0.2 and calculated electrostatic maps with the APBS plugin.",
+      "implementation_scope_note": "GROMACS/CHARMM27 minimized the structures; ColabFold predicted them, MUSCLE transferred tail boundaries, and MOLEonline analysed pathways/hydrophobicity. These are separate operations. Manual conformations,colour/view settings and APBS parameters are not fully specified by these paragraphs.",
+      "version_reported_near_name": "2.5; 2.5.4; 3.0.2",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 53,
+          "section": "Methods / Bioinformatic analyses of ZorA motor and tail lengths",
+          "paragraph_sha256": "01c61918d887b2cd5f147dedf9a4ac0130bce39e8cacf4619e504859e69eb4ec"
+        },
+        {
+          "paragraph_index": 54,
+          "section": "Methods / Figure preparation",
+          "paragraph_sha256": "236df53a46a378a1d26627d7c7764a75502678240538d6aea88e9e01c1f0b06b"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC12779559",
+      "doi": "10.1038/s41586-025-09853-8",
+      "tool_id": "pymol",
+      "evidence_paragraph_sha256": "3fede74c465c12d75816b778528ce2b18e0c722cfbd40f2d986884cd2be8369b",
+      "use_summary": "Illustrated the selected highest-scoring AlphaFold3 multimer/docking prediction using PyMOL v2.5.8.",
+      "implementation_scope_note": "AlphaFold Server generated and ranked the predicted structures. PyMOL visualization does not establish protein interaction or docking accuracy; exact reported build/settings remain separate from the tested open-source edition.",
+      "version_reported_near_name": "2.5.8"
+    },
+    {
+      "pmcid": "PMC13581589",
+      "doi": "10.1038/s41586-026-10993-8",
+      "tool_id": "pymol",
+      "evidence_paragraph_sha256": "ed3d8806c6a5c9adbea830688193b8848c260aee2ff54847c54ef8f969300e14",
+      "use_summary": "Listed PyMOL v3.4.19 among the software used in the study.",
+      "implementation_scope_note": "The only named paragraph is a software list. It does not establish a particular rendering,alignment,measurement or modelling command. Retain the literal version rather than silently converting it to a known open-source tag or inventing a paper-specific operation.",
+      "version_reported_near_name": "3.4.19",
+      "usage_context": "software-list-operation-unspecified"
+    },
+    {
+      "pmcid": "PMC13668671",
+      "doi": "10.1038/s41586-026-10952-3",
+      "tool_id": "pymol",
+      "evidence_paragraph_sha256": "a0d825eccfdfba5fdd50b98ea56bbdddb9e09014fbd013e56db8e28ac1deab3c",
+      "use_summary": "Aligned extracted predicted membrane-binding-domain structures to the rat PHPLCdelta crystal structure PDB1MAI and calculated RMSD with the PyMOL super alignment tool.",
+      "implementation_scope_note": "MAFFT handled sequence alignment, while AlphaFold2/ESMFold supplied structures. super establishes structural correspondences/refinement and must not be replaced silently by align or a rigid fit of supplied pairs. Version and exact super/refinement parameters are unstated here.",
+      "version_reported_near_name": ""
+    },
+    {
+      "pmcid": "PMC13645618",
+      "doi": "10.1038/s41586-026-10937-2",
+      "tool_id": "pymol",
+      "evidence_paragraph_sha256": "337b50846346cf144e6aa52534c90e6193b182807bfb2f05556193bc2d510c20",
+      "use_summary": "Generated replisome structural figures with PyMOL v2.5.4 alongside UCSF ChimeraX.",
+      "implementation_scope_note": "Coot/PHENIX model adjustment and real-space refinement are separate. One figure used an additional four-base-pair segment whose density was too poor for deposition; a deposited PDB alone does not reproduce that figure.",
+      "version_reported_near_name": "2.5.4"
+    },
+    {
+      "pmcid": "PMC12695638",
+      "doi": "10.1038/s41588-025-02400-1",
+      "tool_id": "pymol",
+      "evidence_paragraph_sha256": "4052b148e28d4f522d0a8bfb456ba33eca593a68b5936887fe081421fd558192",
+      "use_summary": "Calculated listed distances with the PyMOL distance function during manual inspection of resolved experimental structures for highly deleterious popEVE mutations.",
+      "implementation_scope_note": "The paper restricted inspection to resolved mutation sites and prioritized interacting structures. Exact atom selections,states,measurement mode and version are unstated here. Distances are geometric observations,not mutation pathogenicity or binding-energy estimates.",
+      "version_reported_near_name": ""
+    },
+    {
+      "pmcid": "PMC11549056",
+      "doi": "10.1038/s41588-024-01948-8",
+      "tool_id": "pymol",
+      "evidence_paragraph_sha256": "207bc459501bd95fbfe9b3785f3621c5457b356ce9189c50fdf19a05b2d0c35c",
+      "use_summary": "Visualized crystal structures using PyMOL v2.4.1 in the PARP-trapping study.",
+      "implementation_scope_note": "The same paragraph primarily describes wet-lab fractionation/immunoblotting. Those assays and trapping measurements were not performed by PyMOL; it supplies the stated structure visualization only.",
+      "version_reported_near_name": "2.4.1"
+    },
+    {
+      "pmcid": "PMC12695660",
+      "doi": "10.1038/s41588-025-02388-8",
+      "tool_id": "pymol",
+      "evidence_paragraph_sha256": "f03b23bd4e1e17e15c34a7b48104779383829e419d2fcef5fe7bd31cc36473b4",
+      "use_summary": "Performed structural alignments and figure rendering of experimental/AlphaFold3 AR-PTGES3 complex models with PyMOL.",
+      "implementation_scope_note": "The alignment command/version is unstated. The paper explicitly colours AlphaFold confidence red for very high and blue for very low; retain that mapping rather than automatically applying a different pLDDT palette. Confidence is not experimental validation.",
+      "version_reported_near_name": ""
+    },
+    {
+      "pmcid": "PMC11525193",
+      "doi": "10.1038/s41588-024-01913-5",
+      "tool_id": "pymol",
+      "evidence_paragraph_sha256": "1d7d4d0d6fc33660ed56e38e181cf53b63f5ca463d74c649202695d47db00aca",
+      "use_summary": "Visualized protein structures from PDB6KN8,5LGD and5DO7 with PyMOL for Troponin-T,CD36 and ABCG5/ABCG8.",
+      "implementation_scope_note": "The URL ending pymol.org/2 is not a software build/version declaration. Accession,assembly,chain,atom/state selection and view choices remain explicit requirements; no prediction or alignment command is specified.",
+      "version_reported_near_name": ""
+    },
+    {
+      "pmcid": "PMC10806738",
+      "doi": "10.1016/j.ajhg.2023.11.010",
+      "tool_id": "pymol",
+      "evidence_paragraph_sha256": "c1d92f6cd2b9aa0aa265acef34de4de0420b24337b532a9d4427927288d45e06",
+      "use_summary": "Used explicitly open-source PyMOL v1.7.6.0 for molecular modelling/rendering of a c-Myc/Max heterodimer,choosing a Gln60 rotamer and manually setting K392 chi1-chi4 to gauche+,trans,gauche-,trans.",
+      "implementation_scope_note": "The chosen rotamer and torsions were manually selected for packing/clash considerations. A new-version default rotamer or a generic point-set fit does not reproduce those choices or establish an energy-minimized model.",
+      "version_reported_near_name": "1.7.6.0"
+    },
+    {
+      "pmcid": "PMC13439524",
+      "doi": "10.1016/j.ajhg.2026.06.016",
+      "tool_id": "pymol",
+      "evidence_paragraph_sha256": "083c6ef398c1fabf3886e689a7bcec92636e1abafbad4f7aa764702600ff1205",
+      "use_summary": "Aligned AlphaFold2 wild-type/mutant JAG1 residues31-333 in PyMOL v2.5.4 and quantified local C-alpha RMSD within plus/minus15 residues of each variant.",
+      "implementation_scope_note": "The paragraph does not specify whether each local window was refitted or measured in the global alignment frame; that must remain explicit before replay. FoldX and Rosetta separately estimated stability changes; RMSD is not delta-delta-G.",
+      "version_reported_near_name": "2.5.4"
+    },
+    {
+      "pmcid": "PMC12808985",
+      "doi": "10.1016/j.ajhg.2025.10.014",
+      "tool_id": "pymol",
+      "evidence_paragraph_sha256": "7ab45086bee7fe5bd6808b5f3eb0a26cf40fe8cd8922b181033d11ac8a509b77",
+      "use_summary": "Prepared images of the determined apo-PRMT9 structure in PyMOL.",
+      "implementation_scope_note": "XDS,MR-Rosetta,Coot,Buster and MolProbity performed separate processing,model-building,refinement and validation tasks. PyMOL version,representations and view parameters are unstated here.",
+      "version_reported_near_name": ""
+    },
+    {
+      "pmcid": "PMC12510259",
+      "doi": "10.1016/j.ajhg.2025.08.008",
+      "tool_id": "pymol",
+      "evidence_paragraph_sha256": "9759b05dfaca5802ad3a9dce720e4e45ee6cc1a6e9fc691ed63ea3de0d28b77e",
+      "use_summary": "Modelled PRKCI variants from PDB1ZRZ with a backbone-independent rotamer in PyMOL and measured them with the Wizard Measurement tool.",
+      "implementation_scope_note": "The exact rotamer,state/atom selections,measurement types and software version are unstated. Explicit distance/angle/torsion arithmetic does not by itself reproduce the mutagenesis wizard or a manually chosen conformation.",
+      "version_reported_near_name": ""
+    },
+    {
+      "pmcid": "PMC12440709",
+      "doi": "10.1016/j.ajhg.2025.08.004",
+      "tool_id": "pymol",
+      "evidence_paragraph_sha256": "e63ee845de4b0cad12b48d37365d67498a51de1a9e635afc790cfa76fa8badf9",
+      "use_summary": "Created native/variant TMEM184B structure visualizations and overlays using PyMOL v2.6.",
+      "implementation_scope_note": "AlphaFold/MMseqs2 generated structures; pLDDT/PAE and Ramachandran criteria informed quality selection,and GPS6.0 predicted phosphorylation sites. Loop truncation and model selection are separate explicit choices,not automatic consequences of PyMOL rendering.",
+      "version_reported_near_name": "2.6"
+    },
+    {
+      "pmcid": "PMC11339613",
+      "doi": "10.1016/j.ajhg.2024.06.015",
+      "tool_id": "pymol",
+      "evidence_paragraph_sha256": "f5ab80404321c21f4fe5dd72b3823c005ab17220b2ca22d277a97cc13308f74e",
+      "use_summary": "Adjusted and visualized the PDB4A69 NCoR2 DAD-domain/HDAC3 structure in PyMOL v2.5.5.",
+      "implementation_scope_note": "The exact adjustment operations,conformer choices and rendering settings are unstated. Retain the reported build label and do not invent a mutation,refinement or energy method.",
+      "version_reported_near_name": "2.5.5"
+    },
+    {
+      "pmcid": "PMC11339624",
+      "doi": "10.1016/j.ajhg.2024.06.011",
+      "tool_id": "pymol",
+      "evidence_paragraph_sha256": "4c94a69998e064ce6d49049d1688ea3f84dc35881602d28d0e4ca3e2f4a6d182",
+      "use_summary": "Generated structural figures using PyMOL v2.5.4 for the human JAG1/NOTCH2 modelling analysis.",
+      "implementation_scope_note": "The paragraph also describes alignment to rat JAG1/NOTCH1 PDB5UK5,but does not explicitly name that alignment command as PyMOL align or super. AlphaFold2/ColabFold,SignalP,PDBsum and PDBePISA have distinct prediction/annotation/interface roles.",
+      "version_reported_near_name": "2.5.4"
+    },
+    {
+      "pmcid": "PMC11798873",
+      "doi": "10.1038/s41586-024-08333-9",
+      "tool_id": "apbs",
+      "evidence_paragraph_sha256": "82aa951f83cc39513fb773065ca7bf4cd52cf7ad63bad8c266adfa8bf2ca7672",
+      "use_summary": "Calculated protein electrostatic surface charge with the APBS plugin in PyMOL after separate structure prediction and alignment steps.",
+      "implementation_scope_note": "The source does not state the APBS solver version,charge/protonation preparation,dielectric or salt parameters,grid or boundary settings. PyMOL alignment and AlphaFold-Multimer/COSMIC2 prediction are separate operations. A validated present-day solver subset does not establish reproduction of the published surface or its unstated model. PDB2PQR is not explicitly named here.",
+      "version_reported_near_name": ""
+    },
+    {
+      "pmcid": "PMC11946911",
+      "doi": "10.1038/s41586-024-08493-8",
+      "tool_id": "apbs",
+      "evidence_paragraph_sha256": "236df53a46a378a1d26627d7c7764a75502678240538d6aea88e9e01c1f0b06b",
+      "use_summary": "Generated electrostatic maps with the APBS electrostatics plugin in PyMOL for structural figure preparation.",
+      "implementation_scope_note": "The adjacent PyMOL versions2.5.4/3.0.2 are not APBS versions,and the74 appended to APBS in flattened XML is a citation number. The source does not specify the APBS solver,charge preparation,protonation,grid or electrostatic parameters. A solver map and its later surface rendering remain distinct operations. PDB2PQR is not explicitly named here.",
+      "version_reported_near_name": ""
+    },
+    {
+      "pmcid": "PMC12804090",
+      "doi": "10.1038/s41586-025-09890-3",
+      "tool_id": "igv",
+      "evidence_paragraph_sha256": "59e0974ce84fa4756e55758e0cb98349cec4def2996acfed153cafca2db4a347",
+      "use_summary": "Plotted the CUT&Run chromatin profile with IGV and the WashU browser across the reported chromosome2 interval20404583–58108703.",
+      "implementation_scope_note": "Read trimming,local Bowtie2 mapping,filtering and deepTools coverage preceded display. HOMER generated the separate average profile. The paragraph does not specify the IGV version,assembly,track scale or session;the long interval is retained as reported.",
+      "version_reported_near_name": ""
+    },
+    {
+      "pmcid": "PMC11798873",
+      "doi": "10.1038/s41586-024-08333-9",
+      "tool_id": "igv",
+      "evidence_paragraph_sha256": "4a4b43e08da0250623d5e3d9be13e7f382fe07f5dc8f909346724aaff443717b",
+      "use_summary": "Generated genome-track screenshots in Integrative Genomics Viewer from genome-coverage-normalized(RPGC) data.",
+      "implementation_scope_note": "RPGC normalization was supplied upstream;this is a visualization role. The appended99 is a citation,not an IGV version. Track files,assembly,view range and scale are not given in this paragraph.",
+      "version_reported_near_name": ""
+    },
+    {
+      "pmcid": "PMC11711094",
+      "doi": "10.1038/s41586-024-08307-x",
+      "tool_id": "igv",
+      "evidence_paragraph_sha256": "24f8c8760dd04591de9d4a4207f99e65800fd02cd5d244854d3073c88a99b3c9",
+      "use_summary": "Visualized deepTools bamCoverage-normalized ATAC-seq signal in IGV v2.7.0 after mm10 alignment,filtering and strand-specific Tn5 shifts.",
+      "implementation_scope_note": "Trim Galore,BWA-MEM,read filtering,+4/−5 shifting and MACS2 peak calling were separate upstream operations. The IGV snapshot scale,locus and complete normalization settings are not specified;display is not a peak caller.",
+      "version_reported_near_name": "2.7.0"
+    },
+    {
+      "pmcid": "PMC12807868",
+      "doi": "10.1038/s41588-025-02419-4",
+      "tool_id": "igv",
+      "evidence_paragraph_sha256": "53e7b883cdfba842ac46153ad690d5855ecd15154254ffb01f91ff6236a5b2d0",
+      "use_summary": "Visualized human regions syntenic to mouse chromosomes with custom SEG files in IGV and generated human summary plots from combined segmentation files;Affinity Designer prepared the final artwork.",
+      "implementation_scope_note": "Cinteny supplied synteny,while methylation-derived copy-number data and the threshold/enrichment/t-test procedure were separate inputs and analyses. IGV is not identified as performing that statistical procedure. Version and session parameters are unstated.",
+      "version_reported_near_name": ""
+    },
+    {
+      "pmcid": "PMC10703697",
+      "doi": "10.1038/s41588-023-01561-1",
+      "tool_id": "igv",
+      "evidence_paragraph_sha256": "cce11b0f4b57963f6011b752c2ec9c70ccafa6350315a17f343381845a35379a",
+      "use_summary": "Manually screened default-filtered Manta structural-variant calls involving BCL2 and MYC using Integrative Genomics Viewer v2.7.2.",
+      "implementation_scope_note": "Manta called the rearrangements. Supporting breakpoint reads and locus coverage were used for allele-frequency estimation,but the source does not specify an IGV counting command,display filters or an automated adjudication rule.",
+      "version_reported_near_name": "2.7.2"
+    },
+    {
+      "pmcid": "PMC10703678",
+      "doi": "10.1038/s41588-023-01571-z",
+      "tool_id": "igv",
+      "evidence_paragraph_sha256": "dddb8a555cacbca5baff799e4e9eb91ca4771f68d676c7cc49488a08d1ca1241",
+      "use_summary": "Manually inspected Minimap2-aligned HiFi reads at structural-variant breakpoints with IGV v2.9.2 while evaluating32 accession assemblies at304 loci.",
+      "implementation_scope_note": "Minimap2 generated alignments and the assembly/quality tools performed separate tasks. Juicebox handled the stated Hi-C inspection. The paragraph does not provide exact IGV loci,read filters or a reproducible manual acceptance rule.",
+      "version_reported_near_name": "2.9.2"
+    },
+    {
+      "pmcid": "PMC11631756",
+      "doi": "10.1038/s41588-024-01967-5",
+      "tool_id": "igv",
+      "evidence_paragraph_sha256": "a1a523d8d64a01859b844d98da933ff450d1a989c5780b0c6193e4ced6bddf50",
+      "use_summary": "Used Integrative Genomics Viewer visualization with Minimap2-aligned ONT reads to identify split reads and estimate assembly gaps before gap closure.",
+      "implementation_scope_note": "NextDenovo assemblies,manual gap decisions and HiFi polishing were separate operations;IGV visualization alone does not reconstruct the genome or validate gap closure. The appended73 is a citation,not a version.",
+      "version_reported_near_name": ""
+    },
+    {
+      "pmcid": "PMC12695660",
+      "doi": "10.1038/s41588-025-02388-8",
+      "tool_id": "igv",
+      "evidence_paragraph_sha256": "e60a4991640aa1e1f8a6baf8e44e6e22b35fc660bab56d02928d4696e8b2fb05",
+      "use_summary": "Obtained ChIP-seq visualization snapshots with IGV v2.19.1 from RPGC-normalized BigWig tracks generated by deepTools bamCoverage.",
+      "implementation_scope_note": "Alignment,MAPQ/blacklist filtering,duplicate removal,MACS3 peak calling and HOMER motif analysis were separate tools. No IGV scale,colors,locus or session is given. deepTools3.5.4 is not the IGV version.",
+      "version_reported_near_name": "2.19.1"
+    },
+    {
+      "pmcid": "PMC12597831",
+      "doi": "10.1038/s41588-025-02368-y",
+      "tool_id": "igv",
+      "evidence_paragraph_sha256": "e1b791cf00909101476ae2171f3ce9188f7cfb639792d500f95aae8262bc200b",
+      "use_summary": "Visualized ChIP-seq data with Integrative Genomics Viewer v2.16.0 after mm10 alignment and the stated peak/normalization analysis.",
+      "implementation_scope_note": "Csaw peak calling,loess normalization,GenomicRanges promoter assignment and EdgeR differential enrichment are separate operations. The paragraph does not specify an IGV normalization,statistical test or snapshot recipe.",
+      "version_reported_near_name": "2.16.0"
+    },
+    {
+      "pmcid": "PMC12597820",
+      "doi": "10.1038/s41588-025-02367-z",
+      "tool_id": "igv",
+      "evidence_paragraph_sha256": "d2de244d20bb0239a1ebb29a918e595a1a55e71ec4a54995f36f28998978369e",
+      "use_summary": "Visualized Minimap2/SAMtools-processed PacBio HiFi seed alignments in IGV v2.8.13 during iterative pseudoautosomal-region assembly walking and manually selected reads matching the seed over4kb.",
+      "implementation_scope_note": "Read selection was a manual step with stated mutation/polymorphism exceptions. CAP3 assembly,YASS self-similarity and BLASTN comparisons were separate tools. An IGV view does not implement the walking/contig-choice/merge algorithm or its manual decisions.",
+      "version_reported_near_name": "2.8.13"
+    },
+    {
+      "pmcid": "PMC10806739",
+      "doi": "10.1016/j.ajhg.2023.11.008",
+      "tool_id": "igv",
+      "evidence_paragraph_sha256": "d695147bc6f96c7bb213509561d1eec7442dd7b77eea2d9bf7ebf9843cd5cd2f",
+      "use_summary": "Manually curated CNVs in Integrative Genomics Viewer v2.12.2 after GATK calling and comparison with genomic segments shared by affected relatives.",
+      "implementation_scope_note": "GATK used1000bp GRCh37/hg19 intervals for CNV calling. DECIPHER screened common CNVs separately. No IGV CNV caller,co-segregation algorithm,view scale or automated manual-review replacement is specified.",
+      "version_reported_near_name": "2.12.2"
+    },
+    {
+      "pmcid": "PMC11639096",
+      "doi": "10.1016/j.ajhg.2024.10.003",
+      "tool_id": "igv",
+      "evidence_paragraph_sha256": "47ab88da0a85f46cc67f03c2ba75fe4be20e70c460d3dc6d7550827a9b394fd8",
+      "use_summary": "Reported IGV v2.12.3 among the tools used to visualize Hi-C contacts and annotated features,together with Juicebox,HiCExplorer and pyGenomeTracks.",
+      "implementation_scope_note": "The paragraph lists visualization alternatives without assigning a specific file format,panel or transformation to each tool. It does not establish that IGV loaded a .hic matrix or performed NMF,RobusTAD or copy-number statistics.",
+      "version_reported_near_name": "2.12.3"
+    },
+    {
+      "pmcid": "PMC13277683",
+      "doi": "10.1016/j.ajhg.2026.04.001",
+      "tool_id": "igv",
+      "evidence_paragraph_sha256": "934371d121577ed890485764285c86b14e17649a6de7b3fda14bfa0f21275482",
+      "use_summary": "Independently reviewed methylation-containing HiFi BAMs in IGV with two scientists,inspecting relevant CpG islands in positive and control samples;the Results also note a mosaic SCN1A deletion visible in IGV despite a missed automatic call.",
+      "implementation_scope_note": "pb-CpG-tools calculated methylation values after ccs/pbmm2 preprocessing. Displaying methylation requires the actual BAM modification tags,reference and viewer settings. Neither the viewer version nor an automatic diagnostic rule is specified;the visual mosaic finding is distinct from a successful pipeline call.",
+      "version_reported_near_name": "",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 22,
+          "section": "Results / HiFi limitations: Missed mosaic events",
+          "paragraph_sha256": "6bf854624db31e2e4f325142d841cf04b37790ac9e98cf2eb04b987c55f1f954"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC11480806",
+      "doi": "10.1016/j.ajhg.2024.07.022",
+      "tool_id": "igv",
+      "evidence_paragraph_sha256": "4cea8991c2e42352c184ec312a5a9672e8f5e10eeb15b1e9a58105d2a21348d7",
+      "use_summary": "Visualized ChIP/ATAC peaks in IGV on hg19;the supporting figure descriptions show retained/lost ARID1A peaks and lost/gained ZIC2 binding in the compared cell lines.",
+      "implementation_scope_note": "Trimming,BWA-MEM mapping,MAPQ filtering,duplicate removal,Tn5 shifts and MACS2 peak calling preceded display. The figure descriptions identify examples and genomic build but leave IGV version,track scales and complete view settings unspecified.",
+      "version_reported_near_name": "",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 38,
+          "section": "Results / ARID1A-BAF regulates accessibility at EMT enhancers",
+          "paragraph_sha256": "bc3775657474d0f4e341cc421dd208ae6eb111bbd7f7d57c6bb2b0c6b2b8f86a"
+        },
+        {
+          "paragraph_index": 40,
+          "section": "Results / ARID1A-BAF regulates the accessibility at enhancers of EMT genes to coordinate ZIC2 binding",
+          "paragraph_sha256": "5a4af8fdf46156fac83c9ad7909738419de75d9d044fc2d8bb28f1155ac634f6"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC11393691",
+      "doi": "10.1016/j.ajhg.2024.07.020",
+      "tool_id": "igv",
+      "evidence_paragraph_sha256": "90d2ed9f192f6c47e8d85133fbbce4ec276a488dd34b35a310fe80e6c8611fe4",
+      "use_summary": "Used IGV read-depth analysis of blood-derived ONT TMEM216 transcripts to assess allele imbalance in a carrier,reporting23,255 versus8,184 reads(74%/26%) at the linked coding SNV. Supporting Results describe inspection of apparent homozygotes and the cDNA-read display.",
+      "implementation_scope_note": "This is direct primary Results evidence,manually selected by its exact paragraph hash rather than inferred from a Methods heading. Trio segregation and read inspection checked zygosity;the linked c.264G>A SNV distinguishes transcript alleles,while the c.−69 base is outside the displayed RNA. Version,read/base-quality thresholds,downsampling and overlap-counting rules are unstated;do not equate displayed counts with an unspecified generic pileup.",
+      "version_reported_near_name": "",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 20,
+          "section": "Results / Identification of TMEM216 c.−69G>T in individuals with retinitis pigmentosa that lack molecular diagnosis",
+          "paragraph_sha256": "83b3f3b74d6505de61ca8c5f676cdfa85d67a03fa2f18de5de43c3a57156d0ff"
+        },
+        {
+          "paragraph_index": 30,
+          "section": "Results / c.−69G>A and c.−69G>T downregulate TMEM216 expression in vitro",
+          "paragraph_sha256": "0720bf40dabea02a422e61d48b459a73c48a1e3164ff5c40efdfeb9c0d084dcf"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC12500174",
+      "doi": "10.1016/j.ajhg.2025.08.015",
+      "tool_id": "igv",
+      "evidence_paragraph_sha256": "6322174f2610156c46c7fa40e3099235c108df62880cb698e11591d7997f8a0a",
+      "use_summary": "Visualized fibroblast RNA-seq alignments in IGV after STAR alignment to GRCh38/hg38 and aggregation into a Picard BAM file,including cultures with and without cycloheximide treatment.",
+      "implementation_scope_note": "RNA preparation,STAR alignment and BAM processing were upstream. The paragraph does not give an IGV version,splice-view settings or an automated NMD/splicing test.",
+      "version_reported_near_name": ""
+    },
+    {
+      "pmcid": "PMC11339655",
+      "doi": "10.1016/j.ajhg.2024.06.018",
+      "tool_id": "igv",
+      "evidence_paragraph_sha256": "210553ca9398098e8c2cbe5178c15ec9152d922bf9f385347b36e96f0f062c5a",
+      "use_summary": "Visualized GRCh38-mapped Oxford Nanopore amplicon reads in IGV;the supporting data-analysis paragraph also reports genome visualization with IGV and UCSC Genome Browser.",
+      "implementation_scope_note": "MinKNOW/Guppy base calling and the stated minimap spliced mapping were upstream. The source spells the name Integrative Genomic Viewer but explicitly gives IGV. Viewer version and display/counting settings are unstated;ShinyGO,MRSD,MAJIQ-CAT and other statistical tools remain separate.",
+      "version_reported_near_name": "",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 15,
+          "section": "Subjects, material, and methods / Data resources and analysis",
+          "paragraph_sha256": "5cd2149dffa2937a450071323fb7ed1a95aa63ba50090d1f6c9eb81f153cf66f"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC12807872",
+      "doi": "10.1038/s41588-025-02417-6",
+      "tool_id": "saige",
+      "evidence_paragraph_sha256": "168834f2939601993b7e57f590d8bf29b291c4ab337e060e297855774c644bc0",
+      "use_summary": "Participating aortic-stenosis consortium studies used SAIGE or REGENIE for ancestry-stratified autosomal GWAS and sex-stratified autosomal/X-chromosome analyses.",
+      "implementation_scope_note": "The paragraph does not assign every cohort to one engine or give a SAIGE version/model options. TOPMed imputation and study-specific QC preceded association;X-chromosome/ploidy/sex-specific choices require separate validation.43is a citation,not a version.",
+      "version_reported_near_name": ""
+    },
+    {
+      "pmcid": "PMC10703676",
+      "doi": "10.1038/s41588-023-01569-7",
+      "tool_id": "saige",
+      "evidence_paragraph_sha256": "8def66c08a11c52444fc1b6e6ae9b80d8744d8768039f44c758dba8d4422c6eb",
+      "use_summary": "Ran SAIGE0.44 single-variant and sex-stratified association tests,adjusting for age,sex and ten PCs;fit LOCO null models from LD-pruned array variants with MAF>1% and excluded test variants with MAC<20.",
+      "implementation_scope_note": "Sex-stratified models omit sex. A separate cross-ancestry analysis reused published European PheWeb UKB-SAIGE summaries. Original0.44/current1.5.2 settings are not asserted equivalent;pruning/imputation and meta-analysis remain separate.",
+      "version_reported_near_name": "0.44",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 42,
+          "paragraph_sha256": "ce9ef6d28ddae97c89dcbb7d7f64560f9526096dd0678bcfc6e3e3e4367e8ecb",
+          "section": "Methods / Cross-ancestry meta-analysis"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC12695641",
+      "doi": "10.1038/s41588-025-02403-y",
+      "tool_id": "saige",
+      "evidence_paragraph_sha256": "852b30b52495ab3e618f39e8d8ae3357e3eb4d32b7b001d32b7de89d6159eb85",
+      "use_summary": "Generated per-cohort SAIGE variant score statistics,variances and P values,plus phenotype-independent sparse genotype cross-product LD matrices,for Meta-SAIGE analyses of binary and continuous traits.",
+      "implementation_scope_note": "Dense-GRM variance-ratio and direct sparse-GRM calculations are distinct. Methods46describes ancestry-specific UKB/All of Us inputs. Sparse LD is a genotype cross-product,not a phenotype-weighted covariance. Meta-SAIGE combination and set testing are separate software roles;the SAIGE version is unstated.",
+      "version_reported_near_name": "",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 46,
+          "paragraph_sha256": "3c7b8cce83928b054cd004d8b24646606882fc309daee399c0f949d260a8022e",
+          "section": "Methods / UKB and All of Us WES data meta-analysis"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC12695641",
+      "doi": "10.1038/s41588-025-02403-y",
+      "tool_id": "saige-gene",
+      "evidence_paragraph_sha256": "6d0f85b09055863c75b17aa2adc1040c973bc73372fe3b4befd88dd23e86822f",
+      "use_summary": "Used SAIGE-GENE+ on all individual-level UKB exome data as the comparator to Meta-SAIGE across three binary and three continuous traits,with age,sex,batch,ten PCs and a sparse GRM cutoff0.05.",
+      "implementation_scope_note": "The comparison includes equal and4:3:2cohort splits for meta-analysis. Source Methods reports166,960participants;Results has a rounded160,000description. The exact SAIGE-GENE+ version/options are not given;set tests and meta-analysis must remain distinct.",
+      "version_reported_near_name": "",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 9,
+          "paragraph_sha256": "fb50f6e1a82d4ea76d5199332de57f0c8a5c080eb92298317bed320c98687e26",
+          "section": "Results / Comparison between Meta-SAIGE and SAIGE-GENE+"
+        },
+        {
+          "paragraph_index": 40,
+          "paragraph_sha256": "af2022a27c9b72efb88997902c71f363b94d9fbf4ce8cc84bc7925c0d8e5d385",
+          "section": "Methods / Type I error and power evaluation"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC12695641",
+      "doi": "10.1038/s41588-025-02403-y",
+      "tool_id": "metasaige",
+      "evidence_paragraph_sha256": "6d0f85b09055863c75b17aa2adc1040c973bc73372fe3b4befd88dd23e86822f",
+      "use_summary": "Combined cohort summaries with Meta-SAIGE,compared results against individual-level SAIGE-GENE+,and analyzed ancestry-specific UKB/All of Us rare-variant data.",
+      "implementation_scope_note": "Meta-SAIGE performs summary-statistic combination and ancestry-specific ultrarare collapsing;SAIGE creates its cohort statistics/LD. It is a separate missing integration,not established by a SAIGE runtime. Source comparison cohort sizes are retained without silently reconciling their totals. No version is stated.",
+      "version_reported_near_name": "",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 26,
+          "paragraph_sha256": "dc6a57b57090fd2b74d2c7f96e8580bde0677c3af64e8a2bbb03621cd045cbec",
+          "section": "Methods / Workflow of Meta-SAIGE"
+        },
+        {
+          "paragraph_index": 38,
+          "paragraph_sha256": "9f9872350d1d033ae28336e04f6de10be6256f9dbf4d4fee49a0ac3daab20df3",
+          "section": "Methods / Ancestry-specific collapsing"
+        },
+        {
+          "paragraph_index": 46,
+          "paragraph_sha256": "3c7b8cce83928b054cd004d8b24646606882fc309daee399c0f949d260a8022e",
+          "section": "Methods / UKB and All of Us WES data meta-analysis"
+        },
+        {
+          "paragraph_index": 47,
+          "paragraph_sha256": "1eed10d62e07dcbeb465cdf2629ae6c5d0a9a28726dd612a1cb606bbff737418",
+          "section": "Methods / Computational cost evaluation"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC13553293",
+      "doi": "10.1038/s41588-026-02741-5",
+      "tool_id": "saige",
+      "evidence_paragraph_sha256": "40ee269ef60cacfd26ed750d77a40cddc5d4c78c9ac8cbab506c8f4f5be5555f",
+      "use_summary": "Used SAIGE0.45 GLMMs for Japanese multiple-sclerosis GWAS and SAIGE1.0.7 for Genomics England European-ancestry analysis,adjusting for age,sex and ten PCs.",
+      "implementation_scope_note": "Japanese tests used MAF>0.5% and imputationR2>0.7. The Genomics England cohort had244cases/28,846controls after distinct QC. These are different reported versions/cohorts;the modern runtime does not establish their historical equivalence.",
+      "version_reported_near_name": "0.45;1.0.7",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 37,
+          "paragraph_sha256": "3b8d344a1bd51a6edc149fdbeb246d44ecaa22200f18b4f6323e98def53c4946",
+          "section": "Methods / Genomics England"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC11549054",
+      "doi": "10.1038/s41588-024-01939-9",
+      "tool_id": "saige",
+      "evidence_paragraph_sha256": "742e8d6f9b81868607acfad42e606882b28eef31a58888eb6d33aaed87d22827",
+      "use_summary": "Analyzed binary neuropathology phenotypes with SAIGE logistic mixed models and additive variant score tests;SAIGE1.1.3 is listed among null-model packages used in the two-stage analysis.",
+      "implementation_scope_note": "Ordinal phenotypes used POLMM/GRAB,not a SAIGE ordinal model. Fixed covariates included age at death,sex,cohort and ten PC-AiR components;the GRM modeled relatedness. Per-source package allocation,clumping and METAL meta-analysis remain separate.",
+      "version_reported_near_name": "1.1.3",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 53,
+          "paragraph_sha256": "f7f22a013eeaab77c24861cdb84d3f796f9747a5ed2c63124b638d5a81f57151",
+          "section": "Methods / Statistical analyses / Single-variant GWAS"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC10632131",
+      "doi": "10.1038/s41588-023-01527-3",
+      "tool_id": "saige",
+      "evidence_paragraph_sha256": "1a3032e17b64d761ca2d072062921337c0beec279fa702df87f5b826ca08c5f0",
+      "use_summary": "Contributing forearm-fracture cohorts used SAIGE or PLINK logistic models for additive per-allele SNP effects,with sex,age/age-squared,PCs,study site and family structure as applicable.",
+      "implementation_scope_note": "The paragraph does not specify which engine/options each cohort used or a SAIGE version. Genomic control where needed and fixed-effect inverse-variance METAL meta-analysis are separate stages;hg19coordinate standardization does not establish allele harmonization.",
+      "version_reported_near_name": ""
+    },
+    {
+      "pmcid": "PMC13553284",
+      "doi": "10.1038/s41588-026-02705-9",
+      "tool_id": "saige",
+      "evidence_paragraph_sha256": "adc872dbc252821917fa1a2328a3adc3f3f86f7a4c8b4f928c0c1b25160cf593",
+      "use_summary": "Used the SAIGE step1 average-information null-GLMM fitting approach and SAIGE two-sided single-variant score-test P values in the RareEffect analyses.",
+      "implementation_scope_note": "The primary Methods paragraph describes the fitting approach;supporting Results explicitly attributes single-variant P values to SAIGE. RareEffect heritability/effect estimation and linear regression for collapsed-variant P values are separate operations. The SAIGE version is unstated.",
+      "version_reported_near_name": "",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 11,
+          "paragraph_sha256": "d42026e1705640225ea3b4739c1341a6ee049d86500d7eaf01dd795f82574335",
+          "section": "Results / UKB WES data analysis"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC13553284",
+      "doi": "10.1038/s41588-026-02705-9",
+      "tool_id": "saige-gene",
+      "evidence_paragraph_sha256": "2c4020bf555354e571be311f67c99fb37d6f4bd796e068131469ac67dea637df",
+      "use_summary": "Used SAIGE-GENE+ gene-level P values for burden/SKAT-O comparisons and selection of genes for rare-variant PRS;the training-set selection used P<2.5e-6,or the top ten genes when fewer passed.",
+      "implementation_scope_note": "The source also describes an8:2training/test split and adopts SAIGE-GENE+-style ultrarare collapsing within gene/function groups. RareEffect effect estimation and PRS construction are separate;an algorithm analogy alone is not the evidence for running a gene test. The software version is unstated.",
+      "version_reported_near_name": "",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 10,
+          "paragraph_sha256": "58ae040d127ad5cca6e89f39f66d9d8d55c39154d3616b8ba03e9ac38cc682b2",
+          "section": "Results / UKB WES data analysis"
+        },
+        {
+          "paragraph_index": 11,
+          "paragraph_sha256": "d42026e1705640225ea3b4739c1341a6ee049d86500d7eaf01dd795f82574335",
+          "section": "Results / UKB WES data analysis"
+        },
+        {
+          "paragraph_index": 12,
+          "paragraph_sha256": "10d564c384bcb0522f7f812bafba3ab0c6088166d2c2b1cad37a8dcbdc96dc18",
+          "section": "Results / UKB WES data analysis"
+        },
+        {
+          "paragraph_index": 37,
+          "paragraph_sha256": "966d29b997ef82afeb9a24c6ca2168701c3c0e12576a99e87ef994c567607562",
+          "section": "Methods / Estimation of the gene-level (region-level) heritability (step 2)"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC12597826",
+      "doi": "10.1038/s41588-025-02370-4",
+      "tool_id": "saige",
+      "evidence_paragraph_sha256": "9e21720f9aafcf4a0948d434384d91d7de0de7a33bcf3918583f80c134a94ce1",
+      "use_summary": "Reused PheWeb SAIGE GWAS summaries for1,402PheCodes to obtain covariance estimates for chronic-kidney-disease LTPI risk analysis.",
+      "implementation_scope_note": "This direct Results paragraph describes published summary-data reuse,not a new SAIGE fit or access to individual-level UKB genotypes. eMERGE prevalences supplied population-prevalence proxies;trait selection/LTPI modeling are separate. The SAIGE version/model options are unstated.",
+      "version_reported_near_name": ""
+    },
+    {
+      "pmcid": "PMC11549047",
+      "doi": "10.1038/s41588-024-01933-1",
+      "tool_id": "saige",
+      "evidence_paragraph_sha256": "662a17036019af195fa259d09bb94de493239205cc6bbaa33378dc5dbd4cc74d",
+      "use_summary": "Reused UKB-SAIGE,PanUKB and Neale-laboratory outcome GWAS summaries for two-sample MR of metabolic syndrome;325outcomes were available from350PRS-PheWAS associations.",
+      "implementation_scope_note": "This is upstream summary-statistic provenance,not local SAIGE execution. The exposure GWAS excluded UKB to reduce sample overlap;TwoSampleMR0.5.6 performed MR and MGI supplied validation.81is a citation,not the SAIGE version.",
+      "version_reported_near_name": ""
+    },
+    {
+      "pmcid": "PMC13384252",
+      "doi": "10.1016/j.ajhg.2026.05.014",
+      "tool_id": "saige",
+      "evidence_paragraph_sha256": "c0fa216676a9e83248adac1178b861596a10c1c15dcb5a2c4b2b942423756be8",
+      "use_summary": "Used SAIGE1.3.6 to build ancestry-specific sparse GRMs and run two-stage binary GWAS on BGEN srWGS data;single-variant tests required MAC>=200 and Firth effect correction at P<=0.05.",
+      "implementation_scope_note": "GRMs used5,000random array markers,relatedness cutoff0.125,MAF cutoff0.05 and missing-rate cutoff0.05. Null covariates included age/sex interactions,ten PCs and,for the SDoH analysis,20MCA embeddings. Sex-specific cancer models omitted sex terms. The16after1.3.6is a citation;METAL meta-analysis is separate.",
+      "version_reported_near_name": "1.3.6",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 15,
+          "paragraph_sha256": "da7363e369cb8c75e6ed07b72db9917f3ff1bcf722cbc9fe296ffd51e4b73afb",
+          "section": "Methods / Genetic data analysis and genome-wide association study / PCA and genetic relationship matrix generation"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC13504349",
+      "doi": "10.1016/j.ajhg.2026.05.013",
+      "tool_id": "saige",
+      "evidence_paragraph_sha256": "1890de2640897874198979bef37dfc46a28fd257f7ed26d83d6e30271b0d109c",
+      "use_summary": "Used a SAIGE array-genotype GRM as input to phenotype-specific greedy maximal-unrelated-set selection,excluding third-degree-or-closer relationships with G>2^-3.5.",
+      "implementation_scope_note": "Phenotype/covariate complete-case filtering occurred before selection. The custom greedy routine visits participants ordered by number of relatives,fewest first,retains one and removes its relatives,skipping already removed participants. Ties and dynamic degree updates are not stated;the native helper uses explicit ties and initial degrees. It does not itself produce a SAIGE GRM or GWAS. Version is unstated.",
+      "version_reported_near_name": ""
+    },
+    {
+      "pmcid": "PMC13393102",
+      "doi": "10.1016/j.ajhg.2026.05.011",
+      "tool_id": "saige",
+      "evidence_paragraph_sha256": "0f51f846cc75c6d99dc9e1716f602f4b57c6700d9ef34ebcba90cb630fec9cba",
+      "use_summary": "Reused SAIGE-generated Ménière-disease GWAS summaries from MVP,Pan-UKB and BBJ in a multibiobank analysis.",
+      "implementation_scope_note": "The current study analyzed published summaries,not a newly fitted unified SAIGE cohort. The three sources used distinct phenotype definitions,sample counts,imputation/QC and covariates. The manuscript does not state the SAIGE versions;no raw-genotype availability or cross-cohort parameter equivalence is inferred.",
+      "version_reported_near_name": "",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 7,
+          "paragraph_sha256": "2f385ac553e3e8a1eda9d929862cf1581200dadb0c3a17588f2e813d0dedac4e",
+          "section": "Subjects and methods / Contributing biobanks and GWASs / UKB"
+        },
+        {
+          "paragraph_index": 9,
+          "paragraph_sha256": "dc3ad5720cad2740e693527be4a108f64c60b613f132334d017fb840850b5316",
+          "section": "Subjects and methods / Contributing biobanks and GWASs / BBJ"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC12808971",
+      "doi": "10.1016/j.ajhg.2025.09.012",
+      "tool_id": "saige",
+      "evidence_paragraph_sha256": "d435fa8afc7f400f4d00922a09b7c26d662c6246b36386e09ad6b830708d1930",
+      "use_summary": "Calculated per-variant lipid-trait effects and standard errors with SAIGE1.3.0 among390,865UKB participants,using inverse-normalized traits and a sparse GRM.",
+      "implementation_scope_note": "Upstream ultrarare variants with MAC<=10were collapsed by gene/category;genes required at least three resulting variants. NumPy produced MAF/within-gene LD matrices and AllelicSeries/COAST-SS used the summaries. Those aggregation,LD and allelic-series stages are not automatically SAIGE operations.",
+      "version_reported_near_name": "1.3.0"
+    },
+    {
+      "pmcid": "PMC13277689",
+      "doi": "10.1016/j.ajhg.2026.04.005",
+      "tool_id": "saige",
+      "evidence_paragraph_sha256": "32925fa0d52f8488b4520a6170f072702c2d4349638f57e114d9934fb7eb01f7",
+      "use_summary": "Tested supplied recessive burdens with SAIGE or REGENIE per ancestry/subcohort,and subsequently tested additive burdens for genes with available recessive summaries.",
+      "implementation_scope_note": "SAIGE sparse GRMs used2,000random markers/cutoff0.05. Null covariates included age/sex interactions/ten PCs and,for UKB,batch/center;quantitative traits were inverse-normal transformed and binary Firth correction used P<0.01. Burden construction/phasing and the at-least-five-biallelic-carrier eligibility rule are separate inputs. SAIGE version is unstated.",
+      "version_reported_near_name": ""
+    },
+    {
+      "pmcid": "PMC12696503",
+      "doi": "10.1016/j.ajhg.2025.08.013",
+      "tool_id": "saige",
+      "evidence_paragraph_sha256": "13d3556be398d0e55a4fdf3dafb9c8354f58fa7c82f532b8d00b4fe4aebf78d9",
+      "use_summary": "Ran SAIGE common-variant association with1.1.6.3 and exome variant/gene tests with container1.1.9,using sparse-GRM null models,categorical variance ratios and quantitative inverse-normal transformation.",
+      "implementation_scope_note": "GRMs used5,000markers/cutoff0.05;variance-ratio panels used2,000markers. Reported step2 choices included LOCO=FALSE,fast tests,Firth cutoff0.1,and joint single/group tests at MAF cutoffs0.0001/0.001/0.01. Gene tests included conditional common variants. Annotation masks,finemapping and BH selection remain separate;these historical versions are not equated to1.5.2.",
+      "version_reported_near_name": "1.1.6.3;1.1.9",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 18,
+          "paragraph_sha256": "69ae7258e4ef4523d2dccd0c437a828a26874ff9167677f3ca58862af88be44a",
+          "section": "Material and methods / Genetic association testing"
+        },
+        {
+          "paragraph_index": 19,
+          "paragraph_sha256": "0ff471d7431e3dc22406a64d8a9cf1d38c1e5a64139bf6b45020aeee5cce3905",
+          "section": "Material and methods / Genetic association testing"
+        },
+        {
+          "paragraph_index": 20,
+          "paragraph_sha256": "8005a9370efcf9bb382f8af298797889ea1df47e3d161a7701fb1ebcfd42c454",
+          "section": "Material and methods / Common-variant association testing in imputed data"
+        },
+        {
+          "paragraph_index": 21,
+          "paragraph_sha256": "aac3788c2930900f5e72808c5ea34acfe3b3c73fda73769b0ddcbaab59521f3a",
+          "section": "Material and methods / Common-variant association testing in imputed data"
+        },
+        {
+          "paragraph_index": 24,
+          "paragraph_sha256": "454cd2346080a1960566616e7946bb7b6847a40dc5ffdcb4f25b70215584ff72",
+          "section": "Material and methods / Rare-variant and gene-level testing in ES data"
+        },
+        {
+          "paragraph_index": 25,
+          "paragraph_sha256": "1c28ab43077d586f5f8f94853fbfc7b253207be6a0c62be608f5e26082de440b",
+          "section": "Material and methods / Rare-variant and gene-level testing in ES data"
+        },
+        {
+          "paragraph_index": 29,
+          "paragraph_sha256": "32f18aae91b9ff333cfc879c8531dda177b0f9c296cedc0703dd1a825ecf398d",
+          "section": "Material and methods / Rare-variant and gene-level testing in ES data / Obesity and fat distribution trait-gene-level association tests"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC12461026",
+      "doi": "10.1016/j.ajhg.2025.07.003",
+      "tool_id": "saige",
+      "evidence_paragraph_sha256": "8d2d2eee0121704a3625a19f7d3dd755115c6ee332e833bd5848d5aabeb9dc52",
+      "use_summary": "Reused SAIGE-generated FinnGen/PheWeb and Pan-UKBB GWAS summaries for GLEANR cross-cohort factorization and137-phenotype UKBB analysis.",
+      "implementation_scope_note": "This is summary-data provenance,not local SAIGE execution. FinnGen/PheWeb disease and Neale continuous-trait sources are distinct;trait QC,heritability/genetic-correlation filters,XT-LDSR sample-sharing estimates and PLINK pruning preceded GLEANR. SAIGE versions are unstated.",
+      "version_reported_near_name": "",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 34,
+          "paragraph_sha256": "75e1e693653a358e352307c336a5234422f9182cff554c6973f5aa6d668684a6",
+          "section": "Methods / UKBB analysis across 137 diverse GWASs / Study selection"
+        }
+      ]
     }
   ]
 }

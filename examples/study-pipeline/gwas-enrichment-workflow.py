@@ -18,7 +18,7 @@ import subprocess
 import numpy as np
 import yaml
 
-MODES=('native','fixed','shuffled','allele-flip','chi-qc','region-qc','official-meta','supplied','supplied-selected','weak','coverage-loss','selected-summary','wrong-count','wrong-build','missing-reference','bad-overlap','work-limit','collinear','duplicate-allele')
+MODES=('native','fixed','shuffled','allele-flip','chi-qc','region-qc','official-meta','official-meta-auto','supplied','supplied-selected','weak','coverage-loss','selected-summary','wrong-count','wrong-build','missing-reference','bad-overlap','work-limit','collinear','duplicate-allele')
 WAITING={'weak','coverage-loss','selected-summary','wrong-count','wrong-build','missing-reference','bad-overlap','work-limit','collinear','duplicate-allele'}
 TARGETS=('TARGET_A','TARGET_B')
 
@@ -74,7 +74,7 @@ def generate(root,mode):
         table(p/'ld-scores.tsv',ld)
     if mode=='duplicate-allele':
         duplicate=dict(ld[0]);duplicate.update({'variant_id':'same-physical-snp','ref':'G','alt':'A'});ld.append(duplicate);table(p/'ld-scores.tsv',ld)
-    if mode=='official-meta':
+    if mode in ('official-meta','official-meta-auto'):
         config['summary'].pop('file');config['summary']['statistic']='beta_se'
         data=[]
         for r in summary:
@@ -88,6 +88,8 @@ def generate(root,mode):
         for name in ('summary.tsv','ld-scores.tsv','annotations.tsv','overlap.tsv'):(p/name).unlink()
     analysis={'mode':'manual','goals':['gwas_enrichment','impact_assessment'],'gwas_enrichment':config,'supplied_results':supplied}
     study={'schema_version':1,'project':{'id':'sldsc-'+mode,'title':'Synthetic S-LDSC '+mode,'description':'Numerical/reuse verification only; AI appraisal deliberately unavailable'},'resources':{'directory':'fixture-resources','network':'offline','downloads':'deny'},'datasets':[],'hypotheses':[{'id':'H','description':'Prespecified synthetic functional-annotation GWAS enrichment','analysis':analysis}]}
+    if mode=='official-meta-auto':
+        analysis['mode']='auto';analysis['goals']=['impact_assessment'];study['project']['objective']='exploration'
     write(p/'study.json',study);write(p/'original-input-hashes.json',{str(f.relative_to(p)):sha(f) for f in sorted(p.iterdir()) if f.is_file()})
 
 def oracle(root,project):
@@ -136,9 +138,15 @@ def verify(root,jar):
             assert all('Externally produced' in str(f) for f in enriched);checks+=4
         else:
             assert len(enriched)==2;config=json.loads((project/'study.json').read_text())['hypotheses'][0]['analysis']['gwas_enrichment'];assert manifest['details']['official_family_complete'] is True
-            if mode=='official-meta':
+            if mode in ('official-meta','official-meta-auto'):
                 reference=json.loads((root/'software/fixtures/reference.json').read_text())['cases'][0]['expected'];ids=['ALL','TARGET_A','TARGET_B','NUISANCE'];kept=rows(project/'summary.tsv');blocks=None
                 meta,md=one(project,'meta_analysis');assert md['details']['analysis_executed_by_jlinalg'] is False;assert manifest['details']['source_origin']=='official_scoped_results';checks+=2
+                if mode=='official-meta-auto':
+                    resolved=yaml.safe_load((project/'resolved-study.yaml').read_text());a=resolved['hypotheses'][0]['analysis'];receipt=resolved['_resolution']['followup_applicability']['H']
+                    assert 'gwas_enrichment' in a['goals'] and receipt['source_id']=='external-meta' and receipt['automatic_goal_merge'] is True
+                    plan=yaml.safe_load(next((project/'plans').glob('*/analysis-plan.yaml')).read_text())
+                    enrichment=next(op for op in plan['operations'] if op['id']==manifest['operation_id'])
+                    assert md['operation_id'] in enrichment['depends_on'];checks+=3
             else:ids,reference,kept,blocks=oracle(root,project)
             got=rows(folder/'gwas-enrichment.tsv');ref_prob={key:reference['p_values'][ids.index(key)] for key in TARGETS};q=adjusted(ref_prob)
             mapping={'enrichment':'enrichments','enrichment_se':'enrichment_se','heritability_proportion':'proportions','heritability_proportion_se':'proportion_se','category_heritability':'category','per_snp_contrast':'contrasts','per_snp_contrast_se':'contrast_se','p_value':'p_values'}
@@ -157,13 +165,16 @@ def verify(root,jar):
             checks+=8
         if mode not in WAITING:
             assert manifest.get('reused_from_cache') is True,mode
-            assert inventory_manifest.get('reused_from_cache') is True,mode
+            if mode=='official-meta-auto':
+                assert one(project,'meta_analysis')[1].get('reused_from_cache') is True
+                assert one(project,'literature_search')[1].get('reused_from_cache',False) is False
+            else:assert inventory_manifest.get('reused_from_cache') is True,mode
             checks+=2
         else:
             assert manifest.get('reused_from_cache',False) is False,mode
             checks+=1
         cli(jar,'verify','--project',project);case_records.append({'case':mode,'analysis_state':manifest['state'],'imported':mode.startswith('supplied'),'enrichment_findings':len(enriched)})
-    report={'passed':True,'cases':case_records,'checks':checks,'sealed_outputs':len(seals),'enrichment_finding_observations':total_findings,'jar_sha256':software['jar_sha256'],'verifier_sha256':software['verifier_sha256'],'independent_numpy_qr':True,'pinned_upstream_reference':'2fdeeb3b44379408794154993dbd6101b8946b7e','supplied_stages_reused_without_refit':True,'complete_and_selected_source_fdr_retained':True,'complete_enrichment_and_inventory_replayed_from_cache':True,'unresolved_enrichment_retried_instead_of_cached':True,'study_verify_all_cases':True,'real_gwas_or_biological_calibration':False,'ai_scientific_appraisal':False,'full_pipeline_conformance':False}
+    report={'passed':True,'cases':case_records,'checks':checks,'sealed_outputs':len(seals),'enrichment_finding_observations':total_findings,'jar_sha256':software['jar_sha256'],'verifier_sha256':software['verifier_sha256'],'independent_numpy_qr':True,'pinned_upstream_reference':'2fdeeb3b44379408794154993dbd6101b8946b7e','supplied_stages_reused_without_refit':True,'complete_and_selected_source_fdr_retained':True,'complete_manual_enrichment_and_inventory_replayed_from_cache':True,'automatic_meta_inference_completed_enrichment':True,'automatic_completed_statistics_reused_pending_branches_retried':True,'unresolved_enrichment_retried_instead_of_cached':True,'study_verify_all_cases':True,'real_gwas_or_biological_calibration':False,'ai_scientific_appraisal':False,'full_pipeline_conformance':False}
     output=root/'verification.json'
     if output.exists():assert json.loads(output.read_text())==report
     else:write(output,report)

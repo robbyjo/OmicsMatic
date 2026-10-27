@@ -15,6 +15,8 @@ import java.util.Set;
 import org.jlinalg.pipeline.DataFormat;
 import org.jlinalg.pipeline.VariantSources;
 import org.jlinalg.study.StudyOperationExecutor.Context;
+import org.jlinalg.study.StudyAnalysisReferences;
+import org.jlinalg.study.StudyVariantFollowupPolicy;
 
 /** Allele-resolved catalog and aliases; annotation scope never depends on P values. */
 final class StudyVariantUniverse {
@@ -24,14 +26,17 @@ final class StudyVariantUniverse {
         boolean snp() { return reference.length() == 1 && alternate.length() == 1; }
     }
     static final class Item {
-        final String dataset, feature, source; Key key; boolean eligible; String disposition;
-        Item(String dataset, String feature, Key key, boolean eligible, String disposition, String source) {
-            this.dataset = dataset; this.feature = feature; this.key = key; this.eligible = eligible; this.disposition = disposition; this.source = source;
+        final String dataset, feature, source, producer; Key key; boolean eligible; String disposition;
+        Item(String dataset, String feature, Key key, boolean eligible, String disposition, String source, String producer) {
+            this.dataset = dataset; this.feature = feature; this.key = key; this.eligible = eligible; this.disposition = disposition; this.source = source; this.producer = producer;
         }
     }
     final List<Item> items = new ArrayList<>();
     final Map<String, Key> queries = new LinkedHashMap<>();
     final Map<String, Object> sourceHashes = new LinkedHashMap<>();
+    final List<Map<String,Object>> pooledSources = new ArrayList<>();
+    boolean completeSourceCoverage = true, unresolvedScope;
+    private final Map<String,String> producers = new LinkedHashMap<>();
     private final Set<String> aliases = new LinkedHashSet<>();
     private StudyVariantUniverse() { }
 
@@ -60,9 +65,11 @@ final class StudyVariantUniverse {
             for (String[] row : table.rows()) if (rows.putIfAbsent(row[table.column("feature_id")], row) != null)
                 throw new IOException("Ambiguous variant/contrast in cohort annotation universe: " + dataset);
             primary.put(dataset, rows); catalog.sourceHashes.put(dataset + ":tested_cohort_results", entry.getValue().sha256());
+            catalog.producers.put(dataset, entry.getValue().producer().id());
         }
         for (var dataset : StudyBioinformatics.datasets(context)) {
             String id = text(dataset.get("id")); if (!selected.contains(id) || !Set.of("gwas", "genomics").contains(dataset.get("type"))) continue;
+            if (StudyAnalysisReferences.isReference(dataset) || !StudyVariantFollowupPolicy.variantScope(text(dataset.get("type")), text(dataset.get("feature_id_type")))) continue;
             String build = build(text(dataset.get("genome_build"))); var files = map(dataset.get("files"));
             if (!beforeAssociation && !primaryTables.containsKey(id) && !rareQc.containsKey(id)) throw new IOException("Verified primary GWAS result producer is unavailable for " + id);
             Map<String, Key> identities = new LinkedHashMap<>();
@@ -124,12 +131,16 @@ final class StudyVariantUniverse {
                 }
             }
         }
+        if (!beforeAssociation) StudyPooledVariantInputs.add(context, catalog, selected);
         return catalog;
     }
     private void add(String dataset, String feature, Key key, boolean eligible, String disposition, String source) throws IOException {
+        add(dataset, feature, key, eligible, disposition, source, producers.getOrDefault(dataset, ""));
+    }
+    void add(String dataset, String feature, Key key, boolean eligible, String disposition, String source, String producer) throws IOException {
         if (!aliases.add(dataset + "\u001f" + feature)) throw new IOException("Duplicate variant feature identity: " + dataset + "/" + feature);
         if (key == null && eligible) disposition = "identity_unresolved";
-        items.add(new Item(dataset, feature, key, eligible, disposition, source)); if (key != null && eligible) queries.putIfAbsent(key.id(), key);
+        items.add(new Item(dataset, feature, key, eligible, disposition, source, producer)); if (key != null && eligible) queries.putIfAbsent(key.id(), key);
     }
     static Key key(String build, String chromosome, long position, String reference, String alternate) {
         if (build.isBlank() || chromosome == null || reference == null || alternate == null) return null;
@@ -137,7 +148,7 @@ final class StudyVariantUniverse {
         if (position < 1 || !chromosome.matches("[A-Za-z0-9_.-]+") || !reference.matches("[ACGT]+") || !alternate.matches("[ACGT]+") || reference.equals(alternate)) return null;
         return new Key(build, chromosome, position, reference, alternate);
     }
-    private static Key from(DelimitedData table, String[] row, String fallback) throws IOException {
+    static Key from(DelimitedData table, String[] row, String fallback) throws IOException {
         String declared = field(table, row, "genome_build"), build = build(declared);
         if (!declared.isBlank() && build.isBlank()) throw new IOException("Unsupported annotation row build: " + declared);
         if (!fallback.isBlank() && !build.isBlank() && !fallback.equals(build)) throw new IOException("Variant row build conflicts with dataset build");

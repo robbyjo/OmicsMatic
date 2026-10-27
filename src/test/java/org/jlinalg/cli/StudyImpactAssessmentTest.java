@@ -94,6 +94,143 @@ class StudyImpactAssessmentTest {
         return new LinkedHashMap<>(Map.of("assessments", assessments, "selected_ids", selected, "selection_note", selected.size() < 3 ? "Fewer eligible independent findings are available" : "",
             "comparison_rationale", "Fixture priorities deliberately differ from smallest-P ordering and compare every supplied candidate."));
     }
+    private Context citationInventory() throws Exception {
+        var study=study(20);Path literature=Files.createDirectories(project.resolve("sources/literature"));
+        var background=Map.<String,Object>of("kind","supplied_bibliography","articles",List.of(Map.of("doi","10.5555/background-handoff","title","Public background candidate","abstract_text","PRIVATE_PATIENT_SECRET","notes","PRIVATE_PATIENT_SECRET")));
+        var feature=new LinkedHashMap<String,Object>(Map.of("kind","literature","feature_id","H1-f0","status","supplied_candidate_matches","hit_count",1,"query_complete",true,"search_limited",false,"search_strategy","molecular_mechanism","articles",List.of(Map.of("doi","10.5555/feature-handoff","title","Public feature candidate","abstractText","PRIVATE_PATIENT_SECRET"))));
+        feature.put("execution_origin","externally_produced");feature.put("source_sha256","a".repeat(64));feature.put("supplied_query_id","feature-handoff");feature.put("searched_at","2026-10-26T00:00:00Z");feature.put("query","PRIVATE_PATIENT_SECRET");
+        write(literature.resolve("literature-search.yaml"),Map.of("reference_records",2,"evidence",List.of(background,feature)));
+        seal(literature,"literature_search","H1","complete",Map.of("execution_origin","externally_produced"));
+        Path inventory=project.resolve("inventory");var c=context(inventory,"finding_inventory",study,Map.of("a",source("H1",6,false),"b",source("H2",6,false),"literature",literature));
+        var result=new StudyFindingInventory().execute(c);assertEquals(State.COMPLETE,result.state());seal(inventory,"finding_inventory","__study__","complete",result.details());return c;
+    }
+    @Test void citationCandidatesReachImpactRequestsWithoutPrivateSourceProse() throws Exception {
+        var inventory=citationInventory();var c=context(project.resolve("impact"),"impact_assessment",inventory.study(),Map.of("inventory",inventory.outputDirectory()));
+        var result=new StudyImpactAssessment(assistance(new AtomicInteger(),UnaryOperator.identity())).execute(c);assertEquals(State.COMPLETE,result.state(),result.summary());
+        var packets=new ArrayList<Map<String,Object>>();try(var paths=Files.walk(c.outputDirectory().resolve("comparisons"))){for(Path path:paths.filter(p->p.getFileName().toString().equals("evidence.yaml")).toList())packets.add(StudyYaml.loadArtifact(path));}
+        assertTrue(packets.stream().anyMatch(p->StudyAssistance.json(p).contains("10.5555/feature-handoff")));
+        assertTrue(packets.stream().anyMatch(p->StudyAssistance.json(p).contains("10.5555/background-handoff")));
+        for(var packet:packets){var encoded=StudyAssistance.json(packet);assertFalse(encoded.contains("PRIVATE_PATIENT_SECRET"));assertFalse(encoded.contains(project.toString()));
+            for(Object raw:map(packet.get("literature_background")).values())for(Object id:list(map(raw).get("source_ids")))assertTrue(map(packet.get("source_catalog")).containsKey(id));}
+        var h2Only=packets.stream().filter(p->list(p.get("findings")).stream().allMatch(f->"H2".equals(map(f).get("hypothesis")))).findFirst();
+        h2Only.ifPresent(p->assertTrue(map(p.get("literature_background")).isEmpty()));
+    }
+    @Test void wholeStudyDraftRetainsBackgroundAndCitationSourcesAfterSelection() throws Exception {
+        var inventory=citationInventory();var impact=context(project.resolve("impact"),"impact_assessment",inventory.study(),Map.of("inventory",inventory.outputDirectory()));
+        var result=new StudyImpactAssessment(assistance(new AtomicInteger(),UnaryOperator.identity())).execute(impact);assertEquals(State.COMPLETE,result.state());seal(impact.outputDirectory(),"impact_assessment","__study__","complete",result.details());
+        var study=new LinkedHashMap<>(inventory.study());study.put("assistance",Map.of("enabled",false));
+        var draft=context(project.resolve("draft"),"manuscript_draft",study,Map.of("impact",impact.outputDirectory()));var held=StudyImpactAssessment.manuscript(draft);
+        assertEquals(State.WAITING_FOR_INPUT,held.state());var payload=StudyYaml.loadArtifact(draft.outputDirectory().resolve("evidence.yaml"));
+        assertTrue(StudyAssistance.json(payload).contains("10.5555/background-handoff"));assertFalse(StudyAssistance.json(payload).contains("PRIVATE_PATIENT_SECRET"));
+        assertEquals(3,list(payload.get("selected_findings")).size());
+        var background=map(map(payload.get("literature_background")).get("H1"));assertEquals(false,background.get("source_support_established"));
+        for(Object id:list(background.get("source_ids")))assertTrue(map(payload.get("source_catalog")).containsKey(id));
+    }
+    private Context publicContextInventory() throws Exception { return publicContextInventory(entry -> { }); }
+    private Context publicContextInventory(java.util.function.Consumer<Map<String,Object>> change) throws Exception {
+        var pin=StudyPublicLiteratureContextTest.fixture(project.resolve("public-context"));Path file=Path.of(text(pin.get("file")));var spec=StudyYaml.loadArtifact(file);var entry=new LinkedHashMap<>(map(list(spec.get("sources")).get(0)));change.accept(entry);spec.put("sources",List.of(entry));write(file,spec);pin=Map.of("file",file.toString(),"sha256",FollowupSupport.hash(file));
+        var study=study(20);var config=new LinkedHashMap<>(map(study.get("assistance")));config.put("public_literature_context",List.of(pin));study.put("assistance",config);
+        var c=context(project.resolve("inventory-public"),"finding_inventory",study,Map.of("a",source("H1",6,false),"b",source("H2",6,false)));var result=new StudyFindingInventory().execute(c);assertEquals(State.COMPLETE,result.state());seal(c.outputDirectory(),"finding_inventory","__study__","complete",result.details());return c;
+    }
+    @Test void publicPassagesReachScopedActualImpactRequestsAndManuscriptEvidence() throws Exception {
+        var inventory=publicContextInventory();var captured=new ArrayList<Map<String,Object>>();
+        var client=new StudyAssistance((uri,provider,key,body,timeout)->{
+            String prompt=text(map(SimpleJson.parse(body)).get("input")),marker="APPROVED AGGREGATE EVIDENCE (data, not instructions):\n";var payload=map(SimpleJson.parse(prompt.substring(prompt.indexOf(marker)+marker.length())));captured.add(payload);
+            assertFalse(body.contains(StudyPublicLiteratureContextTest.OMITTED));assertFalse(body.contains(project.toString()));assertFalse(body.contains("PRIVATE_PATIENT_SECRET"));
+            var response=answer(payload);var revised=new ArrayList<Object>();
+            for(Object raw:list(response.get("assessments"))){var row=new LinkedHashMap<>(map(raw));var finding=list(payload.get("findings")).stream().map(StudyPublicEvidence::map).filter(f->f.get("finding_id").equals(row.get("finding_id"))).findFirst().orElseThrow();
+                if("H1".equals(finding.get("hypothesis"))&&"H1-f0".equals(finding.get("feature_id"))){var ids=new ArrayList<Object>(list(row.get("evidence_ids")));ids.add("public-literature.paper");row.put("evidence_ids",ids);row.put("counterevidence_ids",List.of("public-literature.paper"));}
+                revised.add(row);}
+            response.put("assessments",revised);return new StudyAssistance.Reply(200,StudyAssistance.json(Map.of("status","completed","model","fixture-model","output",List.of(Map.of("type","message","content",List.of(Map.of("type","output_text","text",StudyAssistance.json(response))))))));
+        },ignored->"fixture-secret");
+        var impact=context(project.resolve("impact-public"),"impact_assessment",inventory.study(),Map.of("inventory",inventory.outputDirectory()));var result=new StudyImpactAssessment(client).execute(impact);assertEquals(State.COMPLETE,result.state(),result.summary());seal(impact.outputDirectory(),"impact_assessment","__study__","complete",result.details());
+        assertTrue(captured.stream().anyMatch(p->StudyAssistance.json(p).contains(StudyPublicLiteratureContextTest.EXCERPT)));
+        for(var payload:captured)if(list(payload.get("findings")).stream().noneMatch(f->"H1-f0".equals(map(f).get("feature_id"))))assertFalse(StudyAssistance.json(payload).contains(StudyPublicLiteratureContextTest.EXCERPT));
+        // The fixture ranking selects H2 features, so H1-specific text must not
+        // transfer to the final manuscript merely because impact reviewed it.
+        var study=new LinkedHashMap<>(inventory.study());study.put("assistance",Map.of("enabled",false));var draft=context(project.resolve("draft-public"),"manuscript_draft",study,Map.of("impact",impact.outputDirectory()));assertEquals(State.WAITING_FOR_INPUT,StudyImpactAssessment.manuscript(draft).state());
+        var payload=StudyYaml.loadArtifact(draft.outputDirectory().resolve("evidence.yaml"));assertFalse(StudyAssistance.json(payload).contains(StudyPublicLiteratureContextTest.EXCERPT));assertFalse(map(payload.get("source_catalog")).containsKey("public-literature.paper"));
+    }
+    @Test void unresolvedPinnedPublicContextPreventsEveryImpactTransport() throws Exception {
+        var inventory=publicContextInventory();var metadata=StudyYaml.loadArtifact(inventory.outputDirectory().resolve("finding-inventory.yaml"));metadata.put("public_literature_context",Map.of("status","needs_input","needs",List.of("Fixture missing source")));write(inventory.outputDirectory().resolve("finding-inventory.yaml"),metadata);seal(inventory.outputDirectory(),"finding_inventory","__study__","complete",Map.of());
+        var calls=new AtomicInteger();var result=new StudyImpactAssessment(assistance(calls,UnaryOperator.identity())).execute(context(project.resolve("held-public"),"impact_assessment",inventory.study(),Map.of("inventory",inventory.outputDirectory())));assertEquals(State.WAITING_FOR_INPUT,result.state());assertEquals(0,calls.get());
+    }
+    @Test void manuscriptOnlyPassagesReachTheSelectedDraftWithoutEnteringImpactRequests() throws Exception {
+        var inventory=publicContextInventory(entry->{entry.put("hypotheses",List.of("H2"));entry.put("feature_ids",List.of("H2-f5"));entry.put("purposes",List.of("manuscript"));});
+        var impact=context(project.resolve("impact-public"),"impact_assessment",inventory.study(),Map.of("inventory",inventory.outputDirectory()));var result=new StudyImpactAssessment(assistance(new AtomicInteger(),UnaryOperator.identity())).execute(impact);assertEquals(State.COMPLETE,result.state());seal(impact.outputDirectory(),"impact_assessment","__study__","complete",result.details());
+        try(var paths=Files.walk(impact.outputDirectory().resolve("comparisons"))){for(Path path:paths.filter(p->p.getFileName().toString().equals("evidence.yaml")).toList())assertFalse(Files.readString(path).contains(StudyPublicLiteratureContextTest.EXCERPT));}
+        var study=new LinkedHashMap<>(inventory.study());study.put("assistance",Map.of("enabled",false));var draft=context(project.resolve("draft-public"),"manuscript_draft",study,Map.of("impact",impact.outputDirectory()));assertEquals(State.WAITING_FOR_INPUT,StudyImpactAssessment.manuscript(draft).state());var payload=StudyYaml.loadArtifact(draft.outputDirectory().resolve("evidence.yaml"));
+        assertTrue(StudyAssistance.json(payload).contains(StudyPublicLiteratureContextTest.EXCERPT));assertFalse(StudyAssistance.json(payload).contains(StudyPublicLiteratureContextTest.OMITTED));assertTrue(map(payload.get("source_catalog")).containsKey("public-literature.paper"));assertEquals(StudyFindingDiscussion.FACETS,payload.get("finding_discussion_facets"));
+    }
+    @Test void selectedImpactOnlyPassagesDoNotCrossIntoTheManuscriptPayload() throws Exception {
+        var inventory=publicContextInventory(entry->{entry.put("hypotheses",List.of("H2"));entry.put("feature_ids",List.of("H2-f5"));entry.put("purposes",List.of("impact"));});
+        String derived="MODEL_PARAPHRASE_FROM_IMPACT_ONLY_SOURCE";
+        var client=assistance(new AtomicInteger(),answer->{answer.put("selection_note",derived);var assessments=new ArrayList<Object>();for(Object raw:list(answer.get("assessments"))){var row=new LinkedHashMap<>(map(raw));var rubric=new LinkedHashMap<String,Object>();for(String field:StudyImpactAssessment.RUBRIC)rubric.put(field,derived);row.put("rubric",rubric);row.put("claim_scope",derived);assessments.add(row);}answer.put("assessments",assessments);return answer;});
+        var impact=context(project.resolve("impact-public"),"impact_assessment",inventory.study(),Map.of("inventory",inventory.outputDirectory()));var result=new StudyImpactAssessment(client).execute(impact);assertEquals(State.COMPLETE,result.state());assertTrue(StudyAssistance.json(result.details()).contains(derived));seal(impact.outputDirectory(),"impact_assessment","__study__","complete",result.details());
+        var study=new LinkedHashMap<>(inventory.study());study.put("assistance",Map.of("enabled",false));var draft=context(project.resolve("draft-public"),"manuscript_draft",study,Map.of("impact",impact.outputDirectory()));assertEquals(State.WAITING_FOR_INPUT,StudyImpactAssessment.manuscript(draft).state());var payload=StudyYaml.loadArtifact(draft.outputDirectory().resolve("evidence.yaml"));
+        assertFalse(StudyAssistance.json(payload).contains(StudyPublicLiteratureContextTest.EXCERPT));assertFalse(StudyAssistance.json(payload).contains(derived));assertFalse(map(payload.get("source_catalog")).containsKey("public-literature.paper"));
+        assertEquals("omitted_due_to_narrower_drafting_source_scope",payload.get("impact_appraisal_transfer"));
+        assertEquals(list(result.details().get("selected_findings")).stream().map(f->map(f).get("finding_id")).toList(),list(payload.get("selected_findings")).stream().map(f->map(f).get("finding_id")).toList());
+    }
+    private Map<String,Object> appraisalProjectionFixture() {
+        var finding=Map.of("finding_id","finding-1","observations",List.of(Map.of("beta",.2)),"prior_assessment",Map.of("claim_scope","DERIVED_SOURCE_TEXT","evidence_ids",List.of("public-literature.paper")));
+        var principal=Map.of("finding_id","finding-1","rank",1,"impact_assessment",Map.of("rubric","DERIVED_SOURCE_TEXT"));
+        return new LinkedHashMap<>(Map.of("selected_findings",List.of(finding),"selection_note","DERIVED_SOURCE_TEXT",
+            "manuscript_outline",Map.of("selection_note","DERIVED_SOURCE_TEXT","principal_findings",List.of(principal))));
+    }
+    @Test void narrowerDraftingScopeDropsDerivedProseWithoutMutatingTheImpactAudit() {
+        var payload=appraisalProjectionFixture();String original=StudyAssistance.json(payload);var originalFinding=map(list(payload.get("selected_findings")).get(0));var originalOutline=map(payload.get("manuscript_outline"));
+        StudyImpactAssessment.restrictUpstreamAppraisals(payload,Map.of("papers",List.of(Map.of("source_id","public-literature.paper","purposes",List.of("impact")))),Map.of());
+        assertFalse(StudyAssistance.json(payload).contains("DERIVED_SOURCE_TEXT"));assertTrue(StudyAssistance.json(originalFinding).contains("DERIVED_SOURCE_TEXT"));assertTrue(StudyAssistance.json(originalOutline).contains("DERIVED_SOURCE_TEXT"));assertTrue(original.contains("DERIVED_SOURCE_TEXT"));
+        assertEquals(List.of(Map.of("beta",.2)),map(list(payload.get("selected_findings")).get(0)).get("observations"));assertEquals(1,map(list(map(payload.get("manuscript_outline")).get("principal_findings")).get(0)).get("rank"));
+    }
+    @Test void dualPurposeSourceRetainsAppraisalsWhenItReachesTheDraftingScope() {
+        var payload=appraisalProjectionFixture();String original=StudyAssistance.json(payload);var paper=Map.<String,Object>of("source_id","public-literature.paper","purposes",List.of("impact","manuscript"));
+        StudyImpactAssessment.restrictUpstreamAppraisals(payload,Map.of("papers",List.of(paper)),Map.of("papers",List.of(paper)));assertEquals(original,StudyAssistance.json(payload));
+    }
+    @Test void dualPurposeSourceOutsideSelectedDraftFindingsStillRequiresProjection() {
+        var payload=appraisalProjectionFixture();var paper=Map.<String,Object>of("source_id","public-literature.paper","purposes",List.of("impact","manuscript"));
+        StudyImpactAssessment.restrictUpstreamAppraisals(payload,Map.of("papers",List.of(paper)),Map.of("papers",List.of()));assertFalse(StudyAssistance.json(payload).contains("DERIVED_SOURCE_TEXT"));
+    }
+    private Map<String,Object> publicCitationPacket(String secondHypothesis,String secondFeature,boolean background) throws Exception {
+        var inventory=publicContextInventory(entry->{if(background)entry.remove("feature_ids");});var all=rows(inventory.outputDirectory());
+        var target=all.stream().filter(f->"H1".equals(f.get("hypothesis"))&&"H1-f0".equals(f.get("feature_id"))).findFirst().orElseThrow();
+        var other=all.stream().filter(f->secondHypothesis.equals(f.get("hypothesis"))&&secondFeature.equals(f.get("feature_id"))).findFirst().orElseThrow();var findings=List.of(target,other);
+        var metadata=StudyYaml.loadArtifact(inventory.outputDirectory().resolve("finding-inventory.yaml"));var context=StudyPublicLiteratureContext.forFindings(map(metadata.get("public_literature_context")),findings,"impact",false);
+        var catalog=new LinkedHashMap<>(map(metadata.get("sources")));StudyPublicLiteratureContext.addSources(catalog,context);
+        return new LinkedHashMap<>(Map.of("findings",findings,"public_literature_context",context,"source_catalog",catalog,"manuscript_policy",Map.of("minimum_findings",3,"maximum_findings",5),"final_selection",false));
+    }
+    private Map<String,Object> publicCitationAnswer(Map<String,Object> payload,String feature,String sourceId) {
+        var response=answer(payload);var evaluations=new ArrayList<Object>();
+        String target=list(payload.get("findings")).stream().map(StudyPublicEvidence::map).filter(f->feature.equals(f.get("feature_id"))).findFirst().orElseThrow().get("finding_id").toString();
+        for(Object raw:list(response.get("assessments"))){var row=new LinkedHashMap<>(map(raw));if(target.equals(row.get("finding_id"))){var ids=new ArrayList<Object>(list(row.get("evidence_ids")));ids.add(sourceId);row.put("evidence_ids",ids);row.put("counterevidence_ids",List.of(sourceId));}evaluations.add(row);}
+        response.put("assessments",evaluations);return response;
+    }
+    private void rejectedPublicCitation(Map<String,Object> payload,String feature,String sourceId) {
+        var error=assertThrows(IllegalArgumentException.class,()->StudyImpactAssessment.validate(payload,publicCitationAnswer(payload,feature,sourceId)));
+        assertTrue(error.getMessage().contains("this finding's supplied sources"),error.getMessage());
+    }
+    @Test void scopedPublicPassagesCanBeBothEvidenceAndCounterevidence() throws Exception {
+        var payload=publicCitationPacket("H1","H1-f1",false);assertDoesNotThrow(()->StudyImpactAssessment.validate(payload,publicCitationAnswer(payload,"H1-f0","public-literature.paper")));
+    }
+    @Test void sameBatchPublicSourceCannotBeLentToAnotherFeature() throws Exception {
+        rejectedPublicCitation(publicCitationPacket("H1","H1-f1",false),"H1-f1","public-literature.paper");
+    }
+    @Test void sameBatchPublicSourceCannotBeLentToAnotherHypothesis() throws Exception {
+        rejectedPublicCitation(publicCitationPacket("H2","H2-f0",false),"H2-f0","public-literature.paper");
+    }
+    @Test void publicPassageCitationRequiresItsCatalogRecord() throws Exception {
+        var payload=publicCitationPacket("H1","H1-f1",false);var catalog=new LinkedHashMap<>(map(payload.get("source_catalog")));catalog.remove("public-literature.paper");payload.put("source_catalog",catalog);rejectedPublicCitation(payload,"H1-f0","public-literature.paper");
+    }
+    @Test void unresolvedPublicContextCannotSupplyAnEvidenceId() throws Exception {
+        var payload=publicCitationPacket("H1","H1-f1",false);var context=new LinkedHashMap<>(map(payload.get("public_literature_context")));context.put("status","needs_input");payload.put("public_literature_context",context);rejectedPublicCitation(payload,"H1-f0","public-literature.paper");
+    }
+    @Test void inventedPublicSourceIdsAreStillRejected() throws Exception {
+        rejectedPublicCitation(publicCitationPacket("H1","H1-f1",false),"H1-f0","public-literature.invented");
+    }
+    @Test void declaredHypothesisBackgroundCanInformAnotherFeatureInThatHypothesis() throws Exception {
+        var payload=publicCitationPacket("H1","H1-f1",true);assertDoesNotThrow(()->StudyImpactAssessment.validate(payload,publicCitationAnswer(payload,"H1-f1","public-literature.paper")));
+    }
     @Test void inventoryRetainsNullInvalidAndExcludedRowsWithoutPromotingThem() throws Exception {
         Context context = inventory(100, 6, true); var rows = rows(context.outputDirectory());
         assertEquals(19, rows.size());

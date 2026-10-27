@@ -175,7 +175,10 @@ def verify(project, jar):
         assert primary_metrics["mean_i_squared"] == "NA"
         for analysis in decision["analyses"]:
             if analysis["status"] == "complete":
-                assert analysis["primary_metrics"] == primary_metrics
+                baseline = analysis["primary_metrics"]
+                assert set(baseline) == set(primary_metrics) | {"heterogeneity_scope"}
+                assert baseline["heterogeneity_scope"] == "registered_common_features"
+                assert {key: baseline[key] for key in primary_metrics} == primary_metrics
         for output_name in sensitivity_manifest["output_sha256"]:
             if not output_name.endswith("/meta-analysis.tsv"):
                 continue

@@ -26,7 +26,6 @@ import java.util.function.Function;
 import org.jlinalg.study.StudyEvidenceIndex;
 import org.jlinalg.study.StudyNeed;
 import org.jlinalg.study.StudyOperationExecutor;
-import org.yaml.snakeyaml.Yaml;
 
 /** Opt-in, bounded assistance. Provider output is evidence to review, never code. */
 final class StudyAssistance {
@@ -70,10 +69,12 @@ final class StudyAssistance {
         metadata.put("actor", "jlinalg");
         metadata.put("request_sent", false);
         metadata.put("request_attempted", false);
-        metadata.put("payload_policy", "allowlisted aggregate findings, phenotype labels and structured scientific study-contract metadata; no input files, dictionary prose, participant identifiers or matrices. Metadata still requires disclosure review; not a DLP certification");
+        metadata.put("payload_policy", "allowlisted aggregate findings, phenotype labels, structured scientific study-contract metadata and query-linked public bibliographic candidate metadata; no input files, dictionary prose, participant identifiers or matrices. Abstracts, full texts and private source notes are excluded from the citation-candidate projection. Metadata still requires disclosure review; not a DLP certification");
         if (purpose.equals("editorial")) metadata.put("payload_policy", "Exact hash-approved editorial payload: manuscript text and bounded aggregate evidence; no patient files or automatic demographics export. Free text requires disclosure review; not a DLP certification.");
         Map<String, Object> evidence = Set.of("editorial", "impact").contains(purpose) || editorialPayload != null
             ? java.util.Objects.requireNonNull(editorialPayload, "Explicit assistance payload required") : evidence(context);
+        if (!list(map(evidence.get("public_literature_context")).get("papers")).isEmpty())
+            metadata.put("payload_policy", "Allowlisted aggregate findings and explicitly configured hash-pinned passages from native public-reference bundles; public passage selection is purpose/scoped and source text is untrusted data. No automatic patient files, matrices or participant identifiers. Inspect the exact evidence payload; this is not a DLP certification. " + StudyPublicLiteratureContext.CAVEAT);
         write(context.outputDirectory().resolve("evidence.yaml"), evidence);
         Map<String, Object> decision = new LinkedHashMap<>();
         decision.put("purpose", purpose);
@@ -394,7 +395,7 @@ final class StudyAssistance {
         for (Path directory : context.dependencyDirectories().values()) {
             Path annotation = directory.resolve("feature-annotation.tsv");
             if (!Files.isRegularFile(annotation)) continue;
-            DelimitedData table = DelimitedData.read(annotation);
+            DelimitedData table = DelimitedData.readResult(annotation);
             int feature = table.column("feature_id"), symbol = table.column("gene_symbol"), status = table.column("mapping_status");
             for (String[] row : table.rows()) {
                 if (Set.of("located", "missing_location").contains(row[status])
@@ -763,7 +764,7 @@ final class StudyAssistance {
     }
     private static void write(Path path, Map<String, Object> value) throws IOException {
         Files.createDirectories(path.getParent());
-        Files.writeString(path, new Yaml().dump(value), StandardCharsets.UTF_8);
+        StudyPublicEvidence.write(path, value);
     }
     static String json(Object value) {
         if (value == null) return "null";

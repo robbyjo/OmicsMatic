@@ -38,7 +38,7 @@
   {
     "id": "saige",
     "name": "SAIGE",
-    "pattern": "(?<![A-Za-z0-9_])(?:SAIGE(?![- ]GENE))(?![A-Za-z0-9_])",
+    "pattern": "(?<![A-Za-z0-9_])(?<!Meta-)(?<!Meta )(?:SAIGE(?![- ]GENE))(?=$|[^A-Za-z0-9_]|[0-9]+(?:\\.[0-9]+)+(?![A-Za-z0-9_.]))",
     "role": "Case-control mixed-model association",
     "current_coverage": "missing",
     "existing_source": null,
@@ -3724,5 +3724,14 @@
     "current_coverage": "missing",
     "existing_source": null,
     "coverage_note": "Distinct named analytic method; ordinary area and GSEA running scores are excluded. Original VIPER/aREA runtime eligibility is pending."
+  },
+  {
+    "id": "apbs",
+    "name": "APBS",
+    "pattern": "(?<![A-Za-z0-9_])APBS(?![A-Za-z_])",
+    "role": "Poisson-Boltzmann electrostatic potential calculation;paper maps rendered through the PyMOL plugin",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Two primary source roles reviewed;typed present-day original solver subset has separate development validation. Paper-specific preparation,parameters and surface reproduction remain open."
   }
 ]

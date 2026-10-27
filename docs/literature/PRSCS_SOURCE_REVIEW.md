@@ -3,12 +3,12 @@
 **The typed `prs-cs-tools` development command is validated.** The local candidate
 is `build/literature-review/prscs-candidate-1/jlinalg-0.3.7.jar`, SHA-256
 `33b26e76b989ce3387d3965f4b625a6e4a02e3e2b55d8bccd90bb1e48981a764`.
-It passed218 focused tests with zero failures/errors/skips,plus12 packaged
-workflows and28 failure controls on Java21/25. Thirty native and eight live
+It passed 218 focused tests with zero failures/errors/skips,plus 12 packaged
+workflows and 28 failure controls on Java 21/25. Thirty native and eight live
 command tests passed on each JVM. The canonical a104 executable is unchanged and
 lacks this command. A new full-project release gate is not claimed.
-The controlled catalog refresh adds11 reviewed roles,for521 reviews and92
-supporting pointers across the same250 papers. See the
+The controlled catalog refresh adds 11 reviewed roles, for 521 reviews and 92
+supporting pointers across the same 250 papers. See the
 [workflow guide](omics-2023-2026/PRSCS_WORKFLOWS.md) for commands and recovery.
 
 **Historical runtimes need special care.** The explicitly selected 1.0.0 and
@@ -108,11 +108,11 @@ numerical warnings fail validation. The historical EOL notice is prominent on
 each selected historical analysis. Failed canonical files are quarantined under
 `partial/`; the published bundle retains diagnostics and required recovery steps.
 
-**Unavailable or forbidden software skips the analysis with exit3.** Installation
+**Unavailable or forbidden software skips the analysis with exit 3.** Installation
 requires explicit setup flags and the host's permission. The analysis command
 does not install or download dependencies or panels. A changed or unmanaged home
 is preserved; recovery uses a new private path. Scientific/input/process failures
-return exit2 and explain the correction in `WARNINGS.md`.
+return exit 2 and explain the correction in `WARNINGS.md`.
 
 Whole-runtime source, interpreter, package and external Python-base inventories
 are checked around child execution. Cache-bypass flags prevent stale bytecode

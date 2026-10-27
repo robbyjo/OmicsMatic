@@ -43,11 +43,17 @@ final class StudySuppliedResults implements StudyOperationExecutor {
         var definition = StudySuppliedResultPolicy.definition(context.study(), text(context.operation().get("hypothesis")), text(context.operation().get("supplied_result_id")));
         String kind = text(definition.get("kind"));
         boolean contribution = "contribution".equals(definition.get("role"));
+        boolean partial = StudySuppliedResultPolicy.partialPrimary(definition);
         List<String> outputs = new ArrayList<>(), needs = new ArrayList<>();
         var metadata = new LinkedHashMap<String, Object>();
         metadata.put("schema_version", 1); metadata.put("artifact_id", definition.get("id")); metadata.put("kind", kind);
         metadata.put("role", definition.get("role")); metadata.put("reported_status", definition.get("reported_status"));
         metadata.put("execution_origin", "externally_produced"); metadata.put("analysis_executed_by_jlinalg", false);
+        metadata.put("replaces_native_stage", StudySuppliedResultPolicy.ownsStage(definition));
+        var completionOperations = list(context.plan().get("operations")).stream().map(StudyPublicEvidence::map)
+            .filter(op -> kind.equals(op.get("type")) && context.operation().get("hypothesis").equals(op.get("hypothesis")) && !op.containsKey("supplied_result_id"))
+            .map(op -> text(op.get("id"))).toList();
+        if (partial) metadata.put("native_completion_operations", completionOperations);
         for (String key : List.of("scope", "method", "family", "provenance", "limitations", "depends_on")) metadata.put(key, definition.getOrDefault(key, key.equals("limitations") || key.equals("depends_on") ? List.of() : Map.of()));
         metadata.put("evidence_grade", definition.getOrDefault("evidence_grade", "source_coverage_unverified"));
         var upstream = new ArrayList<Object>();
@@ -57,6 +63,7 @@ final class StudySuppliedResults implements StudyOperationExecutor {
                 var declared = StudyYaml.loadArtifact(manifest);
                 upstream.add(Map.of("operation_id", declared.getOrDefault("operation_id", directory.getFileName().toString()),
                     "state", declared.getOrDefault("state", "unknown"), "manifest_sha256", FollowupSupport.hash(manifest),
+                    "reported_status", map(declared.get("details")).getOrDefault("reported_status", "unknown"),
                     "manifest", context.project().relativize(manifest).toString().replace('\\','/'),
                     "required_manuscript_caveat", map(declared.get("details")).getOrDefault("required_manuscript_caveat", "")));
             }
@@ -80,10 +87,13 @@ final class StudySuppliedResults implements StudyOperationExecutor {
         }
         metadata.put("source_files", sourceHashes);
         metadata.put("required_manuscript_caveat", "Externally produced analysis imported and schema-checked by JLinAlg; the original analysis, participant QC, calibration and scientific conclusions were not independently reproduced. Original source methods, provenance and free-text limitations remain local and require review before scientific use or transmission.");
+        if (partial) metadata.put("required_manuscript_caveat", metadata.get("required_manuscript_caveat")
+            + " The source explicitly reports a partial analysis. This import preserves available evidence and does not complete or replace the requested stage; any native completion is a separate analysis with its own methods and results.");
         for (Object rawDependency : upstream) {
             var dependency = map(rawDependency);
             String warning = "";
             if (!"complete".equals(dependency.get("state"))) warning += " Upstream supplied result " + dependency.get("operation_id") + " is " + dependency.get("state") + "; its unresolved scope also limits this imported downstream evidence.";
+            if ("partial".equals(dependency.get("reported_status"))) warning += " Upstream supplied result " + dependency.get("operation_id") + " explicitly reports partial analysis coverage, even if its import validation completed.";
             if (!warning.isBlank()) metadata.put("required_manuscript_caveat", metadata.get("required_manuscript_caveat") + " " + warning);
         }
         if ("NONE".equalsIgnoreCase(text(map(definition.get("family")).get("adjustment"))))
@@ -92,7 +102,7 @@ final class StudySuppliedResults implements StudyOperationExecutor {
         metadata.put("primary_selection_eligible", false);
         var scopeValidation=StudySuppliedScope.assess(context,definition);
         if(!scopeValidation.compatible())needs.add("Supplied scientific scope conflicts with the registered target or dependency; see supplied-scope-validation.yaml. No replacement analysis was selected.");
-        if(Set.of("network_modules","module_gene_ontology").contains(kind)&&!"complete".equals(definition.get("reported_status")))
+        if(Set.of("network_modules","module_gene_ontology").contains(kind)&&!"complete".equals(definition.get("reported_status"))&&!partial)
             needs.add("Supplied modules or module GO are not reported complete. Retained source snapshots cannot replace the requested completed stage; supply the completed scope or revise the registered request.");
         if (needs.isEmpty()) {
             if (kind.equals("network_analysis")) network(context, definition, snapshots, metadata, outputs);
@@ -109,7 +119,7 @@ final class StudySuppliedResults implements StudyOperationExecutor {
             else if (Set.of("source_discovery", "bioinformatics_investigation").contains(kind)) {
                 var supplied = StudyYaml.loadArtifact(snapshots.get("results"));
                 metadata.put("supplied_summary", supplied);
-                String name = kind.replace('_', '-') + ".yaml";
+                String name = (partial ? "supplied-partial-" : "") + kind.replace('_', '-') + ".yaml";
                 write(context.outputDirectory().resolve(name), Map.of("execution_origin", "externally_produced", "analysis_executed_by_jlinalg", false,
                     "supplied_artifact", definition.get("id"), "supplied_evidence", supplied, "required_manuscript_caveat", metadata.get("required_manuscript_caveat")));
                 outputs.add(name);
@@ -123,7 +133,9 @@ final class StudySuppliedResults implements StudyOperationExecutor {
                 } else {
                 if (contribution) needs.addAll(StudyMrContributions.validateTable(table.header, table.rows, definition));
                 metadata.put("aggregate_result_metadata",table.aggregateMetadata);
-                var family = kind.equals("rare_set_omnibus") ? StudySuppliedRareOmnibus.families(table.header, table.rows, definition, metadata, needs) : family(table, definition, needs);
+                var family = partial ? new LinkedHashMap<String,Object>(map(definition.get("family")))
+                    : kind.equals("rare_set_omnibus") ? StudySuppliedRareOmnibus.families(table.header, table.rows, definition, metadata, needs) : family(table, definition, needs);
+                if (partial) metadata.put("partial_family_handling", "Source declaration and existing adjusted values retained; no correction recomputed from an explicitly incomplete analysis.");
                 metadata.put("resolved_family", family);
                 if (kind.equals("rare_variant_analysis")) {
                     var primaryFamily = new LinkedHashMap<String,Object>(family);
@@ -139,16 +151,20 @@ final class StudySuppliedResults implements StudyOperationExecutor {
                 metadata.put("contribution_reuse_eligible", selection && contribution);
                 metadata.put("result_rows", table.rows.size());
                 metadata.put("result_columns", table.header);
-                String name = sensitivity ? "supplied-sensitivity.tsv" : contribution && selection ? "supplied-contribution.tsv" : selection || !STATISTICAL.contains(kind) ? OUTPUTS.get(kind) : "supplied-results-limited.tsv";
+                String name = partial ? "supplied-results-limited.tsv" : sensitivity ? "supplied-sensitivity.tsv" : contribution && selection ? "supplied-contribution.tsv" : selection || !STATISTICAL.contains(kind) ? OUTPUTS.get(kind) : "supplied-results-limited.tsv";
                 FollowupSupport.table(context.outputDirectory().resolve(name), table.header, table.rows);
                 outputs.add(name); metadata.put("canonical_results", name); metadata.put("canonical_sha256", FollowupSupport.hash(context.outputDirectory().resolve(name)));
-                if (Set.of("fine_mapping", "colocalization", "mendelian_randomization").contains(kind)) genetic(context, kind, table, metadata, outputs);
+                if (!partial && Set.of("fine_mapping", "colocalization", "mendelian_randomization").contains(kind)) genetic(context, kind, table, metadata, outputs);
                 if(Set.of("network_modules","module_gene_ontology").contains(kind)&&selection)StudySuppliedModules.write(context,kind,table.header,table.rows,definition,snapshots,metadata,outputs);
-                StudySuppliedCohorts.write(context,kind,table.header,table.rows,definition,metadata,needs,outputs);
+                if (!partial) StudySuppliedCohorts.write(context,kind,table.header,table.rows,definition,metadata,needs,outputs);
                 }
             }
-            if (scopeValidation.compatible() && snapshots.containsKey("feature_annotation")) annotation(context, definition, snapshots.get("feature_annotation"), outputs);
+            if (!partial && scopeValidation.compatible() && snapshots.containsKey("feature_annotation")) annotation(context, definition, snapshots.get("feature_annotation"), outputs);
         }
+        if (partial && completionOperations.isEmpty() && list(StudyResultTables.analysis(context).get("goals")).contains(kind))
+            needs.add("The supplied source explicitly reports partial " + kind + ". No native completion can be scheduled from the registered inputs. Supply the required source data or a completed analysis for this scope; the partial import cannot replace this requested stage.");
+        if (partial && kind.equals("network_analysis") && !completionOperations.isEmpty())
+            partialNetworkCoverage(context, definition, metadata, needs);
         scopeValidation.finish(context);metadata.put("scope_validation",scopeValidation.report);
         outputs.add("supplied-scope-validation.yaml");outputs.add("supplied-scope-comparisons.tsv");
         var method = new LinkedHashMap<String, Object>(); method.put("operation", kind); method.put("performed", true);
@@ -168,10 +184,26 @@ final class StudySuppliedResults implements StudyOperationExecutor {
         metadata.put("interpretation", "Completed import validation is distinct from independent statistical or scientific reproduction. Sensitivity evidence cannot replace a primary result; unavailable upstream inputs remain unavailable.");
         write(context.outputDirectory().resolve("supplied-analysis.yaml"), metadata); outputs.add("supplied-analysis.yaml");
         return new Result(needs.isEmpty() ? State.COMPLETE : State.WAITING_FOR_INPUT,
-            needs.isEmpty() ? "Imported supplied " + kind + " without rerunning its analysis" : "Retained supplied " + kind + "; statistical scope needs clarification", outputs, metadata);
+            needs.isEmpty() ? partial ? "Retained partial supplied " + kind + "; completion is separate from import validation" : "Imported supplied " + kind + " without rerunning its analysis" : "Retained supplied " + kind + "; analysis completion or scope needs input", outputs, metadata);
     }
 
     private record Table(List<String> header, List<String[]> rows,Map<String,Object> aggregateMetadata) { }
+    private static void partialNetworkCoverage(Context c, Map<String,Object> definition, Map<String,Object> metadata, List<String> needs) {
+        var datasets=new LinkedHashMap<String,Map<String,Object>>();
+        for(Object raw:list(c.study().get("datasets"))){var d=map(raw);if(!"retired".equals(d.get("status")))datasets.put(text(d.get("id")),d);}
+        var selected=new LinkedHashSet<String>();
+        for(Object raw:list(c.study().get("hypotheses"))){var h=map(raw);if(!h.get("id").equals(c.operation().get("hypothesis")))continue;
+            for(Object value:map(h.get("inputs")).values())for(Object id:list(value))selected.add(text(id));}
+        if(selected.isEmpty())selected.addAll(datasets.keySet());
+        var target=org.jlinalg.study.StudyNetworkReuse.declaredCoverage(definition,datasets,List.copyOf(selected));
+        var completed=org.jlinalg.study.StudyNetworkReuse.coverage(StudyResultTables.analysis(c),datasets,List.copyOf(selected));
+        var missing=new LinkedHashSet<>(target.covered());missing.removeAll(completed.covered());
+        for(Object raw:list(c.plan().get("operations"))){var op=map(raw);if("network_analysis".equals(op.get("type"))&&c.operation().get("hypothesis").equals(op.get("hypothesis"))&&!op.containsKey("supplied_result_id"))missing.remove(text(op.get("dataset_id")));}
+        metadata.put("partial_network_requested_datasets",target.covered().stream().sorted().toList());
+        metadata.put("partial_network_unscheduled_datasets",missing.stream().sorted().toList());
+        if(!target.resolved())needs.add("The partial graph's population cannot be matched to registered datasets/cohorts. Declare its scope before native work can establish completion of this graph.");
+        else if(!missing.isEmpty())needs.add("The partial graph still needs completion for datasets "+String.join(", ",missing)+". Native graphs from other datasets do not complete this source scope; supply these matrices or a completed scoped graph.");
+    }
     private static Table read(Path path, Map<String, Object> definition, String role, String kind) throws IOException {
         if(Set.of("network_modules","module_gene_ontology").contains(kind)&&Files.size(path)>134217728L)throw new IOException("Supplied module table exceeds the 128 MiB import bound");
         var input = DelimitedData.readResult(path);
@@ -242,6 +274,7 @@ final class StudySuppliedResults implements StudyOperationExecutor {
             if(kind.equals("rare_cohort_overlap")){identity.clear();identity.add(StudyRareCohortOverlap.key(row[header.indexOf("feature_id")],row[header.indexOf("mask_id")],row[header.indexOf("test")]).id());identity.add(row[header.indexOf("set_id")]);}
             if(kind.equals("heterogeneity_review")){identity.clear();identity.add(row[header.indexOf("feature_id")]);identity.add(row[header.indexOf("metric")]);}
             if(kind.equals("colocalization"))StudySuppliedColocalization.validate(header,row,definition,identity);
+            if(StudySuppliedVariantRows.applies(kind))StudySuppliedVariantRows.validate(header,row,identity);
             if(kind.equals("gwas_enrichment"))StudyGwasAnnotationColumns.validate(header,row);
             if(kind.equals("subgroup_interactions")){identity.clear();for(String field:List.of("dataset_id","group_id","feature_id"))identity.add(row[header.indexOf(field)]);StudySubgroupInteractions.validateSupplied(header,row);String scope=StudyAssistance.json(identity.subList(0,2));var levels=List.of(row[header.indexOf("reference_level")],row[header.indexOf("comparison_level")]);var previous=interactionContrasts.putIfAbsent(scope,levels);if(previous!=null&&!previous.equals(levels))throw new IOException("A supplied subgroup ID has inconsistent contrast orientation across features");}
             if(kind.equals("subgroup_interactions"))for(int i=0;i<header.size();i++)if(StudySubgroupInteractions.COLUMNS.contains(header.get(i))&&(row[i].length()>16000||row[i].chars().anyMatch(Character::isISOControl)))throw new IOException("Unbounded supplied interaction context");
@@ -292,7 +325,7 @@ final class StudySuppliedResults implements StudyOperationExecutor {
             if(available&&(missing(value)||!row[header.indexOf("testing_coverage")].equals("complete")||unresolved>0||tested<2)||!available&&!missing(value))throw new IOException("Supplied lambda conflicts with its completeness/disposition declarations");
         }
         List<Integer> retained = new ArrayList<>();
-        for (int i=0;i<header.size();i++) if (NUMERIC.contains(header.get(i)) || kind.equals("gwas_enrichment")&&(GWAS_NUMERIC.contains(header.get(i))||StudyGwasAnnotationColumns.LABELS.contains(header.get(i))) || LABELS.contains(header.get(i))||GSEA_COUNTS.contains(header.get(i))||GSEA_PROBABILITIES.contains(header.get(i))||GSEA_LABELS.contains(header.get(i))||kind.equals("colocalization")&&StudySuppliedColocalization.retain(header.get(i))||kind.equals("subgroup_interactions")&&StudySubgroupInteractions.COLUMNS.contains(header.get(i))||"contribution".equals(definition.get("role"))&&header.get(i).equals("reason")) retained.add(i);
+        for (int i=0;i<header.size();i++) if (NUMERIC.contains(header.get(i)) || kind.equals("gwas_enrichment")&&(GWAS_NUMERIC.contains(header.get(i))||StudyGwasAnnotationColumns.LABELS.contains(header.get(i))) || LABELS.contains(header.get(i))||GSEA_COUNTS.contains(header.get(i))||GSEA_PROBABILITIES.contains(header.get(i))||GSEA_LABELS.contains(header.get(i))||StudySuppliedVariantRows.applies(kind)&&StudySuppliedVariantRows.retain(header.get(i))||kind.equals("colocalization")&&StudySuppliedColocalization.retain(header.get(i))||kind.equals("subgroup_interactions")&&StudySubgroupInteractions.COLUMNS.contains(header.get(i))||"contribution".equals(definition.get("role"))&&header.get(i).equals("reason")) retained.add(i);
         if(kind.equals("gwas_diagnostics")){retained.clear();for(int i=0;i<header.size();i++)if(StudyGwasDiagnostics.SUMMARY_COLUMNS.contains(header.get(i)))retained.add(i);}
         if(kind.equals("network_preservation")){retained.clear();for(int i=0;i<header.size();i++)if(StudyNetworkPreservation.COLUMNS.contains(header.get(i)))retained.add(i);}
         if(kind.equals("network_preservation_null")){StudyNetworkNull.validateSupplied(header,rows,definition);retained.clear();for(int i=0;i<header.size();i++)if(StudyNetworkNull.COLUMNS.contains(header.get(i)))retained.add(i);}
@@ -376,21 +409,22 @@ final class StudySuppliedResults implements StudyOperationExecutor {
 
     private static void network(Context context, Map<String, Object> definition, Map<String, Path> snapshots,
             Map<String, Object> metadata, List<String> outputs) throws IOException {
+        String prefix = StudySuppliedResultPolicy.partialPrimary(definition) ? "supplied-partial-" : "";
         Table nodes = read(snapshots.get("nodes"), definition, "nodes", "network_nodes");
         Table edges = read(snapshots.get("edges"), definition, "edges", "network_edges");
         Set<String> ids = nodes.rows.stream().map(row -> row[nodes.header.indexOf("node_id")]).collect(java.util.stream.Collectors.toSet());
         for (String[] edge : edges.rows) if (!ids.contains(edge[edges.header.indexOf("source")]) || !ids.contains(edge[edges.header.indexOf("target")]))
             throw new IOException("A supplied edge references a node absent from files.nodes");
-        FollowupSupport.table(context.outputDirectory().resolve("network-nodes.tsv"), nodes.header, nodes.rows);
-        FollowupSupport.table(context.outputDirectory().resolve("network-edges.tsv"), edges.header, edges.rows);
-        outputs.addAll(List.of("network-nodes.tsv", "network-edges.tsv"));
+        FollowupSupport.table(context.outputDirectory().resolve(prefix + "network-nodes.tsv"), nodes.header, nodes.rows);
+        FollowupSupport.table(context.outputDirectory().resolve(prefix + "network-edges.tsv"), edges.header, edges.rows);
+        outputs.addAll(List.of(prefix + "network-nodes.tsv", prefix + "network-edges.tsv"));
         metadata.put("nodes", nodes.rows.size()); metadata.put("edges", edges.rows.size());
         if (snapshots.containsKey("modules")) {
             Table modules = read(snapshots.get("modules"), definition, "modules", "network_modules");
             for (String[] row : modules.rows) if (!ids.contains(row[modules.header.indexOf("node_id")])) throw new IOException("Supplied module membership references an unknown node");
-            FollowupSupport.table(context.outputDirectory().resolve("network-modules.tsv"), modules.header, modules.rows); outputs.add("network-modules.tsv");
+            FollowupSupport.table(context.outputDirectory().resolve(prefix + "network-modules.tsv"), modules.header, modules.rows); outputs.add(prefix + "network-modules.tsv");
         }
-        write(context.outputDirectory().resolve("network-analysis.yaml"), metadata); outputs.add("network-analysis.yaml");
+        write(context.outputDirectory().resolve(prefix + "network-analysis.yaml"), metadata); outputs.add(prefix + "network-analysis.yaml");
     }
 
     private static void annotation(Context context, Map<String, Object> definition, Path source, List<String> outputs) throws IOException {

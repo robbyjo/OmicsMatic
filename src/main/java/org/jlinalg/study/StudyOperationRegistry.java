@@ -58,6 +58,9 @@ public final class StudyOperationRegistry {
         add(result,"mr_family_adjustment","jlinalg",ALL_STAGES,ALL_MODALITIES,List.of("cross-hypothesis primary MR family", "original source adjustments", "member completeness receipt"),List.of("declared hypothesis membership", "raw primary P values", "no unresolved-family joint discovery"));
         add(result, "supplied_sensitivity", "jlinalg", ALL_STAGES, ALL_MODALITIES,
             List.of("typed external sensitivity evidence", "immutable supplied inputs"), List.of("scope", "provenance", "primary separation"));
+        add(result, "supplied_partial", "jlinalg", ALL_STAGES, ALL_MODALITIES,
+            List.of("retained incomplete external analysis", "immutable source snapshots"),
+            List.of("no completed-stage ownership", "separate native completion or explicit missing-input need"));
         add(result, "supplied_contribution", "jlinalg", ALL_STAGES, ALL_MODALITIES,
             List.of("typed external MR or literature contribution", "immutable source snapshots"), List.of("kind-specific feature or query coverage", "source attribution", "separate joint MR correction or exact-scope literature reuse"));
         for (String type : List.of("network_analysis","pathway_network","network_modules","module_gene_ontology"))

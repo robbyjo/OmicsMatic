@@ -6,6 +6,19 @@ from collect_omics_review import CACHE, DEST, process, publication_record, write
 from pathlib import Path
 
 
+def preserve_selection_history(previous, updated):
+    """Keep the original selection event when its exact primary source is unchanged.
+
+    Subsequent human review changes review_status,not the historical extraction
+    event. Do not conceal a moved source pointer or any other updated field.
+    """
+    before={t['tool_id']:t for t in previous['tools']}
+    for tool in updated['tools']:
+        prior=before.get(tool['tool_id'])
+        if prior and 'evidence_selection' in prior and all(prior.get(k)==tool.get(k) for k in ['evidence_paragraph_index','evidence_paragraph_sha256']):
+            tool['evidence_selection']=prior['evidence_selection']
+
+
 def main():
     registry_path = Path(__file__).with_name("tool-registry.json")
     registry = json.loads(registry_path.read_text(encoding="utf-8"))
@@ -38,8 +51,12 @@ def main():
         old_ids = {t["tool_id"] for t in paper["tools"]}
         new_ids = {t["tool_id"] for t in result["tools"]}
         changes.append({"paper_id": paper["paper_id"], "added": sorted(new_ids - old_ids), "removed": sorted(old_ids - new_ids)})
-        write_json(CACHE / "extracted" / (paper["pmcid"] + ".json"), result)
         published = publication_record(result); published["paper_id"] = paper["paper_id"]
+        preserve_selection_history(paper,published)
+        selections={t['tool_id']:t['evidence_selection'] for t in published['tools']}
+        for tool in result['tools']:
+            tool['evidence_selection']=selections[tool['tool_id']]
+        write_json(CACHE / "extracted" / (paper["pmcid"] + ".json"), result)
         enriched.append(published)
     assert [p["doi"] for p in papers] == [p["doi"] for p in enriched], "Frozen cohort changed"
     write_json(DEST / "papers.json", enriched)

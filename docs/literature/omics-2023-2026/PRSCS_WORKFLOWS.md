@@ -1,22 +1,22 @@
 # Original PRS-CS workflows with native checks
 
-**The development candidate passed218 focused tests,12 packaged workflows and28
-failure controls on Java21/25.** Use
+**The development candidate passed 218 focused tests, 12 packaged workflows and 28
+failure controls on Java 21/25.** Use
 `build/literature-review/prscs-candidate-1/jlinalg-0.3.7.jar`, SHA-256
 `33b26e76b989ce3387d3965f4b625a6e4a02e3e2b55d8bccd90bb1e48981a764`.
 The canonical a104 executable remains unchanged and lacks `prs-cs-tools`.
-The [source review](../PRSCS_SOURCE_REVIEW.md) explains the12 paper roles and
-the separately checked native math,input,LD and posterior contracts.
+The [source review](../PRSCS_SOURCE_REVIEW.md) explains the 12 paper roles and
+the separately checked native math, input, LD and posterior contracts.
 
 **Always read `WARNINGS.md` and `analysis-status.json`.** Dependency absence,
 changed software or forbidden installation skips the dependent analysis with
-exit3. Input, process or numerical-validation failures return exit2. A completed
+exit 3. Input, process or numerical-validation failures return exit 2. A completed
 process is followed by native file checks and review warnings. Failed canonical
 streams are retained under `partial/`.
 
 ## Private setup where permitted
 
-Supply CPython3.12 x64 on Windows. Setup installs a separate environment, original
+Supply CPython 3.12 x64 on Windows. Setup installs a separate environment, original
 source and exact dependency wheels privately. Installation/download flags are
 independent; omit download permission when verified artifacts are already cached.
 
@@ -35,9 +35,9 @@ following its recovery instructions. Analysis itself does not install or downloa
 software or an LD panel. Changed/unmanaged homes are preserved. Use a new private
 home to add profiles or recover a changed installation.
 
-Historical1.0.0/1.1.0 profiles require an explicit
+Historical 1.0.0/1.1.0 profiles require an explicit
 `--legacy-use offline-reproduction` analysis choice and a separately selected
-private setup. Their Python3.10.11 runtime is out of support. The original code is
+private setup. Their Python 3.10.11 runtime is out of support. The original code is
 unchanged, with its compatible pinned NumPy/SciPy/h5py dependencies; newer SciPy
 has removed aliases used by these historical sources. Known deprecations remain
 in retained stderr and prominent warnings. Unknown or numerical warnings fail.
@@ -55,7 +55,7 @@ java -jar build/literature-review/prscs-candidate-1/jlinalg-0.3.7.jar prs-cs-too
 The [six recipes](../../../examples/prs-cs-tools/README.md) exercise all four
 summary formats and the three explicit source profiles. All values are strings
 in UTF-8 JSON; direct flags override recipe values. The fixture has synthetic
-LD/SNP data and a deliberately short40/20/5 schedule. It supplies no scientific
+LD/SNP data and a deliberately short 40/20/5 schedule. It supplies no scientific
 sampling or predictive-performance recommendation.
 
 For study data, declare the target BIM, summary file, reference kind/chromosomes,
@@ -82,7 +82,7 @@ allele rules, with every requested target row retained in the disposition ledger
 | `native-marginals.tsv`, `audit/original-marginals.tsv` | Native standardized marginals compared with unmodified upstream parser results. |
 | `ld-validation.tsv`, `audit/` | Raw HDF5/SNP-order checks and original matrix identities. Original sign multiplication and SVD adjustment remain upstream operations. |
 | `posterior-means.tsv`, `posterior-draws.tsv` | Requested complete variant families, declared units and unchanged original numeric strings. Values have seven significant digits. |
-| `shrinkage.tsv` | Requested posterior psi, with native checks in (0,1]. Historical1.0.0 has no psi output. |
+| `shrinkage.tsv` | Requested posterior psi, with native checks in (0,1]. Historical 1.0.0 has no psi output. |
 | `score-weights.tsv` | Optional explicit per-allele mean-weight export for `genotype-score`. Standardized means use the supplied reference-frequency conversion. |
 | `upstream-mean/`, `upstream-draws/` | Unchanged original outputs and retained stdout/stderr. |
 
@@ -131,7 +131,7 @@ python tools/literature/verify_prscs_workflows.py `
   --out build/prscs-packaged-verification-new
 ```
 
-Six successful workflows and14 failure controls run per supplied JVM. The inputs
+Six successful workflows and 14 failure controls run per supplied JVM. The inputs
 are synthetic and copied into the attempt directory. This gate checks packaged
 execution, original bytes, canonical units/identities, score conversion and
 actionable skips/errors. It does not provide clinical or convergence validation

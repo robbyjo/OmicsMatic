@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "structures": [
+    {"id":"model","path":"1CRN.pdb","format":"pdb","state":1,"cif_namespace":"author"}
+  ],
+  "steps": [
+    {"id":"mutation","operation":"mutate","residue":{"structure":"model","chain":"A","resi":"1"},
+     "to":"GLN","library":"backbone-independent","rotamer":1,"hydrogens":"none","max_backbone_shift":0.1},
+    {"id":"mutantView","operation":"render","layers":[
+      {"selection":{"structure":"model"},"representation":"cartoon","color":[0.1,0.5,0.8]},
+      {"selection":{"structure":"model","chain":"A","resi":"1"},"representation":"sticks","color":[1,0.5,0.1]}
+    ],"focus":{"structure":"model"},"buffer":5,"width":600,"height":500,"background":[1,1,1]}
+  ]
+}

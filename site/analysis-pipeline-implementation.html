@@ -5,12 +5,27 @@
 <div class="container"><article class="prose pipeline-spec">
 <p>Objective: implement all facets of the <a href="vignettes/analysis-pipeline-specification.html">analysis pipeline specification</a>, including its scientific safeguards and complete study-run integration. This checklist tracks the full objective; an implemented method or a passing narrow test is not evidence of complete workflow conformance.</p>
 <p>Status vocabulary: pending, in-progress, implemented-unverified, verified. External service tests and real scientific execution are reported separately from local fixture validation.</p>
-<p><strong>Current answer: partial conformance.</strong> This audit covers the local
-<code>codex/analysis-pipeline</code> checkout, including its uncommitted source changes; it
-does not establish behavior in a released JAR. The target pseudocode is broader
-than the current automatic study workflow. A registered operation, a standalone
-command, a configured adapter and a verified automatic branch are different
-levels of support.</p>
+<p>The <a href="#application-managed-variant-software-checkpoint-2026-10-26">managed variant software checkpoint</a> records application downloads, automatic study setup, the actual AlphaGenome install and current source/JAR validation.</p>
+<p>The <a href="#scoped-public-evidence-citation-checkpoint-2026-10-26">scoped public evidence checkpoint</a> records the preceding source/JAR and verifies that model responses can actually cite matching public passages as evidence and counterevidence.</p>
+<p>The <a href="#public-passage-context-checkpoint-2026-10-26">public passage checkpoint</a> records its source/JAR, native public-evidence handoff, 21 new tests and exact packaged verification.</p>
+<p>See the <a href="#finite-original-requirement-audit-and-citation-checkpoint-2026-10-26">current finite 24-requirement audit</a> for its source, 62-workflow inventory, targeted verifier correction and provider/scientific evidence boundaries.</p>
+<p><strong>Current software acceptance: the requested workflow branches are implemented
+and contract-verified within the documented input/model capabilities.</strong> See the
+<a href="#software-workflow-acceptance-2026-10-26">25-facet acceptance roll-up</a> for the
+requirement-to-source/workflow evidence. This covers the local
+<code>codex/analysis-pipeline</code> checkout and retained verified runtime, including
+uncommitted work. External live/scientific acceptance and public release status
+remain separate; a configured adapter is not a claim that a real prediction or
+scientifically reviewed manuscript has been produced.</p>
+<p>The <a href="vignettes/study-pipeline-tutorial.html#partial-supplied-stages-and-native-completion">partial-stage guide</a>
+distinguishes a successful import from completed analysis coverage. Explicit
+partial primaries retain separate evidence, permit requested native completion,
+preserve source corrections, prevent cohort fallback from an incomplete primary
+pool, and require network completion to match the declared population.</p>
+<p>The <a href="vignettes/study-pipeline-tutorial.html#snp-annotation-from-a-pooled-gwas">pooled-SNP guide</a> adds the previously missing native variant-catalogue route from a registered GWAS pool, with explicit source coverage, allele checks, per-alias provenance and multi-context supplied scoring reuse. Its acceptance is separate from external program/model execution, biological calibration and genome-wide performance.</p>
+<p>The <a href="vignettes/study-pipeline-tutorial.html#automatic-follow-ups-from-a-supplied-primary-meta-analysis">automatic supplied-primary guide</a> describes completion from a meta-analysis without original datasets: declared source scope can schedule missing GWAS enrichment, ranked GSEA/pathway modules, GO and protein context while respecting existing completed-stage owners and primary-source selection. The current source-only integration acceptance is recorded in the checkpoint below; this does not establish all external-source or SNP-annotation routes.</p>
+<h2 id="historical-implementation-ledger-and-capability-extensions">Historical implementation ledger and capability extensions</h2>
+<p>The table below retains earlier progress labels and broader capability/live-validation work. The current requested software-facet verdict is the acceptance roll-up linked above.</p>
 <div class="result-table"><table>
 <thead>
 <tr>
@@ -28,7 +43,7 @@ levels of support.</p>
 <tr>
 <td>Typed supplied results at any stage; execute only missing work</td>
 <td>in-progress</td>
-<td>Per-hypothesis typed imports retain snapshots, scopes, methods, external attribution, families and dependencies. Typed supplied bibliographies now feed manuscript citations, and exact complete literature-query contributions permit missing native retrieval with separate source-reported coverage. Explicit MR contributions own declared completed features while native MR fills uncovered eligibility, with reserved invalid coverage, original source adjustments and a separately corrected joint family. Native MR/colocalization/fine-mapping now retain per-pair completion receipts and resume matching completed pairs while recomputing current stage coverage/correction. Whole-stage meta/GO/network/MR/coloc/rare-set reuse and missing native GO/module-GO have separate acceptance cases. Kind-aware supplied trait/population/context checks now hold known mismatches, preserve missing declarations as uncertified and propagate sealed parent conflicts. External GWAS/evaluation and annotation contexts retain their distinct roles. Standalone completed modules/module GO and an all-supplied inventory-to-impact-to-manuscript route now have exact-JAR acceptance below. Complete external-format/source appraisal and real scientific discussion quality remain.</td>
+<td>Per-hypothesis typed imports retain snapshots, scopes, methods, external attribution, families and dependencies. Typed supplied bibliographies now feed manuscript citations, and exact complete literature-query contributions permit missing native retrieval with separate source-reported coverage. Explicit MR contributions own declared completed features while native MR fills uncovered eligibility, with reserved invalid coverage, original source adjustments and a separately corrected joint family. Native MR/colocalization/fine-mapping now retain per-pair completion receipts and resume matching completed pairs while recomputing current stage coverage/correction. Automatic primary metadata now requests missing native GWAS enrichment, GSEA/pathway modules, GO and protein context without reconstructing cohort matrices. Whole-stage meta/GO/network/MR/coloc/rare-set reuse and missing native GO/module-GO have separate acceptance cases. Kind-aware supplied trait/population/context checks now hold known mismatches, preserve missing declarations as uncertified and propagate sealed parent conflicts. External GWAS/evaluation and annotation contexts retain their distinct roles. Standalone completed modules/module GO and an all-supplied inventory-to-impact-to-manuscript route now have exact-JAR acceptance below. Complete external-format/source appraisal and real scientific discussion quality remain.</td>
 </tr>
 <tr>
 <td>Participant, assay, genotype QC and distribution/subgroup diagnostics</td>
@@ -3984,4 +3999,676 @@ open; no release or publication acceptance is claimed.</p>
 <p>The public continuous-GWAS prototype passed nine scenarios and 468 independent numerical comparisons, including fixed intercept, affine score units, continuous nuisance-only roles, source reuse, weak-heritability/moment/work/selected-source holds, immutable inputs/history and cached replay. Focused binary/mixed/import tests passed before the last input-domain test was added. An initial constrained-zero baseline-SE comparison failed at machine epsilon; its test XML and executable hash are retained and the corrected check uses an absolute tolerance only for that known-zero baseline, preserving tight coefficient/covariance/P tolerances elsewhere. The completed frozen-source validation is recorded below.</p>
 <p>The completed gate is <code>build/continuous-gwas-source-20261026-r1</code>: <strong>2,641 tests across 439 suites</strong>, 2,462 passed, 179 optional skips and zero failures/errors. All <strong>17 new tests</strong> ran and passed. <code>check</code>, <code>executableJar</code> and the frozen website gate passed in 16m 24s. The source receipt covers 3,297 files, SHA-256 <code>9249f3cc804126b17635bc0984bac4f6022cfc7c0a98f00a926c80eafa566718</code>; the exact JAR SHA-256 is <code>1d5f277680d243a2437bd5ff6bb09348623242eeba298963fcd447fb5afad271</code>. Frozen compiled classes were matched to that JAR. These results cover the recorded snapshot, including its concurrent additions, rather than subsequent edits in the shared checkout.</p>
 <p><code>build/continuous-gwas-acceptance-20261026-r1</code> records ten successful packaged workflow executions: the nine-scenario continuous-annotation verifier (468 independent numeric comparisons) and nine regressions covering binary S-LDSC, phenotype-null/preranked GSEA, completed/supplied/primary/scoped result workflows, impact and stage-specific resume. The binary verifier uses its exact frozen reference/oracle repository layout; its existing estimator references remain distinct from the new mixed-mode baseline weighting choice. Six same-input old/new comparisons additionally verify native mixed/affine execution, preservation of valid typed effects and rejection of three contradictory source tables: continuous category enrichment, negative coefficient uncertainty and positive log probability. The initial machine-epsilon baseline-SE reference failure and its correction remain in the evidence bundle.</p>
-<p>The completed checkpoint verifies 165 study-schema cases, five explicit annotation-mode schema cases and 8,580 operation-output hashes; 2,033 compiled main classes match the exact JAR and 13 guarded current implementation/schema/verifier files match the snapshot. Final documentation is checked and retained separately. None of these checks establishes real GWAS calibration, adequacy of a particular annotation/nuisance model, uncertainty in the LD/reference estimates, upstream mixed-estimator parity or complete pipeline conformance. Broader weighting/reference construction, multi-ancestry and genome-wide scientific/scale acceptance remain open. The work remains uncommitted and unreleased.</p></article></div></main><site-footer root=""></site-footer></body></html>
+<p>The completed checkpoint verifies 165 study-schema cases, five explicit annotation-mode schema cases and 8,580 operation-output hashes; 2,033 compiled main classes match the exact JAR and 13 guarded current implementation/schema/verifier files match the snapshot. Final documentation is checked and retained separately. None of these checks establishes real GWAS calibration, adequacy of a particular annotation/nuisance model, uncertainty in the LD/reference estimates, upstream mixed-estimator parity or complete pipeline conformance. Broader weighting/reference construction, multi-ancestry and genome-wide scientific/scale acceptance remain open. The work remains uncommitted and unreleased.</p>
+<h2 id="supplied-primary-automatic-follow-up-checkpoint-2026-10-26">Supplied-primary automatic follow-up checkpoint, 2026-10-26</h2>
+<p>The registered supplied-primary workflow now uses explicit source modality/feature namespace to request missing GWAS enrichment and diagnostics, ranked GSEA/pathway modules, GO/pathway enrichment and protein context even with no original datasets. It respects manual goals, disabled branches, completed supplied-stage owners and the registered primary selector. Discovery-only and sensitivity pools cannot own these inferences; gene-level GWAS does not become a SNP scan. Compatible selected <code>analysis_reference</code> entries owned by the exact primary pool can supply an omitted modality. <code>_resolution.followup_applicability</code> records the source, generated operation ID, effective modality and its origin, goals and merge decision. Native full-family/model/identity gates still determine whether a requested stage can execute. Pooled statistics do not replace participant matrices.</p>
+<p>The tutorial contains <a href="vignettes/study-pipeline-tutorial.html#automatic-follow-ups-from-a-supplied-primary-meta-analysis">the input contract and runnable examples</a>. A header-only harmonization annotation table is now accepted by the literature-support reader, preventing source-only studies from crashing. Explicit feature-to-gene mappings remain necessary; applicability metadata does not manufacture them.</p>
+<p>The frozen source is <code>build/auto-supplied-source-20261026-r2</code> (3,319 files), with source-receipt SHA-256 <code>ea9384db15345c59c079a9556afdbc08d6e9dc0393bb338e78a1dfbfd2d3f76c</code>. The exact executable is <code>build/auto-supplied-acceptance-20261026-r2/software/jlinalg.jar</code>, SHA-256 <code>034476d22a8cb85197a3267cf4bb3bdea311762f87dc4e494cb2c55910df842c</code>. Its version label remains 0.3.7; this locally modified artifact is uncommitted and unreleased.</p>
+<p>The complete frozen <code>check executableJar</code> gate passed <strong>2,660 tests in 440 suites</strong>: 2,481 passed, 179 optional integration skips, no failures/errors. All <strong>19 new supplied-follow-up tests</strong> passed. The skips do not establish installed-tool or external-service execution.</p>
+<p>Ten exact-JAR packaged workflows passed: expanded GWAS enrichment (20 scenarios, 1,331 independent arithmetic/workflow checks), expanded preranked GSEA (9 scenarios with independent scores, null tails, leading edges and network/module GO), continuous GWAS, phenotype-null GSEA, completed-study publication, supplied-result reuse, primary selection, scoped reuse, impact assessment and stage-specific resume. Completed meta/enrichment remain cached; incomplete automatic literature/heterogeneity branches retry and can refresh downstream inventories. Seven identical-input old/new comparisons demonstrate newly completed GWAS/GSEA work, protein sequence prerequisites, missing mappings without crashes, exclusion of discovery-only/gene-level SNP routes, and preservation of the existing reference-metadata route.</p>
+<p>Checkpoint verification matched all 2,036 compiled main classes to the JAR, checked 8 current guarded source files against the frozen receipt, validated 169 study documents, and verified 8,907 indexed operation output hashes. The bundle retains its frozen source archive, full test XML/logs, exact software/verifiers, all workflow projects and before/after inputs. Final documentation and workspace drift are recorded separately before sealing.</p>
+<p>Initial failures are retained. The first focused fixture used an invalid GSEA setting; its correction exposed the real header-only reader failure. The first expanded GWAS verifier incorrectly required a refreshed automatic inventory to remain cached; its statistical-stage reuse assertion now reflects the pending branches. The first full gate had one compatibility failure because the new applicability check overlooked existing genomic <code>analysis_reference</code> metadata. The corrected full gate preserves that valid contract and adds a dedicated test and executable comparison. These failed revisions have no passing checkpoint seal.</p>
+<p>This is synthetic arithmetic and workflow acceptance, not external scientific appraisal or complete pipeline conformance. A separate exact-JAR audit imported complete allele-resolved pooled GWAS statistics but native <code>variant_scoring</code> returned <code>not_applicable</code> because its catalogue still reads cohort sources. The retained <code>validation/remaining-pooled-variant-gap</code> project proves this remaining requirement; pooled-only native SNP annotation and its automatic scheduling remain unfinished. Other open requirements in the full checklist remain active.</p>
+<h2 id="pooled-gwas-snp-annotation-checkpoint-2026-10-26">Pooled-GWAS SNP annotation checkpoint, 2026-10-26</h2>
+<p>The previously retained pooled-only SNP gap now has a native input route. <code>StudyPooledVariantInputs</code> obtains the registered, producer-verified primary meta-analysis, preserves its full source/contrast and selection receipts, and adds statistically eligible available SNPs without significance selection. Pooled aliases have no fabricated cohort identity. They share exact physical allele queries with real cohort aliases while retaining <code>input_source</code> and <code>source_operation_id</code>. The registered source, original testing family, coverage and all available dispositions remain explicit. Selected-only eligible exports can produce available annotations but keep full-GWAS coverage pending; ineligible upstream sources remain blocked.</p>
+<p>The <a href="vignettes/study-pipeline-tutorial.html#snp-annotation-from-a-pooled-gwas">pooled-SNP guide</a> documents canonical/build/row/ref-alt checks, reference FASTA and indel normalization, controlled namespaces and compatible owned cohort metadata. Reference/alternate alleles are not inferred from effect/other alleles. An unambiguous explicit cohort identity can identify a pooled rsID; conflicts require review. Excluded cohort aliases cannot borrow evidence from an eligible pooled alias. Discovery-only, sensitivity, gene-level, foreign-hypothesis and incompatible primary sources cannot substitute for the registered SNP pool. Source-only automatic mode now schedules missing scoring with the ordinary provider policy. Resolver defaults are 51 and execution cache implementation is 80.</p>
+<p>Completed supplied variant annotations/scores preserve multiple genes, transcripts, tissues, scorers, tracks, intervals, models and source records per SNP. Exact-context duplicates are rejected; missing source-record markers are normalized consistently. Rich original source records remain intact, with hashes only for identity bookkeeping, and signed quantiles are bounded to <code>[-1,1]</code>. Native method reports distinguish functional records from reference-only inventory. Neither source adjustments nor an annotation score are converted into association/causal probabilities.</p>
+<p>The final frozen source is <code>build/pooled-variant-source-20261026-r2</code> (3,350 files), receipt SHA-256 <code>9dad70627a9072b27932e9b67520164679ae07d2a09b7f10aa1a8fa65454efc0</code>. Its exact executable is <code>build/pooled-variant-acceptance-20261026-r1/software/jlinalg.jar</code>, SHA-256 <code>e271c0cb6d310cac7cb56ab899614c749cbe7cffe7b6e76348afb7b5351d633a</code>. This locally modified 0.3.7 artifact is uncommitted and unreleased.</p>
+<p>The complete frozen <code>check executableJar</code> gate passed <strong>2,717 tests in 444 suites</strong>: 2,538 passed, 179 optional integration skips, no failures/errors. All <strong>29 new tests</strong> passed: 23 pooled-input/selection/QC cases and 6 supplied-context cases. Optional skips do not establish installed-tool execution.</p>
+<p>Eleven exact-JAR workflows passed: pooled SNPs, continuous GWAS, binary GWAS enrichment, phenotype-null GSEA, preranked GSEA, completed-study publication, supplied reuse, primary selection, scoped reuse, impact assessment and stage-specific resume. The new self-contained pooled-SNP example passed 16 scenarios and 336 assertions, including native fixed-effect pooling from two actual cohort result tables, external source-only and owned-reference cases, ANNOVAR-format/AlphaGenome imports, selected coverage, missing/conflicting identities, multi-context completed-stage reuse, mixed aliases and indels. Original supplied FDR is preserved; native pooled P/BH arithmetic is independently checked. Eleven identical-input comparisons show the old missing route, incomplete mixed coverage, rejected multi-context imports and the additional missing-marker normalization fix.</p>
+<p>Artifact verification matched all 2,043 compiled main classes to the JAR, guarded 12 current source files, validated 201 study documents and checked 10,590 indexed output hashes. The bundle retains the exact source/dependency archive, XML/logs, software/verifiers, workflow projects and paired inputs. Its preliminary source also passed its full gate and is retained as superseded by the final missing-marker fix. Initial malformed/incorrect fixtures, typed-score failure and verifier filename/statistic assumptions are retained separately; they are not represented as successful accepted revisions.</p>
+<p>This verifies the pooled input route, synthetic arithmetic, import/context retention and execution bookkeeping. The offline imports do <strong>not</strong> execute real ANNOVAR/VEP/AlphaGenome, establish biological calibration or genome-wide scale, supply external scientific appraisal, or complete every requirement in the full pipeline checklist. Those evidence boundaries remain explicit. The older checkpoint's <code>remaining-pooled-variant-gap</code> records the previous artifact and is superseded for this input route, rather than rewritten.</p>
+<h2 id="partial-supplied-completion-checkpoint-2026-10-26">Partial-supplied completion checkpoint, 2026-10-26</h2>
+<p>Explicit partial primaries now retain a <code>supplied_partial</code> import and do not own
+completed stages. Automatic completion respects stage policies and explicit
+manual goals. The source family and adjusted values remain intact, without a
+new correction from an incomplete fragment. Completed supplied analyses retain
+their stage ownership and skip native reruns. See the
+<a href="vignettes/study-pipeline-tutorial.html#partial-supplied-stages-and-native-completion">guide</a>.</p>
+<p>An incomplete registered primary pool blocks implicit cohort fallback. A valid
+matching native pool or an explicit protocol choice of a cohort can establish
+the primary source. Partial network completion must cover the declared
+population: a native graph for another dataset leaves the original scope
+waiting. Missing or unresolved source populations retain specific needs.</p>
+<p>Acceptance uses frozen source <code>build/partial-supplied-source-20261026-r2</code>
+(3,377 files; receipt SHA-256 <code>969b4172f330bd43fb66f29e3309781b8cf808a7870da03a20ce02245211b97a</code>) and
+the exact JAR in <code>build/partial-supplied-acceptance-20261026-r2/software/jlinalg.jar</code>
+(SHA-256 <code>065177861f33a97d10b184fa880e2f587d7f93a9d7b88c0915e8564b7c561d14</code>). The full <code>check executableJar</code> gate passed
+<strong>2,774 tests in 448 suites</strong>: 2,595 passed,
+179 optional skips, no failures or errors. All <strong>28 new tests</strong> passed,
+covering automatic stage planning, manual/disabled policies, source corrections,
+network population coverage, primary holds and explicit/native completion.</p>
+<p>Eight exact-JAR workflows passed: partial stages, pooled SNPs, completed-study
+publication, supplied-stage reuse, primary selection, scoped networks, impact
+assessment and stage resume. The new partial-stage example checks five cases
+with 67 checks; five identical-input old/new comparisons retain the original
+suppression defect and verify missing-input waiting, manual retention and
+completed-stage reuse. Verification checked 122 schema cases,
+7,573 indexed output hashes,
+2,053 compiled main classes against the JAR, and
+17 guarded source/test/example files.</p>
+<p>The first source revision passed its unit gate but packaged checks exposed
+cohort fallback and unmatched network completion. It is retained as superseded,
+alongside the original audit, failed workflow logs and old verifier expectations.
+The final frozen revision includes the fixes and updated completed-GO/network
+verifiers. These local synthetic checks do not execute external predictors,
+certify biological or real AI discussion quality, establish full pipeline
+conformance, or publish a release. The changes remain uncommitted and unreleased.</p>
+<h2 id="finite-original-requirement-audit-and-citation-checkpoint-2026-10-26">Finite original-requirement audit and citation checkpoint, 2026-10-26</h2>
+<p>This audit maps <strong>24 finite requirements</strong> from the original pseudocode and the
+lab amendments to the frozen source and packaged workflows. It separates
+implemented, locally verified contracts from live execution and scientific
+acceptance. It does not add every possible assay, estimator or future extension
+to the original request. <strong>Overall scientific conformance remains partial.</strong>
+Earlier dated checkpoints below describe their own source editions; this table
+is the current finite mapping for <code>build/citation-handoff-source-20261026-r1</code>.</p>
+<div class="result-table"><table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Requirement</th>
+<th>Evidence status</th>
+<th>Packaged examples/checks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P01</td>
+<td>Supplied association models and missing-model literature/error gate</td>
+<td>Local contract verified</td>
+<td><code>model-review, genotype-plain, survival</code></td>
+</tr>
+<tr>
+<td>P02</td>
+<td>Consistency, participant/assay QC, distributions and registered subgroup tests</td>
+<td>Local contract verified</td>
+<td><code>assay-qc, genotype-sample-qc, subgroup-interactions</code></td>
+</tr>
+<tr>
+<td>P03</td>
+<td>Analyzed-population MAC 20, sparse/uncommon and separate rare-set routes</td>
+<td>Local contract verified</td>
+<td><code>genotype-qc, human-ploidy, firth-gwas, binary-rare-variant</code></td>
+</tr>
+<tr>
+<td>P04</td>
+<td>Effect QC, exclusions and retained unfiltered sensitivity</td>
+<td>Local contract verified</td>
+<td><code>effect-qc, genotype-effect</code></td>
+</tr>
+<tr>
+<td>P05</td>
+<td>Pairwise effects, correlations and direction</td>
+<td>Local contract verified</td>
+<td><code>cohort-diagnostics, pooling</code></td>
+</tr>
+<tr>
+<td>P06</td>
+<td>Discovery/validation roles and frozen discovery-family validation</td>
+<td>Local contract verified</td>
+<td><code>discovery-scope, frozen-discovery</code></td>
+</tr>
+<tr>
+<td>P07</td>
+<td>Cohort overlap and omission sensitivities</td>
+<td>Local contract verified</td>
+<td><code>cohort-diagnostics, rare-cohort-overlap</code></td>
+</tr>
+<tr>
+<td>P08</td>
+<td>Meta-analysis and heterogeneity; prespecified primary retained</td>
+<td>Local contract verified</td>
+<td><code>pooling, primary-results</code></td>
+</tr>
+<tr>
+<td>P09</td>
+<td>GO, ranked GSEA and LD-aware GWAS enrichment</td>
+<td>Local contract verified</td>
+<td><code>gsea, gwas-enrichment, continuous-gwas-enrichment</code></td>
+</tr>
+<tr>
+<td>P10</td>
+<td>SNP annotation/scoring and pooled-variant coverage</td>
+<td>Provider execution conditional</td>
+<td><code>variant-followup, pooled-variant; live VEP and installed SDK</code></td>
+</tr>
+<tr>
+<td>P11</td>
+<td>Protein/isoform mapping, confidence, retrieval and prediction adapter</td>
+<td>Provider execution conditional</td>
+<td><code>protein; live AlphaFold DB retrieval</code></td>
+</tr>
+<tr>
+<td>P12</td>
+<td>Score development/reuse, independent evaluation and related traits</td>
+<td>Local contract verified</td>
+<td><code>risk-score, nested-risk-score, genetic-risk-score, cox-score</code></td>
+</tr>
+<tr>
+<td>P13</td>
+<td>Ranked/phenotype-null GSEA and pathway networks/module GO</td>
+<td>Local contract verified</td>
+<td><code>gsea, phenotype-gsea, network</code></td>
+</tr>
+<tr>
+<td>P14</td>
+<td>Registered rho threshold, components, cliques and module GO</td>
+<td>Local contract verified</td>
+<td><code>network, network-preservation, network-null</code></td>
+</tr>
+<tr>
+<td>P15</td>
+<td>Matched GWAS/IV sources and full-eligible-feature MR coverage</td>
+<td>Local contract verified</td>
+<td><code>mr-feature-coverage, mr-completion, mr-cross-family</code></td>
+</tr>
+<tr>
+<td>P16</td>
+<td>Regional colocalization and partial-region caveats</td>
+<td>Local contract verified</td>
+<td><code>colocalization, genetic-pair-reuse</code></td>
+</tr>
+<tr>
+<td>P17</td>
+<td>Default 100-feature literature cap and uncapped eligible inventory</td>
+<td>Local contract verified</td>
+<td><code>literature, literature-priority, literature-coverage</code></td>
+</tr>
+<tr>
+<td>P18</td>
+<td>Full-pool comparative impact review and 3–5 distinct stories</td>
+<td>Scientific appraisal unverified</td>
+<td><code>impact, finding-grouping, completed-study</code></td>
+</tr>
+<tr>
+<td>P19</td>
+<td>Eight discussion facets and full-text/result/claim bindings</td>
+<td>Scientific appraisal unverified</td>
+<td><code>finding-discussion, completed-study</code></td>
+</tr>
+<tr>
+<td>P20</td>
+<td>Adjustable 8,000-word target and complete authored supplements</td>
+<td>Local contract verified</td>
+<td><code>manuscript-depth, completed-study</code></td>
+</tr>
+<tr>
+<td>P21</td>
+<td>Completed supplied stages and missing-work execution</td>
+<td>Local contract verified</td>
+<td><code>supplied-results, scoped-supplied, completed-study</code></td>
+</tr>
+<tr>
+<td>P22</td>
+<td>Partial stages, primary holds and matched population coverage</td>
+<td>Local contract verified</td>
+<td><code>partial-supplied, primary-results, scoped-supplied</code></td>
+</tr>
+<tr>
+<td>P23</td>
+<td>Public citation candidates in impact and manuscript requests</td>
+<td>Local contract verified</td>
+<td><code>completed-study; same-input old/new comparison</code></td>
+</tr>
+<tr>
+<td>P24</td>
+<td>Immutable inputs, scoped reuse, explicit needs and retained history</td>
+<td>Local contract verified</td>
+<td><code>stage-resume, genetic-pair-reuse, completed-study</code></td>
+</tr>
+</tbody>
+</table></div>
+<p>"Local contract verified" means the documented input/design and completion
+behavior passed the named fixtures. It does not mean every phenotype, molecular
+assay, ancestry, dependent design or external data source is supported or
+scientifically calibrated. The expanded mappings and source hashes are retained
+in <code>build/full-pipeline-audit-20261026-r2/validation/pipeline-requirements.json</code>.
+Broader scientific/method extensions listed in the historical checklist remain
+separate work; the finite table does not certify them.</p>
+<h3 id="citation-metadata-now-reaches-scientific-review">Citation metadata now reaches scientific review</h3>
+<p>The audit found a concrete manuscript gap: accepted bibliography metadata was
+absent from impact and manuscript model requests. The pipeline now carries
+query-linked public citation candidates with canonical identifiers, metadata
+conflicts/corrections and source bindings. Feature/gene matches remain distinct
+from shared study background. Whole-manuscript background includes unselected
+and null hypotheses, while impact batches receive the relevant hypothesis scope.</p>
+<p>The metadata is explicitly unreviewed and is not proof of source support.
+Abstracts, full texts, query prose, paths, private notes and arbitrary nested
+fields are excluded from this candidate projection. This is a bounded field
+projection, not a general privacy or DLP guarantee. The existing native public
+full-text and claim-ledger route remains a separate source-appraisal step.
+See the <a href="vignettes/study-pipeline-tutorial.html#citation-candidates-in-impact-review-and-manuscript-drafting">citation handoff guide</a>.</p>
+<p>Two exact JARs processed the same <strong>15 unchanged input files</strong>. The old JAR
+omitted the known citation DOI from both actual model requests; the new JAR
+included it in both. Canonical meta-analysis bytes and the protocol's selected
+finding IDs were identical. Loopback responses and synthetic bibliography prove
+transport and provenance behavior, not actual AI appraisal or source truth.</p>
+<h3 id="acceptance-and-retained-history">Acceptance and retained history</h3>
+<p>The frozen source contains <strong>3,380 files</strong> (receipt SHA-256
+<code>b2cdc70c5d67b5a3e84eea71be177f1ba62e0ce5fb0762cfaa36018a94d2fb15</code>). The exact tested JAR has SHA-256
+<code>d5fe42d445a5ac4fdfabfd2f02b022f6305705106ba3725eeb25aeb6ddb16347</code>. The full <code>check executableJar</code> gate passed:
+<strong>2,793 tests in 449 suites</strong>, 2,614 passed,
+179 optional skips and no failures/errors. All <strong>18 new tests</strong> passed.
+Verification matched 2,054 main class files to
+the JAR, 189 guarded pipeline source files,
+1144 study schemas and
+94,207 indexed output hashes across
+661 indexed project copies (the 645
+inventory projects plus 16 retained subgroup-checker correction copies). These
+counts are software cases, not distinct participant populations. One deliberate MR-output
+corruption is separately checked against its recorded before/after hashes and
+the fixture's expected native integrity rejection; it is not counted as an intact
+producer output. There are no unexpected integrity mismatches.</p>
+<p>Concurrent work added only <code>electrostatic-grid</code> and <code>apbs-tools</code> dispatch/help
+entries to the shared CLI entry point after this snapshot. The complete remaining
+entry-point text matches the frozen source; the before/after files and exact
+hashes are retained separately. This gate verifies the frozen JAR, not a full
+build of subsequent concurrent workspace edits.</p>
+<p>The current 62-workflow inventory initially passed <strong>61/62</strong>. Its subgroup
+verifier expected a waiting native test and participant QC despite supplying no
+registered native family or participant datasets. The corrected verifier checks
+<code>not_applicable</code> separately from the retained partial import, its primary
+ineligibility and unchanged source-adjusted values. A fresh exact-JAR rerun
+passed <strong>16 cases, 18 phases and 142 independent numerical checks</strong>. Thus all 62
+workflow requirements have accepted evidence after the targeted correction;
+the initial failure is retained and is not rewritten as a single clean run.
+The earlier audit's four stale-verifier failures and the first malformed
+comparison-response harness are also retained with their original logs/checkers.</p>
+<p>Separate checks passed real public Ensembl consequence retrieval, human TP53
+AlphaFold DB retrieval and official AlphaGenome SDK 0.10.0 serialization.
+<strong>No live AlphaGenome prediction, installed ANNOVAR run or new AlphaFold
+inference was performed.</strong> Prediction requires the corresponding key or local
+runtime/databases. No API secret belongs in the study files or manuscript.</p>
+<p>The entirely supplied example passed 11 cases (six completions, five intended
+holds), with three authored principal findings, 24 bound claims and a complete
+linked supplement. These are software fixtures, including synthetic protocol
+actors. They do not establish a real human review, biological findings,
+publication-ready scientific depth or the validity of source claims. A real
+study and scientific review must establish the thoroughness sought in the
+Wickenhagen/OAS1 example. Provider execution and this scientific acceptance
+remain explicit outstanding evidence; the overall goal is not marked complete.
+The source changes remain uncommitted and unreleased.</p>
+<h2 id="public-passage-context-checkpoint-2026-10-26">Public passage context checkpoint, 2026-10-26</h2>
+<p>The earlier citation checkpoint transported public bibliography metadata. This
+source edition adds explicit, hash-pinned <strong>public passage context</strong> to the
+study-wide finding inventory, final AI impact comparisons and native manuscript
+drafting. See the <a href="vignettes/study-pipeline-tutorial.html#explicit-public-passages-for-impact-review-and-drafting">public passage guide</a>
+and <a href="schemas/public-literature-context-v1.schema.json">context schema</a>.</p>
+<p><code>assistance.public_literature_context</code> pins context files by SHA-256. Each source
+must match an available full-text member of a closed native public-reference
+bundle, its reference identity, text hash and bundle hash. The reader extracts
+explicit UTF-16 ranges rather than accepting replacement prose or arbitrary
+source paths. Purpose, hypothesis and exact feature scopes control inclusion;
+manuscript background can cover an unselected or null hypothesis. Context source
+and passage IDs must be retained together when citing or reviewing the evidence.
+Impact-only evidence does not transfer to manuscript requests, and
+manuscript-only evidence does not enter impact comparisons.</p>
+<p>The context is absent by default. The metadata-only candidate projection still
+excludes source prose. The new route sends only explicitly configured public
+passages and selected bibliographic fields, with integrity/source hashes and
+scope caveats. It does not bypass existing assistance purposes, disclosure,
+provider, offline or remote-transmission policies. Provisional literature-cap
+allocation and editorial disclosure remain separate protocols. Changing a
+context, bundle or hashed bundle member invalidates AI-stage reuse; missing or
+changed evidence holds the AI step while retained association results remain.</p>
+<p>Native drafting also receives all eight discussion facets explicitly, with
+instructions to distinguish study observations, source experiments, inference
+and proposed experiments. It must explain insufficient evidence and retain
+complete extended discussions in supplements. Selected passages are not a
+whole-paper appraisal: figures, controls, supplements, corrections, applicability
+and contrary evidence still require scientific review. Integrity, literal
+matching and a facet list cannot certify OAS1-level discussion depth or source
+support, nor provide de-identification or DLP certification.</p>
+<h3 id="exact-source-and-verification">Exact source and verification</h3>
+<p>Acceptance uses frozen source <code>build/public-literature-context-source-20261026-r1</code>
+(3,436 files; receipt SHA-256 <code>89577f1aca1e74dc8175d5d55bdd7e549617be2284766fd6b8bff8f21a2caf85</code>) and
+the exact JAR <code>build/public-literature-context-acceptance-20261026-r1/software/jlinalg.jar</code>
+(SHA-256 <code>3d4371c0b4406197e6f8ff623f3a4d91ae8d4fc54c33caca1008808a954a027b</code>). The full <code>check executableJar</code> gate passed
+<strong>2,877 tests in 456 suites</strong>: 2,698 passed,
+179 optional skips, no failures or errors. All <strong>21 new tests</strong> passed.</p>
+<p>Eight exact-JAR packaged workflows passed: public passage context, completed
+supplied-study publication, full-pool impact, source-bound discussion review,
+supplied-literature reuse, stage resume, provisional literature allocation and
+manuscript word budgets. The new public example passed <strong>eight cases, 11 phases
+and 12 actual loopback requests</strong>, covering both purposes, purpose isolation,
+feature mismatch, changed pins, missing-file arrival, unchanged-input reuse,
+changed native text and an explicit budget hold. Canonical meta-analysis bytes
+were identical across cases. Verification checked 90 schema
+cases, 6,962 indexed operation-output hashes,
+2,080 compiled main classes against the JAR and
+18 current source/schema/verifier files. Decoded payload strings
+were checked against original command-recorded workspace paths.</p>
+<p>The example uses the pinned public Wickenhagen et al. text to test transport and
+provenance. Its study features, responses and actor labels are synthetic; they
+are not OAS1 findings or actual human scientific attestations. The first
+prototype checker expected <code>complete</code> instead of the actual project state
+<code>completed</code>; its original checker, histories and captured requests are retained.
+The corrected prototype and final frozen-source run passed.</p>
+<p>The integration tests also exposed YAML aliases when a reference object appeared
+in both the passage packet and source catalog. The assistance writer now emits
+independent containers, preserving the strict reader's alias rejection. An
+identical-value old/new JAR comparison reproduces the old reader failure and
+verifies unchanged values after the new writer round trip; both JARs and the
+probe are retained. Its first probe-harness signature error is retained separately.</p>
+<p>These checks execute no external model or predictor and do not certify
+scientific appraisal, source support, biological validity or manuscript quality.
+Live AlphaGenome/ANNOVAR execution, new AlphaFold inference and real-study
+scientific acceptance remain unverified. The full pipeline goal remains active;
+this source-build checkpoint is uncommitted and unreleased.</p>
+<h2 id="scoped-public-evidence-citation-checkpoint-2026-10-26">Scoped public evidence citation checkpoint, 2026-10-26</h2>
+<p>The previous public-passage checkpoint verified transport into model requests.
+A stronger response test exposed a validation gap: the model could receive a
+public passage source ID but its response was rejected for citing that ID as
+support or counterevidence. The validator previously admitted only the finding's
+analysis, literature-coverage, annotation and LD sources.</p>
+<p>The source build now admits a public passage source in <code>evidence_ids</code> and
+<code>counterevidence_ids</code> when the context is complete, the packet catalog contains
+its <code>public_literature_passages</code> record, and the source matches that individual
+finding's hypothesis and exact feature scope. Declared hypothesis background
+can apply across its features. A shared batch catalog cannot lend a source to
+another hypothesis or feature. Invented IDs, absent catalog records and
+unresolved contexts remain errors. Required caveats, complete candidate
+assessment, distinct story groups and statistical eligibility are unchanged.
+Accepting an ID establishes supplied provenance, not scientific support for a
+claim. See the <a href="vignettes/study-pipeline-tutorial.html#explicit-public-passages-for-impact-review-and-drafting">public passage guide</a>.</p>
+<p>The new prompt explains this scope rule, and implementation identity 85
+invalidates earlier execution-cache identities. No new study configuration is
+required. The source-citation relationship remains an unreviewed AI assertion;
+the existing claim ledger and scientific appraisal still apply.</p>
+<p>If the impact source scope exceeds the drafting scope, the manuscript projection
+also omits upstream AI appraisal prose and its outline copies. Removing only
+source IDs or literal quotations would not catch paraphrases. Selected finding
+identities, order, statistical dossiers and caveats still transfer, and drafting
+reassesses claims from its permitted evidence. The full original impact audit
+remains local. The exact-JAR example injects derived appraisal text, verifies
+its absence from the impact-only draft, and verifies retention when both stages
+permit the source. A retained run with the earlier JAR and the strengthened
+responder reproduces both a dangling public-source citation and derived prose
+in its impact-only manuscript request, despite an empty public-source catalog.
+That expected verifier failure is archived alongside the passing new run.</p>
+<h3 id="exact-source-and-acceptance">Exact source and acceptance</h3>
+<p>Frozen source <code>build/public-evidence-citation-source-20261026-r3</code> contains
+<strong>3,458 files</strong>, receipt SHA-256
+<code>865c15f0856f10225dcb83320b28c5b422ba9842ccf5a469cbac433b91e7f910</code>. The exact JAR is in
+<code>build/public-evidence-citation-acceptance-20261026-r3/software/jlinalg.jar</code>,
+SHA-256 <code>dde797912f76db076f74a8794876d6441d5bc61bf66318112d2cf75df146187d</code>. Its full <code>check executableJar</code> gate passed
+<strong>2,931 tests in 460 suites</strong>: 2,752 passed,
+179 optional skips and no failures/errors. All <strong>ten new tests</strong>
+passed, covering valid support/counterevidence, feature and hypothesis scope,
+missing catalog records, unresolved context, invented IDs and declared background.
+Three additional tests cover the drafting projection: impact-only derived prose is omitted, matching dual-purpose appraisals remain, and a dual-purpose source outside the selected drafting scope also triggers projection. The strengthened native handoff test injects paraphrased source text into every rubric, claim scope and selection note. The original local audit retains those appraisals. The existing native transport test now returns public IDs in both citation fields.</p>
+<p>Eight exact-JAR workflows passed: public context, completed supplied-study
+publication, impact, source-bound discussion, supplied literature, resume,
+provisional literature priority and manuscript word budgets. The public-context
+example passed eight cases and 11 phases, with <strong>12 actual loopback requests and
+eight public-source citations in responses</strong>. Its responder actually uses the
+provided IDs; the verifier checks their scopes and acceptance. Canonical
+meta-analysis bytes were identical across the cases.</p>
+<p>An old/new comparison used the same previously captured native packet and
+identical response files. The old JAR rejected valid support and counterevidence;
+the new JAR accepted both. Both JARs rejected wrong-feature and invented-source
+citations. The packet SHA-256 is
+<code>27683fa8a64cb29a26096a431e1c4d9c93f4dfb32754cd2a173992b821785a52</code>;
+the response-set SHA-256 is
+<code>71a26ce7b81c3447342b42ec0e817174346e1407f735bc1898c29055258489f1</code>.
+Both JARs, the packet, replies, probe and results are retained. Verification also
+checked 90 schema cases,
+6,962 indexed output hashes,
+2,085 main class files against the JAR and
+9 guarded current source/test/verifier files.</p>
+<h3 id="external-provider-observation-and-scientific-limits">External provider observation and scientific limits</h3>
+<p>The <a href="https://deepmind.google.com/science/alphagenome/downloads">official AlphaGenome downloads page</a> returned HTTP 200 and listed an AVI
+score archive. Bounded anonymous HEAD and range-GET requests to that archive
+both returned HTTP 500 on 2026-10-26. The original page, hashes, response metadata
+and error bytes are retained under <code>validation/external-download-observations</code>.
+This observation does not identify the upstream/network cause, establish a
+credential error, or constitute downloaded variant scores. No bulk-file format
+was guessed and no predictor result was claimed.</p>
+<p>The real public Wickenhagen text tests transport and provenance; study data,
+responses and actor labels are synthetic. These checks do not perform actual
+external model appraisal, new AlphaFold inference, AlphaGenome/ANNOVAR execution
+or scientific acceptance of a real manuscript. Source-ID acceptance cannot
+certify that a paper supports a claim. The full pipeline goal remains active;
+changes are uncommitted and unreleased.</p>
+<h2 id="application-managed-variant-software-checkpoint-2026-10-26">Application-managed variant software checkpoint, 2026-10-26</h2>
+<p>The application now downloads and installs variant software for its users through
+<code>variant-tools install alphagenome</code> and <code>variant-tools install annovar</code>, with
+machine-readable <code>variant-tools status</code> commands for frontend integration.
+The <a href="vignettes/variant-followup.html#application-managed-software-download-and-installation">managed setup guide</a>
+contains commands, automatic study settings and registration handling.</p>
+<p>AlphaGenome setup downloads the official <strong>0.10.0</strong> PyPI wheel, checks pinned
+SHA-256 <code>ed90696f7f0900b2e0d68e28e36ab7d6d95000f59cd19b969fec0bea806bd2c2</code>,
+resolves binary dependency wheels, records every version/hash and installs from
+the local locked wheel set into a private environment. It checks dependencies
+and the Atlas/prediction imports. The system Python package set is unchanged;
+Python 3.10 or newer is the bootstrap prerequisite. This installs the official
+client, rather than model weights or credentials. Installing it makes no model
+request and needs no AlphaGenome API key.</p>
+<p>The default home is <code>~/.jlinalg/tools/alphagenome-0.10.0</code> or <code>annovar</code>, shared by
+the setup command and study execution; <code>--home</code> and study <code>installation.home</code>
+override it. Complete homes are verified and reused. Missing, changed or extra
+files invalidate a managed profile; incomplete homes and diagnostics are retained
+instead of silently repaired or overwritten. Runtime identities participate in
+scientific execution-cache inputs.</p>
+<p>Native study configuration accepts <code>variant_followup.alphagenome.installation</code>
+and <code>variant_followup.consequences.installation</code>. SDK setup defaults to automatic
+when no external Python is supplied; ANNOVAR setup defaults to automatic when
+its engine is selected without an external executable. Other consequence
+engines keep external setup. Explicit external mode preserves prepared runtimes.
+Permitted automatic software downloads use the existing resource-download
+policy. A missing API key holds a model request without downloading an unusable
+SDK during that analysis; the independent install command still works without
+credentials. A complete managed home or registered local ANNOVAR archive can be
+used with software downloads forbidden.</p>
+<p>ANNOVAR's <a href="https://annovar.openbioinformatics.org/en/latest/user-guide/download/">official download process</a>
+requires individual registration and licence acknowledgement. The application
+returns the registration URL, accepts the user's issued link through a named
+environment variable or an already registered archive, and performs the download
+and extraction itself. It never invents registration or redistributes someone
+else's licensed copy. Issued URLs are excluded from manifests and HTTP error
+messages. Downloads and extraction are bounded, checksums recorded and archive
+traversal/links rejected. Perl and chosen annotation databases remain separate
+declared prerequisites.</p>
+<h3 id="source-and-executable-evidence">Source and executable evidence</h3>
+<p>Frozen source <code>build/managed-variant-tool-source-20261026-r1</code> has
+<strong>3,515 files</strong>, receipt SHA-256 <code>7977f6809409c2cb64d97893c1e0d0072cb5f23c2a15512c736b766840a4b818</code>.
+Final JAR: <code>build/managed-variant-tools-20261026-r1/software/final-jlinalg.jar</code>,
+SHA-256 <code>ee0e6d11631550b1fee6d7072c632d4712afbea9ea8d4a0f4daaf41bbd702b0e</code>. Engine implementation identity is <strong>86</strong>, resolver
+defaults <strong>53</strong>. Full <code>check executableJar</code> passed <strong>2,963 tests in
+464 suites</strong>: 2,784 passed, 179 optional skips and
+no failures/errors. All <strong>13 new Java tests</strong> and <strong>eight Python
+installer tests</strong> passed. Eleven packaged regressions passed: public context,
+completed supplied study, impact, discussion, supplied literature, resume,
+literature priority, word budgets, variant follow-up, pooled variants and partial
+supplied stages.</p>
+<p>The application itself downloaded and installed AlphaGenome, including
+<strong>50 dependency packages</strong> and
+<strong>8,965 managed runtime files</strong>. A second install with
+downloads disabled reused the same marker. Actual SDK imports through the
+packaged bridge succeeded. That download used JAR
+<code>be97a3457473c11faf9e3f106df02c74dc569a9710d723644e1d84240801f3b9</code>. Its installer/runtime/workflow class files
+and packaged installer/SDK resources were compared byte-for-byte with the final
+JAR; final-JAR status and offline reuse then passed against the same installation.
+This preserves the actual download evidence without needlessly downloading the
+unchanged dependency set again.</p>
+<p>The ANNOVAR local-archive integration uses a clearly labelled synthetic archive,
+not genuine ANNOVAR software or a fabricated registration. It proves the
+Java-to-packaged-installer path, checksum, archive layout, licence gate and
+offline import behavior. An actual personally registered ANNOVAR download and
+new model predictions were not performed. Those are separate live integration
+checks, not a demand for users to provide a real study before this software
+feature can be implemented or installed.</p>
+<p>The CLI provides the application-facing setup boundary. A separate OmicsMatic
+checkout was not available here, so a separate GUI button is not claimed as
+verified. Changes remain local and uncommitted; no release was published.</p>
+<h2 id="software-workflow-acceptance-2026-10-26">Software workflow acceptance, 2026-10-26</h2>
+<p>The original pipeline, lab amendments and application-managed variant downloads
+have implemented and contract-verified software paths in this checkout. This
+acceptance covers the documented models, formats, resources and capability
+gates. It does not promise support for every possible study design or certify
+biological conclusions. User inputs, provider credentials and licensed resources remain requirements
+when the corresponding operation is run. Software setup and implementation
+validation can be completed independently of a particular research study.</p>
+<p>The requirement audit is retained at
+<code>build/software-completion-audit-20261026-r1/software-requirements-audit.json</code>.
+It checks 25 software facets and 139 pinned evidence files. The earlier 62-workflow
+acceptance preserves its initial 61/62 outcome and the separately recorded
+16-case subgroup-verifier correction with 142 independent numerical checks.
+Eleven packaged regressions were rerun against the current verified JAR. The
+full gate passed 2,784 tests with 179 optional skips and no failures/errors.
+The nine changed files among 189 original pipeline guards concern public-source
+handling, software setup and execution identities; unchanged compiled entry
+points retain their earlier verified implementations.</p>
+<p>A subsequent shared-dispatcher edit adds only the disjoint <code>unrelated-select</code>
+route and its help entry. Its exact diff was checked, the current dispatcher
+and dependencies compiled at Java 17, and study/setup/status/offline-reuse
+commands passed against the verified runtime. That independent command itself
+is outside this pipeline acceptance; concurrent work was preserved.</p>
+<div class="result-table"><table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Implemented software facet</th>
+<th>Representative accepted workflows</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P01</td>
+<td>Per-cohort association and missing-model literature/error gate</td>
+<td><code>model-review</code>, <code>genotype-plain</code>, <code>survival</code></td>
+</tr>
+<tr>
+<td>P02</td>
+<td>Consistency, assay/sample QC, distributions and subgroup diagnostics</td>
+<td><code>assay-qc</code>, <code>genotype-qc</code>, <code>genotype-sample-qc</code></td>
+</tr>
+<tr>
+<td>P03</td>
+<td>GWAS MAC &gt;=20 and separate uncommon/rare-variant routes</td>
+<td><code>genotype-plain</code>, <code>genotype-qc</code>, <code>human-ploidy</code></td>
+</tr>
+<tr>
+<td>P04</td>
+<td>Effect-outlier exclusion, raw retention and unfiltered sensitivity</td>
+<td><code>effect-qc</code>, <code>genotype-effect</code></td>
+</tr>
+<tr>
+<td>P05</td>
+<td>Matched cohort effect plots, correlations and direction</td>
+<td><code>cohort-diagnostics</code>, <code>pooling</code>, <code>genotype-plain</code></td>
+</tr>
+<tr>
+<td>P06</td>
+<td>Discovery/validation roles and separate discovery pooling</td>
+<td><code>frozen-discovery</code>, <code>discovery-scope</code>, <code>genotype-plain</code></td>
+</tr>
+<tr>
+<td>P07</td>
+<td>Cohort overlap, odd-cohort flags and omission sensitivity</td>
+<td><code>cohort-diagnostics</code>, <code>rare-cohort-overlap</code>, <code>effect-qc</code></td>
+</tr>
+<tr>
+<td>P08</td>
+<td>Protocol primary meta-analysis, heterogeneity and leave-one-out fits</td>
+<td><code>pooling</code>, <code>cohort-diagnostics</code>, <code>primary-results</code></td>
+</tr>
+<tr>
+<td>P09</td>
+<td>GO/pathway and LD-aware GWAS enrichment</td>
+<td><code>gwas-enrichment</code>, <code>continuous-gwas-enrichment</code>, <code>gsea</code></td>
+</tr>
+<tr>
+<td>P10</td>
+<td>All eligible SNP consequences and contextual AlphaGenome scoring</td>
+<td><code>variant-followup</code>, <code>pooled-variant</code>, <code>partial-supplied</code></td>
+</tr>
+<tr>
+<td>P11</td>
+<td>AlphaFold structure retrieval, exact mapping and configured prediction</td>
+<td><code>protein</code></td>
+</tr>
+<tr>
+<td>P12</td>
+<td>Risk-score development/reuse, independent evaluation and related traits</td>
+<td><code>risk-score</code>, <code>binary-risk-score</code>, <code>nested-risk-score</code></td>
+</tr>
+<tr>
+<td>P13</td>
+<td>GSEA, pathway networks, modules and module GO</td>
+<td><code>gsea</code>, <code>phenotype-gsea</code>, <code>network</code></td>
+</tr>
+<tr>
+<td>P14</td>
+<td>Correlation networks, components/cliques and module GO</td>
+<td><code>network</code>, <code>network-preservation</code>, <code>network-null</code></td>
+</tr>
+<tr>
+<td>P15</td>
+<td>Matched GWAS/QTL source acquisition and all-eligible-feature MR</td>
+<td><code>mr-feature-coverage</code>, <code>mr-testing</code>, <code>mr-completion</code></td>
+</tr>
+<tr>
+<td>P16</td>
+<td>Colocalization, including explicitly limited thresholded regions</td>
+<td><code>colocalization</code>, <code>genetic-pair-reuse</code></td>
+</tr>
+<tr>
+<td>P17</td>
+<td>Literature review cap 100, uncapped inventory and provenance</td>
+<td><code>literature</code>, <code>literature-priority</code>, <code>literature-coverage</code></td>
+</tr>
+<tr>
+<td>P18</td>
+<td>Full-pool AI impact comparisons and 3–5 distinct principal stories</td>
+<td><code>impact</code>, <code>finding-grouping</code>, <code>completed-study</code></td>
+</tr>
+<tr>
+<td>P19</td>
+<td>Source-bound discussion facets, evidence/claim ledger and review states</td>
+<td><code>finding-discussion</code>, <code>completed-study</code></td>
+</tr>
+<tr>
+<td>P20</td>
+<td>Manuscript, flexible 8,000-word main target and full supplements</td>
+<td><code>manuscript-depth</code>, <code>completed-study</code>, <code>impact</code></td>
+</tr>
+<tr>
+<td>P21</td>
+<td>Completed supplied stages and requested missing-work completion</td>
+<td><code>supplied-results</code>, <code>scoped-supplied</code>, <code>completed-study</code></td>
+</tr>
+<tr>
+<td>P22</td>
+<td>Partial-stage scope, retained source evidence and primary ownership</td>
+<td><code>partial-supplied</code>, <code>primary-results</code>, <code>scoped-supplied</code></td>
+</tr>
+<tr>
+<td>P23</td>
+<td>Public citation/passage handoff with feature and purpose scope</td>
+<td><code>completed-study</code>, <code>literature-coverage</code>, <code>supplied-literature</code></td>
+</tr>
+<tr>
+<td>P24</td>
+<td>Immutable inputs, explicit needs, scoped cache reuse and provenance</td>
+<td><code>stage-resume</code>, <code>genetic-pair-reuse</code>, <code>completed-study</code></td>
+</tr>
+<tr>
+<td>P25</td>
+<td>Application-managed AlphaGenome and registered ANNOVAR downloads</td>
+<td>Managed installer acceptance, 13 Java + 8 Python tests</td>
+</tr>
+</tbody>
+</table></div>
+<p>The source/JAR, software download and installed-runtime checks are recorded in
+<a href="#application-managed-variant-software-checkpoint-2026-10-26">the managed software checkpoint</a>.
+The remaining tables and dated checkpoints retain the development history,
+capability extensions and separate live/scientific evidence limits. They must
+not be read as evidence that an earlier partial result was regenerated.</p>
+<p>Actual AlphaGenome predictions, a genuine personally licensed ANNOVAR execution,
+new AlphaFold inference, real-model scientific appraisal and scientific manuscript
+certification remain unperformed by these checks. Those flags remain false in
+the audit. The framework provides their configured interfaces and review gates;
+it does not turn fixture outputs into biological findings. A separate
+OmicsMatic GUI checkout was unavailable; the verified application boundary here
+is JLinAlg's CLI and JSON setup status. No release, commit or push is claimed.</p></article></div></main><site-footer root=""></site-footer></body></html>

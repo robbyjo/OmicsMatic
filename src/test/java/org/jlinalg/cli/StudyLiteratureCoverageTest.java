@@ -19,6 +19,30 @@ class StudyLiteratureCoverageTest {
     private DelimitedData allocation(String status,boolean selected)throws Exception {Path path=Files.createTempFile(root,"allocation-",".tsv");Files.writeString(path,"rank\tfeature_id\tselected_for_review\tretrieval_status\treview_rank\tselection_basis\tsearch_records\tsource_reported_search_records\tnative_or_legacy_search_records\n1\tf1\t"+selected+"\t"+status+"\t"+(selected?"1":"NA")+"\tprovisional_AI_impact\t"+(selected?"3\t3\t0":"0\t0\t0")+"\n");return DelimitedData.readResult(path);}
     private StudyLiteratureCoverage.Input input(String id,Map<String,Object> doc,DelimitedData table,boolean external,String state){return new StudyLiteratureCoverage.Input("H",state,external?"contribution":"primary",id,table==null?"":id+"-allocation",doc,table,external);}
     private Map<String,Object> result(StudyLiteratureCoverage coverage){return coverage.forFinding("H","f1",Map.of("gene_symbol","G1"));}
+    private Map<String,Object> matchedPaper(String feature,String gene){var q=query("molecular_mechanism");q.put("feature_id",feature);q.put("gene_symbol",gene);q.put("status","supplied_candidate_matches");q.put("hit_count",1);q.put("articles",List.of(Map.of("doi","10.5555/feature-paper","title","Public feature paper","abstract_text","PRIVATE_ABSTRACT","notes","PRIVATE_ARTICLE_NOTE")));return q;}
+    @Test void matchedQueryCandidatesRetainPublicMetadataAndSourceIds(){
+        var coverage=new StudyLiteratureCoverage(Set.of("H"));coverage.add(input("supplied",Map.of("evidence",List.of(matchedPaper("f1","G1"))),null,true,"complete"));
+        var result=result(coverage);var c=map(result.get("citation_candidates"));assertEquals(1,c.get("unique_candidate_references"));
+        var r=map(list(c.get("references")).get(0));assertEquals("10.5555/feature-paper",r.get("doi"));assertEquals(List.of("supplied"),r.get("source_ids"));assertFalse(StudyAssistance.json(result).contains("PRIVATE_"));
+        assertEquals("candidate_sources_unreviewed",result.get("query_evidence_state"));assertEquals(false,c.get("source_support_established"));
+    }
+    @Test void explicitOtherFeatureDoesNotBorrowAGeneMatchedCitation(){
+        var coverage=new StudyLiteratureCoverage(Set.of("H"));coverage.add(input("other",Map.of("evidence",List.of(matchedPaper("different","G1"))),null,true,"complete"));
+        assertFalse(result(coverage).containsKey("citation_candidates"));
+    }
+    @Test void contradictoryGeneScopeWithholdsCitationMetadata(){
+        var coverage=new StudyLiteratureCoverage(Set.of("H"));coverage.add(input("wrong",Map.of("evidence",List.of(matchedPaper("f1","OTHER"))),null,true,"complete"));
+        var c=map(result(coverage).get("citation_candidates"));assertEquals(0,c.get("unique_candidate_references"));assertEquals(1L,c.get("withheld_article_records"));
+    }
+    @Test void backgroundBibliographyDoesNotBecomeAFeatureSearchReceipt(){
+        var coverage=new StudyLiteratureCoverage(Set.of("H"));coverage.add(input("background",Map.of("evidence",List.of(Map.of("kind","supplied_bibliography","articles",List.of(Map.of("doi","10.5555/background","title","Public background paper"))))),null,true,"complete"));
+        assertEquals("bibliography_without_feature_search_receipts",result(coverage).get("query_evidence_state"));assertFalse(result(coverage).containsKey("citation_candidates"));
+        var background=map(coverage.background().get("H"));assertEquals(1,background.get("unique_candidate_references"));assertEquals("hypothesis_background_not_feature_specific_search_coverage",background.get("scope"));
+    }
+    @Test void unacceptedBackgroundRetainsAWithholdingDisposition(){
+        var coverage=new StudyLiteratureCoverage(Set.of("H"));coverage.add(input("background",Map.of("evidence",List.of(Map.of("kind","supplied_bibliography","articles",List.of(Map.of("doi","10.5555/background"))))),null,true,"waiting_for_input"));
+        var background=map(coverage.background().get("H"));assertEquals(0,background.get("unique_candidate_references"));assertEquals(1L,background.get("withheld_article_records"));
+    }
     @Test void nonselectionAndPendingAllocationAreNotNegativeSearchResults()throws Exception {
         for(String status:List.of("outside_review_budget","provisional_priority_pending")){
             var coverage=new StudyLiteratureCoverage(Set.of("H"));coverage.add(input("native",Map.of("evidence",List.of()),allocation(status,false),false,status.equals("outside_review_budget")?"complete":"waiting_for_input"));var result=result(coverage);

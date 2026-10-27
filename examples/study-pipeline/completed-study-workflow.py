@@ -178,7 +178,7 @@ def verify(root,jar):
             for name,digest in manifest.get("output_sha256",{}).items():assert sha(folder/name)==digest;hashes+=1
             kind=manifest["operation_type"]
             if kind not in ("validate_harmonize","finding_inventory","impact_assessment","manuscript_draft","diagnostic_review","report","rare_set_followup"):
-                native=case in ("missing-go","missing-nodes-arrival","missing-background") and kind=="module_gene_ontology"
+                native=case in ("missing-go","missing-nodes-arrival","missing-background","partial-go") and kind=="module_gene_ontology"
                 assert manifest.get("details",{}).get("analysis_executed_by_jlinalg") is False or native,(case,kind,manifest)
             assert kind not in ("association","participant_qc","assay_qc","source_discovery")
         if case=="all-provided":
@@ -202,6 +202,12 @@ def verify(root,jar):
                 data=rows(folder/"module-gene-ontology.tsv");np.testing.assert_allclose([float(r["log_adjusted_p"]) for r in data],[-1000+math.log(1.5),-1100+math.log(3),-900],rtol=1e-13);checks+=3
             else:
                 data=rows(folder/"module-gene-ontology.tsv");assert [float(r["adjusted_p"]) for r in data]==[.35,.42];checks+=2
+        if case=="partial-go":
+            folder,partial=one(project,"supplied_partial")
+            assert partial["details"]["kind"]=="module_gene_ontology" and partial["details"]["reported_status"]=="partial"
+            assert partial["details"]["replaces_native_stage"] is False
+            assert not (folder/"module-gene-ontology.tsv").exists()
+            assert [float(r["adjusted_p"]) for r in rows(folder/"supplied-results-limited.tsv")]==[.35,.42];checks+=4
         if case in ("go-only","memberships-only","missing-background","missing-go","missing-nodes-arrival"):assert not any(m["operation_type"]=="network_analysis" for _,m in ops)
         if case=="all-provided":
             graph,gm=one(project,"network_analysis");modules,mm=one(project,"network_modules");summary=yaml.safe_load((modules/"module-analysis.yaml").read_text(encoding="utf-8"))
@@ -220,6 +226,15 @@ def verify(root,jar):
             contexts=[q for row in findings for q in walk(row)];assert contexts and all(q["family_size"]==1000 and q["family_coverage"]=="selected_only" for q in contexts)
             impact,_=one(project,"impact_assessment");assessment=yaml.safe_load((impact/"impact-assessment.yaml").read_text(encoding="utf-8"));assert assessment["assessed_candidate_count"]==7 and len(assessment["selected_findings"])==3;assert all(m.get("reused_from_cache") for _,m in ops)
             manuscript,_=one(project,"manuscript_draft");assert (manuscript/"manuscript.html").is_file();assert not (project/"fixture-resources").exists();assert "PRIVATE_SOURCE_NOTES" not in (root/"requests.json").read_text(encoding="utf-8")
+            requests=json.loads((root/"requests.json").read_text(encoding="utf-8"));assert requests
+            for payload in requests:
+                background=payload["literature_background"]["H"]
+                assert any(r.get("doi")==DOI for r in background["references"])
+                assert background["scope"]=="hypothesis_background_not_feature_specific_search_coverage"
+                assert background["source_support_established"] is False and background["full_text_appraisal_established"] is False
+                assert all(source in payload["source_catalog"] for source in background["source_ids"])
+                assert PRIVATE not in json.dumps(payload)
+            assert DOI in (inventory/"finding-inventory.yaml").read_text(encoding="utf-8")
         cli(jar,"verify","--project",project)
     authored=root/"authored-manuscript";cli(jar,"manuscript-verify","--project",authored)
     reviews=[]

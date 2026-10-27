@@ -1,5 +1,15 @@
 # Auditable result-first study example
 
+For per-SNP annotation from a completed pooled GWAS, including ANNOVAR-format and
+AlphaGenome score imports, see [the pooled-SNP guide](../../docs/vignettes/study-pipeline-tutorial.md#snp-annotation-from-a-pooled-gwas).
+Run `pooled-variant-workflow.py` for synthetic source-only, partial-coverage,
+reference/allele, multi-context score reuse and mixed cohort/pool cases.
+
+For automatic completion from a supplied primary meta-analysis with no original
+datasets, see [the supplied-primary guide](../../docs/vignettes/study-pipeline-tutorial.md#automatic-follow-ups-from-a-supplied-primary-meta-analysis).
+The packaged `gwas-enrichment-workflow.py` and `gsea-workflow.py` examples include
+automatic source-only cases, alongside their existing numerical and reuse checks.
+
 For a separate conditional permutation test of frozen graph wiring, see
 [the network-null guide](../../docs/vignettes/study-pipeline-tutorial.md#conditional-tests-of-frozen-network-wiring).
 
@@ -845,3 +855,31 @@ impact quality is certified. See the
 
 
 `continuous-gwas-enrichment-workflow.py` checks joint binary/continuous S-LDSC, signed reference moments, standardized conditional effects with ratio SEs, log-tail correction and typed completed-source reuse. Requires NumPy/SciPy/PyYAML; see the [continuous annotation guide](../../docs/vignettes/study-pipeline-tutorial.md#continuous-gwas-annotations-and-conditional-effects).
+
+`partial-supplied-workflow.py run NEW_DIRECTORY --jar JAR` checks separate
+retention and completion of explicitly partial supplied stages: native SNP
+scoring with available inputs, a missing-input hold, manual retention without
+new analysis, completed-stage reuse, and a partial pool without source cohort
+estimates. Keep `pooled-variant-workflow.py` alongside it. The verifier and fixture
+generator are pinned in the output; `verify DIRECTORY --jar THE_PINNED_JAR`
+rechecks input and output hashes. Requires PyYAML. The inputs and scores are
+synthetic; no external annotation predictor or scientific calibration runs.
+See the [partial-stage guide](../../docs/vignettes/study-pipeline-tutorial.md#partial-supplied-stages-and-native-completion).
+
+The `completed-study-workflow.py` checks also inspect captured model requests for
+the [citation handoff](../../docs/vignettes/study-pipeline-tutorial.md#citation-candidates-in-impact-review-and-manuscript-drafting): public bibliography metadata and its source/query links reach impact review and drafting, while private source prose stays excluded and scientific support remains unreviewed.
+
+`public-literature-context-workflow.py run NEW_DIRECTORY --jar JAR --references
+NATIVE_REFERENCE_BUNDLE` tests explicitly configured public passages through
+actual loopback impact and manuscript requests, purpose/feature boundaries,
+missing-file arrival, verified reuse, source mutation and budget holds. Keep
+`completed-study-workflow.py` beside it. Supply a native full-text bundle for
+Wickenhagen et al., Science 2021; the existing source-acquisition guide explains
+`full_text: true`. The study data and protocol responses are synthetic. The real
+public paper is used to test integrity and transport, not to assert biological
+findings or real AI appraisal. Recheck with `verify DIRECTORY --jar
+DIRECTORY/software/jlinalg.jar`. Requires PyYAML, jsonschema, NumPy and SciPy.
+See the [public passage guide](../../docs/vignettes/study-pipeline-tutorial.md#explicit-public-passages-for-impact-review-and-drafting).
+
+
+The [managed variant software guide](../variant-tools/README.md) covers application downloads and automatic setup for AlphaGenome and registered ANNOVAR installations.

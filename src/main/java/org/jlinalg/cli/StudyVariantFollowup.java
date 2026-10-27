@@ -22,13 +22,15 @@ final class StudyVariantFollowup implements StudyOperationExecutor {
     @FunctionalInterface interface Consequences { List<Map<String, Object>> run(Context context, Path batch, List<StudyVariantUniverse.Key> keys, Map<String, Object> configuration) throws IOException; }
     private final Consequences consequences;
     private final StudyAlphaGenome alpha;
+    private final boolean managedConsequences;
     private record ImportRows(List<String> header, Map<String, List<String>> rows, int count, String sha256) { }
-    StudyVariantFollowup() { this(nativeConsequences(), new StudyAlphaGenome()); }
+    StudyVariantFollowup() { this(nativeConsequences(), new StudyAlphaGenome(), true); }
     private static Consequences nativeConsequences() {
         Map<String, ImportRows> imports = new LinkedHashMap<>();
         return (context, folder, keys, config) -> consequences(context, folder, keys, config, imports);
     }
-    StudyVariantFollowup(Consequences consequences, StudyAlphaGenome alpha) { this.consequences = consequences; this.alpha = alpha; }
+    StudyVariantFollowup(Consequences consequences, StudyAlphaGenome alpha) { this(consequences, alpha, false); }
+    private StudyVariantFollowup(Consequences consequences, StudyAlphaGenome alpha, boolean managed) { this.consequences = consequences; this.alpha = alpha; this.managedConsequences = managed; }
     @Override public Result execute(Context context) throws IOException {
         Files.createDirectories(context.outputDirectory());
         boolean before = "variant_annotation".equals(context.operation().get("type"));
@@ -39,9 +41,14 @@ final class StudyVariantFollowup implements StudyOperationExecutor {
             var need = StudyNeed.review("variant-identity:" + context.operation().get("hypothesis"), "Resolve variant identity inputs", invalid.getMessage(), true);
             var details = Map.<String, Object>of("status", "variant_input_unresolved", "needs", List.of(need.document()));
             write(context.outputDirectory().resolve("variant-followup.yaml"), details);
-            return new Result(State.WAITING_FOR_INPUT, "Variant identity input requires review", List.of("variant-followup.yaml"), details);
+            return new Result(State.WAITING_FOR_INPUT, "Variant identity input requires review", outputFiles(context), details);
         }
-        if (catalog.items.isEmpty()) return new Result(State.NOT_APPLICABLE, "No genomic variant inputs are declared", List.of(), Map.of("performed", false));
+        if (catalog.items.isEmpty()) {
+            var details = new LinkedHashMap<String,Object>(); details.put("performed",false); details.put("pooled_sources",catalog.pooledSources);
+            if (catalog.unresolvedScope) details.put("needs",List.of(StudyNeed.review("variant-scope:"+context.operation().get("hypothesis"),"Declare the primary variant scope","The selected pool needs a supported genomic modality and variant feature namespace; no variant identities were inferred from gene/set names.",true).document()));
+            write(context.outputDirectory().resolve("variant-followup.yaml"),details);
+            return new Result(catalog.unresolvedScope?State.WAITING_FOR_INPUT:State.NOT_APPLICABLE,catalog.unresolvedScope?"Primary-pool variant scope requires review":"No genomic variant inputs are declared",outputFiles(context),details);
+        }
         var annotation = map(policy.get("consequences")); var genome = map(policy.get("alphagenome"));
         Map<String, String> reference = new LinkedHashMap<>(), annotationStatus = new LinkedHashMap<>();
         Map<String, StudyVariantUniverse.Key> eligible = new LinkedHashMap<>();
@@ -67,7 +74,10 @@ final class StudyVariantFollowup implements StudyOperationExecutor {
                 if (annotation.get("engine").equals("vep-rest") && !blocked.isBlank()) { batch.forEach(key -> annotationStatus.put(key.id(), blocked)); continue; }
                 Path folder = context.outputDirectory().resolve("consequences/batch-" + String.format(java.util.Locale.ROOT, "%06d", ++batchNumber)); Files.createDirectories(folder);
                 try {
-                    if (provider == null) provider = StudyVariantBatchCache.provider(context, annotation);
+                    if (provider == null) {
+                        if (managedConsequences && "annovar".equals(annotation.get("engine"))) annotation.putAll(StudyVariantTools.prepare(context, "annovar", annotation));
+                        provider = StudyVariantBatchCache.provider(context, annotation);
+                    }
                     String identity = StudyVariantBatchCache.identity(provider, Map.of("kind", "consequences", "reference_sha256", referenceHash, "variants", batch.stream().map(StudyVariantUniverse.Key::id).toList()));
                     boolean reused = batches.reuse(context, identity, folder);
                     var rows = reused ? readConsequences(folder.resolve("batch-consequences.tsv")) : consequences.run(context, folder, batch, annotation);
@@ -104,19 +114,19 @@ final class StudyVariantFollowup implements StudyOperationExecutor {
         predicted.scores().forEach(row -> scoresByVariant.computeIfAbsent(text(row.get("variant_id")), ignored -> new ArrayList<>()).add(row));
         List<String[]> inventory = new ArrayList<>(), evidence = new ArrayList<>(); int unresolved = 0;
         for (var item : catalog.items) {
-            String id = item.key == null ? "NA" : item.key.id(), ref = reference.getOrDefault(id, item.eligible ? "identity_unresolved" : "excluded_from_primary");
-            String consequence = annotationStatus.getOrDefault(id, !item.eligible ? "excluded_from_primary" : "reference_or_identity_prerequisite");
-            String score = before ? "not_requested_before_masks" : predicted.statuses().getOrDefault(id, !item.eligible ? "excluded_from_primary" : "reference_or_identity_prerequisite");
+            String id = item.key == null ? "NA" : item.key.id(), ref = !item.eligible?"excluded_from_primary":reference.getOrDefault(id,"identity_unresolved");
+            String consequence = !item.eligible?"excluded_from_primary":annotationStatus.getOrDefault(id,"reference_or_identity_prerequisite");
+            String score = before ? "not_requested_before_masks" : !item.eligible?"excluded_from_primary":predicted.statuses().getOrDefault(id,"reference_or_identity_prerequisite");
             boolean annotationReady = !Boolean.TRUE.equals(annotation.get("enabled")) || Set.of("annotated", "not_found").contains(consequence);
             boolean scoreReady = before || !Boolean.TRUE.equals(genome.get("enabled")) || Set.of("complete", "imported", "not_found", "no_matching_tracks", "not_in_score_import", "atlas_snp_only", "unsupported_genome_build", "unsupported_chromosome").contains(score);
             boolean requested = Boolean.TRUE.equals(annotation.get("enabled")) || !before && Boolean.TRUE.equals(genome.get("enabled"));
             if (item.eligible && requested && (!ref.equals("reference_matched") || !annotationReady || !scoreReady)) unresolved++;
-            inventory.add(new String[]{item.dataset, item.feature, id, Boolean.toString(item.eligible), item.disposition, ref, consequence, score});
-            for (var row : byVariant.getOrDefault(id, List.of())) evidence.add(new String[]{item.feature, item.dataset, id, "consequence", text(row.getOrDefault("gene", "NA")), text(row.getOrDefault("transcript", "NA")), text(row.get("consequence")), "NA", "NA", "NA", "NA", "NA", consequence, text(annotation.get("release"))});
-            for (var row : scoresByVariant.getOrDefault(id, List.of())) evidence.add(new String[]{item.feature, item.dataset, id, "alphagenome", text(row.get("gene_id")), text(row.get("transcript_id")), "NA", text(row.get("scorer")), text(row.get("ontology_curie")), text(row.get("raw_score")), text(row.get("quantile_score")), text(row.get("model_version")), score, text(row.get("resource_version"))});
+            inventory.add(new String[]{item.dataset, item.feature, id, Boolean.toString(item.eligible), item.disposition, ref, consequence, score, item.source, item.producer});
+            if (item.eligible) for (var row : byVariant.getOrDefault(id, List.of())) evidence.add(new String[]{item.feature, item.dataset, id, "consequence", text(row.getOrDefault("gene", "NA")), text(row.getOrDefault("transcript", "NA")), text(row.get("consequence")), "NA", "NA", "NA", "NA", "NA", consequence, text(annotation.get("release")), item.source, item.producer});
+            if (item.eligible) for (var row : scoresByVariant.getOrDefault(id, List.of())) evidence.add(new String[]{item.feature, item.dataset, id, "alphagenome", text(row.get("gene_id")), text(row.get("transcript_id")), "NA", text(row.get("scorer")), text(row.get("ontology_curie")), text(row.get("raw_score")), text(row.get("quantile_score")), text(row.get("model_version")), score, text(row.get("resource_version")), item.source, item.producer});
         }
-        FollowupSupport.table(context.outputDirectory().resolve("variant-inventory.tsv"), List.of("dataset_id", "feature_id", "variant_id", "eligible", "disposition", "reference_status", "consequence_status", "alphagenome_status"), inventory);
-        FollowupSupport.table(context.outputDirectory().resolve("variant-evidence.tsv"), List.of("feature_id", "dataset_id", "variant_id", "kind", "gene_id", "transcript_id", "consequence", "scorer", "ontology_curie", "raw_score", "quantile_score", "model_version", "status", "resource_version"), evidence);
+        FollowupSupport.table(context.outputDirectory().resolve("variant-inventory.tsv"), List.of("dataset_id", "feature_id", "variant_id", "eligible", "disposition", "reference_status", "consequence_status", "alphagenome_status", "input_source", "source_operation_id"), inventory);
+        FollowupSupport.table(context.outputDirectory().resolve("variant-evidence.tsv"), List.of("feature_id", "dataset_id", "variant_id", "kind", "gene_id", "transcript_id", "consequence", "scorer", "ontology_curie", "raw_score", "quantile_score", "model_version", "status", "resource_version", "input_source", "source_operation_id"), evidence);
         if (before) {
             Files.createDirectories(context.outputDirectory().resolve("rare-annotation"));
             List<String[]> mappingAudit = new ArrayList<>();
@@ -148,14 +158,22 @@ final class StudyVariantFollowup implements StudyOperationExecutor {
         String annotationRelease = releases.isEmpty() ? text(annotation.get("release")) : "Ensembl:" + releases;
         details.put("source_sha256", catalog.sourceHashes); details.put("reference_sha256", referenceHash); details.put("annotation_release", annotationRelease); details.put("annotation_source_releases", releases); details.put("policy", policy); details.put("alphagenome_requests", predicted.requests());
         details.put("consequence_batches", consequenceBatches);
-        details.put("method_report", StudyMethods.record("Allele-resolved functional consequences and AlphaGenome molecular predictions", Map.of("scope", details.get("scope"), "policy", policy, "eligible_variants", catalog.queries.size(), "reference_sha256", referenceHash),
+        details.put("pooled_sources",catalog.pooledSources); details.put("complete_source_coverage",catalog.completeSourceCoverage); details.put("significance_filter_applied",false);
+        var method = new LinkedHashMap<String,Object>(StudyMethods.record("Allele-resolved functional consequences and AlphaGenome molecular predictions", Map.of("scope", details.get("scope"), "policy", policy, "eligible_variants", catalog.queries.size(), "reference_sha256", referenceHash),
             List.of("https://annovar.openbioinformatics.org/en/latest/", "https://www.ensembl.org/info/docs/tools/vep/", "https://www.alphagenomedocs.com/"), null, List.of("variant consequences", "AlphaGenome")));
+        method.put("performed",!annotations.isEmpty()||!predicted.scores().isEmpty()); details.put("method_report",method);
         details.put("interpretation", "Consequence/AlphaGenome records are functional predictions, not association P values, causal posteriors or validated pathogenicity. Transcript/tissue/scorer context and unavailable coverage remain explicit. Rare masks use only unambiguous gene/consequence records, without inferring loss-of-function confidence or splitting aggregated ANNOVAR gene relationships. Reference checks establish agreement with the supplied FASTA, not independent assembly certification.");
-        if (unresolved > 0) details.put("needs", List.of(StudyNeed.review("variant-followup:" + context.operation().get("hypothesis") + ":" + context.operation().get("type"),
-            "Resolve variant annotation or score prerequisites", unresolved + " eligible input records have unresolved identity, reference, tool or prediction coverage. See variant-inventory.tsv, policy and per-batch audits. No annotation/score was invented.", true).document()));
+        var needs = new ArrayList<Object>();
+        if (unresolved > 0) needs.add(StudyNeed.review("variant-followup:" + context.operation().get("hypothesis") + ":" + context.operation().get("type"),
+            "Resolve variant annotation or score prerequisites", unresolved + " eligible input records have unresolved identity, reference, tool or prediction coverage. See variant-inventory.tsv, policy and per-batch audits. No annotation/score was invented.", true).document());
+        if (!catalog.completeSourceCoverage) needs.add(StudyNeed.review("variant-pool-coverage:"+context.operation().get("hypothesis"),"Supply the complete primary variant family","Available pooled variants were processed, but selected-only, unknown or incomplete source coverage cannot establish annotation of the full GWAS family. Source family and all available dispositions are retained.",true).document());
+        if (catalog.unresolvedScope) needs.add(StudyNeed.review("variant-pool-scope:"+context.operation().get("hypothesis"),"Resolve the primary-pool variant scope","Cohort variant records were retained, but the registered primary pool's modality or namespace remains unresolved.",true).document());
+        if (!needs.isEmpty()) details.put("needs",needs);
         write(context.outputDirectory().resolve("variant-followup.yaml"), details);
-        List<String> outputs; try (var files = Files.walk(context.outputDirectory())) { outputs = files.filter(Files::isRegularFile).map(context.outputDirectory()::relativize).map(path -> path.toString().replace('\\', '/')).sorted().toList(); }
-        return new Result(unresolved == 0 ? State.COMPLETE : State.WAITING_FOR_INPUT, "Variant follow-up: " + catalog.queries.size() + " eligible variants, " + unresolved + " unresolved input records", outputs, details);
+        return new Result(needs.isEmpty() ? State.COMPLETE : State.WAITING_FOR_INPUT, "Variant follow-up: " + catalog.queries.size() + " eligible variants, " + unresolved + " unresolved input records"+(!catalog.completeSourceCoverage?"; primary source coverage incomplete":""), outputFiles(context), details);
+    }
+    private static List<String> outputFiles(Context c) throws IOException {
+        try (var files=Files.walk(c.outputDirectory())) { return files.filter(Files::isRegularFile).map(c.outputDirectory()::relativize).map(path->path.toString().replace('\\','/')).sorted().toList(); }
     }
 
     private static List<Map<String, Object>> consequences(Context context, Path folder, List<StudyVariantUniverse.Key> keys, Map<String, Object> config, Map<String, ImportRows> imports) throws IOException {

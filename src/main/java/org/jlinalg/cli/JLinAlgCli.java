@@ -129,6 +129,22 @@ public final class JLinAlgCli {
             return BeagleToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
         if (arguments.length > 0 && arguments[0].equals("prs-cs-tools"))
             return PrsCsToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("molecular-geometry"))
+            return MolecularGeometryCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("electrostatic-grid"))
+            return ElectrostaticGridCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("apbs-tools"))
+            return ApbsToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("igv-tools"))
+            return IgvToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("unrelated-select"))
+            return UnrelatedSelectCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("pdb2pqr-tools"))
+            return Pdb2pqrToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("potential-surface"))
+            return PymolPotentialCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("pymol-tools"))
+            return PymolToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
         if (arguments.length > 0 && arguments[0].equals("plink-tools"))
             return PlinkToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
         if (arguments.length > 0 && arguments[0].equals("trim-galore-tools"))
@@ -156,6 +172,8 @@ public final class JLinAlgCli {
             return SingleCellCli.run(Arrays.copyOfRange(arguments,1,arguments.length),output,errorOutput);
         if(arguments.length>0 && arguments[0].equals("spatial"))
             return SpatialCli.run(Arrays.copyOfRange(arguments,1,arguments.length),output,errorOutput);
+        if(arguments.length>0 && arguments[0].equals("variant-tools"))
+            return VariantToolsCli.run(Arrays.copyOfRange(arguments,1,arguments.length),output,errorOutput);
         if(arguments.length>0 && java.util.Set.of("variant-db","variant-annotate","variant-consequence","variant-score").contains(arguments[0]))
             return VariantFollowupCli.run(arguments[0],Arrays.copyOfRange(arguments,1,arguments.length),output,errorOutput);
         if(arguments.length>0 && arguments[0].equals("network"))
@@ -343,6 +361,14 @@ public final class JLinAlgCli {
               java -jar jlinalg-<version>.jar genotype-score --help
               java -jar jlinalg-<version>.jar beagle-tools --help
               java -jar jlinalg-<version>.jar prs-cs-tools --help
+              java -jar jlinalg-<version>.jar molecular-geometry --help
+              java -jar jlinalg-<version>.jar electrostatic-grid --help
+              java -jar jlinalg-<version>.jar apbs-tools --help
+              java -jar jlinalg-<version>.jar igv-tools --help
+              java -jar jlinalg-<version>.jar unrelated-select --help
+              java -jar jlinalg-<version>.jar pdb2pqr-tools --help
+              java -jar jlinalg-<version>.jar potential-surface --help
+              java -jar jlinalg-<version>.jar pymol-tools --help
               java -jar jlinalg-<version>.jar plink-tools --help
               java -jar jlinalg-<version>.jar trim-galore-tools --help
               java -jar jlinalg-<version>.jar kallisto-tools --help
@@ -352,6 +378,7 @@ public final class JLinAlgCli {
               java -jar jlinalg-<version>.jar variant-db --help
               java -jar jlinalg-<version>.jar variant-annotate --help
               java -jar jlinalg-<version>.jar variant-consequence --help
+              java -jar jlinalg-<version>.jar variant-tools install alphagenome
               java -jar jlinalg-<version>.jar variant-score --help
               java -jar jlinalg-<version>.jar network --help
               java -jar jlinalg-<version>.jar single-cell --help

@@ -25,6 +25,27 @@ class StudyPrimaryResultsTest {
         return new Context(root,Files.createDirectory(root.resolve(id)),Map.of("id",id,"type","candidate_prioritization","hypothesis","H","datasets",List.of("a","b")),
             Map.of("resources",Map.of("directory","fixture-resources","network","offline","downloads","deny"),"datasets",List.of(),"hypotheses",List.of(Map.of("id","H","analysis",analysis))),Map.of(),dependencies);
     }
+    private Map<String,Object> partialPoolAnalysis() {
+        return new LinkedHashMap<>(Map.of("supplied_results",List.of(Map.of("id","unfinished-pool","kind","meta_analysis","reported_status","partial",
+            "files",Map.of("results","external.tsv"),"scope",Map.of(),"method",Map.of("name","Incomplete external pool")))));
+    }
+    @Test void separatelyRetainedPartialPoolBlocksImplicitCohortFallback() throws Exception {
+        var cohort=source("cohort","association","H","standard-results/a.tsv",HEADER+"a1\t1\t1\t.001\n");
+        var c=context("partial-pool-hold",partialPoolAnalysis(),Map.of("cohort",cohort));
+        var failure=assertThrows(StudyPrimaryResults.Unavailable.class,()->StudyPrimaryResults.official(c));
+        assertEquals("incomplete_primary_meta_analysis",failure.receipt().get("status"));
+    }
+    @Test void explicitCohortChoiceStillWorksWithRetainedPartialPool() throws Exception {
+        var cohort=source("cohort","association","H","standard-results/a.tsv",HEADER+"a1\t1\t1\t.001\n");var analysis=partialPoolAnalysis();
+        analysis.put("primary_result",Map.of("kind","association","dataset_id","a","rationale","Prespecified cohort target"));
+        assertEquals("cohort",StudyPrimaryResults.official(context("explicit-despite-partial",analysis,Map.of("cohort",cohort))).source().producer().id());
+    }
+    @Test void completedNativePoolCanFulfilTheRequestedPartialPool() throws Exception {
+        var cohort=source("cohort","association","H","standard-results/a.tsv",HEADER+"a1\t1\t1\t.001\n");
+        var meta=source("native-pool","meta_analysis","H","meta-analysis.tsv",HEADER+"m1\t2\t1\t.02\n");
+        var selected=StudyPrimaryResults.official(context("native-after-partial",partialPoolAnalysis(),Map.of("cohort",cohort,"meta",meta)));
+        assertEquals("native-pool",selected.source().producer().id());assertEquals(Map.of("m1",.02),selected.probabilities());
+    }
     @Test void metaHasOneIdentityAcrossConsumerOrderAndUsesDeclaredBy()throws Exception {
         var cohort=source("cohort","association","H","standard-results/a.tsv",HEADER+"cohort-only\t5\t1\t1e-20\n");
         var meta=source("meta","meta_analysis","H","meta-analysis.tsv",HEADER+"m1\t1\t1\t.01\nm2\t2\t1\t.2\n");

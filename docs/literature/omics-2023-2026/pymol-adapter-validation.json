@@ -1,0 +1,139 @@
+{
+  "schema_version": 1,
+  "status": "passed-development-original-upstream-subset",
+  "candidate": "build/literature-review/pymol-candidate-4/jlinalg-0.3.7.jar",
+  "candidate_sha256": "09e4be51caf00fa252d8c37685e2cd043015a49875eadf131e96b0d0974985b2",
+  "canonical_sha256": "a104651636deb59493cddc92ce433629d4ef7b0c755f6ee065a3e0c75365c5e2",
+  "upstream_version": "Open-Source PyMOL3.1.0;unmodified source commitf51e58f6b08308c41c85b9d12a23231f49ca325a;local compiled wheel,not upstream binary release",
+  "runtime_lock_sha256": "2698141ff52bd268aec97c126d240bee1292dde41d69d86152c0414eff12f7ca",
+  "host": "Ubuntu24.04 Linux x86_64;CPython3.12;LinuxJava in WSL on Windows",
+  "source_review": {
+    "roles": 20,
+    "supporting_pointers": 3
+  },
+  "focused_tests": {
+    "tests": 30,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "standalone_tests_per_Java": 30,
+  "standalone_Java_versions": [
+    21,
+    25
+  ],
+  "strict_Java_release": 17,
+  "javadoc": true,
+  "packaged": {
+    "successful_workflows": 14,
+    "failure_controls": 5,
+    "native_steps_verified": 57,
+    "measurements_verified": 24,
+    "original_inlier_pairs_verified": 221,
+    "fit_pair_counts": {
+      "align-rigid": 46,
+      "align-gap-outlier": 42,
+      "super-rigid": 46,
+      "super-gap-outlier": 41,
+      "public-align": 46
+    },
+    "canonical_mutation_targets": 20,
+    "public_recipes": 3,
+    "unicode_relative_recipe_paths": true,
+    "canonical_multi_letter_element_symbols": [
+      "Cl",
+      "Br",
+      "Mg",
+      "Se"
+    ]
+  },
+  "Windows": {
+    "dependency_skips": 6,
+    "Java_versions": [
+      21,
+      25
+    ],
+    "scientific_runs": 0
+  },
+  "archive": {
+    "old_file_entries": 15346,
+    "unchanged_old_entries": 15345,
+    "changed": [
+      "org/jlinalg/cli/JLinAlgCli.class"
+    ],
+    "added": [
+      "org/jlinalg/cli/PymolAudit$Snapshot.class",
+      "org/jlinalg/cli/PymolAudit.class",
+      "org/jlinalg/cli/PymolRuntime$Unavailable.class",
+      "org/jlinalg/cli/PymolRuntime.class",
+      "org/jlinalg/cli/PymolStructureInput$Atom.class",
+      "org/jlinalg/cli/PymolStructureInput$Parsed.class",
+      "org/jlinalg/cli/PymolStructureInput$Token.class",
+      "org/jlinalg/cli/PymolStructureInput$Tokens.class",
+      "org/jlinalg/cli/PymolStructureInput.class",
+      "org/jlinalg/cli/PymolToolsCli.class",
+      "org/jlinalg/omics/pymol-runtime-lock.json",
+      "org/jlinalg/omics/pymol_probe.py",
+      "org/jlinalg/omics/pymol_worker.py"
+    ],
+    "removed": []
+  },
+  "installer_policies": [
+    "explicit-install-permission",
+    "explicit-public-download-permission",
+    "exact-local-wheel-required",
+    "verified-reuse-without-permission-flags",
+    "corrupt-complete-cache-rejected",
+    "linked-cache/member-rejected",
+    "overlap-before-mutation-rejected",
+    "changed-home-not-resealed",
+    "unknown-file-rejected",
+    "valid-poison-cache-positive-control",
+    "unique-alternate-bytecode-cache-isolation",
+    "actual-owned-timeout-confirmed-terminal"
+  ],
+  "scope": "Typed render,point measurement,original align/super,explicit bond/unbond,torsion and selected canonical library mutation. Native input,atom identity,correspondence,proper motion and graph checks. Full-precision final atom/bond ledgers;original mmCIF precision/bond omissions explicit.",
+  "limitations": [
+    "No historical/commercial-edition or full-paper parity",
+    "APBS/protonation/charge/grid solver integration remains pending",
+    "Manual interobject model construction and paper-specific genomic reconstruction choices remain pending",
+    "Local wheel must be supplied from permitted reference cache;not a public binary URL",
+    "Original mmCIF rounds coordinates to0.001Angstrom and B/occupancy to0.01,omits bond categories",
+    "Mutation wizard can reset constructed-residue IDs/B/occupancy;no energy/stability inference"
+  ],
+  "required_action": "Use an admitted permitted Linux runtime and the development candidate;analysis never installs. Where permitted use install_pymol.py with --allow-install and --allow-download only for missing pinned public dependencies. Missing/changed/forbidden dependencies skip3. Input/process/audit failures return2 with partials quarantined. Review WARNINGS.md,original-results.json,native-audit.json,images and final JSON ledgers;correct the named issue and rerun to a new directory.",
+  "evidence": {
+    "focused": {
+      "path": "build/literature-review/pymol-runtime/typed-focused-4/observed.json",
+      "sha256": "514c46eb5dfd3a28921cab033e3d3dd3bce1448889ba06c0d44ece7d60dcb708"
+    },
+    "standalone": {
+      "path": "build/literature-review/pymol-runtime/typed-junit-6/observed.json",
+      "sha256": "8311a903276e08a6a0bc15061d2f4e141516aed368795774068f3528d42d85ef"
+    },
+    "packaged": {
+      "path": "build/literature-review/pymol-runtime/packaged-workflows-5/verification.json",
+      "sha256": "ac24293a319c28504614ce8885afd8fd7df8f3694ca9e463b1268ab23b36f2b3"
+    },
+    "Windows": {
+      "path": "build/literature-review/pymol-runtime/windows-packaged-3/verification.json",
+      "sha256": "d0bde7200cb51421cb0e1db40f478f5b7416aafaf6e9c19587b8380ac623fe43"
+    },
+    "policies": {
+      "path": "build/literature-review/pymol-runtime/runtime-policy-1/verification.json",
+      "sha256": "7e2ccbcc7bfda0ab22b03cc464e2652459dc2865ce0509af1e0ee9c20948bf6b"
+    },
+    "policy_corrections": {
+      "path": "build/literature-review/pymol-runtime/runtime-policy-corrections-1/verification.json",
+      "sha256": "f01cc59de7a2b469030236a545a8769eb337b083a49d9eecf87fb4c8a6240f54"
+    }
+  },
+  "retained_failures": [
+    "Source mutagenesis expression deleted its own object;named selection and normal chosen-state object corrected",
+    "Candidatece9 passed28focused tests but actual packaged run found Integer/JSONLong identity comparison;fixed and29tests plus actual workflows passed",
+    "First public verifier asserted the word dihedral for a correctly rejected undefined angle/torsion;predicate fixed and complete verifier rerun",
+    "First corrupt-cache case only reached missing-wheel denial;complete-cache correction independently verified actual corruption rejection",
+    "Candidate0037 retained its successful protein subset, but a later original Cl/Br/Mg/Se probe found false native element-selection rejection. PDB retains uppercase while pseudoatom/CIF can use mixed case;canonical-only candidate807a failed the PDB fixture. Worker and native audit now compare element criteria without case;actual uppercase-PDB/mixed-mmCIF synthetic geometry and30test regressions pass in candidate09e4be51."
+  ],
+  "goal_status": "active;remaining tools and semantic completeness review open;CellRanger user-excluded"
+}

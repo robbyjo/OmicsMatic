@@ -46,7 +46,7 @@ CONTEXT = {
     "homer": r"motif|peak|enrich|annotat",
     "apex": r"QTL|association|genetic|meta.analysis",
     "vireo": r"demultip|assign|multiplex|genotyp|donor|SNP",
-    "igv": r"visual|browser|view|track|inspect|manual|Integrative Genomics Viewer",
+    "igv": r"visual|browser|view|track|inspect|manual|read[- ]depth|allele[- ]balance|Integrative Genomics Viewer",
     "nrsa": r"nascent|gene.body|paus|run.on|PRO.seq|RNA.sequenc",
     "pumice": r"predict|cis.regulat|functional.annotat|genotyp|transcript",
     "re2c": r"meta.analysis|overlap|Lin.Sullivan|GWAS",
@@ -212,9 +212,17 @@ def tool_matches(paragraphs_, registry, preferred_evidence=None):
         section = paragraph["section"].lower()
         # Conservative intake: Methods-only evidence has far fewer references-only
         # and comparator false positives than article-wide keyword matching.
-        if not re.search(r"method|analysis|analyses|processing|quantification|pipeline|quality control|genotyp|statistical|bioinformatic|sequenc|alignment|fine.mapping|colocali|heritability|association|\bGWASs?\b", section, re.I):
+        eligible_section = bool(re.search(r"method|analysis|analyses|processing|quantification|pipeline|quality control|genotyp|statistical|bioinformatic|sequenc|alignment|fine.mapping|colocali|heritability|association|\bGWASs?\b", section, re.I))
+        # A human review may explicitly select a Results analysis paragraph.
+        # The exact named-tool/hash pair is required below; this does not turn
+        # unreviewed Results, captions or availability statements into uses.
+        reviewed_result = section.startswith("results") and bool(preferred_evidence)
+        if not eligible_section and not reviewed_result:
             continue
+        paragraph_hash = hashlib.sha256(paragraph["text"].encode("utf-8")).hexdigest()
         for tool in registry:
+            if not eligible_section and preferred_evidence.get(tool["id"]) != paragraph_hash:
+                continue
             searchable = paragraph.get("match_text", paragraph["text"])
             match = named_tool_match(tool, searchable)
             if not match:

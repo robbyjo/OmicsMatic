@@ -1,0 +1,386 @@
+{
+  "schema_version": 1,
+  "scope": "Original open-source PyMOL 3.1.0 execution plus independent Java audit regression fixtures; no historical/commercial parity",
+  "source_data": {
+    "accession": "1CRN",
+    "pdb": "https://files.rcsb.org/download/1CRN.pdb",
+    "cif": "https://files.rcsb.org/download/1CRN.cif",
+    "usage_policy": "https://www.wwpdb.org/about/usage-policies",
+    "license": "CC0"
+  },
+  "derived_cases": "Rigid rotation/translation, deleted target residues 5-7 and displaced residue20 CA; PDB models5/9 select ordinal2; explicit graph/torsion/GLN rotamer edits",
+  "archive_sha256": "867e2d6873a4032c3b4145902518c830f6d0264ee43a29b3631ed5e449052185",
+  "entries": 136,
+  "cases": [
+    {
+      "case": "pdb-measure",
+      "sha256": {
+        "admitted-recipe.json": "6d6e173aefbed5b61490a3be40a8228fb90654738e18634767871f403fb6e364",
+        "final-mobile.cif": "2b38829869ffb916f166d32ac4766770bf1f85ba404abc8e248c64e83146e15f",
+        "final-mobile.json": "94b0ebf93ef0b01de71c790278adfb0002d2a6127c64772ba00f60cdb53aaf29",
+        "inputs/mobile.pdb": "42199a30a0701864a2a5cc76cd7f35cc544cd0e65fbcf63e03c166543249b811",
+        "loaded-mobile.json": "94b0ebf93ef0b01de71c790278adfb0002d2a6127c64772ba00f60cdb53aaf29",
+        "native-audit.json": "4f5cc83abd2fd1f77be1d4d79428e9c4e4eca2226586cf3ded546058da2501c2",
+        "original-results.json": "39bf60269e8abcd9ce48e5fc6ac8bd69f7dcd38c70c5b31657825a17311e055b",
+        "s00-after-mobile.json": "94b0ebf93ef0b01de71c790278adfb0002d2a6127c64772ba00f60cdb53aaf29",
+        "s00-before-mobile.json": "94b0ebf93ef0b01de71c790278adfb0002d2a6127c64772ba00f60cdb53aaf29",
+        "s01-after-mobile.json": "94b0ebf93ef0b01de71c790278adfb0002d2a6127c64772ba00f60cdb53aaf29",
+        "s01-before-mobile.json": "94b0ebf93ef0b01de71c790278adfb0002d2a6127c64772ba00f60cdb53aaf29",
+        "s02-after-mobile.json": "94b0ebf93ef0b01de71c790278adfb0002d2a6127c64772ba00f60cdb53aaf29",
+        "s02-before-mobile.json": "94b0ebf93ef0b01de71c790278adfb0002d2a6127c64772ba00f60cdb53aaf29"
+      },
+      "runtime_versions": {
+        "python": [
+          3,
+          12,
+          3
+        ],
+        "implementation": "CPython",
+        "numpy": "1.26.4",
+        "pymol": [
+          "3.1.0",
+          3.0,
+          3000000,
+          1793030185,
+          "",
+          0
+        ],
+        "atoms": 0
+      },
+      "runtime_lock_sha256": "2698141ff52bd268aec97c126d240bee1292dde41d69d86152c0414eff12f7ca",
+      "runtime_marker_sha256": "ab6dec96730a0ebaa7c4dc8abcaa40f1a5b39b1e652fafe167f823d4bf4daba5",
+      "worker_sha256": "5a876a521d8c6f2a66dadc4aa0f122d0e42d04a2084a2fa6c58c5ebc8a8e6c24"
+    },
+    {
+      "case": "cif-author",
+      "sha256": {
+        "admitted-recipe.json": "2d4bc0c858992c36c48cd5890ebd7549eff713736b32df10d2e5598e0b86b5fb",
+        "final-mobile.cif": "983a897478199c3b1b8ad674a7f2a1110ef5d4d0733463accd99f8baac4b1383",
+        "final-mobile.json": "178f26a01dde105628433959a071b28625f4cf62b3f2c00748d6973aa2bb280c",
+        "inputs/mobile.cif": "23787562c427d7c1abe5420e86d5f1d0a6c7007dec1e8ce85645a6d69c32e8ba",
+        "loaded-mobile.json": "178f26a01dde105628433959a071b28625f4cf62b3f2c00748d6973aa2bb280c",
+        "native-audit.json": "f474ef7b3d1e203bbf1a5372d2030d0736ed5ef7f31379f6524e08b0d8f5e530",
+        "original-results.json": "2cf2192b1cb1fcb9afa185474e72252d7133d1903f937a70a9e002c0cac12e59",
+        "s00-after-mobile.json": "178f26a01dde105628433959a071b28625f4cf62b3f2c00748d6973aa2bb280c",
+        "s00-before-mobile.json": "178f26a01dde105628433959a071b28625f4cf62b3f2c00748d6973aa2bb280c",
+        "s01-after-mobile.json": "178f26a01dde105628433959a071b28625f4cf62b3f2c00748d6973aa2bb280c",
+        "s01-before-mobile.json": "178f26a01dde105628433959a071b28625f4cf62b3f2c00748d6973aa2bb280c",
+        "s02-after-mobile.json": "178f26a01dde105628433959a071b28625f4cf62b3f2c00748d6973aa2bb280c",
+        "s02-before-mobile.json": "178f26a01dde105628433959a071b28625f4cf62b3f2c00748d6973aa2bb280c"
+      },
+      "runtime_versions": {
+        "python": [
+          3,
+          12,
+          3
+        ],
+        "implementation": "CPython",
+        "numpy": "1.26.4",
+        "pymol": [
+          "3.1.0",
+          3.0,
+          3000000,
+          1793030185,
+          "",
+          0
+        ],
+        "atoms": 0
+      },
+      "runtime_lock_sha256": "2698141ff52bd268aec97c126d240bee1292dde41d69d86152c0414eff12f7ca",
+      "runtime_marker_sha256": "ab6dec96730a0ebaa7c4dc8abcaa40f1a5b39b1e652fafe167f823d4bf4daba5",
+      "worker_sha256": "5a876a521d8c6f2a66dadc4aa0f122d0e42d04a2084a2fa6c58c5ebc8a8e6c24"
+    },
+    {
+      "case": "cif-label",
+      "sha256": {
+        "admitted-recipe.json": "81005613ac50e30064bf5a74411cb450086ba8385f01fbf3266e6e0bc6fb44c5",
+        "final-mobile.cif": "983a897478199c3b1b8ad674a7f2a1110ef5d4d0733463accd99f8baac4b1383",
+        "final-mobile.json": "178f26a01dde105628433959a071b28625f4cf62b3f2c00748d6973aa2bb280c",
+        "inputs/mobile.cif": "23787562c427d7c1abe5420e86d5f1d0a6c7007dec1e8ce85645a6d69c32e8ba",
+        "loaded-mobile.json": "178f26a01dde105628433959a071b28625f4cf62b3f2c00748d6973aa2bb280c",
+        "native-audit.json": "f474ef7b3d1e203bbf1a5372d2030d0736ed5ef7f31379f6524e08b0d8f5e530",
+        "original-results.json": "0ca97f0f99a5aa5bc838f29b77964c4acfe19d48a1e0ff394984c8d1a94d9919",
+        "s00-after-mobile.json": "178f26a01dde105628433959a071b28625f4cf62b3f2c00748d6973aa2bb280c",
+        "s00-before-mobile.json": "178f26a01dde105628433959a071b28625f4cf62b3f2c00748d6973aa2bb280c",
+        "s01-after-mobile.json": "178f26a01dde105628433959a071b28625f4cf62b3f2c00748d6973aa2bb280c",
+        "s01-before-mobile.json": "178f26a01dde105628433959a071b28625f4cf62b3f2c00748d6973aa2bb280c",
+        "s02-after-mobile.json": "178f26a01dde105628433959a071b28625f4cf62b3f2c00748d6973aa2bb280c",
+        "s02-before-mobile.json": "178f26a01dde105628433959a071b28625f4cf62b3f2c00748d6973aa2bb280c"
+      },
+      "runtime_versions": {
+        "python": [
+          3,
+          12,
+          3
+        ],
+        "implementation": "CPython",
+        "numpy": "1.26.4",
+        "pymol": [
+          "3.1.0",
+          3.0,
+          3000000,
+          1793030185,
+          "",
+          0
+        ],
+        "atoms": 0
+      },
+      "runtime_lock_sha256": "2698141ff52bd268aec97c126d240bee1292dde41d69d86152c0414eff12f7ca",
+      "runtime_marker_sha256": "ab6dec96730a0ebaa7c4dc8abcaa40f1a5b39b1e652fafe167f823d4bf4daba5",
+      "worker_sha256": "5a876a521d8c6f2a66dadc4aa0f122d0e42d04a2084a2fa6c58c5ebc8a8e6c24"
+    },
+    {
+      "case": "pdb-model2",
+      "sha256": {
+        "admitted-recipe.json": "f8d69c1bc876a631037441591590b4bc59846c6d87f3267d89b1ba80a2bc3f8e",
+        "final-mobile.cif": "1f9dd23d76478d94242edc11c661273c8b6c5151a2fe086bd0ab8bf3d156a109",
+        "final-mobile.json": "daeddcb3cf4bf75ddb38a7863159c5d6f6c8548ecfd631068fcaab6f89ff5626",
+        "inputs/mobile.pdb": "c2e541e253f044cc59332925d32b0620bedc66171b4462231195375bf99521cf",
+        "loaded-mobile.json": "daeddcb3cf4bf75ddb38a7863159c5d6f6c8548ecfd631068fcaab6f89ff5626",
+        "native-audit.json": "9f481af3840045bf340ce28cdd2414a7ac983f1ce8a105c7751659c947fbd074",
+        "original-results.json": "52a5b7106b6bd25933c1418212fd1354484aad5ddaafa3783e31d73eafbeb362",
+        "s00-after-mobile.json": "daeddcb3cf4bf75ddb38a7863159c5d6f6c8548ecfd631068fcaab6f89ff5626",
+        "s00-before-mobile.json": "daeddcb3cf4bf75ddb38a7863159c5d6f6c8548ecfd631068fcaab6f89ff5626",
+        "s01-after-mobile.json": "daeddcb3cf4bf75ddb38a7863159c5d6f6c8548ecfd631068fcaab6f89ff5626",
+        "s01-before-mobile.json": "daeddcb3cf4bf75ddb38a7863159c5d6f6c8548ecfd631068fcaab6f89ff5626",
+        "s02-after-mobile.json": "daeddcb3cf4bf75ddb38a7863159c5d6f6c8548ecfd631068fcaab6f89ff5626",
+        "s02-before-mobile.json": "daeddcb3cf4bf75ddb38a7863159c5d6f6c8548ecfd631068fcaab6f89ff5626"
+      },
+      "runtime_versions": {
+        "python": [
+          3,
+          12,
+          3
+        ],
+        "implementation": "CPython",
+        "numpy": "1.26.4",
+        "pymol": [
+          "3.1.0",
+          3.0,
+          3000000,
+          1793030185,
+          "",
+          0
+        ],
+        "atoms": 0
+      },
+      "runtime_lock_sha256": "2698141ff52bd268aec97c126d240bee1292dde41d69d86152c0414eff12f7ca",
+      "runtime_marker_sha256": "ab6dec96730a0ebaa7c4dc8abcaa40f1a5b39b1e652fafe167f823d4bf4daba5",
+      "worker_sha256": "5a876a521d8c6f2a66dadc4aa0f122d0e42d04a2084a2fa6c58c5ebc8a8e6c24"
+    },
+    {
+      "case": "pdb-edits-render",
+      "sha256": {
+        "admitted-recipe.json": "4cc684c3e4ae446ae24d135a02fad8a7fcfac5ef527e1df2ba7289209c451623",
+        "cartoon.png": "8f0b4e7a2f22ee85e0e55e200b323f8aadcd260543438025e18e42e62965f0e5",
+        "final-mobile.cif": "f1078a806b0ef97633eb2619a941058c56b02870ea46a6edeca9e8913cee3fc3",
+        "final-mobile.json": "ec5b1dafecad7a2ff49d056efc5045515752611d45260ddce6c4a1666250085d",
+        "inputs/mobile.pdb": "42199a30a0701864a2a5cc76cd7f35cc544cd0e65fbcf63e03c166543249b811",
+        "loaded-mobile.json": "94b0ebf93ef0b01de71c790278adfb0002d2a6127c64772ba00f60cdb53aaf29",
+        "native-audit.json": "006509660029b01bc510501f5d8675bd6d0d7d062bb5841067dc544d77148203",
+        "original-results.json": "e12618e293af09e46d844ed49e6229908919f2bc3a396c1e5d22c81ed9721469",
+        "s00-after-mobile.json": "94b0ebf93ef0b01de71c790278adfb0002d2a6127c64772ba00f60cdb53aaf29",
+        "s00-before-mobile.json": "94b0ebf93ef0b01de71c790278adfb0002d2a6127c64772ba00f60cdb53aaf29",
+        "s01-after-mobile.json": "94b0ebf93ef0b01de71c790278adfb0002d2a6127c64772ba00f60cdb53aaf29",
+        "s01-before-mobile.json": "94b0ebf93ef0b01de71c790278adfb0002d2a6127c64772ba00f60cdb53aaf29",
+        "s02-after-mobile.json": "94b0ebf93ef0b01de71c790278adfb0002d2a6127c64772ba00f60cdb53aaf29",
+        "s02-before-mobile.json": "94b0ebf93ef0b01de71c790278adfb0002d2a6127c64772ba00f60cdb53aaf29",
+        "s03-after-mobile.json": "21b3b80dd7ad26b743997f55b323d00522fd358f5ebb80d9b0fc16decf9bf255",
+        "s03-before-mobile.json": "94b0ebf93ef0b01de71c790278adfb0002d2a6127c64772ba00f60cdb53aaf29",
+        "s04-after-mobile.json": "94b0ebf93ef0b01de71c790278adfb0002d2a6127c64772ba00f60cdb53aaf29",
+        "s04-before-mobile.json": "21b3b80dd7ad26b743997f55b323d00522fd358f5ebb80d9b0fc16decf9bf255",
+        "s05-after-mobile.json": "c96d29c10f541b2a6236ac8b957994c51f0edafa0060b0ffbdc9ca04dfed4e71",
+        "s05-before-mobile.json": "94b0ebf93ef0b01de71c790278adfb0002d2a6127c64772ba00f60cdb53aaf29",
+        "s06-after-mobile.json": "ec5b1dafecad7a2ff49d056efc5045515752611d45260ddce6c4a1666250085d",
+        "s06-before-mobile.json": "c96d29c10f541b2a6236ac8b957994c51f0edafa0060b0ffbdc9ca04dfed4e71",
+        "s07-after-mobile.json": "ec5b1dafecad7a2ff49d056efc5045515752611d45260ddce6c4a1666250085d",
+        "s07-before-mobile.json": "ec5b1dafecad7a2ff49d056efc5045515752611d45260ddce6c4a1666250085d"
+      },
+      "runtime_versions": {
+        "python": [
+          3,
+          12,
+          3
+        ],
+        "implementation": "CPython",
+        "numpy": "1.26.4",
+        "pymol": [
+          "3.1.0",
+          3.0,
+          3000000,
+          1793030185,
+          "",
+          0
+        ],
+        "atoms": 0
+      },
+      "runtime_lock_sha256": "2698141ff52bd268aec97c126d240bee1292dde41d69d86152c0414eff12f7ca",
+      "runtime_marker_sha256": "ab6dec96730a0ebaa7c4dc8abcaa40f1a5b39b1e652fafe167f823d4bf4daba5",
+      "worker_sha256": "5a876a521d8c6f2a66dadc4aa0f122d0e42d04a2084a2fa6c58c5ebc8a8e6c24"
+    },
+    {
+      "case": "align-rigid",
+      "sha256": {
+        "admitted-recipe.json": "8624f3b8919b29ff3b14bc5c277b959f068635c557a0d66f5c2b7c33ba303109",
+        "final-mobile.cif": "56bc795dd7081bf956c497b03352e959ae520bb32b4f45b7fbe2affeda279c49",
+        "final-mobile.json": "b39b709f32477a61808edc56c2a6e6ca623bb458b9b50da06eec7e0adc68780f",
+        "final-target.cif": "791074b4e2dae548d196f1c59695ec4794473702775f0d2fb6fc090cdb87ece9",
+        "final-target.json": "743bad8b7b6ac8dc3aafe27c48f5d8bcca76d9438b6830a19525a3e1fccb855c",
+        "inputs/mobile.pdb": "42199a30a0701864a2a5cc76cd7f35cc544cd0e65fbcf63e03c166543249b811",
+        "inputs/target.pdb": "d4ed7418a76bf3e503c4e63f9629e43f37d6d50b5de9721151cc8743d2443eb0",
+        "loaded-mobile.json": "94b0ebf93ef0b01de71c790278adfb0002d2a6127c64772ba00f60cdb53aaf29",
+        "loaded-target.json": "743bad8b7b6ac8dc3aafe27c48f5d8bcca76d9438b6830a19525a3e1fccb855c",
+        "native-audit.json": "4c5b7528ae590385010ea550d08d98907acef7caaf32cd3ae9b05875e81bb4f2",
+        "original-results.json": "da9b44df2dd343478541065d40b3826b9ed39329d84cc01fec118e2d832779b1",
+        "s00-after-mobile.json": "b39b709f32477a61808edc56c2a6e6ca623bb458b9b50da06eec7e0adc68780f",
+        "s00-after-target.json": "743bad8b7b6ac8dc3aafe27c48f5d8bcca76d9438b6830a19525a3e1fccb855c",
+        "s00-before-mobile.json": "94b0ebf93ef0b01de71c790278adfb0002d2a6127c64772ba00f60cdb53aaf29",
+        "s00-before-target.json": "743bad8b7b6ac8dc3aafe27c48f5d8bcca76d9438b6830a19525a3e1fccb855c"
+      },
+      "runtime_versions": {
+        "python": [
+          3,
+          12,
+          3
+        ],
+        "implementation": "CPython",
+        "numpy": "1.26.4",
+        "pymol": [
+          "3.1.0",
+          3.0,
+          3000000,
+          1793030185,
+          "",
+          0
+        ],
+        "atoms": 0
+      },
+      "runtime_lock_sha256": "2698141ff52bd268aec97c126d240bee1292dde41d69d86152c0414eff12f7ca",
+      "runtime_marker_sha256": "ab6dec96730a0ebaa7c4dc8abcaa40f1a5b39b1e652fafe167f823d4bf4daba5",
+      "worker_sha256": "5a876a521d8c6f2a66dadc4aa0f122d0e42d04a2084a2fa6c58c5ebc8a8e6c24"
+    },
+    {
+      "case": "align-gap-outlier",
+      "sha256": {
+        "admitted-recipe.json": "9e4f7e813665dde16473df318b5c8c225bb203bb3a738d94d181e17cb2268190",
+        "final-mobile.cif": "56bc795dd7081bf956c497b03352e959ae520bb32b4f45b7fbe2affeda279c49",
+        "final-mobile.json": "2e9fb0b3cda178f6f9138d579672d417866386ea56b01d4bebe99b2b54571762",
+        "final-target.cif": "f3ee41cf71359b188a61b0c78d3c87f889f922dc3f40d89978e647b5f8b70e18",
+        "final-target.json": "417e8310920074850cc6bff14f7bc38ea66a1a3705dd6eb48df977364119b4ff",
+        "inputs/mobile.pdb": "42199a30a0701864a2a5cc76cd7f35cc544cd0e65fbcf63e03c166543249b811",
+        "inputs/target.pdb": "52bddcafa9c739da46aadb65a900f4ffa0e87bd889e116b8fdef2cd2f9716582",
+        "loaded-mobile.json": "94b0ebf93ef0b01de71c790278adfb0002d2a6127c64772ba00f60cdb53aaf29",
+        "loaded-target.json": "417e8310920074850cc6bff14f7bc38ea66a1a3705dd6eb48df977364119b4ff",
+        "native-audit.json": "8665e724fd403ab8643da6a8408d94133402da2350a2cf024c17fac296faab2c",
+        "original-results.json": "8a78c3cac3e72376b26078523f58f86f8eae285fadcded8c58b3e937f509b1ac",
+        "s00-after-mobile.json": "2e9fb0b3cda178f6f9138d579672d417866386ea56b01d4bebe99b2b54571762",
+        "s00-after-target.json": "417e8310920074850cc6bff14f7bc38ea66a1a3705dd6eb48df977364119b4ff",
+        "s00-before-mobile.json": "94b0ebf93ef0b01de71c790278adfb0002d2a6127c64772ba00f60cdb53aaf29",
+        "s00-before-target.json": "417e8310920074850cc6bff14f7bc38ea66a1a3705dd6eb48df977364119b4ff"
+      },
+      "runtime_versions": {
+        "python": [
+          3,
+          12,
+          3
+        ],
+        "implementation": "CPython",
+        "numpy": "1.26.4",
+        "pymol": [
+          "3.1.0",
+          3.0,
+          3000000,
+          1793030185,
+          "",
+          0
+        ],
+        "atoms": 0
+      },
+      "runtime_lock_sha256": "2698141ff52bd268aec97c126d240bee1292dde41d69d86152c0414eff12f7ca",
+      "runtime_marker_sha256": "ab6dec96730a0ebaa7c4dc8abcaa40f1a5b39b1e652fafe167f823d4bf4daba5",
+      "worker_sha256": "5a876a521d8c6f2a66dadc4aa0f122d0e42d04a2084a2fa6c58c5ebc8a8e6c24"
+    },
+    {
+      "case": "super-rigid",
+      "sha256": {
+        "admitted-recipe.json": "23f93e72866cdf00d934d063a62a8f964d0138085d61cf0c4a8e1ec2e288ea0f",
+        "final-mobile.cif": "56bc795dd7081bf956c497b03352e959ae520bb32b4f45b7fbe2affeda279c49",
+        "final-mobile.json": "b39b709f32477a61808edc56c2a6e6ca623bb458b9b50da06eec7e0adc68780f",
+        "final-target.cif": "791074b4e2dae548d196f1c59695ec4794473702775f0d2fb6fc090cdb87ece9",
+        "final-target.json": "743bad8b7b6ac8dc3aafe27c48f5d8bcca76d9438b6830a19525a3e1fccb855c",
+        "inputs/mobile.pdb": "42199a30a0701864a2a5cc76cd7f35cc544cd0e65fbcf63e03c166543249b811",
+        "inputs/target.pdb": "d4ed7418a76bf3e503c4e63f9629e43f37d6d50b5de9721151cc8743d2443eb0",
+        "loaded-mobile.json": "94b0ebf93ef0b01de71c790278adfb0002d2a6127c64772ba00f60cdb53aaf29",
+        "loaded-target.json": "743bad8b7b6ac8dc3aafe27c48f5d8bcca76d9438b6830a19525a3e1fccb855c",
+        "native-audit.json": "a7842d4901161af8bf043dd6937a1473fc8a8e7d2b8441c72acb614790efbfc3",
+        "original-results.json": "bfb1a36d5a7008d2dc75bf783f4e3ed1e7a676f2fa31c9740d75df9a7c99645b",
+        "s00-after-mobile.json": "b39b709f32477a61808edc56c2a6e6ca623bb458b9b50da06eec7e0adc68780f",
+        "s00-after-target.json": "743bad8b7b6ac8dc3aafe27c48f5d8bcca76d9438b6830a19525a3e1fccb855c",
+        "s00-before-mobile.json": "94b0ebf93ef0b01de71c790278adfb0002d2a6127c64772ba00f60cdb53aaf29",
+        "s00-before-target.json": "743bad8b7b6ac8dc3aafe27c48f5d8bcca76d9438b6830a19525a3e1fccb855c"
+      },
+      "runtime_versions": {
+        "python": [
+          3,
+          12,
+          3
+        ],
+        "implementation": "CPython",
+        "numpy": "1.26.4",
+        "pymol": [
+          "3.1.0",
+          3.0,
+          3000000,
+          1793030185,
+          "",
+          0
+        ],
+        "atoms": 0
+      },
+      "runtime_lock_sha256": "2698141ff52bd268aec97c126d240bee1292dde41d69d86152c0414eff12f7ca",
+      "runtime_marker_sha256": "ab6dec96730a0ebaa7c4dc8abcaa40f1a5b39b1e652fafe167f823d4bf4daba5",
+      "worker_sha256": "5a876a521d8c6f2a66dadc4aa0f122d0e42d04a2084a2fa6c58c5ebc8a8e6c24"
+    },
+    {
+      "case": "super-gap-outlier",
+      "sha256": {
+        "admitted-recipe.json": "8547b94f9263fd56018d9b33064c9c464d4242537a07f219897f08e01c1b95da",
+        "final-mobile.cif": "56bc795dd7081bf956c497b03352e959ae520bb32b4f45b7fbe2affeda279c49",
+        "final-mobile.json": "73aa021fa101071b61c82dc92781a2b11b6d25be30c012bec1b03244baba5051",
+        "final-target.cif": "f3ee41cf71359b188a61b0c78d3c87f889f922dc3f40d89978e647b5f8b70e18",
+        "final-target.json": "417e8310920074850cc6bff14f7bc38ea66a1a3705dd6eb48df977364119b4ff",
+        "inputs/mobile.pdb": "42199a30a0701864a2a5cc76cd7f35cc544cd0e65fbcf63e03c166543249b811",
+        "inputs/target.pdb": "52bddcafa9c739da46aadb65a900f4ffa0e87bd889e116b8fdef2cd2f9716582",
+        "loaded-mobile.json": "94b0ebf93ef0b01de71c790278adfb0002d2a6127c64772ba00f60cdb53aaf29",
+        "loaded-target.json": "417e8310920074850cc6bff14f7bc38ea66a1a3705dd6eb48df977364119b4ff",
+        "native-audit.json": "d6f63a832feed6f2b8867cdb304df3f65eac20fe0ffefd8ba2553c2c22831baa",
+        "original-results.json": "003b7d1f4388b7a7aec99a6204238860b525022c0748ebc216ce2c0db9e49903",
+        "s00-after-mobile.json": "73aa021fa101071b61c82dc92781a2b11b6d25be30c012bec1b03244baba5051",
+        "s00-after-target.json": "417e8310920074850cc6bff14f7bc38ea66a1a3705dd6eb48df977364119b4ff",
+        "s00-before-mobile.json": "94b0ebf93ef0b01de71c790278adfb0002d2a6127c64772ba00f60cdb53aaf29",
+        "s00-before-target.json": "417e8310920074850cc6bff14f7bc38ea66a1a3705dd6eb48df977364119b4ff"
+      },
+      "runtime_versions": {
+        "python": [
+          3,
+          12,
+          3
+        ],
+        "implementation": "CPython",
+        "numpy": "1.26.4",
+        "pymol": [
+          "3.1.0",
+          3.0,
+          3000000,
+          1793030185,
+          "",
+          0
+        ],
+        "atoms": 0
+      },
+      "runtime_lock_sha256": "2698141ff52bd268aec97c126d240bee1292dde41d69d86152c0414eff12f7ca",
+      "runtime_marker_sha256": "ab6dec96730a0ebaa7c4dc8abcaa40f1a5b39b1e652fafe167f823d4bf4daba5",
+      "worker_sha256": "5a876a521d8c6f2a66dadc4aa0f122d0e42d04a2084a2fa6c58c5ebc8a8e6c24"
+    }
+  ]
+}

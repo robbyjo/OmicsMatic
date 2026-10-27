@@ -115,7 +115,7 @@ final class StudySuppliedScope {
             a.report.put("network_dataset_coverage",coverage.sources().getOrDefault(text(definition.get("id")),List.of()));
             a.report.put("network_coverage_resolved",coverage.resolved());
             if(hasMatrices&&Boolean.TRUE.equals(StudyNetworkPolicy.resolve(map(analysis.get("network"))).get("complete_missing"))&&!coverage.resolved())a.issue("network_population_mapping_required_before_missing_work","datasets_or_cohorts");
-            if("partial".equals(definition.get("reported_status")))a.issue("partial_network_requires_completion_or_review","reported_status");
+            if(StudySuppliedResultPolicy.partialPrimary(definition))a.report.put("partial_network_role","retained_evidence_without_population_coverage_or_completed_stage_ownership");
         }
         // Missing upstream files retain the historical lineage caveat. Known
         // scientific contradictions in a declared dependency cannot be waived.

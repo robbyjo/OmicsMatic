@@ -301,10 +301,19 @@ public final class StudyValidator {
     private static void assistance(Object value, List<StudyValidation.Issue> issues) {
         if (value == null) return;
         Map<String, Object> config = mapping(value, "assistance", true, issues);
-        unknown(config, Set.of("enabled", "provider", "model", "api_key_env", "endpoint", "auth", "oauth_token_env", "response_files",
+        unknown(config, Set.of("enabled", "provider", "model", "api_key_env", "endpoint", "auth", "oauth_token_env", "response_files", "public_literature_context",
             "next_steps", "related_phenotypes", "literature", "manuscript", "manuscript_max_output_tokens", "impact", "impact_batch_size", "impact_max_payload_chars", "impact_max_calls", "impact_max_output_tokens", "allow_analyses", "timeout_seconds"),
             "assistance", issues);
         enumValue(config.get("provider"), "assistance.provider", Set.of("browser", "openai", "gemini", "openai_compatible", "local", "llama_cpp"), issues);
+        var publicContextPaths = new java.util.LinkedHashSet<String>();
+        for (Object raw : sequence(config.get("public_literature_context"), "assistance.public_literature_context", false, issues)) {
+            var pin = mapping(raw, "assistance.public_literature_context", true, issues);
+            unknown(pin, Set.of("file", "sha256"), "assistance.public_literature_context", issues);
+            requiredText(pin.get("file"), "assistance.public_literature_context.file", issues);
+            if (!(pin.get("sha256") instanceof String digest) || !digest.matches("[a-fA-F0-9]{64}")) issues.add(issue(ERROR, "assistance.public_literature_context.sha256", "requires the exact context specification SHA-256"));
+            if (!publicContextPaths.add(String.valueOf(pin.get("file")))) issues.add(issue(ERROR, "assistance.public_literature_context.file", "duplicate context file"));
+        }
+        if (publicContextPaths.size() > 50) issues.add(issue(ERROR, "assistance.public_literature_context", "at most 50 context files"));
         for (String key : List.of("enabled", "next_steps", "related_phenotypes", "literature", "manuscript", "impact"))
             if (config.containsKey(key) && !(config.get(key) instanceof Boolean))
                 issues.add(issue(ERROR, "assistance." + key, "must be true or false"));

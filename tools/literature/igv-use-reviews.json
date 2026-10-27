@@ -1,0 +1,317 @@
+[
+  {
+    "paper_id": "P003",
+    "primary_paragraph": 147,
+    "observed_role": "chromatin-signal-view",
+    "new_source_role": false,
+    "review": {
+      "pmcid": "PMC12804090",
+      "doi": "10.1038/s41586-025-09890-3",
+      "tool_id": "igv",
+      "evidence_paragraph_sha256": "59e0974ce84fa4756e55758e0cb98349cec4def2996acfed153cafca2db4a347",
+      "use_summary": "Plotted the CUT&Run chromatin profile with IGV and the WashU browser across the reported chromosome2 interval20404583–58108703.",
+      "implementation_scope_note": "Read trimming,local Bowtie2 mapping,filtering and deepTools coverage preceded display. HOMER generated the separate average profile. The paragraph does not specify the IGV version,assembly,track scale or session;the long interval is retained as reported.",
+      "version_reported_near_name": ""
+    }
+  },
+  {
+    "paper_id": "P013",
+    "primary_paragraph": 121,
+    "observed_role": "RPGC-track-snapshots",
+    "new_source_role": false,
+    "review": {
+      "pmcid": "PMC11798873",
+      "doi": "10.1038/s41586-024-08333-9",
+      "tool_id": "igv",
+      "evidence_paragraph_sha256": "4a4b43e08da0250623d5e3d9be13e7f382fe07f5dc8f909346724aaff443717b",
+      "use_summary": "Generated genome-track screenshots in Integrative Genomics Viewer from genome-coverage-normalized(RPGC) data.",
+      "implementation_scope_note": "RPGC normalization was supplied upstream;this is a visualization role. The appended99 is a citation,not an IGV version. Track files,assembly,view range and scale are not given in this paragraph.",
+      "version_reported_near_name": ""
+    }
+  },
+  {
+    "paper_id": "P044",
+    "primary_paragraph": 50,
+    "observed_role": "ATAC-signal-view",
+    "new_source_role": false,
+    "review": {
+      "pmcid": "PMC11711094",
+      "doi": "10.1038/s41586-024-08307-x",
+      "tool_id": "igv",
+      "evidence_paragraph_sha256": "24f8c8760dd04591de9d4a4207f99e65800fd02cd5d244854d3073c88a99b3c9",
+      "use_summary": "Visualized deepTools bamCoverage-normalized ATAC-seq signal in IGV v2.7.0 after mm10 alignment,filtering and strand-specific Tn5 shifts.",
+      "implementation_scope_note": "Trim Galore,BWA-MEM,read filtering,+4/−5 shifting and MACS2 peak calling were separate upstream operations. The IGV snapshot scale,locus and complete normalization settings are not specified;display is not a peak caller.",
+      "version_reported_near_name": "2.7.0"
+    }
+  },
+  {
+    "paper_id": "P086",
+    "primary_paragraph": 46,
+    "observed_role": "copy-number-segmentation-view",
+    "new_source_role": false,
+    "review": {
+      "pmcid": "PMC12807868",
+      "doi": "10.1038/s41588-025-02419-4",
+      "tool_id": "igv",
+      "evidence_paragraph_sha256": "53e7b883cdfba842ac46153ad690d5855ecd15154254ffb01f91ff6236a5b2d0",
+      "use_summary": "Visualized human regions syntenic to mouse chromosomes with custom SEG files in IGV and generated human summary plots from combined segmentation files;Affinity Designer prepared the final artwork.",
+      "implementation_scope_note": "Cinteny supplied synteny,while methylation-derived copy-number data and the threshold/enrichment/t-test procedure were separate inputs and analyses. IGV is not identified as performing that statistical procedure. Version and session parameters are unstated.",
+      "version_reported_near_name": ""
+    }
+  },
+  {
+    "paper_id": "P089",
+    "primary_paragraph": 33,
+    "observed_role": "manual-SV-review",
+    "new_source_role": false,
+    "review": {
+      "pmcid": "PMC10703697",
+      "doi": "10.1038/s41588-023-01561-1",
+      "tool_id": "igv",
+      "evidence_paragraph_sha256": "cce11b0f4b57963f6011b752c2ec9c70ccafa6350315a17f343381845a35379a",
+      "use_summary": "Manually screened default-filtered Manta structural-variant calls involving BCL2 and MYC using Integrative Genomics Viewer v2.7.2.",
+      "implementation_scope_note": "Manta called the rearrangements. Supporting breakpoint reads and locus coverage were used for allele-frequency estimation,but the source does not specify an IGV counting command,display filters or an automated adjudication rule.",
+      "version_reported_near_name": "2.7.2"
+    }
+  },
+  {
+    "paper_id": "P101",
+    "primary_paragraph": 34,
+    "observed_role": "assembly-breakpoint-read-inspection",
+    "new_source_role": false,
+    "review": {
+      "pmcid": "PMC10703678",
+      "doi": "10.1038/s41588-023-01571-z",
+      "tool_id": "igv",
+      "evidence_paragraph_sha256": "dddb8a555cacbca5baff799e4e9eb91ca4771f68d676c7cc49488a08d1ca1241",
+      "use_summary": "Manually inspected Minimap2-aligned HiFi reads at structural-variant breakpoints with IGV v2.9.2 while evaluating32 accession assemblies at304 loci.",
+      "implementation_scope_note": "Minimap2 generated alignments and the assembly/quality tools performed separate tasks. Juicebox handled the stated Hi-C inspection. The paragraph does not provide exact IGV loci,read filters or a reproducible manual acceptance rule.",
+      "version_reported_near_name": "2.9.2"
+    }
+  },
+  {
+    "paper_id": "P109",
+    "primary_paragraph": 26,
+    "observed_role": "ONT-split-read-gap-inspection",
+    "new_source_role": false,
+    "review": {
+      "pmcid": "PMC11631756",
+      "doi": "10.1038/s41588-024-01967-5",
+      "tool_id": "igv",
+      "evidence_paragraph_sha256": "a1a523d8d64a01859b844d98da933ff450d1a989c5780b0c6193e4ced6bddf50",
+      "use_summary": "Used Integrative Genomics Viewer visualization with Minimap2-aligned ONT reads to identify split reads and estimate assembly gaps before gap closure.",
+      "implementation_scope_note": "NextDenovo assemblies,manual gap decisions and HiFi polishing were separate operations;IGV visualization alone does not reconstruct the genome or validate gap closure. The appended73 is a citation,not a version.",
+      "version_reported_near_name": ""
+    }
+  },
+  {
+    "paper_id": "P133",
+    "primary_paragraph": 38,
+    "observed_role": "RPGC-BigWig-snapshots",
+    "new_source_role": false,
+    "review": {
+      "pmcid": "PMC12695660",
+      "doi": "10.1038/s41588-025-02388-8",
+      "tool_id": "igv",
+      "evidence_paragraph_sha256": "e60a4991640aa1e1f8a6baf8e44e6e22b35fc660bab56d02928d4696e8b2fb05",
+      "use_summary": "Obtained ChIP-seq visualization snapshots with IGV v2.19.1 from RPGC-normalized BigWig tracks generated by deepTools bamCoverage.",
+      "implementation_scope_note": "Alignment,MAPQ/blacklist filtering,duplicate removal,MACS3 peak calling and HOMER motif analysis were separate tools. No IGV scale,colors,locus or session is given. deepTools3.5.4 is not the IGV version.",
+      "version_reported_near_name": "2.19.1"
+    }
+  },
+  {
+    "paper_id": "P158",
+    "primary_paragraph": 23,
+    "observed_role": "ChIP-track-view",
+    "new_source_role": false,
+    "review": {
+      "pmcid": "PMC12597831",
+      "doi": "10.1038/s41588-025-02368-y",
+      "tool_id": "igv",
+      "evidence_paragraph_sha256": "e1b791cf00909101476ae2171f3ce9188f7cfb639792d500f95aae8262bc200b",
+      "use_summary": "Visualized ChIP-seq data with Integrative Genomics Viewer v2.16.0 after mm10 alignment and the stated peak/normalization analysis.",
+      "implementation_scope_note": "Csaw peak calling,loess normalization,GenomicRanges promoter assignment and EdgeR differential enrichment are separate operations. The paragraph does not specify an IGV normalization,statistical test or snapshot recipe.",
+      "version_reported_near_name": "2.16.0"
+    }
+  },
+  {
+    "paper_id": "P163",
+    "primary_paragraph": 65,
+    "observed_role": "CUT-Tag-and-spike-in-ChIP-tracks",
+    "new_source_role": false,
+    "review": {
+      "pmcid": "PMC11525197",
+      "doi": "10.1038/s41588-024-01911-7",
+      "tool_id": "igv",
+      "evidence_paragraph_sha256": "b7c4273d16d9c388e975990c42dd98f2966f691674eca94a1b99786ea0834757",
+      "use_summary": "Visualized CUT&Tag bigWig tracks in IGV 2.4.15 and separately used IGV for classical ChIP bigWig visualization.",
+      "implementation_scope_note": "A native BED export does not establish an interactive IGV session, the displayed reference/track scales or inspection results. No such session was reproduced.",
+      "version_reported_near_name": "2.4.15 (CUT&Tag); unspecified (ChIP)",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 68,
+          "section": "Methods / Data processing",
+          "paragraph_sha256": "972e0ef3e8f1843802cbdd5df9dfc7313d141c00b609b3d6260b72e9e5b63c40"
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "P164",
+    "primary_paragraph": 47,
+    "observed_role": "PacBio-walking-read-selection",
+    "new_source_role": false,
+    "review": {
+      "pmcid": "PMC12597820",
+      "doi": "10.1038/s41588-025-02367-z",
+      "tool_id": "igv",
+      "evidence_paragraph_sha256": "d2de244d20bb0239a1ebb29a918e595a1a55e71ec4a54995f36f28998978369e",
+      "use_summary": "Visualized Minimap2/SAMtools-processed PacBio HiFi seed alignments in IGV v2.8.13 during iterative pseudoautosomal-region assembly walking and manually selected reads matching the seed over4kb.",
+      "implementation_scope_note": "Read selection was a manual step with stated mutation/polymorphism exceptions. CAP3 assembly,YASS self-similarity and BLASTN comparisons were separate tools. An IGV view does not implement the walking/contig-choice/merge algorithm or its manual decisions.",
+      "version_reported_near_name": "2.8.13"
+    }
+  },
+  {
+    "paper_id": "P179",
+    "primary_paragraph": 5,
+    "observed_role": "manual-CNV-curation",
+    "new_source_role": false,
+    "review": {
+      "pmcid": "PMC10806739",
+      "doi": "10.1016/j.ajhg.2023.11.008",
+      "tool_id": "igv",
+      "evidence_paragraph_sha256": "d695147bc6f96c7bb213509561d1eec7442dd7b77eea2d9bf7ebf9843cd5cd2f",
+      "use_summary": "Manually curated CNVs in Integrative Genomics Viewer v2.12.2 after GATK calling and comparison with genomic segments shared by affected relatives.",
+      "implementation_scope_note": "GATK used1000bp GRCh37/hg19 intervals for CNV calling. DECIPHER screened common CNVs separately. No IGV CNV caller,co-segregation algorithm,view scale or automated manual-review replacement is specified.",
+      "version_reported_near_name": "2.12.2"
+    }
+  },
+  {
+    "paper_id": "P195",
+    "primary_paragraph": 21,
+    "observed_role": "Hi-C-and-annotation-visualization",
+    "new_source_role": false,
+    "review": {
+      "pmcid": "PMC11639096",
+      "doi": "10.1016/j.ajhg.2024.10.003",
+      "tool_id": "igv",
+      "evidence_paragraph_sha256": "47ab88da0a85f46cc67f03c2ba75fe4be20e70c460d3dc6d7550827a9b394fd8",
+      "use_summary": "Reported IGV v2.12.3 among the tools used to visualize Hi-C contacts and annotated features,together with Juicebox,HiCExplorer and pyGenomeTracks.",
+      "implementation_scope_note": "The paragraph lists visualization alternatives without assigning a specific file format,panel or transformation to each tool. It does not establish that IGV loaded a .hic matrix or performed NMF,RobusTAD or copy-number statistics.",
+      "version_reported_near_name": "2.12.3"
+    }
+  },
+  {
+    "paper_id": "P214",
+    "primary_paragraph": 11,
+    "observed_role": "methylation-QC-and-mosaic-deletion-view",
+    "new_source_role": false,
+    "review": {
+      "pmcid": "PMC13277683",
+      "doi": "10.1016/j.ajhg.2026.04.001",
+      "tool_id": "igv",
+      "evidence_paragraph_sha256": "934371d121577ed890485764285c86b14e17649a6de7b3fda14bfa0f21275482",
+      "use_summary": "Independently reviewed methylation-containing HiFi BAMs in IGV with two scientists,inspecting relevant CpG islands in positive and control samples;the Results also note a mosaic SCN1A deletion visible in IGV despite a missed automatic call.",
+      "implementation_scope_note": "pb-CpG-tools calculated methylation values after ccs/pbmm2 preprocessing. Displaying methylation requires the actual BAM modification tags,reference and viewer settings. Neither the viewer version nor an automatic diagnostic rule is specified;the visual mosaic finding is distinct from a successful pipeline call.",
+      "version_reported_near_name": "",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 22,
+          "section": "Results / HiFi limitations: Missed mosaic events",
+          "paragraph_sha256": "6bf854624db31e2e4f325142d841cf04b37790ac9e98cf2eb04b987c55f1f954"
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "P215",
+    "primary_paragraph": 20,
+    "observed_role": "hg19-ChIP-ATAC-peak-views",
+    "new_source_role": false,
+    "review": {
+      "pmcid": "PMC11480806",
+      "doi": "10.1016/j.ajhg.2024.07.022",
+      "tool_id": "igv",
+      "evidence_paragraph_sha256": "4cea8991c2e42352c184ec312a5a9672e8f5e10eeb15b1e9a58105d2a21348d7",
+      "use_summary": "Visualized ChIP/ATAC peaks in IGV on hg19;the supporting figure descriptions show retained/lost ARID1A peaks and lost/gained ZIC2 binding in the compared cell lines.",
+      "implementation_scope_note": "Trimming,BWA-MEM mapping,MAPQ filtering,duplicate removal,Tn5 shifts and MACS2 peak calling preceded display. The figure descriptions identify examples and genomic build but leave IGV version,track scales and complete view settings unspecified.",
+      "version_reported_near_name": "",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 38,
+          "section": "Results / ARID1A-BAF regulates accessibility at EMT enhancers",
+          "paragraph_sha256": "bc3775657474d0f4e341cc421dd208ae6eb111bbd7f7d57c6bb2b0c6b2b8f86a"
+        },
+        {
+          "paragraph_index": 40,
+          "section": "Results / ARID1A-BAF regulates the accessibility at enhancers of EMT genes to coordinate ZIC2 binding",
+          "paragraph_sha256": "5a4af8fdf46156fac83c9ad7909738419de75d9d044fc2d8bb28f1155ac634f6"
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "P217",
+    "primary_paragraph": 33,
+    "observed_role": "genotype-inspection-and-ONT-allele-depth",
+    "new_source_role": true,
+    "review": {
+      "pmcid": "PMC11393691",
+      "doi": "10.1016/j.ajhg.2024.07.020",
+      "tool_id": "igv",
+      "evidence_paragraph_sha256": "90d2ed9f192f6c47e8d85133fbbce4ec276a488dd34b35a310fe80e6c8611fe4",
+      "use_summary": "Used IGV read-depth analysis of blood-derived ONT TMEM216 transcripts to assess allele imbalance in a carrier,reporting23,255 versus8,184 reads(74%/26%) at the linked coding SNV. Supporting Results describe inspection of apparent homozygotes and the cDNA-read display.",
+      "implementation_scope_note": "This is direct primary Results evidence,manually selected by its exact paragraph hash rather than inferred from a Methods heading. Trio segregation and read inspection checked zygosity;the linked c.264G>A SNV distinguishes transcript alleles,while the c.−69 base is outside the displayed RNA. Version,read/base-quality thresholds,downsampling and overlap-counting rules are unstated;do not equate displayed counts with an unspecified generic pileup.",
+      "version_reported_near_name": "",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 20,
+          "section": "Results / Identification of TMEM216 c.−69G>T in individuals with retinitis pigmentosa that lack molecular diagnosis",
+          "paragraph_sha256": "83b3f3b74d6505de61ca8c5f676cdfa85d67a03fa2f18de5de43c3a57156d0ff"
+        },
+        {
+          "paragraph_index": 30,
+          "section": "Results / c.−69G>A and c.−69G>T downregulate TMEM216 expression in vitro",
+          "paragraph_sha256": "0720bf40dabea02a422e61d48b459a73c48a1e3164ff5c40efdfeb9c0d084dcf"
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "P218",
+    "primary_paragraph": 5,
+    "observed_role": "fibroblast-RNA-alignment-view",
+    "new_source_role": false,
+    "review": {
+      "pmcid": "PMC12500174",
+      "doi": "10.1016/j.ajhg.2025.08.015",
+      "tool_id": "igv",
+      "evidence_paragraph_sha256": "6322174f2610156c46c7fa40e3099235c108df62880cb698e11591d7997f8a0a",
+      "use_summary": "Visualized fibroblast RNA-seq alignments in IGV after STAR alignment to GRCh38/hg38 and aggregation into a Picard BAM file,including cultures with and without cycloheximide treatment.",
+      "implementation_scope_note": "RNA preparation,STAR alignment and BAM processing were upstream. The paragraph does not give an IGV version,splice-view settings or an automated NMD/splicing test.",
+      "version_reported_near_name": ""
+    }
+  },
+  {
+    "paper_id": "P223",
+    "primary_paragraph": 11,
+    "observed_role": "nanopore-amplicon-and-genome-views",
+    "new_source_role": false,
+    "review": {
+      "pmcid": "PMC11339655",
+      "doi": "10.1016/j.ajhg.2024.06.018",
+      "tool_id": "igv",
+      "evidence_paragraph_sha256": "210553ca9398098e8c2cbe5178c15ec9152d922bf9f385347b36e96f0f062c5a",
+      "use_summary": "Visualized GRCh38-mapped Oxford Nanopore amplicon reads in IGV;the supporting data-analysis paragraph also reports genome visualization with IGV and UCSC Genome Browser.",
+      "implementation_scope_note": "MinKNOW/Guppy base calling and the stated minimap spliced mapping were upstream. The source spells the name Integrative Genomic Viewer but explicitly gives IGV. Viewer version and display/counting settings are unstated;ShinyGO,MRSD,MAJIQ-CAT and other statistical tools remain separate.",
+      "version_reported_near_name": "",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 15,
+          "section": "Subjects, material, and methods / Data resources and analysis",
+          "paragraph_sha256": "5cd2149dffa2937a450071323fb7ed1a95aa63ba50090d1f6c9eb81f153cf66f"
+        }
+      ]
+    }
+  }
+]

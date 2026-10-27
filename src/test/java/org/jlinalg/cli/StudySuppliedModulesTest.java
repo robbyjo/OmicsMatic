@@ -24,12 +24,13 @@ class StudySuppliedModulesTest {
     @Test void completedModuleGoReusesSourceAdjustmentWithoutGraphMembershipOrDatabase()throws Exception {
         Files.writeString(root.resolve("go.tsv"),"module_id\tterm_id\tp_value\tadjusted_p\nM1\tGO:1\t.00001\t.35\n");var d=definition("module_gene_ontology","go.tsv",1000);d.put("family",Map.of("id","full-source-family","coverage","selected_only","tested_count",1000,"adjustment","BH","adjusted_p_from_full_family",true));var r=execute("imported",d);assertEquals(State.COMPLETE,r.state(),r.summary());assertEquals(false,r.details().get("analysis_executed_by_jlinalg"));var t=DelimitedData.readResult(root.resolve("imported/module-gene-ontology.tsv"));assertEquals(.35,Double.parseDouble(t.rows().get(0)[t.column("adjusted_p")]),0);assertEquals("NA",t.rows().get(0)[t.column("universe_genes")]);assertEquals(1000,map(r.details().get("resolved_family")).get("tested_count"));assertFalse(Files.exists(root.resolve("fixture-resources")));
     }
-    @Test void partialMembershipsAndGoRemainHeldWithoutCanonicalPromotion()throws Exception {
+    @Test void partialMembershipsAndGoImportWithoutCompletedStagePromotion()throws Exception {
         Files.writeString(root.resolve("members.tsv"),"node_id\tmodule_id\ng1\tM1\n");
         Files.writeString(root.resolve("go.tsv"),"module_id\tterm_id\tp_value\tadjusted_p\nM1\tGO:1\t.01\t.02\n");
         for(String kind:List.of("network_modules","module_gene_ontology")) {
             var d=definition(kind,kind.equals("network_modules")?"members.tsv":"go.tsv",1);d.put("reported_status","partial");
-            var result=execute(kind,d);assertEquals(State.WAITING_FOR_INPUT,result.state());
+            var result=execute(kind,d);assertEquals(State.COMPLETE,result.state());
+            assertEquals(false,result.details().get("replaces_native_stage"));
             assertTrue(result.outputs().stream().anyMatch(name->name.startsWith("supplied/results.")));
             assertFalse(Files.exists(root.resolve(kind).resolve(kind.equals("network_modules")?"network-modules.tsv":"module-gene-ontology.tsv")));
             assertFalse(Boolean.TRUE.equals(result.details().get("primary_selection_eligible")));

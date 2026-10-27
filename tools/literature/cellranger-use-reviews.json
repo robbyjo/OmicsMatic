@@ -1,0 +1,784 @@
+[
+  {
+    "paper_id": "P005",
+    "primary_paragraph": 58,
+    "observed_family": "GEX",
+    "review": {
+      "pmcid": "PMC12823418",
+      "doi": "10.1038/s41586-025-09887-y",
+      "tool_id": "cellranger",
+      "evidence_paragraph_sha256": "7ac5f6a26cce7418153e9a7403abfdf334f35322d4e7eff88683c015cdd32779",
+      "use_summary": "Aligned sample snRNA-seq FASTQs with CellRanger against mm10-2020-A before independent cell/gene QC and analysis.",
+      "implementation_scope_note": "Scrublet doublet removal, Harmony correction and differential expression are downstream operations.",
+      "version_reported_near_name": "6.0.2"
+    }
+  },
+  {
+    "paper_id": "P008",
+    "primary_paragraph": 85,
+    "observed_family": "ATAC",
+    "review": {
+      "pmcid": "PMC12893920",
+      "doi": "10.1038/s41586-025-09875-2",
+      "tool_id": "cellranger",
+      "evidence_paragraph_sha256": "cb4d8e4d7e2df08dc7c4e0ed0ff513241ebce2cfb5c49d0987bed9d3b18b251a",
+      "use_summary": "Processed scATAC-seq libraries with Cell Ranger ATAC v2 for read filtering, alignment, barcode counting and cell calling against the 10x GRCh38 reference v3.1.0.",
+      "implementation_scope_note": "The reference version is separate from the ATAC software version. ArchR filtering, doublet handling, LSI, Leiden and UMAP are downstream; this is not the GEX count pipeline.",
+      "version_reported_near_name": "ATAC 2"
+    }
+  },
+  {
+    "paper_id": "P010",
+    "primary_paragraph": 89,
+    "observed_family": "GEX",
+    "review": {
+      "pmcid": "PMC12893904",
+      "doi": "10.1038/s41586-025-09873-4",
+      "tool_id": "cellranger",
+      "evidence_paragraph_sha256": "9c58006afa72a0bc986b1a6d5c3d5483dca051b70061857cd93e5814e05fe9a4",
+      "use_summary": "Processed and aligned 5-prime single-cell sequencing reads to mouse GRCm39/mm39 using CellRanger v7.1.0 in the dissociated-cell and B16-OVA TIL experiments.",
+      "implementation_scope_note": "The second section describes scRNA-seq and V(D)J-seq, but does not name an exact CellRanger subcommand or VDJ reference. Do not infer those from the section title.",
+      "version_reported_near_name": "7.1.0",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 93,
+          "section": "Methods / scRNA-seq and V(D)J-seq analyses of B16-OVA TILs",
+          "paragraph_sha256": "442177999e6f83c8bc7e02d6b4f1bca5bec93b781aab2f56396d2002f10c6aae"
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "P015",
+    "primary_paragraph": 38,
+    "observed_family": "GEX",
+    "review": {
+      "pmcid": "PMC11735409",
+      "doi": "10.1038/s41586-024-08332-w",
+      "tool_id": "cellranger",
+      "evidence_paragraph_sha256": "12239a45a3a5102f500f3694d56993e0ac20c388839035b0f0e3b3fc38c6587b",
+      "use_summary": "Aligned chick reads to a custom GRCg6a.101 10x reference and posterior-neuruloid reads to human GRCh38-3.0.0 using CellRanger v4.0.0.",
+      "implementation_scope_note": "DropEst, not CellRanger, supplied the explicitly described chick read counts. Custom reference biotypes and the human/chick references are distinct; Scanpy and trajectory analysis are downstream.",
+      "version_reported_near_name": "4.0.0",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 45,
+          "section": "Methods / Single-cell transcriptomics of posterior neuruloids",
+          "paragraph_sha256": "d4256b9f321ff9fffd046f692b0ab93ac63bd390980626b7f70513b8f13ac641"
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "P016",
+    "primary_paragraph": 32,
+    "observed_family": "ARC",
+    "review": {
+      "pmcid": "PMC10765522",
+      "doi": "10.1038/s41586-023-06845-4",
+      "tool_id": "cellranger",
+      "evidence_paragraph_sha256": "708cf74cb6facc1a55dc55cc838274f6dc0a4c64aad1809ae80af3e2ae5c2b4f",
+      "use_summary": "Demultiplexed multiome data with cellranger-arc mkfastq, built an mm10 reference with extended olfactory-receptor GTF annotations using mkref, and aligned with count.",
+      "implementation_scope_note": "This is Cell Ranger ARC, with no exact software version stated in these paragraphs. Seurat/Signac weighted-neighbour analysis is separate.",
+      "version_reported_near_name": "",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 2,
+          "section": "GI accessibility changes with neuronal differentiation and genomic compartmentalization",
+          "paragraph_sha256": "5ac2ea2e273c71b3cba7a2715938da3bebd679d31944a1c77acfdf1684206377"
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "P018",
+    "primary_paragraph": 52,
+    "observed_family": "GEX",
+    "review": {
+      "pmcid": "PMC12823447",
+      "doi": "10.1038/s41586-025-09770-w",
+      "tool_id": "cellranger",
+      "evidence_paragraph_sha256": "572b15ff7069ad69a919b2848259b42720107903bf5df06df44b6d71b732c490",
+      "use_summary": "Mapped snRNA-seq reads to mm10 with CellRanger count v8.0.1 and separately aggregated biological replicates with CellRanger aggr v8.0.1 using reported default normalization.",
+      "implementation_scope_note": "Replicates sequenced in different runs were aggregated separately. Seurat filtering, SCTransform and differential-expression inputs are independent choices.",
+      "version_reported_near_name": "8.0.1"
+    }
+  },
+  {
+    "paper_id": "P032",
+    "primary_paragraph": 35,
+    "observed_family": "GEX",
+    "review": {
+      "pmcid": "PMC11754113",
+      "doi": "10.1038/s41586-024-08314-y",
+      "tool_id": "cellranger",
+      "evidence_paragraph_sha256": "8471b5286b1615535d672cbffdfc3580f43ce23d7efe3bb09e52a52514c41b7e",
+      "use_summary": "Counted Perturb-seq GEX, guide and antibody libraries using cellranger count v7.1.0, expect-cells=45000 and chemistry=SC5P-R2; aggr combined counts across wells.",
+      "implementation_scope_note": "The GEX reference is GRCh38-2020-A; guide patterns and antibody/hashtag feature references differ. Souporcell donor assignment is separate from Cell Ranger processing.",
+      "version_reported_near_name": "7.1.0"
+    }
+  },
+  {
+    "paper_id": "P039",
+    "primary_paragraph": 40,
+    "observed_family": "GEX+ARC",
+    "review": {
+      "pmcid": "PMC10764288",
+      "doi": "10.1038/s41586-023-06837-4",
+      "tool_id": "cellranger",
+      "evidence_paragraph_sha256": "bbf1cfc8474da80b9e2cc28e63fcafcd827b36662211335a3e87dbbacbf24ab6",
+      "use_summary": "Used GEX v6.1.2 mkfastq/count with include-introns against GRCh38 or mm10, and ARC v2.0.2 mkfastq/count for human multiome data. GEX aggr adjusted sequencing-depth differences; its cell calls/barcodes also supported spatial matching and reproducibility denominators.",
+      "implementation_scope_note": "Keep GEX and ARC outputs separate. Spatial-barcode filtering/DBSCAN placement, CellBender correction and Signac/MACS2 recalled peaks are separate analyses; Cell Ranger did not implement those steps.",
+      "version_reported_near_name": "6.1.2; ARC 2.0.2",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 41,
+          "section": "Methods / Slide-tags data preprocessing / Multiomic snATAC-seq and snRNA-seq data",
+          "paragraph_sha256": "d5bc963c06fc96dd778f1fcdab60364b8d62932fd7621eaccc7ac88ddecb486b"
+        },
+        {
+          "paragraph_index": 42,
+          "section": "Methods / Slide-tags data preprocessing / Spatial barcode data",
+          "paragraph_sha256": "8deb9375269447ba1293128f3373b17607c394c1825ff18334eaf18b3dfcaa8b"
+        },
+        {
+          "paragraph_index": 43,
+          "section": "Methods / Slide-tags data preprocessing / Assignment of spatial locations to nuclei",
+          "paragraph_sha256": "df239353b8fffeb8354abda9043d5d9034fea5a8f34e46484fec521f9aed3a8f"
+        },
+        {
+          "paragraph_index": 53,
+          "section": "Methods / Mouse brain analysis / Comparison of Slide-tags snRNA-seq versus snRNA-seq data",
+          "paragraph_sha256": "f98d460eeafb363c073859af0731588f1909eb40090ecafe775710d1eb52cbf4"
+        },
+        {
+          "paragraph_index": 62,
+          "section": "Methods / Human brain analysis / Reproducibility analysis",
+          "paragraph_sha256": "3e70408a6a2b2138f10254dbfa998a7b53dc13e893cae1fd391a5ff8551cfd2e"
+        },
+        {
+          "paragraph_index": 74,
+          "section": "Methods / Melanoma analysis / Quality control and cell type assignment / Multiome ATAC and snRNA-seq data",
+          "paragraph_sha256": "000819d560d6ab0e6790c9b49047b73692ecb63f4285f10c91922af4ed2576d3"
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "P040",
+    "primary_paragraph": 42,
+    "observed_family": "GEX",
+    "review": {
+      "pmcid": "PMC13645638",
+      "doi": "10.1038/s41586-026-10954-1",
+      "tool_id": "cellranger",
+      "evidence_paragraph_sha256": "714e13f3eade8a9bd3141aebe398639274b0ecfa431812a78b7410f4a6756a5a",
+      "use_summary": "Aligned and quantified GEM-X Universal 3-prime v4 on-chip-multiplexed mouse libraries against GRCm39-2024-A with CellRanger, reported as v9.01.",
+      "implementation_scope_note": "Retain the literal v9.01 report rather than silently converting it to a pinned v9.0.1 build. The paragraph does not specify a subcommand; Seurat/Harmony and annotation are downstream.",
+      "version_reported_near_name": "9.01"
+    }
+  },
+  {
+    "paper_id": "P046",
+    "primary_paragraph": 47,
+    "observed_family": "GEX",
+    "review": {
+      "pmcid": "PMC13668669",
+      "doi": "10.1038/s41586-026-10987-6",
+      "tool_id": "cellranger",
+      "evidence_paragraph_sha256": "8c5b65f79b06cb4c8d9972f73bd83ef339594c2c353cc74a74c44e380f7f3b6b",
+      "use_summary": "Used Cell Ranger v9.0.1 multi for cell-barcode calling, read alignment and quality assessment with a custom GRCh38 GENCODE32/Ensembl98 reference containing eGFP.",
+      "implementation_scope_note": "Custom-reference construction settings are not fully specified here. CellBender ambient removal, scDblFinder and subsequent cell filtering are separate.",
+      "version_reported_near_name": "9.0.1"
+    }
+  },
+  {
+    "paper_id": "P048",
+    "primary_paragraph": 15,
+    "observed_family": "GEX",
+    "review": {
+      "pmcid": "PMC11779626",
+      "doi": "10.1038/s41586-024-08290-3",
+      "tool_id": "cellranger",
+      "evidence_paragraph_sha256": "37aa8e3a444db74b088259a6ef098cdee9021497bc23bf63d8f4622928d06eb5",
+      "use_summary": "Processed human scRNA-seq with Cell Ranger v3 against GRCh38 and mouse scRNA-seq with v5 against GRCm38 before separate matrix analysis.",
+      "implementation_scope_note": "Only major versions are stated. Human and mouse pipelines/reference builds differ; CellBender, DoubletDetection, Scanpy and protein-activity work must not be assigned to Cell Ranger.",
+      "version_reported_near_name": "3; 5",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 37,
+          "section": "Methods / Mouse scRNA-seq analysis",
+          "paragraph_sha256": "86c82cc2624b79f2abea41bc22d0e74a059f8db8a83bd7f0b188d1cb64a15318"
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "P049",
+    "primary_paragraph": 34,
+    "observed_family": "GEX",
+    "review": {
+      "pmcid": "PMC13668678",
+      "doi": "10.1038/s41586-026-10981-y",
+      "tool_id": "cellranger",
+      "evidence_paragraph_sha256": "8f03c054c747e967ac5f6ed3f4e0fff7b8f812598175b5d6614490432f358ea7",
+      "use_summary": "Generated sample count matrices with Cell Ranger v7.0.1 against human GRCh38-2020-A, including exonic and intronic reads.",
+      "implementation_scope_note": "CellBender ambient correction, Seurat RPCA integration and cluster-based scDblFinder filtering are separate.",
+      "version_reported_near_name": "7.0.1"
+    }
+  },
+  {
+    "paper_id": "P053",
+    "primary_paragraph": 48,
+    "observed_family": "ARC+ATAC+GEX",
+    "review": {
+      "pmcid": "PMC10719095",
+      "doi": "10.1038/s41586-023-06819-6",
+      "tool_id": "cellranger",
+      "evidence_paragraph_sha256": "1ddf90b323b08a35cd16ea874ec51e81ae36b0475f6c39279d27cf9ec3cdc898",
+      "use_summary": "Used cellranger-arc for multiome processing and sense intronic/exonic RNA UMI matrices. Separately, paired-tag libraries used ARC v2.0.0 mkfastq, ATAC v2.0.0 for DNA and GEX v6.1.2 for RNA, followed by manual barcode pairing.",
+      "implementation_scope_note": "The multiome paragraph does not specify an ARC version. Versions in the paired-tag paragraph apply to that distinct workflow; do not transfer them silently or treat manual paired-tag association as native multiome processing.",
+      "version_reported_near_name": "ARC 2.0.0; ATAC 2.0.0; GEX 6.1.2",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 85,
+          "section": "Methods / Analysis of paired-tag RNA and H3K27ac",
+          "paragraph_sha256": "c63891e7e054df6cb916f78db325e179801c9b8f9fe7fc40b21fcb20de682cb4"
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "P055",
+    "primary_paragraph": 33,
+    "observed_family": "GEX",
+    "review": {
+      "pmcid": "PMC10719111",
+      "doi": "10.1038/s41586-023-06818-7",
+      "tool_id": "cellranger",
+      "evidence_paragraph_sha256": "46ed356a262b86b6f99abb449aaa6da467e7cb9894d269b047ef0431fd9934b2",
+      "use_summary": "Demultiplexed and aligned brain-wide snRNA-seq against GRCm39.103 using CellRanger v5.0.1 with an additional include-introns setting.",
+      "implementation_scope_note": "CellBender v3-alpha ambient-RNA handling is separate. Reported default settings do not identify an archived runtime checksum.",
+      "version_reported_near_name": "5.0.1"
+    }
+  },
+  {
+    "paper_id": "P058",
+    "primary_paragraph": 43,
+    "observed_family": "GEX",
+    "review": {
+      "pmcid": "PMC10719099",
+      "doi": "10.1038/s41586-023-06817-8",
+      "tool_id": "cellranger",
+      "evidence_paragraph_sha256": "24819be2d5d2e99a4718542835c5081ecfb20b064286b0ae26996d6b63f36632",
+      "use_summary": "Aligned snRNA-seq to mm10-2020-A with CellRanger v6.1.2. Built separate GFP or mScarlet custom references with v5.0.1 mkref and used v6.1.2 in the reported 10x cloud workflow to detect reporter transcripts.",
+      "implementation_scope_note": "Reference-building and processing versions differ. Reporter choice depended on sorted signal; the study cloud upload is historical provenance and does not authorize this project to upload data.",
+      "version_reported_near_name": "6.1.2; mkref 5.0.1",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 46,
+          "section": "Methods / snRNA-seq / snRNA-seq preprocessing, quality control and removal of second-order nuclei",
+          "paragraph_sha256": "45f481d3fc9bd71ae755bb7aa42ff07a38c53cba7e2dc2e6f5dd9012ab975eb0"
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "P059",
+    "primary_paragraph": 83,
+    "observed_family": "GEX+ARC",
+    "review": {
+      "pmcid": "PMC10719114",
+      "doi": "10.1038/s41586-023-06812-z",
+      "tool_id": "cellranger",
+      "evidence_paragraph_sha256": "8bd51e36853556ae03d375f8b874e2c5b9214dcb2f52ed530039da568a159517",
+      "use_summary": "Aligned scRNA-seq to M21/GRCm38.p6 using CellRanger v6.1.1 and processed separate 10x Multiome libraries with ARC v2.0 using GRCm38 v98 FASTA and GENCODE M23 GTF references.",
+      "implementation_scope_note": "GEX and ARC are distinct programs and reference families; retain their separate reported defaults.",
+      "version_reported_near_name": "6.1.1; ARC 2.0",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 84,
+          "section": "Methods / scRNA-seq / Sequencing data processing and QC",
+          "paragraph_sha256": "ef8aff2e9dcec0425dfe1218507212ca71da87dd9257d682c8bb69390054563e"
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "P062",
+    "primary_paragraph": 42,
+    "observed_family": "GEX",
+    "review": {
+      "pmcid": "PMC13668712",
+      "doi": "10.1038/s41586-026-10964-z",
+      "tool_id": "cellranger",
+      "evidence_paragraph_sha256": "156ce5cdd243684cee27eff27e2bb4ce9e7d154e96613f9d32b8dcc54c4bcff7",
+      "use_summary": "Used Cell Ranger v8.0.1 mkfastq to demultiplex BCL files, count against mm10-2020-A for barcode/UMI expression processing and reported clustering/differential expression, then aggr for multiple sequencing runs.",
+      "implementation_scope_note": "The paper attributes secondary analysis to count here; do not replace it silently with independent Seurat analysis or change aggr normalization settings.",
+      "version_reported_near_name": "8.0.1"
+    }
+  },
+  {
+    "paper_id": "P063",
+    "primary_paragraph": 23,
+    "observed_family": "GEX",
+    "review": {
+      "pmcid": "PMC12872466",
+      "doi": "10.1038/s41586-025-09932-w",
+      "tool_id": "cellranger",
+      "evidence_paragraph_sha256": "b0cd97817c1ce4c99562a2841e661eed380739caab9b75298474d78b036fc4c1",
+      "use_summary": "Used Cell Ranger multi v9.0.0 with GEX GRCh38-2020-A and VDJ GRCh38-alts-ensembl-5.0.0 references for GEX, antibody capture and TCR libraries; surface/hashtag barcodes were Antibody Capture features.",
+      "implementation_scope_note": "bcl2fastq conversion preceded multi. Seurat hashtag/pHLA demultiplexing, clonotype rescue and weighted-neighbour clustering were separate downstream procedures.",
+      "version_reported_near_name": "9.0.0"
+    }
+  },
+  {
+    "paper_id": "P064",
+    "primary_paragraph": 35,
+    "observed_family": "GEX",
+    "review": {
+      "pmcid": "PMC10719112",
+      "doi": "10.1038/s41586-023-06638-9",
+      "tool_id": "cellranger",
+      "evidence_paragraph_sha256": "4da9f0419ae76f0aeaf9761dca026f02a04991dc95e0f503a031ccd9cd241355",
+      "use_summary": "Reported Cell Ranger v4.0.0 demultiplexing/alignment for nuclei libraries and v7.0 alignment of scRNA/snRNA datasets to species-specific transcriptomes to obtain BAMs.",
+      "implementation_scope_note": "Preserve the two reported stages/versions. Velocyto, rather than Cell Ranger, generated spliced and unspliced matrices that were summed into total expression.",
+      "version_reported_near_name": "4.0.0; 7.0",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 37,
+          "section": "Methods / Preprocessing of transcriptomic data",
+          "paragraph_sha256": "2117cb97fb22763891a27348d072799599fb34d44ea7fb34c205e669bde7acf5"
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "P069",
+    "primary_paragraph": 27,
+    "observed_family": "GEX",
+    "review": {
+      "pmcid": "PMC10781646",
+      "doi": "10.1038/s41586-023-06816-9",
+      "tool_id": "cellranger",
+      "evidence_paragraph_sha256": "9d6def332870e52611e9815a912605de374486c789163f7726258bd1bd3bc7b2",
+      "use_summary": "Processed raw BCL data with the CellRanger v3.0 Gene Expression pipeline for demultiplexing, mm10 alignment and transcriptomic count matrices.",
+      "implementation_scope_note": "CITE-seq-Count handled hashtag FASTQs and Seurat MULTIseqDemux performed hashtag assignment; those are separate from CellRanger.",
+      "version_reported_near_name": "3.0"
+    }
+  },
+  {
+    "paper_id": "P070",
+    "primary_paragraph": 33,
+    "observed_family": "GEX",
+    "review": {
+      "pmcid": "PMC7616500",
+      "doi": "10.1038/s41586-023-06806-x",
+      "tool_id": "cellranger",
+      "evidence_paragraph_sha256": "324c44429e9a8faba3a2b4e1c5a2e622e63b09b2d1ad820f4988f2774944105d",
+      "use_summary": "Aligned and quantified droplet scRNA-seq using Cell Ranger v3.0.2 with human GRCh38-3.0.0 or mouse mm10-2020-A references.",
+      "implementation_scope_note": "The additional Visium section uses the Cell Ranger-named hg38 reference resource in Space Ranger v1.1.0; it is not evidence of a Cell Ranger spatial analysis run.",
+      "version_reported_near_name": "3.0.2",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 34,
+          "section": "Methods / Alignment and quantification of human Visium data",
+          "paragraph_sha256": "d35ff9c5c5ba56c62e4bcbcecd553bc3762ba10e9bf407b3705fcd3b667913cd"
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "P073",
+    "primary_paragraph": 35,
+    "observed_family": "GEX",
+    "review": {
+      "pmcid": "PMC11631754",
+      "doi": "10.1038/s41588-024-02019-8",
+      "tool_id": "cellranger",
+      "evidence_paragraph_sha256": "6c5a15c7768c481e5a275ef4be3b2c912c16b389c4b9382f102a505518cdc8db",
+      "use_summary": "Reported Cell Ranger v7.0.1 in the initial pooled 5-prime RNA-seq processing/QC workflow with DRAGEN and Freemuxlet, using GRCh38/GENCODE32. A Cell Ranger barcode whitelist was reused for separate STARsolo splicing alignment.",
+      "implementation_scope_note": "The primary paragraph does not assign every preprocessing/QC task among the three programs. STARsolo, WASP/Picard filtering and alternate-splicing quantification remain distinct from the Cell Ranger run.",
+      "version_reported_near_name": "7.0.1",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 36,
+          "section": "Methods / Quantification of mRNA AS",
+          "paragraph_sha256": "9f6c246887074018f9ce6843b74ec7bf793ec92d6333afe27f1e3cb73c305c53"
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "P082",
+    "primary_paragraph": 38,
+    "observed_family": "GEX",
+    "review": {
+      "pmcid": "PMC11631769",
+      "doi": "10.1038/s41588-024-01999-x",
+      "tool_id": "cellranger",
+      "evidence_paragraph_sha256": "6b708f2cc55e286e1c42a4436d9cdae0d29e296e4661a36fc29d31a9c87ea9c4",
+      "use_summary": "Aligned CITE-seq reads to GRCh38, distinguished cells from background and generated a unified gene-expression/cell-surface-protein feature-barcode matrix with Cell Ranger v6.0.",
+      "implementation_scope_note": "The code-availability paragraph corroborates the version but is not a second independent run; downstream scNOVA/Seurat analyses are separate.",
+      "version_reported_near_name": "6.0",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 64,
+          "section": "Code availability",
+          "paragraph_sha256": "ca44d238ba149b628e05398ce1a466404ae438b1e859861e914d481d3a0e16b9"
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "P087",
+    "primary_paragraph": 48,
+    "observed_family": "GEX",
+    "review": {
+      "pmcid": "PMC13649586",
+      "doi": "10.1038/s41588-026-02774-w",
+      "tool_id": "cellranger",
+      "evidence_paragraph_sha256": "b8253d18fe4b044da4bbb1cd0431f8f80923558e4fe69919b8c1b17d487c146c",
+      "use_summary": "Generated human feature-barcode matrices with Cell Ranger v7.0.0/GRCh38-2020-A, including liver-biopsy processing. Mouse CCl4 data used v3.0.2/mm10-3.0.0, whereas mouse BDL data used v7.0.0/mm10-2020-A.",
+      "implementation_scope_note": "Retain cohort/species-specific versions and references. SoupX correction, Harmony integration, iterative cell filtering and marker analysis are separate.",
+      "version_reported_near_name": "7.0.0; 3.0.2",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 59,
+          "section": "Methods / scRNA-seq analysis / Human biopsy scRNA-seq analysis",
+          "paragraph_sha256": "599fad93cc6ccafabe60173ecabc2302ba72a9d2230b7e59664a1939fc28fb47"
+        },
+        {
+          "paragraph_index": 60,
+          "section": "Methods / scRNA-seq analysis / Mouse CCl4 scRNA-seq analysis",
+          "paragraph_sha256": "61c64d3a704eca81a1699ea912988e2d50a8ca11bf41bb507387366a046afb47"
+        },
+        {
+          "paragraph_index": 61,
+          "section": "Methods / scRNA-seq analysis / Mouse BDL scRNA-seq analysis",
+          "paragraph_sha256": "0b8cdad7c9ca0a7aa10de92fce4f5ed3ff35d4fa7a2db7b4eaadbc45a8e9347a"
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "P092",
+    "primary_paragraph": 40,
+    "observed_family": "ATAC",
+    "review": {
+      "pmcid": "PMC13649587",
+      "doi": "10.1038/s41588-026-02755-z",
+      "tool_id": "cellranger",
+      "evidence_paragraph_sha256": "1316651e56d056160ec23c071cfaf7eeba1b702a32df3489b46588fe75e6dde3",
+      "use_summary": "Aligned scATAC-seq reads with Cell Ranger ATAC; the paragraph points to a Supplementary Note for preprocessing details.",
+      "implementation_scope_note": "An exact version and detailed fragment/doublet procedures are not supplied by this paragraph. Do not assign all referenced preprocessing to ATAC or infer a GEX run.",
+      "version_reported_near_name": ""
+    }
+  },
+  {
+    "paper_id": "P094",
+    "primary_paragraph": 32,
+    "observed_family": "ARC",
+    "review": {
+      "pmcid": "PMC13649600",
+      "doi": "10.1038/s41588-026-02748-y",
+      "tool_id": "cellranger",
+      "evidence_paragraph_sha256": "4638e9ee03c4c2f2599e513d5bca666b9e7e2cb7adc62fffda6b87712d883c59",
+      "use_summary": "Used Cell Ranger ARC with reported default settings to align joint snRNA/ATAC data to human hg38 and obtain modality count matrices and fragment files.",
+      "implementation_scope_note": "The exact ARC version and reference package are unstated here. Seurat/Signac preprocessing and normalization are separate.",
+      "version_reported_near_name": ""
+    }
+  },
+  {
+    "paper_id": "P096",
+    "primary_paragraph": 39,
+    "observed_family": "GEX",
+    "review": {
+      "pmcid": "PMC11631765",
+      "doi": "10.1038/s41588-024-01990-6",
+      "tool_id": "cellranger",
+      "evidence_paragraph_sha256": "e0809786aa77f291b8e599936fc489d5dc154187a738d9dbb869e1ffce26770d",
+      "use_summary": "Used Cell Ranger count v6.1.1 to align snRNA FASTQs to GRCh38, quantify gene expression with introns included and automatically filter very low-UMI background barcodes.",
+      "implementation_scope_note": "The source links a study script on Zenodo; this paragraph alone does not establish the full archived environment or every cell-calling option.",
+      "version_reported_near_name": "6.1.1"
+    }
+  },
+  {
+    "paper_id": "P099",
+    "primary_paragraph": 35,
+    "observed_family": "GEX",
+    "review": {
+      "pmcid": "PMC10703679",
+      "doi": "10.1038/s41588-023-01572-y",
+      "tool_id": "cellranger",
+      "evidence_paragraph_sha256": "d27a1f55faf092a77587b66e9825acbad7009652c8485c27f2312220e914b4cf",
+      "use_summary": "Processed subsampled commercial 10x Chromium data with Cell Ranger as the comparator in an EasySci-RNA detection-depth benchmark.",
+      "implementation_scope_note": "The Cell Ranger version and full command are unstated. The EasySci and SPLiT-seq pipelines, benchmark subsampling and selection of high-quality cells are separate.",
+      "version_reported_near_name": "",
+      "usage_context": "benchmark-or-comparison"
+    }
+  },
+  {
+    "paper_id": "P123",
+    "primary_paragraph": 46,
+    "observed_family": "GEX",
+    "review": {
+      "pmcid": "PMC13553293",
+      "doi": "10.1038/s41588-026-02741-5",
+      "tool_id": "cellranger",
+      "evidence_paragraph_sha256": "54250e2bfee44782c6e2f74e8119aa8d6d73151c5a7cac353341b9e5e4d7c95a",
+      "use_summary": "Processed droplet scRNA-seq libraries with Cell Ranger v7, aligned to GRCh38 using its STAR alignment and created raw count matrices.",
+      "implementation_scope_note": "Only a major version is reported. CellBender performed ambient removal/cell calling; Scrublet and scds removed putative doublets independently.",
+      "version_reported_near_name": "7"
+    }
+  },
+  {
+    "paper_id": "P124",
+    "primary_paragraph": 52,
+    "observed_family": "GEX",
+    "review": {
+      "pmcid": "PMC10703699",
+      "doi": "10.1038/s41588-023-01554-0",
+      "tool_id": "cellranger",
+      "evidence_paragraph_sha256": "b8927c8882602bb4d26003be869bae03c9cd22a4d01c693bfe2c41d3a07a1b10",
+      "use_summary": "Processed/demultiplexed scRNA-seq and generated transcript and guide-RNA UMI counts per cell barcode using CellRanger v6.0.1.",
+      "implementation_scope_note": "The later guide-assignment threshold UMI>4, DoubletFinder and Seurat/MAST testing are downstream and are not implied CellRanger defaults.",
+      "version_reported_near_name": "6.0.1"
+    }
+  },
+  {
+    "paper_id": "P134",
+    "primary_paragraph": 47,
+    "observed_family": "GEX",
+    "review": {
+      "pmcid": "PMC13553295",
+      "doi": "10.1038/s41588-026-02714-8",
+      "tool_id": "cellranger",
+      "evidence_paragraph_sha256": "484121c484a018bbd57fb37c9e14246e9de716435039b5167502387eb4ba0345",
+      "use_summary": "Processed lineage-tracing cell-line scRNA-seq with Cell Ranger v3.0.2, aligning FASTQs to human GRCh38-2020-A.",
+      "implementation_scope_note": "UMI-tools collapsed lineage-barcode clusters; subsequent UMI downsampling, barcode-based lineage comparison and metaVIPER activity inference are separate.",
+      "version_reported_near_name": "3.0.2"
+    }
+  },
+  {
+    "paper_id": "P144",
+    "primary_paragraph": 46,
+    "observed_family": "ARC",
+    "review": {
+      "pmcid": "PMC12597822",
+      "doi": "10.1038/s41588-025-02374-0",
+      "tool_id": "cellranger",
+      "evidence_paragraph_sha256": "7e07457e0b18989bbba0c02a9878708355be8a8b738905ec76e9792259f1f0b3",
+      "use_summary": "Aligned joint single-cell RNA and ATAC reads to human GRCh38 using CellRanger-Arc v2.0.2.",
+      "implementation_scope_note": "mgatk genotyping/heteroplasmy estimation with a masked reference and Seurat expression processing are separate; they are not ARC variant-calling functions.",
+      "version_reported_near_name": "2.0.2"
+    }
+  },
+  {
+    "paper_id": "P145",
+    "primary_paragraph": 50,
+    "observed_family": "GEX",
+    "review": {
+      "pmcid": "PMC13553309",
+      "doi": "10.1038/s41588-026-02709-5",
+      "tool_id": "cellranger",
+      "evidence_paragraph_sha256": "5a68459b14a61bacf18f49843426f128574e63f9d63472a17768a9ec22003714",
+      "use_summary": "Processed four multiplexed nuclei libraries using Cell Ranger multi in Multiplex Flex mode with GRCh38-2024-A and the v1.1.0_GRCh38-2024-A human probe set.",
+      "implementation_scope_note": "The probe-set version is not a Cell Ranger software version. Flex probe/reference and sample configuration must remain explicit; SoupX contamination estimation and correction are downstream.",
+      "version_reported_near_name": ""
+    }
+  },
+  {
+    "paper_id": "P153",
+    "primary_paragraph": 43,
+    "observed_family": "ARC",
+    "review": {
+      "pmcid": "PMC13447104",
+      "doi": "10.1038/s41588-026-02695-8",
+      "tool_id": "cellranger",
+      "evidence_paragraph_sha256": "f404e152b38cf2317f3617405e55b193a24a77e221f253ae988b3222af27e8cb",
+      "use_summary": "Processed genomes/annotations with cellranger-arc mkref v2.0.2 and ran standard ARC pipelines to obtain multiome count matrices and fragments for public and newly generated datasets.",
+      "implementation_scope_note": "GRCh38 and mm10 references are distinguished. The mkref version does not by itself pin every pipeline build or source dataset conversion; preserve those separate provenance requirements.",
+      "version_reported_near_name": "2.0.2"
+    }
+  },
+  {
+    "paper_id": "P158",
+    "primary_paragraph": 28,
+    "observed_family": "ATAC",
+    "review": {
+      "pmcid": "PMC12597831",
+      "doi": "10.1038/s41588-025-02368-y",
+      "tool_id": "cellranger",
+      "evidence_paragraph_sha256": "fe4a48372e4d69c8e930c737612330e6dfb203b8e8bad97cb856660c40fa86b0",
+      "use_summary": "Aligned scATAC-seq reads and counted features with cellranger-atac count using reported default parameters.",
+      "implementation_scope_note": "An exact ATAC version/reference is unstated here. The separate Evercode RNA libraries used Parse Trailmaker, not Cell Ranger; Cas9 detection and MapMyCells annotation are separate.",
+      "version_reported_near_name": ""
+    }
+  },
+  {
+    "paper_id": "P160",
+    "primary_paragraph": 53,
+    "observed_family": "GEX-demultiplexing",
+    "review": {
+      "pmcid": "PMC12597827",
+      "doi": "10.1038/s41588-025-02352-6",
+      "tool_id": "cellranger",
+      "evidence_paragraph_sha256": "50c9e133ca686fb0a9149cd2ece7d73431bdf25392ec80a6b2ce21c8b581b147",
+      "use_summary": "Demultiplexed scRNA-seq libraries with cellranger mkfastq v4.0.0 before a separate index-hopping filter.",
+      "implementation_scope_note": "STARsolo v2.7.10a, not Cell Ranger count, determined the UMI counts in this workflow. Chemistry kit v2/v3 labels are distinct from software versions.",
+      "version_reported_near_name": "4.0.0"
+    }
+  },
+  {
+    "paper_id": "P161",
+    "primary_paragraph": 64,
+    "observed_family": "GEX",
+    "review": {
+      "pmcid": "PMC13447095",
+      "doi": "10.1038/s41588-026-02665-0",
+      "tool_id": "cellranger",
+      "evidence_paragraph_sha256": "81f0565071304ccccd7b7f39837da81e1d7e62f4a04798c1ab6c16e78dd43184",
+      "use_summary": "Aligned scRNA-seq samples with CellRanger v7.2.0 to generate the expression matrix used for annotation and connectivity.",
+      "implementation_scope_note": "STARsolo v2.7.9a separately generated spliced/unspliced/ambiguous matrices. CellBender ambient removal and its training assessment are separate.",
+      "version_reported_near_name": "7.2.0"
+    }
+  },
+  {
+    "paper_id": "P182",
+    "primary_paragraph": 17,
+    "observed_family": "GEX",
+    "review": {
+      "pmcid": "PMC11639091",
+      "doi": "10.1016/j.ajhg.2024.10.019",
+      "tool_id": "cellranger",
+      "evidence_paragraph_sha256": "f18880728edbf48755f61332524db5640f68313aab9ade57a631f68d4d5375a6",
+      "use_summary": "Processed fetal, pediatric and organoid FASTQs with CellRanger v3.0.2 using the human reference transcriptome reported as GRCh38-1.2.0.",
+      "implementation_scope_note": "The linked archive name instead ends GRCh38-3.0.0; retain this reference-version discrepancy for source resolution. SoupX/Seurat/Scrublet processing is separate.",
+      "version_reported_near_name": "3.0.2"
+    }
+  },
+  {
+    "paper_id": "P187",
+    "primary_paragraph": 7,
+    "observed_family": "ARC",
+    "review": {
+      "pmcid": "PMC12805840",
+      "doi": "10.1016/j.ajhg.2025.11.009",
+      "tool_id": "cellranger",
+      "evidence_paragraph_sha256": "775f8fa53f5b757f93e7bd0c322aadf73a8c5ebbc5c9e31e2ec4f5e0ea9aa690",
+      "use_summary": "Aligned multiome reads with CellRanger-ARC count v2 against GRCh38-2020-A with filtered GENCODE32 annotations, supplying BAMs, barcodes and reference annotations for later donor/cell-type analyses.",
+      "implementation_scope_note": "The WASP stage explicitly approximated ARC alignment with BWA-mem because Cell Ranger could not run within WASP. That approximation is not a second ARC/WASP run; demuxlet, MACS2 and FastQTL are separate.",
+      "version_reported_near_name": "2",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 8,
+          "section": "Material and methods / Identification of singlet droplets and donor deconvolution",
+          "paragraph_sha256": "10930e94020231fce7c7c1eb06cf932b7a2bd4d06f00d915e61fa3669c3500d5"
+        },
+        {
+          "paragraph_index": 12,
+          "section": "Material and methods / Cell-type accessible chromatin regions",
+          "paragraph_sha256": "0074612cc7a74564dbf53627ccae7292e6898d80a8b2e4160be83765d942b3de"
+        },
+        {
+          "paragraph_index": 18,
+          "section": "Material and methods / Mapping caQTL",
+          "paragraph_sha256": "45cd41caa4c044909016b52cd2262f086615e118d7fdefd3ef3579494d047f3d"
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "P213",
+    "primary_paragraph": 8,
+    "observed_family": "GEX-reused-cohort",
+    "review": {
+      "pmcid": "PMC13277697",
+      "doi": "10.1016/j.ajhg.2026.04.003",
+      "tool_id": "cellranger",
+      "evidence_paragraph_sha256": "99ec8907e64001860c1085122ac81cc827a0c958e5ed0e38b16117f1fda38d9c",
+      "use_summary": "Reported OneK1K preprocessing with Cell Ranger v2.2.0 for pool demultiplexing and STAR-based mapping to GRCh37/hg19 release84.",
+      "implementation_scope_note": "This section describes the reused cohort processing. Do not infer a new Cell Ranger rerun or transfer later Seurat/Azimuth settings into its original pipeline.",
+      "version_reported_near_name": "2.2.0",
+      "usage_context": "reused-data-method-description"
+    }
+  },
+  {
+    "paper_id": "P223",
+    "primary_paragraph": 12,
+    "observed_family": "GEX",
+    "review": {
+      "pmcid": "PMC11339655",
+      "doi": "10.1016/j.ajhg.2024.06.018",
+      "tool_id": "cellranger",
+      "evidence_paragraph_sha256": "2e5658b281bba2e9124522c83e8ab402ac90f954734156b8ebc3a1c3de774eda",
+      "use_summary": "Processed targeted scRNA-seq and guide-RNA sequencing files with cellranger v7.1.0 before integrating their count matrices in Seurat.",
+      "implementation_scope_note": "Target-panel enrichment is an experimental/library design choice, not a Cell Ranger default. The paragraph does not supply the exact reference or count command.",
+      "version_reported_near_name": "7.1.0"
+    }
+  },
+  {
+    "paper_id": "P225",
+    "primary_paragraph": 9,
+    "observed_family": "GEX+ARC",
+    "review": {
+      "pmcid": "PMC11339625",
+      "doi": "10.1016/j.ajhg.2024.07.002",
+      "tool_id": "cellranger",
+      "evidence_paragraph_sha256": "f39e9bcce0d5e22ab87bb7dcdbc660eb29d8dc07f72ae35f38a791634d0fa24d",
+      "use_summary": "Reported Cell Ranger v6.1.1 in the snRNA-seq processing workflow against GRCh38-2020-A, and separately used CellRanger ARC v2.0.0 for multiome mapping to a reference labelled CRCh38-2020-A-2.0.0.",
+      "implementation_scope_note": "Keep the literal reference label and separate GEX/ARC workflows. SoupX/scds, Signac/Harmony and chromVAR motif activities are downstream operations.",
+      "version_reported_near_name": "6.1.1; ARC 2.0.0",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 11,
+          "section": "Material and methods / Bioinformatics analysis",
+          "paragraph_sha256": "ea6b96b238c9b348977788000db38a5572b4a14978855ca49cb5f4c8c029aead"
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "P228",
+    "primary_paragraph": 11,
+    "observed_family": "GEX",
+    "review": {
+      "pmcid": "PMC12696504",
+      "doi": "10.1016/j.ajhg.2025.07.020",
+      "tool_id": "cellranger",
+      "evidence_paragraph_sha256": "9e7193eb474ac7e80e9dc1405924648b0235a0ed40749df1113df4fde07b735c",
+      "use_summary": "Used Cell Ranger count to align droplet reads to human GRCh38 and quantify annotated-gene transcripts per cell; its outputs also supplied later velocity counting.",
+      "implementation_scope_note": "No Cell Ranger version is stated. Velocyto computed spliced/unspliced counts and scVelo supplied velocity analysis; these are separate from count.",
+      "version_reported_near_name": "",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 13,
+          "section": "Material and methods / snRNA-seq and data analysis",
+          "paragraph_sha256": "aa8c0330a79d061eed602c897f834c1ce42ceb4dab82a0a46c1cbe01300b24f5"
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "P233",
+    "primary_paragraph": 8,
+    "observed_family": "GEX",
+    "review": {
+      "pmcid": "PMC12461018",
+      "doi": "10.1016/j.ajhg.2025.07.018",
+      "tool_id": "cellranger",
+      "evidence_paragraph_sha256": "d63a03bda6013f0581df084b7283b0586612ca452199d90f210b255a2b7df4a4",
+      "use_summary": "Processed scRNA-seq files with Cell Ranger v3.1.0 to generate expression matrices, and also ran Cell Ranger on targeted GNAS sequencing files before barcode intersection and genotype assignment.",
+      "implementation_scope_note": "The targeted section does not restate a software version or command. Variant-read selection, transcript thresholds and GNAS genotype assignment are study-specific downstream steps, not a general Cell Ranger variant caller.",
+      "version_reported_near_name": "3.1.0",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 10,
+          "section": "Methods / Single-cell GNAS genotyping",
+          "paragraph_sha256": "5daf86df3c1c10cfc5e34d95b9898300555edf265b487e5c5c152eb793de5347"
+        }
+      ]
+    }
+  }
+]

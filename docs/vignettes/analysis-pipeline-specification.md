@@ -42,6 +42,7 @@ or additional accepted `study.yaml` syntax.
 | Draft without a length contract | Use an adjustable 8,000-word main-text target, honor explicit journal limits, and retain complete finding discussions and spillover in supplements. |
 | Require the entire analysis to start from raw data | Accept typed, validated results at any supported stage and compute only requested missing work; preserve external provenance and unavailable upstream checks. |
 | Fit every principal finding into a short summary | Develop a complete source-linked discussion for each selected story, keeping essential reasoning in main text and extended evidence in finding-specific supplements. |
+| Give AI only paper identities while requiring substantive discussion | Optionally supply explicitly scoped public passage context with exact source/bundle hashes, purpose-specific disclosure and retained evidence gaps; metadata alone never establishes source support. |
 
 These primary/sensitivity rules are scientific design choices for this workflow.
 The [Cochrane meta-analysis guidance](https://training.cochrane.org/handbook/current/chapter-10)
@@ -67,6 +68,11 @@ initialize study:
     plan requested missing operations from supplied and previously verified outputs
     if all requested analyses are supplied, perform validation/reporting only
     check each requested operation against its model/input/source capabilities
+    register managed or external variant software and its private installation home
+    provide application setup commands independently of study/model credentials
+    plan required software acquisition under the resource download policy
+    require the user's registered ANNOVAR source and licence acknowledgement
+    reuse verified software offline; retain incomplete/changed homes with recovery
     resolve the contract and preserve the approved plan
     inventory availability separately from operation-specific content hashes
     defer unavailable downstream files to their consuming branches
@@ -384,9 +390,21 @@ previous joint correction or count reuse as replication. An explicit rerun
 bypasses native pair reuse. Automatic unversioned references require their own
 source identity before they qualify for pair-level reuse.
 
-An incomplete or conflicting import needs a recorded disposition and a precise
-repair request; it cannot silently trigger a replacement analysis or be treated
-as an empty/null result. Rerunning an accepted supplied analysis requires an
+An explicitly `reported_status: partial` primary is retained as a
+`supplied_partial` import, without completed-stage ownership. Automatic mode
+requests completion of that stage when its policy is enabled; explicit manual
+goals control which analyses run. Native completion uses its registered inputs
+and methods as a separate analysis, without merging unverified fragments into
+its result. A partial network covers no completed cohort graph. Source adjusted
+P values and testing-family declarations remain intact; correction is not
+recomputed from a partial fragment. When no native operation can be scheduled
+for a requested stage, the import records a specific completion need. Successful
+import validation alone does not establish completed analysis coverage. See the
+[partial-stage guide](study-pipeline-tutorial.md#partial-supplied-stages-and-native-completion).
+
+A conflicting import needs a recorded disposition and a precise repair request;
+it cannot silently choose a replacement scope or be treated as an empty/null
+result. Rerunning an accepted completed supplied analysis requires an
 explicit request or registered sensitivity/amendment. Do not reconstruct FDR
 from only supplied significant rows, invent a tested denominator, infer absent
 edges/variants as nulls, or describe unrecoverable participant QC as performed.
@@ -1138,6 +1156,20 @@ and bibliography-only states; deduplicate exact reused query receipts without
 discarding source links. Coverage records do not certify scientific appraisal
 or change statistical eligibility. See the [coverage guide](study-pipeline-tutorial.md#literature-coverage-in-finding-dossiers).
 
+Carry bibliographic candidates alongside those coverage records. Preserve
+normalized paper identifiers, public title/author/year/journal metadata,
+correction notices, metadata conflicts, query links and the verified producer
+source IDs. Match feature queries by exact feature ID, with declared gene-only
+queries kept as gene-level context. A general bibliography remains shared
+hypothesis background and cannot become feature-specific search coverage or
+support. Impact batches receive background only for their included hypotheses;
+the whole manuscript retains the study's background even when a hypothesis has
+no selected principal finding. Keep unsupported or conflicting query contexts
+quarantined. Preserve all candidate records under the declared payload budgets,
+without an arbitrary twenty-paper preview truncation. Metadata alone does not
+establish that a paper was read or supports a claim. See the
+[citation handoff guide](study-pipeline-tutorial.md#citation-candidates-in-impact-review-and-manuscript-drafting).
+
 ### AI-assisted selection of 3–5 principal findings
 
 AI is used here for comparative scientific interpretation: weigh the impact of
@@ -1547,3 +1579,6 @@ The source build adds [frozen-module transfer across cohort graphs](study-pipeli
 with exact namespaces, source coverage, shared-node/edge/sign diagnostics and
 typed stage reuse. These descriptive comparisons do not provide null-calibrated
 preservation tests or select a new primary graph.
+
+
+The [25-facet software acceptance](../analysis-pipeline-implementation.md#software-workflow-acceptance-2026-10-26) distinguishes implemented workflow contracts from live-model and scientific acceptance. [Managed variant software setup](variant-followup.md#application-managed-software-download-and-installation) is performed by the application, with explicit registration handling for ANNOVAR.

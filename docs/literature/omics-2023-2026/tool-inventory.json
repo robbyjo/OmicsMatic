@@ -457,10 +457,12 @@
       "P228",
       "P233"
     ],
-    "implementation_status": "missing",
+    "implementation_status": "excluded-by-user",
     "implementation_source": null,
-    "implementation_scope": "No equivalent workflow identified in the current source inventory.",
-    "validation_note": "Existing overlap/adapters require paper-specific option checks; missing integrations remain pending."
+    "implementation_scope": "Excluded from implementation at the user's explicit request on 2026-10-26 after reviewing the restricted 10x license. No Cell Ranger, ARC or ATAC runtime was downloaded, installed or executed. Its 44 source roles remain catalogued, with GEX, ARC, ATAC, mkfastq-only, reused resources and downstream analyses distinguished. This exclusion is not an implemented integration or a failed scientific result. No installation action is required; leave the tool skipped unless the user explicitly reopens it. See CELLRANGER_SOURCE_REVIEW.md.",
+    "validation_note": "All 44 observed family roles and 26 supporting pointers passed source-identity and paragraph-hash checks. Scientific runtime validation is skipped by user request. A separately installed private Ubuntu WSL environment does not establish Cell Ranger availability or production capacity.",
+    "exclusion_reason": "user-requested-license-exclusion",
+    "exclusion_date": "2026-10-26"
   },
   {
     "id": "bedtools",
@@ -1472,10 +1474,23 @@
       "P230",
       "P232"
     ],
-    "implementation_status": "missing",
-    "implementation_source": null,
-    "implementation_scope": "Discovered during per-paper completeness review; integration and independent validation pending.",
-    "validation_note": "Existing overlap/adapters require paper-specific option checks; missing integrations remain pending."
+    "implementation_status": "upstream-adapter-validated",
+    "implementation_source": "src/main/java/org/jlinalg/cli/PymolToolsCli.java",
+    "implementation_scope": "Validated development original PyMOL subset via pymol-tools in candidate pymol-candidate-4 (SHA-256 begins 09e4be51). Use Ubuntu 24.04 Linux x86_64 with CPython 3.12; on Windows run Linux Java inside WSL. Original rendering, measurements, align/super, bond/unbond, torsion and explicit canonical library mutations have independent native input, identity, numerical and graph audits. Keep full-precision final JSON ledgers: original mmCIF rounds coordinates, B factors and occupancy and omits bond categories. Supply the exact local validated wheel; install/download permission flags are explicit and analysis never installs. Missing, changed or forbidden dependencies skip with exit 3. Input/process/audit failures return 2 with quarantined partials. Typed PDB2PQR/APBS/potential-surface integration is available in workflow candidate b1c26fa4;read PDB2PQR_WORKFLOWS.md and POTENTIAL_SURFACE_WORKFLOWS.md. Manual interobject construction,paper-specific reconstruction and historical/commercial/full-paper parity remain open. Read PYMOL_WORKFLOWS.md and PYMOL_SOURCE_REVIEW.md. The separate native molecular-geometry helper needs only Java; canonical a104 is unchanged.",
+    "available_native_method": "molecular-geometry",
+    "native_method_candidate": "build/literature-review/molecular-geometry-candidate-1/jlinalg-0.3.7.jar",
+    "native_method_candidate_sha256": "798d3a08b64107eb7a7679359902efae3591f6ae5a89075f8e9a428698cc32b3",
+    "project_adapter_available": true,
+    "canonical_adapter_available": false,
+    "development_adapter_cli": "pymol-tools",
+    "development_candidate": "build/literature-review/pymol-candidate-4/jlinalg-0.3.7.jar",
+    "development_candidate_sha256": "09e4be51caf00fa252d8c37685e2cd043015a49875eadf131e96b0d0974985b2",
+    "validation_note": "Twenty source roles and three supporting pointers are reviewed. All 30 new tests pass on Java 21 and 25. The focused 30-test gate, strict Java 17 compilation, Javadoc and executable packaging passed. Fourteen actual packaged Linux workflows and five semantic failure controls checked 57 steps, 24 measurements and 221 original inlier pairs, including all 20 canonical mutation targets, Cl/Br/Mg/Se symbols and three unchanged public recipes with relative Unicode paths. Six native Windows cases skipped with exit 3 and Linux/WSL recovery. Installer permissions, allowed public downloads, corrupt/linked caches, changed homes, valid poisoned bytecode and actual owned timeout termination were tested. Original align and super retain distinct gapped correspondences. Six actual packaged potential-surface cases and a complete preparation/solver/surface example are separately validated in workflow candidate b1c26fa4;read POTENTIAL_SURFACE_WORKFLOWS.md and apbs-workflow-validation.json. Full-paper/edition equivalence is not claimed. See pymol-adapter-validation.json.",
+    "potential_surface_cli": "potential-surface",
+    "preparation_cli": "pdb2pqr-tools",
+    "workflow_candidate": "build/literature-review/apbs-workflow-candidate-3/jlinalg-0.3.7.jar",
+    "workflow_candidate_sha256": "b1c26fa467769d265115e9d5101f91eaa432da2df906e3a679086f68bfeb49ea",
+    "workflow_validation": "apbs-workflow-validation.json"
   },
   {
     "id": "ucsc-liftover",
@@ -1619,6 +1634,47 @@
     "validation_note": "Existing overlap/adapters require paper-specific option checks; missing integrations remain pending."
   },
   {
+    "id": "igv",
+    "name": "Integrative Genomics Viewer (IGV)",
+    "pattern": "(?<![A-Za-z0-9_])(?:(?-i:IGV)(?:_\\d+(?:\\.\\d+)*)?|Integrative Genomics Viewer)(?![A-Za-z0-9_])",
+    "role": "Interactive inspection and visualization of genomic alignments, variants or signal tracks",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "The interactive viewer, exact track/reference loading and published versions require separate setup/integration; a BED export is not a tested IGV session.",
+    "paper_count": 18,
+    "papers": [
+      "P003",
+      "P013",
+      "P044",
+      "P086",
+      "P089",
+      "P101",
+      "P109",
+      "P133",
+      "P158",
+      "P163",
+      "P164",
+      "P179",
+      "P195",
+      "P214",
+      "P215",
+      "P217",
+      "P218",
+      "P223"
+    ],
+    "implementation_status": "upstream-adapter-validated",
+    "implementation_scope": "Original IGV2.19.8 bounded igv-tools development command renders local FASTA/BED6/bedGraph/BigWig/SEG/BAM using a sealed Windows x64 fullJava21 runtime and hidden frame. Native exact reference/feature/scalar/missing/selected-read/raw-tag/full-count audits;explicit coordinates,units,scales,filters,overlapping mates and downsampling=false.126focused tests/13suites and126standalone perJava21/25;17packaged cases include12scientific workflows/5failure-skip controls.7,860reference bases,41,600integer counts and94selected-read comparisons. 18source roles/7supporting pointers,including P217,remain reviewed;current2426observations/623reviewed roles remain verified. Missing/changed dependencies skip3;input/process/audit failures return2 with retained partials and Required action. Read IGV_WORKFLOWS.md,IGV_SOURCE_REVIEW.md and IGV_RUNTIME_STATUS.md. Automatic CNA cohort-frequency/custom synteny summaries,methylation interpretation,manual diagnosis,unstated allele-depth choices and historical/full-paper parity remain unfinished. Canonical executable/release unchanged.",
+    "implementation_source": "src/main/java/org/jlinalg/cli/IgvToolsCli.java",
+    "validation_note": "Tool-level bounded development integration validated;source-paper-specific reconstruction remains open. 27actual installer/integrity controls across v1/v2 include allowed official download,forbidden install/download,healthy reuse,corrupt/unmanaged/unlisted/changed homes and changed Java admission hashes. Original OAuth/logger diagnostics and ruler coordinate-label behavior are retained;actual scientific values and zero attempted URL requests are independently checked. All250source identities remain verified;the current catalog has2426observations,623reviewed summaries and153supporting pointers.",
+    "project_adapter_available": true,
+    "canonical_adapter_available": false,
+    "original_runtime_probe_only": false,
+    "development_adapter_cli": "igv-tools",
+    "development_candidate": "build/literature-review/igv-candidate-3/jlinalg-0.3.7.jar",
+    "development_candidate_sha256": "38889b96d55b6f7ec8d8a4a66cad8168cf8908429a920386936928bce1f93a28",
+    "workflow_validation": "igv-workflow-validation.json"
+  },
+  {
     "id": "scrublet",
     "name": "Scrublet",
     "pattern": "(?<![A-Za-z0-9_])(?:Scrublet)(?![A-Za-z0-9_])",
@@ -1687,39 +1743,6 @@
     "implementation_source": "src/main/java/org/jlinalg/cli/SingleCellQcCli.java",
     "validation_note": "Actual standalone vst v1/v2 and Seurat v1/v2 phase-regression fixtures; 400 supplied-model residual references and 400 Seurat regressed positions, layer/metadata/memory/identity and runtime-failure checks. See SINGLE_CELL_QC_WORKFLOWS.md. Full-paper/version parity remains open.",
     "native_helper_source": "src/main/java/org/jlinalg/sequence/NegativeBinomialResiduals.java"
-  },
-  {
-    "id": "igv",
-    "name": "Integrative Genomics Viewer (IGV)",
-    "pattern": "(?<![A-Za-z0-9_])(?:(?-i:IGV)(?:_\\d+(?:\\.\\d+)*)?|Integrative Genomics Viewer)(?![A-Za-z0-9_])",
-    "role": "Interactive inspection and visualization of genomic alignments, variants or signal tracks",
-    "current_coverage": "missing",
-    "existing_source": null,
-    "coverage_note": "The interactive viewer, exact track/reference loading and published versions require separate setup/integration; a BED export is not a tested IGV session.",
-    "paper_count": 17,
-    "papers": [
-      "P003",
-      "P013",
-      "P044",
-      "P086",
-      "P089",
-      "P101",
-      "P109",
-      "P133",
-      "P158",
-      "P163",
-      "P164",
-      "P179",
-      "P195",
-      "P214",
-      "P215",
-      "P218",
-      "P223"
-    ],
-    "implementation_status": "missing",
-    "implementation_source": null,
-    "implementation_scope": "The interactive viewer, exact track/reference loading and published versions require separate setup/integration; a BED export is not a tested IGV session.",
-    "validation_note": "Existing overlap/adapters require paper-specific option checks; missing integrations remain pending."
   },
   {
     "id": "gcta",
@@ -1849,6 +1872,49 @@
     "implementation_source": "src/main/java/org/jlinalg/differential/EmpiricalBayesDifferential.java",
     "implementation_scope": "Related native method; upstream software options and numerical equivalence require separate validation.",
     "validation_note": "Existing overlap/adapters require paper-specific option checks; missing integrations remain pending."
+  },
+  {
+    "id": "saige",
+    "name": "SAIGE",
+    "pattern": "(?<![A-Za-z0-9_])(?<!Meta-)(?<!Meta )(?:SAIGE(?![- ]GENE))(?=$|[^A-Za-z0-9_]|[0-9]+(?:\\.[0-9]+)+(?![A-Za-z0-9_.]))",
+    "role": "Case-control mixed-model association",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "No equivalent workflow identified in the current source inventory.",
+    "paper_count": 16,
+    "papers": [
+      "P074",
+      "P105",
+      "P106",
+      "P123",
+      "P130",
+      "P135",
+      "P141",
+      "P147",
+      "P150",
+      "P191",
+      "P194",
+      "P200",
+      "P204",
+      "P210",
+      "P220",
+      "P244"
+    ],
+    "implementation_status": "missing",
+    "implementation_source": null,
+    "implementation_scope": "SAIGE family project integration remains missing. Nineteen reviewed roles distinguish 16 SAIGE, 2 SAIGE-GENE(+) and 1 Meta-SAIGE uses; P147 published-summary reuse is newly recovered. Direct association, framework reuse, gene tests, LD and external-summary reuse remain distinct. Original unmodified SAIGE 1.5.2 built privately and ran a controlled binary pipeline with 1,000 participants and 32 variants, with bounded independent cohort, allele, count and score checks. There is no admitted runtime, installer or typed project workflow yet. Skip dependent project analyses until validated. The separate native unrelated-select component in development candidate 9786ba29 requires only Java. It applies explicit phenotype eligibility, ties and complete additive-GRM graph assertions. Its result is maximal, not guaranteed largest; it does not calculate a GRM, fit SAIGE or run association tests. Read SAIGE_SOURCE_REVIEW.md, SAIGE_RUNTIME_STATUS.md and UNRELATED_SELECTION_WORKFLOWS.md.",
+    "validation_note": "All 604 earlier review objects are preserved. The current catalog has 250 papers, 377 tools, 2,426 observations, 623 reviews and 153 supporting pointers. Native component: 32 tests in 5 suites, 32 standalone tests per Java 21 and 25, 501 independent full-decision graphs and 21 actual packaged cases. The original probe does not establish independent GLMM, SPA, Firth or historical/full-paper parity. SAIGE, SAIGE-GENE and Meta-SAIGE badges remain missing.",
+    "project_adapter_available": false,
+    "canonical_adapter_available": false,
+    "original_runtime_probe_only": true,
+    "available_native_method": "unrelated-select",
+    "native_method_candidate": "build/literature-review/saige-native-candidate-1/jlinalg-0.3.7.jar",
+    "native_method_candidate_sha256": "9786ba29bd4dc92c43174af90e1ca643e5479cd5c8b824144a10635874059adf",
+    "native_helpers": [
+      "src/main/java/org/jlinalg/genetics/RelatedSampleSelection.java"
+    ],
+    "native_method_validation": "unrelated-selection-validation.json",
+    "runtime_intake": "saige-runtime-intake.json"
   },
   {
     "id": "alphafold",
@@ -2036,37 +2102,6 @@
     "implementation_status": "existing-lookup",
     "implementation_source": "src/main/java/org/jlinalg/cli/VariantFollowupCli.java",
     "implementation_scope": "Scope limited to the existing adapter, lookup or export; upstream software is not bundled.",
-    "validation_note": "Existing overlap/adapters require paper-specific option checks; missing integrations remain pending."
-  },
-  {
-    "id": "saige",
-    "name": "SAIGE",
-    "pattern": "(?<![A-Za-z0-9_])(?:SAIGE(?![- ]GENE))(?![A-Za-z0-9_])",
-    "role": "Case-control mixed-model association",
-    "current_coverage": "missing",
-    "existing_source": null,
-    "coverage_note": "No equivalent workflow identified in the current source inventory.",
-    "paper_count": 15,
-    "papers": [
-      "P074",
-      "P105",
-      "P106",
-      "P123",
-      "P130",
-      "P135",
-      "P141",
-      "P150",
-      "P191",
-      "P194",
-      "P200",
-      "P204",
-      "P210",
-      "P220",
-      "P244"
-    ],
-    "implementation_status": "missing",
-    "implementation_source": null,
-    "implementation_scope": "No equivalent workflow identified in the current source inventory.",
     "validation_note": "Existing overlap/adapters require paper-specific option checks; missing integrations remain pending."
   },
   {
@@ -2267,9 +2302,9 @@
       "P205"
     ],
     "implementation_status": "upstream-adapter-validated",
-    "implementation_scope": "Original PRS-CS source-fbc9ec0,1.1.0 and1.0.0 through prs-cs-tools,with native Java allele/marginal/unit/thinning arithmetic,streamed input ledgers,read-only HDF5 bridge and exact model/LD/posterior checks. Explicit formats,N interpretation,trait/panel/population/build labels,model/sampling/seed and exclusion policies. Means/draws/psi follow version capabilities;optional explicit per-allele mean-weight export. Known current NumPy and legacy SciPy alias deprecations retained;unknown/numerical warnings fail. Windows x64 sealed runtime;historical Python3.10.11 requires offline-reproduction choice and prominent EOL warning. Current source has separate compatible Python3.12. Missing/changed/forbidden dependencies skip exit3;scientific/input failures exit2 with quarantined canonical partials and exact recovery. Development candidate prscs-candidate-1 SHA starts33b26e76;canonical a104 is unchanged. Study-specific reference,chain stability,tuning/combination,overlap and prediction calibration require separate assessment. See PRSCS_WORKFLOWS.md.",
+    "implementation_scope": "Original PRS-CS profiles source-fbc9ec0, 1.1.0 and 1.0.0 run through prs-cs-tools. Native Java checks allele orientation, marginal effects, units, thinning, input ledgers, raw HDF5 LD and posterior identities. Declare the format, N interpretation, trait, panel, population/build labels, model, sampling, seed and exclusion policies. Means, draws and psi follow the selected version's capabilities; per-allele mean-weight export is explicit. Known NumPy and historical SciPy alias deprecations remain visible; unknown or numerical warnings fail. The sealed runtime requires Windows x64. Historical Python 3.10.11 requires an offline-reproduction choice and an EOL warning; the current source has a separate compatible Python 3.12 environment. Missing, changed or forbidden dependencies skip exit 3; input/process failures return exit 2 with quarantined canonical partials and recovery steps. Use development candidate prscs-candidate-1, SHA starts 33b26e76; canonical a104 is unchanged. Reference compatibility, chain stability, tuning, score combination, overlap and predictive calibration require separate assessment. See PRSCS_WORKFLOWS.md.",
     "implementation_source": "src/main/java/org/jlinalg/cli/PrsCsToolsCli.java",
-    "validation_note": "218 focused tests/25 required suites passed with zero failures/errors/skips;30 native and8 live command tests per Java21/25;12 installer policy tests. Frozen unmodified56 original runs have208 output files,all reproduced from the revised sealed installation. Native allele reference1728triples,marginal592values and1040unit relationships passed. Twelve actual packaged workflows/28controls on Java21/25 checked240model rows,520posterior scalars,120psi fields,200explicit score weights and44exact original output files. Corrected1.1.0 title-case flags and integral thinning rules have actual upstream edge controls. Known version-specific deprecations remain prominent;unknown/numerical warnings fail. Twelve paper roles are reviewed;simulation,common-variant inference,score application,tuning and ancestry combination remain distinct. Synthetic checks do not establish chain convergence or predictive calibration. Development candidate,canonical history and public release are separate. See prscs-adapter-validation.json.",
+    "validation_note": "218 focused tests across 25 required suites passed with zero failures, errors or skips. Each of Java 21 and 25 passed 30 native tests and 8 live command tests; 12 installer policy tests also passed. All 208 output files from 56 unmodified original runs reproduced from the revised sealed installation. Native checks covered 1,728 allele triples, 592 marginal values and 1,040 unit relationships. Twelve actual packaged workflows and 28 controls checked 240 model rows, 520 posterior scalars, 120 psi fields, 200 explicit score weights and 44 exact original output files. Actual upstream edge controls cover version 1.1.0 title-case flags and integral thinning rules. Twelve paper roles distinguish simulation, common-variant inference, score application, tuning and ancestry combination. Synthetic checks do not establish chain convergence or predictive calibration. Development candidate, canonical history and public release remain separate. See prscs-adapter-validation.json.",
     "native_helpers": [
       "src/main/java/org/jlinalg/genetics/PrsCsMath.java",
       "src/main/java/org/jlinalg/cli/PrsCsInputs.java",
@@ -5697,6 +5732,40 @@
     "validation_note": "Existing overlap/adapters require paper-specific option checks; missing integrations remain pending."
   },
   {
+    "id": "apbs",
+    "name": "APBS",
+    "pattern": "(?<![A-Za-z0-9_])APBS(?![A-Za-z_])",
+    "role": "Poisson-Boltzmann electrostatic potential calculation;paper maps rendered through the PyMOL plugin",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Two primary source roles reviewed;typed present-day original solver subset has separate development validation. Paper-specific preparation,parameters and surface reproduction remain open.",
+    "paper_count": 2,
+    "papers": [
+      "P013",
+      "P026"
+    ],
+    "implementation_status": "upstream-adapter-validated",
+    "implementation_source": "src/main/java/org/jlinalg/cli/ApbsToolsCli.java",
+    "implementation_scope": "Validated development original APBS3.5.0 solver via apbs-tools in apbs-workflow-candidate-3 (SHA-256 begins b1c26fa4),plus typed original PDB2PQR3.8.0 preparation and actual PyMOL3.1.0 potential-surface. Windows x86_64 prepares/solves;Linux Java in WSL renders. Every potential node,grid and raw energy is audited;raw total energy includes self-energy and is NOT solvation/binding free energy. Source-PQR zero radii remain. Explicit units,protonation,force field,grid,model,radius policy and ramp are required. Analysis never installs;missing,changed or forbidden dependencies skip3 with recovery;input/process/audit failures return2 and quarantine partials. Native electrostatic-grid needs only Java. Original DX long-token exponent truncation is prevented by canonical short float32 delivery with a complete exact float32 field hash;raw DX retained. Read APBS_WORKFLOWS.md,PDB2PQR_WORKFLOWS.md,POTENTIAL_SURFACE_WORKFLOWS.md and APBS_SOURCE_REVIEW.md. Historical/paper-specific reconstruction remains open;canonical a104 is unchanged.",
+    "project_adapter_available": true,
+    "canonical_adapter_available": false,
+    "development_adapter_cli": "apbs-tools",
+    "development_candidate": "build/literature-review/apbs-workflow-candidate-3/jlinalg-0.3.7.jar",
+    "development_candidate_sha256": "b1c26fa467769d265115e9d5101f91eaa432da2df906e3a679086f68bfeb49ea",
+    "available_native_method": "electrostatic-grid",
+    "native_helpers": [
+      "src/main/java/org/jlinalg/protein/OpenDxGrid.java",
+      "src/main/java/org/jlinalg/protein/PqrStructure.java",
+      "src/main/java/org/jlinalg/protein/ElectrostaticUnits.java"
+    ],
+    "validation_note": "Two primary source roles reviewed;neither specifies an APBS version. P026 APBS74 is a citation suffix;nearby PyMOL versions are separate. No explicit PDB2PQR/PROPKA paper use was found in250hash-checked source XMLs. Earlier solver candidate:48 focused tests;10solver cases match6,013,002nodes;Born/charge-scaling and12runtime policies passed. New workflow candidate:107 focused tests/10suites,strictJava17,Javadoc,packaging and107standalone tests perJava21/25. Preparation:14independent original comparisons/8988atoms/44,940scalars,5controls and16installer/runtime policies. Surface:6actual packaged cases/1,647,750nodes,7controls and3nativeWindows skips. RealJava25 Unicode full preparation-to-solve-to-surface chain passed with exact provenance hashes. Read apbs-workflow-validation.json and stage WARNINGS.md;no full-paper equivalence.",
+    "potential_surface_cli": "potential-surface",
+    "preparation_cli": "pdb2pqr-tools",
+    "workflow_candidate": "build/literature-review/apbs-workflow-candidate-3/jlinalg-0.3.7.jar",
+    "workflow_candidate_sha256": "b1c26fa467769d265115e9d5101f91eaa432da2df906e3a679086f68bfeb49ea",
+    "workflow_validation": "apbs-workflow-validation.json"
+  },
+  {
     "id": "great",
     "name": "GREAT",
     "pattern": "(?-i:(?<![A-Za-z0-9_])(?:GREAT)(?![A-Za-z0-9_]))",
@@ -6309,8 +6378,11 @@
     ],
     "implementation_status": "missing",
     "implementation_source": null,
-    "implementation_scope": "No equivalent workflow identified in the current source inventory.",
-    "validation_note": "Existing overlap/adapters require paper-specific option checks; missing integrations remain pending."
+    "implementation_scope": "SAIGE family project integration remains missing. Nineteen reviewed roles distinguish 16 SAIGE, 2 SAIGE-GENE(+) and 1 Meta-SAIGE uses; P147 published-summary reuse is newly recovered. Direct association, framework reuse, gene tests, LD and external-summary reuse remain distinct. Original unmodified SAIGE 1.5.2 built privately and ran a controlled binary pipeline with 1,000 participants and 32 variants, with bounded independent cohort, allele, count and score checks. There is no admitted runtime, installer or typed project workflow yet. Skip dependent project analyses until validated. The separate native unrelated-select component in development candidate 9786ba29 requires only Java. It applies explicit phenotype eligibility, ties and complete additive-GRM graph assertions. Its result is maximal, not guaranteed largest; it does not calculate a GRM, fit SAIGE or run association tests. Read SAIGE_SOURCE_REVIEW.md, SAIGE_RUNTIME_STATUS.md and UNRELATED_SELECTION_WORKFLOWS.md.",
+    "validation_note": "All 604 earlier review objects are preserved. The current catalog has 250 papers, 377 tools, 2,426 observations, 623 reviews and 153 supporting pointers. Native component: 32 tests in 5 suites, 32 standalone tests per Java 21 and 25, 501 independent full-decision graphs and 21 actual packaged cases. The original probe does not establish independent GLMM, SPA, Firth or historical/full-paper parity. SAIGE, SAIGE-GENE and Meta-SAIGE badges remain missing.",
+    "project_adapter_available": false,
+    "canonical_adapter_available": false,
+    "original_runtime_probe_only": false
   },
   {
     "id": "combat",
@@ -7545,8 +7617,11 @@
     ],
     "implementation_status": "missing",
     "implementation_source": null,
-    "implementation_scope": "Paper-specific method identified during title and code-link review; authentic integration and scientific validation pending.",
-    "validation_note": "Existing overlap/adapters require paper-specific option checks; missing integrations remain pending."
+    "implementation_scope": "SAIGE family project integration remains missing. Nineteen reviewed roles distinguish 16 SAIGE, 2 SAIGE-GENE(+) and 1 Meta-SAIGE uses; P147 published-summary reuse is newly recovered. Direct association, framework reuse, gene tests, LD and external-summary reuse remain distinct. Original unmodified SAIGE 1.5.2 built privately and ran a controlled binary pipeline with 1,000 participants and 32 variants, with bounded independent cohort, allele, count and score checks. There is no admitted runtime, installer or typed project workflow yet. Skip dependent project analyses until validated. The separate native unrelated-select component in development candidate 9786ba29 requires only Java. It applies explicit phenotype eligibility, ties and complete additive-GRM graph assertions. Its result is maximal, not guaranteed largest; it does not calculate a GRM, fit SAIGE or run association tests. Read SAIGE_SOURCE_REVIEW.md, SAIGE_RUNTIME_STATUS.md and UNRELATED_SELECTION_WORKFLOWS.md.",
+    "validation_note": "All 604 earlier review objects are preserved. The current catalog has 250 papers, 377 tools, 2,426 observations, 623 reviews and 153 supporting pointers. Native component: 32 tests in 5 suites, 32 standalone tests per Java 21 and 25, 501 independent full-decision graphs and 21 actual packaged cases. The original probe does not establish independent GLMM, SPA, Firth or historical/full-paper parity. SAIGE, SAIGE-GENE and Meta-SAIGE badges remain missing.",
+    "project_adapter_available": false,
+    "canonical_adapter_available": false,
+    "original_runtime_probe_only": false
   },
   {
     "id": "snptest",

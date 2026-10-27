@@ -17,7 +17,7 @@ import subprocess
 import xml.etree.ElementTree as ET
 import yaml
 
-MODES=("exact","by-preserved","monte-carlo","primary-meta","selected-ranking","ties","phenotype-null","no-eligible-terms")
+MODES=("exact","by-preserved","monte-carlo","primary-meta","primary-meta-auto","selected-ranking","ties","phenotype-null","no-eligible-terms")
 WAITING={"selected-ranking","ties","phenotype-null"}
 EPS=1e-12
 
@@ -58,7 +58,7 @@ def generate(project,mode):
     if mode=="selected-ranking":gsea["ranking"].update({"coverage":"selected_only","tested_genes":1000})
     if mode=="phenotype-null":gsea["null_model"]="phenotype"
     supplied=[]
-    if mode=="primary-meta":
+    if mode in ("primary-meta","primary-meta-auto"):
         gsea.pop("ranking")
         (project/"meta.tsv").write_text("feature_id\tbeta\tse\tp_value\n"+"".join(f"f{i+1}\t{v}\t1\t{math.erfc(abs(v)/math.sqrt(2))}\n" for i,v in enumerate(statistics)),encoding="utf-8")
         (project/"annotation.tsv").write_text("feature_id\tgene_symbol\n"+"".join(f"f{i+1}\t{g}\n" for i,g in enumerate(genes)),encoding="utf-8")
@@ -73,6 +73,10 @@ def generate(project,mode):
            "resources":{"directory":"fixture-resources","network":"offline","downloads":"deny"},"datasets":[],
            "hypotheses":[{"id":"H","description":"Complete GSEA and missing pathway/module work.","analysis":{"mode":"manual","goals":["ranked_gsea","pathway_network","network_modules","module_gene_ontology"],
              "gsea":gsea,"network":{"term_alpha":.6 if mode=="by-preserved" else .2,"pathway_threshold":.4,"go_min_size":1},"supplied_results":supplied}}]}
+    if mode=="primary-meta-auto":
+        study["project"]["objective"]="exploration"
+        study["hypotheses"][0]["analysis"]["mode"]="auto"
+        study["hypotheses"][0]["analysis"].pop("goals")
     write(project/"study.json",study)
     write(project/"reference-input.json",{"genes":genes,"statistics":statistics,"sets":sets,"collection":collection,"adjustment":gsea["adjustment"],"minimum_size":2,"maximum_size":4})
     write(project/"original-input-hashes.json",{str(p.relative_to(project)):sha(p) for p in project.rglob("*") if p.is_file()})
@@ -148,7 +152,13 @@ def verify(root,jar):
             assert metadata["details"]["method_report"]["performed"] is False
             assert not (one(project,"pathway_network")[0]/"network-nodes.tsv").exists()
             cli(jar,"verify","--project",project);continue
-        assert all(d["state"]=="complete" for _,d in records),records
+        if mode=="primary-meta-auto":
+            assert not any(d["state"]=="failed" for _,d in records),records
+            assert all(one(project,kind)[1]["state"]=="complete" for kind in ("meta_analysis","ranked_gsea","pathway_network","network_modules","module_gene_ontology"))
+            resolved=yaml.safe_load((project/"resolved-study.yaml").read_text());receipt=resolved["_resolution"]["followup_applicability"]["H"]
+            assert receipt["source_id"]=="external-meta" and receipt["automatic_goal_merge"] is True
+            assert "ranked_gsea" in resolved["hypotheses"][0]["analysis"]["goals"]
+        else:assert all(d["state"]=="complete" for _,d in records),records
         data=json.loads((project/"reference-input.json").read_text());expected=reference(data);table=rows(folder/"ranked-gsea.tsv")
         assert len(table)==len(expected)
         probabilities={}
@@ -184,7 +194,7 @@ def verify(root,jar):
             png=(folder/curve["png"]).read_bytes();pdf=(folder/curve["pdf"]).read_bytes();assert png[:8]==b"\x89PNG\r\n\x1a\n" and pdf.startswith(b"%PDF-")
             width,height=struct.unpack(">II",png[16:24]);assert width>=640 and height>=400 and len(pdf)>1000
         if mode=="exact":assert all(d.get("reused_from_cache") is True for _,d in records)
-        if mode=="primary-meta":
+        if mode in ("primary-meta","primary-meta-auto"):
             assert metadata["details"]["source_FDR_filter_applied"] is False and metadata["details"]["ranked_genes"]==10
             _,meta=one(project,"meta_analysis");assert meta["details"]["analysis_executed_by_jlinalg"] is False
             assert all(float(r["p_value"])>.05 for r in rows(project/"meta.tsv"))
@@ -194,6 +204,7 @@ def verify(root,jar):
     report={"jar_sha256":sha(jar),"verifier_sha256":sha(verifier),"exact_ES_NES_tails_leading_edges_independently_reconstructed":True,
             "Monte_Carlo_agrees_with_exact_reference_within_declared_six_SE_bound":True,"Monte_Carlo_counts_resolution_and_nonzero_P_verified":True,
             "complete_term_BH_BY_and_network_selection_preserved":True,"provided_meta_reused_all_nonsignificant_features_ranked":True,
+            "automatic_meta_inference_completed_GSEA_and_pathway_modules":True,"scenarios":len(MODES),
             "gene_set_to_network_to_joint_module_GO_verified":True,"selected_rankings_ties_and_requested_phenotype_null_wait":True,
             "no_eligible_terms_complete_without_false_test_claim":True,"PNG_PDF_curves_match_numeric_reference":True,
             "input_hashes_unchanged":True,"native_resume_reuses_all_operations":True,"project_local_resources":True,"external_requests":0,

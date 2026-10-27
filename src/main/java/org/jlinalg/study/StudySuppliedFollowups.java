@@ -9,15 +9,15 @@ import java.util.Set;
 /** Planning applicability from a registered supplied primary, never statistical eligibility. */
 final class StudySuppliedFollowups {
     private StudySuppliedFollowups() { }
-    private static final Set<String> GENES = Set.of("gene_symbol", "symbol", "ensembl_gene", "ensembl_gene_id");
+    private static final Set<String> GENES = Set.of("gene_symbol", "ensembl_gene");
     private static final Set<String> PROTEINS = Set.of("protein", "uniprot", "uniprot_accession", "uniprot_isoform");
     private static final Set<String> PROTEOMICS = Set.of("proteomics", "single_cell_protein", "spatial_proteomics");
-    private static final Set<String> VARIANTS = Set.of("", "auto", "variant", "snp", "rsid");
 
     record Applicability(boolean variants, boolean molecular, boolean genes, boolean protein,
             Map<String,Object> receipt) { }
 
-    static Applicability inspect(String hypothesis, Map<String,Object> analysis) {
+    static Applicability inspect(String hypothesis, Map<String,Object> analysis,
+            Map<String,Map<String,Object>> datasets, Set<String> selected) {
         var policy = StudyPrimaryPolicy.resolve(StudyIO.optionalMap(analysis.get("primary_result"), "primary_result"));
         if ("association".equals(policy.get("kind")) || policy.containsKey("dataset_id"))
             return absent("registered_primary_association");
@@ -25,12 +25,24 @@ final class StudySuppliedFollowups {
         for (var definition : StudySuppliedResultPolicy.resolve(analysis)) {
             ++index;
             if (!"primary".equals(definition.get("role")) || !"meta_analysis".equals(definition.get("kind"))) continue;
-            String operation = StudyPlanner.operationId(hypothesis, index, "meta_analysis");
+            String operation = StudyPlanner.operationId(hypothesis, index, StudySuppliedResultPolicy.operationType(definition));
             if (policy.containsKey("operation_id") && !operation.equals(policy.get("operation_id"))) continue;
             var scope = StudyIO.map(definition.get("scope"), "scope");
             String modality = String.valueOf(scope.getOrDefault("modality", "unknown"));
+            String modalityOrigin = scope.containsKey("modality") ? "supplied_scope" : "undeclared";
+            if (!scope.containsKey("modality")) {
+                var references = new java.util.LinkedHashSet<String>();
+                for (String id : selected) {
+                    var dataset = datasets.get(id);
+                    if (StudyAnalysisReferences.isReference(dataset) && definition.get("id").equals(dataset.get("supplied_result_id")))
+                        references.add(String.valueOf(dataset.get("type")));
+                }
+                if (references.size() == 1) {
+                    modality = references.iterator().next(); modalityOrigin = "registered_analysis_references";
+                }
+            }
             String namespace = String.valueOf(scope.getOrDefault("feature_id_type", ""));
-            boolean variants = Set.of("gwas", "genomics").contains(modality) && VARIANTS.contains(namespace);
+            boolean variants = StudyVariantFollowupPolicy.variantScope(modality, namespace);
             boolean protein = PROTEOMICS.contains(modality) || PROTEINS.contains(namespace);
             boolean molecular = StudyNetworkPolicy.MOLECULAR.contains(modality) && !"generic".equals(modality) || protein;
             boolean genes = GENES.contains(namespace) || molecular && !"metabolomics".equals(modality);
@@ -38,6 +50,7 @@ final class StudySuppliedFollowups {
             receipt.put("status", "supplied_primary_metadata");
             receipt.put("source_id", definition.get("id")); receipt.put("operation_id", operation);
             receipt.put("modality", modality); receipt.put("feature_id_type", namespace);
+            receipt.put("modality_origin", modalityOrigin);
             receipt.put("reported_status", definition.get("reported_status"));
             receipt.put("variant_followups_applicable", variants);
             receipt.put("gene_followups_applicable", genes);
@@ -58,6 +71,9 @@ final class StudySuppliedFollowups {
         var goals = new java.util.ArrayList<String>();
         if (a.genes()) goals.addAll(List.of("gene_ontology", "pathway_enrichment"));
         if (a.variants()) {
+            var variant = StudyIO.map(analysis.get("variant_followup"), "variant_followup");
+            if (Boolean.TRUE.equals(StudyIO.map(variant.get("consequences"), "consequences").get("enabled"))
+                    || Boolean.TRUE.equals(StudyIO.map(variant.get("alphagenome"), "alphagenome").get("enabled"))) goals.add("variant_scoring");
             if (enabled(analysis,"gwas_diagnostics")) goals.add("gwas_diagnostics");
             if (enabled(analysis,"gwas_enrichment")) goals.add("gwas_enrichment");
         }

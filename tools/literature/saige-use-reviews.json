@@ -1,0 +1,441 @@
+[
+  {
+    "paper_id": "P074",
+    "primary_paragraph": 37,
+    "observed_role": "cohort-GWAS-alternative",
+    "new_source_role": false,
+    "review": {
+      "pmcid": "PMC12807872",
+      "doi": "10.1038/s41588-025-02417-6",
+      "tool_id": "saige",
+      "evidence_paragraph_sha256": "168834f2939601993b7e57f590d8bf29b291c4ab337e060e297855774c644bc0",
+      "use_summary": "Participating aortic-stenosis consortium studies used SAIGE or REGENIE for ancestry-stratified autosomal GWAS and sex-stratified autosomal/X-chromosome analyses.",
+      "implementation_scope_note": "The paragraph does not assign every cohort to one engine or give a SAIGE version/model options. TOPMed imputation and study-specific QC preceded association;X-chromosome/ploidy/sex-specific choices require separate validation.43is a citation,not a version.",
+      "version_reported_near_name": ""
+    }
+  },
+  {
+    "paper_id": "P105",
+    "primary_paragraph": 37,
+    "observed_role": "LOCO-single-variant-GWAS",
+    "new_source_role": false,
+    "review": {
+      "pmcid": "PMC10703676",
+      "doi": "10.1038/s41588-023-01569-7",
+      "tool_id": "saige",
+      "evidence_paragraph_sha256": "8def66c08a11c52444fc1b6e6ae9b80d8744d8768039f44c758dba8d4422c6eb",
+      "use_summary": "Ran SAIGE0.44 single-variant and sex-stratified association tests,adjusting for age,sex and ten PCs;fit LOCO null models from LD-pruned array variants with MAF>1% and excluded test variants with MAC<20.",
+      "implementation_scope_note": "Sex-stratified models omit sex. A separate cross-ancestry analysis reused published European PheWeb UKB-SAIGE summaries. Original0.44/current1.5.2 settings are not asserted equivalent;pruning/imputation and meta-analysis remain separate.",
+      "version_reported_near_name": "0.44",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 42,
+          "paragraph_sha256": "ce9ef6d28ddae97c89dcbb7d7f64560f9526096dd0678bcfc6e3e3e4367e8ecb",
+          "section": "Methods / Cross-ancestry meta-analysis"
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "P106",
+    "primary_paragraph": 27,
+    "observed_role": "cohort-score-statistics-and-LD",
+    "new_source_role": false,
+    "review": {
+      "pmcid": "PMC12695641",
+      "doi": "10.1038/s41588-025-02403-y",
+      "tool_id": "saige",
+      "evidence_paragraph_sha256": "852b30b52495ab3e618f39e8d8ae3357e3eb4d32b7b001d32b7de89d6159eb85",
+      "use_summary": "Generated per-cohort SAIGE variant score statistics,variances and P values,plus phenotype-independent sparse genotype cross-product LD matrices,for Meta-SAIGE analyses of binary and continuous traits.",
+      "implementation_scope_note": "Dense-GRM variance-ratio and direct sparse-GRM calculations are distinct. Methods46describes ancestry-specific UKB/All of Us inputs. Sparse LD is a genotype cross-product,not a phenotype-weighted covariance. Meta-SAIGE combination and set testing are separate software roles;the SAIGE version is unstated.",
+      "version_reported_near_name": "",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 46,
+          "paragraph_sha256": "3c7b8cce83928b054cd004d8b24646606882fc309daee399c0f949d260a8022e",
+          "section": "Methods / UKB and All of Us WES data meta-analysis"
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "P106",
+    "primary_paragraph": 39,
+    "observed_role": "individual-level-gene-test-comparison",
+    "new_source_role": false,
+    "review": {
+      "pmcid": "PMC12695641",
+      "doi": "10.1038/s41588-025-02403-y",
+      "tool_id": "saige-gene",
+      "evidence_paragraph_sha256": "6d0f85b09055863c75b17aa2adc1040c973bc73372fe3b4befd88dd23e86822f",
+      "use_summary": "Used SAIGE-GENE+ on all individual-level UKB exome data as the comparator to Meta-SAIGE across three binary and three continuous traits,with age,sex,batch,ten PCs and a sparse GRM cutoff0.05.",
+      "implementation_scope_note": "The comparison includes equal and4:3:2cohort splits for meta-analysis. Source Methods reports166,960participants;Results has a rounded160,000description. The exact SAIGE-GENE+ version/options are not given;set tests and meta-analysis must remain distinct.",
+      "version_reported_near_name": "",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 9,
+          "paragraph_sha256": "fb50f6e1a82d4ea76d5199332de57f0c8a5c080eb92298317bed320c98687e26",
+          "section": "Results / Comparison between Meta-SAIGE and SAIGE-GENE+"
+        },
+        {
+          "paragraph_index": 40,
+          "paragraph_sha256": "af2022a27c9b72efb88997902c71f363b94d9fbf4ce8cc84bc7925c0d8e5d385",
+          "section": "Methods / Type I error and power evaluation"
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "P106",
+    "primary_paragraph": 39,
+    "observed_role": "rare-variant-meta-analysis",
+    "new_source_role": false,
+    "review": {
+      "pmcid": "PMC12695641",
+      "doi": "10.1038/s41588-025-02403-y",
+      "tool_id": "metasaige",
+      "evidence_paragraph_sha256": "6d0f85b09055863c75b17aa2adc1040c973bc73372fe3b4befd88dd23e86822f",
+      "use_summary": "Combined cohort summaries with Meta-SAIGE,compared results against individual-level SAIGE-GENE+,and analyzed ancestry-specific UKB/All of Us rare-variant data.",
+      "implementation_scope_note": "Meta-SAIGE performs summary-statistic combination and ancestry-specific ultrarare collapsing;SAIGE creates its cohort statistics/LD. It is a separate missing integration,not established by a SAIGE runtime. Source comparison cohort sizes are retained without silently reconciling their totals. No version is stated.",
+      "version_reported_near_name": "",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 26,
+          "paragraph_sha256": "dc6a57b57090fd2b74d2c7f96e8580bde0677c3af64e8a2bbb03621cd045cbec",
+          "section": "Methods / Workflow of Meta-SAIGE"
+        },
+        {
+          "paragraph_index": 38,
+          "paragraph_sha256": "9f9872350d1d033ae28336e04f6de10be6256f9dbf4d4fee49a0ac3daab20df3",
+          "section": "Methods / Ancestry-specific collapsing"
+        },
+        {
+          "paragraph_index": 46,
+          "paragraph_sha256": "3c7b8cce83928b054cd004d8b24646606882fc309daee399c0f949d260a8022e",
+          "section": "Methods / UKB and All of Us WES data meta-analysis"
+        },
+        {
+          "paragraph_index": 47,
+          "paragraph_sha256": "1eed10d62e07dcbeb465cdf2629ae6c5d0a9a28726dd612a1cb606bbff737418",
+          "section": "Methods / Computational cost evaluation"
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "P123",
+    "primary_paragraph": 34,
+    "observed_role": "multicohort-binary-GWAS",
+    "new_source_role": false,
+    "review": {
+      "pmcid": "PMC13553293",
+      "doi": "10.1038/s41588-026-02741-5",
+      "tool_id": "saige",
+      "evidence_paragraph_sha256": "40ee269ef60cacfd26ed750d77a40cddc5d4c78c9ac8cbab506c8f4f5be5555f",
+      "use_summary": "Used SAIGE0.45 GLMMs for Japanese multiple-sclerosis GWAS and SAIGE1.0.7 for Genomics England European-ancestry analysis,adjusting for age,sex and ten PCs.",
+      "implementation_scope_note": "Japanese tests used MAF>0.5% and imputationR2>0.7. The Genomics England cohort had244cases/28,846controls after distinct QC. These are different reported versions/cohorts;the modern runtime does not establish their historical equivalence.",
+      "version_reported_near_name": "0.45;1.0.7",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 37,
+          "paragraph_sha256": "3b8d344a1bd51a6edc149fdbeb246d44ecaa22200f18b4f6323e98def53c4946",
+          "section": "Methods / Genomics England"
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "P130",
+    "primary_paragraph": 52,
+    "observed_role": "binary-neuropathology-GWAS",
+    "new_source_role": false,
+    "review": {
+      "pmcid": "PMC11549054",
+      "doi": "10.1038/s41588-024-01939-9",
+      "tool_id": "saige",
+      "evidence_paragraph_sha256": "742e8d6f9b81868607acfad42e606882b28eef31a58888eb6d33aaed87d22827",
+      "use_summary": "Analyzed binary neuropathology phenotypes with SAIGE logistic mixed models and additive variant score tests;SAIGE1.1.3 is listed among null-model packages used in the two-stage analysis.",
+      "implementation_scope_note": "Ordinal phenotypes used POLMM/GRAB,not a SAIGE ordinal model. Fixed covariates included age at death,sex,cohort and ten PC-AiR components;the GRM modeled relatedness. Per-source package allocation,clumping and METAL meta-analysis remain separate.",
+      "version_reported_near_name": "1.1.3",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 53,
+          "paragraph_sha256": "f7f22a013eeaab77c24861cdb84d3f796f9747a5ed2c63124b638d5a81f57151",
+          "section": "Methods / Statistical analyses / Single-variant GWAS"
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "P135",
+    "primary_paragraph": 30,
+    "observed_role": "logistic-GWAS-alternative",
+    "new_source_role": false,
+    "review": {
+      "pmcid": "PMC10632131",
+      "doi": "10.1038/s41588-023-01527-3",
+      "tool_id": "saige",
+      "evidence_paragraph_sha256": "1a3032e17b64d761ca2d072062921337c0beec279fa702df87f5b826ca08c5f0",
+      "use_summary": "Contributing forearm-fracture cohorts used SAIGE or PLINK logistic models for additive per-allele SNP effects,with sex,age/age-squared,PCs,study site and family structure as applicable.",
+      "implementation_scope_note": "The paragraph does not specify which engine/options each cohort used or a SAIGE version. Genomic control where needed and fixed-effect inverse-variance METAL meta-analysis are separate stages;hg19coordinate standardization does not establish allele harmonization.",
+      "version_reported_near_name": ""
+    }
+  },
+  {
+    "paper_id": "P141",
+    "primary_paragraph": 36,
+    "observed_role": "null-model-framework-and-score-tests",
+    "new_source_role": false,
+    "review": {
+      "pmcid": "PMC13553284",
+      "doi": "10.1038/s41588-026-02705-9",
+      "tool_id": "saige",
+      "evidence_paragraph_sha256": "adc872dbc252821917fa1a2328a3adc3f3f86f7a4c8b4f928c0c1b25160cf593",
+      "use_summary": "Used the SAIGE step1 average-information null-GLMM fitting approach and SAIGE two-sided single-variant score-test P values in the RareEffect analyses.",
+      "implementation_scope_note": "The primary Methods paragraph describes the fitting approach;supporting Results explicitly attributes single-variant P values to SAIGE. RareEffect heritability/effect estimation and linear regression for collapsed-variant P values are separate operations. The SAIGE version is unstated.",
+      "version_reported_near_name": "",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 11,
+          "paragraph_sha256": "d42026e1705640225ea3b4739c1341a6ee049d86500d7eaf01dd795f82574335",
+          "section": "Results / UKB WES data analysis"
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "P141",
+    "primary_paragraph": 55,
+    "observed_role": "gene-tests-and-PRS-gene-selection",
+    "new_source_role": false,
+    "review": {
+      "pmcid": "PMC13553284",
+      "doi": "10.1038/s41588-026-02705-9",
+      "tool_id": "saige-gene",
+      "evidence_paragraph_sha256": "2c4020bf555354e571be311f67c99fb37d6f4bd796e068131469ac67dea637df",
+      "use_summary": "Used SAIGE-GENE+ gene-level P values for burden/SKAT-O comparisons and selection of genes for rare-variant PRS;the training-set selection used P<2.5e-6,or the top ten genes when fewer passed.",
+      "implementation_scope_note": "The source also describes an8:2training/test split and adopts SAIGE-GENE+-style ultrarare collapsing within gene/function groups. RareEffect effect estimation and PRS construction are separate;an algorithm analogy alone is not the evidence for running a gene test. The software version is unstated.",
+      "version_reported_near_name": "",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 10,
+          "paragraph_sha256": "58ae040d127ad5cca6e89f39f66d9d8d55c39154d3616b8ba03e9ac38cc682b2",
+          "section": "Results / UKB WES data analysis"
+        },
+        {
+          "paragraph_index": 11,
+          "paragraph_sha256": "d42026e1705640225ea3b4739c1341a6ee049d86500d7eaf01dd795f82574335",
+          "section": "Results / UKB WES data analysis"
+        },
+        {
+          "paragraph_index": 12,
+          "paragraph_sha256": "10d564c384bcb0522f7f812bafba3ab0c6088166d2c2b1cad37a8dcbdc96dc18",
+          "section": "Results / UKB WES data analysis"
+        },
+        {
+          "paragraph_index": 37,
+          "paragraph_sha256": "966d29b997ef82afeb9a24c6ca2168701c3c0e12576a99e87ef994c567607562",
+          "section": "Methods / Estimation of the gene-level (region-level) heritability (step 2)"
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "P147",
+    "primary_paragraph": 28,
+    "observed_role": "published-summary-statistic-reuse",
+    "new_source_role": true,
+    "review": {
+      "pmcid": "PMC12597826",
+      "doi": "10.1038/s41588-025-02370-4",
+      "tool_id": "saige",
+      "evidence_paragraph_sha256": "9e21720f9aafcf4a0948d434384d91d7de0de7a33bcf3918583f80c134a94ce1",
+      "use_summary": "Reused PheWeb SAIGE GWAS summaries for1,402PheCodes to obtain covariance estimates for chronic-kidney-disease LTPI risk analysis.",
+      "implementation_scope_note": "This direct Results paragraph describes published summary-data reuse,not a new SAIGE fit or access to individual-level UKB genotypes. eMERGE prevalences supplied population-prevalence proxies;trait selection/LTPI modeling are separate. The SAIGE version/model options are unstated.",
+      "version_reported_near_name": ""
+    }
+  },
+  {
+    "paper_id": "P150",
+    "primary_paragraph": 67,
+    "observed_role": "published-summary-statistic-reuse",
+    "new_source_role": false,
+    "review": {
+      "pmcid": "PMC11549047",
+      "doi": "10.1038/s41588-024-01933-1",
+      "tool_id": "saige",
+      "evidence_paragraph_sha256": "662a17036019af195fa259d09bb94de493239205cc6bbaa33378dc5dbd4cc74d",
+      "use_summary": "Reused UKB-SAIGE,PanUKB and Neale-laboratory outcome GWAS summaries for two-sample MR of metabolic syndrome;325outcomes were available from350PRS-PheWAS associations.",
+      "implementation_scope_note": "This is upstream summary-statistic provenance,not local SAIGE execution. The exposure GWAS excluded UKB to reduce sample overlap;TwoSampleMR0.5.6 performed MR and MGI supplied validation.81is a citation,not the SAIGE version.",
+      "version_reported_near_name": ""
+    }
+  },
+  {
+    "paper_id": "P191",
+    "primary_paragraph": 16,
+    "observed_role": "sparse-GRM-and-Firth-GWAS",
+    "new_source_role": false,
+    "review": {
+      "pmcid": "PMC13384252",
+      "doi": "10.1016/j.ajhg.2026.05.014",
+      "tool_id": "saige",
+      "evidence_paragraph_sha256": "c0fa216676a9e83248adac1178b861596a10c1c15dcb5a2c4b2b942423756be8",
+      "use_summary": "Used SAIGE1.3.6 to build ancestry-specific sparse GRMs and run two-stage binary GWAS on BGEN srWGS data;single-variant tests required MAC>=200 and Firth effect correction at P<=0.05.",
+      "implementation_scope_note": "GRMs used5,000random array markers,relatedness cutoff0.125,MAF cutoff0.05 and missing-rate cutoff0.05. Null covariates included age/sex interactions,ten PCs and,for the SDoH analysis,20MCA embeddings. Sex-specific cancer models omitted sex terms. The16after1.3.6is a citation;METAL meta-analysis is separate.",
+      "version_reported_near_name": "1.3.6",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 15,
+          "paragraph_sha256": "da7363e369cb8c75e6ed07b72db9917f3ff1bcf722cbc9fe296ffd51e4b73afb",
+          "section": "Methods / Genetic data analysis and genome-wide association study / PCA and genetic relationship matrix generation"
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "P194",
+    "primary_paragraph": 24,
+    "observed_role": "GRM-input-for-unrelated-set-selection",
+    "new_source_role": false,
+    "review": {
+      "pmcid": "PMC13504349",
+      "doi": "10.1016/j.ajhg.2026.05.013",
+      "tool_id": "saige",
+      "evidence_paragraph_sha256": "1890de2640897874198979bef37dfc46a28fd257f7ed26d83d6e30271b0d109c",
+      "use_summary": "Used a SAIGE array-genotype GRM as input to phenotype-specific greedy maximal-unrelated-set selection,excluding third-degree-or-closer relationships with G>2^-3.5.",
+      "implementation_scope_note": "Phenotype/covariate complete-case filtering occurred before selection. The custom greedy routine visits participants ordered by number of relatives,fewest first,retains one and removes its relatives,skipping already removed participants. Ties and dynamic degree updates are not stated;the native helper uses explicit ties and initial degrees. It does not itself produce a SAIGE GRM or GWAS. Version is unstated.",
+      "version_reported_near_name": ""
+    }
+  },
+  {
+    "paper_id": "P200",
+    "primary_paragraph": 6,
+    "observed_role": "published-multibiobank-summary-reuse",
+    "new_source_role": false,
+    "review": {
+      "pmcid": "PMC13393102",
+      "doi": "10.1016/j.ajhg.2026.05.011",
+      "tool_id": "saige",
+      "evidence_paragraph_sha256": "0f51f846cc75c6d99dc9e1716f602f4b57c6700d9ef34ebcba90cb630fec9cba",
+      "use_summary": "Reused SAIGE-generated Ménière-disease GWAS summaries from MVP,Pan-UKB and BBJ in a multibiobank analysis.",
+      "implementation_scope_note": "The current study analyzed published summaries,not a newly fitted unified SAIGE cohort. The three sources used distinct phenotype definitions,sample counts,imputation/QC and covariates. The manuscript does not state the SAIGE versions;no raw-genotype availability or cross-cohort parameter equivalence is inferred.",
+      "version_reported_near_name": "",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 7,
+          "paragraph_sha256": "2f385ac553e3e8a1eda9d929862cf1581200dadb0c3a17588f2e813d0dedac4e",
+          "section": "Subjects and methods / Contributing biobanks and GWASs / UKB"
+        },
+        {
+          "paragraph_index": 9,
+          "paragraph_sha256": "dc3ad5720cad2740e693527be4a108f64c60b613f132334d017fb840850b5316",
+          "section": "Subjects and methods / Contributing biobanks and GWASs / BBJ"
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "P204",
+    "primary_paragraph": 36,
+    "observed_role": "quantitative-variant-summary-generation",
+    "new_source_role": false,
+    "review": {
+      "pmcid": "PMC12808971",
+      "doi": "10.1016/j.ajhg.2025.09.012",
+      "tool_id": "saige",
+      "evidence_paragraph_sha256": "d435fa8afc7f400f4d00922a09b7c26d662c6246b36386e09ad6b830708d1930",
+      "use_summary": "Calculated per-variant lipid-trait effects and standard errors with SAIGE1.3.0 among390,865UKB participants,using inverse-normalized traits and a sparse GRM.",
+      "implementation_scope_note": "Upstream ultrarare variants with MAC<=10were collapsed by gene/category;genes required at least three resulting variants. NumPy produced MAF/within-gene LD matrices and AllelicSeries/COAST-SS used the summaries. Those aggregation,LD and allelic-series stages are not automatically SAIGE operations.",
+      "version_reported_near_name": "1.3.0"
+    }
+  },
+  {
+    "paper_id": "P210",
+    "primary_paragraph": 24,
+    "observed_role": "recessive-and-additive-burden-association",
+    "new_source_role": false,
+    "review": {
+      "pmcid": "PMC13277689",
+      "doi": "10.1016/j.ajhg.2026.04.005",
+      "tool_id": "saige",
+      "evidence_paragraph_sha256": "32925fa0d52f8488b4520a6170f072702c2d4349638f57e114d9934fb7eb01f7",
+      "use_summary": "Tested supplied recessive burdens with SAIGE or REGENIE per ancestry/subcohort,and subsequently tested additive burdens for genes with available recessive summaries.",
+      "implementation_scope_note": "SAIGE sparse GRMs used2,000random markers/cutoff0.05. Null covariates included age/sex interactions/ten PCs and,for UKB,batch/center;quantitative traits were inverse-normal transformed and binary Firth correction used P<0.01. Burden construction/phasing and the at-least-five-biallelic-carrier eligibility rule are separate inputs. SAIGE version is unstated.",
+      "version_reported_near_name": ""
+    }
+  },
+  {
+    "paper_id": "P220",
+    "primary_paragraph": 17,
+    "observed_role": "sparse-GRM-single-and-gene-tests",
+    "new_source_role": false,
+    "review": {
+      "pmcid": "PMC12696503",
+      "doi": "10.1016/j.ajhg.2025.08.013",
+      "tool_id": "saige",
+      "evidence_paragraph_sha256": "13d3556be398d0e55a4fdf3dafb9c8354f58fa7c82f532b8d00b4fe4aebf78d9",
+      "use_summary": "Ran SAIGE common-variant association with1.1.6.3 and exome variant/gene tests with container1.1.9,using sparse-GRM null models,categorical variance ratios and quantitative inverse-normal transformation.",
+      "implementation_scope_note": "GRMs used5,000markers/cutoff0.05;variance-ratio panels used2,000markers. Reported step2 choices included LOCO=FALSE,fast tests,Firth cutoff0.1,and joint single/group tests at MAF cutoffs0.0001/0.001/0.01. Gene tests included conditional common variants. Annotation masks,finemapping and BH selection remain separate;these historical versions are not equated to1.5.2.",
+      "version_reported_near_name": "1.1.6.3;1.1.9",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 18,
+          "paragraph_sha256": "69ae7258e4ef4523d2dccd0c437a828a26874ff9167677f3ca58862af88be44a",
+          "section": "Material and methods / Genetic association testing"
+        },
+        {
+          "paragraph_index": 19,
+          "paragraph_sha256": "0ff471d7431e3dc22406a64d8a9cf1d38c1e5a64139bf6b45020aeee5cce3905",
+          "section": "Material and methods / Genetic association testing"
+        },
+        {
+          "paragraph_index": 20,
+          "paragraph_sha256": "8005a9370efcf9bb382f8af298797889ea1df47e3d161a7701fb1ebcfd42c454",
+          "section": "Material and methods / Common-variant association testing in imputed data"
+        },
+        {
+          "paragraph_index": 21,
+          "paragraph_sha256": "aac3788c2930900f5e72808c5ea34acfe3b3c73fda73769b0ddcbaab59521f3a",
+          "section": "Material and methods / Common-variant association testing in imputed data"
+        },
+        {
+          "paragraph_index": 24,
+          "paragraph_sha256": "454cd2346080a1960566616e7946bb7b6847a40dc5ffdcb4f25b70215584ff72",
+          "section": "Material and methods / Rare-variant and gene-level testing in ES data"
+        },
+        {
+          "paragraph_index": 25,
+          "paragraph_sha256": "1c28ab43077d586f5f8f94853fbfc7b253207be6a0c62be608f5e26082de440b",
+          "section": "Material and methods / Rare-variant and gene-level testing in ES data"
+        },
+        {
+          "paragraph_index": 29,
+          "paragraph_sha256": "32f18aae91b9ff333cfc879c8531dda177b0f9c296cedc0703dd1a825ecf398d",
+          "section": "Material and methods / Rare-variant and gene-level testing in ES data / Obesity and fat distribution trait-gene-level association tests"
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "P244",
+    "primary_paragraph": 31,
+    "observed_role": "published-summary-statistic-reuse",
+    "new_source_role": false,
+    "review": {
+      "pmcid": "PMC12461026",
+      "doi": "10.1016/j.ajhg.2025.07.003",
+      "tool_id": "saige",
+      "evidence_paragraph_sha256": "8d2d2eee0121704a3625a19f7d3dd755115c6ee332e833bd5848d5aabeb9dc52",
+      "use_summary": "Reused SAIGE-generated FinnGen/PheWeb and Pan-UKBB GWAS summaries for GLEANR cross-cohort factorization and137-phenotype UKBB analysis.",
+      "implementation_scope_note": "This is summary-data provenance,not local SAIGE execution. FinnGen/PheWeb disease and Neale continuous-trait sources are distinct;trait QC,heritability/genetic-correlation filters,XT-LDSR sample-sharing estimates and PLINK pruning preceded GLEANR. SAIGE versions are unstated.",
+      "version_reported_near_name": "",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 34,
+          "paragraph_sha256": "75e1e693653a358e352307c336a5234422f9182cff554c6973f5aa6d668684a6",
+          "section": "Methods / UKBB analysis across 137 diverse GWASs / Study selection"
+        }
+      ]
+    }
+  }
+]

@@ -7,6 +7,24 @@ adapters. Downloads and installation are allowed where the operating environment
 permits them. An unavailable dependency must skip the dependent analysis and
 produce an actionable warning.
 
+## Current SAIGE source review and native component
+
+The catalog now has250papers/377tools/2426observations/623reviewed roles/153supporting pointers. All604 earlier reviews are preserved. [Nineteen SAIGE-family roles](SAIGE_SOURCE_REVIEW.md) distinguish16SAIGE,2SAIGE-GENE and1Meta-SAIGE uses;P147's published-summary reuse is newly recovered. Attached numeric versions are recognized without merging tool identities.
+
+The native [unrelated-select command](UNRELATED_SELECTION_WORKFLOWS.md) is available in development candidate9786ba29:32tests/5suites,32standalone perJava21/25,501 independent full-decision graph references and21 actual packaged cases passed. It applies phenotype eligibility before initial degrees,requires explicit ties and complete additive-GRM pair coverage,and names every retained blocker. A maximal result need not be largest. It needs no external runtime.
+
+**SAIGE/SAIGE-GENE/Meta-SAIGE project analyses remain unavailable and must be skipped.** An original unmodified1.5.2 private build and controlled1,000-participant/32-variant run have bounded independent checks;the admitted runtime,installer and typed workflows remain pending. Read [runtime warnings and required actions](SAIGE_RUNTIME_STATUS.md). Native cohort selection is a separate component;all three tool badges remain missing. Counts remain12native tool subsets/34upstream subsets/48overlaps/271missing/1user-excluded Cell Ranger,plus existing categories. The goal remains active;canonical executable and releases are unchanged.
+
+The prior IGV milestone validated18viewer roles and the bounded original `igv-tools` development command(candidate38889b96):126focused tests,17packaged cases and27runtime policy controls. See [IGV workflows](IGV_WORKFLOWS.md),[source review](IGV_SOURCE_REVIEW.md) and [runtime status](IGV_RUNTIME_STATUS.md). Its historical2425-observation/604-review source snapshot is preserved;current counts are stated above. Automatic CNA/synteny summaries,modification interpretation and historical/full-paper reconstruction remain open.
+
+The [APBS workflow guide](APBS_WORKFLOWS.md),[PDB2PQR guide](PDB2PQR_WORKFLOWS.md) and [potential-surface guide](POTENTIAL_SURFACE_WORKFLOWS.md) now provide a validated preparation-to-solver-to-actual-map-surface workflow in development candidate b1c26fa4. The combined107-test gate,14 original preparation comparisons,6 actual surface workflows,16 preparation runtime policies and a fullJava25 Unicode chain passed. Missing dependencies skip the affected and dependent stages with prominent recovery actions. Earlier10solver comparisons/6,013,002nodes remain separate immutable evidence. That workflow milestone retained377 observed tools/2424 observations/587 reviewed roles;the later IGV milestone added one observation and17new reviews;the current SAIGE source/component milestone above supersedes these historical counts. No paper use is invented for PDB2PQR/PROPKA dependencies. Source observations are unchanged;historical/full-paper reconstruction remains open.
+
+The [native molecular geometry guide](MOLECULAR_GEOMETRY_WORKFLOWS.md) adds explicit-unit
+distance,angle,torsion and supplied-pair proper rigid fitting without an external
+runtime. Its development executable SHA starts `798d3a08`;28 focused tests and
+16 packaged workflows/12 controls passed. Twenty PyMOL source roles are now reviewed;
+the typed original PyMOL rendering/alignment/editing subset is validated in its development candidate. Typed preparation and actual APBS electrostatic-surface integration are now available in the separately validated workflow above.
+
 The [PRS-CS guide](PRSCS_WORKFLOWS.md) adds original three-profile posterior
 inference,native marginal/LD/posterior checks and explicit score-weight exports.
 The development candidate passed218 focused tests,12 packaged workflows and28
@@ -25,12 +43,13 @@ dependency actions in [WARNINGS.md](WARNINGS.md). It is available at
 `5ed54e44`); the older canonical a104 executable is unchanged and lacks the new
 Beagle/PLINK commands. No new full-project gate or release is claimed.
 
-The same250 source identities now have521 individually reviewed roles and
-92 supporting pointers. PRS-CS adds11 reviews while preserving its existing
-simulated-data comparator review. Beagle's nine reviews retain the P209 new5.4
-versus reused5.2 distinction. Tool-level counts are12 native subsets,31 upstream
-subsets,48 overlaps and274 missing integrations;complete semantic review and
-implementation remain active.
+The same250 source identities now have604 individually reviewed roles and
+127 supporting pointers. Cell Ranger adds44 source reviews distinguishing GEX,
+ARC,ATAC,demultiplexing and downstream tools;its implementation is excluded at
+the user's explicit request. Read [the exclusion and source review](CELLRANGER_SOURCE_REVIEW.md).
+Tool-level counts are12 native subsets,33 upstream subsets,48 overlaps,272 missing
+integrations and1 user exclusion,plus existing adapter/lookup/export categories.
+Complete semantic review and implementation remain active.
 
 The [native genotype-score guide](GENOTYPE_SCORE_WORKFLOWS.md) adds supplied-weight
 diploid human autosomal BED scoring in Java, with exact effect/other alleles,
@@ -42,7 +61,7 @@ needs no original PLINK installation. Broader PLINK adapters remain open.
 
 The [PLINK/GWAS source review](PLINK_SOURCE_REVIEW.md) corrects release identities,
 recovers direct GWAS appendix/result roles and distinguishes genotype files,
-annotation lookups and genuine executable use. The catalog has 2,422 observations;
+annotation lookups and genuine executable use. The earlier PLINK source tranche had 2,422 observations;the current IGV-reviewed catalog has2,425;
 32 new role reviews preserve cohort/model/unit boundaries. PLINK adapter work
 continues, without claiming a new implementation badge from source curation.
 

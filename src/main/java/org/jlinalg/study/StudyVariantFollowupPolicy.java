@@ -9,12 +9,17 @@ import java.util.Set;
 /** Explicit annotation/prediction routes and budgets; no P-value selection. */
 public final class StudyVariantFollowupPolicy {
     private StudyVariantFollowupPolicy() { }
+    /** Controlled feature scope; genomic gene/set summaries are not variant catalogues. */
+    public static boolean variantScope(String modality, String namespace) {
+        return Set.of("gwas", "genomics").contains(modality)
+            && Set.of("", "auto", "variant", "snp", "rsid").contains(namespace);
+    }
     public static Map<String, Object> resolve(Map<String, Object> supplied) {
         if (!Set.of("consequences", "alphagenome", "reference_fasta", "reference_normalized", "maximum_variants_per_batch").containsAll(supplied.keySet()))
             throw new IllegalArgumentException("Unknown variant_followup setting");
         var result = new LinkedHashMap<>(supplied);
         var consequences = StudyIO.optionalMap(result.get("consequences"), "variant_followup.consequences");
-        if (!Set.of("enabled", "engine", "annotations", "format", "release", "citation", "executable", "perl", "database", "protocol", "operation", "cache", "cache_version", "fasta", "timeout_seconds").containsAll(consequences.keySet()))
+        if (!Set.of("enabled", "engine", "annotations", "format", "release", "citation", "executable", "perl", "database", "protocol", "operation", "cache", "cache_version", "fasta", "timeout_seconds", "installation").containsAll(consequences.keySet()))
             throw new IllegalArgumentException("Unknown variant_followup.consequences setting");
         consequences.putIfAbsent("enabled", true); consequences.putIfAbsent("engine", "vep-rest");
         consequences.putIfAbsent("format", "canonical"); consequences.putIfAbsent("timeout_seconds", 120);
@@ -24,8 +29,12 @@ public final class StudyVariantFollowupPolicy {
         if (Boolean.TRUE.equals(consequences.get("enabled")) && !consequences.get("engine").equals("vep-rest") && consequences.get("release").equals("service_as_retrieved"))
             throw new IllegalArgumentException("Imported/installed consequences require an explicit annotation release");
         var genome = StudyIO.optionalMap(result.get("alphagenome"), "variant_followup.alphagenome");
-        if (!Set.of("enabled", "engine", "scores", "resource_version", "citation", "python", "api_key_env", "scorers", "prediction_scorers", "ontology_terms", "model_version", "sequence_length", "maximum_queries", "maximum_predictions", "timeout_seconds", "maximum_rows").containsAll(genome.keySet()))
+        if (!Set.of("enabled", "engine", "scores", "resource_version", "citation", "python", "api_key_env", "scorers", "prediction_scorers", "ontology_terms", "model_version", "sequence_length", "maximum_queries", "maximum_predictions", "timeout_seconds", "maximum_rows", "installation").containsAll(genome.keySet()))
             throw new IllegalArgumentException("Unknown variant_followup.alphagenome setting");
+        consequences.put("installation", StudyVariantToolInstallationPolicy.resolve(consequences.get("installation"), "annovar", "annovar".equals(consequences.get("engine")) && !consequences.containsKey("executable")));
+        if (!"annovar".equals(consequences.get("engine")) && "automatic".equals(StudyIO.map(consequences.get("installation"), "installation").get("mode")))
+            throw new IllegalArgumentException("Managed consequence software setup supports ANNOVAR; use external installation mode for other engines");
+        genome.put("installation", StudyVariantToolInstallationPolicy.resolve(genome.get("installation"), "alphagenome", !genome.containsKey("python")));
         genome.putIfAbsent("enabled", true); genome.putIfAbsent("engine", "atlas"); genome.putIfAbsent("python", "python");
         genome.putIfAbsent("api_key_env", "ALPHAGENOME_API_KEY"); genome.putIfAbsent("scorers", List.of("AVI_SCORE"));
         genome.putIfAbsent("prediction_scorers", List.of("RNA_SEQ", "SPLICE_SITES", "SPLICE_SITE_USAGE", "SPLICE_JUNCTIONS"));
@@ -47,7 +56,7 @@ public final class StudyVariantFollowupPolicy {
                 throw new IllegalArgumentException("AlphaGenome " + field + " must be a bounded list of identifiers");
             if (new java.util.LinkedHashSet<>(values).size() != values.size()) throw new IllegalArgumentException("Duplicate AlphaGenome " + field);
         }
-        for (var group : List.of(consequences, genome)) for (var entry : group.entrySet()) if (!Set.of("enabled", "scorers", "prediction_scorers", "ontology_terms", "sequence_length", "maximum_queries", "maximum_predictions", "timeout_seconds", "maximum_rows").contains(entry.getKey()))
+        for (var group : List.of(consequences, genome)) for (var entry : group.entrySet()) if (!Set.of("enabled", "scorers", "prediction_scorers", "ontology_terms", "sequence_length", "maximum_queries", "maximum_predictions", "timeout_seconds", "maximum_rows", "installation").contains(entry.getKey()))
             if (!(entry.getValue() instanceof String value) || value.isBlank() || value.length() > 4096 || value.chars().anyMatch(Character::isISOControl)) throw new IllegalArgumentException("Variant provider settings must be bounded strings: " + entry.getKey());
         if (result.containsKey("reference_fasta") && (!(result.get("reference_fasta") instanceof String path) || path.isBlank() || path.length() > 4096 || path.chars().anyMatch(Character::isISOControl)))
             throw new IllegalArgumentException("variant_followup.reference_fasta must be a nonblank path");

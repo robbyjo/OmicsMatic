@@ -28,6 +28,7 @@ final class StudyLiteratureCoverage {
         final Input input;
         final Map<String,List<String[]>> allocations=new LinkedHashMap<>();
         final Map<String,List<Map<String,Object>>> features=new LinkedHashMap<>(),genes=new LinkedHashMap<>();
+        final List<Map<String,Object>> background=new ArrayList<>();
         boolean bibliography;
         Indexed(Input input){
             this.input=input;var table=input.allocation;
@@ -35,13 +36,31 @@ final class StudyLiteratureCoverage {
             bibliography=number(input.document.get("reference_records"))>0;
             for(Object raw:list(input.document.get("evidence"))){var row=map(raw);
                 if("supplied_bibliography".equals(row.get("kind"))&&!list(row.get("articles")).isEmpty())bibliography=true;
+                if("supplied_bibliography".equals(row.get("kind"))){background.add(row);continue;}
                 if(!"literature".equals(row.get("kind")))continue;
                 String feature=text(row.get("feature_id")),gene=text(row.get("gene_symbol"));
                 if(!feature.isBlank())features.computeIfAbsent(feature,ignored->new ArrayList<>()).add(row);
                 else if(!gene.isBlank())genes.computeIfAbsent(gene,ignored->new ArrayList<>()).add(row);
+                else background.add(row);
             }
         }
         List<Map<String,Object>> queries(String feature,String gene){var rows=new ArrayList<>(features.getOrDefault(feature,List.of()));rows.addAll(genes.getOrDefault(gene,List.of()));return rows;}
+    }
+
+    Map<String,Object> background() {
+        var byHypothesis=new LinkedHashMap<String,List<Map<String,Object>>>();
+        for(var indexed:inputs)for(var row:indexed.background){var input=indexed.input;
+            if(list(row.get("articles")).isEmpty())continue;
+            String id="background-"+StudyFindingInventory.hash(input.summarySource+"\n"+StudySuppliedLiterature.key(row)).substring(0,24);
+            var query=new LinkedHashMap<String,Object>();query.put("query_id",id);query.put("articles",row.get("articles"));query.put("source_ids",List.of(input.summarySource));
+            query.put("match_basis",List.of("hypothesis_background_bibliography"));query.put("candidate_context_eligible",input.producerState.equals("complete"));
+            query.put("execution_origin",input.external?"source_reported":"native_retrieval_or_cache");
+            String strategy=text(row.get("search_strategy"));query.put("search_strategy",Set.of("field_background","hypothesis_relevance","similar_studies","field_conflicting_evidence").contains(strategy)?strategy:"other_declared_background_context");
+            byHypothesis.computeIfAbsent(input.hypothesis,ignored->new ArrayList<>()).add(query);
+        }
+        var result=new LinkedHashMap<String,Object>();
+        byHypothesis.forEach((h,queries)->{var projected=StudyLiteratureCandidates.project(queries,"hypothesis_background_not_feature_specific_search_coverage");if(!projected.isEmpty())result.put(h,projected);});
+        return result;
     }
 
     Map<String,Object> forFinding(String hypothesis,String feature,Map<String,Object> annotation){
@@ -91,6 +110,9 @@ final class StudyLiteratureCoverage {
         String evidence=scopeConflict?"query_scope_conflict":partial>0?"incomplete_or_mixed_query_coverage":complete>0?matches?"candidate_sources_unreviewed":"bounded_queries_report_no_matches":bibliographyProducers>0?"bibliography_without_feature_search_receipts":matching.isEmpty()||matching.stream().allMatch(i->!i.input.producerState.equals("complete")&&i.input.document.isEmpty())?"producer_unavailable":"no_feature_search_receipts";
         var strategyStates=new LinkedHashMap<String,Object>();for(String strategy:STRATEGIES){var rows=queries.stream().filter(q->strategy.equals(q.get("search_strategy"))).toList();strategyStates.put(strategy,rows.isEmpty()?"not_recorded":rows.stream().allMatch(q->Boolean.TRUE.equals(q.get("reported_complete")))?"bounded_query_receipts_complete":"incomplete_or_mixed");}
         var result=new LinkedHashMap<String,Object>();result.put("schema_version",1);result.put("scope","feature_or_declared_gene_query_receipts");result.put("query_evidence_state",evidence);result.put("native_allocations",allocations);result.put("queries",queries);
+        var candidateInputs=new ArrayList<Map<String,Object>>();
+        for(var query:groups.values()){var projected=new LinkedHashMap<>(query.document());projected.put("articles",query.candidateArticles);projected.put("candidate_context_eligible",!query.invalid&&!query.conflict&&query.accepted);candidateInputs.add(projected);}
+        var citationCandidates=StudyLiteratureCandidates.project(candidateInputs,"feature_or_declared_gene_query_candidates");if(!citationCandidates.isEmpty())result.put("citation_candidates",citationCandidates);
         result.put("unique_queries",queries.size());result.put("reported_complete_queries",complete);result.put("incomplete_or_unknown_queries",partial);result.put("source_reported_queries",reported);result.put("native_retrieval_or_cache_queries",nativeQueries);
         result.put("duplicate_reports_collapsed",queries.stream().mapToLong(q->number(q.get("duplicate_reports_collapsed"))).sum());result.put("bibliographic_producers",bibliographyProducers);result.put("incomplete_producer_present",incompleteProducer);result.put("strategy_coverage",strategyStates);
         result.put("systematic_review_established",false);result.put("source_support_established",false);result.put("scientific_appraisal","required");result.put("source_ids",List.copyOf(sources));
@@ -107,6 +129,7 @@ final class StudyLiteratureCoverage {
     private static final class Query {
         final String id;final boolean supplied;final Set<String> roles=new LinkedHashSet<>(),sources=new LinkedHashSet<>(),dates=new LinkedHashSet<>(),matches=new LinkedHashSet<>(),citations=new LinkedHashSet<>();
         final Map<String,String> records=new LinkedHashMap<>();String strategy="not_reported",provider="not_reported";long articles,hits=-1,duplicates;boolean allComplete=true,limited,invalid,conflict,accepted=true;
+        final List<Object> candidateArticles=new ArrayList<>();
         Query(String id,boolean supplied,String role){this.id=id;this.supplied=supplied;roles.add(role(role));}
         void add(Map<String,Object> row,Input input,String match,boolean conflict){
             sources.add(input.summarySource);roles.add(role(input.role));matches.add(match);this.conflict|=conflict;
@@ -121,6 +144,7 @@ final class StudyLiteratureCoverage {
             var projection=Map.of("status",status,"reported_hits",count==null?"not_reported":count,"article_ids",articleIds,"query_complete",completion instanceof Boolean?completion:"not_reported","search_limited",bound instanceof Boolean?bound:"not_reported","date",date);
             String record=supplied?"supplied-query":text(row.getOrDefault("page","legacy"))+"/"+text(map(row.get("retrieval")).get("response_sha256"));String digest=StudyFindingInventory.hash(StudyAssistance.json(projection)),prior=records.putIfAbsent(record,digest);
             if(prior!=null){duplicates++;if(!prior.equals(digest))invalid=true;return;}
+            candidateArticles.addAll(list(row.get("articles")));
             limited|=Boolean.TRUE.equals(row.get("search_limited"));allComplete&=known&&(supplied?Boolean.TRUE.equals(row.get("query_complete")):!Boolean.FALSE.equals(row.get("query_complete")));
             if(known&&count==null||row.get("hit_count")!=null&&count==null||noMatches&&count!=null&&(count!=0||!articleIds.isEmpty())||known&&!noMatches&&count!=null&&count==0)invalid=true;
             if(count!=null){if(hits>=0&&hits!=count)invalid=true;hits=count;}

@@ -86,6 +86,8 @@ final class StudyPrimaryResults {
         var p=policy(c);var producers=producers(c);String operation=text(p.get("operation_id")),dataset=text(p.get("dataset_id")),kind=text(p.get("kind"));
         var metas=producers.stream().filter(s->s.type().equals("meta_analysis")&&(operation.isBlank()||s.id().equals(operation))).toList();
         boolean association=kind.equals("association")||!dataset.isBlank()||!kind.equals("meta_analysis")&&!operation.isBlank()&&producers.stream().anyMatch(s->s.id().equals(operation)&&Set.of("association","validate_harmonize").contains(s.type()));
+        if(!association&&metas.isEmpty()&&partialPoolExpected(c))
+            throw unavailable(c,p,"incomplete_primary_meta_analysis","The supplied primary meta-analysis explicitly reports partial coverage and no matching native pool is available; no cohort or sensitivity fallback was selected");
         boolean expectedMeta=kind.equals("meta_analysis")||!association&&(producers.stream().anyMatch(s->s.type().equals("meta_analysis"))||plannedMeta(c));
         if(!association&&(expectedMeta||!metas.isEmpty())){
             if(metas.size()!=1)throw unavailable(c,p,metas.isEmpty()?"missing_primary_meta_analysis":"ambiguous_primary_meta_analysis",metas.isEmpty()?"The registered primary meta-analysis is unavailable; cohort results cannot replace it":"Multiple meta-analysis producers need an explicit primary_result.operation_id and rationale");
@@ -103,6 +105,10 @@ final class StudyPrimaryResults {
             record(c,"official",Map.of("hypothesis",text(c.operation().get("hypothesis")),"status","not_applicable_no_feature_primary_source","registered_policy",p));return null;
         }
         return select(c,cohorts.values().iterator().next(),p,"official");
+    }
+    static boolean partialPoolExpected(Context c) {
+        return org.jlinalg.study.StudySuppliedResultPolicy.resolve(StudyResultTables.analysis(c)).stream()
+            .anyMatch(d->"meta_analysis".equals(d.get("kind"))&&org.jlinalg.study.StudySuppliedResultPolicy.partialPrimary(d));
     }
     /** Explicit dataset analyses, such as per-cohort GSEA, are not silently labelled the official pooled result. */
     static Selection dataset(Context c,String id,String purpose)throws IOException {

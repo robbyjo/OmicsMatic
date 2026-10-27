@@ -1,0 +1,172 @@
+{
+  "status": "validated-development-original-apbs-solver-and-native-grid-subset",
+  "recorded_utc": "2026-10-26T20:56:46.240085+00:00",
+  "candidate": "build/literature-review/apbs-candidate-1/jlinalg-0.3.7.jar",
+  "candidate_sha256": "89bae745ac1f9e93f3fc2452ce23684fb46ce9582fb517633803aa4f31166a33",
+  "canonical_unchanged_sha256": "a104651636deb59493cddc92ce433629d4ef7b0c755f6ee065a3e0c75365c5e2",
+  "runtime_version": "APBS3.5.0 official Windows x86 executable",
+  "host_profile": "Windows x86_64;complete private original release;no global PATH/package installation",
+  "runtime_lock_sha256": "06a07c5feef498ffdf70500b41d133cee1fcecff14e2230dc994b846cfbe5bd1",
+  "archive_sha256": "3bf313b338a4362ebeb9a05316605027c93bec6c396e029476a1d8147af8e4c1",
+  "original_release_files": 608,
+  "authenticated_installed_files": 609,
+  "focused_tests": 48,
+  "focused_suites": 5,
+  "strict_java_release": 17,
+  "javadoc": true,
+  "executable_packaging": true,
+  "standalone_tests_per_Java": 48,
+  "Java_versions": [
+    21,
+    25
+  ],
+  "successful_solver_cases": 10,
+  "complete_original_grid_nodes_compared": 6013002,
+  "solver_failure_or_skip_controls": 5,
+  "native_packaged_cases": 3,
+  "actual_installer_runtime_policy_controls": 12,
+  "charge_linearity": {
+    "nodes": 274625,
+    "sign_reversal_exact": true,
+    "double_charge_max_relative_rounding_error": 4.997968326574137e-07,
+    "energy_quadratic_relative_error": 0.0
+  },
+  "independent_born_convergence": [
+    {
+      "nodes": 33,
+      "solvent_minus_reference_kj_per_mol": -176.35390980249997,
+      "analytic_born_kj_per_mol": -169.32758888934646,
+      "relative_error": 0.04149542882669355
+    },
+    {
+      "nodes": 65,
+      "solvent_minus_reference_kj_per_mol": -170.38080562200003,
+      "analytic_born_kj_per_mol": -169.32758888934646,
+      "relative_error": 0.006219994860623856
+    },
+    {
+      "nodes": 129,
+      "solvent_minus_reference_kj_per_mol": -169.970824515,
+      "analytic_born_kj_per_mol": -169.32758888934646,
+      "relative_error": 0.003798764453404546
+    }
+  ],
+  "original_zero_rhs_case": {
+    "upstream_exit_code": 0,
+    "invalid_interior_values": 250047,
+    "adapter_exit_code": 2,
+    "status": "quarantined-failed-scientific-output",
+    "scope": "Every atomic charge zero,distinct from net-neutral protein with nonzero atomic charges"
+  },
+  "source_roles": {
+    "papers": [
+      "P013",
+      "P026"
+    ],
+    "APBS_versions_unspecified": true,
+    "explicit_PDB2PQR_paper_uses": 0,
+    "scope": "250cached source XMLs checked;paper-wide completeness remains open"
+  },
+  "preparation_fixture": {
+    "program": "original PDB2PQR3.8.0",
+    "arguments": [
+      "--ff",
+      "PARSE",
+      "--nodebump",
+      "--noopt",
+      "--keep-chain",
+      "1CRN.pdb",
+      "1CRN.pqr"
+    ],
+    "private_execution_verification_sha256": "12540e7c98800afe01717f3a2ab15bd6f11eb681086790654b744b5fe3223cbe",
+    "pqr_sha256": "9fac1bd44b0708bdf0fce21d031160f6b0e032e56884197d0daabb9b7776a889",
+    "atoms": 642,
+    "total_charge_e": 0,
+    "zero_radius_atoms": 236,
+    "scope": "Unchanged original output;charged zero-radius hydrogens retained. No declared-pH/PROPKA titration was requested;debumping/hydrogen optimization disabled. These fixture choices do not establish a preferred biological model."
+  },
+  "dependency_policy": "Analysis never installs. Missing,changed,unsupported or forbidden runtimes skip with exit3 and named recovery. Input/process/timeout/output-audit failures return2 with quarantined partials. Where allowed explicitly use install_apbs.py --allow-install and optionally --allow-download.",
+  "scope": "Native Java PQR/OpenDX/thermal-voltage helpers and bounded original mg-manual LPBE/NPBE,mol/spl2,explicit grid,boundary,dielectric,symmetric-monovalent salt and temperature. Raw total energy is not solvation/binding free energy. Automatic typed PDB2PQR preparation,PyMOL potential-to-surface rendering,alternate runtime profiles,historical editions and source-paper parameter reconstruction remain in progress. No release or whole-current-ROOT gate is implied.",
+  "evidence": [
+    {
+      "path": "build/literature-review/apbs-runtime/solver-focused-1/observed.json",
+      "sha256": "52ba5897ee0b7b4ab5aa0f42b57651412e54bdef56af679e43382ac93e5dde14"
+    },
+    {
+      "path": "build/literature-review/apbs-runtime/solver-junit-1/observed.json",
+      "sha256": "af5352dba2ff9b5ee0857a39f367bc712f73c1c123ec0fcf8a63cf62e22e6026"
+    },
+    {
+      "path": "build/literature-review/apbs-runtime/solver-references-1/verification.json",
+      "sha256": "59dd54acb69e6833c9fa24824e9fe863732afb3df7e9d5b705a60895e4a60c1d"
+    },
+    {
+      "path": "build/literature-review/apbs-runtime/packaged-workflows-1/verification.json",
+      "sha256": "91128d90512cbc63eeab1940e2763242401b123581fa5b80c9d11e648b15dde7"
+    },
+    {
+      "path": "build/literature-review/apbs-runtime/installer-policy-1/verification.json",
+      "sha256": "9063842599988d55b724f53e2253235cf35d32e08d741855c75e02a0b61f314f"
+    },
+    {
+      "path": "build/literature-review/apbs-runtime/install-admitted-1/verification.json",
+      "sha256": "1cb89d3eb428f237df25e10a0bdb8405edf48bb94d45763980ab263649281943"
+    },
+    {
+      "path": "build/literature-review/apbs-runtime/pdb2pqr-original-1/verification.json",
+      "sha256": "12540e7c98800afe01717f3a2ab15bd6f11eb681086790654b744b5fe3223cbe"
+    },
+    {
+      "path": "build/literature-review/apbs-runtime/source-scan-2/verification.json",
+      "sha256": "7335762fffc9e29d0211da707c6539044a7e94c415c5d1edad03e653ecad2e1e"
+    },
+    {
+      "path": "build/literature-review/apbs-runtime/source-roles-1/verification.json",
+      "sha256": "a48c87f6b0eeec976f14c77e2248660c7e86c681d081c8b8d1bf519ede0fa986"
+    },
+    {
+      "path": "build/literature-review/apbs-runtime/public-examples-1/verification.json",
+      "sha256": "ffbb5a44bc9d7ba644ea1d34fa28a19d201b70f51ca1e7b8b4e91a6505f29ec0"
+    },
+    {
+      "path": "build/literature-review/apbs-runtime/catalog-and-archive-2/verification.json",
+      "sha256": "34d8e0c4b2e996eb08e67654adf334176889bcb0d72e1ac547323a85f30b1cea"
+    },
+    {
+      "path": "build/literature-review/apbs-runtime/catalog-and-archive-1/failure-verification.json",
+      "sha256": "e5d55607c65ab276463c209310bb9cf57f4c416d49c4ea9cc6dd30ef9bf75578"
+    }
+  ],
+  "additional_unchanged_public_solver_recipes": 2,
+  "additional_public_solver_recipe_Java_versions": [
+    21,
+    25
+  ],
+  "additional_Java25_Unicode_native_workflows": 1,
+  "prior_observation_objects_preserved": 2422,
+  "new_APBS_observations": 2,
+  "prior_reviews_preserved": 585,
+  "prior_unchanged_archive_files": 15358,
+  "added_archive_files": [
+    "org/jlinalg/cli/ApbsRuntime$Context.class",
+    "org/jlinalg/cli/ApbsRuntime$Lock.class",
+    "org/jlinalg/cli/ApbsRuntime$Unavailable.class",
+    "org/jlinalg/cli/ApbsRuntime.class",
+    "org/jlinalg/cli/ApbsToolsCli$Parameters.class",
+    "org/jlinalg/cli/ApbsToolsCli.class",
+    "org/jlinalg/cli/ElectrostaticGridCli.class",
+    "org/jlinalg/omics/apbs-runtime-lock.json",
+    "org/jlinalg/protein/ElectrostaticUnits.class",
+    "org/jlinalg/protein/OpenDxGrid$Index.class",
+    "org/jlinalg/protein/OpenDxGrid$Outside.class",
+    "org/jlinalg/protein/OpenDxGrid$Sample.class",
+    "org/jlinalg/protein/OpenDxGrid$Statistics.class",
+    "org/jlinalg/protein/OpenDxGrid.class",
+    "org/jlinalg/protein/PqrStructure$Atom.class",
+    "org/jlinalg/protein/PqrStructure$Bounds.class",
+    "org/jlinalg/protein/PqrStructure.class"
+  ],
+  "source_extractor_regressions": 37,
+  "selection_history_regressions": 2,
+  "selection_history_correction": "The full registry expansion initially relabeled unchanged historical selections. Original pointers,uses and reviews were unchanged. A narrow correction preserves the original selection event for identical primary pointers/hashes,retains new review fields,and is regression-tested. The failed generation and first browser-card check are retained in the development evidence cache."
+}

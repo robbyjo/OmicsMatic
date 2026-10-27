@@ -4,6 +4,7 @@ Usage: python verify-genotype-workflow.py PROJECT --jar PATH [--run-id ID]
 This checks only the declared synthetic fixture, not full pipeline conformance.
 """
 import argparse
+from collections import Counter
 import csv
 import hashlib
 import json
@@ -32,7 +33,11 @@ def main():
     for relative, expected in hashes.items():
         assert hashlib.sha256((project / relative).read_bytes()).hexdigest() == expected, relative
     manifests = list(operations.glob("*/manifest.yaml"))
-    assert len(manifests) == 14
+    expected_operations = Counter({'validate_harmonize': 1, 'participant_qc': 3, 'association': 3,
+        'effect_comparison': 1, 'discovery_meta_analysis': 1, 'discovery_replication': 1,
+        'cohort_overlap': 1, 'meta_analysis': 1, 'heterogeneity_review': 1,
+        'sensitivity_analysis': 1, 'diagnostic_review': 1, 'report': 1})
+    assert Counter(re.search(r'^operation_type: ([a-z_]+)$', path.read_text(encoding='utf-8'), re.MULTILINE).group(1) for path in manifests) == expected_operations
     for manifest in manifests:
         assert re.search(r"^state: complete$", manifest.read_text(encoding="utf-8"), re.MULTILINE), manifest
 

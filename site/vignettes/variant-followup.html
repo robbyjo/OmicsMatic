@@ -121,6 +121,18 @@ success is therefore unverified on this host; local protocol fixtures passed.
 Installed VEP/ANNOVAR execution requires the user's tool and database setup.
 Their local full-cache execution is not established by the import/HTTP tests.</p>
 <p>See <a href="project-configuration.html">configuration</a> and <a href="network-followup.html">network follow-up</a>.</p>
+<h2 id="completed-pooled-gwas-inputs">Completed pooled GWAS inputs</h2>
+<p>The study pipeline can also annotate a registered primary GWAS meta-analysis
+without genotype files or reconstructed cohort estimates. See the
+<a href="study-pipeline-tutorial.html#snp-annotation-from-a-pooled-gwas">pooled-SNP input guide</a>
+for automatic scheduling, canonical allele identities, source-family coverage,
+ANNOVAR and AlphaGenome imports, and the self-contained packaged example.</p>
+<p>Pooled and cohort aliases retain separate provenance while sharing physical
+variant queries. Nonsignificant eligible SNPs remain in scope. Selected-only
+exports can supply available annotations while complete GWAS coverage stays
+pending; gene-level summaries and sensitivity pools cannot replace a primary
+SNP source. Completed supplied annotation/scoring stages retain transcript,
+tissue, track, model and source contexts instead of selecting one record per SNP.</p>
 <!-- SCIENTIFIC-CITATIONS:START -->
 <section class="citation-strip" aria-labelledby="scientific-citations-variant-followup">
   <div class="container narrow">
@@ -133,6 +145,51 @@ Their local full-cache execution is not established by the import/HTTP tests.</p
     <a class="text-link" href="../citations.html">Search all scientific citations →</a>
   </div>
 </section>
-<!-- SCIENTIFIC-CITATIONS:END --></article>
-<aside class="toc"><strong>On this page</strong><a href="#inputs-and-variant-identity">Inputs and variant identity</a><a href="#1-install-and-query-a-local-annotation-snapshot">1. Install and query a local annotation snapshot</a><a href="#remote-post-and-provider-apis">Remote POST and provider APIs</a><a href="#2-consequence-prediction-or-import">2. Consequence prediction or import</a><a href="#3-integrate-evidence-without-disguising-uncertainty">3. Integrate evidence without disguising uncertainty</a><a href="#validation-and-supported-scope">Validation and supported scope</a><a href="#scientific-citations-variant-followup">Scientific citations</a></aside></div>
+<!-- SCIENTIFIC-CITATIONS:END -->
+
+<h2 id="application-managed-software-download-and-installation">Application-managed software download and installation</h2>
+<p>JLinAlg downloads and installs the supported tools for users. The same CLI can be called by an application frontend; no repository checkout or separate installer script is needed.</p>
+<div class="code-window"><div class="code-bar"><span>text</span></div><pre><code>java -jar jlinalg.jar variant-tools install alphagenome
+java -jar jlinalg.jar variant-tools status alphagenome
+</code></pre></div>
+<p>Python 3.10 or newer bootstraps a private environment. Use <code>--python /path/to/python</code> when Python is not on PATH, or <code>--home NEW_DIRECTORY</code> to select a private installation directory. Existing complete homes are verified and reused; incomplete or changed homes are retained with an error rather than overwritten. The default home is <code>~/.jlinalg/tools/alphagenome-0.10.0</code> (<code>annovar</code> for ANNOVAR), shared by the setup command and study execution.</p>
+<p>The application obtains the official AlphaGenome 0.10.0 wheel from PyPI, checks its pinned SHA-256, downloads binary dependency wheels and writes a complete version/hash lock before installing from those local wheels. It verifies imports and dependencies. The installed software is the official Python client. API credentials, prediction requests and model outputs are separate; installing it requires no AlphaGenome key and submits no study data.</p>
+<h3 id="annovar-registration-and-download">ANNOVAR registration and download</h3>
+<p>The <a href="https://annovar.openbioinformatics.org/en/latest/user-guide/download/">official ANNOVAR download</a> requires personal registration and licence acknowledgement. A frontend should present the registration URL from <code>variant-tools status annovar</code>, then accept the user's issued download link or registered local archive. It must not invent a registration or bundle someone else's licensed copy.</p>
+<p>Put the issued URL in an environment variable, then let JLinAlg download and install it:</p>
+<div class="code-window"><div class="code-bar"><span>text</span></div><pre><code>java -jar jlinalg.jar variant-tools install annovar --source-url-env ANNOVAR_DOWNLOAD_URL --accept-license true
+</code></pre></div>
+<p>Alternatively import a previously registered archive:</p>
+<div class="code-window"><div class="code-bar"><span>text</span></div><pre><code>java -jar jlinalg.jar variant-tools install annovar --source-file annovar.latest.tar.gz --accept-license true --downloads false
+</code></pre></div>
+<p><code>--expected-sha256 SHA256</code> optionally pins a known archive. JLinAlg records the actual archive hash, refuses unsafe archive paths/links and limits extraction. The issued URL itself is excluded from manifests and error messages. Perl and the chosen annotation databases remain explicit runtime/data prerequisites; installing the scripts does not silently download every genomic database.</p>
+<h3 id="automatic-study-setup">Automatic study setup</h3>
+<p>With permitted automatic downloads, a native AlphaGenome study route prepares the shared SDK home before making its first authenticated model request. If no API credential is configured, it reports that prerequisite without downloading an unusable dependency. Users can install the software independently with the setup command above.</p>
+<div class="code-window"><div class="code-bar"><span>yaml</span></div><pre><code>analysis:
+  variant_followup:
+    alphagenome:
+      enabled: true
+      engine: atlas
+      installation:
+        mode: automatic
+        # home: /optional/private/tool/home
+        # python: /optional/bootstrap/python
+</code></pre></div>
+<p>Explicit existing <code>alphagenome.python</code> paths keep their external-environment behavior unless <code>installation.mode: automatic</code> is requested. <code>installation.mode: external</code> disables managed setup. ANNOVAR automatically binds a managed home when no external executable was supplied; a first installation additionally needs its registered archive or issued-link environment variable and licence acknowledgement:</p>
+<div class="code-window"><div class="code-bar"><span>yaml</span></div><pre><code>analysis:
+  variant_followup:
+    consequences:
+      engine: annovar
+      release: YOUR_ANNOTATION_RELEASE
+      database: /path/to/humandb
+      protocol: refGene
+      operation: g
+      installation:
+        mode: automatic
+        source_url_env: ANNOVAR_DOWNLOAD_URL
+        accept_license: true
+</code></pre></div>
+<p><code>resources.network: offline</code> or a nonautomatic <code>resources.downloads</code> policy prevents missing software from being downloaded. A complete managed home can still be reused; a local licensed ANNOVAR archive can be imported without a software network request. Managed runtime hashes participate in study cache identities. A changed/missing/extra installed file invalidates the profile and cached scientific reuse; choose a new home after reviewing retained diagnostics.</p>
+<p>The JSON status endpoint lets a frontend show installed, absent or registration-required states. Setup failures retain logs in/alongside the private home. A successful installation establishes software availability and provenance, not validated pathogenicity or scientific model quality.</p></article>
+<aside class="toc"><strong>On this page</strong><a href="#inputs-and-variant-identity">Inputs and variant identity</a><a href="#1-install-and-query-a-local-annotation-snapshot">1. Install and query a local annotation snapshot</a><a href="#remote-post-and-provider-apis">Remote POST and provider APIs</a><a href="#2-consequence-prediction-or-import">2. Consequence prediction or import</a><a href="#3-integrate-evidence-without-disguising-uncertainty">3. Integrate evidence without disguising uncertainty</a><a href="#validation-and-supported-scope">Validation and supported scope</a><a href="#completed-pooled-gwas-inputs">Completed pooled GWAS inputs</a><a href="#scientific-citations-variant-followup">Scientific citations</a><a href="#application-managed-software-download-and-installation">Application-managed software download and installation</a></aside></div>
 </main><site-footer root="../"></site-footer></body></html>

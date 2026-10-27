@@ -65,15 +65,15 @@ public final class StudyPlanner {
                 var dependencies = StudyIO.list(definition.get("depends_on"), "depends_on").stream()
                     .map(id -> suppliedIds.get(String.valueOf(id))).toList();
                 boolean contribution = "contribution".equals(definition.get("role"));
-                var imported = operation(counter, primary ? kind : contribution ? "supplied_contribution" : "supplied_sensitivity", hypothesisId, List.of(), dependencies);
+                var imported = operation(counter, StudySuppliedResultPolicy.operationType(definition), hypothesisId, List.of(), dependencies);
                 imported.put("supplied_result_id", definition.get("id"));
                 imported.put("allow_incomplete_dependencies", true);
-                imported.put("scientific_role", primary ? "supplied_primary" : contribution ? "supplied_contribution" : "supplied_sensitivity");
+                imported.put("scientific_role", StudySuppliedResultPolicy.partialPrimary(definition) ? "supplied_partial" : primary ? "supplied_primary" : contribution ? "supplied_contribution" : "supplied_sensitivity");
                 operations.add(imported);
                 String id = String.valueOf(imported.get("id"));
                 suppliedIds.put(String.valueOf(definition.get("id")), id);
-                if (primary) supplied.putIfAbsent(kind, id);
-                if (primary && kind.equals("network_analysis")) suppliedNetworks.add(id);
+                if (StudySuppliedResultPolicy.ownsStage(definition)) supplied.putIfAbsent(kind, id);
+                if (StudySuppliedResultPolicy.ownsStage(definition) && kind.equals("network_analysis")) suppliedNetworks.add(id);
                 if (contribution&&kind.equals("mendelian_randomization")) { mrContributions.add(id); goals.add("mendelian_randomization"); }
                 if (contribution&&kind.equals("literature_search")) { literatureContributions.add(id); goals.add("literature_search"); }
             }

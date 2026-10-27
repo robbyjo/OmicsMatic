@@ -114,7 +114,7 @@ public final class StudyExecutionEngine {
             cacheIdentity.put("context_hash", contextHash);
             cacheIdentity.put("input_scope", scope.mode());
             cacheIdentity.put("input_sha256", inputs);
-            cacheIdentity.put("implementation", 79);
+            cacheIdentity.put("implementation", 86);
             cacheIdentity.put("software", software);
             String cacheKey = StudyIO.hash(cacheIdentity);
             List<StudyNeed> needs = StudyQuestionRules.prerequisites(study, operation);
@@ -327,6 +327,8 @@ public final class StudyExecutionEngine {
         result.putAll(org.jlinalg.cli.StudyGwasEnrichmentResources.inputHashes(project,study,operation));
         result.putAll(org.jlinalg.cli.StudyRiskScoreResources.inputHashes(project,study,operation));
         result.putAll(org.jlinalg.cli.StudyProteinResources.inputHashes(project,study,operation));
+        result.putAll(org.jlinalg.cli.StudyPublicLiteratureContext.inputHashes(project,study,operation));
+        result.putAll(org.jlinalg.cli.StudyVariantTools.inputHashes(project,study,operation));
         if (operation.containsKey("supplied_result_id")) {
             var supplied = StudySuppliedResultPolicy.definition(study, String.valueOf(operation.get("hypothesis")),
                 String.valueOf(operation.get("supplied_result_id")));

@@ -117,7 +117,8 @@ public final class StudyResolver {
                 for(String datasetId:selectedForPolicy){var d=datasetById.get(datasetId);if(d!=null&&Set.of("processed_matrix","quantified_matrix","raw_quantified").contains(d.get("stage"))&&!Set.of("gwas","genomics").contains(d.get("type")))throw new IllegalArgumentException("Generated genotype PCs require a separate hypothesis for non-genotype participant matrices");}
                 var covariates=new ArrayList<>(StudyIO.optionalList(hypothesis.get("covariates"),"hypothesis.covariates"));for(String pc:pcCovariates)if(!covariates.contains(pc))covariates.add(pc);hypothesis.put("covariates",covariates);
             }
-            if (genetic || analysis.containsKey("variant_followup")) analysis.put("variant_followup", StudyVariantFollowupPolicy.resolve(
+            var suppliedFollowups=StudySuppliedFollowups.inspect(String.valueOf(hypothesis.get("id")),analysis,datasetById,selectedForPolicy);
+            if (genetic || suppliedFollowups.variants() || analysis.containsKey("variant_followup")) analysis.put("variant_followup", StudyVariantFollowupPolicy.resolve(
                 StudyIO.optionalMap(analysis.get("variant_followup"), "variant_followup")));
             boolean rareApplicable = selectedForPolicy.stream().map(datasetById::get).filter(java.util.Objects::nonNull)
                 .anyMatch(dataset -> StudyRareVariantPolicy.setInput(dataset) || Set.of("gwas", "genomics").contains(dataset.get("type"))
@@ -142,8 +143,6 @@ public final class StudyResolver {
             if (molecularMatrix && Boolean.TRUE.equals(StudyIO.map(analysis.get("network"),"network").get("enabled"))) inferred.addAll(List.of("network_analysis","network_modules","module_gene_ontology"));
             if(Boolean.TRUE.equals(StudyIO.map(analysis.get("subgroup_interactions"),"subgroup_interactions").get("enabled")))inferred.add("subgroup_interactions");
             var gwasEnrichmentPolicy=StudyIO.map(analysis.get("gwas_enrichment"),"gwas_enrichment");
-            var suppliedForApplicability=StudySuppliedResultPolicy.resolve(analysis);
-            var suppliedFollowups=StudySuppliedFollowups.inspect(String.valueOf(hypothesis.get("id")),analysis);
             boolean suppliedGenetic=suppliedFollowups.variants();
             var suppliedGoals=StudySuppliedFollowups.goals(suppliedFollowups,analysis);
             inferred.addAll(suppliedGoals);
@@ -153,7 +152,7 @@ public final class StudyResolver {
             followupApplicability.put(String.valueOf(hypothesis.get("id")),applicabilityReceipt);
             boolean genomicAssociation=selectedForPolicy.stream().map(datasetById::get).filter(java.util.Objects::nonNull).anyMatch(d->Set.of("gwas","genomics").contains(d.get("type"))&&(
                 Set.of("raw_quantified","quantified_matrix","processed_matrix","association_results","annotated_results","meta_analysis_results").contains(d.get("stage"))
-                ||StudyAnalysisReferences.isReference(d)&&suppliedForApplicability.stream().anyMatch(owner->"primary".equals(owner.get("role"))&&Set.of("meta_analysis","discovery_meta_analysis").contains(owner.get("kind"))&&owner.get("id").equals(d.get("supplied_result_id")))));
+                ||StudyAnalysisReferences.isReference(d)&&suppliedGenetic&&suppliedFollowups.receipt().get("source_id").equals(d.get("supplied_result_id"))));
             if((genomicAssociation||suppliedGenetic)&&Boolean.TRUE.equals(StudyIO.map(analysis.get("gwas_diagnostics"),"gwas_diagnostics").get("enabled")))inferred.add("gwas_diagnostics");
             if(Boolean.TRUE.equals(gwasEnrichmentPolicy.get("enabled"))&&(genomicAssociation||StudyIO.optionalMap(gwasEnrichmentPolicy.get("summary"),"summary").containsKey("file")))inferred.add("gwas_enrichment");
             var gseaPolicy=StudyIO.map(analysis.get("gsea"),"gsea");
@@ -161,7 +160,10 @@ public final class StudyResolver {
             if(Boolean.TRUE.equals(gseaPolicy.get("enabled"))&&(molecularMatrix||molecularResults||gseaPolicy.containsKey("ranking"))) {
                 inferred.add("ranked_gsea");if(Boolean.TRUE.equals(StudyIO.map(analysis.get("network"),"network").get("enabled")))inferred.addAll(List.of("pathway_network","network_modules","module_gene_ontology"));
             }
-            Set<String> suppliedKinds = StudySuppliedResultPolicy.resolve(analysis).stream().filter(row -> "primary".equals(row.get("role")))
+            for (var definition : StudySuppliedResultPolicy.resolve(analysis))
+                if (StudySuppliedResultPolicy.partialPrimary(definition) && StudySuppliedResultPolicy.completionEnabled(analysis, String.valueOf(definition.get("kind"))))
+                    inferred.add(String.valueOf(definition.get("kind")));
+            Set<String> suppliedKinds = StudySuppliedResultPolicy.resolve(analysis).stream().filter(StudySuppliedResultPolicy::ownsStage)
                 .map(row -> String.valueOf(row.get("kind"))).collect(java.util.stream.Collectors.toSet());
             if(Boolean.TRUE.equals(StudyIO.map(analysis.get("risk_score"),"risk_score").get("enabled"))&&(molecularMatrix||StudyIO.map(analysis.get("risk_score"),"risk_score").containsKey("file")))inferred.add("risk_score_evaluation");
             if(suppliedKinds.contains("risk_score_evaluation")&&!suppliedKinds.contains("risk_score_related_phenotypes")&&!StudyIO.list(StudyIO.map(analysis.get("risk_score"),"risk_score").get("related_phenotypes"),"related_phenotypes").isEmpty())inferred.add("risk_score_related_phenotypes");
@@ -172,7 +174,7 @@ public final class StudyResolver {
             if(Boolean.TRUE.equals(StudyIO.map(analysis.get("rare_omnibus"),"rare_omnibus").get("enabled"))&&(suppliedKinds.contains("rare_variant_analysis")||suppliedKinds.contains("rare_set_omnibus")||Boolean.TRUE.equals(StudyIO.optionalMap(analysis.get("rare_variants"),"rare_variants").get("enabled"))))inferred.add("rare_set_omnibus");
             if(Boolean.TRUE.equals(networkPolicy.get("enabled"))&&Boolean.TRUE.equals(StudyIO.map(analysis.get("network_preservation"),"network_preservation").get("enabled"))){
                 var graphCoverage=StudyNetworkReuse.coverage(analysis,datasetById,List.copyOf(selectedForPolicy));
-                long suppliedGraphs=StudySuppliedResultPolicy.resolve(analysis).stream().filter(d->"network_analysis".equals(d.get("kind"))&&"primary".equals(d.get("role"))).count();
+                long suppliedGraphs=StudySuppliedResultPolicy.resolve(analysis).stream().filter(d->"network_analysis".equals(d.get("kind"))&&StudySuppliedResultPolicy.ownsStage(d)).count();
                 long nativeGraphs=selectedForPolicy.stream().map(datasetById::get).filter(java.util.Objects::nonNull).filter(d->StudyNetworkPolicy.MOLECULAR.contains(String.valueOf(d.get("type")))&&Set.of("raw_quantified","quantified_matrix","processed_matrix").contains(d.get("stage")))
                     .filter(d->suppliedGraphs==0||graphCoverage.resolved()&&Boolean.TRUE.equals(networkPolicy.get("complete_missing"))&&!graphCoverage.covered().contains(String.valueOf(d.get("id")))).count();
                 if(suppliedGraphs+nativeGraphs>=2)inferred.add("network_preservation");
@@ -188,7 +190,7 @@ public final class StudyResolver {
                 if (!needsValidation) inferred.remove("association");
                 if (!inputs.containsKey("replication")) inferred.remove("discovery_replication");
             }
-            if (!analysis.containsKey("goals")) analysis.put("goals", inferred);
+            if (!analysis.containsKey("goals")) analysis.put("goals", new ArrayList<>(new LinkedHashSet<>(inferred)));
             else if ("auto".equalsIgnoreCase(String.valueOf(analysis.get("mode")))) {
                 LinkedHashSet<Object> goals = new LinkedHashSet<>(
                     StudyIO.list(analysis.get("goals"), "analysis.goals"));
@@ -223,7 +225,7 @@ public final class StudyResolver {
 
         Map<String, Object> resolution = new LinkedHashMap<>();
         resolution.put("schema_version", 1);
-        resolution.put("defaults_version", 50);
+        resolution.put("defaults_version", 53);
         resolution.put("followup_applicability", followupApplicability);
         resolution.put("source_study_hash", source.hash());
         resolution.put("applied_amendments", List.copyOf(appliedAmendments));

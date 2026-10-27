@@ -166,9 +166,12 @@ def verify(root,jar):
                 assert sha(folder/"supplied/edges.tsv")==sha(project/"edges.tsv")
                 if case in HELD:
                     assert m["state"]=="waiting_for_input" and "canonical_results" not in m["details"]
+                    if case=="partial-source":
+                        assert m["operation_type"]=="supplied_partial" and m["details"]["reported_status"]=="partial"
+                        assert m["details"]["partial_network_unscheduled_datasets"]==["a"]
                 else:assert m["state"]=="complete"
             modules=[(p,m) for p,m in ops if m["operation_type"]=="network_modules"]
-            assert len(modules)==len(imports)+len(native)
+            assert len(modules)==sum(m["details"].get("replaces_native_stage",True) for _,m in imports)+len(native)
             for folder,m in modules:
                 if m["state"]!="complete":continue
                 if m["details"]["module_origin"]=="supplied_memberships_reused":assert m["details"]["memberships"]==6

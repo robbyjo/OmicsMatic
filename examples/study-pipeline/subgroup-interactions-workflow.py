@@ -167,7 +167,18 @@ def close(actual, expected, label, probability=False):
 
 
 def verify_stage(root, project, mode, folder, phase):
-    path, manifest = one(folder, 'subgroup_interactions'); details = manifest['details']; data = rows(path/details.get('canonical_results', 'subgroup-interactions.tsv'))
+    path, manifest = one(folder, 'subgroup_interactions')
+    if mode == 'supplied-partial':
+        # This fixture supplies no native family, participant datasets or raw
+        # inputs. The partial import must not masquerade as a completed native
+        # test; applicability remains distinct from completing a declared test.
+        assert manifest['state'] == 'not_applicable'
+        assert manifest['summary'] == 'No registered subgroup interaction family'
+        assert not (path/'subgroup-interactions.tsv').exists()
+        path, manifest = one(folder, 'supplied_partial')
+        assert manifest['details']['kind'] == 'subgroup_interactions' and manifest['details']['reported_status'] == 'partial'
+        assert manifest['details']['replaces_native_stage'] is False
+    details = manifest['details']; data = rows(path/details.get('canonical_results', 'subgroup-interactions.tsv'))
     incomplete = mode in WAIT or mode == 'budget-resume' and phase == 0 or mode == 'supplied-partial'
     expected_candidates = set()
     if mode.startswith('supplied-'):
@@ -175,7 +186,8 @@ def verify_stage(root, project, mode, folder, phase):
         assert details['primary_selection_eligible'] == (not incomplete)
         if not incomplete: expected_candidates.add('signal')
         assert [(r['group_id'], r['adjusted_p']) for r in data] == [('sex', '0.003'), ('age', '0.9')]
-        assert not any(yaml.safe_load((p/'manifest.yaml').read_text())['operation_type'] == 'participant_qc' for p in folder.iterdir())
+        has_qc = any(yaml.safe_load((p/'manifest.yaml').read_text())['operation_type'] == 'participant_qc' for p in folder.iterdir())
+        assert has_qc is False  # Both supplied-only fixtures have no participant datasets.
     else:
         assert manifest['state'] == ('waiting_for_input' if incomplete else 'complete'), (mode, phase, manifest['state'])
         assert details['primary_association_changed'] is False

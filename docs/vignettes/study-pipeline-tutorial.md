@@ -7474,3 +7474,340 @@ The prototype passed nine scenarios and 468 independent numeric comparisons. Thi
 
 
 The [implementation record](../analysis-pipeline-implementation.md#continuous-gwas-annotation-checkpoint-2026-10-26) records the exact frozen source/JAR, 2,641-test full gate (2,462 passed, 179 optional skips, no failures/errors), all 17 new tests, nine regression workflows, six before/after cases, schema/output-hash verification and the retained initial numerical-reference failure. The evidence is synthetic/source-build validation; real scientific calibration and complete pipeline conformance remain unestablished.
+
+## Automatic follow-ups from a supplied primary meta-analysis
+
+Users can start with a completed meta-analysis and let `analysis.mode: auto` schedule applicable missing follow-ups, even with `datasets: []`. Declare the scientific modality and feature namespace in the supplied result's `scope`; cohort descriptions and free-text assay names do not establish these identities. For example:
+
+```yaml
+datasets: []
+hypotheses:
+  - id: H
+    description: Complete the missing analyses from the registered primary pool.
+    analysis:
+      mode: auto
+      supplied_results:
+        - id: completed-pool
+          kind: meta_analysis
+          role: primary
+          files:
+            results: completed-meta.tsv
+            feature_annotation: feature-to-gene.tsv
+          scope:
+            modality: expression
+            feature_id_type: gene_symbol
+            species: human
+          method:
+            name: Prespecified externally completed meta-analysis
+          family:
+            id: original-complete-feature-family
+            coverage: complete
+            tested_count: 20000
+            adjustment: BH
+      gsea:
+        species: human
+        gene_id_type: symbol
+        gene_sets: registered-pathways.gmt
+```
+
+Replace the example denominator with the original tested family. The example annotation file explicitly maps `feature_id` to `gene_symbol`; it does not authorize guessing gene assignments. GSEA consumes the complete eligible ranking, including nonsignificant features, with the existing contrast, collapse, null-model and family gates. Missing mappings, incomplete source coverage and unavailable collections remain visible prerequisites.
+
+The supplied primary's declared scope now informs these automatic branches:
+
+| Declared primary scope | Missing work scheduled |
+| --- | --- |
+| `modality: gwas` or `genomics`, with a variant namespace | GWAS diagnostics and GWAS enrichment; native enrichment still needs calibrated complete summaries and compatible LD/annotation reference inputs |
+| A supported molecular modality, or `feature_id_type: gene_symbol` / `ensembl_gene` | Ranked GSEA, pathway networks, modules and module GO; gene-oriented sources also schedule GO/pathway enrichment |
+| Proteomics or an explicit protein/UniProt namespace | Protein structure context, with exact sequence, assay mapping, model and retrieval prerequisites retained |
+
+A gene-level GWAS pool follows the gene route. It does not establish SNP-level statistics or LD scores. For compatibility, a declared GWAS/genomics pool without a feature namespace still requests the variant route; an explicit unrecognized namespace does not. Supply the namespace to make this distinction unambiguous. A metabolomics declaration alone does not establish a gene mapping.
+
+Only the registered primary `meta_analysis` drives these inferences. A discovery-only pool or sensitivity result cannot replace it. An explicit `primary_result` association, dataset or different operation selector takes precedence. If the pool omits `scope.modality`, selected `analysis_reference` entries owned by that exact pool can supply a common declared modality. Conflicting reference types do not produce a guessed modality. The resolved study records the selected source, generated operation identity, effective namespace/modality and its origin, inferred goals and whether automatic merging applied in `_resolution.followup_applicability`.
+
+Explicit manual goals and each branch's `enabled: false` flag retain their existing meaning. A completed supplied enrichment, GSEA, module or protein stage keeps its supplied owner; inference does not schedule a replacement native calculation. Partial primary imports may request follow-ups, but runtime primary eligibility still prevents incomplete evidence from being promoted. Summary statistics alone do not trigger participant correlation networks or risk-score construction.
+
+The packaged GWAS and GSEA examples include `official-meta-auto` and `primary-meta-auto`, respectively. They verify that the supplied primary is reused and missing native enrichment/GSEA completes with no association refit. Unresolved literature or other prerequisite branches can retry on resume, refreshing the inventory while completed statistical stages stay cached:
+
+```powershell
+python -B examples/study-pipeline/gwas-enrichment-workflow.py run NEW_GWAS_DIRECTORY --jar PATH_TO_JAR
+python -B examples/study-pipeline/gsea-workflow.py run NEW_GSEA_DIRECTORY --jar PATH_TO_JAR
+```
+
+These are synthetic workflow and numerical checks. They do not certify an external analysis, establish biological findings, or complete the full pipeline objective. The earlier executable audit recorded a missing pooled-only SNP input route. The following section describes its implementation and separate acceptance; completing GWAS enrichment alone did not establish SNP annotation support.
+
+
+The [supplied-primary checkpoint](../analysis-pipeline-implementation.md#supplied-primary-automatic-follow-up-checkpoint-2026-10-26) records the exact frozen source/JAR, 2,660-test full gate (2,481 passed, 179 optional skips), 19 new tests, ten packaged workflows, seven before/after cases, retained failures and the confirmed remaining pooled-only SNP annotation gap.
+
+## SNP annotation from a pooled GWAS
+
+A registered primary `meta_analysis` can now supply the native SNP catalogue without genotype files or original cohort association tables. Automatic mode requests `variant_scoring` for a declared GWAS/genomics variant source when a consequence or AlphaGenome route is enabled. A compatible `analysis_reference` can identify the pool's omitted modality; it supplies metadata, never reconstructed cohort estimates. An already supplied completed `variant_scoring` stage keeps its owner.
+
+Use the supplied-primary contract above with `scope.modality: gwas`, `feature_id_type: variant` and an explicit genome build. The allele-resolved result table can contain `feature_id`, `chromosome`, `position`, `ref`, `alt`, `beta`, `se` and `p_value`. Canonical IDs such as `GRCh38:1:100:A:G` can also carry an explicit identity. Configure the existing annotation routes normally, for example with already completed ANNOVAR and AlphaGenome output:
+
+```yaml
+variant_followup:
+  reference_fasta: GRCh38.fa
+  consequences:
+    engine: import
+    annotations: completed-annovar.vcf
+    format: annovar-vcf
+    release: declared-ANNOVAR-and-database-release
+  alphagenome:
+    engine: import
+    scores: completed-alphagenome-scores.tsv
+    resource_version: declared-score-resource-release
+```
+
+The canonical AlphaGenome import carries `variant_id`, mode, resource/model version, scorer, gene, transcript, ontology term, track, raw/signed-quantile scores, interval and source record. Installed ANNOVAR/VEP and configured AlphaGenome retrieval/prediction retain their existing tool, reference, credential, version and work-budget requirements. The offline example verifies imports; it does not execute those external programs or models.
+
+Annotation includes **all statistically eligible available SNPs in the registered contrast**, including nonsignificant SNPs. It does not select on association P or FDR, change the original correction family, or choose a strongest transcript/tissue. Nonestimable or excluded association aliases retain their dispositions. A valid pooled alias cannot lend its functional evidence to an excluded cohort alias sharing the same physical variant.
+
+Reference and alternate alleles retain their physical meanings. Effect/other alleles are not substituted for them. Row coordinates, canonical IDs, declared build and the supplied reference FASTA must agree; an indel also needs the existing normalization declaration. Pooled rsIDs lacking coordinates can use a single compatible explicit identity from available cohort catalogues. An ambiguous or conflicting identity remains a prerequisite, with no guessed allele assignment. Native cohort and pooled aliases retain distinct provenance while sharing exact physical-variant queries.
+
+`primary-pooled-results.tsv` preserves the verified source table. The operation also retains its primary-selection receipt and producer/metadata snapshots. `variant-inventory.tsv` and `variant-evidence.tsv` add `input_source` and `source_operation_id`; a pooled row has an empty `dataset_id`, because it is not a cohort. `variant-followup.yaml` records original and selection testing families, source coverage, registered contrast, input/eligible counts and the absence of a significance filter.
+
+A selected-only but eligible pool can supply functional context for its available SNPs. The operation remains `waiting_for_input` for complete GWAS coverage and retains the source denominator and FDR. An upstream import that is ineligible for primary selection remains blocked for review. Source completeness is assessed from the original declaration and available counts, not inferred from a correction recomputed over an export. Gene-level GWAS pools, discovery-only/sensitivity results, foreign hypotheses and incompatible primary selectors cannot replace the official SNP source.
+
+Whole-stage supplied `variant_annotation` and `variant_scoring` tables can contain multiple genes, transcripts, tissues, scorers, tracks, models and source records per SNP. Their contextual identities and original attribution remain distinct. Duplicate identical contexts are rejected, rather than resolved by a maximum score; signed quantiles must lie in `[-1,1]`. Rich source records remain intact, with hashes used only to bound their identity bookkeeping. These records provide functional context, not association P values, causal posteriors or validated pathogenicity. Combining score direction with association direction requires the corresponding allele and biological context.
+
+The self-contained packaged example uses synthetic complete and selected exports, both import formats, score reuse, owned cohort metadata, mixed cohort/pool aliases, missing references, conflicting/unknown identities and indel normalization:
+
+```powershell
+python -B examples/study-pipeline/pooled-variant-workflow.py run NEW_DIRECTORY --jar PATH_TO_JAR
+python -B NEW_DIRECTORY/workflow-verifier-source.py verify NEW_DIRECTORY --jar NEW_DIRECTORY/software/jlinalg.jar
+```
+
+The checks cover the supplied-input route and retained functional records. They do not establish real biological calibration, installed ANNOVAR/VEP or AlphaGenome execution, genome-wide performance, external scientific appraisal, or full pipeline conformance.
+
+
+The [pooled-SNP checkpoint](../analysis-pipeline-implementation.md#pooled-gwas-snp-annotation-checkpoint-2026-10-26) records the exact frozen source/JAR, 2,717-test full gate (2,538 passed, 179 optional skips), all 29 new tests, eleven packaged workflows, eleven old/new cases and retained preliminary/failure evidence.
+
+## Partial supplied stages and native completion
+
+A supplied file can describe completed work or an explicitly incomplete stage.
+For example, a GWAS may contain five eligible SNPs while the available external
+functional scoring covers only one. Register the latter with its actual status:
+
+```yaml
+supplied_results:
+  - id: available-snp-context
+    kind: variant_scoring
+    role: primary
+    reported_status: partial
+    files: {results: available-scores.tsv}
+    scope: {modality: gwas, feature_id_type: variant, genome_build: GRCh38}
+    method: {name: Source functional scoring protocol}
+```
+
+The planner retains this as `supplied_partial`; it does not replace the
+requested scoring operation. Automatic mode adds the missing stage when its
+policy is enabled. Native completion uses the registered source data, reference,
+provider configuration and methods, independently of the partial table. It may
+recompute the full stage: arbitrary partial rows are not assumed compatible
+enough to splice into a new result. Existing feature-scoped MR/literature
+contributions and verified native pair reuse retain their separate contracts.
+
+The source bytes, hashes, reported status, original correction family and
+existing adjusted values remain in the import. Partial fragments do not receive
+a newly computed full-family correction. Normalized rows use
+`supplied-results-limited.tsv`; partial networks use `supplied-partial-` graph
+files and count toward no completed cohort coverage. These artifacts cannot
+become the official result merely because their import validation succeeded.
+Dependent supplied evidence retains the upstream partial-coverage caveat.
+
+`supplied-analysis.yaml` distinguishes `replaces_native_stage: false` from the
+IDs in `native_completion_operations`. An import may be `complete` because its
+validation finished while the native stage still waits for inputs. Inspect the
+native operation and its needs to determine analysis completion. If a requested
+stage cannot be planned from the available inputs, the import itself records a
+completion need; a partial pooled table cannot recreate unavailable cohort
+estimates. Explicit manual goals permit retaining partial evidence without
+requesting new analysis. Completed supplied stages continue to own their scope
+and skip native reruns.
+
+Completion must match the requested scientific scope. A native graph for cohort
+B does not complete a partial graph for cohort A: the latter retains a need for
+A's source matrix or a completed scoped graph. A partial primary meta-analysis
+also prevents implicit selection of a cohort result. Its downstream primary
+selection waits until a valid matching pool is available, unless the protocol
+explicitly designates a cohort analysis.
+
+Run the synthetic packaged example with Python and PyYAML:
+
+```text
+python -B examples/study-pipeline/partial-supplied-workflow.py run NEW_DIRECTORY --jar PATH_TO_JAR
+python -B NEW_DIRECTORY/software/workflow-verifier-source.py verify NEW_DIRECTORY --jar NEW_DIRECTORY/software/jlinalg.jar
+```
+
+Keep `pooled-variant-workflow.py` beside the example for fixture generation.
+The checks cover all-input completion, missing-input waiting, explicit manual
+retention, completed scoring reuse, and partial pooled input without cohort
+estimates. Scores are synthetic imports; the example does not execute a real
+functional predictor or establish biological accuracy.
+
+
+The [partial-stage checkpoint](../analysis-pipeline-implementation.md#partial-supplied-completion-checkpoint-2026-10-26) records the exact source/JAR, full gate, 28 new tests, eight packaged workflows, five old/new cases and retained superseded evidence.
+
+## Citation candidates in impact review and manuscript drafting
+
+Search counts alone cannot tell the model which papers are available. The
+finding inventory now carries public bibliographic candidates with their
+query and source bindings into impact comparison and native drafting.
+
+Feature-specific candidates appear in
+`literature_coverage.citation_candidates`. Exact feature queries and declared
+gene-only queries retain their different match bases. A query explicitly naming
+another feature cannot lend its papers merely because the gene matches.
+Known contradictory or invalid query contexts withhold their candidate metadata
+and retain a count; this does not become a no-match search result.
+
+General bibliographies and queries without feature/gene scope appear once per
+hypothesis under `finding-inventory.yaml`'s `literature_background`. They are
+background candidates, with no claim of completed feature-level search or
+finding-specific support. They are not copied into every SNP/gene row. Each
+impact packet includes only the shared background for hypotheses represented in
+that comparison. The final manuscript retains study background even for an
+unselected or null hypothesis, so selection of principal findings does not erase
+the Introduction's source context.
+
+Each candidate keeps its normalized identifiers, stable reference ID, available
+public title/authors/year/journal, source URL, metadata conflicts and supported
+correction metadata. DOI/PMID/PMCID aliases can identify the same record; a shared
+title alone cannot merge papers. `query_ids` link the candidate to its exact
+receipt groups, and `source_ids` bind it to verified producer artifacts. Impact
+`evidence_ids` continue to use the packet's `source_catalog` IDs; bibliographic
+reference IDs do not replace those audit identities.
+
+The projection excludes abstracts, full text, excerpts, query prose, private
+notes, local paths and unknown nested fields. Public titles and author metadata
+still need disclosure review under the study policy; this is not a DLP guarantee.
+Repeated appearances of a paper are not independent studies. Reference identity
+does not certify metadata accuracy, relevance, novelty or experimental support.
+The model must treat titles as source data, retain missing appraisal as unknown,
+and review primary text before substantive claims. Native full-text acquisition
+and the [claim-bound discussion review](#claim-bound-principal-finding-discussion)
+remain separate from this metadata handoff.
+
+There is no twenty-reference cutoff in this path. Complete available candidate
+metadata remains in the local inventory; impact packet size is governed by
+`impact_max_payload_chars`. Oversized dossiers wait for a budget/review decision
+instead of silently dropping references. Original P values, FDR families,
+candidate eligibility and the frozen three-to-five finding selection stay
+unchanged.
+
+The packaged `completed-study-workflow.py` exercise checks both recorded model
+request payloads and local artifacts: supplied bibliography metadata reaches
+impact review and drafting, its query/source links resolve, source-support flags
+remain false, and private source prose is absent. It also retains the separate
+three-finding manuscript, 24 claim bindings and linked supplements. Its responses
+are protocol fixtures and do not certify biological or real-model discussion
+quality.
+
+
+The [finite requirement audit and citation checkpoint](../analysis-pipeline-implementation.md#finite-original-requirement-audit-and-citation-checkpoint-2026-10-26) records the 24 original facets, exact source/JAR, full regression gate, 62-workflow inventory, corrected subgroup verifier, same-input comparison and live-provider limits.
+
+## Explicit public passages for impact review and drafting
+
+Bibliographic candidates identify papers; they do not supply their substantive
+evidence. The source build now supports an optional
+`assistance.public_literature_context` list of `{file, sha256}` pins. Each file
+follows the [public context schema](../schemas/public-literature-context-v1.schema.json).
+This route is absent by default and extends the earlier metadata-only candidate
+projection only when the study explicitly configures it.
+
+A context source declares an ID, registered `hypotheses`, optional exact
+`feature_ids`, and explicit `purposes: [impact, manuscript]` or either purpose
+alone. It identifies a paper and an available native full-text source by
+`reference`, `source_id`, `source_sha256` and
+`reference_bundle: {manifest, sha256}`. Bundle paths resolve relative to the
+context file. Use a closed native reference-acquisition bundle with
+`full_text: true`, as described in the existing full-text acquisition section.
+No arbitrary source path, free-form replacement excerpt or private note is
+accepted in this context format.
+
+Each `passages` entry contains an ID and numeric `start`/`end` offsets, measured
+in UTF-16 code units in the exact native UTF-8-decoded text. The end is exclusive.
+The reader verifies the bundle inventory, reference identity, available full-text
+membership and exact text hash, then extracts those ranges itself. It rejects
+invalid or repeated ranges and boundaries that split a supplementary Unicode
+character. It preserves up to 50 source entries, 100 passages per source and
+2,000,000 selected characters in total. Oversize or unresolved evidence holds
+the AI step; it is never silently shortened.
+
+Impact packets receive passages matching the batch's hypothesis and exact
+feature scope. Omitting `feature_ids` declares hypothesis-level background.
+This context feeds the study-wide finding inventory, final impact comparisons
+and native manuscript drafting. The separate provisional literature-cap
+allocation remains a pre-appraisal protocol; editorial review keeps its own
+explicit disclosure payload. Neither implicitly receives these passages.
+Manuscript drafting receives matching selected findings plus explicitly scoped
+background, including an unselected or null hypothesis. Impact-only passages
+and their source-catalog records do not transfer to manuscript requests.
+If any public source available to impact review is outside the drafting scope,
+the drafting packet also omits upstream AI appraisals and the free-text selection
+rationale, including their copies in the outline. This prevents literal or
+paraphrased source text from bypassing the declared scope. Selected finding
+identities, order, statistical evidence and mandatory caveats still transfer;
+the complete original appraisal remains in the local impact audit. Drafting
+reassesses claims from its own supplied evidence. When all impact sources also
+reach the drafting scope, the appraisals remain available.
+Manuscript-only passages do not enter impact requests. Repeated appearances of
+one paper or overlapping passages do not establish independent evidence.
+
+The finding inventory retains the public context once, with its source and
+bundle hashes; passages are not duplicated into every finding row. A separate
+source-catalog entry binds the paper and passage IDs. Local paths, unselected
+source text, raw response caches and context-file fields are excluded from the
+model payload. These checks establish integrity and declared scope, not public
+source authentication, scientific support, de-identification or a DLP guarantee.
+Inspect the exact `evidence.yaml` and configured disclosure policy. Existing
+purpose, provider, offline and remote-transmission restrictions still apply.
+
+Impact responses can cite a matching public paper's `source_id` in either
+`evidence_ids` or `counterevidence_ids`. The source must be present as a public
+passage record in the packet's catalog and match that individual finding's
+hypothesis and feature scope. A source shared in a batch does not become
+available to other features or hypotheses. Missing catalog records, unresolved
+contexts and invented source IDs remain errors. Hypothesis-level background
+may inform several features in that hypothesis. Accepting a source ID establishes
+its supplied provenance; the relationship between its passages and a scientific
+claim still requires appraisal.
+
+Changing a context file, native bundle or any hashed bundle member invalidates
+cached finding-inventory/impact/draft work. Missing or changed pinned evidence
+leaves the AI stages waiting while association results remain available. A
+previously declared missing context file can arrive later with the exact pinned
+bytes, allowing completion without changing the statistical results.
+
+Native drafting now receives the eight discussion facets explicitly:
+observation, primary evidence, mechanism, contrary evidence, alternatives,
+relevance, next experiments and limitations. The prompt requires attribution to
+paper/passage IDs, separation of this study's results from source experiments,
+and honest explanations of insufficient evidence. Essential reasoning belongs
+in the main text; complete extended discussion can stay in finding-specific
+supplements. Provider output still requires the existing manuscript revision,
+claim-ledger and scientific review. A word count, facet list or literal match
+cannot certify the thoroughness requested for the OAS1 example.
+
+The packaged `public-literature-context-workflow.py` example accepts a previously
+acquired Wickenhagen et al. public full-text bundle:
+
+```text
+python examples/study-pipeline/public-literature-context-workflow.py run NEW_OUTPUT --jar JAR --references REFERENCE_BUNDLE
+python examples/study-pipeline/public-literature-context-workflow.py verify OUTPUT --jar OUTPUT/software/jlinalg.jar
+```
+
+It inspects actual loopback requests for purpose and feature scoping, missing-file
+arrival, unchanged-input reuse, changed pins, a changed native text and budget
+holds. The responder also returns scoped public source IDs as both evidence and
+counterevidence, and the checks verify their acceptance rather than merely their
+presence in an input packet. The study features, protocol answers and actor labels are synthetic.
+The real public paper tests text transport and provenance; this example neither
+turns those features into OAS1 findings nor performs real-model scientific
+appraisal. It requires PyYAML, jsonschema, NumPy and SciPy.
+
+
+The [public passage checkpoint](../analysis-pipeline-implementation.md#public-passage-context-checkpoint-2026-10-26) records the exact source/JAR, full gate, eight workflows, same-value YAML writer comparison, retained prototype history and scientific evidence boundaries.
+
+
+The [scoped public evidence checkpoint](../analysis-pipeline-implementation.md#scoped-public-evidence-citation-checkpoint-2026-10-26) records the response-validator fix, identical-packet old/new comparison, ten new tests and exact-JAR acceptance.

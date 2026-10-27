@@ -110,6 +110,10 @@ or additional accepted <code>study.yaml</code> syntax.</p>
 <td>Fit every principal finding into a short summary</td>
 <td>Develop a complete source-linked discussion for each selected story, keeping essential reasoning in main text and extended evidence in finding-specific supplements.</td>
 </tr>
+<tr>
+<td>Give AI only paper identities while requiring substantive discussion</td>
+<td>Optionally supply explicitly scoped public passage context with exact source/bundle hashes, purpose-specific disclosure and retained evidence gaps; metadata alone never establishes source support.</td>
+</tr>
 </tbody>
 </table></div>
 <p>These primary/sensitivity rules are scientific design choices for this workflow.
@@ -133,6 +137,11 @@ between fixed and random effects.</p>
     plan requested missing operations from supplied and previously verified outputs
     if all requested analyses are supplied, perform validation/reporting only
     check each requested operation against its model/input/source capabilities
+    register managed or external variant software and its private installation home
+    provide application setup commands independently of study/model credentials
+    plan required software acquisition under the resource download policy
+    require the user's registered ANNOVAR source and licence acknowledgement
+    reuse verified software offline; retain incomplete/changed homes with recovery
     resolve the contract and preserve the approved plan
     inventory availability separately from operation-specific content hashes
     defer unavailable downstream files to their consuming branches
@@ -474,9 +483,20 @@ recompute current stage-wide testing families and coverage; do not copy a
 previous joint correction or count reuse as replication. An explicit rerun
 bypasses native pair reuse. Automatic unversioned references require their own
 source identity before they qualify for pair-level reuse.</p>
-<p>An incomplete or conflicting import needs a recorded disposition and a precise
-repair request; it cannot silently trigger a replacement analysis or be treated
-as an empty/null result. Rerunning an accepted supplied analysis requires an
+<p>An explicitly <code>reported_status: partial</code> primary is retained as a
+<code>supplied_partial</code> import, without completed-stage ownership. Automatic mode
+requests completion of that stage when its policy is enabled; explicit manual
+goals control which analyses run. Native completion uses its registered inputs
+and methods as a separate analysis, without merging unverified fragments into
+its result. A partial network covers no completed cohort graph. Source adjusted
+P values and testing-family declarations remain intact; correction is not
+recomputed from a partial fragment. When no native operation can be scheduled
+for a requested stage, the import records a specific completion need. Successful
+import validation alone does not establish completed analysis coverage. See the
+<a href="study-pipeline-tutorial.html#partial-supplied-stages-and-native-completion">partial-stage guide</a>.</p>
+<p>A conflicting import needs a recorded disposition and a precise repair request;
+it cannot silently choose a replacement scope or be treated as an empty/null
+result. Rerunning an accepted completed supplied analysis requires an
 explicit request or registered sensitivity/amendment. Do not reconstruct FDR
 from only supplied significant rows, invent a tested denominator, infer absent
 edges/variants as nulls, or describe unrecoverable participant QC as performed.
@@ -1225,6 +1245,19 @@ evidence. Distinguish pending, failed, limited, no-match, retrieved-unreviewed
 and bibliography-only states; deduplicate exact reused query receipts without
 discarding source links. Coverage records do not certify scientific appraisal
 or change statistical eligibility. See the <a href="study-pipeline-tutorial.html#literature-coverage-in-finding-dossiers">coverage guide</a>.</p>
+<p>Carry bibliographic candidates alongside those coverage records. Preserve
+normalized paper identifiers, public title/author/year/journal metadata,
+correction notices, metadata conflicts, query links and the verified producer
+source IDs. Match feature queries by exact feature ID, with declared gene-only
+queries kept as gene-level context. A general bibliography remains shared
+hypothesis background and cannot become feature-specific search coverage or
+support. Impact batches receive background only for their included hypotheses;
+the whole manuscript retains the study's background even when a hypothesis has
+no selected principal finding. Keep unsupported or conflicting query contexts
+quarantined. Preserve all candidate records under the declared payload budgets,
+without an arbitrary twenty-paper preview truncation. Metadata alone does not
+establish that a paper was read or supports a claim. See the
+<a href="study-pipeline-tutorial.html#citation-candidates-in-impact-review-and-manuscript-drafting">citation handoff guide</a>.</p>
 <h3 id="ai-assisted-selection-of-35-principal-findings">AI-assisted selection of 3–5 principal findings</h3>
 <p>AI is used here for comparative scientific interpretation: weigh the impact of
 the supported findings and propose <strong>3–5 distinct principal findings for the
@@ -1667,6 +1700,7 @@ genomic control or replace the registered primary inference.</p>
 <p>The source build adds <a href="study-pipeline-tutorial.html#cross-cohort-module-preservation">frozen-module transfer across cohort graphs</a>
 with exact namespaces, source coverage, shared-node/edge/sign diagnostics and
 typed stage reuse. These descriptive comparisons do not provide null-calibrated
-preservation tests or select a new primary graph.</p></article>
+preservation tests or select a new primary graph.</p>
+<p>The <a href="../analysis-pipeline-implementation.html#software-workflow-acceptance-2026-10-26">25-facet software acceptance</a> distinguishes implemented workflow contracts from live-model and scientific acceptance. <a href="variant-followup.html#application-managed-software-download-and-installation">Managed variant software setup</a> is performed by the application, with explicit registration handling for ANNOVAR.</p></article>
 <aside class="toc"><strong>On this page</strong><a href="#changes-to-the-original-pseudocode">Changes to the original pseudocode</a><a href="#end-to-end-pseudocode">End-to-end pseudocode</a><a href="#0-enter-at-any-analysis-stage-and-complete-missing-work">0. Enter at any analysis stage and complete missing work</a><a href="#1-study-contract-and-participant-data">1. Study contract and participant data</a><a href="#1a-gwas-qc-and-association-strategy">1a. GWAS QC and association strategy</a><a href="#2-result-qc-testing-families-and-comparisons">2. Result QC, testing families and comparisons</a><a href="#3-discovery-validation-and-primary-meta-analysis">3. Discovery, validation and primary meta-analysis</a><a href="#4-enrichment-and-networks">4. Enrichment and networks</a><a href="#5-gwas-annotation-and-alphagenome-scoring">5. GWAS annotation and AlphaGenome scoring</a><a href="#6-protein-interpretation-and-alphafold">6. Protein interpretation and AlphaFold</a><a href="#7-risk-scores-and-related-phenotypes">7. Risk scores and related phenotypes</a><a href="#8-mr-and-colocalization">8. MR and colocalization</a><a href="#9-literature-manuscript-and-evidence-disposition">9. Literature, manuscript and evidence disposition</a><a href="#implementation-map-and-remaining-work">Implementation map and remaining work</a><a href="#scientific-citations-analysis-pipeline-specification">Scientific citations</a></aside></div>
 </main><site-footer root="../"></site-footer></body></html>

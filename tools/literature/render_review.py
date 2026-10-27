@@ -22,7 +22,8 @@ NATIVE = {
     "macs": ("native-subset-validated", "src/main/java/org/jlinalg/genetics/ThresholdPeaks.java", "Native track-peaks supplied-score threshold/gap/span and plateau-summit subset, checked against 129 actual MACS3 3.1.0 bdgpeakcall runs for positive float32 cutoffs. Explicit reference/missing/precision choices, 64-bit native bounds and actionable warnings. Alignment-based callpeak failed on Windows; HMMRATAC is unavailable. No background/PQ scoring, full old-version, zero/signed-summit or whole-pipeline equivalence")
 }
 ADAPTERS = {
-    "prscs": ("upstream-adapter-validated", "Original PRS-CS source-fbc9ec0,1.1.0 and1.0.0 through prs-cs-tools,with native Java allele/marginal/unit/thinning arithmetic,streamed input ledgers,read-only HDF5 bridge and exact model/LD/posterior checks. Explicit formats,N interpretation,trait/panel/population/build labels,model/sampling/seed and exclusion policies. Means/draws/psi follow version capabilities;optional explicit per-allele mean-weight export. Known current NumPy and legacy SciPy alias deprecations retained;unknown/numerical warnings fail. Windows x64 sealed runtime;historical Python3.10.11 requires offline-reproduction choice and prominent EOL warning. Current source has separate compatible Python3.12. Missing/changed/forbidden dependencies skip exit3;scientific/input failures exit2 with quarantined canonical partials and exact recovery. Development candidate prscs-candidate-1 SHA starts33b26e76;canonical a104 is unchanged. Study-specific reference,chain stability,tuning/combination,overlap and prediction calibration require separate assessment. See PRSCS_WORKFLOWS.md."),
+    "igv": ("upstream-adapter-validated", "Original IGV2.19.8 local audited views through igv-tools;bounded development candidate,full paper-specific scope remains open. See IGV_WORKFLOWS.md."),
+    "prscs": ("upstream-adapter-validated", "Original PRS-CS profiles source-fbc9ec0, 1.1.0 and 1.0.0 run through prs-cs-tools. Native Java checks allele orientation, marginal effects, units, thinning, input ledgers, raw HDF5 LD and posterior identities. Declare the format, N interpretation, trait, panel, population/build labels, model, sampling, seed and exclusion policies. Means, draws and psi follow the selected version's capabilities; per-allele mean-weight export is explicit. Known NumPy and historical SciPy alias deprecations remain visible; unknown or numerical warnings fail. The sealed runtime requires Windows x64. Historical Python 3.10.11 requires an offline-reproduction choice and an EOL warning; the current source has a separate compatible Python 3.12 environment. Missing, changed or forbidden dependencies skip exit 3; input/process failures return exit 2 with quarantined canonical partials and recovery steps. Use development candidate prscs-candidate-1, SHA starts 33b26e76; canonical a104 is unchanged. Reference compatibility, chain stability, tuning, score combination, overlap and predictive calibration require separate assessment. See PRSCS_WORKFLOWS.md."),
     "beagle": ("upstream-adapter-validated", "Original Beagle 5.4-29Oct24, 5.1-18May20 and exact 4.1-08Jun17/4.1-21Jan17 GT-only diploid phasing/reference imputation through beagle-tools. Native Java streams input calls, checks complete sample/marker families, observed genotypes, explicit phase preservation and two-decimal DS/AP/GP identities. Explicit map, assembly, panel, seed/model/window and target-only exclusion policies; exact identifiers restored. Modern partially missing prephased inputs require compatible preservation inputs or explicit allow-rephase. Never reconstruct GT from GP. Available in the validated development candidate beagle-candidate-1 (SHA starts 5ed54e44); canonical a104 is unchanged and lacks this command. Missing/changed/forbidden runtime skips exit 3 with exact recovery; failures return 2 and quarantine canonical partials. No GL/PL, IBD, polyploid/pedigree model, automatic panel retrieval or full-paper parity. See BEAGLE_WORKFLOWS.md."),
     "fimo": ("upstream-adapter-validated", "Original FIMO 5.5.9 DNA P/q scanning with exact admitted private Windows/Cygwin/GNU-regex runtime, plus independent native Java PSSM/P scanning that needs no MEME runtime. Native command motif-scan uses explicit bounded models (256 MiB workspace and one billion convolution updates by default); original command fimo-tools preserves its admitted program. Explicit backgrounds, strands, coordinates, cohorts, pseudocounts and resource contracts. Original q-estimator/input preprocessing/raw reports retained; stored-hit truncation fails and quarantines even empty exit-0 output. No-Q zero placeholders are blank in the canonical table with warnings. Minimal DNA input subset; no PSP, protein/custom alphabet, arbitrary host, old-version, custom empirical calibration or full-paper parity. See FIMO_WORKFLOWS.md."),
     "trimgalore": ("upstream-adapter-validated", "Original unmodified Perl 0.6.7/0.6.10 runs single/paired adapter and quality trimming through Cutadapt 5.2. Typed options cover auto/preset/literal adapters, fixed cuts, N/length filters, orphan rescue and first/last-base hardtrim. Original FastQC 0.13.0 is optional. Java audits headers, bases, qualities, source spans, counters and every output stream. There are 22 independent original comparisons and 25 packaged calls. Declare Phred encoding. Ordinary headers/comments must be ASCII; a UTF8 options-file supports Unicode Windows data paths. Private runtimes are sealed; unavailable dependencies skip with exit 3 and exact recovery. The native post-Cutadapt/hardtrim helper is also available. No RRBS, explicit poly-A, clock/UMI, multicore, Rust rewrite, historical Cutadapt/FastQC or full-paper parity. See TRIM_GALORE_WORKFLOWS.md."),
@@ -72,7 +73,34 @@ def main():
     for tool_id, count in counts.most_common():
         tool = dict(registry[tool_id]); tool["paper_count"] = count
         tool["papers"] = [p["paper_id"] for p in papers if any(t["tool_id"] == tool_id for t in p["tools"])]
-        if tool_id in NATIVE:
+        if tool_id == "cellranger":
+            tool["implementation_status"] = "excluded-by-user"
+            tool["implementation_source"] = None
+            tool["implementation_scope"] = "Excluded from implementation at the user's explicit request on 2026-10-26 after reviewing the restricted 10x license. No Cell Ranger, ARC or ATAC runtime was downloaded, installed or executed. Its 44 source roles remain catalogued, with GEX, ARC, ATAC, mkfastq-only, reused resources and downstream analyses distinguished. This exclusion is not an implemented integration or a failed scientific result. No installation action is required; leave the tool skipped unless the user explicitly reopens it. See CELLRANGER_SOURCE_REVIEW.md."
+        elif tool_id == "apbs":
+            tool["implementation_status"] = "upstream-adapter-validated"
+            tool["implementation_source"] = "src/main/java/org/jlinalg/cli/ApbsToolsCli.java"
+            tool["implementation_scope"] = 'Validated development original APBS3.5.0 solver via apbs-tools in apbs-workflow-candidate-3 (SHA-256 begins b1c26fa4),plus typed original PDB2PQR3.8.0 preparation and actual PyMOL3.1.0 potential-surface. Windows x86_64 prepares/solves;Linux Java in WSL renders. Every potential node,grid and raw energy is audited;raw total energy includes self-energy and is NOT solvation/binding free energy. Source-PQR zero radii remain. Explicit units,protonation,force field,grid,model,radius policy and ramp are required. Analysis never installs;missing,changed or forbidden dependencies skip3 with recovery;input/process/audit failures return2 and quarantine partials. Native electrostatic-grid needs only Java. Original DX long-token exponent truncation is prevented by canonical short float32 delivery with a complete exact float32 field hash;raw DX retained. Read APBS_WORKFLOWS.md,PDB2PQR_WORKFLOWS.md,POTENTIAL_SURFACE_WORKFLOWS.md and APBS_SOURCE_REVIEW.md. Historical/paper-specific reconstruction remains open;canonical a104 is unchanged.'
+            tool["project_adapter_available"] = True
+            tool["canonical_adapter_available"] = False
+            tool["development_adapter_cli"] = "apbs-tools"
+            tool["development_candidate"] = 'build/literature-review/apbs-workflow-candidate-3/jlinalg-0.3.7.jar'
+            tool["development_candidate_sha256"] = 'b1c26fa467769d265115e9d5101f91eaa432da2df906e3a679086f68bfeb49ea'
+            tool["available_native_method"] = "electrostatic-grid"
+            tool["native_helpers"] = ["src/main/java/org/jlinalg/protein/OpenDxGrid.java", "src/main/java/org/jlinalg/protein/PqrStructure.java", "src/main/java/org/jlinalg/protein/ElectrostaticUnits.java"]
+        elif tool_id == "pymol":
+            tool["implementation_status"] = "upstream-adapter-validated"
+            tool["implementation_source"] = "src/main/java/org/jlinalg/cli/PymolToolsCli.java"
+            tool["implementation_scope"] = 'Validated development original PyMOL subset via pymol-tools in candidate pymol-candidate-4 (SHA-256 begins 09e4be51). Use Ubuntu 24.04 Linux x86_64 with CPython 3.12; on Windows run Linux Java inside WSL. Original rendering, measurements, align/super, bond/unbond, torsion and explicit canonical library mutations have independent native input, identity, numerical and graph audits. Keep full-precision final JSON ledgers: original mmCIF rounds coordinates, B factors and occupancy and omits bond categories. Supply the exact local validated wheel; install/download permission flags are explicit and analysis never installs. Missing, changed or forbidden dependencies skip with exit 3. Input/process/audit failures return 2 with quarantined partials. Typed PDB2PQR/APBS/potential-surface integration is available in workflow candidate b1c26fa4;read PDB2PQR_WORKFLOWS.md and POTENTIAL_SURFACE_WORKFLOWS.md. Manual interobject construction,paper-specific reconstruction and historical/commercial/full-paper parity remain open. Read PYMOL_WORKFLOWS.md and PYMOL_SOURCE_REVIEW.md. The separate native molecular-geometry helper needs only Java; canonical a104 is unchanged.'
+            tool["available_native_method"] = "molecular-geometry"
+            tool["native_method_candidate"] = "build/literature-review/molecular-geometry-candidate-1/jlinalg-0.3.7.jar"
+            tool["native_method_candidate_sha256"] = "798d3a08b64107eb7a7679359902efae3591f6ae5a89075f8e9a428698cc32b3"
+            tool["project_adapter_available"] = True
+            tool["canonical_adapter_available"] = False
+            tool["development_adapter_cli"] = "pymol-tools"
+            tool["development_candidate"] = "build/literature-review/pymol-candidate-4/jlinalg-0.3.7.jar"
+            tool["development_candidate_sha256"] = '09e4be51caf00fa252d8c37685e2cd043015a49875eadf131e96b0d0974985b2'
+        elif tool_id in NATIVE:
             tool["implementation_status"], tool["implementation_source"], tool["implementation_scope"] = NATIVE[tool_id]
         elif tool_id in ADAPTERS:
             tool["implementation_status"], tool["implementation_scope"] = ADAPTERS[tool_id]
@@ -99,6 +127,44 @@ def main():
             tool["implementation_source"] = tool["existing_source"]
             tool["implementation_scope"] = tool["coverage_note"]
         tool["validation_note"] = "New native subset has reference/property/CLI tests; complete upstream software parity is not claimed." if tool_id in NATIVE else "Real upstream CLI fixture validated; input and graph contracts remain narrower than the cited paper pipelines." if tool_id in {"umap", "leiden", "louvain"} else "Dependency-skip reporting validated; no Harmony scientific output was produced." if tool_id == "harmony" else "Existing overlap/adapters require paper-specific option checks; missing integrations remain pending."
+        if tool_id in {"apbs", "pymol"}:
+            tool["potential_surface_cli"] = "potential-surface"
+            tool["preparation_cli"] = "pdb2pqr-tools"
+            tool["workflow_candidate"] = "build/literature-review/apbs-workflow-candidate-3/jlinalg-0.3.7.jar"
+            tool["workflow_candidate_sha256"] = "b1c26fa467769d265115e9d5101f91eaa432da2df906e3a679086f68bfeb49ea"
+            tool["workflow_validation"] = "apbs-workflow-validation.json"
+        if tool_id == "igv":
+            tool["implementation_source"] = "src/main/java/org/jlinalg/cli/IgvToolsCli.java"
+            tool["project_adapter_available"] = True
+            tool["canonical_adapter_available"] = False
+            tool["original_runtime_probe_only"] = False
+            tool["development_adapter_cli"] = "igv-tools"
+            tool["development_candidate"] = "build/literature-review/igv-candidate-3/jlinalg-0.3.7.jar"
+            tool["development_candidate_sha256"] = "38889b96d55b6f7ec8d8a4a66cad8168cf8908429a920386936928bce1f93a28"
+            tool["workflow_validation"] = "igv-workflow-validation.json"
+            tool["implementation_scope"] = "Original IGV2.19.8 bounded igv-tools development command renders local FASTA/BED6/bedGraph/BigWig/SEG/BAM using a sealed Windows x64 fullJava21 runtime and hidden frame. Native exact reference/feature/scalar/missing/selected-read/raw-tag/full-count audits;explicit coordinates,units,scales,filters,overlapping mates and downsampling=false.126focused tests/13suites and126standalone perJava21/25;17packaged cases include12scientific workflows/5failure-skip controls.7,860reference bases,41,600integer counts and94selected-read comparisons. 18source roles/7supporting pointers,including P217,remain reviewed;current2426observations/623reviewed roles remain verified. Missing/changed dependencies skip3;input/process/audit failures return2 with retained partials and Required action. Read IGV_WORKFLOWS.md,IGV_SOURCE_REVIEW.md and IGV_RUNTIME_STATUS.md. Automatic CNA cohort-frequency/custom synteny summaries,methylation interpretation,manual diagnosis,unstated allele-depth choices and historical/full-paper parity remain unfinished. Canonical executable/release unchanged."
+            tool["validation_note"] = "Tool-level bounded development integration validated;source-paper-specific reconstruction remains open. 27actual installer/integrity controls across v1/v2 include allowed official download,forbidden install/download,healthy reuse,corrupt/unmanaged/unlisted/changed homes and changed Java admission hashes. Original OAuth/logger diagnostics and ruler coordinate-label behavior are retained;actual scientific values and zero attempted URL requests are independently checked. All250source identities remain verified;the current catalog has2426observations,623reviewed summaries and153supporting pointers."
+        if tool_id in {"saige", "saige-gene", "metasaige"}:
+            tool["project_adapter_available"] = False
+            tool["canonical_adapter_available"] = False
+            tool["original_runtime_probe_only"] = tool_id == "saige"
+            tool["implementation_scope"] = "SAIGE family project integration remains missing. Nineteen reviewed roles distinguish 16 SAIGE, 2 SAIGE-GENE(+) and 1 Meta-SAIGE uses; P147 published-summary reuse is newly recovered. Direct association, framework reuse, gene tests, LD and external-summary reuse remain distinct. Original unmodified SAIGE 1.5.2 built privately and ran a controlled binary pipeline with 1,000 participants and 32 variants, with bounded independent cohort, allele, count and score checks. There is no admitted runtime, installer or typed project workflow yet. Skip dependent project analyses until validated. The separate native unrelated-select component in development candidate 9786ba29 requires only Java. It applies explicit phenotype eligibility, ties and complete additive-GRM graph assertions. Its result is maximal, not guaranteed largest; it does not calculate a GRM, fit SAIGE or run association tests. Read SAIGE_SOURCE_REVIEW.md, SAIGE_RUNTIME_STATUS.md and UNRELATED_SELECTION_WORKFLOWS.md."
+            tool["validation_note"] = "All 604 earlier review objects are preserved. The current catalog has 250 papers, 377 tools, 2,426 observations, 623 reviews and 153 supporting pointers. Native component: 32 tests in 5 suites, 32 standalone tests per Java 21 and 25, 501 independent full-decision graphs and 21 actual packaged cases. The original probe does not establish independent GLMM, SPA, Firth or historical/full-paper parity. SAIGE, SAIGE-GENE and Meta-SAIGE badges remain missing."
+            if tool_id == "saige":
+                tool["available_native_method"] = "unrelated-select"
+                tool["native_method_candidate"] = "build/literature-review/saige-native-candidate-1/jlinalg-0.3.7.jar"
+                tool["native_method_candidate_sha256"] = "9786ba29bd4dc92c43174af90e1ca643e5479cd5c8b824144a10635874059adf"
+                tool["native_helpers"] = ["src/main/java/org/jlinalg/genetics/RelatedSampleSelection.java"]
+                tool["native_method_validation"] = "unrelated-selection-validation.json"
+                tool["runtime_intake"] = "saige-runtime-intake.json"
+        if tool_id == "apbs":
+            tool["validation_note"] = 'Two primary source roles reviewed;neither specifies an APBS version. P026 APBS74 is a citation suffix;nearby PyMOL versions are separate. No explicit PDB2PQR/PROPKA paper use was found in250hash-checked source XMLs. Earlier solver candidate:48 focused tests;10solver cases match6,013,002nodes;Born/charge-scaling and12runtime policies passed. New workflow candidate:107 focused tests/10suites,strictJava17,Javadoc,packaging and107standalone tests perJava21/25. Preparation:14independent original comparisons/8988atoms/44,940scalars,5controls and16installer/runtime policies. Surface:6actual packaged cases/1,647,750nodes,7controls and3nativeWindows skips. RealJava25 Unicode full preparation-to-solve-to-surface chain passed with exact provenance hashes. Read apbs-workflow-validation.json and stage WARNINGS.md;no full-paper equivalence.'
+        if tool_id == "cellranger":
+            tool["validation_note"] = "All 44 observed family roles and 26 supporting pointers passed source-identity and paragraph-hash checks. Scientific runtime validation is skipped by user request. A separately installed private Ubuntu WSL environment does not establish Cell Ranger availability or production capacity."
+            tool["exclusion_reason"] = "user-requested-license-exclusion"
+            tool["exclusion_date"] = "2026-10-26"
+        if tool_id == "pymol":
+            tool["validation_note"] = 'Twenty source roles and three supporting pointers are reviewed. All 30 new tests pass on Java 21 and 25. The focused 30-test gate, strict Java 17 compilation, Javadoc and executable packaging passed. Fourteen actual packaged Linux workflows and five semantic failure controls checked 57 steps, 24 measurements and 221 original inlier pairs, including all 20 canonical mutation targets, Cl/Br/Mg/Se symbols and three unchanged public recipes with relative Unicode paths. Six native Windows cases skipped with exit 3 and Linux/WSL recovery. Installer permissions, allowed public downloads, corrupt/linked caches, changed homes, valid poisoned bytecode and actual owned timeout termination were tested. Original align and super retain distinct gapped correspondences. Six actual packaged potential-surface cases and a complete preparation/solver/surface example are separately validated in workflow candidate b1c26fa4;read POTENTIAL_SURFACE_WORKFLOWS.md and apbs-workflow-validation.json. Full-paper/edition equivalence is not claimed. See pymol-adapter-validation.json.'
         if tool_id in {"cutadapt", "fastqc", "multiqc"}:
             tool["validation_note"] = "Real pinned upstream fixtures validated trimming, pair preservation, QC flags and multi-sample source counts/identities. All-filtered Cutadapt and source FastQC WARN/FAIL findings remain prominent through MultiQC console/status/WARNINGS.md plus source-qc.tsv. Published tool versions and unexposed options remain paper-specific compatibility work."
         if tool_id == "harmony":
@@ -172,7 +238,7 @@ def main():
             tool["engine_status"] = {"native_DNA_PSSM_and_P_scan":"native-subset-validated-no-q-values", "original_5.5.9_private_Windows_GNU_profile":"upstream-adapter-validated", "stock_Cygwin_parser_failure":"retained-not-used", "PSP_protein_historical_alternate_host_full_paper":"not-validated"}
             tool["validation_note"] = f"Seven primary-paper uses preserve P/q thresholds, allele-score completion and HOMER/conservation boundaries. The {full_test_count:,}-test full gate and all {required_suite_count} required suites passed, including 48 new tests: 32 native and 16 original API/CLI cases. Native PSSM references include 118 original function models/24,069 words and independent short-null enumeration; 72 packaged native workflows compare 6,805 sites. The original adapter has 96 packaged P/q workflows, 31,643 complete sites plus 16 quarantined incomplete sites, 17 controls and 208 actual original processes. Java 21/25 Unicode and actual timeout termination passed. Native P needs no external runtime; original q requires the permitted exact sealed Windows profile. Missing dependencies skip with exit 3; truncation/errors fail with exit 2 with named recovery and no successful partial table. Original no-Q zero placeholders become blank canonical fields with a warning, raw reports retained. No replacement BH, custom empirical calibration, PSPs, full-format/historical/full-paper parity or commercial permission is inferred. See FIMO_WORKFLOWS.md, fimo-native-validation.json, fimo-upstream-validation.json and FIMO_VALIDATION_STATUS.md."
         if tool_id == "prscs":
-            tool["validation_note"] = "218 focused tests/25 required suites passed with zero failures/errors/skips;30 native and8 live command tests per Java21/25;12 installer policy tests. Frozen unmodified56 original runs have208 output files,all reproduced from the revised sealed installation. Native allele reference1728triples,marginal592values and1040unit relationships passed. Twelve actual packaged workflows/28controls on Java21/25 checked240model rows,520posterior scalars,120psi fields,200explicit score weights and44exact original output files. Corrected1.1.0 title-case flags and integral thinning rules have actual upstream edge controls. Known version-specific deprecations remain prominent;unknown/numerical warnings fail. Twelve paper roles are reviewed;simulation,common-variant inference,score application,tuning and ancestry combination remain distinct. Synthetic checks do not establish chain convergence or predictive calibration. Development candidate,canonical history and public release are separate. See prscs-adapter-validation.json."
+            tool["validation_note"] = "218 focused tests across 25 required suites passed with zero failures, errors or skips. Each of Java 21 and 25 passed 30 native tests and 8 live command tests; 12 installer policy tests also passed. All 208 output files from 56 unmodified original runs reproduced from the revised sealed installation. Native checks covered 1,728 allele triples, 592 marginal values and 1,040 unit relationships. Twelve actual packaged workflows and 28 controls checked 240 model rows, 520 posterior scalars, 120 psi fields, 200 explicit score weights and 44 exact original output files. Actual upstream edge controls cover version 1.1.0 title-case flags and integral thinning rules. Twelve paper roles distinguish simulation, common-variant inference, score application, tuning and ancestry combination. Synthetic checks do not establish chain convergence or predictive calibration. Development candidate, canonical history and public release remain separate. See prscs-adapter-validation.json."
             tool["native_helpers"] = ["src/main/java/org/jlinalg/genetics/PrsCsMath.java", "src/main/java/org/jlinalg/cli/PrsCsInputs.java", "src/main/java/org/jlinalg/cli/PrsCsAudits.java", "src/main/java/org/jlinalg/cli/PrsCsOutputs.java"]
             tool["development_candidate"] = "build/literature-review/prscs-candidate-1/jlinalg-0.3.7.jar"
             tool["development_candidate_sha256"] = "33b26e76b989ce3387d3965f4b625a6e4a02e3e2b55d8bccd90bb1e48981a764"
@@ -210,6 +276,7 @@ def main():
                "window_start": "2023-10-23", "window_end": "2026-10-23", "window_extended": False,
                "literature_status": "250-source-catalog-built; semantic-completeness-review-open",
                "goal_status": "implementation-in-progress",
+               "user_excluded_tools": {"cellranger": "User requested exclusion on 2026-10-26 after restricted-license review; retain source roles, skip implementation and runtime analysis."},
                "dependency_policy": "Install/download where environment permits; if a required dependency cannot be installed, skip the dependent analysis and prominently report error, affected analysis and exact recovery steps."}
     json_write(DATA / "summary.json", summary)
     bibliography = []
@@ -249,6 +316,10 @@ def main():
              "Reconcile novel software links and remaining ambiguous matches before claiming exhaustive tool coverage.", ""]
     (DATA / "implementation-plan.md").write_text("\n".join(plan), encoding="utf-8")
     warnings = [
+        "**APBS RUNTIME / MODEL / ENERGY REVIEW:** apbs-tools in development workflow candidateb1c26fa4 runs the untouched official32bit Windows x86 APBS3.5.0 on Windows x86_64. Required action: where permitted run install_apbs.py with --home, --cache and --allow-install;add --allow-download only when permitted. Analysis never installs. Missing/changed/forbidden dependencies skip3. Explicit PQR charge model,Angstrom units,grid,equation,boundary,dielectrics,temperature and salt are required. Every potential value is audited;upstream exit0 with NaNs fails2 and quarantines partials. Raw total energy includes self-energy and is NOT solvation/binding free energy. Native electrostatic-grid needs only Java;declare units/outside policy,retain missing rows and valid finite zeros. Read APBS_WORKFLOWS.md,WARNINGS.md,session.json and original logs;correct the named issue and rerun to a new directory. Typed preparation and potential-surface are now available in workflow candidate b1c26fa4;read PDB2PQR_WORKFLOWS.md,POTENTIAL_SURFACE_WORKFLOWS.md and apbs-workflow-validation.json. Historical/source-paper reconstruction and alternate profiles remain open.", "",
+        '**NATIVE MOLECULAR GEOMETRY REQUIRES EXPLICIT UNITS AND PAIRS:** use the validated development molecular-geometry-candidate-1 executable (SHA starts798d3a08);canonical a104 is unchanged. Native distance/angle/torsion and fixed-pair proper rigid fits need only Java. Declare angstrom or nanometer;nanometers multiply by10. Fits require explicit error or allow-nonunique,retain every supplied pair,and never infer sequence/atom correspondence,scale,reflection,outlier rejection or periodic images. Undefined measurements fail;explicitly allowed nonunique rotations warn. Read WARNINGS.md,session.yaml,analysis-status.json and fit-pairs.tsv. Correct named input/unit/pair/geometry/limit errors and rerun to a new directory;exit2 quarantines scientific partials. Read MOLECULAR_GEOMETRY_WORKFLOWS.md.', "",
+        '**PYMOL ORIGINAL SUBSET: LINUX RUNTIME AND EXPORT REVIEW REQUIRED:** Validated development original PyMOL subset via pymol-tools in candidate pymol-candidate-4 (SHA-256 begins 09e4be51). Use Ubuntu 24.04 Linux x86_64 with CPython 3.12; on Windows run Linux Java inside WSL. Original rendering, measurements, align/super, bond/unbond, torsion and explicit canonical library mutations have independent native input, identity, numerical and graph audits. Keep full-precision final JSON ledgers: original mmCIF rounds coordinates, B factors and occupancy and omits bond categories. Supply the exact local validated wheel; install/download permission flags are explicit and analysis never installs. Missing, changed or forbidden dependencies skip with exit 3. Input/process/audit failures return 2 with quarantined partials. Typed PDB2PQR/APBS/potential-surface integration is available in workflow candidate b1c26fa4;read PDB2PQR_WORKFLOWS.md and POTENTIAL_SURFACE_WORKFLOWS.md. Manual interobject construction,paper-specific reconstruction and historical/commercial/full-paper parity remain open. Read PYMOL_WORKFLOWS.md and PYMOL_SOURCE_REVIEW.md. The separate native molecular-geometry helper needs only Java; canonical a104 is unchanged.', "",
+        '**CELL RANGER SKIPPED BY USER REQUEST:** Cell Ranger, ARC and ATAC implementation/runtime analysis are excluded following the user\'s 2026-10-26 license decision. No original runtime was downloaded, installed or executed. All 44 paper roles remain visible for provenance; this is not a successful integration or a negative biological result. No installation action is required. Leave this tool skipped unless the user explicitly reopens it. Read CELLRANGER_SOURCE_REVIEW.md.', "",
         '**BEAGLE DEVELOPMENT BUILD, PHASE AND EXCLUSIONS REQUIRE ACTION:** use build/literature-review/beagle-candidate-1/jlinalg-0.3.7.jar (SHA-256 5ed54e44acc9d50bb5af240418a5497b9c235506ecc45f318bad9168bd867cac). Its 176 focused tests, 42 packaged workflows and 24 failure controls passed. The older canonical a104 full-gate build is unchanged and lacks beagle-tools/plink-tools; no new full-project gate or release is claimed. Supply an exact pinned private Beagle home, explicit map/assembly/panel/model choices and phase/exclusion policies. Modern 5.1/5.4 can rephase partially missing provided phase; preserve-provided rejects incompatible retained inputs. Reference workflows exclude target-only markers only with an explicit error/drop-with-warning decision. Keep original GT separate from rounded GP. Where permitted run python tools/literature/install_beagle.py --java JAVA_EXECUTABLE --allow-install; add --allow-download only for permitted missing official downloads. Missing, changed or forbidden software skips exit 3; failures return 2, retain logs and quarantine canonical partials. Review WARNINGS.md, both ledgers, session.yaml and analysis-status.json; correct the named issue and rerun into a new directory. Read BEAGLE_WORKFLOWS.md.', "",
         '**NATIVE GENOTYPE SCORE INPUTS AND MISSINGNESS REQUIRE ACTION:** genotype-score needs only Java and applies supplied weights to resolved diploid human autosomal BED hard calls. Declare exact ea/oa,build and error/mean-impute/omit. Mean imputation requires explicit effect-allele frequencies;no target-cohort inference. Observed alleles and average denominators differ with imputation. Fully imputed samples are conditional reference expectations;no-observation omission produces blank unreportable scores,not zero. A wholly unreportable cohort or invalid ID/allele/file/limit fails2with named recovery and scientific outputs under partial/. Correct the cause,preserve inputs and rerun to a new directory. Review sample counts and WARNINGS.md. Native scoring needs no original PLINK installation. Read GENOTYPE_SCORE_WORKFLOWS.md;original QC/PCA/GWAS adapters and weight estimation remain open.', "","# Warnings, errors, skipped analyses, and required actions", "",
         "**NATIVE FLASH HEADER/INPUT REVIEW:** flash-reads needs no external runtime and requires an explicit Phred33/64 encoding. Original cleanup converts non-ACGT ASCII bases to N; original merged headers remove the last slash suffix, even inside comments, retaining /X# barcodes. Use the JSON-escaped original/merged mapping in read-status.tsv before downstream joins and inspect normalization counts. Strict mate IDs are the default; explicit positional pairing always warns. Maximum overlap caps the score denominator, not physical overlap eligibility. No merges produces a QC warning; malformed records, empty files or mismatched pairs fail2 with quarantined partials and no successful results.tsv. Correct the named cause and rerun to a new directory. Windows Unicode paths use an ASCII-named UTF8 JSON recipe. See FLASH_WORKFLOWS.md.", "",
@@ -465,7 +536,22 @@ def main():
                 "Alternatively repair/build the pinned upstream C++ package in an approved Windows development environment. "
                 "The failed local attempts remain in `build/literature-review/dependencies/harmony-install.log` and `harmony-source-install.log`. "
                 "Rerun to a new output directory after the dependency is available.", ""]
-    (DATA / "WARNINGS.md").write_text("\n".join(warnings), encoding="utf-8")
+    igv_warning = "**IGV DEVELOPMENT WORKFLOW: WARNINGS REQUIRE REVIEW.** Use igv-tools in candidate38889b96 with an admitted original2.19.8/fullJava21 Windows x64 runtime. Where permitted run install_igv.py --home NEW_ASCII_PRIVATE_HOME --cache OFFICIAL_ARCHIVE_CACHE --java FULL_JAVA21_EXECUTABLE --allow-install;add --allow-download only when permitted. If dependencies cannot be supplied,SKIP this analysis(exit3) until an administrator provides an admitted runtime. Failures return2 with retained partials. Required action:read WARNINGS.md,FIGURE_LEGEND.md and the exact native audits;correct the named cause and rerun to a new directory. Preserve changed homes/caches;never re-seal modified software. Automatic CNA/synteny summaries,methylation interpretation and full-paper/historical parity remain unfinished. Read IGV_WORKFLOWS.md and IGV_RUNTIME_STATUS.md.\n\n"
+    workflow_warning = (
+        "**PREPARATION / SOLVER / POTENTIAL-SURFACE: REQUIRED ACTION.** Use development workflow candidate b1c26fa4. "
+        "On Windows x86_64 explicitly admit PDB2PQR with `install_pdb2pqr.py --python CPYTHON312_EXECUTABLE --home NEW_HOME --cache WHEEL_CACHE --allow-install` "
+        "and APBS with `install_apbs.py --home NEW_HOME --cache ARCHIVE_CACHE --allow-install`. "
+        "Use the admitted Ubuntu24.04 x86_64 CPython3.12 PyMOL runtime and Linux Java in WSL for `potential-surface`; "
+        "`install_pymol.py` needs the exact validated local wheel,cache,report and explicit permission. Add `--allow-download` only where permitted. "
+        "Analysis never installs. Missing,changed,unsupported or forbidden dependencies skip3;input/process/timeout/audit failures return2 with quarantined partials. "
+        "The example runner stops at the affected stage and marks downstream analyses skipped. Read all stage WARNINGS.md/session.json/logs,correct the named cause and rerun to a new directory. "
+        "Choose protonation/force field,grid,units and source-PQR versus PyMOL display radii explicitly;charged zero-radius atoms remain. "
+        "Keep raw potential.dx and canonical short-float32 render-grid.dx: original PyMOL can truncate long numeric exponents;every loaded node still requires the exact float32 field hash. "
+        "Keep the unit-labeled figure.svg and original surface.png. Raw APBS energy is not solvation/binding free energy. "
+        "Read PDB2PQR_WORKFLOWS.md,POTENTIAL_SURFACE_WORKFLOWS.md and apbs-workflow-validation.json."
+    )
+    saige_warning = "**SAIGE FAMILY: PROJECT ANALYSIS UNAVAILABLE — SKIP DEPENDENT ANALYSES.** SAIGE,SAIGE-GENE and Meta-SAIGE remain missing project integrations. Original unmodified1.5.2 built and ran privately,but is unsealed and has no project installer/typed command. Required action:do not treat this prototype as an admitted runtime;complete typed runtime/installer/model and scientific/failure audits before enabling analyses. If installation is forbidden or unavailable,retain skipped status with the dependency and exact environment recovery. The separate native unrelated-select command(candidate9786ba29) needs only Java. Verify complete additive-GRM pair coverage,generation cutoff <= selection cutoff,phenotype/covariate eligibility and explicit ties. Initial-degree greedy selection is maximal,not guaranteed largest;no GRM/mixed model/association is performed. Read SAIGE_RUNTIME_STATUS.md,SAIGE_SOURCE_REVIEW.md,UNRELATED_SELECTION_WORKFLOWS.md and every WARNINGS.md;correct the named cause and rerun to a new directory.\n\n"
+    (DATA / "WARNINGS.md").write_text(saige_warning + igv_warning + workflow_warning + "\n\n" + "\n".join(warnings), encoding="utf-8")
 
     warnings += ["## PRS-CS RUNTIME, MODEL AND INFERENCE REQUIRE ACTION", "",
         "Use the validated development prscs-candidate-1 executable (SHA starts33b26e76);canonical a104 is unchanged and lacks prs-cs-tools. Read PRSCS_WORKFLOWS.md and prscs-adapter-validation.json.", "",
@@ -479,21 +565,21 @@ style="border-left:5px solid #c78417;background:#c7841712;padding:1.2rem;margin:
 <h2 id="prscs-actions-title">PRS-CS: required actions</h2>
 <p><strong>Use the validated development candidate:</strong>
 <code>build/literature-review/prscs-candidate-1/jlinalg-0.3.7.jar</code> (SHA starts <code>33b26e76</code>).
-The older canonical a104 is unchanged and lacks <code>prs-cs-tools</code>. The218-test focused gate and packaged checks are separate from a full-project release gate.</p>
+The older canonical a104 is unchanged and lacks <code>prs-cs-tools</code>. The 218-test focused gate and packaged checks are separate from a full-project release gate.</p>
 <p><strong>Missing, changed or forbidden dependency: skip analysis (exit 3).</strong>
 Where permitted run <code>python tools/literature/install_prscs.py --profiles source-fbc9ec0 --python CPYTHON312 --home NEW_PRIVATE_HOME --allow-install</code>.
 Add <code>--allow-download</code> only for permitted missing official artifacts. Supply <code>--home</code> or <code>JLINALG_PRSCS_HOME</code>.
 Preserve changed homes and choose a new private path. Analysis never installs software or downloads an LD panel.</p>
-<p><strong>Historical runtimes are out of support.</strong> Profiles1.0.0/1.1.0 require <code>--legacy-use offline-reproduction</code> and use Python3.10.11.
-Use the separately pinned current-source/Python3.12 profile for new work. Known version-specific deprecations remain visible in raw stderr and warnings; unknown or numerical warnings fail.</p>
-<p><strong>Choose model, sample size and allele policies explicitly.</strong> Declare total/effective N,trait and summary format,panel/population/build,a/b/phi,sampling and seed.
-SE is SE(beta) or SE(logOR);original extreme-P flooring needs explicit permission. Palindromic SNPs retain strand ambiguity.
+<p><strong>Historical runtimes are out of support.</strong> Profiles 1.0.0/1.1.0 require <code>--legacy-use offline-reproduction</code> and use Python 3.10.11.
+Use the separately pinned current-source/Python 3.12 profile for new work. Known version-specific deprecations remain visible in raw stderr and warnings; unknown or numerical warnings fail.</p>
+<p><strong>Choose model, sample size and allele policies explicitly.</strong> Declare total/effective N, trait and summary format, panel/population/build, a/b/phi, sampling and seed.
+SE is SE(beta) or SE(logOR); original extreme-P flooring needs explicit permission. Palindromic SNPs retain strand ambiguity.
 Review every input/variant exclusion and exact LD/SNP order. Work/storage guards include full source LD and do not guarantee total process RAM.</p>
-<p><strong>Input, process or validation failure: exit 2.</strong> Canonical partials go to <code>partial/</code>;logs and ledgers remain.
-Read <code>WARNINGS.md</code>,<code>analysis-status.json</code>,<code>session.yaml</code> and <code>PRSCS_WORKFLOWS.md</code>.
+<p><strong>Input, process or validation failure: exit 2.</strong> Canonical partials go to <code>partial/</code>; logs and ledgers remain.
+Read <code>WARNINGS.md</code>, <code>analysis-status.json</code>, <code>session.yaml</code> and <code>PRSCS_WORKFLOWS.md</code>.
 Correct the named cause and rerun into a new directory. Retained log paths use <code>&lt;bundle&gt;</code> for that published directory.</p>
-<p><strong>Preserve units and assess the scientific design.</strong> Original values retain seven significant digits;session metadata has exact parameters.
-Optional per-allele mean-weight exports use supplied LD-panel frequencies. Chain convergence,training-target overlap,hyperparameter tuning,ancestry combination and predictive calibration require separate assessment.</p>
+<p><strong>Preserve units and assess the scientific design.</strong> Original values retain seven significant digits; session metadata has exact parameters.
+Optional per-allele mean-weight exports use supplied LD-panel frequencies. Chain convergence, training-target overlap, hyperparameter tuning, ancestry combination and predictive calibration require separate assessment.</p>
 </section>"""
     beagle_actions = """<section id="beagle-required-actions" aria-labelledby="beagle-actions-title"
 style="border-left:5px solid #c78417;background:#c7841712;padding:1.2rem;margin:1.5rem 0;line-height:1.6;overflow-wrap:anywhere">
@@ -573,7 +659,120 @@ Source review and private original-program reference work are separate from the
 broader Java adapter validation. Typed original GLM/QC/pruning/PCA subsets are available in the
 validated development candidate named above; the older canonical a104 lacks them. Review the
 separate proofs and explicit input/model contracts in <code>examples/plink-tools/</code>.</p></section>"""
-    warning_body = prscs_actions + beagle_actions + plink_actions + fimo_actions + "<pre style=\"white-space:pre-wrap;overflow-wrap:anywhere\">" + html.escape("\n".join(warnings)) + "</pre>"
+    cellranger_actions = """<section id="cellranger-excluded" aria-labelledby="cellranger-excluded-title"
+style="border-left:5px solid #c78417;background:#c7841712;padding:1.2rem;margin:1.5rem 0;line-height:1.6;overflow-wrap:anywhere">
+<h2 id="cellranger-excluded-title">Cell Ranger: skipped by user request</h2>
+<p><strong>Implementation and runtime analysis are excluded.</strong> The user requested this
+on October 26, 2026 after reviewing the restricted 10x license. No Cell Ranger, ARC
+or ATAC runtime was downloaded, installed or executed.</p>
+<p>The 44 paper roles remain catalogued for provenance, with the different program
+families and downstream tools distinguished. This is not a completed integration
+or a negative biological result.</p><p><strong>Required action: none.</strong> Leave the tool
+skipped unless the user explicitly reopens it. Read
+<code>docs/literature/omics-2023-2026/CELLRANGER_SOURCE_REVIEW.md</code>.</p></section>"""
+    pymol_actions = """<section id="pymol-actions" aria-labelledby="pymol-title"
+style="border-left:5px solid #c78417;background:#c7841712;padding:1.2rem;margin:1.5rem 0;line-height:1.6;overflow-wrap:anywhere">
+<h2 id="pymol-title">Original PyMOL subset: Linux runtime and export review</h2>
+<p><strong>Development candidate <code>pymol-candidate-4</code>, SHA-256 starts <code>09e4be51</code>.</strong>
+<code>pymol-tools</code> runs original rendering, measurements, align/super and explicit bond, torsion and rotamer edits,
+with native audits. The canonical a104 executable is unchanged.</p>
+<p><strong>Required action:</strong> use an admitted Ubuntu 24.04 x86_64 private runtime and Linux Java;
+on Windows run inside WSL. The pinned PyMOL wheel is a local validated build and must be supplied from the permitted reference cache.
+Where allowed, run <code>tools/literature/install_pymol.py</code> with explicit <code>--allow-install</code>;
+<code>--allow-download</code> only covers missing pinned public dependency wheels. Analysis never installs.
+Missing, changed, unsupported or forbidden dependencies <strong>skip analysis with exit 3</strong>.</p>
+<p><strong>Export limitation:</strong> original mmCIF rounds coordinates to 0.001 Angstrom and B/occupancy to 0.01,
+and omits bond categories. Keep <code>final-*.json</code> as the authoritative full-precision atom/bond graph.
+Inspect figures, <code>WARNINGS.md</code>, <code>session.json</code>, <code>original-results.json</code> and <code>native-audit.json</code>.
+Input, process or audit failures return 2 and quarantine partials; correct the named issue and rerun to a new directory.</p>
+<p><strong>Typed APBS surface integration is available.</strong> Workflow candidate <code>b1c26fa4</code> adds <code>pdb2pqr-tools</code>,<code>apbs-tools</code> and <code>potential-surface</code>; read <code>PDB2PQR_WORKFLOWS.md</code> and <code>POTENTIAL_SURFACE_WORKFLOWS.md</code>. A colored surface does not perform electrostatics. Manual interobject construction,
+paper-specific genomic reconstruction, historical/commercial editions and full paper pipelines remain separate work.
+Read <code>PYMOL_WORKFLOWS.md</code>, <code>PYMOL_SOURCE_REVIEW.md</code> and <code>pymol-adapter-validation.json</code>.</p></section>"""
+    geometry_actions = """<section id="molecular-geometry-actions" aria-labelledby="molecular-geometry-title"
+style="border-left:5px solid #c78417;background:#c7841712;padding:1.2rem;margin:1.5rem 0;line-height:1.6;overflow-wrap:anywhere">
+<h2 id="molecular-geometry-title">Native molecular geometry: units and pairs require review</h2>
+<p><strong>Available in development candidate <code>molecular-geometry-candidate-1</code>; its SHA-256 starts with 798d3a08.</strong>
+The native command needs only Java. Declare <code>angstrom</code> or <code>nanometer</code>;
+nanometers multiply by 10. Fits use every explicitly supplied pair and require
+<code>error</code> or <code>allow-nonunique</code>. No atom/sequence matching, outlier rejection,
+scale, reflection or periodic images are inferred. A low RMSD alone does not establish biological equivalence.</p>
+<p><strong>Undefined measurements fail; explicitly allowed nonunique fits warn.</strong>
+Read <code>WARNINGS.md</code>, <code>analysis-status.json</code>, <code>session.yaml</code>
+and <code>fit-pairs.tsv</code>. Errors return 2 and quarantine scientific partials.
+Correct the named units, IDs, pairs, geometry or limits, and rerun to a new directory.
+Read <code>MOLECULAR_GEOMETRY_WORKFLOWS.md</code> for commands and synthetic examples.</p>
+<p><strong>Original typed PyMOL subset is available in development candidate 09e4be51.</strong>
+Use <code>pymol-tools</code> with an admitted Linux runtime for rendering, measurements, original align/super and explicit edits.
+Typed APBS surface integration is available through <code>pdb2pqr-tools</code>,<code>apbs-tools</code> and <code>potential-surface</code>;manual interobject modelling and paper-specific reconstruction remain pending. Read <code>PYMOL_WORKFLOWS.md</code>.
+The canonical a104 executable is unchanged.</p></section>"""
+    apbs_actions = """<section id="apbs-actions" aria-labelledby="apbs-title"
+style="border-left:5px solid #c78417;background:#c7841712;padding:1.2rem;margin:1.5rem 0;line-height:1.6;overflow-wrap:anywhere">
+<h2 id="apbs-title">APBS solver: runtime, charges, grid and energy review</h2>
+<p><strong>Development candidate <code>apbs-workflow-candidate-3</code>, SHA-256 starts <code>b1c26fa4</code>.</strong>
+<code>apbs-tools</code> runs original APBS3.5.0 LPBE/NPBE on an explicitly charged PQR model.
+The Windows executable is <strong>32bit x86</strong>, tested on Windows x86_64. The canonical a104 executable is unchanged.</p>
+<p><strong>Required action:</strong> where permitted run <code>python tools/literature/install_apbs.py --home NEW_PRIVATE_HOME --cache ARCHIVE_CACHE --allow-install</code>;
+add <code>--allow-download</code> only when permitted and the pinned archive is absent. Supply the admitted <code>--home</code>.
+Analysis never installs. Missing, changed, unsupported or forbidden dependencies <strong>skip analysis with exit 3</strong>.
+If installation is forbidden, skip the solver analysis until an admitted runtime is supplied.</p>
+<p><strong>Model inputs must be explicit:</strong> charge-model provenance, Angstrom units, grid counts/lengths/center,
+LPBE/NPBE, boundary, dielectrics, probe radius, surface density, temperature and salt.
+No pH, protonation, force field, atom repair or PDB2PQR preparation is inferred. Charged zero-radius atoms are retained.
+The bounded profile uses <code>mg-manual/mol/spl2</code>; inspect original logs and grid refinement.</p>
+<p><strong>Successful process exit is insufficient:</strong> an all-atomic-charges-zero original calculation exits 0 but writes NaNs.
+Every node is audited; invalid output, input, process or timeout failures return 2 and quarantine partials.
+Raw total energy includes self-energy and <strong>is NOT solvation or binding free energy</strong>.
+Potential units are kT/e at the declared temperature; voltage conversion uses exact SI2019 k_B/e.</p>
+<p><strong>Native helper:</strong> <code>electrostatic-grid</code> needs only Java. Declare units and an outside policy;
+missing rows have blank values, finite zero grids remain valid, and sampling never extrapolates.
+Read <code>WARNINGS.md</code>, <code>session.json</code>, original logs and <code>results.json</code> before interpretation.
+Correct the named issue and rerun to a new directory. Read <code>APBS_WORKFLOWS.md</code>, <code>APBS_SOURCE_REVIEW.md</code>
+and <code>apbs-adapter-validation.json</code>. Typed preparation and map surfaces are available through
+<code>pdb2pqr-tools</code> and <code>potential-surface</code>;read <code>apbs-workflow-validation.json</code>. Historical/source-paper parameter reconstruction remain in progress.</p></section>"""
+    workflow_actions = """<section id="electrostatic-workflow-actions" aria-labelledby="electrostatic-workflow-title"
+style="border-left:5px solid #c78417;background:#c7841712;padding:1.2rem;margin:1.5rem 0;line-height:1.6;overflow-wrap:anywhere">
+<h2 id="electrostatic-workflow-title">Charge preparation to actual potential surfaces: required review</h2>
+<p><strong>Validated development candidate <code>apbs-workflow-candidate-3</code>,SHA-256 starts <code>b1c26fa4</code>.</strong>
+<code>pdb2pqr-tools</code> runs original PDB2PQR3.8.0/PROPKA3.5.1 on Windows x86_64 CPython3.12;
+<code>apbs-tools</code> solves with original APBS3.5.0; <code>potential-surface</code> renders the actual map with original PyMOL3.1.0 through Linux Java in WSL.</p>
+<p><strong>Required action:</strong> where permitted run <code>install_pdb2pqr.py --python CPYTHON312_EXECUTABLE --home NEW_HOME --cache WHEEL_CACHE --allow-install</code>,
+<code>install_apbs.py --home NEW_HOME --cache ARCHIVE_CACHE --allow-install</code> and the documented Linux <code>install_pymol.py</code> with an exact validated local wheel.
+Add <code>--allow-download</code> only when permitted. Analysis never installs. Missing,changed,unsupported or forbidden dependencies
+<strong>skip analysis with exit 3</strong>;input,process,timeout or audit failures return 2 with quarantined partials.
+<code>examples/apbs-tools/run-workflow.py</code> stops at a failed/unavailable stage and marks dependent stages skipped.</p>
+<p><strong>Model and display decisions:</strong> explicitly choose force field,protonation or pH,repair/omission,water,state/alternates,
+Angstrom frame,temperature,grid,salt and dielectrics. Charged zero-radius atoms remain. PyMOL loads display radii;
+<code>source-pqr</code> explicitly applies supplied radii,while <code>pymol</code> keeps different display radii and warns.
+Choose excluded/accessible surface,probe radius,vertex/probe-offset sampling and a labeled three-color ramp.</p>
+<p><strong>DX parser / precision:</strong> original PyMOL truncates long numeric tokens and can silently lose exponents.
+Keep raw <code>potential.dx</code> and canonical short-float32 <code>render-grid.dx</code>. Every loaded field node must match the native float32-rounded source exactly.
+Keep <code>figure.svg</code>,the unchanged original PNG and full atom/map/ramp ledgers. Raw APBS energy is <strong>NOT solvation or binding free energy</strong>.</p>
+<p>107 focused tests/10 suites,107 standalone tests per Java21/25,14 original preparation comparisons/44,940 numeric scalars,
+16 preparation runtime policy cases,6 actual surface workflows/1,647,750 field nodes and7 surface controls passed.
+A full Java25 Unicode preparation-to-solve-to-surface example passed with exact cross-stage hashes.
+Read <code>PDB2PQR_WORKFLOWS.md</code>,<code>POTENTIAL_SURFACE_WORKFLOWS.md</code>,<code>apbs-workflow-validation.json</code> and every stage <code>WARNINGS.md</code>;
+correct the named issue and rerun to a new directory. These are bounded workflows;source-paper parameters and historical/full-paper parity remain unresolved.</p></section>"""
+    igv_actions = """<section id="igv-actions" aria-labelledby="igv-title"
+style="border-left:5px solid #c78417;background:#c7841712;padding:1.2rem;margin:1.5rem 0;line-height:1.6;overflow-wrap:anywhere">
+<h2 id="igv-title">Original IGV development workflow: warnings and required actions</h2>
+<p><strong>Validated bounded command: <code>igv-tools</code>,candidate38889b96.</strong> Original2.19.8/fullJava21 on Windows x64 renders hidden local FASTA/BED/bedGraph/BigWig/SEG/BAM views.
+126tests/13suites,126standalone perJava21/25 and17packaged cases passed:12scientific workflows/5controls,7,860reference bases,41,600integer counts and94selected-read comparisons.</p>
+<p><strong>Required action:</strong> where permitted run <code>python tools/literature/install_igv.py --home NEW_ASCII_PRIVATE_HOME --cache OFFICIAL_ARCHIVE_CACHE --java FULL_JAVA21_EXECUTABLE --allow-install</code>;add <code>--allow-download</code> only when permitted.
+Supply usable Windows graphics/fonts. If installation/dependencies are unavailable,<strong>SKIP the dependent analysis(exit3)</strong> until an administrator supplies an admitted runtime. Input/process/audit failures return2;partials and diagnostics remain retained.
+Read every <code>WARNINGS.md</code>,<code>FIGURE_LEGEND.md</code> and full native audit. Correct the named cause and rerun to a new directory. Preserve changed homes/caches;never re-seal modified software.</p>
+<p>Coordinates,raw float32 values/gaps,BED identity,selected BAM reads/raw tags and every base count are audited. Native frame checks bypass the original ruler's coordinate-label behavior. Original OAuth/logger diagnostics remain visible.
+Automatic CNA cohort-frequency/custom synteny summaries,methylation interpretation,manual diagnosis,allele-depth rules and historical/full-paper parity remain unfinished. The canonical executable/release is unchanged.</p>
+<p>All587previous source reviews are preserved;the current catalog has250papers/377tools/2426observations/623reviewed roles. P110session availability alone remains excluded as execution evidence.
+Read <code>IGV_WORKFLOWS.md</code>,<code>IGV_SOURCE_REVIEW.md</code>,<code>IGV_RUNTIME_STATUS.md</code> and <code>igv-workflow-validation.json</code>.</p></section>"""
+    saige_actions = """<section id="saige-actions" aria-labelledby="saige-title"
+style="border-left:5px solid #c78417;background:#c7841712;padding:1.2rem;margin:1.5rem 0;line-height:1.6;overflow-wrap:anywhere">
+<h2 id="saige-title">SAIGE family: project analysis unavailable; native cohort selection available</h2>
+<p><strong>SKIP dependent SAIGE/SAIGE-GENE/Meta-SAIGE project analyses.</strong> The original unmodified version 1.5.2 private build and controlled prototype with 1,000 participants and 32 variants do not establish an admitted project runtime. The installer and typed association, gene and LD workflows remain pending; all three tool badges remain missing.</p>
+<p><strong>Required action:</strong> do not treat the prototype as an admitted runtime. Complete typed runtime/model and scientific/failure audits before enabling these analyses. If installation is forbidden or unsupported, retain a prominent skipped status, identify the dependency/environment and obtain an admitted compatible runtime before rerunning to a new output directory. Analysis must not install implicitly.</p>
+<p><strong>Native Java component: <code>unrelated-select</code>, development candidate 9786ba29.</strong> No external runtime or install. Apply phenotype/covariate eligibility before initial degree counting. Declare complete additive-GRM pair coverage, generation cutoff &lt;= selection cutoff and explicit ties. Read every named blocking participant. The greedy output is <strong>maximal, not guaranteed largest</strong>; it does not calculate a GRM, fit SAIGE or run association tests. Input/process failures return 2 and preserve partial diagnostics; existing outputs remain. Correct the named cause and rerun to a new directory.</p>
+<p>32 tests in 5 suites, 32 standalone tests per Java 21 and 25, 501 independent full-decision graphs and 21 actual packaged cases passed, including the unchanged Unicode example. All 604 earlier source reviews are preserved. The current catalog has 250 papers, 377 tools, 2,426 observations, 623 reviewed roles and 153 supporting pointers. Nineteen new family reviews distinguish 16 SAIGE, 2 SAIGE-GENE and 1 Meta-SAIGE roles; P147 published-summary reuse is newly recovered. Original score checks distinguish 29 centered-fast and 3 projected-retest rows; no independent GLMM/SPA/Firth parity is claimed.</p>
+<p>Read <code>SAIGE_SOURCE_REVIEW.md</code>, <code>SAIGE_RUNTIME_STATUS.md</code>, <code>UNRELATED_SELECTION_WORKFLOWS.md</code>, <code>saige-runtime-intake.json</code>, <code>unrelated-selection-validation.json</code> and every analysis <code>WARNINGS.md</code>. Historical/paper-specific reconstruction and the wider implementation goal remain active.</p></section>"""
+    warning_body = saige_actions + igv_actions + workflow_actions + apbs_actions + pymol_actions + geometry_actions + cellranger_actions + prscs_actions + beagle_actions + plink_actions + fimo_actions + "<pre style=\"white-space:pre-wrap;overflow-wrap:anywhere\">" + html.escape("\n".join(warnings)) + "</pre>"
     (ROOT / "site/literature-warnings.html").write_text('<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Literature review warnings · JLinAlg</title><link rel="stylesheet" href="assets/styles.css"><script src="assets/app.js" defer></script></head><body><site-header root="./"></site-header><main id="main" class="container"><h1>Warnings and required actions</h1><p><a href="literature-review.html">Return to the 250-paper catalog</a></p>' + warning_body + '</main><site-footer root="./"></site-footer></body></html>', encoding="utf-8")
     # Self-contained page: no network calls, data upload, CDN, or file:// fetch.
     data = json.dumps({"papers": papers, "tools": tools, "summary": summary}, ensure_ascii=False).replace("<", "\\u003c")
@@ -616,6 +815,7 @@ function render(){renderContent();for(const a of document.querySelectorAll('a[da
 for(const id of ['query','journal','year','coverage'])el(id).addEventListener(id==='query'?'input':'change',render);
 for(const value of ['papers','tools'])el(value+'-tab').onclick=()=>{mode=value;for(const tab of ['papers','tools'])el(tab+'-tab').setAttribute('aria-pressed',String(tab===mode));render();};render();
 </script></body></html>'''
+    page = page.replace('<p id="overview"></p>', saige_actions + igv_actions + workflow_actions + apbs_actions + pymol_actions + geometry_actions + cellranger_actions + '<p id="overview"></p>')
     (ROOT / "site/literature-review.html").write_text(page.replace("__DATA__", data), encoding="utf-8")
     manifest = {}
     for path in sorted(DATA.iterdir()):

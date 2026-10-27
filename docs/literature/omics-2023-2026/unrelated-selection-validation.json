@@ -1,0 +1,80 @@
+{
+  "status": "passed-bounded-native-component",
+  "component": "unrelated-select",
+  "candidate": "build/literature-review/saige-native-candidate-1/jlinalg-0.3.7.jar",
+  "candidate_sha256": "9786ba29bd4dc92c43174af90e1ca643e5479cd5c8b824144a10635874059adf",
+  "requires_external_runtime": false,
+  "java_release": 17,
+  "focused_tests": 32,
+  "required_suites": 5,
+  "new_native_tests": 13,
+  "standalone_tests_per_java21_and_java25": 32,
+  "independent_python_graphs": 501,
+  "additional_random_property_graphs": 250,
+  "exhaustive_maximum_counterexample": {
+    "greedy_retained": 4,
+    "maximum_cardinality": 5
+  },
+  "packaged_cases": 21,
+  "scientific_cases": 9,
+  "failure_controls": 12,
+  "unchanged_prior_archive_entries": 16254,
+  "changed_prior_archive_entries": [
+    "org/jlinalg/cli/JLinAlgCli.class"
+  ],
+  "added_classes": [
+    "org/jlinalg/cli/UnrelatedSelectCli.class",
+    "org/jlinalg/genetics/RelatedSampleSelection$Decision.class",
+    "org/jlinalg/genetics/RelatedSampleSelection$Pair.class",
+    "org/jlinalg/genetics/RelatedSampleSelection$Selection.class",
+    "org/jlinalg/genetics/RelatedSampleSelection$TiePolicy.class",
+    "org/jlinalg/genetics/RelatedSampleSelection.class"
+  ],
+  "proofs": [
+    {
+      "path": "build/literature-review/saige-runtime/native-focused-2/observed.json",
+      "sha256": "127f061767f19ef9d500e7eeb61a1b139ffb5bb596631795a846d55f29ea7567"
+    },
+    {
+      "path": "build/literature-review/saige-runtime/native-artifact-1/verification.json",
+      "sha256": "72d44f6287709f114e8cef0a96c03e6e271e634f5f566c9de8846f707bdb48e0"
+    },
+    {
+      "path": "build/literature-review/saige-runtime/native-junit-2/verification.json",
+      "sha256": "5913e4729798b97996416fdb290e9c2356e2fc55753e41977f374fc087203dcd"
+    },
+    {
+      "path": "build/literature-review/saige-runtime/packaged-native-1/verification.json",
+      "sha256": "ff8283847cb3e89de414431f963b219cb76f9198163c0ae1f86df8840cda635b"
+    }
+  ],
+  "native_source_sha256": {
+    "src/main/java/org/jlinalg/genetics/RelatedSampleSelection.java": "259a9d3568994e5a0ec5f45329fc3a675d04520361a9e4969164f08f51e39e1b",
+    "src/main/java/org/jlinalg/cli/UnrelatedSelectCli.java": "caf649dadbb497afa9611cd33d8c27c17022d27558642a10223c74431bed8fab",
+    "src/test/java/org/jlinalg/genetics/RelatedSampleSelectionTest.java": "b6901b860acea78209eec8f922b7c6a127c00aa17b23c9fb7f293e6d333b6c2d",
+    "src/test/java/org/jlinalg/cli/UnrelatedSelectCliTest.java": "40b5825aa67f839e3e052ac8b584b54ba2729c0ff9ae566e6235301d39dc5533"
+  },
+  "reference_sha256": "fccf50ba5a5a6ffe204e9446933c99ba1237a9a54b2f8bee902f5b25b9cc5f04",
+  "known_boundaries": [
+    "Complete pair coverage and additive-GRM scale are explicit caller assertions.",
+    "Eligibility must be complete-case per phenotype/covariate contract before degree counting.",
+    "Degrees are initial/static;ties explicit;source paper does not specify both details.",
+    "Maximal is not maximum-cardinality;paper-selected IDs are not claimed.",
+    "No GRM calculation,mixed model or association test;SAIGE remains missing."
+  ],
+  "warnings_and_recovery": "Exit0 retains prominent review warnings,including empty eligible cohorts. Exit2 retains failed partials and Required action. Existing outputs preserved. Correct source/coverage/scale/tie/eligibility cause and rerun new output. Native Java only;no dependency installation.",
+  "retained_failed_attempts": [
+    {
+      "path": "build/literature-review/saige-runtime/native-focused-1/observed.json",
+      "cause": "Owned staging helper inserted help text into Java route;compile failed. Prior isolated dispatcher restored and only full native route/help added;corrected gate passed."
+    }
+  ],
+  "scope": "Exact bounded native component and previous-entry preservation. No whole-current-ROOT gate,SAIGE upstream project adapter,historical/full-paper parity or release.",
+  "browser_validation": {
+    "check_groups": 122,
+    "screenshots": 46,
+    "new_panels_visually_reviewed": 4,
+    "proof_path": "build/literature-review/saige-runtime/ui-4/ui-validation.json",
+    "proof_sha256": "f3c37a68f35ae67aa6e6e849f1ba4ee34c0f4b7dee62e3543bd40556404b5f3e"
+  }
+}

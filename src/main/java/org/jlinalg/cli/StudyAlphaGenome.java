@@ -21,10 +21,25 @@ final class StudyAlphaGenome {
     @FunctionalInterface interface Transport { Map<String, Object> call(Context context, Path folder, Map<String, Object> request, Map<String, Object> config) throws IOException; }
     record Result(List<Map<String, Object>> scores, Map<String, String> statuses, List<Object> requests) { }
     private final Transport transport;
-    StudyAlphaGenome() { this(StudyAlphaGenome::sdk); }
-    StudyAlphaGenome(Transport transport) { this.transport = transport; }
+    private final boolean nativeSdk;
+    StudyAlphaGenome() { this.transport = StudyAlphaGenome::sdk; this.nativeSdk = true; }
+    StudyAlphaGenome(Transport transport) { this.transport = transport; this.nativeSdk = false; }
 
     Result execute(Context context, Map<String, StudyVariantUniverse.Key> variants, Map<String, Object> config) throws IOException {
+        if (nativeSdk && !variants.isEmpty() && Boolean.TRUE.equals(config.get("enabled")) && !"import".equals(config.get("engine"))
+                && "automatic".equals(map(config.get("installation")).get("mode")) && StudyPublicEvidence.blocked(context.study()).isBlank()
+                && System.getenv(text(config.get("api_key_env"))) != null && !System.getenv(text(config.get("api_key_env"))).isBlank()) {
+            try { return executePrepared(context, variants, StudyVariantTools.prepare(context, "alphagenome", config)); }
+            catch (IOException unavailable) {
+                var statuses = new LinkedHashMap<String,String>(); variants.keySet().forEach(id -> statuses.put(id, "software_setup_required"));
+                var report = Map.<String,Object>of("status", "software_setup_required", "reason", unavailable.getMessage(), "recovery", "Use variant-tools install alphagenome, resolve installation prerequisites or supply installation.mode: external and a prepared Python environment");
+                write(context.outputDirectory().resolve("alphagenome-software-status.yaml"), report);
+                return new Result(List.of(), statuses, List.of(report));
+            }
+        }
+        return executePrepared(context, variants, config);
+    }
+    private Result executePrepared(Context context, Map<String, StudyVariantUniverse.Key> variants, Map<String, Object> config) throws IOException {
         List<Map<String, Object>> scores = new ArrayList<>(); Map<String, String> statuses = new LinkedHashMap<>(); List<Object> requests = new ArrayList<>();
         if (!Boolean.TRUE.equals(config.get("enabled"))) { variants.keySet().forEach(id -> statuses.put(id, "disabled_by_protocol")); return new Result(scores, statuses, requests); }
         String engine = text(config.get("engine"));

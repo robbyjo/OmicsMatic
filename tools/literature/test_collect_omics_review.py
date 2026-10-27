@@ -13,6 +13,53 @@ class EvidenceExtractionTest(unittest.TestCase):
     def extract(self, text, section="Methods / Analysis"):
         return {t["tool_id"] for t in tool_matches([{"section": section, "text": text, "paragraph_index": 1}], REGISTRY)}
 
+    def test_saige_attached_dotted_version_is_named_without_accepting_arbitrary_identifiers(self):
+        for name in ['SAIGE','SAIGE1.3.6','SAIGE0.44','SAIGE1.5.2']:
+            self.assertIn('saige',self.extract('We created the sparse GRM using '+name+' with5000markers.'))
+        for name in ['prefixSAIGE','SAIGEsuffix','SAIGE_tool','SAIGE123','SAIGE1.3.6suffix','SAIGE1.3.6_more']:
+            self.assertNotIn('saige',self.extract('We created the sparse GRM using '+name+' with5000markers.'))
+
+    def test_saige_gene_and_meta_saige_do_not_implicitly_count_as_plain_saige(self):
+        for name in ['SAIGE-GENE','SAIGE-GENE+','SAIGE GENE+','Meta-SAIGE','Meta SAIGE']:
+            self.assertNotIn('saige',self.extract('Association tests used '+name+'.'))
+        self.assertIn('saige-gene',self.extract('Gene tests used SAIGE-GENE+.'))
+        self.assertIn('metasaige',self.extract('Summary-statistic meta-analysis used Meta-SAIGE.'))
+        self.assertIn('saige',self.extract('SAIGE association tests generated cohort statistics,which Meta-SAIGE combined.'))
+
+    def test_results_use_requires_exact_reviewed_tool_and_paragraph(self):
+        text='IGV read depth analysis of the ONT transcripts yielded skewed allele balance. We visualized the same reads in SAMtools.'
+        paragraph=dict(section='Results / Skewed allele balance',text=text,paragraph_index=33)
+        digest=hashlib.sha256(text.encode()).hexdigest()
+        self.assertEqual([],tool_matches([paragraph],REGISTRY))
+        found=tool_matches([paragraph],REGISTRY,{'igv':digest})
+        self.assertEqual(['igv'],[t['tool_id'] for t in found])
+        self.assertEqual('individually-reviewed-paragraph',found[0]['evidence_selection'])
+        self.assertEqual([],tool_matches([paragraph],REGISTRY,{'igv':'0'*64}))
+
+    def test_review_hash_does_not_admit_availability_or_reference_names(self):
+        text='IGV browser sessions can be accessed from the data repository.'
+        for section in ['Data availability','Associated Data / Data Availability Statement','References']:
+            paragraph=dict(section=section,text=text,paragraph_index=1)
+            self.assertEqual([],tool_matches([paragraph],REGISTRY,{'igv':hashlib.sha256(text.encode()).hexdigest()}))
+
+    def test_reviewed_results_still_rejects_biological_igv_homonym(self):
+        text='The immunoglobulin IGV domain abundance was measured.'
+        paragraph=dict(section='Results / Protein abundance',text=text,paragraph_index=1)
+        self.assertEqual([],tool_matches([paragraph],REGISTRY,{'igv':hashlib.sha256(text.encode()).hexdigest()}))
+
+    def test_apbs_citation_suffix_matches_without_alphabetic_continuations(self):
+        for name in ['APBS', 'APBS74', 'APBS3.5.0']:
+            self.assertIn('apbs',self.extract('Electrostatic maps were generated with the '+name+' plugin in PyMOL.'))
+        for name in ['prefixAPBS', 'APBSsuffix', 'APBS_tool']:
+            self.assertNotIn('apbs',self.extract('Electrostatic maps were generated with '+name+'.'))
+
+    def test_apbs_reviews_do_not_inherit_neighboring_pymol_versions(self):
+        rows=json.loads(Path(__file__).with_name('apbs-use-reviews.json').read_text())
+        self.assertEqual({'P013','P026'},{row['paper_id'] for row in rows})
+        for row in rows:
+            self.assertEqual('',row['review']['version_reported_near_name'])
+            self.assertIn('PDB2PQR is not explicitly named',row['review']['implementation_scope_note'])
+
     def test_trim_galore_primary_source_underscore_alias_is_bounded(self):
         for name in ['Trim_Galore', 'TrimGalore', 'Trim Galore']:
             self.assertIn('trimgalore',self.extract('Adapter sequences were removed with '+name+' (v0.6.7).'))
