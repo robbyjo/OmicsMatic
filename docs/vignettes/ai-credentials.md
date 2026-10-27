@@ -9,6 +9,12 @@ This is a **current source-build feature**. Rebuild the executable before using
 these commands. It adds credential storage and supported renewal, not a bundled
 provider-registration or browser sign-in screen.
 
+**Choose your shell:** use either the **PowerShell (Windows)** or the
+**Bash (Linux/macOS)** version of each example. Keep the same terminal session
+while following a walkthrough so its variables remain defined. On macOS, run
+`bash` in Terminal before using the Bash examples if your default shell is zsh.
+For steps that need review or filled-in YAML, stop at that point before continuing.
+
 ## Before saving: how do I get the first credential?
 
 **The JAR does not start a provider login.** `study credentials-save` encrypts
@@ -57,10 +63,18 @@ claim that a token copied from Codex or a chat website authorizes this applicati
 ## 1. Choose a private credential location
 
 Keep credential files **outside the study project** and outside source control.
-For example, from PowerShell:
+For example, choose the path for your shell:
+
+**Windows (PowerShell):**
 
 ~~~powershell
 $vault = Join-Path $env:USERPROFILE ".omicsmatic/credentials/openai.credentials.json"
+~~~
+
+**Linux / macOS (Bash):**
+
+~~~bash
+vault="$HOME/.omicsmatic/credentials/openai.credentials.json"
 ~~~
 
 Each file holds one provider/account/endpoint credential. Use distinct filenames
@@ -73,11 +87,19 @@ token, provider record or password. Creation restricts file access to its owner.
 
 ## 2. Save an API key
 
-From an ordinary interactive terminal, with $jar set to the executable's absolute
-path:
+From an ordinary interactive terminal, with `jar` set to the executable's absolute
+path using the [build/setup commands](ai-connections.md#2-build-the-jar-and-save-the-key):
+
+**Windows (PowerShell):**
 
 ~~~powershell
 java -jar $jar study credentials-save --provider openai --out $vault
+~~~
+
+**Linux / macOS (Bash):**
+
+~~~bash
+java -jar "$jar" study credentials-save --provider openai --out "$vault"
 ~~~
 
 The command asks for a passphrase, confirmation and the API key with hidden
@@ -91,8 +113,16 @@ HTTPS --endpoint ending in /chat/completions.
 
 Check the encrypted record locally:
 
+**Windows (PowerShell):**
+
 ~~~powershell
 java -jar $jar study credentials-check --file $vault
+~~~
+
+**Linux / macOS (Bash):**
+
+~~~bash
+java -jar "$jar" study credentials-check --file "$vault"
 ~~~
 
 This asks for the passphrase and reports provider, authentication type, renewal
@@ -130,8 +160,16 @@ Configure the [aggregate disclosure policy](ai-connections.md#first-set-the-disc
 validate, resolve, inspect and approve the plan as in the
 [advisor walkthrough](ai-advisor.md). Run from the same terminal:
 
+**Windows (PowerShell):**
+
 ~~~powershell
 java -jar $jar study run --project . --actor-id scientist-1
+~~~
+
+**Linux / macOS (Bash):**
+
+~~~bash
+java -jar "$jar" study run --project . --actor-id scientist-1
 ~~~
 
 The password prompt appears only if an enabled, policy-permitted operation
@@ -161,9 +199,18 @@ sources:
 See the [official first-sign-in requirements](https://developers.openai.com/siwc/token-sharing-open-source/sign-in).
 Replace ISSUED_CLIENT_ID and UTC_EXPIRY with those actual values:
 
+**Windows (PowerShell):**
+
 ~~~powershell
 $vault = Join-Path $env:USERPROFILE ".omicsmatic/credentials/openai-oauth.credentials.json"
 java -jar $jar study credentials-save --provider openai --auth oauth --renewal openai --client-id ISSUED_CLIENT_ID --expires-at UTC_EXPIRY --out $vault
+~~~
+
+**Linux / macOS (Bash):**
+
+~~~bash
+vault="$HOME/.omicsmatic/credentials/openai-oauth.credentials.json"
+java -jar "$jar" study credentials-save --provider openai --auth oauth --renewal openai --client-id ISSUED_CLIENT_ID --expires-at UTC_EXPIRY --out "$vault"
 ~~~
 
 The command prompts separately for the access token and refresh token, so neither
@@ -213,9 +260,18 @@ not an access/refresh token pair.
 
 Once you have the complete issued set, save it:
 
+**Windows (PowerShell):**
+
 ~~~powershell
 $vault = Join-Path $env:USERPROFILE ".omicsmatic/credentials/gemini-oauth.credentials.json"
 java -jar $jar study credentials-save --provider gemini --auth oauth --renewal google --client-id GOOGLE_CLIENT_ID --expires-at UTC_EXPIRY --out $vault
+~~~
+
+**Linux / macOS (Bash):**
+
+~~~bash
+vault="$HOME/.omicsmatic/credentials/gemini-oauth.credentials.json"
+java -jar "$jar" study credentials-save --provider gemini --auth oauth --renewal google --client-id GOOGLE_CLIENT_ID --expires-at UTC_EXPIRY --out "$vault"
 ~~~
 
 Use the real client ID and expiry. Enter access and refresh tokens at the masked
@@ -244,9 +300,18 @@ Follow the official
 Your workload platform or IdP must provide and rotate a protected JWT file
 outside the study. OmicsMatic re-reads that file on each exchange.
 
+**Windows (PowerShell):**
+
 ~~~powershell
 $vault = Join-Path $env:USERPROFILE ".omicsmatic/credentials/claude-wif.credentials.json"
 java -jar $jar study credentials-save --provider anthropic --auth oauth --renewal anthropic_wif --identity-token-file C:/private/identity.jwt --federation-rule-id YOUR_RULE_ID --organization-id YOUR_ORGANIZATION_ID --service-account-id YOUR_SERVICE_ACCOUNT_ID --workspace-id YOUR_WORKSPACE_ID --out $vault
+~~~
+
+**Linux / macOS (Bash):**
+
+~~~bash
+vault="$HOME/.omicsmatic/credentials/claude-wif.credentials.json"
+java -jar "$jar" study credentials-save --provider anthropic --auth oauth --renewal anthropic_wif --identity-token-file /ABSOLUTE/PRIVATE/PATH/identity.jwt --federation-rule-id YOUR_RULE_ID --organization-id YOUR_ORGANIZATION_ID --service-account-id YOUR_SERVICE_ACCOUNT_ID --workspace-id YOUR_WORKSPACE_ID --out "$vault"
 ~~~
 
 Replace every placeholder with the configured account identifiers and actual

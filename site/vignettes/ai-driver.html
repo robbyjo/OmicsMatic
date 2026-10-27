@@ -17,6 +17,11 @@ The <a href="study-yaml-reference.html">field guide</a> lists optional configura
 <p>This guide targets the current source build. Driver mode is a supervised
 integration pattern using the existing CLI. OmicsMatic does not bundle an
 autonomous agent runtime or enable one with an <code>analysis.mode: driver</code> setting.</p>
+<p><strong>Choose your shell:</strong> use either the <strong>PowerShell (Windows)</strong> or the
+<strong>Bash (Linux/macOS)</strong> version of each example. Keep the same terminal session
+while following a walkthrough so its variables remain defined. On macOS, run
+<code>bash</code> in Terminal before using the Bash examples if your default shell is zsh.
+For steps that need review or filled-in YAML, stop at that point before continuing.</p>
 <h2 id="understand-which-connection-goes-where">Understand which connection goes where</h2>
 <div class="result-table"><table>
 <thead>
@@ -69,12 +74,24 @@ automatically approved for remote transmission. They are local working records;
 review their actual contents and provenance.</p>
 <h2 id="prepare-a-synthetic-rehearsal">Prepare a synthetic rehearsal</h2>
 <p>From the repository root:</p>
+<p><strong>Windows (PowerShell):</strong></p>
 <div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>.\gradlew.bat executableJar --no-daemon --no-parallel
 $jar = (Resolve-Path &quot;build/cli/omicsmatic-0.3.7.jar&quot;).Path
 $project = Join-Path (Get-Location) &quot;build/ai-driver&quot;
 if (Test-Path -LiteralPath $project) { throw &quot;Choose a fresh project directory.&quot; }
 Copy-Item examples/study-pipeline $project -Recurse
 Set-Location $project
+</code></pre></div>
+<p><strong>Linux / macOS (Bash):</strong></p>
+<div class="code-window"><div class="code-bar"><span>bash</span></div><pre><code>bash ./gradlew executableJar --no-daemon --no-parallel || exit 1
+jar=&quot;$PWD/build/cli/omicsmatic-0.3.7.jar&quot;
+project=&quot;$PWD/build/ai-driver&quot;
+if [ -e &quot;$project&quot; ]; then
+    printf '%s\n' &quot;Choose a fresh project directory.&quot; &gt;&amp;2
+    exit 1
+fi
+cp -R examples/study-pipeline &quot;$project&quot; || exit 1
+cd &quot;$project&quot; || exit 1
 </code></pre></div>
 <p>The copied study contains completed synthetic association tables and a manual
 replication/meta-analysis goal list. Built-in assistance is disabled.
@@ -113,12 +130,21 @@ Use the actual starting stage: a table of completed meta-analysis results is
 not a participant matrix.</p>
 <p>These examples attribute actions to an actual agent. Replace
 <code>REPORTED_MODEL_ID</code> with its reported model identity:</p>
+<p><strong>Windows (PowerShell):</strong></p>
 <div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>java -jar $jar study validate study.yaml --check-files
 java -jar $jar study resolve study.yaml --actor-type llm --actor-id external-agent --actor-model REPORTED_MODEL_ID
 java -jar $jar study plan --project . --actor-type llm --actor-id external-agent --actor-model REPORTED_MODEL_ID
 java -jar $jar study status --project .
 Get-Content resolved-study.yaml
 Get-Content plans/*/analysis-plan.yaml
+</code></pre></div>
+<p><strong>Linux / macOS (Bash):</strong></p>
+<div class="code-window"><div class="code-bar"><span>bash</span></div><pre><code>java -jar &quot;$jar&quot; study validate study.yaml --check-files
+java -jar &quot;$jar&quot; study resolve study.yaml --actor-type llm --actor-id external-agent --actor-model REPORTED_MODEL_ID
+java -jar &quot;$jar&quot; study plan --project . --actor-type llm --actor-id external-agent --actor-model REPORTED_MODEL_ID
+java -jar &quot;$jar&quot; study status --project .
+cat resolved-study.yaml
+cat plans/*/analysis-plan.yaml
 </code></pre></div>
 <p>If you are manually rehearsing these steps, use
 <code>--actor-type human --actor-id scientist-1</code>. For a non-AI script, use
@@ -134,7 +160,11 @@ request missing goals. See <a href="study-getting-started.html#run-everything-th
 <p>The scientist reviews the exact study and plan, including input lineage,
 effect definitions, testing family, cohort dependence, missing prerequisites,
 tool configuration and permitted disclosure. The scientist then runs:</p>
+<p><strong>Windows (PowerShell):</strong></p>
 <div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>java -jar $jar study approve --project . --approved-by scientist-1
+</code></pre></div>
+<p><strong>Linux / macOS (Bash):</strong></p>
+<div class="code-window"><div class="code-bar"><span>bash</span></div><pre><code>java -jar &quot;$jar&quot; study approve --project . --approved-by scientist-1
 </code></pre></div>
 <p>Reserve this action through the surrounding permissions. A person-name string
 does not authenticate the person or prevent an unrestricted agent from invoking
@@ -145,10 +175,17 @@ so it is unsuitable as an unrestricted driver command when a separate human
 approval step is required.</p>
 <h2 id="execute-and-continue-the-approved-work">Execute and continue the approved work</h2>
 <p>After approval, the permitted execution service can run:</p>
+<p><strong>Windows (PowerShell):</strong></p>
 <div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>java -jar $jar study run --project . --offline --actor-type llm --actor-id external-agent --actor-model REPORTED_MODEL_ID
 java -jar $jar study status --project .
 java -jar $jar study questions --project .
 java -jar $jar study verify --project .
+</code></pre></div>
+<p><strong>Linux / macOS (Bash):</strong></p>
+<div class="code-window"><div class="code-bar"><span>bash</span></div><pre><code>java -jar &quot;$jar&quot; study run --project . --offline --actor-type llm --actor-id external-agent --actor-model REPORTED_MODEL_ID
+java -jar &quot;$jar&quot; study status --project .
+java -jar &quot;$jar&quot; study questions --project .
+java -jar &quot;$jar&quot; study verify --project .
 </code></pre></div>
 <p>The rehearsal remains offline. A real literature or public-resource branch
 requires approved online execution or supplied local resources.

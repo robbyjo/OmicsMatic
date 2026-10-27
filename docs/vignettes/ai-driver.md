@@ -15,6 +15,12 @@ This guide targets the current source build. Driver mode is a supervised
 integration pattern using the existing CLI. OmicsMatic does not bundle an
 autonomous agent runtime or enable one with an `analysis.mode: driver` setting.
 
+**Choose your shell:** use either the **PowerShell (Windows)** or the
+**Bash (Linux/macOS)** version of each example. Keep the same terminal session
+while following a walkthrough so its variables remain defined. On macOS, run
+`bash` in Terminal before using the Bash examples if your default shell is zsh.
+For steps that need review or filled-in YAML, stop at that point before continuing.
+
 ## Understand which connection goes where
 
 | Connection | Where you configure it | What it authorizes |
@@ -56,6 +62,8 @@ review their actual contents and provenance.
 
 From the repository root:
 
+**Windows (PowerShell):**
+
 ~~~powershell
 .\gradlew.bat executableJar --no-daemon --no-parallel
 $jar = (Resolve-Path "build/cli/omicsmatic-0.3.7.jar").Path
@@ -63,6 +71,20 @@ $project = Join-Path (Get-Location) "build/ai-driver"
 if (Test-Path -LiteralPath $project) { throw "Choose a fresh project directory." }
 Copy-Item examples/study-pipeline $project -Recurse
 Set-Location $project
+~~~
+
+**Linux / macOS (Bash):**
+
+~~~bash
+bash ./gradlew executableJar --no-daemon --no-parallel || exit 1
+jar="$PWD/build/cli/omicsmatic-0.3.7.jar"
+project="$PWD/build/ai-driver"
+if [ -e "$project" ]; then
+    printf '%s\n' "Choose a fresh project directory." >&2
+    exit 1
+fi
+cp -R examples/study-pipeline "$project" || exit 1
+cd "$project" || exit 1
 ~~~
 
 The copied study contains completed synthetic association tables and a manual
@@ -113,6 +135,8 @@ not a participant matrix.
 These examples attribute actions to an actual agent. Replace
 `REPORTED_MODEL_ID` with its reported model identity:
 
+**Windows (PowerShell):**
+
 ~~~powershell
 java -jar $jar study validate study.yaml --check-files
 java -jar $jar study resolve study.yaml --actor-type llm --actor-id external-agent --actor-model REPORTED_MODEL_ID
@@ -120,6 +144,17 @@ java -jar $jar study plan --project . --actor-type llm --actor-id external-agent
 java -jar $jar study status --project .
 Get-Content resolved-study.yaml
 Get-Content plans/*/analysis-plan.yaml
+~~~
+
+**Linux / macOS (Bash):**
+
+~~~bash
+java -jar "$jar" study validate study.yaml --check-files
+java -jar "$jar" study resolve study.yaml --actor-type llm --actor-id external-agent --actor-model REPORTED_MODEL_ID
+java -jar "$jar" study plan --project . --actor-type llm --actor-id external-agent --actor-model REPORTED_MODEL_ID
+java -jar "$jar" study status --project .
+cat resolved-study.yaml
+cat plans/*/analysis-plan.yaml
 ~~~
 
 If you are manually rehearsing these steps, use
@@ -140,8 +175,16 @@ The scientist reviews the exact study and plan, including input lineage,
 effect definitions, testing family, cohort dependence, missing prerequisites,
 tool configuration and permitted disclosure. The scientist then runs:
 
+**Windows (PowerShell):**
+
 ~~~powershell
 java -jar $jar study approve --project . --approved-by scientist-1
+~~~
+
+**Linux / macOS (Bash):**
+
+~~~bash
+java -jar "$jar" study approve --project . --approved-by scientist-1
 ~~~
 
 Reserve this action through the surrounding permissions. A person-name string
@@ -157,11 +200,22 @@ approval step is required.
 
 After approval, the permitted execution service can run:
 
+**Windows (PowerShell):**
+
 ~~~powershell
 java -jar $jar study run --project . --offline --actor-type llm --actor-id external-agent --actor-model REPORTED_MODEL_ID
 java -jar $jar study status --project .
 java -jar $jar study questions --project .
 java -jar $jar study verify --project .
+~~~
+
+**Linux / macOS (Bash):**
+
+~~~bash
+java -jar "$jar" study run --project . --offline --actor-type llm --actor-id external-agent --actor-model REPORTED_MODEL_ID
+java -jar "$jar" study status --project .
+java -jar "$jar" study questions --project .
+java -jar "$jar" study verify --project .
 ~~~
 
 The rehearsal remains offline. A real literature or public-resource branch

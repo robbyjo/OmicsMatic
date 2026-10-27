@@ -18,6 +18,11 @@ The <a href="study-yaml-reference.html">field guide</a> covers optional settings
 <p>These instructions target the current source build. Start with browser handoff
 to learn the disclosure and review steps; switch to a documented API connection
 when that route is approved.</p>
+<p><strong>Choose your shell:</strong> use either the <strong>PowerShell (Windows)</strong> or the
+<strong>Bash (Linux/macOS)</strong> version of each example. Keep the same terminal session
+while following a walkthrough so its variables remain defined. On macOS, run
+<code>bash</code> in Terminal before using the Bash examples if your default shell is zsh.
+For steps that need review or filled-in YAML, stop at that point before continuing.</p>
 <h2 id="decide-what-you-want-advice-about">Decide what you want advice about</h2>
 <div class="result-table"><table>
 <thead>
@@ -60,12 +65,24 @@ drafting nor impact ranking. No arbitrary shell or bioinformatics tools are
 given to the advisor.</p>
 <h2 id="prepare-a-fresh-synthetic-study">Prepare a fresh synthetic study</h2>
 <p>From the repository root:</p>
+<p><strong>Windows (PowerShell):</strong></p>
 <div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>.\gradlew.bat executableJar --no-daemon --no-parallel
 $jar = (Resolve-Path &quot;build/cli/omicsmatic-0.3.7.jar&quot;).Path
 $project = Join-Path (Get-Location) &quot;build/ai-advisor&quot;
 if (Test-Path -LiteralPath $project) { throw &quot;Choose a fresh project directory.&quot; }
 Copy-Item examples/study-pipeline $project -Recurse
 Set-Location $project
+</code></pre></div>
+<p><strong>Linux / macOS (Bash):</strong></p>
+<div class="code-window"><div class="code-bar"><span>bash</span></div><pre><code>bash ./gradlew executableJar --no-daemon --no-parallel || exit 1
+jar=&quot;$PWD/build/cli/omicsmatic-0.3.7.jar&quot;
+project=&quot;$PWD/build/ai-advisor&quot;
+if [ -e &quot;$project&quot; ]; then
+    printf '%s\n' &quot;Choose a fresh project directory.&quot; &gt;&amp;2
+    exit 1
+fi
+cp -R examples/study-pipeline &quot;$project&quot; || exit 1
+cd &quot;$project&quot; || exit 1
 </code></pre></div>
 <p>Its <code>data/</code> directory contains synthetic association tables.
 Keep the existing project ID/title, cohorts, datasets, dictionary and hypotheses.
@@ -93,6 +110,7 @@ still needs your review of the exact prompt.</p>
 appropriate project policy in an approved amendment; see the
 <a href="study-pipeline-tutorial.html#data-dictionaries-optional-assistance-and-first-drafts">existing-project example</a>.</p>
 <h2 id="run-the-deterministic-part-first">Run the deterministic part first</h2>
+<p><strong>Windows (PowerShell):</strong></p>
 <div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>java -jar $jar study validate study.yaml --check-files
 java -jar $jar study resolve study.yaml --actor-id scientist-1
 java -jar $jar study plan --project . --actor-id scientist-1
@@ -103,6 +121,23 @@ java -jar $jar study run --project . --actor-id scientist-1
 java -jar $jar study status --project .
 Start-Process index/index.html
 </code></pre></div>
+<p><strong>Linux / macOS (Bash):</strong></p>
+<div class="code-window"><div class="code-bar"><span>bash</span></div><pre><code>java -jar &quot;$jar&quot; study validate study.yaml --check-files
+java -jar &quot;$jar&quot; study resolve study.yaml --actor-id scientist-1
+java -jar &quot;$jar&quot; study plan --project . --actor-id scientist-1
+cat resolved-study.yaml
+cat plans/*/analysis-plan.yaml
+java -jar &quot;$jar&quot; study approve --project . --approved-by scientist-1
+java -jar &quot;$jar&quot; study run --project . --actor-id scientist-1
+java -jar &quot;$jar&quot; study status --project .
+if [ &quot;$(uname -s)&quot; = &quot;Darwin&quot; ]; then
+    open index/index.html
+elif [ -n &quot;${DISPLAY:-}${WAYLAND_DISPLAY:-}&quot; ] &amp;&amp; command -v xdg-open &gt;/dev/null 2&gt;&amp;1; then
+    xdg-open index/index.html
+else
+    printf 'Open this report in a browser: %s/index/index.html\n' &quot;$PWD&quot;
+fi
+</code></pre></div>
 <p>Review and approve as in deterministic mode. The independent numerical work can
 complete while the advisor waits for a response. The run can return nonzero
 because an input is pending; inspect the waiting operation instead of assuming
@@ -112,8 +147,13 @@ that the numerical analysis failed.</p>
 hypotheses are enabled. Match the packet's purpose and hypothesis.</p>
 <h2 id="complete-a-browser-exchange">Complete a browser exchange</h2>
 <p>Set this to the <strong>actual</strong> handoff directory shown by the operation:</p>
+<p><strong>Windows (PowerShell):</strong></p>
 <div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>$handoff = &quot;FULL_PATH_FROM_THE_WAITING_OPERATION/handoff&quot;
 java -jar $jar study handoff-open --handoff $handoff --browser none
+</code></pre></div>
+<p><strong>Linux / macOS (Bash):</strong></p>
+<div class="code-window"><div class="code-bar"><span>bash</span></div><pre><code>handoff=&quot;FULL_PATH_FROM_THE_WAITING_OPERATION/handoff&quot;
+java -jar &quot;$jar&quot; study handoff-open --handoff &quot;$handoff&quot; --browser none
 </code></pre></div>
 <p><code>--browser none</code> verifies and reports the local packet path for manual opening.
 An installed browser such as <code>edge</code> or <code>firefox</code> can be requested instead.
@@ -136,10 +176,17 @@ The adapter never signs in or submits anything for you.</p>
 For instructions beyond the packet's scope, use a separately recorded
 review or a supported study change.</p>
 <p>Import and verify the response, then resume:</p>
+<p><strong>Windows (PowerShell):</strong></p>
 <div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>java -jar $jar study handoff-import response.yaml --handoff $handoff --out responses/H1-advisor --actor-id scientist-1
 java -jar $jar study handoff-verify responses/H1-advisor/receipt.yaml
 java -jar $jar study run --project . --actor-id scientist-1
 java -jar $jar study verify --project .
+</code></pre></div>
+<p><strong>Linux / macOS (Bash):</strong></p>
+<div class="code-window"><div class="code-bar"><span>bash</span></div><pre><code>java -jar &quot;$jar&quot; study handoff-import response.yaml --handoff &quot;$handoff&quot; --out responses/H1-advisor --actor-id scientist-1
+java -jar &quot;$jar&quot; study handoff-verify responses/H1-advisor/receipt.yaml
+java -jar &quot;$jar&quot; study run --project . --actor-id scientist-1
+java -jar &quot;$jar&quot; study verify --project .
 </code></pre></div>
 <p>Use a fresh receipt output directory for a new import. A receipt is bound to the
 exact request, purpose, hypothesis and policy. It is not interchangeable with
@@ -149,7 +196,7 @@ that the provider/model identity is independently authenticated or that the
 answer is scientifically correct.</p>
 <h2 id="use-an-api-key-or-oauth-token-instead">Use an API key or OAuth token instead</h2>
 <p>The <a href="ai-connections.html">AI connections guide</a> provides complete <code>study.yaml</code>
-mappings and PowerShell credential setup for:</p>
+mappings and PowerShell/Bash credential setup for:</p>
 <ul>
 <li><code>provider: openai</code> with a model and <code>api_key_env</code>.</li>
 <li><code>provider: gemini</code> with a model and <code>api_key_env</code>.</li>

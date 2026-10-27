@@ -15,6 +15,12 @@ These instructions use the current source build. The three collaboration modes
 are ways of working, not values of `analysis.mode`. Both `manual` and `auto`
 are deterministic planning settings; neither enables AI.
 
+**Choose your shell:** use either the **PowerShell (Windows)** or the
+**Bash (Linux/macOS)** version of each example. Keep the same terminal session
+while following a walkthrough so its variables remain defined. On macOS, run
+`bash` in Terminal before using the Bash examples if your default shell is zsh.
+For steps that need review or filled-in YAML, stop at that point before continuing.
+
 ## What you need
 
 Use JDK 17 or newer, the repository or an appropriate executable, and a dedicated
@@ -32,6 +38,8 @@ data-disclosure decisions while learning the commands.
 
 From the repository root:
 
+**Windows (PowerShell):**
+
 ~~~powershell
 .\gradlew.bat executableJar --no-daemon --no-parallel
 $jar = (Resolve-Path "build/cli/omicsmatic-0.3.7.jar").Path
@@ -39,6 +47,20 @@ $project = Join-Path (Get-Location) "build/ai-no-ai"
 if (Test-Path -LiteralPath $project) { throw "Choose a fresh project directory." }
 Copy-Item examples/study-pipeline $project -Recurse
 Set-Location $project
+~~~
+
+**Linux / macOS (Bash):**
+
+~~~bash
+bash ./gradlew executableJar --no-daemon --no-parallel || exit 1
+jar="$PWD/build/cli/omicsmatic-0.3.7.jar"
+project="$PWD/build/ai-no-ai"
+if [ -e "$project" ]; then
+    printf '%s\n' "Choose a fresh project directory." >&2
+    exit 1
+fi
+cp -R examples/study-pipeline "$project" || exit 1
+cd "$project" || exit 1
 ~~~
 
 Open `study.yaml`, `data-dictionary.yaml`, `data/discovery.tsv` and
@@ -60,12 +82,24 @@ comparable models, outcome scales or effects.
 
 ## Validate and review the exact work
 
+**Windows (PowerShell):**
+
 ~~~powershell
 java -jar $jar study validate study.yaml --check-files
 java -jar $jar study resolve study.yaml --actor-id scientist-1
 java -jar $jar study plan --project . --actor-id scientist-1
 Get-Content resolved-study.yaml
 Get-Content plans/*/analysis-plan.yaml
+~~~
+
+**Linux / macOS (Bash):**
+
+~~~bash
+java -jar "$jar" study validate study.yaml --check-files
+java -jar "$jar" study resolve study.yaml --actor-id scientist-1
+java -jar "$jar" study plan --project . --actor-id scientist-1
+cat resolved-study.yaml
+cat plans/*/analysis-plan.yaml
 ~~~
 
 Validation checks structure, IDs, references and declared files. Resolution freezes
@@ -81,12 +115,30 @@ approvable assumptions.
 
 ## Approve, run and read the results
 
+**Windows (PowerShell):**
+
 ~~~powershell
 java -jar $jar study approve --project . --approved-by scientist-1
 java -jar $jar study run --project . --offline --actor-id scientist-1
 java -jar $jar study verify --project .
 java -jar $jar study status --project .
 Start-Process index/index.html
+~~~
+
+**Linux / macOS (Bash):**
+
+~~~bash
+java -jar "$jar" study approve --project . --approved-by scientist-1
+java -jar "$jar" study run --project . --offline --actor-id scientist-1
+java -jar "$jar" study verify --project .
+java -jar "$jar" study status --project .
+if [ "$(uname -s)" = "Darwin" ]; then
+    open index/index.html
+elif [ -n "${DISPLAY:-}${WAYLAND_DISPLAY:-}" ] && command -v xdg-open >/dev/null 2>&1; then
+    xdg-open index/index.html
+else
+    printf 'Open this report in a browser: %s/index/index.html\n' "$PWD"
+fi
 ~~~
 
 The small fixture runs offline. In a real offline project, required public
@@ -112,8 +164,16 @@ the recorded contract; it does not establish that your model or interpretation i
 
 For a trusted, reviewed contract, use:
 
+**Windows (PowerShell):**
+
 ~~~powershell
 java -jar $jar study auto study.yaml --project . --offline --actor-id scientist-1
+~~~
+
+**Linux / macOS (Bash):**
+
+~~~bash
+java -jar "$jar" study auto study.yaml --project . --offline --actor-id scientist-1
 ~~~
 
 This command includes command-line approval, execution, verification and indexing.
@@ -127,8 +187,16 @@ inputs or LD do not become a completed negative result.
 
 After interruption or a supplied missing input, repeat:
 
+**Windows (PowerShell):**
+
 ~~~powershell
 java -jar $jar study run --project . --offline --actor-id scientist-1
+~~~
+
+**Linux / macOS (Bash):**
+
+~~~bash
+java -jar "$jar" study run --project . --offline --actor-id scientist-1
 ~~~
 
 Verified completed operations are reused by default. `--resume` is optional.
@@ -190,6 +258,8 @@ not a real literature review; use a properly annotated real study for gene-level
 searches. The amendment changes the requested work and preserves the earlier record.
 Preview and approve, then review the new plan:
 
+**Windows (PowerShell):**
+
 ~~~powershell
 java -jar $jar study amend amendment-add-literature.yaml --project . --check
 java -jar $jar study amend amendment-add-literature.yaml --project . --approved-by scientist-1
@@ -197,6 +267,17 @@ java -jar $jar study plan --project . --actor-id scientist-1
 Get-Content plans/*/analysis-plan.yaml
 java -jar $jar study approve --project . --approved-by scientist-1
 java -jar $jar study run --project . --actor-id scientist-1
+~~~
+
+**Linux / macOS (Bash):**
+
+~~~bash
+java -jar "$jar" study amend amendment-add-literature.yaml --project . --check
+java -jar "$jar" study amend amendment-add-literature.yaml --project . --approved-by scientist-1
+java -jar "$jar" study plan --project . --actor-id scientist-1
+cat plans/*/analysis-plan.yaml
+java -jar "$jar" study approve --project . --approved-by scientist-1
+java -jar "$jar" study run --project . --actor-id scientist-1
 ~~~
 
 This final run is online and can perform the newly authorized search. Unchanged
@@ -208,8 +289,16 @@ require recomputation; reuse is verified, not forced.
 When a plot or estimate needs investigation, first record the observation.
 Replace this illustrative path with a real artifact in your project:
 
+**Windows (PowerShell):**
+
 ~~~powershell
-java -jar $jar study observe --project . --id unusual-effects-01 --type off_diagonal_streak --artifact plots/effects.png --hypothesis H1 --description "Unexpected streak in the effect comparison" --explanation "Check scale, alignment and cohort-specific effects before a biological interpretation"
+java -jar $jar study observe --project . --id unusual-effects-01 --type off_diagonal_streak --artifact plots/effects.png --hypothesis H1 --description "Unexpected streak in the effect comparison" --explanation "Check scale, alignment and cohort-specific effects before a biological interpretation" --proposed-direction "Review the source plot and propose a sensitivity amendment if warranted"
+~~~
+
+**Linux / macOS (Bash):**
+
+~~~bash
+java -jar "$jar" study observe --project . --id unusual-effects-01 --type off_diagonal_streak --artifact plots/effects.png --hypothesis H1 --description "Unexpected streak in the effect comparison" --explanation "Check scale, alignment and cohort-specific effects before a biological interpretation" --proposed-direction "Review the source plot and propose a sensitivity amendment if warranted"
 ~~~
 
 An observation records a question, not evidence for your preferred explanation.

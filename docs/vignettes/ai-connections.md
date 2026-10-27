@@ -4,6 +4,12 @@ Use this page after [preparing your study](study-getting-started.md).
 These settings configure OmicsMatic's built-in advisor. An
 [external driver](ai-driver.md) has its own application, login and tool permissions.
 
+**Choose your shell:** use either the **PowerShell (Windows)** or the
+**Bash (Linux/macOS)** version of each example. Keep the same terminal session
+while following a walkthrough so its variables remain defined. On macOS, run
+`bash` in Terminal before using the Bash examples if your default shell is zsh.
+For steps that need review or filled-in YAML, stop at that point before continuing.
+
 ## Will the JAR start an OAuth login?
 
 **No. In the current source build, running the JAR does not open a browser,
@@ -118,7 +124,7 @@ java -jar $jar study credentials-check --file $vault
 **Linux or macOS, Bash:**
 
 ~~~bash
-bash ./gradlew executableJar --no-daemon --no-parallel
+bash ./gradlew executableJar --no-daemon --no-parallel || exit 1
 jar="$PWD/build/cli/omicsmatic-0.3.7.jar"
 vault="$HOME/.omicsmatic/credentials/openai.credentials.json"
 java -jar "$jar" study credentials-save --provider openai --auth api_key --out "$vault"
@@ -185,14 +191,26 @@ Keep the [disclosure policy](#first-set-the-disclosure-policy) configured above.
 Navigate to your study directory, retaining the absolute JAR path defined above.
 For a **new, unresolved** project in PowerShell:
 
+**Windows (PowerShell):**
+
 ~~~powershell
 java -jar $jar study validate study.yaml --check-files
 java -jar $jar study resolve study.yaml --project . --actor-id scientist-1
 java -jar $jar study plan --project . --actor-id scientist-1
 ~~~
 
+**Linux / macOS (Bash):**
+
+~~~bash
+java -jar "$jar" study validate study.yaml --check-files
+java -jar "$jar" study resolve study.yaml --project . --actor-id scientist-1
+java -jar "$jar" study plan --project . --actor-id scientist-1
+~~~
+
 Review `resolved-study.yaml` and `plans/<plan-id>/analysis-plan.yaml`.
 When the plan is acceptable:
+
+**Windows (PowerShell):**
 
 ~~~powershell
 java -jar $jar study approve --project . --approved-by scientist-1
@@ -200,7 +218,15 @@ java -jar $jar study run --project . --actor-id scientist-1
 java -jar $jar study status --project .
 ~~~
 
-In Bash use `"$jar"` in place of `$jar`. For an already resolved study, follow the
+**Linux / macOS (Bash):**
+
+~~~bash
+java -jar "$jar" study approve --project . --approved-by scientist-1
+java -jar "$jar" study run --project . --actor-id scientist-1
+java -jar "$jar" study status --project .
+~~~
+
+For an already resolved study, follow the
 [amendment procedure](ai-no-ai.md#add-an-analysis-later) rather than resolving over it.
 
 The enabled advisor operation unlocks the file when it needs a credential.
@@ -256,11 +282,23 @@ The process that runs Java must receive that variable.
 
 In PowerShell 7, set a session-only value without showing it in the command:
 
+**Windows (PowerShell):**
+
 ~~~powershell
 $env:RESEARCH_AI_KEY = Read-Host "Paste the approved API key" -MaskInput
 ~~~
 
+**Linux / macOS (Bash):**
+
+~~~bash
+IFS= read -r -s -p "Paste the approved API key: " RESEARCH_AI_KEY
+printf '\n'
+export RESEARCH_AI_KEY
+~~~
+
 If `-MaskInput` is unavailable in your PowerShell version, use a secure prompt:
+
+**Windows (PowerShell):**
 
 ~~~powershell
 $credential = Get-Credential -UserName "api" -Message "Enter the API key in the password field"
@@ -268,26 +306,61 @@ $env:RESEARCH_AI_KEY = $credential.GetNetworkCredential().Password
 Remove-Variable credential
 ~~~
 
+**Linux / macOS (Bash):**
+
+~~~bash
+IFS= read -r -s -p "Paste the approved API key: " RESEARCH_AI_KEY
+printf '\n'
+export RESEARCH_AI_KEY
+~~~
+
 Both methods create a plaintext environment value for the Java process.
 Use your institution's secret manager for production. Do not echo it, commit it,
 put it in YAML, or include it in screenshots. Check presence without printing it:
+
+**Windows (PowerShell):**
 
 ~~~powershell
 if ([string]::IsNullOrWhiteSpace($env:RESEARCH_AI_KEY)) { throw "Credential is missing." }
 ~~~
 
+**Linux / macOS (Bash):**
+
+~~~bash
+if [ -z "${RESEARCH_AI_KEY:-}" ]; then
+    printf '%s\n' "Credential is missing." >&2
+    exit 1
+fi
+~~~
+
 After configuring the policy and reviewing/resolving/approving the study, run
 from the same terminal:
+
+**Windows (PowerShell):**
 
 ~~~powershell
 java -jar $jar study run --project . --actor-id scientist-1
 ~~~
 
+**Linux / macOS (Bash):**
+
+~~~bash
+java -jar "$jar" study run --project . --actor-id scientist-1
+~~~
+
 This can send a real provider request. `--offline` blocks it.
 When finished with the session:
 
+**Windows (PowerShell):**
+
 ~~~powershell
 Remove-Item Env:RESEARCH_AI_KEY
+~~~
+
+**Linux / macOS (Bash):**
+
+~~~bash
+unset RESEARCH_AI_KEY
 ~~~
 
 Removing your environment value does not revoke the provider's key.
@@ -521,10 +594,22 @@ assistance:
 After completing the gateway's login procedure, put its issued access token in
 the named variable. For PowerShell 7:
 
+**Windows (PowerShell):**
+
 ~~~powershell
 $env:RESEARCH_AI_ACCESS_TOKEN = Read-Host "Paste the gateway API access token" -MaskInput
 java -jar $jar study run --project . --actor-id scientist-1
 Remove-Item Env:RESEARCH_AI_ACCESS_TOKEN
+~~~
+
+**Linux / macOS (Bash):**
+
+~~~bash
+IFS= read -r -s -p "Paste the gateway API access token: " RESEARCH_AI_ACCESS_TOKEN
+printf '\n'
+export RESEARCH_AI_ACCESS_TOKEN
+java -jar "$jar" study run --project . --actor-id scientist-1
+unset RESEARCH_AI_ACCESS_TOKEN
 ~~~
 
 The study must already be reviewed and approved. Environment-token mode does not
@@ -643,6 +728,8 @@ that profile. Container paths must match the paths visible inside the container.
 
 For an interactive preparation session, you can set the variable without
 displaying the passphrase. In PowerShell 7:
+
+**Windows (PowerShell):**
 
 ~~~powershell
 $env:OMICSMATIC_CREDENTIAL_PASSWORD = Read-Host "Credential-file passphrase" -MaskInput

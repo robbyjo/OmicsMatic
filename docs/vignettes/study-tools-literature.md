@@ -5,6 +5,12 @@ This guide serves all three modes. Begin with
 **Automatic planning means registered, configured work with its required inputs.**
 An AI suggestion is not permission to execute arbitrary software.
 
+**Choose your shell:** use either the **PowerShell (Windows)** or the
+**Bash (Linux/macOS)** version of each example. Keep the same terminal session
+while following a walkthrough so its variables remain defined. On macOS, run
+`bash` in Terminal before using the Bash examples if your default shell is zsh.
+For steps that need review or filled-in YAML, stop at that point before continuing.
+
 ## Three different kinds of tool use
 
 | Route | Who chooses and executes it | How to enable it |
@@ -47,10 +53,26 @@ Before first resolution, merge the fragment, validate, plan, review and approve.
 For a frozen project, add the branch with an amendment as in the
 [deterministic guide](ai-no-ai.md#add-an-analysis-later). Then run online:
 
+**Windows (PowerShell):**
+
 ~~~powershell
 java -jar $jar study run --project . --actor-id scientist-1
 java -jar $jar study status --project .
 Start-Process index/index.html
+~~~
+
+**Linux / macOS (Bash):**
+
+~~~bash
+java -jar "$jar" study run --project . --actor-id scientist-1
+java -jar "$jar" study status --project .
+if [ "$(uname -s)" = "Darwin" ]; then
+    open index/index.html
+elif [ -n "${DISPLAY:-}${WAYLAND_DISPLAY:-}" ] && command -v xdg-open >/dev/null 2>&1; then
+    xdg-open index/index.html
+else
+    printf 'Open this report in a browser: %s/index/index.html\n' "$PWD"
+fi
 ~~~
 
 Do not pass `--offline` when you intend a remote search. A denied remote policy,
@@ -240,9 +262,18 @@ Use the [complete revision request](bioinformatics-evidence.md#creating-a-manusc
 and [Results/Discussion writing model](bioinformatics-evidence.md#results-and-discussion-writing-model).
 Run a new revision with a fresh bundle path:
 
+**Windows (PowerShell):**
+
 ~~~powershell
 java -jar $jar study manuscript revision.yaml --project . --out manuscript-revision-01 --actor-id scientist-1
 java -jar $jar study manuscript-verify --project manuscript-revision-01
+~~~
+
+**Linux / macOS (Bash):**
+
+~~~bash
+java -jar "$jar" study manuscript revision.yaml --project . --out manuscript-revision-01 --actor-id scientist-1
+java -jar "$jar" study manuscript-verify --project manuscript-revision-01
 ~~~
 
 For literature reading priority before a cap, `bioinformatics.literature_selection`

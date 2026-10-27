@@ -15,6 +15,11 @@ mean every source-build feature is in the previously published v0.3.7 binary.
 In particular, the typed completed-analysis imports described here require a
 current source build. See <a href="https://github.com/robbyjo/OmicsMatic/blob/main/docs/runtime-requirements.md">runtime requirements</a>
 for Java and optional software.</p>
+<p><strong>Choose your shell:</strong> use either the <strong>PowerShell (Windows)</strong> or the
+<strong>Bash (Linux/macOS)</strong> version of each example. Keep the same terminal session
+while following a walkthrough so its variables remain defined. On macOS, run
+<code>bash</code> in Terminal before using the Bash examples if your default shell is zsh.
+For steps that need review or filled-in YAML, stop at that point before continuing.</p>
 <h2 id="what-is-studyyaml">What is study.yaml?</h2>
 <p>A <code>study.yaml</code> is a text file describing your study, its inputs and the work you
 want done. It is a recipe, not a data table or a program. OmicsMatic reads it,
@@ -167,10 +172,17 @@ ledger and outputs; the HTML index alone is not the analysis archive.</p>
 </table></div>
 <p>For matrices, start with a template rather than adapting the result-table
 example by changing only its stage:</p>
+<p><strong>Windows (PowerShell):</strong></p>
 <div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>java -jar $jar study init --template bulk-transcriptomics --out draft-matrix-study.yaml
 java -jar $jar study init --template association-results --out draft-results-study.yaml
 </code></pre></div>
-<p>Replace placeholders before running. Other templates include <code>gwas</code>,
+<p><strong>Linux / macOS (Bash):</strong></p>
+<div class="code-window"><div class="code-bar"><span>bash</span></div><pre><code>java -jar &quot;$jar&quot; study init --template bulk-transcriptomics --out draft-matrix-study.yaml
+java -jar &quot;$jar&quot; study init --template association-results --out draft-results-study.yaml
+</code></pre></div>
+<p>These template commands assume you have built the executable and set <code>jar</code>
+for your shell as shown in the <a href="#run-a-complete-offline-rehearsal">offline rehearsal</a>.
+Replace placeholders before running. Other templates include <code>gwas</code>,
 <code>epigenomics</code>, <code>single-cell</code>, <code>spatial</code>, <code>microbiome</code> and <code>multimodal</code>.
 A template is a starting description, not evidence that every raw-data processing
 step for that assay is implemented. See the
@@ -241,7 +253,8 @@ and a verified gene-set resource. Follow the
 <a href="study-pipeline-tutorial.html#reuse-completed-analyses-and-run-missing-work">complete meta-to-GO example</a>;
 a table of significant genes alone cannot supply the enrichment background.</p>
 <h2 id="run-a-complete-offline-rehearsal">Run a complete offline rehearsal</h2>
-<p>From the <strong>repository root</strong>, open PowerShell and run:</p>
+<p>From the <strong>repository root</strong>, choose your shell and run:</p>
+<p><strong>Windows (PowerShell):</strong></p>
 <div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>.\gradlew.bat executableJar --no-daemon --no-parallel
 $jar = (Resolve-Path &quot;build/cli/omicsmatic-0.3.7.jar&quot;).Path
 $project = Join-Path (Get-Location) &quot;build/my-first-study&quot;
@@ -249,16 +262,35 @@ if (Test-Path -LiteralPath $project) { throw &quot;Choose a fresh project direct
 Copy-Item examples/study-pipeline $project -Recurse
 Set-Location $project
 </code></pre></div>
+<p><strong>Linux / macOS (Bash):</strong></p>
+<div class="code-window"><div class="code-bar"><span>bash</span></div><pre><code>bash ./gradlew executableJar --no-daemon --no-parallel || exit 1
+jar=&quot;$PWD/build/cli/omicsmatic-0.3.7.jar&quot;
+project=&quot;$PWD/build/my-first-study&quot;
+if [ -e &quot;$project&quot; ]; then
+    printf '%s\n' &quot;Choose a fresh project directory.&quot; &gt;&amp;2
+    exit 1
+fi
+cp -R examples/study-pipeline &quot;$project&quot; || exit 1
+cd &quot;$project&quot; || exit 1
+</code></pre></div>
 <p>This copies synthetic results and a complete two-cohort <code>study.yaml</code>.
 <code>$jar</code> is an absolute path, so changing directories does not lose the executable.
-Keep this PowerShell window open: the later examples use that variable.
+Keep this terminal session open: the later examples use that variable.
 In another window, set it again to your executable's absolute path.</p>
 <p>Validate, freeze and inspect the plan:</p>
+<p><strong>Windows (PowerShell):</strong></p>
 <div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>java -jar $jar study validate study.yaml --check-files
 java -jar $jar study resolve study.yaml --actor-id scientist-1
 java -jar $jar study plan --project . --actor-id scientist-1
 Get-Content resolved-study.yaml
 Get-Content plans/*/analysis-plan.yaml
+</code></pre></div>
+<p><strong>Linux / macOS (Bash):</strong></p>
+<div class="code-window"><div class="code-bar"><span>bash</span></div><pre><code>java -jar &quot;$jar&quot; study validate study.yaml --check-files
+java -jar &quot;$jar&quot; study resolve study.yaml --actor-id scientist-1
+java -jar &quot;$jar&quot; study plan --project . --actor-id scientist-1
+cat resolved-study.yaml
+cat plans/*/analysis-plan.yaml
 </code></pre></div>
 <p>Check the cohorts' independence, effect scale, phenotype, selected inputs and
 requested operations. The synthetic example explicitly declares independent
@@ -266,17 +298,35 @@ cohorts. For a real study, resolve uncertain overlap or relatedness with your
 supervisor; <code>--accept-assumptions</code> is an explicit acceptance, not a repair for
 missing knowledge.</p>
 <p>After review, approve and execute:</p>
+<p><strong>Windows (PowerShell):</strong></p>
 <div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>java -jar $jar study approve --project . --approved-by scientist-1
 java -jar $jar study run --project . --offline --actor-id scientist-1
 java -jar $jar study status --project .
 java -jar $jar study verify --project .
 Start-Process index/index.html
 </code></pre></div>
+<p><strong>Linux / macOS (Bash):</strong></p>
+<div class="code-window"><div class="code-bar"><span>bash</span></div><pre><code>java -jar &quot;$jar&quot; study approve --project . --approved-by scientist-1
+java -jar &quot;$jar&quot; study run --project . --offline --actor-id scientist-1
+java -jar &quot;$jar&quot; study status --project .
+java -jar &quot;$jar&quot; study verify --project .
+if [ &quot;$(uname -s)&quot; = &quot;Darwin&quot; ]; then
+    open index/index.html
+elif [ -n &quot;${DISPLAY:-}${WAYLAND_DISPLAY:-}&quot; ] &amp;&amp; command -v xdg-open &gt;/dev/null 2&gt;&amp;1; then
+    xdg-open index/index.html
+else
+    printf 'Open this report in a browser: %s/index/index.html\n' &quot;$PWD&quot;
+fi
+</code></pre></div>
 <p>The report links replication, meta-analysis, plots, diagnostics and source
 manifests. <code>study verify</code> checks recorded integrity; it does not validate your
 study design or prove a scientific claim.</p>
 <p>For a contract you have already reviewed, the convenience command is:</p>
+<p><strong>Windows (PowerShell):</strong></p>
 <div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>java -jar $jar study auto study.yaml --project . --offline --actor-id scientist-1
+</code></pre></div>
+<p><strong>Linux / macOS (Bash):</strong></p>
+<div class="code-window"><div class="code-bar"><span>bash</span></div><pre><code>java -jar &quot;$jar&quot; study auto study.yaml --project . --offline --actor-id scientist-1
 </code></pre></div>
 <p><code>study auto</code> validates, resolves, plans, <strong>records command-line approval</strong>, runs
 eligible work, verifies and rebuilds the index. It is useful for a trusted

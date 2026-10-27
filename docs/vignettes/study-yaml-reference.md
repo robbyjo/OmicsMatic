@@ -4,12 +4,26 @@ Read [Start here](study-getting-started.md) first for a minimal complete contrac
 file placement and commands. This page explains what you can add without making
 the first example unreadable.
 
+**Choose your shell:** use either the **PowerShell (Windows)** or the
+**Bash (Linux/macOS)** version of each example. Keep the same terminal session
+while following a walkthrough so its variables remain defined. On macOS, run
+`bash` in Terminal before using the Bash examples if your default shell is zsh.
+For steps that need review or filled-in YAML, stop at that point before continuing.
+
 The [complete version-1 JSON Schema](../schemas/study-v1.schema.json) is the
 field-by-field reference, including accepted names, types, ranges and enums.
 The Java validator is authoritative:
 
+**Windows (PowerShell):**
+
 ~~~powershell
 java -jar $jar study validate study.yaml --check-files
+~~~
+
+**Linux / macOS (Bash):**
+
+~~~bash
+java -jar "$jar" study validate study.yaml --check-files
 ~~~
 
 The schema's `$defs` contains named definitions such as `dataset`, `analysis`,
@@ -17,6 +31,7 @@ The schema's `$defs` contains named definitions such as `dataset`, `analysis`,
 schema in a YAML-aware editor. Not every schema default is automatically written
 into your draft: inspect `resolved-study.yaml` to see what the resolver used.
 These guides target the current source build.
+
 
 ## Top-level structure
 

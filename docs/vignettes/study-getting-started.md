@@ -12,6 +12,12 @@ In particular, the typed completed-analysis imports described here require a
 current source build. See [runtime requirements](https://github.com/robbyjo/OmicsMatic/blob/main/docs/runtime-requirements.md)
 for Java and optional software.
 
+**Choose your shell:** use either the **PowerShell (Windows)** or the
+**Bash (Linux/macOS)** version of each example. Keep the same terminal session
+while following a walkthrough so its variables remain defined. On macOS, run
+`bash` in Terminal before using the Bash examples if your default shell is zsh.
+For steps that need review or filled-in YAML, stop at that point before continuing.
+
 ## What is study.yaml?
 
 A `study.yaml` is a text file describing your study, its inputs and the work you
@@ -152,11 +158,22 @@ ledger and outputs; the HTML index alone is not the analysis archive.
 For matrices, start with a template rather than adapting the result-table
 example by changing only its stage:
 
+**Windows (PowerShell):**
+
 ~~~powershell
 java -jar $jar study init --template bulk-transcriptomics --out draft-matrix-study.yaml
 java -jar $jar study init --template association-results --out draft-results-study.yaml
 ~~~
 
+**Linux / macOS (Bash):**
+
+~~~bash
+java -jar "$jar" study init --template bulk-transcriptomics --out draft-matrix-study.yaml
+java -jar "$jar" study init --template association-results --out draft-results-study.yaml
+~~~
+
+These template commands assume you have built the executable and set `jar`
+for your shell as shown in the [offline rehearsal](#run-a-complete-offline-rehearsal).
 Replace placeholders before running. Other templates include `gwas`,
 `epigenomics`, `single-cell`, `spatial`, `microbiome` and `multimodal`.
 A template is a starting description, not evidence that every raw-data processing
@@ -241,7 +258,9 @@ a table of significant genes alone cannot supply the enrichment background.
 
 ## Run a complete offline rehearsal
 
-From the **repository root**, open PowerShell and run:
+From the **repository root**, choose your shell and run:
+
+**Windows (PowerShell):**
 
 ~~~powershell
 .\gradlew.bat executableJar --no-daemon --no-parallel
@@ -252,12 +271,28 @@ Copy-Item examples/study-pipeline $project -Recurse
 Set-Location $project
 ~~~
 
+**Linux / macOS (Bash):**
+
+~~~bash
+bash ./gradlew executableJar --no-daemon --no-parallel || exit 1
+jar="$PWD/build/cli/omicsmatic-0.3.7.jar"
+project="$PWD/build/my-first-study"
+if [ -e "$project" ]; then
+    printf '%s\n' "Choose a fresh project directory." >&2
+    exit 1
+fi
+cp -R examples/study-pipeline "$project" || exit 1
+cd "$project" || exit 1
+~~~
+
 This copies synthetic results and a complete two-cohort `study.yaml`.
 `$jar` is an absolute path, so changing directories does not lose the executable.
-Keep this PowerShell window open: the later examples use that variable.
+Keep this terminal session open: the later examples use that variable.
 In another window, set it again to your executable's absolute path.
 
 Validate, freeze and inspect the plan:
+
+**Windows (PowerShell):**
 
 ~~~powershell
 java -jar $jar study validate study.yaml --check-files
@@ -265,6 +300,16 @@ java -jar $jar study resolve study.yaml --actor-id scientist-1
 java -jar $jar study plan --project . --actor-id scientist-1
 Get-Content resolved-study.yaml
 Get-Content plans/*/analysis-plan.yaml
+~~~
+
+**Linux / macOS (Bash):**
+
+~~~bash
+java -jar "$jar" study validate study.yaml --check-files
+java -jar "$jar" study resolve study.yaml --actor-id scientist-1
+java -jar "$jar" study plan --project . --actor-id scientist-1
+cat resolved-study.yaml
+cat plans/*/analysis-plan.yaml
 ~~~
 
 Check the cohorts' independence, effect scale, phenotype, selected inputs and
@@ -275,6 +320,8 @@ missing knowledge.
 
 After review, approve and execute:
 
+**Windows (PowerShell):**
+
 ~~~powershell
 java -jar $jar study approve --project . --approved-by scientist-1
 java -jar $jar study run --project . --offline --actor-id scientist-1
@@ -283,14 +330,38 @@ java -jar $jar study verify --project .
 Start-Process index/index.html
 ~~~
 
+**Linux / macOS (Bash):**
+
+~~~bash
+java -jar "$jar" study approve --project . --approved-by scientist-1
+java -jar "$jar" study run --project . --offline --actor-id scientist-1
+java -jar "$jar" study status --project .
+java -jar "$jar" study verify --project .
+if [ "$(uname -s)" = "Darwin" ]; then
+    open index/index.html
+elif [ -n "${DISPLAY:-}${WAYLAND_DISPLAY:-}" ] && command -v xdg-open >/dev/null 2>&1; then
+    xdg-open index/index.html
+else
+    printf 'Open this report in a browser: %s/index/index.html\n' "$PWD"
+fi
+~~~
+
 The report links replication, meta-analysis, plots, diagnostics and source
 manifests. `study verify` checks recorded integrity; it does not validate your
 study design or prove a scientific claim.
 
 For a contract you have already reviewed, the convenience command is:
 
+**Windows (PowerShell):**
+
 ~~~powershell
 java -jar $jar study auto study.yaml --project . --offline --actor-id scientist-1
+~~~
+
+**Linux / macOS (Bash):**
+
+~~~bash
+java -jar "$jar" study auto study.yaml --project . --offline --actor-id scientist-1
 ~~~
 
 `study auto` validates, resolves, plans, **records command-line approval**, runs

@@ -8,10 +8,19 @@
 <div class="container page-layout"><article class="prose study-guide"><p>Read <a href="study-getting-started.html">Start here</a> first for a minimal complete contract,
 file placement and commands. This page explains what you can add without making
 the first example unreadable.</p>
+<p><strong>Choose your shell:</strong> use either the <strong>PowerShell (Windows)</strong> or the
+<strong>Bash (Linux/macOS)</strong> version of each example. Keep the same terminal session
+while following a walkthrough so its variables remain defined. On macOS, run
+<code>bash</code> in Terminal before using the Bash examples if your default shell is zsh.
+For steps that need review or filled-in YAML, stop at that point before continuing.</p>
 <p>The <a href="../schemas/study-v1.schema.json">complete version-1 JSON Schema</a> is the
 field-by-field reference, including accepted names, types, ranges and enums.
 The Java validator is authoritative:</p>
+<p><strong>Windows (PowerShell):</strong></p>
 <div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>java -jar $jar study validate study.yaml --check-files
+</code></pre></div>
+<p><strong>Linux / macOS (Bash):</strong></p>
+<div class="code-window"><div class="code-bar"><span>bash</span></div><pre><code>java -jar &quot;$jar&quot; study validate study.yaml --check-files
 </code></pre></div>
 <p>The schema's <code>$defs</code> contains named definitions such as <code>dataset</code>, <code>analysis</code>,
 <code>assistance</code> and <code>bioinformatics</code>. Find those names in an editor, or use the
