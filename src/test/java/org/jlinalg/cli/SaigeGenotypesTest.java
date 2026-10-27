@@ -28,4 +28,8 @@ class SaigeGenotypesTest {
     @Test void originalIidAloneSemanticsRejectCrossFamilyCollisionsAndMissingOrRepeatedModelSamples() {
         var a=new PlinkBedDataset.Sample("family1","one",true,1);var b=new PlinkBedDataset.Sample("family2","two",true,2);assertArrayEquals(new int[]{1,0},SaigeGenotypes.cohortIndices(List.of(a,b),List.of("two","one")));assertThrows(IllegalArgumentException.class,()->SaigeGenotypes.cohortIndices(List.of(a,new PlinkBedDataset.Sample("other","one",true,0)),List.of("one")));assertThrows(IllegalArgumentException.class,()->SaigeGenotypes.cohortIndices(List.of(a,b),List.of("two","two")));assertThrows(IllegalArgumentException.class,()->SaigeGenotypes.cohortIndices(List.of(a,b),List.of("absent")));
     }
+    @Test void sourceFloatingPointQcCanDifferFromExactMacAtRefFirstThreshold() {
+        double[] a1=new double[1000];java.util.Arrays.fill(a1,0,20,1);java.util.Arrays.fill(a1,20,26,Double.NaN);
+        var alt=SaigeGenotypes.calculatePlink(a1,null,SaigeGenotypes.AlleleOrder.ALT_FIRST,SaigeGenotypes.Missing.BEST_GUESS).summary();var ref=SaigeGenotypes.calculatePlink(a1,null,SaigeGenotypes.AlleleOrder.REF_FIRST,SaigeGenotypes.Missing.BEST_GUESS).summary();assertEquals(20,alt.rawMinorCount());assertEquals(20,ref.rawMinorCount());assertTrue(SaigeGenotypes.passesOriginalQc(alt,0,20,.15));assertFalse(SaigeGenotypes.passesOriginalQc(ref,0,20,.15));assertTrue(ref.upstreamQcMinorCount()<20);assertThrows(IllegalArgumentException.class,()->SaigeGenotypes.passesOriginalQc(ref,0,20,2));
+    }
 }

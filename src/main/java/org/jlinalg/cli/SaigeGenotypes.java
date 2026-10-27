@@ -19,7 +19,8 @@ final class SaigeGenotypes {
         Missing(String upstream){this.upstream=upstream;}
     }
     record Summary(int samples,int missing,double rawAlleleCount,double rawFrequency,
-                   double rawMinorCount,double missingRate,boolean flipped,
+                   double rawMinorCount,double missingRate,double upstreamQcFrequency,
+                   double upstreamQcMinorCount,boolean flipped,
                    double imputedMinorDosage,double alleleCount,double frequency,double minorCount,
                    int cases,int controls,double caseFrequency,double controlFrequency,
                    int caseHom,int caseHet,int controlHom,int controlHet) { }
@@ -52,13 +53,32 @@ final class SaigeGenotypes {
         var unique=new HashSet<Integer>();
         for(int i=0;i<cohort.length;i++){
             int position=cohort[i];if(position<0||position>=source.length||!unique.add(position))throw new IllegalArgumentException("Invalid/duplicate genotype cohort index");
-            double g=source[position];selected[i]=order==AlleleOrder.ALT_FIRST||Double.isNaN(g)?g:2-g;
+            selected[i]=source[position];
         }
-        return calculate(selected,binaryOutcomes,method);
+        return calculatePlink(selected,binaryOutcomes,order,method);
+    }
+
+    /** Preserve original PLINK ref-first subtraction and MAC operation order at QC boundaries. */
+    static Calls calculatePlink(double[] allele1HardCalls,int[] binaryOutcomes,AlleleOrder order,Missing method) {
+        Objects.requireNonNull(order);double sum=0;int observed=0;double[] effect=allele1HardCalls.clone();
+        for(int i=0;i<effect.length;i++)if(!Double.isNaN(effect[i])){sum+=effect[i];observed++;if(order==AlleleOrder.REF_FIRST)effect[i]=2-effect[i];}
+        double frequency=observed==0?Double.NaN:sum/observed/2;
+        if(order==AlleleOrder.REF_FIRST)frequency=1-frequency;
+        return calculate(effect,binaryOutcomes,method,frequency);
+    }
+
+    static boolean passesOriginalQc(Summary summary,double minimumMaf,double minimumMac,double maximumMissing) {
+        if(!Double.isFinite(minimumMaf)||minimumMaf<0||minimumMaf>.5||!Double.isFinite(minimumMac)||minimumMac<0||!Double.isFinite(maximumMissing)||maximumMissing<0||maximumMissing>1)throw new IllegalArgumentException("Invalid SAIGE QC thresholds");
+        double maf=Math.min(summary.upstreamQcFrequency(),1-summary.upstreamQcFrequency());
+        return summary.missingRate()<=maximumMissing&&maf>=minimumMaf&&summary.upstreamQcMinorCount()>=minimumMac;
     }
 
     /** Input counts the declared effect/ALT allele; no biological REF/strand is inferred. */
     static Calls calculate(double[] effectHardCalls,int[] binaryOutcomes,Missing method) {
+        return calculate(effectHardCalls,binaryOutcomes,method,Double.NaN);
+    }
+
+    private static Calls calculate(double[] effectHardCalls,int[] binaryOutcomes,Missing method,double upstreamFrequency) {
         Objects.requireNonNull(effectHardCalls);Objects.requireNonNull(method);
         int n=effectHardCalls.length;
         if(n==0||binaryOutcomes!=null&&binaryOutcomes.length!=n)throw new IllegalArgumentException("Require a nonempty cohort and matching explicit binary outcomes");
@@ -72,8 +92,10 @@ final class SaigeGenotypes {
         }
         if(missing==n)throw new IllegalArgumentException("All cohort genotype calls are missing; no allele frequency can be established");
         if(binaryOutcomes!=null&&(cases==0||cases==n))throw new IllegalArgumentException("Binary cohort requires both cases and controls");
-        double rawAF=rawAC/(2*(double)(n-missing)),rawMAC=Math.min(rawAC,2.0*(n-missing)-rawAC);
-        boolean flip=rawAF>.5;double minorAF=flip?1-rawAF:rawAF;
+        double rawAF=rawAC/(double)(n-missing)/2,rawMAC=Math.min(rawAC,2.0*(n-missing)-rawAC);
+        if(Double.isNaN(upstreamFrequency))upstreamFrequency=rawAF;
+        double missingRate=missing/(double)n,upstreamMac=Math.min(upstreamFrequency,1-upstreamFrequency)*n*(1-missingRate)*2;
+        boolean flip=upstreamFrequency>.5;double minorAF=flip?1-upstreamFrequency:upstreamFrequency;
         double fill=switch(method){case BEST_GUESS->Math.floor(2*minorAF+.5);case MEAN->2*minorAF;case MAJOR_HOMOZYGOTE->0;};
         double[] minor=new double[n];double minorAC=0,caseMinor=0,controlMinor=0;int caseMinorHom=0,caseHet=0,controlMinorHom=0,controlHet=0;
         for(int i=0;i<n;i++){
@@ -88,6 +110,6 @@ final class SaigeGenotypes {
         double caseAF=binaryOutcomes==null?Double.NaN:caseMinor/(2.0*cases),controlAF=binaryOutcomes==null?Double.NaN:controlMinor/(2.0*controls);
         if(flip&&binaryOutcomes!=null){caseAF=1-caseAF;controlAF=1-controlAF;}
         int caseHom=flip?cases-caseHet-caseMinorHom:caseMinorHom,controlHom=flip?controls-controlHet-controlMinorHom:controlMinorHom;
-        return new Calls(new Summary(n,missing,rawAC,rawAF,rawMAC,missing/(double)n,flip,fill,ac,af,minorAC,cases,controls,caseAF,controlAF,caseHom,caseHet,controlHom,controlHet),minor);
+        return new Calls(new Summary(n,missing,rawAC,rawAF,rawMAC,missingRate,upstreamFrequency,upstreamMac,flip,fill,ac,af,minorAC,cases,controls,caseAF,controlAF,caseHom,caseHet,controlHom,controlHet),minor);
     }
 }
