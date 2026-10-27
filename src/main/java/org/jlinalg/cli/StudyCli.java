@@ -41,6 +41,7 @@ final class StudyCli {
                 return 0;
             }
             String action = arguments[0];
+            if (action.equals("login")) return StudyLoginCli.run(java.util.Arrays.copyOfRange(arguments,1,arguments.length),output);
             if (Set.of("credentials-save","credentials-check").contains(action))
                 return StudyCredentialCli.run(action, java.util.Arrays.copyOfRange(arguments,1,arguments.length),output);
             Options options = Options.parse(
@@ -493,6 +494,13 @@ final class StudyCli {
         return """
             Usage: java -jar omicsmatic-<version>.jar study ACTION [options]
 
+              study login --provider openai|gemini|anthropic|xai [--out ABSOLUTE_FILE]
+                [--auth oauth|api_key|wif] [--password-env NAME] [--no-browser]
+                [--client-json GOOGLE_DESKTOP_CLIENT_JSON] [--from SAVED_OAUTH_FILE]
+                [--client-id ISSUED_OPENAI_CLIENT_ID] [--host-id-file ABSOLUTE_FILE]
+                [--port 0..65535] [--timeout-seconds 1..900]
+                API-key mode also accepts --token-env NAME. Claude wif accepts identity/rule/org/service-account/workspace options.
+                OAuth defaults for OpenAI/Gemini; API-key setup defaults for Claude/Grok.
               study credentials-save --out ABSOLUTE_FILE --provider openai|gemini|anthropic|xai|openai_compatible
                 [--auth api_key|oauth] [--password-env NAME] [--token-env NAME]
                 [--renewal none|openai|google|anthropic_wif] [--client-id ID]

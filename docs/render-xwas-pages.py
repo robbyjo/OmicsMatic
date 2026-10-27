@@ -13,8 +13,9 @@ import markdown
 import argparse
 
 ROOT = Path(__file__).resolve().parents[1]
-STUDY_GUIDES = ['ai-no-ai', 'ai-advisor', 'ai-driver', 'study-getting-started', 'study-yaml-reference', 'ai-connections', 'study-tools-literature', 'ai-credentials']
+STUDY_GUIDES = ['ai-no-ai', 'ai-advisor', 'ai-driver', 'study-getting-started', 'study-yaml-reference', 'ai-connections', 'study-tools-literature', 'ai-credentials', 'ai-login']
 PAGES = {
+    "ai-login": ("Sign in and save AI credentials", "Browser login for OpenAI and Gemini, guided Claude/Grok setup, encrypted storage and SSH callbacks on cloud machines.", "AI setup - Current source build"),
     "ai-credentials": ("Save AI credentials securely and renew OAuth access", "Password-encrypted credential files, masked unlocking, provider-specific renewal and practical setup for OpenAI, Claude, Grok and Gemini.", "AI setup · Current source build"),
     'ai-no-ai': ('Mode 1: deterministic analysis without AI', 'Prepare study.yaml, run a complete or partial study, reuse completed work and add analyses through reviewed amendments.', 'Beginner guide · Current source build'),
     'ai-advisor': ('Mode 2: AI as a scientific advisor', 'Configure browser or API advice, complete an audited exchange, review literature and keep control of scientific decisions.', 'Beginner guide · Current source build'),

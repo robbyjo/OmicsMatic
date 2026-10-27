@@ -12,28 +12,33 @@ For steps that need review or filled-in YAML, stop at that point before continui
 
 ## Will the JAR start an OAuth login?
 
-**No. In the current source build, running the JAR does not open a browser,
-display a device code, register an OAuth app or request your consent.**
-Writing `auth: oauth` in `study.yaml` selects how an existing credential is used;
-it does not start a login.
+**Yes: explicitly run `study login` for OpenAI or Gemini.** The current source
+build opens the browser, completes supported OAuth authorization and saves the
+result encrypted. Start with the [first-login walkthrough](ai-login.md),
+including PowerShell, Bash and cloud/SSH instructions.
 
-OmicsMatic currently handles two later steps:
-[password-encrypted credential storage and supported renewal](ai-credentials.md).
-`study credentials-save` asks for credentials you already obtained and encrypts
-them. It does not contact a provider to obtain them. A browser already signed
-into ChatGPT, Claude, Grok or Gemini does not automatically authorize Java.
+From the directory containing your freshly built executable, for example:
 
-This behavior is the same on Windows, Linux, macOS and a cloud VM.
-A cloud VM means a computer you control remotely; it does not add a hosted
-OmicsMatic sign-in service. Your browser can be on your laptop while the JAR runs
-elsewhere, but the running JAR still needs its own credential.
+~~~text
+java -jar omicsmatic-0.3.7.jar study login --provider openai
+~~~
 
-| Step | Who performs it today? | What you see |
+`study run` does not initiate consent. Writing `auth: oauth` in `study.yaml`
+selects the saved credential; it does not start login during an analysis or batch
+job. A browser already signed in does not automatically authorize Java.
+
+| Step | Command / action | What you see |
 | --- | --- | --- |
-| First login / authorization | You create an API key in the provider console, or separate OAuth tooling completes registration and consent. | The provider's website, or that tooling's login instructions. |
-| Save the credential | OmicsMatic's `study credentials-save`. | Hidden passphrase and token prompts; a new encrypted file. |
-| Use the credential | An enabled, policy-permitted advisor operation in `study run`. | A passphrase prompt if needed, then an API request. |
-| Renew OAuth access | OmicsMatic, for the supported encrypted provider profiles. | Usually no browser; a saved refresh credential or workload identity obtains a replacement. Revoked consent still requires reauthorization elsewhere. |
+| First OpenAI/Gemini authorization | `study login`; Gemini also needs your Desktop client JSON. | Hidden file-passphrase prompt, provider consent, validated callback and encrypted save. |
+| Claude/Grok key setup | `study login --provider anthropic --auth api_key` or the corresponding `xai` command. | Provider console followed by hidden API-key input. These are API-key routes. |
+| Import existing credentials | `study credentials-save`. | Hidden passphrase and token prompts; this command does not obtain tokens. |
+| Use the saved credential | An enabled, permitted operation in `study run`. | A passphrase prompt if needed, then an API request. |
+| Renew supported OAuth access | Automatic from a supported encrypted profile. | Usually no browser; revoked consent requires a new explicit login. |
+
+The login helper works through the same CLI on Windows, Linux and macOS.
+For a cloud VM without a browser, use the
+[SSH callback procedure](ai-login.md#6-a-cloud-vm-without-a-browser).
+The running JAR needs the credential on its own machine.
 
 Use a **current source build** for encrypted credentials. The executable remains
 named `omicsmatic-0.3.7.jar`; the previously published binary with that name does
@@ -53,7 +58,7 @@ Keep your datasets and use a single top-level `assistance` mapping.
 | Gemini API key | Create a Gemini API key in Google AI Studio. | Calls GenerateContent using the saved key. |
 | Claude API key | Create a workspace-scoped key in the Claude Console. | Calls Messages using the saved key. |
 | Grok API key | Create a key in the xAI API console. | Calls Chat Completions using the saved key. |
-| OpenAI or Gemini OAuth | Separate tooling completes the provider's first login. See [provider-specific instructions](#oauth-first-login-by-provider). | Uses the access token; a supported encrypted profile can renew it. |
+| OpenAI or Gemini OAuth | `study login` completes browser consent; Gemini requires a Desktop client registration. See [first login](ai-login.md). | Uses the access token; a supported encrypted profile can renew it. |
 | Claude federation | An administrator configures workload identity and a rotating identity-token file. | Exchanges the workload identity for API access. This is not a personal Claude browser login. |
 | Compatible gateway | Obtain its endpoint, model and API key or OAuth instructions from the gateway operator. | Calls the configured compatible API. Gateway-specific OAuth renewal is not implemented. |
 
@@ -419,7 +424,7 @@ protocol or a streaming-only endpoint is not interchangeable.
 OAuth has two different activities. **First authorization** opens the provider's
 login page and asks which account and permissions to allow. **Renewal** uses
 permission already granted to obtain another short-lived access token.
-Automatic renewal does not implement the first activity.
+`study login` performs first authorization for OpenAI/Gemini; the saved profile handles renewal.
 
 These terms explain what a login tool or administrator supplies:
 
@@ -439,29 +444,29 @@ Neither belongs in `study.yaml`.
 
 ## OAuth first login by provider
 
-### OpenAI: a first-login integration is still required
+### OpenAI: sign in directly from the JAR
 
-**There is currently no OmicsMatic command you can run to start Sign in with
-ChatGPT.** If you have only a ChatGPT account and a study.yaml, you cannot complete
-this route using the JAR alone. Use the API-key or browser-handoff walkthrough
-today, or have an integrator supply a legitimate first-login implementation.
+Use [the OpenAI login steps](ai-login.md#2-openai-run-the-login-command).
+The helper performs registration, opens **Continue with ChatGPT**, validates the
+returned identity/permissions and saves access and refresh tokens encrypted.
+It prints the credential path for study.yaml. You do not need an API key or
+tokens obtained from an integrator for this supported route.
 
-For that integrator, OpenAI's
-[registration and sign-in procedure](https://developers.openai.com/siwc/token-sharing-open-source/sign-in)
-requires a stable host ID, a loopback callback, state/nonce checks and PKCE.
-The browser performs registration and consent; the helper exchanges the returned
-code and validates identity and granted permissions. The issued client ID,
-access token, refresh token and expiry then feed
-[OmicsMatic's encrypted renewal import](ai-credentials.md#4-enable-openai-oauth-renewal).
+Choose the provider account/workspace and model permissions appropriate for
+your study. Do not import another application's saved tokens.
 
-The expected user experience is: run a separate helper, choose the ChatGPT
-account/workspace in your browser, grant access, return to the helper, then save
-the issued credentials. OmicsMatic does not currently provide that helper.
-Do not copy Codex credentials, browser cookies or another application's tokens.
+### Gemini: sign in directly from the JAR
+
+Create the Google Desktop app registration described in the
+[Gemini login steps](ai-login.md#4-gemini-register-a-desktop-client-then-sign-in),
+then pass its JSON to `study login --provider gemini --client-json FILE`.
+The JAR opens Google's consent flow and saves the complete renewable credential
+record encrypted. It does not alter Google's ADC cache.
 
 ### Gemini: a worked browser login using Google's CLI
 
-Here the login program is **gcloud**, not the OmicsMatic JAR.
+This is an **optional environment-token alternative** to the encrypted JAR login above.
+Here the login program is **gcloud**.
 Install the [Google Cloud CLI](https://docs.cloud.google.com/sdk/docs/install).
 In [Google Cloud Console](https://console.cloud.google.com/), select your project,
 enable the Generative Language API, configure the consent screen/test user,
@@ -683,18 +688,16 @@ A loopback callback such as `127.0.0.1` returns to the computer running the
 browser. Opening a VM-generated localhost URL on your laptop does not, by
 itself, complete a callback listener on the VM.
 
-For Google's worked example, run the same `gcloud auth application-default login`
-command **on the VM**, adding `--no-browser`. Follow its remote-bootstrap
-instructions on a trusted computer with a browser and current gcloud, then
-return the result to the waiting VM command. The
-[official gcloud instructions](https://docs.cloud.google.com/sdk/gcloud/reference/auth/application-default/login#--browser)
-explain that exchange. Do not replace it by merely clicking a printed URL.
-Capture the access token into the VM's environment and use the Gemini YAML above.
+For OpenAI or Gemini, use [JAR login over an SSH tunnel](ai-login.md#6-a-cloud-vm-without-a-browser).
+Start SSH local forwarding from your laptop, then run `study login` on the VM
+with `--no-browser --port` using the forwarded port. Open its printed URL in the
+laptop browser. The callback reaches the VM through SSH, and the helper uses
+the VM's own persistent host identity.
 
-OpenAI documents a [self-hosted VM sign-in/session procedure](https://developers.openai.com/siwc/token-sharing-open-source/self-hosted-vms).
-It still requires a first-login integration and per-host identity management;
-the current JAR does not provide those steps. Moving an encrypted file alone
-does not implement that full sign-in integration.
+For the optional gcloud workflow, follow
+[Google's remote-bootstrap instructions](https://docs.cloud.google.com/sdk/gcloud/reference/auth/application-default/login#--browser)
+for `gcloud ... --no-browser`. That is separate from OmicsMatic's
+`--no-browser` option, which still needs a loopback callback or SSH tunnel.
 
 For a transferred rotating OAuth session, designate one machine to own refresh.
 Two copies on different machines do not share OmicsMatic's local file lock and

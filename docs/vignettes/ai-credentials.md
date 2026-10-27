@@ -6,8 +6,8 @@ file locally and uses the credential in memory. You do not need to paste your
 API token for every run.
 
 This is a **current source-build feature**. Rebuild the executable before using
-these commands. It adds credential storage and supported renewal, not a bundled
-provider-registration or browser sign-in screen.
+these commands. The [login helper](ai-login.md) also completes OpenAI/Gemini
+first authorization and saves the encrypted result.
 
 **Choose your shell:** use either the **PowerShell (Windows)** or the
 **Bash (Linux/macOS)** version of each example. Keep the same terminal session
@@ -17,26 +17,19 @@ For steps that need review or filled-in YAML, stop at that point before continui
 
 ## Before saving: how do I get the first credential?
 
-**The JAR does not start a provider login.** `study credentials-save` encrypts
-a credential you already have; `study credentials-check` only decrypts and
-checks the saved file locally. Setting `auth: oauth` in study.yaml does not open
-a browser or turn a website login into API access.
+For OpenAI or Gemini, use [`study login`](ai-login.md): it opens the provider's
+browser flow, checks the returned identity and permissions, and saves the result
+encrypted. For Claude/Grok, the same command offers supported API-key setup;
+Claude also accepts organization-configured workload federation.
 
-Start with the [complete first-connection guide](ai-connections.md):
+The lower-level `study credentials-save` commands below **import** credentials
+you already have. They do not start login. `study credentials-check` checks local
+decryption/integrity and makes no provider request. Writing `auth: oauth` in the
+study does not implicitly sign you in.
 
-- [API-key setup on Windows, Linux or macOS](ai-connections.md#on-your-own-computer-a-complete-api-key-setup):
-  create a key in the provider console, save it at the hidden prompt, then
-  reference the file in YAML.
-- [First OAuth login by provider](ai-connections.md#oauth-first-login-by-provider):
-  includes a Google gcloud browser-login example and the current OpenAI
-  first-login integration gap.
-- [Cloud VM and background jobs](ai-connections.md#on-a-cloud-vm-or-another-remote-computer):
-  put credentials on the analysis machine and supply the unlock passphrase to
-  the actual Java process.
-
-The sections below start at **credential import**, after first authorization.
-The passphrase protects the local encrypted file. It is separate from your
-provider-account password and from the provider's tokens.
+The file passphrase is separate from your provider-account password.
+See the [login walkthrough](ai-login.md) for paired PowerShell/Bash commands and
+SSH callbacks, or [AI connections](ai-connections.md) for the study mapping.
 
 ## Supported providers and renewal
 
@@ -178,14 +171,12 @@ renew it. Ordinary deterministic work does not need a credential file.
 
 ## 4. Enable OpenAI OAuth renewal
 
-**Prerequisite: an external first-login integration has already completed
-registration, browser consent and identity/permission validation for this
-application.** The current JAR cannot perform that first login. If you only have
-a ChatGPT account, start with the
-[connection guide's OpenAI explanation](ai-connections.md#openai-a-first-login-integration-is-still-required);
-an API key or manual browser handoff is usable without writing an OAuth helper.
+The normal route is [`study login --provider openai`](ai-login.md#2-openai-run-the-login-command).
+It completes first authorization and writes the encrypted renewable file directly.
 
-Import the validated result from that integration. These values have distinct
+The following is an **advanced manual import** for credentials already issued
+by a legitimate registration/sign-in flow. No separate import is needed after
+the login command. Import the validated result from that integration. These values have distinct
 sources:
 
 | Input | Where the integration gets it |
@@ -244,19 +235,15 @@ Use a model available to the authorized account. See the
 
 ## 5. Enable Gemini OAuth renewal
 
-First complete Google's authorization flow. The
-[worked gcloud login example](ai-connections.md#gemini-a-worked-browser-login-using-googles-cli)
-shows where to register a desktop client and which command opens the browser.
-Its simple environment-token route works without importing a refresh token.
+For direct encrypted setup, follow
+[Gemini first login](ai-login.md#4-gemini-register-a-desktop-client-then-sign-in).
+The helper uses your Desktop client JSON, completes browser consent and saves
+the token set with renewal configuration. It does not import or replace ADC.
 
-For **OmicsMatic-managed renewal**, an OAuth integration must supply the full
-issued credential set: access token, refresh token, the matching client ID,
-actual access-token expiry and any required client secret. The
-[official Gemini OAuth guide](https://ai.google.dev/gemini-api/docs/oauth)
-also illustrates using Google's client library for authorization and token
-management. OmicsMatic does not read Google's ADC cache or import its JSON
-automatically. A downloaded OAuth **client** JSON is registration configuration,
-not an access/refresh token pair.
+The commands below are an **advanced manual import** when an existing
+integration has supplied access/refresh tokens, the matching client ID,
+actual expiry and any required client secret. A downloaded OAuth client JSON is
+registration configuration, not itself an access/refresh token pair.
 
 Once you have the complete issued set, save it:
 

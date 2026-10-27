@@ -114,6 +114,11 @@ final class StudyCredentials {
                             throw new Failure("credential_expired", "Saved credential expired; obtain a replacement or configure the provider-supported renewal flow");
                         }
                     }
+                    if (Boolean.TRUE.equals(stored.get("identity_verified"))) {
+                        try { StudyOAuth.requireScopes(text(stored.get("provider")).equals("openai") ? StudyOAuth.OPENAI : StudyOAuth.GOOGLE,
+                            StudyOAuth.scopeSet(stored.get("scopes"))); }
+                        catch (IOException denied) { throw new Failure("credential_scope_denied", "Saved OAuth grant lacks model-access permissions; reauthorize the account. Rotating credentials were retained"); }
+                    }
                     secrets.addAll(secrets(stored));
                     return new Credential(text(stored.get("access_token")), List.copyOf(secrets), renewed);
                 }
@@ -180,6 +185,7 @@ final class StudyCredentials {
         updated.put("expires_at",clock.instant().plusSeconds(n.longValue()).toString());
         for (String key : List.of("refresh_token","id_token"))
             if (!text(response.get(key)).isBlank()) updated.put(key,response.get(key));
+        if (response.containsKey("scope")) updated.put("scopes", new ArrayList<>(StudyOAuth.scopeSet(response.get("scope"))));
         updated.remove("earliest_refresh_at");
         if (response.containsKey("earliest_refresh_at")) {
             Object raw = response.get("earliest_refresh_at");
@@ -253,7 +259,7 @@ final class StudyCredentials {
     private static String form(Map<String,Object> values) {
         return String.join("&",values.entrySet().stream().map(e -> URLEncoder.encode(e.getKey(),StandardCharsets.UTF_8)+"="+URLEncoder.encode(text(e.getValue()),StandardCharsets.UTF_8)).toList());
     }
-    private static Reply send(URI endpoint, String contentType, String body) throws IOException, InterruptedException {
+    static Reply send(URI endpoint, String contentType, String body) throws IOException, InterruptedException {
         var client = HttpClient.newBuilder().connectTimeout(Duration.ofSeconds(15)).followRedirects(HttpClient.Redirect.NEVER).build();
         var request = HttpRequest.newBuilder(endpoint).timeout(Duration.ofSeconds(30)).header("Content-Type",contentType)
             .POST(HttpRequest.BodyPublishers.ofString(body,StandardCharsets.UTF_8)).build();
