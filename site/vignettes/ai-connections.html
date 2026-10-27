@@ -1,61 +1,120 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Complete study.yaml connection examples, environment credentials, purpose controls and troubleshooting."><title>Connect an AI advisor: browser, API key or OAuth token · OmicsMatic</title>
+<meta name="description" content="First login explained, provider setup, encrypted credentials and step-by-step Windows, Linux, macOS and cloud examples."><title>Connect an AI advisor: browser, API key or OAuth token · OmicsMatic</title>
 <link rel="stylesheet" href="../assets/styles.css"><script src="../assets/app.js" defer></script><style>.study-guide .result-table table{min-width:540px;table-layout:fixed}.study-guide .result-table th,.study-guide .result-table td{white-space:normal;overflow-wrap:anywhere}</style></head>
 <body><site-header root="../"></site-header><main id="main">
 <section class="page-hero"><div class="container"><div class="breadcrumbs"><a href="../index.html">Home</a><span>/</span><a href="../vignettes/index.html">Vignettes</a><span>/</span><span>Connect an AI advisor: browser, API key or OAuth token</span></div>
-<span class="eyebrow">AI setup · Current source build</span><h1>Connect an AI advisor: browser, API key or OAuth token</h1><p>Complete study.yaml connection examples, environment credentials, purpose controls and troubleshooting.</p></div></section>
+<span class="eyebrow">AI setup · Current source build</span><h1>Connect an AI advisor: browser, API key or OAuth token</h1><p>First login explained, provider setup, encrypted credentials and step-by-step Windows, Linux, macOS and cloud examples.</p></div></section>
 <div class="container page-layout"><article class="prose study-guide"><p>Use this page after <a href="study-getting-started.html">preparing your study</a>.
 These settings configure OmicsMatic's built-in advisor. An
 <a href="ai-driver.html">external driver</a> has its own application, login and tool permissions.</p>
-<p><strong>Save credentials once:</strong> the current source build supports
-<a href="ai-credentials.html">password-encrypted files and automatic renewal</a>, including
-OpenAI OAuth, Google OAuth and Claude federation. That guide also covers
-Claude and Grok API keys. The environment-variable alternatives remain below.</p>
-<p>Choose one transport below. Before resolving a new project, merge its YAML into
+<h2 id="will-the-jar-start-an-oauth-login">Will the JAR start an OAuth login?</h2>
+<p><strong>No. In the current source build, running the JAR does not open a browser,
+display a device code, register an OAuth app or request your consent.</strong>
+Writing <code>auth: oauth</code> in <code>study.yaml</code> selects how an existing credential is used;
+it does not start a login.</p>
+<p>OmicsMatic currently handles two later steps:
+<a href="ai-credentials.html">password-encrypted credential storage and supported renewal</a>.
+<code>study credentials-save</code> asks for credentials you already obtained and encrypts
+them. It does not contact a provider to obtain them. A browser already signed
+into ChatGPT, Claude, Grok or Gemini does not automatically authorize Java.</p>
+<p>This behavior is the same on Windows, Linux, macOS and a cloud VM.
+A cloud VM means a computer you control remotely; it does not add a hosted
+OmicsMatic sign-in service. Your browser can be on your laptop while the JAR runs
+elsewhere, but the running JAR still needs its own credential.</p>
+<div class="result-table"><table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Who performs it today?</th>
+<th>What you see</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>First login / authorization</td>
+<td>You create an API key in the provider console, or separate OAuth tooling completes registration and consent.</td>
+<td>The provider's website, or that tooling's login instructions.</td>
+</tr>
+<tr>
+<td>Save the credential</td>
+<td>OmicsMatic's <code>study credentials-save</code>.</td>
+<td>Hidden passphrase and token prompts; a new encrypted file.</td>
+</tr>
+<tr>
+<td>Use the credential</td>
+<td>An enabled, policy-permitted advisor operation in <code>study run</code>.</td>
+<td>A passphrase prompt if needed, then an API request.</td>
+</tr>
+<tr>
+<td>Renew OAuth access</td>
+<td>OmicsMatic, for the supported encrypted provider profiles.</td>
+<td>Usually no browser; a saved refresh credential or workload identity obtains a replacement. Revoked consent still requires reauthorization elsewhere.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Use a <strong>current source build</strong> for encrypted credentials. The executable remains
+named <code>omicsmatic-0.3.7.jar</code>; the previously published binary with that name does
+not necessarily include the newer commands. See
+<a href="https://github.com/robbyjo/OmicsMatic/blob/main/docs/runtime-requirements.md">build and runtime requirements</a>.</p>
+<p>Choose one connection below. Before resolving a new project, merge its YAML into
 your existing <code>study.yaml</code>. For an existing project, use an approved amendment.
-Do not replace your datasets or create duplicate top-level keys.</p>
+Keep your datasets and use a single top-level <code>assistance</code> mapping.</p>
 <h2 id="choose-a-connection">Choose a connection</h2>
 <div class="result-table"><table>
 <thead>
 <tr>
 <th>Connection</th>
-<th>What you need</th>
-<th>How an exchange happens</th>
+<th>First setup</th>
+<th>What OmicsMatic does</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>Browser handoff</td>
-<td>Access to your chosen AI website</td>
-<td>OmicsMatic prepares a local packet; you review and manually submit its exact prompt, then import the response.</td>
+<td>Sign into your chosen AI website yourself.</td>
+<td>Prepares a local packet for you to review, submit and import. No API credential is required.</td>
 </tr>
 <tr>
-<td>OpenAI API</td>
-<td>An approved API model and API credential</td>
-<td>OmicsMatic calls the Responses API.</td>
+<td>OpenAI API key</td>
+<td>Create a key in the OpenAI API platform.</td>
+<td>Calls Responses using the saved key.</td>
 </tr>
 <tr>
-<td>Gemini API</td>
-<td>An approved API model and API credential</td>
-<td>OmicsMatic calls GenerateContent.</td>
+<td>Gemini API key</td>
+<td>Create a Gemini API key in Google AI Studio.</td>
+<td>Calls GenerateContent using the saved key.</td>
 </tr>
 <tr>
-<td>OpenAI-compatible API with key</td>
-<td>A documented compatible HTTPS endpoint, model and key</td>
-<td>OmicsMatic calls non-streaming Chat Completions. Compatibility must include the required response format.</td>
+<td>Claude API key</td>
+<td>Create a workspace-scoped key in the Claude Console.</td>
+<td>Calls Messages using the saved key.</td>
 </tr>
 <tr>
-<td>OpenAI-compatible API with OAuth access token</td>
-<td>The same API plus an already issued access token accepted by that endpoint</td>
-<td>OmicsMatic sends the token as a bearer credential. Environment-token mode does not perform login or refresh; encrypted provider profiles can renew supported credentials.</td>
+<td>Grok API key</td>
+<td>Create a key in the xAI API console.</td>
+<td>Calls Chat Completions using the saved key.</td>
+</tr>
+<tr>
+<td>OpenAI or Gemini OAuth</td>
+<td>Separate tooling completes the provider's first login. See <a href="#oauth-first-login-by-provider">provider-specific instructions</a>.</td>
+<td>Uses the access token; a supported encrypted profile can renew it.</td>
+</tr>
+<tr>
+<td>Claude federation</td>
+<td>An administrator configures workload identity and a rotating identity-token file.</td>
+<td>Exchanges the workload identity for API access. This is not a personal Claude browser login.</td>
+</tr>
+<tr>
+<td>Compatible gateway</td>
+<td>Obtain its endpoint, model and API key or OAuth instructions from the gateway operator.</td>
+<td>Calls the configured compatible API. Gateway-specific OAuth renewal is not implemented.</td>
 </tr>
 </tbody>
 </table></div>
-<p>API access and browser sign-in are separate arrangements. Do not assume that a
-consumer chat subscription grants the API access your endpoint requires.
-An API connection can incur charges. Use an approved model identifier from your
-provider; <code>APPROVED_MODEL_ID</code> below is a placeholder, not a model name.</p>
+<p>An API connection can incur charges. A browser subscription and API access are
+separate arrangements; use the provider's documented route for your account.
+<code>APPROVED_MODEL_ID</code> below is a placeholder for a model your account can use.</p>
 <h2 id="first-set-the-disclosure-policy">First set the disclosure policy</h2>
 <p>For remote aggregate assistance, merge this into the existing project:</p>
 <div class="code-window"><div class="code-bar"><span>yaml</span></div><pre><code>project:
@@ -75,6 +134,120 @@ disclose. <code>deny_all</code> blocks remote requests even when a key is presen
 Policies requiring extra per-request checks that the adapter cannot enforce
 remain blocking. A separate agent or a manual upload is outside this adapter's
 control. See the <a href="study-yaml-reference.html#reference-resources-and-network-policy">data-policy field guide</a>.</p>
+<h2 id="on-your-own-computer-a-complete-api-key-setup">On your own computer: a complete API-key setup</h2>
+<p>This route works today without an OAuth client or login helper. The OpenAI
+example also shows where the key, encrypted file and YAML belong.</p>
+<h3 id="1-create-the-key-in-your-browser">1. Create the key in your browser</h3>
+<p>Choose the provider you intend to use:</p>
+<div class="result-table"><table>
+<thead>
+<tr>
+<th>Provider</th>
+<th>Where to go</th>
+<th>What to do</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OpenAI</td>
+<td><a href="https://platform.openai.com/api-keys">API platform keys</a></td>
+<td>Sign in, choose the intended project and create a secret API key. See the <a href="https://developers.openai.com/api/docs/quickstart">official quickstart</a>.</td>
+</tr>
+<tr>
+<td>Gemini</td>
+<td><a href="https://aistudio.google.com/api-keys">Google AI Studio keys</a></td>
+<td>Select/create the intended project and create a Gemini API key. See <a href="https://ai.google.dev/gemini-api/docs/api-key">Google's key guide</a>.</td>
+</tr>
+<tr>
+<td>Claude</td>
+<td><a href="https://platform.claude.com/">Claude Console</a></td>
+<td>Select the intended workspace, open API keys and create a workspace-scoped key. See <a href="https://platform.claude.com/docs/en/api/overview">API prerequisites</a>.</td>
+</tr>
+<tr>
+<td>Grok</td>
+<td><a href="https://console.x.ai/">xAI API console</a></td>
+<td>Choose your team/project and create an API key. See the <a href="https://docs.x.ai/developers/quickstart">official quickstart</a>.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Use the institution-approved account/project and its API access arrangements.
+Keep the generated key ready for the hidden prompt below. Do not put it into
+<code>study.yaml</code> or a shell command.</p>
+<h3 id="2-build-the-jar-and-save-the-key">2. Build the JAR and save the key</h3>
+<p>From an existing source checkout with JDK 17 or newer, choose your operating system.
+These commands build the application and define the JAR and credential paths.</p>
+<p><strong>Windows, PowerShell:</strong></p>
+<div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>.\gradlew.bat executableJar --no-daemon --no-parallel
+$jar = (Resolve-Path &quot;build/cli/omicsmatic-0.3.7.jar&quot;).Path
+$vault = Join-Path $env:USERPROFILE &quot;.omicsmatic/credentials/openai.credentials.json&quot;
+java -jar $jar study credentials-save --provider openai --auth api_key --out $vault
+java -jar $jar study credentials-check --file $vault
+</code></pre></div>
+<p><strong>Linux or macOS, Bash:</strong></p>
+<div class="code-window"><div class="code-bar"><span>bash</span></div><pre><code>bash ./gradlew executableJar --no-daemon --no-parallel
+jar=&quot;$PWD/build/cli/omicsmatic-0.3.7.jar&quot;
+vault=&quot;$HOME/.omicsmatic/credentials/openai.credentials.json&quot;
+java -jar &quot;$jar&quot; study credentials-save --provider openai --auth api_key --out &quot;$vault&quot;
+java -jar &quot;$jar&quot; study credentials-check --file &quot;$vault&quot;
+</code></pre></div>
+<p>Run in an ordinary interactive terminal. At <code>credentials-save</code> you will see:</p>
+<div class="code-window"><div class="code-bar"><span>text</span></div><pre><code>Unlock credential file openai.credentials.json:
+Confirm credential-file passphrase:
+API key or OAuth access token:
+Saved password-encrypted credential file: ...
+</code></pre></div>
+<p>Type a strong passphrase of at least 12 characters, repeat it, then paste the API
+key. Input is hidden. The command creates the parent directory and a new file;
+it refuses to replace an existing file. For another provider, change <code>openai</code> to
+<code>gemini</code>, <code>anthropic</code> or <code>xai</code> and choose a separate credential filename.</p>
+<p><code>credentials-check</code> asks for the passphrase again. Success means the file decrypts
+and passes its integrity checks. <strong>It does not contact the provider or prove
+model access.</strong> Neither command displays your secret.</p>
+<h3 id="3-point-studyyaml-to-that-file">3. Point study.yaml to that file</h3>
+<p>In your study's existing <code>assistance</code> mapping, use this OpenAI example and replace
+the path and model:</p>
+<div class="code-window"><div class="code-bar"><span>yaml</span></div><pre><code>assistance:
+  enabled: true
+  provider: openai
+  model: APPROVED_MODEL_ID
+  auth: api_key
+  credential_file: C:/Users/YOUR_ACCOUNT/.omicsmatic/credentials/openai.credentials.json
+  next_steps: true
+  literature: false
+  impact: false
+  manuscript: false
+</code></pre></div>
+<p>Typical Linux path:</p>
+<div class="code-window"><div class="code-bar"><span>text</span></div><pre><code>/home/YOUR_ACCOUNT/.omicsmatic/credentials/openai.credentials.json
+</code></pre></div>
+<p>Typical macOS path:</p>
+<div class="code-window"><div class="code-bar"><span>text</span></div><pre><code>/Users/YOUR_ACCOUNT/.omicsmatic/credentials/openai.credentials.json
+</code></pre></div>
+<p>Use the actual absolute path on the computer running Java. YAML does not expand
+<code>$HOME</code>, <code>$vault</code> or <code>~</code>. Omit <code>api_key_env</code> and <code>oauth_token_env</code> when using a file.</p>
+<p>For Claude, Grok or Gemini, change both the YAML provider and the credential file
+to match the record you saved. Use that provider's model identifier.
+Keep the <a href="#first-set-the-disclosure-policy">disclosure policy</a> configured above.</p>
+<h3 id="4-review-the-study-and-run-it">4. Review the study and run it</h3>
+<p>Navigate to your study directory, retaining the absolute JAR path defined above.
+For a <strong>new, unresolved</strong> project in PowerShell:</p>
+<div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>java -jar $jar study validate study.yaml --check-files
+java -jar $jar study resolve study.yaml --project . --actor-id scientist-1
+java -jar $jar study plan --project . --actor-id scientist-1
+</code></pre></div>
+<p>Review <code>resolved-study.yaml</code> and <code>plans/&lt;plan-id&gt;/analysis-plan.yaml</code>.
+When the plan is acceptable:</p>
+<div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>java -jar $jar study approve --project . --approved-by scientist-1
+java -jar $jar study run --project . --actor-id scientist-1
+java -jar $jar study status --project .
+</code></pre></div>
+<p>In Bash use <code>"$jar"</code> in place of <code>$jar</code>. For an already resolved study, follow the
+<a href="ai-no-ai.html#add-an-analysis-later">amendment procedure</a> rather than resolving over it.</p>
+<p>The enabled advisor operation unlocks the file when it needs a credential.
+Enter the <strong>file passphrase</strong>, not your provider-account password. With an
+unexpired API key, no browser opens. This run can make a real billable request.
+An offline run cannot verify the connection. Inspect status and the operation's
+<code>llm/</code> artifacts afterward; scientific prerequisites can delay the advisor.</p>
 <h2 id="browser-handoff-no-api-key-required">Browser handoff: no API key required</h2>
 <p>Add this at the top level:</p>
 <div class="code-window"><div class="code-bar"><span>yaml</span></div><pre><code>assistance:
@@ -170,9 +343,168 @@ the exact endpoint, model ID and credential procedure. Replace the example URL:<
 credentials, query string or fragment. Redirects are disabled.
 This adapter requests a non-streaming response; a service requiring a different
 protocol or a streaming-only endpoint is not interchangeable.</p>
+<h2 id="oauth-understand-the-first-login">OAuth: understand the first login</h2>
+<p>OAuth has two different activities. <strong>First authorization</strong> opens the provider's
+login page and asks which account and permissions to allow. <strong>Renewal</strong> uses
+permission already granted to obtain another short-lived access token.
+Automatic renewal does not implement the first activity.</p>
+<p>These terms explain what a login tool or administrator supplies:</p>
+<div class="result-table"><table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Plain-language meaning</th>
+<th>Where it belongs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Access token</td>
+<td>A temporary credential accepted by the model API.</td>
+<td>An encrypted record, or the environment variable named by <code>oauth_token_env</code>.</td>
+</tr>
+<tr>
+<td>Refresh token</td>
+<td>A credential used to obtain another access token. It is not the token sent to the model.</td>
+<td>A supported encrypted renewal record.</td>
+</tr>
+<tr>
+<td>Client ID</td>
+<td>Identifies the app registration to which consent was given. It is not your email or model ID.</td>
+<td><code>--client-id</code> when importing a supported renewal record.</td>
+</tr>
+<tr>
+<td>Client secret</td>
+<td>A registration credential required by some Google OAuth clients.</td>
+<td>The named secret input to <code>--client-secret-env</code>; it is encrypted with the record.</td>
+</tr>
+<tr>
+<td>Audience / resource</td>
+<td>Which API the access token is intended for. A token for another service can be rejected.</td>
+<td>Chosen by the login flow, not invented in study.yaml.</td>
+</tr>
+<tr>
+<td>Scopes</td>
+<td>The permissions the user grants to the app. Login alone need not authorize model inference or renewal.</td>
+<td>Requested and verified during authorization.</td>
+</tr>
+<tr>
+<td>ID token</td>
+<td>Evidence of the account's identity.</td>
+<td>Validated by the sign-in implementation; it is not the model API credential.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Your provider-account password is entered only on the provider's login page.
+Your encrypted-file passphrase unlocks OmicsMatic's local file.
+Neither belongs in <code>study.yaml</code>.</p>
+<h2 id="oauth-first-login-by-provider">OAuth first login by provider</h2>
+<h3 id="openai-a-first-login-integration-is-still-required">OpenAI: a first-login integration is still required</h3>
+<p><strong>There is currently no OmicsMatic command you can run to start Sign in with
+ChatGPT.</strong> If you have only a ChatGPT account and a study.yaml, you cannot complete
+this route using the JAR alone. Use the API-key or browser-handoff walkthrough
+today, or have an integrator supply a legitimate first-login implementation.</p>
+<p>For that integrator, OpenAI's
+<a href="https://developers.openai.com/siwc/token-sharing-open-source/sign-in">registration and sign-in procedure</a>
+requires a stable host ID, a loopback callback, state/nonce checks and PKCE.
+The browser performs registration and consent; the helper exchanges the returned
+code and validates identity and granted permissions. The issued client ID,
+access token, refresh token and expiry then feed
+<a href="ai-credentials.html#4-enable-openai-oauth-renewal">OmicsMatic's encrypted renewal import</a>.</p>
+<p>The expected user experience is: run a separate helper, choose the ChatGPT
+account/workspace in your browser, grant access, return to the helper, then save
+the issued credentials. OmicsMatic does not currently provide that helper.
+Do not copy Codex credentials, browser cookies or another application's tokens.</p>
+<h3 id="gemini-a-worked-browser-login-using-googles-cli">Gemini: a worked browser login using Google's CLI</h3>
+<p>Here the login program is <strong>gcloud</strong>, not the OmicsMatic JAR.
+Install the <a href="https://docs.cloud.google.com/sdk/docs/install">Google Cloud CLI</a>.
+In <a href="https://console.cloud.google.com/">Google Cloud Console</a>, select your project,
+enable the Generative Language API, configure the consent screen/test user,
+and create a <strong>Desktop app</strong> OAuth client under Google Auth platform &gt; Clients.
+Download its client JSON outside your study. Google's
+<a href="https://ai.google.dev/gemini-api/docs/oauth">Gemini OAuth quickstart</a>
+describes those screens.</p>
+<p>This example uses Application Default Credentials (ADC). It writes Google's own
+local credential cache, which is separate from OmicsMatic's encrypted file.
+<strong>The login command replaces any existing ADC for this environment.</strong>
+Use an appropriate development environment if other applications depend on it.
+See the <a href="https://docs.cloud.google.com/sdk/gcloud/reference/auth/application-default/login">gcloud command reference</a>.</p>
+<p>From your local terminal, substitute the downloaded file's absolute path:</p>
+<div class="code-window"><div class="code-bar"><span>text</span></div><pre><code>gcloud auth application-default login --client-id-file=&quot;ABSOLUTE_PATH_TO_CLIENT_JSON&quot; --scopes=&quot;https://www.googleapis.com/auth/cloud-platform,https://www.googleapis.com/auth/generative-language.retriever&quot;
+</code></pre></div>
+<p>Your browser opens Google's account/consent screens. Choose your configured user
+and review the permissions. Return to the terminal when authorization finishes.
+The scopes above follow Google's quickstart; your organization may require a
+different approved registration. A successful login alone does not establish
+that your account/model/quota configuration will accept an inference request.</p>
+<p>For a short interactive trial, obtain an access token directly into the
+environment without printing it.</p>
+<p><strong>Windows, PowerShell:</strong></p>
+<div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>$env:RESEARCH_AI_ACCESS_TOKEN = gcloud auth application-default print-access-token
+if ($LASTEXITCODE -ne 0 -or [string]::IsNullOrWhiteSpace($env:RESEARCH_AI_ACCESS_TOKEN)) {
+    Remove-Item Env:RESEARCH_AI_ACCESS_TOKEN -ErrorAction SilentlyContinue
+    throw &quot;Google did not return an access token.&quot;
+}
+</code></pre></div>
+<p><strong>Linux or macOS, Bash:</strong></p>
+<div class="code-window"><div class="code-bar"><span>bash</span></div><pre><code>RESEARCH_AI_ACCESS_TOKEN=&quot;$(gcloud auth application-default print-access-token)&quot; || exit 1
+test -n &quot;$RESEARCH_AI_ACCESS_TOKEN&quot; || exit 1
+export RESEARCH_AI_ACCESS_TOKEN
+</code></pre></div>
+<p>Use this mapping in place of the API-key/file mapping:</p>
+<div class="code-window"><div class="code-bar"><span>yaml</span></div><pre><code>assistance:
+  enabled: true
+  provider: gemini
+  model: APPROVED_MODEL_ID
+  auth: oauth
+  oauth_token_env: RESEARCH_AI_ACCESS_TOKEN
+  next_steps: true
+  literature: false
+  impact: false
+  manuscript: false
+</code></pre></div>
+<p>Review/resolve/approve as above, then run Java from that same terminal.
+When the access token expires, repeat the token-capture command before another
+run. OmicsMatic does not read Google's ADC cache and does not refresh an
+environment token. Remove the session variable afterward with
+<code>Remove-Item Env:RESEARCH_AI_ACCESS_TOKEN</code> in PowerShell or
+<code>unset RESEARCH_AI_ACCESS_TOKEN</code> in Bash. This does not remove or revoke Google's
+separate ADC credentials.</p>
+<p>For OmicsMatic-managed renewal, the
+<a href="ai-credentials.html#5-enable-gemini-oauth-renewal">encrypted Google profile</a>
+also needs the issued refresh token, client ID, actual expiry and any required
+client secret. <code>gcloud ... print-access-token</code> supplies only the access token;
+it does not supply that complete import. Have the OAuth integration securely
+supply those fields rather than dumping a credential cache to the terminal.</p>
+<p>The current Gemini adapter targets the Generative Language API, not Vertex AI.
+It does not send a configurable <code>x-goog-user-project</code> quota header. If your
+Google configuration requires one, this adapter cannot satisfy it; use a
+supported API-key route or an approved compatible gateway.</p>
+<h3 id="claude-federation-is-an-administrator-setup">Claude: federation is an administrator setup</h3>
+<p>For a personal computer, the currently documented direct route is a Claude API
+key. OmicsMatic does not offer a personal Claude browser-login command.</p>
+<p>For workload identity, an organization administrator opens Claude Console &gt;
+Workload identity &gt; Connect workload, configures the identity provider and
+creates the issuer, service account and federation rule. The workload platform
+must supply a fresh identity JWT to a protected file. Collect the rule,
+organization, service-account and workspace IDs, then follow
+<a href="ai-credentials.html#6-enable-claude-workload-renewal">the encrypted Claude setup</a>.
+OmicsMatic exchanges that identity for API access and later repeats the exchange;
+it does not configure the organization or rotate the upstream JWT itself.
+See the <a href="https://platform.claude.com/docs/en/manage-claude/workload-identity-federation">official federation walkthrough</a>.</p>
+<h3 id="grok-use-an-api-key">Grok: use an API key</h3>
+<p>The xAI adapter supports API-key authentication. There is no Grok OAuth login or
+renewal route in OmicsMatic. Create a key in the xAI console and use the
+<a href="#on-your-own-computer-a-complete-api-key-setup">encrypted API-key walkthrough</a>.</p>
 <h2 id="oauth-use-an-already-issued-api-access-token">OAuth: use an already issued API access token</h2>
-<p>Use this only when the gateway officially accepts an OAuth access token for
-the declared model API:</p>
+<p>For an institutional compatible gateway, the operator must supply these concrete
+items: the model API endpoint, model ID, login command or application, required
+resource/audience and scopes, and a way to obtain an <strong>API access token</strong>.
+There is no universal login command that works for every gateway.
+Ask for a tested example for that gateway; a link to its ordinary chat website
+is insufficient.</p>
+<p>Use this mapping only if the gateway officially accepts bearer OAuth tokens
+on its compatible Chat Completions endpoint:</p>
 <div class="code-window"><div class="code-bar"><span>yaml</span></div><pre><code>assistance:
   enabled: true
   provider: openai_compatible
@@ -185,30 +517,114 @@ the declared model API:</p>
   impact: false
   manuscript: false
 </code></pre></div>
-<ol>
-<li>Obtain access through your institution's or provider's approved login tooling.
-   The token needs the audience and scopes required by that API.</li>
-<li>Put the <strong>access token</strong> in the terminal environment; do not use an ID token,
-   refresh token, browser cookie or unrelated application's saved credential.</li>
-<li>Validate the contract, review and approve the plan, then run Java in that
-   environment. Renew expired tokens using the issuer's tooling.</li>
-</ol>
-<p>For PowerShell 7:</p>
-<div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>$env:RESEARCH_AI_ACCESS_TOKEN = Read-Host &quot;Paste the approved API access token&quot; -MaskInput
+<p>After completing the gateway's login procedure, put its issued access token in
+the named variable. For PowerShell 7:</p>
+<div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>$env:RESEARCH_AI_ACCESS_TOKEN = Read-Host &quot;Paste the gateway API access token&quot; -MaskInput
 java -jar $jar study run --project . --actor-id scientist-1
 Remove-Item Env:RESEARCH_AI_ACCESS_TOKEN
 </code></pre></div>
-<p>OmicsMatic does not register an OAuth application, open a device login or
-request consent. Tokens supplied only through environment variables are not
-renewed. For persistent credentials, use the <a href="ai-credentials.html">encrypted-file workflow</a>.
-OAuth is supported for OpenAI, Gemini, Claude's federated API route and an
-authorized compatible gateway; Grok uses API keys.
-Choose credential_file or the appropriate token variable, not both.</p>
-<p>A ChatGPT or Codex sign-in is not an access token to copy into this mapping.
-If your workflow uses an external signed-in agent, configure it in that client
-and follow the <a href="ai-driver.html#connect-the-external-driver">driver guide</a>.
-The <a href="bioinformatics-evidence.html#optional-api-key-and-oauth-access-token-connections">advanced connection notes</a>
-explain the distinction from separately registered sign-in integrations.</p>
+<p>The study must already be reviewed and approved. Environment-token mode does not
+refresh tokens; renew them through the issuer's tooling. An
+<a href="ai-credentials.html">encrypted gateway profile</a> can save the token and check its
+declared expiry, but it also does not add gateway-specific renewal.</p>
+<p>For an external signed-in agent, configure login in that application and follow
+the <a href="ai-driver.html#connect-the-external-driver">driver guide</a>.
+That login does not populate OmicsMatic's built-in advisor credential.</p>
+<h2 id="on-a-cloud-vm-or-another-remote-computer">On a cloud VM or another remote computer</h2>
+<h3 id="interactive-run-put-the-credential-where-java-runs">Interactive run: put the credential where Java runs</h3>
+<p>A browser on your laptop and a JAR on a Linux VM are two separate processes on
+two computers. Laptop environment variables and file paths do not appear on the
+VM. Use a credential authorized for that environment.</p>
+<p>For an <strong>API key</strong>, you can save the encrypted file directly in an SSH terminal
+with <code>ssh -t</code> and <code>credentials-save</code>, or securely transfer the encrypted file
+created above. The following transfer example assumes a Linux VM with OpenSSH
+and an existing study. Replace <code>researcher@vm.example.org</code> with your SSH destination.
+Choose a new destination filename if one already exists.</p>
+<p>From your laptop, with <code>vault</code> still set to your encrypted API-key file:</p>
+<div class="code-window"><div class="code-bar"><span>text</span></div><pre><code>ssh researcher@vm.example.org 'install -d -m 700 &quot;$HOME/.omicsmatic/credentials&quot;'
+scp &quot;$vault&quot; researcher@vm.example.org:.omicsmatic/credentials/openai.credentials.json
+</code></pre></div>
+<p>These commands work in PowerShell or Bash with the corresponding <code>vault</code> variable.
+Send the encrypted file through SSH; keep its passphrase separate. On the Linux VM:</p>
+<div class="code-window"><div class="code-bar"><span>bash</span></div><pre><code>chmod 600 &quot;$HOME/.omicsmatic/credentials/openai.credentials.json&quot;
+jar=&quot;$HOME/OmicsMatic/build/cli/omicsmatic-0.3.7.jar&quot;
+java -jar &quot;$jar&quot; study credentials-check --file &quot;$HOME/.omicsmatic/credentials/openai.credentials.json&quot;
+</code></pre></div>
+<p>Set <code>jar</code> to the actual executable location. Checking the file asks for its
+passphrase on the VM. In the VM's study.yaml use the <strong>VM path</strong>, for example:</p>
+<div class="code-window"><div class="code-bar"><span>yaml</span></div><pre><code>assistance:
+  enabled: true
+  provider: openai
+  model: APPROVED_MODEL_ID
+  auth: api_key
+  credential_file: /home/researcher/.omicsmatic/credentials/openai.credentials.json
+  next_steps: true
+  literature: false
+  impact: false
+  manuscript: false
+</code></pre></div>
+<p>Keep the disclosure policy and approval steps. Run from the VM's study directory:</p>
+<div class="code-window"><div class="code-bar"><span>bash</span></div><pre><code>java -jar &quot;$jar&quot; study run --project . --actor-id scientist-1
+</code></pre></div>
+<p>The VM needs outbound HTTPS access to the configured provider. Scientific data
+and deterministic execution stay on the analysis machine; the enabled remote
+advisor receives only the policy-permitted preview described above.</p>
+<h3 id="oauth-on-a-machine-without-a-browser">OAuth on a machine without a browser</h3>
+<p>A loopback callback such as <code>127.0.0.1</code> returns to the computer running the
+browser. Opening a VM-generated localhost URL on your laptop does not, by
+itself, complete a callback listener on the VM.</p>
+<p>For Google's worked example, run the same <code>gcloud auth application-default login</code>
+command <strong>on the VM</strong>, adding <code>--no-browser</code>. Follow its remote-bootstrap
+instructions on a trusted computer with a browser and current gcloud, then
+return the result to the waiting VM command. The
+<a href="https://docs.cloud.google.com/sdk/gcloud/reference/auth/application-default/login#--browser">official gcloud instructions</a>
+explain that exchange. Do not replace it by merely clicking a printed URL.
+Capture the access token into the VM's environment and use the Gemini YAML above.</p>
+<p>OpenAI documents a <a href="https://developers.openai.com/siwc/token-sharing-open-source/self-hosted-vms">self-hosted VM sign-in/session procedure</a>.
+It still requires a first-login integration and per-host identity management;
+the current JAR does not provide those steps. Moving an encrypted file alone
+does not implement that full sign-in integration.</p>
+<p>For a transferred rotating OAuth session, designate one machine to own refresh.
+Two copies on different machines do not share OmicsMatic's local file lock and
+can invalidate each other's refresh tokens. Prefer separately authorized
+credentials where the provider supports them.</p>
+<h3 id="batch-job-container-or-scheduler-supply-the-unlock-secret">Batch job, container or scheduler: supply the unlock secret</h3>
+<p>A background job cannot answer a terminal prompt. Make the encrypted file
+available at a private, writable path outside the study, and configure:</p>
+<div class="code-window"><div class="code-bar"><span>yaml</span></div><pre><code>assistance:
+  enabled: true
+  provider: openai
+  model: APPROVED_MODEL_ID
+  auth: api_key
+  credential_file: /home/researcher/.omicsmatic/credentials/openai.credentials.json
+  credential_password_env: OMICSMATIC_CREDENTIAL_PASSWORD
+  next_steps: true
+  literature: false
+  impact: false
+  manuscript: false
+</code></pre></div>
+<p>Configure your scheduler/cloud secret manager to inject the passphrase into the
+Java process as <code>OMICSMATIC_CREDENTIAL_PASSWORD</code>. YAML stores only that variable's
+name. An encrypted renewable OAuth profile needs a writable parent directory
+for its lock and atomic replacement; a read-only secret mount is unsuitable for
+that profile. Container paths must match the paths visible inside the container.</p>
+<p>For an interactive preparation session, you can set the variable without
+displaying the passphrase. In PowerShell 7:</p>
+<div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>$env:OMICSMATIC_CREDENTIAL_PASSWORD = Read-Host &quot;Credential-file passphrase&quot; -MaskInput
+java -jar $jar study run --project . --actor-id scientist-1
+Remove-Item Env:OMICSMATIC_CREDENTIAL_PASSWORD
+</code></pre></div>
+<p>Or in Bash:</p>
+<div class="code-window"><div class="code-bar"><span>bash</span></div><pre><code>read -r -s -p &quot;Credential-file passphrase: &quot; OMICSMATIC_CREDENTIAL_PASSWORD
+printf '\n'
+export OMICSMATIC_CREDENTIAL_PASSWORD
+java -jar &quot;$jar&quot; study run --project . --actor-id scientist-1
+unset OMICSMATIC_CREDENTIAL_PASSWORD
+</code></pre></div>
+<p>A scheduler may discard the submitting terminal's environment. Configure the
+job's actual environment; setting a laptop variable is insufficient.
+The provider credential must still be valid, and the study must still be approved.
+Starting a batch job never opens an OAuth consent screen.</p>
 <h2 id="turn-on-only-the-assistance-you-want">Turn on only the assistance you want</h2>
 <div class="result-table"><table>
 <thead>
@@ -303,5 +719,5 @@ rehearse the <a href="ai-advisor.html">browser advisor</a>.</p>
   </div>
 </section>
 <!-- SCIENTIFIC-CITATIONS:END --></article>
-<aside class="toc"><strong>On this page</strong><a href="#choose-a-connection">Choose a connection</a><a href="#first-set-the-disclosure-policy">First set the disclosure policy</a><a href="#browser-handoff-no-api-key-required">Browser handoff: no API key required</a><a href="#openai-with-an-api-key">OpenAI with an API key</a><a href="#gemini-with-an-api-key">Gemini with an API key</a><a href="#an-openai-compatible-api-with-a-key">An OpenAI-compatible API with a key</a><a href="#oauth-use-an-already-issued-api-access-token">OAuth: use an already issued API access token</a><a href="#turn-on-only-the-assistance-you-want">Turn on only the assistance you want</a><a href="#diagnose-a-connection-without-guessing">Diagnose a connection without guessing</a><a href="#scientific-citations-ai-connections">Scientific citations</a></aside></div>
+<aside class="toc"><strong>On this page</strong><a href="#will-the-jar-start-an-oauth-login">Will the JAR start an OAuth login?</a><a href="#choose-a-connection">Choose a connection</a><a href="#first-set-the-disclosure-policy">First set the disclosure policy</a><a href="#on-your-own-computer-a-complete-api-key-setup">On your own computer: a complete API-key setup</a><a href="#browser-handoff-no-api-key-required">Browser handoff: no API key required</a><a href="#openai-with-an-api-key">OpenAI with an API key</a><a href="#gemini-with-an-api-key">Gemini with an API key</a><a href="#an-openai-compatible-api-with-a-key">An OpenAI-compatible API with a key</a><a href="#oauth-understand-the-first-login">OAuth: understand the first login</a><a href="#oauth-first-login-by-provider">OAuth first login by provider</a><a href="#oauth-use-an-already-issued-api-access-token">OAuth: use an already issued API access token</a><a href="#on-a-cloud-vm-or-another-remote-computer">On a cloud VM or another remote computer</a><a href="#turn-on-only-the-assistance-you-want">Turn on only the assistance you want</a><a href="#diagnose-a-connection-without-guessing">Diagnose a connection without guessing</a><a href="#scientific-citations-ai-connections">Scientific citations</a></aside></div>
 </main><site-footer root="../"></site-footer></body></html>

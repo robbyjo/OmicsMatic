@@ -9,6 +9,29 @@ This is a **current source-build feature**. Rebuild the executable before using
 these commands. It adds credential storage and supported renewal, not a bundled
 provider-registration or browser sign-in screen.
 
+## Before saving: how do I get the first credential?
+
+**The JAR does not start a provider login.** `study credentials-save` encrypts
+a credential you already have; `study credentials-check` only decrypts and
+checks the saved file locally. Setting `auth: oauth` in study.yaml does not open
+a browser or turn a website login into API access.
+
+Start with the [complete first-connection guide](ai-connections.md):
+
+- [API-key setup on Windows, Linux or macOS](ai-connections.md#on-your-own-computer-a-complete-api-key-setup):
+  create a key in the provider console, save it at the hidden prompt, then
+  reference the file in YAML.
+- [First OAuth login by provider](ai-connections.md#oauth-first-login-by-provider):
+  includes a Google gcloud browser-login example and the current OpenAI
+  first-login integration gap.
+- [Cloud VM and background jobs](ai-connections.md#on-a-cloud-vm-or-another-remote-computer):
+  put credentials on the analysis machine and supply the unlock passphrase to
+  the actual Java process.
+
+The sections below start at **credential import**, after first authorization.
+The passphrase protects the local encrypted file. It is separate from your
+provider-account password and from the provider's tokens.
+
 ## Supported providers and renewal
 
 | Provider | study.yaml provider | What can be saved | Automatic renewal |
@@ -117,13 +140,26 @@ renew it. Ordinary deterministic work does not need a credential file.
 
 ## 4. Enable OpenAI OAuth renewal
 
-Obtain access through the supported
-[Sign in with ChatGPT registration and sign-in flow](https://developers.openai.com/siwc/token-sharing-open-source/sign-in)
-for this application. Preserve the returned issued client ID and token-expiry
-information after the flow has validated identity, consent and granted scopes.
+**Prerequisite: an external first-login integration has already completed
+registration, browser consent and identity/permission validation for this
+application.** The current JAR cannot perform that first login. If you only have
+a ChatGPT account, start with the
+[connection guide's OpenAI explanation](ai-connections.md#openai-a-first-login-integration-is-still-required);
+an API key or manual browser handoff is usable without writing an OAuth helper.
 
-Use that issued client ID, not the initial dynamic registration marker.
-Replace ISSUED_CLIENT_ID and UTC_EXPIRY with the actual values:
+Import the validated result from that integration. These values have distinct
+sources:
+
+| Input | Where the integration gets it |
+| --- | --- |
+| `--client-id` | The issued client ID from the completed registration, not the initial dynamic-registration marker. |
+| Access-token prompt | The token response's `access_token`, not `id_token`. |
+| Refresh-token prompt | The same grant's `refresh_token`. |
+| `--expires-at` | The access token's actual expiry, derived from the token response time and `expires_in`. |
+| `--earliest-refresh-at`, if supplied | The returned earliest refresh time, converted to a UTC timestamp. |
+
+See the [official first-sign-in requirements](https://developers.openai.com/siwc/token-sharing-open-source/sign-in).
+Replace ISSUED_CLIENT_ID and UTC_EXPIRY with those actual values:
 
 ~~~powershell
 $vault = Join-Path $env:USERPROFILE ".omicsmatic/credentials/openai-oauth.credentials.json"
@@ -161,11 +197,21 @@ Use a model available to the authorized account. See the
 
 ## 5. Enable Gemini OAuth renewal
 
-Follow the official [Gemini OAuth setup](https://ai.google.dev/gemini-api/docs/oauth):
-enable the API, register the appropriate Google OAuth client, grant the required
-scopes, and obtain the access/refresh token through an approved flow.
+First complete Google's authorization flow. The
+[worked gcloud login example](ai-connections.md#gemini-a-worked-browser-login-using-googles-cli)
+shows where to register a desktop client and which command opens the browser.
+Its simple environment-token route works without importing a refresh token.
 
-Save the issued credentials:
+For **OmicsMatic-managed renewal**, an OAuth integration must supply the full
+issued credential set: access token, refresh token, the matching client ID,
+actual access-token expiry and any required client secret. The
+[official Gemini OAuth guide](https://ai.google.dev/gemini-api/docs/oauth)
+also illustrates using Google's client library for authorization and token
+management. OmicsMatic does not read Google's ADC cache or import its JSON
+automatically. A downloaded OAuth **client** JSON is registration configuration,
+not an access/refresh token pair.
+
+Once you have the complete issued set, save it:
 
 ~~~powershell
 $vault = Join-Path $env:USERPROFILE ".omicsmatic/credentials/gemini-oauth.credentials.json"
@@ -213,6 +259,9 @@ token endpoint. The encrypted file caches the issued API access token until it
 needs renewal. If the IdP JWT is expired or has already been spent, provide a
 fresh one through the workload identity system. OmicsMatic cannot mint that
 upstream identity or create the organization's federation rules.
+
+For first-time federation, the [connection guide](ai-connections.md#claude-federation-is-an-administrator-setup)
+identifies the administrator's console setup and the values to collect.
 
 For API-key access instead, save a workspace-scoped key with provider anthropic
 and auth api_key. The adapter uses the Messages API with an explicit API version.
@@ -263,7 +312,7 @@ payload-hash approval and source disclosure policy; credentials do not waive the
 | --- | --- |
 | Wrong password, tampered file or invalid format | Unlock fails; no inference request or environment-token fallback. |
 | Provider/auth/endpoint mismatch | Credential is rejected before use. |
-| Another process holds the credential lock | The operation waits with credential_busy; retry when the other process finishes. |
+| Another process holds the credential lock | The operation reports credential_busy; retry when the other process finishes. |
 | Expired credential with no supported renewal | Request a new credential or reauthorization. |
 | Renewal denied, unavailable or malformed | Preserve the encrypted record and report the failure; do not submit inference with an expired token. |
 | Offline or remote transmission denied | Neither unlock nor renewal runs for that blocked operation. |
