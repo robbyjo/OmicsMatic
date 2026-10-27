@@ -588,9 +588,9 @@ Keep the disclosure policy and approval steps. Run from the VM's study directory
 java -jar "$jar" study run --project . --actor-id scientist-1
 ~~~
 
-The VM needs outbound HTTPS access to the configured provider. Scientific data
-and deterministic execution stay on the analysis machine; the enabled remote
-advisor receives only the policy-permitted preview described above.
+The VM needs outbound HTTPS access to the configured provider. Your input files
+and deterministic execution remain on the analysis machine; the enabled remote
+advisor receives the policy-permitted aggregate preview described above.
 
 ### OAuth on a machine without a browser
 
