@@ -1,6 +1,6 @@
 # Repeated association engine
 
-JLinAlg has ordered, bounded-parallel scans for the two common repeated-fit
+OmicsMatic has ordered, bounded-parallel scans for the two common repeated-fit
 shapes:
 
 - one response and many changing predictor columns;

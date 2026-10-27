@@ -4,7 +4,7 @@
 
 Window: 2023-10-23 through 2026-10-23, inclusive. No extension was required.
 
-This is a purposive open-access full-text sample, not a systematic or representative literature review. Methods-section extraction and context checks supply source-linked tool uses. The registry-bounded inventory can omit software or choose a partial description; semantic completeness review remains open. A related JLinAlg method does not establish upstream package equivalence.
+This is a purposive open-access full-text sample, not a systematic or representative literature review. Methods-section extraction and context checks supply source-linked tool uses. The registry-bounded inventory can omit software or choose a partial description; semantic completeness review remains open. A related OmicsMatic method does not establish upstream package equivalence.
 
 [Searchable offline view](../../../site/literature-review.html) · [Tool inventory](tool-inventory.json) · [Implementation queue](implementation-plan.md) · [Warnings and next actions](WARNINGS.md)
 

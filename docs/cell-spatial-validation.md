@@ -176,7 +176,7 @@ not causal signaling; extra cells/sections are not extra independent donors.
 <!-- SCIENTIFIC-CITATIONS:START -->
 ## Scientific citations
 
-These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as JLinAlg when reporting results.
+These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as OmicsMatic when reporting results.
 
 - [Helena L. Crowell et al. (2020) — muscat detects subpopulation-specific state transitions from multi-sample multi-condition single-cell transcriptomics data](CITATIONS.md#crowell-muscat-2020) — [PMID: 33257685](https://pubmed.ncbi.nlm.nih.gov/33257685/)
 - [Jordan W. Squair et al. (2021) — Confronting false discoveries in single-cell differential expression](CITATIONS.md#squair-pseudoreplication-2021) — [PMID: 34584091](https://pubmed.ncbi.nlm.nih.gov/34584091/)
@@ -184,5 +184,5 @@ These are the primary sources for the methods used in this workflow. Cite the re
 - [Charity W. Law, Yunshun Chen, Wei Shi, and Gordon K. Smyth (2014) — voom: precision weights unlock linear model analysis tools for RNA-seq read counts](CITATIONS.md#law-voom-2014) — [PMID: 24485249](https://pubmed.ncbi.nlm.nih.gov/24485249/) · [PMCID: PMC4053721](https://pmc.ncbi.nlm.nih.gov/articles/PMC4053721/)
 - [Yoav Benjamini and Yosef Hochberg (1995) — Controlling the false discovery rate: a practical and powerful approach to multiple testing](CITATIONS.md#benjamini-hochberg-1995)
 
-[Search the complete scientific bibliography](https://robbyjo.github.io/JLinAlg/citations.html).
+[Search the complete scientific bibliography](https://robbyjo.github.io/OmicsMatic/citations.html).
 <!-- SCIENTIFIC-CITATIONS:END -->

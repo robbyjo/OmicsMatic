@@ -1,10 +1,10 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Run a result-first study end to end, inspect its evidence chain, and design a defensible patient-data boundary for future LLM assistance."><title>Auditable study pipeline tutorial · JLinAlg</title>
+<meta name="description" content="Run a result-first study end to end, inspect its evidence chain, and design a defensible patient-data boundary for future LLM assistance."><title>Auditable study pipeline tutorial Â· OmicsMatic</title>
 <link rel="stylesheet" href="../assets/styles.css"><script src="../assets/app.js" defer></script></head>
 <body><site-header root="../"></site-header><main id="main">
 <section class="page-hero"><div class="container"><div class="breadcrumbs"><a href="../index.html">Home</a><span>/</span><a href="../vignettes/index.html">Vignettes</a><span>/</span><span>Auditable study pipeline tutorial</span></div>
-<span class="eyebrow">CLI tutorial · Source build</span><h1>Auditable study pipeline tutorial</h1><p>Run a result-first study end to end, inspect its evidence chain, and design a defensible patient-data boundary for future LLM assistance.</p></div></section>
+<span class="eyebrow">CLI tutorial Â· Source build</span><h1>Auditable study pipeline tutorial</h1><p>Run a result-first study end to end, inspect its evidence chain, and design a defensible patient-data boundary for future LLM assistance.</p></div></section>
 <div class="container page-layout"><article class="prose"><p>For the complete scientific workflow and improved pseudocode, see the
 <a href="analysis-pipeline-specification.html">analysis pipeline specification</a>, including
 primary/sensitivity rules, native variant consequences/AlphaGenome bridges and remaining AlphaFold follow-up.</p>
@@ -46,7 +46,7 @@ and how to keep patient-level data outside a remote LLM boundary.</p>
 </blockquote>
 <h2 id="what-you-will-build">What you will build</h2>
 <p>The example begins with two association-result tables rather than participant
-matrices. JLinAlg will standardize the inputs, compare discovery and replication
+matrices. OmicsMatic will standardize the inputs, compare discovery and replication
 effects, perform fixed-effect meta-analysis, run deterministic diagnostics, and
 write a traceable report. Every committed step is represented in the event
 ledger and the readable research notebook.</p>
@@ -55,7 +55,7 @@ and audit structure apply when a project begins with processed molecular
 matrices, has more cohorts or tissues, or stops at a later evidence stage.</p>
 <p>The checked-in fixture uses <code>analysis.mode: manual</code> to stay small and completely
 offline. In a production study, omit that field or set <code>mode: auto</code>. Explicit
-goals then become the minimum requested work, and JLinAlg adds eligible
+goals then become the minimum requested work, and OmicsMatic adds eligible
 association, replication, meta-analysis, enrichment, genetic-evidence,
 literature, diagnostic, prioritization, and report branches from the objective
 and declared inputs.</p>
@@ -64,7 +64,7 @@ block defaults to an audited manual browser handoff for bounded advice,
 literature review and a first manuscript draft. Explicit alternatives include
 OpenAI Responses, Gemini GenerateContent and OpenAI-compatible Chat Completions
 with an API key or provider-issued OAuth bearer token. Browser transcripts and
-citations are human-attested, not authenticated provider output. JLinAlg retains
+citations are human-attested, not authenticated provider output. OmicsMatic retains
 control. MCP, provider-specific OAuth login/refresh, general pipeline local-model
 adapters and autonomous LLM orchestration remain future work. The <code>llm</code> actor
 option alone never enables a call.</p>
@@ -259,7 +259,7 @@ Native all-cohort meta-analysis still needs compatible cohort estimates.</p>
 declare <code>family.coverage: selected_only</code>, the original <code>tested_count</code>, correction
 method and <code>adjusted_p_from_full_family: true</code>. For example, a row with
 <code>p_value: 0.000001</code> and source <code>adjusted_p: 0.4</code> remains unselected at 0.05.
-JLinAlg must not recompute BH on the selected rows or on their overlap with
+OmicsMatic must not recompute BH on the selected rows or on their overlap with
 validation results. Complete imported families preserve their source correction,
 including BY, Bonferroni or NONE, even when validation uses BH.</p>
 <p>The source family and the validation family are distinct. With
@@ -280,8 +280,8 @@ replacement discovery fit. Imported scope and scientific completeness remain
 source declarations requiring review; normalization does not independently
 reproduce or certify the original analysis.</p>
 <p>Run the independent offline software regression with:</p>
-<div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>python -B examples/study-pipeline/frozen-discovery-workflow.py run build/frozen-discovery-example --jar build/cli/jlinalg-0.3.7.jar
-python -B examples/study-pipeline/frozen-discovery-workflow.py verify build/frozen-discovery-example --jar build/cli/jlinalg-0.3.7.jar
+<div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>python -B examples/study-pipeline/frozen-discovery-workflow.py run build/frozen-discovery-example --jar build/cli/omicsmatic-0.3.7.jar
+python -B examples/study-pipeline/frozen-discovery-workflow.py verify build/frozen-discovery-example --jar build/cli/omicsmatic-0.3.7.jar
 </code></pre></div>
 <p>It checks selected-only and complete source families, native discovery pooling,
 both validation scopes, effect direction, held unresolved inputs, unchanged
@@ -356,7 +356,7 @@ discovery reference requires a placeholder file, a reconstructed association fit
 or retrospective participant QC. <code>analysis-references.tsv</code> records reference
 ownership separately from actual harmonized cohort tables. Ordinary dataset
 stages retain their file requirements. A missing supplied file holds its import
-while independent work can proceed; JLinAlg does not select a native discovery
+while independent work can proceed; OmicsMatic does not select a native discovery
 replacement.</p>
 <p>Before validation uses an imported discovery pool, <code>discovery-scope-audit.yaml</code>
 checks exact discovery dataset/cohort sets, reference ownership, the registered
@@ -381,8 +381,8 @@ meta-analysis: that requested fit waits for the actual cohort estimates rather
 than pooling only whichever validation tables happen to be available. Reusing
 a supplied all-cohort primary meta-analysis remains a separate typed import.</p>
 <p>Run the offline acceptance example with:</p>
-<div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>python -B examples/study-pipeline/discovery-scope-workflow.py run build/discovery-scope-example --jar build/cli/jlinalg-0.3.7.jar
-python -B examples/study-pipeline/discovery-scope-workflow.py verify build/discovery-scope-example --jar build/cli/jlinalg-0.3.7.jar
+<div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>python -B examples/study-pipeline/discovery-scope-workflow.py run build/discovery-scope-example --jar build/cli/omicsmatic-0.3.7.jar
+python -B examples/study-pipeline/discovery-scope-workflow.py verify build/discovery-scope-example --jar build/cli/omicsmatic-0.3.7.jar
 </code></pre></div>
 <p>It independently checks native validation coefficients, SEs, P values and sample
 counts, frozen discovery selection, source scopes and coding, held/invalid
@@ -485,8 +485,8 @@ externally attributed and are not independently recalculated from missing data.
 Aggregate source summaries enter finding dossiers and Methods with their
 limitations; they provide study context rather than independent replication.</p>
 <p>Run the offline synthetic verifier with NumPy, SciPy and PyYAML:</p>
-<div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>python -B examples/study-pipeline/gwas-diagnostics-workflow.py run build/gwas-diagnostic-example --jar build/cli/jlinalg-0.3.7.jar
-python -B examples/study-pipeline/gwas-diagnostics-workflow.py verify build/gwas-diagnostic-example --jar build/cli/jlinalg-0.3.7.jar
+<div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>python -B examples/study-pipeline/gwas-diagnostics-workflow.py run build/gwas-diagnostic-example --jar build/cli/omicsmatic-0.3.7.jar
+python -B examples/study-pipeline/gwas-diagnostics-workflow.py verify build/gwas-diagnostic-example --jar build/cli/omicsmatic-0.3.7.jar
 </code></pre></div>
 <p>The cases include native OLS, two-cohort pooling, supplied complete/selected
 pools and diagnostics, unknown exports, finite-log underflow, unresolved/conflict
@@ -541,7 +541,7 @@ supplied_results:
     method: {name: Original cohort A graph, edge_direction: undirected}
 </code></pre></div>
 <p>With dataset <code>a</code> bound to <code>graph_a</code> as an <code>analysis_reference</code> and a processed
-matrix dataset <code>b</code> in cohort B, JLinAlg reuses A's graph/memberships and fits
+matrix dataset <code>b</code> in cohort B, OmicsMatic reuses A's graph/memberships and fits
 only B's graph. It plans modules and module GO separately for each source.
 Available raw data for A do not cause its supplied graph to be refitted. A
 single supplied graph covering A and C remains one graph; its edges are not
@@ -562,8 +562,8 @@ a mandatory source-review caveat. Scientists must review the retained original
 limitations before writing scientific conclusions. This boundary is not a
 general disclosure or scientific-validity certification.</p>
 <p>Run the offline synthetic acceptance with NumPy, SciPy and PyYAML:</p>
-<div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>python -B examples/study-pipeline/scoped-supplied-workflow.py run build/scoped-supplied-example --jar build/cli/jlinalg-0.3.7.jar
-python -B examples/study-pipeline/scoped-supplied-workflow.py verify build/scoped-supplied-example --jar build/cli/jlinalg-0.3.7.jar
+<div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>python -B examples/study-pipeline/scoped-supplied-workflow.py run build/scoped-supplied-example --jar build/cli/omicsmatic-0.3.7.jar
+python -B examples/study-pipeline/scoped-supplied-workflow.py verify build/scoped-supplied-example --jar build/cli/omicsmatic-0.3.7.jar
 </code></pre></div>
 <p>It checks partial/all-supplied graph reuse, missing native work, signed residual
 correlations, components/cliques, joint module-GO correction, held scope/row and
@@ -776,8 +776,8 @@ Missing source edges are not reconstructed. A supplied primary comparison
 satisfies the stage; a supplied sensitivity stays a separate context and does
 not suppress missing native comparisons.</p>
 <p>Run the offline NumPy/SciPy/PyYAML acceptance:</p>
-<div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>python -B examples/study-pipeline/network-preservation-workflow.py run build/network-preservation-example --jar build/cli/jlinalg-0.3.7.jar
-python -B examples/study-pipeline/network-preservation-workflow.py verify build/network-preservation-example --jar build/cli/jlinalg-0.3.7.jar
+<div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>python -B examples/study-pipeline/network-preservation-workflow.py run build/network-preservation-example --jar build/cli/omicsmatic-0.3.7.jar
+python -B examples/study-pipeline/network-preservation-workflow.py verify build/network-preservation-example --jar build/cli/omicsmatic-0.3.7.jar
 </code></pre></div>
 <p>Its synthetic fixtures include native residual-correlation graphs, supplied and
 mixed inputs, incomplete node coverage, source-context mismatches, work bounds,
@@ -1371,7 +1371,7 @@ Discussion paragraphs. A scientist's change to selected findings or order needs
 distinct groups, Results links, explicit overrides and required partial-region
 caveats. This structural review does not certify biological interpretation or
 source appraisal. Incomplete current assessments remain review needs.</p>
-<p>The reproducible <a href="https://github.com/robbyjo/JLinAlg/blob/main/examples/study-pipeline/impact-workflow.py">impact protocol fixture</a>
+<p>The reproducible <a href="https://github.com/robbyjo/OmicsMatic/blob/main/examples/study-pipeline/impact-workflow.py">impact protocol fixture</a>
 uses an explicitly labeled deterministic loopback server. It tests transport,
 cross-batch coverage, source/FDR lineage and manuscript gating; it does not run
 a real AI model or create human disclosure attestations.</p>
@@ -1382,7 +1382,7 @@ very large coefficient and SE. A large raw coefficient is not itself proof of a
 bad association, and summary statistics cannot establish the cause. Do not hide
 these points by clipping a plot or choose exclusions to improve correlation or
 significance. Inspect predictor variation, units and upstream fit diagnostics.</p>
-<p>JLinAlg now applies an auditable, conservative effect-size QC screen to supplied
+<p>OmicsMatic now applies an auditable, conservative effect-size QC screen to supplied
 association results during harmonization and to newly fitted association results
 before annotation. The defaults are:</p>
 <div class="code-window"><div class="code-bar"><span>yaml</span></div><pre><code>analysis:
@@ -1498,7 +1498,7 @@ can trigger the existing public metadata download to resolve gene names. This
 metadata provider does <strong>not</strong> supply genomic intervals: provide a local GTF or
 annotation table for those. Lifted GRCh37 and nonhuman resources require explicit
 local annotations. Resource/source hashes and declarations are recorded.
-JLinAlg does not infer genome build from a gene symbol, CpG probe, or rsID.
+OmicsMatic does not infer genome build from a gene symbol, CpG probe, or rsID.
 GWAS result tables with explicit chromosome/position columns can supply their
 own coordinates once build and coordinate convention are declared.</p>
 <p>Set <code>feature_id_type: gene_symbol</code> only when the study IDs really are gene
@@ -1533,9 +1533,9 @@ an <code>analysis_requests</code> amendment, specify the operation or execute ex
 with provenance, and approve the resulting plan. Subgroup analyses additionally
 need enough cohorts and relevant metadata; result-only inputs cannot refit
 participant-level covariate or batch-adjustment models.</p>
-<h2 id="advisory-ai-while-jlinalg-controls-execution">Advisory AI while JLinAlg controls execution</h2>
+<h2 id="advisory-ai-while-omicsmatic-controls-execution">Advisory AI while OmicsMatic controls execution</h2>
 <p>An optional advisor can suggest related phenotypes or sensitivity analyses
-without receiving execution authority. JLinAlg constructs a bounded request,
+without receiving execution authority. OmicsMatic constructs a bounded request,
 asks an official API for structured advice, and checks proposed operations against registered methods,
 available inputs, and the approved plan. Gemini supports JSON-schema-constrained
 <a href="https://ai.google.dev/gemini-api/docs/structured-output">structured outputs</a>;
@@ -1544,7 +1544,7 @@ schema conformance alone does not validate scientific claims.</p>
 and tissue, with no cohort names, gene hit list, statistics, file paths, study
 description, or patient records. More detailed advice may require a separately
 permitted aggregate-results request. Even a topic-only request discloses the
-research topic; keeping execution in JLinAlg does not remove that transmission.
+research topic; keeping execution in OmicsMatic does not remove that transmission.
 <code>deny_all</code> must prohibit all remote advisor requests. A local model can be used
 under a no-network policy. Provider terms depend on the selected service and
 configuration; assess the <a href="https://ai.google.dev/gemini-api/terms">Gemini API terms</a>
@@ -1552,7 +1552,7 @@ when implementing the connector.</p>
 <p>Advice should include proposed action, rationale, evidence sources, required
 inputs, expected benefit, and limitations. Exact prompts/responses, model ID,
 timestamps, disclosure manifests, and accepted/rejected decisions enter the
-audit trail. JLinAlg may execute already-approved, eligible operations; new
+audit trail. OmicsMatic may execute already-approved, eligible operations; new
 phenotypes, hypotheses, or changes to the estimand require an amendment. An
 empty valid response, an unavailable provider, denied transmission, and a search
 that was never run have different recorded dispositions. When public catalogs
@@ -1678,7 +1678,7 @@ claim needs scientist review. No submission, authorship or ethics approval is
 inferred. Instructions and returned HTML-like text are escaped, not executed.</p>
 <h2 id="publication-citations-and-parameter-reporting">Publication citations and parameter reporting</h2>
 <h3 id="explaining-observed-results-from-the-study-contract">Explaining observed results from the study contract</h3>
-<p>JLinAlg records <code>study-context-review.yaml</code> for advisor requests and manuscript
+<p>OmicsMatic records <code>study-context-review.yaml</code> for advisor requests and manuscript
 revisions. It compares declared tissues, compartments, assays, preparation,
 population metadata, upstream models, covariates, technical factors, scales,
 annotation versions and cohort relationships. Missing values are unknown, not
@@ -1774,7 +1774,7 @@ without an appropriate sensitivity analysis.</p>
 <h2 id="1-build-and-copy-the-example">1. Build and copy the example</h2>
 <p>From the repository root, build the executable JAR:</p>
 <div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>.\gradlew.bat executableJar
-$jar = (Resolve-Path &quot;build/cli/jlinalg-0.3.7.jar&quot;).Path
+$jar = (Resolve-Path &quot;build/cli/omicsmatic-0.3.7.jar&quot;).Path
 </code></pre></div>
 <p>Copy the example to a disposable working directory so the checked-in files stay
 clean:</p>
@@ -1782,7 +1782,7 @@ clean:</p>
 Copy-Item &quot;examples/study-pipeline&quot; $project -Recurse
 Set-Location $project
 </code></pre></div>
-<p>If that destination already exists, choose another empty directory. JLinAlg
+<p>If that destination already exists, choose another empty directory. OmicsMatic
 protects approved contracts and completed artifacts against silent overwrite.</p>
 <p>The full lifecycle can be run in one command:</p>
 <div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>java -jar $jar study auto study.yaml --project . --actor-id scientist-1
@@ -1867,7 +1867,7 @@ inputs, output hashes, timestamps, executor, and state. The run-level
 come from the plan and should be discovered from the manifest rather than
 hard-coded in a downstream script.</p>
 <p>For <code>mode: auto</code>, functional and genetic follow-up branches are independent.
-JLinAlg runs local GO and Reactome enrichment when feature mapping is available;
+OmicsMatic runs local GO and Reactome enrichment when feature mapping is available;
 <code>annotation_release: GENCODE_v48</code>, for example, permits an audited public
 GENCODE transcript-ranking and HGNC-symbol mapping download. Public references
 are fetched by the HTTP client embedded in the executable JAR; curl, Python,
@@ -2135,13 +2135,13 @@ These are still sensitive unpublished findings. The approved input metadata
 must correctly classify results; this is not general-purpose PHI detection.
 <code>deny_all</code> blocks every remote advisory request, including topic-only requests,
 and <code>--offline</code> also blocks built-in reference downloads.</p>
-<p>JLinAlg cannot truthfully prove that unrelated software, a separately launched
+<p>OmicsMatic cannot truthfully prove that unrelated software, a separately launched
 agent, a shell command, or a user copied no data elsewhere. A defensible project
 claim therefore needs both application evidence and enforcement outside the
 application.</p>
 <h3 id="a-controlled-aggregate-results-disclosure-design">A controlled aggregate-results disclosure design</h3>
 <p>A future LLM integration should never give a model process unrestricted access
-to the study directory. Instead, JLinAlg should implement a release boundary:</p>
+to the study directory. Instead, OmicsMatic should implement a release boundary:</p>
 <div class="code-window"><div class="code-bar"><span>text</span></div><pre><code>restricted project data
         |
         v
@@ -2271,7 +2271,7 @@ than claim end-to-end non-egress.</p>
 <p>For the full contract, amendment, provenance, and operation-registry design, see
 the <a href="auditable-omics-pipeline.html">auditable omics research pipeline vignette</a>.
 The runnable files are in the
-<a href="https://github.com/robbyjo/JLinAlg/tree/main/examples/study-pipeline">study-pipeline example</a>.</p>
+<a href="https://github.com/robbyjo/OmicsMatic/tree/main/examples/study-pipeline">study-pipeline example</a>.</p>
 <h2 id="compatible-effects-and-covariance-aware-pooling">Compatible effects and covariance-aware pooling</h2>
 <p>Each hypothesis defines a proposed compatible analysis block. Pooling now audits
 declared estimands, coefficient orientation, effect scale/units, phenotype and
@@ -2559,7 +2559,7 @@ an interface.</p>
 <p>Residue substitutions may be registered as <code>variants</code> with <code>id</code>, <code>position</code>,
 <code>ref</code>, <code>alt</code>. REF must match the exact target. A <code>genomic_variant</code> additionally
 requires an exact matching target <code>transcript_id</code> and <code>mapping_provenance</code>;
-JLinAlg does not guess a genome-to-protein translation. All exact peptide
+OmicsMatic does not guess a genome-to-protein translation. All exact peptide
 occurrences are reported; one occurrence within a target does not establish
 proteome-wide uniqueness. Neither peptide/variant context nor pLDDT supplies a
 pathogenicity or causal-effect score.</p>
@@ -2584,9 +2584,9 @@ PAE cells and 10,000 region pairs. The complete region family also has a
 50-million-cell work bound. Exceeding a bound leaves explicit prerequisites;
 no confidence-ranked subset is silently selected.</p>
 <p>Run the independent acceptance bundle with:</p>
-<div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>python examples/study-pipeline/protein-workflow.py run build/my-protein-check --jar build/cli/jlinalg-0.3.7.jar
+<div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>python examples/study-pipeline/protein-workflow.py run build/my-protein-check --jar build/cli/omicsmatic-0.3.7.jar
 # Optional live public TP53 retrieval, distinct from synthetic configured prediction:
-python examples/study-pipeline/protein-workflow.py run build/my-protein-live-check --jar build/cli/jlinalg-0.3.7.jar --live
+python examples/study-pipeline/protein-workflow.py run build/my-protein-live-check --jar build/cli/omicsmatic-0.3.7.jar --live
 </code></pre></div>
 <p>The verifier pins the executable and its own source before execution, independently
 reads PDB columns and directional PAE cells, checks supplied summaries and missing
@@ -2741,7 +2741,7 @@ checks flags against that source rule and preserves its cutoff rather than apply
 a different current default. An undeclared source rule remains unavailable while
 the completed source table is retained; it cannot supply a negative alert for
 conditional omission. Original statistical calculations are not rerun by import.</p>
-<div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>python examples/study-pipeline/cohort-diagnostics-workflow.py run build/my-cohort-check --jar build/cli/jlinalg-0.3.7.jar
+<div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>python examples/study-pipeline/cohort-diagnostics-workflow.py run build/my-cohort-check --jar build/cli/omicsmatic-0.3.7.jar
 </code></pre></div>
 <p>The independent offline verifier pins the executable and its own source before
 execution. It reconstructs exact memberships, frozen validation BH, inverse-variance
@@ -2888,7 +2888,7 @@ and unrequested mapped features. The full source artifacts remain available even
 when a model fails or no posterior is computed. Real-data acquisition/appraisal,
 independent SuSiE/LD calibration, broader assay/source adapters and full manuscript
 claim validation remain separate verification requirements.</p>
-<div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>python examples/study-pipeline/colocalization-workflow.py run build/my-coloc-check --jar build/cli/jlinalg-0.3.7.jar
+<div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>python examples/study-pipeline/colocalization-workflow.py run build/my-coloc-check --jar build/cli/omicsmatic-0.3.7.jar
 </code></pre></div>
 <p>This verifier pins its own source and the executable before running. Fifteen offline
 synthetic cases exercise complete/partial regions, 25 native signal pairs, unobserved
@@ -2948,7 +2948,7 @@ and QC-eligible variant annotation retain their own declared inputs. Primary
 significance does not select training features or discard annotation candidates.
 These scopes do not silently become manuscript primary association findings.</p>
 <p>The offline executable check is:</p>
-<div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>python examples/study-pipeline/primary-results-workflow.py run build/primary-acceptance-new --jar build/cli/jlinalg-0.3.7.jar
+<div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>python examples/study-pipeline/primary-results-workflow.py run build/primary-acceptance-new --jar build/cli/omicsmatic-0.3.7.jar
 </code></pre></div>
 <p>It pins the executable and executing verifier before generating synthetic cases.
 Its <code>verify DIRECTORY --jar PINNED_JAR</code> mode requires those exact pins and checks
@@ -3206,8 +3206,8 @@ testing-family completeness and calibration still require source provenance.</p>
 <code>examples/study-pipeline/exact-conditional-workflow.py</code>. It pins its executable,
 verifier and rational-enumeration fixtures before execution. Run it with a new
 output directory and verify using the same pinned JAR:</p>
-<div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>python examples/study-pipeline/exact-conditional-workflow.py run build/exact-example --jar build/cli/jlinalg-0.3.7.jar
-python examples/study-pipeline/exact-conditional-workflow.py verify build/exact-example --jar build/cli/jlinalg-0.3.7.jar
+<div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>python examples/study-pipeline/exact-conditional-workflow.py run build/exact-example --jar build/cli/omicsmatic-0.3.7.jar
+python examples/study-pipeline/exact-conditional-workflow.py verify build/exact-example --jar build/cli/omicsmatic-0.3.7.jar
 </code></pre></div>
 <p>These fixtures test finite null masses and state/metadata propagation; they
 are not biological evidence. Small reference fixtures explicitly lower MAC
@@ -3256,7 +3256,7 @@ likelihood or unregistered unpenalized binary fit is never substituted.</p>
 <p>Alpha 0 is ridge, 1 is lasso, and intermediate values are elastic net. The
 standard elastic-net objective is described by
 <a href="https://doi.org/10.18637/jss.v033.i01">Friedman, Hastie and Tibshirani</a>.
-JLinAlg uses bounded cyclic coordinate proximal-gradient steps with the global
+OmicsMatic uses bounded cyclic coordinate proximal-gradient steps with the global
 logistic one-quarter curvature bound and a recorded KKT stopping tolerance.
 This implementation is independently checked against convex SciPy optimization;
 it is not a claim of complete glmnet path/option parity. Tolerance and KKT
@@ -3327,8 +3327,8 @@ native ridge/lasso/elastic-net, optional refit, complete model reuse, unchanged
 fitting after evaluation perturbation, ID/group leakage, single-class development,
 optimizer limits and incomplete related-test families. The original quantitative/
 import workflow remains separately checked.</p>
-<div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>python examples/study-pipeline/binary-risk-score-workflow.py run build/binary-score-example --jar build/cli/jlinalg-0.3.7.jar
-python examples/study-pipeline/binary-risk-score-workflow.py verify build/binary-score-example --jar build/cli/jlinalg-0.3.7.jar
+<div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>python examples/study-pipeline/binary-risk-score-workflow.py run build/binary-score-example --jar build/cli/omicsmatic-0.3.7.jar
+python examples/study-pipeline/binary-risk-score-workflow.py verify build/binary-score-example --jar build/cli/omicsmatic-0.3.7.jar
 </code></pre></div>
 <h2 id="ld-aware-gwas-functional-category-enrichment">LD-aware GWAS functional-category enrichment</h2>
 <p>The native <code>gwas_enrichment</code> study stage fits observed-scale <strong>stratified LD
@@ -3486,7 +3486,7 @@ source family and its tested count. The supplied stage satisfies this goal
 without LD inputs or a statistical refit; the import receipt states that the
 external analysis was not reproduced.</p>
 <p>Run the offline packaged acceptance with a new output directory:</p>
-<div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>python examples/study-pipeline/gwas-enrichment-workflow.py run build/my-sldsc-acceptance --jar build/cli/jlinalg-0.3.7.jar
+<div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>python examples/study-pipeline/gwas-enrichment-workflow.py run build/my-sldsc-acceptance --jar build/cli/omicsmatic-0.3.7.jar
 </code></pre></div>
 <p>The retained bundle pins the executable, verifier, independent QR reference and
 fixtures before running, checks complete/partial/supplied branches and cache
@@ -3879,7 +3879,7 @@ adjustments and colocalization posterior normalization. These synthetic checks
 do not constitute scientific source appraisal or independent replication.</p>
 <h2 id="complete-missing-mr-features-from-supplied-contributions">Complete missing MR features from supplied contributions</h2>
 <p>Use <code>role: contribution</code> when an external MR analysis covers explicit molecular
-features and JLinAlg should complete the remaining eligible features. A supplied
+features and OmicsMatic should complete the remaining eligible features. A supplied
 <code>role: primary</code> still replaces the whole MR stage. Contributions currently
 support MR; they do not silently combine arbitrary partial analyses from other
 stages. The contribution requests a native MR completion operation even in a
@@ -4106,7 +4106,7 @@ described in the <a href="https://www.cog-genomics.org/plink/1.9/postproc#clump"
   requires <code>greater_than_or_equal</code>. A source exported at strictly greater
   than the same cutoff cannot establish coverage at the equality boundary.
   This disposition relies on reviewed source-declared export completeness;
-  JLinAlg does not reproduce it from participant genotypes.</li>
+  OmicsMatic does not reproduce it from participant genotypes.</li>
 <li><code>positive_edges_only</code>: observed links are usable descriptively, but absence
   of a pair establishes no zero-LD value or independence.</li>
 </ul>
@@ -4663,7 +4663,7 @@ defines the normalized version-1 packet. It records:</p>
 <li>The KING between-family estimator, cutoff, action, source pair/support counts
   and explicit independent-basis/retained-population assertions. The current
   adapter requires the registered cutoff/action and support floors to agree.
-  These declarations remain source-reported; JLinAlg does not recompute the
+  These declarations remain source-reported; OmicsMatic does not recompute the
   source pairs or prove that its calibration and basis assertions are correct.
   Native hash-sampling, MAF, marker-call-rate and LD defaults are not attributed
   to an imported source. Its own declared filter/method parameters remain
@@ -4705,7 +4705,7 @@ to make a smaller native PCA problem fit.</p>
 <p>The supplied score table uses <code>sample_id</code> and the component names declared in
 <code>pca.columns</code>, for example <code>PC1</code>, <code>PC2</code>. Requested columns must be finite, IDs
 unique and all source-QC-retained samples covered. Extra projected scores may
-belong to source-QC-excluded members of the same matrix population. JLinAlg
+belong to source-QC-excluded members of the same matrix population. OmicsMatic
 normalizes requested components to the registered output names (<code>GPC1</code>,
 <code>GPC2</code> by default), joins by ID and never overwrites existing phenotype columns.
 <code>include_pcs: false</code> retains requested imported scores as diagnostics without
@@ -4744,7 +4744,7 @@ MR result or its historical analysis population.</p>
 immutable source edition and explicit study amendment, preserving old files
 and attempts; a changed source hash invalidates reuse. An import work budget
 can likewise be explicitly amended. The offline acceptance script is:</p>
-<div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>python -B examples/study-pipeline/external-genotype-qc-workflow.py run build/external-qc-example --jar build/cli/jlinalg-0.3.7.jar
+<div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>python -B examples/study-pipeline/external-genotype-qc-workflow.py run build/external-qc-example --jar build/cli/omicsmatic-0.3.7.jar
 </code></pre></div>
 <p>It pins its executable, verifier, source generator and numerical fixtures before
 execution. Synthetic source reports, independent NumPy PCA, downstream SciPy
@@ -4845,7 +4845,7 @@ source bytes, hashes and the bounded safe-reader restrictions are retained.</p>
 <p>Use <code>role: primary</code> and <code>reported_status: complete</code> when the supplied literature
 stage should be reused in full. This can be a bibliography without search
 records; its references become usable while search coverage remains explicitly
-unestablished. JLinAlg honors that whole-stage choice and does not invent searches
+unestablished. OmicsMatic honors that whole-stage choice and does not invent searches
 to explain it. To finish partly completed searches, use <code>role: contribution</code> and
 register the exact input hash:</p>
 <div class="code-window"><div class="code-bar"><span>yaml</span></div><pre><code>analysis:
@@ -4992,7 +4992,7 @@ references:
 </code></pre></div>
 <p>The existing public-download/network policy applies; only public reference
 identifiers enter requests. Exact metadata matches must supply one unambiguous
-PMCID. JLinAlg requests its Europe PMC JATS XML, checks DOI/PMID identity, rejects
+PMCID. OmicsMatic requests its Europe PMC JATS XML, checks DOI/PMID identity, rejects
 external XML entities/DTDs, and retains the raw response, audit, license, text and
 hashes. The projection contains abstract/body text and textual captions, without
 inspecting image pixels or fetching external supplements. Text retrieval failure
@@ -5423,7 +5423,7 @@ FAF/grpmax, an allele-frequency confidence bound, pathogenicity classification o
 automatic ancestry inference. The <a href="https://rgcgithub.github.io/regenie/options/">REGENIE AAF/mask documentation</a>
 uses ALT-specific frequencies. The <a href="https://gnomad.broadinstitute.org/news/2024-04-gnomad-v4-1/">gnomAD v4.1 documentation</a>
 explains why an unobserved variant needs callable-site AN before zero counts can
-be interpreted. Prepare a correctly allele-resolved export; JLinAlg does not
+be interpreted. Prepare a correctly allele-resolved export; OmicsMatic does not
 download/convert a gnomAD release or infer absence/coverage from VCF omission.</p>
 <p>If every allele is conclusively excluded, the mask stage records an empty
 eligible universe. Downstream score/test stages record <code>performed: false</code> and
@@ -6111,7 +6111,7 @@ workflow.</p>
   <div class="container narrow">
     <span class="eyebrow">Scientific foundations</span>
     <h2 id="scientific-citations-study-pipeline-tutorial">Primary method citations</h2>
-    <p>Cite the relevant method publication as well as JLinAlg when reporting results from this workflow.</p>
+    <p>Cite the relevant method publication as well as OmicsMatic when reporting results from this workflow.</p>
     <ul class="citation-links">
       <li><a href="../citations.html#subramanian-gsea-2005">Subramanian et al. (2005) — GSEA</a> <span class="citation-inline-identifiers">(<a href="https://pubmed.ncbi.nlm.nih.gov/16199517/">PMID: 16199517</a> · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC1239896/">PMCID: PMC1239896</a>)</span></li><li><a href="../citations.html#benjamini-hochberg-1995">Benjamini (1995) — Benjamini-Hochberg FDR</a></li><li><a href="../citations.html#sandve-reproducibility-2013">Sandve et al. (2013) — Configuration provenance</a></li><li><a href="../citations.html#w3c-prov-o-2013">W3C (2013) — Evidence provenance graph</a></li><li><a href="../citations.html#frankish-gencode-2021">Frankish et al. (2021) — GENCODE transcript-to-gene annotation</a> <span class="citation-inline-identifiers">(<a href="https://pubmed.ncbi.nlm.nih.gov/33270111/">PMID: 33270111</a> · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7778937/">PMCID: PMC7778937</a>)</span></li><li><a href="../citations.html#go-consortium-2021">Consortium (2021) — Gene Ontology</a> <span class="citation-inline-identifiers">(<a href="https://pubmed.ncbi.nlm.nih.gov/33290552/">PMID: 33290552</a>)</span></li><li><a href="../citations.html#milacic-reactome-2024">Milacic et al. (2024) — Reactome pathways</a> <span class="citation-inline-identifiers">(<a href="https://pubmed.ncbi.nlm.nih.gov/37941124/">PMID: 37941124</a> · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10767911/">PMCID: PMC10767911</a>)</span></li><li><a href="../citations.html#thousand-genomes-2015">Consortium (2015) — 1000 Genomes Phase 3</a> <span class="citation-inline-identifiers">(<a href="https://pubmed.ncbi.nlm.nih.gov/26432245/">PMID: 26432245</a> · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4750478/">PMCID: PMC4750478</a>)</span></li><li><a href="../citations.html#fda-electronic-records-2024">FDA (2024) — Electronic audit trails</a></li><li><a href="../citations.html#hhs-hipaa-deidentification-2012">HHS OCR (2012) — Safe Harbor and Expert Determination</a></li><li><a href="../citations.html#nist-genai-profile-2024">NIST (2024) — Generative-AI data provenance</a></li><li><a href="../citations.html#wand-prs-reporting-2021">Lambert, et al. (2021) — PRS reporting standards</a> <span class="citation-inline-identifiers">(<a href="https://pubmed.ncbi.nlm.nih.gov/33692554/">PMID: 33692554</a> · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8609771/">PMCID: PMC8609771</a>)</span></li><li><a href="../citations.html#hoerl-kennard-1970">Hoerl (1970) — ridge regression</a></li><li><a href="../citations.html#zou-hastie-2005">Zou (2005) — elastic net</a></li><li><a href="../citations.html#varadi-alphafold-2022">Varadi et al. (2022) — Predicted protein structure investigation</a></li><li><a href="../citations.html#uniprot-api-documentation">Consortium (2026) — Reviewed gene and species protein mapping</a></li><li><a href="../citations.html#lex-upset-2014">Lex (2014) — Exclusive intersection membership matrices</a></li><li><a href="../citations.html#higgins-thompson-2002">Higgins (2002) — I-squared</a> <span class="citation-inline-identifiers">(<a href="https://pubmed.ncbi.nlm.nih.gov/12111919/">PMID: 12111919</a>)</span></li><li><a href="../citations.html#cochrane-meta-analysis-2024">Deeks (2024) — Prespecified synthesis and sensitivity analyses</a></li><li><a href="../citations.html#wang-susie-2020">Wang (2020) — SuSiE</a> <span class="citation-inline-identifiers">(<a href="https://pubmed.ncbi.nlm.nih.gov/37220626/">PMID: 37220626</a> · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10201948/">PMCID: PMC10201948</a>)</span></li><li><a href="../citations.html#wallace-coloc-2021">Wallace (2021) — SuSiE colocalization</a> <span class="citation-inline-identifiers">(<a href="https://pubmed.ncbi.nlm.nih.gov/34587156/">PMID: 34587156</a> · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8504726/">PMCID: PMC8504726</a>)</span></li><li><a href="../citations.html#giambartolomei-coloc-2014">Giambartolomei et al. (2014) — coloc</a> <span class="citation-inline-identifiers">(<a href="https://pubmed.ncbi.nlm.nih.gov/24830394/">PMID: 24830394</a> · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4022491/">PMCID: PMC4022491</a>)</span></li><li><a href="../citations.html#benjamini-yekutieli-2001">Benjamini (2001) — BY harmonic correction</a></li><li><a href="../citations.html#wigginton-hwe-2005">JE (2005) — Exact hard-call HWE</a> <span class="citation-inline-identifiers">(<a href="https://pubmed.ncbi.nlm.nih.gov/15789306/">PMID: 15789306</a> · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC1199378/">PMCID: PMC1199378</a>)</span></li><li><a href="../citations.html#plink2-qc-documentation">developers (2026) — Prespecified HWE thresholds and sample scope</a></li><li><a href="../citations.html#bgen-layout2-specification">developers (2026) — Per-sample ploidy and missingness</a></li><li><a href="../citations.html#regenie-binary-methods">developers (2026) — Design-specific binary testing</a></li><li><a href="../citations.html#firth-bias-reduction-1993">Firth (1993) — Jeffreys penalized likelihood</a></li><li><a href="../citations.html#heinze-schemper-separation-2002">Heinze (2002) — Separated logistic data</a> <span class="citation-inline-identifiers">(<a href="https://pubmed.ncbi.nlm.nih.gov/12210625/">PMID: 12210625</a>)</span></li><li><a href="../citations.html#logistf-reference-documentation">Heinze (2026) — Full and constrained penalized fits</a></li><li><a href="../citations.html#r-fisher-exact-documentation">Team (2026) — Finite conditional binary-genotype reference</a></li><li><a href="../citations.html#r-survival-clogit-documentation">Team (2026) — Stratum case-count conditioning</a></li><li><a href="../citations.html#friedman-glmnet-2010">Friedman (2010) — Binomial elastic-net objective</a> <span class="citation-inline-identifiers">(<a href="https://pubmed.ncbi.nlm.nih.gov/20808728/">PMID: 20808728</a> · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC2929880/">PMCID: PMC2929880</a>)</span></li><li><a href="../citations.html#finucane-sldsc-2015">Finucane et al. (2015) — Stratified LD score regression</a> <span class="citation-inline-identifiers">(<a href="https://pubmed.ncbi.nlm.nih.gov/26414678/">PMID: 26414678</a> · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4626285/">PMCID: PMC4626285</a>)</span></li><li><a href="../citations.html#hemerik-goeman-2018">Hemerik (2018) — Conditional Monte Carlo test validity</a> <span class="citation-inline-identifiers">(<a href="https://pubmed.ncbi.nlm.nih.gov/30930620/">PMID: 30930620</a> · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6405018/">PMCID: PMC6405018</a>)</span></li><li><a href="../citations.html#lee-skato-2012">Lee et al. (2012) — SKAT-O</a> <span class="citation-inline-identifiers">(<a href="https://pubmed.ncbi.nlm.nih.gov/22863193/">PMID: 22863193</a> · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3415556/">PMCID: PMC3415556</a>)</span></li><li><a href="../citations.html#liu-acat-2019">Liu et al. (2019) — ACAT</a> <span class="citation-inline-identifiers">(<a href="https://pubmed.ncbi.nlm.nih.gov/30849328/">PMID: 30849328</a> · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6407498/">PMCID: PMC6407498</a>)</span></li><li><a href="../citations.html#altman-bland-interaction-2003">Altman (2003) — Compare effects rather than subgroup P values</a> <span class="citation-inline-identifiers">(<a href="https://pubmed.ncbi.nlm.nih.gov/12543843/">PMID: 12543843</a> · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC1125071/">PMCID: PMC1125071</a>)</span></li><li><a href="../citations.html#keller-interaction-confounding-2014">Keller (2014) — Covariate by feature and covariate by group interaction terms</a> <span class="citation-inline-identifiers">(<a href="https://pubmed.ncbi.nlm.nih.gov/24135711/">PMID: 24135711</a> · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3859520/">PMCID: PMC3859520</a>)</span></li><li><a href="../citations.html#manichaikul-king-2010">Manichaikul et al. (2010) — KING between-family estimator</a> <span class="citation-inline-identifiers">(<a href="https://pubmed.ncbi.nlm.nih.gov/20926424/">PMID: 20926424</a> · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3025716/">PMCID: PMC3025716</a>)</span></li><li><a href="../citations.html#price-pca-stratification-2006">Price et al. (2006) — Genotype principal components</a> <span class="citation-inline-identifiers">(<a href="https://pubmed.ncbi.nlm.nih.gov/16862161/">PMID: 16862161</a>)</span></li><li><a href="../citations.html#grc-human-par-intervals">Consortium (2026) — Build-specific 1-based closed X and Y PAR intervals</a></li><li><a href="../citations.html#plink2-human-ploidy-documentation">developers (2026) — Explicit haploid versus diploid dosage interpretation</a></li><li><a href="../citations.html#langfelder-preservation-2011">Langfelder et al. (2011) — WGCNA module preservation</a></li><li><a href="../citations.html#clopper-pearson-1934">Clopper (1934) — Exact binomial confidence intervals</a></li><li><a href="../citations.html#gnomad-v4-1-allele-number">Chao (2024) — Variant and nonvariant site coverage</a></li><li><a href="../citations.html#regenie-mask-frequency-documentation">developers (2026) — External ALT allele frequencies</a></li><li><a href="../citations.html#cox-1972">Cox (1972) — Cox proportional hazards</a></li><li><a href="../citations.html#efron-1977">Efron (1977) — Efron ties</a></li><li><a href="../citations.html#r-coxph-survival-documentation">Therneau (2026) — Partial likelihood and tie methods</a></li><li><a href="../citations.html#r-cox-zph-documentation">Therneau (2026) — Fitted-coefficient nuisance adjustment</a></li><li><a href="../citations.html#chen-ibrahim-shao-2009">Chen (2009) — Finite MPLE existence and full rank</a></li><li><a href="../citations.html#heinze-schemper-2001-cox">Heinze (2001) — Monotone likelihood and infinite coefficient estimates</a></li><li><a href="../citations.html#varma-simon-nested-cv-2006">Varma (2006) — Nested model selection</a></li><li><a href="../citations.html#sklearn-grouped-nested-cv">developers (2026) — Group boundaries</a></li><li><a href="../citations.html#plink2-linear-scoring">developers (2026) — Additive allele score sums and allele-normalized averages</a></li><li><a href="../citations.html#pgs-catalog-scoring-format">team (2026) — Explicit genome-build, coordinate and effect-allele weights</a></li><li><a href="../citations.html#hts-vcf-bcf-specification">Genomics (2026) — Variant and genotype field semantics</a></li>
     </ul>
@@ -6233,7 +6233,7 @@ are not biological or clinical validation.</p>
 <p>The source build accepts standalone <code>network_modules</code> and
 <code>module_gene_ontology</code> artifacts in addition to graphs and the other typed
 completed stages above. A completed module GO import needs neither its original
-graph nor a raw assay matrix, membership export or local GO database. JLinAlg
+graph nor a raw assay matrix, membership export or local GO database. OmicsMatic
 retains its original testing family and adjusted values; it does not reconstruct
 or certify the source analysis. An entirely analyzed study can use <code>datasets: []</code>
 and explicit manual goals, then continue with finding inventory, impact review
@@ -6882,5 +6882,5 @@ turns those features into OAS1 findings nor performs real-model scientific
 appraisal. It requires PyYAML, jsonschema, NumPy and SciPy.</p>
 <p>The <a href="../analysis-pipeline-implementation.html#public-passage-context-checkpoint-2026-10-26">public passage checkpoint</a> records the exact source/JAR, full gate, eight workflows, same-value YAML writer comparison, retained prototype history and scientific evidence boundaries.</p>
 <p>The <a href="../analysis-pipeline-implementation.html#scoped-public-evidence-citation-checkpoint-2026-10-26">scoped public evidence checkpoint</a> records the response-validator fix, identical-packet old/new comparison, ten new tests and exact-JAR acceptance.</p></article>
-<aside class="toc"><strong>On this page</strong><a href="#what-you-will-build">What you will build</a><a href="#reuse-completed-analyses-and-run-missing-work">Reuse completed analyses and run missing work</a><a href="#preserve-supplied-discovery-fdr-during-validation">Preserve supplied discovery FDR during validation</a><a href="#discovery-cohorts-represented-by-supplied-pools">Discovery cohorts represented by supplied pools</a><a href="#gwas-qq-and-manhattan-diagnostics">GWAS QQ and Manhattan diagnostics</a><a href="#scientific-scope-and-missing-cohort-networks">Scientific scope and missing cohort networks</a><a href="#molecular-networks-pathway-overlap-modules-and-module-go">Molecular networks, pathway overlap, modules and module GO</a><a href="#cross-cohort-module-preservation">Cross-cohort module preservation</a><a href="#native-ranked-gsea-and-leading-edge-pathway-networks">Native ranked GSEA and leading-edge pathway networks</a><a href="#held-out-risk-scores-and-missing-related-phenotype-work">Held-out risk scores and missing related-phenotype work</a><a href="#rare-variant-study-branches-and-unsigned-results">Rare-variant study branches and unsigned results</a><a href="#result-metadata-through-qc-and-pooling">Result metadata through QC and pooling</a><a href="#study-wide-impact-assessment-and-manuscript-selection">Study-wide impact assessment and manuscript selection</a><a href="#effect-size-quality-control-before-downstream-analysis">Effect-size quality control before downstream analysis</a><a href="#probe-annotation-and-genomic-locations">Probe annotation and genomic locations</a><a href="#reading-findings-and-choosing-the-next-analysis">Reading findings and choosing the next analysis</a><a href="#advisory-ai-while-jlinalg-controls-execution">Advisory AI while JLinAlg controls execution</a><a href="#data-dictionaries-optional-assistance-and-first-drafts">Data dictionaries, optional assistance, and first drafts</a><a href="#publication-citations-and-parameter-reporting">Publication citations and parameter reporting</a><a href="#1-build-and-copy-the-example">1. Build and copy the example</a><a href="#2-confirm-beginning-state-and-validate-inputs">2. Confirm beginning state and validate inputs</a><a href="#3-resolve-defaults-and-inspect-the-contract">3. Resolve defaults and inspect the contract</a><a href="#4-compile-and-approve-the-plan">4. Compile and approve the plan</a><a href="#5-execute-the-approved-operations">5. Execute the approved operations</a><a href="#6-verify-and-safely-resume">6. Verify and safely resume</a><a href="#7-make-a-study-change-through-an-amendment">7. Make a study change through an amendment</a><a href="#8-record-an-unusual-result">8. Record an unusual result</a><a href="#documented-scientist-questions">Documented scientist questions</a><a href="#patient-level-data-and-llm-non-egress">Patient-level data and LLM non-egress</a><a href="#current-boundaries">Current boundaries</a><a href="#compatible-effects-and-covariance-aware-pooling">Compatible effects and covariance-aware pooling</a><a href="#native-gwas-consequences-and-alphagenome-context">Native GWAS consequences and AlphaGenome context</a><a href="#exact-protein-sequences-structures-and-confidence">Exact protein sequences, structures and confidence</a><a href="#multiway-cohort-overlap-and-registered-heterogeneity">Multiway cohort overlap and registered heterogeneity</a><a href="#complete-colocalization-records-and-regional-coverage">Complete colocalization records and regional coverage</a><a href="#one-registered-primary-source-across-downstream-analyses">One registered primary source across downstream analyses</a><a href="#genotype-qc-scopes-and-unavailable-statistics">Genotype QC scopes and unavailable statistics</a><a href="#firth-association-for-separated-binary-gwas-designs">Firth association for separated binary GWAS designs</a><a href="#exact-conditional-tests-for-sparse-binary-gwas">Exact conditional tests for sparse binary GWAS</a><a href="#native-binary-risk-score-development-and-frozen-probabilities">Native binary risk-score development and frozen probabilities</a><a href="#ld-aware-gwas-functional-category-enrichment">LD-aware GWAS functional-category enrichment</a><a href="#conditional-binary-rare-variant-sets">Conditional binary rare-variant sets</a><a href="#rare-set-findings-in-enrichment-and-contextual-literature">Rare-set findings in enrichment and contextual literature</a><a href="#rare-set-cohort-overlap-with-complete-source-families">Rare-set cohort overlap with complete source families</a><a href="#resume-completed-native-genetic-pairs">Resume completed native genetic pairs</a><a href="#complete-missing-mr-features-from-supplied-contributions">Complete missing MR features from supplied contributions</a><a href="#mr-coverage-before-gene-annotation">MR coverage before gene annotation</a><a href="#registered-ld-evidence-for-distinct-principal-findings">Registered LD evidence for distinct principal findings</a><a href="#registered-adjusted-subgroup-interactions">Registered adjusted subgroup interactions</a><a href="#registered-genotype-sample-qc-and-projected-pcs">Registered genotype sample QC and projected PCs</a><a href="#reuse-external-sample-qc-and-pca-and-complete-missing-work">Reuse external sample QC and PCA, and complete missing work</a><a href="#cross-mask-rare-set-and-gene-omnibus">Cross-mask rare-set and gene omnibus</a><a href="#reuse-supplied-literature-and-complete-missing-searches">Reuse supplied literature and complete missing searches</a><a href="#claim-bound-principal-finding-discussion">Claim-bound principal-finding discussion</a><a href="#declared-human-chromosome-and-ploidy-contrasts">Declared human chromosome and ploidy contrasts</a><a href="#declared-cross-hypothesis-primary-mr-families">Declared cross-hypothesis primary MR families</a><a href="#conditional-tests-of-frozen-network-wiring">Conditional tests of frozen network wiring</a><a href="#external-population-frequency-eligibility-for-rare-masks">External population-frequency eligibility for rare masks</a><a href="#registered-native-cox-survival-association">Registered native Cox survival association</a><a href="#finite-cox-coefficient-estimates-before-signed-inference">Finite Cox coefficient estimates before signed inference</a><a href="#adaptive-cox-proofs-and-prepared-null-score-scans">Adaptive Cox proofs and prepared-null score scans</a><a href="#grouped-nested-development-validation-for-risk-scores">Grouped nested development validation for risk scores</a><a href="#frozen-genetic-scores-from-bed-genotypes">Frozen genetic scores from BED genotypes</a><a href="#frozen-scores-from-vcf-bcf-and-bgen">Frozen scores from VCF, BCF and BGEN</a><a href="#scientific-citations-study-pipeline-tutorial">Scientific citations</a><a href="#molecular-assay-qc-and-supplied-decisions">Molecular assay QC and supplied decisions</a><a href="#completed-analyses-through-manuscript">Completed analyses through manuscript</a><a href="#missing-model-review-and-explicit-continuation">Missing-model review and explicit continuation</a><a href="#literature-coverage-in-finding-dossiers">Literature coverage in finding dossiers</a><a href="#provisional-impact-before-the-literature-cap">Provisional impact before the literature cap</a><a href="#phenotype-null-gsea-and-reusable-null-rankings">Phenotype-null GSEA and reusable null rankings</a><a href="#continuous-gwas-annotations-and-conditional-effects">Continuous GWAS annotations and conditional effects</a><a href="#automatic-follow-ups-from-a-supplied-primary-meta-analysis">Automatic follow-ups from a supplied primary meta-analysis</a><a href="#snp-annotation-from-a-pooled-gwas">SNP annotation from a pooled GWAS</a><a href="#partial-supplied-stages-and-native-completion">Partial supplied stages and native completion</a><a href="#citation-candidates-in-impact-review-and-manuscript-drafting">Citation candidates in impact review and manuscript drafting</a><a href="#explicit-public-passages-for-impact-review-and-drafting">Explicit public passages for impact review and drafting</a></aside></div>
+<aside class="toc"><strong>On this page</strong><a href="#what-you-will-build">What you will build</a><a href="#reuse-completed-analyses-and-run-missing-work">Reuse completed analyses and run missing work</a><a href="#preserve-supplied-discovery-fdr-during-validation">Preserve supplied discovery FDR during validation</a><a href="#discovery-cohorts-represented-by-supplied-pools">Discovery cohorts represented by supplied pools</a><a href="#gwas-qq-and-manhattan-diagnostics">GWAS QQ and Manhattan diagnostics</a><a href="#scientific-scope-and-missing-cohort-networks">Scientific scope and missing cohort networks</a><a href="#molecular-networks-pathway-overlap-modules-and-module-go">Molecular networks, pathway overlap, modules and module GO</a><a href="#cross-cohort-module-preservation">Cross-cohort module preservation</a><a href="#native-ranked-gsea-and-leading-edge-pathway-networks">Native ranked GSEA and leading-edge pathway networks</a><a href="#held-out-risk-scores-and-missing-related-phenotype-work">Held-out risk scores and missing related-phenotype work</a><a href="#rare-variant-study-branches-and-unsigned-results">Rare-variant study branches and unsigned results</a><a href="#result-metadata-through-qc-and-pooling">Result metadata through QC and pooling</a><a href="#study-wide-impact-assessment-and-manuscript-selection">Study-wide impact assessment and manuscript selection</a><a href="#effect-size-quality-control-before-downstream-analysis">Effect-size quality control before downstream analysis</a><a href="#probe-annotation-and-genomic-locations">Probe annotation and genomic locations</a><a href="#reading-findings-and-choosing-the-next-analysis">Reading findings and choosing the next analysis</a><a href="#advisory-ai-while-omicsmatic-controls-execution">Advisory AI while OmicsMatic controls execution</a><a href="#data-dictionaries-optional-assistance-and-first-drafts">Data dictionaries, optional assistance, and first drafts</a><a href="#publication-citations-and-parameter-reporting">Publication citations and parameter reporting</a><a href="#1-build-and-copy-the-example">1. Build and copy the example</a><a href="#2-confirm-beginning-state-and-validate-inputs">2. Confirm beginning state and validate inputs</a><a href="#3-resolve-defaults-and-inspect-the-contract">3. Resolve defaults and inspect the contract</a><a href="#4-compile-and-approve-the-plan">4. Compile and approve the plan</a><a href="#5-execute-the-approved-operations">5. Execute the approved operations</a><a href="#6-verify-and-safely-resume">6. Verify and safely resume</a><a href="#7-make-a-study-change-through-an-amendment">7. Make a study change through an amendment</a><a href="#8-record-an-unusual-result">8. Record an unusual result</a><a href="#documented-scientist-questions">Documented scientist questions</a><a href="#patient-level-data-and-llm-non-egress">Patient-level data and LLM non-egress</a><a href="#current-boundaries">Current boundaries</a><a href="#compatible-effects-and-covariance-aware-pooling">Compatible effects and covariance-aware pooling</a><a href="#native-gwas-consequences-and-alphagenome-context">Native GWAS consequences and AlphaGenome context</a><a href="#exact-protein-sequences-structures-and-confidence">Exact protein sequences, structures and confidence</a><a href="#multiway-cohort-overlap-and-registered-heterogeneity">Multiway cohort overlap and registered heterogeneity</a><a href="#complete-colocalization-records-and-regional-coverage">Complete colocalization records and regional coverage</a><a href="#one-registered-primary-source-across-downstream-analyses">One registered primary source across downstream analyses</a><a href="#genotype-qc-scopes-and-unavailable-statistics">Genotype QC scopes and unavailable statistics</a><a href="#firth-association-for-separated-binary-gwas-designs">Firth association for separated binary GWAS designs</a><a href="#exact-conditional-tests-for-sparse-binary-gwas">Exact conditional tests for sparse binary GWAS</a><a href="#native-binary-risk-score-development-and-frozen-probabilities">Native binary risk-score development and frozen probabilities</a><a href="#ld-aware-gwas-functional-category-enrichment">LD-aware GWAS functional-category enrichment</a><a href="#conditional-binary-rare-variant-sets">Conditional binary rare-variant sets</a><a href="#rare-set-findings-in-enrichment-and-contextual-literature">Rare-set findings in enrichment and contextual literature</a><a href="#rare-set-cohort-overlap-with-complete-source-families">Rare-set cohort overlap with complete source families</a><a href="#resume-completed-native-genetic-pairs">Resume completed native genetic pairs</a><a href="#complete-missing-mr-features-from-supplied-contributions">Complete missing MR features from supplied contributions</a><a href="#mr-coverage-before-gene-annotation">MR coverage before gene annotation</a><a href="#registered-ld-evidence-for-distinct-principal-findings">Registered LD evidence for distinct principal findings</a><a href="#registered-adjusted-subgroup-interactions">Registered adjusted subgroup interactions</a><a href="#registered-genotype-sample-qc-and-projected-pcs">Registered genotype sample QC and projected PCs</a><a href="#reuse-external-sample-qc-and-pca-and-complete-missing-work">Reuse external sample QC and PCA, and complete missing work</a><a href="#cross-mask-rare-set-and-gene-omnibus">Cross-mask rare-set and gene omnibus</a><a href="#reuse-supplied-literature-and-complete-missing-searches">Reuse supplied literature and complete missing searches</a><a href="#claim-bound-principal-finding-discussion">Claim-bound principal-finding discussion</a><a href="#declared-human-chromosome-and-ploidy-contrasts">Declared human chromosome and ploidy contrasts</a><a href="#declared-cross-hypothesis-primary-mr-families">Declared cross-hypothesis primary MR families</a><a href="#conditional-tests-of-frozen-network-wiring">Conditional tests of frozen network wiring</a><a href="#external-population-frequency-eligibility-for-rare-masks">External population-frequency eligibility for rare masks</a><a href="#registered-native-cox-survival-association">Registered native Cox survival association</a><a href="#finite-cox-coefficient-estimates-before-signed-inference">Finite Cox coefficient estimates before signed inference</a><a href="#adaptive-cox-proofs-and-prepared-null-score-scans">Adaptive Cox proofs and prepared-null score scans</a><a href="#grouped-nested-development-validation-for-risk-scores">Grouped nested development validation for risk scores</a><a href="#frozen-genetic-scores-from-bed-genotypes">Frozen genetic scores from BED genotypes</a><a href="#frozen-scores-from-vcf-bcf-and-bgen">Frozen scores from VCF, BCF and BGEN</a><a href="#scientific-citations-study-pipeline-tutorial">Scientific citations</a><a href="#molecular-assay-qc-and-supplied-decisions">Molecular assay QC and supplied decisions</a><a href="#completed-analyses-through-manuscript">Completed analyses through manuscript</a><a href="#missing-model-review-and-explicit-continuation">Missing-model review and explicit continuation</a><a href="#literature-coverage-in-finding-dossiers">Literature coverage in finding dossiers</a><a href="#provisional-impact-before-the-literature-cap">Provisional impact before the literature cap</a><a href="#phenotype-null-gsea-and-reusable-null-rankings">Phenotype-null GSEA and reusable null rankings</a><a href="#continuous-gwas-annotations-and-conditional-effects">Continuous GWAS annotations and conditional effects</a><a href="#automatic-follow-ups-from-a-supplied-primary-meta-analysis">Automatic follow-ups from a supplied primary meta-analysis</a><a href="#snp-annotation-from-a-pooled-gwas">SNP annotation from a pooled GWAS</a><a href="#partial-supplied-stages-and-native-completion">Partial supplied stages and native completion</a><a href="#citation-candidates-in-impact-review-and-manuscript-drafting">Citation candidates in impact review and manuscript drafting</a><a href="#explicit-public-passages-for-impact-review-and-drafting">Explicit public passages for impact review and drafting</a></aside></div>
 </main><site-footer root="../"></site-footer></body></html>

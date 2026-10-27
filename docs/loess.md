@@ -65,12 +65,12 @@ Windows 11 Intel Core i9-9900K development host:
 | Runtime | Median seconds | Rows/second | Speedup vs R |
 | --- | ---: | ---: | ---: |
 | R `stats::loess`, direct | 0.090000 | 55,556 | 1.00x |
-| JLinAlg end-to-end | 0.023688 | 211,081 | 3.80x |
-| JLinAlg prepared geometry | 0.022872 | 218,606 | 3.93x |
+| OmicsMatic end-to-end | 0.023688 | 211,081 | 3.80x |
+| OmicsMatic prepared geometry | 0.022872 | 218,606 | 3.93x |
 
-R was configured with `statistics="none"` for the timed fit. JLinAlg still
+R was configured with `statistics="none"` for the timed fit. OmicsMatic still
 computed fitted values, residuals, diagonal leverage, and exact trace, making
-the timing conservative for JLinAlg. Both checksums were
+the timing conservative for OmicsMatic. Both checksums were
 `0.001584182714`.
 
 Reproduce with:
@@ -84,7 +84,7 @@ Reproduce with:
 <!-- SCIENTIFIC-CITATIONS:START -->
 ## Scientific citations
 
-These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as JLinAlg when reporting results.
+These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as OmicsMatic when reporting results.
 
 - [William S. Cleveland (1979) — Robust locally weighted regression and smoothing scatterplots](CITATIONS.md#cleveland-1979)
 - [Trevor Hastie and Robert Tibshirani (1986) — Generalized additive models](CITATIONS.md#hastie-tibshirani-1986)
@@ -93,5 +93,5 @@ These are the primary sources for the methods used in this workflow. Cite the re
 - [Robert A. Rigby and D. Mikis Stasinopoulos (2005) — Generalized additive models for location, scale and shape](CITATIONS.md#rigby-stasinopoulos-2005)
 - [Thomas W. Yee (2010) — The VGAM package for categorical data analysis](CITATIONS.md#yee-2010)
 
-[Search the complete scientific bibliography](https://robbyjo.github.io/JLinAlg/citations.html).
+[Search the complete scientific bibliography](https://robbyjo.github.io/OmicsMatic/citations.html).
 <!-- SCIENTIFIC-CITATIONS:END -->

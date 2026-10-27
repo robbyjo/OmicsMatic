@@ -10,7 +10,7 @@ must be symmetric to a scale-aware tolerance.
 
 ## OLS
 
-For a full-column-rank design, JLinAlg solves
+For a full-column-rank design, OmicsMatic solves
 
 ```text
 minimize ||y - X beta||²
@@ -40,7 +40,7 @@ coefficients are estimable.
 
 ## Gaussian penalized regression
 
-For weights normalized to sum to `n`, JLinAlg minimizes
+For weights normalized to sum to `n`, OmicsMatic minimizes
 
 ```text
 (1 / 2n) sum_i weight[i] (y[i] - intercept - x[i]' beta)^2
@@ -128,7 +128,7 @@ df = n - rank(X) - 1.
 With `DegreesOfFreedomMethod.SATTERTHWAITE`, let `C = vcov(beta)`, let `g_j` be
 the gradient of `C[j,j]` with respect to the log variance parameters, and let
 `S` be their covariance matrix obtained by inverting the expected REML
-information. JLinAlg uses
+information. OmicsMatic uses
 
 ```text
 df[j] = 2 C[j,j]^2 / (g_j' S g_j).
@@ -139,7 +139,7 @@ The expected Fisher information is already produced by fitting, so the option
 does not require coefficient-by-coefficient refits. A small numerical ridge is
 used only when factoring the variance-parameter information matrix.
 
-With `DegreesOfFreedomMethod.KENWARD_ROGER`, JLinAlg implements the original
+With `DegreesOfFreedomMethod.KENWARD_ROGER`, OmicsMatic implements the original
 Kenward-Roger calculation for covariance structures that are linear in the raw
 variance components. Let `Phi = (X' V^-1 X)^-1`, let `W` be the covariance of
 the raw REML variance estimates, and define
@@ -321,7 +321,7 @@ is diagonal with entries
 R[i,i] = v(mu[i]) / (priorWeight[i] (d mu[i] / d eta[i])^2).
 ```
 
-At every outer iteration, JLinAlg fits
+At every outer iteration, OmicsMatic fits
 
 ```text
 working response - offset ~ N(X beta, G + R)

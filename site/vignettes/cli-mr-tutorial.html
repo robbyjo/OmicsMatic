@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="description" content="A CLI-only Mendelian-randomization tutorial from GWAS discovery and custom columns through LD clumping, harmonization, analysis, and output files.">
-  <title>CLI Mendelian randomization tutorial &middot; JLinAlg</title>
+  <title>CLI Mendelian randomization tutorial &middot; OmicsMatic</title>
   <link rel="stylesheet" href="../assets/styles.css"><script src="../assets/app.js" defer></script>
 </head>
 <body><site-header root="../"></site-header><main id="main">
@@ -29,7 +29,7 @@ units ncase ncontrol samplesize gene</code></pre>
   --input my-exposure.csv.gz --out exposure-candidates.tsv &#92;
   --trait "LDL cholesterol" --p-threshold 5e-8 &#92;
   --map SNP=MarkerName,beta=Effect,se=StdErr,eaf=Freq1,effect_allele=Allele1,other_allele=Allele2,pval=Pvalue</code></pre></div>
-<p>The direction is <code>TARGET=SOURCE</code>. Add <code>--effect-scale odds-ratio</code> or <code>hazard-ratio</code> when Effect is a ratio; JLinAlg converts it to a log effect. A list containing only rsIDs is insufficient: join exposure beta, SE, alleles, and preferably EAF first.</p>
+<p>The direction is <code>TARGET=SOURCE</code>. Add <code>--effect-scale odds-ratio</code> or <code>hazard-ratio</code> when Effect is a ratio; OmicsMatic converts it to a log effect. A list containing only rsIDs is insufficient: join exposure beta, SE, alleles, and preferably EAF first.</p>
 
 <h2 id="ld">3. Install an ancestry-matched LD panel</h2>
 <div class="code-window"><div class="code-bar"><i class="code-dot"></i><i class="code-dot"></i><i class="code-dot"></i><span>LD reference</span></div><pre><code>java -jar jlinalg-&lt;version&gt;.jar ld-db list
@@ -90,7 +90,7 @@ java -jar jlinalg-&lt;version&gt;.jar mr-multivariate --input harmonized-wide.ts
   <div class="container narrow">
     <span class="eyebrow">Scientific foundations</span>
     <h2 id="scientific-citations-cli-mr-tutorial">Primary method citations</h2>
-    <p>Cite the relevant method publication as well as JLinAlg when reporting results from this workflow.</p>
+    <p>Cite the relevant method publication as well as OmicsMatic when reporting results from this workflow.</p>
     <ul class="citation-links">
       <li><a href="../citations.html#bowden-mr-egger-2015">Bowden (2015) — MR-Egger</a> <span class="citation-inline-identifiers">(<a href="https://pubmed.ncbi.nlm.nih.gov/26050253/">PMID: 26050253</a> · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4469799/">PMCID: PMC4469799</a>)</span></li><li><a href="../citations.html#bowden-weighted-median-2016">Bowden et al. (2016) — weighted-median MR</a> <span class="citation-inline-identifiers">(<a href="https://pubmed.ncbi.nlm.nih.gov/27061298/">PMID: 27061298</a> · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4849733/">PMCID: PMC4849733</a>)</span></li><li><a href="../citations.html#hemani-steiger-2017">Hemani (2017) — Steiger directionality</a> <span class="citation-inline-identifiers">(<a href="https://pubmed.ncbi.nlm.nih.gov/29149188/">PMID: 29149188</a> · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5711033/">PMCID: PMC5711033</a>)</span></li><li><a href="../citations.html#zhao-mr-raps-2020">Zhao et al. (2020) — MR-RAPS</a></li><li><a href="../citations.html#hemani-mrbase-2018">Hemani et al. (2018) — TwoSampleMR</a> <span class="citation-inline-identifiers">(<a href="https://pubmed.ncbi.nlm.nih.gov/29846171/">PMID: 29846171</a> · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5976434/">PMCID: PMC5976434</a>)</span></li><li><a href="../citations.html#burgess-mvmr-2015">Burgess (2015) — multivariable MR</a> <span class="citation-inline-identifiers">(<a href="https://pubmed.ncbi.nlm.nih.gov/25632051/">PMID: 25632051</a> · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4325677/">PMCID: PMC4325677</a>)</span></li><li><a href="../citations.html#zhang-multivariate-mr-2026">Zhang et al. (2026) — multivariate MR-IVW</a> <span class="citation-inline-identifiers">(<a href="https://pubmed.ncbi.nlm.nih.gov/42207415/">PMID: 42207415</a>)</span></li>
     </ul>

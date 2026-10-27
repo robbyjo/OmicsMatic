@@ -6,7 +6,7 @@
 > every branch is already automatic. Documenting this specification performs no
 > analyses, downloads or model predictions.
 
-JLinAlg should turn a declared scientific question and available data into
+OmicsMatic should turn a declared scientific question and available data into
 reproducible association, replication, functional, genetic and literature
 results, followed by a manuscript draft. It should accept participant-level
 data, existing association results or later-stage evidence, and execute the
@@ -693,7 +693,7 @@ separation and uncertainty. [SAIGE's single-variant guide](https://saigegit.gith
 recommends MAC >= 20 and a separate set-based rare-variant analysis. Its
 [testing options](https://saigegit.github.io/SAIGE-doc/docs/single_step2.html)
 documents imbalance-aware testing and separate effect-size options; these
-capabilities should not be assumed of every JLinAlg model.
+capabilities should not be assumed of every OmicsMatic model.
 
 ### Rare-variant gene and region tests
 
@@ -803,7 +803,7 @@ generic finite matrix as sufficient QC:
 Each family needs explicit thresholds, modeled scale, missingness and diagnostics
 in its contract or a documented external preprocessing record. Unsupported intake
 or models remain visible prerequisites; these rows do not imply automatic
-JLinAlg implementations for all assays.
+OmicsMatic implementations for all assays.
 
 ## 2. Result QC, testing families and comparisons
 
@@ -1513,7 +1513,7 @@ genomic control or replace the registered primary inference.
 <!-- SCIENTIFIC-CITATIONS:START -->
 ## Scientific citations
 
-These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as JLinAlg when reporting results.
+These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as OmicsMatic when reporting results.
 
 - [Wickenhagen A, et al. (2021) — A prenylated dsRNA sensor protects against severe COVID-19](../CITATIONS.md#wickenhagen-oas1-2021) — [PMID: 34581622](https://pubmed.ncbi.nlm.nih.gov/34581622/) · [PMCID: PMC7612834](https://pmc.ncbi.nlm.nih.gov/articles/PMC7612834/)
 - [Geir Kjetil Sandve et al. (2013) — Ten Simple Rules for Reproducible Computational Research](../CITATIONS.md#sandve-reproducibility-2013)
@@ -1572,7 +1572,7 @@ These are the primary sources for the methods used in this workflow. Cite the re
 - [PGS Catalog team (2026) — PGS Catalog download information and scoring file format](../CITATIONS.md#pgs-catalog-scoring-format)
 - [Global Alliance for Genomics and Health file-format contributors (2026) — The Variant Call Format specification: VCFv4.5 and BCFv2.2](../CITATIONS.md#hts-vcf-bcf-specification)
 
-[Search the complete scientific bibliography](https://robbyjo.github.io/JLinAlg/citations.html).
+[Search the complete scientific bibliography](https://robbyjo.github.io/OmicsMatic/citations.html).
 <!-- SCIENTIFIC-CITATIONS:END -->
 
 The source build adds [frozen-module transfer across cohort graphs](study-pipeline-tutorial.md#cross-cohort-module-preservation)

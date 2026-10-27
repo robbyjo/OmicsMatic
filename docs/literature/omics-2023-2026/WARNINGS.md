@@ -58,7 +58,7 @@
 
 **REGENIE MODEL AND DEPENDENCY CHOICES REQUIRE ACTION:** use regenie-tools with explicitly declared trait/coding, missingness, RINT, genome build and allele order. Quantitative 0/1 data remains quantitative; binary/Firth/SPA is never inferred. Step 2 uses sealed phenotype/covariate/LOCO bytes from the fit and rejects changed models or absent eligible predictions. Review exact matched sample counts, NA cells, omitted tests and convergence warnings before interpretation. Private Windows source setup where permitted: python tools/literature/install_regenie.py --allow-download --allow-source-build --cygwin-root C:/cygwin64; then --runtime build/omics-regenie. Missing/forbidden runtime skips analysis with exit 3 and prominent recovery. Existing Cygwin is read-only; two BGEN compatibility edits and compiler warnings are retained. Upstream recommends Linux/macOS or WSL. This profile cannot read/write gzipped phenotype/covariate/result text. Sum-mask BED genotype export is unsupported and omitted with a warning; membership lists/results remain. Comphet collapsing is not proof of variants in trans or pathogenicity. HTP/REMETA, conditional/interaction/multitrait and old-version/full-paper parity remain open. Read REGENIE_WORKFLOWS.md.
 
-**MAGMA PRIVATE RUNTIME AND PHENOTYPE CODING REQUIRE ACTION:** original MAGMA1.10 is downloaded privately and unmodified; its authors prohibit binary/source redistribution and modification. No upstream program/manual/source is bundled in JLinAlg. Where permitted run python tools/literature/install_magma.py --allow-download and supply --home build/omics-magma; unavailable/forbidden runtime skips3 with exact recovery. MAGMA treats zero as missing under binary detection: declared0/1 controls map to1/2, while explicitly quantitative0/1/2 data receive an audited+3 affine shift to preserve the requested model. Original FAM remains unchanged. Read MAGMA_WORKFLOWS.md.
+**MAGMA PRIVATE RUNTIME AND PHENOTYPE CODING REQUIRE ACTION:** original MAGMA1.10 is downloaded privately and unmodified; its authors prohibit binary/source redistribution and modification. No upstream program/manual/source is bundled in OmicsMatic. Where permitted run python tools/literature/install_magma.py --allow-download and supply --home build/omics-magma; unavailable/forbidden runtime skips3 with exact recovery. MAGMA treats zero as missing under binary detection: declared0/1 controls map to1/2, while explicitly quantitative0/1/2 data receive an audited+3 affine shift to preserve the requested model. Original FAM remains unchanged. Read MAGMA_WORKFLOWS.md.
 
 **MAGMA GENE UNIVERSE AND LD/N CHOICES:** verify exact SNP/gene/reference coordinates and build, ancestry-matched LD and total/per-variant GWAS N; do not substitute panel/effective N or infer PC regression from summary P-values. Duplicate/zero/missing SNP P-values fail until explicitly repaired. Empty/omitted genes, unmatched variants and set members are retained with statuses. Properties require explicit missing-value/gene policies; competitive background, technical corrections and outlier truncation require review. Gene Z scores express unsigned association strength. FUMA,MAGMA.Celltyping,PoPS,scDRS,orthologues and cross-trait correction remain separate. No historical/full-paper parity inferred.
 
@@ -179,12 +179,12 @@ Adjust the Rscript path to the installed runtime. Use `forbid` instead of `allow
 
 ## Enable the skipped Python Harmony analysis
 
-Run these commands inside Linux, macOS or an already configured WSL distribution, from a JLinAlg checkout with Java 17+ and the built executable JAR. Supply your PCA matrix and matching cell metadata. Run the Java command inside that same environment; a Windows JVM cannot directly launch a Linux Python executable.
+Run these commands inside Linux, macOS or an already configured WSL distribution, from an OmicsMatic checkout with Java 17+ and the built executable JAR. Supply your PCA matrix and matching cell metadata. Run the Java command inside that same environment; a Windows JVM cannot directly launch a Linux Python executable.
 
 ```bash
 python3 -m venv build/harmony-env
 build/harmony-env/bin/python -m pip install harmonypy==2.1.0 scikit-learn
-java -jar build/cli/jlinalg-0.3.7.jar cell-embed --method harmony \
+java -jar build/cli/omicsmatic-0.3.7.jar cell-embed --method harmony \
   --matrix pca.tsv --metadata cells.tsv --batch batch \
   --python build/harmony-env/bin/python --out build/harmony-results
 ```

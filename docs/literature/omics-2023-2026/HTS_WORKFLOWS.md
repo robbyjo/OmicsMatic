@@ -37,17 +37,17 @@ pinned package archives. Availability/version checks alone do not prove an analy
 Use your actual input files and a new output directory for every command:
 
 ```powershell
-java -jar build/cli/jlinalg-0.3.7.jar hts-tools --method sam-sort `
+java -jar build/cli/omicsmatic-0.3.7.jar hts-tools --method sam-sort `
   --samtools build/omics-hts/ucrt64/bin/samtools.exe --input aligned.sam `
   --create-index true --out build/hts-sorted
-java -jar build/cli/jlinalg-0.3.7.jar hts-tools --method sam-markdup `
+java -jar build/cli/omicsmatic-0.3.7.jar hts-tools --method sam-markdup `
   --samtools build/omics-hts/ucrt64/bin/samtools.exe `
   --input build/hts-sorted/alignment.bam --out build/hts-duplicates
-java -jar build/cli/jlinalg-0.3.7.jar hts-tools --method sam-view `
+java -jar build/cli/omicsmatic-0.3.7.jar hts-tools --method sam-view `
   --samtools build/omics-hts/ucrt64/bin/samtools.exe `
   --input build/hts-duplicates/alignment.bam --require-flags 2 `
   --exclude-flags 1024 --min-mapq 20 --out build/hts-selected
-java -jar build/cli/jlinalg-0.3.7.jar hts-tools --method sam-flagstat `
+java -jar build/cli/omicsmatic-0.3.7.jar hts-tools --method sam-flagstat `
   --samtools build/omics-hts/ucrt64/bin/samtools.exe `
   --input build/hts-selected/alignment.bam --out build/hts-flags
 ```
@@ -97,7 +97,7 @@ The reference, FASTA index and consumed BAM index are hashed.
 Generate an index directly in Java, without SAMtools or BCFtools:
 
 ```powershell
-java -jar build/cli/jlinalg-0.3.7.jar hts-tools --method fasta-index `
+java -jar build/cli/omicsmatic-0.3.7.jar hts-tools --method fasta-index `
   --input reference.fa --out build/reference-index
 ```
 
@@ -112,11 +112,11 @@ actual FASTA before use. A stale index is an explicit error; changing line endin
 after indexing can corrupt reference retrieval even if sequence letters match.
 
 ```powershell
-java -jar build/cli/jlinalg-0.3.7.jar hts-tools --method sam-mpileup `
+java -jar build/cli/omicsmatic-0.3.7.jar hts-tools --method sam-mpileup `
   --samtools build/omics-hts/ucrt64/bin/samtools.exe `
   --input build/hts-sorted/alignment.bam --reference reference.fa `
   --min-mapq 30 --min-baseq 30 --baq false --out build/hts-pileup
-java -jar build/cli/jlinalg-0.3.7.jar hts-tools --method bcf-call `
+java -jar build/cli/omicsmatic-0.3.7.jar hts-tools --method bcf-call `
   --bcftools build/omics-hts/ucrt64/bin/bcftools.exe `
   --input build/hts-sorted/alignment.bam --reference reference.fa `
   --region chr1:100-200000 --ploidy 2 --out build/hts-calls
@@ -147,16 +147,16 @@ mapping-SNP genotyping remains separate work.
 ## Variant processing
 
 ```powershell
-java -jar build/cli/jlinalg-0.3.7.jar hts-tools --method bcf-norm `
+java -jar build/cli/omicsmatic-0.3.7.jar hts-tools --method bcf-norm `
   --bcftools build/omics-hts/ucrt64/bin/bcftools.exe --input calls.vcf `
   --reference reference.fa --out build/hts-normalized
-java -jar build/cli/jlinalg-0.3.7.jar hts-tools --method bcf-filter `
+java -jar build/cli/omicsmatic-0.3.7.jar hts-tools --method bcf-filter `
   --bcftools build/omics-hts/ucrt64/bin/bcftools.exe --input calls.vcf `
   --min-qual 30 --out build/hts-filtered
-java -jar build/cli/jlinalg-0.3.7.jar hts-tools --method bcf-select `
+java -jar build/cli/omicsmatic-0.3.7.jar hts-tools --method bcf-select `
   --bcftools build/omics-hts/ucrt64/bin/bcftools.exe --input calls.vcf `
   --samples-list samples.txt --out build/hts-samples
-java -jar build/cli/jlinalg-0.3.7.jar hts-tools --method bcf-stats `
+java -jar build/cli/omicsmatic-0.3.7.jar hts-tools --method bcf-stats `
   --bcftools build/omics-hts/ucrt64/bin/bcftools.exe --input calls.vcf `
   --out build/hts-stats
 ```

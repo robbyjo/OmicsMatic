@@ -1,6 +1,6 @@
 # lme4 and pedigreemm functional roadmap
 
-JLinAlg preserves the current matrix-first OLS, GLM, dense REML, pedigree REML,
+OmicsMatic preserves the current matrix-first OLS, GLM, dense REML, pedigree REML,
 and PQL APIs. The compatibility layer is additive: callers that already supply
 covariance bases continue to receive the same numerical model.
 
@@ -89,7 +89,7 @@ adaptive Gauss-Hermite quadrature for supported low-dimensional integrations.
 These estimators must not be labeled REML: their likelihood and inference are
 distinct from the current working-Gaussian REML calculation.
 
-Accordingly, JLinAlg does not claim full `lme4` compatibility. Sparse Gaussian
+Accordingly, OmicsMatic does not claim full `lme4` compatibility. Sparse Gaussian
 unstructured covariance estimation, model-derived Satterthwaite/Kenward-Roger
 inference, and formula-native constrained ML profiles now have R reference
 tests, as detailed below. GLMM likelihoods are a separate implementation and

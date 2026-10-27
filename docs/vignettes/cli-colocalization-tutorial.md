@@ -51,7 +51,7 @@ implementation can be used if it has `effect_index`, `variant_id`, and
 `lbf`/`logbf` are recognized). Each effect within one file must contain
 the same unique variant set.
 
-Trait 1 and trait 2 may contain different regional variant sets. JLinAlg
+Trait 1 and trait 2 may contain different regional variant sets. OmicsMatic
 intersects them by exact identifier in trait-1 order and reports the common
 count. It does not infer equivalent variants from coordinates or alleles.
 
@@ -87,7 +87,7 @@ remedy for badly mismatched variant coverage.
 
 ## 4. Read the outputs
 
-With `--out expression-disease-coloc.csv`, JLinAlg writes:
+With `--out expression-disease-coloc.csv`, OmicsMatic writes:
 
 1. `expression-disease-coloc.csv`, one row per retained signal pair, with
    source effect indices, common-variant count, lead variants, and posterior
@@ -143,11 +143,11 @@ explains how to create the input sidecars.
 <!-- SCIENTIFIC-CITATIONS:START -->
 ## Scientific citations
 
-These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as JLinAlg when reporting results.
+These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as OmicsMatic when reporting results.
 
 - [Gao Wang, Abhishek Sarkar, Peter Carbonetto, and Matthew Stephens (2020) — A simple new approach to variable selection in regression, with application to genetic fine mapping](../CITATIONS.md#wang-susie-2020) — [PMID: 37220626](https://pubmed.ncbi.nlm.nih.gov/37220626/) · [PMCID: PMC10201948](https://pmc.ncbi.nlm.nih.gov/articles/PMC10201948/)
 - [Claudia Giambartolomei et al. (2014) — Bayesian test for colocalisation between pairs of genetic association studies using summary statistics](../CITATIONS.md#giambartolomei-coloc-2014) — [PMID: 24830394](https://pubmed.ncbi.nlm.nih.gov/24830394/) · [PMCID: PMC4022491](https://pmc.ncbi.nlm.nih.gov/articles/PMC4022491/)
 - [Chris Wallace (2021) — A more accurate method for colocalisation analysis allowing for multiple causal variants](../CITATIONS.md#wallace-coloc-2021) — [PMID: 34587156](https://pubmed.ncbi.nlm.nih.gov/34587156/) · [PMCID: PMC8504726](https://pmc.ncbi.nlm.nih.gov/articles/PMC8504726/)
 
-[Search the complete scientific bibliography](https://robbyjo.github.io/JLinAlg/citations.html).
+[Search the complete scientific bibliography](https://robbyjo.github.io/OmicsMatic/citations.html).
 <!-- SCIENTIFIC-CITATIONS:END -->

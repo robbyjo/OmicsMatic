@@ -1,12 +1,12 @@
 # Omics transforms from the command line
 
-The main JLinAlg command accepts a deterministic transform pipeline for
+The main OmicsMatic command accepts a deterministic transform pipeline for
 feature-by-sample CSV or TSV omics matrices. Use it for expression,
 methylation, protein, or other numeric molecular features before an OLS or GLM
 association scan.
 
 ```powershell
-java -jar build/cli/jlinalg-<version>.jar `
+java -jar build/cli/omicsmatic-<version>.jar `
   --omics methylation.tsv `
   --pheno phenotype.tsv `
   --id IID `
@@ -138,7 +138,7 @@ transform but is non-estimable after model adjustment uses the normal
 structured failure output and accounting.
 
 For reproducibility, record the exact transform string with the input version
-and interpret coefficients on the final transformed scale. JLinAlg's output
+and interpret coefficients on the final transformed scale. OmicsMatic's output
 manifest and log accompany the result file, but the transform string should
 also be part of the analysis protocol.
 
@@ -192,11 +192,11 @@ arbitrary JVM code in the analysis process, so load only artifacts you trust.
 <!-- SCIENTIFIC-CITATIONS:START -->
 ## Scientific citations
 
-These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as JLinAlg when reporting results.
+These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as OmicsMatic when reporting results.
 
 - [T. Mark Beasley, Stephen Erickson, and David B. Allison (2009) — Rank-based inverse normal transformations are increasingly used, but are they merited?](../CITATIONS.md#beasley-2009) — [PMID: 19526352](https://pubmed.ncbi.nlm.nih.gov/19526352/) · [PMCID: PMC2921808](https://pmc.ncbi.nlm.nih.gov/articles/PMC2921808/)
 - [Jeffrey T. Leek and John D. Storey (2007) — Capturing heterogeneity in gene expression studies by surrogate variable analysis](../CITATIONS.md#leek-storey-2007) — [PMID: 17907809](https://pubmed.ncbi.nlm.nih.gov/17907809/) · [PMCID: PMC1994707](https://pmc.ncbi.nlm.nih.gov/articles/PMC1994707/)
 - [W. Evan Johnson, Cheng Li, and Ariel Rabinovic (2007) — Adjusting batch effects in microarray expression data using empirical Bayes methods](../CITATIONS.md#johnson-combat-2007) — [PMID: 16632515](https://pubmed.ncbi.nlm.nih.gov/16632515/)
 
-[Search the complete scientific bibliography](https://robbyjo.github.io/JLinAlg/citations.html).
+[Search the complete scientific bibliography](https://robbyjo.github.io/OmicsMatic/citations.html).
 <!-- SCIENTIFIC-CITATIONS:END -->

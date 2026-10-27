@@ -168,11 +168,11 @@ parallelism deliberately for a CPU backend.
 <!-- SCIENTIFIC-CITATIONS:START -->
 ## Scientific citations
 
-These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as JLinAlg when reporting results.
+These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as OmicsMatic when reporting results.
 
 - [H. D. Patterson and Robin Thompson (1971) — Recovery of inter-block information when block sizes are unequal](../CITATIONS.md#patterson-thompson-1971)
 - [C. R. Henderson (1975) — Best linear unbiased estimation and prediction under a selection model](../CITATIONS.md#henderson-1975)
 - [Michael G. Kenward and James H. Roger (1997) — Small sample inference for fixed effects from restricted maximum likelihood](../CITATIONS.md#kenward-roger-1997)
 
-[Search the complete scientific bibliography](https://robbyjo.github.io/JLinAlg/citations.html).
+[Search the complete scientific bibliography](https://robbyjo.github.io/OmicsMatic/citations.html).
 <!-- SCIENTIFIC-CITATIONS:END -->

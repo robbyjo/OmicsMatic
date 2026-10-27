@@ -1,11 +1,11 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Import compatible cohort score blocks, condition by Schur complement, and pool auditable aggregate-data results."><title>Summary-only conditional score analysis · JLinAlg</title>
+<meta name="description" content="Import compatible cohort score blocks, condition by Schur complement, and pool auditable aggregate-data results."><title>Summary-only conditional score analysis Â· OmicsMatic</title>
 <link rel="stylesheet" href="../assets/styles.css"><script src="../assets/app.js" defer></script></head>
 <body><site-header root="../"></site-header><main id="main">
 <section class="page-hero"><div class="container"><div class="breadcrumbs"><a href="../index.html">Home</a><span>/</span><a href="../vignettes/index.html">Vignettes</a><span>/</span><span>Summary-only conditional score analysis</span></div>
-<span class="eyebrow">CLI + Java · v0.3.6</span><h1>Summary-only conditional score analysis</h1><p>Import compatible cohort score blocks, condition by Schur complement, and pool auditable aggregate-data results.</p></div></section>
-<div class="container page-layout"><article class="prose"><p>Use this workflow when cohorts have already produced JLinAlg's versioned
+<span class="eyebrow">CLI + Java Â· v0.3.6</span><h1>Summary-only conditional score analysis</h1><p>Import compatible cohort score blocks, condition by Schur complement, and pool auditable aggregate-data results.</p></div></section>
+<div class="container page-layout"><article class="prose"><p>Use this workflow when cohorts have already produced OmicsMatic's versioned
 conditional-GWAS score exports and the target and conditioning variants share a
 complete covariance block. The analysis uses aggregate scores and covariance;
 participant-level phenotypes and genotypes remain at each cohort.</p>
@@ -20,7 +20,7 @@ often the clearest way to guarantee that scope. The block size cannot exceed
 512 variants.</p>
 <div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>./gradlew.bat executableJar
 
-java -jar build/cli/jlinalg-0.3.7.jar `
+java -jar build/cli/omicsmatic-0.3.7.jar `
   --omics cohort-a-locus.vcf.gz --pheno cohort-a-phenotype.tsv --id IID `
   --formula &quot;case_status ~ age + sex + PC1 + PC2 + &lt;omics&gt;&quot; `
   --family binomial --case-value case --control-value control `
@@ -47,13 +47,13 @@ cohort_b    cohort-b-gwas.tsv   cohort-b-gwas.tsv.score-cov.tsv cohort-b-gwas.ts
 cohorts must not be entered as though their scores were independent.</p>
 <h2 id="3-condition-and-pool">3. Condition and pool</h2>
 <p>Specify allele-aware keys in the orientation wanted in the output:</p>
-<div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>java -jar build/cli/jlinalg-0.3.7.jar conditional-score `
+<div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>java -jar build/cli/omicsmatic-0.3.7.jar conditional-score `
   --cohorts cohorts.tsv `
   --targets 1:456789:A:G,1:456950:C:T `
   --condition-on 1:455100:G:A `
   --out locus-conditional.tsv
 </code></pre></div>
-<p>For each cohort, JLinAlg performs these operations in order:</p>
+<p>For each cohort, OmicsMatic performs these operations in order:</p>
 <ol>
 <li>Match exact forward-strand chromosome, position, and allele pairs. A REF/ALT
    swap is aligned by changing the score sign and the corresponding covariance
@@ -152,7 +152,7 @@ space consistency.</p>
   <div class="container narrow">
     <span class="eyebrow">Scientific foundations</span>
     <h2 id="scientific-citations-conditional-score-conditioning">Primary method citations</h2>
-    <p>Cite the relevant method publication as well as JLinAlg when reporting results from this workflow.</p>
+    <p>Cite the relevant method publication as well as OmicsMatic when reporting results from this workflow.</p>
     <ul class="citation-links">
       <li><a href="../citations.html#yang-cojo-2012">Yang et al. (2012) — COJO</a> <span class="citation-inline-identifiers">(<a href="https://pubmed.ncbi.nlm.nih.gov/22426310/">PMID: 22426310</a> · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3593158/">PMCID: PMC3593158</a>)</span></li>
     </ul>

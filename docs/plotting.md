@@ -1,6 +1,6 @@
 # Command-line plotting
 
-JLinAlg can render publication-ready plots directly from CSV or TSV tables.
+OmicsMatic can render publication-ready plots directly from CSV or TSV tables.
 The output filename selects a raster format (`png`, `jpg`, `bmp`, `gif`, or
 `tiff`) or a vector format (`svg`, `eps`, or `pdf`). Existing files are never
 silently replaced.
@@ -19,7 +19,7 @@ age,bmi,sex,weight,visit
 create a grouped scatter plot:
 
 ```powershell
-java -jar build/cli/jlinalg-0.3.7.jar plot `
+java -jar build/cli/omicsmatic-0.3.7.jar plot `
   --type scatter --input examples/plotting/measurements.csv `
   --x age --y bmi --group sex `
   --title "BMI by age" --out bmi-by-age.png
@@ -28,7 +28,7 @@ java -jar build/cli/jlinalg-0.3.7.jar plot `
 The same command can write a vector PDF or SVG by changing `--out`:
 
 ```powershell
-java -jar build/cli/jlinalg-0.3.7.jar plot `
+java -jar build/cli/omicsmatic-0.3.7.jar plot `
   --type violin --input examples/plotting/measurements.csv `
   --x sex --y bmi --out bmi-by-sex.pdf
 ```
@@ -113,7 +113,7 @@ comparison.
 A standalone two-set diagram uses the same membership contract:
 
 ```powershell
-java -jar build/cli/jlinalg-0.3.7.jar plot `
+java -jar build/cli/omicsmatic-0.3.7.jar plot `
   --type venn --input examples/plotting/venn-memberships.csv `
   --x feature --group set --title "Discovery and replication" `
   --out discovery-replication.pdf

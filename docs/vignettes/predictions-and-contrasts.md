@@ -36,7 +36,7 @@ The same probit fit and response-scale estimands are available from a numeric
 table through the source-build CLI:
 
 ```powershell
-java -jar build/cli/jlinalg-0.3.7.jar glm-predict `
+java -jar build/cli/omicsmatic-0.3.7.jar glm-predict `
   --input cohort.tsv `
   --response case `
   --predictors exposure,age,sex `
@@ -49,12 +49,12 @@ For standardized contrasts, reuse the observed rows and set one design column
 to each scenario value:
 
 ```powershell
-java -jar build/cli/jlinalg-0.3.7.jar glm-predict `
+java -jar build/cli/omicsmatic-0.3.7.jar glm-predict `
   --input cohort.tsv --response case --predictors exposure,age,sex `
   --family probit --estimand difference `
   --scenario-column exposure --first 1 --second 0
 
-java -jar build/cli/jlinalg-0.3.7.jar glm-predict `
+java -jar build/cli/omicsmatic-0.3.7.jar glm-predict `
   --input cohort.tsv --response case --predictors exposure,age,sex `
   --family probit --estimand ame --ame-column age
 ```
@@ -180,11 +180,11 @@ Regenerate its reference output with:
 <!-- SCIENTIFIC-CITATIONS:START -->
 ## Scientific citations
 
-These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as JLinAlg when reporting results.
+These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as OmicsMatic when reporting results.
 
 - [J. A. Nelder and R. W. M. Wedderburn (1972) — Generalized linear models](../CITATIONS.md#nelder-wedderburn-1972)
 - [C. I. Bliss (1934) — The method of probits](../CITATIONS.md#bliss-1934) — [PMID: 17813446](https://pubmed.ncbi.nlm.nih.gov/17813446/)
 - [Kung-Yee Liang and Scott L. Zeger (1986) — Longitudinal data analysis using generalized linear models](../CITATIONS.md#liang-zeger-1986)
 
-[Search the complete scientific bibliography](https://robbyjo.github.io/JLinAlg/citations.html).
+[Search the complete scientific bibliography](https://robbyjo.github.io/OmicsMatic/citations.html).
 <!-- SCIENTIFIC-CITATIONS:END -->

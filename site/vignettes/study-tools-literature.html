@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Run native or AI-assisted searches, choose and restrict tools, and record evidence-based manuscript priorities."><title>Literature search, bioinformatics tools and important findings · OmicsMatic</title>
+<link rel="stylesheet" href="../assets/styles.css"><script src="../assets/app.js" defer></script><style>.study-guide .result-table table{min-width:540px;table-layout:fixed}.study-guide .result-table th,.study-guide .result-table td{white-space:normal;overflow-wrap:anywhere}</style></head>
+<body><site-header root="../"></site-header><main id="main">
+<section class="page-hero"><div class="container"><div class="breadcrumbs"><a href="../index.html">Home</a><span>/</span><a href="../vignettes/index.html">Vignettes</a><span>/</span><span>Literature search, bioinformatics tools and important findings</span></div>
+<span class="eyebrow">Beginner guide · Current source build</span><h1>Literature search, bioinformatics tools and important findings</h1><p>Run native or AI-assisted searches, choose and restrict tools, and record evidence-based manuscript priorities.</p></div></section>
+<div class="container page-layout"><article class="prose study-guide"><p>This guide serves all three modes. Begin with
+<a href="study-getting-started.html">a working study</a>, then decide which evidence to add.
+<strong>Automatic planning means registered, configured work with its required inputs.</strong>
+An AI suggestion is not permission to execute arbitrary software.</p>
+<p><strong>Choose your shell:</strong> use either the <strong>PowerShell (Windows)</strong> or the
+<strong>Bash (Linux/macOS)</strong> version of each example. Keep the same terminal session
+while following a walkthrough so its variables remain defined. On macOS, run
+<code>bash</code> in Terminal before using the Bash examples if your default shell is zsh.
+For steps that need review or filled-in YAML, stop at that point before continuing.</p>
+<h2 id="three-different-kinds-of-tool-use">Three different kinds of tool use</h2>
+<div class="result-table"><table>
+<thead>
+<tr>
+<th>Route</th>
+<th>Who chooses and executes it</th>
+<th>How to enable it</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Deterministic study operation</td>
+<td>OmicsMatic compiles and runs a registered operation under the approved plan.</td>
+<td>Choose goals and their method/input settings in the hypothesis. No AI account is required.</td>
+</tr>
+<tr>
+<td>Built-in AI provider search</td>
+<td>The configured provider searches during a supported assistance purpose.</td>
+<td>Explicitly enable that purpose and its connection/disclosure policy. It does not receive local shell tools.</td>
+</tr>
+<tr>
+<td>External driver tool</td>
+<td>A separately operated agent uses tools exposed by its host.</td>
+<td>Configure that host's credentials, allowed commands, filesystem and network permissions. <code>study.yaml</code> cannot enforce them.</td>
+</tr>
+</tbody>
+</table></div>
+<p>A model can propose a method or code text. The built-in proposal handler keeps
+code as review material; it never executes model-generated code.
+Preapproved registered sensitivity analyses are a separate deterministic route.</p>
+<h2 id="search-the-literature-without-ai">Search the literature without AI</h2>
+<p>A basic search needs a meaningful public phenotype/outcome label, molecular-field
+terms and an approved network environment. For gene-specific searches, supply
+unambiguous gene annotation. Unknown probes are not guessed to be gene symbols.</p>
+<p>Inside the existing hypothesis, use:</p>
+<div class="code-window"><div class="code-bar"><span>yaml</span></div><pre><code>analysis:
+  mode: manual
+  goals: [literature_search]
+  bioinformatics:
+    phenotype_terms: [body mass index, obesity]
+    literature_terms: [RNA splicing, isoform ratio, transcript isoform]
+    max_pages: 3
+    literature_max_features: 20
+    literature_max_queries: 1000
+    literature_selection: p_value
+    fdr: 0.05
+</code></pre></div>
+<p>This is a fragment for your own study, not a complete <code>study.yaml</code>.
+Choose terms describing your actual assay and question. These particular
+splicing terms are inappropriate for a study of unrelated measurements.</p>
+<p>Before first resolution, merge the fragment, validate, plan, review and approve.
+For a frozen project, add the branch with an amendment as in the
+<a href="ai-no-ai.html#add-an-analysis-later">deterministic guide</a>. Then run online:</p>
+<p><strong>Windows (PowerShell):</strong></p>
+<div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>java -jar $jar study run --project . --actor-id scientist-1
+java -jar $jar study status --project .
+Start-Process index/index.html
+</code></pre></div>
+<p><strong>Linux / macOS (Bash):</strong></p>
+<div class="code-window"><div class="code-bar"><span>bash</span></div><pre><code>java -jar &quot;$jar&quot; study run --project . --actor-id scientist-1
+java -jar &quot;$jar&quot; study status --project .
+if [ &quot;$(uname -s)&quot; = &quot;Darwin&quot; ]; then
+    open index/index.html
+elif [ -n &quot;${DISPLAY:-}${WAYLAND_DISPLAY:-}&quot; ] &amp;&amp; command -v xdg-open &gt;/dev/null 2&gt;&amp;1; then
+    xdg-open index/index.html
+else
+    printf 'Open this report in a browser: %s/index/index.html\n' &quot;$PWD&quot;
+fi
+</code></pre></div>
+<p>Do not pass <code>--offline</code> when you intend a remote search. A denied remote policy,
+disabled downloads or missing annotation can still block the operation.
+No AI key is needed for this native Europe PMC search.</p>
+<p>It retrieves four field-level strategies: background, hypothesis relevance,
+similar studies and potentially conflicting findings. Those can run even when
+no gene is significant. Eligible mapped genes also receive direct association,
+mechanism and replication/contrary searches.</p>
+<p>The signal selection threshold uses the complete valid tested family before
+the feature cap. Do not prefilter your input to significant hits and describe
+the remainder as the full family. <code>literature_max_features</code> controls the
+gene-level reading budget, not the statistical testing family.
+The contextual protein/sequence budget <code>max_features</code> is separate.</p>
+<h2 id="read-the-search-outputs">Read the search outputs</h2>
+<p>Use the index to find the operation, then inspect:</p>
+<div class="result-table"><table>
+<thead>
+<tr>
+<th>Artifact</th>
+<th>What to do with it</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>reference-catalog.html</code> and <code>reference-catalog.yaml</code></td>
+<td>Read identifiers, bibliographic records, available abstracts/excerpts and retrieval contexts.</td>
+</tr>
+<tr>
+<td><code>literature-selection.tsv</code></td>
+<td>Check eligible signals, full-family FDR, the review budget and features left outside it.</td>
+</tr>
+<tr>
+<td>Query and response audits</td>
+<td>Check exact terms, source, dates, pagination, limits and failed requests.</td>
+</tr>
+<tr>
+<td>Coverage and input requests</td>
+<td>Distinguish a completed bounded search from unavailable sources, denied access or exhausted budgets.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Retrieved papers remain candidates. Read the relevant source text, check
+species, tissue, phenotype, study design and actual effect direction. Separate
+direct evidence from a general mechanism, and retain contradictory findings.
+A title match or model citation is not evidence that the paper supports your
+claim. A bounded search is not a systematic review or proof of novelty.</p>
+<p>For deeper searches, change synonyms, page/query budgets or scope through a
+reviewed amendment. Preserve the earlier search. The
+<a href="bioinformatics-evidence.html#literature-depth-and-excerpts">advanced literature guide</a>
+explains query strategies, excerpts, deduplication and coverage.</p>
+<p>For a bibliography assembled elsewhere, use
+<a href="study-pipeline-tutorial.html#reuse-supplied-literature-and-complete-missing-searches">supplied literature and missing searches</a>
+to declare completed evidence and its search coverage. A bibliography alone does
+not demonstrate that all required claim-level searches or source appraisals occurred.</p>
+<h2 id="add-ai-literature-assistance">Add AI literature assistance</h2>
+<p>Configure a <a href="ai-connections.html">browser or API connection</a>, then enable
+<code>assistance.literature: true</code>. Keep <code>literature_search</code> in the goals if you
+also want the native, reproducible Europe PMC retrieval.</p>
+<p>The two operations have different purposes: <code>literature_search</code> is native
+retrieval; <code>literature_support</code> is optional AI assistance.
+The OpenAI adapter requests hosted web search; Gemini requests search grounding.
+Browser exchanges require the packet's answer and reference contract.
+A generic compatible chat endpoint is not guaranteed to supply retrieval evidence.</p>
+<p>Ask for the closest previous studies, conflicting evidence and the relevance of
+each source. Verify DOI/PMID and source text yourself. Enabling AI literature
+review does not authorize arbitrary bioinformatics programs or shell commands.</p>
+<h2 id="choose-and-limit-the-tools">Choose and limit the tools</h2>
+<p>For a first study, use <code>analysis.mode: manual</code>, then grow an explicit goal list.
+For example:</p>
+<div class="code-window"><div class="code-bar"><span>yaml</span></div><pre><code>analysis:
+  mode: manual
+  goals: [discovery_replication, meta_analysis, literature_search]
+</code></pre></div>
+<p>This requests a bounded result-first workflow. It does not ask the planner to
+fit new participant-level models, construct networks or run MR merely because
+a model suggests them. Prerequisites and automatic diagnostics or configured
+sensitivity operations can still be added; review the actual graph.</p>
+<p>When you want a broader registered workflow, set <code>mode: auto</code> and inspect all
+inferred goals before approval. It can identify missing work, but cannot create
+absent regional statistics, ancestry, sample overlap or instrument validity.</p>
+<div class="result-table"><table>
+<thead>
+<tr>
+<th>Task</th>
+<th>Supported choices and where to configure them</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Public source discovery</td>
+<td><code>source_discovery</code>: built-in GWAS Catalog, eQTL Catalogue/GTEx discovery with source-specific limitations. See <a href="bioinformatics-evidence.html#sources-and-scientific-relevance">source behavior</a>.</td>
+</tr>
+<tr>
+<td>Protein and sequence context</td>
+<td><code>bioinformatics_investigation</code>: reviewed UniProt candidates, AlphaFold context and UCSC reference sequence, subject to annotation and policy.</td>
+</tr>
+<tr>
+<td>GO/pathway analysis</td>
+<td><code>gene_ontology</code>, <code>pathway_enrichment</code>, <code>ranked_gsea</code> or <code>gwas_enrichment</code>, with task-specific gene sets/backgrounds/ranks. See <a href="enrichment.html">enrichment</a>.</td>
+</tr>
+<tr>
+<td>Networks</td>
+<td>The study's <code>analysis.network</code> configuration; standalone workflows also offer reference networks, WGCNA, sparse/differential networks, GENIE3 and CARNIVAL. See <a href="network-followup.html">network choices</a> and the study tutorial; standalone choices are not all interchangeable study backends.</td>
+</tr>
+<tr>
+<td>Variant consequences and scores</td>
+<td><code>analysis.variant_followup</code> declares its supported annotation/scoring route, inputs and provider. See <a href="variant-followup.html">variant adapters</a> and <a href="study-pipeline-tutorial.html">registered study examples</a>.</td>
+</tr>
+<tr>
+<td>MR/fine-mapping/colocalization</td>
+<td>Relevant goals and reviewed <code>analysis.bioinformatics</code> source policies or custom genetic inputs. See <a href="bioinformatics-evidence.html#from-a-source-candidate-to-genetic-inference">genetic prerequisites</a>.</td>
+</tr>
+<tr>
+<td>Extra approved sensitivity</td>
+<td><code>assistance.allow_analyses: [leave_one_cohort_out, fixed_random_comparison]</code>; these are registered local analyses, not permission for arbitrary code.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Some methods use native Java, some use an installed external adapter, and others
+are only available as standalone commands. A framework capability does not mean
+that every tool is automatically invoked by <code>study auto</code>. Inspect
+<code>study operations --project .</code>, the method's vignette and your compiled plan.</p>
+<p>For example, a supported participant-matrix study can predeclare its native
+correlation-network settings:</p>
+<div class="code-window"><div class="code-bar"><span>yaml</span></div><pre><code>analysis:
+  mode: manual
+  goals: [network_analysis]
+  network:
+    correlation: spearman
+    threshold: 0.7
+    independent_samples: true
+    preprocessing: Log-transformed measurements with reviewed batch and covariate handling.
+</code></pre></div>
+<p>Choose <code>pearson</code> or <code>spearman</code> for the supported native network, and record
+the actual preprocessing and independence basis. This fragment needs a suitable
+participant matrix; the result-first rehearsal has no such matrix and cannot
+construct this network. It does not select WGCNA or GENIE3 as a hidden backend.
+For those standalone workflows, use their documented command and import a
+supported completed graph when appropriate.</p>
+<h2 id="block-unwanted-work-or-access">Block unwanted work or access</h2>
+<p>There is <strong>no general <code>allowed_tools</code>, <code>blocked_tools</code>, MCP-server list or
+provider-tool JSON field in study.yaml</strong>. Do not add invented configuration keys.
+Use the control that corresponds to the action:</p>
+<div class="result-table"><table>
+<thead>
+<tr>
+<th>Intention</th>
+<th>Supported control</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Avoid an optional scientific branch</td>
+<td>Use manual mode, omit its goal and explicit triggering configuration, then inspect the plan. A dependency of another requested branch may still be required.</td>
+</tr>
+<tr>
+<td>Keep AI off</td>
+<td>Omit assistance or set <code>assistance.enabled: false</code>.</td>
+</tr>
+<tr>
+<td>Disable a provider-search purpose</td>
+<td>Leave <code>literature</code> and <code>related_phenotypes</code> disabled. Native literature retrieval is controlled separately by its goal.</td>
+</tr>
+<tr>
+<td>Limit AI-requested sensitivity</td>
+<td>Set <code>allow_analyses</code> only to approved registered choices, or <code>[]</code>. Other automatic study QC/sensitivity rules are separate.</td>
+</tr>
+<tr>
+<td>Block built-in network work</td>
+<td>Use <code>--offline</code> and the reviewed resource policy; preinstall required references.</td>
+</tr>
+<tr>
+<td>Block remote aggregate assistance and study-related public queries</td>
+<td>Set <code>project.data_policy.llm.remote_transmission: deny_all</code>. Generic reference installation has separate resource controls.</td>
+</tr>
+<tr>
+<td>Block a specific service/domain or executable</td>
+<td>Enforce it with the execution environment's firewall, gateway and executable permissions. Unsupported source calls may remain waiting.</td>
+</tr>
+<tr>
+<td>Restrict an external agent</td>
+<td>Configure its host's tool/command allowlist and data permissions, as in the <a href="ai-driver.html#give-the-driver-a-concrete-task">driver guide</a>.</td>
+</tr>
+</tbody>
+</table></div>
+<p>The built-in adapter does not expose all provider web-search filtering options in
+the YAML. If a required domain restriction cannot be enforced by the configured
+service, leave that remote route off or use a controlled environment/manual
+review. <code>--offline</code> applies to built-in requests, including loopback HTTP;
+it cannot control a separately running agent or all installed tools.</p>
+<h2 id="emphasize-findings-with-an-evidence-trail">Emphasize findings with an evidence trail</h2>
+<p>Separate <strong>what to test</strong>, <strong>what to investigate</strong>, and <strong>what to discuss most
+prominently</strong>. A result can be scientifically important without having the smallest
+P value. Changing a narrative priority must not silently change the testing family.</p>
+<p>Before analysis, put the primary question, phenotype, cohort roles and goals in
+the contract. Use field/phenotype/tissue search terms to define relevant follow-up.
+Do not change discovery thresholds after seeing a favored gene without documenting
+a new exploratory direction.</p>
+<p>After analysis:</p>
+<ol>
+<li>Review the complete findings and unresolved evidence. If needed, request
+   <code>finding_inventory</code> for a deterministic study-wide inventory.</li>
+<li>With approved AI assistance, enable <code>impact: true</code> for comparative impact
+   proposals. These are scientific suggestions to review, not causal validation.</li>
+<li>Check the proposed priorities against replication, effect magnitude and
+   uncertainty, heterogeneity, novelty, biological relevance and contrary evidence.</li>
+<li>Record accepted emphasis in a new manuscript revision, with actual source IDs,
+   impact reasons and linked Results paragraphs. Retain other findings in the
+   supplement and preserve null, discordant and incomplete results.</li>
+</ol>
+<p>A manuscript revision is a <strong>separate YAML request</strong>, not an arbitrary prompt
+field in <code>study.yaml</code>. A Discussion paragraph can use:</p>
+<div class="code-window"><div class="code-bar"><span>yaml</span></div><pre><code>- id: discussion-primary
+  section: discussion
+  discussion_role: principal_finding
+  impact_rank: 1
+  result_ids: [results-meta]
+  impact_reason: Independent replication makes this finding a priority for discussion.
+  text: &gt;-
+    Replace with the verified interpretation, uncertainty, relevant prior
+    evidence and limitations of this specific finding.
+  sources: [H1.meta_analysis]
+  references: []
+  rationale: Emphasize the replicated result while retaining contrary evidence.
+</code></pre></div>
+<p>This is an illustrative <code>sections</code> list item. <code>results-meta</code> must identify an
+actual Results paragraph in the same revision; <code>H1.meta_analysis</code> must resolve
+to your completed evidence. Replace the rationale if replication is absent.
+Do not submit the placeholder prose as a finding.</p>
+<p>Use the <a href="bioinformatics-evidence.html#creating-a-manuscript-revision">complete revision request</a>
+and <a href="bioinformatics-evidence.html#results-and-discussion-writing-model">Results/Discussion writing model</a>.
+Run a new revision with a fresh bundle path:</p>
+<p><strong>Windows (PowerShell):</strong></p>
+<div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>java -jar $jar study manuscript revision.yaml --project . --out manuscript-revision-01 --actor-id scientist-1
+java -jar $jar study manuscript-verify --project manuscript-revision-01
+</code></pre></div>
+<p><strong>Linux / macOS (Bash):</strong></p>
+<div class="code-window"><div class="code-bar"><span>bash</span></div><pre><code>java -jar &quot;$jar&quot; study manuscript revision.yaml --project . --out manuscript-revision-01 --actor-id scientist-1
+java -jar &quot;$jar&quot; study manuscript-verify --project manuscript-revision-01
+</code></pre></div>
+<p>For literature reading priority before a cap, <code>bioinformatics.literature_selection</code>
+accepts <code>p_value</code>, <code>impact</code> or <code>auto</code>. Impact requires a complete provisional
+comparison with configured assistance; failure does not silently fall back.
+See <a href="study-pipeline-tutorial.html#provisional-impact-before-the-literature-cap">provisional impact selection</a>.
+This reading priority is separate from FDR and from the final manuscript ranking.</p>
+<p>If a finding needs a new experiment or analysis, record an observation and propose
+an amendment. The <a href="ai-no-ai.html#record-an-unusual-finding">deterministic guide</a>
+shows the commands; an advisor or driver can help draft the proposal.</p>
+<p>Continue with <a href="ai-no-ai.html">no AI</a>, <a href="ai-advisor.html">advisor</a>, <a href="ai-driver.html">driver</a>,
+or the <a href="study-yaml-reference.html">YAML field reference</a>.</p>
+<!-- SCIENTIFIC-CITATIONS:START -->
+<section class="citation-strip" aria-labelledby="scientific-citations-study-tools-literature">
+  <div class="container narrow">
+    <span class="eyebrow">Scientific foundations</span>
+    <h2 id="scientific-citations-study-tools-literature">Primary method citations</h2>
+    <p>Cite the relevant method publication as well as OmicsMatic when reporting results from this workflow.</p>
+    <ul class="citation-links">
+      <li><a href="../citations.html#sandve-reproducibility-2013">Sandve et al. (2013) — Configuration provenance</a></li><li><a href="../citations.html#w3c-prov-o-2013">W3C (2013) — Evidence provenance graph</a></li><li><a href="../citations.html#europe-pmc-rest">PMC (2026) — Non-LLM literature retrieval</a></li><li><a href="../citations.html#benjamini-hochberg-1995">Benjamini (1995) — Benjamini-Hochberg FDR</a></li><li><a href="../citations.html#nist-genai-profile-2024">NIST (2024) — Generative-AI data provenance</a></li>
+    </ul>
+    <a class="text-link" href="../citations.html">Search all scientific citations →</a>
+  </div>
+</section>
+<!-- SCIENTIFIC-CITATIONS:END --></article>
+<aside class="toc"><strong>On this page</strong><a href="#three-different-kinds-of-tool-use">Three different kinds of tool use</a><a href="#search-the-literature-without-ai">Search the literature without AI</a><a href="#read-the-search-outputs">Read the search outputs</a><a href="#add-ai-literature-assistance">Add AI literature assistance</a><a href="#choose-and-limit-the-tools">Choose and limit the tools</a><a href="#block-unwanted-work-or-access">Block unwanted work or access</a><a href="#emphasize-findings-with-an-evidence-trail">Emphasize findings with an evidence trail</a><a href="#scientific-citations-study-tools-literature">Scientific citations</a></aside></div>
+</main><site-footer root="../"></site-footer></body></html>

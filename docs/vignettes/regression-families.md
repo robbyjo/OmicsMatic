@@ -17,7 +17,7 @@ double[] sigma = fit.residualCovariance();
 ```
 
 This is the direct Gaussian reference case for `lm`/`rrr`-style shared-design
-workflows. It requires a full-column-rank design and uses the configured JLinAlg
+workflows. It requires a full-column-rank design and uses the configured OmicsMatic
 compute backend.
 
 ## Multinomial logistic regression
@@ -205,12 +205,12 @@ the appropriate paths for those completed feature areas.
 <!-- SCIENTIFIC-CITATIONS:START -->
 ## Scientific citations
 
-These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as JLinAlg when reporting results.
+These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as OmicsMatic when reporting results.
 
 - [Roger Koenker and Gilbert Bassett Jr. (1978) — Regression quantiles](../CITATIONS.md#koenker-bassett-1978)
 - [Jerome H. Friedman (1984) — A variable span smoother](../CITATIONS.md#friedman-1984)
 - [E. A. Nadaraya (1964) — On estimating regression](../CITATIONS.md#nadaraya-1964)
 - [Peter M. Robinson (1988) — Root-N-consistent semiparametric regression](../CITATIONS.md#robinson-1988)
 
-[Search the complete scientific bibliography](https://robbyjo.github.io/JLinAlg/citations.html).
+[Search the complete scientific bibliography](https://robbyjo.github.io/OmicsMatic/citations.html).
 <!-- SCIENTIFIC-CITATIONS:END -->

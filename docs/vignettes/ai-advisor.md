@@ -1,28 +1,74 @@
 # Mode 2: AI as a scientific advisor
 
-JLinAlg v0.3.7 offers opt-in AI collaboration for bounded next-step advice,
-literature review and explicitly enabled first manuscript drafts. JLinAlg
-constructs the evidence preview, runs the statistics and records provenance.
-The model proposes interpretations and follow-up; its answer is not a numerical
-result or approval to change the study.
+In advisor mode, OmicsMatic still runs the statistical analysis and records the
+evidence. You ask an optional model to review bounded aggregate findings,
+suggest next steps, help interpret literature or propose a draft. You review
+the answer; advice does not approve a new analysis or change a scientific result.
 
-## Prepare the example and disclosure policy
+**First understand the recipe.** `study.yaml` has a project, dataset/file
+descriptions and hypotheses with analysis goals. The minimum top-level keys are
+`schema_version`, `project`, `datasets` and `hypotheses`.
+Read [Start here](study-getting-started.md) for the complete minimum, data locations,
+matrix/result/completed-analysis routes and execution commands.
+The [field guide](study-yaml-reference.md) covers optional settings.
 
-Start at the repository root with a new copy of the synthetic result-first study:
+These instructions target the current source build. Start with browser handoff
+to learn the disclosure and review steps; switch to a documented API connection
+when that route is approved.
+
+**Choose your shell:** use either the **PowerShell (Windows)** or the
+**Bash (Linux/macOS)** version of each example. Keep the same terminal session
+while following a walkthrough so its variables remain defined. On macOS, run
+`bash` in Terminal before using the Bash examples if your default shell is zsh.
+For steps that need review or filled-in YAML, stop at that point before continuing.
+
+## Decide what you want advice about
+
+| Request | Setting | Your responsibility |
+| --- | --- | --- |
+| What should we investigate next? | `next_steps: true` | Check feasibility, assumptions and whether an amendment is needed. |
+| What does the relevant literature say? | `literature: true` | Verify retrieved sources and contrary findings. |
+| Which related traits might be informative? | `related_phenotypes: true` | Review labels, references and source suitability. |
+| Which findings deserve the most discussion? | `impact: true` | Review comparative importance and preserve limitations. |
+| Can I obtain a first manuscript draft? | `manuscript: true` | Verify every claim, number, reference and disclosure before use. |
+
+Enable only the purposes you need. Advice alone requires neither manuscript
+drafting nor impact ranking. No arbitrary shell or bioinformatics tools are
+given to the advisor.
+
+## Prepare a fresh synthetic study
+
+From the repository root:
+
+**Windows (PowerShell):**
 
 ~~~powershell
-.\gradlew.bat executableJar
-$jar = (Resolve-Path "build/cli/jlinalg-0.3.7.jar").Path
+.\gradlew.bat executableJar --no-daemon --no-parallel
+$jar = (Resolve-Path "build/cli/omicsmatic-0.3.7.jar").Path
 $project = Join-Path (Get-Location) "build/ai-advisor"
-if (Test-Path $project) { throw "Choose a fresh project directory." }
+if (Test-Path -LiteralPath $project) { throw "Choose a fresh project directory." }
 Copy-Item examples/study-pipeline $project -Recurse
 Set-Location $project
 ~~~
 
-Before resolving this new study, merge the following `data_policy` into its
-existing `project` mapping, and add `assistance` at the top level. Preserve its
-datasets, cohorts, hypotheses and other project fields. Do not create a second
-`project` mapping.
+**Linux / macOS (Bash):**
+
+~~~bash
+bash ./gradlew executableJar --no-daemon --no-parallel || exit 1
+jar="$PWD/build/cli/omicsmatic-0.3.7.jar"
+project="$PWD/build/ai-advisor"
+if [ -e "$project" ]; then
+    printf '%s\n' "Choose a fresh project directory." >&2
+    exit 1
+fi
+cp -R examples/study-pipeline "$project" || exit 1
+cd "$project" || exit 1
+~~~
+
+Its `data/` directory contains synthetic association tables.
+Keep the existing project ID/title, cohorts, datasets, dictionary and hypotheses.
+**Merge** this policy inside the existing project, and add one top-level
+assistance block:
 
 ~~~yaml
 project:
@@ -35,52 +81,107 @@ assistance:
   provider: browser
   next_steps: true
   literature: false
+  impact: false
   manuscript: false
   response_files:
     - responses/H1-advisor/receipt.yaml
 ~~~
 
-This example enables advice only. Browser handoff is the default transport and
-needs no API credential to prepare. The policy permits consideration of a
-bounded aggregate preview; a scientist still reviews the exact prompt before
-manual disclosure. For an already resolved study, configure assistance through
-an approved amendment instead of rewriting its base file.
+This is a fragment, not a replacement contract. The receipt need not exist yet.
+No credential is required to prepare browser packets. A real remote disclosure
+still needs your review of the exact prompt.
 
-## Run the deterministic analysis first
+For an already resolved project, use `changes.configure.assistance` and the
+appropriate project policy in an approved amendment; see the
+[existing-project example](study-pipeline-tutorial.md#data-dictionaries-optional-assistance-and-first-drafts).
+
+## Run the deterministic part first
+
+**Windows (PowerShell):**
 
 ~~~powershell
 java -jar $jar study validate study.yaml --check-files
 java -jar $jar study resolve study.yaml --actor-id scientist-1
 java -jar $jar study plan --project . --actor-id scientist-1
+Get-Content resolved-study.yaml
 Get-Content plans/*/analysis-plan.yaml
 java -jar $jar study approve --project . --approved-by scientist-1
 java -jar $jar study run --project . --actor-id scientist-1
 java -jar $jar study status --project .
+Start-Process index/index.html
 ~~~
 
-The independent numerical work completes while advice waits for a browser
-response. The run command returns a nonzero exit status while required input is
-pending; inspect `study status` and the waiting operation rather than treating
-this as a failed numerical analysis. Open `index/index.html` to find its
-`handoff/index.html`. Set `$handoff` to that exact local directory:
+**Linux / macOS (Bash):**
+
+~~~bash
+java -jar "$jar" study validate study.yaml --check-files
+java -jar "$jar" study resolve study.yaml --actor-id scientist-1
+java -jar "$jar" study plan --project . --actor-id scientist-1
+cat resolved-study.yaml
+cat plans/*/analysis-plan.yaml
+java -jar "$jar" study approve --project . --approved-by scientist-1
+java -jar "$jar" study run --project . --actor-id scientist-1
+java -jar "$jar" study status --project .
+if [ "$(uname -s)" = "Darwin" ]; then
+    open index/index.html
+elif [ -n "${DISPLAY:-}${WAYLAND_DISPLAY:-}" ] && command -v xdg-open >/dev/null 2>&1; then
+    xdg-open index/index.html
+else
+    printf 'Open this report in a browser: %s/index/index.html\n' "$PWD"
+fi
+~~~
+
+Review and approve as in deterministic mode. The independent numerical work can
+complete while the advisor waits for a response. The run can return nonzero
+because an input is pending; inspect the waiting operation instead of assuming
+that the numerical analysis failed.
+
+Open the waiting advisor operation in the project index and locate its
+`handoff/index.html`. There can be several handoffs when several purposes or
+hypotheses are enabled. Match the packet's purpose and hypothesis.
+
+## Complete a browser exchange
+
+Set this to the **actual** handoff directory shown by the operation:
+
+**Windows (PowerShell):**
 
 ~~~powershell
 $handoff = "FULL_PATH_FROM_THE_WAITING_OPERATION/handoff"
 java -jar $jar study handoff-open --handoff $handoff --browser none
 ~~~
 
-`--browser none` reports the verified packet path for manual opening. Select an
-installed browser such as `edge` or `firefox` to request opening it. The adapter
-never submits the prompt or signs into a website for you.
+**Linux / macOS (Bash):**
 
-## Review and import the answer
+~~~bash
+handoff="FULL_PATH_FROM_THE_WAITING_OPERATION/handoff"
+java -jar "$jar" study handoff-open --handoff "$handoff" --browser none
+~~~
 
-Inspect the complete prompt. Only if disclosure is authorized, copy that exact
-prompt into your chosen AI service. Copy `response-template.yaml` outside the
-frozen packet to `response.yaml`. Fill in the complete answer, provider/model
-declaration, timestamps, references, disposition and rationale. Advice must use
-the packet's requested JSON `proposals` contract. Confirm `exact_prompt_submitted`,
-`disclosure_approved` and `no_patient_data` only when true.
+`--browser none` verifies and reports the local packet path for manual opening.
+An installed browser such as `edge` or `firefox` can be requested instead.
+The adapter never signs in or submits anything for you.
+
+1. Read the entire packet and exact prompt. Confirm that the aggregate content is
+   permitted for your chosen AI service.
+2. Sign in through that service's normal browser interface. Only when disclosure
+   is authorized, submit the **exact prompt** from the packet.
+3. Save a copy of the packet's `response-template.yaml` outside the frozen
+   handoff folder, for example as `response.yaml` in the project directory.
+4. Fill in the full model answer, provider/model declaration, submission and
+   receipt timestamps, references, disposition and rationale. Preserve its YAML
+   structure. The requested JSON `proposals` contract must remain intact.
+5. Confirm `exact_prompt_submitted`, `disclosure_approved` and
+   `no_patient_data` only when they are true. Review the proposals and record
+   your acceptance or rejection honestly.
+
+Do not edit the packet or shorten the prompt while attesting that it was exact.
+For instructions beyond the packet's scope, use a separately recorded
+review or a supported study change.
+
+Import and verify the response, then resume:
+
+**Windows (PowerShell):**
 
 ~~~powershell
 java -jar $jar study handoff-import response.yaml --handoff $handoff --out responses/H1-advisor --actor-id scientist-1
@@ -89,41 +190,115 @@ java -jar $jar study run --project . --actor-id scientist-1
 java -jar $jar study verify --project .
 ~~~
 
-The receipt preserves the reviewed exchange and matches the exact request.
-Completed upstream results are reused. Browser attribution, timestamps and
-citations are human-attested; hashes establish integrity rather than provider
-authenticity or scientific correctness. Unsupported or study-changing proposals
-require scientist review and an amendment. Model-generated code is not executed.
-Preapproved registered sensitivity analyses run locally under the study contract.
+**Linux / macOS (Bash):**
+
+~~~bash
+java -jar "$jar" study handoff-import response.yaml --handoff "$handoff" --out responses/H1-advisor --actor-id scientist-1
+java -jar "$jar" study handoff-verify responses/H1-advisor/receipt.yaml
+java -jar "$jar" study run --project . --actor-id scientist-1
+java -jar "$jar" study verify --project .
+~~~
+
+Use a fresh receipt output directory for a new import. A receipt is bound to the
+exact request, purpose, hypothesis and policy. It is not interchangeable with
+another handoff. Completed upstream numerical work is reused when still valid.
+
+The browser exchange is human-attested. Hashes establish local integrity, not
+that the provider/model identity is independently authenticated or that the
+answer is scientifically correct.
+
+## Use an API key or OAuth token instead
+
+The [AI connections guide](ai-connections.md) provides complete `study.yaml`
+mappings and PowerShell/Bash credential setup for:
+
+- `provider: openai` with a model and `api_key_env`.
+- `provider: gemini` with a model and `api_key_env`.
+- `provider: openai_compatible` with HTTPS endpoint, model and API key.
+- The same compatible route with `auth: oauth` and `oauth_token_env`.
+
+Choose one mapping instead of the browser mapping. API configurations omit browser
+`response_files`. Keep the aggregate disclosure policy and enable only intended
+purposes. Credentials stay in environment variables or an [encrypted credential file](ai-credentials.md); YAML contains only the reference.
+
+OAuth uses credentials legitimately issued for the configured API. OmicsMatic can [renew supported encrypted credentials](ai-credentials.md) for OpenAI, Gemini and Claude federation; environment-only tokens need external renewal. Use [study login](ai-login.md) for initial OpenAI/Gemini sign-in or guided Claude/Grok key setup before running the study. An external
+agent's or chat website's sign-in is a separate connection.
+
+After review and approval, `study run` can make the enabled requests automatically.
+This avoids manual browser transcription, but still requires scientific review
+of the outputs and any proposed study change. It can incur charges.
+`--offline` blocks built-in provider calls.
+
+## Search literature and call bioinformatics tools
+
+For a reproducible literature search without AI, request the native
+`literature_search` goal and configure `analysis.bioinformatics`.
+For optional AI literature assistance, additionally enable `assistance.literature`.
+These are separate operations with separate source and response requirements.
+
+The advisor can suggest related phenotypes, QTL sources, questions or code text.
+It does not receive a general tool menu or automatically install/run arbitrary
+bioinformatics software. Only registered analyses authorized by the study
+contract execute. For example:
+
+~~~yaml
+assistance:
+  allow_analyses: [fixed_random_comparison]
+~~~
+
+Merge that setting into your existing assistance mapping if you want the
+registered local fixed/random sensitivity comparison and its prerequisites are
+available. It can run independently of a successful model response.
+This setting is not an executable allowlist. Leave-one-cohort-out also has a
+separate automatic rule for suitable studies with at least three explicit cohorts.
+
+Use [literature and tool controls](study-tools-literature.md) for available
+sources, method choices, exclusions and blocking unwanted network/tool access.
+There is no general `blocked_tools` field to paste into the study.
+
+## Review proposals and emphasize findings
+
+Read the advisor's decision record alongside the actual source artifacts.
+Check every number and citation. Classify a proposal as a possible interpretation,
+a question needing more input, a registered sensitivity analysis or a new
+scientific direction needing an amendment.
+
+For narrative priorities, enable impact assessment only when wanted, review its
+comparison and then record accepted priorities in a manuscript revision using
+`impact_rank`, `impact_reason` and linked Results/source IDs.
+See [the worked emphasis recipe](study-tools-literature.md#emphasize-findings-with-an-evidence-trail).
+There is no free-form `system_prompt` or `emphasize_genes` setting in the
+current study assistance schema.
+
+Never discard contrary evidence because a model favors an exciting mechanism.
+A proposed code snippet is quarantined text; implementing a new adapter requires
+code review and validation outside the advisor proposal handler.
 
 ## API collaboration and patient-data boundaries
 
-Explicit alternatives are OpenAI Responses, Gemini GenerateContent and
-OpenAI-compatible APIs. See the [connection instructions](bioinformatics-evidence.md#optional-api-key-and-oauth-access-token-connections)
-for model, endpoint and environment-variable credentials. Provider calls can
-incur charges. Browser preparation remains local; sending its prompt is a
-separate human action.
+The built-in preview omits raw feature identifiers, local paths and dictionary
+prose. It can contain gene symbols, phenotype labels, structured metadata and
+numeric aggregate findings. Those may still disclose confidential research
+information. It does not give the model input files, phenotype rows, matrices,
+filesystem access or a shell.
 
-The built-in assistance adapter does not upload input files or grant filesystem,
-shell, phenotype-row or sample-matrix access. Its allowlisted preview omits raw
-feature identifiers, dictionary prose and local paths; it can include gene
-symbols, phenotype labels, structured study metadata and numeric aggregate
-findings. These can still be confidential. `deny_all` blocks remote advice and
-`--offline` blocks built-in network requests. Classification depends on correct
-input metadata; this is not automatic PHI detection or a regulatory certification.
-It cannot control a separate agent or a user's manual uploads.
+Classification relies on correct metadata; it is not automatic PHI detection
+or privacy certification. A remote driver with wider file/tool access has a
+different boundary. See [connections and policy](ai-connections.md#first-set-the-disclosure-policy).
 
-Compare [no AI](ai-no-ai.md) and [AI as an external driver](ai-driver.md).
+Compare [deterministic mode](ai-no-ai.md) and
+[external driver mode](ai-driver.md), or return to the
+[beginner study setup](study-getting-started.md).
 
 <!-- SCIENTIFIC-CITATIONS:START -->
 ## Scientific citations
 
-These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as JLinAlg when reporting results.
+These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as OmicsMatic when reporting results.
 
 - [Geir Kjetil Sandve et al. (2013) — Ten Simple Rules for Reproducible Computational Research](../CITATIONS.md#sandve-reproducibility-2013)
 - [W3C Provenance Working Group (2013) — PROV-O: The PROV Ontology](../CITATIONS.md#w3c-prov-o-2013)
 - [U.S. Department of Health and Human Services, Office for Civil Rights (2012) — Guidance Regarding Methods for De-identification of Protected Health Information in Accordance with the HIPAA Privacy Rule](../CITATIONS.md#hhs-hipaa-deidentification-2012)
 - [National Institute of Standards and Technology (2024) — Artificial Intelligence Risk Management Framework: Generative Artificial Intelligence Profile](../CITATIONS.md#nist-genai-profile-2024)
 
-[Search the complete scientific bibliography](https://robbyjo.github.io/JLinAlg/citations.html).
+[Search the complete scientific bibliography](https://robbyjo.github.io/OmicsMatic/citations.html).
 <!-- SCIENTIFIC-CITATIONS:END -->

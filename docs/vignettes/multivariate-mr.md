@@ -1,7 +1,7 @@
 # Multivariable and multivariate Mendelian randomization
 
 The words *multivariable* and *multivariate* describe different models in
-JLinAlg. The CLI therefore uses different commands and rejects a one-outcome
+OmicsMatic. The CLI therefore uses different commands and rejects a one-outcome
 table at the multivariate boundary.
 
 | Command | Exposures | Outcomes | Model |
@@ -12,7 +12,7 @@ table at the multivariate boundary.
 
 The new commands are available from a current source build. Build the
 executable with `gradlew.bat assemble`; on this checkout the runnable artifact
-is `build/cli/jlinalg-0.3.7.jar`. A published release JAR predating these
+is `build/cli/omicsmatic-0.3.7.jar`. A published release JAR predating these
 commands will not acquire them merely because the website has been updated.
 
 ## Prepare one wide, harmonized table
@@ -35,7 +35,7 @@ would change the joint model.
 ## Run MVMR: multiple exposures, one outcome
 
 ```powershell
-java -jar build/cli/jlinalg-0.3.7.jar mr-mvmr `
+java -jar build/cli/omicsmatic-0.3.7.jar mr-mvmr `
   --input harmonized-wide.tsv `
   --exposures bmi,ldl `
   --outcome cad `
@@ -70,7 +70,7 @@ positive definite, and have a unit diagonal.
 ## Run covariance-aware multivariate MR-IVW
 
 ```powershell
-java -jar build/cli/jlinalg-0.3.7.jar mr-multivariate `
+java -jar build/cli/omicsmatic-0.3.7.jar mr-multivariate `
   --input harmonized-wide.tsv `
   --exposures bmi,ldl `
   --outcomes cad,stroke `
@@ -103,7 +103,7 @@ loop of univariate fits cannot reproduce these joint tests.
 ## Run multivariate MR-PRESSO
 
 ```powershell
-java -jar build/cli/jlinalg-0.3.7.jar mr-multivariate `
+java -jar build/cli/omicsmatic-0.3.7.jar mr-multivariate `
   --input harmonized-wide.tsv `
   --exposures bmi,ldl `
   --outcomes cad,stroke `
@@ -169,7 +169,7 @@ Coefficient storage is outcome-major, with exposures varying fastest. Prefer
 
 ## Method boundaries
 
-JLinAlg's `mr-multivariate` implements covariance-aware summary-data
+OmicsMatic's `mr-multivariate` implements covariance-aware summary-data
 multivariate MR-IVW and the Mahalanobis/bootstrap multivariate MR-PRESSO
 diagnostic. It does **not** label these as either of the following distinct
 methods:
@@ -197,7 +197,7 @@ failures, and both CLI schemas.
 <!-- SCIENTIFIC-CITATIONS:START -->
 ## Scientific citations
 
-These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as JLinAlg when reporting results.
+These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as OmicsMatic when reporting results.
 
 - [Stephen Burgess and Simon G. Thompson (2015) — Multivariable Mendelian randomization: the use of pleiotropic genetic variants to estimate causal effects](../CITATIONS.md#burgess-mvmr-2015) — [PMID: 25632051](https://pubmed.ncbi.nlm.nih.gov/25632051/) · [PMCID: PMC4325677](https://pmc.ncbi.nlm.nih.gov/articles/PMC4325677/)
 - [Eleanor Sanderson, Wesley Spiller, and Jack Bowden (2021) — Testing and correcting for weak and pleiotropic instruments in two-sample multivariable Mendelian randomization](../CITATIONS.md#sanderson-mvmr-diagnostics-2021) — [PMID: 34338327](https://pubmed.ncbi.nlm.nih.gov/34338327/) · [PMCID: PMC9479726](https://pmc.ncbi.nlm.nih.gov/articles/PMC9479726/)
@@ -206,5 +206,5 @@ These are the primary sources for the methods used in this workflow. Cite the re
 - [Yangqing Deng et al. (2023) — Two-stage multivariate Mendelian randomization on multiple outcomes with mixed distributions](../CITATIONS.md#deng-mrmo-2023) — [PMID: 37338962](https://pubmed.ncbi.nlm.nih.gov/37338962/) · [PMCID: PMC10515454](https://pmc.ncbi.nlm.nih.gov/articles/PMC10515454/)
 - [Marie Verbanck et al. (2018) — Detection of widespread horizontal pleiotropy in causal relationships inferred from Mendelian randomization](../CITATIONS.md#verbanck-mr-presso-2018) — [PMID: 29686387](https://pubmed.ncbi.nlm.nih.gov/29686387/) · [PMCID: PMC6083837](https://pmc.ncbi.nlm.nih.gov/articles/PMC6083837/)
 
-[Search the complete scientific bibliography](https://robbyjo.github.io/JLinAlg/citations.html).
+[Search the complete scientific bibliography](https://robbyjo.github.io/OmicsMatic/citations.html).
 <!-- SCIENTIFIC-CITATIONS:END -->

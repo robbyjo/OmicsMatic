@@ -198,7 +198,7 @@ final class MetaCli {
 
     static String help(String command) {
         return """
-            Usage: java -jar jlinalg-<version>.jar COMMAND
+            Usage: java -jar omicsmatic-<version>.jar COMMAND
               --cohort NAME=FILE [--cohort NAME=FILE ...] --out FILE
               [--model fixed|random] [--tau-estimator reml|dl|pm]
               [--min-cohorts 1] [--id-column feature_id] [--effect-column beta]

@@ -1,10 +1,10 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Report expected responses, standardized scenario contrasts, risk ratios, and marginal effects with covariance-aware uncertainty."><title>Predictions, scenarios, and marginal effects · JLinAlg</title>
+<meta name="description" content="Report expected responses, standardized scenario contrasts, risk ratios, and marginal effects with covariance-aware uncertainty."><title>Predictions, scenarios, and marginal effects Â· OmicsMatic</title>
 <link rel="stylesheet" href="../assets/styles.css"><script src="../assets/app.js" defer></script></head>
 <body><site-header root="../"></site-header><main id="main">
 <section class="page-hero"><div class="container"><div class="breadcrumbs"><a href="../index.html">Home</a><span>/</span><a href="../vignettes/index.html">Vignettes</a><span>/</span><span>Predictions, scenarios, and marginal effects</span></div>
-<span class="eyebrow">CLI + Java · v0.3.6</span><h1>Predictions, scenarios, and marginal effects</h1><p>Report expected responses, standardized scenario contrasts, risk ratios, and marginal effects with covariance-aware uncertainty.</p></div></section>
+<span class="eyebrow">CLI + Java Â· v0.3.6</span><h1>Predictions, scenarios, and marginal effects</h1><p>Report expected responses, standardized scenario contrasts, risk ratios, and marginal effects with covariance-aware uncertainty.</p></div></section>
 <div class="container page-layout"><article class="prose"><p><code>ModelPredictions</code> gives GLM and GEE fits one response-scale reporting API. It
 uses the fitted coefficient covariance and analytic delta-method gradients. The
 examples below use a probit GLM, but the same methods accept a <code>GeeResult</code>.</p>
@@ -31,7 +31,7 @@ representable floating-point range.</p>
 <h2 id="expected-responses">Expected responses</h2>
 <p>The same probit fit and response-scale estimands are available from a numeric
 table through the source-build CLI:</p>
-<div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>java -jar build/cli/jlinalg-0.3.7.jar glm-predict `
+<div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>java -jar build/cli/omicsmatic-0.3.7.jar glm-predict `
   --input cohort.tsv `
   --response case `
   --predictors exposure,age,sex `
@@ -41,12 +41,12 @@ table through the source-build CLI:</p>
 </code></pre></div>
 <p>For standardized contrasts, reuse the observed rows and set one design column
 to each scenario value:</p>
-<div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>java -jar build/cli/jlinalg-0.3.7.jar glm-predict `
+<div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>java -jar build/cli/omicsmatic-0.3.7.jar glm-predict `
   --input cohort.tsv --response case --predictors exposure,age,sex `
   --family probit --estimand difference `
   --scenario-column exposure --first 1 --second 0
 
-java -jar build/cli/jlinalg-0.3.7.jar glm-predict `
+java -jar build/cli/omicsmatic-0.3.7.jar glm-predict `
   --input cohort.tsv --response case --predictors exposure,age,sex `
   --family probit --estimand ame --ame-column age
 </code></pre></div>
@@ -147,7 +147,7 @@ Regenerate its reference output with:</p>
   <div class="container narrow">
     <span class="eyebrow">Scientific foundations</span>
     <h2 id="scientific-citations-predictions-and-contrasts">Primary method citations</h2>
-    <p>Cite the relevant method publication as well as JLinAlg when reporting results from this workflow.</p>
+    <p>Cite the relevant method publication as well as OmicsMatic when reporting results from this workflow.</p>
     <ul class="citation-links">
       <li><a href="../citations.html#nelder-wedderburn-1972">Nelder (1972) — generalized linear models</a></li><li><a href="../citations.html#bliss-1934">Bliss (1934) — probit regression</a> <span class="citation-inline-identifiers">(<a href="https://pubmed.ncbi.nlm.nih.gov/17813446/">PMID: 17813446</a>)</span></li><li><a href="../citations.html#liang-zeger-1986">Liang (1986) — GEE</a></li>
     </ul>

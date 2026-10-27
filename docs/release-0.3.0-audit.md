@@ -1,4 +1,4 @@
-# JLinAlg 0.3.0: remaining-code audit and release validation
+# OmicsMatic 0.3.0: remaining-code audit and release validation
 
 This is the historical v0.3.0 release audit (JDistlib 0.10.1). For current
 source builds, see the [JDistlib 0.10.2 upgrade validation](jdistlib-0.10.2-validation.md).

@@ -23,7 +23,7 @@ def table(path):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--jar", type=Path, default=ROOT / "build/cli/jlinalg-0.3.7.jar")
+    parser.add_argument("--jar", type=Path, default=ROOT / "build/cli/omicsmatic-0.3.7.jar")
     parser.add_argument("--python", type=Path, required=True)
     parser.add_argument("--sequence-python", type=Path, default=ROOT / "build/omics-sequence-tools-env" / ("Scripts/python.exe" if sys.platform == 'win32' else "bin/python"))
     parser.add_argument("--fastqc-home", type=Path, default=ROOT / "build/omics-fastqc/FastQC")

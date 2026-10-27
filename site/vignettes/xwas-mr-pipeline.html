@@ -2,15 +2,15 @@
 <html lang="en">
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="Run parallel xWAS Mendelian-randomization scans across molecular exposures and phenotype families with the JLinAlg CLI.">
-  <title>Parallel xWAS MR pipeline · JLinAlg</title>
+  <meta name="description" content="Run parallel xWAS Mendelian-randomization scans across molecular exposures and phenotype families with the OmicsMatic CLI.">
+  <title>Parallel xWAS MR pipeline · OmicsMatic</title>
   <link rel="stylesheet" href="../assets/styles.css"><script src="../assets/app.js" defer></script>
 </head>
 <body><site-header root="../"></site-header><main id="main">
 <section class="page-hero"><div class="container"><div class="breadcrumbs"><a href="../index.html">Home</a><span>/</span><a href="index.html">Vignettes</a><span>/</span><span>Parallel xWAS MR</span></div><h1>Clump once. Scan every phenotype.</h1><p>A command-line workflow for bounded, parallel Mendelian-randomization screens across many molecular exposures and cardiovascular, kidney, lung, or other phenotype families.</p></div></section>
 <div class="container page-layout"><article class="prose">
-<div class="note"><strong>v0.3.0 audit update</strong>External BH supports quoted multiline records and bounded 64-way merges. CLI preflight rejects input/output aliases, protects existing standalone outputs, and refuses unverifiable resume files. Failed or invalid p-values are excluded from the BH family; choose the attempted-hypothesis policy deliberately. <a href="https://github.com/robbyjo/JLinAlg/blob/v0.3.0/docs/vignettes/xwas-mr-pipeline.md">Updated guide and evidence →</a></div>
-<div class="note"><strong>Designed for two-level scans</strong>Each exposure keeps one already-clumped instrument set. JLinAlg indexes each outcome once, evaluates the full exposure-by-phenotype grid, and reserves expensive sensitivity analyses for threshold-passing pairs.</div>
+<div class="note"><strong>v0.3.0 audit update</strong>External BH supports quoted multiline records and bounded 64-way merges. CLI preflight rejects input/output aliases, protects existing standalone outputs, and refuses unverifiable resume files. Failed or invalid p-values are excluded from the BH family; choose the attempted-hypothesis policy deliberately. <a href="https://github.com/robbyjo/OmicsMatic/blob/v0.3.0/docs/vignettes/xwas-mr-pipeline.md">Updated guide and evidence →</a></div>
+<div class="note"><strong>Designed for two-level scans</strong>Each exposure keeps one already-clumped instrument set. OmicsMatic indexes each outcome once, evaluates the full exposure-by-phenotype grid, and reserves expensive sensitivity analyses for threshold-passing pairs.</div>
 
 <h2 id="workflow">The end-to-end workflow</h2>
 <ol><li>Download an ancestry-matched LD panel and record its manifest.</li><li>Search public GWAS results or format custom exposure summary statistics.</li><li>Clump each exposure once with the chosen LD threshold and window.</li><li>Combine clumped exposures and all outcomes into two long-format tables.</li><li>Run <code>mr-xwas</code>, then inspect retained hits, failures, and multiplicity.</li></ol>
@@ -69,7 +69,7 @@ java -jar jlinalg-&lt;version&gt;.jar mr-xwas --help</code></pre></div>
   <div class="container narrow">
     <span class="eyebrow">Scientific foundations</span>
     <h2 id="scientific-citations-xwas-mr-pipeline">Primary method citations</h2>
-    <p>Cite the relevant method publication as well as JLinAlg when reporting results from this workflow.</p>
+    <p>Cite the relevant method publication as well as OmicsMatic when reporting results from this workflow.</p>
     <ul class="citation-links">
       <li><a href="../citations.html#bowden-mr-egger-2015">Bowden (2015) — MR-Egger</a> <span class="citation-inline-identifiers">(<a href="https://pubmed.ncbi.nlm.nih.gov/26050253/">PMID: 26050253</a> · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4469799/">PMCID: PMC4469799</a>)</span></li><li><a href="../citations.html#bowden-weighted-median-2016">Bowden et al. (2016) — weighted-median MR</a> <span class="citation-inline-identifiers">(<a href="https://pubmed.ncbi.nlm.nih.gov/27061298/">PMID: 27061298</a> · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4849733/">PMCID: PMC4849733</a>)</span></li><li><a href="../citations.html#hemani-mrbase-2018">Hemani et al. (2018) — TwoSampleMR</a> <span class="citation-inline-identifiers">(<a href="https://pubmed.ncbi.nlm.nih.gov/29846171/">PMID: 29846171</a> · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5976434/">PMCID: PMC5976434</a>)</span></li><li><a href="../citations.html#benjamini-hochberg-1995">Benjamini (1995) — Benjamini-Hochberg FDR</a></li>
     </ul>

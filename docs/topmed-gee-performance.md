@@ -24,21 +24,21 @@ specific to the development machine and dataset.
 | Working correlation | Genes | Runtime | Threads | Seconds | Relative to R |
 | --- | ---: | --- | ---: | ---: | ---: |
 | Independence | 20 | R/geer | 1 | 14.790 | 1.0x |
-| Independence | 20 | JLinAlg | 1 | 0.222 | 66.6x faster |
-| Independence | 20 | JLinAlg | 8 | 0.042 | 349.9x faster |
+| Independence | 20 | OmicsMatic | 1 | 0.222 | 66.6x faster |
+| Independence | 20 | OmicsMatic | 8 | 0.042 | 349.9x faster |
 | Exchangeable | 20 | R/geer | 1 | 562.530 | 1.0x |
-| Exchangeable | 20 | JLinAlg | 1 | 0.655 | 859.3x faster |
-| Exchangeable | 20 | JLinAlg | 8 | 0.169 | 3332.2x faster |
-| Independence | 100 | JLinAlg | 1 | 0.930 | n/a |
-| Independence | 100 | JLinAlg | 8 | 0.177 | n/a |
-| Exchangeable | 100 | JLinAlg | 1 | 3.205 | n/a |
-| Exchangeable | 100 | JLinAlg | 8 | 0.819 | n/a |
+| Exchangeable | 20 | OmicsMatic | 1 | 0.655 | 859.3x faster |
+| Exchangeable | 20 | OmicsMatic | 8 | 0.169 | 3332.2x faster |
+| Independence | 100 | OmicsMatic | 1 | 0.930 | n/a |
+| Independence | 100 | OmicsMatic | 8 | 0.177 | n/a |
+| Exchangeable | 100 | OmicsMatic | 1 | 3.205 | n/a |
+| Exchangeable | 100 | OmicsMatic | 8 | 0.819 | n/a |
 
-The eight-thread speedup over JLinAlg single-thread was 5.26x for independence
+The eight-thread speedup over OmicsMatic single-thread was 5.26x for independence
 and 3.88x for exchangeable on the 20-gene comparison. All 100 Java fits
 converged. R/geer completed every independence fit but rejected two of the 20
 exchangeable fits because their estimated correlation fell just outside the
-positive-definite lower bound. JLinAlg constrains exchangeable correlation to
+positive-definite lower bound. OmicsMatic constrains exchangeable correlation to
 its admissible range and completed those fits.
 
 For the 20 genes, all 20 independence fits agreed with R to maximum absolute
@@ -48,7 +48,7 @@ were 8.15e-7 and 2.58e-7, respectively.
 
 The speed difference is driven by the workload shape and the optimized scan
 path. `Levy_Set` has only four clusters, with 1,093 to 1,504 observations per
-cluster. JLinAlg uses diagonal or equicorrelation identities for linear-time
+cluster. OmicsMatic uses diagonal or equicorrelation identities for linear-time
 working-covariance solves and computes exchangeable pair products from sums;
 it does not construct or factor a dense 1,504 by 1,504 matrix. The prepared
 scan also reuses cluster ordering, the backend context, and a null-model start,

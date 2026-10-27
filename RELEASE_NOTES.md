@@ -1,4 +1,4 @@
-# JLinAlg 0.3.7
+# OmicsMatic 0.3.7
 
 ## Three degrees of AI collaboration
 
@@ -279,10 +279,10 @@
 
 ## Statistical correctness fixes
 
-- Stabilized the Lugannani–Rice kernel-tail fallback at and around the mean,
+- Stabilized the Lugannaniâ€“Rice kernel-tail fallback at and around the mean,
   including quantile inversion. It remains an explicitly labeled approximation;
   invalid numerical probabilities now fail instead of being clamped.
-- Made sparse REML and Paule–Mandel heterogeneity optimization independent of
+- Made sparse REML and Pauleâ€“Mandel heterogeneity optimization independent of
   effect units and refined REML convergence near a flat numerical optimum.
 - Enforced the initial multidimensional quadrature node budget before allocating
   dense random-effect matrices or fitting, including node-count overflow.
@@ -496,7 +496,7 @@ Release downloads: `jlinalg-0.3.2.jar` is the self-contained executable;
   versioned library/source/Javadoc/CLI release assets with SHA-256 checksums.
 
 Compatibility correction: `MultivariableMrResult.conditionalFStatistics()`
-previously returned marginal mean z², not conditional strength. It is deprecated
+previously returned marginal mean zÂ², not conditional strength. It is deprecated
 and now fails explicitly. Use `marginalFStatistics()` for the actual statistic;
 covariance-aware fits now populate it with true conditional strength, also
 available with its Q statistics from `conditionalStrength()`.
@@ -511,7 +511,7 @@ Release downloads: `jlinalg-0.3.0.jar` is the self-contained executable;
 `SHA256SUMS.txt` are also included. The library classifier prevents a
 case-insensitive filename collision on Windows.
 
-## Statistical audit repairs — 2026-09-08
+## Statistical audit repairs â€” 2026-09-08
 
 - Added joint latent/mean/ordinal SEM and direct constrained FIML with full
   covariance, robust inference, modification indices, and indirect effects.

@@ -17,7 +17,7 @@ def read(path):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--jar",default="build/cli/jlinalg-0.3.6.jar")
+    parser.add_argument("--jar",default="build/cli/omicsmatic-0.3.7.jar")
     parser.add_argument("--rscript",required=True)
     parser.add_argument("--r-library")
     parser.add_argument("--out")

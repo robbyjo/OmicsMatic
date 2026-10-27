@@ -1,10 +1,10 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Sparse QC, pseudobulk, donor-aware state and abundance, functional scores and exploratory representations."><title>Replicated single-cell RNA analysis · JLinAlg</title>
+<meta name="description" content="Sparse QC, pseudobulk, donor-aware state and abundance, functional scores and exploratory representations."><title>Replicated single-cell RNA analysis Â· OmicsMatic</title>
 <link rel="stylesheet" href="../assets/styles.css"><script src="../assets/app.js" defer></script></head>
 <body><site-header root="../"></site-header><main id="main">
 <section class="page-hero"><div class="container"><div class="breadcrumbs"><a href="../index.html">Home</a><span>/</span><a href="../vignettes/index.html">Vignettes</a><span>/</span><span>Replicated single-cell RNA analysis</span></div>
-<span class="eyebrow">CLI + Java/R · Source build</span><h1>Replicated single-cell RNA analysis</h1><p>Sparse QC, pseudobulk, donor-aware state and abundance, functional scores and exploratory representations.</p></div></section>
+<span class="eyebrow">CLI + Java/R Â· Source build</span><h1>Replicated single-cell RNA analysis</h1><p>Sparse QC, pseudobulk, donor-aware state and abundance, functional scores and exploratory representations.</p></div></section>
 <div class="container page-layout"><article class="prose"><p>The <code>single-cell</code> command connects quantified, annotated RNA counts to QC,
 pseudobulk, differential state, relative population abundance, gene-set scores,
 and exploratory PCA/clustering. Biological samples, not cells, determine the
@@ -12,7 +12,7 @@ replication used for condition inference. This is a source-build addition;
 build <code>./gradlew check executableJar</code> (Windows: <code>.\gradlew.bat check executableJar</code>).</p>
 <p>These operations implement the replicated, annotated-input RNA branch of the
 roadmap. The complete protein, ATAC, trajectory, reference-annotation and
-perturbation suites remain open in <a href="https://github.com/robbyjo/JLinAlg/blob/main/TODO.md">TODO.md</a>. See the
+perturbation suites remain open in <a href="https://github.com/robbyjo/OmicsMatic/blob/main/TODO.md">TODO.md</a>. See the
 <a href="../cell-spatial-validation.html">validation report</a> for exactly what was tested.</p>
 <h2 id="four-explicit-input-tables">Four explicit input tables</h2>
 <p>The runnable synthetic fixture in <code>examples/cell-spatial</code> has eight samples,
@@ -64,8 +64,8 @@ donor IDs even when several specimens, sections or visits have different sample
 IDs. A repeated donor cannot enter an independent-sample condition comparison.</p>
 <h2 id="qc-and-aggregation-tutorial">QC and aggregation tutorial</h2>
 <p>Every output path must be a fresh directory. Run from the repository root:</p>
-<div class="code-window"><div class="code-bar"><span>shell</span></div><pre><code>java -jar build/cli/jlinalg-0.3.7.jar single-cell --method qc --counts examples/cell-spatial/counts.tsv --cells examples/cell-spatial/cells.tsv --samples examples/cell-spatial/samples.tsv --features examples/cell-spatial/features.tsv --min-features 5 --max-mito 0.2 --out build/cell-demo/qc
-java -jar build/cli/jlinalg-0.3.7.jar single-cell --method pseudobulk --counts examples/cell-spatial/counts.tsv --cells examples/cell-spatial/cells.tsv --samples examples/cell-spatial/samples.tsv --features examples/cell-spatial/features.tsv --min-cells 10 --out build/cell-demo/pseudobulk
+<div class="code-window"><div class="code-bar"><span>shell</span></div><pre><code>java -jar build/cli/omicsmatic-0.3.7.jar single-cell --method qc --counts examples/cell-spatial/counts.tsv --cells examples/cell-spatial/cells.tsv --samples examples/cell-spatial/samples.tsv --features examples/cell-spatial/features.tsv --min-features 5 --max-mito 0.2 --out build/cell-demo/qc
+java -jar build/cli/omicsmatic-0.3.7.jar single-cell --method pseudobulk --counts examples/cell-spatial/counts.tsv --cells examples/cell-spatial/cells.tsv --samples examples/cell-spatial/samples.tsv --features examples/cell-spatial/features.tsv --min-cells 10 --out build/cell-demo/pseudobulk
 </code></pre></div>
 <p><code>cell-qc.tsv</code> records library counts, detected features, mitochondrial fraction,
 retention and every applied exclusion reason. <code>sample-qc.tsv</code> reports retained
@@ -88,8 +88,8 @@ aggregates; they never become zero-expression artificial replicates.</p>
 <p>Install R and limma separately in a chosen library, for example using
 <code>BiocManager::install("limma")</code> in R. The CLI does not install packages or contact
 the network. Supply the executable and library paths appropriate to your host:</p>
-<div class="code-window"><div class="code-bar"><span>shell</span></div><pre><code>java -jar build/cli/jlinalg-0.3.7.jar single-cell --method state --counts examples/cell-spatial/counts.tsv --cells examples/cell-spatial/cells.tsv --samples examples/cell-spatial/samples.tsv --features examples/cell-spatial/features.tsv --reference control --tested case --rscript Rscript --out build/cell-demo/state
-java -jar build/cli/jlinalg-0.3.7.jar single-cell --method state --counts examples/cell-spatial/counts.tsv --cells examples/cell-spatial/cells.tsv --samples examples/cell-spatial/paired-samples.tsv --features examples/cell-spatial/features.tsv --reference control --tested case --paired true --rscript Rscript --out build/cell-demo/paired-state
+<div class="code-window"><div class="code-bar"><span>shell</span></div><pre><code>java -jar build/cli/omicsmatic-0.3.7.jar single-cell --method state --counts examples/cell-spatial/counts.tsv --cells examples/cell-spatial/cells.tsv --samples examples/cell-spatial/samples.tsv --features examples/cell-spatial/features.tsv --reference control --tested case --rscript Rscript --out build/cell-demo/state
+java -jar build/cli/omicsmatic-0.3.7.jar single-cell --method state --counts examples/cell-spatial/counts.tsv --cells examples/cell-spatial/cells.tsv --samples examples/cell-spatial/paired-samples.tsv --features examples/cell-spatial/features.tsv --reference control --tested case --paired true --rscript Rscript --out build/cell-demo/paired-state
 </code></pre></div>
 <p>On the validated Windows host, the executable was
 <code>"C:/Program Files/R/R-4.6.1/bin/Rscript.exe"</code> and the optional library argument
@@ -132,8 +132,8 @@ actual <code>output_directory</code>. A population with no eligible feature test
 filtered rows rather than aborting the study. Failed
 R execution aborts publication; it never falls back to a different estimator.</p>
 <h2 id="relative-population-abundance-and-functional-scores">Relative population abundance and functional scores</h2>
-<div class="code-window"><div class="code-bar"><span>shell</span></div><pre><code>java -jar build/cli/jlinalg-0.3.7.jar single-cell --method abundance --counts examples/cell-spatial/counts.tsv --cells examples/cell-spatial/cells.tsv --samples examples/cell-spatial/samples.tsv --features examples/cell-spatial/features.tsv --reference control --tested case --out build/cell-demo/abundance
-java -jar build/cli/jlinalg-0.3.7.jar single-cell --method pathways --counts examples/cell-spatial/counts.tsv --cells examples/cell-spatial/cells.tsv --samples examples/cell-spatial/samples.tsv --features examples/cell-spatial/features.tsv --reference control --tested case --gene-sets examples/cell-spatial/gene-sets.tsv --out build/cell-demo/pathways
+<div class="code-window"><div class="code-bar"><span>shell</span></div><pre><code>java -jar build/cli/omicsmatic-0.3.7.jar single-cell --method abundance --counts examples/cell-spatial/counts.tsv --cells examples/cell-spatial/cells.tsv --samples examples/cell-spatial/samples.tsv --features examples/cell-spatial/features.tsv --reference control --tested case --out build/cell-demo/abundance
+java -jar build/cli/omicsmatic-0.3.7.jar single-cell --method pathways --counts examples/cell-spatial/counts.tsv --cells examples/cell-spatial/cells.tsv --samples examples/cell-spatial/samples.tsv --features examples/cell-spatial/features.tsv --reference control --tested case --gene-sets examples/cell-spatial/gene-sets.tsv --out build/cell-demo/pathways
 </code></pre></div>
 <p>Abundance computes each sample's population count divided by <strong>all retained cells</strong>,
 including <code>unknown</code> labels. Missing labels in an otherwise observed sample have
@@ -165,7 +165,7 @@ contrast direction, units and measured features, then export <code>feature_id</c
 different tissues or unmatched assay scales require additional models. Do not pool
 cell numbers or sections as if they were independent studies.</p>
 <h2 id="exploratory-representation">Exploratory representation</h2>
-<div class="code-window"><div class="code-bar"><span>shell</span></div><pre><code>java -jar build/cli/jlinalg-0.3.7.jar single-cell --method representation --counts examples/cell-spatial/counts.tsv --cells examples/cell-spatial/cells.tsv --samples examples/cell-spatial/samples.tsv --features examples/cell-spatial/features.tsv --rscript Rscript --variable-features 20 --components 6 --clusters 3 --seed 1 --out build/cell-demo/representation
+<div class="code-window"><div class="code-bar"><span>shell</span></div><pre><code>java -jar build/cli/omicsmatic-0.3.7.jar single-cell --method representation --counts examples/cell-spatial/counts.tsv --cells examples/cell-spatial/cells.tsv --samples examples/cell-spatial/samples.tsv --features examples/cell-spatial/features.tsv --rscript Rscript --variable-features 20 --components 6 --clusters 3 --seed 1 --out build/cell-demo/representation
 </code></pre></div>
 <p>This branch uses <code>log1p(10000*count/library)</code>, selects features by sample variance
 across cells, centers without scaling, computes PCA, and fits seeded k-means with
@@ -197,7 +197,7 @@ remain future work.</p>
   <div class="container narrow">
     <span class="eyebrow">Scientific foundations</span>
     <h2 id="scientific-citations-single-cell">Primary method citations</h2>
-    <p>Cite the relevant method publication as well as JLinAlg when reporting results from this workflow.</p>
+    <p>Cite the relevant method publication as well as OmicsMatic when reporting results from this workflow.</p>
     <ul class="citation-links">
       <li><a href="../citations.html#crowell-muscat-2020">Crowell et al. (2020) — Biological-replicate pseudobulk design</a> <span class="citation-inline-identifiers">(<a href="https://pubmed.ncbi.nlm.nih.gov/33257685/">PMID: 33257685</a>)</span></li><li><a href="../citations.html#squair-pseudoreplication-2021">Squair et al. (2021) — Donor-aware single-cell inference</a> <span class="citation-inline-identifiers">(<a href="https://pubmed.ncbi.nlm.nih.gov/34584091/">PMID: 34584091</a>)</span></li><li><a href="../citations.html#smyth-limma-2004">Smyth (2004) — moderated differential analysis</a> <span class="citation-inline-identifiers">(<a href="https://pubmed.ncbi.nlm.nih.gov/16646809/">PMID: 16646809</a>)</span></li><li><a href="../citations.html#law-voom-2014">Law (2014) — voom mean-variance precision weights</a> <span class="citation-inline-identifiers">(<a href="https://pubmed.ncbi.nlm.nih.gov/24485249/">PMID: 24485249</a> · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4053721/">PMCID: PMC4053721</a>)</span></li><li><a href="../citations.html#benjamini-hochberg-1995">Benjamini (1995) — Benjamini-Hochberg FDR</a></li>
     </ul>

@@ -50,10 +50,10 @@ upstream programs explicitly; this installer supplies Windows x86_64 runtimes.
 ## Build an index once
 
 ```powershell
-java -jar build/cli/jlinalg-0.3.7.jar read-align --method bowtie2-index `
+java -jar build/cli/omicsmatic-0.3.7.jar read-align --method bowtie2-index `
   --bowtie-home build/omics-align-bowtie2/bowtie2-2.5.5-mingw-x86_64 `
   --reference GRCh38.fa --out build/grch38-bowtie2
-java -jar build/cli/jlinalg-0.3.7.jar read-align --method bwa-index `
+java -jar build/cli/omicsmatic-0.3.7.jar read-align --method bwa-index `
   --bwa build/omics-align-bwa/bin/bwa.exe --reference GRCh38.fa `
   --out build/grch38-bwa
 ```
@@ -76,7 +76,7 @@ sex-specific reference construction or ALT-contig annotation is inferred.
 ## Bowtie 2 single/paired alignment
 
 ```powershell
-java -jar build/cli/jlinalg-0.3.7.jar read-align --method bowtie2 `
+java -jar build/cli/omicsmatic-0.3.7.jar read-align --method bowtie2 `
   --bowtie-home build/omics-align-bowtie2/bowtie2-2.5.5-mingw-x86_64 `
   --index build/grch38-bowtie2 --reads R1.fastq.gz --reads2 R2.fastq.gz `
   --sample sample1 --threads 4 --preset very-sensitive `
@@ -105,11 +105,11 @@ MPRA barcode-association workflow requiring additional-use review.
 ## BWA-MEM and BWA backtrack
 
 ```powershell
-java -jar build/cli/jlinalg-0.3.7.jar read-align --method bwa-mem `
+java -jar build/cli/omicsmatic-0.3.7.jar read-align --method bwa-mem `
   --bwa build/omics-align-bwa/bin/bwa.exe --index build/grch38-bwa `
   --reads R1.fastq.gz --reads2 R2.fastq.gz --sample sample1 `
   --threads 4 --out build/sample1-bwa
-java -jar build/cli/jlinalg-0.3.7.jar read-align --method bwa-backtrack `
+java -jar build/cli/omicsmatic-0.3.7.jar read-align --method bwa-backtrack `
   --bwa build/omics-align-bwa/bin/bwa.exe --index build/grch38-bwa `
   --reads merged.fastq.gz --sample ancient1 --seed-length 32 `
   --out build/ancient1-bwa

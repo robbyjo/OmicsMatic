@@ -23,7 +23,7 @@ For a numeric observation table, the source-build CLI fits the same estimator
 and writes separate coefficient, strength-diagnostic, and manifest tables:
 
 ```powershell
-java -jar build/cli/jlinalg-0.3.7.jar iv-regression `
+java -jar build/cli/omicsmatic-0.3.7.jar iv-regression `
   --input cohort.tsv `
   --response outcome `
   --exogenous age,sex `
@@ -89,7 +89,7 @@ The coefficient fit is
 \]
 
 where `X` contains included exogenous and endogenous regressors, while `Z`
-contains included exogenous regressors and excluded instruments. JLinAlg
+contains included exogenous regressors and excluded instruments. OmicsMatic
 computes the QR projections without forming the dense `P_Z` matrix. Fitted
 outcomes and residuals use the observed structural design `X`. This distinction
 matters: ordinary OLS software applied to first-stage fitted exposures can
@@ -131,7 +131,7 @@ weak-identification-robust Anderson-Rubin/CLR confidence sets. If weak
 identification is plausible, use a method designed for it rather than treating
 a conventional 2SLS Wald interval as conclusive.
 
-JLinAlg rejects all of these cases before returning a fit:
+OmicsMatic rejects all of these cases before returning a fit:
 
 - fewer excluded instruments than endogenous regressors;
 - a rank-deficient structural or instrument matrix;
@@ -226,10 +226,10 @@ first-stage diagnostics, and identifying assumptions with the estimate.
 <!-- SCIENTIFIC-CITATIONS:START -->
 ## Scientific citations
 
-These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as JLinAlg when reporting results.
+These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as OmicsMatic when reporting results.
 
 - [Douglas Staiger and James H. Stock (1997) — Instrumental variables regression with weak instruments](../CITATIONS.md#staiger-stock-1997)
 - [Halbert White (1980) — A heteroskedasticity-consistent covariance matrix estimator and a direct test for heteroskedasticity](../CITATIONS.md#white-1980)
 
-[Search the complete scientific bibliography](https://robbyjo.github.io/JLinAlg/citations.html).
+[Search the complete scientific bibliography](https://robbyjo.github.io/OmicsMatic/citations.html).
 <!-- SCIENTIFIC-CITATIONS:END -->

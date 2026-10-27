@@ -76,7 +76,7 @@ Conditional instrument p-values and causal-estimate p-values are different
 quantities with separate output names.
 
 ```powershell
-java -jar build/cli/jlinalg-<version>.jar mr-estimate `
+java -jar build/cli/omicsmatic-<version>.jar mr-estimate `
   --input harmonized.tsv --method conditional --joint --ld ld-correlation.tsv
 ```
 
@@ -134,7 +134,7 @@ explicit workload, initialization, and inference-work caveats in the report.
 <!-- SCIENTIFIC-CITATIONS:START -->
 ## Scientific citations
 
-These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as JLinAlg when reporting results.
+These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as OmicsMatic when reporting results.
 
 - [Craig K. Enders and Deborah L. Bandalos (2001) — The relative performance of full information maximum likelihood estimation for missing data in structural equation models](../CITATIONS.md#enders-bandalos-2001)
 - [Norman E. Breslow and David G. Clayton (1993) — Approximate inference in generalized linear mixed models](../CITATIONS.md#breslow-clayton-1993)
@@ -143,5 +143,5 @@ These are the primary sources for the methods used in this workflow. Cite the re
 - [Yuankai Zhang et al. (2026) — Multivariate Mendelian randomization for joint inferences of correlated outcomes](../CITATIONS.md#zhang-multivariate-mr-2026) — [PMID: 42207415](https://pubmed.ncbi.nlm.nih.gov/42207415/)
 - [Jason D. Lee, Dennis L. Sun, Yuekai Sun, and Jonathan E. Taylor (2016) — Exact post-selection inference, with application to the lasso](../CITATIONS.md#lee-2016)
 
-[Search the complete scientific bibliography](https://robbyjo.github.io/JLinAlg/citations.html).
+[Search the complete scientific bibliography](https://robbyjo.github.io/OmicsMatic/citations.html).
 <!-- SCIENTIFIC-CITATIONS:END -->

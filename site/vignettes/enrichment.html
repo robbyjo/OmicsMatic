@@ -1,10 +1,10 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Define analysis-specific backgrounds, select defensible tests, and interpret overlapping gene, disease and phenotype sets."><title>Gene-set enrichment · JLinAlg</title>
+<meta name="description" content="Define analysis-specific backgrounds, select defensible tests, and interpret overlapping gene, disease and phenotype sets."><title>Gene-set enrichment Â· OmicsMatic</title>
 <link rel="stylesheet" href="../assets/styles.css"><script src="../assets/app.js" defer></script></head>
 <body><site-header root="../"></site-header><main id="main">
 <section class="page-hero"><div class="container"><div class="breadcrumbs"><a href="../index.html">Home</a><span>/</span><a href="../vignettes/index.html">Vignettes</a><span>/</span><span>Gene-set enrichment</span></div>
-<span class="eyebrow">CLI + Java · v0.3.6</span><h1>Gene-set enrichment</h1><p>Define analysis-specific backgrounds, select defensible tests, and interpret overlapping gene, disease and phenotype sets.</p></div></section>
+<span class="eyebrow">CLI + Java Â· v0.3.6</span><h1>Gene-set enrichment</h1><p>Define analysis-specific backgrounds, select defensible tests, and interpret overlapping gene, disease and phenotype sets.</p></div></section>
 <div class="container page-layout"><article class="prose"><p>The source build provides Java APIs and a command-line enrichment workflow with
 an analysis-specific background. It supports ordinary over-representation
 analysis (ORA) and the equivalent-CpG/fractional-count <code>gsameth</code> method for EWAS.
@@ -15,7 +15,7 @@ published release JAR.</p>
 <h2 id="a-complete-example">A complete example</h2>
 <p>The repository includes a small synthetic results table, probe annotation and
 GMT collection in <code>examples/enrichment</code>. Run from the repository root:</p>
-<div class="code-window"><div class="code-bar"><span>shell</span></div><pre><code>java -jar build/cli/jlinalg-0.3.7.jar --enrichment Custom --enrichment-db examples/enrichment/sets.gmt --input examples/enrichment/results.csv --input-id probe --universe-selection &quot;status == 'OK' &amp;&amp; n_studies &gt;= 3&quot; --selection &quot;p_value &lt; bonferroni(0.05)&quot; --annot examples/enrichment/annotation.csv --annot-id IlmnID --gene-col genes --annot-cols chromosome --gene-id-type symbol --min-set-size 1 --out build/enrichment-example/ora.tsv
+<div class="code-window"><div class="code-bar"><span>shell</span></div><pre><code>java -jar build/cli/omicsmatic-0.3.7.jar --enrichment Custom --enrichment-db examples/enrichment/sets.gmt --input examples/enrichment/results.csv --input-id probe --universe-selection &quot;status == 'OK' &amp;&amp; n_studies &gt;= 3&quot; --selection &quot;p_value &lt; bonferroni(0.05)&quot; --annot examples/enrichment/annotation.csv --annot-id IlmnID --gene-col genes --annot-cols chromosome --gene-id-type symbol --min-set-size 1 --out build/enrichment-example/ora.tsv
 </code></pre></div>
 <p>The six eligible probes define the feature-level testing family. Bonferroni uses
 <code>0.05 / 6</code>, before mapping to genes. One eligible probe has no gene mapping; it
@@ -32,7 +32,7 @@ settings, counts and the correction family. The screen and log announce defaults
 <p>With <code>--selection</code>, <code>--input</code> must be the complete results table for the chosen
 analysis, not just its significant rows. Its eligible IDs define the universe.
 For a meta-analysis, use the actual success/minimum-cohort requirements:</p>
-<div class="code-window"><div class="code-bar"><span>shell</span></div><pre><code>java -jar build/cli/jlinalg-0.3.7.jar --enrichment GO:BP --enrichment-db databases/go-human --input meta.csv --input-id probe_id --universe-selection &quot;status == 'OK' &amp;&amp; n_studies &gt;= 3&quot; --selection &quot;FDR &lt; 0.05&quot; --annot annotation.csv --annot-id probe_id --gene-col gene_symbol --gene-id-type symbol --out go-bp.tsv
+<div class="code-window"><div class="code-bar"><span>shell</span></div><pre><code>java -jar build/cli/omicsmatic-0.3.7.jar --enrichment GO:BP --enrichment-db databases/go-human --input meta.csv --input-id probe_id --universe-selection &quot;status == 'OK' &amp;&amp; n_studies &gt;= 3&quot; --selection &quot;FDR &lt; 0.05&quot; --annot annotation.csv --annot-id probe_id --gene-col gene_symbol --gene-id-type symbol --out go-bp.tsv
 </code></pre></div>
 <p>Adjust column names to the table you actually produced. Eligibility must reflect
 which hypotheses could have been selected in that analysis. Select one phenotype
@@ -58,7 +58,7 @@ reported and omitted from gene-level testing. They still belong to the original
 feature-level selection family.</p>
 <p>If input is already a selected-only list, supply a complete, analysis-eligible
 background explicitly. Headerless files contain one ID per line:</p>
-<div class="code-window"><div class="code-bar"><span>shell</span></div><pre><code>java -jar build/cli/jlinalg-0.3.7.jar --enrichment Custom --enrichment-db sets.gmt --input selected-genes.txt --background tested-genes.txt --out enrichment.tsv
+<div class="code-window"><div class="code-bar"><span>shell</span></div><pre><code>java -jar build/cli/omicsmatic-0.3.7.jar --enrichment Custom --enrichment-db sets.gmt --input selected-genes.txt --background tested-genes.txt --out enrichment.tsv
 </code></pre></div>
 <p>Headered tables require <code>--input-id</code> and <code>--background-id</code>, respectively. Selected
 IDs must belong to the eligible background. <code>--selection</code> and <code>--background</code>
@@ -159,7 +159,7 @@ probabilities, so a displayed double p-value of zero may still have a finite
 coverage, and individual probes can map to several genes. For an EWAS, explicitly
 choose <code>--enrichment-method gsameth</code> and provide the normalized, platform-appropriate
 probe-to-gene annotation used for <strong>all eligible CpGs</strong>:</p>
-<div class="code-window"><div class="code-bar"><span>shell</span></div><pre><code>java -jar build/cli/jlinalg-0.3.7.jar --enrichment Custom --enrichment-db examples/enrichment/sets.gmt --enrichment-method gsameth --input examples/enrichment/results.csv --input-id probe --universe-selection &quot;status == 'OK' &amp;&amp; n_studies &gt;= 3&quot; --selection &quot;p_value &lt; bonferroni(0.05)&quot; --annot examples/enrichment/annotation.csv --annot-id IlmnID --gene-col genes --min-set-size 1 --out build/enrichment-example/ewas.tsv
+<div class="code-window"><div class="code-bar"><span>shell</span></div><pre><code>java -jar build/cli/omicsmatic-0.3.7.jar --enrichment Custom --enrichment-db examples/enrichment/sets.gmt --enrichment-method gsameth --input examples/enrichment/results.csv --input-id probe --universe-selection &quot;status == 'OK' &amp;&amp; n_studies &gt;= 3&quot; --selection &quot;p_value &lt; bonferroni(0.05)&quot; --annot examples/enrichment/annotation.csv --annot-id IlmnID --gene-col genes --min-set-size 1 --out build/enrichment-example/ewas.tsv
 </code></pre></div>
 <p>The implementation follows missMethyl's <code>equiv.cpg=TRUE</code>, <code>fract.counts=TRUE</code>,
 <code>prior.prob=TRUE</code> path:</p>
@@ -308,16 +308,16 @@ association source with that ontology, or import a compatible custom gene set.
 Do not treat disease association evidence as proof of a causal gene. Open Targets
 overall scores combine evidence and the threshold is an explicit analyst choice,
 not a significance test. <code>--association-min-score</code> changes that threshold.</p>
-<div class="code-window"><div class="code-bar"><span>shell</span></div><pre><code>java -jar build/cli/jlinalg-0.3.7.jar --enrichment GO --download databases/go-human --species human --gene-id-type symbol
-java -jar build/cli/jlinalg-0.3.7.jar --enrichment Reactome --download databases/reactome-human --gene-id-type ensembl
-java -jar build/cli/jlinalg-0.3.7.jar --enrichment HPO --download databases/hpo-human
-java -jar build/cli/jlinalg-0.3.7.jar --enrichment GWASCatalog --download databases/gwas-catalog
-java -jar build/cli/jlinalg-0.3.7.jar --enrichment Monarch:Mondo --download databases/monarch-mondo
-java -jar build/cli/jlinalg-0.3.7.jar --enrichment OpenTargets --download databases/open-targets --association-min-score 0.5
-java -jar build/cli/jlinalg-0.3.7.jar --enrichment MSigDB:H --download databases/msigdb-h --source-file h.symbols.gmt --gene-id-type symbol
+<div class="code-window"><div class="code-bar"><span>shell</span></div><pre><code>java -jar build/cli/omicsmatic-0.3.7.jar --enrichment GO --download databases/go-human --species human --gene-id-type symbol
+java -jar build/cli/omicsmatic-0.3.7.jar --enrichment Reactome --download databases/reactome-human --gene-id-type ensembl
+java -jar build/cli/omicsmatic-0.3.7.jar --enrichment HPO --download databases/hpo-human
+java -jar build/cli/omicsmatic-0.3.7.jar --enrichment GWASCatalog --download databases/gwas-catalog
+java -jar build/cli/omicsmatic-0.3.7.jar --enrichment Monarch:Mondo --download databases/monarch-mondo
+java -jar build/cli/omicsmatic-0.3.7.jar --enrichment OpenTargets --download databases/open-targets --association-min-score 0.5
+java -jar build/cli/omicsmatic-0.3.7.jar --enrichment MSigDB:H --download databases/msigdb-h --source-file h.symbols.gmt --gene-id-type symbol
 </code></pre></div>
 <p>For an authorized academic KEGG user:</p>
-<div class="code-window"><div class="code-bar"><span>shell</span></div><pre><code>java -jar build/cli/jlinalg-0.3.7.jar --enrichment KEGG --download databases/kegg-human --species human --kegg-academic true
+<div class="code-window"><div class="code-bar"><span>shell</span></div><pre><code>java -jar build/cli/omicsmatic-0.3.7.jar --enrichment KEGG --download databases/kegg-human --species human --kegg-academic true
 </code></pre></div>
 <p>KEGG uses a rate-limited REST download; clusterProfiler support does not imply a
 redistributable bundled KEGG database. No annotation database is shipped in the
@@ -344,7 +344,7 @@ be identified. URL redirects are followed; failed transfers have bounded retries
 <code>term_id</code> and <code>gene_id</code>, with optional <code>term_name</code>; each row is one membership.
 GMT uses tab-separated term ID, description, then one gene per field. gzip is
 accepted. Input tables support quoted cells, but not embedded physical newlines.</p>
-<div class="code-window"><div class="code-bar"><span>shell</span></div><pre><code>java -jar build/cli/jlinalg-0.3.7.jar --enrichment Custom --download databases/my-disease-sets --source-file disease-genes.tsv --db-format term2gene --gene-id-type entrez
+<div class="code-window"><div class="code-bar"><span>shell</span></div><pre><code>java -jar build/cli/omicsmatic-0.3.7.jar --enrichment Custom --download databases/my-disease-sets --source-file disease-genes.tsv --db-format term2gene --gene-id-type entrez
 </code></pre></div>
 <p>Open Targets uses DuckDB JDBC to read local Parquet; its native libraries are
 included in the executable dependency. Other enrichment modes do not load that
@@ -454,7 +454,7 @@ checking and corruption rejection are tested without a registered session.</p>
   <div class="container narrow">
     <span class="eyebrow">Scientific foundations</span>
     <h2 id="scientific-citations-enrichment">Primary method citations</h2>
-    <p>Cite the relevant method publication as well as JLinAlg when reporting results from this workflow.</p>
+    <p>Cite the relevant method publication as well as OmicsMatic when reporting results from this workflow.</p>
     <ul class="citation-links">
       <li><a href="../citations.html#subramanian-gsea-2005">Subramanian et al. (2005) — GSEA</a> <span class="citation-inline-identifiers">(<a href="https://pubmed.ncbi.nlm.nih.gov/16199517/">PMID: 16199517</a> · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC1239896/">PMCID: PMC1239896</a>)</span></li><li><a href="../citations.html#wu-camera-2012">Wu (2012) — CAMERA</a> <span class="citation-inline-identifiers">(<a href="https://pubmed.ncbi.nlm.nih.gov/22638577/">PMID: 22638577</a> · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3458527/">PMCID: PMC3458527</a>)</span></li><li><a href="../citations.html#deleeuw-magma-2015">Leeuw et al. (2015) — MAGMA</a> <span class="citation-inline-identifiers">(<a href="https://pubmed.ncbi.nlm.nih.gov/25885710/">PMID: 25885710</a> · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4401657/">PMCID: PMC4401657</a>)</span></li><li><a href="../citations.html#benjamini-hochberg-1995">Benjamini (1995) — Benjamini-Hochberg FDR</a></li>
     </ul>

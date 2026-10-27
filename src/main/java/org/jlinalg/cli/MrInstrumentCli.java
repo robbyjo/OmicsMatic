@@ -364,11 +364,11 @@ final class MrInstrumentCli {
     private static String help() {
         return """
             Usage:
-              java -jar jlinalg-<version>.jar mr-instruments search
+              java -jar omicsmatic-<version>.jar mr-instruments search
                 --trait TEXT [--limit N]
-              java -jar jlinalg-<version>.jar mr-instruments download
+              java -jar omicsmatic-<version>.jar mr-instruments download
                 --study GCST... --out FILE [--p-threshold 5e-8]
-              java -jar jlinalg-<version>.jar mr-instruments format
+              java -jar omicsmatic-<version>.jar mr-instruments format
                 --input FILE --out FILE [--map TARGET=SOURCE,...]
 
             search queries downloadable studies in the public NHGRI-EBI GWAS

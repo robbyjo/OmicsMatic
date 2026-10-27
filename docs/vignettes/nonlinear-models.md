@@ -1,6 +1,6 @@
 # Nonlinear fixed and mixed effects
 
-JLinAlg provides deterministic Gaussian nonlinear least squares through an
+OmicsMatic provides deterministic Gaussian nonlinear least squares through an
 analytic-gradient Gauss–Newton solver. The same mean function can be fitted
 with sparse ordinary random effects or sparse pedigree effects. The mixed
 solver linearizes the nonlinear fixed mean at each iteration and reuses a
@@ -118,9 +118,9 @@ Reproduction commands, warm timings, checksums, and limitations are in the
 <!-- SCIENTIFIC-CITATIONS:START -->
 ## Scientific citations
 
-These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as JLinAlg when reporting results.
+These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as OmicsMatic when reporting results.
 
 - [Mary J. Lindstrom and Douglas M. Bates (1990) — Nonlinear mixed effects models for repeated measures data](../CITATIONS.md#lindstrom-bates-1990)
 
-[Search the complete scientific bibliography](https://robbyjo.github.io/JLinAlg/citations.html).
+[Search the complete scientific bibliography](https://robbyjo.github.io/OmicsMatic/citations.html).
 <!-- SCIENTIFIC-CITATIONS:END -->

@@ -674,7 +674,9 @@
             "gemini",
             "openai_compatible",
             "local",
-            "llama_cpp"
+            "llama_cpp",
+            "anthropic",
+            "xai"
           ],
           "default": "browser"
         },
@@ -802,6 +804,16 @@
           "minimum": 1,
           "maximum": 300,
           "default": 60
+        },
+        "credential_file": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Absolute path to a password-encrypted credential file outside the study project. Never copied into evidence."
+        },
+        "credential_password_env": {
+          "type": "string",
+          "pattern": "^[A-Za-z_][A-Za-z0-9_]*$",
+          "description": "Optional secret-manager password variable name. Without it, unlock through a masked console once per CLI invocation."
         }
       },
       "allOf": [
@@ -817,7 +829,9 @@
                   "gemini",
                   "openai_compatible",
                   "local",
-                  "llama_cpp"
+                  "llama_cpp",
+                  "anthropic",
+                  "xai"
                 ]
               }
             },
@@ -873,19 +887,35 @@
           },
           "then": {
             "required": [
-              "provider",
-              "oauth_token_env"
+              "provider"
             ],
             "properties": {
               "provider": {
-                "const": "openai_compatible"
+                "enum": [
+                  "openai",
+                  "gemini",
+                  "anthropic",
+                  "openai_compatible"
+                ]
               }
             },
             "not": {
               "required": [
                 "api_key_env"
               ]
-            }
+            },
+            "oneOf": [
+              {
+                "required": [
+                  "oauth_token_env"
+                ]
+              },
+              {
+                "required": [
+                  "credential_file"
+                ]
+              }
+            ]
           },
           "else": {
             "not": {
@@ -904,7 +934,9 @@
                   "gemini",
                   "openai_compatible",
                   "local",
-                  "llama_cpp"
+                  "llama_cpp",
+                  "anthropic",
+                  "xai"
                 ]
               }
             },
@@ -936,9 +968,68 @@
                   "required": [
                     "auth"
                   ]
+                },
+                {
+                  "required": [
+                    "credential_file"
+                  ]
+                },
+                {
+                  "required": [
+                    "credential_password_env"
+                  ]
                 }
               ]
             }
+          }
+        },
+        {
+          "if": {
+            "required": [
+              "credential_file"
+            ]
+          },
+          "then": {
+            "properties": {
+              "provider": {
+                "enum": [
+                  "openai",
+                  "gemini",
+                  "anthropic",
+                  "xai",
+                  "openai_compatible"
+                ]
+              }
+            },
+            "required": [
+              "provider"
+            ],
+            "not": {
+              "anyOf": [
+                {
+                  "required": [
+                    "api_key_env"
+                  ]
+                },
+                {
+                  "required": [
+                    "oauth_token_env"
+                  ]
+                }
+              ]
+            }
+          }
+        },
+        {
+          "if": {
+            "required": [
+              "credential_password_env"
+            ]
+          },
+          "then": {
+            "required": [
+              "credential_file"
+            ]
           }
         }
       ]
@@ -6133,7 +6224,7 @@
           "type": "string",
           "minLength": 1,
           "maxLength": 4000,
-          "pattern": "^[^\u0000-\u001f\u007f]+$"
+          "pattern": "^[^\u0000-\u001f]+$"
         }
       }
     },

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate JLinAlg scientific-citation documentation from docs/citations.json."""
+"""Generate OmicsMatic scientific-citation documentation from docs/citations.json."""
 
 from __future__ import annotations
 
@@ -173,9 +173,9 @@ def render_markdown(refs: list[dict]) -> str:
     lines = [
         "# Scientific citations",
         "",
-        "This bibliography links JLinAlg features to the primary publications that introduced or established their statistical methods. Cite both the relevant method paper and JLinAlg when reporting an analysis. Inclusion here documents methodological provenance; it is not a claim that every implementation detail is identical to the cited software.",
+        "This bibliography links OmicsMatic features to the primary publications that introduced or established their statistical methods. Cite both the relevant method paper and OmicsMatic when reporting an analysis. Inclusion here documents methodological provenance; it is not a claim that every implementation detail is identical to the cited software.",
         "",
-        "The website provides a [searchable citation index](https://robbyjo.github.io/JLinAlg/citations.html). This file and the per-vignette citation panels are generated from [citations.json](citations.json).",
+        "The website provides a [searchable citation index](https://robbyjo.github.io/OmicsMatic/citations.html). This file and the per-vignette citation panels are generated from [citations.json](citations.json).",
         "",
         "PMID and PMCID values are retrieved from [NCBI PubMed](https://pubmed.ncbi.nlm.nih.gov/) with [enrich-citation-identifiers.py](enrich-citation-identifiers.py).",
         "",
@@ -199,7 +199,7 @@ def render_markdown(refs: list[dict]) -> str:
             lines.extend([
                 f'<a id="{ref["id"]}"></a>',
                 f"- **{ref['authors']} ({ref['year']}).** {ref['title']}. *{ref['venue']}.* {identifier_links_markdown(ref)}",
-                f"  - JLinAlg methods: {features}.",
+                f"  - OmicsMatic methods: {features}.",
                 "",
             ])
     return "\n".join(lines).rstrip() + "\n"
@@ -237,7 +237,7 @@ def render_html(refs: list[dict]) -> str:
             items.append(f"""          <li class="citation-entry" id="{ref['id']}" data-citation-entry data-search="{html.escape(search, quote=True)}">
             <p class="citation-citation"><strong>{html.escape(ref['authors'])} ({ref['year']}).</strong> {html.escape(ref['title'])}. <em>{html.escape(ref['venue'])}.</em></p>
             <p class="citation-identifiers">{identifier_links_html(ref)}</p>
-            <p class="citation-methods"><strong>JLinAlg methods:</strong> {html.escape(methods)}.</p>
+            <p class="citation-methods"><strong>OmicsMatic methods:</strong> {html.escape(methods)}.</p>
           </li>""")
         sections.append(f"""        <section class="citation-topic" data-citation-topic>
           <h2>{html.escape(category)} <span>{len(entries)} sources</span></h2>
@@ -250,8 +250,8 @@ def render_html(refs: list[dict]) -> str:
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Search the primary scientific sources behind JLinAlg statistical methods.">
-  <title>Scientific citations · JLinAlg</title>
+  <meta name="description" content="Search the primary scientific sources behind OmicsMatic statistical methods.">
+  <title>Scientific citations · OmicsMatic</title>
   <link rel="stylesheet" href="assets/styles.css">
   <script src="assets/app.js" defer></script>
 </head>
@@ -306,7 +306,7 @@ def citation_block_html(slug: str, ids: list[str], by_id: dict[str, dict]) -> st
   <div class="container narrow">
     <span class="eyebrow">Scientific foundations</span>
     <h2 id="scientific-citations-{slug}">Primary method citations</h2>
-    <p>Cite the relevant method publication as well as JLinAlg when reporting results from this workflow.</p>
+    <p>Cite the relevant method publication as well as OmicsMatic when reporting results from this workflow.</p>
     <ul class="citation-links">
       {''.join(items)}
     </ul>
@@ -321,7 +321,7 @@ def citation_block_markdown(ids: list[str], by_id: dict[str, dict], central: str
         HTML_START,
         "## Scientific citations",
         "",
-        "These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as JLinAlg when reporting results.",
+        "These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as OmicsMatic when reporting results.",
         "",
     ]
     for ref_id in ids:
@@ -330,7 +330,7 @@ def citation_block_markdown(ids: list[str], by_id: dict[str, dict], central: str
         lines.append(f"- [{ref['authors']} ({ref['year']}) — {ref['title']}]({central}#{ref_id}){indexed}")
     lines.extend([
         "",
-        "[Search the complete scientific bibliography](https://robbyjo.github.io/JLinAlg/citations.html).",
+        "[Search the complete scientific bibliography](https://robbyjo.github.io/OmicsMatic/citations.html).",
         HTML_END,
     ])
     return "\n".join(lines)

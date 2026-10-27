@@ -26,7 +26,7 @@ Results-only inputs support `reference`; appropriately derived regulator activit
 summaries can support `signaling`. Association betas and p-values cannot reconstruct
 a coexpression network. Matrix inputs have `sample_id` first, then numerical
 feature columns, one independent biological sample per row. This orientation is
-explicit and can differ from upstream JLinAlg feature-by-sample outputs: transpose
+explicit and can differ from upstream OmicsMatic feature-by-sample outputs: transpose
 those before use, preserving IDs. All features must be finite and variable.
 
 Normalize and handle batch/covariates before network construction, preserving
@@ -46,7 +46,7 @@ Filter by an outcome-blind rule and document the feature universe.
 ## Reference networks and candidate key drivers
 
 ```shell
-java -jar build/cli/jlinalg-0.3.7.jar network --method reference --edges examples/followup/edges.tsv --hits examples/followup/hits.tsv --permutations 999 --seed 19 --out build/followup/reference
+java -jar build/cli/omicsmatic-0.3.7.jar network --method reference --edges examples/followup/edges.tsv --hits examples/followup/hits.tsv --permutations 999 --seed 19 --out build/followup/reference
 ```
 
 Edges require `source,target,weight,type`, with positive weights, distinct nodes,
@@ -96,7 +96,7 @@ use a quoted absolute path such as `C:/Program Files/R/R-4.6.1/bin/Rscript.exe`.
 installation or source download happens during analysis.
 
 ```shell
-java -jar build/cli/jlinalg-0.3.7.jar network --method wgcna --matrix examples/followup/discovery.tsv --power 6 --min-module-size 5 --pheno examples/followup/phenotype.tsv --trait trait --reference-matrix examples/followup/replication.tsv --permutations 100 --rscript Rscript --out build/followup/wgcna
+java -jar build/cli/omicsmatic-0.3.7.jar network --method wgcna --matrix examples/followup/discovery.tsv --power 6 --min-module-size 5 --pheno examples/followup/phenotype.tsv --trait trait --reference-matrix examples/followup/replication.tsv --permutations 100 --rscript Rscript --out build/followup/wgcna
 ```
 
 This calls WGCNA `blockwiseModules` with signed Pearson adjacency and signed TOM,
@@ -129,7 +129,7 @@ to exercise the interface, not as an adequate scientific analysis.
 ## Sparse conditional-association networks
 
 ```shell
-java -jar build/cli/jlinalg-0.3.7.jar network --method sparse --matrix examples/followup/discovery.tsv --lambda 0.15 --rule and --bootstraps 20 --seed 19 --out build/followup/sparse
+java -jar build/cli/omicsmatic-0.3.7.jar network --method sparse --matrix examples/followup/discovery.tsv --lambda 0.15 --rule and --bootstraps 20 --seed 19 --out build/followup/sparse
 ```
 
 Every feature is centered/scaled to population variance one and regressed on the
@@ -150,7 +150,7 @@ The public Java API is `org.jlinalg.network.NetworkAnalysis.neighborhoodLasso`.
 ## Regulatory networks with GENIE3
 
 ```shell
-java -jar build/cli/jlinalg-0.3.7.jar network --method regulatory --matrix examples/followup/discovery.tsv --regulators examples/followup/regulators.tsv --trees 1000 --seed 19 --rscript Rscript --out build/followup/regulatory
+java -jar build/cli/omicsmatic-0.3.7.jar network --method regulatory --matrix examples/followup/discovery.tsv --regulators examples/followup/regulators.tsv --trees 1000 --seed 19 --rscript Rscript --out build/followup/regulatory
 ```
 
 The regulator file has a unique `gene` column; every candidate regulator must be
@@ -164,7 +164,7 @@ support, or GRNBoost2 equivalence. Those are separate future adapters.
 ## Contextual signaling with inverse CARNIVAL
 
 ```shell
-java -jar build/cli/jlinalg-0.3.7.jar network --method signaling --edges examples/followup/signaling.tsv --activities examples/followup/activities.tsv --solver lpSolve --rscript Rscript --out build/followup/signaling
+java -jar build/cli/omicsmatic-0.3.7.jar network --method signaling --edges examples/followup/signaling.tsv --activities examples/followup/activities.tsv --solver lpSolve --rscript Rscript --out build/followup/signaling
 ```
 
 The prior has `source,target,sign`, sign +1/-1, unique directed pairs, and no self
@@ -189,7 +189,7 @@ perturbation follow-up, not an experimentally established driver.
 ## Differential connectivity
 
 ```shell
-java -jar build/cli/jlinalg-0.3.7.jar network --method differential --matrix examples/followup/discovery.tsv --matrix-b examples/followup/replication.tsv --out build/followup/differential
+java -jar build/cli/omicsmatic-0.3.7.jar network --method differential --matrix examples/followup/discovery.tsv --matrix-b examples/followup/replication.tsv --out build/followup/differential
 ```
 
 This example compares independent synthetic cohorts. A biological application
@@ -228,7 +228,7 @@ functional validation or target-safety assessment.
 <!-- SCIENTIFIC-CITATIONS:START -->
 ## Scientific citations
 
-These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as JLinAlg when reporting results.
+These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as OmicsMatic when reporting results.
 
 - [Peter Langfelder and Steve Horvath (2008) — WGCNA: an R package for weighted correlation network analysis](../CITATIONS.md#langfelder-wgcna-2008)
 - [Peter Langfelder et al. (2011) — Is My Network Module Preserved and Reproducible?](../CITATIONS.md#langfelder-preservation-2011)
@@ -241,5 +241,5 @@ These are the primary sources for the methods used in this workflow. Cite the re
 - [Jesse Hemerik and Jelle Goeman (2018) — Exact testing with random permutations](../CITATIONS.md#hemerik-goeman-2018) — [PMID: 30930620](https://pubmed.ncbi.nlm.nih.gov/30930620/) · [PMCID: PMC6405018](https://pmc.ncbi.nlm.nih.gov/articles/PMC6405018/)
 - [C. J. Clopper and E. S. Pearson (1934) — The Use of Confidence or Fiducial Limits Illustrated in the Case of the Binomial](../CITATIONS.md#clopper-pearson-1934)
 
-[Search the complete scientific bibliography](https://robbyjo.github.io/JLinAlg/citations.html).
+[Search the complete scientific bibliography](https://robbyjo.github.io/OmicsMatic/citations.html).
 <!-- SCIENTIFIC-CITATIONS:END -->

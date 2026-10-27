@@ -1,6 +1,6 @@
 # CLI association tutorial: from one model to xWAS
 
-This tutorial assumes only Java and the executable JLinAlg JAR. It begins with
+This tutorial assumes only Java and the executable OmicsMatic JAR. It begins with
 one phenotype model, then adds numeric omics, genotype files, relatedness,
 non-Gaussian outcomes, survival analysis, and penalized regression. Replace
 `jlinalg-<version>.jar` with the downloaded filename.
@@ -79,7 +79,7 @@ GENE_A,5.2,5.7,4.9,5.1
 GENE_B,2.0,2.4,2.2,NA
 ```
 
-JLinAlg intersects these headers with the phenotype `--id` values and
+OmicsMatic intersects these headers with the phenotype `--id` values and
 reorders automatically. It reports omics, phenotype, aligned, omitted, and
 analysis sample counts. Numeric omics may be CSV or TSV.
 
@@ -205,7 +205,7 @@ F10,1002,0,0
 F10,1003,1001,1002
 ```
 
-Tell JLinAlg what each pedigree column means:
+Tell OmicsMatic what each pedigree column means:
 
 - `--pedigree-id member_id`: the individual represented by this row.
 - `--sire-id parent1_id`: parent 1; the historical option name is retained.
@@ -228,7 +228,7 @@ java -jar jlinalg-<version>.jar --pheno phenotype.csv --omics expression.csv `
 
 Blank, `NA`, `0`, `.`, and `-9` parent values mean unknown. Pedigree
 members need not have phenotypes; they can be needed to connect relatives.
-Subject `9009` is absent from the example pedigree, so JLinAlg adds it as an
+Subject `9009` is absent from the example pedigree, so OmicsMatic adds it as an
 unrelated singleton and reports this on screen, in the log, and in the
 manifest. Repeated phenotype rows with the same absent subject ID share one
 singleton family and random effect.
@@ -237,7 +237,7 @@ Use `--pedigree-family-id` to disambiguate member IDs that repeat between
 families. A globally unique member can be matched as raw `1003`, and exact
 `family_id:member_id` values such as `F10:1003` are also accepted. If raw
 `1003` occurs in more than one family it is ambiguous, so the phenotype must
-use the qualified value; JLinAlg fails rather than guessing. Parent-child links
+use the qualified value; OmicsMatic fails rather than guessing. Parent-child links
 define relatedness, not the family label itself. A globally unique raw parent
 reference can connect pedigree rows even when their family labels differ.
 
@@ -337,7 +337,7 @@ performing post-selection inference are different tasks.
 <!-- SCIENTIFIC-CITATIONS:START -->
 ## Scientific citations
 
-These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as JLinAlg when reporting results.
+These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as OmicsMatic when reporting results.
 
 - [Hyun Min Kang et al. (2010) — Variance component model to account for sample structure in genome-wide association studies](../CITATIONS.md#kang-emmax-2010) — [PMID: 20208533](https://pubmed.ncbi.nlm.nih.gov/20208533/) · [PMCID: PMC3092069](https://pmc.ncbi.nlm.nih.gov/articles/PMC3092069/)
 - [Zhiwu Zhang et al. (2010) — Mixed linear model approach adapted for genome-wide association studies](../CITATIONS.md#zhang-p3d-2010) — [PMID: 20208535](https://pubmed.ncbi.nlm.nih.gov/20208535/) · [PMCID: PMC2931336](https://pmc.ncbi.nlm.nih.gov/articles/PMC2931336/)
@@ -345,5 +345,5 @@ These are the primary sources for the methods used in this workflow. Cite the re
 - [Seunggeun Lee et al. (2012) — Optimal unified approach for rare-variant association testing](../CITATIONS.md#lee-skato-2012) — [PMID: 22863193](https://pubmed.ncbi.nlm.nih.gov/22863193/) · [PMCID: PMC3415556](https://pmc.ncbi.nlm.nih.gov/articles/PMC3415556/)
 - [Yaowu Liu et al. (2019) — ACAT: A fast and powerful p value combination method for rare-variant analysis in sequencing studies](../CITATIONS.md#liu-acat-2019) — [PMID: 30849328](https://pubmed.ncbi.nlm.nih.gov/30849328/) · [PMCID: PMC6407498](https://pmc.ncbi.nlm.nih.gov/articles/PMC6407498/)
 
-[Search the complete scientific bibliography](https://robbyjo.github.io/JLinAlg/citations.html).
+[Search the complete scientific bibliography](https://robbyjo.github.io/OmicsMatic/citations.html).
 <!-- SCIENTIFIC-CITATIONS:END -->

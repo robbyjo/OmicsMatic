@@ -119,6 +119,8 @@ tasks.register('nativeCholmodJar', Jar) {
 
 dependencies {
     implementation 'org.yaml:snakeyaml:2.5'
+    // Maintained JOSE implementation for OAuth ID-token signature verification.
+    implementation 'com.nimbusds:nimbus-jose-jwt:10.10'
     implementation 'org.apache.commons:commons-compress:1.28.0'
     implementation 'org.apache.httpcomponents.client5:httpclient5:5.6.4'
     implementation 'org.knowm.xchart:xchart:4.0.4'
@@ -281,6 +283,7 @@ tasks.register('checkWebsite') {
         }
 
         List<String> requiredPages = [
+            'plotting.html',
             'cell-spatial-validation.html',
             'vignettes/single-cell.html',
             'vignettes/spatial-analysis.html',
@@ -563,6 +566,7 @@ tasks.register('benchmarkRegressionInference', JavaExec) {
 // Optional Python bridge checks can create bytecode beside extracted resources.
 // Generated interpreter caches are not source or distributable runtime assets.
 tasks.withType(Jar).configureEach {
+    archiveBaseName = 'omicsmatic'
     exclude '**/__pycache__/**', '**/*.pyc', '**/*.pyo'
 }
 
@@ -570,14 +574,14 @@ tasks.register('executableJar', Jar) {
     group = 'build'
     description = 'Builds the self-contained java -jar command-line application.'
     dependsOn tasks.named('classes')
-    archiveBaseName = 'jlinalg'
+    archiveBaseName = 'omicsmatic'
     archiveVersion = project.version
     destinationDirectory = layout.buildDirectory.dir('cli')
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
     manifest {
         attributes(
             'Main-Class': 'org.jlinalg.cli.JLinAlgCli',
-            'Implementation-Title': 'JLinAlg CLI',
+            'Implementation-Title': 'OmicsMatic CLI',
             'Implementation-Version': project.version
         )
     }
@@ -986,8 +990,9 @@ publishing {
     publications {
         mavenJava(MavenPublication) {
             from components.java
+            artifactId = 'omicsmatic'
             pom {
-                name = 'JLinAlg'
+                name = 'OmicsMatic'
                 description = 'Java linear and mixed-model algorithms backed by JDistlib.'
                 licenses {
                     license {

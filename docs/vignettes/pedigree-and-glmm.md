@@ -456,11 +456,11 @@ not an exact finite-sample distribution for the original non-Gaussian model.
 <!-- SCIENTIFIC-CITATIONS:START -->
 ## Scientific citations
 
-These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as JLinAlg when reporting results.
+These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as OmicsMatic when reporting results.
 
 - [C. R. Henderson (1976) — A simple method for computing the inverse of a numerator relationship matrix used in prediction of breeding values](../CITATIONS.md#henderson-1976)
 - [Norman E. Breslow and David G. Clayton (1993) — Approximate inference in generalized linear mixed models](../CITATIONS.md#breslow-clayton-1993)
 - [Diane Lambert (1992) — Zero-inflated Poisson regression, with an application to defects in manufacturing](../CITATIONS.md#lambert-1992)
 
-[Search the complete scientific bibliography](https://robbyjo.github.io/JLinAlg/citations.html).
+[Search the complete scientific bibliography](https://robbyjo.github.io/OmicsMatic/citations.html).
 <!-- SCIENTIFIC-CITATIONS:END -->

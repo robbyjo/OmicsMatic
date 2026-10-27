@@ -76,7 +76,7 @@ SKAT 2.2.5, and CompQuadForm 1.4.4. The generator uses an independent spherical
 survival integral for three-dimensional Gaussian quadratic forms. In its extreme
 tail case the probability is approximately `1.0640581158717e-22`. Davies returns
 zero and Imhof suffers cancellation on this example; neither return is used as
-the truth. JLinAlg agrees with the spherical survival integral at the tested
+the truth. OmicsMatic agrees with the spherical survival integral at the tested
 tolerance. This establishes a useful tail case, not universal superiority.
 
 RAREMETAL 4.15.1 does not provide SKAT-O as a selectable test. For SKAT-O,
@@ -201,7 +201,7 @@ all-dense, all-collapsed, and correlated sets. Gradle does not require R.
 The generic five-p-value ACAT example agrees with R within `2e-18`. ACAT-V
 Beta(1,25) and Beta(1,1), including MAC <= 10 collapsing, are checked within
 `max(2e-10 * p, 2e-12)`. Burden components use the same bound. The two SKAT
-components retain JLinAlg's existing positive-mixture calibration and are
+components retain OmicsMatic's existing positive-mixture calibration and are
 checked against Davies with a separate `7e-5` absolute bound; the resulting
 ACAT-O p-value is checked within `1e-5`. This separates ACAT implementation
 accuracy from the previously documented Imhof-versus-Davies kernel-tail
@@ -246,10 +246,10 @@ Elapsed seconds for four repeated runs:
 
 | Program | Run 1 | Run 2 | Run 3 | Run 4 |
 |---|---:|---:|---:|---:|
-| JLinAlg, Windows Java 25 | 0.3461 | 0.3452 | 0.3531 | 0.3372 |
+| OmicsMatic, Windows Java 25 | 0.3461 | 0.3452 | 0.3531 | 0.3372 |
 | RAREMETAL, Ubuntu WSL | 0.85 | 0.88 | 0.84 | 0.85 |
 
-The median ratio is about 2.46 in JLinAlg's favor on this workload. Java timing
+The median ratio is about 2.46 in OmicsMatic's favor on this workload. Java timing
 includes JVM startup; the native timing includes the executable, excluding WSL
 launch. RAREMETAL also generates standard plots. Different operating systems,
 output precision/features, and a small synthetic single-site workload limit the
@@ -273,7 +273,7 @@ unique per-run prefixes. Compare a generated Java and native result pair with
 `Rscript src/benchmark/r/compare_rare_meta_benchmark.R JAVA.single.tsv NATIVE.meta.singlevar.results`.
 Override the scripts' `LinuxWorkspace` parameter if the WSL path differs.
 
-The native reference also consumed JLinAlg's tiny exported example and wrote
+The native reference also consumed OmicsMatic's tiny exported example and wrote
 matching single-site and equal-burden tables (pooled burden beta approximately
 1.58824 and p approximately 0.153007). That two-site/one-group native run exited
 with status 1 after writing the tables and did not finalize its log/plots; its

@@ -17,7 +17,7 @@ samples absent from the supplied pedigree as unrelated founders.
 | REML, `(1\|Batch)` | 0.860 | 0.683899 | 0.211906 | 1.26x | 4.06x | 3.23x |
 | REML, pedigree + `(1\|Batch)` | 17.620 | 18.490962 | 6.230680 | 0.95x | 2.83x | 2.97x |
 
-A comparison factor above 1 means JLinAlg is faster. With one worker CHOLMOD
+A comparison factor above 1 means OmicsMatic is faster. With one worker CHOLMOD
 is 1.26x faster for batch REML and within 5% of R for pedigree REML. Eight
 workers make the two mixed-model scans 4.06x and 2.83x faster than serial R.
 The very short OLS scan is dominated by sub-millisecond scheduling and timer
@@ -54,18 +54,18 @@ OpenBLAS policy was also probed but is unavailable on this Windows host.
 ## Runtime and methods
 
 - CPU: Intel Core i9-9900K, 8 physical cores / 16 logical processors.
-- JLinAlg: Java 21 and JDistlib 0.10.1; the default sparse path is
+- OmicsMatic: Java 21 and JDistlib 0.10.1; the default sparse path is
   SuiteSparse 7.12.2 /
   CHOLMOD 5.3.4 linked to oneMKL 2023.1 for BLAS/LAPACK.
 - Native BLAS threads were fixed at one (`MKL_NUM_THREADS=1`,
-  `OMP_NUM_THREADS=1`); JLinAlg parallelism is across genes.
+  `OMP_NUM_THREADS=1`); OmicsMatic parallelism is across genes.
 - R: 4.6.1, `lme4` 2.0.6, `pedigreemm` 0.3.5, `Matrix` 1.7.5, and
   `data.table` 1.18.2.1, with all native threading variables fixed at one.
-- R used `lm`, `lmer(..., REML=TRUE)`, and `pedigreemm`; JLinAlg used its fast
+- R used `lm`, `lmer(..., REML=TRUE)`, and `pedigreemm`; OmicsMatic used its fast
   OLS scan and sparse REML implementations.
 
-The original JLinAlg comparison forced `BackendPolicy.CPU`, which is the pure
-Java CPU backend: it did not use OpenBLAS, oneMKL, or the GPU. JLinAlg now uses
+The original OmicsMatic comparison forced `BackendPolicy.CPU`, which is the pure
+Java CPU backend: it did not use OpenBLAS, oneMKL, or the GPU. OmicsMatic now uses
 `BackendPolicy.PREFERRED` by default, which selects CHOLMOD when its native
 bridge is present and otherwise retains the GPU/oneMKL/OpenBLAS/CPU fallback
 chain. Every backend remains explicitly selectable.

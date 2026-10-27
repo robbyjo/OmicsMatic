@@ -44,8 +44,8 @@ IDs. A repeated donor cannot enter an independent-sample condition comparison.
 Every output path must be a fresh directory. Run from the repository root:
 
 ```shell
-java -jar build/cli/jlinalg-0.3.7.jar single-cell --method qc --counts examples/cell-spatial/counts.tsv --cells examples/cell-spatial/cells.tsv --samples examples/cell-spatial/samples.tsv --features examples/cell-spatial/features.tsv --min-features 5 --max-mito 0.2 --out build/cell-demo/qc
-java -jar build/cli/jlinalg-0.3.7.jar single-cell --method pseudobulk --counts examples/cell-spatial/counts.tsv --cells examples/cell-spatial/cells.tsv --samples examples/cell-spatial/samples.tsv --features examples/cell-spatial/features.tsv --min-cells 10 --out build/cell-demo/pseudobulk
+java -jar build/cli/omicsmatic-0.3.7.jar single-cell --method qc --counts examples/cell-spatial/counts.tsv --cells examples/cell-spatial/cells.tsv --samples examples/cell-spatial/samples.tsv --features examples/cell-spatial/features.tsv --min-features 5 --max-mito 0.2 --out build/cell-demo/qc
+java -jar build/cli/omicsmatic-0.3.7.jar single-cell --method pseudobulk --counts examples/cell-spatial/counts.tsv --cells examples/cell-spatial/cells.tsv --samples examples/cell-spatial/samples.tsv --features examples/cell-spatial/features.tsv --min-cells 10 --out build/cell-demo/pseudobulk
 ```
 
 `cell-qc.tsv` records library counts, detected features, mitochondrial fraction,
@@ -75,8 +75,8 @@ Install R and limma separately in a chosen library, for example using
 the network. Supply the executable and library paths appropriate to your host:
 
 ```shell
-java -jar build/cli/jlinalg-0.3.7.jar single-cell --method state --counts examples/cell-spatial/counts.tsv --cells examples/cell-spatial/cells.tsv --samples examples/cell-spatial/samples.tsv --features examples/cell-spatial/features.tsv --reference control --tested case --rscript Rscript --out build/cell-demo/state
-java -jar build/cli/jlinalg-0.3.7.jar single-cell --method state --counts examples/cell-spatial/counts.tsv --cells examples/cell-spatial/cells.tsv --samples examples/cell-spatial/paired-samples.tsv --features examples/cell-spatial/features.tsv --reference control --tested case --paired true --rscript Rscript --out build/cell-demo/paired-state
+java -jar build/cli/omicsmatic-0.3.7.jar single-cell --method state --counts examples/cell-spatial/counts.tsv --cells examples/cell-spatial/cells.tsv --samples examples/cell-spatial/samples.tsv --features examples/cell-spatial/features.tsv --reference control --tested case --rscript Rscript --out build/cell-demo/state
+java -jar build/cli/omicsmatic-0.3.7.jar single-cell --method state --counts examples/cell-spatial/counts.tsv --cells examples/cell-spatial/cells.tsv --samples examples/cell-spatial/paired-samples.tsv --features examples/cell-spatial/features.tsv --reference control --tested case --paired true --rscript Rscript --out build/cell-demo/paired-state
 ```
 
 On the validated Windows host, the executable was
@@ -128,8 +128,8 @@ R execution aborts publication; it never falls back to a different estimator.
 ## Relative population abundance and functional scores
 
 ```shell
-java -jar build/cli/jlinalg-0.3.7.jar single-cell --method abundance --counts examples/cell-spatial/counts.tsv --cells examples/cell-spatial/cells.tsv --samples examples/cell-spatial/samples.tsv --features examples/cell-spatial/features.tsv --reference control --tested case --out build/cell-demo/abundance
-java -jar build/cli/jlinalg-0.3.7.jar single-cell --method pathways --counts examples/cell-spatial/counts.tsv --cells examples/cell-spatial/cells.tsv --samples examples/cell-spatial/samples.tsv --features examples/cell-spatial/features.tsv --reference control --tested case --gene-sets examples/cell-spatial/gene-sets.tsv --out build/cell-demo/pathways
+java -jar build/cli/omicsmatic-0.3.7.jar single-cell --method abundance --counts examples/cell-spatial/counts.tsv --cells examples/cell-spatial/cells.tsv --samples examples/cell-spatial/samples.tsv --features examples/cell-spatial/features.tsv --reference control --tested case --out build/cell-demo/abundance
+java -jar build/cli/omicsmatic-0.3.7.jar single-cell --method pathways --counts examples/cell-spatial/counts.tsv --cells examples/cell-spatial/cells.tsv --samples examples/cell-spatial/samples.tsv --features examples/cell-spatial/features.tsv --reference control --tested case --gene-sets examples/cell-spatial/gene-sets.tsv --out build/cell-demo/pathways
 ```
 
 Abundance computes each sample's population count divided by **all retained cells**,
@@ -168,7 +168,7 @@ cell numbers or sections as if they were independent studies.
 ## Exploratory representation
 
 ```shell
-java -jar build/cli/jlinalg-0.3.7.jar single-cell --method representation --counts examples/cell-spatial/counts.tsv --cells examples/cell-spatial/cells.tsv --samples examples/cell-spatial/samples.tsv --features examples/cell-spatial/features.tsv --rscript Rscript --variable-features 20 --components 6 --clusters 3 --seed 1 --out build/cell-demo/representation
+java -jar build/cli/omicsmatic-0.3.7.jar single-cell --method representation --counts examples/cell-spatial/counts.tsv --cells examples/cell-spatial/cells.tsv --samples examples/cell-spatial/samples.tsv --features examples/cell-spatial/features.tsv --rscript Rscript --variable-features 20 --components 6 --clusters 3 --seed 1 --out build/cell-demo/representation
 ```
 
 This branch uses `log1p(10000*count/library)`, selects features by sample variance
@@ -203,7 +203,7 @@ remain future work.
 <!-- SCIENTIFIC-CITATIONS:START -->
 ## Scientific citations
 
-These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as JLinAlg when reporting results.
+These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as OmicsMatic when reporting results.
 
 - [Helena L. Crowell et al. (2020) — muscat detects subpopulation-specific state transitions from multi-sample multi-condition single-cell transcriptomics data](../CITATIONS.md#crowell-muscat-2020) — [PMID: 33257685](https://pubmed.ncbi.nlm.nih.gov/33257685/)
 - [Jordan W. Squair et al. (2021) — Confronting false discoveries in single-cell differential expression](../CITATIONS.md#squair-pseudoreplication-2021) — [PMID: 34584091](https://pubmed.ncbi.nlm.nih.gov/34584091/)
@@ -211,5 +211,5 @@ These are the primary sources for the methods used in this workflow. Cite the re
 - [Charity W. Law, Yunshun Chen, Wei Shi, and Gordon K. Smyth (2014) — voom: precision weights unlock linear model analysis tools for RNA-seq read counts](../CITATIONS.md#law-voom-2014) — [PMID: 24485249](https://pubmed.ncbi.nlm.nih.gov/24485249/) · [PMCID: PMC4053721](https://pmc.ncbi.nlm.nih.gov/articles/PMC4053721/)
 - [Yoav Benjamini and Yosef Hochberg (1995) — Controlling the false discovery rate: a practical and powerful approach to multiple testing](../CITATIONS.md#benjamini-hochberg-1995)
 
-[Search the complete scientific bibliography](https://robbyjo.github.io/JLinAlg/citations.html).
+[Search the complete scientific bibliography](https://robbyjo.github.io/OmicsMatic/citations.html).
 <!-- SCIENTIFIC-CITATIONS:END -->

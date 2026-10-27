@@ -31,8 +31,8 @@ for the requested locus. Matrix labels are reordered by ID, not by row position.
 ## Run the example
 
 ```powershell
-java -jar build/cli/jlinalg-0.3.7.jar twas --gwas examples/xwas/gwas.tsv --weights examples/xwas/weights.tsv --reference examples/xwas/reference.tsv --ld examples/xwas/ld.tsv --joint true --out build/xwas/twas.tsv
-java -jar build/cli/jlinalg-0.3.7.jar pwas --gwas examples/xwas/gwas.tsv --weights examples/xwas/weights.tsv --reference examples/xwas/reference.tsv --ld examples/xwas/ld.tsv --out build/xwas/pwas.tsv
+java -jar build/cli/omicsmatic-0.3.7.jar twas --gwas examples/xwas/gwas.tsv --weights examples/xwas/weights.tsv --reference examples/xwas/reference.tsv --ld examples/xwas/ld.tsv --joint true --out build/xwas/twas.tsv
+java -jar build/cli/omicsmatic-0.3.7.jar pwas --gwas examples/xwas/gwas.tsv --weights examples/xwas/weights.tsv --reference examples/xwas/reference.tsv --ld examples/xwas/ld.tsv --out build/xwas/pwas.tsv
 ```
 
 The shared synthetic example uses two molecular predictors. Its second GWAS
@@ -109,10 +109,10 @@ formula checks from package-wide compatibility claims.
 <!-- SCIENTIFIC-CITATIONS:START -->
 ## Scientific citations
 
-These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as JLinAlg when reporting results.
+These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as OmicsMatic when reporting results.
 
 - [Eric R. Gamazon et al. (2015) — A gene-based association method for mapping traits using reference transcriptome data](../CITATIONS.md#gamazon-predixcan-2015) — [PMID: 26258848](https://pubmed.ncbi.nlm.nih.gov/26258848/) · [PMCID: PMC4552594](https://pmc.ncbi.nlm.nih.gov/articles/PMC4552594/)
 - [Alexander Gusev et al. (2016) — Integrative approaches for large-scale transcriptome-wide association studies](../CITATIONS.md#gusev-fusion-2016) — [PMID: 26854917](https://pubmed.ncbi.nlm.nih.gov/26854917/) · [PMCID: PMC4767558](https://pmc.ncbi.nlm.nih.gov/articles/PMC4767558/)
 
-[Search the complete scientific bibliography](https://robbyjo.github.io/JLinAlg/citations.html).
+[Search the complete scientific bibliography](https://robbyjo.github.io/OmicsMatic/citations.html).
 <!-- SCIENTIFIC-CITATIONS:END -->

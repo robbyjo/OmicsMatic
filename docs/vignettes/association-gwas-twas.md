@@ -15,7 +15,7 @@ every feature; genotype LMM uses the explicitly logged null-model P3D/EMMAX
 route. Add `--dry-run` to inspect alignment, model routing, block size, worker
 capacity, and backend before scanning.
 
-JLinAlg distinguishes fast prepared scans from exact repeated fits. Both
+OmicsMatic distinguishes fast prepared scans from exact repeated fits. Both
 return ordered effect size, SE, statistic, p-value, log10 p-value, and
 `-log10(p)`.
 
@@ -257,7 +257,7 @@ These are warm, workload-specific measurements. Reproduce with the registered
 <!-- SCIENTIFIC-CITATIONS:START -->
 ## Scientific citations
 
-These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as JLinAlg when reporting results.
+These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as OmicsMatic when reporting results.
 
 - [Hyun Min Kang et al. (2010) — Variance component model to account for sample structure in genome-wide association studies](../CITATIONS.md#kang-emmax-2010) — [PMID: 20208533](https://pubmed.ncbi.nlm.nih.gov/20208533/) · [PMCID: PMC3092069](https://pmc.ncbi.nlm.nih.gov/articles/PMC3092069/)
 - [Zhiwu Zhang et al. (2010) — Mixed linear model approach adapted for genome-wide association studies](../CITATIONS.md#zhang-p3d-2010) — [PMID: 20208535](https://pubmed.ncbi.nlm.nih.gov/20208535/) · [PMCID: PMC2931336](https://pmc.ncbi.nlm.nih.gov/articles/PMC2931336/)
@@ -270,5 +270,5 @@ These are the primary sources for the methods used in this workflow. Cite the re
 - [Genome Reference Consortium (2026) — Human Genome Overview: GRCh38 and GRCh37 pseudoautosomal regions](../CITATIONS.md#grc-human-par-intervals)
 - [PLINK developers (2026) — PLINK 2.0 human chromosome ploidy and dosage input](../CITATIONS.md#plink2-human-ploidy-documentation)
 
-[Search the complete scientific bibliography](https://robbyjo.github.io/JLinAlg/citations.html).
+[Search the complete scientific bibliography](https://robbyjo.github.io/OmicsMatic/citations.html).
 <!-- SCIENTIFIC-CITATIONS:END -->

@@ -1,11 +1,11 @@
 # JDistlib 0.10.2 dependency-upgrade validation
 
-Date: September 8, 2026. Baseline: JLinAlg commit
+Date: September 8, 2026. Baseline: OmicsMatic commit
 `6cc2bb138c80d02018c199e161cfbe519861af4a` with JDistlib 0.10.1.
 Current source builds pin [JDistlib 0.10.2](https://github.com/robbyjo/JDistlib/releases/tag/v0.10.2)
 and verify `jdistlib-all-0.10.2.jar` against SHA-256
 `8b50aaa11d2cbd512525e0d74f8e609f40db9f4fc179ccb7a885a82257e0ac81`.
-The downloaded artifact matched. Published JLinAlg v0.3.0 binaries and its tag
+The downloaded artifact matched. Published OmicsMatic v0.3.0 binaries and its tag
 are unchanged and still contain/use JDistlib 0.10.1; build current source to
 use this upgrade.
 

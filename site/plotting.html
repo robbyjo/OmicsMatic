@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Create plots from CSV or TSV tables, with worked commands, chart mappings and export options."><title>Command-line plotting Â· OmicsMatic</title>
+<link rel="stylesheet" href="./assets/styles.css"><script src="./assets/app.js" defer></script></head>
+<body><site-header root="./"></site-header><main id="main">
+<section class="page-hero"><div class="container"><div class="breadcrumbs"><a href="./index.html">Home</a><span>/</span><a href="./vignettes/index.html">Vignettes</a><span>/</span><span>Command-line plotting</span></div>
+<span class="eyebrow">CLI plotting</span><h1>Command-line plotting</h1><p>Create plots from CSV or TSV tables, with worked commands, chart mappings and export options.</p></div></section>
+<div class="container page-layout"><article class="prose"><p>OmicsMatic can render publication-ready plots directly from CSV or TSV tables.
+The output filename selects a raster format (<code>png</code>, <code>jpg</code>, <code>bmp</code>, <code>gif</code>, or
+<code>tiff</code>) or a vector format (<code>svg</code>, <code>eps</code>, or <code>pdf</code>). Existing files are never
+silently replaced.</p>
+<h2 id="quick-start">Quick start</h2>
+<p>Given <a href="https://github.com/robbyjo/OmicsMatic/blob/main/examples/plotting/measurements.csv"><code>examples/plotting/measurements.csv</code></a>:</p>
+<div class="code-window"><div class="code-bar"><span>text</span></div><pre><code>age,bmi,sex,weight,visit
+41,24.2,F,58,baseline
+53,31.7,M,91,baseline
+47,27.5,F,68,follow-up
+</code></pre></div>
+<p>create a grouped scatter plot:</p>
+<div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>java -jar build/cli/omicsmatic-0.3.7.jar plot `
+  --type scatter --input examples/plotting/measurements.csv `
+  --x age --y bmi --group sex `
+  --title &quot;BMI by age&quot; --out bmi-by-age.png
+</code></pre></div>
+<p>The same command can write a vector PDF or SVG by changing <code>--out</code>:</p>
+<div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>java -jar build/cli/omicsmatic-0.3.7.jar plot `
+  --type violin --input examples/plotting/measurements.csv `
+  --x sex --y bmi --out bmi-by-sex.pdf
+</code></pre></div>
+<h2 id="chart-types-and-mappings">Chart types and mappings</h2>
+<table>
+<thead>
+<tr>
+<th><code>--type</code></th>
+<th>Required mappings</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>scatter</code></td>
+<td><code>--x</code>, <code>--y</code></td>
+<td>Optional <code>--group</code> creates colored series and a legend.</td>
+</tr>
+<tr>
+<td><code>line</code>, <code>step</code>, <code>area</code></td>
+<td><code>--x</code>, <code>--y</code></td>
+<td>Uses input row order within each optional group.</td>
+</tr>
+<tr>
+<td><code>connected-scatter</code></td>
+<td><code>--x</code>, <code>--y</code></td>
+<td>Draws both points and connecting lines.</td>
+</tr>
+<tr>
+<td><code>bubble</code></td>
+<td><code>--x</code>, <code>--y</code>, <code>--size</code></td>
+<td>Sizes must be positive; grouping is supported.</td>
+</tr>
+<tr>
+<td><code>histogram</code></td>
+<td><code>--x</code></td>
+<td><code>--bins</code> defaults to 30.</td>
+</tr>
+<tr>
+<td><code>density</code></td>
+<td><code>--x</code></td>
+<td>Gaussian kernel density with an automatic bandwidth.</td>
+</tr>
+<tr>
+<td><code>dot</code></td>
+<td><code>--x</code>, <code>--y</code></td>
+<td>Repeated category rows are represented by their mean.</td>
+</tr>
+<tr>
+<td><code>box</code>, <code>violin</code></td>
+<td><code>--x GROUP</code>, <code>--y VALUE</code></td>
+<td><code>--group</code> can be used instead of <code>--x</code>; the violin also marks its IQR and median.</td>
+</tr>
+<tr>
+<td><code>bar</code></td>
+<td><code>--x</code>, optional <code>--y</code></td>
+<td>Without <code>--y</code>, rows are counted. Repeated rows are summed. Group with <code>--position grouped</code> or <code>stacked</code>.</td>
+</tr>
+<tr>
+<td><code>pie</code>, <code>donut</code></td>
+<td><code>--x</code>, optional <code>--y</code></td>
+<td>Without <code>--y</code>, rows are counted; repeated slice labels are summed.</td>
+</tr>
+<tr>
+<td><code>heatmap</code></td>
+<td><code>--x COLUMN</code>, <code>--y ROW</code>, <code>--fill VALUE</code></td>
+<td>The long-form grid must be complete. <code>--cluster rows</code>, <code>columns</code>, or <code>both</code> adds average-linkage Euclidean dendrograms and reorders the cells. <code>vertical</code> and <code>horizontal</code> are accepted aliases for rows and columns.</td>
+</tr>
+<tr>
+<td><code>spider</code>, <code>radar</code></td>
+<td><code>--x AXIS</code>, <code>--y VALUE</code></td>
+<td>Values must already be scaled to <code>[0,1]</code>; optional <code>--group</code> draws multiple polygons.</td>
+</tr>
+<tr>
+<td><code>circular-bar</code></td>
+<td><code>--x CATEGORY</code>, <code>--y VALUE</code></td>
+<td>Optional <code>--group</code> controls bar colors and the legend.</td>
+</tr>
+<tr>
+<td><code>parallel</code></td>
+<td><code>--id LABEL</code>, <code>--columns A,B,C</code></td>
+<td>Each numeric dimension is independently scaled; optional <code>--group</code> colors observations.</td>
+</tr>
+<tr>
+<td><code>dendrogram</code></td>
+<td><code>--id LABEL</code>, <code>--columns A,B,C</code></td>
+<td>Average-linkage Euclidean clustering; <code>--orientation vertical</code> or <code>horizontal</code>.</td>
+</tr>
+<tr>
+<td><code>treemap</code></td>
+<td><code>--x LABEL</code>, <code>--y VALUE</code></td>
+<td>Positive areas; optional <code>--group</code> adds a first hierarchy level.</td>
+</tr>
+<tr>
+<td><code>network</code></td>
+<td><code>--source</code>, <code>--target</code></td>
+<td>Deterministic force-directed layout; optional positive <code>--weight</code> and edge <code>--group</code>.</td>
+</tr>
+<tr>
+<td><code>chord</code></td>
+<td><code>--source</code>, <code>--target</code></td>
+<td>Weighted radial chord links and colored node arcs.</td>
+</tr>
+<tr>
+<td><code>edge-bundling</code></td>
+<td><code>--source</code>, <code>--target</code></td>
+<td>Radial links share group-specific bundle control points; <code>--group</code> chooses bundles.</td>
+</tr>
+<tr>
+<td><code>sankey</code></td>
+<td><code>--source</code>, <code>--target</code></td>
+<td>Positive <code>--weight</code> controls flow width. Input must be a directed acyclic graph.</td>
+</tr>
+<tr>
+<td><code>venn</code></td>
+<td><code>--x ITEM</code>, <code>--group SET</code></td>
+<td>Exactly two set labels are required. Repeat an item in both sets to place it in the overlap. Circle area is illustrative; the three printed region counts are exact.</td>
+</tr>
+</tbody>
+</table>
+<p>Missing values (<code>NA</code>, <code>N/A</code>, <code>null</code>, <code>.</code>, and blank fields) are omitted with a
+reported row count. Use <code>--na error</code> to make any incomplete mapped row fail the
+command. Non-numeric text in a numeric mapping always fails.</p>
+<h2 id="axes-legends-and-appearance">Axes, legends, and appearance</h2>
+<p>Axis titles default to their mapped column names. Override them with
+<code>--x-label</code> and <code>--y-label</code>. The common controls are:</p>
+<div class="code-window"><div class="code-bar"><span>text</span></div><pre><code>--title TEXT
+--width 800 --height 600
+--theme default|ggplot2|minimal|classic
+--legend auto|none|right|bottom|inside-ne|inside-nw|inside-se|inside-sw
+--no-grid
+--log-x --log-y
+--x-range MIN,MAX --y-range MIN,MAX
+--number-pattern 0.###
+--point-size 8
+--point-shape circle|square|diamond|triangle-up|triangle-down|cross|plus|none
+--line-width 2.0
+--line-pattern solid|dashed|dotted|dash-dot
+--colors '#0072B2,#D55E00,#009E73'
+</code></pre></div>
+<p><code>--marker-size</code> and <code>--dot-size</code> are aliases for <code>--point-size</code>;
+<code>--dot-pattern</code> is an alias for <code>--point-shape</code>. Palettes are applied in the
+listed order to groups or series. For a heatmap, the palette is interpreted as
+a continuous multi-stop gradient; its default is blue–white–red.</p>
+<p>Use quotes around a hexadecimal palette in PowerShell because <code>#</code> otherwise
+starts a comment.</p>
+<h2 id="study-pipeline-effect-and-replication-figures">Study-pipeline effect and replication figures</h2>
+<p><code>study auto</code> generates <code>effect-comparisons.tsv</code> plus PNG and vector PDF
+scatterplots for every unordered pair of result tables in a hypothesis. Feature
+IDs are matched exactly. Each plot uses common x/y limits, includes the <code>y = x</code>
+identity line, and shows <code>Pearson r</code> to exactly four decimals in its legend.
+Different declared cohort IDs produce a <code>cross_cohort</code> comparison; two result
+tables with the same cohort ID produce a <code>within_cohort</code> comparison, which is
+the intended contract for correlated phenotypes analyzed in one cohort.</p>
+<p>Discovery/replication operations additionally write <code>replication-venn.tsv</code> and
+one PNG/PDF Venn diagram per discovery/replication pair. The left set is the
+prespecified discovery-selected set. The right set contains features satisfying
+the approved replication P-value and direction criterion. The overlap is the
+replicated set. The table records the multiple-testing scope and same-sign rule,
+so a <code>discovery_subset</code> analysis is not mistaken for a symmetric genome-wide
+comparison.</p>
+<p>A standalone two-set diagram uses the same membership contract:</p>
+<div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>java -jar build/cli/omicsmatic-0.3.7.jar plot `
+  --type venn --input examples/plotting/venn-memberships.csv `
+  --x feature --group set --title &quot;Discovery and replication&quot; `
+  --out discovery-replication.pdf
+</code></pre></div>
+<h2 id="scope">Scope</h2>
+<p>The plotting layer covers the statistical, matrix, hierarchy, network, chord,
+flow, and circular charts above, multi-series axes and legends, themes, and
+consistent raster/vector export. The R Graph Gallery also catalogs geospatial,
+3D, animated, interactive, word-cloud, cartogram, and data-art visualizations.
+Those still require specialized data or runtime models and are not represented
+by this command yet.</p></article>
+<aside class="toc"><strong>On this page</strong><a href="#quick-start">Quick start</a><a href="#chart-types-and-mappings">Chart types and mappings</a><a href="#axes-legends-and-appearance">Axes, legends, and appearance</a><a href="#study-pipeline-effect-and-replication-figures">Study-pipeline effect and replication figures</a><a href="#scope">Scope</a></aside></div>
+</main><site-footer root="./"></site-footer></body></html>

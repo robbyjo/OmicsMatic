@@ -1,6 +1,6 @@
 # Summary-only conditional score analysis
 
-Use this workflow when cohorts have already produced JLinAlg's versioned
+Use this workflow when cohorts have already produced OmicsMatic's versioned
 conditional-GWAS score exports and the target and conditioning variants share a
 complete covariance block. The analysis uses aggregate scores and covariance;
 participant-level phenotypes and genotypes remain at each cohort.
@@ -20,7 +20,7 @@ often the clearest way to guarantee that scope. The block size cannot exceed
 ```powershell
 ./gradlew.bat executableJar
 
-java -jar build/cli/jlinalg-0.3.7.jar `
+java -jar build/cli/omicsmatic-0.3.7.jar `
   --omics cohort-a-locus.vcf.gz --pheno cohort-a-phenotype.tsv --id IID `
   --formula "case_status ~ age + sex + PC1 + PC2 + <omics>" `
   --family binomial --case-value case --control-value control `
@@ -57,14 +57,14 @@ cohorts must not be entered as though their scores were independent.
 Specify allele-aware keys in the orientation wanted in the output:
 
 ```powershell
-java -jar build/cli/jlinalg-0.3.7.jar conditional-score `
+java -jar build/cli/omicsmatic-0.3.7.jar conditional-score `
   --cohorts cohorts.tsv `
   --targets 1:456789:A:G,1:456950:C:T `
   --condition-on 1:455100:G:A `
   --out locus-conditional.tsv
 ```
 
-For each cohort, JLinAlg performs these operations in order:
+For each cohort, OmicsMatic performs these operations in order:
 
 1. Match exact forward-strand chromosome, position, and allele pairs. A REF/ALT
    swap is aligned by changing the score sign and the corresponding covariance
@@ -161,9 +161,9 @@ Focused validation commands:
 <!-- SCIENTIFIC-CITATIONS:START -->
 ## Scientific citations
 
-These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as JLinAlg when reporting results.
+These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as OmicsMatic when reporting results.
 
 - [Jian Yang et al. (2012) — Conditional and joint multiple-SNP analysis of GWAS summary statistics](../CITATIONS.md#yang-cojo-2012) — [PMID: 22426310](https://pubmed.ncbi.nlm.nih.gov/22426310/) · [PMCID: PMC3593158](https://pmc.ncbi.nlm.nih.gov/articles/PMC3593158/)
 
-[Search the complete scientific bibliography](https://robbyjo.github.io/JLinAlg/citations.html).
+[Search the complete scientific bibliography](https://robbyjo.github.io/OmicsMatic/citations.html).
 <!-- SCIENTIFIC-CITATIONS:END -->

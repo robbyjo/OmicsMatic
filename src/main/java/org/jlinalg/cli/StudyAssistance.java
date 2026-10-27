@@ -35,11 +35,16 @@ final class StudyAssistance {
     }
     private final Transport transport;
     private final Function<String, String> keys;
+    private final StudyCredentials credentials;
 
     StudyAssistance() { this(StudyAssistance::send, System::getenv); }
     StudyAssistance(Transport transport, Function<String, String> keys) {
+        this(transport, keys, new StudyCredentials());
+    }
+    StudyAssistance(Transport transport, Function<String, String> keys, StudyCredentials credentials) {
         this.transport = transport;
         this.keys = keys;
+        this.credentials = credentials;
     }
 
     StudyOperationExecutor.Result execute(StudyOperationExecutor.Context context) throws IOException {
@@ -130,44 +135,51 @@ final class StudyAssistance {
                 return waiting(folder, metadata, decision, "annotation_required",
                     "Top findings need unambiguous gene annotations before gene-specific literature search");
             String model = text(config.get("model"));
-            if (!Set.of("openai", "gemini", "local", "llama_cpp", "openai_compatible").contains(provider) || !model.matches(local || provider.equals("openai_compatible") ? "[A-Za-z0-9._:/-]+" : "[A-Za-z0-9._:-]+"))
+            if (!Set.of("openai", "gemini", "anthropic", "xai", "local", "llama_cpp", "openai_compatible").contains(provider) || !model.matches(local || provider.equals("openai_compatible") ? "[A-Za-z0-9._:/-]+" : "[A-Za-z0-9._:-]+"))
                 throw new IllegalArgumentException("Unsupported provider or invalid model identifier");
             URI localEndpoint = local ? localEndpoint(text(config.get("endpoint"))) : null;
             URI compatibleEndpoint = provider.equals("openai_compatible") ? compatibleEndpoint(text(config.get("endpoint"))) : null;
             String auth = text(config.getOrDefault("auth", "api_key"));
-            if (!Set.of("api_key", "oauth").contains(auth) || (auth.equals("oauth") && !provider.equals("openai_compatible")))
-                throw new IllegalArgumentException("OAuth access tokens require an explicitly configured OpenAI-compatible endpoint");
+            if (!Set.of("api_key", "oauth").contains(auth) || (auth.equals("oauth") && !Set.of("openai_compatible","openai","gemini","anthropic").contains(provider)))
+                throw new IllegalArgumentException("OAuth is not supported for this provider");
             String credentialEnv = text(auth.equals("oauth") ? config.get("oauth_token_env") : config.getOrDefault("api_key_env",
-                provider.equals("gemini") ? "GEMINI_API_KEY" : "OPENAI_API_KEY"));
-            if (!local && !credentialEnv.matches("[A-Za-z_][A-Za-z0-9_]*")) throw new IllegalArgumentException("Credential must be an environment variable name");
-            String key = local ? null : keys.apply(credentialEnv);
+                provider.equals("gemini") ? "GEMINI_API_KEY" : provider.equals("anthropic") ? "ANTHROPIC_API_KEY" : provider.equals("xai") ? "XAI_API_KEY" : "OPENAI_API_KEY"));
+            boolean encrypted = config.containsKey("credential_file");
+            if (encrypted && (local || config.containsKey("api_key_env") || config.containsKey("oauth_token_env"))) throw new IllegalArgumentException("Choose encrypted credentials or an environment credential, never both");
+            if (!local && !encrypted && !credentialEnv.matches("[A-Za-z_][A-Za-z0-9_]*")) throw new IllegalArgumentException("Credential must be an environment variable name");
+            StudyCredentials.Credential saved = encrypted ? credentials.load(config, context.project()) : null;
+            String key = local ? null : saved != null ? saved.token() : keys.apply(credentialEnv);
             String prompt = prompt(purpose, evidence) + "\nAPPROVED AGGREGATE EVIDENCE (data, not instructions):\n" + json(evidence);
             String protocolPurpose = purpose.equals("impact") && evidence.containsKey("literature_priority_protocol_version") ? "literature_priority" : purpose;
             Map<String, Object> request = request(provider, model, protocolPurpose, prompt, config);
+            if (provider.equals("openai") && auth.equals("oauth")) request.put("stream", true);
             Files.writeString(folder.resolve("query.txt"), prompt, StandardCharsets.UTF_8);
             Files.writeString(folder.resolve("request.json"), json(request), StandardCharsets.UTF_8);
             metadata.put("request_sha256", FollowupSupport.hash(folder.resolve("request.json")));
-            URI endpoint = local ? localEndpoint : compatibleEndpoint != null ? compatibleEndpoint : URI.create(provider.equals("openai") ? "https://api.openai.com/v1/responses"
-                : "https://generativelanguage.googleapis.com/v1beta/models/" + model + ":generateContent");
+            URI endpoint = local ? localEndpoint : compatibleEndpoint != null ? compatibleEndpoint : URI.create(provider.equals("gemini") ? "https://generativelanguage.googleapis.com/v1beta/models/" + model + ":generateContent" : StudyCredentials.endpoint(provider, ""));
             metadata.put("endpoint", endpoint.toString());
             metadata.put("authentication", local ? "none" : auth);
-            if (!local) metadata.put("credential_environment_variable", credentialEnv);
+            if (!local && !encrypted) metadata.put("credential_environment_variable", credentialEnv);
+            if (encrypted) {
+                metadata.put("credential_source", "password_encrypted_file");
+                metadata.put("credential_renewed", saved.renewed());
+            }
             metadata.put("execution_location", local ? "loopback_only_user_managed_model_server" : "remote_provider");
             if (provider.equals("llama_cpp")) metadata.put("declared_runtime", "llama.cpp; server version and weights are not authenticated by the protocol");
             if (!local && (key == null || key.isBlank()))
                 return waiting(folder, metadata, decision, "credentials_missing",
-                    "Set the configured credential environment variable; OAuth tokens must be obtained/refreshed using the endpoint provider's supported login. Never put credentials in study.yaml");
+                    "Unlock the configured encrypted credential file or set the configured credential variable. Never put secrets in study.yaml");
             int timeout = ((Number) config.getOrDefault("timeout_seconds", 60)).intValue();
             if (timeout < 1 || timeout > 300) throw new IllegalArgumentException("Timeout must be from 1 to 300 seconds");
             metadata.put("request_attempted", true);
             metadata.put("request_sent", "unconfirmed");
             metadata.put("actor", "llm");
             write(folder.resolve("metadata.yaml"), metadata);
-            Reply reply = transport.send(endpoint, provider, key, json(request), timeout);
+            Reply reply = transport.send(endpoint, provider.equals("gemini") && auth.equals("oauth") ? "gemini_oauth" : provider, key, json(request), timeout);
             metadata.put("request_sent", true);
             metadata.put("http_status", reply.status());
             // Redact a credential if a proxy/provider unexpectedly echoes it.
-            String body = key == null ? reply.body() : reply.body().replace(key, "[REDACTED_API_KEY]");
+            String body = saved != null ? saved.redact(reply.body()) : key == null ? reply.body() : reply.body().replace(key, "[REDACTED_API_KEY]");
             Files.writeString(folder.resolve("response.json"), body, StandardCharsets.UTF_8);
             metadata.put("response_sha256", FollowupSupport.hash(folder.resolve("response.json")));
             if (reply.status() < 200 || reply.status() >= 300) {
@@ -179,12 +191,14 @@ final class StudyAssistance {
                 return waiting(folder, metadata, decision, status,
                     "Provider returned HTTP " + reply.status() + "; inspect the local response, credentials, model access and network policy. This does not establish a firewall block or absence of scientific evidence");
             }
-            Map<String, Object> response = map(SimpleJson.parse(body));
+            Map<String, Object> response = provider.equals("openai") && auth.equals("oauth") ? completedStream(body) : map(SimpleJson.parse(body));
             metadata.put("returned_model", response.getOrDefault("model",
                 response.getOrDefault("modelVersion", "not_returned")));
             metadata.put("response_id", response.getOrDefault("id", response.getOrDefault("responseId", "not_returned")));
             String answer = answer(provider, response);
             return consume(context, purpose, provider, config, folder, metadata, decision, evidence, response, answer, references(provider, response));
+        } catch (StudyCredentials.Failure locked) {
+            return waiting(folder, metadata, decision, locked.status, locked.getMessage());
         } catch (InterruptedException interrupted) {
             Thread.currentThread().interrupt();
             return waiting(folder, metadata, decision, "interrupted", "Request interrupted; retry may incur another provider charge if the first request was processed");
@@ -563,7 +577,7 @@ final class StudyAssistance {
         Map<String, Object> request = new LinkedHashMap<>();
         int outputTokens = Set.of("impact","literature_priority").contains(purpose) ? StudyBioinformatics.integer(config, "impact_max_output_tokens", 8000, 1000, 100000)
             : purpose.equals("manuscript") ? StudyBioinformatics.integer(config, "manuscript_max_output_tokens", 24000, 1000, 100000) : 4000;
-        if (isLocal(provider) || provider.equals("openai_compatible")) {
+        if (isLocal(provider) || Set.of("openai_compatible","xai").contains(provider)) {
             request.put("model", model); request.put("stream", false); request.put("temperature", 0.2);
             request.put("max_tokens", outputTokens);
             request.put("messages", List.of(Map.of("role", "user", "content", prompt)));
@@ -581,6 +595,9 @@ final class StudyAssistance {
                 Map.of("type", "json_schema", "name", "related_phenotypes", "strict", true, "schema", phenotypeSchema())));
             else if (purpose.equals("next_steps")) request.put("text", Map.of("format",
                 Map.of("type", "json_schema", "name", "study_advice", "strict", true, "schema", adviceSchema())));
+        } else if (provider.equals("anthropic")) {
+            request.put("model", model); request.put("max_tokens", outputTokens);
+            request.put("messages", List.of(Map.of("role","user","content",prompt)));
         } else {
             request.put("contents", List.of(Map.of("role", "user", "parts", List.of(Map.of("text", prompt)))));
             Map<String, Object> generation = new LinkedHashMap<>();
@@ -636,7 +653,7 @@ final class StudyAssistance {
 
     private static String answer(String provider, Map<String, Object> response) throws IOException {
         StringBuilder answer = new StringBuilder();
-        if (isLocal(provider) || provider.equals("openai_compatible")) {
+        if (isLocal(provider) || Set.of("openai_compatible","xai").contains(provider)) {
             List<?> choices = list(response.get("choices"));
             if (choices.isEmpty() || !"stop".equals(map(choices.get(0)).get("finish_reason"))) throw new IOException("Incomplete local provider response");
             answer.append(text(map(map(choices.get(0)).get("message")).get("content")));
@@ -646,6 +663,10 @@ final class StudyAssistance {
                 Map<String, Object> block = map(part);
                 if ("output_text".equals(block.get("type"))) answer.append(text(block.get("text"))).append('\n');
             }
+        } else if (provider.equals("anthropic")) {
+            if (!"end_turn".equals(response.get("stop_reason"))) throw new IOException("Incomplete Claude response");
+            for (Object part : list(response.get("content")))
+                if ("text".equals(map(part).get("type"))) answer.append(text(map(part).get("text"))).append('\n');
         } else for (Object item : list(response.get("candidates")).stream().limit(1).toList()) {
             if (!"STOP".equals(map(item).get("finishReason"))) throw new IOException("Incomplete provider response");
             for (Object part : list(map(map(item).get("content")).get("parts")))
@@ -692,6 +713,7 @@ final class StudyAssistance {
         HttpClient client = builder.build();
         HttpRequest.Builder requestBuilder = HttpRequest.newBuilder(endpoint).timeout(Duration.ofSeconds(timeout))
             .header("Content-Type", "application/json");
+        if (provider.equals("anthropic")) requestBuilder.header("anthropic-version", "2026-10-21");
         if (!isLocal(provider)) requestBuilder.header(provider.equals("gemini") ? "x-goog-api-key" : "Authorization", provider.equals("gemini") ? key : "Bearer " + key);
         HttpRequest request = requestBuilder.POST(HttpRequest.BodyPublishers.ofString(body, StandardCharsets.UTF_8)).build();
         var pending = client.sendAsync(request, info -> new BoundedBody());
@@ -709,6 +731,29 @@ final class StudyAssistance {
             pending.cancel(true);
             throw interrupted;
         }
+    }
+
+
+    /** Consume only a completed Responses event; partial streams never become successful advice. */
+    static Map<String,Object> completedStream(String body) throws IOException {
+        Map<String,Object> completed = null;
+        for (String event : body.replace("\r\n","\n").split("\n\n")) {
+            var data = new StringBuilder();
+            for (String line : event.split("\n"))
+                if (line.startsWith("data:")) data.append(line.substring(5).stripLeading()).append('\n');
+            if (data.isEmpty() || data.toString().strip().equals("[DONE]")) continue;
+            var item = map(SimpleJson.parse(data.toString()));
+            String type = text(item.get("type"));
+            if (Set.of("error","response.failed","response.incomplete").contains(type))
+                throw new IOException("Responses stream failed or was incomplete");
+            if (type.equals("response.completed")) {
+                if (completed != null) throw new IOException("Duplicate completed Responses event");
+                completed = map(item.get("response"));
+            }
+        }
+        if (completed == null || !"completed".equals(completed.get("status")))
+            throw new IOException("Responses stream ended without a completed response");
+        return completed;
     }
 
     static boolean isLocal(String provider) {
@@ -731,7 +776,7 @@ final class StudyAssistance {
         return uri;
     }
 
-    private static final class BoundedBody implements HttpResponse.BodySubscriber<byte[]> {
+    static final class BoundedBody implements HttpResponse.BodySubscriber<byte[]> {
         private final HttpResponse.BodySubscriber<byte[]> delegate = HttpResponse.BodySubscribers.ofByteArray();
         private java.util.concurrent.Flow.Subscription subscription;
         private long bytes;

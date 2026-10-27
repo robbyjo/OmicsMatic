@@ -1,86 +1,306 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Run and verify a complete synthetic study without a model account or API call."><title>No AI: deterministic analysis · JLinAlg v0.3.7</title>
-<link rel="stylesheet" href="../assets/styles.css"><script src="../assets/app.js" defer></script></head>
+<meta name="description" content="Prepare study.yaml, run a complete or partial study, reuse completed work and add analyses through reviewed amendments."><title>Mode 1: deterministic analysis without AI · OmicsMatic</title>
+<link rel="stylesheet" href="../assets/styles.css"><script src="../assets/app.js" defer></script><style>.study-guide .result-table table{min-width:540px;table-layout:fixed}.study-guide .result-table th,.study-guide .result-table td{white-space:normal;overflow-wrap:anywhere}</style></head>
 <body><site-header root="../"></site-header><main id="main">
-<section class="page-hero"><div class="container"><div class="breadcrumbs"><a href="../index.html">Home</a><span>/</span><a href="index.html">Vignettes</a><span>/</span><span>AI collaboration</span></div>
-<span class="eyebrow">Three collaboration modes · v0.3.7</span><h1>No AI: deterministic analysis</h1><p>Run and verify a complete synthetic study without a model account or API call.</p></div></section>
-<div class="container page-layout"><article class="prose"><p>JLinAlg v0.3.7 supports a complete deterministic workflow without an AI account,
-model, API key, or model-generated code. This is the default operating mode.
-The same statistical engines and evidence records are used when AI collaboration
-is added later. These three modes describe ways of working with JLinAlg; they
-are not values of <code>analysis.mode</code>, whose <code>manual</code> and <code>auto</code> settings control
-deterministic operation planning.</p>
-<h2 id="prepare-a-small-study">Prepare a small study</h2>
-<p>From the repository root, build the executable and copy the synthetic two-cohort
-example into a fresh directory:</p>
-<pre><code class="language-powershell">.\gradlew.bat executableJar
-$jar = (Resolve-Path &quot;build/cli/jlinalg-0.3.7.jar&quot;).Path
+<section class="page-hero"><div class="container"><div class="breadcrumbs"><a href="../index.html">Home</a><span>/</span><a href="../vignettes/index.html">Vignettes</a><span>/</span><span>Mode 1: deterministic analysis without AI</span></div>
+<span class="eyebrow">Beginner guide · Current source build</span><h1>Mode 1: deterministic analysis without AI</h1><p>Prepare study.yaml, run a complete or partial study, reuse completed work and add analyses through reviewed amendments.</p></div></section>
+<div class="container page-layout"><article class="prose study-guide"><p>OmicsMatic can plan, execute and report a study without an AI account or key.
+You specify the question and inputs, review the deterministic plan, and approve
+the work. This is a useful first rehearsal even if you later want an advisor or driver.</p>
+<p><strong>New to study.yaml?</strong> It is the study recipe: <code>project</code> describes the study,
+<code>datasets</code> points to files, and <code>hypotheses</code> selects inputs and analysis goals.
+The minimum top-level keys are <code>schema_version</code>, <code>project</code>, <code>datasets</code> and
+<code>hypotheses</code>. <a href="study-getting-started.html">Start here</a> explains YAML indentation,
+a complete minimal contract, where data belong, and a runnable synthetic example.
+The <a href="study-yaml-reference.html">field guide</a> maps the optional details.</p>
+<p>These instructions use the current source build. The three collaboration modes
+are ways of working, not values of <code>analysis.mode</code>. Both <code>manual</code> and <code>auto</code>
+are deterministic planning settings; neither enables AI.</p>
+<p><strong>Choose your shell:</strong> use either the <strong>PowerShell (Windows)</strong> or the
+<strong>Bash (Linux/macOS)</strong> version of each example. Keep the same terminal session
+while following a walkthrough so its variables remain defined. On macOS, run
+<code>bash</code> in Terminal before using the Bash examples if your default shell is zsh.
+For steps that need review or filled-in YAML, stop at that point before continuing.</p>
+<h2 id="what-you-need">What you need</h2>
+<p>Use JDK 17 or newer, the repository or an appropriate executable, and a dedicated
+study directory. Your starting files can be:</p>
+<ul>
+<li>Participant matrices and phenotypes for a supported model.</li>
+<li>Completed per-cohort association tables with documented effect definitions.</li>
+<li>Typed completed analyses, using the current source build's
+  <a href="study-pipeline-tutorial.html#reuse-completed-analyses-and-run-missing-work">supplied-results route</a>.</li>
+</ul>
+<p>For a first attempt, use synthetic results. This avoids making scientific or
+data-disclosure decisions while learning the commands.</p>
+<h2 id="prepare-the-two-cohort-example">Prepare the two-cohort example</h2>
+<p>From the repository root:</p>
+<p><strong>Windows (PowerShell):</strong></p>
+<div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>.\gradlew.bat executableJar --no-daemon --no-parallel
+$jar = (Resolve-Path &quot;build/cli/omicsmatic-0.3.7.jar&quot;).Path
 $project = Join-Path (Get-Location) &quot;build/ai-no-ai&quot;
-if (Test-Path $project) { throw &quot;Choose a fresh project directory.&quot; }
+if (Test-Path -LiteralPath $project) { throw &quot;Choose a fresh project directory.&quot; }
 Copy-Item examples/study-pipeline $project -Recurse
 Set-Location $project
-</code></pre>
-<p>The fixture contains association results, not patient records. It declares
-independent discovery and replication cohorts, matching effect definitions,
-column mappings, and discovery/replication and meta-analysis goals. Assistance
-is omitted and therefore disabled. <code>analysis.mode: manual</code> keeps this teaching
-example small; <code>analysis.mode: auto</code> can add eligible registered branches without
-using AI.</p>
-<h2 id="review-approve-and-run">Review, approve, and run</h2>
-<pre><code class="language-powershell">java -jar $jar study validate study.yaml --check-files
+</code></pre></div>
+<p><strong>Linux / macOS (Bash):</strong></p>
+<div class="code-window"><div class="code-bar"><span>bash</span></div><pre><code>bash ./gradlew executableJar --no-daemon --no-parallel || exit 1
+jar=&quot;$PWD/build/cli/omicsmatic-0.3.7.jar&quot;
+project=&quot;$PWD/build/ai-no-ai&quot;
+if [ -e &quot;$project&quot; ]; then
+    printf '%s\n' &quot;Choose a fresh project directory.&quot; &gt;&amp;2
+    exit 1
+fi
+cp -R examples/study-pipeline &quot;$project&quot; || exit 1
+cd &quot;$project&quot; || exit 1
+</code></pre></div>
+<p>Open <code>study.yaml</code>, <code>data-dictionary.yaml</code>, <code>data/discovery.tsv</code> and
+<code>data/replication.tsv</code>. The tables contain feature ID, beta, standard error and
+P value. They contain synthetic association results, not patient records.</p>
+<p>The contract declares two independent cohorts and selects their datasets as
+discovery and replication. Its analysis block is:</p>
+<div class="code-window"><div class="code-bar"><span>yaml</span></div><pre><code>analysis:
+  mode: manual
+  goals: [discovery_replication, meta_analysis]
+</code></pre></div>
+<p>Keep assistance omitted or explicitly disabled. In a real study, different cohort
+names do not prove independent participants. Matching headers do not prove
+comparable models, outcome scales or effects.</p>
+<h2 id="validate-and-review-the-exact-work">Validate and review the exact work</h2>
+<p><strong>Windows (PowerShell):</strong></p>
+<div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>java -jar $jar study validate study.yaml --check-files
 java -jar $jar study resolve study.yaml --actor-id scientist-1
 java -jar $jar study plan --project . --actor-id scientist-1
 Get-Content resolved-study.yaml
 Get-Content plans/*/analysis-plan.yaml
-java -jar $jar study approve --project . --approved-by scientist-1
+</code></pre></div>
+<p><strong>Linux / macOS (Bash):</strong></p>
+<div class="code-window"><div class="code-bar"><span>bash</span></div><pre><code>java -jar &quot;$jar&quot; study validate study.yaml --check-files
+java -jar &quot;$jar&quot; study resolve study.yaml --actor-id scientist-1
+java -jar &quot;$jar&quot; study plan --project . --actor-id scientist-1
+cat resolved-study.yaml
+cat plans/*/analysis-plan.yaml
+</code></pre></div>
+<p>Validation checks structure, IDs, references and declared files. Resolution freezes
+explicit defaults and assumptions. Planning compiles operations without running
+the analyses. Read the dataset roles, effect mappings, testing family,
+cohort relationship and pending decisions before approval.</p>
+<p>A larger plan can include harmonization, annotation, QC, sensitivity, diagnostic
+and reporting steps in addition to the named goals. A goal needs inputs and checks.
+If an assumption is unknown, resolve it scientifically.
+Use <code>--accept-assumptions</code> only when you deliberately accept the stated
+approvable assumptions.</p>
+<h2 id="approve-run-and-read-the-results">Approve, run and read the results</h2>
+<p><strong>Windows (PowerShell):</strong></p>
+<div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>java -jar $jar study approve --project . --approved-by scientist-1
 java -jar $jar study run --project . --offline --actor-id scientist-1
 java -jar $jar study verify --project .
 java -jar $jar study status --project .
-</code></pre>
-<p>Review assumptions, units, covariates, cohort dependence and the testing family
-before approving. Do not accept an independence assumption simply to clear a
-gate. <code>--offline</code> blocks built-in network requests, including public-reference
-downloads. A larger offline study must have its required resources installed.</p>
-<p>The example standardizes both tables, compares discovery and replication,
-pools effects, produces diagnostics and writes a report. Inspect the operation
-manifests, <code>replication.tsv</code>, <code>meta-analysis.tsv</code>, PNG/PDF comparisons,
-<code>index/index.html</code>, <code>ledger/events.jsonl</code>, and <code>SESSION_HISTORY.md</code>.
-Use the manifest to locate outputs; operation directory names are plan-derived.
-Repeating <code>study run --project . --offline --actor-id scientist-1</code> reuses verified
-completed operations. A scientific change goes through <code>study amend</code>, never a
-silent edit to the resolved contract or completed results.</p>
-<h2 id="extend-the-analysis">Extend the analysis</h2>
-<p>JLinAlg's CLI and APIs cover association analysis, regression and mixed models,
-differential analysis, enrichment, networks, MR, fine-mapping, colocalization,
-replication, meta-analysis and sensitivity analysis. The study planner connects
-registered operations when their scientific prerequisites are available;
-standalone commands also provide methods outside the current study registry.
-Missing regional statistics, LD, ancestry or instrument review remain explicit
-blockers. A broad method catalog does not make every conceivable pipeline valid.</p>
-<h2 id="protect-patient-level-data">Protect patient-level data</h2>
-<p>No AI request is needed for this mode. On a sensitive project, explicitly set
-<code>project.data_policy.llm.remote_transmission: deny_all</code> and
-<code>project.data_policy.llm.remote_patient_level_data: deny</code> before resolution.
-Apply institution-controlled storage and account permissions to inputs, outputs
-and logs. These files can themselves contain sensitive information; local
-execution does not de-identify them. <code>--offline</code> governs JLinAlg's built-in
-requests, not unrelated software or external tools.</p>
-<p>Continue with <a href="ai-advisor.html">AI as an advisor</a> or
-<a href="ai-driver.html">AI as an external driver</a>, or follow the
-<a href="study-pipeline-tutorial.html">full study tutorial</a>.</p>
+Start-Process index/index.html
+</code></pre></div>
+<p><strong>Linux / macOS (Bash):</strong></p>
+<div class="code-window"><div class="code-bar"><span>bash</span></div><pre><code>java -jar &quot;$jar&quot; study approve --project . --approved-by scientist-1
+java -jar &quot;$jar&quot; study run --project . --offline --actor-id scientist-1
+java -jar &quot;$jar&quot; study verify --project .
+java -jar &quot;$jar&quot; study status --project .
+if [ &quot;$(uname -s)&quot; = &quot;Darwin&quot; ]; then
+    open index/index.html
+elif [ -n &quot;${DISPLAY:-}${WAYLAND_DISPLAY:-}&quot; ] &amp;&amp; command -v xdg-open &gt;/dev/null 2&gt;&amp;1; then
+    xdg-open index/index.html
+else
+    printf 'Open this report in a browser: %s/index/index.html\n' &quot;$PWD&quot;
+fi
+</code></pre></div>
+<p>The small fixture runs offline. In a real offline project, required public
+references must already be installed. For authorized public literature or
+source retrieval, use an online policy and omit <code>--offline</code>.</p>
+<p>Use the HTML index and manifests to locate:</p>
+<div class="result-table"><table>
+<thead>
+<tr>
+<th>Output</th>
+<th>Why you inspect it</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>replication.tsv</code></td>
+<td>Which discovery findings meet the recorded replication rule, including direction.</td>
+</tr>
+<tr>
+<td><code>meta-analysis.tsv</code></td>
+<td>Pooled estimates, uncertainty and heterogeneity.</td>
+</tr>
+<tr>
+<td>PNG/PDF comparisons and diagnostics</td>
+<td>Discordant effects, unusual patterns and possible model/data issues.</td>
+</tr>
+<tr>
+<td>Operation manifests</td>
+<td>Actual inputs, implementation, status, output paths and hashes.</td>
+</tr>
+<tr>
+<td><code>ledger/events.jsonl</code> and <code>SESSION_HISTORY.md</code></td>
+<td>The analysis's recorded decisions and event history.</td>
+</tr>
+<tr>
+<td><code>QUESTIONS.md</code></td>
+<td>Scientific inputs or decisions still requiring attention.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Operation folder names depend on the plan. Use manifest links instead of
+guessing a numbered output directory. Completion means the operation ran under
+the recorded contract; it does not establish that your model or interpretation is correct.</p>
+<h2 id="start-the-entire-analysis-or-finish-the-rest">Start the entire analysis or finish the rest</h2>
+<p>For a trusted, reviewed contract, use:</p>
+<p><strong>Windows (PowerShell):</strong></p>
+<div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>java -jar $jar study auto study.yaml --project . --offline --actor-id scientist-1
+</code></pre></div>
+<p><strong>Linux / macOS (Bash):</strong></p>
+<div class="code-window"><div class="code-bar"><span>bash</span></div><pre><code>java -jar &quot;$jar&quot; study auto study.yaml --project . --offline --actor-id scientist-1
+</code></pre></div>
+<p>This command includes command-line approval, execution, verification and indexing.
+It honors <code>analysis.mode</code>: a manual contract stays limited to its requested
+goals and necessary supporting steps.</p>
+<p>To investigate all eligible registered branches, use <code>analysis.mode: auto</code>
+before initial resolution, or change it through an amendment. Review the expanded
+plan; eligibility depends on available data and supported adapters. Missing MR
+inputs or LD do not become a completed negative result.</p>
+<p>After interruption or a supplied missing input, repeat:</p>
+<p><strong>Windows (PowerShell):</strong></p>
+<div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>java -jar $jar study run --project . --offline --actor-id scientist-1
+</code></pre></div>
+<p><strong>Linux / macOS (Bash):</strong></p>
+<div class="code-window"><div class="code-bar"><span>bash</span></div><pre><code>java -jar &quot;$jar&quot; study run --project . --offline --actor-id scientist-1
+</code></pre></div>
+<p>Verified completed operations are reused by default. <code>--resume</code> is optional.
+<code>--rerun</code> intentionally starts new attempts while retaining history.
+See <a href="study-pipeline-tutorial.html#6-verify-and-safely-resume">resume and status details</a>.</p>
+<h2 id="run-only-selected-parts">Run only selected parts</h2>
+<p>Set manual mode and choose a narrow goal list before resolving:</p>
+<div class="result-table"><table>
+<thead>
+<tr>
+<th>Intended work</th>
+<th>Example goals</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Pool compatible completed cohort estimates</td>
+<td><code>[meta_analysis]</code></td>
+</tr>
+<tr>
+<td>Compare discovery with replication</td>
+<td><code>[discovery_replication]</code></td>
+</tr>
+<tr>
+<td>Search literature for an existing study</td>
+<td><code>[literature_search]</code> with its labels and annotations</td>
+</tr>
+<tr>
+<td>Reuse completed meta-analysis and fill missing GO</td>
+<td><code>[gene_ontology]</code> plus a typed supplied meta-analysis</td>
+</tr>
+<tr>
+<td>Inspect completed results without an extra branch</td>
+<td><code>[]</code>; diagnostics/reporting and applicable safeguards still run</td>
+</tr>
+</tbody>
+</table></div>
+<p>There is no <code>study run --only</code> flag. The approved graph determines the work.
+Some explicit configurations trigger their own branches, so inspect the plan
+even in manual mode. Do not delete operations from the generated plan.</p>
+<p>If all primary analyses were completed elsewhere, put their files under
+<code>inputs/</code> or another stable path and declare <code>analysis.supplied_results</code>.
+Do not give a completed network or MR table the association-results stage merely
+to make it readable. Follow the
+<a href="study-pipeline-tutorial.html#reuse-completed-analyses-and-run-missing-work">typed imports</a>.</p>
+<h2 id="add-an-analysis-later">Add an analysis later</h2>
+<p>Suppose the approved two-cohort study is complete and you now want native
+literature retrieval. Obtain the current <code>resolved_study_hash</code> from
+<code>study status --project .</code>. Save this as <code>amendment-add-literature.yaml</code>,
+replacing the hash and adapting search labels to the actual study:</p>
+<div class="code-window"><div class="code-bar"><span>yaml</span></div><pre><code>schema_version: 1
+amendment:
+  id: add-literature
+  base_study_hash: CURRENT_RESOLVED_STUDY_HASH
+  rationale: Add a recorded literature search after the primary numerical work.
+changes:
+  update:
+    hypotheses:
+      - id: H1
+        analysis:
+          mode: manual
+          goals: [discovery_replication, meta_analysis, literature_search]
+          bioinformatics:
+            phenotype_terms: [body mass index]
+            literature_terms: [gene expression]
+            literature_selection: p_value
+            literature_max_features: 20
+            max_pages: 3
+</code></pre></div>
+<p>The synthetic fixture's invented genes are useful for numerical rehearsal,
+not a real literature review; use a properly annotated real study for gene-level
+searches. The amendment changes the requested work and preserves the earlier record.
+Preview and approve, then review the new plan:</p>
+<p><strong>Windows (PowerShell):</strong></p>
+<div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>java -jar $jar study amend amendment-add-literature.yaml --project . --check
+java -jar $jar study amend amendment-add-literature.yaml --project . --approved-by scientist-1
+java -jar $jar study plan --project . --actor-id scientist-1
+Get-Content plans/*/analysis-plan.yaml
+java -jar $jar study approve --project . --approved-by scientist-1
+java -jar $jar study run --project . --actor-id scientist-1
+</code></pre></div>
+<p><strong>Linux / macOS (Bash):</strong></p>
+<div class="code-window"><div class="code-bar"><span>bash</span></div><pre><code>java -jar &quot;$jar&quot; study amend amendment-add-literature.yaml --project . --check
+java -jar &quot;$jar&quot; study amend amendment-add-literature.yaml --project . --approved-by scientist-1
+java -jar &quot;$jar&quot; study plan --project . --actor-id scientist-1
+cat plans/*/analysis-plan.yaml
+java -jar &quot;$jar&quot; study approve --project . --approved-by scientist-1
+java -jar &quot;$jar&quot; study run --project . --actor-id scientist-1
+</code></pre></div>
+<p>This final run is online and can perform the newly authorized search. Unchanged
+compatible completed work can be reused. A changed scientific dependency may
+require recomputation; reuse is verified, not forced.</p>
+<h2 id="record-an-unusual-finding">Record an unusual finding</h2>
+<p>When a plot or estimate needs investigation, first record the observation.
+Replace this illustrative path with a real artifact in your project:</p>
+<p><strong>Windows (PowerShell):</strong></p>
+<div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>java -jar $jar study observe --project . --id unusual-effects-01 --type off_diagonal_streak --artifact plots/effects.png --hypothesis H1 --description &quot;Unexpected streak in the effect comparison&quot; --explanation &quot;Check scale, alignment and cohort-specific effects before a biological interpretation&quot; --proposed-direction &quot;Review the source plot and propose a sensitivity amendment if warranted&quot;
+</code></pre></div>
+<p><strong>Linux / macOS (Bash):</strong></p>
+<div class="code-window"><div class="code-bar"><span>bash</span></div><pre><code>java -jar &quot;$jar&quot; study observe --project . --id unusual-effects-01 --type off_diagonal_streak --artifact plots/effects.png --hypothesis H1 --description &quot;Unexpected streak in the effect comparison&quot; --explanation &quot;Check scale, alignment and cohort-specific effects before a biological interpretation&quot; --proposed-direction &quot;Review the source plot and propose a sensitivity amendment if warranted&quot;
+</code></pre></div>
+<p>An observation records a question, not evidence for your preferred explanation.
+New exclusions, changed phenotypes or sensitivity analyses require a reasoned
+amendment. Preserve the original result.</p>
+<p>Literature retrieval, protein context and many bioinformatics operations work
+without AI. See <a href="study-tools-literature.html">literature, tools and finding emphasis</a>
+for goals, tool choices, network controls and manuscript priorities.</p>
+<h2 id="protect-local-data">Protect local data</h2>
+<p>For sensitive work, explicitly deny remote transmission in the study policy
+when appropriate, and use an offline resource policy for offline execution.
+Keep participant inputs, outputs and logs in institution-controlled storage.
+Local analysis does not de-identify records.</p>
+<p>The built-in <code>--offline</code> option blocks OmicsMatic requests; external software
+needs its own network controls. See the
+<a href="study-yaml-reference.html#reference-resources-and-network-policy">policy reference</a>.</p>
+<p>Next: <a href="ai-advisor.html">add an advisor</a>, <a href="ai-driver.html">coordinate a driver</a>,
+or <a href="study-yaml-reference.html">explore every study.yaml field</a>.</p>
 <!-- SCIENTIFIC-CITATIONS:START -->
 <section class="citation-strip" aria-labelledby="scientific-citations-ai-no-ai">
   <div class="container narrow">
     <span class="eyebrow">Scientific foundations</span>
     <h2 id="scientific-citations-ai-no-ai">Primary method citations</h2>
-    <p>Cite the relevant method publication as well as JLinAlg when reporting results from this workflow.</p>
+    <p>Cite the relevant method publication as well as OmicsMatic when reporting results from this workflow.</p>
     <ul class="citation-links">
       <li><a href="../citations.html#sandve-reproducibility-2013">Sandve et al. (2013) — Configuration provenance</a></li><li><a href="../citations.html#w3c-prov-o-2013">W3C (2013) — Evidence provenance graph</a></li><li><a href="../citations.html#hhs-hipaa-deidentification-2012">HHS OCR (2012) — Safe Harbor and Expert Determination</a></li>
     </ul>
     <a class="text-link" href="../citations.html">Search all scientific citations →</a>
   </div>
 </section>
-<!-- SCIENTIFIC-CITATIONS:END --><div class="note"><strong>Explore the other modes</strong><a href="ai-advisor.html">AI as a scientific advisor</a> <a href="ai-driver.html">AI as an external workflow driver</a></div></article>
-<aside class="toc"><strong>On this page</strong><a href="#prepare-a-small-study">Prepare a small study</a><a href="#review-approve-and-run">Review, approve, and run</a><a href="#extend-the-analysis">Extend the analysis</a><a href="#protect-patient-level-data">Protect patient-level data</a><a href="#scientific-citations-ai-no-ai">Scientific citations</a></aside></div>
+<!-- SCIENTIFIC-CITATIONS:END --></article>
+<aside class="toc"><strong>On this page</strong><a href="#what-you-need">What you need</a><a href="#prepare-the-two-cohort-example">Prepare the two-cohort example</a><a href="#validate-and-review-the-exact-work">Validate and review the exact work</a><a href="#approve-run-and-read-the-results">Approve, run and read the results</a><a href="#start-the-entire-analysis-or-finish-the-rest">Start the entire analysis or finish the rest</a><a href="#run-only-selected-parts">Run only selected parts</a><a href="#add-an-analysis-later">Add an analysis later</a><a href="#record-an-unusual-finding">Record an unusual finding</a><a href="#protect-local-data">Protect local data</a><a href="#scientific-citations-ai-no-ai">Scientific citations</a></aside></div>
 </main><site-footer root="../"></site-footer></body></html>

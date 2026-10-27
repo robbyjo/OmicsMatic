@@ -493,7 +493,7 @@ final class PlotCli {
 
     private static String help() {
         return """
-            Usage: java -jar jlinalg-<version>.jar plot --type TYPE --input TABLE --out PLOT
+            Usage: java -jar omicsmatic-<version>.jar plot --type TYPE --input TABLE --out PLOT
               Mappings: --x COLUMN [--y COLUMN] [--group COLUMN] [--size COLUMN]
               Types: scatter, line, connected-scatter, area, step, dot, histogram,
                 density, box, violin, bar, pie, donut, bubble, heatmap, spider,

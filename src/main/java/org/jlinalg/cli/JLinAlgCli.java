@@ -330,135 +330,135 @@ public final class JLinAlgCli {
     private static String help() {
         return """
             Usage:
-              java -jar jlinalg-<version>.jar plot --help
-              java -jar jlinalg-<version>.jar study --help
-              java -jar jlinalg-<version>.jar signature-score --help
-              java -jar jlinalg-<version>.jar intervals --help
-              java -jar jlinalg-<version>.jar cell-embed --help
-              java -jar jlinalg-<version>.jar sequence-qc --help
-              java -jar jlinalg-<version>.jar sequence-tools --help
-              java -jar jlinalg-<version>.jar alignment-tools --help
-              java -jar jlinalg-<version>.jar hts-tools --help
-              java -jar jlinalg-<version>.jar read-align --help
-              java -jar jlinalg-<version>.jar gatk-tools --help
-              java -jar jlinalg-<version>.jar star-tools --help
-              java -jar jlinalg-<version>.jar genomic-signal --help
-              java -jar jlinalg-<version>.jar track-peaks --help
-              java -jar jlinalg-<version>.jar regenie-tools --help
-              java -jar jlinalg-<version>.jar coordinate-lift --help
-              java -jar jlinalg-<version>.jar feature-counts --help
-              java -jar jlinalg-<version>.jar minimap-tools --help
-              java -jar jlinalg-<version>.jar hisat-tools --help
-              java -jar jlinalg-<version>.jar single-cell-qc --help
-              java -jar jlinalg-<version>.jar magma-tools --help
-              java -jar jlinalg-<version>.jar trimmomatic-tools --help
-              java -jar jlinalg-<version>.jar deep-tools --help
-              java -jar jlinalg-<version>.jar enrichment-tools --help
-              java -jar jlinalg-<version>.jar trim-galore-reads --help
-              java -jar jlinalg-<version>.jar flash-reads --help
-              java -jar jlinalg-<version>.jar motif-scan --help
-              java -jar jlinalg-<version>.jar fimo-tools --help
-              java -jar jlinalg-<version>.jar genotype-score --help
-              java -jar jlinalg-<version>.jar beagle-tools --help
-              java -jar jlinalg-<version>.jar prs-cs-tools --help
-              java -jar jlinalg-<version>.jar molecular-geometry --help
-              java -jar jlinalg-<version>.jar electrostatic-grid --help
-              java -jar jlinalg-<version>.jar apbs-tools --help
-              java -jar jlinalg-<version>.jar igv-tools --help
-              java -jar jlinalg-<version>.jar unrelated-select --help
-              java -jar jlinalg-<version>.jar pdb2pqr-tools --help
-              java -jar jlinalg-<version>.jar potential-surface --help
-              java -jar jlinalg-<version>.jar pymol-tools --help
-              java -jar jlinalg-<version>.jar plink-tools --help
-              java -jar jlinalg-<version>.jar trim-galore-tools --help
-              java -jar jlinalg-<version>.jar kallisto-tools --help
-              java -jar jlinalg-<version>.jar transcript-import --help
-              java -jar jlinalg-<version>.jar quantile-normalize --help
-              java -jar jlinalg-<version>.jar config --command COMMAND
-              java -jar jlinalg-<version>.jar variant-db --help
-              java -jar jlinalg-<version>.jar variant-annotate --help
-              java -jar jlinalg-<version>.jar variant-consequence --help
-              java -jar jlinalg-<version>.jar variant-tools install alphagenome
-              java -jar jlinalg-<version>.jar variant-score --help
-              java -jar jlinalg-<version>.jar network --help
-              java -jar jlinalg-<version>.jar single-cell --help
-              java -jar jlinalg-<version>.jar spatial --help
+              java -jar omicsmatic-<version>.jar plot --help
+              java -jar omicsmatic-<version>.jar study --help
+              java -jar omicsmatic-<version>.jar signature-score --help
+              java -jar omicsmatic-<version>.jar intervals --help
+              java -jar omicsmatic-<version>.jar cell-embed --help
+              java -jar omicsmatic-<version>.jar sequence-qc --help
+              java -jar omicsmatic-<version>.jar sequence-tools --help
+              java -jar omicsmatic-<version>.jar alignment-tools --help
+              java -jar omicsmatic-<version>.jar hts-tools --help
+              java -jar omicsmatic-<version>.jar read-align --help
+              java -jar omicsmatic-<version>.jar gatk-tools --help
+              java -jar omicsmatic-<version>.jar star-tools --help
+              java -jar omicsmatic-<version>.jar genomic-signal --help
+              java -jar omicsmatic-<version>.jar track-peaks --help
+              java -jar omicsmatic-<version>.jar regenie-tools --help
+              java -jar omicsmatic-<version>.jar coordinate-lift --help
+              java -jar omicsmatic-<version>.jar feature-counts --help
+              java -jar omicsmatic-<version>.jar minimap-tools --help
+              java -jar omicsmatic-<version>.jar hisat-tools --help
+              java -jar omicsmatic-<version>.jar single-cell-qc --help
+              java -jar omicsmatic-<version>.jar magma-tools --help
+              java -jar omicsmatic-<version>.jar trimmomatic-tools --help
+              java -jar omicsmatic-<version>.jar deep-tools --help
+              java -jar omicsmatic-<version>.jar enrichment-tools --help
+              java -jar omicsmatic-<version>.jar trim-galore-reads --help
+              java -jar omicsmatic-<version>.jar flash-reads --help
+              java -jar omicsmatic-<version>.jar motif-scan --help
+              java -jar omicsmatic-<version>.jar fimo-tools --help
+              java -jar omicsmatic-<version>.jar genotype-score --help
+              java -jar omicsmatic-<version>.jar beagle-tools --help
+              java -jar omicsmatic-<version>.jar prs-cs-tools --help
+              java -jar omicsmatic-<version>.jar molecular-geometry --help
+              java -jar omicsmatic-<version>.jar electrostatic-grid --help
+              java -jar omicsmatic-<version>.jar apbs-tools --help
+              java -jar omicsmatic-<version>.jar igv-tools --help
+              java -jar omicsmatic-<version>.jar unrelated-select --help
+              java -jar omicsmatic-<version>.jar pdb2pqr-tools --help
+              java -jar omicsmatic-<version>.jar potential-surface --help
+              java -jar omicsmatic-<version>.jar pymol-tools --help
+              java -jar omicsmatic-<version>.jar plink-tools --help
+              java -jar omicsmatic-<version>.jar trim-galore-tools --help
+              java -jar omicsmatic-<version>.jar kallisto-tools --help
+              java -jar omicsmatic-<version>.jar transcript-import --help
+              java -jar omicsmatic-<version>.jar quantile-normalize --help
+              java -jar omicsmatic-<version>.jar config --command COMMAND
+              java -jar omicsmatic-<version>.jar variant-db --help
+              java -jar omicsmatic-<version>.jar variant-annotate --help
+              java -jar omicsmatic-<version>.jar variant-consequence --help
+              java -jar omicsmatic-<version>.jar variant-tools install alphagenome
+              java -jar omicsmatic-<version>.jar variant-score --help
+              java -jar omicsmatic-<version>.jar network --help
+              java -jar omicsmatic-<version>.jar single-cell --help
+              java -jar omicsmatic-<version>.jar spatial --help
               All commands: [--local-config FILE] [--config FILE | --no-config]
               Precedence: built-in defaults < ~/.jlinalg/config.yaml < ./jlinalg.yaml < CLI
-              java -jar jlinalg-<version>.jar censored-regression --help
-              java -jar jlinalg-<version>.jar ordinal-regression --help
-              java -jar jlinalg-<version>.jar rare-events-logit --help
-              java -jar jlinalg-<version>.jar survey-regression --help
-              java -jar jlinalg-<version>.jar --enrichment GO:BP --enrichment-db DIRECTORY
+              java -jar omicsmatic-<version>.jar censored-regression --help
+              java -jar omicsmatic-<version>.jar ordinal-regression --help
+              java -jar omicsmatic-<version>.jar rare-events-logit --help
+              java -jar omicsmatic-<version>.jar survey-regression --help
+              java -jar omicsmatic-<version>.jar --enrichment GO:BP --enrichment-db DIRECTORY
                 --input results.csv --input-id probe_id --selection "FDR < 0.05" --out enrichment.tsv
-              java -jar jlinalg-<version>.jar --enrichment GO --download NEW_DIRECTORY
-              java -jar jlinalg-<version>.jar --enrichment GO --help
-              java -jar jlinalg-<version>.jar grm --genotypes cohort.vcf.gz
+              java -jar omicsmatic-<version>.jar --enrichment GO --download NEW_DIRECTORY
+              java -jar omicsmatic-<version>.jar --enrichment GO --help
+              java -jar omicsmatic-<version>.jar grm --genotypes cohort.vcf.gz
                 --out cohort-grm.tsv [--maf 0.01] [--call-rate 0.95]
-              java -jar jlinalg-<version>.jar rare-score --vcf cohort.vcf.gz
+              java -jar omicsmatic-<version>.jar rare-score --vcf cohort.vcf.gz
                 --pheno phenotype.tsv --id sample --response trait
                 --genome-build GRCh38 --out PREFIX
-              java -jar jlinalg-<version>.jar rare-meta --cohorts manifest.tsv
+              java -jar omicsmatic-<version>.jar rare-meta --cohorts manifest.tsv
                 --genome-build GRCh38 --test single|burden|skat|skat-o|acat-v|acat-o --out PREFIX
-              java -jar jlinalg-<version>.jar conditional-score --cohorts manifest.tsv
+              java -jar omicsmatic-<version>.jar conditional-score --cohorts manifest.tsv
                 --targets CHR:POS:REF:ALT --condition-on CHR:POS:REF:ALT --out FILE.tsv
-              java -jar jlinalg-<version>.jar confounders --method pca|sva|autosva|peer
+              java -jar omicsmatic-<version>.jar confounders --method pca|sva|autosva|peer
                 --omics MATRIX [--pheno TABLE --id COLUMN] --factors N|auto --out PREFIX
-              java -jar jlinalg-<version>.jar batch-adjust --method combat --omics MATRIX
+              java -jar omicsmatic-<version>.jar batch-adjust --method combat --omics MATRIX
                 --pheno TABLE --id COLUMN --batch COLUMN --out PREFIX
-              java -jar jlinalg-<version>.jar differential --method limma|voom|negative-binomial
+              java -jar omicsmatic-<version>.jar differential --method limma|voom|negative-binomial
                 --omics MATRIX --pheno TABLE --id COLUMN --group COLUMN --out FILE.tsv
-              java -jar jlinalg-<version>.jar ewas-regions --input probes.tsv
+              java -jar omicsmatic-<version>.jar ewas-regions --input probes.tsv
                 --genome-build GRCh38 --out regions.tsv
-              java -jar jlinalg-<version>.jar multiple-test --method ihw|hierarchy
+              java -jar omicsmatic-<version>.jar multiple-test --method ihw|hierarchy
                 --input tests.tsv --out adjusted.tsv
-              java -jar jlinalg-<version>.jar multiple-impute --input TABLE
+              java -jar omicsmatic-<version>.jar multiple-impute --input TABLE
                 --types age:continuous,case:binary --out PREFIX
-              java -jar jlinalg-<version>.jar mi-pool --input estimates.tsv --out pooled.tsv
-              java -jar jlinalg-<version>.jar glm-predict --input TABLE --response Y
+              java -jar omicsmatic-<version>.jar mi-pool --input estimates.tsv --out pooled.tsv
+              java -jar omicsmatic-<version>.jar glm-predict --input TABLE --response Y
                 --predictors x1,x2 --family probit --estimand expected --out FILE
-              java -jar jlinalg-<version>.jar iv-regression --input TABLE --response Y
+              java -jar omicsmatic-<version>.jar iv-regression --input TABLE --response Y
                 --endogenous X --instruments Z1,Z2 --out PREFIX
-              java -jar jlinalg-<version>.jar arima-regression --input TABLE --response Y
+              java -jar omicsmatic-<version>.jar arima-regression --input TABLE --response Y
                 --order p,d,q --out PREFIX [--smooth]
-              java -jar jlinalg-<version>.jar meta-analysis
+              java -jar omicsmatic-<version>.jar meta-analysis
                 --cohort NAME=FILE [--cohort NAME=FILE ...] --model fixed|random --out FILE
-              java -jar jlinalg-<version>.jar meta-regression
+              java -jar omicsmatic-<version>.jar meta-regression
                 --cohort NAME=FILE [--cohort NAME=FILE ...] --moderator-file FILE
                 --moderators COLUMN[,COLUMN...] --out FILE
-              java -jar jlinalg-<version>.jar --pheno FILE --id COLUMN
+              java -jar omicsmatic-<version>.jar --pheno FILE --id COLUMN
                 --formula "y ~ covariates + <omics>" [--omics FILE] --out FILE
-              java -jar jlinalg-<version>.jar ld-db list
-              java -jar jlinalg-<version>.jar ld-db download
+              java -jar omicsmatic-<version>.jar ld-db list
+              java -jar omicsmatic-<version>.jar ld-db download
                 --database NAME [--location DIRECTORY]
-              java -jar jlinalg-<version>.jar mr-instruments search --trait TEXT
-              java -jar jlinalg-<version>.jar mr-instruments download
+              java -jar omicsmatic-<version>.jar mr-instruments search --trait TEXT
+              java -jar omicsmatic-<version>.jar mr-instruments download
                 --study GCST... --out FILE [--p-threshold 5e-8]
-              java -jar jlinalg-<version>.jar mr-instruments format
+              java -jar omicsmatic-<version>.jar mr-instruments format
                 --input FILE --out FILE [--map TARGET=SOURCE,...]
-              java -jar jlinalg-<version>.jar clump --database DIRECTORY
+              java -jar omicsmatic-<version>.jar clump --database DIRECTORY
                 --instrument FILE --ld-threshold 0.001 --output FILE
-              java -jar jlinalg-<version>.jar mr-xwas --exposure FILE
+              java -jar omicsmatic-<version>.jar mr-xwas --exposure FILE
                 --outcome FILE --output FILE --p-threshold X
-              java -jar jlinalg-<version>.jar mr-estimate --input FILE
+              java -jar omicsmatic-<version>.jar mr-estimate --input FILE
                 [--method ivw-fixed|ivw-random|egger|weighted-median|
                  ivw-generalized-fixed|ivw-generalized-random|egger-generalized|
                  overlap-aware|conditional|all] [--ld MATRIX]
                 [--sampling-covariance FILE] [--output FILE] [--plot FILE]
-              java -jar jlinalg-<version>.jar mr-mvmr --input FILE
+              java -jar omicsmatic-<version>.jar mr-mvmr --input FILE
                 --exposures NAME1,NAME2 [--outcome NAME] [--method ivw|egger]
-              java -jar jlinalg-<version>.jar mr-multivariate --input FILE
+              java -jar omicsmatic-<version>.jar mr-multivariate --input FILE
                 --exposures NAME[,NAME...] --outcomes NAME1,NAME2
                 --outcome-correlation MATRIX [--method ivw-fixed|ivw-random|presso]
-              java -jar jlinalg-<version>.jar susie --summary FILE --ld FILE
+              java -jar omicsmatic-<version>.jar susie --summary FILE --ld FILE
                 --sample-size N --out FILE
-              java -jar jlinalg-<version>.jar coloc --trait1 FILE
+              java -jar omicsmatic-<version>.jar coloc --trait1 FILE
                 --trait2 FILE --out FILE
-              java -jar jlinalg-<version>.jar mediation --input FILE
+              java -jar omicsmatic-<version>.jar mediation --input FILE
                 --outcome Y --treatment X --mediator M --out FILE
-              java -jar jlinalg-<version>.jar beta-regression --input FILE
+              java -jar omicsmatic-<version>.jar beta-regression --input FILE
                 --response COLUMN [--mean COLUMNS] [--precision COLUMNS]
-              java -jar jlinalg-<version>.jar penalized-regression --input FILE
+              java -jar omicsmatic-<version>.jar penalized-regression --input FILE
                 --response COLUMN --predictors COLUMNS
                 --model ridge|lasso|elastic-net
 
@@ -551,7 +551,7 @@ public final class JLinAlgCli {
               --transform SPEC             Row-wise <omics> stages, left to right
                 Built-ins: identity(), winsor(...), winsor_mad(k=4),
                 log1p(), log(offset=...), zscore(), int(), mvalue(epsilon=...)
-                Guide: https://robbyjo.github.io/JLinAlg/vignettes/omics-transforms.html
+                Guide: https://robbyjo.github.io/OmicsMatic/vignettes/omics-transforms.html
               --transform-plugin JAR       Trusted Java transform provider
               --omics-type auto|gwas|ewas|expression|proteomics|generic
               --annot FILE --annot-id COLUMN --annot-cols c1,c2,...

@@ -1,4 +1,4 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Worked JLinAlg formula compilation, mixed syntax, backend policy, and benchmark examples."><title>Formulas and backends vignette · JLinAlg</title><link rel="stylesheet" href="../assets/styles.css"><script src="../assets/app.js" defer></script></head><body><site-header root="../"></site-header><main id="main">
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Worked OmicsMatic formula compilation, mixed syntax, backend policy, and benchmark examples."><title>Formulas and backends vignette · OmicsMatic</title><link rel="stylesheet" href="../assets/styles.css"><script src="../assets/app.js" defer></script></head><body><site-header root="../"></site-header><main id="main">
 <section class="page-hero"><div class="container"><div class="breadcrumbs"><a href="../index.html">Home</a><span>/</span><a href="index.html">Vignettes</a><span>/</span><span>Formulas and backends</span></div><h1>Compile the model once. Route the algebra deliberately.</h1><p>Use an R-like layer for model construction without putting parsing, factor discovery, or contrast allocation inside the numerical hot path.</p></div></section>
 <div class="container page-layout"><article class="prose">
 <h2 id="cli">CLI-only formula and backend preflight</h2><div class="code-window"><div class="code-bar"><i class="code-dot"></i><i class="code-dot"></i><i class="code-dot"></i><span>Inspect and run the resolved model</span></div><pre><code>java -jar jlinalg-0.3.7.jar --pheno phenotype.csv --omics expression.csv --id SampleName --formula "BMI ~ Sex * treatment + Age + &lt;omics&gt; + (1|site)" --backend preferred --threads 96 --block-size auto --out bmi-model.csv --dry-run
@@ -55,7 +55,7 @@ System.out.println(
   <div class="container narrow">
     <span class="eyebrow">Scientific foundations</span>
     <h2 id="scientific-citations-formulas-backends">Primary method citations</h2>
-    <p>Cite the relevant method publication as well as JLinAlg when reporting results from this workflow.</p>
+    <p>Cite the relevant method publication as well as OmicsMatic when reporting results from this workflow.</p>
     <ul class="citation-links">
       <li><a href="../citations.html#wilkinson-rogers-1973">Wilkinson (1973) — statistical formulas</a></li><li><a href="../citations.html#nelder-wedderburn-1972">Nelder (1972) — generalized linear models</a></li><li><a href="../citations.html#patterson-thompson-1971">Patterson (1971) — REML</a></li>
     </ul>

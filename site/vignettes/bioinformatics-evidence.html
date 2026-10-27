@@ -1,11 +1,11 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Audited source discovery, regional genetic inference, protein and sequence investigation, literature search and local evidence packaging."><title>Bioinformatics evidence workflow · JLinAlg</title>
+<meta name="description" content="Audited source discovery, regional genetic inference, protein and sequence investigation, literature search and local evidence packaging."><title>Bioinformatics evidence workflow · OmicsMatic</title>
 <link rel="stylesheet" href="../assets/styles.css"><script src="../assets/app.js" defer></script></head>
 <body><site-header root="../"></site-header><main id="main">
 <section class="page-hero"><div class="container"><div class="breadcrumbs"><a href="../index.html">Home</a><span>/</span><a href="../vignettes/index.html">Vignettes</a><span>/</span><span>Bioinformatics evidence workflow</span></div>
-<span class="eyebrow">CLI tutorial · Source build</span><h1>Bioinformatics evidence workflow</h1><p>Audited source discovery, regional genetic inference, protein and sequence investigation, literature search and local evidence packaging.</p></div></section>
-<div class="container page-layout"><article class="prose"><p>JLinAlg can extend result-first omics studies beyond replication and meta-analysis into public-source discovery, molecular genetic inference, protein and reference-sequence investigation, literature retrieval, and transparent candidate prioritization. The deterministic planner retains control. Each operation saves its inputs, source citations, queries, responses, decisions and output hashes for the project index and research notebook.</p>
+<span class="eyebrow">CLI tutorial Â· Source build</span><h1>Bioinformatics evidence workflow</h1><p>Audited source discovery, regional genetic inference, protein and sequence investigation, literature search and local evidence packaging.</p></div></section>
+<div class="container page-layout"><article class="prose"><p>OmicsMatic can extend result-first omics studies beyond replication and meta-analysis into public-source discovery, molecular genetic inference, protein and reference-sequence investigation, literature retrieval, and transparent candidate prioritization. The deterministic planner retains control. Each operation saves its inputs, source citations, queries, responses, decisions and output hashes for the project index and research notebook.</p>
 <p>This source-build feature does not make every biological question answerable automatically. In particular, choosing a valid molecular QTL, interpreting an unusual result, establishing instrument validity, or obtaining restricted data may require the scientist. Missing evidence is reported as a prerequisite, not fabricated and not interpreted as a null finding.</p>
 <h2 id="quick-start">Quick start</h2>
 <p>The smallest real-study entry point remains a study contract plus the input result files and a current executable JAR:</p>
@@ -14,7 +14,7 @@ java -jar jlinalg-0.3.7.jar study verify --project .
 </code></pre></div>
 <p><code>analysis.mode</code> defaults to <code>auto</code>. Existing discovery/replication, meta-analysis, enrichment and diagnostic operations remain available. Auto mode now also plans <code>source_discovery</code> when genetic support is relevant, <code>bioinformatics_investigation</code>, and <code>literature_search</code>. They are independent branches: a retired QTL service does not prevent an available literature or protein investigation. Optional LLM literature interpretation is a separate <code>literature_support</code> operation.</p>
 <p>Use <code>--offline</code> to prevent built-in network access. Repeat the same command after supplying an approved amendment or restoring connectivity. Completed operations are reused only when their inputs, implementation and outputs still match. Waiting operations are retried at operation granularity; a partial public search may repeat its earlier queries. <code>--rerun</code> requests new attempts while preserving history.</p>
-<p>For a numerical demonstration with no internet or LLM, copy <a href="https://github.com/robbyjo/JLinAlg/tree/main/examples/study-pipeline/bioinformatics">the synthetic bioinformatics example</a> to a scratch directory. Run <code>run.ps1 -Jar /path/to/jlinalg.jar</code> or <code>sh run.sh /absolute/path/to/jlinalg.jar</code>. Its invented regional statistics exercise the entire numerical follow-up branch. They are not evidence for a biological hypothesis or a realism benchmark.</p>
+<p>For a numerical demonstration with no internet or LLM, copy <a href="https://github.com/robbyjo/OmicsMatic/tree/main/examples/study-pipeline/bioinformatics">the synthetic bioinformatics example</a> to a scratch directory. Run <code>run.ps1 -Jar /path/to/jlinalg.jar</code> or <code>sh run.sh /absolute/path/to/jlinalg.jar</code>. Its invented regional statistics exercise the entire numerical follow-up branch. They are not evidence for a biological hypothesis or a realism benchmark.</p>
 <h2 id="keep-the-study-contract-small">Keep the study contract small</h2>
 <p>Public investigation uses dataset annotations and the hypothesis outcome. Add optional search controls only when needed:</p>
 <div class="code-window"><div class="code-bar"><span>yaml</span></div><pre><code>datasets:
@@ -50,7 +50,7 @@ hypotheses:
 <p>Literature selection requires FDR strictly below <code>fdr</code> (default 0.05) and uses pooled meta rows only when a meta table is present. The cap is applied after full-family correction in P-value/feature-ID order. <code>literature-selection.tsv</code> retains every eligible unambiguously mapped significant feature, including those outside the review budget, with original full-family FDR, selection status, query-audit links and appraisal disposition. Annotation-ineligible and nonsignificant rows remain in upstream full result/annotation artifacts. No signal becomes scientifically supported because retrieval completed; article appraisal and any AI impact ranking remain separate work.</p>
 <h2 id="feature-annotation">Feature annotation</h2>
 <p>Local annotation tables and GTFs take priority. Declare the coordinate convention for tables. Internal annotated intervals are 1-based and closed. Unknown probe IDs are never treated as gene symbols simply because they look plausible.</p>
-<p>For human Ensembl features with an explicit modern GENCODE release and GRCh38 build, JLinAlg can retrieve the release-specific GTF automatically, cache it, and record the source URL and checksum. This download requests a public reference release, not the project's feature list. It does not guess a genome build, lift coordinates, or download an arbitrary platform manifest. Other platforms and unsupported releases need a local <code>files.annotation</code> table/GTF.</p>
+<p>For human Ensembl features with an explicit modern GENCODE release and GRCh38 build, OmicsMatic can retrieve the release-specific GTF automatically, cache it, and record the source URL and checksum. This download requests a public reference release, not the project's feature list. It does not guess a genome build, lift coordinates, or download an arbitrary platform manifest. Other platforms and unsupported releases need a local <code>files.annotation</code> table/GTF.</p>
 <p>Annotation is not a claim that the feature is causal, that an sQTL exists, or that a transcript maps uniquely to a protein isoform. The generated scientist questions retain these distinctions.</p>
 <h2 id="sources-and-scientific-relevance">Sources and scientific relevance</h2>
 <table>
@@ -70,7 +70,7 @@ hypotheses:
 <tr>
 <td>Pan-UK Biobank</td>
 <td>Automatic exposure-instrument lookup for the public BMI field 21001 EUR or ICD-10 E66 obesity EUR summary statistics; other traits remain discoverable candidates until a provider adapter or reviewed custom source is declared</td>
-<td>The complete indexed source is installed in the shared cache. Its native build is GRCh37; JLinAlg projects biallelic exposure alleles locally with the installed hg38-to-hg19 chain, verifies exact Pan-UKB alleles, and emits an audited GRCh38-coordinate adapter table. It does not lift positions by offset or treat a UKB-plus-external meta-analysis as independent of every cohort.</td>
+<td>The complete indexed source is installed in the shared cache. Its native build is GRCh37; OmicsMatic projects biallelic exposure alleles locally with the installed hg38-to-hg19 chain, verifies exact Pan-UKB alleles, and emits an audited GRCh38-coordinate adapter table. It does not lift positions by offset or treat a UKB-plus-external meta-analysis as independent of every cohort.</td>
 </tr>
 <tr>
 <td>eQTL Catalogue</td>
@@ -104,7 +104,7 @@ hypotheses:
 </tr>
 </tbody>
 </table>
-<p>The same framework applies to different phenotypes, cohorts and tissues. For example, a blood/sleep study may declare brain as a follow-up tissue with a documented rationale. JLinAlg does not infer that all available brain QTLs are appropriate. Related phenotype suggestions from an LLM remain proposals until reviewed and incorporated into the study.</p>
+<p>The same framework applies to different phenotypes, cohorts and tissues. For example, a blood/sleep study may declare brain as a follow-up tissue with a documented rationale. OmicsMatic does not infer that all available brain QTLs are appropriate. Related phenotype suggestions from an LLM remain proposals until reviewed and incorporated into the study.</p>
 <p>The built-in GWAS Catalog/eQTL Catalogue/GTEx discovery branch requires explicitly human datasets. It does not substitute human genetic resources for another organism. Nonhuman studies need species-matched genetic-source adapters; the reviewed protein lookup currently supports human and mouse.</p>
 <p>Searches distinguish <code>no_matches</code>, <code>search_limited</code>, <code>not_found</code>, <code>endpoint_retired</code>, <code>access_denied</code>, <code>rate_limited</code>, <code>unavailable</code>, <code>offline_policy</code>, and <code>policy_denied</code>. HTTP 404/410, malformed responses and connectivity failures never become a scientific “no associations exist” conclusion. Search defaults are three pages per strategy, 20 regional catalogue SNPs per feature and 20 literature records per page. <code>literature_search</code> has a separate <code>literature_max_queries</code> budget, default 1,000 (range 1–10,000), so a 100-signal direct/mechanism/counterevidence search is not silently constrained by the old 200-query ceiling. Native protein structure/assessment uses a separate default 500-query budget. Other public-evidence operations retain 200. Each request record includes its budget; audited cached uses also count. Budget exhaustion leaves retrieval incomplete and the operation waiting. Page-limited searches remain explicitly bounded, not exhaustive. UCSC requests are limited to one per second and sequences to 100 kb by default.</p>
 <h2 id="from-a-source-candidate-to-genetic-inference">From a source candidate to genetic inference</h2>
@@ -123,14 +123,14 @@ hypotheses:
       ld_provider: 1000g-30x-grch38
       ld_population: EUR
 </code></pre></div>
-<p>The actual irQTL analysis ancestry is deliberately required; JLinAlg does not infer it from the FHS cohort name. For BMI/EUR, <code>auto</code> selects Pan-UK Biobank field 21001; for obesity/EUR it selects ICD-10 E66, including recorded case/control counts. A non-UKB exposure cohort plus the UKB-only outcome establishes the named-cohort basis for <code>sample_overlap: none</code>; an exposure that may include UK Biobank is rejected. MR defaults to investigating <strong>all eligible significant measured features</strong>, not a top-10 or top-1,000 subset. BH adjustment uses the complete valid tested meta-analysis family (pooled rows only), or each full primary table when meta-analysis is unavailable, before annotation/QTL matching. Selection requires FDR strictly below <code>bioinformatics.fdr</code>, which defaults to 0.05. The rule is feature-type agnostic for measured transcripts, proteins and probes; it does not remove annotation, molecular-assay, QTL, allele, ancestry or instrument-validity prerequisites. The built-in automatic source adapter remains cis-irQTL-specific; protein/probe exposures require appropriate reviewed custom sources, not substituted irQTLs.</p>
+<p>The actual irQTL analysis ancestry is deliberately required; OmicsMatic does not infer it from the FHS cohort name. For BMI/EUR, <code>auto</code> selects Pan-UK Biobank field 21001; for obesity/EUR it selects ICD-10 E66, including recorded case/control counts. A non-UKB exposure cohort plus the UKB-only outcome establishes the named-cohort basis for <code>sample_overlap: none</code>; an exposure that may include UK Biobank is rejected. MR defaults to investigating <strong>all eligible significant measured features</strong>, not a top-10 or top-1,000 subset. BH adjustment uses the complete valid tested meta-analysis family (pooled rows only), or each full primary table when meta-analysis is unavailable, before annotation/QTL matching. Selection requires FDR strictly below <code>bioinformatics.fdr</code>, which defaults to 0.05. The rule is feature-type agnostic for measured transcripts, proteins and probes; it does not remove annotation, molecular-assay, QTL, allele, ancestry or instrument-validity prerequisites. The built-in automatic source adapter remains cis-irQTL-specific; protein/probe exposures require appropriate reviewed custom sources, not substituted irQTLs.</p>
 <p>For a deliberately capped exploratory run, explicitly set <code>mr.max_features: 1000</code> (accepted range 1–10,000); existing explicit caps are honored, and caps are applied after full-family BH selection in deterministic P-value/feature-ID order. Omit that setting to use all eligible significant features, including families larger than 10,000. The separate <code>bioinformatics.max_features</code> limit still bounds contextual protein/sequence and colocalization work and never caps MR. Literature has its dedicated cap described above. Source audits record the threshold, strict comparison, selection scope and any explicit cap. This default change does not amend existing frozen study contracts or rerun prior results.</p>
 <p>The automatic adapter excludes every row not explicitly marked cis, then passes all genome-wide-significant cis-irQTL candidates for each transcript together to outcome matching and ancestry-matched GRCh38 LD clumping. One retained independent instrument produces a Wald ratio; multiple retained instruments produce the applicable multi-instrument estimators and sensitivity analyses. There is no arbitrary per-transcript instrument cap. Missing QTL or outcome coverage remains an audited exclusion or input requirement, not a negative causal finding.</p>
-<p>For colocalization, JLinAlg can use GWAS Catalog REST v2 to find studies by public phenotype label and the Catalog's harmonized FTP collection for complete summary-statistic files. The REST API itself exposes metadata and curated lead associations, not arbitrary full-summary-statistic rows. JLinAlg verifies the selected accession's harmonized metadata, GRCh38 build, sorted status and tabix index, installs the complete file and index in the shared cache, verifies the Catalog MD5 when available, and performs regional extraction locally.</p>
+<p>For colocalization, OmicsMatic can use GWAS Catalog REST v2 to find studies by public phenotype label and the Catalog's harmonized FTP collection for complete summary-statistic files. The REST API itself exposes metadata and curated lead associations, not arbitrary full-summary-statistic rows. OmicsMatic verifies the selected accession's harmonized metadata, GRCh38 build, sorted status and tabix index, installs the complete file and index in the shared cache, verifies the Catalog MD5 when available, and performs regional extraction locally.</p>
 <p>Complete public files are checksum-verified on first reuse in each JVM. Within that process, unchanged files reuse the verification after checking file identity, size, modification and creation times, the source manifest and any expected checksum. On Windows, where basic file keys are unavailable, a read-only no-write/no-delete handle protects the verified file while the JVM uses it; if identity cannot be tracked or protected, full checksum verification remains the fallback. A changed file or manifest forces full verification, and concurrent lookups share the verified installation. This process-local shortcut avoids hashing whole chromosome files for every transcript; a new analysis process starts with fresh checksum checks. Cache files must be treated as immutable while analyses run.</p>
 <p>Local GRCh38 VCF reads merge requested positions separated by at most 16,384 bp into coordinate-ordered queries, avoiding repeated decompression of nearby BGZF blocks. Unrequested records are ignored, and dosage filtering, requested-variant order, allele orientation and LD calculations are unchanged. This is an I/O grouping distance, <strong>not</strong> an LD-clumping window: all retained regional instruments still undergo the declared pairwise r-squared screen. Query counts and strategy are recorded in <code>ld-reference.yaml</code>.</p>
 <p>Full automatic-source lookup audits remain in <code>automatic-mr-sources.yaml</code> or <code>automatic-colocalization-sources.yaml</code>, covered by the operation's artifact hashes. Genetic evidence and manifests contain compact feature summaries plus the full audit's relative path and SHA-256, rather than duplicating every lookup row in derived reports. Generated operation manifests and evidence have a bounded 128 MiB reader budget; ordinary study contracts retain their 16-million-code-point limit. Both readers reject aliases, duplicate keys, unsafe YAML tags and excessive nesting.</p>
-<p>For an explicitly approved exploratory partial-region analysis, the exposure defines the candidate variant set. JLinAlg therefore filters the complete outcome region to those exposure identifiers before constructing LD; unrelated outcome-only rows do not consume the in-memory LD budget or become evidence of exposure coverage. Conventional complete-region colocalization retains the full-region overlap checks.</p>
+<p>For an explicitly approved exploratory partial-region analysis, the exposure defines the candidate variant set. OmicsMatic therefore filters the complete outcome region to those exposure identifiers before constructing LD; unrelated outcome-only rows do not consume the in-memory LD budget or become evidence of exposure coverage. Conventional complete-region colocalization retains the full-region overlap checks.</p>
 <h3 id="related-phenotype-colocalization-policy">Related-phenotype colocalization policy</h3>
 <p>Related phenotypes may be scientist-declared, or an optional LLM advisor can propose up to 20 search labels. The advisor prompt requests direct consequences, biomarkers, intermediate traits, common comorbidities and physiological domains, with one to five literature identifiers per phenotype. Every suggestion is stored as <code>advisor_proposal_unreviewed</code>; its literature still needs independent verification. The suggestion authorizes only bounded public-source discovery. It does not amend the hypothesis, approve a GWAS, or establish causality.</p>
 <div class="code-window"><div class="code-bar"><span>yaml</span></div><pre><code>assistance:
@@ -157,25 +157,25 @@ analysis:
       sample_overlap: unknown
 </code></pre></div>
 <p>The primary phenotype and every declared/advisor-proposed label are searched separately. Default discovery requests contain public phenotype labels only; selected genes, variants and regions are not submitted. <code>remote_feature_queries: true</code> is an explicit opt-in for feature-context searches. For each label, the bounded automatic selector prefers the largest ancestry-matched study among the retrieved exact-trait GWAS Catalog pages when it has downloadable full summary statistics, at least 100,000 variants and no obvious CNV-only label. This is a reproducible availability/sample-size heuristic, not a claim that the chosen phenotype is the most biologically important. By default at most five traits proceed to colocalization; up to 20 can be searched or explicitly analyzed.</p>
-<p>The irQTL export may be significance-filtered or otherwise incomplete. With <code>allow_partial_regions: true</code>, JLinAlg still performs harmonization, ancestry-matched GRCh38 LD extraction, fine-mapping mechanics and prior-sensitivity colocalization when at least two usable variants remain and the declared fraction of exported QTL variants matches. The result is labeled <code>exploratory_partial_region_major_limitation</code>, not conventional complete-region colocalization. The operation records exposure and outcome match fractions independently; it never calls missing database rows negative evidence.</p>
+<p>The irQTL export may be significance-filtered or otherwise incomplete. With <code>allow_partial_regions: true</code>, OmicsMatic still performs harmonization, ancestry-matched GRCh38 LD extraction, fine-mapping mechanics and prior-sensitivity colocalization when at least two usable variants remain and the declared fraction of exported QTL variants matches. The result is labeled <code>exploratory_partial_region_major_limitation</code>, not conventional complete-region colocalization. The operation records exposure and outcome match fractions independently; it never calls missing database rows negative evidence.</p>
 <p>Every generated report/manuscript must retain this caveat: partial-data posterior probabilities are conditional on the observed selected variants; missing variants, significance filtering, unequal coverage, winner's curse and unknown sample overlap can materially bias them, and a null result is not evidence against a shared causal variant. Set <code>allow_partial_regions: false</code> when the scientific plan requires conventional full-region colocalization.</p>
 <p>The regional adapter runs after a scientist approves an exact exposure/outcome policy or pair. Its declarations can be short, but the required facts cannot be guessed: molecular feature, phenotype, assay, tissue, build, ancestry, sample size, source citation, regional coverage and sample overlap. See the complete checked-in example for custom-source YAML.</p>
-<p>Each <code>analysis.bioinformatics.genetic_pairs</code> entry has <code>id</code>, <code>feature_id</code>, <code>rationale</code>, <code>approved</code>, a 1-based <code>region</code>, <code>exposure</code>, <code>outcome</code>, <code>ld</code>, <code>sample_overlap</code>, and <code>sample_overlap_basis</code>. MR additionally requires <code>instrument_validity_rationale</code>. These are assertions to audit, not facts proved by JLinAlg. Approval does not replace the source paper or scientific appraisal.</p>
+<p>Each <code>analysis.bioinformatics.genetic_pairs</code> entry has <code>id</code>, <code>feature_id</code>, <code>rationale</code>, <code>approved</code>, a 1-based <code>region</code>, <code>exposure</code>, <code>outcome</code>, <code>ld</code>, <code>sample_overlap</code>, and <code>sample_overlap_basis</code>. MR additionally requires <code>instrument_validity_rationale</code>. These are assertions to audit, not facts proved by OmicsMatic. Approval does not replace the source paper or scientific appraisal.</p>
 <p>Local summary files must be declared under an input dataset's <code>files</code> mapping and referenced by <code>dataset_id</code> plus <code>file_role</code>. This includes QTL, GWAS, LD and LD-allele files, so changing any of them invalidates reuse. Source records require <code>source_id</code> and <code>citation</code>.</p>
 <p>Canonical regional summary columns are:</p>
 <div class="code-window"><div class="code-bar"><span>text</span></div><pre><code>variant_id chromosome position effect_allele other_allele beta se p_value
 </code></pre></div>
 <p>Use tab-separated or comma-separated local files, with 1-based positions and biallelic SNPs. A QTL <code>feature_id</code> column, if present, is filtered to the approved measured feature. Without it, the file must already contain only that feature's regional statistics. Do not put patient genotypes or individual phenotype records in these files. Declare <code>complete_region: true</code> only for full regional results, never a significant-only table.</p>
-<p>A source may instead specify a public HTTPS <code>url</code>, pinned <code>sha256</code>, <code>license</code>, <code>source_id</code> and <code>citation</code>, together with its scientific metadata. JLinAlg downloads and verifies it into a project cache and retains a source snapshot. This path currently expects canonical, uncompressed regional TSV data and caps downloads at 512 MiB; it does not guess arbitrary columns or decompress multi-gigabyte genome-wide releases. Supported remote hosts are restricted to the built-in public evidence providers; redirects are refused. Other sources, including restricted or differently formatted UK Biobank/GTEx releases, must be acquired and converted locally with the conversion script and citations retained. A downloaded source is not automatically approved merely because its checksum matches.</p>
+<p>A source may instead specify a public HTTPS <code>url</code>, pinned <code>sha256</code>, <code>license</code>, <code>source_id</code> and <code>citation</code>, together with its scientific metadata. OmicsMatic downloads and verifies it into a project cache and retains a source snapshot. This path currently expects canonical, uncompressed regional TSV data and caps downloads at 512 MiB; it does not guess arbitrary columns or decompress multi-gigabyte genome-wide releases. Supported remote hosts are restricted to the built-in public evidence providers; redirects are refused. Other sources, including restricted or differently formatted UK Biobank/GTEx releases, must be acquired and converted locally with the conversion script and citations retained. A downloaded source is not automatically approved merely because its checksum matches.</p>
 <p>The adapter checks the finding's identity and location, same build and declared ancestry, identical variant coordinates, allele direction and regional overlap. Conventional complete-region analysis defaults to at least 80% of the larger source's variant set. Exploratory partial-region analysis instead checks the matched fraction of the exported QTL variants and reports the much smaller outcome-region fraction separately. Palindromic SNPs are conservatively excluded rather than guessed using absent allele frequencies. Every exclusion and sign flip is recorded. MR requires explicitly nonoverlapping samples. Partial colocalization can preserve <code>sample_overlap: unknown</code>, but that uncertainty is appended to its mandatory major caveat.</p>
 <h3 id="ld-and-automatic-reference-downloads">LD and automatic reference downloads</h3>
 <p>For a supplied LD matrix, rows and columns must have matching variant IDs. An <code>alleles_file_role</code> table supplies <code>variant_id</code>, <code>effect_allele</code>, and <code>other_allele</code> defining the matrix's signed orientation. Matrix symmetry, bounds, diagonal and positive semidefiniteness are checked; invalid matrices are not silently replaced or regularized.</p>
 <p>Alternatively set <code>ld: {population: EUR}</code> (or AFR/AMR/EAS/SAS) and allow reference downloads. The existing pinned 1000 Genomes Phase 3 installer fetches a missing panel. The pipeline extracts signed Pearson A1-dosage correlation among founders, checks at least 95% observed calls per SNP and mean-imputes remaining missing reference calls. This is different from the haplotype r-squared used by the standalone clumping command. Alleles, reference coordinates and panel hashes are retained.</p>
 <p>The downloadable bundled panel is GRCh37. For GRCh38 MR, <code>ld_provider: 1000g-30x-grch38</code> installs the complete official 30x high-coverage phased 1000 Genomes VCF and tabix index for each required chromosome in the shared cache. It then restricts genotypes locally to the requested AFR/AMR/EAS/EUR/SAS superpopulation in the official 2,504-sample Phase 3 panel, thereby excluding the additional relatives in the 3,202-sample callset; applies call-rate and MAF checks; and records source and derived-file hashes, exclusions, alleles and the resulting matrix hash. Reuse works under <code>--offline</code>; the tradeoff is explicit chromosome-scale storage.</p>
-<p>JLinAlg will not apply GRCh37 LD to mismatching coordinates. Missing, monomorphic or incompatible reference variants remain actionable blockers. Population is never guessed; the source ancestry must agree with the selected panel. The public source definitions are documented by the <a href="https://www.internationalgenome.org/data-portal/data-collection/1000genomes_30x">1000 Genomes 30x GRCh38 collection</a> and <a href="https://pan.ukbb.broadinstitute.org/docs/per-phenotype-files/index.html">Pan-UK Biobank per-phenotype files</a>.</p>
+<p>OmicsMatic will not apply GRCh37 LD to mismatching coordinates. Missing, monomorphic or incompatible reference variants remain actionable blockers. Population is never guessed; the source ancestry must agree with the selected panel. The public source definitions are documented by the <a href="https://www.internationalgenome.org/data-portal/data-collection/1000genomes_30x">1000 Genomes 30x GRCh38 collection</a> and <a href="https://pan.ukbb.broadinstitute.org/docs/per-phenotype-files/index.html">Pan-UK Biobank per-phenotype files</a>.</p>
 <h3 id="statistical-outputs">Statistical outputs</h3>
 <p>SuSiE fine-mapping runs on the harmonized overlapping SNP set for both traits and must converge. Colocalization uses those SuSiE effects, with a second shared-prior setting for sensitivity. Curated nearby lead SNPs or omics association coefficients alone are never presented as conventional colocalization. When a reviewed policy explicitly permits incomplete QTL data, the same computation may run as exploratory partial-data colocalization with the evidence-grade and mandatory caveat above.</p>
-<p>The study adapter permits up to 2,000 SuSiE iterations per attempt and records the effective ceiling. Conventional complete-region analyses require the declared maximum component count to converge. For explicitly approved exploratory partial-region analyses only, JLinAlg first attempts up to 10 components and, if necessary, steps down to select the largest component count that converges. Every attempted component count, the selected count, and whether the fallback was used are recorded. This convergence-conditioned model selection is an additional manuscript limitation; it must not be hidden or treated as equivalent to a prespecified component count. If a fit converges but produces no credible signal, the pair is recorded as completed but not estimable for signal-pair colocalization, rather than as a missing-input request or evidence against sharing.</p>
+<p>The study adapter permits up to 2,000 SuSiE iterations per attempt and records the effective ceiling. Conventional complete-region analyses require the declared maximum component count to converge. For explicitly approved exploratory partial-region analyses only, OmicsMatic first attempts up to 10 components and, if necessary, steps down to select the largest component count that converges. Every attempted component count, the selected count, and whether the fallback was used are recorded. This convergence-conditioned model selection is an additional manuscript limitation; it must not be hidden or treated as equivalent to a prespecified component count. If a fit converges but produces no credible signal, the pair is recorded as completed but not estimable for signal-pair colocalization, rather than as a missing-input request or evidence against sharing.</p>
 <p>Once a prespecified public outcome and local LD source have been acquired and exhausted, fewer than two usable regional effect estimates, LD variants, or aligned variants are also recorded as completed but not estimable for exploratory partial-region colocalization. They are source-sufficiency limitations, not investigator input requests and not negative colocalization evidence. A missing declaration, inaccessible source, incompatible build, or unapproved scientific assumption still produces <code>waiting_for_input</code>.</p>
 <p>MR requires at least one strong, allele-aligned instrument after public outcome lookup and LD filtering. A single retained instrument produces a Wald ratio even when other candidates are absent, incompatible or excluded; the attrition and every exclusion remain recorded. A study may declare a stricter minimum lookup-overlap fraction. Multi-instrument diagnostics are never inferred from a one-instrument result.</p>
 <p>MR selects exposure instruments using p ≤ 5e-8 and F ≥ 10 by default, then LD-prunes at r-squared ≤ 0.001. It requires at least two remaining instruments for this automatic IVW branch. Outputs include fixed/random IVW, and, with at least three instruments, Egger, weighted median and leave-one-instrument-out estimates. Weak instruments, pleiotropy, selection bias, tissue specificity and exclusion-restriction assumptions still need scientific appraisal. Numerical success is not proof of a causal drug target.</p>
@@ -221,7 +221,7 @@ broader automatic assay/source adapters remain separate work.</p>
 <h2 id="questions-and-optional-ai">Questions and optional AI</h2>
 <p>Built-in missing-input questions are recorded in <code>QUESTIONS.md</code>, the question inbox and <code>SESSION_HISTORY.md</code>. Use <code>study questions --out answers.yaml</code>, then <code>study answer answers.yaml --actor-id PERSON --check</code> and <code>--record</code>. Answers record statements and may propose amendments; they do not grant execution or transmission permission.</p>
 <p>Opt-in OpenAI/Gemini advice can produce a dedicated, typed list of up to 20 related phenotypes with literature identifiers, or separately propose cited QTL sources, up to three scientist questions, and bounded code text. Each proposal records the provider, returned model, prompt/response, retrieval citations and decision. Suggested phenotype labels may feed public GWAS discovery but remain explicitly unreviewed; they do not change the hypothesis or certify their references. Suggested questions are explicitly labelled as LLM suggestions. New scientific directions require review and amendments. Only registered analysis policies execute automatically.</p>
-<p>Generated code is saved as a hashed <code>.txt</code> proposal and never executed by the proposal handler. Arbitrary generated-code execution, container/OS isolation, general pipeline local-model adapters, MCP and provider-specific OAuth login/refresh remain future integration work. Browser handoff is the default assistance transport when assistance is explicitly enabled. An optional OpenAI-compatible adapter accepts an API key or provider-issued OAuth access token through an environment variable; it does not borrow website sessions. These other capabilities are not made safe merely by adding a prompt or asking the scientist to approve a string.</p>
+<p>Generated code is saved as a hashed <code>.txt</code> proposal and never executed by the proposal handler. Arbitrary generated-code execution, container/OS isolation, general pipeline local-model adapters, and MCP remain future integration work. <a href="ai-login.html">Initial OpenAI/Gemini login</a> and <a href="ai-credentials.html">supported encrypted renewal</a> are available in the current source build. Browser handoff is the default assistance transport when assistance is explicitly enabled. An optional OpenAI-compatible adapter accepts an API key or provider-issued OAuth access token through an environment variable; it does not borrow website sessions. These other capabilities are not made safe merely by adding a prompt or asking the scientist to approve a string.</p>
 <h2 id="privacy-and-offline-execution">Privacy and offline execution</h2>
 <p>Public evidence searches transmit only constructed queries containing public identifiers, phenotype labels or reference intervals. No dataset file is uploaded by these adapters. Nevertheless, a gene/phenotype query can disclose unpublished research interests. The same deny-all policy is checked before sending these project-derived queries as before LLM requests. Additional per-request disclosure conditions fail closed when the adapter cannot satisfy them.</p>
 <p>Use <code>project.data_policy.remote_transmission: deny_all</code> to prevent such project-derived requests; use <code>--offline</code> or <code>resources.network: offline</code> to prevent built-in network requests altogether. Fixed public-reference downloads keyed only by a declared reference release may still be permitted by deny-all, since they do not contain study findings; offline prevents those as well. An already verified local cache can still support analysis offline.</p>
@@ -236,13 +236,13 @@ broader automatic assay/source adapters remain separate work.</p>
 <h2 id="validation-and-remaining-boundaries">Validation and remaining boundaries</h2>
 <p>Automated tests use synthetic regional data and injected provider replies: successful inference, allele reversal, build mismatch, invalid LD, weak instruments, source unavailability, zero matches, schema changes, disclosure denial, proposal quarantine and archive integrity. Public service response shapes were also inspected using generic public identifiers; no private research result was transmitted and no paid LLM inference was used for that inspection.</p>
 <p>Automatic selection and conversion of arbitrary genome-wide GWAS/QTL releases is not implemented. Catalogue discovery and exact, reviewed regional acquisition are distinct steps. A retired service or missing exact splicing-QTL mapping cannot be repaired by treating a gene eQTL as equivalent. The source index and scientist questions explain the next required input. These boundaries apply across projects, not just Splicing-BMI.</p>
-<p>The generated references below cover the methods and public resources. Individual retrieved study/structure/article records retain their own citations and query snapshots; cite those sources in a manuscript alongside JLinAlg.</p>
+<p>The generated references below cover the methods and public resources. Individual retrieved study/structure/article records retain their own citations and query snapshots; cite those sources in a manuscript alongside OmicsMatic.</p>
 <!-- SCIENTIFIC-CITATIONS:START -->
 <section class="citation-strip" aria-labelledby="scientific-citations-bioinformatics-evidence">
   <div class="container narrow">
     <span class="eyebrow">Scientific foundations</span>
     <h2 id="scientific-citations-bioinformatics-evidence">Primary method citations</h2>
-    <p>Cite the relevant method publication as well as JLinAlg when reporting results from this workflow.</p>
+    <p>Cite the relevant method publication as well as OmicsMatic when reporting results from this workflow.</p>
     <ul class="citation-links">
       <li><a href="../citations.html#gwas-catalog-api-v2">Catalog (2026) — Phenotype-matched source discovery</a></li><li><a href="../citations.html#gwas-catalog-summary-statistics">Catalog (2026) — Harmonized GRCh38 summary statistics</a></li><li><a href="../citations.html#eqtl-catalogue-data-access">Catalogue (2026) — Molecular QTL source discovery</a></li><li><a href="../citations.html#gtex-atlas-2020">Consortium (2020) — Tissue-specific molecular QTL context</a></li><li><a href="../citations.html#uniprot-api-documentation">Consortium (2026) — Reviewed gene and species protein mapping</a></li><li><a href="../citations.html#varadi-alphafold-2022">Varadi et al. (2022) — Predicted protein structure investigation</a></li><li><a href="../citations.html#ucsc-api-documentation">Browser (2026) — Build-specific genomic reference sequence</a></li><li><a href="../citations.html#europe-pmc-rest">PMC (2026) — Non-LLM literature retrieval</a></li><li><a href="../citations.html#frankish-gencode-2021">Frankish et al. (2021) — GENCODE transcript-to-gene annotation</a> <span class="citation-inline-identifiers">(<a href="https://pubmed.ncbi.nlm.nih.gov/33270111/">PMID: 33270111</a> · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7778937/">PMCID: PMC7778937</a>)</span></li><li><a href="../citations.html#thousand-genomes-2015">Consortium (2015) — 1000 Genomes Phase 3</a> <span class="citation-inline-identifiers">(<a href="https://pubmed.ncbi.nlm.nih.gov/26432245/">PMID: 26432245</a> · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4750478/">PMCID: PMC4750478</a>)</span></li><li><a href="../citations.html#wang-susie-2020">Wang (2020) — SuSiE</a> <span class="citation-inline-identifiers">(<a href="https://pubmed.ncbi.nlm.nih.gov/37220626/">PMID: 37220626</a> · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10201948/">PMCID: PMC10201948</a>)</span></li><li><a href="../citations.html#wallace-coloc-2021">Wallace (2021) — SuSiE colocalization</a> <span class="citation-inline-identifiers">(<a href="https://pubmed.ncbi.nlm.nih.gov/34587156/">PMID: 34587156</a> · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8504726/">PMCID: PMC8504726</a>)</span></li><li><a href="../citations.html#bowden-mr-egger-2015">Bowden (2015) — MR-Egger</a> <span class="citation-inline-identifiers">(<a href="https://pubmed.ncbi.nlm.nih.gov/26050253/">PMID: 26050253</a> · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4469799/">PMCID: PMC4469799</a>)</span></li><li><a href="../citations.html#bowden-weighted-median-2016">Bowden et al. (2016) — weighted-median MR</a> <span class="citation-inline-identifiers">(<a href="https://pubmed.ncbi.nlm.nih.gov/27061298/">PMID: 27061298</a> · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4849733/">PMCID: PMC4849733</a>)</span></li><li><a href="../citations.html#sandve-reproducibility-2013">Sandve et al. (2013) — Configuration provenance</a></li><li><a href="../citations.html#w3c-prov-o-2013">W3C (2013) — Evidence provenance graph</a></li>
     </ul>
@@ -282,7 +282,7 @@ columns:
 <p>These sex codes are an example, not a default. Without a membership file, an
 explicit <code>analysis_population_confirmed: true</code> and <code>population_rationale</code> may
 declare that the phenotype file already represents the analysis sample. The
-declaration is recorded, not independently proven. Otherwise JLinAlg computes
+declaration is recorded, not independently proven. Otherwise OmicsMatic computes
 <strong>provisional phenotype-file summaries</strong> and requests verification; it does not
 equate the number of phenotype records with association-analysis N. Repeated
 participant IDs require explicit visit selection. Optional <code>filters</code> map columns
@@ -307,7 +307,7 @@ declared in <code>hypotheses[].metadata.abbreviations</code>.</p>
 Methods, after participant characteristics. Impact ranking belongs in Discussion,
 not Results. A scientist or advisory LLM selects up to three distinct principal
 findings and explains their importance using effect size, uncertainty,
-reproducibility, biological relevance and contrary evidence. JLinAlg does not
+reproducibility, biological relevance and contrary evidence. OmicsMatic does not
 assign scientific importance from operation type or the smallest P-value. Missing
 interpretations remain explicit writing needs, not invented findings. Null
 results and major limitations remain visible; the supplement retains all evidence
@@ -330,7 +330,7 @@ breaking prioritization and reporting without accepting unbounded input.</p>
 <p>Table 1 places characteristics in rows and cohorts in columns. Multiple
 hypotheses can share a cohort column only when phenotype-file hashes, participant
 selection fingerprints, membership hashes, N, sex coding, units and overlapping
-summaries agree. Different populations remain separate columns; JLinAlg does not
+summaries agree. Different populations remain separate columns; OmicsMatic does not
 sum repeated cohort counts. Reduced available-case n is shown only where it
 differs from N. Supplemental Table 1 retains the per-dataset details and missing
 counts, alongside a full-precision <code>participant-characteristics.csv</code> export.</p>
@@ -376,7 +376,7 @@ Then add this explicit, hash-pinned reference to the manuscript revision:</p>
   ledger_sha256: EXACT_SHA256_OF_ledger/events.jsonl
   rationale: Update descriptive coding and outcome summaries as requested by the scientist.
 </code></pre></div>
-<p>JLinAlg verifies both projects and imports only current participant-characteristic
+<p>OmicsMatic verifies both projects and imports only current participant-characteristic
 operations matching existing hypothesis IDs. Association, enrichment, genetic
 and literature evidence still comes from the original project. The revision
 preserves the refresh contract and ledger, source manifests, hashes and rationale.
@@ -494,7 +494,7 @@ replace review of the complete local catalog. New sources suggested or retrieved
 by an advisor remain separately audited candidates, not automatically verified
 manuscript references. No remote provider is enabled by this writing policy.</p>
 <p>The <a href="https://www.ebi.ac.uk/eqtl/Data_access/">eQTL Catalogue Data Access page</a>
-reports that its REST API has been retired (checked 2026-10-02). JLinAlg records
+reports that its REST API has been retired (checked 2026-10-02). OmicsMatic records
 that service state rather than retrying the withdrawn endpoint or treating it as
 no biological matches. FTP/tabix acquisition remains a separately reviewed source
 route, not an implemented automatic replacement in this adapter.</p>
@@ -549,7 +549,7 @@ role order are rejected before a revision bundle is created. Missing roles,
 placeholders and missing citations instead remain explicit writing needs.
 Existing untagged prose is preserved and flagged for classification; it is not
 silently rewritten. A structurally complete Introduction still needs scientific
-review: JLinAlg cannot verify source support merely by checking citation IDs.</p>
+review: OmicsMatic cannot verify source support merely by checking citation IDs.</p>
 <h3 id="start-methods-with-the-cohorts-and-then-the-performed-analyses">Start Methods with the cohorts and then the performed analyses</h3>
 <p>The shared Methods model begins with a description and design/recruitment
 citation for <strong>each participating cohort</strong>, followed by association analysis,
@@ -579,13 +579,13 @@ tissue and sample selection from this study's actual provenance.</p>
       [SCIENTIST INPUT REQUIRED: describe this study's included examination,
       eligibility criteria and sample selection; do not copy historical N.]
 </code></pre></div>
-<p><code>literature_name</code> is an explicit public search label. Otherwise JLinAlg uses an
+<p><code>literature_name</code> is an explicit public search label. Otherwise OmicsMatic uses an
 explicit <code>name</code>, or expands the recognized identifiers FHS, CARDIA, WHI, JHS,
 <code>fhs-offspring</code> and <code>fhs-gen3</code> to public names. Unknown private cohort identifiers
 and descriptions are not used as search queries; the index requests a public
 name instead. Literature searches now include cohort design/recruitment queries
 and exact lookups of declared DOI, <code>pmid:</code> or <code>pmcid:</code> references. A search result
-is still a candidate: JLinAlg does not select the first hit as the definitive
+is still a candidate: OmicsMatic does not select the first hit as the definitive
 cohort paper. A declared reference is inserted into the writing template only
 after its identifier is present in the retrieved catalog.</p>
 <p>Method references may also be supplied in <code>datasets[].analysis_description.references</code>
@@ -608,7 +608,7 @@ provenance are retained separately from Introduction search coverage.</p>
 <tbody>
 <tr>
 <td>Association</td>
-<td>Model family/link, formula orientation, covariates, technical factors, transformations, missing-data handling, sample selection, pedigree/relatedness adjustment and multiple-testing rule. Distinguish externally supplied results from a model fitted by JLinAlg.</td>
+<td>Model family/link, formula orientation, covariates, technical factors, transformations, missing-data handling, sample selection, pedigree/relatedness adjustment and multiple-testing rule. Distinguish externally supplied results from a model fitted by OmicsMatic.</td>
 </tr>
 <tr>
 <td>Meta-analysis</td>
@@ -752,7 +752,7 @@ after replacing source IDs and prose with the actual verified findings:</p>
 ranks, unknown Results links and duplicated closing roles are rejected before a
 revision bundle is created. Missing prose, rationale, classification or evidence
 coverage remains a review need. Untagged older paragraphs retain their order,
-text and attribution; JLinAlg does not silently rewrite an earlier manuscript.
+text and attribution; OmicsMatic does not silently rewrite an earlier manuscript.
 Structural completeness never certifies scientific validity. LLM drafting and
 editorial prompts follow this same model; suggestions still require acceptance
 in a new audited revision. Explicit relationship text and impact reasons enter
@@ -912,7 +912,7 @@ provider/model declarations, timestamps, named human actor, disposition and
 <code>SESSION_HISTORY.md</code>. Response HTML and code are displayed as escaped text,
 never executed. Existing packets/receipts cannot be overwritten. Importing an
 accepted answer still does not edit a manuscript or execute a new analysis.</p>
-<p><strong>Audit limit:</strong> JLinAlg verifies local integrity and request matching. It did
+<p><strong>Audit limit:</strong> OmicsMatic verifies local integrity and request matching. It did
 not observe the browser interaction, authenticate the provider/model, establish
 that all conversation turns were supplied, or independently verify citations.
 External submission times, no-patient-data assertions and response attribution
@@ -947,6 +947,11 @@ unverified, not provider-retrieved evidence. Empty citations are not proof of no
 relevant literature. Editorial receipt suggestions are incorporated by creating
 a new <code>study manuscript</code> revision and citing the receipt in its rationale.</p>
 <h3 id="optional-api-key-and-oauth-access-token-connections">Optional API key and OAuth access token connections</h3>
+<p>The current source build also supports <a href="ai-credentials.html">password-encrypted credential files and
+provider-specific renewal</a>. For editorial commands use
+--credential-file ABSOLUTE_FILE with an optional --credential-password-env NAME
+instead of an API-key/token environment flag. Source disclosure restrictions
+and exact payload-hash approval still apply.</p>
 <p>Use an API connection only when explicitly selected. <code>--provider openai</code> uses
 the OpenAI Responses API; <code>--provider gemini</code> uses the Gemini API. Each needs its
 model and environment-variable credential. The portable alternative is
@@ -965,9 +970,10 @@ sent only as bearer credentials to that explicit endpoint; echoed tokens are
 redacted from stored responses. Never place credentials in YAML, CLI arguments,
 manuscripts or browser transcripts. The <a href="https://developers.openai.com/api/reference/overview">OpenAI authentication reference</a>
 documents bearer authentication; individual compatible gateways may differ.</p>
-<p>OAuth here means <strong>using an already issued API access token</strong>. JLinAlg does not
-implement provider registration, browser/device login, consent or token refresh,
-and does not claim that a ChatGPT/Google consumer subscription grants API access.
+<p>OAuth here means <strong>using an already issued API access token</strong>. OmicsMatic does not
+implement provider registration, browser/device login or consent. Environment-only
+tokens are not refreshed; supported encrypted profiles can renew. Account access
+and granted scopes must authorize the selected API route.
 Use the provider's supported authentication tooling. An expired/denied token is
 recorded, with no silent API-key/provider fallback. Generic Chat Completions does
 not guarantee web search or retrieval citations; the literature branch remains
@@ -1005,7 +1011,7 @@ are accepted. DNS names, remote addresses, credentials in URLs, query strings,
 proxies and redirects are rejected or disabled. No API key is read or sent. A
 remote-transmission <code>deny_all</code> policy does not prohibit this loopback-only local
 inference; <code>--offline</code> blocks even local HTTP and unsupported extra disclosure
-constraints still block the request. JLinAlg does not install, start or download
+constraints still block the request. OmicsMatic does not install, start or download
 models, and a loopback address cannot prove that a user-managed server does not
 itself forward data elsewhere. Use a trusted local-only model configuration.
 The recorded model name is the server's self-report, not a verified weights hash.
@@ -1022,30 +1028,30 @@ describes its Chat Completions endpoint and model aliases. For example:</p>
 java -jar jlinalg.jar study manuscript-editorial --project REVISION_BUNDLE --out NEW_LLAMA_REVIEW --provider llama_cpp --model editorial-local --endpoint http://127.0.0.1:8080/v1/chat/completions --approved-payload-sha256 HASH --actor-id scientist-1
 </code></pre></div>
 <p>Choose a context size the model and hardware support, large enough for the full
-prompt plus output; 32768 is an example, not a memory-capacity guarantee. JLinAlg
+prompt plus output; 32768 is an example, not a memory-capacity guarantee. OmicsMatic
 requests at most 4000 output tokens and rejects truncated completions rather than
 presenting them as successful reviews. The alias avoids leaking model filesystem
 paths in request metadata. Record the GGUF checksum, server build/version and
 launch arguments separately; the alias is not proof of model identity.</p>
-<p>Use local weights, not a cloud-forwarding server or remote RPC backend. JLinAlg
+<p>Use local weights, not a cloud-forwarding server or remote RPC backend. OmicsMatic
 does not download or launch llama.cpp or its models. <code>deny_all</code> permits this local
 route; <code>--offline</code> blocks local HTTP too. Do not expose the unauthenticated server
 on a public/LAN interface. An actual local inference run requires a working server;
 adapter regression tests alone do not establish model quality or hardware fitness.</p>
 <h3 id="chatgpt-sign-in-and-an-external-codex-editorial-client">ChatGPT sign-in and an external Codex editorial client</h3>
-<p>A Codex login is not an API key to copy into JLinAlg. The supported
+<p>A Codex login is not an API key to copy into OmicsMatic. The supported
 <a href="https://learn.chatgpt.com/docs/non-interactive-mode">Codex non-interactive client</a>
 can use its own saved sign-in for a reviewed manuscript-only request. Keep
 credentials inside that client; record its version, exact prompt, response,
 model identity when available, timestamps and decisions. Disable unrelated tools
 and do not run the editor in a patient-data directory. Feed only the approved
-aggregate payload. This external-client workflow is distinct from JLinAlg's
+aggregate payload. This external-client workflow is distinct from OmicsMatic's
 manual browser receipts: never label an automated exchange as human-transcribed.</p>
 <p>OpenAI also documents a separate
 <a href="https://developers.openai.com/siwc/token-sharing-open-source">Sign in with ChatGPT flow for eligible open-source apps</a>.
 That requires app registration, user consent, authorized scopes and token lifecycle
-handling. It is not implemented by JLinAlg's generic <code>--auth oauth</code> option, and
-existing Codex session credentials are not automatically a JLinAlg authorization.
+handling. It is not implemented by OmicsMatic's generic <code>--auth oauth</code> option, and
+existing Codex session credentials are not automatically an OmicsMatic authorization.
 The documented ChatGPT-plan route uses streaming Responses requests; do not point
 the non-streaming Chat Completions adapter at it or reuse an unrelated session token.</p></article>
 <aside class="toc"><strong>On this page</strong><a href="#quick-start">Quick start</a><a href="#keep-the-study-contract-small">Keep the study contract small</a><a href="#feature-annotation">Feature annotation</a><a href="#sources-and-scientific-relevance">Sources and scientific relevance</a><a href="#from-a-source-candidate-to-genetic-inference">From a source candidate to genetic inference</a><a href="#questions-and-optional-ai">Questions and optional AI</a><a href="#privacy-and-offline-execution">Privacy and offline execution</a><a href="#results-and-evidence-packaging">Results and evidence packaging</a><a href="#validation-and-remaining-boundaries">Validation and remaining boundaries</a><a href="#scientific-citations-bioinformatics-evidence">Scientific citations</a><a href="#publication-reporting-and-local-participant-summaries">Publication reporting and local participant summaries</a><a href="#publication-precision-and-combined-participant-characteristics">Publication precision and combined participant characteristics</a><a href="#local-isoform-ratio-qtl-review">Local isoform-ratio QTL review</a><a href="#literature-depth-and-excerpts">Literature depth and excerpts</a><a href="#revise-a-manuscript-without-rerunning-the-analysis">Revise a manuscript without rerunning the analysis</a><a href="#results-and-discussion-writing-model">Results and Discussion writing model</a><a href="#creating-a-manuscript-revision">Creating a manuscript revision</a></aside></div>

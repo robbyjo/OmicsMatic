@@ -2,7 +2,7 @@
 
 ## CLI-only OLS and GLM quick starts
 
-These workflows require only an executable JAR. JLinAlg v0.3.6 supports the
+These workflows require only an executable JAR. OmicsMatic v0.3.6 supports the
 OLS, logit, probit, and Poisson examples below:
 
 ```bash
@@ -10,7 +10,7 @@ java -jar jlinalg-0.3.7.jar --pheno phenotype.csv --id SampleName --formula "BMI
 
 java -jar jlinalg-0.3.7.jar --pheno phenotype.csv --omics expression.csv --id SampleName --formula "case_status ~ Sex + Age + <omics>" --family binomial --case-value case --control-value control --out case-expression.csv
 
-java -jar build/cli/jlinalg-0.3.7.jar --pheno phenotype.csv --id SampleName --formula "case_status ~ Sex + Age" --family probit --case-value case --control-value control --out case-probit.csv
+java -jar build/cli/omicsmatic-0.3.7.jar --pheno phenotype.csv --id SampleName --formula "case_status ~ Sex + Age" --family probit --case-value case --control-value control --out case-probit.csv
 
 java -jar jlinalg-0.3.7.jar --pheno phenotype.csv --omics expression.csv --id SampleName --formula "count ~ Sex + Age + <omics>" --family poisson --out count-expression.csv
 ```
@@ -326,10 +326,10 @@ and limitations are in `src/benchmark/resources/fitting-audit-v030/evidence.md`.
 <!-- SCIENTIFIC-CITATIONS:START -->
 ## Scientific citations
 
-These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as JLinAlg when reporting results.
+These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as OmicsMatic when reporting results.
 
 - [J. A. Nelder and R. W. M. Wedderburn (1972) — Generalized linear models](../CITATIONS.md#nelder-wedderburn-1972)
 - [C. I. Bliss (1934) — The method of probits](../CITATIONS.md#bliss-1934) — [PMID: 17813446](https://pubmed.ncbi.nlm.nih.gov/17813446/)
 
-[Search the complete scientific bibliography](https://robbyjo.github.io/JLinAlg/citations.html).
+[Search the complete scientific bibliography](https://robbyjo.github.io/OmicsMatic/citations.html).
 <!-- SCIENTIFIC-CITATIONS:END -->

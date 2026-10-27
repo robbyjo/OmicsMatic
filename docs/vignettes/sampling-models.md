@@ -8,9 +8,9 @@ Both commands include an intercept and write coefficient, metadata and log files
 ## Rare-event logistic coefficient and prevalence corrections
 
 ```shell
-java -jar build/cli/jlinalg-0.3.7.jar rare-events-logit --input src/test/resources/r-reference/regression-inference/survey.tsv --response rare --predictors c,z1 --out build/inference/rare-bias.tsv
-java -jar build/cli/jlinalg-0.3.7.jar rare-events-logit --input src/test/resources/r-reference/regression-inference/survey.tsv --response rare --predictors c,z1 --bias-correction false --prevalence 0.04 --out build/inference/rare-prior.tsv
-java -jar build/cli/jlinalg-0.3.7.jar rare-events-logit --input src/test/resources/r-reference/regression-inference/survey.tsv --response rare --predictors c,z1 --prevalence 0.04 --out build/inference/rare-both.tsv
+java -jar build/cli/omicsmatic-0.3.7.jar rare-events-logit --input src/test/resources/r-reference/regression-inference/survey.tsv --response rare --predictors c,z1 --out build/inference/rare-bias.tsv
+java -jar build/cli/omicsmatic-0.3.7.jar rare-events-logit --input src/test/resources/r-reference/regression-inference/survey.tsv --response rare --predictors c,z1 --bias-correction false --prevalence 0.04 --out build/inference/rare-prior.tsv
+java -jar build/cli/omicsmatic-0.3.7.jar rare-events-logit --input src/test/resources/r-reference/regression-inference/survey.tsv --response rare --predictors c,z1 --prevalence 0.04 --out build/inference/rare-both.tsv
 ```
 
 Responses must be individual 0/1 observations. `--bias-correction true` is the
@@ -36,8 +36,8 @@ separately from the corrected coefficients.
 ## Survey regression with weights, strata and PSUs
 
 ```shell
-java -jar build/cli/jlinalg-0.3.7.jar survey-regression --input src/test/resources/r-reference/regression-inference/survey.tsv --response y --predictors c,z1 --weights weight --strata stratum --psu cluster --family gaussian --out build/inference/survey-gaussian.tsv
-java -jar build/cli/jlinalg-0.3.7.jar survey-regression --input src/test/resources/r-reference/regression-inference/survey.tsv --response rare --predictors c,z1 --weights weight --strata stratum --psu cluster --family logit --out build/inference/survey-logit.tsv
+java -jar build/cli/omicsmatic-0.3.7.jar survey-regression --input src/test/resources/r-reference/regression-inference/survey.tsv --response y --predictors c,z1 --weights weight --strata stratum --psu cluster --family gaussian --out build/inference/survey-gaussian.tsv
+java -jar build/cli/omicsmatic-0.3.7.jar survey-regression --input src/test/resources/r-reference/regression-inference/survey.tsv --response rare --predictors c,z1 --weights weight --strata stratum --psu cluster --family logit --out build/inference/survey-logit.tsv
 ```
 
 Here `weight` contains positive sampling weights; `stratum` identifies sampling
@@ -77,11 +77,11 @@ See [validation](../regression-inference-validation.md) and
 <!-- SCIENTIFIC-CITATIONS:START -->
 ## Scientific citations
 
-These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as JLinAlg when reporting results.
+These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as OmicsMatic when reporting results.
 
 - [Gary King and Langche Zeng (2001) — Logistic Regression in Rare Events Data](../CITATIONS.md#king-zeng-2001)
 - [Gary King and Langche Zeng (2001) — Explaining Rare Events in International Relations](../CITATIONS.md#king-zeng-isq-2001)
 - [Thomas Lumley (2004) — Analysis of Complex Survey Samples](../CITATIONS.md#lumley-survey-2004)
 
-[Search the complete scientific bibliography](https://robbyjo.github.io/JLinAlg/citations.html).
+[Search the complete scientific bibliography](https://robbyjo.github.io/OmicsMatic/citations.html).
 <!-- SCIENTIFIC-CITATIONS:END -->

@@ -188,4 +188,4 @@ direct-package reference scripts are in `src/test/resources/single-cell-qc`,
 Scrublet attribution and its MIT license are retained in the executable resources.
 The package authors' [Scrublet source](https://github.com/swolock/scrublet) and
 [SCTransform documentation](https://satijalab.org/seurat/reference/sctransform)
-describe the upstream methods; JLinAlg exposes the narrower boundaries above.
+describe the upstream methods; OmicsMatic exposes the narrower boundaries above.

@@ -3,7 +3,7 @@
 `StatisticalTests` provides one camel-case entry point and one immutable
 `StatisticalTestResult` shape for the common tests in base R's `stats`
 package. Tests already present in JDistlib are delegated to the pinned
-JDistlib implementation; JLinAlg adds the missing table, blocked-design,
+JDistlib implementation; OmicsMatic adds the missing table, blocked-design,
 correlation, ANOVA, proportion, and power calculations.
 
 ```java
@@ -99,7 +99,7 @@ assuming every returned p-value is exact.
 <!-- SCIENTIFIC-CITATIONS:START -->
 ## Scientific citations
 
-These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as JLinAlg when reporting results.
+These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as OmicsMatic when reporting results.
 
 - [Student [W. S. Gosset] (1908) — The probable error of a mean](../CITATIONS.md#student-1908)
 - [B. L. Welch (1947) — The generalization of Student's problem when several different population variances are involved](../CITATIONS.md#welch-1947) — [PMID: 20287819](https://pubmed.ncbi.nlm.nih.gov/20287819/)
@@ -111,5 +111,5 @@ These are the primary sources for the methods used in this workflow. Cite the re
 - [Quinn McNemar (1947) — Note on the sampling error of the difference between correlated proportions or percentages](../CITATIONS.md#mcnemar-1947) — [PMID: 20254758](https://pubmed.ncbi.nlm.nih.gov/20254758/)
 - [Milton Friedman (1937) — The use of ranks to avoid the assumption of normality implicit in the analysis of variance](../CITATIONS.md#friedman-1937)
 
-[Search the complete scientific bibliography](https://robbyjo.github.io/JLinAlg/citations.html).
+[Search the complete scientific bibliography](https://robbyjo.github.io/OmicsMatic/citations.html).
 <!-- SCIENTIFIC-CITATIONS:END -->

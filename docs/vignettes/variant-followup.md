@@ -23,8 +23,8 @@ Keep transcript-level records: several annotations for one variant are legitimat
 ## 1. Install and query a local annotation snapshot
 
 ```shell
-java -jar build/cli/jlinalg-0.3.7.jar variant-db --source-file examples/followup/annotations.tsv --genome-build GRCh38 --release synthetic-1 --license CC0 --out build/followup/annotation-db
-java -jar build/cli/jlinalg-0.3.7.jar variant-annotate --input examples/followup/variants.tsv --genome-build GRCh38 --database build/followup/annotation-db --out build/followup/annotated
+java -jar build/cli/omicsmatic-0.3.7.jar variant-db --source-file examples/followup/annotations.tsv --genome-build GRCh38 --release synthetic-1 --license CC0 --out build/followup/annotation-db
+java -jar build/cli/omicsmatic-0.3.7.jar variant-annotate --input examples/followup/variants.tsv --genome-build GRCh38 --database build/followup/annotation-db --out build/followup/annotated
 ```
 
 Inspect `annotations.tsv`: the first example variant retains both transcripts;
@@ -58,10 +58,10 @@ verified before analysis, adding another sequential read.
 For a controlled service that implements the canonical TSV contract:
 
 ```shell
-java -jar build/cli/jlinalg-0.3.7.jar variant-annotate --input examples/followup/variants.tsv --genome-build GRCh38 --backend post --endpoint https://YOUR-SERVICE/annotations --out build/followup/remote
+java -jar build/cli/omicsmatic-0.3.7.jar variant-annotate --input examples/followup/variants.tsv --genome-build GRCh38 --backend post --endpoint https://YOUR-SERVICE/annotations --out build/followup/remote
 ```
 
-Replace the example URL with an actual service. JLinAlg posts **only the five
+Replace the example URL with an actual service. OmicsMatic posts **only the five
 canonical variant columns** as `text/tab-separated-values`, expects a canonical
 annotation TSV, and stores request/response files. This is a documented service
 contract, not a claim that arbitrary web forms accept TSV. There is no browser
@@ -75,7 +75,7 @@ checks the returned assembly and input identities, and retains raw JSON. It
 requires network access and sends coordinates/alleles to the selected service:
 
 ```shell
-java -jar build/cli/jlinalg-0.3.7.jar variant-consequence --input REAL_VARIANTS.tsv --genome-build GRCh38 --engine vep-rest --out build/followup/vep-rest
+java -jar build/cli/omicsmatic-0.3.7.jar variant-consequence --input REAL_VARIANTS.tsv --genome-build GRCh38 --engine vep-rest --out build/followup/vep-rest
 ```
 
 The hosted service can change releases. Archived response hashes make the
@@ -87,13 +87,13 @@ an older release. Use local VEP/cache versions when that matters.
 Import the runnable synthetic VEP result:
 
 ```shell
-java -jar build/cli/jlinalg-0.3.7.jar variant-consequence --input examples/followup/variants.tsv --genome-build GRCh38 --engine import --annotations examples/followup/vep.tsv --format vep --out build/followup/consequences
+java -jar build/cli/omicsmatic-0.3.7.jar variant-consequence --input examples/followup/variants.tsv --genome-build GRCh38 --engine import --annotations examples/followup/vep.tsv --format vep --out build/followup/consequences
 ```
 
 Supported imports are canonical TSV, VEP tab output beginning with
 `#Uploaded_variation`, and ANNOVAR's `*_multianno.vcf` (`--format annovar-vcf`).
 VEP Uploaded_variation / VCF ID must preserve the canonical variant ID supplied
-by JLinAlg. Imported files must have been generated for the declared build; a
+by OmicsMatic. Imported files must have been generated for the declared build; a
 VEP text file without explicit assembly metadata cannot independently prove it.
 The ANNOVAR import additionally verifies coordinates and REF/ALT. VEP transcripts
 are retained; ANNOVAR aggregated gene fields/INFO remain aggregated and the
@@ -102,29 +102,29 @@ transcript is `NA` when it is not explicitly available.
 Run an installed VEP with a compatible local cache and FASTA:
 
 ```shell
-java -jar build/cli/jlinalg-0.3.7.jar variant-consequence --input REAL_VARIANTS.tsv --genome-build GRCh38 --engine vep --executable /path/to/vep --cache /path/to/cache --cache-version VERSION --fasta /path/to/GRCh38.fa --out build/followup/vep-local
+java -jar build/cli/omicsmatic-0.3.7.jar variant-consequence --input REAL_VARIANTS.tsv --genome-build GRCh38 --engine vep --executable /path/to/vep --cache /path/to/cache --cache-version VERSION --fasta /path/to/GRCh38.fa --out build/followup/vep-local
 ```
 
-JLinAlg writes VCF IDs, invokes VEP with `--offline --cache --tab --everything`,
+OmicsMatic writes VCF IDs, invokes VEP with `--offline --cache --tab --everything`,
 and imports the resulting transcript records. Choose an executable matching your
 platform; an external Perl environment is still required by VEP.
 
 Run a separately installed ANNOVAR:
 
 ```shell
-java -jar build/cli/jlinalg-0.3.7.jar variant-consequence --input REAL_VARIANTS.tsv --genome-build GRCh38 --engine annovar --executable /path/to/table_annovar.pl --perl /path/to/perl --database /path/to/humandb --protocol refGene --operation g --out build/followup/annovar
+java -jar build/cli/omicsmatic-0.3.7.jar variant-consequence --input REAL_VARIANTS.tsv --genome-build GRCh38 --engine annovar --executable /path/to/table_annovar.pl --perl /path/to/perl --database /path/to/humandb --protocol refGene --operation g --out build/followup/annovar
 ```
 
 The adapter uses `-vcfinput`, hg38/hg19 as appropriate, and reads the resulting
 multianno VCF. Protocols/operations are explicit comma-separated ANNOVAR options.
-Install compatible databases using ANNOVAR's downloader. JLinAlg does not bundle
+Install compatible databases using ANNOVAR's downloader. OmicsMatic does not bundle
 or automatically register for ANNOVAR. External commands use argument arrays,
 not a shell. Failed processes/timeouts do not publish partial results.
 
 ## 3. Integrate evidence without disguising uncertainty
 
 ```shell
-java -jar build/cli/jlinalg-0.3.7.jar variant-score --input examples/followup/evidence.tsv --components examples/followup/components.tsv --out build/followup/scores
+java -jar build/cli/omicsmatic-0.3.7.jar variant-score --input examples/followup/evidence.tsv --components examples/followup/components.tsv --out build/followup/scores
 ```
 
 `components.tsv` specifies `column`, positive `weight`, `minimum`, `maximum`, and
@@ -176,13 +176,13 @@ tissue, track, model and source contexts instead of selecting one record per SNP
 <!-- SCIENTIFIC-CITATIONS:START -->
 ## Scientific citations
 
-These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as JLinAlg when reporting results.
+These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as OmicsMatic when reporting results.
 
 - [Kai Wang, Mingyao Li, and Hakon Hakonarson (2010) — ANNOVAR: functional annotation of genetic variants from high-throughput sequencing data](../CITATIONS.md#wang-annovar-2010)
 - [William McLaren et al. (2016) — The Ensembl Variant Effect Predictor](../CITATIONS.md#mclaren-vep-2016)
 - [Geir Kjetil Sandve et al. (2013) — Ten Simple Rules for Reproducible Computational Research](../CITATIONS.md#sandve-reproducibility-2013)
 
-[Search the complete scientific bibliography](https://robbyjo.github.io/JLinAlg/citations.html).
+[Search the complete scientific bibliography](https://robbyjo.github.io/OmicsMatic/citations.html).
 <!-- SCIENTIFIC-CITATIONS:END -->
 
 

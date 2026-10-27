@@ -28,10 +28,25 @@ jobs:
         uses: actions/checkout@v6
       - name: Configure Pages
         uses: actions/configure-pages@v5
+      - name: Stage published website
+        # Keep development reports off Pages until their release build is ready.
+        shell: bash
+        run: |
+          python - <<'PYTHON'
+          import os
+          from pathlib import Path
+          from shutil import copytree, ignore_patterns
+
+          copytree(
+              "site",
+              Path(os.environ["RUNNER_TEMP"]) / "omicsmatic-site",
+              ignore=ignore_patterns("literature-review.html", "literature-warnings.html"),
+          )
+          PYTHON
       - name: Upload static site
         uses: actions/upload-pages-artifact@v4
         with:
-          path: site
+          path: ${{ runner.temp }}/omicsmatic-site
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4

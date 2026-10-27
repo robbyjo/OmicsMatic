@@ -9,7 +9,7 @@ Source builds after v0.3.6 add [Tobit/AFT and ordinal likelihoods](censored-ordi
 and [rare-event and survey-design regression](sampling-models.md). These use
 explicit numeric tables and dedicated subcommands with `--help`.
 
-JLinAlg v0.3.6 additionally provides [LDSC](ldsc.md),
+OmicsMatic v0.3.6 additionally provides [LDSC](ldsc.md),
 [genetically predicted TWAS/PWAS](predicted-omics.md),
 [genetic factors and common-factor GWAS](genomic-factor.md), and
 [prediction score training/application](prediction-scores.md).
@@ -28,7 +28,7 @@ file-to-result tutorials cover [mediation](cli-mediation-tutorial.md),
 [SuSiE](cli-susie-tutorial.md), and
 [multi-signal colocalization](cli-colocalization-tutorial.md).
 
-JLinAlg v0.3.6 also provides `meta-analysis` and `meta-regression`
+OmicsMatic v0.3.6 also provides `meta-analysis` and `meta-regression`
 for separate cohort summary files. See the [meta-analysis tutorial](cli-meta-analysis-tutorial.md)
 for cohort directions, missing values, and minimum-cohort controls.
 
@@ -205,7 +205,7 @@ precision. <code>(1|batch)</code> is an independent random intercept.
 To construct the input matrix first, use the source-build `grm` command:
 
 ```shell
-java -jar build/cli/jlinalg-0.3.7.jar grm --genotypes cohort.vcf.gz --maf 0.01 --call-rate 0.95 --out cohort-grm.tsv
+java -jar build/cli/omicsmatic-0.3.7.jar grm --genotypes cohort.vcf.gz --maf 0.01 --call-rate 0.95 --out cohort-grm.tsv
 ```
 
 Pass `--grm cohort-grm.tsv` to the analysis command. See the
@@ -307,7 +307,7 @@ are CLI-native. See the dedicated
 <!-- SCIENTIFIC-CITATIONS:START -->
 ## Scientific citations
 
-These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as JLinAlg when reporting results.
+These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as OmicsMatic when reporting results.
 
 - [J. A. Nelder and R. W. M. Wedderburn (1972) — Generalized linear models](../CITATIONS.md#nelder-wedderburn-1972)
 - [H. D. Patterson and Robin Thompson (1971) — Recovery of inter-block information when block sizes are unequal](../CITATIONS.md#patterson-thompson-1971)
@@ -315,5 +315,5 @@ These are the primary sources for the methods used in this workflow. Cite the re
 - [Norman E. Breslow and David G. Clayton (1993) — Approximate inference in generalized linear mixed models](../CITATIONS.md#breslow-clayton-1993)
 - [Hyun Min Kang et al. (2010) — Variance component model to account for sample structure in genome-wide association studies](../CITATIONS.md#kang-emmax-2010) — [PMID: 20208533](https://pubmed.ncbi.nlm.nih.gov/20208533/) · [PMCID: PMC3092069](https://pmc.ncbi.nlm.nih.gov/articles/PMC3092069/)
 
-[Search the complete scientific bibliography](https://robbyjo.github.io/JLinAlg/citations.html).
+[Search the complete scientific bibliography](https://robbyjo.github.io/OmicsMatic/citations.html).
 <!-- SCIENTIFIC-CITATIONS:END -->
