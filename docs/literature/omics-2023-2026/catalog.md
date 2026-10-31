@@ -132,7 +132,7 @@ Nature · 2026-09-23 · [DOI](https://doi.org/10.1038/s41586-026-11053-x) · [Pr
 | MACS | Called ATAC-seq and CUT&Tag peaks using MACS3 3.0.1 on GRCh38 paired-end alignments after fastp, Bowtie2 and Picard duplicate removal; reported BAMPE, human genome shortcut, nomodel and q-value 0.05. | Methods / Chondrocyte ATAC-seq and CUT&Tag |
 | MEME | Motif discovery and scanning. | Methods / TF-binding sites / Predicted-motif-based approach (FIMO) |
 | Picard | Removed PCR duplicates with Picard MarkDuplicates 3.0.0 after GRCh38 Bowtie2 alignment of paired-end chondrocyte ATAC-seq/CUT&Tag reads, before MACS3 peak calling. | Methods / Chondrocyte ATAC-seq and CUT&Tag |
-| RepeatMasker | Repetitive sequence annotation. | Methods / MPRA design / Library design |
+| RepeatMasker | Excluded candidate human substitutions overlapping low-complexity, simple and satellite RepeatMasker regions downloaded from UCSC, alongside separate TRF and ENCODE region filters. | Methods / MPRA design / Library design |
 | STAR | Aligned hybrid-cell reads independently against the human/chimpanzee or human/gorilla references using STAR 2.7.11b, MD/NH tags, unique mapping, GTF junctions and sjdbOverhang 149. Repeated mapping with first-round splice junctions before separate duplicate removal and allele-swap mapping-bias controls. | Methods / Identification of gene expression differences |
 | UCSC liftOver | Converted coordinates between genome assemblies during MPRA library design; GRCh37 was otherwise the stated reference. | Methods / MPRA design / Library design |
 | WASP | Used a modified WASP pipeline to retain reads mapping to the same position after in silico allele swapping in cross-species hybrid-cell allele-specific expression analysis; indel-overlapping reads were discarded separately. | Methods / Identification of gene expression differences |
@@ -223,7 +223,7 @@ Nature · 2026-09-23 · [DOI](https://doi.org/10.1038/s41586-026-11048-8) · [Pr
 | Isabl | Used the Isabl platform to host/orchestrate the Mondrian single-cell DNA analysis workflow. | Methods / Direct library preparation |
 | MACS | Called END-seq peaks with MACS2 2.2.7.1 after hg19 alignment and BAM-to-BED conversion: keep all duplicates, no model, shift -50, extension 100, q-value 0.001 and fold-enrichment cutoff 5. | Methods / END-seq analysis |
 | Mondrian | Processed DLP+ single-cell whole-genome sequencing with the publicly available Mondrian pipeline, including BWA-MEM alignment and joint DeStruct calling within Isabl. | Methods / Direct library preparation |
-| RepeatMasker | Repetitive sequence annotation. | Methods / Sequence analysis of the breakpoint of rearrangement junctions in human tumours |
+| RepeatMasker | Intersected amplicon junction coordinates with TA/AT-rich repeats from the UCSC RepeatMasker track using BEDTools 2.31.1 and each dataset's hg19 or hg38 reference. | Methods / Sequence analysis of the breakpoint of rearrangement junctions in human tumours |
 | Trimmomatic | Trimmed END-seq reads with Trimmomatic0.39 before Bowtie2 alignment to hg19. The paragraph does not specify trimming steps or thresholds. | Methods / END-seq analysis |
 
 XML SHA-256: `d726c83286905d60fbca3f0c218db7c67a575dc6b8922a05c04ff2fda2b3886e`. Exact evidence paragraph hashes and locators are in [papers.json](papers.json).
@@ -650,7 +650,7 @@ Nature · 2023-12-13 · [DOI](https://doi.org/10.1038/s41586-023-06842-7) · [Pr
 | BWA-MEM2 | Mapped matched Illumina short-read libraries to hg38 and T2T-chm13 with BWA-MEM2 2.2.1 and -Y, using sex-specific reference genomes while comparing long-read mappings separately. | Methods / Alignment to reference genome |
 | Guppy | Nanopore basecalling; distinguish the fish name. | Methods / ONT data processing |
 | minimap2 | Mapped ONT reads with minimap2 2.22 using -x map-ont -a --secondary=no --MD to sex-specific XY/XO hg38 or T2T-CHM13 references. | Methods / Alignment to reference genome |
-| RepeatMasker | Repetitive sequence annotation. | Methods / Structural variation repeat classification |
+| RepeatMasker | Scanned extended variant alleles with RepeatMasker 4.1.2-p1 using -species human -gff -s -norna -nolow, then classified mobile elements with inclusive 75% consensus and variant-coverage thresholds. | Methods / Structural variation repeat classification |
 | Sniffles | Long-read structural variant discovery. | Methods / Analysis of STRs |
 | UCSC liftOver | Mapped structural-variant coordinates from T2T-CHM13 to hg38 before comparisons with gnomAD, deCODE and HGSVC SV sets using reciprocal-overlap categories. | Methods / Comparison to annotations |
 
@@ -833,7 +833,7 @@ Nature · 2023-12-13 · [DOI](https://doi.org/10.1038/s41586-023-06824-9) · [Pr
 | Leiden | Grouped observations into communities using a neighborhood graph. | Methods / Iterative cell clustering / Graph-based clustering |
 | MACS | Called peaks from Tn5-corrected cell-cluster pseudobulks, biological replicates, half-read pseudoreplicates and their pool using MACS2 with shift -75, extension 150, no model, summits, SPMR and q-value 0.01. Extended summits to 501 bases and filtered reproducible peaks with score per million at least 5. | Methods / Identification of reproducible peak sets in each cell cluster |
 | Monocle | Single-cell trajectory or pseudotime inference. | Methods / Inference of cis-co-accessible cCREs |
-| RepeatMasker | Repetitive sequence annotation. | Methods / TE analysis |
+| RepeatMasker | Used HOMER with UCSC mm10 refGene and RepeatMasker annotations to annotate transposable-element overlap at cCREs before separate mixture-model analyses. | Methods / TE analysis |
 | Scrublet | Called doublets with the modified Scrublet workflow in SnapATAC2 on selected 500-bp accessibility tiles, with expected rate 0.08 and score cutoff 0.5. | Methods / Doublet removal |
 | Seurat | Used for dataset integration. | Methods / Integration analysis with scRNA-seq data |
 | SnapATAC2 | Used SnapATAC2 modified Scrublet on selected 500-bp accessibility tiles, expected doublet rate 0.08 and score cutoff 0.5. | Methods / Doublet removal |
@@ -1975,7 +1975,7 @@ Nature Genetics · 2023-11-30 · [DOI](https://doi.org/10.1038/s41588-023-01571-
 | Merqury | Assembly k-mer completeness assessment. | Methods / Long-read sequencing, assembly and quality assessment |
 | minimap2 | Used minimap2 2.24-r1122 HiFi alignments to inspect millet structural-variant breakpoints, including manual IGV assessment of 304 loci spanning 3-17 kb. | Methods / Long-read sequencing, assembly and quality assessment |
 | PLINK | Used for genetic principal components. | Methods / Phylogeny and population structure |
-| RepeatMasker | Repetitive sequence annotation. | Methods / Gene and transposable element annotation |
+| RepeatMasker | Annotated plant-genome repeats with RepeatMasker 4.0.9 using -e rmblast -div 40 -norna after RepeatModeler2.0.1 repeat identification and classification. | Methods / Gene and transposable element annotation |
 | StringTie | Transcript assembly and quantification. | Methods / Gene and transposable element annotation |
 | Subjunc | Mapped millet RNA-seq reads to Longmi4 with Subjunc 2.0.1 before featureCounts 2.0.1 quantification. | Methods / RNA-seq and differential gene expression analysis |
 | Trimmomatic | Used Trimmomatic0.39 to remove adapters and low-quality sequence from150-base paired-end WGS of516millet accessions before BWA-MEM alignment in SpeedSeq0.0.2. | Methods / Short-read sequencing, Hi-C sequencing and data processing |
@@ -2161,7 +2161,7 @@ Nature Genetics · 2024-11-04 · [DOI](https://doi.org/10.1038/s41588-024-01967-
 | muscat | Sample-aware single-cell differential state. | Methods / Samples and genome sequencing |
 | PLINK | Used for LD-based variant selection. | Methods / Pangenome variation maps |
 | plotsr | Synteny and structural-rearrangement visualization. | Methods / Comparative genomics |
-| RepeatMasker | Repetitive sequence annotation. | Methods / The annotation of genome assemblies |
+| RepeatMasker | Used RepeatMasker 4.1.2 for homology-based TE annotation across29haplotypes with nonredundant repeat catalogs built using RepeatModeler2.0.4 and EDTA2.0.1. | Methods / The annotation of genome assemblies |
 | selscan | Haplotype-based selection scans. | Methods / Population genetic analyses |
 | STAR | Splice-aware bulk RNA read alignment and optional raw gene counts. | Methods / Transcriptome and GO enrichment analyses |
 | StringTie | Transcript assembly and quantification. | Methods / The annotation of genome assemblies |
@@ -2187,7 +2187,7 @@ Nature Genetics · 2025-11-18 · [DOI](https://doi.org/10.1038/s41588-025-02409-
 | kallisto | Used kallisto0.46 transcriptome-based estimated counts (est_counts) for cross-species differential-expression analysis with DESeq2. | Methods / RNA-seq preparation and analysis |
 | MACS | Called ChIP peaks with MACS3 3.0.0a7 at q-value 0.01 with species-adjusted effective genome sizes, including 4e7, and used broad mode; classified broad regions further using a width threshold above 1200 bases. | Methods / ChIP–seq library preparation and analysis |
 | MAFFT | Multiple sequence alignment. | Methods / Sequence search and phylogenetic analysis |
-| RepeatMasker | Repetitive sequence annotation. | Methods / Genome assembly and re-annotation |
+| RepeatMasker | Generated repeat annotations for species lacking them by mapping RepeatModeler2.0.2a consensus repeat libraries against genomes using RepeatMasker4.1.2-p1. | Methods / Genome assembly and re-annotation |
 | Sambamba | Removed duplicate ChIP-seq alignments with Sambamba 0.6.6 before MACS3 broad/narrow peak analyses. | Methods / ChIP–seq library preparation and analysis |
 | SAMtools | Alignment manipulation and QC. | Methods / Nanopore sequencing, base calling and methylation analysis |
 | StringTie | Transcript assembly and quantification. | Methods / RNA-seq preparation and analysis |
@@ -3187,7 +3187,7 @@ Nature Genetics · 2025-10-21 · [DOI](https://doi.org/10.1038/s41588-025-02367-
 | minimap2 | Mapped F1 ONT reads to a combined two-T2T reference using minimap2 2.17-r941, converting PAF to BED and bedtools genomecov for centromeric coverage assessment. | Methods / Repetitive sequence annotation / Centromere accuracy |
 | PretextMap | Generated Hi-C contact maps for manual chromosome assembly curation. | Methods / Assembly curation |
 | PretextView | Visualized the Hi-C contact maps used for manual chromosome assembly curation. | Methods / Assembly curation |
-| RepeatMasker | Annotated centromeric repeats in candidate unplaced telomeric contigs to support their placement in missing chromosome regions. | Methods / Assembly curation |
+| RepeatMasker | Used RepeatMasker4.1.5 with the default Dfam library in Mus musculus mode to annotate repeats in T2T mouse assemblies, including centromeric repeats supporting placement of unplaced telomeric contigs. | Methods / Assembly curation |
 | SAMtools | Alignment manipulation and QC. | Methods / PAR assembly using PacBio walking method |
 | seqtk | Detected canonical terminal telomeric repeats with telo to assess assembly ends and locate candidate unplaced telomere-bearing contigs. Also used seqtk in manually supported assembly curation to incorporate missing terminal sequence and introduce 100-bp model gaps. | Methods / Assembly evaluation |
 | Sniffles | Long-read structural variant discovery. | Methods / Assembly evaluation |
@@ -3327,7 +3327,7 @@ Nature Genetics · 2026-07-22 · [DOI](https://doi.org/10.1038/s41588-026-02678-
 | minimap2 | Mapped ONT reads to 14 wheat chromosomes using minimap2 2.24 for chromosome-wise NextDenovo assembly, and aligned contigs to organelle references with -cx asm20. | Methods / Genome assembly / Step 1. Contig construction |
 | pbmm2 | PacBio read alignment. | Methods / Genome annotation |
 | PLINK | Genotype QC, association, relatedness, LD or score calculations. | Methods / Graph-based pangenome construction |
-| RepeatMasker | Repetitive sequence annotation. | Methods / Repeat annotation |
+| RepeatMasker | Masked plant genomes with RepeatMasker4.1.1 using an EDTA-fragment library whose unknown TE sequences were classified with TERL, then merged and deduplicated annotations to obtain TE annotations and softmasked assemblies. | Methods / Repeat annotation |
 | SAMtools | Alignment manipulation and QC. | Methods / Centromeric region identification |
 | SnpEff | Variant consequence annotation. | Methods / Variant calling and filtering |
 | StainedGlass | Confirmed tandem-repeat structure in candidate centromere regions using StainedGlass 0.6 with window size 10000. | Methods / Centromeric region identification |
@@ -3806,7 +3806,7 @@ American Journal of Human Genetics · 2024-10-14 · [DOI](https://doi.org/10.101
 | Tool | How used | Evidence location |
 | --- | --- | --- |
 | Bowtie 2 | Short-read alignment. | Methods / Single-sperm sequencing |
-| RepeatMasker | Repetitive sequence annotation. | Methods / Reanalysis of Y chromosomes sequenced by Hallast and colleagues |
+| RepeatMasker | Masked simple repeats in Y-chromosome assemblies with RepeatMasker4.1.5 before separate tandem-repeat masking with TRF4.09 and progressiveMauve alignment for clock-model comparisons. | Methods / Reanalysis of Y chromosomes sequenced by Hallast and colleagues |
 | Sambamba | Alignment processing and duplicate removal. | Methods / Single-sperm sequencing |
 | SAMtools | Alignment manipulation and QC. | Methods / Single-sperm sequencing |
 
@@ -4654,7 +4654,7 @@ Nature Genetics · 2026-07-21 · [DOI](https://doi.org/10.1038/s41588-026-02682-
 | pbmm2 | PacBio read alignment. | Methods / SV-based graph pangenome construction and SV genotyping |
 | Picard | Alignment QC, duplicates and sequence processing. | Methods / SNP and InDel calling of 422 accessions |
 | PLINK | Used for LD-based variant selection. | Methods / RNA-seq, eQTL and TWAS analysis |
-| RepeatMasker | Repetitive sequence annotation. | Methods / Repeat and protein-coding gene annotations |
+| RepeatMasker | Annotated genome repeats using RepeatMasker4.1.2-p1 with homology evidence from RepBase20180823 after RepeatModeler2.0.3 library construction; downstream gene annotation filtered transcripts overlapping repeats by more than20%. | Methods / Repeat and protein-coding gene annotations |
 | Sniffles | Long-read structural variant discovery. | Methods / SV-based graph pangenome construction and SV genotyping |
 | STAR | Splice-aware bulk RNA read alignment and optional raw gene counts. | Methods / RNA-seq, eQTL and TWAS analysis |
 | StringTie | Transcript assembly and quantification. | Methods / Repeat and protein-coding gene annotations |

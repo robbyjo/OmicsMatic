@@ -59,8 +59,11 @@ final class RepeatInputs {
     }
     /** The prepared bytes/identity mapping stay unchanged when an outer workflow reserves its own workspace. */
     static Prepared rebudget(Prepared source,RepeatRecipe.Spec spec)throws IOException{
-        if(!source.spec().recipeSha256().equals(spec.recipeSha256())||!source.spec().parameters().equals(spec.parameters())
-                ||source.spec().mode()!=spec.mode()||source.spec().staging()!=spec.staging()||source.spec().mask()!=spec.mask())throw new IOException("Only the outer original-workflow budget may change after preparation");
+        var a=source.spec();var limits=a.limits();
+        var adjusted=new RepeatRecipe.Limits(limits.fasta(),limits.annotations(),limits.inputBytes(),limits.indexBytes(),limits.retainedBytes(),spec.limits().workspaceBytes(),spec.limits().fileCount());
+        var expected=new RepeatRecipe.Spec(a.recipe(),a.recipeSha256(),a.resourceRoot(),a.operation(),a.mode(),a.profile(),a.assembly(),a.review(),a.query(),a.library(),a.annotations(),a.masked(),a.species(),a.staging(),a.mask(),a.selection(),a.parameters(),adjusted,a.process());
+        if(a.operation()!=RepeatRecipe.Operation.SEARCH||!expected.equals(spec)||spec.limits().workspaceBytes()>limits.workspaceBytes()||spec.limits().fileCount()>limits.fileCount())
+            throw new IOException("Only a reduction of the outer original-workflow workspace/member budget may change after preparation");
         return new Prepared(spec,source.work(),source.query(),source.library(),source.masked(),source.annotationPath(),source.annotations(),source.annotationValidation(),source.suppliedMaskAudit(),source.snapshots(),source.ownedSha256(),source.warnings());
     }
     static Prepared prepare(RepeatRecipe.Spec spec, Path suppliedWork, Runnable check) throws IOException {

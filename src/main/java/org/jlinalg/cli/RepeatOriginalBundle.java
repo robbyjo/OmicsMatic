@@ -50,7 +50,7 @@ final class RepeatOriginalBundle {
         var capacity=new RepeatBundle.Limits(whole(manifest,"workspace_bytes"),Math.toIntExact(whole(manifest,"member_limit")));
         var tree=RepeatOwnedTree.snapshot(root,capacity,Set.of("manifest.json","COMPLETED.json"),check);
         if(!tree.equals(manifest.get("managed_tree")))throw new IOException("Original bundle bytes,modes,files or complete directory population differ");
-        for(Object name:tree.keySet())if(name.toString().endsWith("FAILED.txt")||name.toString().endsWith("INTERRUPTED.md")||name.toString().endsWith("FINALIZATION_FAILED.md"))throw new IOException("Failed/interrupted original evidence cannot be completed");
+        for(Object name:tree.keySet())if(name.toString().endsWith("FAILED.txt")||name.toString().endsWith("INTERRUPTED.txt")||name.toString().endsWith("INTERRUPTED.md")||name.toString().endsWith("FINALIZATION_FAILED.md"))throw new IOException("Failed/interrupted original evidence cannot be completed");
         var result=RepeatBundle.object(root.resolve("results.json"),4194304);var status=RepeatBundle.object(root.resolve("analysis-status.json"),65536);var session=RepeatBundle.object(root.resolve("session.json"),4194304);
         if(!"COMPLETED_ORIGINAL".equals(status.get("status"))||!Long.valueOf(0).equals(status.get("exit_code"))||!RepeatSearch.flags().equals(status.get("completion_flags"))
                 ||!"COMPLETED_ORIGINAL".equals(session.get("analysis_status"))||!Long.valueOf(0).equals(session.get("exit_code"))||!TOOL.equals(session.get("tool"))

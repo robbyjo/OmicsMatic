@@ -121,7 +121,8 @@ final class RepeatToolsCli {
                 session.put("finished_at",Instant.now().toString()); session.put("exit_code",code); session.put("warnings",warnings);
                 // A cancellation must still allow retained final diagnostics after the native worker stopped.
                 Runnable diagnostics = () -> { };
-                RepeatBundle.write(directory,"WARNINGS.md",("# Repeat "+(code == 0?"NATIVE WARNINGS REQUIRE REVIEW":code == 3?"SKIP3 ANALYSIS SKIPPED":"FAIL2 ANALYSIS FAILED")+"\n\n"+String.join("\n\n",warnings)+"\n\n"+RECOVERY+"\n").getBytes(StandardCharsets.UTF_8),capacity,RepeatBundle.FAILURE_RESERVE,4,diagnostics);
+                String warningScope=code==0&&requested.operation()==RepeatRecipe.Operation.SEARCH?"ORIGINAL SEARCH WARNINGS": "NATIVE WARNINGS";
+                RepeatBundle.write(directory,"WARNINGS.md",("# Repeat "+(code == 0?warningScope+" REQUIRE REVIEW":code == 3?"SKIP3 ANALYSIS SKIPPED":"FAIL2 ANALYSIS FAILED")+"\n\n"+String.join("\n\n",warnings)+"\n\n"+RECOVERY+"\n").getBytes(StandardCharsets.UTF_8),capacity,RepeatBundle.FAILURE_RESERVE,4,diagnostics);
                 RepeatBundle.write(directory,"session.json",RepeatBundle.json(session),capacity,RepeatBundle.FAILURE_RESERVE,3,diagnostics);
                 var status = new LinkedHashMap<String,Object>(); status.put("status",session.get("analysis_status")); status.put("exit_code",code); status.put("requires_completion_marker",true);
                 if (code == 0) status.put("completion_flags",requested.operation()==RepeatRecipe.Operation.SEARCH?RepeatSearch.flags():RepeatBundle.flags(requested.operation()));
@@ -130,7 +131,7 @@ final class RepeatToolsCli {
                     prepared.verify(check); options.verify(); requested.verify();
                     if(requested.operation()==RepeatRecipe.Operation.SEARCH)RepeatOriginalBundle.complete(directory,capacity,check);else RepeatBundle.complete(directory,requested.operation(),capacity,check);
                 }
-                emit(err,(code == 0?"NATIVE WARNINGS: ":code == 3?"SKIP3 ANALYSIS SKIPPED: ":"FAIL2 ANALYSIS FAILED: ")+directory.resolve("WARNINGS.md"));
+                emit(err,(code == 0?warningScope+": ":code == 3?"SKIP3 ANALYSIS SKIPPED: ":"FAIL2 ANALYSIS FAILED: ")+directory.resolve("WARNINGS.md"));
                 emit(out,"Repeat "+session.get("analysis_status")+": "+directory); return code;
             }
         } catch (RepeatRuntime.Unavailable|RepeatPayload.Unavailable|RepeatProcess.UnavailableDependency missing) {

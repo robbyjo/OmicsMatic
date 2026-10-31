@@ -1,11 +1,8 @@
 # RepeatMasker original runtime admission: development status
 
-**Current source snapshot (2026-10-31): experimental public integration.** The admission CLI, typed original SEARCH path and completion verifier now compile, but their public end-to-end validation is unfinished. The validation records below describe earlier component gates. Do not treat the new SEARCH path as validated or use its output for scientific conclusions yet. SEARCH without an admitted runtime still returns SKIP3. RepeatMasker remains outside the completed tool count.
+**Current public-profile controls pass; historical public validation remains open.** The exact development JAR now passes295 focused tests on Windows Java21/25 and Linux Java21. Actual current-profile N/SOFT/X/no-hit searches,Unicode/gzip staging and the documented example match complete independent reference populations. Read the [copyable public workflow guide](REPEATMASKER_PUBLIC_WORKFLOW.md). Historical public admission/search,final role/catalog gates and full tool admission remain unfinished. The counts remain53 new/56 including existing/266 missing. Cell Ranger stays excluded.
 
-**Public original SEARCH still returns SKIP3.** The internal Java runtime API
-is validated. Its public admission CLI, typed study SEARCH workflow and original
-completion verifier are still being integrated. The tool count remains
-**53 new / 56 including existing / 266 missing**. Cell Ranger stays excluded.
+The component-validation records below retain their original candidate scopes. SEARCH without an admitted runtime still returns SKIP3;runtime admission alone is not a completed study search.
 
 ## What admission now does
 

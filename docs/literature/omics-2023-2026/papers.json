@@ -1309,12 +1309,14 @@
         "matched_text": "RepeatMasker",
         "extraction_score": 10,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": null,
         "evidence_selection": "highest-scored-eligible-method-sentence",
         "evidence_paragraph_sha256": "2999e1e61877529f7b8e9569bd1c246e9fa750d2bb1cbad51256f3a082fac5a2",
-        "use_summary": "Repetitive sequence annotation.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13668659/ (section: Methods / MPRA design / Library design)"
+        "use_summary": "Excluded candidate human substitutions overlapping low-complexity, simple and satellite RepeatMasker regions downloaded from UCSC, alongside separate TRF and ENCODE region filters.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13668659/ (section: Methods / MPRA design / Library design)",
+        "implementation_scope_note": "This is reuse of repeat annotations, not evidence of running RepeatMasker. Keep the UCSC resource/build and class definitions explicit; genotype-frequency filters and sequence-synthesis constraints are separate.",
+        "supporting_evidence": []
       },
       {
         "tool_id": "star",
@@ -2346,12 +2348,14 @@
         "matched_text": "RepeatMasker",
         "extraction_score": 10,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": null,
         "evidence_selection": "highest-scored-eligible-method-sentence",
         "evidence_paragraph_sha256": "d3d7cbdb12c841726e540fb2671c42352a0f39fecd93da8ce10cb4a0ad7eb127",
-        "use_summary": "Repetitive sequence annotation.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13645644/ (section: Methods / Sequence analysis of the breakpoint of rearrangement junctions in human tumours)"
+        "use_summary": "Intersected amplicon junction coordinates with TA/AT-rich repeats from the UCSC RepeatMasker track using BEDTools 2.31.1 and each dataset's hg19 or hg38 reference.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13645644/ (section: Methods / Sequence analysis of the breakpoint of rearrangement junctions in human tumours)",
+        "implementation_scope_note": "The motif examples do not define a complete selection rule or junction-to-BED projection. RepeatMasker search execution is not reported; require explicit motif/resource/build and interval choices rather than guessing them.",
+        "supporting_evidence": []
       },
       {
         "tool_id": "trimmomatic",
@@ -6901,12 +6905,14 @@
         "matched_text": "RepeatMasker",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
-        "version_reported_near_name": null,
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
+        "version_reported_near_name": "4.1.2-p1",
         "evidence_selection": "highest-scored-eligible-method-sentence",
         "evidence_paragraph_sha256": "b30b1545351da298f3f1af3cf91b4f9816d6277b18cda632fde20a6a6fa6818f",
-        "use_summary": "Repetitive sequence annotation.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10733147/ (section: Methods / Structural variation repeat classification)"
+        "use_summary": "Scanned extended variant alleles with RepeatMasker 4.1.2-p1 using -species human -gff -s -norna -nolow, then classified mobile elements with inclusive 75% consensus and variant-coverage thresholds.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10733147/ (section: Methods / Structural variation repeat classification)",
+        "implementation_scope_note": "The six-type classification and complete/fragment labels are downstream operations. The reference library release, grouping of split insertion records and overlap/extent conventions require review; do not substitute current4.2.6 or treat -nolow as merely an output-row filter.",
+        "supporting_evidence": []
       },
       {
         "tool_id": "sniffles",
@@ -8844,12 +8850,14 @@
         "matched_text": "RepeatMasker",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": null,
         "evidence_selection": "highest-scored-eligible-method-sentence",
         "evidence_paragraph_sha256": "3af05361793387acad85628982566d64b238bafd3b0cf16c60492556ad367ee5",
-        "use_summary": "Repetitive sequence annotation.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10719105/ (section: Methods / TE analysis)"
+        "use_summary": "Used HOMER with UCSC mm10 refGene and RepeatMasker annotations to annotate transposable-element overlap at cCREs before separate mixture-model analyses.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10719105/ (section: Methods / TE analysis)",
+        "implementation_scope_note": "The paragraph supports annotation reuse, not a new RepeatMasker search. HOMER annotation and R mixtools2.0.0 model P-values are separate; import the exact resources and declare overlap and subclass definitions.",
+        "supporting_evidence": []
       },
       {
         "tool_id": "scrublet",
@@ -21171,12 +21179,14 @@
         "matched_text": "RepeatMasker",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": "4.0.9",
         "evidence_selection": "highest-scored-eligible-method-sentence",
         "evidence_paragraph_sha256": "c55c77a96ef7517b8bd678bbff6f001825b9525e05b670dd40995b389c87275d",
-        "use_summary": "Repetitive sequence annotation.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10703678/ (section: Methods / Gene and transposable element annotation)"
+        "use_summary": "Annotated plant-genome repeats with RepeatMasker 4.0.9 using -e rmblast -div 40 -norna after RepeatModeler2.0.1 repeat identification and classification.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10703678/ (section: Methods / Gene and transposable element annotation)",
+        "implementation_scope_note": "MAKER2, protein-coding gene prediction and transcript assembly are separate. Retain the generated repeat library and the exact historical engine/software choices; printed divergence values do not expose all internal search precision.",
+        "supporting_evidence": []
       },
       {
         "tool_id": "stringtie",
@@ -23356,12 +23366,14 @@
         "matched_text": "RepeatMasker",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": "4.1.2",
         "evidence_selection": "highest-scored-eligible-method-sentence",
         "evidence_paragraph_sha256": "b10dee046ccb2eefa3869f3a1ad0481409d1cad0ad2bf7719ae63749aee00162",
-        "use_summary": "Repetitive sequence annotation.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11631756/ (section: Methods / The annotation of genome assemblies)"
+        "use_summary": "Used RepeatMasker 4.1.2 for homology-based TE annotation across29haplotypes with nonredundant repeat catalogs built using RepeatModeler2.0.4 and EDTA2.0.1.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11631756/ (section: Methods / The annotation of genome assemblies)",
+        "implementation_scope_note": "Library generation, catalog combination and gene annotation are separate operations. Full RepeatMasker flags and exact library construction are unstated; a supplied-library workflow requires explicit provenance and assembly declarations.",
+        "supporting_evidence": []
       },
       {
         "tool_id": "selscan",
@@ -23665,12 +23677,14 @@
         "matched_text": "RepeatMasker",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": "4.1.2-p1",
         "evidence_selection": "highest-scored-eligible-method-sentence",
         "evidence_paragraph_sha256": "ee273b14ee57e081da6c0d8e1be28a53afcb678569d6868362e37fb7debb8acf",
-        "use_summary": "Repetitive sequence annotation.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12695648/ (section: Methods / Genome assembly and re-annotation)"
+        "use_summary": "Generated repeat annotations for species lacking them by mapping RepeatModeler2.0.2a consensus repeat libraries against genomes using RepeatMasker4.1.2-p1.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12695648/ (section: Methods / Genome assembly and re-annotation)",
+        "implementation_scope_note": "RepeatModeler2 included its LTR-finding module and is separate from RepeatMasker. Species with existing annotations are not automatically new search runs; complete flags and resource releases remain unspecified.",
+        "supporting_evidence": []
       },
       {
         "tool_id": "sambamba",
@@ -34134,12 +34148,19 @@
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
         "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
-        "version_reported_near_name": null,
+        "version_reported_near_name": "4.1.5",
         "evidence_selection": "individually-reviewed-paragraph",
         "evidence_paragraph_sha256": "67f247b7a5f5b590b5ce1383118607ba18e4244429f9ff463cc8573f9f6975cf",
-        "use_summary": "Annotated centromeric repeats in candidate unplaced telomeric contigs to support their placement in missing chromosome regions.",
+        "use_summary": "Used RepeatMasker4.1.5 with the default Dfam library in Mus musculus mode to annotate repeats in T2T mouse assemblies, including centromeric repeats supporting placement of unplaced telomeric contigs.",
         "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12597820/ (section: Methods / Assembly curation)",
-        "implementation_scope_note": "The exact upstream method, reference inputs and assembly curation decisions remain pending; native sequence transformations alone do not implement this workflow."
+        "implementation_scope_note": "Methods paragraph40 resolves the version/species/default-Dfam choice, but not the exact Dfam release. Targeted BLAST validation, Hi-C/MashMap placement and manual assembly curation remain separate; an official bundled Dfam3.7 resource does not establish the study's exact library identity.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 40,
+            "section": "Methods / Repetitive sequence annotation",
+            "paragraph_sha256": "369b442445d8c6e8eae039d8e7590249abd4291ca09316fe94dc91317d8e5c64"
+          }
+        ]
       },
       {
         "tool_id": "samtools",
@@ -35627,12 +35648,14 @@
         "matched_text": "RepeatMasker",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
-        "version_reported_near_name": null,
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
+        "version_reported_near_name": "4.1.1",
         "evidence_selection": "highest-scored-eligible-method-sentence",
         "evidence_paragraph_sha256": "50b033273877d2e117d34f7c8fb62b05777d9a7763ee36dd131a20908feea073",
-        "use_summary": "Repetitive sequence annotation.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13447107/ (section: Methods / Repeat annotation)"
+        "use_summary": "Masked plant genomes with RepeatMasker4.1.1 using an EDTA-fragment library whose unknown TE sequences were classified with TERL, then merged and deduplicated annotations to obtain TE annotations and softmasked assemblies.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13447107/ (section: Methods / Repeat annotation)",
+        "implementation_scope_note": "The softmasked product is described for the combined workflow; the exact RepeatMasker masking flag and merge rules are not provided. EDTA and TERL inference remain separate and the library provenance must be explicit.",
+        "supporting_evidence": []
       },
       {
         "tool_id": "samtools",
@@ -40397,12 +40420,14 @@
         "matched_text": "RepeatMasker",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": "4.1.5",
         "evidence_selection": "highest-scored-eligible-method-sentence",
         "evidence_paragraph_sha256": "86dbadfd372bd545e5e15886e66294c20d21100c954ca1c8362049b4441079b4",
-        "use_summary": "Repetitive sequence annotation.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11568759/ (section: Methods / Reanalysis of Y chromosomes sequenced by Hallast and colleagues)"
+        "use_summary": "Masked simple repeats in Y-chromosome assemblies with RepeatMasker4.1.5 before separate tandem-repeat masking with TRF4.09 and progressiveMauve alignment for clock-model comparisons.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11568759/ (section: Methods / Reanalysis of Y chromosomes sequenced by Hallast and colleagues)",
+        "implementation_scope_note": "The paragraph does not specify -noint or its repeat library. TRF, multiple alignment, window/gap filtering, tree-puzzle likelihood tests and R multiple-testing correction are separate; do not infer their settings as RepeatMasker options.",
+        "supporting_evidence": []
       },
       {
         "tool_id": "sambamba",
@@ -48706,12 +48731,14 @@
         "matched_text": "RepeatMasker",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": "4.1.2-p1",
         "evidence_selection": "highest-scored-eligible-method-sentence",
         "evidence_paragraph_sha256": "6e413cb59f116f49368d799bea6077eecce578593ecd5227be0c58b01eb7dc0d",
-        "use_summary": "Repetitive sequence annotation.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13447089/ (section: Methods / Repeat and protein-coding gene annotations)"
+        "use_summary": "Annotated genome repeats using RepeatMasker4.1.2-p1 with homology evidence from RepBase20180823 after RepeatModeler2.0.3 library construction; downstream gene annotation filtered transcripts overlapping repeats by more than20%.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13447089/ (section: Methods / Repeat and protein-coding gene annotations)",
+        "implementation_scope_note": "The exact library combination and RepeatMasker flags are not given. RepBase requires an appropriately licensed local resource; RepeatModeler, gene prediction and strict transcript-overlap filtering remain separate. Transcript span versus exon-union denominators are not specified.",
+        "supporting_evidence": []
       },
       {
         "tool_id": "sniffles",

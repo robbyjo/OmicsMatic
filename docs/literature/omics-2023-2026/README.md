@@ -9,7 +9,9 @@ tests pass on each of three JVMs; 40 original-matched phasing protocols cover
 692,743 calls, and the copyable BCF examples match 512 direct-original calls.
 The current catalog has **53 new validated integrations plus 3 existing
 adapters (56 total)** and **266 missing**. It retains 250 papers, 379 named
-tools, 2,428 observations, 693 reviewed uses and 202 supporting pointers.
+tools, 2,428 observations, 703 reviewed uses and 203 supporting pointers.
+
+[Eleven RepeatMasker source roles](REPEATMASKER_SOURCE_REVIEW.md) distinguish annotation reuse from search and masking. Tool availability is unchanged; historical public validation remains open.
 
 **Required action:** use an admitted Linux runtime for original phasing; skip
 the dependent analysis with **SKIP3** when a dependency or requested capability

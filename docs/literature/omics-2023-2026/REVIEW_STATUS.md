@@ -1,5 +1,11 @@
 # Active goal checkpoint - literature-driven bioinformatics toolbox
 
+## RepeatMasker paper-use descriptions reviewed (2026-10-31)
+
+Eleven primary-source roles are now curated: three precomputed-annotation reuse roles and eight search/masking roles. Ten new review objects and one explicitly retained P164 revision bring the catalog to 703 reviewed uses and 203 supporting paragraph pointers. All 250 paper identities, 379 named tools and 2,428 primary observation pointers are unchanged. The P164 Methods resolve RepeatMasker 4.1.5 and mouse/default-Dfam use, while the Dfam release remains unreported. RepBase permissions, historical software editions and unstated study settings remain explicit.
+
+**Implementation status is unchanged:** 53 new integrations, 56 including existing adapters, 266 missing. RepeatMasker public historical validation is still running and the tool is not counted as complete. This source review does not certify full-paper reconstruction or exhaustive software extraction.
+
 **Current Eagle milestone:** the development `eagle-tools` integration supports
 the documented original 2.4.1 cohort/reference subset with native VCF/BCF2.2
 checks, protected binary/index provenance and complete output audits. Read
