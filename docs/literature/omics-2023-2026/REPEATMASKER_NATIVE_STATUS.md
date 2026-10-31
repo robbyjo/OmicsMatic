@@ -1,5 +1,7 @@
 # RepeatMasker native foundation
 
+**Current source snapshot (2026-10-31): experimental public integration.** The admission CLI, typed original SEARCH path and completion verifier now compile, but their public end-to-end validation is unfinished. The validation records below describe earlier component gates. Do not treat the new SEARCH path as validated or use its output for scientific conclusions yet. SEARCH without an admitted runtime still returns SKIP3. RepeatMasker remains outside the completed tool count.
+
 **RepeatMasker remains missing from the completed integration count.** The
 native Java annotation methods and private original search foundation are
 available in development, including the public native command described below.
@@ -351,16 +353,24 @@ restricted resource editions remain explicit.
 The newer [host/provider development status](REPEATMASKER_HOST_STATUS.md)
 records complete declared inventories, second fully re-derived captures and
 independent byte/permission/membership and ELF checks for both profiles.
-The current inventory covers 3,180 member occurrences and 375 ELF images;
-the historical inventory covers 4,644 member occurrences and 483 ELF images.
-The 232-test family passes against the exact latest private JAR on Windows
+The current inventory covers 3,227 member occurrences and 379 ELF images;
+the historical inventory covers 4,702 member occurrences and 485 ELF images.
+The 278-test family passes against the exact latest private JAR on Windows
 Java21/25 and Linux Java21, with explicit platform-only skips. The process
 supervisor also retains a fresh original replay of the fixed procfs exit race.
-These are internal components: access-trace closure, scientific runtime
-admission, typed public original SEARCH and catalog gates remain unfinished.
+The [fixed original health component](REPEATMASKER_HEALTH_STATUS.md) also
+passes all13 fresh controls:26 original processes,26 independently checked
+annotation rows and two genuine no-hit mask/table absences. Five fresh access
+traces close all selected paths. These are internal components. The public admission/SEARCH and catalog gates
+remain unfinished.
 
-**Remaining scope:** complete host/dependency closure, final scientific runtime
-admission, the public original
+The [internal original runtime API](REPEATMASKER_RUNTIME_STATUS.md) now binds
+the verified payload,host and fixed scientific controls. Both profiles pass
+fresh admission and separate-JVM reopening;278 focused tests and independent
+complete Linux-tree/original-output checks pass. Public admission/SEARCH and
+completed-original verification remain unfinished;the tool count is unchanged.
+
+**Remaining scope:** public runtime-admission integration, the original
 `SEARCH` workflow and final paper-role/catalog gates are unfinished. Original
 SEARCH still returns `SKIP3`. RepeatMasker remains outside the completed count.
 Do not infer biological absence or original-search completion from a native

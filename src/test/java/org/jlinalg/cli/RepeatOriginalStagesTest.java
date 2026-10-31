@@ -15,6 +15,14 @@ import org.junit.jupiter.api.io.TempDir;
 final class RepeatOriginalStagesTest {
     @TempDir Path directory;
     private int serial;
+    @Test @org.junit.jupiter.api.condition.EnabledOnOs(org.junit.jupiter.api.condition.OS.LINUX)
+    void everyUpstreamPathIsCheckedBeforeAnOriginalProcessCanStart()throws Exception{
+        Path safe=Path.of("/tmp/repeat-safe");RepeatOriginalStages.originalPaths(safe,safe,safe,safe);
+        for(int index=0;index<4;index++)for(String bad:List.of("/tmp/has space","/tmp/Unicode-\u03bb","/tmp/shell;token","relative")){
+            Path[] paths={safe,safe,safe,safe};paths[index]=Path.of(bad);
+            assertThrows(RepeatPayload.Unavailable.class,()->RepeatOriginalStages.originalPaths(paths[0],paths[1],paths[2],paths[3]));
+        }
+    }
     private RepeatRecipe.Spec spec(String mode,String profile,String mask)throws Exception{
         Path root=Files.createDirectory(directory.resolve("request-"+serial++));RepeatTestRecipes.inputs(root);var request=RepeatTestRecipes.searchRequest(mode);request.put("profile",profile);request.put("mask",mask);return RepeatRecipe.read(RepeatTestRecipes.write(root,request));
     }

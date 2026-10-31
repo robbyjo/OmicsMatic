@@ -110,7 +110,7 @@ final class RepeatHostFiles {
                     throw new IOException("Host helper/configuration must be a regular file or absent: " + name);
                 files.put(name, entry);
             }
-            for(String name:requestedNodes)nodes.put(name,describe(Path.of(name),fileTargets));
+            for(String name:requestedNodes)nodes.put(name,describe(Path.of(name),fileTargets,true));
             while (!pending.isEmpty()) {
                 Path root = pending.removeFirst(); String key = root.toString();
                 if (trees.containsKey(key)) continue;
@@ -146,12 +146,17 @@ final class RepeatHostFiles {
             if (entry.kind().equals("DIRECTORY") || entry.targetKind().equals("DIRECTORY")) pending.add(Path.of(entry.realPath()));
         }
         private Entry describe(Path supplied, Set<Path> allowed) throws IOException {
+            return describe(supplied,allowed,false);
+        }
+        private Entry describe(Path supplied, Set<Path> allowed, boolean metadataNode) throws IOException {
             check.run(); Path path = absolute(supplied); String name = path.toString();
             if (++members > limits.members()) throw new IOException("Complete host member capacity exceeded");
             BasicFileAttributes attr;
             try { attr = Files.readAttributes(path, BasicFileAttributes.class, LinkOption.NOFOLLOW_LINKS); }
             catch (NoSuchFileException absent) {
-                Path resolved = missingTarget(path); allow(resolved, allowed); reserve(name, resolved.toString(), "");
+                Path resolved = missingTarget(path);
+                if(!metadataNode||!resolved.equals(path))allow(resolved, allowed);
+                reserve(name, resolved.toString(), "");
                 return new Entry("ABSENT", resolved.toString(), "", "ABSENT", null, -1);
             }
             remember(path); int mode = mode(path);
@@ -170,7 +175,11 @@ final class RepeatHostFiles {
                 reserve(name, target.toString(), rawTarget.toString());
                 return new Entry("SYMLINK", target.toString(), rawTarget.toString(), kind, file, mode);
             }
-            Path real = path.toRealPath(); allow(real, allowed); reserve(name, real.toString(), "");
+            Path real = path.toRealPath();
+            // Explicit canonical directory nodes disclose only their own metadata.
+            // They do not broaden tree traversal, regular-file reads or linked-target policy.
+            if(!metadataNode||!attr.isDirectory()||!real.equals(path))allow(real, allowed);
+            reserve(name, real.toString(), "");
             if (attr.isDirectory()) return new Entry("DIRECTORY", real.toString(), "", "DIRECTORY", null, mode);
             if (attr.isRegularFile()) return new Entry("REGULAR", real.toString(), "", "REGULAR", fingerprint(real), mode);
             throw new IOException("Unsupported nonregular host module member: " + path);

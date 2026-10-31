@@ -57,6 +57,12 @@ final class RepeatInputs {
             if (!actual.equals(ownedSha256)) throw new IOException("RepeatMasker protected preparation changed or contains unexpected members");
         }
     }
+    /** The prepared bytes/identity mapping stay unchanged when an outer workflow reserves its own workspace. */
+    static Prepared rebudget(Prepared source,RepeatRecipe.Spec spec)throws IOException{
+        if(!source.spec().recipeSha256().equals(spec.recipeSha256())||!source.spec().parameters().equals(spec.parameters())
+                ||source.spec().mode()!=spec.mode()||source.spec().staging()!=spec.staging()||source.spec().mask()!=spec.mask())throw new IOException("Only the outer original-workflow budget may change after preparation");
+        return new Prepared(spec,source.work(),source.query(),source.library(),source.masked(),source.annotationPath(),source.annotations(),source.annotationValidation(),source.suppliedMaskAudit(),source.snapshots(),source.ownedSha256(),source.warnings());
+    }
     static Prepared prepare(RepeatRecipe.Spec spec, Path suppliedWork, Runnable check) throws IOException {
         Objects.requireNonNull(spec); Objects.requireNonNull(check); spec.verify(); check.run();
         if (spec.limits().retainedBytes() > Runtime.getRuntime().maxMemory() / 4 * 3)

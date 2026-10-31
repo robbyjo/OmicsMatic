@@ -21,6 +21,8 @@ import java.util.TreeMap;
 final class RepeatResources {
     private RepeatResources() { }
     private static final long DIAGNOSTIC_RESERVE=65536;
+    private static final String SCOPE="owned-original-source-and-library-resources-only";
+    private static final String CACHE_POLICY="Fresh analysis-owned Libraries only;sealed payload/source members stay unchanged. Record complete generated cache contents and resource provenance after original execution;directory names alone never establish library identity.";
     record Member(String payloadMember,String method,RepeatPayload.Fingerprint fingerprint) { }
     record Prepared(RepeatPayload.Context payload,Path work,Path sourceRoot,Map<String,Member> members,
             String ledgerSha256,RepeatPayload.Limits limits) {
@@ -42,6 +44,42 @@ final class RepeatResources {
     }
     static Prepared prepare(RepeatPayload.Context payload,Path suppliedWork,RepeatPayload.Limits limits,Runnable check) throws IOException {
         try(var scope=RepeatFingerprint.enter()){scope.requireActive();return preparePass(payload,suppliedWork,limits,check);}
+    }
+    /** Reopens retained scientific-health resources against the pinned original payload, not their own claims. */
+    static Prepared open(RepeatPayload.Context payload,Path suppliedWork,RepeatPayload.Limits limits,Runnable check)throws IOException{
+        Path work=suppliedWork.toAbsolutePath().normalize();RepeatPayload.originalPath(work);payload.verify(check);
+        if(!Files.isDirectory(work,LinkOption.NOFOLLOW_LINKS)||!work.toRealPath().equals(work))throw new IOException("Retained original resources require a canonical directory");
+        byte[] raw=AdmixtureInputs.raw(work.resolve("resources.json"),4194304);
+        Prepared result=fromLedger(payload,work,limits,raw);result.verify(check);return result;
+    }
+    static Prepared fromLedger(RepeatPayload.Context payload,Path work,RepeatPayload.Limits limits,byte[] raw)throws IOException{
+        Map<?,?> ledger=RepeatBundle.object(raw);
+        if(!ledger.keySet().equals(java.util.Set.of("schema_version","scope","profile","lock_sha256","payload_home","members","working_configuration_delta","generated_cache_policy","upstream_search_completed"))
+                ||!Long.valueOf(1).equals(ledger.get("schema_version"))||!SCOPE.equals(ledger.get("scope"))
+                ||!payload.profile().equals(ledger.get("profile"))||!payload.lockSha256().equals(ledger.get("lock_sha256"))
+                ||!payload.home().toString().equals(ledger.get("payload_home"))||!CACHE_POLICY.equals(ledger.get("generated_cache_policy"))
+                ||!Boolean.FALSE.equals(ledger.get("upstream_search_completed"))||!(ledger.get("members") instanceof Map<?,?> described))
+            throw new IOException("Retained original resource ledger differs from the pinned payload/profile/scope");
+        var expected=new TreeMap<String,Member>();Map<String,Object> configuration=Map.of();
+        for(var entry:payload.files().entrySet())if(entry.getKey().startsWith("repeatmasker/")){
+            String source=entry.getKey(),target=source,method="COPY";var fingerprint=entry.getValue();
+            if(payload.profile().equals(RepeatRecipe.HISTORICAL)&&source.equals("repeatmasker/Libraries/Dfam.h5")){
+                target="repeatmasker/Libraries/RepeatMaskerLib.h5";
+                Object item=described.get(target);if(!(item instanceof Map<?,?> value)||!(value.get("method") instanceof String declared)
+                        ||!java.util.Set.of("COPY","HARDLINK").contains(declared))throw new IOException("Retained Dfam copy/link provenance is missing");
+                method=declared;
+                if(method.equals("HARDLINK")&&!Files.isSameFile(work.resolve(target),payload.home().resolve(source)))throw new IOException("Retained Dfam hardlink no longer identifies its pinned source");
+            }
+            if(payload.profile().equals(RepeatRecipe.HISTORICAL)&&source.equals("repeatmasker/RepeatMaskerConfig.pm")){
+                byte[] configured=configureLibraryDirectory(AdmixtureInputs.raw(payload.home().resolve(source),1048576),work.resolve("repeatmasker/Libraries"));
+                fingerprint=new RepeatPayload.Fingerprint(configured.length,AdmixtureInputs.digest(configured));method="CONFIGURED_LIBDIR_VALUE";
+                configuration=Map.of("path",source,"original_sha256",entry.getValue().sha256(),"configured_sha256",fingerprint.sha256(),"value",work.resolve("repeatmasker/Libraries").toString(),"scope","Only the original LIBDIR configuration value;algorithm and all other configuration bytes unchanged");
+            }
+            expected.put(target,new Member(source,method,fingerprint));
+        }
+        if(!RepeatBundle.object(RepeatBundle.json(expected)).equals(described)
+                ||!configuration.equals(ledger.get("working_configuration_delta")))throw new IOException("Retained source members or the sole permitted LIBDIR transformation differ");
+        return new Prepared(payload,work,work.resolve("repeatmasker"),expected,AdmixtureInputs.digest(raw),limits);
     }
     private static Prepared preparePass(RepeatPayload.Context payload,Path suppliedWork,RepeatPayload.Limits limits,Runnable check) throws IOException {
         Path work=suppliedWork.toAbsolutePath().normalize();RepeatPayload.originalPath(work);
@@ -80,10 +118,10 @@ final class RepeatResources {
                 Member before=completed.get(name);var after=new RepeatPayload.Fingerprint(configured.length,AdmixtureInputs.digest(configured));completed.put(name,new Member(before.payloadMember(),"CONFIGURED_LIBDIR_VALUE",after));
                 configurationDelta=Map.of("path",name,"original_sha256",before.fingerprint().sha256(),"configured_sha256",after.sha256(),"value",work.resolve("repeatmasker/Libraries").toString(),"scope","Only the original LIBDIR configuration value;algorithm and all other configuration bytes unchanged");
             }
-            var ledger=new LinkedHashMap<String,Object>();ledger.put("schema_version",1);ledger.put("scope","owned-original-source-and-library-resources-only");
+            var ledger=new LinkedHashMap<String,Object>();ledger.put("schema_version",1);ledger.put("scope",SCOPE);
             ledger.put("profile",payload.profile());ledger.put("lock_sha256",payload.lockSha256());ledger.put("payload_home",payload.home());ledger.put("members",completed);
             ledger.put("working_configuration_delta",configurationDelta);
-            ledger.put("generated_cache_policy","Fresh analysis-owned Libraries only;sealed payload/source members stay unchanged. Record complete generated cache contents and resource provenance after original execution;directory names alone never establish library identity.");
+            ledger.put("generated_cache_policy",CACHE_POLICY);
             ledger.put("upstream_search_completed",false);
             byte[] raw=RepeatBundle.json(ledger);
             if(Math.addExact(used,Math.addExact(raw.length,DIAGNOSTIC_RESERVE))>limits.bytes())throw new IOException("Complete original resource metadata exceeds capacity;diagnostic reserve retained");

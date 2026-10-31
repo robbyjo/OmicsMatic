@@ -55,12 +55,13 @@ final class RepeatHost {
     private static final String PYTHON_ROOTS = "import json,sys,sysconfig;print(json.dumps({'stdlib':sysconfig.get_path('stdlib'),'paths':sys.path,'version':sys.version.split()[0]},ensure_ascii=False))";
     private static final List<String> REQUIRED = List.of("/usr/bin/perl", "/usr/bin/env", "/bin/sh", "/usr/bin/sort", "/usr/bin/rm",
         "/usr/bin/setsid", "/usr/bin/prlimit", "/usr/bin/ldd", "/bin/bash");
-    private static final List<String> SUPPLEMENTAL = List.of("cp", "cat", "gzip", "gunzip", "grep", "head", "tail", "wc", "mv", "which", "date", "df", "cut", "ln", "readlink", "touch", "pod2text");
+    private static final List<String> SUPPLEMENTAL = List.of("cp", "cat", "gzip", "gunzip", "grep", "head", "tail", "wc", "mv", "which", "date", "df", "cut", "ln", "readlink", "touch", "pod2text", "pwd", "uname", "python3.12");
     private static final List<String> CONFIG_FILES = List.of("/etc/ld.so.cache", "/etc/ld.so.conf", "/etc/ld.so.preload",
         "/etc/nsswitch.conf", "/etc/hosts", "/etc/resolv.conf", "/etc/gai.conf", "/etc/host.conf", "/etc/localtime",
         "/etc/passwd", "/etc/group", "/etc/os-release", "/etc/ssl/openssl.cnf", "/usr/lib/ssl/openssl.cnf", "/usr/lib/locale/locale-archive", "/usr/share/locale/locale.alias", "/etc/ncbi.ini", "/etc/.ncbirc", "/etc/ncbirc",
         "/usr/etc/.ncbirc", "/usr/local/etc/.ncbirc", "/etc/makeblastdb.ini", "/etc/rmblastn.ini", "/etc/toolkitrc", "/etc/selinux/config", "/is.lib",
-        "/lib/ld-linux.so.2", "/lib64/ld-linux-x86-64.so.2", "/libx32/ld-linux-x32.so.2");
+        "/lib/ld-linux.so.2", "/lib64/ld-linux-x86-64.so.2", "/libx32/ld-linux-x32.so.2",
+        "/usr/share/locale-langpack/C.UTF-8/LC_MESSAGES/messages.mo", "/usr/share/locale/C.UTF-8/LC_MESSAGES/messages.mo");
     private static final List<String> EXTRA_TREES = List.of("/etc/ld.so.conf.d", "/etc/ssl/openssl.cnf.d",
         "/usr/lib/locale/C.utf8", "/usr/lib/locale/C.UTF-8", "/usr/lib/x86_64-linux-gnu/ossl-modules",
         "/usr/lib/x86_64-linux-gnu/glibc-hwcaps", "/usr/lib64/glibc-hwcaps", "/usr/lib/x86_64-linux-gnu/gconv");
@@ -96,6 +97,19 @@ final class RepeatHost {
         Result actual = capture(payload,newWork,limits,check);
         if (!expected.sameContents(actual.snapshot())) throw new IOException("Re-derived host/provider module paths,files,platform or library bindings differ");
     }
+    /** Stable persisted identity; physical hash-cache statistics are observations, not dependencies. */
+    static Map<?,?> identity(Snapshot snapshot)throws IOException{return identity(RepeatBundle.object(RepeatBundle.json(snapshot)));}
+    static Map<?,?> identity(Map<?,?> document)throws IOException{
+        if(!(document.get("files") instanceof Map<?,?> files))throw new IOException("Missing complete host file census");
+        var result=new TreeMap<String,Object>();for(var item:document.entrySet()){
+            if(!(item.getKey() instanceof String name))throw new IOException("Invalid host identity key");result.put(name,item.getValue());
+        }
+        var census=new TreeMap<String,Object>();for(var item:files.entrySet()){
+            if(!(item.getKey() instanceof String name))throw new IOException("Invalid host census key");
+            if(!name.equals("physicalHashes"))census.put(name,item.getValue());
+        }
+        result.put("files",census);return java.util.Collections.unmodifiableMap(result);
+    }
     private static final class Capture {
         final RepeatPayload.Context payload;
         final Path work, metadata, probeRoot;
@@ -118,7 +132,7 @@ final class RepeatHost {
             filePaths.addAll(REQUIRED.stream().map(Path::of).toList());
             for(String name:SUPPLEMENTAL)filePaths.add(Path.of("/usr/bin/"+name));
             CONFIG_FILES.forEach(name->filePaths.add(Path.of(name)));EXTRA_TREES.forEach(name->rootPaths.add(Path.of(name)));
-            nodePaths.add(Path.of("/log/fallback"));nodePaths.add(Path.of("/log/srv"));
+            nodePaths.add(Path.of("/log/fallback"));nodePaths.add(Path.of("/log/srv"));nodePaths.add(Path.of("/selinux"));
             payload.external().values().forEach(value->filePaths.add(value.path()));
             for(String name:payload.files().keySet())if(name.startsWith("bin/")||name.contains(".so"))filePaths.add(payload.home().resolve(name));
             // Record all installed NSS providers, including providers that are loaded lazily rather than by DT_NEEDED.
@@ -164,7 +178,13 @@ final class RepeatHost {
             budget();check.run();return new Result(work,snapshot,probes,AdmixtureInputs.digest(raw));
         }
         private RepeatHostFiles.Snapshot files() throws IOException {
-            return RepeatHostFiles.capture(List.copyOf(rootPaths),List.copyOf(filePaths),List.copyOf(nodePaths),TREE_TARGETS,fileTargets,limits.dependencies(),check);
+            var nodes=new LinkedHashSet<>(nodePaths);
+            for(Path path:rootPaths)ancestors(path,nodes);
+            for(Path path:filePaths)ancestors(path,nodes);
+            for(Path path:nodePaths)ancestors(path,nodes);
+            // Inventory requests are sets. Actual module lookup precedence remains
+            // separately recorded in perlRoots/pythonPaths, in its original order.
+            return RepeatHostFiles.capture(rootPaths.stream().sorted().toList(),filePaths.stream().sorted().toList(),nodes.stream().sorted().toList(),TREE_TARGETS,fileTargets,limits.dependencies(),check);
         }
         private void addProvider(Path path, Set<String> pending) throws IOException {
             // Resolve the original spelling before normalization: symlinks make lexical '..' collapsing unsafe.
@@ -195,9 +215,13 @@ final class RepeatHost {
         }
     }
     private static void requirePreserved(RepeatHostFiles.Snapshot before,RepeatHostFiles.Snapshot after) throws IOException {
-        if(!before.requestedRoots().equals(after.requestedRoots())||!before.roots().equals(after.roots())||!before.trees().equals(after.trees())||!before.nodes().equals(after.nodes()))
+        if(!before.requestedRoots().equals(after.requestedRoots())||!before.roots().equals(after.roots())||!before.trees().equals(after.trees()))
             throw new IOException("Complete declared module-root population changed during binding discovery");
+        for(var entry:before.nodes().entrySet())if(!entry.getValue().equals(after.nodes().get(entry.getKey())))throw new IOException("Host path metadata changed during binding discovery: "+entry.getKey());
         for(var entry:before.files().entrySet())if(!entry.getValue().equals(after.files().get(entry.getKey())))throw new IOException("Host/provider file changed during binding discovery: "+entry.getKey());
+    }
+    private static void ancestors(Path path,Set<Path> nodes){
+        for(Path parent=path.getParent();parent!=null;parent=parent.getParent())nodes.add(parent);
     }
     static List<String> perlRoots(byte[] raw) throws IOException {
         String text=utf8(raw);if(!text.endsWith("\n"))throw new IOException("Perl default-module output is not complete");

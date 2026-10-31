@@ -179,4 +179,26 @@ class RepeatHostFilesTest {
         Path path=data(temp.resolve("configuration"),"abc");var snapshot=RepeatHostFiles.capture(List.of(),List.of(),List.of(path),Set.of(temp),Set.of(temp),limits,()->{});
         assertEquals(3,snapshot.logicalBytes());assertEquals("ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad",snapshot.nodes().get(path.toString()).file().sha256());verify(snapshot);
     }
+    @Test void explicitCanonicalAncestorNodesDoNotReadChildrenOutsideFilePolicy() throws Exception {
+        Path allowed=Files.createDirectory(temp.resolve("allowed")),outside=Files.createDirectory(temp.resolve("outside"));
+        data(outside.resolve("private-unrelated-content"),"not part of inventory");
+        var snapshot=RepeatHostFiles.capture(List.of(),List.of(),List.of(outside),Set.of(allowed),Set.of(allowed),limits,()->{});
+        assertEquals(0,snapshot.logicalBytes());assertTrue(snapshot.trees().isEmpty());assertEquals(1,snapshot.members());
+        assertEquals("DIRECTORY",snapshot.nodes().get(outside.toString()).kind());
+        RepeatHostFiles.verify(snapshot,Set.of(allowed),Set.of(allowed),limits,()->{});
+        data(outside.resolve("another-unrelated-child"),"also not read");
+        RepeatHostFiles.verify(snapshot,Set.of(allowed),Set.of(allowed),limits,()->{});
+    }
+    @Test void absentMetadataNodesCannotTurnIntoOutOfPolicyFileReads() throws Exception {
+        Path allowed=Files.createDirectory(temp.resolve("allowed")),outside=temp.resolve("outside");
+        var snapshot=RepeatHostFiles.capture(List.of(),List.of(),List.of(outside),Set.of(allowed),Set.of(allowed),limits,()->{});
+        assertEquals("ABSENT",snapshot.nodes().get(outside.toString()).kind());data(outside,"do not read");
+        assertThrows(IOException.class,()->RepeatHostFiles.verify(snapshot,Set.of(allowed),Set.of(allowed),limits,()->{}));
+        assertThrows(IOException.class,()->RepeatHostFiles.capture(List.of(),List.of(),List.of(outside),Set.of(allowed),Set.of(allowed),limits,()->{}));
+    }
+    @Test void metadataNodesDoNotPermitOutOfPolicySymlinkDirectoryTargets() throws Exception {
+        Path allowed=Files.createDirectory(temp.resolve("allowed")),outside=Files.createDirectory(temp.resolve("outside"));
+        Path link=allowed.resolve("link");symlink(link,outside);
+        assertThrows(IOException.class,()->RepeatHostFiles.capture(List.of(),List.of(),List.of(link),Set.of(allowed),Set.of(allowed),limits,()->{}));
+    }
 }

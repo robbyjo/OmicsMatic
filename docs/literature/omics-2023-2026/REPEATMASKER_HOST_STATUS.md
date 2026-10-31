@@ -1,5 +1,7 @@
 # RepeatMasker host/provider verification: development status
 
+**Current source snapshot (2026-10-31): experimental public integration.** The admission CLI, typed original SEARCH path and completion verifier now compile, but their public end-to-end validation is unfinished. The validation records below describe earlier component gates. Do not treat the new SEARCH path as validated or use its output for scientific conclusions yet. SEARCH without an admitted runtime still returns SKIP3. RepeatMasker remains outside the completed tool count.
+
 **Public original SEARCH is still unavailable and returns SKIP3.** The host
 inspection below is an internal development component. It does not admit a
 scientific runtime, certify a paper reconstruction or change the tool count.
@@ -49,9 +51,9 @@ The ELF interpretation follows the primary [ELF header](https://gabi.xinuos.com/
 
 ## Validation and remaining work
 
-The focused family contains 232 tests. Exact private-JAR checks pass on
-Windows Java 21/25 and Linux Java 21. Windows runs 227 tests and skips five
-Linux-only filesystem/process cases; Linux runs 231 and skips the Windows-only
+The expanded family contains 278 tests; see [fixed health status](REPEATMASKER_HEALTH_STATUS.md). Exact private-JAR checks pass on
+Windows Java 21/25 and Linux Java 21. Windows runs 272 tests and skips six
+Linux-only filesystem/process cases; Linux runs 277 and skips the Windows-only
 host-refusal case. Strict Java 17 compilation and private Javadoc checks pass.
 
 Original process/file access traces cover both editions, positive and genuine
@@ -65,17 +67,22 @@ failures are also retained.
 Independent Python checks compare full filesystem membership, file bytes,
 permissions and logical counts. GNU `readelf` independently checks ELF metadata.
 Both profiles pass a second, fully re-derived host capture. Independent checks
-cover 3,180 member occurrences, 177,179,245 logical bytes and 375 ELF images
-for the current profile, and 4,644 member occurrences, 288,549,199 logical bytes
-and 483 ELF images for the historical profile. The historical capture uses the
-latest candidate. The current capture uses its immediate predecessor; their
-only production-source difference adds a historical-only Python startup
-sentinel. Private evidence is under
+cover 3,227 member occurrences, 185,457,469 logical bytes and 379 ELF images
+for the current profile, and 4,702 member occurrences, 288,619,871 logical bytes
+and 485 ELF images for the historical profile. Ancestor directories retain only
+their own type/mode metadata; their unrelated children are not read. Canonical
+absent/directory nodes do not broaden regular-file or symlink-target policies.
+The access review covers five fresh controls, including real cwd changes and
+actual directory-fd paths, with no unresolved or unaccounted selected paths.
+Fresh internal runtime admission now captures both profiles with the latest
+exact candidate and verifies persisted identity in a separate JVM. Earlier
+captures retain their own original candidate identities.
+Private evidence is under
 `build/literature-review/repeatmasker-runtime/host-*`; these development
 artifacts are not a public release or an upstream download.
 
-**Remaining gates:** finish the access-trace coverage review, admit a runtime
-using fixed original scientific health controls, wire
+**Remaining gates:** expose the [verified internal runtime API](REPEATMASKER_RUNTIME_STATUS.md),
+wire
 the typed public SEARCH workflow and its completion verifier, then apply the
 reviewed paper-role updates and rerun catalog/browser gates. Inspection alone
 cannot satisfy these gates. Hashes establish integrity, not authenticity or

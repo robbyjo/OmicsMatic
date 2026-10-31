@@ -16,16 +16,17 @@ import java.util.Set;
 import java.util.concurrent.CancellationException;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-/** Public typed native repeat checks, masking and complete supplied-mask audits. */
+/** Public typed native and admitted original repeat workflows with separate completion schemas. */
 final class RepeatToolsCli {
     private RepeatToolsCli() { }
-    private static final String RECOVERY = "Required action: read WARNINGS.md,session.json,analysis-status.json and retained preparation/native diagnostics. A native completed result requires COMPLETED.json,its matching manifest and repeat-tools --verify DIRECTORY. Correct invalid inputs,integrity or capacity errors and rerun to a NEW output directory;never overwrite or admit partial files. Original SEARCH is not implemented in this candidate: SKIP3. Export private payload setup with --export-runtime-setup NEW_DIRECTORY and read its README.md;payload installation does not admit a scientific runtime or SEARCH. Use a candidate with documented admitted runtime/resource support,or run the exact permitted upstream separately and import explicitly identified annotations as EXTERNAL_NOT_CERTIFIED for native MASK/AUDIT. Never substitute an edition or infer biological absence. Java native operations need no upstream installation. No download/install occurs during analysis. Cell Ranger remains excluded.";
+    private static final String RECOVERY = "Required action: read WARNINGS.md,session.json,analysis-status.json and both original process ledgers where present. Require COMPLETED.json,its matching manifest and repeat-tools --verify DIRECTORY;native completion never certifies original SEARCH. Missing/forbidden/unsupported dependencies mean SKIP3 and skipped analysis. Export permitted payload setup with --export-runtime-setup NEW_DIRECTORY,then explicitly admit a NEW runtime with --admit-runtime-options-file FILE. SEARCH requires --runtime ADMITTED_HOME and permitted Linux x86_64 Java (inside WSL on Windows);keep its exact canonical recipe,inputs,payload and runtime for read-only evidence verification. Installation/admission is separate from study SEARCH. Input,integrity,execution,capacity or interruption means FAIL2:retain partials,correct the named cause/reviewed capacities and use NEW paths. Original SEARCH reserves both complete host captures and final evidence;review workspace_bytes/file_count. Never repair sealed homes,overwrite results,substitute editions,fabricate no-hit files or infer biological absence. Native CHECK/MASK/AUDIT need no upstream installation. No download/install occurs during analysis/admission. Cell Ranger remains excluded.";
     private record Options(Path recipe, Path output, Path source, byte[] sourceBytes, Map<String,String> values) {
         Options { sourceBytes = sourceBytes.clone(); values = Map.copyOf(values); }
         void verify() throws IOException {
             if (source != null && !RepeatInputs.hash(source,1048576,()->{}).equals(AdmixtureInputs.digest(sourceBytes)))
                 throw new IOException("Repeat CLI options file changed during analysis");
         }
+        Path runtime(){return values.containsKey("runtime")?Path.of(values.get("runtime")).toAbsolutePath().normalize():null;}
     }
     static int run(String[] args, PrintStream out, PrintStream err) { return run(args,out,err,()->{}); }
     static int run(String[] args, PrintStream out, PrintStream err, Runnable externalCheck) {
@@ -33,6 +34,7 @@ final class RepeatToolsCli {
         Path directory = null; boolean owned = false;
         RepeatBundle.Limits capacity = new RepeatBundle.Limits(4194304,64);
         try {
+            if(args.length==2&&args[0].equals("--admit-runtime-options-file"))return RepeatAdmissionCli.run(Path.of(args[1]),out,err,externalCheck);
             if(args.length==2&&args[0].equals("--export-runtime-setup")){
                 RepeatSetup.export(Path.of(args[1]),externalCheck);emit(out,"RepeatMasker payload setup exported: "+Path.of(args[1]).toAbsolutePath().normalize());
                 emit(err,"PAYLOAD SETUP ONLY: SEARCH NOT ADMITTED. Read the exported README.md and SHA256SUMS before explicit permitted setup;no installation or download occurred.");return 0;
@@ -46,11 +48,12 @@ final class RepeatToolsCli {
                         throw new IOException("Verification options require exactly one nonblank directory string");
                     target = Path.of(value);
                 } else target = Path.of(args[1]);
-                var verified = RepeatBundle.verify(target,externalCheck);
+                boolean original=RepeatOriginalBundle.TOOL.equals(RepeatBundle.object(target.toAbsolutePath().normalize().resolve("COMPLETED.json"),65536).get("tool"));
+                Object verified=original?RepeatOriginalBundle.verify(target,externalCheck):RepeatBundle.verify(target,externalCheck);
                 if (source != null && !RepeatInputs.hash(source,1048576,externalCheck).equals(AdmixtureInputs.digest(sourceBytes)))
                     throw new IOException("Verification options file changed during read-only validation");
-                emit(out,"Verified native repeat bundle: "+RepeatJson.json(verified));
-                emit(err,"NATIVE SCOPE: verification checks bundle integrity,not authenticity,original-search completion or biological absence."); return 0;
+                emit(out,"Verified "+(original?"original":"native")+" repeat bundle: "+RepeatJson.json(verified));
+                emit(err,original?"ORIGINAL EVIDENCE SCOPE: retained complete outputs,commands,zero exits,source copies and recorded before/after host bindings were rechecked. No original program/probe ran;this does not admit the current host or certify authenticity/biological absence.":"NATIVE SCOPE: verification checks bundle integrity,not authenticity,original-search completion or biological absence."); return 0;
             }
             Options options = options(args); directory = options.output();
             if (directory.getParent() == null || !directory.getParent().toRealPath().equals(directory.getParent()))
@@ -71,11 +74,17 @@ final class RepeatToolsCli {
                     capacity = new RepeatBundle.Limits(requested.limits().workspaceBytes(),requested.limits().fileCount());
                     writeRequests(directory,options,recipeRaw,capacity,check);
                     session.put("operation",requested.operation()); session.put("recipe_sha256",requested.recipeSha256()); session.put("requested_limits",requested.limits());
+                    if(requested.operation()!=RepeatRecipe.Operation.SEARCH&&options.runtime()!=null)throw new IOException("--runtime applies only to original SEARCH");
                     component = component(requested,directory,capacity,check); session.put("component_limits",component.limits());
                     session.put("capacity_policy","Complete bundle budget includes root metadata,preparation and native outputs;component budget subtracts existing root bytes/members and reserves256KiB/eight members for final metadata and retained diagnostics.");
                     prepared = RepeatInputs.prepare(component,directory.resolve("prepared"),check); warnings.addAll(prepared.warnings());
-                    if (requested.operation() == RepeatRecipe.Operation.SEARCH)
-                        throw new RepeatRecipe.UnavailableCapability("Original RepeatMasker scientific runtime/resource/cache admission is unfinished;payload setup alone does not admit SEARCH and this analysis was not run");
+                    if(requested.operation()==RepeatRecipe.Operation.SEARCH){
+                        if(options.runtime()==null)throw new RepeatRecipe.UnavailableCapability("Original SEARCH requires an admitted --runtime home;payload setup alone is insufficient and no original analysis was run");
+                        var original=RepeatSearch.execute(prepared,options.runtime(),directory,capacity,check);
+                        prepared=original.input();session.put("tool",RepeatOriginalBundle.TOOL);session.put("original_component_limits",prepared.spec().limits());
+                        result.putAll(RepeatOriginalBundle.result(requested,original));
+                        warnings.add("ORIGINAL SEARCH: both independently supervised original stages,complete raw query census,full annotation/mask audit and matching before/after admitted host identity passed. Valid no-hit masks/tables remain absent. No biological absence or whole-paper equivalence is certified. Verification retains the exact original inputs and admitted runtime references.");
+                    }else{
                     result.put("operation",requested.operation()); result.put("scope",RepeatBundle.scope(requested.operation()));
                     result.put("completion_flags",RepeatBundle.flags(requested.operation()));
                     result.put("assembly",requested.assembly()); result.put("query_records",prepared.query().staged().sequences().size());
@@ -97,10 +106,11 @@ final class RepeatToolsCli {
                         case CHECK -> warnings.add("INPUT CHECK ONLY: complete structure and declared computational joins were checked;no mask/search result is produced or certified.");
                         case SEARCH -> throw new AssertionError("Original search cannot reach native execution");
                     }
+                    }
                     prepared.verify(check); options.verify(); requested.verify();
                     RepeatBundle.write(directory,"results.json",RepeatBundle.json(result),capacity,RepeatBundle.FAILURE_RESERVE,5,check);
-                    session.put("analysis_status","COMPLETED_NATIVE");
-                } catch (RepeatRecipe.UnavailableCapability unavailable) {
+                    session.put("analysis_status",requested.operation()==RepeatRecipe.Operation.SEARCH?"COMPLETED_ORIGINAL":"COMPLETED_NATIVE");
+                } catch (RepeatRecipe.UnavailableCapability|RepeatRuntime.Unavailable|RepeatPayload.Unavailable|RepeatProcess.UnavailableDependency unavailable) {
                     code = 3; session.put("analysis_status","SKIP3_UNAVAILABLE"); session.put("error",unavailable.toString());
                     warnings.add(0,"SKIP3 ANALYSIS SKIPPED: "+unavailable.getMessage());
                 } catch (Exception failure) {
@@ -114,15 +124,17 @@ final class RepeatToolsCli {
                 RepeatBundle.write(directory,"WARNINGS.md",("# Repeat "+(code == 0?"NATIVE WARNINGS REQUIRE REVIEW":code == 3?"SKIP3 ANALYSIS SKIPPED":"FAIL2 ANALYSIS FAILED")+"\n\n"+String.join("\n\n",warnings)+"\n\n"+RECOVERY+"\n").getBytes(StandardCharsets.UTF_8),capacity,RepeatBundle.FAILURE_RESERVE,4,diagnostics);
                 RepeatBundle.write(directory,"session.json",RepeatBundle.json(session),capacity,RepeatBundle.FAILURE_RESERVE,3,diagnostics);
                 var status = new LinkedHashMap<String,Object>(); status.put("status",session.get("analysis_status")); status.put("exit_code",code); status.put("requires_completion_marker",true);
-                if (code == 0) status.put("completion_flags",RepeatBundle.flags(requested.operation()));
+                if (code == 0) status.put("completion_flags",requested.operation()==RepeatRecipe.Operation.SEARCH?RepeatSearch.flags():RepeatBundle.flags(requested.operation()));
                 RepeatBundle.write(directory,"analysis-status.json",RepeatBundle.json(status),capacity,RepeatBundle.FAILURE_RESERVE,2,diagnostics);
                 if (code == 0) {
                     prepared.verify(check); options.verify(); requested.verify();
-                    RepeatBundle.complete(directory,requested.operation(),capacity,check);
+                    if(requested.operation()==RepeatRecipe.Operation.SEARCH)RepeatOriginalBundle.complete(directory,capacity,check);else RepeatBundle.complete(directory,requested.operation(),capacity,check);
                 }
                 emit(err,(code == 0?"NATIVE WARNINGS: ":code == 3?"SKIP3 ANALYSIS SKIPPED: ":"FAIL2 ANALYSIS FAILED: ")+directory.resolve("WARNINGS.md"));
                 emit(out,"Repeat "+session.get("analysis_status")+": "+directory); return code;
             }
+        } catch (RepeatRuntime.Unavailable|RepeatPayload.Unavailable|RepeatProcess.UnavailableDependency missing) {
+            emit(err,"Repeat SKIP3: "+missing+"\n"+RECOVERY);return 3;
         } catch (Exception failure) {
             emit(err,"Repeat FAIL2: "+failure+"\n"+RECOVERY);
             if (owned && directory != null && Files.isDirectory(directory,LinkOption.NOFOLLOW_LINKS)) {
@@ -166,14 +178,14 @@ final class RepeatToolsCli {
         if (args.length == 2 && args[0].equals("--options-file")) {
             source = Path.of(args[1]).toAbsolutePath().normalize(); raw = AdmixtureInputs.raw(source,1048576); Map<?,?> document = RepeatBundle.object(raw);
             if (!AdmixtureInputs.digest(raw).equals(RepeatInputs.hash(source,1048576,()->{}))) throw new IOException("Options file changed while parsing");
-            if (!document.keySet().equals(Set.of("recipe","out"))) throw new IOException("Options file requires exactly string recipe/out fields;no recursive or arbitrary flags");
+            if (!document.keySet().containsAll(Set.of("recipe","out"))||!Set.of("recipe","out","runtime").containsAll(document.keySet())) throw new IOException("Options file requires string recipe/out and optional SEARCH runtime fields;no recursive or arbitrary flags");
             for (var entry : document.entrySet()) { if (!(entry.getValue() instanceof String text) || text.isBlank()) throw new IOException("Options values must be nonblank strings"); values.put(entry.getKey().toString(),text); }
         } else {
             for (int i=0;i<args.length;i+=2) {
-                if (i+1 >= args.length || !Set.of("--recipe","--out").contains(args[i]) || args[i+1].isBlank() || values.putIfAbsent(args[i].substring(2),args[i+1]) != null)
-                    throw new IOException("Require unique --recipe FILE --out NEW_DIRECTORY,or --options-file FILE");
+                if (i+1 >= args.length || !Set.of("--recipe","--out","--runtime").contains(args[i]) || args[i+1].isBlank() || values.putIfAbsent(args[i].substring(2),args[i+1]) != null)
+                    throw new IOException("Require unique --recipe FILE --out NEW_DIRECTORY [--runtime ADMITTED_HOME],or --options-file FILE");
             }
-            if (!values.keySet().equals(Set.of("recipe","out"))) throw new IOException("Require --recipe and --out");
+            if (!values.keySet().containsAll(Set.of("recipe","out"))) throw new IOException("Require --recipe and --out");
         }
         if (RepeatBundle.json(values).length > 1048576) throw new IOException("Repeat CLI options exceed complete one-MiB capacity");
         return new Options(Path.of(values.get("recipe")).toAbsolutePath().normalize(),Path.of(values.get("out")).toAbsolutePath().normalize(),source,raw,values);
@@ -199,9 +211,11 @@ final class RepeatToolsCli {
         repeat-tools --verify COMPLETED_DIRECTORY
         repeat-tools --verify-options-file UTF8_VERIFY_OPTIONS.json
         repeat-tools --export-runtime-setup NEW_DIRECTORY
+        repeat-tools --admit-runtime-options-file UTF8_ADMISSION_OPTIONS.json
+        repeat-tools --recipe SEARCH_RECIPE.json --runtime ADMITTED_HOME --out NEW_DIRECTORY
         Native CHECK,MASK,AUDIT from explicit OUT/UCSC annotations and plain/gzip
         FASTA. Native operations need Java17+ and no upstream installation.
-        Options JSON contains exactly recipe/out string paths;paths resolve from
+        Options JSON contains recipe/out and optional SEARCH runtime string paths;paths resolve from
         the working directory. Recipe data paths resolve inside resource_root.
         Verification options contain exactly one directory string;use this
         UTF-8 file when a launcher cannot pass a Unicode --verify path intact.
@@ -213,7 +227,13 @@ final class RepeatToolsCli {
         SHA256 checks integrity,not authenticity. Read WARNINGS.md on every run.
         Complete workspace/member budgets include root metadata and components;
         reserve256KiB/eight members for finalization and retained diagnostics.
-        Original SEARCH remains unavailable in this candidate: SKIP3.
+        Original SEARCH requires an admitted exact Linux x86_64 runtime and
+        separate original completion/whole-output verification. Admission JSON
+        contains exactly profile,payload_home,python,out (python:null for4.2.6).
+        SEARCH budgets must cover both host captures,protected resources and
+        final metadata;normally review at least100000 file_count members.
+        Read-only original verification retains exact recipe/input/runtime paths;
+        it does not run original programs or admit the current host.
         Setup export writes pinned private-payload helpers and recovery guidance;
         it performs no installation/download and does not admit original SEARCH.
         Invalid data,integrity,execution,capacity or interruption: FAIL2.

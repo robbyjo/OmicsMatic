@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "operation": "SEARCH",
+  "mode": "SPECIES",
+  "profile": "linux-x86_64-repeatmasker-4.1.5-dfam3.7-rmblast",
+  "resource_root": ".",
+  "assembly": "synthetic-example-v1",
+  "input_review": {
+    "organism": "Fixed synthetic runtime health DNA;not study data",
+    "genome_provenance": "Byte-pinned synthetic query from independently audited original controls",
+    "repeat_library_provenance": "Pinned synthetic custom library or fixed Dfam3.7 resources according to this case",
+    "annotation_provenance": "Complete pinned original ProcessRepeats output;independent source-parser comparison retained in development evidence",
+    "coordinate_policy": "Original OUT one-based inclusive bounds;native zero-based half-open conversion",
+    "paper_settings_status": "Fixed computational runtime health;not whole-paper or biological calibration"
+  },
+  "query": {
+    "path": "query.fa",
+    "encoding": "PLAIN_UTF8"
+  },
+  "staging_policy": "EXACT_SOURCE",
+  "mask": "SOFT",
+  "limits": {
+    "preset": "bounded-repeat-v1",
+    "input_bytes": 1048576,
+    "fasta_characters": 1048576,
+    "fasta_residues": 1000000,
+    "fasta_per_sequence": 1000000,
+    "fasta_sequences": 100,
+    "fasta_line_characters": 4096,
+    "fasta_header_characters": 2048,
+    "fasta_retained_bytes": 262144,
+    "annotation_characters": 1048576,
+    "annotation_rows": 1000,
+    "annotation_line_characters": 1024,
+    "annotation_retained_bytes": 4194304,
+    "index_retained_bytes": 2097152,
+    "retained_bytes": 16777216,
+    "workspace_bytes": 17179869184,
+    "file_count": 8192
+  },
+  "species": "Mus musculus",
+  "parameters": {
+    "speed": "DEFAULT",
+    "parallel_batches": 1,
+    "rna": "INCLUDE",
+    "low_complexity": "INCLUDE"
+  },
+  "process_limits": {
+    "preset": "bounded-process-v1",
+    "wall_millis": 240000,
+    "address_space_bytes": 8589934592,
+    "cpu_seconds": 300,
+    "file_bytes": 1073741824,
+    "open_files": 512,
+    "workspace_bytes": 17179869184,
+    "file_count": 8192,
+    "processes": 64,
+    "threads": 128,
+    "sampled_rss_bytes": 2147483648,
+    "monitor_millis": 50
+  }
+}

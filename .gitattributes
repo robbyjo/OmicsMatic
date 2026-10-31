@@ -152,3 +152,9 @@ src/test/resources/fuma-known-associations/reference.tsv -text whitespace=cr-at-
 
 # Frozen PRS-CS original reference captures are covered by their local SHA256SUMS.
 src/test/resources/org/jlinalg/genetics/prscs-reference/** -text whitespace=cr-at-eol
+
+# Fixed original RepeatMasker scientific controls retain their pinned source bytes.
+src/main/resources/org/jlinalg/omics/repeat-health/** -text whitespace=cr-at-eol
+
+# Original RepeatMasker .out table padding belongs to the pinned control bytes.
+src/main/resources/org/jlinalg/omics/repeat-health/**/expected.out -text whitespace=-blank-at-eol,cr-at-eol
