@@ -24,7 +24,7 @@ public final class RsemCounts {
      * @param totalGroups exact N0+N1+N2
      * @param uniqueGeneGroups original nUnique count
      * @param multipleGeneGroups original nMulti count
-     * @param multipleIsoformGroups original nIsoMulti subset of nUnique
+     * @param multipleIsoformGroups original nIsoMulti: groups with more than one alignment, including cross-gene groups
      * @param alignmentHits original complete hit count
      * @param readType original model/read type 0/1/2/3
      * @param histogram complete positive finite bins in original increasing order
@@ -73,7 +73,7 @@ public final class RsemCounts {
             long hits = number(input, third[0], maxHits); int type = (int) input.integer(third[1], "original read type", 0, 3);
             String[] zero = fields(input, "zero-mapping bucket", 2);
             if (!zero[0].equals("0") || number(input, zero[1], maxReadGroups) != n0) throw input.error("Zero histogram bucket differs from N0");
-            List<Bin> bins = new ArrayList<>(); long previous = 0, groups = 0, weightedHits = 0; boolean terminal = false;
+            List<Bin> bins = new ArrayList<>(); long previous = 0, groups = 0, weightedHits = 0, multipleAlignmentGroups = 0; boolean terminal = false;
             String line;
             while ((line = input.line()) != null) {
                 String[] row = RsemText.words(line);
@@ -85,14 +85,17 @@ public final class RsemCounts {
                 }
                 long mappings = input.integer(row[0], "mapping multiplicity", 1, maxHits);
                 if (mappings <= previous || count == 0 || bins.size() >= maxBins) throw input.error("Duplicate, unordered, empty or over-capacity mapping bin");
-                try {groups = Math.addExact(groups, count); weightedHits = Math.addExact(weightedHits, Math.multiplyExact(mappings, count));}
+                try {
+                    groups = Math.addExact(groups, count); weightedHits = Math.addExact(weightedHits, Math.multiplyExact(mappings, count));
+                    if (mappings > 1) multipleAlignmentGroups = Math.addExact(multipleAlignmentGroups, count);
+                }
                 catch (ArithmeticException e) {throw input.error("Exact mapping histogram count overflow");}
                 bins.add(new Bin(mappings, count)); previous = mappings;
             }
             if (!terminal) throw input.error("Missing terminal Inf histogram bucket");
             try {
                 if (Math.addExact(Math.addExact(n0, n1), n2) != total || Math.addExact(unique, multi) != n1
-                        || iso > unique || groups != n1 || weightedHits != hits) throw input.error("Original alignment/group totals disagree");
+                        || iso != multipleAlignmentGroups || multi > iso || groups != n1 || weightedHits != hits) throw input.error("Original alignment/group totals disagree");
             } catch (ArithmeticException e) {throw input.error("Exact complete count overflow");}
             return new Counts(n0, n1, n2, total, unique, multi, iso, hits, type, bins, input.evidence());
         }

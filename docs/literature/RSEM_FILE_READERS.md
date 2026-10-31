@@ -1,6 +1,8 @@
 # RSEM native file readers
 
-The current source adds Java readers for ordinary RSEM reference, count, model and theta files. These are library APIs. **The public RSEM quantification adapter, runtime installer and complete result-table audit remain unfinished. RSEM still counts as missing in the toolbox inventory.** See [RSEM development status](RSEM_DEVELOPMENT.md) for the separate native abundance methods and original-tool development protocols.
+The current source adds Java readers for ordinary RSEM reference, count, model and theta files. These are library APIs. **The public RSEM quantification adapter and runtime installer remain unfinished. RSEM still counts as missing in the toolbox inventory.** The separate [native result-pair audit](RSEM_RESULT_AUDIT.md) now checks complete ordinary gene/isoform tables. See [RSEM development status](RSEM_DEVELOPMENT.md) for the native abundance methods and original-tool development protocols.
+
+**Count-admission correction:** original `nIsoMulti` counts every group with more than one alignment, including cross-gene mappings and duplicate hits. It is not a subset of uniquely mapped genes. The earlier file-reader validation is historical and superseded for current count admission; use the [source-verified alignment/count milestone](RSEM_ALIGNMENT_ADMISSION.md) and its current validation record.
 
 `RsemReference` reads complete `.ti`, `.seq` and `.grp` files, plus `.chrlist` for genome-derived references. It checks transcript order, exact identifiers, gene groups, exon coordinates, sequence lengths, poly-A tails and mask words. Commas, transcript versions and Unicode names retain their original meaning. Allele-specific reference type 2 is explicitly unsupported. Other prepared-reference files and aligner indexes are outside this reader's scope.
 
@@ -40,7 +42,7 @@ Select the release actually used. With no alignable groups, original 1.3.2/1.3.3
 
 ## Validation and provenance
 
-There are 55 focused tests: the prior 22 abundance tests, 22 reference/model/count-admission tests and 11 printed-number tests. All 55 passed against the exact built JAR on Windows Java 21, Windows Java 25 and Linux Java 21, with no skips. Strict Java 17 compilation and private Javadoc checks passed. Every predecessor JAR member retained its bytes; this tranche adds the reader classes. Each JVM also runs the existing 668 original-function abundance vectors.
+The historical file-reader milestone passed 55 focused tests: 22 abundance tests, 22 reference/model/count-admission tests and 11 printed-number tests. The later result-audit milestone expanded that suite to 89. The current [alignment/count milestone](RSEM_ALIGNMENT_ADMISSION.md) passes all 111 focused tests against the exact built JAR on Windows Java 21, Windows Java 25 and Linux Java 21, with zero skips, strict Java 17 compilation and private Javadoc checks. Each JVM also runs the existing 668 original-function abundance vectors. The current count correction and its fresh source evidence supersede the earlier count-admission invariant; historical validation records retain their original sources and results.
 
 The checked-in `src/test/resources/org/jlinalg/sequence/rsem-reference/reference-model-fixtures.zip` contains 305 original-tool output files and its own `SHA256SUMS`. Tests verify every checksum before use. The synthetic fixtures cover 15 references, 40 learned models with both theta vectors, and two explicit no-alignment empty states across original releases 1.2.28, 1.3.0, 1.3.1, 1.3.2 and 1.3.3. They include genome/GTF names, comma identifiers, a singleton exon, strand, poly-A masks, all four model types and the single-end optional-length branches. These are method checks, not biological or whole-paper reproduction.
 
