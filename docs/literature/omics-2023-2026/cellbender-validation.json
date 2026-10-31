@@ -1,0 +1,129 @@
+{
+  "status": "validated-development-original-CPU-subset",
+  "implementation_status": "upstream-adapter-validated",
+  "project_adapter_available": true,
+  "canonical_adapter_available": false,
+  "development_adapter_cli": "cellbender-tools",
+  "candidate": "build/literature-review/cellbender-candidate-3/jlinalg-0.3.7.jar",
+  "candidate_sha256": "365efaeac83a212679815e83668852d545465b1649392e26f1edfe9015b02d5e",
+  "focused_tests": 407,
+  "focused_suites": 33,
+  "standalone_tests_per_JVM": 407,
+  "standalone_JVMs": [
+    "Java21",
+    "Java25"
+  ],
+  "test_failures": 0,
+  "test_errors": 0,
+  "test_skips": 0,
+  "strict_java17": true,
+  "javadoc_and_executable_packaging_passed": true,
+  "full_current_ROOT_Java_gate": false,
+  "runtime": "originalCellBender0.4.0/PyTorch2.8.0+cpu/Python3.12.3/Ubuntu24.04x86_64",
+  "runtime_home": "/opt/jlinalg-cellbender-0.4.0-cpu-2",
+  "runtime_profile": "cellbender-0.4.0-torch2.8.0-cpu-linux-x86_64-cpython3.12",
+  "runtime_lock_sha256": "7bd1bf18e3b1b87bc24030b3ee485bb2327ad050c65ddd292dbb470551f69d7d",
+  "runtime_marker_sha256": "9c113ba3c9be08c2df1921de20e39609059f0dfea28c1eb01357ffb35c05d3f3",
+  "pinned_dependency_wheels": 113,
+  "private_runtime_files": 30471,
+  "base_runtime_files": 652,
+  "source_commit": "18263f4fe744fe5821962e2ededa09a732e3993c",
+  "license": "BSD-3-Clause",
+  "validated_models": [
+    "full",
+    "ambient",
+    "swapping"
+  ],
+  "estimator": "MCKP",
+  "scientific_workflows": 3,
+  "original_matched_HDF5_datasets": 64,
+  "exact_original_metric_and_cell_barcode_CSV": true,
+  "public_verifier_workflows": 1,
+  "packaged_CLI_controls": 15,
+  "cross_host_skip_controls": 5,
+  "installer_controls": 8,
+  "changed_home_refusals": 2,
+  "retained_failed_adapter_attempts": 2,
+  "retained_failed_upstream_format_attempts": 1,
+  "native_count_audit": {
+    "all_raw": 178754,
+    "called": 100,
+    "called_corrected": 123071,
+    "called_raw": 132542,
+    "all_corrected": 123071,
+    "analyzed": 400
+  },
+  "extra_model_counts": [
+    {
+      "name": "ambient-untyped-Unicode-duplicates-zeros",
+      "totals": {
+        "called_raw": 132542,
+        "all_corrected": 116606,
+        "analyzed": 400,
+        "all_raw": 178754,
+        "called": 100,
+        "called_corrected": 116606
+      }
+    },
+    {
+      "name": "swapping-auto-priors-FPR0",
+      "totals": {
+        "analyzed": 155,
+        "all_corrected": 131665,
+        "called_raw": 132542,
+        "called_corrected": 131665,
+        "called": 100,
+        "all_raw": 178754
+      }
+    }
+  ],
+  "papers": 250,
+  "tools": 379,
+  "observations": 2428,
+  "reviewed_roles": 658,
+  "supporting_pointers": 191,
+  "reviewed_cellbender_roles": 13,
+  "source_support_pointers": 4,
+  "native_subsets": 12,
+  "upstream_subsets": 37,
+  "missing_integrations": 270,
+  "cellranger": "excluded-by-user;no-execution",
+  "limitations": [
+    "Synthetic tests only;review model convergence,empty droplets,cell calls and removed counts before downstream work.",
+    "CPU-only;CUDA requests skip3 without CPU fallback.",
+    "MTX counts only;no H5AD layer selection,other estimators,read quantification,checkpoint resume or automatic retuning.",
+    "No historical-release,GPU,full-paper or real-data-accuracy equivalence."
+  ],
+  "dependency_policy": "Install/download only where permitted in a new private environment;missing,unsupported,changed or forbidden software skips3 with named cause and required recovery. Analysis never installs or resumes. Failures2 quarantine partials;existing outputs preserved.",
+  "public_example": "examples/cellbender-tools/options.json",
+  "portable_verifier": "tools/literature/verify_cellbender.py",
+  "proof_sha256": {
+    "build/literature-review/cellbender-runtime/adapter-focused-3/observed.json": "1b5dcbb74b5f8bdcb1ee89057b2c7b2fb9b3d0d46edea4cf6a9e39f5f66ad09e",
+    "build/literature-review/cellbender-runtime/packaged-adapter-junit-3/verification.json": "b71fec66632854e0a01899bf9c6020eb1123bbbdfa5d8330c09e3939b2b7985d",
+    "build/literature-review/cellbender-runtime/model-variants-4/observed.json": "6350a0e02265603cd5a84f9f9a67d6576e9c0281956c1cdbcf91c5e7f0aa9c52",
+    "build/literature-review/cellbender-runtime/adapter-controls-5/observed.json": "dd2867d0178d1df8a91c15458d46811226237e21e52cc53076d7d5aa9f479805",
+    "build/literature-review/cellbender-runtime/windows-controls-2/observed.json": "6a9fb8b36138ebd0d49f57d99bde72a51a9cde067c1c3b9d57565895e5ee6eed",
+    "build/literature-review/cellbender-runtime/changed-home-control-1/observed.json": "04b2438dcb5e1fc76a6028f9f084912c5ac3599b546d60b4bf85ce762599c66b",
+    "build/literature-review/cellbender-runtime/final-reference-comparison-1/observed.json": "35cc0fd5b667afeb25c6dc2d2f9acf98be60a104d7a4ae9b72e919e84aa29f65",
+    "build/literature-review/cellbender-runtime/public-verifier-1/verification.json": "50fe2883229c9942ba68bb9812d71f27ecbeb7c9acecaaafc976a758ab62410e",
+    "build/literature-review/cellbender-runtime/installer-controls-1/observed.json": "65b4c026ca7ee6572bcfdda80f406905a7387fe12cc89dadb07c0f67e133b94c",
+    "build/literature-review/cellbender-runtime/managed-install-1/verification.json": "31af1cdaa5947a0de2f8e6fcd32ffc09cc64cad1d7380fce7a88ad0b45679f31",
+    "build/literature-review/cellbender-runtime/adapter-live-1/observed.json": "d6c9e36c533388d41a159f28d34c73b5c5485aeba2ada88ce035d610a2beead1",
+    "build/literature-review/cellbender-runtime/adapter-live-2/observed.json": "d5f4230d85e9f00cb53916f4936df0df42ab1cb40bf2f69f2e8ef4d21a27eb34",
+    "build/literature-review/cellbender-runtime/adapter-comparison-3/observed.json": "773dcc5cea324ccc0f354cfc3ece10074e5da3e40d53f70a3dfa09a9d4f7b16d",
+    "build/literature-review/cellbender-runtime/model-variants-3/observed.json": "dec3b1f1dfeaf7a02e9e94eade7e4c39ea5419e9404c5b9a3e5e5552166e536d",
+    "build/literature-review/cellbender-runtime/source-role-applied-1/verification.json": "356752cbfc2988d5694828cfba13ec47b4839fa2c98b64150d24225f0f0a5438",
+    "build/literature-review/cellbender-runtime/format-comparison-2/observed.json": "b1674592f083edd223866ed83e7c36897c110bb3340cd6bd6f9e75d8d4d05b58",
+    "build/literature-review/cellbender-runtime/csr-alias-probe-1/observed.json": "a66e38c2c4ff8db963a7ebb2b5615c210c1b59c4c0e26402166e1b0c60ea8b54",
+    "build/literature-review/cellbender-runtime/runtime-lock-intake-3/observed.json": "665c6cdaaab1b4a876ed1696e2d87e93d9b5baa23a088683641497d4cfbf1b4e"
+  },
+  "presentation_validation": "passed-browser;current-source-website-proof-recorded-separately",
+  "goal_status": "active;270integrations-and-paper-wide-semantic-review-remain",
+  "browser_validation": {
+    "check_groups": 177,
+    "screenshots": 74,
+    "new_panels_visually_reviewed": 3,
+    "proof_path": "build/literature-review/cellbender-runtime/adapter-ui-3/ui-validation.json",
+    "proof_sha256": "f6da0d15034d02437f0fbbb93c8be881b6d1949277cc2527e776dea51d32d41f"
+  }
+}

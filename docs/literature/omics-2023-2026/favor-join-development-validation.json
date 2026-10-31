@@ -1,0 +1,608 @@
+{
+  "schema_version": 1,
+  "status": "scoped-offline-FAVOR-adapter-repository-preparation-and-public-example-validated",
+  "FAVOR_implementation_status": "upstream-adapter-validated",
+  "new_unique_tool_counted": true,
+  "source_API": "org.jlinalg.genetics.FavorCsvJoin",
+  "source_sha256": {
+    "src/main/java/org/jlinalg/genetics/FavorCsvJoin.java": "83b96cf099c9acb8aec77686fee34781f78c9cec03a6d515a56e78e5055b099c",
+    "src/test/java/org/jlinalg/genetics/FavorCsvJoinTest.java": "bbfaba194130f7b638ff7a4dbd5814fbf43ec747a32774fbffc6b2e1733bffed",
+    "docs/literature/omics-2023-2026/FAVOR_ANNOTATOR_DEVELOPMENT.md": "9c4ea4bdb76725e8d6944393d11988b6e5247391797c57074047e534f3530055",
+    "src/main/java/org/jlinalg/genetics/FavorCsvReader.java": "171efb1b2e11212360b54520fe1c2a6f644ff6440f293da1023696c7a2f4e35a",
+    "src/test/java/org/jlinalg/genetics/FavorCsvReaderTest.java": "76381169e49a19883f1e6c9f96f8329786556b0744be09a761136d6d2e206d6e",
+    "src/main/java/org/jlinalg/cli/FavorXsvSupervisor.java": "74afae7672bcbffe76445c4fc6c1f76f72854626b35c189403b6f44f7a0503fc",
+    "src/test/java/org/jlinalg/cli/FavorXsvSupervisorTest.java": "be3ac905f20314c2bf45e3ea3545a700f591396dd0042b60bde226beb59e3702",
+    "src/main/java/org/jlinalg/genetics/FavorVcfReader.java": "95d67cfc3d7b7d5f4ad24138ed1de180693b67c97adc5dd3c4d10048089d11f3",
+    "src/test/java/org/jlinalg/genetics/FavorVcfReaderTest.java": "1895ea0ff736e255bcd7002b185e5047159046b0affd6e85ec8130afabcc7ed4",
+    "src/main/java/org/jlinalg/genetics/FavorVcfAudit.java": "52930dfd54d30c4988f5d7ee76e53b627a8c5bdc84a5cabde67455e791e6ab22",
+    "src/main/java/org/jlinalg/cli/FavorGdsAudit.java": "dbdc638bd880e924db92d1e98f61bf33875c8806ed6c726a51119735a9df95ea",
+    "src/test/java/org/jlinalg/genetics/FavorVcfAuditTest.java": "4c972d8293ac723f4f51776cf86e1a3f6bef26cd88166bdc8f0b9e6b7af8f580",
+    "src/test/java/org/jlinalg/cli/FavorGdsAuditTest.java": "4f2c1db1683bf05de14d1f3f1b8add547148ddf94bcf6835c7c907a019a740b4",
+    "src/main/resources/org/jlinalg/cli/favor_gds_audit.R": "fda4f65a12c459f3d4014c0b3f8f3707d637149f184e0579952a27ff2cb9fe06",
+    "src/main/java/org/jlinalg/cli/FavorAnnotationAudit.java": "c53f825b35c2a578a34bd1f1da37a167687271ddc49f6bb82df2914b8c7554c9",
+    "src/test/java/org/jlinalg/cli/FavorAnnotationAuditTest.java": "1c75bac5d2f904e7699be066d693b29fa5af57270c1ba03d040f192823e1048e",
+    "src/main/resources/org/jlinalg/cli/favor_annotation_audit.R": "dd78f68d3a151b0eece82aade653b300fdd13b3a6029e0fd234595c3f0969c16",
+    "src/main/java/org/jlinalg/cli/FavorXsvLedger.java": "d9443ce017a0f4be77b2aa77d68507849b710222160a54f2efbb834b98eaf45d",
+    "src/test/java/org/jlinalg/cli/FavorXsvLedgerTest.java": "855ca151d9b4669ab19c343f373581ce43b818b8e00f22f14807c1cbdd0b8cd7",
+    "src/main/java/org/jlinalg/cli/FavorRuntimeFingerprint.java": "72966d1942c839ec81840a7df8581891e9e394b8b0acf9e3704ece7f5a731d82",
+    "src/test/java/org/jlinalg/cli/FavorRuntimeFingerprintTest.java": "8ae04d233aa8709d5278ca011e11f4aa635386217898d02ced5ff43f113afbc7",
+    "src/main/resources/org/jlinalg/omics/favor-runtime-policy.json": "85e8b10b2dbba155ce430a9f23418db1f474cada7b39b2c15ee68fa1f28a5c99",
+    "src/main/java/org/jlinalg/cli/FavorAnnotatorWorkflow.java": "766d016af7866f5a67dc42d9721c00b52bf3f4add2d0a5151345431078129d4f",
+    "src/test/java/org/jlinalg/cli/FavorAnnotatorWorkflowTest.java": "92222ebdb56761f8cd81aa5c0ebcb273dd2e6c593194697acae268781d3cb14f",
+    "src/main/resources/org/jlinalg/omics/favor-health/chr22_1.csv": "1b8224f19588153e934f6af476e7112ca1046ebb1bb1dec47d171ffc46402a32",
+    "src/main/resources/org/jlinalg/omics/favor-health/chr22_2.csv": "c156d9c1033b366f1519472f492266dac13e1b4796387bf1f15ca003cf223860",
+    "src/main/resources/org/jlinalg/omics/favor-health/input.vcf": "953f60c154b228188fe48f03b47dafd5da7a29a42ffc982ab8aee1ee70d7e339",
+    "src/main/resources/org/jlinalg/omics/favor-health/provenance.json": "fd72ef0127c96d9e49bdc2e4e8fc9b2c4672f3f2433d49d5a9625045034846d7",
+    "src/main/resources/org/jlinalg/omics/favor-health/splits.csv": "d715975669bcb20d0ee33afdde710bf6ce18cdecd07d1fb7703c8d90d8922e10",
+    "src/main/java/org/jlinalg/cli/FavorProcessGuard.java": "3c24f1d656709ba366344209d3400327551853de4d15674a22a77f651a852f58",
+    "src/main/java/org/jlinalg/cli/FavorAnnotatorCli.java": "0df77adc493612de8491409579d3ba42e325aa8096785e448515b3db9ecce06c",
+    "src/main/java/org/jlinalg/cli/JLinAlgCli.java": "687a3ba01f7332b337ae5de77d75daed57726ce54fc1d5b670758e4baba6b549",
+    "src/test/java/org/jlinalg/cli/FavorAnnotatorCliTest.java": "3370636e4ef366b026158cf7c3b6574a14bd61b7383be2fbcf4500e793d5fbbb",
+    ".gitattributes": "7ac75d8ee443ca987f623640625346a093877421a140dd87d4da9164eeca4fb4",
+    "docs/literature/omics-2023-2026/FAVOR_WORKFLOW.md": "2163c02dcd34da1459f627d6226b930d91a2dfdd3cfecbacc466bed55778f3f4",
+    "docs/literature/omics-2023-2026/favor-role-coverage.json": "321db83359537fb4c0e82b35252fbb404bf86a11d920f937cf2d499a8498bbda",
+    "tools/literature/prepare_favor_runtime.py": "8d8f4b3deb59b130e7de6657786e5225e9073545e65feb560ab37f98d1077675",
+    "tools/literature/make_favor_example.py": "efd85562a7048a747fc0f8307c5c31fda1e9a0371e2183c36a26d04575f74335",
+    "tools/literature/test_prepare_favor_runtime.py": "0be142ddba78bf216985070c84926ff99098ee3dc700e56f7cba158157d9691c",
+    "tools/literature/test_make_favor_example.py": "eb952b43fc52a3481d43b7ebf11ebde34f4ee604c9638ff0ae1f5cd358eaaebc",
+    "tools/literature/favor-runtime/FavorRuntimeJavaProbe.java": "015c606451acf4bc2d600274f4bc90096ac8087ee8341f4e17be8e0b434bddbf",
+    "tools/literature/favor-runtime/pixi.lock": "7ceccfa505175f8b9e80968695f57801768da4a11d20aa46e893bb1ec050c461",
+    "tools/literature/favor-runtime/pixi.toml": "e329b787ad948d2ee443c56bcc722c460a02e30efce0c01108b53e51e58f5fc0",
+    "tools/literature/favor-runtime/probe.R": "c555cc587aac9e6ff52a79e87be569c745e6747a633ba6cc7f58a8b04b97599f",
+    "tools/literature/favor-runtime/runtime-policy.json": "85e8b10b2dbba155ce430a9f23418db1f474cada7b39b2c15ee68fa1f28a5c99",
+    "tools/literature/favor-runtime/upstream/COPYING": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986",
+    "tools/literature/favor-runtime/upstream/README.md": "177ed3c92230ac85c1a27838e203ebbd27c5de35c4f7ae7e56acbf2c45dbdc12",
+    "tools/literature/favor-runtime/upstream/source.json": "72d4c4f504c540fb89895d4af66b0512243b656f0dfb73d6dbd3a1a224c982fe",
+    "tools/literature/favor-runtime/upstream/Scripts/CSV/convertVCFtoGDS.r": "4d8801338f8047b55288678174bcfd595eed7f5facf9d3c1c6865f8c0989f0f6",
+    "tools/literature/favor-runtime/upstream/Scripts/CSV/FAVORannotatorv2aGDS.r": "d15c89e7aa3b5b7cbc5face73c1fd6c875e06eaed596a47cd4667ec325e3106e"
+  },
+  "typed_CLI": true,
+  "GDS_adapter": true,
+  "sealed_candidate_contains_new_API": false,
+  "tests_per_JVM_profile": 251,
+  "profiles": [
+    "Windows-Java21",
+    "Windows-Java25",
+    "Linux-Java21"
+  ],
+  "strict_Java17_compilation": true,
+  "javadoc_doclint": "all,-missing;Werror",
+  "fresh_original_protocols": 9,
+  "original_R_commands": 45,
+  "original_genotype_alleles_checked": 432,
+  "original_phase_values_checked": 216,
+  "original_stored_scalar_values_checked": 438,
+  "native_admitted_protocols_per_profile": 7,
+  "native_compared_source_rows_per_profile": 57,
+  "native_explicit_unsupported_refusals_per_profile": 2,
+  "native_raw_cells_and_ledger_bytes_identical_across_profiles": true,
+  "source_commit": "dbd6ffcc11b01beab32a2d46e09a0798fd335544",
+  "source_files_sha256": {
+    "Scripts/CSV/FAVORannotatorCSVEssentialDB.R": "e1dbfd56b6b44ad4657ca129e201c1950ba454e08de242f4da0edc07191b718f",
+    "Scripts/CSV/FAVORannotatorCSVFullDB.R": "b349c69d274cdec07f50661e9d62d4e4ea10b405adf1967f353426853bca60d6",
+    "Scripts/CSV/FAVORannotatorv2aGDS.r": "d15c89e7aa3b5b7cbc5face73c1fd6c875e06eaed596a47cd4667ec325e3106e",
+    "Scripts/CSV/config.R": "2d7a846b76104a9284e8246b53cd72bf1dabde24479975a1a8df9b732c955c9b",
+    "Scripts/CSV/convertVCFtoGDS.r": "4d8801338f8047b55288678174bcfd595eed7f5facf9d3c1c6865f8c0989f0f6",
+    "Scripts/UTL/FAVORaGDSToText.R": "e998e2693cab9757cbd5be641e79aa4614e2b9a9994de1a7e04764e0e3b82ddc",
+    "Scripts/UTL/FAVORannotatorAddIn.R": "b27a14159f97024193534a6c3f82e40b967da7c4148a590d95d36d75ee70bf9a",
+    "Scripts/Dockerize/install_packages.R": "028ddffb6173a3bcc66bb15257ee83d343d8c8df919fac936095a9861d344eb3",
+    "Docs/Tutorial/Demos/preprocessVCF.md": "03619b5481bdef0f5e8431ca0a5be902297e523d783869517ee636c25aaccc0b",
+    "Scripts/UTL/convertVCFtoNullGenotypeGDS.r": "7da84d148c69adcf3e4a06f248c78d8c2bbbad138bdb2d82b84b88ec2cb4fd67"
+  },
+  "source_Git_blob_hashes_verified": true,
+  "upstream_license": "GPLv3,explicit README declaration",
+  "upstream_README_sha256": "177ed3c92230ac85c1a27838e203ebbd27c5de35c4f7ae7e56acbf2c45dbdc12",
+  "runtime": {
+    "status": "private-runtime-loads-and-ran-original-annotation;full-admission-pending",
+    "prefix": "/opt/jlinalg-favor-annotator-reference-1",
+    "R_package_versions": [
+      "gdsfmt 1.42.0 /opt/jlinalg-favor-annotator-reference-1/.pixi/envs/default/lib/R/library/gdsfmt ",
+      "SeqArray 1.46.0 /opt/jlinalg-favor-annotator-reference-1/.pixi/envs/default/lib/R/library/SeqArray ",
+      "readr 2.2.0 /opt/jlinalg-favor-annotator-reference-1/.pixi/envs/default/lib/R/library/readr ",
+      "jsonlite 2.0.0 /opt/jlinalg-favor-annotator-reference-1/.pixi/envs/default/lib/R/library/jsonlite ",
+      "digest 0.6.39 /opt/jlinalg-favor-annotator-reference-1/.pixi/envs/default/lib/R/library/digest ",
+      "GenomeInfoDbData 1.2.13 /opt/jlinalg-favor-annotator-reference-1/.pixi/envs/default/lib/R/library/GenomeInfoDbData ",
+      "R 4.4.3 "
+    ],
+    "pixi_lock_sha256": "7ceccfa505175f8b9e80968695f57801768da4a11d20aa46e893bb1ec050c461",
+    "conda_packages_sha256": "a764d6118f0505da71b8b5fbd87557690d091a0583d59b902e9e58238efed86e",
+    "separate_data_dependency_sha256": "51a33c432e65261ef81a7c2039b17cbdf7a0b417376fdb7ada4d618566f7074e",
+    "scope": "PrivateR4.4.3/gdsfmt1.42/SeqArray1.46/readr2.2/xsv0.13 runtime. ReviewedGenomeInfoDbData postlink dependency and digest installed privately. OriginalR text export failure retained;complete adapter/admission not certified."
+  },
+  "retained_source_boundaries": [
+    {
+      "case": "Original FAVORaGDSToText.R export",
+      "observed": "Unmodified exporter exits1 on the tested runtime:stored data.frame/tibble metadata reports0rows while each original column contains8values. Originalnodes/scripts unchanged;scalar-column diagnostics do not repair them.",
+      "required_action": "Do not admit original text export. Declare an explicitly supported export/audit path and verify every genotype/phase/variant identity and stored scalar/type before analysis completion."
+    },
+    {
+      "case": "Single selected partition",
+      "observed": "Unmodified Rannotation can exit0 although nested xsv concatenation fails on an NA filename from the source2:1loop.",
+      "required_action": "Refuse this unsupported path and supervise every nested xsv process;do not infer success from R exit0."
+    },
+    {
+      "case": "DuplicateDB keys,shard gaps/overlaps,changed input/shard order",
+      "observed": "Original annotation may drop,multiply or reorder source rows while genotype rows stay unchanged.",
+      "required_action": "Reject unsafe positional attachment;retain complete provenance/projections and do not silentlyrepair/drop/reorder/select rows."
+    },
+    {
+      "case": "Missingness conversion",
+      "observed": "readr missing character cells become empty strings in GDS;numeric/logical missingness remains missing.",
+      "required_action": "Retain source lexemes,no-match keys and observed type/missingness ledgers;do not equate an empty cell with absent biological effect."
+    },
+    {
+      "case": "Strict CSV admission versus permissive xsv",
+      "observed": "All44admittedformats match actualxsv;native refuses6malformedquote/header/widthcases includingcasesxsv accepts.",
+      "required_action": "Use explicitly valid UTF8CSV withdistinctheaders/exactwidth;do not silentlyrewrite refusedresources or claim the entire permissivexsvdialect is reproduced."
+    },
+    {
+      "case": "Single-dot GT among diploid calls",
+      "observed": "Original conversion stores phase [0,1,0,0,1,1,1,0] for literal separators [0,1,0,0,0,1,1,1]. Alleles alone do not establish preserved phase.",
+      "required_action": "DIPLOID_GT requires two explicit allele fields per call;refuse single-dot,haploid/polyploid inputs without padding or phase repair. Use a separately supported analysis for other ploidies."
+    },
+    {
+      "case": "Sample IDs without genotype nodes",
+      "observed": "Original conversion with FORMAT DP but no GT succeeds while genotype and phase nodes are absent.",
+      "required_action": "Require declared actual GT fields for genotype analysis. Explicit eight-column variant-only input has no invented samples or calls."
+    },
+    {
+      "case": "Original null-genotype utility",
+      "observed": "Unmodified convertVCFtoNullGenotypeGDS.r exits1 because seqExport targets the same GDS file already open. Partial evidence retained.",
+      "required_action": "Do not claim that utility works. Ordinary CSV converter directly supports actual variant-only VCF;do not patch original code or fabricate genotype data."
+    },
+    {
+      "case": "Date/time classes and attributes lost by original GDS writer",
+      "observed": "Original readr Date,POSIXct/POSIXt,hms/difftime columns keep exact underlying double bytes but become plain numeric columns without class/unit/timezone attributes.",
+      "required_action": "Retain original source class/unit/timezone and attribute hashes. Interpret scalar export as stored numbers;never claim the classes survived or repair original GDS metadata."
+    },
+    {
+      "case": "Matching complete scalars after failed single-shard nested command",
+      "observed": "The single-shard source output passes complete scalar value/type/missingness checks despite its failed xsv concatenation. It is a diagnostic-only helper success;native join/supervisor workflow admission still refuses.",
+      "required_action": "The parent must validate every expected terminal nested event and reject any failed,missing or repeated command regardless of R exit0 or matching visible scalar values."
+    }
+  ],
+  "required_actions": [
+    "Follow FAVOR_WORKFLOW.md to prepare a fresh same-host pinned runtime inventory and run the protected example. Read the original-export, class/unit and genotype restrictions. P130 jointly names FUMA/FAVOR and separately MAGMA; this validated offline annotation adapter does not establish a historical full-paper or whole-FAVOR pipeline.",
+    "If a required runtime is unavailable or installation is forbidden,skip the affected analysis with named cause and action;provide it on a permitted host. No analysis may silentlyinstall dependencies.",
+    "Invalid input/model/capacity and failed upstream execution remain failures with retained diagnostics. Existing source/GT/output bundles must remain protected."
+  ],
+  "retained_install_failures": [
+    "Initial package-manager postlink skip left GenomeInfoDbData unavailable;reviewed exact1.2.13archive installed privately without enabling globalpostlink.",
+    "First originalVCF conversion failed because optionaldigest package was absent;digest installed privately andfresh original protocols rerun. HalfcreatedGDS retained."
+  ],
+  "scope": "Current pinned FAVOR offline CSV annotation and audited scalar export through the actual main command and private ROOT executable JAR. Repository preparer and example pass 30 Python tests each Windows/Linux plus real complete runtime intake and 15R/9xsv two-health-mode synthetic analysis. Earlier 251 Java tests/profile and source/package/failure/shutdown evidence remain valid; Java sources are unchanged. Original table-export and broader/historical/paper roles remain outside this scope. 52 new validated integrations,55 with3existing;267 missing;whole goal active.",
+  "evidence": [
+    {
+      "path": "build/literature-review/favor-runtime/annotator-tree-intake-1/observed.json",
+      "sha256": "b0ae18b1cbbe8ff067f6d2c1d3bbda3db3627a1ca447e46799ab5f99070175bc"
+    },
+    {
+      "path": "build/literature-review/favor-runtime/annotator-source-intake-1/observed.json",
+      "sha256": "d137d18d7ad5ce5b6bf7293d83919d479da370bc7730edee4f6887749aed91a0"
+    },
+    {
+      "path": "build/literature-review/favor-runtime/annotator-private-runtime-1/final-verification.json",
+      "sha256": "542372069ca886da1a0b5c0efee90d8950e27066179fee106b1d58cb7a686884"
+    },
+    {
+      "path": "build/literature-review/favor-runtime/annotator-private-runtime-1/data-package-install-1/observed.json",
+      "sha256": "3464e385534a8f39b38b1c2454b9369da669dd446924807574129ddb735bf63b"
+    },
+    {
+      "path": "build/literature-review/favor-runtime/annotator-private-runtime-1/digest-install-1/observed.json",
+      "sha256": "893caf771ec6bd6997638c7e57ba519758e08d297e7bd4a8b92966265e654b01"
+    },
+    {
+      "path": "build/literature-review/favor-runtime/annotator-original-probe-2/observed.json",
+      "sha256": "2d89be1f88284d61d16de624c58d31899a6b34ac68216a0c3bb872ae5c2cbbfb"
+    },
+    {
+      "path": "build/literature-review/favor-runtime/annotator-native-join-tests-1/observed.json",
+      "sha256": "84d4a98c80784a4b0814d012afbdc9d2d9d3f585f19493b9e3604a6db10a4942"
+    },
+    {
+      "path": "build/literature-review/favor-runtime/annotator-original-join-protocols-1/observed.json",
+      "sha256": "ee7b695ca657a2c90e6639659d8a89079aef7ebac2ae2812e7ba51a8c5addd1d"
+    },
+    {
+      "path": "build/literature-review/favor-runtime/annotator-original-join-protocols-1/identity-and-nested-failure-audit.json",
+      "sha256": "25efa87b325fdfb76d2a2071cc55c766c74e0582e4e90493ee21ef21de1d5a3f"
+    },
+    {
+      "path": "build/literature-review/favor-runtime/annotator-native-original-audit-1/observed.json",
+      "sha256": "07b8b16ea8720af2f3d58238c354211ec3b637745a84291d5c5dca9f03069611"
+    },
+    {
+      "path": "build/literature-review/favor-runtime/annotator-csv-native-tests-1/observed.json",
+      "sha256": "04b544f989a4bee164ee1a82ae87c3738056e27c546ca68c65beec8ed39e5521"
+    },
+    {
+      "path": "build/literature-review/favor-runtime/annotator-csv-supervisor-tests-1/observed.json",
+      "sha256": "61a33827526e08fe593e6db14377476eb384fa8b6c4a175175b55fda4e8440c7"
+    },
+    {
+      "path": "build/literature-review/favor-runtime/annotator-native-csv-original-audit-1/observed.json",
+      "sha256": "85905f553aaad81338ec1b1143c43867441e0b345b254388674a498255fb2daa"
+    },
+    {
+      "path": "build/literature-review/favor-runtime/annotator-csv-dialect-2/observed.json",
+      "sha256": "f838bc456eb8fefb75cfc4921e89ea7cd425d9da2b14f5beb0d31b275141da81"
+    },
+    {
+      "path": "build/literature-review/favor-runtime/annotator-supervised-original-1/observed.json",
+      "sha256": "321b3efba23eba8c28296a9cb59c8421610cc14117c8eb0bb3a0bdaeab4eea2d"
+    },
+    {
+      "path": "build/literature-review/favor-runtime/annotator-variant-only-source-1/observed.json",
+      "sha256": "d1905db404172632e8a83913cd1159811e0956593428ec192290751208a2cf23"
+    },
+    {
+      "path": "build/literature-review/favor-runtime/annotator-vcf-edge-intake-1/observed.json",
+      "sha256": "bb22044d202e92c2c0b8e1fba245e2d39a44a40b1ae0823fd857ec38cb805a78"
+    },
+    {
+      "path": "build/literature-review/favor-runtime/annotator-vcf-edge-intake-2/observed.json",
+      "sha256": "677acbe3fba266ab0c6a7725e0643a75da830905d0433de3cb37776d5e3ae43f"
+    },
+    {
+      "path": "build/literature-review/favor-runtime/annotator-vcf-tests-1/observed.json",
+      "sha256": "271b0e87bf0f167cdd376797eab5d143c1382ed36190a3f3fecd3348cb952274"
+    },
+    {
+      "path": "build/literature-review/favor-runtime/annotator-native-vcf-original-audit-1/observed.json",
+      "sha256": "541d9c6e217c517779eeb10a81e3093f53a154cd1faeb7552e5e68b483da0bc3"
+    },
+    {
+      "path": "build/literature-review/favor-runtime/annotator-gds-admission-tests-1/observed.json",
+      "sha256": "a100512e68378c81b624859b9f15e762280516f3ef7810a2af492f8243ccc0fe"
+    },
+    {
+      "path": "build/literature-review/favor-runtime/annotator-complete-gds-audit-2/observed.json",
+      "sha256": "bf623af37d366079539a563cd067b15b139b91fbdf543eb27b6991732f742a7b"
+    },
+    {
+      "path": "build/literature-review/favor-runtime/annotator-complete-gds-audit-1/progress.json",
+      "sha256": "9aea7354c0339d4f1e1ef4800fcfe2df93db784f907fbe51c3d4d2c2e25d6ec2"
+    },
+    {
+      "path": "build/literature-review/favor-runtime/annotator-complete-gds-audit-1/mutate-owned-controls.stderr",
+      "sha256": "493cc1981b4fc27b04e905f2f7521e714a42f3e774c9aa07d269565ca31c7a38"
+    },
+    {
+      "path": "build/literature-review/favor-runtime/annotator-column-intake-1/observed.json",
+      "sha256": "46f444285eb157d1f8ddfa1690ada02d3d7c3a2ebcf352c296321303a27007c1"
+    },
+    {
+      "path": "build/literature-review/favor-runtime/annotator-column-tests-2/observed.json",
+      "sha256": "c15aad0b11f6f8cacdd16e29502fd78341c108792094eb907a44ecb91cdaef0e"
+    },
+    {
+      "path": "build/literature-review/favor-runtime/annotator-column-original-audit-2/observed.json",
+      "sha256": "7462755f9bd10e0b48ee962383f20560c8c0fec5476d0eb3cf8b8390e4f87352"
+    },
+    {
+      "path": "build/literature-review/favor-runtime/annotator-column-original-audit-1/progress.json",
+      "sha256": "2461742c2378caf4dc95f01779ddc343387c7fa5ac1a785ed5d9646ee1378170"
+    },
+    {
+      "path": "build/literature-review/favor-runtime/annotator-column-original-audit-1/R-events.json",
+      "sha256": "4f8600cb5e07292c189a0ed122431b77d82e837c455411652d252e6c0fb92a51"
+    },
+    {
+      "path": "build/literature-review/favor-runtime/annotator-ledger-tests-1/observed.json",
+      "sha256": "402d3bc664ce2e47421a0833bb062de2438209807dd9a7813e8787f2d1e3eee5"
+    },
+    {
+      "path": "build/literature-review/favor-runtime/annotator-parent-ledger-audit-1/observed.json",
+      "sha256": "a77c5ec4102e0af77509d0d4f8bafd3782e0f80595bf5c08ed51c5ec8cc32674"
+    },
+    {
+      "path": "build/literature-review/favor-runtime/annotator-runtime-intake-1/observed.json",
+      "sha256": "80af19c874ba5c7e5038c92dd4a0150f6571da448383a111293aa6fbe59bd326"
+    },
+    {
+      "path": "build/literature-review/favor-runtime/annotator-runtime-intake-2/failure.json",
+      "sha256": "a31ad493fd8e3874a713c0b22443a7eaf74a988790a03475def8a9993a451f26"
+    },
+    {
+      "path": "build/literature-review/favor-runtime/annotator-runtime-intake-3/observed.json",
+      "sha256": "9d256807bf08579753913f329708a48916f5d0b42b3c9180e82fcb52118da81d"
+    },
+    {
+      "path": "build/literature-review/favor-runtime/annotator-runtime-intake-3/inventory.json",
+      "sha256": "78f1e8313f3ef24283a688c73197b6b423172da5ad590aecf76f90a71beaa29d"
+    },
+    {
+      "path": "build/literature-review/favor-runtime/annotator-runtime-intake-3/exec-seed-binding-boundary.json",
+      "sha256": "9f6fe622c4aa6a06cdd1a28b6b6c4a32b624eedce3fa57888d612b9196c2a70d"
+    },
+    {
+      "path": "build/literature-review/favor-runtime/annotator-runtime-intake-4/observed.json",
+      "sha256": "17e2f51822bb95f375ecc19f2eb54ff12e949c7bb47823908424f1d0564f7664"
+    },
+    {
+      "path": "build/literature-review/favor-runtime/annotator-runtime-intake-4/inventory.json",
+      "sha256": "62508387efcbc1f4a90c0a4f9c9b7633f2b5e51af822d2c0c0177880de2039eb"
+    },
+    {
+      "path": "build/literature-review/favor-runtime/annotator-fingerprint-tests-1/observed-failure.json",
+      "sha256": "580d17227582290b1e635a99588e3c2a1943f8f9eafafc66a57dce9071d694a9"
+    },
+    {
+      "path": "build/literature-review/favor-runtime/annotator-fingerprint-tests-2/observed.json",
+      "sha256": "5bac708553607f4574d7a98425db7105437721966b91a1989111fac2abbaa180"
+    },
+    {
+      "path": "build/literature-review/favor-runtime/annotator-fingerprint-runtime-audit-1/observed.json",
+      "sha256": "2a449c89cad5353241f5fa430e9b3c2c98a93d4dd51f333aa08a8c8b38dabc3c"
+    },
+    {
+      "path": "build/literature-review/favor-runtime/annotator-parent-tests-1/observed.json",
+      "sha256": "d7b3dd0643969633d2f898d04ec0c1b8fcb6693320d798868bb5bc3bd1b8af08"
+    },
+    {
+      "path": "build/literature-review/favor-runtime/annotator-parent-controller-probe-1/observed-failure.json",
+      "sha256": "fb207ad0cb0fe7c607dcadf3e8bacdb060063593a6da9169fab9969b6550cded"
+    },
+    {
+      "path": "build/literature-review/favor-runtime/annotator-parent-controller-probe-1/external-system-update-evidence.json",
+      "sha256": "bde571aeae7a3d7536e550861745fec901fccd0fa63c039a84a009107578e086"
+    },
+    {
+      "path": "build/literature-review/favor-runtime/annotator-runtime-intake-4/host-update-boundary.json",
+      "sha256": "f1b42c4e4a6f451b941060c01de74269c5ce40c23e46f8e19500373f3853668f"
+    },
+    {
+      "path": "build/literature-review/favor-runtime/annotator-runtime-intake-5/observed.json",
+      "sha256": "447bb5cac5175646466f44d72d0bfd1e6565c563eb0efcff575a13e1703b8cc9"
+    },
+    {
+      "path": "build/literature-review/favor-runtime/annotator-runtime-intake-5/inventory.json",
+      "sha256": "e946e89b648bbc0346b6f5c909e6ea157e0bc05dedac487f4a7afccc2dc99103"
+    },
+    {
+      "path": "build/literature-review/favor-runtime/annotator-parent-controller-probe-2/observed.json",
+      "sha256": "c8df1341cae0dc1ef654d6c93059f5379299d91048162c0ffbc92d6e083770fc"
+    },
+    {
+      "path": "build/literature-review/favor-runtime/annotator-parent-prelaunch-refusals-1/observed.json",
+      "sha256": "db0a6607554a8af51e0cd457b24a3ee14ae47445d16516c380efa790488da6ad"
+    },
+    {
+      "path": "build/literature-review/favor-runtime/annotator-cli-tests-1/observed-failure.json",
+      "sha256": "559993aa44bd0feddd2673fef1bf7938235c72945c8cd144bb36a57d5a17c77d"
+    },
+    {
+      "path": "build/literature-review/favor-runtime/annotator-cli-tests-2/observed-failure.json",
+      "sha256": "9c016888c56860e3ec32033b6dc9a23a47f89610582c4ff7b1a0bfcee9759717"
+    },
+    {
+      "path": "build/literature-review/favor-runtime/annotator-cli-tests-3/observed.json",
+      "sha256": "87cd90c50cbf761d5fbb9d6ac505123350bfa9130d52dabd64db870d940d1284"
+    },
+    {
+      "path": "build/literature-review/favor-runtime/annotator-cli-development-1/root-compile-java-receipt.json",
+      "sha256": "d80493a7a454c05621230631ad978ce2a0485fde331b709a3e34b73f5b3c76ab"
+    },
+    {
+      "path": "build/literature-review/favor-runtime/annotator-cli-development-1/dispatcher-delta.json",
+      "sha256": "88dcc3fb8b14fcb018ba2f46e6d1c649b4fce5a2870700b7f4afde1c8bd01aa0"
+    },
+    {
+      "path": "build/literature-review/favor-runtime/annotator-cli-development-1/attributes-delta.json",
+      "sha256": "a103b5a6dd5018f688af411c97a1290e8b26fdc58f1e322e7d8949b867656c8a"
+    },
+    {
+      "path": "build/literature-review/favor-runtime/annotator-cli-actual-1/observed.json",
+      "sha256": "d3e82b31d09b52f25d1c41380a990e354412a18bae1c11060370dd2b00cb0926"
+    },
+    {
+      "path": "build/literature-review/favor-runtime/annotator-cli-failures-1/observed.json",
+      "sha256": "ef053ebcde0dada80ccbf9e4a7a5c4c94937c2c2aa6d0169a4fc80a194be9223"
+    },
+    {
+      "path": "build/literature-review/favor-runtime/annotator-cli-windows-1/observed.json",
+      "sha256": "92816117e99390256b18247a3f625c35fd9b0597920daf556467c2360ceb927c"
+    },
+    {
+      "path": "build/literature-review/favor-runtime/annotator-shutdown-guard-1/observed.json",
+      "sha256": "503876c8903dd133708aff6846b8cee76bced73180d487488ad346482d8d5f8d"
+    },
+    {
+      "path": "build/literature-review/favor-runtime/annotator-root-candidate-1/observed-failure.json",
+      "sha256": "626ebda9fc1a7c787c20c25a615f601d43c27d8c7f6805894481dc96a3d29ff7"
+    },
+    {
+      "path": "build/literature-review/favor-runtime/annotator-root-candidate-2/observed.json",
+      "sha256": "0edb0b3cf2ab730871a99661f2f2422b3399da0a4e4ad3f781fa6a814ab2bab8"
+    },
+    {
+      "path": "build/literature-review/favor-runtime/annotator-cli-packaged-1/observed.json",
+      "sha256": "ad0a71ab9e73651c83ce2a352f95188cbc44721977866fdca7e57308c2a8ff00"
+    },
+    {
+      "path": "build/literature-review/favor-runtime/annotator-portable-preparer-audit-1/observed.json",
+      "sha256": "89afaf3b390ea723105e38453abd2d3ea9e220fe82c41dbe8e99a15f29ccef43"
+    },
+    {
+      "path": "build/literature-review/favor-runtime/annotator-public-example-1/observed.json",
+      "sha256": "74f2f1dc06dfdeca02abd36f5d23a98a192f427ac0287efe77a33c41046b893c"
+    },
+    {
+      "path": "build/literature-review/favor-runtime/annotator-portable-setup-1/attributes-delta.json",
+      "sha256": "181cff2eadb2282cabdc8ac71723b38aa7d9159148cf3a3ae0504f3afa76cc5f"
+    },
+    {
+      "path": "build/literature-review/favor-runtime/annotator-portable-setup-1/readme-intake.json",
+      "sha256": "fe3a8c1e842b657b20487cdaf02f811f65869f39c3583c9805df51e45da5591c"
+    },
+    {
+      "path": "build/literature-review/favor-runtime/annotator-portable-browser-4/observed.json",
+      "sha256": "19e6389600bcd5297373e06b3971410e2bad67a2e5f496523d5302aecdb647f9"
+    },
+    {
+      "path": "build/literature-review/favor-runtime/annotator-portable-browser-4/ui/ui-validation.json",
+      "sha256": "dda5a17428965bff24d1fe6422b1c4e209a2051eb1a47c19c4395496d32d2fb1"
+    }
+  ],
+  "source_APIs": [
+    "org.jlinalg.genetics.FavorCsvJoin",
+    "org.jlinalg.genetics.FavorCsvReader",
+    "org.jlinalg.cli.FavorXsvSupervisor",
+    "org.jlinalg.genetics.FavorVcfReader",
+    "org.jlinalg.genetics.FavorVcfAudit",
+    "org.jlinalg.cli.FavorGdsAudit (internal)",
+    "org.jlinalg.cli.FavorAnnotationAudit (internal)",
+    "org.jlinalg.cli.FavorXsvLedger (internal)",
+    "org.jlinalg.cli.FavorRuntimeFingerprint (internal)",
+    "org.jlinalg.cli.FavorAnnotatorWorkflow (internal)",
+    "org.jlinalg.cli.FavorAnnotatorCli",
+    "org.jlinalg.cli.FavorProcessGuard (internal)"
+  ],
+  "CSV_reader_source_API": true,
+  "supervised_xsv_source_API": true,
+  "typed_parent_CLI": true,
+  "native_join_tests": 28,
+  "CSV_reader_tests": 32,
+  "supervisor_tests": 13,
+  "CSV_valid_formats_checked_against_actual_xsv": 44,
+  "CSV_strict_refusals": 6,
+  "CSV_scientific_cells_bytes_identical_across_profiles": true,
+  "supervised_original_protocols": 7,
+  "supervised_source_aligned_protocols": 2,
+  "supervised_scientifically_unsafe_protocols": 5,
+  "supervised_R_commands": 22,
+  "successful_supervised_xsv_commands": 21,
+  "supervised_genotype_alleles_checked": 336,
+  "supervised_phase_values_checked": 168,
+  "supervised_stored_scalar_values_checked": 342,
+  "supervised_raw_annotation_bytes_equal_original": true,
+  "nested_failure_control_R_exit": 0,
+  "nested_failure_supervisor_exit": 2,
+  "timeout_child_exit": 137,
+  "timeout_supervisor_exit": 2,
+  "no_owned_subprocesses_pending": true,
+  "supervisor_pinned_xsv_sha256": "b57364e384b7e2321215bc9b200d8afe6931a450ac4425df8220067a93959925",
+  "retained_development_failures": [
+    "Initial private CSV comparison transport encoded a single empty field as a blank TSV record;added an explicit field-count prefix and reran all formats. Native CSV parser and scientific tolerances unchanged.",
+    "First deliberate GDS corruption harness attempted unsupported in-place writes to compressed data and exited1. Complete failed attempt retained at annotator-complete-gds-audit-1;corrected harness replaces nodes only in separate owned test copies.",
+    "Focused140test gate prose corrected to describe streaming/GDS foundation;prior metadata retained with all test/build logs unchanged.",
+    "First scalar comparison harness expected the single-shard scalar audit to fail. It correctly passed despite a failed nested upstream command;the harness expectation was corrected in a new retained attempt,not production code. This strengthens the required parent-ledger gate.",
+    "Standalone ldd on libjava.so reported already-loaded libjvm.so missing. Both real JVM probes succeeded. The failed scan/traces are retained;new intake resolves needed ELF SONAMEs against corresponding actual process maps without installing/replacing libraries.",
+    "Inventory3 also assigned R loaded libraries to fresh exec seeds. It remains retained and unadmitted;corrected inventory4 records same-process bindings only and the Java verifier rejects the old descriptor.",
+    "First new strict test compile failed on wildcard-capture mutation fixtures. Attempt1 diagnostics are retained;explicit ArrayList<Object> fixtures pass in new attempt2.",
+    "First complete parent attempt passed both scientific health value profiles but detected libz host bytes changed by existing Ubuntu unattended-upgrades. It correctly failed2 before requested analysis. Logs,failed bundle,old inventory4 and compiled source are retained;new intake5 and fresh admission are separate.",
+    "First isolated CLI compile lacked the existing ROOT VariantToolsCli link context;second source-only context compile required newer study helpers. Full current ROOT compileJava passed;third isolated gate uses its exact read-only compiled VariantToolsCli signature and never executes installation.",
+    "Initial candidate-copy harness assumed build/libs;executableJar explicitly writes build/cli. The failed attempt is retained;candidate2 copies the actual build output without rebuilding.",
+    "First full browser pass stopped on an obsolete HOMER generated-card269-missing assertion. Second pass caught FAVOR validation_note being overwritten by the generic renderer fallback. Both failures and diagnostics are retained;a third pass caught the FAVOR panel missing from the dedicated warnings page. The fourth complete browser pass succeeds with the actual FAVOR evidence visible."
+  ],
+  "VCF_reader_source_API": true,
+  "VCF_reader_tests": 36,
+  "VCF_original_admitted_inputs_per_profile": 14,
+  "VCF_explicit_unsafe_refusals_per_profile": 5,
+  "VCF_variant_rows_compared_per_profile": 75,
+  "VCF_genotype_alleles_compared_per_profile": 436,
+  "VCF_phase_values_compared_per_profile": 218,
+  "VCF_complete_identity_GT_phase_equal_original": true,
+  "fresh_original_VCF_edge_protocols": 11,
+  "retained_original_VCF_conversion_failures": 2,
+  "streaming_VCF_value_audit": true,
+  "streaming_VCF_value_tests": 15,
+  "complete_GDS_audit_admission_tests": 16,
+  "read_only_GDS_R_helper": true,
+  "complete_original_GDS_node_attribute_check": true,
+  "hidden_GDS_nodes_checked": true,
+  "complete_GDS_native_inputs_per_profile": 15,
+  "complete_GDS_R_block_comparisons_per_profile": 30,
+  "complete_GDS_before_after_pairs_per_profile": 15,
+  "complete_GDS_original_nodes_per_profile": 420,
+  "complete_GDS_hidden_nodes_per_profile": 75,
+  "complete_GDS_after_genotype_alleles_per_profile": 720,
+  "complete_GDS_after_phase_values_per_profile": 360,
+  "complete_GDS_actual_tamper_refusals_per_profile": 4,
+  "GDS_R_helper_successful_calls": 49,
+  "GDS_R_helper_expected_refusals": 10,
+  "fresh_large_original_VCF_variants": 2053,
+  "streaming_native_variant_rows_per_profile": 2128,
+  "streaming_native_GT_alleles_per_profile": 12754,
+  "streaming_native_phase_values_per_profile": 6377,
+  "annotation_scalar_audit_source_API": true,
+  "native_scalar_TSV_export_source_API": true,
+  "annotation_audit_export_tests": 26,
+  "annotation_source_cases_per_profile": 7,
+  "annotation_R_chunk_comparisons_per_profile": 14,
+  "annotation_variant_rows_per_profile": 2101,
+  "annotation_scalar_values_per_profile": 12622,
+  "annotation_character_NA_to_empty_per_profile": 12,
+  "annotation_protocol_successful_R_helper_calls": 20,
+  "annotation_protocol_expected_R_refusals": 24,
+  "fresh_additional_original_annotation_runs": 2,
+  "date_time_source_attribute_loss_retained": true,
+  "single_shard_complete_scalar_audit_not_workflow_admission": true,
+  "native_export_upstream_workflow_certified": true,
+  "native_export_marker_published_only_after_complete_checks": true,
+  "parent_xsv_ledger_source_API": true,
+  "parent_xsv_ledger_tests": 22,
+  "parent_ledger_fresh_source_protocols_per_profile": 7,
+  "parent_ledger_successful_nested_commands_per_profile": 21,
+  "parent_ledger_rejected_actual_failures_per_profile": 2,
+  "parent_ledger_actual_parent_UTC_window_checks": true,
+  "parent_ledger_scientifically_aligned_cases": 2,
+  "parent_ledger_scientifically_unsafe_cases_not_analysis_admitted": 5,
+  "parent_ledger_fresh_R_commands": 15,
+  "runtime_identity_inventory_status": "inventory-only-not-admitted",
+  "runtime_provider_entries": 18763,
+  "runtime_host_file_bindings": 64,
+  "runtime_loader_objects": 84,
+  "runtime_standalone_missing_resolved_from_actual_maps": 16,
+  "runtime_Conda_artifact_metadata_matches_pinned_lock": true,
+  "runtime_Conda_packages": 154,
+  "runtime_prelaunch_verifier": true,
+  "runtime_scientific_admission": true,
+  "runtime_fingerprint_source_API": true,
+  "runtime_fingerprint_tests": 26,
+  "runtime_fingerprint_real_Linux_protocols": 13,
+  "runtime_fingerprint_reverified_real_runtime": true,
+  "runtime_fingerprint_result_scope": "fingerprint-verified-not-scientifically-admitted",
+  "runtime_already_loaded_bindings": 836,
+  "parent_workflow_source_API": true,
+  "parent_workflow_tests": 15,
+  "scientific_health_profiles": [
+    "VARIANTS_ONLY",
+    "DIPLOID_GT"
+  ],
+  "complete_parent_real_R_processes": 15,
+  "complete_parent_real_nested_xsv_commands": 9,
+  "complete_parent_total_variant_rows": 24,
+  "complete_parent_scalar_values": 144,
+  "complete_parent_preserved_genotype_alleles": 96,
+  "complete_parent_preserved_phase_values": 48,
+  "typed_main_command": true,
+  "packaged_parent_workflow": true,
+  "real_post_health_host_change_rejected": true,
+  "parent_prelaunch_skip3_protocols": 2,
+  "typed_request_schema_tests": 22,
+  "packaged_parent_scope": "Private current ROOT artifact;FAVOR workflow only;not a whole-ROOT regression or release claim.",
+  "source_and_packaged_successful_R_processes": 30,
+  "source_and_packaged_nested_xsv_commands": 18,
+  "actual_main_failure_protocols": 11,
+  "actual_Windows_main_protocols": 6,
+  "actual_SIGTERM_owned_cleanup": true,
+  "early_native_admission_before_R": true,
+  "protected_request_snapshot": true,
+  "atomic_live_process_session": true,
+  "forbidden_monitor_prelaunch_skip_policy": true,
+  "portable_runtime_setup_helper": true,
+  "public_workflow_recipe_validated": true,
+  "whole_FAVOR_tool_complete": false,
+  "whole_paper_reproduced": false,
+  "python_preparer_tests_per_profile": 22,
+  "python_example_tests_per_profile": 8,
+  "prepared_inventory_sha256": "027b3444b1f0548d86f78b4d46c15aaa502af2889f51a44a2f800aa64f5ac168",
+  "public_example_R_processes": 15,
+  "public_example_nested_xsv_commands": 9,
+  "public_example_variant_rows": 8,
+  "public_example_scalar_values": 48,
+  "new_validated_tool_count": 52,
+  "missing_integrations": 267
+}

@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "operation": "MASK",
+  "mode": "ANNOTATION_REUSE",
+  "profile": "native-repeat-annotations-v1",
+  "resource_root": ".",
+  "assembly": "synthetic-example-v1",
+  "input_review": {
+    "organism": "Synthetic DNA fixture",
+    "genome_provenance": "query.fa in this example;not a biological reference genome",
+    "repeat_library_provenance": "No library or search is used by native annotation reuse",
+    "annotation_provenance": "annotations.rmout is a constructed OUT_WITH_ID example;no original search is certified",
+    "coordinate_policy": "OUT one-based inclusive source coordinates;internal zero-based half-open genomic intervals",
+    "paper_settings_status": "Toy computational example;not a paper reconstruction"
+  },
+  "query": {
+    "path": "query.fa",
+    "encoding": "PLAIN_UTF8"
+  },
+  "annotations": {
+    "path": "annotations.rmout",
+    "encoding": "PLAIN_UTF8",
+    "format": "OUT_WITH_ID",
+    "completion_evidence": "EXTERNAL_NOT_CERTIFIED"
+  },
+  "staging_policy": "EXACT_SOURCE",
+  "mask": "N",
+  "selection": {
+    "classes": "ALL",
+    "class_names": [],
+    "names": "ALL",
+    "repeat_names": [],
+    "marked_overlap": "INCLUDE"
+  },
+  "limits": {
+    "preset": "bounded-repeat-v1",
+    "input_bytes": 1048576,
+    "fasta_characters": 1048576,
+    "fasta_residues": 1000000,
+    "fasta_per_sequence": 1000000,
+    "fasta_sequences": 100,
+    "fasta_line_characters": 1024,
+    "fasta_header_characters": 512,
+    "fasta_retained_bytes": 131072,
+    "annotation_characters": 1048576,
+    "annotation_rows": 1000,
+    "annotation_line_characters": 1024,
+    "annotation_retained_bytes": 4194304,
+    "index_retained_bytes": 2097152,
+    "retained_bytes": 16777216,
+    "workspace_bytes": 2097152,
+    "file_count": 64
+  }
+}

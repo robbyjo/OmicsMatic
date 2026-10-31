@@ -1,0 +1,174 @@
+{
+  "schema_version": 1,
+  "tool": "Eagle",
+  "profiles": {
+    "linux-x86_64-eagle-2.4.1": {
+      "version": "2.4.1",
+      "members": {
+        "bin/eagle": {
+          "archive": "Eagle_v2.4.1.tar.gz",
+          "member": "Eagle_v2.4.1/eagle",
+          "bytes": 4622878,
+          "sha256": "c06ce193a8fdde2d1dfe33dba948bad6cefd5365bff92ee007001136e266867e",
+          "executable": true
+        },
+        "share/LICENSE-Eagle.txt": {
+          "archive": "Eagle_v2.4.1.tar.gz",
+          "member": "Eagle_v2.4.1/src/COPYING",
+          "bytes": 35148,
+          "sha256": "0ae0485a5bd37a63e63603596417e4eb0e653334fa6c7f932ca3a0e85d4af227"
+        },
+        "share/LICENSE-libgomp-GPL3.txt": {
+          "archive": "Eagle_v2.4.1.tar.gz",
+          "member": "Eagle_v2.4.1/src/COPYING",
+          "bytes": 35148,
+          "sha256": "0ae0485a5bd37a63e63603596417e4eb0e653334fa6c7f932ca3a0e85d4af227"
+        },
+        "lib/libgomp.so.1": {
+          "archive": "libgomp-16.2.0-he0feb66_7.conda",
+          "member": "lib/libgomp.so.1.0.0",
+          "bytes": 1674616,
+          "sha256": "34324e0835be6e103844d7c416bec42834cf803d3ba8d9519df15ced19914dfe"
+        },
+        "share/LICENSE-libgomp-exception.txt": {
+          "archive": "libgomp-16.2.0-he0feb66_7.conda",
+          "member": "share/licenses/gcc-libs/RUNTIME.LIBRARY.EXCEPTION.gomp_copy",
+          "bytes": 3324,
+          "sha256": "9d6b43ce4d8de0c878bf16b54d8e7a10d9bd42b75178153e3af6a815bdc90f74"
+        }
+      }
+    }
+  },
+  "archives": {
+    "Eagle_v2.4.1.tar.gz": {
+      "kind": "tar-gzip",
+      "url": "https://alkesgroup.broadinstitute.org/Eagle/downloads/Eagle_v2.4.1.tar.gz",
+      "bytes": 225286865,
+      "sha256": "e83a3cfc127a226f7067873353070030e003fcdce5043f7f687038d64d63473b",
+      "expanded_bytes": 228743514,
+      "member_count": 63
+    },
+    "libgomp-16.2.0-he0feb66_7.conda": {
+      "kind": "conda-zstd",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/libgomp-16.2.0-he0feb66_7.conda",
+      "bytes": 640566,
+      "sha256": "92a0bb350c7be6a4eedcb4e111c60aefd176018e6b1c009a6e025dbe9bbcd758",
+      "expanded_limit": 33554432
+    }
+  },
+  "health_fixtures": {
+    "cohort-target.vcf": {
+      "bytes": 1672,
+      "sha256": "3dabdd3a2c791ff02dcd10e2bf43023ad75729911c77b12cdd812799a8537940"
+    },
+    "target.vcf.gz": {
+      "bytes": 460,
+      "sha256": "bad6b99fa66dee36d220ef889af455104d219cea4cc10a230c808791f97c8dd4"
+    },
+    "target.vcf.gz.csi": {
+      "bytes": 338,
+      "sha256": "fb60282f0bd89fc8f56cf9a0e1362a0f883aa73478b3fc054a39f1012f7add79"
+    },
+    "reference.vcf.gz": {
+      "bytes": 452,
+      "sha256": "5bcad246e90299dd7b42ac52be643dc454a05fbdca14072c33912d8e1fb9f60b"
+    },
+    "reference.vcf.gz.csi": {
+      "bytes": 342,
+      "sha256": "c523214e5d21083ed0b73b65037d44befb9569116d8935e88268f598bcdfe414"
+    },
+    "genetic-map.txt": {
+      "bytes": 3034,
+      "sha256": "0ba7efa53f85451fa099dadb565e7e1908c9fcf9834e7c6daf14bcb3f770380d"
+    }
+  },
+  "bundled_notices": {
+    "LICENSE-HTSlib.txt": {
+      "bytes": 3540,
+      "sha256": "927b4d48e8e9ecd82f534c2b31b894b728bc09eee3c473170727538f5b2b5b75"
+    },
+    "LICENSE-Boost.txt": {
+      "bytes": 1338,
+      "sha256": "c9bff75738922193e67fa726fa225535870d2aa1059f91452c411736284ad566"
+    },
+    "LICENSE-OpenBLAS.txt": {
+      "bytes": 1548,
+      "sha256": "190b5a9c8d9723fe958ad33916bd7346d96fab3c5ea90832bb02d854f620fcff"
+    }
+  },
+  "health_contracts": {
+    "cohort-keep": {
+      "mode": "cohort",
+      "missing": "keep",
+      "variants": 32,
+      "samples": 4,
+      "genotype_cells": 128,
+      "source_missing_cells": 20,
+      "normalized_sha256": "3d198a97826b13193a15a194b024db30d2ca33fdd7a9844d1a6f68e57e01c419"
+    },
+    "cohort-impute": {
+      "mode": "cohort",
+      "missing": "impute",
+      "variants": 32,
+      "samples": 4,
+      "genotype_cells": 128,
+      "source_missing_cells": 20,
+      "normalized_sha256": "a574d2729057c9d3c2a3ba17acaaea9e0f32bd6a292b46bf2c362f1aaaf3b885"
+    },
+    "reference-keep": {
+      "mode": "reference",
+      "missing": "keep",
+      "variants": 32,
+      "samples": 4,
+      "genotype_cells": 128,
+      "source_missing_cells": 20,
+      "normalized_sha256": "4c70671302ae124ab59111c182f38806395531e4dac10df404a8a5badefd5018"
+    },
+    "reference-impute": {
+      "mode": "reference",
+      "missing": "impute",
+      "variants": 32,
+      "samples": 4,
+      "genotype_cells": 128,
+      "source_missing_cells": 20,
+      "normalized_sha256": "a574d2729057c9d3c2a3ba17acaaea9e0f32bd6a292b46bf2c362f1aaaf3b885"
+    }
+  },
+  "health_limits": {
+    "wall_seconds": 60,
+    "address_space_bytes": 1073741824,
+    "cpu_seconds": 60,
+    "file_bytes": 16777216,
+    "workspace_bytes": 134217728,
+    "file_count": 256,
+    "open_files": 256
+  },
+  "closure": {
+    "helpers": [
+      "/usr/bin/ldd",
+      "/usr/bin/prlimit",
+      "/usr/bin/setsid"
+    ],
+    "binaries": {
+      "bin/eagle": [
+        "libpthread.so.0",
+        "libm.so.6",
+        "libgomp.so.1",
+        "libc.so.6",
+        "ld-linux-x86-64.so.2",
+        "libdl.so.2"
+      ],
+      "/usr/bin/prlimit": [
+        "libsmartcols.so.1",
+        "libc.so.6",
+        "ld-linux-x86-64.so.2"
+      ],
+      "/usr/bin/setsid": [
+        "libc.so.6",
+        "ld-linux-x86-64.so.2"
+      ]
+    }
+  },
+  "scope": "Original Eagle2.4.1 Linux x86_64 only. Four synthetic diploid dosage/shape/missing-call checks; no biological phasing accuracy, X-ploidy, historical-edition or whole-paper equivalence claim.",
+  "notice_scope": "Private original Eagle GPL3-or-later; private libgomp GPL3 with GCC runtime exception; upstream-linked HTSlib1.9 MIT, Boost1.58 Boost license and OpenBLAS0.2.19 BSD notices retained. No runtime binary is redistributed in the project."
+}

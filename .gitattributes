@@ -21,5 +21,134 @@ src/test/resources/org/jlinalg/protein/pymol-geometry/* -text whitespace=cr-at-e
 src/test/resources/org/jlinalg/protein/pymol-potential/* -text whitespace=cr-at-eol
 src/test/resources/org/jlinalg/protein/pymol-tools/* -text whitespace=cr-at-eol
 
-# Catalog manifests describe canonical repository text on every platform.
-docs/literature/omics-2023-2026/** text eol=lf
+# Literature evidence is byte-pinned by SHA256SUMS; preserve the recorded bytes.
+docs/literature/omics-2023-2026/** -text whitespace=cr-at-eol
+
+# RNA admission locks must retain the bytes hashed by Python and packaged Java.
+tools/literature/homer-rna-lock.json -text whitespace=cr-at-eol
+src/main/resources/org/jlinalg/omics/homer-rna-lock.json -text whitespace=cr-at-eol
+
+# Synthetic cell-type data and captured original numerical reference tables.
+examples/fuma-celltype-workflow/synthetic-inputs.zip -text
+
+# Synthetic supplied SNP annotation data and captured original numerical reference tables.
+examples/fuma-variant-annotation-workflow/synthetic-inputs.zip -text
+
+# Synthetic supplied MAGMA report data and captured original numerical reference tables.
+examples/fuma-magma-report-workflow/synthetic-inputs.zip -text
+
+# Synthetic supplied tissue properties and captured original numerical reference tables.
+examples/fuma-tissue-workflow/synthetic-inputs.zip -text
+
+# Synthetic supplied-reference locus novelty inputs and independent integer references.
+examples/fuma-novelty-workflow/synthetic-inputs.zip -text
+
+# Synthetic complete association families and independent R/union evidence references.
+examples/fuma-known-association-workflow/synthetic-inputs.zip -text
+
+# Synthetic complete Fisher count/group inputs and independent R/set references.
+examples/fuma-fisher-workflow/synthetic-inputs.zip -text
+# Byte-pinned FAVOR synthetic health fixtures and their provenance.
+src/main/resources/org/jlinalg/omics/favor-health/* -text
+tools/literature/favor-runtime/** -text
+
+# Byte-pinned Eagle setup helper, original notices and synthetic health fixtures.
+tools/literature/eagle-runtime/** -text
+tools/literature/install_eagle.py -text
+tools/literature/eagle-runtime-lock.json -text
+src/main/resources/org/jlinalg/omics/eagle-runtime-lock.json -text
+src/main/resources/org/jlinalg/omics/eagle-runtime-setup/** -text
+
+# Synthetic Eagle cohort and reference phasing inputs.
+examples/eagle-phasing-workflow/synthetic-inputs.zip -text
+
+# Original BCFtools binary fixtures and complete GT/text metadata oracles.
+src/test/resources/org/jlinalg/cli/eagle-bcf/** -text
+
+# Separate original-generated synthetic BCF input examples.
+examples/eagle-phasing-workflow/synthetic-bcf-inputs.zip -text
+
+# Runtime fingerprints cover helper scripts, policy files and bundled assets as bytes.
+tools/literature/** -text whitespace=cr-at-eol
+src/main/resources/org/jlinalg/omics/** -text whitespace=cr-at-eol
+
+# Preserve source/fixture bytes explicitly cited by recorded scientific provenance.
+examples/fuma-celltype-workflow/prepare_inputs.py -text whitespace=cr-at-eol
+examples/fuma-known-association-workflow/prepare_inputs.py -text whitespace=cr-at-eol
+examples/fuma-novelty-workflow/prepare_inputs.py -text whitespace=cr-at-eol
+examples/fuma-tissue-workflow/prepare_inputs.py -text whitespace=cr-at-eol
+examples/fuma/GWAS_catalog_fixture.gmt -text whitespace=cr-at-eol
+examples/fuma/c5_fixture.gmt -text whitespace=cr-at-eol
+examples/fuma/chromatin/README.md -text whitespace=cr-at-eol
+examples/fuma/chromatin/enhancers.tsv -text whitespace=cr-at-eol
+examples/fuma/chromatin/interactions.tsv -text whitespace=cr-at-eol
+examples/fuma/chromatin/promoters.tsv -text whitespace=cr-at-eol
+examples/fuma/collections.tsv -text whitespace=cr-at-eol
+examples/fuma/genes.tsv -text whitespace=cr-at-eol
+examples/fuma/loci/gwas.tsv -text whitespace=cr-at-eol
+examples/fuma/loci/ld.tsv -text whitespace=cr-at-eol
+examples/fuma/loci/options.json -text whitespace=cr-at-eol
+examples/fuma/loci/ref.tsv -text whitespace=cr-at-eol
+examples/fuma/loci/retained-original-loci.tsv -text whitespace=cr-at-eol
+examples/fuma/mapping/README.md -text whitespace=cr-at-eol
+examples/fuma/mapping/annotations.tsv -text whitespace=cr-at-eol
+examples/fuma/mapping/candidates.tsv -text whitespace=cr-at-eol
+examples/fuma/mapping/consequences.tsv -text whitespace=cr-at-eol
+examples/fuma/mapping/eqtls.tsv -text whitespace=cr-at-eol
+examples/fuma/mapping/genes.tsv -text whitespace=cr-at-eol
+examples/fuma/mixed-namespace.txt -text whitespace=cr-at-eol
+examples/fuma/selected.txt -text whitespace=cr-at-eol
+examples/fuma/workflow/collections.tsv -text whitespace=cr-at-eol
+examples/fuma/workflow/gene-scores.tsv -text whitespace=cr-at-eol
+examples/fuma/workflow/genes.tsv -text whitespace=cr-at-eol
+examples/fuma/workflow/options.json -text whitespace=cr-at-eol
+examples/fuma/workflow/sets.gmt -text whitespace=cr-at-eol
+examples/fuma/workflow/variant-annotations.tsv -text whitespace=cr-at-eol
+examples/homer-core-workflow/background.fa -text whitespace=cr-at-eol
+examples/homer-core-workflow/motifs.motif -text whitespace=cr-at-eol
+examples/homer-core-workflow/targets.fa -text whitespace=cr-at-eol
+examples/homer-genome-workflow/prepare_inputs.py -text whitespace=cr-at-eol
+examples/minimac-workflow/.gitignore -text whitespace=cr-at-eol
+examples/minimac-workflow/check-current.json -text whitespace=cr-at-eol
+examples/minimac-workflow/check-legacy100.json -text whitespace=cr-at-eol
+examples/minimac-workflow/check-legacy102.json -text whitespace=cr-at-eol
+examples/minimac-workflow/check-min3.json -text whitespace=cr-at-eol
+examples/minimac-workflow/convert-current.json -text whitespace=cr-at-eol
+examples/minimac-workflow/impute-current.json -text whitespace=cr-at-eol
+examples/minimac-workflow/impute-legacy100.json -text whitespace=cr-at-eol
+examples/minimac-workflow/impute-legacy102.json -text whitespace=cr-at-eol
+examples/minimac-workflow/impute-min3.json -text whitespace=cr-at-eol
+examples/minimac-workflow/inspect-current.json -text whitespace=cr-at-eol
+examples/minimac-workflow/inspect-min3.json -text whitespace=cr-at-eol
+examples/minimac-workflow/prepare-current.json -text whitespace=cr-at-eol
+examples/minimac-workflow/prepare-min3.json -text whitespace=cr-at-eol
+examples/minimac-workflow/reference-haplotype-identities.tsv -text whitespace=cr-at-eol
+examples/minimac-workflow/reference-identities.tsv -text whitespace=cr-at-eol
+examples/minimac-workflow/target-identities.tsv -text whitespace=cr-at-eol
+examples/native-homer-scan/motifs.motif -text whitespace=cr-at-eol
+examples/native-homer-scan/sequences.fa -text whitespace=cr-at-eol
+examples/native-minimac-reference/legacy-shared.m3vcf -text whitespace=cr-at-eol
+examples/native-minimac-reference/reference.mvcf -text whitespace=cr-at-eol
+src/main/java/org/jlinalg/cli/HomerGenomeMatrices.java -text whitespace=cr-at-eol
+src/main/java/org/jlinalg/sequence/HomerGenomicSequences.java -text whitespace=cr-at-eol
+src/test/java/org/jlinalg/cli/HomerGenomeAuditTest.java -text whitespace=cr-at-eol
+src/test/java/org/jlinalg/cli/HomerGenomeCliTest.java -text whitespace=cr-at-eol
+src/test/java/org/jlinalg/cli/HomerGenomeDataTest.java -text whitespace=cr-at-eol
+src/test/java/org/jlinalg/cli/HomerGenomeMatricesTest.java -text whitespace=cr-at-eol
+src/test/java/org/jlinalg/sequence/HomerGenomicSequencesTest.java -text whitespace=cr-at-eol
+src/test/python/test_repeat_payload_installer.py -text whitespace=cr-at-eol
+src/test/resources/fuma-fisher-exact/input.tsv -text whitespace=cr-at-eol
+src/test/resources/fuma-fisher-exact/numerical-boundaries.tsv -text whitespace=cr-at-eol
+src/test/resources/fuma-fisher-exact/reference.R -text whitespace=cr-at-eol
+src/test/resources/fuma-fisher-exact/reference.tsv -text whitespace=cr-at-eol
+src/test/resources/fuma-fisher-families/families.tsv -text whitespace=cr-at-eol
+src/test/resources/fuma-fisher-families/input.tsv -text whitespace=cr-at-eol
+src/test/resources/fuma-fisher-families/reference.R -text whitespace=cr-at-eol
+src/test/resources/fuma-fisher-families/reference.tsv -text whitespace=cr-at-eol
+src/test/resources/fuma-fisher-families/source-counts.tsv -text whitespace=cr-at-eol
+src/test/resources/fuma-known-associations/input.tsv -text whitespace=cr-at-eol
+src/test/resources/fuma-known-associations/reference.R -text whitespace=cr-at-eol
+src/test/resources/fuma-known-associations/reference.tsv -text whitespace=cr-at-eol
+
+# Frozen PRS-CS original reference captures are covered by their local SHA256SUMS.
+src/test/resources/org/jlinalg/genetics/prscs-reference/** -text whitespace=cr-at-eol

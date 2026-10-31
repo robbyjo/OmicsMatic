@@ -151,12 +151,42 @@
         "matched_text": "ADMIXTURE",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
-        "version_reported_near_name": null,
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
+        "version_reported_near_name": "",
         "evidence_selection": "highest-scored-eligible-method-sentence",
         "evidence_paragraph_sha256": "34e6b95ab672c361f43f6c066fb422f71c57167f83be6c63f1f47311f421fe6c",
-        "use_summary": "Population ancestry mixture inference.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11964931/ (section: Methods / Human ancestry analyses)"
+        "use_summary": "Estimated ancestry-component proportions for ancient human individuals using continental reference populations and, separately, Indigenous American reference populations; both panel analyses selected K=5 by minimum cross-validation error.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11964931/ (section: Methods / Human ancestry analyses)",
+        "implementation_scope_note": "This describes human DNA, not the Treponema pathogen genomes. AdmixturePlotter is a separate named helper; the paragraph does not specify supervised mode, seeds, bootstrap settings or genotype ploidy coding. Subsequent F-statistics are separate analyses.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 11,
+            "paragraph_sha256": "e089a968f56d031a44e22f83f2d6de8c3593f7d98daea2599189184c81a7c7d4",
+            "section": "Diversity of T. pallidum genomes that predate 1492"
+          },
+          {
+            "paragraph_index": 36,
+            "paragraph_sha256": "4769120f0392c9a2110f0db580c095254388d9642559773b85df3df0533b41a9",
+            "section": "Methods / Human ancestry analyses"
+          }
+        ]
+      },
+      {
+        "tool_id": "admixtureplotter",
+        "tool": "AdmixturePlotter",
+        "analysis_role": "ADMIXTURE result handling and ancestry-component presentation",
+        "evidence_section": "Methods / Human ancestry analyses",
+        "evidence_paragraph_index": 35,
+        "matched_text": "AdmixturePlotter",
+        "extraction_score": 15,
+        "usage_context": "analysis-method-description",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
+        "version_reported_near_name": "",
+        "evidence_selection": "individually-reviewed-paragraph",
+        "evidence_paragraph_sha256": "34e6b95ab672c361f43f6c066fb422f71c57167f83be6c63f1f47311f421fe6c",
+        "use_summary": "Used AdmixturePlotter alongside ADMIXTURE to compare cross-validation errors and handle ancestry-component results for continental and Indigenous-American panels, both reporting K=5.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11964931/ (section: Methods / Human ancestry analyses)",
+        "implementation_scope_note": "The paragraph assigns the workflow jointly and does not separate this helper's fitting, run-orchestration or plotting responsibilities. No version, commands or exact helper settings are provided; it is not treated as the ADMIXTURE optimization engine."
       },
       {
         "tool_id": "beast2",
@@ -1410,12 +1440,14 @@
         "matched_text": "CellBender",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
-        "version_reported_near_name": null,
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
+        "version_reported_near_name": "",
         "evidence_selection": "highest-scored-eligible-method-sentence",
         "evidence_paragraph_sha256": "e618fddb7cadf8878d9449a2f3fc241ecf62f2e72679dc026770f098df054dda",
-        "use_summary": "Ambient count background removal.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12893920/ (section: Methods / Analysis of scRNA-seq data / Per-library analyses)"
+        "use_summary": "Inferred and subtracted ambient RNA contamination from each scRNA-seq expression matrix using CellBender after STARsolo alignment and quantification.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12893920/ (section: Methods / Analysis of scRNA-seq data / Per-library analyses)",
+        "implementation_scope_note": "The CellBender release and fitting parameters are unstated. Souporcell donor assignment, Scrublet doublet calling and gene/cell QC are separate downstream steps; STARsolo rather than Cell Ranger supplied the counts.",
+        "supporting_evidence": []
       },
       {
         "tool_id": "cellphonedb",
@@ -3243,12 +3275,14 @@
         "matched_text": "HOMER",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
-        "version_reported_near_name": null,
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
+        "version_reported_near_name": "unstated",
         "evidence_selection": "highest-scored-eligible-method-sentence",
         "evidence_paragraph_sha256": "e6b9a5addbea997bd8c8e393ce30362bb8606cd72b519d5c4af617479b892e79",
-        "use_summary": "Motif and regulatory enrichment analysis.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10765522/ (section: Methods / ATAC-seq / ATAC-seq data processing)"
+        "use_summary": "Called mm10 ATAC open-chromatin regions with HOMER region mode, a 150-bp fragment size and 300-bp peak size; generated replicate-merged 1-bp signal tracks normalized to ten million reads, with the reported 4-bp upstream Tn5 shift and paired-end fragment extension.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10765522/ (section: Methods / ATAC-seq / ATAC-seq data processing)",
+        "implementation_scope_note": "Peak calling, normalized coverage, read shifting and full-fragment extension are separate operations. The paragraph does not name a HOMER release or exact executable/track commands. Alignment, MAPQ30 filtering and duplicate removal are upstream steps, not supplied by a motif scanner.",
+        "supporting_evidence": []
       },
       {
         "tool_id": "nextflow",
@@ -3724,12 +3758,13 @@
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
         "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
-        "version_reported_near_name": null,
+        "version_reported_near_name": "",
         "evidence_selection": "individually-reviewed-paragraph",
         "evidence_paragraph_sha256": "9c8118766b33f79a66d1bf621a682101a9b9442e99509b3e236662890cd24e35",
-        "use_summary": "Used the FUMA web workflow around the reported MAGMA analysis. Defined previously known gene-trait associations using FUMA SNP2GENE/MAGMA and bulk TWAS, with FDR across traits; gene type all, custom MHC coordinates and symmetric50kb windows.",
+        "use_summary": "Used FUMA SNP2GENE/MAGMA to define previously known gene-trait associations alongside bulk DLPFC S-TWAS. The known set is their union after FDR correction across traits. Set gene type to all, custom MHC coordinates 28477797–33448354 and symmetric 50 kb windows after GRCh37 liftover.",
         "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13600940/ (section: Methods / Enrichment of novel genes)",
-        "implementation_scope_note": "Only the original MAGMA statistical stage is exposed here. FUMA annotation,clumping,web resources/uploads and historical options remain separate."
+        "implementation_scope_note": "The FUMA release is unstated. MungeSumstats preparation/liftover and subsequent two-sided Fisher enrichment with Bonferroni correction are separate stages; the MAGMA citation number is not a software version.",
+        "supporting_evidence": []
       },
       {
         "tool_id": "king",
@@ -3805,12 +3840,14 @@
         "matched_text": "Minimac4",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
-        "version_reported_near_name": null,
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
+        "version_reported_near_name": "4; patch unstated",
         "evidence_selection": "highest-scored-eligible-method-sentence",
         "evidence_paragraph_sha256": "41d6355a30dda16812b341a0151e6c85bffb9aa61a6d48667278080a18067d8f",
-        "use_summary": "Genotype imputation.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13600940/ (section: Methods / I-TWAS and snGReX-PheWAS in MVP / MVP genotype quality control)"
+        "use_summary": "Used MVP Release 4 genotypes whose core processing imputed against TOPMed using SHAPEIT4 4.1.3 and Minimac4 before ancestry-specific GWAS/TWAS genotype QC.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13600940/ (section: Methods / I-TWAS and snGReX-PheWAS in MVP / MVP genotype quality control)",
+        "implementation_scope_note": "The MVP data core supplied the imputed genotypes. Release 4 is the MVP data release; 4.1.3 is the SHAPEIT4 version, and EIGENSOFT6 is separate; none specifies a Minimac patch release. TOPMed panel access, phasing, ancestry assignment, QC and GReX estimation are separate.",
+        "supporting_evidence": []
       },
       {
         "tool_id": "mungesumstats",
@@ -4917,12 +4954,14 @@
         "matched_text": "CellBender",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
-        "version_reported_near_name": null,
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
+        "version_reported_near_name": "",
         "evidence_selection": "highest-scored-eligible-method-sentence",
         "evidence_paragraph_sha256": "ef268dfcf2bcabd4881279c841b1b65fe001095636f7860c545677da10f68d7f",
-        "use_summary": "Ambient count background removal.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13600946/ (section: Methods / Processing of snRNA-seq data / QC)"
+        "use_summary": "Checked possible ambient RNA contamination with CellBender within the snRNA-seq quality-control pipeline.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13600946/ (section: Methods / Processing of snRNA-seq data / QC)",
+        "implementation_scope_note": "The paragraph reports a contamination check, without a CellBender release, fitting options or an explicit statement that corrected counts replaced all input counts. Gene/UMI/MALAT1 and donor QC thresholds are separate operations.",
+        "supporting_evidence": []
       },
       {
         "tool_id": "harmony",
@@ -7700,12 +7739,30 @@
         "matched_text": "CellBender",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": "0.2.0",
         "evidence_selection": "highest-scored-eligible-method-sentence",
         "evidence_paragraph_sha256": "bbf1cfc8474da80b9e2cc28e63fcafcd827b36662211335a3e87dbbacbf24ab6",
-        "use_summary": "Ambient count background removal.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10764288/ (section: Methods / Slide-tags data preprocessing / snRNA-seq data)"
+        "use_summary": "Used CellBender 0.2.0 for background correction and cell calling in mouse embryo, human brain, tonsil and melanoma; expected cells followed Cell Ranger calls and 40,000 droplets were included, with learning rate 0.00005 when default cell probabilities were inadequate. The same processing was applied to multiome gene-expression counts.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10764288/ (section: Methods / Slide-tags data preprocessing / snRNA-seq data)",
+        "implementation_scope_note": "This is the reported historical 0.2.0 algorithm and a conditional learning-rate adjustment, not a current-runtime equivalence claim. Downstream spatial barcode matching and inferCNV reuse corrected counts/cell calls; Cell Ranger read processing, Seurat and spatial analysis remain separate.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 41,
+            "section": "Methods / Slide-tags data preprocessing / Multiomic snATAC-seq and snRNA-seq data",
+            "paragraph_sha256": "d5bc963c06fc96dd778f1fcdab60364b8d62932fd7621eaccc7ac88ddecb486b"
+          },
+          {
+            "paragraph_index": 42,
+            "section": "Methods / Slide-tags data preprocessing / Spatial barcode data",
+            "paragraph_sha256": "8deb9375269447ba1293128f3373b17607c394c1825ff18334eaf18b3dfcaa8b"
+          },
+          {
+            "paragraph_index": 76,
+            "section": "Methods / Melanoma analysis / Inferring CNV",
+            "paragraph_sha256": "034a81b5831bfba4ee59a73ae2c0aa0bbbea36e4d03860642011afd29cdfd111"
+          }
+        ]
       },
       {
         "tool_id": "cellranger",
@@ -8106,12 +8163,14 @@
         "matched_text": "HOMER",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
-        "version_reported_near_name": null,
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
+        "version_reported_near_name": "5.1",
         "evidence_selection": "highest-scored-eligible-method-sentence",
         "evidence_paragraph_sha256": "cf5e717c148917f5cb6f9ef14860d8162ad66088099b42dfef4bbdac84d68d5e",
-        "use_summary": "Motif and regulatory enrichment analysis.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13645638/ (section: Methods / Bulk RNA-seq of stimulated T cells)"
+        "use_summary": "Used HOMER 5.1 analyzeRepeats.pl to calculate raw exon counts and RPKM for RefSeq genes in stimulated CD8 T-cell bulk RNA-seq before DESeq2 1.48.2 differential expression.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13645638/ (section: Methods / Bulk RNA-seq of stimulated T cells)",
+        "implementation_scope_note": "This is exon-level gene quantification, not motif discovery. The RPKM eligibility rule and DESeq2 model, scaling and adjusted-P/fold-change criteria are downstream choices; RefSeq edition, read-strand and paired-fragment assignment details are unstated.",
+        "supporting_evidence": []
       },
       {
         "tool_id": "rsem",
@@ -8198,12 +8257,40 @@
         "matched_text": "ADMIXTURE",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": "1.3",
         "evidence_selection": "highest-scored-eligible-method-sentence",
         "evidence_paragraph_sha256": "0351fb16dbe68ea997ed06600b741838185c97cf7b480cc24a15a8bcca5059ae",
-        "use_summary": "Population ancestry mixture inference.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10733150/ (section: Methods / Ancestry inference)"
+        "use_summary": "Estimated global ancestry after merging with low-coverage 1000 Genomes and LD thinning, testing K=2..12 with CV and reporting K=6. Separately analyzed ancestry-masked data with K=2..8, with CV supporting K=4/5, and compared structure in other continental cohorts.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10733150/ (section: Methods / Ancestry inference)",
+        "implementation_scope_note": "The paper uses multiple datasets and K choices; the displayed seven-cluster plot is not a universal selected K. RFMIX performs local ancestry masking; PCA/F4 comparisons and geographic labels applied after clustering remain distinct. Exact 1.3 is reported; do not infer 1.3.0 or a historical seed.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 20,
+            "paragraph_sha256": "65da0509fed3678a818e3293bcdc62d0faedbebdaf7c720fab55d40448c74840",
+            "section": "Population structure"
+          },
+          {
+            "paragraph_index": 21,
+            "paragraph_sha256": "af1fff2ffbae4aea33c8ce01e339c2ddb9b31e8d49627cc57836d5e28e7a61f9",
+            "section": "Population structure"
+          },
+          {
+            "paragraph_index": 55,
+            "paragraph_sha256": "bc1c6dc9a6179fcf15d189bf5d014b8580519f7c1f6ab821cdc58fe6abf79133",
+            "section": "Methods / Ancestry inference"
+          },
+          {
+            "paragraph_index": 70,
+            "paragraph_sha256": "4cf987aad2cd98f49556c0461e0858b2d2743d8b6f35b6be56aca22c6e759f46",
+            "section": "Methods / Population structure"
+          },
+          {
+            "paragraph_index": 75,
+            "paragraph_sha256": "5820dcff4fe5be33f4be4ac7c1111c1476876f7e9cfd042fc2114e03579ceae3",
+            "section": "Methods / Population structure"
+          }
+        ]
       },
       {
         "tool_id": "bcftools",
@@ -9034,12 +9121,14 @@
         "matched_text": "HOMER",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": "4.11",
         "evidence_selection": "highest-scored-eligible-method-sentence",
         "evidence_paragraph_sha256": "df9c621ac10926c44e81517531b9a0399a085d52a62d812dd672fa26eab5d4ca",
-        "use_summary": "Motif and regulatory enrichment analysis.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11711094/ (section: Methods / ATAC-seq data processing)"
+        "use_summary": "Analysed DNA-binding-factor motifs in differential fetal-hepatocyte ATAC peaks using HOMER 4.11 after the peak atlas was expanded 500 bp on each side of the summit and differential peaks were selected with DESeq2.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11711094/ (section: Methods / ATAC-seq data processing)",
+        "implementation_scope_note": "The source does not identify the HOMER command, motif database, known-versus-de-novo mode or background. The summit expansion, differential analysis and heatmap are separate; do not infer motif-window defaults or a genome build from this paragraph.",
+        "supporting_evidence": []
       },
       {
         "tool_id": "htseq",
@@ -9196,12 +9285,13 @@
         "matched_text": "ADMIXTURE",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": "1.3.0",
         "evidence_selection": "highest-scored-eligible-method-sentence",
         "evidence_paragraph_sha256": "922084936f54248ab4f37ae4890d9b93192c1f8a18e6987610ce1db388b4df9c",
-        "use_summary": "Population ancestry mixture inference.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12872451/ (section: Methods / Analysis of pseudohaploidized data)"
+        "use_summary": "Used unsupervised ADMIXTURE 1.3.0 to estimate ancestry components from pseudohaploidized data for K=2..10, reporting 25 iterations for each K.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12872451/ (section: Methods / Analysis of pseudohaploidized data)",
+        "implementation_scope_note": "The wording does not resolve whether 25 means optimizer iterations or repeated starts. Haploid likelihood flags, conversion details, seeds and CV settings are unstated. Do not infer diploid or haploid model weighting from a homozygously coded input alone; PCA and f-statistics are separate."
       },
       {
         "tool_id": "bcftools",
@@ -9437,12 +9527,14 @@
         "matched_text": "CellBender",
         "extraction_score": 10,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": "0.3.2",
         "evidence_selection": "highest-scored-eligible-method-sentence",
         "evidence_paragraph_sha256": "8c5b65f79b06cb4c8d9972f73bd83ef339594c2c353cc74a74c44e380f7f3b6b",
-        "use_summary": "Ambient count background removal.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13668669/ (section: Methods / scRNA-seq analysis of oRG)"
+        "use_summary": "Removed ambient RNA from pooled gel bead-in-emulsions with CellBender 0.3.2 remove-background before downstream oRG scRNA-seq analysis.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13668669/ (section: Methods / scRNA-seq analysis of oRG)",
+        "implementation_scope_note": "Cell Ranger multi alignment/quantification, scDblFinder doublet scoring and Seurat normalization, cell-cycle regression and clustering are distinct. The CellBender fitting parameters are not reported here.",
+        "supporting_evidence": []
       },
       {
         "tool_id": "cellranger",
@@ -9615,12 +9707,20 @@
         "matched_text": "HOMER",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
-        "version_reported_near_name": null,
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
+        "version_reported_near_name": "unstated",
         "evidence_selection": "highest-scored-eligible-method-sentence",
         "evidence_paragraph_sha256": "ae2ddd5a92f43c7375d0c33a4219eb2e23595d719994c4018b172c1b0cb8b9cf",
-        "use_summary": "Motif and regulatory enrichment analysis.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13668669/ (section: Methods / TF motif enrichment analysis)"
+        "use_summary": "Ran HOMER findMotifsGenome.pl on cell-type-specific cCREs and differentially accessible regions with -size given and otherwise stated defaults, then retained significant-motif TFs with matching-cell-type RPKM greater than 10.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13668669/ (section: Methods / TF motif enrichment analysis)",
+        "implementation_scope_note": "Preserve actual region widths and the separate TF-expression filter. HOMER motif enrichment corroborates ASCL1/LHX2 accessibility associations; TOBIAS footprinting and its TF-binding differences are a separate analysis. No HOMER release, motif-set edition or explicit background is stated.",
+        "supporting_evidence": [
+          {
+            "section": "Regulatory landscapes of vRG and oRG",
+            "paragraph_index": 11,
+            "paragraph_sha256": "b61bff4df9acb07034737304f5800755bea77abc9f74d00979c4c3c583e7f244"
+          }
+        ]
       },
       {
         "tool_id": "hprep",
@@ -10093,12 +10193,14 @@
         "matched_text": "CellBender",
         "extraction_score": 10,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": "0.1.0",
         "evidence_selection": "highest-scored-eligible-method-sentence",
         "evidence_paragraph_sha256": "37aa8e3a444db74b088259a6ef098cdee9021497bc23bf63d8f4622928d06eb5",
-        "use_summary": "Ambient count background removal.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11779626/ (section: Methods / Human scRNA-seq analysis)"
+        "use_summary": "Processed raw human scRNA-seq gene-expression matrices with CellBender 0.1.0 to remove ambient RNA before DoubletDetection and SCANPY analysis.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11779626/ (section: Methods / Human scRNA-seq analysis)",
+        "implementation_scope_note": "The historical 0.1.0 release is explicit; modern CellBender execution cannot be labeled reproduction of this older algorithm. Doublet removal, QC, Harmony, Leiden, expression testing and gene scores are downstream tools.",
+        "supporting_evidence": []
       },
       {
         "tool_id": "cellranger",
@@ -10261,12 +10363,14 @@
         "matched_text": "CellBender",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": "0.3.0",
         "evidence_selection": "highest-scored-eligible-method-sentence",
         "evidence_paragraph_sha256": "8f03c054c747e967ac5f6ed3f4e0fff7b8f812598175b5d6614490432f358ea7",
-        "use_summary": "Ambient count background removal.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13668678/ (section: Methods / Human tissue / Data preprocessing and quality control)"
+        "use_summary": "Removed ambient RNA and other background from Cell Ranger count matrices with CellBender 0.3.0 using 150 epochs, false-positive rate 0.01 and learning rate 0.0001.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13668678/ (section: Methods / Human tissue / Data preprocessing and quality control)",
+        "implementation_scope_note": "Seurat integration, scDblFinder doublet detection and subsequent nucleus/gene/mitochondrial filters are separate. These parameters describe CellBender 0.3.0; exact sample matrices and runtime dependencies are additional inputs.",
+        "supporting_evidence": []
       },
       {
         "tool_id": "cellranger",
@@ -10603,12 +10707,20 @@
         "matched_text": "HOMER",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
-        "version_reported_near_name": null,
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
+        "version_reported_near_name": "unstated",
         "evidence_selection": "highest-scored-eligible-method-sentence",
         "evidence_paragraph_sha256": "7c82ee1cdcd75de24dc88a845a82d71b4343a5d28abfa3fbfe76d9a1852c88fa",
-        "use_summary": "Motif and regulatory enrichment analysis.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10781626/ (section: Methods / ChIP coupled with Illumina sequencing / Library preparation, sequencing and data analysis (Arraystar))"
+        "use_summary": "Used HOMER annotatePeaks in nf-core analyses to classify Toxoplasma gondii ME49 ChIP-seq and ATAC-seq peak distributions relative to gene features.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10781626/ (section: Methods / ChIP coupled with Illumina sequencing / Library preparation, sequencing and data analysis (Arraystar))",
+        "implementation_scope_note": "The ChIP workflow and ATAC workflow are distinct. MACS2 calls peaks; featureCounts and DESeq2 quantify and compare annotated ATAC peaks. Do not relabel annotation as HOMER peak calling or motif analysis. The exact HOMER version, feature annotation edition and annotation flags are unstated.",
+        "supporting_evidence": [
+          {
+            "section": "Methods / ATAC–seq",
+            "paragraph_index": 47,
+            "paragraph_sha256": "e12f052ce57697b8e37d8ec7c8a80fa989609538f6306ff7fa68796b68b05b62"
+          }
+        ]
       },
       {
         "tool_id": "limma",
@@ -11669,12 +11781,14 @@
         "matched_text": "HOMER",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
-        "version_reported_near_name": null,
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
+        "version_reported_near_name": "unstated",
         "evidence_selection": "highest-scored-eligible-method-sentence",
         "evidence_paragraph_sha256": "c3b96d553eb4dad9f77c73f39e26baed7ac86891c044e2d0895ac03697734626",
-        "use_summary": "Motif and regulatory enrichment analysis.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10719095/ (section: Methods / Droplet paired-tag / Annotation of TEs and TSS proximity)"
+        "use_summary": "Used HOMER annotatePeaks.pl with hg38 to annotate transposable-element association and TSS proximity for human DMRs, peaks, loops and boundaries, and repeated TE annotation for mouse ATAC peaks with mm10.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10719095/ (section: Methods / Droplet paired-tag / Annotation of TEs and TSS proximity)",
+        "implementation_scope_note": "The source includes several region classes, not just peaks. Species/build-specific TE annotations and transcript/TSS resources must remain explicit. It does not report HOMER version, exact annotation database editions or motif discovery.",
+        "supporting_evidence": []
       },
       {
         "tool_id": "ldsc",
@@ -12122,12 +12236,14 @@
         "matched_text": "CellBender",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": "3-alpha",
         "evidence_selection": "highest-scored-eligible-method-sentence",
         "evidence_paragraph_sha256": "46ed356a262b86b6f99abb449aaa6da467e7cb9894d269b047ef0431fd9934b2",
-        "use_summary": "Ambient count background removal.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10719111/ (section: Methods / Brain preparation / Construction of the brain-wide snRNA-seq dataset / snRNA-seq reads pre-processing)"
+        "use_summary": "Used the reported CellBender v.3-alpha during brain-wide snRNA-seq preprocessing after intron-inclusive Cell Ranger alignment, described as removing cells contaminated with ambient RNA.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10719111/ (section: Methods / Brain preparation / Construction of the brain-wide snRNA-seq dataset / snRNA-seq reads pre-processing)",
+        "implementation_scope_note": "Retain the literal 3-alpha version label and the authors' cell-removal wording. The exact alpha commit, options and distinction between corrected counts and cell exclusion are unstated; do not normalize this to stable 0.3.0 or infer an independent contamination-cell threshold.",
+        "supporting_evidence": []
       },
       {
         "tool_id": "cellranger",
@@ -12559,12 +12675,14 @@
         "matched_text": "CellBender",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": "0.2.1",
         "evidence_selection": "highest-scored-eligible-method-sentence",
         "evidence_paragraph_sha256": "966ce6d437f6caa97336263121118ae90fbb0706f9de202642541e87aca8fe24",
-        "use_summary": "Ambient count background removal.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10719099/ (section: Methods / snRNA-seq / snRNA-seq preprocessing, quality control and removal of second-order nuclei)"
+        "use_summary": "Removed ambient RNA from each snRNA-seq sample with CellBender 0.2.1 remove-background using reported default parameters, before merging and downstream Seurat processing.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10719099/ (section: Methods / snRNA-seq / snRNA-seq preprocessing, quality control and removal of second-order nuclei)",
+        "implementation_scope_note": "The historical release is explicit. Mitochondrial/gene-count filtering, normalization, PCA, Louvain and UMAP belong to downstream Seurat steps and are not CellBender options.",
+        "supporting_evidence": []
       },
       {
         "tool_id": "cellranger",
@@ -14824,12 +14942,13 @@
         "matched_text": "ADMIXTURE",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
-        "version_reported_near_name": null,
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
+        "version_reported_near_name": "",
         "evidence_selection": "highest-scored-eligible-method-sentence",
         "evidence_paragraph_sha256": "5cd46a280dfcf0357371ffdc839d279716c06b3dfbdc9aab2f20117b42fad9b8",
-        "use_summary": "Population ancestry mixture inference.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12711557/ (section: Methods / Population structure analysis)"
+        "use_summary": "Estimated individual ancestry using selected present-day comparison populations and 597,573 LD-pruned SNPs. Tested K=2..10 with ten different-seed runs per K and chose K by the lowest CV error.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12711557/ (section: Methods / Population structure analysis)",
+        "implementation_scope_note": "The ADMIXTURE version, exact seeds, fold count and how errors were aggregated across starts are unstated. PCA projection and PLINK pruning are separate steps; the ADMIXTURE routine itself is not an ancient-sample PCA projector."
       },
       {
         "tool_id": "ancibd",
@@ -15000,12 +15119,13 @@
         "matched_text": "Eagle2",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": null,
         "evidence_selection": "highest-scored-eligible-method-sentence",
         "evidence_paragraph_sha256": "2ac8b9104011353f67062a22da968cdaf440266a2c2fdde45a5f1041686d70fa",
-        "use_summary": "Genotype phasing.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10786718/ (section: Methods / 23andMe diverse ancestry data)"
+        "use_summary": "Phased 23andMe genotypes using Finch or Eagle2 before Minimac3 imputation with combined 1000 Genomes Phase III and UK10K reference data.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10786718/ (section: Methods / 23andMe diverse ancestry data)",
+        "implementation_scope_note": "The paper allows either Finch or Eagle2 and does not assign an engine to each sample or platform. The phasing edition and complete options are unstated; genotype QC, ancestry classification, imputation and association are separate operations."
       },
       {
         "tool_id": "fuma",
@@ -15020,9 +15140,21 @@
         "version_reported_near_name": "1.3.8",
         "evidence_selection": "individually-reviewed-paragraph",
         "evidence_paragraph_sha256": "e0dad4c9303653ce749ebed9bb25a6bb4810b1dd60834504eda69235180286c6",
-        "use_summary": "Used the FUMA web workflow around the reported MAGMA analysis. Used MAGMA gene,competitive gene-set and gene-property analyses with an ancestry-proportioned custom1000Genomes panel,MSigDB7,GTEx8 and single-cell expression. Applied BH-FDR and conditional reanalysis of significant terms.",
+        "use_summary": "Used FUMA 1.3.8 to define risk loci with LD thresholds 0.6 and 0.1 and a 250 kb merge distance, then annotate variants with ANNOVAR and run MAGMA gene, gene-set and gene-property analyses. Used MSigDB 7.0 with 16992 terms, GTEx 8 and single-cell expression, BH-FDR below 0.05, conditional reanalysis and default GENE2FUNC follow-up.",
         "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10786718/ (section: Methods / Functional annotation and GSEA)",
-        "implementation_scope_note": "Only the original MAGMA statistical stage is exposed here. FUMA annotation,clumping,web resources/uploads and historical options remain separate."
+        "implementation_scope_note": "The clumping reference is 1000 Genomes ALL ancestries; the ancestry-proportioned custom reference belongs to MAGMA. DropViz mouse and human ventral midbrain expression remain distinct data sources. Do not apply either reference universally or infer unenumerated GENE2FUNC defaults.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 20,
+            "paragraph_sha256": "de3338ee6c07ca370b144c63bf58fbf750535a9955ddca5e267bcb0b3afb911a",
+            "section": "Methods / MAMA"
+          },
+          {
+            "paragraph_index": 7,
+            "paragraph_sha256": "e5d366e5b6504f4d8525c6a078d971cc65886d6862c6ef72478860a9b76db9b5",
+            "section": "Gene set analysis finds enrichment in brain tissues"
+          }
+        ]
       },
       {
         "tool_id": "ldsc",
@@ -15066,12 +15198,14 @@
         "matched_text": "Minimac3",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
-        "version_reported_near_name": null,
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
+        "version_reported_near_name": "3; patch unstated",
         "evidence_selection": "highest-scored-eligible-method-sentence",
         "evidence_paragraph_sha256": "2ac8b9104011353f67062a22da968cdaf440266a2c2fdde45a5f1041686d70fa",
-        "use_summary": "Genotype imputation.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10786718/ (section: Methods / 23andMe diverse ancestry data)"
+        "use_summary": "The 23andMe data pipeline phased array genotypes using Finch or Eagle2, then imputed with Minimac3 using a combined 1000 Genomes Phase III/UK10K reference described on GRCh38 before ancestry-stratified Parkinson disease association.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10786718/ (section: Methods / 23andMe diverse ancestry data)",
+        "implementation_scope_note": "Minimac3 is the reported family; do not silently substitute Minimac4. The proprietary cohort pipeline, combined reference construction, prephasing and logistic association are separate. No Minimac3 patch release or fitting options are stated.",
+        "supporting_evidence": []
       },
       {
         "tool_id": "mrmega",
@@ -16871,12 +17005,13 @@
         "matched_text": "Eagle2",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": null,
         "evidence_selection": "highest-scored-eligible-method-sentence",
         "evidence_paragraph_sha256": "2004d3dfe2b8afc6970cc43601d7d0e0179f3afdcd454b9d95d027bfc694fedb",
-        "use_summary": "Genotype phasing.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10786715/ (section: Methods / Genotyping, quality control and imputation in screening cohort)"
+        "use_summary": "Used Eagle2 with Minimac4 in a local Michigan Imputation Server 1.5.7 pipeline with the 1000G Phase3 v5 reference panel.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10786715/ (section: Methods / Genotyping, quality control and imputation in screening cohort)",
+        "implementation_scope_note": "The server edition is not an Eagle edition. Earlier QC and later MAF, PCA and relatedness filters belong to the surrounding pipeline; a complete Eagle command and the phasing reference mode are not reported."
       },
       {
         "tool_id": "impute",
@@ -16920,12 +17055,36 @@
         "matched_text": "Minimac4",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
-        "version_reported_near_name": null,
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
+        "version_reported_near_name": "4; patch unstated; server1.5.7",
         "evidence_selection": "highest-scored-eligible-method-sentence",
         "evidence_paragraph_sha256": "2004d3dfe2b8afc6970cc43601d7d0e0179f3afdcd454b9d95d027bfc694fedb",
-        "use_summary": "Genotype imputation.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10786715/ (section: Methods / Genotyping, quality control and imputation in screening cohort)"
+        "use_summary": "Imputed the screening cohort through a local Michigan Imputation Server 1.5.7 using Eagle2, Minimac4 and 1000G Phase3 v5; MGB Biobank batches were separately imputed through the server with that reference.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10786715/ (section: Methods / Genotyping, quality control and imputation in screening cohort)",
+        "implementation_scope_note": "Server 1.5.7 is not a Minimac release. Screening post-imputation MAF filtering and batch intersection/QC are separate. The UKBB paragraph instead describes SHAPEIT/IMPUTE2 but labels its QC score Minimac r2<0.4; retain this attribution tension and do not invent an additional Minimac run or repair the stated MAC inequality.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 39,
+            "section": "Methods / Genotyping, quality control and imputation in MGB Biobank cohort",
+            "paragraph_sha256": "9bb77ee20c101e335cb02668ba10553e1be70b27145186c782b6d45057edb668",
+            "evidence_role": "method-details",
+            "named_anchor": {
+              "paragraph_index": 38,
+              "section": "Methods / Genotyping, quality control and imputation in screening cohort",
+              "paragraph_sha256": "2004d3dfe2b8afc6970cc43601d7d0e0179f3afdcd454b9d95d027bfc694fedb"
+            },
+            "shared_terms": [
+              "Michigan Imputation Server",
+              "1000G Phase3 v5"
+            ],
+            "relation_note": "Adjacent screening/MGB genotype-imputation sections use the same named server and reference panel. Minimac4 is named in the screening paragraph; the MGB paragraph supports a separate server/batch role without restating a Minimac executable version."
+          },
+          {
+            "paragraph_index": 40,
+            "section": "Methods / Genotyping, quality control and imputation in UKBB cohort",
+            "paragraph_sha256": "788a227d8e5886f3064cbaa0b6ce3ddf496b515f546459304f91e11aba23c2f7"
+          }
+        ]
       },
       {
         "tool_id": "plink",
@@ -17017,12 +17176,20 @@
         "matched_text": "Cellbender",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
-        "version_reported_near_name": null,
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
+        "version_reported_near_name": "0.2.0",
         "evidence_selection": "highest-scored-eligible-method-sentence",
         "evidence_paragraph_sha256": "49ba3bf3fe59a11cb146e8c756baf95298604ff56be626ea59df4c768a31b893",
-        "use_summary": "Ambient count background removal.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11631771/ (section: Methods / Preprocessing gene expression data)"
+        "use_summary": "Quantified and corrected ambient RNA with CellBender 0.2.0 remove-background in Parse-derived snRNA-seq count matrices; also corrected ambient RNA per sample while uniformly reprocessing three published datasets quantified with kallisto bustools.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11631771/ (section: Methods / Preprocessing gene expression data)",
+        "implementation_scope_note": "Input quantification differs between new and reprocessed data. The new-data release is 0.2.0, while the reprocessing paragraph does not restate a release or full options. Scrublet, percentile QC and downstream SCANPY/Harmony are separate steps.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 33,
+            "section": "Methods / Reprocessing publicly available single-nucleus gene expression datasets",
+            "paragraph_sha256": "88e9de5ba53dbdfd71b23673969dd1e224b8164b4321527b0880b26d183ad290"
+          }
+        ]
       },
       {
         "tool_id": "cellchat",
@@ -17687,12 +17854,14 @@
         "matched_text": "CellBender",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
-        "version_reported_near_name": null,
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
+        "version_reported_near_name": "",
         "evidence_selection": "highest-scored-eligible-method-sentence",
         "evidence_paragraph_sha256": "ca73da3366c42e108fc5d2dea1101a2355301c42742888d0c2c96ac77385e033",
-        "use_summary": "Ambient count background removal.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11631763/ (section: Methods / Single-cell expression and DE)"
+        "use_summary": "Reused published DCM-versus-control differential-expression results derived from CellBender-adjusted counts, requiring adjusted two-sided P below 0.05 and absence of the published background-contamination flag for that source dataset.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11631763/ (section: Methods / Single-cell expression and DE)",
+        "implementation_scope_note": "This paragraph establishes reuse of previously analyzed results, not a new CellBender run. The contamination flag and transcriptome-wide P threshold govern published DE-result selection, not CellBender false-positive rate. The release and original fitting parameters are unstated.",
+        "supporting_evidence": []
       },
       {
         "tool_id": "coloc",
@@ -17719,12 +17888,30 @@
         "matched_text": "FUMA",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
-        "version_reported_near_name": null,
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
+        "version_reported_near_name": "1.6.1",
         "evidence_selection": "highest-scored-eligible-method-sentence",
         "evidence_paragraph_sha256": "f0a190fbf38ffea904446a863bca1c69e91d21273b664c27ea6beaa2c337b373",
-        "use_summary": "Functional mapping, annotation and gene prioritization.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11631763/ (section: Methods / Locus definitions, variant annotation and gene prioritization / Functional mapping and annotation processing and annotation)"
+        "use_summary": "Used FUMA 1.6.1 for GWAS-DCM and MTAG-DCM locus analysis with lead P < 5e-8, r-squared < 0.05, a 1000 Genomes Phase 3 European reference and 1 Mb locus merging; used its MAGMA 1.08/GTEx 8 and ANNOVAR annotation. GENE2FUNC tested 63 prioritized genes against Ensembl 102 protein-coding background with at least two overlaps and two-stage BKY adjusted one-sided P < 0.05.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11631763/ (section: Methods / Locus definitions, variant annotation and gene prioritization / Functional mapping and annotation processing and annotation)",
+        "implementation_scope_note": "The coding-variant follow-up uses r-squared > 0.65. Open Targets 22.10 nearest-gene prioritization is separate. The software list also reports standalone MAGMA 1.10; that must not replace MAGMA 1.08 in the FUMA workflow. The availability list corroborates versions rather than independently proving execution.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 29,
+            "paragraph_sha256": "88f148ca12408cc2c9c72a0b2898f238cd4990fce687fa74276971581968f41d",
+            "section": "Methods / Locus definitions, variant annotation and gene prioritization / Protein-altering variation and closest protein-coding gene"
+          },
+          {
+            "paragraph_index": 35,
+            "paragraph_sha256": "a2d80649b71acbe994a999c13466741885ae420362dc731c35a6bff76261e17c",
+            "section": "Methods / Gene set enrichment analyses"
+          },
+          {
+            "paragraph_index": 59,
+            "paragraph_sha256": "d899670986e0a999c90da1503e94e761b1f366bd826bef02c289518666aa4cac",
+            "section": "Code availability"
+          }
+        ]
       },
       {
         "tool_id": "gprofiler",
@@ -18752,12 +18939,13 @@
         "matched_text": "Eagle",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": null,
         "evidence_selection": "highest-scored-eligible-method-sentence",
         "evidence_paragraph_sha256": "1d14040434dc11ee0f9c3f474554e1f94676a4c1af69375d80c41dd359e36739",
-        "use_summary": "Genotype phasing.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13649587/ (section: Methods / Genotyping and quality control)"
+        "use_summary": "Combined GLIMPSE2 and Eagle to infer individual genotypes from single-cell ATAC-seq reads.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13649587/ (section: Methods / Genotyping and quality control)",
+        "implementation_scope_note": "The paragraph delegates the complete workflow and QC to a supplementary note. It does not establish the Eagle edition, input conversion, phasing mode or exact order of all steps; GLIMPSE2 and read processing remain separate."
       },
       {
         "tool_id": "glimpse",
@@ -19791,12 +19979,14 @@
         "matched_text": "Minimac3",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
-        "version_reported_near_name": null,
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
+        "version_reported_near_name": "3; patch unstated",
         "evidence_selection": "highest-scored-eligible-method-sentence",
         "evidence_paragraph_sha256": "c100ba29c458b9dc8835dcae695a3a00a06ab6d096236cdc52cd02f9e0fbe7cc",
-        "use_summary": "Genotype imputation.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12695657/ (section: Methods / Genotyping)"
+        "use_summary": "Received chromosome-wise GRCh37 VCF genotypes for1, 980 Tarkin participants previously imputed using Minimac3 without indels, and performed subsequent biallelic selection, BCFtools naming and PLINK2 sample/variant QC.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12695657/ (section: Methods / Genotyping)",
+        "implementation_scope_note": "This is receipt/reuse of already imputed genotypes, not evidence of a new Minimac execution in this study. The reference panel, Minimac3 patch release and fitting settings are unstated; the separate QMDiab imputation description does not supply them.",
+        "supporting_evidence": []
       },
       {
         "tool_id": "plink",
@@ -20626,12 +20816,25 @@
         "matched_text": "ADMIXTURE",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": "1.3.0",
         "evidence_selection": "highest-scored-eligible-method-sentence",
         "evidence_paragraph_sha256": "6d69501e516d976d542a3eee50f5ae85b918cca544bf063586893c419a0a6190",
-        "use_summary": "Population ancestry mixture inference.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10703678/ (section: Methods / Phylogeny and population structure)"
+        "use_summary": "Ran ADMIXTURE 1.3.0 for K=2..15 on 57,930 LD-pruned broomcorn-millet SNPs and compared inferred groups with DAPC, fastSTRUCTURE and STRUCTURE before summarizing four population clusters.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10703678/ (section: Methods / Phylogeny and population structure)",
+        "implementation_scope_note": "The four-cluster conclusion combines multiple methods; the paragraph does not state an ADMIXTURE CV criterion, seeds, replicate count or bootstrap settings. Crop genotype coding and biological ploidy must be declared rather than inferred by an adapter.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 4,
+            "paragraph_sha256": "2f0db2e1c8a51f24d4e890c7791c94719423ab420e498c35ac536bb47cabf186",
+            "section": "Results / Genome sequence, genetic diversity and population structure"
+          },
+          {
+            "paragraph_index": 5,
+            "paragraph_sha256": "d1c6046bb010a68f20507a2a39add4886358929acc38c05e8fa04a45ba7ff625",
+            "section": "Results / Genome sequence, genetic diversity and population structure"
+          }
+        ]
       },
       {
         "tool_id": "annovar",
@@ -21503,12 +21706,14 @@
         "matched_text": "CellBender",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": "0.4.0",
         "evidence_selection": "highest-scored-eligible-method-sentence",
         "evidence_paragraph_sha256": "839ad763ce25a4128054b729506dd4d35e62970526d8200a40c178672c757684",
-        "use_summary": "Ambient count background removal.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13649572/ (section: Methods / Sample selection and preprocessing)"
+        "use_summary": "Initially assessed ambient RNA and random barcode-swapping contamination with CellBender 0.4.0 and reported no significant ambient contamination; a separate SoupX analysis supported that assessment.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13649572/ (section: Methods / Sample selection and preprocessing)",
+        "implementation_scope_note": "The source reports a null contamination assessment, not evidence that all matrices were denoised with CellBender. SoupX 1.6.2 is a distinct validation method; CellBender fitting options are unstated.",
+        "supporting_evidence": []
       },
       {
         "tool_id": "coloc",
@@ -21828,12 +22033,13 @@
         "matched_text": "Eagle2",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": "2.4.1",
         "evidence_selection": "highest-scored-eligible-method-sentence",
         "evidence_paragraph_sha256": "4749264432f1fc14f835c61c2b0917852da936d8f095071b936a758f1b0a449d",
-        "use_summary": "Genotype phasing.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10703676/ (section: Methods / Genotyping and imputation)"
+        "use_summary": "Pre-phased with Eagle2 2.4.1 before Minimac4 1.0.2 imputation; chromosome-X haplotypes and sex-specific imputation are described separately.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10703676/ (section: Methods / Genotyping and imputation)",
+        "implementation_scope_note": "The imputation panels include 1000 Genomes Phase3 v5 and selected high-coverage GRCh38 data. Do not assume these specify an Eagle reference-panel command. Sex/ploidy, build, genetic map and unreported phasing options require explicit declarations."
       },
       {
         "tool_id": "fuma",
@@ -21848,9 +22054,16 @@
         "version_reported_near_name": "1.3.8",
         "evidence_selection": "individually-reviewed-paragraph",
         "evidence_paragraph_sha256": "c07f38afcdc3ff996c9f750be29932543b9b453c98250d7b0bcf1e31110b577e",
-        "use_summary": "Used the FUMA web workflow around the reported MAGMA analysis. Used MAGMA1.08 through FUMA1.3.8 with a1000Genomes EastAsian LD panel,19033 protein-coding genes and15485 MSigDB7 gene sets; compared analyses across annotation-window choices.",
+        "use_summary": "Used FUMA 1.3.8/MAGMA 1.08 with a 1000 Genomes East Asian LD reference, 19033 Ensembl 92 protein-coding genes and 15485 MSigDB 7.0 gene sets. Compared annotation-window choices and tested GTEx 8 gene-property enrichment across 54 tissues and 30 general tissue types at FDR < 5%.",
         "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10703676/ (section: Methods / Gene-based analysis and pathway analyses)",
-        "implementation_scope_note": "Only the original MAGMA statistical stage is exposed here. FUMA annotation,clumping,web resources/uploads and historical options remain separate."
+        "implementation_scope_note": "The Ensembl reference citation number is not an alternate annotation release. The primary paragraph does not enumerate the compared window sizes. Tissue gene-property tests differ from gene-list overrepresentation.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 62,
+            "paragraph_sha256": "c711660a464e0490b67c5f347f9c045862975e06d09e5ad65e41a275e4a5e635",
+            "section": "Methods / Tissue- and cell-type specificity analysis"
+          }
+        ]
       },
       {
         "tool_id": "gcta",
@@ -21974,12 +22187,14 @@
         "matched_text": "Minimac4",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": "1.0.2",
         "evidence_selection": "highest-scored-eligible-method-sentence",
         "evidence_paragraph_sha256": "4749264432f1fc14f835c61c2b0917852da936d8f095071b936a758f1b0a449d",
-        "use_summary": "Genotype imputation.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10703676/ (section: Methods / Genotyping and imputation)"
+        "use_summary": "Prephased with Eagle2 2.4.1 and imputed using Minimac4 1.0.2 against1000 Genomes Phase3 v5 ALL; BBJ1-12K/BBJ2-42K also used the GRCh38 high-coverage 1000 Genomes panel. Chromosome X was phased and imputed separately in men and women; association excluded R2 < 0.3.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10703676/ (section: Methods / Genotyping and imputation)",
+        "implementation_scope_note": "Retain the historical executable1.0.2 and separate panel/build analyses. Male/female and chromosome X/PAR ploidy choices must be explicit; do not infer them from sex labels or force diploid calls. Eagle2 is separate. The R2 filter is not a P-value or a measured per-person genotype accuracy.",
+        "supporting_evidence": []
       },
       {
         "tool_id": "mrmega",
@@ -22366,9 +22581,10 @@
         "version_reported_near_name": "1.6.1",
         "evidence_selection": "individually-reviewed-paragraph",
         "evidence_paragraph_sha256": "9dd47e15762e7e52cd3ee8d305da7a21f156a081d8582baa73e891255f224d7f",
-        "use_summary": "Used the FUMA web workflow around the reported MAGMA analysis. Used MAGMA1.08 through FUMA1.6.1 separately per meta-analysis stratum with0kb and35kb-upstream/10kb-downstream windows, after VEP rsID assignment and Picard build37 liftover.",
+        "use_summary": "Ran FUMA 1.6.1/MAGMA 1.08 for each meta-analysis stratum after VEP 112 rsID assignment and Picard LiftOverVcf 3.1.1 conversion to GRCh37. Compared 0 kb gene windows against 35 kb upstream/10 kb downstream windows, and declared pathways at q < 0.05 in either analysis.",
         "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13649558/ (section: Methods / Pathway analysis)",
-        "implementation_scope_note": "Only the original MAGMA statistical stage is exposed here. FUMA annotation,clumping,web resources/uploads and historical options remain separate."
+        "implementation_scope_note": "The source describes the BH-FDR denominator using the gene count. Retain this ambiguity and the two-window declaration rule rather than substituting a pathway-family or across-window correction. No-rsID and failed-liftover variants are removed before FUMA.",
+        "supporting_evidence": []
       },
       {
         "tool_id": "heidi",
@@ -22637,12 +22853,13 @@
         "matched_text": "Eagle",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": "2.4",
         "evidence_selection": "highest-scored-eligible-method-sentence",
         "evidence_paragraph_sha256": "6c0b9a45df9fa2061912cfc06d72d36f69220ff241514b3b84717af398b4ba62",
-        "use_summary": "Genotype phasing.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10703692/ (section: Methods / Adult brain reference panel processing and model training)"
+        "use_summary": "Phased array batches with Eagle 2.4 through TOPMed Imputation Server before Minimac4 imputation using the TOPMed reference panel.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10703692/ (section: Methods / Adult brain reference panel processing and model training)",
+        "implementation_scope_note": "Post-imputation filtering, merging, duplicate-sample selection and HapMap3 restriction are separate stages. The TOPMed imputation panel does not by itself specify all Eagle inputs or options."
       },
       {
         "tool_id": "edger",
@@ -22702,12 +22919,20 @@
         "matched_text": "minimac4",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
-        "version_reported_near_name": null,
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
+        "version_reported_near_name": "4; patch unstated",
         "evidence_selection": "highest-scored-eligible-method-sentence",
         "evidence_paragraph_sha256": "5885d1aff6d0c385cd4aef8d4c88f5d6e2d56fce26b3023508ce02e5c6604195",
-        "use_summary": "Genotype imputation.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10703692/ (section: Methods / Developmental brain reference panel processing and model training)"
+        "use_summary": "Imputed developmental-brain genotypes to TOPMed Freeze5 using Minimac4 and Eagle 2.4, retaining biallelic rsID SNPs with R2 > 0.8. Adult-brain array batches were sent to the TOPMed server, phased with Eagle 2.4 and imputed with Minimac4/TOPMed before cross-array intersection and further QC.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10703692/ (section: Methods / Developmental brain reference panel processing and model training)",
+        "implementation_scope_note": "TOPMed Freeze5 is a panel edition, not a Minimac release. Developmental and adult/batch workflows remain distinct; their exact panel resources, phasing, MAF/HWE/missingness QC, HapMap3 selection and TWAS model training are not supplied by imputation alone. Preserve strict R2 > 0.8.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 50,
+            "section": "Methods / Adult brain reference panel processing and model training",
+            "paragraph_sha256": "6c0b9a45df9fa2061912cfc06d72d36f69220ff241514b3b84717af398b4ba62"
+          }
+        ]
       },
       {
         "tool_id": "peer",
@@ -22878,12 +23103,20 @@
         "matched_text": "ADMIXTURE",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": "1.3",
         "evidence_selection": "highest-scored-eligible-method-sentence",
         "evidence_paragraph_sha256": "4d0e8a5075ed923e59070566a045512db61f3a8a3758b82e793f9ada1d003d73",
-        "use_summary": "Population ancestry mixture inference.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11631756/ (section: Methods / Population genetic analyses)"
+        "use_summary": "Analyzed population structure in 466 grape accessions with ADMIXTURE 1.3 using block relaxation and cross-validation over K=2..8; Results compare cultivar groups with PHATE.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11631756/ (section: Methods / Population genetic analyses)",
+        "implementation_scope_note": "No optimal K, fold count, seeds or repeat count is specified here. IQ-TREE, PLINK PCA and PHATE are distinct analyses; source 1.3 is not silently treated as 1.3.0.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 9,
+            "paragraph_sha256": "84ba8c42a6c64a102e031527ec38334b504e555811e52ce300abe09d6fc52fbf",
+            "section": "Results / Grapepan v.1.0-based population structure of grapevine"
+          }
+        ]
       },
       {
         "tool_id": "clusterprofiler",
@@ -23708,12 +23941,20 @@
         "matched_text": "Minimac4",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
-        "version_reported_near_name": null,
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
+        "version_reported_near_name": "4 for MVP; iPSYCH release unstated",
         "evidence_selection": "highest-scored-eligible-method-sentence",
         "evidence_paragraph_sha256": "a21c84b37df17d86d2f2ab1585acf58195a5af027c167e88767277a1b88c7d43",
-        "use_summary": "Genotype imputation.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10703690/ (section: Methods / MVP genotyping, imputation, quality control, and GWAS and meta-analysis)"
+        "use_summary": "MVP biallelic SNPs were imputed using Minimac4 with the African Genome Resources panel; indels/complex variants were imputed independently with 1000 Genomes Phase3 then merged. Separately, iPSYCH used Eagle 2.3.5/Minimac and HRC v1.0 in a phased imputation pipeline.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10703690/ (section: Methods / MVP genotyping, imputation, quality control, and GWAS and meta-analysis)",
+        "implementation_scope_note": "Do not transfer the MVP Minimac4 label to the unversioned iPSYCH Minimac run. The statement does not identify the indel imputer or executable patches. Panel-specific merging, batch handling, best-guess genotype conversion and post-imputation cohort-specific filters are distinct.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 26,
+            "section": "Methods / MVP genotyping, imputation, quality control, and GWAS and meta-analysis",
+            "paragraph_sha256": "07fecd5d35e5fb2d4f9e20ff0ad336f302c9ac89b831d768a06982f87cf02edb"
+          }
+        ]
       },
       {
         "tool_id": "mtag",
@@ -24321,12 +24562,20 @@
         "matched_text": "ADMIXTURE",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": "1.23",
         "evidence_selection": "highest-scored-eligible-method-sentence",
         "evidence_paragraph_sha256": "504a3b114c3f4c7eaa1b04a1d394a985bbe2b2ca89c4c39f4990f825889e6223",
-        "use_summary": "Population ancestry mixture inference.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12695626/ (section: Methods / Cohort description)"
+        "use_summary": "Ran supervised ADMIXTURE 1.23 with CEU, CHB, ITU, PEL and YRI 1000 Genomes training populations. Selected participants with YRI-like proportion>90%, or YRI-like>30%, CEU-like>2% and their sum>90%, for the study subset.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12695626/ (section: Methods / Cohort description)",
+        "implementation_scope_note": "These are study-specific genomic-ancestry criteria, not inferred social identities or universal filters. Exact reference eligibility, marker harmonization, LD handling, seeds and fitting settings require separate inputs. Code availability corroborates 1.23; current binaries do not establish historical 1.23 parity.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 45,
+            "paragraph_sha256": "e04f92478c2e47e2c6da4c3596f501548430be08f2f659df572d9b934a71a1c6",
+            "section": "Code availability"
+          }
+        ]
       },
       {
         "tool_id": "bolt-lmm",
@@ -25501,12 +25750,14 @@
         "matched_text": "CellBender",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": "0.1.0",
         "evidence_selection": "highest-scored-eligible-method-sentence",
         "evidence_paragraph_sha256": "54250e2bfee44782c6e2f74e8119aa8d6d73151c5a7cac353341b9e5e4d7c95a",
-        "use_summary": "Ambient count background removal.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13553293/ (section: Methods / Alignment, quantification and QC of PBMC scRNA-seq data)"
+        "use_summary": "Applied CellBender 0.1.0 remove-background to raw PBMC droplet count matrices to remove cell-free ambient RNA and call cells before per-cell filtering and doublet removal.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13553293/ (section: Methods / Alignment, quantification and QC of PBMC scRNA-seq data)",
+        "implementation_scope_note": "Cell Ranger/STAR quantification, UMI/gene/mitochondrial/hemoglobin QC and Scrublet/scds doublet detection remain separate. The historical CellBender version is explicit but its fit parameters are not given.",
+        "supporting_evidence": []
       },
       {
         "tool_id": "cellranger",
@@ -25534,12 +25785,14 @@
         "matched_text": "FUMA",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": "1.6.1",
         "evidence_selection": "highest-scored-eligible-method-sentence",
         "evidence_paragraph_sha256": "90b64a02d2146bea471f975bb8f47e10d7f2b2b2b2c0c6fbe7e5813544d57f8f",
-        "use_summary": "Functional mapping, annotation and gene prioritization.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13553293/ (section: Methods / GWAS meta-analysis)"
+        "use_summary": "Used FUMA 1.6.1 with reported default parameters to identify independent loci, calling a locus novel if no previously reported variant lay within 250 kb of its lead variant.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13553293/ (section: Methods / GWAS meta-analysis)",
+        "implementation_scope_note": "The paragraph does not enumerate the FUMA defaults. Liftover, allele harmonization, MAF/imputation filtering and METAL/RE2C overlap handling are upstream stages; their settings do not establish the FUMA reference panel.",
+        "supporting_evidence": []
       },
       {
         "tool_id": "gsmap",
@@ -25664,12 +25917,14 @@
         "matched_text": "Minimac4",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
-        "version_reported_near_name": null,
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
+        "version_reported_near_name": "4; patch unstated",
         "evidence_selection": "highest-scored-eligible-method-sentence",
         "evidence_paragraph_sha256": "a5933db9454467762013970a30dc1e624419cb04818c04bfe082ea11228968de",
-        "use_summary": "Genotype imputation.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13553293/ (section: Methods / QC and imputation in the Japanese datasets)"
+        "use_summary": "Estimated haplotypes using SHAPEIT4 and imputed untyped variants using Minimac4 with an in-house Japanese whole-genome reference panel of 11, 754 individuals.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13553293/ (section: Methods / QC and imputation in the Japanese datasets)",
+        "implementation_scope_note": "The 11, 754 count belongs to the reference panel. No Minimac patch release, compression format or fitted options are stated. SHAPEIT4 phasing and access/preparation of the private reference are separate; no reference download or participant upload is implied.",
+        "supporting_evidence": []
       },
       {
         "tool_id": "plink2",
@@ -26061,12 +26316,14 @@
         "matched_text": "HOMER",
         "extraction_score": 5,
         "usage_context": "benchmark-or-comparison",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": "4.11",
         "evidence_selection": "highest-scored-eligible-method-sentence",
         "evidence_paragraph_sha256": "9da5cf123f884f9c7a732f03d64e8a75cbd3ae28a3b3cda287b5eed08f511941",
-        "use_summary": "Motif and regulatory enrichment analysis.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10703699/ (section: Methods / ATAC-seq)"
+        "use_summary": "Used HOMER 4.11 to identify TF-binding motifs associated with chromatin-accessibility changes in BATF3-overexpressing versus control CD8 T cells.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10703699/ (section: Methods / ATAC-seq)",
+        "implementation_scope_note": "The paragraph delegates extra detail to Supplementary Method 2 and does not specify a HOMER command, motif mode or background. ChIPSeeker supplies nearest-gene/genomic-region annotation, while MACS2, featureCounts and DESeq2 supply peak calling, counting and differential analysis.",
+        "supporting_evidence": []
       },
       {
         "tool_id": "macs",
@@ -26409,12 +26666,14 @@
         "matched_text": "HOMER",
         "extraction_score": 10,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
-        "version_reported_near_name": null,
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
+        "version_reported_near_name": "motif collection; HOMER release unstated",
         "evidence_selection": "highest-scored-eligible-method-sentence",
         "evidence_paragraph_sha256": "bc4dbb3acf2fee9e6607332c2633bcf9f0e5bb01fd60704d5bd20849e62e9b2c",
-        "use_summary": "Motif and regulatory enrichment analysis.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11549050/ (section: Methods / Functional analysis of noncoding variants / In silico interpretation of new noncoding variants)"
+        "use_summary": "Used HOMER-origin TF motif models alongside ENCODE, HOCOMOCO and FactorBook models obtained through MotifDB 1.42.0 for motifbreakR 2.13.7 weighted-sum disruption analysis of noncoding diabetes variants.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11549050/ (section: Methods / Functional analysis of noncoding variants / In silico interpretation of new noncoding variants)",
+        "implementation_scope_note": "HOMER is a motif collection here; the paper does not report running a HOMER program. MotifDB 1.42.0 and motifbreakR 2.13.7 are not HOMER releases. The dbSNP/GRCh38 resources, motifbreakR probability/strong-effect rule and tissue-expression filtering remain separate.",
+        "supporting_evidence": []
       },
       {
         "tool_id": "metal",
@@ -26963,12 +27222,13 @@
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
         "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
-        "version_reported_near_name": null,
+        "version_reported_near_name": "",
         "evidence_selection": "individually-reviewed-paragraph",
         "evidence_paragraph_sha256": "a5778298c8eef536f52b99ac63afe60a8053b44c4a06f806c1de472820308fdd",
-        "use_summary": "Used the FUMA web workflow around the reported MAGMA analysis. Used MAGMA1.10 for NPE gene/gene-set analyses in FUMA/FAVOR pipelines; the source describes99.9percent variant-PC variance and an F test,with gene significance2.5e-6 and per-NPE Bonferroni pathway correction.",
+        "use_summary": "Used FUMA and FAVOR for NPE variant-to-gene prioritization at P ≤ 1e-5 and within 10 kb of a protein-coding transcription start or end site. Ran MAGMA 1.10 gene and MSigDB GO/curated-set tests with gene threshold 2.5e-6 and per-NPE Bonferroni pathway correction.",
         "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11549054/ (section: Methods / Statistical analyses / FUMA and FAVOR annotation, gene-prioritization and functional enrichment pipeline)",
-        "implementation_scope_note": "Only the original MAGMA statistical stage is exposed here. FUMA annotation,clumping,web resources/uploads and historical options remain separate."
+        "implementation_scope_note": "FUMA and FAVOR are jointly described, so do not assign every annotation to a specific backend. The literal 99.9% variant-PC variance/F-test description needs model reconciliation; it does not establish a raw-PC regression from P-only summary statistics. The FUMA release is unstated.",
+        "supporting_evidence": []
       },
       {
         "tool_id": "king",
@@ -27028,12 +27288,14 @@
         "matched_text": "Minimac 4",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
-        "version_reported_near_name": null,
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
+        "version_reported_near_name": "4; patch unstated; server1.7.3",
         "evidence_selection": "highest-scored-eligible-method-sentence",
         "evidence_paragraph_sha256": "771cbda6deab4176e5328380dbc7cca3b3c89478fd63d5f137e183756043c47b",
-        "use_summary": "Genotype imputation.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11549054/ (section: Methods / Genotype data and quality control)"
+        "use_summary": "Cohort genotype imputation used TOPMed Imputation Server 1.7.3 and a TOPMed reference through Minimac4; the paper also identifies ROSMAP pre-imputed genotypes received from collaborators. Subsequent filtering removed MAF < 0.1% and imputation quality < 0.8 variants.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11549054/ (section: Methods / Genotype data and quality control)",
+        "implementation_scope_note": "Server 1.7.3 is not the Minimac release. Preserve the distinction between cohort imputation and received ROSMAP data; the source does not give a Minimac patch or exact reference freeze. BCFtools/SAMtools/PLINK/R processing and downstream GWAS are separate.",
+        "supporting_evidence": []
       },
       {
         "tool_id": "plink",
@@ -27201,12 +27463,25 @@
         "matched_text": "FUMA",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
-        "version_reported_near_name": null,
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
+        "version_reported_near_name": "1.5.2",
         "evidence_selection": "highest-scored-eligible-method-sentence",
         "evidence_paragraph_sha256": "af1453591edf0b68df5b1eb9ec115ea39ba95352cd5b60fb48e0edd8d3063be2",
-        "use_summary": "Functional mapping, annotation and gene prioritization.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13553304/ (section: Methods / Multivariate GWAS / Independent loci and QSNP heterogeneity)"
+        "use_summary": "Used FUMA 1.5.2 on multivariate genomic SEM results to clump loci with a 1000 Genomes Phase 3 European reference and the reported r-squared > 0.6 and LD-block distance > 250 kb rules. Later combined FUMA/MAGMA gene associations mapped with 10 kb windows at P < 0.05/19154 with gsMAP expression correlations above 0.50.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13553304/ (section: Methods / Multivariate GWAS / Independent loci and QSNP heterogeneity)",
+        "implementation_scope_note": "Retain the source inequalities without reversing their meaning. QSNP heterogeneity filtering is upstream. Open Targets/BigQuery novelty checks, bedtools overlaps and gsMAP/Cauchy cell-type analyses are separate. The result paragraph corroborates locus counts rather than supplying additional FUMA defaults.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 9,
+            "paragraph_sha256": "4d71082a9e353996826258bd28ceb7e6f8486d8fc8bfd9fa4085c99b403c81b8",
+            "section": "Results / Capturing the shared genetic liability between MDD and disease clusters"
+          },
+          {
+            "paragraph_index": 46,
+            "paragraph_sha256": "14104cb4efc5f0c1ba08fa2edcb161626998836273273495df83a1eb9890403a",
+            "section": "Methods / Biological annotations / gsMAP"
+          }
+        ]
       },
       {
         "tool_id": "fusion",
@@ -27771,12 +28046,14 @@
         "matched_text": "HOMER",
         "extraction_score": 10,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": "4.11",
         "evidence_selection": "highest-scored-eligible-method-sentence",
         "evidence_paragraph_sha256": "e60a4991640aa1e1f8a6baf8e44e6e22b35fc660bab56d02928d4696e8b2fb05",
-        "use_summary": "Motif and regulatory enrichment analysis.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12695660/ (section: Methods / ChIP–seq data analyses)"
+        "use_summary": "Applied the HOMER 4.11 Known Motif Discovery approach to motifs in prostate-cancer ChIP-seq analyses after separately defined alignment, filtering and MACS3 peak calling.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12695660/ (section: Methods / ChIP–seq data analyses)",
+        "implementation_scope_note": "Known Motif Discovery is the source label and does not establish de-novo motif discovery. The exact HOMER command, known-motif database edition, window and target/background sets are unstated. DeepTools normalization and heatmaps are separate.",
+        "supporting_evidence": []
       },
       {
         "tool_id": "igv",
@@ -28316,12 +28593,20 @@
         "matched_text": "FUMA",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
-        "version_reported_near_name": null,
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
+        "version_reported_near_name": "",
         "evidence_selection": "highest-scored-eligible-method-sentence",
         "evidence_paragraph_sha256": "695f621e755400564ca6f6a8b541b4ce0b0e858c209a09843e96187dda81396c",
-        "use_summary": "Functional mapping, annotation and gene prioritization.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10632131/ (section: Methods / Functional annotation)"
+        "use_summary": "Used FUMA to integrate forearm-fracture lead variants and correlated variants at r-squared > 0.8 with ANNOVAR coding/splicing annotation and GTEx 8 cis-eQTLs. SNP2GENE-mapped genes were used for enrichment; follow-up also considered CADD 1.4 and RegulomeDB 1.1 annotations.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10632131/ (section: Methods / Functional annotation)",
+        "implementation_scope_note": "The FUMA release is unstated. Osteoclast and osteoblast donor datasets and ChIP-Atlas bone ATAC evidence are separately described resources. PASCAL pathway testing is distinct; do not assign its KEGG/BIOCARTA/REACTOME tests or ATAC Q threshold to FUMA.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 36,
+            "paragraph_sha256": "1fc00d5ba8adf67816bdc0868ba18236b2662cad392e9343d2408bfafb430e44",
+            "section": "Methods / Functional annotation"
+          }
+        ]
       },
       {
         "tool_id": "gcta",
@@ -28572,12 +28857,14 @@
         "matched_text": "Minimac4",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": "1.0.0",
         "evidence_selection": "highest-scored-eligible-method-sentence",
         "evidence_paragraph_sha256": "786ac8379a0b3c4ecb697c4bf1b35666ab9d89591dc2c47dcce0643e2416a52f",
-        "use_summary": "Genotype imputation.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11525193/ (section: Methods / Haplotype phasing and imputation)"
+        "use_summary": "Separately prephased BBJ first cohort with SHAPEIT2 2.837 and BBJ second/NCGG cohorts with EAGLE2 2.39, then performed genome-wide imputation using Minimac4 1.0.0 after sample overlap and variant concordance/QC exclusions.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11525193/ (section: Methods / Haplotype phasing and imputation)",
+        "implementation_scope_note": "Retain the historical 1.0.0 executable and cohort-specific phasing versions; do not label modern 4.1.6 as its reproduction. Reference-panel construction, overlap removal, palindromic exclusion and QC are separate; this paragraph does not name a specific panel.",
+        "supporting_evidence": []
       },
       {
         "tool_id": "plink2",
@@ -29146,12 +29433,14 @@
         "matched_text": "FUMA",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
-        "version_reported_near_name": null,
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
+        "version_reported_near_name": "",
         "evidence_selection": "highest-scored-eligible-method-sentence",
         "evidence_paragraph_sha256": "8ab2c1b1c8a57b63ac62ec089a23139a893b1b59b75ebb7b3a26c3d7271319f2",
-        "use_summary": "Functional mapping, annotation and gene prioritization.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12695639/ (section: Methods / Analyses / GWA meta-analyses)"
+        "use_summary": "Used FUMA to clump association results with lead P = 5e-8, candidate GWAS P = 0.05, LD thresholds r-squared 0.6 and 0.1 and the 1000 Genomes Phase 3 reference.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12695639/ (section: Methods / Analyses / GWA meta-analyses)",
+        "implementation_scope_note": "The population subset, merge distance and FUMA release are unstated. Candidate GWAS P = 0.05 and lead P = 5e-8 serve different roles.",
+        "supporting_evidence": []
       },
       {
         "tool_id": "gcta",
@@ -30540,12 +30829,20 @@
         "matched_text": "ADMIXTURE",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": "1.23",
         "evidence_selection": "highest-scored-eligible-method-sentence",
         "evidence_paragraph_sha256": "a096be674e31e622a0970cf65b45bedf0607d7965e198c4d6e3d6fd6de58b51a",
-        "use_summary": "Population ancestry mixture inference.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10632135/ (section: Methods / Genetic ancestry filtering and principal components)"
+        "use_summary": "Performed supervised ADMIXTURE 1.23 ancestry inference separately for Danish, Intermountain and Norwegian datasets using five 1000 Genomes reference populations; training samples had first been checked for ancestry outliers with PCA and unsupervised ADMIXTURE.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10632135/ (section: Methods / Genetic ancestry filtering and principal components)",
+        "implementation_scope_note": "Previously defined UKBiobank, FinnGen and Icelandic ancestry handling is distinct. The paragraph does not give a universal target-ancestry cutoff, seed, marker filter or convergence rule. Version 1.23 is retained as reported.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 63,
+            "paragraph_sha256": "8c072952e3715972bb354ae4fa3e2a7d0340039acf7dad748ca1dd61fa594a19",
+            "section": "Code availability"
+          }
+        ]
       },
       {
         "tool_id": "beagle",
@@ -30573,12 +30870,13 @@
         "matched_text": "Eagle ",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": "2.4.1",
         "evidence_selection": "highest-scored-eligible-method-sentence",
         "evidence_paragraph_sha256": "8a54d2dd34b837a306a13a5c057d8b0820102f0ab7b53b1ce868b91ce34098c5",
-        "use_summary": "Genotype phasing.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10632135/ (section: Methods / Genotyping and whole-genome sequencing / Denmark)"
+        "use_summary": "Phased Danish array genotypes with Eagle 2.4.1 before a distinct haplotype-sharing HMM imputed high-quality variants into the larger genotyped cohort.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10632135/ (section: Methods / Genotyping and whole-genome sequencing / Denmark)",
+        "implementation_scope_note": "Graphtyper calling and the subsequent Li-Stephens-style imputation are separate operations. Do not label the imputation algorithm as Eagle or IMPUTE2 execution solely from the model comparison."
       },
       {
         "tool_id": "fuma",
@@ -30589,12 +30887,20 @@
         "matched_text": "FUMA",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
-        "version_reported_near_name": null,
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
+        "version_reported_near_name": "",
         "evidence_selection": "highest-scored-eligible-method-sentence",
         "evidence_paragraph_sha256": "00ef14b006b1ec06198520472737085e0f046cebcebf549661f08fe37a848ed9",
-        "use_summary": "Functional mapping, annotation and gene prioritization.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10632135/ (section: Methods / Functional data and colocalization analysis)"
+        "use_summary": "Used FUMA GENE2FUNC for overrepresentation of GO cellular-component gene sets from MSigDB c5 and reported-trait genes from the GWAS Catalog.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10632135/ (section: Methods / Functional data and colocalization analysis)",
+        "implementation_scope_note": "The background, correction method, significance cutoff, minimum overlap and FUMA release are unstated. The software-availability paragraph corroborates the named tool. Nearby MAGMA/ADMIXTURE versions must not be assigned to FUMA.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 63,
+            "paragraph_sha256": "8c072952e3715972bb354ae4fa3e2a7d0340039acf7dad748ca1dd61fa594a19",
+            "section": "Code availability"
+          }
+        ]
       },
       {
         "tool_id": "gcta",
@@ -30788,18 +31094,45 @@
         "tool_id": "fuma",
         "tool": "FUMA",
         "analysis_role": "Functional mapping, annotation and gene prioritization",
-        "evidence_section": "Methods / MAGMA gene-based, gene set and gene property analyses",
-        "evidence_paragraph_index": 56,
+        "evidence_section": "Methods / MetS multivariate GWAS with Genomic SEM",
+        "evidence_paragraph_index": 50,
         "matched_text": "FUMA",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
         "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
-        "version_reported_near_name": null,
+        "version_reported_near_name": "1.4.1",
         "evidence_selection": "individually-reviewed-paragraph",
-        "evidence_paragraph_sha256": "1fcb3da5bfbab75e694890e72a4cae8759c26e821e207a5c66890b219e638d32",
-        "use_summary": "Used the FUMA web workflow around the reported MAGMA analysis. Used MAGMA1.08 through FUMA for SNP-wise-mean gene aggregation with European1000Genomes Phase3 LD and17674 protein-coding genes from Ensembl85; Bonferroni gene threshold2.83e-6.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11549047/ (section: Methods / MAGMA gene-based, gene set and gene property analyses)",
-        "implementation_scope_note": "Only the original MAGMA statistical stage is exposed here. FUMA annotation,clumping,web resources/uploads and historical options remain separate."
+        "evidence_paragraph_sha256": "227f76a40e953049138733f1b10af7332a4546aaccd9e5fc74460a8a77ea2ece",
+        "use_summary": "Used FUMA 1.4.1 for two-step clumping with the literal P < 0.05/r-squared ≥ 0.6 and lead P < 5e-8/r-squared ≥ 0.1 rules, and positional/eQTL/chromatin mapping. Its MAGMA 1.08 SNP-wise-mean analysis used European 1000 Genomes Phase 3 LD and 17674 Ensembl 85 protein-coding genes with Bonferroni threshold 2.83e-6.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11549047/ (section: Methods / MetS multivariate GWAS with Genomic SEM)",
+        "implementation_scope_note": "GCTA-COJO 1.94.1 joint/conditional analysis follows FUMA and changes lead counts; distinguish 1650 leads/939 loci from 1307 COJO signals. Novelty comparisons, the August 2, 2023 GWAS Catalog snapshot, SMR/HEIDI replication and the independent Korean cohort analyses answer separate questions. The source is retained without relabeling the clumping inequalities.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 11,
+            "paragraph_sha256": "2d50ca0f3e8899b34417adef71f7599513835e880e9bc9debdea99055bb87c7d",
+            "section": "Results / Association analyses using multivariate GWAS for MetS"
+          },
+          {
+            "paragraph_index": 12,
+            "paragraph_sha256": "62c4a3bdc877296cc093af0c36420cb0c03da576eef9ab5b00c93711466ddc9d",
+            "section": "Results / Association analyses using multivariate GWAS for MetS"
+          },
+          {
+            "paragraph_index": 19,
+            "paragraph_sha256": "b137d8ae0ee2018055a86c8d884f60959fa2e9e94317654448dfe4618cbac692",
+            "section": "Results / Prioritization of MetS genes"
+          },
+          {
+            "paragraph_index": 24,
+            "paragraph_sha256": "52924e99eebee5c7de366abec6c66af7984282e5e751a05d8571fb62e4ab4cfd",
+            "section": "Results / MetS GWAS and PRS transferability in East Asians"
+          },
+          {
+            "paragraph_index": 56,
+            "paragraph_sha256": "1fcb3da5bfbab75e694890e72a4cae8759c26e821e207a5c66890b219e638d32",
+            "section": "Methods / MAGMA gene-based, gene set and gene property analyses"
+          }
+        ]
       },
       {
         "tool_id": "gcta",
@@ -32766,12 +33099,14 @@
         "matched_text": "CellBender",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": "0.2.0",
         "evidence_selection": "highest-scored-eligible-method-sentence",
         "evidence_paragraph_sha256": "81f0565071304ccccd7b7f39837da81e1d7e62f4a04798c1ab6c16e78dd43184",
-        "use_summary": "Ambient count background removal.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13447095/ (section: Methods / Bioinformatic analysis: scRNA-seq)"
+        "use_summary": "Removed ambient RNA using CellBender 0.2.0 with expected cells 10,000, 50,000 included droplets, false-positive rate 0.01, 150 epochs and default learning rate; manually inspected per-sample learning curves.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13447095/ (section: Methods / Bioinformatic analysis: scRNA-seq)",
+        "implementation_scope_note": "The reported fit uses a historical release and requires the original unfiltered count matrices. Cell Ranger expression quantification and STARsolo spliced/unspliced/ambiguous matrices are distinct upstream products; no automatic convergence certificate is implied by manual review.",
+        "supporting_evidence": []
       },
       {
         "tool_id": "cellphonedb",
@@ -33043,12 +33378,19 @@
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
         "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
-        "version_reported_near_name": null,
+        "version_reported_near_name": "1.3.7",
         "evidence_selection": "individually-reviewed-paragraph",
         "evidence_paragraph_sha256": "9348e34319881775e4e32f9e03d9accfa74daeeddb2d836071c526c5e539df7c",
-        "use_summary": "Used the FUMA web workflow around the reported MAGMA analysis. Used MAGMA within FUMA1.3.7 for gene-set and tissue-expression enrichment across54GTEx8 tissues; independent-variant selection used FUMA r-squared0.05.",
+        "use_summary": "Used MAGMA within FUMA 1.3.7 for gene-set and tissue-expression enrichment across 54 GTEx 8 tissues; independent-variant selection used r-squared 0.05.",
         "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13447099/ (section: Methods / Functional enrichment and tissue expression analysis)",
-        "implementation_scope_note": "Only the original MAGMA statistical stage is exposed here. FUMA annotation,clumping,web resources/uploads and historical options remain separate."
+        "implementation_scope_note": "The results describe nearest-gene tissue expression whereas Methods describe MAGMA. The source gives tissue thresholds 9.4e-4 in a caption and 9.3e-4 in the body; retain the discrepancy (0.05/54 ≈ 9.259e-4) without inferring a different test. The FUMA release is separate from MAGMA.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 14,
+            "paragraph_sha256": "2291efe9485d3b0c7726adccfd5c1d9776f14afc9a4d9f5f30692b664e3f3a0f",
+            "section": "Results / Gene pathway and tissue expression enrichment analyses"
+          }
+        ]
       },
       {
         "tool_id": "ldsc",
@@ -33387,9 +33729,41 @@
         "version_reported_near_name": "4.11.1",
         "evidence_selection": "individually-reviewed-paragraph",
         "evidence_paragraph_sha256": "b7c4273d16d9c388e975990c42dd98f2966f691674eca94a1b99786ea0834757",
-        "use_summary": "Performed motif analysis and peak annotation with the Homer package 4.11.1 after CUT&Tag peak generation.",
+        "use_summary": "Used HOMER 4.11.1 for motif analysis and peak annotation of PU.1 CUT&Tag data; the results also describe motif enrichment in changing ATAC regions during the DB2115 time course.",
         "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11525197/ (section: Methods / Data processing)",
-        "implementation_scope_note": "Background sequences, motif search and genomic annotation parameters are not stated. These analyses remain separate missing integrations."
+        "implementation_scope_note": "Retain the exact 4.11.1 patch release and distinguish the CUT&Tag and time-course ATAC region sets. Canonical PU.1 log-odds scoring is described alongside HOMER, so do not assume HOMER supplied every affinity score. Alignment, coverage, MACS2 peak calling and DiffBind differential selection are separate.",
+        "supporting_evidence": [
+          {
+            "section": "Results / Pharmacological binding site restriction repositions PU.1",
+            "paragraph_index": 5,
+            "paragraph_sha256": "890e971127f14bf7805c6b75ba047f17c40bc1b2ab036b466571ff720d9f202e",
+            "evidence_role": "method-details",
+            "named_anchor": {
+              "section": "Methods / Data processing",
+              "paragraph_index": 65,
+              "paragraph_sha256": "b7c4273d16d9c388e975990c42dd98f2966f691674eca94a1b99786ea0834757"
+            },
+            "shared_terms": [
+              "motif"
+            ],
+            "relation_note": "The results explicitly describe lowercase Homer motif analyses; methods paragraph65 names the Homer package4.11.1 and motif analysis. This checked same-paper link preserves the registry homonym guard. The time-course ATAC result has no separately stated HOMER release;do not transfer a version or reinterpret canonical PU.1 log-odds scoring as necessarily produced by HOMER."
+          },
+          {
+            "section": "Results / Temporally resolved consequences of redistributed PU.1",
+            "paragraph_index": 23,
+            "paragraph_sha256": "abccb05500bbd5285ce50ba7c6a72d3929a01adf64d9e5cc2037b11fdfcbc42e",
+            "evidence_role": "method-details",
+            "named_anchor": {
+              "section": "Methods / Data processing",
+              "paragraph_index": 65,
+              "paragraph_sha256": "b7c4273d16d9c388e975990c42dd98f2966f691674eca94a1b99786ea0834757"
+            },
+            "shared_terms": [
+              "motif"
+            ],
+            "relation_note": "The results explicitly describe lowercase Homer motif analyses; methods paragraph65 names the Homer package4.11.1 and motif analysis. This checked same-paper link preserves the registry homonym guard. The time-course ATAC result has no separately stated HOMER release;do not transfer a version or reinterpret canonical PU.1 log-odds scoring as necessarily produced by HOMER."
+          }
+        ]
       },
       {
         "tool_id": "igv",
@@ -34910,12 +35284,13 @@
         "matched_text": "ADMIXTURE",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": "1.3.0",
         "evidence_selection": "highest-scored-eligible-method-sentence",
         "evidence_paragraph_sha256": "778e3ad5d8fc7399b8285a0d6d69f4767dab53102d53afb2743493919d36b875",
-        "use_summary": "Population ancestry mixture inference.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13447107/ (section: Methods / Phylogenetic tree and population structure analysis)"
+        "use_summary": "Estimated ancestry coefficients with ADMIXTURE 1.3.0 in the wheat pangenome study, initially testing K=2..20 and subsequently choosing K=10.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13447107/ (section: Methods / Phylogenetic tree and population structure analysis)",
+        "implementation_scope_note": "The K-selection rule, replicate/seed/CV settings and encoding of tetraploid biological variation are not specified. LD pruning precedes analysis; the 100,000 random-marker statement belongs to phylogeny construction and is not automatically an ADMIXTURE marker count."
       },
       {
         "tool_id": "bcftools",
@@ -36232,17 +36607,35 @@
         "tool_id": "admixture",
         "tool": "ADMIXTURE",
         "analysis_role": "Population ancestry mixture inference",
-        "evidence_section": "Material and methods / Merging with ancient and modern reference datasets",
-        "evidence_paragraph_index": 11,
+        "evidence_section": "Material and methods / Population genomic analyses",
+        "evidence_paragraph_index": 15,
         "matched_text": "ADMIXTURE",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
-        "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
-        "evidence_paragraph_sha256": "f414442b8d0961d332c5391bdcf493cfc5746298389a4ee54ef8cb0ba5ab7cf0",
-        "use_summary": "Population ancestry mixture inference.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11739871/ (section: Material and methods / Merging with ancient and modern reference datasets)"
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
+        "version_reported_near_name": "1.3",
+        "evidence_selection": "individually-reviewed-paragraph",
+        "evidence_paragraph_sha256": "62d9f1b1cfcafc09efadfebf831fd3aa5b41d3755bffe0f26e8ca8483ece52e4",
+        "use_summary": "Estimated ancestry proportions with ADMIXTURE 1.3 after LD pruning in Armenian-only, comparative-modern and combined-ancient/modern datasets, using 199,955, 203,863 and 289,247 SNPs respectively. Ran each analysis five times and passed membership-coefficient matrices to CLUMPP.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11739871/ (section: Material and methods / Population genomic analyses)",
+        "implementation_scope_note": "The trailing 48 is a citation, not version 1.3.48. Exact seeds, K grid, CV, bootstrap and ancient genotype coding are unstated. CLUMPP processing is separate; the paper also cautions about drift/bottlenecks when interpreting components.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 11,
+            "paragraph_sha256": "f414442b8d0961d332c5391bdcf493cfc5746298389a4ee54ef8cb0ba5ab7cf0",
+            "section": "Material and methods / Merging with ancient and modern reference datasets"
+          },
+          {
+            "paragraph_index": 33,
+            "paragraph_sha256": "ff9d731df5c3afe733e6460249f15b605a00e7ea67c833c4fdba7322dc39c126",
+            "section": "Results / Population structure within modern Armenians"
+          },
+          {
+            "paragraph_index": 39,
+            "paragraph_sha256": "5db5a242a99c12b2223b75cd9cc836b1eeacb9b137ee7c3774251bb1de317b65",
+            "section": "Results / Armenians in relation to other modern and ancient populations: Testing the Balkan theory"
+          }
+        ]
       },
       {
         "tool_id": "bcftools",
@@ -36275,6 +36668,23 @@
         "evidence_paragraph_sha256": "a9eb34e6ac8ec1038683299390611f15a80c58f4c99141e2de761b9da648da2c",
         "use_summary": "DNA read alignment.",
         "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11739871/ (section: Material and methods / Data processing for population genomics analyses with WGS samples)"
+      },
+      {
+        "tool_id": "clumpp",
+        "tool": "CLUMPP",
+        "analysis_role": "Replicate cluster-membership matrix analysis",
+        "evidence_section": "Material and methods / Population genomic analyses",
+        "evidence_paragraph_index": 15,
+        "matched_text": "CLUMPP",
+        "extraction_score": 15,
+        "usage_context": "analysis-method-description",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
+        "version_reported_near_name": "",
+        "evidence_selection": "individually-reviewed-paragraph",
+        "evidence_paragraph_sha256": "62d9f1b1cfcafc09efadfebf831fd3aa5b41d3755bffe0f26e8ca8483ece52e4",
+        "use_summary": "Analyzed cluster-membership coefficient matrices from five ADMIXTURE runs with CLUMPP.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11739871/ (section: Material and methods / Population genomic analyses)",
+        "implementation_scope_note": "CLUMPP is a separate replicate-result processing step; no version, alignment algorithm, permutation search, repetition or similarity settings are reported. ADMIXTURE fitting and label processing are not interchangeable implementations."
       },
       {
         "tool_id": "gatk",
@@ -37711,12 +38121,13 @@
         "matched_text": "Eagle 2",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
-        "version_reported_near_name": null,
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
+        "version_reported_near_name": "2.3.5",
         "evidence_selection": "highest-scored-eligible-method-sentence",
         "evidence_paragraph_sha256": "096ca4c897d1a0b6c1582bc4f607e80d0fb5c3bf3dbaa17541df197053212c43",
-        "use_summary": "Genotype phasing.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11639076/ (section: Subjects and methods / Genotyping and imputation)"
+        "use_summary": "Pre-phased array genotypes and phased the SISu reference-panel whole-genome callset with Eagle 2.3.5, using 20,000 conditioning haplotypes and otherwise reported defaults.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11639076/ (section: Subjects and methods / Genotyping and imputation)",
+        "implementation_scope_note": "Subsequent population-specific imputation uses Beagle 4.1; GATK calling and Hail QC are separate. A current 2.4.1 fixture cannot establish 2.3.5 or historical SISu cohort parity."
       },
       {
         "tool_id": "gatk",
@@ -38053,12 +38464,14 @@
         "matched_text": "HOMER",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": "4.11",
         "evidence_selection": "highest-scored-eligible-method-sentence",
         "evidence_paragraph_sha256": "9375703648833ca55a6583408e12b99bc095f3d34b8fa7d51bb93b5bc55da53a",
-        "use_summary": "Motif and regulatory enrichment analysis.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12805840/ (section: Material and methods / Cell-type marker ATAC-seq peaks)"
+        "use_summary": "Tested liver cell-type marker ATAC peaks for enrichment of known TF motifs with HOMER 4.11, using -size 200 and all merged cell-type peaks as the background.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12805840/ (section: Material and methods / Cell-type marker ATAC-seq peaks)",
+        "implementation_scope_note": "Preserve the specified 200-bp window and merged-peak background, including any target/background overlap; do not silently remove targets or substitute random genomic background. GREAT/GO gene-function enrichment is a separate test. Other HOMER options and motif-set edition are unstated.",
+        "supporting_evidence": []
       },
       {
         "tool_id": "ldsc",
@@ -38883,12 +39296,13 @@
         "matched_text": "Eagle",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": "2.4",
         "evidence_selection": "highest-scored-eligible-method-sentence",
         "evidence_paragraph_sha256": "8317d370692c35ef01d05b1fa4eae4391eb060e3e1a417ab488f750edc48b3f6",
-        "use_summary": "Genotype phasing.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11568758/ (section: Methods / Genotype quality control and imputation in KOBS, RYSA, and METSIM)"
+        "use_summary": "Used Eagle 2.4 for haplotype phasing in the Michigan Imputation Server workflow, followed by minimac4 imputation with HRC r1.1 2016.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11568758/ (section: Methods / Genotype quality control and imputation in KOBS, RYSA, and METSIM)",
+        "implementation_scope_note": "Allele matching, strand flips, QC and downstream single-nucleus demultiplexing are separate steps. The paper does not provide a complete phasing command or identify all phasing-mode inputs."
       },
       {
         "tool_id": "fastqc",
@@ -38996,12 +39410,20 @@
         "matched_text": "minimac4",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
-        "version_reported_near_name": null,
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
+        "version_reported_near_name": "4; patch unstated",
         "evidence_selection": "highest-scored-eligible-method-sentence",
         "evidence_paragraph_sha256": "8317d370692c35ef01d05b1fa4eae4391eb060e3e1a417ab488f750edc48b3f6",
-        "use_summary": "Genotype imputation.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11568758/ (section: Methods / Genotype quality control and imputation in KOBS, RYSA, and METSIM)"
+        "use_summary": "Used Michigan Imputation Server/Eagle 2.4/Minimac4 with HRC r1.1 (2016) for KOBS genotype imputation after allele/duplicate checks; separate METSIM data usedTOPMed server/Eagle 2.4/Minimac4 with TOPMed r2. Post-imputation QC excluded R2 < 0.3.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11568758/ (section: Methods / Genotype quality control and imputation in KOBS, RYSA, and METSIM)",
+        "implementation_scope_note": "Keep HRC and TOPMed panel/version pipelines distinct. Server-managed allele switches/strand flips are not implicit local corrections. The Minimac patch release is unstated; downstream demultiplexing, relatedness/HWE QC and association remain separate.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 13,
+            "section": "Methods / Genotype quality control and imputation in KOBS, RYSA, and METSIM",
+            "paragraph_sha256": "d7db0f79be83c7962eb7e48135d8203cda7101de3bd4afdaec305fde04a833ae"
+          }
+        ]
       },
       {
         "tool_id": "picard",
@@ -41520,12 +41942,20 @@
         "matched_text": "ADMIXTURE",
         "extraction_score": 10,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
-        "version_reported_near_name": null,
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
+        "version_reported_near_name": "",
         "evidence_selection": "highest-scored-eligible-method-sentence",
         "evidence_paragraph_sha256": "59b3f2818e1d93a934bcc351f5c6659166c1401540711894b4c9707283fb06a0",
-        "use_summary": "Population ancestry mixture inference.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12668784/ (section: Material and methods / Pre-processing genetic data / TOPMed)"
+        "use_summary": "Reused TOPMed ancestry groups defined in prior work by PCA and validated with ADMIXTURE; the cited validation supplies YRI-reference ancestry summaries for the AFR subset.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12668784/ (section: Material and methods / Pre-processing genetic data / TOPMed)",
+        "implementation_scope_note": "This is reuse of previously validated cohort grouping, not evidence of a new ADMIXTURE fit in this paper. Version, training inputs, seed and fit settings are not reported here; YRI-reference proportions do not establish social identity.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 34,
+            "paragraph_sha256": "eb674510df8ecc719cc5c911ea6d3459b3e2239db1305f7153aa3fb921a3f82e",
+            "section": "Material and methods / Pre-processing genetic data / TOPMed"
+          }
+        ]
       },
       {
         "tool_id": "beagle",
@@ -42243,12 +42673,20 @@
         "matched_text": "Minimac4",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
-        "version_reported_near_name": null,
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
+        "version_reported_near_name": "4; patch unstated",
         "evidence_selection": "highest-scored-eligible-method-sentence",
         "evidence_paragraph_sha256": "8394716b245ee7f6b6e1e88d9aa129b0850412b4a89cc3ca73477efe9cd0d032",
-        "use_summary": "Genotype imputation.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13277697/ (section: Methods / OneK1K data and cell-type classification)"
+        "use_summary": "OneK1K cohort data were imputed through Michigan Imputation Server/Minimac4 with HRC. The study separately imputed chromosome X non-PAR and PAR1/PAR2 segments through that server; Y haplogroup assignment used yhaplo instead of genotype imputation.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13277697/ (section: Methods / OneK1K data and cell-type classification)",
+        "implementation_scope_note": "Preserve the reuse of previously described cohort genotypes and the separate regionalX analysis. PAR/non-PAR and per-sample haploid/diploid interpretation must be explicitly declared; do not infer genome build from the quoted coordinates or silently correct the source description of male non-PAR Y. Y haplogroup assignment is a different tool, not Minimac imputation. No Minimac patch release stated.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 31,
+            "section": "Methods / Imputation of the sex chromosomes",
+            "paragraph_sha256": "bcc5fd68cf229c5d007df75d8ebea9e606b0fb944f7bca06498192711a858ac4"
+          }
+        ]
       },
       {
         "tool_id": "peer",
@@ -42561,12 +42999,20 @@
         "matched_text": "HOMER",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
-        "version_reported_near_name": null,
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
+        "version_reported_near_name": "unstated",
         "evidence_selection": "highest-scored-eligible-method-sentence",
         "evidence_paragraph_sha256": "1337721e46591bcb0eea3afb4ffe48a6ffcd1ff531a45306bcc2b1604884a80a",
-        "use_summary": "Motif and regulatory enrichment analysis.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11480806/ (section: Material and methods / Motif analysis)"
+        "use_summary": "Analysed lost ARID1A-bound regions, bound promoters, gained ARID1A regions and relocated ZIC2 regions with HOMER using BEDTools-derived FASTA and shuffled-input background; motif presence in lost regions was subsequently quantified with FIMO.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11480806/ (section: Material and methods / Motif analysis)",
+        "implementation_scope_note": "Retain the source E-value <0.001 wording without relabeling it a HOMER P/q value. HOMER version, exact command, known/de-novo mode and shuffle algorithm/seed are unstated. FIMO motif quantification is a separate downstream program; the reported ZIC-family motif presence does not identify a new motif-discovery algorithm.",
+        "supporting_evidence": [
+          {
+            "section": "Results / ARID1A-BAF regulates the accessibility at enhancers of EMT genes to coordinate ZIC2 binding",
+            "paragraph_index": 40,
+            "paragraph_sha256": "5a4af8fdf46156fac83c9ad7909738419de75d9d044fc2d8bb28f1155ac634f6"
+          }
+        ]
       },
       {
         "tool_id": "igv",
@@ -43140,12 +43586,13 @@
         "matched_text": "Eagle",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": "2.3",
         "evidence_selection": "highest-scored-eligible-method-sentence",
         "evidence_paragraph_sha256": "9dfacc212d56c5d2be46cdcf6445dd1f588fb69b3ac139aa6f001cafa0497515",
-        "use_summary": "Genotype phasing.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11393713/ (section: Material and methods / Genotypes)"
+        "use_summary": "Used Eagle 2.3 phased genotypes within Michigan Imputation Server imputation with HRC r1.1 2016 and the European population setting.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11393713/ (section: Material and methods / Genotypes)",
+        "implementation_scope_note": "Array genotype calling and HRC/1KG input checking are separate operations. The complete Eagle build, phasing command and panel mode are not identified."
       },
       {
         "tool_id": "gcta",
@@ -45487,12 +45934,25 @@
         "matched_text": "ADMIXTURE",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
-        "version_reported_near_name": null,
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
+        "version_reported_near_name": "1.3.0",
         "evidence_selection": "highest-scored-eligible-method-sentence",
         "evidence_paragraph_sha256": "ffeaba8b2fa3bd1aef09476b7ba5d90fc39f4ba2550b078b911343359df1a66f",
-        "use_summary": "Population ancestry mixture inference.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13078719/ (section: Subjects and methods / Global ancestry inference and principal-component analysis)"
+        "use_summary": "Ran ADMIXTURE 1.3.0 for K=4..11 with 10-fold CV and 100 bootstrap replicates after reference merging, complete-genotype filtering and LD pruning. CV favored K=8, with K=5 having similar error; component outputs also supplied downstream summary statistics for ABC.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13078719/ (section: Subjects and methods / Global ancestry inference and principal-component analysis)",
+        "implementation_scope_note": "Reference-panel exclusions and exact position/allele matching matter. Seeds, bootstrap block length and minor-refit termination are unstated. RFMix local ancestry, ABC and biological interpretation are separate; do not infer a uniquely true K or restore missing paper parameters silently.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 18,
+            "paragraph_sha256": "40b684130e04d97a870ba55c069bdf826f21c024b7f7514a792d9a9b3e475769",
+            "section": "Subjects and methods / Inferring the selection coefficient and initial AFR ancestry"
+          },
+          {
+            "paragraph_index": 21,
+            "paragraph_sha256": "81ada8704227e8627505c815954eea2500844fc5e1e65477362f494631c1e1a8",
+            "section": "Results / Genomic evidence for recent East African and South Asian admixture in Oman"
+          }
+        ]
       },
       {
         "tool_id": "bcftools",
@@ -45551,12 +46011,13 @@
         "matched_text": "Eagle",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": "2.4.1",
         "evidence_selection": "highest-scored-eligible-method-sentence",
         "evidence_paragraph_sha256": "614700c746820b11000d1236cdff8d054496307514b9ffc73bb8b232c95947a6",
-        "use_summary": "Genotype phasing.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13078719/ (section: Subjects and methods / Local ancestry inference with RFMix v.2)"
+        "use_summary": "Phased Omani genotypes with Eagle 2.4.1 and a GRCh38 genetic map before RFMix2 local-ancestry inference.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13078719/ (section: Subjects and methods / Local ancestry inference with RFMix v.2)",
+        "implementation_scope_note": "The high-coverage phased 1000 Genomes callset is described as reference genotypes in the RFMix section; its assignment to an Eagle reference-mode command is not explicit. RFMix EM/window/generation settings do not describe Eagle."
       },
       {
         "tool_id": "gatk",
@@ -47225,12 +47686,13 @@
         "matched_text": "Eagle",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": "2.4",
         "evidence_selection": "highest-scored-eligible-method-sentence",
         "evidence_paragraph_sha256": "570fc10d4cfaf9a3f483134f5df3d5245103b87ea1176ffef2bb70b6196d9ad5",
-        "use_summary": "Genotype phasing.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11267522/ (section: Subjects and methods / Imputation)"
+        "use_summary": "Phased each of three separately imputed cohorts with Eagle 2.4 through Michigan Imputation Server, alongside Minimac4/HRC GRCh37 imputation.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11267522/ (section: Subjects and methods / Imputation)",
+        "implementation_scope_note": "The hg18-to-hg19 lift, imputation quality threshold, population selection and post-imputation variant removal are separate stages. A full Eagle command and its phasing-reference mode are unstated."
       },
       {
         "tool_id": "fuma",
@@ -47241,12 +47703,14 @@
         "matched_text": "FUMA",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
-        "version_reported_near_name": null,
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
+        "version_reported_near_name": "",
         "evidence_selection": "highest-scored-eligible-method-sentence",
         "evidence_paragraph_sha256": "34be0df5951803a672a9abc62f808366245236d9121191cbdba9b8920036d30a",
-        "use_summary": "Functional mapping, annotation and gene prioritization.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11267522/ (section: Subjects and methods / Functional analysis)"
+        "use_summary": "Used FUMA alongside GTEx to interpret functional consequences, expression and splicing after GWAS and joint association analysis, considering the full SNP P-value distribution as well as prioritized markers.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11267522/ (section: Subjects and methods / Functional analysis)",
+        "implementation_scope_note": "The specific FUMA modules, release, LD reference and thresholds are unstated. This broad platform description does not establish a particular SNP2GENE clumping run or gene-set configuration.",
+        "supporting_evidence": []
       },
       {
         "tool_id": "ldsc",
@@ -47289,12 +47753,14 @@
         "matched_text": "Minimac4",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
-        "version_reported_near_name": null,
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
+        "version_reported_near_name": "4; patch unstated",
         "evidence_selection": "highest-scored-eligible-method-sentence",
         "evidence_paragraph_sha256": "570fc10d4cfaf9a3f483134f5df3d5245103b87ea1176ffef2bb70b6196d9ad5",
-        "use_summary": "Genotype imputation.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11267522/ (section: Subjects and methods / Imputation)"
+        "use_summary": "Imputed three cohorts separately through Michigan server using Minimac4, HRC/GRCh37, Eagle 2.4, EUR population and an imputation rsq filter 0.3; cohortI was lifted from hg18 to hg19 beforehand.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11267522/ (section: Subjects and methods / Imputation)",
+        "implementation_scope_note": "The server imputation filter 0.3 is stated without an explicit strict/inclusive boundary; do not invent one. HRC edition and Minimac patch release are unstated. LiftOver, server panel/population selection and post-imputation multiallelic/palindromic filtering are separate; unequal cohort marker counts reflect the described input arrays.",
+        "supporting_evidence": []
       },
       {
         "tool_id": "plink",
@@ -47898,12 +48364,13 @@
         "matched_text": "ADMIXTURE",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": "1.3.0",
         "evidence_selection": "highest-scored-eligible-method-sentence",
         "evidence_paragraph_sha256": "4ee70823595ae60b5270e6a6cd4c1168fe0b9d8760936b639a76e0b43b3e9467",
-        "use_summary": "Population ancestry mixture inference.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13447089/ (section: Methods / Phylogeny and population structure)"
+        "use_summary": "Assessed cucumber population structure with ADMIXTURE 1.3.0 for K=2..12 using 18,600 fourfold-degenerate third-codon transversion sites from 422 accessions.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13447089/ (section: Methods / Phylogeny and population structure)",
+        "implementation_scope_note": "The paragraph does not specify CV, selected K, seeds, replicate count or bootstrap settings. degenotate extraction, IQ-TREE phylogeny and GCTA PCA remain separate operations; the input set is the stated 4DTv sites, not all variants."
       },
       {
         "tool_id": "beagle",

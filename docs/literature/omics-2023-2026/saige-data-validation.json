@@ -1,0 +1,155 @@
+{
+  "status": "passed-native-SAIGE-data-foundations;typed-adapter-pending",
+  "candidate": "build/literature-review/saige-data-candidate-1/jlinalg-0.3.7.jar",
+  "candidate_sha256": "e6a56db1a85f5529e88768f849210f289433399a85d1b28e9d3e87bf1fc4f7e7",
+  "new_native_tests": 14,
+  "focused_tests": 46,
+  "suites": 7,
+  "standalone_tests_per_Java21_and_Java25": 46,
+  "prior_archive_entries_unchanged": 16261,
+  "changed_prior_entries": [],
+  "new_internal_classes": 8,
+  "project_SAIGE_command_available": false,
+  "runtime_admitted": false,
+  "installer_available": false,
+  "source_sha256": {
+    "src/main/java/org/jlinalg/cli/SaigeGenotypes.java": "998c85b8364ad3d5b75212d395ef6f164e1560e8ace13b639a23986a37192920",
+    "src/main/java/org/jlinalg/cli/SaigeGroupCounts.java": "cbd4bdfe80d3f7b7db1138e4d583e5ba275184669c1fa5d6d1d5b5571268e5cd",
+    "src/test/java/org/jlinalg/cli/SaigeGenotypesTest.java": "e3ad8f467ede2936278b22e8016859f4bd2045afc54c8b1024cfec385276f744",
+    "src/test/java/org/jlinalg/cli/SaigeGroupCountsTest.java": "26d3e902ad9a737877db2730d92c382f79898a67043602f6cff856e78a44d5d6"
+  },
+  "missingness_and_orientation": {
+    "original_runs": 6,
+    "variant_rows": 189,
+    "exact_count_fields": 1134,
+    "rounded_numeric_fields": 945,
+    "methods": [
+      "best_guess",
+      "mean",
+      "minor"
+    ],
+    "allele_orders": [
+      "alt-first",
+      "ref-first"
+    ],
+    "eligible_rows_per_alt_first_run": 32,
+    "eligible_rows_per_ref_first_run": 31,
+    "controlled_missing_variants": 3,
+    "controlled_inverted_variant": "rs23",
+    "original_minor_method_semantics": "Zero minor-allele dosage;major-allele homozygote fill,despite the original help wording.",
+    "QC_boundary": "Exact observedMAC20 can become original computedMAC<20 underref-first subtraction. Preserve exact counts and originaloperation order;do not silently add a tolerance."
+  },
+  "gene_and_LD": {
+    "gene_mask_rows": 8,
+    "exact_gene_count_fields": 40,
+    "bounded_component_P_fields": 24,
+    "Cauchy_checks": 6,
+    "explicit_empty_gene_masks": 4,
+    "LD_marker_rows": 70,
+    "exact_LD_metadata_fields": 210,
+    "full_lower_triangle_crossproducts_including_zeros": 1260,
+    "explicit_empty_LD_groups": 1,
+    "ultra_rare_collapse": "Per-participant maximum minor dosage,including homozygote dosage2. Gene QC/masks use post-imputation frequencies/counts."
+  },
+  "additional_original_models": {
+    "quantitative_IRNT": {
+      "samples": 1000,
+      "variants": 32,
+      "independent_raw_rank_normal_and_score_checks": true
+    },
+    "binary_full_GRM_LOCO": {
+      "samples": 1000,
+      "model_chromosomes": 22,
+      "tested_chromosome": "1",
+      "variants": 32,
+      "independent_chromosome_specific_score_checks": true
+    },
+    "categorical_variance_ratio": {
+      "MAC_bins": 2,
+      "source_markers_per_bin": [
+        141,
+        859
+      ]
+    }
+  },
+  "GRM_inspection": {
+    "stored_entries": 5122,
+    "independent_coefficient_comparisons": 5122,
+    "eligible_source_markers": 426,
+    "maximum_double_vs_original_float_difference": 7.460425004435223e-07,
+    "independent_full_GRM_pairs_above_0_12501": 5670,
+    "present_in_sparse_file": 4121,
+    "absent_from_sparse_file": 1549,
+    "scope": "Controlled1000sample/100random-screening-marker fixture. Coverage counts are defined by the independent float64 full-GRM calculation. They do not describe the papers cohorts or establish a universal omission rate."
+  },
+  "conditional_status": "Original conditional execution completed,butself-conditionedrs79hasSE_c=-nan andnear-zero variance despiteprintedP1. Treat this target as unreportable;typed admissibility/export remains pending.",
+  "proofs": [
+    {
+      "path": "build/literature-review/saige-runtime/data-focused-1/observed.json",
+      "sha256": "05501b852c737965226b4bc519b80b5559f8e7412bd6f5f75b6f757163e548d7"
+    },
+    {
+      "path": "build/literature-review/saige-runtime/data-artifact-2/verification.json",
+      "sha256": "185762c47e2c6d6c609e8149480d85c00e4f82f06c64be47fcb7cff8da4aa377"
+    },
+    {
+      "path": "build/literature-review/saige-runtime/group-unit-1/verification.json",
+      "sha256": "4547359e2973c9cf2dacd648d68aeb2d46a79fda6d0001c76461d005213e3214"
+    },
+    {
+      "path": "build/literature-review/saige-runtime/packaged-data-audits-1/verification.json",
+      "sha256": "bf6f38849ace9e33a48203a9728d8cb19aa7888a4e7174e8cfbc414dd802c0cd"
+    },
+    {
+      "path": "build/literature-review/saige-runtime/workflow-matrix-1/verification.json",
+      "sha256": "40c90e53702c3ac0df9a27f5f415266f1c5fb0fe067e3b16755f113b7c2e5491"
+    },
+    {
+      "path": "build/literature-review/saige-runtime/workflow-matrix-2/verification.json",
+      "sha256": "4b545cc636884689507734f8daba2e231890f9caee96e2c8a587fc83ed7e3b12"
+    },
+    {
+      "path": "build/literature-review/saige-runtime/missing-reference-1/verification.json",
+      "sha256": "cf06a29646117d15f6d093c7d704d57c2f7895855ac26249d0c0172bba6f913e"
+    },
+    {
+      "path": "build/literature-review/saige-runtime/model-inspection-3/verification.json",
+      "sha256": "706373c55c1759d6fcaa04b6a0dbd7e5fab8a4beb6f5a697a5e8e98424aa202f"
+    },
+    {
+      "path": "build/literature-review/saige-runtime/quantitative-LOCO-inspection-3/verification.json",
+      "sha256": "79c4c3e96fe48717b6e35303308d34f5663686474624afdfb749b47b07f533da"
+    },
+    {
+      "path": "build/literature-review/saige-runtime/GRM-coverage-1/verification.json",
+      "sha256": "8ac4680f878c93661b1e082d72d6afe874f68f569400c8685a0863fba785b5a9"
+    },
+    {
+      "path": "build/literature-review/saige-runtime/conditional-estimability-1/verification.json",
+      "sha256": "875f25616126699ea02137ba3f5f397cb014f87ae33f5cd89f93526da2a09645"
+    }
+  ],
+  "retained_invalid_attempts": [
+    "workflow-matrix-1/binary-gene.tsv is empty despiteoriginalexit0 due coordinate IDs not matching exactPLINKBIMIDs.",
+    "workflow-matrix-1/quantitative-conditional failed becausecoordinate conditioning IDs were absent fromPLINKIDfields.",
+    "missing-native-audit-1 rejected an unexplainedref-firstMAC20exclusion;attempt2predicts the exactoriginal floatingQC and matches189rows.",
+    "model-inspection-2 rejected a JSON export of classSA_NULL;attempt3exports explicit primitive fields.",
+    "quantitative-LOCO-inspection-1/2 record missing optionalSciPy and wrong tab-only parser;stdlib inverseNormal/sorted ranks plus explicit whitespace parsing pass attempt3.",
+    "data-artifact-1 verifier guessed9newclasses;actual exact8classes are verified in attempt2."
+  ],
+  "scope": "Internal native audit components,strict packaging and authentic original controlled-reference work only. No typed SAIGE command/admittedruntime/installer,independent GLMM/SPA/Firth/SKAT reconstruction,full-paper parity or full-current-ROOT gate/release.",
+  "browser_validation": {
+    "check_groups": 125,
+    "screenshots": 46,
+    "new_panels_visually_reviewed": 4,
+    "proof_path": "build/literature-review/saige-runtime/ui-5/ui-validation.json",
+    "proof_sha256": "929bc77958f04e503a38e93a886b2027ec3170719e76f5d2a0949647485a6446"
+  },
+  "conditional_independent_checks": {
+    "primary_scores": 32,
+    "normal_P_intervals": 63,
+    "finite_conditional_estimates": 31,
+    "unreportable_self_conditioned_targets": 1,
+    "scope": "RawBED/fullprojection primary scores independentlychecked;primary and31finiteconditionalPvalues match intervals derivedfromprintedstatistic precision. One exactself-conditioned target isunreportableevenwithprintedP1. Conditionalcovariance/Schurcomplement,sparsePCG andeffectestimation remain original computations;this doesnot establish an independent conditionalestimator."
+  }
+}

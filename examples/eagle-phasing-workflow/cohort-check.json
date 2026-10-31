@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "operation": "check",
+  "profile": "linux-x86_64-eagle-2.4.1",
+  "mode": "COHORT",
+  "resource_root": "inputs",
+  "assembly": "synthetic-no-biological-reference",
+  "input_review": "Synthetic fixture; no biological eligibility claim",
+  "target": {
+    "path": "cohort-target.vcf",
+    "format": "vcf"
+  },
+  "map": "genetic-map.txt",
+  "region": {
+    "contig": "22",
+    "chromosome": 22,
+    "chromosome_x": 23,
+    "start": 1,
+    "end": 2147483647,
+    "selection": "literal-pos-input-subset"
+  },
+  "policies": {
+    "missing": "KEEP",
+    "partial_missing": "ALLOW_ORIGINAL_WHOLE_CALL_MISSING",
+    "keep_missing_ploidy_x": false,
+    "outside_map": "SOURCE_BOUNDARIES"
+  },
+  "parameters": {
+    "threads": 1,
+    "conditioning_haplotypes": 10000,
+    "pbwt_iterations": 1,
+    "seed": 0,
+    "algorithm": "COHORT_PBWT_ONLY"
+  },
+  "limits": {
+    "preset": "bounded-vcf-v1"
+  },
+  "process_limits": {
+    "preset": "bounded-process-v1"
+  }
+}

@@ -1,5 +1,94 @@
 # Literature-driven omics toolbox expansion
 
+**Eagle 2.4.1 cohort/reference phasing is now a validated scoped development integration.**
+Use `eagle-tools` with native VCF/BCF2.2 checks and protected source/conversion
+ledgers. The [workflow](EAGLE_WORKFLOWS.md), [BCF guide](EAGLE_BCF_STATUS.md),
+[eleven source roles](EAGLE_SOURCE_REVIEW.md) and [validation](eagle-validation.json)
+retain exact input, edition, matching and missingness boundaries. All 169 strict
+tests pass on each of three JVMs; 40 original-matched phasing protocols cover
+692,743 calls, and the copyable BCF examples match 512 direct-original calls.
+The current catalog has **53 new validated integrations plus 3 existing
+adapters (56 total)** and **266 missing**. It retains 250 papers, 379 named
+tools, 2,428 observations, 693 reviewed uses and 202 supporting pointers.
+
+**Required action:** use an admitted Linux runtime for original phasing; skip
+the dependent analysis with **SKIP3** when a dependency or requested capability
+cannot be provided on a permitted host. Invalid input, integrity, execution or
+capacity fails with **FAIL2**. Retain diagnostics and rerun to a **new output**.
+Source indexes are provenance only, never queried or certified against the BCF.
+Require `COMPLETED.json` and matching manifest/file hashes. Historical/server,
+imputation, biological accuracy and full-paper reconstruction remain outside
+this scope. Cell Ranger remains excluded; the whole goal is active.
+
+## Earlier checkpoints
+
+The following milestones retain their historical counts and validation scope.
+Use [summary.json](summary.json) and the current paragraph above for current totals.
+
+**FAVOR offline CSV annotation is now a validated scoped adapter.** Use
+`favor-annotate` with the repository runtime preparation and synthetic example
+helpers. [Workflow and required recovery](FAVOR_WORKFLOW.md),
+[validation](favor-validation.json) and [paper-role boundaries](favor-role-coverage.json)
+identify the exact current ROOT candidate and supported inputs. The original
+full-table exporter remains unsupported; use audited scalar values with cell
+states and canonical provenance. The catalog now has **52 new validated
+integrations plus 3 existing adapters**, with **267 missing**. This is a scoped
+FAVOR adapter, not a claim of whole-tool or P130 pipeline reproduction.
+
+**Native Fisher enrichment is available in development.** Start with the
+[runnable examples](../../../examples/fuma-fisher-workflow/README.md) and
+[input guide](FUMA_FISHER_WORKFLOWS.md). Supplied count tables or verified
+known-association groups retain complete families, original/tested counts,
+conditional odds and intervals, root brackets and all grouping evidence.
+[Validation](fuma-fisher-validation.json) covers 1,395 focused and packaged tests,
+original R references on three JVM profiles, 18 public Fisher recipe runs and
+desktop/mobile catalog checks. This extends partial FUMA coverage; broader FUMA
+remains marked missing. The whole goal remains active with 267 missing
+integrations. Cell Ranger remains excluded.
+
+**Required recovery:** unavailable or forbidden Java means verifier **SKIP 3**;
+provide Java 17+ on a permitted host or retain the affected analysis as skipped.
+Invalid inputs, models, imports or capacities fail with **exit 2**; inspect the
+named cause, `WARNINGS.md` and retained `partial/` diagnostics, then rerun
+corrected inputs to a NEW directory. No analysis command installs software.
+
+**Current HOMER RNA and all twelve catalogued HOMER roles are available in development.** Original 5.1/v7.0 exon raw/RPKM quantification now has complete native tag, part, boundary, copy and value audits. [Workflow and required recovery](HOMER_RNA_WORKFLOWS.md), [validation](homer-rna-validation.json) and [role mapping](homer-role-coverage.json) retain explicit reference, filtering, mate and strand choices, fractional counts and downstream boundaries. All 1,014 focused tests in 79 suites and 1,014 exact-JAR tests per Java 21/25 pass. Two public recipes match two fresh complete originals across 1,553,877 parts and 489,584 sample values. Twelve prelaunch, two postlaunch failure, two Windows and six SAM-option protocols pass. The audit covers eleven software uses and one motif-resource reuse entry, without claiming all HOMER modules or full-paper parity. The whole goal remains active with 267 missing integrations and paper-wide semantic review open. Cell Ranger remains excluded.
+
+**Historical HOMER ATAC region/track checkpoint.** Original 5.1 tag building, replicate merging, region-mode peaks, full-fragment coverage and pinned UCSC BigWig conversion now have complete native population/count/coverage/raw-interval checks. [Workflow, warnings and required actions](HOMER_ATAC_WORKFLOWS.md) explain plain SAM, half weights, source clamping, genome-size fallback, explicit choices, dependency skips and quarantined failures. [Validation](homer-atac-validation.json): 964 focused tests in 75 suites and 964 exact-JAR tests per Java 21/25; three synthetic public workflows match three fresh complete original references. Seventeen prelaunch controls, three postlaunch failures, two positive boundaries, two Windows skips and seven preparation controls pass. RNA/GO and broader HOMER remain open; 269 integrations remain missing, Cell Ranger stays excluded and the whole goal remains active.
+
+**Historical HOMER generated genomic-background milestone.** Original old generation supports 5.1/4.11/4.11.1;new generation supports 5.1. [Required choices, skips and actions](HOMER_GENERATED_WORKFLOWS.md) cover version-specific overlap, unseeded draws, count shortfalls, boundary preservation, identities and resource limits. [Validation](homer-generated-validation.json):844 focused/exact packaged tests per Java 21/25,20 public generated recipes with 48 exact-population replay calls and 20 separate original draws,plus 9 private generated protocols. Broader HOMER and 269 integrations remain open;Cell Ranger stays excluded and the goal remains active.
+
+
+**Historical818-test genomic phase-selection checkpoint.** Choose known-only, de novo-only or both explicitly. The current JAR passes 818 focused/exact packaged tests on each Java 21/25; 28 complete private workflows and 15 public recipe operations match fresh originals. Two additional original legacy reporting failures are retained and promoted as errors. [Workflow and required actions](HOMER_GENOMIC_WORKFLOWS.md) explain unused controls, null counts for unrequested phases, legacy division by zero, dependency skips and quarantined failures. [Current validation](homer-genome-phase-validation.json) records exact scopes. Generated backgrounds, named resources, peak/coverage/RNA and 269 integrations remain open; Cell Ranger stays excluded and the goal remains active.
+
+
+**Previous 805-test HOMER supplied-background milestone (historical).** `homer-tools genome` runs complete original known/de novo/matching reports on supplied FASTA and background across three versions. The exact JAR passes 805 tests on each Java 21/25; 13 complete protocols include nine fresh original references, with nine additional public recipes/reference runs. [Workflow, warnings and recovery](HOMER_GENOMIC_WORKFLOWS.md) explain legacy strand behavior, original q versus BH, explicit setup, dependency skips (exit 3) and quarantined failures (exit 2). [Validation](homer-genome-validation.json) records scope and hashes. Broader HOMER remains missing; generated backgrounds, named resources, peak/coverage/RNA and 269 integrations remain open. Cell Ranger stays excluded; the whole goal is active.
+
+
+**Native legacy/current Minimac reference blocks are validated; the typed imputation command remains unfinished.** The new Java reader passes 33 new tests and the candidate passes 504 focused/packaged tests, with no skips. Twenty-one cross-host audits cover 8,700,264 ordered haplotype alleles; three original conversions/complete exports preserve selected identities, phase and model values. Read [format warnings and required actions](MINIMAC_REFERENCE_BLOCKS.md), [evidence](minimac-blocks-validation.json) and the [runnable example](../../../examples/native-minimac-reference/README.md). Explicit boundary policies retain both rows and any ID/model change. Unsafe v2 deltas fail before upstream execution; the documented v2 subset excludes all-reference rows explicitly and does not authorize production filtering. The catalog retains 270 missing integrations and Cell Ranger remains excluded.
+
+**Minimac private runtime setup and the Java backend are validated; the typed imputation command remains unfinished.** Four offline and four allowed-download admissions pass real health checks. The packaged backend reproduces all four original profiles and passes 17 controls. Read [setup, warnings and recovery](MINIMAC_RUNTIME_STATUS.md) and [runtime evidence](minimac-runtime-validation.json). The catalog still records 270 missing integrations, including Minimac; Cell Ranger remains excluded.
+
+**Earlier native Minimac reference inspection and CSI indexing checkpoint.** That native-helper candidate passes 471 focused/packaged tests. Complete reference audits retain the original mixed-ploidy AN error, explicit converted-haplotype identities and Savvy region-query omissions. Read [warnings, evidence and required recovery](MINIMAC_REFERENCE_AUDITS.md), [validation](minimac-reference-validation.json) and the [runnable native example](../../../examples/native-minimac-reference/README.md). No tool-integration count is advanced; Cell Ranger stays excluded.
+
+**Minimac source roles and native dosage moments are validated; the project imputation adapter remains missing.** Thirteen newly reviewed roles and six support pointers bring the catalog to671 reviewed roles/197 pointers, retaining250 papers/379 tools/2,428 observations and all658 prior reviews. Original Minimac3/current and historical Minimac4 profiles completed five synthetic imputation workflows; the native Java API passes433 focused tests/34suites and433 exact packaged tests on each Java 21/25. Six cross-host native audits check4,320 original genotype cells. Read [source roles and required recovery](MINIMAC_SOURCE_REVIEW.md), the [native example](../../../examples/native-haplotype-dosage/README.md) and `minimac-source-validation.json`. CRLF/index failures, historical runtime compatibility, float32 R² differences and distinct reference-preparation outputs remain explicit. This is not an integrated imputation command.37 upstream/12 native subsets and270 missing tool integrations remain;Cell Ranger stays excluded and the full goal stays active. No canonical/public release was made.
+
+**Earlier CellBender CPU adapter checkpoint.** The original 0.4.0 full/ambient/swapping MCKP subset passed 407 focused tests in 33 suites, 407 exact packaged tests on each Java 21/25, three scientific workflows and an original-reference match across all 64 HDF5 datasets plus metric/cell-barcode CSVs. The public synthetic verifier passed. Fifteen live CLI controls, five cross-host skip checks, eight installer controls and two changed-home refusals retain explicit cause/recovery. Read [workflow and required actions](CELLBENDER_WORKFLOWS.md), [source roles](CELLBENDER_SOURCE_REVIEW.md) and `cellbender-validation.json`. CPU-only; missing, unsupported, changed or forbidden dependencies skip3, failures2 quarantine partials, and existing outputs are preserved. Twelve native and 37 bounded upstream subsets are validated;270 integrations and paper-wide semantic review remain open. The frozen catalog retains250 papers/379 tools/2,428 observations/658 reviewed roles/191 supporting pointers. Cell Ranger remains excluded. No canonical/public release was made.
+
+**Prior FUMA score/workflow checkpoint.** Its combined candidate passed 365 focused tests in 30 suites with no skips, plus all 365 tests against exact packaged classes on Java 21/25. Twenty original R score protocols (19 completed, one retained error) support 17 valid-schema comparisons and 29 public native/control cases per Windows 21/25 and Linux 21. Fifty-seven packaged workflow runs include six original MAGMA mean/top/multi analyses; 201 tested genes and one empty annotation are retained. Another 224 prior mapping/chromatin replays preserve the earlier tables. Read [the typed workflow guide](FUMA_TYPED_WORKFLOW.md), [raw score annotations](FUMA_GENE_SCORE_ANNOTATIONS.md), [source findings](FUMA_NUMERICAL_FINDINGS.md) and `fuma-workflow-validation.json`. Missing/forbidden dependencies skip with cause and recovery; failed or partially skipped roots are not completed workflows. The catalog retains 250 papers,379 tools,2,428 observations,645 reviewed roles and187 supporting pointers;271 tool-level integrations remain missing. Cell Ranger remains excluded; the full goal stays active. No canonical/public release was made.
+
+**Earlier supplied chromatin checkpoint.** That candidate passed 318 tests in 27 suites with no skips, plus all 318 tests against exact packaged classes on Java 21/25. Thirty-six original R protocols (34 completed, two retained failures) support 80 independent policy protocols and 152 packaged workflows. Source-policy tables agree across Windows 21/25 and Linux 21. Ten public/Unicode/recovery cases passed; portable replays cover 160 chromatin and 64 prior positional/eQTL workflows. Read [chromatin workflow and required actions](FUMA_CHROMATIN_WORKFLOWS.md), [source findings](FUMA_NUMERICAL_FINDINGS.md) and `fuma-chromatin-validation.json`. Declare membership/coordinate policies and distinguish interaction declarations, pool flags and actual links. Only actual links count as mapped genes; declaration-only runs require explicit empty retention. No external runtime is required. The catalog retains 250 papers,379 tools,2,428 observations,645 reviewed roles and187 supporting pointers;271 tool-level integrations remain missing. Cell Ranger remains excluded; the full goal stays active. No canonical/public release was made.
+
+**Earlier FUMA positional/eQTL checkpoint.** That combined candidate passed 278 tests in 25 suites with no skips, and all 278 tests passed against exact packaged classes on Java 21/25. Thirty-two original R protocols (31 successful, one retained source error) compare 96 packaged workflows across Windows 21/25 and Linux 21; 160 table groups match across profiles. Independent association oracles cover all 32 protocols, 13 extra controls/public/Unicode cases passed, and the portable replay passed 64 workflows on Windows/Linux. Read [mapping workflow and required actions](FUMA_MAPPING_WORKFLOWS.md), [source findings](FUMA_NUMERICAL_FINDINGS.md) and `fuma-mapping-validation.json`. No external runtime is needed. Chromatin mapping, annotation/eQTL discovery, gene scores, full MAGMA orchestration and expression/cell-type workflows remain open. The frozen catalog retains 250 papers, 379 tools, 2,428 observations, 645 reviewed roles and 187 supporting pointers; 271 tool-level integrations remain missing and Cell Ranger stays excluded. The full goal is active; the canonical executable/public release is unchanged.
+
+**Earlier FUMA locus/gene-set checkpoint.** That combined candidate passed 224 focused tests in 20 suites and 224 exact packaged tests on each of Java 21/25. Forty-three original-function protocols compare 129 typed native workflows/786 candidate rows, with 30 additional controls/public/Unicode cases and seven identical cross-profile table groups. Read [locus workflow and required recovery](FUMA_LOCUS_WORKFLOWS.md), [numerical/source findings](FUMA_NUMERICAL_FINDINGS.md) and [14 paper roles](FUMA_SOURCE_REVIEW.md). Original backward-merge failures, incremental counts, parser/tie differences and forced-seed/MHC/region semantics remain explicit. The frozen catalog still contains 250 papers, 379 tools, 2,428 observations, 645 reviewed roles and 187 supporting pointers; 271 tool-level integrations remain missing, including broader FUMA. Cell Ranger remains excluded. The full goal remains active; no canonical/public release was made.
+
+**Earlier FUMA gene-set checkpoint.** The Java GENE2FUNC module passed 192 focused tests in 18 suites and 192 exact packaged tests on each of Java 21/25. Thirty-five original workflows, 70 packaged comparisons, 1,024 exact-probability rows, 13,920 correction fields and seven public/Unicode workflows were checked. Legacy numeric discrepancies are retained with independent exact audits. Read [workflow and required recovery](FUMA_GENESET_WORKFLOWS.md), [numerical findings](FUMA_NUMERICAL_FINDINGS.md) and [14 paper roles](FUMA_SOURCE_REVIEW.md). The frozen catalog contains 250 papers, 379 tools, 2,428 observations, 645 reviewed roles and 187 supporting pointers. It retains 271 missing tool-level integrations, including broader FUMA; Cell Ranger stays excluded. The wider implementation and semantic review remain active. The canonical executable and public release are unchanged.
+
+**Earlier ADMIXTURE development checkpoint.** Original fitting, supervised references and projection passed 169 focused tests in 16 suites, 169 exact packaged tests on each of Java 21/25, 20 original-reference workflows and 25 runtime/recovery checks. Two combined-options comparisons and five public demo workflows also passed. [Workflow and required recovery](ADMIXTURE_WORKFLOWS.md) explain installation/download permissions, dependency skips (exit 3) and quarantined failures (exit 2). The catalog retains 250 papers, 379 tools, 2,428 observations, 638 reviewed roles and 171 supporting pointers. Twelve native and 36 bounded upstream subsets are validated; 271 tools remain missing. AdmixturePlotter/CLUMPP remain missing, and Cell Ranger stays excluded. The canonical executable and public release are unchanged. The wider implementation and semantic review remain active.
+
+**Earlier native-only ADMIXTURE milestone (historical).** That stage added 15 reviewed roles: 13 ADMIXTURE uses plus separate AdmixturePlotter and CLUMPP entries. It preserved all 250 paper identities and 623 prior reviews, producing 379 tools, 2,428 observations, 638 reviewed roles and 171 supporting pointers. Its 138-test candidate contains the native likelihood/K=1 API and audits 20 original fixtures; that older candidate has no fitting command. At that stage, 35 upstream subsets were validated and 272 tools were missing. The current adapter above supersedes that availability restriction; earlier validation remains retained. Read [native API](NATIVE_ANCESTRY_MIXTURE.md), [source roles](ADMIXTURE_SOURCE_REVIEW.md) and [runtime recovery](ADMIXTURE_RUNTIME_STATUS.md).
+
 The requested goal is active: catalog 250 recent primary papers from Nature,
 Nature Genetics and AJHG, identify the software they use, and implement missing
 workflows. The approved approach combines native Java methods and tested upstream
@@ -7,17 +96,17 @@ adapters. Downloads and installation are allowed where the operating environment
 permits them. An unavailable dependency must skip the dependent analysis and
 produce an actionable warning.
 
-## Current SAIGE source review and native component
+## SAIGE integration and earlier source checkpoint
 
-The catalog now has250papers/377tools/2426observations/623reviewed roles/153supporting pointers. All604 earlier reviews are preserved. [Nineteen SAIGE-family roles](SAIGE_SOURCE_REVIEW.md) distinguish16SAIGE,2SAIGE-GENE and1Meta-SAIGE uses;P147's published-summary reuse is newly recovered. Attached numeric versions are recognized without merging tool identities.
+At the earlier SAIGE source-review checkpoint, the catalog had 250 papers, 377 tools, 2,426 observations, 623 reviewed roles and 153 supporting pointers. All604 earlier reviews are preserved. [Nineteen SAIGE-family roles](SAIGE_SOURCE_REVIEW.md) distinguish16SAIGE,2SAIGE-GENE and1Meta-SAIGE uses;P147's published-summary reuse is newly recovered. Attached numeric versions are recognized without merging tool identities.
 
-The native [unrelated-select command](UNRELATED_SELECTION_WORKFLOWS.md) is available in development candidate9786ba29:32tests/5suites,32standalone perJava21/25,501 independent full-decision graph references and21 actual packaged cases passed. It applies phenotype eligibility before initial degrees,requires explicit ties and complete additive-GRM pair coverage,and names every retained blocker. A maximal result need not be largest. It needs no external runtime.
+The native [unrelated-select command](UNRELATED_SELECTION_WORKFLOWS.md) is available in development candidate9786ba29:32tests/5suites,32standalone perJava 21/25,501 independent full-decision graph references and21 actual packaged cases passed. It applies phenotype eligibility before initial degrees,requires explicit ties and complete additive-GRM pair coverage,and names every retained blocker. A maximal result need not be largest. It needs no external runtime.
 
-**SAIGE/SAIGE-GENE/Meta-SAIGE project analyses remain unavailable and must be skipped.** An original unmodified1.5.2 private build and controlled1,000-participant/32-variant run have bounded independent checks;the admitted runtime,installer and typed workflows remain pending. Read [runtime warnings and required actions](SAIGE_RUNTIME_STATUS.md). Native cohort selection is a separate component;all three tool badges remain missing. Counts remain12native tool subsets/34upstream subsets/48overlaps/271missing/1user-excluded Cell Ranger,plus existing categories. The goal remains active;canonical executable and releases are unchanged.
+**Bounded SAIGE PLINK association available; wider integration active.** The admitted original SAIGE 1.5.2/R4.5.2 runtime and `saige-tools` expose typed `sparse-grm`, `fit-null` and diploid autosomal PLINK `single`. The SAIGE numerical candidate’s 122-test/12-suite gate and all 122 tests against exact packaged classes pass on Java 21 and 25. Thirteen earlier scientific workflows cover 526 variant rows; two current workflows preserve 64 reference rows, with explicit allele, imputation, cleanup, QC and reportability audits. Read the [association guide](SAIGE_ASSOCIATION_WORKFLOWS.md), [preparation guide](SAIGE_WORKFLOWS.md), [runtime recovery](SAIGE_RUNTIME_STATUS.md) and `saige-association-validation.json`. BGEN/VCF, conditional/gene/LD and Meta-SAIGE integrations remain unfinished; skip those dependent analyses. At that earlier checkpoint, coverage was 12 native tool subsets, 35 upstream subsets, 48 overlaps, 270 missing tools and one user-excluded Cell Ranger, plus the existing adapter/lookup/export categories. Current totals are stated above. The goal remains active; the canonical executable and releases are unchanged. Read the [new numerical findings](SAIGE_NUMERICAL_FINDINGS.md): original PCG failures now reject or withhold affected statistics; conditional analysis remains unavailable while sparse-storage and P/SE discrepancies are handled explicitly.
 
 The prior IGV milestone validated18viewer roles and the bounded original `igv-tools` development command(candidate38889b96):126focused tests,17packaged cases and27runtime policy controls. See [IGV workflows](IGV_WORKFLOWS.md),[source review](IGV_SOURCE_REVIEW.md) and [runtime status](IGV_RUNTIME_STATUS.md). Its historical2425-observation/604-review source snapshot is preserved;current counts are stated above. Automatic CNA/synteny summaries,modification interpretation and historical/full-paper reconstruction remain open.
 
-The [APBS workflow guide](APBS_WORKFLOWS.md),[PDB2PQR guide](PDB2PQR_WORKFLOWS.md) and [potential-surface guide](POTENTIAL_SURFACE_WORKFLOWS.md) now provide a validated preparation-to-solver-to-actual-map-surface workflow in development candidate b1c26fa4. The combined107-test gate,14 original preparation comparisons,6 actual surface workflows,16 preparation runtime policies and a fullJava25 Unicode chain passed. Missing dependencies skip the affected and dependent stages with prominent recovery actions. Earlier10solver comparisons/6,013,002nodes remain separate immutable evidence. That workflow milestone retained377 observed tools/2424 observations/587 reviewed roles;the later IGV milestone added one observation and17new reviews;the current SAIGE source/component milestone above supersedes these historical counts. No paper use is invented for PDB2PQR/PROPKA dependencies. Source observations are unchanged;historical/full-paper reconstruction remains open.
+The [APBS workflow guide](APBS_WORKFLOWS.md),[PDB2PQR guide](PDB2PQR_WORKFLOWS.md) and [potential-surface guide](POTENTIAL_SURFACE_WORKFLOWS.md) now provide a validated preparation-to-solver-to-actual-map-surface workflow in development candidate b1c26fa4. The combined107-test gate,14 original preparation comparisons,6 actual surface workflows,16 preparation runtime policies and a fullJava 25 Unicode chain passed. Missing dependencies skip the affected and dependent stages with prominent recovery actions. Earlier10solver comparisons/6,013,002nodes remain separate immutable evidence. That workflow milestone retained377 observed tools/2424 observations/587 reviewed roles;the later IGV milestone added one observation and17new reviews;the current SAIGE source/component milestone above supersedes these historical counts. No paper use is invented for PDB2PQR/PROPKA dependencies. Source observations are unchanged;historical/full-paper reconstruction remains open.
 
 The [native molecular geometry guide](MOLECULAR_GEOMETRY_WORKFLOWS.md) adds explicit-unit
 distance,angle,torsion and supplied-pair proper rigid fitting without an external
@@ -28,7 +117,7 @@ the typed original PyMOL rendering/alignment/editing subset is validated in its 
 The [PRS-CS guide](PRSCS_WORKFLOWS.md) adds original three-profile posterior
 inference,native marginal/LD/posterior checks and explicit score-weight exports.
 The development candidate passed218 focused tests,12 packaged workflows and28
-controls on Java21/25;its SHA starts `33b26e76`. The original56 synthetic runs
+controls on Java 21/25;its SHA starts `33b26e76`. The original56 synthetic runs
 have208 output files reproduced from the revised sealed runtime. Historical
 Python3.10.11 is out of support and requires explicit offline reproduction.
 Read the prominent installation,model,warning and recovery actions in
@@ -120,7 +209,7 @@ limits require review. Unexposed package options remain open.
 The [read-trimming guide](TRIMMOMATIC_WORKFLOWS.md) adds thirteen native Java
 quality/length/MAXINFO steps and original Trimmomatic0.39/0.41 adapter clipping.
 Declared Phred encoding, literal step order, forward-only cropping, four
-paired/orphan files and dependency recovery remain explicit. Java25 is installed
+paired/orphan files and dependency recovery remain explicit. Java 25 is installed
 privately where permitted; older0.32/0.36 and whole-paper parity remain open.
 
 Start with the [searchable offline catalog](../../../site/literature-review.html),

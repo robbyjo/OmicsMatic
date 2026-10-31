@@ -1,0 +1,34 @@
+package org.jlinalg.cli;
+
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.PrintStream;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.io.TempDir;
+import static org.junit.jupiter.api.Assertions.*;
+
+class HomerGenomeCliTest {
+    @TempDir Path root;
+    @Test void zeroNormalizationAndMismatchesAreExplicitSupportedValues()throws Exception{var p=HomerGenomeCli.Plan.read(HomerGenomeFixture.options(root));assertEquals(0,p.norm());assertEquals(0,p.mismatches());}
+    @Test void sourceTrialCountIsNotSilentlyChangedByThreads()throws Exception{var o=HomerGenomeFixture.options(root);o.put("threads","3");assertThrows(IOException.class,()->HomerGenomeCli.Plan.read(o));o.put("threads","5");assertEquals(5,HomerGenomeCli.Plan.read(o).threads());}
+    @Test void invalidAndOverflowingSizeArgumentsFail()throws Exception{var o=HomerGenomeFixture.options(root);for(String s:new String[]{"0","-1","200.0","150,-50","-9223372036854775808,1","-1000000000,1000000000"}){o.put("size",s);assertThrows(IOException.class,()->HomerGenomeCli.Plan.read(o));}}
+    @Test void generatedBackgroundIsSkippedInsteadOfSubstituted()throws Exception{var o=HomerGenomeFixture.options(root);o.put("background-mode","genomic-old");assertThrows(HomerRuntime.Unavailable.class,()->HomerGenomeCli.Plan.read(o));}
+    @Test void helpRoutesThroughActualHomerToolsCommand(){var bytes=new ByteArrayOutputStream();assertEquals(0,HomerToolsCli.run(new String[]{"genome","--help"},new PrintStream(bytes),System.err));String text=bytes.toString(StandardCharsets.UTF_8);assertTrue(text.contains("homer-tools genome"));assertTrue(text.contains("Original q adjustment is not standard BH"));assertTrue(text.contains("skip3"));}
+    @Test void missingRuntimeProducesProminentSkipAndRequiredAction()throws Exception{var o=HomerGenomeFixture.options(root);Path options=root.resolve("options.json");Files.writeString(options,RegenieRuntime.json(o));var err=new ByteArrayOutputStream();int code=HomerGenomeCli.run(new String[]{"--options-file",options.toString()},System.out,new PrintStream(err));assertEquals(3,code);assertTrue(err.toString(StandardCharsets.UTF_8).contains("ANALYSIS SKIPPED"));assertTrue(Files.readString(Path.of(o.get("out")).resolve("WARNINGS.md")).contains("Required action:"));}
+    @Test void existingOutputAndUnknownFlagsArePreservedAndRejected()throws Exception{var o=HomerGenomeFixture.options(root);Path out=Path.of(o.get("out"));Files.createDirectory(out);Files.writeString(out.resolve("keep"),"retain");Path options=root.resolve("options.json");Files.writeString(options,RegenieRuntime.json(o));assertEquals(2,HomerGenomeCli.run(new String[]{"--options-file",options.toString()},System.out,System.err));assertEquals("retain",Files.readString(out.resolve("keep")));assertEquals(2,HomerGenomeCli.run(new String[]{"--ignored","yes"},System.out,System.err));}
+    @Test void legacyKnownForwardRequiresExplicitOriginalWrapperPolicy()throws Exception{var o=HomerGenomeFixture.options(root);o.put("strands","forward");for(String version:new String[]{"4.11","4.11.1"})assertThrows(HomerRuntime.Unavailable.class,()->HomerGenomeCli.knownStrands(o,version));assertEquals(org.jlinalg.sequence.HomerMotifs.Strands.FORWARD,HomerGenomeCli.knownStrands(o,"5.1"));o.put("known-strand-policy","original-wrapper");assertEquals(org.jlinalg.sequence.HomerMotifs.Strands.BOTH,HomerGenomeCli.knownStrands(o,"4.11"));}
+    @Test void unknownKnownStrandPolicyFailsInputValidation()throws Exception{var o=HomerGenomeFixture.options(root);o.put("known-strand-policy","ignored");assertThrows(IOException.class,()->HomerGenomeCli.Plan.read(o));}
+
+    @Test void defaultBothRetainsTheCompleteOriginalWorkflow()throws Exception{var o=HomerGenomeFixture.options(root);var p=HomerGenomeCli.Plan.read(o);assertEquals(HomerGenomeCli.Analysis.BOTH,p.analysis());var cmd=p.command(o,"5.1");assertFalse(cmd.contains("-nomotif"));assertFalse(cmd.contains("-noknown"));assertTrue(cmd.contains("-mknown"));assertTrue(cmd.contains("-mcheck"));}
+    @Test void knownOnlyUsesItsModelsWithoutDiscoveryTrialsOrResources()throws Exception{var o=HomerGenomeFixture.options(root);o.put("analysis","known");for(String key:new String[]{"comparison-motifs","motif-length","mismatches","motifs-to-find"})o.remove(key);o.put("threads","3");var p=HomerGenomeCli.Plan.read(o);assertEquals(3,p.threads());var cmd=p.command(o,"4.11");assertTrue(cmd.contains("-nomotif"));assertFalse(cmd.contains("-noknown"));assertFalse(cmd.contains("-mcheck"));assertFalse(cmd.contains("-len"));}
+    @Test void denovoOnlyDoesNotApplyAnUnrequestedLegacyKnownStrandPolicy()throws Exception{var o=HomerGenomeFixture.options(root);o.put("analysis","denovo");o.remove("known-motifs");o.put("strands","forward");var p=HomerGenomeCli.Plan.read(o);for(String version:new String[]{"5.1","4.11","4.11.1"})assertNull(HomerGenomeCli.knownStrands(o,version));var cmd=p.command(o,"4.11");assertTrue(cmd.contains("-noknown"));assertFalse(cmd.contains("-mknown"));assertFalse(cmd.contains("-nomotif"));assertTrue(cmd.contains("-mcheck"));}
+    @Test void invalidAnalysisNeverSelectsADifferentPhase()throws Exception{var o=HomerGenomeFixture.options(root);for(String value:new String[]{"","known-only","all","KNOWN"}){o.put("analysis",value);assertThrows(IOException.class,()->HomerGenomeCli.Plan.read(o));}}
+    @Test void unrequestedModelInputsAreRejectedInsteadOfSilentlyIgnored()throws Exception{var o=HomerGenomeFixture.options(root);o.put("analysis","known");assertThrows(IOException.class,()->HomerGenomeCli.Plan.read(o));o.put("analysis","denovo");assertThrows(IOException.class,()->HomerGenomeCli.Plan.read(o));o.remove("known-motifs");o.put("known-strand-policy","original-wrapper");assertThrows(IOException.class,()->HomerGenomeCli.Plan.read(o));}
+    @Test void knownOnlyRejectsUnusedDiscoveryControls()throws Exception{var o=HomerGenomeFixture.options(root);o.put("analysis","known");for(String key:new String[]{"comparison-motifs","motif-length","mismatches","motifs-to-find"})o.remove(key);for(String key:new String[]{"motif-length","mismatches","motifs-to-find"}){o.put(key,"1");assertThrows(IOException.class,()->HomerGenomeCli.Plan.read(o));o.remove(key);}}
+    @Test void requestedPhaseStillRequiresItsDeclaredModelLibrary()throws Exception{var o=HomerGenomeFixture.options(root);o.put("analysis","denovo");o.remove("known-motifs");o.remove("comparison-motifs");assertThrows(Exception.class,()->HomerGenomeCli.Plan.read(o));}
+    @Test void knownNormalizationOrderIsIndependentOfADiscoveryWidth()throws Exception{var o=HomerGenomeFixture.options(root);o.put("analysis","known");for(String key:new String[]{"comparison-motifs","motif-length","mismatches","motifs-to-find"})o.remove(key);o.put("normalization-order","8");assertEquals(8,HomerGenomeCli.Plan.read(o).norm());}
+
+}

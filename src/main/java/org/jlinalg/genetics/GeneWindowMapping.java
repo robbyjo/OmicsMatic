@@ -44,12 +44,25 @@ public final class GeneWindowMapping {
     }
     /** Find every closed-interval membership, in input gene/variant order; empty genes remain visible. */
     public static List<Assignment> assign(List<Variant> variants,List<Gene> genes,int upstream,int downstream,boolean ignoreStrand){
+        return assign(variants,genes,upstream,downstream,ignoreStrand,Long.MAX_VALUE);
+    }
+    /** Find closed memberships while bounding stored hits before allocating an oversized result.
+     * @param variants unique candidate variants
+     * @param genes unique genes with closed coordinates
+     * @param upstream upstream window in bases
+     * @param downstream downstream window in bases
+     * @param ignoreStrand whether window orientation ignores strand
+     * @param maxMemberships maximum total variant/gene memberships, including zero
+     * @return assignments in input gene and variant order
+     */
+    public static List<Assignment> assign(List<Variant> variants,List<Gene> genes,int upstream,int downstream,boolean ignoreStrand,long maxMemberships){
         if(upstream<0||downstream<0)throw new IllegalArgumentException("Window sizes must be nonnegative integer bases");
+        if(maxMemberships<0)throw new IllegalArgumentException("Membership budget must be nonnegative");long memberships=0;
         record Indexed(Variant variant,int order) { }
         var grouped=new HashMap<String,List<Indexed>>();var ids=new HashSet<String>();for(int i=0;i<variants.size();i++){var v=variants.get(i);if(!ids.add(v.id()))throw new IllegalArgumentException("Duplicate variant ID");grouped.computeIfAbsent(v.chromosome(),k->new ArrayList<>()).add(new Indexed(v,i));}
         grouped.values().forEach(list->list.sort(Comparator.comparingInt(a->a.variant().position())));ids.clear();var output=new ArrayList<Assignment>();
         for(var gene:genes){
-            if(!ids.add(gene.id()))throw new IllegalArgumentException("Duplicate gene ID");if(upstream!=downstream&&!ignoreStrand&&gene.strand().equals("."))throw new IllegalArgumentException("Asymmetric windows require explicit strand or ignore-strand");boolean reverse=!ignoreStrand&&gene.strand().equals("-");int low=Math.max(0,gene.start()-(reverse?downstream:upstream)),high=Math.addExact(gene.end(),reverse?upstream:downstream);var list=grouped.getOrDefault(gene.chromosome(),List.of());int left=0,right=list.size();while(left<right){int m=(left+right)>>>1;if(list.get(m).variant().position()<low)left=m+1;else right=m;}var hits=new ArrayList<Indexed>();for(int i=left;i<list.size()&&list.get(i).variant().position()<=high;i++)hits.add(list.get(i));hits.sort(Comparator.comparingInt(Indexed::order));output.add(new Assignment(gene,low,high,hits.stream().map(Indexed::variant).toList()));
+            if(!ids.add(gene.id()))throw new IllegalArgumentException("Duplicate gene ID");if(upstream!=downstream&&!ignoreStrand&&gene.strand().equals("."))throw new IllegalArgumentException("Asymmetric windows require explicit strand or ignore-strand");boolean reverse=!ignoreStrand&&gene.strand().equals("-");int low=Math.max(0,gene.start()-(reverse?downstream:upstream)),high=Math.addExact(gene.end(),reverse?upstream:downstream);var list=grouped.getOrDefault(gene.chromosome(),List.of());int left=0,right=list.size();while(left<right){int m=(left+right)>>>1;if(list.get(m).variant().position()<low)left=m+1;else right=m;}var hits=new ArrayList<Indexed>();for(int i=left;i<list.size()&&list.get(i).variant().position()<=high;i++){if(++memberships>maxMemberships)throw new IllegalArgumentException("Gene-window membership budget exceeded");hits.add(list.get(i));}hits.sort(Comparator.comparingInt(Indexed::order));output.add(new Assignment(gene,low,high,hits.stream().map(Indexed::variant).toList()));
         }
         return List.copyOf(output);
     }

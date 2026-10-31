@@ -1,0 +1,2162 @@
+{
+  "schema_version": 1,
+  "profile": "saige-1.5.2-original-ubuntu24-x64-R4.5.2-pixi-locked-v1",
+  "tool": "SAIGE",
+  "version": "1.5.2",
+  "R": "4.5.2",
+  "source_commit": "365deeff9149fc2b5a66da8fa3799637bcb30af3",
+  "license_url": "https://github.com/saigegit/SAIGE/blob/365deeff9149fc2b5a66da8fa3799637bcb30af3/LICENSE",
+  "archives": {
+    "SAIGE-original-source.zip": {
+      "bytes": 63508259,
+      "sha256": "d6115052d622d40c9bec3d29614adde34f1fba9a3879526303ef4cf161a26f30",
+      "urls": [
+        "https://codeload.github.com/saigegit/SAIGE/legacy.zip/365deeff9149fc2b5a66da8fa3799637bcb30af3"
+      ]
+    },
+    "pixi-x86_64-unknown-linux-musl.tar.gz": {
+      "bytes": 32008054,
+      "sha256": "064f371e692aaa3400ac581c89da2843c91437f20c2d9155395a5d0037f33551",
+      "urls": [
+        "https://github.com/prefix-dev/pixi/releases/download/v0.83.0/pixi-x86_64-unknown-linux-musl.tar.gz"
+      ]
+    },
+    "plink-ng-v2.0.0-a.6.16.tar.gz": {
+      "bytes": 4717571,
+      "sha256": "eb2a15ae9cd9106d233850912255bfec4e5d5c32a2fb24e34db265ccf9fb9f52",
+      "urls": [
+        "https://github.com/chrchang/plink-ng/archive/refs/tags/v2.0.0-a.6.16.tar.gz"
+      ]
+    },
+    "lintools_0.1.7.tar.gz": {
+      "bytes": 82939,
+      "sha256": "50859bc8eda00450da7afaa7eb041790fa7e666bd0f0bbd299fdd03978e84e0f",
+      "urls": [
+        "https://cran.r-project.org/src/contrib/lintools_0.1.7.tar.gz",
+        "https://cran.r-project.org/src/contrib/Archive/lintools/lintools_0.1.7.tar.gz"
+      ]
+    }
+  },
+  "pixi_binary_sha256": "50571451e96f4a82cf675cd83baaf66fff9b718f0aaf153900b9faf4c29bd401",
+  "environment_lock_sha256": "7c7fcc77f2252c340b0245e8647d8a18fa60bbc0e7352546d36a31a9899c3503",
+  "probe_sha256": "a1d79e3ea9a897ce4837f5cfefd3f7fa0461f166ab57be7de9a3c8cfcc1b15be",
+  "original_reference_files": {
+    ".Rbuildignore": "f3de3b7978ce79989d919e3affe92fcd622358d70e47caf1fd567a8fcaf4214e",
+    ".gitignore": "0429a869b764f31cf73474af6478eb7e3eba060846788e9d59c44c584b8b4bf9",
+    "DESCRIPTION": "fd0ac76d46a8c63c44b3d313486f20ec69cd98e907602ec448a112317ef84193",
+    "INDEX": "56fbcdffc0c26160c76576b2a4ba3a78f5acb22cfe0ca4f9d4c1a9d7b28fd10c",
+    "LICENSE": "e57f1c320b8cf8798a7d2ff83a6f9e06a33a03585f6e065fea97f1d86db84052",
+    "Makefile": "e26318ff96f445c54a02b58d979e9f0322a349d6e2c02f93a207f9d3a64597a5",
+    "NAMESPACE": "6de9a0d93dfb64dfe744ed9c6c05eb776262d06fcffdf736b2fe8ddfdeb74eb0",
+    "R/CCT_modified.R": "ec5c8ef4fa670141baa0ddef88c6c00eb8126f38feb2299c797bfa8f37cbbb58",
+    "R/Firth.R": "78fe3d13d5f7209c3fe64d1250ad6b406e5ad6a1ee85b278f1addc20bab36d3a",
+    "R/Geno.R": "0df72d22d4e17075e362f2eef946d6145034636582709aad549d9f20e97c14d3",
+    "R/Geno_LDMat.R": "232045431a9bd879d1e546d2cda5efaeba4bcdd9bf21bde5ccfbe59fe1c17a7b",
+    "R/RareEffect.R": "514cdb25b55dcc55657cbe057800d49050f7136be2603a8bc8c94392722d4326",
+    "R/RcppExports.R": "19d7730f687335be9af1a688ac25335c7e1fcce1512859d9e0298e6fdaf68ee9",
+    "R/SAIGE_SPATest_Marker.R": "87d50c5c70eb5ee2b4a99d78dc0a7feaf23907b3b32d753982458c1842589ca7",
+    "R/SAIGE_SPATest_Region.R": "e8e95a731934fd9fcc7c2d89882c78592f313c91c0abb67d9518e2d24b3daf41",
+    "R/SAIGE_SPATest_Region_Func.R": "80885183e4722dfe1e56f3ef7593b722b280400caf93eb215c3db146d9c2211d",
+    "R/SAIGE_SPATest_Region_LDMat.R": "469eda97f0009af191b9e686c3fb3c0e7e5e6680fea0c0ea9e55637892c1c146",
+    "R/SAIGE_Test_main.R": "33841a823238d3171ec47ad69bdd38d249c46a7f474616d264e25f7333d6f519",
+    "R/SAIGE_createSparseGRM.R": "01c6e7cba97b4c7d8ebc26040ea64663ca154fd550e3a4f4e2a138047658d6bc",
+    "R/SAIGE_extractNeff.R": "4f0011b9e6136b43530ab305bc14a473ad31814a5d822486f9d6d63ba3745d0a",
+    "R/SAIGE_fitGLMM_fast.R": "f2317d0210966fc00ee913764cefd67d6cdfe5d27f576241467073136a669fb8",
+    "R/Util.R": "71cc6675d3e04fbe15d879b9e434ddcb33864d2572beabcd272d7fbde728f6aa",
+    "R/checkArgs.R": "68f85066116b7813fff4030531c3faeacf6f4391cf123ed61e02e2ae01c69f95",
+    "R/readInGLMM.R": "6abdd6f7f89af21837bfad236a8936b81b5c3d7b4440514ba674a02e70c0b9c4",
+    "README.md": "d07caf680c1db6dbe8d9ed7b9c6060a798896493b35ab5da265a124ff8c1cf3a",
+    "docker/Dockerfile": "c1ff84039d115eb0120f84c53d245b4793ef402a02a8932df95669ed3359c489",
+    "docker/readme.md": "3f5c5444503044922e3af1a1738f583c4d6e6078f525cd823f87c0c61970febb",
+    "extdata/calculate_RareEffect_PRS.R": "479c00b4fe266d4e72e3e2f7cb83f2fd8fd7e8529448530f3fc4189eee93525b",
+    "extdata/cmd.sh": "e71ff9f4e5efe9ee74d1bbe2c25ad541f0122dafe8a001b7a402f77bd70129c6",
+    "extdata/cmd_LDmat.sh": "9570a78d8a75ca046eb7a7a601b9710e525d49add07d0ab4e63d258fb8034e8b",
+    "extdata/cmd_extractNeff.sh": "0ee0fba8f698f7f77b9b588b1be463898db7494e062bac0d38f1893c780d34b6",
+    "extdata/cmd_test_sparseGRM.sh": "2e774448c7b4507508c8005623295599ab1c2ad123a3cd52ffe66da43414081b",
+    "extdata/createSparseGRM.R": "21d42158aabd10a72b6e34041db4599cdff4f1c126c6fdf21758adf8ba99e05b",
+    "extdata/extractNglmm.R": "62d3a2f3208c26bd40bd6b84b7120724b7a65dc207d8089d2f24e19747d92bd1",
+    "extdata/input/.dosage": "ece09237be33764d10ced2cc7dfdf71ca5f1fec5ae0b6a5f98011af215832b17",
+    "extdata/input/Prev_0.1_nfam_1000.pheno_positive_pheno.txt": "7c79b771bd9db9d00e60389967080b90fd94b1c33ffcf3a1d6df835416161d64",
+    "extdata/input/Prev_0.1_nfam_1000.pheno_seed_31_tau_1_pheno.txt": "e4c8243549f037f617623d77b8507222d0498b9753ea32632b06df8ec170af07",
+    "extdata/input/dosage_10markers.sav": "2b4a702af55ee2f07db6a97897e29535f191677c242e67337b98685ead3382c5",
+    "extdata/input/dosage_10markers.sav.s1r": "b5aa390c9071c7a5ba9b0e5420a6224f3b0f1df736d634a6e367d70f505c3f31",
+    "extdata/input/dosage_10markers.txt": "acc1da2c93ebe36e99d307b89ab697caf1dff1fda28f9186f107be7137c9e94a",
+    "extdata/input/dosage_10markers.vcf": "a4fa09e29d4b36c731aefb9787bbabc528e99a601e89cb7faef027178cc7a66f",
+    "extdata/input/dosage_10markers.vcf.gz": "9167513a6d2c77bd4005c58936d1fd703c80770d65a2a92039743ee685e9d96f",
+    "extdata/input/dosage_10markers.vcf.gz.csi": "4312eb95caee6a9506ea1f0708ec5e3eb67a2504ee40e0331517241c4c24ba8e",
+    "extdata/input/genotype_100markers.bed": "10c50eb41e0918d54924fad2e68959a834524627917a35f355e733ac2cfd98e5",
+    "extdata/input/genotype_100markers.bgen": "a6126e7bc0292e55adae44b695a0254c68a32759ee18d734dc89275c480c8de2",
+    "extdata/input/genotype_100markers.bgen.bgi": "bec2a092c304492b2bcb3f6cb4800f07fd506eaaf9a531cfac219e6af3401771",
+    "extdata/input/genotype_100markers.bgen.samples": "760abbf4f55aaaafbbd89e5a78eba752447335f3201b94d9b9d644d8c1070edc",
+    "extdata/input/genotype_100markers.bim": "e9efef87816223772c87e3ec851e67213bf09e61ce6feb372ba29c65ca056321",
+    "extdata/input/genotype_100markers.fam": "90bbda1c3971bcf7ddbe5acea6befae75d7868367375f571dedbdc599a47558c",
+    "extdata/input/genotype_100markers.log": "2b1c0f241a0a32b29bae875f6fe9e37096fd4adc546978f39af85927bc98a158",
+    "extdata/input/genotype_100markers.vcf": "17c0a19489634ad0db79786fe78e4ca0bc520bb1da60b8628d7c8c40862406d7",
+    "extdata/input/genotype_100markers.vcf.gz": "3567bbd09fa2d7129ad6d44bf4e2af72a38625e037aa340f891c268ee5603446",
+    "extdata/input/genotype_100markers.vcf.gz.csi": "0e0af02ef33e2a07505f44094c7e1788dff30f1f06a6e1f196674582f203a360",
+    "extdata/input/genotype_100markers.vcf.gz.tbi": "9b30fbf6072e665738d4ee5560e106b81cc376f42991053cfb63f4f3b5b7dfda",
+    "extdata/input/genotype_100markers_2chr.bed": "10c50eb41e0918d54924fad2e68959a834524627917a35f355e733ac2cfd98e5",
+    "extdata/input/genotype_100markers_2chr.bgen": "dea6d4032ae6fd83e405a9fd1d969713dfd5d81d12833b37f5ee57fc059a05e4",
+    "extdata/input/genotype_100markers_2chr.bgen.bgi": "7d8cb4a9de490ebce229139c51de968b383731b6418433449717a9cd54dc58da",
+    "extdata/input/genotype_100markers_2chr.bim": "a0d89debc4eae2ad20513568acefc5c225fcb58abb7c91843fe66127f8af0d74",
+    "extdata/input/genotype_100markers_2chr.fam": "a1f84291e88554a3005482f2f3321ec9f5363639e4816eb929cde336a447f43f",
+    "extdata/input/genotype_100markers_2chr.log": "faf0236ccaff4e0901b67d70030b067bec96144623a14200331bad901891f0e2",
+    "extdata/input/genotype_100markers_2chr.sample": "ae2ec5fcaee3db543464611d14bcbf0097148cd221cf639104b3661b11b8a557",
+    "extdata/input/genotype_100markers_2chr.vcf": "510fe5a889067dd4cb7ad12bf1fa001c16bb0aca85f15fee27e14f026df94abe",
+    "extdata/input/genotype_100markers_2chr.vcf.gz": "d962fbc6bd5d56a2ea854d8e5deda767e9423967a5835d8993cd24bc3f43c5e5",
+    "extdata/input/genotype_100markers_2chr.vcf.gz.csi": "8c62e782107aaefcdc9713cc140a7cac2999cdac1999ee1f1da8808f387569fd",
+    "extdata/input/genotype_100markers_missGT.vcf": "b7b46c9e99257d2a4877899ce0438b0eca3fc25f91790d5e00e93036192375d2",
+    "extdata/input/genotype_100markers_missGT.vcf.bgz": "cfc6236212043514df86071b202239bb5d2d4bc8e3dd70fa2649e7b74435a929",
+    "extdata/input/genotype_100markers_missGT.vcf.bgz.csi": "2bc83bc35f870e9e2e6d42773df3a922f3e4fb4537d6c22ef78188883db50d3e",
+    "extdata/input/genotype_100markers_missGT.withchr.vcf": "e0c8c433672d067aadd5be8f44118ec050ed885248861be3fbc9a7bf3b28559a",
+    "extdata/input/genotype_100markers_missGT.withchr.vcf.gz": "15fb17c70fcc74e69a9dbbee17273a7001798bd45d5644bdd02975e01b0ddf93",
+    "extdata/input/genotype_100markers_missGT.withchr.vcf.gz.csi": "7786bfdeb09faa496b3195dc813e52652e9d500fc614d6d8a69b32a02ca65580",
+    "extdata/input/genotype_10markers.missingness.bgen": "ee21eecbe308351360da0ef4bed3ec12ecac16b3a17399f0933b0bf83797fea3",
+    "extdata/input/genotype_10markers.missingness.vcf": "6d7f9ede39af797ef11b8483ca6e5687d74211e8a4a91c57649e2c3f5c40b003",
+    "extdata/input/genotype_10markers.missingness.vcf.gz": "c6e0085abdbf0d6b6e6a9e6992b9704d085b4faa9ecb1289cb78c6524a11adee",
+    "extdata/input/genotype_10markers.missingness.vcf.gz.csi": "ba326c9b7d2eadc3d38827cb3831ae76c67e1f2f676356c0257b1872432d92a2",
+    "extdata/input/genotype_10markers.missingness_chrX.vcf": "cfbc310388be373b95eb25e72a6bad7f686e53c6923a9b60fb9cea003e8500ce",
+    "extdata/input/genotype_10markers.missingness_chrX.vcf.gz": "91be032c41ddba1f9011d3df17deb049d138b0ecbf4f7a9bc42a4f07468cfde7",
+    "extdata/input/genotype_10markers.missingness_chrX.vcf.gz.csi": "2964ab4662bcfa849fa16dc0c0215343cd369e41331bdfcf35b300470982dd0e",
+    "extdata/input/genotype_10markers.vcf": "0b2cbdde5505c8e021e730e42d0aec528be28e0853a9efa2ec08b7c40635a98e",
+    "extdata/input/genotype_10markers.vcf.gz": "cf77a99aa6883354a653fbf0eb572999d92d6266599ab3d65f10be811b467380",
+    "extdata/input/genotype_10markers.vcf.gz.csi": "e0ea4d5ed7a520a261f2ab6ac0c6a514b7adbf14543f9ff62e4f147932ba497a",
+    "extdata/input/genotype_10markers_chrX.vcf": "8562b79daf039395c6f2fba2fd0e56c6a23fb3bad762b223ab165a994fde59c9",
+    "extdata/input/genotype_10markers_chrX.vcf.gz": "508d02dbc18dd6658d83510006419bf2a9466f6d52f89b2f0a8e60c748289315",
+    "extdata/input/genotype_10markers_chrX.vcf.gz.csi": "c53483c4cb5fdf91792c7a47a480fc48d46910f1cee7a6b3bc0d3e4963e2e527",
+    "extdata/input/genotype_10markers_triallelic.missing.vcf": "dd372408ddec00427f3bdf28d63a75754a68fd642f9e3462d60e732299a8a968",
+    "extdata/input/genotype_10markers_triallelic.missing.vcf.gz": "64d8e82cd6f3362e4e5ef84be696aa3416231997b33a704d596d818fd87957fe",
+    "extdata/input/genotype_10markers_triallelic.missing.vcf.gz.csi": "6dd2a8b38df0d45eca8568b6fcb71b20d005eb5b9048d6f95702dc2a0f8154cc",
+    "extdata/input/genotype_10markers_triallelic.missing.vcf.gz.tbi": "3fcc40a0eba6d1a1f3d6b24aa35c43d6c3fb3a4e42bca7aa469332f74e48bc33",
+    "extdata/input/genotype_10markers_triallelic.missing.withVarianceallMissing.vcf": "957732cfd0e8bd7599b50a168861dae3d57180ca90846269bb0b44e86772c796",
+    "extdata/input/genotype_10markers_triallelic.missing.withVarianceallMissing.vcf.gz": "11cc9118f832405cded03944addaeb1a8f0d26ee9daa7e33592fb8a096afd5cb",
+    "extdata/input/genotype_10markers_triallelic.missing.withVarianceallMissing.vcf.gz.csi": "45f82a297f7ae877c75da986bf867c6c96736a0672b4e713896c9a309a16a7cd",
+    "extdata/input/genotype_10markers_triallelic.vcf": "9a84621168bd75a55cff57329a86df04c9fdd2ef39c5d35bf05451dac9d0c815",
+    "extdata/input/genotype_10markers_triallelic.vcf.gz": "a46f34e2f587ef204e1dccab39275c7a7ad9c4c0f77f0ae0557e70cff4926162",
+    "extdata/input/genotype_10markers_triallelic.vcf.gz.csi": "2223c871ccc9f2c23f0d514efe42e2b265b4efaa30e2e388469773bbc18c626d",
+    "extdata/input/groupFile_geneBasedtest.txt": "7a413e200711c9521c93ee7454e73e9ef638c8b761ec73c794da9f9f6c9adbcc",
+    "extdata/input/groupFile_geneBasedtest_simulation.chrX.txt": "5f0cc43fc542498b71fcd4c9f882a2f90e1d7cfdfc95050a8669470283111237",
+    "extdata/input/groupFile_geneBasedtest_simulation.triallelic.txt": "5acf62ea1b40b43eec798618556c308187055dd3110c53b3d562ca6ede3de1c9",
+    "extdata/input/groupFile_geneBasedtest_simulation.triallelic_control.txt": "db544c194b041a274ba4ba7ec50343759d968e6aadf8ffcbff35542357544367",
+    "extdata/input/groupFile_geneBasedtest_simulation.txt": "85521e1f6b9f31e5b52084790d24248b8e66d2788b262432adb417491bcce7fc",
+    "extdata/input/groupFile_geneBasedtest_withWeights.txt": "44a723a770760a169ef2953c9f9a5eb50c51b975623b32011b4fd0b90f83f9ef",
+    "extdata/input/groupFile_temp.txt": "e5c179ae23bd1dbf2f11db9fe10778cddca1e3059ef7332e9bda089130fc2bd4",
+    "extdata/input/group_new_chrposa1a2.txt": "b7522c937b3469b6fc5995d1756e4863496706c2cb31f333c733bc14e21b8bc6",
+    "extdata/input/group_new_chrposa1a2_2chr.txt": "e887b690cfbdbc58267039a4bdd62117dee78c5cdd884fa057a823062323af31",
+    "extdata/input/group_new_chrposa1a2_emptychunk.txt": "b277c8289d278e31502454a3d59bf969a18beba75cc6a898021dec267424f797",
+    "extdata/input/group_new_chrposa1a2_test.txt": "b7522c937b3469b6fc5995d1756e4863496706c2cb31f333c733bc14e21b8bc6",
+    "extdata/input/group_new_chrposa1a2_withWeights.txt": "a955ecb888e3f592a0ec1546bc6258a6684250a0158e70f8374eee1488afef7a",
+    "extdata/input/group_new_chrposa1a2_withchr.txt": "2425845f0f630f31a34367acec55ee0ce1b792d92d8676e2ebb604ce1e592e49",
+    "extdata/input/group_new_snpid.txt": "f18ef0e0fe1daa43efe7014fd9b9ee8a92a3f227c920bd5da7ec634adf3ef343",
+    "extdata/input/includeID.list_1": "15caddc495ed3c655d592cadbe48fa109f4bfa734afb3819b2f9eaaf751fbd9e",
+    "extdata/input/includeID.list_2": "c62e8adaaeadda8b1e74c692b664a3f900a86d4b786beeb610dc511a3461c3b9",
+    "extdata/input/includerange.txt": "d7705100a2be3be7eeb8972b80332cf550ac7d6590fdd2f7f88084d98365c205",
+    "extdata/input/includerange_oneline.txt": "03e58d48021009dee779b740d3b85d8e7b5d8153f04da09bac0115ac0630f50d",
+    "extdata/input/nfam_1000_MAF0.2_nMarker1_nseed200.vcf": "579f18eac351dafafd0ea4be0ec7a80ebf02337692e3efec0c7ee41bf36503c9",
+    "extdata/input/nfam_1000_MAF0.2_nMarker1_nseed200.vcf.gz": "5c865ba0c55bece4aa88095aee04b05cc11aade445e777271cfbe4ee72feb2b2",
+    "extdata/input/nfam_1000_MAF0.2_nMarker1_nseed200.vcf.gz.csi": "6aa5d785879dd506d8bfd701f29ad6a090273f8ed301c9bcb0b035de496139bf",
+    "extdata/input/nfam_100_nindep_0_step1_includeMoreRareVariants_poly.afreq": "e60d312a78b87c14b5d475fdeb11cd4965dc38f3277de983df8937b11c49239f",
+    "extdata/input/nfam_100_nindep_0_step1_includeMoreRareVariants_poly.bed": "9e684fb3e87732b62b1cb05a0c8179897c63c31148c0a3b4c3186620f76c62a5",
+    "extdata/input/nfam_100_nindep_0_step1_includeMoreRareVariants_poly.bim": "44bdb16d6cec8f50b57811a78573881e7d107b58998e4e0d5e9d3e0a30ebc169",
+    "extdata/input/nfam_100_nindep_0_step1_includeMoreRareVariants_poly.fam": "2fc1a48d02ce910d652db7acfdf1e2bf01de1e1e62bdd40e52da737b8964fbc7",
+    "extdata/input/nfam_100_nindep_0_step1_includeMoreRareVariants_poly.log": "bd0e4d5ddd34fdac42f7fd7a70c099ba56e92fb38cf3a437f27b398595abc9d7",
+    "extdata/input/nfam_100_nindep_0_step1_includeMoreRareVariants_poly.smiss": "c2ab9257b9aa502135ca9905dea9e72a1a55f6fb0a213b3e78d1f02604b20583",
+    "extdata/input/nfam_100_nindep_0_step1_includeMoreRareVariants_poly.vmiss": "c13269e62218e0dc3ef72152c945ac02e62dc779aa83442f1062e38e0f51211c",
+    "extdata/input/nfam_100_nindep_0_step1_includeMoreRareVariants_poly_22chr.1000Markers.list": "ae51098e900fc8c27b989e4e29a543fcd04382e6de1dd7e66c7e3260e4b8bb77",
+    "extdata/input/nfam_100_nindep_0_step1_includeMoreRareVariants_poly_22chr.acount": "58a0d8d23dc77bdb03e61987288369ad7e05ccbb4f185bc1b06f48d7e8a3a2a0",
+    "extdata/input/nfam_100_nindep_0_step1_includeMoreRareVariants_poly_22chr.bed": "9e684fb3e87732b62b1cb05a0c8179897c63c31148c0a3b4c3186620f76c62a5",
+    "extdata/input/nfam_100_nindep_0_step1_includeMoreRareVariants_poly_22chr.bim": "336cd5322f3c4559151d58f154532c00fd24ef4c8c0b9198edeef2091082a9f9",
+    "extdata/input/nfam_100_nindep_0_step1_includeMoreRareVariants_poly_22chr.fam": "2fc1a48d02ce910d652db7acfdf1e2bf01de1e1e62bdd40e52da737b8964fbc7",
+    "extdata/input/nfam_100_nindep_0_step1_includeMoreRareVariants_poly_22chr.forCate_vr.bed": "1b4196042ffab4518b0e2926905a40b88296a11dadcb2e618d908a5cedb7833d",
+    "extdata/input/nfam_100_nindep_0_step1_includeMoreRareVariants_poly_22chr.forCate_vr.bim": "21ac44ccaa3ba33ed18a74a957dd3d85abed91bd7992b7f5ace4d9dda9aa1002",
+    "extdata/input/nfam_100_nindep_0_step1_includeMoreRareVariants_poly_22chr.forCate_vr.fam": "8cebe9787f2552fee7e284b825bbbfa95dcfda00f3626f5cdaeb3e049099a59d",
+    "extdata/input/nfam_100_nindep_0_step1_includeMoreRareVariants_poly_22chr.forCate_vr.log": "f6a6b29e5506d12694eccd10683510dc6f9f3337fab4a143f760ca629803f068",
+    "extdata/input/nfam_100_nindep_0_step1_includeMoreRareVariants_poly_22chr.forCate_vr.markerid.list": "4a59a900a70c5098b4c627511f8f14ecc4aa8074ed32f4cd0e8dd023cadf6ba7",
+    "extdata/input/nfam_100_nindep_0_step1_includeMoreRareVariants_poly_22chr.log": "59521a7c0e1a80f0e34994cf923d9a8642160ee9111c7b007dd9d25888ff3def",
+    "extdata/input/nfam_100_nindep_0_step1_includeMoreRareVariants_poly_22chr_random1000.bed": "8e77bf9618a666e9fc1695f77d2b18f1b6fbd2f9a534a97ed3b2ad0f966e2529",
+    "extdata/input/nfam_100_nindep_0_step1_includeMoreRareVariants_poly_22chr_random1000.bim": "56c90b65138d5f3a607c7f47b526cc18544db2b13363e4f9901efba8300fbc58",
+    "extdata/input/nfam_100_nindep_0_step1_includeMoreRareVariants_poly_22chr_random1000.fam": "8cebe9787f2552fee7e284b825bbbfa95dcfda00f3626f5cdaeb3e049099a59d",
+    "extdata/input/nfam_100_nindep_0_step1_includeMoreRareVariants_poly_22chr_random1000.log": "02648e44559a01666c38fd14f53811705f05ef24d95df118242796e01b56221a",
+    "extdata/input/nfam_100_nindep_0_step1_includeMoreRareVariants_poly_22chrs.forCate_vr.log": "b173e5b0bf732df234280196e124ce812d0822e06cc650680126ec3a74e00126",
+    "extdata/input/pheno_1000samples.txt": "fad386b77ccc57b12d297c9a8eda1214496f00be1b15225352842440207d10ef",
+    "extdata/input/pheno_1000samples.txt_withdosages.txt": "e46d68c045f5e5d90a729d6aeb59859aaffcca666905320d98ac444c39d739e6",
+    "extdata/input/pheno_1000samples.txt_withdosages_withBothTraitTypes.txt": "69860b2c52c4e3e1366064e20dec01c1ef5371086594a6a1bbcafbc046677785",
+    "extdata/input/pheno_1000samples.txt_withdosages_withBothTraitTypes.txt.log": "2ea72a34eab6b7438de780b75c4c55656f5ad0af7f81de2a757988a23cc29b45",
+    "extdata/input/pheno_1000samples.txt_withdosages_withBothTraitTypes.txt.sub": "27066858b1892e73810d25f6c0be5373571b55f6360bc6d8286eaaf49cfa94e4",
+    "extdata/input/pheno_1000samples_survival.txt": "ff7c1ad6d2a15460ad115c6db153c583e53796a894c9034ece776a61bd1c93c3",
+    "extdata/input/plinkforGRM_1000samples_10kMarkers.bed": "5de1ad094208744c329a9d570255beddb72483511557703dcebb723ab7d49daf",
+    "extdata/input/plinkforGRM_1000samples_10kMarkers.bim": "ee34d36d76dfed62bb73e2486c9dd7867ee5b02ad63ea8f4c34bcea03f18353b",
+    "extdata/input/plinkforGRM_1000samples_10kMarkers.fam": "2fc1a48d02ce910d652db7acfdf1e2bf01de1e1e62bdd40e52da737b8964fbc7",
+    "extdata/input/plinkforGRM_1000samples_10kMarkers.frq": "ac62f5f639619e9c537bdb9fe1a723f86c8df867a0572ca15ec0da33e0eb0738",
+    "extdata/input/plinkforGRM_1000samples_10kMarkers.log": "bd6ec12ba101539845f4c3e304c05632c2631799e616a434a27ebbbf6c153980",
+    "extdata/input/plinkforGRM_1000samples_10kMarkers.nosex": "06bb7566374c659b51edff668eeb2f5b0a75845294551327ff61eca6f49ba09b",
+    "extdata/input/readme": "1e80f986e9b39778541d5f672a461b0896f7d39239d675c73b764e8c22a467a9",
+    "extdata/input/sample.subset.txt": "8da61e05fbfa184c03d885488d5a8c4d9d2d103a6d686eb5dcb268262d714dd6",
+    "extdata/input/sampleIDindosage.txt": "9c1f2a0122d79182a8c2354555ca2b473caf2cea966ad6c31ba1a530a44f9f19",
+    "extdata/input/sampleIDindosage_mis.txt": "343876f2d133b7518509da0321eb108a7a4e50a3c5e87eb9cd9e6fa5ff2ee9ab",
+    "extdata/input/samplefileforbgen_10000samples.txt": "881fe7e96bed857669613f52154086bc4fc973f816763e7a15b3f08da658326a",
+    "extdata/input/samplefileforbgen_10001samples.txt": "38f5238c74ed99f0b221f5104f0d2a202d664fd9229e16257ea96591aa13f4c5",
+    "extdata/input/samplefileforbgen_1000samples.txt": "9c1f2a0122d79182a8c2354555ca2b473caf2cea966ad6c31ba1a530a44f9f19",
+    "extdata/input/sampleid_males.txt": "f87fd12895a964be19beb52ec76bf693f51b2c5d1a1b4934b1984cbff0ba7b50",
+    "extdata/input/samplelist.txt": "881fe7e96bed857669613f52154086bc4fc973f816763e7a15b3f08da658326a",
+    "extdata/input/samplelist_first500.txt": "62f766465bb4afc18cd1d6f0061ad431e7f9ec75cd537caf4432a7dbeb804331",
+    "extdata/input/seedNumLow_126001_seedNumHigh_127000_nfam_1000_nindep_0.sav": "a65be7933004780226eb03c9c92625fc933c721b1332856941833bdcfb67a86a",
+    "extdata/input/seedNumLow_126001_seedNumHigh_127000_nfam_1000_nindep_0.sav.s1r": "2417a198133d28d3a055d27aa61ae34451e235fc2c2fd97c3e549d0eee49f0d7",
+    "extdata/input/test.log.only_noSparse": "7e45c58d54e03048dcd3734129d29cfa558effd3286a413d73f80d853706a998",
+    "extdata/output/.DS_Store": "d65165279105ca6773180500688df4bdc69a2c7b771752f0a46ef120b7fd8ec3",
+    "extdata/output/LDmat.index": "5d686e0f09178ec334fa00db285ba6fb37ec631eb2372a31b5ace8043cfc6346",
+    "extdata/output/LDmat.marker_info.txt": "1a9c947b5682f5b85f6023efc0e53cfa5327ab8ce3d10736273ece38facd46b3",
+    "extdata/output/LDmat_GENE1.txt": "bfa0da032a49ee7cb3786ce83056cf912e8f716401c118705c3c0b1a63fe78ff",
+    "extdata/output/LDmat_GENE2.txt": "260827b9b29457e5279045a311f1fddb7cad3ba48411f5ba41e4333dcf9e235c",
+    "extdata/output/LDmat_GENE3.txt": "92bf9e7982a0e25e4b09a575a91c3d16e6b823fa2235fb39e58776448616e013",
+    "extdata/output/example.SAIGE.vcf.dosage.txt": "111fe40a977af0b4500377134c5a89ad86bb4a3268abc76a1b0b3b114230582c",
+    "extdata/output/example.SAIGE.vcf.genotype.txt": "6d493a252cd853070efedd4fb2523f7ecc68cedb660a0672d6362da877dfcefa",
+    "extdata/output/example.plainDosage.SAIGE.txt": "f1ed985a2008bb3285a284beea2be0cbbac6487d67d81cb3db8db21f64e54b3d",
+    "extdata/output/example.rda": "35122b676684df69a30fb169bea2f6cc6446da28a282099b406d92b51e989655",
+    "extdata/output/example.varianceRatio.txt": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+    "extdata/output/example_binary.SAIGE.bgen.genotype.dropmissing.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "extdata/output/example_binary.SAIGE.bgen.genotype.dropmissing.txt_2": "d9125d0fc499592d5abdc816c623dfd09f6d219fcce2f094cf3a7d94ab9ffc80",
+    "extdata/output/example_binary.SAIGE.gene.txt": "03a18ad08196d6db6bedf0debca98169002067d367edb59d20d605934b095d58",
+    "extdata/output/example_binary.SAIGE.gene.txt_single": "d7137f07c719accdf78ee3129ed13d9f444814cd760aef162975ecc197d6f006",
+    "extdata/output/example_binary.SAIGE.gene_conditional.txt": "e15629c6fc9d1ddb0c1bd896f940b677d8572040407a68ba91a291d04d8666d9",
+    "extdata/output/example_binary.SAIGE.gene_conditional.txt_single": "d7137f07c719accdf78ee3129ed13d9f444814cd760aef162975ecc197d6f006",
+    "extdata/output/example_binary.SAIGE.gene_conditional_withspecifiedWeights.txt": "d4b698987a39bec5414bad84b2dd83d9f32ec6e554e896a320d501a7b606f038",
+    "extdata/output/example_binary.SAIGE.gene_conditional_withspecifiedWeights.txt.0.36.6": "b2863f14fb8049f107d34b93a45e9ec8e10c129f0e6f26af2a65c00de2231cae",
+    "extdata/output/example_binary.SAIGE.gene_conditional_withspecifiedWeights.txt.0.36.6_single": "c0dcbb59d2afaed4c7260f78aca3571ab2f5f3225a7f4deeb0846c776a108881",
+    "extdata/output/example_binary.SAIGE.gene_conditional_withspecifiedWeights.txt_single": "4ce5fc80e769052b9a76caeaf62fbd34d7c145d35ee9d0e6e18b846d4b206abf",
+    "extdata/output/example_binary.SAIGE.gene_test1.txt": "03a18ad08196d6db6bedf0debca98169002067d367edb59d20d605934b095d58",
+    "extdata/output/example_binary.SAIGE.gene_test1.txt_single": "d7137f07c719accdf78ee3129ed13d9f444814cd760aef162975ecc197d6f006",
+    "extdata/output/example_binary.SAIGE.vcf.genotype.chrX.is_rewrite_XnonPAR_forMales.FALSE.txt": "f0d0d491e33879f4b545d834601830ebceec74095d4f34999e1698ea10ebe2a7",
+    "extdata/output/example_binary.SAIGE.vcf.genotype.chrX.txt": "25157454eb1140dca4d7118cca68dd098b5fe1734b1de0c116e38717dbd3c871",
+    "extdata/output/example_binary.SAIGE.vcf.genotype.dropmissing.txt": "f0094c72234a2e80a42d1cc0aa8c536d187d1d1fdf28b21e09dd537bd3c7abbb",
+    "extdata/output/example_binary.SAIGE.vcf.genotype.dropmissing.txt_new": "79970aa3e94b619b22c3aafd9ad0282b042d1e8d5c08e305e3a943b65b9d81f8",
+    "extdata/output/example_binary.SAIGE.vcf.genotype.dropmissing.txt_sparse": "b7018cd4fb7d4931d1943c074d512dc10c922883313f54a38c98840866a7b787",
+    "extdata/output/example_binary.SAIGE.vcf.genotype.dropmissing.withVarianceallMissing.txt": "de9091d552d01bb42d25e7659a44482978a6d85b439d0ab4ce60e0c09157e6bf",
+    "extdata/output/example_binary.SAIGE.vcf.genotype.missingness_chrX.txt": "cae68f55fc172b672f8821e0e3e0b9fcd161c7455c5597aa16b6a848f379165c",
+    "extdata/output/example_binary.SAIGE.vcf.genotype.missingness_noDrop_chrX.txt": "efd4fc35973dbcdc958f8a7073329958248e221355d69e5cbc9d5e50e5acba42",
+    "extdata/output/example_binary.SAIGE.vcf.genotype.txt": "9dd56a88e114c98784f6c6234c5aeac7ef1e8359000c86ab94fda48fca8f8df9",
+    "extdata/output/example_binary.SAIGE.vcf.genotype.txt_0.36.4": "4e184132edf5d4c8c8d29ce150e357032b9658579fe71d13de69e00dc6b20f96",
+    "extdata/output/example_binary.SAIGE.vcf.genotype.txt_0.36.6": "4e184132edf5d4c8c8d29ce150e357032b9658579fe71d13de69e00dc6b20f96",
+    "extdata/output/example_binary.SAIGE.vcf.genotype.txt_new": "c0ab41b31d069d05e8123d4590cbd6b70783c1b4d10a75fc1d6a95c2002f4535",
+    "extdata/output/example_binary.SAIGE.vcf.genotype_conditional.txt": "c816858634b523c1b17881b19a7352e64b311ade83bc182d2b89f2643b612a15",
+    "extdata/output/example_binary.SAIGE.vcf.genotype_conditional_old.txt": "23ca5edc7a4bf223a80c97dc796928b2cbb50b3877557046bafd6ba17d2196cc",
+    "extdata/output/example_binary.rda": "90c5beb6df3719b76ea7d3040d21857517e8318bbea48e9a0f8cd2bc7eb92ea5",
+    "extdata/output/example_binary.varianceRatio.txt": "e15cfd5a16ad65cc9329834c4a694c4dcb0f1a815b634dbdef5c2189a1aaf74c",
+    "extdata/output/example_binary.varianceRatio.txt.fake": "88930bd051d214a973581b9492a5ca110aea3fdd5dc65a68bc444b6173877bbd",
+    "extdata/output/example_binary.varianceRatio.txt.sparseGRM.mtx.sample": "9c1f2a0122d79182a8c2354555ca2b473caf2cea966ad6c31ba1a530a44f9f19",
+    "extdata/output/example_binary.varianceRatio.txt_relatednessCutoff_0.125_1000_randomMarkersUsed.sparseSigma.mtx": "2dc252c45bb35092706f1afc66af4cb0801b650ced28bcb36a583fe61a52f11d",
+    "extdata/output/example_binary_cate.SAIGE.gene.missingness.txt": "e0b1cc3d74788a7c0bb3904f902c2b9d42ed2e932efeb180d90dfaafade944a6",
+    "extdata/output/example_binary_cate.SAIGE.gene.missingness.txt2": "e0b1cc3d74788a7c0bb3904f902c2b9d42ed2e932efeb180d90dfaafade944a6",
+    "extdata/output/example_binary_cate.SAIGE.gene.missingness.txt2_single": "ab5cec32ffabb9a7f00997c7d4e0ee32bf697449ab66630bdc8d6c921c25ac0f",
+    "extdata/output/example_binary_cate.SAIGE.gene.missingness.txt_0.36.5": "38f54b644f360c61c48d60d4f1b8a83ea45e1259c28ad8f936a45b87884eb606",
+    "extdata/output/example_binary_cate.SAIGE.gene.missingness.txt_0.36.5.1": "38f54b644f360c61c48d60d4f1b8a83ea45e1259c28ad8f936a45b87884eb606",
+    "extdata/output/example_binary_cate.SAIGE.gene.missingness.txt_0.36.5.1_single": "294999e6b99e97632b34c9b7c9e743ae7cf784c2631842ed1211b320a0779739",
+    "extdata/output/example_binary_cate.SAIGE.gene.missingness.txt_0.36.5_single": "8a6c1c3897ecd5bc13d3e0094ed8cfb71ac640207acb3737d3ffe24b52b10c04",
+    "extdata/output/example_binary_cate.SAIGE.gene.missingness.txt_single": "ab5cec32ffabb9a7f00997c7d4e0ee32bf697449ab66630bdc8d6c921c25ac0f",
+    "extdata/output/example_binary_cate.SAIGE.gene.txt": "6490c666b43b0be1bb49782789fa05b0ef644fe29eb09618bbd647c5bf19f5f3",
+    "extdata/output/example_binary_cate.SAIGE.gene.txt_single": "02e1d9469cb15baef756af9ebd2c09788cea9515d48730719966c3306d38aaf8",
+    "extdata/output/example_binary_cate.SAIGE.gene_conditional.txt": "44c576b32b577a8333ce69adf3eb2c680ab714fe1d55e4d9442fcde309a24961",
+    "extdata/output/example_binary_cate.SAIGE.gene_conditional.txt_single": "b54e071c620aa7f20a46d07b60b52b8a83c1b8d6870c54757dab866f23cc7feb",
+    "extdata/output/example_binary_cate.varianceRatio.old.txt": "5dfb48a4f8e56f6bdf4e8f5500a9e1cd071bb50d09a9674e5fd2820246aaa347",
+    "extdata/output/example_binary_cate.varianceRatio.txt": "a1d18a1f85129149e4fb399619c55c7d679fd621e93dde9d8f64bb3a629a071e",
+    "extdata/output/example_binary_cate.varianceRatio.txt.sparseGRM.mtx": "79e971a1b4c67243b968855c20ede7eec7428ed930e57b26c6bd03725657e186",
+    "extdata/output/example_binary_cate.varianceRatio.txt.sparseSigma.mtx": "392a365e45a259af5697c7f694a494098a83408f281751896aaef2102fbc271b",
+    "extdata/output/example_binary_cate.varianceRatio.txt_relatednessCutoff_0.125_1000_randomMarkersUsed.sparseSigma.mtx": "8b2695b6b4fe10440ea0009bee2bb2cff36a7f24ffc7b868216337582bd82b30",
+    "extdata/output/example_binary_cate.varianceRatio.txt_relatednessCutoff_0.125_2000_randomMarkersUsed.sparseSigma.mtx": "cfa8676c080f996afff9fa1651d342a8d69b18161901286b604d81daff1e1af1",
+    "extdata/output/example_binary_cate_sparseGRMfitNULL.rda": "c118689acd746a922522f95b0bed87dab88f9906516e9937dac83ac5827b85a4",
+    "extdata/output/example_binary_cate_sparseGRMfitNULL.varianceRatio.txt": "1530d4c844e8bbb0d4f83ceee05cf3012322ceb297c7ccd5c6616e769748f612",
+    "extdata/output/example_binary_cate_v2.varianceRatio.txt": "96d896a690875478ad9fa4d817b296a8f4c92b347dd527e340e9da48dd994150",
+    "extdata/output/example_binary_cate_v2.varianceRatio.txt.sparseGRM.mtx": "d53ae58acecc1c679ad40e51a44ce283451ebd849649ab994e25b81a2ebaeb34",
+    "extdata/output/example_binary_cate_v2.varianceRatio.txt.sparseSigma.mtx": "5baa23993b6e117d19a01552decabb116538a29e07260a34c89452c7ceafa2f2",
+    "extdata/output/example_binary_cate_v2.varianceRatio.txt_relatednessCutoff_0.125.sparseGRM.mtx": "d53ae58acecc1c679ad40e51a44ce283451ebd849649ab994e25b81a2ebaeb34",
+    "extdata/output/example_binary_cate_v2.varianceRatio.txt_relatednessCutoff_0.125.sparseSigma.mtx": "a46fe6cde598bf3e3d4b5fecef2957401e7d5f93092a537b021207800ee88656",
+    "extdata/output/example_binary_cate_v2.varianceRatio.txt_relatednessCutoff_0.125_2000_randomMarkersUsed.sparseSigma.mtx": "d74c70515d1d8a5c8289031aa7a63d5d56172e09abf0a2e491eff50e1ccb6940",
+    "extdata/output/example_binary_fullGRM.rda": "0c9a92923be4add29506bc5dadfd5f5dfc7a53164cfefcdd5a6451813544fa5d",
+    "extdata/output/example_binary_fullGRM.varianceRatio.txt": "2e1e01ced7307791775a9e1224ec8117171c074edd5391717967ed5e9c48a2a4",
+    "extdata/output/example_binary_fullGRM_cate.varianceRatio.txt": "f15f6f39a2d6658ca455ad0d31f31fe84648dc3eb4cfcf5dded1f9c0a87ba8e6",
+    "extdata/output/example_binary_fullGRM_sparseGRM_categorical_varRatio.varianceRatio.txt": "15ea5311550f06b96c4e03bfa0ce1f7ea002c9b15784fab446718c1b9f9e43fa",
+    "extdata/output/example_binary_fullGRM_sparseGRM_categorical_varRatio.varianceRatio.txt_relatednessCutoff_0.125_1000_randomMarkersUsed.sparseSigma.mtx": "c86a10fe3d14e40c110c86b9579fafd0b16b8c67fe87f127b164270d1ce4621e",
+    "extdata/output/example_binary_includenonAutoforvarRatio.rda": "82a8903e37a61cebb1b64ac9ad7b6730bb839db12fd68dbc71150d3b16dbc63d",
+    "extdata/output/example_binary_includenonAutoforvarRatio.varianceRatio.txt": "d06017fe0536cfbddf1cde64c8a7d6f59433618b9169e0e74323362ab0aa0223",
+    "extdata/output/example_binary_includenonAutoforvarRatio_FemaleOnly.rda": "b5fda9702eacdc36eb65ea79d47ab9e63a34abccf6ee581e062a1efeeb101ea0",
+    "extdata/output/example_binary_includenonAutoforvarRatio_FemaleOnly.varianceRatio.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "extdata/output/example_binary_includenonAutoforvarRatio_MaleOnly.rda": "abd877c0362f57d525279f8eb432aa6223ad8c7b4bf6faac8083485cae868649",
+    "extdata/output/example_binary_includenonAutoforvarRatio_MaleOnly.varianceRatio.txt": "043c2fbf6670453dcbbfd88d47a9d78989eb6aba891f6c36561ff489c0e8a6ef",
+    "extdata/output/example_binary_includenonAutoforvarRatio_noEstFixedEff.rda": "a9d0ede1ce4342281396104bc468c93bb310a336eaf2f46d65216164611adb71",
+    "extdata/output/example_binary_includenonAutoforvarRatio_noEstFixedEff.varianceRatio.txt": "f72f476539a91c0eb64c9bd722ba6e041cba75d297f9ad283dd226a49ac62e2f",
+    "extdata/output/example_binary_includenonAutoforvarRatio_noEstFixedEff_FALSE.rda": "dcdf8513136a8e94248db214359a4e541841ec2c050eb117f5a3e2c39554e506",
+    "extdata/output/example_binary_includenonAutoforvarRatio_noEstFixedEff_FALSE.varianceRatio.txt": "b3aef7234338e89fca1e0ee8bd994b47f011299570be4e72f47a76e377ef089a",
+    "extdata/output/example_binary_new.rda": "121aa83913e8d9a0a6c7c7a1f3987981ddd99607d7969efe8f73f8ec1901b1c2",
+    "extdata/output/example_binary_new.varianceRatio.txt": "0fbb30a68551cbab711b5af9de8ae90570c5444f6155f0acb4548af47fbb3402",
+    "extdata/output/example_binary_positive_signal.assoc.step2.txt": "1d14c602536d95c9f9a23fdd29208aedb55f353f756a36ee176dd97957d712b3",
+    "extdata/output/example_binary_positive_signal.assoc.step2.txt.index": "5e5d7a2064df7f01602c356adfafa17dc8bfbc26ca98521570c01893803da6df",
+    "extdata/output/example_binary_positive_signal.rda": "3294c0bf371eb6b472c78783392d5c34da900c1b7fa5b01b565d449608b1cf43",
+    "extdata/output/example_binary_positive_signal.varianceRatio.txt": "46cf044fe05eef783c4bcde2855f80d10b517b1b803068aa047418b2578b514e",
+    "extdata/output/example_binary_sparseGRM.rda": "695172bd49515192a81f7ee3600a77b994521d03518d2e71155419775a9f0a33",
+    "extdata/output/example_binary_sparseGRM.varianceRatio.txt": "26bb1fe134c50402612d6ebb345d722723fa7cf33a35f4a3286152fce4006658",
+    "extdata/output/example_binary_sparseGRM.varianceRatio.txt_relatednessCutoff_0.125_1000_randomMarkersUsed.sparseSigma.mtx": "a50a9ee08a39ac3ae04940647d2d3e345800aef226ca66d9e529897c32d93425",
+    "extdata/output/example_binary_sparseGRM_vr.rda": "d68459231e2ce1e580dcada8472c103e7e74411b25a5411ae75c5364b3057edb",
+    "extdata/output/example_binary_sparseGRM_vr.varianceRatio.txt": "f703ffe4d388747f4fff97644dd942b6d8bd19d59dbd93a7bc0a1816695a7c01",
+    "extdata/output/example_binary_sparseGRMforNull_no_vr.rda": "749a7beafe1e176c0032b188c841d8c7d730e1c2aa94fd8a3fea94a9565fe80b",
+    "extdata/output/example_quantitative.SAIGE.gene.triallelic.missing.newtemp.txt": "8cf1000d4d577ef406755c447bf5a01838225fc095739dba488163991c218caa",
+    "extdata/output/example_quantitative.SAIGE.gene.triallelic.missing.newtemp.txt_single": "7463346c6963f93f8045a14a6bf4c0a9935fd60b0c1ec8c01d78089dd2605fe5",
+    "extdata/output/example_quantitative.SAIGE.gene.triallelic.missing.txt": "95a7f07aaa8b424cc6b859cd2cadd668710b9678de6ebf72d0249a447d7fdbf0",
+    "extdata/output/example_quantitative.SAIGE.gene.triallelic.missing.txt_single": "7463346c6963f93f8045a14a6bf4c0a9935fd60b0c1ec8c01d78089dd2605fe5",
+    "extdata/output/example_quantitative.SAIGE.gene.triallelic.missing_tocompare.txt": "95a7f07aaa8b424cc6b859cd2cadd668710b9678de6ebf72d0249a447d7fdbf0",
+    "extdata/output/example_quantitative.SAIGE.gene.triallelic.txt": "19d00d46bc9bcda1a1d9e13bac0d96c09dbc053366f9f52122c3b1d70fdbef17",
+    "extdata/output/example_quantitative.SAIGE.gene.triallelic.txt_single": "bb1bfa1a535b762ede54188c22c9bec3b01a1b95764b27b595c5355841d2a646",
+    "extdata/output/example_quantitative.SAIGE.gene.triallelic.withVarianceallMissing.txt": "e327a3169811218824265fbb1e57a1ad23c2e2e44507dafa97d0f00f08353e4c",
+    "extdata/output/example_quantitative.SAIGE.gene.triallelic.withVarianceallMissing.txt_single": "a164adf394a1979613bdb272e1382e3ac1b86c4fe961d55ae0ab25eb619b8895",
+    "extdata/output/example_quantitative.SAIGE.gene.triallelic_control.txt": "f36e5e2f2e0c74854352c63830d6234887f302884ddd7f8f33330688619f1ec6",
+    "extdata/output/example_quantitative.SAIGE.gene.triallelic_control.txt_single": "8b0110857f6eb02b00e3b226bf6500c62060ca556de078f70db4d0570902db08",
+    "extdata/output/example_quantitative.SAIGE.gene.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "extdata/output/example_quantitative.SAIGE.gene.txt_old": "0bb1ca315cd4b6fead446640204cb485b7a110c2c99bb231dc197a387b3f3382",
+    "extdata/output/example_quantitative.SAIGE.gene.txt_old_single": "fa3db4d8cf99c80141e84fddde86cca0a8b48f4dec9b2f4e36290da48f840982",
+    "extdata/output/example_quantitative.SAIGE.gene.txt_single": "c0d4723b2ab81f90d21d075a0c2219fdfc4f83962096faeff8519ce9d4881f92",
+    "extdata/output/example_quantitative.SAIGE.gene_conditional.txt": "63343d0913572e00a56ef48b5617b30350fba8805d9bbc009fae5814d27d1e35",
+    "extdata/output/example_quantitative.SAIGE.gene_conditional.txt_old": "52a9e5dd43349118626920dbca18020ed7d733d6f6d66c8ef674ce86472be776",
+    "extdata/output/example_quantitative.SAIGE.gene_conditional.txt_old_single": "fa3db4d8cf99c80141e84fddde86cca0a8b48f4dec9b2f4e36290da48f840982",
+    "extdata/output/example_quantitative.SAIGE.gene_conditional.txt_single": "3af6a8ef5fe45ab73818d8f7243e642842f319582735d8c63a9a76ae61637d64",
+    "extdata/output/example_quantitative.SAIGE.vcf.genotype.chrX.gene.FALSE.txt": "bccd7c3fd7f1aa4e9551f25da2ef3c8fb59c8ab45ad907246f208fb21cd6cb58",
+    "extdata/output/example_quantitative.SAIGE.vcf.genotype.chrX.gene.FALSE.txt_single": "c38d5fd5dcbfc5cbc5ec1ebd20ae981e1ac1dee4d8dc3375f52300249cab0bbc",
+    "extdata/output/example_quantitative.SAIGE.vcf.genotype.chrX.gene.txt": "815bc883ed5abaf638a240da040c2640f24fda90d3523f7628f65002dfd3c519",
+    "extdata/output/example_quantitative.SAIGE.vcf.genotype.chrX.gene.txt_single": "9a83cae131aea3cdda9438c08c1546ddfc5825f1c8d8df6f061d4a46dce73e4a",
+    "extdata/output/example_quantitative.SAIGE.vcf.genotype.txt": "66a4ca03f2a821d8c2f4f449fc3f0748455b6dcc33c97f46e8273fcbd4eb09ff",
+    "extdata/output/example_quantitative.SAIGE.vcf.genotype.txt_cond": "3104f4d51645f079b72635d288b9f822346caa10af26247e2771534e29ae5222",
+    "extdata/output/example_quantitative.rda": "519cc7e2e5f29855d206268b0a4e0bb0b9f396270fcf5c8d74ac057afdaeeeb7",
+    "extdata/output/example_quantitative.varianceRatio.txt": "8c94acd366095bc1ad4c5dedd9d2e0debecf1a02964d1b7d7ed257779129269c",
+    "extdata/output/example_quantitative.varianceRatio.txt_relatednessCutoff_0.125_1000_randomMarkersUsed.sparseSigma.mtx": "fbe5646f943dc07f8f6df42a9dbe2bbb1cc760787ef5533b77ebec640489909b",
+    "extdata/output/example_quantitative_cate.varianceRatio.txt": "52032c1869178fc27eb2d4cb090ca89517a8978de4dd133ec90b226ef0a08d3b",
+    "extdata/output/example_quantitative_cate.varianceRatio.txt_relatednessCutoff_0.125.sparseGRM.mtx": "d53ae58acecc1c679ad40e51a44ce283451ebd849649ab994e25b81a2ebaeb34",
+    "extdata/output/example_quantitative_cate.varianceRatio.txt_relatednessCutoff_0.125.sparseSigma.mtx": "caf7b3484f9f1e4288be7c96cb8eb514e87b2c8d42e2090cf8d487534c9245a9",
+    "extdata/output/example_quantitative_cate.varianceRatio.txt_relatednessCutoff_0.125_2000_randomMarkersUsed.sparseSigma.mtx": "ea87230bca6937476856b5ab7792d2ee0d04432d02e93b928b821d26e8546ed5",
+    "extdata/output/example_quantitative_cate_withSparseforPCG.varianceRatio.txt": "815b6946bdb8d63d0f2ce2a2d2ac5e6ee300ebfad4c01f65737594a4f00003a2",
+    "extdata/output/example_quantitative_cate_withSparseforPCG.varianceRatio.txt_relatednessCutoff_0.125.sparseGRM.mtx": "d53ae58acecc1c679ad40e51a44ce283451ebd849649ab994e25b81a2ebaeb34",
+    "extdata/output/example_quantitative_cate_withSparseforPCG.varianceRatio.txt_relatednessCutoff_0.125.sparseSigma.mtx": "09e15a8198b1332b493bc6351d8339528342cb52ad8c676d7eb97d59b9b92970",
+    "extdata/output/example_quantitative_fullGRM.rda": "107e46cee2ed2c2eef89ffdf6cd7af40a3a0c1277c1bcca24d6ee0984dcbcf5a",
+    "extdata/output/example_quantitative_fullGRM_sparseGRM_categorical_varRatio.varianceRatio.txt": "b1185ec0ed557e818bae5c7db2e2e647a07238372af02d515b55637f78e85a12",
+    "extdata/output/example_quantitative_fullGRM_sparseGRM_categorical_varRatio.varianceRatio.txt_relatednessCutoff_0.125_1000_randomMarkersUsed.sparseSigma.mtx": "c624f7c15f06fb4690eee8f326b57ac0a8d7197b6cb510709cfa03ddf37bb230",
+    "extdata/output/example_quantitative_noEstFixedEff.rda": "1a23ed9d666a1a12d60aee200b4e09d9c0a19e0ddde348fac3eac3e01c97ce25",
+    "extdata/output/example_quantitative_noEstFixedEff.varianceRatio.txt": "cb6d7c4dc032df11a85d2739fc61af1d43dfebc8e0ec52dc3582fde75f4c2113",
+    "extdata/output/example_quantitative_noEstFixedEff_FALSE.rda": "233bf4679aeadc8e2abd24fba45f2103580a6cc67217eb550cd08d799e3af202",
+    "extdata/output/example_quantitative_noEstFixedEff_FALSE.varianceRatio.txt": "6ce8b53df5156d18fa22a70c4438437e00507514329a9de0564ad5c4e1b94027",
+    "extdata/output/example_quantitative_sparseGRM.rda": "8edb9303053fa7f5b3fda5e251aa2abccd0860f9575b0e1f81a1806996ec7ae4",
+    "extdata/output/example_quantitative_sparseGRM.varianceRatio.txt": "5d68127920356ed748cec58a6a3d2fdbedbb22cea97e3ade6e2cf31343cfcf84",
+    "extdata/output/example_quantitative_withSparseforPCG.rda": "3a8a864b7016deaba2cee25ed2508882999967b37555614d260052bcadf4b47a",
+    "extdata/output/example_survival.rda": "e13e53502b772d90cea236c60070ff105b55d62fab64f3fac186fbd41fc2c1d0",
+    "extdata/output/example_survival.varianceRatio.txt": "c68423d5a124d7c3917c0873647994c02440d42f3d7b1b923e3d3f46df1802b6",
+    "extdata/output/genotype_100markers_bgen_groupTest_out.txt": "627d9d8e2884dfd848d1038311bd58437f57112f35ed5f4a9c5352ab4f161a64",
+    "extdata/output/genotype_100markers_bgen_groupTest_out.txt.TRUE": "2b08e9f9b1503267a0d017d35c495edc163973fa2c5b074f672c18d98fc1192e",
+    "extdata/output/genotype_100markers_bgen_groupTest_out.txt.index": "ddc65836f5d4153929dc84088f0df859f13d640ca1a6522f6f7e559346ea1e17",
+    "extdata/output/genotype_100markers_bgen_groupTest_out.txt.markerInfo": "a8fc7c0a22dfd673b2cc2381e51ecc0342a3e643c050c94cd4d4491a743a6b2e",
+    "extdata/output/genotype_100markers_bgen_groupTest_out.txt.markerList.txt": "47f082e385bcf160bee75e90344bac69d5c7f9160e7ada0c94619ac639509b18",
+    "extdata/output/genotype_100markers_bgen_groupTest_out.txt.single": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "extdata/output/genotype_100markers_bgen_groupTest_out.txt.singleAssoc.txt": "3d14ebe484d52d1aa17a35d1aff9582173cdbde0b07baf26baa6763eeedf120e",
+    "extdata/output/genotype_100markers_bgen_groupTest_out.txt.singleAssoc.txt_temp": "41e3b2504f82d21ef5e10f61eace11bb2656fa0b70acb51a99d10336747a3b96",
+    "extdata/output/genotype_100markers_bgen_groupTest_out.txt.singleAssoc_fastTest.txt": "95d157eb20a083ffed00334ea743efcf26827dd41f937188e700ebad854c5d7d",
+    "extdata/output/genotype_100markers_bgen_groupTest_out.txt.singleAssoc_notfastTest.txt": "d136b42c468d22e0a7880bbedf9ee40024e206e52ee791afe7cdb24a10a966ae",
+    "extdata/output/genotype_100markers_bgen_groupTest_out.v1.0.3.fastTestFALSEtxt": "e3a921cd18f6dd77629d95ebcb83ccb4f546de5aa2b1c004f014e7a9ced02bad",
+    "extdata/output/genotype_100markers_bgen_groupTest_out_BURDEN_nofastTest.txt": "420979dbbee25dae8b419a46b36e8154f6aa259674d60b49516926a924cef797",
+    "extdata/output/genotype_100markers_bgen_groupTest_out_SKATO.txt": "775bf677a66388638ad5446dbc45462945e0ee3b2552a1017b5e598f97aa2fab",
+    "extdata/output/genotype_100markers_bgen_groupTest_out_V1.0.3.txt": "6a7b07ab243aa660396128cbbeff47bca420f9cbfea1d4a3bef0a837284c329a",
+    "extdata/output/genotype_100markers_bgen_groupTest_out_cond.txt": "20837dc6580f2fe437ed379499ceee78a5697f9cfd019ec0a8c374abafda2c2d",
+    "extdata/output/genotype_100markers_bgen_groupTest_out_cond.txt.index": "ddc65836f5d4153929dc84088f0df859f13d640ca1a6522f6f7e559346ea1e17",
+    "extdata/output/genotype_100markers_bgen_groupTest_out_cond.txt.markerInfo": "a70d302969f3782d4e68a1580c943ef3d334fee61bdcd1ad64cf76f90a4422db",
+    "extdata/output/genotype_100markers_bgen_groupTest_out_cond.txt.single": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "extdata/output/genotype_100markers_bgen_groupTest_out_cond.txt.singleAssoc.txt": "f8f4fc70f5c870261b0b664503368e71d6ecbee356153bf64220cc64090e860b",
+    "extdata/output/genotype_100markers_bgen_groupTest_out_fast.txt": "c123828556f84dc420091ed16865af4db09ccde6f92c0edd36ad21e166c85037",
+    "extdata/output/genotype_100markers_bgen_groupTest_out_fastTestTRUE.txt": "2b08e9f9b1503267a0d017d35c495edc163973fa2c5b074f672c18d98fc1192e",
+    "extdata/output/genotype_100markers_bgen_groupTest_out_fastTestTRUE.txtless": "e3a921cd18f6dd77629d95ebcb83ccb4f546de5aa2b1c004f014e7a9ced02bad",
+    "extdata/output/genotype_100markers_bgen_groupTest_out_nofastTest.txt": "775bf677a66388638ad5446dbc45462945e0ee3b2552a1017b5e598f97aa2fab",
+    "extdata/output/genotype_100markers_bgen_groupTest_out_onlyBURDEN.txt": "54c2795fa684b16a42eaaa662e98ee0e2538c566839dcd1e49452d9069f6d566",
+    "extdata/output/genotype_100markers_bgen_groupTest_out_onlyBURDEN.txt.index": "ddc65836f5d4153929dc84088f0df859f13d640ca1a6522f6f7e559346ea1e17",
+    "extdata/output/genotype_100markers_bgen_groupTest_out_onlyBURDEN.txt.markerInfo": "a8fc7c0a22dfd673b2cc2381e51ecc0342a3e643c050c94cd4d4491a743a6b2e",
+    "extdata/output/genotype_100markers_bgen_groupTest_out_onlyBURDEN.txt.markerList.txt": "47f082e385bcf160bee75e90344bac69d5c7f9160e7ada0c94619ac639509b18",
+    "extdata/output/genotype_100markers_bgen_groupTest_out_onlyBURDEN.txt.single": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "extdata/output/genotype_100markers_bgen_groupTest_out_onlyBURDEN.txt.singleAssoc.txt": "7a5451caaf2272a15b95d5819025584cd94cda7d591963d1126c31b12dd46ce3",
+    "extdata/output/genotype_100markers_bgen_groupTest_out_sparseGRM_and_VR_forStep1.txt": "4c9a753acef24c96f58d996705b590ab5169e56182c1ddea8278a1b518386f8c",
+    "extdata/output/genotype_100markers_bgen_groupTest_out_sparseGRM_and_VR_forStep1.txt.index": "692d14eaf725de9b434d94bd6f550bc06117b574df3fa5df59fd4d5dc1632b3f",
+    "extdata/output/genotype_100markers_bgen_groupTest_out_sparseGRM_and_VR_forStep1.txt.singleAssoc.txt": "37323813e17d11a90e01e393abda8858705b7556096638d5ae2f7e9d1a294084",
+    "extdata/output/genotype_100markers_bgen_groupTest_out_sparseGRM_and_VR_forStep1.txt.singleAssoc.txt_temp": "a8208aefc601a54c049dd54476c003823314b9a3116c693219395d43d561d3aa",
+    "extdata/output/genotype_100markers_bgen_groupTest_out_sparseGRMforStep1.txt": "7bc79ee6e1daa979608c3ec9fd2f217a6165505b9d491237d150345b6194cb28",
+    "extdata/output/genotype_100markers_bgen_groupTest_out_sparseGRMforStep1.txt.index": "ddc65836f5d4153929dc84088f0df859f13d640ca1a6522f6f7e559346ea1e17",
+    "extdata/output/genotype_100markers_bgen_groupTest_out_sparseGRMforStep1.txt.markerInfo": "c47cb6f7dcc9f6d34912897624a2b1375b3d7690ff43650ebdfef8d65a6f8715",
+    "extdata/output/genotype_100markers_bgen_groupTest_out_sparseGRMforStep1.txt.single": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "extdata/output/genotype_100markers_bgen_groupTest_out_sparseGRMforStep1.txt.singleAssoc.txt": "cef146e316715ed559580e231b52a6a3de2398c4e455452ec9fc748bc85b3e21",
+    "extdata/output/genotype_100markers_bgen_groupTest_out_sparseGRMforStep1.txt.singleAssoc.txt_temp": "83188be92798902ebcb179b5f936c70eac25cf2525da44fb3fd1acafbb801ce7",
+    "extdata/output/genotype_100markers_bgen_groupTest_out_sparseGRMforStep1_withWeights.txt": "0a3c0e6327e01cdfcdeb070c7207710b79c75217ee2b9bbad421c52412bd0bc2",
+    "extdata/output/genotype_100markers_bgen_groupTest_out_sparseGRMforStep1_withWeights.txt.index": "692d14eaf725de9b434d94bd6f550bc06117b574df3fa5df59fd4d5dc1632b3f",
+    "extdata/output/genotype_100markers_bgen_groupTest_out_sparseGRMforStep1_withWeights.txt.singleAssoc.txt": "8d32f8f6938d67118bbc25029c2480548d6a9836d5b6cb1c04e12c6c3a5170b2",
+    "extdata/output/genotype_100markers_bgen_groupTest_out_sparseGRMforStep1_withWeights.txt.singleAssoc.txt_temp": "5f49425db8c7ff91468bdf3ef4bd237fc656bb880c436cbd479f4d8bb9dbb314",
+    "extdata/output/genotype_100markers_marker_bgen.txt": "33e52fa937859243e47a197ba3782260fcc032492673e8782733763d292f2a6f",
+    "extdata/output/genotype_100markers_marker_bgen.txt.index": "5e5d7a2064df7f01602c356adfafa17dc8bfbc26ca98521570c01893803da6df",
+    "extdata/output/genotype_100markers_marker_bgen_Firth.txt": "b79dd4738a689efb384679fc907a915b4a03fd1717000e1cd249955f0f01de22",
+    "extdata/output/genotype_100markers_marker_bgen_Firth.txt.index": "5e5d7a2064df7f01602c356adfafa17dc8bfbc26ca98521570c01893803da6df",
+    "extdata/output/genotype_100markers_marker_bgen_fullGRMforNull_with_vr.txt": "07ffc40b9a4a7567d8ee39d6f12f46ff81645082b3b459aa9697af2f80c8e5a2",
+    "extdata/output/genotype_100markers_marker_bgen_fullGRMforNull_with_vr.txt.index": "5e5d7a2064df7f01602c356adfafa17dc8bfbc26ca98521570c01893803da6df",
+    "extdata/output/genotype_100markers_marker_bgen_sparseGRMforNull_no_vr.txt": "7d1a0c9d1549a0627c088a3c59edd363fce222803ca8bb14a7ff16f14a4f47ac",
+    "extdata/output/genotype_100markers_marker_bgen_sparseGRMforNull_no_vr.txt.index": "5e5d7a2064df7f01602c356adfafa17dc8bfbc26ca98521570c01893803da6df",
+    "extdata/output/genotype_100markers_marker_plink.txt": "324970e3adeb2d071df43505fecff22f14d87996c050a96fe2e168f1ba4b8343",
+    "extdata/output/genotype_100markers_marker_plink.txt.index": "5e5d7a2064df7f01602c356adfafa17dc8bfbc26ca98521570c01893803da6df",
+    "extdata/output/genotype_100markers_marker_plink_step1withSparseGRM_Firth.txt": "da42a17454ffe73d0085857f1471f3508d254285a0e5b872435a9fff1b631dcf",
+    "extdata/output/genotype_100markers_marker_plink_step1withSparseGRM_Firth.txt.index": "5e5d7a2064df7f01602c356adfafa17dc8bfbc26ca98521570c01893803da6df",
+    "extdata/output/genotype_100markers_marker_vcf.txt": "352ae5d6a441df0f2e7b207d4e60b53c5787049444808d243e37ee8e474a5ee9",
+    "extdata/output/genotype_100markers_marker_vcf.txt.index": "5e5d7a2064df7f01602c356adfafa17dc8bfbc26ca98521570c01893803da6df",
+    "extdata/output/genotype_100markers_marker_vcf.txt2": "5ed7e72b2ff2e028f848694f9958563fad994703e1b954a9f7349a06e148fb18",
+    "extdata/output/genotype_100markers_marker_vcf_chr1.txt": "6223867309dbf865ae0db24e7b3ab6ba088cda6e6519a176456a46ccb3d5c2da",
+    "extdata/output/genotype_100markers_marker_vcf_chr1.txt.index": "5e5d7a2064df7f01602c356adfafa17dc8bfbc26ca98521570c01893803da6df",
+    "extdata/output/genotype_100markers_marker_vcf_cond.txt": "152bf2698cd9e93e8cb5c38111cb727920cb66fe68cc7739cb0a5d33a6dd93a9",
+    "extdata/output/genotype_100markers_marker_vcf_cond.txt.index": "5e5d7a2064df7f01602c356adfafa17dc8bfbc26ca98521570c01893803da6df",
+    "extdata/output/genotype_100markers_marker_vcf_step1withSparseGRM.txt": "d6b91612f5165a1a96e5d102835a850d642077ebc786867838bcf15a62067146",
+    "extdata/output/genotype_100markers_marker_vcf_step1withSparseGRM.txt.index": "5e5d7a2064df7f01602c356adfafa17dc8bfbc26ca98521570c01893803da6df",
+    "extdata/output/genotype_100markers_plink_groupTest_out.txt": "b2afe4e7e6bd76f71154b4a0436f3f3c202195fd1bfdfac24bef3a90f4e68c43",
+    "extdata/output/genotype_100markers_plink_groupTest_out.txt.index": "7b5a913c779389706081af42fd6bf5a90c4d7384a2ecf639601d1d3d04b5af16",
+    "extdata/output/genotype_100markers_plink_groupTest_out.txt.markerInfo": "a8fc7c0a22dfd673b2cc2381e51ecc0342a3e643c050c94cd4d4491a743a6b2e",
+    "extdata/output/genotype_100markers_plink_groupTest_out.txt.single": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "extdata/output/genotype_100markers_plink_groupTest_out.txt.singleAssoc.txt": "eecca22814df56c50a6da499c7845bbef9c2a5ce86ac51ca08359fa52247d281",
+    "extdata/output/genotype_100markers_plink_groupTest_out.txt.singleAssoc.txt_temp": "2320ba1cee8025a4d141e8eb6f424fd8c2dab8a06a99e7457b21e65ec57d4b94",
+    "extdata/output/genotype_100markers_vcf_groupTest_out.txt": "b2afe4e7e6bd76f71154b4a0436f3f3c202195fd1bfdfac24bef3a90f4e68c43",
+    "extdata/output/genotype_100markers_vcf_groupTest_out.txt.index": "ddc65836f5d4153929dc84088f0df859f13d640ca1a6522f6f7e559346ea1e17",
+    "extdata/output/genotype_100markers_vcf_groupTest_out.txt.markerList.txt": "5ac38aff0085d80bce11220defea19e61bdce889a13d2edd26028a619e6dc5a3",
+    "extdata/output/genotype_100markers_vcf_groupTest_out.txt.singleAssoc.txt": "eecca22814df56c50a6da499c7845bbef9c2a5ce86ac51ca08359fa52247d281",
+    "extdata/output/genotype_100markers_vcf_groupTest_out.txt.singleAssoc.txt_temp": "37f809d7eab6c820b7e07625fc4b0a14e812039f1f81bee31239d327c2d411b0",
+    "extdata/output/genotype_100markers_vcf_groupTest_out_withWeights.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "extdata/output/genotype_100markers_vcf_groupTest_out_withWeights.txt.singleAssoc.txt": "eb2a9904c4b214b9b749981105091adcb5101b4d21b1d8f7e9141a7224cdab7c",
+    "extdata/output/new_single_plink.txt": "1ac8e4cbf35096c4a418f37cdf68d81e6ac751575a95e74f967feed720ad9b47",
+    "extdata/output/new_single_plink.txt.index": "d7fdaab5fb4d526767c7772e903a5ffd5dff9ceb631b7ca7c69d3c5bdd9d1d0f",
+    "extdata/output/new_single_vcf.txt": "6512259138adfe606b526c3797636f00a93bcfd20c8fe76cc9e2cbdf6b66afa1",
+    "extdata/output/new_single_vcf.txt.index": "d7fdaab5fb4d526767c7772e903a5ffd5dff9ceb631b7ca7c69d3c5bdd9d1d0f",
+    "extdata/output/nfam_100_nindep_0_step1_includeMoreRareVariants_poly_GRM.RData": "1de33c48da2e7f28f962a0697676c9e4c046f64ecd3e368602980d94f0ab9250",
+    "extdata/output/nfam_100_nindep_0_step1_includeMoreRareVariants_poly_GRM.grm.id": "06bb7566374c659b51edff668eeb2f5b0a75845294551327ff61eca6f49ba09b",
+    "extdata/output/nfam_100_nindep_0_step1_includeMoreRareVariants_poly_GRM.log": "85b4b375428b10ed04b79fc75bb30d862d7d7f824633e74f4ce07a47e6337f1e",
+    "extdata/output/nfam_100_nindep_0_step1_includeMoreRareVariants_poly_GRM.mtx": "cac4967a3f280464fa149086a4f2a733baf67bb5d2732afbc533d741464fb67d",
+    "extdata/output/nfam_100_nindep_0_step1_includeMoreRareVariants_poly_GRM.pair.txt": "ae7b0302e68d8d623d565fc576f24859fdcddea127bd2624cd9810eaa04216f4",
+    "extdata/output/nfam_100_nindep_0_step1_includeMoreRareVariants_poly_GRM.part_250_250.log": "1dc755e6b07a1c75215fa1b45ed650a1dde23b7d3b219c40b2422bd6e2bd95a7",
+    "extdata/output/nfam_100_nindep_0_step1_includeMoreRareVariants_poly_GRM.sampleIDs.txt": "9c1f2a0122d79182a8c2354555ca2b473caf2cea966ad6c31ba1a530a44f9f19",
+    "extdata/output/sparseGRM_relatednessCutoff_0.05_2000_randomMarkersUsed.sparseGRM.mtx": "d52a6176d068a8163331970af518ad5433b51c0e45ddc7907576c1397123d8e6",
+    "extdata/output/sparseGRM_relatednessCutoff_0.05_2000_randomMarkersUsed.sparseGRM.mtx.sampleIDs.txt": "9c1f2a0122d79182a8c2354555ca2b473caf2cea966ad6c31ba1a530a44f9f19",
+    "extdata/output/sparseGRM_relatednessCutoff_0.125_1000_randomMarkersUsed.sparseGRM.mtx": "cf8d7551c8fe1903b637ae41226b1d589d1eedc0992b5f0d44e5bdf6620b1710",
+    "extdata/output/sparseGRM_relatednessCutoff_0.125_1000_randomMarkersUsed.sparseGRM.mtx.sampleIDs.txt": "9c1f2a0122d79182a8c2354555ca2b473caf2cea966ad6c31ba1a530a44f9f19",
+    "extdata/output/sparseGRM_relatednessCutoff_0.125_2000_randomMarkersUsed.sparseGRM.mtx": "4ca88c04a210f3b45c68697b2ef1b728ec41d8ee7298ef08353eb3b1c9783bfb",
+    "extdata/output/sparseGRM_relatednessCutoff_0.125_2000_randomMarkersUsed.sparseGRM.mtx.sampleIDs.txt": "9c1f2a0122d79182a8c2354555ca2b473caf2cea966ad6c31ba1a530a44f9f19",
+    "extdata/output/temp.log": "7e45c58d54e03048dcd3734129d29cfa558effd3286a413d73f80d853706a998",
+    "extdata/readme": "3bac2e3dca76d1e5da23c7f3d72e2c60edb02b7abe4ad4567125d4100d066967",
+    "extdata/run_RareEffect.R": "a4d95db9609fc8d9c0737dcd75af5c316feade7355d673486b46d13d1eff8681",
+    "extdata/step1_fitNULLGLMM.R": "65a761d8a2f7817613189552737e45941d712430fe4290fe650243a9a20cd092",
+    "extdata/step2_SPAtests.R": "da65fa9ae690ee8425f6540e987241ccc2fd57eb136e352c8b722e7a55960999",
+    "extdata/step3_LDmat.R": "c34f99ede6dac9a8c86d69482c936c502e1f6aaca5431941af7295f142cae0b5",
+    "man/CCT.Rd": "4ad6931afc7d730270bebb031a6b3b48180f4a275ab5999f6961ce07df1e0f1e",
+    "man/SPAGMMATtest.Rd": "2557bb7a301633e1382a60a60ee9acfd2e749aad0fff0ee046ff57aa10f6016f",
+    "man/createSparseGRM.Rd": "b28ffc86d0224e77d049504d636d3293fad5ed08fae3c86219e03637da97f59d",
+    "man/fitNULLGLMM.Rd": "b04f02e653f51d73eee3a3c9e8e171182bbd48c5d22fa8c9f8102609dafbca49",
+    "pixi.toml": "06267e52d29ce4d4fe769fa8f85dca02c86aa93ebe525296c08b079634be97a7",
+    "src/BGEN.cpp": "0d736f0188c048632db3e24ea137b4b5566f60f89888a1d6a495bbb9d5053208",
+    "src/BGEN.hpp": "968125fd8010bb97e2e5eb20aba178a3f026253587f3dd7b1000fc1148d1014a",
+    "src/Binary_ComputeExact.cpp": "364763c3f05ed9aaba90f036ce0aeae5889b8d024fcc8e05fffe68ea44ed1b36",
+    "src/Binary_ComputeExact.hpp": "dd556613af171a3f847733a5819d72d2fbd6ee5e9379e17ce36f959f5b678865",
+    "src/Binary_ComputeExactMC.cpp": "e3b6e27210513a04e2a360fdfc22a0af64716f7696c5e7e6115df996d08110b8",
+    "src/Binary_ComputeExactMC.h": "819a8a2ee7fe14280b1c2f71d0e7ef203183988ec8dfba85bcc1f43bd63cbc1d",
+    "src/Binary_ComputeExactSKATO.cpp": "702cd0ed9a67ced4ee4f60df39823752c47abdd9391c4eb11d77118685d6e740",
+    "src/Binary_HyperGeo.cpp": "5082e18ff2ecaa96c62c733d016591e4c2e5e728125c30ed072075d035a4e2a7",
+    "src/Binary_HyperGeo.hpp": "61409dd5b985d63c4805be1139d4a14336d2816c9358f40d9aac2efc3f85da9c",
+    "src/Binary_Permu_SKAT.cpp": "c0e2a7b6c33bd50816abb7138f03059078c81a188be3bc6b2669b577ea451405",
+    "src/Binary_Permu_SKAT.h": "d29ab1ce566cbc88afda2e6ea8e545685cc8b5d163a3395ee26a686710a47211",
+    "src/Binary_global.cpp": "cb13ad1eb54d5a2485d86c5235e15ea601a77b35bf7f760fa52f6c9782df189b",
+    "src/Binary_global.hpp": "aed39ac92d5383ecc34883156efddc487434c7b58dc38074b17a829b23c64124",
+    "src/Binary_resampling.cpp": "bd546dc58490d0536d1ce87db391609d722c149f659681c95a5ca6966e9c77f8",
+    "src/CCT.cpp": "fc6fcb6a8a038cbf6e54cdb6c69c15f3d418d14c7e9acbc703c4190ebdd0fe7e",
+    "src/CCT.hpp": "447841261d527ba914630c5c29c113a6b66f2833f50113cadc8aa4f229067457",
+    "src/ER_binary_func.cpp": "ed645c28fffa13d45395ccd7e94dd479dae2fbca1d9ba9f751890c91810046f5",
+    "src/ER_binary_func.hpp": "6784a60e72d10aaf03dba1bd96df710402a4a1386010afc4b64e91a6bc4cacc0",
+    "src/LDmat.cpp": "f21ac3802dc05ddbf120017ab73e07798f1f24d93cdb614ec5a1bafff4509a57",
+    "src/LDmat.hpp": "03dfc1acac438aae2011e2a2299eae1ee1416c6c591a8a97c79e4150525accce",
+    "src/Main.cpp": "56d1d02e4ae4e5d92fefd5c1992e9f29e28795ca471e1a9016064035ed214772",
+    "src/Main.hpp": "8ad8175ae587d65d0006e7ddf13cfd544ec5cdc99d336506ec871b6bc12c4bb8",
+    "src/Makevars": "9c5addacaec00197ef6099ed52806030ee90e648939abe407dbb496fe3d5c519",
+    "src/Makevars.win": "31f89d90ef025a26a5769f39e005c63bdb5d774a1f92ff95c322f40e888a7d06",
+    "src/PGEN.cpp": "477d742d6e5ecc4f19818f481c5c7b5aafd18d0bbcafed2ed88c8812bda835f4",
+    "src/PGEN.hpp": "fcbe84cf383bb19aa0128684d18aa8ea4b917efe72f1e4de46a5044f087c382f",
+    "src/PLINK.cpp": "bdb647b7034f2559287e8dbb2213d253b3a66e887ca01333affd7c18407ecc6e",
+    "src/PLINK.hpp": "da24836ec960a1aea2638b9312c39ceea6442b8948bae7e9c217e0d76050bf75",
+    "src/RcppExports.cpp": "15108ddc7dc069cd9efffd8c9a2f2667eb03f14dd59599d773fca5e20ccc8d66",
+    "src/SAIGE/DESCRIPTION": "9a424ae4984b2edffdb7c2672a3bf92ddf0d3498367eca6809c26fa7f442582a",
+    "src/SAIGE/INDEX": "56fbcdffc0c26160c76576b2a4ba3a78f5acb22cfe0ca4f9d4c1a9d7b28fd10c",
+    "src/SAIGE/LICENSE": "da7eabb7bafdf7d3ae5e9f223aa5bdc1eece45ac569dc21b3b037520b4464768",
+    "src/SAIGE/Meta/Rd.rds": "fd85c94b852bffd81bcaac3ec15c9fe0703a68bff821e8ee39c2f237ab385990",
+    "src/SAIGE/Meta/features.rds": "d5798180157f099cd11a5213ba831464512116b52c9ba1beb0d6387f7d906258",
+    "src/SAIGE/Meta/hsearch.rds": "ec60b03b846503ef6a1cbd264e4451770d4a503f60bb48ff3e8f04400656404b",
+    "src/SAIGE/Meta/links.rds": "2de3bf569287183153754ebb2ec0a46d36d0c1bd70793544dc957869e9bfa9d3",
+    "src/SAIGE/Meta/nsInfo.rds": "9d8a668593bedb0e74a243b0ebf2a0bd8e0ef591c57764e9b4004df37eb8aac4",
+    "src/SAIGE/Meta/package.rds": "8b8e61b1fe8e952372cf4d2fbc2b4aad8170db9a753700fc8cf3c1d8821a73a8",
+    "src/SAIGE/NAMESPACE": "4a032a3feb599672232f180d50d848572d83f0fa4e3b4dbf621215f8423aabe1",
+    "src/SAIGE/R/SAIGE": "2fb8b16be23c820daf2e51b7ddfef61ca4978e561b1d228d546d1b356041f79e",
+    "src/SAIGE/R/SAIGE.rdb": "a2c1ea5a94af642ad1c721e54182f4d2291735d447e79dadb64a267d0b4072ec",
+    "src/SAIGE/R/SAIGE.rdx": "6cc178b9b202ed54477182c06857d32a3e226863d08dcc6b309040593309cd1f",
+    "src/SAIGE/help/AnIndex": "26b33340dbd1da410b9b0434c1c7006e6b7ecdd7553c5c3f0d1ea38ddae87622",
+    "src/SAIGE/help/SAIGE.rdb": "41d62c9ae5c3eb36edf519a8e647e17294d067c2223529b0dd55c7003d795343",
+    "src/SAIGE/help/SAIGE.rdx": "6a0f551c1814586bd92a2b0ab528a40e024ed29bf796dec8df02966a80596c25",
+    "src/SAIGE/help/aliases.rds": "4052136ce5cd7a6b056af44a1b75cedd61785ee631a260713ac0d57830da9836",
+    "src/SAIGE/help/paths.rds": "8d1343a9d69191fd309815910ecd66365f215c4677016416c2952f23c7e615aa",
+    "src/SAIGE/html/00Index.html": "3b9ee41e92b565fad81de290063c40f24a61df3f0ba1d4a24cc307b82677e983",
+    "src/SAIGE/html/R.css": "0f4849ab1757247808d54da2c371e992364371c942ad7d629dae8d62327ed068",
+    "src/SAIGE/libs/SAIGE.so": "7c3dd71c09b72becd232deb6ae1100afef1d0e2ec8a68872e60167e190906137",
+    "src/SAIGE_fitGLMM_fast.cpp": "43d2cca214f5d865fc5751d6439489c3ba7b2b7ca683113c848d7707b1cbd76b",
+    "src/SAIGE_test.cpp": "ce6f108485ad3a8b491ab1f9b0f74c02539fc5ab92e071ca927c780ba4253ad1",
+    "src/SAIGE_test.hpp": "3c8ac160c4b9e41414c2b59c33ef10508343afa7f5f71d629694917e742b2abf",
+    "src/SPA.cpp": "ad0e5498d4bdd382330ceb614d0fdb4f4c00b07c212f985f20f5f504f99d49c4",
+    "src/SPA.hpp": "52632ad9f265202ac26a661adea7dfa9d8fff01220972d63942ae92c5683902c",
+    "src/SPA_binary.cpp": "f131229600ab425efae0f5174269e9dd7884a211a54e9504c53c459dcf54c93c",
+    "src/SPA_binary.hpp": "81b734fd82ee7fb732de8442ebbbb76688afdb04974f4ed95a1e47d2b7063311",
+    "src/SPA_survival.cpp": "3b7c90a50bf62b77827049138302776a42f9b5e8e8e18172a68cf79cddbaea61",
+    "src/SPA_survival.hpp": "2818277bf249b318fdba9c3f1528ff910cc34b72fbfb3b835e76b7c826596696",
+    "src/UTIL.cpp": "b1c0dab3cda35cda8aa52bd7aaf577e8a4f3a4620c314d879c351fc03749d2bb",
+    "src/UTIL.hpp": "6ff77466928ce043ea3905614dd7b89bc41fe7b6fc0c9ec6764ac141dad67c7b",
+    "src/VCF.cpp": "6785bef1e5a0878d7555bb3394ce377c2be1ccd211bdd98056ffc262b68fb144",
+    "src/VCF.hpp": "da5a9e9c93afe8f1017f27d01c657494cabb6757d2d2da1ad9d5b42d965b2b22",
+    "src/getMem.cpp": "e1256daf61228c72bd6a471b8df5a9fda06500147e2bd15f1c40212671afc6ef",
+    "src/getMem.hpp": "90bd2dfd2296cbd3cdcffdad7d1fa980265bc4e587325a59586cf4f83144e883",
+    "src/script_for_vcf/BGEN_new.cpp": "7ac294913165b1cf9c077518a034f11ae590cb3ea5884cc714b0bcc26357eac7",
+    "src/script_for_vcf/BGEN_new.hpp": "720d019f27cbfae8a2136cbf8e5283f3793de98a331bc7f8b08c64f428d44a56",
+    "src/script_for_vcf/SAIGE_GENE_readDosageMatrix_vcf.cpp": "0754f2e307ff0f5a330885fa8757f092e14c409da674f4f7281048dd334180a8",
+    "src/test.cpp": "5377d3ca92bcb8654d5a803dfeb26f6bae20a6d7b9aed6cdeb5a425bf2fae5e8",
+    "src/variant_group_iterator.hpp": "6eb27147aa2ee97a7c42d02a04d9cc1ccecb4cc6a3ac15522e98c506365c4e9e",
+    "thirdParty/readme": "d3679d42a9bb9f1d9b3d26c42dd8a55809c17b7963d0fb6368f38bbb514715b6",
+    "thirdParty/requirements.txt": "5d705b2a9d1508978507162ec6734ce33526761b8acbc21a1471fde459516427"
+  },
+  "original_program_files": {
+    "extdata/createSparseGRM.R": "21d42158aabd10a72b6e34041db4599cdff4f1c126c6fdf21758adf8ba99e05b",
+    "extdata/step1_fitNULLGLMM.R": "65a761d8a2f7817613189552737e45941d712430fe4290fe650243a9a20cd092",
+    "extdata/step2_SPAtests.R": "da65fa9ae690ee8425f6540e987241ccc2fd57eb136e352c8b722e7a55960999",
+    "extdata/step3_LDmat.R": "c34f99ede6dac9a8c86d69482c936c502e1f6aaca5431941af7295f142cae0b5",
+    "LICENSE": "e57f1c320b8cf8798a7d2ff83a6f9e06a33a03585f6e065fea97f1d86db84052",
+    "DESCRIPTION": "fd0ac76d46a8c63c44b3d313486f20ec69cd98e907602ec448a112317ef84193",
+    "pixi.toml": "06267e52d29ce4d4fe769fa8f85dca02c86aa93ebe525296c08b079634be97a7"
+  },
+  "conda_packages": {
+    "_openmp_mutex": {
+      "version": "4.5",
+      "build": "20_gnu",
+      "sha256": "1dd3fffd892081df9726d7eb7e0dea6198962ba775bd88842135a4ddb4deb3c9",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/_openmp_mutex-4.5-20_gnu.conda"
+    },
+    "_r-mutex": {
+      "version": "1.0.1",
+      "build": "anacondar_1",
+      "sha256": "e58f9eeb416b92b550e824bcb1b9fb1958dee69abfe3089dfd1a9173e3a0528a",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/_r-mutex-1.0.1-anacondar_1.tar.bz2"
+    },
+    "binutils_impl_linux-64": {
+      "version": "2.46.1",
+      "build": "default_hfdba357_103",
+      "sha256": "98f9ddc6dc5d56a824b7eaea5bab6ad4bb47642288fc70d6b1b4024ac39d5595",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/binutils_impl_linux-64-2.46.1-default_hfdba357_103.conda"
+    },
+    "boost-cpp": {
+      "version": "1.85.0",
+      "build": "h3c6214e_4",
+      "sha256": "dec1f52d8869b94a9cb2b4d9a727a00ae2c54e7b5a66a51d3d9f1c33159ebb45",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/boost-cpp-1.85.0-h3c6214e_4.conda"
+    },
+    "bwidget": {
+      "version": "1.10.1",
+      "build": "hfc2019e_3",
+      "sha256": "5451e5d9abe192438f9efe8c0737c6ac0ddd6cfb932cb88e2ef2f88e97fc3c3a",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/bwidget-1.10.1-hfc2019e_3.conda"
+    },
+    "bzip2": {
+      "version": "1.0.8",
+      "build": "hda65f42_10",
+      "sha256": "1a0d382c515ebf55f8ee1f38c8b81bc95af5c2acc42ad53b66bc5df932032f96",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/bzip2-1.0.8-hda65f42_10.conda"
+    },
+    "c-ares": {
+      "version": "1.34.9",
+      "build": "hebe6cf0_0",
+      "sha256": "bd95dd25b80b5c4faf5349542377bf89b2794e23d0f7aa7f1c431e4f3b633f3c",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/c-ares-1.34.9-hebe6cf0_0.conda"
+    },
+    "ca-certificates": {
+      "version": "2026.10.23",
+      "build": "hbd8a1cb_0",
+      "sha256": "95619b9c1184be7175392eeb0ee7eeb5ccf25d280951f4225f2d62e725790be3",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/ca-certificates-2026.10.23-hbd8a1cb_0.conda"
+    },
+    "cairo": {
+      "version": "1.18.4",
+      "build": "h3394656_0",
+      "sha256": "3bd6a391ad60e471de76c0e9db34986c4b5058587fbf2efa5a7f54645e28c2c7",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/cairo-1.18.4-h3394656_0.conda"
+    },
+    "cget": {
+      "version": "0.1.9",
+      "build": "pyh9f0ad1d_0",
+      "sha256": "9a440bf90666e2570960ebd377ecc435727ad7c4899982eb0290745d26282046",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/cget-0.1.9-pyh9f0ad1d_0.tar.bz2"
+    },
+    "click": {
+      "version": "8.5.0",
+      "build": "pyh5ded981_0",
+      "sha256": "9afb0c2c089330321a219c7ee5a25313bd574d4024be606cbb33e7a5735df662",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/click-8.5.0-pyh5ded981_0.conda"
+    },
+    "cmake": {
+      "version": "4.4.3",
+      "build": "hff7ac6b_0",
+      "sha256": "a6d21b5166cd7a44fa975e541f1abf851579a8ac3458e72e77125761da06c842",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/cmake-4.4.3-hff7ac6b_0.conda"
+    },
+    "curl": {
+      "version": "8.21.0",
+      "build": "hcf29cc6_1",
+      "sha256": "8eb4ebeae7230110569da734e2420aee84f6977850bae4af94dc7f0b382f9d89",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/curl-8.21.0-hcf29cc6_1.conda"
+    },
+    "font-ttf-dejavu-sans-mono": {
+      "version": "2.37",
+      "build": "hab24e00_0",
+      "sha256": "58d7f40d2940dd0a8aa28651239adbf5613254df0f75789919c4e6762054403b",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/font-ttf-dejavu-sans-mono-2.37-hab24e00_0.tar.bz2"
+    },
+    "font-ttf-inconsolata": {
+      "version": "3.000",
+      "build": "h77eed37_0",
+      "sha256": "c52a29fdac682c20d252facc50f01e7c2e7ceac52aa9817aaf0bb83f7559ec5c",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/font-ttf-inconsolata-3.000-h77eed37_0.tar.bz2"
+    },
+    "font-ttf-source-code-pro": {
+      "version": "2.038",
+      "build": "h77eed37_0",
+      "sha256": "00925c8c055a2275614b4d983e1df637245e19058d79fc7dd1a93b8d9fb4b139",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/font-ttf-source-code-pro-2.038-h77eed37_0.tar.bz2"
+    },
+    "font-ttf-ubuntu": {
+      "version": "0.83",
+      "build": "h77eed37_3",
+      "sha256": "2821ec1dc454bd8b9a31d0ed22a7ce22422c0aef163c59f49dfdf915d0f0ca14",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/font-ttf-ubuntu-0.83-h77eed37_3.conda"
+    },
+    "fontconfig": {
+      "version": "2.18.3",
+      "build": "h4db4eae_1",
+      "sha256": "5a3eb10b18a97223ab06b3a7f0d7f56658db2f2800e2f2af95836fe3bf55ba63",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/fontconfig-2.18.3-h4db4eae_1.conda"
+    },
+    "fonts-conda-ecosystem": {
+      "version": "1",
+      "build": "0",
+      "sha256": "a997f2f1921bb9c9d76e6fa2f6b408b7fa549edd349a77639c9fe7a23ea93e61",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/fonts-conda-ecosystem-1-0.tar.bz2"
+    },
+    "fonts-conda-forge": {
+      "version": "1",
+      "build": "hc364b38_1",
+      "sha256": "54eea8469786bc2291cc40bca5f46438d3e062a399e8f53f013b6a9f50e98333",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/fonts-conda-forge-1-hc364b38_1.conda"
+    },
+    "freetype": {
+      "version": "2.14.3",
+      "build": "ha770c72_2",
+      "sha256": "612a8e0c1a6ecae23da54d81ef395f6ebb5c8e4468ec2611593ebce75876a4e0",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/freetype-2.14.3-ha770c72_2.conda"
+    },
+    "fribidi": {
+      "version": "1.0.17",
+      "build": "h7cc23a3_0",
+      "sha256": "3ba79ebfbd14ca5db4affaf10ee8001064e907de5baabc2dbe5bcd9aec856c9f",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/fribidi-1.0.17-h7cc23a3_0.conda"
+    },
+    "gcc_impl_linux-64": {
+      "version": "16.2.0",
+      "build": "h9891192_7",
+      "sha256": "14acaa661e4c4ef6c65606612b8b08f8f079c6a9e6da3ffcb77056685c675651",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/gcc_impl_linux-64-16.2.0-h9891192_7.conda"
+    },
+    "gfortran_impl_linux-64": {
+      "version": "16.2.0",
+      "build": "hf930d89_7",
+      "sha256": "263277d04b6d7cc8cb02f73977ff6ae77bbb0b14f8b355667bc337f3fa454ef3",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/gfortran_impl_linux-64-16.2.0-hf930d89_7.conda"
+    },
+    "graphite2": {
+      "version": "1.3.15",
+      "build": "h54a6638_1",
+      "sha256": "7fa3b6a9c081fa3e545573152a788d061a0a0ba57df7251cc0f4f75225fc93e7",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/graphite2-1.3.15-h54a6638_1.conda"
+    },
+    "gsl": {
+      "version": "2.7",
+      "build": "he838d99_0",
+      "sha256": "132a918b676dd1f533d7c6f95e567abf7081a6ea3251c3280de35ef600e0da87",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/gsl-2.7-he838d99_0.tar.bz2"
+    },
+    "gxx_impl_linux-64": {
+      "version": "16.2.0",
+      "build": "h0d273dc_7",
+      "sha256": "f873532a86ce9073a7255dec909472c2a271a57db938f383b630a3caa0b47709",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/gxx_impl_linux-64-16.2.0-h0d273dc_7.conda"
+    },
+    "harfbuzz": {
+      "version": "12.2.0",
+      "build": "h15599e2_0",
+      "sha256": "6bd8b22beb7d40562b2889dc68232c589ff0d11a5ad3addd41a8570d11f039d9",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/harfbuzz-12.2.0-h15599e2_0.conda"
+    },
+    "icu": {
+      "version": "75.1",
+      "build": "he02047a_0",
+      "sha256": "71e750d509f5fa3421087ba88ef9a7b9be11c53174af3aa4d06aff4c18b38e8e",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/icu-75.1-he02047a_0.conda"
+    },
+    "kernel-headers_linux-64": {
+      "version": "4.18.0",
+      "build": "he073ed8_9",
+      "sha256": "41557eeadf641de6aeae49486cef30d02a6912d8da98585d687894afd65b356a",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/kernel-headers_linux-64-4.18.0-he073ed8_9.conda"
+    },
+    "keyutils": {
+      "version": "1.6.3",
+      "build": "h7cc23a3_1",
+      "sha256": "dd053c96dcb0dcfd59422aefea9d2fe937a190167f34fba7893ec1e10a7e8963",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/keyutils-1.6.3-h7cc23a3_1.conda"
+    },
+    "krb5": {
+      "version": "1.22.2",
+      "build": "hbc21106_2",
+      "sha256": "2a5c38c85e63df84c4e69ee71439841ce570d259ae3060627bb9a49a938d66f4",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/krb5-1.22.2-hbc21106_2.conda"
+    },
+    "ld_impl_linux-64": {
+      "version": "2.46.1",
+      "build": "default_hbd61a6d_103",
+      "sha256": "901649b1edbe841fd4ee7e2d491a05184ed540eb01cdae506872f344babc1d28",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/ld_impl_linux-64-2.46.1-default_hbd61a6d_103.conda"
+    },
+    "lerc": {
+      "version": "4.2.0",
+      "build": "hdb68285_0",
+      "sha256": "bf9fdebf55d8bc99d83531cdffda00703f4dc5f93a1a956768c147362c72feda",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/lerc-4.2.0-hdb68285_0.conda"
+    },
+    "libblas": {
+      "version": "3.11.0",
+      "build": "11_h4a7cf45_openblas",
+      "sha256": "d942e0c820d60a613a6f786d074f0820fb6343e3f1ccfb110b1d98b44fb75968",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/libblas-3.11.0-11_h4a7cf45_openblas.conda"
+    },
+    "libboost": {
+      "version": "1.85.0",
+      "build": "h0ccab89_4",
+      "sha256": "dc19dfc636c363871763384219269ce6a027fcf3831f17e018caeecb2ffbb20a",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/libboost-1.85.0-h0ccab89_4.conda"
+    },
+    "libboost-devel": {
+      "version": "1.85.0",
+      "build": "h00ab1b0_4",
+      "sha256": "04ec5a59e87d75cf6f8b539493f7f71c0cca3f50976251895f51da45e39cddf7",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/libboost-devel-1.85.0-h00ab1b0_4.conda"
+    },
+    "libboost-headers": {
+      "version": "1.85.0",
+      "build": "ha770c72_4",
+      "sha256": "55aa2ac604bd7ed76fae0c93698d37aae455ca2fb229ff9aa45e085ff7ad48ec",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/libboost-headers-1.85.0-ha770c72_4.conda"
+    },
+    "libcblas": {
+      "version": "3.11.0",
+      "build": "11_h0358290_openblas",
+      "sha256": "f7d1bbdea61cf94ba219d17b2cb571a29830f8025385af799bff5a7ad1ef45e6",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/libcblas-3.11.0-11_h0358290_openblas.conda"
+    },
+    "libcurl": {
+      "version": "8.21.0",
+      "build": "hcf29cc6_1",
+      "sha256": "7d243f45a48f62cb8e3b871dd336137fe0fb90094a191756fb553508837f6338",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/libcurl-8.21.0-hcf29cc6_1.conda"
+    },
+    "libdeflate": {
+      "version": "1.25",
+      "build": "hd45a770_1",
+      "sha256": "82e134c8a08b1eed9a2ed8ab578b89aa1730dcde3dea8dd87645ed0637878e54",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/libdeflate-1.25-hd45a770_1.conda"
+    },
+    "libedit": {
+      "version": "3.1.20260512",
+      "build": "pl5321h373387f_0",
+      "sha256": "45301f14f4eb66da57cfaf2d265f3eeee73f8b07e99614ee3afc5b26eea91126",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/libedit-3.1.20260512-pl5321h373387f_0.conda"
+    },
+    "libev": {
+      "version": "4.33",
+      "build": "h280c20c_3",
+      "sha256": "e4418f68d01a6307c4431b585c71b584f40189877364e542ee87deb777f5e85b",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/libev-4.33-h280c20c_3.conda"
+    },
+    "libexpat": {
+      "version": "2.9.0",
+      "build": "hd2095e1_0",
+      "sha256": "7b930a8b6bc6553cb754b4977a11f9c862c719a652fc2d128d89270992ce8beb",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/libexpat-2.9.0-hd2095e1_0.conda"
+    },
+    "libffi": {
+      "version": "3.7.0",
+      "build": "h81df57d_1",
+      "sha256": "c8c7583ef063bc3c430f1d48298e5ad24f796a35c22ed5b14183325825a61106",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/libffi-3.7.0-h81df57d_1.conda"
+    },
+    "libfreetype": {
+      "version": "2.14.3",
+      "build": "ha770c72_2",
+      "sha256": "fb12ecb46c30d18d928c0e8fc346ab13b5f6fc8a9cacae4f2f4bb188782586f5",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/libfreetype-2.14.3-ha770c72_2.conda"
+    },
+    "libfreetype6": {
+      "version": "2.14.3",
+      "build": "h5e6c136_2",
+      "sha256": "ec607dd5445dd17ff6bf8b7fe6832e5504c226dd91d3aaea7ba83569808b0ce4",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/libfreetype6-2.14.3-h5e6c136_2.conda"
+    },
+    "libgcc": {
+      "version": "16.2.0",
+      "build": "ha9f2e26_7",
+      "sha256": "e031634c3a928f9594eba868bc46ef5230d6571a364a0c63215b06c4563bfcea",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/libgcc-16.2.0-ha9f2e26_7.conda"
+    },
+    "libgcc-devel_linux-64": {
+      "version": "16.2.0",
+      "build": "he3ce08f_107",
+      "sha256": "f1e7465f6b53f89b325e441c30ad7b19407b051eca556b6d0386ec05513b8e76",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/libgcc-devel_linux-64-16.2.0-he3ce08f_107.conda"
+    },
+    "libgcc-ng": {
+      "version": "16.2.0",
+      "build": "h69a702a_7",
+      "sha256": "03b54d7008de080a17cc2174b0e4acd6d06e1c981b2eb19846f46d8f59966034",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/libgcc-ng-16.2.0-h69a702a_7.conda"
+    },
+    "libgfortran": {
+      "version": "16.2.0",
+      "build": "h69a702a_7",
+      "sha256": "9682ae4dd11487e10b904b3cb3ab6379cad25233d45fdfdf90d54349df244494",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/libgfortran-16.2.0-h69a702a_7.conda"
+    },
+    "libgfortran-ng": {
+      "version": "16.2.0",
+      "build": "h69a702a_7",
+      "sha256": "d5c80029e15b2e4c404a9a7189b607be566c7ea6142d43291c81648958ffe1f0",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/libgfortran-ng-16.2.0-h69a702a_7.conda"
+    },
+    "libgfortran5": {
+      "version": "16.2.0",
+      "build": "h6b99dfc_7",
+      "sha256": "04dbab12c925b92977bb835dd2f5eda413607afa79f95a554e5a04b07a380322",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/libgfortran5-16.2.0-h6b99dfc_7.conda"
+    },
+    "libgit2": {
+      "version": "1.9.7",
+      "build": "hf27fc33_1",
+      "sha256": "5b213ad90ba7eb0ba3a23c32f413fe9a1163d492e218e7283a9f5ade67fa49aa",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/libgit2-1.9.7-hf27fc33_1.conda"
+    },
+    "libglib": {
+      "version": "2.90.0",
+      "build": "h569388d_0",
+      "sha256": "9e688e046550415c030c3d08ed9a3fd13a51d7bc56295283b858b6c3070bb9f8",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/libglib-2.90.0-h569388d_0.conda"
+    },
+    "libgomp": {
+      "version": "16.2.0",
+      "build": "he0feb66_7",
+      "sha256": "92a0bb350c7be6a4eedcb4e111c60aefd176018e6b1c009a6e025dbe9bbcd758",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/libgomp-16.2.0-he0feb66_7.conda"
+    },
+    "libhwloc": {
+      "version": "2.13.0",
+      "build": "default_he001693_1000",
+      "sha256": "5041d295813dfb84652557839825880aae296222ab725972285c5abe3b6e4288",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/libhwloc-2.13.0-default_he001693_1000.conda"
+    },
+    "libiconv": {
+      "version": "1.18",
+      "build": "h0cb94f2_3",
+      "sha256": "f943117edb9cd4d9c61cc972eee5a34291dc55ea7a6e9e38da104995841cbcb6",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/libiconv-1.18-h0cb94f2_3.conda"
+    },
+    "libjpeg-turbo": {
+      "version": "3.2.0",
+      "build": "hb03c661_1",
+      "sha256": "bba8538e6538ed58a8479b332337b96986561f975d06cfa2039a016c2d246ee4",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/libjpeg-turbo-3.2.0-hb03c661_1.conda"
+    },
+    "liblapack": {
+      "version": "3.11.0",
+      "build": "11_h47877c9_openblas",
+      "sha256": "1ad3f43c9319ef398a8ef45989f4903a06e3965b51e77fc669a4c894168a8411",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/liblapack-3.11.0-11_h47877c9_openblas.conda"
+    },
+    "liblzma": {
+      "version": "5.8.3",
+      "build": "hb03c661_1",
+      "sha256": "9787df8c22a59c9a70d3e5a10db9ad663485e75e9ccc3f09bd092cb7b95e0dab",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/liblzma-5.8.3-hb03c661_1.conda"
+    },
+    "liblzma-devel": {
+      "version": "5.8.3",
+      "build": "hb03c661_1",
+      "sha256": "adef6e8b60afb684110b06b5310977c6836e1c923ce3ec199f45c0f000b42f20",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/liblzma-devel-5.8.3-hb03c661_1.conda"
+    },
+    "libmpdec": {
+      "version": "4.0.0",
+      "build": "hb03c661_2",
+      "sha256": "46820b4a835e175940ae20bec00fdddaff804cda27a1408ab1b95e77a2196437",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/libmpdec-4.0.0-hb03c661_2.conda"
+    },
+    "libnghttp2": {
+      "version": "1.68.1",
+      "build": "h74cf4be_1",
+      "sha256": "11a2f54a6f391e25738bce0023e6ef499600147bbcf21c1fa69d2e251b03cc6a",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/libnghttp2-1.68.1-h74cf4be_1.conda"
+    },
+    "libopenblas": {
+      "version": "0.3.34",
+      "build": "pthreads_hf13c14d_2",
+      "sha256": "69a722751e14eab2eb3bfdcb9acb1187afbd962b0c49b48d829341e0f6787f60",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/libopenblas-0.3.34-pthreads_hf13c14d_2.conda"
+    },
+    "libpng": {
+      "version": "1.6.59",
+      "build": "h922cc85_0",
+      "sha256": "c7381be8ef713501f6cd2f5ad473e401f2edeaec3c46788296b8dbf0de165e15",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/libpng-1.6.59-h922cc85_0.conda"
+    },
+    "libsanitizer": {
+      "version": "16.2.0",
+      "build": "h3048135_7",
+      "sha256": "e383569c331239308a8663facb76208fc0e141131ff3d17c1c2e50f34716a5a9",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/libsanitizer-16.2.0-h3048135_7.conda"
+    },
+    "libsqlite": {
+      "version": "3.53.4",
+      "build": "h0737f62_102",
+      "sha256": "0f6e60634de2b55da15772fe65485965fd9b61afcce0d749c1446f625babba30",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/libsqlite-3.53.4-h0737f62_102.conda"
+    },
+    "libssh2": {
+      "version": "1.11.1",
+      "build": "h6154650_1",
+      "sha256": "7e463000fa1cba3f3a6597b776f6ab301d425a96e3bc20d0d9d76a3b9f237aa3",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/libssh2-1.11.1-h6154650_1.conda"
+    },
+    "libstdcxx": {
+      "version": "16.2.0",
+      "build": "h934c35e_7",
+      "sha256": "fa7018298629fc429971fffd6ecba3d27a7b02e4e890d6a93ea01ffebe8cb745",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/libstdcxx-16.2.0-h934c35e_7.conda"
+    },
+    "libstdcxx-devel_linux-64": {
+      "version": "16.2.0",
+      "build": "h86e191b_107",
+      "sha256": "ebbad84bdebd8a9964020d74dcce0f211f1431878c66326f6115dcb59e4c3469",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/libstdcxx-devel_linux-64-16.2.0-h86e191b_107.conda"
+    },
+    "libstdcxx-ng": {
+      "version": "16.2.0",
+      "build": "hdf11a46_7",
+      "sha256": "337f481db36cc357884f05f404ccd1b3a7e0fc1ee48ec5c884e4281d213bc863",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/libstdcxx-ng-16.2.0-hdf11a46_7.conda"
+    },
+    "libtiff": {
+      "version": "4.7.2",
+      "build": "hcc2c06a_1",
+      "sha256": "10e125da82ca93e09191e66e5a94d566b2cf8d4024e2a0db3a9114297447e0d9",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/libtiff-4.7.2-hcc2c06a_1.conda"
+    },
+    "libuuid": {
+      "version": "2.42.4",
+      "build": "hcfc3c73_0",
+      "sha256": "f34b8d1de9a2bf62476d8608057d9b8a918d97444236dc53a47128f2fae79041",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/libuuid-2.42.4-hcfc3c73_0.conda"
+    },
+    "libuv": {
+      "version": "1.52.1",
+      "build": "h280c20c_1",
+      "sha256": "67761d0206f84140047a367eaf9befe03a7e157a29ee25aee0047b40801cc6b6",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/libuv-1.52.1-h280c20c_1.conda"
+    },
+    "libwebp-base": {
+      "version": "1.6.0",
+      "build": "hd42ef1d_1",
+      "sha256": "8415001414f488c85b72b9d8cc2071dfb3981a47bc3c8eb56ef91a57d12eae7f",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/libwebp-base-1.6.0-hd42ef1d_1.conda"
+    },
+    "libxcb": {
+      "version": "1.17.0",
+      "build": "hb83e432_2",
+      "sha256": "7b49e6fd2a584b7f072943e6adf4149677af5121246975278804782d37752837",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/libxcb-1.17.0-hb83e432_2.conda"
+    },
+    "libxml2-16": {
+      "version": "2.15.1",
+      "build": "ha9997c6_0",
+      "sha256": "71436e72a286ef8b57d6f4287626ff91991eb03c7bdbe835280521791efd1434",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/libxml2-16-2.15.1-ha9997c6_0.conda"
+    },
+    "libxml2": {
+      "version": "2.15.1",
+      "build": "h26afc86_0",
+      "sha256": "ec0735ae56c3549149eebd7dc22c0bed91fd50c02eaa77ff418613ddda190aa8",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/libxml2-2.15.1-h26afc86_0.conda"
+    },
+    "libzlib": {
+      "version": "1.3.2",
+      "build": "h25fd6f3_3",
+      "sha256": "eb8a0db0aa570124f7d2a93d7c7f596e3390df5e047818d873baad32985fc736",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/libzlib-1.3.2-h25fd6f3_3.conda"
+    },
+    "make": {
+      "version": "4.4.1",
+      "build": "h1114479_4",
+      "sha256": "d6a81e5c142d7be6a992f618097351e7996f81a6295045df3f9b4f498e1066a8",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/make-4.4.1-h1114479_4.conda"
+    },
+    "ncurses": {
+      "version": "6.6",
+      "build": "hdb14827_1",
+      "sha256": "5d46557214ed184381dafe835b7c94a474a1c3b307a08a250b1ea4779b44ffb3",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/ncurses-6.6-hdb14827_1.conda"
+    },
+    "openblas": {
+      "version": "0.3.34",
+      "build": "pthreads_h299a788_2",
+      "sha256": "0e8629ce8f0f5ccce78535ed43dcdb8165f7b9541d5e3def6639850737d400e2",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/openblas-0.3.34-pthreads_h299a788_2.conda"
+    },
+    "openssl": {
+      "version": "3.6.5",
+      "build": "h781a0a9_0",
+      "sha256": "9c1533f1cf784f0e250919c0c9762d0b0e6bc727a79290ffb7cea1ceca1d038c",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/openssl-3.6.5-h781a0a9_0.conda"
+    },
+    "pandoc": {
+      "version": "3.12.1",
+      "build": "ha770c72_0",
+      "sha256": "73a73cc6f5506fcce335bcc9277d89c07a72bcd78417d494484555bd07a1f443",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/pandoc-3.12.1-ha770c72_0.conda"
+    },
+    "pango": {
+      "version": "1.56.4",
+      "build": "hadf4263_0",
+      "sha256": "3613774ad27e48503a3a6a9d72017087ea70f1426f6e5541dbdb59a3b626eaaf",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/pango-1.56.4-hadf4263_0.conda"
+    },
+    "pcre2": {
+      "version": "10.47",
+      "build": "h8b3dc9c_1",
+      "sha256": "9ebb10a4eb3be51ae67d85c679f5a7a50cb040ed25c783e6331a225ea09991d4",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/pcre2-10.47-h8b3dc9c_1.conda"
+    },
+    "pixman": {
+      "version": "0.46.4",
+      "build": "h54a6638_3",
+      "sha256": "829d8288764282de5a9f7b9169acb75cc7dc0b6c3fe2535cfe87dea3436bbc5d",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/pixman-0.46.4-h54a6638_3.conda"
+    },
+    "pthread-stubs": {
+      "version": "0.4",
+      "build": "h7cc23a3_1004",
+      "sha256": "4a44fd00ea73b79ca2c89b0727b9ccf61c506ead71e67a9abfa4c590042b5a4a",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/pthread-stubs-0.4-h7cc23a3_1004.conda"
+    },
+    "python": {
+      "version": "3.15.0",
+      "build": "h6e52b48_100_cp315",
+      "sha256": "66b6ac5dd5c64ce34a9c610cacdcc25fe43d7daf29611b6c48036a3c51771374",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/python-3.15.0-h6e52b48_100_cp315.conda"
+    },
+    "python_abi": {
+      "version": "3.15",
+      "build": "9_cp315",
+      "sha256": "976c4a6db967a62385aa633daaab19a929f986b979a7ad836b8b70e15ca7aefd",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/python_abi-3.15-9_cp315.conda"
+    },
+    "r": {
+      "version": "4.5",
+      "build": "r45hd8ed1ab_1009",
+      "sha256": "2af0ddd26c10dd1326774e57f9aa47607bd0c51b6a4122e8b68a023358280861",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/r-4.5-r45hd8ed1ab_1009.conda"
+    },
+    "r-askpass": {
+      "version": "1.2.1",
+      "build": "r45h54b55ab_1",
+      "sha256": "5c4d2bcc1beba7703acbfe1610a846ce2a4010456714705dfa63989cee722a00",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/r-askpass-1.2.1-r45h54b55ab_1.conda"
+    },
+    "r-assertthat": {
+      "version": "0.2.1",
+      "build": "r45hc72bb7e_6",
+      "sha256": "90e7ae8aa427274d7d2e510060b68925e60e897ecaa5ea135bb33afa7eb12134",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/r-assertthat-0.2.1-r45hc72bb7e_6.conda"
+    },
+    "r-base": {
+      "version": "4.5.2",
+      "build": "h835929b_3",
+      "sha256": "f962637b3c9f4ca6d92491518c2e9f8f3189e7217e33787f86402ec91cc73de9",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/r-base-4.5.2-h835929b_3.conda"
+    },
+    "r-base64enc": {
+      "version": "0.1_6",
+      "build": "r45h54b55ab_0",
+      "sha256": "7a3751a340766ee25380a51df70c8356a64cfeb6ac3d982a86e92eb99fec2943",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/r-base64enc-0.1_6-r45h54b55ab_0.conda"
+    },
+    "r-bh": {
+      "version": "1.90.0_1",
+      "build": "r45hc72bb7e_0",
+      "sha256": "50bada081238bfefe0cf50030e57222c5449da693194627c2a7cf4ffbc04920e",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/r-bh-1.90.0_1-r45hc72bb7e_0.conda"
+    },
+    "r-bit": {
+      "version": "4.6.0",
+      "build": "r45h54b55ab_1",
+      "sha256": "f5e7c54332bb79d1f992fa97088e206a1ba8037a1be8c77886e2f63b94a97a85",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/r-bit-4.6.0-r45h54b55ab_1.conda"
+    },
+    "r-bit64": {
+      "version": "4.8.6",
+      "build": "r45hddc5280_0",
+      "sha256": "9c856c046d0613473d19cc3e27c26e51a585f543a84d5f86b6dc95daa2686a1d",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/r-bit64-4.8.6-r45hddc5280_0.conda"
+    },
+    "r-blob": {
+      "version": "1.3.0",
+      "build": "r45hc72bb7e_0",
+      "sha256": "c939f23050463f3f62d08eaa5bdcd567799ed8f78d5270e50884cfe5ea35048d",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/r-blob-1.3.0-r45hc72bb7e_0.conda"
+    },
+    "r-boot": {
+      "version": "1.3_32",
+      "build": "r45hc72bb7e_1",
+      "sha256": "e2a347c8816f86515c479f9944515623bf120fedc09452246f105c568ae47381",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/r-boot-1.3_32-r45hc72bb7e_1.conda"
+    },
+    "r-brew": {
+      "version": "1.0_10",
+      "build": "r45hc72bb7e_2",
+      "sha256": "9324cbb93b6c3a2903b5f12c57eb7f03355b35ca1f1db15becf57f15fc40b796",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/r-brew-1.0_10-r45hc72bb7e_2.conda"
+    },
+    "r-brio": {
+      "version": "1.1.5",
+      "build": "r45h54b55ab_2",
+      "sha256": "3711f8f1b22725994382eb3253035c8b5190343a6724a7ceb0746637386a4f2e",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/r-brio-1.1.5-r45h54b55ab_2.conda"
+    },
+    "r-bslib": {
+      "version": "0.12.0",
+      "build": "r45hc72bb7e_0",
+      "sha256": "34000e9658162709b104a8354c2af022223d77af36273b7a3e3ccb510b328b37",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/r-bslib-0.12.0-r45hc72bb7e_0.conda"
+    },
+    "r-cachem": {
+      "version": "1.1.0",
+      "build": "r45h54b55ab_2",
+      "sha256": "75a21c955abf03fa1804d47c94f5091cd772b614e074b63b02347a23f5649a53",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/r-cachem-1.1.0-r45h54b55ab_2.conda"
+    },
+    "r-callr": {
+      "version": "3.7.6",
+      "build": "r45hc72bb7e_2",
+      "sha256": "f9f49b2b845f279af84a33c8af19a915b2731c0bd892c608205cbad8a34f423d",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/r-callr-3.7.6-r45hc72bb7e_2.conda"
+    },
+    "r-class": {
+      "version": "7.3_24",
+      "build": "r45h54b55ab_0",
+      "sha256": "aeda27b7dd2b8e33ef26a9d13986f31dd631c8dec6c6bf105e510f3db1c87331",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/r-class-7.3_24-r45h54b55ab_0.conda"
+    },
+    "r-cli": {
+      "version": "3.6.6",
+      "build": "r45h3697838_0",
+      "sha256": "a894e558a680a31444090de217b73f8fc06a3f4c07746d2cde4b6f86acdae0b1",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/r-cli-3.6.6-r45h3697838_0.conda"
+    },
+    "r-cliapp": {
+      "version": "0.1.2",
+      "build": "r45hc72bb7e_2",
+      "sha256": "e6f8e916018d958aab7742fc4dca39d11e9fd71a6c9cbf706ae48b3f4aa68963",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/r-cliapp-0.1.2-r45hc72bb7e_2.conda"
+    },
+    "r-clipr": {
+      "version": "0.8.1",
+      "build": "r45hc72bb7e_0",
+      "sha256": "4a956729c98dc05bce7bbef52755b6d3a9cc25655f3b7f05b129d97dfb132b4c",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/r-clipr-0.8.1-r45hc72bb7e_0.conda"
+    },
+    "r-cluster": {
+      "version": "2.1.8.3",
+      "build": "r45heaba542_0",
+      "sha256": "b1eebd3ef6bf68f1acf60c90564049f517d3d9489cf0e97d94ed2ce75114436b",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/r-cluster-2.1.8.3-r45heaba542_0.conda"
+    },
+    "r-codetools": {
+      "version": "0.2_20",
+      "build": "r45hc72bb7e_2",
+      "sha256": "aec327dd836824278a2adf006f426a58d834828de74de7f8348f2f5f068de702",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/r-codetools-0.2_20-r45hc72bb7e_2.conda"
+    },
+    "r-commonmark": {
+      "version": "2.0.0",
+      "build": "r45h54b55ab_1",
+      "sha256": "211423381b2e832619cdb964e7fe3833b09871d0140066ca90fd3e91eb86231b",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/r-commonmark-2.0.0-r45h54b55ab_1.conda"
+    },
+    "r-cpp11": {
+      "version": "0.5.5",
+      "build": "r45h785f33e_0",
+      "sha256": "5993a1b5c08c78a35cdbcf20376773eb7c4def2d28615e49f96008b43a4c05c0",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/r-cpp11-0.5.5-r45h785f33e_0.conda"
+    },
+    "r-crayon": {
+      "version": "1.5.3",
+      "build": "r45hc72bb7e_2",
+      "sha256": "9126a0408696133893e674549ca7aef317768dba503765a7ed032616aabe5b49",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/r-crayon-1.5.3-r45hc72bb7e_2.conda"
+    },
+    "r-credentials": {
+      "version": "2.0.3",
+      "build": "r45hc72bb7e_1",
+      "sha256": "5db8dc6e14ab6ff3dc79292184c079b5492f6125193e05a99f0714792d3bdc4a",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/r-credentials-2.0.3-r45hc72bb7e_1.conda"
+    },
+    "r-curl": {
+      "version": "8.0.0",
+      "build": "r45h444973c_0",
+      "sha256": "5777a22a12194bb02b3610c9b7940b22124dd7f58d1fb6dc03660a7a8dacbde9",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/r-curl-8.0.0-r45h444973c_0.conda"
+    },
+    "r-data.table": {
+      "version": "1.18.6.1",
+      "build": "r45hbd9402d_0",
+      "sha256": "84bbfee04f6c00a717e5bcb7ee9887c11dcba947f30c90514da1a48d95ef143c",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/r-data.table-1.18.6.1-r45hbd9402d_0.conda"
+    },
+    "r-dbi": {
+      "version": "1.3.0",
+      "build": "r45hc72bb7e_0",
+      "sha256": "82dbc27e1db79f9a897626656c3b418a071a681a07f4c47f6f15f98ec12e09fe",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/r-dbi-1.3.0-r45hc72bb7e_0.conda"
+    },
+    "r-desc": {
+      "version": "1.4.3",
+      "build": "r45hc72bb7e_2",
+      "sha256": "b54c00d2ab9cca150f92120664a8a24cd63213d28c3e951c19575b24d9b57b61",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/r-desc-1.4.3-r45hc72bb7e_2.conda"
+    },
+    "r-devtools": {
+      "version": "2.5.2",
+      "build": "r45hc72bb7e_0",
+      "sha256": "09a472006062232c422d861670530788a316f9138bd9e825746580b0d701ab2b",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/r-devtools-2.5.2-r45hc72bb7e_0.conda"
+    },
+    "r-diffobj": {
+      "version": "0.3.9",
+      "build": "r45hddc5280_0",
+      "sha256": "f2f21438201e9427b9c5da9f7b9d55ec5143b500a1403a40ddc5ac39a6e8a507",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/r-diffobj-0.3.9-r45hddc5280_0.conda"
+    },
+    "r-digest": {
+      "version": "0.6.39",
+      "build": "r45h3697838_0",
+      "sha256": "33ce40552bc1810252c4445082392638ff2fb883147cf36c3e4017e9b0dc5474",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/r-digest-0.6.39-r45h3697838_0.conda"
+    },
+    "r-docopt": {
+      "version": "0.7.2",
+      "build": "r45hc72bb7e_1",
+      "sha256": "6a3ae3423e9dad3ad5d17b90f7bf4b54dd575a09e9b5a74d14cc724e7e145897",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/r-docopt-0.7.2-r45hc72bb7e_1.conda"
+    },
+    "r-downlit": {
+      "version": "0.4.5",
+      "build": "r45hc72bb7e_0",
+      "sha256": "73396f3432df8aac38aeb15f27ebdecb216d3b63bfa3c87fc6b996acf27b82f8",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/r-downlit-0.4.5-r45hc72bb7e_0.conda"
+    },
+    "r-dplyr": {
+      "version": "1.2.1",
+      "build": "r45h3697838_0",
+      "sha256": "42067805b0742b933de7e1ca4311645797ac687cee6aacd630d9d4c585dfa830",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/r-dplyr-1.2.1-r45h3697838_0.conda"
+    },
+    "r-ellipsis": {
+      "version": "0.3.3",
+      "build": "r45h54b55ab_0",
+      "sha256": "19d03273f9d5e1aa41302e1cf080dcb95ced5b955bc978df39eee71a9686a86c",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/r-ellipsis-0.3.3-r45h54b55ab_0.conda"
+    },
+    "r-evaluate": {
+      "version": "1.0.5",
+      "build": "r45hc72bb7e_1",
+      "sha256": "d3accfeab1416151515c37e5edc94b18868998db4936183459f8040117d5c83c",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/r-evaluate-1.0.5-r45hc72bb7e_1.conda"
+    },
+    "r-fansi": {
+      "version": "1.0.7",
+      "build": "r45h54b55ab_0",
+      "sha256": "68dcc5aa6fc4408f9cac5aeaa03a7e6a5d127a949fc72b3fed31fd1af3bbeee5",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/r-fansi-1.0.7-r45h54b55ab_0.conda"
+    },
+    "r-fastmap": {
+      "version": "1.2.0",
+      "build": "r45h3697838_2",
+      "sha256": "bfec10cec03b434d9010690c61d43a0be79418f67a0713ce31da207a40e1570c",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/r-fastmap-1.2.0-r45h3697838_2.conda"
+    },
+    "r-filelock": {
+      "version": "1.0.3",
+      "build": "r45h54b55ab_2",
+      "sha256": "669a2a6ac19e9ca817b7e6b6ec30643fbf08e423380987f356c3106b596d671a",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/r-filelock-1.0.3-r45h54b55ab_2.conda"
+    },
+    "r-fontawesome": {
+      "version": "0.5.3",
+      "build": "r45hc72bb7e_1",
+      "sha256": "865df12d8cdd8cf577abc8f785a0aa4ee50b4f8751256dffe4676a350943d591",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/r-fontawesome-0.5.3-r45hc72bb7e_1.conda"
+    },
+    "r-foreign": {
+      "version": "0.8_91",
+      "build": "r45h54b55ab_0",
+      "sha256": "0f4f18874c9ba5d2a7c377672e68002cd83ec81647893591bed09927ba22f4c5",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/r-foreign-0.8_91-r45h54b55ab_0.conda"
+    },
+    "r-fs": {
+      "version": "2.1.0",
+      "build": "r45h3697838_0",
+      "sha256": "748304679610fe9f5d078f5b9be7c8693858ff5f66db55e43fb98d0e4e07d375",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/r-fs-2.1.0-r45h3697838_0.conda"
+    },
+    "r-generics": {
+      "version": "0.1.4",
+      "build": "r45hc72bb7e_1",
+      "sha256": "88a5cf4bac0a553943996bc930b1ea28f2635c262c1b2c5a42b026b69f227f02",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/r-generics-0.1.4-r45hc72bb7e_1.conda"
+    },
+    "r-gert": {
+      "version": "2.5.0",
+      "build": "r45h7df5fc1_0",
+      "sha256": "3cf3c52747abc3f703e375bd387b4b290890297a18da220117c89717a604d891",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/r-gert-2.5.0-r45h7df5fc1_0.conda"
+    },
+    "r-getopt": {
+      "version": "1.21.1",
+      "build": "r45ha770c72_0",
+      "sha256": "20c4ea52e72cb2e50907f9e5a446f16b0fce467fec4edab236eeb3b46890f3dd",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/r-getopt-1.21.1-r45ha770c72_0.conda"
+    },
+    "r-gh": {
+      "version": "1.6.1",
+      "build": "r45hc72bb7e_0",
+      "sha256": "089cad81a2987bc755f83e7fb5db1b25feb31e2fa2162013a3f6238411cbb10a",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/r-gh-1.6.1-r45hc72bb7e_0.conda"
+    },
+    "r-gitcreds": {
+      "version": "0.1.2",
+      "build": "r45hc72bb7e_4",
+      "sha256": "8a2619d16e1148cd712446f47c39e53aa09708071f9fc46e9b8dd31a28fbf0ad",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/r-gitcreds-0.1.2-r45hc72bb7e_4.conda"
+    },
+    "r-glue": {
+      "version": "1.8.1",
+      "build": "r45h54b55ab_0",
+      "sha256": "c2760270ffabd95e9d0a0caa9cc705c5a0370ad119ace5495acc043b1a35d198",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/r-glue-1.8.1-r45h54b55ab_0.conda"
+    },
+    "r-highr": {
+      "version": "0.12",
+      "build": "r45hc72bb7e_0",
+      "sha256": "e676112aac0dbfe123fcb3108cce376782211a096c898a3af46fdf32a37e12e9",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/r-highr-0.12-r45hc72bb7e_0.conda"
+    },
+    "r-hms": {
+      "version": "1.1.4",
+      "build": "r45hc72bb7e_0",
+      "sha256": "be67527b52f98832ab2871d0182fb76499538ca7eb333506084620b7489ce6a0",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/r-hms-1.1.4-r45hc72bb7e_0.conda"
+    },
+    "r-htmltools": {
+      "version": "0.5.9",
+      "build": "r45h3697838_0",
+      "sha256": "1fa1fcdf980d0da17a583e41810da190eb9caf586c3fdf36312d045d9bb812e7",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/r-htmltools-0.5.9-r45h3697838_0.conda"
+    },
+    "r-htmlwidgets": {
+      "version": "1.6.4",
+      "build": "r45h785f33e_4",
+      "sha256": "4c3998ce4b4882429e52eed5c6c53d59056814d8fbc34a41ba79b990fdec1441",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/r-htmlwidgets-1.6.4-r45h785f33e_4.conda"
+    },
+    "r-httpuv": {
+      "version": "1.6.17",
+      "build": "r45h6d565e7_0",
+      "sha256": "f0755cf37e28f0e1a142eef051918c90c9e8fece46edb5e40191a7898d8cb217",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/r-httpuv-1.6.17-r45h6d565e7_0.conda"
+    },
+    "r-httr2": {
+      "version": "1.3.0",
+      "build": "r45hc72bb7e_0",
+      "sha256": "dcc78f60308390c6549e25308fb2437421e8fcaeeb45378b6fbe3a49e3d3cd0b",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/r-httr2-1.3.0-r45hc72bb7e_0.conda"
+    },
+    "r-ini": {
+      "version": "0.3.1",
+      "build": "r45hc72bb7e_1007",
+      "sha256": "72ee2282467c148463ba8e8a8af4b5a6fdccd98e38b0820f442af187fcabbb13",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/r-ini-0.3.1-r45hc72bb7e_1007.conda"
+    },
+    "r-jquerylib": {
+      "version": "0.1.4",
+      "build": "r45hc72bb7e_4",
+      "sha256": "3b98f72bb32d4758854805b664b4404602a583da32c9b96026536f5676f41812",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/r-jquerylib-0.1.4-r45hc72bb7e_4.conda"
+    },
+    "r-jsonlite": {
+      "version": "2.0.0",
+      "build": "r45h54b55ab_1",
+      "sha256": "bd24c57226192b0decdcddd6fd5fa74db1f29685904e4aff87f2c16eb6493416",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/r-jsonlite-2.0.0-r45h54b55ab_1.conda"
+    },
+    "r-kernsmooth": {
+      "version": "2.23_27",
+      "build": "r45hf1ecf5c_0",
+      "sha256": "f174af45995ff1af079fab4a3b91bbc221369f7aa9373af69eee2f80eefb9539",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/r-kernsmooth-2.23_27-r45hf1ecf5c_0.conda"
+    },
+    "r-knitr": {
+      "version": "1.52",
+      "build": "r45hacb3a79_0",
+      "sha256": "839c58fe659e379965c6fb28b85190482cba82b2e49bddea603423cfc3a8bd2c",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/r-knitr-1.52-r45hacb3a79_0.conda"
+    },
+    "r-later": {
+      "version": "1.4.8",
+      "build": "r45h3697838_0",
+      "sha256": "895f18dfc5a0521c22ad9e38619ea6cf170e38d54aaa4596fb1d0dad7845703b",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/r-later-1.4.8-r45h3697838_0.conda"
+    },
+    "r-lattice": {
+      "version": "0.23_1",
+      "build": "r45hddc5280_0",
+      "sha256": "9fe621a1149e7027b10fd0c7ea0c9eaa2de9fd0b863bd3bd971951fe7c02cf23",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/r-lattice-0.23_1-r45hddc5280_0.conda"
+    },
+    "r-lifecycle": {
+      "version": "1.0.5",
+      "build": "r45hc72bb7e_0",
+      "sha256": "b7a4d8d98a96d17d18c80fb7e1c8e6cb09b9bd2542e74d91a7f483afccb30ee6",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/r-lifecycle-1.0.5-r45hc72bb7e_0.conda"
+    },
+    "r-lpsolve": {
+      "version": "5.6.23",
+      "build": "r45h54b55ab_1",
+      "sha256": "44570160d4d90327de321f2631f6143747a7dff4772012de27f63b66f764e8aa",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/r-lpsolve-5.6.23-r45h54b55ab_1.conda"
+    },
+    "r-magrittr": {
+      "version": "2.0.5",
+      "build": "r45h54b55ab_0",
+      "sha256": "5b09fdee8ef5426082844d17d360756922ba74f9e3c428f501373295a5e9228d",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/r-magrittr-2.0.5-r45h54b55ab_0.conda"
+    },
+    "r-mass": {
+      "version": "7.3_66",
+      "build": "r45h54b55ab_0",
+      "sha256": "89218d4083593e5eae881fe5136befa358333d90a7de1a0ede13e8cd7bb5244e",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/r-mass-7.3_66-r45h54b55ab_0.conda"
+    },
+    "r-matrix": {
+      "version": "1.7_6",
+      "build": "r45h0e4624f_0",
+      "sha256": "f9a011394c44b1e5f1a710b45cbf793fcac0753ab3bb4137c5ebb0d70152fd46",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/r-matrix-1.7_6-r45h0e4624f_0.conda"
+    },
+    "r-memoise": {
+      "version": "2.0.1",
+      "build": "r45hc72bb7e_4",
+      "sha256": "91b0eedec5cf5de195b442b97eda508f22fdedbdbc487f74e3868d3e95380fdd",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/r-memoise-2.0.1-r45hc72bb7e_4.conda"
+    },
+    "r-metaskat": {
+      "version": "0.90",
+      "build": "r45h3697838_2",
+      "sha256": "4fa350866c8f99def34596aa7f7c459b7d101e080319ba8004b3118720cd45b4",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/r-metaskat-0.90-r45h3697838_2.conda"
+    },
+    "r-mgcv": {
+      "version": "1.9_4",
+      "build": "r45h0e4624f_0",
+      "sha256": "83a5233b6162c55f5021dea34464bd64d87f18b7815e738c42d06a046780e594",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/r-mgcv-1.9_4-r45h0e4624f_0.conda"
+    },
+    "r-mime": {
+      "version": "0.13",
+      "build": "r45h54b55ab_1",
+      "sha256": "03116d6a8db71492d036c6c052d6cfbf5a98c06da071e42aedb5c740920d6b61",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/r-mime-0.13-r45h54b55ab_1.conda"
+    },
+    "r-miniui": {
+      "version": "0.1.2",
+      "build": "r45hc72bb7e_1",
+      "sha256": "0e63708e94f3848e7212db1bd8e0b7f4b72084d2d96a523a63ddb3c3102135a8",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/r-miniui-0.1.2-r45hc72bb7e_1.conda"
+    },
+    "r-nlme": {
+      "version": "3.1_170",
+      "build": "r45heaba542_0",
+      "sha256": "83964b5b1ea49ed78be1fd7606650cf1ea68b92febe3d0bbdb9fda1be30f2d5b",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/r-nlme-3.1_170-r45heaba542_0.conda"
+    },
+    "r-nnet": {
+      "version": "7.3_21",
+      "build": "r45hddc5280_0",
+      "sha256": "a4babd5587d39f5406998e51203072d6076bcc86394ee73be1ffc8fee12b0a4a",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/r-nnet-7.3_21-r45hddc5280_0.conda"
+    },
+    "r-openssl": {
+      "version": "2.4.2",
+      "build": "r45h68c19f5_0",
+      "sha256": "2796cf7768c939a58344157fcddec88dbdadf9cabd3ab0b24d9bbaf7916b9ebd",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/r-openssl-2.4.2-r45h68c19f5_0.conda"
+    },
+    "r-optparse": {
+      "version": "1.8.2",
+      "build": "r45hc72bb7e_0",
+      "sha256": "09df5e8326b04412a26b6c4d896e04adbceba45194457c6d30f370d5ccb4b397",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/r-optparse-1.8.2-r45hc72bb7e_0.conda"
+    },
+    "r-otel": {
+      "version": "0.2.0",
+      "build": "r45hc72bb7e_1",
+      "sha256": "f5de9737f59e1965db2de11c90cf1fdd426db322a7205c935a3e55150287b02f",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/r-otel-0.2.0-r45hc72bb7e_1.conda"
+    },
+    "r-pak": {
+      "version": "0.11.1",
+      "build": "r45hc72bb7e_0",
+      "sha256": "bb833671167bfb4358ee202a6c04eba49167056940a7339d2cce3073643b7f55",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/r-pak-0.11.1-r45hc72bb7e_0.conda"
+    },
+    "r-pillar": {
+      "version": "1.11.1",
+      "build": "r45hc72bb7e_0",
+      "sha256": "b3f281041ecff2d4a9f40073ad5e7ec6fa7e0c841068ce85c550bcce0ff8938d",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/r-pillar-1.11.1-r45hc72bb7e_0.conda"
+    },
+    "r-pkgbuild": {
+      "version": "1.4.8",
+      "build": "r45hc72bb7e_1",
+      "sha256": "3d1b97a5616663fabcb165968e2d1ad3732d316a0d38be259ca84533986a0093",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/r-pkgbuild-1.4.8-r45hc72bb7e_1.conda"
+    },
+    "r-pkgcache": {
+      "version": "2.2.4",
+      "build": "r45hc72bb7e_1",
+      "sha256": "7cd5e76b7e4dfbd40aeb0a3bc1b8171dbf045571476c53b0c2d4e02e9d87496f",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/r-pkgcache-2.2.4-r45hc72bb7e_1.conda"
+    },
+    "r-pkgconfig": {
+      "version": "2.0.3",
+      "build": "r45hc72bb7e_5",
+      "sha256": "fda425435a533e86da5f0fc89cf45c9f889a4e6f1e2ed536ca23662a8461602c",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/r-pkgconfig-2.0.3-r45hc72bb7e_5.conda"
+    },
+    "r-pkgdown": {
+      "version": "2.2.1",
+      "build": "r45hc72bb7e_0",
+      "sha256": "9f608c856c35dc241141744311541b1bbd2a7d760ff37762c470e2d4cf14ba11",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/r-pkgdown-2.2.1-r45hc72bb7e_0.conda"
+    },
+    "r-pkgload": {
+      "version": "1.5.3",
+      "build": "r45hc72bb7e_0",
+      "sha256": "4b06f639e351305cd5ea983549d5d28ee574a042100584728e1404a7334ac3fe",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/r-pkgload-1.5.3-r45hc72bb7e_0.conda"
+    },
+    "r-praise": {
+      "version": "1.0.0",
+      "build": "r45hc72bb7e_1009",
+      "sha256": "2f4b33c16d01df7d3a65cbb7a75989a2e3a1e068a354430da225d01d50870732",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/r-praise-1.0.0-r45hc72bb7e_1009.conda"
+    },
+    "r-prettycode": {
+      "version": "1.1.0",
+      "build": "r45hc72bb7e_5",
+      "sha256": "fdac4ff464bf1fd8dfd33cff7f76143ca120296d9ea59d8c0b0a001d5d5b7b16",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/r-prettycode-1.1.0-r45hc72bb7e_5.conda"
+    },
+    "r-prettyunits": {
+      "version": "1.2.0",
+      "build": "r45hc72bb7e_2",
+      "sha256": "0306580de6e867b9060595f5eedde4dbf531ee89c16dd3738dde995b30f3fe14",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/r-prettyunits-1.2.0-r45hc72bb7e_2.conda"
+    },
+    "r-processx": {
+      "version": "3.9.0",
+      "build": "r45h54b55ab_0",
+      "sha256": "7f69cd631f28279b4c706fe2341d8ffbd13cc10ed98e648d0c214ceecce4f877",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/r-processx-3.9.0-r45h54b55ab_0.conda"
+    },
+    "r-profvis": {
+      "version": "0.4.0",
+      "build": "r45h54b55ab_1",
+      "sha256": "21815d71c293933555e4258acff4f8de76eeca52a63ebeb6c10314e242dddebc",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/r-profvis-0.4.0-r45h54b55ab_1.conda"
+    },
+    "r-progress": {
+      "version": "1.2.3",
+      "build": "r45hc72bb7e_2",
+      "sha256": "7dc34860af66a0305601d70714269d8e24766bc9780a43683c1b7989970a61a3",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/r-progress-1.2.3-r45hc72bb7e_2.conda"
+    },
+    "r-promises": {
+      "version": "1.5.0",
+      "build": "r45hc72bb7e_1",
+      "sha256": "684dba5d20aae8da37868d603b662014e1944f5568e5f737e42d9d485892a26e",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/r-promises-1.5.0-r45hc72bb7e_1.conda"
+    },
+    "r-ps": {
+      "version": "1.9.3",
+      "build": "r45h54b55ab_0",
+      "sha256": "598576cd282f2b9c8280696c77b3a9e05d52a8f688174d6c6ed1b3bdad57bcdf",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/r-ps-1.9.3-r45h54b55ab_0.conda"
+    },
+    "r-purrr": {
+      "version": "1.2.2",
+      "build": "r45h54b55ab_0",
+      "sha256": "dc5f0ace59844125b92304324000770c7e2e466bab442826cee50a32eef731bf",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/r-purrr-1.2.2-r45h54b55ab_0.conda"
+    },
+    "r-qlcmatrix": {
+      "version": "0.9.9",
+      "build": "r45hc72bb7e_1",
+      "sha256": "12949414dd7e32c68ebe99655a16579a9b3c5e146e18f5f2bd734a7a44ccad23",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/r-qlcmatrix-0.9.9-r45hc72bb7e_1.conda"
+    },
+    "r-r6": {
+      "version": "2.6.1",
+      "build": "r45hc72bb7e_1",
+      "sha256": "bd92e91332eba5f0c689583e80adec85ef272c4e0d0b36ee17cb7c11b5693cf2",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/r-r6-2.6.1-r45hc72bb7e_1.conda"
+    },
+    "r-ragg": {
+      "version": "1.5.2",
+      "build": "r45h9f1dc4d_0",
+      "sha256": "0e99b7597024257949edd390184fa0ecfd84eea655f192640d1227866b61eb97",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/r-ragg-1.5.2-r45h9f1dc4d_0.conda"
+    },
+    "r-rappdirs": {
+      "version": "0.3.4",
+      "build": "r45h54b55ab_0",
+      "sha256": "a9778d5fa6777ce286815eb0abef625ff54693532795ef48a1bc319967e0ecb4",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/r-rappdirs-0.3.4-r45h54b55ab_0.conda"
+    },
+    "r-rcmdcheck": {
+      "version": "1.4.0",
+      "build": "r45h785f33e_4",
+      "sha256": "2511fd3049244f26c9bfee1f58823c6e9f200eded58fa893c928700b05271e9a",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/r-rcmdcheck-1.4.0-r45h785f33e_4.conda"
+    },
+    "r-rcpp": {
+      "version": "1.1.2",
+      "build": "r45h3697838_0",
+      "sha256": "dabb73c4d43f352a3154067a20a46cbda1e1027636e72d133010f6f052e8d260",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/r-rcpp-1.1.2-r45h3697838_0.conda"
+    },
+    "r-rcpparmadillo": {
+      "version": "15.6.2_1",
+      "build": "r45h1fcd065_0",
+      "sha256": "c132d6481107a58c78871eeec29bbb43d671d293469026b4b7d0f417fa650e50",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/r-rcpparmadillo-15.6.2_1-r45h1fcd065_0.conda"
+    },
+    "r-rcppeigen": {
+      "version": "0.3.4.0.2",
+      "build": "r45h3704496_1",
+      "sha256": "fd1cc8ec804fede96bbd07867c58fd15c9fdb3fbae800ba0eb7b2779910734dc",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/r-rcppeigen-0.3.4.0.2-r45h3704496_1.conda"
+    },
+    "r-rcppparallel": {
+      "version": "5.1.11_2",
+      "build": "r45heb10100_1",
+      "sha256": "703bebdf8fdf52d7e90da38e5e10778cc270b69edae0ccb9afbcb48200794399",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/r-rcppparallel-5.1.11_2-r45heb10100_1.conda"
+    },
+    "r-rdtools": {
+      "version": "0.1.0",
+      "build": "r45h54b55ab_0",
+      "sha256": "6809ad578eb1b9a69f2b85164d441c0d91536398effd76567e5239ac726b1ee1",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/r-rdtools-0.1.0-r45h54b55ab_0.conda"
+    },
+    "r-recommended": {
+      "version": "4.5",
+      "build": "r45hd8ed1ab_1008",
+      "sha256": "aabe4c91dd234e4cadc51f5a83cd501d269682d6e34320b336595fda71fbfb17",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/r-recommended-4.5-r45hd8ed1ab_1008.conda"
+    },
+    "r-rematch2": {
+      "version": "2.1.2",
+      "build": "r45hc72bb7e_5",
+      "sha256": "20ec2130c80ac4b9f5488ea5b1d207b932e99b8a41beae62a58a3fcb98480025",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/r-rematch2-2.1.2-r45hc72bb7e_5.conda"
+    },
+    "r-rhpcblasctl": {
+      "version": "0.23_42",
+      "build": "r45h54b55ab_4",
+      "sha256": "5eeacae246e8b684cee05eaaa20484e19659b526dd89a0e3ca99905909fb7794",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/r-rhpcblasctl-0.23_42-r45h54b55ab_4.conda"
+    },
+    "r-rlang": {
+      "version": "1.3.0",
+      "build": "r45h3697838_0",
+      "sha256": "13aed8664cbf46946eed067d1708ee1a8dcbd7cf32d361c7a03a9bf3f83ac425",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/r-rlang-1.3.0-r45h3697838_0.conda"
+    },
+    "r-rmarkdown": {
+      "version": "2.32",
+      "build": "r45hacb3a79_0",
+      "sha256": "34b46990da92d7ec6b0781f60dbddbf0ae84f207d295a398dc2cd09312dc75d1",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/r-rmarkdown-2.32-r45hacb3a79_0.conda"
+    },
+    "r-roxygen2": {
+      "version": "8.1.0",
+      "build": "r45h3697838_0",
+      "sha256": "aa1e9aca3cd1cf39c958e1687e5802c86bd3f05e5c5f9516111d49f797a70673",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/r-roxygen2-8.1.0-r45h3697838_0.conda"
+    },
+    "r-rpart": {
+      "version": "4.1.27",
+      "build": "r45h54b55ab_0",
+      "sha256": "361ec301129b0f03cb560a45dd09f97690fb486e71f4f49e63071437742e2e6b",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/r-rpart-4.1.27-r45h54b55ab_0.conda"
+    },
+    "r-rprojroot": {
+      "version": "2.1.1",
+      "build": "r45hc72bb7e_1",
+      "sha256": "9e359973b9433ffaef7a65a1f3483723048427aee4a3208512863c4c70c409a4",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/r-rprojroot-2.1.1-r45hc72bb7e_1.conda"
+    },
+    "r-rspectra": {
+      "version": "0.16_2",
+      "build": "r45h3704496_2",
+      "sha256": "df7a99f6848ab4e7adb188aa973dac04e9f43aa31fd0536971ac904c6724598f",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/r-rspectra-0.16_2-r45h3704496_2.conda"
+    },
+    "r-rsqlite": {
+      "version": "3.53.3",
+      "build": "r45h0cf2dab_0",
+      "sha256": "39d5ea25637dadc9fa6299f5cbe37ea024c7ac1c9300a7a2a43463eb629a4ab7",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/r-rsqlite-3.53.3-r45h0cf2dab_0.conda"
+    },
+    "r-rstudioapi": {
+      "version": "0.19.0",
+      "build": "r45hc72bb7e_0",
+      "sha256": "896aeea3aa679a9dbd0277d10ef8dcfd011e45a1717129180a9877c1fd828f2a",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/r-rstudioapi-0.19.0-r45hc72bb7e_0.conda"
+    },
+    "r-rversions": {
+      "version": "3.0.0",
+      "build": "r45hc72bb7e_0",
+      "sha256": "ce6e20e0836735760c76ea66393c3f5d3447834cc8b2c064247a1ca238821d30",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/r-rversions-3.0.0-r45hc72bb7e_0.conda"
+    },
+    "r-sass": {
+      "version": "0.4.10",
+      "build": "r45h3697838_1",
+      "sha256": "4d6d7db9d0187a9ede70d6d48278a8ba2b3160e823f5de239b86a6108f23172e",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/r-sass-0.4.10-r45h3697838_1.conda"
+    },
+    "r-selectr": {
+      "version": "0.6_0",
+      "build": "r45hc72bb7e_0",
+      "sha256": "c991e38185c2e8055f4ff31d915bec46b64336fcee299bc91482b4053becdf28",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/r-selectr-0.6_0-r45hc72bb7e_0.conda"
+    },
+    "r-sessioninfo": {
+      "version": "1.2.4",
+      "build": "r45hc72bb7e_0",
+      "sha256": "099c3806e6995cde020a5dbf2e4b03c5981e14eef83d892e3592755939018e76",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/r-sessioninfo-1.2.4-r45hc72bb7e_0.conda"
+    },
+    "r-shiny": {
+      "version": "1.14.0",
+      "build": "r45h785f33e_0",
+      "sha256": "ef0042ae1c3926ef9bee6c21cf761d7cf441eae61dceca7df143f3b9dc4c6f04",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/r-shiny-1.14.0-r45h785f33e_0.conda"
+    },
+    "r-skat": {
+      "version": "2.2.5",
+      "build": "r45h3697838_4",
+      "sha256": "872ce66c16215fecf0bf818585cedcfa71540df8a55142f0992af94fe08813bc",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/r-skat-2.2.5-r45h3697838_4.conda"
+    },
+    "r-slam": {
+      "version": "0.1_56",
+      "build": "r45h7b2432b_0",
+      "sha256": "529a390277153ac4d5fe2bb11859879034e1cfa50f399747e58a8df4d753a161",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/r-slam-0.1_56-r45h7b2432b_0.conda"
+    },
+    "r-sourcetools": {
+      "version": "0.1.7_2",
+      "build": "r45h3697838_0",
+      "sha256": "885a784f4258b491e48947dbed71bd18b2e2e7da0f0b53ee1dcfed93cfdcd48a",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/r-sourcetools-0.1.7_2-r45h3697838_0.conda"
+    },
+    "r-sparsesvd": {
+      "version": "0.2_3",
+      "build": "r45h54b55ab_2",
+      "sha256": "fb4f1cc17ec44291724ebe8d01d5ae730b419264f789df94060ef29cc45a0438",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/r-sparsesvd-0.2_3-r45h54b55ab_2.conda"
+    },
+    "r-spatest": {
+      "version": "3.1.2",
+      "build": "r45hc72bb7e_4",
+      "sha256": "ade33fb38ee2510481fea36f4acedf2fc2ece855ea9832b40735c2ceec531b78",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/r-spatest-3.1.2-r45hc72bb7e_4.conda"
+    },
+    "r-spatial": {
+      "version": "7.3_19",
+      "build": "r45h54b55ab_0",
+      "sha256": "5a47ec7f54d828dea46c1a999a4af980f9adf15e55a77926b7f3639b9a308bd2",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/r-spatial-7.3_19-r45h54b55ab_0.conda"
+    },
+    "r-stringi": {
+      "version": "1.8.7",
+      "build": "r45h2dae267_1",
+      "sha256": "64281fd7217f9e6536bb28e2ac231227cf5d92a154f5951596f6600879f9e9f6",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/r-stringi-1.8.7-r45h2dae267_1.conda"
+    },
+    "r-stringr": {
+      "version": "1.6.0",
+      "build": "r45h785f33e_0",
+      "sha256": "dea2a7676dd03ed93fa0ec961883c5075c361c8522659a1bc1e6b5c16525cb24",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/r-stringr-1.6.0-r45h785f33e_0.conda"
+    },
+    "r-survival": {
+      "version": "3.8_12",
+      "build": "r45hddc5280_0",
+      "sha256": "9075d3145d34039fbffb6c1fb5c54f43d980b05fc0382093b7d4347e00411c1a",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/r-survival-3.8_12-r45hddc5280_0.conda"
+    },
+    "r-sys": {
+      "version": "3.4.3",
+      "build": "r45h54b55ab_1",
+      "sha256": "0cf3a7af31b0396d5a2e1c932fffa360472f92a2b373a696f523b0b53ad1d682",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/r-sys-3.4.3-r45h54b55ab_1.conda"
+    },
+    "r-systemfonts": {
+      "version": "1.3.2",
+      "build": "r45h74f4acd_0",
+      "sha256": "b7c3105c26b006e75a4c770cd4b4cdd88da4153860bb8becac2b1ab068c6aab6",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/r-systemfonts-1.3.2-r45h74f4acd_0.conda"
+    },
+    "r-testthat": {
+      "version": "3.3.2",
+      "build": "r45h3697838_0",
+      "sha256": "0b526259e82140c26311dba589e65fd2fdcf3a559f8b07640464c2e5141f6468",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/r-testthat-3.3.2-r45h3697838_0.conda"
+    },
+    "r-textshaping": {
+      "version": "1.0.4",
+      "build": "r45h74f4acd_0",
+      "sha256": "3a880e41c30fd8f0d901fe1824b36869cd1d5c70a8a48d48cf4791ad6e580582",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/r-textshaping-1.0.4-r45h74f4acd_0.conda"
+    },
+    "r-tibble": {
+      "version": "3.3.1",
+      "build": "r45h54b55ab_0",
+      "sha256": "256d782fb5773d678f29b88a2c987eb47065e2393a080ca16f400b0256de65bb",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/r-tibble-3.3.1-r45h54b55ab_0.conda"
+    },
+    "r-tidyselect": {
+      "version": "1.2.1",
+      "build": "r45hc72bb7e_2",
+      "sha256": "fca09d6b9940f1e1cda0425a0f55716bba202d6f55d6bd25fedec391006c7dc7",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/r-tidyselect-1.2.1-r45hc72bb7e_2.conda"
+    },
+    "r-tinytex": {
+      "version": "0.60",
+      "build": "r45hc72bb7e_0",
+      "sha256": "1fad4d08756ca2d7db04cfaf88e9df797da95a5f7f4b8aabc165eee36faddafc",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/r-tinytex-0.60-r45hc72bb7e_0.conda"
+    },
+    "r-urlchecker": {
+      "version": "2.0.0",
+      "build": "r45hc72bb7e_0",
+      "sha256": "0a19d2358ccb2e74e37ac7e8c52d56155d28097df05d8246c5ebca8246636c09",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/r-urlchecker-2.0.0-r45hc72bb7e_0.conda"
+    },
+    "r-usethis": {
+      "version": "3.2.1",
+      "build": "r45hc72bb7e_1",
+      "sha256": "3c8dc056e071d002dfde20f14cd8b1bad4b210f6e7e2d26cfc5eaf8f1342b1b2",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/r-usethis-3.2.1-r45hc72bb7e_1.conda"
+    },
+    "r-utf8": {
+      "version": "1.2.6",
+      "build": "r45h54b55ab_1",
+      "sha256": "97186abdf7c29872e012c9fe05ec16c019b58c43ac7b778baa480a8acae9c914",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/r-utf8-1.2.6-r45h54b55ab_1.conda"
+    },
+    "r-vctrs": {
+      "version": "0.7.3",
+      "build": "r45h3697838_0",
+      "sha256": "73b0cdea9f85496b80e75ffa20f94aa4ab746f4b7af566742e22381bffa6772d",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/r-vctrs-0.7.3-r45h3697838_0.conda"
+    },
+    "r-waldo": {
+      "version": "0.6.2",
+      "build": "r45hc72bb7e_1",
+      "sha256": "57eb80cb919524dde77b4c19f257ac9b327aba900e28298d990fa622f30b6f09",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/r-waldo-0.6.2-r45hc72bb7e_1.conda"
+    },
+    "r-whisker": {
+      "version": "0.4.1",
+      "build": "r45hc72bb7e_3",
+      "sha256": "f61bc764a85693d28dfc9dba60bc13acd89c3fd8fe85aa212530a3558bfecec0",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/r-whisker-0.4.1-r45hc72bb7e_3.conda"
+    },
+    "r-withr": {
+      "version": "3.0.3",
+      "build": "r45hc72bb7e_0",
+      "sha256": "56f318c90bfc74f01339c83f0e1d0817c1b762ea46cd9e527fec9dcf244c5900",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/r-withr-3.0.3-r45hc72bb7e_0.conda"
+    },
+    "r-xfun": {
+      "version": "0.61",
+      "build": "r45hddc5280_1",
+      "sha256": "12e95ce13d7f8f47b575eca3994003e58bdecc351648b8bef25557d3b22ee90c",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/r-xfun-0.61-r45hddc5280_1.conda"
+    },
+    "r-xml2": {
+      "version": "1.6.0",
+      "build": "r45he78afff_0",
+      "sha256": "395b4465db1a0027157907c626eb1ebe749a1b2394441c8d319862766ffb36a6",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/r-xml2-1.6.0-r45he78afff_0.conda"
+    },
+    "r-xopen": {
+      "version": "1.0.1",
+      "build": "r45hc72bb7e_2",
+      "sha256": "af8aecc4a3fe0bf7936ca178a3280ac5dcdcfe385c8337b9a29630cb96aa9bda",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/r-xopen-1.0.1-r45hc72bb7e_2.conda"
+    },
+    "r-xtable": {
+      "version": "1.8_8",
+      "build": "r45hc72bb7e_0",
+      "sha256": "972923364cfd616ccf38768477c435677cfe1ea18a72016f90344ea920e4fea5",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/r-xtable-1.8_8-r45hc72bb7e_0.conda"
+    },
+    "r-yaml": {
+      "version": "2.3.12",
+      "build": "r45h54b55ab_0",
+      "sha256": "f8944d47eccfdb2c04e27fd65797de7468ccc5d9f3fc3d9af296da613d75d79c",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/r-yaml-2.3.12-r45h54b55ab_0.conda"
+    },
+    "r-zip": {
+      "version": "3.0.2",
+      "build": "r45h54b55ab_0",
+      "sha256": "bf9548f28a4b795975e7d39dc7155384e55c0d088864330529d6d61886aca064",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/r-zip-3.0.2-r45h54b55ab_0.conda"
+    },
+    "readline": {
+      "version": "8.3",
+      "build": "hd6e31c0_1",
+      "sha256": "01b3fe073a66e321970d09e04b388708f8cbdca5cdfbfcb7c9eeb470ad10383d",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/readline-8.3-hd6e31c0_1.conda"
+    },
+    "rhash": {
+      "version": "1.4.6",
+      "build": "hb03c661_2",
+      "sha256": "186a5b225077ad5f4656966da947d43307101950751ef4a239b455588756b4e1",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/rhash-1.4.6-hb03c661_2.conda"
+    },
+    "savvy": {
+      "version": "2.2.0",
+      "build": "h8f7eaa7_0",
+      "sha256": "f74bc9d7de451374599e8aee586785f33d43c593a32c5686640f75d03ef37e26",
+      "url": "https://conda.anaconda.org/bioconda/linux-64/savvy-2.2.0-h8f7eaa7_0.conda"
+    },
+    "sed": {
+      "version": "4.10",
+      "build": "h19d0853_0",
+      "sha256": "b013d2085ce4ac01daec7b30472e9f3b6c2d69eb3a3a85a6cee3e01a3cb4f61a",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/sed-4.10-h19d0853_0.conda"
+    },
+    "shrinkwrap": {
+      "version": "1.2.0",
+      "build": "hed4e44d_1",
+      "sha256": "46b3f4682d670684b0bb48782cd67c1da1c685e934a667835d860870603fba09",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/shrinkwrap-1.2.0-hed4e44d_1.conda"
+    },
+    "six": {
+      "version": "1.17.0",
+      "build": "pyhe01879c_1",
+      "sha256": "458227f759d5e3fcec5d9b7acce54e10c9e1f4f4b7ec978f3bfd54ce4ee9853d",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/six-1.17.0-pyhe01879c_1.conda"
+    },
+    "subprocess32": {
+      "version": "3.5.4",
+      "build": "pyhd8ed1ab_2",
+      "sha256": "36ff0c52efaedd82680d8cc5e62822592ca009b2d6badf2dc9f1819ade972e1d",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/subprocess32-3.5.4-pyhd8ed1ab_2.conda"
+    },
+    "superlu": {
+      "version": "7.0.1",
+      "build": "h8f6e6c4_0",
+      "sha256": "4e748f877553c7ed42290420ba1e9aa0e80cf72b23b463f12dbb7927c16f0437",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/superlu-7.0.1-h8f6e6c4_0.conda"
+    },
+    "sysroot_linux-64": {
+      "version": "2.28",
+      "build": "h4ee821c_9",
+      "sha256": "c47299fe37aebb0fcf674b3be588e67e4afb86225be4b0d452c7eb75c086b851",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/sysroot_linux-64-2.28-h4ee821c_9.conda"
+    },
+    "tbb": {
+      "version": "2023.0.0",
+      "build": "hfd44327_3",
+      "sha256": "dd67bdb94a5e675abe8af925ccd02f074ba9ec216b112a962c57d1c53b11ddb7",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/tbb-2023.0.0-hfd44327_3.conda"
+    },
+    "tbb-devel": {
+      "version": "2023.0.0",
+      "build": "hfd44327_3",
+      "sha256": "e070c9d9c368384db2e2dcec26df53dbced4ddf3d383fbfeab888f3f48c9a64c",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/tbb-devel-2023.0.0-hfd44327_3.conda"
+    },
+    "tk": {
+      "version": "8.6.13",
+      "build": "noxft_h1df4ec4_4",
+      "sha256": "a1a241d172c1ccab067ba245206dd048bc3c2d1b84504b53c9468e99adfc16a1",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/tk-8.6.13-noxft_h1df4ec4_4.conda"
+    },
+    "tktable": {
+      "version": "2.10",
+      "build": "h0eb2ad0_11",
+      "sha256": "14096a4de75555f72db8e2b9a76e202623169de1a81330684dedb3be70010537",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/tktable-2.10-h0eb2ad0_11.conda"
+    },
+    "tzdata": {
+      "version": "2026e",
+      "build": "h5d301ff_0",
+      "sha256": "2b7ca858879f183ce2dcc65b300f48a0133d5430550f35b23d80d405a0788dbf",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/tzdata-2026e-h5d301ff_0.conda"
+    },
+    "xorg-libice": {
+      "version": "1.1.2",
+      "build": "h280c20c_0",
+      "sha256": "49b532d1df875c6749d9078b56a76f3f5db49a5abe0ca620b593ed474ef0ebf1",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/xorg-libice-1.1.2-h280c20c_0.conda"
+    },
+    "xorg-libsm": {
+      "version": "1.2.6",
+      "build": "h0d788c3_1",
+      "sha256": "ef907caee0665cf3b0f775602cc50e388e3bade8ce22ecade0873ff26604b2fd",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/xorg-libsm-1.2.6-h0d788c3_1.conda"
+    },
+    "xorg-libx11": {
+      "version": "1.8.14",
+      "build": "hb83e432_0",
+      "sha256": "1815dc9900bf3a4678caeb343bccbbc74cd5e5a5ff3f6e0a2c01c5e19cd9d30b",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/xorg-libx11-1.8.14-hb83e432_0.conda"
+    },
+    "xorg-libxau": {
+      "version": "1.0.12",
+      "build": "h7cc23a3_2",
+      "sha256": "3ec065b94554dc48a4ca582a960a5484bc166b26e83ce0954653e08d17e8bd53",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/xorg-libxau-1.0.12-h7cc23a3_2.conda"
+    },
+    "xorg-libxdmcp": {
+      "version": "1.1.5",
+      "build": "h7cc23a3_2",
+      "sha256": "8a095df9bc1d2e50f2504ce8858a047ae29ea634aad6cc0b43298c63361da6d9",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/xorg-libxdmcp-1.1.5-h7cc23a3_2.conda"
+    },
+    "xorg-libxext": {
+      "version": "1.3.7",
+      "build": "h7cc23a3_1",
+      "sha256": "aa9bbe8b278aacc194e280ff5037f9f9a1f2c5b33ed97de8e7f01cfbe90dda43",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/xorg-libxext-1.3.7-h7cc23a3_1.conda"
+    },
+    "xorg-libxrender": {
+      "version": "0.9.13",
+      "build": "h7cc23a3_0",
+      "sha256": "008d610d6ec1d021ad678024afd5dcf534ff84d9c1e9d2877ff36d112c89896f",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/xorg-libxrender-0.9.13-h7cc23a3_0.conda"
+    },
+    "xorg-libxt": {
+      "version": "1.3.1",
+      "build": "h7cc23a3_1",
+      "sha256": "dff31677674be86f98ee929a796edf2cf7c78bf38610b122a63af9af752d5bf7",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/xorg-libxt-1.3.1-h7cc23a3_1.conda"
+    },
+    "xz": {
+      "version": "5.8.3",
+      "build": "ha02ee65_1",
+      "sha256": "547b2392d8f7b76efd4a0970946f6da2a1136ad5fe3dc936af81e02eb7181076",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/xz-5.8.3-ha02ee65_1.conda"
+    },
+    "xz-gpl-tools": {
+      "version": "5.8.3",
+      "build": "ha02ee65_1",
+      "sha256": "ed6dbec5e4f0f71e7ac629b90dc4c9fba38d194cc88eab891c29e461b408977a",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/xz-gpl-tools-5.8.3-ha02ee65_1.conda"
+    },
+    "xz-tools": {
+      "version": "5.8.3",
+      "build": "hb03c661_1",
+      "sha256": "c74fa3eddd3ea648456517948f85068d8a07acad7752fd83c7e95b6cebb7114a",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/xz-tools-5.8.3-hb03c661_1.conda"
+    },
+    "zlib": {
+      "version": "1.3.2",
+      "build": "h25fd6f3_3",
+      "sha256": "16080a1c7724f7d25727cdc23c7658e0cec2db52448c1dc0c33467ee2c6e1c62",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/zlib-1.3.2-h25fd6f3_3.conda"
+    },
+    "zstd": {
+      "version": "1.5.7",
+      "build": "hb78ec9c_7",
+      "sha256": "47d682b9f6d6ec9eb1a6e6c3e75ea6273e899e78fb7fc59f81d39745009fbc60",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/zstd-1.5.7-hb78ec9c_7.conda"
+    }
+  },
+  "R_packages": {
+    "SAIGE": "1.5.2",
+    "Matrix": "1.7.6",
+    "Rcpp": "1.1.2",
+    "RcppParallel": "5.1.11.2",
+    "RcppArmadillo": "15.6.2.1",
+    "data.table": "1.18.6.1",
+    "SPAtest": "3.1.2",
+    "SKAT": "2.2.5",
+    "MetaSKAT": "0.90",
+    "RhpcBLASctl": "0.23.42",
+    "optparse": "1.8.2",
+    "dplyr": "1.2.1",
+    "jsonlite": "2.0.0",
+    "lintools": "0.1.7"
+  },
+  "inventory_roots": [
+    "source/.pixi/envs/default",
+    "source/extdata",
+    "adapter"
+  ],
+  "inventory_files": [
+    "runtime-lock.json",
+    "source/pixi.lock",
+    "source/pixi.toml",
+    "source/LICENSE",
+    "source/DESCRIPTION"
+  ],
+  "scope": "Original unmodified SAIGE1.5.2 programs built from authenticatedsource with a byte-pinned Pixi environment lock and separately pinned original PLINK2/lintools sources. Setup creates a new private home;scientific analysis launches directRscript withdisableduserRstartup and verifiedR/OS file families. Per-installation manifests detect subsequent changes;this is not a hostile-local-administrator security boundary. Ubuntu24.04 x86_64,CPU/kernel/locale and actual numeric host behavior remain declared platform inputs. Historicalversion/paper-specific equivalence requires separate reconstruction."
+}

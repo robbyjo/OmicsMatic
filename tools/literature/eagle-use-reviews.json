@@ -1,0 +1,145 @@
+[
+  {
+    "paper_id": "P072",
+    "primary_paragraph": 17,
+    "review": {
+      "pmcid": "PMC10786718",
+      "doi": "10.1038/s41588-023-01584-8",
+      "tool_id": "eagle",
+      "evidence_paragraph_sha256": "2ac8b9104011353f67062a22da968cdaf440266a2c2fdde45a5f1041686d70fa",
+      "use_summary": "Phased 23andMe genotypes using Finch or Eagle2 before Minimac3 imputation with combined 1000 Genomes Phase III and UK10K reference data.",
+      "implementation_scope_note": "The paper allows either Finch or Eagle2 and does not assign an engine to each sample or platform. The phasing edition and complete options are unstated; genotype QC, ancestry classification, imputation and association are separate operations.",
+      "version_reported_near_name": null
+    }
+  },
+  {
+    "paper_id": "P084",
+    "primary_paragraph": 38,
+    "review": {
+      "pmcid": "PMC10786715",
+      "doi": "10.1038/s41588-023-01600-x",
+      "tool_id": "eagle",
+      "evidence_paragraph_sha256": "2004d3dfe2b8afc6970cc43601d7d0e0179f3afdcd454b9d95d027bfc694fedb",
+      "use_summary": "Used Eagle2 with Minimac4 in a local Michigan Imputation Server 1.5.7 pipeline with the 1000G Phase3 v5 reference panel.",
+      "implementation_scope_note": "The server edition is not an Eagle edition. Earlier QC and later MAF, PCA and relatedness filters belong to the surrounding pipeline; a complete Eagle command and the phasing reference mode are not reported.",
+      "version_reported_near_name": null
+    }
+  },
+  {
+    "paper_id": "P092",
+    "primary_paragraph": 51,
+    "review": {
+      "pmcid": "PMC13649587",
+      "doi": "10.1038/s41588-026-02755-z",
+      "tool_id": "eagle",
+      "evidence_paragraph_sha256": "1d14040434dc11ee0f9c3f474554e1f94676a4c1af69375d80c41dd359e36739",
+      "use_summary": "Combined GLIMPSE2 and Eagle to infer individual genotypes from single-cell ATAC-seq reads.",
+      "implementation_scope_note": "The paragraph delegates the complete workflow and QC to a supplementary note. It does not establish the Eagle edition, input conversion, phasing mode or exact order of all steps; GLIMPSE2 and read processing remain separate.",
+      "version_reported_near_name": null
+    }
+  },
+  {
+    "paper_id": "P105",
+    "primary_paragraph": 36,
+    "review": {
+      "pmcid": "PMC10703676",
+      "doi": "10.1038/s41588-023-01569-7",
+      "tool_id": "eagle",
+      "evidence_paragraph_sha256": "4749264432f1fc14f835c61c2b0917852da936d8f095071b936a758f1b0a449d",
+      "use_summary": "Pre-phased with Eagle2 2.4.1 before Minimac4 1.0.2 imputation; chromosome-X haplotypes and sex-specific imputation are described separately.",
+      "implementation_scope_note": "The imputation panels include 1000 Genomes Phase3 v5 and selected high-coverage GRCh38 data. Do not assume these specify an Eagle reference-panel command. Sex/ploidy, build, genetic map and unreported phasing options require explicit declarations.",
+      "version_reported_near_name": "2.4.1"
+    }
+  },
+  {
+    "paper_id": "P108",
+    "primary_paragraph": 50,
+    "review": {
+      "pmcid": "PMC10703692",
+      "doi": "10.1038/s41588-023-01560-2",
+      "tool_id": "eagle",
+      "evidence_paragraph_sha256": "6c0b9a45df9fa2061912cfc06d72d36f69220ff241514b3b84717af398b4ba62",
+      "use_summary": "Phased array batches with Eagle 2.4 through TOPMed Imputation Server before Minimac4 imputation using the TOPMed reference panel.",
+      "implementation_scope_note": "Post-imputation filtering, merging, duplicate-sample selection and HapMap3 restriction are separate stages. The TOPMed imputation panel does not by itself specify all Eagle inputs or options.",
+      "version_reported_near_name": "2.4"
+    }
+  },
+  {
+    "paper_id": "P149",
+    "primary_paragraph": 38,
+    "review": {
+      "pmcid": "PMC10632135",
+      "doi": "10.1038/s41588-023-01538-0",
+      "tool_id": "eagle",
+      "evidence_paragraph_sha256": "8a54d2dd34b837a306a13a5c057d8b0820102f0ab7b53b1ce868b91ce34098c5",
+      "use_summary": "Phased Danish array genotypes with Eagle 2.4.1 before a distinct haplotype-sharing HMM imputed high-quality variants into the larger genotyped cohort.",
+      "implementation_scope_note": "Graphtyper calling and the subsequent Li-Stephens-style imputation are separate operations. Do not label the imputation algorithm as Eagle or IMPUTE2 execution solely from the model comparison.",
+      "version_reported_near_name": "2.4.1"
+    }
+  },
+  {
+    "paper_id": "P186",
+    "primary_paragraph": 9,
+    "review": {
+      "pmcid": "PMC11639076",
+      "doi": "10.1016/j.ajhg.2024.10.018",
+      "tool_id": "eagle",
+      "evidence_paragraph_sha256": "096ca4c897d1a0b6c1582bc4f607e80d0fb5c3bf3dbaa17541df197053212c43",
+      "use_summary": "Pre-phased array genotypes and phased the SISu reference-panel whole-genome callset with Eagle 2.3.5, using 20,000 conditioning haplotypes and otherwise reported defaults.",
+      "implementation_scope_note": "Subsequent population-specific imputation uses Beagle 4.1; GATK calling and Hail QC are separate. A current 2.4.1 fixture cannot establish 2.3.5 or historical SISu cohort parity.",
+      "version_reported_near_name": "2.3.5"
+    }
+  },
+  {
+    "paper_id": "P192",
+    "primary_paragraph": 11,
+    "review": {
+      "pmcid": "PMC11568758",
+      "doi": "10.1016/j.ajhg.2024.10.001",
+      "tool_id": "eagle",
+      "evidence_paragraph_sha256": "8317d370692c35ef01d05b1fa4eae4391eb060e3e1a417ab488f750edc48b3f6",
+      "use_summary": "Used Eagle 2.4 for haplotype phasing in the Michigan Imputation Server workflow, followed by minimac4 imputation with HRC r1.1 2016.",
+      "implementation_scope_note": "Allele matching, strand flips, QC and downstream single-nucleus demultiplexing are separate steps. The paper does not provide a complete phasing command or identify all phasing-mode inputs.",
+      "version_reported_near_name": "2.4"
+    }
+  },
+  {
+    "paper_id": "P219",
+    "primary_paragraph": 15,
+    "review": {
+      "pmcid": "PMC11393713",
+      "doi": "10.1016/j.ajhg.2024.07.010",
+      "tool_id": "eagle",
+      "evidence_paragraph_sha256": "9dfacc212d56c5d2be46cdcf6445dd1f588fb69b3ac139aa6f001cafa0497515",
+      "use_summary": "Used Eagle 2.3 phased genotypes within Michigan Imputation Server imputation with HRC r1.1 2016 and the European population setting.",
+      "implementation_scope_note": "Array genotype calling and HRC/1KG input checking are separate operations. The complete Eagle build, phasing command and panel mode are not identified.",
+      "version_reported_near_name": "2.3"
+    }
+  },
+  {
+    "paper_id": "P229",
+    "primary_paragraph": 12,
+    "review": {
+      "pmcid": "PMC13078719",
+      "doi": "10.1016/j.ajhg.2026.02.023",
+      "tool_id": "eagle",
+      "evidence_paragraph_sha256": "614700c746820b11000d1236cdff8d054496307514b9ffc73bb8b232c95947a6",
+      "use_summary": "Phased Omani genotypes with Eagle 2.4.1 and a GRCh38 genetic map before RFMix2 local-ancestry inference.",
+      "implementation_scope_note": "The high-coverage phased 1000 Genomes callset is described as reference genotypes in the RFMix section; its assignment to an Eagle reference-mode command is not explicit. RFMix EM/window/generation settings do not describe Eagle.",
+      "version_reported_near_name": "2.4.1"
+    }
+  },
+  {
+    "paper_id": "P243",
+    "primary_paragraph": 12,
+    "review": {
+      "pmcid": "PMC11267522",
+      "doi": "10.1016/j.ajhg.2024.05.017",
+      "tool_id": "eagle",
+      "evidence_paragraph_sha256": "570fc10d4cfaf9a3f483134f5df3d5245103b87ea1176ffef2bb70b6196d9ad5",
+      "use_summary": "Phased each of three separately imputed cohorts with Eagle 2.4 through Michigan Imputation Server, alongside Minimac4/HRC GRCh37 imputation.",
+      "implementation_scope_note": "The hg18-to-hg19 lift, imputation quality threshold, population selection and post-imputation variant removal are separate stages. A full Eagle command and its phasing-reference mode are unstated.",
+      "version_reported_near_name": "2.4"
+    }
+  }
+]

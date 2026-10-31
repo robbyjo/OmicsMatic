@@ -1239,7 +1239,7 @@
     "role": "Genotype phasing",
     "current_coverage": "missing",
     "existing_source": null,
-    "coverage_note": "No equivalent workflow identified in the current source inventory."
+    "coverage_note": "The original pre-expansion source inventory lacked this workflow. Current development source adds the pinned original Eagle2.4.1 cohort/reference adapter with native genotype/map/join and BCF2.2 conversion audits, protected binary/index provenance and complete output checks. Source indexes are never queried or certified against the BCF; prepared CSI is regenerated. See EAGLE_WORKFLOWS.md,EAGLE_BCF_STATUS.md,EAGLE_SOURCE_REVIEW.md and eagle-validation.json. Historical/server editions,imputation and biological phase accuracy or whole-paper parity remain outside the validated scope."
   },
   {
     "id": "beagle",
@@ -3733,5 +3733,23 @@
     "current_coverage": "missing",
     "existing_source": null,
     "coverage_note": "Two primary source roles reviewed;typed present-day original solver subset has separate development validation. Paper-specific preparation,parameters and surface reproduction remain open."
+  },
+  {
+    "id": "admixtureplotter",
+    "name": "AdmixturePlotter",
+    "pattern": "(?<![A-Za-z0-9_])AdmixturePlotter(?![A-Za-z0-9_])",
+    "role": "ADMIXTURE result handling and ancestry-component presentation",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Explicitly named alongside ADMIXTURE in P002;separate implementation and helper-specific settings remain open."
+  },
+  {
+    "id": "clumpp",
+    "name": "CLUMPP",
+    "pattern": "(?<![A-Za-z0-9_])CLUMPP(?![A-Za-z0-9_])",
+    "role": "Replicate cluster-membership matrix analysis",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "P180 passes membership coefficients from five ADMIXTURE runs;no equivalent validated CLUMPP workflow is available."
   }
 ]

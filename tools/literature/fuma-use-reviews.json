@@ -1,0 +1,300 @@
+[
+  {
+    "paper_id": "P019",
+    "primary_paragraph": 47,
+    "observed_role": "known-gene-trait-association-reference",
+    "review": {
+      "pmcid": "PMC13600940",
+      "doi": "10.1038/s41586-026-10836-6",
+      "tool_id": "fuma",
+      "evidence_paragraph_sha256": "9c8118766b33f79a66d1bf621a682101a9b9442e99509b3e236662890cd24e35",
+      "use_summary": "Used FUMA SNP2GENE/MAGMA to define previously known gene-trait associations alongside bulk DLPFC S-TWAS. The known set is their union after FDR correction across traits. Set gene type to all, custom MHC coordinates 28477797–33448354 and symmetric 50 kb windows after GRCh37 liftover.",
+      "implementation_scope_note": "The FUMA release is unstated. MungeSumstats preparation/liftover and subsequent two-sided Fisher enrichment with Bonferroni correction are separate stages; the MAGMA citation number is not a software version.",
+      "version_reported_near_name": "",
+      "supporting_evidence": []
+    }
+  },
+  {
+    "paper_id": "P072",
+    "primary_paragraph": 24,
+    "observed_role": "multi-ancestry-loci-and-functional-follow-up",
+    "review": {
+      "pmcid": "PMC10786718",
+      "doi": "10.1038/s41588-023-01584-8",
+      "tool_id": "fuma",
+      "evidence_paragraph_sha256": "e0dad4c9303653ce749ebed9bb25a6bb4810b1dd60834504eda69235180286c6",
+      "use_summary": "Used FUMA 1.3.8 to define risk loci with LD thresholds 0.6 and 0.1 and a 250 kb merge distance, then annotate variants with ANNOVAR and run MAGMA gene, gene-set and gene-property analyses. Used MSigDB 7.0 with 16992 terms, GTEx 8 and single-cell expression, BH-FDR below 0.05, conditional reanalysis and default GENE2FUNC follow-up.",
+      "implementation_scope_note": "The clumping reference is 1000 Genomes ALL ancestries; the ancestry-proportioned custom reference belongs to MAGMA. DropViz mouse and human ventral midbrain expression remain distinct data sources. Do not apply either reference universally or infer unenumerated GENE2FUNC defaults.",
+      "version_reported_near_name": "1.3.8",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 20,
+          "paragraph_sha256": "de3338ee6c07ca370b144c63bf58fbf750535a9955ddca5e267bcb0b3afb911a",
+          "section": "Methods / MAMA"
+        },
+        {
+          "paragraph_index": 7,
+          "paragraph_sha256": "e5d366e5b6504f4d8525c6a078d971cc65886d6862c6ef72478860a9b76db9b5",
+          "section": "Gene set analysis finds enrichment in brain tissues"
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "P088",
+    "primary_paragraph": 28,
+    "observed_role": "DCM-MTAG-loci-annotation-and-GENE2FUNC",
+    "review": {
+      "pmcid": "PMC11631763",
+      "doi": "10.1038/s41588-024-01975-5",
+      "tool_id": "fuma",
+      "evidence_paragraph_sha256": "f0a190fbf38ffea904446a863bca1c69e91d21273b664c27ea6beaa2c337b373",
+      "use_summary": "Used FUMA 1.6.1 for GWAS-DCM and MTAG-DCM locus analysis with lead P < 5e-8, r-squared < 0.05, a 1000 Genomes Phase 3 European reference and 1 Mb locus merging; used its MAGMA 1.08/GTEx 8 and ANNOVAR annotation. GENE2FUNC tested 63 prioritized genes against Ensembl 102 protein-coding background with at least two overlaps and two-stage BKY adjusted one-sided P < 0.05.",
+      "implementation_scope_note": "The coding-variant follow-up uses r-squared > 0.65. Open Targets 22.10 nearest-gene prioritization is separate. The software list also reports standalone MAGMA 1.10; that must not replace MAGMA 1.08 in the FUMA workflow. The availability list corroborates versions rather than independently proving execution.",
+      "version_reported_near_name": "1.6.1",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 29,
+          "paragraph_sha256": "88f148ca12408cc2c9c72a0b2898f238cd4990fce687fa74276971581968f41d",
+          "section": "Methods / Locus definitions, variant annotation and gene prioritization / Protein-altering variation and closest protein-coding gene"
+        },
+        {
+          "paragraph_index": 35,
+          "paragraph_sha256": "a2d80649b71acbe994a999c13466741885ae420362dc731c35a6bff76261e17c",
+          "section": "Methods / Gene set enrichment analyses"
+        },
+        {
+          "paragraph_index": 59,
+          "paragraph_sha256": "d899670986e0a999c90da1503e94e761b1f366bd826bef02c289518666aa4cac",
+          "section": "Code availability"
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "P105",
+    "primary_paragraph": 59,
+    "observed_role": "EAS-MAGMA-gene-set-and-tissue",
+    "review": {
+      "pmcid": "PMC10703676",
+      "doi": "10.1038/s41588-023-01569-7",
+      "tool_id": "fuma",
+      "evidence_paragraph_sha256": "c07f38afcdc3ff996c9f750be29932543b9b453c98250d7b0bcf1e31110b577e",
+      "use_summary": "Used FUMA 1.3.8/MAGMA 1.08 with a 1000 Genomes East Asian LD reference, 19033 Ensembl 92 protein-coding genes and 15485 MSigDB 7.0 gene sets. Compared annotation-window choices and tested GTEx 8 gene-property enrichment across 54 tissues and 30 general tissue types at FDR < 5%.",
+      "implementation_scope_note": "The Ensembl reference citation number is not an alternate annotation release. The primary paragraph does not enumerate the compared window sizes. Tissue gene-property tests differ from gene-list overrepresentation.",
+      "version_reported_near_name": "1.3.8",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 62,
+          "paragraph_sha256": "c711660a464e0490b67c5f347f9c045862975e06d09e5ad65e41a275e4a5e635",
+          "section": "Methods / Tissue- and cell-type specificity analysis"
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "P107",
+    "primary_paragraph": 22,
+    "observed_role": "stratified-MAGMA-two-gene-windows",
+    "review": {
+      "pmcid": "PMC13649558",
+      "doi": "10.1038/s41588-026-02713-9",
+      "tool_id": "fuma",
+      "evidence_paragraph_sha256": "9dd47e15762e7e52cd3ee8d305da7a21f156a081d8582baa73e891255f224d7f",
+      "use_summary": "Ran FUMA 1.6.1/MAGMA 1.08 for each meta-analysis stratum after VEP 112 rsID assignment and Picard LiftOverVcf 3.1.1 conversion to GRCh37. Compared 0 kb gene windows against 35 kb upstream/10 kb downstream windows, and declared pathways at q < 0.05 in either analysis.",
+      "implementation_scope_note": "The source describes the BH-FDR denominator using the gene count. Retain this ambiguity and the two-window declaration rule rather than substituting a pathway-family or across-window correction. No-rsID and failed-liftover variants are removed before FUMA.",
+      "version_reported_near_name": "1.6.1",
+      "supporting_evidence": []
+    }
+  },
+  {
+    "paper_id": "P123",
+    "primary_paragraph": 38,
+    "observed_role": "default-locus-definition-and-novelty",
+    "review": {
+      "pmcid": "PMC13553293",
+      "doi": "10.1038/s41588-026-02741-5",
+      "tool_id": "fuma",
+      "evidence_paragraph_sha256": "90b64a02d2146bea471f975bb8f47e10d7f2b2b2b2c0c6fbe7e5813544d57f8f",
+      "use_summary": "Used FUMA 1.6.1 with reported default parameters to identify independent loci, calling a locus novel if no previously reported variant lay within 250 kb of its lead variant.",
+      "implementation_scope_note": "The paragraph does not enumerate the FUMA defaults. Liftover, allele harmonization, MAF/imputation filtering and METAL/RE2C overlap handling are upstream stages; their settings do not establish the FUMA reference panel.",
+      "version_reported_near_name": "1.6.1",
+      "supporting_evidence": []
+    }
+  },
+  {
+    "paper_id": "P130",
+    "primary_paragraph": 56,
+    "observed_role": "NPE-variant-to-gene-and-MAGMA",
+    "review": {
+      "pmcid": "PMC11549054",
+      "doi": "10.1038/s41588-024-01939-9",
+      "tool_id": "fuma",
+      "evidence_paragraph_sha256": "a5778298c8eef536f52b99ac63afe60a8053b44c4a06f806c1de472820308fdd",
+      "use_summary": "Used FUMA and FAVOR for NPE variant-to-gene prioritization at P ≤ 1e-5 and within 10 kb of a protein-coding transcription start or end site. Ran MAGMA 1.10 gene and MSigDB GO/curated-set tests with gene threshold 2.5e-6 and per-NPE Bonferroni pathway correction.",
+      "implementation_scope_note": "FUMA and FAVOR are jointly described, so do not assign every annotation to a specific backend. The literal 99.9% variant-PC variance/F-test description needs model reconciliation; it does not establish a raw-PC regression from P-only summary statistics. The FUMA release is unstated.",
+      "version_reported_near_name": "",
+      "supporting_evidence": []
+    }
+  },
+  {
+    "paper_id": "P131",
+    "primary_paragraph": 38,
+    "observed_role": "multivariate-loci-and-MAGMA-cell-gene-follow-up",
+    "review": {
+      "pmcid": "PMC13553304",
+      "doi": "10.1038/s41588-026-02735-3",
+      "tool_id": "fuma",
+      "evidence_paragraph_sha256": "af1453591edf0b68df5b1eb9ec115ea39ba95352cd5b60fb48e0edd8d3063be2",
+      "use_summary": "Used FUMA 1.5.2 on multivariate genomic SEM results to clump loci with a 1000 Genomes Phase 3 European reference and the reported r-squared > 0.6 and LD-block distance > 250 kb rules. Later combined FUMA/MAGMA gene associations mapped with 10 kb windows at P < 0.05/19154 with gsMAP expression correlations above 0.50.",
+      "implementation_scope_note": "Retain the source inequalities without reversing their meaning. QSNP heterogeneity filtering is upstream. Open Targets/BigQuery novelty checks, bedtools overlaps and gsMAP/Cauchy cell-type analyses are separate. The result paragraph corroborates locus counts rather than supplying additional FUMA defaults.",
+      "version_reported_near_name": "1.5.2",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 9,
+          "paragraph_sha256": "4d71082a9e353996826258bd28ceb7e6f8486d8fc8bfd9fa4085c99b403c81b8",
+          "section": "Results / Capturing the shared genetic liability between MDD and disease clusters"
+        },
+        {
+          "paragraph_index": 46,
+          "paragraph_sha256": "14104cb4efc5f0c1ba08fa2edcb161626998836273273495df83a1eb9890403a",
+          "section": "Methods / Biological annotations / gsMAP"
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "P135",
+    "primary_paragraph": 34,
+    "observed_role": "fracture-functional-annotation-and-gene-enrichment",
+    "review": {
+      "pmcid": "PMC10632131",
+      "doi": "10.1038/s41588-023-01527-3",
+      "tool_id": "fuma",
+      "evidence_paragraph_sha256": "695f621e755400564ca6f6a8b541b4ce0b0e858c209a09843e96187dda81396c",
+      "use_summary": "Used FUMA to integrate forearm-fracture lead variants and correlated variants at r-squared > 0.8 with ANNOVAR coding/splicing annotation and GTEx 8 cis-eQTLs. SNP2GENE-mapped genes were used for enrichment; follow-up also considered CADD 1.4 and RegulomeDB 1.1 annotations.",
+      "implementation_scope_note": "The FUMA release is unstated. Osteoclast and osteoblast donor datasets and ChIP-Atlas bone ATAC evidence are separately described resources. PASCAL pathway testing is distinct; do not assign its KEGG/BIOCARTA/REACTOME tests or ATAC Q threshold to FUMA.",
+      "version_reported_near_name": "",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 36,
+          "paragraph_sha256": "1fc00d5ba8adf67816bdc0868ba18236b2662cad392e9343d2408bfafb430e44",
+          "section": "Methods / Functional annotation"
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "P140",
+    "primary_paragraph": 57,
+    "observed_role": "two-LD-threshold-locus-definition",
+    "review": {
+      "pmcid": "PMC12695639",
+      "doi": "10.1038/s41588-025-02391-z",
+      "tool_id": "fuma",
+      "evidence_paragraph_sha256": "8ab2c1b1c8a57b63ac62ec089a23139a893b1b59b75ebb7b3a26c3d7271319f2",
+      "use_summary": "Used FUMA to clump association results with lead P = 5e-8, candidate GWAS P = 0.05, LD thresholds r-squared 0.6 and 0.1 and the 1000 Genomes Phase 3 reference.",
+      "implementation_scope_note": "The population subset, merge distance and FUMA release are unstated. Candidate GWAS P = 0.05 and lead P = 5e-8 serve different roles.",
+      "version_reported_near_name": "",
+      "supporting_evidence": []
+    }
+  },
+  {
+    "paper_id": "P149",
+    "primary_paragraph": 55,
+    "observed_role": "GENE2FUNC-GO-and-catalog-overrepresentation",
+    "review": {
+      "pmcid": "PMC10632135",
+      "doi": "10.1038/s41588-023-01538-0",
+      "tool_id": "fuma",
+      "evidence_paragraph_sha256": "00ef14b006b1ec06198520472737085e0f046cebcebf549661f08fe37a848ed9",
+      "use_summary": "Used FUMA GENE2FUNC for overrepresentation of GO cellular-component gene sets from MSigDB c5 and reported-trait genes from the GWAS Catalog.",
+      "implementation_scope_note": "The background, correction method, significance cutoff, minimum overlap and FUMA release are unstated. The software-availability paragraph corroborates the named tool. Nearby MAGMA/ADMIXTURE versions must not be assigned to FUMA.",
+      "version_reported_near_name": "",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 63,
+          "paragraph_sha256": "8c072952e3715972bb354ae4fa3e2a7d0340039acf7dad748ca1dd61fa594a19",
+          "section": "Code availability"
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "P150",
+    "primary_paragraph": 50,
+    "observed_role": "loci-functional-mapping-and-MAGMA",
+    "review": {
+      "pmcid": "PMC11549047",
+      "doi": "10.1038/s41588-024-01933-1",
+      "tool_id": "fuma",
+      "evidence_paragraph_sha256": "227f76a40e953049138733f1b10af7332a4546aaccd9e5fc74460a8a77ea2ece",
+      "use_summary": "Used FUMA 1.4.1 for two-step clumping with the literal P < 0.05/r-squared ≥ 0.6 and lead P < 5e-8/r-squared ≥ 0.1 rules, and positional/eQTL/chromatin mapping. Its MAGMA 1.08 SNP-wise-mean analysis used European 1000 Genomes Phase 3 LD and 17674 Ensembl 85 protein-coding genes with Bonferroni threshold 2.83e-6.",
+      "implementation_scope_note": "GCTA-COJO 1.94.1 joint/conditional analysis follows FUMA and changes lead counts; distinguish 1650 leads/939 loci from 1307 COJO signals. Novelty comparisons, the August 2, 2023 GWAS Catalog snapshot, SMR/HEIDI replication and the independent Korean cohort analyses answer separate questions. The source is retained without relabeling the clumping inequalities.",
+      "version_reported_near_name": "1.4.1",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 11,
+          "paragraph_sha256": "2d50ca0f3e8899b34417adef71f7599513835e880e9bc9debdea99055bb87c7d",
+          "section": "Results / Association analyses using multivariate GWAS for MetS"
+        },
+        {
+          "paragraph_index": 12,
+          "paragraph_sha256": "62c4a3bdc877296cc093af0c36420cb0c03da576eef9ab5b00c93711466ddc9d",
+          "section": "Results / Association analyses using multivariate GWAS for MetS"
+        },
+        {
+          "paragraph_index": 19,
+          "paragraph_sha256": "b137d8ae0ee2018055a86c8d884f60959fa2e9e94317654448dfe4618cbac692",
+          "section": "Results / Prioritization of MetS genes"
+        },
+        {
+          "paragraph_index": 24,
+          "paragraph_sha256": "52924e99eebee5c7de366abec6c66af7984282e5e751a05d8571fb62e4ab4cfd",
+          "section": "Results / MetS GWAS and PRS transferability in East Asians"
+        },
+        {
+          "paragraph_index": 56,
+          "paragraph_sha256": "1fcb3da5bfbab75e694890e72a4cae8759c26e821e207a5c66890b219e638d32",
+          "section": "Methods / MAGMA gene-based, gene set and gene property analyses"
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "P162",
+    "primary_paragraph": 39,
+    "observed_role": "tissue-gene-set-and-independent-variants",
+    "review": {
+      "pmcid": "PMC13447099",
+      "doi": "10.1038/s41588-026-02704-w",
+      "tool_id": "fuma",
+      "evidence_paragraph_sha256": "9348e34319881775e4e32f9e03d9accfa74daeeddb2d836071c526c5e539df7c",
+      "use_summary": "Used MAGMA within FUMA 1.3.7 for gene-set and tissue-expression enrichment across 54 GTEx 8 tissues; independent-variant selection used r-squared 0.05.",
+      "implementation_scope_note": "The results describe nearest-gene tissue expression whereas Methods describe MAGMA. The source gives tissue thresholds 9.4e-4 in a caption and 9.3e-4 in the body; retain the discrepancy (0.05/54 ≈ 9.259e-4) without inferring a different test. The FUMA release is separate from MAGMA.",
+      "version_reported_near_name": "1.3.7",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 14,
+          "paragraph_sha256": "2291efe9485d3b0c7726adccfd5c1d9776f14afc9a4d9f5f30692b664e3f3a0f",
+          "section": "Results / Gene pathway and tissue expression enrichment analyses"
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "P243",
+    "primary_paragraph": 21,
+    "observed_role": "post-GWAS-functional-interpretation",
+    "review": {
+      "pmcid": "PMC11267522",
+      "doi": "10.1016/j.ajhg.2024.05.017",
+      "tool_id": "fuma",
+      "evidence_paragraph_sha256": "34be0df5951803a672a9abc62f808366245236d9121191cbdba9b8920036d30a",
+      "use_summary": "Used FUMA alongside GTEx to interpret functional consequences, expression and splicing after GWAS and joint association analysis, considering the full SNP P-value distribution as well as prioritized markers.",
+      "implementation_scope_note": "The specific FUMA modules, release, LD reference and thresholds are unstated. This broad platform description does not establish a particular SNP2GENE clumping run or gene-set configuration.",
+      "version_reported_near_name": "",
+      "supporting_evidence": []
+    }
+  }
+]

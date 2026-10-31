@@ -40,7 +40,7 @@ def probe(home,log):
 def download(path):
     with urllib.request.urlopen(URL,timeout=180) as stream,path.open('wb') as out:shutil.copyfileobj(stream,out)
 def install(args):
-    home=args.environment.resolve();cache=args.archive.resolve();report=args.report.resolve();report.mkdir(parents=True,exist_ok=True);attempt=report/'attempts'/dt.datetime.now(dt.timezone.utc).strftime('%Y%m%dT%H%M%S.%fZ');attempt.mkdir(parents=True)
+    home=args.environment.resolve();cache=args.archive.resolve();report=args.report.resolve();report.mkdir(parents=True,exist_ok=True);attempts=report/'attempts';attempts.mkdir(exist_ok=True);attempt=Path(tempfile.mkdtemp(prefix=dt.datetime.now(dt.timezone.utc).strftime('%Y%m%dT%H%M%S.%fZ-'),dir=attempts))
     record=dict(**identity(),source=URL,official_page='https://cncr.nl/research/magma/',environment=str(home),download_authorized=args.allow_download,recorded_utc=dt.datetime.now(dt.timezone.utc).isoformat(),attempt=str(attempt))
     try:
         if sys.platform!='win32' or platform.machine().lower() not in {'amd64','x86_64'}:record.update(status='skipped-platform-unavailable',error='This exact runtime profile requires Windows x86_64; obtain the unmodified upstream binary and validate on a supported permitted host')
