@@ -1,8 +1,8 @@
 # RepeatMasker: eleven paper-use descriptions
 
-**Source review only; implementation validation is still in progress.** These eleven uses comprise three cases of precomputed annotation reuse and eight search or masking workflows. Ten new review objects and one explicitly retained P164 revision bring the catalog to 703 reviewed uses and 203 supporting paragraph pointers. The 250-paper cohort, 379 named tools and 2,428 primary observation pointers are unchanged.
+**Eleven source roles verified; declared tool operations are available in development source.** Three precomputed-annotation reuse roles and eight search/masking roles retain their distinct settings and limitations. The catalog has 703 reviewed uses and 203 supporting paragraph pointers across 250 papers, 379 named tools and 2,428 primary observations.
 
-The implementation counts remain **53 new integrations, 56 including existing adapters, and 266 missing**. RepeatMasker is outside the completed count while the remaining public historical controls run. Read the [development workflow guide](REPEATMASKER_PUBLIC_WORKFLOW.md) for the current tested scope and recovery actions.
+Counts are **54 new integrations, 57 including existing adapters and 265 missing**. Read the [public workflow and recovery guide](REPEATMASKER_PUBLIC_WORKFLOW.md), [scoped validation](repeatmasker-validation.json) and [per-role restrictions](repeatmasker-role-coverage.json). Unsupported reported editions must remain skipped unless an exact supported profile is supplied; none is silently substituted. This is not whole-paper reconstruction.
 
 An annotation track does not establish a new RepeatMasker program run. Historical releases are not silently replaced by a current profile. Unreported settings and resource identities need explicit review. In particular, a paper mentioning default Dfam does not establish Dfam 3.7; a RepBase-dependent workflow requires an appropriately licensed local resource, otherwise leave that analysis skipped. Downstream classification, assembly curation, transcript filtering and separate software remain separate operations.
 

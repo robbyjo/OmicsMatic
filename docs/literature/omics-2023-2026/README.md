@@ -1,5 +1,7 @@
 # Literature-driven omics toolbox expansion
 
+**RepeatMasker public workflow validated:** native annotation reuse and original two-stage SEARCH pass complete output/tree comparisons in both declared profiles. [Workflow and required actions](REPEATMASKER_PUBLIC_WORKFLOW.md) and [validation](repeatmasker-validation.json) retain unsupported editions, resource permissions and scientific limits. The full 250-paper goal remains active.
+
 **Eagle 2.4.1 cohort/reference phasing is now a validated scoped development integration.**
 Use `eagle-tools` with native VCF/BCF2.2 checks and protected source/conversion
 ledgers. The [workflow](EAGLE_WORKFLOWS.md), [BCF guide](EAGLE_BCF_STATUS.md),
@@ -7,11 +9,11 @@ ledgers. The [workflow](EAGLE_WORKFLOWS.md), [BCF guide](EAGLE_BCF_STATUS.md),
 retain exact input, edition, matching and missingness boundaries. All 169 strict
 tests pass on each of three JVMs; 40 original-matched phasing protocols cover
 692,743 calls, and the copyable BCF examples match 512 direct-original calls.
-The current catalog has **53 new validated integrations plus 3 existing
-adapters (56 total)** and **266 missing**. It retains 250 papers, 379 named
+The current catalog has **54 new validated integrations plus 3 existing
+adapters (57 total)** and **265 missing**. It retains 250 papers, 379 named
 tools, 2,428 observations, 703 reviewed uses and 203 supporting pointers.
 
-[Eleven RepeatMasker source roles](REPEATMASKER_SOURCE_REVIEW.md) distinguish annotation reuse from search and masking. Tool availability is unchanged; historical public validation remains open.
+[Eleven RepeatMasker source roles](REPEATMASKER_SOURCE_REVIEW.md) distinguish annotation reuse from search and masking. The scoped original workflow is available; read REPEATMASKER_PUBLIC_WORKFLOW.md for exact profiles and recovery.
 
 **Required action:** use an admitted Linux runtime for original phasing; skip
 the dependent analysis with **SKIP3** when a dependency or requested capability

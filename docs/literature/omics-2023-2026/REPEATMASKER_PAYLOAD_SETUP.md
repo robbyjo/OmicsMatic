@@ -1,11 +1,6 @@
 # RepeatMasker private payload setup
 
-**Original `SEARCH` is still unavailable in the project command and returns
-`SKIP3`.** This guide installs the exact source files and dependencies needed
-for the next runtime-admission step. A successful installation reports
-`PAYLOAD_INSTALLED_SEARCH_NOT_ADMITTED`. It does not certify a scientific run.
-Native `CHECK`, `MASK` and `AUDIT` already work without this installation; start
-with the [native example](../../../examples/repeat-native-workflow/README.md).
+**Original SEARCH is available after separate runtime admission.** Setup installs the exact permitted payload; successful installation still reports `PAYLOAD_INSTALLED_SEARCH_NOT_ADMITTED` and does not certify a study search. Follow the [public workflow](REPEATMASKER_PUBLIC_WORKFLOW.md) for admission, execution and verification. Native CHECK/MASK/AUDIT need no upstream installation.
 
 Use a JAR rebuilt from this checkout, or the private candidate identified in
 [repeatmasker-native-validation.json](repeatmasker-native-validation.json).

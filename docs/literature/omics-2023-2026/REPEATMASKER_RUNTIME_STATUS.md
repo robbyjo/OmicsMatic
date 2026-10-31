@@ -1,5 +1,11 @@
 # RepeatMasker original runtime admission: development status
 
+**Current scoped public workflow is validated (2026-10-31).** Native CHECK/MASK/AUDIT and original SEARCH are available in current source for the two declared profiles. Both public runtime admissions, all 13 planned search controls, complete independent output/tree audits, mapped inputs, the large control and the copyable example pass. Read [the public workflow and required actions](REPEATMASKER_PUBLIC_WORKFLOW.md). Counts are 54 new integrations, 57 including existing adapters and 265 missing. Cell Ranger remains excluded.
+
+## Historical component evidence
+
+The records below retain their original candidate scopes, counts and pre-admission wording. They are historical evidence; current availability and recovery are defined above and in the public guide.
+
 **Current public-profile controls pass; historical public validation remains open.** The exact development JAR now passes295 focused tests on Windows Java21/25 and Linux Java21. Actual current-profile N/SOFT/X/no-hit searches,Unicode/gzip staging and the documented example match complete independent reference populations. Read the [copyable public workflow guide](REPEATMASKER_PUBLIC_WORKFLOW.md). Historical public admission/search,final role/catalog gates and full tool admission remain unfinished. The counts remain53 new/56 including existing/266 missing. Cell Ranger stays excluded.
 
 The component-validation records below retain their original candidate scopes. SEARCH without an admitted runtime still returns SKIP3;runtime admission alone is not a completed study search.

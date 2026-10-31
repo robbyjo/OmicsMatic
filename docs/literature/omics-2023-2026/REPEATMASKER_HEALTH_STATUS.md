@@ -1,5 +1,11 @@
 # RepeatMasker fixed original health: development status
 
+**Current scoped public workflow is validated (2026-10-31).** Native CHECK/MASK/AUDIT and original SEARCH are available in current source for the two declared profiles. Both public runtime admissions, all 13 planned search controls, complete independent output/tree audits, mapped inputs, the large control and the copyable example pass. Read [the public workflow and required actions](REPEATMASKER_PUBLIC_WORKFLOW.md). Counts are 54 new integrations, 57 including existing adapters and 265 missing. Cell Ranger remains excluded.
+
+## Historical component evidence
+
+The records below retain their original candidate scopes, counts and pre-admission wording. They are historical evidence; current availability and recovery are defined above and in the public guide.
+
 **Current source snapshot (2026-10-31): experimental public integration.** The admission CLI, typed original SEARCH path and completion verifier now compile, but their public end-to-end validation is unfinished. The validation records below describe earlier component gates. Do not treat the new SEARCH path as validated or use its output for scientific conclusions yet. SEARCH without an admitted runtime still returns SKIP3. RepeatMasker remains outside the completed tool count.
 
 **Public original SEARCH remains unavailable and returns SKIP3.** Fixed health

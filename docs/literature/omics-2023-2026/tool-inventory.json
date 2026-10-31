@@ -2557,7 +2557,7 @@
     "role": "Repetitive sequence annotation",
     "current_coverage": "missing",
     "existing_source": null,
-    "coverage_note": "Named primary-source workflow recovered during semantic review. Upstream integration, exact input/settings and meaningful validation remain pending.",
+    "coverage_note": "The pre-expansion inventory lacked this workflow. The current source supplies native annotation reuse and a scoped original RepeatMasker development adapter. Historical editions and full-paper reconstruction remain explicit restrictions.",
     "paper_count": 11,
     "papers": [
       "P007",
@@ -2572,10 +2572,36 @@
       "P198",
       "P248"
     ],
-    "implementation_status": "missing",
-    "implementation_source": null,
-    "implementation_scope": "Named primary-source workflow recovered during semantic review. Upstream integration, exact input/settings and meaningful validation remain pending.",
-    "validation_note": "Existing overlap/adapters require paper-specific option checks; missing integrations remain pending."
+    "implementation_status": "upstream-adapter-validated",
+    "implementation_source": "src/main/java/org/jlinalg/cli/RepeatToolsCli.java",
+    "implementation_scope": "Native Java CHECK/MASK/AUDIT for explicit OUT or UCSC repeat annotations and plain/gzip FASTA, plus original two-stage SEARCH through repeat-tools. Admitted Linux x86_64 profiles cover RepeatMasker 4.2.6 with supplied custom libraries and 4.1.5 with supplied libraries, explicit species/simple-repeat requests and the pinned Dfam 3.7 resource. Typed recipes preserve explicit scientific flags, sequence/library/resource identities, query-ID/case staging, complete output populations and separate runtime/study completion. Both stages retain commands, logs, cleanup, complete trees and host captures; verification replays every mapped header/base and checks every annotation and mask value. Native operations need Java 17+; original programs require an exact admitted Linux runtime, including Linux Java inside WSL on Windows. Missing/forbidden/unsupported prerequisites skip3; invalid data, changed integrity, execution, capacity or interruption fails2 with retained diagnostics. Analysis never installs or substitutes editions. Other historical versions, unlicensed RepBase resources, unstated study settings, library construction, downstream classification/annotation pipelines and whole-paper or biological accuracy remain outside this scope. Read REPEATMASKER_PUBLIC_WORKFLOW.md, REPEATMASKER_SOURCE_REVIEW.md and every run warning before using outputs.",
+    "validation_note": "295 focused exact-package tests on Windows Java 21/25 and Linux Java 21, strict Java 17 compilation and Javadoc; platform skips are recorded. Thirteen planned public original controls cover both profiles, N/SOFT/X masks, no-hit absence and an independent repeat run; every complete output and owned tree passes a fresh independent final census. Both public runtime admissions pass. Fresh mapped Unicode/gzip current and historical searches, the copyable prepare/search/verify/overwrite-refusal example, a 10,002,721-base control under a 128 MiB heap and a deliberately rehashed false counter rejection pass. The current package retains every earlier JAR member byte and passes the three-JVM regression matrix and a fresh documented original search. Eleven source roles distinguish three precomputed-resource reuse cases from eight search/masking uses; historical editions and unstated resource releases are retained. Require COMPLETED.json, matching manifests and --verify success. Failed attempts remain retained; no release, deployment or full-paper reconstruction is claimed.",
+    "project_adapter_available": true,
+    "canonical_adapter_available": false,
+    "runtime_admission_available": true,
+    "development_adapter_cli": "repeat-tools",
+    "runtime_preparation_cli": "repeat-tools --export-runtime-setup NEW_DIRECTORY",
+    "development_candidate": "build/literature-review/repeatmasker-runtime/public-workflow-candidate-1/omicsmatic-0.3.7.jar",
+    "development_candidate_sha256": "bba0d738efaa82f86c650a467b0f10bf14bf503ee27965bd9a8f21de1fbd2c26",
+    "original_scientific_candidate": "build/literature-review/repeatmasker-runtime/public-search-root-build-3/omicsmatic-0.3.7.jar",
+    "original_scientific_candidate_sha256": "966e4ba154320d12e1784a9102fb1274084f2cd561bb5479d4a3c900046f4440",
+    "current_package_previous_payload_byte_identity": true,
+    "workflow_validation": "repeatmasker-validation.json",
+    "source_role_coverage": "repeatmasker-role-coverage.json",
+    "source_roles_reviewed": 11,
+    "whole_paper_reproduced": false,
+    "biological_absence_certified": false,
+    "native_annotation_reuse_available": true,
+    "original_search_available": true,
+    "runtime_profiles": [
+      "linux-x86_64-repeatmasker-4.2.6-custom-rmblast",
+      "linux-x86_64-repeatmasker-4.1.5-dfam3.7-rmblast"
+    ],
+    "native_helpers": [
+      "src/main/java/org/jlinalg/genetics/RepeatAnnotations.java",
+      "src/main/java/org/jlinalg/cli/RepeatFasta.java",
+      "src/main/java/org/jlinalg/cli/RepeatStageEvidence.java"
+    ]
   },
   {
     "id": "scvi",

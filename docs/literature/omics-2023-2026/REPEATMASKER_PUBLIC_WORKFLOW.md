@@ -1,11 +1,8 @@
-# Original RepeatMasker workflow: development guide
+# Original RepeatMasker workflow
 
-**Validation is still in progress. Use synthetic data while this gate is open.**
-The new public entry points compile and current-profile searches have passed
-independent full-output comparisons. The complete profile/case audit and catalog
-admission remain pending. RepeatMasker is outside the completed tool count.
-Use a JAR built from the current source; the earlier published 0.3.7 release
-does not provide these development commands.
+**Scoped development workflow validated.** Both declared profiles pass their planned public controls, complete independent output/tree comparisons and runtime admission. Native annotation reuse and original SEARCH remain separate operations. Read every warning and require completed-bundle verification before study use.
+
+The catalog now has **54 new integrations, 57 including existing adapters and 265 missing**. Use a current source build; the earlier published 0.3.7 release does not provide these development commands. Historical editions and whole-paper reconstruction retain explicit restrictions.
 
 ## Prepare and admit a runtime
 

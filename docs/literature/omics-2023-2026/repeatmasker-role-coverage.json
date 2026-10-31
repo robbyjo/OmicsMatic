@@ -1,0 +1,158 @@
+{
+  "status": "source-verified-scoped-tool-operation-coverage-with-explicit-edition-restrictions",
+  "roles": [
+    {
+      "paper_id": "P007",
+      "role": "precomputed-resource-reuse",
+      "role_kind": "precomputed-annotation-reuse",
+      "reported_version": null,
+      "tool_operations": [
+        "CHECK",
+        "MASK",
+        "AUDIT"
+      ],
+      "paper_exact_edition_status": "not-a-program-run",
+      "settings_and_resources_require_review": true,
+      "scope_note": "This is reuse of repeat annotations, not evidence of running RepeatMasker. Keep the UCSC resource/build and class definitions explicit; genotype-frequency filters and sequence-synthesis constraints are separate.",
+      "whole_paper_reproduced": false
+    },
+    {
+      "paper_id": "P011",
+      "role": "precomputed-resource-reuse",
+      "role_kind": "precomputed-annotation-reuse",
+      "reported_version": null,
+      "tool_operations": [
+        "CHECK",
+        "MASK",
+        "AUDIT"
+      ],
+      "paper_exact_edition_status": "not-a-program-run",
+      "settings_and_resources_require_review": true,
+      "scope_note": "The motif examples do not define a complete selection rule or junction-to-BED projection. RepeatMasker search execution is not reported; require explicit motif/resource/build and interval choices rather than guessing them.",
+      "whole_paper_reproduced": false
+    },
+    {
+      "paper_id": "P033",
+      "role": "extended-allele-search-and-classification",
+      "role_kind": "original-search-or-masking",
+      "reported_version": "4.1.2-p1",
+      "tool_operations": [
+        "SEARCH"
+      ],
+      "paper_exact_edition_status": "unsupported-exact-reported-edition-skip-required",
+      "settings_and_resources_require_review": true,
+      "scope_note": "The six-type classification and complete/fragment labels are downstream operations. The reference library release, grouping of split insertion records and overlap/extent conventions require review; do not substitute current4.2.6 or treat -nolow as merely an output-row filter.",
+      "whole_paper_reproduced": false
+    },
+    {
+      "paper_id": "P043",
+      "role": "precomputed-resource-reuse",
+      "role_kind": "precomputed-annotation-reuse",
+      "reported_version": null,
+      "tool_operations": [
+        "CHECK",
+        "MASK",
+        "AUDIT"
+      ],
+      "paper_exact_edition_status": "not-a-program-run",
+      "settings_and_resources_require_review": true,
+      "scope_note": "The paragraph supports annotation reuse, not a new RepeatMasker search. HOMER annotation and R mixtools2.0.0 model P-values are separate; import the exact resources and declare overlap and subclass definitions.",
+      "whole_paper_reproduced": false
+    },
+    {
+      "paper_id": "P101",
+      "role": "library-homology-search",
+      "role_kind": "original-search-or-masking",
+      "reported_version": "4.0.9",
+      "tool_operations": [
+        "SEARCH"
+      ],
+      "paper_exact_edition_status": "unsupported-exact-reported-edition-skip-required",
+      "settings_and_resources_require_review": true,
+      "scope_note": "MAKER2, protein-coding gene prediction and transcript assembly are separate. Retain the generated repeat library and the exact historical engine/software choices; printed divergence values do not expose all internal search precision.",
+      "whole_paper_reproduced": false
+    },
+    {
+      "paper_id": "P109",
+      "role": "library-homology-search",
+      "role_kind": "original-search-or-masking",
+      "reported_version": "4.1.2",
+      "tool_operations": [
+        "SEARCH"
+      ],
+      "paper_exact_edition_status": "unsupported-exact-reported-edition-skip-required",
+      "settings_and_resources_require_review": true,
+      "scope_note": "Library generation, catalog combination and gene annotation are separate operations. Full RepeatMasker flags and exact library construction are unstated; a supplied-library workflow requires explicit provenance and assembly declarations.",
+      "whole_paper_reproduced": false
+    },
+    {
+      "paper_id": "P110",
+      "role": "library-homology-search",
+      "role_kind": "original-search-or-masking",
+      "reported_version": "4.1.2-p1",
+      "tool_operations": [
+        "SEARCH"
+      ],
+      "paper_exact_edition_status": "unsupported-exact-reported-edition-skip-required",
+      "settings_and_resources_require_review": true,
+      "scope_note": "RepeatModeler2 included its LTR-finding module and is separate from RepeatMasker. Species with existing annotations are not automatically new search runs; complete flags and resource releases remain unspecified.",
+      "whole_paper_reproduced": false
+    },
+    {
+      "paper_id": "P164",
+      "role": "species-search-and-contig-interpretation",
+      "role_kind": "original-search-or-masking",
+      "reported_version": "4.1.5",
+      "tool_operations": [
+        "SEARCH"
+      ],
+      "paper_exact_edition_status": "reported-edition-supported",
+      "settings_and_resources_require_review": true,
+      "scope_note": "Methods paragraph40 resolves the version/species/default-Dfam choice, but not the exact Dfam release. Targeted BLAST validation, Hi-C/MashMap placement and manual assembly curation remain separate; an official bundled Dfam3.7 resource does not establish the study's exact library identity.",
+      "whole_paper_reproduced": false
+    },
+    {
+      "paper_id": "P171",
+      "role": "library-masking",
+      "role_kind": "original-search-or-masking",
+      "reported_version": "4.1.1",
+      "tool_operations": [
+        "SEARCH"
+      ],
+      "paper_exact_edition_status": "unsupported-exact-reported-edition-skip-required",
+      "settings_and_resources_require_review": true,
+      "scope_note": "The softmasked product is described for the combined workflow; the exact RepeatMasker masking flag and merge rules are not provided. EDTA and TERL inference remain separate and the library provenance must be explicit.",
+      "whole_paper_reproduced": false
+    },
+    {
+      "paper_id": "P198",
+      "role": "simple-repeat-masking",
+      "role_kind": "original-search-or-masking",
+      "reported_version": "4.1.5",
+      "tool_operations": [
+        "SEARCH"
+      ],
+      "paper_exact_edition_status": "reported-edition-supported",
+      "settings_and_resources_require_review": true,
+      "scope_note": "The paragraph does not specify -noint or its repeat library. TRF, multiple alignment, window/gap filtering, tree-puzzle likelihood tests and R multiple-testing correction are separate; do not infer their settings as RepeatMasker options.",
+      "whole_paper_reproduced": false
+    },
+    {
+      "paper_id": "P248",
+      "role": "homology-search-and-transcript-filtering",
+      "role_kind": "original-search-or-masking",
+      "reported_version": "4.1.2-p1",
+      "tool_operations": [
+        "SEARCH"
+      ],
+      "paper_exact_edition_status": "unsupported-exact-reported-edition-skip-required",
+      "settings_and_resources_require_review": true,
+      "scope_note": "The exact library combination and RepeatMasker flags are not given. RepBase requires an appropriately licensed local resource; RepeatModeler, gene prediction and strict transcript-overlap filtering remain separate. Transcript span versus exon-union denominators are not specified.",
+      "whole_paper_reproduced": false
+    }
+  ],
+  "annotation_reuse_roles": 3,
+  "search_masking_roles": 8,
+  "unsupported_reported_editions_require_explicit_skip": true,
+  "whole_paper_reproduced": false
+}

@@ -3,7 +3,7 @@
 Follow the [public workflow guide](../../docs/literature/omics-2023-2026/REPEATMASKER_PUBLIC_WORKFLOW.md)
 for the complete preparation, admission, search and verification commands.
 Use a JAR built from current source and an explicitly admitted Linux runtime.
-Validation of the complete historical profile is still in progress.
+Both declared profiles pass their planned public controls; read the source-role restrictions before study use.
 
 `prepare_inputs.py` extracts checked synthetic fixtures from that JAR and writes
 a complete recipe and options file in a NEW directory. It does not install

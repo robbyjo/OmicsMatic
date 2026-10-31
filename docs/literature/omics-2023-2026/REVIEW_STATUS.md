@@ -1,6 +1,10 @@
 # Active goal checkpoint - literature-driven bioinformatics toolbox
 
-## RepeatMasker paper-use descriptions reviewed (2026-10-31)
+## RepeatMasker scoped public integration validated (2026-10-31)
+
+Both public runtime admissions and all 13 planned original-search controls pass complete independent audits. Current-package regression tests and the copyable original example also pass. The current catalog is **54 new integrations, 57 including existing adapters and 265 missing**; 250 papers, 379 named tools, 2,428 observations, 703 reviewed uses and 203 supporting pointers are unchanged. Read [the workflow](REPEATMASKER_PUBLIC_WORKFLOW.md) and [scope evidence](repeatmasker-validation.json). Unsupported historical editions, unlicensed resources and unstated settings are not substituted; Cell Ranger remains excluded and the full goal remains active.
+
+## Historical source-review checkpoint before public admission (2026-10-31)
 
 Eleven primary-source roles are now curated: three precomputed-annotation reuse roles and eight search/masking roles. Ten new review objects and one explicitly retained P164 revision bring the catalog to 703 reviewed uses and 203 supporting paragraph pointers. All 250 paper identities, 379 named tools and 2,428 primary observation pointers are unchanged. The P164 Methods resolve RepeatMasker 4.1.5 and mouse/default-Dfam use, while the Dfam release remains unreported. RepBase permissions, historical software editions and unstated study settings remain explicit.
 

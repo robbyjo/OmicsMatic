@@ -1,0 +1,189 @@
+[
+  {
+    "paper_id": "P008",
+    "primary_paragraph": 72,
+    "observed_role": "donor-batch integration",
+    "review": {
+      "pmcid": "PMC12893920",
+      "doi": "10.1038/s41586-025-09875-2",
+      "tool_id": "scvi",
+      "evidence_paragraph_sha256": "59befae2841aed48b90c55100b42653a650db116ac7e431dbe055cd86342c0b6",
+      "use_summary": "Applied scVI to three integrated developmental views using 7,500 highly variable genes, 30 latent variables and two hidden layers to mitigate donor batch effects.",
+      "implementation_scope_note": "Gene selection and the separate donor/cell-cluster entropy evaluations are not VAE fitting. The exact count layer, optimizer settings and training epochs are not stated in this paragraph; do not infer normalized values as raw counts.",
+      "version_reported_near_name": null,
+      "supporting_evidence": []
+    }
+  },
+  {
+    "paper_id": "P019",
+    "primary_paragraph": 68,
+    "observed_role": "reference/query label transfer",
+    "review": {
+      "pmcid": "PMC13600940",
+      "doi": "10.1038/s41586-026-10836-6",
+      "tool_id": "scvi",
+      "evidence_paragraph_sha256": "ef032103f7bdc71dcd858a87247ed91212e6dd5589b19f6f05d7af29d3e30eb6",
+      "use_summary": "Used shared genes and scvi-tools reference models for PsychAD-to-ROSMAP class/subclass label transfer: five hidden layers, ten latent variables, annotation training for 20 epochs with at least 100 cells/cluster/epoch, then 100 transfer epochs.",
+      "implementation_scope_note": "Keep reference scVI embedding, semi-supervised annotation and query transfer distinct. Gene intersection precedes reference fitting; this cannot be replaced by shrinking an already fitted reference. Full-cell label propagation, reference evaluation and pseudobulk processing are separate.",
+      "version_reported_near_name": null,
+      "supporting_evidence": []
+    }
+  },
+  {
+    "paper_id": "P021",
+    "primary_paragraph": 87,
+    "observed_role": "package-based reference annotation; model unspecified",
+    "review": {
+      "pmcid": "PMC13600939",
+      "doi": "10.1038/s41586-026-10271-7",
+      "tool_id": "scvi",
+      "evidence_paragraph_sha256": "ec03177a4a68f6e7fbbe5bc045848c3ffeee91394d9c8de2a2f7f782e36964b6",
+      "use_summary": "Used scvi-tools 1.2.0 to transfer class and subclass annotations from an in-house reference cohort after multi-dataset snRNA-seq preprocessing.",
+      "implementation_scope_note": "The paragraph does not identify the annotation model or model count layer. Keep the reported 1000-UMI downsampling, CPM/log1p,6000-HVG selection, PCA and neighborhood operations separate. Require an explicitly reviewed model and data layer; do not assume log-normalized values are a count likelihood input.",
+      "version_reported_near_name": "1.2.0",
+      "supporting_evidence": []
+    }
+  },
+  {
+    "paper_id": "P024",
+    "primary_paragraph": 53,
+    "observed_role": "scANVI reference/query annotation",
+    "review": {
+      "pmcid": "PMC13600946",
+      "doi": "10.1038/s41586-025-09573-z",
+      "tool_id": "scvi",
+      "evidence_paragraph_sha256": "35b4bb6af425995f35856fc31a55a2d87610748afa7107be91df1a4a8f644887",
+      "use_summary": "Used scANVI for RADC-to-Xenium label transfer after restricting the reference to shared panel genes: five layers,30 latent variables,20 reference epochs with at least 100 cells/cluster/epoch and 100 transfer epochs.",
+      "implementation_scope_note": "Preserve gene-panel intersection before fitting, reference labels and transfer settings. Reference-label prediction measures a separate evaluation population; it is not a guarantee of query accuracy. The software release and exact count-layer identity remain unstated.",
+      "version_reported_near_name": null,
+      "supporting_evidence": []
+    }
+  },
+  {
+    "paper_id": "P059",
+    "primary_paragraph": 115,
+    "observed_role": "exploratory alternative model testing",
+    "review": {
+      "pmcid": "PMC10719114",
+      "doi": "10.1038/s41586-023-06812-z",
+      "tool_id": "scvi",
+      "evidence_paragraph_sha256": "406c1845f5f7ff4e14f2928599cdabe7758ba9dbfcf7a617aa1ece31c31567fe",
+      "use_summary": "Explored nonlinear scVI/scANVI models on downsampled data with substantially enlarged neural networks while investigating performance on a large complex dataset.",
+      "implementation_scope_note": "This is exploratory testing, not a fully specified final analysis. Exact downsampling, architecture, count layer, optimizer and convergence choices are unreported; do not invent a paper-equivalent model.",
+      "version_reported_near_name": null,
+      "supporting_evidence": []
+    }
+  },
+  {
+    "paper_id": "P062",
+    "primary_paragraph": 41,
+    "observed_role": "SysVI integration of transformed signed expression",
+    "review": {
+      "pmcid": "PMC13668712",
+      "doi": "10.1038/s41586-026-10964-z",
+      "tool_id": "scvi",
+      "evidence_paragraph_sha256": "fc94f72e4021ea383417332ae0708c3b1a9e051c304f71add3b322564f8d0502",
+      "use_summary": "Reported scvi-tools 1.3.0 and applied SysVI to Pearson-normalized expression and about 3000 highly variable genes, using 100-200 epochs for all-cell integrations and 5-30 epochs for individual cell types selected by reconstruction-loss behavior.",
+      "implementation_scope_note": "SysVI is a distinct model; this is not an NB/ZINB raw-count scVI run. Preserve upstream filtering, Scrublet, Scanpy Pearson residual normalization/HVG selection and validation criteria. Python 3.10.0 is reported; the private Python 3.12.3 CPU controls are not whole-environment or full-paper reconstruction.",
+      "version_reported_near_name": "1.3.0",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 43,
+          "section": "Methods / snRNA-seq analysis",
+          "paragraph_sha256": "fdf34b81ceb66604bbc42478f2d06eb90c29805d1215bf9ec6862d0afe7f7af9"
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "P064",
+    "primary_paragraph": 50,
+    "observed_role": "alternative orthotype-integration comparison",
+    "review": {
+      "pmcid": "PMC10719112",
+      "doi": "10.1038/s41586-023-06638-9",
+      "tool_id": "scvi",
+      "evidence_paragraph_sha256": "6d6cdae706aaffe9f2ac44ba1ad5b91a23d74b0384dd8ad0f478b17c6b28208b",
+      "use_summary": "Repeated bipolar-cell orthotype analysis using scVI as an alternative to Seurat, alongside Harmony and Liger, and observed additional species-specific orthotypes and unresolved distinctions.",
+      "implementation_scope_note": "The final presented results used Seurat. Keep this comparative/evaluation role, exact cross-species gene or orthotype definitions and unreported scVI settings explicit; do not label it the final paper pipeline.",
+      "version_reported_near_name": null,
+      "supporting_evidence": []
+    }
+  },
+  {
+    "paper_id": "P083",
+    "primary_paragraph": 19,
+    "observed_role": "reference/query preparation and online mapping",
+    "review": {
+      "pmcid": "PMC13649598",
+      "doi": "10.1038/s41588-026-02756-y",
+      "tool_id": "scvi",
+      "evidence_paragraph_sha256": "69dcad096cc9988f29c7d397a0fa952897afa96a57c2a449a05ed580d391a252",
+      "use_summary": "Prepared atlas query data for scVI/scANVI by zero-padding missing genes and sorting to reference order, registering data fields and loading query data into the reference model.",
+      "implementation_scope_note": "Keep full ordered reference genes, missing/padded genes, discarded query-only genes and cell identities visible. Shared-gene model training and padding a fitted reference are different policies. The paragraph describes query loading/preparation; exact training settings and software release are unstated. scPoli remains separate.",
+      "version_reported_near_name": null,
+      "supporting_evidence": []
+    }
+  },
+  {
+    "paper_id": "P085",
+    "primary_paragraph": 32,
+    "observed_role": "covariate-adjusted latent integration",
+    "review": {
+      "pmcid": "PMC11631771",
+      "doi": "10.1038/s41588-024-01961-x",
+      "tool_id": "scvi",
+      "evidence_paragraph_sha256": "9fe5fc303a9bdeb4919c1ab76eadd169e3bb6702e7de68d0b32f2e42a994e29e",
+      "use_summary": "Trained scVI for 50 epochs with two 128-node hidden layers,30 latent dimensions and dropout 0.1, adjusting the reported batch and continuous/categorical sample, diagnosis, region, age, mitochondrial, UMI, PMI and RIN covariates before Scanpy clustering.",
+      "implementation_scope_note": "Retain exact batch/covariate mappings and distinguish VAE integration from downstream UMAP, Leiden and marker/QC annotation. The paragraph reports normalize_total/log1p but does not identify the model layer; require a reviewed count-layer choice instead of treating transformed expression as raw counts.",
+      "version_reported_near_name": null,
+      "supporting_evidence": []
+    }
+  },
+  {
+    "paper_id": "P093",
+    "primary_paragraph": 31,
+    "observed_role": "popV embedding, semi-supervised annotation and online query mapping",
+    "review": {
+      "pmcid": "PMC11631762",
+      "doi": "10.1038/s41588-024-01993-3",
+      "tool_id": "scvi",
+      "evidence_paragraph_sha256": "86543236edfda9f9de24c5710da403bb099314e8a899b6d2c5788517ed87e3ed",
+      "use_summary": "Used scvi-tools 1.0.3 in popV: scVI embeddings for downstream kNN and scANVI reference/query label prediction, with pretrained reference mappings through scArches. Reported scVI settings include dropout 0.05, three layers,20 latent variables, NB likelihood, encoded covariates, layer normalization on both networks and 20 KL-warmup epochs.",
+      "implementation_scope_note": "scANVI uses a three-layer/dropout 0.1 classifier and batch_size 512/n_samples_per_label 20. Preserve the distinct supervised, semi-supervised and embedding-based predictors and unlabeled query design. The popV ensemble, ontology voting, kNN and other classifiers are separate; a 1.3.0 CPU provider does not certify the complete 1.0.3 historical environment.",
+      "version_reported_near_name": "1.0.3",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 9,
+          "section": "Results / Overview of popV",
+          "paragraph_sha256": "bba2e2c8ed90920ea0069d1c4f4f4b9cea7b31a99beb19eb53ee75b73177af59"
+        },
+        {
+          "paragraph_index": 43,
+          "section": "Methods / Model parameters / scVI",
+          "paragraph_sha256": "4cb66ae4c1acf6e709fb83dcbe02622dd389653f360ca29ae241ef5d9b8df89b"
+        },
+        {
+          "paragraph_index": 44,
+          "section": "Methods / Model parameters / scANVI",
+          "paragraph_sha256": "da329af3b745c6cfc89e2edb15d1940e963c1277542e61db75f8d8efbb23046f"
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "P161",
+    "primary_paragraph": 68,
+    "observed_role": "raw-count scVI then scANVI latent integration",
+    "review": {
+      "pmcid": "PMC13447095",
+      "doi": "10.1038/s41588-026-02665-0",
+      "tool_id": "scvi",
+      "evidence_paragraph_sha256": "b0b081eb420911db66c91b4cf4605da8409acc4c50b549c75402e9ca7872d901",
+      "use_summary": "Used raw CosMx counts for scVI batch correction with five layers,30 latent variables,max 1000 epochs and learning rate 0.001, then used scANVI with reference/CosMx annotations to recalculate the latent representation for further neighbor calling and annotation.",
+      "implementation_scope_note": "Keep raw counts distinct from normalized/log-transformed exploratory matrices. The 80 percent intratechnology-distance reference selection, distance-squared expression/metadata imputation, spatial neighborhoods, Wilcoxon tests and GAMs are separate operations; exact software release and full scANVI configuration are unstated.",
+      "version_reported_near_name": null,
+      "supporting_evidence": []
+    }
+  }
+]
