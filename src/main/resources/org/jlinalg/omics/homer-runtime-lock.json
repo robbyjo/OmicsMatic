@@ -1,0 +1,104 @@
+{
+  "schema_version": 1,
+  "tool": "HOMER",
+  "scope": "Original unmodified homer2 core FASTA find, fixed-known enrichment and de-novo discovery. Genome, Perl wrappers, tag/peak/RNA and automatic background generation remain separate.",
+  "license": "GPL-3.0-or-later",
+  "transport_warning": "Official HTTP archives have content pins, not independently authenticated upstream signatures. No binary is redistributed by this repository. Preserve originals and notices.",
+  "archives": {
+    "homer.v5.1.zip": {
+      "url": "http://homer.ucsd.edu/homer/data/software/homer.v5.1.zip",
+      "bytes": 33045679,
+      "sha256": "abaa6a1e9a8df902a423fb403dd2d7a85a3cf7706ab4ae099e4a4cfb0e621b12"
+    },
+    "homer.v4.11.zip": {
+      "url": "http://homer.ucsd.edu/homer/data/software/homer.v4.11.zip",
+      "bytes": 49427552,
+      "sha256": "7a86da101930b2bce1a69855a1a8181c6c886cebf7f5cc09dc7e5a7b957bac42"
+    },
+    "homer.v4.11.1.zip": {
+      "url": "http://homer.ucsd.edu/homer/data/software/homer.v4.11.1.zip",
+      "bytes": 35954701,
+      "sha256": "80d1cd00616729894017b24a36a2ef81f9cde8bd364e875aead1e0cfb500c82b"
+    }
+  },
+  "profiles": {
+    "linux-x86_64-5.1": {
+      "version": "5.1",
+      "members": {
+        "bin/homer2": {
+          "archive": "homer.v5.1.zip",
+          "member": "bin/homer2",
+          "bytes": 1070552,
+          "sha256": "68b79787a0ffb853dfe8c6cf47fe71152c6ecc42e59652e79e9942880f4c4023"
+        },
+        "share/COPYING": {
+          "archive": "homer.v5.1.zip",
+          "member": "COPYING",
+          "bytes": 35147,
+          "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903"
+        }
+      },
+      "external_library_names": [
+        "ld-linux-x86-64.so.2",
+        "libc.so.6",
+        "libgcc_s.so.1",
+        "libm.so.6",
+        "libpthread.so.0",
+        "libstdc++.so.6"
+      ],
+      "unsupported_wrappers": true
+    },
+    "linux-x86_64-4.11": {
+      "version": "4.11",
+      "members": {
+        "bin/homer2": {
+          "archive": "homer.v4.11.zip",
+          "member": "bin/homer2",
+          "bytes": 843888,
+          "sha256": "e7d08deaefd4828b47ed36c8e49083126de576102f9e02183ccd004b90c5306b"
+        },
+        "share/COPYING": {
+          "archive": "homer.v4.11.zip",
+          "member": "COPYING",
+          "bytes": 35147,
+          "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903"
+        }
+      },
+      "external_library_names": [
+        "ld-linux-x86-64.so.2",
+        "libc.so.6",
+        "libgcc_s.so.1",
+        "libm.so.6",
+        "libpthread.so.0",
+        "libstdc++.so.6"
+      ],
+      "unsupported_wrappers": true
+    },
+    "linux-x86_64-4.11.1": {
+      "version": "4.11.1",
+      "members": {
+        "bin/homer2": {
+          "archive": "homer.v4.11.1.zip",
+          "member": "bin/homer2",
+          "bytes": 844464,
+          "sha256": "c8cd6e5c5d8675af8753ac2602d8d1dfb3a769296998e14408090566cb818c70"
+        },
+        "share/COPYING": {
+          "archive": "homer.v4.11.1.zip",
+          "member": "COPYING",
+          "bytes": 35147,
+          "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903"
+        }
+      },
+      "external_library_names": [
+        "ld-linux-x86-64.so.2",
+        "libc.so.6",
+        "libgcc_s.so.1",
+        "libm.so.6",
+        "libpthread.so.0",
+        "libstdc++.so.6"
+      ],
+      "unsupported_wrappers": true
+    }
+  }
+}

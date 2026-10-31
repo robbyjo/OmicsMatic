@@ -1,0 +1,92 @@
+{
+  "status": "passed-native-supplied-chromatin-subset;broader-FUMA-missing",
+  "candidate": "build/literature-review/fuma-chromatin-candidate-3/jlinalg-0.3.7.jar",
+  "candidate_sha256": "62e0e95f61b1ac2c61c67143897b97388244ae965af239f9b3802f17696764d3",
+  "focused_tests": 318,
+  "focused_suites": 27,
+  "packaged_tests_per_JVM": 318,
+  "original_R_protocols": 36,
+  "original_successful_R_protocols": 34,
+  "original_retained_R_failures": 2,
+  "independent_policy_protocols": 80,
+  "packaged_typed_workflows": 152,
+  "identical_source_policy_cross_profile_table_groups": 252,
+  "controls_public_Unicode_cases": 10,
+  "public_Unicode_identical_table_groups": 7,
+  "portable_chromatin_replay_workflows": 160,
+  "portable_prior_mapping_replay_workflows": 64,
+  "portable_cross_profile_table_groups": 720,
+  "portable_cross_profile_table_files": 1440,
+  "native_cli": "fuma-tools --method map-genes --chromatin supplied",
+  "production_external_runtime_required": false,
+  "broader_tool_status": "missing",
+  "source_commit": "bdfbf06b5dd24037ec3c7497d773fad3c2656150",
+  "geneMap_source_sha256": "3977d60ca891d09576d0125b6c3407d82f2a7312987519b0cd3f28c2a0e41e80",
+  "source_scope": "Unmodified whole geneMap.R sourced in isolated environment with synthetic local resources;wrapper captures actual intermediate tables and errors. Not full SNP2GENE/historical data.",
+  "source_findings": [
+    "Global cross-row listed-SNP pool differs from explicit per-interaction membership",
+    "Single binary-track dimension failure",
+    "Final pool can remove admitting variant;original gene aggregation then fails",
+    "Source pool flags survive rejection of all interactions;actual eligible links separate",
+    "Literal promoter keys replace original genes;no coordinate overlap or normalization inferred",
+    "Colon-separated compound LD labels corrected to atomic unique rsIDs"
+  ],
+  "native_contracts": [
+    "Explicit source-global or per-interaction membership",
+    "Explicit source-closed or converted BED coordinates",
+    "Supplied enhancer UID subset and exact promoter region keys",
+    "Shared annotation/state/binary filters and bounded GeneWindowMapping interval search",
+    "Retained gene declarations,source-like pool flags and actual candidate/gene edges remain separate",
+    "Unsupported declarations have no fabricated GWAS,LD or locus evidence"
+  ],
+  "archive_changed_prior_entries": [
+    "org/jlinalg/cli/FumaMappingCli$Data.class",
+    "org/jlinalg/cli/FumaMappingCli.class",
+    "org/jlinalg/genetics/FumaVariantGeneMapping$Options.class",
+    "org/jlinalg/genetics/FumaVariantGeneMapping$Result.class",
+    "org/jlinalg/genetics/FumaVariantGeneMapping.class"
+  ],
+  "archive_added_entries": [
+    "org/jlinalg/genetics/FumaChromatinMapping$1Row.class",
+    "org/jlinalg/genetics/FumaChromatinMapping$CandidateDisposition.class",
+    "org/jlinalg/genetics/FumaChromatinMapping$Coordinates.class",
+    "org/jlinalg/genetics/FumaChromatinMapping$Evidence.class",
+    "org/jlinalg/genetics/FumaChromatinMapping$GeneMapping.class",
+    "org/jlinalg/genetics/FumaChromatinMapping$Inputs.class",
+    "org/jlinalg/genetics/FumaChromatinMapping$Interaction.class",
+    "org/jlinalg/genetics/FumaChromatinMapping$InteractionDisposition.class",
+    "org/jlinalg/genetics/FumaChromatinMapping$Membership.class",
+    "org/jlinalg/genetics/FumaChromatinMapping$Promoter.class",
+    "org/jlinalg/genetics/FumaChromatinMapping$Region.class",
+    "org/jlinalg/genetics/FumaChromatinMapping$Result.class",
+    "org/jlinalg/genetics/FumaChromatinMapping.class"
+  ],
+  "reference_fixture": "tools/literature/fixtures/fuma-chromatin/reference-cases.json",
+  "reference_fixture_sha256": "ed45a0b2bc88eecea0ffb4b428022833479e53cf9f3f431b7f136a025e428044",
+  "reference_verifier": "tools/literature/verify_fuma_chromatin.py",
+  "reference_verifier_sha256": "3eb98f283452093468b3a868c634797c4234a34e9ec7fe862e23f6ab54285add",
+  "proof_sha256": {
+    "build/literature-review/fuma-runtime/chromatin-focused-3/observed.json": "b676591acf3907a49e20d39e2c93028ceebfc57c0e2d3a5f149dd41bd13026dd",
+    "build/literature-review/fuma-runtime/packaged-chromatin-junit-3/verification.json": "19b7b7ae84e7d91c004a54c8669ee05ded794c4c8571d2abca543cf008ffc0d9",
+    "build/literature-review/fuma-runtime/chromatin-original-1/observed.json": "6de5989865acd540399a971bcb75c557014ede3814abb9bf8232a81346de0cb2",
+    "build/literature-review/fuma-runtime/chromatin-packaged-science-2/observed.json": "e8a2915db346f18bb243645cdc2e498f5cb5907bc88f32a54034316116862d75",
+    "build/literature-review/fuma-runtime/chromatin-controls-2/observed.json": "aa72befebf7d87074460700928b09eb6135993a896e8bfe3d527256b76cbe324",
+    "build/literature-review/fuma-runtime/chromatin-replay-audit-4/observed.json": "4df2ac9a96440de9b9279ebbe3ecba19977e2c7db3ace1f18618692d89a1c532",
+    "build/literature-review/fuma-runtime/chromatin-public-1/observed.json": "6b094c7cf3e66839c2bb263ad46d7ccfdcc12472bd1cf08e17bc1f7a385c0527"
+  },
+  "presentation_validation": "passed-browser;current-source-website-proof-recorded-separately",
+  "goal_status": "active;250papers retained;271 tool-level integrations missing;Cell Ranger excluded",
+  "summary_admission_policy": "Only actual positional/eQTL/chromatin links count as mapped_genes. Retained declarations are counted separately;declaration-only analysis requires --empty retain and completed-empty-with-review-warnings status.",
+  "fixture_origin_candidate_sha256": "7a1955b20a207b5fa3c7f6cbfddfb77a81da876ac5649a7181dc464ef39f9993",
+  "admission_policy_changed_prior_candidate_entries": [
+    "org/jlinalg/cli/FumaMappingCli$Data.class",
+    "org/jlinalg/cli/FumaMappingCli.class"
+  ],
+  "browser_validation": {
+    "check_groups": 164,
+    "screenshots": 66,
+    "new_panels_visually_reviewed": 3,
+    "proof_path": "build/literature-review/fuma-runtime/chromatin-ui-3/ui-validation.json",
+    "proof_sha256": "59cd5ea9bce6ef6b2ba405e85fd36c5b85e4f24e460c32c07edaa24c8a7ba10b"
+  }
+}

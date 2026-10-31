@@ -1,0 +1,248 @@
+{
+  "schema_version": 1,
+  "tool": "HOMER supplied-GTF annotation",
+  "scope": "Original annotatePeaks.pl on supplied BED6 or HOMER positions,explicit GTF and genome none. Original feature labels/metadata/statistics retained;native identity,coordinate,population and exact-contig nearest-TSS audit. No sequence/genome downloads,motif,tag-directory,coverage,RNA,GO or named-genome package admitted.",
+  "transport_warning": "Official HTTP archives have content pins, not independently authenticated upstream signatures. No binary is redistributed by this repository. Preserve originals and notices.",
+  "archives": {
+    "homer.v5.1.zip": {
+      "url": "http://homer.ucsd.edu/homer/data/software/homer.v5.1.zip",
+      "bytes": 33045679,
+      "sha256": "abaa6a1e9a8df902a423fb403dd2d7a85a3cf7706ab4ae099e4a4cfb0e621b12"
+    },
+    "homer.v4.11.zip": {
+      "url": "http://homer.ucsd.edu/homer/data/software/homer.v4.11.zip",
+      "bytes": 49427552,
+      "sha256": "7a86da101930b2bce1a69855a1a8181c6c886cebf7f5cc09dc7e5a7b957bac42"
+    },
+    "homer.v4.11.1.zip": {
+      "url": "http://homer.ucsd.edu/homer/data/software/homer.v4.11.1.zip",
+      "bytes": 35954701,
+      "sha256": "80d1cd00616729894017b24a36a2ef81f9cde8bd364e875aead1e0cfb500c82b"
+    }
+  },
+  "profiles": {
+    "linux-x86_64-annotation-5.1": {
+      "version": "5.1",
+      "archive": "homer.v5.1.zip",
+      "members": {
+        "bin/annotatePeaks.pl": {
+          "member": "bin/annotatePeaks.pl",
+          "bytes": 130120,
+          "sha256": "f4472ad09e15179e1bc9111dbf08685a75bb1f644fc4b7a56ce619aec8133df0",
+          "relocate": true,
+          "original_prefix_base64": "IyEvdXNyL2Jpbi9lbnYgcGVybAp1c2Ugd2FybmluZ3M7CnVzZSBsaWIgIi9ncGZzL2RhdGEwMS9jYmVubmVyL3NvZnR3YXJlL2hvbWVyLy4vL2JpbiI7Cm15ICRob21lRGlyID0gIi9ncGZzL2RhdGEwMS9jYmVubmVyL3NvZnR3YXJlL2hvbWVyLy4vIjsK"
+        },
+        "bin/HomerConfig.pm": {
+          "member": "bin/HomerConfig.pm",
+          "bytes": 16242,
+          "sha256": "fde825ace4acc11f70726f8d6e95d44ce6dbe3bf4d93d8b626e2f516f0be1966",
+          "relocate": true,
+          "original_prefix_base64": "IyEvdXNyL2Jpbi9lbnYgcGVybAp1c2Ugd2FybmluZ3M7CnVzZSBsaWIgIi9ncGZzL2RhdGEwMS9jYmVubmVyL3NvZnR3YXJlL2hvbWVyLy4vL2JpbiI7Cm15ICRob21lRGlyID0gIi9ncGZzL2RhdGEwMS9jYmVubmVyL3NvZnR3YXJlL2hvbWVyLy4vIjsK"
+        },
+        "bin/Statistics.pm": {
+          "member": "bin/Statistics.pm",
+          "bytes": 23765,
+          "sha256": "34ac8c9f706de1a23438baf96f7333003a5f3397eee4107eb0412bc2b18ebf01",
+          "relocate": false
+        },
+        "bin/bed2pos.pl": {
+          "member": "bin/bed2pos.pl",
+          "bytes": 3506,
+          "sha256": "3cbe0182075b97097fac694d390a52982bc22a9d77b1ed513094b1010c6309b5",
+          "relocate": false
+        },
+        "bin/checkPeakFile.pl": {
+          "member": "bin/checkPeakFile.pl",
+          "bytes": 1773,
+          "sha256": "f76f5e92c07127a7c4401c8cf7eff1623b7f8bbb1df03fc3b0d38d7ea843e6bd",
+          "relocate": false
+        },
+        "bin/cleanUpPeakFile.pl": {
+          "member": "bin/cleanUpPeakFile.pl",
+          "bytes": 807,
+          "sha256": "2130691f05fc6208b876a6460f6d613dc672c8f2d88071cd4e8f04ae58d56860",
+          "relocate": false
+        },
+        "bin/adjustPeakFile.pl": {
+          "member": "bin/adjustPeakFile.pl",
+          "bytes": 6871,
+          "sha256": "27bbf41084664a35b8cc39e67679e759758f758b6d46404b926c09b1c3a45327",
+          "relocate": false
+        },
+        "bin/annotateRelativePosition.pl": {
+          "member": "bin/annotateRelativePosition.pl",
+          "bytes": 6776,
+          "sha256": "8f330b6b8a42dc2ef3a95103a80b7e1eaf60248faf7189b8a506ce3d0976bc20",
+          "relocate": false
+        },
+        "bin/parseGTF.pl": {
+          "member": "bin/parseGTF.pl",
+          "bytes": 23112,
+          "sha256": "ff2344dca066a728d05917841ef3fb700dd9269cf60beb260b7994aac456dc66",
+          "relocate": false
+        },
+        "bin/assignGenomeAnnotation": {
+          "member": "bin/assignGenomeAnnotation",
+          "bytes": 2914904,
+          "sha256": "cb193e9dadeb5ef7896258fcda528289e8d8106808081735a938076293ee6def",
+          "relocate": false
+        },
+        "share/COPYING": {
+          "member": "COPYING",
+          "bytes": 35147,
+          "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+          "relocate": false
+        }
+      }
+    },
+    "linux-x86_64-annotation-4.11": {
+      "version": "4.11",
+      "archive": "homer.v4.11.zip",
+      "members": {
+        "bin/annotatePeaks.pl": {
+          "member": "bin/annotatePeaks.pl",
+          "bytes": 129146,
+          "sha256": "cb618aa9c452031796e569f329514c0fa57447bdd90c0b7f75881729fb91f43f",
+          "relocate": true,
+          "original_prefix_base64": "IyEvdXNyL2Jpbi9lbnYgcGVybAp1c2Ugd2FybmluZ3M7CnVzZSBsaWIgIi9ncGZzL2RhdGEwMS9jYmVubmVyL3NvZnR3YXJlL2hvbWVyLy4vL2JpbiI7Cm15ICRob21lRGlyID0gIi9ncGZzL2RhdGEwMS9jYmVubmVyL3NvZnR3YXJlL2hvbWVyLy4vIjsK"
+        },
+        "bin/HomerConfig.pm": {
+          "member": "bin/HomerConfig.pm",
+          "bytes": 12212,
+          "sha256": "3c3486145e33b1db645f2506e57c23a9cc158c91b796338d18e1ca09291a1c98",
+          "relocate": true,
+          "original_prefix_base64": "IyEvdXNyL2Jpbi9lbnYgcGVybAp1c2Ugd2FybmluZ3M7CnVzZSBsaWIgIi9ncGZzL2RhdGEwMS9jYmVubmVyL3NvZnR3YXJlL2hvbWVyLy4vL2JpbiI7Cm15ICRob21lRGlyID0gIi9ncGZzL2RhdGEwMS9jYmVubmVyL3NvZnR3YXJlL2hvbWVyLy4vIjsK"
+        },
+        "bin/Statistics.pm": {
+          "member": "bin/Statistics.pm",
+          "bytes": 23275,
+          "sha256": "d88e337991cbf7407d3f1d32dae5945af49dbe4127a1070c11eba66e23542925",
+          "relocate": false
+        },
+        "bin/bed2pos.pl": {
+          "member": "bin/bed2pos.pl",
+          "bytes": 3490,
+          "sha256": "70aa355d35bff3117300b457fb2158fd6feb7297a44d456dbd2a2113035fe6db",
+          "relocate": false
+        },
+        "bin/checkPeakFile.pl": {
+          "member": "bin/checkPeakFile.pl",
+          "bytes": 1773,
+          "sha256": "f76f5e92c07127a7c4401c8cf7eff1623b7f8bbb1df03fc3b0d38d7ea843e6bd",
+          "relocate": false
+        },
+        "bin/cleanUpPeakFile.pl": {
+          "member": "bin/cleanUpPeakFile.pl",
+          "bytes": 807,
+          "sha256": "2130691f05fc6208b876a6460f6d613dc672c8f2d88071cd4e8f04ae58d56860",
+          "relocate": false
+        },
+        "bin/adjustPeakFile.pl": {
+          "member": "bin/adjustPeakFile.pl",
+          "bytes": 6056,
+          "sha256": "4911686b338114ff9c40240f676cf7a18e040f64ec6e3e441d1f03fc00ebf6aa",
+          "relocate": false
+        },
+        "bin/annotateRelativePosition.pl": {
+          "member": "bin/annotateRelativePosition.pl",
+          "bytes": 6776,
+          "sha256": "8f330b6b8a42dc2ef3a95103a80b7e1eaf60248faf7189b8a506ce3d0976bc20",
+          "relocate": false
+        },
+        "bin/parseGTF.pl": {
+          "member": "bin/parseGTF.pl",
+          "bytes": 22927,
+          "sha256": "d697baf71b0221906914f7f48aedd26417c72bcd70488f66e088ab787825dd9b",
+          "relocate": false
+        },
+        "bin/assignGenomeAnnotation": {
+          "member": "bin/assignGenomeAnnotation",
+          "bytes": 2681320,
+          "sha256": "8a1bf90e54abb8f329c74780107d3412a3bed27c432af766833a076f110ccfaa",
+          "relocate": false
+        },
+        "share/COPYING": {
+          "member": "COPYING",
+          "bytes": 35147,
+          "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+          "relocate": false
+        }
+      }
+    },
+    "linux-x86_64-annotation-4.11.1": {
+      "version": "4.11.1",
+      "archive": "homer.v4.11.1.zip",
+      "members": {
+        "bin/annotatePeaks.pl": {
+          "member": "bin/annotatePeaks.pl",
+          "bytes": 129146,
+          "sha256": "e41112705dcb59aa329c280f68433d34f48abe258fc9b4e08ca01c9d60988d07",
+          "relocate": true,
+          "original_prefix_base64": "IyEvdXNyL2Jpbi9lbnYgcGVybAp1c2Ugd2FybmluZ3M7CnVzZSBsaWIgIi9ncGZzL2RhdGEwMS9jYmVubmVyL3NvZnR3YXJlL2hvbWVyLy4vL2JpbiI7Cm15ICRob21lRGlyID0gIi9ncGZzL2RhdGEwMS9jYmVubmVyL3NvZnR3YXJlL2hvbWVyLy4vIjsK"
+        },
+        "bin/HomerConfig.pm": {
+          "member": "bin/HomerConfig.pm",
+          "bytes": 12212,
+          "sha256": "3c3486145e33b1db645f2506e57c23a9cc158c91b796338d18e1ca09291a1c98",
+          "relocate": true,
+          "original_prefix_base64": "IyEvdXNyL2Jpbi9lbnYgcGVybAp1c2Ugd2FybmluZ3M7CnVzZSBsaWIgIi9ncGZzL2RhdGEwMS9jYmVubmVyL3NvZnR3YXJlL2hvbWVyLy4vL2JpbiI7Cm15ICRob21lRGlyID0gIi9ncGZzL2RhdGEwMS9jYmVubmVyL3NvZnR3YXJlL2hvbWVyLy4vIjsK"
+        },
+        "bin/Statistics.pm": {
+          "member": "bin/Statistics.pm",
+          "bytes": 23275,
+          "sha256": "d88e337991cbf7407d3f1d32dae5945af49dbe4127a1070c11eba66e23542925",
+          "relocate": false
+        },
+        "bin/bed2pos.pl": {
+          "member": "bin/bed2pos.pl",
+          "bytes": 3490,
+          "sha256": "70aa355d35bff3117300b457fb2158fd6feb7297a44d456dbd2a2113035fe6db",
+          "relocate": false
+        },
+        "bin/checkPeakFile.pl": {
+          "member": "bin/checkPeakFile.pl",
+          "bytes": 1773,
+          "sha256": "f76f5e92c07127a7c4401c8cf7eff1623b7f8bbb1df03fc3b0d38d7ea843e6bd",
+          "relocate": false
+        },
+        "bin/cleanUpPeakFile.pl": {
+          "member": "bin/cleanUpPeakFile.pl",
+          "bytes": 807,
+          "sha256": "2130691f05fc6208b876a6460f6d613dc672c8f2d88071cd4e8f04ae58d56860",
+          "relocate": false
+        },
+        "bin/adjustPeakFile.pl": {
+          "member": "bin/adjustPeakFile.pl",
+          "bytes": 6056,
+          "sha256": "4911686b338114ff9c40240f676cf7a18e040f64ec6e3e441d1f03fc00ebf6aa",
+          "relocate": false
+        },
+        "bin/annotateRelativePosition.pl": {
+          "member": "bin/annotateRelativePosition.pl",
+          "bytes": 6776,
+          "sha256": "8f330b6b8a42dc2ef3a95103a80b7e1eaf60248faf7189b8a506ce3d0976bc20",
+          "relocate": false
+        },
+        "bin/parseGTF.pl": {
+          "member": "bin/parseGTF.pl",
+          "bytes": 22927,
+          "sha256": "d697baf71b0221906914f7f48aedd26417c72bcd70488f66e088ab787825dd9b",
+          "relocate": false
+        },
+        "bin/assignGenomeAnnotation": {
+          "member": "bin/assignGenomeAnnotation",
+          "bytes": 2681920,
+          "sha256": "309d38cbfe2e1d84975ff06853fc8dbe562fca860f9a2726fa93fb6f6c7eebf0",
+          "relocate": false
+        },
+        "share/COPYING": {
+          "member": "COPYING",
+          "bytes": 35147,
+          "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+          "relocate": false
+        }
+      }
+    }
+  },
+  "generated_config": "# Explicit supplied GTF; no named genome or organism packages installed.\nSOFTWARE\nORGANISMS\nPROMOTERS\nGENOMES\nSETTINGS\n"
+}

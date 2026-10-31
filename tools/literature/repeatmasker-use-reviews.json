@@ -1,0 +1,181 @@
+[
+  {
+    "paper_id": "P007",
+    "primary_paragraph": 31,
+    "observed_role": "precomputed-resource-reuse",
+    "review": {
+      "pmcid": "PMC13668659",
+      "doi": "10.1038/s41586-026-11053-x",
+      "tool_id": "repeatmasker",
+      "evidence_paragraph_sha256": "2999e1e61877529f7b8e9569bd1c246e9fa750d2bb1cbad51256f3a082fac5a2",
+      "use_summary": "Excluded candidate human substitutions overlapping low-complexity, simple and satellite RepeatMasker regions downloaded from UCSC, alongside separate TRF and ENCODE region filters.",
+      "implementation_scope_note": "This is reuse of repeat annotations, not evidence of running RepeatMasker. Keep the UCSC resource/build and class definitions explicit; genotype-frequency filters and sequence-synthesis constraints are separate.",
+      "version_reported_near_name": null,
+      "supporting_evidence": []
+    }
+  },
+  {
+    "paper_id": "P011",
+    "primary_paragraph": 64,
+    "observed_role": "precomputed-resource-reuse",
+    "review": {
+      "pmcid": "PMC13645644",
+      "doi": "10.1038/s41586-026-11048-8",
+      "tool_id": "repeatmasker",
+      "evidence_paragraph_sha256": "d3d7cbdb12c841726e540fb2671c42352a0f39fecd93da8ce10cb4a0ad7eb127",
+      "use_summary": "Intersected amplicon junction coordinates with TA/AT-rich repeats from the UCSC RepeatMasker track using BEDTools 2.31.1 and each dataset's hg19 or hg38 reference.",
+      "implementation_scope_note": "The motif examples do not define a complete selection rule or junction-to-BED projection. RepeatMasker search execution is not reported; require explicit motif/resource/build and interval choices rather than guessing them.",
+      "version_reported_near_name": null,
+      "supporting_evidence": []
+    }
+  },
+  {
+    "paper_id": "P033",
+    "primary_paragraph": 49,
+    "observed_role": "extended-allele-search-and-classification",
+    "review": {
+      "pmcid": "PMC10733147",
+      "doi": "10.1038/s41586-023-06842-7",
+      "tool_id": "repeatmasker",
+      "evidence_paragraph_sha256": "b30b1545351da298f3f1af3cf91b4f9816d6277b18cda632fde20a6a6fa6818f",
+      "use_summary": "Scanned extended variant alleles with RepeatMasker 4.1.2-p1 using -species human -gff -s -norna -nolow, then classified mobile elements with inclusive 75% consensus and variant-coverage thresholds.",
+      "implementation_scope_note": "The six-type classification and complete/fragment labels are downstream operations. The reference library release, grouping of split insertion records and overlap/extent conventions require review; do not substitute current4.2.6 or treat -nolow as merely an output-row filter.",
+      "version_reported_near_name": "4.1.2-p1",
+      "supporting_evidence": []
+    }
+  },
+  {
+    "paper_id": "P043",
+    "primary_paragraph": 60,
+    "observed_role": "precomputed-resource-reuse",
+    "review": {
+      "pmcid": "PMC10719105",
+      "doi": "10.1038/s41586-023-06824-9",
+      "tool_id": "repeatmasker",
+      "evidence_paragraph_sha256": "3af05361793387acad85628982566d64b238bafd3b0cf16c60492556ad367ee5",
+      "use_summary": "Used HOMER with UCSC mm10 refGene and RepeatMasker annotations to annotate transposable-element overlap at cCREs before separate mixture-model analyses.",
+      "implementation_scope_note": "The paragraph supports annotation reuse, not a new RepeatMasker search. HOMER annotation and R mixtools2.0.0 model P-values are separate; import the exact resources and declare overlap and subclass definitions.",
+      "version_reported_near_name": null,
+      "supporting_evidence": []
+    }
+  },
+  {
+    "paper_id": "P101",
+    "primary_paragraph": 35,
+    "observed_role": "library-homology-search",
+    "review": {
+      "pmcid": "PMC10703678",
+      "doi": "10.1038/s41588-023-01571-z",
+      "tool_id": "repeatmasker",
+      "evidence_paragraph_sha256": "c55c77a96ef7517b8bd678bbff6f001825b9525e05b670dd40995b389c87275d",
+      "use_summary": "Annotated plant-genome repeats with RepeatMasker 4.0.9 using -e rmblast -div 40 -norna after RepeatModeler2.0.1 repeat identification and classification.",
+      "implementation_scope_note": "MAKER2, protein-coding gene prediction and transcript assembly are separate. Retain the generated repeat library and the exact historical engine/software choices; printed divergence values do not expose all internal search precision.",
+      "version_reported_near_name": "4.0.9",
+      "supporting_evidence": []
+    }
+  },
+  {
+    "paper_id": "P109",
+    "primary_paragraph": 27,
+    "observed_role": "library-homology-search",
+    "review": {
+      "pmcid": "PMC11631756",
+      "doi": "10.1038/s41588-024-01967-5",
+      "tool_id": "repeatmasker",
+      "evidence_paragraph_sha256": "b10dee046ccb2eefa3869f3a1ad0481409d1cad0ad2bf7719ae63749aee00162",
+      "use_summary": "Used RepeatMasker 4.1.2 for homology-based TE annotation across29haplotypes with nonredundant repeat catalogs built using RepeatModeler2.0.4 and EDTA2.0.1.",
+      "implementation_scope_note": "Library generation, catalog combination and gene annotation are separate operations. Full RepeatMasker flags and exact library construction are unstated; a supplied-library workflow requires explicit provenance and assembly declarations.",
+      "version_reported_near_name": "4.1.2",
+      "supporting_evidence": []
+    }
+  },
+  {
+    "paper_id": "P110",
+    "primary_paragraph": 58,
+    "observed_role": "library-homology-search",
+    "review": {
+      "pmcid": "PMC12695648",
+      "doi": "10.1038/s41588-025-02409-6",
+      "tool_id": "repeatmasker",
+      "evidence_paragraph_sha256": "ee273b14ee57e081da6c0d8e1be28a53afcb678569d6868362e37fb7debb8acf",
+      "use_summary": "Generated repeat annotations for species lacking them by mapping RepeatModeler2.0.2a consensus repeat libraries against genomes using RepeatMasker4.1.2-p1.",
+      "implementation_scope_note": "RepeatModeler2 included its LTR-finding module and is separate from RepeatMasker. Species with existing annotations are not automatically new search runs; complete flags and resource releases remain unspecified.",
+      "version_reported_near_name": "4.1.2-p1",
+      "supporting_evidence": []
+    }
+  },
+  {
+    "paper_id": "P164",
+    "primary_paragraph": 37,
+    "observed_role": "species-search-and-contig-interpretation",
+    "review": {
+      "pmcid": "PMC12597820",
+      "doi": "10.1038/s41588-025-02367-z",
+      "tool_id": "repeatmasker",
+      "evidence_paragraph_sha256": "67f247b7a5f5b590b5ce1383118607ba18e4244429f9ff463cc8573f9f6975cf",
+      "use_summary": "Used RepeatMasker4.1.5 with the default Dfam library in Mus musculus mode to annotate repeats in T2T mouse assemblies, including centromeric repeats supporting placement of unplaced telomeric contigs.",
+      "implementation_scope_note": "Methods paragraph40 resolves the version/species/default-Dfam choice, but not the exact Dfam release. Targeted BLAST validation, Hi-C/MashMap placement and manual assembly curation remain separate; an official bundled Dfam3.7 resource does not establish the study's exact library identity.",
+      "version_reported_near_name": "4.1.5",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 40,
+          "section": "Methods / Repetitive sequence annotation",
+          "paragraph_sha256": "369b442445d8c6e8eae039d8e7590249abd4291ca09316fe94dc91317d8e5c64"
+        }
+      ]
+    },
+    "prior_review": {
+      "pmcid": "PMC12597820",
+      "doi": "10.1038/s41588-025-02367-z",
+      "tool_id": "repeatmasker",
+      "evidence_paragraph_sha256": "67f247b7a5f5b590b5ce1383118607ba18e4244429f9ff463cc8573f9f6975cf",
+      "use_summary": "Annotated centromeric repeats in candidate unplaced telomeric contigs to support their placement in missing chromosome regions.",
+      "implementation_scope_note": "The exact upstream method, reference inputs and assembly curation decisions remain pending; native sequence transformations alone do not implement this workflow."
+    }
+  },
+  {
+    "paper_id": "P171",
+    "primary_paragraph": 36,
+    "observed_role": "library-masking",
+    "review": {
+      "pmcid": "PMC13447107",
+      "doi": "10.1038/s41588-026-02678-9",
+      "tool_id": "repeatmasker",
+      "evidence_paragraph_sha256": "50b033273877d2e117d34f7c8fb62b05777d9a7763ee36dd131a20908feea073",
+      "use_summary": "Masked plant genomes with RepeatMasker4.1.1 using an EDTA-fragment library whose unknown TE sequences were classified with TERL, then merged and deduplicated annotations to obtain TE annotations and softmasked assemblies.",
+      "implementation_scope_note": "The softmasked product is described for the combined workflow; the exact RepeatMasker masking flag and merge rules are not provided. EDTA and TERL inference remain separate and the library provenance must be explicit.",
+      "version_reported_near_name": "4.1.1",
+      "supporting_evidence": []
+    }
+  },
+  {
+    "paper_id": "P198",
+    "primary_paragraph": 18,
+    "observed_role": "simple-repeat-masking",
+    "review": {
+      "pmcid": "PMC11568759",
+      "doi": "10.1016/j.ajhg.2024.09.005",
+      "tool_id": "repeatmasker",
+      "evidence_paragraph_sha256": "86dbadfd372bd545e5e15886e66294c20d21100c954ca1c8362049b4441079b4",
+      "use_summary": "Masked simple repeats in Y-chromosome assemblies with RepeatMasker4.1.5 before separate tandem-repeat masking with TRF4.09 and progressiveMauve alignment for clock-model comparisons.",
+      "implementation_scope_note": "The paragraph does not specify -noint or its repeat library. TRF, multiple alignment, window/gap filtering, tree-puzzle likelihood tests and R multiple-testing correction are separate; do not infer their settings as RepeatMasker options.",
+      "version_reported_near_name": "4.1.5",
+      "supporting_evidence": []
+    }
+  },
+  {
+    "paper_id": "P248",
+    "primary_paragraph": 43,
+    "observed_role": "homology-search-and-transcript-filtering",
+    "review": {
+      "pmcid": "PMC13447089",
+      "doi": "10.1038/s41588-026-02682-z",
+      "tool_id": "repeatmasker",
+      "evidence_paragraph_sha256": "6e413cb59f116f49368d799bea6077eecce578593ecd5227be0c58b01eb7dc0d",
+      "use_summary": "Annotated genome repeats using RepeatMasker4.1.2-p1 with homology evidence from RepBase20180823 after RepeatModeler2.0.3 library construction; downstream gene annotation filtered transcripts overlapping repeats by more than20%.",
+      "implementation_scope_note": "The exact library combination and RepeatMasker flags are not given. RepBase requires an appropriately licensed local resource; RepeatModeler, gene prediction and strict transcript-overlap filtering remain separate. Transcript span versus exon-union denominators are not specified.",
+      "version_reported_near_name": "4.1.2-p1",
+      "supporting_evidence": []
+    }
+  }
+]

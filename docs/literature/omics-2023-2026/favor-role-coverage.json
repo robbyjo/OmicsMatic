@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "paper_id": "P130",
+  "pmcid": "PMC11549054",
+  "doi": "10.1038/s41588-024-01939-9",
+  "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11549054/",
+  "source_section": "Methods / Statistical analyses / FUMA and FAVOR annotation, gene-prioritization and functional enrichment pipeline",
+  "evidence_paragraph_sha256": "a5778298c8eef536f52b99ac63afe60a8053b44c4a06f806c1de472820308fdd",
+  "source_review": "The paper describes FUMA/FAVOR jointly and names MAGMA separately. It does not identify every FAVOR scoring function or its historical code revision.",
+  "reported_joint_policy": {
+    "variant_p_max": "1e-5",
+    "radius_bp": 10000,
+    "sites": [
+      "TSS",
+      "TES"
+    ],
+    "gene_biotype": "protein-coding",
+    "MAGMA_version": "1.10",
+    "reported_gene_pc_variance_fraction": "0.999",
+    "reported_gene_test": "F",
+    "gene_p_max": "2.5e-6",
+    "gene_sets": [
+      "GO",
+      "MSigDB curated"
+    ],
+    "correction": "Bonferroni",
+    "correction_family": "per NPE"
+  },
+  "FAVOR_reference": {
+    "number": 103,
+    "doi": "10.1093/nar/gkac966",
+    "title": "FAVOR: functional annotation of variants online resource and annotator for variation across the human genome"
+  },
+  "implemented_FAVOR_scope": "Original pinned current offline CSV annotator plus complete independent native/GDS/scalar/ledger audits and explicit scalar export;not a historical full-paper pipeline.",
+  "separate_existing_contracts": {
+    "positional_mapping": "TRANSCRIPT_SITE_MAPPING.md",
+    "gene_and_gene_set_models": "MAGMA_WORKFLOWS.md"
+  },
+  "backend_assignment_ambiguous": true,
+  "historical_FAVOR_revision_reported": false,
+  "whole_paper_reproduced": false,
+  "rule": "Do not assign every joint step to FAVOR or infer a raw-PC model from P-only GWAS inputs. Supplied annotations and cohort/reference/build/model/correction families remain explicit."
+}

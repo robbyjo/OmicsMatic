@@ -1,0 +1,1145 @@
+{
+  "schema_version": 1,
+  "tool": "HOMER original genomic motif workflow",
+  "scope": "Original findMotifsGenome.pl old-background algorithm with supplied genome FASTA, supplied genomic background, known enrichment plus de novo discovery, original known-motif comparison and SVG reports. Source-built extraction helper with installation path configuration only. No registered/named genome or Cell Ranger.",
+  "transport_warning": "Official HTTP archives have content pins, not independently authenticated upstream signatures. No binary is redistributed by this repository. Preserve originals and notices.",
+  "archives": {
+    "homer.v5.1.zip": {
+      "url": "http://homer.ucsd.edu/homer/data/software/homer.v5.1.zip",
+      "bytes": 33045679,
+      "sha256": "abaa6a1e9a8df902a423fb403dd2d7a85a3cf7706ab4ae099e4a4cfb0e621b12"
+    },
+    "homer.v4.11.zip": {
+      "url": "http://homer.ucsd.edu/homer/data/software/homer.v4.11.zip",
+      "bytes": 49427552,
+      "sha256": "7a86da101930b2bce1a69855a1a8181c6c886cebf7f5cc09dc7e5a7b957bac42"
+    },
+    "homer.v4.11.1.zip": {
+      "url": "http://homer.ucsd.edu/homer/data/software/homer.v4.11.1.zip",
+      "bytes": 35954701,
+      "sha256": "80d1cd00616729894017b24a36a2ef81f9cde8bd364e875aead1e0cfb500c82b"
+    }
+  },
+  "generated_config": "# Explicit supplied GTF; no named genome or organism packages installed.\nSOFTWARE\nORGANISMS\nPROMOTERS\nGENOMES\nSETTINGS\n",
+  "build_recipe": {
+    "objects": [
+      "homerTools.o",
+      "SeqTag.o",
+      "Motif2.o",
+      "Clustering.o",
+      "Hashtable.o",
+      "statistics.o"
+    ],
+    "compile_flags": "-O3 -Wall -g -std=c++11",
+    "link_flags": [
+      "-lpthread",
+      "-lm",
+      "-static-libstdc++",
+      "-static-libgcc"
+    ],
+    "source_configuration": "SeqTag.cpp line3 HomerConfig::homeDirectory installation prefix only; original scientific bodies unchanged"
+  },
+  "profiles": {
+    "linux-x86_64-genome-5.1": {
+      "version": "5.1",
+      "archive": "homer.v5.1.zip",
+      "members": {
+        "bin/findMotifsGenome.pl": {
+          "member": "bin/findMotifsGenome.pl",
+          "bytes": 52640,
+          "sha256": "29eeee2479567b59dd22a46e22f3ccb06be2525813f06551e8fe13e2b0128f9e",
+          "relocate": true,
+          "original_prefix_base64": "IyEvdXNyL2Jpbi9lbnYgcGVybAp1c2Ugd2FybmluZ3M7CnVzZSBsaWIgIi9ncGZzL2RhdGEwMS9jYmVubmVyL3NvZnR3YXJlL2hvbWVyLy4vL2JpbiI7Cm15ICRob21lRGlyID0gIi9ncGZzL2RhdGEwMS9jYmVubmVyL3NvZnR3YXJlL2hvbWVyLy4vIjsK"
+        },
+        "bin/HomerConfig.pm": {
+          "member": "bin/HomerConfig.pm",
+          "bytes": 16242,
+          "sha256": "fde825ace4acc11f70726f8d6e95d44ce6dbe3bf4d93d8b626e2f516f0be1966",
+          "relocate": true,
+          "original_prefix_base64": "IyEvdXNyL2Jpbi9lbnYgcGVybAp1c2Ugd2FybmluZ3M7CnVzZSBsaWIgIi9ncGZzL2RhdGEwMS9jYmVubmVyL3NvZnR3YXJlL2hvbWVyLy4vL2JpbiI7Cm15ICRob21lRGlyID0gIi9ncGZzL2RhdGEwMS9jYmVubmVyL3NvZnR3YXJlL2hvbWVyLy4vIjsK"
+        },
+        "bin/Statistics.pm": {
+          "member": "bin/Statistics.pm",
+          "bytes": 23765,
+          "sha256": "34ac8c9f706de1a23438baf96f7333003a5f3397eee4107eb0412bc2b18ebf01",
+          "relocate": false
+        },
+        "bin/HomerSVGLogo.pm": {
+          "member": "bin/HomerSVGLogo.pm",
+          "bytes": 3712,
+          "sha256": "499f4312f2312bb56bf5b00bf6ea93ef65ebac10bb3187054af493aab4fecf85",
+          "relocate": false
+        },
+        "bin/bed2pos.pl": {
+          "member": "bin/bed2pos.pl",
+          "bytes": 3506,
+          "sha256": "3cbe0182075b97097fac694d390a52982bc22a9d77b1ed513094b1010c6309b5",
+          "relocate": false
+        },
+        "bin/checkPeakFile.pl": {
+          "member": "bin/checkPeakFile.pl",
+          "bytes": 1773,
+          "sha256": "f76f5e92c07127a7c4401c8cf7eff1623b7f8bbb1df03fc3b0d38d7ea843e6bd",
+          "relocate": false
+        },
+        "bin/cleanUpPeakFile.pl": {
+          "member": "bin/cleanUpPeakFile.pl",
+          "bytes": 807,
+          "sha256": "2130691f05fc6208b876a6460f6d613dc672c8f2d88071cd4e8f04ae58d56860",
+          "relocate": false
+        },
+        "bin/resizePosFile.pl": {
+          "member": "bin/resizePosFile.pl",
+          "bytes": 2102,
+          "sha256": "4704795d90e74257cfc5024d743f5aa0cafc3a044d2cd916d4cd74c3465b0a90",
+          "relocate": false
+        },
+        "bin/chopUpPeakFile.pl": {
+          "member": "bin/chopUpPeakFile.pl",
+          "bytes": 1036,
+          "sha256": "004b173e8f2113a19bc335b35f1576ead2cb2e6266786a63516cde5fdb21feb8",
+          "relocate": false
+        },
+        "bin/mergePeaks": {
+          "member": "bin/mergePeaks",
+          "bytes": 2921720,
+          "sha256": "974a3993efb5ff29a628c4490cff4a2edd8ea0836712b9127d4ef876ccd435dc",
+          "relocate": false
+        },
+        "bin/homer2": {
+          "member": "bin/homer2",
+          "bytes": 1070552,
+          "sha256": "68b79787a0ffb853dfe8c6cf47fe71152c6ecc42e59652e79e9942880f4c4023",
+          "relocate": false
+        },
+        "bin/cleanUpSequences.pl": {
+          "member": "bin/cleanUpSequences.pl",
+          "bytes": 1396,
+          "sha256": "f9418b58a8fd85cfdc13037c952d9d795115812d1cd0252840f08f81481327e5",
+          "relocate": false
+        },
+        "bin/removePoorSeq.pl": {
+          "member": "bin/removePoorSeq.pl",
+          "bytes": 2009,
+          "sha256": "59013c7dfd4b4a64458c10aa9ce5fcb6248c47261b8d74b84ab896f5187941c4",
+          "relocate": false
+        },
+        "bin/freq2group.pl": {
+          "member": "bin/freq2group.pl",
+          "bytes": 1032,
+          "sha256": "99377c88e0a269c046d690929f7b09fe993a0e580d9842a29e1b4fcbee28a538",
+          "relocate": false
+        },
+        "bin/assignGeneWeights.pl": {
+          "member": "bin/assignGeneWeights.pl",
+          "bytes": 2553,
+          "sha256": "39590e3cdc5c32202ea11da881a3b26210c1e403bf44f346873ca368239e6388",
+          "relocate": false
+        },
+        "bin/makeBinaryFile.pl": {
+          "member": "bin/makeBinaryFile.pl",
+          "bytes": 622,
+          "sha256": "e264ffc8f3e8bb0134bc18d3a3f38036db0d88f298429c20bae49267e0e99f30",
+          "relocate": false
+        },
+        "bin/getPos.pl": {
+          "member": "bin/getPos.pl",
+          "bytes": 419,
+          "sha256": "c58e296f84b8e39f8bd99574caef82777e7eb3e557c72272517f7562a7312d16",
+          "relocate": false
+        },
+        "bin/filterListBy.pl": {
+          "member": "bin/filterListBy.pl",
+          "bytes": 1301,
+          "sha256": "222a7c9aa12918e1ae8407d78a3607ad6b7d32595ede63379be1eeb97b60e715",
+          "relocate": false
+        },
+        "bin/tab2fasta.pl": {
+          "member": "bin/tab2fasta.pl",
+          "bytes": 383,
+          "sha256": "6d741d02f49fbc633fbe898a64ceb4d9147610e88a76da724574a6755d7c6270",
+          "relocate": false
+        },
+        "bin/addData.pl": {
+          "member": "bin/addData.pl",
+          "bytes": 892,
+          "sha256": "7baec9a0cc73d94d987e15541cb193ef1fa9fab2a2b725cff83a66595649a1a1",
+          "relocate": false
+        },
+        "bin/randRemoveBackground.pl": {
+          "member": "bin/randRemoveBackground.pl",
+          "bytes": 2271,
+          "sha256": "3b0b962888e1c7c1a7873dbcd27c71bf9710456bef42bb915fedb8dec8a7379b",
+          "relocate": false
+        },
+        "bin/preparseGenome.pl": {
+          "member": "bin/preparseGenome.pl",
+          "bytes": 10110,
+          "sha256": "8c789bcb89e76f0cd9ed8f25855afd32c420a4389628708aa46f64468efebf22",
+          "relocate": true,
+          "original_prefix_base64": "IyEvdXNyL2Jpbi9lbnYgcGVybAp1c2Ugd2FybmluZ3M7CnVzZSBsaWIgIi9ncGZzL2RhdGEwMS9jYmVubmVyL3NvZnR3YXJlL2hvbWVyLy4vL2JpbiI7Cm15ICRob21lRGlyID0gIi9ncGZzL2RhdGEwMS9jYmVubmVyL3NvZnR3YXJlL2hvbWVyLy4vIjsK"
+        },
+        "bin/findKnownMotifs.pl": {
+          "member": "bin/findKnownMotifs.pl",
+          "bytes": 14966,
+          "sha256": "9e8306d45d38301c1c3dd9c9512f2a9ed0351ace61b56f365c11504586d55f27",
+          "relocate": true,
+          "original_prefix_base64": "IyEvdXNyL2Jpbi9lbnYgcGVybAp1c2Ugd2FybmluZ3M7CnVzZSBsaWIgIi9ncGZzL2RhdGEwMS9jYmVubmVyL3NvZnR3YXJlL2hvbWVyLy4vL2JpbiI7Cm15ICRob21lRGlyID0gIi9ncGZzL2RhdGEwMS9jYmVubmVyL3NvZnR3YXJlL2hvbWVyLy4vIjsK"
+        },
+        "bin/compareMotifs.pl": {
+          "member": "bin/compareMotifs.pl",
+          "bytes": 43879,
+          "sha256": "7baed0d45b93835f802ee0eb360bbac2eddb90666fe8c47129cac02d28542f2b",
+          "relocate": true,
+          "original_prefix_base64": "IyEvdXNyL2Jpbi9lbnYgcGVybAp1c2Ugd2FybmluZ3M7CnVzZSBsaWIgIi9ncGZzL2RhdGEwMS9jYmVubmVyL3NvZnR3YXJlL2hvbWVyLy4vL2JpbiI7Cm15ICRob21lRGlyID0gIi9ncGZzL2RhdGEwMS9jYmVubmVyL3NvZnR3YXJlL2hvbWVyLy4vIjsK"
+        },
+        "bin/profile2seq.pl": {
+          "member": "bin/profile2seq.pl",
+          "bytes": 1296,
+          "sha256": "0a7167dc4bb4b9517b58a4973f127cf81f1e202f2e520dd34e8b4366122fd115",
+          "relocate": false
+        },
+        "data/knownTFs/all/all.motifs": {
+          "member": "data/knownTFs/all/all.motifs",
+          "bytes": 1176730,
+          "sha256": "58d71cc8a93096f4425d20552bfe8fba7447a24f58df7c3b0ed28e39dd4fb6de",
+          "relocate": false
+        },
+        "data/knownTFs/all/known.motifs": {
+          "member": "data/knownTFs/all/known.motifs",
+          "bytes": 444964,
+          "sha256": "301ddd59553fb5ea922f6d2f1dd76a6c543e0a96583783d98327aef8b8f93bbe",
+          "relocate": false
+        },
+        "COPYING": {
+          "member": "COPYING",
+          "bytes": 35147,
+          "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+          "relocate": false
+        }
+      },
+      "build_sources": {
+        "cpp/Clustering.cpp": {
+          "member": "cpp/Clustering.cpp",
+          "bytes": 32996,
+          "sha256": "32d97fc4bf4853ccb0b52129a205036888f1add7f333fc598f4d9b385bbcce4c"
+        },
+        "cpp/SeqTag.h": {
+          "member": "cpp/SeqTag.h",
+          "bytes": 46599,
+          "sha256": "acd4cd19c3d9c73d99fb41b19451b7d5c0fdd609212d40dc32045edb0b2ef626"
+        },
+        "cpp/Motif2.h": {
+          "member": "cpp/Motif2.h",
+          "bytes": 20547,
+          "sha256": "4a6e41f7162308ec45c65bfa7b667e99ab22481b89b392c672cd2068e77dbc67"
+        },
+        "cpp/rwrappers.h": {
+          "member": "cpp/rwrappers.h",
+          "bytes": 975,
+          "sha256": "7b463c40d01622ed5893f688b4361e46740b381f36d1fda546fe39dc0208b45a"
+        },
+        "cpp/Hashtable.h": {
+          "member": "cpp/Hashtable.h",
+          "bytes": 3909,
+          "sha256": "7b1e4e7b1ea51e2110abdd7d656d0ce4922814ca88f655e8430c8235251ce0e5"
+        },
+        "cpp/Hashtable.cpp": {
+          "member": "cpp/Hashtable.cpp",
+          "bytes": 20009,
+          "sha256": "aff59bda615632c659d7af86905058675b892bad4c98bdf850e4cd7a725447bd"
+        },
+        "cpp/SeqTag.cpp": {
+          "member": "cpp/SeqTag.cpp",
+          "bytes": 573891,
+          "sha256": "8cf723e88f69fc6361638941c6aff3a14f7d297642c0f3ef815b3dce55cbc44c",
+          "original_home_line_base64": "Y29uc3QgY2hhciogSG9tZXJDb25maWc6OmhvbWVEaXJlY3RvcnkgPSAiL2dwZnMvZGF0YTAxL2NiZW5uZXIvc29mdHdhcmUvaG9tZXIvLi8iOwo="
+        },
+        "cpp/Makefile": {
+          "member": "cpp/Makefile",
+          "bytes": 5209,
+          "sha256": "0ba16174231b413e6086b8855c3640894adb4790727ff84b9a07ee5de1d4df87"
+        },
+        "cpp/genomeOntology.cpp": {
+          "member": "cpp/genomeOntology.cpp",
+          "bytes": 11344,
+          "sha256": "9d64be32978fc9625d0a398d4fa5c476af85935fa8fd159eb7268416b037ae21"
+        },
+        "cpp/mergesort.cpp": {
+          "member": "cpp/mergesort.cpp",
+          "bytes": 1198,
+          "sha256": "700f15cdec11b34c979308ee1fff096a1fe64a10535a6305fafac366c5d66de4"
+        },
+        "cpp/makeUCSCfile.cpp": {
+          "member": "cpp/makeUCSCfile.cpp",
+          "bytes": 15504,
+          "sha256": "c5d27fd47beb91fab94ae74a52ea928422dca86d359c455e14bc3c3420ad517c"
+        },
+        "cpp/Motif.h": {
+          "member": "cpp/Motif.h",
+          "bytes": 8320,
+          "sha256": "2cca7c36ff488bf707f2ac7e0d61a3691ce43a034c8498c8f8dacc5a6c5006af"
+        },
+        "cpp/getDifferentialPeaks.cpp": {
+          "member": "cpp/getDifferentialPeaks.cpp",
+          "bytes": 7767,
+          "sha256": "0a87725d9a997afa8efdccf684af82283a6516972bfda79377f840679ac9ecde"
+        },
+        "cpp/makeTagDirectory.cpp": {
+          "member": "cpp/makeTagDirectory.cpp",
+          "bytes": 29654,
+          "sha256": "f1566acd0ebe573f90e47e0c20dc3b5676e151c1010fad4d1f2d0f6ef423c764"
+        },
+        "cpp/findPeaks.cpp": {
+          "member": "cpp/findPeaks.cpp",
+          "bytes": 24383,
+          "sha256": "19a3ea8cb2170a3306735790b6cae0d88ef31d5f108751626b1062b203dd5120"
+        },
+        "cpp/CommandLine.cpp": {
+          "member": "cpp/CommandLine.cpp",
+          "bytes": 18212,
+          "sha256": "17b96aefee8634c96be536a9b37f6673c7520bb71f16ae94a73a1be06a516296"
+        },
+        "cpp/Motif.cpp": {
+          "member": "cpp/Motif.cpp",
+          "bytes": 98800,
+          "sha256": "67f45a6d6b08630945d0f02a597d35ade484c15318e7f8b8284ed03dfb298ff1"
+        },
+        "cpp/findTADsAndLoopsFromRelMatrix.cpp": {
+          "member": "cpp/findTADsAndLoopsFromRelMatrix.cpp",
+          "bytes": 45761,
+          "sha256": "b2e14b6db9afdd3b8269bc137aabba0cfe0a2ba2aac743a8277ec95519a248a7"
+        },
+        "cpp/statistics.h": {
+          "member": "cpp/statistics.h",
+          "bytes": 2255,
+          "sha256": "f1100de1d4e28e9605d74909beec3272a06494846cfa2c690886a437667cdd8c"
+        },
+        "cpp/Clustering.h": {
+          "member": "cpp/Clustering.h",
+          "bytes": 2717,
+          "sha256": "eb8320145628a411ecfd6b5f48b0e527feea19447a8f4b1b064207e9df0297ed"
+        },
+        "cpp/Motif2.cpp": {
+          "member": "cpp/Motif2.cpp",
+          "bytes": 225872,
+          "sha256": "65d2486e3c01b2948ed2263b38f5186fba62e71fa2b9aaf8b3ae4f2101f37d45"
+        },
+        "cpp/getGenomeCorrelation.cpp": {
+          "member": "cpp/getGenomeCorrelation.cpp",
+          "bytes": 2311,
+          "sha256": "3946aff03cf86b7390f90ca5dc7e86859ea637072b55a7afd90e99bf988b2535"
+        },
+        "cpp/statistics.cpp": {
+          "member": "cpp/statistics.cpp",
+          "bytes": 17702,
+          "sha256": "cdb8765a2ebe472fa34aa94b0a15d3b259162772cffb3b6afd7cdf73724c9c7f"
+        },
+        "cpp/mergesort.h": {
+          "member": "cpp/mergesort.h",
+          "bytes": 171,
+          "sha256": "b0a12e31d91d8b13c907acedee12bed1633d212d032db6b58467618e792d8b03"
+        },
+        "cpp/homer.cpp": {
+          "member": "cpp/homer.cpp",
+          "bytes": 4667,
+          "sha256": "e807dc076a83b370c7cf867c15bffd420202e735d0b6d977dc04c7514747ce9c"
+        },
+        "cpp/homer2.cpp": {
+          "member": "cpp/homer2.cpp",
+          "bytes": 1249,
+          "sha256": "ed2c18b5eac9d91dad8d936dd104b7cac379f166659d05649b93637b78d6f15a"
+        },
+        "cpp/getMappableRegions.cpp": {
+          "member": "cpp/getMappableRegions.cpp",
+          "bytes": 10400,
+          "sha256": "cac90154f9c8a9ef35c13b32d004555fc30e61e1bbefaaa61a7ad86abbd89546"
+        },
+        "cpp/homerTools.cpp": {
+          "member": "cpp/homerTools.cpp",
+          "bytes": 66226,
+          "sha256": "14fadfecd9112158ad7c642da7306f64c9782ce7451965dcc04db3ad34a665b4"
+        },
+        "cpp/parseMAFalignments.cpp": {
+          "member": "cpp/parseMAFalignments.cpp",
+          "bytes": 5285,
+          "sha256": "12bad2e66337abcaa853152214c13fcba2f4fb7a5784b3ba37346c667fe0c21f"
+        },
+        "cpp/getPeakTags.cpp": {
+          "member": "cpp/getPeakTags.cpp",
+          "bytes": 11813,
+          "sha256": "e8309081923b60b16e3799b7f6e782bbd7b0a4b4d8ee422f9a3e6a9d557db4ac"
+        },
+        "cpp/Sequence.h": {
+          "member": "cpp/Sequence.h",
+          "bytes": 2012,
+          "sha256": "082470573e0b3898148aeb0df8cdc98cb4bfe1caf11c8b4c02832e57361803bc"
+        },
+        "cpp/assignGenomeAnnotation.cpp": {
+          "member": "cpp/assignGenomeAnnotation.cpp",
+          "bytes": 4770,
+          "sha256": "2150fcc7bf6a5bd293bfdc19ce3376d4de685d0de6d5dea7dd2bfb90c8b05198"
+        },
+        "cpp/analyzeHiC.cpp": {
+          "member": "cpp/analyzeHiC.cpp",
+          "bytes": 72023,
+          "sha256": "c375e6a81ea80b156ca6468550bf2d7109ea3c3f950a667ee4122c5c9eee6635"
+        },
+        "cpp/homerTools.h": {
+          "member": "cpp/homerTools.h",
+          "bytes": 579,
+          "sha256": "b1387822653c1922bb979ce652057191fc6099402c8b66265955db0d3172cd4d"
+        },
+        "cpp/CommandLine.h": {
+          "member": "cpp/CommandLine.h",
+          "bytes": 2707,
+          "sha256": "52430222c61553f11be1caeb892e8bd091544e64531ed09f64f0b339387ea5e8"
+        },
+        "cpp/rwrappers.cpp": {
+          "member": "cpp/rwrappers.cpp",
+          "bytes": 2896,
+          "sha256": "0532712bc54b132e90e538e3d496f02432a5202198c8aecde7f58348a6f064b8"
+        },
+        "cpp/mergePeaks.cpp": {
+          "member": "cpp/mergePeaks.cpp",
+          "bytes": 8194,
+          "sha256": "8ace2d13deeb826eb0644547875f902774bf5d81e8c422da6df46fbe29f26a43"
+        }
+      }
+    },
+    "linux-x86_64-genome-4.11": {
+      "version": "4.11",
+      "archive": "homer.v4.11.zip",
+      "members": {
+        "bin/findMotifsGenome.pl": {
+          "member": "bin/findMotifsGenome.pl",
+          "bytes": 45307,
+          "sha256": "4acdbcc17e5ca15fb87199ffe2837763df39dc223d2b64f461574bcd952e84dd",
+          "relocate": true,
+          "original_prefix_base64": "IyEvdXNyL2Jpbi9lbnYgcGVybAp1c2Ugd2FybmluZ3M7CnVzZSBsaWIgIi9ncGZzL2RhdGEwMS9jYmVubmVyL3NvZnR3YXJlL2hvbWVyLy4vL2JpbiI7Cm15ICRob21lRGlyID0gIi9ncGZzL2RhdGEwMS9jYmVubmVyL3NvZnR3YXJlL2hvbWVyLy4vIjsK"
+        },
+        "bin/HomerConfig.pm": {
+          "member": "bin/HomerConfig.pm",
+          "bytes": 12212,
+          "sha256": "3c3486145e33b1db645f2506e57c23a9cc158c91b796338d18e1ca09291a1c98",
+          "relocate": true,
+          "original_prefix_base64": "IyEvdXNyL2Jpbi9lbnYgcGVybAp1c2Ugd2FybmluZ3M7CnVzZSBsaWIgIi9ncGZzL2RhdGEwMS9jYmVubmVyL3NvZnR3YXJlL2hvbWVyLy4vL2JpbiI7Cm15ICRob21lRGlyID0gIi9ncGZzL2RhdGEwMS9jYmVubmVyL3NvZnR3YXJlL2hvbWVyLy4vIjsK"
+        },
+        "bin/Statistics.pm": {
+          "member": "bin/Statistics.pm",
+          "bytes": 23275,
+          "sha256": "d88e337991cbf7407d3f1d32dae5945af49dbe4127a1070c11eba66e23542925",
+          "relocate": false
+        },
+        "bin/HomerSVGLogo.pm": {
+          "member": "bin/HomerSVGLogo.pm",
+          "bytes": 3688,
+          "sha256": "5bc6d032b6eb6e9b623ae66ffaecebdb382f75cf1c31b70e8783bf3067b8e76f",
+          "relocate": false
+        },
+        "bin/bed2pos.pl": {
+          "member": "bin/bed2pos.pl",
+          "bytes": 3490,
+          "sha256": "70aa355d35bff3117300b457fb2158fd6feb7297a44d456dbd2a2113035fe6db",
+          "relocate": false
+        },
+        "bin/checkPeakFile.pl": {
+          "member": "bin/checkPeakFile.pl",
+          "bytes": 1773,
+          "sha256": "f76f5e92c07127a7c4401c8cf7eff1623b7f8bbb1df03fc3b0d38d7ea843e6bd",
+          "relocate": false
+        },
+        "bin/cleanUpPeakFile.pl": {
+          "member": "bin/cleanUpPeakFile.pl",
+          "bytes": 807,
+          "sha256": "2130691f05fc6208b876a6460f6d613dc672c8f2d88071cd4e8f04ae58d56860",
+          "relocate": false
+        },
+        "bin/resizePosFile.pl": {
+          "member": "bin/resizePosFile.pl",
+          "bytes": 2009,
+          "sha256": "d576975b8c2ed19bb3a4521a43b7f81767cfd55dd41a14edd07cdd30b38ef8eb",
+          "relocate": false
+        },
+        "bin/chopUpPeakFile.pl": {
+          "member": "bin/chopUpPeakFile.pl",
+          "bytes": 1036,
+          "sha256": "004b173e8f2113a19bc335b35f1576ead2cb2e6266786a63516cde5fdb21feb8",
+          "relocate": false
+        },
+        "bin/mergePeaks": {
+          "member": "bin/mergePeaks",
+          "bytes": 2688120,
+          "sha256": "251a193285a8f22465a3d77ec8490cc5a09065b9780a6bbd08840777649627e6",
+          "relocate": false
+        },
+        "bin/homer2": {
+          "member": "bin/homer2",
+          "bytes": 843888,
+          "sha256": "e7d08deaefd4828b47ed36c8e49083126de576102f9e02183ccd004b90c5306b",
+          "relocate": false
+        },
+        "bin/cleanUpSequences.pl": {
+          "member": "bin/cleanUpSequences.pl",
+          "bytes": 1396,
+          "sha256": "f9418b58a8fd85cfdc13037c952d9d795115812d1cd0252840f08f81481327e5",
+          "relocate": false
+        },
+        "bin/removePoorSeq.pl": {
+          "member": "bin/removePoorSeq.pl",
+          "bytes": 2009,
+          "sha256": "59013c7dfd4b4a64458c10aa9ce5fcb6248c47261b8d74b84ab896f5187941c4",
+          "relocate": false
+        },
+        "bin/freq2group.pl": {
+          "member": "bin/freq2group.pl",
+          "bytes": 1032,
+          "sha256": "99377c88e0a269c046d690929f7b09fe993a0e580d9842a29e1b4fcbee28a538",
+          "relocate": false
+        },
+        "bin/assignGeneWeights.pl": {
+          "member": "bin/assignGeneWeights.pl",
+          "bytes": 2553,
+          "sha256": "39590e3cdc5c32202ea11da881a3b26210c1e403bf44f346873ca368239e6388",
+          "relocate": false
+        },
+        "bin/makeBinaryFile.pl": {
+          "member": "bin/makeBinaryFile.pl",
+          "bytes": 622,
+          "sha256": "e264ffc8f3e8bb0134bc18d3a3f38036db0d88f298429c20bae49267e0e99f30",
+          "relocate": false
+        },
+        "bin/getPos.pl": {
+          "member": "bin/getPos.pl",
+          "bytes": 419,
+          "sha256": "c58e296f84b8e39f8bd99574caef82777e7eb3e557c72272517f7562a7312d16",
+          "relocate": false
+        },
+        "bin/filterListBy.pl": {
+          "member": "bin/filterListBy.pl",
+          "bytes": 834,
+          "sha256": "079a328e741d019cb3ccc67997df2e8b5b121703aeb3f7ce1452ab56486464f8",
+          "relocate": false
+        },
+        "bin/tab2fasta.pl": {
+          "member": "bin/tab2fasta.pl",
+          "bytes": 383,
+          "sha256": "6d741d02f49fbc633fbe898a64ceb4d9147610e88a76da724574a6755d7c6270",
+          "relocate": false
+        },
+        "bin/addData.pl": {
+          "member": "bin/addData.pl",
+          "bytes": 892,
+          "sha256": "7baec9a0cc73d94d987e15541cb193ef1fa9fab2a2b725cff83a66595649a1a1",
+          "relocate": false
+        },
+        "bin/randRemoveBackground.pl": {
+          "member": "bin/randRemoveBackground.pl",
+          "bytes": 2271,
+          "sha256": "3b0b962888e1c7c1a7873dbcd27c71bf9710456bef42bb915fedb8dec8a7379b",
+          "relocate": false
+        },
+        "bin/preparseGenome.pl": {
+          "member": "bin/preparseGenome.pl",
+          "bytes": 10110,
+          "sha256": "8c789bcb89e76f0cd9ed8f25855afd32c420a4389628708aa46f64468efebf22",
+          "relocate": true,
+          "original_prefix_base64": "IyEvdXNyL2Jpbi9lbnYgcGVybAp1c2Ugd2FybmluZ3M7CnVzZSBsaWIgIi9ncGZzL2RhdGEwMS9jYmVubmVyL3NvZnR3YXJlL2hvbWVyLy4vL2JpbiI7Cm15ICRob21lRGlyID0gIi9ncGZzL2RhdGEwMS9jYmVubmVyL3NvZnR3YXJlL2hvbWVyLy4vIjsK"
+        },
+        "bin/findKnownMotifs.pl": {
+          "member": "bin/findKnownMotifs.pl",
+          "bytes": 14864,
+          "sha256": "3db6fb8fd0ca632b73d25ce00a6e8dabd0611c692b340b209d934d93cdf44c78",
+          "relocate": true,
+          "original_prefix_base64": "IyEvdXNyL2Jpbi9lbnYgcGVybAp1c2Ugd2FybmluZ3M7CnVzZSBsaWIgIi9ncGZzL2RhdGEwMS9jYmVubmVyL3NvZnR3YXJlL2hvbWVyLy4vL2JpbiI7Cm15ICRob21lRGlyID0gIi9ncGZzL2RhdGEwMS9jYmVubmVyL3NvZnR3YXJlL2hvbWVyLy4vIjsK"
+        },
+        "bin/compareMotifs.pl": {
+          "member": "bin/compareMotifs.pl",
+          "bytes": 43471,
+          "sha256": "c480ac48b5a235c2681a026cb5628df32fd14740155f195f1b64043ec9943a84",
+          "relocate": true,
+          "original_prefix_base64": "IyEvdXNyL2Jpbi9lbnYgcGVybAp1c2Ugd2FybmluZ3M7CnVzZSBsaWIgIi9ncGZzL2RhdGEwMS9jYmVubmVyL3NvZnR3YXJlL2hvbWVyLy4vL2JpbiI7Cm15ICRob21lRGlyID0gIi9ncGZzL2RhdGEwMS9jYmVubmVyL3NvZnR3YXJlL2hvbWVyLy4vIjsK"
+        },
+        "bin/profile2seq.pl": {
+          "member": "bin/profile2seq.pl",
+          "bytes": 1296,
+          "sha256": "0a7167dc4bb4b9517b58a4973f127cf81f1e202f2e520dd34e8b4366122fd115",
+          "relocate": false
+        },
+        "data/knownTFs/all/all.motifs": {
+          "member": "data/knownTFs/all/all.motifs",
+          "bytes": 1113548,
+          "sha256": "bc80c08e454322774513cefdebafd64ac2f8173c23aeb0e53c9b8909b5bdac81",
+          "relocate": false
+        },
+        "data/knownTFs/all/known.motifs": {
+          "member": "data/knownTFs/all/known.motifs",
+          "bytes": 426162,
+          "sha256": "9bed737b7e41d5c0b0c948797f788589504297523739b2de2455ddb65a69fa86",
+          "relocate": false
+        },
+        "COPYING": {
+          "member": "COPYING",
+          "bytes": 35147,
+          "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+          "relocate": false
+        }
+      },
+      "build_sources": {
+        "cpp/Clustering.cpp": {
+          "member": "cpp/Clustering.cpp",
+          "bytes": 32996,
+          "sha256": "32d97fc4bf4853ccb0b52129a205036888f1add7f333fc598f4d9b385bbcce4c"
+        },
+        "cpp/SeqTag.h": {
+          "member": "cpp/SeqTag.h",
+          "bytes": 46485,
+          "sha256": "6e5df3aae527f9e0365edeaae2df868c6008d24944f01c48a756a13cdb9de0df"
+        },
+        "cpp/Motif2.h": {
+          "member": "cpp/Motif2.h",
+          "bytes": 15016,
+          "sha256": "b132c9cd20c11bcf5011ceffe7b87e8a7cb27ea88f4ce92067fb195b3c1186fb"
+        },
+        "cpp/rwrappers.h": {
+          "member": "cpp/rwrappers.h",
+          "bytes": 975,
+          "sha256": "7b463c40d01622ed5893f688b4361e46740b381f36d1fda546fe39dc0208b45a"
+        },
+        "cpp/Hashtable.h": {
+          "member": "cpp/Hashtable.h",
+          "bytes": 3909,
+          "sha256": "7b1e4e7b1ea51e2110abdd7d656d0ce4922814ca88f655e8430c8235251ce0e5"
+        },
+        "cpp/Hashtable.cpp": {
+          "member": "cpp/Hashtable.cpp",
+          "bytes": 20009,
+          "sha256": "aff59bda615632c659d7af86905058675b892bad4c98bdf850e4cd7a725447bd"
+        },
+        "cpp/SeqTag.cpp": {
+          "member": "cpp/SeqTag.cpp",
+          "bytes": 572987,
+          "sha256": "d34a5c9fbd3924c8e1346a14598ffead1789eda38d9b0aaa2d1f06b103146d79",
+          "original_home_line_base64": "Y29uc3QgY2hhciogSG9tZXJDb25maWc6OmhvbWVEaXJlY3RvcnkgPSAiL2dwZnMvZGF0YTAxL2NiZW5uZXIvc29mdHdhcmUvaG9tZXIvLi8iOwo="
+        },
+        "cpp/Makefile": {
+          "member": "cpp/Makefile",
+          "bytes": 5209,
+          "sha256": "0ba16174231b413e6086b8855c3640894adb4790727ff84b9a07ee5de1d4df87"
+        },
+        "cpp/genomeOntology.cpp": {
+          "member": "cpp/genomeOntology.cpp",
+          "bytes": 11344,
+          "sha256": "9d64be32978fc9625d0a398d4fa5c476af85935fa8fd159eb7268416b037ae21"
+        },
+        "cpp/mergesort.cpp": {
+          "member": "cpp/mergesort.cpp",
+          "bytes": 1198,
+          "sha256": "700f15cdec11b34c979308ee1fff096a1fe64a10535a6305fafac366c5d66de4"
+        },
+        "cpp/makeUCSCfile.cpp": {
+          "member": "cpp/makeUCSCfile.cpp",
+          "bytes": 15049,
+          "sha256": "be38074053c7b0090635e4acdce52846eab622048dfb1ac6b772df08923238da"
+        },
+        "cpp/Motif.h": {
+          "member": "cpp/Motif.h",
+          "bytes": 8320,
+          "sha256": "2cca7c36ff488bf707f2ac7e0d61a3691ce43a034c8498c8f8dacc5a6c5006af"
+        },
+        "cpp/getDifferentialPeaks.cpp": {
+          "member": "cpp/getDifferentialPeaks.cpp",
+          "bytes": 7767,
+          "sha256": "0a87725d9a997afa8efdccf684af82283a6516972bfda79377f840679ac9ecde"
+        },
+        "cpp/makeTagDirectory.cpp": {
+          "member": "cpp/makeTagDirectory.cpp",
+          "bytes": 29651,
+          "sha256": "fa3ab906b3e2577fa6f58e51da2dd1a639b799bddbcc0cb0754284329081f85e"
+        },
+        "cpp/findPeaks.cpp": {
+          "member": "cpp/findPeaks.cpp",
+          "bytes": 23806,
+          "sha256": "3d1d9d417c5ab7ba94bedb53bd3d844d05cc4c52e1848c310197904db54d4db0"
+        },
+        "cpp/CommandLine.cpp": {
+          "member": "cpp/CommandLine.cpp",
+          "bytes": 18212,
+          "sha256": "17b96aefee8634c96be536a9b37f6673c7520bb71f16ae94a73a1be06a516296"
+        },
+        "cpp/Motif.cpp": {
+          "member": "cpp/Motif.cpp",
+          "bytes": 98800,
+          "sha256": "67f45a6d6b08630945d0f02a597d35ade484c15318e7f8b8284ed03dfb298ff1"
+        },
+        "cpp/findTADsAndLoopsFromRelMatrix.cpp": {
+          "member": "cpp/findTADsAndLoopsFromRelMatrix.cpp",
+          "bytes": 45479,
+          "sha256": "5c8123142edc77ca0773898310468abac9b9a963b568c3efac508977f4aa8d72"
+        },
+        "cpp/statistics.h": {
+          "member": "cpp/statistics.h",
+          "bytes": 2255,
+          "sha256": "f1100de1d4e28e9605d74909beec3272a06494846cfa2c690886a437667cdd8c"
+        },
+        "cpp/Clustering.h": {
+          "member": "cpp/Clustering.h",
+          "bytes": 2717,
+          "sha256": "eb8320145628a411ecfd6b5f48b0e527feea19447a8f4b1b064207e9df0297ed"
+        },
+        "cpp/Motif2.cpp": {
+          "member": "cpp/Motif2.cpp",
+          "bytes": 141087,
+          "sha256": "b185e1ddb5ac9cc58afe81dc4d3093332085c3bb411c346e1b0ffa461498e112"
+        },
+        "cpp/getGenomeCorrelation.cpp": {
+          "member": "cpp/getGenomeCorrelation.cpp",
+          "bytes": 2311,
+          "sha256": "3946aff03cf86b7390f90ca5dc7e86859ea637072b55a7afd90e99bf988b2535"
+        },
+        "cpp/statistics.cpp": {
+          "member": "cpp/statistics.cpp",
+          "bytes": 17702,
+          "sha256": "cdb8765a2ebe472fa34aa94b0a15d3b259162772cffb3b6afd7cdf73724c9c7f"
+        },
+        "cpp/mergesort.h": {
+          "member": "cpp/mergesort.h",
+          "bytes": 171,
+          "sha256": "b0a12e31d91d8b13c907acedee12bed1633d212d032db6b58467618e792d8b03"
+        },
+        "cpp/homer.cpp": {
+          "member": "cpp/homer.cpp",
+          "bytes": 4667,
+          "sha256": "e807dc076a83b370c7cf867c15bffd420202e735d0b6d977dc04c7514747ce9c"
+        },
+        "cpp/homer2.cpp": {
+          "member": "cpp/homer2.cpp",
+          "bytes": 1143,
+          "sha256": "fe53f870a14d9c051a19a67103a6f6dd0ba2b36c548784284780383d26069854"
+        },
+        "cpp/getMappableRegions.cpp": {
+          "member": "cpp/getMappableRegions.cpp",
+          "bytes": 10400,
+          "sha256": "cac90154f9c8a9ef35c13b32d004555fc30e61e1bbefaaa61a7ad86abbd89546"
+        },
+        "cpp/homerTools.cpp": {
+          "member": "cpp/homerTools.cpp",
+          "bytes": 65601,
+          "sha256": "a1893cb4c36566807427749179d9045c880ba5bb20b78235be7c8c76a7b15ab7"
+        },
+        "cpp/parseMAFalignments.cpp": {
+          "member": "cpp/parseMAFalignments.cpp",
+          "bytes": 5285,
+          "sha256": "12bad2e66337abcaa853152214c13fcba2f4fb7a5784b3ba37346c667fe0c21f"
+        },
+        "cpp/getPeakTags.cpp": {
+          "member": "cpp/getPeakTags.cpp",
+          "bytes": 11813,
+          "sha256": "e8309081923b60b16e3799b7f6e782bbd7b0a4b4d8ee422f9a3e6a9d557db4ac"
+        },
+        "cpp/Sequence.h": {
+          "member": "cpp/Sequence.h",
+          "bytes": 2012,
+          "sha256": "082470573e0b3898148aeb0df8cdc98cb4bfe1caf11c8b4c02832e57361803bc"
+        },
+        "cpp/assignGenomeAnnotation.cpp": {
+          "member": "cpp/assignGenomeAnnotation.cpp",
+          "bytes": 4770,
+          "sha256": "2150fcc7bf6a5bd293bfdc19ce3376d4de685d0de6d5dea7dd2bfb90c8b05198"
+        },
+        "cpp/analyzeHiC.cpp": {
+          "member": "cpp/analyzeHiC.cpp",
+          "bytes": 72023,
+          "sha256": "c375e6a81ea80b156ca6468550bf2d7109ea3c3f950a667ee4122c5c9eee6635"
+        },
+        "cpp/homerTools.h": {
+          "member": "cpp/homerTools.h",
+          "bytes": 579,
+          "sha256": "b1387822653c1922bb979ce652057191fc6099402c8b66265955db0d3172cd4d"
+        },
+        "cpp/CommandLine.h": {
+          "member": "cpp/CommandLine.h",
+          "bytes": 2707,
+          "sha256": "52430222c61553f11be1caeb892e8bd091544e64531ed09f64f0b339387ea5e8"
+        },
+        "cpp/rwrappers.cpp": {
+          "member": "cpp/rwrappers.cpp",
+          "bytes": 2896,
+          "sha256": "0532712bc54b132e90e538e3d496f02432a5202198c8aecde7f58348a6f064b8"
+        },
+        "cpp/mergePeaks.cpp": {
+          "member": "cpp/mergePeaks.cpp",
+          "bytes": 8194,
+          "sha256": "8ace2d13deeb826eb0644547875f902774bf5d81e8c422da6df46fbe29f26a43"
+        }
+      }
+    },
+    "linux-x86_64-genome-4.11.1": {
+      "version": "4.11.1",
+      "archive": "homer.v4.11.1.zip",
+      "members": {
+        "bin/findMotifsGenome.pl": {
+          "member": "bin/findMotifsGenome.pl",
+          "bytes": 45307,
+          "sha256": "4acdbcc17e5ca15fb87199ffe2837763df39dc223d2b64f461574bcd952e84dd",
+          "relocate": true,
+          "original_prefix_base64": "IyEvdXNyL2Jpbi9lbnYgcGVybAp1c2Ugd2FybmluZ3M7CnVzZSBsaWIgIi9ncGZzL2RhdGEwMS9jYmVubmVyL3NvZnR3YXJlL2hvbWVyLy4vL2JpbiI7Cm15ICRob21lRGlyID0gIi9ncGZzL2RhdGEwMS9jYmVubmVyL3NvZnR3YXJlL2hvbWVyLy4vIjsK"
+        },
+        "bin/HomerConfig.pm": {
+          "member": "bin/HomerConfig.pm",
+          "bytes": 12212,
+          "sha256": "3c3486145e33b1db645f2506e57c23a9cc158c91b796338d18e1ca09291a1c98",
+          "relocate": true,
+          "original_prefix_base64": "IyEvdXNyL2Jpbi9lbnYgcGVybAp1c2Ugd2FybmluZ3M7CnVzZSBsaWIgIi9ncGZzL2RhdGEwMS9jYmVubmVyL3NvZnR3YXJlL2hvbWVyLy4vL2JpbiI7Cm15ICRob21lRGlyID0gIi9ncGZzL2RhdGEwMS9jYmVubmVyL3NvZnR3YXJlL2hvbWVyLy4vIjsK"
+        },
+        "bin/Statistics.pm": {
+          "member": "bin/Statistics.pm",
+          "bytes": 23275,
+          "sha256": "d88e337991cbf7407d3f1d32dae5945af49dbe4127a1070c11eba66e23542925",
+          "relocate": false
+        },
+        "bin/HomerSVGLogo.pm": {
+          "member": "bin/HomerSVGLogo.pm",
+          "bytes": 3688,
+          "sha256": "5bc6d032b6eb6e9b623ae66ffaecebdb382f75cf1c31b70e8783bf3067b8e76f",
+          "relocate": false
+        },
+        "bin/bed2pos.pl": {
+          "member": "bin/bed2pos.pl",
+          "bytes": 3490,
+          "sha256": "70aa355d35bff3117300b457fb2158fd6feb7297a44d456dbd2a2113035fe6db",
+          "relocate": false
+        },
+        "bin/checkPeakFile.pl": {
+          "member": "bin/checkPeakFile.pl",
+          "bytes": 1773,
+          "sha256": "f76f5e92c07127a7c4401c8cf7eff1623b7f8bbb1df03fc3b0d38d7ea843e6bd",
+          "relocate": false
+        },
+        "bin/cleanUpPeakFile.pl": {
+          "member": "bin/cleanUpPeakFile.pl",
+          "bytes": 807,
+          "sha256": "2130691f05fc6208b876a6460f6d613dc672c8f2d88071cd4e8f04ae58d56860",
+          "relocate": false
+        },
+        "bin/resizePosFile.pl": {
+          "member": "bin/resizePosFile.pl",
+          "bytes": 2009,
+          "sha256": "d576975b8c2ed19bb3a4521a43b7f81767cfd55dd41a14edd07cdd30b38ef8eb",
+          "relocate": false
+        },
+        "bin/chopUpPeakFile.pl": {
+          "member": "bin/chopUpPeakFile.pl",
+          "bytes": 1036,
+          "sha256": "004b173e8f2113a19bc335b35f1576ead2cb2e6266786a63516cde5fdb21feb8",
+          "relocate": false
+        },
+        "bin/mergePeaks": {
+          "member": "bin/mergePeaks",
+          "bytes": 2688720,
+          "sha256": "d2bb21d5b8695358b053638bc0b35e0d17b4374395bc3824a8f4b762edb9d0e5",
+          "relocate": false
+        },
+        "bin/homer2": {
+          "member": "bin/homer2",
+          "bytes": 844464,
+          "sha256": "c8cd6e5c5d8675af8753ac2602d8d1dfb3a769296998e14408090566cb818c70",
+          "relocate": false
+        },
+        "bin/cleanUpSequences.pl": {
+          "member": "bin/cleanUpSequences.pl",
+          "bytes": 1396,
+          "sha256": "f9418b58a8fd85cfdc13037c952d9d795115812d1cd0252840f08f81481327e5",
+          "relocate": false
+        },
+        "bin/removePoorSeq.pl": {
+          "member": "bin/removePoorSeq.pl",
+          "bytes": 2009,
+          "sha256": "59013c7dfd4b4a64458c10aa9ce5fcb6248c47261b8d74b84ab896f5187941c4",
+          "relocate": false
+        },
+        "bin/freq2group.pl": {
+          "member": "bin/freq2group.pl",
+          "bytes": 1032,
+          "sha256": "99377c88e0a269c046d690929f7b09fe993a0e580d9842a29e1b4fcbee28a538",
+          "relocate": false
+        },
+        "bin/assignGeneWeights.pl": {
+          "member": "bin/assignGeneWeights.pl",
+          "bytes": 2553,
+          "sha256": "39590e3cdc5c32202ea11da881a3b26210c1e403bf44f346873ca368239e6388",
+          "relocate": false
+        },
+        "bin/makeBinaryFile.pl": {
+          "member": "bin/makeBinaryFile.pl",
+          "bytes": 622,
+          "sha256": "e264ffc8f3e8bb0134bc18d3a3f38036db0d88f298429c20bae49267e0e99f30",
+          "relocate": false
+        },
+        "bin/getPos.pl": {
+          "member": "bin/getPos.pl",
+          "bytes": 419,
+          "sha256": "c58e296f84b8e39f8bd99574caef82777e7eb3e557c72272517f7562a7312d16",
+          "relocate": false
+        },
+        "bin/filterListBy.pl": {
+          "member": "bin/filterListBy.pl",
+          "bytes": 834,
+          "sha256": "079a328e741d019cb3ccc67997df2e8b5b121703aeb3f7ce1452ab56486464f8",
+          "relocate": false
+        },
+        "bin/tab2fasta.pl": {
+          "member": "bin/tab2fasta.pl",
+          "bytes": 383,
+          "sha256": "6d741d02f49fbc633fbe898a64ceb4d9147610e88a76da724574a6755d7c6270",
+          "relocate": false
+        },
+        "bin/addData.pl": {
+          "member": "bin/addData.pl",
+          "bytes": 892,
+          "sha256": "7baec9a0cc73d94d987e15541cb193ef1fa9fab2a2b725cff83a66595649a1a1",
+          "relocate": false
+        },
+        "bin/randRemoveBackground.pl": {
+          "member": "bin/randRemoveBackground.pl",
+          "bytes": 2271,
+          "sha256": "3b0b962888e1c7c1a7873dbcd27c71bf9710456bef42bb915fedb8dec8a7379b",
+          "relocate": false
+        },
+        "bin/preparseGenome.pl": {
+          "member": "bin/preparseGenome.pl",
+          "bytes": 10110,
+          "sha256": "8c789bcb89e76f0cd9ed8f25855afd32c420a4389628708aa46f64468efebf22",
+          "relocate": true,
+          "original_prefix_base64": "IyEvdXNyL2Jpbi9lbnYgcGVybAp1c2Ugd2FybmluZ3M7CnVzZSBsaWIgIi9ncGZzL2RhdGEwMS9jYmVubmVyL3NvZnR3YXJlL2hvbWVyLy4vL2JpbiI7Cm15ICRob21lRGlyID0gIi9ncGZzL2RhdGEwMS9jYmVubmVyL3NvZnR3YXJlL2hvbWVyLy4vIjsK"
+        },
+        "bin/findKnownMotifs.pl": {
+          "member": "bin/findKnownMotifs.pl",
+          "bytes": 14864,
+          "sha256": "3db6fb8fd0ca632b73d25ce00a6e8dabd0611c692b340b209d934d93cdf44c78",
+          "relocate": true,
+          "original_prefix_base64": "IyEvdXNyL2Jpbi9lbnYgcGVybAp1c2Ugd2FybmluZ3M7CnVzZSBsaWIgIi9ncGZzL2RhdGEwMS9jYmVubmVyL3NvZnR3YXJlL2hvbWVyLy4vL2JpbiI7Cm15ICRob21lRGlyID0gIi9ncGZzL2RhdGEwMS9jYmVubmVyL3NvZnR3YXJlL2hvbWVyLy4vIjsK"
+        },
+        "bin/compareMotifs.pl": {
+          "member": "bin/compareMotifs.pl",
+          "bytes": 43700,
+          "sha256": "da106514f47d594696fdfc9153e645d97cb0c8fa18bd0549d6880c50230425c9",
+          "relocate": true,
+          "original_prefix_base64": "IyEvdXNyL2Jpbi9lbnYgcGVybAp1c2Ugd2FybmluZ3M7CnVzZSBsaWIgIi9ncGZzL2RhdGEwMS9jYmVubmVyL3NvZnR3YXJlL2hvbWVyLy4vL2JpbiI7Cm15ICRob21lRGlyID0gIi9ncGZzL2RhdGEwMS9jYmVubmVyL3NvZnR3YXJlL2hvbWVyLy4vIjsK"
+        },
+        "bin/profile2seq.pl": {
+          "member": "bin/profile2seq.pl",
+          "bytes": 1296,
+          "sha256": "0a7167dc4bb4b9517b58a4973f127cf81f1e202f2e520dd34e8b4366122fd115",
+          "relocate": false
+        },
+        "data/knownTFs/all/all.motifs": {
+          "member": "data/knownTFs/all/all.motifs",
+          "bytes": 1114450,
+          "sha256": "d1918bfedb0ea57fd8c1c47d4e19bf91bf68a616e34899d590d507134d23cde0",
+          "relocate": false
+        },
+        "data/knownTFs/all/known.motifs": {
+          "member": "data/knownTFs/all/known.motifs",
+          "bytes": 427064,
+          "sha256": "ab3b691f5f8f193354ac2f4bf9a22858b584877bcbaee4d66a15da337ceb605f",
+          "relocate": false
+        },
+        "COPYING": {
+          "member": "COPYING",
+          "bytes": 35147,
+          "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+          "relocate": false
+        }
+      },
+      "build_sources": {
+        "cpp/Clustering.cpp": {
+          "member": "cpp/Clustering.cpp",
+          "bytes": 32996,
+          "sha256": "32d97fc4bf4853ccb0b52129a205036888f1add7f333fc598f4d9b385bbcce4c"
+        },
+        "cpp/SeqTag.h": {
+          "member": "cpp/SeqTag.h",
+          "bytes": 46485,
+          "sha256": "6e5df3aae527f9e0365edeaae2df868c6008d24944f01c48a756a13cdb9de0df"
+        },
+        "cpp/Motif2.h": {
+          "member": "cpp/Motif2.h",
+          "bytes": 15016,
+          "sha256": "b132c9cd20c11bcf5011ceffe7b87e8a7cb27ea88f4ce92067fb195b3c1186fb"
+        },
+        "cpp/rwrappers.h": {
+          "member": "cpp/rwrappers.h",
+          "bytes": 975,
+          "sha256": "7b463c40d01622ed5893f688b4361e46740b381f36d1fda546fe39dc0208b45a"
+        },
+        "cpp/Hashtable.h": {
+          "member": "cpp/Hashtable.h",
+          "bytes": 3909,
+          "sha256": "7b1e4e7b1ea51e2110abdd7d656d0ce4922814ca88f655e8430c8235251ce0e5"
+        },
+        "cpp/Hashtable.cpp": {
+          "member": "cpp/Hashtable.cpp",
+          "bytes": 20009,
+          "sha256": "aff59bda615632c659d7af86905058675b892bad4c98bdf850e4cd7a725447bd"
+        },
+        "cpp/SeqTag.cpp": {
+          "member": "cpp/SeqTag.cpp",
+          "bytes": 572987,
+          "sha256": "d34a5c9fbd3924c8e1346a14598ffead1789eda38d9b0aaa2d1f06b103146d79",
+          "original_home_line_base64": "Y29uc3QgY2hhciogSG9tZXJDb25maWc6OmhvbWVEaXJlY3RvcnkgPSAiL2dwZnMvZGF0YTAxL2NiZW5uZXIvc29mdHdhcmUvaG9tZXIvLi8iOwo="
+        },
+        "cpp/Makefile": {
+          "member": "cpp/Makefile",
+          "bytes": 5209,
+          "sha256": "0ba16174231b413e6086b8855c3640894adb4790727ff84b9a07ee5de1d4df87"
+        },
+        "cpp/genomeOntology.cpp": {
+          "member": "cpp/genomeOntology.cpp",
+          "bytes": 11344,
+          "sha256": "9d64be32978fc9625d0a398d4fa5c476af85935fa8fd159eb7268416b037ae21"
+        },
+        "cpp/mergesort.cpp": {
+          "member": "cpp/mergesort.cpp",
+          "bytes": 1198,
+          "sha256": "700f15cdec11b34c979308ee1fff096a1fe64a10535a6305fafac366c5d66de4"
+        },
+        "cpp/makeUCSCfile.cpp": {
+          "member": "cpp/makeUCSCfile.cpp",
+          "bytes": 15049,
+          "sha256": "be38074053c7b0090635e4acdce52846eab622048dfb1ac6b772df08923238da"
+        },
+        "cpp/Motif.h": {
+          "member": "cpp/Motif.h",
+          "bytes": 8320,
+          "sha256": "2cca7c36ff488bf707f2ac7e0d61a3691ce43a034c8498c8f8dacc5a6c5006af"
+        },
+        "cpp/getDifferentialPeaks.cpp": {
+          "member": "cpp/getDifferentialPeaks.cpp",
+          "bytes": 7767,
+          "sha256": "0a87725d9a997afa8efdccf684af82283a6516972bfda79377f840679ac9ecde"
+        },
+        "cpp/makeTagDirectory.cpp": {
+          "member": "cpp/makeTagDirectory.cpp",
+          "bytes": 29651,
+          "sha256": "fa3ab906b3e2577fa6f58e51da2dd1a639b799bddbcc0cb0754284329081f85e"
+        },
+        "cpp/findPeaks.cpp": {
+          "member": "cpp/findPeaks.cpp",
+          "bytes": 23806,
+          "sha256": "3d1d9d417c5ab7ba94bedb53bd3d844d05cc4c52e1848c310197904db54d4db0"
+        },
+        "cpp/CommandLine.cpp": {
+          "member": "cpp/CommandLine.cpp",
+          "bytes": 18212,
+          "sha256": "17b96aefee8634c96be536a9b37f6673c7520bb71f16ae94a73a1be06a516296"
+        },
+        "cpp/Motif.cpp": {
+          "member": "cpp/Motif.cpp",
+          "bytes": 98800,
+          "sha256": "67f45a6d6b08630945d0f02a597d35ade484c15318e7f8b8284ed03dfb298ff1"
+        },
+        "cpp/findTADsAndLoopsFromRelMatrix.cpp": {
+          "member": "cpp/findTADsAndLoopsFromRelMatrix.cpp",
+          "bytes": 45479,
+          "sha256": "5c8123142edc77ca0773898310468abac9b9a963b568c3efac508977f4aa8d72"
+        },
+        "cpp/statistics.h": {
+          "member": "cpp/statistics.h",
+          "bytes": 2255,
+          "sha256": "f1100de1d4e28e9605d74909beec3272a06494846cfa2c690886a437667cdd8c"
+        },
+        "cpp/Clustering.h": {
+          "member": "cpp/Clustering.h",
+          "bytes": 2717,
+          "sha256": "eb8320145628a411ecfd6b5f48b0e527feea19447a8f4b1b064207e9df0297ed"
+        },
+        "cpp/Motif2.cpp": {
+          "member": "cpp/Motif2.cpp",
+          "bytes": 141181,
+          "sha256": "ec10cf0b4a278854f4e13d549386dd08efdf186dc403fffdbe95ff1dd4087bcc"
+        },
+        "cpp/getGenomeCorrelation.cpp": {
+          "member": "cpp/getGenomeCorrelation.cpp",
+          "bytes": 2311,
+          "sha256": "3946aff03cf86b7390f90ca5dc7e86859ea637072b55a7afd90e99bf988b2535"
+        },
+        "cpp/statistics.cpp": {
+          "member": "cpp/statistics.cpp",
+          "bytes": 17702,
+          "sha256": "cdb8765a2ebe472fa34aa94b0a15d3b259162772cffb3b6afd7cdf73724c9c7f"
+        },
+        "cpp/mergesort.h": {
+          "member": "cpp/mergesort.h",
+          "bytes": 171,
+          "sha256": "b0a12e31d91d8b13c907acedee12bed1633d212d032db6b58467618e792d8b03"
+        },
+        "cpp/homer.cpp": {
+          "member": "cpp/homer.cpp",
+          "bytes": 4667,
+          "sha256": "e807dc076a83b370c7cf867c15bffd420202e735d0b6d977dc04c7514747ce9c"
+        },
+        "cpp/homer2.cpp": {
+          "member": "cpp/homer2.cpp",
+          "bytes": 1143,
+          "sha256": "fe53f870a14d9c051a19a67103a6f6dd0ba2b36c548784284780383d26069854"
+        },
+        "cpp/getMappableRegions.cpp": {
+          "member": "cpp/getMappableRegions.cpp",
+          "bytes": 10400,
+          "sha256": "cac90154f9c8a9ef35c13b32d004555fc30e61e1bbefaaa61a7ad86abbd89546"
+        },
+        "cpp/homerTools.cpp": {
+          "member": "cpp/homerTools.cpp",
+          "bytes": 65601,
+          "sha256": "a1893cb4c36566807427749179d9045c880ba5bb20b78235be7c8c76a7b15ab7"
+        },
+        "cpp/parseMAFalignments.cpp": {
+          "member": "cpp/parseMAFalignments.cpp",
+          "bytes": 5285,
+          "sha256": "12bad2e66337abcaa853152214c13fcba2f4fb7a5784b3ba37346c667fe0c21f"
+        },
+        "cpp/getPeakTags.cpp": {
+          "member": "cpp/getPeakTags.cpp",
+          "bytes": 11813,
+          "sha256": "e8309081923b60b16e3799b7f6e782bbd7b0a4b4d8ee422f9a3e6a9d557db4ac"
+        },
+        "cpp/Sequence.h": {
+          "member": "cpp/Sequence.h",
+          "bytes": 2012,
+          "sha256": "082470573e0b3898148aeb0df8cdc98cb4bfe1caf11c8b4c02832e57361803bc"
+        },
+        "cpp/assignGenomeAnnotation.cpp": {
+          "member": "cpp/assignGenomeAnnotation.cpp",
+          "bytes": 4770,
+          "sha256": "2150fcc7bf6a5bd293bfdc19ce3376d4de685d0de6d5dea7dd2bfb90c8b05198"
+        },
+        "cpp/analyzeHiC.cpp": {
+          "member": "cpp/analyzeHiC.cpp",
+          "bytes": 72023,
+          "sha256": "c375e6a81ea80b156ca6468550bf2d7109ea3c3f950a667ee4122c5c9eee6635"
+        },
+        "cpp/homerTools.h": {
+          "member": "cpp/homerTools.h",
+          "bytes": 579,
+          "sha256": "b1387822653c1922bb979ce652057191fc6099402c8b66265955db0d3172cd4d"
+        },
+        "cpp/CommandLine.h": {
+          "member": "cpp/CommandLine.h",
+          "bytes": 2707,
+          "sha256": "52430222c61553f11be1caeb892e8bd091544e64531ed09f64f0b339387ea5e8"
+        },
+        "cpp/rwrappers.cpp": {
+          "member": "cpp/rwrappers.cpp",
+          "bytes": 2896,
+          "sha256": "0532712bc54b132e90e538e3d496f02432a5202198c8aecde7f58348a6f064b8"
+        },
+        "cpp/mergePeaks.cpp": {
+          "member": "cpp/mergePeaks.cpp",
+          "bytes": 8194,
+          "sha256": "8ace2d13deeb826eb0644547875f902774bf5d81e8c422da6df46fbe29f26a43"
+        }
+      }
+    }
+  }
+}

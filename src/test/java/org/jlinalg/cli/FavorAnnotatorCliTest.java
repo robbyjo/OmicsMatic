@@ -1,0 +1,54 @@
+/* Copyright (C) 2026 JLinAlg contributors; SPDX-License-Identifier: GPL-3.0-or-later */
+package org.jlinalg.cli;
+
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.PrintStream;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import org.jlinalg.genetics.FavorVcfReader;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.io.TempDir;
+import static org.junit.jupiter.api.Assertions.*;
+
+final class FavorAnnotatorCliTest {
+    @TempDir Path directory;
+    private static final String HASH="a".repeat(64);
+    private static Map<String,Object> object(Object value){var result=new LinkedHashMap<String,Object>();for(var e:((Map<?,?>)value).entrySet())result.put((String)e.getKey(),e.getValue());return result;}
+    private static Map<String,Object> child(Map<String,Object> parent,String key){var result=object(parent.get(key));parent.put(key,result);return result;}
+    private static Map<String,Object> input(String path){return new LinkedHashMap<>(Map.of("path",path,"sha256",HASH));}
+    private static Map<String,Object> request(){
+        var m=new LinkedHashMap<String,Object>();m.put("schema_version",1);m.put("runtime",new LinkedHashMap<>(Map.of("inventory",input("runtime.json"),"source_root","FAVOR-source")));m.put("vcf",input("数据/sample α.vcf"));m.put("build","GRCh38");m.put("chromosome",22);m.put("mode","DIPLOID_GT");m.put("chromosome_policy","EXACT");m.put("blank_records","IGNORE");m.put("reference",new LinkedHashMap<>(Map.of("id","FAVOR-resource","build","GRCh38","split",input("splits.csv"),"shards",List.of(input("chr22_1.csv"),input("chr22_2.csv")))));m.put("output","new-output");return m;
+    }
+    private Path file(Map<String,Object> m)throws IOException {return Files.writeString(directory.resolve("request-"+java.util.UUID.randomUUID()+".json"),RegenieRuntime.json(m)+"\n",StandardCharsets.UTF_8);}
+    private FavorAnnotatorWorkflow.Request parse(Map<String,Object> m)throws IOException {Path file=file(m);return FavorAnnotatorCli.parse(file,FollowupSupport.hash(file));}
+    private record Cli(int code,String stdout,String stderr) { }
+    private static Cli run(String... args)throws Exception {var out=new ByteArrayOutputStream();var err=new ByteArrayOutputStream();try(var stdout=new PrintStream(out,true,StandardCharsets.UTF_8);var stderr=new PrintStream(err,true,StandardCharsets.UTF_8)){int code=FavorAnnotatorCli.run(args,stdout,stderr);return new Cli(code,out.toString(StandardCharsets.UTF_8),err.toString(StandardCharsets.UTF_8));}}
+    @Test void typedRequestResolvesUtf8PathsRelativeToItsProtectedCarrier()throws Exception {var r=parse(request());assertEquals(directory.resolve("数据/sample α.vcf"),r.vcf().path());assertEquals(directory.resolve("new-output"),r.output());assertEquals(FavorVcfReader.Mode.DIPLOID_GT,r.mode());assertNotNull(r.carrier());assertEquals(FollowupSupport.hash(r.carrier().path()),r.carrier().sha256());assertEquals(FavorAnnotatorWorkflow.Limits.defaults(),r.limits());}
+    @Test void explicitVariantOnlyModeDoesNotInventSamplesOrGenotypes()throws Exception {var m=request();m.put("mode","VARIANTS_ONLY");m.put("limits",Map.of("vcf",Map.of("max_samples",0,"max_calls",0)));var r=parse(m);assertEquals(FavorVcfReader.Mode.VARIANTS_ONLY,r.mode());assertEquals(0,r.limits().vcf().maximumSamples());assertEquals(0,r.limits().vcf().maximumCalls());}
+    @Test void allRequiredRootFieldsMustBePresent()throws Exception {for(String key:request().keySet()){var m=request();m.remove(key);assertThrows(IOException.class,()->parse(m),key);}}
+    @Test void unknownRootAndNestedFieldsAreRejected()throws Exception {var m=request();m.put("unexpected",true);assertThrows(IOException.class,()->parse(m));for(String key:List.of("runtime","vcf","reference")){var r=request();child(r,key).put("unexpected",true);assertThrows(IOException.class,()->parse(r));}}
+    @Test void runtimeAndInputBindingsAreExactObjects()throws Exception {var m=request();child(m,"runtime").remove("source_root");assertThrows(IOException.class,()->parse(m));var r=request();child(r,"vcf").remove("sha256");assertThrows(IOException.class,()->parse(r));var bad=request();bad.put("runtime","relative-runtime");assertThrows(IOException.class,()->parse(bad));}
+    @Test void eachOrderedShardMustHaveItsOwnProtectedFileBinding()throws Exception {var m=request();child(m,"reference").put("shards",List.of(input("single.csv")));assertThrows(IOException.class,()->parse(m));var r=request();child(r,"reference").put("shards",List.of(input("a.csv"),Map.of("path","b.csv")));assertThrows(IOException.class,()->parse(r));}
+    @Test void wrongSchemaAndInvalidChromosomesAreRefused()throws Exception {for(Object value:List.of(0,2,1.5,"1")){var m=request();m.put("schema_version",value);assertThrows(IOException.class,()->parse(m));}for(Object value:List.of(0,23,1.5,"22")){var m=request();m.put("chromosome",value);assertThrows(IOException.class,()->parse(m));}}
+    @Test void scientificPoliciesAndBuildsCannotBeImplicitOrAliased()throws Exception {for(String key:List.of("mode","chromosome_policy","blank_records")){var m=request();m.put(key,"automatic");assertThrows(IOException.class,()->parse(m));}var r=request();child(r,"reference").put("build","GRCh37");assertThrows(IOException.class,()->parse(r));}
+    @Test void emptyControlAndNonstringPathsAreRejected()throws Exception {for(Object value:List.of("","has\nnewline",42)){var m=request();child(m,"vcf").put("path",value);assertThrows(IOException.class,()->parse(m));}}
+    @Test void everyFileHashMustBeAnExplicitLowercaseSha256()throws Exception {for(String hash:List.of("a".repeat(63),"A".repeat(64),"")){var m=request();child(m,"vcf").put("sha256",hash);assertThrows(IOException.class,()->parse(m));}}
+    @Test void protectedCarrierPinMustMatchBeforeExecution()throws Exception {Path p=file(request());assertThrows(IOException.class,()->FavorAnnotatorCli.parse(p,"0".repeat(64)));assertThrows(IOException.class,()->FavorAnnotatorCli.parse(p,"invalid"));assertFalse(Files.exists(directory.resolve("new-output")));}
+    @Test void duplicateJsonKeysAndMalformedUtf8CannotHideARequest()throws Exception {Path p=directory.resolve("duplicate.json");Files.writeString(p,"{\"schema_version\":1,\"schema_version\":2}");assertThrows(IOException.class,()->FavorAnnotatorCli.parse(p,FollowupSupport.hash(p)));Files.write(p,new byte[]{(byte)0xff});assertThrows(IOException.class,()->FavorAnnotatorCli.parse(p,FollowupSupport.hash(p)));}
+    @Test void oversizedCarrierIsRefusedBeforeAnyOutput()throws Exception {Path p=directory.resolve("oversized.json");Files.write(p,new byte[1048577]);assertThrows(IOException.class,()->FavorAnnotatorCli.parse(p,FollowupSupport.hash(p)));assertFalse(Files.exists(directory.resolve("new-output")));}
+    @Test void unknownCapacityGroupsAndFieldsAreRejected()throws Exception {var m=request();m.put("limits",Map.of("typo",1));assertThrows(IOException.class,()->parse(m));for(String group:List.of("runtime","vcf","csv","join","gds","scalar")){var r=request();r.put("limits",Map.of(group,Map.of("typo",1)));assertThrows(IOException.class,()->parse(r));}}
+    @Test void capacitiesMustBeFiniteExactNumbersWithinTheirDomain()throws Exception {for(Object value:List.of(0,-1,0.5,"100",9007199254740992L)){var m=request();m.put("limits",Map.of("workspace_bytes",value));assertThrows(IOException.class,()->parse(m));}var r=request();r.put("limits",Map.of("vcf",Map.of("max_samples",1000001)));assertThrows(IOException.class,()->parse(r));}
+    @Test void processTimeoutAndChunkCapacitiesHaveSupportedBounds()throws Exception {for(String key:List.of("timeout_seconds","xsv_timeout_ms","chunk_rows")){var m=request();m.put("limits",Map.of(key,0));assertThrows(IOException.class,()->parse(m));}var r=request();r.put("limits",Map.of("timeout_seconds",86401));assertThrows(IOException.class,()->parse(r));}
+    @Test void explicitCapacityOverridesDoNotReplaceUnspecifiedDefaults()throws Exception {var m=request();m.put("limits",Map.of("timeout_seconds",120,"workspace_bytes",1073741824,"upstream_rss_bytes",536870912,"vcf",Map.of("max_variants",100),"csv",Map.of("max_rows",200),"join",Map.of("max_operations",10000),"gds",Map.of("max_nodes",1000),"scalar",Map.of("block_cells",72),"runtime",Map.of("entries",50000)));var r=parse(m);assertEquals(120,r.limits().timeoutSeconds());assertEquals(100,r.limits().vcf().maximumVariants());assertEquals(200,r.limits().csv().maximumRows());assertEquals(10000,r.limits().join().maximumOperations());assertEquals(1000,r.limits().gds().nodes());assertEquals(72,r.limits().scalar().blockCells());assertEquals(50000,r.limits().runtime().entries());assertEquals(FavorAnnotatorWorkflow.Limits.defaults().xsvTimeoutMillis(),r.limits().xsvTimeoutMillis());}
+    @Test void helpExplainsTheActualRuntimeAndExportBoundaries()throws Exception {var r=run("--help");assertEquals(0,r.code());assertTrue(r.stdout().contains("SKIP3"));assertTrue(r.stdout().contains("FAIL2"));assertTrue(r.stdout().contains("full-table export is unsupported"));assertTrue(r.stdout().contains("No analysis installs software"));assertTrue(r.stderr().isEmpty());}
+    @Test void unknownMissingAndRepeatedOptionsFailWithAnActionableError()throws Exception {for(String[] args:List.of(new String[]{},new String[]{"--request","a"},new String[]{"--request","a","--request","b"},new String[]{"--unexpected","a","--request-sha256",HASH})){var r=run(args);assertEquals(2,r.code());assertTrue(r.stderr().contains("Required action"));assertTrue(r.stderr().contains("FAVOR FAILED"));}}
+    @Test void invalidRequestHashNeverCreatesTheRequestedOutput()throws Exception {Path p=file(request());var r=run("--request",p.toString(),"--request-sha256","0".repeat(64));assertEquals(2,r.code());assertTrue(r.stderr().contains("SHA256"));assertFalse(Files.exists(directory.resolve("new-output")));}
+    @Test void forbiddenPrelaunchMonitoringSkipsOnlyBeforeAnalysisAndSuccessfulCleanup() {var failure=new HomerRuntime.Unavailable("Forbidden required process monitoring");assertEquals(3,FavorAnnotatorWorkflow.unavailableExit(false,failure));assertEquals(2,FavorAnnotatorWorkflow.unavailableExit(true,failure));failure.addSuppressed(new IOException("Owned child cleanup failed"));assertEquals(2,FavorAnnotatorWorkflow.unavailableExit(false,failure));}
+    @Test void mainDispatcherRecognizesTheFavorCommand()throws Exception {var out=new ByteArrayOutputStream();var err=new ByteArrayOutputStream();try(var stdout=new PrintStream(out,true,StandardCharsets.UTF_8);var stderr=new PrintStream(err,true,StandardCharsets.UTF_8)){assertEquals(0,JLinAlgCli.run(new String[]{"favor-annotate","--help"},stdout,stderr));assertTrue(out.toString(StandardCharsets.UTF_8).contains("fresh scientific runtime health"));assertTrue(err.toString(StandardCharsets.UTF_8).isEmpty());}}
+}

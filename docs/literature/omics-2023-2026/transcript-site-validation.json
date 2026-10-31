@@ -1,0 +1,201 @@
+{
+  "schema_version": 1,
+  "status": "validated-scoped-native-transcript-site-development-workflow",
+  "method": "explicit-supplied-transcript-TSS-TES-mapping",
+  "implemented_unique_tool_count_increased": false,
+  "FAVOR_implementation_status": "missing",
+  "typed_analysis_CLI": true,
+  "sealed_candidate_includes_new_API": true,
+  "source_sha256": {
+    "src/main/java/org/jlinalg/cli/FumaToolsCli.java": "e0d6e5ae10932989ea78468a2bc06ab22cfa450dda73171381223a623f1ddb0b",
+    "src/main/java/org/jlinalg/genetics/TranscriptSiteMapping.java": "b04ce17c1345f686b8c5068fe96a81b008e95b2156a1cec11e88ca2b019b2e41",
+    "src/test/java/org/jlinalg/genetics/TranscriptSiteMappingTest.java": "5847a860abf4ad70480529cbe018d4f43ca2cc95c789cde5d9cd0d4d95bcebd6",
+    "examples/transcript-site-mapping/TranscriptSiteExample.java": "751877b9c347172e2be688bf7464a91c8a5b1c9b0c09d77d4d4034b093fd78b5",
+    "examples/transcript-site-mapping/README.md": "35fb84d66aff2d0bd89908a122780de6984269f90ea4d5dc6f3c98aed8d9501c",
+    "docs/literature/omics-2023-2026/TRANSCRIPT_SITE_MAPPING.md": "763cd6766b7f66145d22a3980a279bd3b1d6ae7afefd0e721b8e761217296dd9",
+    "src/main/java/org/jlinalg/cli/TranscriptSiteInputs.java": "914c87a92e06e0d553537e3019447a959e5e000c4ccbe01fd42793d43516b6d3",
+    "src/main/java/org/jlinalg/cli/TranscriptSiteCli.java": "f629c335bb83b50b50f4457f4932581186d185cdb0892045a00de0103fab6952",
+    "src/test/java/org/jlinalg/cli/TranscriptSiteCliTest.java": "adf92a619cb478fc262bbb9cbe79a54d0b1d1083fedfbb12380e45e162cbb22e",
+    "tools/literature/verify_transcript_site_workflow.py": "9b84b2efb591e5fc8542aae1e0d4a806da04488da53aee866144a14480e437d1"
+  },
+  "profiles": [
+    "Windows-Java21",
+    "Windows-Java25",
+    "Linux-Java21"
+  ],
+  "tests_per_profile": 64,
+  "strict_Java17_compile": true,
+  "javadoc_doclint": "all,-missing;Werror",
+  "independent_protocols_per_profile": 48,
+  "independent_full_population_per_profile": {
+    "variants": 10436,
+    "transcripts": 3456,
+    "hits": 15797,
+    "gene_mappings": 4831,
+    "eligible_unmapped": 3580,
+    "excluded": 5106
+  },
+  "independent_comparison": "Python Decimal/arbitrary-integer complete full scan versus native binary-search index;every ordered disposition,site hit,transcript count and gene mapping;no numerical tolerance",
+  "identical_scientific_TSV_bytes_across_profiles": true,
+  "synthetic_source_example": {
+    "variant_dispositions": 9,
+    "site_hits": 6,
+    "unique_gene_mappings": 5,
+    "profiles": 3
+  },
+  "source_findings": {
+    "paper": "P130",
+    "doi": "10.1038/s41588-024-01939-9",
+    "methods_paragraph_sha256": "a5778298c8eef536f52b99ac63afe60a8053b44c4a06f806c1de472820308fdd",
+    "author_archive_record": "https://zenodo.org/records/11090130",
+    "author_archive_sha256": "5995ae4b0997e04da92474023d2b42b63546351b1d8d889875e97e8219ad67d9",
+    "MAGMA_original_version": "1.10",
+    "MAGMA_original_sha256": "e05e3d963215a973064852ec33640118d65745884cc800a5119ca7cffe6cb859",
+    "gene_body_window_variants": [
+      "v1",
+      "v100",
+      "v10100",
+      "v10101",
+      "v500000",
+      "v989999",
+      "v990000",
+      "v1000000",
+      "v1010000"
+    ],
+    "TSS_TES_variants": [
+      "v1",
+      "v100",
+      "v10100",
+      "v990000",
+      "v1000000",
+      "v1010000"
+    ],
+    "scope": "Distinct mapping models. The MAGMA archive does not establish historical FAVOR behavior or the exact published execution. No transcript resource/default is inferred."
+  },
+  "evidence": [
+    {
+      "path": "build/literature-review/favor-runtime/site-native-tests-2/observed.json",
+      "sha256": "0665fb08356746ac3b67d73f8e7efa335e05d27014a06a09c45fbd469e1b3e5f"
+    },
+    {
+      "path": "build/literature-review/favor-runtime/site-independent-reference-2/observed.json",
+      "sha256": "d918a7b7f61ec3504dbf43f90b6dd09baac7a33f68d1fa164ac2d95e023cc345"
+    },
+    {
+      "path": "build/literature-review/favor-runtime/site-source-example-1/observed.json",
+      "sha256": "cf01e75d0d86108632aaa4b28e1900f0ebf2d19748a9e6fc222f2f31e59b7f68"
+    },
+    {
+      "path": "build/literature-review/favor-runtime/p130-window-semantics-1/observed.json",
+      "sha256": "8e60ab49becc17ef9a50483e17ccb41c985c2eb3340711214401b74daaee7abb"
+    },
+    {
+      "path": "build/literature-review/favor-runtime/source-intake-1/observed.json",
+      "sha256": "a84921b7b23b95b5fdfc3e2fb723a93d68ec5de525158c8b711455547c4b3fe6"
+    },
+    {
+      "path": "build/literature-review/favor-runtime/upstream-intake-1/observed.json",
+      "sha256": "7a6f82e6b9ce49429b8e6c7b04f30bfe0d204a4c051c5b871ae1a5b21a555a96"
+    },
+    {
+      "path": "build/literature-review/favor-runtime/interface-probe-2/observed.json",
+      "sha256": "e8a3d085f0295ec1c589ebc62a04aaef5245b0e06818cbaf9d9d8c0b6e636460"
+    },
+    {
+      "path": "build/literature-review/favor-runtime/p130-author-code-intake-1/archive-audit.json",
+      "sha256": "a58bf22f424c23754e31220867e0baa8767768ef4b4c4ccd2d2dde7e4704fce6"
+    },
+    {
+      "path": "build/literature-review/favor-runtime/site-cli-tests-1/observed.json",
+      "sha256": "858a01be4d09b669ef70cef8c090dfa1f0cd15efc4e993ffdc2c33cbcc26c3fe"
+    },
+    {
+      "path": "build/literature-review/favor-runtime/site-combined-gate-1/observed.json",
+      "sha256": "a5b12a97870e01791f156254616f4d04cb3163a004cea9a8bd75630a3bcd8b57"
+    },
+    {
+      "path": "build/literature-review/favor-runtime/site-combined-gate-1/jar-entry-audit.json",
+      "sha256": "99af4625089f568b8843ae526c0e53b5b9a53d1c906571873c8c2702a7f05071"
+    },
+    {
+      "path": "build/literature-review/favor-runtime/site-packaged-tests-1/verification.json",
+      "sha256": "2b922d5b48680a26156c8fe7ad717996b763e3f6d2b96e433b92b6ea3210574f"
+    },
+    {
+      "path": "build/literature-review/favor-runtime/site-packaged-linux-tests-2/observed.json",
+      "sha256": "591ebf4aff68159e8c7ba1635a59d1dfa4b4dac116a61697f056abf03ecda87b"
+    },
+    {
+      "path": "build/literature-review/favor-runtime/site-packaged-main-1/observed.json",
+      "sha256": "98118ed414cecd41e01d3f9b7481bc8e3f3831912d88f38220ccb5098ef3edac"
+    },
+    {
+      "path": "build/literature-review/favor-runtime/site-public-validation-1.json",
+      "sha256": "520d6858e7bb8796f394ca2416da002f9aa784182a5d4b55ebf8231c6377afe7"
+    },
+    {
+      "path": "build/literature-review/favor-runtime/site-policy-controls-1/observed.json",
+      "sha256": "97573286e20238ce8fc3c2ddd1d81d967b40d913bc036641d9e0c279f3e28efe"
+    },
+    {
+      "path": "build/literature-review/favor-runtime/site-guide-example-1/observed.json",
+      "sha256": "1d01619c606ca6ac13e3708cb90fccdc83a90c6375d8c1f3c5e803fb88f5b519"
+    }
+  ],
+  "retained_development_failures": [
+    "First native gate:all108 JVM tests passed;Javadoc rejected a literal < in a comment. Corrected to HTML escape;entire gate rerun passed.",
+    "First independent reference:all scientific rows matched;cross-platform byte hashes differed because the private exporter used platform newlines. Corrected exporter to explicit LF;all48 protocols rerun on all3 profiles passed.",
+    "Original MAGMA completed exit0 with .genes.annot.txt;private reader expected .genes.annot. Resumed audit from completed output without rerunning upstream.",
+    "One private test-runner write was not executed because automatic approval review reported model capacity. Same write retried successfully;no remaining review blocker.",
+    "First private probe did not declare checked exceptions and failed before Linux execution. Probe corrected;no production source or scientific tolerance changed."
+  ],
+  "required_actions": [
+    "Use the checked development candidate or another intended source build with its exact declared SHA-256;the earlier Fisher JAR lacks transcript-sites. Read the TSV/JSON guide and every WARNINGS.md.",
+    "Declare exact assembly,resource/ID/context namespaces,complete expected input row counts,transcript population,gene biotypes,one-based coordinates,strand,P cutoff,sites,radius,boundary and missing-P policy. Empty mappings do not prove biological absence.",
+    "Missing or forbidden Java is verifier SKIP3:provide Java17+ on a permitted host or retain the analysis as skipped. No analysis command installs software.",
+    "Invalid artifacts,inputs,models,capacities or publication are FAIL2. Inspect the named stderr/session/WARNINGS cause and retained partial/ diagnostics;correct it and rerun to a NEW directory. Existing outputs are never overwritten."
+  ],
+  "not_certified": [
+    "historical FAVOR or FUMA reproduction",
+    "current FAVOR API annotation",
+    "annotation-resource acquisition",
+    "MAGMA fitting",
+    "gsMap",
+    "whole paper pipeline",
+    "whole-current-ROOT build",
+    "public release or deployment"
+  ],
+  "candidate": "build/literature-review/transcript-site-candidate-1/jlinalg-0.3.7.jar",
+  "candidate_sha256": "ccf750c9091cc6136ea18d67eed553879919d8201654933a8d27837869316e62",
+  "native_tests": 36,
+  "CLI_tests": 28,
+  "combined_tests": 1459,
+  "combined_suites": 100,
+  "combined_failures": 0,
+  "combined_skips": 0,
+  "exact_JAR_tests_per_Windows_Java21_25": 1459,
+  "exact_JAR_native_CLI_tests_LinuxJava21": 64,
+  "actual_packaged_main_commands": 144,
+  "actual_main_protocols_per_profile": 48,
+  "actual_main_full_population_per_profile": {
+    "variants": 10436,
+    "transcripts": 3456,
+    "hits": 15797,
+    "gene_mappings": 4831,
+    "eligible_unmapped": 3580,
+    "excluded": 5106
+  },
+  "public_recipes": 9,
+  "copyable_guide_example": true,
+  "public_and_packaged_recovery_controls": 9,
+  "missing_Java_skip_exit": 3,
+  "invalid_artifact_input_model_capacity_failure_exit": 2,
+  "scientific_partials_quarantined": true,
+  "existing_outputs_and_sources_preserved": true,
+  "prior_JAR_entries": 16946,
+  "identical_prior_JAR_entries": 16945,
+  "changed_prior_JAR_entries": [
+    "org/jlinalg/cli/FumaToolsCli.class"
+  ],
+  "public_verifier": "tools/literature/verify_transcript_site_workflow.py"
+}

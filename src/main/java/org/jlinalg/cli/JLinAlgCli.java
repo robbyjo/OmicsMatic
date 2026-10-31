@@ -115,6 +115,10 @@ public final class JLinAlgCli {
             return TrimmomaticToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
         if (arguments.length > 0 && arguments[0].equals("enrichment-tools"))
             return EnrichmentToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("favor-annotate"))
+            return FavorAnnotatorCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("fuma-tools"))
+            return FumaToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
         if (arguments.length > 0 && arguments[0].equals("trim-galore-reads"))
             return TrimGaloreReadsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
         if (arguments.length > 0 && arguments[0].equals("flash-reads"))
@@ -139,6 +143,20 @@ public final class JLinAlgCli {
             return IgvToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
         if (arguments.length > 0 && arguments[0].equals("unrelated-select"))
             return UnrelatedSelectCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("saige-tools"))
+            return SaigeToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("admixture-tools"))
+            return AdmixtureToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("eagle-tools"))
+            return EagleToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("repeat-tools"))
+            return RepeatToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("minimac-tools"))
+            return MinimacToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("homer-scan"))
+            return HomerScanCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("homer-tools"))
+            return HomerToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
         if (arguments.length > 0 && arguments[0].equals("pdb2pqr-tools"))
             return Pdb2pqrToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
         if (arguments.length > 0 && arguments[0].equals("potential-surface"))
@@ -161,6 +179,8 @@ public final class JLinAlgCli {
             return MagmaToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
         if (arguments.length > 0 && arguments[0].equals("single-cell-qc"))
             return SingleCellQcCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("cellbender-tools"))
+            return CellBenderToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
         if (arguments.length > 0 && arguments[0].equals("plot"))
             try {
                 return PlotCli.run(Arrays.copyOfRange(
@@ -350,10 +370,13 @@ public final class JLinAlgCli {
               java -jar omicsmatic-<version>.jar minimap-tools --help
               java -jar omicsmatic-<version>.jar hisat-tools --help
               java -jar omicsmatic-<version>.jar single-cell-qc --help
+              java -jar omicsmatic-<version>.jar cellbender-tools --help
               java -jar omicsmatic-<version>.jar magma-tools --help
               java -jar omicsmatic-<version>.jar trimmomatic-tools --help
               java -jar omicsmatic-<version>.jar deep-tools --help
               java -jar omicsmatic-<version>.jar enrichment-tools --help
+              java -jar omicsmatic-<version>.jar favor-annotate --help
+              java -jar omicsmatic-<version>.jar fuma-tools --help
               java -jar omicsmatic-<version>.jar trim-galore-reads --help
               java -jar omicsmatic-<version>.jar flash-reads --help
               java -jar omicsmatic-<version>.jar motif-scan --help
@@ -366,6 +389,13 @@ public final class JLinAlgCli {
               java -jar omicsmatic-<version>.jar apbs-tools --help
               java -jar omicsmatic-<version>.jar igv-tools --help
               java -jar omicsmatic-<version>.jar unrelated-select --help
+              java -jar omicsmatic-<version>.jar saige-tools --help
+              java -jar omicsmatic-<version>.jar admixture-tools --help
+              java -jar omicsmatic-<version>.jar eagle-tools --help
+              java -jar omicsmatic-<version>.jar repeat-tools --help
+              java -jar omicsmatic-<version>.jar minimac-tools --help
+              java -jar omicsmatic-<version>.jar homer-scan --help
+              java -jar omicsmatic-<version>.jar homer-tools --help
               java -jar omicsmatic-<version>.jar pdb2pqr-tools --help
               java -jar omicsmatic-<version>.jar potential-surface --help
               java -jar omicsmatic-<version>.jar pymol-tools --help

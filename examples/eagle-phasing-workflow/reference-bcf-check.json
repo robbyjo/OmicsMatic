@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "operation": "check",
+  "profile": "linux-x86_64-eagle-2.4.1",
+  "mode": "REFERENCE",
+  "resource_root": "inputs-bcf",
+  "assembly": "synthetic-no-biological-reference",
+  "input_review": "Synthetic fixture; no biological eligibility claim",
+  "target": {
+    "path": "target.bcf",
+    "format": "bcf",
+    "index": "target.bcf.csi",
+    "index_policy": "snapshot-only-regenerate"
+  },
+  "map": "genetic-map.txt",
+  "region": {
+    "contig": "22",
+    "chromosome": 22,
+    "chromosome_x": 23,
+    "start": 1,
+    "end": 2147483647,
+    "selection": "literal-pos-input-subset"
+  },
+  "policies": {
+    "missing": "KEEP",
+    "partial_missing": "ALLOW_ORIGINAL_WHOLE_CALL_MISSING",
+    "keep_missing_ploidy_x": false,
+    "outside_map": "SOURCE_BOUNDARIES",
+    "allow_reference_alt_swap": false,
+    "unmatched": "REFUSE",
+    "expansion": "REFUSE",
+    "reference_fallback": "REFUSE",
+    "sample_overlap": "REFUSE"
+  },
+  "parameters": {
+    "threads": 1,
+    "conditioning_haplotypes": 10000,
+    "pbwt_iterations": 1,
+    "seed": 0,
+    "algorithm": "REFERENCE_PBWT"
+  },
+  "limits": {
+    "preset": "bounded-vcf-v1"
+  },
+  "process_limits": {
+    "preset": "bounded-process-v1"
+  },
+  "reference": {
+    "path": "reference.bcf",
+    "format": "bcf",
+    "index": "reference.bcf.csi",
+    "index_policy": "snapshot-only-regenerate"
+  }
+}
