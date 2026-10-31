@@ -348,6 +348,17 @@ and2,428 observations. Three annotation-reuse roles remain distinct from eight
 search/masking roles. Wider paper semantics and unsupported historical or
 restricted resource editions remain explicit.
 
+The newer [host/provider development status](REPEATMASKER_HOST_STATUS.md)
+records complete declared inventories, second fully re-derived captures and
+independent byte/permission/membership and ELF checks for both profiles.
+The current inventory covers 3,180 member occurrences and 375 ELF images;
+the historical inventory covers 4,644 member occurrences and 483 ELF images.
+The 232-test family passes against the exact latest private JAR on Windows
+Java21/25 and Linux Java21, with explicit platform-only skips. The process
+supervisor also retains a fresh original replay of the fixed procfs exit race.
+These are internal components: access-trace closure, scientific runtime
+admission, typed public original SEARCH and catalog gates remain unfinished.
+
 **Remaining scope:** complete host/dependency closure, final scientific runtime
 admission, the public original
 `SEARCH` workflow and final paper-role/catalog gates are unfinished. Original
