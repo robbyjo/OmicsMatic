@@ -61,7 +61,7 @@ Nature · 2025-12-17 · [DOI](https://doi.org/10.1038/s41586-025-09890-3) · [Pr
 | Leiden | Grouped observations into communities using a neighborhood graph. | Methods / UMAP projection and clustering of chromatin loops |
 | MACS | Generated CUT&RUN peaks and P-value tracks with MACS3 after hg38 Bowtie2 alignment. Compared SPIN-state signal with the genome-wide expectation using log2(mean state signal / mean genome signal). | Methods / Processing other epigenomic data |
 | MAPS | PLAC-seq chromatin-interaction calling. | Methods / Identification of chromatin loops in different platforms |
-| RSEM | Transcript abundance estimation. | Methods / Categorization of genes by expression levels |
+| RSEM | Estimated gene-level expected counts from alignment BAM files using RSEM; NOIseq separately normalized them to RPKM. | Methods / Categorization of genes by expression levels |
 | SAMtools | Filtered mapped CUT&Run alignments for quality, duplicates and ENCODE blacklisted regions before deepTools coverage calculation. | Methods / Chromatin dataset processing |
 | t-SNE | Mapped six standardized chromatin-structure measurements into two dimensions with scikit-learn; perplexity 80, 300 iterations, seed 123. | Methods / Dimension reduction of structural features with t-SNE |
 | UMAP | Produced an exploratory low-dimensional representation of the measured profiles. | Methods / UMAP projection and clustering of chromatin loops |
@@ -607,7 +607,7 @@ Nature · 2024-12-11 · [DOI](https://doi.org/10.1038/s41586-024-08314-y) · [Pr
 
 | Tool | How used | Evidence location |
 | --- | --- | --- |
-| bcl2fastq | Base-call conversion and sample demultiplexing. | Methods / CUT&RUN analysis |
+| bcl2fastq | Generated CUT&RUN FASTQ files with bcl2fastq 2.19 and the explicit --minimum-trimmed-read-length 8 setting. | Methods / CUT&RUN analysis |
 | BEDTools | Genomic interval manipulation and overlap. | Methods / CUT&RUN analysis |
 | Bowtie 2 | Short-read alignment. | Methods / CUT&RUN analysis |
 | BWA | DNA read alignment. | Methods / ChIP–seq analysis |
@@ -706,7 +706,7 @@ Nature · 2023-12-13 · [DOI](https://doi.org/10.1038/s41586-023-06838-3) · [Pr
 
 | Tool | How used | Evidence location |
 | --- | --- | --- |
-| bcl2fastq | Base-call conversion and sample demultiplexing. | Methods / MAGs / Short-read shotgun sequencing |
+| bcl2fastq | Demultiplexed pooled NovaSeq 6000 paired-end shotgun metagenomic reads with bcl2fastq. | Methods / MAGs / Short-read shotgun sequencing |
 | Bowtie 2 | Short-read alignment. | Methods / MAGs / Short-read shotgun sequencing |
 | DESeq2 | Count-based differential expression analysis. | Methods / Defining the relationship between MAG abundances and WLZ |
 | DIAMOND | Protein sequence alignment. | Methods / Subsystem-based annotation and prediction of functional capabilities (inferred metabolic phenotypes) of MAGs and cultured P. copri strains |
@@ -751,7 +751,7 @@ Nature · 2023-12-13 · [DOI](https://doi.org/10.1038/s41586-023-06837-4) · [Pr
 | inferCNV | Expression-derived copy-number inference. | Methods / Melanoma analysis / Inferring CNV |
 | Louvain | Grouped observations into communities using a neighborhood graph. | Methods / Mouse brain analysis / Quality control and cell type assignment |
 | MACS | Recalled ATAC peaks across all cells with the Signac CallPeaks wrapper using MACS2 2.2.7.1, then mapped fragments to peaks/nuclei and removed nonstandard-chromosome and blacklist regions. | Methods / Melanoma analysis / Quality control and cell type assignment / Multiome ATAC and snRNA-seq data |
-| RSEM | Transcript abundance estimation. | Methods / Mouse brain analysis / Comparison of Slide-tags snRNA-seq versus bulk RNA-seq |
+| RSEM | Described RSEM-derived bulk mouse-brain gene TPM, produced after STAR alignment, as a comparator for Slide-tags and Slide-seq. | Methods / Mouse brain analysis / Comparison of Slide-tags snRNA-seq versus bulk RNA-seq |
 | sctransform | Used SCTransform-normalized counts in spatial receptor-ligand expression correlations with a 100-micrometre adjacency definition. | Methods / Tonsil analysis / Spatial receptor–ligand prediction |
 | seqtk | Downsampled spatial-barcode FASTQ reads to 25 million records for computational efficiency and consistency, before matching candidate cell barcodes to Cell Ranger/CellBender outputs and spatial barcode coordinates. | Methods / Slide-tags data preprocessing / Spatial barcode data |
 | Seurat | Single-cell QC, normalization, integration, clustering or annotation. | Methods / Mouse brain analysis / Quality control and cell type assignment |
@@ -773,7 +773,7 @@ Nature · 2026-09-09 · [DOI](https://doi.org/10.1038/s41586-026-10954-1) · [Pr
 | GSEA | Ranked gene-set enrichment. | Methods / GSEA |
 | Harmony | Batch integration of cell embeddings. | Methods / Single-cell RNA-seq and data analysis |
 | HOMER | Used HOMER 5.1 analyzeRepeats.pl to calculate raw exon counts and RPKM for RefSeq genes in stimulated CD8 T-cell bulk RNA-seq before DESeq2 1.48.2 differential expression. | Methods / Bulk RNA-seq of stimulated T cells |
-| RSEM | Transcript abundance estimation. | Methods / Analyses of publicly available transcriptome data |
+| RSEM | Reused log2(x + 1)-transformed RSEM-normalized TCGA counts and phenotype data downloaded from UCSC Xena. | Methods / Analyses of publicly available transcriptome data |
 | Seurat | Single-cell QC, normalization, integration, clustering or annotation. | Methods / Single-cell RNA-seq and data analysis |
 | UMAP | Produced an exploratory low-dimensional representation of the measured profiles. | Methods / Single-cell RNA-seq and data analysis |
 
@@ -913,7 +913,7 @@ Nature · 2026-09-02 · [DOI](https://doi.org/10.1038/s41586-026-10987-6) · [Pr
 | LS-GKM | Trained a gapped-kmer SVM with LS-GKM gkmtrain and wgkm kernel t=4, held chromosome 2 out for evaluation, retrained and used gkmpredict on all 11-mers for deltaSVM scoring. | Methods / Training the GKM model |
 | MACS | Identified cell-type H3K4me3 anchor peaks for the MAPS PLAC-seq pipeline using MACS2 with human genome shortcut, broad mode, disabled local lambda and broad cutoff 0.01 on short-distance interaction reads; merged anchors and evaluated replicates before contact modelling. | Methods / PLAC-seq library creation and analysis |
 | MAPS | Called H3K4me3 PLAC-seq interactions with the MAPS pipeline using MACS2-derived anchors, AND/XOR/NOT interaction classes and Poisson-regression modelling. | Methods / PLAC-seq library creation and analysis |
-| RSEM | Transcript abundance estimation. | Methods / RNA-seq library creation and analysis |
+| RSEM | Performed strand-specific RSEM quantification against GENCODE 38 after STAR alignment to hg38. | Methods / RNA-seq library creation and analysis |
 | scCODA | Used scCODA for differential cell-composition analysis. | Methods / scRNA-seq analysis of oRG |
 | scDblFinder | Single-cell doublet detection. | Methods / scRNA-seq analysis of oRG |
 | scDist | Applied scDist 1.1.5 following SCTransform normalization/scaling. | Methods / scRNA-seq analysis of oRG |
@@ -986,7 +986,7 @@ Nature · 2023-12-13 · [DOI](https://doi.org/10.1038/s41586-023-06821-y) · [Pr
 | Tool | How used | Evidence location |
 | --- | --- | --- |
 | BAMTools | Converted and sorted Bowtie-mapped Toxoplasma ChIP alignments with BAMTools before MACS2 peak calling. | Methods / ChIP coupled with Illumina sequencing / Library preparation, sequencing and data analysis (Arraystar) |
-| bcl2fastq | Base-call conversion and sample demultiplexing. | Methods / ATAC–seq |
+| bcl2fastq | Reported bcl2fastq V3 for demultiplexing multiplexed paired-end ATAC-seq reads before nf-core processing. | Methods / ATAC–seq |
 | deepTools | Used computeMatrix reference-point with minThreshold2,10bp bins and averageTypeBins sum for T.gondii ChIP/ATAC gene-centered analysis, followed by profiles/heatmaps and optional k-means. ATAC BAMs were converted with bamCoverage using5bp bins. | Methods / ChIP coupled with Illumina sequencing / Library preparation, sequencing and data analysis (Arraystar) |
 | DESeq2 | Count-based differential expression analysis. | Methods / RNA-seq and sequence alignment |
 | FastQC | Sequencing read quality assessment. | Methods / RNA-seq and sequence alignment |
@@ -1013,7 +1013,7 @@ Nature · 2025-12-03 · [DOI](https://doi.org/10.1038/s41586-025-09807-0) · [Pr
 | Tool | How used | Evidence location |
 | --- | --- | --- |
 | AUCell | Rank-based gene-set activity scoring. | Methods / Single-cell transcriptomics on human neutrophils / Spatial analysis of human lung specimens using Visium HD |
-| bcl2fastq | Base-call conversion and sample demultiplexing. | Methods / Bulk RNA sequencing of mice and human-derived neutrophils |
+| bcl2fastq | Reported bcl2fastq 2.20.0.422 for producing sample FASTQ files in a preprocessing description that also names CASAVA and RTA. | Methods / Bulk RNA sequencing of mice and human-derived neutrophils |
 | BCLConvert | Sequencer BCL demultiplexing and FASTQ conversion. | Methods / Single-cell transcriptomics on mouse neutrophils / scRNA-seq of sorted tissue neutrophils |
 | chromVAR | Chromatin motif accessibility deviation scores. | Methods / Data processing / Transcription factor activity |
 | Cutadapt | Adapter trimming. | Methods / Bulk RNA sequencing of mice and human-derived neutrophils |
@@ -1027,7 +1027,7 @@ Nature · 2025-12-03 · [DOI](https://doi.org/10.1038/s41586-025-09807-0) · [Pr
 | Louvain | Grouped observations into communities using a neighborhood graph. | Methods / Single-cell transcriptomics on human neutrophils / Spatial analysis of human lung specimens using Visium HD |
 | MACS | Called MACS2 2.2.9.1 peaks through Signac 1.14.0 CallPeaks separately for annotated hubs, retaining cells with prediction score at least 0.7 and excluding blacklist/nonstandard-chromosome peaks. | Methods / Data processing / Merging of the datasets and peak calling |
 | Monocle | Single-cell trajectory or pseudotime inference. | Methods / Single-cell transcriptomics on mouse neutrophils / Velocyto analysis |
-| RSEM | Transcript abundance estimation. | Methods / Bulk RNA sequencing of mice and human-derived neutrophils |
+| RSEM | Quantified expression with RSEM 1.3.1 using stated default options against GRCm38 or GRCh38, depending on the analysis. | Methods / Bulk RNA sequencing of mice and human-derived neutrophils |
 | SAMtools | Alignment manipulation and QC. | Methods / Single-cell transcriptomics on mouse neutrophils / Velocyto analysis |
 | scater | Single-cell QC and expression summaries. | Methods / Single-cell transcriptomics on human neutrophils / Spatial analysis of human lung specimens using Visium HD |
 | scran | Single-cell normalization and variance modelling. | Methods / Single-cell transcriptomics on human neutrophils / Spatial analysis of human lung specimens using Visium HD |
@@ -1140,7 +1140,7 @@ Nature · 2025-12-03 · [DOI](https://doi.org/10.1038/s41586-025-09762-w) · [Pr
 
 | Tool | How used | Evidence location |
 | --- | --- | --- |
-| bcl2fastq | Base-call conversion and sample demultiplexing. | Methods / INCISE adenoma tissue processing and DNA sequencing |
+| bcl2fastq | Converted NovaSeq 6000 raw sequencing data to FASTQ using the two reported bcl2fastq versions 2.19.1.403 and 2.20.0.422 within the HOLMES workflow. | Methods / INCISE adenoma tissue processing and DNA sequencing |
 | biobambam2 | Used biobambam2v2.0.79 for adapter clipping and PCR-duplicate marking in hybrid-capture tumor/normal sequencing. | Methods / Hybridization capture panel sequencing |
 | BWA | DNA read alignment. | Methods / Hybridization capture panel sequencing |
 | dndscv | Somatic mutation selection analysis. | Methods / Identification of driver genes |
@@ -1268,7 +1268,7 @@ Nature · 2025-12-01 · [DOI](https://doi.org/10.1038/s41586-025-09932-w) · [Pr
 | Tool | How used | Evidence location |
 | --- | --- | --- |
 | AUCell | Rank-based gene-set activity scoring. | Methods / Single-cell multiomics |
-| bcl2fastq | Base-call conversion and sample demultiplexing. | Methods / Single-cell multiomics |
+| bcl2fastq | Reported bcl2fastq upstream of Cell Ranger multi processing for GEX, antibody-capture and VDJ libraries. | Methods / Single-cell multiomics |
 | Cell Ranger | Used Cell Ranger multi v9.0.0 with GEX GRCh38-2020-A and VDJ GRCh38-alts-ensembl-5.0.0 references for GEX, antibody capture and TCR libraries; surface/hashtag barcodes were Antibody Capture features. | Methods / Single-cell multiomics |
 | Seurat | Single-cell QC, normalization, integration, clustering or annotation. | Methods / Single-cell multiomics |
 
@@ -1295,7 +1295,7 @@ Nature · 2023-12-12 · [DOI](https://doi.org/10.1038/s41586-023-06936-2) · [Pr
 
 | Tool | How used | Evidence location |
 | --- | --- | --- |
-| bcl2fastq | Base-call conversion and sample demultiplexing. | Methods / OmniATAC-seq |
+| bcl2fastq | Demultiplexed sequencing reads using bcl2fastq 2.20 before Trim Galore and custom-reference bwa-mem2 processing. | Methods / OmniATAC-seq |
 | BEDTools | Genomic interval manipulation and overlap. | Methods / Motif annotation |
 | BWA-MEM2 | Mapped trimmed reads to custom hg38 augmented with integrated sequences as extra chromosomes using BWA-MEM2 2.2.1, before SAMtools cleanup and deepTools RPGC tracks. | Methods / OmniATAC-seq |
 | cisTarget | Recovery-curve motif enrichment and regulatory target analysis. | Methods / Motif annotation |
@@ -1905,7 +1905,7 @@ Nature Genetics · 2023-11-30 · [DOI](https://doi.org/10.1038/s41588-023-01572-
 
 | Tool | How used | Evidence location |
 | --- | --- | --- |
-| bcl2fastq | Base-call conversion and sample demultiplexing. | Methods / Data processing for EasySci-ATAC |
+| bcl2fastq | Converted base calls to FASTQ and demultiplexed them with bcl2fastq 2.19.0.316 while allowing one mismatched barcode base. | Methods / Data processing for EasySci-ATAC |
 | BEDTools | Genomic interval manipulation and overlap. | Methods / Differential accessible peak analysis |
 | cell2location | Spatial cell-type deconvolution. | Methods / Integration analysis with external datasets and to locate the spatial distributions of main cell types and subtypes |
 | Cell Ranger | Processed subsampled commercial 10x Chromium data with Cell Ranger as the comparator in an EasySci-RNA detection-depth benchmark. | Methods / Computational procedures for processing EasySci-RNA libraries |
@@ -2378,7 +2378,7 @@ Nature Genetics · 2023-11-16 · [DOI](https://doi.org/10.1038/s41588-023-01565-
 | GATK | Variant discovery and recalibration. | Methods / Genetic analysis |
 | HTSeq | Read counting and sequence processing. | Methods / Chromatin immunoprecipitation / ChIP–seq analysis |
 | MACS | Called MACS2 2.2.7.1 peaks with matched input datasets as background for MER11 chromatin-state comparisons, before peak MAPQ selection, read counting, overlap-based WT/KO selection and signal clustering. | Methods / Chromatin immunoprecipitation / ChIP–seq analysis |
-| RSEM | Transcript abundance estimation. | Methods / Gene expression analysis by RNA-seq |
+| RSEM | Quantified stranded paired-end RNA-seq using the RSEM-STAR pipeline against GENCODE 36 lifted to hg19, with seed 1618, posterior mean estimates, credibility intervals and estimated read-start distributions. | Methods / Gene expression analysis by RNA-seq |
 | SAMtools | Alignment manipulation and QC. | Methods / Chromatin immunoprecipitation / ChIP–seq analysis |
 | STAR | Splice-aware bulk RNA read alignment and optional raw gene counts. | Methods / Gene expression analysis by RNA-seq |
 
@@ -3044,7 +3044,7 @@ Nature Genetics · 2024-09-24 · [DOI](https://doi.org/10.1038/s41588-024-01896-
 | GATK | Variant discovery and recalibration. | Methods / Genotyping, RNA-seq and protein expression measurement |
 | LeafCutter | Intron excision quantification and splicing analysis. | Methods / eQTL and sQTL fine-mapping |
 | PEER | Latent confounder estimation. | Methods / eQTL and sQTL fine-mapping |
-| RSEM | Transcript abundance estimation. | Methods / eQTL and sQTL fine-mapping |
+| RSEM | Quantified transcripts with RSEM 1.3.0 after STAR 2.5.3a alignment to hg38 in a GTEx-based expression/eQTL workflow. | Methods / eQTL and sQTL fine-mapping |
 | STAR | Splice-aware bulk RNA read alignment and optional raw gene counts. | Methods / eQTL and sQTL fine-mapping |
 | SuSiE | Bayesian fine-mapping and credible sets. | Methods / eQTL and sQTL fine-mapping |
 | tensorQTL | Molecular QTL mapping. | Methods / Targeted trans-eQTL and trans-pQTL calling |
@@ -3270,7 +3270,7 @@ Nature Genetics · 2024-09-16 · [DOI](https://doi.org/10.1038/s41588-024-01900-
 
 | Tool | How used | Evidence location |
 | --- | --- | --- |
-| bcl2fastq | Base-call conversion and sample demultiplexing. | Methods / MPRAs / Data analyses |
+| bcl2fastq | Converted raw MPRA sequencing data to FASTQ using bcl2fastq before MPRAflow barcode association and counting. | Methods / MPRAs / Data analyses |
 | cooltools | Chromosome conformation analysis. | Methods / Micro-C |
 | Enrichr | Gene-set enrichment. | Methods / Gene evidence |
 | MAGMA | Used MAGMA1.10 to define the top1000 CRC disease-associated genes from GWAS summary statistics for scDRS1.0.1 analyses of Tabula Sapiens and Gut Cell Atlas profiles. | Methods / Cell-type specificity of risk variants |
@@ -3506,7 +3506,7 @@ American Journal of Human Genetics · 2024-11-22 · [DOI](https://doi.org/10.101
 | Louvain | Grouped observations into communities using a neighborhood graph. | Methods / scRNA-seq of fetal tissues and preprocessing |
 | MAGMA | Used MAGMA1.10 gene-set enrichment of coexpression modules against osteoarthritis GWAS,with GRCh37 and35kb-upstream/10kb-downstream windows; applied FDR across modules and traits. | Methods / Functional characterization of co-expression modules |
 | Picard | Alignment QC, duplicates and sequence processing. | Methods / Bulk RNA-seq of osteoarthritis cartilage samples and preprocessing |
-| RSEM | Transcript abundance estimation. | Methods / Bulk RNA-seq of osteoarthritis cartilage samples and preprocessing |
+| RSEM | Described RSEM processing of STAR alignment files against the transcriptome and aggregation of RSEM gene-level results with the GTEx aggregate_rsem_results.py workflow. | Methods / Bulk RNA-seq of osteoarthritis cartilage samples and preprocessing |
 | RSeQC | RNA-seq quality metrics. | Methods / Bulk RNA-seq of osteoarthritis cartilage samples and preprocessing |
 | Scanpy | Used for marker or differential-expression analysis; cell annotation; exploratory representation. | Methods / scRNA-seq data from osteoarthritis cartilage |
 | Scrublet | Ran Scrublet separately per sequencing run after CellRanger 3.0.2 and SoupX 1.3, before Seurat 3 analysis. | Methods / scRNA-seq of fetal tissues and preprocessing |
@@ -3894,7 +3894,7 @@ American Journal of Human Genetics · 2024-10-02 · [DOI](https://doi.org/10.101
 | PEER | Latent confounder estimation. | Subjects and methods / Covariate selection |
 | PLINK | Genotype QC, association, relatedness, LD or score calculations. | Subjects and methods / Population validation, imputation, and filtering |
 | QTLtools | Molecular QTL mapping and QC. | Subjects and methods / cis-eQTL mapping |
-| RSEM | Transcript abundance estimation. | Subjects and methods / Gene expression quantification and quality control |
+| RSEM | Quantified genes and transcripts with RSEM 1.3.0 after STAR 2.4.2a alignment. | Subjects and methods / Gene expression quantification and quality control |
 | SAMtools | Alignment manipulation and QC. | Subjects and methods / Variant identification |
 | SMR | Summary-data molecular association or Mendelian randomization. | Subjects and methods / Summary-data-based mendelian randomization |
 | STAR | Splice-aware bulk RNA read alignment and optional raw gene counts. | Subjects and methods / Gene expression quantification and quality control |
@@ -4173,7 +4173,7 @@ American Journal of Human Genetics · 2025-09-04 · [DOI](https://doi.org/10.101
 | PLINK | Used for LD-based variant selection. | Material and methods / Genetic association testing |
 | PoPS | Effector-gene prioritization using polygenic features. | Material and methods / Common-variant gene prioritization scores |
 | REVEL | Missense variant effect prediction. | Material and methods / Variant consequence annotation |
-| RSEM | Transcript abundance estimation. | Material and methods / Wet lab methods / RNA-seq of human white adipose tissue cells |
+| RSEM | Estimated transcript quantities using RSEM 1.3.2 after STAR 2.7.10b alignment of paired-end human adipocyte RNA-seq. | Material and methods / Wet lab methods / RNA-seq of human white adipose tissue cells |
 | SAIGE | Ran SAIGE common-variant association with1.1.6.3 and exome variant/gene tests with container1.1.9,using sparse-GRM null models,categorical variance ratios and quantitative inverse-normal transformation. | Material and methods / Genetic association testing |
 | SKAT-O | Adaptive burden/kernel rare-variant testing. | Material and methods / Rare-variant and gene-level testing in ES data / Obesity and fat distribution trait-gene-level association tests |
 | SpliceAI | Variant splice-impact prediction. | Material and methods / Variant consequence annotation |
@@ -4324,7 +4324,7 @@ American Journal of Human Genetics · 2025-08-28 · [DOI](https://doi.org/10.101
 
 | Tool | How used | Evidence location |
 | --- | --- | --- |
-| bcl2fastq | Base-call conversion and sample demultiplexing. | Material and methods / Bulk RNA-seq and RT-qPCR |
+| bcl2fastq | Converted NovaSeq BCL data to FASTQ and demultiplexed paired-end RNA-seq with bcl2fastq 2.20, allowing one index mismatch. | Material and methods / Bulk RNA-seq and RT-qPCR |
 | Bowtie 2 | Short-read alignment. | Material and methods / Hi-C and data analysis |
 | Cell Ranger | Used Cell Ranger count to align droplet reads to human GRCh38 and quantify annotated-gene transcripts per cell; its outputs also supplied later velocity counting. | Material and methods / snRNA-seq and data analysis |
 | cooltools | Chromosome conformation analysis. | Material and methods / Hi-C and data analysis |

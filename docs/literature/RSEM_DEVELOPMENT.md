@@ -1,0 +1,25 @@
+# RSEM development status
+
+The project now has native Java effective-length, expression and ordinary EM gene-aggregation methods in `org.jlinalg.sequence.RsemAbundance`. The public RSEM quantification command and runtime installer are still unfinished. RSEM remains a missing tool in the implementation count.
+
+Supply actual model quantities to these methods. Do not infer unrounded theta, effective lengths or posterior quantities from a two-decimal result table. The methods do not align reads or fit RSEM's EM/Gibbs models. Posterior mean estimates and credibility intervals require the original inference procedures; ordinary EM aggregation is not a substitute.
+
+The implementation preserves the original noise component, mappability correction, added poly-A tail positions, below-one effective-length cutoff, within-gene TPM weighting and zero-expression gene length fallback. Transcript versions and gene groups retain their exact identities and order. Gene expected counts are supplied independently of theta. The source's strict `gene TPM == 1e-300` boundary is retained, including its zero weighted-length result.
+
+Choose the exact release when calling the expression API. RSEM 1.2.28, 1.3.0 and 1.3.1 fail when there are no alignable reads. Releases 1.3.2 and 1.3.3 introduced a zero-expression fallback. A successful newer zero-count run does not establish successful historical execution.
+
+Validation calls the unchanged upstream arithmetic functions from all five releases. The fixture contains 136 current and 532 historical cases. It includes short transcripts, poly-A tails, mappability masks, noise, zero libraries, very small probabilities and varied fragment-length distributions. The C++ driver uses the original production optimization at compilation, followed by linking without adding `-ffast-math`, as the upstream Makefiles do.
+
+Numerical comparisons allow the larger of a relative tolerance of `4e-12` and four ULPs of the expected value. They do not establish bitwise equality for arbitrary inputs or other compiler builds. No rounded result-table value is treated as an exact unrounded model parameter.
+
+Separate complete original-tool protocols prepare six transcripts in four genes and quantify synthetic paired-end, reverse-stranded and single-end transcript-alignment SAM files. All five releases also run posterior means, credibility intervals and read-start distribution estimation. There are 22 successful complete quantifications and three retained historical no-alignment failures. Output identities, every numeric field and rounded gene/isoform sums are checked. These are synthetic method checks, not biological accuracy or whole-paper reproductions.
+
+The private Linux builds retain the exact official release archives and commits. The 1.2.28 build requires C++98, C common-symbol compatibility and `configure --without-curses` for bundled samtools. Configuration regenerates three files already present in that archive; their original/current bytes and differences are retained separately. All other original source files are unchanged. Earlier failed build attempts and the configuration source-guard failure remain in the evidence history. These private builds are not portable runtime admission receipts.
+
+For use now, build the project and call the native API with reviewed model inputs. For complete quantification, use an independently permitted RSEM installation and its original instructions. This project has not yet admitted arbitrary supplied runtime homes, references or alignments. Do not treat a native arithmetic result as an RSEM fitted abundance estimate.
+
+Remaining work includes native complete result/reference/model parsing and audits, alignment admission, a typed runtime/setup contract, protected reference/quantification execution, a public command, runnable examples, and packaged end-to-end verification. Reference preparation from genomes/GTF, aligner invocation and allele-specific/pRSEM workflows require their own validation.
+
+The ten paper roles distinguish one precomputed Xena/TCGA resource use, a previously published bulk comparator and the reported quantification workflows. NOIseq/edgeR normalization, DESeq2 testing, downstream aggregation and quality-control tools are recorded separately. Exact historical releases and unstated strand/reference choices are retained.
+
+Upstream: [RSEM repository](https://github.com/deweylab/RSEM), [quantification manual](https://deweylab.github.io/RSEM/rsem-calculate-expression.html), [reference manual](https://deweylab.github.io/RSEM/rsem-prepare-reference.html). RSEM is GPL-3.0; its license is retained with the source and packaged notices.

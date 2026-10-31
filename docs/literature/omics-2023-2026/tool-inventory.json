@@ -2765,7 +2765,7 @@
     "role": "Transcript abundance estimation",
     "current_coverage": "missing",
     "existing_source": null,
-    "coverage_note": "No equivalent workflow identified in the current source inventory.",
+    "coverage_note": "Native model arithmetic is validated. The original reference/quantification runtime is privately tested; a public protected adapter is unfinished, so RSEM stays missing.",
     "paper_count": 10,
     "papers": [
       "P003",
@@ -2780,8 +2780,18 @@
       "P220"
     ],
     "implementation_status": "missing",
-    "implementation_source": null,
-    "implementation_scope": "No equivalent workflow identified in the current source inventory.",
+    "project_adapter_available": false,
+    "canonical_adapter_available": false,
+    "source_roles_reviewed": 10,
+    "source_role_coverage": "quantification-role-coverage.json",
+    "whole_paper_reproduced": false,
+    "implementation_source": "src/main/java/org/jlinalg/sequence/RsemAbundance.java",
+    "native_helper_source": "src/main/java/org/jlinalg/sequence/RsemAbundance.java",
+    "native_abundance_API_available": true,
+    "public_quantification_CLI_available": false,
+    "runtime_admission_available": false,
+    "workflow_validation": "rsem-native-validation.json",
+    "implementation_scope": "Native Java effective lengths, mappability/theta polishing, TPM/FPKM and ordinary EM gene aggregation are available through RsemAbundance. Exact transcript identities, complete populations, noise, poly-A tails, minimum effective length and zero-expression fallback are preserved. Release selection retains the older no-alignable-read failure; the 1.3.2 fix is not substituted for 1.2.28/1.3.0/1.3.1. These methods consume unrounded model quantities; they do not fit EM/Gibbs, recover model parameters from rounded tables, or produce posterior intervals. Five private original releases complete synthetic quantification protocols, but protected reference/model/alignment admission, portable setup, result audits, a public command and examples remain unfinished. RSEM therefore remains missing. Precomputed Xena data and a previously published bulk comparator are distinguished from new quantification. Read RSEM_DEVELOPMENT.md; no genome/aligner, allele-specific, pRSEM, biological or full-paper equivalence is inferred.",
     "validation_note": "Existing overlap/adapters require paper-specific option checks; missing integrations remain pending."
   },
   {
@@ -2843,7 +2853,7 @@
     "role": "Base-call conversion and sample demultiplexing",
     "current_coverage": "missing",
     "existing_source": null,
-    "coverage_note": "Upstream runtime availability and instrument/sample-sheet contracts require separate integration.",
+    "coverage_note": "The separate Illumina license and instrument/data requirements are unresolved. Runtime analysis is skipped and this tool remains missing.",
     "paper_count": 10,
     "papers": [
       "P032",
@@ -2858,8 +2868,17 @@
       "P228"
     ],
     "implementation_status": "missing",
+    "project_adapter_available": false,
+    "canonical_adapter_available": false,
+    "source_roles_reviewed": 10,
+    "source_role_coverage": "quantification-role-coverage.json",
+    "whole_paper_reproduced": false,
     "implementation_source": null,
-    "implementation_scope": "Upstream runtime availability and instrument/sample-sheet contracts require separate integration.",
+    "native_helper_source": null,
+    "runtime_admission_available": false,
+    "runtime_analysis_status": "skipped-license-and-instrument-requirements-unresolved",
+    "workflow_validation": "bcl2fastq-runtime-policy.json",
+    "implementation_scope": "Runtime analysis is SKIPPED while the separate Illumina license and instrument/data requirements are unresolved. No bcl2fastq software was downloaded, installed or executed, and no native converter is claimed. Required action: obtain a permitted installation, confirm applicable license and instrument/data eligibility, and supply the exact release, run folder and sample sheet before runtime admission. General download/install authorization and the earlier FIMO research-use answer do not establish these separate requirements. The ten reviewed uses retain reported releases, the unresolved literal V3 label, mismatch allowances and unstated index/cycle policies. Instrument base calling, FASTQ conversion, barcode demultiplexing and later cell/hashtag processing remain distinct. The tool remains missing; Cell Ranger remains excluded. Read BCL2FASTQ_RUNTIME_STATUS.md.",
     "validation_note": "Existing overlap/adapters require paper-specific option checks; missing integrations remain pending."
   },
   {
