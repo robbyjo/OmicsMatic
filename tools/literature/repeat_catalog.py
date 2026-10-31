@@ -1,6 +1,7 @@
 """Source-validated RepeatMasker development capability and required recovery."""
 import hashlib
 import json
+from catalog_source_integrity import verify_source
 
 
 def repeat_metadata(root, data):
@@ -13,7 +14,7 @@ def repeat_metadata(root, data):
     assert proof['source_role_reviews_applied'] and not proof['whole_paper_reproduced']
     assert len(roles['roles']) == 11 and roles['unsupported_reported_editions_require_explicit_skip']
     for item in proof['source_evidence']:
-        assert hashlib.sha256((root / item['path']).read_bytes()).hexdigest() == item['sha256'], item['path']
+        verify_source(root, data, item['path'], item['sha256'])
     return dict(
         implementation_status='upstream-adapter-validated',
         implementation_source='src/main/java/org/jlinalg/cli/RepeatToolsCli.java',

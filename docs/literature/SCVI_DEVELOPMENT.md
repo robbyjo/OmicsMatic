@@ -1,6 +1,6 @@
 # scvi-tools integration: development status
 
-**The public neural-model adapter is unfinished. scvi-tools remains outside the completed tool count.** The Java APIs below provide input and likelihood audits; model fitting still uses the original upstream software in private validation controls.
+**The development `scvi-tools` command is validated for the exact original 1.3.0 Linux x86_64 CPU profile.** It supplies public fit, reference/query transfer and explicitly reviewed saved-reference workflows. Java provides input, likelihood, registry, tensor, output and resource audits; neural fitting uses the original upstream software. Historical runtimes, other model families and complete paper reproductions remain open.
 
 Two public native Java audit APIs are available:
 
@@ -17,7 +17,7 @@ Private synthetic CPU controls exercise SCVI training, SCANVI reference/query tr
 
 Classification exports must preserve the learned registry/column order, which need not be alphabetical. The synthetic models return `type_B, type_A`; all 128 native probability argmax labels are checked against the original hard predictions using that order.
 
-Protected matrix/covariate admission, application of native gene projections and closed scientific request types are now validated internally. The current CPU profile also has live native runtime admission, complete synthetic health checks and saved-model metadata/state inspection. Remaining public gates are complete saved-model reconstruction and user-workflow verification, command routing and runnable examples. The eleven source-use drafts are validated separately and have not yet changed the public catalog. The prior catalog remains 703 reviewed uses and 203 supporting pointers.
+Protected matrix/covariate admission, native gene projections, closed scientific requests, live runtime admission, saved-model inspection, original strict loading and complete user-workflow output checks are now connected through the public command. Eleven original-paper source reviews are applied, retaining model/version/layer ambiguity and exploratory comparisons. The catalog now has 714 reviewed uses and 207 supporting pointers. This is a scoped development integration; the overall toolbox goal remains active.
 
 The likelihood port retains the [upstream BSD license](../../LICENSES/scvi-tools-BSD-3-Clause.txt), also bundled in the executable JAR under `META-INF/licenses/`.
 
@@ -34,9 +34,9 @@ Metadata rows are joined to every matrix cell by exact ID and written in matrix 
 
 Preparation checks complete input, decoded-byte, sorting, retained-memory and workspace capacities. Source or staged-byte changes and unexpected members invalidate preparation. Hashes check integrity, not authenticity. **`PREPARED_MATRIX_ONLY` and `PREPARED_COVARIATES_ONLY` do not mean a neural analysis completed.**
 
-The earlier input checkpoint passed 31 exact-package tests per JVM and preserved all 416 latent rows and 128 classification rows through five original model controls. The projection/request checkpoint passed 56 exact-package tests per JVM, and the runtime checkpoint passed 100. Current validation passes **114 exact-package tests on each of Windows Java 21/25 and Linux Java 21, with no skips**, including 14 saved-model metadata/state tests. The complete matrix/covariate/projection controls produce 64 identical canonical data and ledger files across those profiles. Six closed scientific requests also serialize identically across JVMs. These are synthetic numerical controls, not paper preprocessing or biological validation.
+The earlier input checkpoint passed 31 exact-package tests per JVM and preserved all 416 latent rows and 128 classification rows through five original model controls. The projection/request checkpoint passed 56 tests per JVM, the runtime checkpoint 100 and the metadata checkpoint 114. Current validation passes **146 exact-package tests on each of Windows Java 21/25 and Linux Java 21, with no skips**, plus strict Java 17 compilation and Javadoc. The preceding complete matrix/covariate/projection controls produce 64 identical canonical data and ledger files across those profiles. Six closed scientific requests also serialize identically across JVMs. These are synthetic numerical controls, not paper preprocessing or biological validation.
 
-**The public model command, complete saved-model reconstruction and complete user-workflow verification remain unfinished. Required action:** keep the dependent public model analysis skipped until those gates exist. Exact CPU runtime admission, native export auditors, reviewed model byte preparation and metadata/state inspection are internal validated components. Review the actual count layer or signed-expression provenance and every conversion ledger before downstream use. Current replay controls use `benchmark=False` and retain upstream performance warnings; do not infer GPU or large-study performance from these fixtures.
+**Required action:** use the current source build and exact admitted CPU profile, review the actual count layer or signed-expression provenance, and inspect every conversion ledger and original warning. A historical release, Python environment or unsupported model is not silently substituted. Missing or forbidden requirements leave the affected analysis skipped. Replay controls use `benchmark=False`; do not infer GPU or large-study performance from these fixtures. See the [runnable examples and setup instructions](../../examples/scvi-workflow/README.md).
 
 ## Applied gene projections and closed model requests
 
@@ -48,7 +48,7 @@ Internal `ScviModelRequest` keeps count networks, SysVI signed-expression networ
 
 The six Java requests have been consumed by **eight actual original model stages**: SCVI, SCANVI reference/query transfer, both SysVI priors and the shared-gene SCVI/SCANVI/query sequence. All 640 latent rows (5,280 values) and 256 classification rows match previous full original controls bit for bit. Learned class order remains `type_B, type_A`. All eight stages retain finite training metric histories through the original dictionary logger. The new candidate retains every one of the preceding projection JAR's 18,471 members byte for byte and adds only the request classes.
 
-These components remain internal. `PREPARED_GENE_PROJECTION_ONLY`, `runtime_admission_required` and `model_analysis_completed=false` do not certify a completed public neural analysis.
+These typed Java components remain internal and are now consumed by the closed public recipe command. `PREPARED_GENE_PROJECTION_ONLY`, `runtime_admission_required` and `model_analysis_completed=false` do not certify a completed neural analysis on their own.
 
 ## Verified SysVI 1.3.0 source boundaries
 
@@ -68,13 +68,13 @@ The fixed health run actually fits SCVI, SCANVI reference/query transfer and bot
 
 Torch's original distributed JIT import creates a private temporary import directory and a generated `_remote_module_non_scriptable.py`. The probe captures the complete directory before original cleanup, and Java checks every captured member. Arbitrary external Python import paths remain invalid. Owned process tests also demonstrate wall-time failure, cleanup after a parent leaves a worker alive, and workspace-limit failure; all owned workers finish terminal. Limits distinguish hard per-process AS/CPU/file/nofile bounds from sampled aggregate RSS and monitored workspace/process/thread bounds.
 
-`ScviOutputAudit` provides complete ordered checks for latent values, probabilities, learned class headers, hard labels, train/validation/test cell membership and metric/epoch histories. It rejects missing/extra/reordered cells, nonfinite or undeclared-precision output, incomplete probability mass, duplicate split membership and extra records. A nonfinite value in the final row of the actual health export is rejected. These APIs still need wiring to the complete user model workflow and its admitted registry.
+`ScviOutputAudit` provides complete ordered checks for latent values, probabilities, learned class headers, hard labels, train/validation/test cell membership and metric/epoch histories. It rejects missing/extra/reordered cells, nonfinite or undeclared-precision output, incomplete probability mass, duplicate split membership and extra records. A nonfinite value in the final row of the actual health export is rejected. The public workflow binds these checks to each admitted dataset and actual saved-model registry, including complete original reload comparisons.
 
 **Saved models require explicit source trust.** Internal `ScviModelBytes` requires a bounded named source review, an exact SHA-256 and an explicit decision permitting original pickle code execution. It copies only the selected binary file, retains original/copy/review hashes, charges source and protected bytes together and refuses subsequent changes or unexpected members. Unreviewed/declined loading stops before a preparation directory is created. Five self-created original health models pass this byte preparation. **No third-party model was opened by these controls.**
 
-**Required action:** review the genuine source of a model before authorizing its loader. A hash proves integrity, not authenticity. `PREPARED_REVIEWED_MODEL_BYTES_ONLY` does not prove the model's actual release, family, gene order, registries, architecture or precision. Those values must be inspected through the admitted original provider and compared with the request before fitting or query transfer. If trust cannot be established, leave dependent model loading skipped. The complete public saved-model workflow remains unfinished.
+**Required action:** review the genuine source of a model before authorizing its loader. A hash proves integrity, not authenticity. `PREPARED_REVIEWED_MODEL_BYTES_ONLY` does not prove the model's actual release, family, gene order, registries, architecture or precision. The public query workflow inspects those values through the admitted original provider, compares them with the request and then requires original strict loading and complete output checks. If trust cannot be established, leave dependent model loading skipped.
 
-Missing, forbidden or unsupported exact runtimes are distinguished from integrity/execution errors. The eventual public workflow must report the former as **SKIP3**, preserve the affected analysis as skipped and explain how to supply the permitted profile; it must report the latter as **FAIL2**, retain diagnostics and require a new output path. Current native methods expose typed exceptions; the public command's unified warning/exit handling and copyable recipes remain to be implemented. Failed initial serializer and temporary-import admission attempts are retained rather than relabeled as passed.
+Missing, forbidden, unsupported or untrusted required capabilities produce **SKIP3** with prominent cause and recovery. Input, integrity, capacity and execution failures produce **FAIL2**, retain diagnostics and require a new output path. The public command writes root `WARNINGS.md` and `analysis-status.json`; a failed/skipped requested workflow has no successful root manifest. Failed initial serializer and temporary-import admission attempts are retained rather than relabeled as passed.
 
 ## Saved-model metadata and complete state inspection
 
@@ -84,4 +84,25 @@ Java independently checks the complete tensor population, including shape, dtype
 
 A fresh original CPU control trains and reloads all five health models, then inspects their explicitly reviewed checkpoints: SCVI, SCANVI reference, transferred SCANVI query, SysVI with a normal prior and SysVI with a VampPrior. The native audit covers all **230 tensor entries, 7,657 tensor elements and 30,708 tensor bytes**, preserves the `type_B, type_A` class order and confirms the registered 32 reference or eight query cells. No third-party model is loaded. A failed earlier helper-name collision is retained separately; the successful retry uses a new output directory.
 
-**`VERIFIED_MODEL_METADATA_ONLY` is not completed inference or a complete original neural-network reconstruction. Required action:** retain explicit source trust and require the original strict model loader and complete output checks before any future public query or model analysis. The public adapter remains unfinished and scvi-tools remains outside the completed tool count.
+**`VERIFIED_MODEL_METADATA_ONLY` is not completed inference or a complete original neural-network reconstruction. Required action:** retain explicit source trust and use the complete public workflow, which also requires the original strict model loader and full output checks. Do not treat an internal preparation/metadata receipt as a completed model analysis.
+
+## Public workflows and current validation
+
+Build the current source executable JAR and run:
+
+```bash
+java -jar build/cli/omicsmatic-0.3.7.jar scvi-tools --help
+java -jar build/cli/omicsmatic-0.3.7.jar scvi-tools --recipe FILE.json --out NEW_DIRECTORY
+```
+
+Closed JSON operations are `CHECK`, `FIT`, `TRANSFER` and `QUERY`. The [example folder](../../examples/scvi-workflow/README.md) supplies raw-count and signed-expression fixtures, shared-gene transfer, explicit VampPrior indices, saved-model trust fields, a hash-checked private dependency setup and instructions for every output/status. Windows users run Linux Java inside WSL. `CHECK` executes fixed synthetic runtime health and explicitly performs no user study analysis.
+
+Nine actual public model-workflow invocations cover **13 original model stages, 272 latent rows (816 float32 values) and 104 classification rows**. These totals include two complete replays: latent/probability/label audits, full history TSV bytes and split TSV bytes remain identical to the prior frozen candidate. SCVI, SCANVI reference/query, both SysVI priors and separately reviewed saved references pass original save/reload and native complete state/output checks.
+
+Two additional reference fixtures use genuine original numeric batch/site/label registries and different field names. Public queries preserve integer class order `2, 1` through four explicit field renames. A known-label SCVI reference with NB likelihood and logistic-normal latent variables passes unfrozen query transfer; a SCANVI reference with a 12-node, two-layer custom classifier passes annotation transfer. Numeric/string category types and the reviewed target values must survive original setup; an upstream coercion or omitted category invalidates the result. SCVI references with label-dependent dispersion require known labels, without inventing SCANVI unlabeled-classifier semantics.
+
+The public command records the executable JAR SHA-256 and Java platform identity before/after analysis. All sibling stages, prepared inputs, runtime-health records and prior analysis outputs share the monitored process workspace budget; excluded ancestor directories are charged too. Actual controlled helpers demonstrate a valid combined two-MiB workspace and a four-MiB combined workspace rejected by a three-MiB limit, with all owned workers terminal. Hard per-process limits and sampled/monitored bounds remain distinct.
+
+A fresh private installation of **82 exact official artifacts** passes `pip check` and the public live `CHECK`, without changing the shared system standard library. The [requirements and artifact list](../../examples/scvi-workflow/runtime-artifacts.json) preserve URLs and SHA-256 hashes. Installation remains conditional on the operating environment permitting it; a receipt does not authenticate the installation or host. Historical 1.0.3/1.2.0, Python 3.10 and GPU profiles remain unadmitted.
+
+The first public controller's final source guard caught a reused helper filename. All five frozen-JAR scientific analyses had exited zero and used the unchanged original helper class. The exact source was restored, the new helper was separately named, and an independent audit verified all 803 retained members and complete outputs. The failed controller remains retained. The refined candidate then passes its own source guard, full replays, numeric queries and three-JVM tests. This recovery does not relabel the failed controller as passed.

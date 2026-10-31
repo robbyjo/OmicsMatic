@@ -162,7 +162,7 @@ Nature · 2025-12-17 · [DOI](https://doi.org/10.1038/s41586-025-09875-2) · [Pr
 | Scanpy | Single-cell expression processing and analysis. | Methods / Analysis of 10x Visium data / Scoring of the fetal fallopian tube decreasing signature in adult data |
 | SCENIC+ | Multiomic regulatory-network tools and motif reference resources. | Methods / Analysis of scATAC–seq data / Integrative analysis of scRNA-seq and scATAC–seq data |
 | Scrublet | Called doublets per library using Scrublet with a cited two-step diffusion procedure; the source reports a greater-than-40-percent Scrublet-score filter alongside gene and mitochondrial QC. | Methods / Analysis of scRNA-seq data / Per-library analyses |
-| scVI | Variational single-cell integration or expression modelling. | Methods / Analysis of scRNA-seq data / Integration of scRNA-seq libraries |
+| scVI | Applied scVI to three integrated developmental views using 7,500 highly variable genes, 30 latent variables and two hidden layers to mitigate donor batch effects. | Methods / Analysis of scRNA-seq data / Integration of scRNA-seq libraries |
 | Seurat | Used for cell clustering; marker or differential-expression analysis; cell annotation. | Methods / Analysis of scRNA-seq data / Cell–cell interaction analysis from scRNA-seq data |
 | Slingshot | Lineage and pseudotime inference. | Methods / Analysis of scRNA-seq data / Trajectory inference and differential expression along trajectories |
 | souporcell | Genotype-based cell demultiplexing. | Methods / Analysis of scRNA-seq data / Per-library analyses |
@@ -372,7 +372,7 @@ Nature · 2026-09-23 · [DOI](https://doi.org/10.1038/s41586-026-10836-6) · [Pr
 | PEER | Latent confounder estimation. | Methods / Training of snTIMs / Genotype and gene expression quality control for TIM training / Gene expression quality control |
 | PLINK | Used PLINK for several separate genotype workflows: an ancestry-specific 1000 Genomes LD panel for GWAS-summary imputation; MVP genotype QC and sex checks; ROSMAP sample/variant QC and IBD relatedness; and staged FACS-MG QC, LD pruning and genetic PCs. The LD panel reports --ld-window-kb 1000000, --ld-window 1000, --maf 0.01 and --ld-window-r2 0. FACS-MG reports --indep-pairwise 1000 10 0.02, followed by 50 5 0.02. | Methods / I-TWAS and snGReX-PheWAS in MVP / MVP genotype quality control |
 | PrediXcan | Genetically predicted expression association. | Methods / Training of snTIMs / Genotype and gene expression quality control for TIM training / Training of cell-type-specific PrediXcan models |
-| scVI | Variational single-cell integration or expression modelling. | Methods / Out-of-sample validation of PsychAD snTIMs / Validation of class-level PsychAD snTIMs in ROSMAP |
+| scVI | Used shared genes and scvi-tools reference models for PsychAD-to-ROSMAP class/subclass label transfer: five hidden layers, ten latent variables, annotation training for 20 epochs with at least 100 cells/cluster/epoch, then 100 transfer epochs. | Methods / Out-of-sample validation of PsychAD snTIMs / Validation of class-level PsychAD snTIMs in ROSMAP |
 | SHAPEIT | Genotype haplotype phasing. | Methods / I-TWAS and snGReX-PheWAS in MVP / MVP genotype quality control |
 | smartpca | Genetic ancestry principal components. | Methods / I-TWAS and snGReX-PheWAS in MVP / MVP genotype quality control |
 
@@ -418,7 +418,7 @@ Nature · 2026-09-23 · [DOI](https://doi.org/10.1038/s41586-026-10271-7) · [Pr
 | scDRS | Single-cell disease relevance scoring. | Methods / Single-cell polygenic disease risk score |
 | SCENIC+ | Multiomic regulatory-network tools and motif reference resources. | Methods / Inference of transcriptional regulators of pseudotime gene modules |
 | Scrublet | Used Scrublet 0.2.3 with 10 principal components independently per batch; subsequent downsampling to 1000 UMIs, CPM and log transformation were separate. | Methods / Integrated analysis of lifespan replication dataset / Integration and annotation |
-| scVI | Variational single-cell integration or expression modelling. | Methods / Integrated analysis of lifespan replication dataset / Integration and annotation |
+| scVI | Used scvi-tools 1.2.0 to transfer class and subclass annotations from an in-house reference cohort after multi-dataset snRNA-seq preprocessing. | Methods / Integrated analysis of lifespan replication dataset / Integration and annotation |
 | STARsolo | Aligned pooled multiplexed single-nucleus RNA-seq reads to hg38 using STARsolo 2.7.9a before genotype-based donor demultiplexing and concordance checks. | Methods / Preprocessing of the snRNA-seq dataset / Computational processing and demultiplexing |
 | UMAP | Produced an exploratory low-dimensional representation of the measured profiles. | Methods / Preprocessing of the snRNA-seq dataset / UMAP |
 | variancePartition | Expression variance partitioning. | Methods / Quantification of variance in age |
@@ -481,7 +481,7 @@ Nature · 2026-09-23 · [DOI](https://doi.org/10.1038/s41586-025-09573-z) · [Pr
 | Scanpy | Single-cell expression processing and analysis. | Methods / Processing of snRNA-seq data / Alignment |
 | scDRS | Single-cell disease relevance scoring. | Methods / Genetic heritability analysis of polygenic risk |
 | Scrublet | Applied Scrublet to infer further doublets after initial quality filtering, normalization/log transformation and an initial Leiden clustering. | Methods / Processing of snRNA-seq data / Doublet detection |
-| scVI | Variational single-cell integration or expression modelling. | Methods / Spatial validation of cellular taxonomy / Class label prediction |
+| scVI | Used scANVI for RADC-to-Xenium label transfer after restricting the reference to shared panel genes: five layers,30 latent variables,20 reference epochs with at least 100 cells/cluster/epoch and 100 transfer epochs. | Methods / Spatial validation of cellular taxonomy / Class label prediction |
 | Squidpy | Spatial neighborhood and expression analysis. | Methods / Spatial validation of cellular taxonomy / Definition of rough laminar layers within tissue |
 | STAR | Splice-aware bulk RNA read alignment and optional raw gene counts. | Methods / Processing of snRNA-seq data / Alignment |
 | UMAP | Produced an exploratory low-dimensional representation of the measured profiles. | Methods / Defining cellular taxonomy using iterative clustering / Hierarchical cellular taxonomy |
@@ -1189,7 +1189,7 @@ Nature · 2023-12-13 · [DOI](https://doi.org/10.1038/s41586-023-06812-z) · [Pr
 | DoubletFinder | Single-cell doublet detection. | Methods / scRNA-seq / Sequencing data processing and QC |
 | Leiden | Grouped observations into communities using a neighborhood graph. | Methods / scRNA-seq / Joint clustering 10xv2 and 10xv3 datasets |
 | limma | Linear modelling and empirical-Bayes differential analysis. | Methods / scRNA-seq / Differential gene expression analysis |
-| scVI | Variational single-cell integration or expression modelling. | Methods / scRNA-seq / Imputation |
+| scVI | Explored nonlinear scVI/scANVI models on downsampled data with substantially enlarged neural networks while investigating performance on a large complex dataset. | Methods / scRNA-seq / Imputation |
 | UMAP | Produced an exploratory low-dimensional representation of the measured profiles. | Methods / scRNA-seq / Imputation |
 | WGCNA | Weighted coexpression networks and modules. | Methods / scRNA-seq / Defining transcription factor co-expression gene modules |
 
@@ -1254,7 +1254,7 @@ Nature · 2026-08-26 · [DOI](https://doi.org/10.1038/s41586-026-10964-z) · [Pr
 | PyWGCNA | Used PyWGCNA for coexpression-network analysis in the single-cell workflow. | Methods / snRNA-seq analysis |
 | Scanpy | Single-cell expression processing and analysis. | Methods / Python packages for data analysis |
 | Scrublet | Called doublets using scanpy.pp.scrublet with defaults in Scanpy 1.10.4; later Pearson residuals and SysVI analyses were separate. | Methods / snRNA-seq analysis |
-| scVI | Variational single-cell integration or expression modelling. | Methods / Python packages for data analysis |
+| scVI | Reported scvi-tools 1.3.0 and applied SysVI to Pearson-normalized expression and about 3000 highly variable genes, using 100-200 epochs for all-cell integrations and 5-30 epochs for individual cell types selected by reconstruction-loss behavior. | Methods / Python packages for data analysis |
 | SysVI | Used SysVI on Pearson-normalized highly variable genes, with 100-200 training epochs for total clusters and 5-30 for individual cell types. | Methods / snRNA-seq analysis |
 | UMAP | Produced an exploratory low-dimensional representation of the measured profiles. | Methods / snRNA-seq analysis |
 | WGCNA | Weighted coexpression networks and modules. | Methods / snRNA-seq analysis |
@@ -1282,7 +1282,7 @@ Nature · 2023-12-13 · [DOI](https://doi.org/10.1038/s41586-023-06638-9) · [Pr
 | --- | --- | --- |
 | Cell Ranger | Reported Cell Ranger v4.0.0 demultiplexing/alignment for nuclei libraries and v7.0 alignment of scRNA/snRNA datasets to species-specific transcriptomes to obtain BAMs. | Methods / snRNA-seq / Library preparation |
 | Harmony | Batch integration of cell embeddings. | Methods / Statistics and reproducibility |
-| scVI | Variational single-cell integration or expression modelling. | Methods / Statistics and reproducibility |
+| scVI | Repeated bipolar-cell orthotype analysis using scVI as an alternative to Seurat, alongside Harmony and Liger, and observed additional species-specific orthotypes and unresolved distinctions. | Methods / Statistics and reproducibility |
 | Seurat | Single-cell QC, normalization, integration, clustering or annotation. | Methods / Computational analysis |
 | UMAP | Produced an exploratory low-dimensional representation of the measured profiles. | Methods / Computational analysis / Integration and clustering to identify species-specific types for photoreceptors, horizontal cells, bipolar cells and RGCs |
 | velocyto | Spliced/unspliced counting and RNA velocity. | Methods / Preprocessing of transcriptomic data |
@@ -1594,7 +1594,7 @@ Nature Genetics · 2026-09-30 · [DOI](https://doi.org/10.1038/s41588-026-02756-
 | Leiden | Grouped observations into communities using a neighborhood graph. | Methods / Performance metrics |
 | Scanpy | Single-cell expression processing and analysis. | Methods / Framework architecture / Software tools for analysis |
 | scArches | Single-cell reference transfer. | Methods / Label transfer and uncertainty quantification |
-| scVI | Variational single-cell integration or expression modelling. | Methods / Mapping procedure |
+| scVI | Prepared atlas query data for scVI/scANVI by zero-padding missing genes and sorting to reference order, registering data fields and loading query data into the reference model. | Methods / Mapping procedure |
 | UMAP | Produced an exploratory low-dimensional representation of the measured profiles. | Methods / Number of epochs for mapping |
 
 XML SHA-256: `f02f643499d1a41663176713673b15200b1b4478947d7f7f0d3ad1785ff804f0`. Exact evidence paragraph hashes and locators are in [papers.json](papers.json).
@@ -1634,7 +1634,7 @@ Nature Genetics · 2024-11-22 · [DOI](https://doi.org/10.1038/s41588-024-01961-
 | scArches | Single-cell reference transfer. | Methods / Reference-based integration of snRNA-seq datasets |
 | scDRS | Single-cell disease relevance scoring. | Methods / Polygenic disease enrichment analysis in ST and snRNA-seq |
 | Scrublet | Applied Scrublet 0.2.3 with defaults per experiment after splitpipe and CellBender 0.2.0; percentile-based doublet/count/mitochondrial QC followed. | Methods / Preprocessing gene expression data |
-| scVI | Variational single-cell integration or expression modelling. | Methods / Initial snRNA-seq data analysis |
+| scVI | Trained scVI for 50 epochs with two 128-node hidden layers,30 latent dimensions and dropout 0.1, adjusting the reported batch and continuous/categorical sample, diagnosis, region, age, mitochondrial, UMI, PMI and RIN covariates before Scanpy clustering. | Methods / Initial snRNA-seq data analysis |
 | Seurat | Single-cell QC, normalization, integration, clustering or annotation. | Methods / ST clustering analysis |
 | Space Ranger | Spatial transcriptomics read processing. | Methods / Preprocessing gene expression data |
 | splitpipe | Processed single-cell reads with splitpipe before CellBender and per-experiment doublet detection. | Methods / Preprocessing gene expression data |
@@ -1798,7 +1798,7 @@ Nature Genetics · 2024-11-20 · [DOI](https://doi.org/10.1038/s41588-024-01993-
 | popV | Consensus single-cell type annotation. | Methods |
 | Scanpy | Single-cell expression processing and analysis. | Methods |
 | scArches | Single-cell reference transfer. | Methods / Model parameters / scVI |
-| scVI | Variational single-cell integration or expression modelling. | Methods |
+| scVI | Used scvi-tools 1.0.3 in popV: scVI embeddings for downstream kNN and scANVI reference/query label prediction, with pretrained reference mappings through scArches. Reported scVI settings include dropout 0.05, three layers,20 latent variables, NB likelihood, encoded covariates, layer normalization on both networks and 20 KL-warmup epochs. | Methods |
 | Seurat | Single-cell QC, normalization, integration, clustering or annotation. | Methods / Model parameters / Seurat label transfer |
 | UMAP | Produced an exploratory low-dimensional representation of the measured profiles. | Methods / Model parameters |
 
@@ -3119,7 +3119,7 @@ Nature Genetics · 2026-07-30 · [DOI](https://doi.org/10.1038/s41588-026-02665-
 | Scanpy | Single-cell expression processing and analysis. | Methods / Bioinformatic analysis: scRNA-seq |
 | Scrublet | Used Scrublet 0.2.3 to remove predicted doublets in the single-cell preprocessing workflow. | Methods / Bioinformatic analysis: scRNA-seq |
 | scVelo | RNA velocity analysis. | Methods / Bioinformatic analysis: scRNA-seq |
-| scVI | Variational single-cell integration or expression modelling. | Methods / Bioinformatic analysis: spatial single-cell transcriptomics |
+| scVI | Used raw CosMx counts for scVI batch correction with five layers,30 latent variables,max 1000 epochs and learning rate 0.001, then used scANVI with reference/CosMx annotations to recalculate the latent representation for further neighbor calling and annotation. | Methods / Bioinformatic analysis: spatial single-cell transcriptomics |
 | Squidpy | Spatial neighborhood and expression analysis. | Methods / Bioinformatic analysis: spatial single-cell transcriptomics |
 | UMAP | Produced an exploratory low-dimensional representation of the measured profiles. | Methods / Bioinformatic analysis: scRNA-seq |
 
