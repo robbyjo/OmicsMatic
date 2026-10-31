@@ -62,4 +62,9 @@ class ScviProjectionTest {
     @Test void differentLikelihoodInputKindsNeverBecomeAnAutomaticConversion()throws Exception{
         var raw=source(List.of("a"),"1 1 1\n1 2 1\n",ScviMatrix.Kind.RAW_COUNTS);var signed=source(List.of("a"),"1 1 -1\n1 2 1\n",ScviMatrix.Kind.SIGNED_EXPRESSION);assertThrows(IOException.class,()->ScviProjection.pair(raw,signed,ScviGeneProjection.Policy.EXACT_ORDER,LIMITS,out(),()->{}));
     }
+    @Test void geneCeilingDoesNotReserveMemoryForUnobservedGenes()throws Exception{
+        var d=new ScviMatrix.Limits(DATA.inputBytes(),DATA.decodedBytes(),DATA.workspaceBytes(),DATA.retainedBytes(),DATA.files(),1_000_000,DATA.cells(),DATA.entries(),DATA.sortRecords(),DATA.lineCharacters());
+        var p=ScviProjection.query(genes("ga\ngb\ngc\n"),query(),ScviGeneProjection.Policy.PAD_MISSING_AND_DROP_EXTRA,new ScviProjection.Limits(LIMITS.workspaceBytes(),LIMITS.members(),LIMITS.retainedBytes(),d),out(),()->{});
+        assertEquals(List.of("ga","gb","gc"),p.query().genes());p.verify(()->{});
+    }
 }

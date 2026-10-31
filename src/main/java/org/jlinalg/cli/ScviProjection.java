@@ -36,7 +36,8 @@ final class ScviProjection {
     }
     static Prepared query(ScviText.Source referenceGenes,ScviMatrix.Prepared query,ScviGeneProjection.Policy policy,Limits limits,Path out,Runnable check)throws IOException{
         if(policy==ScviGeneProjection.Policy.SHARED_BEFORE_TRAINING)throw new IOException("A fitted reference cannot be shrunk to shared query genes; select shared genes before reference fitting");
-        List<ScviMatrix.Prepared> parents=List.of(query);validate(parents,out,limits,limits.derived().genes(),check);
+        // The configured gene ceiling is not an allocation. Count actual protected IDs below.
+        List<ScviMatrix.Prepared> parents=List.of(query);validate(parents,out,limits,0,check);
         var work=workspace(out,parents,limits,check);work.directory("protected");work.directory("bridge");var genes=work.copy(referenceGenes,"protected/reference-genes.input",limits.derived().inputBytes());
         List<String> order=geneIds(genes,parents,limits,check);var plan=plan(order,query.genes(),policy);
         var target=apply(query,plan,"query",work,limits,check,baseRetained(parents,order));
@@ -85,6 +86,7 @@ final class ScviProjection {
         try(var out=work.writer(role+"-removed-genes.tsv")){out.write("source_index_0based\tgene_id\n");for(int i=0;i<target.length;i++)if(target[i]<0)out.write(i+"\t"+source.genes().get(i)+"\n");}
         try(var out=work.writer(role+"-cell-impact.tsv")){out.write("cell_id\tbefore_float64_source_order_sum\tretained_float64_source_order_sum\tdropped_float64_source_order_sum\n");for(int i=0;i<before.length;i++)out.write(source.cells().get(i)+"\t"+before[i]+"\t"+retained[i]+"\t"+dropped[i]+"\n");}
         work.refresh();var d=limits.derived();long remainingRetained=limits.retainedBytes()-retainedOutsideChild;
+        if(work.remainingBytes()<1||work.remainingMembers()<12||remainingRetained<1)throw new IOException("Complete scVI projection capacity leaves no room for projected matrix admission");
         var childLimits=new ScviMatrix.Limits(d.inputBytes(),d.decodedBytes(),Math.min(d.workspaceBytes(),work.remainingBytes()),Math.min(d.retainedBytes(),remainingRetained),Math.min(d.files(),work.remainingMembers()),d.genes(),d.cells(),d.entries(),d.sortRecords(),d.lineCharacters());
         var request=new ScviMatrix.Request(new ScviText.Source(work.contained(matrix),ScviText.Encoding.PLAIN_UTF8),new ScviText.Source(work.contained(genes),ScviText.Encoding.PLAIN_UTF8),new ScviText.Source(work.contained(cells),ScviText.Encoding.PLAIN_UTF8),source.request().kind(),ScviMatrix.Precision.EXACT_FLOAT32,ScviMatrix.Duplicates.REJECT,childLimits);
         // Re-admission sorts mapped columns, retains every cell, and rejects any now-empty raw library.
