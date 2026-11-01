@@ -1,0 +1,39 @@
+# Copyright (C) 2026 JLinAlg contributors; SPDX-License-Identifier: GPL-3.0-or-later
+"""Verified scoped SHAPEIT common-stage catalog metadata and explicit recovery."""
+import json
+from shapeit_managed_validation import verify
+from catalog_source_integrity import verify_source
+
+
+def shapeit_metadata(root,data):
+    verify(root,data,emit=False)
+    proof=json.loads((data/'shapeit-managed-common-validation.json').read_bytes())
+    roles=json.loads((data/'shapeit-role-coverage.json').read_bytes())
+    assert roles['status']=='passed-ten-SHAPEIT-primary-source-role-reviews' and roles['applied'] is True and roles['reviewed_roles']==10 and roles['whole_paper_reproduced'] is False
+    verify_source(root,data,'tools/literature/reviewed-uses.json',roles['reviews_sha256'])
+    return dict(implementation_status='upstream-adapter-validated',
+        implementation_source='src/main/java/org/jlinalg/cli/ShapeitToolsCli.java',
+        coverage_note='The pre-expansion inventory lacked SHAPEIT. Current development source provides the validated source-c34d ordinary diploid-GT common-stage workflow; source-paper-specific editions and remaining stages retain their separate unfinished scope.',
+        implementation_scope='Original pinned SHAPEIT5 c34d (banner 5.1.1) ordinary diploid-GT cohort/reference/scaffold common phasing through shapeit-tools. Indexed BGZF BCF2.2 with supplied CSI, complete raw-record/original-join census, source selection, native genetic-map and genotype checks, private 32-member runtime/loader, owned process limits and full output audits. Explicit declared-count and missing-call policies; original reference-assisted AN is preserved with separately verified target AC/AN. Setup adopts existing permitted exact members and does not download/build. Linux x86_64 AVX2/FMA Java is required. SKIP3 unavailable/forbidden runtime or unsupported capability; FAIL2 invalid input,integrity,execution,capacity or finalization. Read SHAPEIT_COMMON_WORKFLOW.md and SHAPEIT_DEVELOPMENT.md. SHAPEIT2/4, historical 5.0.0/local-contig posterior,VCF/bare-BCF conversion,binary,pedigree/haploid/phase-set,rare/ligation,phase accuracy and whole-paper reconstruction remain unfinished.',
+        validation_note='380 strict native/replay tests on Windows Java 21/25 and Linux Java 21,128 MiB,zero skips. 20 exact-packaged protocols include 9 actual fits, 6 scientific input/policy refusals, 4 unsupported transport skips and 1 malformed-compression failure. All 1,131 selected rows, 41,470 target cells, 30,160 reference haplotype cells and 573 scaffold constraints are retained; 9 portable replays match both count tables byte for byte. 377 reference-assisted rows retain the original AN departure. 14 process and 9 runtime-tamper controls retain failure/cleanup evidence;ten primary-source roles remain reviewed. Require COMPLETED.json and matching manifest/file hashes. No release,deployment,biological phase-accuracy or whole-paper parity claim.',
+        project_adapter_available=True,canonical_adapter_available=False,development_adapter_cli='shapeit-tools',
+        development_candidate=proof['packaged_candidate'],development_candidate_sha256=proof['packaged_candidate_sha256'],
+        workflow_validation='shapeit-managed-common-validation.json',source_role_coverage='shapeit-role-coverage.json',source_roles_reviewed=10,
+        whole_paper_reproduced=False,runtime_profile='shapeit5-c34d-common-linux-x86_64',
+        installation_mode=proof['installation_mode'],download_source_build_installer_available=False,
+        native_helpers=['src/main/java/org/jlinalg/genetics/ShapeitGenotypes.java','src/main/java/org/jlinalg/genetics/ShapeitGeneticMap.java','src/main/java/org/jlinalg/genetics/ShapeitCommonVariants.java','src/main/java/org/jlinalg/cli/ShapeitBcf.java','src/main/java/org/jlinalg/cli/ShapeitRawIndex.java','src/main/java/org/jlinalg/cli/ShapeitJoinedRecords.java'])
+
+
+PAPER_SCOPE='The current source-c34d command covers ordinary diploid-GT common-stage fitting. This paper\'s reported edition, supplied phase, rare/ligation/posterior, downstream imputation and full pipeline retain their own source-specific requirements; the paper workflow is not marked reproduced. Read SHAPEIT_COMMON_WORKFLOW.md and the retained source-role review.'
+
+SHAPEIT_WARNING='''**SHAPEIT COMMON STAGE: SOURCE AN, EXACT RUNTIME AND REQUIRED RECOVERY.** Current development `shapeit-tools` provides source-c34d ordinary diploid-GT common fitting for indexed BGZF BCF2.2. Read [SHAPEIT_COMMON_WORKFLOW.md](../SHAPEIT_COMMON_WORKFLOW.md) and SHAPEIT_DEVELOPMENT.md. Setup copies32existing permitted exact members; it does not download or compile. Missing/forbidden exact runtime or unsupported capability requires **SKIP3 and a skipped analysis**; invalid input,integrity,execution,capacity or finalization requires **FAIL2 with no admitted result**. Preserve failed/provisional output,correct the named cause and rerun to a **NEW output**. Require COMPLETED.json and matching manifest/file hashes.
+
+**Original reference-assisted AN includes reference haplotypes while GT and AC contain targets only.** Preserve original BCF and use verified target_AC/target_AN in target-allele-counts.tsv for target frequencies. Source whole-call imputation can discard an observed allele in a partially missing target call; review that exposure. A configured scaffold applying zero constraints is refused before fitting. Native replay does not launch a phaser. Historical2/4/5.0.0/local-contig singleton-PP,transport conversion,binary,pedigree/haploid/phase-set,rare/ligation and whole-paper/phase-accuracy reconstruction remain unfinished. Cell Ranger remains excluded.
+
+'''
+
+SHAPEIT_ACTIONS='''<section id="shapeit-required-actions" style="border-left:5px solid #c78417;background:#c7841712;padding:1.2rem;margin:1.5rem 0;line-height:1.6;overflow-wrap:anywhere"><h2>SHAPEIT common stage: target counts, exact runtime and recovery</h2>
+<p>Use current development <code>shapeit-tools</code> for source-c34d ordinary diploid-GT common fitting with indexed BGZF BCF2.2. Read <code>SHAPEIT_COMMON_WORKFLOW.md</code>, <code>SHAPEIT_DEVELOPMENT.md</code> and <code>shapeit-managed-common-validation.json</code>. Linux x86_64 AVX2/FMA Java is required. Export setup with <code>shapeit-tools --export-runtime-setup NEW_DIRECTORY</code>; the adopter copies 32 existing permitted exact members and <strong>does not download or compile</strong>. Installation alone admits no scientific analysis.</p>
+<p><strong>Reference-assisted AN includes references while output GT and AC contain targets only.</strong> Preserve original BCF and use verified <code>target_AC/target_AN</code> in <code>target-allele-counts.tsv</code> for target frequencies. Source whole-call imputation may discard an observed allele in a partially missing call; review the reported exposure. A supplied scaffold must apply constraints under this admission.</p>
+<p><strong>Unavailable/forbidden exact runtime or unsupported capability: SKIP3; skip dependent analysis. Invalid input, integrity, execution, capacity or finalization: FAIL2; no public result is admitted.</strong> Required action: inspect <code>WARNINGS.md</code>, <code>session.json</code> and retained input/process/output audits. Preserve failed/provisional files, correct the named cause and rerun to a <strong>NEW output</strong>. Require <code>COMPLETED.json</code> and matching manifest/file hashes.</p>
+<p>Nine actual fits and nine portable data/output replays retain all 573 scaffold constraints and 377 reference-assisted AN departures. The 380 native/replay tests on three JVMs and 20 packaged protocols certify this scoped development workflow. Historical SHAPEIT2/4/5.0.0 and local-contig singleton-PP, conversion, binary, pedigree/haploid/phase-set, rare/ligation, phase accuracy and whole-paper pipelines remain unfinished. No release or deployment is claimed; Cell Ranger remains excluded.</p></section>'''

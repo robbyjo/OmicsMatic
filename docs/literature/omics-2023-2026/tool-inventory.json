@@ -2831,7 +2831,7 @@
     "role": "Genotype haplotype phasing",
     "current_coverage": "missing",
     "existing_source": null,
-    "coverage_note": "No equivalent workflow identified in the current source inventory.",
+    "coverage_note": "The pre-expansion inventory lacked SHAPEIT. Current development source provides the validated source-c34d ordinary diploid-GT common-stage workflow; source-paper-specific editions and remaining stages retain their separate unfinished scope.",
     "paper_count": 10,
     "papers": [
       "P019",
@@ -2845,10 +2845,30 @@
       "P184",
       "P210"
     ],
-    "implementation_status": "missing",
-    "implementation_source": null,
-    "implementation_scope": "No equivalent workflow identified in the current source inventory.",
-    "validation_note": "Existing overlap/adapters require paper-specific option checks; missing integrations remain pending."
+    "implementation_status": "upstream-adapter-validated",
+    "implementation_source": "src/main/java/org/jlinalg/cli/ShapeitToolsCli.java",
+    "implementation_scope": "Original pinned SHAPEIT5 c34d (banner 5.1.1) ordinary diploid-GT cohort/reference/scaffold common phasing through shapeit-tools. Indexed BGZF BCF2.2 with supplied CSI, complete raw-record/original-join census, source selection, native genetic-map and genotype checks, private 32-member runtime/loader, owned process limits and full output audits. Explicit declared-count and missing-call policies; original reference-assisted AN is preserved with separately verified target AC/AN. Setup adopts existing permitted exact members and does not download/build. Linux x86_64 AVX2/FMA Java is required. SKIP3 unavailable/forbidden runtime or unsupported capability; FAIL2 invalid input,integrity,execution,capacity or finalization. Read SHAPEIT_COMMON_WORKFLOW.md and SHAPEIT_DEVELOPMENT.md. SHAPEIT2/4, historical 5.0.0/local-contig posterior,VCF/bare-BCF conversion,binary,pedigree/haploid/phase-set,rare/ligation,phase accuracy and whole-paper reconstruction remain unfinished.",
+    "validation_note": "380 strict native/replay tests on Windows Java 21/25 and Linux Java 21,128 MiB,zero skips. 20 exact-packaged protocols include 9 actual fits, 6 scientific input/policy refusals, 4 unsupported transport skips and 1 malformed-compression failure. All 1,131 selected rows, 41,470 target cells, 30,160 reference haplotype cells and 573 scaffold constraints are retained; 9 portable replays match both count tables byte for byte. 377 reference-assisted rows retain the original AN departure. 14 process and 9 runtime-tamper controls retain failure/cleanup evidence;ten primary-source roles remain reviewed. Require COMPLETED.json and matching manifest/file hashes. No release,deployment,biological phase-accuracy or whole-paper parity claim.",
+    "project_adapter_available": true,
+    "canonical_adapter_available": false,
+    "development_adapter_cli": "shapeit-tools",
+    "development_candidate": "build/literature-review/shapeit-runtime/owned-public-cli-3/omicsmatic-candidate.jar",
+    "development_candidate_sha256": "480e6257e5ad500d3e3f33df661e21c3bada6c68e8eacb44bafd6b5ab82a75e2",
+    "workflow_validation": "shapeit-managed-common-validation.json",
+    "source_role_coverage": "shapeit-role-coverage.json",
+    "source_roles_reviewed": 10,
+    "whole_paper_reproduced": false,
+    "runtime_profile": "shapeit5-c34d-common-linux-x86_64",
+    "installation_mode": "existing-permitted-exact-member-copy-only",
+    "download_source_build_installer_available": false,
+    "native_helpers": [
+      "src/main/java/org/jlinalg/genetics/ShapeitGenotypes.java",
+      "src/main/java/org/jlinalg/genetics/ShapeitGeneticMap.java",
+      "src/main/java/org/jlinalg/genetics/ShapeitCommonVariants.java",
+      "src/main/java/org/jlinalg/cli/ShapeitBcf.java",
+      "src/main/java/org/jlinalg/cli/ShapeitRawIndex.java",
+      "src/main/java/org/jlinalg/cli/ShapeitJoinedRecords.java"
+    ]
   },
   {
     "id": "bcl2fastq",

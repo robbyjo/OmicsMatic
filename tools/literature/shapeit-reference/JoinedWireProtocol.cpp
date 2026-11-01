@@ -64,11 +64,11 @@ int main(int argc,char** argv){
             if(std::ifstream(name+".csi").good())resources[f].push_back(fingerprint("I",name+".csi"));
             if(seek){std::string stem=helper_tools::get_name_from_vcf(name);resources[f].push_back(fingerprint("D",stem+".bin"));resources[f].push_back(fingerprint("M",stem+".fam"));}
         }
-        out<<"V\tOMICS-SHAPEIT-JOIN-WIRE-1\t"<<files<<'\n';intervals(out,'R',region,false);intervals(out,'T',region,true);
+        out<<"V\tOMICS-SHAPEIT-JOIN-WIRE-2\t"<<files<<'\n'<<"U\t"<<encoded(region)<<'\n';intervals(out,'R',region,false);intervals(out,'T',region,true);
         for(int f=0;f<files;f++)for(auto& item:resources[f])out<<"F\tB\t"<<f<<'\t'<<item.kind<<'\t'<<encoded(item.path)<<'\t'<<item.hash<<'\t'<<item.size<<'\n';
         xcf_reader joined(region,1);for(int f=0;f<files;f++)joined.addFile(argv[3+f]);
         for(int f=0;f<files;f++){
-            int physical=bcf_hdr_nsamples(joined.sync_reader->readers[f].header);std::vector<std::string> names;joined.getSamples(f,names);
+            int physical=bcf_hdr_nsamples(joined.sync_reader->readers[f].header);std::vector<std::string> names;if(joined.typeFile(f)!=0)joined.getSamples(f,names);
             out<<"N\t"<<f<<'\t'<<joined.typeFile(f)<<'\t'<<physical<<'\t'<<names.size()<<'\n';
             for(size_t s=0;s<names.size();s++)out<<"S\t"<<f<<'\t'<<s<<'\t'<<encoded(names[s])<<'\n';
         }
