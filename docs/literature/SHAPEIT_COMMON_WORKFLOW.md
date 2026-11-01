@@ -4,9 +4,31 @@ Current source and the locally built JAR provide `shapeit-tools` for the exact c
 
 **WARNING — reference-assisted AN:** the original runtime writes target genotypes and target AC but includes target and reference haplotypes in AN. Ten targets plus forty reference samples produce AN=100 with only twenty target allele slots. Preserve `analysis/phased.bcf`. For target-specific allele frequencies, use `analysis/output-audit/target-allele-counts.tsv`, which independently reports target AC/AN alongside original AC/AN. Do not silently retag the original file or treat its AN as the target denominator.
 
-**WARNING — setup is an exact-build adopter:** the current setup helper needs existing permitted files matching every member of its lock. It does not download or compile software. It copies 32 program, loader, library and notice members into a fresh private home; installation alone does not admit any scientific analysis. Missing or forbidden runtime prerequisites require SKIP3 and a skipped dependent analysis. Preserve the report and provision permitted exact members before retrying. Reproducible download/source installation remains implementation work.
+**WARNING — installation permissions and exact runtime:** the source checkout now includes `tools/literature/build_shapeit_runtime.py` for permitted, pinned downloads and compilation. It reconstructs the same 32 program, loader, library and notice members accepted by the existing exact-build adopter. Setup alone does not admit any scientific analysis. Missing or forbidden permissions, host capabilities or prerequisites require **SKIP3 and a skipped dependent analysis**. Build, integrity or capacity failures require **FAIL2 with retained files and no setup success**. Preserve the report, correct its named cause and retry with fresh build, home and report paths. The JAR's exported setup remains an adopter for already existing exact members.
 
 ## Prepare the runtime
+
+### Build from pinned source downloads
+
+Use a current source checkout on Linux x86_64 with Python 3.11 or later, AVX2/FMA on every processor, and permitted executable `/usr/bin/dpkg-deb`, `/usr/bin/setsid` and `/usr/bin/prlimit`. The source checkout and setup paths must use only ASCII letters, digits, `/`, `.`, `_`, `+` and `-`. Provide at least **8 GiB free on the build filesystem**, at least **0.5 GiB for the download cache**, and enough memory for two compiler jobs. Compilation and dependency provisioning have explicit process limits; installation may need more available host memory than the 128 MiB Java validation controls.
+
+```sh
+mkdir -p runtime-build runtime-homes download-cache runtime-reports
+python3 tools/literature/build_shapeit_runtime.py \
+  --work "$PWD/runtime-build/shapeit-common-1" \
+  --home "$PWD/runtime-homes/shapeit-common-1" \
+  --cache "$PWD/download-cache/shapeit" \
+  --report "$PWD/runtime-reports/shapeit-common-1.json" \
+  --allow-download --allow-source-build --allow-install
+```
+
+The build and runtime destinations must be new. Keep the build workspace, runtime home and download cache in separate trees, with the report outside all three. Parent directories must already exist and be canonical. Only a verified download cache is reusable; partial or changed cached files are retained and refused. If installation is not permitted or a prerequisite is unavailable, **skip the dependent analysis** and follow the report's required action. The installer does not change system packages.
+
+The pinned downloads include the original **435 MB SHAPEIT source archive**, Pixi 0.83.0, Ubuntu's libc6 2.39-0ubuntu8.9 package and a separately locked GCC 14.4/Boost 1.85/HTSlib 1.18 compiler environment. Only 140 selected upstream source files are extracted for the common-stage build; original source bytes and links are checked again after compilation. The two programs and every runtime library must match the existing lock exactly. Original encoded build paths are preserved to reproduce those bytes; **run analyses through `shapeit-tools`**, whose private loader verifies dependency bindings.
+
+Read `status`, `error`, `required_action`, `compiler_warning_lines` and the retained `*.stdout`, `*.stderr` and `*.process.json` logs. The original makefile emits static-library discovery warnings for this explicitly shared-library build. Those messages are retained; they do not authorize substitution of another library. A successful report says `installed-exact-source-built-runtime-only` and `scientific_analysis_admitted: false`. Every analysis still requires its own native admission and complete output audit. Preserve any failed or provisional home and use fresh destinations after correcting a failure.
+
+### Adopt existing permitted exact members
 
 Export the setup helper from the current local JAR:
 

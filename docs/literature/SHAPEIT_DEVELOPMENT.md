@@ -91,4 +91,12 @@ python tools/literature/shapeit_managed_validation.py
 ./gradlew test --tests '*ShapeitManagedReplayTest'
 ```
 
-The next implementation work is reproducible source/download installation and the remaining source-specific ploidy, pedigree, transport, binary, common/rare, ligation and posterior contracts. Cell Ranger remains excluded and bcl2fastq runtime remains skipped under its existing separate requirements. The full 250-paper objective remains active.
+The [source-build validation record](omics-2023-2026/shapeit-source-build-validation.json) adds permitted, pinned download/source installation to that earlier adopter-only workflow. The current checkout provides `tools/literature/build_shapeit_runtime.py`; follow the [copyable setup commands and prerequisites](SHAPEIT_COMMON_WORKFLOW.md). Two clean private installations at different build prefixes produce the same 32-member runtime, including a current-builder installation from a relocated checkout. Each repeats all 20 public protocols, with nine fits, six scientific input/policy refusals, four unsupported transport skips and one malformed-compression failure. Those are repeats of the same nine control datasets. All 1,131 record payloads and both complete count tables match the prior validated fits in each repeat; original `fileDate` timestamp differences and complete unmodified BCF files are retained. The source-assisted AN departure remains present on all 377 affected rows. These are scoped source controls, not a biological phase-accuracy benchmark.
+
+The new proof keeps the pinned download URLs/hashes, original source-file and link inventory, compiler specs, dependency lock, raw-library prefix reconstruction, installer source versions, retained failures, process/cleanup records and complete public bundles. No downloaded compiler or compiled runtime binary is redistributed in this proof. All 24 Linux installer controls and nine portable-verifier controls pass, including permission/cache/source failures, shell-safe path enforcement, cancellation cleanup, private-loader fallback rejection and raw output mutation rejection. To inspect the portable evidence without downloading, compiling or running a phaser:
+
+```text
+python tools/literature/shapeit_source_validation.py
+```
+
+Remaining implementation work includes the source-specific ploidy, pedigree, transport, binary, SHAPEIT4, common/rare, ligation and historical posterior contracts. Cell Ranger remains excluded and bcl2fastq runtime remains skipped under its existing separate requirements. The full 250-paper objective remains active.
