@@ -65,6 +65,12 @@ class NewickTreeTest {
         assertThrows(ArithmeticException.class,()->tree.distance("A","B"));
     }
 
+    @Test void sharedAncestralStemsAreExcludedBeforePathLengthsAreSummed() {
+        var tree=NewickTree.parse("(((A:1,B:2):1e308):1e308,C:1);");
+        assertEquals(0,tree.distance("A","A"));assertEquals(3,tree.distance("A","B"));assertEquals(3,tree.distance("B","A"));
+        assertThrows(ArithmeticException.class,()->tree.distance("A","C"));
+    }
+
     @Test void deepTreesParseAndRelabelWithoutRecursiveCallStackGrowth() {
         int depth=20000;String raw="(".repeat(depth)+"tip:1"+")".repeat(depth)+";";
         var tree=NewickTree.parse(raw);assertEquals(depth+1,tree.nodes().size());

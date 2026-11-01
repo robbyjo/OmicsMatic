@@ -99,18 +99,19 @@ public final class NewickTree {
     public double distance(String first, String second) {
         requireMetricLengths(); Integer a = leaves.get(first), b = leaves.get(second);
         if (a == null || b == null) throw new IllegalArgumentException("Unknown Newick taxon in distance request");
-        Map<Integer,Double> ancestors = new HashMap<>(); double distance = 0;
-        for (int i = a; i >= 0; i = nodes.get(i).parent()) {
-            ancestors.put(i, distance);
-            if (nodes.get(i).parent() >= 0) distance = finiteSum(distance, nodes.get(i).branchLength());
+        Set<Integer> ancestors = new HashSet<>();
+        for (int i = a; i >= 0; i = nodes.get(i).parent()) ancestors.add(i);
+        int common = b; double distance = 0;
+        while (!ancestors.contains(common)) {
+            if (common < 0) throw new IllegalStateException("A parsed tree must have a common root");
+            distance = finiteSum(distance, nodes.get(common).branchLength());
+            common = nodes.get(common).parent();
         }
-        distance = 0;
-        for (int i = b; i >= 0; i = nodes.get(i).parent()) {
-            Double prior = ancestors.get(i);
-            if (prior != null) return finiteSum(prior, distance);
-            if (nodes.get(i).parent() >= 0) distance = finiteSum(distance, nodes.get(i).branchLength());
-        }
-        throw new IllegalStateException("A parsed tree must have a common root");
+        // Only edges on this path contribute; a long shared ancestral stem must
+        // not make a finite sister-tip distance overflow while finding the LCA.
+        for (int i = a; i != common; i = nodes.get(i).parent())
+            distance = finiteSum(distance, nodes.get(i).branchLength());
+        return distance;
     }
 
     private static double finiteSum(double left, double right) {
