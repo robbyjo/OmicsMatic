@@ -18,13 +18,14 @@ final class RsemBuildTest {
     @TempDir Path root;
     private Path archive(String name,byte[] bytes)throws Exception{
         Path archive=root.resolve("source-"+java.util.UUID.randomUUID()+".tar.gz");try(var gzip=new GZIPOutputStream(Files.newOutputStream(archive));var tar=new TarArchiveOutputStream(gzip)){
-            var entry=new TarArchiveEntry(name);entry.setMode(0644);entry.setSize(bytes.length);tar.putArchiveEntry(entry);tar.write(bytes);tar.closeArchiveEntry();
+            var entry=new TarArchiveEntry(name);entry.setMode(0644);entry.setModTime(1600000000000L);entry.setSize(bytes.length);tar.putArchiveEntry(entry);tar.write(bytes);tar.closeArchiveEntry();
         }return archive;
     }
     @Test @EnabledOnOs(OS.LINUX) void original_source_extraction_preserves_every_byte_and_does_not_overwrite_a_prior_tree()throws Exception{
         byte[] code="original scientific source\n".getBytes(java.nio.charset.StandardCharsets.UTF_8);Path source=archive("RSEM-test/source.cpp",code),home=Files.createDirectory(root.resolve("home"));
         Map<String,RsemBuild.SourceFile> actual=RsemBuild.extract(source,home,"RSEM-test",()->{});assertEquals(1,actual.size());assertArrayEquals(code,Files.readAllBytes(home.resolve("RSEM-test/source.cpp")));
         assertEquals(AdmixtureInputs.digest(code),actual.get("source.cpp").sha256());assertThrows(java.nio.file.FileAlreadyExistsException.class,()->RsemBuild.extract(source,home,"RSEM-test",()->{}));
+        assertEquals(java.nio.file.attribute.FileTime.fromMillis(1600000000000L),Files.getLastModifiedTime(home.resolve("RSEM-test/source.cpp")));
     }
     @Test @EnabledOnOs(OS.LINUX) void unsafe_member_names_are_refused_before_any_outside_write()throws Exception{
         for(String name:List.of("../escape","RSEM-test/../escape","RSEM-test//duplicate","wrong-prefix/file","RSEM-test/back\\slash")){

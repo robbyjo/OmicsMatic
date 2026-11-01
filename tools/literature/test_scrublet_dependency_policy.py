@@ -44,6 +44,16 @@ class ScrubletPolicyTest(unittest.TestCase):
         self.marker()
         def bad(*args):raise RuntimeError('Native extension DLL failed to load')
         code,data=self.call(bad);self.assertEqual(3,code);self.assertIn('DLL',data['error']);first=data['attempt'];code,data=self.call();self.assertEqual(0,code);self.assertTrue(Path(first).is_dir());self.assertEqual(1,len(data['history']));self.assertNotEqual(first,data['attempt'])
+    def test_attempts_at_the_same_clock_instant_keep_distinct_reports(self):
+        instant=installer.dt.datetime(2026,11,1,tzinfo=installer.dt.timezone.utc)
+        with patch.object(installer.dt,'datetime') as clock:
+            clock.now.return_value=instant
+            first_code,first=self.call();second_code,second=self.call()
+        self.assertEqual((3,3),(first_code,second_code))
+        self.assertNotEqual(first['attempt'],second['attempt'])
+        self.assertTrue(Path(first['attempt']).is_dir());self.assertTrue(Path(second['attempt']).is_dir())
+        self.assertEqual(first,json.loads((Path(first['attempt'])/'dependency-status.json').read_text()))
+        self.assertEqual(1,len(second['history']))
 
 
 if __name__=='__main__':unittest.main()

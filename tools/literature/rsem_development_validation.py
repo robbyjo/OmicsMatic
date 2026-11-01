@@ -4,6 +4,7 @@ import json
 import zipfile
 
 from catalog_source_integrity import verify_source
+from rsem_build_evidence import verify_source_build_bundle
 
 
 def verify_historical_snapshot(root, runtime):
@@ -26,14 +27,18 @@ def verify_historical_snapshot(root, runtime):
 def verify_runtime_development(root, data, runtime):
     verify_historical_snapshot(root, runtime)
     current = json.loads((root / 'docs/literature/RSEM_SOURCE_SETUP_VALIDATION.json').read_text(encoding='utf-8'))
-    assert current['status'] == 'passed-focused-tests-source-setup-incomplete'
-    assert current['tests_per_JVM'] == 166
+    assert current['status'] == 'passed-owned-source-builds-and-original-fitting-development'
+    assert current['tests_per_JVM'] == 171
     assert current['existing_native_science_tests_per_JVM'] == 111
-    assert current['source_setup_attempt']['status'] == 'SKIPPED_DEPENDENCY_UNAVAILABLE'
-    assert current['source_setup_attempt']['completed_source_build'] is False
-    for name in ['source_to_build_provenance_verified', 'scientific_runtime_admitted',
+    assert current['completed_source_builds'] == 5 and current['source_to_build_provenance_verified'] is True
+    assert current['completed_original_fits'] == 22 and current['complete_scientific_files'] == 364
+    assert current['complete_reference_files'] == 30 and current['negative_dependency_controls'] == 30
+    for name in ['scientific_runtime_admitted',
                  'public_fitting_workflow_available', 'whole_goal_complete']:
         assert current[name] is False
     for row in current['source_evidence']:
         verify_source(root, data, row['path'], row['sha256'])
+    bundle=current['control_bundle']
+    observed=verify_source_build_bundle(root,root/bundle['path'],bundle['sha256'],current['candidate_sha256'])
+    assert observed == current['independent_bundle_verification']
     return current

@@ -59,22 +59,28 @@ final class RsemProcess {
     }
     static Result executeOwned(List<String> command, Map<String, String> environment, Path newWork,
             Limits limits, Check integrity, Runnable cancellation, List<Path> accountedRoots) throws IOException {
-        return execute(command,environment,newWork,limits,integrity,cancellation,accountedRoots,false);
+        return execute(command,environment,newWork,limits,integrity,cancellation,accountedRoots,List.of(),false);
+    }
+    /** Autoconf's contained basename symlink probes are opaque nodes, never traversed. */
+    static Result executeConfiguration(List<String> command,Map<String,String> environment,Path newWork,
+            Limits limits,Check integrity,Runnable cancellation,List<Path> accountedRoots,List<Path> probeRoots)throws IOException{
+        return execute(command,environment,newWork,limits,integrity,cancellation,accountedRoots,probeRoots,false);
     }
     /** ldd uses exit 1 for a static/non-dynamic image; its caller must validate the exact output and ELF image. */
     static Result inspectLibraries(Path binary, Map<String,String> environment, Path newWork,
             Limits limits, Check integrity, Runnable cancellation, List<Path> accountedRoots) throws IOException {
         if(!binary.isAbsolute()||!binary.normalize().equals(binary)||!Files.isRegularFile(binary,LinkOption.NOFOLLOW_LINKS)
                 ||!binary.toRealPath().equals(binary))throw new IOException("Library inspection requires a canonical regular image");
-        return execute(List.of("/usr/bin/ldd",binary.toString()),environment,newWork,limits,integrity,cancellation,accountedRoots,true);
+        return execute(List.of("/usr/bin/ldd",binary.toString()),environment,newWork,limits,integrity,cancellation,accountedRoots,List.of(),true);
     }
     private static Result execute(List<String> command, Map<String,String> environment, Path newWork,
-            Limits limits, Check integrity, Runnable cancellation, List<Path> accountedRoots, boolean libraryInspection) throws IOException {
+            Limits limits, Check integrity, Runnable cancellation, List<Path> accountedRoots,List<Path> requestedProbeRoots, boolean libraryInspection) throws IOException {
         Objects.requireNonNull(limits, "limits"); Objects.requireNonNull(integrity, "integrity"); Objects.requireNonNull(cancellation, "cancellation");
         if (!System.getProperty("os.name").equals("Linux")) throw new UnavailableDependency("Owned RSEM execution requires Linux Java");
         Path work = newWork.toAbsolutePath().normalize();
         if (work.getParent() == null || !work.getParent().toRealPath().equals(work.getParent())) throw new IOException("Require canonical parent and new owned process directory");
         List<Path> scopes = accountingRoots(work, accountedRoots);
+        List<Path> probeRoots=configurationRoots(scopes,requestedProbeRoots);
         cancellation.run(); integrity.verify();
         for (String helper : List.of("/usr/bin/setsid", "/usr/bin/prlimit"))
             if (!Files.isExecutable(Path.of(helper))) throw new UnavailableDependency("Required process helper is missing or execution is forbidden: " + helper);
@@ -86,23 +92,25 @@ final class RsemProcess {
         var record = new LinkedHashMap<String, Object>(); record.put("status", "launching"); record.put("command", invocation); record.put("limits", limits);
         record.put("process_purpose",libraryInspection?"library-binding-inspection-only":"strict-zero-exit-process");
         record.put("accepted_process_exit_codes",libraryInspection?List.of(0,1):List.of(0));
+        record.put("configuration_basename_link_roots",probeRoots);
+        if(!probeRoots.isEmpty())record.put("configuration_link_policy","Only opaque relative ASCII basename symlink probes in the explicitly declared canonical source subtrees. Count each link node and target-name bytes;never follow its target. No links elsewhere,FIFOs,sockets or other nonregular files are allowed. Final source-build inventory still requires regular files only.");
         record.put("proc_sample_policy","Recheck identity/terminal liveness when a procfs record disappears during a read;unreadable metadata for a still-live identity is a failure. RSS remains periodically sampled,not a hard aggregate bound.");
         record.put("accounted_roots", scopes); record.put("scope", "Prepared/run logical file bytes and member counts are combined. Hard per-process AS/CPU/file/nofile limits; wall/workspace/process/thread and sampled aggregate RSS checks. Sampled RSS is not a hard aggregate RSS bound.");
         Process child = null; Guard guard = null; IOException failure = null; long started = System.nanoTime();
         try {
             guard = new Guard(work); // The hook exists before ProcessBuilder.start.
-            guard.workspace = workspace(work, limits, scopes); // Refuse an already excessive prepared/run footprint before launch.
+            guard.workspace = workspace(work, limits, scopes,probeRoots,0,0); // Refuse an already excessive prepared/run footprint before launch.
             var builder = new ProcessBuilder(invocation).directory(work.toFile()).redirectOutput(stdout.toFile()).redirectError(stderr.toFile());
             var env = builder.environment(); env.clear(); env.putAll(environment); env.put("HOME", work.toString()); env.put("TMPDIR", work.toString());
             child = guard.launch(builder); record.put("owned_launcher_pid", child.pid()); record.put("status", "running");
             write(work.resolve("launch.json"), record); guard.observe();
             for (;;) {
                 cancellation.run(); guard.requireOpen(); guard.observe(); guard.enforce(limits);
-                guard.workspace = Math.max(guard.workspace, workspace(work, limits, scopes));
+                guard.workspace = Math.max(guard.workspace, workspace(work, limits, scopes,probeRoots,0,0));
                 if (TimeUnit.NANOSECONDS.toMillis(System.nanoTime() - started) > limits.wallMillis) throw new IOException("RSEM wall-time capacity exceeded");
                 if (child.waitFor(limits.monitorMillis, TimeUnit.MILLISECONDS)) break;
             }
-            guard.observe(); guard.enforce(limits); guard.workspace = Math.max(guard.workspace, workspace(work, limits, scopes));
+            guard.observe(); guard.enforce(limits); guard.workspace = Math.max(guard.workspace, workspace(work, limits, scopes,probeRoots,0,0));
             record.put("exit_code", child.exitValue());
             if (child.exitValue() != 0 && !(libraryInspection && child.exitValue() == 1)) throw new IOException("Original RSEM process failed, exit " + child.exitValue());
             if (!guard.live().isEmpty()) throw new IOException("Original RSEM main exited with live owned workers; cleanup is required and no result is admitted");
@@ -121,7 +129,7 @@ final class RsemProcess {
             try {
                 // A successful exit alone never admits scientific results.
                 integrity.verify(); cancellation.run();
-                if (guard != null) guard.workspace = Math.max(guard.workspace, workspace(work, limits, scopes));
+                if (guard != null) guard.workspace = Math.max(guard.workspace, workspace(work, limits, scopes,probeRoots,0,0));
             } catch (IOException | RuntimeException changed) {
                 if (failure == null) failure = new IOException("RSEM input/runtime/workspace integrity failed after execution", changed); else failure.addSuppressed(changed);
             }
@@ -137,7 +145,7 @@ final class RsemProcess {
             try {
                 String provisional = RsemJson.json(record) + "\n";
                 long additionalBytes = provisional.getBytes(StandardCharsets.UTF_8).length + warning(failure).getBytes(StandardCharsets.UTF_8).length;
-                workspace(work, limits, scopes, additionalBytes, 2);
+                workspace(work, limits, scopes,probeRoots, additionalBytes, 2);
             } catch (IOException capacity) { if (failure == null) failure = capacity; else failure.addSuppressed(capacity); }
             record.put("status", failure == null ? "completed-process-only" : "FAIL2-retained-no-result");
             if (failure != null) { record.put("error", failure.toString()); record.put("suppressed", java.util.Arrays.stream(failure.getSuppressed()).map(Throwable::toString).toList()); }
@@ -339,10 +347,21 @@ final class RsemProcess {
     static long workspaceBytes(Path root, Limits limits, List<Path> suppliedRoots) throws IOException {
         return workspace(root, limits, accountingRoots(root, suppliedRoots));
     }
-    private static long workspace(Path root, Limits limits, List<Path> scopes) throws IOException {
-        return workspace(root, limits, scopes, 0, 0);
+    private static List<Path> configurationRoots(List<Path> scopes,List<Path> requested)throws IOException{
+        if(requested.size()>16)throw new IOException("Configuration probe-root capacity exceeded");
+        var result=new ArrayList<Path>();
+        for(Path path:requested){
+            if(!path.isAbsolute()||!path.normalize().equals(path)||!Files.isDirectory(path,LinkOption.NOFOLLOW_LINKS)
+                    ||!path.toRealPath().equals(path)||scopes.stream().noneMatch(path::startsWith)
+                    ||result.stream().anyMatch(p->p.startsWith(path)||path.startsWith(p)))
+                throw new IOException("Configuration probe roots must be distinct canonical subtrees of accounted source directories: "+path);
+            result.add(path);
+        }return List.copyOf(result);
     }
-    private static long workspace(Path root, Limits limits, List<Path> scopes, long additionalBytes, int additionalFiles) throws IOException {
+    private static long workspace(Path root, Limits limits, List<Path> scopes) throws IOException {
+        return workspace(root, limits, scopes,List.of(), 0, 0);
+    }
+    private static long workspace(Path root, Limits limits, List<Path> scopes,List<Path> probeRoots, long additionalBytes, int additionalFiles) throws IOException {
         long[] bytes = {0}; int[] count = {0};
         var all = new ArrayList<Path>(); all.add(root); all.addAll(scopes);
         for (Path area : all) {
@@ -352,8 +371,17 @@ final class RsemProcess {
                 if (++count[0] > limits.fileCount || Files.isSymbolicLink(path)) throw new IOException("Owned RSEM workspace file-count/link capacity exceeded"); return FileVisitResult.CONTINUE;
             }
             @Override public FileVisitResult visitFile(Path path, BasicFileAttributes attrs) throws IOException {
-                if (!attrs.isRegularFile() || ++count[0] > limits.fileCount) throw new IOException("Owned RSEM output is linked/nonregular or exceeds file capacity");
-                bytes[0] = Math.addExact(bytes[0], attrs.size());
+                long size=attrs.size();
+                boolean probe=attrs.isSymbolicLink()&&probeRoots.stream().anyMatch(path.getParent()::startsWith);
+                if(probe){
+                    Path target;
+                    try{target=Files.readSymbolicLink(path);if(!path.getParent().toRealPath().equals(path.getParent()))throw new IOException("Configuration probe parent became linked: "+path);}
+                    catch(NoSuchFileException|java.nio.file.NotLinkException vanished){return FileVisitResult.CONTINUE;}
+                    if(target.isAbsolute()||target.getNameCount()!=1||!target.toString().matches("[A-Za-z0-9_.+\\-]{1,255}")||target.toString().equals(".")||target.toString().equals(".."))
+                        throw new IOException("Configuration probe target must be a contained relative basename: "+path+" -> "+target);
+                }
+                if ((!attrs.isRegularFile()&&!probe) || ++count[0] > limits.fileCount) throw new IOException("Owned RSEM output is linked/nonregular or exceeds file capacity: "+path+" (symbolicLink="+attrs.isSymbolicLink()+",other="+attrs.isOther()+",members="+count[0]+",limit="+limits.fileCount+")");
+                bytes[0] = Math.addExact(bytes[0], size);
                 if (bytes[0] > limits.workspaceBytes) throw new IOException("Owned RSEM workspace byte capacity exceeded"); return FileVisitResult.CONTINUE;
             }
             @Override public FileVisitResult visitFileFailed(Path path, IOException failure) throws IOException {

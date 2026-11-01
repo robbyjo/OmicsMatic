@@ -97,20 +97,21 @@ final class RsemBuild {
             RsemHost.Result host=RsemHost.capture(compiler,home.resolve("build-host"),limits.host(),check);
             var phases=new ArrayList<RsemProcess.Result>();
             // env --chdir preserves the original configure working directory while logs remain in a NEW owned process directory.
-            phases.add(run(home,"cwd-check",List.of("/usr/bin/env","--chdir="+source,"/usr/bin/true"),compiler,host,limits,check,List.of(source,metadata,compiler.home())));
-            if(version.equals("1.2.28"))phases.add(run(home,"configure",List.of("/usr/bin/env","--chdir="+source.resolve("samtools-1.3"),"/bin/sh","./configure","--without-curses"),compiler,host,limits,check,List.of(source,metadata,compiler.home())));
+            phases.add(run(home,"cwd-check",List.of("/usr/bin/env","--chdir="+source,"/usr/bin/true"),compiler,host,limits,check,List.of()));
+            if(version.equals("1.2.28"))phases.add(run(home,"configure",List.of("/usr/bin/env","--chdir="+source.resolve("samtools-1.3"),"/bin/sh","./configure","--without-curses"),compiler,host,limits,check,List.of(source.resolve("samtools-1.3"))));
             var configured=checkOriginal(source,original,version.equals("1.2.28")?GENERATED:Set.of(),check);write(metadata.resolve("generated-configuration-changes.json"),configured);
-            var makeCommand=new ArrayList<String>(List.of(tools.make().toString(),"-C",source.toString(),"-j"+limits.jobs()));
+            var makeCommand=new ArrayList<String>(List.of(tools.make().toString(),"--jobserver-style=pipe","-C",source.toString(),"-j"+limits.jobs()));
             if(!version.equals("1.2.28")){
                 Map<String,String> environment=compiler.environment(home.resolve("make"));
                 for(String key:List.of("CXX","CC","AR","RANLIB","CPPFLAGS","LDFLAGS"))makeCommand.add(key+"="+environment.get(key));
             }
-            phases.add(run(home,"make",makeCommand,compiler,host,limits,check,List.of(source,metadata,compiler.home())));
-            checkOriginal(source,original,version.equals("1.2.28")?GENERATED:Set.of(),check);
+            phases.add(run(home,"make",makeCommand,compiler,host,limits,check,List.of(source.resolve("samtools-1.3"))));
+            var generated=checkOriginal(source,original,version.equals("1.2.28")?GENERATED:Set.of(),check);
+            write(metadata.resolve("generated-configuration-changes-after-build.json"),generated);
             for(String name:RsemPayload.PROGRAMS){Path program=source.resolve(name);if(!Files.isExecutable(program)||RsemElf.image(program,536870912,check)==null)throw new IOException("Original build did not produce the required complete executable: "+name);}
             Path decoder=outputs.resolve("omicsmatic-rsem-decode");var command=new ArrayList<String>(List.of(tools.cxx().toString(),"-std=gnu++98","-O2","-I"+source.resolve("samtools-1.3/htslib-1.3"),decoderSource.toString(),source.resolve("samtools-1.3/htslib-1.3/libhts.a").toString()));
             tools.libraries().forEach(p->{command.add("-L"+p);command.add("-Wl,-rpath,"+p);});command.addAll(List.of("-lz","-lpthread","-lm","-o",decoder.toString()));
-            phases.add(run(home,"decoder",command,compiler,host,limits,check,List.of(source,metadata,compiler.home())));
+            phases.add(run(home,"decoder",command,compiler,host,limits,check,List.of()));
             compiler.verify(check);RsemHost.verifyFiles(host.snapshot(),compiler,limits.host(),check);
             var compilerAfter=RsemFileGraph.capture(compiler.prefix().roots().stream().map(Path::of).toList(),compiler.prefix().files().stream().map(Path::of).toList(),limits.compiler(),metadata.resolve("compiler-prefix-after.jsonl"),check);
             if(!compiler.prefix().equals(compilerAfter))throw new IOException("Complete compiler input graph changed across original source compilation");
@@ -121,7 +122,7 @@ final class RsemBuild {
             }
             var record=new LinkedHashMap<String,Object>();record.put("schema_version",1);record.put("status","COMPLETED_EXACT_ORIGINAL_SOURCE_BUILD");record.put("profile",profile);record.put("source_profile_lock_sha256",RsemPayload.LOCK);
             record.put("tools",tools);record.put("compiler_prefix",compiler.prefix());record.put("compiler_prefix_after",compilerAfter);record.put("build_host_snapshot_sha256",host.snapshotSha256());record.put("source_graph",sourceGraph);record.put("original_source_files",original.size());
-            record.put("generated_configuration_changes",configured);record.put("phases",phases.stream().map(p->Map.of("ledger",p.ledger(),"exit",p.exitCode(),"owned_live_after_cleanup",p.ownedLiveAfterCleanup())).toList());record.put("evidence",evidence);
+            record.put("configuration_changes_before_build",configured);record.put("generated_configuration_changes",generated);record.put("phases",phases.stream().map(p->Map.of("ledger",p.ledger(),"exit",p.exitCode(),"owned_live_after_cleanup",p.ownedLiveAfterCleanup())).toList());record.put("evidence",evidence);
             record.put("source_to_build_provenance_verified",true);record.put("scientific_runtime_admitted",false);record.put("public_fitting_workflow_available",false);
             record.put("scope","Actual owned compilation from the exact pinned original archive with before/after declared compiler inputs,host providers,commands,zero exits and terminal process groups. Only the explicit three legacy generated configurations may differ. Receipt integrity is not a signature or OS sandbox;original fixed scientific health and scientific input/output admission remain separate.");
             byte[] raw=RsemJson.bytes(record);if(raw.length>67108864)throw new IOException("Complete RSEM build receipt exceeds metadata capacity");
@@ -145,12 +146,14 @@ final class RsemBuild {
         var owned=RsemFileGraph.capture(List.of(home),List.of(),limits.compiler(),metadata.resolve("compiler-wrappers.jsonl"),check);
         var preliminary=new Compiler(home,tools,files,tools.programs(),AdmixtureInputs.digest(plan),prefix,owned);
         var programs=new java.util.LinkedHashSet<Path>(tools.programs());var candidates=new java.util.LinkedHashSet<Path>(tools.programs());var discovery=new LinkedHashMap<String,Object>();
-        for(String name:List.of("cc1","cc1plus","collect2","as","ld")){
+        for(String name:List.of("cc1","cc1plus","collect2","as","ld","lto-wrapper","lto1")){
             Path driver=name.equals("cc1plus")||name.equals("collect2")?tools.cxx():tools.cc();
             var result=query(home,"program-"+name,List.of(driver.toString(),"-print-prog-name="+name),preliminary,limits,check);
             String reported=singleLine(result.stdout());Path selected=compilerProgram(reported,preliminary,candidates);programs.add(selected);discovery.put(name,Map.of("reported",reported,"selected",selected));
         }
-        var plugin=query(home,"link-plugin",List.of(tools.cxx().toString(),"-print-file-name=liblto_plugin.so"),preliminary,limits,check);
+        // GCC installs this linker plugin in its executable-search prefix, not
+        // necessarily in the library/start-file search used by -print-file-name.
+        var plugin=query(home,"link-plugin",List.of(tools.cxx().toString(),"-print-prog-name=liblto_plugin.so"),preliminary,limits,check);
         String pluginName=singleLine(plugin.stdout());Path pluginPath=compilerProgram(pluginName,preliminary,candidates);programs.add(pluginPath);discovery.put("liblto_plugin",Map.of("reported",pluginName,"selected",pluginPath));
         for(String language:List.of("c","c++")){
             Path driver=language.equals("c")?tools.cc():tools.cxx();var result=query(home,"includes-"+(language.equals("c")?"c":"cxx"),
@@ -219,12 +222,13 @@ final class RsemBuild {
         if(tools.roots().stream().noneMatch(actual::startsWith))throw new IOException("Compiler search location is outside declared complete roots: "+reported);
         candidates.add(actual);
     }
-    private static RsemProcess.Result run(Path home,String name,List<String> command,Compiler compiler,RsemHost.Result host,Limits limits,Runnable check,List<Path> roots)throws IOException{
+    private static RsemProcess.Result run(Path home,String name,List<String> command,Compiler compiler,RsemHost.Result host,Limits limits,Runnable check,List<Path> probeRoots)throws IOException{
         RsemProcess.Check integrity=()->{compiler.verify(check);RsemHost.verifyFiles(host.snapshot(),compiler,limits.host(),check);};
         var complete=new ArrayList<Path>();try(var entries=Files.newDirectoryStream(home)){
             for(Path path:entries)if(Files.isDirectory(path,LinkOption.NOFOLLOW_LINKS))complete.add(path);
         }
-        return RsemProcess.executeOwned(command,compiler.environment(home.resolve(name)),home.resolve(name),limits.process(),integrity,check,complete);
+        return probeRoots.isEmpty()?RsemProcess.executeOwned(command,compiler.environment(home.resolve(name)),home.resolve(name),limits.process(),integrity,check,complete)
+                :RsemProcess.executeConfiguration(command,compiler.environment(home.resolve(name)),home.resolve(name),limits.process(),integrity,check,complete,probeRoots);
     }
     static Map<String,SourceFile> extract(Path archive,Path home,String prefix,Runnable check)throws IOException{
         if(!home.isAbsolute()||!home.toRealPath().equals(home)||!prefix.matches("[A-Za-z0-9_-]+"))throw new IOException("Source extraction requires a canonical parent and fixed source prefix");
@@ -245,6 +249,9 @@ final class RsemBuild {
                 if(!path.getParent().toRealPath().equals(path.getParent()))throw new IOException("Source extraction parent became linked: "+name);
                 long copied;try(var output=Files.newOutputStream(path,StandardOpenOption.CREATE_NEW,LinkOption.NOFOLLOW_LINKS)){copied=tar.transferTo(output);}
                 if(copied!=entry.getSize())throw new IOException("Truncated original source member: "+name);Files.setPosixFilePermissions(path,permissions(entry.getMode()&0777));
+                // Preserve distributed generated-file dependencies. Fresh extraction
+                // timestamps can otherwise trigger an unintended autoreconfiguration.
+                Files.setLastModifiedTime(path,entry.getLastModifiedTime());
                 String relative=name.substring(prefix.length()+1);if(result.put(relative,new SourceFile(copied,hash(path,536870912,check)))!=null)throw new IOException("Repeated original source member: "+name);
                 try(var input=Files.newInputStream(path)){byte[] magic=input.readNBytes(4);if(magic.length==4&&magic[0]==127&&magic[1]=='E'&&magic[2]=='L'&&magic[3]=='F')throw new IOException("Source archive unexpectedly contains a precompiled ELF image: "+name);}
             }

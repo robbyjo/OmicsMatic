@@ -49,4 +49,49 @@ final class RsemProcessTest {
         }
         assertEquals(before,after);assertTrue(Files.readString(work.resolve("launch.json")).contains("--core=0"));
     }
+    @Test @org.junit.jupiter.api.condition.EnabledOnOs(org.junit.jupiter.api.condition.OS.LINUX)
+    void configuration_basename_probes_are_opaque_and_do_not_relax_normal_execution()throws Exception{
+        Path source=Files.createDirectory(root.resolve("source"));Files.writeString(source.resolve("target"),"input");
+        Files.createSymbolicLink(source.resolve("alias"),Path.of("target"));Files.createSymbolicLink(source.resolve("self"),Path.of("self"));
+        Files.createSymbolicLink(source.resolve("missing-alias"),Path.of("absent"));
+        IOException strict=assertThrows(IOException.class,()->RsemProcess.executeOwned(List.of("/usr/bin/true"),Map.of(),root.resolve("strict"),limits(1048576,128),()->{},()->{},List.of(source)));
+        assertTrue(strict.getMessage().contains(source.toString()));
+        var result=RsemProcess.executeConfiguration(List.of("/usr/bin/true"),Map.of(),root.resolve("configured"),limits(1048576,128),()->{},()->{},List.of(source),List.of(source));
+        assertEquals(0,result.exitCode());assertTrue(result.ownedLiveAfterCleanup().isEmpty());
+        assertTrue(Files.readString(result.ledger()).contains("configuration_basename_link_roots"));
+        assertThrows(IOException.class,()->RsemProcess.workspaceBytes(result.work(),limits(1048576,128),List.of(source)));
+    }
+    @Test @org.junit.jupiter.api.condition.EnabledOnOs(org.junit.jupiter.api.condition.OS.LINUX)
+    void configuration_probe_targets_cannot_escape_or_traverse_another_directory()throws Exception{
+        int ordinal=0;
+        for(String target:List.of("/tmp/outside","../outside","subdir/target",".","..")){
+            Path source=Files.createDirectory(root.resolve("source-"+ordinal)),link=source.resolve("alias");Files.createSymbolicLink(link,Path.of(target));
+            Path work=root.resolve("refused-"+ordinal++);
+            IOException failure=assertThrows(IOException.class,()->RsemProcess.executeConfiguration(List.of("/usr/bin/true"),Map.of(),work,limits(1048576,128),()->{},()->{},List.of(source),List.of(source)));
+            assertTrue(failure.getMessage().contains("contained relative basename"));assertTrue(failure.getMessage().contains(link.toString()));
+            assertFalse(Files.exists(work.resolve("launch.json")));
+        }
+    }
+    @Test @org.junit.jupiter.api.condition.EnabledOnOs(org.junit.jupiter.api.condition.OS.LINUX)
+    void configuration_probe_roots_must_be_declared_canonical_source_subtrees()throws Exception{
+        Path source=Files.createDirectory(root.resolve("source")),nested=Files.createDirectory(source.resolve("nested")),outside=Files.createDirectory(root.resolve("outside"));int ordinal=0;
+        for(List<Path> invalid:List.of(List.of(outside),List.of(source,source),List.of(source,nested),List.of(source.resolve("missing")))){
+            Path work=root.resolve("unlaunched-"+ordinal++);
+            assertThrows(IOException.class,()->RsemProcess.executeConfiguration(List.of("/usr/bin/true"),Map.of(),work,limits(1048576,128),()->{},()->{},List.of(source),invalid));assertFalse(Files.exists(work));
+        }
+    }
+    @Test @org.junit.jupiter.api.condition.EnabledOnOs(org.junit.jupiter.api.condition.OS.LINUX)
+    void configuration_scope_never_accepts_a_fifo_or_reads_its_contents()throws Exception{
+        Path source=Files.createDirectory(root.resolve("source")),fifo=source.resolve("probe-fifo"),work=root.resolve("fifo");
+        IOException failure=assertThrows(IOException.class,()->RsemProcess.executeConfiguration(List.of("/usr/bin/python3","-c","import os,sys,time;os.mkfifo(sys.argv[1]);time.sleep(3)",fifo.toString()),Map.of("PATH","/usr/bin:/bin"),work,limits(1048576,128),()->{},()->{},List.of(source),List.of(source)));
+        assertTrue(failure.getMessage().contains(fifo.toString()));assertTrue(failure.getMessage().contains("other=true"));
+        Map<?,?> ledger=(Map<?,?>)SimpleJson.parse(Files.readString(work.resolve("process.json")));assertEquals(List.of(),ledger.get("owned_live_after_cleanup"));
+    }
+    @Test @org.junit.jupiter.api.condition.EnabledOnOs(org.junit.jupiter.api.condition.OS.LINUX)
+    void configuration_probe_permission_does_not_cover_process_work_directory()throws Exception{
+        Path source=Files.createDirectory(root.resolve("source")),work=root.resolve("outside-probe");
+        IOException failure=assertThrows(IOException.class,()->RsemProcess.executeConfiguration(List.of("/usr/bin/python3","-c","import os,time;os.symlink('absent','work-link');time.sleep(3)"),Map.of("PATH","/usr/bin:/bin"),work,limits(1048576,128),()->{},()->{},List.of(source),List.of(source)));
+        assertTrue(failure.getMessage().contains(work.resolve("work-link").toString()));
+        Map<?,?> ledger=(Map<?,?>)SimpleJson.parse(Files.readString(work.resolve("process.json")));assertEquals(List.of(),ledger.get("owned_live_after_cleanup"));
+    }
 }

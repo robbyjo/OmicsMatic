@@ -49,6 +49,16 @@ public final class BoundRuntimeProtocol {
      * @throws Exception any changed input, failed original control, altered output or ownership failure
      */
     public static void main(String[] args)throws Exception{
+        run(args,null);
+    }
+    static void runBuilt(RsemBuild.Context built,Path newBase)throws Exception{
+        require(built.libraries().size()==1,"Original build control requires its complete single declared runtime library directory");
+        run(new String[]{built.profile().version(),built.source().toString(),built.decoder().toString(),built.libraries().get(0).toString(),newBase.toString()},built);
+    }
+    private static RsemPayload.Context stage(String[] args,RsemBuild.Context built,List<Path> libraries,Path newHome)throws IOException{
+        return built==null?RsemPayload.stage(Path.of(args[1]),args[0],Path.of(args[2]),libraries,newHome,()->{}):RsemPayload.stageBuilt(built,libraries,newHome,()->{});
+    }
+    private static void run(String[] args,RsemBuild.Context built)throws Exception{
         if(args.length!=5)throw new IllegalArgumentException("release ORIGINAL_SOURCE_BUILD SOURCE_LINKED_DECODER LIBRARY_DIRECTORY NEW_PRIVATE_DIRECTORY");
         String version=args[0];Path base=Path.of(args[4]);RsemPayload.originalPath(base);Files.createDirectory(base);
         Path input=Files.createDirectory(base.resolve("inputs")),shadow=Files.createDirectory(base.resolve("lookup-shadow"));
@@ -67,11 +77,14 @@ public final class BoundRuntimeProtocol {
         var inputPins=files(input);RsemProcess.Check inputCheck=()->same(input,inputPins,false);
         Map<?,?> golden=RepeatBundle.object(Files.readAllBytes(input.resolve("expected-science.json")));
         Map<?,?> cases=(Map<?,?>)golden.get("cases"),references=(Map<?,?>)golden.get("references");
-        var payload=RsemPayload.stage(Path.of(args[1]),version,Path.of(args[2]),List.of(shadow,Path.of(args[3])),base.resolve("payload"),()->{});
+        var payload=stage(args,built,List.of(shadow,Path.of(args[3])),base.resolve("payload"));
         var hostLimits=new RsemHost.Limits(new RepeatHostFiles.Limits(536870912,8589934592L,100000,128,67108864),
                 new RsemProcess.Limits(60000,1073741824,60,16777216,256,1073741824,100000,8,64,536870912,25),1024);
         System.out.println(version+" binding actual original scripts and declared host");
-        var context=RsemRuntime.bind(payload,base.resolve("binding"),hostLimits,600000,inputCheck,()->{});
+        var context=RsemRuntime.bind(payload,base.resolve("binding"),hostLimits,3600000,inputCheck,()->{});
+        Map<?,?> binding=RepeatBundle.object(Files.readAllBytes(context.home().resolve("runtime-binding.json")));
+        require(Boolean.valueOf(built!=null).equals(binding.get("source_to_build_provenance_verified")),"Binding source/build claim differs from actual context");
+        if(built!=null)require(built.recordSha256().equals(binding.get("source_build_receipt_sha256")),"Binding does not retain the actual verified original build receipt");
         Path preparation=base.resolve("prepare"),reference=preparation.resolve("reference");
         context.executeOnly(RsemRuntime.Program.PREPARE,List.of("--transcript-to-gene-map",input.resolve("gene-map.tsv").toString(),input.resolve("transcripts.fa").toString(),reference.toString()),
                 preparation,FIT,300000,inputCheck,()->{},List.of(input));
@@ -119,18 +132,36 @@ public final class BoundRuntimeProtocol {
         try{context.executeOnly(RsemRuntime.Program.VERSION,List.of(),controls.resolve("shadow-library"),FIT,300000,scientificInputs,()->{},List.of(input));throw new IOException("New library shadow was accepted");}
         catch(IOException expected){require(!Files.exists(controls.resolve("shadow-library")),"Changed lookup candidate launched a process");write(controls.resolve("shadow-library-refusal.json"),Map.of("error",expected.toString(),"candidate",candidate,"sha256",hash(injected)));}
         Files.move(injected,controls.resolve("injected-library-retained"));context.verify(()->{});
-        var negative=RsemPayload.stage(Path.of(args[1]),version,Path.of(args[2]),List.of(Path.of(args[3])),base.resolve("negative-payload"),()->{});
+        var negative=stage(args,built,List.of(Path.of(args[3])),base.resolve("negative-payload"));
         Path script=negative.home().resolve("bin/rsem_perl_utils.pm");Files.writeString(script,"\n# controlled source drift\n",StandardOpenOption.APPEND);
         IOException payloadRefusal=null;try{negative.verify(()->{});}catch(IOException failure){payloadRefusal=failure;}
         require(payloadRefusal!=null,"Changed payload script was accepted");
         write(controls.resolve("changed-payload-refusal.json"),Map.of("error",payloadRefusal.toString(),"script",script,"changed_sha256",hash(script)));
+        if(built!=null){
+            for(String name:List.of("build.json","metadata/compiler-discovery.json")){
+                Path evidence=built.home().resolve(name);byte[] original=Files.readAllBytes(evidence);
+                String label=name.equals("build.json")?"changed-build-receipt":"changed-build-evidence";
+                try{
+                    Files.writeString(evidence,"\ncontrolled source-build evidence drift\n",StandardOpenOption.APPEND);
+                    Files.copy(evidence,controls.resolve(label+"-bytes-retained"));
+                    IOException refusal=null;
+                    try{context.executeOnly(RsemRuntime.Program.VERSION,List.of(),controls.resolve(label),FIT,300000,scientificInputs,()->{},List.of(input));}
+                    catch(IOException failure){refusal=failure;}
+                    require(refusal!=null&&!Files.exists(controls.resolve(label)),"Changed source-build evidence did not refuse before launch: "+name);
+                    write(controls.resolve(label+"-refusal.json"),Map.of("error",refusal.toString(),"path",evidence,"changed_sha256",hash(evidence)));
+                }finally{Files.write(evidence,original,StandardOpenOption.TRUNCATE_EXISTING);}
+                built.verify(()->{});context.verify(()->{});
+            }
+        }
         scientificInputs.verify();context.verify(()->{});
         Path candidateJar=Path.of(RsemRuntime.class.getProtectionDomain().getCodeSource().getLocation().toURI());require(Files.isRegularFile(candidateJar),"Protocol must run the exact packaged candidate");
         var report=new LinkedHashMap<String,Object>();report.put("status","passed-bound-original-RSEM-reference-fit-and-runtime-controls");report.put("version",version);report.put("observed_source_version",payload.source().reportedVersion());
         report.put("candidate_sha256",hash(candidateJar));report.put("host_capture_sha256",context.host().snapshotSha256());report.put("host_probes",context.host().probes().size());report.put("host_members",context.host().snapshot().files().members());
         report.put("ELF_images",context.host().snapshot().images().size());report.put("complete_reference_files",((Map<?,?>)references.get(version)).size());report.put("complete_scientific_files",compared);report.put("outcomes",outcomes);
         report.put("undeclared_provider_refused_before_launch",true);report.put("changed_input_refused_before_launch",true);report.put("new_library_shadow_refused_before_launch",true);report.put("changed_payload_refused",true);
-        report.put("all_positive_contexts_currently_reverified",true);report.put("scientific_runtime_admitted",false);report.put("source_to_build_provenance_verified",false);report.put("public_fitting_workflow_available",false);report.put("biological_or_whole_paper_reproduction_certified",false);
+        report.put("all_positive_contexts_currently_reverified",true);report.put("scientific_runtime_admitted",false);report.put("source_to_build_provenance_verified",built!=null);report.put("public_fitting_workflow_available",false);report.put("biological_or_whole_paper_reproduction_certified",false);
+        report.put("negative_dependency_controls",built==null?4:6);
+        if(built!=null){report.put("source_build_receipt_sha256",built.recordSha256());report.put("changed_build_receipt_refused_before_launch",true);report.put("changed_build_evidence_refused_before_launch",true);}
         write(base.resolve("observed.json"),report);System.out.println(RsemJson.json(report));
     }
 }

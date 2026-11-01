@@ -31,9 +31,10 @@ def quantification_metadata(root, data, tool_id):
                     native_abundance_API_available=True, public_quantification_CLI_available=False,
                     native_complete_result_audit_API_available=True, native_alignment_audit_API_available=True,
                     runtime_development_components_available=True,
+                    source_build_development_available=True, source_to_build_provenance_verified=True,
                     runtime_admission_available=False, workflow_validation='rsem-native-validation.json',
                     implementation_scope=RSEM_SCOPE, validation_note=RSEM_VALIDATION,
-                    coverage_note='Native arithmetic and complete ordinary file/alignment audits are validated. An earlier exact candidate passed fixed original fitting controls; its source snapshot is retained. Current source setup is incomplete and its first attempt skipped for an unavailable compiler plugin. Public fitting/setup and completed runtime/input admission remain unfinished, so RSEM stays missing.')
+                    coverage_note='Native arithmetic and complete ordinary file/alignment audits are validated. Five exact source builds and their staged original wrappers pass fixed reference/fitting and build-evidence drift controls, with an independently checked metadata/synthetic-result bundle. Public fitting/setup and completed scientific runtime/input admission remain unfinished, so RSEM stays missing.')
     if tool_id == 'bcl2fastq':
         policy = json.loads((data / 'bcl2fastq-runtime-policy.json').read_text(encoding='utf-8'))
         assert policy['analysis_status'] == 'SKIPPED' and not policy['software_downloaded_or_installed']
@@ -51,16 +52,16 @@ RSEM_SCOPE = (
     'Release selection retains the older no-alignable-read failure; the 1.3.2 fix is not substituted for 1.2.28/1.3.0/1.3.1. '
     'These methods consume unrounded model quantities; they do not fit EM/Gibbs, recover model parameters from rounded tables, or produce posterior intervals. '
     'Native Java readers now audit complete ordinary reference/count/model/theta/result files and canonical SAM alignments, with a runnable Java result-audit example. '
-    'An earlier exact candidate reproduced fixed original reference/fitting controls; its complete source snapshot is retained separately from current source validation. The current internal source builder has focused tests but its first original-build attempt skipped for an unavailable compiler plugin. Source/build provenance, persistent protected runtime/input admission, portable setup and a public fitting command/examples remain unfinished. '
+    'Five exact original source builds and staged wrappers reproduce fixed reference/fitting controls with complete compiler-prefix snapshots, source/build receipt links and build-evidence drift checks. Earlier failed attempts and the earlier source snapshot remain retained. Persistent protected scientific runtime/input admission, public portable setup and a public fitting command/examples remain unfinished. '
     'RSEM therefore remains missing. Precomputed Xena data and a previously published bulk comparator are distinguished from new quantification. '
     'Read RSEM_DEVELOPMENT.md; no genome/aligner, allele-specific, pRSEM, biological or full-paper equivalence is inferred.')
 
 RSEM_VALIDATION = (
-    'The baseline 22 arithmetic tests retain 668 original-function vectors per JVM. The current exact-package suite has 166 tests: Windows Java 21/25 pass 154 with twelve explicit Linux-only skips; Linux Java 21 passes all 166. All 111 existing native science tests pass on every profile, with strict Java 17/Javadoc. '
-    'The earlier exact candidate executed five source releases and 35 original version/reference/quantification commands: 22 complete quantifications and three retained historical zero-alignment failures. These original runtime results do not certify the subsequently changed runtime classes or source builder. '
-    'Paired-end, reverse-stranded, single-end and posterior/credibility/read-start settings are exercised. All 364 original scientific files and 30 reference files match byte for byte, with independent complete native result audits. Four dependency-change controls pass for every release. '
+    'The baseline 22 arithmetic tests retain 668 original-function vectors per JVM. The current exact-package suite has 171 tests: Windows Java 21/25 pass 154 with seventeen explicit Linux-only skips; Linux Java 21 passes all 171. All 111 existing native science tests pass on every profile, with strict Java 17/Javadoc. '
+    'Five exact source builds execute 35 original version/reference/quantification commands: 22 complete quantifications and three retained historical zero-alignment failures. '
+    'Paired-end, reverse-stranded, single-end and posterior/credibility/read-start settings are exercised. All 364 original scientific files and 30 reference files match byte for byte, with independent complete native result audits. Six dependency/build-evidence change controls pass for every release. '
     'The oldest build explicitly regenerates three distributed configuration files; all other original source bytes are unchanged and earlier guard/build failures remain retained. '
-    'Current source setup has no completed source-build receipt. Supply a declared permitted compiler prefix with its required liblto_plugin.so, headers and libraries, preserve the failed home and retry in NEW paths after the internal setup is validated. Private runtime evidence is not a portable admission receipt or a public project quantification workflow.')
+    'An independent bundle verifier checks original fixed output populations, source/build receipt links and every staged program hash against its compiled-source graph. Source setup is internal and tested on the declared Linux host; public installation/fitting admission remains unfinished. Private runtime evidence is not a portable admission receipt or a public project quantification workflow.')
 
 BCL_SCOPE = (
     'Runtime analysis is SKIPPED while the separate Illumina license and instrument/data requirements are unresolved. '
@@ -77,7 +78,7 @@ QUANT_WARNING = (
     'General installation permission and the FIMO research-use answer do not establish these requirements. Read BCL2FASTQ_RUNTIME_STATUS.md.\n\n'
     '**RSEM QUANTIFICATION ADAPTER IS UNFINISHED:** native arithmetic and private original-release protocols are validated, '
     'but the project does not yet provide an admitted RSEM fitting command. Do not use native abundance arithmetic as an EM/Gibbs fitter or reconstruct unrounded model quantities from rounded result tables. '
-    '**CURRENT RSEM SOURCE SETUP WAS SKIPPED:** the internal compiler discovery could not find liblto_plugin.so. Supply a permitted declared compiler prefix containing the required plugin, headers and libraries; preserve the failed home and use NEW paths after setup validation. No source-build receipt or fit was admitted. '
+    'Internal exact source builds now pass fixed original controls; earlier compiler-discovery,temporary-file and changing-host failures remain retained. If a required compiler/runtime cannot be installed or executed, SKIP dependent fitting, retain the named cause and supply a permitted working toolchain/runtime before retrying to NEW paths. '
     'Use the exact historical release and retain its failure behavior. Read RSEM_DEVELOPMENT.md. Both tools remain missing in the integration count.\n\n')
 
 QUANT_ACTIONS = (
@@ -93,8 +94,8 @@ QUANT_ACTIONS = (
     'do not reconstruct them from two-decimal output tables. Exact release selection retains older no-alignable-read failures. '
     'Read repository file <code>docs/literature/RSEM_DEVELOPMENT.md</code> and the '
     '<a href="https://deweylab.github.io/RSEM/rsem-calculate-expression.html">original quantification instructions</a>.</p>'
-    '<p><strong>Current RSEM source setup was skipped:</strong> internal compiler discovery could not find <code>liblto_plugin.so</code>. '
-    'Supply a permitted declared compiler prefix with its required plugin, headers and libraries. Preserve the failed home and retry in NEW paths after internal setup validation. '
-    'No source-build receipt or fit was admitted. Read repository file <code>docs/literature/RSEM_RUNTIME_DEVELOPMENT.md</code>.</p>'
+    '<p><strong>Internal source-build controls pass; public fitting remains unfinished.</strong> Five exact builds and staged wrappers reproduce fixed controls, with build receipts and all original scientific files checked. '
+    'If a required compiler/runtime cannot be installed or executed, <strong>skip dependent fitting</strong>, retain the named cause and supply a permitted working toolchain/runtime before retrying to NEW paths. '
+    'Earlier failed attempts remain retained. Read repository file <code>docs/literature/RSEM_RUNTIME_DEVELOPMENT.md</code>.</p>'
     '<p><strong>Both tools remain missing in the integration count.</strong> The twenty reviewed paper roles retain precomputed data reuse, historical releases, '
     'the unresolved bcl2fastq V3 label and separate downstream analyses. Cell Ranger remains excluded.</p></section>')
