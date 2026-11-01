@@ -1,0 +1,118 @@
+{
+  "schema_version": 1,
+  "status": "passed-native-common-selection-on-original-joined-streams",
+  "source_commit": "c34d4db3e99a2f7e23deb727671ae260901a5886",
+  "native_controls": {
+    "path": "shapeit-selection-native-controls.zip",
+    "bytes": 1610861,
+    "sha256": "49cce2d74dfa8bc7fedccac56d41a5c0a4e234f6bd1ffdf38af61f203170d8fa"
+  },
+  "native_candidate_sha256": "e0934498aeb580098e68eb2d7ec12e9b9f913589fe2412f26325d377395131fe",
+  "original_controls_sha256": "3ba2a853841b136e05c72fc54aa4b001125b43b9e4f5d71744291f04206463c3",
+  "original_scanner_calls": 50,
+  "complete_scanner_results": 36,
+  "expected_original_failures": 14,
+  "additional_checked_source_boundary_calls": 1,
+  "synchronized_events": 641,
+  "selected_sites": 336,
+  "native_tests_per_JVM": 57,
+  "JVM_profiles": 3,
+  "public_phasing_adapter_available": false,
+  "whole_paper_reproduced": false,
+  "native_join_reconstruction_available": false,
+  "XCF_binary_payloads_validated": false,
+  "new_tool_integrations": 0,
+  "source_evidence": [
+    {
+      "path": ".gitattributes",
+      "sha256": "788465e5ba8d50e8d1d676d5d64adee15137d914f4134548f2bc0cdb1c4ec86c"
+    },
+    {
+      "path": "LICENSES/SHAPEIT4-MIT.txt",
+      "sha256": "a5f4ffd1f3573d4a937c61a3e906afda13c09fb8027056fea65a9df8dc81151a"
+    },
+    {
+      "path": "LICENSES/SHAPEIT5-MIT.txt",
+      "sha256": "caaabefc02c4b97767c472216ec1c1cc3267f26dd2d1c40b889597101ee2e5a8"
+    },
+    {
+      "path": "LICENSES/SHAPEIT5-XCF-MIT.txt",
+      "sha256": "58f960c3f256ed6cf7ccfb8b14d28cb0a7e2e2e1b48ef0bcb74c9c1941ae87ae"
+    },
+    {
+      "path": "src/main/java/org/jlinalg/genetics/ShapeitCommonVariants.java",
+      "sha256": "9005791f780462fe9eb022bdb48adbb3a99a50b57a29edcf28dafa9248d7fdf6"
+    },
+    {
+      "path": "src/main/resources/META-INF/licenses/SHAPEIT4-MIT.txt",
+      "sha256": "a5f4ffd1f3573d4a937c61a3e906afda13c09fb8027056fea65a9df8dc81151a"
+    },
+    {
+      "path": "src/main/resources/META-INF/licenses/SHAPEIT5-MIT.txt",
+      "sha256": "caaabefc02c4b97767c472216ec1c1cc3267f26dd2d1c40b889597101ee2e5a8"
+    },
+    {
+      "path": "src/main/resources/META-INF/licenses/SHAPEIT5-XCF-MIT.txt",
+      "sha256": "58f960c3f256ed6cf7ccfb8b14d28cb0a7e2e2e1b48ef0bcb74c9c1941ae87ae"
+    },
+    {
+      "path": "src/test/java/org/jlinalg/genetics/ShapeitCommonVariantsTest.java",
+      "sha256": "81a45a091279869e373143c765ad3ca4d841e16ba84f0a59a8db8b3c8a8288af"
+    },
+    {
+      "path": "src/test/resources/org/jlinalg/genetics/shapeit-selection/original-controls.zip",
+      "sha256": "3ba2a853841b136e05c72fc54aa4b001125b43b9e4f5d71744291f04206463c3"
+    },
+    {
+      "path": "tools/literature/catalog_source_integrity.py",
+      "sha256": "a8a5e0e09d97f74dd14925e60cb195b9bba9c1679052f8c3b26842050e55ad13"
+    },
+    {
+      "path": "tools/literature/shapeit-reference/MakeSelectionFixture.cpp",
+      "sha256": "4cae2651979df3cc5f7d0d4250d769096b927ea01fcddfee12a7ace67a03fb02"
+    },
+    {
+      "path": "tools/literature/shapeit-reference/SelectionProtocol.cpp",
+      "sha256": "cc09e24e7b3da908725acfd323059fd996802775b5be84923404e7cb3e770545"
+    },
+    {
+      "path": "tools/literature/shapeit-reference/collect_selection_evidence.py",
+      "sha256": "f6e68d63216425647ba465a9da142b7edf369eb0d033cb62fbf8ddf231464911"
+    },
+    {
+      "path": "tools/literature/shapeit_development_validation.py",
+      "sha256": "863c59d6471ed93bfcac38ccbd3a9fb507ad16cf01969ba5521af1ec13646148"
+    },
+    {
+      "path": "tools/literature/shapeit_selection_validation.py",
+      "sha256": "a76a32791dea73581cc751d0e87f8c3f6af1c60bba9e323e0600a44d06c2f872"
+    },
+    {
+      "path": "tools/literature/test_shapeit_selection_validation.py",
+      "sha256": "b1c8f20e830a9f02811593d6c8aa64cb98b240f3a6e7d69efa81c5a45dbded13"
+    }
+  ],
+  "warnings": [
+    {
+      "code": "VOID_HEADER_GAP",
+      "cause": "An ordinary sites-only file before a data-bearing file misaligns the original XCF sample-name vectors. The original empty-target/reference control crashed; a checked build confirmed the vector access.",
+      "action": "Skip dependent phasing. Supply appropriate nonempty target/panel inputs or separately validate an upstream header-handling fix."
+    },
+    {
+      "code": "SCANNER_SUCCESS_IS_NOT_GENOTYPE_ADMISSION",
+      "cause": "Original selection can keep a site with an unsupported scaffold type or an ordinary-GT record with no GT field. The scaffold removed counter does not imply site exclusion.",
+      "action": "Validate actual genotype payloads and supported, non-missing, phased scaffold data before dependent fitting. Do not count a successful scanner mask as successful phasing."
+    },
+    {
+      "code": "AC_AN_SOURCE_METADATA",
+      "cause": "The original checks singleton integer getter results before exclusions and uses declared signed-to-uint32 counts with Float32 comparisons. Invalid biological counts can remain source-visible.",
+      "action": "Inspect count-conversion and non-finite warnings, preserve the declared inputs and perform any correction only as explicit source-verified preprocessing. Do not silently derive replacement counts from GT."
+    },
+    {
+      "code": "PUBLIC_PHASER_UNFINISHED",
+      "cause": "The native method consumes already synchronized original events; protected file/runtime and full fitting/output admission are unfinished.",
+      "action": "Complete raw-record linkage, EOF/source identity and reference/scaffold/common/rare/ligation audits before reporting an integrated phasing analysis."
+    }
+  ],
+  "scope": "Original common-stage source masks, order and counters only. No native HTSlib join reconstruction, binary genotype decoding, protected phasing runtime, convergence or phase-accuracy certification."
+}

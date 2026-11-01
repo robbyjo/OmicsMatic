@@ -1,0 +1,101 @@
+{
+  "schema_version": 1,
+  "status": "passed-native-map-and-checked-original-boundaries",
+  "source_profiles": {
+    "4.1.3": "ca896a27d7d6650c56f516f7de8d537fdf114a1d",
+    "4.2.2": "16865e593ad50689271ead985dc8f4296d2f491d",
+    "5-c34d": "c34d4db3e99a2f7e23deb727671ae260901a5886"
+  },
+  "native_controls": {
+    "path": "shapeit-map-native-controls.zip",
+    "bytes": 2042660,
+    "sha256": "f912eef93572735d7f57c2bf5fd75ba52a63e651f81243667df3fcaee0cee987"
+  },
+  "native_candidate_sha256": "498225118fa6895b83c7712279a609bcb91337f02cbe868ba9f18f87ec393a23",
+  "original_controls_sha256": "977e798fc1b7b1bff2344d51be84d02f7d8ed25449479920db3c71d8ce54b9d6",
+  "original_observations": 127,
+  "complete_original_observations": 105,
+  "expected_original_failure_observations": 22,
+  "compiler_rounding_difference_rows": 12,
+  "native_tests_per_JVM": 133,
+  "JVM_profiles": 3,
+  "public_phasing_adapter_available": false,
+  "whole_paper_reproduced": false,
+  "new_tool_integrations": 0,
+  "source_evidence": [
+    {
+      "path": ".gitattributes",
+      "sha256": "788465e5ba8d50e8d1d676d5d64adee15137d914f4134548f2bc0cdb1c4ec86c"
+    },
+    {
+      "path": "LICENSES/SHAPEIT4-MIT.txt",
+      "sha256": "a5f4ffd1f3573d4a937c61a3e906afda13c09fb8027056fea65a9df8dc81151a"
+    },
+    {
+      "path": "LICENSES/SHAPEIT5-MIT.txt",
+      "sha256": "caaabefc02c4b97767c472216ec1c1cc3267f26dd2d1c40b889597101ee2e5a8"
+    },
+    {
+      "path": "src/main/resources/META-INF/licenses/SHAPEIT4-MIT.txt",
+      "sha256": "a5f4ffd1f3573d4a937c61a3e906afda13c09fb8027056fea65a9df8dc81151a"
+    },
+    {
+      "path": "src/main/resources/META-INF/licenses/SHAPEIT5-MIT.txt",
+      "sha256": "caaabefc02c4b97767c472216ec1c1cc3267f26dd2d1c40b889597101ee2e5a8"
+    },
+    {
+      "path": "src/main/java/org/jlinalg/genetics/ShapeitGeneticMap.java",
+      "sha256": "8a1d6a627a7675ce679f6f8ab0b5ececf90937577a0765ce4731d616937c2e6d"
+    },
+    {
+      "path": "src/test/java/org/jlinalg/genetics/ShapeitGeneticMapTest.java",
+      "sha256": "3929252e7d78785413c4a19139e97a7cc6af91bf4a4e358c722508cb7078f3b2"
+    },
+    {
+      "path": "src/test/resources/org/jlinalg/genetics/shapeit-map/original-controls.zip",
+      "sha256": "977e798fc1b7b1bff2344d51be84d02f7d8ed25449479920db3c71d8ce54b9d6"
+    },
+    {
+      "path": "tools/literature/shapeit-reference/MapProtocol.cpp",
+      "sha256": "4543d34949d860d8c59c5110c2e2c2061efa7f4cdab0f6a6d62d611c413a6b0d"
+    },
+    {
+      "path": "tools/literature/shapeit-reference/collect_map_evidence.py",
+      "sha256": "7da9b8151887bb0b258dcbaac13e55ab4a5d6a37de11fd6b8d25586bffb8ccba"
+    },
+    {
+      "path": "tools/literature/shapeit_map_validation.py",
+      "sha256": "d1546bda0caefd9c30a94df40a429351474a3fa673fc2f4736c11f9fb5998739"
+    },
+    {
+      "path": "tools/literature/test_shapeit_map_validation.py",
+      "sha256": "7ef2756f2c744a5301510d32416bac4d065b1857e6ad3f5cfda0009a89d2a892"
+    },
+    {
+      "path": "tools/literature/catalog_source_integrity.py",
+      "sha256": "a8a5e0e09d97f74dd14925e60cb195b9bba9c1679052f8c3b26842050e55ad13"
+    },
+    {
+      "path": "tools/literature/shapeit_development_validation.py",
+      "sha256": "863c59d6471ed93bfcac38ccbd3a9fb507ad16cf01969ba5521af1ec13646148"
+    }
+  ],
+  "warnings": [
+    {
+      "code": "ALL_BEFORE_4_1_3",
+      "cause": "Original target-vector read outside its size when every variant precedes the map.",
+      "action": "Skip dependent phasing; supply an appropriate map covering selected variants or separately validate a corrected upstream runtime."
+    },
+    {
+      "code": "RIGHT_INTERVAL_READ",
+      "cause": "Original knot-vector read outside its size during right extrapolation in all three inspected profiles.",
+      "action": "Skip dependent phasing; obtain appropriate complete map coverage through the last variant or separately validate a corrected upstream runtime."
+    },
+    {
+      "code": "NATIVE_FOUNDATION_ONLY",
+      "cause": "No protected public file/runtime phasing adapter is available.",
+      "action": "Complete source identity, EOF, variant selection, panel joins and common/rare/ligation admission before reporting a phasing analysis."
+    }
+  ],
+  "scope": "Original three-column parsing and finite map interpolation only. Duplicate knots, C numeric-prefix coercions, signed zero, NaN payload inspection and compiler-specific rounding are retained. Known original undefined accesses and unusable numerical maps cannot yield a successful analysis."
+}

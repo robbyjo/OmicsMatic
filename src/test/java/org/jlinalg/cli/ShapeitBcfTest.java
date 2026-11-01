@@ -2,8 +2,11 @@
 package org.jlinalg.cli;
 
 import static org.junit.jupiter.api.Assertions.*;
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -16,6 +19,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Stream;
+import java.util.zip.GZIPInputStream;
 import java.util.zip.ZipInputStream;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
@@ -39,8 +43,11 @@ class ShapeitBcfTest {
     }
     private record Parsed(ShapeitBcf.HeaderView header, List<ShapeitBcf.Row> rows, ShapeitBcf.Report report) { }
     private Parsed read(String name) throws IOException {
+        return read(fixture(name));
+    }
+    private Parsed read(Path source) throws IOException {
         var rows = new ArrayList<ShapeitBcf.Row>(); ShapeitBcf.HeaderView[] header = new ShapeitBcf.HeaderView[1];
-        var report = ShapeitBcf.read(fixture(name), limits(), new ShapeitBcf.Visitor() {
+        var report = ShapeitBcf.read(source, limits(), new ShapeitBcf.Visitor() {
             @Override public void header(ShapeitBcf.HeaderView value) { header[0] = value; }
             @Override public void row(ShapeitBcf.Row value) { rows.add(value); }
         }, () -> {});
@@ -75,6 +82,7 @@ class ShapeitBcfTest {
                             var value = f[2].equals("F") ? row.format(f[3]) : row.info().get(f[3]); assertNotNull(value);
                             assertEquals(Integer.parseInt(f[4]), value.type()); assertEquals(Integer.parseInt(f[5]), value.width());
                             assertEquals(Integer.parseInt(f[6]), value.cells()); assertArrayEquals(HexFormat.of().parseHex(f[7]), value.payload(), name + "/" + index + "/" + f[3]);
+                            assertEquals(value.payload().length, value.payloadBytes());
                         }
                         case "G" -> {
                             var value = row.format(f[2]); int[] expected = numbers(f[3], false);
@@ -118,6 +126,49 @@ class ShapeitBcfTest {
         }
     }
 
+    @ParameterizedTest @MethodSource("cases")
+    void recordIdentitiesHashEveryPhysicalByteIncludingFraming(String name) throws Exception {
+        byte[] physical = CAPTURE.get(name + ".bcf");
+        if (!name.endsWith("-raw")) {
+            try (var gzip = new GZIPInputStream(new ByteArrayInputStream(physical))) { physical = gzip.readAllBytes(); }
+        }
+        // Walk untouched fixture bytes independently of the native field decoder.
+        var bytes = ByteBuffer.wrap(physical).order(ByteOrder.LITTLE_ENDIAN);
+        assertArrayEquals(new byte[]{'B','C','F',2,2}, Arrays.copyOf(physical,5));
+        int offset = Math.addExact(9, bytes.getInt(5));
+        var expected = new ArrayList<String>();
+        while (offset < physical.length) {
+            assertTrue(physical.length - offset >= 8);
+            int shared = bytes.getInt(offset), individual = bytes.getInt(offset+4);
+            assertTrue(shared >= 24 && individual >= 0);
+            int end = Math.addExact(offset, Math.addExact(8, Math.addExact(shared,individual)));
+            assertTrue(end <= physical.length);
+            expected.add(hash(Arrays.copyOfRange(physical,offset,end)));
+            offset = end;
+        }
+        assertEquals(physical.length,offset);
+        var parsed = read(name);
+        assertEquals(expected, parsed.rows().stream().map(ShapeitBcf.Row::rawWireSha256).toList());
+        for (var row : parsed.rows()) {
+            assertTrue(parsed.header().contigs().containsValue(row.contig()));
+            assertTrue(parsed.header().infoTags().containsAll(row.info().keySet()));
+        }
+    }
+
+    @Test void recordIdentityChangesForQualityBitsWithoutChangingGenotypes() throws Exception {
+        var original = read("initial-raw"); byte[] raw = CAPTURE.get("initial-raw.bcf").clone();
+        int first = 9 + ByteBuffer.wrap(raw).order(ByteOrder.LITTLE_ENDIAN).getInt(5);
+        raw[first+20] ^= 1; // QUAL is outside both the INFO and genotype payloads.
+        Path changed = temporary.resolve("quality-only.bcf"); Files.write(changed,raw);
+        var modified = read(changed);
+        assertEquals(original.report().gtWireSha256(),modified.report().gtWireSha256());
+        assertNotEquals(original.rows().get(0).qualityBits(),modified.rows().get(0).qualityBits());
+        assertNotEquals(original.rows().get(0).rawWireSha256(),modified.rows().get(0).rawWireSha256());
+        assertEquals(original.rows().size(),modified.rows().size());
+        for (int i = 1; i < original.rows().size(); i++)
+            assertEquals(original.rows().get(i).rawWireSha256(),modified.rows().get(i).rawWireSha256());
+    }
+
     @Test void infoPaddingAndMissingMarkersStayPhysicalWhileGetterCardinalityMatchesHtslib() throws Exception {
         var parsed = read("wide"); var first = parsed.rows().get(0);
         assertArrayEquals(new int[]{2, ShapeitBcf.VECTOR_END, ShapeitBcf.VECTOR_END}, first.info().get("AC").integers());
@@ -134,6 +185,8 @@ class ShapeitBcfTest {
         int[] values = gt.integers(); values[0] = 12345;
         assertEquals(original, gt.integers()[0]);
         assertThrows(UnsupportedOperationException.class, () -> parsed.header().samples().add("changed"));
+        assertThrows(UnsupportedOperationException.class, () -> parsed.header().contigs().clear());
+        assertThrows(UnsupportedOperationException.class, () -> parsed.header().infoTags().clear());
         assertThrows(UnsupportedOperationException.class, () -> row.formats().clear());
         assertThrows(UnsupportedOperationException.class, () -> row.info().clear());
         assertThrows(UnsupportedOperationException.class, () -> row.alternates().clear());

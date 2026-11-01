@@ -51,8 +51,8 @@ final class ShapeitBcf {
                     10000, 33554432, 16777216, 1024, 255, 64, 100000000);
         }
     }
-    record HeaderView(String rawText, List<String> samples) {
-        HeaderView { samples = List.copyOf(samples); }
+    record HeaderView(String rawText, List<String> samples, Map<Integer,String> contigs, Set<String> infoTags) {
+        HeaderView { samples = List.copyOf(samples); contigs = Collections.unmodifiableMap(new LinkedHashMap<>(contigs)); infoTags = Set.copyOf(infoTags); }
     }
     /** Exact physical payload; integer sentinels are normalized only by integers(). */
     record Field(String name, int type, int width, int cells, byte[] payload) {
@@ -64,6 +64,7 @@ final class ShapeitBcf {
             payload = payload.clone();
         }
         @Override public byte[] payload() { return payload.clone(); }
+        int payloadBytes() { return payload.length; }
         int[] integers() throws IOException {
             if (width == 0) return new int[0];
             if (type < 1 || type > 3) throw new IOException("BCF field is not integer encoded: " + name);
@@ -112,7 +113,7 @@ final class ShapeitBcf {
         }
     }
     record Row(long ordinal, String contig, int position, int referenceLength, String id, String reference, List<String> alternates,
-            int qualityBits, List<String> filters, Map<String,Field> info, List<Field> formats) {
+            int qualityBits, List<String> filters, Map<String,Field> info, List<Field> formats, String rawWireSha256) {
         Row {
             alternates = List.copyOf(alternates); filters = List.copyOf(filters);
             info = Collections.unmodifiableMap(new LinkedHashMap<>(info)); formats = List.copyOf(formats);
@@ -156,7 +157,8 @@ final class ShapeitBcf {
             String rawHeader = utf8(bytes, 0, bytes.length - 1);
             Header header = header(rawHeader, limits);
             number(wire, header.samples().size()); for (String sample : header.samples()) frame(wire, sample);
-            visitor.header(new HeaderView(rawHeader, header.samples()));
+            visitor.header(new HeaderView(rawHeader, header.samples(), header.contigs(), header.info().keySet()));
+            MessageDigest recordWire = hasher();
             for (int first; (first = input.read()) >= 0;) {
                 check.run();
                 long sharedSize = u32(input, first), individualSize = u32(input), total = Math.addExact(sharedSize, individualSize);
@@ -167,6 +169,10 @@ final class ShapeitBcf {
                 if (++records > limits.records()) throw new IOException("Complete BCF record capacity exceeded; no rows were truncated");
                 var shared = ByteBuffer.wrap(exact(input, (int)sharedSize)).order(ByteOrder.LITTLE_ENDIAN);
                 var individual = ByteBuffer.wrap(exact(input, (int)individualSize)).order(ByteOrder.LITTLE_ENDIAN);
+                recordWire.reset();
+                recordWire.update(ByteBuffer.allocate(8).order(ByteOrder.LITTLE_ENDIAN).putInt((int)sharedSize).putInt((int)individualSize).array());
+                recordWire.update(shared.array()); recordWire.update(individual.array());
+                String rawWireSha256 = HexFormat.of().formatHex(recordWire.digest());
                 int rid = shared.getInt(), zeroPosition = shared.getInt(), referenceLength = shared.getInt(), quality = shared.getInt();
                 int infoCount = Short.toUnsignedInt(shared.getShort()), alleleCount = Short.toUnsignedInt(shared.getShort()), dimensions = shared.getInt();
                 int sampleCount = dimensions & 0xffffff, formatCount = dimensions >>> 24;
@@ -219,7 +225,7 @@ final class ShapeitBcf {
                         else if (i % gt.width() == 0 && (code & 1) != 0) firstBits++;
                     }
                 }
-                visitor.row(new Row(records, contig, zeroPosition + 1, referenceLength, id, ref, alternatives, quality, filters, info, formats));
+                visitor.row(new Row(records, contig, zeroPosition + 1, referenceLength, id, ref, alternatives, quality, filters, info, formats, rawWireSha256));
             }
             if (!fingerprint(source, limits.inputBytes(), check).equals(original)) throw new IOException("BCF source changed during complete raw decoding");
             return new Report(blocks != 0, blocks, header.samples().size(), records, cells, values, firstBits, ends, typedMissing, absent,
