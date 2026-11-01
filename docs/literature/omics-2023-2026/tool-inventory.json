@@ -3130,7 +3130,7 @@
     "role": "Maximum-likelihood phylogenetic tree and divergence analyses",
     "current_coverage": "missing",
     "existing_source": null,
-    "coverage_note": "Named primary-source workflow recovered during semantic review. Upstream integration, exact input/settings and meaningful validation remain pending.",
+    "coverage_note": "The pre-expansion inventory lacked IQ-TREE. Current source adds a validated scoped single-alignment command; nine paper roles retain explicit edition, alphabet, model and downstream-analysis boundaries.",
     "paper_count": 9,
     "papers": [
       "P037",
@@ -3143,10 +3143,40 @@
       "P235",
       "P248"
     ],
-    "implementation_status": "missing",
-    "implementation_source": null,
-    "implementation_scope": "Named primary-source workflow recovered during semantic review. Upstream integration, exact input/settings and meaningful validation remain pending.",
-    "validation_note": "Existing overlap/adapters require paper-specific option checks; missing integrations remain pending."
+    "implementation_status": "upstream-adapter-validated",
+    "implementation_source": "src/main/java/org/jlinalg/cli/IqtreeToolsCli.java",
+    "implementation_scope": "Runs exact original Linux x86_64 editions 1.6.12, 2.1.2, 2.1.4-beta, 2.2.0.3, 2.3.1, 2.3.5, 2.3.6 and 2.4.0 through iqtree-tools. Accepts complete DNA, protein or standard-code codon alignments in FASTA or explicit PHYLIP. Supports fixed built-in models, ModelFinder/TEST, inference or fixed-tree evaluation, standard/ultrafast bootstrap and SH-aLRT. Java audits identities, every model candidate and site likelihood, complete bootstrap families and reported support edges. Native JC69 adds an independent likelihood check; other fitted models receive source consistency audits. Every original row/site and raw source value is retained. KEEP requests all rows; SOURCE_REMOVE_RESTORE records the actual fitted population and restores full names. Setup requires Linux Python 3.11+, prlimit, setsid and explicit permitted install/download flags. Analysis requires Linux Java (WSL on Windows). SKIP3 means skip an unavailable runtime/capability; FAIL2 means no admitted result after input, integrity, execution, capacity or finalization failure. Require COMPLETED.json and matching hashes. Review source-clamped AICc, ignored frequency requests and signed roundoff. Read IQTREE_DEVELOPMENT.md. Partitions, dating, batch gene trees, custom/mixture models, other codes/formats, unresolved paper settings and biological accuracy remain open.",
+    "validation_note": "All 530 focused tests pass on Linux and against the executable JAR. Windows Java 21 and 25 each pass 495 with 35 Linux/runtime aborts. The full Java gate has 6203 passes and 254 environment skips. All 21 public protocols match expectations: 17 completed fits, two skips and two failures across eight exact editions. They retain 6744 site cells, 6264 independent JC69 comparisons, 1100 bootstrap trees, 36 support comparisons and 71 ModelFinder candidates. Each 36-row duplicate control explicitly fits 24 rows and restores 12 pruned names. A Linux bundle verifies on Windows; changed bytes and extra empty directories fail. Eight evidence tests cover changed science, truncated output, scope/count relabelling and unsafe archives. Nine paper roles are reviewed. Literal 1.6.619, GTR+F3x4+R6 and -AUTO remain unresolved/refused. No paper-tree reconstruction or biological-accuracy certificate is claimed.",
+    "project_adapter_available": true,
+    "canonical_adapter_available": false,
+    "development_adapter_cli": "iqtree-tools",
+    "development_candidate": "build/cli/omicsmatic-0.3.7.jar",
+    "development_candidate_sha256": "bd1a3b2448d7016ae4ded3f30a6c5ae92e05a0078ae688f4b93d046cc355eeb2",
+    "workflow_validation": "iqtree-workflow-validation.json",
+    "source_role_coverage": "iqtree-role-coverage.json",
+    "source_roles_reviewed": 9,
+    "whole_paper_reproduced": false,
+    "biological_accuracy_certified": false,
+    "runtime_profiles": [
+      "linux-x86_64-iqtree-1.6.12",
+      "linux-x86_64-iqtree-2.1.2",
+      "linux-x86_64-iqtree-2.1.4-beta",
+      "linux-x86_64-iqtree-2.2.0.3",
+      "linux-x86_64-iqtree-2.3.1",
+      "linux-x86_64-iqtree-2.3.5",
+      "linux-x86_64-iqtree-2.3.6",
+      "linux-x86_64-iqtree-2.4.0"
+    ],
+    "runtime_setup_export_available": true,
+    "download_install_available": true,
+    "runtime_installer": "tools/literature/install_iqtree.py",
+    "native_helpers": [
+      "src/main/java/org/jlinalg/phylogeny/PhylogeneticAlignment.java",
+      "src/main/java/org/jlinalg/phylogeny/NewickTree.java",
+      "src/main/java/org/jlinalg/phylogeny/NewickReader.java",
+      "src/main/java/org/jlinalg/phylogeny/JukesCantorLikelihood.java",
+      "src/main/java/org/jlinalg/phylogeny/BootstrapSupport.java"
+    ]
   },
   {
     "id": "annovar",

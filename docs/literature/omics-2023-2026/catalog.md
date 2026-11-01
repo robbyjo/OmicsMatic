@@ -715,7 +715,7 @@ Nature · 2023-12-13 · [DOI](https://doi.org/10.1038/s41586-023-06838-3) · [Pr
 | fgsea | Ranked WLZ-associated MAG transcripts by fold-change direction times negative log10 P and tested metabolic-pathway transcript sets of at least ten genes across treatment, response-quartile, time and interaction contrasts; used BH q below 0.1. | Methods / Microbial RNA-seq analysis of MAG gene expression |
 | ggtree | Phylogenetic tree visualization. | Methods / Constructing a marker-gene-based phylogeny for P. copri MAGs and cultured P. copri isolates |
 | GSEA | Ranked gene-set enrichment. | Methods / Determining the effects of MDCF-2 supplementation on the abundances of WLZ-associated MAGs |
-| IQ-TREE | Maximum-likelihood phylogenetic tree and divergence analyses. | Methods / MAGs / MAG taxonomy |
+| IQ-TREE | Built a maximum-likelihood nucleotide tree from 142 aligned core genes for 34 Bifidobacterium MAGs and 14 reference genomes, using B. gallicum DSM 20093 as the outgroup to refine MAG classifications. | Methods / MAGs / MAG taxonomy |
 | kallisto | Used kallisto0.43.0 for metagenomic contig/MAG abundance and metatranscriptomic transcript quantification. DNA TPM prevalence/abundance filters selected837MAGs; later RNA counts excluded rRNA and low-DNA-abundance MAGs. | Methods / Defining the relationship between MAG abundances and WLZ |
 | MAFFT | Multiple sequence alignment. | Methods / MAGs / MAG taxonomy |
 | MetaBAT2 | Metagenomic assembly binning and read-depth processing. | Methods / MAGs / Short-read shotgun sequencing |
@@ -1103,7 +1103,7 @@ Nature · 2025-12-03 · [DOI](https://doi.org/10.1038/s41586-025-09794-2) · [Pr
 | DIAMOND | Protein sequence alignment. | Methods / Gene-centric investigation of short-read metagenomes |
 | fastp | Read filtering and adapter trimming. | Methods / Short-read metagenomic library preparation, sequencing and processing |
 | Guppy | Nanopore basecalling; distinguish the fish name. | Methods / Nearly full-length bacterial 16S rRNA gene amplicon library preparation, sequencing and processing |
-| IQ-TREE | Maximum-likelihood phylogenetic tree and divergence analyses. | Methods / Gene-centric investigation of short-read metagenomes |
+| IQ-TREE | Used 2.2.0.3 for protein phylogenies with 1,000 ultrafast replicates and ModelFinder-selected LG+R6, LG+F+R10 or LG+F+R8, plus WAG+R for archaeal AmoA. Separately used 2.4.0 with GTR+F+I+R10 on 591 amoA nucleotide sites, and 2.1.2 with WAG+G and 1,000 ultrafast replicates on concatenated GTDB marker proteins. | Methods / Gene-centric investigation of short-read metagenomes |
 | MAFFT | Multiple sequence alignment. | Methods / Gene-centric investigation of short-read metagenomes |
 | MetaBAT2 | Metagenomic assembly binning and read-depth processing. | Methods / Metagenomic assembly and binning |
 | minimap2 | Mapped selected metagenomic short reads to assemblies using minimap2 2.24 -ax sr, followed by SAMtools 1.16.1 view -Sb -F 2308 and sorting. | Methods / Metagenomic assembly and binning |
@@ -1315,7 +1315,7 @@ Nature · 2026-08-26 · [DOI](https://doi.org/10.1038/s41586-026-10932-7) · [Pr
 
 | Tool | How used | Evidence location |
 | --- | --- | --- |
-| IQ-TREE | Maximum-likelihood phylogenetic tree and divergence analyses. | Methods / Phylogenetics |
+| IQ-TREE | Inferred mammalian species and gene trees across 536 genomes with reported GTR+F3x4+R6, 1,000 ultrafast and SH-aLRT replicates, BNNI, safe mode and saved best-model NEXUS. The inferred species tree was then used in a separate MCMCtree/PAML dating analysis. | Methods / Phylogenetics |
 | MEME | Motif discovery and scanning. | Methods / Selection scans and evolutionary rates / BUSTED |
 | minimap2 | Aligned masked bat genomes at the assembly level with minimap2 before SyRI structural comparison and plotsr visualization. | Methods / Structural variation |
 | plotsr | Synteny and structural-rearrangement visualization. | Methods / Structural variation |
@@ -1968,7 +1968,7 @@ Nature Genetics · 2023-11-30 · [DOI](https://doi.org/10.1038/s41588-023-01571-
 | HISAT2 | Mapped plant RNA-seq evidence to millet genomes with HISAT2 2.1.0 using --min-intronlen 20 --max-intronlen 15000, followed by StringTie2 2.1.7 transcript assembly. | Methods / Gene and transposable element annotation |
 | Integrative Genomics Viewer (IGV) | Manually inspected Minimap2-aligned HiFi reads at structural-variant breakpoints with IGV v2.9.2 while evaluating32 accession assemblies at304 loci. | Methods / Long-read sequencing, assembly and quality assessment |
 | InterProScan | Protein domain and functional annotation. | Methods / Gene and transposable element annotation |
-| IQ-TREE | Maximum-likelihood phylogenetic tree and divergence analyses. | Methods / Phylogeny and population structure |
+| IQ-TREE | Inferred a maximum-likelihood population tree for 516 millet accessions using GTR+R10 on 8,164 fourfold-degenerate transversion SNPs. | Methods / Phylogeny and population structure |
 | Juicer | Hi-C read processing and contact maps. | Methods / Short-read sequencing, Hi-C sequencing and data processing |
 | KofamKOALA | Profile-HMM KEGG orthology annotation. | Methods / RNA-seq and differential gene expression analysis |
 | MAFFT | Multiple sequence alignment. | Methods / Gene-based pangenome analyses |
@@ -2153,7 +2153,7 @@ Nature Genetics · 2024-11-04 · [DOI](https://doi.org/10.1038/s41588-024-01967-
 | hifiasm | Haplotype-resolved long-read assembly. | Methods / De novo genome assembly |
 | HISAT2 | Mapped RNA-seq evidence to repeat-masked grape assemblies with the reported Hisat2 2.10.2 before StringTie and combined BRAKER/PASA/MAKER gene annotation. | Methods / The annotation of genome assemblies |
 | Integrative Genomics Viewer (IGV) | Used Integrative Genomics Viewer visualization with Minimap2-aligned ONT reads to identify split reads and estimate assembly gaps before gap closure. | Methods / De novo genome assembly |
-| IQ-TREE | Maximum-likelihood phylogenetic tree and divergence analyses. | Methods / Population genetic analyses |
+| IQ-TREE | Reported IQ-TREE 1.6.619 with VT+F+R5 and 1,000 ultrafast replicates for phylogenetic analysis of a 466-accession whole-genome study. | Methods / Population genetic analyses |
 | Juicer | Hi-C read processing and contact maps. | Methods / De novo genome assembly |
 | LDAK | SNP heritability and polygenic modelling. | Methods / Heritability estimation |
 | LDpred | LD-aware Bayesian polygenic score construction. | Methods / Polygenic scores |
@@ -2183,7 +2183,7 @@ Nature Genetics · 2025-11-18 · [DOI](https://doi.org/10.1038/s41588-025-02409-
 | fastp | Read filtering and adapter trimming. | Methods / ChIP–seq library preparation and analysis |
 | Guppy | Nanopore basecalling; distinguish the fish name. | Methods / Nanopore sequencing, base calling and methylation analysis |
 | HISAT2 | Mapped publicly sourced multispecies RNA-seq with HISAT2 2.2.1, restricting intron length to 40,000 bp. | Methods / RNA-seq preparation and analysis |
-| IQ-TREE | Maximum-likelihood phylogenetic tree and divergence analyses. | Methods / Sequence search and phylogenetic analysis |
+| IQ-TREE | Constructed MT-A70 protein phylogenies after MAFFT alignment and trimAl filtering, using automatic model selection with 1,000 ultrafast and SH-aLRT replicates. Related inferred trees also provided inputs to separate PAL2NAL/CodeML selection analyses. | Methods / Sequence search and phylogenetic analysis |
 | kallisto | Used kallisto0.46 transcriptome-based estimated counts (est_counts) for cross-species differential-expression analysis with DESeq2. | Methods / RNA-seq preparation and analysis |
 | MACS | Called ChIP peaks with MACS3 3.0.0a7 at q-value 0.01 with species-adjusted effective genome sizes, including 4e7, and used broad mode; classified broad regions further using a width threshold above 1200 bases. | Methods / ChIP–seq library preparation and analysis |
 | MAFFT | Multiple sequence alignment. | Methods / Sequence search and phylogenetic analysis |
@@ -3318,7 +3318,7 @@ Nature Genetics · 2026-07-22 · [DOI](https://doi.org/10.1038/s41588-026-02678-
 | GEMMA | Mixed-model association or variance components. | Methods / Genome-wide association studies |
 | hifiasm | Haplotype-resolved long-read assembly. | Methods / Genome assembly / Step 1. Contig construction |
 | InterProScan | Protein domain and functional annotation. | Methods / Genome annotation |
-| IQ-TREE | Maximum-likelihood phylogenetic tree and divergence analyses. | Methods / Pangenome analysis |
+| IQ-TREE | Used IQ-TREE as an OrthoFinder tree-inference backend with no executable edition specified. A separate direct 2.3.5 analysis inferred single-copy protein trees with the literal -AUTO option before downstream ASTRAL inference. | Methods / Pangenome analysis |
 | LDAK | SNP heritability and polygenic modelling. | Methods / Heritability estimation |
 | LUSH-DNASeq-pipeline | Genotyped SNPs and indels shorter than 50 bp with LUSH-DNASeq-pipeline 2.2.0 after BWA-MEM2 mapping, then kept biallelic variants and applied separate SNP/indel annotation thresholds. | Methods / Variant calling and filtering |
 | MACS | Called CENH3 ChIP peaks with MACS3 3.0.1 using input controls and BAMPE after accession-specific alignment/filters; merged adjacent enriched regions within the reported 1000-kb distance to identify potential centromeres. | Methods / Centromeric region identification |
@@ -4448,7 +4448,7 @@ American Journal of Human Genetics · 2024-07-10 · [DOI](https://doi.org/10.101
 | --- | --- | --- |
 | ggtree | Constructed plotted phylogenetic trees in R from the inferred alignments/trees. | Material and methods / Sequence extractions and phylogenetic analyses |
 | hifiasm | Haplotype-resolved long-read assembly. | Material and methods / Long-read sequence assembly and QC |
-| IQ-TREE | Inferred maximum-likelihood trees with automatic model selection and 1000 bootstraps; also used iqtree2 to estimate coalescence times with 6.4-million-year chimpanzee divergence calibration. | Material and methods / Sequence extractions and phylogenetic analyses |
+| IQ-TREE | Used 1.6.12 for maximum-likelihood tree inference with automatic model selection and 1,000 bootstraps. Separately used iqtree2 for coalescence-time estimation with a 6.4-million-year chimpanzee calibration. | Material and methods / Sequence extractions and phylogenetic analyses |
 | Jalview | Visually inspected multiple sequence alignment quality before manually removing misaligned segments. | Material and methods / Sequence extractions and phylogenetic analyses |
 | Locityper | Read recruitment and probabilistic WGS locus/haplotype genotyping. | Material and methods / Genotyping of MUC5AC haplogroups in 1KG populations using Locityper |
 | MAFFT | Aligned selected intronic/intergenic sequences using global pairwise alignment and 100 iterations before phylogenetic inference. | Material and methods / Sequence extractions and phylogenetic analyses |
@@ -4648,7 +4648,7 @@ Nature Genetics · 2026-07-21 · [DOI](https://doi.org/10.1038/s41588-026-02682-
 | hifiasm | Haplotype-resolved long-read assembly. | Methods / Long-read sequencing, assembly and quality assessment |
 | HISAT2 | Aligned strand-specific RNA-seq from 29 reference-cultivar tissues to each of 125 cucumber assemblies with HISAT2 2.2.1. | Methods / Repeat and protein-coding gene annotations |
 | InterProScan | Protein domain and functional annotation. | Methods / Reannotation and classification of nucleotide-binding resistance genes |
-| IQ-TREE | Maximum-likelihood phylogenetic tree and divergence analyses. | Methods / Phylogeny and population structure |
+| IQ-TREE | Inferred a GTR+R10 maximum-likelihood phylogeny of 422 cucumber accessions from 18,600 fourfold-degenerate transversion SNPs. | Methods / Phylogeny and population structure |
 | Merqury | Assembly k-mer completeness assessment. | Methods / Long-read sequencing, assembly and quality assessment |
 | minimap2 | Aligned high-quality long reads to cucumber genome assemblies with minimap2 2.17-r941 as an assembly-integrity assessment. | Methods / Long-read sequencing, assembly and quality assessment |
 | pbmm2 | PacBio read alignment. | Methods / SV-based graph pangenome construction and SV genotyping |

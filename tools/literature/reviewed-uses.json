@@ -634,9 +634,10 @@
       "doi": "10.1016/j.ajhg.2024.06.007",
       "tool_id": "iqtree",
       "evidence_paragraph_sha256": "603ed5ee462591bf08f64c382cfb605df41ccd5e6831097dcb15144f453e40b7",
-      "use_summary": "Inferred maximum-likelihood trees with automatic model selection and 1000 bootstraps; also used iqtree2 to estimate coalescence times with 6.4-million-year chimpanzee divergence calibration.",
-      "implementation_scope_note": "This phylogenetic software use has no validated integration yet; native extraction does not establish alignment/tree/visualization equivalence.",
-      "version_reported_near_name": "1.6.12"
+      "use_summary": "Used 1.6.12 for maximum-likelihood tree inference with automatic model selection and 1,000 bootstraps. Separately used iqtree2 for coalescence-time estimation with a 6.4-million-year chimpanzee calibration.",
+      "implementation_scope_note": "The exact 1.6.12 single-alignment inference/model-selection contract is available, but the article does not identify the bootstrap algorithm. The dating executable edition and effective command are unspecified, and dating is unavailable. Do not assign 1.6.12 to the dating role or substitute IQ-TREE 3 dating.",
+      "version_reported_near_name": "1.6.12 (ML); unspecified iqtree2 (dating)",
+      "supporting_evidence": []
     },
     {
       "pmcid": "PMC11344006",
@@ -7836,6 +7837,109 @@
           "paragraph_sha256": "e9c83993b1b87cd29ab540358e4849ae0926815c56f53c2b68d7a64476db6445"
         }
       ]
+    },
+    {
+      "pmcid": "PMC10764277",
+      "doi": "10.1038/s41586-023-06838-3",
+      "tool_id": "iqtree",
+      "evidence_paragraph_sha256": "a1eb1b046fb25a6d6a078c0b2f3e000b6c0e6b363ce9f3ee6314f46d35565da0",
+      "use_summary": "Built a maximum-likelihood nucleotide tree from 142 aligned core genes for 34 Bifidobacterium MAGs and 14 reference genomes, using B. gallicum DSM 20093 as the outgroup to refine MAG classifications.",
+      "implementation_scope_note": "The exact 1.6.12 inference profile is available. Roary pangenome construction, MAFFT alignment and microseq trimming are upstream operations. The paragraph does not specify complete model/support settings, and the paper data have not been reproduced.",
+      "version_reported_near_name": "1.6.12",
+      "supporting_evidence": []
+    },
+    {
+      "pmcid": "PMC12823411",
+      "doi": "10.1038/s41586-025-09794-2",
+      "tool_id": "iqtree",
+      "evidence_paragraph_sha256": "554734d50c51bf5f71a3d1f85973a27bfc01962672a467bc77ea2c0ffc197ac9",
+      "use_summary": "Used 2.2.0.3 for protein phylogenies with 1,000 ultrafast replicates and ModelFinder-selected LG+R6, LG+F+R10 or LG+F+R8, plus WAG+R for archaeal AmoA. Separately used 2.4.0 with GTR+F+I+R10 on 591 amoA nucleotide sites, and 2.1.2 with WAG+G and 1,000 ultrafast replicates on concatenated GTDB marker proteins.",
+      "implementation_scope_note": "These three exact editions and built-in single-alignment model/support contracts are available. Preserve the role-specific alphabet, model and edition. MAFFT/Muscle/TrimAl preprocessing, GTDB resources, ARB rerooting and iTOL are separate; synthetic controls do not reconstruct the paper alignments or clades.",
+      "version_reported_near_name": "2.2.0.3; 2.4.0; 2.1.2 (role-specific)",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 88,
+          "section": "Methods / Linkage of AOA MAGs to the major terrestrial amoA clades",
+          "paragraph_sha256": "5b7193ed73e842fb7d578006a4846692065a280c783ed5e5a266f5d6ac17861a"
+        },
+        {
+          "paragraph_index": 90,
+          "section": "Methods / Phylogenomic investigation of nitrifier genera, and Nitrobacter-like NxrA containing MAGs compared to NxrA gene phylogeny",
+          "paragraph_sha256": "389145de627005e19ea13101b4358e6895d70eb00486989d73b84d4b2fcfccff"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC13626957",
+      "doi": "10.1038/s41586-026-10932-7",
+      "tool_id": "iqtree",
+      "evidence_paragraph_sha256": "e28761cbff3e797a1a33664a736005eae99e041500f20041ce04ef2feaf1b99f",
+      "use_summary": "Inferred mammalian species and gene trees across 536 genomes with reported GTR+F3x4+R6, 1,000 ultrafast and SH-aLRT replicates, BNNI, safe mode and saved best-model NEXUS. The inferred species tree was then used in a separate MCMCtree/PAML dating analysis.",
+      "implementation_scope_note": "WARNING: original 2.3.1 rejects the literal reported GTR+F3x4+R6 setting for both controlled DNA and standard-code codon inputs. Obtain effective author commands/model definitions; do not silently change its model or alphabet. The source gap-filter wording remains ambiguous. Batch gene-tree execution, best-model NEXUS delivery and downstream PAML dating are not covered by the current single-alignment adapter.",
+      "version_reported_near_name": "2.3.1",
+      "supporting_evidence": []
+    },
+    {
+      "pmcid": "PMC10703678",
+      "doi": "10.1038/s41588-023-01571-z",
+      "tool_id": "iqtree",
+      "evidence_paragraph_sha256": "b35bd15167f5996ea887ed6dba0f5bf9f709e7ed655b348dbe9eb53b06c0dcdf",
+      "use_summary": "Inferred a maximum-likelihood population tree for 516 millet accessions using GTR+R10 on 8,164 fourfold-degenerate transversion SNPs.",
+      "implementation_scope_note": "The exact 2.1.4-beta edition and single-alignment GTR+R10 contract are available. Preserve the original accession set and upstream 4DTv definition. Variant generation, site selection and reconstruction of the paper tree remain separate.",
+      "version_reported_near_name": "2.1.4-beta",
+      "supporting_evidence": []
+    },
+    {
+      "pmcid": "PMC11631756",
+      "doi": "10.1038/s41588-024-01967-5",
+      "tool_id": "iqtree",
+      "evidence_paragraph_sha256": "4d0e8a5075ed923e59070566a045512db61f3a8a3758b82e793f9ada1d003d73",
+      "use_summary": "Reported IQ-TREE 1.6.619 with VT+F+R5 and 1,000 ultrafast replicates for phylogenetic analysis of a 466-accession whole-genome study.",
+      "implementation_scope_note": "SKIP the paper-exact analysis pending clarification: literal 1.6.619 is unresolved and is not a citation-number join. VT is a protein model while the effective input alphabet is unspecified. Do not replace the edition, change VT to a nucleotide model or treat a control from another edition as paper reproduction.",
+      "version_reported_near_name": "1.6.619 (literal, unresolved)",
+      "supporting_evidence": []
+    },
+    {
+      "pmcid": "PMC12695648",
+      "doi": "10.1038/s41588-025-02409-6",
+      "tool_id": "iqtree",
+      "evidence_paragraph_sha256": "9c1e70b7aeeb1ceae89dfda0fdb3ead02159a4f4d9bba98b736e8fbf44de6bdd",
+      "use_summary": "Constructed MT-A70 protein phylogenies after MAFFT alignment and trimAl filtering, using automatic model selection with 1,000 ultrafast and SH-aLRT replicates. Related inferred trees also provided inputs to separate PAL2NAL/CodeML selection analyses.",
+      "implementation_scope_note": "The exact 2.1.2 single-alignment model-selection/support contract is available. Alignment, trimming, codon back-translation and CodeML selection tests are separate. This integration does not infer the omitted paper settings or reconstruct all reported trees.",
+      "version_reported_near_name": "2.1.2",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 44,
+          "section": "Methods / Selection analysis",
+          "paragraph_sha256": "f8465390731a4d95e97a8cee1a757e6004f4e01e4b585b3570d5338690c90491"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC13447107",
+      "doi": "10.1038/s41588-026-02678-9",
+      "tool_id": "iqtree",
+      "evidence_paragraph_sha256": "acf21109a5bb629ea6a86c17af7adef18397d3a77e75c9137b601042987d66bb",
+      "use_summary": "Used IQ-TREE as an OrthoFinder tree-inference backend with no executable edition specified. A separate direct 2.3.5 analysis inferred single-copy protein trees with the literal -AUTO option before downstream ASTRAL inference.",
+      "implementation_scope_note": "WARNING: original 2.3.5 rejects the literal -AUTO option. Obtain the effective command and the OrthoFinder backend edition before paper-exact execution; do not reinterpret -AUTO as thread detection or model selection. OrthoFinder orchestration, batched gene trees and ASTRAL are separate from the current single-alignment command.",
+      "version_reported_near_name": "2.3.5 (direct role); unspecified (OrthoFinder backend)",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 46,
+          "section": "Methods / Phylogenetic tree construction and divergence time estimation",
+          "paragraph_sha256": "ea72f13c9e15ec9de931123129b9e81a2267bf9524e101cf7c042534c84f37ea"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC13447089",
+      "doi": "10.1038/s41588-026-02682-z",
+      "tool_id": "iqtree",
+      "evidence_paragraph_sha256": "4ee70823595ae60b5270e6a6cd4c1168fe0b9d8760936b639a76e0b43b3e9467",
+      "use_summary": "Inferred a GTR+R10 maximum-likelihood phylogeny of 422 cucumber accessions from 18,600 fourfold-degenerate transversion SNPs.",
+      "implementation_scope_note": "The exact 2.3.6 single-alignment GTR+R10 contract is available. Preserve the degenotate-derived site definition and accession population. Upstream variant/site construction and full paper-tree reconstruction remain separate.",
+      "version_reported_near_name": "2.3.6",
+      "supporting_evidence": []
     }
   ]
 }
