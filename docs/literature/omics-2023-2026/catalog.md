@@ -373,7 +373,7 @@ Nature · 2026-09-23 · [DOI](https://doi.org/10.1038/s41586-026-10836-6) · [Pr
 | PLINK | Used PLINK for several separate genotype workflows: an ancestry-specific 1000 Genomes LD panel for GWAS-summary imputation; MVP genotype QC and sex checks; ROSMAP sample/variant QC and IBD relatedness; and staged FACS-MG QC, LD pruning and genetic PCs. The LD panel reports --ld-window-kb 1000000, --ld-window 1000, --maf 0.01 and --ld-window-r2 0. FACS-MG reports --indep-pairwise 1000 10 0.02, followed by 50 5 0.02. | Methods / I-TWAS and snGReX-PheWAS in MVP / MVP genotype quality control |
 | PrediXcan | Genetically predicted expression association. | Methods / Training of snTIMs / Genotype and gene expression quality control for TIM training / Training of cell-type-specific PrediXcan models |
 | scVI | Used shared genes and scvi-tools reference models for PsychAD-to-ROSMAP class/subclass label transfer: five hidden layers, ten latent variables, annotation training for 20 epochs with at least 100 cells/cluster/epoch, then 100 transfer epochs. | Methods / Out-of-sample validation of PsychAD snTIMs / Validation of class-level PsychAD snTIMs in ROSMAP |
-| SHAPEIT | Genotype haplotype phasing. | Methods / I-TWAS and snGReX-PheWAS in MVP / MVP genotype quality control |
+| SHAPEIT | Used MVP Release 4 genotypes whose data core pre-phased and imputed against TOPMed with SHAPEIT4 v4.1.3 and Minimac4 before the study-specific ancestry and GWAS/TWAS quality control. | Methods / I-TWAS and snGReX-PheWAS in MVP / MVP genotype quality control |
 | smartpca | Genetic ancestry principal components. | Methods / I-TWAS and snGReX-PheWAS in MVP / MVP genotype quality control |
 
 XML SHA-256: `67a35ac2cd25950973379382addff05cb689b1a4b1424c71ec1e54b7e8b01209`. Exact evidence paragraph hashes and locators are in [papers.json](papers.json).
@@ -793,7 +793,7 @@ Nature · 2023-12-13 · [DOI](https://doi.org/10.1038/s41586-023-06831-w) · [Pr
 | PLINK | Used for genotype quality control. | Methods / Genomic variation |
 | PolyPhen-2 | Missense variant effect annotation. | Methods / Genomic variation |
 | RFMix | Local ancestry inference. | Methods / Ancestry inference |
-| SHAPEIT | Genotype haplotype phasing. | Methods / Haplotype inference |
+| SHAPEIT | Phased genomes with the reported ShapeIT v2.12 at default parameters, using the low-coverage 1000 Genomes reference panel and phase-informative reads. Linked reads were used to estimate switch error rates and select a phasing strategy. | Methods / Haplotype inference |
 | SIFT | Missense variant effect annotation. | Methods / Genomic variation |
 | smartpca | Genetic ancestry principal components. | Methods / Ancestry inference |
 | TreeAnnotator | Produced maximum clade credibility tree summaries from the BEAST mitochondrial phylogenetic analysis. | Methods / Mitochondrial genetic structure and diversity |
@@ -1611,7 +1611,7 @@ Nature Genetics · 2023-12-04 · [DOI](https://doi.org/10.1038/s41588-023-01600-
 | Minimac | Imputed the screening cohort through a local Michigan Imputation Server 1.5.7 using Eagle2, Minimac4 and 1000G Phase3 v5; MGB Biobank batches were separately imputed through the server with that reference. | Methods / Genotyping, quality control and imputation in screening cohort |
 | PLINK | Processed screening-cohort genotype data using both PLINK1.9 and PLINK2. The shared workflow excludes sample/variant missingness above 10%, sex mismatches and variants with HWE P<1e-50, followed by a separate Michigan-server imputation workflow. | Methods / Genotyping, quality control and imputation in screening cohort |
 | PLINK 2 | Used PLINK2 in the shared genotype-processing workflow, then estimated ten genetic PCs and KING-robust kinship in PLINK2. Removed five individuals with kinship greater than 0.177. PLINK1.9 is separately named in the same paragraph. | Methods / Genotyping, quality control and imputation in screening cohort |
-| SHAPEIT | Genotype haplotype phasing. | Methods / Genotyping, quality control and imputation in UKBB cohort |
+| SHAPEIT | Described UKBB genotypes produced by a two-step SHAPEIT pre-phasing and IMPUTE2 imputation process using HRC and UK10K haplotype resources, followed by the stated cohort and variant quality control. | Methods / Genotyping, quality control and imputation in UKBB cohort |
 
 XML SHA-256: `b3f14dd0f3ad7e6c7ddd94237f00324876e5f04afce55ee61158cb6905927334`. Exact evidence paragraph hashes and locators are in [papers.json](papers.json).
 
@@ -1878,7 +1878,7 @@ Nature Genetics · 2025-11-27 · [DOI](https://doi.org/10.1038/s41588-025-02413-
 | Minimac | Received chromosome-wise GRCh37 VCF genotypes for1, 980 Tarkin participants previously imputed using Minimac3 without indels, and performed subsequent biallelic selection, BCFtools naming and PLINK2 sample/variant QC. | Methods / Genotyping |
 | PLINK | Used PLINK v.1.90b7.1 --linear to associate residualized, inverse-normal protein levels with genotypes in 1260 samples, excluding missing data points. The source separately describes lead selection, LD clumping and iterative conditional association. | Methods / Genome-wide association |
 | PLINK 2 | Filtered Tarkin genotypes using PLINK2 v.2.00a5LM with --geno 0.1, --mac 10, --maf 0.05 and --hwe 1E-15. The 1260-sample proteomics subset was further filtered with --maf 0.05, --hwe 1E-6 and --geno 0.02; the first ten PCs were computed with --pca. | Methods / Genotyping |
-| SHAPEIT | Genotype haplotype phasing. | Methods / Genotyping |
+| SHAPEIT | Reported QMDiab Omni2.5 array processing with SHAPEIT and 1000 Genomes phase3 haplotypes, described in the paper as imputation. Genotypes were available for 325 samples with proteomics data. | Methods / Genotyping |
 
 XML SHA-256: `c2fc5b55fb192193520c907287ad57fec48a06a6d0e5aca760cb5f25c25f7e79`. Exact evidence paragraph hashes and locators are in [papers.json](papers.json).
 
@@ -2424,7 +2424,7 @@ Nature Genetics · 2026-09-07 · [DOI](https://doi.org/10.1038/s41588-026-02741-
 | scDRS | Single-cell disease relevance scoring. | Methods / Detection of cell types associated with MS |
 | scds | Ran scds 1.18 alongside Scrublet per sample after CellRanger and CellBender. | Methods / Alignment, quantification and QC of PBMC scRNA-seq data |
 | Scrublet | Ran Scrublet 0.2.3 and scds 1.18 per sample after CellRanger 7 and CellBender 0.1.0 processing. | Methods / Alignment, quantification and QC of PBMC scRNA-seq data |
-| SHAPEIT | Genotype haplotype phasing. | Methods / QC and imputation in the Japanese datasets |
+| SHAPEIT | Estimated haplotypes for Japanese datasets using SHAPEIT4 before Minimac4 genotype imputation; the imputation reference comprised 11,754 Japanese whole-genome-sequenced individuals. | Methods / QC and imputation in the Japanese datasets |
 | STAR | Splice-aware bulk RNA read alignment and optional raw gene counts. | Methods / Alignment, quantification and QC of PBMC scRNA-seq data |
 | UCSC liftOver | Converted hg38 GWAS summary statistics to hg19 with UCSC liftOver before reference-strand harmonization and multi-cohort meta-analysis. | Methods / GWAS meta-analysis |
 | UMAP | Produced an exploratory low-dimensional representation of the measured profiles. | Methods / Manual annotation of PBMC scRNA-seq data |
@@ -2684,7 +2684,7 @@ Nature Genetics · 2024-10-03 · [DOI](https://doi.org/10.1038/s41588-024-01913-
 | Minimac | Separately prephased BBJ first cohort with SHAPEIT2 2.837 and BBJ second/NCGG cohorts with EAGLE2 2.39, then performed genome-wide imputation using Minimac4 1.0.0 after sample overlap and variant concordance/QC exclusions. | Methods / Haplotype phasing and imputation |
 | PLINK 2 | Used for genetic association analysis. | Methods / Quantitative and case-control association analysis and meta-analysis |
 | PyMOL | Visualized protein structures from PDB6KN8,5LGD and5DO7 with PyMOL for Troponin-T,CD36 and ABCG5/ABCG8. | Methods / Protein visualization |
-| SHAPEIT | Genotype haplotype phasing. | Methods / Haplotype phasing and imputation |
+| SHAPEIT | Phased the BBJ first cohort with SHAPEIT2, reported as v.2.837, before Minimac4 imputation. The separately supplied ToMMo dataset used SHAPEIT2 v2.R837 before IMPUTE2 imputation. | Methods / Haplotype phasing and imputation |
 | UCSC liftOver | Mapped ENCODE DHS and conserved-footprint positions to hg19 before variant-overlap and regulatory-element/tissue enrichment analyses. | Methods / Regulatory element and tissue enrichment analysis |
 | Ensembl VEP | Variant consequence annotation. | Methods / Variant annotation |
 
@@ -2900,7 +2900,7 @@ Nature Genetics · 2023-10-26 · [DOI](https://doi.org/10.1038/s41588-023-01538-
 | IMPUTE | Genotype imputation. | Methods / Genotyping and whole-genome sequencing / Denmark |
 | kallisto | Computed blood/adipose gene expression from personalized transcript abundances with kallisto; the software table reports0.46. cis-eQTL regression used normal-quantile expression and chromosome-specific LOCO expression PCs. | Methods / Functional data and colocalization analysis |
 | LDSC | Used for annotation-stratified genetic enrichment; association inflation assessment. | Methods / Association testing and meta-analysis |
-| SHAPEIT | Genotype haplotype phasing. | Methods / Genotyping and whole-genome sequencing / US |
+| SHAPEIT | Phased quality-controlled US Intermountain chip genotypes using SHAPEIT4; long-range phased chip samples and in-house methods were then used to prepare the sequence-variant haplotype reference panel. | Methods / Genotyping and whole-genome sequencing / US |
 | Ensembl VEP | Variant consequence annotation. | Methods / Genotyping and whole-genome sequencing / Iceland |
 
 XML SHA-256: `1a0fc0dd6a23b6f6035edaf86021ad90a1024a40a474cf1f62c49500ff3a97b1`. Exact evidence paragraph hashes and locators are in [papers.json](papers.json).
@@ -3461,7 +3461,7 @@ American Journal of Human Genetics · 2024-11-25 · [DOI](https://doi.org/10.101
 | Picard | Alignment QC, duplicates and sequence processing. | Material and methods / Data processing for population genomics analyses with WGS samples |
 | PLINK | Used for genotype quality control. | Material and methods / Population genomic analyses |
 | SAMtools | Alignment manipulation and QC. | Material and methods / Data processing for population genomics analyses with WGS samples |
-| SHAPEIT | Genotype haplotype phasing. | Material and methods / Population genomic analyses |
+| SHAPEIT | Used SHAPEIT5 with 1000 Genomes phase3 haplotypes for MSMC demographic analyses. Separately used phase_common_static with that reference before CHROMOPAINTER, and common-marker phasing of Armenian genomes before the IMPUTE5 imputation benchmark. | Material and methods / Population genomic analyses |
 | smartpca | Genetic ancestry principal components. | Material and methods / Population genomic analyses |
 | Ensembl VEP | Variant consequence annotation. | Material and methods / Variant annotation |
 
@@ -3559,7 +3559,7 @@ American Journal of Human Genetics · 2026-07-01 · [DOI](https://doi.org/10.101
 | --- | --- | --- |
 | PLINK | Used for genotype quality control. | Methods / Data processing / Construction of a harmonized SNP set |
 | RFMix | Local ancestry inference. | Methods / Data processing / MHIB dataset |
-| SHAPEIT | Genotype haplotype phasing. | Methods / Data processing / Construction of a harmonized SNP set |
+| SHAPEIT | Filled missing genotypes with SHAPEIT5 in cohort-only mode, without an external reference, after constructing the 229,986-SNP harmonized ancestry-prediction input set. | Methods / Data processing / Construction of a harmonized SNP set |
 
 XML SHA-256: `d39ae77884b8c3c248835c92978263f3e618aef2396e982a6595447a57b75998`. Exact evidence paragraph hashes and locators are in [papers.json](papers.json).
 
@@ -3998,7 +3998,7 @@ American Journal of Human Genetics · 2026-05-01 · [DOI](https://doi.org/10.101
 | REGENIE | Used SAIGE or REGENIE to test ancestry-stratified recessive gene burdens with age/sex/interactions/PC covariates, RINT quantitative traits and Firth correction below P=0.01 for binary traits. Gene-phenotype tests required at least five bi-allelic carriers; matching additive tests used the same available gene universe. | Methods / Association analysis |
 | REVEL | Missense variant effect prediction. | Methods / Variant annotation |
 | SAIGE | Tested supplied recessive burdens with SAIGE or REGENIE per ancestry/subcohort,and subsequently tested additive burdens for genes with available recessive summaries. | Methods / Association analysis |
-| SHAPEIT | Genotype haplotype phasing. | Methods / Statistical phasing and recessive burden calculation |
+| SHAPEIT | Used a Snakemake SHAPEIT5 wrapper for chromosome chunks in G&H, BBJ and BioMe, combining exome and array genotypes with exome variants prioritized at overlaps. Common variants, described as MAF>0.001, formed the scaffold for rare-variant phasing; the UKB expansion used a similar two-stage procedure. Downstream compound-heterozygote analyses retained PP>0.90. | Methods / Statistical phasing and recessive burden calculation |
 | Snakemake | Analysis workflow execution. | Methods / Statistical phasing and recessive burden calculation |
 | SpliceAI | Variant splice-impact prediction. | Methods / Variant annotation |
 | Ensembl VEP | Variant consequence annotation. | Methods / Variant annotation |
