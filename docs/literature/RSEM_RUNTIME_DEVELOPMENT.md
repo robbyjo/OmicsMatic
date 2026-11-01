@@ -1,6 +1,6 @@
-# RSEM original runtime and source-build development
+# RSEM original runtime and source-build history
 
-Five pinned original-source builds and their staged wrappers pass fixed reference/fitting controls on the declared Linux x86_64 host. **The public RSEM fitting workflow remains unfinished. RSEM stays missing in the toolbox inventory.** Native arithmetic and ordinary reference/count/model/result/alignment audits remain separately available; reading a result does not run a fit.
+Five pinned original-source builds and their staged wrappers passed the fixed reference/fitting controls documented below. The current local public fitting/setup workflow is described in [RSEM_WORKFLOWS.md](RSEM_WORKFLOWS.md) and its [validation record](omics-2023-2026/rsem-workflow-validation.json). This page preserves the earlier source-build stage; its counts do not replace the current controls. Reading a result remains separate from running a fit.
 
 The current [source-build validation record](RSEM_SOURCE_SETUP_VALIDATION.json) pins the candidate, source, tests and [metadata/synthetic-result bundle](omics-2023-2026/rsem-source-build-controls.zip). The earlier [runtime record](RSEM_RUNTIME_VALIDATION.json) and its complete 57-file source snapshot are retained as historical evidence. The new record does not apply old results to changed source without fresh controls.
 

@@ -75,7 +75,10 @@ def probe(home,profile,java,attempt):
     if p.returncode or p.stdout.strip()!=profile['version']:raise RuntimeError('Pinned Trimmomatic version/load probe failed; inspect program-version.log')
     return major
 def install(args):
-    lock=json.loads(LOCK.read_text(encoding='utf-8'));profile=lock['profiles'][args.version];home=args.environment.resolve();cache=args.cache.resolve();report=args.report.resolve();report.mkdir(parents=True,exist_ok=True);attempt=report/'attempts'/dt.datetime.now(dt.timezone.utc).strftime('%Y%m%dT%H%M%S.%fZ');attempt.mkdir(parents=True);record=dict(version=args.version,environment=str(home),download_authorized=args.allow_download,private_java_requested=args.private_java,archive_sha256=profile['sha256'],source=profile['url'],attempt=str(attempt),recorded_utc=dt.datetime.now(dt.timezone.utc).isoformat())
+    lock=json.loads(LOCK.read_text(encoding='utf-8'));profile=lock['profiles'][args.version];home=args.environment.resolve();cache=args.cache.resolve();report=args.report.resolve();report.mkdir(parents=True,exist_ok=True)
+    attempts=report/'attempts';attempts.mkdir(exist_ok=True)
+    attempt=Path(tempfile.mkdtemp(prefix=dt.datetime.now(dt.timezone.utc).strftime('%Y%m%dT%H%M%S.%fZ')+'-',dir=attempts))
+    record=dict(version=args.version,environment=str(home),download_authorized=args.allow_download,private_java_requested=args.private_java,archive_sha256=profile['sha256'],source=profile['url'],attempt=str(attempt),recorded_utc=dt.datetime.now(dt.timezone.utc).isoformat())
     try:
         reused=available(home,profile)
         if home.exists() and not reused:raise RuntimeError('Existing unmanaged or integrity-failed program home preserved; choose a new --environment')

@@ -13,8 +13,8 @@ function check(name, fn) {fn(); checks.push(name);}
   try {
     await page.goto('http://127.0.0.1:8768/literature-review.html');
     await page.waitForFunction(() => document.querySelector('#count')?.textContent === '250 of 250 papers');
-    check('RSEM and bcl2fastq remain missing', () => {for (const id of ['rsem', 'bcl2fastq']) assert.equal(inventory.find(t => t.id === id).implementation_status, 'missing');});
-    check('Integration counts unchanged', () => {assert.equal(inventory.filter(t => t.implementation_status === 'upstream-adapter-validated').length, 43); assert.equal(inventory.filter(t => t.implementation_status === 'native-subset-validated').length, 12); assert.equal(inventory.filter(t => t.implementation_status === 'missing').length, 264);});
+    check('RSEM subset is available and bcl2fastq remains missing', () => {assert.equal(inventory.find(t => t.id === 'rsem').implementation_status, 'upstream-adapter-validated'); assert.equal(inventory.find(t => t.id === 'bcl2fastq').implementation_status, 'missing');});
+    check('One validated RSEM integration added', () => {assert.equal(inventory.filter(t => t.implementation_status === 'upstream-adapter-validated').length, 44); assert.equal(inventory.filter(t => t.implementation_status === 'native-subset-validated').length, 12); assert.equal(inventory.filter(t => t.implementation_status === 'missing').length, 263);});
     for (const row of rows) {
       const paper = papers.find(p => p.paper_id === row.paper_id), name = row.review.tool_id === 'rsem' ? 'RSEM' : 'bcl2fastq';
       await page.locator('#query').fill(paper.doi); assert.equal(await page.locator('#results article').count(), 1);
@@ -22,7 +22,7 @@ function check(name, fn) {fn(); checks.push(name);}
       assert.equal(await tr.count(), 1); const text = plain(await tr.innerText());
       check(row.paper_id + '/' + name + ' reviewed use and scope', () => {assert.ok(text.includes(plain(row.review.use_summary))); assert.ok(text.includes(plain(row.review.implementation_scope_note)));});
       const status = plain(await tr.locator('td').nth(2).innerText());
-      check(row.paper_id + '/' + name + ' missing status', () => assert.ok(status.startsWith('missing')));
+      check(row.paper_id + '/' + name + ' current availability', () => assert.ok(status.startsWith(row.review.tool_id === 'rsem' ? 'upstream-adapter-validated' : 'missing')));
       const shownName = plain(await tr.locator('td').first().innerText());
       check(row.paper_id + '/' + name + ' exact reported version', () => row.review.version_reported_near_name ? assert.ok(shownName.includes('reported ' + row.review.version_reported_near_name)) : assert.ok(!shownName.includes('reported')));
     }
@@ -48,7 +48,7 @@ function check(name, fn) {fn(); checks.push(name);}
       await actions.evaluate(el => el.scrollIntoView({block: 'start', behavior: 'instant'}));
       await page.evaluate(async () => {await document.fonts.ready; await new Promise(requestAnimationFrame); await new Promise(requestAnimationFrame);});
       const text = await actions.innerText();
-      check(theme + ' skip and unfinished status visible', () => {assert.match(text, /runtime analysis is skipped/); assert.match(text, /permitted installation/); assert.match(text, /instrument\/data eligibility/); assert.match(text, /adapter is unfinished/); assert.match(text, /two-decimal/); assert.match(text, /Both tools remain missing/);});
+      check(theme + ' availability and skip recovery visible', () => {assert.match(text, /runtime analysis is skipped/); assert.match(text, /permitted installation/); assert.match(text, /instrument\/data eligibility/); assert.match(text, /alignment-mode fitting is available/); assert.match(text, /exit 3/); assert.match(text, /exit 2/); assert.match(text, /bcl2fastq remains missing/);});
       const box = await actions.boundingBox(), heading = await actions.locator('h2').boundingBox();
       const bottom = await page.locator('site-header').evaluate(el => Math.max(0, ...[el, ...el.querySelectorAll('*')].map(x => x.getBoundingClientRect()).filter(r => r.width > 0 && r.height > 0).map(r => r.bottom)));
       fs.writeFileSync(path.join(out, 'layout-' + theme + '.json'), JSON.stringify({box, heading, bottom}, null, 2));
@@ -57,9 +57,9 @@ function check(name, fn) {fn(); checks.push(name);}
     }
     await page.goto('http://127.0.0.1:8768/literature-warnings.html#quantification-actions');
     const warnings = await page.locator('#quantification-actions').innerText();
-    check('Warnings page retains required actions', () => {assert.match(warnings, /runtime analysis is skipped/); assert.match(warnings, /run folder and sample sheet/); assert.match(warnings, /adapter is unfinished/); assert.match(warnings, /Cell Ranger remains excluded/);});
+    check('Warnings page retains required actions', () => {assert.match(warnings, /runtime analysis is skipped/); assert.match(warnings, /run folder and sample sheet/); assert.match(warnings, /alignment-mode fitting is available/); assert.match(warnings, /Cell Ranger remains excluded/);});
     assert.deepEqual(errors, []);
-    fs.writeFileSync(path.join(out, 'ui-validation.json'), JSON.stringify({status: 'passed-twenty-quantification-source-roles-and-prominent-required-actions', checks, screenshots, console_errors: errors, integrations_added: 0}, null, 2) + '\n');
+    fs.writeFileSync(path.join(out, 'ui-validation.json'), JSON.stringify({status: 'passed-twenty-quantification-source-roles-and-prominent-required-actions', checks, screenshots, console_errors: errors, integrations_added: 1}, null, 2) + '\n');
     console.log('QUANTIFICATION UI PASSED', checks.length, 'checks');
   } finally {await browser.close();}
 })().catch(e => {console.error(e); process.exitCode = 1;});

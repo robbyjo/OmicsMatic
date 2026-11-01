@@ -83,6 +83,8 @@ public final class JLinAlgCli {
             return GenomicIntervalCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
         if (arguments.length > 0 && arguments[0].equals("scvi-tools"))
             return ScviToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("rsem-tools"))
+            return RsemToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
         if (arguments.length > 0 && arguments[0].equals("cell-embed"))
             return CellEmbeddingCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
         if (arguments.length > 0 && arguments[0].equals("sequence-qc"))
@@ -357,6 +359,7 @@ public final class JLinAlgCli {
               java -jar omicsmatic-<version>.jar signature-score --help
               java -jar omicsmatic-<version>.jar intervals --help
               java -jar omicsmatic-<version>.jar scvi-tools --help
+              java -jar omicsmatic-<version>.jar rsem-tools --help
               java -jar omicsmatic-<version>.jar cell-embed --help
               java -jar omicsmatic-<version>.jar sequence-qc --help
               java -jar omicsmatic-<version>.jar sequence-tools --help

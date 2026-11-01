@@ -47,7 +47,7 @@ final class RsemFit {
             var nativeAudit = RsemFitOutputs.audit(home, input.inputs().reference(), input.summary(), input.inputs().spec().options(), input.projection(), request, limits.output(), check);
             input.verify(check);
             var report = new LinkedHashMap<String,Object>();
-            report.put("schema_version", 1); report.put("status", "COMPLETED_PRIVATE_TYPED_ORIGINAL_FIT_AND_NATIVE_AUDITS");
+            report.put("schema_version", 1); report.put("status", "COMPLETED_ORIGINAL_FIT_AND_NATIVE_AUDITS");
             report.put("source_version", input.runtime().payload().source().version()); report.put("request", request);
             report.put("original_binary_input", input.inputs().alignment()); report.put("input_audit", input.home());
             report.put("input_audit_sha256", RepeatInputs.hash(input.home().resolve("INPUT_AUDIT.json"), input.limits().metadataBytes(), check));
@@ -60,7 +60,7 @@ final class RsemFit {
             report.put("learned_model", nativeAudit.model().learned()); report.put("precision_ambiguous_groups", nativeAudit.results().precisionAmbiguousGroups());
             report.put("native_warnings", nativeAudit.results().warnings()); report.put("original_stderr_bytes", Files.size(executed.stderr()));
             report.put("complete_scientific_output_sha256", nativeAudit.scientificFiles());
-            report.put("fitted_result_admitted", true); report.put("public_fitting_workflow_available", false); report.put("biological_or_whole_paper_equivalence_certified", false);
+            report.put("fitted_result_admitted", true); report.put("public_workflow_certification_is_separate", true); report.put("biological_or_whole_paper_equivalence_certified", false);
             report.put("scope", "Actual typed original fitting over its retained binary input, matched native parser/read/hit/count projections, complete saved model/theta and independent full isoform/gene audit with complete owned output membership. Structural/numeric integrity is not biological appropriateness, convergence, a signature, or a reusable public runtime-admission ticket.");
             byte[] raw = RsemJson.bytes(report);
             if (raw.length > limits.metadataBytes() || raw.length > p.fileBytes()) throw new IOException("Complete fitted-result metadata exceeds capacity");
@@ -68,7 +68,7 @@ final class RsemFit {
             Files.copy(home.resolve("WARNINGS.md"), home.resolve("PROCESS_WARNINGS.md"));
             String warning = "# RSEM fitted result: review warnings and original logs\n\nNative warning count: " + nativeAudit.results().warnings().size()
                     + ". Full native warnings and all output hashes are retained in RESULT_ADMITTED.json.\nOriginal stderr bytes: " + Files.size(executed.stderr())
-                    + ". Review process.stdout and process.stderr, including convergence and model diagnostics.\n\nRequired review: confirm the declared reference, release, alignment protocol and model settings suit this study. Complete numeric/population checks do not certify convergence or biological/whole-paper equivalence. Public setup/CLI remains unfinished.\n";
+                    + ". Review process.stdout and process.stderr, including convergence and model diagnostics.\n\nRequired review: confirm the declared reference, release, alignment protocol and model settings suit this study. Complete numeric/population checks do not certify convergence or biological/whole-paper equivalence. When called through the CLI, also require its parent completion/status records and review its warnings.\n";
             Files.writeString(home.resolve("WARNINGS.md"), warning, StandardOpenOption.TRUNCATE_EXISTING);
             input.verify(check); capacity(home, input, limits, raw.length + 8192, 2, check);
             Files.write(home.resolve("RESULT_ADMITTED.json"), raw, StandardOpenOption.CREATE_NEW);

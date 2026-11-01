@@ -1,6 +1,6 @@
-# RSEM scientific input protection development
+# RSEM scientific input protection: historical stage
 
-**RSEM public fitting remains unfinished. A protected input copy is not an admitted alignment or fitted result.** This internal Java layer prepares exact copies and audits ordinary reference files. It does not run a decoder, repair alignments, fit expression, or install software.
+The current local workflow is documented in [RSEM_WORKFLOWS.md](RSEM_WORKFLOWS.md). This page preserves the earlier input-copy stage. **A protected input copy is not an admitted alignment or fitted result.** This internal Java layer prepares exact copies and audits ordinary reference files. The copy layer itself does not run a decoder, repair alignments, fit expression, or install software.
 
 The [validation record](RSEM_SCIENTIFIC_INPUT_VALIDATION.json) pins the exact source and candidate. The earlier [source-build controls](RSEM_SOURCE_SETUP_VALIDATION.json) validate five original releases separately. All members of that earlier candidate remain byte-identical in the new package; only the scientific-input snapshot classes were added.
 
@@ -22,10 +22,10 @@ Explicit limits cover each complete file, total copied bytes, all owned members,
 
 On failure, retain the owned directory and `INPUTS_FAILED.txt`. The file names the cause and required action. Correct the missing or inconsistent reference member, unavailable local CRAM reference, changed source, link, permission or capacity problem; then retry to a NEW directory. Existing output directories are preserved. A required compiler/runtime that cannot be installed or executed means the dependent analysis must remain skipped. This native copy stage supplies no public installation or fitting command.
 
-## Current evidence and next work
+## Recorded evidence and subsequent work
 
 Nineteen snapshot tests cover exact binary copying, complete transcript and genome references, actual consumed-byte binding after file restoration, original/staged/metadata changes, unexpected directory membership, appearing allele companions, source changes during copying, capacity failures, existing-directory preservation, cancellation, CRAM reference requirements and actual Linux links. Linux Java 21 passes the full 190-test RSEM suite. Windows Java 21/25 each pass 171 with 19 explicit Linux-only skips. All 111 existing native science tests pass on every profile; strict Java 17 compilation and private Javadoc pass.
 
 Next, bind source-linked decoding to these immutable snapshots; audit all physical records and decoder metadata; retain original binary input for fitting; resolve complete CRAM reference lookup; and connect typed fitting requests to complete count/model/result and output-membership audits. Then implement permitted public setup, CLI and runnable end-to-end examples. The [original RSEM alignment requirements](https://deweylab.github.io/RSEM/rsem-calculate-expression.html) and exact historical source behavior must remain distinct from generic SAM validation.
 
-RSEM remains missing in the toolbox inventory. The full 250-paper implementation and semantic review remains active.
+At this recorded stage RSEM remained missing. The current bounded integration is described in RSEM_WORKFLOWS.md. The full 250-paper implementation and semantic review remain active.

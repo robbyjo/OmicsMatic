@@ -1,6 +1,6 @@
-# RSEM scientific input audit development
+# RSEM scientific input audit: historical stage
 
-**Public RSEM fitting remains unfinished. The typed fitting runner has not yet been exercised against fresh original fits. Do not count this development snapshot as a completed toolbox integration.**
+This page preserves the earlier input-audit stage, before fresh typed fitting and public workflows were validated. See [RSEM_WORKFLOWS.md](RSEM_WORKFLOWS.md) for the current bounded integration. The controls below apply to their frozen source epoch and do not independently certify a later workflow.
 
 This stage extends the earlier [protected input snapshot](RSEM_SCIENTIFIC_INPUTS.md). The [current validation record](RSEM_INPUT_AUDIT_VALIDATION.json) distinguishes packaged unit checks, live original input checks and retained original fitting fixtures. The earlier 190-test snapshot record is preserved as historical stage evidence.
 
@@ -22,6 +22,6 @@ Typed fitting settings now preserve explicit auxiliary-tag behavior, release-spe
 
 Successful private audits do not certify convergence, study suitability, whole-paper equivalence, a public setup route or an operating-system sandbox. The retained control archive contains test summaries, profile reports, logs and controllers; complete private runtime trees and live scientific artifacts remain at the paths and hashes named by those reports. The archive is not a redistributable installed runtime or a complete portable rerun environment.
 
-## Remaining work
+## Work that remained at this recorded stage
 
 Run the typed fitter against fresh independent original controls, including historical failure behavior. Then complete permitted public setup, typed CLI commands, runnable examples and public workflow checks. RSEM remains missing in the toolbox inventory, and the 250-paper implementation and semantic review remain active. Cell Ranger remains excluded by the user's instruction.

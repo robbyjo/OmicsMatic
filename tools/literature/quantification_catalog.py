@@ -1,7 +1,7 @@
 """Source-reviewed conversion/quantification roles and explicit unfinished runtime status."""
 import json
 from catalog_source_integrity import verify_source
-from rsem_development_validation import verify_runtime_development
+from rsem_development_validation import verify_runtime_development, verify_legacy_source_pins
 
 
 def quantification_metadata(root, data, tool_id):
@@ -12,12 +12,26 @@ def quantification_metadata(root, data, tool_id):
     assert proof['original_quantifications_completed'] == 22 and proof['retained_original_zero_alignment_failures'] == 3
     assert not proof['public_quantification_adapter_available'] and not proof['whole_paper_reproduced']
     assert roles['reviews_applied'] and len(roles['roles']) == 20
-    for item in proof['source_evidence']:
-        verify_source(root, data, item['path'], item['sha256'])
+    public_path = data / 'rsem-workflow-validation.json'
+    public = json.loads(public_path.read_bytes()) if public_path.exists() else None
+    verify_legacy_source_pins(root, data, proof['source_evidence'], public)
     common = dict(implementation_status='missing', project_adapter_available=False,
                   canonical_adapter_available=False, source_roles_reviewed=10,
                   source_role_coverage='quantification-role-coverage.json', whole_paper_reproduced=False)
     if tool_id == 'rsem':
+        public_path = data / 'rsem-workflow-validation.json'
+        if public_path.exists():
+            from rsem_public_validation import verify_public_workflow
+            public = json.loads(public_path.read_bytes())
+            verify_public_workflow(root, data, public)
+            return dict(common, implementation_status='upstream-adapter-validated', project_adapter_available=True,
+                        canonical_adapter_available=True, implementation_source='src/main/java/org/jlinalg/cli/RsemToolsCli.java',
+                        native_helper_source='src/main/java/org/jlinalg/sequence/RsemAbundance.java',
+                        native_abundance_API_available=True, native_complete_result_audit_API_available=True, native_alignment_audit_API_available=True,
+                        public_quantification_CLI_available=True, source_build_development_available=True,
+                        source_to_build_provenance_verified=True, runtime_admission_available=True,
+                        workflow_validation='rsem-workflow-validation.json', implementation_scope=PUBLIC_RSEM_SCOPE,
+                        validation_note=PUBLIC_RSEM_VALIDATION, coverage_note='Validated local alignment-mode subset with supplied ordinary transcript references; inspect every completion record, warning and original log. Source setup and fitting require a permitted Linux environment. The installed runtime is checked afresh per run; this is not a portable admission ticket or biological/full-paper certification.')
         runtime = json.loads((root / 'docs/literature/RSEM_RUNTIME_VALIDATION.json').read_text(encoding='utf-8'))
         assert runtime['status'] == 'passed-source-profile-host-binding-and-original-fitting-development'
         assert runtime['tests_per_JVM'] == 153 and runtime['existing_native_science_tests_per_JVM'] == 111
@@ -63,6 +77,19 @@ RSEM_VALIDATION = (
     'The oldest build explicitly regenerates three distributed configuration files; all other original source bytes are unchanged and earlier guard/build failures remain retained. '
     'An independent bundle verifier checks original fixed output populations, source/build receipt links and every staged program hash against its compiled-source graph. Source setup is internal and tested on the declared Linux host; public installation/fitting admission remains unfinished. Private runtime evidence is not a portable admission receipt or a public project quantification workflow.')
 
+PUBLIC_RSEM_SCOPE = (
+    'Original alignment-mode expression fitting through rsem-tools with native Java protected input, CRAM reference, complete parser/count/model/theta and full gene/isoform result audits. '
+    'Exact source profiles 1.2.28,1.3.0,1.3.1,1.3.2,1.3.3 retain their historical failure behavior. Supplied ordinary transcript references and unmodified SAM/BAM/CRAM are required; CRAM requires an explicit local FASTA plus its .fai with no URI/cache fallback. '
+    'Typed single/paired, quality/no-quality, strand, auxiliary tag, seed, fragment, posterior and read-start settings preserve original semantics. Native abundance/file audit APIs remain available. '
+    'Permitted owned source compilation, receipt-pinned source reopening, CLI limits and runnable synthetic examples are provided. Missing/forbidden dependencies produce prominent SKIP3 with recovery; invalid input/integrity/capacity produces FAIL2 with retained evidence. '
+    'Scope excludes genome/aligner reference preparation, allele-specific and pRSEM workflows, convergence, biological accuracy and whole-paper equivalence. Precomputed Xena and previously published comparator use are distinguished from new quantification. Read examples/rsem-workflow/README.md and RSEM_WORKFLOWS.md.')
+
+PUBLIC_RSEM_VALIDATION = (
+    '244 packaged tests per JVM: Windows Java21/25 each pass 225 with 19 Linux-only skips; Linux Java21 passes all 244. Strict Java17/Javadoc; all 111 native science tests and 668 original-function vectors retained. '
+    '69 fresh typed/direct original fitting cases match 1068 scientific files per side and 4624 numeric cells; 6 historical failures and 5 changed-result controls are retained, with zero controlled reference requests. '
+    'Actual public setup compiles an exact original release, and the documented synthetic preparation/fitting workflow completes. Eleven further public fitting cases across five releases plus the example match 193 complete scientific files and 778 numeric cells. Ten runtime rejection/skip controls and two cache-precondition controls pass. '
+    'Complete selected-artifact/source bundles verify every published object, source-build receipt and 14-program payload linkage. A missing cache in the first negative-control request was corrected and retained; a valid empty cache with downloads forbidden returns exit 3, while invalid paths return exit 2. New local work is unreleased; no deployment or whole-goal completion is claimed.')
+
 BCL_SCOPE = (
     'Runtime analysis is SKIPPED while the separate Illumina license and instrument/data requirements are unresolved. '
     'No bcl2fastq software was downloaded, installed or executed, and no native converter is claimed. '
@@ -76,10 +103,11 @@ QUANT_WARNING = (
     '**BCL2FASTQ RUNTIME ANALYSIS IS SKIPPED:** no software was downloaded, installed or executed. '
     'Resolve the separate vendor license and instrument/data eligibility, then supply a permitted exact runtime, run folder and sample sheet before admission. '
     'General installation permission and the FIMO research-use answer do not establish these requirements. Read BCL2FASTQ_RUNTIME_STATUS.md.\n\n'
-    '**RSEM QUANTIFICATION ADAPTER IS UNFINISHED:** native arithmetic and private original-release protocols are validated, '
-    'but the project does not yet provide an admitted RSEM fitting command. Do not use native abundance arithmetic as an EM/Gibbs fitter or reconstruct unrounded model quantities from rounded result tables. '
-    'Internal exact source builds now pass fixed original controls; earlier compiler-discovery,temporary-file and changing-host failures remain retained. If a required compiler/runtime cannot be installed or executed, SKIP dependent fitting, retain the named cause and supply a permitted working toolchain/runtime before retrying to NEW paths. '
-    'Use the exact historical release and retain its failure behavior. Read RSEM_DEVELOPMENT.md. Both tools remain missing in the integration count.\n\n')
+    '**RSEM FITTING REQUIRES REVIEWED INPUTS AND A PERMITTED RUNTIME:** the local rsem-tools alignment-mode workflow is validated for the five exact source profiles. '
+    'Supply a complete matching ordinary transcript reference and unmodified SAM/BAM/CRAM; CRAM requires its exact local FASTA plus .fai. Do not reconstruct unrounded model quantities from rounded tables. '
+    'If a required compiler/runtime cannot be installed or executed, skip dependent fitting (exit 3), retain the named cause and supply a permitted working toolchain/runtime before retrying to NEW paths. Invalid inputs, integrity or capacity failures return exit 2. '
+    'Create the private source cache before online setup; installation and download permissions are separate. Read root and fitting WARNINGS.md, analysis-status.json, COMPLETED.json and original logs. '
+    'Use the exact historical release and retain its failure behavior. Read RSEM_WORKFLOWS.md and examples/rsem-workflow/README.md. RSEM receives a bounded upstream integration; bcl2fastq remains missing and Cell Ranger remains excluded.\n\n')
 
 QUANT_ACTIONS = (
     '<section id="quantification-actions" style="border-left:5px solid #c78417;background:#c7841712;padding:1.2rem;margin:1.5rem 0;line-height:1.6;overflow-wrap:anywhere;scroll-margin-top:10rem">'
@@ -89,13 +117,13 @@ QUANT_ACTIONS = (
     'and supply the exact release, run folder and sample sheet. General installation permission and the earlier FIMO research-use answer do not establish these separate requirements. '
     'Read the <a href="https://support.illumina.com/content/dam/illumina-support/documents/downloads/software/bcl2fastq/bcl2fastq2-v2-20-eula.pdf">vendor license</a> '
     'and repository file <code>docs/literature/BCL2FASTQ_RUNTIME_STATUS.md</code>.</p>'
-    '<p><strong>The public RSEM quantification adapter is unfinished.</strong> Native effective-length/expression/ordinary-EM aggregation methods and private original-release protocols are validated. '
-    'They do not fit EM/Gibbs models or establish portable runtime admission. Supply actual unrounded model quantities to the Java API; '
-    'do not reconstruct them from two-decimal output tables. Exact release selection retains older no-alignable-read failures. '
-    'Read repository file <code>docs/literature/RSEM_DEVELOPMENT.md</code> and the '
+    '<p><strong>Local RSEM alignment-mode fitting is available.</strong> The typed <code>rsem-tools</code> command runs verified original source builds and complete native input/model/result audits. '
+    'Supply a matching ordinary transcript reference and unmodified SAM/BAM/CRAM. CRAM requires its explicit local FASTA plus <code>.fai</code>. '
+    'Exact release selection retains older no-alignable-read failures. Native arithmetic alone remains separate from EM/Gibbs fitting. '
+    'Read repository file <code>docs/literature/RSEM_WORKFLOWS.md</code>, <code>examples/rsem-workflow/README.md</code> and the '
     '<a href="https://deweylab.github.io/RSEM/rsem-calculate-expression.html">original quantification instructions</a>.</p>'
-    '<p><strong>Internal source-build controls pass; public fitting remains unfinished.</strong> Five exact builds and staged wrappers reproduce fixed controls, with build receipts and all original scientific files checked. '
-    'If a required compiler/runtime cannot be installed or executed, <strong>skip dependent fitting</strong>, retain the named cause and supply a permitted working toolchain/runtime before retrying to NEW paths. '
-    'Earlier failed attempts remain retained. Read repository file <code>docs/literature/RSEM_RUNTIME_DEVELOPMENT.md</code>.</p>'
-    '<p><strong>Both tools remain missing in the integration count.</strong> The twenty reviewed paper roles retain precomputed data reuse, historical releases, '
+    '<p><strong>Setup and analysis have explicit failure recovery.</strong> Create a canonical existing private cache before permitted downloads, and supply separate installation/download permission. '
+    'If a required compiler/runtime cannot be installed or executed, <strong>skip dependent fitting (exit 3)</strong>, retain the named cause and supply a permitted working toolchain/runtime before retrying to NEW paths. '
+    'Invalid inputs, integrity and capacity fail with exit 2. Read parent and fitting warnings, completion/status records and all original logs. Earlier failed attempts remain retained.</p>'
+    '<p><strong>RSEM has a bounded upstream integration; bcl2fastq remains missing.</strong> The twenty reviewed paper roles retain precomputed data reuse, historical releases, '
     'the unresolved bcl2fastq V3 label and separate downstream analyses. Cell Ranger remains excluded.</p></section>')

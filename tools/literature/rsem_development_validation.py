@@ -6,6 +6,40 @@ import zipfile
 from catalog_source_integrity import verify_source
 from rsem_build_evidence import verify_source_build_bundle
 
+METADATA_HISTORY_PATHS = {
+    'tools/literature/quantification_catalog.py',
+    'tools/literature/rsem_development_validation.py',
+    'tools/literature/test_rsem_development_validation.py',
+    'docs/literature/RSEM_DEVELOPMENT.md',
+    'docs/literature/RSEM_RUNTIME_DEVELOPMENT.md',
+    'tools/literature/check_quantification_review_ui.cjs',
+}
+
+
+def verify_legacy_source_pins(root, data, rows, public=None):
+    """Permit only declared metadata evolution; scientific/runtime source pins stay current."""
+    historical = {}
+    current = {}
+    if public is not None:
+        snapshot = public['historical_metadata_snapshot']
+        historical = {row['path']: row['sha256'] for row in snapshot['source_evidence']}
+        assert len(historical) == len(snapshot['source_evidence']) and set(historical) <= METADATA_HISTORY_PATHS
+        current = {row['path']: row['sha256'] for row in public['source_evidence']}
+        archive = root / snapshot['path']
+        assert hashlib.sha256(archive.read_bytes()).hexdigest() == snapshot['sha256']
+        with zipfile.ZipFile(archive) as source:
+            entries = source.infolist()
+            assert len(entries) == len(historical) and {row.filename for row in entries} == set(historical)
+            assert sum(row.file_size for row in entries) <= 1048576
+            for name, pin in historical.items():
+                assert hashlib.sha256(source.read(name)).hexdigest() == pin
+    for row in rows:
+        if row['path'] in historical:
+            assert row['sha256'] == historical[row['path']]
+            verify_source(root, data, row['path'], current[row['path']])
+        else:
+            verify_source(root, data, row['path'], row['sha256'])
+
 
 def verify_historical_snapshot(root, runtime):
     assert runtime['current_source_validation'] is False
@@ -36,8 +70,9 @@ def verify_runtime_development(root, data, runtime):
     for name in ['scientific_runtime_admitted',
                  'public_fitting_workflow_available', 'whole_goal_complete']:
         assert current[name] is False
-    for row in current['source_evidence']:
-        verify_source(root, data, row['path'], row['sha256'])
+    public_path = data / 'rsem-workflow-validation.json'
+    public = json.loads(public_path.read_bytes()) if public_path.exists() else None
+    verify_legacy_source_pins(root, data, current['source_evidence'], public)
     bundle=current['control_bundle']
     observed=verify_source_build_bundle(root,root/bundle['path'],bundle['sha256'],current['candidate_sha256'])
     assert observed == current['independent_bundle_verification']

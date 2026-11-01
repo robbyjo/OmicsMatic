@@ -1,6 +1,8 @@
-# RSEM development status
+# RSEM workflows and development history
 
-The project now has native Java effective-length, expression and ordinary EM gene-aggregation methods in `org.jlinalg.sequence.RsemAbundance`. The public RSEM quantification command and runtime installer are still unfinished. RSEM remains a missing tool in the implementation count.
+The local `rsem-tools` command now provides permitted original-source setup and alignment-mode expression fitting with complete native input/model/result audits. Start with [RSEM workflows](RSEM_WORKFLOWS.md) and the [runnable synthetic example](../../examples/rsem-workflow/README.md). The [current validation record](omics-2023-2026/rsem-workflow-validation.json) distinguishes current public controls from historical source epochs.
+
+The native Java foundation below remains separately available in `org.jlinalg.sequence.RsemAbundance`. Earlier development counts and availability statements describe their recorded stages. The full toolbox objective and paper semantic review remain active.
 
 Supply actual model quantities to these methods. Do not infer unrounded theta, effective lengths or posterior quantities from a two-decimal result table. The methods do not align reads or fit RSEM's EM/Gibbs models. Posterior mean estimates and credibility intervals require the original inference procedures; ordinary EM aggregation is not a substitute.
 
