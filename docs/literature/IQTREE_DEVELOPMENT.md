@@ -1,6 +1,6 @@
 # IQ-TREE development: alignments, trees and source controls
 
-**WARNING — the public IQ-TREE analysis adapter is unfinished.** The catalog continues to list IQ-TREE as missing. Current source provides private runtime setup, read-only Java runtime admission, complete alignment admission, Newick collection reading and fixed-tree JC69 evaluation. A typed execution command, model selection, tree search, support estimation, partitions and dating still require implementation and end-to-end validation. Runtime setup and these foundations do not reproduce the nine paper workflows. Do not substitute an installed release for an unresolved reported edition.
+**WARNING — this is a development capability with a deliberately limited contract.** Current source adds `iqtree-tools` for one complete DNA, protein or standard-code codon alignment, including typed inference/evaluation, built-in model selection and bootstrap audits. Partitions, dating, batch gene trees, custom/mixture models and other genetic codes remain unavailable. The catalog continues to list IQ-TREE as missing until the separate catalog integration and paper-role proof is completed. These changes do not reproduce the nine paper workflows. Do not substitute an installed release for an unresolved reported edition. Build the current checkout; a previously published 0.3.7 JAR does not acquire this command automatically.
 
 ## Prepare an exact private runtime
 
@@ -41,9 +41,65 @@ python3 "$iqtree_checkout/tools/literature/install_iqtree.py" \
 
 Real controls cover installation and rechecking of all eight profiles, an official download, changed members/modes/programs/reports, failed finalization, refused provisional reuse, missing flags and the unresolved edition: 31 setup protocols, with 21 completed setups/rechecks and 10 expected refusals. These repeat **one synthetic health dataset**; the failed-finalization control also runs the smoke test before its setup is refused. All 31 installer unit controls pass on Linux, including timeout/cancellation, descendant cleanup, output limits and unrelated-process preservation. Windows runs the 24 portable controls and explicitly skips the seven Linux process controls.
 
-`IqtreeRuntime` performs read-only admission from Java: exact resources/installer/host/helpers, complete private files and setup reports, static ELF, process command/cleanup receipts, and an independent native replay of all twelve health sites. It exports the exact setup resources for the forthcoming public command. The source helper above is currently the supported setup entry point; a public analysis/export CLI has not been added yet.
+`IqtreeRuntime` performs read-only admission from Java: exact resources/installer/host/helpers, complete private files and setup reports, static ELF, process command/cleanup receipts, and an independent native replay of all twelve health sites. `iqtree-tools --export-runtime-setup NEW_DIRECTORY` exports the exact setup resources and their installation instructions. Export alone does not download, install or run an analysis.
 
-The package-private `IqtreeProcess` primitive is execution scaffolding for that forthcoming command. It binds the admitted runtime, checks inputs before and after execution, applies explicit process/workspace limits, and records owned-process cleanup. Its success status is `completed-process-only`; it cannot write a scientific completion marker. Process controls cover cancellation, timeout, orphaned workers, changed inputs, output links and capacity failures while preserving an unrelated process. This does not supply a typed analysis recipe or validate tree inference, model selection or support estimation.
+The package-private `IqtreeProcess` primitive binds the admitted runtime, checks inputs before and after execution, applies explicit process/workspace limits, and records owned-process cleanup. Its success status is `completed-process-only`; it cannot write a scientific completion marker. Process controls cover cancellation, timeout, orphaned workers, changed inputs, output links and capacity failures while preserving an unrelated process. The public command adds complete input/output audits and finalizes the bundle only after those audits pass.
+
+`IqtreeRecipe` is a closed typed recipe parser and argument builder consumed by `iqtree-tools`. It distinguishes fixed models, ModelFinder and standard model selection; standard and ultrafast bootstrap; SH-aLRT; starting and fixed trees; explicit input layouts; duplicate-sequence policy; outgroup identities; seeds, threads and complete capacities. ModelFinder retains upstream default candidate sets unless a recipe explicitly supplies a restricted set. Outgroup names are mapped to opaque IDs before constructing the upstream argument. Arbitrary executable paths, extra flags, matrix-file models and reflected class names are refused. Custom/mixture model contracts, partitions and dating remain unfinished.
+
+`IqtreeFiles` binds complete source bytes and metadata before and after use. Linux execution also requires stable file identities and single-link canonical inputs. `IqtreeSiteLikelihoods` reads every cell of the original single-tree site-likelihood row, reaches EOF and closes successfully, then rechecks the file identity. It compares the sum with the reported total using the combined decimal rounding intervals of the actual source tokens. Extra rows/cells, truncation, malformed UTF-8, invalid numbers and capacity failures return no audit. Positive signed roundoff is counted and retained. An optional native comparison records every disagreement and its explicit allowance; it does not overwrite source values. Multi-tree site tables need a separate contract.
+
+The earlier 400-test development milestone passed on Linux, including the actual eight private runtimes and retained integrity failures; Windows Java 21 and 25 each passed 365 portable tests and explicitly aborted 35 Linux/runtime controls. The current focused suite expands this to 530 tests: Linux passes all 530; Windows Java 21 and 25 each pass 495 and explicitly abort the same 35 Linux/runtime controls. It includes the complete original model reports and model-cache candidate lists, source small-sample AICc behavior, duplicate-pruning reports, strict gzip integrity, complete bundle membership and branch-precision controls. The suite replays all 84 retained inference attempts/retries and their scope ledger without an upstream installation. The site parser also replays all 68 earlier successful original alignment fits, including signed codon roundoff requiring more than eighteen decimal places.
+
+Local checks also run all 530 focused tests against the actual executable JAR. Twenty-one packaged CLI protocols produce 17 completed analyses, two expected SKIP3 outcomes and two expected FAIL2 outcomes, with no completion marker on refusal. They cover all eight editions, Unicode/quoted taxon restoration, fixed-tree evaluation, explicit PHYLIP, ModelFinder, protein/codon models, standard/ultrafast support and the explicit duplicate-pruning policy in 1.6.12 and 2.4.0. A completed Linux bundle verifies after copying to Windows; changed bytes and an extra empty directory are both refused. These synthetic controls establish the tested execution/audit behavior, not biological accuracy or reconstruction of the papers.
+
+## Run the current single-alignment command
+
+Build from this checkout with `./gradlew executableJar`. On Linux, place your already aligned input in `alignment.fasta`, then save the following as `recipe.json` in the same directory. This example explicitly requests DNA JC; choose the model and alphabet required by your study. A recipe does not perform upstream alignment, trimming or variant selection.
+
+```json
+{
+  "schema_version": 1,
+  "profile": "linux-x86_64-iqtree-2.3.6",
+  "operation": "INFER",
+  "alignment": {
+    "path": "alignment.fasta",
+    "format": "FASTA",
+    "kind": "DNA",
+    "header_policy": "WHOLE_HEADER"
+  },
+  "model": {"selection": "FIXED", "name": "JC"},
+  "support": {
+    "bootstrap": "NONE", "replicates": 0,
+    "sh_alrt_replicates": 0, "bnni": false,
+    "write_branch_lengths": false
+  },
+  "parameters": {
+    "seed": 61129, "threads": 1,
+    "identical_sequences": "KEEP", "safe_mode": false,
+    "outgroup": []
+  }
+}
+```
+
+Use Linux Java, including inside WSL on Windows. Keep the output on a Linux filesystem preserving private POSIX modes; its parent must exist and the output directory must be new. Recipe input paths resolve against the recipe directory.
+
+```sh
+java -jar "$iqtree_checkout/build/cli/omicsmatic-0.3.7.jar" iqtree-tools \
+  --recipe "$PWD/recipe.json" \
+  --home "$iqtree_runtime_base/homes/iqtree-2.3.6-1" \
+  --out "$HOME/iqtree-analysis-1"
+java -jar "$iqtree_checkout/build/cli/omicsmatic-0.3.7.jar" iqtree-tools \
+  --verify "$HOME/iqtree-analysis-1"
+```
+
+For unrestricted default ModelFinder, replace `model` with `{"selection":"MODEL_FINDER","criterion":"BIC"}`; `STANDARD_SELECTION` requests source TEST instead. Standard and ultrafast bootstrap are separate `support.bootstrap` values, `STANDARD` and `ULTRAFAST`. Declare replicate counts explicitly; ultrafast bootstrap and SH-aLRT each require at least 1,000 when requested. See the closed parser in [IqtreeRecipe.java](../../src/main/java/org/jlinalg/cli/IqtreeRecipe.java) for all fields and capacities. Defaults are recorded in `session.json`; exceeding any limit fails the complete analysis rather than sampling a prefix.
+
+**Completion and required review:** require `COMPLETED.json`, a matching manifest and successful `--verify`. Read `WARNINGS.md`, `session.json`, `output-audit.json`, `analyzed-population.json` and retained process logs. Every original row/site and raw upstream output is retained. `KEEP` requests all rows during fitting. `SOURCE_REMOVE_RESTORE` explicitly permits upstream duplicate pruning; the bundle checks each ignored relationship and every retained source row, reports the fitted population and restores the full original taxon set in exported trees. Do not describe that reduced fit as a likelihood fitted to every original row.
+
+Reports preserve the original model parameters, every fitted model-selection candidate, all declared bootstrap trees and site-likelihood cells. Source model-cache values describe the selection stage and are not substituted for final fitted parameters. Small-sample AICc is retained even where the source clamps its denominator and classical AICc is undefined; this gets an explicit warning. Source-ignored frequency requests, unprinted built-in protein frequencies and signed numerical roundoff also remain explicit. Native JC69 supplies an independent calculation; other fitted models receive source-output consistency checks. Byte integrity is not a signature or a biological-accuracy certificate.
+
+**SKIP3: skip the analysis** when an exact runtime or implemented capability is unavailable. Supply the specified permitted runtime, or implement the missing contract before rerunning. **FAIL2: no result is admitted** for invalid data, integrity, execution, capacity or finalization failure. Preserve partial files, correct the named cause and use a new output directory. A failed bundle or provisional marker must never be promoted manually to completed status.
 
 ## Native input and tree APIs
 
@@ -90,6 +146,14 @@ if (!reader.isComplete() || count != 1000)
 
 The example validates a supplied collection; it does not generate bootstrap trees or infer their support algorithm. Production execution must additionally protect/hash input and output files, check the declared replicate count and output roles, and finish a public completion manifest. An unrooted tree's displayed first taxon is not a biological rooting claim. Root stems are retained but excluded from taxon-to-taxon distances. Shared ancestral stems are excluded before metric sums, so they cannot overflow a finite sister-tip distance.
 
+`NewickTree.edgeBipartitions()` retains each support-bearing edge's canonical unrooted split, including separate edges representing the same split around a degree-two root. `BootstrapSupport.count()` reads a complete declared replicate collection with exact taxa and explicit split capacities; each split counts once per replicate. `BootstrapSupport.compare()` checks every nontrivial reference edge against those exact counts. The number and order of support columns must be declared: SH-aLRT values are range-checked and retained, while only the declared bootstrap column is compared with replicate frequencies. Comparisons retain mismatches and rounding-boundary uncertainty. The caller must inspect them before admitting a result.
+
+Complete original-release inference controls exercise all eight pinned editions with independently generated twelve-taxon DNA, protein and standard-code codon alignments. They include fixed models, unrestricted default ModelFinder, ultrafast/SH-aLRT/BNNI support, standard bootstrap, identical sequences and an explicit outgroup. Of 82 attempted protocols, 80 fits completed; two 1,000-replicate standard-bootstrap attempts terminated with exit `-9` near their declared 180-second CPU limit. Their partial outputs remain failed evidence, with the original expected-success value retained. **Do not accept their partial bootstrap collections.** Use a new output directory and an adequate explicitly permitted process budget, then audit every declared replicate and all final outputs.
+
+The completed controls retain all source files and verify their hashes. Native audits read all 16,800 saved bootstrap trees and check 432 reported support edges without a mismatch at the printed precision. All 33,280 site-likelihood cells agree with their reported totals within the combined printed rounding intervals. Fixed-JC69 replay on the written fitted trees adds a separate native check. The LG/MG and model-selection checks establish source output consistency; they do not independently reproduce those fitted models or validate biological inference accuracy. These controls still admit no public scientific analysis.
+
+Separate retries use the same complete data through the closed Java recipe, exact runtime admission and owned process runner, with an explicit 900-second CPU / 1,200-second wall budget. Both 1.6.12 and 2.3.6 complete all 1,000 standard-bootstrap replicates. Native counts agree with every support edge in their final trees and consensus trees, and both owned process groups are terminal. The two failed earlier attempts remain retained; they are not relabeled as successes. The [complete inference-control archive](../../src/test/resources/org/jlinalg/phylogeny/iqtree-inference/original-controls.zip) includes all 82 original attempts, both completed typed retries, native inspection records, source code and complete checksums. It contains no upstream executable and does not constitute a public analysis completion gate.
+
 ## Retained original controls
 
 The [alignment replay archive](../../src/test/resources/org/jlinalg/phylogeny/iqtree-alignment/original-controls.zip) retains **128 actual protocols across eight original Linux releases**: 68 fits and 60 refusals. Every input, output, stdout/stderr, original command, executable/archive hash, collector and controller is included with complete checksums. Twelve refusals preserve the older releases' `!` limitation; sixteen preserve default-parser failures on wrapped sequential PHYLIP. Separate runs with original `--sequential` succeed in all eight releases. The native parser requires the layout explicitly and can prepare canonical FASTA.
@@ -128,4 +192,4 @@ For upstream reference, consult the [input tutorial](https://iqtree.github.io/do
 
 **Unavailable or forbidden upstream runtime/capability: skip the dependent analysis and give its precise required action.** Native input methods require no IQ-TREE installation. They do not authorize source execution or certify an unavailable historical edition. Invalid alignment content, integrity failures, failed execution or exceeded capacities must admit no scientific result; preserve original/partial files, diagnostics and the exact mapping, correct the named cause and use fresh output paths. Do not treat a version probe, an exit code alone, or one valid bootstrap tree as a complete analysis result.
 
-Next work is owned bounded Java execution, a typed recipe/CLI and complete model/tree/support/partition/dating output audits, followed by actual packaged analysis workflows and a separately proved catalog update. Cell Ranger remains excluded. The full 250-paper implementation goal remains active.
+Next work includes the separately proved catalog and primary-paper role update, additional model/format contracts, partitions, batch gene trees and dating. The current command admits only the declared single-alignment contract. Cell Ranger remains excluded. The full 250-paper implementation goal remains active.

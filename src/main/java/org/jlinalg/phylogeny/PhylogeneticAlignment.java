@@ -108,6 +108,27 @@ public final class PhylogeneticAlignment {
     public Statistics statistics() { return statistics; }
     public Map<String,String> originalToOpaque() { return originalToOpaque; }
     public Map<String,String> opaqueToOriginal() { return opaqueToOriginal; }
+    /** Compare admitted source emission states without changing either original row. */
+    public boolean sourceEquivalent(String first,String second) {
+        return sourceEquivalent(first,this,second);
+    }
+    /** Compare admitted rows from two complete alignments with the same alphabet/dimensions. */
+    public boolean sourceEquivalent(String first,PhylogeneticAlignment other,String second) {
+        if(kind!=other.kind||columns!=other.columns)throw new IllegalArgumentException("Source-equivalence alphabets/dimensions differ");
+        String a=sequences.get(first),b=other.sequences.get(second);
+        if(a==null||b==null)throw new IllegalArgumentException("Unknown exact alignment taxon in source-equivalence check");
+        if(kind!=Kind.CODON_STANDARD) {
+            for(int i=0;i<columns;i++)if(state(upper(a.charAt(i)),kind)!=state(upper(b.charAt(i)),kind))return false;
+        } else for(int i=0;i<columns;i+=3) {
+            boolean missingA=false,missingB=false;int codeA=0,codeB=0;
+            for(int j=0;j<3;j++) {
+                int x=state(upper(a.charAt(i+j)),kind),y=state(upper(b.charAt(i+j)),kind);
+                missingA|=Integer.bitCount(x)!=1;missingB|=Integer.bitCount(y)!=1;codeA=(codeA<<4)|x;codeB=(codeB<<4)|y;
+            }
+            if(missingA!=missingB||!missingA&&codeA!=codeB)return false;
+        }
+        return true;
+    }
 
     /** This check is based on retained real probes of the eight exact releases. */
     public void requireIqtreeVersion(String version) {

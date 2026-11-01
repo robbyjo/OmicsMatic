@@ -70,6 +70,24 @@ class NewickTreeTest {
         assertEquals(0,tree.distance("A","A"));assertEquals(3,tree.distance("A","B"));assertEquals(3,tree.distance("B","A"));
         assertThrows(ArithmeticException.class,()->tree.distance("A","C"));
     }
+    @Test void exactBranchTokensAndTerminalEdgeSplitsRemainAvailableForFixedLengthAudits() {
+        var tree=NewickTree.parse("((A:[comment:999]+.1000e-1,B:2):3,(C:4,D:5):6):-0.0;");
+        assertEquals("+.1000e-1",tree.branchLengthText(tree.leafNodes().get("A")));assertEquals("-0.0",tree.branchLengthText(tree.root()));
+        assertEquals(6,tree.edgeSplits(100).size());assertEquals(2,tree.edgeBipartitions(100).size());
+        assertTrue(tree.edgeSplits(100).values().contains(Set.of("A")));assertNull(NewickTree.parse("(A,B);").branchLengthText(1));
+    }
+
+    @Test void edgeSplitsRetainEverySupportBearingEdgeIncludingDuplicateRootSplits() {
+        var tree=NewickTree.parse("((A:1,B:1)94:1,(C:1,D:1)95:1);");
+        var edges=tree.edgeBipartitions(100);
+        assertEquals(Map.of(1,Set.of("A","B"),4,Set.of("A","B")),edges);
+        assertEquals("94",tree.nodes().get(1).label());assertEquals("95",tree.nodes().get(4).label());
+        assertEquals(Set.of(Set.of("A","B")),tree.bipartitions(100));
+        assertThrows(UnsupportedOperationException.class,()->edges.clear());
+        assertThrows(UnsupportedOperationException.class,()->edges.get(1).clear());
+        assertThrows(IllegalArgumentException.class,()->tree.edgeBipartitions(1));
+        assertEquals(Map.of(),NewickTree.parse("(A:1,B:1,C:1);").edgeBipartitions(100));
+    }
 
     @Test void deepTreesParseAndRelabelWithoutRecursiveCallStackGrowth() {
         int depth=20000;String raw="(".repeat(depth)+"tip:1"+")".repeat(depth)+";";

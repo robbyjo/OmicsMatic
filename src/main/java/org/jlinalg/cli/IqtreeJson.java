@@ -31,7 +31,10 @@ final class IqtreeJson {
         }
         if(value instanceof Iterable<?> list){var parts=new ArrayList<String>();for(Object item:list)parts.add(encode(item,depth+1));return "["+String.join(",",parts)+"]";}
         String name=value.getClass().getName();
-        if(value.getClass().isRecord()&&(name.startsWith("org.jlinalg.cli.Iqtree")||name.startsWith("org.jlinalg.genetics.Iqtree"))){
+        boolean capacity=java.util.Set.of(org.jlinalg.phylogeny.PhylogeneticAlignment.Limits.class,
+                org.jlinalg.phylogeny.NewickTree.Limits.class,org.jlinalg.phylogeny.NewickReader.Limits.class,
+                org.jlinalg.phylogeny.BootstrapSupport.Limits.class).contains(value.getClass());
+        if(value.getClass().isRecord()&&(name.startsWith("org.jlinalg.cli.Iqtree")||name.startsWith("org.jlinalg.genetics.Iqtree")||capacity)){
             var map=new TreeMap<String,Object>();
             try{for(var component:value.getClass().getRecordComponents())map.put(component.getName(),component.getAccessor().invoke(value));}
             catch(IllegalAccessException|InvocationTargetException invalid){throw new IOException("Cannot encode owned IQ-TREE record",invalid);}

@@ -18,6 +18,9 @@ class SourceValidationTests(unittest.TestCase):
         self.data=Path(self.temp.name)/'data';self.data.mkdir()
         for name in ['shapeit-source-build-validation.json','shapeit-source-build-controls.zip','shapeit-managed-common-validation.json','shapeit-managed-common-controls.zip']:
             shutil.copyfile(validation.DATA/name,self.data/name)
+        # Relocated evidence needs the exact dispatcher inverse chain as well.
+        for path in validation.DATA.glob('*-shared-source-compatibility.json'):
+            shutil.copyfile(path,self.data/path.name)
 
     def verify(self):return validation.verify(validation.ROOT,self.data,emit=False)
 

@@ -155,6 +155,8 @@ public final class JLinAlgCli {
             return EagleToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
         if (arguments.length > 0 && arguments[0].equals("shapeit-tools"))
             return ShapeitToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("iqtree-tools"))
+            return IqtreeToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
         if (arguments.length > 0 && arguments[0].equals("repeat-tools"))
             return RepeatToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
         if (arguments.length > 0 && arguments[0].equals("minimac-tools"))
@@ -401,6 +403,7 @@ public final class JLinAlgCli {
               java -jar omicsmatic-<version>.jar admixture-tools --help
               java -jar omicsmatic-<version>.jar eagle-tools --help
               java -jar omicsmatic-<version>.jar shapeit-tools --help
+              java -jar omicsmatic-<version>.jar iqtree-tools --help
               java -jar omicsmatic-<version>.jar repeat-tools --help
               java -jar omicsmatic-<version>.jar minimac-tools --help
               java -jar omicsmatic-<version>.jar homer-scan --help

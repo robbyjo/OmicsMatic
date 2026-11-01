@@ -49,7 +49,7 @@ public final class NewickTree {
     private final Limits limits;
     private final List<Node> nodes;
     private final Map<String,Integer> leaves;
-    private final int[] labelStarts, labelEnds;
+    private final int[] labelStarts, labelEnds, lengthStarts, lengthEnds;
     private final List<String> trailingComments;
     private final String metricError;
 
@@ -59,10 +59,12 @@ public final class NewickTree {
         List<Node> result = new ArrayList<>(parser.nodes.size());
         Map<String,Integer> identities = new LinkedHashMap<>();
         labelStarts = new int[parser.nodes.size()]; labelEnds = new int[parser.nodes.size()];
+        lengthStarts = new int[parser.nodes.size()]; lengthEnds = new int[parser.nodes.size()];
         String badMetric = null;
         for (Mutable value : parser.nodes) {
             Node node = new Node(value.id, value.parent, value.children, value.label, value.length, value.comments);
             result.add(node); labelStarts[node.id()] = value.labelStart; labelEnds[node.id()] = value.labelEnd;
+            lengthStarts[node.id()] = value.lengthStart; lengthEnds[node.id()] = value.lengthEnd;
             if (node.isLeaf()) {
                 if (node.label() == null || node.label().isEmpty())
                     throw new IllegalArgumentException("Newick tips must have nonempty taxon labels");
@@ -90,6 +92,11 @@ public final class NewickTree {
     public Map<String,Integer> leafNodes() { return leaves; }
     public Set<String> taxa() { return leaves.keySet(); }
     public List<String> trailingComments() { return trailingComments; }
+    /** Exact source branch token, including sign/exponent/precision, or null if absent. */
+    public String branchLengthText(int node) {
+        nodes.get(node);
+        return lengthStarts[node]<0?null:source.substring(lengthStarts[node],lengthEnds[node]);
+    }
 
     /** Reject incomplete or negative edge lengths rather than inventing distances. */
     public void requireMetricLengths() {
@@ -127,8 +134,30 @@ public final class NewickTree {
      * deeply unbalanced trees instead of silently omitting splits.
      */
     public Set<Set<String>> bipartitions(long maximumTaxonMemberships) {
+        return Collections.unmodifiableSet(new LinkedHashSet<>(edgeBipartitions(maximumTaxonMemberships).values()));
+    }
+
+    /**
+     * Canonical nontrivial split for each nonroot edge, keyed by its child node.
+     * Unlike {@link #bipartitions(long)}, this retains separate edges representing
+     * the same unrooted split (for example, both children of a degree-two root).
+     * This lets callers associate every internal support label with its exact
+     * edge and detect contradictory labels instead of losing them in a set.
+     * Root and terminal edges do not represent nontrivial splits and are omitted.
+     * The complete membership budget has the same meaning as for bipartitions.
+     */
+    public Map<Integer,Set<String>> edgeBipartitions(long maximumTaxonMemberships) {
+        return edgeSplits(maximumTaxonMemberships,false);
+    }
+
+    /** Canonical splits for every nonroot edge, including terminal edges. */
+    public Map<Integer,Set<String>> edgeSplits(long maximumTaxonMemberships) {
+        return edgeSplits(maximumTaxonMemberships,true);
+    }
+
+    private Map<Integer,Set<String>> edgeSplits(long maximumTaxonMemberships,boolean includeTerminal) {
         if (maximumTaxonMemberships < 1) throw new IllegalArgumentException("Split membership capacity must be positive");
-        Map<Integer,Set<String>> descendants = new HashMap<>(); Set<Set<String>> result = new LinkedHashSet<>();
+        Map<Integer,Set<String>> descendants = new HashMap<>(); Map<Integer,Set<String>> result = new LinkedHashMap<>();
         String first = new TreeSet<>(leaves.keySet()).first(); long used = 0;
         for (int i = nodes.size()-1; i >= 0; i--) {
             Node node = nodes.get(i); long count = node.isLeaf() ? 1 : 0;
@@ -141,16 +170,17 @@ public final class NewickTree {
             else for (int child : node.children()) tips.addAll(descendants.get(child));
             descendants.put(i, tips);
             int size = tips.size(), complement = leaves.size()-size;
-            if (node.parent() < 0 || size < 2 || complement < 2) continue;
+            int minimum=includeTerminal?1:2;
+            if (node.parent() < 0 || size < minimum || complement < minimum) continue;
             used = Math.addExact(used, Math.min(size, complement));
             if (used > maximumTaxonMemberships)
                 throw new IllegalArgumentException("Complete Newick split membership capacity exceeded; raise the declared capacity");
             Set<String> canonical = new TreeSet<>();
             if (size < complement || size == complement && tips.contains(first)) canonical.addAll(tips);
             else for (String taxon : leaves.keySet()) if (!tips.contains(taxon)) canonical.add(taxon);
-            result.add(Collections.unmodifiableSet(canonical));
+            result.put(node.id(),Collections.unmodifiableSet(canonical));
         }
-        return Collections.unmodifiableSet(result);
+        return Collections.unmodifiableMap(result);
     }
 
     /**
@@ -210,7 +240,7 @@ public final class NewickTree {
         final int id, parent;
         final List<Integer> children = new ArrayList<>();
         final List<String> comments = new ArrayList<>();
-        String label; Double length; int labelStart=-1, labelEnd=-1;
+        String label; Double length; int labelStart=-1, labelEnd=-1, lengthStart=-1, lengthEnd=-1;
         Mutable(int id, int parent) { this.id=id; this.parent=parent; }
     }
 
@@ -288,6 +318,7 @@ public final class NewickTree {
                 String number=source.substring(start,at);
                 if (!NUMBER.matcher(number).matches()) throw error("requires a finite decimal branch length");
                 node.length=Double.valueOf(number);
+                node.lengthStart=start;node.lengthEnd=at;
                 if (!Double.isFinite(node.length)) throw error("nonfinite branch length");
                 comments(node.comments);
             }
