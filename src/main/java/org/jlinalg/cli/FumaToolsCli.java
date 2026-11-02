@@ -26,6 +26,8 @@ final class FumaToolsCli {
         "annotation-id","max-bytes","max-genes","max-terms","max-memberships","max-hommel-operations","out");
     private static final String SCOPE="NATIVE GENE-SET MODULE ONLY: this implements the supplied-annotation/GMT GENE2FUNC gene-set test. SNP2GENE, LD clumping, MAGMA, variant annotation, DEG, expression and hosted FUMA workflows remain separate. Required action: provide the intended annotation and every GMT correction family, and retain their identities and hashes; no historical paper data or defaults are inferred.";
     static int run(String[] args,PrintStream out,PrintStream err) {
+        for (int i=0;i+1<args.length;i++) if (args[i].equals("--method")&&args[i+1].equals("prepare-expression")) return FumaExpressionPrepareCli.run(args,out,err);
+        for (int i=0;i+1<args.length;i++) if (args[i].equals("--method")&&Set.of("prepare-reference","replay-reference").contains(args[i+1])) return FumaReferenceCli.run(args,out,err);
         for (int i=0;i<args.length;i++) if (args[i].equals("--site-options-file")||args[i].equals("--method")&&i+1<args.length&&args[i+1].equals("transcript-sites")) return TranscriptSiteCli.run(args,out,err);
         for (int i=0;i<args.length;i++) if (args[i].equals("--fisher-options-file")||args[i].equals("--method")&&i+1<args.length&&args[i+1].equals("fisher-enrichment")) return FumaFisherCli.run(args,out,err);
         for (int i=0;i<args.length;i++) if (args[i].equals("--known-options-file")||args[i].equals("--method")&&i+1<args.length&&args[i+1].equals("known-associations")) return FumaAssociationCli.run(args,out,err);
@@ -169,6 +171,8 @@ final class FumaToolsCli {
         Exit 0: completed with review warnings; 2: failed. Existing outputs are preserved.
         Annotation acquisition, expression generation and hosted FUMA reconstruction remain unavailable.
         Supplied-reference locus construction: fuma-tools --method loci --help
+        Hardcall reference capture/replay: fuma-tools --method prepare-reference --help
+        Sample-level expression preparation: fuma-tools --method prepare-expression --help
         Supplied-resource positional/eQTL mapping: fuma-tools --method map-genes --help
         Typed local stage orchestration: fuma-tools --method workflow --help
         Supplied expression/DEG resources: fuma-tools --method expression --help

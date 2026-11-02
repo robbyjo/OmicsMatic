@@ -51,13 +51,26 @@ public final class FumaLocusDefinition {
     public record LdPair(int chromosome, int first, int second, double rSquared) {
         public LdPair {coordinate(chromosome,first);coordinate(chromosome,second);probability(rSquared);if (first==second) throw new IllegalArgumentException("Omit self LD pairs; self LD is implicit");}
     }
+    /**
+     * Inclusive LD eligibility windows. Rank is genomic order within each
+     * chromosome of the declared reference, not input-file order. A PLINK
+     * --ld-window value of k corresponds to maximumIndexGap=k-1.
+     */
+    public record LdWindow(long maximumDistanceBp,int maximumIndexGap) {
+        public LdWindow {if(maximumDistanceBp<0||maximumIndexGap<0)throw new IllegalArgumentException("LD window bounds must be nonnegative");}
+        public static LdWindow unlimited(){return new LdWindow(Long.MAX_VALUE,Integer.MAX_VALUE);}
+    }
+    /** Uncomputed out-of-window pairs are not observations of zero or weak LD. */
+    public enum PairCoverage { SELF, STORED, BELOW_DECLARED_FLOOR, OUTSIDE_DECLARED_WINDOW, DIFFERENT_CHROMOSOMES }
     private record Position(int chromosome,int position) implements Comparable<Position> {
         @Override public int compareTo(Position other) {int c=Integer.compare(chromosome,other.chromosome);return c!=0?c:Integer.compare(position,other.position);}
     }
     private record PairKey(int chromosome,int first,int second) { }
     /**
-     * Explicit reference identity and sparse-LD contract. Unlisted pairs must have
-     * r-squared strictly below storedMinimumR2. A zero floor requires every pair.
+     * Explicit reference identity and sparse-LD contract. Unlisted in-window pairs
+     * are declared strictly below storedMinimumR2. A zero floor requires every
+     * in-window pair. Outside-window pairs are excluded by the LD protocol,
+     * without asserting their uncomputed correlation.
      * One reference variant per coordinate is required because the original backend
      * addresses LD by position; ambiguous multiallelic positions must be resolved
      * explicitly rather than silently assigned the same LD value.
@@ -68,28 +81,51 @@ public final class FumaLocusDefinition {
         private final Map<Position,Map<Integer,Double>> neighbors;
         private final double storedMinimumR2;
         private final String identity;
+        private final LdWindow window;
+        private final Map<Position,Integer> ranks;
         /** Build a reference without changing or guessing its LD/MAF definition. */
         public Reference(String identity,List<ReferenceVariant> variants,List<LdPair> pairs,double storedMinimumR2) {
+            this(identity,variants,pairs,storedMinimumR2,LdWindow.unlimited());
+        }
+        /** Build a sparse reference with explicitly bounded LD eligibility. */
+        public Reference(String identity,List<ReferenceVariant> variants,List<LdPair> pairs,double storedMinimumR2,LdWindow window) {
             if (identity==null||identity.isBlank()||variants==null||variants.isEmpty()||pairs==null) throw new IllegalArgumentException("Reference identity and variants are required");
+            if(window==null)throw new IllegalArgumentException("Explicit LD window is required");this.window=window;
             probability(storedMinimumR2);this.identity=identity;this.storedMinimumR2=storedMinimumR2;byPosition=new TreeMap<>();byUid=new HashMap<>();neighbors=new HashMap<>();Map<Integer,Long> counts=new HashMap<>();
             for (ReferenceVariant v:variants) {
                 Position position=new Position(v.chromosome(),v.position());if (byPosition.putIfAbsent(position,v)!=null) throw new IllegalArgumentException("Ambiguous reference coordinate: "+v.chromosome()+":"+v.position()+"; original LD lookup is positional, so resolve multiallelic records explicitly");
                 byUid.put(v.uid(),v);counts.merge(v.chromosome(),1L,Long::sum);neighbors.put(position,new TreeMap<>());
             }
+            ranks=new HashMap<>();if(window.maximumIndexGap()!=Integer.MAX_VALUE){int chromosome=-1,index=0;for(Position p:byPosition.keySet()){if(p.chromosome()!=chromosome){chromosome=p.chromosome();index=0;}ranks.put(p,index++);}}
             Map<PairKey,Double> unique=new HashMap<>();
             for (LdPair p:pairs) {
                 Position first=new Position(p.chromosome(),p.first()),second=new Position(p.chromosome(),p.second());
                 if (!byPosition.containsKey(first)||!byPosition.containsKey(second)) throw new IllegalArgumentException("LD pair coordinate is absent from the supplied reference");
+                if(!eligible(first,second))throw new IllegalArgumentException("Stored LD pair falls outside the declared distance/index window");
                 PairKey key=new PairKey(p.chromosome(),Math.min(p.first(),p.second()),Math.max(p.first(),p.second()));Double prior=unique.putIfAbsent(key,p.rSquared());
                 if (prior!=null && Double.compare(prior,p.rSquared())!=0) throw new IllegalArgumentException("Conflicting LD pair values");
                 neighbors.get(first).put(p.second(),p.rSquared());neighbors.get(second).put(p.first(),p.rSquared());
             }
-            if (storedMinimumR2==0) {long expected=0;for (long n:counts.values()) expected=Math.addExact(expected,n*(n-1)/2);if (unique.size()!=expected) throw new IllegalArgumentException("Zero LD floor requires complete within-chromosome pair coverage");}
+            if (storedMinimumR2==0) {
+                long expected=0;
+                if(window.equals(LdWindow.unlimited()))for(long n:counts.values())expected=Math.addExact(expected,n*(n-1)/2);
+                else {
+                    List<Position> positions=new ArrayList<>(byPosition.keySet());int left=0;
+                    for(int i=0;i<positions.size();i++){
+                        Position p=positions.get(i);
+                        while(left<i&&(positions.get(left).chromosome()!=p.chromosome()||(long)p.position()-positions.get(left).position()>window.maximumDistanceBp()||i-left>window.maximumIndexGap()))left++;
+                        expected=Math.addExact(expected,i-left);
+                    }
+                }
+                if(unique.size()!=expected)throw new IllegalArgumentException("Zero LD floor requires complete within-chromosome pair coverage inside the declared window");
+            }
         }
         /** Declared reference identity, including release, population and assembly. */
         public String identity() {return identity;}
-        /** All omitted pairs are declared strictly below this threshold. */
+        /** All omitted in-window pairs are declared strictly below this threshold. */
         public double storedMinimumR2() {return storedMinimumR2;}
+        /** The explicit genomic-distance and sorted-reference-rank eligibility. */
+        public LdWindow window(){return window;}
         /** Number of supplied reference variants. */
         public int variantCount() {return byUid.size();}
         /** Stored pair value, implicit self value, or empty for an unrecorded pair. */
@@ -100,12 +136,21 @@ public final class FumaLocusDefinition {
             if (firstUid.equals(secondUid)) return OptionalDouble.of(1);
             Double value=neighbors.get(new Position(first.chromosome(),first.position())).get(second.position());return value==null?OptionalDouble.empty():OptionalDouble.of(value);
         }
+        /** Distinguish uncomputed exclusions from the declared sparse in-window floor. */
+        public PairCoverage coverage(String firstUid,String secondUid){
+            ReferenceVariant first=byUid.get(firstUid),second=byUid.get(secondUid);if(first==null||second==null)throw new IllegalArgumentException("Unknown reference UID");
+            if(firstUid.equals(secondUid))return PairCoverage.SELF;if(first.chromosome()!=second.chromosome())return PairCoverage.DIFFERENT_CHROMOSOMES;
+            Position a=new Position(first.chromosome(),first.position()),b=new Position(second.chromosome(),second.position());
+            if(!eligible(a,b))return PairCoverage.OUTSIDE_DECLARED_WINDOW;
+            return neighbors.get(a).containsKey(b.position())?PairCoverage.STORED:PairCoverage.BELOW_DECLARED_FLOOR;
+        }
+        private boolean eligible(Position a,Position b){return a.chromosome()==b.chromosome()&&Math.abs((long)a.position()-b.position())<=window.maximumDistanceBp()&&(window.maximumIndexGap()==Integer.MAX_VALUE||Math.abs((long)ranks.get(a)-ranks.get(b))<=window.maximumIndexGap());}
         private List<ReferenceVariant> linked(Gwas seed,double threshold,Work work) {
             Position position=new Position(seed.chromosome(),seed.position());Map<Integer,Double> links=new TreeMap<>(neighbors.get(position));links.put(seed.position(),1.0);List<ReferenceVariant> result=new ArrayList<>();
             for (var e:links.entrySet()) {work.add();if (e.getValue()>=threshold) result.add(byPosition.get(new Position(seed.chromosome(),e.getKey())));}
             return result;
         }
-        private double r2(int chromosome,int first,int second) {return first==second?1:neighbors.get(new Position(chromosome,first)).getOrDefault(second,0.0);}
+        private double r2(int chromosome,int first,int second) {if(first==second)return 1;Double value=neighbors.get(new Position(chromosome,first)).get(second);if(value==null)throw new IllegalArgumentException("An exact LD value was requested for an unrecorded pair");return value;}
     }
     /** Explicit protocol; no historical defaults, resource selection or implicit liftover. */
     public record Options(double leadP,double candidateP,double minimumMaf,double independentR2,
@@ -164,6 +209,7 @@ public final class FumaLocusDefinition {
         if (input.size()>options.maximumWork()) throw new IllegalArgumentException("Locus work budget is smaller than the GWAS row count");
         if (options.independentR2()<reference.storedMinimumR2 || options.leadR2()<reference.storedMinimumR2) throw new IllegalArgumentException("Stored LD floor exceeds a requested LD threshold; supply adequate pair coverage");
         Work work=new Work(options.maximumWork());Map<String,Gwas> original=new LinkedHashMap<>(),eligible=new LinkedHashMap<>();Map<Position,Gwas> eligiblePositions=new HashMap<>();Set<Position> occupiedPositions=new HashSet<>();Set<String> rsIds=new HashSet<>();Map<String,String> status=new LinkedHashMap<>();List<String> warnings=new ArrayList<>();List<Gwas> sorted=new ArrayList<>(input);sorted.sort(COORDINATE);
+        if(!reference.window().equals(LdWindow.unlimited()))warnings.add("DECLARED LD WINDOW: maximum inclusive distance="+reference.window().maximumDistanceBp()+" bp and sorted-reference index gap="+reference.window().maximumIndexGap()+". Pairs outside either bound are excluded by this protocol; their LD was not assessed and is not declared zero or below the sparse floor. Inspect Reference.coverage before interpreting independence biologically.");
         for (Gwas g:sorted) {
             work.add();if (original.putIfAbsent(g.uid(),g)!=null||!rsIds.add(g.rsId())) throw new IllegalArgumentException("GWAS variant/rsID identities must be unique");
             if (options.excludedMhc()!=null&&options.excludedMhc().contains(g.chromosome(),g.position())) {status.put(g.uid(),"excluded-MHC");continue;}

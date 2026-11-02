@@ -36,7 +36,7 @@ final class FastpOutputAudit {
         if(captures.size()!=(paired?2:1))throw new IOException("fastp captured file population differs");
         for(int i=0;i<captures.size();i++){
             Map<?,?> capture=FastpRuntime.object(captures.get(i));String member=FastpFiles.member(FastpRuntime.text(capture.get("snapshot")));Path source=root.resolve(member);if(!source.equals(i==0?data.first():data.second()))throw new IOException("fastp audit read source is not its complete captured file");
-            var expected=FastpRuntime.fingerprint(FastpRuntime.object(FastpRuntime.object(capture.get("identity")).get("pin")));var identity=FastpFiles.identity(source,data.fastq().encodedBytes(),check);if(!identity.pin().equals(expected))throw new IOException("fastp captured original bytes changed before output audit");stable.put(source,identity);
+            var expected=capturedPin(FastpRuntime.object(FastpRuntime.object(capture.get("identity")).get("pin")),data.fastq().encodedBytes());var identity=FastpFiles.identity(source,data.fastq().encodedBytes(),check);if(!identity.pin().equals(expected))throw new IOException("fastp captured original bytes changed before output audit");stable.put(source,identity);
         }
         Map<?,?> stage=FastpRuntime.object(FastpFiles.json(root.resolve("stage.json"),65536));if(!"ORIGINAL_PROCESSING_FINISHED_OUTPUT_AUDIT_PENDING".equals(stage.get("status"))||!Boolean.FALSE.equals(stage.get("scientific_output_admitted")))throw new IOException("fastp raw stage is incomplete");
         String profile="linux-x86_64-fastp-"+data.version();if(!profile.equals(request.get("profile")))throw new IOException("fastp requested edition differs");
@@ -81,6 +81,10 @@ final class FastpOutputAudit {
         for(var entry:stable.entrySet())if(!FastpFiles.identity(entry.getKey(),Math.max(outputBytes,data.fastq().encodedBytes()),check).equals(entry.getValue()))throw new IOException("fastp raw original input/output changed during complete output audit");
         FastpFiles.writeJson(audit.resolve("effective-output-fastq-limits.json"),outputLimits);
         var result=new Result("PASSED_COMPLETE_POPULATION_AND_SOURCE_REPORT_AUDIT",fields,constrained,joined,statistics,warnings,"read-dispositions.tsv");FastpFiles.writeJson(audit.resolve("output-audit.json"),result);disk.verify();check.run();return result;
+    }
+    /** FASTQ capacity is independent of the small executable/setup fingerprint limit. */
+    static FastpFiles.Pin capturedPin(Map<?,?> value,long maximum)throws IOException {
+        FastpMetrics.exactKeys(value,Set.of("bytes","sha256"),"captured-input fingerprint");long bytes=FastpRuntime.integer(value.get("bytes"),0,maximum);String hash=FastpRuntime.text(value.get("sha256"));if(!hash.matches("[a-f0-9]{64}"))throw new IOException("Invalid captured fastp input hash");return new FastpFiles.Pin(bytes,hash);
     }
     private static long addPairedOutput(Path original,FastpMetrics.Model first,FastpMetrics.Model second,Data data,FastpFastq.Limits outputLimits,Limits limits,long remaining,BufferedWriter out,FastpProcess.Check disk,Runnable check)throws IOException {
         long count=0;

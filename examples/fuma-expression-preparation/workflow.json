@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "build": "synthetic-GRCh37",
+  "expression_prepare": {
+    "matrix": "input/raw.gct",
+    "format": "gct12",
+    "samples": "input/samples.tsv",
+    "labels": "input/labels.tsv",
+    "extra-samples": "exclude",
+    "annotation-id": "annotation-v1",
+    "expression-id": "synthetic-v1",
+    "gene-namespace": "exact-ensembl",
+    "units": "tpm",
+    "empty": "error"
+  },
+  "expression": {
+    "symbols": "input/symbols.tsv",
+    "query": "input/query.txt",
+    "background": "input/background.txt",
+    "deg-sets": "input/deg.tsv",
+    "deg-id": "independently-supplied-synthetic-DEG",
+    "duplicates": "error",
+    "outside-query": "error"
+  }
+}

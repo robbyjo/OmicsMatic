@@ -1,0 +1,1470 @@
+{
+  "schema_version": 1,
+  "status": "passed-local-native-FUMA-reference-preparation-capture-replay-and-locus-handoff",
+  "recorded_utc": "2026-11-02T18:49:29.826614+00:00",
+  "scope": "Explicit selected autosomal diploid hardcalls -> audited marginal exclusions and bounded-window LD -> portable complete capture/replay -> validated locus admission and optional typed workflow reference_prepare stage. No hosted/historical FUMA or whole-tool claim.",
+  "artifact": {
+    "path": "build/literature-review/fuma-runtime/reference-workflow-development-1/package-1/omicsmatic-0.3.7-fuma-development.jar",
+    "bytes": 162877565,
+    "sha256": "4658fb7c91f10e7e9ec967454111910e2bc570f21abfc6bef0022fa4fda3486a"
+  },
+  "tests_per_JVM": 104,
+  "new_reference_tests_per_JVM": 40,
+  "prior_core_and_locus_tests_per_JVM": 64,
+  "heap_mib": 128,
+  "platforms": [
+    "windows-java21",
+    "windows-java25",
+    "linux-java21"
+  ],
+  "family_tests": {
+    "tests": 619,
+    "runtime_sha256": "e05e3d963215a973064852ec33640118d65745884cc800a5119ca7cffe6cb859",
+    "skipped": 0,
+    "failed": 0,
+    "runtime_home": "build/omics-magma",
+    "errors": 0
+  },
+  "example_commands": [
+    {
+      "label": "create-inputs",
+      "argv": [
+        "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin\\java.exe",
+        "-Xmx128m",
+        "-cp",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\fuma-runtime\\reference-workflow-development-1\\example-classes-1",
+        "CreateInputs",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\fuma-runtime\\reference-workflow-development-1\\example-commands-1\\work"
+      ],
+      "exit_code": 0
+    },
+    {
+      "label": "workflow",
+      "argv": [
+        "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin\\java.exe",
+        "-Xmx128m",
+        "-jar",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\fuma-runtime\\reference-workflow-development-1\\package-1\\omicsmatic-0.3.7-fuma-development.jar",
+        "fuma-tools",
+        "--method",
+        "workflow",
+        "--workflow-options-file",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\fuma-runtime\\reference-workflow-development-1\\example-commands-1\\work\\workflow.json",
+        "--out",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\fuma-runtime\\reference-workflow-development-1\\example-commands-1\\work\\workflow-1"
+      ],
+      "exit_code": 0
+    },
+    {
+      "label": "replay",
+      "argv": [
+        "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin\\java.exe",
+        "-Xmx128m",
+        "-jar",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\fuma-runtime\\reference-workflow-development-1\\package-1\\omicsmatic-0.3.7-fuma-development.jar",
+        "fuma-tools",
+        "--method",
+        "replay-reference",
+        "--bundle",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\fuma-runtime\\reference-workflow-development-1\\example-commands-1\\work\\workflow-1\\reference-preparation",
+        "--out",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\fuma-runtime\\reference-workflow-development-1\\example-commands-1\\work\\replay-1"
+      ],
+      "exit_code": 0
+    },
+    {
+      "label": "loci",
+      "argv": [
+        "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin\\java.exe",
+        "-Xmx128m",
+        "-jar",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\fuma-runtime\\reference-workflow-development-1\\package-1\\omicsmatic-0.3.7-fuma-development.jar",
+        "fuma-tools",
+        "--locus-options-file",
+        "D:\\projects\\JLinAlg\\examples\\fuma-reference\\locus-options.json",
+        "--gwas",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\fuma-runtime\\reference-workflow-development-1\\example-commands-1\\work\\input\\gwas.tsv",
+        "--reference-bundle",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\fuma-runtime\\reference-workflow-development-1\\example-commands-1\\work\\replay-1",
+        "--expected-reference-assembly",
+        "synthetic-GRCh37",
+        "--out",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\fuma-runtime\\reference-workflow-development-1\\example-commands-1\\work\\loci-1"
+      ],
+      "exit_code": 0
+    },
+    {
+      "label": "standalone-prepare",
+      "argv": [
+        "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin\\java.exe",
+        "-Xmx128m",
+        "-jar",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\fuma-runtime\\reference-workflow-development-1\\package-1\\omicsmatic-0.3.7-fuma-development.jar",
+        "fuma-tools",
+        "--method",
+        "prepare-reference",
+        "--bfile",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\fuma-runtime\\reference-workflow-development-1\\example-commands-1\\work\\input\\panel",
+        "--variants",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\fuma-runtime\\reference-workflow-development-1\\example-commands-1\\work\\input\\variants.tsv",
+        "--samples",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\fuma-runtime\\reference-workflow-development-1\\example-commands-1\\work\\input\\samples.tsv",
+        "--sample-policy",
+        "founders",
+        "--assembly",
+        "synthetic-GRCh37",
+        "--population",
+        "declared-synthetic",
+        "--release",
+        "example-v1",
+        "--minimum-maf",
+        "0",
+        "--ld-floor",
+        ".05",
+        "--window-bp",
+        "1000",
+        "--window-index-gap",
+        "1",
+        "--out",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\fuma-runtime\\reference-workflow-development-1\\example-commands-1\\work\\standalone-1"
+      ],
+      "exit_code": 0
+    },
+    {
+      "label": "portable-replay",
+      "argv": [
+        "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin\\java.exe",
+        "-Xmx128m",
+        "-jar",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\fuma-runtime\\reference-workflow-development-1\\package-1\\omicsmatic-0.3.7-fuma-development.jar",
+        "fuma-tools",
+        "--method",
+        "replay-reference",
+        "--bundle",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\fuma-runtime\\reference-workflow-development-1\\example-commands-1\\work\\portable-capture",
+        "--out",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\fuma-runtime\\reference-workflow-development-1\\example-commands-1\\work\\portable-replay-1"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "payload_byte_comparisons": 24,
+  "original_evidence": {
+    "reused_original_PLINK_fixture": "src/test/resources/org/jlinalg/genetics/hardcall-ld/original-controls.zip",
+    "underlying_core_binary_values_per_JVM": 7568,
+    "underlying_core_frequency_rows_per_JVM": 228,
+    "preparation_cases_per_JVM": 9,
+    "preparation_positive_cases": 8,
+    "source_undefined_case": "explicit-keep: actual original NaN is retained; complete preparation must fail rather than produce a false sparse omission",
+    "new_original_download_or_install": false
+  },
+  "source_pins": {
+    "src/test/java/org/jlinalg/genetics/HardcallLdTest.java": {
+      "bytes": 8984,
+      "sha256": "64a0f22b4f2f664142b738653a8aa9368603d68fcf3604ea16aeac4aef85f682"
+    },
+    "src/test/java/org/jlinalg/genetics/HardcallLdOriginalTest.java": {
+      "bytes": 7930,
+      "sha256": "e5918a34995524c631c665128a4a3471a156fd9383f8cc4aa8bfab079c4b4c7b"
+    },
+    "src/test/java/org/jlinalg/genetics/FumaLdWindowTest.java": {
+      "bytes": 6063,
+      "sha256": "0adf13842fc6acfc8bd698d96d06bead5374de062a0c9e9e299e8252a5e09063"
+    },
+    "src/test/java/org/jlinalg/genetics/FumaLocusDefinitionTest.java": {
+      "bytes": 15222,
+      "sha256": "74b87d6e528e361a7ab9e04fff9deac356615817c8946a0a085032fbc21091db"
+    },
+    "src/test/java/org/jlinalg/genetics/FumaReferencePreparationTest.java": {
+      "bytes": 10583,
+      "sha256": "a2a5ca275682424abd7b373ca77a1acbc548746c2673dd84d379d759cd0512e1"
+    },
+    "src/test/java/org/jlinalg/genetics/FumaReferenceOriginalTest.java": {
+      "bytes": 6750,
+      "sha256": "c49c241744dc4fe82619f399f246fb8a63224ef3a1f78e53ae3c0cbdffb223e0"
+    },
+    "src/test/java/org/jlinalg/cli/FumaReferenceCliTest.java": {
+      "bytes": 17301,
+      "sha256": "16b6cb9226323c3eeffc8bb281ba4081a78cb30e91746eaf68a889ea0cd42540"
+    },
+    "src/test/java/org/jlinalg/cli/FumaLociCliTest.java": {
+      "bytes": 6089,
+      "sha256": "44c5ae70b3b3b19c7a52ca04af678cad3663fbf327b217598efb7e0576669d1d"
+    },
+    "src/main/java/org/jlinalg/genetics/FumaReferencePreparation.java": {
+      "bytes": 11464,
+      "sha256": "c30415d989540678f1e43bf46cdad58fb5fe25ac562b919a27bb812dd3e19581"
+    },
+    "src/main/java/org/jlinalg/cli/FumaReferenceCli.java": {
+      "bytes": 31564,
+      "sha256": "dab279f4db12b169ac8cf452f3525d742d6a13be997f66f25b90a10133e40150"
+    },
+    "src/main/java/org/jlinalg/cli/FumaLociCli.java": {
+      "bytes": 22881,
+      "sha256": "b1680bb78a451ca74efebe3bca635439af231d98a1834a7fafc3bf9c1651993b"
+    },
+    "src/main/java/org/jlinalg/cli/FumaToolsCli.java": {
+      "bytes": 20970,
+      "sha256": "7ca1cb4e86ab606978c6d3533970276826b8e2b1fadfc0401ded9ed706100692"
+    },
+    "src/main/java/org/jlinalg/cli/FumaWorkflowCli.java": {
+      "bytes": 32979,
+      "sha256": "22812983f68191c5fec11065051efef251dc00933d70db1220c0d1aa9426f2cd"
+    },
+    "src/main/java/org/jlinalg/genetics/HardcallLd.java": {
+      "bytes": 9443,
+      "sha256": "6982adc2af9fe085457711b6e719d368f082425e582ed024d718d6bbb5a97798"
+    },
+    "src/main/java/org/jlinalg/genetics/FumaLocusDefinition.java": {
+      "bytes": 33459,
+      "sha256": "cc6bdd43b035700cf4d3ee7fa06653074b8ae447ab72b24ab62b716448a6dcb2"
+    },
+    "src/main/java/org/jlinalg/genetics/PlinkBedDataset.java": {
+      "bytes": 15260,
+      "sha256": "7cf9ea9081bd0298555436c54916742990f1480f7db133872d62bdc275c13872"
+    },
+    "tools/literature/validate_fuma_reference_workflow.py": {
+      "bytes": 9362,
+      "sha256": "24be4e62667d0b61e16704ab1fc6ecb33c8599089ecdd006f8b7103a7ce02e0d"
+    },
+    "tools/literature/fuma-development.init.gradle": {
+      "bytes": 1211,
+      "sha256": "5431276c826baaa6276847287f050751e27a46ed42c4ed9bac7fbc1d59849a8f"
+    },
+    "src/test/resources/org/jlinalg/genetics/hardcall-ld/original-controls.zip": {
+      "bytes": 140388,
+      "sha256": "06e002a1c8c23e462176d32726abaedcb6b71fae3a6f9f349959a6befed04719"
+    },
+    "docs/literature/FUMA_REFERENCE_WORKFLOW.md": {
+      "bytes": 8460,
+      "sha256": "66b19ac17442c4a7b453cf54cba1e3bce211e87a8116b2732db8e36198037cd8"
+    },
+    "examples/fuma-reference/CreateInputs.java": {
+      "bytes": 1762,
+      "sha256": "ac18af9288547dc33c89716b35a69cb50ba7f6779e8a485f3c96804e795ed1d4"
+    },
+    "examples/fuma-reference/locus-options.json": {
+      "bytes": 341,
+      "sha256": "0bf5e28b9642cca580c90743f357b3190741df1dc3f6da933d1c8407c805251f"
+    },
+    "examples/fuma-reference/README.md": {
+      "bytes": 1036,
+      "sha256": "ca9573dc7e278896e223f277ea1da894ca95b5592c1acb7927f7bd4979022308"
+    },
+    "examples/fuma-reference/workflow.json": {
+      "bytes": 782,
+      "sha256": "c5e14268fc749ec483af488c4914cae18bf6ab8c3c34de81dca4eaedbc1e0400"
+    },
+    "tools/literature/validate_fuma_reference_commands.py": {
+      "bytes": 6095,
+      "sha256": "d4a0d1a965c23582d53b53c95fff2448b3cf6ed4a985a048a8fa8877e0887c9c"
+    },
+    "tools/literature/validate_mashr_native.py": {
+      "bytes": 8916,
+      "sha256": "4759fc9a2a900caa3c1b1ce669abbafa1b4f8c900a13c265fb2cf27437b0752a"
+    },
+    "src/main/java/org/jlinalg/cli/FollowupSupport.java": {
+      "bytes": 11934,
+      "sha256": "f373d857076b6adf724ef4459c8f5cce7c5cac2f6bc44517527905b87f19d23f"
+    },
+    "src/main/java/org/jlinalg/cli/AdmixtureInputs.java": {
+      "bytes": 16330,
+      "sha256": "16981dd8c09976b8543b3ddb0f4f35d79e3f0f69b1ae20cb207f2779a5edd90b"
+    },
+    "src/main/java/org/jlinalg/cli/SimpleJson.java": {
+      "bytes": 6107,
+      "sha256": "8425dc1a2179763af43c86898cf2b21d8c17dc76bdcabe0133d0ddcb6d6add5b"
+    },
+    "src/main/java/org/jlinalg/cli/RegenieRuntime.java": {
+      "bytes": 7077,
+      "sha256": "5ee111b9506f95e0b205a19cc42959c559a1d65466f37a0b05cda5b43810904b"
+    },
+    "src/main/java/org/jlinalg/cli/RnaToolRuntime.java": {
+      "bytes": 11191,
+      "sha256": "aa6560e6a47c999cffe1486b04272271ae2612daf74e99058b8da5cb010f2b0b"
+    },
+    "docs/literature/fuma-reference-workflow/.gitattributes": {
+      "bytes": 8,
+      "sha256": "705fd4d6451a31d36b3df7de96f83f30ac976c9b4a6d1e51671d8e2f33e2d0da"
+    }
+  },
+  "test_dependency_pins": {
+    "build/literature-review/shapeit-runtime/owned-common-native-matrix-4/lib/apiguardian-api-1.1.2.jar": {
+      "bytes": 6806,
+      "sha256": "b509448ac506d607319f182537f0b35d71007582ec741832a1f111e5b5b70b38"
+    },
+    "build/literature-review/shapeit-runtime/owned-common-native-matrix-4/lib/htsjdk-5.0.0.jar": {
+      "bytes": 2087306,
+      "sha256": "59d862b74ec3e847ec84bc87bed34cecd1a80095495d965b9403f863e374e99c"
+    },
+    "build/literature-review/shapeit-runtime/owned-common-native-matrix-4/lib/junit-jupiter-api-5.13.4.jar": {
+      "bytes": 240237,
+      "sha256": "d1bb81abfd9e03418306b4e6a3390c8db52c58372e749c2980ac29f0c08278f1"
+    },
+    "build/literature-review/shapeit-runtime/owned-common-native-matrix-4/lib/junit-jupiter-engine-5.13.4.jar": {
+      "bytes": 341150,
+      "sha256": "027404a92fe618b72465792a257951495c503a7d5751e2791e0f51c87f67f5bc"
+    },
+    "build/literature-review/shapeit-runtime/owned-common-native-matrix-4/lib/junit-jupiter-params-5.13.4.jar": {
+      "bytes": 660823,
+      "sha256": "3a8c6365716dbb698c0d49a05456c1e1ad05c406613c550f9dd50037872efc41"
+    },
+    "build/literature-review/shapeit-runtime/owned-common-native-matrix-4/lib/junit-platform-commons-1.13.4.jar": {
+      "bytes": 158512,
+      "sha256": "1c25ca641ebaae44ff3ad21ca1b2ef68d0dd84bfeb07c4805ba7840899b77408"
+    },
+    "build/literature-review/shapeit-runtime/owned-common-native-matrix-4/lib/junit-platform-engine-1.13.4.jar": {
+      "bytes": 268584,
+      "sha256": "390c5f77b84283a64b644f88251b397e0b0debb80bdcc50f899881aecff43a5a"
+    },
+    "build/literature-review/shapeit-runtime/owned-common-native-matrix-4/lib/junit-platform-launcher-1.13.4.jar": {
+      "bytes": 223100,
+      "sha256": "0b0beaeb6880a31149641d2d848b863712885469670c12099586d7f798522564"
+    },
+    "build/literature-review/shapeit-runtime/owned-common-native-matrix-4/lib/opentest4j-1.3.0.jar": {
+      "bytes": 14304,
+      "sha256": "48e2df636cab6563ced64dcdff8abb2355627cb236ef0bf37598682ddf742f1b"
+    }
+  },
+  "prior_checkpoint": {
+    "path": "docs/literature/fuma-ld-core/VALIDATION.json",
+    "bytes": 51768,
+    "sha256": "cf676aa3196b144cd744970cf4faa3fa35857ec1a16d884386b7df81a44b2d51"
+  },
+  "unchanged_prior_packaged_classes": 17657,
+  "changed_prior_packaged_classes": [
+    "org/jlinalg/cli/FumaLociCli$Data.class",
+    "org/jlinalg/cli/FumaLociCli.class",
+    "org/jlinalg/cli/FumaToolsCli.class",
+    "org/jlinalg/cli/FumaWorkflowCli$Runner.class",
+    "org/jlinalg/cli/FumaWorkflowCli.class"
+  ],
+  "new_packaged_classes": [
+    "org/jlinalg/cli/FumaReferenceCli$1.class",
+    "org/jlinalg/cli/FumaReferenceCli$Admission.class",
+    "org/jlinalg/cli/FumaReferenceCli$BudgetOutput$1.class",
+    "org/jlinalg/cli/FumaReferenceCli$BudgetOutput.class",
+    "org/jlinalg/cli/FumaReferenceCli$Budgets.class",
+    "org/jlinalg/cli/FumaReferenceCli$CapturedRows.class",
+    "org/jlinalg/cli/FumaReferenceCli$CompareOutput$1.class",
+    "org/jlinalg/cli/FumaReferenceCli$CompareOutput.class",
+    "org/jlinalg/cli/FumaReferenceCli$Outputs.class",
+    "org/jlinalg/cli/FumaReferenceCli$Panel.class",
+    "org/jlinalg/cli/FumaReferenceCli.class",
+    "org/jlinalg/genetics/FumaReferencePreparation$Assessment.class",
+    "org/jlinalg/genetics/FumaReferencePreparation$Cached.class",
+    "org/jlinalg/genetics/FumaReferencePreparation$Disposition.class",
+    "org/jlinalg/genetics/FumaReferencePreparation$Kept.class",
+    "org/jlinalg/genetics/FumaReferencePreparation$Limits.class",
+    "org/jlinalg/genetics/FumaReferencePreparation$Options.class",
+    "org/jlinalg/genetics/FumaReferencePreparation$Result.class",
+    "org/jlinalg/genetics/FumaReferencePreparation$Rows.class",
+    "org/jlinalg/genetics/FumaReferencePreparation$Sink.class",
+    "org/jlinalg/genetics/FumaReferencePreparation.class"
+  ],
+  "owned_classes": {
+    "org/jlinalg/cli/FumaLociCli$Data.class": {
+      "bytes": 3196,
+      "sha256": "afe1bb2ba74694e3e076267cb41e26c696034343e612c193ae745784880e5c4b"
+    },
+    "org/jlinalg/cli/FumaLociCli.class": {
+      "bytes": 34766,
+      "sha256": "473fcf2aba778891c1db4f965782a24c902eec41ea0c9ec952c97d2c7d7ed0f2"
+    },
+    "org/jlinalg/cli/FumaReferenceCli$1.class": {
+      "bytes": 4695,
+      "sha256": "a52799e882700afba5e956bdaa96c1d5dfe59dbc3cc6a78dc8e0ba82ab872505"
+    },
+    "org/jlinalg/cli/FumaReferenceCli$Admission.class": {
+      "bytes": 2577,
+      "sha256": "38deb0530d91cde43c7e8647f5d6b778a179ad47df24c36ca1df6a28d2e9b606"
+    },
+    "org/jlinalg/cli/FumaReferenceCli$BudgetOutput$1.class": {
+      "bytes": 1571,
+      "sha256": "6637aa29a3fdfb0f434621b3836846e18347d9666e1aef4d3f7a6d0aee6bb544"
+    },
+    "org/jlinalg/cli/FumaReferenceCli$BudgetOutput.class": {
+      "bytes": 1498,
+      "sha256": "2a63f7a4ae0390144b3003e4423ad4810bf301d36145ddd4a775e36473a979a8"
+    },
+    "org/jlinalg/cli/FumaReferenceCli$Budgets.class": {
+      "bytes": 2490,
+      "sha256": "02b87d4e995481fd90fdd5bed6ae8cdb6351a88479f8fe1cab6df5dcef33be08"
+    },
+    "org/jlinalg/cli/FumaReferenceCli$CapturedRows.class": {
+      "bytes": 3820,
+      "sha256": "4e36677cd8b7a6bac8ea7d3d758c70228fca401d7f4fc186cda27f9fc1a264f9"
+    },
+    "org/jlinalg/cli/FumaReferenceCli$CompareOutput$1.class": {
+      "bytes": 2083,
+      "sha256": "51b07b59747535c5d7402a121b62c642c32571136642f999587038f54ddf39af"
+    },
+    "org/jlinalg/cli/FumaReferenceCli$CompareOutput.class": {
+      "bytes": 1416,
+      "sha256": "1631efbd75b58943a86d3de36ef0c3c8e9fcd122c4bafdf78db8efbd03c43de6"
+    },
+    "org/jlinalg/cli/FumaReferenceCli$Outputs.class": {
+      "bytes": 417,
+      "sha256": "f212f47fda9b6be6a7243e3966b7d5c9393e58ef0e075c52867a84282a59f2ed"
+    },
+    "org/jlinalg/cli/FumaReferenceCli$Panel.class": {
+      "bytes": 3510,
+      "sha256": "1a3b658683acc06074feaf8e909c9b08d431a72ad05ea73b800af7cf317ade6d"
+    },
+    "org/jlinalg/cli/FumaReferenceCli.class": {
+      "bytes": 42429,
+      "sha256": "53a6e18012d6ff10b52e7fd84b56b25f48751370f8a1a54dd2fca58bdd3a17db"
+    },
+    "org/jlinalg/cli/FumaToolsCli.class": {
+      "bytes": 28446,
+      "sha256": "ff209bb9679cbb744e24c8664e5e74eee382ad8827bbf53c9a811dc72db31719"
+    },
+    "org/jlinalg/cli/FumaWorkflowCli$Runner.class": {
+      "bytes": 20366,
+      "sha256": "c0d1254e2d64711caca9081150627d6ba78845868f2006472375cc3fcdb0bede"
+    },
+    "org/jlinalg/cli/FumaWorkflowCli.class": {
+      "bytes": 27807,
+      "sha256": "8ebece28ba927fdd235fe50547483ef1fdaea389eaeb9bf40daf64813ceca819"
+    },
+    "org/jlinalg/genetics/FumaReferencePreparation$Assessment.class": {
+      "bytes": 2970,
+      "sha256": "f76b8d8f9f59203078e7994fe2d2986d5413f1a114ccd6fe0a1e8b4a6248f048"
+    },
+    "org/jlinalg/genetics/FumaReferencePreparation$Cached.class": {
+      "bytes": 2274,
+      "sha256": "9ba51eff6be404c8942c6e44aac986b4eb1e4b4585a34e83fcb0cdf94393dc46"
+    },
+    "org/jlinalg/genetics/FumaReferencePreparation$Disposition.class": {
+      "bytes": 1639,
+      "sha256": "d4adf22736ae8e84e197e941fbdab0b4d5cf8dbd379f66b71730ba5ce189b8d0"
+    },
+    "org/jlinalg/genetics/FumaReferencePreparation$Kept.class": {
+      "bytes": 2356,
+      "sha256": "9562315cabc3a468c5d7f8808c81862e4f9899cc3f54d6ea6a7e4cdf8ad2d0bb"
+    },
+    "org/jlinalg/genetics/FumaReferencePreparation$Limits.class": {
+      "bytes": 2429,
+      "sha256": "fc7504dfa5eed20ef6a8a17a20f7ceff2dd64cb1ff1bb8c0e26490759d523870"
+    },
+    "org/jlinalg/genetics/FumaReferencePreparation$Options.class": {
+      "bytes": 2430,
+      "sha256": "682501b28e5e2ff96bd654dd6cbf7ba6183e4baf8d61f22832f0aabff1a8ca51"
+    },
+    "org/jlinalg/genetics/FumaReferencePreparation$Result.class": {
+      "bytes": 3571,
+      "sha256": "49b198610c4271bf1cc0d7010e525a21fef36b4e15ce861814f60b95c80ff398"
+    },
+    "org/jlinalg/genetics/FumaReferencePreparation$Rows.class": {
+      "bytes": 563,
+      "sha256": "5ee29229578b2032ef5250bfbf9c8376fb967abe46aec016f2ad615dcb1b4b05"
+    },
+    "org/jlinalg/genetics/FumaReferencePreparation$Sink.class": {
+      "bytes": 1155,
+      "sha256": "00b146ecec59c4c97d635aecf49c5fe2a34cc4b7606369eb7555074c191a66ea"
+    },
+    "org/jlinalg/genetics/FumaReferencePreparation.class": {
+      "bytes": 15578,
+      "sha256": "24a7af53bcbcb373d55a149b9eac6ef0d82179231a4f4970a1b6a717039dab2a"
+    }
+  },
+  "canonical_executable_unchanged": {
+    "bytes": 162107844,
+    "sha256": "bd1a3b2448d7016ae4ded3f30a6c5ae92e05a0078ae688f4b93d046cc355eeb2"
+  },
+  "archive": {
+    "path": "controls.zip",
+    "bytes": 803820,
+    "sha256": "f85a98c46f9d8032f9794343a740b22565b08e8049e24bc736f310ab79217b98",
+    "entries": 241
+  },
+  "archive_files": {
+    "evidence/example-classes-1/CreateInputs.class": {
+      "bytes": 3105,
+      "sha256": "3e4da5ed3d28e47f07d4502169cc5c094530f4ec17b52441136e1ceffe99b5ae"
+    },
+    "evidence/example-commands-1/COMPLETED.json": {
+      "bytes": 25393,
+      "sha256": "5fa0eb6f17576fb0d1d78d52ad3b7ced8973a2716624999a0b23757e8cdc897c"
+    },
+    "evidence/example-commands-1/create-inputs.json": {
+      "bytes": 443,
+      "sha256": "90cd72739357e9e493488539ae37d8d0cd0d738a696e3c7fa89087fcc3838e0e"
+    },
+    "evidence/example-commands-1/create-inputs.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "evidence/example-commands-1/create-inputs.stdout": {
+      "bytes": 147,
+      "sha256": "2ede0bb1d8049af294be8896789fb7d12a75ccba4ecf70ed9ed532242cd92a77"
+    },
+    "evidence/example-commands-1/loci.json": {
+      "bytes": 974,
+      "sha256": "6831e515eb70e138890689eac223542ee3d791b45f0d655e29862cbbab6bb8d6"
+    },
+    "evidence/example-commands-1/loci.stderr": {
+      "bytes": 153,
+      "sha256": "f39572ec7594d3f1e58e7f7c660f0291bed95d0c78dcf43e3cc96f04a69ff17c"
+    },
+    "evidence/example-commands-1/loci.stdout": {
+      "bytes": 177,
+      "sha256": "53e7736d80f0688463c6a27a8943eeb79cad9d06faacde9914c58cbef2ae06e5"
+    },
+    "evidence/example-commands-1/portable-replay.json": {
+      "bytes": 710,
+      "sha256": "776641e7e49fa8ed2283a85af6f30eb944bf9b662a5a9a306d021d66292035dc"
+    },
+    "evidence/example-commands-1/portable-replay.stderr": {
+      "bytes": 164,
+      "sha256": "95390619434cdb6d2422c4802b395e5b264bc72d0ae2b768ced1b9644055cae0"
+    },
+    "evidence/example-commands-1/portable-replay.stdout": {
+      "bytes": 178,
+      "sha256": "f8ebbdc5213827441eccafbb2b80d6461b6b8202dfdd05b89759bc046143d3b7"
+    },
+    "evidence/example-commands-1/replay.json": {
+      "bytes": 709,
+      "sha256": "712b3eab9795f5914eed494403425cc7e2d63c6adc4265f17abd50e2f5951955"
+    },
+    "evidence/example-commands-1/replay.stderr": {
+      "bytes": 155,
+      "sha256": "1f01326084001d86c8c55f04563d7b77ac6a75dfb4da1910dc607736f30b8322"
+    },
+    "evidence/example-commands-1/replay.stdout": {
+      "bytes": 169,
+      "sha256": "83d51b844c1922194970c1a25e05436d0f2ea8c6699e2d4bb157e93a4d8c1765"
+    },
+    "evidence/example-commands-1/standalone-prepare.json": {
+      "bytes": 1325,
+      "sha256": "328f5ddc375b76d286d10dbe2ea5221fe72e6007a6ea3f24a4f84052caad4f4c"
+    },
+    "evidence/example-commands-1/standalone-prepare.stderr": {
+      "bytes": 159,
+      "sha256": "990ff217239ea6d24738b3b5d1a2d1a1a10edb69e70630c01777e9ae9cb7bf84"
+    },
+    "evidence/example-commands-1/standalone-prepare.stdout": {
+      "bytes": 173,
+      "sha256": "9b319f5cd806f5f06e3416df7aff3615aeec318a4e5c537e1c072c0d44486ee9"
+    },
+    "evidence/example-commands-1/work/input/gwas.tsv": {
+      "bytes": 88,
+      "sha256": "bf823aa995225c729129c226969b350af85739df385ae47b3e73f7265d5dab80"
+    },
+    "evidence/example-commands-1/work/input/panel.bed": {
+      "bytes": 15,
+      "sha256": "6998f6b7ed5ba6090189e74331b81c7ed3f1beabcd98bf2fa23dc1facbf581a0"
+    },
+    "evidence/example-commands-1/work/input/panel.bim": {
+      "bytes": 109,
+      "sha256": "0cbb449994cc2e4e051ec51c3ee75681b0133d3a78a4ae0b5bb5216568357e0e"
+    },
+    "evidence/example-commands-1/work/input/panel.fam": {
+      "bytes": 65,
+      "sha256": "a0e3758de2923cf5bb1d8a138e7627d598b479271b4f028301537c5fdf86330f"
+    },
+    "evidence/example-commands-1/work/input/samples.tsv": {
+      "bytes": 28,
+      "sha256": "3bf8e5da4af2d31ca4b4d3470bd364b77b269d8112b91a484d2d513ca4e63f6c"
+    },
+    "evidence/example-commands-1/work/input/variants.tsv": {
+      "bytes": 35,
+      "sha256": "0fbbe05d0c901234458670811d2e74b174448cf9c424280137850f3c680edab1"
+    },
+    "evidence/example-commands-1/work/loci-1.config.yaml": {
+      "bytes": 752,
+      "sha256": "57d3141d5463a8b2a0796269e06e9dcf928ce061936ffe5dc3ba23b283c558f2"
+    },
+    "evidence/example-commands-1/work/loci-1/WARNINGS.md": {
+      "bytes": 1982,
+      "sha256": "a936f035b7e05d1bc86a20f7d1319b32f51474abcdb798914c81ff79575493f5"
+    },
+    "evidence/example-commands-1/work/loci-1/analysis-status.json": {
+      "bytes": 44,
+      "sha256": "fd45555c4ada96814c2ace5aceab8ef063d3c67f0e6d6813dc017ed2e2d06161"
+    },
+    "evidence/example-commands-1/work/loci-1/candidates.tsv": {
+      "bytes": 277,
+      "sha256": "69328978e79c88effc66bdf5930c7640245d8e581a42b3903d28a0dcf9a6ff6c"
+    },
+    "evidence/example-commands-1/work/loci-1/gwas-disposition.tsv": {
+      "bytes": 141,
+      "sha256": "8923ed0e8621ebd8b90f0e63a84c3ca9544de5e20f981b11b6259d667d24cfa2"
+    },
+    "evidence/example-commands-1/work/loci-1/independent.tsv": {
+      "bytes": 248,
+      "sha256": "4d54913a5bc5941713c9d65cdc2ede356864eaeb2bb86c3d8907e3604d8eae5f"
+    },
+    "evidence/example-commands-1/work/loci-1/input-gwas.tsv": {
+      "bytes": 88,
+      "sha256": "bf823aa995225c729129c226969b350af85739df385ae47b3e73f7265d5dab80"
+    },
+    "evidence/example-commands-1/work/loci-1/ld-memberships.tsv": {
+      "bytes": 108,
+      "sha256": "f6ed31e0caf00dd07c21131b805f086f457ed700b8b3e8ada414747b8270a3aa"
+    },
+    "evidence/example-commands-1/work/loci-1/leads.tsv": {
+      "bytes": 146,
+      "sha256": "edc727997ee8f983583b082a0e43ad6797792c075dc0a71d4dbf2c8d44e376bc"
+    },
+    "evidence/example-commands-1/work/loci-1/loci.tsv": {
+      "bytes": 261,
+      "sha256": "dd869b714de56922f5ff3f8c432cbc474e6b6fc239938d9fa555afab5744a778"
+    },
+    "evidence/example-commands-1/work/loci-1/manifest.yaml": {
+      "bytes": 4231,
+      "sha256": "e43491573761fc578cd3dd10a733ebb9aa2d3af33cb9adf822eec03d9e074aea"
+    },
+    "evidence/example-commands-1/work/loci-1/session.json": {
+      "bytes": 5738,
+      "sha256": "034a87e69beb83be777a2be114c3eff9a5f5d58c9e2698f5a92f8268c191ce58"
+    },
+    "evidence/example-commands-1/work/portable-capture/genotypes.bin": {
+      "bytes": 22,
+      "sha256": "7cb3f6f7e1f83ad7e66820a0a4c2f7888f775ec650c0be9fbfb4ddb305bcc2c0"
+    },
+    "evidence/example-commands-1/work/portable-capture/ld-audit.tsv": {
+      "bytes": 139,
+      "sha256": "c985d522f0501be5de31b7eda5c4a24a02542dd644ac704c36fe663f1dd3ee8e"
+    },
+    "evidence/example-commands-1/work/portable-capture/ld.tsv": {
+      "bytes": 48,
+      "sha256": "1d539fb0ccb3b0d84398f554d0dcc703e64d9030e74af305369d8afd4a6f93df"
+    },
+    "evidence/example-commands-1/work/portable-capture/reference-bundle.json": {
+      "bytes": 1323,
+      "sha256": "de5fede59f3d434a864b6db2e863bd45402a9be374137b0bba352a5534cdd37e"
+    },
+    "evidence/example-commands-1/work/portable-capture/reference.tsv": {
+      "bytes": 79,
+      "sha256": "cc6daa362e65a9f2713689ba453d826c22cfd9b1c3c201560fa88927069bf08a"
+    },
+    "evidence/example-commands-1/work/portable-capture/sample-selection.tsv": {
+      "bytes": 169,
+      "sha256": "566dff16bc2d476aaeabd809f0095f52f3dfb20fc13a2cddc3e3333b20b9e0fe"
+    },
+    "evidence/example-commands-1/work/portable-capture/samples.tsv": {
+      "bytes": 64,
+      "sha256": "0cb4c4138c0cf17669215c70dbdfa8e58ae8606a8e96f86347b06bef85f4faa6"
+    },
+    "evidence/example-commands-1/work/portable-capture/variant-audit.tsv": {
+      "bytes": 453,
+      "sha256": "495afee0c59ff79d18d024f498e25adf68252752e2cc22a60d8dc54e2731b457"
+    },
+    "evidence/example-commands-1/work/portable-capture/variants.tsv": {
+      "bytes": 134,
+      "sha256": "78910cf85402a9ebe8c9b3a93a4e3090afc13440b6cda439174aa84b4a5b6a2d"
+    },
+    "evidence/example-commands-1/work/portable-replay-1.config.yaml": {
+      "bytes": 508,
+      "sha256": "e1e92ea561fa6c0e2f9d0debb47a8ec40f2d624913729b6bdb02a9098fa141ad"
+    },
+    "evidence/example-commands-1/work/portable-replay-1/WARNINGS.md": {
+      "bytes": 1363,
+      "sha256": "46a4adc58a314e1f4cbee6e58e09190c7121d4bf5850a4c8d398c35dd7309f9e"
+    },
+    "evidence/example-commands-1/work/portable-replay-1/analysis-status.json": {
+      "bytes": 44,
+      "sha256": "fd45555c4ada96814c2ace5aceab8ef063d3c67f0e6d6813dc017ed2e2d06161"
+    },
+    "evidence/example-commands-1/work/portable-replay-1/genotypes.bin": {
+      "bytes": 22,
+      "sha256": "7cb3f6f7e1f83ad7e66820a0a4c2f7888f775ec650c0be9fbfb4ddb305bcc2c0"
+    },
+    "evidence/example-commands-1/work/portable-replay-1/ld-audit.tsv": {
+      "bytes": 139,
+      "sha256": "c985d522f0501be5de31b7eda5c4a24a02542dd644ac704c36fe663f1dd3ee8e"
+    },
+    "evidence/example-commands-1/work/portable-replay-1/ld.tsv": {
+      "bytes": 48,
+      "sha256": "1d539fb0ccb3b0d84398f554d0dcc703e64d9030e74af305369d8afd4a6f93df"
+    },
+    "evidence/example-commands-1/work/portable-replay-1/manifest.yaml": {
+      "bytes": 3546,
+      "sha256": "cad28b8d3d5347cbfdb933e0dd7e2ce087e03cd4a5d5dc5376301999182d1b4b"
+    },
+    "evidence/example-commands-1/work/portable-replay-1/reference-bundle.json": {
+      "bytes": 1323,
+      "sha256": "313a2b683a4465e670953d85cb735128fea42ad6fa3a958010a4f5ff4b901aaf"
+    },
+    "evidence/example-commands-1/work/portable-replay-1/reference.tsv": {
+      "bytes": 79,
+      "sha256": "cc6daa362e65a9f2713689ba453d826c22cfd9b1c3c201560fa88927069bf08a"
+    },
+    "evidence/example-commands-1/work/portable-replay-1/sample-selection.tsv": {
+      "bytes": 169,
+      "sha256": "566dff16bc2d476aaeabd809f0095f52f3dfb20fc13a2cddc3e3333b20b9e0fe"
+    },
+    "evidence/example-commands-1/work/portable-replay-1/samples.tsv": {
+      "bytes": 64,
+      "sha256": "0cb4c4138c0cf17669215c70dbdfa8e58ae8606a8e96f86347b06bef85f4faa6"
+    },
+    "evidence/example-commands-1/work/portable-replay-1/session.json": {
+      "bytes": 4098,
+      "sha256": "c546fb435bac208978c032287621253e2678fb036da6cbac6a041458e1d0d31c"
+    },
+    "evidence/example-commands-1/work/portable-replay-1/variant-audit.tsv": {
+      "bytes": 453,
+      "sha256": "495afee0c59ff79d18d024f498e25adf68252752e2cc22a60d8dc54e2731b457"
+    },
+    "evidence/example-commands-1/work/portable-replay-1/variants.tsv": {
+      "bytes": 134,
+      "sha256": "78910cf85402a9ebe8c9b3a93a4e3090afc13440b6cda439174aa84b4a5b6a2d"
+    },
+    "evidence/example-commands-1/work/replay-1.config.yaml": {
+      "bytes": 515,
+      "sha256": "e2a3a740c80e65f432cc7c79784d22f9d15dc587019bf2f3403aab1ac987c9d1"
+    },
+    "evidence/example-commands-1/work/replay-1/WARNINGS.md": {
+      "bytes": 1363,
+      "sha256": "46a4adc58a314e1f4cbee6e58e09190c7121d4bf5850a4c8d398c35dd7309f9e"
+    },
+    "evidence/example-commands-1/work/replay-1/analysis-status.json": {
+      "bytes": 44,
+      "sha256": "fd45555c4ada96814c2ace5aceab8ef063d3c67f0e6d6813dc017ed2e2d06161"
+    },
+    "evidence/example-commands-1/work/replay-1/genotypes.bin": {
+      "bytes": 22,
+      "sha256": "7cb3f6f7e1f83ad7e66820a0a4c2f7888f775ec650c0be9fbfb4ddb305bcc2c0"
+    },
+    "evidence/example-commands-1/work/replay-1/ld-audit.tsv": {
+      "bytes": 139,
+      "sha256": "c985d522f0501be5de31b7eda5c4a24a02542dd644ac704c36fe663f1dd3ee8e"
+    },
+    "evidence/example-commands-1/work/replay-1/ld.tsv": {
+      "bytes": 48,
+      "sha256": "1d539fb0ccb3b0d84398f554d0dcc703e64d9030e74af305369d8afd4a6f93df"
+    },
+    "evidence/example-commands-1/work/replay-1/manifest.yaml": {
+      "bytes": 3697,
+      "sha256": "49e44b7b2933f32290919c9b8650aa5b589a40093f1db533f22ad70843182bf8"
+    },
+    "evidence/example-commands-1/work/replay-1/reference-bundle.json": {
+      "bytes": 1323,
+      "sha256": "8d8fb3bd604a13f871c50fd1a6ecf83edb0fcdf92a01e510e0b4074a6cf2499b"
+    },
+    "evidence/example-commands-1/work/replay-1/reference.tsv": {
+      "bytes": 79,
+      "sha256": "cc6daa362e65a9f2713689ba453d826c22cfd9b1c3c201560fa88927069bf08a"
+    },
+    "evidence/example-commands-1/work/replay-1/sample-selection.tsv": {
+      "bytes": 169,
+      "sha256": "566dff16bc2d476aaeabd809f0095f52f3dfb20fc13a2cddc3e3333b20b9e0fe"
+    },
+    "evidence/example-commands-1/work/replay-1/samples.tsv": {
+      "bytes": 64,
+      "sha256": "0cb4c4138c0cf17669215c70dbdfa8e58ae8606a8e96f86347b06bef85f4faa6"
+    },
+    "evidence/example-commands-1/work/replay-1/session.json": {
+      "bytes": 4251,
+      "sha256": "b07d866153fe0319465ba7cd1965225f35739e19cd384eef2b10a82b0abb72f9"
+    },
+    "evidence/example-commands-1/work/replay-1/variant-audit.tsv": {
+      "bytes": 453,
+      "sha256": "495afee0c59ff79d18d024f498e25adf68252752e2cc22a60d8dc54e2731b457"
+    },
+    "evidence/example-commands-1/work/replay-1/variants.tsv": {
+      "bytes": 134,
+      "sha256": "78910cf85402a9ebe8c9b3a93a4e3090afc13440b6cda439174aa84b4a5b6a2d"
+    },
+    "evidence/example-commands-1/work/standalone-1.config.yaml": {
+      "bytes": 999,
+      "sha256": "b7b39381ef787c7a3c1945e722d47472ff36d83f4b1fa52a45420c55e0cd6440"
+    },
+    "evidence/example-commands-1/work/standalone-1/WARNINGS.md": {
+      "bytes": 1363,
+      "sha256": "46a4adc58a314e1f4cbee6e58e09190c7121d4bf5850a4c8d398c35dd7309f9e"
+    },
+    "evidence/example-commands-1/work/standalone-1/analysis-status.json": {
+      "bytes": 44,
+      "sha256": "fd45555c4ada96814c2ace5aceab8ef063d3c67f0e6d6813dc017ed2e2d06161"
+    },
+    "evidence/example-commands-1/work/standalone-1/genotypes.bin": {
+      "bytes": 22,
+      "sha256": "7cb3f6f7e1f83ad7e66820a0a4c2f7888f775ec650c0be9fbfb4ddb305bcc2c0"
+    },
+    "evidence/example-commands-1/work/standalone-1/ld-audit.tsv": {
+      "bytes": 139,
+      "sha256": "c985d522f0501be5de31b7eda5c4a24a02542dd644ac704c36fe663f1dd3ee8e"
+    },
+    "evidence/example-commands-1/work/standalone-1/ld.tsv": {
+      "bytes": 48,
+      "sha256": "1d539fb0ccb3b0d84398f554d0dcc703e64d9030e74af305369d8afd4a6f93df"
+    },
+    "evidence/example-commands-1/work/standalone-1/manifest.yaml": {
+      "bytes": 3064,
+      "sha256": "52c67f31d6892e0eb79f0845b9a0dcab63bf71c57031e96a44e8c13a964c59ff"
+    },
+    "evidence/example-commands-1/work/standalone-1/reference-bundle.json": {
+      "bytes": 1322,
+      "sha256": "b61b0280f246b633af1bc143c70ff8bf7496b198d55449ec2c867734337c9ba1"
+    },
+    "evidence/example-commands-1/work/standalone-1/reference.tsv": {
+      "bytes": 79,
+      "sha256": "cc6daa362e65a9f2713689ba453d826c22cfd9b1c3c201560fa88927069bf08a"
+    },
+    "evidence/example-commands-1/work/standalone-1/sample-selection.tsv": {
+      "bytes": 169,
+      "sha256": "566dff16bc2d476aaeabd809f0095f52f3dfb20fc13a2cddc3e3333b20b9e0fe"
+    },
+    "evidence/example-commands-1/work/standalone-1/samples.tsv": {
+      "bytes": 64,
+      "sha256": "0cb4c4138c0cf17669215c70dbdfa8e58ae8606a8e96f86347b06bef85f4faa6"
+    },
+    "evidence/example-commands-1/work/standalone-1/session.json": {
+      "bytes": 2955,
+      "sha256": "34aece0350badfba1708f50bdd9c6666bba33e069f7bed7e68b4b77f63dde111"
+    },
+    "evidence/example-commands-1/work/standalone-1/variant-audit.tsv": {
+      "bytes": 453,
+      "sha256": "495afee0c59ff79d18d024f498e25adf68252752e2cc22a60d8dc54e2731b457"
+    },
+    "evidence/example-commands-1/work/standalone-1/variants.tsv": {
+      "bytes": 134,
+      "sha256": "78910cf85402a9ebe8c9b3a93a4e3090afc13440b6cda439174aa84b4a5b6a2d"
+    },
+    "evidence/example-commands-1/work/workflow-1.config.yaml": {
+      "bytes": 505,
+      "sha256": "371b4d2bbe6d9cbd14cf3db556c1427ce0f2cd2ada1f43d018a0f23b13f9289a"
+    },
+    "evidence/example-commands-1/work/workflow-1/WARNINGS.md": {
+      "bytes": 1565,
+      "sha256": "aa5ba8839fbb438aa7e758694a44a67fd6eb71c18d945d1e484bfff3dceecfab"
+    },
+    "evidence/example-commands-1/work/workflow-1/analysis-status.json": {
+      "bytes": 58,
+      "sha256": "4c031ee5e79509611244a7b2aa4fd81d64f299b5486e311665d6e64a665bc8fd"
+    },
+    "evidence/example-commands-1/work/workflow-1/loci/WARNINGS.md": {
+      "bytes": 1982,
+      "sha256": "a936f035b7e05d1bc86a20f7d1319b32f51474abcdb798914c81ff79575493f5"
+    },
+    "evidence/example-commands-1/work/workflow-1/loci/analysis-status.json": {
+      "bytes": 44,
+      "sha256": "fd45555c4ada96814c2ace5aceab8ef063d3c67f0e6d6813dc017ed2e2d06161"
+    },
+    "evidence/example-commands-1/work/workflow-1/loci/candidates.tsv": {
+      "bytes": 277,
+      "sha256": "69328978e79c88effc66bdf5930c7640245d8e581a42b3903d28a0dcf9a6ff6c"
+    },
+    "evidence/example-commands-1/work/workflow-1/loci/gwas-disposition.tsv": {
+      "bytes": 141,
+      "sha256": "8923ed0e8621ebd8b90f0e63a84c3ca9544de5e20f981b11b6259d667d24cfa2"
+    },
+    "evidence/example-commands-1/work/workflow-1/loci/independent.tsv": {
+      "bytes": 248,
+      "sha256": "4d54913a5bc5941713c9d65cdc2ede356864eaeb2bb86c3d8907e3604d8eae5f"
+    },
+    "evidence/example-commands-1/work/workflow-1/loci/input-gwas.tsv": {
+      "bytes": 88,
+      "sha256": "bf823aa995225c729129c226969b350af85739df385ae47b3e73f7265d5dab80"
+    },
+    "evidence/example-commands-1/work/workflow-1/loci/ld-memberships.tsv": {
+      "bytes": 108,
+      "sha256": "f6ed31e0caf00dd07c21131b805f086f457ed700b8b3e8ada414747b8270a3aa"
+    },
+    "evidence/example-commands-1/work/workflow-1/loci/leads.tsv": {
+      "bytes": 146,
+      "sha256": "edc727997ee8f983583b082a0e43ad6797792c075dc0a71d4dbf2c8d44e376bc"
+    },
+    "evidence/example-commands-1/work/workflow-1/loci/loci.tsv": {
+      "bytes": 261,
+      "sha256": "dd869b714de56922f5ff3f8c432cbc474e6b6fc239938d9fa555afab5744a778"
+    },
+    "evidence/example-commands-1/work/workflow-1/loci/manifest.yaml": {
+      "bytes": 4174,
+      "sha256": "c900281b918643b5dbce07a5af91fefb1b503acaf525555142730f1c32e68ea4"
+    },
+    "evidence/example-commands-1/work/workflow-1/loci/session.json": {
+      "bytes": 5686,
+      "sha256": "b3615ad938f39a823a07fe138f145fd75975c69aa4d7afc1e1d9a0feba4973c7"
+    },
+    "evidence/example-commands-1/work/workflow-1/logs/loci.stderr": {
+      "bytes": 162,
+      "sha256": "8934e4703b8b17b97727d9b4277df424f54ef9f1460e9f9050dd517de7015c1f"
+    },
+    "evidence/example-commands-1/work/workflow-1/logs/loci.stdout": {
+      "bytes": 186,
+      "sha256": "79cc8bc5fc8001d141b834bee87caf6a99c6884427853cc3f5bf48897b85f050"
+    },
+    "evidence/example-commands-1/work/workflow-1/logs/reference-preparation.stderr": {
+      "bytes": 179,
+      "sha256": "948dfea8b78adb3d03e8e3f21c6eef126b4d489333981e90ce88888c434189ce"
+    },
+    "evidence/example-commands-1/work/workflow-1/logs/reference-preparation.stdout": {
+      "bytes": 193,
+      "sha256": "e06489bac14a5383d5204b4fec2990d4f43bcb77bf1e16039e0a70afa2d8ce6e"
+    },
+    "evidence/example-commands-1/work/workflow-1/manifest.json": {
+      "bytes": 11351,
+      "sha256": "7322d6510764c0838ac4ff16a918c6ed63ef54c96fbc3f1c11bddeb2745dc982"
+    },
+    "evidence/example-commands-1/work/workflow-1/reference-preparation/WARNINGS.md": {
+      "bytes": 1363,
+      "sha256": "46a4adc58a314e1f4cbee6e58e09190c7121d4bf5850a4c8d398c35dd7309f9e"
+    },
+    "evidence/example-commands-1/work/workflow-1/reference-preparation/analysis-status.json": {
+      "bytes": 44,
+      "sha256": "fd45555c4ada96814c2ace5aceab8ef063d3c67f0e6d6813dc017ed2e2d06161"
+    },
+    "evidence/example-commands-1/work/workflow-1/reference-preparation/genotypes.bin": {
+      "bytes": 22,
+      "sha256": "7cb3f6f7e1f83ad7e66820a0a4c2f7888f775ec650c0be9fbfb4ddb305bcc2c0"
+    },
+    "evidence/example-commands-1/work/workflow-1/reference-preparation/ld-audit.tsv": {
+      "bytes": 139,
+      "sha256": "c985d522f0501be5de31b7eda5c4a24a02542dd644ac704c36fe663f1dd3ee8e"
+    },
+    "evidence/example-commands-1/work/workflow-1/reference-preparation/ld.tsv": {
+      "bytes": 48,
+      "sha256": "1d539fb0ccb3b0d84398f554d0dcc703e64d9030e74af305369d8afd4a6f93df"
+    },
+    "evidence/example-commands-1/work/workflow-1/reference-preparation/manifest.yaml": {
+      "bytes": 3085,
+      "sha256": "991f1444e74b2c633838e19d36633e49b1b669262f787ac4d4c5db8eb2904e5a"
+    },
+    "evidence/example-commands-1/work/workflow-1/reference-preparation/reference-bundle.json": {
+      "bytes": 1323,
+      "sha256": "de5fede59f3d434a864b6db2e863bd45402a9be374137b0bba352a5534cdd37e"
+    },
+    "evidence/example-commands-1/work/workflow-1/reference-preparation/reference.tsv": {
+      "bytes": 79,
+      "sha256": "cc6daa362e65a9f2713689ba453d826c22cfd9b1c3c201560fa88927069bf08a"
+    },
+    "evidence/example-commands-1/work/workflow-1/reference-preparation/sample-selection.tsv": {
+      "bytes": 169,
+      "sha256": "566dff16bc2d476aaeabd809f0095f52f3dfb20fc13a2cddc3e3333b20b9e0fe"
+    },
+    "evidence/example-commands-1/work/workflow-1/reference-preparation/samples.tsv": {
+      "bytes": 64,
+      "sha256": "0cb4c4138c0cf17669215c70dbdfa8e58ae8606a8e96f86347b06bef85f4faa6"
+    },
+    "evidence/example-commands-1/work/workflow-1/reference-preparation/session.json": {
+      "bytes": 2956,
+      "sha256": "b1549a5db72c29e4336b5b32765fbfd552c6a98a4f7279902f73772a78ff14ad"
+    },
+    "evidence/example-commands-1/work/workflow-1/reference-preparation/variant-audit.tsv": {
+      "bytes": 453,
+      "sha256": "495afee0c59ff79d18d024f498e25adf68252752e2cc22a60d8dc54e2731b457"
+    },
+    "evidence/example-commands-1/work/workflow-1/reference-preparation/variants.tsv": {
+      "bytes": 134,
+      "sha256": "78910cf85402a9ebe8c9b3a93a4e3090afc13440b6cda439174aa84b4a5b6a2d"
+    },
+    "evidence/example-commands-1/work/workflow-1/workflow-config.json": {
+      "bytes": 782,
+      "sha256": "c5e14268fc749ec483af488c4914cae18bf6ab8c3c34de81dca4eaedbc1e0400"
+    },
+    "evidence/example-commands-1/work/workflow-1/workflow-journal.json": {
+      "bytes": 666,
+      "sha256": "1561b36df4e1090adf5e9734a3a6432ee6fad79c26b2b596d891501f96706b09"
+    },
+    "evidence/example-commands-1/work/workflow.json": {
+      "bytes": 782,
+      "sha256": "c5e14268fc749ec483af488c4914cae18bf6ab8c3c34de81dca4eaedbc1e0400"
+    },
+    "evidence/example-commands-1/workflow.json": {
+      "bytes": 700,
+      "sha256": "f3da260995383d70625b30bc20628384992a38a187868a4f0f7586fc5882999e"
+    },
+    "evidence/example-commands-1/workflow.stderr": {
+      "bytes": 157,
+      "sha256": "39205594def760440ef2aac22d021ddc36a81cc8f75392e4d66f80029db2268c"
+    },
+    "evidence/example-commands-1/workflow.stdout": {
+      "bytes": 163,
+      "sha256": "ea3698ed86efb901f2959f02227869ea5e07aacd6b6a66f632bbbabc06065c90"
+    },
+    "evidence/family-tests-3-results/TEST-org.jlinalg.cli.FumaAnnotationCliTest.xml": {
+      "bytes": 4051,
+      "sha256": "192c094cbaf2ea1744c58d15a895da8ec66615779de6813fb0dd6d460a5f7622"
+    },
+    "evidence/family-tests-3-results/TEST-org.jlinalg.cli.FumaAssociationCliTest.xml": {
+      "bytes": 4313,
+      "sha256": "eedd790459ee2568dd4c51b15d873e356f079eb0c6bbd61939fadde4fa1bd1b6"
+    },
+    "evidence/family-tests-3-results/TEST-org.jlinalg.cli.FumaCelltypeCliTest.xml": {
+      "bytes": 2328,
+      "sha256": "9f51d25f855d4d7efde85476013faace66d28dd4b97db36cd8bb347092e45702"
+    },
+    "evidence/family-tests-3-results/TEST-org.jlinalg.cli.FumaCelltypeInputsTest.xml": {
+      "bytes": 1964,
+      "sha256": "c47b96041ed0c3a1788c29c154646265d931569192f2b637bef73c4950fbc2e9"
+    },
+    "evidence/family-tests-3-results/TEST-org.jlinalg.cli.FumaChromatinCliTest.xml": {
+      "bytes": 1425,
+      "sha256": "29e4dac273c7c40e7026b99e3d802a5ead8ecac75c074989e96435994edbc99d"
+    },
+    "evidence/family-tests-3-results/TEST-org.jlinalg.cli.FumaExpressionCliTest.xml": {
+      "bytes": 2406,
+      "sha256": "ec0611914c73b70091c569c74ebadaa96eb85fce48a18a3f4c9c1dc881ac9703"
+    },
+    "evidence/family-tests-3-results/TEST-org.jlinalg.cli.FumaFisherCliTest.xml": {
+      "bytes": 3581,
+      "sha256": "f47a3575134861e326369765803d780d3345637856a8b18e7b6acb786eb39c4a"
+    },
+    "evidence/family-tests-3-results/TEST-org.jlinalg.cli.FumaGeneScoresCliTest.xml": {
+      "bytes": 1156,
+      "sha256": "254e888b1a5b9b8cacd6fe01829435d746195b714162f130ae2a27e482466eb0"
+    },
+    "evidence/family-tests-3-results/TEST-org.jlinalg.cli.FumaLociCliTest.xml": {
+      "bytes": 1357,
+      "sha256": "f8484e091de93b68a771504a8b0c0f37ca5b0fe3e5d4da1ff47f626dbff34e72"
+    },
+    "evidence/family-tests-3-results/TEST-org.jlinalg.cli.FumaMagmaReportCliTest.xml": {
+      "bytes": 3606,
+      "sha256": "cc2e187d09f6d3f25c33abe51122da63a86fc906f340edfc5665fc0c288e06de"
+    },
+    "evidence/family-tests-3-results/TEST-org.jlinalg.cli.FumaMappingCliTest.xml": {
+      "bytes": 1637,
+      "sha256": "740192c8ffc5d16c134526c7a064be1bf683397d2de20c5018757abb0bb4e9d2"
+    },
+    "evidence/family-tests-3-results/TEST-org.jlinalg.cli.FumaNoveltyCliTest.xml": {
+      "bytes": 4220,
+      "sha256": "2c028e86c2cd607a3223ba37e49de14c6bc77993b8ff524d9ba22460a9d78c64"
+    },
+    "evidence/family-tests-3-results/TEST-org.jlinalg.cli.FumaReferenceCliTest.xml": {
+      "bytes": 2860,
+      "sha256": "ebc08619482593072619c95715bc559253feca1ed1f3d2ede8367c20066b74f5"
+    },
+    "evidence/family-tests-3-results/TEST-org.jlinalg.cli.FumaToolsCliTest.xml": {
+      "bytes": 1087,
+      "sha256": "4fabee7f6e27aacb800f742bc6ffbde0b22632bda33d800c25528ff2d7d2fd08"
+    },
+    "evidence/family-tests-3-results/TEST-org.jlinalg.cli.FumaWorkflowCliTest.xml": {
+      "bytes": 3046,
+      "sha256": "71a7b2daf4bb53330d96cd41084f4441c4c4f6c62f305b6977c7601ecb5a2b2c"
+    },
+    "evidence/family-tests-3-results/TEST-org.jlinalg.cli.MagmaConditioningTest.xml": {
+      "bytes": 472,
+      "sha256": "9b7db763492689aae151ce0a34ea2ddcf50348c95f135ec10d47356f0098de74"
+    },
+    "evidence/family-tests-3-results/TEST-org.jlinalg.enrichment.FumaCelltypeAnalysisTest.xml": {
+      "bytes": 3808,
+      "sha256": "d316d14911b6865af6db0e67759681d96f20f2c7e3b6dc919dc829544111f936"
+    },
+    "evidence/family-tests-3-results/TEST-org.jlinalg.enrichment.FumaDegEnrichmentTest.xml": {
+      "bytes": 2313,
+      "sha256": "4894d1db62f49ef65ec7456b934e82ae2dbf03dd2e523987ae11f0f8839bc050"
+    },
+    "evidence/family-tests-3-results/TEST-org.jlinalg.enrichment.FumaGeneExpressionTest.xml": {
+      "bytes": 1736,
+      "sha256": "a70120139f19c08e95647c950994509e35db5d9d6225bbabc2cfe9cb0f82942e"
+    },
+    "evidence/family-tests-3-results/TEST-org.jlinalg.enrichment.FumaGeneSetEnrichmentTest.xml": {
+      "bytes": 3186,
+      "sha256": "0f6dff3732e8424bc4a65e3e374c8edb0aaa45dca4070f93c2240ea896337f32"
+    },
+    "evidence/family-tests-3-results/TEST-org.jlinalg.enrichment.FumaMagmaReportTest.xml": {
+      "bytes": 3130,
+      "sha256": "3ce5b81c708da002aad2e9f7d6dce380cfcaf3b666471523ff90b9c8a19378f5"
+    },
+    "evidence/family-tests-3-results/TEST-org.jlinalg.genetics.FumaChromatinMappingTest.xml": {
+      "bytes": 4955,
+      "sha256": "01e948b3c6d2ca9b1d146b4c6c7efe77766764ebdab80268e607bbf913a070ec"
+    },
+    "evidence/family-tests-3-results/TEST-org.jlinalg.genetics.FumaFisherExactTest.xml": {
+      "bytes": 3169,
+      "sha256": "6740bcc2aa71abc3ba257e395b662b1e02e830791da01681d5eee8bc644ea2f4"
+    },
+    "evidence/family-tests-3-results/TEST-org.jlinalg.genetics.FumaFisherFamiliesTest.xml": {
+      "bytes": 3000,
+      "sha256": "522725b0a9d9ac64107d79d3ff743ab7b5f03f3392d5e7fc568a6a357f7b55e5"
+    },
+    "evidence/family-tests-3-results/TEST-org.jlinalg.genetics.FumaFisherGroupsTest.xml": {
+      "bytes": 3809,
+      "sha256": "ab8786ee6a453b39d46c7c576057c9b5e18441a68b11867d8fefe5bfbb948dda"
+    },
+    "evidence/family-tests-3-results/TEST-org.jlinalg.genetics.FumaGeneScoreAnnotationsTest.xml": {
+      "bytes": 3141,
+      "sha256": "6e5ab638ad1f2c6bf0ec265ce605c86b07a163e239a678dfb9dcee1965e8889b"
+    },
+    "evidence/family-tests-3-results/TEST-org.jlinalg.genetics.FumaKnownAssociationsTest.xml": {
+      "bytes": 4224,
+      "sha256": "d030336eafbf2eeecdcc8690943b1e8b58983925e735dda9e4e77bfaa6c61bfe"
+    },
+    "evidence/family-tests-3-results/TEST-org.jlinalg.genetics.FumaLdWindowTest.xml": {
+      "bytes": 1407,
+      "sha256": "b4d17e3301deb13f7e0a7cdd521adb9b41f84bfc3d8e165e86487a90553f4637"
+    },
+    "evidence/family-tests-3-results/TEST-org.jlinalg.genetics.FumaLocusDefinitionTest.xml": {
+      "bytes": 3766,
+      "sha256": "a8249b9a29d5b0bc54cf67074666c705bd485c6dc9e79ded1de60911081eb8ce"
+    },
+    "evidence/family-tests-3-results/TEST-org.jlinalg.genetics.FumaLocusNoveltyTest.xml": {
+      "bytes": 2723,
+      "sha256": "cf6b19b60a72752433de1a5522f94ff26292b8cb04b39e639785d142b72aece4"
+    },
+    "evidence/family-tests-3-results/TEST-org.jlinalg.genetics.FumaReferenceOriginalTest.xml": {
+      "bytes": 1269,
+      "sha256": "aba77534a5482b652a7328b4c424395d5595fb551a0bb8f5f3428c28a3748e13"
+    },
+    "evidence/family-tests-3-results/TEST-org.jlinalg.genetics.FumaReferencePreparationTest.xml": {
+      "bytes": 2299,
+      "sha256": "b8f0b57d1ea6dbd0ed2d7a1228f71f14dbfe1bf498c7ef6b13f52a5fccc940ce"
+    },
+    "evidence/family-tests-3-results/TEST-org.jlinalg.genetics.FumaVariantAnnotationsTest.xml": {
+      "bytes": 4733,
+      "sha256": "a5d313e71b299233fc1785d833c8e06409566720f9ab89cca0e00a62e97cddd0"
+    },
+    "evidence/family-tests-3-results/TEST-org.jlinalg.genetics.FumaVariantGeneMappingTest.xml": {
+      "bytes": 4031,
+      "sha256": "0d79d6103bc0eb04dbf68bb5a912d1be827fe9b521b04f6d333db76b9e3cd466"
+    },
+    "evidence/family-tests-3-results/TEST-org.jlinalg.genetics.HardcallLdOriginalTest.xml": {
+      "bytes": 1348,
+      "sha256": "b6d23bb8a02dfcf5c4d892ce5003e66a711a887493e37e19e0f1d642a2590b29"
+    },
+    "evidence/family-tests-3-results/TEST-org.jlinalg.genetics.HardcallLdTest.xml": {
+      "bytes": 2083,
+      "sha256": "9fe07923ee0f42115d157c65bf8ce9e3f2a017a32beb26f121c8be85605905bb"
+    },
+    "evidence/matrix-1/COMPLETED.json": {
+      "bytes": 21139,
+      "sha256": "1b723f25507f0a7bf881fdf176f5520cf6b567a98493ec4ef22cb6b6c646a8be"
+    },
+    "evidence/matrix-1/RunFumaReferenceChecks.java": {
+      "bytes": 2122,
+      "sha256": "d08d37b6c7ff31e680b25b2b035bda6d6998ba0345ca64f8ddda7a1015fd9594"
+    },
+    "evidence/matrix-1/classes/RunFumaReferenceChecks.class": {
+      "bytes": 4297,
+      "sha256": "aa187d0fc86420ed75f20441cf0ae2d4790892c3b8017c059a42f6566534f2ce"
+    },
+    "evidence/matrix-1/classes/org/jlinalg/cli/FumaLociCliTest.class": {
+      "bytes": 8579,
+      "sha256": "3b69ed7ea66e2a725a4cff3991dc2359ad4b5fa05c903c35384e72169e2f0ad3"
+    },
+    "evidence/matrix-1/classes/org/jlinalg/cli/FumaReferenceCliTest.class": {
+      "bytes": 21114,
+      "sha256": "4da4b243897ea2936136da3f48089d31bf4c1ef2f6d103231ef69916d799a2d1"
+    },
+    "evidence/matrix-1/classes/org/jlinalg/genetics/FumaLdWindowTest.class": {
+      "bytes": 9620,
+      "sha256": "6aa20eb68ca12a1567213c86282ec68a733560bdbb4110dba686b0ef29641d3e"
+    },
+    "evidence/matrix-1/classes/org/jlinalg/genetics/FumaLocusDefinitionTest.class": {
+      "bytes": 17619,
+      "sha256": "2214e316550aea352ba8c1cc6f5292c7e6c72f3c370a1cf6d3de72481b6a7155"
+    },
+    "evidence/matrix-1/classes/org/jlinalg/genetics/FumaReferenceOriginalTest$1.class": {
+      "bytes": 2062,
+      "sha256": "dc5be2f190ca5c9b2d423141e7d7e51f37a1e335a24f5c56ef773a8f8faa28ff"
+    },
+    "evidence/matrix-1/classes/org/jlinalg/genetics/FumaReferenceOriginalTest.class": {
+      "bytes": 15741,
+      "sha256": "c266ad743afd88ff1d629b679afc62ab36eaf255927199674fac3908122240a4"
+    },
+    "evidence/matrix-1/classes/org/jlinalg/genetics/FumaReferencePreparationTest$1.class": {
+      "bytes": 1477,
+      "sha256": "dc28551bc42bec18936dd91fde8328e8bdf00888573079922b5353461b4cf8f4"
+    },
+    "evidence/matrix-1/classes/org/jlinalg/genetics/FumaReferencePreparationTest$Sink.class": {
+      "bytes": 2394,
+      "sha256": "6ccfe48435468594dcc172484b2c9e9f0818193d9e35e3ff9ecd141a50e0c12f"
+    },
+    "evidence/matrix-1/classes/org/jlinalg/genetics/FumaReferencePreparationTest.class": {
+      "bytes": 19131,
+      "sha256": "67c9c1bcf68b4910a8ee27270a7356c1dff3498eeafc09d696bd0329b81e684d"
+    },
+    "evidence/matrix-1/classes/org/jlinalg/genetics/HardcallLdOriginalTest.class": {
+      "bytes": 14273,
+      "sha256": "2495023b3d2a80137699e34e1f7b31772700f2f4ce68acbe624acc26a880e4b1"
+    },
+    "evidence/matrix-1/classes/org/jlinalg/genetics/HardcallLdTest.class": {
+      "bytes": 12911,
+      "sha256": "0cd46efd235374f97e99a03da8e5f1114346344bed7ecaeb9243225a4d03107c"
+    },
+    "evidence/matrix-1/compile.json": {
+      "bytes": 2553,
+      "sha256": "f79e4b3f0ea8014eefd630dac7da3f03025f97215b3acbdd55e133a390adc0ae"
+    },
+    "evidence/matrix-1/compile.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "evidence/matrix-1/compile.stdout": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "evidence/matrix-1/linux-java21/junit.json": {
+      "bytes": 1814,
+      "sha256": "1847ca508bf277e0618b3266e3b4e974e1eba9fca219585130f0d27cf44d0cd0"
+    },
+    "evidence/matrix-1/linux-java21/junit.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "evidence/matrix-1/linux-java21/junit.stdout": {
+      "bytes": 503,
+      "sha256": "d4b8dbba8bafa8fcf63e574fe7a2e3fbf196f4cf74e95d1ae7eb865e55d45841"
+    },
+    "evidence/matrix-1/windows-java21/junit.json": {
+      "bytes": 1851,
+      "sha256": "3ec30fcdf23f46b81efc136b2b5495d34987c4ee09bb94e9f40f36e4ccdcc137"
+    },
+    "evidence/matrix-1/windows-java21/junit.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "evidence/matrix-1/windows-java21/junit.stdout": {
+      "bytes": 522,
+      "sha256": "f4b33e25ee3c6b257c75d3d33b3e30ad5c8c70423137dfd78dbfa795603291ea"
+    },
+    "evidence/matrix-1/windows-java25/junit.json": {
+      "bytes": 1844,
+      "sha256": "1b449a4b45f44302b80660f6f5fec80e965065972d131f710a5accd6fee00b31"
+    },
+    "evidence/matrix-1/windows-java25/junit.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "evidence/matrix-1/windows-java25/junit.stdout": {
+      "bytes": 518,
+      "sha256": "31a2ba9465af023ec6a3382ad5733355e8db14489c54a77a0267156542e9f341"
+    },
+    "history/family-tests-2-snapshot/FumaReferenceCliTest.java": {
+      "bytes": 17236,
+      "sha256": "724b26861d8ca99bcd8be7f328ca07c4fd6422f23c2510583ec26986ec4b80aa"
+    },
+    "history/family-tests-2-snapshot/TEST-org.jlinalg.cli.FumaReferenceCliTest.xml": {
+      "bytes": 5273,
+      "sha256": "7e1496cdbfb41067269ee38ee97c4bfd0e7c57382f38777c7c72f2d3697207dd"
+    },
+    "history/original-tests-1-snapshot/FumaReferenceOriginalTest.java": {
+      "bytes": 5971,
+      "sha256": "b69c677c7260e5d61ca51f570f8a394d1dd0142c05e11d6be5c700f50056bcfa"
+    },
+    "history/tests-1-snapshot/FumaReferenceCli.java": {
+      "bytes": 31123,
+      "sha256": "a1ec6ce965ef78fb28d6c1c338897dfd2a9d3f9c1f9755e5e6660b05100327b4"
+    },
+    "history/tests-1-snapshot/FumaReferenceCliTest.java": {
+      "bytes": 14180,
+      "sha256": "463fdc5c4a940de3738a03ab769f5afa772475906705f80a38034af568941d12"
+    },
+    "history/tests-1-snapshot/TEST-org.jlinalg.cli.FumaReferenceCliTest.xml": {
+      "bytes": 8986,
+      "sha256": "95b733f7c14f7407db16492df6c2c84d6ab2f33751073e0ac8fa8267ed2df9ed"
+    },
+    "history/tests-2-snapshot/FumaReferenceCliTest.java": {
+      "bytes": 14180,
+      "sha256": "81db7115af8932aa8da6c84351af2871e8bf233f6319d0aa72dfbbe3cf3a89cb"
+    },
+    "logs/build-1.log": {
+      "bytes": 830,
+      "sha256": "28a18f7e5d8fc0a6acf1d3d2f3ca1caa2a731df64fe603bd694483f16a69d43e"
+    },
+    "logs/cli-tests-3.log": {
+      "bytes": 748,
+      "sha256": "2691e875e85ffbf08c12dc48373c0cffaabffac819228bcddf0cf25d296d5fc6"
+    },
+    "logs/compile-1.log": {
+      "bytes": 476,
+      "sha256": "98e0e0cb580aa33ad15d3c32cc8d833351214dc387a99714c498060a4d1f3e9f"
+    },
+    "logs/example-commands-1.log": {
+      "bytes": 118,
+      "sha256": "9f3fd5591ae35f610795db8b7c5bec56859e808d3c462054efca3cf0fec72997"
+    },
+    "logs/example-compile-1.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/family-tests-1.log": {
+      "bytes": 2185,
+      "sha256": "ad94130f910a1f11997faf64c27a203a07e4206a658c80136597bc888474c70e"
+    },
+    "logs/family-tests-2.log": {
+      "bytes": 3257,
+      "sha256": "3ac0eea94fcb7f5233334b89958874b4b9b23fcb3673f1758adb1746b8d9afcb"
+    },
+    "logs/family-tests-3-summary.json": {
+      "bytes": 200,
+      "sha256": "1ba56520ec9c20685bc3c6337102e313bfa027e80f0961851afe7919979ecfcd"
+    },
+    "logs/family-tests-3.log": {
+      "bytes": 653,
+      "sha256": "52d5335532fa6d621e9de2b44b9a4352499f6947987fa49f134fece810921013"
+    },
+    "logs/matrix-1.log": {
+      "bytes": 184,
+      "sha256": "d9c1547b471a0d49fba574a5b8dfa5a40449e3629d51369af0c60a53f19d4382"
+    },
+    "logs/original-tests-1.log": {
+      "bytes": 2214,
+      "sha256": "d0e45b74fe362a5ec6b95c751909d7bae4dc9604d43b7cff5febe890c3e1cf6e"
+    },
+    "logs/tests-1.log": {
+      "bytes": 6827,
+      "sha256": "263f646f096123b4741990052eb92ea369d1fdfe97e2b9ee52b5eda2ce7f73ae"
+    },
+    "logs/tests-2.log": {
+      "bytes": 1856,
+      "sha256": "7b6f9f99fa50701d33b371e898b2fd677a3cb0457c37db124fc6d267b04c9d94"
+    },
+    "prior/ld-core-VALIDATION.json": {
+      "bytes": 51768,
+      "sha256": "cf676aa3196b144cd744970cf4faa3fa35857ec1a16d884386b7df81a44b2d51"
+    },
+    "prior/ld-core-controls.zip": {
+      "bytes": 385838,
+      "sha256": "a5ec166fef6ce601461003a409af6f267841d69ea69c6544089d93c3c9617250"
+    },
+    "source/docs/literature/FUMA_REFERENCE_WORKFLOW.md": {
+      "bytes": 8460,
+      "sha256": "66b19ac17442c4a7b453cf54cba1e3bce211e87a8116b2732db8e36198037cd8"
+    },
+    "source/docs/literature/fuma-reference-workflow/.gitattributes": {
+      "bytes": 8,
+      "sha256": "705fd4d6451a31d36b3df7de96f83f30ac976c9b4a6d1e51671d8e2f33e2d0da"
+    },
+    "source/examples/fuma-reference/CreateInputs.java": {
+      "bytes": 1762,
+      "sha256": "ac18af9288547dc33c89716b35a69cb50ba7f6779e8a485f3c96804e795ed1d4"
+    },
+    "source/examples/fuma-reference/README.md": {
+      "bytes": 1036,
+      "sha256": "ca9573dc7e278896e223f277ea1da894ca95b5592c1acb7927f7bd4979022308"
+    },
+    "source/examples/fuma-reference/locus-options.json": {
+      "bytes": 341,
+      "sha256": "0bf5e28b9642cca580c90743f357b3190741df1dc3f6da933d1c8407c805251f"
+    },
+    "source/examples/fuma-reference/workflow.json": {
+      "bytes": 782,
+      "sha256": "c5e14268fc749ec483af488c4914cae18bf6ab8c3c34de81dca4eaedbc1e0400"
+    },
+    "source/record-checkpoint.py": {
+      "bytes": 9760,
+      "sha256": "6086e6176fe6d05495eb7a3b74d99a5f7ef396ce7e4e5d48e76e077929514f5a"
+    },
+    "source/src/main/java/org/jlinalg/cli/AdmixtureInputs.java": {
+      "bytes": 16330,
+      "sha256": "16981dd8c09976b8543b3ddb0f4f35d79e3f0f69b1ae20cb207f2779a5edd90b"
+    },
+    "source/src/main/java/org/jlinalg/cli/FollowupSupport.java": {
+      "bytes": 11934,
+      "sha256": "f373d857076b6adf724ef4459c8f5cce7c5cac2f6bc44517527905b87f19d23f"
+    },
+    "source/src/main/java/org/jlinalg/cli/FumaLociCli.java": {
+      "bytes": 22881,
+      "sha256": "b1680bb78a451ca74efebe3bca635439af231d98a1834a7fafc3bf9c1651993b"
+    },
+    "source/src/main/java/org/jlinalg/cli/FumaReferenceCli.java": {
+      "bytes": 31564,
+      "sha256": "dab279f4db12b169ac8cf452f3525d742d6a13be997f66f25b90a10133e40150"
+    },
+    "source/src/main/java/org/jlinalg/cli/FumaToolsCli.java": {
+      "bytes": 20970,
+      "sha256": "7ca1cb4e86ab606978c6d3533970276826b8e2b1fadfc0401ded9ed706100692"
+    },
+    "source/src/main/java/org/jlinalg/cli/FumaWorkflowCli.java": {
+      "bytes": 32979,
+      "sha256": "22812983f68191c5fec11065051efef251dc00933d70db1220c0d1aa9426f2cd"
+    },
+    "source/src/main/java/org/jlinalg/cli/RegenieRuntime.java": {
+      "bytes": 7077,
+      "sha256": "5ee111b9506f95e0b205a19cc42959c559a1d65466f37a0b05cda5b43810904b"
+    },
+    "source/src/main/java/org/jlinalg/cli/RnaToolRuntime.java": {
+      "bytes": 11191,
+      "sha256": "aa6560e6a47c999cffe1486b04272271ae2612daf74e99058b8da5cb010f2b0b"
+    },
+    "source/src/main/java/org/jlinalg/cli/SimpleJson.java": {
+      "bytes": 6107,
+      "sha256": "8425dc1a2179763af43c86898cf2b21d8c17dc76bdcabe0133d0ddcb6d6add5b"
+    },
+    "source/src/main/java/org/jlinalg/genetics/FumaLocusDefinition.java": {
+      "bytes": 33459,
+      "sha256": "cc6bdd43b035700cf4d3ee7fa06653074b8ae447ab72b24ab62b716448a6dcb2"
+    },
+    "source/src/main/java/org/jlinalg/genetics/FumaReferencePreparation.java": {
+      "bytes": 11464,
+      "sha256": "c30415d989540678f1e43bf46cdad58fb5fe25ac562b919a27bb812dd3e19581"
+    },
+    "source/src/main/java/org/jlinalg/genetics/HardcallLd.java": {
+      "bytes": 9443,
+      "sha256": "6982adc2af9fe085457711b6e719d368f082425e582ed024d718d6bbb5a97798"
+    },
+    "source/src/main/java/org/jlinalg/genetics/PlinkBedDataset.java": {
+      "bytes": 15260,
+      "sha256": "7cf9ea9081bd0298555436c54916742990f1480f7db133872d62bdc275c13872"
+    },
+    "source/src/test/java/org/jlinalg/cli/FumaLociCliTest.java": {
+      "bytes": 6089,
+      "sha256": "44c5ae70b3b3b19c7a52ca04af678cad3663fbf327b217598efb7e0576669d1d"
+    },
+    "source/src/test/java/org/jlinalg/cli/FumaReferenceCliTest.java": {
+      "bytes": 17301,
+      "sha256": "16b6cb9226323c3eeffc8bb281ba4081a78cb30e91746eaf68a889ea0cd42540"
+    },
+    "source/src/test/java/org/jlinalg/genetics/FumaLdWindowTest.java": {
+      "bytes": 6063,
+      "sha256": "0adf13842fc6acfc8bd698d96d06bead5374de062a0c9e9e299e8252a5e09063"
+    },
+    "source/src/test/java/org/jlinalg/genetics/FumaLocusDefinitionTest.java": {
+      "bytes": 15222,
+      "sha256": "74b87d6e528e361a7ab9e04fff9deac356615817c8946a0a085032fbc21091db"
+    },
+    "source/src/test/java/org/jlinalg/genetics/FumaReferenceOriginalTest.java": {
+      "bytes": 6750,
+      "sha256": "c49c241744dc4fe82619f399f246fb8a63224ef3a1f78e53ae3c0cbdffb223e0"
+    },
+    "source/src/test/java/org/jlinalg/genetics/FumaReferencePreparationTest.java": {
+      "bytes": 10583,
+      "sha256": "a2a5ca275682424abd7b373ca77a1acbc548746c2673dd84d379d759cd0512e1"
+    },
+    "source/src/test/java/org/jlinalg/genetics/HardcallLdOriginalTest.java": {
+      "bytes": 7930,
+      "sha256": "e5918a34995524c631c665128a4a3471a156fd9383f8cc4aa8bfab079c4b4c7b"
+    },
+    "source/src/test/java/org/jlinalg/genetics/HardcallLdTest.java": {
+      "bytes": 8984,
+      "sha256": "64a0f22b4f2f664142b738653a8aa9368603d68fcf3604ea16aeac4aef85f682"
+    },
+    "source/src/test/resources/org/jlinalg/genetics/hardcall-ld/original-controls.zip": {
+      "bytes": 140388,
+      "sha256": "06e002a1c8c23e462176d32726abaedcb6b71fae3a6f9f349959a6befed04719"
+    },
+    "source/tools/literature/fuma-development.init.gradle": {
+      "bytes": 1211,
+      "sha256": "5431276c826baaa6276847287f050751e27a46ed42c4ed9bac7fbc1d59849a8f"
+    },
+    "source/tools/literature/validate_fuma_reference_commands.py": {
+      "bytes": 6095,
+      "sha256": "d4a0d1a965c23582d53b53c95fff2448b3cf6ed4a985a048a8fa8877e0887c9c"
+    },
+    "source/tools/literature/validate_fuma_reference_workflow.py": {
+      "bytes": 9362,
+      "sha256": "24be4e62667d0b61e16704ab1fc6ecb33c8599089ecdd006f8b7103a7ce02e0d"
+    },
+    "source/tools/literature/validate_mashr_native.py": {
+      "bytes": 8916,
+      "sha256": "4759fc9a2a900caa3c1b1ce669abbafa1b4f8c900a13c265fb2cf27437b0752a"
+    }
+  },
+  "retained_failed_attempts": [
+    "tests-1: early admission failures lacked an empty partial/ directory; added that diagnostic path. One test incorrectly expected original five-sample packed size instead of selected four-sample capture size. No numerical formula changed.",
+    "tests-2: a test substring matched 1100 as if it were 100; changed to an exact row prefix.",
+    "original-tests-1: test assumed every original control pair was defined. Actual explicit-keep binary NaN is now tested as a mandatory complete-request failure; no filtering was widened.",
+    "family-tests-1: ambiguous boxed Double::isNaN test method reference failed compilation; replaced with an explicit lambda.",
+    "family-tests-2: two test-harness assertions accepted only ANALYSIS FAILED, while the existing workflow correctly emits WORKFLOW FAILED. Corrected harness. Two optional MAGMA tests initially skipped; configured existing checksum-verified runtime and all619 passed in family-tests-3.",
+    "Two attempted copies of earlier Gradle XML reports found that later Gradle runs had already replaced them. Complete terminal logs and corresponding test source snapshots are retained; no claim is made that those missing XML files were archived."
+  ],
+  "claims": {
+    "native_reference_preparation_available_in_candidate": true,
+    "all_requested_selected_genotypes_captured": true,
+    "complete_resource_replay_available": true,
+    "locus_handoff_replays_before_admission": true,
+    "typed_reference_prepare_workflow_available": true,
+    "autosomes_only": true,
+    "full_FUMA_reproduced": false,
+    "paper_historical_reference_reconstructed": false,
+    "catalog_promoted": false,
+    "whole_goal_complete": false,
+    "released_or_deployed": false,
+    "pushed": false
+  },
+  "required_action": "Use FUMA_REFERENCE_WORKFLOW.md and the identified candidate. Declare sample/variant selection, founder policy, assembly/population/release, MAF floor and windows. Inspect all variant exclusions and assessed pairs. Outside-window LD is uncomputed, not observed zero/weak LD; undefined eligible LD fails the entire request. Keep the complete capture bundle for portable replay/handoff. Correct named failure/capacity causes and rerun to a new directory; preserve failed evidence. FUMA remains catalog-missing while additional roles are reviewed."
+}

@@ -1,0 +1,181 @@
+[
+  {
+    "paper_id": "P002",
+    "primary_paragraph": 29,
+    "reported_version": "21.04.1",
+    "review": {
+      "pmcid": "PMC11964931",
+      "doi": "10.1038/s41586-024-08515-5",
+      "tool_id": "nextflow",
+      "evidence_paragraph_sha256": "1f645f2ce00682d71111e245d3ea612de2a76106f25d7db551d4f4c3e88b1501",
+      "use_summary": "Used Nextflow21.04.1 to orchestrate nf-core/eager2.4.4 for ancient-DNA read processing, human-read removal and HOPS assessment of MALT output. The described pipeline includes adapter/quality trimming, mapping, MAPQ filtering, duplicate removal and damage profiling.",
+      "implementation_scope_note": "The engine21.04.1 and pipeline2.4.4 are distinct; trailing citation numbers are not patch digits. Exact databases, libraries and component software/settings remain required. JUC013 used a separate computational approach; the low RAZ007 genus counts did not support HOPS assessment.",
+      "version_reported_near_name": "21.04.1",
+      "supporting_evidence": []
+    }
+  },
+  {
+    "paper_id": "P008",
+    "primary_paragraph": 96,
+    "reported_version": null,
+    "review": {
+      "pmcid": "PMC12893920",
+      "doi": "10.1038/s41586-025-09875-2",
+      "tool_id": "nextflow",
+      "evidence_paragraph_sha256": "0a0147754ba9ae466fc04e9c2f5bfebb049bb6bf9d6bc733e5e8d4d81e0763dd",
+      "use_summary": "Wrapped per-library scRNA-seq preprocessing in a two-process Nextflow pipeline and per-sample scATAC-seq analyses in another Nextflow script for parallelization and reproducibility. A separate ISS pipeline performs projection/stitching, optical-flow registration, CellPose segmentation and PoSTcode decoding into expression matrices.",
+      "implementation_scope_note": "The Nextflow edition and complete workflow commands are unstated. scRNA-seq, scATAC-seq and ISS pipelines are distinct; orchestrator support alone does not implement or validate their biological/image-analysis components.",
+      "version_reported_near_name": null,
+      "supporting_evidence": [
+        {
+          "paragraph_index": 70,
+          "paragraph_sha256": "26a33f014397f5f50c43b0b20ab8a0051a2ee41e2ca4a5dc7f3f7cb3c1c8f1b9",
+          "section": "Methods / Analysis of scRNA-seq data / Per-library analyses"
+        },
+        {
+          "paragraph_index": 86,
+          "paragraph_sha256": "3b856dbcd5ae61eb8ed8bad528815167bb3a10252e743ee68f565101c3d9f18f",
+          "section": "Methods / Analysis of scATAC–seq data / Per-library analyses"
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "P013",
+    "primary_paragraph": 91,
+    "reported_version": null,
+    "review": {
+      "pmcid": "PMC11798873",
+      "doi": "10.1038/s41586-024-08333-9",
+      "tool_id": "nextflow",
+      "evidence_paragraph_sha256": "affe6e459ee744ea0cd04245433aa46aa643efeec9a93639b1b50de467dd4cfc",
+      "use_summary": "Used the Nextflow distiller-nf pipeline for mm9 Micro-C alignment and processing, with make_pairsam=False, drop_readid=False, --add-columns mapq --walks-policy mask and max_mismatch_bp=1. Produced balanced multi-resolution cooler files at the listed100bp–10Mb resolutions; merged15U/20U libraries with pairtools.",
+      "implementation_scope_note": "Nextflow and distiller-nf editions are unstated. Exact workflow/configuration and dependencies must be supplied. FitHiChIP subsequently consumes the mcool output with its separately reported peak, distance, interaction and bias settings; those are not Nextflow engine parameters.",
+      "version_reported_near_name": null,
+      "supporting_evidence": [
+        {
+          "paragraph_index": 117,
+          "paragraph_sha256": "a062cfcccb3cf2cf5f0add9a7772f0d30b1e9e1c1b4c4761767bb284f587c845",
+          "section": "Methods / Bioinformatics / Micro-C loop calling and cis-interactions between ChIP–seq peaks"
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "P016",
+    "primary_paragraph": 23,
+    "reported_version": null,
+    "review": {
+      "pmcid": "PMC10765522",
+      "doi": "10.1038/s41586-023-06845-4",
+      "tool_id": "nextflow",
+      "evidence_paragraph_sha256": "09cb8023a932240287617795e9ceda70d117a3dbf464cc4b41e8eb0f3c5815c4",
+      "use_summary": "Used the distiller Nextflow pipeline to align Hi-C/HiChIP reads to mm10, retain uniquely mapped reads with MAPQ>30 and remove duplicates, then bin contacts with cooler. The source lists Java8, Nextflow and Docker requirements and pools two to three replicates after individual-replicate comparison.",
+      "implementation_scope_note": "The engine and pipeline releases are unstated. The Java8 requirement is historical source context, not a license to substitute a modern engine silently. Docker, genomic inputs and downstream cooler processing remain separate dependencies.",
+      "version_reported_near_name": null,
+      "supporting_evidence": []
+    }
+  },
+  {
+    "paper_id": "P027",
+    "primary_paragraph": 55,
+    "reported_version": "24.04.4",
+    "review": {
+      "pmcid": "PMC12779559",
+      "doi": "10.1038/s41586-025-09853-8",
+      "tool_id": "nextflow",
+      "evidence_paragraph_sha256": "76b069f028fbfb36467f2cec531f8269ec9ade098f9c5d8ca81044d51ae6b795",
+      "use_summary": "Used Nextflow24.04.4 with nf-core/rnasplice1.0.4 to orchestrate FastQC0.12.1, TrimGalore0.6.7, STAR2.7.9a and rMATS4.1.2 against C.elegans WBcel235/ce11. Differential splicing uses absolute delta-PSI>=0.05 and P<0.05, followed by boxplots.",
+      "implementation_scope_note": "Engine24.04.4, pipeline1.0.4 and component versions are distinct. Exact workflow, genome/annotation and sample configuration must be supplied. Running the engine does not establish that this complete RNA/splicing pipeline or its biological conclusions were reproduced.",
+      "version_reported_near_name": "24.04.4",
+      "supporting_evidence": []
+    }
+  },
+  {
+    "paper_id": "P036",
+    "primary_paragraph": 54,
+    "reported_version": null,
+    "review": {
+      "pmcid": "PMC13190248",
+      "doi": "10.1038/s41586-025-09792-4",
+      "tool_id": "nextflow",
+      "evidence_paragraph_sha256": "40f0ddf2f78f202430b1a08848488c4d7da6a11a270256a7a70863cb3232b7c7",
+      "use_summary": "Used a bespoke Nextflow DuplexPipe workflow for duplex FASTQ processing with fgbio2.2.1, UMI extraction using FastqToBam and bwa-mem0.7.17 alignment. The reference is GRCh38 GCA_000001405.15 without alternate contigs and with a U2FA1 mapping patch.",
+      "implementation_scope_note": "The Nextflow release and exact workflow commit/commands are unstated. Preserve the source reference patch and complete UMI/duplex processing definitions; generic orchestrator execution does not recreate them.",
+      "version_reported_near_name": null,
+      "supporting_evidence": []
+    }
+  },
+  {
+    "paper_id": "P143",
+    "primary_paragraph": 4,
+    "reported_version": null,
+    "review": {
+      "pmcid": "PMC11525181",
+      "doi": "10.1038/s41588-024-01883-8",
+      "tool_id": "nextflow",
+      "evidence_paragraph_sha256": "e1de6982386717bc8c6d122e5e11175528773a756e91d7692444c7f7f2f6fee6",
+      "use_summary": "Provided MHC Hammer as a Nextflow workflow for allele-specific HLA somatic mutation, loss of heterozygosity, repression and alternative-splicing analysis using WES and RNA-seq data.",
+      "implementation_scope_note": "The engine edition and exact workflow commit/parameters are unstated in this description. These four HLA-analysis components and required allele/reference resources remain distinct from execution-engine support.",
+      "version_reported_near_name": null,
+      "supporting_evidence": []
+    }
+  },
+  {
+    "paper_id": "P156",
+    "primary_paragraph": 56,
+    "reported_version": "22.10.6",
+    "review": {
+      "pmcid": "PMC13447113",
+      "doi": "10.1038/s41588-026-02703-x",
+      "tool_id": "nextflow",
+      "evidence_paragraph_sha256": "4deafda82b9ff072e3e5fb0dad16de890264e38cd4f81fe8273ee8fbadd53fe2",
+      "use_summary": "Scripted single-molecule-footprinting preprocessing in Nextflow22.10.6. The source separately describes R4.2.2/RStudio analysis and high-performance computing through SLURM using direct Bash or rslurm.",
+      "implementation_scope_note": "Do not infer a Nextflow SLURM executor setting from the broader HPC statement. Exact SMF workflow code, dependencies and inputs must be supplied; engine22.10.6 is distinct from the reported R and RStudio editions.",
+      "version_reported_near_name": "22.10.6",
+      "supporting_evidence": []
+    }
+  },
+  {
+    "paper_id": "P169",
+    "primary_paragraph": 31,
+    "reported_version": null,
+    "review": {
+      "pmcid": "PMC11525171",
+      "doi": "10.1038/s41588-024-01900-w",
+      "tool_id": "nextflow",
+      "evidence_paragraph_sha256": "7401946d396e4210169bf1b1d031e339119b3382fee7ca493fd005c95f212644",
+      "use_summary": "Processed ChIPmentation with nf-core/chipseq1.2.1 and Omni-ATAC with nf-core/atacseq1.2.1, both as Nextflow pipelines with reported default parameters.",
+      "implementation_scope_note": "Both1.2.1 values identify pipelines, not the Nextflow engine. The engine edition and complete release-specific defaults/commands are unstated; chipseq and atacseq require separate declared workflow/configuration and resources.",
+      "version_reported_near_name": null,
+      "supporting_evidence": [
+        {
+          "paragraph_index": 32,
+          "paragraph_sha256": "f52aedbebbfeefc0bc1812321e6fd95da579138cacd29bc3244f2bdf00960137",
+          "section": "Methods / Omni-ATAC"
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "P227",
+    "primary_paragraph": 9,
+    "reported_version": null,
+    "review": {
+      "pmcid": "PMC11339615",
+      "doi": "10.1016/j.ajhg.2024.06.017",
+      "tool_id": "nextflow",
+      "evidence_paragraph_sha256": "eec2cfcb8edf92f9ac6d6990c9b6cdf9a0e24c717ebeac983cead8e2839e59a3",
+      "use_summary": "Used the linked rna_seq_interval_5591 Nextflow workflow for RNA-seq QC, STAR and Salmon alignment. Describes FastQC0.11.8, STAR2.7.3a with GRCh38/Ensembl97 and sjdbOverhang75, pooled-junction two-pass alignment and featureCounts2.0.0 exon read counts.",
+      "implementation_scope_note": "The Nextflow edition is unstated. Preserve the linked workflow revision and reported aligner settings; engine execution alone does not implement Salmon, featureCounts or the complete cohort pipeline. The paper separately reports4778 count samples and4732 deposited RNA-seq participants; do not conflate them.",
+      "version_reported_near_name": null,
+      "supporting_evidence": [
+        {
+          "paragraph_index": 64,
+          "paragraph_sha256": "d4b274e1b1235dc8aa400ec48c59fa3e07e6b0d848285da609f58d47c55e3de4",
+          "section": "Data and code availability"
+        }
+      ]
+    }
+  }
+]

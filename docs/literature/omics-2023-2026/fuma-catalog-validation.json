@@ -1,0 +1,680 @@
+{
+  "schema_version": 1,
+  "status": "passed-scoped-native-FUMA-catalog-integration",
+  "recorded_utc": "2026-11-02T20:25:12.250604+00:00",
+  "scope": "Fourteen source-reviewed FUMA roles and validated native subset with explicit supplied data, separate MAGMA fitting and genuine method gaps. Historical checkpoint counts remain labeled.",
+  "catalog_validation": {
+    "status": "passed-scoped-native-FUMA-catalog-and-source-preservation",
+    "papers": 250,
+    "named_tools": 380,
+    "observations": 2430,
+    "reviewed_uses": 775,
+    "supporting_pointers": 230,
+    "new_scoped_integrations": 63,
+    "native_scopes": 15,
+    "upstream_adapters": 48,
+    "including_preexisting_adapters": 66,
+    "missing": 257,
+    "user_excluded": 1,
+    "FUMA_source_roles": 14,
+    "unrelated_tool_entries_preserved": 379,
+    "source_paper_and_review_bytes_unchanged": true,
+    "unexposed_functions_not_credited": true,
+    "historical_candidates_and_counts_labeled": true,
+    "scientific_validation_reexecuted": false,
+    "immutable_scientific_checkpoint": "docs/literature/fuma-expression-preparation-2/VALIDATION.json",
+    "scientific_digest_disagreement_self_checks": [
+      {
+        "path": "src/main/java/org/jlinalg/genetics/HardcallLd.java",
+        "simulated_digest_disagreement_refused": true
+      },
+      {
+        "path": "src/main/java/org/jlinalg/enrichment/FumaExpressionPreparation.java",
+        "simulated_digest_disagreement_refused": true
+      },
+      {
+        "path": "src/test/resources/org/jlinalg/enrichment/fuma-expression-preparation/independent-R-controls.zip",
+        "simulated_digest_disagreement_refused": true
+      },
+      {
+        "path": "build/literature-review/fuma-runtime/expression-preparation-development-1/package-3/omicsmatic-0.3.7-fuma-development.jar",
+        "simulated_digest_disagreement_refused": true
+      }
+    ],
+    "artifact": {
+      "path": "build/literature-review/fuma-runtime/expression-preparation-development-1/package-3/omicsmatic-0.3.7-fuma-development.jar",
+      "bytes": 162905995,
+      "sha256": "31cf870041c75396a1dc434d682993fbbd94a5e7712337b2ce427e0686a4111f"
+    },
+    "files": {
+      "tools/literature/validate_fuma_catalog.py": {
+        "bytes": 7589,
+        "sha256": "751265374b9588ebb61bb7c7952836c1159b1408408181fb06b96495bef8501f"
+      },
+      "tools/literature/fuma_catalog.py": {
+        "bytes": 19014,
+        "sha256": "303c9cda638e0684523024bbde3aa9f87c005f0f65df372db1a7140c82619c0c"
+      },
+      "tools/literature/fuma_role_coverage.py": {
+        "bytes": 8033,
+        "sha256": "aa336809c491c5baf67321be18a60f6ab3e817500f6293f671cf31f55dc160e0"
+      },
+      "tools/literature/fuma_source_closure.py": {
+        "bytes": 4935,
+        "sha256": "a1b06a76b0490c376723878a63d27705e81b9e942123c4ec09149534405c0452"
+      },
+      "tools/literature/render_review.py": {
+        "bytes": 392937,
+        "sha256": "a17f0dafaeb4a003ddf899c52e485ca681d5f8a23cbadb2f2f7bf0cafff410ac"
+      },
+      "tools/literature/check_review_ui.cjs": {
+        "bytes": 247160,
+        "sha256": "bbeeeea0751dafcd780120398feb6ffc2eaba638a7b307867736431c92c29c69"
+      },
+      "docs/literature/omics-2023-2026/fuma-source-closure.json": {
+        "bytes": 82771,
+        "sha256": "47c4e39450f05bc0ee39d9854c98011c2f8693a1c7e095c90e7f409e09f985d2"
+      },
+      "docs/literature/omics-2023-2026/fuma-role-coverage.json": {
+        "bytes": 28177,
+        "sha256": "6591d9f0b50ed8dbc988ee91c4d564870fd87c196cf72135671d5b41646d7ae1"
+      },
+      "docs/literature/omics-2023-2026/FUMA_SCOPED_WORKFLOWS.md": {
+        "bytes": 6202,
+        "sha256": "9ce0bd326e47460d0ff218d94be84b626fbd966ee129a299b90e9656bf166561"
+      },
+      "docs/literature/omics-2023-2026/tool-inventory.json": {
+        "bytes": 495246,
+        "sha256": "2de48af87a0085cffa258b9eb6992605c48447061162e3c18c27391c65543ecc"
+      },
+      "docs/literature/omics-2023-2026/summary.json": {
+        "bytes": 1181,
+        "sha256": "35a246fcffe13044a9408092c4bf0a35395c787c531b8c4d6eb4269f1869a265"
+      },
+      "docs/literature/omics-2023-2026/papers.json": {
+        "bytes": 3038083,
+        "sha256": "92a9c116ffd1f2d9d91e778064b3327b00ffa6336a907ae36e3885df2e8d70f1"
+      },
+      "docs/literature/omics-2023-2026/WARNINGS.md": {
+        "bytes": 114136,
+        "sha256": "7a38aab6bc32073864775e0664c144106ad1d0755e7d9cc03aac23cee802f86d"
+      },
+      "site/literature-review.html": {
+        "bytes": 3237636,
+        "sha256": "7537974b4e60838044a6b5d7ab695bc1e0d457b8375651466282fae57d635b4a"
+      },
+      "site/literature-warnings.html": {
+        "bytes": 228440,
+        "sha256": "cc97c9b3c20dec9702e05e29dc9071cd6515c6841cefcc401b9230068f3d9180"
+      }
+    }
+  },
+  "browser": {
+    "broad_checks": 299,
+    "focused_checks": [
+      "250 papers and2430 observations;63 new scoped integrations:15 native/48 upstream;257 missing",
+      "Fourteen source-reviewed FUMA rows retained;P243 has no invented module command",
+      "FUMA available under native filter, absent under missing filter;current and historical candidates separated;390px history expansion fits",
+      "Current reference/expression scopes and explicit SKIP3/FAIL2 recovery on both pages at desktop and390px dark;no overflow or page errors"
+    ],
+    "screenshots_visually_reviewed": [
+      "fuma-current-card-desktop.png",
+      "fuma-warnings-current-actions-mobile-dark.png"
+    ]
+  },
+  "scientific_checkpoint": {
+    "path": "docs/literature/fuma-expression-preparation-2/VALIDATION.json",
+    "bytes": 150907,
+    "sha256": "8f8ad049c55f4ae83492576628d5e6d352e3d669089722411da0ac5387ed2134",
+    "archive": {
+      "path": "controls.zip",
+      "bytes": 3541238,
+      "sha256": "306cd996c5f60353bddbe776b38af4b2c5b255af4cb802ccd30d94ad710c0e25",
+      "entries": 676
+    }
+  },
+  "source_dependency_closure": {
+    "path": "docs/literature/omics-2023-2026/fuma-source-closure.json",
+    "bytes": 82771,
+    "sha256": "47c4e39450f05bc0ee39d9854c98011c2f8693a1c7e095c90e7f409e09f985d2",
+    "source_files": 58,
+    "packaged_classes": 413,
+    "whole_JAR_bytes_identical": true
+  },
+  "scientific_analysis_reexecuted": false,
+  "source_pins": {
+    "tools/literature/fuma_catalog.py": {
+      "bytes": 19014,
+      "sha256": "303c9cda638e0684523024bbde3aa9f87c005f0f65df372db1a7140c82619c0c"
+    },
+    "tools/literature/fuma_role_coverage.py": {
+      "bytes": 8033,
+      "sha256": "aa336809c491c5baf67321be18a60f6ab3e817500f6293f671cf31f55dc160e0"
+    },
+    "tools/literature/fuma_source_closure.py": {
+      "bytes": 4935,
+      "sha256": "a1b06a76b0490c376723878a63d27705e81b9e942123c4ec09149534405c0452"
+    },
+    "tools/literature/validate_fuma_catalog.py": {
+      "bytes": 7589,
+      "sha256": "751265374b9588ebb61bb7c7952836c1159b1408408181fb06b96495bef8501f"
+    },
+    "tools/literature/check_fuma_review_ui.cjs": {
+      "bytes": 6159,
+      "sha256": "8c03636a89a8d5cd56cb79189e66eb1264e31a27ac712339d9512a43347233df"
+    },
+    "tools/literature/freeze_fuma_catalog.py": {
+      "bytes": 6973,
+      "sha256": "2642715dadd25e2628834a7a4fd8e4649c3baf2da95aed1d1ee5c8d5f85465df"
+    },
+    "tools/literature/render_review.py": {
+      "bytes": 392937,
+      "sha256": "a17f0dafaeb4a003ddf899c52e485ca681d5f8a23cbadb2f2f7bf0cafff410ac"
+    },
+    "tools/literature/check_review_ui.cjs": {
+      "bytes": 247160,
+      "sha256": "bbeeeea0751dafcd780120398feb6ffc2eaba638a7b307867736431c92c29c69"
+    }
+  },
+  "support_archive": {
+    "path": "fuma-catalog-support.zip",
+    "bytes": 4268506,
+    "sha256": "c59fff97b789c69c160bd9915fa5f7483f519111b48b1733a9e30c383b5d0069",
+    "entries": 121
+  },
+  "archive_files": {
+    "before/docs/literature/omics-2023-2026/SHA256SUMS": {
+      "bytes": 34559,
+      "sha256": "d4130d6be9b5714b55c2462c0642c0444a82dcdd816e19fbb0203f58737e71fb"
+    },
+    "before/docs/literature/omics-2023-2026/WARNINGS.md": {
+      "bytes": 107426,
+      "sha256": "bff11a849c8af610daa841b8162328bff7b48109b67997a0b4db2b0ad3980e68"
+    },
+    "before/docs/literature/omics-2023-2026/catalog-enrichment.json": {
+      "bytes": 1353041,
+      "sha256": "dc0eb791b8d4d1885afa8db3dee402548343452046a4bfde51b4da5b534ad86e"
+    },
+    "before/docs/literature/omics-2023-2026/catalog.md": {
+      "bytes": 502775,
+      "sha256": "6a75a1495fd25d9370a8b47d4d6667501588373b7e440c5d606cd2b6f005dc60"
+    },
+    "before/docs/literature/omics-2023-2026/implementation-plan.md": {
+      "bytes": 114170,
+      "sha256": "26f2f72f0103210b6a100e499b9808bdf8fc77b8dd594bf1b4d5d0c61a9a0ab6"
+    },
+    "before/docs/literature/omics-2023-2026/papers.json": {
+      "bytes": 3038083,
+      "sha256": "92a9c116ffd1f2d9d91e778064b3327b00ffa6336a907ae36e3885df2e8d70f1"
+    },
+    "before/docs/literature/omics-2023-2026/summary.json": {
+      "bytes": 1181,
+      "sha256": "6ad38a85dff86bbb6ed5505256dce27336de01220a33a75016e75c6a9b6ff464"
+    },
+    "before/docs/literature/omics-2023-2026/tool-inventory.json": {
+      "bytes": 491542,
+      "sha256": "a0b8d6e6c387a319d7a80ab3bc75cdb89ea89ef8362c973c5b523f0033e1e059"
+    },
+    "before/site/literature-review.html": {
+      "bytes": 3225877,
+      "sha256": "f556a3e6c0ed9511a4100183f76c9b26b9e8d4c13bc59c682fa5068d60801390"
+    },
+    "before/site/literature-warnings.html": {
+      "bytes": 220676,
+      "sha256": "a7397a441ced5f28d1cd1b74a03d3d16dad15c8c3384624bf798a8ae8f5fae51"
+    },
+    "before/tools/literature/check_review_ui.cjs": {
+      "bytes": 244944,
+      "sha256": "bbc56355c31a0a3db3f8b47f5a0cb309d751072a18ad440ff8aa38252afd734d"
+    },
+    "before/tools/literature/render_review.py": {
+      "bytes": 391489,
+      "sha256": "1ee351f65a686dadc2a96fcfd892071b6be68c0fcbdd848e2c86e4e2327e2db4"
+    },
+    "evidence/ui-broad-4/ui-validation.json": {
+      "bytes": 40967,
+      "sha256": "43123889bc8298eb66c30544bbd2140491339ab059a2b94662fb21116e955994"
+    },
+    "evidence/ui-focused-1/FAILURE.json": {
+      "bytes": 316,
+      "sha256": "b069973acb1ba42cc5db2d2371d1ae496211071433c38cb0f80e1cc00b749f22"
+    },
+    "evidence/ui-focused-2/fuma-current-card-desktop.png": {
+      "bytes": 78161,
+      "sha256": "0ea31b271ff75c7ddc4318b16b2c5c0d7cdd074902ab79b3e1a22e1ceb6baf8f"
+    },
+    "evidence/ui-focused-2/fuma-current-card-mobile-dark.png": {
+      "bytes": 73588,
+      "sha256": "e2665e334637cce9a3c787394eecbb6a0ee8b426e1e982a8deb5b050cabe8d07"
+    },
+    "evidence/ui-focused-2/fuma-review-current-actions-desktop.png": {
+      "bytes": 124203,
+      "sha256": "9db8b057ceffcbb5a4aebe8116998418835df64065dcf1c659fb3a684ef0b651"
+    },
+    "evidence/ui-focused-2/fuma-review-current-actions-mobile-dark.png": {
+      "bytes": 133073,
+      "sha256": "08a9413f7d3399f2924b00cf3029ec185ad2e03795dd3e3e0c69c765cc78a110"
+    },
+    "evidence/ui-focused-2/fuma-warnings-current-actions-desktop.png": {
+      "bytes": 123980,
+      "sha256": "9fda5cb59a03ba9a85d5b685de796d9164b0dd0765fd41068433d4f21b7be362"
+    },
+    "evidence/ui-focused-2/fuma-warnings-current-actions-mobile-dark.png": {
+      "bytes": 133079,
+      "sha256": "bf7a80c4f21fc3f65980c265043db97fd3b1146db5addcc4fce2e9a6321bb3d4"
+    },
+    "evidence/ui-focused-2/ui-validation.json": {
+      "bytes": 818,
+      "sha256": "b2d033b75a813ca6aef09205a125d35a16b1ae666d904fea051d362a74d618e4"
+    },
+    "evidence/validation-1/FAILURE.json": {
+      "bytes": 144,
+      "sha256": "eb68a4c1ad84ca6f32b17ca19b93794e4a2c3a6354b67cbd0fbeb17e6bd29c95"
+    },
+    "evidence/validation-2/COMPLETED.json": {
+      "bytes": 4177,
+      "sha256": "f29c01cc7613e02de081f4e5181c4a95fa23f9b2e89e778547e09fc71ea6ed31"
+    },
+    "retained-attempts/freeze-1.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "retained-attempts/mobile-before-fix.json": {
+      "bytes": 1108,
+      "sha256": "8057b0c1c28bbc1e80b1c8d1f102228e6fd17e4b77e6814f7cd4f2f4974ba6f3"
+    },
+    "retained-attempts/render-1.log": {
+      "bytes": 1039,
+      "sha256": "153c8b9bcd23b67fa1ff24c0dac616445096f849f0860006ea742ac02263a566"
+    },
+    "retained-attempts/render-2.log": {
+      "bytes": 1039,
+      "sha256": "153c8b9bcd23b67fa1ff24c0dac616445096f849f0860006ea742ac02263a566"
+    },
+    "retained-attempts/render-3.log": {
+      "bytes": 1039,
+      "sha256": "153c8b9bcd23b67fa1ff24c0dac616445096f849f0860006ea742ac02263a566"
+    },
+    "retained-attempts/source-build-1.log": {
+      "bytes": 820,
+      "sha256": "b93404c5240a31e30793451de89777417d103d04b300ed58e9a376fb34bbf66f"
+    },
+    "retained-attempts/ui-broad-1.log": {
+      "bytes": 293,
+      "sha256": "d7b702178dd34e1bf98279bd3738f58d4f9b3bc66368b8e9d7300963ce667dc9"
+    },
+    "retained-attempts/ui-broad-2.log": {
+      "bytes": 573,
+      "sha256": "681255e00d0ef5e4df6288e3dd085c32be7b0f8c99af0f83472551563423847b"
+    },
+    "retained-attempts/ui-broad-3.log": {
+      "bytes": 370,
+      "sha256": "e3a2fb1ffbcfd7adcd2acdee00c16aa9129fc3a5b06d28b5d46c6087be161cae"
+    },
+    "retained-attempts/ui-broad-4.log": {
+      "bytes": 38426,
+      "sha256": "e4608fb43b370dbf5bc80393f5f03e06ccc9dfc27af0056c26bf39cf2867556e"
+    },
+    "retained-attempts/ui-focused-1.log": {
+      "bytes": 294,
+      "sha256": "ac23d10d4acefa372fe38ffbfb3ee7830189ed1be163224d502059ff3aed19f7"
+    },
+    "retained-attempts/ui-focused-2.log": {
+      "bytes": 750,
+      "sha256": "d9a390e827fd38322e5afced75d6ecfb562cd0f9488a61b1bbcfbe3b44ecca75"
+    },
+    "retained-attempts/validation-1.log": {
+      "bytes": 448,
+      "sha256": "8cd76bc4f2666fa818544354f45b39312618122ecb6d4e4f213ce00719cfdc41"
+    },
+    "retained-attempts/validation-2.log": {
+      "bytes": 220,
+      "sha256": "8e6b6246bb74ebb8a37b2b23fad2728c09e8c6671bfc9f7b404392ab151e1237"
+    },
+    "retained-attempts/validation-2b.log": {
+      "bytes": 207,
+      "sha256": "3eef19bd53e6966cac47f8d1a67b078974281f6b62aae594e3408b473922be89"
+    },
+    "snapshot/docs/literature/fuma-expression-preparation-2/VALIDATION.json": {
+      "bytes": 150907,
+      "sha256": "8f8ad049c55f4ae83492576628d5e6d352e3d669089722411da0ac5387ed2134"
+    },
+    "snapshot/docs/literature/omics-2023-2026/FUMA_SCOPED_WORKFLOWS.md": {
+      "bytes": 6202,
+      "sha256": "9ce0bd326e47460d0ff218d94be84b626fbd966ee129a299b90e9656bf166561"
+    },
+    "snapshot/docs/literature/omics-2023-2026/WARNINGS.md": {
+      "bytes": 114136,
+      "sha256": "7a38aab6bc32073864775e0664c144106ad1d0755e7d9cc03aac23cee802f86d"
+    },
+    "snapshot/docs/literature/omics-2023-2026/catalog-enrichment.json": {
+      "bytes": 1353041,
+      "sha256": "dc0eb791b8d4d1885afa8db3dee402548343452046a4bfde51b4da5b534ad86e"
+    },
+    "snapshot/docs/literature/omics-2023-2026/catalog.md": {
+      "bytes": 502775,
+      "sha256": "6a75a1495fd25d9370a8b47d4d6667501588373b7e440c5d606cd2b6f005dc60"
+    },
+    "snapshot/docs/literature/omics-2023-2026/fuma-catalog-shared-source-compatibility.json": {
+      "bytes": 33973,
+      "sha256": "3a052cdbda7222e5819e45145785adceb9682d52d362ddae11e4d26684527cdd"
+    },
+    "snapshot/docs/literature/omics-2023-2026/fuma-mobile-history-shared-source-compatibility.json": {
+      "bytes": 1764,
+      "sha256": "e350c32de04b76b1d3a2931400028df3dbf61b739fd85a9aebd224f42b581d5e"
+    },
+    "snapshot/docs/literature/omics-2023-2026/fuma-role-coverage.json": {
+      "bytes": 28177,
+      "sha256": "6591d9f0b50ed8dbc988ee91c4d564870fd87c196cf72135671d5b41646d7ae1"
+    },
+    "snapshot/docs/literature/omics-2023-2026/fuma-source-closure.json": {
+      "bytes": 82771,
+      "sha256": "47c4e39450f05bc0ee39d9854c98011c2f8693a1c7e095c90e7f409e09f985d2"
+    },
+    "snapshot/docs/literature/omics-2023-2026/fuma-ui-candidate-shared-source-compatibility.json": {
+      "bytes": 1538,
+      "sha256": "8e0d7b8ede89057671c11b65c19217f58396cb49195b040d8db9584c5737f6ba"
+    },
+    "snapshot/docs/literature/omics-2023-2026/fuma-ui-history-shared-source-compatibility.json": {
+      "bytes": 27225,
+      "sha256": "5c9fffc8a0c130b4473668fcb6c5cf2499bc9a55fdafb82f7d723684a154692b"
+    },
+    "snapshot/docs/literature/omics-2023-2026/implementation-plan.md": {
+      "bytes": 104509,
+      "sha256": "587cc1b0c6b346456f9219772a90d8e05f32072eebd020a9112248c6cd1e76aa"
+    },
+    "snapshot/docs/literature/omics-2023-2026/papers.json": {
+      "bytes": 3038083,
+      "sha256": "92a9c116ffd1f2d9d91e778064b3327b00ffa6336a907ae36e3885df2e8d70f1"
+    },
+    "snapshot/docs/literature/omics-2023-2026/summary.json": {
+      "bytes": 1181,
+      "sha256": "35a246fcffe13044a9408092c4bf0a35395c787c531b8c4d6eb4269f1869a265"
+    },
+    "snapshot/docs/literature/omics-2023-2026/tool-inventory.json": {
+      "bytes": 495246,
+      "sha256": "2de48af87a0085cffa258b9eb6992605c48447061162e3c18c27391c65543ecc"
+    },
+    "snapshot/site/literature-review.html": {
+      "bytes": 3237636,
+      "sha256": "7537974b4e60838044a6b5d7ab695bc1e0d457b8375651466282fae57d635b4a"
+    },
+    "snapshot/site/literature-warnings.html": {
+      "bytes": 228440,
+      "sha256": "cc97c9b3c20dec9702e05e29dc9071cd6515c6841cefcc401b9230068f3d9180"
+    },
+    "source/src/main/java/org/jlinalg/cli/AdmixtureInputs.java": {
+      "bytes": 16330,
+      "sha256": "16981dd8c09976b8543b3ddb0f4f35d79e3f0f69b1ae20cb207f2779a5edd90b"
+    },
+    "source/src/main/java/org/jlinalg/cli/AdmixtureOutputs.java": {
+      "bytes": 19237,
+      "sha256": "f423728782888c7e65430901438d74f702129625d55a9308cad0835c85f66cd4"
+    },
+    "source/src/main/java/org/jlinalg/cli/FollowupSupport.java": {
+      "bytes": 11934,
+      "sha256": "f373d857076b6adf724ef4459c8f5cce7c5cac2f6bc44517527905b87f19d23f"
+    },
+    "source/src/main/java/org/jlinalg/cli/FumaAnnotationCli.java": {
+      "bytes": 14819,
+      "sha256": "3060e70f931b8c8939285374b267c485701630b3aeb40e95ba6eff1b722b24f5"
+    },
+    "source/src/main/java/org/jlinalg/cli/FumaAnnotationInputs.java": {
+      "bytes": 17228,
+      "sha256": "6250d2c43f5b4b7514545869faaf868b508d0de499a960728e9203dd09616f63"
+    },
+    "source/src/main/java/org/jlinalg/cli/FumaAnnotationOutputs.java": {
+      "bytes": 6481,
+      "sha256": "01ace02eb08020b0e76b6088fed11d785b77332c1cdf74c7f03018b7451bf07b"
+    },
+    "source/src/main/java/org/jlinalg/cli/FumaAssociationCli.java": {
+      "bytes": 20550,
+      "sha256": "82795cf2daa52faefb04511e23d8e33f2173948cb9d208d07e7c4a6b2723bdff"
+    },
+    "source/src/main/java/org/jlinalg/cli/FumaAssociationInputs.java": {
+      "bytes": 15830,
+      "sha256": "5fd8e779bfbe6b48cd439d729c9ece2cf99c660bdf821c20f36fcfe00ca79ed8"
+    },
+    "source/src/main/java/org/jlinalg/cli/FumaCelltypeCli.java": {
+      "bytes": 16018,
+      "sha256": "78ed112315446667bad5e0cfa95254103bc524a0914d5819c93ad86019385144"
+    },
+    "source/src/main/java/org/jlinalg/cli/FumaCelltypeInputs.java": {
+      "bytes": 13059,
+      "sha256": "0e368b7dd89c70ddd1dc279a1d4d96dc0f82dc6cb7b612e0dcee8396866f25d3"
+    },
+    "source/src/main/java/org/jlinalg/cli/FumaCelltypeRun.java": {
+      "bytes": 18467,
+      "sha256": "ab9f534ad176f1f46054fd42c7d539762b21a6dec0ca3bf19a9344ccace152f4"
+    },
+    "source/src/main/java/org/jlinalg/cli/FumaExpressionCli.java": {
+      "bytes": 19602,
+      "sha256": "8b98f1fc23e5d404c12fae4f579412823766000eb82e45b2a7cc22ea88e78ac1"
+    },
+    "source/src/main/java/org/jlinalg/cli/FumaExpressionPrepareCli.java": {
+      "bytes": 22397,
+      "sha256": "47f385aecdf9117abdae584e863b23391961ca0e219161e69556950644ba2930"
+    },
+    "source/src/main/java/org/jlinalg/cli/FumaFisherCli.java": {
+      "bytes": 23674,
+      "sha256": "2fc62d58b75931de46fe2e8fd74a82093029a4b263fb3312f81c11cb7ac466e8"
+    },
+    "source/src/main/java/org/jlinalg/cli/FumaFisherInputs.java": {
+      "bytes": 21874,
+      "sha256": "16d46cc9ad9e7813f9ccfebc3c6723861979b5f9430270e3d741996fefd58776"
+    },
+    "source/src/main/java/org/jlinalg/cli/FumaLociCli.java": {
+      "bytes": 22881,
+      "sha256": "b1680bb78a451ca74efebe3bca635439af231d98a1834a7fafc3bf9c1651993b"
+    },
+    "source/src/main/java/org/jlinalg/cli/FumaMagmaReportCli.java": {
+      "bytes": 17270,
+      "sha256": "f57d28d4cfc8d400a686f79311f8a105df499def29ef1729a6460128d590cd9f"
+    },
+    "source/src/main/java/org/jlinalg/cli/FumaMagmaReportInputs.java": {
+      "bytes": 7432,
+      "sha256": "7f40fdc70f5361a543b05bc26ea01af31e3e45c3dcf7b893037696541c0856d0"
+    },
+    "source/src/main/java/org/jlinalg/cli/FumaMappingCli.java": {
+      "bytes": 28715,
+      "sha256": "e5616481f3a2fa6678027fc46d30834fd61327181457742dda4a424fe646496f"
+    },
+    "source/src/main/java/org/jlinalg/cli/FumaNoveltyCli.java": {
+      "bytes": 15647,
+      "sha256": "ebf1cb72d2ed1d40f530690d247a56919e3d20e45b9e8139c1ed43a566899b2f"
+    },
+    "source/src/main/java/org/jlinalg/cli/FumaNoveltyInputs.java": {
+      "bytes": 11849,
+      "sha256": "fec1d68d0035b1b28cd514a9599ef6884cbfd787b6cda95bc8456d2456927113"
+    },
+    "source/src/main/java/org/jlinalg/cli/FumaReferenceCli.java": {
+      "bytes": 31564,
+      "sha256": "dab279f4db12b169ac8cf452f3525d742d6a13be997f66f25b90a10133e40150"
+    },
+    "source/src/main/java/org/jlinalg/cli/FumaToolsCli.java": {
+      "bytes": 21226,
+      "sha256": "e5d0bf452dc4fafdf1b4f557ee225d585b8da29402c11495eef4d303e032a9af"
+    },
+    "source/src/main/java/org/jlinalg/cli/FumaWorkflowCli.java": {
+      "bytes": 35104,
+      "sha256": "c7800a914d9db7c76634fea677d96d9a36da68076878cc618ac59824ebe903bb"
+    },
+    "source/src/main/java/org/jlinalg/cli/FumaWorkflowInputs.java": {
+      "bytes": 12993,
+      "sha256": "218759bb030f86fb847a7920138c082cffa1499450288a13f034f1b975b56fce"
+    },
+    "source/src/main/java/org/jlinalg/cli/MagmaRuntime.java": {
+      "bytes": 4338,
+      "sha256": "73616084bab25152070d346aff12cfd061f2ccf367a8f1aa8ecb52e767bb22e7"
+    },
+    "source/src/main/java/org/jlinalg/cli/MagmaToolsCli.java": {
+      "bytes": 38022,
+      "sha256": "9012f5f4b555632ba9284020ee194e464cca1f9936fd7e57cd9fa5273a9c124c"
+    },
+    "source/src/main/java/org/jlinalg/cli/RegenieRuntime.java": {
+      "bytes": 7077,
+      "sha256": "5ee111b9506f95e0b205a19cc42959c559a1d65466f37a0b05cda5b43810904b"
+    },
+    "source/src/main/java/org/jlinalg/cli/RnaToolRuntime.java": {
+      "bytes": 11191,
+      "sha256": "aa6560e6a47c999cffe1486b04272271ae2612daf74e99058b8da5cb010f2b0b"
+    },
+    "source/src/main/java/org/jlinalg/cli/SaigeGenotypes.java": {
+      "bytes": 10005,
+      "sha256": "b760c4ed5158e293bc71b2436f751a5671b996211c391dec1971d5e4a4052d1b"
+    },
+    "source/src/main/java/org/jlinalg/cli/SaigeGrmInputs.java": {
+      "bytes": 16432,
+      "sha256": "97fdc6bab46b39703dcaf5bbee8e7d879fdc46f0bcacc1be823ddf61fc4ecde9"
+    },
+    "source/src/main/java/org/jlinalg/cli/SimpleJson.java": {
+      "bytes": 6107,
+      "sha256": "8425dc1a2179763af43c86898cf2b21d8c17dc76bdcabe0133d0ddcb6d6add5b"
+    },
+    "source/src/main/java/org/jlinalg/cli/TranscriptSiteCli.java": {
+      "bytes": 17129,
+      "sha256": "f629c335bb83b50b50f4457f4932581186d185cdb0892045a00de0103fab6952"
+    },
+    "source/src/main/java/org/jlinalg/cli/TranscriptSiteInputs.java": {
+      "bytes": 6810,
+      "sha256": "914c87a92e06e0d553537e3019447a959e5e000c4ccbe01fd42793d43516b6d3"
+    },
+    "source/src/main/java/org/jlinalg/enrichment/FumaCelltypeAnalysis.java": {
+      "bytes": 22891,
+      "sha256": "b4f512ae52d1972d255efd8637627b202423c940abe07fcf1bdd3531646830e8"
+    },
+    "source/src/main/java/org/jlinalg/enrichment/FumaDegEnrichment.java": {
+      "bytes": 11048,
+      "sha256": "8a9ed44424d89852986dec0717ab5b42f7363ac20e59308a88a19659d32ef454"
+    },
+    "source/src/main/java/org/jlinalg/enrichment/FumaExpressionPreparation.java": {
+      "bytes": 9469,
+      "sha256": "54af507af06e20b8d42c464cf628eeb2ac68664d4e26f4412f576427e4c2169f"
+    },
+    "source/src/main/java/org/jlinalg/enrichment/FumaGeneExpression.java": {
+      "bytes": 7215,
+      "sha256": "a2a5664d54182a82a1712389c8f66a258e0057009da4e3c5d2335048aea920bc"
+    },
+    "source/src/main/java/org/jlinalg/enrichment/FumaGeneSetEnrichment.java": {
+      "bytes": 18104,
+      "sha256": "8baa347a21341cdee4e50d81569ca016ad37a2b074d6b30f6ebb6792124c2f65"
+    },
+    "source/src/main/java/org/jlinalg/enrichment/FumaMagmaReport.java": {
+      "bytes": 12643,
+      "sha256": "bee04e9f2fc4acbf5a5783a8fa556ade81251ac11dc54fad4656e370ba87277f"
+    },
+    "source/src/main/java/org/jlinalg/genetics/AncestryMixtureLikelihood.java": {
+      "bytes": 12337,
+      "sha256": "1791dda67a9c44fdb038690af2c09aff1f3dad57984bfd818c4621ff329bded8"
+    },
+    "source/src/main/java/org/jlinalg/genetics/FumaChromatinMapping.java": {
+      "bytes": 15065,
+      "sha256": "136eecbad409a3f5288b469759e3b6c839ca42bce848040676455f7ee085cbff"
+    },
+    "source/src/main/java/org/jlinalg/genetics/FumaFisherExact.java": {
+      "bytes": 15676,
+      "sha256": "120cb325731144eaf0d802bbb96b0e47f7ab45c7268f01aa29939a6a9d0388c4"
+    },
+    "source/src/main/java/org/jlinalg/genetics/FumaFisherFamilies.java": {
+      "bytes": 14829,
+      "sha256": "829b1233e391861460504a73509146c1842a18fcd33eddfb91575c2962d8d738"
+    },
+    "source/src/main/java/org/jlinalg/genetics/FumaFisherGroups.java": {
+      "bytes": 19269,
+      "sha256": "8daf2d2d0ceea37483acdf70cef450be5e7a8fd16ef88348db6a475dd99e516f"
+    },
+    "source/src/main/java/org/jlinalg/genetics/FumaGeneScoreAnnotations.java": {
+      "bytes": 7943,
+      "sha256": "fbee514dc0970f6621b73bf5c152aa9c7cbf20e237970901083fc6adf0570f2a"
+    },
+    "source/src/main/java/org/jlinalg/genetics/FumaKnownAssociations.java": {
+      "bytes": 24184,
+      "sha256": "dbf983036e42b2908190d1f1f04a8f1024801103ec7f9e724d8d95ef084c63b8"
+    },
+    "source/src/main/java/org/jlinalg/genetics/FumaLocusDefinition.java": {
+      "bytes": 33459,
+      "sha256": "cc6bdd43b035700cf4d3ee7fa06653074b8ae447ab72b24ab62b716448a6dcb2"
+    },
+    "source/src/main/java/org/jlinalg/genetics/FumaLocusNovelty.java": {
+      "bytes": 12204,
+      "sha256": "341ed3d30d9cbcca9d3f86dbe9c23001c4541d4c4616b6afcd3fceeb7e8cff9a"
+    },
+    "source/src/main/java/org/jlinalg/genetics/FumaReferencePreparation.java": {
+      "bytes": 11464,
+      "sha256": "c30415d989540678f1e43bf46cdad58fb5fe25ac562b919a27bb812dd3e19581"
+    },
+    "source/src/main/java/org/jlinalg/genetics/FumaVariantAnnotations.java": {
+      "bytes": 30071,
+      "sha256": "b0e35cc11e6d5af3a94fd43f1be93eb50713d890555e9b9158d63425af131b8e"
+    },
+    "source/src/main/java/org/jlinalg/genetics/FumaVariantGeneMapping.java": {
+      "bytes": 23173,
+      "sha256": "5435505fca7085d2637661bce519b6d3a3d219a7873fa958b8cbbb94bedd2b16"
+    },
+    "source/src/main/java/org/jlinalg/genetics/GeneWindowMapping.java": {
+      "bytes": 9514,
+      "sha256": "18623e3f2794d1f050626906edb5d5902f8a5835bd0fe01ad7aaca5b374c1639"
+    },
+    "source/src/main/java/org/jlinalg/genetics/HardcallLd.java": {
+      "bytes": 9443,
+      "sha256": "6982adc2af9fe085457711b6e719d368f082425e582ed024d718d6bbb5a97798"
+    },
+    "source/src/main/java/org/jlinalg/genetics/MagmaTables.java": {
+      "bytes": 9420,
+      "sha256": "93eaf24c77f57419ea85ec811cad67dba4bdbe6b371d11133b7a4b4bcb6b41fa"
+    },
+    "source/src/main/java/org/jlinalg/genetics/PlinkBedDataset.java": {
+      "bytes": 15260,
+      "sha256": "7cf9ea9081bd0298555436c54916742990f1480f7db133872d62bdc275c13872"
+    },
+    "source/src/main/java/org/jlinalg/genetics/TranscriptSiteMapping.java": {
+      "bytes": 17818,
+      "sha256": "b04ce17c1345f686b8c5068fe96a81b008e95b2156a1cec11e88ca2b019b2e41"
+    },
+    "source/src/main/java/org/jlinalg/sequence/FastaIndexes.java": {
+      "bytes": 2146,
+      "sha256": "21bd6247b238adef0019f87258c19a4d239e74e69c65ffcaf20445ea8486822b"
+    },
+    "source/tools/literature/check_fuma_review_ui.cjs": {
+      "bytes": 6159,
+      "sha256": "8c03636a89a8d5cd56cb79189e66eb1264e31a27ac712339d9512a43347233df"
+    },
+    "source/tools/literature/check_review_ui.cjs": {
+      "bytes": 247160,
+      "sha256": "bbeeeea0751dafcd780120398feb6ffc2eaba638a7b307867736431c92c29c69"
+    },
+    "source/tools/literature/freeze_fuma_catalog.py": {
+      "bytes": 6973,
+      "sha256": "2642715dadd25e2628834a7a4fd8e4649c3baf2da95aed1d1ee5c8d5f85465df"
+    },
+    "source/tools/literature/fuma_catalog.py": {
+      "bytes": 19014,
+      "sha256": "303c9cda638e0684523024bbde3aa9f87c005f0f65df372db1a7140c82619c0c"
+    },
+    "source/tools/literature/fuma_role_coverage.py": {
+      "bytes": 8033,
+      "sha256": "aa336809c491c5baf67321be18a60f6ab3e817500f6293f671cf31f55dc160e0"
+    },
+    "source/tools/literature/fuma_source_closure.py": {
+      "bytes": 4935,
+      "sha256": "a1b06a76b0490c376723878a63d27705e81b9e942123c4ec09149534405c0452"
+    },
+    "source/tools/literature/render_review.py": {
+      "bytes": 392937,
+      "sha256": "a17f0dafaeb4a003ddf899c52e485ca681d5f8a23cbadb2f2f7bf0cafff410ac"
+    },
+    "source/tools/literature/validate_fuma_catalog.py": {
+      "bytes": 7589,
+      "sha256": "751265374b9588ebb61bb7c7952836c1159b1408408181fb06b96495bef8501f"
+    }
+  },
+  "claims": {
+    "native_subset_available": true,
+    "canonical_release_updated": false,
+    "full_hosted_tool_available": false,
+    "whole_paper_reproduced": false,
+    "whole_goal_complete": false,
+    "released_or_deployed": false
+  },
+  "required_action": "Use FUMA_SCOPED_WORKFLOWS.md and the current candidate identified by the scientific checkpoint. Supply declared data and inspect complete warnings/audits. Unavailable or forbidden required upstream runtime: SKIP3 and skip its dependent analysis; install only where permitted. Invalid data/integrity/numerical/capacity/cancellation failure: FAIL2; preserve diagnostics, correct the named cause and rerun completely to a new directory. Cell Ranger stays excluded. This catalog snapshot is historical when unrelated tools advance."
+}
