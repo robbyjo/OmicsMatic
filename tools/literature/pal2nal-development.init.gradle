@@ -1,0 +1,26 @@
+// Isolated development build; never replace the previous canonical executable.
+allprojects {
+    afterEvaluate {
+        def supplied = rootProject.findProperty('pal2nalDevelopmentOut')
+        if (supplied == null || supplied.toString().trim().isEmpty()) {
+            throw new GradleException('Supply -Ppal2nalDevelopmentOut=NEW_DIRECTORY_UNDER_BUILD')
+        }
+        def base = rootProject.layout.buildDirectory.get().asFile.canonicalFile.toPath()
+        def target = rootProject.file(supplied.toString()).canonicalFile
+        if (!target.toPath().startsWith(base) || target.toPath() == base || target.exists()) {
+            throw new GradleException('PAL2NAL development output must be a NEW directory under the project build directory')
+        }
+        tasks.named('executableJar', org.gradle.api.tasks.bundling.Jar) {
+            destinationDirectory = target
+            archiveFileName = "omicsmatic-${project.version}-pal2nal-development.jar"
+            doFirst {
+                if (archiveFile.get().asFile.exists()) {
+                    throw new GradleException('Development executable already exists; preserve it and choose a NEW output directory')
+                }
+            }
+            doLast {
+                println("PAL2NAL development JAR: ${archiveFile.get().asFile}")
+            }
+        }
+    }
+}

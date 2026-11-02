@@ -33,6 +33,14 @@ final class MafftRecipe {
         List<String> arguments(Path preparedInput,Path preparedAdditions)throws IOException {
             for(Path p:preparedAdditions==null?List.of(preparedInput):List.of(preparedInput,preparedAdditions))
                 if(!p.isAbsolute()||!p.toRealPath().equals(p)||!p.toString().matches("/[A-Za-z0-9/._+-]+"))throw new IOException("MAFFT prepared paths must be canonical ASCII files");
+            return declaredArguments(preparedInput.toString(),preparedAdditions==null?null:preparedAdditions.toString());
+        }
+        /** Reconstructs declared original Linux argument strings without accessing that host. */
+        List<String> declaredArguments(String preparedInput,String preparedAdditions)throws IOException {
+            for(String path:preparedAdditions==null?List.of(preparedInput):List.of(preparedInput,preparedAdditions)) {
+                if(!path.matches("/(?:[A-Za-z0-9._+-]+/)*[A-Za-z0-9._+-]+"))throw new IOException("MAFFT recorded prepared paths must be absolute canonical ASCII paths");
+                for(String part:path.substring(1).split("/"))if(part.equals(".")||part.equals(".."))throw new IOException("MAFFT recorded prepared path contains a relative segment");
+            }
             var result=new ArrayList<>(List.of("--thread",Integer.toString(parameters.threads()),parameters.outputOrder()==MafftSequences.OutputOrder.INPUT?"--inputorder":"--reorder",alphabet==MafftSequences.Alphabet.NUCLEOTIDE?"--nuc":"--amino"));
             if(parameters.progressiveThreads()!=null)result.addAll(List.of("--threadtb",parameters.progressiveThreads().toString()));
             if(parameters.iterationThreads()!=null)result.addAll(List.of("--threadit",parameters.iterationThreads().toString()));
@@ -52,8 +60,8 @@ final class MafftRecipe {
                 if(scoring.blosum()!=null)result.addAll(List.of("--bl",scoring.blosum().toString()));
                 result.addAll(List.of("--op",scoring.gapOpen().toString(),"--ep",scoring.offset().toString()));
             }
-            if(operation==Operation.ADD){result.addAll(List.of("--add",Objects.requireNonNull(preparedAdditions).toString()));if(parameters.keepLength())result.addAll(List.of("--keeplength","--mapout"));}
-            result.add(preparedInput.toString());return List.copyOf(result);
+            if(operation==Operation.ADD){result.addAll(List.of("--add",Objects.requireNonNull(preparedAdditions)));if(parameters.keepLength())result.addAll(List.of("--keeplength","--mapout"));}
+            result.add(preparedInput);return List.copyOf(result);
         }
     }
     static Spec read(Path supplied)throws IOException {

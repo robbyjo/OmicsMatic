@@ -1,6 +1,6 @@
 # Omics and GWAS paper catalog
 
-250 papers; 379 named tools; 2428 paper-tool observations.
+250 papers; 380 named tools; 2430 paper-tool observations.
 
 Window: 2023-10-23 through 2026-10-23, inclusive. No extension was required.
 
@@ -569,7 +569,7 @@ Nature · 2025-12-10 · [DOI](https://doi.org/10.1038/s41586-025-09834-x) · [Pr
 | DRAGEN | Sequencing alignment, variant or RNA processing platform; named workflow must be identified. | Methods / Gene expression analysis |
 | featureCounts | Quantified yeast RNA-seq against R64-1-1 using Rsubread featureCounts after BCLConvert demultiplexing and DRAGEN RNA processing. The paragraph reports Rsubread 2.23.2 with R 4.4.1. | Methods / Gene expression analysis |
 | Jalview | Alignment visualization and manual inspection. | Methods / Evolutionary analysis |
-| MAFFT | Multiple sequence alignment. | Methods / Evolutionary analysis |
+| MAFFT | Aligned Saccharomyces MGE1 homolog protein sequences with 7.505 using local pairwise alignment and a 1,000-iteration maximum; Jalview then calculated conservation and displayed the alignment. | Methods / Evolutionary analysis |
 | Rsubread | Used the Rsubread featureCounts interface for yeast RNA-seq counts; reported version 2.23.2 with R 4.4.1. | Methods / Gene expression analysis |
 
 XML SHA-256: `e4a97689207af74f04de28e08e53fd28f02f5589e0be6aa1fc53d12589ae281d`. Exact evidence paragraph hashes and locators are in [papers.json](papers.json).
@@ -717,7 +717,7 @@ Nature · 2023-12-13 · [DOI](https://doi.org/10.1038/s41586-023-06838-3) · [Pr
 | GSEA | Ranked gene-set enrichment. | Methods / Determining the effects of MDCF-2 supplementation on the abundances of WLZ-associated MAGs |
 | IQ-TREE | Built a maximum-likelihood nucleotide tree from 142 aligned core genes for 34 Bifidobacterium MAGs and 14 reference genomes, using B. gallicum DSM 20093 as the outgroup to refine MAG classifications. | Methods / MAGs / MAG taxonomy |
 | kallisto | Used kallisto0.43.0 for metagenomic contig/MAG abundance and metatranscriptomic transcript quantification. DNA TPM prevalence/abundance filters selected837MAGs; later RNA counts excluded rRNA and low-DNA-abundance MAGs. | Methods / Defining the relationship between MAG abundances and WLZ |
-| MAFFT | Multiple sequence alignment. | Methods / MAGs / MAG taxonomy |
+| MAFFT | Aligned concatenated nucleotide sequences of 142 core genes from 34 Bifidobacterium MAGs and 14 reference genomes with 7.313 before microseq trimming and IQ-TREE phylogenetic classification. | Methods / MAGs / MAG taxonomy |
 | MetaBAT2 | Metagenomic assembly binning and read-depth processing. | Methods / MAGs / Short-read shotgun sequencing |
 | Trim Galore | Removed adapters and low-quality sequence using TrimGalore 0.6.4 for shotgun microbial DNA and RNA. Discarded the entire paired observation if either mate was shorter than 50 bases for DNA or 100 bases for RNA; used separate pre/post FastQC checks. | Methods / MAGs / Short-read shotgun sequencing |
 | variancePartition | Expression variance partitioning. | Methods / Determining the effects of MDCF-2 supplementation on the abundances of WLZ-associated MAGs |
@@ -1051,7 +1051,7 @@ Nature · 2026-09-02 · [DOI](https://doi.org/10.1038/s41586-026-10952-3) · [Pr
 | AlphaFold | Used predicted protein structures in the study's structural analysis. | Methods / Sequence and structural alignments of the structure-mined membrane-binding domains |
 | DESeq2 | Count-based differential expression analysis. | Methods / Characterization of STV-C8 RNA content |
 | g:Profiler | Functional gene-set enrichment. | Methods / RNA and protein gene set enrichment analysis |
-| MAFFT | Multiple sequence alignment. | Methods / Sequence and structural alignments of the structure-mined membrane-binding domains |
+| MAFFT | Used the MAFFT add tool to align structure-mined membrane-binding domain proteins to residues visible in the R. norvegicus PHPLCδ X-ray reference 1MAI; reported auto strategy, BLOSUM62, gap opening 1.53 and offset 0.0. | Methods / Sequence and structural alignments of the structure-mined membrane-binding domains |
 | MaxQuant | Mass-spectrometry proteomic identification and quantification. | Methods / Characterization of STV-C8 protein content |
 | PyMOL | Aligned extracted predicted membrane-binding-domain structures to the rat PHPLCdelta crystal structure PDB1MAI and calculated RMSD with the PyMOL super alignment tool. | Methods / Sequence and structural alignments of the structure-mined membrane-binding domains |
 | STAR | Splice-aware bulk RNA read alignment and optional raw gene counts. | Methods / Characterization of STV-C8 RNA content |
@@ -1104,7 +1104,7 @@ Nature · 2025-12-03 · [DOI](https://doi.org/10.1038/s41586-025-09794-2) · [Pr
 | fastp | Read filtering and adapter trimming. | Methods / Short-read metagenomic library preparation, sequencing and processing |
 | Guppy | Nanopore basecalling; distinguish the fish name. | Methods / Nearly full-length bacterial 16S rRNA gene amplicon library preparation, sequencing and processing |
 | IQ-TREE | Used 2.2.0.3 for protein phylogenies with 1,000 ultrafast replicates and ModelFinder-selected LG+R6, LG+F+R10 or LG+F+R8, plus WAG+R for archaeal AmoA. Separately used 2.4.0 with GTR+F+I+R10 on 591 amoA nucleotide sites, and 2.1.2 with WAG+G and 1,000 ultrafast replicates on concatenated GTDB marker proteins. | Methods / Gene-centric investigation of short-read metagenomes |
-| MAFFT | Multiple sequence alignment. | Methods / Gene-centric investigation of short-read metagenomes |
+| MAFFT | Used 7.490 to align NxrA/NarG and AmoA protein sequences before trimAl filtering and IQ-TREE trees. The additional phylogenomic paragraph also uses 7.490 for Nitrobacter-like cytoplasmic NxrA sequences and defined outgroups. | Methods / Gene-centric investigation of short-read metagenomes |
 | MetaBAT2 | Metagenomic assembly binning and read-depth processing. | Methods / Metagenomic assembly and binning |
 | minimap2 | Mapped selected metagenomic short reads to assemblies using minimap2 2.24 -ax sr, followed by SAMtools 1.16.1 view -Sb -F 2308 and sorting. | Methods / Metagenomic assembly and binning |
 | SAMtools | Alignment manipulation and QC. | Methods / Metagenomic assembly and binning |
@@ -1971,7 +1971,7 @@ Nature Genetics · 2023-11-30 · [DOI](https://doi.org/10.1038/s41588-023-01571-
 | IQ-TREE | Inferred a maximum-likelihood population tree for 516 millet accessions using GTR+R10 on 8,164 fourfold-degenerate transversion SNPs. | Methods / Phylogeny and population structure |
 | Juicer | Hi-C read processing and contact maps. | Methods / Short-read sequencing, Hi-C sequencing and data processing |
 | KofamKOALA | Profile-HMM KEGG orthology annotation. | Methods / RNA-seq and differential gene expression analysis |
-| MAFFT | Multiple sequence alignment. | Methods / Gene-based pangenome analyses |
+| MAFFT | Generated gene-level multiple sequence alignments with 7.475 for in-house Perl estimates of pangenome diversity π, using differential-site count, conserved alignment length and the number of sequence pairs. | Methods / Gene-based pangenome analyses |
 | Merqury | Assembly k-mer completeness assessment. | Methods / Long-read sequencing, assembly and quality assessment |
 | minimap2 | Used minimap2 2.24-r1122 HiFi alignments to inspect millet structural-variant breakpoints, including manual IGV assessment of 304 loci spanning 3-17 kb. | Methods / Long-read sequencing, assembly and quality assessment |
 | PLINK | Used for genetic principal components. | Methods / Phylogeny and population structure |
@@ -2186,7 +2186,8 @@ Nature Genetics · 2025-11-18 · [DOI](https://doi.org/10.1038/s41588-025-02409-
 | IQ-TREE | Constructed MT-A70 protein phylogenies after MAFFT alignment and trimAl filtering, using automatic model selection with 1,000 ultrafast and SH-aLRT replicates. Related inferred trees also provided inputs to separate PAL2NAL/CodeML selection analyses. | Methods / Sequence search and phylogenetic analysis |
 | kallisto | Used kallisto0.46 transcriptome-based estimated counts (est_counts) for cross-species differential-expression analysis with DESeq2. | Methods / RNA-seq preparation and analysis |
 | MACS | Called ChIP peaks with MACS3 3.0.0a7 at q-value 0.01 with species-adjusted effective genome sizes, including 4e7, and used broad mode; classified broad regions further using a width threshold above 1200 bases. | Methods / ChIP–seq library preparation and analysis |
-| MAFFT | Multiple sequence alignment. | Methods / Sequence search and phylogenetic analysis |
+| MAFFT | Aligned MT-A70 family proteins in 7.475 L-INS-i mode before trimAl and IQ-TREE analysis. A separate selection-analysis paragraph reused MAFFT protein alignments with matching nucleotide sequences in PAL2NAL to create codon alignments for EasyCodeML. | Methods / Sequence search and phylogenetic analysis |
+| PAL2NAL | Back-translated the MAFFT protein alignment with corresponding nucleotide sequences into a codon alignment before EasyCodeML/CodeML positive-selection tests. | Methods / Selection analysis |
 | RepeatMasker | Generated repeat annotations for species lacking them by mapping RepeatModeler2.0.2a consensus repeat libraries against genomes using RepeatMasker4.1.2-p1. | Methods / Genome assembly and re-annotation |
 | Sambamba | Removed duplicate ChIP-seq alignments with Sambamba 0.6.6 before MACS3 broad/narrow peak analyses. | Methods / ChIP–seq library preparation and analysis |
 | SAMtools | Alignment manipulation and QC. | Methods / Nanopore sequencing, base calling and methylation analysis |
@@ -3322,7 +3323,7 @@ Nature Genetics · 2026-07-22 · [DOI](https://doi.org/10.1038/s41588-026-02678-
 | LDAK | SNP heritability and polygenic modelling. | Methods / Heritability estimation |
 | LUSH-DNASeq-pipeline | Genotyped SNPs and indels shorter than 50 bp with LUSH-DNASeq-pipeline 2.2.0 after BWA-MEM2 mapping, then kept biallelic variants and applied separate SNP/indel annotation thresholds. | Methods / Variant calling and filtering |
 | MACS | Called CENH3 ChIP peaks with MACS3 3.0.1 using input controls and BAMPE after accession-specific alignment/filters; merged adjacent enriched regions within the reported 1000-kb distance to identify potential centromeres. | Methods / Centromeric region identification |
-| MAFFT | Multiple sequence alignment. | Methods / Phylogenetic tree construction and divergence time estimation |
+| MAFFT | Aligned longest-transcript protein sequences from single-copy gene families across 13 wheat subspecies and barley Morex v.3 with 7.526 before IQ-TREE2 gene-tree construction and ASTRAL analysis. | Methods / Phylogenetic tree construction and divergence time estimation |
 | Merqury | Assembly k-mer completeness assessment. | Methods / Assembled genome evaluation |
 | minimap2 | Mapped ONT reads to 14 wheat chromosomes using minimap2 2.24 for chromosome-wise NextDenovo assembly, and aligned contigs to organelle references with -cx asm20. | Methods / Genome assembly / Step 1. Contig construction |
 | pbmm2 | PacBio read alignment. | Methods / Genome annotation |
@@ -4451,7 +4452,7 @@ American Journal of Human Genetics · 2024-07-10 · [DOI](https://doi.org/10.101
 | IQ-TREE | Used 1.6.12 for maximum-likelihood tree inference with automatic model selection and 1,000 bootstraps. Separately used iqtree2 for coalescence-time estimation with a 6.4-million-year chimpanzee calibration. | Material and methods / Sequence extractions and phylogenetic analyses |
 | Jalview | Visually inspected multiple sequence alignment quality before manually removing misaligned segments. | Material and methods / Sequence extractions and phylogenetic analyses |
 | Locityper | Read recruitment and probabilistic WGS locus/haplotype genotyping. | Material and methods / Genotyping of MUC5AC haplogroups in 1KG populations using Locityper |
-| MAFFT | Aligned selected intronic/intergenic sequences using global pairwise alignment and 100 iterations before phylogenetic inference. | Material and methods / Sequence extractions and phylogenetic analyses |
+| MAFFT | Aligned recombination-aware intronic/intergenic genomic sequences with 7.487 global pairwise alignment and a reported 100-iteration setting, followed by Jalview inspection, manual removal of misaligned segments and phylogenetic inference. | Material and methods / Sequence extractions and phylogenetic analyses |
 | MEME | Motif discovery and scanning. | Material and methods / NHP allele alignments and intronic VNTR analysis |
 | minimap2 | Aligned phased HPRC/HGSVC/NHP assemblies to CHM13 using minimap2 2.24 with CIGAR inclusion, secondary alignments suppressed, stated divergence <10% and minimum peak alignment score 25,000. | Material and methods / Sequence extractions and phylogenetic analyses |
 | PLINK | Used for LD-based variant selection. | Material and methods / LD block structure and selection detection analyses |
@@ -4651,6 +4652,7 @@ Nature Genetics · 2026-07-21 · [DOI](https://doi.org/10.1038/s41588-026-02682-
 | IQ-TREE | Inferred a GTR+R10 maximum-likelihood phylogeny of 422 cucumber accessions from 18,600 fourfold-degenerate transversion SNPs. | Methods / Phylogeny and population structure |
 | Merqury | Assembly k-mer completeness assessment. | Methods / Long-read sequencing, assembly and quality assessment |
 | minimap2 | Aligned high-quality long reads to cucumber genome assemblies with minimap2 2.17-r941 as an assembly-integrity assessment. | Methods / Long-read sequencing, assembly and quality assessment |
+| PAL2NAL | Used PAL2NAL with ClustalW2 to prepare homolog-pair alignments for PAML CODEML Ka/Ks analysis within syntenic gene families. | Methods / Syntenic gene family analyses |
 | pbmm2 | PacBio read alignment. | Methods / SV-based graph pangenome construction and SV genotyping |
 | Picard | Alignment QC, duplicates and sequence processing. | Methods / SNP and InDel calling of 422 accessions |
 | PLINK | Used for LD-based variant selection. | Methods / RNA-seq, eQTL and TWAS analysis |

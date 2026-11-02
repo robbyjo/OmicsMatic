@@ -3308,7 +3308,7 @@
     "role": "Multiple sequence alignment",
     "current_coverage": "missing",
     "existing_source": null,
-    "coverage_note": "Named primary-source workflow recovered during semantic review. Upstream integration, exact input/settings and meaningful validation remain pending.",
+    "coverage_note": "The pre-expansion inventory lacked MAFFT. The current-source typed alignment/addition command has validated scoped contracts; eight primary-source paper roles retain explicit unknown settings and downstream boundaries.",
     "paper_count": 8,
     "papers": [
       "P029",
@@ -3320,10 +3320,32 @@
       "P171",
       "P235"
     ],
-    "implementation_status": "missing",
-    "implementation_source": null,
-    "implementation_scope": "Named primary-source workflow recovered during semantic review. Upstream integration, exact input/settings and meaningful validation remain pending.",
-    "validation_note": "Existing overlap/adapters require paper-specific option checks; missing integrations remain pending."
+    "implementation_status": "upstream-adapter-validated",
+    "implementation_source": "src/main/java/org/jlinalg/cli/MafftToolsCli.java",
+    "implementation_scope": "Exact original Linux x86_64 editions 7.313, 7.475, 7.487, 7.490, 7.505, 7.526 through mafft-tools. Complete plain UTF-8 nucleotide/protein FASTA; explicit alphabet, symbol, header, gap, algorithm, scoring, thread and order choices. De novo alignment or addition to a supplied backbone, with optional keep-length and a complete insertion-deletion map. Source-default/auto, local/global/generalized-pair and FFT strategies; explicit refinement maximum; source defaults or explicit BLOSUM30/45/62/80 and gap settings. Native Java checks every original/prepared/source/restored cell, identity, header, retained residue case and residue-ledger row; complete hashes, host/process receipts and exact command/recipe binding are retained. Runtime setup is explicit and separate; no analysis-time installation. Use Linux Java, including WSL on Windows, and an admitted exact private home. Native parsing and completed-bundle verification also work on Windows. RNA structure, DASH/network, custom matrices, codon translation, direction inference, add-fragments/add-profile, batch execution, unresolved paper settings and whole-paper reproduction remain open. Read MAFFT_DEVELOPMENT.md.",
+    "validation_note": "57 actual packaged protocols match expected outcomes: 35 finalized alignments, 13 SKIP3 outcomes and 9 FAIL2 outcomes. One controlled finalization failure follows a completed original fit; 36 original processes completed but only 35 results were admitted. They reuse 9 tiny input-byte populations, not independent biological datasets. All 1678 original-residue ledger cells and 37 deliberate deletions are independently checked; 24 alignment/map files match original bytes across six editions. All 180 focused cases run against actual JARs on three JVMs: Windows Java 21/25 each 159 passes plus 21 Linux-only aborts; Linux Java 21 has 179 passes plus 1 Windows-only abort. A setup-message-only source/class-constant delta preserves every scientific instruction. Full Java/publication gate counts are recorded separately in the validation report. No biological alignment-accuracy or paper-reconstruction certificate is claimed.",
+    "project_adapter_available": true,
+    "canonical_adapter_available": false,
+    "development_adapter_cli": "mafft-tools",
+    "development_candidate": "build/literature-review/mafft-runtime/catalog-integration-1/package/omicsmatic-0.3.7-mafft-catalog-1.jar",
+    "development_candidate_sha256": "5a6361adf118a9304bda3951ad870783510388465159e1bb432316e8934daf9f",
+    "workflow_validation": "mafft-workflow-validation.json",
+    "source_role_coverage": "mafft-role-coverage.json",
+    "source_roles_reviewed": 8,
+    "runtime_profiles": [
+      "linux-x86_64-mafft-7.313",
+      "linux-x86_64-mafft-7.475",
+      "linux-x86_64-mafft-7.487",
+      "linux-x86_64-mafft-7.490",
+      "linux-x86_64-mafft-7.505",
+      "linux-x86_64-mafft-7.526"
+    ],
+    "runtime_setup_export_available": true,
+    "download_install_available": true,
+    "runtime_installer": "tools/literature/install_mafft.py",
+    "whole_paper_reproduced": false,
+    "biological_accuracy_certified": false,
+    "paper_exact_unknown_settings_available": false
   },
   {
     "id": "fgsea",
@@ -6768,6 +6790,41 @@
     "implementation_source": "src/main/java/org/jlinalg/singlecell/SampleInference.java",
     "implementation_scope": "Related native method; upstream software options and numerical equivalence require separate validation.",
     "validation_note": "Existing overlap/adapters require paper-specific option checks; missing integrations remain pending."
+  },
+  {
+    "id": "pal2nal",
+    "name": "PAL2NAL",
+    "pattern": "(?<![A-Za-z0-9_])PAL2NAL(?![A-Za-z0-9_])",
+    "role": "Protein-guided codon back-translation of aligned peptides and corresponding nucleotide sequences",
+    "current_coverage": "native-subset-validated",
+    "existing_source": "src/main/java/org/jlinalg/sequence/Pal2Nal.java",
+    "coverage_note": "PAL2NAL was absent from the previous registry. A full 250-source/full 418-registry scan adds two reviewed roles while preserving all 2428 previous observations and 759 previous reviews.",
+    "paper_count": 2,
+    "papers": [
+      "P110",
+      "P248"
+    ],
+    "implementation_status": "native-subset-validated",
+    "implementation_source": "src/main/java/org/jlinalg/cli/Pal2NalToolsCli.java",
+    "implementation_scope": "Native Java v14/v14.1-matching protein-guided codon back-translation through pal2nal-tools. Complete UTF-8 protein FASTA/CLUSTAL and 1..128 DNA/RNA FASTA files; explicit headers, ID/order pairing, placement, exact/relaxed matching, genetic code, normalization, selection, filters, verification thresholds and capacities. Complete raw snapshots, per-cell DNA coordinates, original flanks and every triplet drop remain available. Filtered/expanded FASTA and opaque-ID sequential PHYLIP/CLUSTAL exports are checked; portable verification recomputes the complete mapping and result. No external PAL2NAL runtime or analysis-time installation. Original table 10, initiator and uppercase universal-stop filter differences remain explicit; optional selected-v14-table filtering is a named native departure. Current-source Windows/Linux workflow is available; older released0.3.7 executables lack this command. No full original web/HTML/unknown-residue/partial-splice behavior, inferred author options, PAML inference or full-paper equivalence. Read PAL2NAL_WORKFLOW.md.",
+    "validation_note": "170 retained native protocols across two named profiles:156 completed conversions and 14 expected input/capability refusals. Independently audited 9756 cells, 5156 expanded triplets and 114 removed triplets;152 complete output-population comparisons against original sequence rows and four documented-symbol normalization departures. All 206 actual-JAR tests pass per JVM on Windows Java 21/25 and Linux Java 21 with 128 MiB heaps. All 85 fresh original v14/v14.1 stdout vectors and exit statuses agree; independent NCBI checks retain the single table 10 codon difference and five source initiator differences. An earlier PHYLIP layout failure and unavailable historical temporary Linux raw files remain disclosed; current persistent Linux capture has an exact19-file census and verifies on Windows. Small synthetic controls do not certify biological accuracy or paper reproduction.",
+    "project_adapter_available": true,
+    "canonical_adapter_available": false,
+    "native_helper_available": true,
+    "development_adapter_cli": "pal2nal-tools",
+    "development_candidate": "build/literature-review/pal2nal-runtime/workflow-development-1/package-4/omicsmatic-0.3.7-pal2nal-development.jar",
+    "development_candidate_sha256": "c2896bfdf8cc21c143beb7b4cb679e5391f75ef436d5f076e33d16791a7cbbad",
+    "source_roles_reviewed": 2,
+    "workflow_validation": "../PAL2NAL_WORKFLOW_DEVELOPMENT_VALIDATION.json",
+    "source_role_coverage": "pal2nal-role-coverage.json",
+    "runtime_profiles": [
+      "native-pal2nal-v14-matching",
+      "native-pal2nal-v14.1-matching"
+    ],
+    "external_analysis_runtime_required": false,
+    "whole_paper_reproduced": false,
+    "biological_accuracy_certified": false,
+    "paper_exact_unknown_settings_available": false
   },
   {
     "id": "sambamba",

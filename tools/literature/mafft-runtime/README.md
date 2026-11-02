@@ -3,10 +3,11 @@
 These are locked original-release definitions, an unmodified maintainer BSD
 notice and complete synthetic health inputs. The standalone install_mafft.py
 provisions exact private Linux homes and complete setup-only receipts. Read-only
-Java payload/setup checks are available. The development mafft-tools command
-adds declared host admission, typed alignment/addition and complete native
-output replay. Its full packaged regression matrix and paper-role catalog
-integration remain unfinished; MAFFT stays missing in the catalog.
+Java payload/setup checks and the scoped current-source mafft-tools command
+are available. The command adds declared host admission, typed alignment/addition
+and complete native output replay. All57 representative packaged protocols and
+eight paper roles are validated, and scoped catalog integration is complete.
+Other MAFFT capabilities and full paper-pipeline reproduction remain unfinished.
 
 Read [MAFFT_DEVELOPMENT.md](../../../docs/literature/MAFFT_DEVELOPMENT.md) for the
 native audit APIs, copyable setup/recheck commands, source retention boundaries,

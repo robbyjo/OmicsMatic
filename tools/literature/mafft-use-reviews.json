@@ -1,0 +1,126 @@
+[
+  {
+    "paper_id": "P029",
+    "primary_paragraph": 61,
+    "review": {
+      "pmcid": "PMC7618714",
+      "doi": "10.1038/s41586-025-09834-x",
+      "tool_id": "mafft",
+      "evidence_paragraph_sha256": "5c86889218bcafdf08e0361a30739059a133ebc34e813159d60af1f66fab3178",
+      "use_summary": "Aligned Saccharomyces MGE1 homolog protein sequences with 7.505 using local pairwise alignment and a 1,000-iteration maximum; Jalview then calculated conservation and displayed the alignment.",
+      "implementation_scope_note": "The exact 7.505 profile supports declared protein LOCAL_PAIR with maximum_iterations=1000. Reciprocal BLAST searches, manual ORF curation and Jalview conservation/visualization are separate operations. Synthetic source/integrity controls do not reproduce the paper sequences or biological conclusions.",
+      "version_reported_near_name": "7.505",
+      "supporting_evidence": []
+    }
+  },
+  {
+    "paper_id": "P037",
+    "primary_paragraph": 40,
+    "review": {
+      "pmcid": "PMC10764277",
+      "doi": "10.1038/s41586-023-06838-3",
+      "tool_id": "mafft",
+      "evidence_paragraph_sha256": "a1eb1b046fb25a6d6a078c0b2f3e000b6c0e6b363ce9f3ee6314f46d35565da0",
+      "use_summary": "Aligned concatenated nucleotide sequences of 142 core genes from 34 Bifidobacterium MAGs and 14 reference genomes with 7.313 before microseq trimming and IQ-TREE phylogenetic classification.",
+      "implementation_scope_note": "The exact 7.313 nucleotide profile is available, but the paragraph does not specify its alignment strategy or full command. Roary/core-gene construction, microseq trimming and IQ-TREE inference are separate. Require explicit user choices rather than inferring the missing algorithm; the paper data have not been reproduced.",
+      "version_reported_near_name": "7.313",
+      "supporting_evidence": []
+    }
+  },
+  {
+    "paper_id": "P052",
+    "primary_paragraph": 25,
+    "review": {
+      "pmcid": "PMC13668671",
+      "doi": "10.1038/s41586-026-10952-3",
+      "tool_id": "mafft",
+      "evidence_paragraph_sha256": "a0d825eccfdfba5fdd50b98ea56bbdddb9e09014fbd013e56db8e28ac1deab3c",
+      "use_summary": "Used the MAFFT add tool to align structure-mined membrane-binding domain proteins to residues visible in the R. norvegicus PHPLCδ X-ray reference 1MAI; reported auto strategy, BLOSUM62, gap opening 1.53 and offset 0.0.",
+      "implementation_scope_note": "WARNING: the paper reports only major version 7. Its exact edition remains unresolved and paper-exact execution must be skipped; no tested edition is silently substituted. The generic exact-edition adapter supports a single-row protein backbone and these explicit scoring settings. Reference-residue extraction, predicted structures and PyMOL structural alignment/RMSD are separate, and keep-length behavior is not specified in the paragraph.",
+      "version_reported_near_name": "7 (exact release unresolved)",
+      "supporting_evidence": []
+    }
+  },
+  {
+    "paper_id": "P054",
+    "primary_paragraph": 87,
+    "review": {
+      "pmcid": "PMC12823411",
+      "doi": "10.1038/s41586-025-09794-2",
+      "tool_id": "mafft",
+      "evidence_paragraph_sha256": "554734d50c51bf5f71a3d1f85973a27bfc01962672a467bc77ea2c0ffc197ac9",
+      "use_summary": "Used 7.490 to align NxrA/NarG and AmoA protein sequences before trimAl filtering and IQ-TREE trees. The additional phylogenomic paragraph also uses 7.490 for Nitrobacter-like cytoplasmic NxrA sequences and defined outgroups.",
+      "implementation_scope_note": "The exact 7.490 protein profile is available. Neither cited paragraph specifies the complete MAFFT strategy/scoring command, so those choices remain explicit. Protein selection, trimAl thresholds, model selection, bootstrap inference, rerooting and visualization are downstream or separate contracts; the paper phylogenies have not been reconstructed.",
+      "version_reported_near_name": "7.490",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 90,
+          "section": "Methods / Phylogenomic investigation of nitrifier genera, and Nitrobacter-like NxrA containing MAGs compared to NxrA gene phylogeny",
+          "paragraph_sha256": "389145de627005e19ea13101b4358e6895d70eb00486989d73b84d4b2fcfccff"
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "P101",
+    "primary_paragraph": 36,
+    "review": {
+      "pmcid": "PMC10703678",
+      "doi": "10.1038/s41588-023-01571-z",
+      "tool_id": "mafft",
+      "evidence_paragraph_sha256": "4138a53774fb3589673bf905afec846567b386790ef97ec0db75e83cc1a8cb27",
+      "use_summary": "Generated gene-level multiple sequence alignments with 7.475 for in-house Perl estimates of pangenome diversity π, using differential-site count, conserved alignment length and the number of sequence pairs.",
+      "implementation_scope_note": "WARNING: retain the maintainer FFT-NS-i/auto memory-bug warning for exact 7.475. The paragraph specifies neither the MAFFT input alphabet nor strategy; do not infer either from surrounding genome/protein steps. The adapter requires both explicitly. The conserved-site definition, custom Perl diversity calculation and whole gene-batch workflow remain separate; successful synthetic alignments do not establish large-input behavior.",
+      "version_reported_near_name": "7.475",
+      "supporting_evidence": []
+    }
+  },
+  {
+    "paper_id": "P110",
+    "primary_paragraph": 29,
+    "review": {
+      "pmcid": "PMC12695648",
+      "doi": "10.1038/s41588-025-02409-6",
+      "tool_id": "mafft",
+      "evidence_paragraph_sha256": "9c1e70b7aeeb1ceae89dfda0fdb3ead02159a4f4d9bba98b736e8fbf44de6bdd",
+      "use_summary": "Aligned MT-A70 family proteins in 7.475 L-INS-i mode before trimAl and IQ-TREE analysis. A separate selection-analysis paragraph reused MAFFT protein alignments with matching nucleotide sequences in PAL2NAL to create codon alignments for EasyCodeML.",
+      "implementation_scope_note": "The exact 7.475 protein/local-pair profile supports an explicit refinement maximum; the paper names L-INS-i but does not provide every effective command option. Preserve the original-release FFT-NS-i/auto memory-bug warning without silently upgrading. HMM/BLAST discovery, trimming, phylogeny, PAL2NAL back-translation and CodeML selection testing are separate; the adapter does not claim to reproduce them.",
+      "version_reported_near_name": "7.475",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 44,
+          "section": "Methods / Selection analysis",
+          "paragraph_sha256": "f8465390731a4d95e97a8cee1a757e6004f4e01e4b585b3570d5338690c90491"
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "P171",
+    "primary_paragraph": 46,
+    "review": {
+      "pmcid": "PMC13447107",
+      "doi": "10.1038/s41588-026-02678-9",
+      "tool_id": "mafft",
+      "evidence_paragraph_sha256": "ea72f13c9e15ec9de931123129b9e81a2267bf9524e101cf7c042534c84f37ea",
+      "use_summary": "Aligned longest-transcript protein sequences from single-copy gene families across 13 wheat subspecies and barley Morex v.3 with 7.526 before IQ-TREE2 gene-tree construction and ASTRAL analysis.",
+      "implementation_scope_note": "The exact 7.526 protein profile is available, but the paragraph does not state the MAFFT strategy or complete command. Its -AUTO flag belongs to IQ-TREE2 and is not inferred as a MAFFT setting. Single-copy family/longest-transcript selection, per-gene batching, IQ-TREE and ASTRAL remain separate contracts; no paper tree has been reconstructed.",
+      "version_reported_near_name": "7.526",
+      "supporting_evidence": []
+    }
+  },
+  {
+    "paper_id": "P235",
+    "primary_paragraph": 6,
+    "review": {
+      "pmcid": "PMC11344006",
+      "doi": "10.1016/j.ajhg.2024.06.007",
+      "tool_id": "mafft",
+      "evidence_paragraph_sha256": "603ed5ee462591bf08f64c382cfb605df41ccd5e6831097dcb15144f453e40b7",
+      "use_summary": "Aligned recombination-aware intronic/intergenic genomic sequences with 7.487 global pairwise alignment and a reported 100-iteration setting, followed by Jalview inspection, manual removal of misaligned segments and phylogenetic inference.",
+      "implementation_scope_note": "The exact 7.487 nucleotide GLOBAL_PAIR profile exposes maximum_iterations=100; this does not assert that 100 iterations actually ran. Genome alignment, coordinate/sequence extraction, LD-aware region selection, Jalview/manual curation, IQ-TREE inference and dating remain separate operations. The uncurated synthetic alignment controls do not reproduce the manually edited paper alignment.",
+      "version_reported_near_name": "7.487",
+      "supporting_evidence": []
+    }
+  }
+]

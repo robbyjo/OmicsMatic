@@ -48,6 +48,21 @@ final class MafftRuntime {
     }
     private record Lock(Map<?,?> value,String installerSha256) { }
     static Set<String> profiles(){var result=new HashSet<String>();for(String v:VERSIONS)result.add("linux-x86_64-mafft-"+v);return Set.copyOf(result);}
+    /** Portable check of the recorded edition/payload; does not re-admit a live host. */
+    static void verifyRecordedPayload(String profile,Map<?,?> recorded)throws IOException {
+        Map<?,?> pin=object(object(lock().value().get("profiles")).get(profile));
+        for(String key:List.of("profile","version","program")) {
+            Object expected=key.equals("profile")?profile:pin.get(key);
+            if(!Objects.equals(expected,recorded.get(key)))throw new IOException("Recorded MAFFT edition/program differs: "+key);
+        }
+        if(!Objects.equals(pin.get("known_warning"),recorded.get("knownWarning")))throw new IOException("Recorded MAFFT original-release warning differs");
+        var expected=new LinkedHashMap<String,Fingerprint>();
+        for(var entry:object(pin.get("files")).entrySet())expected.put(member(entry.getKey()),fingerprint(object(entry.getValue())));
+        for(var entry:object(lock().value().get("bundled")).entrySet())expected.put("share/"+member(entry.getKey()),fingerprint(object(entry.getValue())));
+        Map<?,?> files=object(recorded.get("files"));if(!files.keySet().equals(expected.keySet()))throw new IOException("Recorded MAFFT payload family differs");
+        for(var entry:expected.entrySet())if(!entry.getValue().equals(fingerprint(object(files.get(entry.getKey())))))throw new IOException("Recorded MAFFT payload bytes differ: "+entry.getKey());
+    }
+    static String lockSha256(){return LOCK_SHA;}
     private static Lock lock()throws IOException {
         byte[] raw=resource("mafft-runtime-lock.json");
         if(!digest(raw).equals(LOCK_SHA))throw new IOException("Bundled MAFFT lock differs from its pinned source");
@@ -192,7 +207,7 @@ final class MafftRuntime {
         var resources=new TreeMap<String,String>();resources.put("mafft-runtime-lock.json","mafft-runtime-lock.json");resources.put("install_mafft.py","mafft-runtime-setup/install_mafft.py");
         for(Object key:object(lock.value().get("bundled")).keySet()){String name=member(key);resources.put("mafft-runtime/"+name,"mafft-runtime-setup/mafft-runtime/"+name);}
         for(var entry:resources.entrySet()){byte[] raw=resource(entry.getValue());Path target=root.resolve(entry.getKey());Files.createDirectories(target.getParent());Files.write(target,raw,StandardOpenOption.CREATE_NEW);files.put(entry.getKey(),new Fingerprint(raw.length,digest(raw)));}
-        byte[] readme=("MAFFT private runtime setup only; public user analysis remains unfinished.\nUse Linux x86_64 Python3.11+, existing permitted shell/coreutils/Perl/prlimit/setsid, and NEW canonical ASCII home/report paths whose parents exist.\npython3 install_mafft.py --profile linux-x86_64-mafft-7.526 --home NEW_PRIVATE_HOME --cache ARCHIVE_CACHE --report NEW_REPORT_DIRECTORY --allow-install --allow-download\nSelect the exact reported edition; major-only v7 in P052 is unresolved. Install/download flags are independent. Use --archive-dir for complete offline archives. Complete homes can be rechecked with a NEW report without either flag. Require COMPLETED.json and full hashes. Missing/forbidden prerequisites: SKIP3 and skipped dependent analysis; invalid data/integrity/process/capacity/finalization: FAIL2, no admitted result. Preserve failed/partial files and correct the named cause before retrying to new paths.\nSetup checks three full tiny synthetic alignments; it is not an alignment-accuracy, full host/library/Perl admission or whole-paper certificate. Exact7.475 retains the maintainer FFT-NS-i/auto memory-bug warning. Read MAFFT_DEVELOPMENT.md. Cell Ranger remains excluded.\n").getBytes(StandardCharsets.UTF_8);
+        byte[] readme=("MAFFT private runtime setup only. Use current-source mafft-tools for separately admitted user-data alignment; broader capabilities remain unfinished.\nUse Linux x86_64 Python3.11+, existing permitted shell/coreutils/Perl/prlimit/setsid, and NEW canonical ASCII home/report paths whose parents exist.\npython3 install_mafft.py --profile linux-x86_64-mafft-7.526 --home NEW_PRIVATE_HOME --cache ARCHIVE_CACHE --report NEW_REPORT_DIRECTORY --allow-install --allow-download\nSelect the exact reported edition; major-only v7 in P052 is unresolved. Install/download flags are independent. Use --archive-dir for complete offline archives. Complete homes can be rechecked with a NEW report without either flag. Require COMPLETED.json and full hashes. Missing/forbidden prerequisites: SKIP3 and skipped dependent analysis; invalid data/integrity/process/capacity/finalization: FAIL2, no admitted result. Preserve failed/partial files and correct the named cause before retrying to new paths.\nSetup checks three full tiny synthetic alignments; it is not an alignment-accuracy, full host/library/Perl admission or whole-paper certificate. Exact7.475 retains the maintainer FFT-NS-i/auto memory-bug warning. Read MAFFT_DEVELOPMENT.md. Cell Ranger remains excluded.\n").getBytes(StandardCharsets.UTF_8);
         Files.write(root.resolve("README.txt"),readme,StandardOpenOption.CREATE_NEW);files.put("README.txt",new Fingerprint(readme.length,digest(readme)));return Map.copyOf(files);
     }
     static List<Segment> staticElf(byte[] raw) throws IOException {

@@ -1,0 +1,146 @@
+{
+  "schema_version": 1,
+  "status": "passed-scoped-fastp-native-filter-and-private-setup-development",
+  "previous_goal_turn_classification": "progress",
+  "artifact": {
+    "path": "fastp-native-development-controls-v2.zip",
+    "bytes": 6195521,
+    "sha256": "02fe48640b75420cf426b2c515d687b602a3cbf466c2216c0273611a731e1a1c"
+  },
+  "source_pins": {
+    "src/main/java/org/jlinalg/sequence/FastpReadFilter.java": {
+      "bytes": 12323,
+      "sha256": "344e8ba62a678fe07937095638acf3fd3bde6e9fa15af74ffc2355bbc562fd20"
+    },
+    "src/test/java/org/jlinalg/sequence/FastpReadFilterTest.java": {
+      "bytes": 9113,
+      "sha256": "bcf2a5c559439e19991e3463c636c74b2188a5436548cb461018701b7409935e"
+    },
+    "src/main/resources/org/jlinalg/omics/fastp-MIT-NOTICE.txt": {
+      "bytes": 1096,
+      "sha256": "52e18866a994ee9839aa6d15696bc1fe425e6466631d3a57a75c089dd84ae88e"
+    },
+    "src/test/resources/org/jlinalg/sequence/fastp-original/native-controls.zip": {
+      "bytes": 6172868,
+      "sha256": "4b527a29bc067732d8bb4d6cb007077c7a43dca89572b105fb2eeb0543dfdd76"
+    },
+    "src/test/resources/org/jlinalg/sequence/fastp-original/README.md": {
+      "bytes": 1358,
+      "sha256": "0800cb2d5e23042d30f2dea78e906cb98179ae550503defd35d0fa5412bead84"
+    },
+    "tools/literature/install_fastp.py": {
+      "bytes": 11957,
+      "sha256": "e77621208a1fb878a41e1f6054f4623865da5607c4c3cbd172b5063fcd9af84b"
+    },
+    "tools/literature/test_install_fastp.py": {
+      "bytes": 5237,
+      "sha256": "5b7ed8c585070624b016c0642fe88a54dc04a9687021e39dbbb1c5081fae18e0"
+    },
+    "tools/literature/fastp-runtime-lock.json": {
+      "bytes": 2824,
+      "sha256": "06760eb5048a8cb095d6440603cf941c86947a0e93393c111148c0b387745cfe"
+    },
+    "tools/literature/fastp-development.init.gradle": {
+      "bytes": 1269,
+      "sha256": "99018491c1e24448c71471483d3b44731c2c21491cf7e6c880da2d17961be6a8"
+    },
+    "tools/literature/fastp-use-reviews.json": {
+      "bytes": 6080,
+      "sha256": "6ab6338166694ccf937d53ced1ba2d639646f838ddc5f596d102bbbf280105b9"
+    },
+    "docs/literature/FASTP_DEVELOPMENT.md": {
+      "bytes": 8787,
+      "sha256": "a31b028815d1aa0a7b791247fdc59648a3fe6d75dda4328d03e851c885e52744"
+    }
+  },
+  "packaged_candidate": "build/literature-review/fastp-runtime/native-development-1/package-3/omicsmatic-0.3.7-fastp-development.jar",
+  "packaged_candidate_sha256": "cbdd3f80f56792d1c3fe654744e8b41ebaa3f32446b8c44f1957061b8a8fe35b",
+  "native_tests": {
+    "tests_per_JVM": 134,
+    "passed_per_JVM": 134,
+    "failed_per_JVM": 0,
+    "skipped_per_JVM": 0,
+    "JVMs": [
+      "Windows Java21",
+      "Windows Java25",
+      "Linux Java21"
+    ],
+    "heap_mib": 128,
+    "strict_Java_release": 17
+  },
+  "native_original_evidence": {
+    "status": "passed-all-complete-original-FASTQ-and-basic-report-populations",
+    "protocols": 124,
+    "read_evaluations": 31744,
+    "passed_reads": 14972,
+    "failed_reads": 16772,
+    "input_bases": 1251160,
+    "output_populations": 248,
+    "identical_populations_across_four_editions": true,
+    "source_failure_dispositions": {
+      "failed_too_short": 7704,
+      "failed_quality_filter": 6340,
+      "failed_too_many_n_bases": 2076,
+      "failed_too_long": 152,
+      "failed_low_complexity": 500
+    },
+    "JSON_scope": "Before/after read/base/Q20/Q30 counts and observed first-failure categories; other JSON/HTML fields retained without full independent certification."
+  },
+  "original_runtime_setup": {
+    "supported_editions": [
+      "0.22.0",
+      "0.23.2",
+      "0.25.0",
+      "1.0.1"
+    ],
+    "offline_setup_profiles": 4,
+    "explicit_network_setup": 1,
+    "setup_recovery_protocols": 5,
+    "Windows_unsupported_platform_skip": 1,
+    "original_default_smoke_reads_per_successful_setup": 32,
+    "private_payload_omission": {
+      "status": "passed-complete-setup-report-census",
+      "publicly_omitted_runtime_payload": "download.part",
+      "payload_retained_privately": "/opt/omicsmatic-fastp-download-1/report/download.part",
+      "payload_pin": {
+        "bytes": 10954888,
+        "sha256": "5ebe87e5cf4f73d4c4eb0ea376b143b3987ca04e20ace896ed2243219f58dfca"
+      },
+      "reason": "Original executable bytes remain private and are separately pinned and downloadable; all synthetic inputs/results and execution receipts are captured.",
+      "all_scientific_data_captured": true
+    }
+  },
+  "python_tests": {
+    "total": 619,
+    "passed": 573,
+    "skipped": 46,
+    "failed": 0
+  },
+  "paper_roles_reviewed_as_drafts": 7,
+  "paper_role_drafts_applied": false,
+  "catalog_registration_promoted": false,
+  "new_scoped_integrations": 60,
+  "current_named_tools_missing": 260,
+  "typed_fastp_analysis_CLI_available": false,
+  "full_fastp_pipeline_validated": false,
+  "high_memory_P054_pipeline_executed": false,
+  "source_to_binary_reproduction_verified": false,
+  "whole_paper_reproduced": false,
+  "biological_accuracy_certified": false,
+  "whole_goal_complete": false,
+  "released_or_deployed": false,
+  "full_Java_suite_rerun": false,
+  "retained_failure": "Initial native test reader used uppercaseN in the original lowercase failed_too_many_n_bases tag;76 protocol tests stopped at that label. Prior XML/log/test source retained; label comparison corrected without changing native scientific source.",
+  "next_steps": [
+    "Implement typed complete FASTQ input/output admission and paired-read/quality-encoding policies.",
+    "Bind exact original runtime/host and resource capacities,including requested duplication memory; build controlled options and original processing workflow.",
+    "Validate adapter/overlap/correction/poly-tail/deduplication and full reports with fresh original controls; preserve omitted author settings.",
+    "Wire public Java CLI,portable workflow verification,seven reviewed source roles and catalog/warning/browser integration before changing counts."
+  ],
+  "superseded_development_archive": {
+    "path": "fastp-native-development-controls.zip",
+    "bytes": 6180335,
+    "sha256": "2cce456997583913b7785e1c1549a1a88bf9d35e53258f0e48c3704b0c57b60d"
+  },
+  "constructor_hardening": "Directly constructed trim results now enforce the same literal read capacity/encoding and source-front coordinate rules; the prior133-test snapshot is retained as superseded development evidence."
+}

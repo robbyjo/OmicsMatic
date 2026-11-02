@@ -6064,12 +6064,14 @@
         "matched_text": "mafft",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": "7.505",
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-paragraph",
         "evidence_paragraph_sha256": "5c86889218bcafdf08e0361a30739059a133ebc34e813159d60af1f66fab3178",
-        "use_summary": "Multiple sequence alignment.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7618714/ (section: Methods / Evolutionary analysis)"
+        "use_summary": "Aligned Saccharomyces MGE1 homolog protein sequences with 7.505 using local pairwise alignment and a 1,000-iteration maximum; Jalview then calculated conservation and displayed the alignment.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7618714/ (section: Methods / Evolutionary analysis)",
+        "implementation_scope_note": "The exact 7.505 profile supports declared protein LOCAL_PAIR with maximum_iterations=1000. Reciprocal BLAST searches, manual ORF curation and Jalview conservation/visualization are separate operations. Synthetic source/integrity controls do not reproduce the paper sequences or biological conclusions.",
+        "supporting_evidence": []
       },
       {
         "tool_id": "rsubread",
@@ -7573,12 +7575,14 @@
         "matched_text": "MAFFT",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": "7.313",
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-paragraph",
         "evidence_paragraph_sha256": "a1eb1b046fb25a6d6a078c0b2f3e000b6c0e6b363ce9f3ee6314f46d35565da0",
-        "use_summary": "Multiple sequence alignment.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10764277/ (section: Methods / MAGs / MAG taxonomy)"
+        "use_summary": "Aligned concatenated nucleotide sequences of 142 core genes from 34 Bifidobacterium MAGs and 14 reference genomes with 7.313 before microseq trimming and IQ-TREE phylogenetic classification.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10764277/ (section: Methods / MAGs / MAG taxonomy)",
+        "implementation_scope_note": "The exact 7.313 nucleotide profile is available, but the paragraph does not specify its alignment strategy or full command. Roary/core-gene construction, microseq trimming and IQ-TREE inference are separate. Require explicit user choices rather than inferring the missing algorithm; the paper data have not been reproduced.",
+        "supporting_evidence": []
       },
       {
         "tool_id": "metabat2",
@@ -11482,12 +11486,14 @@
         "matched_text": "MAFFT",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
-        "version_reported_near_name": "7",
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
+        "version_reported_near_name": "7 (exact release unresolved)",
+        "evidence_selection": "individually-reviewed-paragraph",
         "evidence_paragraph_sha256": "a0d825eccfdfba5fdd50b98ea56bbdddb9e09014fbd013e56db8e28ac1deab3c",
-        "use_summary": "Multiple sequence alignment.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13668671/ (section: Methods / Sequence and structural alignments of the structure-mined membrane-binding domains)"
+        "use_summary": "Used the MAFFT add tool to align structure-mined membrane-binding domain proteins to residues visible in the R. norvegicus PHPLCδ X-ray reference 1MAI; reported auto strategy, BLOSUM62, gap opening 1.53 and offset 0.0.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13668671/ (section: Methods / Sequence and structural alignments of the structure-mined membrane-binding domains)",
+        "implementation_scope_note": "WARNING: the paper reports only major version 7. Its exact edition remains unresolved and paper-exact execution must be skipped; no tested edition is silently substituted. The generic exact-edition adapter supports a single-row protein backbone and these explicit scoring settings. Reference-residue extraction, predicted structures and PyMOL structural alignment/RMSD are separate, and keep-length behavior is not specified in the paragraph.",
+        "supporting_evidence": []
       },
       {
         "tool_id": "maxquant",
@@ -12173,12 +12179,20 @@
         "matched_text": "MAFFT",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": "7.490",
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-paragraph",
         "evidence_paragraph_sha256": "554734d50c51bf5f71a3d1f85973a27bfc01962672a467bc77ea2c0ffc197ac9",
-        "use_summary": "Multiple sequence alignment.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12823411/ (section: Methods / Gene-centric investigation of short-read metagenomes)"
+        "use_summary": "Used 7.490 to align NxrA/NarG and AmoA protein sequences before trimAl filtering and IQ-TREE trees. The additional phylogenomic paragraph also uses 7.490 for Nitrobacter-like cytoplasmic NxrA sequences and defined outgroups.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12823411/ (section: Methods / Gene-centric investigation of short-read metagenomes)",
+        "implementation_scope_note": "The exact 7.490 protein profile is available. Neither cited paragraph specifies the complete MAFFT strategy/scoring command, so those choices remain explicit. Protein selection, trimAl thresholds, model selection, bootstrap inference, rerooting and visualization are downstream or separate contracts; the paper phylogenies have not been reconstructed.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 90,
+            "section": "Methods / Phylogenomic investigation of nitrifier genera, and Nitrobacter-like NxrA containing MAGs compared to NxrA gene phylogeny",
+            "paragraph_sha256": "389145de627005e19ea13101b4358e6895d70eb00486989d73b84d4b2fcfccff"
+          }
+        ]
       },
       {
         "tool_id": "metabat2",
@@ -21209,12 +21223,14 @@
         "matched_text": "MAFFT",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": "7.475",
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-paragraph",
         "evidence_paragraph_sha256": "4138a53774fb3589673bf905afec846567b386790ef97ec0db75e83cc1a8cb27",
-        "use_summary": "Multiple sequence alignment.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10703678/ (section: Methods / Gene-based pangenome analyses)"
+        "use_summary": "Generated gene-level multiple sequence alignments with 7.475 for in-house Perl estimates of pangenome diversity π, using differential-site count, conserved alignment length and the number of sequence pairs.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10703678/ (section: Methods / Gene-based pangenome analyses)",
+        "implementation_scope_note": "WARNING: retain the maintainer FFT-NS-i/auto memory-bug warning for exact 7.475. The paragraph specifies neither the MAFFT input alphabet nor strategy; do not infer either from surrounding genome/protein steps. The adapter requires both explicitly. The conserved-site definition, custom Perl diversity calculation and whole gene-batch workflow remain separate; successful synthetic alignments do not establish large-input behavior.",
+        "supporting_evidence": []
       },
       {
         "tool_id": "merqury",
@@ -23766,12 +23782,38 @@
         "matched_text": "MAFFT",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
-        "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
+        "version_reported_near_name": "7.475",
+        "evidence_selection": "individually-reviewed-paragraph",
         "evidence_paragraph_sha256": "9c1e70b7aeeb1ceae89dfda0fdb3ead02159a4f4d9bba98b736e8fbf44de6bdd",
-        "use_summary": "Multiple sequence alignment.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12695648/ (section: Methods / Sequence search and phylogenetic analysis)"
+        "use_summary": "Aligned MT-A70 family proteins in 7.475 L-INS-i mode before trimAl and IQ-TREE analysis. A separate selection-analysis paragraph reused MAFFT protein alignments with matching nucleotide sequences in PAL2NAL to create codon alignments for EasyCodeML.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12695648/ (section: Methods / Sequence search and phylogenetic analysis)",
+        "implementation_scope_note": "The exact 7.475 protein/local-pair profile supports an explicit refinement maximum; the paper names L-INS-i but does not provide every effective command option. Preserve the original-release FFT-NS-i/auto memory-bug warning without silently upgrading. HMM/BLAST discovery, trimming, phylogeny, PAL2NAL back-translation and CodeML selection testing are separate; the adapter does not claim to reproduce them.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 44,
+            "section": "Methods / Selection analysis",
+            "paragraph_sha256": "f8465390731a4d95e97a8cee1a757e6004f4e01e4b585b3570d5338690c90491"
+          }
+        ]
+      },
+      {
+        "tool_id": "pal2nal",
+        "tool": "PAL2NAL",
+        "analysis_role": "Protein-guided codon back-translation of aligned peptides and corresponding nucleotide sequences",
+        "evidence_section": "Methods / Selection analysis",
+        "evidence_paragraph_index": 44,
+        "matched_text": "PAL2NAL",
+        "extraction_score": 15,
+        "usage_context": "analysis-method-description",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
+        "version_reported_near_name": "14",
+        "evidence_selection": "individually-reviewed-paragraph",
+        "evidence_paragraph_sha256": "f8465390731a4d95e97a8cee1a757e6004f4e01e4b585b3570d5338690c90491",
+        "use_summary": "Back-translated the MAFFT protein alignment with corresponding nucleotide sequences into a codon alignment before EasyCodeML/CodeML positive-selection tests.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12695648/ (section: Methods / Selection analysis)",
+        "implementation_scope_note": "The reported v14 has a named native matching profile. The native workflow can back-translate supplied complete aligned proteins and corresponding DNA/RNA with explicit identity, placement, code, normalization, selection, filtering and verification choices. The paper does not report the complete PAL2NAL command, genetic code or filtering/admission thresholds; do not infer them from the organisms. MAFFT alignment, IQ-TREE phylogeny and EasyCodeML/CodeML selection inference remain separate. Native codon conversion does not reproduce those steps or the full paper.",
+        "supporting_evidence": []
       },
       {
         "tool_id": "repeatmasker",
@@ -35700,12 +35742,14 @@
         "matched_text": "MAFFT",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": "7.526",
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-paragraph",
         "evidence_paragraph_sha256": "ea72f13c9e15ec9de931123129b9e81a2267bf9524e101cf7c042534c84f37ea",
-        "use_summary": "Multiple sequence alignment.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13447107/ (section: Methods / Phylogenetic tree construction and divergence time estimation)"
+        "use_summary": "Aligned longest-transcript protein sequences from single-copy gene families across 13 wheat subspecies and barley Morex v.3 with 7.526 before IQ-TREE2 gene-tree construction and ASTRAL analysis.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13447107/ (section: Methods / Phylogenetic tree construction and divergence time estimation)",
+        "implementation_scope_note": "The exact 7.526 protein profile is available, but the paragraph does not state the MAFFT strategy or complete command. Its -AUTO flag belongs to IQ-TREE2 and is not inferred as a MAFFT setting. Single-copy family/longest-transcript selection, per-gene batching, IQ-TREE and ASTRAL remain separate contracts; no paper tree has been reconstructed.",
+        "supporting_evidence": []
       },
       {
         "tool_id": "merqury",
@@ -47046,9 +47090,10 @@
         "version_reported_near_name": "7.487",
         "evidence_selection": "individually-reviewed-paragraph",
         "evidence_paragraph_sha256": "603ed5ee462591bf08f64c382cfb605df41ccd5e6831097dcb15144f453e40b7",
-        "use_summary": "Aligned selected intronic/intergenic sequences using global pairwise alignment and 100 iterations before phylogenetic inference.",
+        "use_summary": "Aligned recombination-aware intronic/intergenic genomic sequences with 7.487 global pairwise alignment and a reported 100-iteration setting, followed by Jalview inspection, manual removal of misaligned segments and phylogenetic inference.",
         "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11344006/ (section: Material and methods / Sequence extractions and phylogenetic analyses)",
-        "implementation_scope_note": "This phylogenetic software use has no validated integration yet; native extraction does not establish alignment/tree/visualization equivalence."
+        "implementation_scope_note": "The exact 7.487 nucleotide GLOBAL_PAIR profile exposes maximum_iterations=100; this does not assert that 100 iterations actually ran. Genome alignment, coordinate/sequence extraction, LD-aware region selection, Jalview/manual curation, IQ-TREE inference and dating remain separate operations. The uncurated synthetic alignment controls do not reproduce the manually edited paper alignment.",
+        "supporting_evidence": []
       },
       {
         "tool_id": "meme",
@@ -48845,6 +48890,24 @@
         "use_summary": "Aligned high-quality long reads to cucumber genome assemblies with minimap2 2.17-r941 as an assembly-integrity assessment.",
         "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13447089/ (section: Methods / Long-read sequencing, assembly and quality assessment)",
         "implementation_scope_note": "Typed pinned upstream adapter and native validation cover explicitly tested operations; historical-version and full-paper parity remain unvalidated. The exact mapping preset/settings are unspecified. BUSCO gene completeness, BWA short-read assessment, RagTag anchoring and Merqury k-mer/base-quality analyses are separate."
+      },
+      {
+        "tool_id": "pal2nal",
+        "tool": "PAL2NAL",
+        "analysis_role": "Protein-guided codon back-translation of aligned peptides and corresponding nucleotide sequences",
+        "evidence_section": "Methods / Syntenic gene family analyses",
+        "evidence_paragraph_index": 44,
+        "matched_text": "PAL2NAL",
+        "extraction_score": 15,
+        "usage_context": "analysis-method-description",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
+        "version_reported_near_name": "14.1",
+        "evidence_selection": "individually-reviewed-paragraph",
+        "evidence_paragraph_sha256": "2443c25b9027860fddb9fc64fe61e4f74e32a76185e37c508878f31f987d851f",
+        "use_summary": "Used PAL2NAL with ClustalW2 to prepare homolog-pair alignments for PAML CODEML Ka/Ks analysis within syntenic gene families.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13447089/ (section: Methods / Syntenic gene family analyses)",
+        "implementation_scope_note": "The reported v14.1 has a distinct named native matching profile backed by the Bioconda-pinned source and fresh controls; it is not silently replaced by v14. The authors exact build and PAL2NAL genetic-code, pairing, normalization, selection, filtering and verification settings are unreported. Supply explicit complete peptide/nucleotide inputs and choices. DIAMOND comparison, mSynOrths clustering, ClustalW2 alignment, PAML CODEML estimation and geographic haplotype tests remain separate; native back-translation does not calculate Ka/Ks or reconstruct the paper.",
+        "supporting_evidence": []
       },
       {
         "tool_id": "pbmm2",

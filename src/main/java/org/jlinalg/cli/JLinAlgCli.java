@@ -155,6 +155,8 @@ public final class JLinAlgCli {
             return EagleToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
         if (arguments.length > 0 && arguments[0].equals("shapeit-tools"))
             return ShapeitToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("pal2nal-tools"))
+            return Pal2NalToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
         if (arguments.length > 0 && arguments[0].equals("mafft-tools"))
             return MafftToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
         if (arguments.length > 0 && arguments[0].equals("iqtree-tools"))
@@ -405,6 +407,7 @@ public final class JLinAlgCli {
               java -jar omicsmatic-<version>.jar admixture-tools --help
               java -jar omicsmatic-<version>.jar eagle-tools --help
               java -jar omicsmatic-<version>.jar shapeit-tools --help
+              java -jar omicsmatic-<version>.jar pal2nal-tools --help
               java -jar omicsmatic-<version>.jar mafft-tools --help
               java -jar omicsmatic-<version>.jar iqtree-tools --help
               java -jar omicsmatic-<version>.jar repeat-tools --help
