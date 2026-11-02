@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "tool": "MAFFT",
-  "status": "original-release-download-and-member-pins;managed-admission-and-public-workflow-unfinished",
+  "status": "locked-original-releases;managed-runtime-setup-available;public-analysis-unfinished",
   "distribution": "Original unmodified maintainer Linux portable packages; no upstream executable is bundled in the project",
   "download_integrity": "Observed complete HTTPS archive SHA-256 and member pins; no upstream signature or independently published asset digest is claimed",
   "official_sources": [
@@ -2898,5 +2898,110 @@
   },
   "source_scope": "Core nucleotide/protein alignment and add/keeplength contracts are under development. RNA structural extensions, DASH/network-backed alignment, arbitrary score files, codon back-translation and whole-paper pipelines have separate unfinished contracts.",
   "public_analysis_adapter_available": false,
-  "scientific_analysis_admitted": false
+  "scientific_analysis_admitted": false,
+  "runtime_setup_available": true,
+  "runtime_admission_scope": "Complete original payload, setup receipts and declared host-helper identities only. Complete dynamic host/library/Perl binding capture and typed public analysis remain separate required gates.",
+  "bundled": {
+    "BSD-NOTICE.txt": {
+      "bytes": 1395,
+      "sha256": "0b26510647a18c7796ac9e0c1478365260c8d335383df603fe37729e7f8d5f44"
+    },
+    "health/nucleotide.fasta": {
+      "bytes": 87,
+      "sha256": "bc30c6fe7f8df12f165e29499991c9a8b74ef7ae5146add9d7eecf7daacde490"
+    },
+    "health/protein.fasta": {
+      "bytes": 99,
+      "sha256": "633a43b75309bcd196ce8af4e0ab34aff0f86bfc9dacdeed9b69e4ab2ecdaf57"
+    },
+    "health/backbone.fasta": {
+      "bytes": 48,
+      "sha256": "634a2f3eaaf488f3696d2e5ef1abba14b405154196e2a6405d8277e8db5dfb38"
+    },
+    "health/additions.fasta": {
+      "bytes": 25,
+      "sha256": "e03b5bc8b4c82929a779e1279d41bda683b423353bc32c66babfd0bf733b855b"
+    }
+  },
+  "host_helpers": [
+    "/bin/bash",
+    "/bin/sh",
+    "/usr/bin/env",
+    "/usr/bin/prlimit",
+    "/usr/bin/setsid",
+    "/usr/bin/dirname",
+    "/usr/bin/basename",
+    "/usr/bin/uname",
+    "/usr/bin/grep",
+    "/usr/bin/expr",
+    "/usr/bin/awk",
+    "/usr/bin/sed",
+    "/usr/bin/tr",
+    "/usr/bin/cat",
+    "/usr/bin/head",
+    "/usr/bin/tail",
+    "/usr/bin/cut",
+    "/usr/bin/wc",
+    "/usr/bin/mktemp",
+    "/usr/bin/mkdir",
+    "/usr/bin/rm",
+    "/usr/bin/mv",
+    "/usr/bin/cp",
+    "/usr/bin/chmod",
+    "/usr/bin/sort",
+    "/usr/bin/perl",
+    "/usr/bin/ln",
+    "/usr/bin/sleep"
+  ],
+  "setup_health": [
+    {
+      "name": "DNA-auto",
+      "inputs": {
+        "input.fasta": "health/nucleotide.fasta"
+      },
+      "arguments": [
+        "--thread",
+        "1",
+        "--inputorder",
+        "--nuc",
+        "--auto",
+        "input.fasta"
+      ]
+    },
+    {
+      "name": "AA-local-1000",
+      "inputs": {
+        "input.fasta": "health/protein.fasta"
+      },
+      "arguments": [
+        "--thread",
+        "1",
+        "--inputorder",
+        "--amino",
+        "--localpair",
+        "--maxiterate",
+        "1000",
+        "input.fasta"
+      ]
+    },
+    {
+      "name": "AA-add-keep-map",
+      "inputs": {
+        "input.fasta": "health/backbone.fasta",
+        "added.fasta": "health/additions.fasta"
+      },
+      "arguments": [
+        "--thread",
+        "1",
+        "--inputorder",
+        "--amino",
+        "--auto",
+        "--add",
+        "added.fasta",
+        "--keeplength",
+        "--mapout",
+        "input.fasta"
+      ]
+    }
+  ]
 }
