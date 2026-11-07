@@ -10145,6 +10145,177 @@
       "version_reported_near_name": null,
       "usage_context": "genomic-annotation",
       "supporting_evidence": []
+    },
+    {
+      "pmcid": "PMC13600939",
+      "doi": "10.1038/s41586-026-10271-7",
+      "tool_id": "monocle",
+      "evidence_paragraph_sha256": "6863e606bbd160300ae25c8c9b4416d9bdc8ee5e73296a967b99312fa17d6759",
+      "use_summary": "Used Monocle3 1.0.0 on the reported UMAT embedding to reconstruct lineage trajectories and select shortest paths; a modified graph_test with covariates identified trajectory-associated genes.",
+      "implementation_scope_note": "The paper reports UMAT, gene/cell filtering, selected paths and a modified covariate-aware Moran test. Do not silently rename the embedding, infer the custom implementation or equate stock graph_test with its sex/batch/PMI/log_n_genes-adjusted version. The native component handles only supplied projected-graph ordering; graph learning, the modified test, metacell smoothing, spline models and clustering remain separate workflow requirements.",
+      "version_reported_near_name": "1.0.0",
+      "usage_context": "trajectory-and-custom-gene-tests",
+      "supporting_evidence": []
+    },
+    {
+      "pmcid": "PMC13600946",
+      "doi": "10.1038/s41586-025-09573-z",
+      "tool_id": "monocle",
+      "evidence_paragraph_sha256": "fce9b473e8b7732bf3761ba5e83b08ea0a6cf5442d108519c95973a563f52e37",
+      "use_summary": "Compared pseudotime from py-monocle, described in the paper as a Monocle 3 Python wrapper, with neural-network predictions and Palantir in microglia; tried 200 eligible starting cells and retained the highest Braak-stage correlation.",
+      "implementation_scope_note": "The paper calls this a Python wrapper; upstream describes a separate Python implementation with graph-handling changes. Exact paper commit and settings are unstated. The inspected Community-Use License permits noncommercial use only. No runtime installation or analysis has run; implementation awaits the user license preference. R/native Monocle controls are not py-monocle controls. Preserve specified starting-cell eligibility and selection; these are not default root selection or independent predictive validation.",
+      "version_reported_near_name": null,
+      "usage_context": "python-wrapper-trajectory-comparison",
+      "supporting_evidence": []
+    },
+    {
+      "pmcid": "PMC10719105",
+      "doi": "10.1038/s41586-023-06824-9",
+      "tool_id": "monocle",
+      "evidence_paragraph_sha256": "41db6565b9c28d56ef328ce411a63865d3f6a88dfa070f1c94457546ac40598e",
+      "use_summary": "Used Cicero for Monocle 3 to infer cis-co-accessible cCRE pairs per cell subclass, using mm10, default Cicero parameters and 500 kb genomic windows.",
+      "implementation_scope_note": "This paragraph identifies Monocle as the platform for Cicero and does not establish a Monocle trajectory/pseudotime run. Cicero, shuffled-background fitting, FDR filtering and distal/proximal annotation are distinct analyses. Exact Monocle/Cicero patches and author-specific preparation remain unresolved; do not credit them to the native pseudotime component or a stock Monocle trajectory adapter. Preserve the reported failed Hypendymal_NN subclass and the source filtering wording without reversing its meaning.",
+      "version_reported_near_name": null,
+      "usage_context": "Cicero-platform-context",
+      "supporting_evidence": []
+    },
+    {
+      "pmcid": "PMC12823425",
+      "doi": "10.1038/s41586-025-09807-0",
+      "tool_id": "monocle",
+      "evidence_paragraph_sha256": "314baa7c4aec361901f183a11e4d398633d423ea5504c110eb1a24f5e99ad517",
+      "use_summary": "Applied the Monocle3 pipeline with Batchelor 1.20.0 integration, Monocle3 1.3.7 dimensional reduction/clustering and pseudotime; a separate Wilcoxon test compared immature control and Tgfbr2-mutant cells.",
+      "implementation_scope_note": "The complete paragraph explicitly reports Monocle3 1.3.7, correcting the unreviewed missing-version extraction. Exact preprocessing, integration settings, graph controls, roots and transformations are unstated. The separate Wilcoxon test used continuity correction. The current 1.4.27 readiness profile and native prepared-graph component do not establish historical 1.3.7/Batchelor parity or that complete experiment. Official DESCRIPTION history now supplies a version-matching source candidate; the paper commit is not established and source capture does not validate execution.",
+      "version_reported_near_name": "1.3.7",
+      "usage_context": "integrated-pseudotime",
+      "supporting_evidence": []
+    },
+    {
+      "pmcid": "PMC11631771",
+      "doi": "10.1038/s41588-024-01961-x",
+      "tool_id": "monocle",
+      "evidence_paragraph_sha256": "51074dc442cad0aa9c42c166b74f774df54f48985e426ca450e852dbc8f1e93f",
+      "use_summary": "Used monocle3 1.3.1 fit_models GLMs to relate spatial gene expression to amyloid Getis-Ord Gi* hotspot scores, adjusting for biological sample and UMI count; followed significant Wald-test results with positive Pearson-correlation filtering.",
+      "implementation_scope_note": "This is gene-wise GLM inference, not Monocle pseudotime. The model family, exact formula/encoding, normalization and full testing family are unstated. Human grey-matter filtering, mouse regional fits, separate stains and subsequent Pearson filtering remain explicit upstream/downstream steps. The attempted original 1.3.1 runtime is skipped because grr does not compile under R 4.6.1; a current 1.4.27 synthetic quasipoisson probe is not a silent version/family substitution.",
+      "version_reported_near_name": "1.3.1",
+      "usage_context": "gene-wise-spatial-GLMs",
+      "supporting_evidence": []
+    },
+    {
+      "pmcid": "PMC10703679",
+      "doi": "10.1038/s41588-023-01572-y",
+      "tool_id": "monocle",
+      "evidence_paragraph_sha256": "d23f2021f7196798a03f70de55a121fbf25338e840a17b256a6abe4ac1e844ea",
+      "use_summary": "Used Monocle 2 differentialGeneTest for gene/exon and accessibility comparisons, age/AD analyses with sex covariates, subtype fraction likelihood-ratio tests, and human AD/control expression comparisons; populations and significance/effect/expression filters differ by analysis.",
+      "implementation_scope_note": "Named supporting Methods identify subclusters, exon inputs, maximum-5000 sampling, sex covariates, RT-well or mouse replicate counts, accessibility filters and human comparisons. Exact patch, family, full formulas and normalization remain unresolved. The validated 2.26.0 development adapter preserves original differential tests, size factors and dispersions, without reconstructing unstated choices or the paper patch. Original free-NB/binomial family failures remain unadmitted. TPM thresholds do not establish raw-count eligibility; do not treat cells as mouse replicates, drop failed genes or substitute Monocle3 tests.",
+      "version_reported_near_name": null,
+      "usage_context": "Monocle2-differential-testing",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 37,
+          "section": "Methods / Cell subclustering analysis",
+          "paragraph_sha256": "8a44f8f945911771a74af4f8230aac49675a31bd8453d32b72f273789571922f"
+        },
+        {
+          "paragraph_index": 38,
+          "section": "Methods / Cell subclustering analysis",
+          "paragraph_sha256": "f48fe61cb48e255dfb55b8dd12f728139a688071110ff3033252970208b3e0cf"
+        },
+        {
+          "paragraph_index": 46,
+          "section": "Methods / Differential accessible peak analysis",
+          "paragraph_sha256": "704b6c3640938150264aea8147b295402fef91b1b7595bcb194e22fd745882df"
+        },
+        {
+          "paragraph_index": 54,
+          "section": "Methods / Clustering, annotation and differential analysis for human brain samples",
+          "paragraph_sha256": "b3619e5b441ac3befb14a1f6b64552702cdb374ae6200a59b97f0d04e47ba0fe"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC13553300",
+      "doi": "10.1038/s41588-026-02737-1",
+      "tool_id": "monocle",
+      "evidence_paragraph_sha256": "61121fffabf3cbebc28a98ee8b23adb36b943b0f6f669fd32c7669f94720007c",
+      "use_summary": "Constructed trajectories on selected transition regions with monocle3 1.3.3 learn_graph, varying ncenter across 130/140/150 and minimal_branch_len across 15/20, with close_loop=FALSE; ordered from a terminal node in the assumed transition direction.",
+      "implementation_scope_note": "The exact selected embedding population, root identifier and mapping of graph-control combinations to transitions are unstated. The controls and assumed direction must remain explicit. Native ordering of a supplied projected graph covers only the final geodesic step. The current 1.4.27 readiness probe does not validate original 1.3.3 graph learning or infer those missing paper choices. Official DESCRIPTION history now supplies a version-matching source candidate; the paper commit is not established and source capture does not validate execution.",
+      "version_reported_near_name": "1.3.3",
+      "usage_context": "prepared-embedding-trajectory",
+      "supporting_evidence": []
+    },
+    {
+      "pmcid": "PMC13553295",
+      "doi": "10.1038/s41588-026-02714-8",
+      "tool_id": "monocle",
+      "evidence_paragraph_sha256": "597ca34ec0420567f98969bbfd3711b528ebde384343b37aadc4b3b0dc3a7d22",
+      "use_summary": "Inferred Monocle pseudotrajectories from metaVIPER protein-activity profiles of 1,856 malignant pancreatic cells, alongside separate Seurat/Louvain state clustering.",
+      "implementation_scope_note": "The Monocle generation/patch, model family, graph algorithm/options and roots are unstated. Protein-activity values must not be treated as raw RNA counts or assumed eligible for a count-model adapter. Native prepared-graph ordering requires the caller to supply the actual matched embedding/graph; metaVIPER/ARACNe inference, clustering, cross-cohort enrichment and biological state interpretation remain separate analyses.",
+      "version_reported_near_name": null,
+      "usage_context": "protein-activity-pseudotrajectory",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 10,
+          "section": "Results / The transcriptional states of PDA",
+          "paragraph_sha256": "697394c509e34262fb583316bea60d8e2059db4ca32b665456610d3c3610172a"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC12461018",
+      "doi": "10.1016/j.ajhg.2025.07.018",
+      "tool_id": "monocle",
+      "evidence_paragraph_sha256": "25dca0a4974557952240612051cb4112a0e1d18dbbefc5a1c766af404a5eb07d",
+      "use_summary": "Converted Seurat objects to cell_data_set objects through a wrapper and inferred Monocle 3 stromal trajectories after condition-specific FD/WT subsetting and reclustering.",
+      "implementation_scope_note": "The exact Monocle patch, graph controls, roots and complete conversion/embedding details are unstated. Results describe separately reclustered FD and WT objects to limit condition effects; do not replace this with a pooled trajectory. Seurat/Harmony/Liger processing and wrapper conversion remain separate from native projected-graph ordering and from the current original-package readiness probe.",
+      "version_reported_near_name": null,
+      "usage_context": "condition-separated-trajectories",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 23,
+          "section": "Results / FD cells express a distinct transcriptomic profile across many stromal subclusters",
+          "paragraph_sha256": "4d1ebc7e2a9384075264bf7c9aca0b9e8c8c71998bbc055c616cf091f55f7325"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC13600946",
+      "doi": "10.1038/s41586-025-09573-z",
+      "tool_id": "py-monocle",
+      "evidence_paragraph_sha256": "fce9b473e8b7732bf3761ba5e83b08ea0a6cf5442d108519c95973a563f52e37",
+      "use_summary": "Computed pseudotime using py-monocle for the Monocle3/Palantir comparison, with 200 eligible roots and selection by Braak-stage correlation.",
+      "implementation_scope_note": "The paper calls this a Python wrapper; upstream describes a separate Python implementation with graph-handling changes. Exact paper commit and settings are unstated. The inspected Community-Use License permits noncommercial use only. No runtime installation or analysis has run; implementation awaits the user license preference. R/native Monocle controls are not py-monocle controls.",
+      "version_reported_near_name": null,
+      "usage_context": "software-comparison-with-selected-root",
+      "supporting_evidence": []
+    },
+    {
+      "pmcid": "PMC10719105",
+      "doi": "10.1038/s41586-023-06824-9",
+      "tool_id": "cicero",
+      "evidence_paragraph_sha256": "41db6565b9c28d56ef328ce411a63865d3f6a88dfa070f1c94457546ac40598e",
+      "use_summary": "Predicted cis-co-accessible cCRE pairs separately across 275 subclasses with Cicero for Monocle3, mm10, 500-kb windows and default parameters, followed by shuffled-background score fitting and FDR filtering.",
+      "implementation_scope_note": "Samples at most 5000 nuclei per subclass; the paper reports the Hypendymal_NN subclass failed. Normal background fitting uses fitdistrplus, BH FDR<0.001 and GENCODE mm10v23 TSS±1kb distal/proximal grouping. The source says filtered out only if scores were significantly larger; preserve that wording rather than infer a reversed retention rule. Exact Cicero/Monocle commits, seeds and background implementation remain unknown. Source capture of Cicero-M3 1.3.9 is not paper reproduction.",
+      "version_reported_near_name": null,
+      "usage_context": "co-accessibility-and-background-filtering",
+      "supporting_evidence": []
+    },
+    {
+      "pmcid": "PMC13447104",
+      "doi": "10.1038/s41588-026-02695-8",
+      "tool_id": "cicero",
+      "evidence_paragraph_sha256": "7127ad8496e4253a67c941a3959d37f382490c354b00b13ed0ba61e663d1cf88",
+      "use_summary": "Benchmarked Cicero predictions after subsetting candidate pairs by peak accessibility for individual cell types.",
+      "implementation_scope_note": "This Methods paragraph establishes prediction subsetting, not a new Cicero fitting run or gene-expression filtering for Cicero. Other predictors use detected-gene filters; the explicit Cicero exception uses accessibility only. Exact prediction release, Cicero patch and generation settings remain unresolved.",
+      "version_reported_near_name": null,
+      "usage_context": "published-prediction-comparator",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 11,
+          "section": "Results / Benchmarking of scE2G models",
+          "paragraph_sha256": "982b9594921e574708548f68ef487768de203287109f977eca113bae66c2e28f"
+        }
+      ]
     }
   ]
 }

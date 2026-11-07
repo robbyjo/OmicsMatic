@@ -1,4 +1,17 @@
 
+## Monocle, Cicero and py-monocle: distinct tools and required actions
+
+Nine reviewed Monocle uses distinguish Monocle2 differential tests, Monocle3 trajectories/GLMs, a modified covariate-aware Moran test, protein-activity inputs and platform/wrapper context. Separate validated native prepared-graph, Monocle3 1.4.27 and Monocle2 2.26.0 development workflows are available; the canonical JAR is unchanged. Full reviewed-role coverage remains missing. Read MONOCLE_SOURCE_REVIEW.md, MONOCLE_TOOLS_DEVELOPMENT.md and MONOCLE2_DIFFERENTIAL_DEVELOPMENT.md; inspect the paper's own scope note. Source candidates labeled 1.3.3/1.3.7 are not proof of the paper commits or historical execution.
+
+**SKIP3: skip dependent analysis if the exact runtime/dependencies are unavailable or installation is forbidden.** Monocle2 requires Linux Java with the declared private R4.2.1 profile, including separate HSMMSingleCell1.18.0. Windows users can invoke Linux Java through WSL using Linux paths. Analysis installs nothing. Provision only where permitted; otherwise retain the skip. Do not substitute Monocle generations/versions, treat protein activity or TPM as raw counts, infer roots or silently replace a custom test with stock graph_test.
+
+**FAIL2: no atomic batch result is admitted on any failed original gene, error, timeout, capacity or audit mismatch.** Free-NB and binary/proportion binomialff controls fail in original Monocle2 under this exact VGAM profile. Failed-gene p/q=1 remains failure, not a valid null. Preserve WARNINGS.md, status, original objects and transcripts; correct the named cause and retry NEW paths without dropping genes, imputation or identifier/value repair.
+
+**Cicero is separate co-accessibility software.** P043 reports one failed subclass, shuffled-background fitting and a filtering sentence whose direction must not be silently reversed. P153 subsets published predictions using peak accessibility; it does not establish a new fitting run. Cicero runtime integration is still missing.
+
+**py-monocle has noncommercial community terms.** P024 calls it a wrapper, whereas inspected upstream describes a distinct Python implementation. No py-monocle runtime was installed or analyzed. The implementation decision awaits the user license preference; the restricted source remains in private research intake and is not bundled into the GPL project. Cell Ranger remains excluded. All 905 prior reviews remain unchanged; paper-wide semantic completeness and the implementation goal remain open.
+
+
 ## ChIPseeker: genomic annotation, native nearest features and required recovery
 
 Use the separate **chipseeker-tools** development JAR, **CHIPSEEKER_ANNOTATION_DEVELOPMENT.md**, **CHIPSEEKER_NEAREST_DEVELOPMENT.md** and **examples/chipseeker/README.md**. The canonical/released JAR lacks this route. NEAREST needs Java only; ANNOTATE requires the exact declared original edition and admitted R/dependency profile plus a caller-supplied TxDb SQLite and reference/coordinate declaration. No automatic resource choice or software installation occurs during analysis. Cell Ranger remains excluded.

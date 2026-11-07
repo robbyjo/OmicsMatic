@@ -1,6 +1,6 @@
 # Omics and GWAS paper catalog
 
-250 papers; 387 named tools; 2446 paper-tool observations.
+250 papers; 389 named tools; 2449 paper-tool observations.
 
 Window: 2023-10-23 through 2026-10-23, inclusive. No extension was required.
 
@@ -419,7 +419,7 @@ Nature · 2026-09-23 · [DOI](https://doi.org/10.1038/s41586-026-10271-7) · [Pr
 | limma | Linear modelling and empirical-Bayes differential analysis. | Methods / Age-associated transcriptomic changes |
 | MAGMA | Used MAGMA gene z-scores to weight disease genes for scDRS1.0.1; scDRS used200 matched control sets and gene-specific technical-noise weighting. | Methods / Single-cell polygenic disease risk score |
 | mashr | mashr0.2.79 with adapted dreamlet run_mash shrinks age-associated effects across nine EN, seven IN and four glial subclasses. Group scores multiply 1-LFSR, require nominal P<0.05 in at least two group members, and select scores>0.9. Tau expression specificity and enrichment are separate downstream analyses. | Methods / Degree of sharing across the EN, IN and glial subclasses |
-| Monocle | Single-cell trajectory or pseudotime inference. | Methods / Pseudotime analysis and dynamically expressed gene identification and downstream analysis |
+| Monocle | Used Monocle3 1.0.0 on the reported UMAT embedding to reconstruct lineage trajectories and select shortest paths; a modified graph_test with covariates identified trajectory-associated genes. | Methods / Pseudotime analysis and dynamically expressed gene identification and downstream analysis |
 | Scanpy | Single-cell expression processing and analysis. | Methods / Preprocessing of the snRNA-seq dataset / Rigorous quality-control pipeline |
 | scDRS | Single-cell disease relevance scoring. | Methods / Single-cell polygenic disease risk score |
 | SCENIC+ | Multiomic regulatory-network tools and motif reference resources. | Methods / Inference of transcriptional regulators of pseudotime gene modules |
@@ -481,7 +481,7 @@ Nature · 2026-09-23 · [DOI](https://doi.org/10.1038/s41586-025-09573-z) · [Pr
 | Leiden | Grouped observations into communities using a neighborhood graph. | Methods / Processing of snRNA-seq data / Doublet detection |
 | MAGMA | Mapped GWAS signals using35kb upstream/10kb downstream gene-body windows, then selected the top1000 MAGMA z-score weights for scDRS across multiple traits. The source names g1000_eur.bim and NCBI38.gene.loc. | Methods / Genetic heritability analysis of polygenic risk |
 | mashr | MASH integrates gene/cell-type effects across disease contrasts. Paragraph84 cites P104 via reference168 for composite nonzero-effect testing; it reports all eight disease contrasts and shared scores>=0.05. The inspected downstream author script separately removes shared genes at scores>=0.01 before correlations. | Methods / Evaluation of shared disease signatures |
-| Monocle | Single-cell trajectory or pseudotime inference. | Methods / Trajectory analysis using neural network models / Comparison to traditional trajectory inference methods |
+| Monocle | Compared pseudotime from py-monocle, described in the paper as a Monocle 3 Python wrapper, with neural-network predictions and Palantir in microglia; tried 200 eligible starting cells and retained the highest Braak-stage correlation. | Methods / Trajectory analysis using neural network models / Comparison to traditional trajectory inference methods |
 | PLINK 2 | Used explicitly named PLINK (v.2.0) to calculate ancestry PCs after MAF>=0.01, HWE P>=1e-10, variant missingness<=0.01, high-LD-region exclusion and LD pruning with a 1000-kb window, step 10 and r2=0.2. The later EUR set uses autosomal biallelic variants, imputation R2>0.8, HWE P>=1e-6, missingness<=0.02 and ancestry-specific ALFA MAF>=0.01. PLINK 2 also computes AD PRS from separately estimated PRS-CS-auto weights, including and excluding APOE. | Methods / Processing of genotypes |
 | PRS-CS | Inferred Alzheimer disease SNP weights with PRS-CS-auto using a developers' 1000 Genomes LD panel and reported a=1,b=0.5,1000 iterations,500 burn-in and thinning5; PLINK2 then computed individual scores. | Methods / PRS calculation |
 | Scanpy | Single-cell expression processing and analysis. | Methods / Processing of snRNA-seq data / Alignment |
@@ -492,6 +492,7 @@ Nature · 2026-09-23 · [DOI](https://doi.org/10.1038/s41586-025-09573-z) · [Pr
 | STAR | Splice-aware bulk RNA read alignment and optional raw gene counts. | Methods / Processing of snRNA-seq data / Alignment |
 | UMAP | Produced an exploratory low-dimensional representation of the measured profiles. | Methods / Defining cellular taxonomy using iterative clustering / Hierarchical cellular taxonomy |
 | Vireo | Genotype-based cell demultiplexing. | Methods / Processing of snRNA-seq data / Alignment |
+| py-monocle | Computed pseudotime using py-monocle for the Monocle3/Palantir comparison, with 200 eligible roots and selection by Braak-stage correlation. | Methods / Trajectory analysis using neural network models / Comparison to traditional trajectory inference methods |
 
 XML SHA-256: `95f294a27bf20b44f42ea8b780e347b1cd16849df0e48ee9745ac43600cd7c07`. Exact evidence paragraph hashes and locators are in [papers.json](papers.json).
 
@@ -838,13 +839,14 @@ Nature · 2023-12-13 · [DOI](https://doi.org/10.1038/s41586-023-06824-9) · [Pr
 | clusterProfiler | Performed GO enrichment with analysis-specific background genes, Fisher exact P values and BH multiple-comparison correction. | Methods / GO enrichment |
 | Leiden | Grouped observations into communities using a neighborhood graph. | Methods / Iterative cell clustering / Graph-based clustering |
 | MACS | Called peaks from Tn5-corrected cell-cluster pseudobulks, biological replicates, half-read pseudoreplicates and their pool using MACS2 with shift -75, extension 150, no model, summits, SPMR and q-value 0.01. Extended summits to 501 bases and filtered reproducible peaks with score per million at least 5. | Methods / Identification of reproducible peak sets in each cell cluster |
-| Monocle | Single-cell trajectory or pseudotime inference. | Methods / Inference of cis-co-accessible cCREs |
+| Monocle | Used Cicero for Monocle 3 to infer cis-co-accessible cCRE pairs per cell subclass, using mm10, default Cicero parameters and 500 kb genomic windows. | Methods / Inference of cis-co-accessible cCREs |
 | RepeatMasker | Used HOMER with UCSC mm10 refGene and RepeatMasker annotations to annotate transposable-element overlap at cCREs before separate mixture-model analyses. | Methods / TE analysis |
 | Scrublet | Called doublets with the modified Scrublet workflow in SnapATAC2 on selected 500-bp accessibility tiles, with expected rate 0.08 and score cutoff 0.5. | Methods / Doublet removal |
 | Seurat | Used for dataset integration. | Methods / Integration analysis with scRNA-seq data |
 | SnapATAC2 | Used SnapATAC2 modified Scrublet on selected 500-bp accessibility tiles, expected doublet rate 0.08 and score cutoff 0.5. | Methods / Doublet removal |
 | UCSC liftOver | Used reciprocal mouse-human liftOver searches to identify orthologous cCREs, with more than50% of bases mapped; accessibility conservation was then assessed against human cCREs. | Methods / Sequence conserved, chromatin accessibility conserved and mouse-specific cCREs |
 | UMAP | Produced an exploratory low-dimensional representation of the measured profiles. | Methods / Iterative cell clustering / Graph-based clustering |
+| Cicero | Predicted cis-co-accessible cCRE pairs separately across 275 subclasses with Cicero for Monocle3, mm10, 500-kb windows and default parameters, followed by shuffled-background score fitting and FDR filtering. | Methods / Inference of cis-co-accessible cCREs |
 
 XML SHA-256: `f8770e7b1232faedccba9e6bc4ddb1fb4db75a536adeff8473458534dab4d5a1`. Exact evidence paragraph hashes and locators are in [papers.json](papers.json).
 
@@ -1033,7 +1035,7 @@ Nature · 2025-12-03 · [DOI](https://doi.org/10.1038/s41586-025-09807-0) · [Pr
 | limma | Linear modelling and empirical-Bayes differential analysis. | Methods / Bulk RNA sequencing of mice and human-derived neutrophils |
 | Louvain | Grouped observations into communities using a neighborhood graph. | Methods / Single-cell transcriptomics on human neutrophils / Spatial analysis of human lung specimens using Visium HD |
 | MACS | Called MACS2 2.2.9.1 peaks through Signac 1.14.0 CallPeaks separately for annotated hubs, retaining cells with prediction score at least 0.7 and excluding blacklist/nonstandard-chromosome peaks. | Methods / Data processing / Merging of the datasets and peak calling |
-| Monocle | Single-cell trajectory or pseudotime inference. | Methods / Single-cell transcriptomics on mouse neutrophils / Velocyto analysis |
+| Monocle | Applied the Monocle3 pipeline with Batchelor 1.20.0 integration, Monocle3 1.3.7 dimensional reduction/clustering and pseudotime; a separate Wilcoxon test compared immature control and Tgfbr2-mutant cells. | Methods / Single-cell transcriptomics on mouse neutrophils / Velocyto analysis |
 | RSEM | Quantified expression with RSEM 1.3.1 using stated default options against GRCm38 or GRCh38, depending on the analysis. | Methods / Bulk RNA sequencing of mice and human-derived neutrophils |
 | SAMtools | Alignment manipulation and QC. | Methods / Single-cell transcriptomics on mouse neutrophils / Velocyto analysis |
 | scater | Single-cell QC and expression summaries. | Methods / Single-cell transcriptomics on human neutrophils / Spatial analysis of human lung specimens using Visium HD |
@@ -1640,7 +1642,7 @@ Nature Genetics · 2024-11-22 · [DOI](https://doi.org/10.1038/s41588-024-01961-
 | Leiden | Grouped observations into communities using a neighborhood graph. | Methods / Initial snRNA-seq data analysis |
 | Louvain | Grouped observations into communities using a neighborhood graph. | Methods / Spatial proteomics data analysis |
 | Milo | Single-cell neighborhood differential abundance. | Methods / Differential cell state abundance testing in the snRNA-seq datasets |
-| Monocle | Single-cell trajectory or pseudotime inference. | Methods / Identifying amyloid-associated gene expression signatures in human and mouse |
+| Monocle | Used monocle3 1.3.1 fit_models GLMs to relate spatial gene expression to amyloid Getis-Ord Gi* hotspot scores, adjusting for biological sample and UMI count; followed significant Wald-test results with positive Pearson-correlation filtering. | Methods / Identifying amyloid-associated gene expression signatures in human and mouse |
 | Scanpy | Single-cell expression processing and analysis. | Methods / Initial snRNA-seq data analysis |
 | scArches | Single-cell reference transfer. | Methods / Reference-based integration of snRNA-seq datasets |
 | scDRS | Single-cell disease relevance scoring. | Methods / Polygenic disease enrichment analysis in ST and snRNA-seq |
@@ -1926,7 +1928,7 @@ Nature Genetics · 2023-11-30 · [DOI](https://doi.org/10.1038/s41588-023-01572-
 | LDSC | SNP heritability, genetic correlation or functional partitioning. | Methods / LDSC analysis |
 | Louvain | Grouped observations into communities using a neighborhood graph. | Methods / Cell subclustering analysis |
 | MACS | Called per-cell-type pseudobulk ATAC peaks with MACS2 2.1.1 using no model, extension 200, shift -100 and q-value 0.05. Applied a score-per-million cutoff of 1.3, extended summits by 250 bases, merged peaks and constructed an HTSeq accessibility matrix. | Methods / Differential accessible peak analysis |
-| Monocle | Single-cell trajectory or pseudotime inference. | Methods / Cell clustering and annotation analysis |
+| Monocle | Used Monocle 2 differentialGeneTest for gene/exon and accessibility comparisons, age/AD analyses with sex covariates, subtype fraction likelihood-ratio tests, and human AD/control expression comparisons; populations and significance/effect/expression filters differ by analysis. | Methods / Cell clustering and annotation analysis |
 | Scrublet | Used Scrublet for doublet removal after RT-primer-aware cell merging and quality filtering in a large single-cell dataset. | Methods / Cell clustering and annotation analysis |
 | Seurat | Used for cell clustering; cell annotation. | Methods / Cell clustering and annotation analysis |
 | Signac | Used Signac 1.7.0 RunTFIDF and RunSVD for peak-count LSI and used dimensions 2–30 for UMAP. The motif workflow used chromVAR 1.16.0 with cisBP-derived motifs and Signac processing. | Methods / Differential accessible peak analysis |
@@ -2319,7 +2321,7 @@ Nature Genetics · 2026-09-08 · [DOI](https://doi.org/10.1038/s41588-026-02737-
 | GSEA | Ranked gene-set enrichment. | Methods / Sexual dimorphism analysis |
 | GSVA | Per-sample gene-set activity scoring. | Methods / Cholesterol balance analysis in bulk scRNA-seq and Visium data |
 | Harmony | Batch integration of cell embeddings. | Methods / Tissue-pattern identification in high-resolution spatial transcriptomics data |
-| Monocle | Single-cell trajectory or pseudotime inference. | Methods / Transition and velocity analysis |
+| Monocle | Constructed trajectories on selected transition regions with monocle3 1.3.3 learn_graph, varying ncenter across 130/140/150 and minimal_branch_len across 15/20, with close_loop=FALSE; ordered from a terminal node in the assumed transition direction. | Methods / Transition and velocity analysis |
 | Numbat | Single-cell copy-number inference. | Methods / Somatic CNV analysis |
 | RCTD | Spatial cell-type deconvolution. | Methods / Analysis of low-resolution Visium spatial transcriptomics data |
 | sctransform | Applied SCTransform to RCTD-derived cell-type expression estimates, including summed adrenocortical/mesenchymal estimates and a spot-total filter of at least 1500. | Methods / Analysis of low-resolution Visium spatial transcriptomics data |
@@ -2654,7 +2656,7 @@ Nature Genetics · 2026-08-26 · [DOI](https://doi.org/10.1038/s41588-026-02714-
 | kallisto | Used kallisto0.44.0 with sequence-specific bias correction for single-end PLATE-seq ORF perturbations,then aggregated transcript counts by Entrez IDs. A related drug PLATE-seq experiment used kallisto with tximport/biomaRt. | Methods / TF overexpression assay (PLATE-seq) |
 | Louvain | Grouped observations into communities using a neighborhood graph. | Methods / Single-cell analysis |
 | metaVIPER | Transformed gene-expression profiles into protein activities with metaVIPER using four bulk PDA regulatory networks and one single-cell PDA network,then analyzed malignant-cell states. | Methods / Single-cell analysis |
-| Monocle | Single-cell trajectory or pseudotime inference. | Methods / Single-cell analysis |
+| Monocle | Inferred Monocle pseudotrajectories from metaVIPER protein-activity profiles of 1,856 malignant pancreatic cells, alongside separate Seurat/Louvain state clustering. | Methods / Single-cell analysis |
 | Seurat | Used for cell clustering. | Methods / Single-cell analysis |
 | ShortRead | Assessed each PLATE-seq sample's sequencing-data quality with the ShortRead package. | Methods / Drug perturbation assays |
 | Signac | Reported differential accessible peaks from logistic regression implemented in Signac in the Figure 5g analysis of lineage-associated states. | Results / Barcode lineage tracing reveals mutation-independent plasticity |
@@ -2998,6 +3000,7 @@ Nature Genetics · 2026-08-03 · [DOI](https://doi.org/10.1038/s41588-026-02695-
 | Seurat | Used for cell annotation. | Methods / Quality control for 10x Multiome data |
 | Signac | Used Signac with Seurat for multiome QC. Used FeatureMatrix to quantify MACS2 2.2.9 peaks intersecting ABC candidate regions, then BinarizeCounts before a custom Kendall correlation analysis. | Methods / Quality control for 10x Multiome data |
 | SuSiE | Bayesian fine-mapping and credible sets. | Methods / eQTL benchmark |
+| Cicero | Benchmarked Cicero predictions after subsetting candidate pairs by peak accessibility for individual cell types. | Methods / Published predictors |
 
 XML SHA-256: `58d7366dacc144c8821f5657fa302461b72ca21490d647dbd8fef420ae138aa5`. Exact evidence paragraph hashes and locators are in [papers.json](papers.json).
 
@@ -4434,7 +4437,7 @@ American Journal of Human Genetics · 2025-08-22 · [DOI](https://doi.org/10.101
 | --- | --- | --- |
 | Cell Ranger | Processed scRNA-seq files with Cell Ranger v3.1.0 to generate expression matrices, and also ran Cell Ranger on targeted GNAS sequencing files before barcode intersection and genotype assignment. | Methods / scRNA-seq data analysis |
 | Harmony | Batch integration of cell embeddings. | Methods / scRNA-seq data analysis |
-| Monocle | Single-cell trajectory or pseudotime inference. | Methods / scRNA-seq data analysis |
+| Monocle | Converted Seurat objects to cell_data_set objects through a wrapper and inferred Monocle 3 stromal trajectories after condition-specific FD/WT subsetting and reclustering. | Methods / scRNA-seq data analysis |
 | Seurat | Single-cell QC, normalization, integration, clustering or annotation. | Methods / scRNA-seq data analysis |
 | SingleR | Reference-based cell annotation. | Methods / scRNA-seq data analysis |
 | SoupX | Ambient RNA contamination correction. | Methods / scRNA-seq data analysis |

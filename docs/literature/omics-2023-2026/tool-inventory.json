@@ -3126,10 +3126,10 @@
     "id": "monocle",
     "name": "Monocle",
     "pattern": "(?<![A-Za-z0-9_])(?:Monocle\\s*[23]?)(?![A-Za-z0-9_])",
-    "role": "Single-cell trajectory or pseudotime inference",
+    "role": "Monocle2 differential testing and Monocle3 trajectories, gene models or custom tests",
     "current_coverage": "missing",
     "existing_source": null,
-    "coverage_note": "No equivalent workflow identified in the current source inventory.",
+    "coverage_note": "Validated separate native prepared-graph and original Monocle2/Monocle3 development workflows are available. Complete reviewed-role support remains open; inspect each paper scope and version. Cicero and py-monocle have separate rows.",
     "paper_count": 9,
     "papers": [
       "P021",
@@ -3144,8 +3144,19 @@
     ],
     "implementation_status": "missing",
     "implementation_source": null,
-    "implementation_scope": "No equivalent workflow identified in the current source inventory.",
-    "validation_note": "Existing overlap/adapters require paper-specific option checks; missing integrations remain pending."
+    "implementation_scope": "Native Java prepared-graph ordering, original Monocle3 1.4.27 raw-count trajectories/GLMs/stock Moran and original Monocle2 2.26.0 typed differential testing are separately validated. Canonical JAR is unchanged. Paper-reported 1.3.3/1.3.7 sources are captured candidates, not historical execution controls. Modified covariate-aware Moran tests, unspecified protein-activity workflows, paper roots/embeddings and missing formulas are not inferred. py-monocle is a separate Python implementation; Cicero-M3 is a co-accessibility package. No complete Monocle integration credit is awarded yet.",
+    "validation_note": "Existing overlap/adapters require paper-specific option checks; missing integrations remain pending.",
+    "partial_development_workflows_available": true,
+    "canonical_adapter_available": false,
+    "source_roles_reviewed": 9,
+    "source_role_coverage": "monocle-role-coverage.json",
+    "differential_development_candidate": "build/literature-review/monocle-runtime/differential-build-4/omicsmatic-0.3.7-monocle2-differential-development.jar",
+    "differential_development_sha256": "23c6c3851f6dfbe70d2a052c97d5c99eb93841586fa67eca4512a69678fd032c",
+    "trajectory_development_candidate": "build/literature-review/monocle-runtime/root-build-1/omicsmatic-0.3.7-monocle-root-development.jar",
+    "trajectory_development_sha256": "9b8ef7757d911e8c1f37b7448af200dc1366eb13aa98ae105dcd4297118e97db",
+    "analysis_installs_software": false,
+    "whole_paper_reproduced": false,
+    "whole_goal_complete": false
   },
   {
     "id": "beagle",
@@ -6700,6 +6711,24 @@
     "validation_note": "Existing overlap/adapters require paper-specific option checks; missing integrations remain pending."
   },
   {
+    "id": "cicero",
+    "name": "Cicero",
+    "pattern": "(?<![A-Za-z0-9_])Cicero(?![A-Za-z0-9_])",
+    "role": "Single-cell chromatin co-accessibility analysis",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Distinct Cicero workflow; Monocle adapters do not establish Cicero co-accessibility equivalence.",
+    "paper_count": 2,
+    "papers": [
+      "P043",
+      "P153"
+    ],
+    "implementation_status": "missing",
+    "implementation_source": null,
+    "implementation_scope": "Distinct Cicero workflow; Monocle adapters do not establish Cicero co-accessibility equivalence.",
+    "validation_note": "Existing overlap/adapters require paper-specific option checks; missing integrations remain pending."
+  },
+  {
     "id": "cibersort",
     "name": "CIBERSORT",
     "pattern": "(?<![A-Za-z0-9_])(?:CIBERSORTx?)(?![A-Za-z0-9_])",
@@ -7691,6 +7720,23 @@
     "implementation_status": "missing",
     "implementation_source": null,
     "implementation_scope": "Original HMMRATAC and the MACS3 hmmratac program need version/model-specific integration; ordinary MACS callpeak is a different workflow.",
+    "validation_note": "Existing overlap/adapters require paper-specific option checks; missing integrations remain pending."
+  },
+  {
+    "id": "py-monocle",
+    "name": "py-monocle",
+    "pattern": "(?<![A-Za-z0-9_])py[-_]monocle(?![A-Za-z0-9_])",
+    "role": "Python implementation of Monocle3-based pseudotime inference",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Separate Python implementation; original R/native Monocle controls do not establish py-monocle equivalence.",
+    "paper_count": 1,
+    "papers": [
+      "P024"
+    ],
+    "implementation_status": "missing",
+    "implementation_source": null,
+    "implementation_scope": "Separate Python implementation; original R/native Monocle controls do not establish py-monocle equivalence.",
     "validation_note": "Existing overlap/adapters require paper-specific option checks; missing integrations remain pending."
   },
   {
