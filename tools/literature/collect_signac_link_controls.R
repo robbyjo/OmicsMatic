@@ -1,0 +1,24 @@
+# Copyright (C) 2026 JLinAlg contributors; SPDX-License-Identifier: GPL-3.0-or-later
+args<-commandArgs(trailingOnly=TRUE);stopifnot(length(args)==3L)
+.libPaths(c(normalizePath('build/literature-review/signac-runtime/reference-setup-1/R-lib'),normalizePath('build/omics-sctransform-r'),.Library),include.site=FALSE)
+stopifnot(requireNamespace('Signac',quietly=TRUE),as.character(packageVersion('Signac'))=='1.17.1',!requireNamespace('wrswoR',quietly=TRUE))
+input<-jsonlite::read_json(args[[1]],simplifyVector=FALSE);resource<-'src/main/resources/org/jlinalg/omics/signac-links';profiles<-jsonlite::read_json(file.path(resource,'SOURCE-PROFILES.json'),simplifyVector=FALSE)
+source(file.path(resource,'audit.R'))
+capture<-function(f){warnings<-character();value<-tryCatch(withCallingHandlers(f(),warning=function(w){warnings<<-c(warnings,conditionMessage(w));invokeRestart('muffleWarning')}),error=function(e)list(error=conditionMessage(e)));list(value=value,warnings=warnings)}
+profile_env<-function(profile){record<-profiles$records[[which(vapply(profiles$records,function(r)r$profile==profile,logical(1)))]];env<-new.env(parent=asNamespace('Signac'));for(record in record$functions)sys.source(file.path(resource,record$resource),env,keep.source=FALSE);if(profile=='1.17.1-package')for(name in ls(env))stopifnot(identical(body(env[[name]]),body(get(name,asNamespace('Signac')))));env$FindTopFeatures<-env$FindTopFeatures.default;env}
+matrix_input<-function(rows,stored=FALSE){x<-do.call(rbind,lapply(rows,unlist));if(stored)as(Matrix::sparseMatrix(i=rep(seq_len(nrow(x)),times=ncol(x)),j=rep(seq_len(ncol(x)),each=nrow(x)),x=as.vector(x),dims=dim(x)),'dgCMatrix') else as(Matrix::Matrix(x,sparse=TRUE),'dgCMatrix')}
+results<-list()
+for(profile in input$profiles)for(case in input$cases){
+  result<-capture(function(){
+    d<-input$datasets[[case$dataset]];cells<-unlist(d$cells);peaks<-GenomicRanges::GRanges(vapply(d$peaks,`[[`,character(1),'chromosome'),IRanges::IRanges(vapply(d$peaks,`[[`,numeric(1),'start'),vapply(d$peaks,`[[`,numeric(1),'end')));counts<-matrix_input(d$counts);ids<-paste0(as.character(GenomeInfoDb::seqnames(peaks)),'-',GenomicRanges::start(peaks),'-',GenomicRanges::end(peaks));dimnames(counts)<-list(ids,cells)
+    genes<-GenomicRanges::GRanges(vapply(d$genes,`[[`,character(1),'chromosome'),IRanges::IRanges(vapply(d$genes,`[[`,numeric(1),'start'),vapply(d$genes,`[[`,numeric(1),'end')),strand=vapply(d$genes,`[[`,character(1),'strand'));genes$gene_id<-vapply(d$genes,`[[`,character(1),'gene_id');genes$gene_name<-vapply(d$genes,`[[`,character(1),'gene_name')
+    assay<-Signac::CreateChromatinAssay(counts=counts,ranges=peaks,min.cells=0,min.features=0);meta<-data.frame(GC.percent=vapply(d$meta,function(m)if(is.null(m$gc))NA_real_ else m$gc,numeric(1)),sequence.length=vapply(d$meta,`[[`,numeric(1),'length'),row.names=ids)
+    if(case$precomputed_count)meta$count<-Matrix::rowSums(counts)
+    if(isTRUE(d$missing_metadata))meta$GC.percent<-NULL
+    assay<-SeuratObject::AddMetaData(assay,meta);obj<-SeuratObject::CreateSeuratObject(counts=assay,assay='peaks');expression<-matrix_input(d$expression,isTRUE(d$keep_stored_zeros));dimnames(expression)<-list(if(case$gene_id)genes$gene_id else genes$gene_name,cells);obj[['RNA']]<-SeuratObject::CreateAssayObject(data=expression);SeuratObject::DefaultAssay(obj)<-'RNA'
+    env<-profile_env(profile);RNGkind('Mersenne-Twister','Inversion','Rejection');set.seed(case$seed);before<-.Random.seed;fun<-if(profile=='1.17.1-package')Signac::LinkPeaks else env$LinkPeaks
+    fit<-fun(obj,peak.assay='peaks',expression.assay='RNA',gene.coords=genes,method=case$method,distance=case$distance,min.distance=case$min_distance,min.cells=case$min_cells,genes.use=if(is.null(case$genes_use))NULL else unlist(case$genes_use),n_sample=case$n_sample,pvalue_cutoff=case$pvalue_cutoff,score_cutoff=case$score_cutoff,gene.id=case$gene_id,verbose=FALSE);after<-.Random.seed
+    links<-Signac::Links(fit[['peaks']]);.Random.seed<<-before;settings<-case;settings$profile<-profile;audit<-audit_link_peaks(obj,env,settings,genes);stopifnot(identical(audit$seed_after,after));list(links=if(length(links)==0)list() else as.data.frame(links),audit=audit,seed_before=before,seed_after=after,profile=profile,peak_rows=length(peaks),genes=rownames(expression),sampler='base-R-sample.int',historical_package_executed=FALSE)
+  });results[[length(results)+1L]]<-list(id=case$id,profile=profile,result=result);cat(profile,case$id,'\n')
+}
+writeLines(capture.output(sessionInfo()),file.path(args[[3]],'session-info.txt'));jsonlite::write_json(list(status='captured-original-LinkPeaks-package-and-historical-source-controls',results=results),args[[2]],pretty=TRUE,auto_unbox=TRUE,digits=17,na='string',null='null');cat('COMPLETE_ORIGINAL_LINKPEAKS_CONTROLS',length(results),'\n')

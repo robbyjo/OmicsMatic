@@ -22,26 +22,43 @@ final class NextflowParameters {
     }
     static Object bind(Object value,Map<String,Path> inputs,Path output)throws IOException {
         if(!output.isAbsolute()||!output.normalize().equals(output))throw new IOException("Output binding root must be absolute and normalized");
-        return bind(value,inputs,output,0);
+        return bind(value,(id,member)->{
+            Path base=inputs.get(id);if(base==null)throw new IOException("Undeclared captured input binding: "+id);
+            if(!base.isAbsolute()||!base.normalize().equals(base))throw new IOException("Captured input root is not absolute/normalized");
+            return relative(base,member).toString();
+        },member->relative(output,member).toString(),0);
     }
-    private static Object bind(Object value,Map<String,Path> inputs,Path output,int depth)throws IOException {
+    /** Replays Linux producer bindings without accessing producer paths on this host. */
+    static Object bindRecorded(Object value,Map<String,String> inputs,String output)throws IOException {
+        return bind(value,(id,member)->{
+            String base=inputs.get(id);if(base==null)throw new IOException("Undeclared captured input binding: "+id);
+            return recordedPath(base,member);
+        },member->recordedPath(output,member),0);
+    }
+    @FunctionalInterface private interface Input {String resolve(String id,String member)throws IOException;}
+    @FunctionalInterface private interface Output {String resolve(String member)throws IOException;}
+    private static Object bind(Object value,Input inputs,Output output,int depth)throws IOException {
         if(depth>80)throw new IOException("Nextflow binding nesting capacity exceeded");
         if(value instanceof Map<?,?> map){
             if(map.keySet().equals(Set.of("$literal")))return map.get("$literal");
             if(map.containsKey("$input")){
                 if(!map.keySet().equals(Set.of("$input"))&&!map.keySet().equals(Set.of("$input","path")))throw new IOException("Input binding requires $input and optional path only; use $literal for literal reserved keys");
-                String id=text(map.get("$input"));Path base=inputs.get(id);if(base==null)throw new IOException("Undeclared captured input binding: "+id);
-                if(!base.isAbsolute()||!base.normalize().equals(base))throw new IOException("Captured input root is not absolute/normalized");
-                return relative(base,map.containsKey("path")?text(map.get("path")):"").toString();
+                return inputs.resolve(text(map.get("$input")),map.containsKey("path")?text(map.get("path")):"");
             }
             if(map.containsKey("$output")){
                 if(!map.keySet().equals(Set.of("$output")))throw new IOException("Output binding requires $output only; use $literal for literal reserved keys");
-                return relative(output,text(map.get("$output"))).toString();
+                return output.resolve(text(map.get("$output")));
             }
             var result=new LinkedHashMap<String,Object>();for(var entry:map.entrySet())result.put(text(entry.getKey()),bind(entry.getValue(),inputs,output,depth+1));return result;
         }
         if(value instanceof java.util.List<?> list){var result=new ArrayList<Object>();for(Object item:list)result.add(bind(item,inputs,output,depth+1));return result;}
         return value;
+    }
+    private static String recordedPath(String root,String member)throws IOException {
+        if(root==null||!root.startsWith("/")||root.length()<2)throw new IOException("Recorded Nextflow producer path must be absolute Linux text");
+        NextflowFiles.member(root.substring(1));
+        if(member.isEmpty())return root;
+        NextflowFiles.member(member);return root+"/"+member;
     }
     private static Path relative(Path root,String member)throws IOException {
         if(member.isEmpty())return root;

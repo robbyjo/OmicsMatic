@@ -57,6 +57,19 @@ final class NextflowProcess {
     /** Package-private seam for real controlled helper-process tests. */
     static Result executeOwned(List<String> command, Map<String, String> environment, Path newWork,
             Path allowedRoot, Limits limits, Check integrity, Runnable cancellation) throws IOException {
+        return execute(command,environment,newWork,newWork,allowedRoot,newWork,limits,integrity,cancellation);
+    }
+
+    /** Stable engine cwd/cache across attempts; each attempt owns new diagnostics. */
+    static Result executeSession(List<String> command, Map<String,String> environment,Path newRecord,
+            Path workingDirectory,Path allowedRoot,Limits limits,Check integrity,Runnable cancellation)throws IOException {
+        NextflowFiles.directory(workingDirectory);
+        if(!workingDirectory.startsWith(allowedRoot))throw new IOException("Nextflow session cwd escapes its owned root");
+        return execute(command,environment,newRecord,workingDirectory,allowedRoot,allowedRoot,limits,integrity,cancellation);
+    }
+
+    private static Result execute(List<String> command,Map<String,String> environment,Path newWork,Path workingDirectory,
+            Path allowedRoot,Path observedRoot,Limits limits,Check integrity,Runnable cancellation)throws IOException {
         Objects.requireNonNull(limits, "limits"); Objects.requireNonNull(integrity, "integrity"); Objects.requireNonNull(cancellation, "cancellation");
         if (!System.getProperty("os.name").equals("Linux")) throw new Unavailable("Owned Nextflow execution requires Linux Java");
         Path work = newWork.toAbsolutePath().normalize();
@@ -70,21 +83,24 @@ final class NextflowProcess {
         invocation.addAll(List.copyOf(command));
         Path stdout = work.resolve("process.stdout"), stderr = work.resolve("process.stderr"), ledger = work.resolve("process.json");
         var record = new LinkedHashMap<String, Object>(); record.put("status", "launching"); record.put("command", invocation); record.put("limits", limits);
+        record.put("working_directory",workingDirectory.toAbsolutePath().normalize().toString());
+        record.put("workspace_root",observedRoot.toAbsolutePath().normalize().toString());
         record.put("scope", "Hard per-process AS/CPU/file/nofile limits; wall/workspace/process/thread and sampled aggregate RSS checks. Sampled RSS is not a hard aggregate RSS bound.");
         Process child = null; Guard guard = null; IOException failure = null; long started = System.nanoTime();
         try {
             guard = new Guard(work); // The hook exists before ProcessBuilder.start.
-            var builder = new ProcessBuilder(invocation).directory(work.toFile()).redirectOutput(stdout.toFile()).redirectError(stderr.toFile());
-            var env = builder.environment(); env.clear(); env.putAll(environment); env.put("HOME", work.toString()); env.put("TMPDIR", work.toString());
+            var cwd=workingDirectory.toAbsolutePath().normalize();
+            var builder = new ProcessBuilder(invocation).directory(cwd.toFile()).redirectOutput(stdout.toFile()).redirectError(stderr.toFile());
+            var env = builder.environment(); env.clear(); env.putAll(environment); env.put("HOME", cwd.toString()); env.put("TMPDIR", cwd.toString());
             child = guard.launch(builder); record.put("owned_launcher_pid", child.pid()); record.put("status", "running");
             write(work.resolve("launch.json"), record); guard.observe();
             for (;;) {
                 cancellation.run(); guard.requireOpen(); guard.observe(); guard.enforce(limits);
-                guard.workspace = Math.max(guard.workspace, workspace(work, limits, allowedRoot));
+                guard.workspace = Math.max(guard.workspace, workspace(observedRoot, limits, allowedRoot));
                 if (TimeUnit.NANOSECONDS.toMillis(System.nanoTime() - started) > limits.wallMillis) throw new IOException("Nextflow wall-time capacity exceeded");
                 if (child.waitFor(limits.monitorMillis, TimeUnit.MILLISECONDS)) break;
             }
-            guard.observe(); guard.enforce(limits); guard.workspace = Math.max(guard.workspace, workspace(work, limits, allowedRoot));
+            guard.observe(); guard.enforce(limits); guard.workspace = Math.max(guard.workspace, workspace(observedRoot, limits, allowedRoot));
             record.put("exit_code", child.exitValue());
             if (child.exitValue() != 0) throw new IOException("Original Nextflow process failed, exit " + child.exitValue());
         } catch (InterruptedException interrupted) {
@@ -102,7 +118,7 @@ final class NextflowProcess {
             try {
                 // A successful exit alone never admits scientific results.
                 integrity.verify(); cancellation.run();
-                if (guard != null) guard.workspace = Math.max(guard.workspace, workspace(work, limits, allowedRoot));
+                if (guard != null) guard.workspace = Math.max(guard.workspace, workspace(observedRoot, limits, allowedRoot));
             } catch (IOException | RuntimeException changed) {
                 if (failure == null) failure = new IOException("Nextflow input/runtime/workspace integrity failed after execution", changed); else failure.addSuppressed(changed);
             }
@@ -118,7 +134,7 @@ final class NextflowProcess {
             try {
                 String provisional = NextflowJson.json(record) + "\n";
                 long additionalBytes = provisional.getBytes(StandardCharsets.UTF_8).length + warning(failure).getBytes(StandardCharsets.UTF_8).length;
-                workspace(work, limits, allowedRoot, additionalBytes, 2);
+                workspace(observedRoot, limits, allowedRoot, additionalBytes, 2);
             } catch (IOException capacity) { if (failure == null) failure = capacity; else failure.addSuppressed(capacity); }
             record.put("status", failure == null ? "completed-process-only" : "FAIL2-retained-no-result");
             if (failure != null) { record.put("error", failure.toString()); record.put("suppressed", java.util.Arrays.stream(failure.getSuppressed()).map(Throwable::toString).toList()); }
@@ -282,6 +298,9 @@ final class NextflowProcess {
 
     private static long workspace(Path root, Limits limits, Path allowedRoot) throws IOException {
         return workspace(root, limits, allowedRoot, 0, 0);
+    }
+    static void checkCapacity(Path root,Limits limits,long additionalBytes,int additionalFiles)throws IOException {
+        workspace(root,limits,root,additionalBytes,additionalFiles);
     }
     private static long workspace(Path root, Limits limits, Path allowedRoot, long additionalBytes, int additionalFiles) throws IOException {
         long[] bytes = {0}; int[] count = {0};

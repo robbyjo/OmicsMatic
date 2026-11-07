@@ -113,22 +113,26 @@ final class NextflowRuntime {
         check.run();return new Context(home,report,requested,version,kernel,payload,setup,helpers,departures.size());
     }
     private static void verifyHealth(Path home,Path report,String version,Runnable check)throws IOException {
+        verifyRecordedHealth(home.toString(),report.toString(),report::resolve,version,check);
+    }
+    @FunctionalInterface interface RecordedFiles {Path get(String name)throws IOException;}
+    static void verifyRecordedHealth(String home,String report,RecordedFiles files,String version,Runnable check)throws IOException {
         resource("install_nextflow.py",INSTALLER);resource("health.nf",HEALTH);resource("health.config",HEALTH_CONFIG);
-        Path health=report.resolve("health");Map<?,?> meta=object(json(report.resolve("health.json"),65536));keys(meta,"status","version","task_count","workflow","config","trace","output","user_analysis_admitted");
+        String health=report+"/health";Map<?,?> meta=object(json(files.get("health.json"),65536));keys(meta,"status","version","task_count","workflow","config","trace","output","user_analysis_admitted");
         if(!"passed-three-task-original-Nextflow-DAG".equals(meta.get("status"))||!version.equals(meta.get("version"))||integer(meta.get("task_count"),3,3)!=3||!Boolean.FALSE.equals(meta.get("user_analysis_admitted")))throw new IOException("Nextflow health admission differs");
         Pin output=new Pin(10,"67252bba18242c39b82d8acef803f2b7d1441b697769582eba3049a65980bb34");
-        for(var row:Map.of("workflow",Map.entry(health.resolve("main.nf"),HEALTH),"config",Map.entry(health.resolve("nextflow.config"),HEALTH_CONFIG),"trace",Map.entry(health.resolve("trace.tsv"),pinObject(meta.get("trace"),65536)),"output",Map.entry(health.resolve("published/result.txt"),output)).entrySet()){
+        for(var row:Map.of("workflow",Map.entry(files.get("health/main.nf"),HEALTH),"config",Map.entry(files.get("health/nextflow.config"),HEALTH_CONFIG),"trace",Map.entry(files.get("health/trace.tsv"),pinObject(meta.get("trace"),65536)),"output",Map.entry(files.get("health/published/result.txt"),output)).entrySet()){
             if(!row.getValue().getValue().equals(pinObject(meta.get(row.getKey()),65536))||!row.getValue().getValue().equals(pin(row.getValue().getKey(),65536,check)))throw new IOException("Complete Nextflow health source/trace/output bytes differ: "+row.getKey());
         }
-        if(!NextflowTraceAudit.read(health.resolve("trace.tsv"),3,0,NextflowTraceAudit.Limits.defaults(),check).allObservedTasksSuccessful())throw new IOException("Nextflow health task family is incomplete/failed");
-        String versionText=utf8(bytes(report.resolve("version.stdout"),65536))+utf8(bytes(report.resolve("version.stderr"),65536));
+        if(!NextflowTraceAudit.read(files.get("health/trace.tsv"),3,0,NextflowTraceAudit.Limits.defaults(),check).allObservedTasksSuccessful())throw new IOException("Nextflow health task family is incomplete/failed");
+        String versionText=utf8(bytes(files.get("version.stdout"),65536))+utf8(bytes(files.get("version.stderr"),65536));
         if(!versionText.contains("\n      version "+version+" build "))throw new IOException("Exact original Nextflow version output differs");
-        List<String> prefix=List.of("/usr/bin/prlimit","--as=8589934592","--cpu=180","--fsize=536870912","--nofile=4096","--","/usr/bin/bash",home.resolve("nextflow").toString());
-        var versionCommand=new ArrayList<>(prefix);versionCommand.add("-version");verifyProcess(report,"version",versionCommand);
-        var healthCommand=new ArrayList<>(prefix);healthCommand.addAll(List.of("-C",health.resolve("nextflow.config").toString(),"-log",health.resolve("nextflow.log").toString(),"run",health.resolve("main.nf").toString(),"-ansi-log","false","-with-trace",health.resolve("trace.tsv").toString(),"-work-dir",health.resolve("work").toString(),"--outdir",health.resolve("published").toString()));verifyProcess(health,"health",healthCommand);
+        List<String> prefix=List.of("/usr/bin/prlimit","--as=8589934592","--cpu=180","--fsize=536870912","--nofile=4096","--","/usr/bin/bash",home+"/nextflow");
+        var versionCommand=new ArrayList<>(prefix);versionCommand.add("-version");verifyProcess(files,"version",versionCommand);
+        var healthCommand=new ArrayList<>(prefix);healthCommand.addAll(List.of("-C",health+"/nextflow.config","-log",health+"/nextflow.log","run",health+"/main.nf","-ansi-log","false","-with-trace",health+"/trace.tsv","-work-dir",health+"/work","--outdir",health+"/published"));verifyProcess(files,"health/health",healthCommand);
     }
-    private static void verifyProcess(Path root,String name,List<String> command)throws IOException {
-        Map<?,?> process=object(json(root.resolve(name+".process.json"),65536)),launch=object(json(root.resolve(name+".launch.json"),65536));
+    private static void verifyProcess(RecordedFiles files,String name,List<String> command)throws IOException {
+        Map<?,?> process=object(json(files.get(name+".process.json"),65536)),launch=object(json(files.get(name+".launch.json"),65536));
         if(!"completed-process-only".equals(process.get("status"))||integer(process.get("exit_code"),0,0)!=0||!list(process.get("owned_live_after_cleanup")).isEmpty()||!command.equals(strings(process.get("command")))||!command.equals(strings(launch.get("command"))))throw new IOException("Nextflow setup process command/exit/owned cleanup differs: "+name);
         if(integer(launch.get("pid"),1,Long.MAX_VALUE)!=integer(launch.get("process_group"),1,Long.MAX_VALUE))throw new IOException("Nextflow setup process group differs");integer(launch.get("start_ticks"),0,Long.MAX_VALUE);
     }

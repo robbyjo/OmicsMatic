@@ -515,7 +515,7 @@
   {
     "id": "bwa",
     "name": "BWA",
-    "pattern": "(?<![A-Za-z0-9_])BWA(?![- _]?MEM[- ]?[23])(?:[- ]MEM)?(?![A-Za-z0-9_])",
+    "pattern": "(?<![A-Za-z0-9_])BWA(?![- _]?MEM(?:[- ]?[23]|E\\b))(?:[- ]MEM)?(?![A-Za-z0-9_])",
     "role": "DNA read alignment",
     "current_coverage": "missing",
     "existing_source": null,
@@ -1073,7 +1073,7 @@
   {
     "id": "meme",
     "name": "MEME",
-    "pattern": "(?-i:(?<![A-Za-z0-9_])(?:MEME(?:[- ]Suite)?)(?![A-Za-z0-9_]))",
+    "pattern": "(?<!HyPhy\\s)(?<!BWA[-\\s])(?-i:(?<![A-Za-z0-9_])(?:MEME(?:[- ]Suite)?)(?![A-Za-z0-9_]))",
     "role": "Motif discovery and scanning",
     "current_coverage": "missing",
     "existing_source": null,
@@ -3760,5 +3760,68 @@
     "current_coverage": "native-subset-validated",
     "existing_source": "src/main/java/org/jlinalg/sequence/Pal2Nal.java",
     "coverage_note": "Scoped native v14/v14.1-matching codon back-translation with complete input, identity and filtering ledgers and a typed portable workflow. Full original CLI/web behavior, omitted paper settings and whole-paper parity are not claimed."
+  },
+  {
+    "id": "meme-chip",
+    "name": "MEME-ChIP",
+    "pattern": "(?<![A-Za-z0-9_])MEME[- ]ChIP(?![A-Za-z0-9_])",
+    "role": "Combined motif discovery, comparison and positional-enrichment workflow",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Distinct named program identified during primary-text completeness review. Parent suite mentions, another program or resource format do not supply this implementation; source-specific integration and original validation pending."
+  },
+  {
+    "id": "dreme",
+    "name": "DREME",
+    "pattern": "(?<![A-Za-z0-9_])DREME(?![A-Za-z0-9_])",
+    "role": "Discriminative short-motif discovery",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Distinct named program identified during primary-text completeness review. Parent suite mentions, another program or resource format do not supply this implementation; source-specific integration and original validation pending."
+  },
+  {
+    "id": "centrimo",
+    "name": "CentriMo",
+    "pattern": "(?<![A-Za-z0-9_])CentriMo(?![A-Za-z0-9_])",
+    "role": "Positional motif enrichment",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Distinct named program identified during primary-text completeness review. Parent suite mentions, another program or resource format do not supply this implementation; source-specific integration and original validation pending."
+  },
+  {
+    "id": "tomtom",
+    "name": "Tomtom",
+    "pattern": "(?<![A-Za-z0-9_])Tomtom(?![A-Za-z0-9_])",
+    "role": "Comparison of supplied or discovered sequence motifs",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Distinct named program identified during primary-text completeness review. Parent suite mentions, another program or resource format do not supply this implementation; source-specific integration and original validation pending."
+  },
+  {
+    "id": "streme",
+    "name": "STREME",
+    "pattern": "(?<![A-Za-z0-9_])STREME(?![A-Za-z0-9_])",
+    "role": "Sequence motif discovery with enrichment or central-distance objectives",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Distinct named program identified during primary-text completeness review. Parent suite mentions, another program or resource format do not supply this implementation; source-specific integration and original validation pending."
+  },
+  {
+    "id": "hyphy",
+    "name": "HyPhy",
+    "pattern": "(?<![A-Za-z0-9_])HyPhy(?![A-Za-z0-9_])",
+    "role": "Phylogenetic selection models; method and tested family must be specified",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Distinct named program identified during primary-text completeness review. Parent suite mentions, another program or resource format do not supply this implementation; source-specific integration and original validation pending."
+  },
+  {
+    "id": "bwa-meme",
+    "name": "BWA-MEME",
+    "pattern": "(?<![A-Za-z0-9_])BWA[- _]+MEME(?![A-Za-z0-9_])",
+    "role": "DNA read alignment with the distinct BWA-MEME implementation",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Distinct named program identified during primary-text completeness review. Parent suite mentions, another program or resource format do not supply this implementation; source-specific integration and original validation pending."
   }
 ]

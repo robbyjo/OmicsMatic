@@ -1,0 +1,19 @@
+# WARNINGS / REQUIRED ACTIONS
+
+INPUT_SCOPE — Native ENRICH requires a prepared peaks-by-motifs occurrence/count matrix and explicit query/background rows. It needs Java only. It does not scan FASTA/PFM, compute reference GC, select KDE-matched backgrounds or calculate per-cell chromVAR. Review exact matrix orientation, IDs, database/scan thresholds, assembly and selection provenance. Genome/motif labels are declarations, not certification.
+
+SOURCE_INFERENCE — Original FindMotifs uses the background alone in phyper(observed-1,backgroundCount,backgroundRows-backgroundCount,queryRows,lower.tail=FALSE), not a pooled query-plus-background Fisher population. Zero p can occur when motifs are absent from the supplied background. Review source inference and populations; enrichment is not regulatory causality or per-cell TF activity.
+
+NONFINITE_SOURCE_OUTPUTS — Empty populations, zero denominators and invalid source hypergeometric parameters can yield NaN/Inf. They remain explicit, with warnings, and must not be interpreted as valid discoveries. Counts greater than one are summed as upstream but can make the population invalid. Review affected rows and matrix meaning; no repairs or automatic threshold/selection changes occur.
+
+SOURCE_FAMILY_AND_DUPLICATES — All motifs enter the complete finite correction family before ordering. Source1.6 has no p.adjust column and ignores correction choices. Query/background duplicates remain repeated rows; numeric matrix duplicates sum while pattern duplicates use logical union. Explicit numeric zeros remain stored. Review the requested profile, multiplicities, correction and storage provenance.
+
+FAIL2 — Missing rows, malformed inputs, identity conflicts, exceeded work and failed verification admit no result. Preserve attempts, read captured requests/inputs, diagnostics, status and warnings; correct the named cause and rerun into NEW outputs. Existing destinations are refused. Hashes and native replay are not signatures or authenticity certification.
+
+SKIP3_FOR_UPSTREAM — Unavailable/forbidden scanning or chromVAR dependencies require skipping those dependent analyses. Provide/install exact requirements only where permitted, into new private paths. The current isolated reference setup succeeded without changing frozen libraries. Native explicit enrichment and VERIFY do not require R or install software.
+
+HISTORICAL_SCOPE — Reference controls use unchanged historical functions with an explicitly recorded strict Seurat slot-to-layer access bridge on current dependencies, not historical whole-package binaries. Signac1.16 changed KDE weighting. The successful chromVAR reference probe uses current chromVAR1.34.1, not the paper's1.16.0/1.5.0 runtime. Original source archives are retained for further work. Upstream user workflows and historical reproduction remain incomplete.
+
+RETAINED_ATTEMPTS — Unbridged motif-original1 retains removed-slot API failures; bridged motif-original2 captures111 successes/33 failures. Runtime-probe1 hit a missing-snow child launch; only its identity-verified owned R tree was stopped and checked gone. Serial runtime-probe2 passed scanning, sequence statistics and finite chromVAR reference scores. Source-intake1 HTTP403 failures and corrected-User-Agent intake2 successes are both retained. No failed attempt is silently replaced by success.
+
+DEVELOPMENT_SCOPE — Native ENRICH/VERIFY is a standalone local candidate. Scanner/GC-background/chromVAR/differential-accessibility user workflows and full Signac roles remain pending. The catalog stays68 new integrations (71 including existing),259 missing; Signac receives no full-role credit. Cell Ranger remains excluded. Canonical executable and parent sources are preserved. No root dispatch, release, push, deployment or whole-goal completion occurred. Read [the guide](../SIGNAC_MOTIFS_DEVELOPMENT.md) and [checked examples](../../../examples/signac-motifs/README.md).

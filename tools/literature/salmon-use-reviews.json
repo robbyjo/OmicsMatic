@@ -1,0 +1,167 @@
+[
+  {
+    "paper_id": "P108",
+    "primary_paragraph": 44,
+    "reported_version": "1.5.2",
+    "review": {
+      "pmcid": "PMC10703692",
+      "doi": "10.1038/s41588-023-01560-2",
+      "tool_id": "salmon",
+      "evidence_paragraph_sha256": "4319f3778854369f6ed922fd60231927a52896a61e33bbb5a8d4b0ad0bb8bc6c",
+      "use_summary": "Quantified GTEx v8 RNA-seq for 48 tissues with Salmon 1.5.2 mapping-based quantification against GENCODE v38 transcripts plus the full GRCh38 genome as decoys, with mapping validation, sequence/GC bias correction and 50 inferential bootstraps. Developmental and adult brain panels instead used Salmon 1.8.0 with 50 bootstraps and the standard EM algorithm; adult brain explicitly inferred library type automatically.",
+      "implementation_scope_note": "The 1.5.2 and 1.8.0 runs are separate analyses; the citation after1.8.0 is not a patch digit. GTEx optimizer/library-type choices and complete commands remain unstated. Adult brain names GRCh38 patch 13. Retain decoy/reference identities and inferential replicates. tximeta aggregation, TMM/DESeq2 transformations, residualization, fishpond variance and isoform fractions are separate downstream operations.",
+      "version_reported_near_name": "1.5.2",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 47,
+          "paragraph_sha256": "5885d1aff6d0c385cd4aef8d4c88f5d6e2d56fce26b3023508ce02e5c6604195",
+          "section": "Methods / Developmental brain reference panel processing and model training"
+        },
+        {
+          "paragraph_index": 51,
+          "paragraph_sha256": "a6b9a13816c441d5f6a6eaaa7ff1d33391502003ff0c6ffd8a70cfccdf40459a",
+          "section": "Methods / Adult brain reference panel processing and model training",
+          "evidence_role": "method-details",
+          "named_anchor": {
+            "paragraph_index": 47,
+            "paragraph_sha256": "5885d1aff6d0c385cd4aef8d4c88f5d6e2d56fce26b3023508ce02e5c6604195",
+            "section": "Methods / Developmental brain reference panel processing and model training"
+          },
+          "shared_terms": [
+            "mapping-based",
+            "tximeta",
+            "isoform"
+          ],
+          "relation_note": "The adult-brain paragraph explicitly names lowercase salmon1.8.0, mapping-based quantification and the same GENCODE/GRCh38 decoy resources as the named developmental-brain method. It separately supplies EM, automatic library inference, bias correction and50 bootstrap details; these are not propagated to GTEx."
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "P151",
+    "primary_paragraph": 48,
+    "reported_version": null,
+    "review": {
+      "pmcid": "PMC13447110",
+      "doi": "10.1038/s41588-026-02681-0",
+      "tool_id": "salmon",
+      "evidence_paragraph_sha256": "781883d28307ec0b63b464c1bdcda0ae2f1f44cca73d739564b3dd000ce0fd2c",
+      "use_summary": "Mapped human and mouse RNA-seq reads to transcripts associated with hg38 and mm10 using Salmon. Imported transcript counts and collapsed to gene counts with tximport for separate DESeq2 differential analyses.",
+      "implementation_scope_note": "The Salmon edition, transcript annotation, index/decoy construction, library type and complete options are unstated. Genome assembly labels do not establish genome-coordinate alignments. A separate TL1A experiment reused downloaded gene counts rather than documenting another Salmon run. Differential tests and tximport aggregation remain separate.",
+      "version_reported_near_name": null,
+      "supporting_evidence": []
+    }
+  },
+  {
+    "paper_id": "P190",
+    "primary_paragraph": 32,
+    "reported_version": null,
+    "review": {
+      "pmcid": "PMC12626415",
+      "doi": "10.1016/j.ajhg.2025.10.012",
+      "tool_id": "salmon",
+      "evidence_paragraph_sha256": "e5fb732dfe9d57e3ddf0660860e3997982e3b0547736b22f05b456212de651bd",
+      "use_summary": "Used Salmon transcript TPM and normalized isoform abundance within each gene to form percentage phenotypes for sQTL comparisons. MAJIQTL combines these isoform representations with MAJIQ splice-junction/event quantifications.",
+      "implementation_scope_note": "The Salmon edition, reference/index, mapping mode, optimizer and complete command are unstated. TPM, estimated fragment counts and within-gene isoform percentages have distinct units. Salmon transcript estimates do not implement MAJIQ local splicing/IR detection, MOCCASIN correction, weighted gene testing or the downstream composite models.",
+      "version_reported_near_name": null,
+      "supporting_evidence": [
+        {
+          "paragraph_index": 37,
+          "paragraph_sha256": "e6b6599b5970704ceb3b5d17ca195aae035eb28deac6038d715be0cd028b1cc2",
+          "section": "Results / MAJIQTL offers a robust and powerful statistical framework for sQTL discovery and analysis"
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "P197",
+    "primary_paragraph": 13,
+    "reported_version": "1.0.0",
+    "review": {
+      "pmcid": "PMC11568763",
+      "doi": "10.1016/j.ajhg.2024.09.006",
+      "tool_id": "salmon",
+      "evidence_paragraph_sha256": "35d2ec75a53be47ec8c6578019bb9bf9c0213d4c3019a25b878707a1e9326d02",
+      "use_summary": "Used Salmon 1.0.0 in the reported SAF Pattern workflow to map paired-end 150 bp RNA-seq reads against GRCh38 genome/transcriptome resources before DESeq2 differential expression.",
+      "implementation_scope_note": "The phrase SAF Pattern does not provide a complete command or library-type code. Exact annotation, decoys, bias corrections, aggregation and the stated gene-count/FPKM derivation are unspecified; do not invent them or treat FPKM as raw counts. DESeq2 and clusterProfiler steps remain separate.",
+      "version_reported_near_name": "1.0.0",
+      "supporting_evidence": []
+    }
+  },
+  {
+    "paper_id": "P201",
+    "primary_paragraph": 8,
+    "reported_version": "1.9.0",
+    "review": {
+      "pmcid": "PMC11568790",
+      "doi": "10.1016/j.ajhg.2024.09.004",
+      "tool_id": "salmon",
+      "evidence_paragraph_sha256": "315ffb53be9913128434d7d0a40e0c2dc86ece12a0463519047cd0fad40ff580",
+      "use_summary": "Obtained transcript TPM with Salmon 1.9.0 and supplied these abundances to SUPPA2 to calculate sample-wise alternative-splicing PSI for events generated from GRCh38 Ensembl release 110 annotations.",
+      "implementation_scope_note": "The citation 40 is not part of the 1.9.0 edition. The stated Ensembl annotation is used for SUPPA2 events and does not fully specify the Salmon index. Library type, mapping/bias/optimizer options and commands are unstated. SUPPA2 event generation, PSI denominators, missingness and expression filters are downstream, not Salmon quantification.",
+      "version_reported_near_name": "1.9.0",
+      "supporting_evidence": []
+    }
+  },
+  {
+    "paper_id": "P223",
+    "primary_paragraph": 10,
+    "reported_version": null,
+    "review": {
+      "pmcid": "PMC11339655",
+      "doi": "10.1016/j.ajhg.2024.06.018",
+      "tool_id": "salmon",
+      "evidence_paragraph_sha256": "4c5b5a51658efb96cabd0943ccfec2ce8e97b73de281161bc3befafcfa197df1",
+      "use_summary": "Used Salmon to generate read-count estimates from short-read RNA-seq in a workflow that also used HISAT2, StringTie and Ballgown. Performed differential expression with edgeR and gene-symbol assignment with biomaRt.",
+      "implementation_scope_note": "No Salmon edition, index/reference annotation, command, quantification mode or gene-aggregation procedure is stated. The paper does not establish whether Salmon consumed raw reads or transcriptome alignments from the other tools. Salmon estimates remain distinct from separately extracted Rsubread junction counts and downstream differential expression.",
+      "version_reported_near_name": null,
+      "supporting_evidence": []
+    }
+  },
+  {
+    "paper_id": "P226",
+    "primary_paragraph": 19,
+    "reported_version": "1.8.0",
+    "review": {
+      "pmcid": "PMC12440709",
+      "doi": "10.1016/j.ajhg.2025.08.004",
+      "tool_id": "salmon",
+      "evidence_paragraph_sha256": "63c220bb84f217545f8dcb4f3b4929e36716156307ab41fda5e713f355c35474",
+      "use_summary": "After FastQC and Trimmomatic 0.39, mapped trimmed RNA-seq reads to a human v38 transcriptome index with Salmon 1.8.0 for transcriptomic analysis of TMEM184B.",
+      "implementation_scope_note": "The paper calls downstream values transcript counts in the form of transcripts per million and names DESeq2 on Galaxy. TPM is a relative abundance measure, not raw integer counts; the exact DESeq2 input/transformation is unresolved and must not be silently equated. Exact transcript annotation, decoys, library type, inference and bias options are unstated; differential testing, Panther and plotting are separate.",
+      "version_reported_near_name": "1.8.0",
+      "supporting_evidence": []
+    }
+  },
+  {
+    "paper_id": "P227",
+    "primary_paragraph": 35,
+    "reported_version": "1.1.0",
+    "review": {
+      "pmcid": "PMC11339615",
+      "doi": "10.1016/j.ajhg.2024.06.017",
+      "tool_id": "salmon",
+      "evidence_paragraph_sha256": "5edcfe8eec5fcb38e5224333f829665c7103e341c89da28087211eba73de5ef8",
+      "use_summary": "Built a GRCh38 cDNA Salmon 1.1.0 index and generated transcript-level RNA-seq quantifications, then obtained transcript/gene matrices with tximport 1.14.2 and annotation/cache packages. The captured linked rna_seq_interval_5591 Salmon module specifies paired ISR reads, sequence/GC/position bias corrections, --useVBOpt and 100 bootstraps. Examined ROPN1B transcript-specific misexpression in inversion carriers.",
+      "implementation_scope_note": "The linked module is separately captured code evidence, not proof that every paper run used that exact mutable-branch state or external conda/index contents. STAR/featureCounts gene counts remain distinct from Salmon transcript estimates. The reported total TPM across all transcripts does not unambiguously define a within-gene percentage denominator; do not replace it with a generic isoform fraction. 4778 count samples and 4732 RNA-seq participants are different reported populations.",
+      "version_reported_near_name": "1.1.0",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 9,
+          "paragraph_sha256": "eec2cfcb8edf92f9ac6d6990c9b6cdf9a0e24c717ebeac983cead8e2839e59a3",
+          "section": "Subjects and methods / RNA-seq alignment"
+        },
+        {
+          "paragraph_index": 57,
+          "paragraph_sha256": "91a1d15596eb0c0af167c1d9cc4f21984f8b202ca29ddd6aa2a17e2a8ce96c8e",
+          "section": "Results / Inverting gene orientation is associated with non-chimeric misexpression"
+        },
+        {
+          "paragraph_index": 64,
+          "paragraph_sha256": "d4b274e1b1235dc8aa400ec48c59fa3e07e6b0d848285da609f58d47c55e3de4",
+          "section": "Data and code availability"
+        }
+      ]
+    }
+  }
+]

@@ -1,0 +1,16 @@
+// Preserve the canonical executable while validating native bigWig development.
+allprojects {
+    afterEvaluate {
+        def supplied = rootProject.findProperty('bigwigDevelopmentOut')
+        if (supplied == null || supplied.toString().trim().isEmpty()) throw new GradleException('Supply -PbigwigDevelopmentOut=NEW_DIRECTORY_UNDER_BUILD')
+        def base = rootProject.layout.buildDirectory.get().asFile.canonicalFile.toPath()
+        def target = rootProject.file(supplied.toString()).canonicalFile
+        if (!target.toPath().startsWith(base) || target.toPath() == base || target.exists()) throw new GradleException('Use a NEW native bigWig output directory under build')
+        tasks.named('executableJar', org.gradle.api.tasks.bundling.Jar) {
+            destinationDirectory = target
+            archiveFileName = "omicsmatic-${project.version}-bigwig-development.jar"
+            doFirst { if (archiveFile.get().asFile.exists()) throw new GradleException('Preserve the existing development executable; choose a NEW directory') }
+            doLast { println("Native bigWig development JAR: ${archiveFile.get().asFile}") }
+        }
+    }
+}

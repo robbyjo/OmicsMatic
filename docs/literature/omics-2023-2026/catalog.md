@@ -1,6 +1,6 @@
 # Omics and GWAS paper catalog
 
-250 papers; 380 named tools; 2430 paper-tool observations.
+250 papers; 387 named tools; 2446 paper-tool observations.
 
 Window: 2023-10-23 through 2026-10-23, inclusive. No extension was required.
 
@@ -33,7 +33,7 @@ Nature · 2024-12-18 · [DOI](https://doi.org/10.1038/s41586-024-08515-5) · [Pr
 | BEAST | Bayesian phylogenetic inference and divergence analysis. | Methods / Molecular dating |
 | BEDTools | Genomic interval manipulation and overlap. | Methods / Virulence factor analysis |
 | BWA | Mapped preprocessed ancient-DNA shotgun/capture reads to GRCh37 with BWA 0.7.12 and seed length 32 inside nf-core/eager. | Methods / Human ancestry analyses |
-| Nextflow | Analysis pipeline orchestration. | Methods / Computational screening for T. pallidum DNA |
+| Nextflow | Used Nextflow21.04.1 to orchestrate nf-core/eager2.4.4 for ancient-DNA read processing, human-read removal and HOPS assessment of MALT output. The described pipeline includes adapter/quality trimming, mapping, MAPQ filtering, duplicate removal and damage profiling. | Methods / Computational screening for T. pallidum DNA |
 | nf-core | Reusable sequencing analysis pipelines. | Methods / Computational screening for T. pallidum DNA |
 | nf-core/eager | Processed ancient-DNA shotgun and human-enriched capture data using nf-core/eager 2.3.4, coordinating preprocessing/mapping and ANGSD contamination estimation. | Methods / Human ancestry analyses |
 | SAMtools | Generated textual pileup from merged ancient-DNA sequences with mapping and base-quality thresholds of 30 and BAQ disabled; a separate pileupCaller step sampled pseudo-haploid genotypes at captured SNPs. | Methods / Human ancestry analyses |
@@ -77,7 +77,7 @@ Nature · 2023-12-20 · [DOI](https://doi.org/10.1038/s41586-023-06872-1) · [Pr
 | BEDTools | Genomic interval manipulation and overlap. | Methods / Single-cell Repli-seq read alignment and quality control filtering |
 | Bowtie 2 | Mapped sequencing reads to mm10 with Bowtie 2 2.3.5 local alignment, before SAMtools duplicate marking/MAPQ selection and BEDTools genomic-bin counting. | Methods / Single-cell Repli-seq read alignment and quality control filtering |
 | Cutadapt | Adapter trimming. | Methods / Analysis of public chromatin datasets |
-| DESeq2 | Count-based differential expression analysis. | Methods / Analysis of public chromatin datasets |
+| DESeq2 | Used DESeq2 1.34.0 to compare ATAC-seq accessibility in 50-kb bins between alpha-amanitin-treated and untreated samples, retaining bins with adjusted P<0.05. The same analysis describes CPM/log-transformed profiles separately. | Methods / Analysis of public chromatin datasets |
 | SAMtools | Marked duplicates using SAMtools 1.9 fixmate/sort/markdup, then retained properly paired, nonduplicate reads with mapping quality at least 20 before BEDTools genomic-bin counting and chromosome-imbalance QC. | Methods / Single-cell Repli-seq read alignment and quality control filtering |
 
 XML SHA-256: `4ecc5a42095be0ab3723128d5bf6bf892f2171c86abec4835ea0aa7bf64b6bfb`. Exact evidence paragraph hashes and locators are in [papers.json](papers.json).
@@ -94,6 +94,7 @@ Nature · 2025-12-17 · [DOI](https://doi.org/10.1038/s41586-025-09887-y) · [Pr
 | edgeR | Count-based differential expression analysis. | Methods / Astrocyte ribosome-associated mRNA isolation, RNA-seq and analysis |
 | Enrichr | Gene-set enrichment. | Methods / Astrocyte ribosome-associated mRNA isolation, RNA-seq and analysis |
 | Harmony | Batch integration of cell embeddings. | Methods / snRNA-seq data analysis |
+| HTSeq | Used HT-seq 0.6.0 to determine RNA-seq read counts after STAR alignment to mouse mm10. Subsequent gene filtering and differential expression used separate expression criteria and edgeR. | Methods / Astrocyte ribosome-associated mRNA isolation, RNA-seq and analysis |
 | MetaboAnalyst | Metabolomic statistics and pathway analysis. | Methods / CCN1 co-immunoprecipitation / Proteomic data analysis |
 | NicheNet | Ligand-target communication modelling. | Methods / snRNA-seq data analysis |
 | Scrublet | Removed predicted doublets independently per sample, after mitochondrial/count and gene-prevalence QC; concatenation, normalization to 10000, logarithm and Harmony followed. | Methods / snRNA-seq data analysis |
@@ -124,13 +125,13 @@ Nature · 2026-09-23 · [DOI](https://doi.org/10.1038/s41586-026-11053-x) · [Pr
 | BCFtools | Variant manipulation, calling, normalization and filtering. | Methods / MPRA design / Library design |
 | BEDTools | Genomic interval manipulation and overlap. | Methods / MPRA design / Library design |
 | Bowtie 2 | Aligned paired-end chondrocyte ATAC-seq/CUT&Tag reads to GRCh38 using Bowtie 2 2.5.1 very-sensitive alignment with dovetail allowed and insert bounds 0 to 700, before Picard duplicate removal and MACS3 peaks. | Methods / Chondrocyte ATAC-seq and CUT&Tag |
-| DESeq2 | Count-based differential expression analysis. | Methods / Identification of gene expression differences |
+| DESeq2 | Tested expression differences using a DESeq2 likelihood-ratio model including cell condition and species. Repeated analysis after aligning to human and ape references, adjusted P values by BH and described fold-change shrinkage. Cross-reference agreement and direction filters selected final genes. | Methods / Identification of gene expression differences |
 | fastp | Removed adapters and described quality trimming of 80-bp paired-end ATAC-seq/CUT&Tag reads with fastp 1.0.1 defaults before Bowtie2 mapping. | Methods / Chondrocyte ATAC-seq and CUT&Tag |
 | FastQC | Assessed 80-base paired-end ATAC-seq/CUT&Tag sequencing quality with FastQC 0.12.1 before fastp trimming. | Methods / Chondrocyte ATAC-seq and CUT&Tag |
 | FIMO | Generated reference and alternative allele FASTA sequences centred on each variant, with length set by the longest supplied motif, and ran fimo --text --thresh 1e-4 for TFs expressed in chondrocytes. To compare both alleles when one lacked a reported match, separately recomputed PWM scores for all sequences and calibrated P values empirically against background scores; differential binding was human minus ancestral log score. A separate coding-TF analysis reported FDR > 0.05 for ZFAT/ZFHX4. | Methods / TF-binding sites / Predicted-motif-based approach (FIMO) |
 | Hornet | Ran the Hornet modified-WASP workflow linked by the paper to filter allele-swapped reads for stable remapping positions in hybrid human/chimpanzee or human/gorilla expression analysis. | Methods / Identification of gene expression differences |
 | MACS | Called ATAC-seq and CUT&Tag peaks using MACS3 3.0.1 on GRCh38 paired-end alignments after fastp, Bowtie2 and Picard duplicate removal; reported BAMPE, human genome shortcut, nomodel and q-value 0.05. | Methods / Chondrocyte ATAC-seq and CUT&Tag |
-| MEME | Motif discovery and scanning. | Methods / TF-binding sites / Predicted-motif-based approach (FIMO) |
+| MEME | Downloaded JASPAR 2024 CORE vertebrate nonredundant frequency matrices in MEME format. Chose one representative per TF by assay provenance, then original nsites and motif length. | Methods / TF-binding sites / Predicted-motif-based approach (FIMO) |
 | Picard | Removed PCR duplicates with Picard MarkDuplicates 3.0.0 after GRCh38 Bowtie2 alignment of paired-end chondrocyte ATAC-seq/CUT&Tag reads, before MACS3 peak calling. | Methods / Chondrocyte ATAC-seq and CUT&Tag |
 | RepeatMasker | Excluded candidate human substitutions overlapping low-complexity, simple and satellite RepeatMasker regions downloaded from UCSC, alongside separate TRF and ENCODE region filters. | Methods / MPRA design / Library design |
 | STAR | Aligned hybrid-cell reads independently against the human/chimpanzee or human/gorilla references using STAR 2.7.11b, MD/NH tags, unique mapping, GTF junctions and sjdbOverhang 149. Repeated mapping with first-round splice junctions before separate duplicate removal and allele-swap mapping-bias controls. | Methods / Identification of gene expression differences |
@@ -156,7 +157,7 @@ Nature · 2025-12-17 · [DOI](https://doi.org/10.1038/s41586-025-09875-2) · [Pr
 | Leiden | Grouped observations into communities using a neighborhood graph. | Methods / Analysis of scRNA-seq data / Per-library analyses |
 | MACS | Called cell-type pseudobulk ATAC peaks with MACS2 through pycisTopic, then constructed consensus regions for topic modelling, donor correction and motif analyses. | Methods / Analysis of scATAC–seq data / Integrative analysis of scRNA-seq and scATAC–seq data |
 | Milo | Single-cell neighborhood differential abundance. | Methods / Analysis of scRNA-seq data / Human–mouse comparison of external genitalia |
-| Nextflow | Analysis pipeline orchestration. | Methods / Analysis of ISS data / Preprocessing |
+| Nextflow | Wrapped per-library scRNA-seq preprocessing in a two-process Nextflow pipeline and per-sample scATAC-seq analyses in another Nextflow script for parallelization and reproducibility. A separate ISS pipeline performs projection/stitching, optical-flow registration, CellPose segmentation and PoSTcode decoding into expression matrices. | Methods / Analysis of ISS data / Preprocessing |
 | pycisTarget | Searched transcription-factor motifs in the union of differential-accessibility regions and binarized topic regions. | Methods / Analysis of scATAC–seq data / Integrative analysis of scRNA-seq and scATAC–seq data |
 | pycisTopic | Generated cell-type pseudobulk MACS2/consensus ATAC peaks, fit LDA topic models, selected models by pycisTopic metrics and obtained regions for motif analysis. | Methods / Analysis of scATAC–seq data / Integrative analysis of scRNA-seq and scATAC–seq data |
 | Scanpy | Single-cell expression processing and analysis. | Methods / Analysis of 10x Visium data / Scoring of the fetal fallopian tube decreasing signature in adult data |
@@ -250,9 +251,11 @@ Nature · 2024-12-18 · [DOI](https://doi.org/10.1038/s41586-024-08333-9) · [Pr
 | BEDOPS | Converted signal from WIG to BED with wig2bed and used bedmap to quantify RPGC-normalized tag density in 301-base windows around MACS2 summits. | Methods / Bioinformatics / Read density analysis |
 | BEDTools | Genomic interval manipulation and overlap. | Methods / Bioinformatics / ChIP–seq peak calling |
 | Bowtie 2 | Short-read alignment. | Methods / Bioinformatics / Sequencing data processing and alignment |
+| CentriMo | Used CentriMo after MEME/DREME discovery to check whether the enriched motifs were centrally enriched relative to the described background sequences. | Methods / Bioinformatics / Motif discovery |
 | Cutadapt | Adapter trimming. | Methods / Bioinformatics / Sequencing data processing and alignment |
 | deepTools | Generated RPGC1x tracks with bamCoverage,10bp bins and extendReads, excluding chromosomeX from normalization. Used center-referenced10bp matrix bins over±1kb, original region order, missing-as-zero and per-bin sums; plotHeatmap/plotProfile rendered matrices. bigwigCompare subtracted RPGC input from H1 signal. | Methods / Bioinformatics / Gene expression analysis |
-| DESeq2 | Count-based differential expression analysis. | Methods / Bioinformatics / Gene expression analysis |
+| DESeq2 | Used DESeq2 1.22.2 after excluding genes with zero counts in all samples, estimated size factors and produced regularized-log values. Compared samples with MEFs at 72 h using results with lfcThreshold=1, altHypothesis=greaterAbs and alpha=0.05; transformed values supported exploratory comparisons. | Methods / Bioinformatics / Gene expression analysis |
+| DREME | Discovered short motifs with DREME inside the reported MEME-ChIP workflow, using pipeline options -dreme-e 0.00001 and -dreme-m 20, before positional enrichment and motif comparison. | Methods / Bioinformatics / Motif discovery |
 | FastQC | Sequencing read quality assessment. | Methods / Bioinformatics / Sequencing data processing and alignment |
 | featureCounts | Used the R featureCounts interface in RsubRead to quantify mouse RNA-seq against UCSC mm9 GTF, combining single- and paired-end count tables. | Methods / Bioinformatics / Gene expression analysis |
 | FitHiChIP | Peak-anchored chromatin interaction calling. | Methods / Bioinformatics / Micro-C loop calling and cis-interactions between ChIP–seq peaks |
@@ -261,14 +264,16 @@ Nature · 2024-12-18 · [DOI](https://doi.org/10.1038/s41586-024-08333-9) · [Pr
 | Integrative Genomics Viewer (IGV) | Generated genome-track screenshots in Integrative Genomics Viewer from genome-coverage-normalized(RPGC) data. | Methods / Bioinformatics / Genome tracks visualizations |
 | IRanges | Integer-range containers and overlap operations in R. | Methods / Bioinformatics / Motif position analysis on TF-bound nucleosomes |
 | MACS | Called ChIP-seq narrow peaks/summits against input DNA at q-value 0.01 and broad TF peaks with bedGraph output, broad cutoff 0.1, no model and extension 200. Used MACS2 summits for subsequent fixed-width signal aggregation. | Methods / Bioinformatics / ChIP–seq peak calling |
-| MEME | Motif discovery and scanning. | Methods / Bioinformatics / Motif discovery |
-| Nextflow | Analysis pipeline orchestration. | Methods / Bioinformatics / Sequencing data processing and alignment |
+| MEME | Used a local Linux MEME-ChIP workflow on central 200-bp ChIP-seq peak sequences, with 200-bp background regions 1 kb upstream, blacklist filtering, a Markov model and JASPAR motifs. MEME and DREME discovered motifs, CentriMo checked central enrichment, and Tomtom compared known motifs. Reused discovered PWMs in separate nucleosome scans and positional summaries. | Methods / Bioinformatics / Motif discovery |
+| MEME-ChIP | Ran meme-chip on central 200-bp ChIP-seq sequences with upstream background regions, a Markov model and JASPAR. Reported -nmeme 600, -meme-mod zoops, -meme-minw 6, -meme-maxw 18, -meme-maxsize 50000000, -dreme-e 0.00001 and -dreme-m 20. Reused the discovered PWM for nucleosome motif scans. | Methods / Bioinformatics / Motif discovery |
+| Nextflow | Used the Nextflow distiller-nf pipeline for mm9 Micro-C alignment and processing, with make_pairsam=False, drop_readid=False, --add-columns mapq --walks-policy mask and max_mismatch_bp=1. Produced balanced multi-resolution cooler files at the listed100bp–10Mb resolutions; merged15U/20U libraries with pairtools. | Methods / Bioinformatics / Sequencing data processing and alignment |
 | Picard | Alignment QC, duplicates and sequence processing. | Methods / Bioinformatics / Sequencing data processing and alignment |
 | PyMOL | Visualized a mononucleosome based on PDB5NL0 with PyMOL v3.0; separately aligned the predicted MYC/MAX-TFAP2C complex to PDB8J0K with align and calculated electrostatic surface charge using the APBS plugin. | Methods / Bioinformatics / Protein structure visualization |
 | Rsubread | Used RsubRead featureCounts to quantify mouse RNA-seq against mm9 GTF. | Methods / Bioinformatics / Gene expression analysis |
 | SAMtools | Alignment manipulation and QC. | Methods / Bioinformatics / Sequencing data processing and alignment |
 | STAR | Splice-aware bulk RNA read alignment and optional raw gene counts. | Methods / Bioinformatics / Sequencing data processing and alignment |
-| UCSC bedGraphToBigWig | Conversion of genomic signal tracks to indexed bigWig. | Methods / Bioinformatics / Read density analysis |
+| Tomtom | Compared motifs discovered by MEME/DREME to canonical JASPAR motifs with Tomtom in a MEME-ChIP analysis. | Methods / Bioinformatics / Motif discovery |
+| UCSC bedGraphToBigWig | Converted bedtools genomecov bedGraph of one-base Micro-C contact junctions to bigWig, then used that track as a deepTools sample input. | Methods / Bioinformatics / Read density analysis |
 | UCSC bigWigToWig | Conversion of indexed bigWig signal to WIG. | Methods / Bioinformatics / Read density analysis |
 
 XML SHA-256: `4787955e5434581fd5843e30b9ebacc89fb4cac5b4021de23d36ddfdd0d91eda`. Exact evidence paragraph hashes and locators are in [papers.json](papers.json).
@@ -311,14 +316,14 @@ Nature · 2023-12-20 · [DOI](https://doi.org/10.1038/s41586-023-06845-4) · [Pr
 | BWA | DNA read alignment. | Methods / Dip-C generation / Dip-C and data preprocessing |
 | Cell Ranger | Demultiplexed multiome data with cellranger-arc mkfastq, built an mm10 reference with extended olfactory-receptor GTF annotations using mkref, and aligned with count. | Methods / Multiome generation / Generation of aligned multiome data |
 | Cutadapt | Adapter trimming. | Methods / ATAC-seq / ATAC-seq data processing |
-| DESeq2 | Count-based differential expression analysis. | Methods / RNA-seq / RNA-seq data processing and analysis |
+| DESeq2 | Used DESeq2-normalized RNA-seq gene counts for expression comparisons and MA plots between control and knockout mice, identifying changes at adjusted P<0.05. Normalized counts also supported gene-expression displays; PCA excluded Olfr genes. | Methods / RNA-seq / RNA-seq data processing and analysis |
 | HOMER | Called mm10 ATAC open-chromatin regions with HOMER region mode, a 150-bp fragment size and 300-bp peak size; generated replicate-merged 1-bp signal tracks normalized to ten million reads, with the reported 4-bp upstream Tn5 shift and paired-end fragment extension. | Methods / ATAC-seq / ATAC-seq data processing |
-| Nextflow | Analysis pipeline orchestration. | Methods / In situ Hi-C, liquid Hi-C and H3K27ac HiChIP / In situ Hi-C, liquid Hi-C and HiChIP alignment and data preprocessing |
+| Nextflow | Used the distiller Nextflow pipeline to align Hi-C/HiChIP reads to mm10, retain uniquely mapped reads with MAPQ>30 and remove duplicates, then bin contacts with cooler. The source lists Java8, Nextflow and Docker requirements and pools two to three replicates after individual-replicate comparison. | Methods / In situ Hi-C, liquid Hi-C and H3K27ac HiChIP / In situ Hi-C, liquid Hi-C and HiChIP alignment and data preprocessing |
 | Picard | Alignment QC, duplicates and sequence processing. | Methods / ATAC-seq / ATAC-seq data processing |
 | PyMOL | Reported three-dimensional reconstruction of Dip-C models in PyMOL v2.5.3, following a cited prior procedure. | Methods / Dip-C generation / Dip-C and data preprocessing |
 | SAMtools | Alignment manipulation and QC. | Methods / RNA-seq / RNA-seq data processing and analysis |
 | Seurat | Single-cell QC, normalization, integration, clustering or annotation. | Methods / Multiome generation / Generation of aligned multiome data |
-| Signac | Single-cell chromatin accessibility analysis. | Methods / Multiome generation / Generation of aligned multiome data |
+| Signac | Used Signac 1.6.0 with Seurat 4.1.0 for downstream analysis of joint single-nucleus accessibility and expression data after Cell Ranger ARC processing. | Methods / Multiome generation / Generation of aligned multiome data |
 | STAR | Splice-aware bulk RNA read alignment and optional raw gene counts. | Methods / RNA-seq / RNA-seq data processing and analysis |
 
 XML SHA-256: `1d7aea455ed0d0bc55bf1eae2a7f006b8f0d1f980be46c5673479114bff121ee`. Exact evidence paragraph hashes and locators are in [papers.json](papers.json).
@@ -330,6 +335,7 @@ Nature · 2023-12-18 · [DOI](https://doi.org/10.1038/s41586-023-06955-z) · [Pr
 | Tool | How used | Evidence location |
 | --- | --- | --- |
 | DIAMOND | Protein sequence alignment. | Methods / Detection of protein clusters specifically from uncultivated taxa |
+| HyPhy | Ran HyPhy BUSTED with the paper’s stated default settings on back-translated codon alignments and previously reconstructed FastTree2 trees. Retrieved the reported full-codon-model dN/dS summary and discarded gene families with values above 0.5. | Methods / Calculation of dN/dS |
 | t-SNE | Visualized log-transformed gene-family abundances with scikit-learn after DIAMOND-based homologue mapping and prevalence-based family/sample selection. | Methods / Ecological distribution of gene families |
 
 XML SHA-256: `30ec0e5d53a74c8542bbad741265fdc9b5cce616a96020c80a8c67d81b29bf1c`. Exact evidence paragraph hashes and locators are in [papers.json](papers.json).
@@ -343,7 +349,7 @@ Nature · 2025-12-17 · [DOI](https://doi.org/10.1038/s41586-025-09770-w) · [Pr
 | Azimuth | Reference mapping and cell annotation. | Methods / In vivo two-photon imaging / Binocular zone confirmation |
 | Cell Ranger | Mapped snRNA-seq reads to mm10 with CellRanger count v8.0.1 and separately aggregated biological replicates with CellRanger aggr v8.0.1 using reported default normalization. | Methods / Single-nucleus RNA sequencing / Data preprocessing |
 | clusterProfiler | Performed bulk GSEA on genes ranked by descending log2 fold change against GO, Reactome and KEGG; bulk ORA used up/down DEG lists and genes with mean FPKM above one in at least one group. Applied BH-adjusted P below 0.05 and q below 0.01 for bulk ORA; separate nuclear enrichGO used 4.12.6. | Methods / Bulk RNA sequencing / Processing and analysis / Pathway analysis |
-| DESeq2 | Count-based differential expression analysis. | Methods / Bulk RNA sequencing / Processing and analysis / RNA-sequencing mapping, analysis and statistics |
+| DESeq2 | Called DESeq2 1.14.1 through HOMER 4.10 getDiffExpression.pl, using the described default normalization and replicate-based dispersion handling. Selected differentially expressed genes at BH-adjusted P<0.05. | Methods / Bulk RNA sequencing / Processing and analysis / RNA-sequencing mapping, analysis and statistics |
 | GSEA | Ranked gene-set enrichment. | Methods / Bulk RNA sequencing / Processing and analysis / Pathway analysis |
 | Harmony | Batch integration of cell embeddings. | Methods / Single-nucleus RNA sequencing / Data preprocessing |
 | MapMyCells | Reference-based cell annotation. | Methods / Single-nucleus RNA sequencing / Clustering using MapMyCells |
@@ -389,13 +395,13 @@ Nature · 2025-12-10 · [DOI](https://doi.org/10.1038/s41586-025-09869-0) · [Pr
 | ChIPseeker | Peak annotation relative to genes and genomic features. | Methods / ChIP–seq |
 | clusterProfiler | Ran GSEA on xenograft DEGs ranked by log2 fold change using Hallmark, GR and PR signatures, with pvalueCutoff 0.05 and BH correction. The clinical post/pre analysis instead ranked by absolute log10 P times the fold-change sign and used permutation inference. | Methods / RNA-seq analyses |
 | deepTools | Used deepTools2.5.3 within ChIP_Zwart0.1.2 for reported FRiP/normalized ChIP-seq signal and tornado plots; bigwigCompare averaged RPGC1x replicate tracks within each condition. | Methods / ChIP–seq |
-| DESeq2 | Count-based differential expression analysis. | Methods / RNA-seq analyses |
+| DESeq2 | Used DESeq2 1.22.2 for RNA-seq differential expression with adjusted P<0.05 and absolute log2 fold change>1. A separate human post-versus-pre analysis used a DESeq2 negative-binomial Wald test and BH correction before pathway analyses. | Methods / RNA-seq analyses |
 | DIA-NN | Data-independent acquisition proteomic quantification. | Methods / Proteomics |
 | DiffBind | Differential binding or accessibility across peak-count libraries. | Methods / ChIP–seq |
 | GSEA | Ranked gene-set enrichment. | Methods / RNA-seq analyses |
 | GSVA | Per-sample gene-set activity scoring. | Methods / RNA-seq analyses |
 | HISAT2 | Mapped paired 51-bp MCF7 xenograft RNA-seq reads to hg38/GRCh38 using HISAT2 2.1.0 before HTSeq count 0.5.3 and DESeq2 1.22.2 differential expression. | Methods / RNA-seq analyses |
-| HTSeq | Read counting and sequence processing. | Methods / RNA-seq analyses |
+| HTSeq | Used HTSeq count 0.5.3 to calculate gene-level read counts after HISAT2 alignment to human hg38/GRCh38. DESeq2 and downstream gene-set analyses were separate. | Methods / RNA-seq analyses |
 | MACS | Used MACS2 2.1.2 in the ChIP_Zwart 0.1.2 workflow to call peaks over input ChIP-seq controls and retain q-values below 0.01, before differential binding and annotation. | Methods / ChIP–seq |
 | Picard | Alignment QC, duplicates and sequence processing. | Methods / ChIP–seq |
 
@@ -534,7 +540,7 @@ Nature · 2025-12-10 · [DOI](https://doi.org/10.1038/s41586-025-09853-8) · [Pr
 | IsoQuant | Long-read transcript model identification, correction and quantification. | Methods / Long-read nanopore sequencing and SOS splicing analysis |
 | limma | Linear modelling and empirical-Bayes differential analysis. | Methods / RIP–seq |
 | minimap2 | Aligned ONT reads for splicing analyses using minimap2 2.22--r1109dirty: -ax splice -C 0 for SOS, and default -ax splice for hybrid/SOS/F19B2.5.2 UTR analyses. | Methods / Long-read nanopore sequencing and SOS splicing analysis |
-| Nextflow | Analysis pipeline orchestration. | Methods / Illumina sequencing and alternative splicing analysis |
+| Nextflow | Used Nextflow24.04.4 with nf-core/rnasplice1.0.4 to orchestrate FastQC0.12.1, TrimGalore0.6.7, STAR2.7.9a and rMATS4.1.2 against C.elegans WBcel235/ce11. Differential splicing uses absolute delta-PSI>=0.05 and P<0.05, followed by boxplots. | Methods / Illumina sequencing and alternative splicing analysis |
 | nf-core | Reusable sequencing analysis pipelines. | Methods / Illumina sequencing and alternative splicing analysis |
 | Picard | Alignment QC, duplicates and sequence processing. | Methods / RIP–seq |
 | PyMOL | Illustrated the selected highest-scoring AlphaFold3 multimer/docking prediction using PyMOL v2.5.8. | Methods / AlphaFold3 multimer prediction |
@@ -564,7 +570,7 @@ Nature · 2025-12-10 · [DOI](https://doi.org/10.1038/s41586-025-09834-x) · [Pr
 | Tool | How used | Evidence location |
 | --- | --- | --- |
 | BCLConvert | Sequencer BCL demultiplexing and FASTQ conversion. | Methods / Gene expression analysis |
-| DESeq2 | Count-based differential expression analysis. | Methods / Gene expression analysis |
+| DESeq2 | Used DESeq2 1.48.1 with described default settings for differential gene expression from featureCounts-derived RNA-seq counts. | Methods / Gene expression analysis |
 | DIA-NN | Data-independent acquisition proteomic quantification. | Methods / Sample processing for Mass Spectrometry (MS) analysis |
 | DRAGEN | Sequencing alignment, variant or RNA processing platform; named workflow must be identified. | Methods / Gene expression analysis |
 | featureCounts | Quantified yeast RNA-seq against R64-1-1 using Rsubread featureCounts after BCLConvert demultiplexing and DRAGEN RNA processing. The paragraph reports Rsubread 2.23.2 with R 4.4.1. | Methods / Gene expression analysis |
@@ -592,7 +598,7 @@ Nature · 2025-12-10 · [DOI](https://doi.org/10.1038/s41586-025-09829-8) · [Pr
 | Tool | How used | Evidence location |
 | --- | --- | --- |
 | clusterProfiler | Performed mature-M-cell versus enterocyte GSEA using log2 fold changes and KEGG/all-GO gene sets version 7.4. | Methods / Bulk RNA sequencing of M cell organoids |
-| DESeq2 | Count-based differential expression analysis. | Methods / Re-analysis of primary human intestinal scRNA-seq datasets |
+| DESeq2 | Used DESeq2 1.26.0 on raw counts in human M-cell single-cell analysis and on mouse M-cell/enterocyte comparisons, and separately analyzed bulk M-cell organoid RNA-seq. Reported context-specific fold-change/P cutoffs; the statistics section describes a two-sided negative-binomial Wald test. | Methods / Re-analysis of primary human intestinal scRNA-seq datasets |
 | Enrichr | Gene-set enrichment. | Methods / Re-analysis of primary human intestinal scRNA-seq datasets |
 | GSEA | Ranked gene-set enrichment. | Methods / Bulk RNA sequencing of M cell organoids |
 | Scanpy | Single-cell expression processing and analysis. | Methods / Re-analysis of scRNA-seq datasets of mouse intestinal tissue- or organoid-derived M cells |
@@ -616,7 +622,7 @@ Nature · 2024-12-11 · [DOI](https://doi.org/10.1038/s41586-024-08314-y) · [Pr
 | Cutadapt | Adapter trimming. | Methods / Bulk RNA-seq analysis |
 | Cytoscape | Network visualization and analysis. | Methods / Bulk RNA-seq analysis |
 | deepTools | Used deepTools3.5.5 computeMatrix scale-regions with3kb upstream/downstream,5kb scaled gene bodies and skipZeros, followed by plotProfile perGroup, on scaled STAT5A ChIP-seq bigWigs and expressed-gene BED regions. | Methods / CUT&RUN and ChIP–seq visualization |
-| DESeq2 | Count-based differential expression analysis. | Methods / Perturb-seq analysis |
+| DESeq2 | Used DESeq2 1.32.0 for donor-adjusted RNA/ADT pseudobulk perturbation comparisons. Separate uses include bulk RNA-seq with size factors estimated across all samples, CUT&RUN mark differences and size-factor-scaled tracks, and variance stabilization for activation-gene selection before GSVA scoring. | Methods / Perturb-seq analysis |
 | FastQC | Sequencing read quality assessment. | Methods / Bulk RNA-seq analysis |
 | featureCounts | Counted RNA-seq gene alignments with featureCounts in Subread 2.0.1 against GENCODE v41 basic, after Cutadapt/seqtk/STAR and UMI-tools 1.0.1 deduplication. | Methods / Bulk RNA-seq analysis |
 | GenomicRanges | Genomic-range containers and overlap operations in R. | Methods / CUT&RUN analysis |
@@ -695,7 +701,7 @@ Nature · 2025-12-10 · [DOI](https://doi.org/10.1038/s41586-025-09792-4) · [Pr
 | BWA | DNA read alignment. | Methods / Duplex sequencing bioinformatic analyses |
 | dndscv | Somatic mutation selection analysis. | Methods / Positive selection analyses |
 | NanoSeq | Low-error somatic mutation sequencing analysis. | Methods / NanoSeq libraries |
-| Nextflow | Analysis pipeline orchestration. | Methods / Duplex sequencing bioinformatic analyses |
+| Nextflow | Used a bespoke Nextflow DuplexPipe workflow for duplex FASTQ processing with fgbio2.2.1, UMI extraction using FastqToBam and bwa-mem0.7.17 alignment. The reference is GRCh38 GCA_000001405.15 without alternate contigs and with a U2FA1 mapping patch. | Methods / Duplex sequencing bioinformatic analyses |
 | SAMtools | Alignment manipulation and QC. | Methods / Duplex sequencing bioinformatic analyses |
 
 XML SHA-256: `31cdaf15cf7c4bbe58add2c4a6e8b0c2edecf1135a9a5c21e667c390351bbd8f`. Exact evidence paragraph hashes and locators are in [papers.json](papers.json).
@@ -708,7 +714,7 @@ Nature · 2023-12-13 · [DOI](https://doi.org/10.1038/s41586-023-06838-3) · [Pr
 | --- | --- | --- |
 | bcl2fastq | Demultiplexed pooled NovaSeq 6000 paired-end shotgun metagenomic reads with bcl2fastq. | Methods / MAGs / Short-read shotgun sequencing |
 | Bowtie 2 | Short-read alignment. | Methods / MAGs / Short-read shotgun sequencing |
-| DESeq2 | Count-based differential expression analysis. | Methods / Defining the relationship between MAG abundances and WLZ |
+| DESeq2 | Used DESeq2 1.34.0 variance stabilization on the unfiltered Kallisto count population before retaining 837 MAGs selected using TPM>5 in more than 40% of 707 samples. Transformed abundances then entered linear mixed models relating MAGs to WLZ. | Methods / Defining the relationship between MAG abundances and WLZ |
 | DIAMOND | Protein sequence alignment. | Methods / Subsystem-based annotation and prediction of functional capabilities (inferred metabolic phenotypes) of MAGs and cultured P. copri strains |
 | edgeR | Count-based differential expression analysis. | Methods / Microbial RNA-seq analysis of MAG gene expression |
 | FastQC | Sequencing read quality assessment. | Methods / Microbial RNA-seq analysis of MAG gene expression |
@@ -744,7 +750,7 @@ Nature · 2023-12-13 · [DOI](https://doi.org/10.1038/s41586-023-06837-4) · [Pr
 | --- | --- | --- |
 | CellBender | Used CellBender 0.2.0 for background correction and cell calling in mouse embryo, human brain, tonsil and melanoma; expected cells followed Cell Ranger calls and 40,000 droplets were included, with learning rate 0.00005 when default cell probabilities were inadequate. The same processing was applied to multiome gene-expression counts. | Methods / Slide-tags data preprocessing / snRNA-seq data |
 | Cell Ranger | Used GEX v6.1.2 mkfastq/count with include-introns against GRCh38 or mm10, and ARC v2.0.2 mkfastq/count for human multiome data. GEX aggr adjusted sequencing-depth differences; its cell calls/barcodes also supported spatial matching and reproducibility denominators. | Methods / Slide-tags data preprocessing / snRNA-seq data |
-| chromVAR | Chromatin motif accessibility deviation scores. | Methods / Melanoma analysis / ATAC analysis |
+| chromVAR | Calculated per-nucleus motif accessibility Z scores through Signac RunChromVAR with chromVAR1.16.0 after constructing motif annotations from human JASPAR2020 motifs. Correlated motif scores with mesenchymal-like scores using Pearson correlation and BH correction, then tested spatial autocorrelation with ape Moran.I and inverse-squared-distance weights. | Methods / Melanoma analysis / ATAC analysis |
 | clusterProfiler | Applied enrichGO with default parameters to spatially varying genes with Z above seven, using org.Hs.eg.db 3.16.0 biological-process annotations; selected displayed terms with adjusted P below 1e-8 in at least one cell type. | Methods / Human brain analysis / Identification of layers and layer-dependent gene expression |
 | Enrichr | Gene-set enrichment. | Methods / Melanoma analysis / Differential gene expression, differential chromatin gene scores and gene set enrichment analysis |
 | Harmony | Batch integration of cell embeddings. | Methods / Human brain analysis / Quality control and cell type assignment |
@@ -755,7 +761,7 @@ Nature · 2023-12-13 · [DOI](https://doi.org/10.1038/s41586-023-06837-4) · [Pr
 | sctransform | Used SCTransform-normalized counts in spatial receptor-ligand expression correlations with a 100-micrometre adjacency definition. | Methods / Tonsil analysis / Spatial receptor–ligand prediction |
 | seqtk | Downsampled spatial-barcode FASTQ reads to 25 million records for computational efficiency and consistency, before matching candidate cell barcodes to Cell Ranger/CellBender outputs and spatial barcode coordinates. | Methods / Slide-tags data preprocessing / Spatial barcode data |
 | Seurat | Single-cell QC, normalization, integration, clustering or annotation. | Methods / Mouse brain analysis / Quality control and cell type assignment |
-| Signac | Single-cell chromatin accessibility analysis. | Methods / Melanoma analysis / Quality control and cell type assignment / Multiome ATAC and snRNA-seq data |
+| Signac | Used Signac 1.9.0 to import ATAC data, call peaks with MACS2 2.2.7.1, and construct FeatureMatrix counts. RunTFIDF and RunSVD provided LSI; the analysis used dimensions 2–30. Created a motif object with human JASPAR2020, ran chromVAR, and computed GeneActivity. | Methods / Melanoma analysis / Quality control and cell type assignment / Multiome ATAC and snRNA-seq data |
 | STAR | Splice-aware bulk RNA read alignment and optional raw gene counts. | Methods / Mouse brain analysis / Comparison of Slide-tags snRNA-seq versus bulk RNA-seq |
 | UMAP | Produced an exploratory low-dimensional representation of the measured profiles. | Methods / Mouse brain analysis / Quality control and cell type assignment |
 
@@ -769,7 +775,7 @@ Nature · 2026-09-09 · [DOI](https://doi.org/10.1038/s41586-026-10954-1) · [Pr
 | --- | --- | --- |
 | Cell Ranger | Aligned and quantified GEM-X Universal 3-prime v4 on-chip-multiplexed mouse libraries against GRCm39-2024-A with CellRanger, reported as v9.01. | Methods / Single-cell RNA-seq and data analysis |
 | clusterProfiler | Used GSEA with default settings against custom dendritic-cell, macrophage and CD8 T-cell signatures and applied BH correction. | Methods / GSEA |
-| DESeq2 | Count-based differential expression analysis. | Methods / Bulk RNA-seq of stimulated T cells |
+| DESeq2 | Used DESeq2 1.48.2 for bulk stimulated-T-cell expression differences from HOMER/RefSeq-derived counts, after an expression filter described using RPKM. Selected genes at adjusted P<0.05 and absolute log2FC>0.5. | Methods / Bulk RNA-seq of stimulated T cells |
 | GSEA | Ranked gene-set enrichment. | Methods / GSEA |
 | Harmony | Batch integration of cell embeddings. | Methods / Single-cell RNA-seq and data analysis |
 | HOMER | Used HOMER 5.1 analyzeRepeats.pl to calculate raw exon counts and RPKM for RefSeq genes in stimulated CD8 T-cell bulk RNA-seq before DESeq2 1.48.2 differential expression. | Methods / Bulk RNA-seq of stimulated T cells |
@@ -853,11 +859,11 @@ Nature · 2024-12-04 · [DOI](https://doi.org/10.1038/s41586-024-08307-x) · [Pr
 | ChIPseeker | Peak annotation relative to genes and genomic features. | Methods / Cut&Tag data processing |
 | clusterProfiler | Performed Gene Ontology enrichment in the R-loop Cut&Tag analysis after alignment, signal generation, peak calling and peak annotation. | Methods / R-loop Cut&Tag data processing |
 | deepTools | Used deepTools3.5.1 bamCoverage for ATAC/CUT&Tag tracks and separate correlation analysis. R-loop CUT&Tag tracks were normalized as reads per million before metaplots; the ATAC pipeline separately applied strand-specificTn5 shifts. | Methods / ATAC-seq data processing |
-| DESeq2 | Count-based differential expression analysis. | Methods / ATAC-seq data processing |
+| DESeq2 | Used DESeq2 1.26.0 to identify differential accessibility in an ATAC-seq peak atlas built around summits extended by 500 bp in each direction. | Methods / ATAC-seq data processing |
 | FastQC | Sequencing read quality assessment. | Methods / RNA-seq and analysis |
 | HISAT2 | Aligned quality-trimmed paired 150-bp HSPC RNA-seq to mouse mm10 using HISAT2 2.2.1 before GENCODE M25/HTSeq-count 0.13.5 assignment. | Methods / RNA-seq and analysis |
 | HOMER | Analysed DNA-binding-factor motifs in differential fetal-hepatocyte ATAC peaks using HOMER 4.11 after the peak atlas was expanded 500 bp on each side of the summit and differential peaks were selected with DESeq2. | Methods / ATAC-seq data processing |
-| HTSeq | Read counting and sequence processing. | Methods / RNA-seq and analysis |
+| HTSeq | Used HTSeq-count 0.13.5 with GENCODE mouse vM25 annotation to assign HISAT2-aligned reads to genes. Converted the resulting counts to FPKM and log(FPKM+1) for sample-similarity analysis. | Methods / RNA-seq and analysis |
 | Integrative Genomics Viewer (IGV) | Visualized deepTools bamCoverage-normalized ATAC-seq signal in IGV v2.7.0 after mm10 alignment,filtering and strand-specific Tn5 shifts. | Methods / ATAC-seq data processing |
 | MACS | Called mouse ATAC peaks with MACS2 2.2.6 after Tn5 offsets using BAM, mouse genome shortcut, no model, shift -100 and extension 200; also used MACS2 2.2.6 for separate CUT&Tag analyses. | Methods / ATAC-seq data processing |
 | Picard | Alignment QC, duplicates and sequence processing. | Methods / Cut&Tag data processing |
@@ -899,7 +905,7 @@ Nature · 2026-09-02 · [DOI](https://doi.org/10.1038/s41586-026-10987-6) · [Pr
 | CIBERSORT | Cell-type deconvolution. | Methods / Characterizing bulk RNA-seq with scRNA-seq |
 | Cytoscape | Network visualization and analysis. | Methods / TOBIAS footprinting analysis and network analysis |
 | deepTools | Used deepTools3.5.1 multiBamSummary to summarize reads in a merged peak universe across four ATAC-seq cell types, then clustered samples using Spearman correlations. | Methods / ATAC-seq library creation and analysis |
-| DESeq2 | Count-based differential expression analysis. | Methods / RNA-seq library creation and analysis |
+| DESeq2 | Used DESeq2 for multifactor RNA-seq differential expression accounting for genotype and individual, and regularized-log transformation for clustering. Separately used DiffBind 3.4.11 with DESeq2 for differential accessibility at FDR<0.01. | Methods / RNA-seq library creation and analysis |
 | DiffBind | Differential binding or accessibility across peak-count libraries. | Methods / ATAC-seq library creation and analysis |
 | edgeR | Count-based differential expression analysis. | Methods / RNA-seq library creation and analysis |
 | fastp | Trimmed RNA-seq reads to 100 bp with fastp 0.22.0 before STAR/RSEM. | Methods / RNA-seq library creation and analysis |
@@ -938,6 +944,7 @@ Nature · 2023-12-13 · [DOI](https://doi.org/10.1038/s41586-023-06823-w) · [Pr
 | Leiden | Grouped observations into communities using a neighborhood graph. | Methods / Integration between snmC-seq, epi-retro-seq and scRNA-seq |
 | SCENIC+ | Multiomic regulatory-network tools and motif reference resources. | Methods / TF motif enrichment |
 | Seurat | Single-cell QC, normalization, integration, clustering or annotation. | Methods / Transfer of cell labels from one dataset to another with weighted k-nearest neighbours |
+| Tomtom | Reused the SCENIC+ ensemble motif resource: its authors had clustered 49,504 PWMs from 29 sources into 8,045 clusters using Tomtom distances. The paper then scanned DMRs with Cluster-Buster in SCENIC+. | Methods / TF motif enrichment |
 | t-SNE | Visualized integrated principal components from three neuronal epigenomic/transcriptomic datasets; graph construction and Leiden clustering were separate steps. | Methods / Integration between snmC-seq, epi-retro-seq and scRNA-seq |
 
 XML SHA-256: `894cd1e454d83639da755f2847f9dbf66d198fa33e25e2c1903c71a04f8de01e`. Exact evidence paragraph hashes and locators are in [papers.json](papers.json).
@@ -968,7 +975,7 @@ Nature · 2026-09-02 · [DOI](https://doi.org/10.1038/s41586-026-10981-y) · [Pr
 | CellBender | Removed ambient RNA and other background from Cell Ranger count matrices with CellBender 0.3.0 using 150 epochs, false-positive rate 0.01 and learning rate 0.0001. | Methods / Human tissue / Data preprocessing and quality control |
 | Cell Ranger | Generated sample count matrices with Cell Ranger v7.0.1 against human GRCh38-2020-A, including exonic and intronic reads. | Methods / Human tissue / Data preprocessing and quality control |
 | clusterProfiler | Used GSEA of ranked healthy-control cluster markers against top-50 marker sets from three reference retinal datasets for cell annotation. Separately used 4.12.6 for biological-theme enrichment of pseudobulk DEGs and GO analysis of six resilience/susceptibility expression modules. | Methods / Human tissue / Clustering and cell type annotation |
-| DESeq2 | Count-based differential expression analysis. | Methods / Human tissue / Differential gene expression analysis |
+| DESeq2 | Reported DESeq2 1.44 for human retinal pseudobulk comparisons. Additional calls compared resilient/susceptible RGC groups, normalized and regularized-log-transformed five bootstrap populations of 100 nuclei for resilience regression, reanalyzed EAE mouse RNA-seq and analyzed neuronal Cfh-knockout cultures. | Methods / Human tissue / Differential gene expression analysis |
 | featureCounts | Generated mouse mm10 gene-overlap counts using featureCounts 1.5.1 after STAR 2.5.2b alignment. | Methods / Cell culture / RNA-seq analysis of neuronal Cfh-cKO cultures |
 | GSEA | Ranked gene-set enrichment. | Methods / Human tissue / Clustering and cell type annotation |
 | Leiden | Grouped observations into communities using a neighborhood graph. | Methods / Human tissue / Data preprocessing and quality control |
@@ -988,7 +995,7 @@ Nature · 2023-12-13 · [DOI](https://doi.org/10.1038/s41586-023-06821-y) · [Pr
 | BAMTools | Converted and sorted Bowtie-mapped Toxoplasma ChIP alignments with BAMTools before MACS2 peak calling. | Methods / ChIP coupled with Illumina sequencing / Library preparation, sequencing and data analysis (Arraystar) |
 | bcl2fastq | Reported bcl2fastq V3 for demultiplexing multiplexed paired-end ATAC-seq reads before nf-core processing. | Methods / ATAC–seq |
 | deepTools | Used computeMatrix reference-point with minThreshold2,10bp bins and averageTypeBins sum for T.gondii ChIP/ATAC gene-centered analysis, followed by profiles/heatmaps and optional k-means. ATAC BAMs were converted with bamCoverage using5bp bins. | Methods / ChIP coupled with Illumina sequencing / Library preparation, sequencing and data analysis (Arraystar) |
-| DESeq2 | Count-based differential expression analysis. | Methods / RNA-seq and sequence alignment |
+| DESeq2 | Used the default DESeq2 analysis in iDEP 0.96 for RNA-seq. A separate ATAC-seq analysis counted peak reads with featureCounts and used DESeq2 with two biological replicates. | Methods / RNA-seq and sequence alignment |
 | FastQC | Sequencing read quality assessment. | Methods / RNA-seq and sequence alignment |
 | featureCounts | Counted Toxoplasma gondii ME49 gene-aligned reads with featureCounts after Subread 2.0.1 alignment to ToxoDB release 49. | Methods / RNA-seq and sequence alignment |
 | Guppy | Nanopore basecalling; distinguish the fish name. | Methods / Nanopore direct RNA-seq |
@@ -1002,7 +1009,7 @@ Nature · 2023-12-13 · [DOI](https://doi.org/10.1038/s41586-023-06821-y) · [Pr
 | SAMtools | Alignment manipulation and QC. | Methods / Nanopore direct RNA-seq |
 | Subread suite | Aligned Toxoplasma RNA-seq to ME49/ToxoDB49 with Subread 2.0.1 using -d 50 -D 600 --sortReadsByCoordinates before featureCounts. | Methods / RNA-seq and sequence alignment |
 | TPMCalculator | Expression-count and TPM normalization workflow. | Methods / RNA-seq and sequence alignment |
-| UCSC bedGraphToBigWig | Conversion of genomic signal tracks to indexed bigWig. | Methods / ChIP coupled with Illumina sequencing / Library preparation, sequencing and data analysis (Arraystar) |
+| UCSC bedGraphToBigWig | Sorted MACS2 ChIP-seq pileup bedGraph with sort -k1,1 -k2,2n, then converted it with BedGraphToBigWig for genome-browser visualization and downstream deepTools gene-centred analysis. | Methods / ChIP coupled with Illumina sequencing / Library preparation, sequencing and data analysis (Arraystar) |
 
 XML SHA-256: `2fd4b3123b1b5930fcd5d6e8d5b6bc21edd6f3bcb572a76cbb50e802b77d2cef`. Exact evidence paragraph hashes and locators are in [papers.json](papers.json).
 
@@ -1015,9 +1022,9 @@ Nature · 2025-12-03 · [DOI](https://doi.org/10.1038/s41586-025-09807-0) · [Pr
 | AUCell | Rank-based gene-set activity scoring. | Methods / Single-cell transcriptomics on human neutrophils / Spatial analysis of human lung specimens using Visium HD |
 | bcl2fastq | Reported bcl2fastq 2.20.0.422 for producing sample FASTQ files in a preprocessing description that also names CASAVA and RTA. | Methods / Bulk RNA sequencing of mice and human-derived neutrophils |
 | BCLConvert | Sequencer BCL demultiplexing and FASTQ conversion. | Methods / Single-cell transcriptomics on mouse neutrophils / scRNA-seq of sorted tissue neutrophils |
-| chromVAR | Chromatin motif accessibility deviation scores. | Methods / Data processing / Transcription factor activity |
+| chromVAR | Used chromVAR1.28.0 with the BSgenome.Mmusculus.UCSC.mm10 reference to calculate per-cell motif activity scores described as inferred transcription-factor activity from chromatin accessibility. | Methods / Data processing / Transcription factor activity |
 | Cutadapt | Adapter trimming. | Methods / Bulk RNA sequencing of mice and human-derived neutrophils |
-| DESeq2 | Count-based differential expression analysis. | Methods / Bulk RNA sequencing of mice and human-derived neutrophils |
+| DESeq2 | Used DESeq2 1.30.1 with a likelihood-ratio test to find genes changing across experimental conditions in bulk neutrophil RNA-seq. Pairwise comparisons in the same analysis used limma/edgeR separately. | Methods / Bulk RNA sequencing of mice and human-derived neutrophils |
 | edgeR | Count-based differential expression analysis. | Methods / Bulk RNA sequencing of mice and human-derived neutrophils |
 | FastQC | Sequencing read quality assessment. | Methods / Bulk RNA sequencing of mice and human-derived neutrophils |
 | GenomicRanges | Genomic-range containers and overlap operations in R. | Methods / Data processing / Merging of the datasets and peak calling |
@@ -1034,7 +1041,7 @@ Nature · 2025-12-03 · [DOI](https://doi.org/10.1038/s41586-025-09807-0) · [Pr
 | sctransform | Used Seurat 5.1 SCTransform for spatial PDAC and myocardial-infarction profiles, followed by a top-ten-percent variable-gene choice, scaling, 20-PC analysis and Leiden clustering. | Methods / Single-cell transcriptomics on human neutrophils / Analyses of PDAC and myocardial infarction (MI) models |
 | scVelo | RNA velocity analysis. | Methods / Single-cell transcriptomics on mouse neutrophils / Velocyto analysis |
 | Seurat | Single-cell QC, normalization, integration, clustering or annotation. | Methods / Single-cell transcriptomics on mouse neutrophils / Construction of NeuMap and projection of external data |
-| Signac | Single-cell chromatin accessibility analysis. | Methods / Data processing / Initial quality control and cell filtering |
+| Signac | Used Signac 1.14.0 with Seurat for multiome QC and ATAC annotations. Quantified a common peak set with FeatureMatrix, called group-specific peaks with MACS2 2.2.9.1, then applied RunTFIDF, FindTopFeatures with count cutoff 5, and RunSVD. | Methods / Data processing / Initial quality control and cell filtering |
 | SingleR | Reference-based cell annotation. | Methods / Single-cell transcriptomics on mouse neutrophils / Construction of NeuMap and projection of external data |
 | Space Ranger | Spatial transcriptomics read processing. | Methods / Single-cell transcriptomics on human neutrophils / Data pre-processing |
 | UMAP | Produced an exploratory low-dimensional representation of the measured profiles. | Methods / In vitro mouse neutrophil culture and analysis |
@@ -1049,7 +1056,7 @@ Nature · 2026-09-02 · [DOI](https://doi.org/10.1038/s41586-026-10952-3) · [Pr
 | Tool | How used | Evidence location |
 | --- | --- | --- |
 | AlphaFold | Used predicted protein structures in the study's structural analysis. | Methods / Sequence and structural alignments of the structure-mined membrane-binding domains |
-| DESeq2 | Count-based differential expression analysis. | Methods / Characterization of STV-C8 RNA content |
+| DESeq2 | Reported Azenta RNA-seq differential-expression analysis using DESeq2 after aligning STV-C8 RNA reads to the human transcriptome with STAR. | Methods / Characterization of STV-C8 RNA content |
 | g:Profiler | Functional gene-set enrichment. | Methods / RNA and protein gene set enrichment analysis |
 | MAFFT | Used the MAFFT add tool to align structure-mined membrane-binding domain proteins to residues visible in the R. norvegicus PHPLCδ X-ray reference 1MAI; reported auto strategy, BLOSUM62, gap opening 1.53 and offset 0.0. | Methods / Sequence and structural alignments of the structure-mined membrane-binding domains |
 | MaxQuant | Mass-spectrometry proteomic identification and quantification. | Methods / Characterization of STV-C8 protein content |
@@ -1237,6 +1244,7 @@ Nature · 2023-12-13 · [DOI](https://doi.org/10.1038/s41586-023-06805-y) · [Pr
 | SkyPilot | Provisioned cloud analysis environments for large tensor workflows. | Methods / Analysis infrastructures |
 | Snakemake | Orchestrated the large-scale analysis workflows. | Methods / Analysis infrastructures |
 | STAR | Produced gene-level counts for SMART-seq cross-modality integration. | Methods / Intragenic epigenetic and transcriptomic isoform analysis / Integration and isoform quantification of the SMART-seq dataset |
+| Tomtom | Reused SCENIC+ motif clusters created by the SCENIC+ authors from 49,504 PWMs and 29 sources, producing 8,045 clusters based on Tomtom distances. Scanned DMRs separately with Cluster-Buster. | Methods / GRN analysis / DMR motif scan and TF motif enrichment analysis |
 
 XML SHA-256: `f95adca75114b3a845747d11afb578d29e9272a860b2b5161493c841a0f19107`. Exact evidence paragraph hashes and locators are in [papers.json](papers.json).
 
@@ -1305,6 +1313,7 @@ Nature · 2023-12-12 · [DOI](https://doi.org/10.1038/s41586-023-06936-2) · [Pr
 | pyBigWig | Used pyBigWig stats to obtain mean fly-genome accessibility for500bp windows at50bp stride when comparing DeepFlyBrain predictions with measured accessibility. | Methods / Scoring the fly genome |
 | SAMtools | Alignment manipulation and QC. | Methods / OmniATAC-seq |
 | SHAP | Model feature attribution. | Methods / Nucleotide contribution scores |
+| Tomtom | Matched TF-Modisco patterns to similar TF-binding motifs with Tomtom using the cisTarget motif collection. | Methods / Motif annotation |
 | Trim Galore | Removed adapters with TrimGalore 0.6.7 in separate Omni-ATAC-seq and ChIP-seq workflows before bwa-mem2 mapping and subsequent assay-specific processing. | Methods / OmniATAC-seq |
 
 XML SHA-256: `644c378b160cecd1c5249fcf19e7cab7ce35e80822d0182a54998f83e8084a83`. Exact evidence paragraph hashes and locators are in [papers.json](papers.json).
@@ -1315,8 +1324,8 @@ Nature · 2026-08-26 · [DOI](https://doi.org/10.1038/s41586-026-10932-7) · [Pr
 
 | Tool | How used | Evidence location |
 | --- | --- | --- |
+| HyPhy | Used aBSREL, reported as 2.5.48, on 15,734 filtered gene alignments and pruned/foreground-labeled mammal trees with --code Universal --branches Foreground. Separately ran BUSTED-MH on multiple orthologue cohorts and HyPhy MEME with --resample 100 to identify diversifying-selection codons in CD45. | Methods / Selection scans and evolutionary rates / aBSREL |
 | IQ-TREE | Inferred mammalian species and gene trees across 536 genomes with reported GTR+F3x4+R6, 1,000 ultrafast and SH-aLRT replicates, BNNI, safe mode and saved best-model NEXUS. The inferred species tree was then used in a separate MCMCtree/PAML dating analysis. | Methods / Phylogenetics |
-| MEME | Motif discovery and scanning. | Methods / Selection scans and evolutionary rates / BUSTED |
 | minimap2 | Aligned masked bat genomes at the assembly level with minimap2 before SyRI structural comparison and plotsr visualization. | Methods / Structural variation |
 | plotsr | Synteny and structural-rearrangement visualization. | Methods / Structural variation |
 | SyRI | Assembly-to-assembly structural rearrangement analysis. | Methods / Structural variation |
@@ -1332,6 +1341,7 @@ Nature · 2023-12-12 · [DOI](https://doi.org/10.1038/s41586-023-06905-9) · [Pr
 | BEDTools | Genomic interval manipulation and overlap. | Methods / Deep learning sequence-to-accessibility models / Prediction on full Drosophila genome |
 | DeepSTARR | Sequence-based neural prediction of regulatory activity. | Methods / Deep learning sequence-to-accessibility models / Model architecture and training |
 | MACS | Called tissue pseudobulk Drosophila sci-ATAC peaks with MACS2 using no model, keep all duplicates, extension 200, shift -100, fly effective-genome shortcut and bedGraph output. | Methods / Processing of pseudo-bulk DNA accessibility data |
+| Tomtom | Matched TF-Modisco-derived PWMs to the linked motif-clustering database with tomtom -dist kullback -motif-pseudo 0.1 -text -min-overlap 1. The upstream patterns were trimmed at flanking information content below 0.4. | Methods / Deep learning sequence-to-accessibility models / Motif discovery using TF-Modisco |
 
 XML SHA-256: `535a141b0d00e993c45d6476f4d80ef675e0155b45778a2bba9c0f732ea0aecf`. Exact evidence paragraph hashes and locators are in [papers.json](papers.json).
 
@@ -1534,7 +1544,7 @@ Nature Genetics · 2024-11-29 · [DOI](https://doi.org/10.1038/s41588-024-01989-
 
 | Tool | How used | Evidence location |
 | --- | --- | --- |
-| DESeq2 | Count-based differential expression analysis. | Methods / Identifying clone-specific ART |
+| DESeq2 | Used DESeq2 for expression differences between clone-specific ART-related and expected unrelated samples, referring to a TRACERx method and Supplementary Note 31 for details. | Methods / Identifying clone-specific ART |
 | gseapy | Python gene-set enrichment analysis. | Methods / Identifying clone-specific ART |
 | SPRINTER | Single-cell replication and copy-number analysis. | Methods / The SPRINTER algorithm |
 
@@ -1575,6 +1585,7 @@ Nature Genetics · 2024-11-25 · [DOI](https://doi.org/10.1038/s41588-024-01999-
 | AUCell | Rank-based gene-set activity scoring. | Methods / scNOVA–CITE workflow / Molecular phenotype analysis in gene sets |
 | Cell Ranger | Aligned CITE-seq reads to GRCh38, distinguished cells from background and generated a unified gene-expression/cell-surface-protein feature-barcode matrix with Cell Ranger v6.0. | Methods / CITE-seq data pre-processing and integration |
 | clusterProfiler | Used enricher hypergeometric overrepresentation to test Hallmark overlap with genes differentially expressed between subclones, controlling FDR at 0.05. | Methods / scNOVA–CITE workflow / Molecular phenotype analysis in gene sets |
+| DESeq2 | Listed DESeq2 among software used in Code availability for the complex-karyotype AML single-cell multiomics study. The checked main-text Methods and eight retained author R Markdown scripts do not establish a particular DESeq2 analysis call. | Code availability |
 | scran | Single-cell normalization and variance modelling. | Methods / scNOVA–CITE workflow / Finding differentially expressed features between subclones |
 | sctransform | Used Seurat SCTransform regularized negative-binomial normalization of RNA before highly variable-gene PCA; antibody-derived tags used CLR separately. | Methods / CITE-seq data pre-processing and integration / Pre-processing and dimensional reduction of CITE-seq data |
 | Seurat | Single-cell QC, normalization, integration, clustering or annotation. | Methods / CITE-seq data pre-processing and integration / Quality control of CITE-seq data |
@@ -1649,7 +1660,7 @@ Nature Genetics · 2025-12-11 · [DOI](https://doi.org/10.1038/s41588-025-02419-
 
 | Tool | How used | Evidence location |
 | --- | --- | --- |
-| DESeq2 | Count-based differential expression analysis. | Methods / Transcriptome comparison |
+| DESeq2 | Used DESeq2 varianceStabilizingTransformation for each bulk transcriptome dataset, followed by described z scoring/merging and batch correction, then exploratory UMAP and gene comparisons. The paper attributes ComBat_seq to the DESeq2 package. | Methods / Transcriptome comparison |
 | Integrative Genomics Viewer (IGV) | Visualized human regions syntenic to mouse chromosomes with custom SEG files in IGV and generated human summary plots from combined segmentation files;Affinity Designer prepared the final artwork. | Methods / CNA synteny comparison |
 | limma | Linear modelling and empirical-Bayes differential analysis. | Methods / Data analysis |
 | minfi | Methylation-array preprocessing. | Methods / Human–mouse comparison |
@@ -1684,6 +1695,7 @@ Nature Genetics · 2024-11-21 · [DOI](https://doi.org/10.1038/s41588-024-01975-
 | CAUSE | Causal inference with correlated pleiotropy. | Methods / MR for DCM |
 | CellBender | Reused published DCM-versus-control differential-expression results derived from CellBender-adjusted counts, requiring adjusted two-sided P below 0.05 and absence of the published background-contamination flag for that source dataset. | Methods / Single-cell expression and DE |
 | coloc | Shared-signal colocalization analysis. | Methods / Locus definitions, variant annotation and gene prioritization / MR and colocalization for eQTLs and pQTLs |
+| DESeq2 | Reported DESeq2 1.20.0 for cardiac cell-type analyses. The checked supplement describes DESeq2 normalization of donor/cell-type pseudobulk counts after edgeR filtering, followed by limma-voom tests for cell-type programs and DCM-versus-control differences. Disease testing used disease and sex covariates with BH correction. | Code availability |
 | FUMA | Used FUMA 1.6.1 for GWAS-DCM and MTAG-DCM locus analysis with lead P < 5e-8, r-squared < 0.05, a 1000 Genomes Phase 3 European reference and 1 Mb locus merging; used its MAGMA 1.08/GTEx 8 and ANNOVAR annotation. GENE2FUNC tested 63 prioritized genes against Ensembl 102 protein-coding background with at least two overlaps and two-stage BKY adjusted one-sided P < 0.05. | Methods / Locus definitions, variant annotation and gene prioritization / Functional mapping and annotation processing and annotation |
 | g:Profiler | Functional gene-set enrichment. | Methods / Gene set enrichment analyses |
 | LDSC | Used for SNP heritability estimation. | Methods / Heritability and genetic correlations |
@@ -1773,9 +1785,9 @@ Nature Genetics · 2026-09-25 · [DOI](https://doi.org/10.1038/s41588-026-02755-
 | --- | --- | --- |
 | ArchR | Single-cell ATAC-seq analysis. | Methods / ScATAC data preprocessing and data analysis |
 | Cell Ranger | Aligned scATAC-seq reads with Cell Ranger ATAC; the paragraph points to a Supplementary Note for preprocessing details. | Methods / ScATAC data preprocessing and data analysis |
-| chromVAR | Chromatin motif accessibility deviation scores. | Methods / TF motif enrichment |
+| chromVAR | Reported per-cell chromVAR-style TF activity scores through ArchR addDeviationsMatrix after CisBP motif annotation with addMotifAnnotations and accessibility/GC-controlled background preparation with addBgdPeaks. Aggregated cells by type, location and inflammation and correlated integrated gene scores with TF activity; prioritized positive regulators and separately tested motif enrichment by a hypergeometric test. | Methods / TF motif enrichment |
 | clusterProfiler | Called GSEA on topic-specific gene scores built from distance-weighted chromatin accessibility and normalized by the weights’ L2 norm, using MSigDB Hallmark, curated C2 and ontology C5 collections retrieved with msigdbr 7.5.1. | Methods / Topic modeling and pathway enrichment |
-| DESeq2 | Count-based differential expression analysis. | Methods / CaQTL calling |
+| DESeq2 | Used DESeq2 varianceStabilizingTransformation on read counts to visualize accessibility at significant caQTLs with box plots. | Methods / CaQTL calling |
 | Eagle | Combined GLIMPSE2 and Eagle to infer individual genotypes from single-cell ATAC-seq reads. | Methods / Genotyping and quality control |
 | GLIMPSE | Low-coverage sequence genotype imputation. | Methods / Genotyping and quality control |
 | GSEA | Ranked gene-set enrichment. | Methods / Topic modeling and pathway enrichment |
@@ -1824,7 +1836,7 @@ Nature Genetics · 2026-09-24 · [DOI](https://doi.org/10.1038/s41588-026-02748-
 | Scrublet | Called doublets independently per sample with Scrublet score threshold 0.15 before joining 295141 cells and subsequent normalization, regression and Harmony. | Methods / Processing of scRNA-seq |
 | sctransform | Applied SCTransform and PCA in the merged Seurat RNA workflow, which also describes NormalizeData/ScaleData and a literal nFeature_RNA less-than-1000 AND less-than-5000 filter. | Methods / Preprocessing and normalization of joint snRNA/ATAC–seq data |
 | Seurat | Single-cell QC, normalization, integration, clustering or annotation. | Methods / Preprocessing and normalization of joint snRNA/ATAC–seq data |
-| Signac | Single-cell chromatin accessibility analysis. | Methods / Preprocessing and normalization of joint snRNA/ATAC–seq data |
+| Signac | Used Signac 1.14.0 with Seurat 5.0 for preprocessing and normalization of joint snRNA/ATAC-seq count matrices produced by Cell Ranger ARC. | Methods / Preprocessing and normalization of joint snRNA/ATAC–seq data |
 | Space Ranger | Spatial transcriptomics read processing. | Methods / Visium and Stereo-seq sample preparation and data analysis |
 | Squidpy | Spatial neighborhood and expression analysis. | Methods / Spatial codes analysis |
 | Tangram | Mapping single-cell expression to spatial measurements. | Methods / Visium and Stereo-seq sample preparation and data analysis |
@@ -1853,7 +1865,7 @@ Nature Genetics · 2024-11-20 · [DOI](https://doi.org/10.1038/s41588-024-01990-
 | --- | --- | --- |
 | cell2location | Spatial cell-type deconvolution. | Methods / cell2location analysis of Visium datasets |
 | Cell Ranger | Used Cell Ranger count v6.1.1 to align snRNA FASTQs to GRCh38, quantify gene expression with introns included and automatically filter very low-UMI background barcodes. | Methods / snRNA-seq read alignment and gene expression quantification |
-| DESeq2 | Count-based differential expression analysis. | Methods / DESeq2 age-dependent differential gene expression analysis of snRNA-seq datasets |
+| DESeq2 | Used DESeq2 1.40.1 for age-dependent single-nucleus expression analysis. The supplement sums raw counts by cluster/sample, collapses technical replicates, filters genes expressed in>10% of nuclei and uses design single_cell_chemistry+age_group with a Wald test and BH adjustment. Positive fold changes indicate paediatric expression. | Methods / DESeq2 age-dependent differential gene expression analysis of snRNA-seq datasets |
 | DoubletFinder | Single-cell doublet detection. | Methods / snRNA-seq quality control |
 | g:Profiler | Functional gene-set enrichment. | Methods / Pathway enrichment analysis of snRNA-seq datasets |
 | GSEA | Ranked gene-set enrichment. | Methods / Pathway enrichment analysis of snRNA-seq datasets |
@@ -1892,7 +1904,7 @@ Nature Genetics · 2026-09-24 · [DOI](https://doi.org/10.1038/s41588-026-02745-
 | Cytoscape | Network visualization and analysis. | Methods / Functional annotation and pathway enrichment |
 | DAVID | Gene functional enrichment. | Methods / Functional annotation and pathway enrichment |
 | deepTools | Used deepTools3.5.0 bamCoverage for browser tracks and reference-point promoter profiles overTSS±5kb with skipZeros disabled. State bedGraphs were divided by sample number to represent chromatin-state percentages. | Methods / Genomic coordinates and gene annotation |
-| DESeq2 | Count-based differential expression analysis. | Methods / Gene expression analysis |
+| DESeq2 | Used DESeq2 1.40.2 median-of-ratios normalization, pairwise two-sided Wald tests, BH correction and fold-change shrinkage, with adjusted P<0.05 and absolute log2FC>1 selection. Used VST across all samples for individual-gene comparisons. | Methods / Gene expression analysis |
 | Enrichr | Gene-set enrichment. | Methods / Functional annotation and pathway enrichment |
 | GSEA | Ranked gene-set enrichment. | Methods / Identification of Group 4 EnhBiv and Group 3 ReprPC signature genes |
 | gseapy | Python gene-set enrichment analysis. | Methods / Identification of Group 4 EnhBiv and Group 3 ReprPC signature genes |
@@ -1909,15 +1921,15 @@ Nature Genetics · 2023-11-30 · [DOI](https://doi.org/10.1038/s41588-023-01572-
 | BEDTools | Genomic interval manipulation and overlap. | Methods / Differential accessible peak analysis |
 | cell2location | Spatial cell-type deconvolution. | Methods / Integration analysis with external datasets and to locate the spatial distributions of main cell types and subtypes |
 | Cell Ranger | Processed subsampled commercial 10x Chromium data with Cell Ranger as the comparator in an EasySci-RNA detection-depth benchmark. | Methods / Computational procedures for processing EasySci-RNA libraries |
-| chromVAR | Chromatin motif accessibility deviation scores. | Methods / Transcription factor motif analysis |
-| HTSeq | Read counting and sequence processing. | Methods / Data processing for EasySci-ATAC |
+| chromVAR | Used chromVAR1.16.0 with cisBP motif sets from chromVARmotifs0.2.0. For main cell types, subsampled5000 cells and used Signac RunChromVAR, rescaled per-cell deviations to0–10, aggregated by type and correlated scaled motif activity with TF expression. For subclusters, retained peaks present in>20 cells and cells with>500 peak reads, resized peaks to500bp, scanned with motifmatchr1.16.0 and called computeDeviations before the reported rescaling/aggregation/correlation. | Methods / Transcription factor motif analysis |
+| HTSeq | Used custom Python scripts with the HTSeq package to build peak-by-cell accessibility matrices. A peak was accessible in a cell when at least one read overlapped it. The paper describes both a merged peak-set benchmark and cell-type peak sets extended from summits. | Methods / Data processing for EasySci-ATAC |
 | LDSC | SNP heritability, genetic correlation or functional partitioning. | Methods / LDSC analysis |
 | Louvain | Grouped observations into communities using a neighborhood graph. | Methods / Cell subclustering analysis |
 | MACS | Called per-cell-type pseudobulk ATAC peaks with MACS2 2.1.1 using no model, extension 200, shift -100 and q-value 0.05. Applied a score-per-million cutoff of 1.3, extended summits by 250 bases, merged peaks and constructed an HTSeq accessibility matrix. | Methods / Differential accessible peak analysis |
 | Monocle | Single-cell trajectory or pseudotime inference. | Methods / Cell clustering and annotation analysis |
 | Scrublet | Used Scrublet for doublet removal after RT-primer-aware cell merging and quality filtering in a large single-cell dataset. | Methods / Cell clustering and annotation analysis |
 | Seurat | Used for cell clustering; cell annotation. | Methods / Cell clustering and annotation analysis |
-| Signac | Single-cell chromatin accessibility analysis. | Methods / Differential accessible peak analysis |
+| Signac | Used Signac 1.7.0 RunTFIDF and RunSVD for peak-count LSI and used dimensions 2–30 for UMAP. The motif workflow used chromVAR 1.16.0 with cisBP-derived motifs and Signac processing. | Methods / Differential accessible peak analysis |
 | SnapATAC2 | ATAC processing, modified doublet detection and embedding. | Methods / Cell filtering, clustering and annotation for EasySci-ATAC |
 | STAR | Splice-aware bulk RNA read alignment and optional raw gene counts. | Methods / Computational procedures for processing EasySci-RNA libraries |
 | Trim Galore | After custom EasySci barcode and adapter extraction, applied an additional default TrimGalore step described as removing poly-A sequence and low-quality bases before STAR mapping, duplicate handling and cell assignment. | Methods / Computational procedures for processing EasySci-RNA libraries |
@@ -1961,7 +1973,7 @@ Nature Genetics · 2023-11-30 · [DOI](https://doi.org/10.1038/s41588-023-01571-
 | BlastKOALA | KEGG orthology and pathway functional annotation. | Methods / RNA-seq and differential gene expression analysis |
 | BWA | DNA read alignment. | Methods / Short-read sequencing, Hi-C sequencing and data processing |
 | clusterProfiler | Applied hypergeometric enrichment to GO and KEGG annotations of wild-versus-domesticated millet population DEGs, with P at most 0.05. | Methods / RNA-seq and differential gene expression analysis |
-| DESeq2 | Count-based differential expression analysis. | Methods / RNA-seq and differential gene expression analysis |
+| DESeq2 | Used DESeq2 1.32.0 for wild-versus-domesticated gene-expression differences after featureCounts quantification, with adjusted P<=0.05 and a reported absolute fold-change cutoff>=1.5. | Methods / RNA-seq and differential gene expression analysis |
 | featureCounts | Used featureCounts 2.0.1 after Subjunc 2.0.1 mapping to the Longmi4 millet genome; the source describes read counts and FPKM expression. | Methods / RNA-seq and differential gene expression analysis |
 | GATK | Variant discovery and recalibration. | Methods / Short-read sequencing, Hi-C sequencing and data processing |
 | hifiasm | Haplotype-resolved long-read assembly. | Methods / Long-read sequencing, assembly and quality assessment |
@@ -1976,7 +1988,7 @@ Nature Genetics · 2023-11-30 · [DOI](https://doi.org/10.1038/s41588-023-01571-
 | minimap2 | Used minimap2 2.24-r1122 HiFi alignments to inspect millet structural-variant breakpoints, including manual IGV assessment of 304 loci spanning 3-17 kb. | Methods / Long-read sequencing, assembly and quality assessment |
 | PLINK | Used for genetic principal components. | Methods / Phylogeny and population structure |
 | RepeatMasker | Annotated plant-genome repeats with RepeatMasker 4.0.9 using -e rmblast -div 40 -norna after RepeatModeler2.0.1 repeat identification and classification. | Methods / Gene and transposable element annotation |
-| StringTie | Transcript assembly and quantification. | Methods / Gene and transposable element annotation |
+| StringTie | Assembled transcript models from HISAT2 RNA-seq alignments with StringTie2 2.1.7 defaults as transcriptome evidence for MAKER-based genome annotation. | Methods / Gene and transposable element annotation |
 | Subjunc | Mapped millet RNA-seq reads to Longmi4 with Subjunc 2.0.1 before featureCounts 2.0.1 quantification. | Methods / RNA-seq and differential gene expression analysis |
 | Trimmomatic | Used Trimmomatic0.39 to remove adapters and low-quality sequence from150-base paired-end WGS of516millet accessions before BWA-MEM alignment in SpeedSeq0.0.2. | Methods / Short-read sequencing, Hi-C sequencing and data processing |
 
@@ -2001,7 +2013,7 @@ Nature Genetics · 2024-11-05 · [DOI](https://doi.org/10.1038/s41588-024-01957-
 | Picard | Alignment QC, duplicates and sequence processing. | Methods / Analyses of ChIP–seq and ATAC–seq |
 | SAMtools | Alignment manipulation and QC. | Methods / SNP/indel calling for B. napus accessions |
 | Sniffles | Long-read structural variant discovery. | Methods / SV identification and pan-SV library construction |
-| StringTie | Transcript assembly and quantification. | Methods / RNA-seq data analysis |
+| StringTie | Calculated gene or transcript TPM with StringTie 1.3.6 defaults after HISAT2 alignment and separate SAMtools filtering of low-MAPQ, nonunique and unmapped reads. | Methods / RNA-seq data analysis |
 | Trimmomatic | Used Trimmomatic0.36 for adapter/low-quality RNA-seq filtering before HISAT2 alignment to ZS11; SAMtools mapping filters preceded StringTie TPM calculation. | Methods / RNA-seq data analysis |
 
 XML SHA-256: `425ec8beaa23c8950a7cdbc6ecc8f51be44208b47b20acfb8e7affecc0bd0a4e`. Exact evidence paragraph hashes and locators are in [papers.json](papers.json).
@@ -2123,7 +2135,7 @@ Nature Genetics · 2023-11-30 · [DOI](https://doi.org/10.1038/s41588-023-01560-
 | BCFtools | Variant manipulation, calling, normalization and filtering. | Methods / Adult brain reference panel processing and model training |
 | ComBat | Batch-effect adjustment. | Methods / Adult brain reference panel processing and model training |
 | CrossMap | Genome-assembly coordinate conversion with format-specific interval, alignment and variant handling. | Methods / Adult brain reference panel processing and model training |
-| DESeq2 | Count-based differential expression analysis. | Methods / GTEx processing and model training |
+| DESeq2 | Used DESeq2 1.38.3 variance stabilization in expression reference-panel processing for GTEx, developmental brain and adult brain analyses, alongside described TMM/log-CPM normalization, batch handling and residualization before predictive/QTL models. | Methods / GTEx processing and model training |
 | Eagle | Phased array batches with Eagle 2.4 through TOPMed Imputation Server before Minimac4 imputation using the TOPMed reference panel. | Methods / Adult brain reference panel processing and model training |
 | edgeR | Count-based differential expression analysis. | Methods / GTEx processing and model training |
 | isotwas | Isoform-level transcriptome-wide association. | Methods / GTEx processing and model training |
@@ -2132,7 +2144,7 @@ Nature Genetics · 2023-11-30 · [DOI](https://doi.org/10.1038/s41588-023-01560-
 | PEER | Latent confounder estimation. | Methods / GTEx processing and model training |
 | PLINK | Used for genotype quality control. | Methods / Adult brain reference panel processing and model training |
 | QTLtools | Molecular QTL mapping and QC. | Methods / Adult brain reference panel processing and model training |
-| Salmon | Transcript abundance quantification. | Methods / GTEx processing and model training |
+| Salmon | Quantified GTEx v8 RNA-seq for 48 tissues with Salmon 1.5.2 mapping-based quantification against GENCODE v38 transcripts plus the full GRCh38 genome as decoys, with mapping validation, sequence/GC bias correction and 50 inferential bootstraps. Developmental and adult brain panels instead used Salmon 1.8.0 with 50 bootstraps and the standard EM algorithm; adult brain explicitly inferred library type automatically. | Methods / GTEx processing and model training |
 | SAMtools | Alignment manipulation and QC. | Methods / Adult brain reference panel processing and model training |
 | SuSiE | Bayesian fine-mapping and credible sets. | Methods / Training predictive models of isoform expression / Estimating SNP effects on isoform expression |
 | sva | Latent confounder adjustment. | Methods / Adult brain reference panel processing and model training |
@@ -2164,7 +2176,7 @@ Nature Genetics · 2024-11-04 · [DOI](https://doi.org/10.1038/s41588-024-01967-
 | RepeatMasker | Used RepeatMasker 4.1.2 for homology-based TE annotation across29haplotypes with nonredundant repeat catalogs built using RepeatModeler2.0.4 and EDTA2.0.1. | Methods / The annotation of genome assemblies |
 | selscan | Haplotype-based selection scans. | Methods / Population genetic analyses |
 | STAR | Splice-aware bulk RNA read alignment and optional raw gene counts. | Methods / Transcriptome and GO enrichment analyses |
-| StringTie | Transcript assembly and quantification. | Methods / The annotation of genome assemblies |
+| StringTie | Reported using StringTie 1.3.0 to extract mapping states after HISAT2 RNA-seq alignment during annotation of repeat-masked grape haplotypes. | Methods / The annotation of genome assemblies |
 | SyRI | Assembly-to-assembly structural rearrangement analysis. | Methods / Comparative genomics |
 | UMAP | Used a two-component UMAP representation to explore 29 grapevine agronomic traits and group differences, then mapped normalized trait values onto that representation. | Results / GWAS of complex agronomic traits and the importance of SVs |
 
@@ -2179,7 +2191,7 @@ Nature Genetics · 2025-11-18 · [DOI](https://doi.org/10.1038/s41588-025-02409-
 | BEDTools | Genomic interval manipulation and overlap. | Methods / Nanopore sequencing, base calling and methylation analysis |
 | Bowtie 2 | Short-read alignment. | Methods / ChIP–seq library preparation and analysis |
 | deepTools | Used DeepTools2 version3.5.0 to visualize average methylation around genes,TSS and transposable elements from bigWig tracks stratified by dinucleotide context, after Guppy/Rerio modified-base calling and modbam2bed. | Methods / Nanopore sequencing, base calling and methylation analysis |
-| DESeq2 | Count-based differential expression analysis. | Methods / RNA-seq preparation and analysis |
+| DESeq2 | Used DESeq2 on Kallisto est_counts RNA-seq quantifications, selecting differential expression at adjusted P<0.01. | Methods / RNA-seq preparation and analysis |
 | fastp | Used fastp to trim ChIP-seq reads before Bowtie2 mapping and downstream Sambamba, deepTools, IGV and MACS3 analysis. | Methods / ChIP–seq library preparation and analysis |
 | Guppy | Nanopore basecalling; distinguish the fish name. | Methods / Nanopore sequencing, base calling and methylation analysis |
 | HISAT2 | Mapped publicly sourced multispecies RNA-seq with HISAT2 2.2.1, restricting intron length to 40,000 bp. | Methods / RNA-seq preparation and analysis |
@@ -2191,8 +2203,8 @@ Nature Genetics · 2025-11-18 · [DOI](https://doi.org/10.1038/s41588-025-02409-
 | RepeatMasker | Generated repeat annotations for species lacking them by mapping RepeatModeler2.0.2a consensus repeat libraries against genomes using RepeatMasker4.1.2-p1. | Methods / Genome assembly and re-annotation |
 | Sambamba | Removed duplicate ChIP-seq alignments with Sambamba 0.6.6 before MACS3 broad/narrow peak analyses. | Methods / ChIP–seq library preparation and analysis |
 | SAMtools | Alignment manipulation and QC. | Methods / Nanopore sequencing, base calling and methylation analysis |
-| StringTie | Transcript assembly and quantification. | Methods / RNA-seq preparation and analysis |
-| UCSC bedGraphToBigWig | Conversion of genomic signal tracks to indexed bigWig. | Methods / Nanopore sequencing, base calling and methylation analysis |
+| StringTie | Used StringTie for gene-model TPM across species after HISAT2 alignment; separately predicted transcript models with StringTie2.1.2 and combined StringTie/Trinity models through Mikado and PASA for annotation updates. | Methods / RNA-seq preparation and analysis |
+| UCSC bedGraphToBigWig | Generated bigWig tracks with UCSC bedGraphToBigWig, reported as v4, after Nanopore modified-base processing and partitioning sites into AT, AA, AC and AG contexts. | Methods / Nanopore sequencing, base calling and methylation analysis |
 
 XML SHA-256: `60ec7e72b2a2ec2bef4fe2a9695ce9668fb05548951d3f624c9865080509232b`. Exact evidence paragraph hashes and locators are in [papers.json](papers.json).
 
@@ -2234,12 +2246,12 @@ Nature Genetics · 2025-11-18 · [DOI](https://doi.org/10.1038/s41588-025-02404-
 | Tool | How used | Evidence location |
 | --- | --- | --- |
 | BEDTools | Genomic interval manipulation and overlap. | Methods / Processing of RNA-seq data |
-| BWA | DNA read alignment. | Methods / Processing of EU-seq data |
+| BWA-MEME | Aligned EU-seq reads to mm10 with BWA-MEME 1.0.4 and soft clipping of supplementary alignments. Subsequently filtered mapping quality below 10 with SAMtools, removed rRNA/tRNA overlaps with BEDTools and counted gene-body reads with HTSeq. | Methods / Processing of EU-seq data |
 | Cutadapt | Adapter trimming. | Methods / Processing of RNA-seq data |
 | deepTools | Used deepTools with UCSC bigWigMerge to generate gene-track bigWigs using scaling factors obtained from sense-transcript DESeq2 analysis. | Methods / Processing of EU-seq data |
-| DESeq2 | Count-based differential expression analysis. | Methods / Processing of EU-seq data |
+| DESeq2 | Used DESeq2 default median-abundance size factors and fold-change results for EU-seq, then subtracted the median fold change of expressed genes. Also normalized 12 replicates before matched treated/control ratios, log2 conversion, median adjustment and averaging over time points; size factors scaled genome-browser tracks. | Methods / Processing of EU-seq data |
 | Harmony | Batch integration of cell embeddings. | Methods / Microscopy and image-based cytometry |
-| HTSeq | Read counting and sequence processing. | Methods / Processing of RNA-seq data |
+| HTSeq | Used HTSeq 0.11.1 to count exon-mapped RNA-seq reads by gene. A separate EU-seq workflow used HTSeq to count reads in defined gene-body regions with time-dependent extents of 30, 90 and 240 kb from the TSS. | Methods / Processing of RNA-seq data |
 | SAMtools | Alignment manipulation and QC. | Methods / Processing of EU-seq data |
 | STAR | Splice-aware bulk RNA read alignment and optional raw gene counts. | Methods / Processing of RNA-seq data |
 | UCSC bigWigMerge | Used UCSC bigWigMerge together with deepTools for gene-track bigWigs using scaling factors derived from sense-transcript DESeq2. | Methods / Processing of EU-seq data |
@@ -2374,10 +2386,10 @@ Nature Genetics · 2023-11-16 · [DOI](https://doi.org/10.1038/s41588-023-01565-
 | --- | --- | --- |
 | BEDTools | Genomic interval manipulation and overlap. | Methods / Chromatin immunoprecipitation / ChIP–seq analysis |
 | Bowtie 2 | Short-read alignment. | Methods / Chromatin immunoprecipitation / ChIP–seq analysis |
-| DESeq2 | Count-based differential expression analysis. | Methods / Gene expression analysis by RNA-seq |
+| DESeq2 | Used DESeq2 1.30.1 on explicitly rounded RSEM counts with a paired experimental-replicate/genotype design and three replicates. Used adjacent-stage information for dispersion estimation, disabled independent filtering for reported contrasts and selected changes at FDR<0.05 and fold change>1.25. | Methods / Gene expression analysis by RNA-seq |
 | Enrichr | Gene-set enrichment. | Methods / Gene expression analysis by RNA-seq |
 | GATK | Variant discovery and recalibration. | Methods / Genetic analysis |
-| HTSeq | Read counting and sequence processing. | Methods / Chromatin immunoprecipitation / ChIP–seq analysis |
+| HTSeq | Used HTSeq 0.13.5 to count reads intersecting ChIP-seq intervals after requiring properly paired reads with MAPQ greater than 20. | Methods / Chromatin immunoprecipitation / ChIP–seq analysis |
 | MACS | Called MACS2 2.2.7.1 peaks with matched input datasets as background for MER11 chromatin-state comparisons, before peak MAPQ selection, read counting, overlap-based WT/KO selection and signal clustering. | Methods / Chromatin immunoprecipitation / ChIP–seq analysis |
 | RSEM | Quantified stranded paired-end RNA-seq using the RSEM-STAR pipeline against GENCODE 36 lifted to hg19, with seed 1618, posterior mean estimates, credibility intervals and estimated read-start distributions. | Methods / Gene expression analysis by RNA-seq |
 | SAMtools | Alignment manipulation and QC. | Methods / Chromatin immunoprecipitation / ChIP–seq analysis |
@@ -2442,7 +2454,7 @@ Nature Genetics · 2023-11-09 · [DOI](https://doi.org/10.1038/s41588-023-01554-
 | Cell Ranger | Processed/demultiplexed scRNA-seq and generated transcript and guide-RNA UMI counts per cell barcode using CellRanger v6.0.1. | Methods / Processing and analyzing scRNA-seq |
 | ChIPseeker | Peak annotation relative to genes and genomic features. | Methods / ATAC-seq |
 | deepTools | Generated CPM-normalized ATAC-seq bigWigs with deepTools3.0.1 bamCoverage after Bowtie1,blacklist and duplicate filtering. | Methods / ATAC-seq |
-| DESeq2 | Count-based differential expression analysis. | Methods / Processing gRNA sequencing and gRNA analysis for FACS-based screens |
+| DESeq2 | Used DESeq2 for guide-abundance differences in FACS screens, RNA-seq Wald tests and ATAC-seq differences; only the ATAC-seq paragraph explicitly reports version 1.36. Guide results fed empirical controls and mRRA gene aggregation, and CRISPR-knockout guide comparisons were followed by MAGeCK gene analysis. | Methods / Processing gRNA sequencing and gRNA analysis for FACS-based screens |
 | DoubletFinder | Single-cell doublet detection. | Methods / Processing and analyzing scRNA-seq |
 | Enrichr | Gene-set enrichment. | Methods / Processing and analyzing scRNA-seq |
 | FastQC | Sequencing read quality assessment. | Methods / ATAC-seq |
@@ -2610,19 +2622,20 @@ Nature Genetics · 2025-11-05 · [DOI](https://doi.org/10.1038/s41588-025-02388-
 | ChIPseeker | Peak annotation relative to genes and genomic features. | Methods / ATAC-seq data processing |
 | Cutadapt | Adapter trimming. | Methods / RNA sequencing |
 | deepTools | Used deepTools3.5.4 bamCoverage with RPGC for ChIP-seq and computeMatrix/plotHeatmap around genomic features. Separate ATAC preprocessing used alignmentSieve ATACshift in deepTools3.3.2, applying+4/-5 read-start shifts. | Methods / ChIP–seq data analyses |
-| DESeq2 | Count-based differential expression analysis. | Methods / STRING and gene set enrichment analysis |
+| DESeq2 | Used DESeq2 Wald statistics to rank genes for fgsea, and separately fit RNA-seq PTGES3 knockdown/control and ATAC-seq accessible-region differences, applying adjusted P<0.05 and absolute log2FC>1 selection. | Methods / STRING and gene set enrichment analysis |
 | FastQC | Sequencing read quality assessment. | Methods / RNA sequencing |
 | fgsea | Ran preranked fgsea on DESeq2 Wald statistics against downloaded MSigDB Hallmark gene sets. | Methods / STRING and gene set enrichment analysis |
 | HOMER | Applied the HOMER 4.11 Known Motif Discovery approach to motifs in prostate-cancer ChIP-seq analyses after separately defined alignment, filtering and MACS3 peak calling. | Methods / ChIP–seq data analyses |
 | Integrative Genomics Viewer (IGV) | Obtained ChIP-seq visualization snapshots with IGV v2.19.1 from RPGC-normalized BigWig tracks generated by deepTools bamCoverage. | Methods / ChIP–seq data analyses |
 | MACS | Called ChIP peaks with MACS3 3.0.0 at Q-value 0.01. In a separate ATAC pipeline, called MACS2 2.2.5 BAMPE narrow peaks at q-value 0.05 with no model, bedGraph, keep-all duplicates and summits after Tn5 correction. | Methods / ChIP–seq data analyses |
-| MEME | Motif discovery and scanning. | Methods / ATAC-seq data processing / Over-representation analysis / TF binding analysis |
+| MEME | Discovered motifs de novo in differentially accessible ATAC-seq peaks assigned to promoter/intergenic regions, then used Tomtom to annotate similarities to known JASPAR motifs. | Methods / ATAC-seq data processing / Over-representation analysis / TF binding analysis |
 | MetaboAnalyst | Metabolomic statistics and pathway analysis. | Methods / Mass spectrometry |
 | Picard | Alignment QC, duplicates and sequence processing. | Methods / ChIP–seq data analyses |
 | PyMOL | Performed structural alignments and figure rendering of experimental/AlphaFold3 AR-PTGES3 complex models with PyMOL. | Methods / Structural modeling of AR–PTGES3 complexes |
 | Rsubread | R interface for read mapping, feature/junction counting and variant analysis. | Methods / RNA sequencing |
 | SAMtools | Alignment manipulation and QC. | Methods / ChIP–seq data analyses |
 | STAR | Splice-aware bulk RNA read alignment and optional raw gene counts. | Methods / RNA sequencing |
+| Tomtom | Annotated MEME-discovered motifs from differentially accessible promoter/intergenic ATAC peaks by comparing them to known JASPAR motifs with Tomtom. | Methods / ATAC-seq data processing / Over-representation analysis / TF binding analysis |
 | Trimmomatic | Trimmed ChIP-seq FASTQ reads with Trimmomatic0.39 before BWA-MEM hg38 alignment, MAPQ30/blacklist/duplicate filtering and MACS3 peaks; deepTools later supplied RPGC tracks and heatmaps. | Methods / ChIP–seq data analyses |
 
 XML SHA-256: `f70438623e8599bd86e6c1b747ee584bd36e8afbc84d715badca1641edf29f25`. Exact evidence paragraph hashes and locators are in [papers.json](papers.json).
@@ -2644,6 +2657,7 @@ Nature Genetics · 2026-08-26 · [DOI](https://doi.org/10.1038/s41588-026-02714-
 | Monocle | Single-cell trajectory or pseudotime inference. | Methods / Single-cell analysis |
 | Seurat | Used for cell clustering. | Methods / Single-cell analysis |
 | ShortRead | Assessed each PLATE-seq sample's sequencing-data quality with the ShortRead package. | Methods / Drug perturbation assays |
+| Signac | Reported differential accessible peaks from logistic regression implemented in Signac in the Figure 5g analysis of lineage-associated states. | Results / Barcode lineage tracing reveals mutation-independent plasticity |
 | tximport | Used tximport with kallisto0.44.0 and biomaRt to quantify GRCh38 mRNA/ncRNA gene expression from drug-perturbed pancreatic-cell PLATE-seq libraries. | Methods / Drug perturbation assays |
 | UMI-tools | UMI counting and duplicate handling. | Methods / Single-cell lineage tracing |
 | VIPER | Used Student’s t-test implemented in the VIPER package on normalized unperturbed GLS-versus-MOS cell-line expression profiles to construct a differential-expression signature; metaVIPER then converted that signature to protein activities. | Methods / TF overexpression assay (PLATE-seq) |
@@ -2698,7 +2712,7 @@ Nature Genetics · 2025-11-05 · [DOI](https://doi.org/10.1038/s41588-025-02349-
 | Tool | How used | Evidence location |
 | --- | --- | --- |
 | BWA | DNA read alignment. | Methods / Processing of sequencing data |
-| DESeq2 | Count-based differential expression analysis. | Methods / Processing of sequencing data |
+| DESeq2 | Used DESeq2 variance stabilization for between-sample comparisons of the same gene. TPM was described separately for constitutive gene-expression comparisons; an EPICC 2.Rmd script was referenced. | Methods / Processing of sequencing data |
 | GenomicRanges | Genomic-range containers and overlap operations in R. | Methods / SCAA and SCAA loss analysis / TF analysis |
 | Mutect2 | Somatic SNV and short-indel calling. | Methods / Processing of sequencing data |
 | Picard | Alignment QC, duplicates and sequence processing. | Methods / Processing of sequencing data |
@@ -2716,7 +2730,7 @@ Nature genetics · 2026-08-25 · [DOI](https://doi.org/10.1038/s41588-026-02729-
 | DeepSTARR | Predicted log2(mean ATAC treatment-pileup signal+1) from 1001-base one-hot sequences using a modified DeepSTARR CNN, duplicate runs and three held-out folds. | Methods / Sequence-to-accessibility models / Model architecture and training. |
 | MACS | Called mouse embryo ATAC peaks per biological replicate and on merged reads using MACS2 2.2.5 with BAM, mouse genome shortcut, no model, shift -100, extension 200 and keep-all duplicates. Retained peaks supported in both replicates and merged data; used treatment pileup for region-mean accessibility targets. | Methods / Processing of ATAC-seq chromatin accessibility data / Peak calling. |
 | SAMtools | Alignment manipulation and QC. | Methods / Processing of ATAC-seq chromatin accessibility data / Peak calling. |
-| UCSC bedGraphToBigWig | Conversion of genomic signal tracks to indexed bigWig. | Methods / Processing of ATAC-seq chromatin accessibility data / Peak calling. |
+| UCSC bedGraphToBigWig | Converted MACS2 ATAC-seq bedGraph pileup tracks to bigWig after processing mm10 embryo reads and calling peaks on separate and merged biological replicates. | Methods / Processing of ATAC-seq chromatin accessibility data / Peak calling. |
 
 XML SHA-256: `6d21824b8b7b9eb63f2b3c49f6452b00ec2a3c5f1cf17b9cbe5dd5b6ee6cc5bf`. Exact evidence paragraph hashes and locators are in [papers.json](papers.json).
 
@@ -2729,12 +2743,13 @@ Nature Genetics · 2024-10-03 · [DOI](https://doi.org/10.1038/s41588-024-01892-
 | BWA | DNA read alignment. | Methods / GM12878 ATAC–seq processing and peak scoring |
 | ChIPseeker | Peak annotation relative to genes and genomic features. | Methods / Defining enhancer categories |
 | deepTools | Converted sorted/indexed GM12878 ATAC BAMs to bigWig with deepTools3.5.0 bamCoverage; downstream enhancer accessibility summed counts in±350bp around peak centers. | Methods / GM12878 ATAC–seq processing and peak scoring |
-| DESeq2 | Count-based differential expression analysis. | Methods / Assessing BETi sensitivity in CMs |
-| MEME | Motif discovery and scanning. | Methods / Analysis of TF BS syntax |
+| DESeq2 | Used DESeq2 for expression changes in BET-inhibitor-treated cardiomyocytes, keeping genes with at least 10 counts across replicates before differential analysis. | Methods / Assessing BETi sensitivity in CMs |
+| MEME | Named MEME Suite as the provider of Tomtom for motif-similarity comparisons. Hierarchically clustered similarities and summarized TF-class motif pairs passing q < 0.1. | Methods / Analysis of TF BS syntax |
 | Picard | Alignment QC, duplicates and sequence processing. | Methods / ASA in GM12878 |
 | Rsubread | R interface for read mapping, feature/junction counting and variant analysis. | Methods / Assessing BETi sensitivity in CMs |
 | SAMtools | Alignment manipulation and QC. | Methods / GM12878 ATAC–seq processing and peak scoring |
 | STAR | Splice-aware bulk RNA read alignment and optional raw gene counts. | Methods / Assessing BETi sensitivity in CMs |
+| Tomtom | Computed motif similarities with Tomtom using stated default settings, visualized them by hierarchical clustering, and summarized similar pairs passing q < 0.1 as fractions of possible motif pairs within TF classes. | Methods / Analysis of TF BS syntax |
 
 XML SHA-256: `3e30aea6621a602bcd402a2e1ced0d8f4d08f298749bb7a586c813a85872cae0`. Exact evidence paragraph hashes and locators are in [papers.json](papers.json).
 
@@ -2793,7 +2808,7 @@ Nature Genetics · 2024-10-02 · [DOI](https://doi.org/10.1038/s41588-024-01883-
 | --- | --- | --- |
 | ASCAT | Allele-specific tumor copy-number analysis. | Methods / The TCGA cohort |
 | GATK | Variant discovery and recalibration. | Methods / The MHC Hammer pipeline / Filters implemented for somatic HLA mutations |
-| Nextflow | Analysis pipeline orchestration. | Results / A pipeline to evaluate HLA disruption |
+| Nextflow | Provided MHC Hammer as a Nextflow workflow for allele-specific HLA somatic mutation, loss of heterozygosity, repression and alternative-splicing analysis using WES and RNA-seq data. | Results / A pipeline to evaluate HLA disruption |
 | STAR | Splice-aware bulk RNA read alignment and optional raw gene counts. | Methods / Calling alternative splicing in all protein-coding genes |
 | Ensembl VEP | Variant consequence annotation. | Methods / The MHC Hammer pipeline / Filters implemented for somatic HLA mutations |
 
@@ -2825,7 +2840,7 @@ Nature Genetics · 2026-08-14 · [DOI](https://doi.org/10.1038/s41588-026-02709-
 | BCFtools | Variant manipulation, calling, normalization and filtering. | Methods / WES data |
 | CellChat | Ligand-receptor cell communication inference. | Methods / snRNA-seq of hNCs / Cell–cell communication |
 | Cell Ranger | Processed four multiplexed nuclei libraries using Cell Ranger multi in Multiplex Flex mode with GRCh38-2024-A and the v1.1.0_GRCh38-2024-A human probe set. | Methods / snRNA-seq of hNCs / snRNA-seq data preprocessing and annotation |
-| DESeq2 | Count-based differential expression analysis. | Methods / snRNA-seq of hNCs / Differential expression and pathway enrichment analysis |
+| DESeq2 | Used DESeq2 1.40.2 on cell-type pseudobulk profiles from SoupX-corrected counts, estimating size factors on the unfiltered pseudobulk population before fitting filtered genes. Adjusted mitochondrial/ambient/batch covariates and selected FDR<0.05, absolute log2FC>0.5. A separate dementia comparison used 70 donors and eight covariates. | Methods / snRNA-seq of hNCs / Differential expression and pathway enrichment analysis |
 | Harmony | Batch integration of cell embeddings. | Methods / snRNA-seq of hNCs / snRNA-seq data preprocessing and annotation |
 | Louvain | Grouped observations into communities using a neighborhood graph. | Methods / snRNA-seq of hNCs / snRNA-seq data preprocessing and annotation |
 | SCENIC | Single-cell regulatory network inference. | Methods / snRNA-seq of hNCs / Regulon analysis |
@@ -2879,7 +2894,7 @@ Nature Genetics · 2026-08-10 · [DOI](https://doi.org/10.1038/s41588-026-02692-
 | CIBERSORT | Cell-type deconvolution. | Methods / Decomposition of tumor immune environments |
 | Cutadapt | Adapter trimming. | Methods / Metagenomic sequencing quality control and taxonomic profiling |
 | dndscv | Somatic mutation selection analysis. | Methods / Significantly mutated gene analysis |
-| HTSeq | Read counting and sequence processing. | Methods / Transcriptome sequencing (RNA-seq) |
+| HTSeq | Used HTSeq to quantify gene-level read counts against a UCSC human transcriptome reference after STAR alignment to GRCh37/hg19. Described strand-aware FPKM calculation and Wilcoxon differential testing separately. | Methods / Transcriptome sequencing (RNA-seq) |
 | SAMtools | Alignment manipulation and QC. | Methods / Mutation calling |
 | SHAP | Model feature attribution. | Methods / Identification of CRC subtypes based on metagenome-derived SHAP values / SHAP analysis and subtype identification |
 | STAR | Splice-aware bulk RNA read alignment and optional raw gene counts. | Methods / Transcriptome sequencing (RNA-seq) |
@@ -2940,9 +2955,9 @@ Nature Genetics · 2026-08-04 · [DOI](https://doi.org/10.1038/s41588-026-02681-
 | Tool | How used | Evidence location |
 | --- | --- | --- |
 | Bowtie 2 | Short-read alignment. | Methods / PCHi-C data preprocessing and detection of significant interactions |
-| DESeq2 | Count-based differential expression analysis. | Methods / RNA-seq data analysis |
+| DESeq2 | Imported Salmon quantification through tximport and used DESeq2 contrasts across baseline/stimulation and targeting/scrambled conditions, separately for CRISPR activation/inhibition, after low-count filtering with alpha=0.05. Also reanalyzed TL1A gene counts. | Methods / RNA-seq data analysis |
 | LDSC | Used for annotation-stratified genetic enrichment. | Methods / RELI analysis |
-| Salmon | Transcript abundance quantification. | Methods / RNA-seq data analysis |
+| Salmon | Mapped human and mouse RNA-seq reads to transcripts associated with hg38 and mm10 using Salmon. Imported transcript counts and collapsed to gene counts with tximport for separate DESeq2 differential analyses. | Methods / RNA-seq data analysis |
 | SuSiE | Bayesian fine-mapping and credible sets. | Methods / Summary-level GWAS imputation and multivariate fine-mapping |
 | tximport | Imported Salmon transcript counts and collapsed them to gene counts for DESeq2 analysis of human hg38 and mouse mm10 RNA-seq, with separate CRISPRi/CRISPRa condition contrasts. | Methods / RNA-seq data analysis |
 | UCSC liftOver | Converted regulatory-element/PIR intersections from hg38 to hg19 with UCSC liftOverv377, then sorted and merged them for RELI trait enrichment. | Methods / RELI analysis |
@@ -2981,7 +2996,7 @@ Nature Genetics · 2026-08-03 · [DOI](https://doi.org/10.1038/s41588-026-02695-
 | PoPS | Effector-gene prioritization using polygenic features. | Methods / GWAS benchmark |
 | scE2G | Single-cell enhancer-to-gene prediction. | Methods / Training and applying scE2G |
 | Seurat | Used for cell annotation. | Methods / Quality control for 10x Multiome data |
-| Signac | Single-cell chromatin accessibility analysis. | Methods / Quality control for 10x Multiome data |
+| Signac | Used Signac with Seurat for multiome QC. Used FeatureMatrix to quantify MACS2 2.2.9 peaks intersecting ABC candidate regions, then BinarizeCounts before a custom Kendall correlation analysis. | Methods / Quality control for 10x Multiome data |
 | SuSiE | Bayesian fine-mapping and credible sets. | Methods / eQTL benchmark |
 
 XML SHA-256: `58d7366dacc144c8821f5657fa302461b72ca21490d647dbd8fef420ae138aa5`. Exact evidence paragraph hashes and locators are in [papers.json](papers.json).
@@ -3014,11 +3029,11 @@ Nature Genetics · 2025-10-30 · [DOI](https://doi.org/10.1038/s41588-025-02389-
 | --- | --- | --- |
 | Bowtie 2 | Short-read alignment. | Methods / ChIP–seq analyses |
 | Cytoscape | Network visualization and analysis. | Methods / ChIP–seq enrichment near regulated genes |
-| DESeq2 | Count-based differential expression analysis. | Methods / RNA-seq analyses |
+| DESeq2 | Used DESeq2 for RNA-seq expression analysis; the paragraph attaches version 1.14.1 to wording that mentions both the DESeq2 package and R. | Methods / RNA-seq analyses |
 | DiffBind | Differential binding or accessibility across peak-count libraries. | Methods / ChIP–seq analyses |
 | HiC-Pro | Hi-C read processing. | Methods / Hi-ChIP data processing |
 | MACS | Called MACS2 2.1.1.2016 peaks after combining replicate ChIP alignments into one library and using input sequences as background; selected tag-enriched peaks for motif, coverage and differential-binding analyses. | Methods / ChIP–seq analyses |
-| MEME | Motif discovery and scanning. | Methods / ChIP–seq analyses |
+| MEME | Used MEME 4.9.1 to examine known and newly discovered binding motifs in tag-enriched ChIP-seq sequences following Bowtie2 alignment and MACS2 peak selection. | Methods / ChIP–seq analyses |
 | STAR | Splice-aware bulk RNA read alignment and optional raw gene counts. | Methods / RNA-seq analyses |
 
 XML SHA-256: `4fa8d434acb43c12473250318a50001d3ff308f37ec3ecf8d13507b30f51d08b`. Exact evidence paragraph hashes and locators are in [papers.json](papers.json).
@@ -3029,7 +3044,7 @@ Nature Genetics · 2026-07-31 · [DOI](https://doi.org/10.1038/s41588-026-02703-
 
 | Tool | How used | Evidence location |
 | --- | --- | --- |
-| Nextflow | Analysis pipeline orchestration. | Methods / Statistics, data analysis and high-performance computing |
+| Nextflow | Scripted single-molecule-footprinting preprocessing in Nextflow22.10.6. The source separately describes R4.2.2/RStudio analysis and high-performance computing through SLURM using direct Bash or rslurm. | Methods / Statistics, data analysis and high-performance computing |
 
 XML SHA-256: `569106d214f7b1e81e2f535242163acf16331596e461971361d4f70525de44ac`. Exact evidence paragraph hashes and locators are in [papers.json](papers.json).
 
@@ -3069,7 +3084,7 @@ Nature Genetics · 2025-10-29 · [DOI](https://doi.org/10.1038/s41588-025-02368-
 | MapMyCells | Used MapMyCells for reference cell annotation in the Parse single-cell workflow. | Methods / scATAC-seq and scRNA-seq library preparation and analyses |
 | sctransform | Used SCTransform independently per library with 3000 highly variable genes after Parse Trailmaker 1.4.1 processing against an augmented mm10 reference. | Methods / scATAC-seq and scRNA-seq library preparation and analyses |
 | Seurat | Single-cell QC, normalization, integration, clustering or annotation. | Methods / scATAC-seq and scRNA-seq library preparation and analyses |
-| Signac | Single-cell chromatin accessibility analysis. | Methods / scATAC-seq and scRNA-seq library preparation and analyses |
+| Signac | Used Signac with Seurat for scATAC-seq processing and QC after Cell Ranger ATAC. Derived a gene-activity matrix for downstream cell annotation with MapMyCells. | Methods / scATAC-seq and scRNA-seq library preparation and analyses |
 | Trailmaker | Used Parse Trailmaker 1.4.1 with an augmented mm10 reference before per-library SCTransform. | Methods / scATAC-seq and scRNA-seq library preparation and analyses |
 
 XML SHA-256: `43ad08ecc1cfa9a6ddc89d82679dcf2b5e69d29c23bdcea15009587bddf2b53a`. Exact evidence paragraph hashes and locators are in [papers.json](papers.json).
@@ -3155,7 +3170,7 @@ Nature Genetics · 2024-09-18 · [DOI](https://doi.org/10.1038/s41588-024-01911-
 | BEDTools | Generated CUT&Tag bedGraph coverage with BEDTools genomecov and a scaling factor based on one million divided by total human reads before supplied-track threshold peak calling. | Methods / Data processing |
 | Bowtie 2 | Mapped CUT&Tag to hg38 using Bowtie2 2.2.3, end-to-end/very-sensitive, no-mixed/no-discordant, Phred33 and insert bounds 10–700. Classical ChIP used 2.2.3 against hg38/dm3; PRO-seq separately used 2.5.1. | Methods / Data processing |
 | Cutadapt | Trimmed PRO-seq adapters with Cutadapt 1.18 before Bowtie2 2.5.1 alignment and NRSA gene-body analysis. | Methods / PRO–seq |
-| DESeq2 | Normalized RNA-seq raw counts and tested differential expression with DESeq2. Separately, DiffBind used DESeq2 analyses when reported n > 2. | Methods / Data processing |
+| DESeq2 | Used DESeq2 for RNA-seq normalization/differential expression and Wald-based gene ranking, and VST for ATAC-seq clustering. For chromatin comparisons with n>2, DiffBind 3.12 used DESEQ2 at FDR<0.1; n=1 comparisons used a different Goodpeaks script. | Methods / Data processing |
 | DiffBind | Used DiffBind 3.12.0 with DESeq2 when n > 2 and FDR cutoff 0.1; displayed technical variability in PCA/heatmaps and randomized vehicle/DB2115 pairs as a null comparison. Used a custom script when n = 1. | Methods / Data processing |
 | Enrichr | Performed additional gene-list enrichment using Enrichr after separate ranked FGSEA analyses. | Methods / Data processing |
 | FastQC | Assessed CUT&Tag read quality with FastQC 0.11.4 after reported Picard FASTQ generation and TrimGalore adapter trimming. | Methods / CUT&Tag |
@@ -3206,7 +3221,7 @@ Nature Genetics · 2026-07-28 · [DOI](https://doi.org/10.1038/s41588-026-02673-
 
 | Tool | How used | Evidence location |
 | --- | --- | --- |
-| DESeq2 | Count-based differential expression analysis. | Methods / Bulk RNA sequencing |
+| DESeq2 | Used DESeq2 for bulk RNA-seq differential expression and ranked genes by descending log fold change for GSEA. | Methods / Bulk RNA sequencing |
 | dndscv | Somatic mutation selection analysis. | Methods / Quantifying selection using dN/dS |
 | GSVA | Per-sample gene-set activity scoring. | Methods / GSVA |
 | Harmony | Batch integration of cell embeddings. | Methods / Spatial transcriptomics |
@@ -3276,7 +3291,7 @@ Nature Genetics · 2024-09-16 · [DOI](https://doi.org/10.1038/s41588-024-01900-
 | Enrichr | Gene-set enrichment. | Methods / Gene evidence |
 | MAGMA | Used MAGMA1.10 to define the top1000 CRC disease-associated genes from GWAS summary statistics for scDRS1.0.1 analyses of Tabula Sapiens and Gut Cell Atlas profiles. | Methods / Cell-type specificity of risk variants |
 | Matrix eQTL | Matrix-based QTL association. | Methods / eQTLs and SMR |
-| Nextflow | Analysis pipeline orchestration. | Methods / ChIPmentation |
+| Nextflow | Processed ChIPmentation with nf-core/chipseq1.2.1 and Omni-ATAC with nf-core/atacseq1.2.1, both as Nextflow pipelines with reported default parameters. | Methods / ChIPmentation |
 | nf-core | Reusable sequencing analysis pipelines. | Methods / ChIPmentation |
 | PolyFun | Functional-prior fine-mapping. | Methods / Fine-mapping of risk loci |
 | Presto | Fast single-cell marker testing. | Methods / Gene evidence |
@@ -3333,7 +3348,7 @@ Nature Genetics · 2026-07-22 · [DOI](https://doi.org/10.1038/s41588-026-02678-
 | SnpEff | Variant consequence annotation. | Methods / Variant calling and filtering |
 | StainedGlass | Confirmed tandem-repeat structure in candidate centromere regions using StainedGlass 0.6 with window size 10000. | Methods / Centromeric region identification |
 | STAR | Splice-aware bulk RNA read alignment and optional raw gene counts. | Methods / Genome annotation |
-| StringTie | Transcript assembly and quantification. | Methods / Genome annotation |
+| StringTie | Assembled STAR RNA-seq alignments with StringTie3.0.0 using reported -m150 -t -f0.3 -rf; also merged RNA-seq/Iso-seq transcript assemblies and later combined transcriptome-derived/homology annotation evidence. | Methods / Genome annotation |
 | Trimmomatic | Used Trimmomatic0.39 on CENH3 ChIP-seq in the literal reported order ILLUMINACLIP:adapter.fa:2:30:10, MINLEN36, SLIDINGWINDOW4:20, before Bowtie2 and MACS3 BAMPE peaks. | Methods / Centromeric region identification |
 | Verkko | Genome assembly. | Methods / Genome assembly / Step 1. Contig construction |
 
@@ -3346,7 +3361,7 @@ American Journal of Human Genetics · 2023-12-22 · [DOI](https://doi.org/10.101
 | Tool | How used | Evidence location |
 | --- | --- | --- |
 | Cutadapt | Adapter trimming. | Subjects and methods / mRNA sequencing |
-| DESeq2 | Count-based differential expression analysis. | Subjects and methods / mRNA sequencing |
+| DESeq2 | Used DESeq2 on Rsubread gene/exon read counts for wild-type versus MAX Arg60Gln transcriptome comparisons. The results describe filtering genes with fewer than five reads in all samples, retaining 20,868 genes and selecting adjusted P<0.05. | Subjects and methods / mRNA sequencing |
 | FastQC | Sequencing read quality assessment. | Subjects and methods / mRNA sequencing |
 | PyMOL | Used explicitly open-source PyMOL v1.7.6.0 for molecular modelling/rendering of a c-Myc/Max heterodimer,choosing a Gln60 rotamer and manually setting K392 chi1-chi4 to gauche+,trans,gauche-,trans. | Subjects and methods / Molecular modeling |
 | Rsubread | R interface for read mapping, feature/junction counting and variant analysis. | Subjects and methods / mRNA sequencing |
@@ -3397,7 +3412,7 @@ American Journal of Human Genetics · 2025-12-23 · [DOI](https://doi.org/10.101
 
 | Tool | How used | Evidence location |
 | --- | --- | --- |
-| DESeq2 | Count-based differential expression analysis. | Subjects, material, and methods / RNA-sequencing analysis |
+| DESeq2 | Used DESeq2 median-of-ratios normalization before estimating unwanted technical variation with SVA and residualizing expression values. | Subjects, material, and methods / RNA-sequencing analysis |
 | GATK | Variant discovery and recalibration. | Subjects, material, and methods / Whole-exome sequencing |
 | GEMMA | Mixed-model association or variance components. | Subjects, material, and methods / Single-variant analysis |
 | Picard | Alignment QC, duplicates and sequence processing. | Subjects, material, and methods / Whole-exome sequencing |
@@ -3535,7 +3550,7 @@ American Journal of Human Genetics · 2025-12-16 · [DOI](https://doi.org/10.101
 | CIRIquant | Constructed pseudo-circular circRNA references and realigned RNA-seq through HISAT2 for CIRIquant circRNA expression and circular-to-linear ratios. | Material and methods / Identification and quantification of circRNAs in the 10 primary brain RNA-seq datasets |
 | coloc | Shared-signal colocalization analysis. | Material and methods / Integrative analysis of GWAS and eQTL data |
 | Cutadapt | Adapter trimming. | Material and methods / Identification and quantification of lncRNAs in the 10 primary brain RNA-seq datasets |
-| DESeq2 | Count-based differential expression analysis. | Material and methods / Differential gene expression analysis |
+| DESeq2 | Used DESeq2 for lncRNA, circRNA and protein-coding gene differences in schizophrenia/control organoids and neuronal/nonneuronal populations. lncRNA/protein-coding filters used TPM>0.1 and more than six reads in at least 20% of samples; BH-adjusted P<0.05 selected differences. | Material and methods / Differential gene expression analysis |
 | edgeR | Count-based differential expression analysis. | Material and methods / eQTL mapping analysis |
 | FastQC | Sequencing read quality assessment. | Material and methods / Identification and quantification of lncRNAs in the 10 primary brain RNA-seq datasets |
 | FUSION | Transcriptome-wide association and conditional follow-up. | Material and methods / Integrative analysis of GWAS and eQTL data |
@@ -3546,7 +3561,7 @@ American Journal of Human Genetics · 2025-12-16 · [DOI](https://doi.org/10.101
 | PLINK | Used for LD-based variant selection; genetic association analysis. | Results / Functional and heritability enrichment of lncRNA and circRNA-eQTLs |
 | SMR | Summary-data molecular association or Mendelian randomization. | Material and methods / Integrative analysis of GWAS and eQTL data |
 | STAR | Splice-aware bulk RNA read alignment and optional raw gene counts. | Material and methods / Identification and quantification of lncRNAs in the 10 primary brain RNA-seq datasets |
-| StringTie | Transcript assembly and quantification. | Material and methods / Identification and quantification of lncRNAs in the 10 primary brain RNA-seq datasets |
+| StringTie | Assembled STAR alignments with a supplied GENCODE guide using StringTie -G, then combined sample transcript models with StringTie --merge for lncRNA discovery. | Material and methods / Identification and quantification of lncRNAs in the 10 primary brain RNA-seq datasets |
 | tensorQTL | Molecular QTL mapping. | Material and methods / eQTL mapping analysis |
 | voom | Mean-variance weights for expression linear models. | Material and methods / eQTL mapping analysis |
 
@@ -3608,7 +3623,7 @@ American Journal of Human Genetics · 2025-12-02 · [DOI](https://doi.org/10.101
 | BWA | DNA read alignment. | Material and methods / Mapping caQTL |
 | Cell Ranger | Aligned multiome reads with CellRanger-ARC count v2 against GRCh38-2020-A with filtered GENCODE32 annotations, supplying BAMs, barcodes and reference annotations for later donor/cell-type analyses. | Material and methods / 10× multiome assays |
 | demuxlet | Genotype-based cell assignment and doublet identification. | Material and methods / Identification of singlet droplets and donor deconvolution |
-| DESeq2 | Count-based differential expression analysis. | Material and methods / Cell-type marker ATAC-seq peaks |
+| DESeq2 | Used EDASeq GC correction and DESeq2 size factors for cell-type ATAC marker comparisons, retaining mean counts>=10 and differential peaks at FDR<0.05. Additional caQTL/eQTL workflows used DESeq2 normalization/VST before inverse-normal transformation and FastQTL. | Material and methods / Cell-type marker ATAC-seq peaks |
 | FastQTL | Permutation-based molecular QTL mapping. | Material and methods / Mapping caQTL |
 | featureCounts | Counted ATAC pseudobulk BAM overlaps with merged cell-type peaks using featureCounts, before EDASeq GC correction and DESeq2 size-factor/marker analyses. | Material and methods / Cell-type marker ATAC-seq peaks |
 | GREAT | Regulatory-region functional enrichment. | Material and methods / Cell-type marker ATAC-seq peaks |
@@ -3620,7 +3635,7 @@ American Journal of Human Genetics · 2025-12-02 · [DOI](https://doi.org/10.101
 | Picard | Alignment QC, duplicates and sequence processing. | Material and methods / Identification of singlet droplets and donor deconvolution |
 | SAMtools | Alignment manipulation and QC. | Material and methods / Identification of singlet droplets and donor deconvolution |
 | Seurat | Single-cell QC, normalization, integration, clustering or annotation. | Material and methods / Nuclei filtering and cell-type annotation |
-| Signac | Single-cell chromatin accessibility analysis. | Material and methods / Nuclei filtering and cell-type annotation |
+| Signac | Used Signac to quantify accessibility over bulk ATAC-derived peaks in 138 individuals and to support nuclei QC, including fragments in peaks and TSS enrichment using EnsDb.Hsapiens.v86 annotations. | Material and methods / Nuclei filtering and cell-type annotation |
 | STAR | Splice-aware bulk RNA read alignment and optional raw gene counts. | Material and methods / Identification of singlet droplets and donor deconvolution |
 | UCSC liftOver | Converted cell-type ATAC-peak coordinates to GRCh37 before a seven-annotation LDSC analysis with GRCh37 1000G/HapMap references. | Material and methods / Heritability enrichment in cell-type peaks |
 | UMAP | Produced an exploratory low-dimensional representation of the measured profiles. | Material and methods / Nuclei filtering and cell-type annotation |
@@ -3667,7 +3682,7 @@ American Journal of Human Genetics · 2025-11-12 · [DOI](https://doi.org/10.101
 | MAJIQ | Splicing quantification and differential analysis. | Results / Analysis of GTEx tissues points to potential improvement for sQTL modeling |
 | QTLtools | Molecular QTL mapping and QC. | Results / Analysis of GTEx tissues points to potential improvement for sQTL modeling |
 | rMATS | Differential alternative splicing. | Results / MAJIQTL offers a robust and powerful statistical framework for sQTL discovery and analysis |
-| Salmon | Transcript abundance quantification. | Results / Analysis of GTEx tissues points to potential improvement for sQTL modeling |
+| Salmon | Used Salmon transcript TPM and normalized isoform abundance within each gene to form percentage phenotypes for sQTL comparisons. MAJIQTL combines these isoform representations with MAJIQ splice-junction/event quantifications. | Results / Analysis of GTEx tissues points to potential improvement for sQTL modeling |
 | SpliceAI | Defined splice-site-disrupting sQTL annotations using SpliceAI delta scores>0.2 at the relevant 5-prime or 3-prime junction site, then compared their enrichment among discovered sQTLs. | Results / MAJIQTL improves sQTL enrichment in functional annotation and identifies sQTLs that explain the GWAS signal for neurodegenerative disorders |
 
 XML SHA-256: `44f6ab09c1f38e8f26fa9d8f37c3c88fde3a61efa85113a67259d2bb9927fb71`. Exact evidence paragraph hashes and locators are in [papers.json](papers.json).
@@ -3758,7 +3773,7 @@ American Journal of Human Genetics · 2024-10-30 · [DOI](https://doi.org/10.101
 | BWA | DNA read alignment. | Material and methods / Hi-C contact maps |
 | ChIPseeker | Peak annotation relative to genes and genomic features. | Material and methods / Hi-C contact maps |
 | HISAT2 | Mapped RNA-seq to the stated no-alt-plus-hs38d1 hg38 reference with HISAT2 2.1.0 --rna-strandness RF --downstream-transcriptome-assembly. | Material and methods / Transcriptome analysis / Differential expression |
-| HTSeq | Read counting and sequence processing. | Material and methods / Transcriptome analysis / Differential expression |
+| HTSeq | Used the HTSeq count function, reported as version 0.13, to prepare a count table after HISAT2 alignment to hg38 and SAMtools sorting/conversion. Differential expression used limma with voom transformation. | Material and methods / Transcriptome analysis / Differential expression |
 | Integrative Genomics Viewer (IGV) | Reported IGV v2.12.3 among the tools used to visualize Hi-C contacts and annotated features,together with Juicebox,HiCExplorer and pyGenomeTracks. | Material and methods / General statistical analysis and plotting |
 | Juicer | Hi-C read processing and contact maps. | Material and methods / Hi-C contact maps |
 | limma | Linear modelling and empirical-Bayes differential analysis. | Material and methods / Transcriptome analysis / Differential expression |
@@ -3791,11 +3806,11 @@ American Journal of Human Genetics · 2024-10-16 · [DOI](https://doi.org/10.101
 | AlphaFold | Used predicted protein structures in the study's structural analysis. | Material and methods / Model construction and calculation |
 | CADD | Variant deleteriousness annotation. | Material and methods / Detection of MARK2 variants |
 | clusterProfiler | Used clusterProfiler GO analysis and GSEA for genes meeting the RNA-seq differential-expression criteria P below 0.05 and absolute log2 fold change above 1.5. | Material and methods / RNA sequencing |
-| DESeq2 | Count-based differential expression analysis. | Material and methods / RNA sequencing |
+| DESeq2 | Reported DESeq2 normalization and differential expression after Salmon transcriptome quantification, with P<0.05 and absolute log2FC>1.5 selection. The paragraph states R 4.2.2. | Material and methods / RNA sequencing |
 | GSEA | Ranked gene-set enrichment. | Material and methods / RNA sequencing |
 | PolyPhen-2 | Missense variant effect annotation. | Material and methods / Detection of MARK2 variants |
 | REVEL | Missense variant effect prediction. | Material and methods / Detection of MARK2 variants |
-| Salmon | Transcript abundance quantification. | Material and methods / RNA sequencing |
+| Salmon | Used Salmon 1.0.0 in the reported SAF Pattern workflow to map paired-end 150 bp RNA-seq reads against GRCh38 genome/transcriptome resources before DESeq2 differential expression. | Material and methods / RNA sequencing |
 | SIFT | Missense variant effect annotation. | Material and methods / Detection of MARK2 variants |
 
 XML SHA-256: `88e5e37c9ddcd71c7aaa2429af134c25a7260edde6981956f685345e73b87082`. Exact evidence paragraph hashes and locators are in [papers.json](papers.json).
@@ -3861,7 +3876,7 @@ American Journal of Human Genetics · 2024-10-08 · [DOI](https://doi.org/10.101
 | mashr | Population sQTL sharing uses QTLTools effect/SE, a random40% set for null correlation and prior fitting, and a strong minimum-P SNP/intron-cluster set for covariance learning and prediction. Sharing requires the same sign and magnitudes within factor0.5; significance is LFSR<0.05. European MAF exclusions leave some variants untested. | Subjects, material, and methods / Identifying shared cis-sQTLs and differences in effect sizes |
 | PEER | Latent confounder estimation. | Subjects, material, and methods / cis-sQTL mapping |
 | QTLtools | Molecular QTL mapping and QC. | Subjects, material, and methods / cis-sQTL mapping |
-| Salmon | Transcript abundance quantification. | Subjects, material, and methods / Differential alternative splicing analysis |
+| Salmon | Obtained transcript TPM with Salmon 1.9.0 and supplied these abundances to SUPPA2 to calculate sample-wise alternative-splicing PSI for events generated from GRCh38 Ensembl release 110 annotations. | Subjects, material, and methods / Differential alternative splicing analysis |
 | STAR | Splice-aware bulk RNA read alignment and optional raw gene counts. | Subjects, material, and methods / RNA-seq processing |
 | SUPPA2 | Alternative splicing quantification. | Subjects, material, and methods / Differential alternative splicing analysis |
 | Trimmomatic | Used Trimmomatic0.36 to remove leading/trailing RNA-seq bases below Phred20, then STAR with EndToEnd and sjdbOverhang100 against GRCh38 Ensembl110. | Subjects, material, and methods / RNA-seq processing |
@@ -4080,7 +4095,7 @@ American Journal of Human Genetics · 2024-09-02 · [DOI](https://doi.org/10.101
 | --- | --- | --- |
 | BEDTools | Genomic interval manipulation and overlap. | Material and methods / RNA-sequencing analysis |
 | deepTools | Listed deepTools among statistical-analysis software after Kallisto quantification and DESeq2; the paragraph does not identify a deepTools command or settings. | Material and methods / RNA-sequencing analysis |
-| DESeq2 | Count-based differential expression analysis. | Material and methods / RNA-sequencing analysis |
+| DESeq2 | Used raw gene counts from Kallisto as DESeq2 inputs for control-versus-CSS expression differences, reporting P<0.05 and FDR<5%. TPM values were used separately in violin plots. | Material and methods / RNA-sequencing analysis |
 | FastQC | Sequencing read quality assessment. | Material and methods / RNA-sequencing analysis |
 | FIMO | Quantified transcription-factor motif presence with FIMO on the background of ARID1A-bound regions lost in CSS cells, including the ZIC-family motif in lost enhancers. A separate HOMER de novo motif-enrichment analysis used shuffled input sequences and E < 0.001. | Material and methods / Motif analysis |
 | HOMER | Analysed lost ARID1A-bound regions, bound promoters, gained ARID1A regions and relocated ZIC2 regions with HOMER using BEDTools-derived FASTA and shuffled-input background; motif presence in lost regions was subsequently quantified with FIMO. | Material and methods / Motif analysis |
@@ -4088,7 +4103,7 @@ American Journal of Human Genetics · 2024-09-02 · [DOI](https://doi.org/10.101
 | kallisto | Quantified gene-mapping RNA-seq reads with kallisto after Trim Galore/FastQC; estimated count-scale matrices fed DESeq2 and TPMs were used in gene violin plots. | Material and methods / RNA-sequencing analysis |
 | Leiden | Grouped observations into communities using a neighborhood graph. | Material and methods / Human iPSC collection, reprogramming, and culture |
 | MACS | Called ATAC peaks with MACS2 at reported 5% FDR after hg19 BWA-MEM alignment, MAPQ/duplicate filtering and strand-specific Tn5 offsets; visualized peak tracks separately. | Material and methods / ChIP- and ATAC-seq analysis |
-| MEME | Motif discovery and scanning. | Material and methods / Motif analysis |
+| MEME | Attributed transcription-factor motif quantification in lost ARID1A-bound regions to FIMO from MEME Suite. The resulting motif occurrences informed the reported ZIC-family enhancer interpretation. | Material and methods / Motif analysis |
 | Trim Galore | Trimmed RNA-seq adapters with Trim Galore before Kallisto quantification. Separate ChIP-seq/ATAC-seq methods also report Trim Galore adapter trimming and FastQC assessment before alignment and assay-specific processing. | Material and methods / RNA-sequencing analysis |
 
 XML SHA-256: `2c2eadf4d1372a82a1c0a402917e9eb2434b4d634407b33cf24117b39a3abd6f`. Exact evidence paragraph hashes and locators are in [papers.json](papers.json).
@@ -4116,7 +4131,7 @@ American Journal of Human Genetics · 2024-08-26 · [DOI](https://doi.org/10.101
 | --- | --- | --- |
 | FIMO | Used FIMO from MEME Suite 5.5.4 with JASPAR and HOCOMOCO PWMs to scan supplied sequences and retain motif occurrences at P < 0.001. Compared predicted transcription-factor binding in wild-type and TMEM216 promoter-variant sequence contexts, alongside separate expression and reporter experiments. | Subjects and methods / Impact of TMEM216 c.−69 G>A and G>T variants on transcription factor binding |
 | Integrative Genomics Viewer (IGV) | Used IGV read-depth analysis of blood-derived ONT TMEM216 transcripts to assess allele imbalance in a carrier,reporting23,255 versus8,184 reads(74%/26%) at the linked coding SNV. Supporting Results describe inspection of apparent homozygotes and the cDNA-read display. | Results / Skewed allele balance in a c.−69G>T carrier |
-| MEME | Motif discovery and scanning. | Subjects and methods / Impact of TMEM216 c.−69 G>A and G>T variants on transcription factor binding |
+| MEME | Used FIMO from MEME Suite 5.5.4 to scan supplied sequences with JASPAR/HOCOMOCO PWMs and retain individual motif matches at P < 0.001 in the TMEM216 promoter-variant analysis. | Subjects and methods / Impact of TMEM216 c.−69 G>A and G>T variants on transcription factor binding |
 | minimap2 | Mapped 800-1,800-bp ONT TMEM216 transcript reads to GRCh38 with minimap2 2.22 after Porechop/NanoFilt filtering, then inspected alleles in IGV. | Subjects and methods / Sequencing of TMEM216 transcript from blood samples of individuals with TMEM216 c.−69G>T |
 | SAMtools | Alignment manipulation and QC. | Subjects and methods / Sequencing of TMEM216 transcript from blood samples of individuals with TMEM216 c.−69G>T |
 
@@ -4162,7 +4177,7 @@ American Journal of Human Genetics · 2025-09-04 · [DOI](https://doi.org/10.101
 | --- | --- | --- |
 | BCFtools | Variant manipulation, calling, normalization and filtering. | Material and methods / Variant consequence annotation |
 | CADD | Variant deleteriousness annotation. | Material and methods / Variant consequence annotation |
-| DESeq2 | Count-based differential expression analysis. | Material and methods / Wet lab methods / RNA-seq of human white adipose tissue cells |
+| DESeq2 | Used DESeq2 1.42.0 to normalize RSEM transcript counts in adipose cells. In CRISPR adipocyte RNA-seq, removed raw counts below 10 and compared with the Cas9 empty baseline. A separate pathway analysis used regularized-log-transformed counts for GSEA. | Material and methods / Wet lab methods / RNA-seq of human white adipose tissue cells |
 | FINEMAP | Bayesian fine-mapping of association loci. | Material and methods / Common-variant association testing in imputed data / Fine-mapping |
 | GATK | Variant discovery and recalibration. | Material and methods / ES data QC / ES data QC summary |
 | GSEA | Ranked gene-set enrichment. | Material and methods / Wet lab methods / Pathway enrichment in CRISPR RNA-seq data |
@@ -4235,11 +4250,11 @@ American Journal of Human Genetics · 2024-07-30 · [DOI](https://doi.org/10.101
 | MACS | Called MACS2 ATAC peaks after hg38 mapping, mitochondrial/exclusion-list removal and SAMtools markdup using no model, extension 150, shift -75, human genome shortcut and keep-all duplicates; intersected promoter windows and normalized promoter counts. | Subjects, material, and methods / Assay for transposase-accessible chromatin with high-throughput sequencing (ATAC-seq) |
 | MAJIQ | Splicing quantification and differential analysis. | Subjects, material, and methods / Data resources and analysis |
 | Rsubread | Used Rsubread featureCounts/juncCounts with custom GENCODE transcript annotations for junction-read extraction. | Subjects, material, and methods / Short-read RNA-seq |
-| Salmon | Transcript abundance quantification. | Subjects, material, and methods / Short-read RNA-seq |
+| Salmon | Used Salmon to generate read-count estimates from short-read RNA-seq in a workflow that also used HISAT2, StringTie and Ballgown. Performed differential expression with edgeR and gene-symbol assignment with biomaRt. | Subjects, material, and methods / Short-read RNA-seq |
 | SAMtools | Alignment manipulation and QC. | Subjects, material, and methods / Assay for transposase-accessible chromatin with high-throughput sequencing (ATAC-seq) |
 | seqinr | Used seqinr for biological sequence retrieval/analysis in a custom Rsubread junction-read extraction workflow. | Subjects, material, and methods / Short-read RNA-seq |
 | Seurat | Used for dataset integration. | Subjects, material, and methods / scRNA-seq |
-| StringTie | Transcript assembly and quantification. | Subjects, material, and methods / Short-read RNA-seq |
+| StringTie | Included StringTie in an unspecified HISAT2/StringTie/Ballgown short-read RNA-seq workflow on GRCh38/hg38 iNeuron data. | Subjects, material, and methods / Short-read RNA-seq |
 
 XML SHA-256: `12a39771e280e2ac90433d9881faae4b4b3d11bde9e35070997f405b2409a342`. Exact evidence paragraph hashes and locators are in [papers.json](papers.json).
 
@@ -4263,7 +4278,7 @@ American Journal of Human Genetics · 2024-07-29 · [DOI](https://doi.org/10.101
 | Tool | How used | Evidence location |
 | --- | --- | --- |
 | Cell Ranger | Reported Cell Ranger v6.1.1 in the snRNA-seq processing workflow against GRCh38-2020-A, and separately used CellRanger ARC v2.0.0 for multiome mapping to a reference labelled CRCh38-2020-A-2.0.0. | Material and methods / Bioinformatics analysis |
-| chromVAR | Chromatin motif accessibility deviation scores. | Material and methods / Bioinformatics analysis |
+| chromVAR | Computed per-cell motif activities with chromVAR, reported as1.5.0, within a multiome workflow that separately used Signac1.9.0 motif annotation/differential analysis and genomic visualization. | Material and methods / Bioinformatics analysis |
 | clusterProfiler | Performed GO enrichment after per-cluster single-nucleus differential-expression analysis and treated pathways with BH-adjusted P below 0.05 as enriched. | Material and methods / Bioinformatics analysis |
 | Harmony | Batch integration of cell embeddings. | Material and methods / Bioinformatics analysis |
 | inferCNV | Expression-derived copy-number inference. | Material and methods / Bioinformatics analysis |
@@ -4271,7 +4286,7 @@ American Journal of Human Genetics · 2024-07-29 · [DOI](https://doi.org/10.101
 | scds | Single-cell doublet detection. | Material and methods / Bioinformatics analysis |
 | SCENIC | Single-cell regulatory network inference. | Material and methods / Bioinformatics analysis |
 | Seurat | Used for cell clustering. | Material and methods / Bioinformatics analysis |
-| Signac | Single-cell chromatin accessibility analysis. | Material and methods / Bioinformatics analysis |
+| Signac | Used Signac 1.9 for multiome preprocessing/QC, AddMotifs annotation, reported motif overrepresentation through FindMarkers, and CoveragePlot visualization of accessibility with gene annotations. Used chromVAR 1.5 separately. | Material and methods / Bioinformatics analysis |
 | SoupX | Ambient RNA contamination correction. | Material and methods / Bioinformatics analysis |
 
 XML SHA-256: `f4c7cb7cfd0297a8b747f96b56b034512cdcfc8203327f8da0cf4653c2f3c347`. Exact evidence paragraph hashes and locators are in [papers.json](papers.json).
@@ -4285,11 +4300,11 @@ American Journal of Human Genetics · 2025-08-29 · [DOI](https://doi.org/10.101
 | AlphaFold | Used predicted protein structures in the study's structural analysis. | Subjects, material, and methods / Structure prediction |
 | AlphaMissense | Missense variant pathogenicity prediction. | Subjects, material, and methods / Genome sequencing and analysis |
 | CADD | Variant deleteriousness annotation. | Subjects, material, and methods / Genome sequencing and analysis |
-| DESeq2 | Count-based differential expression analysis. | Subjects, material, and methods / RNA and transcriptomic analysis |
+| DESeq2 | Reported Salmon TPM quantification followed by differential expression with DESeq2 through Galaxy. | Subjects, material, and methods / RNA and transcriptomic analysis |
 | FastQC | Sequencing read quality assessment. | Subjects, material, and methods / RNA and transcriptomic analysis |
 | PyMOL | Created native/variant TMEM184B structure visualizations and overlays using PyMOL v2.6. | Subjects, material, and methods / Structure prediction |
 | REVEL | Missense variant effect prediction. | Subjects, material, and methods / Genome sequencing and analysis |
-| Salmon | Transcript abundance quantification. | Subjects, material, and methods / RNA and transcriptomic analysis |
+| Salmon | After FastQC and Trimmomatic 0.39, mapped trimmed RNA-seq reads to a human v38 transcriptome index with Salmon 1.8.0 for transcriptomic analysis of TMEM184B. | Subjects, material, and methods / RNA and transcriptomic analysis |
 | Trimmomatic | Removed adapters with Trimmomatic0.39 after FastQC, then quantified against a human v38 transcriptome using Salmon1.8.0. The source describes TPM-form transcript counts analyzed with DESeq2 in Galaxy. | Subjects, material, and methods / RNA and transcriptomic analysis |
 
 XML SHA-256: `917b552cde86031ade53ca222a1a96b494ecbf0a2fee979cb0bb83bea2c43377`. Exact evidence paragraph hashes and locators are in [papers.json](papers.json).
@@ -4310,9 +4325,9 @@ American Journal of Human Genetics · 2024-07-24 · [DOI](https://doi.org/10.101
 | featureCounts | Generated exon-based raw gene counts with featureCounts 2.0.0 for 60,617 genes and 4,778 samples after a Nextflow/STAR 2.7.3.a two-pass RNA-seq workflow. | Subjects and methods / RNA-seq alignment |
 | GATK | Variant discovery and recalibration. | Subjects and methods / WGS |
 | g:Profiler | Functional gene-set enrichment. | Subjects and methods / Gene-level features |
-| Nextflow | Analysis pipeline orchestration. | Subjects and methods / RNA-seq alignment |
+| Nextflow | Used the linked rna_seq_interval_5591 Nextflow workflow for RNA-seq QC, STAR and Salmon alignment. Describes FastQC0.11.8, STAR2.7.3a with GRCh38/Ensembl97 and sjdbOverhang75, pooled-junction two-pass alignment and featureCounts2.0.0 exon read counts. | Subjects and methods / RNA-seq alignment |
 | QTLtools | Molecular QTL mapping and QC. | Subjects and methods / Quality control of RNA-seq samples |
-| Salmon | Transcript abundance quantification. | Subjects and methods / RNA-seq alignment |
+| Salmon | Built a GRCh38 cDNA Salmon 1.1.0 index and generated transcript-level RNA-seq quantifications, then obtained transcript/gene matrices with tximport 1.14.2 and annotation/cache packages. The captured linked rna_seq_interval_5591 Salmon module specifies paired ISR reads, sequence/GC/position bias corrections, --useVBOpt and 100 bootstraps. Examined ROPN1B transcript-specific misexpression in inversion carriers. | Subjects and methods / Salmon transcript quantification |
 | STAR | Splice-aware bulk RNA read alignment and optional raw gene counts. | Subjects and methods / RNA-seq alignment |
 | tximport | Used tximport1.14.2 with AnnotationHub,BiocFileCache and BiocGenerics to obtain transcript- and gene-level count matrices from Salmon1.1.0 GRCh38-cDNA quantifications. | Subjects and methods / Salmon transcript quantification |
 | Ensembl VEP | Variant consequence annotation. | Subjects and methods / Genetic variant enrichment calculations |
@@ -4329,7 +4344,7 @@ American Journal of Human Genetics · 2025-08-28 · [DOI](https://doi.org/10.101
 | Bowtie 2 | Short-read alignment. | Material and methods / Hi-C and data analysis |
 | Cell Ranger | Used Cell Ranger count to align droplet reads to human GRCh38 and quantify annotated-gene transcripts per cell; its outputs also supplied later velocity counting. | Material and methods / snRNA-seq and data analysis |
 | cooltools | Chromosome conformation analysis. | Material and methods / Hi-C and data analysis |
-| DESeq2 | Count-based differential expression analysis. | Material and methods / Bulk RNA-seq and RT-qPCR |
+| DESeq2 | Used DESeq2 Wald testing with adjusted P<0.1 and removed Y-chromosome genes downstream. A separate comparison collapsed technical replicates with collapseReplicates and described a one-sided Wald test for SMS downregulation versus control. | Material and methods / Bulk RNA-seq and RT-qPCR |
 | edgeR | Count-based differential expression analysis. | Material and methods / Hi-C and data analysis |
 | Enrichr | Gene-set enrichment. | Material and methods / snRNA-seq and data analysis |
 | fgsea | Ran fgsea on genes preranked by t statistics from batch-adjusted pseudobulk limma analyses. | Material and methods / snRNA-seq and data analysis |
@@ -4453,12 +4468,13 @@ American Journal of Human Genetics · 2024-07-10 · [DOI](https://doi.org/10.101
 | Jalview | Visually inspected multiple sequence alignment quality before manually removing misaligned segments. | Material and methods / Sequence extractions and phylogenetic analyses |
 | Locityper | Read recruitment and probabilistic WGS locus/haplotype genotyping. | Material and methods / Genotyping of MUC5AC haplogroups in 1KG populations using Locityper |
 | MAFFT | Aligned recombination-aware intronic/intergenic genomic sequences with 7.487 global pairwise alignment and a reported 100-iteration setting, followed by Jalview inspection, manual removal of misaligned segments and phylogenetic inference. | Material and methods / Sequence extractions and phylogenetic analyses |
-| MEME | Motif discovery and scanning. | Material and methods / NHP allele alignments and intronic VNTR analysis |
+| MEME | Used STREME from MEME Suite 5.5.4 to detect H3-associated k-mers in an intronic MUC5AC VNTR analysis. | Material and methods / NHP allele alignments and intronic VNTR analysis |
 | minimap2 | Aligned phased HPRC/HGSVC/NHP assemblies to CHM13 using minimap2 2.24 with CIGAR inclusion, secondary alignments suppressed, stated divergence <10% and minimum peak alignment score 25,000. | Material and methods / Sequence extractions and phylogenetic analyses |
 | PLINK | Used for LD-based variant selection. | Material and methods / LD block structure and selection detection analyses |
 | rustybam | Identified specific-locus coordinates in individual haplotype assemblies after genome alignment. | Material and methods / Sequence extractions and phylogenetic analyses |
 | SAMtools | Alignment manipulation and QC. | Material and methods / Genotyping of MUC5AC haplogroups in 1KG populations using Locityper |
 | seqtk | Extracted locus sequences from phased genome assemblies after minimap2 alignment to CHM13 and rustybam coordinate identification, for subsequent multiple alignment and phylogenetic analyses. | Material and methods / Sequence extractions and phylogenetic analyses |
+| STREME | Detected H3-associated k-mers in intronic MUC5AC VNTR sequences with STREME from MEME Suite 5.5.4. | Material and methods / NHP allele alignments and intronic VNTR analysis |
 | Strobealign | Short-read DNA mapping. | Material and methods / Genotyping of MUC5AC haplogroups in 1KG populations using Locityper |
 | SuSiE | Bayesian fine-mapping and credible sets. | Material and methods / Long-read sequence assembly and QC |
 | Verkko | Genome assembly. | Material and methods / Long-read sequence assembly and QC |
@@ -4639,7 +4655,7 @@ Nature Genetics · 2026-07-21 · [DOI](https://doi.org/10.1038/s41588-026-02682-
 | BEDTools | Genomic interval manipulation and overlap. | Methods / Centromere and telomere identification |
 | clusterProfiler | Performed GO enrichment following the RNA-seq/eQTL/TWAS analysis and differential-gene selection with adjusted P below 0.05 and absolute log2 fold change at least one. | Methods / RNA-seq, eQTL and TWAS analysis |
 | coloc | Shared-signal colocalization analysis. | Methods / RNA-seq, eQTL and TWAS analysis |
-| DESeq2 | Count-based differential expression analysis. | Methods / RNA-seq, eQTL and TWAS analysis |
+| DESeq2 | Used DESeq2 R package 1.30.1 for RNA-seq differential expression, selecting adjusted P<0.05 and absolute log2FC>=1. FPKM/TPM quantifications were described separately in the broader expression/QTL workflow. | Methods / RNA-seq, eQTL and TWAS analysis |
 | DIAMOND | Protein sequence alignment. | Methods / Repeat and protein-coding gene annotations |
 | fastp | Applied default fastp 0.25.0 quality assessment/preprocessing to resequencing reads before BWA-MEM alignment, Picard duplicate removal and GATK variant calling. | Methods / SNP and InDel calling of 422 accessions |
 | GATK | Called SNPs and small indels with HaplotypeCaller, then used separate SNP QD/FS/MQ/MQRankSum/ReadPosRankSum and indel QD/FS/ReadPosRankSum thresholds. Non-biallelic variants and variants below reported depth 5 were excluded afterward. | Methods / SNP and InDel calling of 422 accessions |
@@ -4659,7 +4675,7 @@ Nature Genetics · 2026-07-21 · [DOI](https://doi.org/10.1038/s41588-026-02682-
 | RepeatMasker | Annotated genome repeats using RepeatMasker4.1.2-p1 with homology evidence from RepBase20180823 after RepeatModeler2.0.3 library construction; downstream gene annotation filtered transcripts overlapping repeats by more than20%. | Methods / Repeat and protein-coding gene annotations |
 | Sniffles | Long-read structural variant discovery. | Methods / SV-based graph pangenome construction and SV genotyping |
 | STAR | Splice-aware bulk RNA read alignment and optional raw gene counts. | Methods / RNA-seq, eQTL and TWAS analysis |
-| StringTie | Transcript assembly and quantification. | Methods / Repeat and protein-coding gene annotations |
+| StringTie | Assembled strand-specific RNA-seq alignments into transcripts with StringTie2.2.1 as evidence for protein-coding gene annotation. | Methods / Repeat and protein-coding gene annotations |
 
 XML SHA-256: `6d73b939291dc5f2f13f1da8a89a7835c4195e4b38553c6c08410107d61400e5`. Exact evidence paragraph hashes and locators are in [papers.json](papers.json).
 
@@ -4669,7 +4685,7 @@ Nature Genetics · 2025-10-17 · [DOI](https://doi.org/10.1038/s41588-025-02346-
 
 | Tool | How used | Evidence location |
 | --- | --- | --- |
-| DESeq2 | Count-based differential expression analysis. | Methods / Expression analysis of pangenome-derived alleles / Expression correction |
+| DESeq2 | Described correction of raw TPM values across tissues with the default DESeq2 function before pangenome-derived allele expression comparisons. | Methods / Expression analysis of pangenome-derived alleles / Expression correction |
 | Locityper | Read recruitment and probabilistic WGS locus/haplotype genotyping. | Methods / Benchmarking of genotyping / Comparison of genotyping results to pangenome assemblies |
 | PEER | Latent confounder estimation. | Methods / Expression analysis of pangenome-derived alleles / Expression correction |
 | PLINK 2 | Computed genetic PCs for GEUVADIS samples using PLINK version 2 with default settings on chromosome-1 genotypes, then used those PCs in expression correction. | Methods / Expression analysis of pangenome-derived alleles / Expression correction |

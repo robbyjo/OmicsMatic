@@ -1,0 +1,19 @@
+# WARNINGS / REQUIRED ACTIONS
+
+SKIP3 — A fresh LinkPeaks fit requires exact R4.6.1, Signac1.17.1, Matrix1.7.5, SeuratObject5.4.0, GenomicRanges1.64.0, GenomeInfoDb1.48.0 and jsonlite2.0.0, with working native dependencies and optional wrswoR absent for this base-sample.int profile. Provide/install a suitable separate private runtime only where permitted; otherwise retain the skip and skip dependent analyses. No analysis performs installation. Java-only captured verification remains available.
+
+FAIL2 — Invalid inputs/identity changes, inadequate backgrounds, undefined numerical results, exceeded capacity, upstream errors, timeouts and failed verification admit no result. Read the request, WARNINGS.md, manifest, worker logs and effective settings. Preserve attempts, correct the named cause and rerun into NEW output. Do not silently align cells, change sparse storage, lower background sample sizes, switch profiles or relax thresholds. An empty successful table can be valid.
+
+NOMINAL_SOURCE_P — p=pnorm(-abs(z)) has no factor of two or multiplicity adjustment. It is not an FDR value or proof of regulatory causality. Review study-specific inference. Eligibility, score and p cutoffs are strict.
+
+HISTORICAL_SOURCE_ONLY — 1.14.0-source executes unchanged original functions using current pinned dependencies, not historical package binaries. Its query-only KDE weights and chromosome-prefix exclusion differ from 1.17.1-package. Keep the paper's source profile explicit. Native Spearman preserves stored-entry ranks, including signed values/explicit zeros; do not substitute dense Spearman.
+
+SOURCE_DISTANCE_MATRIX_DIFFERENCE — min_distance larger than distance yields the source's symmetric outer difference because negative subtraction entries coerce to true. Negative minimum distance is ignored and warned. Review both requested thresholds rather than interpreting them as ordinary interval subtraction.
+
+DECLARED_METADATA — GC, sequence length, optional count, genome build and annotation provenance are investigator declarations. The workflow does not inspect a reference genome. Review warnings about declared lengths/counts differing from widths/totals, exact paired cell order and canonical peak IDs. Gene activity is not measured RNA expression.
+
+CAPTURED_VERIFICATION_LIMIT — Java independently checks allowed background pools/draw identities, coefficients, sample-SD z scores, nominal tails, ranges, decisions, inputs/exchange/settings/source bindings and saved RNG replay equality. It does not independently replay R KDE weights or RNG. Hashes are not signatures or authenticity certification. Complete runtime DLL/host closure and biological/regulatory interpretation are not certified.
+
+RETAINED_ATTEMPTS — Original1 lacks the later audit fields; original2 has an invalid sparse-transpose audit scaffold, not new original-source failures; original3 failed a Python expected-count assertion despite valid calculations. Unicode1 failed safely under the old C-locale importer; Unicode2 passed the corrected UTF-8 importer. Recovery1 failed a Python encoding-name check after a timeout; recovery2 fixes it and directly rechecks observed PID/creation times. All attempts remain retained.
+
+DEVELOPMENT_SCOPE — This standalone guarded LinkPeaks CLI and native auditor are validated local candidates. Motifs/chromVAR, differential accessibility and full Signac paper workflows remain incomplete. Catalog counts remain 68 new integrations (71 including existing),259 missing; Signac receives no full-role credit. Cell Ranger remains excluded. No canonical executable replacement, root dispatch, release, push, deployment or whole-goal completion occurred. Read [the guide](../SIGNAC_LINKS_DEVELOPMENT.md) and [the examples](../../../examples/signac-links/README.md) for commands and input/action details.

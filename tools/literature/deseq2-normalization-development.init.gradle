@@ -1,0 +1,8 @@
+// Copyright (C) 2026 JLinAlg contributors; SPDX-License-Identifier: GPL-3.0-or-later
+// Isolate this development executable from the shared canonical build.
+gradle.projectsEvaluated {
+    rootProject.tasks.named('executableJar', org.gradle.api.tasks.bundling.Jar).configure {
+        destinationDirectory.set(rootProject.file('build/literature-review/deseq2-runtime/normalization-development'))
+        archiveFileName.set('omicsmatic-0.3.7-deseq2-normalization-development.jar')
+    }
+}

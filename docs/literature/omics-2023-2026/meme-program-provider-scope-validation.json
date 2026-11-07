@@ -1,0 +1,56 @@
+{
+  "status": "passed-exact-provider-derivations-and-fixed-full-source-cohort",
+  "baseline_sha256": "fb28f6bcb783f66651053c384f2ad75e0eec789db89033bfc026a09e8af8c08e",
+  "baseline_raw_sha256": "e6b2fd0bda0c461616f0fa3089eaf2c8935b44c41b1c684c0701f684bfcf06cb",
+  "derivations": [
+    {
+      "original": "tools/literature/nextflow_catalog.py",
+      "derived": "tools/literature/nextflow_current_catalog.py",
+      "original_sha256": "ae0aeadfaa1d94b9eae3bc2527fdcdcc6a7e287aa50608f410c88c3a6a4d9000",
+      "derived_sha256": "f34fa9a3c627a841d91bffb1bb068e79a9968b967bd19346138ef9fc90a36860",
+      "edits": [
+        [
+          "from catalog_source_integrity import verify_source\n",
+          "from catalog_source_integrity import verify_source\nfrom catalog_fixed_cohort import verify_fixed_cohort\n"
+        ],
+        [
+          "    assert len(papers) == 250 and sum(len(p['tools']) for p in papers) == 2430\n",
+          "    verify_fixed_cohort(root, data, papers)\n"
+        ]
+      ]
+    },
+    {
+      "original": "tools/literature/salmon_catalog.py",
+      "derived": "tools/literature/salmon_native_current_catalog.py",
+      "original_sha256": "185791e089e8a0f42cb29822d9e3cd73ba9878eea2a8e1e6dcb867d6ca043af6",
+      "derived_sha256": "aa7e8f4041fa26fdd47954239a739286e08f4e8e03204ad373fdf0b634b7e6c4",
+      "edits": [
+        [
+          "from catalog_source_integrity import verify_source\n",
+          "from catalog_source_integrity import verify_source\nfrom catalog_fixed_cohort import verify_fixed_cohort\n"
+        ],
+        [
+          "papers=json.loads((data/'papers.json').read_bytes());assert len(papers)==250 and sum(len(p['tools']) for p in papers)==2430\n",
+          "papers=json.loads((data/'papers.json').read_bytes());verify_fixed_cohort(root,data,papers)\n"
+        ]
+      ]
+    },
+    {
+      "original": "tools/literature/salmon_workflow_catalog.py",
+      "derived": "tools/literature/salmon_current_catalog.py",
+      "original_sha256": "7705d4db1592a2e5061b62bd846e73fa9dbe7fe0c3fcdf7856781c732cefe41b",
+      "derived_sha256": "9114564fe8e4f4f0d816150f42bd65608e96501f8b3788efef90cd3c48156016",
+      "edits": [
+        [
+          "from salmon_catalog import salmon_metadata as legacy_metadata\n",
+          "from salmon_native_current_catalog import salmon_metadata as legacy_metadata\n"
+        ]
+      ]
+    }
+  ],
+  "helper_sha256": "0669020e4761629d4f41444c608174fb48438e61fd96e721c50389514b34d4f3",
+  "deriver_sha256": "9dc694f2bd33c7d19edd11f4c690cfb4589149c34218826cf7dc367fd79a65fc",
+  "scientific_source_or_frozen_archive_changed": false,
+  "original_provider_files_changed": false,
+  "scientific_source_compatibility_waiver_added": false
+}

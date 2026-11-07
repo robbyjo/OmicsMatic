@@ -2,13 +2,15 @@
 """Use an immutable verified scientific checkpoint across catalog-count updates.
 
 The inherited summary.json pin is explicitly historical metadata, as already
-recorded in catalog_at_validation. Every other source/artifact dependency stays
-exact. No changed scientific path receives metadata compatibility treatment.
+recorded in catalog_at_validation. Only the shared CLI dispatcher can use a
+reviewed exact source inverse. Numerical/analysis/runtime sources and scientific
+artifacts remain byte-exact; no scientific path receives compatibility treatment.
 """
 import json,zipfile,sys
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parent))
 from mashr_original_runtime import pin
+from catalog_source_integrity import verify_source
 ROOT=Path(__file__).resolve().parents[2]
 PROOF='docs/literature/mashr-proxy-command/VALIDATION.json'
 EXPECTED=dict(bytes=700751,sha256='aea8121d81fa99ac1015d953569b547422a06e3de670f0a6a5689b009cda5b5b')
@@ -16,6 +18,9 @@ CONTEXT='docs/literature/omics-2023-2026/summary.json'
 
 
 def exact(path,expected):
+    if path==ROOT/'src/main/java/org/jlinalg/cli/JLinAlgCli.java':
+        verify_source(ROOT,ROOT/'docs/literature/omics-2023-2026','src/main/java/org/jlinalg/cli/JLinAlgCli.java',expected['sha256'])
+        return
     assert path.stat().st_size==expected['bytes'] and pin(path)==expected,str(path)
 
 

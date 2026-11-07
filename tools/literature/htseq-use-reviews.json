@@ -1,0 +1,126 @@
+[
+  {
+    "paper_id": "P005",
+    "review": {
+      "pmcid": "PMC12823418",
+      "doi": "10.1038/s41586-025-09887-y",
+      "tool_id": "htseq",
+      "evidence_paragraph_sha256": "0cb6d76dcc92e6c109db0d80dcd45823d6975eda8372bd8f33bf7b6c97db04b8",
+      "use_summary": "Used HT-seq 0.6.0 to determine RNA-seq read counts after STAR alignment to mouse mm10. Subsequent gene filtering and differential expression used separate expression criteria and edgeR.",
+      "implementation_scope_note": "HT-seq is the explicitly reported spelling of HTSeq in this Methods paragraph. The exact counting flags, annotation and strand/counting-unit choices are unstated. The native interval core is not the old counting command. FPKM filters, edgeR tests, correlations, clustering and Enrichr remain separate.",
+      "version_reported_near_name": "0.6.0",
+      "usage_context": "analysis-method-description",
+      "supporting_evidence": []
+    }
+  },
+  {
+    "paper_id": "P020",
+    "review": {
+      "pmcid": "PMC12823405",
+      "doi": "10.1038/s41586-025-09869-0",
+      "tool_id": "htseq",
+      "evidence_paragraph_sha256": "1c7938d0d0b5f112763d04ec607b889c54236029a010d01a90bce32ea7b1ae2d",
+      "use_summary": "Used HTSeq count 0.5.3 to calculate gene-level read counts after HISAT2 alignment to human hg38/GRCh38. DESeq2 and downstream gene-set analyses were separate.",
+      "implementation_scope_note": "Paired-end sequencing and a stranded library do not establish the effective HTSeq strand flag or read-versus-fragment counting unit. The complete annotation/count command is unstated. Preserve the reported 0.5.3 edition; the current native interval core does not certify this historical counting environment.",
+      "version_reported_near_name": "0.5.3",
+      "usage_context": "analysis-method-description",
+      "supporting_evidence": []
+    }
+  },
+  {
+    "paper_id": "P044",
+    "review": {
+      "pmcid": "PMC11711094",
+      "doi": "10.1038/s41586-024-08307-x",
+      "tool_id": "htseq",
+      "evidence_paragraph_sha256": "192dc6bbeeea92eb75a1e8d177ccc641925a89f1599efbc9178d67806466cc38",
+      "use_summary": "Used HTSeq-count 0.13.5 with GENCODE mouse vM25 annotation to assign HISAT2-aligned reads to genes. Converted the resulting counts to FPKM and log(FPKM+1) for sample-similarity analysis.",
+      "implementation_scope_note": "Retain the supplied mm10/GENCODE vM25 identity and declare the effective counting flags rather than infer defaults. FPKM and log transformation are downstream operations, not raw-count outputs of the interval core. Historical whole-package equivalence and the complete paper pipeline are unverified.",
+      "version_reported_near_name": "0.13.5",
+      "usage_context": "analysis-method-description",
+      "supporting_evidence": []
+    }
+  },
+  {
+    "paper_id": "P099",
+    "review": {
+      "pmcid": "PMC10703679",
+      "doi": "10.1038/s41588-023-01572-y",
+      "tool_id": "htseq",
+      "evidence_paragraph_sha256": "a6283b7cfb58a890415789418c2a875d69dedfa8b6ee1463288951ab75ef2fb3",
+      "use_summary": "Used custom Python scripts with the HTSeq package to build peak-by-cell accessibility matrices. A peak was accessible in a cell when at least one read overlapped it. The paper describes both a merged peak-set benchmark and cell-type peak sets extended from summits.",
+      "implementation_scope_note": "This is custom binary read-presence counting, not evidence that the standard htseq-count gene command was used. The HTSeq edition, effective barcode/read filters and complete ATAC script are unstated. Inspected EasySci repository references identify RNA gene/exon processing; they do not establish the exact ATAC script. Peak calling, score-per-million filtering and interval merging remain separate.",
+      "version_reported_near_name": null,
+      "usage_context": "analysis-method-description",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 45,
+          "section": "Methods / Differential accessible peak analysis",
+          "paragraph_sha256": "f6031bf90bb192da0f0ece685e181b55502b4e22eee8b918f9a525ada643b8f3"
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "P113",
+    "review": {
+      "pmcid": "PMC12695661",
+      "doi": "10.1038/s41588-025-02404-x",
+      "tool_id": "htseq",
+      "evidence_paragraph_sha256": "3d32c0d1bd4e0f62b0379527f1255a335449bfde0f40d42ebc38f2788c4303d6",
+      "use_summary": "Used HTSeq 0.11.1 to count exon-mapped RNA-seq reads by gene. A separate EU-seq workflow used HTSeq to count reads in defined gene-body regions with time-dependent extents of 30, 90 and 240 kb from the TSS.",
+      "implementation_scope_note": "The RNA-seq step reports 0.11.1; the EU-seq step does not separately state an edition. TSS orientation/window construction, alignment/MAPQ/rRNA-tRNA filtering, TPM and DESeq2/custom fold-change normalization are separate. The native interval core requires already-derived blocks and regions and does not infer these paper-specific preparations.",
+      "version_reported_near_name": "0.11.1",
+      "usage_context": "analysis-method-description",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 78,
+          "section": "Methods / Processing of EU-seq data",
+          "paragraph_sha256": "8db076b3ef572ebe46f107de763eaf6b76dcb7191436828ada78765971e47864"
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "P121",
+    "review": {
+      "pmcid": "PMC10703691",
+      "doi": "10.1038/s41588-023-01565-x",
+      "tool_id": "htseq",
+      "evidence_paragraph_sha256": "724d6b3594d203149ed8a8f2ccc2db3e87ec7faf7d3b6070e1e1ebe37c89b7ba",
+      "use_summary": "Used HTSeq 0.13.5 to count reads intersecting ChIP-seq intervals after requiring properly paired reads with MAPQ greater than 20.",
+      "implementation_scope_note": "Preserve the strict MAPQ>20 filter; a minimum-MAPQ option that retains 20 is not the same rule. A proper-pair flag alone does not establish whether reads or fragments were the counting unit. The effective HTSeq API/command and multi-overlap policy are unstated. Peak selection, depth normalization, z scores, clustering and enrichment remain separate.",
+      "version_reported_near_name": "0.13.5",
+      "usage_context": "analysis-method-description",
+      "supporting_evidence": []
+    }
+  },
+  {
+    "paper_id": "P148",
+    "review": {
+      "pmcid": "PMC13553305",
+      "doi": "10.1038/s41588-026-02692-x",
+      "tool_id": "htseq",
+      "evidence_paragraph_sha256": "57f3c020db0ccd38bcb2d728b80eea95314e7f352860a25c4ae4bf4bc05dd4de",
+      "use_summary": "Used HTSeq to quantify gene-level read counts against a UCSC human transcriptome reference after STAR alignment to GRCh37/hg19. Described strand-aware FPKM calculation and Wilcoxon differential testing separately.",
+      "implementation_scope_note": "The HTSeq edition, precise UCSC annotation and effective counting flags are unstated. Preserve genome/annotation identities and declare strand/counting units explicitly. FPKM normalization and Wilcoxon inference are downstream operations; the native interval core does not perform them.",
+      "version_reported_near_name": null,
+      "usage_context": "analysis-method-description",
+      "supporting_evidence": []
+    }
+  },
+  {
+    "paper_id": "P195",
+    "review": {
+      "pmcid": "PMC11639096",
+      "doi": "10.1016/j.ajhg.2024.10.003",
+      "tool_id": "htseq",
+      "evidence_paragraph_sha256": "8ddda8ff0a0ba20f4446cb7e64b248b42a9603c4399783fc07b9db826593b327",
+      "use_summary": "Used the HTSeq count function, reported as version 0.13, to prepare a count table after HISAT2 alignment to hg38 and SAMtools sorting/conversion. Differential expression used limma with voom transformation.",
+      "implementation_scope_note": "Version 0.13 is a major/minor statement, not evidence of the 0.13.5 patch release. HISAT2 RF strandness does not establish the HTSeq strand argument. Effective annotation, pairing and count flags remain explicit unknowns; limma-voom and BEDTools overlaps are separate. Do not substitute DESeq2 or silently select a historical patch version.",
+      "version_reported_near_name": "0.13",
+      "usage_context": "analysis-method-description",
+      "supporting_evidence": []
+    }
+  }
+]

@@ -1,0 +1,31 @@
+# Copyright (C) 2026 JLinAlg contributors; SPDX-License-Identifier: GPL-3.0-or-later
+# Isolated original motif-package setup; no user analysis or shared-library update.
+args<-commandArgs(trailingOnly=TRUE)
+if(length(args)!=5L||!args[[5]]%in%c('allow','forbid'))stop('Require NEW_LIBRARY NEW_REPORT READ_ONLY_SIGNAC_LIBRARY READ_ONLY_BASE_LIBRARY allow|forbid')
+lib<-normalizePath(args[[1]],winslash='/',mustWork=FALSE);report<-normalizePath(args[[2]],winslash='/',mustWork=FALSE)
+if(dir.exists(lib)||dir.exists(report))stop('Preserve attempts; choose NEW library/report')
+dir.create(report);.libPaths(c(normalizePath(args[[3]],winslash='/'),normalizePath(args[[4]],winslash='/'),.Library),include.site=FALSE)
+state<-'SKIP3_MOTIF_RUNTIME_UNAVAILABLE';detail<-'';warnings<-character()
+action<-'Skip dependent motif scanning/chromVAR analysis until exact packages and working native dependencies are available. Read retained installation log and warnings. Where permitted provide motifmatchr1.34.0/chromVAR1.34.1 in a NEW private library with the pinned Signac/base libraries. Do not mutate shared libraries or silently substitute paper versions. Setup alone admits no user analysis.'
+sink(file.path(report,'installation.log'),split=TRUE)
+tryCatch(withCallingHandlers({
+ if(args[[5]]!='allow')stop('Download/install not permitted')
+ if(!identical(paste(R.version$major,R.version$minor,sep='.'),'4.6.1'))stop('Exact R4.6.1 required')
+ dir.create(lib);.libPaths(c(lib,.libPaths()),include.site=FALSE)
+ options(repos=c(BioCsoft='https://bioconductor.org/packages/3.23/bioc',BioCann='https://bioconductor.org/packages/3.23/data/annotation',CRAN='https://cloud.r-project.org'),timeout=300)
+ type<-if(.Platform$OS.type=='windows')'binary' else 'source';available<-available.packages(type=type)
+ write.table(available,file.path(report,'available-packages.tsv'),sep='\t',quote=TRUE,row.names=TRUE)
+ expected<-c(motifmatchr='1.34.0',chromVAR='1.34.1')
+ for(package in names(expected))if(!package%in%rownames(available)||available[package,'Version']!=expected[[package]])stop(paste('Exact package unavailable; no substitution:',package,expected[[package]]))
+ downloads<-file.path(report,'downloads');dir.create(downloads)
+ install.packages(names(expected),lib=lib,dependencies=NA,type=type,destdir=downloads)
+ for(package in names(expected))if(!requireNamespace(package,quietly=TRUE)||as.character(packageVersion(package))!=expected[[package]])stop(paste('Exact package failed to load:',package,expected[[package]]))
+ pinned<-c(Signac='1.17.1',Matrix='1.7.5',SeuratObject='5.4.0',GenomicRanges='1.64.0',GenomeInfoDb='1.48.0',jsonlite='2.0.0')
+ for(package in names(pinned))if(!requireNamespace(package,quietly=TRUE)||as.character(packageVersion(package))!=pinned[[package]])stop(paste('Pinned parent package unavailable/shadowed:',package,pinned[[package]]))
+ state<-'INSTALLED_ORIGINAL_MOTIF_REFERENCE_ONLY_NOT_ANALYSIS_ADMISSION'
+},warning=function(w){warnings<<-c(warnings,conditionMessage(w))}),error=function(e){detail<<-conditionMessage(e)})
+write.table(installed.packages(lib.loc=.libPaths())[,c('Package','Version','LibPath','Built'),drop=FALSE],file.path(report,'installed-packages.tsv'),sep='\t',quote=TRUE,row.names=FALSE)
+writeLines(capture.output(sessionInfo()),file.path(report,'session-info.txt'))
+writeLines(c(if(startsWith(state,'SKIP3'))'# SKIP3 — DEPENDENT MOTIF ANALYSIS SKIPPED' else '# Reference runtime installed; no user analysis admitted','',detail,'',paste('Required action:',action),'',unique(warnings)),file.path(report,'WARNINGS.md'),useBytes=TRUE)
+jsonlite::write_json(list(status=state,detail=detail,r_version=R.version.string,private_library=lib,installation_authorized=args[[5]]=='allow',warnings=unname(warnings),user_analysis_admitted=FALSE,required_action=action),file.path(report,'RESULT.json'),pretty=TRUE,auto_unbox=TRUE,null='null')
+cat('STATUS:',state,'\nDETAIL:',detail,'\n');sink();quit(status=if(startsWith(state,'SKIP3'))3L else 0L)

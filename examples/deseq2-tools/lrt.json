@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "mode": "ANALYZE",
+  "profile": "DESeq2-1.52.0-R4.6.1",
+  "counts": "../deseq2-inference/lrt-counts.tsv",
+  "samples": "../deseq2-inference/lrt-samples.tsv",
+  "out": "../../build/deseq2-tools-example-lrt",
+  "variables": [
+    {
+      "name": "batch",
+      "kind": "factor",
+      "levels": [
+        "b1",
+        "b2"
+      ]
+    },
+    {
+      "name": "condition",
+      "kind": "factor",
+      "levels": [
+        "\u5bf9\u7167",
+        "\u5904\u7406",
+        "\u7b2c\u4e09"
+      ]
+    }
+  ],
+  "design": {
+    "intercept": true,
+    "terms": [
+      [
+        "batch"
+      ],
+      [
+        "condition"
+      ]
+    ]
+  },
+  "fit": {
+    "test": "LRT",
+    "fit_type": "mean",
+    "size_factor_type": "ratio",
+    "min_replicates_for_replace": "Inf"
+  },
+  "results": [
+    {
+      "id": "third",
+      "selector": {
+        "kind": "factor",
+        "factor": "condition",
+        "numerator": "\u7b2c\u4e09",
+        "denominator": "\u5bf9\u7167"
+      }
+    },
+    {
+      "id": "treated",
+      "selector": {
+        "kind": "factor",
+        "factor": "condition",
+        "numerator": "\u5904\u7406",
+        "denominator": "\u5bf9\u7167"
+      }
+    }
+  ],
+  "transforms": [],
+  "seed": 9221,
+  "save_fitted_object": true,
+  "reduced_design": {
+    "intercept": true,
+    "terms": [
+      [
+        "batch"
+      ]
+    ]
+  },
+  "rscript": "C:/Program Files/R/R-4.6.1/bin/Rscript.exe",
+  "r_libraries": [
+    "../../build/deseq2-user-runtime/R-lib"
+  ],
+  "maximum_output_bytes": 100000000,
+  "timeout_seconds": 180
+}

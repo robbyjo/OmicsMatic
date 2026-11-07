@@ -1,0 +1,334 @@
+{
+  "schema_version": 1,
+  "profile": "Signac-1.9-1.14-1.17-Linux-split-source",
+  "cases": {
+    "basic": {
+      "status": "original-completed",
+      "error": {},
+      "inputs": [
+        {
+          "text": "# original header\nchr1\t10\t40\ta\t1\nchr1\t20\t50\tb\t100\nchr1\t20\t50\tb\t100\nchr1\t30\t80\tx\t1\n",
+          "map": [
+            {
+              "cell": "b",
+              "barcode": "b"
+            },
+            {
+              "cell": "a",
+              "barcode": "a"
+            },
+            {
+              "cell": "unobserved",
+              "barcode": "unobserved"
+            }
+          ]
+        }
+      ],
+      "cells": [
+        {
+          "cell": "b",
+          "group": "B"
+        },
+        {
+          "cell": "a",
+          "group": "A"
+        },
+        {
+          "cell": "unobserved",
+          "group": "C"
+        }
+      ],
+      "source_names": [
+        "B",
+        "A",
+        "C"
+      ],
+      "expected_hex": {
+        "B": "636872310932300935300962093130300a636872310932300935300962093130300a",
+        "A": "63687231093130093430096109310a",
+        "C": ""
+      },
+      "warnings": [],
+      "original_Windows_Rcpp_hex": {
+        "B": "636872310932300935300962093130300d0a636872310932300935300962093130300d0a",
+        "A": "63687231093130093430096109310d0a",
+        "C": ""
+      }
+    },
+    "mapped": {
+      "status": "original-completed",
+      "error": {},
+      "inputs": [
+        {
+          "text": "# original header\nchr1\t10\t40\ta\t1\nchr1\t20\t50\tb\t100\nchr1\t20\t50\tb\t100\nchr1\t30\t80\tx\t1\n",
+          "map": [
+            {
+              "cell": "objectB",
+              "barcode": "b"
+            },
+            {
+              "cell": "objectA",
+              "barcode": "a"
+            }
+          ]
+        }
+      ],
+      "cells": [
+        {
+          "cell": "objectB",
+          "group": "B"
+        },
+        {
+          "cell": "objectA",
+          "group": "A"
+        }
+      ],
+      "source_names": [
+        "B",
+        "A"
+      ],
+      "expected_hex": {
+        "B": "636872310932300935300962093130300a636872310932300935300962093130300a",
+        "A": "63687231093130093430096109310a"
+      },
+      "warnings": [],
+      "original_Windows_Rcpp_hex": {
+        "B": "636872310932300935300962093130300d0a636872310932300935300962093130300d0a",
+        "A": "63687231093130093430096109310d0a"
+      }
+    },
+    "multiple_sources": {
+      "status": "original-completed",
+      "error": {},
+      "inputs": [
+        {
+          "text": "# original header\nchr1\t10\t40\ta\t1\nchr1\t20\t50\tb\t100\nchr1\t20\t50\tb\t100\nchr1\t30\t80\tx\t1\n",
+          "map": [
+            {
+              "cell": "b",
+              "barcode": "b"
+            },
+            {
+              "cell": "a",
+              "barcode": "a"
+            }
+          ]
+        },
+        {
+          "text": "chr2\t5\t18\ta\t7\nchr2\t8\t20\tb\t0\n",
+          "map": [
+            {
+              "cell": "b",
+              "barcode": "b"
+            },
+            {
+              "cell": "a",
+              "barcode": "a"
+            }
+          ]
+        }
+      ],
+      "cells": [
+        {
+          "cell": "b",
+          "group": "B"
+        },
+        {
+          "cell": "a",
+          "group": "A"
+        }
+      ],
+      "source_names": [
+        "B",
+        "A"
+      ],
+      "expected_hex": {
+        "B": "636872310932300935300962093130300a636872310932300935300962093130300a636872320938093230096209300a",
+        "A": "63687231093130093430096109310a636872320935093138096109370a"
+      },
+      "warnings": [],
+      "original_Windows_Rcpp_hex": {
+        "B": "636872310932300935300962093130300d0a636872310932300935300962093130300d0a636872320938093230096209300d0a",
+        "A": "63687231093130093430096109310d0a636872320935093138096109370d0a"
+      }
+    },
+    "name_collision": {
+      "status": "original-completed",
+      "error": {},
+      "inputs": [
+        {
+          "text": "# original header\nchr1\t10\t40\ta\t1\nchr1\t20\t50\tb\t100\nchr1\t20\t50\tb\t100\nchr1\t30\t80\tx\t1\n",
+          "map": [
+            {
+              "cell": "a",
+              "barcode": "a"
+            },
+            {
+              "cell": "b",
+              "barcode": "b"
+            }
+          ]
+        }
+      ],
+      "cells": [
+        {
+          "cell": "a",
+          "group": "grp A"
+        },
+        {
+          "cell": "b",
+          "group": "grp/A"
+        }
+      ],
+      "source_names": [
+        "grp_A"
+      ],
+      "expected_hex": {
+        "grp_A": "63687231093130093430096109310a636872310932300935300962093130300a636872310932300935300962093130300a"
+      },
+      "warnings": [],
+      "original_Windows_Rcpp_hex": {
+        "grp_A": "63687231093130093430096109310d0a636872310932300935300962093130300d0a636872310932300935300962093130300d0a"
+      }
+    },
+    "six_columns": {
+      "status": "original-completed",
+      "error": {},
+      "inputs": [
+        {
+          "text": "chr1\t0\t20\ta\t3\t+\nchr1\t30\t70\tb\t9\t-\n",
+          "map": [
+            {
+              "cell": "a",
+              "barcode": "a"
+            },
+            {
+              "cell": "b",
+              "barcode": "b"
+            }
+          ]
+        }
+      ],
+      "cells": [
+        {
+          "cell": "a",
+          "group": "A"
+        },
+        {
+          "cell": "b",
+          "group": "B"
+        }
+      ],
+      "source_names": [
+        "A",
+        "B"
+      ],
+      "expected_hex": {
+        "A": "63687231093009323009610933092b0a",
+        "B": "6368723109333009373009620939092d0a"
+      },
+      "warnings": [],
+      "original_Windows_Rcpp_hex": {
+        "A": "63687231093009323009610933092b0d0a",
+        "B": "6368723109333009373009620939092d0d0a"
+      }
+    },
+    "crlf": {
+      "status": "original-completed",
+      "error": {},
+      "inputs": [
+        {
+          "text": "chr1\t0\t20\ta\t3\r\nchr1\t30\t70\tb\t9\r\n",
+          "map": [
+            {
+              "cell": "a",
+              "barcode": "a"
+            },
+            {
+              "cell": "b",
+              "barcode": "b"
+            }
+          ]
+        }
+      ],
+      "cells": [
+        {
+          "cell": "a",
+          "group": "A"
+        },
+        {
+          "cell": "b",
+          "group": "B"
+        }
+      ],
+      "source_names": [
+        "A",
+        "B"
+      ],
+      "expected_hex": {
+        "A": "636872310930093230096109330d0a",
+        "B": "63687231093330093730096209390d0a"
+      },
+      "warnings": [],
+      "original_Windows_Rcpp_hex": {
+        "A": "636872310930093230096109330d0d0a",
+        "B": "63687231093330093730096209390d0d0a"
+      }
+    },
+    "no_final_newline": {
+      "status": "original-completed",
+      "error": {},
+      "inputs": [
+        {
+          "text": "chr1\t0\t20\ta\t3",
+          "map": [
+            {
+              "cell": "a",
+              "barcode": "a"
+            },
+            {
+              "cell": "b",
+              "barcode": "b"
+            }
+          ]
+        },
+        {
+          "text": "chr2\t30\t70\ta\t9\n",
+          "map": [
+            {
+              "cell": "a",
+              "barcode": "a"
+            },
+            {
+              "cell": "b",
+              "barcode": "b"
+            }
+          ]
+        }
+      ],
+      "cells": [
+        {
+          "cell": "a",
+          "group": "A"
+        },
+        {
+          "cell": "b",
+          "group": "B"
+        }
+      ],
+      "source_names": [
+        "A",
+        "B"
+      ],
+      "expected_hex": {
+        "A": "6368723109300932300961093363687232093330093730096109390a",
+        "B": ""
+      },
+      "warnings": [],
+      "original_Windows_Rcpp_hex": {
+        "A": "6368723109300932300961093363687232093330093730096109390d0a",
+        "B": ""
+      }
+    }
+  }
+}

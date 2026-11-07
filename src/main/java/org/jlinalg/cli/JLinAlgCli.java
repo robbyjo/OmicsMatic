@@ -28,6 +28,26 @@ public final class JLinAlgCli {
             if (arguments.length > 0 && arguments[0].equals("study"))
                 return StudyCli.run(Arrays.copyOfRange(
                     arguments, 1, arguments.length), output, errorOutput);
+            if (arguments.length > 0 && arguments[0].equals("nextflow-tools"))
+                return NextflowToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+            if (arguments.length > 0 && arguments[0].equals("salmon-tools"))
+                return SalmonToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+            if (arguments.length > 0 && arguments[0].equals("tomtom-tools"))
+                return TomtomToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+            if (arguments.length > 0 && arguments[0].equals("bigwig-tools"))
+                return BigWigToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+            if (arguments.length > 0 && arguments[0].equals("stringtie-tools"))
+                return StringTieToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+            if (arguments.length > 0 && arguments[0].equals("chromvar-tools"))
+                return ChromVarToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+            if (arguments.length > 0 && arguments[0].equals("deseq2-tools"))
+                return Deseq2InferenceCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+            if (arguments.length > 0 && arguments[0].equals("deseq2-normalize"))
+                return Deseq2NormalizationCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+            if (arguments.length > 0 && arguments[0].equals("signac-tools"))
+                return SignacToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+            if (arguments.length > 0 && arguments[0].equals("htseq-tools"))
+                return HtseqToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
             ProjectConfiguration.Resolved config = ProjectConfiguration.resolve(arguments,
                 java.nio.file.Path.of("").toAbsolutePath(), java.nio.file.Path.of(System.getProperty("user.home")));
             arguments = config.arguments();
@@ -413,6 +433,16 @@ public final class JLinAlgCli {
               java -jar omicsmatic-<version>.jar shapeit-tools --help
               java -jar omicsmatic-<version>.jar pal2nal-tools --help
               java -jar omicsmatic-<version>.jar mashr-tools --help
+              java -jar omicsmatic-<version>.jar nextflow-tools --help
+              java -jar omicsmatic-<version>.jar salmon-tools --help
+              java -jar omicsmatic-<version>.jar tomtom-tools --help
+              java -jar omicsmatic-<version>.jar chromvar-tools --help
+              java -jar omicsmatic-<version>.jar deseq2-tools --help
+              java -jar omicsmatic-<version>.jar deseq2-normalize --help
+              java -jar omicsmatic-<version>.jar signac-tools --help
+              java -jar omicsmatic-<version>.jar htseq-tools --help
+              java -jar omicsmatic-<version>.jar bigwig-tools --help
+              java -jar omicsmatic-<version>.jar stringtie-tools --help
               java -jar omicsmatic-<version>.jar fastp-tools --help
               java -jar omicsmatic-<version>.jar mafft-tools --help
               java -jar omicsmatic-<version>.jar iqtree-tools --help

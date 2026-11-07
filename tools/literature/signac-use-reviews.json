@@ -1,0 +1,198 @@
+[
+  {
+    "paper_id": "P016",
+    "review": {
+      "pmcid": "PMC10765522",
+      "doi": "10.1038/s41586-023-06845-4",
+      "tool_id": "signac",
+      "evidence_paragraph_sha256": "708cf74cb6facc1a55dc55cc838274f6dc0a4c64aad1809ae80af3e2ae5c2b4f",
+      "use_summary": "Used Signac 1.6.0 with Seurat 4.1.0 for downstream analysis of joint single-nucleus accessibility and expression data after Cell Ranger ARC processing.",
+      "implementation_scope_note": "The named Methods paragraph gives a general downstream role and does not specify every Signac call. Seurat weighted nearest neighbors and joint visualization remain separate; Cell Ranger ARC remains user-excluded. Native arithmetic source profiles do not reproduce the whole historical package environment.",
+      "version_reported_near_name": "1.6.0",
+      "usage_context": "analysis-method-description",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 2,
+          "section": "GI accessibility changes with neuronal differentiation and genomic compartmentalization",
+          "paragraph_sha256": "5ac2ea2e273c71b3cba7a2715938da3bebd679d31944a1c77acfdf1684206377"
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "P039",
+    "review": {
+      "pmcid": "PMC10764288",
+      "doi": "10.1038/s41586-023-06837-4",
+      "tool_id": "signac",
+      "evidence_paragraph_sha256": "000819d560d6ab0e6790c9b49047b73692ecb63f4285f10c91922af4ed2576d3",
+      "use_summary": "Used Signac 1.9.0 to import ATAC data, call peaks with MACS2 2.2.7.1, and construct FeatureMatrix counts. RunTFIDF and RunSVD provided LSI; the analysis used dimensions 2–30. Created a motif object with human JASPAR2020, ran chromVAR, and computed GeneActivity.",
+      "implementation_scope_note": "Declare the actual motif/reference resources and MACS runtime explicitly. RNA median-library scaling and log transformation of gene scores, Seurat multimodal neighbors, and downstream interpretation are separate operations. Native GeneActivity returns a raw accessibility proxy, not measured RNA; current dependency profiles do not certify historical whole-package equivalence.",
+      "version_reported_near_name": "1.9.0",
+      "usage_context": "analysis-method-description",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 78,
+          "section": "Methods / Melanoma analysis / ATAC analysis",
+          "paragraph_sha256": "300658bbf9fc552b8aae21be450a5eaece8e67011bc26e8e1c55aafb6e01244c"
+        },
+        {
+          "paragraph_index": 79,
+          "section": "Methods / Melanoma analysis / ATAC analysis",
+          "paragraph_sha256": "13d3aa23ebb9ef35adccd0e10fb153fdbf0c8375895802afe6bf75333826b10f"
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "P051",
+    "review": {
+      "pmcid": "PMC12823425",
+      "doi": "10.1038/s41586-025-09807-0",
+      "tool_id": "signac",
+      "evidence_paragraph_sha256": "6c10916096f158d4540ac5916fa4ed04b84f807e4be74bac3f0ec7ff546950a0",
+      "use_summary": "Used Signac 1.14.0 with Seurat for multiome QC and ATAC annotations. Quantified a common peak set with FeatureMatrix, called group-specific peaks with MACS2 2.2.9.1, then applied RunTFIDF, FindTopFeatures with count cutoff 5, and RunSVD.",
+      "implementation_scope_note": "Supply the mm10/Ensembl79 annotations and explicit cell/group assignments. Standard-chromosome and blacklist filtering, Seurat merging, and author group prediction thresholds remain separate. Count cutoff 5 uses a strict greater-than rule; it is not a five-percent selection. Historical source functions on current dependencies are scoped controls, not complete old packages.",
+      "version_reported_near_name": "1.14.0",
+      "usage_context": "analysis-method-description",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 92,
+          "section": "Methods / Data processing / ATAC data annotation",
+          "paragraph_sha256": "32c2597899791cbc6d08809543b62e3953fd3cc375b0679b1b1da783fb65f2d4"
+        },
+        {
+          "paragraph_index": 96,
+          "section": "Methods / Data processing / Merging of the datasets and peak calling",
+          "paragraph_sha256": "ebdb5c39906e1c5e3147335ef7775afc63f55375fc1765631895053b1c38732b"
+        },
+        {
+          "paragraph_index": 97,
+          "section": "Methods / Data processing / Merging of the datasets and peak calling",
+          "paragraph_sha256": "098148f7167a40d06ae650cd5db3b7f1c7957cdc7535c184d052e7a377aef928"
+        },
+        {
+          "paragraph_index": 98,
+          "section": "Methods / Data processing / ATAC data processing",
+          "paragraph_sha256": "685c5f68b3f1c46d35fb2a963b8759b909a725afe688a18b50ce504ca60b4cf8"
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "P094",
+    "review": {
+      "pmcid": "PMC13649600",
+      "doi": "10.1038/s41588-026-02748-y",
+      "tool_id": "signac",
+      "evidence_paragraph_sha256": "4638e9ee03c4c2f2599e513d5bca666b9e7e2cb7adc62fffda6b87712d883c59",
+      "use_summary": "Used Signac 1.14.0 with Seurat 5.0 for preprocessing and normalization of joint snRNA/ATAC-seq count matrices produced by Cell Ranger ARC.",
+      "implementation_scope_note": "The paragraph does not assign every preprocessing step to a named Signac function. Preserve the general role and explicit edition rather than infer undocumented thresholds or calls. Seurat RNA processing and Cell Ranger ARC are separate; the latter remains user-excluded.",
+      "version_reported_near_name": "1.14.0",
+      "usage_context": "analysis-method-description",
+      "supporting_evidence": []
+    }
+  },
+  {
+    "paper_id": "P099",
+    "review": {
+      "pmcid": "PMC10703679",
+      "doi": "10.1038/s41588-023-01572-y",
+      "tool_id": "signac",
+      "evidence_paragraph_sha256": "704b6c3640938150264aea8147b295402fef91b1b7595bcb194e22fd745882df",
+      "use_summary": "Used Signac 1.7.0 RunTFIDF and RunSVD for peak-count LSI and used dimensions 2–30 for UMAP. The motif workflow used chromVAR 1.16.0 with cisBP-derived motifs and Signac processing.",
+      "implementation_scope_note": "Differential accessible peaks were tested with Monocle2, not Signac marker inference. Custom 0–10 motif rescaling, aggregation and Pearson correlations remain separate. Subcluster motif scanning reports motifmatchr 1.16.0; the available current scanner profile does not certify that older scanner edition. Sampling and UMAP settings stay explicit.",
+      "version_reported_near_name": "1.7.0",
+      "usage_context": "analysis-method-description",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 47,
+          "section": "Methods / Transcription factor motif analysis",
+          "paragraph_sha256": "d2d00325aa9cc58fb0fb3b156c3ea00e910003e600547258b0d20d7a38d4ce42"
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "P134",
+    "review": {
+      "pmcid": "PMC13553295",
+      "doi": "10.1038/s41588-026-02714-8",
+      "tool_id": "signac",
+      "evidence_paragraph_sha256": "3d83dad35fe3fd285bbdcc7da9e3ce6e314ead05c4ed9469b57eb97cdafd2707",
+      "use_summary": "Reported differential accessible peaks from logistic regression implemented in Signac in the Figure 5g analysis of lineage-associated states.",
+      "implementation_scope_note": "The retained evidence is an explicit analysis statement in a Results figure caption; it does not state a Signac edition or complete model/covariates. The public markers workflow exposes guarded current Seurat logistic inference with declared groups, layers and covariates. Bootstrap lineage analysis, VIPER, GSEA and enrichR in the same caption remain separate. No whole-paper or historical-model equivalence is inferred.",
+      "version_reported_near_name": null,
+      "usage_context": "analysis-method-description",
+      "supporting_evidence": []
+    }
+  },
+  {
+    "paper_id": "P153",
+    "review": {
+      "pmcid": "PMC13447104",
+      "doi": "10.1038/s41588-026-02695-8",
+      "tool_id": "signac",
+      "evidence_paragraph_sha256": "df6d97b5af50b47ba8254010e2607d0b7505e2209cb5aa4e7c5bca89012d9e50",
+      "use_summary": "Used Signac with Seurat for multiome QC. Used FeatureMatrix to quantify MACS2 2.2.9 peaks intersecting ABC candidate regions, then BinarizeCounts before a custom Kendall correlation analysis.",
+      "implementation_scope_note": "The Kendall tau-b estimator and Seurat RNA NormalizeData are separate from Signac feature quantification/binarization; do not substitute LinkPeaks or logistic regression for them. Candidate-region intersection, reference identity and dataset-specific QC thresholds require explicit prepared inputs. Signac edition is unstated.",
+      "version_reported_near_name": null,
+      "usage_context": "analysis-method-description",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 47,
+          "section": "Methods / Kendall correlation",
+          "paragraph_sha256": "379b629621d9b90156a3277bc874f7c3c70a4d115260c120b8289eb00cc8eb55"
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "P158",
+    "review": {
+      "pmcid": "PMC12597831",
+      "doi": "10.1038/s41588-025-02368-y",
+      "tool_id": "signac",
+      "evidence_paragraph_sha256": "fe4a48372e4d69c8e930c737612330e6dfb203b8e8bad97cb856660c40fa86b0",
+      "use_summary": "Used Signac with Seurat for scATAC-seq processing and QC after Cell Ranger ATAC. Derived a gene-activity matrix for downstream cell annotation with MapMyCells.",
+      "implementation_scope_note": "The source reports a nuclear signal threshold below 4; its exact metric is ambiguous and must not silently become NucleosomeSignal. Retain the reported gene/cell filter wording and obtain effective definitions before applying paper-exact filters. MapMyCells, targeted barcode processing, RNA integration and RNA marker tests are separate. Cell Ranger remains excluded; Signac edition is unstated.",
+      "version_reported_near_name": null,
+      "usage_context": "analysis-method-description",
+      "supporting_evidence": []
+    }
+  },
+  {
+    "paper_id": "P187",
+    "review": {
+      "pmcid": "PMC12805840",
+      "doi": "10.1016/j.ajhg.2025.11.009",
+      "tool_id": "signac",
+      "evidence_paragraph_sha256": "66ad752287436eeac0f813bac283eddaaef306ff716fb0ed3f164c90568d9212",
+      "use_summary": "Used Signac to quantify accessibility over bulk ATAC-derived peaks in 138 individuals and to support nuclei QC, including fragments in peaks and TSS enrichment using EnsDb.Hsapiens.v86 annotations.",
+      "implementation_scope_note": "The reported filters include more than 500 fragments in peaks, more than 15 percent fragments in peaks and TSS enrichment above 2. The exact fraction denominator and effective ratio procedure are not stated; do not infer them from read-support counts or automatically apply the filter. Supply the explicit annotation/reference and interval identities. Signac edition is unstated.",
+      "version_reported_near_name": null,
+      "usage_context": "analysis-method-description",
+      "supporting_evidence": []
+    }
+  },
+  {
+    "paper_id": "P225",
+    "review": {
+      "pmcid": "PMC11339625",
+      "doi": "10.1016/j.ajhg.2024.07.002",
+      "tool_id": "signac",
+      "evidence_paragraph_sha256": "ea6b96b238c9b348977788000db38a5572b4a14978855ca49cb5f4c8c029aead",
+      "use_summary": "Used Signac 1.9 for multiome preprocessing/QC, AddMotifs annotation, reported motif overrepresentation through FindMarkers, and CoveragePlot visualization of accessibility with gene annotations. Used chromVAR 1.5 separately.",
+      "implementation_scope_note": "Preserve the reported FindMarkers wording instead of relabeling it FindMotifs. Declare the actual tested representation and statistical model; motif enrichment on supplied populations is a distinct workflow. chromVAR 1.5 is not an admitted runtime profile. Harmony integration, SCENIC comparison and custom GSEA/hypergeometric analyses remain separate. Native coverage supports scoped plot data/SVG, with PNG pixel replay explicitly outside verification.",
+      "version_reported_near_name": "1.9",
+      "usage_context": "analysis-method-description",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 12,
+          "section": "Material and methods / Bioinformatics analysis",
+          "paragraph_sha256": "9a11e711e7c28f003cd32bc60d566542d424b5a81f4c650c0bd75cf8551c8259"
+        }
+      ]
+    }
+  }
+]

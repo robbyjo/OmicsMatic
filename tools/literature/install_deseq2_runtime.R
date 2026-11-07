@@ -1,0 +1,37 @@
+# Copyright (C) 2026 JLinAlg contributors; SPDX-License-Identifier: GPL-3.0-or-later
+# User-facing private setup. Never installs into or upgrades an existing library.
+p <- commandArgs(TRUE)
+if(length(p)!=3L||!p[[3]]%in%c("allow","forbid"))stop("Usage: install_deseq2_runtime.R NEW_LIBRARY NEW_REPORT allow|forbid")
+lib <- normalizePath(p[[1]],winslash="/",mustWork=FALSE);report <- normalizePath(p[[2]],winslash="/",mustWork=FALSE)
+if(dir.exists(report)||dir.exists(lib))stop("Preserve existing paths; choose NEW library and report directories")
+stopifnot(dir.create(report,recursive=TRUE))
+state <- "SKIP3_DESEQ2_RUNTIME_UNAVAILABLE";detail <- "";warnings_seen <- character()
+action <- "Read installation.log and package versions. Where permitted supply R4.6.1, DESeq2 1.52.0 and dependencies in a NEW private library. Update rscript/r_libraries in your request. If installation or execution is forbidden, skip the dependent analysis. Preserve this attempt; never overwrite an existing library or results directory."
+sink(file.path(report,"installation.log"),split=TRUE)
+tryCatch(withCallingHandlers({
+    if(p[[3]]!="allow")stop("Installation/download forbidden; dependent analysis skipped")
+    if(getRversion()!=package_version("4.6.1"))stop("This tested profile requires R4.6.1; no edition substituted")
+    stopifnot(dir.create(lib,recursive=TRUE));.libPaths(c(lib,.Library),include.site=FALSE)
+    options(repos=c(BioCsoft="https://bioconductor.posit.co/packages/3.23/bioc",CRAN="https://cloud.r-project.org"),timeout=180)
+    type <- if(.Platform$OS.type=="windows")"win.binary" else "source"
+    available <- available.packages(type=type)
+    if(!"DESeq2"%in%rownames(available)||available["DESeq2","Version"]!="1.52.0")stop("Exact DESeq2 1.52.0 unavailable from the selected release repositories; no edition substituted")
+    write.table(available,file.path(report,"repository-records.tsv"),sep="\t",quote=TRUE)
+    dir.create(file.path(report,"downloads"))
+    install.packages(c("DESeq2","jsonlite","apeglm","ashr","glmGamPoi"),lib=lib,type=type,dependencies=NA,destdir=file.path(report,"downloads"))
+    for(pkg in c("DESeq2","jsonlite","apeglm","ashr","glmGamPoi"))if(!requireNamespace(pkg,quietly=TRUE))stop(paste("Required package failed to load:",pkg))
+    stopifnot(identical(as.character(packageVersion("DESeq2")),"1.52.0"))
+    set.seed(82231L);dds <- DESeq2::makeExampleDESeqDataSet(n=100L,m=6L)
+    dds <- DESeq2::DESeq(dds,fitType="mean",quiet=TRUE,parallel=FALSE)
+    stopifnot(nrow(DESeq2::results(dds))==100L)
+    state <- "INSTALLED_DESEQ2_REFERENCE_RUNTIME_NOT_USER_ANALYSIS"
+},warning=function(w){warnings_seen <<- c(warnings_seen,conditionMessage(w))}),error=function(e){detail <<- conditionMessage(e)})
+ip <- installed.packages(lib.loc=if(dir.exists(lib))c(lib,.Library)else .Library)
+write.table(ip[,c("Package","Version","LibPath","Built"),drop=FALSE],file.path(report,"installed-packages.tsv"),sep="\t",quote=TRUE,row.names=FALSE)
+writeLines(capture.output(sessionInfo()),file.path(report,"session-info.txt"))
+archives <- list.files(file.path(report,"downloads"),full.names=TRUE)
+if(length(archives)>0)write.table(data.frame(file=basename(archives),md5=unname(tools::md5sum(archives))),file.path(report,"download-md5.tsv"),sep="\t",quote=FALSE,row.names=FALSE)
+writeLines(c(paste0("# ",state),"",detail,"",paste("Required action:",action),"","Retained installation warnings:",unique(warnings_seen),"","Setup includes a synthetic smoke fit; it does not analyze a user dataset."),file.path(report,"WARNINGS.md"))
+writeLines(c("status\tdetail",paste(state,gsub("[\t\r\n]"," ",detail),sep="\t")),file.path(report,"STATUS.tsv"))
+cat("STATUS:",state,"\nDETAIL:",detail,"\nREQUIRED ACTION:",action,"\n");sink()
+quit(status=if(state=="INSTALLED_DESEQ2_REFERENCE_RUNTIME_NOT_USER_ANALYSIS")0L else 3L)

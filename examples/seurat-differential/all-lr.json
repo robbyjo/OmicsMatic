@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "mode": "ALL",
+  "profile": "Seurat-5.6.0-R4.6.1-base",
+  "out": "../../build/seurat-differential-example-all-lr",
+  "counts": "counts.mtx",
+  "features": "features.txt",
+  "cells": "cells.txt",
+  "metadata": "metadata.tsv",
+  "group_column": "group",
+  "group_levels": [
+    "a",
+    "b",
+    "c"
+  ],
+  "data_source": "native_tfidf",
+  "test": "LR",
+  "test_slot": "data",
+  "fc_slot": "data",
+  "min_pct": 0.1,
+  "logfc_threshold": 0.1,
+  "only_positive": true,
+  "seed": 17,
+  "rscript": "C:/Program Files/R/R-4.6.1/bin/Rscript.exe",
+  "r_libraries": [
+    "../../build/literature-review/signac-runtime/reference-setup-1/R-lib",
+    "../../build/omics-sctransform-r"
+  ],
+  "timeout_seconds": 180,
+  "maximum_output_bytes": 100000000,
+  "return_threshold": 1,
+  "covariates": [
+    {
+      "name": "depth",
+      "kind": "numeric"
+    }
+  ]
+}

@@ -1,0 +1,96 @@
+{
+  "schema_version": 1,
+  "mode": "ANALYZE",
+  "profile": "DESeq2-1.52.0-R4.6.1",
+  "counts": "../deseq2-inference/counts.tsv",
+  "samples": "../deseq2-inference/samples.tsv",
+  "out": "../../build/deseq2-tools-example-paired",
+  "variables": [
+    {
+      "name": "donor",
+      "kind": "factor",
+      "levels": [
+        "d1",
+        "d2",
+        "d3",
+        "d4",
+        "d5",
+        "d6"
+      ]
+    },
+    {
+      "name": "condition",
+      "kind": "factor",
+      "levels": [
+        "\u5bf9\u7167",
+        "\u5904\u7406"
+      ]
+    }
+  ],
+  "design": {
+    "intercept": true,
+    "terms": [
+      [
+        "donor"
+      ],
+      [
+        "condition"
+      ]
+    ]
+  },
+  "fit": {
+    "test": "Wald",
+    "fit_type": "mean",
+    "size_factor_type": "ratio",
+    "min_replicates_for_replace": "Inf"
+  },
+  "results": [
+    {
+      "id": "paired",
+      "selector": {
+        "kind": "factor",
+        "factor": "condition",
+        "numerator": "\u5904\u7406",
+        "denominator": "\u5bf9\u7167"
+      },
+      "alpha": 0.05
+    },
+    {
+      "id": "threshold",
+      "selector": {
+        "kind": "factor",
+        "factor": "condition",
+        "numerator": "\u5904\u7406",
+        "denominator": "\u5bf9\u7167"
+      },
+      "alpha": 0.05,
+      "lfc_threshold": 1,
+      "alternative": "greaterAbs",
+      "independent_filtering": false,
+      "cooks_cutoff": false
+    }
+  ],
+  "transforms": [
+    {
+      "id": "vst_full",
+      "method": "varianceStabilizingTransformation",
+      "blind": false,
+      "fit_type": "mean"
+    },
+    {
+      "id": "rlog",
+      "method": "rlog",
+      "blind": false,
+      "fit_type": "mean"
+    }
+  ],
+  "seed": 9221,
+  "save_fitted_object": true,
+  "keep_genes": "../deseq2-inference/keep.tsv",
+  "rscript": "C:/Program Files/R/R-4.6.1/bin/Rscript.exe",
+  "r_libraries": [
+    "../../build/deseq2-user-runtime/R-lib"
+  ],
+  "maximum_output_bytes": 100000000,
+  "timeout_seconds": 180
+}

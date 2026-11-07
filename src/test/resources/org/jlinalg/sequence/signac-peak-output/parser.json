@@ -1,0 +1,88 @@
+{
+  "narrow": {
+    "text": "chr1\t0\t100\tfixture_peak_1\t35\t.\t4.25\t8.5\t3.5\t20\nchr2\t100\t200\tfixture_peak_2\t2000\t.\t12.75\tInf\t200\t0\n",
+    "broad": false,
+    "format": "BED",
+    "status": "original-completed",
+    "command": "/private/macs2 callpeak -t '/input/a.fragments.gz' '/input/b.fragments.gz' -g 2.7e+09 -f BED --nomodel --extsize 200 --shift -100 -n 'fixture' --outdir D:/projects/JLinAlg/build/literature-review/signac-runtime/peaks-preparation-original-2/original/parse-narrow ",
+    "result": [
+      {
+        "seqnames": "chr1",
+        "start": 1,
+        "end": 100,
+        "width": 100,
+        "strand": "*",
+        "name": "fixture_peak_1",
+        "score": 35,
+        "fold_change": 4.25,
+        "neg_log10pvalue_summit": 8.5,
+        "neg_log10qvalue_summit": 3.5,
+        "relative_summit_position": 20
+      },
+      {
+        "seqnames": "chr2",
+        "start": 101,
+        "end": 200,
+        "width": 100,
+        "strand": "*",
+        "name": "fixture_peak_2",
+        "score": 2000,
+        "fold_change": 12.75,
+        "neg_log10pvalue_summit": "Inf",
+        "neg_log10qvalue_summit": 200,
+        "relative_summit_position": 0
+      }
+    ]
+  },
+  "broad": {
+    "text": "chr1\t10\t90\tfixture_peak_1\t70\t.\t8\t9\t7\n",
+    "broad": true,
+    "format": "BED",
+    "status": "original-completed",
+    "command": "/private/macs2 callpeak -t '/input/a.fragments.gz' '/input/b.fragments.gz' -g 2.7e+09 --broad  -f BED --nomodel --extsize 200 --shift -100 -n 'fixture' --outdir D:/projects/JLinAlg/build/literature-review/signac-runtime/peaks-preparation-original-2/original/parse-broad ",
+    "result": [
+      {
+        "seqnames": "chr1",
+        "start": 11,
+        "end": 90,
+        "width": 80,
+        "strand": "*",
+        "name": "fixture_peak_1",
+        "score": 70,
+        "fold_change": 8,
+        "neg_log10pvalue_summit": 9,
+        "neg_log10qvalue_summit": 7
+      }
+    ]
+  },
+  "bedpe": {
+    "text": "chr1\t10\t90\tfixture_peak_1\t70\t.\t8\t9\t7\t5\n",
+    "broad": false,
+    "format": "BEDPE",
+    "status": "original-completed",
+    "command": "/private/macs2 callpeak -t '/input/a.fragments.gz' '/input/b.fragments.gz' -g 2.7e+09 -f BEDPE -n 'fixture' --outdir D:/projects/JLinAlg/build/literature-review/signac-runtime/peaks-preparation-original-2/original/parse-bedpe ",
+    "result": [
+      {
+        "seqnames": "chr1",
+        "start": 11,
+        "end": 90,
+        "width": 80,
+        "strand": "*",
+        "name": "fixture_peak_1",
+        "score": 70,
+        "fold_change": 8,
+        "neg_log10pvalue_summit": 9,
+        "neg_log10qvalue_summit": 7,
+        "relative_summit_position": 5
+      }
+    ]
+  },
+  "empty": {
+    "text": "",
+    "broad": false,
+    "format": "BED",
+    "status": "original-completed",
+    "command": "/private/macs2 callpeak -t '/input/a.fragments.gz' '/input/b.fragments.gz' -g 2.7e+09 -f BED --nomodel --extsize 200 --shift -100 -n 'fixture' --outdir D:/projects/JLinAlg/build/literature-review/signac-runtime/peaks-preparation-original-2/original/parse-empty ",
+    "result": []
+  }
+}
