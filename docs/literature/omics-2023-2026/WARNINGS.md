@@ -1,4 +1,19 @@
 
+## MEME discovery: exact editions and required recovery
+
+Use the separate **meme-tools** root development JAR, **MEME_DISCOVERY_WORKFLOW_DEVELOPMENT.md**, **examples/meme-discovery/README.md** and **meme-discovery-workflow-development/VALIDATION.json**. The released/canonical JAR lacks this command. DISCOVER requires Linux x86_64 Java plus an exact private source-built MEME home, completed build evidence and declared native/Perl/XML/font/Ghostscript dependencies. VERIFY uses captured files and Java only.
+
+**SKIP3: skip the affected analysis if a required runtime is unavailable or installation is forbidden.** Required action: provision the exact declared source profile and report dependencies on a permitted Linux host, or retain the skip. DISCOVER installs nothing and never substitutes a version or silently falls back to text output. Research/nonprofit license eligibility was confirmed for this project; Cell Ranger remains excluded.
+
+**FAIL2: no result admitted, including partial reports.** Required action: preserve the worker and failed bundle; inspect the exact console cause, WARNINGS/INCOMPLETE/FAILURE markers and original probe/fit/render stdout/stderr. Correct the named source, input, capacity or process cause and retry into NEW paths. Require COMPLETED, no incomplete/failure marker and successful VERIFY. Do not rewrite saved installation prefixes or hashes to make a different installation appear valid.
+
+**Keep source choices explicit:** MEME 5.5.4/5.5.9 set the motif cap to 1,000 when an E-value cutoff is supplied; the request must declare that cap. Legacy 4.9.1 retains its requested count and has no CLI seed/search-size options. Zero accepted motifs at the declared cutoff is a valid scoped report, not evidence of biological absence. Other empty-result stopping paths are unadmitted. No records, identifiers, weights, background probabilities or scientific cutoffs are silently repaired.
+
+**Paper scope:** P007 supplies motif resources; P139 concerns Tomtom; P215/P217 concern FIMO; P235 concerns STREME. P013 includes the broader MEME-ChIP pipeline and source settings that this discovery command does not reproduce. P133 omits discovery settings; P155's 4.9.1 patch is unstated. These eight source mentions do not establish eight reproduced discovery workflows. MEME-ChIP/DREME/STREME/CentriMo retain separate status; HyPhy MEME and BWA-MEME are different programs.
+
+**Validation:** 91 tests per JVM on three JVMs, four positive and four zero-motif profile workflows, one final root example and 27 workflow portable verifications, plus root/recovery controls. Java independently audits input/site/count/score/diagram contracts. Original EM, motif significance, report rendering and figure pixels remain upstream. VERIFY checks capture integrity and consistency; it does not independently refit the model, authenticate execution or certify biology. The broader implementation goal remains active.
+
+
 ## HTSeq: original counting, native presence and required recovery
 
 Use the separate **htseq-tools** development JAR and **HTSEQ_TOOLS.md**, its checked file/native examples and **htseq-tools-development/WARNINGS.md**. Older canonical/released JARs lack this route. COUNT requires Linux Java and the exact declared private Python/HTSeq/NumPy/pysam profile; VERIFY and native prepared-read/binary APIs need Java only. Paths resolve against JSON; retain attempts and use NEW outputs.

@@ -3358,10 +3358,10 @@
     "id": "meme",
     "name": "MEME",
     "pattern": "(?<!HyPhy\\s)(?<!BWA[-\\s])(?-i:(?<![A-Za-z0-9_])(?:MEME(?:[- ]Suite)?)(?![A-Za-z0-9_]))",
-    "role": "Motif discovery and scanning",
+    "role": "Classic de novo motif discovery; distinguish Suite programs and motif resources",
     "current_coverage": "missing",
     "existing_source": null,
-    "coverage_note": "No equivalent workflow identified in the current source inventory.",
+    "coverage_note": "One scoped original classic MEME discovery adapter with native Java input/site/score audits. Eight reviewed mentions include resource/provider uses; they do not establish eight discovery runs or whole-Suite coverage.",
     "paper_count": 8,
     "papers": [
       "P007",
@@ -3373,10 +3373,30 @@
       "P217",
       "P235"
     ],
-    "implementation_status": "missing",
-    "implementation_source": null,
-    "implementation_scope": "No equivalent workflow identified in the current source inventory.",
-    "validation_note": "Existing overlap/adapters require paper-specific option checks; missing integrations remain pending."
+    "implementation_status": "upstream-adapter-validated",
+    "implementation_source": "src/main/java/org/jlinalg/cli/MemeToolsCli.java",
+    "implementation_scope": "meme-tools DISCOVER/VERIFY runs exact source-built MEME 4.9.1 base, 4.9.1 patch2, 5.5.4 or 5.5.9 on explicit canonical-DNA FASTA/weights and positive order-zero background. Typed OOPS/ZOOPS/ANR, strands, widths, positive Dirichlet prior, iteration/convergence and E-value/site choices are checked against source XML. Native Java independently audits complete contributing-site geometry, weighted counts, prior scores, position tails and sequence diagrams; text PWMs/centibit matrices match XML. Source HTML is bound by exact original-helper replay; PNG carriers are decoded and EPS completeness checked. Genuine E-cutoff empty outputs retain zero motifs and no invented scores/diagrams. Original EM/motif significance and figure pixels remain upstream. No MEME-ChIP pipeline, DREME, STREME, CentriMo, FIMO/Tomtom replacement, higher-order backgrounds, protein/ambiguous DNA, historical whole Suite or whole-paper parity. Read MEME_DISCOVERY_WORKFLOW_DEVELOPMENT.md and its warnings.",
+    "validation_note": "91 actual-JAR contract tests per JVM pass on Windows Java21/25 and Linux Java21, including 40 altered empty-report refusals. Four positive original profile analyses and four full zero-motif workflows each pass 12 portable verifications; the final root example adds one original analysis and three portable checks. Final root checks include real positive verification, required-runtime skips and unchanged existing-output refusals. Recovery controls retain 36 corruptions with both manifest layers reminted, two failed-bundle refusals and two missing-runtime skips. Frozen native parent controls remain separately scoped. Synthetic controls do not certify EM/significance, biological absence, whole papers or execution authenticity.",
+    "project_adapter_available": true,
+    "canonical_adapter_available": false,
+    "development_adapter_cli": "meme-tools",
+    "development_candidate": "build/literature-review/meme-runtime/root-build-17/omicsmatic-0.3.7-meme-discovery-root-development.jar",
+    "development_candidate_sha256": "814676644a3c9c3c4c1e57d896598ca8f860ae7621b93bae5d568448faee42d5",
+    "workflow_validation": "../meme-discovery-workflow-development/VALIDATION.json",
+    "source_role_coverage": "meme-program-role-coverage.json",
+    "source_roles_reviewed": 8,
+    "native_methods_available": true,
+    "original_runtime_adapters_available": true,
+    "exact_runtime_profiles": [
+      "MEME_4_9_1_BASE",
+      "MEME_4_9_1_PATCH2",
+      "MEME_5_5_4",
+      "MEME_5_5_9"
+    ],
+    "analysis_installs_software": false,
+    "whole_paper_reproduced": false,
+    "historical_whole_packages_reproduced": false,
+    "biological_accuracy_certified": false
   },
   {
     "id": "mashr",
