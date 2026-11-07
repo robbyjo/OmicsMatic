@@ -700,7 +700,7 @@ Nature · 2025-12-10 · [DOI](https://doi.org/10.1038/s41586-025-09792-4) · [Pr
 | --- | --- | --- |
 | AlphaMissense | Missense variant pathogenicity prediction. | Methods / Duplex sequencing bioinformatic analyses |
 | BWA | DNA read alignment. | Methods / Duplex sequencing bioinformatic analyses |
-| dndscv | Somatic mutation selection analysis. | Methods / Positive selection analyses |
+| dndscv | Estimated positive and negative selection using a bespoke coding reference for the sequencing panel, with the192-channel opportunity matrix adjusted by per-gene median coverage for each sample, tissue and cohort and zero coverage at blacklisted sites. | Methods / Positive selection analyses |
 | NanoSeq | Low-error somatic mutation sequencing analysis. | Methods / NanoSeq libraries |
 | Nextflow | Used a bespoke Nextflow DuplexPipe workflow for duplex FASTQ processing with fgbio2.2.1, UMI extraction using FastqToBam and bwa-mem0.7.17 alignment. The reference is GRCh38 GCA_000001405.15 without alternate contigs and with a U2FA1 mapping patch. | Methods / Duplex sequencing bioinformatic analyses |
 | SAMtools | Alignment manipulation and QC. | Methods / Duplex sequencing bioinformatic analyses |
@@ -819,7 +819,7 @@ Nature · 2025-12-03 · [DOI](https://doi.org/10.1038/s41586-025-09812-3) · [Pr
 | BWA | DNA read alignment. | Methods / Genomic analysis and interpretation |
 | CancerVision | Ran whole-genome cancer analysis and interpretation through the CancerVision platform, including mapping, preprocessing and somatic calling. | Methods / Genomic analysis and interpretation |
 | DELLY | Structural variant discovery. | Methods / Genomic analysis and interpretation |
-| dndscv | Somatic mutation selection analysis. | Methods / Identification of protein-coding driver genes |
+| dndscv | Used dNdSCV as one of seven components in IntOGen2023 for protein-coding driver discovery, and used its missense and nonsense selection ratios for a separate driver-role classification. | Methods / Identification of protein-coding driver genes |
 | GATK | Used Mutect2 within CancerVision, alongside Strelka2, to call somatic SNVs and short indels from whole-genome data, then applied tumour/normal read-support, mapping-quality, VAF and panel-of-normals criteria. | Methods / Genomic analysis and interpretation |
 | Mutect2 | Called somatic SNVs and short indels with Mutect2 in GATK 4.0 as part of the CancerVision tumour/normal workflow. | Methods / Genomic analysis and interpretation |
 | Strelka2 | Called somatic SNVs and short indels with Strelka2 alongside Mutect2 in the whole-genome cancer analysis. | Methods / Genomic analysis and interpretation |
@@ -1153,7 +1153,7 @@ Nature · 2025-12-03 · [DOI](https://doi.org/10.1038/s41586-025-09762-w) · [Pr
 | bcl2fastq | Converted NovaSeq 6000 raw sequencing data to FASTQ using the two reported bcl2fastq versions 2.19.1.403 and 2.20.0.422 within the HOLMES workflow. | Methods / INCISE adenoma tissue processing and DNA sequencing |
 | biobambam2 | Used biobambam2v2.0.79 for adapter clipping and PCR-duplicate marking in hybrid-capture tumor/normal sequencing. | Methods / Hybridization capture panel sequencing |
 | BWA | DNA read alignment. | Methods / Hybridization capture panel sequencing |
-| dndscv | Somatic mutation selection analysis. | Methods / Identification of driver genes |
+| dndscv | Identified genes under positive or negative selection using a supplied mm10_Ens96_dNdScv.rda reference, with both per-gene-per-sample and coding-per-sample mutation limits set to Inf. | Methods / Identification of driver genes |
 | UCSC liftOver | Mapped capture-bait coordinates to mouse GRCm38 before assessing target-gene coverage and downstream tumor/normal variant analysis. | Methods / Hybridization capture panel sequencing |
 | Ensembl VEP | Variant consequence annotation. | Methods / Hybridization capture sequencing variant calling and filtering |
 
@@ -2219,7 +2219,7 @@ Nature Genetics · 2026-09-11 · [DOI](https://doi.org/10.1038/s41588-026-02738-
 | --- | --- | --- |
 | ASCAT | Allele-specific tumor copy-number analysis. | Methods / DNA sequencing / Copy number calling |
 | BEDTools | Genomic interval manipulation and overlap. | Methods / DNA sequencing / Targeted sequencing |
-| dndscv | Somatic mutation selection analysis. | Methods / DNA sequencing / Calculations of percentage mutant epithelia |
+| dndscv | Applied the previously described dN/dS analysis using dNdScv; the statistics paragraph used global q<0.01 and a separate filter for genes with no synonymous mutations and few nonsynonymous mutations. | Methods / DNA sequencing / Calculations of percentage mutant epithelia |
 | NanoSeq | Low-error somatic mutation sequencing analysis. | Methods / DNA sequencing / NanoSeq |
 | SAMtools | Alignment manipulation and QC. | Methods / DNA sequencing / Targeted sequencing |
 
@@ -2864,7 +2864,7 @@ Nature Genetics · 2023-10-26 · [DOI](https://doi.org/10.1038/s41588-023-01545-
 | ASCAT | Allele-specific tumor copy-number analysis. | Methods / Somatic mutation calling / Structural variant calling in the exome data with allele-specific copy number analysis of tumors |
 | BEDTools | Genomic interval manipulation and overlap. | Methods / Mutational signatures / Characterization of the psoralen signature |
 | BWA | DNA read alignment. | Methods / DNA sequencing / Whole-exome sequencing |
-| dndscv | Somatic mutation selection analysis. | Methods / Selection and driver analyses / Exome-wide driver discovery |
+| dndscv | Estimated gene-level dN/dS across lesional and nonlesional skin and global selection for11 predefined gene sets; the figure description identifies a pentanucleotide model for pathway-level estimates. | Methods / Selection and driver analyses / Exome-wide driver discovery |
 | Picard | Alignment QC, duplicates and sequence processing. | Methods / DNA sequencing / Whole-exome sequencing |
 | SAMtools | Alignment manipulation and QC. | Methods / DNA sequencing / Whole-exome sequencing |
 
@@ -2896,7 +2896,7 @@ Nature Genetics · 2026-08-10 · [DOI](https://doi.org/10.1038/s41588-026-02692-
 | BWA | DNA read alignment. | Methods / Mutation calling |
 | CIBERSORT | Cell-type deconvolution. | Methods / Decomposition of tumor immune environments |
 | Cutadapt | Adapter trimming. | Methods / Metagenomic sequencing quality control and taxonomic profiling |
-| dndscv | Somatic mutation selection analysis. | Methods / Significantly mutated gene analysis |
+| dndscv | Used dNdScv alongside activation-bias and inactivation-bias methods to find significantly mutated genes, admitting a gene if any method yielded q<0.1. | Methods / Significantly mutated gene analysis |
 | HTSeq | Used HTSeq to quantify gene-level read counts against a UCSC human transcriptome reference after STAR alignment to GRCh37/hg19. Described strand-aware FPKM calculation and Wilcoxon differential testing separately. | Methods / Transcriptome sequencing (RNA-seq) |
 | SAMtools | Alignment manipulation and QC. | Methods / Mutation calling |
 | SHAP | Model feature attribution. | Methods / Identification of CRC subtypes based on metagenome-derived SHAP values / SHAP analysis and subtype identification |
@@ -3226,7 +3226,7 @@ Nature Genetics · 2026-07-28 · [DOI](https://doi.org/10.1038/s41588-026-02673-
 | Tool | How used | Evidence location |
 | --- | --- | --- |
 | DESeq2 | Used DESeq2 for bulk RNA-seq differential expression and ranked genes by descending log fold change for GSEA. | Methods / Bulk RNA sequencing |
-| dndscv | Somatic mutation selection analysis. | Methods / Quantifying selection using dN/dS |
+| dndscv | Applied dNdScv to independent-clone mutation counts using a custom GRCm39 reference whose trinucleotide substitution-consequence opportunities were restricted to the targeted genomic regions. | Methods / Quantifying selection using dN/dS |
 | GSVA | Per-sample gene-set activity scoring. | Methods / GSVA |
 | Harmony | Batch integration of cell embeddings. | Methods / Spatial transcriptomics |
 | sctransform | Applied SCTransform per Visium FFPE slide after SpaceRanger 3 processing, before Harmony and downstream clustering/markers. | Methods / Spatial transcriptomics |

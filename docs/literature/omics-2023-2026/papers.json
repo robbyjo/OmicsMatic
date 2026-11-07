@@ -7593,13 +7593,61 @@
         "evidence_paragraph_index": 74,
         "matched_text": "dNdScv",
         "extraction_score": 15,
-        "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "usage_context": "coverage-adjusted-panel-selection",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-paragraph",
         "evidence_paragraph_sha256": "e018b9f8ade8877fc9855a80685bfa5de47f4dc2142e2c817b1d779dc9339e94",
-        "use_summary": "Somatic mutation selection analysis.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13190248/ (section: Methods / Positive selection analyses)"
+        "use_summary": "Estimated positive and negative selection using a bespoke coding reference for the sequencing panel, with the192-channel opportunity matrix adjusted by per-gene median coverage for each sample, tissue and cohort and zero coverage at blacklisted sites.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13190248/ (section: Methods / Positive selection analyses)",
+        "implementation_scope_note": "The coverage-adjusted reference and panel construction are caller inputs, not standard unweighted opportunities or a generic single-gene coverage multiplier. Separate display filters use observed and expected mutation counts (paragraphs75–79); do not apply them silently to inference. The package version, function arguments and precise reference object are not provided.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 75,
+            "section": "Methods / Positive selection analyses",
+            "paragraph_sha256": "493b61d82c60d47ce9b1250cbe1c8b22821767142a42a9d92bf1e54e28ce9d7b"
+          },
+          {
+            "paragraph_index": 76,
+            "section": "Methods / Positive selection analyses",
+            "paragraph_sha256": "8cb1d3574d2e948798d126be18226978fcd7bf747008d21d35209a936541b82e"
+          },
+          {
+            "paragraph_index": 77,
+            "section": "Methods / Positive selection analyses",
+            "paragraph_sha256": "96547f6ae1a0fe4b07c6d8bb8e0a80b641cd7f05c4d05d403ef6108fd15c9507",
+            "evidence_role": "method-details",
+            "named_anchor": {
+              "paragraph_index": 76,
+              "section": "Methods / Positive selection analyses",
+              "paragraph_sha256": "8cb1d3574d2e948798d126be18226978fcd7bf747008d21d35209a936541b82e"
+            },
+            "shared_terms": [
+              "missense"
+            ],
+            "relation_note": "This adjacent criterion completes the missense dndscv display-filter sentence in paragraph76; it is a display filter, not an extra fitting rule."
+          },
+          {
+            "paragraph_index": 78,
+            "section": "Methods / Positive selection analyses",
+            "paragraph_sha256": "b8db32515a8398652bce24fefd10592c52a7d6b7d65bcf0c0ec78d00ed18db10"
+          },
+          {
+            "paragraph_index": 79,
+            "section": "Methods / Positive selection analyses",
+            "paragraph_sha256": "445b34240fd7c12d353a73448f76179e9d9325ff0aa8ea51e8c7cfe873f07e68",
+            "evidence_role": "method-details",
+            "named_anchor": {
+              "paragraph_index": 78,
+              "section": "Methods / Positive selection analyses",
+              "paragraph_sha256": "b8db32515a8398652bce24fefd10592c52a7d6b7d65bcf0c0ec78d00ed18db10"
+            },
+            "shared_terms": [
+              "nonsense"
+            ],
+            "relation_note": "This adjacent criterion completes the nonsense dndscv display-filter sentence in paragraph78; preserve the stated expected/observed conditions without applying them implicitly."
+          }
+        ]
       },
       {
         "tool_id": "nanoseq",
@@ -8986,13 +9034,54 @@
         "evidence_paragraph_index": 43,
         "matched_text": "dNdSCV",
         "extraction_score": 15,
-        "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "usage_context": "IntOGen-component-and-driver-ratios",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-paragraph",
         "evidence_paragraph_sha256": "a49a22ebc6de76c07baffda0bc23980f6ea94a230e2ccd208e0418aa4f33ba43",
-        "use_summary": "Somatic mutation selection analysis.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12851938/ (section: Methods / Identification of protein-coding driver genes)"
+        "use_summary": "Used dNdSCV as one of seven components in IntOGen2023 for protein-coding driver discovery, and used its missense and nonsense selection ratios for a separate driver-role classification.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12851938/ (section: Methods / Identification of protein-coding driver genes)",
+        "implementation_scope_note": "IntOGen2023 is the wrapper version, not a dndscv release. Schulze voting, weighted Stouffer consensus, CGC weighting and the reported driver-role distance classification are separate downstream methods. The standalone source workflow does not reconstruct the seven-method consensus; the dndscv version, arguments and exact distance expression remain source-specific.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 44,
+            "section": "Methods / Identification of protein-coding driver genes",
+            "paragraph_sha256": "02725981de625a2f69ab3deb3e879b8b383d9a0fd720f8ea39600b8a596af357",
+            "evidence_role": "method-details",
+            "named_anchor": {
+              "paragraph_index": 43,
+              "section": "Methods / Identification of protein-coding driver genes",
+              "paragraph_sha256": "a49a22ebc6de76c07baffda0bc23980f6ea94a230e2ccd208e0418aa4f33ba43"
+            },
+            "shared_terms": [
+              "driver",
+              "genes"
+            ],
+            "relation_note": "This next paragraph describes the consensus of the seven named driver methods including dNdSCV; consensus weighting/voting is separate from standalone dndscv inference."
+          },
+          {
+            "paragraph_index": 45,
+            "section": "Methods / Identification of protein-coding driver genes",
+            "paragraph_sha256": "90c4de60bacd5e2c546e30a5394a9f39c32fb5e1fd775401949b51a3db3f1d2b"
+          },
+          {
+            "paragraph_index": 46,
+            "section": "Methods / Identification of protein-coding driver genes",
+            "paragraph_sha256": "a7cffc84e688b73968b9b4b382b96740f73b7fda1e07b5924bf1c58e92175db9",
+            "evidence_role": "method-details",
+            "named_anchor": {
+              "paragraph_index": 45,
+              "section": "Methods / Identification of protein-coding driver genes",
+              "paragraph_sha256": "90c4de60bacd5e2c546e30a5394a9f39c32fb5e1fd775401949b51a3db3f1d2b"
+            },
+            "shared_terms": [
+              "distance",
+              "missense",
+              "nonsense"
+            ],
+            "relation_note": "This next paragraph gives the thresholds for the driver-role distance introduced using dNdSCV ratios in paragraph45; the downstream classification is a separate operation."
+          }
+        ]
       },
       {
         "tool_id": "gatk",
@@ -13085,13 +13174,15 @@
         "evidence_paragraph_index": 44,
         "matched_text": "dNdScv",
         "extraction_score": 15,
-        "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
-        "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "usage_context": "mouse-panel-selection",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
+        "version_reported_near_name": "0.1.0",
+        "evidence_selection": "individually-reviewed-paragraph",
         "evidence_paragraph_sha256": "d18bd14577e5ddb47983c676950faba0c9e3b5da1b3dccc3e2b77f5e2390e7ae",
-        "use_summary": "Somatic mutation selection analysis.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12804087/ (section: Methods / Identification of driver genes)"
+        "use_summary": "Identified genes under positive or negative selection using a supplied mm10_Ens96_dNdScv.rda reference, with both per-gene-per-sample and coding-per-sample mutation limits set to Inf.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12804087/ (section: Methods / Identification of driver genes)",
+        "implementation_scope_note": "The paper reports0.1.0; the resolved upstream source labels itself0.0.1.0. Do not normalize these labels or infer an exact paper commit. Trerf1 was absent from the RefCDS and Dlg2/Rit1 were outside the baits; preserve the caller gene universe and custom reference instead of silently removing genes or selecting a human default.",
+        "supporting_evidence": []
       },
       {
         "tool_id": "ucsc-liftover",
@@ -24793,13 +24884,21 @@
         "evidence_paragraph_index": 47,
         "matched_text": "dndscv",
         "extraction_score": 15,
-        "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "usage_context": "normal-esophagus-selection",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-paragraph",
         "evidence_paragraph_sha256": "f1b1d93da546eb271a74ec4f1597405f6b1f7f05110a551e96261b5e79479350",
-        "use_summary": "Somatic mutation selection analysis.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13649571/ (section: Methods / DNA sequencing / Calculations of percentage mutant epithelia)"
+        "use_summary": "Applied the previously described dN/dS analysis using dNdScv; the statistics paragraph used global q<0.01 and a separate filter for genes with no synonymous mutations and few nonsynonymous mutations.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13649571/ (section: Methods / DNA sequencing / Calculations of percentage mutant epithelia)",
+        "implementation_scope_note": "The package version, reference, functions and fitting settings are unspecified. The percentage-mutant-tissue calculation is separate. Paragraph49 says eight or fewer mutations in its filtering statement but later says at least eight; retain that wording ambiguity and require an explicit downstream rule instead of silently choosing an8/9 boundary. Statistical reliability and negative-selection power are not established by software execution.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 49,
+            "section": "Methods / DNA sequencing / Statistics and reproducibility",
+            "paragraph_sha256": "95111999da56e802208dbd53014ddca7a82ced64620172b11f39686faa19e276"
+          }
+        ]
       },
       {
         "tool_id": "nanoseq",
@@ -31576,13 +31675,37 @@
         "evidence_paragraph_index": 58,
         "matched_text": "dNdScv",
         "extraction_score": 15,
-        "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "usage_context": "gene-and-gene-set-selection",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": "0.0.1.0",
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-paragraph",
         "evidence_paragraph_sha256": "249c02944a508992a83b78bf846a7a706d62020c72b62ca5101a7cf2e778f120",
-        "use_summary": "Somatic mutation selection analysis.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10632143/ (section: Methods / Selection and driver analyses / Exome-wide driver discovery)"
+        "use_summary": "Estimated gene-level dN/dS across lesional and nonlesional skin and global selection for11 predefined gene sets; the figure description identifies a pentanucleotide model for pathway-level estimates.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10632143/ (section: Methods / Selection and driver analyses / Exome-wide driver discovery)",
+        "implementation_scope_note": "The version label does not identify a source commit. Standard192-channel trinucleotide dndscv or genesetdnds is not evidence of the stated pentanucleotide pathway model; that reference/model and its preprocessing require separate provenance. Lesional/nonlesional subset fits and cell-fraction calculations remain separate. Do not infer geneset membership, fitting arguments or full-paper equivalence.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 24,
+            "section": "Positive selection in lesional and nonlesional skin",
+            "paragraph_sha256": "dc721306d70450f321b85b08c8992ba1d1f163e158ac6b07bea328e47bb36428"
+          },
+          {
+            "paragraph_index": 25,
+            "section": "Positive selection in lesional and nonlesional skin",
+            "paragraph_sha256": "3ec03031c3a50348bcaa981bedea65d995f552b92090ea953cf95f672d30c7ac",
+            "evidence_role": "method-details",
+            "named_anchor": {
+              "paragraph_index": 58,
+              "section": "Methods / Selection and driver analyses / Exome-wide driver discovery",
+              "paragraph_sha256": "249c02944a508992a83b78bf846a7a706d62020c72b62ca5101a7cf2e778f120"
+            },
+            "shared_terms": [
+              "genesets",
+              "mutations"
+            ],
+            "relation_note": "The results paragraph describes the same eleven a-priori gene sets as the named dndscv methods paragraph58; paragraph24 separately preserves the pentanucleotide model statement."
+          }
+        ]
       },
       {
         "tool_id": "picard",
@@ -31876,13 +31999,15 @@
         "evidence_paragraph_index": 49,
         "matched_text": "dNdScv",
         "extraction_score": 15,
-        "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "usage_context": "complementary-gene-selection",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-paragraph",
         "evidence_paragraph_sha256": "afe014dc55d5179013d81344785d6b5c53c87ca9cb08bd22f3e07c8e12ad5993",
-        "use_summary": "Somatic mutation selection analysis.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13553305/ (section: Methods / Significantly mutated gene analysis)"
+        "use_summary": "Used dNdScv alongside activation-bias and inactivation-bias methods to find significantly mutated genes, admitting a gene if any method yielded q<0.1.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13553305/ (section: Methods / Significantly mutated gene analysis)",
+        "implementation_scope_note": "The Fisher tests, hotspot definition including the5-bp neighborhood, tumor-suppressor assignment and forced activation-bias P=1 belong to the separate bias methods. Do not implement those rules as dndscv semantics or infer a combined calibration. The dndscv version, reference and fitting arguments are unspecified.",
+        "supporting_evidence": []
       },
       {
         "tool_id": "htseq",
@@ -35570,13 +35695,15 @@
         "evidence_paragraph_index": 65,
         "matched_text": "dNdScv",
         "extraction_score": 15,
-        "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "usage_context": "clone-based-targeted-mouse-selection",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-paragraph",
         "evidence_paragraph_sha256": "6229fade6faf360284955e1d8ddda696da6bd4bd5759459434891368cdf8b525",
-        "use_summary": "Somatic mutation selection analysis.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13447109/ (section: Methods / Quantifying selection using dN/dS)"
+        "use_summary": "Applied dNdScv to independent-clone mutation counts using a custom GRCm39 reference whose trinucleotide substitution-consequence opportunities were restricted to the targeted genomic regions.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13447109/ (section: Methods / Quantifying selection using dN/dS)",
+        "implementation_scope_note": "The paper says latest version without identifying a release or commit. Preserve clone-defined events, the mouse assembly, targeted reference and supplied opportunity matrix; do not substitute read counts, spot counts, a human default or an untargeted reference. Function arguments and reference-generation details beyond the stated construction remain unspecified.",
+        "supporting_evidence": []
       },
       {
         "tool_id": "gsva",

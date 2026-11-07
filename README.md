@@ -60,6 +60,21 @@ with a companion run log. Choose a fresh output path for another run.
 
 See the [command-line plotting vignette](https://robbyjo.github.io/OmicsMatic/plotting.html).
 
+## Literature-driven bioinformatics toolbox
+
+The [250-paper catalog](docs/literature/omics-2023-2026/README.md) records 390 named
+tools and 2,450 paper-tool observations from Nature, Nature Genetics and AJHG.
+There are 78 new scoped integrations (17 native Java methods and 61 upstream
+adapters), or 81 including three existing adapters; 253 named tools still need
+integration. The full implementation goal remains open.
+
+The new [dndscv guide](docs/literature/DNDSCV_WORKFLOWS.md) covers native coding
+annotation/opportunity methods, the tested original selection adapter, exact
+runtime preparation and a runnable example. Use the current source build or the
+separately validated development artifact. **SKIP3 skips dependent analysis when
+the exact permitted runtime is unavailable; FAIL2 admits no result from an
+atomic batch.** Read each tool's warnings and required actions before analysis.
+
 ## License
 
 [GNU General Public License, version 3 or later](LICENSE) (`GPL-3.0-or-later`).

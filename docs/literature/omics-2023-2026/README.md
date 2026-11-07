@@ -1,20 +1,23 @@
 # Literature-driven omics toolbox: current status
 
-The fixed cohort contains **250 papers, 390 named tools, 2,450 paper-tool observations, 925 reviewed uses and 311 supporting paragraph pointers**. Current scoped availability is **77 new integrations: 17 native subsets and 60 upstream adapters**, or **80 including three existing adapters**. **254 tools remain missing**. Paper-wide semantic completeness and the full implementation goal remain open.
+The fixed cohort contains **250 papers, 390 named tools, 2,450 paper-tool observations, 932 reviewed uses and 322 supporting paragraph pointers**. Current scoped availability is **78 new integrations: 17 native subsets and 61 upstream adapters**, or **81 including three existing adapters**. **253 tools remain missing**. Paper-wide semantic completeness and the full implementation goal remain open.
 
-The [SoupX workflow guide](../SOUPX_WORKFLOWS.md) covers native marker/profile arithmetic and source-bound original 1.6.2/1.3.0 ambient estimation/correction, with explicit private setup, atomic failure and dependency-skip actions. Seven primary roles and two supporting paragraphs distinguish marker ranking, manual ALB/Csf1r use, secondary validation and reported settings. Prior [fitdistrplus/Cicero coverage](../FITDISTRPLUS_SOURCE_REVIEW.md) remains available. The canonical executable is unchanged; use the documented separate development JARs or build current sources.
+The [dndscv workflow guide](../DNDSCV_WORKFLOWS.md) covers native coding annotation/opportunity arithmetic and source-bound original selection, with offline source export, exact private setup, a runnable example and explicit SKIP3/FAIL2 recovery. Seven primary roles and eleven supporting paragraphs preserve custom coverage, mouse references, clone-level events, IntOGen consensus boundaries, the unresolved0.1.0 versus0.0.1.0 version and pentanucleotide/filter ambiguities. Complete tables and N/L arrays match24 original case executions;64 native coding and17 workflow checks pass per JVM on Windows Java21/25 and Linux Java21. See the [validation and public opaque-object omission limits](../dndscv-workflow-development/VALIDATION.json).
+
+Prior [SoupX](../SOUPX_WORKFLOWS.md), [fitdistrplus and Cicero](../FITDISTRPLUS_SOURCE_REVIEW.md) coverage remains available. The canonical executable is unchanged; use the documented separate development JARs or build current sources.
 
 **Warnings and recovery:** read [WARNINGS.md](WARNINGS.md) and every analysis status. Missing/forbidden original dependencies mean SKIP3 and skip the dependent analysis. FAIL2 admits no atomic result, including earlier completed outputs. Preserve failed/partial evidence, correct the named cause and retry NEW paths. No silent omission, ID repair, score replacement, rescaling or version/method substitution occurs. Cell Ranger remains excluded and py-monocle's license decision remains pending.
 
 Current verification:
 
 ```powershell
-python tools/literature/audit_soupx_catalog.py
-python tools/literature/verify_soupx_review_context.py
-python tools/literature/verify_soupx_catalog.py
+python tools/literature/dndscv_workflow_evidence.py
+python tools/literature/audit_dndscv_catalog.py
+python tools/literature/verify_dndscv_review_context.py
+python tools/literature/verify_dndscv_catalog.py
 ```
 
-Run these commands from the repository root. The source-pointer audit needs the local original XML/extraction cache. Use [summary.json](summary.json) and [tool-inventory.json](tool-inventory.json) for current counts and exact scopes. The original three-year window remains 2023-10-23 through 2026-10-23; no extension was needed. No release or website deployment is claimed; unfinished literature pages remain excluded from Pages.
+Run these commands from the repository root. The source-pointer audit needs the local original XML/extraction cache. Use [summary.json](summary.json) and [tool-inventory.json](tool-inventory.json) for current counts and exact scopes. The original three-year window remains2023-10-23 through2026-10-23; no extension was needed. No release or website deployment is claimed; unfinished literature pages remain excluded from Pages.
 
 ## Retained historical checkpoints
 

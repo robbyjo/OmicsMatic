@@ -1,3 +1,9 @@
+## dndscv: warnings and required actions
+
+Use the separate development DndscvWorkflowCli and DNDSCV_WORKFLOWS.md. Require exit0 and result_admitted=true; inspect original logs, case statuses and the complete native-event-ledger.tsv. SKIP3 skips dependent analysis when the exact permitted Windows R4.6.1/source/dependency profile is absent. Analysis installs nothing; offline preparation without --allow-install starts no installer. Supply permitted exact private dependencies or skip. Linux upstream execution skips without interoperability fallback.
+
+**FAIL2 admits no result from the atomic batch**, including earlier completed cases. Preserve original errors, partials and cleanup receipts; fix the named input/reference/model/capacity/timeout cause and retry NEW paths. Never omit events or repair IDs/alleles/NA/NaN/Inf. Independent mutation/clone events, panel, reference and coverage are explicit caller assertions; read/spot counts do not establish independent events. Source fits/CI and site coverage extraction are not independently refitted. Original site-depth integer coercion and nonfinite metadata remain. P056 reported0.1.0 differs from selected source0.0.1.0; no paper commit, mouse reference, P146 pentanucleotide model, IntOGen consensus or ambiguous paper postfilter is inferred.
+
 ## SoupX: warnings and required actions
 
 Use the separate development SoupXWorkflowCli and SOUPX_WORKFLOWS.md. Require exit0 and result_admitted=true; read original logs and every case status. SKIP3 skips dependent analysis when the exact permitted Windows R4.6.1/SoupX/source/dependency profile is absent. Analysis installs nothing; preparation without --allow-install launches no installation. Supply permitted private dependencies or skip; no version substitution or source patching. Linux upstream execution is explicitly skipped.
