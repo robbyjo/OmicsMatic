@@ -52,6 +52,8 @@ public final class JLinAlgCli {
                 return MemeToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
             if (arguments.length > 0 && arguments[0].equals("chipseeker-tools"))
                 return ChipSeekerToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+            if (arguments.length > 0 && arguments[0].equals("monocle-tools"))
+                return MonocleToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
             ProjectConfiguration.Resolved config = ProjectConfiguration.resolve(arguments,
                 java.nio.file.Path.of("").toAbsolutePath(), java.nio.file.Path.of(System.getProperty("user.home")));
             arguments = config.arguments();
@@ -447,6 +449,7 @@ public final class JLinAlgCli {
               java -jar omicsmatic-<version>.jar htseq-tools --help
               java -jar omicsmatic-<version>.jar meme-tools --help
               java -jar omicsmatic-<version>.jar chipseeker-tools --help
+              java -jar omicsmatic-<version>.jar monocle-tools --help
               java -jar omicsmatic-<version>.jar bigwig-tools --help
               java -jar omicsmatic-<version>.jar stringtie-tools --help
               java -jar omicsmatic-<version>.jar fastp-tools --help
