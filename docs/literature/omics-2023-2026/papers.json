@@ -9334,6 +9334,24 @@
         "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10719105/ (section: Methods / Inference of cis-co-accessible cCREs)",
         "implementation_scope_note": "Samples at most 5000 nuclei per subclass; the paper reports the Hypendymal_NN subclass failed. Normal background fitting uses fitdistrplus, BH FDR<0.001 and GENCODE mm10v23 TSS±1kb distal/proximal grouping. The source says filtered out only if scores were significantly larger; preserve that wording rather than infer a reversed retention rule. Exact Cicero/Monocle commits, seeds and background implementation remain unknown. Source capture of Cicero-M3 1.3.9 is not paper reproduction.",
         "supporting_evidence": []
+      },
+      {
+        "tool_id": "fitdistrplus",
+        "tool": "fitdistrplus",
+        "analysis_role": "Normal-distribution fitting for shuffled co-accessibility backgrounds",
+        "evidence_section": "Methods / Inference of cis-co-accessible cCREs",
+        "evidence_paragraph_index": 51,
+        "matched_text": "fitdistrplus",
+        "extraction_score": 15,
+        "usage_context": "shuffled-background-distribution-fit",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
+        "version_reported_near_name": null,
+        "evidence_selection": "individually-reviewed-paragraph",
+        "evidence_paragraph_sha256": "41db6565b9c28d56ef328ce411a63865d3f6a88dfa070f1c94457546ac40598e",
+        "use_summary": "Fitted a normal distribution to co-accessibility scores from shuffled cCRE matrices for subclass-specific background comparisons.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10719105/ (section: Methods / Inference of cis-co-accessible cCREs)",
+        "implementation_scope_note": "The paragraph names fitdistrplus but does not give its function, estimation method or package version. BH FDR<0.001 follows the normal-background fit. Its wording says scores significantly larger than background were filtered out; preserve that wording and do not infer a reversed retention rule, shuffle implementation, normality or independence. Native analytical normal-mle is an explicit supported subset, not a reconstruction of the unknown paper method or the original numerical optimizer.",
+        "supporting_evidence": []
       }
     ],
     "status": "extracted",

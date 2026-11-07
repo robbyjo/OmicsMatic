@@ -1,3 +1,9 @@
+## fitdistrplus normal-fitting subset: warnings and required actions
+
+Use the separate native development class NormalFitToolsCli and NORMAL_FIT_WORKFLOWS.md. Declare normal-mle explicitly; P043 does not identify its function, estimator, version or shuffle. Java needs no R runtime and installs nothing. Analytical MLE differs from the original numerical optimizer: tiny/near-constant original failures and all-zero SD0.1 return remain retained; native zero variance fails.
+
+**FAIL2 admits no result, including an earlier fit if testing/writing later fails.** Preserve WARNINGS.md, status, captured inputs and unadmitted-partial-results; correct the named input, representability, capacity or heap cause and retry NEW paths. Do not omit NA/NaN/Inf, repair IDs or rescale to force success. Explicit background origin/tail/BH/cutoff choices do not establish normality, independence or calibration. All rows remain; no retention direction is inferred. Ordinary p/q underflow remains zero with separate log tails and prominent warnings. Read the original control differences before interpretation.
+
 
 ## Monocle, Cicero and py-monocle: distinct tools and required actions
 
@@ -7,9 +13,9 @@ Nine reviewed Monocle uses distinguish Monocle2 differential tests, Monocle3 tra
 
 **FAIL2: no atomic batch result is admitted on any failed original gene, error, timeout, capacity or audit mismatch.** Free-NB and binary/proportion binomialff controls fail in original Monocle2 under this exact VGAM profile. Failed-gene p/q=1 remains failure, not a valid null. Preserve WARNINGS.md, status, original objects and transcripts; correct the named cause and retry NEW paths without dropping genes, imputation or identifier/value repair.
 
-**Cicero is separate co-accessibility software.** P043 reports one failed subclass, shuffled-background fitting and a filtering sentence whose direction must not be silently reversed. P153 subsets published predictions using peak accessibility; it does not establish a new fitting run. Cicero runtime integration is still missing.
+**Cicero is separate co-accessibility software.** P043 reports one failed subclass, shuffled-background fitting and a filtering sentence whose direction must not be silently reversed. P153 subsets published predictions using peak accessibility; it does not establish a new fitting run. Scoped original fitting and Java-only prediction-reuse development workflows are now validated; read CICERO_COACCESSIBILITY_DEVELOPMENT.md and CICERO_PREDICTION_SUBSET_DEVELOPMENT.md. Author-specific shuffle, filtering interpretation, annotations and historical settings remain separate.
 
-**py-monocle has noncommercial community terms.** P024 calls it a wrapper, whereas inspected upstream describes a distinct Python implementation. No py-monocle runtime was installed or analyzed. The implementation decision awaits the user license preference; the restricted source remains in private research intake and is not bundled into the GPL project. Cell Ranger remains excluded. All 905 prior reviews remain unchanged; paper-wide semantic completeness and the implementation goal remain open.
+**py-monocle has noncommercial community terms.** P024 calls it a wrapper, whereas inspected upstream describes a distinct Python implementation. No py-monocle runtime was installed or analyzed. The implementation decision awaits the user license preference; the restricted source remains in private research intake and is not bundled into the GPL project. Cell Ranger remains excluded. All 917 prior reviews remain unchanged; paper-wide semantic completeness and the implementation goal remain open.
 
 
 ## ChIPseeker: genomic annotation, native nearest features and required recovery

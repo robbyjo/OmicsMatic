@@ -1,3 +1,28 @@
+# Literature-driven omics toolbox: current status
+
+The fixed cohort contains **250 papers, 390 named tools, 2,450 paper-tool observations, 918 reviewed uses and 309 supporting paragraph pointers**. Current scoped availability is **76 new integrations: 17 native subsets and 59 upstream adapters**, or **79 including three existing adapters**. **255 tools remain missing**. Paper-wide semantic completeness and the full implementation goal remain open.
+
+The [current source review](../FITDISTRPLUS_SOURCE_REVIEW.md) registers P043's fitdistrplus normal-background role and updates Cicero's fitting/prediction-reuse availability. The [native normal-fit guide](../NORMAL_FIT_WORKFLOWS.md) gives a copyable Java-only example and preserves original optimizer differences, missing/nonfinite refusal and tail-underflow warnings. The canonical executable is unchanged; use the documented separate development JARs.
+
+**Warnings and recovery:** read [WARNINGS.md](WARNINGS.md) and every analysis status. Missing/forbidden original dependencies mean SKIP3 and skip the dependent analysis. FAIL2 admits no atomic result, including earlier completed outputs. Preserve failed/partial evidence, correct the named cause and retry NEW paths. No silent omission, ID repair, score replacement, rescaling or version/method substitution occurs. Cell Ranger remains excluded and py-monocle's license decision remains pending.
+
+Current verification:
+
+```powershell
+python tools/literature/audit_fitdistrplus_current_catalog.py
+python tools/literature/verify_fitdistrplus_review_context.py
+python tools/literature/verify_fitdistrplus_catalog.py
+```
+
+Run these commands from the repository root. The source-pointer audit needs the local original XML/extraction cache. Use [summary.json](summary.json) and [tool-inventory.json](tool-inventory.json) for current counts and exact scopes. The original three-year window remains 2023-10-23 through 2026-10-23; no extension was needed. No release or website deployment is claimed; unfinished literature pages remain excluded from Pages.
+
+## Retained historical checkpoints
+
+The text below is preserved from earlier milestones. Its counts and statements labeled current describe those earlier checkpoints; they do not replace the current status above.
+
+<details>
+<summary>Earlier milestone text and evidence links</summary>
+
 # Literature-driven omics toolbox expansion
 
 **RepeatMasker public workflow validated:** native annotation reuse and original two-stage SEARCH pass complete output/tree comparisons in both declared profiles. [Workflow and required actions](REPEATMASKER_PUBLIC_WORKFLOW.md) and [validation](repeatmasker-validation.json) retain unsupported editions, resource permissions and scientific limits. The full 250-paper goal remains active.
@@ -799,3 +824,5 @@ The [implementation queue](implementation-plan.md) and `tool-inventory.json`
 distinguish missing tools, related existing methods, existing adapters/lookups,
 and newly validated subsets. Complete the remaining integrations and semantic
 coverage review before marking the overall goal complete.
+
+</details>

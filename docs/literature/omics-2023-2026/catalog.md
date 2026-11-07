@@ -1,6 +1,6 @@
 # Omics and GWAS paper catalog
 
-250 papers; 389 named tools; 2449 paper-tool observations.
+250 papers; 390 named tools; 2450 paper-tool observations.
 
 Window: 2023-10-23 through 2026-10-23, inclusive. No extension was required.
 
@@ -847,6 +847,7 @@ Nature · 2023-12-13 · [DOI](https://doi.org/10.1038/s41586-023-06824-9) · [Pr
 | UCSC liftOver | Used reciprocal mouse-human liftOver searches to identify orthologous cCREs, with more than50% of bases mapped; accessibility conservation was then assessed against human cCREs. | Methods / Sequence conserved, chromatin accessibility conserved and mouse-specific cCREs |
 | UMAP | Produced an exploratory low-dimensional representation of the measured profiles. | Methods / Iterative cell clustering / Graph-based clustering |
 | Cicero | Predicted cis-co-accessible cCRE pairs separately across 275 subclasses with Cicero for Monocle3, mm10, 500-kb windows and default parameters, followed by shuffled-background score fitting and FDR filtering. | Methods / Inference of cis-co-accessible cCREs |
+| fitdistrplus | Fitted a normal distribution to co-accessibility scores from shuffled cCRE matrices for subclass-specific background comparisons. | Methods / Inference of cis-co-accessible cCREs |
 
 XML SHA-256: `f8770e7b1232faedccba9e6bc4ddb1fb4db75a536adeff8473458534dab4d5a1`. Exact evidence paragraph hashes and locators are in [papers.json](papers.json).
 

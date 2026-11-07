@@ -6723,10 +6723,21 @@
       "P043",
       "P153"
     ],
-    "implementation_status": "missing",
-    "implementation_source": null,
-    "implementation_scope": "Distinct Cicero workflow; Monocle adapters do not establish Cicero co-accessibility equivalence.",
-    "validation_note": "Existing overlap/adapters require paper-specific option checks; missing integrations remain pending."
+    "implementation_status": "upstream-adapter-validated",
+    "implementation_source": "src/main/java/org/jlinalg/cli/CiceroWorkflowCli.java",
+    "implementation_scope": "Separate development original Cicero-Monocle3 1.3.9 co-accessibility workflow from explicit raw counts, prepared coordinates and genome lengths: aggregation, distance calibration, complete glasso models/connections and native axes/counts/nearest/covariance/penalty/reconciliation audits. Java-only supplied-prediction reuse applies explicit coordinate/overlap/endpoint choices and accessibility membership without a gene-expression filter or score repair. Original NA, window dispositions and WI asymmetry remain visible. No historical paper environment, author-specific shuffle/filter direction, TSS annotation, CCAN, gene activity or biological calibration is inferred. Read CICERO_COACCESSIBILITY_DEVELOPMENT.md and CICERO_PREDICTION_SUBSET_DEVELOPMENT.md.",
+    "validation_note": "19,548 complete connection rows including38 retained NA,18 original-runtime protocols,14 semantic refusals and516 checks on each of three JVMs; prediction reuse has43,317 independent memberships,57 runtime protocols and seven contracts per JVM. Fitting requires the exact permitted Windows/R profile; unavailable dependencies SKIP3, any input/source/audit/capacity failure FAIL2 rejects the atomic batch. Prediction subsetting needs Java only and preserves opaque scores.",
+    "source_roles_reviewed": 2,
+    "source_role_coverage": "monocle-role-coverage.json",
+    "project_adapter_available": true,
+    "canonical_adapter_available": false,
+    "development_candidate": "build/literature-review/monocle-runtime/cicero-workflow-build-8/omicsmatic-0.3.7-cicero-workflow-development.jar",
+    "development_candidate_sha256": "d4d7425fd17a0625f14cde5c7ccc50d01b50de381d7ffb23e3ec611179d434ce",
+    "prediction_development_candidate": "build/literature-review/monocle-runtime/cicero-prediction-build-3/omicsmatic-0.3.7-cicero-prediction-development.jar",
+    "prediction_development_sha256": "0ae32d9fbfce2afca6cfc8a23430ee26a338243c47c3e00f0a1ee228eeef7c75",
+    "analysis_installs_software": false,
+    "whole_paper_reproduced": false,
+    "whole_goal_complete": false
   },
   {
     "id": "cibersort",
@@ -7891,6 +7902,32 @@
     "implementation_source": null,
     "implementation_scope": "Additional software identified during full-text/code-link completeness review; integration and independent validation pending.",
     "validation_note": "Existing overlap/adapters require paper-specific option checks; missing integrations remain pending."
+  },
+  {
+    "id": "fitdistrplus",
+    "name": "fitdistrplus",
+    "pattern": "\\bfitdistrplus\\b",
+    "role": "Normal-distribution fitting for shuffled co-accessibility backgrounds",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Primary P043 normal-background fitting use; function, estimator and paper version remain unspecified. Implementation metadata is separately source- and control-bound.",
+    "paper_count": 1,
+    "papers": [
+      "P043"
+    ],
+    "implementation_status": "native-subset-validated",
+    "implementation_source": "src/main/java/org/jlinalg/distributional/NormalFit.java",
+    "implementation_scope": "Native unweighted analytical normal-mle from complete finite observations, with population variance, log likelihood/AIC/BIC and optional explicitly selected normal tails/ordinary BH over every supplied score. No row filtering, missing omission, automatic shuffle, optimizer/Hessian/covariance, weighted/censored fitting, other distributions or inferred paper method/version. Original numerical failures and all-zero SD0.1 return remain preserved as differences. Read NORMAL_FIT_WORKFLOWS.md.",
+    "validation_note": "43 original fitting populations/86 MLE-MME calls and36 tail/BH families;86 checks per JVM on Windows Java21/25 and Linux Java21,51 packaged protocols plus an executed example. Complete fit/test populations and original warnings retained. Native analysis needs Java only; FAIL2 admits no result and retains diagnostics. Analytical MLE is not original optimizer replay or biological calibration.",
+    "source_roles_reviewed": 1,
+    "source_role_coverage": "fitdistrplus-role-coverage.json",
+    "development_candidate": "build/literature-review/fitdistrplus-runtime/native-build-1/omicsmatic-0.3.7-normal-fit-development.jar",
+    "development_candidate_sha256": "b4bc39e0f769bd0886e1accd7678767262a10264de483e04ed5d1f838babbb9e",
+    "development_cli_class": "org.jlinalg.cli.NormalFitToolsCli",
+    "canonical_adapter_available": false,
+    "analysis_installs_software": false,
+    "whole_paper_reproduced": false,
+    "whole_goal_complete": false
   },
   {
     "id": "spectronaut",
