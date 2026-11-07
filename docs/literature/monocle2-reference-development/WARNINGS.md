@@ -1,0 +1,9 @@
+# Original Monocle2 reference readiness only
+
+No Java Monocle2 adapter/user analysis is admitted and no catalog integration credit is awarded. Use MONOCLE2_CURRENT_READINESS.md. Exact original 2.26.0 source and selected eight R bodies/formals match; original size-factor/dispersion estimation and 360 differential tests return OK on declared synthetic inputs. Independent finite-probability/BH checks and complete unchanged rerun tables pass. Preserve every original object and warning; this is not paper reproduction, native-DLL authentication or biological certification.
+
+**SKIP3 for the attempted current R4.6 profile:** current dplyr makes group_by_ defunct, and original dplyr1.1.4 fails compilation on removed R4.6 C APIs. Install compatible original dependencies only into NEW private libraries where permitted; otherwise skip dependent Monocle2 analysis. Never patch original functions, drop genes, repair values or substitute Monocle3 to force success.
+
+**Legacy warnings remain prominent:** selected runtime R4.2.1 loads Matrix/Biobase/ggplot2/VGAM/DDRTree/irlba binaries built under R4.2.3 and retains original group_by_/select_ deprecation warnings. Complete controls passed with those warnings; arbitrary workflow compatibility is unproven. The community conda lock listed HSMMSingleCell, but the installed candidate lacked its R namespace. Original HSMMSingleCell1.18.0 is supplied in a separate private library, which is required for this profile.
+
+All earlier failed/invalidated setup, symlink inventory, time-capacity, report-accessor and summary-flag attempts remain retained. The selected probe is monocle2-legacy-readiness-probe-6, with metadata boolean fixed and complete scientific test tables identical to probe-5. Corrected metadata does not change original scientific values. Namespace/constructor success alone is insufficient. A typed Java adapter, complete result admission and all remaining paper roles are still open work.

@@ -1,10 +1,10 @@
 # Copyright (C) 2026 JLinAlg contributors; SPDX-License-Identifier: GPL-3.0-or-later
 # Direct original Monocle2 scientific controls; no user analysis or Java adapter admission.
 a <- commandArgs(TRUE);out <- a[1];original_source <- a[2];.libPaths(c(a[-(1:2)],.Library),include.site=FALSE)
-warnings_seen <- list();messages_seen <- list();cases <- list();status <- "FAIL2_ORIGINAL_MONOCLE2_PROBE";detail <- "";stage <- "load";loaded <- FALSE
+warnings_seen <- list();messages_seen <- list();cases <- list();status <- "FAIL2_ORIGINAL_MONOCLE2_PROBE";detail <- "";stage <- "load";package_loaded <- FALSE
 write_json <- function(x,path)jsonlite::write_json(x,path,pretty=TRUE,auto_unbox=TRUE,na="string",null="null",digits=NA)
 tryCatch(withCallingHandlers({
-    suppressPackageStartupMessages(library(monocle));loaded <- TRUE
+    suppressPackageStartupMessages(library(monocle));package_loaded <- TRUE
     stopifnot(identical(as.character(packageVersion("monocle")),"2.26.0"))
     stopifnot(identical(as.character(getRversion()),"4.2.1"),identical(as.character(packageVersion("dplyr")),"1.1.4"))
     definitions <- list();ns <- asNamespace("monocle");guards <- character()
@@ -34,7 +34,7 @@ tryCatch(withCallingHandlers({
     stage <- "size-factors";cds <- BiocGenerics::estimateSizeFactors(raw);saveRDS(cds,file.path(out,"size-factors-cds.rds"))
     stage <- "dispersions";cds <- BiocGenerics::estimateDispersions(cds,modelFormulaStr="~1",relative_expr=TRUE,min_cells_detected=1L,remove_outliers=TRUE)
     saveRDS(cds,file.path(out,"dispersions-cds.rds"));saveRDS(monocle::dispersionTable(cds),file.path(out,"dispersion-table.rds"))
-    write.table(data.frame(cell_id=cells,size_factor=monocle::sizeFactors(cds)),file.path(out,"size-factors.tsv"),sep="\t",quote=TRUE,row.names=FALSE)
+    write.table(data.frame(cell_id=cells,size_factor=BiocGenerics::sizeFactors(cds)),file.path(out,"size-factors.tsv"),sep="\t",quote=TRUE,row.names=FALSE)
     configurations <- list(
         list(id="condition-adjusted-relative",full="~condition+progress+sex",reduced="~progress+sex",relative=TRUE),
         list(id="condition-adjusted-unscaled",full="~condition+progress+sex",reduced="~progress+sex",relative=FALSE),
@@ -48,7 +48,7 @@ tryCatch(withCallingHandlers({
             write.table(data.frame(gene_id=rownames(value),value,check.names=FALSE),file.path(target,"original-tests.tsv"),sep="\t",quote=TRUE,row.names=FALSE,na="NA")
             # Inspect the untouched per-gene helper as a distinct source control.
             all_values <- new.env(parent=asNamespace("monocle"));for(name in names(cm))assign(name,cm[[name]],all_values)
-            assign("Size_Factor",monocle::sizeFactors(cds),all_values)
+            assign("Size_Factor",BiocGenerics::sizeFactors(cds),all_values)
             helper <- get("diff_test_helper",asNamespace("monocle"));environment(helper) <- all_values
             one <- helper(counts[1,],fullModelFormulaStr=config$full,reducedModelFormulaStr=config$reduced,expressionFamily=cds@expressionFamily,
                 relative_expr=config$relative,weights=NULL,disp_func=cds@dispFitInfo[["blind"]]$disp_func,verbose=TRUE)
@@ -66,5 +66,5 @@ tryCatch(withCallingHandlers({
     error=function(e){detail <<- conditionMessage(e)})
 writeLines(capture.output(sessionInfo()),file.path(out,"session-info.txt"))
 write_json(list(status=status,stage=stage,detail=detail,warnings=warnings_seen,messages=messages_seen,cases=cases,exact_Monocle2="2.26.0",
-    original_package_loaded=loaded,synthetic_only=TRUE,Java_adapter_validated=FALSE,implementation_credit=FALSE,whole_paper_reproduced=FALSE),file.path(out,"RESULT.json"))
+    original_package_loaded=package_loaded,synthetic_only=TRUE,Java_adapter_validated=FALSE,implementation_credit=FALSE,whole_paper_reproduced=FALSE),file.path(out,"RESULT.json"))
 quit(status=if(status=="COMPLETED_ORIGINAL_MONOCLE2_DIFFERENTIAL_READINESS_PROBE")0L else 2L)
