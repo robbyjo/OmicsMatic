@@ -1,0 +1,31 @@
+/* Copyright (C) 2026 JLinAlg contributors; SPDX-License-Identifier: GPL-3.0-or-later */
+package org.jlinalg.cli;
+
+import java.io.IOException;
+import java.nio.file.Path;
+import java.util.*;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.jlinalg.cli.Monocle3WorkflowRequest.*;
+
+class SoupXWorkflowRequestTest {
+    static Map<String,Object> values(Object... pairs){var m=new LinkedHashMap<String,Object>();for(int i=0;i<pairs.length;i+=2)m.put((String)pairs[i],pairs[i+1]);return m;}
+    static Map<String,Object> adjustment(){return values("method","subtraction","clustering_scope","supplied-clusters","round_to_integer",false,"tolerance",.001,"p_cut",.01);}
+    static Map<String,Object> fixed(){return values("kind","fixed","rho_mode","constant","rho",.1,"force_accept",false);}
+    static Map<String,Object> analysis(Map<String,Object> estimation,Object adjustment){return values("id","case1","seed",0,"estimation",estimation,"adjustment",adjustment);}
+    static Map<String,Object> base(){return values("schema_version",1,"mode","AMBIENT","version","1.6.2","count_units","raw-integer-counts","matrix_format","matrix-market","clusters","supplied","counts_relation","raw-subset","raw_counts","raw.mtx","filtered_counts","filtered.mtx","gene_metadata","genes.tsv","droplet_metadata","droplets.tsv","cell_metadata","cells.tsv","soup_source","source","soup_range",List.of(0,100),"analyses",List.of(analysis(fixed(),adjustment())),"out","out","rscript","Rscript","r_home","R","r_libraries",List.of("R-lib"));}
+    static SoupXWorkflowRequest.Request parse(Map<String,Object> m)throws IOException{return SoupXWorkflowRequest.parse(object(NextflowParameters.parse(NextflowJson.json(m),1048576,100000)),Path.of(".").toAbsolutePath());}
+    static Map<String,Object> automatic(){return values("kind","automatic-gamma","marker_selection","original-quickMarkers-defaults","tfidf_min",.95,"soup_quantile",.6,"maximum_markers",100,"contamination_range",List.of(.05,.8),"rho_max_fdr",.2,"prior_rho",.1,"prior_rho_sd",.1,"force_accept",false);}
+    static Map<String,Object> legacy(){return values("kind","automatic-legacy-density","marker_selection","original-quickMarkers-defaults","number_markers",50,"tfidf_min",.8,"soup_min",.0001,"rho_max",1,"fdr",.1,"minimum_counts",1,"density",values("bandwidth","nrd0","adjust",1,"kernel","gaussian","n",512,"cut",3,"ext",4,"old_coordinates",false),"apply_density_mode",false);}
+    @Test void fixedProfilesKeepDifferentForceAcceptAPIs()throws IOException{assertEquals("1.6.2",parse(base()).version());var m=base();m.put("version","1.3.0");assertThrows(IOException.class,()->parse(m));var e=fixed();e.remove("force_accept");m.put("analyses",List.of(analysis(e,null)));assertEquals("1.3.0",parse(m).version());}
+    @Test void automaticAPIsAreNeverTranslated()throws IOException{var m=base();m.put("analyses",List.of(analysis(automatic(),null)));assertEquals(.05,number(object(parse(m).analyses().get(0).get("estimation")).get("contamination_range"),0));m.put("version","1.3.0");assertThrows(IOException.class,()->parse(m));m.put("analyses",List.of(analysis(legacy(),null)));assertEquals("1.3.0",parse(m).version());m.put("version","1.6.2");assertThrows(IOException.class,()->parse(m));}
+    @Test void legacyTableNeedsExplicitApplicationBeforeCorrection()throws IOException{var m=base();m.put("version","1.3.0");var e=legacy();m.put("analyses",List.of(analysis(e,adjustment())));assertThrows(IOException.class,()->parse(m));e.put("apply_density_mode",true);assertEquals(1,parse(m).analyses().size());}
+    @Test void manualProvidedMaskRequiresItsActualFileAndRejectsUnusedSettings()throws IOException{var m=base();var e=values("kind","manual-global-poisson","mask_mode","provided","force_accept",false);m.put("analyses",List.of(analysis(e,null)));assertThrows(IOException.class,()->parse(m));m.put("gene_sets","gene-sets.tsv");m.put("nonexpression_mask","mask.tsv");assertNotNull(parse(m).mask());e.put("fdr",.05);assertThrows(IOException.class,()->parse(m));}
+    @Test void manualEstimationDeclaresGlobalHistoricalFitAndClustering()throws IOException{var m=base();m.put("version","1.3.0");m.put("gene_sets","gene-sets.tsv");var e=values("kind","manual-global-poisson","mask_mode","estimate","clustering_scope","cell-only","maximum_contamination",1,"fdr",.05,"cell_specific",false);m.put("analyses",List.of(analysis(e,null)));assertEquals("1.3.0",parse(m).version());e.put("cell_specific",true);assertThrows(IOException.class,()->parse(m));}
+    @Test void refusesExecutableInputsUnknownFieldsAndTransformedCounts(){var m=base();m.put("script","arbitrary.R");assertThrows(IOException.class,()->parse(m));m.remove("script");m.put("count_units","logcounts");assertThrows(IOException.class,()->parse(m));}
+    @Test void validatesRangesCapacitiesAndCaseFoldedIDs(){var m=base();m.put("soup_range",List.of(10,10));assertThrows(IOException.class,()->parse(m));m.put("soup_range",List.of(0,100));m.put("maximum_input_bytes",0);assertThrows(IOException.class,()->parse(m));m.remove("maximum_input_bytes");var a=analysis(fixed(),null);var b=analysis(fixed(),null);b.put("id","CASE1");m.put("analyses",List.of(a,b));assertThrows(IOException.class,()->parse(m));}
+    @Test void unusedOptionalInputFilesAreRefused(){var m=base();m.put("gene_sets","unused.tsv");assertThrows(IOException.class,()->parse(m));m.remove("gene_sets");m.put("rho_by_cell","unused.tsv");assertThrows(IOException.class,()->parse(m));}
+    @Test void perCellRhoRequiresCompleteFileAndNoScalar()throws IOException{var m=base();var e=fixed();e.put("rho_mode","per-cell");m.put("analyses",List.of(analysis(e,null)));m.put("rho_by_cell","rho.tsv");assertThrows(IOException.class,()->parse(m));e.remove("rho");assertNotNull(parse(m).perCellRho());}
+    @Test void unavailableClustersAreNotInvented()throws IOException{var m=base();m.put("clusters","none");assertThrows(IOException.class,()->parse(m));m.put("analyses",List.of(analysis(fixed(),null)));assertEquals("none",parse(m).clusters());assertEquals("raw-integer-counts",parse(m).effective().get("count_units"));}
+    static double number(Object value,int index)throws IOException{return finite(list(value).get(index),0,1);}
+}
