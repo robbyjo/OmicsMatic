@@ -1796,13 +1796,15 @@
         "evidence_paragraph_index": 71,
         "matched_text": "SoupX",
         "extraction_score": 15,
-        "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "usage_context": "cluster-marker-ranking",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-paragraph",
         "evidence_paragraph_sha256": "52d1e847aad8fe580957eea7a832a5fd7f02810e24d081aed72b654bf603f6ad",
-        "use_summary": "Ambient RNA contamination correction.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12893920/ (section: Methods / Analysis of scRNA-seq data / Per-library analyses)"
+        "use_summary": "TF-IDF marker ranking identified genes characteristic of each cluster.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12893920/ (section: Methods / Analysis of scRNA-seq data / Per-library analyses)",
+        "implementation_scope_note": "The paragraph does not establish ambient RNA estimation or correction. The function, cutoff, N, FDR, normalization and SoupX version are not reported. Native marker settings must be explicit; do not reconstruct them from the package defaults.",
+        "supporting_evidence": []
       },
       {
         "tool_id": "spaceranger",
@@ -18427,13 +18429,21 @@
         "evidence_paragraph_index": 59,
         "matched_text": "SoupX",
         "extraction_score": 15,
-        "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "usage_context": "manual-marker-ambient-RNA-removal",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-paragraph",
         "evidence_paragraph_sha256": "599fad93cc6ccafabe60173ecabc2302ba72a9d2230b7e59664a1939fc28fb47",
-        "use_summary": "Ambient RNA contamination correction.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13649586/ (section: Methods / scRNA-seq analysis / Human biopsy scRNA-seq analysis)"
+        "use_summary": "Removed ambient RNA using supplied Seurat clusters and manual human-liver annotations, with ALB as a hepatocyte-lineage marker; a separate mouse immune-cell analysis used Csf1r as an MP-lineage marker.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13649586/ (section: Methods / scRNA-seq analysis / Human biopsy scRNA-seq analysis)",
+        "implementation_scope_note": "The human-liver SoupX version and functions are unspecified. Paragraph62 reports1.6.2 for the mouse immune-cell analysis; do not transfer that version to the human analysis. Preserve manual annotations and marker roles; automatic estimation does not reproduce unknown caller-supplied non-expression masks.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 62,
+            "section": "Methods / scRNA-seq analysis / Mouse BDL scRNA-seq analysis",
+            "paragraph_sha256": "9535b27b14a37823c84bce99f1e077ae05baf19332e6e76b60741c18794e718d"
+          }
+        ]
       }
     ],
     "status": "extracted",
@@ -22750,13 +22760,15 @@
         "evidence_paragraph_index": 30,
         "matched_text": "SoupX",
         "extraction_score": 15,
-        "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
-        "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "usage_context": "ambient-RNA-validation",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
+        "version_reported_near_name": "1.6.2",
+        "evidence_selection": "individually-reviewed-paragraph",
         "evidence_paragraph_sha256": "839ad763ce25a4128054b729506dd4d35e62970526d8200a40c178672c757684",
-        "use_summary": "Ambient RNA contamination correction.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13649572/ (section: Methods / Sample selection and preprocessing)"
+        "use_summary": "Used SoupX1.6.2 as a secondary check that significant ambient RNA effects were absent, after a CellBender assessment.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13649572/ (section: Methods / Sample selection and preprocessing)",
+        "implementation_scope_note": "A validation check is reported; the paragraph does not establish that SoupX-corrected counts were used. Functions, settings and thresholds for that conclusion are unspecified.",
+        "supporting_evidence": []
       },
       {
         "tool_id": "star",
@@ -31425,13 +31437,21 @@
         "evidence_paragraph_index": 50,
         "matched_text": "SoupX",
         "extraction_score": 15,
-        "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "usage_context": "automatic-ambient-RNA-correction",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": "1.6.2",
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-paragraph",
         "evidence_paragraph_sha256": "5a68459b14a61bacf18f49843426f128574e63f9d63472a17768a9ec22003714",
-        "use_summary": "Ambient RNA contamination correction.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13553309/ (section: Methods / snRNA-seq of hNCs / snRNA-seq data preprocessing and annotation)"
+        "use_summary": "Estimated ambient contamination with SoupX1.6.2 autoEstCont and corrected the count matrix with adjustCounts, using supplied raw matrices, filtered counts and clusters.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13553309/ (section: Methods / snRNA-seq of hNCs / snRNA-seq data preprocessing and annotation)",
+        "implementation_scope_note": "Reported autoEstCont overrides are tfidfMin=0.95, soupQuantile=0.6, priorRho=0.1 and contaminationRange=c(0.05,0.8). Other choices, exact source commit, pooling, clustering decisions and exclusion masks are not inferred. Downstream ambient covariate adjustment is a separate operation.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 52,
+            "section": "Methods / snRNA-seq of hNCs / Differential expression and pathway enrichment analysis",
+            "paragraph_sha256": "1bd5a88cd69b5ff6d2684cb3224629290cce0865089dd80434c8b3d3599b30c7"
+          }
+        ]
       },
       {
         "tool_id": "ucell",
@@ -38659,13 +38679,15 @@
         "evidence_paragraph_index": 17,
         "matched_text": "SoupX",
         "extraction_score": 15,
-        "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
-        "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "usage_context": "ambient-RNA-removal",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
+        "version_reported_near_name": "1.3.0",
+        "evidence_selection": "individually-reviewed-paragraph",
         "evidence_paragraph_sha256": "f18880728edbf48755f61332524db5640f68313aab9ade57a631f68d4d5375a6",
-        "use_summary": "Ambient RNA contamination correction.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11639091/ (section: Methods / scRNA-seq of fetal tissues and preprocessing)"
+        "use_summary": "Estimated and removed cell-free mRNA from Cell Ranger count matrices using SoupX1.3.0 before Seurat analysis.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11639091/ (section: Methods / scRNA-seq of fetal tissues and preprocessing)",
+        "implementation_scope_note": "No SoupX functions, markers or settings are stated. The recovered GitHub commit labeled1.3.0 is a source candidate, not proof of the paper commit or historical R and dependency environment. Scrublet doublet filtering is separate.",
+        "supporting_evidence": []
       },
       {
         "tool_id": "star",
@@ -46418,13 +46440,15 @@
         "evidence_paragraph_index": 9,
         "matched_text": "SoupX",
         "extraction_score": 15,
-        "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "usage_context": "ambient-RNA-removal",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-paragraph",
         "evidence_paragraph_sha256": "f39e9bcce0d5e22ab87bb7dcdbc660eb29d8dc07f72ae35f38a791634d0fa24d",
-        "use_summary": "Ambient RNA contamination correction.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11339625/ (section: Material and methods / Bioinformatics analysis)"
+        "use_summary": "Removed ambient RNA with SoupX during sample-wise single-cell preprocessing.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11339625/ (section: Material and methods / Bioinformatics analysis)",
+        "implementation_scope_note": "The SoupX version and functions are not reported. scds doublet assessment and later manual removal of an ambient-signature cluster are distinct steps and are not implemented by a SoupX correction call.",
+        "supporting_evidence": []
       }
     ],
     "status": "extracted",
@@ -48013,13 +48037,15 @@
         "evidence_paragraph_index": 8,
         "matched_text": "SoupX",
         "extraction_score": 15,
-        "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "usage_context": "ambient-RNA-removal",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": "1.6.2",
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-paragraph",
         "evidence_paragraph_sha256": "d63a03bda6013f0581df084b7283b0586612ca452199d90f210b255a2b7df4a4",
-        "use_summary": "Ambient RNA contamination correction.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12461018/ (section: Methods / scRNA-seq data analysis)"
+        "use_summary": "Removed ambient RNA from Cell Ranger count matrices with SoupX1.6.2 before Seurat preprocessing.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12461018/ (section: Methods / scRNA-seq data analysis)",
+        "implementation_scope_note": "Functions and settings are unspecified. Subsequent cell/gene filters, cell annotation and red-blood-cell removal are separate. A selected modern runtime does not establish the paper source commit.",
+        "supporting_evidence": []
       }
     ],
     "status": "extracted",

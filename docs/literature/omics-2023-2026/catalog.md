@@ -167,7 +167,7 @@ Nature · 2025-12-17 · [DOI](https://doi.org/10.1038/s41586-025-09875-2) · [Pr
 | Seurat | Used for cell clustering; marker or differential-expression analysis; cell annotation. | Methods / Analysis of scRNA-seq data / Cell–cell interaction analysis from scRNA-seq data |
 | Slingshot | Lineage and pseudotime inference. | Methods / Analysis of scRNA-seq data / Trajectory inference and differential expression along trajectories |
 | souporcell | Genotype-based cell demultiplexing. | Methods / Analysis of scRNA-seq data / Per-library analyses |
-| SoupX | Ambient RNA contamination correction. | Methods / Analysis of scRNA-seq data / Per-library analyses |
+| SoupX | TF-IDF marker ranking identified genes characteristic of each cluster. | Methods / Analysis of scRNA-seq data / Per-library analyses |
 | Space Ranger | Spatial transcriptomics read processing. | Methods / Analysis of 10x Visium data / Per-library analyses |
 | Squidpy | Spatial neighborhood and expression analysis. | Methods / Analysis of 10x Visium data / Per-library analyses |
 | STARsolo | Aligned each single-cell RNA-seq library to human GRCh38 2020-A and generated initial mRNA quantification/QC with default STARsolo, before CellBender ambient-RNA subtraction, Souporcell donor assignment and Scrublet doublet calling. | Methods / Analysis of scRNA-seq data / Per-library analyses |
@@ -1684,7 +1684,7 @@ Nature Genetics · 2026-09-28 · [DOI](https://doi.org/10.1038/s41588-026-02774-
 | scran | Single-cell normalization and variance modelling. | Methods / scRNA-seq analysis / Clustering, annotation and atlas construction |
 | sctransform | Applied standalone sctransform 0.4.2 vst() to bulk liver counts for PCA-based outlier detection. edgeR TMM/CPM and rank-based testing were separate. | Methods / Human liver bulk RNA-seq analysis |
 | Seurat | Single-cell QC, normalization, integration, clustering or annotation. | Methods / scRNA-seq analysis / Human data processing, QC and integration |
-| SoupX | Ambient RNA contamination correction. | Methods / scRNA-seq analysis / Human biopsy scRNA-seq analysis |
+| SoupX | Removed ambient RNA using supplied Seurat clusters and manual human-liver annotations, with ALB as a hepatocyte-lineage marker; a separate mouse immune-cell analysis used Csf1r as an MP-lineage marker. | Methods / scRNA-seq analysis / Human biopsy scRNA-seq analysis |
 
 XML SHA-256: `d647fee1d2623c8d4c58ec1d36b7116037e311add277e5f5a258a1ed2a502593`. Exact evidence paragraph hashes and locators are in [papers.json](papers.json).
 
@@ -2055,7 +2055,7 @@ Nature Genetics · 2026-09-23 · [DOI](https://doi.org/10.1038/s41588-026-02733-
 | PEER | Latent confounder estimation. | Methods / Sample selection and preprocessing / Normalization of gene expression |
 | QTLtools | Molecular QTL mapping and QC. | Methods / Sample selection and preprocessing / Enrichment of OCRs around detected regulatory variants |
 | Scanpy | Single-cell expression processing and analysis. | Methods / Sample selection and preprocessing |
-| SoupX | Ambient RNA contamination correction. | Methods / Sample selection and preprocessing |
+| SoupX | Used SoupX1.6.2 as a secondary check that significant ambient RNA effects were absent, after a CellBender assessment. | Methods / Sample selection and preprocessing |
 | STAR | Splice-aware bulk RNA read alignment and optional raw gene counts. | Methods / Sample selection and preprocessing |
 | UMAP | Produced an exploratory low-dimensional representation of the measured profiles. | Methods / Sample selection and preprocessing / Cell annotation |
 | Vireo | Genotype-based cell demultiplexing. | Methods / Sample selection and preprocessing |
@@ -2849,7 +2849,7 @@ Nature Genetics · 2026-08-14 · [DOI](https://doi.org/10.1038/s41588-026-02709-
 | SCENIC | Single-cell regulatory network inference. | Methods / snRNA-seq of hNCs / Regulon analysis |
 | sctransform | Used Seurat 5.2.1 SCTransform with mitochondrial-percent regression, then top-3000 residual features, 20 principal components and Harmony. | Methods / snRNA-seq of hNCs / snRNA-seq data preprocessing and annotation |
 | Seurat | Single-cell QC, normalization, integration, clustering or annotation. | Methods / Analysis of snRNA-seq datasets of human brains |
-| SoupX | Ambient RNA contamination correction. | Methods / snRNA-seq of hNCs / snRNA-seq data preprocessing and annotation |
+| SoupX | Estimated ambient contamination with SoupX1.6.2 autoEstCont and corrected the count matrix with adjustCounts, using supplied raw matrices, filtered counts and clusters. | Methods / snRNA-seq of hNCs / snRNA-seq data preprocessing and annotation |
 | UCell | Rank-based single-cell gene-set scoring. | Methods / snRNA-seq of hNCs / Neuronal maturation score calculation |
 | Ensembl VEP | Variant consequence annotation. | Methods / WES data |
 
@@ -3532,7 +3532,7 @@ American Journal of Human Genetics · 2024-11-22 · [DOI](https://doi.org/10.101
 | Scrublet | Ran Scrublet separately per sequencing run after CellRanger 3.0.2 and SoupX 1.3, before Seurat 3 analysis. | Methods / scRNA-seq of fetal tissues and preprocessing |
 | Seurat | Single-cell QC, normalization, integration, clustering or annotation. | Methods / scRNA-seq of fetal tissues and preprocessing |
 | Snakemake | Analysis workflow execution. | Methods / Bulk RNA-seq of osteoarthritis cartilage samples and preprocessing |
-| SoupX | Ambient RNA contamination correction. | Methods / scRNA-seq of fetal tissues and preprocessing |
+| SoupX | Estimated and removed cell-free mRNA from Cell Ranger count matrices using SoupX1.3.0 before Seurat analysis. | Methods / scRNA-seq of fetal tissues and preprocessing |
 | STAR | Splice-aware bulk RNA read alignment and optional raw gene counts. | Methods / Bulk RNA-seq of osteoarthritis cartilage samples and preprocessing |
 | Subread suite | Named Subread suite or explicit Subread alignment/index program; distinguish counting-library attribution. | Methods / Bulk RNA-seq of osteoarthritis cartilage samples and preprocessing |
 | TwoSampleMR | Instrument harmonization and two-sample Mendelian randomization. | Methods / Causal inference analysis |
@@ -4291,7 +4291,7 @@ American Journal of Human Genetics · 2024-07-29 · [DOI](https://doi.org/10.101
 | SCENIC | Single-cell regulatory network inference. | Material and methods / Bioinformatics analysis |
 | Seurat | Used for cell clustering. | Material and methods / Bioinformatics analysis |
 | Signac | Used Signac 1.9 for multiome preprocessing/QC, AddMotifs annotation, reported motif overrepresentation through FindMarkers, and CoveragePlot visualization of accessibility with gene annotations. Used chromVAR 1.5 separately. | Material and methods / Bioinformatics analysis |
-| SoupX | Ambient RNA contamination correction. | Material and methods / Bioinformatics analysis |
+| SoupX | Removed ambient RNA with SoupX during sample-wise single-cell preprocessing. | Material and methods / Bioinformatics analysis |
 
 XML SHA-256: `f4c7cb7cfd0297a8b747f96b56b034512cdcfc8203327f8da0cf4653c2f3c347`. Exact evidence paragraph hashes and locators are in [papers.json](papers.json).
 
@@ -4441,7 +4441,7 @@ American Journal of Human Genetics · 2025-08-22 · [DOI](https://doi.org/10.101
 | Monocle | Converted Seurat objects to cell_data_set objects through a wrapper and inferred Monocle 3 stromal trajectories after condition-specific FD/WT subsetting and reclustering. | Methods / scRNA-seq data analysis |
 | Seurat | Single-cell QC, normalization, integration, clustering or annotation. | Methods / scRNA-seq data analysis |
 | SingleR | Reference-based cell annotation. | Methods / scRNA-seq data analysis |
-| SoupX | Ambient RNA contamination correction. | Methods / scRNA-seq data analysis |
+| SoupX | Removed ambient RNA from Cell Ranger count matrices with SoupX1.6.2 before Seurat preprocessing. | Methods / scRNA-seq data analysis |
 
 XML SHA-256: `bbb6dfe0c3463e42e5fec1b8f58ca3b48fcb6cda5a5d776fe21a98a4d3eeb901`. Exact evidence paragraph hashes and locators are in [papers.json](papers.json).
 

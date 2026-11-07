@@ -1,3 +1,9 @@
+## SoupX: warnings and required actions
+
+Use the separate development SoupXWorkflowCli and SOUPX_WORKFLOWS.md. Require exit0 and result_admitted=true; read original logs and every case status. SKIP3 skips dependent analysis when the exact permitted Windows R4.6.1/SoupX/source/dependency profile is absent. Analysis installs nothing; preparation without --allow-install launches no installation. Supply permitted private dependencies or skip; no version substitution or source patching. Linux upstream execution is explicitly skipped.
+
+**FAIL2 admits no result from the atomic batch**, including earlier completed cases. Preserve warnings, source-status.json, worker output and cleanup receipts; correct the named input/model/capacity/timeout cause and retry NEW paths without omitted observations or ID/NA/NaN/Inf repair. Selected profile droplets are not independently called empty; filtered-cell overlap and supplied-independent raw counts remain prominently warned. Original iterative GLM rho and nonfinite metadata stay unchanged; native analytical rho is a diagnostic. Fractions stay fractional; never silently round for DESeq2. Historical density estimates require explicit application before correction. Manual ALB/Csf1r roles, secondary validation versus corrected-count use and version uncertainty stay separate. No paper-specific reconstruction or biological calibration is claimed.
+
 ## fitdistrplus normal-fitting subset: warnings and required actions
 
 Use the separate native development class NormalFitToolsCli and NORMAL_FIT_WORKFLOWS.md. Declare normal-mle explicitly; P043 does not identify its function, estimator, version or shuffle. Java needs no R runtime and installs nothing. Analytical MLE differs from the original numerical optimizer: tiny/near-constant original failures and all-zero SD0.1 return remain retained; native zero variance fails.
