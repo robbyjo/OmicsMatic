@@ -1,0 +1,54 @@
+Package: ChIPseeker
+Type: Package
+Title: ChIPseeker for ChIP peak Annotation, Comparison, and
+        Visualization
+Version: 1.26.2
+Authors@R: c( person(given = "Guangchuang", family = "Yu",       email = "guangchuangyu@gmail.com",      role  = c("aut", "cre"), comment = c(ORCID = "0000-0002-6485-8781")),
+              person(given = "Yun",         family = "Yan",      email = "youryanyun@gmail.com",         role = "ctb"),
+              person(given = "Hervé",       family = "Pagès",    email = "hpages.on.github@gmail.com",   role  = "ctb"),
+              person(given = "Michael",     family = "Kluge",    email = "michael.kluge@bio.ifi.lmu.de", role  = "ctb"),
+              person(given = "Thomas",      family = "Schwarzl", email = "schwarzl@embl.de",             role  = "ctb"),
+              person(given = "Zhougeng",    family = "Xu",       email = "xuzhougeng@163.com",           role  = "ctb")
+	    )
+Maintainer: Guangchuang Yu <guangchuangyu@gmail.com>
+Description: This package implements functions to retrieve the nearest genes
+    around the peak, annotate genomic region of the peak, statstical methods
+    for estimate the significance of overlap among ChIP peak data sets, and
+    incorporate GEO database for user to compare the own dataset with those
+    deposited in database. The comparison can be used to infer cooperative
+    regulation and thus can be used to generate hypotheses. Several
+    visualization functions are implemented to summarize the coverage of the
+    peak experiment, average profile and heatmap of peaks binding to TSS
+    regions, genomic annotation, distance to TSS, and overlap of peaks or
+    genes.
+Depends: R (>= 3.5.0)
+Imports: AnnotationDbi, BiocGenerics, boot, enrichplot, IRanges,
+        GenomeInfoDb, GenomicRanges, GenomicFeatures, ggplot2, gplots,
+        graphics, grDevices, gtools, methods, plotrix, dplyr, parallel,
+        magrittr, RColorBrewer, rtracklayer, S4Vectors, stats,
+        TxDb.Hsapiens.UCSC.hg19.knownGene, utils
+Suggests: clusterProfiler (>= 3.15.4), ggimage, ggplotify, ggupset,
+        ReactomePA, org.Hs.eg.db, knitr, rmarkdown, testthat, tibble
+Remotes: GuangchuangYu/enrichplot
+URL: https://guangchuangyu.github.io/software/ChIPseeker
+BugReports: https://github.com/YuLab-SMU/ChIPseeker/issues
+Encoding: UTF-8
+VignetteBuilder: knitr
+ByteCompile: true
+License: Artistic-2.0
+biocViews: Annotation, ChIPSeq, Software, Visualization,
+        MultipleComparison
+RoxygenNote: 7.1.1
+git_url: https://git.bioconductor.org/packages/ChIPseeker
+git_branch: RELEASE_3_12
+git_last_commit: 8142321
+git_last_commit_date: 2021-03-03
+Date/Publication: 2021-03-04
+NeedsCompilation: no
+Packaged: 2021-03-04 23:27:41 UTC; biocbuild
+Author: Guangchuang Yu [aut, cre] (<https://orcid.org/0000-0002-6485-8781>),
+  Yun Yan [ctb],
+  Hervé Pagès [ctb],
+  Michael Kluge [ctb],
+  Thomas Schwarzl [ctb],
+  Zhougeng Xu [ctb]

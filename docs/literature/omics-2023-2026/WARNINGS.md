@@ -1,4 +1,19 @@
 
+## ChIPseeker: genomic annotation, native nearest features and required recovery
+
+Use the separate **chipseeker-tools** development JAR, **CHIPSEEKER_ANNOTATION_DEVELOPMENT.md**, **CHIPSEEKER_NEAREST_DEVELOPMENT.md** and **examples/chipseeker/README.md**. The canonical/released JAR lacks this route. NEAREST needs Java only; ANNOTATE requires the exact declared original edition and admitted R/dependency profile plus a caller-supplied TxDb SQLite and reference/coordinate declaration. No automatic resource choice or software installation occurs during analysis. Cell Ranger remains excluded.
+
+**SKIP3: skip the dependent analysis if required software is unavailable or installation is forbidden.** Required action: where permitted, provision the exact profile described in the development documentation, pass its Rscript/library paths and retry into a NEW output directory. Retain the skip when provisioning is forbidden. Native nearest mapping remains separately available on its documented domain; it does not replace genomic annotation.
+
+**FAIL2: no result admitted, including partial results from a mixed batch.** Required action: preserve the attempt, inspect the named console cause, WARNINGS/status/INCOMPLETE and original worker reports/stdout/stderr, correct the named input/source/options/process/capacity cause and retry into a NEW directory. Require COMPLETED and result_admitted=true; a successful exit from R alone is insufficient. No portable VERIFY command or independent refitting claim is supplied. Logical budgets are not operating-system memory quotas.
+
+**Preserve original behavior and uncertainty.** The 224 independent original annotation calls include 49 source errors; errors, dropped queries, missing values and dummy indices/distances remain explicit. Raw geneChr/geneStrand can be numeric source codes. Whole input populations and feature order affect ties; do not repair IDs or coerce dummy values to real genes. Older editions differ in downstream annotations and priority behavior. A same-version changed original function is refused. Native audit skips are explicit and produce no substitute result.
+
+**Seven paper roles:** P020 reports -2 kb/+1 kb promoters; P043 does not identify the function or orientation of its 3 kb flanks; P044 omits its annotation options; P124/P133/P139/P195 omit the software edition. P133 GENCODE v30 is an annotation release. P139's random-reference set explicitly uses distal/intron labels; its caQTL/no-effect enhancer mask remains unstated. P195's UCSC.hg38.knownGene label does not identify a precise TxDb package. Supply matching resources and explicit settings; do not infer enhancer rules or claim full-paper reproduction.
+
+**Validation scope:** 202 native tests per JVM on Windows Java21/25 and Linux Java21; 424 actual adapter outcome comparisons and 16 recovery controls. Original annotation is validated on Windows R4.6.1 with current admitted dependencies, not a recreated historical environment. Native Linux checks do not certify the original R adapter on Linux. This is one catalog integration. The broader toolbox goal remains active.
+
+
 ## MEME discovery: exact editions and required recovery
 
 Use the separate **meme-tools** root development JAR, **MEME_DISCOVERY_WORKFLOW_DEVELOPMENT.md**, **examples/meme-discovery/README.md** and **meme-discovery-workflow-development/VALIDATION.json**. The released/canonical JAR lacks this command. DISCOVER requires Linux x86_64 Java plus an exact private source-built MEME home, completed build evidence and declared native/Perl/XML/font/Ghostscript dependencies. VERIFY uses captured files and Java only.

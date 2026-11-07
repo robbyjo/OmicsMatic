@@ -10052,6 +10052,99 @@
       "version_reported_near_name": "0.13",
       "usage_context": "analysis-method-description",
       "supporting_evidence": []
+    },
+    {
+      "pmcid": "PMC12823405",
+      "doi": "10.1038/s41586-025-09869-0",
+      "tool_id": "chipseeker",
+      "evidence_paragraph_sha256": "334c8a0bcdd40e364ae28321e67dee44a2e3fdaa3b8016130857842f48c97112",
+      "use_summary": "Annotated genomic locations of ChIP-seq peaks with ChIPseeker 1.26.2, defining promoters from 2 kb upstream to 1 kb downstream of the transcription start site.",
+      "implementation_scope_note": "The GRCh38 ChIP-seq analysis reports the 1.26.2 edition and -2 kb/+1 kb promoter definition, but not the precise TxDb/annotation resource, remaining annotation arguments or feature priorities. The original 1.26.2 adapter supports this explicit promoter window and genomic labels on a caller-supplied matching TxDb; the native prepared method separately audits nearest TSS assignments. No unreported settings are inferred, and differential binding, normalization and the complete ChIP_Zwart pipeline are not reproduced.",
+      "version_reported_near_name": "1.26.2",
+      "usage_context": "genomic-annotation",
+      "supporting_evidence": []
+    },
+    {
+      "pmcid": "PMC10719105",
+      "doi": "10.1038/s41586-023-06824-9",
+      "tool_id": "chipseeker",
+      "evidence_paragraph_sha256": "1bd63f4fedde6b464ea32be75f6b560fcd9e609f2d0ebbb3f5baace2626c4eba",
+      "use_summary": "Used ChIPseeker 1.34.1 for the genomic-location strategy linking TE-derived candidate cis-regulatory elements to genes within 3 kb flanking regions; cCRE-gene correlation was a separate strategy.",
+      "implementation_scope_note": "The precise ChIPseeker function, gene/TxDb resource and anchor/orientation of the 3 kb flanks are unstated. The exact 1.34.1 adapter exposes original annotation and flanking-gene options, but this description does not identify a particular tssRegion, all-neighbor rule or nearest-gene-only call. Expression filtering, Wilcoxon accessibility testing, cCRE-gene correlation and HOMER enrichment remain separate analyses. Caller choices and original failures stay explicit.",
+      "version_reported_near_name": "1.34.1",
+      "usage_context": "genomic-annotation",
+      "supporting_evidence": []
+    },
+    {
+      "pmcid": "PMC11711094",
+      "doi": "10.1038/s41586-024-08307-x",
+      "tool_id": "chipseeker",
+      "evidence_paragraph_sha256": "d9b46780a9031df1d2d25a0533c8b38ae7038e232075603177507fbdfce3b833",
+      "use_summary": "Annotated the genomic distribution of CUT&Tag peaks with ChIPseeker 1.22.1 after mm10 alignment and MACS2 peak calling.",
+      "implementation_scope_note": "The paper reports ChIPseeker 1.22.1 and mm10 alignment, but omits the exact TxDb/resource, function, promoter window, gene-versus-transcript level and feature priorities. The original 1.22.1 adapter can produce genomic labels and distribution tables from explicit matching inputs; those unknown preparation/options are not inferred. Figure pixels and the full CUT&Tag pipeline are not reproduced.",
+      "version_reported_near_name": "1.22.1",
+      "usage_context": "genomic-annotation",
+      "supporting_evidence": []
+    },
+    {
+      "pmcid": "PMC10703699",
+      "doi": "10.1038/s41588-023-01554-0",
+      "tool_id": "chipseeker",
+      "evidence_paragraph_sha256": "9da5cf123f884f9c7a732f03d64e8a75cbd3ae28a3b3cda287b5eed08f511941",
+      "use_summary": "Used ChIPseeker to annotate genomic regions and retrieve the nearest gene around each ATAC-seq peak in the hg38 analysis; peak calling, union-peak counting and DESeq2 testing were separate steps.",
+      "implementation_scope_note": "The ChIPseeker edition, exact hg38 annotation/TxDb resource, gene-versus-transcript level, distance/strand/overlap options and promoter window are unstated. The adapter requires an explicit supported edition and caller-supplied database; original genomic labels and nearest results are retained, with a separate scoped native nearest audit. Peak calling, union-peak count construction and DESeq2 inference are separate and are not supplied by this annotation command.",
+      "version_reported_near_name": null,
+      "usage_context": "genomic-annotation",
+      "supporting_evidence": []
+    },
+    {
+      "pmcid": "PMC12695660",
+      "doi": "10.1038/s41588-025-02388-8",
+      "tool_id": "chipseeker",
+      "evidence_paragraph_sha256": "93cde454fd755c9ea684a26686ae71ca8242d1882767aafcf3c66c345767d5f3",
+      "use_summary": "Annotated ATAC-seq peaks with ChIPseeker using hg38 GENCODE version 30 annotations after the reported alignment, filtering, peak-calling and DESeq2 workflow.",
+      "implementation_scope_note": "GENCODE v30 is the annotation release, not the ChIPseeker software version. The software edition, TxDb preparation, gene-versus-transcript level, promoter window and remaining arguments are unstated. The original annotation adapter requires the caller to preserve the hg38/GENCODE v30 resource identity and declare an edition/settings; native nearest mapping alone does not construct that annotation population. The upstream ATAC, count and differential-testing pipeline is not reproduced.",
+      "version_reported_near_name": null,
+      "usage_context": "genomic-annotation",
+      "supporting_evidence": []
+    },
+    {
+      "pmcid": "PMC11525195",
+      "doi": "10.1038/s41588-024-01892-7",
+      "tool_id": "chipseeker",
+      "evidence_paragraph_sha256": "bfc9c1f9791aeeb4be589d2c841b8e8ee7205a40613eab7aca77a1a868be62ed",
+      "use_summary": "Applied ChIPseeker annotatePeak with TxDb.Hsapiens.UCSC.hg19.knownGene annotations to retain enhancers for caQTL/no-effect SNP sets. Separately sampled 25,000 reference peaks and retained distal/intron categories, yielding approximately 21,000 putative reference enhancers.",
+      "implementation_scope_note": "The exact ChIPseeker edition, annotation-package release, annotatePeak options and precise enhancer mask for the caQTL/no-effect sets are unstated. The adjacent paragraph specifies distal/intron categories for the separate random-reference enhancer set; do not silently transfer that mask or infer exact software label strings for every set. The adapter retains original annotations and supports caller-declared literal prefix selection, with no invented enhancer rule. Posterior thresholds, SNP-to-peak-center distance, matched downsampling and correlation are separate analyses.",
+      "version_reported_near_name": null,
+      "usage_context": "genomic-annotation",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 33,
+          "section": "Methods / Defining enhancer categories",
+          "paragraph_sha256": "6b9ebe56b5973eb7f4802cec884931af064c124fcff61c16c883238971dbe625",
+          "evidence_role": "method-details",
+          "named_anchor": {
+            "paragraph_index": 32,
+            "section": "Methods / Defining enhancer categories",
+            "paragraph_sha256": "bfc9c1f9791aeeb4be589d2c841b8e8ee7205a40613eab7aca77a1a868be62ed"
+          },
+          "shared_terms": [
+            "enhancers"
+          ],
+          "relation_note": "The adjacent paragraph continues enhancer categorization in the same Methods section and specifies the random-reference selection. It does not establish that the same mask applies to every caQTL/no-effect set."
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC11639096",
+      "doi": "10.1016/j.ajhg.2024.10.003",
+      "tool_id": "chipseeker",
+      "evidence_paragraph_sha256": "c73e2708825baa55267577a0d739723d76c386c5933d99bac84d45e4a43bba70",
+      "use_summary": "Analyzed Hi-C loop-anchor coordinates with ChIPseeker using the reported UCSC.hg38.knownGene annotations after Juicer contact-map processing and resolution/long-range-contact quality checks.",
+      "implementation_scope_note": "The software edition, exact annotation package/release, function, gene-versus-transcript level and promoter/priorities are unstated. Preserve the reported UCSC.hg38.knownGene label without inventing a more specific package identity. Original annotation of explicit prepared anchors and a matching caller-supplied TxDb is available; Juicer contact-map processing, QC and prior-method domain/boundary/loop/compartment calling remain separate. This adapter does not call Hi-C loops or reconstruct those pipelines.",
+      "version_reported_near_name": null,
+      "usage_context": "genomic-annotation",
+      "supporting_evidence": []
     }
   ]
 }

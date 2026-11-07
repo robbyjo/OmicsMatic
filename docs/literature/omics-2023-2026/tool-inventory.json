@@ -3935,7 +3935,7 @@
     "role": "Peak annotation relative to genes and genomic features",
     "current_coverage": "missing",
     "existing_source": null,
-    "coverage_note": "Genome/annotation editions and specific R ChIPseeker annotation functions require separate integration.",
+    "coverage_note": "One scoped ChIPseeker integration combines native Java nearest-feature mapping with exact original four-edition genomic annotation; seven paper roles preserve unknown settings and resource identities.",
     "paper_count": 7,
     "papers": [
       "P020",
@@ -3946,10 +3946,30 @@
       "P139",
       "P195"
     ],
-    "implementation_status": "missing",
-    "implementation_source": null,
-    "implementation_scope": "Genome/annotation editions and specific R ChIPseeker annotation functions require separate integration.",
-    "validation_note": "Existing overlap/adapters require paper-specific option checks; missing integrations remain pending."
+    "implementation_status": "upstream-adapter-validated",
+    "implementation_source": "src/main/java/org/jlinalg/cli/ChipSeekerToolsCli.java",
+    "implementation_scope": "chipseeker-tools NEAREST uses caller-prepared ordered features and unstranded peaks without R; original per-contig query/feature indexing, ties, dropped queries and boundary dummies are retained. ANNOTATE executes original 1.22.1/1.26.2/1.34.1/1.48.1 annotatePeak with an explicit caller-supplied TxDb SQLite, reference/coordinates, level, strand, promoter, priority and flanking choices. Original RDS, genomic labels, distributions, nearest indices/distances and query dispositions are retained; a separate native nearest audit reports its supported domain or an explicit skip. Optional literal annotation-prefix selection is a caller rule. No inferred enhancer definition, automatic annotation retrieval, annoDb, EnsDb, original plotting or full paper pipeline. See CHIPSEEKER_ANNOTATION_DEVELOPMENT.md and CHIPSEEKER_NEAREST_DEVELOPMENT.md.",
+    "validation_note": "202 native tests pass without skips on Windows Java21/25 and Linux Java21. Independent original annotation references retain 224 calls:175 returns and49 original errors. Actual adapter comparisons retain 400 core outcomes across Windows Java21/25 plus24 extended outcomes, including original failures;20976 native nearest triples and16 recovery controls pass. The final root JAR executes the asymmetric -2000/+1000 original annotation example and native Windows/Linux examples. Exact original bodies/formals and critical dependencies are checked, including refusal of a same-version changed function before analysis. Original annotation was validated with Windows R4.6.1; Linux certification covers the native method only. These controls do not establish execution authentication, historical whole environments, biological accuracy or complete papers.",
+    "project_adapter_available": true,
+    "canonical_adapter_available": false,
+    "development_adapter_cli": "chipseeker-tools",
+    "development_candidate": "build/literature-review/chipseeker-runtime/root-build-1/omicsmatic-0.3.7-chipseeker-root-development.jar",
+    "development_candidate_sha256": "cddc3e53b92bb21b33c0152cac1dec36d9c6042977f1b9f775f261893cf449aa",
+    "workflow_validation": "../chipseeker-annotation-development/VALIDATION.json",
+    "source_role_coverage": "chipseeker-role-coverage.json",
+    "source_roles_reviewed": 7,
+    "native_methods_available": true,
+    "original_runtime_adapters_available": true,
+    "original_reference_versions": [
+      "1.22.1",
+      "1.26.2",
+      "1.34.1",
+      "1.48.1"
+    ],
+    "analysis_installs_software": false,
+    "whole_paper_reproduced": false,
+    "historical_whole_packages_reproduced": false,
+    "biological_accuracy_certified": false
   },
   {
     "id": "alphamissense",

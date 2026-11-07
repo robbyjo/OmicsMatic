@@ -392,7 +392,7 @@ Nature · 2025-12-10 · [DOI](https://doi.org/10.1038/s41586-025-09869-0) · [Pr
 | --- | --- | --- |
 | BWA | DNA read alignment. | Methods / ChIP–seq |
 | ChIP_Zwart | Processed ChIP-seq through ChIP_Zwart 0.1.2, including alignment, MAPQ/duplicates, input-controlled MACS2 peaks and downstream signal/differential/annotation analyses. | Methods / ChIP–seq |
-| ChIPseeker | Peak annotation relative to genes and genomic features. | Methods / ChIP–seq |
+| ChIPseeker | Annotated genomic locations of ChIP-seq peaks with ChIPseeker 1.26.2, defining promoters from 2 kb upstream to 1 kb downstream of the transcription start site. | Methods / ChIP–seq |
 | clusterProfiler | Ran GSEA on xenograft DEGs ranked by log2 fold change using Hallmark, GR and PR signatures, with pvalueCutoff 0.05 and BH correction. The clinical post/pre analysis instead ranked by absolute log10 P times the fold-change sign and used permutation inference. | Methods / RNA-seq analyses |
 | deepTools | Used deepTools2.5.3 within ChIP_Zwart0.1.2 for reported FRiP/normalized ChIP-seq signal and tornado plots; bigwigCompare averaged RPGC1x replicate tracks within each condition. | Methods / ChIP–seq |
 | DESeq2 | Used DESeq2 1.22.2 for RNA-seq differential expression with adjusted P<0.05 and absolute log2 fold change>1. A separate human post-versus-pre analysis used a DESeq2 negative-binomial Wald test and BH correction before pathway analyses. | Methods / RNA-seq analyses |
@@ -834,7 +834,7 @@ Nature · 2023-12-13 · [DOI](https://doi.org/10.1038/s41586-023-06824-9) · [Pr
 | --- | --- | --- |
 | BEDTools | Genomic interval manipulation and overlap. | Methods / Identification of reproducible peak sets in each cell cluster |
 | BWA | DNA read alignment. | Methods / Processing and alignment of sequencing reads |
-| ChIPseeker | Peak annotation relative to genes and genomic features. | Methods / TE analysis |
+| ChIPseeker | Used ChIPseeker 1.34.1 for the genomic-location strategy linking TE-derived candidate cis-regulatory elements to genes within 3 kb flanking regions; cCRE-gene correlation was a separate strategy. | Methods / TE analysis |
 | clusterProfiler | Performed GO enrichment with analysis-specific background genes, Fisher exact P values and BH multiple-comparison correction. | Methods / GO enrichment |
 | Leiden | Grouped observations into communities using a neighborhood graph. | Methods / Iterative cell clustering / Graph-based clustering |
 | MACS | Called peaks from Tn5-corrected cell-cluster pseudobulks, biological replicates, half-read pseudoreplicates and their pool using MACS2 with shift -75, extension 150, no model, summits, SPMR and q-value 0.01. Extended summits to 501 bases and filtered reproducible peaks with score per million at least 5. | Methods / Identification of reproducible peak sets in each cell cluster |
@@ -856,7 +856,7 @@ Nature · 2024-12-04 · [DOI](https://doi.org/10.1038/s41586-024-08307-x) · [Pr
 | --- | --- | --- |
 | Bowtie 2 | Short-read alignment. | Methods / Cut&Tag data processing |
 | BWA | DNA read alignment. | Methods / ATAC-seq data processing |
-| ChIPseeker | Peak annotation relative to genes and genomic features. | Methods / Cut&Tag data processing |
+| ChIPseeker | Annotated the genomic distribution of CUT&Tag peaks with ChIPseeker 1.22.1 after mm10 alignment and MACS2 peak calling. | Methods / Cut&Tag data processing |
 | clusterProfiler | Performed Gene Ontology enrichment in the R-loop Cut&Tag analysis after alignment, signal generation, peak calling and peak annotation. | Methods / R-loop Cut&Tag data processing |
 | deepTools | Used deepTools3.5.1 bamCoverage for ATAC/CUT&Tag tracks and separate correlation analysis. R-loop CUT&Tag tracks were normalized as reads per million before metaplots; the ATAC pipeline separately applied strand-specificTn5 shifts. | Methods / ATAC-seq data processing |
 | DESeq2 | Used DESeq2 1.26.0 to identify differential accessibility in an ATAC-seq peak atlas built around summits extended by 500 bp in each direction. | Methods / ATAC-seq data processing |
@@ -2452,7 +2452,7 @@ Nature Genetics · 2023-11-09 · [DOI](https://doi.org/10.1038/s41588-023-01554-
 | --- | --- | --- |
 | Bowtie 2 | Short-read alignment. | Methods / Processing gRNA sequencing and gRNA analysis for FACS-based screens |
 | Cell Ranger | Processed/demultiplexed scRNA-seq and generated transcript and guide-RNA UMI counts per cell barcode using CellRanger v6.0.1. | Methods / Processing and analyzing scRNA-seq |
-| ChIPseeker | Peak annotation relative to genes and genomic features. | Methods / ATAC-seq |
+| ChIPseeker | Used ChIPseeker to annotate genomic regions and retrieve the nearest gene around each ATAC-seq peak in the hg38 analysis; peak calling, union-peak counting and DESeq2 testing were separate steps. | Methods / ATAC-seq |
 | deepTools | Generated CPM-normalized ATAC-seq bigWigs with deepTools3.0.1 bamCoverage after Bowtie1,blacklist and duplicate filtering. | Methods / ATAC-seq |
 | DESeq2 | Used DESeq2 for guide-abundance differences in FACS screens, RNA-seq Wald tests and ATAC-seq differences; only the ATAC-seq paragraph explicitly reports version 1.36. Guide results fed empirical controls and mRRA gene aggregation, and CRISPR-knockout guide comparisons were followed by MAGeCK gene analysis. | Methods / Processing gRNA sequencing and gRNA analysis for FACS-based screens |
 | DoubletFinder | Single-cell doublet detection. | Methods / Processing and analyzing scRNA-seq |
@@ -2619,7 +2619,7 @@ Nature Genetics · 2025-11-05 · [DOI](https://doi.org/10.1038/s41588-025-02388-
 | BEDTools | Genomic interval manipulation and overlap. | Methods / ChIP–seq data analyses |
 | Bowtie 2 | Short-read alignment. | Methods / ATAC-seq data processing |
 | BWA | DNA read alignment. | Methods / ChIP–seq data analyses |
-| ChIPseeker | Peak annotation relative to genes and genomic features. | Methods / ATAC-seq data processing |
+| ChIPseeker | Annotated ATAC-seq peaks with ChIPseeker using hg38 GENCODE version 30 annotations after the reported alignment, filtering, peak-calling and DESeq2 workflow. | Methods / ATAC-seq data processing |
 | Cutadapt | Adapter trimming. | Methods / RNA sequencing |
 | deepTools | Used deepTools3.5.4 bamCoverage with RPGC for ChIP-seq and computeMatrix/plotHeatmap around genomic features. Separate ATAC preprocessing used alignmentSieve ATACshift in deepTools3.3.2, applying+4/-5 read-start shifts. | Methods / ChIP–seq data analyses |
 | DESeq2 | Used DESeq2 Wald statistics to rank genes for fgsea, and separately fit RNA-seq PTGES3 knockdown/control and ATAC-seq accessible-region differences, applying adjusted P<0.05 and absolute log2FC>1 selection. | Methods / STRING and gene set enrichment analysis |
@@ -2741,7 +2741,7 @@ Nature Genetics · 2024-10-03 · [DOI](https://doi.org/10.1038/s41588-024-01892-
 | Tool | How used | Evidence location |
 | --- | --- | --- |
 | BWA | DNA read alignment. | Methods / GM12878 ATAC–seq processing and peak scoring |
-| ChIPseeker | Peak annotation relative to genes and genomic features. | Methods / Defining enhancer categories |
+| ChIPseeker | Applied ChIPseeker annotatePeak with TxDb.Hsapiens.UCSC.hg19.knownGene annotations to retain enhancers for caQTL/no-effect SNP sets. Separately sampled 25,000 reference peaks and retained distal/intron categories, yielding approximately 21,000 putative reference enhancers. | Methods / Defining enhancer categories |
 | deepTools | Converted sorted/indexed GM12878 ATAC BAMs to bigWig with deepTools3.5.0 bamCoverage; downstream enhancer accessibility summed counts in±350bp around peak centers. | Methods / GM12878 ATAC–seq processing and peak scoring |
 | DESeq2 | Used DESeq2 for expression changes in BET-inhibitor-treated cardiomyocytes, keeping genes with at least 10 counts across replicates before differential analysis. | Methods / Assessing BETi sensitivity in CMs |
 | MEME | Named MEME Suite as the provider of Tomtom for motif-similarity comparisons. Hierarchically clustered similarities and summarized TF-class motif pairs passing q < 0.1. | Methods / Analysis of TF BS syntax |
@@ -3771,7 +3771,7 @@ American Journal of Human Genetics · 2024-10-30 · [DOI](https://doi.org/10.101
 | --- | --- | --- |
 | BEDTools | Genomic interval manipulation and overlap. | Material and methods / Transcriptome analysis / Differential expression |
 | BWA | DNA read alignment. | Material and methods / Hi-C contact maps |
-| ChIPseeker | Peak annotation relative to genes and genomic features. | Material and methods / Hi-C contact maps |
+| ChIPseeker | Analyzed Hi-C loop-anchor coordinates with ChIPseeker using the reported UCSC.hg38.knownGene annotations after Juicer contact-map processing and resolution/long-range-contact quality checks. | Material and methods / Hi-C contact maps |
 | HISAT2 | Mapped RNA-seq to the stated no-alt-plus-hs38d1 hg38 reference with HISAT2 2.1.0 --rna-strandness RF --downstream-transcriptome-assembly. | Material and methods / Transcriptome analysis / Differential expression |
 | HTSeq | Used the HTSeq count function, reported as version 0.13, to prepare a count table after HISAT2 alignment to hg38 and SAMtools sorting/conversion. Differential expression used limma with voom transformation. | Material and methods / Transcriptome analysis / Differential expression |
 | Integrative Genomics Viewer (IGV) | Reported IGV v2.12.3 among the tools used to visualize Hi-C contacts and annotated features,together with Juicebox,HiCExplorer and pyGenomeTracks. | Material and methods / General statistical analysis and plotting |
