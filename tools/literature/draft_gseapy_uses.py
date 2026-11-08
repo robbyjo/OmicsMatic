@@ -1,0 +1,36 @@
+# Copyright (C) 2026 JLinAlg contributors; SPDX-License-Identifier: GPL-3.0-or-later
+"""Draft all six primary-bound GSEApy roles without changing the frozen catalog or existing reviews."""
+import argparse,gzip,hashlib,json,sys
+import xml.etree.ElementTree as ET
+from pathlib import Path
+sys.path.insert(0,str(Path(__file__).resolve().parent))
+from setup_deseq2_reference import ROOT,pin,save
+from collect_omics_review import paragraphs
+
+ROLES={
+'P009':dict(anchor=110,support=[118,119],version='1.0.4',methods=['Enrichr'],summary='Used GSEApy1.0.4 Enrichr with GO_Biological_Process_2023 on separately upregulated/downregulated TISSUE differential-expression lists; the later Methods passage specifies mouse organism and all imputed genes as background.',scope='A remote Enrichr service/library call is distinct from offline enrichment against an explicitly supplied local library. Preserve direction-specific input lists, exact2023 resource and all-imputed-gene background. Do not substitute the separate topGO analysis, all MERFISH-measured genes or a generic default population. The package edition does not freeze the remote server or gene-set contents.'),
+'P053':dict(anchor=72,support=[],version=None,methods=['Enrichr'],summary='Used the GSEApy Enrichr module with GO biological process2021 and analysis-specific backgrounds: expressed genes, genes with ABC enhancers, genes tested for cell-type differential expression, or tested genes with an ABC link.',scope='The package edition and precise calls are not reported here. Keep each background attached to its stated comparison; do not pool backgrounds or infer default population size, organism mapping or a preranked GSEA mode.'),
+'P062':dict(anchor=43,support=[41],version='1.1.8',methods=['unspecified GSEA'],summary='Reported GSEA through GSEApy1.1.8 after single-cell integration and differential-expression processing, referring to the general package tutorial.',scope='The cited paragraph does not specify prerank versus phenotype GSEA versus another enrichment API, ranked statistic, gene sets, size limits, permutations, seed or background. Preserve that ambiguity; the Pearson-normalized, squared-root normalized and MAGIC-imputed matrices have separate stated uses and do not establish GSEA input eligibility.'),
+'P079':dict(anchor=48,support=[51],version=None,methods=['reported gene set variation analysis','reported gene set enrichment analysis'],summary='Reported GSEApy gene set variation analysis supporting altered replication-timing classifications with matched bulk expression and comparison against915 samples from347 other patients; a separate GSEApy enrichment analysis used selected amplifications in high-proliferation clones.',scope='The named GSVA citation is not sufficient to infer the GSEApy gsva or ssgsea callable. Supplementary Notes31 and34 are referenced for details; package edition and exact input/ranking/permutation settings remain unresolved from these paragraphs. Do not credit the separate DESeq2 gene test to GSEApy or claim independent validation of patient specificity.'),
+'P098':dict(anchor=39,support=[],version='1.1.3',methods=['reported two-tailed hypergeometric enrichment'],summary='Reported GSEApy1.1.3 enrichment of regulators in Group4 EnhBiv-enriched promoters using human-relevant ChEA regulator-target associations, with a two-tailed hypergeometric test and FDR correction.',scope='The source statement explicitly says two-tailed. Original local GSEApy stats.calc_pvalues instead computes a one-sided upper hypergeometric tail. Retain this unresolved method discrepancy; do not relabel it as the original local Enrichr test, infer a background, silently replace the reported tail or claim paper reproduction.'),
+'P161':dict(anchor=69,support=[],version='1.1.2',methods=['Enrichr'],summary='Used GSEApy1.1.2 through EnrichR for WikiPathway_2023_Human enrichment, with all measured expressed genes as background and input genes selected by adjusted P<0.05.',scope='Keep the expressed-gene background and exact named pathway resource. The adjusted-P threshold selects input genes; this paragraph does not specify the enrichment multiple-testing family, exact library contents or a frozen remote service. Local prepared-library execution is separate from recovering historical Enrichr responses.')}
+
+def main():
+    parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--out',type=Path,required=True);a=parser.parse_args();out=a.out.resolve();assert not out.exists() and out.is_relative_to(ROOT/'build/literature-review/gseapy-runtime');out.mkdir(parents=True)
+    data=ROOT/'docs/literature/omics-2023-2026';papers=json.loads((data/'papers.json').read_bytes());reviews=json.loads((ROOT/'tools/literature/reviewed-uses.json').read_bytes())['reviews'];drafts=[];mentions=[]
+    for paper in papers:
+        raw=gzip.decompress((ROOT/'build/literature-review/xml'/(paper['pmcid']+'.xml.gz')).read_bytes());assert hashlib.sha256(raw).hexdigest()==paper['xml_sha256'];xml=ET.fromstring(raw);assert next(e.text for e in xml.findall('front/article-meta/article-id') if e.get('pub-id-type')=='doi').lower()==paper['doi'].lower();ps=paragraphs(xml);by={p['paragraph_index']:p for p in ps};named=[p for p in ps if 'gseapy' in p['text'].lower()]
+        if named:mentions.append(paper['paper_id'])
+        if paper['paper_id'] not in ROLES:assert not named;continue
+        role=ROLES[paper['paper_id']];anchor=by[role['anchor']];assert 'gseapy' in anchor['text'].lower();tool=next(t for t in paper['tools'] if t['tool_id']=='gseapy');assert tool['evidence_paragraph_index']==role['anchor'] and tool['evidence_paragraph_sha256']==hashlib.sha256(anchor['text'].encode()).hexdigest()
+        evidence=[]
+        for index in [role['anchor'],*role['support']]:
+            row=by[index];evidence.append(dict(paragraph_index=index,section=row['section'],text=row['text'],sha256=hashlib.sha256(row['text'].encode()).hexdigest()))
+        drafts.append(dict(paper_id=paper['paper_id'],pmcid=paper['pmcid'],doi=paper['doi'],xml_sha256=paper['xml_sha256'],primary_paragraph=role['anchor'],reported_version=role['version'],reported_methods=role['methods'],use_summary=role['summary'],implementation_scope_note=role['scope'],primary_evidence=evidence,prior_review=[r for r in reviews if r['pmcid']==paper['pmcid'] and r['tool_id']=='gseapy']))
+    assert mentions==sorted(ROLES) and len(drafts)==6
+    save(out/'gseapy-use-drafts.json',dict(status='six-primary-bound-GSEApy-role-drafts-not-applied',registry_applied=False,reviews_applied=False,catalog_changed=False,reviews=drafts,implementation_credit=False,whole_goal_complete=False))
+    save(out/'COMPLETED.json',dict(status='passed-250-XML-DOI-and-six-GSEApy-primary-role-drafts',source_records=250,papers=mentions,prior_reviews_preserved=988,draft=pin(out/'gseapy-use-drafts.json'),papers_pin=pin(data/'papers.json'),reviews_pin=pin(ROOT/'tools/literature/reviewed-uses.json'),source_pins={Path(__file__).resolve().relative_to(ROOT).as_posix():pin(Path(__file__).resolve())},catalog_changed=False,implementation_credit=False,whole_goal_complete=False));print('Verified250 XML/DOIs; six distinct primary-bound GSEApy role drafts; no catalog/review changes')
+
+if __name__=='__main__':
+    if not __debug__:raise RuntimeError('Never disable source-role checks')
+    main()
