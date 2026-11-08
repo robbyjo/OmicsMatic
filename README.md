@@ -64,8 +64,8 @@ See the [command-line plotting vignette](https://robbyjo.github.io/OmicsMatic/pl
 
 The [250-paper catalog](docs/literature/omics-2023-2026/README.md) records 390 named
 tools and 2,450 paper-tool observations from Nature, Nature Genetics and AJHG.
-There are 83 new scoped integrations (17 native Java methods and 66 upstream
-adapters), or 86 including three existing adapters; 248 named tools still need
+There are 84 new scoped integrations (17 native Java methods and 67 upstream
+adapters), or 87 including three existing adapters; 247 named tools still need
 integration. The full implementation goal remains open.
 
 The new [dndscv guide](docs/literature/DNDSCV_WORKFLOWS.md) covers native coding
@@ -93,6 +93,11 @@ The [Hail workflow guide](docs/literature/HAIL_WORKFLOWS.md) covers original
 QC/filtering, MatrixTable reuse, LD/PCA, liftover and LOCAL Batch DAGs, with a
 separate exact private installer and prominent skip/failure recovery. The native
 Java sample-QC component needs no Hail runtime. Cloud execution remains skipped.
+
+The [LeafCutter workflow guide](docs/literature/LEAFCUTTER_WORKFLOWS.md) covers
+original junction clustering, phenotype/PCA preparation and differential-splicing
+fits, with native Java audits, a separate exact private installer and explicit
+case-sensitive filesystem, skipped-analysis and atomic-failure recovery.
 
 ## License
 

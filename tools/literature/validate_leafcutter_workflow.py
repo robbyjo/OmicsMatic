@@ -1,0 +1,29 @@
+# Copyright (C) 2026 JLinAlg contributors; SPDX-License-Identifier: GPL-3.0-or-later
+"""Execute the actual public Java LeafCutter adapter and check full original/native scientific outputs and atomic admission; no paper/catalog credit."""
+import argparse,json,subprocess,traceback
+from pathlib import Path
+from setup_deseq2_reference import ROOT,pin,save
+from validate_mashr_native import linux
+
+
+def main():
+    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--build',required=True,type=Path);p.add_argument('--fixtures',required=True,type=Path);p.add_argument('--reference',required=True,type=Path);p.add_argument('--out',required=True,type=Path);a=p.parse_args();out=a.out.resolve();assert out.is_relative_to(ROOT/'build/literature-review/leafcutter-runtime') and not out.exists();out.mkdir(parents=True);state=dict(status='FAIL2_PUBLIC_LEAFCUTTER_WORKFLOW_VALIDATION_INCOMPLETE',implementation_credit=False,whole_goal_complete=False)
+    try:
+        build=json.loads((a.build/'COMPLETED.json').read_bytes());jar=ROOT/build['artifact']['path'];assert pin(jar)=={k:build['artifact'][k] for k in ['bytes','sha256']};sources=dict(build['source_pins']);sources[Path(__file__).resolve().relative_to(ROOT).as_posix()]=pin(Path(__file__));assert all(pin(ROOT/name)==want for name,want in sources.items());reference=json.loads((a.reference/'COMPLETED.json').read_bytes());assert reference['status']=='PASS_COMPLETE_ORIGINAL_LEAFCUTTER_FULL_WORKFLOW_CONTROLS_ONLY' and reference['runtime_trees_unchanged'] is True;request=json.loads((a.fixtures/'request.json').read_bytes());request['out']=linux(out/'analysis');save(out/'request.json',request);pins=json.loads((a.fixtures/'input-pins.json').read_bytes());assert all(pin(a.fixtures/name)==want for name,want in pins.items());command=['wsl','-d','JLinAlg-Omics-SAIGE-20261026','--exec','/usr/bin/env','-u','JAVA_TOOL_OPTIONS','-u','_JAVA_OPTIONS','-u','JDK_JAVA_OPTIONS','/usr/bin/java','-Xmx3g','-cp',linux(jar),'org.jlinalg.cli.LeafCutterWorkflowCli','--request',linux(out/'request.json')]
+        with (out/'java.stdout').open('xb') as stdout,(out/'java.stderr').open('xb') as stderr:result=subprocess.run(command,cwd=ROOT,stdin=subprocess.DEVNULL,stdout=stdout,stderr=stderr,creationflags=subprocess.CREATE_NO_WINDOW)
+        save(out/'java.process.json',dict(command=command,exit_code=result.returncode));assert result.returncode==0,'Actual public Java adapter failed; inspect complete analysis WARNINGS.md and java.stderr';analysis=out/'analysis';status=json.loads((analysis/'analysis-status.json').read_bytes());assert status['status']=='PASS_ORIGINAL_LEAFCUTTER_WORKFLOWS' and status['result_admitted'] is True and len(status['cases'])==len(request['analyses']);process=json.loads((analysis/'worker/original.process.json').read_bytes());assert process['exit_code']==0 and process['owned_live_after_cleanup']==[];assert json.loads((analysis/'worker/java-process.json').read_bytes())['owned_live_after_cleanup']==[];manifest=json.loads((analysis/'manifest.json').read_bytes());assert all(pin(analysis/name)==want for name,want in manifest['files'].items());assert pin(analysis/'manifest.json')['sha256']==status['manifest_sha256'];checks=dict(cases=len(status['cases']),native_audit_operations=json.loads((analysis/'native-audit.json').read_bytes())['audit_operations'],complete_output_files=len(manifest['files']),complete_original_table_comparisons=0)
+        # Original program TSV families compare by complete field/row order.
+        # R table formatting stays unchanged; binary fits and 17-digit snapshots
+        # remain the authority for sensitive objective differences/tails.
+        for case in request['analyses']:
+            if case['kind']=='differential' or 'differential' in case:
+                for name in ['original_cluster_significance.txt','original_effect_sizes.txt']:
+                    left=a.reference/'worker'/case['id']/'differential'/name;right=analysis/'worker'/case['id']/'differential'/name;assert left.read_bytes()==right.read_bytes(),('Complete unchanged original table differs',case['id'],name);checks['complete_original_table_comparisons']+=1
+        assert all(pin(a.fixtures/name)==want for name,want in pins.items()) and all(pin(ROOT/name)==want for name,want in sources.items()) and pin(jar)=={k:build['artifact'][k] for k in ['bytes','sha256']} and pin(ROOT/'build/cli/omicsmatic-0.3.7.jar')==build['canonical_executable_unchanged'];state.update(status='PASS_COMPLETE_PUBLIC_LEAFCUTTER_WORKFLOW_REFERENCE_AND_NATIVE_AUDITS_ONLY',artifact=build['artifact'],source_pins=sources,checks=checks,reference_manifest=pin(a.reference/'COMPLETED.json'),analysis_manifest=pin(analysis/'manifest.json'),canonical_executable_unchanged=build['canonical_executable_unchanged'])
+    except Exception as failure:state['error']=repr(failure);(out/'error.traceback').write_text(traceback.format_exc(),encoding='utf8',newline='\n')
+    action='Required action: full LeafCutter remains uncredited until complete setup/runtime/source/native/protocol/paper-use gates pass. Preserve failed Java/original outputs and every original warning/error. Correct the named cause and repeat NEW paths, without dropping a case/field, repairing original values or refreshing frozen scientific hashes. Missing/forbidden software keeps dependent analysis skipped; incomplete atomic batches admit no partial result.';state['required_action']=action;save(out/'COMPLETED.json',state);(out/'WARNINGS.md').write_text('# '+state['status']+'\n\n'+state.get('error','Complete public workflow science comparison only; remaining integration gates stay separate.')+'\n\n'+action+'\n',encoding='utf8',newline='\n');print(state['status'],state.get('error',''));return 0 if state['status'].startswith('PASS_') else 2
+
+
+if __name__=='__main__':
+    if not __debug__:raise RuntimeError('Never disable complete public workflow checks')
+    raise SystemExit(main())

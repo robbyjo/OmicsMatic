@@ -1,0 +1,117 @@
+[
+  {
+    "paper_id": "P073",
+    "primary_paragraph": 37,
+    "section": "Methods / Quantification of mRNA AS",
+    "review": {
+      "pmcid": "PMC11631754",
+      "doi": "10.1038/s41588-024-02019-8",
+      "tool_id": "leafcutter",
+      "evidence_paragraph_sha256": "4ae9976d4a574086ba91ac062e67a155601eff57803669e3b9874247f813449c",
+      "use_summary": "Quantified pseudobulk intron usage with LeafCutter0.2.9 and prepared sQTL phenotypes with its prepare_phenotype_table.py script, filtering introns with zero counts in more than40% of samples or SD below0.005. Separately used LeafCutter0.2.7 for sex-biased differential splicing and LeafCutter for pairwise ancestry comparisons.",
+      "implementation_scope_note": "Quantification/preprocessing is reported as0.2.9, separately from sex-analysis version0.2.7. Sex models adjusted for age, sequencing center and five genotype PCs; ancestry comparisons adjusted for sex/age in Singapore, with BH FDR<0.05. The paper zero-count wording does not resolve intron-numerator versus cluster-denominator masking; the current script marks denominator<1 as missing. SAMtools pooling, RegTools0.0.1 extraction, SpliZ scores and GENCODE32 remain separate. No immutable paper revision, historical R execution or unreported default argument is inferred.",
+      "version_reported_near_name": "0.2.9",
+      "usage_context": "intron-quantification-sQTL-phenotypes-and-pairwise-differential-splicing",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 38,
+          "section": "Methods / Differential splicing analysis across sex and ancestry",
+          "paragraph_sha256": "9b88356ab58a61090752603d7299ca44b8533fa57628ba21b7537e87d74b0ae2"
+        },
+        {
+          "paragraph_index": 39,
+          "section": "Methods / Differential splicing analysis across sex and ancestry",
+          "paragraph_sha256": "1845b301b5e1a8f5a1c189a71ac3cbb89dafaa1037d4638faa74d6ba22778c2d"
+        }
+      ]
+    },
+    "xml_sha256": "1c5a9bc6f69280e434474ef1cb19729d0fb6bcbb8977c0daf6a68765553bdfe4"
+  },
+  {
+    "paper_id": "P132",
+    "primary_paragraph": 60,
+    "section": "Methods / CH GWAS / RNA eQTL and sQTL analysis",
+    "review": {
+      "pmcid": "PMC10703693",
+      "doi": "10.1038/s41588-023-01555-z",
+      "tool_id": "leafcutter",
+      "evidence_paragraph_sha256": "b9be2f9156169d53c7c023c38a4f97c8aa128c055a7b2b48e1f9de71d1762240",
+      "use_summary": "Used LeafCutter0.2.6 to quantify RNA alternative splicing before additive genetic association tests on quantile-normalized junction PSI phenotypes.",
+      "implementation_scope_note": "The downstream regression adjusted for sequencing artifacts, demographics, blood cell counts and15 leave-one-chromosome-out PSI components; COLOC was separate. The paragraph does not identify the exact LeafCutter entrypoint, preprocessing script/options or immutable revision. Do not recast the downstream additive sQTL regression as LeafCutter differential-splicing fitting, or infer that current-source preprocessing/PCA orientation reproduces the historical PSI matrix.",
+      "version_reported_near_name": "0.2.6",
+      "usage_context": "intron-splicing-quantification-for-additive-sQTL-regression"
+    },
+    "xml_sha256": "3c71952c0b5cda7ed9b9aa4b719e22be08396c5943cafef6973884971326911f"
+  },
+  {
+    "paper_id": "P157",
+    "primary_paragraph": 44,
+    "section": "Methods / eQTL and sQTL fine-mapping",
+    "review": {
+      "pmcid": "PMC11525184",
+      "doi": "10.1038/s41588-024-01896-3",
+      "tool_id": "leafcutter",
+      "evidence_paragraph_sha256": "e27cb6d5f08ec56dde49eb50f7da4c6cb4738db661b73f0c51bd6c7e5d949722",
+      "use_summary": "Quantified splicing levels using LeafCutter0.2.7 for an sQTL calling/fine-mapping pipeline that included15 PEER factors.",
+      "implementation_scope_note": "The study-specific pipeline used a cis-window within0.1Mb of intron-cluster centers, omitted GTEx WASP and z-score filters, and removed nominally tested clusters whose minimum P exceeded5e-8. These downstream masks, PEER adjustment, association and fine-mapping choices are not assigned to the LeafCutter clustering or differential-splicing kernel. Exact clustering/preprocessing arguments and the historical R runtime are not established by this paragraph.",
+      "version_reported_near_name": "0.2.7",
+      "usage_context": "splicing-quantification-before-cis-sQTL-calling-and-fine-mapping"
+    },
+    "xml_sha256": "98edf86475be2175e390999f6b7b6cd2ec2d2aefd39c79956a91384df78b59d1"
+  },
+  {
+    "paper_id": "P190",
+    "primary_paragraph": 32,
+    "section": "Results / Analysis of GTEx tissues points to potential improvement for sQTL modeling",
+    "review": {
+      "pmcid": "PMC12626415",
+      "doi": "10.1016/j.ajhg.2025.10.012",
+      "tool_id": "leafcutter",
+      "evidence_paragraph_sha256": "e5fb732dfe9d57e3ddf0660860e3997982e3b0547736b22f05b456212de651bd",
+      "use_summary": "Used LeafCutter intron-cluster splicing quantification as one molecular representation in the standard sQTL benchmark across five GTEx tissues, comparing it with MAJIQ LSVs and normalized Salmon isoform expression.",
+      "implementation_scope_note": "This is actual Results-based quantification/benchmark use, rather than a generic introduction mention. The LeafCutter release, immutable revision and clustering/phenotype parameters are not reported in this paragraph. MAJIQ intron-retention representation, Salmon transcript-start/end differences, MAJIQTL models and the downstream standard-sQTL tests remain separate; LeafCutter is not credited with those event types, models or paper-specific association results.",
+      "version_reported_near_name": null,
+      "usage_context": "intron-cluster-splicing-representation-in-standard-sQTL-benchmark"
+    },
+    "xml_sha256": "44f6ab09c1f38e8f26fa9d8f37c3c88fde3a61efa85113a67259d2bb9927fb71"
+  },
+  {
+    "paper_id": "P201",
+    "primary_paragraph": 10,
+    "section": "Subjects, material, and methods / Differential alternative splicing analysis",
+    "review": {
+      "pmcid": "PMC11568790",
+      "doi": "10.1016/j.ajhg.2024.09.004",
+      "tool_id": "leafcutter",
+      "evidence_paragraph_sha256": "caa9702779c981624e216c9756609fa94b666328faf22ae8db491eddae109d6a",
+      "use_summary": "Used LeafCutter to cluster intron excision events and calculate standardized, quantile-normalized excision ratios for sQTL phenotypes. The paper reports50reads per cluster and a500kb maximum intron length.",
+      "implementation_scope_note": "The paper labels50reads/500kb as defaults without an exact release. Keep these reported settings distinct from current30reads/100kb and the current additional per-intron threshold; they do not fully specify historical clustering. The aligned-read reference is GRCh38/Ensembl110. LeafViz annotation/visualization, QTLTools association/permutations,29 PEER factors and five genotype PCs remain separate. The text does not establish the current normalization axis, native PCA covariates, differential testing or exact script identity.",
+      "version_reported_near_name": null,
+      "usage_context": "intron-excision-ratios-and-normalized-sQTL-phenotypes",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 14,
+          "section": "Subjects, material, and methods / cis-sQTL mapping",
+          "paragraph_sha256": "0da0540228994dcc8e433642a4336c024f65832c719f2e282ac69a16f04a5df7"
+        }
+      ]
+    },
+    "xml_sha256": "405d53aae833dabbdca2d4dcf82fd0ce5d250102cd27c27f0e707acbb3b4163f"
+  },
+  {
+    "paper_id": "P238",
+    "primary_paragraph": 28,
+    "section": "Results / SpliTWAS uncovered more biologically plausible associations than TWAS",
+    "review": {
+      "pmcid": "PMC11339621",
+      "doi": "10.1016/j.ajhg.2024.06.001",
+      "tool_id": "leafcutter",
+      "evidence_paragraph_sha256": "9b17c0e200f6ee8801765fb9c4fccb769e45397ef0a057a5db29c8687a708901",
+      "use_summary": "Compared SpliTWAS associations with a LeafCutter-plus-FUSION splicing-based TWAS comparator, assessing overlapping and method-specific associated genes.",
+      "implementation_scope_note": "The Results paragraph supports the comparator role but does not establish whether LeafCutter quantification/weights were newly generated or reused, its release, clustering/preprocessing options or the trained FUSION models. Do not infer a fresh clustering run or LeafCutter differential-splicing test. The later Discussion describes general intron-event TWAS; SpliTWAS logit-transformed exon PSI and heritability-window choices are not reassigned to LeafCutter.",
+      "version_reported_near_name": null,
+      "usage_context": "splicing-TWAS-benchmark-comparator-with-FUSION"
+    },
+    "xml_sha256": "9fd7fe14cbd31d5549507415ad91c6c1770f726c6c753ed8f8e32c4afe467ba9"
+  }
+]

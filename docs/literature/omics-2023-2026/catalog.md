@@ -1447,7 +1447,7 @@ Nature Genetics · 2024-12-03 · [DOI](https://doi.org/10.1038/s41588-024-02019-
 | deepTools | Used deepTools3.5.1 to visualize read distribution after STARsolo two-pass/WASP alignment, barcode/UMI-aware duplicate handling and selection of unique proper pairs passing WASP. | Methods / Quantification of mRNA AS |
 | DRAGEN | Sequencing alignment, variant or RNA processing platform; named workflow must be identified. | Methods / scRNA-seq data processing and QC |
 | LDSC | Used for SNP heritability estimation; annotation-stratified genetic enrichment. | Methods / Complex trait associations |
-| LeafCutter | Intron excision quantification and splicing analysis. | Methods / Quantification of mRNA AS |
+| LeafCutter | Quantified pseudobulk intron usage with LeafCutter0.2.9 and prepared sQTL phenotypes with its prepare_phenotype_table.py script, filtering introns with zero counts in more than40% of samples or SD below0.005. Separately used LeafCutter0.2.7 for sex-biased differential splicing and LeafCutter for pairwise ancestry comparisons. | Methods / Quantification of mRNA AS |
 | mashr | mashr0.2.79 learns empirical correlation from 20,000 random cis-sQTL tests and data-driven covariances from strong minimum-P tests per gene, then predicts posterior means and LFSR for the strong targets. | Methods / cis-sQTL mapping |
 | Picard | Alignment QC, duplicates and sequence processing. | Methods / Quantification of mRNA AS |
 | PLINK | Genotype QC, association, relatedness, LD or score calculations. | Methods / Genotype data processing and QC |
@@ -2603,7 +2603,7 @@ Nature Genetics · 2023-11-06 · [DOI](https://doi.org/10.1038/s41588-023-01555-
 | GATK | Variant discovery and recalibration. | Methods / WGS for CH case definition / UKB |
 | Graphtyper | Graph-based genotyping. | Methods / CH GWAS / Genotyping, WGS and imputation |
 | kallisto | Estimated transcript abundances with kallisto after the study's personalized-genome RNA-seq workflow,then used BOLT-LMM for additive cis-eQTL tests with artifact/demographic/blood-cell/100LOCO-PC adjustment. | Methods / CH GWAS / RNA eQTL and sQTL analysis |
-| LeafCutter | Intron excision quantification and splicing analysis. | Methods / CH GWAS / RNA eQTL and sQTL analysis |
+| LeafCutter | Used LeafCutter0.2.6 to quantify RNA alternative splicing before additive genetic association tests on quantile-normalized junction PSI phenotypes. | Methods / CH GWAS / RNA eQTL and sQTL analysis |
 | Picard | Alignment QC, duplicates and sequence processing. | Methods / WGS for CH case definition / UKB |
 | SKAT-O | Adaptive burden/kernel rare-variant testing. | Methods / Somatic genetics / Gene-based somatic mutation burden testing |
 | STAR | Splice-aware bulk RNA read alignment and optional raw gene counts. | Methods / CH GWAS / RNA eQTL and sQTL analysis |
@@ -3062,7 +3062,7 @@ Nature Genetics · 2024-09-24 · [DOI](https://doi.org/10.1038/s41588-024-01896-
 | FastQTL | Permutation-based molecular QTL mapping. | Methods / eQTL and sQTL fine-mapping |
 | FINEMAP | Bayesian fine-mapping of association loci. | Methods / eQTL and sQTL fine-mapping |
 | GATK | Variant discovery and recalibration. | Methods / Genotyping, RNA-seq and protein expression measurement |
-| LeafCutter | Intron excision quantification and splicing analysis. | Methods / eQTL and sQTL fine-mapping |
+| LeafCutter | Quantified splicing levels using LeafCutter0.2.7 for an sQTL calling/fine-mapping pipeline that included15 PEER factors. | Methods / eQTL and sQTL fine-mapping |
 | PEER | Latent confounder estimation. | Methods / eQTL and sQTL fine-mapping |
 | RSEM | Quantified transcripts with RSEM 1.3.0 after STAR 2.5.3a alignment to hg38 in a GTEx-based expression/eQTL workflow. | Methods / eQTL and sQTL fine-mapping |
 | STAR | Splice-aware bulk RNA read alignment and optional raw gene counts. | Methods / eQTL and sQTL fine-mapping |
@@ -3682,7 +3682,7 @@ American Journal of Human Genetics · 2025-11-12 · [DOI](https://doi.org/10.101
 | --- | --- | --- |
 | ACAT | Cauchy aggregation of association evidence. | Results / Analysis of GTEx tissues points to potential improvement for sQTL modeling |
 | coloc | Used COLOC to compare MAJIQTL-derived splicing QTLs with Alzheimer and Parkinson GWAS summary statistics and retained colocalized signals at PPH4>0.5. | Results / MAJIQTL improves sQTL enrichment in functional annotation and identifies sQTLs that explain the GWAS signal for neurodegenerative disorders |
-| LeafCutter | Intron excision quantification and splicing analysis. | Results / Analysis of GTEx tissues points to potential improvement for sQTL modeling |
+| LeafCutter | Used LeafCutter intron-cluster splicing quantification as one molecular representation in the standard sQTL benchmark across five GTEx tissues, comparing it with MAJIQ LSVs and normalized Salmon isoform expression. | Results / Analysis of GTEx tissues points to potential improvement for sQTL modeling |
 | MAJIQ | Splicing quantification and differential analysis. | Results / Analysis of GTEx tissues points to potential improvement for sQTL modeling |
 | QTLtools | Molecular QTL mapping and QC. | Results / Analysis of GTEx tissues points to potential improvement for sQTL modeling |
 | rMATS | Differential alternative splicing. | Results / MAJIQTL offers a robust and powerful statistical framework for sQTL discovery and analysis |
@@ -3874,7 +3874,7 @@ American Journal of Human Genetics · 2024-10-08 · [DOI](https://doi.org/10.101
 | coloc | Shared-signal colocalization analysis. | Subjects, material, and methods / Colocalization analysis with genome-wide association study hematological traits |
 | DEXSeq | Differential exon usage. | Subjects, material, and methods / Isoform switching analyses |
 | FastQC | Sequencing read quality assessment. | Subjects, material, and methods / RNA-seq processing |
-| LeafCutter | Intron excision quantification and splicing analysis. | Subjects, material, and methods / Differential alternative splicing analysis |
+| LeafCutter | Used LeafCutter to cluster intron excision events and calculate standardized, quantile-normalized excision ratios for sQTL phenotypes. The paper reports50reads per cluster and a500kb maximum intron length. | Subjects, material, and methods / Differential alternative splicing analysis |
 | liftOver R workflow (rtracklayer interface) | Converted BLUEPRINT sQTL coordinates from hg19 to hg38 with the reported R liftOver packagev1.26.0 before cross-population comparison using mashr. | Subjects, material, and methods / Identifying shared cis-sQTLs and differences in effect sizes |
 | limma | Linear modelling and empirical-Bayes differential analysis. | Subjects, material, and methods / Isoform switching analyses |
 | mashr | Population sQTL sharing uses QTLTools effect/SE, a random40% set for null correlation and prior fitting, and a strong minimum-P SNP/intron-cluster set for covariance learning and prediction. Sharing requires the same sign and magnitudes within factor0.5; significance is LFSR<0.05. European MAF exclusions leave some variants untested. | Subjects, material, and methods / Identifying shared cis-sQTLs and differences in effect sizes |
@@ -4517,7 +4517,7 @@ American Journal of Human Genetics · 2024-06-25 · [DOI](https://doi.org/10.101
 | biomaRt | Downloaded Ensembl gene-ontology terms for each query and control gene through biomaRt. | Material and methods / GO analysis |
 | FUSION | Transcriptome-wide association and conditional follow-up. | Material and methods / Alternative splicing imputation and association testing with summary statistics |
 | GCTA | Heritability, mixed-model association or conditional analysis. | Material and methods / Predictive models of alternative splicing |
-| LeafCutter | Intron excision quantification and splicing analysis. | Results / SpliTWAS uncovered more biologically plausible associations than TWAS |
+| LeafCutter | Compared SpliTWAS associations with a LeafCutter-plus-FUSION splicing-based TWAS comparator, assessing overlapping and method-specific associated genes. | Results / SpliTWAS uncovered more biologically plausible associations than TWAS |
 | PLINK | Used for genotype quality control. | Material and methods / Datasets |
 
 XML SHA-256: `9fd7fe14cbd31d5549507415ad91c6c1770f726c6c753ed8f8e32c4afe467ba9`. Exact evidence paragraph hashes and locators are in [papers.json](papers.json).
