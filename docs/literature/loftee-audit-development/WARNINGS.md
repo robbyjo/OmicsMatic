@@ -1,0 +1,11 @@
+# Warnings and required actions
+
+**NATIVE AUDIT COMPONENT ONLY.** Read LOFTEE_AUDIT_DEVELOPMENT.md. Real unchanged VEP105/LOFTEE controls ran, but the typed execution adapter, production runtime supervision and paper workflows remain unfinished. LOFTEE receives no implementation credit; the catalog baseline remains80 new scoped integrations/251 missing. The canonical executable is unchanged.
+
+**FAIL2: no complete audited result after any failure.** Preserve original VCFs, logs, warnings and provisional callback/ledger rows. Correct the named cause and retry NEW paths. Do not impute HC/LC, collapse transcripts/alleles, strip flags, repair IDs, replace NaN/Inf or admit a partial stream. HC flags remain flags; non-target empty confidence is not a benign call. BCF/symbolic alleles require a separate validated profile.
+
+**SKIP3: skip dependent annotation when dependencies or resources are unavailable/forbidden.** Java audit installs nothing. Experimental private setup helpers are not a complete fresh-checkout annotation installer. The first setup JSON-reader failure, missing Bio::Perl, WSL inline-command failure, absent cache, overly strict custom-field check and incorrect shared LC expectation remain retained. Original VEP installer NOTESTS and smartmatch warnings are not hidden or relabeled as passed upstream suites.
+
+**SOURCE AND SCIENTIFIC LIMITS.** Both original LOFTEE source editions, complete synthetic inputs/VCFs/ledgers/logs and eight independent Python source-ledger comparisons are retained. GTF file-mode controls use a synthetic4000-base reference, not human GRCh38/GENCODE or a paper cache. The short-intron control did not exercise SMALL_INTRON/GC_TO_GT_DONOR. Original GERP/percentile and Perl0/false semantics stay distinct. No biological calibration, HC/LC prediction reimplementation or paper reproduction is claimed.
+
+**EXPLICIT OMISSIONS.** Private full JARs/dependency/BioPerl trees and unlicensed cited pipeline source are not redistributed. Public package URLs/digests, module-load identities, commit/archive/member identities, candidate class entries and original Apache-2.0 LOFTEE source remain available. No registered dbNSFP resource or human cache was obtained. Eight paper-role drafts are unapplied and preserve version/transcript/mask distinctions.
