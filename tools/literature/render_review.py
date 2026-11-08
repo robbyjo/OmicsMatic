@@ -23,16 +23,16 @@ from signac_catalog import signac_metadata, SIGNAC_WARNING, SIGNAC_ACTIONS
 from htseq_catalog import htseq_metadata, HTSEQ_WARNING, HTSEQ_ACTIONS
 from meme_discovery_current_catalog import meme_discovery_metadata, MEME_DISCOVERY_WARNING, MEME_DISCOVERY_ACTIONS
 from chipseeker_catalog import chipseeker_metadata, CHIPSEEKER_WARNING, CHIPSEEKER_ACTIONS
-from cellphonedb_catalog import (load_catalog_registry, current_meme_metadata as meme_discovery_metadata,
+from cellphonedb_effective_catalog import (load_catalog_registry, current_meme_metadata as meme_discovery_metadata,
     current_chipseeker_metadata as chipseeker_metadata, monocle_development_metadata, MONOCLE_WARNING, MONOCLE_ACTIONS,
     normal_fit_metadata, cicero_metadata, NORMAL_FIT_WARNING, NORMAL_FIT_ACTIONS)
-from cellphonedb_catalog import soupx_metadata, SOUPX_WARNING, SOUPX_ACTIONS, dndscv_metadata, DNDSCV_WARNING, DNDSCV_ACTIONS
-from cellphonedb_catalog import smr_metadata, SMR_WARNING, SMR_ACTIONS
-from cellphonedb_catalog import loftee_metadata, LOFTEE_WARNING, LOFTEE_ACTIONS
-from cellphonedb_catalog import biomart_metadata, BIOMART_WARNING, BIOMART_ACTIONS
-from cellphonedb_catalog import hail_metadata, HAIL_WARNING, HAIL_ACTIONS
-from cellphonedb_catalog import leafcutter_metadata, LEAFCUTTER_WARNING, LEAFCUTTER_ACTIONS
-from cellphonedb_catalog import cellphonedb_metadata, CELLPHONEDB_WARNING, CELLPHONEDB_ACTIONS
+from cellphonedb_effective_catalog import soupx_metadata, SOUPX_WARNING, SOUPX_ACTIONS, dndscv_metadata, DNDSCV_WARNING, DNDSCV_ACTIONS
+from cellphonedb_effective_catalog import smr_metadata, SMR_WARNING, SMR_ACTIONS
+from cellphonedb_effective_catalog import loftee_metadata, LOFTEE_WARNING, LOFTEE_ACTIONS
+from cellphonedb_effective_catalog import biomart_metadata, BIOMART_WARNING, BIOMART_ACTIONS
+from cellphonedb_effective_catalog import hail_metadata, HAIL_WARNING, HAIL_ACTIONS
+from cellphonedb_effective_catalog import leafcutter_metadata, LEAFCUTTER_WARNING, LEAFCUTTER_ACTIONS
+from cellphonedb_effective_catalog import cellphonedb_metadata, CELLPHONEDB_WARNING, CELLPHONEDB_ACTIONS
 from fuma_catalog import fuma_metadata, FUMA_WARNING, FUMA_ACTIONS, historical_warning as fuma_history_warning, historical_actions as fuma_history_actions
 from repeat_catalog import repeat_metadata, REPEAT_WARNING, REPEAT_ACTIONS
 from scvi_catalog import scvi_metadata, SCVI_WARNING, SCVI_ACTIONS

@@ -1,0 +1,144 @@
+{
+  "status": "eight-primary-bound-role-drafts-not-applied",
+  "registry_applied": false,
+  "implementation_credit": false,
+  "reviews": [
+    {
+      "paper_id": "P024",
+      "pmcid": "PMC13600946",
+      "xml_sha256": "95f294a27bf20b44f42ea8b780e347b1cd16849df0e48ee9745ac43600cd7c07",
+      "primary_paragraph": 107,
+      "review": {
+        "pmcid": "PMC13600946",
+        "doi": "10.1038/s41586-025-09573-z",
+        "tool_id": "palantir",
+        "evidence_paragraph_sha256": "fce9b473e8b7732bf3761ba5e83b08ea0a6cf5442d108519c95973a563f52e37",
+        "use_summary": "Ran Palantir as a trajectory-inference comparator on the microglial subset, excluding adaptive and perivascular macrophage cells. In each of200 repeats, a starting cell was sampled among donors with Braak stage0, CERAD score1 and no dementia or mild cognitive impairment. The starting cell yielding the highest Pearson correlation between inferred pseudotime and observed Braak stage was retained for the reported comparison with the neural-network predictions.",
+        "implementation_scope_note": "The Palantir edition, actual diffusion/input representation, full hyperparameters and random seed are unreported in this paragraph. The text describes UMAP construction separately and does not establish that UMAP was the Palantir input. The reported maximum-over200 root-selection correlation is a selected comparison, not an independent held-out accuracy estimate. The py-monocle wrapper is a distinct Monocle3 comparator; do not attribute that wrapper or the neural-network fit to Palantir.",
+        "usage_context": "microglial-pseudotime-comparator",
+        "version_reported_near_name": null,
+        "supporting_evidence": []
+      }
+    },
+    {
+      "paper_id": "P094",
+      "pmcid": "PMC13649600",
+      "xml_sha256": "ebd1e6a9559b288607109df25a9ef952fa78b93f938a81cb3f954c7678a8af35",
+      "primary_paragraph": 29,
+      "review": {
+        "pmcid": "PMC13649600",
+        "doi": "10.1038/s41588-026-02748-y",
+        "tool_id": "palantir",
+        "evidence_paragraph_sha256": "f8b3530a5fb0144699bbd96e20b60df48f1d676156840fc379ac0bbdb7d789c6",
+        "use_summary": "Used Palantir to obtain a multiscale diffusion space after PCA of the count-matrix subset containing1,500 highly variable genes, then generated an embedding from that space. The described principal trees and cell pseudotime were fitted downstream with scFates.",
+        "implementation_scope_note": "The Palantir edition, diffusion-component count, graph/kernel parameters and full input preprocessing are not specified here. This role establishes multiscale diffusion-space construction, not a demonstrated Palantir fate-probability, terminal-state, branch-entropy or complete pseudotime workflow. The tree and pseudotime parameters reported in this paragraph belong to scFates.",
+        "usage_context": "multiscale-diffusion-space",
+        "version_reported_near_name": null,
+        "supporting_evidence": []
+      }
+    },
+    {
+      "paper_id": "P094",
+      "pmcid": "PMC13649600",
+      "xml_sha256": "ebd1e6a9559b288607109df25a9ef952fa78b93f938a81cb3f954c7678a8af35",
+      "primary_paragraph": 29,
+      "review": {
+        "pmcid": "PMC13649600",
+        "doi": "10.1038/s41588-026-02748-y",
+        "tool_id": "scfates",
+        "evidence_paragraph_sha256": "f8b3530a5fb0144699bbd96e20b60df48f1d676156840fc379ac0bbdb7d789c6",
+        "use_summary": "Fitted scFates tl.tree SimplePPT trees in two stages: a200-node tree on harmonized nose/jaw UMAP space with method=ppt,sigma=0.5,lambda=100 and Euclidean distance, and a3,000-node tree for each sample on diffusion space with sigma=0.0005,lambda=200 and Euclidean distance. Pseudotime was obtained as tree distance from selected roots and projected to cells through the soft cell-to-node assignment matrix R.",
+        "implementation_scope_note": "The package edition, selected root identities, initialization, convergence settings and all preprocessing choices are unreported here. The200-node and3,000-node configurations are distinct analyses and must not be merged into one default. Palantir constructs the upstream multiscale diffusion space; RNA velocity and CytoTRACE are separate methods. Generic graph distance or a deterministic tree helper does not establish SimplePPT fitting parity.",
+        "usage_context": "simpleppt-tree-and-pseudotime",
+        "version_reported_near_name": null,
+        "supporting_evidence": []
+      }
+    },
+    {
+      "paper_id": "P094",
+      "pmcid": "PMC13649600",
+      "xml_sha256": "ebd1e6a9559b288607109df25a9ef952fa78b93f938a81cb3f954c7678a8af35",
+      "primary_paragraph": 30,
+      "review": {
+        "pmcid": "PMC13649600",
+        "doi": "10.1038/s41588-026-02748-y",
+        "tool_id": "stereo-saw",
+        "evidence_paragraph_sha256": "ce20a8a20782741dc47d580a5b267b40dc16e3ad3865c0d8302c02e2f7b9eb55",
+        "use_summary": "Processed Stereo-seq reads with the SAW pipeline for mapping, expression counting and cell segmentation. Stereopy conversion to h5ad, CellTypist label transfer and COMMOT communication inference were performed as subsequent, distinct stages.",
+        "implementation_scope_note": "The SAW edition, reference build, alignment/counting/segmentation options and full sample-specific settings are not reported in this paragraph. Space Ranger processes the separate Visium data; do not attribute that execution or downstream file conversion to SAW. Source/license/runtime availability requires a separate review before installation or analysis.",
+        "usage_context": "stereo-seq-mapping-counting-segmentation",
+        "version_reported_near_name": null,
+        "supporting_evidence": []
+      }
+    },
+    {
+      "paper_id": "P094",
+      "pmcid": "PMC13649600",
+      "xml_sha256": "ebd1e6a9559b288607109df25a9ef952fa78b93f938a81cb3f954c7678a8af35",
+      "primary_paragraph": 30,
+      "review": {
+        "pmcid": "PMC13649600",
+        "doi": "10.1038/s41588-026-02748-y",
+        "tool_id": "stereopy",
+        "evidence_paragraph_sha256": "ce20a8a20782741dc47d580a5b267b40dc16e3ad3865c0d8302c02e2f7b9eb55",
+        "use_summary": "Used Stereopy0.12.1 to convert the SAW-processed Stereo-seq data to h5ad before CellTypist1.6.3 label transfer and COMMOT signaling analysis.",
+        "implementation_scope_note": "The conversion entry point, exact input/output schema and detailed options are not specified here. This is a conversion role, not evidence of Stereopy mapping, segmentation, CellTypist classification or COMMOT inference. Do not substitute the separately reported1.1.0 conversion from another paper without explicit version validation.",
+        "usage_context": "stereo-seq-h5ad-conversion",
+        "version_reported_near_name": "0.12.1",
+        "supporting_evidence": []
+      }
+    },
+    {
+      "paper_id": "P117",
+      "pmcid": "PMC13553300",
+      "xml_sha256": "e4853ce47676f59ccb1964304954bffadbc36e267dfb8fcb54030f8de728b91a",
+      "primary_paragraph": 50,
+      "review": {
+        "pmcid": "PMC13553300",
+        "doi": "10.1038/s41588-026-02737-1",
+        "tool_id": "stereo-saw",
+        "evidence_paragraph_sha256": "e2c6f98e5541a60faa48a5498ea4c082d1daa727103b49f2db92c7a1d21e8d88",
+        "use_summary": "Processed adrenal Stereo-seq sequencing data with SAW7.0.0 using the GRCh38 reference. The resulting tissue.gef expression data at bin_size40 and adjusted.cellbin.gef segmented-cell expression data were used for subsequent conversion to Seurat objects.",
+        "implementation_scope_note": "Detailed mapping, filtering and segmentation settings and the exact reference bundle are not stated. bin_size40 describes the reported binned output; no physical size or alignment setting is inferred. Stereopy1.1.0 and the separate h5ad2rds.R script perform the downstream conversion. Preserve binned versus segmented-cell data and the declared GRCh38 identity.",
+        "usage_context": "adrenal-stereo-seq-processing",
+        "version_reported_near_name": "7.0.0",
+        "supporting_evidence": []
+      }
+    },
+    {
+      "paper_id": "P117",
+      "pmcid": "PMC13553300",
+      "xml_sha256": "e4853ce47676f59ccb1964304954bffadbc36e267dfb8fcb54030f8de728b91a",
+      "primary_paragraph": 50,
+      "review": {
+        "pmcid": "PMC13553300",
+        "doi": "10.1038/s41588-026-02737-1",
+        "tool_id": "stereopy",
+        "evidence_paragraph_sha256": "e2c6f98e5541a60faa48a5498ea4c082d1daa727103b49f2db92c7a1d21e8d88",
+        "use_summary": "Used Stereopy1.1.0 st.io.read_gef and st.io.stereo_to_anndata to read the SAW tissue.gef/bin_size40 and adjusted.cellbin.gef outputs. The separate h5ad2rds.R script from the Stereopy repository completed the conversion to Seurat.rds.",
+        "implementation_scope_note": "This is a two-language conversion pipeline, not evidence that stereo_to_anndata alone produces a Seurat object. The script revision, full conversion arguments and supported GEF/AnnData/R object schemas are not given. Preserve binned versus segmented-cell identities and validate both conversion stages; do not claim equivalence to the0.12.1 h5ad conversion in P094.",
+        "usage_context": "gef-to-anndata-and-seurat-conversion",
+        "version_reported_near_name": "1.1.0",
+        "supporting_evidence": []
+      }
+    },
+    {
+      "paper_id": "P169",
+      "pmcid": "PMC11525171",
+      "xml_sha256": "35e6eef968caa63cd301d6867f6353d88441df9bd960be9d32288a4e86561782",
+      "primary_paragraph": 51,
+      "review": {
+        "pmcid": "PMC11525171",
+        "doi": "10.1038/s41588-024-01900-w",
+        "tool_id": "dorothea",
+        "evidence_paragraph_sha256": "23eafa4ba6db3f74dc7d7546cea631ce8377f3f22ede4e3be2431aacd14d8da9",
+        "use_summary": "Obtained transcription-factor\u2013target regulatory interactions from the DoRothEA and OmniPath resources, using evidence from curated literature, ChIP-seq peaks, binding-site motifs and expression-inferred interactions. The expression evidence derives from TCGA tumors or GTEx normal tissues.",
+        "implementation_scope_note": "The resource snapshot, confidence-level selection, extraction commands and exact allocation of evidence between DoRothEA and OmniPath are unspecified. This is resource reuse, not a demonstrated DoRothEA/VIPER transcription-factor activity fit or ligand\u2013receptor inference. Expression-inferred links remain distinct from experimentally confirmed regulatory effects.",
+        "usage_context": "tf-target-regulatory-evidence-resource",
+        "version_reported_near_name": null,
+        "supporting_evidence": []
+      }
+    }
+  ],
+  "whole_goal_complete": false
+}

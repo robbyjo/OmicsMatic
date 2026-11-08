@@ -106,6 +106,12 @@ entropy-subsampling, skipped-analysis and atomic-failure recovery. Five newly
 cataloged software names increase the outstanding total; paper-wide review and
 further named-software followups remain open.
 
+The [current CellPhoneDB runner guide](docs/literature/CELLPHONEDB_HASH_SEED.md)
+uses revision2 with effective Python hash-seed startup and a checked startup
+receipt. Use the explicit V2 development classes. The earlier guide and runs
+remain historical records; their ignored hash-seed option is not upgraded.
+The canonical executable is unchanged.
+
 ## License
 
 [GNU General Public License, version 3 or later](LICENSE) (`GPL-3.0-or-later`).

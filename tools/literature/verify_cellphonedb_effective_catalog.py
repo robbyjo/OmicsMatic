@@ -1,0 +1,46 @@
+# Copyright (C) 2026 JLinAlg contributors; SPDX-License-Identifier: GPL-3.0-or-later
+"""Verify one current-runner catalog row and eight unapplied primary-source role drafts."""
+import ast,gzip,hashlib,json,re
+import xml.etree.ElementTree as ET
+from setup_deseq2_reference import ROOT,pin
+from signac_scan_evidence import unpack,byte_pin
+from catalog_source_integrity import verify_source,ALLOWED_PATHS,reverse_delta
+from cellphonedb_effective_catalog import historical_readme_document
+from prepare_cellphonedb_effective_ui import verify as verify_ui_derivation
+
+def verify():
+    data=ROOT/'docs/literature/omics-2023-2026';p=json.loads((data/'cellphonedb-effective-catalog-validation.json').read_bytes());assert p['status']=='passed-current-CellPhoneDB-runner-metadata-and-eight-unapplied-source-roles' and p['runner_revision']==2 and not p['new_catalog_integration_credit'] and not p['whole_goal_complete'];assert pin(data/'cellphonedb-effective-catalog-support.zip')==p['archive'];files=unpack(data/'cellphonedb-effective-catalog-support.zip',p)
+    for name,want in p['source_pins'].items():assert pin(ROOT/name)==byte_pin(files['current-source/'+name])==want,name
+    for name,want in p['parent_proofs'].items():assert pin(ROOT/name)==want,name
+    old_proof=json.loads((data/'cellphonedb-catalog-validation.json').read_bytes());old=unpack(data/'cellphonedb-catalog-support.zip',old_proof)
+    for name,want in old_proof['source_pins'].items():
+        if name=='README.md':historical_readme_document(ROOT,data,old['current-source/'+name],want)
+        else:verify_source(ROOT,data,name,want['sha256'])
+    assert ALLOWED_PATHS==frozenset(['.gitattributes','src/main/java/org/jlinalg/cli/JLinAlgCli.java','tools/literature/render_review.py','tools/literature/reviewed-uses.json','tools/literature/repeat_catalog.py','tools/literature/check_review_ui.cjs','tools/literature/check_repeat_review_ui.cjs'])
+    current_render=(ROOT/'tools/literature/render_review.py').read_bytes();old_render=old['current-source/tools/literature/render_review.py'];assert old_render.count(b'from cellphonedb_catalog import ')==8 and old_render.replace(b'from cellphonedb_catalog import ',b'from cellphonedb_effective_catalog import ')==current_render;delta=json.loads((data/'cellphonedb-effective-render-shared-source-compatibility.json').read_bytes());assert len(delta['paths'])==1 and reverse_delta(current_render,delta['paths'][0])==old_render
+    before={t['id']:t for t in json.loads(old['catalog-snapshot/tool-inventory.json'])};current={t['id']:t for t in json.loads((data/'tool-inventory.json').read_bytes())};assert set(current)==set(before) and {n for n in before if before[n]!=current[n]}=={'cellphonedb'} and len(current)==395;row=current['cellphonedb'];runner=json.loads((ROOT/'docs/literature/cellphonedb-hash-seed-development/VALIDATION.json').read_bytes());assert row['runner_revision']==2 and row['python_hash_seed_effective'] and row['development_cli_class']=='org.jlinalg.cli.CellPhoneDbWorkflowCliV2' and row['runtime_setup_cli_class']=='org.jlinalg.cli.CellPhoneDbSetupCliV2' and row['development_candidate']==runner['artifact']['path'] and row['development_candidate_sha256']==runner['artifact']['sha256'] and not row['first_generation_runs_relabelled']
+    for name in ['papers.json','summary.json','cellphonedb-role-coverage.json','cellphonedb-source-audit.json']:assert (data/name).read_bytes()==old['catalog-snapshot/'+name],name
+    assert (ROOT/'tools/literature/reviewed-uses.json').read_bytes()==old['catalog-snapshot/reviewed-uses.json'];assert (ROOT/'tools/literature/check_review_ui.cjs').read_bytes()==old['current-source/tools/literature/check_review_ui.cjs'];counts=json.loads((data/'summary.json').read_bytes())['implementation_status_counts'];assert (counts['native-subset-validated'],counts['upstream-adapter-validated'],counts['missing'])==(17,68,251)
+    base='build/literature-review/cellphonedb-runtime/';get=lambda n:json.loads(files[base+n]);render=get('effective-catalog-render-1/COMPLETED.json');assert render['status']=='passed-one-CellPhoneDB-effective-startup-catalog-row-delta' and render['changed_tool_rows']==['cellphonedb'] and render['unchanged_tool_rows']==394
+    gates=get('effective-catalog-gates-1/COMPLETED.json');assert gates['status']=='passed-nineteen-frozen-scientific-and-two-additive-gates' and gates['predecessor_checks']==19 and len(gates['additional_checks'])==2 and not gates['scientific_verifiers_changed'];assert len(get('effective-catalog-gates-1/predecessors/COMPLETED.json')['checks'])==19
+    ui=get('effective-catalog-ui-1/COMPLETED.json');general=get('effective-catalog-ui-1/general/ui-validation.json');focused=get('effective-catalog-ui-1/cellphonedb/cellphonedb-ui-verification.json');assert general['status']==focused['status']=='passed' and len(general['checks'])==299 and len(focused['checks'])==8 and focused['document_width']<=390 and not focused['page_errors'];verify_ui_derivation()
+    for name,want in [*ui['source_pins'].items(),*ui['input_pins'].items()]:assert pin(ROOT/name)==want
+    embedded=json.loads(re.findall(r'<script[^>]*type="application/json"[^>]*>(.*?)</script>',(ROOT/'site/literature-review.html').read_text(encoding='utf8'),re.S)[0]);display={k:json.loads((data/n).read_bytes()) for k,n in [('papers','papers.json'),('tools','tool-inventory.json'),('summary','summary.json')]}
+    from shapeit_catalog import PAPER_SCOPE
+    for paper in display['papers']:
+        for use in paper['tools']:
+            if use['tool_id']=='shapeit':previous=use.get('implementation_scope_note','');use['implementation_scope_note']=PAPER_SCOPE+(' '+previous if previous else '')
+    node=next(n for n in ast.walk(ast.parse(current_render.decode())) if isinstance(n,ast.Assign) and any(isinstance(t,ast.Name) and t.id=='data' for t in n.targets));assert isinstance(node.value,ast.Call) and node.value.func.attr=='replace';a,b=map(ast.literal_eval,node.value.args);assert a=='<' and embedded==json.loads(json.dumps(display,ensure_ascii=False).replace(a,b))
+    audit=get('effective-catalog-source-audit-1/COMPLETED.json');assert audit['source_records']==250 and audit['observations_verified']==2457 and audit['reviewed_uses_verified']==980 and audit['supporting_pointers_verified']==340 and audit['followup_observations']==8 and not audit['registry_or_reviews_changed'];draft=json.loads((ROOT/'tools/literature/trajectory-spatial-use-reviews.json').read_bytes());assert draft['status']=='eight-primary-bound-role-drafts-not-applied' and not draft['registry_applied'] and not draft['implementation_credit'] and len(draft['reviews'])==8;mentions=get('trajectory-spatial-reviews-1/all-named-body-paragraphs.json');assert len(mentions)==8;attribution=json.loads(files['primary-attribution.json']);assert len(attribution['papers'])==4
+    draft_receipt=get('trajectory-spatial-reviews-1/COMPLETED.json');assert draft_receipt['draft']==pin(ROOT/'tools/literature/trajectory-spatial-use-reviews.json') and not draft_receipt['registry_applied'] and not draft_receipt['implementation_credit'];assert byte_pin(files[base+'effective-catalog-source-audit-1/named-followup-scan.json'])==audit['named_followup_scan']
+    for record in draft['reviews']:
+        paper=next(r for r in display['papers'] if r['pmcid']==record['pmcid']);assert paper['paper_id']==record['paper_id'] and paper['xml_sha256']==record['xml_sha256'] and paper['doi'].lower()==record['review']['doi'].lower();raw=gzip.decompress(files['primary-xml/'+record['pmcid']+'.xml.gz']);assert hashlib.sha256(raw).hexdigest()==record['xml_sha256'];xml=ET.fromstring(raw)
+        from collect_omics_review import paragraphs,validate_supporting_evidence
+        from audit_cellphonedb_effective_sources import DEFINITIONS
+        ps=paragraphs(xml);anchor=next(r for r in ps if r['paragraph_index']==record['primary_paragraph']);assert hashlib.sha256(anchor['text'].encode()).hexdigest()==record['review']['evidence_paragraph_sha256'];validate_supporting_evidence(ps,[record['review']],{r['id']:r for r in DEFINITIONS});assert any(m['paper_id']==record['paper_id'] and m['tool_id']==record['review']['tool_id'] and m['paragraph_index']==record['primary_paragraph'] for m in mentions)
+    lines=(data/'SHA256SUMS').read_text(encoding='utf8').splitlines();manifest={r.split('  ',1)[1]:r.split('  ',1)[0] for r in lines};order=[r.split('  ',1)[1] for r in files[base+'effective-catalog-render-1/before-SHA256SUMS'].decode().splitlines()];assert [r.split('  ',1)[1] for r in lines][:len(order)]==order and len(lines)==len(manifest) and set(manifest)=={f.name for f in data.iterdir() if f.is_file() and f.name!='SHA256SUMS'} and all(pin(data/n)['sha256']==sha for n,sha in manifest.items());assert pin(ROOT/'build/cli/omicsmatic-0.3.7.jar')==p['canonical_executable_unchanged'];assert 'ignore_patterns("literature-review.html", "literature-warnings.html")' in (ROOT/'.github/workflows/pages.yml').read_text(encoding='utf8')
+    print('Verified corrected CellPhoneDB catalog row,394 unchanged tools,250 sources/980 applied roles,8 unapplied source-bound drafts,21 scientific/component gates and307 browser checks. Goal remains open.');return p
+
+if __name__=='__main__':
+    if not __debug__:raise RuntimeError('Never disable exact catalog checks')
+    verify()
