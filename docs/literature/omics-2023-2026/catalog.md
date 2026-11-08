@@ -1,6 +1,6 @@
 # Omics and GWAS paper catalog
 
-250 papers; 395 named tools; 2457 paper-tool observations.
+250 papers; 400 named tools; 2465 paper-tool observations.
 
 Window: 2023-10-23 through 2026-10-23, inclusive. No extension was required.
 
@@ -494,6 +494,7 @@ Nature · 2026-09-23 · [DOI](https://doi.org/10.1038/s41586-025-09573-z) · [Pr
 | UMAP | Produced an exploratory low-dimensional representation of the measured profiles. | Methods / Defining cellular taxonomy using iterative clustering / Hierarchical cellular taxonomy |
 | Vireo | Genotype-based cell demultiplexing. | Methods / Processing of snRNA-seq data / Alignment |
 | py-monocle | Computed pseudotime using py-monocle for the Monocle3/Palantir comparison, with 200 eligible roots and selection by Braak-stage correlation. | Methods / Trajectory analysis using neural network models / Comparison to traditional trajectory inference methods |
+| Palantir | Ran Palantir as a trajectory-inference comparator on the microglial subset, excluding adaptive and perivascular macrophage cells. In each of200 repeats, a starting cell was sampled among donors with Braak stage0, CERAD score1 and no dementia or mild cognitive impairment. The starting cell yielding the highest Pearson correlation between inferred pseudotime and observed Braak stage was retained for the reported comparison with the neural-network predictions. | Methods / Trajectory analysis using neural network models / Comparison to traditional trajectory inference methods |
 
 XML SHA-256: `95f294a27bf20b44f42ea8b780e347b1cd16849df0e48ee9745ac43600cd7c07`. Exact evidence paragraph hashes and locators are in [papers.json](papers.json).
 
@@ -1847,6 +1848,10 @@ Nature Genetics · 2026-09-24 · [DOI](https://doi.org/10.1038/s41588-026-02748-
 | tradeSeq | Trajectory-dependent differential expression. | Methods / Visium and Stereo-seq sample preparation and data analysis |
 | UMAP | Produced an exploratory low-dimensional representation of the measured profiles. | Methods / Developmental trajectory inference from scRNA-seq data |
 | COMMOT | Applied COMMOT across the spatial datasets to infer signaling pathways and obtain pathway-associated gene activations. The described target analysis uses tradeSeq associationTest and fitted smooth expression curves, retains positive associations, selects50 gene–pathway activations per sample, removes genes contributing to the pathway score, and retains the largest association per pathway–gene pair across samples. | Methods / Visium and Stereo-seq sample preparation and data analysis |
+| Palantir | Used Palantir to obtain a multiscale diffusion space after PCA of the count-matrix subset containing1,500 highly variable genes, then generated an embedding from that space. The described principal trees and cell pseudotime were fitted downstream with scFates. | Methods / Developmental trajectory inference from scRNA-seq data |
+| scFates | Fitted scFates tl.tree SimplePPT trees in two stages: a200-node tree on harmonized nose/jaw UMAP space with method=ppt,sigma=0.5,lambda=100 and Euclidean distance, and a3,000-node tree for each sample on diffusion space with sigma=0.0005,lambda=200 and Euclidean distance. Pseudotime was obtained as tree distance from selected roots and projected to cells through the soft cell-to-node assignment matrix R. | Methods / Developmental trajectory inference from scRNA-seq data |
+| SAW | Processed Stereo-seq reads with the SAW pipeline for mapping, expression counting and cell segmentation. Stereopy conversion to h5ad, CellTypist label transfer and COMMOT communication inference were performed as subsequent, distinct stages. | Methods / Visium and Stereo-seq sample preparation and data analysis |
+| Stereopy | Used Stereopy0.12.1 to convert the SAW-processed Stereo-seq data to h5ad before CellTypist1.6.3 label transfer and COMMOT signaling analysis. | Methods / Visium and Stereo-seq sample preparation and data analysis |
 
 XML SHA-256: `ebd1e6a9559b288607109df25a9ef952fa78b93f938a81cb3f954c7678a8af35`. Exact evidence paragraph hashes and locators are in [papers.json](papers.json).
 
@@ -2336,6 +2341,8 @@ Nature Genetics · 2026-09-08 · [DOI](https://doi.org/10.1038/s41588-026-02737-
 | STAR | Splice-aware bulk RNA read alignment and optional raw gene counts. | Methods / Cholesterol balance analysis in bulk scRNA-seq and Visium data |
 | UMAP | Produced an exploratory low-dimensional representation of the measured profiles. | Methods / Somatic CNV analysis |
 | velocyto | Spliced/unspliced counting and RNA velocity. | Methods / Transition and velocity analysis |
+| SAW | Processed adrenal Stereo-seq sequencing data with SAW7.0.0 using the GRCh38 reference. The resulting tissue.gef expression data at bin_size40 and adjusted.cellbin.gef segmented-cell expression data were used for subsequent conversion to Seurat objects. | Methods / High-resolution spatial transcriptomics (Stereo-seq) of human adrenal glands |
+| Stereopy | Used Stereopy1.1.0 st.io.read_gef and st.io.stereo_to_anndata to read the SAW tissue.gef/bin_size40 and adjusted.cellbin.gef outputs. The separate h5ad2rds.R script from the Stereopy repository completed the conversion to Seurat.rds. | Methods / High-resolution spatial transcriptomics (Stereo-seq) of human adrenal glands |
 
 XML SHA-256: `e4853ce47676f59ccb1964304954bffadbc36e267dfb8fcb54030f8de728b91a`. Exact evidence paragraph hashes and locators are in [papers.json](papers.json).
 
@@ -3308,6 +3315,7 @@ Nature Genetics · 2024-09-16 · [DOI](https://doi.org/10.1038/s41588-024-01900-
 | SMR | Ran SMR1.3.1 on meta-analyzed SOCCS/GTEx colon eQTL and colorectal-cancer GWAS summaries, corrected SMR P within each risk locus and retained corrected P<0.05 with HEIDI P>0.05; repeated the workflow for meta-analyzed tumor eQTL summaries. | Methods / eQTLs and SMR |
 | SuSiE | Bayesian fine-mapping and credible sets. | Methods / Fine-mapping of risk loci |
 | OmniPath | Obtained regulatory interaction evidence from OmniPath and DoRothEA for transcription-factor–target links, combining curated knowledge, ChIP-seq, motif and expression evidence in the effector-gene investigation. Expression-informed interactions use TCGA tumors or GTEx normal tissues. | Methods / Gene evidence |
+| DoRothEA | Obtained transcription-factor–target regulatory interactions from the DoRothEA and OmniPath resources, using evidence from curated literature, ChIP-seq peaks, binding-site motifs and expression-inferred interactions. The expression evidence derives from TCGA tumors or GTEx normal tissues. | Methods / Gene evidence |
 
 XML SHA-256: `35e6eef968caa63cd301d6867f6353d88441df9bd960be9d32288a4e86561782`. Exact evidence paragraph hashes and locators are in [papers.json](papers.json).
 

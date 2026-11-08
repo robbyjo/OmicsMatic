@@ -1,5 +1,29 @@
 # Literature-driven omics toolbox: current status
 
+The fixed cohort contains **250 papers,400 named tools,2,465 paper-tool observations,988 reviewed uses and340 supporting paragraph pointers**. Current scoped availability is **86 new integrations:17 native subsets and69 upstream adapters**, or **89 including three existing adapters**. **255 tools remain missing.** Paper-wide semantic completeness and the full implementation goal remain open. Five newly recognized names add four missing entries; Palantir receives the one new adapter credit.
+
+Read the [current catalog update](../PALANTIR_CATALOG.md), [Palantir setup/workflow guide](../PALANTIR_WORKFLOW_DEVELOPMENT.md), [catalog validation](palantir-catalog-validation.json), [summary](summary.json) and [tool inventory](tool-inventory.json). Eight source-bound Palantir/scFates/SAW/Stereopy/DoRothEA roles are appended to the prior980 reviews. Raw paper identities, all prior observations and all prior reviews are retained. Original source versions and unreported paper choices remain explicit.
+
+**Warnings and recovery:** read [WARNINGS.md](WARNINGS.md) and every analysis status. Missing or forbidden dependencies mean **SKIP3: skip dependent analysis**. **FAIL2 admits no atomic result, including earlier completed outputs.** Preserve originals and provisionals, resolve the named cause and retry NEW paths. Separate permitted setup is explicit; RUN installs nothing. Original Palantir clipping can reduce fate-row mass while entropy retains its preclip meaning. Native audits do not independently refit trajectories. Cell Ranger remains excluded.
+
+Run current read-only verification from the project root:
+
+```powershell
+python -I -B tools/literature/verify_palantir_catalog.py
+python -I -B tools/literature/palantir_workflow_evidence.py
+```
+
+The source-pointer audit additionally needs the local original XML/extraction cache. The original three-year window remains2023-10-23 through2026-10-23; no extension was needed. The canonical executable is unchanged. No release or website deployment is claimed; unfinished literature pages remain excluded from Pages.
+
+## Retained historical documentation
+
+All text below is preserved byte for byte from the previous document. Its counts and statements labelled current are historical and are superseded by the status above.
+
+<details>
+<summary>Previous status documents and evidence links</summary>
+
+# Literature-driven omics toolbox: current status
+
 The fixed cohort contains **250 papers, 390 named tools, 2,450 paper-tool observations, 932 reviewed uses and 322 supporting paragraph pointers**. Current scoped availability is **78 new integrations: 17 native subsets and 61 upstream adapters**, or **81 including three existing adapters**. **253 tools remain missing**. Paper-wide semantic completeness and the full implementation goal remain open.
 
 The [dndscv workflow guide](../DNDSCV_WORKFLOWS.md) covers native coding annotation/opportunity arithmetic and source-bound original selection, with offline source export, exact private setup, a runnable example and explicit SKIP3/FAIL2 recovery. Seven primary roles and eleven supporting paragraphs preserve custom coverage, mouse references, clone-level events, IntOGen consensus boundaries, the unresolved0.1.0 versus0.0.1.0 version and pentanucleotide/filter ambiguities. Complete tables and N/L arrays match24 original case executions;64 native coding and17 workflow checks pass per JVM on Windows Java21/25 and Linux Java21. See the [validation and public opaque-object omission limits](../dndscv-workflow-development/VALIDATION.json).
@@ -827,5 +851,7 @@ The [implementation queue](implementation-plan.md) and `tool-inventory.json`
 distinguish missing tools, related existing methods, existing adapters/lookups,
 and newly validated subsets. Complete the remaining integrations and semantic
 coverage review before marking the overall goal complete.
+
+</details>
 
 </details>

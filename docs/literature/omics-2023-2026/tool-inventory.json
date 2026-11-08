@@ -6629,6 +6629,40 @@
     "validation_note": "Existing overlap/adapters require paper-specific option checks; missing integrations remain pending."
   },
   {
+    "id": "palantir",
+    "name": "Palantir",
+    "pattern": "\\bPalantir\\b",
+    "role": "Multiscale diffusion and trajectory inference",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "P024 uses pseudotime as a selected-root comparator; P094 uses multiscale diffusion space upstream of scFates. Editions and complete preprocessing remain unreported. Credit requires the separate exact original coordinate-workflow evidence.",
+    "paper_count": 2,
+    "papers": [
+      "P024",
+      "P094"
+    ],
+    "implementation_status": "upstream-adapter-validated",
+    "implementation_source": "src/main/java/org/jlinalg/cli/PalantirWorkflowCli.java",
+    "implementation_scope": "Original Palantir1.4.4/1.4.6 diffusion maps, trajectory and combined coordinate workflows with explicit float64 PCA/multiscale inputs, DataFrame versus coordinate-only AnnData interface, roots, terminal/waypoint policies, backend, scientific parameters and seeds. Native Java audits observed kernel equations, transition/eigenpair residuals, exact native multiscale coordinates, scaling, version-specific weights, Markov/absorption equations, projection, preclip entropy, original below0.01 clipping and complete TSV exports. Neighbors, ARPACK, RNG, graph/waypoint/root/terminal selection and trajectory fitting remain original upstream, not an independent refit. No expression normalization/HVG/PCA fitting, gene trends, unreported paper edition/options or whole-paper reproduction. P024 selects a maximum correlation over200 roots; P094 uses diffusion space upstream of scFates, not a demonstrated Palantir fate workflow. Read PALANTIR_WORKFLOW_DEVELOPMENT.md.",
+    "validation_note": "Offline exact private setup uses48 pinned dependency archives and both original wheels over the unchanged project Python3.11.17 base. Original namespaces, sources and full before/after inventories are bound. Twenty-one original workflows cover both backends, alpha normalization, automatic eigengap/terminals, explicit waypoints, annotated AnnData and1.4.6 multiple roots. Complete native observations pass on WindowsJava21/25 and LinuxJava21. Eleven output corruptions and18 input/export/permission/timeout controls are rejected; a late source ARPACK error leaves the earlier case provisional. Whole-output, input/source/runtime rechecks precede atomic admission. Pure native multiscale API is separately validated; original neighbor search/trajectory fitting and biological calibration are not independently replicated. Original clipping can reduce row mass while entropy retains its preclip meaning.",
+    "source_roles_reviewed": 2,
+    "related_source_roles_reviewed": 6,
+    "source_role_coverage": "palantir-role-coverage.json",
+    "project_adapter_available": true,
+    "canonical_adapter_available": false,
+    "development_candidate": "build/literature-review/palantir-runtime/workflow-build-3/omicsmatic-0.3.7-palantir-workflow-development.jar",
+    "development_candidate_sha256": "c0a9a8be03e5473017eac4b17855dadb952eafc4b6fd672c6c0b77bf7bba97a2",
+    "development_cli_class": "org.jlinalg.cli.PalantirWorkflowCli",
+    "runtime_setup_cli_class": "org.jlinalg.cli.PalantirSetupCli",
+    "native_helpers": [
+      "src/main/java/org/jlinalg/embedding/PalantirMultiscale.java"
+    ],
+    "analysis_installs_software": false,
+    "independent_trajectory_refit": false,
+    "whole_paper_reproduced": false,
+    "whole_goal_complete": false
+  },
+  {
     "id": "snpad",
     "name": "snpAD",
     "pattern": "(?<![A-Za-z0-9_])(?:snpAD)(?![A-Za-z0-9_])",
@@ -7145,6 +7179,42 @@
     "implementation_status": "missing",
     "implementation_source": null,
     "implementation_scope": "Primary P100 explicitly uses COMMOT0.0.3 for spatial communication; CellPhoneDB permutations and generic spatial helpers do not establish this transport analysis.",
+    "validation_note": "Existing overlap/adapters require paper-specific option checks; missing integrations remain pending."
+  },
+  {
+    "id": "stereo-saw",
+    "name": "SAW",
+    "pattern": "(?-i:\\bSAW\\b)",
+    "role": "Stereo-seq mapping, counting and segmentation",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Uppercase SAW is the named Stereo-seq pipeline. P117 reports7.0.0/GRCh38; P094 leaves its edition unstated. Source, license and runtime require separate review before permitted installation.",
+    "paper_count": 2,
+    "papers": [
+      "P094",
+      "P117"
+    ],
+    "implementation_status": "missing",
+    "implementation_source": null,
+    "implementation_scope": "Uppercase SAW is the named Stereo-seq pipeline. P117 reports7.0.0/GRCh38; P094 leaves its edition unstated. Source, license and runtime require separate review before permitted installation.",
+    "validation_note": "Existing overlap/adapters require paper-specific option checks; missing integrations remain pending."
+  },
+  {
+    "id": "stereopy",
+    "name": "Stereopy",
+    "pattern": "\\bStereo[Pp]y\\b",
+    "role": "Spatial expression-file conversion",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "P094 reports0.12.1 h5ad conversion; P117 reports1.1.0 GEF-to-AnnData plus a separate R script for Seurat. These editions, schemas and conversion stages are not interchangeable.",
+    "paper_count": 2,
+    "papers": [
+      "P094",
+      "P117"
+    ],
+    "implementation_status": "missing",
+    "implementation_source": null,
+    "implementation_scope": "P094 reports0.12.1 h5ad conversion; P117 reports1.1.0 GEF-to-AnnData plus a separate R script for Seurat. These editions, schemas and conversion stages are not interchangeable.",
     "validation_note": "Existing overlap/adapters require paper-specific option checks; missing integrations remain pending."
   },
   {
@@ -8455,6 +8525,23 @@
     "validation_note": "Existing overlap/adapters require paper-specific option checks; missing integrations remain pending."
   },
   {
+    "id": "scfates",
+    "name": "scFates",
+    "pattern": "\\bscFates\\b",
+    "role": "Principal-tree trajectory and pseudotime inference",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "P094 reports distinct200-node UMAP and3000-node diffusion-space SimplePPT fits. Generic graph distance and the upstream Palantir adapter do not implement scFates fitting.",
+    "paper_count": 1,
+    "papers": [
+      "P094"
+    ],
+    "implementation_status": "missing",
+    "implementation_source": null,
+    "implementation_scope": "P094 reports distinct200-node UMAP and3000-node diffusion-space SimplePPT fits. Generic graph distance and the upstream Palantir adapter do not implement scFates fitting.",
+    "validation_note": "Existing overlap/adapters require paper-specific option checks; missing integrations remain pending."
+  },
+  {
     "id": "ns-forest",
     "name": "NS-Forest",
     "pattern": "(?<![A-Za-z0-9_])(?:NS[- ]Forest)(?![A-Za-z0-9_])",
@@ -9191,6 +9278,23 @@
     "implementation_status": "missing",
     "implementation_source": null,
     "implementation_scope": "Additional software identified during full-text/code-link completeness review; integration and independent validation pending.",
+    "validation_note": "Existing overlap/adapters require paper-specific option checks; missing integrations remain pending."
+  },
+  {
+    "id": "dorothea",
+    "name": "DoRothEA",
+    "pattern": "\\bDoRothEA\\b",
+    "role": "TF-target regulatory evidence resource",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "P169 reuses regulatory evidence alongside OmniPath. It does not demonstrate a DoRothEA/VIPER activity fit; the resource snapshot and confidence selection remain unspecified.",
+    "paper_count": 1,
+    "papers": [
+      "P169"
+    ],
+    "implementation_status": "missing",
+    "implementation_source": null,
+    "implementation_scope": "P169 reuses regulatory evidence alongside OmniPath. It does not demonstrate a DoRothEA/VIPER activity fit; the resource snapshot and confidence selection remain unspecified.",
     "validation_note": "Existing overlap/adapters require paper-specific option checks; missing integrations remain pending."
   },
   {
