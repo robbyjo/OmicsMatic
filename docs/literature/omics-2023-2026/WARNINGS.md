@@ -1,3 +1,13 @@
+## biomaRt: warnings and required actions
+
+Use development `org.jlinalg.cli.BiomartWorkflowCli` and **BIOMART_WORKFLOWS.md**. Require exit0 and `result_admitted=true`; read `WARNINGS.md`, every phase's `worker-report.json` warnings/error/trace_error fields, original RDS/typed tables, process receipts and complete HTTP/query ledgers.
+
+**SKIP3 skips dependent annotation** if exact permitted Windows x86_64 R4.6.1/biomaRt dependencies or the requested endpoint/release/assembly are unavailable, different or forbidden. Native query planning is portable; original R execution on unsupported platforms remains skipped. Where permitted prepare the exact private runtime; the installer does not resolve arbitrary dependency versions. Preserve preparation errors and existing libraries. Analysis installs nothing and never falls back to another release or genome build.
+
+**FAIL2 admits no atomic-batch result**, including earlier successful queries. Correct the named input/runtime/service/capacity/timeout cause and retry NEW output paths without omitting values/rows. HTTP capture capacity errors name `maximum_http_bytes` and its recovery action. Keep all originals and partials. Never merge symbols, deduplicate one-to-many/repeated source rows, fabricate unmatched-gene rows, repair identifiers, replace NA/NaN/Inf or infer a paper mask.
+
+Original R performs table/header conversion and can reorder columns. Its numeric-to-integer and quote substitution are recorded with original tokens. HTML fallback is explicit; original source globally replaces TSV with HTML, including filter values. Original C-locale console text may escape Unicode while actual HTTP retains the identifier. Temporary chunk caching can reuse a request while repeating result rows. Read both representations and all warnings. Metadata binding is not independent biological-content authentication or a multi-query database transaction. Enrichment, closest-gene distance/tie rules, historical R4.4 images and whole-paper reproduction remain separate.
+
 ## LOFTEE: warnings and required actions
 
 Use the development LofteeWorkflowCli and LOFTEE_WORKFLOWS.md. Require exit0 and result_admitted=true; read WARNINGS.md, original logs, process receipts and complete native ledgers. **SKIP3 skips dependent analysis** when the exact permitted Linux x86_64 runtime/resources are missing, different or forbidden. VEP cache execution is unvalidated and explicitly skipped. Where permitted use the locked private installer/exporter; preserve preparation failures and retry NEW short paths. Analysis installs nothing.
