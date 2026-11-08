@@ -1,0 +1,40 @@
+# Copyright (C) 2026 JLinAlg contributors; SPDX-License-Identifier: GPL-3.0-or-later
+"""Capture/seal full Hail original outputs and setup evidence; admit one bounded original adapter only after independent verification."""
+import argparse,json,subprocess,zipfile
+from pathlib import Path
+from setup_deseq2_reference import ROOT,pin,save
+from signac_scan_evidence import byte_pin,pack
+from validate_mashr_native import linux
+from hail_workflow_evidence import verify_files
+
+BASE=ROOT/'build/literature-review/hail-runtime'
+DEST=ROOT/'docs/literature/hail-workflow-development'
+TREES=['source-intake-2','workflow-source-profiles-1','dependency-lock-intake-1','legacy-build-source-intake-1','source-context-intake-1','role-drafts-1','role-drafts-2','workflow-fixtures-4','reference-bind-139-java11-2','reference-bind-130-java11-3','request-validation-3','setup-addition-proof-1','cli-positive-139-2','cli-positive-130-2','cli-public-installed139-1','cli-output-audit139-1','cli-output-audit130-1','cli-skip-controls-2','cli-timeout-1','cli-late-liftover-failure-1','cli-batch-failure-1','setup-denial-1','setup-install139-1','setup-capture130-1',*[f'workflow-build-{i}' for i in range(1,7)],'reference-bind-139-java11-1','reference-bind-130-java11-1','reference-bind-130-java11-2','reference-setup-130-1','reference-setup-130-2','workflow-controls-1','workflow-controls-2','workflow-controls-3','workflow-audit-1','workflow-audit-2','cli-positive-139-1','cli-positive-130-1','request-validation-1','request-validation-2','cli-skip-controls-1']
+
+def main():
+    parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--out',required=True,type=Path);parser.add_argument('--capture',action='store_true');a=parser.parse_args();out=a.out.resolve();assert out.is_relative_to(BASE)
+    if a.capture:
+        assert not out.exists();out.mkdir(parents=True);plan=[dict(source=name,logical=name) for name in TREES];save(out/'plan.json',plan);capture_sources={n:pin(ROOT/'tools/literature'/n) for n in ['seal_hail_workflow.py','export_hail_workflow_evidence_linux.py']}
+        for n in capture_sources:(out/(n+'.at-attempt')).write_bytes((ROOT/'tools/literature'/n).read_bytes())
+        save(out/'STARTED.json',dict(status='RUNNING_READ_ONLY_EVIDENCE_CAPTURE_NO_ADAPTER_ADMITTED',source_pins=capture_sources));command=['wsl','-d','JLinAlg-Omics-SAIGE-20261026','--exec','/usr/bin/python3','-I','-B',linux(ROOT/'tools/literature/export_hail_workflow_evidence_linux.py'),'--base',linux(BASE),'--plan',linux(out/'plan.json'),'--out',linux(out/'capture')]
+        with (out/'capture.stdout').open('xb') as stdout,(out/'capture.stderr').open('xb') as stderr:r=subprocess.run(command,cwd=ROOT,stdout=stdout,stderr=stderr,creationflags=subprocess.CREATE_NO_WINDOW)
+        save(out/'capture.process.json',dict(command=command,exit_code=r.returncode));assert r.returncode==0,'Inspect capture.stderr; no adapter admitted';assert all(pin(ROOT/'tools/literature'/n)==v for n,v in capture_sources.items())
+    capture=out/'capture';index=json.loads((capture/'index.json').read_bytes());files={name:(capture/'objects'/row['sha256']).read_bytes() for name,row in index['records'].items() if row['kind']=='file'};files['capture/index.json']=(capture/'index.json').read_bytes()
+    build=json.loads(files['workflow-build-6/COMPLETED.json']);jar=ROOT/build['artifact']['path'];assert pin(jar)=={k:build['artifact'][k] for k in ['bytes','sha256']};sources=dict(build['source_pins'])
+    names=['audit_hail_workflow_controls.py','bind_hail_workflow_reference_linux.py','collect_hail_workflow_controls.py','export_hail_workflow_evidence_linux.py','generate_hail_workflow_fixtures.py','hail_workflow_evidence.py','intake_hail_dependency_locks.py','inventory_hail_runtime_linux.py','make_hail_workflow_profiles.py','prove_hail_setup_addition.py','seal_hail_workflow.py','setup_hail130_reference_linux.py','validate_hail_workflow_cli.py','validate_hail_workflow_requests.py','validate_hail_workflow_setup.py','signac_scan_evidence.py']
+    for name in ['tools/literature/'+n for n in names]+['docs/literature/HAIL_WORKFLOWS.md']:sources[name]=pin(ROOT/name)
+    for name in sources:files['current-source/'+name]=(ROOT/name).read_bytes()
+    entries={}
+    with zipfile.ZipFile(jar) as bundle:
+        for name in build['added_entries']:raw=bundle.read(name);files['candidate-added-entries/'+name]=raw;entries[name]=byte_pin(raw)
+    classification=dict(status='retained-failed-development-attempts-not-admitted-analysis',atomicity='Any actual failed batch remains wholly unadmitted; earlier native files are provisional and retained.',compile_build_2='Compile failed: local Pin API/anonymous diamond helper mistakes; fixed and recompiled in NEW build.',workflow_controls_1='Worker expression used unsupported locus struct indexing. Corrected typed property dispatch and repeated the full batch.',reference_setup_130='First source-build default assumption and later health-harness version/private Spark API errors were local harness failures. Exact original source was unchanged; separate Java11 bindings prove both complete runtime trees unchanged.',reference_bind_failures='Local hl.revision/private _spark API assumptions failed. Later bindings use actual version resource/public spark_context API and include complete before/after inventory.',cli_positive_130_1='The original legacy Batch descendant called bare python3. It loaded a different Python without hailtop. Failed batch retained; supervisor now supplies the explicitly bound prefix/bin PATH. No system package was installed.',cli_positive_139_2_and_130_2='The actual Java CLI admitted both complete10-case batches. The development auditor then failed due a bytes variable shadowing its raw MatrixTable object. Original complete results/manifests and failed wrapper receipts remain unchanged. Corrected only the independent auditor variable; separate full output audits verify every retained output and all equations. Final candidate also passed a complete fresh-prefix original run with the corrected auditor.',scope='Synthetic local workflows prove the declared adapter only. Paper releases0.2.78/0.2.116, cloud/service execution, arbitrary joint-calling frameworks, biological calibration, whole-paper reproduction and canonical release remain unclaimed.')
+    files['history/CLASSIFICATION.json']=(json.dumps(classification,indent=2)+'\n').encode();proof=dict(schema_version=1,status='passed-original-Hail-workflows-and-setup-with-complete-independent-controls',artifact=build['artifact'],source_pins=sources,packaged_entries=entries,canonical_executable_unchanged=build['canonical_executable_unchanged'],adapter_admitted=True,implementation_credit=True,admitted_named_tools=['hail'],whole_goal_complete=False,whole_paper_reproduced=False,released_or_deployed=False)
+    result=verify_files(proof,files);assert pin(ROOT/'build/cli/omicsmatic-0.3.7.jar')==proof['canonical_executable_unchanged'];assert not DEST.exists();DEST.mkdir();(DEST/'.gitattributes').write_bytes(b'* -text\n');packing=pack(DEST/'controls.zip',files);assert (DEST/'controls.zip').stat().st_size<95000000;proof.update(archive=pin(DEST/'controls.zip'),packing=packing,checks=result['checks']);save(DEST/'VALIDATION.json',proof)
+    from hail_workflow_evidence import verify
+    verify();assert all(pin(ROOT/n)==v for n,v in sources.items());print('Sealed',len(files),'complete logical files;',pin(DEST/'controls.zip')['bytes'],'archive bytes; one original Hail adapter only')
+
+if __name__=='__main__':
+    if not __debug__:raise RuntimeError('Never disable complete original/source/evidence checks')
+    try:main()
+    except Exception as failure:
+        print('FAIL2 HAIL EVIDENCE SEAL INCOMPLETE: '+repr(failure)+'\nRequired action: preserve the failed capture, errors, original analysis outputs and source snapshots. Inspect the named mismatch and repeat capture/sealing in NEW paths. Do not change original scientific outputs, re-pin saved scientific source or admit a partial proof.',file=__import__('sys').stderr);raise SystemExit(2)

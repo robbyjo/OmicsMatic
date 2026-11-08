@@ -12961,13 +12961,14 @@
         "evidence_paragraph_index": 64,
         "matched_text": "Hail",
         "extraction_score": 15,
-        "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "usage_context": "cloud-workflow-orchestration",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-paragraph",
         "evidence_paragraph_sha256": "aba47615b56e6e471a3f6b9bfaca904b1e8525fca483e2025e33495d66ed930d",
-        "use_summary": "Distributed genotype QC and association.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10719111/ (section: Methods / Brain preparation / Cell type mapping into the Slide-seq dataset with RCTD / Changes to RCTD for parallelizable throughput)"
+        "use_summary": "Used Hail Batch with GNU Parallel for large-scale cloud parallelization of the modified RCTD cell-type mapping workflow, reaching thousands of cores.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10719111/ (section: Methods / Brain preparation / Cell type mapping into the Slide-seq dataset with RCTD / Changes to RCTD for parallelizable throughput)",
+        "implementation_scope_note": "This is Hail Batch/hailtop orchestration, not execution of Hail genotype QC or association. The paper does not report a Hail release, immutable batch DAG, cloud/backend configuration or billing/resource settings. OSQP and Rcpp changes belong to RCTD itself. Local Batch controls do not establish the paper cloud scale or RCTD model parity."
       },
       {
         "tool_id": "leiden",
@@ -36164,13 +36165,14 @@
         "evidence_paragraph_index": 41,
         "matched_text": "HAIL",
         "extraction_score": 15,
-        "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "usage_context": "joint-genotyping-pipeline-framework",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-paragraph",
         "evidence_paragraph_sha256": "d65b5e127f39c952a6fd4bc2a8cfc69a46807b79a0b62805f7c0dbbe971cf4de",
-        "use_summary": "Distributed genotype QC and association.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13447103/ (section: Methods / Whole-exome sequencing (WES))"
+        "use_summary": "Used HAIL alongside GATK GenotypeGVCFs in the Broad Joint Genotyping pipeline for the WES callset before downstream ancestry and sample/genotype/variant quality control.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13447103/ (section: Methods / Whole-exome sequencing (WES))",
+        "implementation_scope_note": "The Hail release, exact Hail API calls and immutable pipeline revision are not specified here. BWA-MEM alignment, GATK single-sample calling and the jointly described GATK genotyping steps are not reattributed to Hail algorithms. The neighboring QC thresholds and random-forest rules remain study-specific; no unreported Hail mask or operation order is inferred."
       },
       {
         "tool_id": "king",
@@ -39631,13 +39633,14 @@
         "evidence_paragraph_index": 9,
         "matched_text": "Hail",
         "extraction_score": 15,
-        "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
-        "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "usage_context": "reference-panel-genotype-sample-variant-QC",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
+        "version_reported_near_name": "0.2",
+        "evidence_selection": "individually-reviewed-paragraph",
         "evidence_paragraph_sha256": "096ca4c897d1a0b6c1582bc4f607e80d0fb5c3bf3dbaa17541df197053212c43",
-        "use_summary": "Distributed genotype QC and association.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11639076/ (section: Subjects and methods / Genotyping and imputation)"
+        "use_summary": "Applied iterative genotype-, sample- and variant-level QC using Hail v0.2 to the whole-genome sequences used to construct the SISu v4.2 reference panel, before Eagle phasing and Beagle-based imputation.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11639076/ (section: Subjects and methods / Genotyping and imputation)",
+        "implementation_scope_note": "The exact Hail patch release, successive masks and iteration criteria are unspecified. The Hail statement concerns reference-panel WGS QC; the nearby array-QC thresholds and post-imputation INFO filter are not automatically reassigned to this Hail stage. REGENIE performed the described FinnGen GWAS; Hail is not credited as that association fitter."
       },
       {
         "tool_id": "ldsc",
@@ -40579,13 +40582,14 @@
         "evidence_paragraph_index": 14,
         "matched_text": "Hail",
         "extraction_score": 15,
-        "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "usage_context": "risk-variant-coordinate-liftover",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": "0.2.130",
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-paragraph",
         "evidence_paragraph_sha256": "36ea0f7a56e431f5dee4bb4758e69279b93c72117453dea01bb803517764311f",
-        "use_summary": "Distributed genotype QC and association.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13384252/ (section: Methods / Genetic data analysis and genome-wide association study / PGS calculation)"
+        "use_summary": "Lifted the supplied eMERGE risk variants from GRCh37 to GRCh38 using Hail0.2.130 before calculating raw polygenic scores with the separate AoUPRS library.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13384252/ (section: Methods / Genetic data analysis and genome-wide association study / PGS calculation)",
+        "implementation_scope_note": "The source does not specify a chain-file identity, min_match, interval convention, reverse-strand allele handling or unmapped policy. These must be explicit in a supplied workflow. AoUPRS score calculation and subsequent PC-dependent mean/variance calibration are separate operations; this Hail use does not establish genotype QC, GWAS fitting or calibrated PGS inference."
       },
       {
         "tool_id": "king",
@@ -42909,13 +42913,36 @@
         "evidence_paragraph_index": 34,
         "matched_text": "Hail",
         "extraction_score": 15,
-        "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "usage_context": "WES-preprocessing-sample-QC-and-LD-MAF",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": "0.2.116",
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-paragraph",
         "evidence_paragraph_sha256": "188bfac0ac348e51d5fd43c5ad7df755e6ce3a8361fcb2b13f456c0eac579660",
-        "use_summary": "Distributed genotype QC and association.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12808971/ (section: Material and methods / Preparation of UKB data / Quality control)"
+        "use_summary": "Used Hail0.2.116 for UKB WES preprocessing and QC, including the LD-pruned high-confidence sample-QC set and QC metrics residualized on20 genotype PCs. Hail with Python also calculated per-gene LD matrices and per-variant MAFs reused by COAST-SS.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12808971/ (section: Material and methods / Preparation of UKB data / Quality control)",
+        "implementation_scope_note": "The site-QC rules, sample/covariate exclusions,20-PC residualization and six-MAD filtering are study choices, not inferred library defaults. The later LD/MAF paragraph does not separately pin its Hail release. VEP/LOFTEE annotation, per-variant association fitting and COAST/COAST-SS allelic-series tests remain distinct software stages; a generic QC or LD export is not a reproduction of the complete study mask.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 33,
+            "section": "Material and methods / Preparation of UKB data / Whole-exome sequencing data",
+            "paragraph_sha256": "a1caeaf182d001dfaa1b30f60d2658b5480b530a2ee7a399ea2ccf33b4efe5a0",
+            "evidence_role": "method-details",
+            "named_anchor": {
+              "paragraph_index": 34,
+              "section": "Material and methods / Preparation of UKB data / Quality control",
+              "paragraph_sha256": "188bfac0ac348e51d5fd43c5ad7df755e6ce3a8361fcb2b13f456c0eac579660"
+            },
+            "shared_terms": [
+              "call rate"
+            ],
+            "relation_note": "The immediately preceding UKB site-QC paragraph supplies the variant filters for the high-confidence QC set in the named Hail preprocessing paragraph; annotation tools and downstream tests remain distinguished."
+          },
+          {
+            "paragraph_index": 45,
+            "section": "Results / COAST-SS substantially accelerates genome-wide analyses",
+            "paragraph_sha256": "d58f7cfe97e0e331c362c5999d96925edb89f3eb39bf65d89b6bdddfcb469671"
+          }
+        ]
       },
       {
         "tool_id": "loftee",
@@ -43636,13 +43663,14 @@
         "evidence_paragraph_index": 13,
         "matched_text": "Hail",
         "extraction_score": 15,
-        "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "usage_context": "ES-WGS-preprocessing-framework-description",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-paragraph",
         "evidence_paragraph_sha256": "ec6107efab7811468f7bfdba5290fd71851862bedfce1195b5c21fdc244deeb8",
-        "use_summary": "Distributed genotype QC and association.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13277689/ (section: Methods / Variant calling)"
+        "use_summary": "Reports ES/WGS processing using GATK or Hail; the outlined pipeline separately names BWA-MEM alignment, Picard duplicate marking and GATK recalibration, gVCF calling, joint genotyping and VQSR.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13277689/ (section: Methods / Variant calling)",
+        "implementation_scope_note": "The paragraph does not identify a Hail release, exact Hail operations or which cohort used the Hail branch. Do not attribute BWA/Picard/GATK algorithms or every later empirical QC threshold to Hail, infer a framework-specific joint-calling implementation, or manufacture the unreported branch configuration."
       },
       {
         "tool_id": "loftee",
@@ -45419,13 +45447,21 @@
         "evidence_paragraph_index": 12,
         "matched_text": "Hail",
         "extraction_score": 15,
-        "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "usage_context": "sample-QC-with-stratified-MAD-and-reused-MatrixTable",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-paragraph",
         "evidence_paragraph_sha256": "13b343d7ef8d06e2d9df19578c82bbfbe477dc4d527e6c46277e504a04932ed9",
-        "use_summary": "Distributed genotype QC and association.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12696503/ (section: Material and methods / ES data QC / Variant and sample-level QC)"
+        "use_summary": "Ran Hail sample_qc() for UKB exome sample QC, applying median-plus-or-minus-four-MAD exclusions within ancestry super-populations and separately by ES tranche. Separately obtained previously calculated Genebass gene-association summaries in Hail MatrixTable format.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12696503/ (section: Material and methods / ES data QC / Variant and sample-level QC)",
+        "implementation_scope_note": "The associated XML list identifies deletion/insertion/SNP counts and three count-ratio metrics. The Hail release, precise MAD scaling and complete code/order are not pinned. Neighboring genotype/site masks and VEP/LOFTEE annotation remain separate. The Genebass MatrixTable is a reused summary-statistic resource; its download does not establish that this paper recomputed the Genebass SKAT-O tests using Hail.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 37,
+            "section": "Material and methods / Genebass gene-level summary statistics",
+            "paragraph_sha256": "a0325c0e58ca447a596a6d656d672bdad1887aae0e32daaebff9e053a2029b14"
+          }
+        ]
       },
       {
         "tool_id": "harmony",
@@ -49771,13 +49807,14 @@
         "evidence_paragraph_index": 6,
         "matched_text": "HAIL",
         "extraction_score": 15,
-        "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "usage_context": "MANE-transcript-restricted-CASR-variant-QC",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": "0.2.78",
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-paragraph",
         "evidence_paragraph_sha256": "dda23a387e40fc9a28935ff306760642410461d3f2166867577ea7b5ed5c799e",
-        "use_summary": "Distributed genotype QC and association.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12414667/ (section: Subjects, material, and methods / UKB)"
+        "use_summary": "Performed QC with HAIL0.2.78 and PLINK2 on the UKB CASR variants restricted to the named MANE transcript ENST00000639785.2/RefSeq NM_000388.4 before downstream locus/phenotype analyses.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12414667/ (section: Subjects, material, and methods / UKB)",
+        "implementation_scope_note": "The primary paragraph does not give the complete Hail mask, per-tool division of the QC steps or exact Hail functions; supplemental parameters are not invented. The MANE transcript identity must not be silently updated. Fisher/Firth tests, subsequent variant scoring and ancestry-stratified meta-analysis are separate methods, not inferred Hail association operations."
       },
       {
         "tool_id": "king",

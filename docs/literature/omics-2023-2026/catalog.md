@@ -1133,7 +1133,7 @@ Nature · 2023-12-13 · [DOI](https://doi.org/10.1038/s41586-023-06818-7) · [Pr
 | Enrichr | Gene-set enrichment. | Methods / Brain preparation / Analyses of activity-dependent gene expression / Transcription factor enrichment |
 | fgsea | Tested curated transcription-factor target sets using genes ranked by average Fos correlation in excitatory cells relative to inhibitory background, reversing the inhibitory ranking. Restricted sets to 15–500 genes and used positive one-tailed tests with FDR correction. | Methods / Brain preparation / Analyses of activity-dependent gene expression / Transcription factor enrichment |
 | GSEA | Ranked gene-set enrichment. | Methods / Brain preparation / Analyses of activity-dependent gene expression / Transcription factor enrichment |
-| Hail | Distributed genotype QC and association. | Methods / Brain preparation / Cell type mapping into the Slide-seq dataset with RCTD / Changes to RCTD for parallelizable throughput |
+| Hail | Used Hail Batch with GNU Parallel for large-scale cloud parallelization of the modified RCTD cell-type mapping workflow, reaching thousands of cores. | Methods / Brain preparation / Cell type mapping into the Slide-seq dataset with RCTD / Changes to RCTD for parallelizable throughput |
 | Leiden | Grouped observations into communities using a neighborhood graph. | Methods / Brain preparation / Clustering of snRNA-seq data / Leiden clustering |
 | MAGMA | Used MAGMA1.10 with a10kb annotation window and GRCh37/1000Genomes to produce gene z-scores, then selected top1000 genes for scDRS after human-to-mouse orthologue conversion; reused precomputed scores for many traits. | Methods / Brain preparation / Heritability enrichment with scDRS |
 | RCTD | Spatial cell-type deconvolution. | Methods / Brain preparation / Cell type mapping into the Slide-seq dataset with RCTD |
@@ -3273,7 +3273,7 @@ Nature Genetics · 2026-07-24 · [DOI](https://doi.org/10.1038/s41588-026-02697-
 | DIA-NN | Data-independent acquisition proteomic quantification. | Methods / Proteomic profiling / Seer Proteograph |
 | Exome Germline Single Sample | Used the Exome Germline Single Sample 3.0.0 pipeline to preprocess reads and produce per-individual exome gVCFs/CRAMs with Picard, GATK HaplotypeCaller and SAMtools. | Methods / Whole-exome sequencing (WES) |
 | GATK | Generated single-individual exome gVCFs with GATK 4.2.2.0 HaplotypeCaller in Exome Germline Single Sample 3.0.0. The pipeline omitted chrY/MT and called chrX diploid in both sexes. | Methods / Whole-exome sequencing (WES) |
-| Hail | Distributed genotype QC and association. | Methods / Whole-exome sequencing (WES) |
+| Hail | Used HAIL alongside GATK GenotypeGVCFs in the Broad Joint Genotyping pipeline for the WES callset before downstream ancestry and sample/genotype/variant quality control. | Methods / Whole-exome sequencing (WES) |
 | KING | Genetic kinship and relatedness estimation. | Methods / Genotyping and imputation |
 | limma | Linear modelling and empirical-Bayes differential analysis. | Methods / Proteomic profiling / Seer Proteograph |
 | Picard | Alignment QC, duplicates and sequence processing. | Methods / Whole-exome sequencing (WES) |
@@ -3607,7 +3607,7 @@ American Journal of Human Genetics · 2024-11-19 · [DOI](https://doi.org/10.101
 | Beagle | Imputed Eagle 2.3.5-prephased genotypes with the SISu 4.2 reference panel using the explicitly reported Beagle 08Jun17.d8b build. | Subjects and methods / Genotyping and imputation |
 | Eagle | Pre-phased array genotypes and phased the SISu reference-panel whole-genome callset with Eagle 2.3.5, using 20,000 conditioning haplotypes and otherwise reported defaults. | Subjects and methods / Genotyping and imputation |
 | GATK | Variant discovery and recalibration. | Subjects and methods / Genotyping and imputation |
-| Hail | Distributed genotype QC and association. | Subjects and methods / Genotyping and imputation |
+| Hail | Applied iterative genotype-, sample- and variant-level QC using Hail v0.2 to the whole-genome sequences used to construct the SISu v4.2 reference panel, before Eagle phasing and Beagle-based imputation. | Subjects and methods / Genotyping and imputation |
 | LDSC | Used for SNP heritability estimation; cross-trait genetic correlation. | Subjects and methods / Genetic correlations and disease enrichment |
 | REGENIE | Ran REGENIE 2.2.4 additive and recessive GWAS on imputed genotypes in FinnGen women, adjusting for follow-up/death age, birth year, batch and ten PCs. Recessive tests required at least two minor-allele homozygotes. | Subjects and methods / GWAS |
 | SuSiE | Bayesian fine-mapping and credible sets. | Subjects and methods / GWAS |
@@ -3697,7 +3697,7 @@ American Journal of Human Genetics · 2026-06-22 · [DOI](https://doi.org/10.101
 
 | Tool | How used | Evidence location |
 | --- | --- | --- |
-| Hail | Distributed genotype QC and association. | Methods / Genetic data analysis and genome-wide association study / PGS calculation |
+| Hail | Lifted the supplied eMERGE risk variants from GRCh37 to GRCh38 using Hail0.2.130 before calculating raw polygenic scores with the separate AoUPRS library. | Methods / Genetic data analysis and genome-wide association study / PGS calculation |
 | KING | Genetic kinship and relatedness estimation. | Methods / Genetic data analysis and genome-wide association study / PCA and genetic relationship matrix generation |
 | METAL | GWAS meta-analysis. | Methods / Genetic data analysis and genome-wide association study / GWAS |
 | PLINK | Used for genotype quality control; LD-based variant selection. | Methods / Genetic data analysis and genome-wide association study / PCA and genetic relationship matrix generation |
@@ -3928,7 +3928,7 @@ American Journal of Human Genetics · 2025-10-13 · [DOI](https://doi.org/10.101
 
 | Tool | How used | Evidence location |
 | --- | --- | --- |
-| Hail | Distributed genotype QC and association. | Material and methods / Preparation of UKB data / Quality control |
+| Hail | Used Hail0.2.116 for UKB WES preprocessing and QC, including the LD-pruned high-confidence sample-QC set and QC metrics residualized on20 genotype PCs. Hail with Python also calculated per-gene LD matrices and per-variant MAFs reused by COAST-SS. | Material and methods / Preparation of UKB data / Quality control |
 | LOFTEE | Filtered low-confidence LOFTEE calls from protein-truncating variants annotated with VEP109.3, then retained the most severe consequence per variant-gene pair. | Material and methods / Preparation of UKB data / Whole-exome sequencing data |
 | PolyPhen-2 | Missense variant effect annotation. | Material and methods / Preparation of UKB data / Whole-exome sequencing data |
 | SAIGE | Calculated per-variant lipid-trait effects and standard errors with SAIGE1.3.0 among390,865UKB participants,using inverse-normalized traits and a sparse GRM. | Material and methods / Preparation of UKB data / Association analysis |
@@ -4012,7 +4012,7 @@ American Journal of Human Genetics · 2026-05-01 · [DOI](https://doi.org/10.101
 | BWA | DNA read alignment. | Methods / Variant calling |
 | CADD | Variant deleteriousness annotation. | Methods / Variant annotation |
 | GATK | Variant discovery and recalibration. | Methods / Variant calling |
-| Hail | Distributed genotype QC and association. | Methods / Variant calling |
+| Hail | Reports ES/WGS processing using GATK or Hail; the outlined pipeline separately names BWA-MEM alignment, Picard duplicate marking and GATK recalibration, gVCF calling, joint genotyping and VQSR. | Methods / Variant calling |
 | LOFTEE | Used LOFTEE v1.04 with VEP105 to classify protein-truncating variants as high- or low-confidence loss-of-function calls before hierarchical variant categorization. | Methods / Variant annotation |
 | Picard | Alignment QC, duplicates and sequence processing. | Methods / Variant calling |
 | REGENIE | Used SAIGE or REGENIE to test ancestry-stratified recessive gene burdens with age/sex/interactions/PC covariates, RINT quantitative traits and Firth correction below P=0.01 for binary traits. Gene-phenotype tests required at least five bi-allelic carriers; matching additive tests used the same available gene universe. | Methods / Association analysis |
@@ -4185,7 +4185,7 @@ American Journal of Human Genetics · 2025-09-04 · [DOI](https://doi.org/10.101
 | FINEMAP | Bayesian fine-mapping of association loci. | Material and methods / Common-variant association testing in imputed data / Fine-mapping |
 | GATK | Variant discovery and recalibration. | Material and methods / ES data QC / ES data QC summary |
 | GSEA | Ranked gene-set enrichment. | Material and methods / Wet lab methods / Pathway enrichment in CRISPR RNA-seq data |
-| Hail | Distributed genotype QC and association. | Material and methods / ES data QC / Variant and sample-level QC |
+| Hail | Ran Hail sample_qc() for UKB exome sample QC, applying median-plus-or-minus-four-MAD exclusions within ancestry super-populations and separately by ES tranche. Separately obtained previously calculated Genebass gene-association summaries in Hail MatrixTable format. | Material and methods / ES data QC / Variant and sample-level QC |
 | Harmony | Batch integration of cell embeddings. | Material and methods / Wet lab methods / Lipid staining with BODIPY |
 | LDSC | Used for cross-trait genetic correlation. | Material and methods / Genetic correlation estimates |
 | LDstore | Linkage disequilibrium matrix calculation. | Material and methods / Common-variant association testing in imputed data / Fine-mapping |
@@ -4623,7 +4623,7 @@ American Journal of Human Genetics · 2025-07-14 · [DOI](https://doi.org/10.101
 | Tool | How used | Evidence location |
 | --- | --- | --- |
 | coloc | Shared-signal colocalization analysis. | Subjects, material, and methods / In vitro and computational analyses |
-| Hail | Distributed genotype QC and association. | Subjects, material, and methods / UKB |
+| Hail | Performed QC with HAIL0.2.78 and PLINK2 on the UKB CASR variants restricted to the named MANE transcript ENST00000639785.2/RefSeq NM_000388.4 before downstream locus/phenotype analyses. | Subjects, material, and methods / UKB |
 | KING | Genetic kinship and relatedness estimation. | Subjects, material, and methods / MGB Biobank |
 | PLINK 2 | Used explicitly named PLINK v.2.00a3.1LM alongside HAIL v.0.2.78 for QC of qualifying CASR variants in the MANE transcript within UKB. | Subjects, material, and methods / UKB |
 | SKAT | Rare-variant sequence-kernel association. | Subjects, material, and methods / In vitro and computational analyses |

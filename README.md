@@ -64,8 +64,8 @@ See the [command-line plotting vignette](https://robbyjo.github.io/OmicsMatic/pl
 
 The [250-paper catalog](docs/literature/omics-2023-2026/README.md) records 390 named
 tools and 2,450 paper-tool observations from Nature, Nature Genetics and AJHG.
-There are 82 new scoped integrations (17 native Java methods and 65 upstream
-adapters), or 85 including three existing adapters; 249 named tools still need
+There are 83 new scoped integrations (17 native Java methods and 66 upstream
+adapters), or 86 including three existing adapters; 248 named tools still need
 integration. The full implementation goal remains open.
 
 The new [dndscv guide](docs/literature/DNDSCV_WORKFLOWS.md) covers native coding
@@ -88,6 +88,11 @@ The [biomaRt workflow guide](docs/literature/BIOMART_WORKFLOWS.md) covers origin
 annotation retrieval with native Java query planning, exact private R runtimes,
 complete typed outputs and prominent skip/error recovery. Enrichment and
 nearest-gene rules remain separate study decisions.
+
+The [Hail workflow guide](docs/literature/HAIL_WORKFLOWS.md) covers original
+QC/filtering, MatrixTable reuse, LD/PCA, liftover and LOCAL Batch DAGs, with a
+separate exact private installer and prominent skip/failure recovery. The native
+Java sample-QC component needs no Hail runtime. Cloud execution remains skipped.
 
 ## License
 

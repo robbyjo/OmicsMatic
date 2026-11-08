@@ -1,3 +1,13 @@
+## Hail: warnings and required actions
+
+Use development **HailWorkflowCli**, separate **HailWorkflowSetupCli** and **HAIL_WORKFLOWS.md**. Require exit0 AND `analysis-status.json result_admitted=true`; keep the entire output, `manifest.json`, native `.mt`/`.ht`/`.bm` families, typed snapshots, original logs and process receipts. Native `HailSampleQc` has its own Java-only input profile.
+
+**SKIP3: dependent analysis is skipped** when the exact permitted Linux x86_64 Python/Hail/Spark/Java11 runtime or explicit job executable is unavailable, changed or forbidden. Export the setup kit and use CAPTURE for an allowed existing runtime, or INSTALL in NEW private paths where permitted. `--allow-install` and, for missing archives, `--allow-download` are explicit. Preserve failed prefixes/logs. Analysis installs nothing. Required SERVICE/cloud execution is unconfigured and skipped before input capture; no credentials or cloud jobs are used.
+
+**FAIL2: no result from the whole atomic batch is admitted**, including earlier successful cases. Preserve inputs and all provisional native outputs; correct the named input, runtime, operation, capacity, timeout or failed-job cause and retry NEW output paths. Never drop failing rows/cases, repair identifiers/alleles, replace missing/NaN/Inf or substitute releases/builds. Liftover retains source allele strings and reports strand; it does not certify target-reference alleles. Unmapped loci are retained missing or fail the whole batch under the explicit policy.
+
+Batch output paths and input basenames must meet the guide's ASCII/path contract because the original LocalBackend uses shell resource paths. Keep complete files; dense snapshots and LD matrices must fit explicit capacities. No cohort-scale performance, SERVICE/cloud/RCTD program, arbitrary joint-genotyping framework, biological calibration, paper-specific thresholds,0.2.78/0.2.116 binary parity, whole-paper reproduction or canonical release is inferred. Original diagnostics and historical Java21 warnings remain retained; the current upstream workflows use Java11.
+
 ## biomaRt: warnings and required actions
 
 Use development `org.jlinalg.cli.BiomartWorkflowCli` and **BIOMART_WORKFLOWS.md**. Require exit0 and `result_admitted=true`; read `WARNINGS.md`, every phase's `worker-report.json` warnings/error/trace_error fields, original RDS/typed tables, process receipts and complete HTTP/query ledgers.
