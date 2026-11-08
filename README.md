@@ -64,8 +64,8 @@ See the [command-line plotting vignette](https://robbyjo.github.io/OmicsMatic/pl
 
 The [250-paper catalog](docs/literature/omics-2023-2026/README.md) records 390 named
 tools and 2,450 paper-tool observations from Nature, Nature Genetics and AJHG.
-There are 84 new scoped integrations (17 native Java methods and 67 upstream
-adapters), or 87 including three existing adapters; 247 named tools still need
+There are 85 new scoped integrations (17 native Java methods and 68 upstream
+adapters), or 88 including three existing adapters; 251 cataloged named tools still need
 integration. The full implementation goal remains open.
 
 The new [dndscv guide](docs/literature/DNDSCV_WORKFLOWS.md) covers native coding
@@ -98,6 +98,13 @@ The [LeafCutter workflow guide](docs/literature/LEAFCUTTER_WORKFLOWS.md) covers
 original junction clustering, phenotype/PCA preparation and differential-splicing
 fits, with native Java audits, a separate exact private installer and explicit
 case-sensitive filesystem, skipped-analysis and atomic-failure recovery.
+
+The [CellPhoneDB workflow guide](docs/literature/CELLPHONEDB_WORKFLOWS.md) covers
+original5.0.1 simple, permutation and supplied-DEG methods, independent native
+preparation/statistics audits, a separate permitted installer and prominent
+entropy-subsampling, skipped-analysis and atomic-failure recovery. Five newly
+cataloged software names increase the outstanding total; paper-wide review and
+further named-software followups remain open.
 
 ## License
 

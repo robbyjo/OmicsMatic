@@ -1,6 +1,6 @@
 # Omics and GWAS paper catalog
 
-250 papers; 390 named tools; 2450 paper-tool observations.
+250 papers; 395 named tools; 2457 paper-tool observations.
 
 Window: 2023-10-23 through 2026-10-23, inclusive. No extension was required.
 
@@ -149,7 +149,7 @@ Nature · 2025-12-17 · [DOI](https://doi.org/10.1038/s41586-025-09875-2) · [Pr
 | ArchR | Single-cell ATAC-seq analysis. | Methods / Analysis of scATAC–seq data / Per-library analyses |
 | cell2location | Spatial cell-type deconvolution. | Methods / Analysis of 10x Visium data / Estimation of cell-type abundances per Visium spot using matched scRNA-seq data |
 | CellBender | Inferred and subtracted ambient RNA contamination from each scRNA-seq expression matrix using CellBender after STARsolo alignment and quantification. | Methods / Analysis of scRNA-seq data / Per-library analyses |
-| CellPhoneDB | Ligand-receptor cell communication analysis. | Methods / Analysis of scRNA-seq data / Cell–cell interaction analysis from scRNA-seq data |
+| CellPhoneDB | Used reported CellphoneDB5.1 method3 with Seurat positive cell-type/sex markers and an at-least10% expression criterion, restricting mesenchymal corpus-spongiosum–urethral-epithelium pairs to same-sex microenvironments at8–14PCW. Also used method3 for four Wolffian/Müllerian cell types at6–8PCW in one microenvironment. | Methods / Analysis of scRNA-seq data / Cell–cell interaction analysis from scRNA-seq data |
 | Cell Ranger | Processed scATAC-seq libraries with Cell Ranger ATAC v2 for read filtering, alignment, barcode counting and cell calling against the 10x GRCh38 reference v3.1.0. | Methods / Analysis of scATAC–seq data / Per-library analyses |
 | CellTypist | Reference-based cell-type classification. | Methods / Analysis of scRNA-seq data / In vivo–in vitro comparison |
 | Enrichr | Gene-set enrichment. | Methods / Analysis of scRNA-seq data / In vivo–in vitro comparison |
@@ -199,13 +199,14 @@ Nature · 2025-12-17 · [DOI](https://doi.org/10.1038/s41586-025-09873-4) · [Pr
 
 | Tool | How used | Evidence location |
 | --- | --- | --- |
-| CellPhoneDB | Ligand-receptor cell communication analysis. | Methods / Receptor–ligand analysis |
+| CellPhoneDB | Used the Squidpy integration of CellPhoneDB and OmniPath to evaluate time-dependent receptor–ligand shifts; related mean pair values to time with Spearman correlation and Bonferroni correction, then visualized increasing/decreasing interactions. | Methods / Receptor–ligand analysis |
 | Cell Ranger | Processed and aligned 5-prime single-cell sequencing reads to mouse GRCm39/mm39 using CellRanger v7.1.0 in the dissociated-cell and B16-OVA TIL experiments. | Methods / Dissociated scRNA-seq and data preprocessing |
 | Harmony | Batch integration of cell embeddings. | Methods / scRNA-seq analysis of circulating T cells |
 | Scanpy | Used for expression normalization. | Methods / STARmap data analysis |
 | Seurat | Single-cell QC, normalization, integration, clustering or annotation. | Methods / scRNA-seq analysis of circulating T cells |
 | Squidpy | Spatial neighborhood and expression analysis. | Methods / Receptor–ligand analysis |
 | UMAP | Produced an exploratory low-dimensional representation of the measured profiles. | Methods / scRNA-seq analysis of circulating T cells |
+| OmniPath | Used OmniPath through Squidpy together with its CellPhoneDB integration to identify time-dependent receptor–ligand interactions, followed by temporal Spearman correlations, Bonferroni correction and visualization. | Methods / Receptor–ligand analysis |
 
 XML SHA-256: `0a03a6d37c2754eeac3b5b2b5f04972b65fff7a274e54f3648db9ea255942a5e`. Exact evidence paragraph hashes and locators are in [papers.json](papers.json).
 
@@ -1385,7 +1386,7 @@ Nature · 2023-12-06 · [DOI](https://doi.org/10.1038/s41586-023-06806-x) · [Pr
 | --- | --- | --- |
 | AUCell | Rank-based gene-set activity scoring. | Methods / Regulon analysis of transcription factors |
 | cell2location | Spatial cell-type deconvolution. | Methods / Deconvolution of human Visium data using cell2location |
-| CellPhoneDB | Ligand-receptor cell communication analysis. | Methods / Cell–cell communication analysis of human scRNA-seq data |
+| CellPhoneDB | Used CellPhoneDB.org2.1.4 separately for development-stage-matched scRNA-seq datasets; stage-matched Visium data checked spatial distance and expression patterns of ligand–receptor interactions significant atP<0.05. | Methods / Cell–cell communication analysis of human scRNA-seq data |
 | Cell Ranger | Aligned and quantified droplet scRNA-seq using Cell Ranger v3.0.2 with human GRCh38-3.0.0 or mouse mm10-2020-A references. | Methods / Alignment, quantification and quality control of scRNA-seq data |
 | Leiden | Grouped observations into communities using a neighborhood graph. | Methods / Clustering and annotation of scRNA-seq data |
 | Louvain | Grouped observations into communities using a neighborhood graph. | Methods / Digit region analysis of Visium data |
@@ -1845,6 +1846,7 @@ Nature Genetics · 2026-09-24 · [DOI](https://doi.org/10.1038/s41588-026-02748-
 | Tangram | Mapping single-cell expression to spatial measurements. | Methods / Visium and Stereo-seq sample preparation and data analysis |
 | tradeSeq | Trajectory-dependent differential expression. | Methods / Visium and Stereo-seq sample preparation and data analysis |
 | UMAP | Produced an exploratory low-dimensional representation of the measured profiles. | Methods / Developmental trajectory inference from scRNA-seq data |
+| COMMOT | Applied COMMOT across the spatial datasets to infer signaling pathways and obtain pathway-associated gene activations. The described target analysis uses tradeSeq associationTest and fitted smooth expression curves, retains positive associations, selects50 gene–pathway activations per sample, removes genes contributing to the pathway score, and retains the largest association per pathway–gene pair across samples. | Methods / Visium and Stereo-seq sample preparation and data analysis |
 
 XML SHA-256: `ebd1e6a9559b288607109df25a9ef952fa78b93f938a81cb3f954c7678a8af35`. Exact evidence paragraph hashes and locators are in [papers.json](papers.json).
 
@@ -1950,7 +1952,7 @@ Nature Genetics · 2025-11-24 · [DOI](https://doi.org/10.1038/s41588-025-02407-
 | AUCell | Rank-based gene-set activity scoring. | Methods / Computational analysis / Analysis of GRNs |
 | cell2location | Spatial cell-type deconvolution. | Methods / Computational analysis / Spatial mapping of cell types in Visium ST using cell2location |
 | CellChat | Ligand-receptor cell communication inference. | Methods / Computational analysis / Identifying differentially flowing signal variables |
-| CellPhoneDB | Ligand-receptor cell communication analysis. | Methods / Computational analysis / Cell–cell interaction analysis |
+| CellPhoneDB | Used CellPhoneDB5.0.0 for scRNA-seq cluster interactions, requiring all interaction members in at least10% of relevant cells and permuting cell-cluster labels1000times to assess cell-type specificity of ligand–receptor expression means. Visualized pairs atP≤0.01 with CCplotR; spatial communication used COMMOT separately. | Methods / Computational analysis / Cell–cell interaction analysis |
 | cisTarget | Recovery-curve motif enrichment and regulatory target analysis. | Methods / Computational analysis / Analysis of GRNs |
 | Harmony | Batch integration of cell embeddings. | Methods / Computational analysis / scRNA-seq data processing |
 | Leiden | Grouped observations into communities using a neighborhood graph. | Methods / Computational analysis / scRNA-seq data processing |
@@ -1960,6 +1962,8 @@ Nature Genetics · 2025-11-24 · [DOI](https://doi.org/10.1038/s41588-025-02407-
 | Scrublet | Used default Scrublet during Scanpy 1.10.3 preprocessing and also manually removed clusters expressing mixed-lineage markers. | Methods / Computational analysis / scRNA-seq data processing |
 | Space Ranger | Spatial transcriptomics read processing. | Methods / Computational analysis / Mapping of the gene expression libraries |
 | UMAP | Produced an exploratory low-dimensional representation of the measured profiles. | Methods / Computational analysis / scRNA-seq data processing |
+| COMMOT | Applied COMMOT0.0.3 with reported default parameters to spatial transcriptomics communication analysis, separately from CellPhoneDB permutation analysis on scRNA-seq. | Methods / Computational analysis / Cell–cell interaction analysis |
+| CCplotR | Visualized CellPhoneDB ligand–receptor pairs with P≤0.01 using CCplotR0.99.3. | Methods / Computational analysis / Cell–cell interaction analysis |
 
 XML SHA-256: `26ab3e5a8e6387851333b9f42f11e590cd4d7f0e73ba15689752650febdd414e`. Exact evidence paragraph hashes and locators are in [papers.json](papers.json).
 
@@ -3119,7 +3123,7 @@ Nature Genetics · 2025-10-29 · [DOI](https://doi.org/10.1038/s41588-025-02352-
 
 | Tool | How used | Evidence location |
 | --- | --- | --- |
-| CellPhoneDB | Ligand-receptor cell communication analysis. | Results / Spatially informed analysis of developmental cardiac niches |
+| CellPhoneDB | Figure7c identifies use of a published CellPhoneDB neural–GPCR interaction module in spatially informed analysis of SAN cardiomyocytes, neighboring cell states and chromaffin cells, highlighting differentially expressed ligand–receptor components within their respective subsets. | Results / Spatially informed analysis of developmental cardiac niches |
 | Cell Ranger | Demultiplexed scRNA-seq libraries with cellranger mkfastq v4.0.0 before a separate index-hopping filter. | Methods / ScRNA-seq |
 
 XML SHA-256: `b373f46e2eb1785dfbd4b67a21d9c35eb483dee2cfae618e8ad90d0aa8affe3a`. Exact evidence paragraph hashes and locators are in [papers.json](papers.json).
@@ -3131,7 +3135,7 @@ Nature Genetics · 2026-07-30 · [DOI](https://doi.org/10.1038/s41588-026-02665-
 | Tool | How used | Evidence location |
 | --- | --- | --- |
 | CellBender | Removed ambient RNA using CellBender 0.2.0 with expected cells 10,000, 50,000 included droplets, false-positive rate 0.01, 150 epochs and default learning rate; manually inspected per-sample learning curves. | Methods / Bioinformatic analysis: scRNA-seq |
-| CellPhoneDB | Ligand-receptor cell communication analysis. | Methods / Histologic neighborhood annotation |
+| CellPhoneDB | Used CellPhoneDB to identify spatially plausible interactions with each pathologist-annotated histologic neighborhood as a distinct microenvironment; Results report569such interactions. Used CytoSignal separately for a spatially resolved signaling analysis. | Methods / Histologic neighborhood annotation |
 | Cell Ranger | Aligned scRNA-seq samples with CellRanger v7.2.0 to generate the expression matrix used for annotation and connectivity. | Methods / Bioinformatic analysis: scRNA-seq |
 | Enrichr | Gene-set enrichment. | Methods / Pathway analysis |
 | gseapy | Python gene-set enrichment analysis. | Methods / Pathway analysis |
@@ -3254,12 +3258,14 @@ Nature Genetics · 2025-10-21 · [DOI](https://doi.org/10.1038/s41588-025-02353-
 | Tool | How used | Evidence location |
 | --- | --- | --- |
 | CellChat | Ligand-receptor cell communication inference. | Methods / CosMx data analysis / Neighborhood-based cell–cell communication analysis |
-| CellPhoneDB | Ligand-receptor cell communication analysis. | Methods / CosMx data analysis / Neighborhood-based cell–cell communication analysis |
+| CellPhoneDB | Reused a reported CellPhoneDB2.0 human ligand–receptor database alongside CellChat and iTALK resources to form a combined4028-pair set for spatial-neighborhood analysis performed by Spyrrow0.1 commu.cn.call. | Methods / CosMx data analysis / Neighborhood-based cell–cell communication analysis |
 | Harmony | Batch integration of cell embeddings. | Methods / CosMx data analysis / Data quality control and processing |
 | Leiden | Grouped observations into communities using a neighborhood graph. | Methods / CODEX data analysis / Cell typing |
 | Louvain | Grouped observations into communities using a neighborhood graph. | Methods / CosMx data analysis / Data quality control and processing |
 | sctransform | Used Seurat 5.0.1 SCTransform and PCA on CosMx data before Harmony and Louvain; the dataset reports very sparse profiles. | Methods / CosMx data analysis / Data quality control and processing |
 | Seurat | Single-cell QC, normalization, integration, clustering or annotation. | Methods / CosMx data analysis / Data quality control and processing |
+| iTALK | Reused the iTALK human ligand–receptor resource alongside CellChat and CellPhoneDB2.0 for a combined4028-pair set analyzed using Spyrrow0.1. | Methods / CosMx data analysis / Neighborhood-based cell–cell communication analysis |
+| Spyrrow | Executed Spyrrow0.1 commu.cn.call under Python3.10.5 to quantify cell-to-neighbor communication from the combined CellChat, CellPhoneDB and iTALK resources, using the reported sqrt(sender-ligand expression×receiver-receptor expression) activity; plotted results with ggplot2. | Methods / CosMx data analysis / Neighborhood-based cell–cell communication analysis |
 
 XML SHA-256: `a82e0b2515908450887efb66565192b57b0c193f2ccde7217ade8d11e6f8e904`. Exact evidence paragraph hashes and locators are in [papers.json](papers.json).
 
@@ -3301,6 +3307,7 @@ Nature Genetics · 2024-09-16 · [DOI](https://doi.org/10.1038/s41588-024-01900-
 | Presto | Fast single-cell marker testing. | Methods / Gene evidence |
 | SMR | Ran SMR1.3.1 on meta-analyzed SOCCS/GTEx colon eQTL and colorectal-cancer GWAS summaries, corrected SMR P within each risk locus and retained corrected P<0.05 with HEIDI P>0.05; repeated the workflow for meta-analyzed tumor eQTL summaries. | Methods / eQTLs and SMR |
 | SuSiE | Bayesian fine-mapping and credible sets. | Methods / Fine-mapping of risk loci |
+| OmniPath | Obtained regulatory interaction evidence from OmniPath and DoRothEA for transcription-factor–target links, combining curated knowledge, ChIP-seq, motif and expression evidence in the effector-gene investigation. Expression-informed interactions use TCGA tumors or GTEx normal tissues. | Methods / Gene evidence |
 
 XML SHA-256: `35e6eef968caa63cd301d6867f6353d88441df9bd960be9d32288a4e86561782`. Exact evidence paragraph hashes and locators are in [papers.json](papers.json).
 

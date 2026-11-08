@@ -11054,6 +11054,194 @@
       "implementation_scope_note": "The Results paragraph supports the comparator role but does not establish whether LeafCutter quantification/weights were newly generated or reused, its release, clustering/preprocessing options or the trained FUSION models. Do not infer a fresh clustering run or LeafCutter differential-splicing test. The later Discussion describes general intron-event TWAS; SpliTWAS logit-transformed exon PSI and heritability-window choices are not reassigned to LeafCutter.",
       "version_reported_near_name": null,
       "usage_context": "splicing-TWAS-benchmark-comparator-with-FUSION"
+    },
+    {
+      "pmcid": "PMC12893920",
+      "doi": "10.1038/s41586-025-09875-2",
+      "tool_id": "cellphonedb",
+      "evidence_paragraph_sha256": "8f779b8517de34378284fe65880ae59c563f2508624bbac71e22307face10c95",
+      "use_summary": "Used reported CellphoneDB5.1 method3 with Seurat positive cell-type/sex markers and an at-least10% expression criterion, restricting mesenchymal corpus-spongiosum–urethral-epithelium pairs to same-sex microenvironments at8–14PCW. Also used method3 for four Wolffian/Müllerian cell types at6–8PCW in one microenvironment.",
+      "implementation_scope_note": "Method3 consumes caller-supplied DEGs; it does not perform the Seurat differential-expression tests. The captured PyPI versions do not resolve the reported5.1 label; do not silently reinterpret it as5.0.1. Database edition, remaining options and full model choices are unstated. A categorical microenvironment constraint is not a measured cell-distance model. Preserve the paper at-least10% wording separately from literal >threshold source comparisons.",
+      "usage_context": "DEG-method3-with-sex-microenvironments",
+      "version_reported_near_name": "5.1",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 79,
+          "section": "Methods / Analysis of scRNA-seq data / Cell–cell interaction analysis from scRNA-seq data",
+          "paragraph_sha256": "c83e606c40a4a197751ac0e9df4f58a2ad1c5939efb11b238c75c92c98e954cc"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC12893904",
+      "doi": "10.1038/s41586-025-09873-4",
+      "tool_id": "cellphonedb",
+      "evidence_paragraph_sha256": "f9c422f4b10222c4d49f8c638b42bff23691fe2deee0963a0edccef563e75de9",
+      "use_summary": "Used the Squidpy integration of CellPhoneDB and OmniPath to evaluate time-dependent receptor–ligand shifts; related mean pair values to time with Spearman correlation and Bonferroni correction, then visualized increasing/decreasing interactions.",
+      "implementation_scope_note": "This names a Squidpy integration and interaction-resource context, not a demonstrated standalone CellPhoneDB Python/CLI run. Software/database editions, interaction-mapping details and permutation settings are unreported. Spearman/Bonferroni temporal analysis and visualization are distinct downstream steps; do not assign stock CellPhoneDB output semantics or a specific null test without source evidence.",
+      "usage_context": "Squidpy-implementation-and-resource-context",
+      "version_reported_near_name": null,
+      "supporting_evidence": []
+    },
+    {
+      "pmcid": "PMC7616500",
+      "doi": "10.1038/s41586-023-06806-x",
+      "tool_id": "cellphonedb",
+      "evidence_paragraph_sha256": "0c29334111ef621d36b0011c2a1bf95a13c05c0270faee714c2a51dc9e662e88",
+      "use_summary": "Used CellPhoneDB.org2.1.4 separately for development-stage-matched scRNA-seq datasets; stage-matched Visium data checked spatial distance and expression patterns of ligand–receptor interactions significant atP<0.05.",
+      "implementation_scope_note": "The complete paragraph explicitly reports2.1.4, correcting the prior missing-version extraction. Exact database, mode, permutations, expression threshold and RNG choices are unreported. Do not infer them from later-version defaults or treat Visium validation as CellPhoneDB spatial modeling. Current5.0.1 source/runtime controls would not establish historical2.1.4 execution.",
+      "usage_context": "stage-matched-legacy-communication",
+      "version_reported_near_name": "2.1.4",
+      "supporting_evidence": []
+    },
+    {
+      "pmcid": "PMC12695644",
+      "doi": "10.1038/s41588-025-02407-8",
+      "tool_id": "cellphonedb",
+      "evidence_paragraph_sha256": "a992a81ea2fd378b07f207c60aa5f5c926c97987ccc775efe4c5c7c2925f4b13",
+      "use_summary": "Used CellPhoneDB5.0.0 for scRNA-seq cluster interactions, requiring all interaction members in at least10% of relevant cells and permuting cell-cluster labels1000times to assess cell-type specificity of ligand–receptor expression means. Visualized pairs atP≤0.01 with CCplotR; spatial communication used COMMOT separately.",
+      "implementation_scope_note": "Keep the reported all-subunit expression criterion,1000permutations, inclusive-tail prose and P≤0.01 visualization threshold distinct from literal source comparisons. The captured modern helper uses strict > for expression eligibility and shuffled>observed; do not silently rewrite the paper or source to reconcile this. Database edition, RNG seed, other options and biological validation are unstated. COMMOT, CCplotR and the reported RSPO3–LGR6 follow-up are separate analyses.",
+      "usage_context": "cluster-label-permutation-specificity",
+      "version_reported_near_name": "5.0.0",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 25,
+          "section": "Results / ST analysis with topic modeling uncovers a spatial gene topic of MASLD-associated fibrosis",
+          "paragraph_sha256": "1ca3aad3192537f793155d26927e1fc3c8c346d8ee00e4d466983066641b9376"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC12597827",
+      "doi": "10.1038/s41588-025-02352-6",
+      "tool_id": "cellphonedb",
+      "evidence_paragraph_sha256": "9b64fe9cc36c790bdb82c6d1629e0284f4705a7c93fd2e8a48fdf7a2b6e8af74",
+      "use_summary": "Figure7c identifies use of a published CellPhoneDB neural–GPCR interaction module in spatially informed analysis of SAN cardiomyocytes, neighboring cell states and chromaffin cells, highlighting differentially expressed ligand–receptor components within their respective subsets.",
+      "implementation_scope_note": "The available named-tool evidence is Results/figure context. It does not establish a standalone CellPhoneDB run, exact database/software edition, method, DEG test, null model or threshold. The >0.07 co-detection criterion describes the separate niche graph and must not be assigned to CellPhoneDB interaction significance. Preserve resource-only/unspecified execution status.",
+      "usage_context": "neural-GPCR-module-resource-context",
+      "version_reported_near_name": null,
+      "supporting_evidence": []
+    },
+    {
+      "pmcid": "PMC13447095",
+      "doi": "10.1038/s41588-026-02665-0",
+      "tool_id": "cellphonedb",
+      "evidence_paragraph_sha256": "b55e563e4dac59dea91a6bc871c5f254f316c71ad694870c12417e8d066934af",
+      "use_summary": "Used CellPhoneDB to identify spatially plausible interactions with each pathologist-annotated histologic neighborhood as a distinct microenvironment; Results report569such interactions. Used CytoSignal separately for a spatially resolved signaling analysis.",
+      "implementation_scope_note": "Exact CellPhoneDB software/database editions, mode, input representation, expression threshold and permutation choices are unstated. QuPath alignment/annotations, GeoPandas merging and neighborhood Wilcoxon DE are separate preparation steps. CytoSignal P/read/significance thresholds and its diffusion/contact model must not be attributed to CellPhoneDB. A microenvironment restricts cell-type pairs and does not itself infer continuous distances or diffusion.",
+      "usage_context": "histologic-neighborhood-microenvironments",
+      "version_reported_near_name": null,
+      "supporting_evidence": [
+        {
+          "paragraph_index": 29,
+          "section": "Results / Spatially resolved, unbiased cell–cell interactions",
+          "paragraph_sha256": "f46ab4c54ed65d7fa22dc46bb076f8024e1572b500a776e18fa20ea3bbd8577b"
+        },
+        {
+          "paragraph_index": 30,
+          "section": "Results / Spatially resolved, unbiased cell–cell interactions",
+          "paragraph_sha256": "9b2ed64f5fc480b88418bf4211b276c8d444c68ef7abed98ccc5cfa1a1dc3940"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC12597830",
+      "doi": "10.1038/s41588-025-02353-5",
+      "tool_id": "cellphonedb",
+      "evidence_paragraph_sha256": "e559e6007c9e6706b8413557c2479473cb7eaa8557da1615efcb330b34548f42",
+      "use_summary": "Reused a reported CellPhoneDB2.0 human ligand–receptor database alongside CellChat and iTALK resources to form a combined4028-pair set for spatial-neighborhood analysis performed by Spyrrow0.1 commu.cn.call.",
+      "implementation_scope_note": "The2.0 label is stated for the database/resource, not proof of a standalone CellPhoneDB2.0 runtime. The4028pairs belong to the combined resources, not CellPhoneDB alone. The reported activity sqrt(sender-ligand expression×receiver-receptor expression) and neighborhood calculations are attributed to Spyrrow, not CellPhoneDB arithmetic cluster means, permutations or DEG method3. Exact source database snapshot, mapping and neighborhood options remain unspecified.",
+      "usage_context": "database-only-neighborhood-analysis",
+      "version_reported_near_name": "2.0",
+      "supporting_evidence": []
+    },
+    {
+      "pmcid": "PMC12893904",
+      "doi": "10.1038/s41586-025-09873-4",
+      "tool_id": "omnipath",
+      "evidence_paragraph_sha256": "f9c422f4b10222c4d49f8c638b42bff23691fe2deee0963a0edccef563e75de9",
+      "use_summary": "Used OmniPath through Squidpy together with its CellPhoneDB integration to identify time-dependent receptor–ligand interactions, followed by temporal Spearman correlations, Bonferroni correction and visualization.",
+      "implementation_scope_note": "The paragraph establishes interaction-resource/integration use; it does not establish a standalone OmniPath client, exact database snapshot or extraction/mapping settings. Preserve the separate Squidpy implementation and downstream temporal statistics rather than assigning them to an OmniPath runtime.",
+      "usage_context": "interaction-resource-through-Squidpy",
+      "version_reported_near_name": null,
+      "supporting_evidence": []
+    },
+    {
+      "pmcid": "PMC12695644",
+      "doi": "10.1038/s41588-025-02407-8",
+      "tool_id": "commot",
+      "evidence_paragraph_sha256": "a992a81ea2fd378b07f207c60aa5f5c926c97987ccc775efe4c5c7c2925f4b13",
+      "use_summary": "Applied COMMOT0.0.3 with reported default parameters to spatial transcriptomics communication analysis, separately from CellPhoneDB permutation analysis on scRNA-seq.",
+      "implementation_scope_note": "Default parameters are version-bound; exact database, spatial representation and remaining inputs are unreported. This optimal-transport method is not established by CellPhoneDB, generic spatial neighbors or a Java correlation/interaction score.",
+      "usage_context": "spatial-optimal-transport-communication",
+      "version_reported_near_name": "0.0.3",
+      "supporting_evidence": []
+    },
+    {
+      "pmcid": "PMC12695644",
+      "doi": "10.1038/s41588-025-02407-8",
+      "tool_id": "ccplotr",
+      "evidence_paragraph_sha256": "a992a81ea2fd378b07f207c60aa5f5c926c97987ccc775efe4c5c7c2925f4b13",
+      "use_summary": "Visualized CellPhoneDB ligand–receptor pairs with P≤0.01 using CCplotR0.99.3.",
+      "implementation_scope_note": "This is downstream visualization, not inference of CellPhoneDB P values or COMMOT spatial transport. Plot calls, aesthetics and complete input/output specifications are unreported; a generic plotter does not establish CCplotR source parity.",
+      "usage_context": "interaction-visualization",
+      "version_reported_near_name": "0.99.3",
+      "supporting_evidence": []
+    },
+    {
+      "pmcid": "PMC12597830",
+      "doi": "10.1038/s41588-025-02353-5",
+      "tool_id": "italk",
+      "evidence_paragraph_sha256": "e559e6007c9e6706b8413557c2479473cb7eaa8557da1615efcb330b34548f42",
+      "use_summary": "Reused the iTALK human ligand–receptor resource alongside CellChat and CellPhoneDB2.0 for a combined4028-pair set analyzed using Spyrrow0.1.",
+      "implementation_scope_note": "No standalone iTALK execution or exact iTALK software/database version is stated. The combined pair count and Spyrrow neighborhood/activity calculations must not be credited to iTALK alone.",
+      "usage_context": "combined-ligand-receptor-resource",
+      "version_reported_near_name": null,
+      "supporting_evidence": []
+    },
+    {
+      "pmcid": "PMC12597830",
+      "doi": "10.1038/s41588-025-02353-5",
+      "tool_id": "spyrrow",
+      "evidence_paragraph_sha256": "e559e6007c9e6706b8413557c2479473cb7eaa8557da1615efcb330b34548f42",
+      "use_summary": "Executed Spyrrow0.1 commu.cn.call under Python3.10.5 to quantify cell-to-neighbor communication from the combined CellChat, CellPhoneDB and iTALK resources, using the reported sqrt(sender-ligand expression×receiver-receptor expression) activity; plotted results with ggplot2.",
+      "implementation_scope_note": "Preserve the declared spatial-neighborhood restriction and formula; the complete graph construction, gene/resource mapping and remaining function arguments are unstated. This is the executing software for the reported score, not standalone CellPhoneDB inference. Exact code commit is unspecified despite the code link; source/runtime validation remains required.",
+      "usage_context": "spatial-neighborhood-activity",
+      "version_reported_near_name": "0.1",
+      "supporting_evidence": []
+    },
+    {
+      "pmcid": "PMC13649600",
+      "doi": "10.1038/s41588-026-02748-y",
+      "tool_id": "commot",
+      "evidence_paragraph_sha256": "ce20a8a20782741dc47d580a5b267b40dc16e3ad3865c0d8302c02e2f7b9eb55",
+      "use_summary": "Applied COMMOT across the spatial datasets to infer signaling pathways and obtain pathway-associated gene activations. The described target analysis uses tradeSeq associationTest and fitted smooth expression curves, retains positive associations, selects50 gene–pathway activations per sample, removes genes contributing to the pathway score, and retains the largest association per pathway–gene pair across samples.",
+      "implementation_scope_note": "COMMOT edition, interaction database, transport parameters and full statistical settings are unreported. The target-gene procedure and pathway interpretation are downstream of the communication inference; they do not establish experimental signaling causality. Scanpy graph construction, Tangram mapping, SAW processing, Stereopy conversion and CellTypist annotation are distinct preparation tools. This spatial analysis is not CellPhoneDB permutation or supplied-DEG inference.",
+      "usage_context": "spatial-pathway-and-target-activation",
+      "version_reported_near_name": null,
+      "supporting_evidence": [
+        {
+          "paragraph_index": 16,
+          "section": "Results / Cleft-related epithelial gene expression signature reveals pleiotropic enhancer–gene link",
+          "paragraph_sha256": "fabf85642084033229c6279e7f13534fc950638aa7339f95754e244ce56ad0e0"
+        },
+        {
+          "paragraph_index": 17,
+          "section": "Results / Peripheral neurons fine-tune the facial skeleton",
+          "paragraph_sha256": "9021e058ad03010bd94be7de6daf1e76670032a73fa586a185aaaadf5039690e"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC11525171",
+      "doi": "10.1038/s41588-024-01900-w",
+      "tool_id": "omnipath",
+      "evidence_paragraph_sha256": "23eafa4ba6db3f74dc7d7546cea631ce8377f3f22ede4e3be2431aacd14d8da9",
+      "use_summary": "Obtained regulatory interaction evidence from OmniPath and DoRothEA for transcription-factor–target links, combining curated knowledge, ChIP-seq, motif and expression evidence in the effector-gene investigation. Expression-informed interactions use TCGA tumors or GTEx normal tissues.",
+      "implementation_scope_note": "This role concerns a regulatory interaction resource, not a demonstrated OmniPath ligand–receptor communication run or client invocation. Exact resource snapshots, confidence cutoffs and extraction commands are unstated. Do not attribute all combined DoRothEA/OmniPath evidence to OmniPath alone or treat expression-inferred links as experimental proof.",
+      "usage_context": "transcription-factor-target-evidence-resource",
+      "version_reported_near_name": null,
+      "supporting_evidence": []
     }
   ]
 }
