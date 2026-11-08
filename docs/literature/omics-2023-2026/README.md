@@ -1,3 +1,40 @@
+# 250-paper omics/GWAS toolbox catalog
+
+**Current checkpoint: 87 new integrations** (17 native Java subsets and70 tested
+upstream adapters), **90 including three existing adapters**, with **254 named
+tools still missing**. These are explicitly scoped implementations, not claims
+of complete packages or whole-paper reproduction. Cell Ranger remains excluded.
+
+The frozen catalog contains250 papers (Nature71, Nature Genetics104 and AJHG75),
+400 observed named tools from438 registry definitions,2465 paper/tool observations,
+988 reviewed uses and340 supporting pointers. Its original review window is
+2023-10-23 through2026-10-23; no extension was needed. All paper identities,
+observations, reviewed roles and399 other tool rows are preserved by this update.
+
+scFates is now available through the validated development
+`org.jlinalg.cli.ScfatesWorkflowCli`, with separate `ScfatesSetupCli` setup.
+It executes original scFates1.2.5/SimplePPT1.1.7 CPU tree/root/pseudotime on explicit
+prepared coordinates. Read [the execution guide](../SCFATES_WORKFLOW.md) and
+[catalog integration guide](../SCFATES_CATALOG.md). The canonical executable
+is unchanged. P094's edition/root/iterations and biological results are not inferred.
+
+**SKIP3 skips dependent analysis** if compatible software or installation/download
+permission is unavailable. **FAIL2 admits no case from the entire requested batch**,
+including earlier completed cases. Keep original inputs, failures, provisionals
+and logs; correct the named cause and retry NEW paths. RUN installs nothing.
+Read [WARNINGS.md](WARNINGS.md), console warnings, native audits and process receipts.
+Original NaN/Inf, zero assignments, missing milestones, directional root rounding,
+scalar-edge projection, initialization bookkeeping and NumPy ties remain explicit.
+No palette, fallback probability, renormalization or annotation is fabricated.
+
+The earlier Palantir checkpoint and all prior text follow verbatim as history.
+Use the current summary/inventory and the current implementation guide for
+availability; historical missing counts and pending statements describe those
+earlier checkpoints. The250-paper implementation goal remains active.
+
+<details>
+<summary>Historical prior catalog document, retained verbatim</summary>
+
 # Literature-driven omics toolbox: current status
 
 The fixed cohort contains **250 papers,400 named tools,2,465 paper-tool observations,988 reviewed uses and340 supporting paragraph pointers**. Current scoped availability is **86 new integrations:17 native subsets and69 upstream adapters**, or **89 including three existing adapters**. **255 tools remain missing.** Paper-wide semantic completeness and the full implementation goal remain open. Five newly recognized names add four missing entries; Palantir receives the one new adapter credit.
@@ -851,6 +888,8 @@ The [implementation queue](implementation-plan.md) and `tool-inventory.json`
 distinguish missing tools, related existing methods, existing adapters/lookups,
 and newly validated subsets. Complete the remaining integrations and semantic
 coverage review before marking the overall goal complete.
+
+</details>
 
 </details>
 
