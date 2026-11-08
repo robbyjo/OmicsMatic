@@ -10779,6 +10779,93 @@
       "version_reported_near_name": null,
       "usage_context": "non-European-gene-heterogeneity-screen",
       "supporting_evidence": []
+    },
+    {
+      "pmcid": "PMC12893915",
+      "doi": "10.1038/s41586-025-09866-3",
+      "tool_id": "loftee",
+      "evidence_paragraph_sha256": "22b33de5ba8b157ac4f1ef0516757f59c092ba060919731b55f789a576061129",
+      "use_summary": "Selected high-confidence loss-of-function sites using Ensembl VEP with LOFTEE for the All of Us rare-variant burden analysis; restricted analyzed variants to MAF <1%.",
+      "implementation_scope_note": "Exact VEP/LOFTEE versions and reference resources are unspecified. Cohort/MCH filtering, covariates and subsequent burden testing are separate study operations; no rare-variant threshold or cohort definition is inferred by LOFTEE.",
+      "version_reported_near_name": null,
+      "usage_context": "high-confidence-site-selection"
+    },
+    {
+      "pmcid": "PMC12695641",
+      "doi": "10.1038/s41588-025-02403-y",
+      "tool_id": "loftee",
+      "evidence_paragraph_sha256": "b38aabf74f08ce845051607a37b34c62df6b755caee71cbede0db43092f71016",
+      "use_summary": "Annotated variants pooled from UKB and All of Us with VEP105 and reported LOFTEE GRCh38 v.1.04, grouping them as loss-of-function, missense or synonymous before constructing the LD matrix.",
+      "implementation_scope_note": "The cited BRaVa pipeline is an annotation resource, not a specified immutable container digest. Its current resource revisions do not identify the paper execution. No confidence cutoff or transcript selection absent from this paragraph is invented. Cohort-specific GRM and association models remain separate.",
+      "version_reported_near_name": "1.04",
+      "usage_context": "pooled-cohort-functional-annotation"
+    },
+    {
+      "pmcid": "PMC10632132",
+      "doi": "10.1038/s41588-023-01553-1",
+      "tool_id": "loftee",
+      "evidence_paragraph_sha256": "7359ed1375892505d630819a5bbf6d84d3acfbe379bbc31dd8ccdb7201bc0802",
+      "use_summary": "Used high-confidence LOFTEE loss-of-function predictions in the coding_filter1 rare-variant mask, with separate qualifying missense variants; retained the coding set when adding regulatory variants for coding_noncoding_filter1.",
+      "implementation_scope_note": "GENCODE v29, MAF <0.01, cumulative MAC >=20 and aggregation-wise Bonferroni testing are paper choices. MetaSV, GeneHancer, Fathmm-XF and regulatory annotations are additional mask components. Exact LOFTEE release/resources and newly executed versus supplied annotation provenance are unspecified.",
+      "version_reported_near_name": null,
+      "usage_context": "high-confidence-gene-mask-component"
+    },
+    {
+      "pmcid": "PMC11525179",
+      "doi": "10.1038/s41588-024-01910-8",
+      "tool_id": "loftee",
+      "evidence_paragraph_sha256": "1bbc32e462f006981cf64996c746cc4e35264c62f30de950ec700ed95d79f0b5",
+      "use_summary": "Included LOFTEE with VEP94.5 and classified canonical-transcript variants using high-confidence LoF calls; placed low-confidence LoF calls in the separate functional-variant category.",
+      "implementation_scope_note": "Preserve the paper's LoF consequence list, including stop_lost and transcript_ablation, while still requiring the reported HC annotation; do not manufacture an HC call from consequence alone. LOFTEE release is unspecified. SpliceAI cutoffs and canonical-transcript classification are separate study rules; LC is not universally discarded.",
+      "version_reported_near_name": null,
+      "usage_context": "canonical-transcript-HC-LC-classification"
+    },
+    {
+      "pmcid": "PMC13504349",
+      "doi": "10.1016/j.ajhg.2026.05.013",
+      "tool_id": "loftee",
+      "evidence_paragraph_sha256": "4dd2fea53a74ce8159b72f6ca742e9e59dfccc3bf76d5276e1cee4aa3f053f35",
+      "use_summary": "Used LOFTEE v.1.04_GRCh38 with VEP105 to annotate exome loss-of-function confidence, selecting MANE Select protein-coding transcripts with GENCODE v39 canonical fallback for downstream variant categories.",
+      "implementation_scope_note": "dbNSFP4.3, CADD1.6, REVEL and SpliceAI1.3 remain distinct resources/methods. The cited floating pipeline now advertises changed resources; do not silently substitute dbNSFP5.4a/CADD1.7 or claim its current container is the paper image. Transcript selection occurs after annotation and must remain explicit.",
+      "version_reported_near_name": "1.04_GRCh38",
+      "usage_context": "MANE-with-canonical-fallback-confidence-annotation"
+    },
+    {
+      "pmcid": "PMC12808971",
+      "doi": "10.1016/j.ajhg.2025.09.012",
+      "tool_id": "loftee",
+      "evidence_paragraph_sha256": "a1caeaf182d001dfaa1b30f60d2658b5480b530a2ee7a399ea2ccf33b4efe5a0",
+      "use_summary": "Filtered low-confidence LOFTEE calls from protein-truncating variants annotated with VEP109.3, then retained the most severe consequence per variant-gene pair.",
+      "implementation_scope_note": "The paper considers consequences from any transcript; do not replace this with canonical/MANE-only selection. Its PTV class contains splice acceptor/donor, stop-gained and frameshift variants, while stop-lost is in its missense class. LOFTEE version/resources are unreported; read/genotype filtering and PolyPhen/SIFT classes are separate.",
+      "version_reported_near_name": null,
+      "usage_context": "any-transcript-PTV-low-confidence-filter"
+    },
+    {
+      "pmcid": "PMC13277689",
+      "doi": "10.1016/j.ajhg.2026.04.005",
+      "tool_id": "loftee",
+      "evidence_paragraph_sha256": "f98490f9d82ada57e55183590446194de62f14d04a82ea48b6fddcc434b109b0",
+      "use_summary": "Used LOFTEE v1.04 with VEP105 to classify protein-truncating variants as high- or low-confidence loss-of-function calls before hierarchical variant categorization.",
+      "implementation_scope_note": "MANE Select is preferred with GENCODE v39 canonical fallback. dbNSFP4.3 CADD/REVEL and separate SpliceAI1.3 annotations are additional inputs. Confidence alone does not reproduce the hierarchy, paper burden groups or association tests. The source reports1.04; a precise paper plugin commit/image digest is not supplied.",
+      "version_reported_near_name": "1.04",
+      "usage_context": "HC-LC-confidence-for-hierarchical-categories"
+    },
+    {
+      "pmcid": "PMC12696503",
+      "doi": "10.1016/j.ajhg.2025.08.013",
+      "tool_id": "loftee",
+      "evidence_paragraph_sha256": "3559c0474d7a63fd54a28fa3004e5a9aa7df69074de24d73aea2b73164db61de",
+      "use_summary": "Used LOFTEE v1.04 GRCh38 with VEP105 for exome loss-of-function confidence before defining gene-testing categories, using MANE Select protein-coding transcripts and GENCODE v39 canonical fallback.",
+      "implementation_scope_note": "Keep dbNSFP4.3, CADD1.6, REVEL and SpliceAI1.3 distinct from LOFTEE. The later combined high-confidence pLoF/damaging definition and rare-variant gene tests use multiple methods; LOFTEE alone does not implement those masks or tests. Current changes to the cited floating pipeline do not establish the original execution profile.",
+      "version_reported_near_name": "1.04 GRCh38",
+      "usage_context": "MANE-with-canonical-fallback-gene-category-input",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 58,
+          "section": "Results / Discovery of genes associated with obesity and fat distribution through exome-wide association tests",
+          "paragraph_sha256": "384ab1da7cc2b03ca45fbb1ff65dbf743aa1aff94401c070fc1e07a5a26c605d"
+        }
+      ]
     }
   ]
 }

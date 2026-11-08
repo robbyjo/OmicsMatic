@@ -64,8 +64,8 @@ See the [command-line plotting vignette](https://robbyjo.github.io/OmicsMatic/pl
 
 The [250-paper catalog](docs/literature/omics-2023-2026/README.md) records 390 named
 tools and 2,450 paper-tool observations from Nature, Nature Genetics and AJHG.
-There are 80 new scoped integrations (17 native Java methods and 63 upstream
-adapters), or 83 including three existing adapters; 251 named tools still need
+There are 81 new scoped integrations (17 native Java methods and 64 upstream
+adapters), or 84 including three existing adapters; 250 named tools still need
 integration. The full implementation goal remains open.
 
 The new [dndscv guide](docs/literature/DNDSCV_WORKFLOWS.md) covers native coding
@@ -78,6 +78,11 @@ atomic batch.** Read each tool's warnings and required actions before analysis.
 The [SMR/HEIDI guide](docs/literature/SMR_WORKFLOWS.md) covers the tested original
 SMR 1.3.1/1.4.3 adapter, native input and result audits, private runtime setup,
 and a runnable synthetic example. Read its version, overlap and capacity limits.
+
+The [LOFTEE workflow guide](docs/literature/LOFTEE_WORKFLOWS.md) covers the tested
+original annotation adapter, exact private runtime preparation, complete native
+audits and a compressed synthetic example. VEP cache execution remains skipped;
+paper-specific transcript selection and variant masks remain separate.
 
 ## License
 

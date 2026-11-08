@@ -455,7 +455,7 @@ Nature · 2025-12-10 · [DOI](https://doi.org/10.1038/s41586-025-09866-3) · [Pr
 | HMMRATAC | Used MACS3 3.0.3 hmmratac to call ATAC narrow peaks for RPE1/Jurkat after preprocessing and duplicate filtering. | Methods / Linkage disequilibrium score regression |
 | LDSC | Used for SNP heritability estimation; annotation-stratified genetic enrichment. | Methods / Linkage disequilibrium score regression |
 | limma | Linear modelling and empirical-Bayes differential analysis. | Methods / Estimation of gene-regulatory effects from Perturb-seq |
-| LOFTEE | Loss-of-function variant annotation. | Methods / LoF burden test in the All of Us cohort |
+| LOFTEE | Selected high-confidence loss-of-function sites using Ensembl VEP with LOFTEE for the All of Us rare-variant burden analysis; restricted analyzed variants to MAF <1%. | Methods / LoF burden test in the All of Us cohort |
 | MACS | Filtered ATAC duplicates with MACS3 3.0.3 and used its hmmratac program to call narrow peaks for RPE1 and Jurkat. Separately reused MACS2 -log10(q) peak strengths in distance-decayed transcription-factor-to-gene regulation scores. | Methods / Linkage disequilibrium score regression |
 | PLINK | Used PLINK 1.90b5.3 --clump to select independent GWAS variants with P=5e-8, r2=0.01 and a 10-Mb window. Subsequently merged lead SNPs within 100 kb, retained the smallest-P lead, annotated nearby protein-coding genes using bedtools and excluded HLA. | Methods / Pathway enrichment analysis of GWAS and LoF top hits / Clumping of GWAS top variants. |
 | REGENIE | Ran REGENIE LoF gene-burden tests in All of Us using HapMap SNPs from ACAF for step 1, inverse-normal phenotypes in both steps, age/sex/interactions, 16 common-variant and 20 rare-variant PCs. Masks used MAC > 5 and MAF < 1%. | Methods / LoF burden test in the All of Us cohort |
@@ -2099,7 +2099,7 @@ Nature Genetics · 2025-11-20 · [DOI](https://doi.org/10.1038/s41588-025-02403-
 
 | Tool | How used | Evidence location |
 | --- | --- | --- |
-| LOFTEE | Loss-of-function variant annotation. | Methods / UKB and All of Us WES data meta-analysis |
+| LOFTEE | Annotated variants pooled from UKB and All of Us with VEP105 and reported LOFTEE GRCh38 v.1.04, grouping them as loss-of-function, missense or synonymous before constructing the LD matrix. | Methods / UKB and All of Us WES data meta-analysis |
 | Meta-SAIGE | Combined cohort summaries with Meta-SAIGE,compared results against individual-level SAIGE-GENE+,and analyzed ancestry-specific UKB/All of Us rare-variant data. | Methods / Comparison of Meta-SAIGE and SAIGE-GENE+ |
 | MetaSTAAR | Summary-statistic gene-based rare-variant meta-analysis. | Methods / Computational cost evaluation |
 | SAIGE | Generated per-cohort SAIGE variant score statistics,variances and P values,plus phenotype-independent sparse genotype cross-product LD matrices,for Meta-SAIGE analyses of binary and continuous traits. | Methods / Summary statistics from each cohort |
@@ -2797,7 +2797,7 @@ Nature Genetics · 2023-10-30 · [DOI](https://doi.org/10.1038/s41588-023-01553-
 | Tool | How used | Evidence location |
 | --- | --- | --- |
 | ANNOVAR | Variant functional annotation. | Methods / Association analyses |
-| LOFTEE | Loss-of-function variant annotation. | Methods / Association analyses |
+| LOFTEE | Used high-confidence LOFTEE loss-of-function predictions in the coding_filter1 rare-variant mask, with separate qualifying missense variants; retained the coding set when adding regulatory variants for coding_noncoding_filter1. | Methods / Association analyses |
 | RFMix | Local ancestry inference. | Methods / Estimation of genetic ancestry proportions |
 | Ensembl VEP | Variant consequence annotation. | Methods / Association analyses |
 
@@ -3103,7 +3103,7 @@ Nature Genetics · 2024-09-23 · [DOI](https://doi.org/10.1038/s41588-024-01910-
 | BWA | DNA read alignment. | Methods / Cohorts, sequencing, alignment and variant calling / DDD |
 | GATK | Variant discovery and recalibration. | Methods / Cohorts, sequencing, alignment and variant calling / DDD |
 | GCTA | Used for genetic principal components. | Methods / Ancestry assignment / Assigning broad-scale GIA groups |
-| LOFTEE | Loss-of-function variant annotation. | Methods / Variant filtering and annotation / Variant annotation |
+| LOFTEE | Included LOFTEE with VEP94.5 and classified canonical-transcript variants using high-confidence LoF calls; placed low-confidence LoF calls in the separate functional-variant category. | Methods / Variant filtering and annotation / Variant annotation |
 | Picard | Alignment QC, duplicates and sequence processing. | Methods / Cohorts, sequencing, alignment and variant calling / DDD |
 | PLINK | Used for LD-based variant selection. | Methods / Ancestry assignment / Assigning broad-scale GIA groups |
 | SAMtools | Alignment manipulation and QC. | Methods / Cohorts, sequencing, alignment and variant calling / GeneDx |
@@ -3757,7 +3757,7 @@ American Journal of Human Genetics · 2026-06-22 · [DOI](https://doi.org/10.101
 | --- | --- | --- |
 | BCFtools | Variant manipulation, calling, normalization and filtering. | Methods / Variant consequence annotation |
 | CADD | Variant deleteriousness annotation. | Methods / Variant consequence annotation |
-| LOFTEE | Loss-of-function variant annotation. | Methods / Variant consequence annotation |
+| LOFTEE | Used LOFTEE v.1.04_GRCh38 with VEP105 to annotate exome loss-of-function confidence, selecting MANE Select protein-coding transcripts with GENCODE v39 canonical fallback for downstream variant categories. | Methods / Variant consequence annotation |
 | PLINK | Used for genotype quality control. | Methods / Burden testing on phenotype misalignment |
 | REGENIE | Used REGENIE 4.1 for MAF <0.1% pLoF and damaging-missense gene tests of phenotype misalignment. Step 1 used QCed array genotypes and sequencing tranche; misaligned-status tests used binary mode, while original continuous-trait comparisons used apply-rint. | Methods / Burden testing on phenotype misalignment |
 | REVEL | Missense variant effect prediction. | Methods / Variant consequence annotation |
@@ -3929,7 +3929,7 @@ American Journal of Human Genetics · 2025-10-13 · [DOI](https://doi.org/10.101
 | Tool | How used | Evidence location |
 | --- | --- | --- |
 | Hail | Distributed genotype QC and association. | Material and methods / Preparation of UKB data / Quality control |
-| LOFTEE | Loss-of-function variant annotation. | Material and methods / Preparation of UKB data / Whole-exome sequencing data |
+| LOFTEE | Filtered low-confidence LOFTEE calls from protein-truncating variants annotated with VEP109.3, then retained the most severe consequence per variant-gene pair. | Material and methods / Preparation of UKB data / Whole-exome sequencing data |
 | PolyPhen-2 | Missense variant effect annotation. | Material and methods / Preparation of UKB data / Whole-exome sequencing data |
 | SAIGE | Calculated per-variant lipid-trait effects and standard errors with SAIGE1.3.0 among390,865UKB participants,using inverse-normalized traits and a sparse GRM. | Material and methods / Preparation of UKB data / Association analysis |
 | SIFT | Missense variant effect annotation. | Material and methods / Preparation of UKB data / Whole-exome sequencing data |
@@ -4013,7 +4013,7 @@ American Journal of Human Genetics · 2026-05-01 · [DOI](https://doi.org/10.101
 | CADD | Variant deleteriousness annotation. | Methods / Variant annotation |
 | GATK | Variant discovery and recalibration. | Methods / Variant calling |
 | Hail | Distributed genotype QC and association. | Methods / Variant calling |
-| LOFTEE | Loss-of-function variant annotation. | Methods / Variant annotation |
+| LOFTEE | Used LOFTEE v1.04 with VEP105 to classify protein-truncating variants as high- or low-confidence loss-of-function calls before hierarchical variant categorization. | Methods / Variant annotation |
 | Picard | Alignment QC, duplicates and sequence processing. | Methods / Variant calling |
 | REGENIE | Used SAIGE or REGENIE to test ancestry-stratified recessive gene burdens with age/sex/interactions/PC covariates, RINT quantitative traits and Firth correction below P=0.01 for binary traits. Gene-phenotype tests required at least five bi-allelic carriers; matching additive tests used the same available gene universe. | Methods / Association analysis |
 | REVEL | Missense variant effect prediction. | Methods / Variant annotation |
@@ -4189,7 +4189,7 @@ American Journal of Human Genetics · 2025-09-04 · [DOI](https://doi.org/10.101
 | Harmony | Batch integration of cell embeddings. | Material and methods / Wet lab methods / Lipid staining with BODIPY |
 | LDSC | Used for cross-trait genetic correlation. | Material and methods / Genetic correlation estimates |
 | LDstore | Linkage disequilibrium matrix calculation. | Material and methods / Common-variant association testing in imputed data / Fine-mapping |
-| LOFTEE | Loss-of-function variant annotation. | Material and methods / Variant consequence annotation |
+| LOFTEE | Used LOFTEE v1.04 GRCh38 with VEP105 for exome loss-of-function confidence before defining gene-testing categories, using MANE Select protein-coding transcripts and GENCODE v39 canonical fallback. | Material and methods / Variant consequence annotation |
 | PLINK | Used for LD-based variant selection. | Material and methods / Genetic association testing |
 | PoPS | Effector-gene prioritization using polygenic features. | Material and methods / Common-variant gene prioritization scores |
 | REVEL | Missense variant effect prediction. | Material and methods / Variant consequence annotation |
