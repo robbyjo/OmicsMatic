@@ -108,7 +108,7 @@ Prioritize repeated workflows, scientific input contracts, real upstream validat
 | biomaRt | 7 | missing | Distinct named algorithm/annotation/IO/support package recovered in individually reviewed primary methods. Supporting dependency versus scientific analysis is explicit; integration and independent validation pending. |
 | g:Profiler | 7 | method-overlap | Related native method; upstream software options and numerical equivalence require separate validation. |
 | hifiasm | 7 | missing | Additional software identified during full-text/code-link completeness review; integration and independent validation pending. |
-| SMR | 7 | missing | No equivalent workflow identified in the current source inventory. |
+| SMR | 7 | upstream-adapter-validated | Typed unchanged-original SMR 1.3.1/1.4.3 single/multi-SNP association and original/new/off HEIDI, with Java GWAS/QTL/BESD/reference, allele/frequency/MAF, preparation, complete-family/top-SNP and rounded ratio/SE/P audits. Dense reference order, sparse row order and literal near ties retained; explicit sample-overlap/source-flag semantics. Original LD pruning, HEIDI mixtures/tails and multi-SNP fitting remain upstream. Input/assembly/population/units, paper corrections/reuse and historical binaries are not inferred. Bounded ingestion; read SMR_WORKFLOWS.md. |
 | LeafCutter | 7 | missing | No equivalent workflow identified in the current source inventory. |
 | ACAT | 7 | method-overlap | Related native method; upstream software options and numerical equivalence require separate validation. |
 | FUSION | 7 | method-overlap | Related native method; upstream software options and numerical equivalence require separate validation. |
@@ -149,7 +149,7 @@ Prioritize repeated workflows, scientific input contracts, real upstream validat
 | MTAG | 5 | missing | No equivalent workflow identified in the current source inventory. |
 | PoPS | 5 | missing | Paper-specific method identified during title and code-link review; authentic integration and scientific validation pending. |
 | LDAK | 5 | missing | No equivalent workflow identified in the current source inventory. |
-| HEIDI | 5 | missing | No equivalent workflow identified in the current source inventory. |
+| HEIDI | 5 | upstream-adapter-validated | Typed unchanged-original SMR 1.3.1/1.4.3 single/multi-SNP association and original/new/off HEIDI, with Java GWAS/QTL/BESD/reference, allele/frequency/MAF, preparation, complete-family/top-SNP and rounded ratio/SE/P audits. Dense reference order, sparse row order and literal near ties retained; explicit sample-overlap/source-flag semantics. Original LD pruning, HEIDI mixtures/tails and multi-SNP fitting remain upstream. Input/assembly/population/units, paper corrections/reuse and historical binaries are not inferred. Bounded ingestion; read SMR_WORKFLOWS.md. |
 | SnpEff | 4 | missing | No equivalent workflow identified in the current source inventory. |
 | cooltools | 4 | missing | Additional software identified during full-text/code-link completeness review; integration and independent validation pending. |
 | CrossMap | 4 | missing | Independent CrossMap execution/input/output validation is required; a related Java interval mapper is not full CrossMap parity. |

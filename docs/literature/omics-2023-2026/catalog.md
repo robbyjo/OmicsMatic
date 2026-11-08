@@ -1430,7 +1430,7 @@ Nature Genetics · 2023-12-28 · [DOI](https://doi.org/10.1038/s41588-023-01584-
 | Minimac | The 23andMe data pipeline phased array genotypes using Finch or Eagle2, then imputed with Minimac3 using a combined 1000 Genomes Phase III/UK10K reference described on GRCh38 before ancestry-stratified Parkinson disease association. | Methods / 23andMe diverse ancestry data |
 | MR-MEGA | Trans-ancestry meta-regression. | Methods / MAMA |
 | PLINK | Used for genetic association analysis. | Methods / MAMA |
-| SMR | Summary-data molecular association or Mendelian randomization. | Methods / Functional annotation and GSEA |
+| SMR | Used previously completed European-only multi-SNP SMR results for44 selected genes near novel Parkinson disease loci, restricting tissues and applying FDR0.05 plus removal of signals with reported HEIDI P<0.05. | Methods / Functional annotation and GSEA |
 
 XML SHA-256: `0f0a5a3bcb3a832a58367b749f5899e7dccab771e3a51cb2ead7cf8170e2e138`. Exact evidence paragraph hashes and locators are in [papers.json](papers.json).
 
@@ -2116,13 +2116,13 @@ Nature Genetics · 2026-09-14 · [DOI](https://doi.org/10.1038/s41588-026-02713-
 | Tool | How used | Evidence location |
 | --- | --- | --- |
 | FUMA | Ran FUMA 1.6.1/MAGMA 1.08 for each meta-analysis stratum after VEP 112 rsID assignment and Picard LiftOverVcf 3.1.1 conversion to GRCh37. Compared 0 kb gene windows against 35 kb upstream/10 kb downstream windows, and declared pathways at q < 0.05 in either analysis. | Methods / Pathway analysis |
-| HEIDI | Heterogeneity test distinguishing pleiotropy from linkage. | Methods / SMR |
+| HEIDI | Screened SMR results from the APOE-stratified MetaBrain analyses at HEIDI P>0.01 and retained only outputs with nsnp_HEIDI>3. | Methods / SMR |
 | MAGMA | Used MAGMA1.08 through FUMA1.6.1 separately per meta-analysis stratum with0kb and35kb-upstream/10kb-downstream windows, after VEP rsID assignment and Picard build37 liftover. | Methods / Pathway analysis |
 | METAL | GWAS meta-analysis. | Methods / GWAS analysis |
 | Picard | Alignment QC, duplicates and sequence processing. | Methods / Pathway analysis |
 | PLINK 2 | Used for genetic principal components. | Methods / GWAS analysis |
 | REGENIE | Used REGENIE with genotype dosages and Firth regression for cohort-specific additive Alzheimer case-control GWAS, alongside other cohorts using SNPTEST or PLINK2. Applied effect/SE/P, absolute-effect, INFO and imbalance-aware MAC-info QC before METAL meta-analysis. | Methods / GWAS analysis |
-| SMR | Summary-data molecular association or Mendelian randomization. | Methods / SMR |
+| SMR | Applied SMR to APOE-stratified GWAS and five MetaBrain brain regions, using multi-SNP P<6.12e-6 for8166 unique genes and requiring HEIDI P>0.01 with reported nsnp_HEIDI>3. | Methods / SMR |
 | SNPTEST | Genotype association testing. | Methods / GWAS analysis |
 | Ensembl VEP | Variant consequence annotation. | Methods / Pathway analysis |
 
@@ -2935,7 +2935,7 @@ Nature Genetics · 2024-09-30 · [DOI](https://doi.org/10.1038/s41588-024-01933-
 | FUMA | Used FUMA 1.4.1 for two-step clumping with the literal P < 0.05/r-squared ≥ 0.6 and lead P < 5e-8/r-squared ≥ 0.1 rules, and positional/eQTL/chromatin mapping. Its MAGMA 1.08 SNP-wise-mean analysis used European 1000 Genomes Phase 3 LD and 17674 Ensembl 85 protein-coding genes with Bonferroni threshold 2.83e-6. | Methods / MetS multivariate GWAS with Genomic SEM |
 | GCTA | Used for genetic association analysis; conditional or joint association analysis. | Methods / MetS multivariate GWAS with Genomic SEM |
 | Genomic SEM | Genetic covariance and structural equation modelling. | Methods / Parallel analysis |
-| HEIDI | Heterogeneity test distinguishing pleiotropy from linkage. | Methods / Gene prioritization |
+| HEIDI | Applied HEIDI to the genes resulting from cohort-wise Bonferroni-significant SMR analyses, using UKB-derived LD and reported P>0.05 screening. | Methods / Gene prioritization |
 | LDSC | Used for cross-trait genetic correlation. | Methods / Parallel analysis |
 | MAGMA | Used MAGMA1.08 through FUMA for SNP-wise-mean gene aggregation with European1000Genomes Phase3 LD and17674 protein-coding genes from Ensembl85; Bonferroni gene threshold2.83e-6. | Methods / MAGMA gene-based, gene set and gene property analyses |
 | METAL | GWAS meta-analysis. | Methods / Selection of GWAS on MetS components and meta-analysis |
@@ -2945,7 +2945,7 @@ Nature Genetics · 2024-09-30 · [DOI](https://doi.org/10.1038/s41588-024-01933-
 | PRS-CS | Inferred PRS weights for metabolic-syndrome components and latent factors from UKB-excluded GWAS using phi=0.01,a European 1000 Genomes phase3 LD panel and effective N for binary phenotypes; reported a=1,b=0.5,1000/500/5 sampling settings preceded PLINK2 scoring. | Methods / PRS analysis |
 | PRSice | Computed an additional PRSice-2 score analysis when evaluating transferability of European MetS GWAS scores to KoGES; detailed results are referred to the supplement. | Results / MetS GWAS and PRS transferability in East Asians |
 | SAIGE | Reused UKB-SAIGE,PanUKB and Neale-laboratory outcome GWAS summaries for two-sample MR of metabolic syndrome;325outcomes were available from350PRS-PheWAS associations. | Methods / Two-sample Mendelian randomization |
-| SMR | Summary-data molecular association or Mendelian randomization. | Methods / Gene prioritization |
+| SMR | Prioritized genes using SMR1.03 with brain, blood and other tissue cis-eQTL discovery datasets and separate validation datasets; corrected within each tested cohort and followed with HEIDI. | Methods / Gene prioritization |
 | TwoSampleMR | Instrument harmonization and two-sample Mendelian randomization. | Methods / Two-sample Mendelian randomization |
 | UCSC liftOver | Converted FinnGen GWAS summary-statistic coordinates from GRCh38 to GRCh37 before harmonizing all datasets to GRCh37. | Methods / Quality control of GWAS |
 
@@ -3299,7 +3299,7 @@ Nature Genetics · 2024-09-16 · [DOI](https://doi.org/10.1038/s41588-024-01900-
 | nf-core | Reusable sequencing analysis pipelines. | Methods / ChIPmentation |
 | PolyFun | Functional-prior fine-mapping. | Methods / Fine-mapping of risk loci |
 | Presto | Fast single-cell marker testing. | Methods / Gene evidence |
-| SMR | Summary-data molecular association or Mendelian randomization. | Methods / eQTLs and SMR |
+| SMR | Ran SMR1.3.1 on meta-analyzed SOCCS/GTEx colon eQTL and colorectal-cancer GWAS summaries, corrected SMR P within each risk locus and retained corrected P<0.05 with HEIDI P>0.05; repeated the workflow for meta-analyzed tumor eQTL summaries. | Methods / eQTLs and SMR |
 | SuSiE | Bayesian fine-mapping and credible sets. | Methods / Fine-mapping of risk loci |
 
 XML SHA-256: `35e6eef968caa63cd301d6867f6353d88441df9bd960be9d32288a4e86561782`. Exact evidence paragraph hashes and locators are in [papers.json](papers.json).
@@ -3558,12 +3558,12 @@ American Journal of Human Genetics · 2025-12-16 · [DOI](https://doi.org/10.101
 | edgeR | Count-based differential expression analysis. | Material and methods / eQTL mapping analysis |
 | FastQC | Sequencing read quality assessment. | Material and methods / Identification and quantification of lncRNAs in the 10 primary brain RNA-seq datasets |
 | FUSION | Transcriptome-wide association and conditional follow-up. | Material and methods / Integrative analysis of GWAS and eQTL data |
-| HEIDI | Heterogeneity test distinguishing pleiotropy from linkage. | Material and methods / Integrative analysis of GWAS and eQTL data |
+| HEIDI | Applied HEIDI using three to20 cis-eQTL SNPs, reported eQTL P<1.57e-8 and LD bounds0.05–0.9, and required HEIDI P>0.01 alongside Bonferroni-significant SMR. | Material and methods / Integrative analysis of GWAS and eQTL data |
 | HISAT2 | Used HISAT2 through CIRIquant to align RNA-seq to pseudo-circular circRNA references for junction-based circRNA quantification. | Material and methods / Identification and quantification of circRNAs in the 10 primary brain RNA-seq datasets |
 | LDSC | Used for SNP heritability estimation; annotation-stratified genetic enrichment. | Material and methods / Heritability enrichment analysis and mediated heritability estimation for lncRNAs and circRNAs |
 | PEER | Latent confounder estimation. | Material and methods / eQTL mapping analysis |
 | PLINK | Used for LD-based variant selection; genetic association analysis. | Results / Functional and heritability enrichment of lncRNA and circRNA-eQTLs |
-| SMR | Summary-data molecular association or Mendelian randomization. | Material and methods / Integrative analysis of GWAS and eQTL data |
+| SMR | Integrated eQTL and GWAS summaries using top cis-eQTL SMR at eQTL P<5e-8 and a separate multi-SNP analysis with a500-kb window and stated LD pruning; used Bonferroni correction and HEIDI P>0.01. | Material and methods / Integrative analysis of GWAS and eQTL data |
 | STAR | Splice-aware bulk RNA read alignment and optional raw gene counts. | Material and methods / Identification and quantification of lncRNAs in the 10 primary brain RNA-seq datasets |
 | StringTie | Assembled STAR alignments with a supplied GENCODE guide using StringTie -G, then combined sample transcript models with StringTie --merge for lncRNA discovery. | Material and methods / Identification and quantification of lncRNAs in the 10 primary brain RNA-seq datasets |
 | tensorQTL | Molecular QTL mapping. | Material and methods / eQTL mapping analysis |
@@ -3665,11 +3665,11 @@ American Journal of Human Genetics · 2024-11-13 · [DOI](https://doi.org/10.101
 | --- | --- | --- |
 | clusterProfiler | Tested GO and KEGG functional enrichment of primary-MR PCOS therapeutic targets with nominal MR P below 0.05, using Fisher exact tests and FDR below 0.05. | Material and methods / Functional enrichment analysis for therapeutic targets for PCOS |
 | coloc | Shared-signal colocalization analysis. | Material and methods / Bayesian colocalization analysis |
-| HEIDI | Heterogeneity test distinguishing pleiotropy from linkage. | Material and methods / SMR and heterogeneity in dependent instruments tests |
+| HEIDI | Used HEIDI to investigate whether protein–PCOS associations reflected distinct linked variants; reported P<0.05 as heterogeneity evidence and P>0.05 as the pass criterion in the results. | Material and methods / SMR and heterogeneity in dependent instruments tests |
 | MR-PRESSO | MR pleiotropy/outlier sensitivity. | Material and methods / Genetic instrument selection and primary mendelian randomization analysis |
 | MungeSumstats | GWAS summary-statistic formatting, QC and genome-build harmonization. | Material and methods / Genetic instrument selection and primary mendelian randomization analysis |
 | SeSAMe | Methylation-array preprocessing. | Material and methods / Experimental animal care and ethics |
-| SMR | Summary-data molecular association or Mendelian randomization. | Material and methods / SMR and heterogeneity in dependent instruments tests |
+| SMR | Used SMR as a supplementary association analysis after primary plasma-protein Mendelian-randomization findings for PCOS, with SMR P<0.05 and a separate HEIDI screen. | Material and methods / SMR and heterogeneity in dependent instruments tests |
 | TwoSampleMR | Instrument harmonization and two-sample Mendelian randomization. | Material and methods / Genetic instrument selection and primary mendelian randomization analysis |
 
 XML SHA-256: `6fe50057926dacbc242d400e391db7d721751ba8d706e5c00a5e9cb668bdb723`. Exact evidence paragraph hashes and locators are in [papers.json](papers.json).
@@ -3907,7 +3907,7 @@ American Journal of Human Genetics · 2024-10-02 · [DOI](https://doi.org/10.101
 | coloc | Shared-signal colocalization analysis. | Subjects and methods / Colocalization |
 | FastQC | Sequencing read quality assessment. | Subjects and methods / Data quality control |
 | GATK | Variant discovery and recalibration. | Subjects and methods / Variant identification |
-| HEIDI | Heterogeneity test distinguishing pleiotropy from linkage. | Subjects and methods / Summary-data-based mendelian randomization |
+| HEIDI | Included the default-described SMR HEIDI test and retained prioritized schizophrenia genes with HEIDI P>0.05 together with Bonferroni-significant SMR. | Subjects and methods / Summary-data-based mendelian randomization |
 | LDSC | Used for annotation-stratified genetic enrichment. | Subjects and methods / Partitioned LDSR |
 | METAL | GWAS meta-analysis. | Subjects and methods / eQTL fine-mapping |
 | MetaXcan | Predicted expression association. | Subjects and methods / Prioritizing genes underlying GWAS hits using MetaXcan |
@@ -3916,7 +3916,7 @@ American Journal of Human Genetics · 2024-10-02 · [DOI](https://doi.org/10.101
 | QTLtools | Molecular QTL mapping and QC. | Subjects and methods / cis-eQTL mapping |
 | RSEM | Quantified genes and transcripts with RSEM 1.3.0 after STAR 2.4.2a alignment. | Subjects and methods / Gene expression quantification and quality control |
 | SAMtools | Alignment manipulation and QC. | Subjects and methods / Variant identification |
-| SMR | Summary-data molecular association or Mendelian randomization. | Subjects and methods / Summary-data-based mendelian randomization |
+| SMR | Applied SMR to significant QTL summaries filtered at FDR<0.05 and schizophrenia GWAS summaries filtered at P<5e-8, then required Bonferroni-significant SMR and HEIDI P>0.05. | Subjects and methods / Summary-data-based mendelian randomization |
 | STAR | Splice-aware bulk RNA read alignment and optional raw gene counts. | Subjects and methods / Gene expression quantification and quality control |
 | voom | Mean-variance weights for expression linear models. | Subjects and methods / Gene expression quantification and quality control |
 

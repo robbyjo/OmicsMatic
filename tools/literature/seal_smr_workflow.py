@@ -1,0 +1,58 @@
+# Copyright (C) 2026 JLinAlg contributors; SPDX-License-Identifier: GPL-3.0-or-later
+"""Seal complete SMR/HEIDI workflow evidence, with explicit host-library/full-JAR omissions and unchanged parent/native proofs."""
+import argparse,json,zipfile
+from pathlib import Path
+from setup_deseq2_reference import ROOT,pin,save
+from signac_scan_evidence import pack,byte_pin
+
+BASE=ROOT/'build/literature-review/smr-runtime'
+
+
+def main():
+    p=argparse.ArgumentParser(description=__doc__)
+    for name in ['build','core','edges','native','fixture','example','preparation','boundaries','overlap']:p.add_argument('--'+name,required=True,type=Path)
+    a=p.parse_args();target=ROOT/'docs/literature/smr-workflow-development';assert not target.exists();reports={k:json.loads((v.resolve()/'COMPLETED.json').read_bytes()) for k,v in vars(a).items()};build=reports['build'];artifact=build['artifact'];jar=ROOT/artifact['path'];assert pin(jar)=={k:artifact[k] for k in ['bytes','sha256']}
+    for name in ['core','edges','native','preparation','boundaries','overlap']:assert reports[name]['status'].startswith('passed-') and reports[name]['artifact']==artifact
+    assert len(reports['core']['protocols'])==8 and len(reports['edges']['protocols'])==30;protocols=[*reports['core']['protocols'],*reports['edges']['protocols']];assert all(r['passed'] and r['exit_code']==r['expected_exit_code'] for r in protocols);comparisons=sum(len(r['comparisons']) for r in protocols);assert comparisons==63 and sum(r['exit_code']==0 for r in protocols)==27
+    native=reports['native'];assert len(native['JVMs'])==3 and all(r['tests']==native['tests_per_JVM'] and r['skipped']==r['exit_code']==0 for r in native['JVMs']) and native['tests_per_JVM']==56;assert reports['boundaries']['original_preparation_cases']==16 and reports['overlap']['native_original_table_comparisons']==8;assert reports['example']['status']=='passed-runnable-synthetic-SMR-workflow-example' and reports['example']['artifact']==artifact
+    for report in reports.values():
+        for name,value in report.get('source_pins',{}).items():assert pin(ROOT/name)==value,(name,'Final source changed')
+    for version in ['1.3.1','1.4.3']:
+        setup=json.loads((BASE/('workflow-setup-'+version+'-1')/'COMPLETED.json').read_bytes());assert setup['status']=='PASS_PREPARED_EXACT_ORIGINAL_SMR_RUNTIME_ONLY'
+    assert json.loads((BASE/'workflow-setup-linux-1/COMPLETED.json').read_bytes())['status']=='PASS_PREPARED_EXACT_ORIGINAL_SMR_RUNTIME_ONLY';assert json.loads((BASE/'workflow-setup-denied-1/COMPLETED.json').read_bytes())['status']=='SKIP3_DEPENDENCY_UNAVAILABLE';assert json.loads((BASE/'active-overlap-inspection-2/COMPLETED.json').read_bytes())['status']=='verified-active-original-multi-SNP-overlap-flag-without-estimation-in-both-editions'
+    metadata_names={'smr_catalog.py','verify_smr_catalog.py','seal_smr_catalog.py','verify_smr_review_context.py','audit_smr_catalog.py','run_smr_catalog_checks.py','validate_smr_catalog_ui.py','check_smr_review_ui.cjs','curate_smr_uses.py','smr-use-reviews.json'};selected={p.relative_to(ROOT).as_posix() for p in (ROOT/'tools/literature').glob('*smr*') if p.is_file() and p.name not in metadata_names};selected.update(p.relative_to(ROOT).as_posix() for p in (ROOT/'src/main/java/org/jlinalg/cli').glob('Smr*.java'));selected.add('src/test/java/org/jlinalg/cli/SmrWorkflowTest.java');selected.add('docs/literature/SMR_WORKFLOWS.md');selected.update(p.relative_to(ROOT).as_posix() for p in (ROOT/'src/main/resources/org/jlinalg/omics/smr-workflow').glob('*') if p.is_file());selected.update(p.relative_to(ROOT).as_posix() for p in (ROOT/'src/test/resources/org/jlinalg/mr/smr').glob('*') if p.is_file());source_pins={name:pin(ROOT/name) for name in sorted(selected)};files={'current-source/'+n:(ROOT/n).read_bytes() for n in source_pins};profile=json.loads((ROOT/'src/main/resources/org/jlinalg/omics/smr-workflow/SOURCE-PROFILE.json').read_bytes());host_libraries={(v['bytes'],v['sha256']) for version,ed in profile['editions'].items() for name,v in ed['runtime_files'].items() if name.startswith('lib/') and not(version=='1.4.3' and name=='lib/libz.so.1')};omitted={}
+    for path in sorted(BASE.rglob('*')):
+        if not path.is_file():continue
+        parts=path.relative_to(BASE).parts
+        if not parts[0].startswith(('workflow-','qfile-','runtime-profile-','overlap-contract-','active-overlap-','catalog-roles-dry-run-')) or '__pycache__' in parts or path.suffix=='.pyc':continue
+        name=path.relative_to(ROOT).as_posix();value=pin(path);reason=None
+        if path.suffix=='.jar':reason='Complete private development JAR retained locally; exact artifact/member pins and all candidate-owned entries are public. Canonical executable is unchanged.'
+        elif (value['bytes'],value['sha256']) in host_libraries:reason='Exact copied local OS ELF library/loader retained privately; public setup captures a permitted matching local copy by hash or writes SKIP3. Host GNU libraries are not redistributed here.'
+        if reason:omitted[name]=dict(**value,reason=reason)
+        else:files[name]=path.read_bytes()
+    files['EXPLICIT-OMISSIONS.json']=(json.dumps(dict(status='only-private-full-JAR-and-local-OS-library-omissions',files=omitted,retained_scientific_files_deliberately_omitted=False,final_validation_scientific_inputs_outputs_complete=True,initial_prototype_temporary_worker_loss_disclosed_in_retention_audit=True),indent=2)+'\n').encode()
+    parent=ROOT/build['parent_artifact']['path']
+    with zipfile.ZipFile(parent) as before,zipfile.ZipFile(jar) as after:
+        old={n:byte_pin(before.read(n)) for n in before.namelist()};new={n:byte_pin(after.read(n)) for n in after.namelist()};assert all(new[n]==v for n,v in old.items()) and set(new)-set(old)==set(build['added_entries'])
+        for name in build['added_entries']:files['candidate-owned-entry/'+name]=after.read(name)
+    for label,entries in [('parent',old),('candidate',new)]:files['artifact-'+label+'-entries.json']=(json.dumps(entries,indent=2,sort_keys=True)+'\n').encode()
+    canonical=pin(ROOT/'build/cli/omicsmatic-0.3.7.jar');assert canonical==build['canonical_executable_unchanged'];held_names=json.loads((ROOT/'build/literature-review/push-checkpoint-2026-11-07-smr-statistics-1/selection.json').read_bytes())['preserved'];held={n:pin(ROOT/n) for n in held_names};assert len(held)==18;files['preserved-unrelated-worktree-pins.json']=(json.dumps(held,indent=2)+'\n').encode();target.mkdir();(target/'.gitattributes').write_text('* -text\n',encoding='utf8',newline='\n');layout=pack(target/'controls.zip',files);assert (target/'controls.zip').stat().st_size<100000000
+    warning=target/'WARNINGS.md';warning.write_text('''# SMR/HEIDI: warnings and required actions
+
+**REQUIRE EXIT0 AND result_admitted=true.** Use SmrWorkflowCli and SMR_WORKFLOWS.md. Read the complete attempt warnings, native input/preparation/variant/observation/probe/ratio ledgers, original probability kinds, original logs and process receipts. HEIDI mixtures/tails, LD pruning and multi-SNP fitting remain upstream; native checks are not independent full model refits or biological calibration.
+
+**SKIP3: DEPENDENT ANALYSIS SKIPPED.** Supply the exact permitted Linux x86_64 source/program/ELF profile or skip. Analysis installs nothing. Private setup restores separately licensed original source/program evidence and matching local libraries without changing shared libraries; absent, forbidden or different dependencies are not substituted. Windows Java upstream execution skips; native Java audits are portable. Original help exit1 is usage metadata; models require exit0.
+
+**FAIL2: NO ATOMIC-BATCH RESULT ADMITTED.** Earlier completed cases remain unadmitted after a later failure. Preserve original inputs, errors, partials and cleanup receipts. Correct the named cause and retry NEW paths; do not change cutoffs to hide errors, drop variants/probes, repair IDs/alleles or replace NA/NaN/Inf. The current owned transaction retains unexpected publication/manifest failures. The first prototype's discarded temporary worker is explicitly disclosed in its retention audit; it cannot be reconstructed as original evidence.
+
+**VERSION-SPECIFIC PREPARATION.**1.3.1 may derive SE from beta/P;1.4.3 uses supplied SE. Inspect every raw/stored value. Only the legacy derived-SE branch permits one binary32 ULP from an independent inverse-CDF expectation, with each discrepancy and a prominent attempt warning; source stored values remain unchanged. Beta and supplied-SE branches require exact binary32 identity. Larger differences fail.
+
+**OVERLAP AND EMPTY RESULTS.** Single-SNP null-SNP estimation is explicit. Both active multi-SNP paths leave theta0; their optional source flag is explicitly unestimated and does not promise an overlap correction. Unapplied estimation settings are refused. Original empty output families remain empty with a warning; no association finding is inferred. HEIDI NA/non-rejection is not causal proof.1.3.1's literal no-reference path fails at its original null LD-file close; no source patch or dummy reference is substituted.
+
+**SOURCE/PAPER/RELEASE LIMITS.** Assembly, ancestry and units are caller assertions. Captured1.3.1/1.4.3 do not identify a paper binary; reported1.03 remains distinct. Paper-specific thresholds/references/families and reused results stay separate. Parent native evidence retains complete original source/build/dependency records. Local OS ELF copies and full development JARs have explicit public omission receipts; final-validation scientific inputs/tables/errors remain complete. The canonical/released executable and deployment are unchanged; the250-paper goal remains active.
+''',encoding='utf8',newline='\n');parents={n:pin(ROOT/n) for n in ['docs/literature/smr-statistics-development/VALIDATION.json','docs/literature/smr-statistics-development/controls.zip','docs/literature/dndscv-workflow-development/VALIDATION.json','docs/literature/dndscv-workflow-development/controls.zip']};final={k:v.resolve().relative_to(ROOT).as_posix() for k,v in vars(a).items()};save(target/'VALIDATION.json',dict(schema_version=1,status='passed-typed-original-SMR-HEIDI-workflow',source_pins=source_pins,parent_proofs=parents,artifact=artifact,parent_artifact=build['parent_artifact'],canonical_executable_unchanged=canonical,archive=pin(target/'controls.zip'),warnings_document=pin(warning),final_attempts=final,unchanged_parent_entries=build['unchanged_parent_entries'],added_entries=build['added_entries'],runtime_protocols=38,successful_runtime_protocols=27,expected_no_result_protocols=11,complete_original_case_comparisons=comparisons,native_tests_per_JVM=native['tests_per_JVM'],JVMs=3,Qfile_preparation_boundary_controls=16,independent_original_overlap_table_audits=8,versions=['1.3.1','1.4.3'],explicit_omission_receipts=len(omitted),adapter_admitted=True,implementation_credit=True,admitted_named_tools=['smr','heidi'],original_HEIDI_or_multi_tail_independently_implemented=False,catalog_changed=False,whole_paper_reproduced=False,whole_goal_complete=False,**layout));(target/'SHA256SUMS').write_text(''.join(pin(target/n)['sha256']+'  '+n+'\n' for n in ['controls.zip','WARNINGS.md','VALIDATION.json']),encoding='utf8',newline='\n');assert all(pin(ROOT/n)==v for n,v in source_pins.items()) and all(pin(ROOT/n)==v for n,v in held.items()) and pin(ROOT/'build/cli/omicsmatic-0.3.7.jar')==canonical;print('Sealed complete SMR/HEIDI workflow:',len(files),'logical files;',comparisons,'complete original case comparisons; catalog application remains separate')
+
+
+if __name__=='__main__':
+    if not __debug__:raise RuntimeError('Never disable complete workflow/source/evidence checks')
+    main()

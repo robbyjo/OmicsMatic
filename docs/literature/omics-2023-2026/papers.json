@@ -15972,13 +15972,21 @@
         "evidence_paragraph_index": 25,
         "matched_text": "SMR",
         "extraction_score": 15,
-        "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "usage_context": "previous-multi-SNP-result-reuse",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-paragraph",
         "evidence_paragraph_sha256": "2c908144925f296799a210027cde9368b8915122d3a3adf2e1b71c26dd19f4e0",
-        "use_summary": "Summary-data molecular association or Mendelian randomization.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10786718/ (section: Methods / Functional annotation and GSEA)"
+        "use_summary": "Used previously completed European-only multi-SNP SMR results for44 selected genes near novel Parkinson disease loci, restricting tissues and applying FDR0.05 plus removal of signals with reported HEIDI P<0.05.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10786718/ (section: Methods / Functional annotation and GSEA)",
+        "implementation_scope_note": "The source explicitly describes searching an existing result list; do not claim a fresh multi-SNP run in this paper. Methylation/expression inputs, prior LD/reference and original runtime remain separate. The exact SMR release is unspecified; do not infer an executable or reinterpret the reused results as a new cohort fit.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 9,
+            "section": "eQTLs and SMR nominate 25 putative genes near novel loci",
+            "paragraph_sha256": "38fd3d7b50475f37437eed6d77ba535bd0c89b036dd2a500371513e55d70cddb"
+          }
+        ]
       }
     ],
     "status": "extracted",
@@ -23564,13 +23572,15 @@
         "evidence_paragraph_index": 24,
         "matched_text": "HEIDI",
         "extraction_score": 15,
-        "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "usage_context": "multi-SNP-result-heterogeneity-screen",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-paragraph",
         "evidence_paragraph_sha256": "0b8aae77dc3630d49f01543fa5e6014b58b6f3e9e01ca7a7d07c61f5512d627a",
-        "use_summary": "Heterogeneity test distinguishing pleiotropy from linkage.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13649558/ (section: Methods / SMR)"
+        "use_summary": "Screened SMR results from the APOE-stratified MetaBrain analyses at HEIDI P>0.01 and retained only outputs with nsnp_HEIDI>3.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13649558/ (section: Methods / SMR)",
+        "implementation_scope_note": "The paper describes this as removal of inferred pleiotropy; retain its wording without turning failure to reject heterogeneity into proof of a causal or pleiotropic mechanism. The SMR release, HEIDI mode, LD panel and exact instrument-selection options are unspecified.",
+        "supporting_evidence": []
       },
       {
         "tool_id": "magma",
@@ -23662,13 +23672,15 @@
         "evidence_paragraph_index": 24,
         "matched_text": "SMR",
         "extraction_score": 15,
-        "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "usage_context": "stratified-multi-SNP-expression-association",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-paragraph",
         "evidence_paragraph_sha256": "0b8aae77dc3630d49f01543fa5e6014b58b6f3e9e01ca7a7d07c61f5512d627a",
-        "use_summary": "Summary-data molecular association or Mendelian randomization.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13649558/ (section: Methods / SMR)"
+        "use_summary": "Applied SMR to APOE-stratified GWAS and five MetaBrain brain regions, using multi-SNP P<6.12e-6 for8166 unique genes and requiring HEIDI P>0.01 with reported nsnp_HEIDI>3.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13649558/ (section: Methods / SMR)",
+        "implementation_scope_note": "The exact release and multi-SNP fitting options are unspecified despite the stated defaults. The count filter uses the reported HEIDI SNP-count column and is stricter than simply requesting a minimum of3. Multiple regions, APOE strata and the declared8166-gene correction family must remain explicit; a non-significant heterogeneity result does not establish causality.",
+        "supporting_evidence": []
       },
       {
         "tool_id": "snptest",
@@ -32465,13 +32477,32 @@
         "evidence_paragraph_index": 60,
         "matched_text": "HEIDI",
         "extraction_score": 10,
-        "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "usage_context": "cohort-wise-linkage-heterogeneity-screen",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-paragraph",
         "evidence_paragraph_sha256": "2799d021a6a4e9af806f97b67b896f104b82d0652826e661b903551fe86c0e14",
-        "use_summary": "Heterogeneity test distinguishing pleiotropy from linkage.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11549047/ (section: Methods / Gene prioritization)"
+        "use_summary": "Applied HEIDI to the genes resulting from cohort-wise Bonferroni-significant SMR analyses, using UKB-derived LD and reported P>0.05 screening.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11549047/ (section: Methods / Gene prioritization)",
+        "implementation_scope_note": "The preceding paragraph names SMR1.03, not a separately versioned HEIDI package. Preserve its10000-person European LD reference and the paper wording about linkage/pleiotropy. Non-rejection is not confirmation of a single causal mechanism; HEIDI method and individual pruning arguments are not specified.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 59,
+            "section": "Methods / Gene prioritization",
+            "paragraph_sha256": "da8dd8aafdce561f2e665d486a75b22ae282f1e040e3800cbc7c3d132d95e472",
+            "evidence_role": "method-details",
+            "named_anchor": {
+              "paragraph_index": 60,
+              "section": "Methods / Gene prioritization",
+              "paragraph_sha256": "2799d021a6a4e9af806f97b67b896f104b82d0652826e661b903551fe86c0e14"
+            },
+            "shared_terms": [
+              "SMR",
+              "genes"
+            ],
+            "relation_note": "The preceding paragraph declares SMR1.03 for the gene-prioritization analyses whose resulting genes are subjected to HEIDI in the named paragraph60; this identifies the shared workflow context, not a separate HEIDI version."
+          }
+        ]
       },
       {
         "tool_id": "ldsc",
@@ -32642,13 +32673,21 @@
         "evidence_paragraph_index": 59,
         "matched_text": "SMR",
         "extraction_score": 15,
-        "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
-        "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "usage_context": "discovery-validation-tissue-association",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
+        "version_reported_near_name": "1.03",
+        "evidence_selection": "individually-reviewed-paragraph",
         "evidence_paragraph_sha256": "da8dd8aafdce561f2e665d486a75b22ae282f1e040e3800cbc7c3d132d95e472",
-        "use_summary": "Summary-data molecular association or Mendelian randomization.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11549047/ (section: Methods / Gene prioritization)"
+        "use_summary": "Prioritized genes using SMR1.03 with brain, blood and other tissue cis-eQTL discovery datasets and separate validation datasets; corrected within each tested cohort and followed with HEIDI.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11549047/ (section: Methods / Gene prioritization)",
+        "implementation_scope_note": "Paragraph60 specifies LD from10000 European-ancestry UKB individuals and cohort-wise Bonferroni correction. This reference and each tissue/cohort are caller inputs; do not substitute a generic LD panel or merge correction families. Source1.3.1/1.4.3 is not the reported1.03 runtime.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 60,
+            "section": "Methods / Gene prioritization",
+            "paragraph_sha256": "2799d021a6a4e9af806f97b67b896f104b82d0652826e661b903551fe86c0e14"
+          }
+        ]
       },
       {
         "tool_id": "twosamplemr",
@@ -36434,13 +36473,15 @@
         "evidence_paragraph_index": 43,
         "matched_text": "SMR",
         "extraction_score": 15,
-        "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "usage_context": "colon-eQTL-meta-summary-association",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": "1.3.1",
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-paragraph",
         "evidence_paragraph_sha256": "697cb96e6d7ae781cdff96df41892ec48a1a3af4b5d959fe4315d321ebb98660",
-        "use_summary": "Summary-data molecular association or Mendelian randomization.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11525171/ (section: Methods / eQTLs and SMR)"
+        "use_summary": "Ran SMR1.3.1 on meta-analyzed SOCCS/GTEx colon eQTL and colorectal-cancer GWAS summaries, corrected SMR P within each risk locus and retained corrected P<0.05 with HEIDI P>0.05; repeated the workflow for meta-analyzed tumor eQTL summaries.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11525171/ (section: Methods / eQTLs and SMR)",
+        "implementation_scope_note": "Matrix eQTL residual adjustment, the0.5-Mb lead-variant and1-Mb gene windows, MAF filtering and inverse-variance meta-analysis are upstream of the SMR input. They do not declare SMR cis-window arguments. The paper cites defaults without fixing the exact binary, HEIDI mode or LD panel; preserve normal/tumor and risk-locus families.",
+        "supporting_evidence": []
       },
       {
         "tool_id": "susie",
@@ -39119,13 +39160,15 @@
         "evidence_paragraph_index": 19,
         "matched_text": "HEIDI",
         "extraction_score": 15,
-        "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "usage_context": "cis-eQTL-heterogeneity-screen",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-paragraph",
         "evidence_paragraph_sha256": "bb84693ac3d2cd11e223fb4f33609c40b6cb3132aa86f63c15cf3f63f6974431",
-        "use_summary": "Heterogeneity test distinguishing pleiotropy from linkage.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12824624/ (section: Material and methods / Integrative analysis of GWAS and eQTL data)"
+        "use_summary": "Applied HEIDI using three to20 cis-eQTL SNPs, reported eQTL P<1.57e-8 and LD bounds0.05–0.9, and required HEIDI P>0.01 alongside Bonferroni-significant SMR.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12824624/ (section: Material and methods / Integrative analysis of GWAS and eQTL data)",
+        "implementation_scope_note": "Retain the literal1.57e-8 threshold; it differs from the commonly documented1.57e-3 default and must not be silently corrected. The reference is the stated8652-person HRS panel. OPERA multi-exposure HEIDI is separate from this ordinary HEIDI screen; the runtime release/mode are unspecified.",
+        "supporting_evidence": []
       },
       {
         "tool_id": "hisat2",
@@ -39200,13 +39243,15 @@
         "evidence_paragraph_index": 19,
         "matched_text": "SMR",
         "extraction_score": 15,
-        "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "usage_context": "single-and-multi-SNP-ncRNA-association",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-paragraph",
         "evidence_paragraph_sha256": "bb84693ac3d2cd11e223fb4f33609c40b6cb3132aa86f63c15cf3f63f6974431",
-        "use_summary": "Summary-data molecular association or Mendelian randomization.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12824624/ (section: Material and methods / Integrative analysis of GWAS and eQTL data)"
+        "use_summary": "Integrated eQTL and GWAS summaries using top cis-eQTL SMR at eQTL P<5e-8 and a separate multi-SNP analysis with a500-kb window and stated LD pruning; used Bonferroni correction and HEIDI P>0.01.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12824624/ (section: Material and methods / Integrative analysis of GWAS and eQTL data)",
+        "implementation_scope_note": "The source supplies LD from8652 unrelated HRS individuals and reports multi-SNP pruning at r2>0.1. Preserve the actual selected populations and the two SMR modes. COLOC, FUSION and OPERA have separate methods and exclusions; their priors, prediction training and multi-exposure HEIDI are not ordinary SMR/HEIDI defaults. The release is unspecified.",
+        "supporting_evidence": []
       },
       {
         "tool_id": "star",
@@ -40219,13 +40264,21 @@
         "evidence_paragraph_index": 12,
         "matched_text": "HEIDI",
         "extraction_score": 15,
-        "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "usage_context": "supplementary-protein-linkage-screen",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-paragraph",
         "evidence_paragraph_sha256": "3b0389d909476c9bb54139c0c0a9b96ecba60f961f56f7f134b96bea46bf703f",
-        "use_summary": "Heterogeneity test distinguishing pleiotropy from linkage.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11639085/ (section: Material and methods / SMR and heterogeneity in dependent instruments tests)"
+        "use_summary": "Used HEIDI to investigate whether protein–PCOS associations reflected distinct linked variants; reported P<0.05 as heterogeneity evidence and P>0.05 as the pass criterion in the results.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11639085/ (section: Material and methods / SMR and heterogeneity in dependent instruments tests)",
+        "implementation_scope_note": "Retain the two reported strict inequalities and the selected65-protein population. A non-significant result is not proof of causality or absence of linkage. Replication, colocalization and druggability tiers are separate downstream decisions; runtime, LD panel, mode and SNP-selection parameters are unspecified.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 29,
+            "section": "Results / Colocalization analysis, SMR, and HEIDI tests supported the causality of circulating proteins with PCOS",
+            "paragraph_sha256": "b9a29c5c269cba0057ceb0a9d283b95ddca62651f7ba2cb2dd0389f6d008a720"
+          }
+        ]
       },
       {
         "tool_id": "mrpresso",
@@ -40283,13 +40336,21 @@
         "evidence_paragraph_index": 12,
         "matched_text": "SMR",
         "extraction_score": 15,
-        "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "usage_context": "supplementary-protein-trait-association",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-paragraph",
         "evidence_paragraph_sha256": "3b0389d909476c9bb54139c0c0a9b96ecba60f961f56f7f134b96bea46bf703f",
-        "use_summary": "Summary-data molecular association or Mendelian randomization.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11639085/ (section: Material and methods / SMR and heterogeneity in dependent instruments tests)"
+        "use_summary": "Used SMR as a supplementary association analysis after primary plasma-protein Mendelian-randomization findings for PCOS, with SMR P<0.05 and a separate HEIDI screen.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11639085/ (section: Material and methods / SMR and heterogeneity in dependent instruments tests)",
+        "implementation_scope_note": "This is downstream validation of selected primary MR findings, not a replacement for the original Wald/IVW, colocalization, discovery/replication or therapeutic-target tiering analyses. Paragraph29 reports testing65 proteins; keep that selected population and avoid interpreting software output alone as biological causality. Version, LD reference and detailed SMR options are unspecified.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 29,
+            "section": "Results / Colocalization analysis, SMR, and HEIDI tests supported the causality of circulating proteins with PCOS",
+            "paragraph_sha256": "b9a29c5c269cba0057ceb0a9d283b95ddca62651f7ba2cb2dd0389f6d008a720"
+          }
+        ]
       },
       {
         "tool_id": "twosamplemr",
@@ -42613,13 +42674,15 @@
         "evidence_paragraph_index": 28,
         "matched_text": "HEIDI",
         "extraction_score": 10,
-        "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "usage_context": "non-European-gene-heterogeneity-screen",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-paragraph",
         "evidence_paragraph_sha256": "419c3f08dd71ecf010658f447d39f5238851c5a45baafe9422032ec47e084bc5",
-        "use_summary": "Heterogeneity test distinguishing pleiotropy from linkage.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11568756/ (section: Subjects and methods / Summary-data-based mendelian randomization)"
+        "use_summary": "Included the default-described SMR HEIDI test and retained prioritized schizophrenia genes with HEIDI P>0.05 together with Bonferroni-significant SMR.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11568756/ (section: Subjects and methods / Summary-data-based mendelian randomization)",
+        "implementation_scope_note": "The paper calls the0.05 HEIDI threshold an LD cutoff; it is a reported test-P condition, not a stated r2 pruning threshold. Do not infer an LD bound, runtime version or reference population, and do not treat non-rejection as proof of a causal mechanism.",
+        "supporting_evidence": []
       },
       {
         "tool_id": "ldsc",
@@ -42759,13 +42822,15 @@
         "evidence_paragraph_index": 28,
         "matched_text": "SMR",
         "extraction_score": 15,
-        "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "usage_context": "non-European-schizophrenia-gene-prioritization",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-paragraph",
         "evidence_paragraph_sha256": "419c3f08dd71ecf010658f447d39f5238851c5a45baafe9422032ec47e084bc5",
-        "use_summary": "Summary-data molecular association or Mendelian randomization.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11568756/ (section: Subjects and methods / Summary-data-based mendelian randomization)"
+        "use_summary": "Applied SMR to significant QTL summaries filtered at FDR<0.05 and schizophrenia GWAS summaries filtered at P<5e-8, then required Bonferroni-significant SMR and HEIDI P>0.05.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11568756/ (section: Subjects and methods / Summary-data-based mendelian randomization)",
+        "implementation_scope_note": "The input filtering and correction family are explicit study choices, not general SMR defaults. The paper calls its SMR P empirical but does not describe a permutation implementation; do not relabel an asymptotic chi-square probability as empirically calibrated. Version, LD reference and exact options are unspecified.",
+        "supporting_evidence": []
       },
       {
         "tool_id": "star",
