@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "mode": "RUN",
+  "edition": "5.0.1",
+  "runtime": "runtime-setup/COMPLETED.json",
+  "out": "NEW-analysis",
+  "analyses": [
+    {
+      "id": "explicit-simple-analysis",
+      "method": "simple",
+      "counts": {"path": "normalized-expression.tsv", "format": "tsv"},
+      "counts_data": "ensembl",
+      "metadata": {"path": "metadata.tsv", "format": "tsv"},
+      "database": {"path": "supplied-database.zip", "edition": "DECLARE-YOUR-DATABASE-EDITION", "source": "DECLARE-YOUR-DATABASE-PROVENANCE"},
+      "threshold": 0.1,
+      "separator": "|",
+      "result_precision": 3,
+      "score_interactions": false,
+      "threads": 1,
+      "global_seed": 7221
+    }
+  ]
+}
