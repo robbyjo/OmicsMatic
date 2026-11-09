@@ -1,0 +1,27 @@
+# Copyright (C) 2026 JLinAlg contributors; SPDX-License-Identifier: GPL-3.0-or-later
+"""Build recovered2.23.2 with exact private compilers; preserve sources and all shared R libraries."""
+import argparse,json,os,subprocess,traceback
+from pathlib import Path
+from setup_deseq2_reference import ROOT,RSCRIPT,pin,save,environment
+from setup_rsubread_reference import inventory
+
+
+def main():
+    p=argparse.ArgumentParser(description=__doc__)
+    for name in ['source','compiler','out']:p.add_argument('--'+name,type=Path,required=True)
+    p.add_argument('--allow-install',action='store_true');a=p.parse_args();out=a.out.resolve();assert not out.exists() and out.is_relative_to(ROOT/'build/literature-review/rsubread-runtime');out.mkdir(parents=True);shared=RSCRIPT.parents[1]/'library';protected=inventory(shared);state=dict(status='SKIP3_RSUBREAD2232_REFERENCE_UNAVAILABLE',analysis_admitted=False,implementation_credit=False,whole_goal_complete=False)
+    try:
+        if not a.allow_install:raise PermissionError('Source compilation forbidden; dependent2.23.2 analysis skipped')
+        source=a.source.resolve();record=json.loads((source/'COMPLETED.json').read_bytes());assert record['status']=='passed-official-ancestry-Rsubread2232-source-recovered-only';record=record['source'];archive=ROOT/record['archive']['path'];assert pin(archive)=={k:record['archive'][k] for k in ['bytes','sha256']};assert inventory(source/'source')==record['members'];compiler=a.compiler.resolve();receipt=json.loads((compiler/'COMPLETED.json').read_bytes());assert receipt['status']=='passed-workspace-only-official-Rtools45-files-extracted-and-probed' and not receipt['installer_executed'];assert pin(compiler/'compiler-files.json')==receipt['compiler_manifest'];compilerroot=ROOT/receipt['compiler_root'];toolchain=ROOT/receipt['toolchain'];assert inventory(compilerroot)==json.loads((compiler/'compiler-files.json').read_bytes());env=environment();paths=str(toolchain/'bin')+';'+str(compilerroot/'usr/bin');env.update(R_CUSTOM_TOOLS_SOFT=toolchain.as_posix(),R_CUSTOM_TOOLS_PATH=paths,MAKEFLAGS='-j2',PATH=paths+';'+env.get('PATH',''));temporary=out/'tmp';temporary.mkdir();env.update(TMPDIR=str(temporary),TMP=str(temporary),TEMP=str(temporary))
+        for key in ['R_MAKEVARS_USER','R_MAKEVARS_SITE']:file=out/(key+'.Makevars');file.write_bytes(b'');env[key]=str(file)
+        script=ROOT/'tools/literature/build_rsubread_reported.R';command=[str(RSCRIPT),'--vanilla',str(script),str(out/'R-lib'),str(out),str(archive),str(source/'source/R/featureCounts.R')];save(out/'compiler-environment.json',{key:env[key] for key in ['R_CUSTOM_TOOLS_SOFT','R_CUSTOM_TOOLS_PATH','R_MAKEVARS_USER','R_MAKEVARS_SITE','MAKEFLAGS','TMPDIR']})
+        with (out/'build.stdout').open('xb') as first,(out/'build.stderr').open('xb') as second:run=subprocess.run(command,cwd=out,env=env,stdin=subprocess.DEVNULL,stdout=first,stderr=second,timeout=1200,creationflags=subprocess.CREATE_NO_WINDOW)
+        save(out/'process.json',dict(command=command,exit_code=run.returncode));assert run.returncode==0,'Read complete original compiler/R logs; no source build or analysis admitted';assert (out/'R-status.txt').read_text(encoding='utf8').strip()=='BUILT_ORIGINAL_RSUBREAD2232_REFERENCE_ONLY_NOT_PAPER_R441';assert inventory(source/'source')==record['members'] and pin(archive)=={k:record['archive'][k] for k in ['bytes','sha256']};assert inventory(shared)==protected;private=inventory(out/'R-lib');assert 'Rsubread/libs/x64/Rsubread.dll' in private;state.update(status='passed-private-unmodified-Rsubread2232-source-build-on-R461-only',private_library=dict(path=(out/'R-lib').relative_to(ROOT).as_posix(),files=private),reference_source=dict(path=(source/'SOURCE.json').relative_to(ROOT).as_posix(),**pin(source/'SOURCE.json')),compiler_receipt=dict(path=(compiler/'COMPLETED.json').relative_to(ROOT).as_posix(),**pin(compiler/'COMPLETED.json')),original_function_body_equal=True,original_formals_equal=True,captured_source_unchanged=True,protected_library_unchanged=True,paper_binary_identified=False,paper_R441_reproduced=False,source_pins={q.relative_to(ROOT).as_posix():pin(q) for q in [Path(__file__).resolve(),script]})
+    except (FileNotFoundError,PermissionError) as error:state['error']=str(error)
+    except Exception as error:state.update(status='FAIL2_RSUBREAD2232_SOURCE_BUILD',error=repr(error));(out/'error.traceback').write_text(traceback.format_exc(),encoding='utf8')
+    state['protected_library_unchanged']=inventory(shared)==protected;state['required_action']='Use the exact permitted private compiler and source archive in NEW paths. If unavailable/forbidden or if compilation/loading fails, skip dependent2.23.2 analysis and preserve the original diagnostics. Do not patch source, refresh hashes or substitute2.26.0. This selected R4.6.1 build does not reproduce the paper-reported R4.4.1 environment.';save(out/'COMPLETED.json',state);(out/'WARNINGS.md').write_text('# Rsubread2.23.2 source reference only\n\n'+state['status']+'\n\n'+state.get('error','No scientific analysis has run.')+'\n\nRequired action: '+state['required_action']+'\n',encoding='utf8');print(state['status'],state.get('error',''));return 0 if state['status'].startswith('passed-') else 3 if state['status'].startswith('SKIP3') else 2
+
+
+if __name__=='__main__':
+    if not __debug__:raise RuntimeError('Never disable source/compiler/private-library admission')
+    raise SystemExit(main())
