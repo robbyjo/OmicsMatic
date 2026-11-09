@@ -1,5 +1,48 @@
 # 250-paper omics/GWAS toolbox catalog
 
+**Current checkpoint: 89 new integrations**: 17 native Java subsets and 72 tested
+upstream adapters. There are **92 including three existing adapters**, with
+**252 named tools still missing**. These are scoped workflows, not complete
+packages or whole-paper reproduction. Cell Ranger remains excluded.
+
+The fixed cohort contains 250 papers: Nature 71, Nature Genetics 104 and AJHG 75,
+published from 2023-10-23 through 2026-10-23. No time extension was needed.
+There are 400 observed tools from 438 definitions, 2,465 paper/tool observations,
+1,000 reviewed roles and 347 supporting pointers. This update adds seven hifiasm
+roles and one availability row. All 993 previous reviews, other 399 inventory
+rows, paper identities and observed-tool memberships remain exact.
+
+Hifiasm is available through development `org.jlinalg.cli.HifiasmWorkflowCli`,
+with separate `HifiasmSetupCli` and `HifiasmRuntimeCli`. Read
+[the complete guide](../HIFIASM.md). Six exact original source profiles provide
+the declared HiFi, trio, Hi-C, UL and ONT modes. Native Java inspects all reads,
+parental entries, complete graphs and literal FASTA exports. Original correction,
+overlap construction, consensus and phasing remain upstream. The canonical
+executable is unchanged.
+
+**Require exit 0 AND COMPLETED.json analysis_admitted=true for the entire batch.**
+Read [WARNINGS.md](WARNINGS.md), graph audits, original stderr and process receipts.
+**SKIP3 skips dependent analysis** when required permitted software or installation
+is unavailable. **FAIL2 admits no case, including earlier completed cases.**
+Preserve failed/provisional outputs and named causes; correct the problem and
+retry NEW paths. Analysis installs nothing.
+
+Old 0.14.2/0.15.1 Hi-C is excluded after retained original crashes. ONT-only
+0.22.0 requires genuine FASTQ qualities. Unreported paper settings and revision
+suffixes remain unresolved. Small-control defaults need explicit capacity
+overrides for real genomes; streaming parental checks do not reduce the
+assembler's own memory needs. Graph integrity does not certify consensus,
+phasing, completeness or biological quality. Keep scaffolding and QC separate.
+
+The full preceding document follows verbatim as history. Earlier counts and
+missing badges describe their checkpoints. Use the current inventory and guides
+for availability. The broader implementation goal remains active.
+
+<details>
+<summary>Historical prior catalog document, retained verbatim</summary>
+
+# 250-paper omics/GWAS toolbox catalog
+
 **Current checkpoint: 88 new integrations**: 17 native Java subsets and 71 tested
 upstream adapters. There are **91 including three existing adapters**, with
 **253 named tools still missing**. These counts describe scoped workflows,
@@ -930,6 +973,8 @@ The [implementation queue](implementation-plan.md) and `tool-inventory.json`
 distinguish missing tools, related existing methods, existing adapters/lookups,
 and newly validated subsets. Complete the remaining integrations and semantic
 coverage review before marking the overall goal complete.
+
+</details>
 
 </details>
 

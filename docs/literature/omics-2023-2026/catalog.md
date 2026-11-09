@@ -1358,7 +1358,7 @@ Nature · 2026-08-26 · [DOI](https://doi.org/10.1038/s41586-026-10901-0) · [Pr
 | --- | --- | --- |
 | FIMO | Detected PRDM9 motifs using FIMO and the PRDM9 A/A PWM supplied by Hinch et al. Scanned recombinant reads and a separate control set of 100,000 randomly sampled CCS reads; retained matches with q < 0.01. | Methods / PRDM9 motif detection in recombinant reads |
 | HiFiAdapterFilt | Adapter-contamination filtering for PacBio HiFi reads. | Methods / Read alignment |
-| hifiasm | Haplotype-resolved long-read assembly. | Methods / De novo haplotype-resolved assembly |
+| hifiasm | Used hifiasm 0.19.5-r592 in default HiFi-only mode for each sample, yielding a partially phased diploid assembly graph subsequently converted into two FASTA sequence files. | Methods / De novo haplotype-resolved assembly |
 | minimap2 | Mapped filtered HiFi reads to both haplotypes using minimap2 2.26-r1175 -ax map-hifi --cs=short --eqx --MD. | Methods / Read alignment |
 | SAMtools | Alignment manipulation and QC. | Methods / Read alignment |
 
@@ -1988,7 +1988,7 @@ Nature Genetics · 2023-11-30 · [DOI](https://doi.org/10.1038/s41588-023-01571-
 | DESeq2 | Used DESeq2 1.32.0 for wild-versus-domesticated gene-expression differences after featureCounts quantification, with adjusted P<=0.05 and a reported absolute fold-change cutoff>=1.5. | Methods / RNA-seq and differential gene expression analysis |
 | featureCounts | Used featureCounts 2.0.1 after Subjunc 2.0.1 mapping to the Longmi4 millet genome; the source describes read counts and FPKM expression. | Methods / RNA-seq and differential gene expression analysis |
 | GATK | Variant discovery and recalibration. | Methods / Short-read sequencing, Hi-C sequencing and data processing |
-| hifiasm | Haplotype-resolved long-read assembly. | Methods / Long-read sequencing, assembly and quality assessment |
+| hifiasm | Assembled HiFi reads from 32 broomcorn millet accessions into raw contigs using hifiasm 0.14.2-r315 with -l2 -u, before separate RagTag 2.0.1 reference anchoring and orientation. | Methods / Long-read sequencing, assembly and quality assessment |
 | HISAT2 | Mapped plant RNA-seq evidence to millet genomes with HISAT2 2.1.0 using --min-intronlen 20 --max-intronlen 15000, followed by StringTie2 2.1.7 transcript assembly. | Methods / Gene and transposable element annotation |
 | Integrative Genomics Viewer (IGV) | Manually inspected Minimap2-aligned HiFi reads at structural-variant breakpoints with IGV v2.9.2 while evaluating32 accession assemblies at304 loci. | Methods / Long-read sequencing, assembly and quality assessment |
 | InterProScan | Protein domain and functional annotation. | Methods / Gene and transposable element annotation |
@@ -2174,7 +2174,7 @@ Nature Genetics · 2024-11-04 · [DOI](https://doi.org/10.1038/s41588-024-01967-
 | clusterProfiler | Performed GO and GSEA enrichment at FDR below 0.05 to assess GWAS/divergent-selection candidates using fruit transcriptomes, with whole-genome proteins supplying the GO background. | Methods / Transcriptome and GO enrichment analyses |
 | featureCounts | Reported featureCounts 2.0.2 expression quantification as transcripts per kilobase of exon model per million mapped reads after STAR 2.4.2 mapping to PNT2T grape assemblies. | Methods / Transcriptome and GO enrichment analyses |
 | GSEA | Ranked gene-set enrichment. | Methods / Transcriptome and GO enrichment analyses |
-| hifiasm | Haplotype-resolved long-read assembly. | Methods / De novo genome assembly |
+| hifiasm | Used hifiasm 0.19.5-r587 to construct contig-level grape assemblies from HiFi, ONT and Hi-C data; separate RagTag, Juicer/3D-DNA, visualization and ONT gap-filling steps produced the reported final haplotypes. | Methods / De novo genome assembly |
 | HISAT2 | Mapped RNA-seq evidence to repeat-masked grape assemblies with the reported Hisat2 2.10.2 before StringTie and combined BRAKER/PASA/MAKER gene annotation. | Methods / The annotation of genome assemblies |
 | Integrative Genomics Viewer (IGV) | Used Integrative Genomics Viewer visualization with Minimap2-aligned ONT reads to identify split reads and estimate assembly gaps before gap closure. | Methods / De novo genome assembly |
 | IQ-TREE | Reported IQ-TREE 1.6.619 with VT+F+R5 and 1,000 ultrafast replicates for phylogenetic analysis of a 466-accession whole-genome study. | Methods / Population genetic analyses |
@@ -3211,7 +3211,7 @@ Nature Genetics · 2025-10-21 · [DOI](https://doi.org/10.1038/s41588-025-02367-
 | --- | --- | --- |
 | BCFtools | Variant manipulation, calling, normalization and filtering. | Methods / Assembly polishing |
 | BEDTools | Genomic interval manipulation and overlap. | Methods / Repetitive sequence annotation / Centromere accuracy |
-| hifiasm | Haplotype-resolved long-read assembly. | Methods / Genome assembly |
+| hifiasm | Generated mouse haplotype assemblies using hifiasm 0.19.5 in trio-binning mode with HiFi and ONT reads and strain-specific parental k-mer databases made with Yak 0.1-r66-dirty; RagTag subsequently anchored the contigs. | Methods / Genome assembly |
 | Integrative Genomics Viewer (IGV) | Visualized Minimap2/SAMtools-processed PacBio HiFi seed alignments in IGV v2.8.13 during iterative pseudoautosomal-region assembly walking and manually selected reads matching the seed over4kb. | Methods / PAR assembly using PacBio walking method |
 | MashMap | Mapped unplaced telomere/centromere-bearing contigs to chromosome scaffolds with --pi 95 -f one-to-one and compared cumulative alignment lengths for assignment. | Methods / Assembly curation |
 | Merqury | Assessed k-mer completeness of candidate mouse genome assemblies. | Methods / Assembly evaluation |
@@ -3351,7 +3351,7 @@ Nature Genetics · 2026-07-22 · [DOI](https://doi.org/10.1038/s41588-026-02678-
 | DIAMOND | Protein sequence alignment. | Methods / Genome annotation |
 | GCTA | Used for genetic principal components. | Methods / Phylogenetic tree and population structure analysis |
 | GEMMA | Mixed-model association or variance components. | Methods / Genome-wide association studies |
-| hifiasm | Haplotype-resolved long-read assembly. | Methods / Genome assembly / Step 1. Contig construction |
+| hifiasm | Used hifiasm 0.22.0-r689 for hybrid HiFi plus ONT ultra-long contig construction and a separate ONT-only assembly in wheat; the hybrid-derived assembly later served as the reference framework for independent scaffolding and iterative gap filling. | Methods / Genome assembly / Step 1. Contig construction |
 | InterProScan | Protein domain and functional annotation. | Methods / Genome annotation |
 | IQ-TREE | Used IQ-TREE as an OrthoFinder tree-inference backend with no executable edition specified. A separate direct 2.3.5 analysis inferred single-copy protein trees with the literal -AUTO option before downstream ASTRAL inference. | Methods / Pangenome analysis |
 | LDAK | SNP heritability and polygenic modelling. | Methods / Heritability estimation |
@@ -4482,7 +4482,7 @@ American Journal of Human Genetics · 2024-07-10 · [DOI](https://doi.org/10.101
 | Tool | How used | Evidence location |
 | --- | --- | --- |
 | ggtree | Constructed plotted phylogenetic trees in R from the inferred alignments/trees. | Material and methods / Sequence extractions and phylogenetic analyses |
-| hifiasm | Haplotype-resolved long-read assembly. | Material and methods / Long-read sequence assembly and QC |
+| hifiasm | Reused published HPRC trio-hifiasm assemblies, assembled 54 HGSVC samples with hifiasm 0.16.1 into pseudo-haplotypes, and assembled three HGSVC trios with hifiasm 0.15.1 and Yak 0.1 parental databases; a neighboring paragraph describes reused hifiasm 0.15.1 nonhuman-primate assemblies. | Material and methods / Long-read sequence assembly and QC |
 | IQ-TREE | Used 1.6.12 for maximum-likelihood tree inference with automatic model selection and 1,000 bootstraps. Separately used iqtree2 for coalescence-time estimation with a 6.4-million-year chimpanzee calibration. | Material and methods / Sequence extractions and phylogenetic analyses |
 | Jalview | Visually inspected multiple sequence alignment quality before manually removing misaligned segments. | Material and methods / Sequence extractions and phylogenetic analyses |
 | Locityper | Read recruitment and probabilistic WGS locus/haplotype genotyping. | Material and methods / Genotyping of MUC5AC haplogroups in 1KG populations using Locityper |
@@ -4681,7 +4681,7 @@ Nature Genetics · 2026-07-21 · [DOI](https://doi.org/10.1038/s41588-026-02682-
 | GCTA | Used for genetic principal components. | Methods / Phylogeny and population structure |
 | GEMMA | Mixed-model association or variance components. | Methods / SNP- and SV-based GWAS |
 | HiC-Pro | Hi-C read processing. | Methods / Chromatin interaction analysis |
-| hifiasm | Haplotype-resolved long-read assembly. | Methods / Long-read sequencing, assembly and quality assessment |
+| hifiasm | Assembled cucumber HiFi reads into contigs with hifiasm 0.19.5 at reported default parameters; RagTag 2.1.0 subsequently anchored those contigs to chromosomes. | Methods / Long-read sequencing, assembly and quality assessment |
 | HISAT2 | Aligned strand-specific RNA-seq from 29 reference-cultivar tissues to each of 125 cucumber assemblies with HISAT2 2.2.1. | Methods / Repeat and protein-coding gene annotations |
 | InterProScan | Protein domain and functional annotation. | Methods / Reannotation and classification of nucleotide-binding resistance genes |
 | IQ-TREE | Inferred a GTR+R10 maximum-likelihood phylogeny of 422 cucumber accessions from 18,600 fourfold-degenerate transversion SNPs. | Methods / Phylogeny and population structure |

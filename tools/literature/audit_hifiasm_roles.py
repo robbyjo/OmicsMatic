@@ -1,0 +1,45 @@
+# Copyright (C) 2026 JLinAlg contributors; SPDX-License-Identifier: GPL-3.0-or-later
+"""Read-only250-paper identity/anchor audit and seven source-bound hifiasm role drafts."""
+import argparse,gzip,hashlib,json,re,xml.etree.ElementTree as ET
+from pathlib import Path
+from setup_deseq2_reference import ROOT,pin,save
+from collect_omics_review import paragraphs,tool_matches
+from catalog_fixed_cohort import verify_fixed_cohort
+from gseapy_catalog import load_catalog_registry
+
+ROLES={
+'P068':dict(summary='Used hifiasm0.19.5-r592 in default HiFi-only mode for each sample, yielding a partially phased diploid assembly graph subsequently converted into two FASTA sequence files.',note='Preserve the explicit partially phased status. Source-bound graph-to-FASTA export does not certify full phasing or identify the exact paper binary. Two upstream commits report r592; this integration binds one immutable official commit explicitly rather than inferring which the paper used.',version='0.19.5-r592',support=[6]),
+'P101':dict(summary='Assembled HiFi reads from32 broomcorn millet accessions into raw contigs using hifiasm0.14.2-r315 with -l2 -u, before separate RagTag2.0.1 reference anchoring and orientation.',note='Retain the reported purge level and disabled post-join setting. RagTag creates the chromosome-scale anchoring step; hifiasm alone is not credited with it. Bounded synthetic -f0 controls do not reproduce unspecified paper Bloom settings.',version='0.14.2-r315'),
+'P109':dict(summary='Used hifiasm0.19.5-r587 to construct contig-level grape assemblies from HiFi, ONT and Hi-C data; separate RagTag, Juicer/3D-DNA, visualization and ONT gap-filling steps produced the reported final haplotypes.',note='The paragraph does not report exact hifiasm flags or ONT length selection. The available mixed-read/Hi-C adapter family does not establish those missing settings. Preserve the separate scaffolding, gap filling, polishing and assessment roles; hifiasm execution alone does not reproduce the eighteen reported T2T haplotypes.',version='0.19.5-r587'),
+'P164':dict(summary='Generated mouse haplotype assemblies using hifiasm0.19.5 in trio-binning mode with HiFi and ONT reads and strain-specific parental k-mer databases made with Yak0.1-r66-dirty; RagTag subsequently anchored the contigs.',note='The paper gives no hifiasm revision suffix and its dirty Yak build is not frozen by the version label. Native direct counting and source-compatible YAK serialization/classification are separate from reproducing Yak Bloom-filter admission or the dirty paper runtime. Merqury-parent databases belong to the separate Verkko branch. Do not infer raw-read subsets or full T2T reproduction.',version='0.19.5'),
+'P171':dict(summary='Used hifiasm0.22.0-r689 for hybrid HiFi plus ONT ultra-long contig construction and a separate ONT-only assembly in wheat; the hybrid-derived assembly later served as the reference framework for independent scaffolding and iterative gap filling.',note='Keep the hybrid UL length>100kb and QV>10 selection distinct from an unreported ONT-only input subset. Original ONT-only mode requires FASTQ qualities; this adapter rejects FASTA before upstream\'s exit0 error. Verkko, chromosome-specific NextDenovo, organelle filtering, AnchorWave and final gap filling remain separate tools and steps.',version='0.22.0-r689',support=[32]),
+'P235':dict(summary='Reused published HPRC trio-hifiasm assemblies, assembled54 HGSVC samples with hifiasm0.16.1 into pseudo-haplotypes, and assembled three HGSVC trios with hifiasm0.15.1 and Yak0.1 parental databases; a neighboring paragraph describes reused hifiasm0.15.1 nonhuman-primate assemblies.',note='Original XML separates versions0.16.1 and0.15.1 from bibliography xref11; plain paragraph text concatenates them as0.16.111/0.15.111. Preserve the raw XML/text and record this explicit markup reading. Do not infer revision suffixes or attribute the external HPRC/NHP assemblies, Flagger, Nucfreq or SafFire quality assessment to fresh hifiasm execution in this paper.',version='0.16.1; 0.15.1',support=[5]),
+'P248':dict(summary='Assembled cucumber HiFi reads into contigs with hifiasm0.19.5 at reported default parameters; RagTag2.1.0 subsequently anchored those contigs to chromosomes.',note='The revision suffix is unreported. BUSCO, BWA, minimap2 and Merqury provide separate completeness, mapping and k-mer assessments. Native per-graph statistics and literal FASTA export are structural checks, not substitutes for those assessments or proof of biological accuracy.',version='0.19.5')}
+
+
+def main():
+    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--out',type=Path,required=True);a=p.parse_args();out=a.out.resolve();assert not out.exists() and out.is_relative_to(ROOT/'build/literature-review/hifiasm-runtime');out.mkdir(parents=True);data=ROOT/'docs/literature/omics-2023-2026';before={q.relative_to(ROOT).as_posix():pin(q) for q in [data/'papers.json',data/'tool-inventory.json',data/'summary.json',ROOT/'tools/literature/reviewed-uses.json']};papers=json.loads((data/'papers.json').read_bytes());verify_fixed_cohort(ROOT,data,papers);registry={q['id']:q for q in load_catalog_registry(ROOT)};definition=[registry['hifiasm']];census=[];records=[];draft=[];observations=0;markup=[]
+    for paper in papers:
+        raw=gzip.decompress((ROOT/'build/literature-review/xml'/(paper['pmcid']+'.xml.gz')).read_bytes());assert hashlib.sha256(raw).hexdigest()==paper['xml_sha256'];xml=ET.fromstring(raw);assert next(q.text for q in xml.findall('front/article-meta/article-id') if q.get('pub-id-type')=='doi').lower()==paper['doi'].lower();ps=paragraphs(xml);by={q['paragraph_index']:q for q in ps};cache=json.loads((ROOT/'build/literature-review/extracted'/(paper['pmcid']+'.json')).read_bytes());cached={t['tool_id']:t for t in cache['tools']}
+        for tool in paper['tools']:
+            anchor=by[tool['evidence_paragraph_index']];assert anchor['text']==cached[tool['tool_id']]['evidence_text'] and hashlib.sha256(anchor['text'].encode()).hexdigest()==tool['evidence_paragraph_sha256'];observations+=1
+        matches=[q for q in ps if re.search(registry['hifiasm']['pattern'],q['match_text'],re.I)];current=[t for t in paper['tools'] if t['tool_id']=='hifiasm'];census.append(dict(paper_id=paper['paper_id'],xml_sha256=paper['xml_sha256'],matching_paragraphs=len(matches),catalogued=bool(current)));assert len(current)<=1
+        if not current:assert not matches;continue
+        tool=current[0];role=ROLES[paper['paper_id']];review=dict(pmcid=paper['pmcid'],doi=paper['doi'],tool_id='hifiasm',evidence_paragraph_sha256=tool['evidence_paragraph_sha256'],use_summary=role['summary'],implementation_scope_note=role['note'],version_reported_near_name=role['version']);support=[]
+        for index in role.get('support',[]):
+            paragraph=by[index];assert 'hifiasm' in paragraph['text'].lower();support.append(dict(paragraph_index=index,section=paragraph['section'],paragraph_sha256=hashlib.sha256(paragraph['text'].encode()).hexdigest()))
+        if support:review['supporting_evidence']=support
+        draft.append(review);records.append(dict(paper_id=paper['paper_id'],doi=paper['doi'],pmcid=paper['pmcid'],xml_sha256=paper['xml_sha256'],primary_paragraph=tool['evidence_paragraph_index'],matches=matches,review=review))
+        if paper['paper_id']=='P235':
+            for node in xml.findall('.//p'):
+                text=''.join(node.itertext())
+                if 'hifiasm' not in text.lower():continue
+                for child in node.iter('xref'):
+                    if child.get('rid')=='bib11':markup.append(dict(element_id=node.get('id'),xref=ET.tostring(child,encoding='unicode'),paragraph_xml=ET.tostring(node,encoding='unicode')))
+            assert any('0.16.1<xref' in r['paragraph_xml'] and '0.15.1<xref' in r['paragraph_xml'] for r in markup)
+    assert len(papers)==250 and observations==2465 and len(draft)==7 and {r['paper_id'] for r in records}==set(ROLES);assert all(pin(ROOT/n)==v for n,v in before.items());save(out/'role-drafts.json',dict(schema_version=1,reviews=draft));save(out/'source-audit.json',dict(status='read-only-seven-hifiasm-primary-role-drafts',source_census=census,papers=records,version_xref_markup=markup,catalog_changed=False,implementation_credit=False));save(out/'COMPLETED.json',dict(status='passed-250-primary-XML-DOI-and-2465-anchors-with-seven-hifiasm-role-drafts-only',source_papers=250,observations=2465,roles=7,supporting_pointers=sum(len(r.get('supporting_evidence',[])) for r in draft),catalog_before=before,role_drafts=pin(out/'role-drafts.json'),source_audit=pin(out/'source-audit.json'),catalog_changed=False,implementation_credit=False,source_pins={q.relative_to(ROOT).as_posix():pin(q) for q in [Path(__file__).resolve(),ROOT/'tools/literature/collect_omics_review.py']}));print('Audited250 original XML/DOIs and2465 anchors; drafted seven hifiasm roles without changing catalog availability')
+
+
+if __name__=='__main__':
+    if not __debug__:raise RuntimeError('Never disable primary-source checks')
+    main()

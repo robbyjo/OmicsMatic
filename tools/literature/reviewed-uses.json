@@ -127,7 +127,7 @@
       "doi": "10.1038/s41586-023-06805-y",
       "tool_id": "deeptools",
       "evidence_paragraph_sha256": "b64d6cf064e76f468199c5869f2d89de81c564b107ace91289bf31f51a26531d",
-      "use_summary": "Used deepTools3.5.1 to profile chromosome-domain boundary probabilities at transcripts over±2Mb with25kb bins.",
+      "use_summary": "Used deepTools3.5.1 to profile chromosome-domain boundary probabilities at transcripts over\u00b12Mb with25kb bins.",
       "implementation_scope_note": "These are supplied boundary-probability tracks, not read counts. qnorm normalization, transcript grouping, within-subclass100000permutations, normal-tail approximation and GO backgrounds are separate."
     },
     {
@@ -184,7 +184,7 @@
       "doi": "10.1038/s41586-023-06805-y",
       "tool_id": "seurat",
       "evidence_paragraph_sha256": "48b6d053619ae9716673136834fa29db1433b9af7b0a7b1722830086299bcee6",
-      "use_summary": "Adapted anchor finding/scoring for methylome–transcriptome integration.",
+      "use_summary": "Adapted anchor finding/scoring for methylome\u2013transcriptome integration.",
       "implementation_scope_note": "The paper describes adapting Seurat methodology; direct Seurat package execution is not established by this paragraph.",
       "usage_context": "method-reimplementation"
     },
@@ -1021,7 +1021,7 @@
       "supporting_evidence": [
         {
           "paragraph_index": 47,
-          "section": "Methods / ATAC–seq",
+          "section": "Methods / ATAC\u2013seq",
           "paragraph_sha256": "e12f052ce57697b8e37d8ec7c8a80fa989609538f6306ff7fa68796b68b05b62"
         }
       ]
@@ -1394,13 +1394,13 @@
       "doi": "10.1038/s41588-024-01911-7",
       "tool_id": "bowtie2",
       "evidence_paragraph_sha256": "b7c4273d16d9c388e975990c42dd98f2966f691674eca94a1b99786ea0834757",
-      "use_summary": "Mapped CUT&Tag to hg38 using Bowtie2 2.2.3, end-to-end/very-sensitive, no-mixed/no-discordant, Phred33 and insert bounds 10–700. Classical ChIP used 2.2.3 against hg38/dm3; PRO-seq separately used 2.5.1.",
+      "use_summary": "Mapped CUT&Tag to hg38 using Bowtie2 2.2.3, end-to-end/very-sensitive, no-mixed/no-discordant, Phred33 and insert bounds 10\u2013700. Classical ChIP used 2.2.3 against hg38/dm3; PRO-seq separately used 2.5.1.",
       "implementation_scope_note": "Typed modern Bowtie2 supports these bulk paired choices, but the three assay/reference/version contracts remain distinct. Spike-in normalization and nascent-transcription quantification are separate stages.",
       "version_reported_near_name": "2.2.3 (CUT&Tag/ChIP); 2.5.1 (PRO-seq)",
       "supporting_evidence": [
         {
           "paragraph_index": 63,
-          "section": "Methods / PRO–seq",
+          "section": "Methods / PRO\u2013seq",
           "paragraph_sha256": "f3ebfe9f02f9984a4e359a985d8fa25f40fd98ea4cd51b663b185372a9b04c2c"
         },
         {
@@ -1465,7 +1465,7 @@
       "tool_id": "enrichr",
       "evidence_paragraph_sha256": "f11db64e64c381d4d50c970dd8b31c3ad8befc35e220149c57939234056cc41e",
       "use_summary": "Performed additional gene-list enrichment using Enrichr after separate ranked FGSEA analyses.",
-      "implementation_scope_note": "Enrichr library names, release, organism and detailed settings are not stated in this paragraph. MSigDB c1–8/hallmark lists are explicitly attached to the separate FGSEA analysis, not automatically to Enrichr."
+      "implementation_scope_note": "Enrichr library names, release, organism and detailed settings are not stated in this paragraph. MSigDB c1\u20138/hallmark lists are explicitly attached to the separate FGSEA analysis, not automatically to Enrichr."
     },
     {
       "pmcid": "PMC11525197",
@@ -1481,7 +1481,7 @@
       "doi": "10.1038/s41588-024-01911-7",
       "tool_id": "fgsea",
       "evidence_paragraph_sha256": "f11db64e64c381d4d50c970dd8b31c3ad8befc35e220149c57939234056cc41e",
-      "use_summary": "Ranked genes by negative logarithm of adjusted P-value times the sign of fold change, then ran FGSEA against MSigDB 7.4 c1–8 and hallmark gene lists.",
+      "use_summary": "Ranked genes by negative logarithm of adjusted P-value times the sign of fold change, then ran FGSEA against MSigDB 7.4 c1\u20138 and hallmark gene lists.",
       "implementation_scope_note": "The logarithm base and exact FGSEA algorithm/permutation settings are not stated. Preserve the chosen ranks and gene-list edition; the original 1.38 profile and native running-score audit do not establish unspecified historical defaults or the separate Enrichr analysis.",
       "version_reported_near_name": null
     },
@@ -1525,7 +1525,7 @@
         },
         {
           "paragraph_index": 47,
-          "section": "Methods / Omni-ATAC–sequencing",
+          "section": "Methods / Omni-ATAC\u2013sequencing",
           "paragraph_sha256": "fdf461e5a3275906682f4680f62ece1e17ad330637745f89cf7a00eefe550f53"
         }
       ]
@@ -1890,7 +1890,7 @@
       "tool_id": "ucsc-liftover",
       "evidence_paragraph_sha256": "d4e28b77fa290a34ca918cac4c1e8d228b4d9027bb1cdc24c5835a2bd4debc1e",
       "use_summary": "Mapped structural-variant coordinates from T2T-CHM13 to hg38 before comparisons with gnomAD, deCODE and HGSVC SV sets using reciprocal-overlap categories.",
-      "implementation_scope_note": "A tested basic Java chain/interval subset is available; full UCSC/old-version/paper parity is not validated. SV breakpoint normalization and the study’s overlap/novelty categories are separate. Basic interval mapping does not implement structural-variant allele or breakpoint harmonization."
+      "implementation_scope_note": "A tested basic Java chain/interval subset is available; full UCSC/old-version/paper parity is not validated. SV breakpoint normalization and the study\u2019s overlap/novelty categories are separate. Basic interval mapping does not implement structural-variant allele or breakpoint harmonization."
     },
     {
       "pmcid": "PMC10719105",
@@ -2105,7 +2105,7 @@
       "doi": "10.1038/s41588-026-02741-5",
       "tool_id": "gwas-sumstats-harmoniser",
       "evidence_paragraph_sha256": "90b64a02d2146bea471f975bb8f47e10d7f2b2b2b2c0c6fbe7e5813544d57f8f",
-      "use_summary": "Followed the GWAS Catalog harmonizer’s reference-strand consensus-rate procedure over nonpalindromic variants after build conversion. The paragraph does not specify direct command execution.",
+      "use_summary": "Followed the GWAS Catalog harmonizer\u2019s reference-strand consensus-rate procedure over nonpalindromic variants after build conversion. The paragraph does not specify direct command execution.",
       "implementation_scope_note": "Retain this as a followed procedure, not proof that the executable was run. Reference genome, allele/strand consensus thresholds and treatment of problematic variants require reconstruction.",
       "usage_context": "procedure-followed; executable-use-not-specified"
     },
@@ -2147,7 +2147,7 @@
       "doi": "10.1016/j.ajhg.2025.07.004",
       "tool_id": "sme",
       "evidence_paragraph_sha256": "dfd9efd45f03187e68a7e8401e5da349cd9983470389e39dee96f6dc6fabc0be",
-      "use_summary": "Applied sparse marginal epistasis: each focal SNP’s interactions were restricted by external functional masks, using a variance-component model and stochastic trace computations. Reported simulation settings used100 random vectors,100-SNP blocks and shared draws across25 focal SNPs.",
+      "use_summary": "Applied sparse marginal epistasis: each focal SNP\u2019s interactions were restricted by external functional masks, using a variance-component model and stochastic trace computations. Reported simulation settings used100 random vectors,100-SNP blocks and shared draws across25 focal SNPs.",
       "implementation_scope_note": "The R implementation, Gaussian trace draws, one-sided variance test, unbiased potentially negative component estimates, masks and shared-random-vector approximation are distinct scientific contracts. Ordinary interaction regression is not equivalent.",
       "supporting_evidence": [
         {
@@ -2157,7 +2157,7 @@
         },
         {
           "paragraph_index": 12,
-          "section": "Material and methods / Scalable computation via stochastic MoM / Hutchinson’s stochastic trace estimator",
+          "section": "Material and methods / Scalable computation via stochastic MoM / Hutchinson\u2019s stochastic trace estimator",
           "paragraph_sha256": "abebea42677fc6b89cce2f337a25689eb100c0b39252f1971c9a293fb1a321fc"
         },
         {
@@ -2178,7 +2178,7 @@
       "tool_id": "fame",
       "evidence_paragraph_sha256": "195ea2dad52727a0bd73f5825f576e1a7352346a52d0bb66c4c3064a54c33021",
       "use_summary": "Ran FAME as a marginal-epistasis comparator on the same simulated SNPs/traits, with100 stochastic trace draws; software was archived at commit prefixcfdd03f dated2024-05-07.",
-      "implementation_scope_note": "The100-SNP block and25-focal sharing settings in this paragraph are specifically for SME. Preserve FAME’s own model, random-vector settings, archive and numerical behavior; no implementation parity is claimed.",
+      "implementation_scope_note": "The100-SNP block and25-focal sharing settings in this paragraph are specifically for SME. Preserve FAME\u2019s own model, random-vector settings, archive and numerical behavior; no implementation parity is claimed.",
       "supporting_evidence": [
         {
           "paragraph_index": 30,
@@ -3209,7 +3209,7 @@
       "doi": "10.1038/s41586-026-10836-6",
       "tool_id": "fuma",
       "evidence_paragraph_sha256": "9c8118766b33f79a66d1bf621a682101a9b9442e99509b3e236662890cd24e35",
-      "use_summary": "Used FUMA SNP2GENE/MAGMA to define previously known gene-trait associations alongside bulk DLPFC S-TWAS. The known set is their union after FDR correction across traits. Set gene type to all, custom MHC coordinates 28477797–33448354 and symmetric 50 kb windows after GRCh37 liftover.",
+      "use_summary": "Used FUMA SNP2GENE/MAGMA to define previously known gene-trait associations alongside bulk DLPFC S-TWAS. The known set is their union after FDR correction across traits. Set gene type to all, custom MHC coordinates 28477797\u201333448354 and symmetric 50 kb windows after GRCh37 liftover.",
       "implementation_scope_note": "The FUMA release is unstated. MungeSumstats preparation/liftover and subsequent two-sided Fisher enrichment with Bonferroni correction are separate stages; the MAGMA citation number is not a software version.",
       "version_reported_near_name": "",
       "supporting_evidence": []
@@ -3266,7 +3266,7 @@
       "doi": "10.1038/s41588-024-01939-9",
       "tool_id": "fuma",
       "evidence_paragraph_sha256": "a5778298c8eef536f52b99ac63afe60a8053b44c4a06f806c1de472820308fdd",
-      "use_summary": "Used FUMA and FAVOR for NPE variant-to-gene prioritization at P ≤ 1e-5 and within 10 kb of a protein-coding transcription start or end site. Ran MAGMA 1.10 gene and MSigDB GO/curated-set tests with gene threshold 2.5e-6 and per-NPE Bonferroni pathway correction.",
+      "use_summary": "Used FUMA and FAVOR for NPE variant-to-gene prioritization at P \u2264 1e-5 and within 10 kb of a protein-coding transcription start or end site. Ran MAGMA 1.10 gene and MSigDB GO/curated-set tests with gene threshold 2.5e-6 and per-NPE Bonferroni pathway correction.",
       "implementation_scope_note": "FUMA and FAVOR are jointly described, so do not assign every annotation to a specific backend. The literal 99.9% variant-PC variance/F-test description needs model reconciliation; it does not establish a raw-PC regression from P-only summary statistics. The FUMA release is unstated.",
       "version_reported_near_name": "",
       "supporting_evidence": []
@@ -3276,7 +3276,7 @@
       "doi": "10.1038/s41588-024-01933-1",
       "tool_id": "fuma",
       "evidence_paragraph_sha256": "227f76a40e953049138733f1b10af7332a4546aaccd9e5fc74460a8a77ea2ece",
-      "use_summary": "Used FUMA 1.4.1 for two-step clumping with the literal P < 0.05/r-squared ≥ 0.6 and lead P < 5e-8/r-squared ≥ 0.1 rules, and positional/eQTL/chromatin mapping. Its MAGMA 1.08 SNP-wise-mean analysis used European 1000 Genomes Phase 3 LD and 17674 Ensembl 85 protein-coding genes with Bonferroni threshold 2.83e-6.",
+      "use_summary": "Used FUMA 1.4.1 for two-step clumping with the literal P < 0.05/r-squared \u2265 0.6 and lead P < 5e-8/r-squared \u2265 0.1 rules, and positional/eQTL/chromatin mapping. Its MAGMA 1.08 SNP-wise-mean analysis used European 1000 Genomes Phase 3 LD and 17674 Ensembl 85 protein-coding genes with Bonferroni threshold 2.83e-6.",
       "implementation_scope_note": "GCTA-COJO 1.94.1 joint/conditional analysis follows FUMA and changes lead counts; distinguish 1650 leads/939 loci from 1307 COJO signals. Novelty comparisons, the August 2, 2023 GWAS Catalog snapshot, SMR/HEIDI replication and the independent Korean cohort analyses answer separate questions. The source is retained without relabeling the clumping inequalities.",
       "version_reported_near_name": "1.4.1",
       "supporting_evidence": [
@@ -3313,7 +3313,7 @@
       "tool_id": "fuma",
       "evidence_paragraph_sha256": "9348e34319881775e4e32f9e03d9accfa74daeeddb2d836071c526c5e539df7c",
       "use_summary": "Used MAGMA within FUMA 1.3.7 for gene-set and tissue-expression enrichment across 54 GTEx 8 tissues; independent-variant selection used r-squared 0.05.",
-      "implementation_scope_note": "The results describe nearest-gene tissue expression whereas Methods describe MAGMA. The source gives tissue thresholds 9.4e-4 in a caption and 9.3e-4 in the body; retain the discrepancy (0.05/54 ≈ 9.259e-4) without inferring a different test. The FUMA release is separate from MAGMA.",
+      "implementation_scope_note": "The results describe nearest-gene tissue expression whereas Methods describe MAGMA. The source gives tissue thresholds 9.4e-4 in a caption and 9.3e-4 in the body; retain the discrepancy (0.05/54 \u2248 9.259e-4) without inferring a different test. The FUMA release is separate from MAGMA.",
       "version_reported_near_name": "1.3.7",
       "supporting_evidence": [
         {
@@ -3440,7 +3440,7 @@
       "doi": "10.1038/s41586-024-08333-9",
       "tool_id": "deeptools",
       "evidence_paragraph_sha256": "0696eb837719caea11c7043348ce4190971a99273ee39853e822f0abe69eb1c2",
-      "use_summary": "Generated RPGC1x tracks with bamCoverage,10bp bins and extendReads, excluding chromosomeX from normalization. Used center-referenced10bp matrix bins over±1kb, original region order, missing-as-zero and per-bin sums; plotHeatmap/plotProfile rendered matrices. bigwigCompare subtracted RPGC input from H1 signal.",
+      "use_summary": "Generated RPGC1x tracks with bamCoverage,10bp bins and extendReads, excluding chromosomeX from normalization. Used center-referenced10bp matrix bins over\u00b11kb, original region order, missing-as-zero and per-bin sums; plotHeatmap/plotProfile rendered matrices. bigwigCompare subtracted RPGC input from H1 signal.",
       "implementation_scope_note": "ChromosomeX exclusion affects the denominator, not necessarily track omission. Keep extended-read/fragment estimation, blacklist and sum-versus-mean choices explicit. TSS-ID joins excluded4-5percent unmatched genes; Micro-C junction coverage came from BEDTools. Source naming DeepTools2 alone is not an exact version.",
       "supporting_evidence": [
         {
@@ -3524,7 +3524,7 @@
       "supporting_evidence": [
         {
           "paragraph_index": 47,
-          "section": "Methods / ATAC–seq",
+          "section": "Methods / ATAC\u2013seq",
           "paragraph_sha256": "e12f052ce57697b8e37d8ec7c8a80fa989609538f6306ff7fa68796b68b05b62"
         }
       ]
@@ -3539,7 +3539,7 @@
       "supporting_evidence": [
         {
           "paragraph_index": 72,
-          "section": "Methods / ChIP–seq",
+          "section": "Methods / ChIP\u2013seq",
           "paragraph_sha256": "2ab7a0d3bda3a16f35369efbaae27bddcd7b038c065a055e3af7b24118d9f0fc"
         }
       ]
@@ -3573,7 +3573,7 @@
       "doi": "10.1038/s41588-026-02745-1",
       "tool_id": "deeptools",
       "evidence_paragraph_sha256": "3ca524ad3819a32c545d3574d66a957640fd7395b540e8f7865911ae7cc19b99",
-      "use_summary": "Used deepTools3.5.0 bamCoverage for browser tracks and reference-point promoter profiles overTSS±5kb with skipZeros disabled. State bedGraphs were divided by sample number to represent chromatin-state percentages.",
+      "use_summary": "Used deepTools3.5.0 bamCoverage for browser tracks and reference-point promoter profiles overTSS\u00b15kb with skipZeros disabled. State bedGraphs were divided by sample number to represent chromatin-state percentages.",
       "implementation_scope_note": "Keep precomputed ChromHMM state percentages distinct from BAM coverage. Preserving zero rows affects the promoter average; track-hub assembly and browser visualization are separate.",
       "supporting_evidence": [
         {
@@ -3619,7 +3619,7 @@
       "doi": "10.1038/s41588-024-01892-7",
       "tool_id": "deeptools",
       "evidence_paragraph_sha256": "ed942db418e01b3ec5f86d4014cf52a5ee89a90be5eb844b621241175e94d1c5",
-      "use_summary": "Converted sorted/indexed GM12878 ATAC BAMs to bigWig with deepTools3.5.0 bamCoverage; downstream enhancer accessibility summed counts in±350bp around peak centers.",
+      "use_summary": "Converted sorted/indexed GM12878 ATAC BAMs to bigWig with deepTools3.5.0 bamCoverage; downstream enhancer accessibility summed counts in\u00b1350bp around peak centers.",
       "implementation_scope_note": "The source combined read1/read2 FASTQs before BWA-MEM mapping; do not silently reinterpret them as a paired-fragment BAM. Coverage normalization/bin width is unspecified; enhancer summation is a separate operation."
     },
     {
@@ -3961,8 +3961,8 @@
       "doi": "10.1038/s41586-025-09866-3",
       "tool_id": "clusterprofiler",
       "evidence_paragraph_sha256": "f3813b444a1dafe93be2d73dfd51ba2a0a100a8bc25012dca63fd8c8cdbc53d3",
-      "use_summary": "Used enrichGO and enricher to compare GO and Hallmark enrichment among MCH GWAS and loss-of-function hits, with GO sets of 20–2,000 genes. Also tested the top 200 Perturb-seq genes using genes expressed in K562 cells as background.",
-      "implementation_scope_note": "Supply each analysis’s selected genes, exact memberships and background separately; do not replace the K562 background with the whole genome. The generic local enricher workflow does not perform enrichGO annotation retrieval or gene selection.",
+      "use_summary": "Used enrichGO and enricher to compare GO and Hallmark enrichment among MCH GWAS and loss-of-function hits, with GO sets of 20\u20132,000 genes. Also tested the top 200 Perturb-seq genes using genes expressed in K562 cells as background.",
+      "implementation_scope_note": "Supply each analysis\u2019s selected genes, exact memberships and background separately; do not replace the K562 background with the whole genome. The generic local enricher workflow does not perform enrichGO annotation retrieval or gene selection.",
       "version_reported_near_name": null,
       "supporting_evidence": [
         {
@@ -3996,7 +3996,7 @@
       "tool_id": "fgsea",
       "evidence_paragraph_sha256": "5d35e6a6a100d42abf21b8a52847c28a34680adabe1508b8a6ba66d536d039be",
       "use_summary": "Ranked WLZ-associated MAG transcripts by fold-change direction times negative log10 P and tested metabolic-pathway transcript sets of at least ten genes across treatment, response-quartile, time and interaction contrasts; used BH q below 0.1.",
-      "implementation_scope_note": "The source reports fgsea version 3.14; its package-version identity is unverified and is not silently interpreted as a Bioconductor release. Supply each contrast’s transcript identities and pathway sets. Mixed models, MAG selection and old-version inference are separate.",
+      "implementation_scope_note": "The source reports fgsea version 3.14; its package-version identity is unverified and is not silently interpreted as a Bioconductor release. Supply each contrast\u2019s transcript identities and pathway sets. Mixed models, MAG selection and old-version inference are separate.",
       "version_reported_near_name": "3.14"
     },
     {
@@ -4061,7 +4061,7 @@
       "doi": "10.1038/s41586-023-06818-7",
       "tool_id": "fgsea",
       "evidence_paragraph_sha256": "f34c00b5ac75d871dddf7cfa9eb24f966c586151bd81efb8b4eca94d28079a76",
-      "use_summary": "Tested curated transcription-factor target sets using genes ranked by average Fos correlation in excitatory cells relative to inhibitory background, reversing the inhibitory ranking. Restricted sets to 15–500 genes and used positive one-tailed tests with FDR correction.",
+      "use_summary": "Tested curated transcription-factor target sets using genes ranked by average Fos correlation in excitatory cells relative to inhibitory background, reversing the inhibitory ranking. Restricted sets to 15\u2013500 genes and used positive one-tailed tests with FDR correction.",
       "implementation_scope_note": "Supply the normalized pseudocell coding-gene universe and targets supported by at least two ARCHS4/ENCODE/TRRUST resources. Explicit positive-tail fgsea is supported; correlation construction, target curation and 1.20.0 parity remain separate.",
       "version_reported_near_name": "1.20.0"
     },
@@ -4095,7 +4095,7 @@
       "doi": "10.1038/s41588-023-01561-1",
       "tool_id": "clusterprofiler",
       "evidence_paragraph_sha256": "08358f96726de9538e3090a1930de2e7f8cde49a900d080a918a5dbc06e159d8",
-      "use_summary": "Used clusterProfiler for gene set enrichment analysis in the study’s additional-software workflow.",
+      "use_summary": "Used clusterProfiler for gene set enrichment analysis in the study\u2019s additional-software workflow.",
       "implementation_scope_note": "The paragraph does not give ranks, gene-set sources, background, algorithm or sampling parameters. Current typed APIs require those choices and do not establish the 4.4.4 workflow from this software list alone.",
       "version_reported_near_name": "4.4.4"
     },
@@ -4104,7 +4104,7 @@
       "doi": "10.1038/s41588-026-02755-z",
       "tool_id": "clusterprofiler",
       "evidence_paragraph_sha256": "61db715889506dd6403ae68ec43223e09a9c086d638a6fb406bd71856414d801",
-      "use_summary": "Called GSEA on topic-specific gene scores built from distance-weighted chromatin accessibility and normalized by the weights’ L2 norm, using MSigDB Hallmark, curated C2 and ontology C5 collections retrieved with msigdbr 7.5.1.",
+      "use_summary": "Called GSEA on topic-specific gene scores built from distance-weighted chromatin accessibility and normalized by the weights\u2019 L2 norm, using MSigDB Hallmark, curated C2 and ontology C5 collections retrieved with msigdbr 7.5.1.",
       "implementation_scope_note": "Supply the final weighted, normalized topic ranks and the exact MSigDB memberships. Peak-to-TSS weighting, topic modeling and annotation retrieval are separate; package version and sampling parameters are not stated.",
       "version_reported_near_name": null
     },
@@ -4176,7 +4176,7 @@
       "doi": "10.1038/s41588-026-02714-8",
       "tool_id": "viper",
       "evidence_paragraph_sha256": "7f19e8b94c5f7ad8b290f4c0c21fd721d1143a2fda3bbe3063c006def0884d3c",
-      "use_summary": "Used Student’s t-test implemented in the VIPER package on normalized unperturbed GLS-versus-MOS cell-line expression profiles to construct a differential-expression signature; metaVIPER then converted that signature to protein activities.",
+      "use_summary": "Used Student\u2019s t-test implemented in the VIPER package on normalized unperturbed GLS-versus-MOS cell-line expression profiles to construct a differential-expression signature; metaVIPER then converted that signature to protein activities.",
       "implementation_scope_note": "The named VIPER package t-test is distinct from the metaVIPER network integration and two-sided aREA comparison. No VIPER runtime was installed or executed: its restricted noncommercial/nonprofit license requires eligibility confirmation before original-engine validation.",
       "version_reported_near_name": null
     },
@@ -4210,8 +4210,8 @@
       "doi": "10.1038/s41588-025-02344-6",
       "tool_id": "fgsea",
       "evidence_paragraph_sha256": "a9e8e4b7ab4ef158c2888cd46a8dd874fe37cae7c15588b69e70ce984d96a226",
-      "use_summary": "Computed gene–perturbation-score Pearson correlations among 3,000 variable genes, retained genes with correlation Q below 0.05, and ran fgsea on their correlation ranks with set sizes 15–500 and 100,000 permutations using Hallmark and C7 resources.",
-      "implementation_scope_note": "Supply the filtered ranking universe rather than silently restoring all genes. The simple-permutation adapter exposes the requested count; correlation/Q filtering, exact resource selection, source’s collection wording and unspecified package-version parity remain separate.",
+      "use_summary": "Computed gene\u2013perturbation-score Pearson correlations among 3,000 variable genes, retained genes with correlation Q below 0.05, and ran fgsea on their correlation ranks with set sizes 15\u2013500 and 100,000 permutations using Hallmark and C7 resources.",
+      "implementation_scope_note": "Supply the filtered ranking universe rather than silently restoring all genes. The simple-permutation adapter exposes the requested count; correlation/Q filtering, exact resource selection, source\u2019s collection wording and unspecified package-version parity remain separate.",
       "version_reported_near_name": null
     },
     {
@@ -4219,7 +4219,7 @@
       "doi": "10.1016/j.ajhg.2024.10.019",
       "tool_id": "clusterprofiler",
       "evidence_paragraph_sha256": "c334d4d00a690f4e26fb3e6e8273e6af1be783a3f7a9b613aae3f5b1e8a38900",
-      "use_summary": "Performed separate up/down DEG overrepresentation analyses, naming enrichr and enrichGO from ClusterProfiler, with all QC-detected genes as background, set sizes 10–1,500 and FDR-adjusted P below 0.05.",
+      "use_summary": "Performed separate up/down DEG overrepresentation analyses, naming enrichr and enrichGO from ClusterProfiler, with all QC-detected genes as background, set sizes 10\u20131,500 and FDR-adjusted P below 0.05.",
       "implementation_scope_note": "The source spells one function enrichr; do not silently equate it with the local enricher API without resolving the source-code call. GO BP/Reactome/Hallmark membership construction, DEG selection, enrichment-resource licensing and 4.2.2 parity remain separate.",
       "version_reported_near_name": "4.2.2"
     },
@@ -4228,7 +4228,7 @@
       "doi": "10.1016/j.ajhg.2024.10.019",
       "tool_id": "fgsea",
       "evidence_paragraph_sha256": "c334d4d00a690f4e26fb3e6e8273e6af1be783a3f7a9b613aae3f5b1e8a38900",
-      "use_summary": "Performed fgsea on differential-expression genes ranked by log2 fold-change effect size, using Reactome/Hallmark resources, set sizes 10–1,500 and FDR-adjusted P below 0.05.",
+      "use_summary": "Performed fgsea on differential-expression genes ranked by log2 fold-change effect size, using Reactome/Hallmark resources, set sizes 10\u20131,500 and FDR-adjusted P below 0.05.",
       "implementation_scope_note": "This preranked analysis is separate from up/down ORA with a QC-detected background. Supply exact memberships and ranks; 1.20.0 algorithm/default parity is not implied by the current profile.",
       "version_reported_near_name": "1.20.0"
     },
@@ -4362,7 +4362,7 @@
       "supporting_evidence": [
         {
           "paragraph_index": 72,
-          "section": "Methods / ChIP–seq",
+          "section": "Methods / ChIP\u2013seq",
           "paragraph_sha256": "2ab7a0d3bda3a16f35369efbaae27bddcd7b038c065a055e3af7b24118d9f0fc"
         }
       ]
@@ -4515,7 +4515,7 @@
       "supporting_evidence": [
         {
           "paragraph_index": 30,
-          "section": "Results / c.−69G>A and c.−69G>T downregulate TMEM216 expression in vitro",
+          "section": "Results / c.\u221269G>A and c.\u221269G>T downregulate TMEM216 expression in vitro",
           "paragraph_sha256": "0720bf40dabea02a422e61d48b459a73c48a1e3164ff5c40efdfeb9c0d084dcf"
         }
       ]
@@ -5877,7 +5877,7 @@
       "doi": "10.1038/s41586-025-09890-3",
       "tool_id": "igv",
       "evidence_paragraph_sha256": "59e0974ce84fa4756e55758e0cb98349cec4def2996acfed153cafca2db4a347",
-      "use_summary": "Plotted the CUT&Run chromatin profile with IGV and the WashU browser across the reported chromosome2 interval20404583–58108703.",
+      "use_summary": "Plotted the CUT&Run chromatin profile with IGV and the WashU browser across the reported chromosome2 interval20404583\u201358108703.",
       "implementation_scope_note": "Read trimming,local Bowtie2 mapping,filtering and deepTools coverage preceded display. HOMER generated the separate average profile. The paragraph does not specify the IGV version,assembly,track scale or session;the long interval is retained as reported.",
       "version_reported_near_name": ""
     },
@@ -5896,7 +5896,7 @@
       "tool_id": "igv",
       "evidence_paragraph_sha256": "24f8c8760dd04591de9d4a4207f99e65800fd02cd5d244854d3073c88a99b3c9",
       "use_summary": "Visualized deepTools bamCoverage-normalized ATAC-seq signal in IGV v2.7.0 after mm10 alignment,filtering and strand-specific Tn5 shifts.",
-      "implementation_scope_note": "Trim Galore,BWA-MEM,read filtering,+4/−5 shifting and MACS2 peak calling were separate upstream operations. The IGV snapshot scale,locus and complete normalization settings are not specified;display is not a peak caller.",
+      "implementation_scope_note": "Trim Galore,BWA-MEM,read filtering,+4/\u22125 shifting and MACS2 peak calling were separate upstream operations. The IGV snapshot scale,locus and complete normalization settings are not specified;display is not a peak caller.",
       "version_reported_near_name": "2.7.0"
     },
     {
@@ -6023,17 +6023,17 @@
       "tool_id": "igv",
       "evidence_paragraph_sha256": "90d2ed9f192f6c47e8d85133fbbce4ec276a488dd34b35a310fe80e6c8611fe4",
       "use_summary": "Used IGV read-depth analysis of blood-derived ONT TMEM216 transcripts to assess allele imbalance in a carrier,reporting23,255 versus8,184 reads(74%/26%) at the linked coding SNV. Supporting Results describe inspection of apparent homozygotes and the cDNA-read display.",
-      "implementation_scope_note": "This is direct primary Results evidence,manually selected by its exact paragraph hash rather than inferred from a Methods heading. Trio segregation and read inspection checked zygosity;the linked c.264G>A SNV distinguishes transcript alleles,while the c.−69 base is outside the displayed RNA. Version,read/base-quality thresholds,downsampling and overlap-counting rules are unstated;do not equate displayed counts with an unspecified generic pileup.",
+      "implementation_scope_note": "This is direct primary Results evidence,manually selected by its exact paragraph hash rather than inferred from a Methods heading. Trio segregation and read inspection checked zygosity;the linked c.264G>A SNV distinguishes transcript alleles,while the c.\u221269 base is outside the displayed RNA. Version,read/base-quality thresholds,downsampling and overlap-counting rules are unstated;do not equate displayed counts with an unspecified generic pileup.",
       "version_reported_near_name": "",
       "supporting_evidence": [
         {
           "paragraph_index": 20,
-          "section": "Results / Identification of TMEM216 c.−69G>T in individuals with retinitis pigmentosa that lack molecular diagnosis",
+          "section": "Results / Identification of TMEM216 c.\u221269G>T in individuals with retinitis pigmentosa that lack molecular diagnosis",
           "paragraph_sha256": "83b3f3b74d6505de61ca8c5f676cdfa85d67a03fa2f18de5de43c3a57156d0ff"
         },
         {
           "paragraph_index": 30,
-          "section": "Results / c.−69G>A and c.−69G>T downregulate TMEM216 expression in vitro",
+          "section": "Results / c.\u221269G>A and c.\u221269G>T downregulate TMEM216 expression in vitro",
           "paragraph_sha256": "0720bf40dabea02a422e61d48b459a73c48a1e3164ff5c40efdfeb9c0d084dcf"
         }
       ]
@@ -6292,7 +6292,7 @@
       "doi": "10.1016/j.ajhg.2026.05.011",
       "tool_id": "saige",
       "evidence_paragraph_sha256": "0f51f846cc75c6d99dc9e1716f602f4b57c6700d9ef34ebcba90cb630fec9cba",
-      "use_summary": "Reused SAIGE-generated Ménière-disease GWAS summaries from MVP,Pan-UKB and BBJ in a multibiobank analysis.",
+      "use_summary": "Reused SAIGE-generated M\u00e9ni\u00e8re-disease GWAS summaries from MVP,Pan-UKB and BBJ in a multibiobank analysis.",
       "implementation_scope_note": "The current study analyzed published summaries,not a newly fitted unified SAIGE cohort. The three sources used distinct phenotype definitions,sample counts,imputation/QC and covariates. The manuscript does not state the SAIGE versions;no raw-genotype availability or cross-cohort parameter equivalence is inferred.",
       "version_reported_near_name": "",
       "supporting_evidence": [
@@ -7124,7 +7124,7 @@
       "version_reported_near_name": "unstated",
       "supporting_evidence": [
         {
-          "section": "Methods / ATAC–seq",
+          "section": "Methods / ATAC\u2013seq",
           "paragraph_index": 47,
           "paragraph_sha256": "e12f052ce57697b8e37d8ec7c8a80fa989609538f6306ff7fa68796b68b05b62"
         }
@@ -7983,7 +7983,7 @@
       "doi": "10.1038/s41586-026-10952-3",
       "tool_id": "mafft",
       "evidence_paragraph_sha256": "a0d825eccfdfba5fdd50b98ea56bbdddb9e09014fbd013e56db8e28ac1deab3c",
-      "use_summary": "Used the MAFFT add tool to align structure-mined membrane-binding domain proteins to residues visible in the R. norvegicus PHPLCδ X-ray reference 1MAI; reported auto strategy, BLOSUM62, gap opening 1.53 and offset 0.0.",
+      "use_summary": "Used the MAFFT add tool to align structure-mined membrane-binding domain proteins to residues visible in the R. norvegicus PHPLC\u03b4 X-ray reference 1MAI; reported auto strategy, BLOSUM62, gap opening 1.53 and offset 0.0.",
       "implementation_scope_note": "WARNING: the paper reports only major version 7. Its exact edition remains unresolved and paper-exact execution must be skipped; no tested edition is silently substituted. The generic exact-edition adapter supports a single-row protein backbone and these explicit scoring settings. Reference-residue extraction, predicted structures and PyMOL structural alignment/RMSD are separate, and keep-length behavior is not specified in the paragraph.",
       "version_reported_near_name": "7 (exact release unresolved)",
       "supporting_evidence": []
@@ -8009,7 +8009,7 @@
       "doi": "10.1038/s41588-023-01571-z",
       "tool_id": "mafft",
       "evidence_paragraph_sha256": "4138a53774fb3589673bf905afec846567b386790ef97ec0db75e83cc1a8cb27",
-      "use_summary": "Generated gene-level multiple sequence alignments with 7.475 for in-house Perl estimates of pangenome diversity π, using differential-site count, conserved alignment length and the number of sequence pairs.",
+      "use_summary": "Generated gene-level multiple sequence alignments with 7.475 for in-house Perl estimates of pangenome diversity \u03c0, using differential-site count, conserved alignment length and the number of sequence pairs.",
       "implementation_scope_note": "WARNING: retain the maintainer FFT-NS-i/auto memory-bug warning for exact 7.475. The paragraph specifies neither the MAFFT input alphabet nor strategy; do not infer either from surrounding genome/protein steps. The adapter requires both explicitly. The conserved-site definition, custom Perl diversity calculation and whole gene-batch workflow remain separate; successful synthetic alignments do not establish large-input behavior.",
       "version_reported_near_name": "7.475",
       "supporting_evidence": []
@@ -8331,7 +8331,7 @@
         {
           "paragraph_index": 86,
           "paragraph_sha256": "3b856dbcd5ae61eb8ed8bad528815167bb3a10252e743ee68f565101c3d9f18f",
-          "section": "Methods / Analysis of scATAC–seq data / Per-library analyses"
+          "section": "Methods / Analysis of scATAC\u2013seq data / Per-library analyses"
         }
       ]
     },
@@ -8340,14 +8340,14 @@
       "doi": "10.1038/s41586-024-08333-9",
       "tool_id": "nextflow",
       "evidence_paragraph_sha256": "affe6e459ee744ea0cd04245433aa46aa643efeec9a93639b1b50de467dd4cfc",
-      "use_summary": "Used the Nextflow distiller-nf pipeline for mm9 Micro-C alignment and processing, with make_pairsam=False, drop_readid=False, --add-columns mapq --walks-policy mask and max_mismatch_bp=1. Produced balanced multi-resolution cooler files at the listed100bp–10Mb resolutions; merged15U/20U libraries with pairtools.",
+      "use_summary": "Used the Nextflow distiller-nf pipeline for mm9 Micro-C alignment and processing, with make_pairsam=False, drop_readid=False, --add-columns mapq --walks-policy mask and max_mismatch_bp=1. Produced balanced multi-resolution cooler files at the listed100bp\u201310Mb resolutions; merged15U/20U libraries with pairtools.",
       "implementation_scope_note": "Nextflow and distiller-nf editions are unstated. Exact workflow/configuration and dependencies must be supplied. FitHiChIP subsequently consumes the mcool output with its separately reported peak, distance, interaction and bias settings; those are not Nextflow engine parameters.",
       "version_reported_near_name": null,
       "supporting_evidence": [
         {
           "paragraph_index": 117,
           "paragraph_sha256": "a062cfcccb3cf2cf5f0add9a7772f0d30b1e9e1c1b4c4761767bb284f587c845",
-          "section": "Methods / Bioinformatics / Micro-C loop calling and cis-interactions between ChIP–seq peaks"
+          "section": "Methods / Bioinformatics / Micro-C loop calling and cis-interactions between ChIP\u2013seq peaks"
         }
       ]
     },
@@ -8575,7 +8575,7 @@
       "tool_id": "meme",
       "evidence_paragraph_sha256": "ece83a9dd5146cbec4a91176d0f49aed72ed8a2eef36952bca272c604754c709",
       "use_summary": "Used a local Linux MEME-ChIP workflow on central 200-bp ChIP-seq peak sequences, with 200-bp background regions 1 kb upstream, blacklist filtering, a Markov model and JASPAR motifs. MEME and DREME discovered motifs, CentriMo checked central enrichment, and Tomtom compared known motifs. Reused discovered PWMs in separate nucleosome scans and positional summaries.",
-      "implementation_scope_note": "The suite edition is unstated. Preserve the reported pipeline options, including -nmeme 600, -meme-mod zoops, widths 6–18, -meme-maxsize 50000000, -dreme-e 0.00001 and -dreme-m 20. These are historical pipeline tokens, not a current-version command inferred by translation. seqPattern/Biostrings scanning, strand-specific counts and downstream smoothing remain separate.",
+      "implementation_scope_note": "The suite edition is unstated. Preserve the reported pipeline options, including -nmeme 600, -meme-mod zoops, widths 6\u201318, -meme-maxsize 50000000, -dreme-e 0.00001 and -dreme-m 20. These are historical pipeline tokens, not a current-version command inferred by translation. seqPattern/Biostrings scanning, strand-specific counts and downstream smoothing remain separate.",
       "version_reported_near_name": null,
       "usage_context": "suite-workflow-and-discovered-model-reuse",
       "supporting_evidence": [
@@ -8728,7 +8728,7 @@
       "doi": "10.1038/s41586-023-06955-z",
       "tool_id": "hyphy",
       "evidence_paragraph_sha256": "075349fe4e1970baebb9c15fa1a106fc34640c776d700b0c03e36f56d9544b76",
-      "use_summary": "Ran HyPhy BUSTED with the paper’s stated default settings on back-translated codon alignments and previously reconstructed FastTree2 trees. Retrieved the reported full-codon-model dN/dS summary and discarded gene families with values above 0.5.",
+      "use_summary": "Ran HyPhy BUSTED with the paper\u2019s stated default settings on back-translated codon alignments and previously reconstructed FastTree2 trees. Retrieved the reported full-codon-model dN/dS summary and discarded gene families with values above 0.5.",
       "implementation_scope_note": "The HyPhy edition and exact dN/dS field or rate-class aggregation are unstated. Preserve the reported greater-than-0.5 exclusion rather than replacing it with a positive-selection P-value rule. BUSTED gene-wide testing, tree construction and the retrieved rate summary are distinct; this is unrelated to MEME Suite motifs.",
       "version_reported_near_name": null,
       "usage_context": "phylogenetic-selection-model",
@@ -8740,7 +8740,7 @@
       "tool_id": "hyphy",
       "evidence_paragraph_sha256": "067b614ab730dc7aa5f3da66c30628a6d79f81ae5aaa9364d5846a2fb8a4dd28",
       "use_summary": "Used aBSREL, reported as 2.5.48, on 15,734 filtered gene alignments and pruned/foreground-labeled mammal trees with --code Universal --branches Foreground. Separately ran BUSTED-MH on multiple orthologue cohorts and HyPhy MEME with --resample 100 to identify diversifying-selection codons in CD45.",
-      "implementation_scope_note": "The aBSREL paragraph states an FDR-corrected P ≤ 0.05 rule and ω > 1 criterion; the full correction family and exact extraction remain unstated. Do not propagate the aBSREL edition to MEME/BUSTED-MH. Foreground branch, gene-wide and site-level hypotheses and their cohorts differ. HyPhy MEME is an evolutionary model, not the motif-discovery program.",
+      "implementation_scope_note": "The aBSREL paragraph states an FDR-corrected P \u2264 0.05 rule and \u03c9 > 1 criterion; the full correction family and exact extraction remain unstated. Do not propagate the aBSREL edition to MEME/BUSTED-MH. Foreground branch, gene-wide and site-level hypotheses and their cohorts differ. HyPhy MEME is an evolutionary model, not the motif-discovery program.",
       "version_reported_near_name": "2.5.48 (aBSREL only; other methods unstated)",
       "usage_context": "phylogenetic-selection-models",
       "supporting_evidence": [
@@ -9048,8 +9048,8 @@
       "doi": "10.1038/s41588-023-01572-y",
       "tool_id": "chromvar",
       "evidence_paragraph_sha256": "d2d00325aa9cc58fb0fb3b156c3ea00e910003e600547258b0d20d7a38d4ce42",
-      "use_summary": "Used chromVAR1.16.0 with cisBP motif sets from chromVARmotifs0.2.0. For main cell types, subsampled5000 cells and used Signac RunChromVAR, rescaled per-cell deviations to0–10, aggregated by type and correlated scaled motif activity with TF expression. For subclusters, retained peaks present in>20 cells and cells with>500 peak reads, resized peaks to500bp, scanned with motifmatchr1.16.0 and called computeDeviations before the reported rescaling/aggregation/correlation.",
-      "implementation_scope_note": "The original paragraph explicitly reports ChromVar/v1.16.0 despite the initial extractor missing the edition. The native integration preserves raw deviation/Z scores; source subsampling, rescale0–10, aggregation, expression scaling/correlation, peak/cell filtering and exclusion of subclusters with<20 cells are separate operations. Do not confuse motifmatchr1.16.0 with the separately guarded scanner1.34.0 or claim a complete Signac/cisBP workflow.",
+      "use_summary": "Used chromVAR1.16.0 with cisBP motif sets from chromVARmotifs0.2.0. For main cell types, subsampled5000 cells and used Signac RunChromVAR, rescaled per-cell deviations to0\u201310, aggregated by type and correlated scaled motif activity with TF expression. For subclusters, retained peaks present in>20 cells and cells with>500 peak reads, resized peaks to500bp, scanned with motifmatchr1.16.0 and called computeDeviations before the reported rescaling/aggregation/correlation.",
+      "implementation_scope_note": "The original paragraph explicitly reports ChromVar/v1.16.0 despite the initial extractor missing the edition. The native integration preserves raw deviation/Z scores; source subsampling, rescale0\u201310, aggregation, expression scaling/correlation, peak/cell filtering and exclusion of subclusters with<20 cells are separate operations. Do not confuse motifmatchr1.16.0 with the separately guarded scanner1.34.0 or claim a complete Signac/cisBP workflow.",
       "version_reported_near_name": "1.16.0",
       "usage_context": "analysis-method-description",
       "supporting_evidence": []
@@ -9296,7 +9296,7 @@
       "supporting_evidence": [
         {
           "paragraph_index": 47,
-          "section": "Methods / ATAC–seq",
+          "section": "Methods / ATAC\u2013seq",
           "paragraph_sha256": "e12f052ce57697b8e37d8ec7c8a80fa989609538f6306ff7fa68796b68b05b62"
         }
       ]
@@ -9362,7 +9362,7 @@
       "tool_id": "deseq2",
       "evidence_paragraph_sha256": "d899670986e0a999c90da1503e94e761b1f366bd826bef02c289518666aa4cac",
       "use_summary": "Reported DESeq2 1.20.0 for cardiac cell-type analyses. The checked supplement describes DESeq2 normalization of donor/cell-type pseudobulk counts after edgeR filtering, followed by limma-voom tests for cell-type programs and DCM-versus-control differences. Disease testing used disease and sex covariates with BH correction.",
-      "implementation_scope_note": "Credit DESeq2 normalization, not limma-voom differential tests or stratified-LDSC heritability. Supplement physical pages 69,71–73 specify distinct populations/designs; filtering, pseudobulking, limma-voom and gene-program/SNP annotation remain separate. Exact normalization options are unstated.",
+      "implementation_scope_note": "Credit DESeq2 normalization, not limma-voom differential tests or stratified-LDSC heritability. Supplement physical pages 69,71\u201373 specify distinct populations/designs; filtering, pseudobulking, limma-voom and gene-program/SNP annotation remain separate. Exact normalization options are unstated.",
       "version_reported_near_name": "1.20.0",
       "usage_context": "normalization-method-description",
       "supporting_evidence": [
@@ -9817,7 +9817,7 @@
       "doi": "10.1038/s41586-023-06837-4",
       "tool_id": "signac",
       "evidence_paragraph_sha256": "000819d560d6ab0e6790c9b49047b73692ecb63f4285f10c91922af4ed2576d3",
-      "use_summary": "Used Signac 1.9.0 to import ATAC data, call peaks with MACS2 2.2.7.1, and construct FeatureMatrix counts. RunTFIDF and RunSVD provided LSI; the analysis used dimensions 2–30. Created a motif object with human JASPAR2020, ran chromVAR, and computed GeneActivity.",
+      "use_summary": "Used Signac 1.9.0 to import ATAC data, call peaks with MACS2 2.2.7.1, and construct FeatureMatrix counts. RunTFIDF and RunSVD provided LSI; the analysis used dimensions 2\u201330. Created a motif object with human JASPAR2020, ran chromVAR, and computed GeneActivity.",
       "implementation_scope_note": "Declare the actual motif/reference resources and MACS runtime explicitly. RNA median-library scaling and log transformation of gene scores, Seurat multimodal neighbors, and downstream interpretation are separate operations. Native GeneActivity returns a raw accessibility proxy, not measured RNA; current dependency profiles do not certify historical whole-package equivalence.",
       "version_reported_near_name": "1.9.0",
       "usage_context": "analysis-method-description",
@@ -9882,8 +9882,8 @@
       "doi": "10.1038/s41588-023-01572-y",
       "tool_id": "signac",
       "evidence_paragraph_sha256": "704b6c3640938150264aea8147b295402fef91b1b7595bcb194e22fd745882df",
-      "use_summary": "Used Signac 1.7.0 RunTFIDF and RunSVD for peak-count LSI and used dimensions 2–30 for UMAP. The motif workflow used chromVAR 1.16.0 with cisBP-derived motifs and Signac processing.",
-      "implementation_scope_note": "Differential accessible peaks were tested with Monocle2, not Signac marker inference. Custom 0–10 motif rescaling, aggregation and Pearson correlations remain separate. Subcluster motif scanning reports motifmatchr 1.16.0; the available current scanner profile does not certify that older scanner edition. Sampling and UMAP settings stay explicit.",
+      "use_summary": "Used Signac 1.7.0 RunTFIDF and RunSVD for peak-count LSI and used dimensions 2\u201330 for UMAP. The motif workflow used chromVAR 1.16.0 with cisBP-derived motifs and Signac processing.",
+      "implementation_scope_note": "Differential accessible peaks were tested with Monocle2, not Signac marker inference. Custom 0\u201310 motif rescaling, aggregation and Pearson correlations remain separate. Subcluster motif scanning reports motifmatchr 1.16.0; the available current scanner profile does not certify that older scanner edition. Sampling and UMAP settings stay explicit.",
       "version_reported_near_name": "1.7.0",
       "usage_context": "analysis-method-description",
       "supporting_evidence": [
@@ -10303,7 +10303,7 @@
       "tool_id": "cicero",
       "evidence_paragraph_sha256": "41db6565b9c28d56ef328ce411a63865d3f6a88dfa070f1c94457546ac40598e",
       "use_summary": "Predicted cis-co-accessible cCRE pairs separately across 275 subclasses with Cicero for Monocle3, mm10, 500-kb windows and default parameters, followed by shuffled-background score fitting and FDR filtering.",
-      "implementation_scope_note": "Samples at most 5000 nuclei per subclass; the paper reports the Hypendymal_NN subclass failed. Normal background fitting uses fitdistrplus, BH FDR<0.001 and GENCODE mm10v23 TSS±1kb distal/proximal grouping. The source says filtered out only if scores were significantly larger; preserve that wording rather than infer a reversed retention rule. Exact Cicero/Monocle commits, seeds and background implementation remain unknown. Source capture of Cicero-M3 1.3.9 is not paper reproduction.",
+      "implementation_scope_note": "Samples at most 5000 nuclei per subclass; the paper reports the Hypendymal_NN subclass failed. Normal background fitting uses fitdistrplus, BH FDR<0.001 and GENCODE mm10v23 TSS\u00b11kb distal/proximal grouping. The source says filtered out only if scores were significantly larger; preserve that wording rather than infer a reversed retention rule. Exact Cicero/Monocle commits, seeds and background implementation remain unknown. Source capture of Cicero-M3 1.3.9 is not paper reproduction.",
       "version_reported_near_name": null,
       "usage_context": "co-accessibility-and-background-filtering",
       "supporting_evidence": []
@@ -10431,7 +10431,7 @@
       "tool_id": "dndscv",
       "evidence_paragraph_sha256": "e018b9f8ade8877fc9855a80685bfa5de47f4dc2142e2c817b1d779dc9339e94",
       "use_summary": "Estimated positive and negative selection using a bespoke coding reference for the sequencing panel, with the192-channel opportunity matrix adjusted by per-gene median coverage for each sample, tissue and cohort and zero coverage at blacklisted sites.",
-      "implementation_scope_note": "The coverage-adjusted reference and panel construction are caller inputs, not standard unweighted opportunities or a generic single-gene coverage multiplier. Separate display filters use observed and expected mutation counts (paragraphs75–79); do not apply them silently to inference. The package version, function arguments and precise reference object are not provided.",
+      "implementation_scope_note": "The coverage-adjusted reference and panel construction are caller inputs, not standard unweighted opportunities or a generic single-gene coverage multiplier. Separate display filters use observed and expected mutation counts (paragraphs75\u201379); do not apply them silently to inference. The package version, function arguments and precise reference object are not provided.",
       "version_reported_near_name": null,
       "usage_context": "coverage-adjusted-panel-selection",
       "supporting_evidence": [
@@ -10726,7 +10726,7 @@
       "doi": "10.1016/j.ajhg.2025.11.012",
       "tool_id": "heidi",
       "evidence_paragraph_sha256": "bb84693ac3d2cd11e223fb4f33609c40b6cb3132aa86f63c15cf3f63f6974431",
-      "use_summary": "Applied HEIDI using three to20 cis-eQTL SNPs, reported eQTL P<1.57e-8 and LD bounds0.05–0.9, and required HEIDI P>0.01 alongside Bonferroni-significant SMR.",
+      "use_summary": "Applied HEIDI using three to20 cis-eQTL SNPs, reported eQTL P<1.57e-8 and LD bounds0.05\u20130.9, and required HEIDI P>0.01 alongside Bonferroni-significant SMR.",
       "implementation_scope_note": "Retain the literal1.57e-8 threshold; it differs from the commonly documented1.57e-3 default and must not be silently corrected. The reference is the stated8652-person HRS panel. OPERA multi-exposure HEIDI is separate from this ordinary HEIDI screen; the runtime release/mode are unspecified.",
       "version_reported_near_name": null,
       "usage_context": "cis-eQTL-heterogeneity-screen",
@@ -10754,7 +10754,7 @@
       "doi": "10.1016/j.ajhg.2024.10.008",
       "tool_id": "heidi",
       "evidence_paragraph_sha256": "3b0389d909476c9bb54139c0c0a9b96ecba60f961f56f7f134b96bea46bf703f",
-      "use_summary": "Used HEIDI to investigate whether protein–PCOS associations reflected distinct linked variants; reported P<0.05 as heterogeneity evidence and P>0.05 as the pass criterion in the results.",
+      "use_summary": "Used HEIDI to investigate whether protein\u2013PCOS associations reflected distinct linked variants; reported P<0.05 as heterogeneity evidence and P>0.05 as the pass criterion in the results.",
       "implementation_scope_note": "Retain the two reported strict inequalities and the selected65-protein population. A non-significant result is not proof of causality or absence of linkage. Replication, colocalization and druggability tiers are separate downstream decisions; runtime, LD panel, mode and SNP-selection parameters are unspecified.",
       "version_reported_near_name": null,
       "usage_context": "supplementary-protein-linkage-screen",
@@ -11068,14 +11068,14 @@
       "doi": "10.1038/s41586-025-09875-2",
       "tool_id": "cellphonedb",
       "evidence_paragraph_sha256": "8f779b8517de34378284fe65880ae59c563f2508624bbac71e22307face10c95",
-      "use_summary": "Used reported CellphoneDB5.1 method3 with Seurat positive cell-type/sex markers and an at-least10% expression criterion, restricting mesenchymal corpus-spongiosum–urethral-epithelium pairs to same-sex microenvironments at8–14PCW. Also used method3 for four Wolffian/Müllerian cell types at6–8PCW in one microenvironment.",
+      "use_summary": "Used reported CellphoneDB5.1 method3 with Seurat positive cell-type/sex markers and an at-least10% expression criterion, restricting mesenchymal corpus-spongiosum\u2013urethral-epithelium pairs to same-sex microenvironments at8\u201314PCW. Also used method3 for four Wolffian/M\u00fcllerian cell types at6\u20138PCW in one microenvironment.",
       "implementation_scope_note": "Method3 consumes caller-supplied DEGs; it does not perform the Seurat differential-expression tests. The captured PyPI versions do not resolve the reported5.1 label; do not silently reinterpret it as5.0.1. Database edition, remaining options and full model choices are unstated. A categorical microenvironment constraint is not a measured cell-distance model. Preserve the paper at-least10% wording separately from literal >threshold source comparisons.",
       "usage_context": "DEG-method3-with-sex-microenvironments",
       "version_reported_near_name": "5.1",
       "supporting_evidence": [
         {
           "paragraph_index": 79,
-          "section": "Methods / Analysis of scRNA-seq data / Cell–cell interaction analysis from scRNA-seq data",
+          "section": "Methods / Analysis of scRNA-seq data / Cell\u2013cell interaction analysis from scRNA-seq data",
           "paragraph_sha256": "c83e606c40a4a197751ac0e9df4f58a2ad1c5939efb11b238c75c92c98e954cc"
         }
       ]
@@ -11085,7 +11085,7 @@
       "doi": "10.1038/s41586-025-09873-4",
       "tool_id": "cellphonedb",
       "evidence_paragraph_sha256": "f9c422f4b10222c4d49f8c638b42bff23691fe2deee0963a0edccef563e75de9",
-      "use_summary": "Used the Squidpy integration of CellPhoneDB and OmniPath to evaluate time-dependent receptor–ligand shifts; related mean pair values to time with Spearman correlation and Bonferroni correction, then visualized increasing/decreasing interactions.",
+      "use_summary": "Used the Squidpy integration of CellPhoneDB and OmniPath to evaluate time-dependent receptor\u2013ligand shifts; related mean pair values to time with Spearman correlation and Bonferroni correction, then visualized increasing/decreasing interactions.",
       "implementation_scope_note": "This names a Squidpy integration and interaction-resource context, not a demonstrated standalone CellPhoneDB Python/CLI run. Software/database editions, interaction-mapping details and permutation settings are unreported. Spearman/Bonferroni temporal analysis and visualization are distinct downstream steps; do not assign stock CellPhoneDB output semantics or a specific null test without source evidence.",
       "usage_context": "Squidpy-implementation-and-resource-context",
       "version_reported_near_name": null,
@@ -11096,7 +11096,7 @@
       "doi": "10.1038/s41586-023-06806-x",
       "tool_id": "cellphonedb",
       "evidence_paragraph_sha256": "0c29334111ef621d36b0011c2a1bf95a13c05c0270faee714c2a51dc9e662e88",
-      "use_summary": "Used CellPhoneDB.org2.1.4 separately for development-stage-matched scRNA-seq datasets; stage-matched Visium data checked spatial distance and expression patterns of ligand–receptor interactions significant atP<0.05.",
+      "use_summary": "Used CellPhoneDB.org2.1.4 separately for development-stage-matched scRNA-seq datasets; stage-matched Visium data checked spatial distance and expression patterns of ligand\u2013receptor interactions significant atP<0.05.",
       "implementation_scope_note": "The complete paragraph explicitly reports2.1.4, correcting the prior missing-version extraction. Exact database, mode, permutations, expression threshold and RNG choices are unreported. Do not infer them from later-version defaults or treat Visium validation as CellPhoneDB spatial modeling. Current5.0.1 source/runtime controls would not establish historical2.1.4 execution.",
       "usage_context": "stage-matched-legacy-communication",
       "version_reported_near_name": "2.1.4",
@@ -11107,8 +11107,8 @@
       "doi": "10.1038/s41588-025-02407-8",
       "tool_id": "cellphonedb",
       "evidence_paragraph_sha256": "a992a81ea2fd378b07f207c60aa5f5c926c97987ccc775efe4c5c7c2925f4b13",
-      "use_summary": "Used CellPhoneDB5.0.0 for scRNA-seq cluster interactions, requiring all interaction members in at least10% of relevant cells and permuting cell-cluster labels1000times to assess cell-type specificity of ligand–receptor expression means. Visualized pairs atP≤0.01 with CCplotR; spatial communication used COMMOT separately.",
-      "implementation_scope_note": "Keep the reported all-subunit expression criterion,1000permutations, inclusive-tail prose and P≤0.01 visualization threshold distinct from literal source comparisons. The captured modern helper uses strict > for expression eligibility and shuffled>observed; do not silently rewrite the paper or source to reconcile this. Database edition, RNG seed, other options and biological validation are unstated. COMMOT, CCplotR and the reported RSPO3–LGR6 follow-up are separate analyses.",
+      "use_summary": "Used CellPhoneDB5.0.0 for scRNA-seq cluster interactions, requiring all interaction members in at least10% of relevant cells and permuting cell-cluster labels1000times to assess cell-type specificity of ligand\u2013receptor expression means. Visualized pairs atP\u22640.01 with CCplotR; spatial communication used COMMOT separately.",
+      "implementation_scope_note": "Keep the reported all-subunit expression criterion,1000permutations, inclusive-tail prose and P\u22640.01 visualization threshold distinct from literal source comparisons. The captured modern helper uses strict > for expression eligibility and shuffled>observed; do not silently rewrite the paper or source to reconcile this. Database edition, RNG seed, other options and biological validation are unstated. COMMOT, CCplotR and the reported RSPO3\u2013LGR6 follow-up are separate analyses.",
       "usage_context": "cluster-label-permutation-specificity",
       "version_reported_near_name": "5.0.0",
       "supporting_evidence": [
@@ -11124,7 +11124,7 @@
       "doi": "10.1038/s41588-025-02352-6",
       "tool_id": "cellphonedb",
       "evidence_paragraph_sha256": "9b64fe9cc36c790bdb82c6d1629e0284f4705a7c93fd2e8a48fdf7a2b6e8af74",
-      "use_summary": "Figure7c identifies use of a published CellPhoneDB neural–GPCR interaction module in spatially informed analysis of SAN cardiomyocytes, neighboring cell states and chromaffin cells, highlighting differentially expressed ligand–receptor components within their respective subsets.",
+      "use_summary": "Figure7c identifies use of a published CellPhoneDB neural\u2013GPCR interaction module in spatially informed analysis of SAN cardiomyocytes, neighboring cell states and chromaffin cells, highlighting differentially expressed ligand\u2013receptor components within their respective subsets.",
       "implementation_scope_note": "The available named-tool evidence is Results/figure context. It does not establish a standalone CellPhoneDB run, exact database/software edition, method, DEG test, null model or threshold. The >0.07 co-detection criterion describes the separate niche graph and must not be assigned to CellPhoneDB interaction significance. Preserve resource-only/unspecified execution status.",
       "usage_context": "neural-GPCR-module-resource-context",
       "version_reported_near_name": null,
@@ -11142,12 +11142,12 @@
       "supporting_evidence": [
         {
           "paragraph_index": 29,
-          "section": "Results / Spatially resolved, unbiased cell–cell interactions",
+          "section": "Results / Spatially resolved, unbiased cell\u2013cell interactions",
           "paragraph_sha256": "f46ab4c54ed65d7fa22dc46bb076f8024e1572b500a776e18fa20ea3bbd8577b"
         },
         {
           "paragraph_index": 30,
-          "section": "Results / Spatially resolved, unbiased cell–cell interactions",
+          "section": "Results / Spatially resolved, unbiased cell\u2013cell interactions",
           "paragraph_sha256": "9b2ed64f5fc480b88418bf4211b276c8d444c68ef7abed98ccc5cfa1a1dc3940"
         }
       ]
@@ -11157,8 +11157,8 @@
       "doi": "10.1038/s41588-025-02353-5",
       "tool_id": "cellphonedb",
       "evidence_paragraph_sha256": "e559e6007c9e6706b8413557c2479473cb7eaa8557da1615efcb330b34548f42",
-      "use_summary": "Reused a reported CellPhoneDB2.0 human ligand–receptor database alongside CellChat and iTALK resources to form a combined4028-pair set for spatial-neighborhood analysis performed by Spyrrow0.1 commu.cn.call.",
-      "implementation_scope_note": "The2.0 label is stated for the database/resource, not proof of a standalone CellPhoneDB2.0 runtime. The4028pairs belong to the combined resources, not CellPhoneDB alone. The reported activity sqrt(sender-ligand expression×receiver-receptor expression) and neighborhood calculations are attributed to Spyrrow, not CellPhoneDB arithmetic cluster means, permutations or DEG method3. Exact source database snapshot, mapping and neighborhood options remain unspecified.",
+      "use_summary": "Reused a reported CellPhoneDB2.0 human ligand\u2013receptor database alongside CellChat and iTALK resources to form a combined4028-pair set for spatial-neighborhood analysis performed by Spyrrow0.1 commu.cn.call.",
+      "implementation_scope_note": "The2.0 label is stated for the database/resource, not proof of a standalone CellPhoneDB2.0 runtime. The4028pairs belong to the combined resources, not CellPhoneDB alone. The reported activity sqrt(sender-ligand expression\u00d7receiver-receptor expression) and neighborhood calculations are attributed to Spyrrow, not CellPhoneDB arithmetic cluster means, permutations or DEG method3. Exact source database snapshot, mapping and neighborhood options remain unspecified.",
       "usage_context": "database-only-neighborhood-analysis",
       "version_reported_near_name": "2.0",
       "supporting_evidence": []
@@ -11168,7 +11168,7 @@
       "doi": "10.1038/s41586-025-09873-4",
       "tool_id": "omnipath",
       "evidence_paragraph_sha256": "f9c422f4b10222c4d49f8c638b42bff23691fe2deee0963a0edccef563e75de9",
-      "use_summary": "Used OmniPath through Squidpy together with its CellPhoneDB integration to identify time-dependent receptor–ligand interactions, followed by temporal Spearman correlations, Bonferroni correction and visualization.",
+      "use_summary": "Used OmniPath through Squidpy together with its CellPhoneDB integration to identify time-dependent receptor\u2013ligand interactions, followed by temporal Spearman correlations, Bonferroni correction and visualization.",
       "implementation_scope_note": "The paragraph establishes interaction-resource/integration use; it does not establish a standalone OmniPath client, exact database snapshot or extraction/mapping settings. Preserve the separate Squidpy implementation and downstream temporal statistics rather than assigning them to an OmniPath runtime.",
       "usage_context": "interaction-resource-through-Squidpy",
       "version_reported_near_name": null,
@@ -11190,7 +11190,7 @@
       "doi": "10.1038/s41588-025-02407-8",
       "tool_id": "ccplotr",
       "evidence_paragraph_sha256": "a992a81ea2fd378b07f207c60aa5f5c926c97987ccc775efe4c5c7c2925f4b13",
-      "use_summary": "Visualized CellPhoneDB ligand–receptor pairs with P≤0.01 using CCplotR0.99.3.",
+      "use_summary": "Visualized CellPhoneDB ligand\u2013receptor pairs with P\u22640.01 using CCplotR0.99.3.",
       "implementation_scope_note": "This is downstream visualization, not inference of CellPhoneDB P values or COMMOT spatial transport. Plot calls, aesthetics and complete input/output specifications are unreported; a generic plotter does not establish CCplotR source parity.",
       "usage_context": "interaction-visualization",
       "version_reported_near_name": "0.99.3",
@@ -11201,7 +11201,7 @@
       "doi": "10.1038/s41588-025-02353-5",
       "tool_id": "italk",
       "evidence_paragraph_sha256": "e559e6007c9e6706b8413557c2479473cb7eaa8557da1615efcb330b34548f42",
-      "use_summary": "Reused the iTALK human ligand–receptor resource alongside CellChat and CellPhoneDB2.0 for a combined4028-pair set analyzed using Spyrrow0.1.",
+      "use_summary": "Reused the iTALK human ligand\u2013receptor resource alongside CellChat and CellPhoneDB2.0 for a combined4028-pair set analyzed using Spyrrow0.1.",
       "implementation_scope_note": "No standalone iTALK execution or exact iTALK software/database version is stated. The combined pair count and Spyrrow neighborhood/activity calculations must not be credited to iTALK alone.",
       "usage_context": "combined-ligand-receptor-resource",
       "version_reported_near_name": null,
@@ -11212,7 +11212,7 @@
       "doi": "10.1038/s41588-025-02353-5",
       "tool_id": "spyrrow",
       "evidence_paragraph_sha256": "e559e6007c9e6706b8413557c2479473cb7eaa8557da1615efcb330b34548f42",
-      "use_summary": "Executed Spyrrow0.1 commu.cn.call under Python3.10.5 to quantify cell-to-neighbor communication from the combined CellChat, CellPhoneDB and iTALK resources, using the reported sqrt(sender-ligand expression×receiver-receptor expression) activity; plotted results with ggplot2.",
+      "use_summary": "Executed Spyrrow0.1 commu.cn.call under Python3.10.5 to quantify cell-to-neighbor communication from the combined CellChat, CellPhoneDB and iTALK resources, using the reported sqrt(sender-ligand expression\u00d7receiver-receptor expression) activity; plotted results with ggplot2.",
       "implementation_scope_note": "Preserve the declared spatial-neighborhood restriction and formula; the complete graph construction, gene/resource mapping and remaining function arguments are unstated. This is the executing software for the reported score, not standalone CellPhoneDB inference. Exact code commit is unspecified despite the code link; source/runtime validation remains required.",
       "usage_context": "spatial-neighborhood-activity",
       "version_reported_near_name": "0.1",
@@ -11223,14 +11223,14 @@
       "doi": "10.1038/s41588-026-02748-y",
       "tool_id": "commot",
       "evidence_paragraph_sha256": "ce20a8a20782741dc47d580a5b267b40dc16e3ad3865c0d8302c02e2f7b9eb55",
-      "use_summary": "Applied COMMOT across the spatial datasets to infer signaling pathways and obtain pathway-associated gene activations. The described target analysis uses tradeSeq associationTest and fitted smooth expression curves, retains positive associations, selects50 gene–pathway activations per sample, removes genes contributing to the pathway score, and retains the largest association per pathway–gene pair across samples.",
+      "use_summary": "Applied COMMOT across the spatial datasets to infer signaling pathways and obtain pathway-associated gene activations. The described target analysis uses tradeSeq associationTest and fitted smooth expression curves, retains positive associations, selects50 gene\u2013pathway activations per sample, removes genes contributing to the pathway score, and retains the largest association per pathway\u2013gene pair across samples.",
       "implementation_scope_note": "COMMOT edition, interaction database, transport parameters and full statistical settings are unreported. The target-gene procedure and pathway interpretation are downstream of the communication inference; they do not establish experimental signaling causality. Scanpy graph construction, Tangram mapping, SAW processing, Stereopy conversion and CellTypist annotation are distinct preparation tools. This spatial analysis is not CellPhoneDB permutation or supplied-DEG inference.",
       "usage_context": "spatial-pathway-and-target-activation",
       "version_reported_near_name": null,
       "supporting_evidence": [
         {
           "paragraph_index": 16,
-          "section": "Results / Cleft-related epithelial gene expression signature reveals pleiotropic enhancer–gene link",
+          "section": "Results / Cleft-related epithelial gene expression signature reveals pleiotropic enhancer\u2013gene link",
           "paragraph_sha256": "fabf85642084033229c6279e7f13534fc950638aa7339f95754e244ce56ad0e0"
         },
         {
@@ -11245,8 +11245,8 @@
       "doi": "10.1038/s41588-024-01900-w",
       "tool_id": "omnipath",
       "evidence_paragraph_sha256": "23eafa4ba6db3f74dc7d7546cea631ce8377f3f22ede4e3be2431aacd14d8da9",
-      "use_summary": "Obtained regulatory interaction evidence from OmniPath and DoRothEA for transcription-factor–target links, combining curated knowledge, ChIP-seq, motif and expression evidence in the effector-gene investigation. Expression-informed interactions use TCGA tumors or GTEx normal tissues.",
-      "implementation_scope_note": "This role concerns a regulatory interaction resource, not a demonstrated OmniPath ligand–receptor communication run or client invocation. Exact resource snapshots, confidence cutoffs and extraction commands are unstated. Do not attribute all combined DoRothEA/OmniPath evidence to OmniPath alone or treat expression-inferred links as experimental proof.",
+      "use_summary": "Obtained regulatory interaction evidence from OmniPath and DoRothEA for transcription-factor\u2013target links, combining curated knowledge, ChIP-seq, motif and expression evidence in the effector-gene investigation. Expression-informed interactions use TCGA tumors or GTEx normal tissues.",
+      "implementation_scope_note": "This role concerns a regulatory interaction resource, not a demonstrated OmniPath ligand\u2013receptor communication run or client invocation. Exact resource snapshots, confidence cutoffs and extraction commands are unstated. Do not attribute all combined DoRothEA/OmniPath evidence to OmniPath alone or treat expression-inferred links as experimental proof.",
       "usage_context": "transcription-factor-target-evidence-resource",
       "version_reported_near_name": null,
       "supporting_evidence": []
@@ -11333,8 +11333,8 @@
       "doi": "10.1038/s41588-024-01900-w",
       "tool_id": "dorothea",
       "evidence_paragraph_sha256": "23eafa4ba6db3f74dc7d7546cea631ce8377f3f22ede4e3be2431aacd14d8da9",
-      "use_summary": "Obtained transcription-factor–target regulatory interactions from the DoRothEA and OmniPath resources, using evidence from curated literature, ChIP-seq peaks, binding-site motifs and expression-inferred interactions. The expression evidence derives from TCGA tumors or GTEx normal tissues.",
-      "implementation_scope_note": "The resource snapshot, confidence-level selection, extraction commands and exact allocation of evidence between DoRothEA and OmniPath are unspecified. This is resource reuse, not a demonstrated DoRothEA/VIPER transcription-factor activity fit or ligand–receptor inference. Expression-inferred links remain distinct from experimentally confirmed regulatory effects.",
+      "use_summary": "Obtained transcription-factor\u2013target regulatory interactions from the DoRothEA and OmniPath resources, using evidence from curated literature, ChIP-seq peaks, binding-site motifs and expression-inferred interactions. The expression evidence derives from TCGA tumors or GTEx normal tissues.",
+      "implementation_scope_note": "The resource snapshot, confidence-level selection, extraction commands and exact allocation of evidence between DoRothEA and OmniPath are unspecified. This is resource reuse, not a demonstrated DoRothEA/VIPER transcription-factor activity fit or ligand\u2013receptor inference. Expression-inferred links remain distinct from experimentally confirmed regulatory effects.",
       "usage_context": "tf-target-regulatory-evidence-resource",
       "version_reported_near_name": null,
       "supporting_evidence": []
@@ -11400,6 +11400,90 @@
       "use_summary": "Used GSEApy1.1.2 through EnrichR for WikiPathway_2023_Human enrichment, with all measured expressed genes as background and input genes selected by adjusted P<0.05.",
       "implementation_scope_note": "Keep the expressed-gene background and exact named pathway resource. The adjusted-P threshold selects input genes; this paragraph does not specify the enrichment multiple-testing family, exact library contents or a frozen remote service. Local prepared-library execution is separate from recovering historical Enrichr responses.",
       "version_reported_near_name": "1.1.2"
+    },
+    {
+      "pmcid": "PMC13600919",
+      "doi": "10.1038/s41586-026-10901-0",
+      "tool_id": "hifiasm",
+      "evidence_paragraph_sha256": "7a0ba7dfbe5e3fdd1c310d6720017beb18e2e6468e19f7bafec89f29e5923e57",
+      "use_summary": "Used hifiasm 0.19.5-r592 in default HiFi-only mode for each sample, yielding a partially phased diploid assembly graph subsequently converted into two FASTA sequence files.",
+      "implementation_scope_note": "Preserve the explicit partially phased status. Source-bound graph-to-FASTA export does not certify full phasing or identify the exact paper binary. Two upstream commits report r592; this integration binds one immutable official commit explicitly rather than inferring which the paper used.",
+      "version_reported_near_name": "0.19.5-r592",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 6,
+          "section": "Identifying candidate recombinant reads",
+          "paragraph_sha256": "d4f8ff6c4e03d65fc0999afc3d06911a3bcf3a604b1ebef73c3aa33b003514ab"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC10703678",
+      "doi": "10.1038/s41588-023-01571-z",
+      "tool_id": "hifiasm",
+      "evidence_paragraph_sha256": "6f17acad373e364a4739252d6ee4091f94b376f52e02a24f52001cfc60d43c83",
+      "use_summary": "Assembled HiFi reads from 32 broomcorn millet accessions into raw contigs using hifiasm 0.14.2-r315 with -l2 -u, before separate RagTag 2.0.1 reference anchoring and orientation.",
+      "implementation_scope_note": "Retain the reported purge level and disabled post-join setting. RagTag creates the chromosome-scale anchoring step; hifiasm alone is not credited with it. Bounded synthetic -f0 controls do not reproduce unspecified paper Bloom settings.",
+      "version_reported_near_name": "0.14.2-r315"
+    },
+    {
+      "pmcid": "PMC11631756",
+      "doi": "10.1038/s41588-024-01967-5",
+      "tool_id": "hifiasm",
+      "evidence_paragraph_sha256": "a1a523d8d64a01859b844d98da933ff450d1a989c5780b0c6193e4ced6bddf50",
+      "use_summary": "Used hifiasm 0.19.5-r587 to construct contig-level grape assemblies from HiFi, ONT and Hi-C data; separate RagTag, Juicer/3D-DNA, visualization and ONT gap-filling steps produced the reported final haplotypes.",
+      "implementation_scope_note": "The paragraph does not report exact hifiasm flags or ONT length selection. The available mixed-read/Hi-C adapter family does not establish those missing settings. Preserve the separate scaffolding, gap filling, polishing and assessment roles; hifiasm execution alone does not reproduce the eighteen reported T2T haplotypes.",
+      "version_reported_near_name": "0.19.5-r587"
+    },
+    {
+      "pmcid": "PMC12597820",
+      "doi": "10.1038/s41588-025-02367-z",
+      "tool_id": "hifiasm",
+      "evidence_paragraph_sha256": "64d2da3af732ac6969d2aa2527798634f27aa16fefefbfc1aaad2848b3a28884",
+      "use_summary": "Generated mouse haplotype assemblies using hifiasm 0.19.5 in trio-binning mode with HiFi and ONT reads and strain-specific parental k-mer databases made with Yak 0.1-r66-dirty; RagTag subsequently anchored the contigs.",
+      "implementation_scope_note": "The paper gives no hifiasm revision suffix and its dirty Yak build is not frozen by the version label. Native direct counting and source-compatible YAK serialization/classification are separate from reproducing Yak Bloom-filter admission or the dirty paper runtime. Merqury-parent databases belong to the separate Verkko branch. Do not infer raw-read subsets or full T2T reproduction.",
+      "version_reported_near_name": "0.19.5"
+    },
+    {
+      "pmcid": "PMC13447107",
+      "doi": "10.1038/s41588-026-02678-9",
+      "tool_id": "hifiasm",
+      "evidence_paragraph_sha256": "17bc688647c86ad1322520f6f21e4bbc195ea5ac37e3239e39f4ef2d7f917045",
+      "use_summary": "Used hifiasm 0.22.0-r689 for hybrid HiFi plus ONT ultra-long contig construction and a separate ONT-only assembly in wheat; the hybrid-derived assembly later served as the reference framework for independent scaffolding and iterative gap filling.",
+      "implementation_scope_note": "Keep the hybrid UL length >100 kb and QV >10 selection distinct from an unreported ONT-only input subset. Original ONT-only mode requires FASTQ qualities; this adapter rejects FASTA before upstream's exit0 error. Verkko, chromosome-specific NextDenovo, organelle filtering, AnchorWave and final gap filling remain separate tools and steps.",
+      "version_reported_near_name": "0.22.0-r689",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 32,
+          "section": "Methods / Genome assembly / Step 3. Gap filling",
+          "paragraph_sha256": "9c4e70717705e0eff1b2759651784e4370a88ce76741c68edc56da92dab57f5a"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC11344006",
+      "doi": "10.1016/j.ajhg.2024.06.007",
+      "tool_id": "hifiasm",
+      "evidence_paragraph_sha256": "65fd96ce40de72bb72b41fffa2caab799aa30131c5f3c547093d3355b0e8a263",
+      "use_summary": "Reused published HPRC trio-hifiasm assemblies, assembled 54 HGSVC samples with hifiasm 0.16.1 into pseudo-haplotypes, and assembled three HGSVC trios with hifiasm 0.15.1 and Yak 0.1 parental databases; a neighboring paragraph describes reused hifiasm 0.15.1 nonhuman-primate assemblies.",
+      "implementation_scope_note": "Original XML separates versions 0.16.1 and 0.15.1 from bibliography xref 11; plain paragraph text concatenates them as0.16.111/0.15.111. Preserve the raw XML/text and record this explicit markup reading. Do not infer revision suffixes or attribute the external HPRC/NHP assemblies, Flagger, Nucfreq or SafFire quality assessment to fresh hifiasm execution in this paper.",
+      "version_reported_near_name": "0.16.1; 0.15.1",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 5,
+          "section": "Material and methods / Long-read sequence assembly and QC",
+          "paragraph_sha256": "76bb0d8d5cc7c3c669c1bff79a8fd9284beb97acb19e54e331155a4ef97c5647"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC13447089",
+      "doi": "10.1038/s41588-026-02682-z",
+      "tool_id": "hifiasm",
+      "evidence_paragraph_sha256": "8eeb7abb3dd4996d7da34a18adbda943771a8aa08bd6f3e99e683f1ea55305ed",
+      "use_summary": "Assembled cucumber HiFi reads into contigs with hifiasm 0.19.5 at reported default parameters; RagTag 2.1.0 subsequently anchored those contigs to chromosomes.",
+      "implementation_scope_note": "The revision suffix is unreported. BUSCO, BWA, minimap2 and Merqury provide separate completeness, mapping and k-mer assessments. Native per-graph statistics and literal FASTA export are structural checks, not substitutes for those assessments or proof of biological accuracy.",
+      "version_reported_near_name": "0.19.5"
     }
   ]
 }

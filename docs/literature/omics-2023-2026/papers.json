@@ -15272,12 +15272,20 @@
         "matched_text": "hifiasm",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": "0.19.5-r592",
         "evidence_selection": "highest-scored-eligible-method-sentence",
         "evidence_paragraph_sha256": "7a0ba7dfbe5e3fdd1c310d6720017beb18e2e6468e19f7bafec89f29e5923e57",
-        "use_summary": "Haplotype-resolved long-read assembly.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13600919/ (section: Methods / De novo haplotype-resolved assembly)"
+        "use_summary": "Used hifiasm 0.19.5-r592 in default HiFi-only mode for each sample, yielding a partially phased diploid assembly graph subsequently converted into two FASTA sequence files.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13600919/ (section: Methods / De novo haplotype-resolved assembly)",
+        "implementation_scope_note": "Preserve the explicit partially phased status. Source-bound graph-to-FASTA export does not certify full phasing or identify the exact paper binary. Two upstream commits report r592; this integration binds one immutable official commit explicitly rather than inferring which the paper used.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 6,
+            "section": "Identifying candidate recombinant reads",
+            "paragraph_sha256": "d4f8ff6c4e03d65fc0999afc3d06911a3bcf3a604b1ebef73c3aa33b003514ab"
+          }
+        ]
       },
       {
         "tool_id": "minimap2",
@@ -22153,12 +22161,13 @@
         "matched_text": "Hifiasm",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": "0.14.2-r315",
         "evidence_selection": "highest-scored-eligible-method-sentence",
         "evidence_paragraph_sha256": "6f17acad373e364a4739252d6ee4091f94b376f52e02a24f52001cfc60d43c83",
-        "use_summary": "Haplotype-resolved long-read assembly.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10703678/ (section: Methods / Long-read sequencing, assembly and quality assessment)"
+        "use_summary": "Assembled HiFi reads from 32 broomcorn millet accessions into raw contigs using hifiasm 0.14.2-r315 with -l2 -u, before separate RagTag 2.0.1 reference anchoring and orientation.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10703678/ (section: Methods / Long-read sequencing, assembly and quality assessment)",
+        "implementation_scope_note": "Retain the reported purge level and disabled post-join setting. RagTag creates the chromosome-scale anchoring step; hifiasm alone is not credited with it. Bounded synthetic -f0 controls do not reproduce unspecified paper Bloom settings."
       },
       {
         "tool_id": "hisat2",
@@ -24436,12 +24445,13 @@
         "matched_text": "Hifiasm",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
-        "version_reported_near_name": null,
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
+        "version_reported_near_name": "0.19.5-r587",
         "evidence_selection": "highest-scored-eligible-method-sentence",
         "evidence_paragraph_sha256": "a1a523d8d64a01859b844d98da933ff450d1a989c5780b0c6193e4ced6bddf50",
-        "use_summary": "Haplotype-resolved long-read assembly.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11631756/ (section: Methods / De novo genome assembly)"
+        "use_summary": "Used hifiasm 0.19.5-r587 to construct contig-level grape assemblies from HiFi, ONT and Hi-C data; separate RagTag, Juicer/3D-DNA, visualization and ONT gap-filling steps produced the reported final haplotypes.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11631756/ (section: Methods / De novo genome assembly)",
+        "implementation_scope_note": "The paragraph does not report exact hifiasm flags or ONT length selection. The available mixed-read/Hi-C adapter family does not establish those missing settings. Preserve the separate scaffolding, gap filling, polishing and assessment roles; hifiasm execution alone does not reproduce the eighteen reported T2T haplotypes."
       },
       {
         "tool_id": "hisat2",
@@ -35693,12 +35703,13 @@
         "matched_text": "Hifiasm",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": "0.19.5",
         "evidence_selection": "highest-scored-eligible-method-sentence",
         "evidence_paragraph_sha256": "64d2da3af732ac6969d2aa2527798634f27aa16fefefbfc1aaad2848b3a28884",
-        "use_summary": "Haplotype-resolved long-read assembly.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12597820/ (section: Methods / Genome assembly)"
+        "use_summary": "Generated mouse haplotype assemblies using hifiasm 0.19.5 in trio-binning mode with HiFi and ONT reads and strain-specific parental k-mer databases made with Yak 0.1-r66-dirty; RagTag subsequently anchored the contigs.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12597820/ (section: Methods / Genome assembly)",
+        "implementation_scope_note": "The paper gives no hifiasm revision suffix and its dirty Yak build is not frozen by the version label. Native direct counting and source-compatible YAK serialization/classification are separate from reproducing Yak Bloom-filter admission or the dirty paper runtime. Merqury-parent databases belong to the separate Verkko branch. Do not infer raw-read subsets or full T2T reproduction."
       },
       {
         "tool_id": "igv",
@@ -37224,12 +37235,20 @@
         "matched_text": "hifiasm",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": "0.22.0-r689",
         "evidence_selection": "highest-scored-eligible-method-sentence",
         "evidence_paragraph_sha256": "17bc688647c86ad1322520f6f21e4bbc195ea5ac37e3239e39f4ef2d7f917045",
-        "use_summary": "Haplotype-resolved long-read assembly.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13447107/ (section: Methods / Genome assembly / Step 1. Contig construction)"
+        "use_summary": "Used hifiasm 0.22.0-r689 for hybrid HiFi plus ONT ultra-long contig construction and a separate ONT-only assembly in wheat; the hybrid-derived assembly later served as the reference framework for independent scaffolding and iterative gap filling.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13447107/ (section: Methods / Genome assembly / Step 1. Contig construction)",
+        "implementation_scope_note": "Keep the hybrid UL length >100 kb and QV >10 selection distinct from an unreported ONT-only input subset. Original ONT-only mode requires FASTQ qualities; this adapter rejects FASTA before upstream's exit0 error. Verkko, chromosome-specific NextDenovo, organelle filtering, AnchorWave and final gap filling remain separate tools and steps.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 32,
+            "section": "Methods / Genome assembly / Step 3. Gap filling",
+            "paragraph_sha256": "9c4e70717705e0eff1b2759651784e4370a88ce76741c68edc56da92dab57f5a"
+          }
+        ]
       },
       {
         "tool_id": "interproscan",
@@ -48854,12 +48873,20 @@
         "matched_text": "hifiasm",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
-        "version_reported_near_name": null,
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
+        "version_reported_near_name": "0.16.1; 0.15.1",
         "evidence_selection": "highest-scored-eligible-method-sentence",
         "evidence_paragraph_sha256": "65fd96ce40de72bb72b41fffa2caab799aa30131c5f3c547093d3355b0e8a263",
-        "use_summary": "Haplotype-resolved long-read assembly.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11344006/ (section: Material and methods / Long-read sequence assembly and QC)"
+        "use_summary": "Reused published HPRC trio-hifiasm assemblies, assembled 54 HGSVC samples with hifiasm 0.16.1 into pseudo-haplotypes, and assembled three HGSVC trios with hifiasm 0.15.1 and Yak 0.1 parental databases; a neighboring paragraph describes reused hifiasm 0.15.1 nonhuman-primate assemblies.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11344006/ (section: Material and methods / Long-read sequence assembly and QC)",
+        "implementation_scope_note": "Original XML separates versions 0.16.1 and 0.15.1 from bibliography xref 11; plain paragraph text concatenates them as0.16.111/0.15.111. Preserve the raw XML/text and record this explicit markup reading. Do not infer revision suffixes or attribute the external HPRC/NHP assemblies, Flagger, Nucfreq or SafFire quality assessment to fresh hifiasm execution in this paper.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 5,
+            "section": "Material and methods / Long-read sequence assembly and QC",
+            "paragraph_sha256": "76bb0d8d5cc7c3c669c1bff79a8fd9284beb97acb19e54e331155a4ef97c5647"
+          }
+        ]
       },
       {
         "tool_id": "iqtree",
@@ -50661,12 +50688,13 @@
         "matched_text": "Hifiasm",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": "0.19.5",
         "evidence_selection": "highest-scored-eligible-method-sentence",
         "evidence_paragraph_sha256": "8eeb7abb3dd4996d7da34a18adbda943771a8aa08bd6f3e99e683f1ea55305ed",
-        "use_summary": "Haplotype-resolved long-read assembly.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13447089/ (section: Methods / Long-read sequencing, assembly and quality assessment)"
+        "use_summary": "Assembled cucumber HiFi reads into contigs with hifiasm 0.19.5 at reported default parameters; RagTag 2.1.0 subsequently anchored those contigs to chromosomes.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13447089/ (section: Methods / Long-read sequencing, assembly and quality assessment)",
+        "implementation_scope_note": "The revision suffix is unreported. BUSCO, BWA, minimap2 and Merqury provide separate completeness, mapping and k-mer assessments. Native per-graph statistics and literal FASTA export are structural checks, not substitutes for those assessments or proof of biological accuracy."
       },
       {
         "tool_id": "hisat2",

@@ -1,3 +1,19 @@
+## hifiasm: warnings and required actions
+
+Use the development HifiasmWorkflowCli and HIFIASM.md. Require exit 0 AND COMPLETED.json analysis_admitted=true for the entire batch. Read WARNINGS.md, error.traceback.txt when present, original stderr, all graph audits and owned-process receipts. Per-case PROVISIONAL files, GFA/FASTA files and upstream exit 0 alone do not admit a result. The canonical executable is unchanged.
+
+SKIP3: skip dependent analysis when permitted Linux x86_64 Java, exact original build/runtime receipt or required helpers are unavailable. Export the bundled original MIT-licensed sources with HifiasmSetupCli. Compile only with permitted allow_install and compatible make/GCC/G++/zlib development files; bind NEW paths with HifiasmRuntimeCli. Otherwise retain the skip. Analysis installs nothing. Cell Ranger remains excluded.
+
+FAIL2: no earlier case in the requested batch is admitted. Preserve original inputs, complete failed/provisional outputs and named nested error details. Correct the input, runtime, source, process or capacity cause and retry NEW paths. Never refresh scientific binding hashes. All earlier output bytes and completed populations are checked before admission. Cancellation includes final verification; source correction/assembly/phasing remain upstream.
+
+Declare an exact edition. The 0.19.5 release is r587; the separate r592 profile binds one immutable official commit, not an identified paper binary. Unreported revision suffixes remain unresolved. Hi-C in 0.14.2-r315/0.15.1-r328 is excluded after retained original crashes; retain SKIP3 or explicitly choose an appropriate separately validated newer edition. Never substitute an edition automatically.
+
+ONT-only 0.22.0-r689 requires genuine FASTQ qualities. FASTA is rejected before upstream's exit 0 error; do not invent experimental qualities. Preserve literal read IDs, U/case/ambiguity and paired observation order. Duplicate/malformed inputs fail instead of being repaired. Parent databases must remain unchanged; streaming inspection does not reproduce Yak Bloom admission, reconstruct window provenance or freeze a dirty build.
+
+Read effective-limits.json. Small-control defaults are unsuitable for WGS without explicit input/storage/heap/original-process resources. Parental inspection holds one bounded bucket, while GFA parsing holds one complete graph. Original hifiasm still needs its own memory. Hard per-process limits plus sampled footprint/owned-process checks do not create a hard aggregate RSS bound. Do not truncate data to conceal a capacity failure.
+
+Default HiFi graphs may be partially phased. Preserve missing-sequence/gap/virtual-read diagnostics and omission ledgers; do not invent bases, sum overlapping graph views as genome sizes or infer raw-length bounds for corrected-read coordinates. RagTag, gap filling, polishing, BUSCO, mapping and Merqury are separate steps. Structural/native checks do not certify consensus accuracy, complete phasing, genome quality or paper reproduction. The 250-paper goal remains active.
+
 ## GSEApy: warnings and required actions
 
 Use development GseapyWorkflowCli, separate GseapyExecutionSetupCli and GSEAPY_EXECUTION.md. Require exit0 AND analysis-status.json result_admitted=true. Read WARNINGS.md, native-audit.json, original stdout/stderr, original-error.traceback, manifests and process receipts. Keep all inputs and failed/provisional outputs. The canonical executable is unchanged.
