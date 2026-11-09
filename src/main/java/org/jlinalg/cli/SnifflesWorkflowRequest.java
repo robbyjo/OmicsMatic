@@ -17,7 +17,7 @@ final class SnifflesWorkflowRequest {
     record Input(String id, String kind, Path path, Pin pin, String reference, String originalSpelling) { }
     record Analysis(String id, SnifflesVcf.Edition edition, String input, String tandem, String genotype,
                     boolean phase, boolean legacyGenotype, Integer threads, Integer minSvlen,
-                    String minSupport, Integer mapq, Integer minAlignmentLength, String sampleId) { }
+                    String minSupport, Integer mapq, Integer minAlignmentLength, Integer legacyMinSegmentSize, String sampleId) { }
     record Limits(long inputBytes, long alignmentRecords, int readBases, long referenceBases,
                   SnifflesVcf.Limits vcf, SnifflesProcess.Limits process) {
         Map<String, Object> worker() {
@@ -54,7 +54,7 @@ final class SnifflesWorkflowRequest {
         List<?> analysisList = list(raw.get("analyses")); require(!analysisList.isEmpty() && analysisList.size() <= 1000, "Require 1..1000 declared analyses");
         var analyses = new ArrayList<Analysis>(); identifiers.clear(); var used = new java.util.HashSet<String>();
         for (Object item : analysisList) {
-            var value = object(item); keys(value, Set.of("id", "edition", "input", "tandem_repeats", "genotype_vcf", "phase", "legacy_genotype", "threads", "minsvlen", "minsupport", "mapq", "minimum_alignment_length", "sample_id"));
+            var value = object(item); keys(value, Set.of("id", "edition", "input", "tandem_repeats", "genotype_vcf", "phase", "legacy_genotype", "threads", "minsvlen", "minsupport", "mapq", "minimum_alignment_length", "legacy_minimum_segment_size", "sample_id"));
             String id = id(value.get("id")); require(identifiers.add(id), "Duplicate analysis id"); String editionText = text(value.get("edition")); SnifflesVcf.Edition edition = null;
             for (var candidate : SnifflesVcf.Edition.values()) if (candidate.version().equals(editionText)) edition = candidate;
             require(edition != null, "Unsupported exact source edition"); String inputId = id(value.get("input")); Input input = find(inputs, inputId);
@@ -70,9 +70,15 @@ final class SnifflesWorkflowRequest {
             if (edition == SnifflesVcf.Edition.V1_0_7 && (phase || tandem != null || sample != null || input.reference() != null || input.kind().equals("cram") || "auto".equals(support)))
                 throw new SnifflesProcess.UnavailableDependency("Requested legacy mode/flag is not supported by source 1.0.7. Its --cluster is not read-assignment --phase; no edition or option is substituted. " + SnifflesRuntimeProfile.ACTION);
             require(edition == SnifflesVcf.Edition.V1_0_7 || !legacyGenotype, "legacy_genotype is only a legacy source option");
+            Integer alignmentLength = optionalInt(value, "minimum_alignment_length", 0, 100000000);
+            Integer legacySegmentSize = optionalInt(value, "legacy_minimum_segment_size", 0, 100000000);
+            if (edition == SnifflesVcf.Edition.V1_0_7 && alignmentLength != null)
+                throw new SnifflesProcess.UnavailableDependency("Legacy --min_seq_size controls event segments, not modern query-alignment length. Use explicit legacy_minimum_segment_size for that source option; no equivalent read filter is substituted. " + SnifflesRuntimeProfile.ACTION);
+            if (edition != SnifflesVcf.Edition.V1_0_7 && legacySegmentSize != null)
+                throw new SnifflesProcess.UnavailableDependency("legacy_minimum_segment_size is only the original 1.0.7 --min_seq_size option. Modern alignment filtering uses minimum_alignment_length; no edition or flag is substituted. " + SnifflesRuntimeProfile.ACTION);
             analyses.add(new Analysis(id, edition, inputId, tandem, genotype, phase, legacyGenotype,
                 optionalInt(value, "threads", 1, 1024), optionalInt(value, "minsvlen", 1, Integer.MAX_VALUE), support,
-                optionalInt(value, "mapq", 0, 255), optionalInt(value, "minimum_alignment_length", 1, 100000000), sample));
+                optionalInt(value, "mapq", 0, 255), alignmentLength, legacySegmentSize, sample));
         }
         require(used.equals(inputs.stream().map(Input::id).collect(java.util.stream.Collectors.toSet())), "Every declared input must be used by a requested analysis or its reference");
         require(sourcePin.equals(pin(source, 16777216, () -> {})), "Request changed while parsing"); return new Request(source, sourcePin, out, manifest, runtimePin, inputs, analyses, limits);

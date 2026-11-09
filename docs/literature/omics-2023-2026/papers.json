@@ -7312,12 +7312,13 @@
         "matched_text": "sniffles2",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": "2.0.2",
         "evidence_selection": "highest-scored-eligible-method-sentence",
         "evidence_paragraph_sha256": "ddc3808255076317c2acb14388a06d59ba5fe7365fa841fc3a9ecfa54356d226",
-        "use_summary": "Long-read structural variant discovery.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10733147/ (section: Methods / Analysis of STRs)"
+        "use_summary": "Called indels and structural variants described as larger than 20 bp with Sniffles2 2.0.2, guided by tandem-repeat annotations, within a custom local STR genotyping workflow.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10733147/ (section: Methods / Analysis of STRs)",
+        "implementation_scope_note": "The paper names --tandem-repeats but does not freeze the annotation or complete command. Its >20 bp statement alone does not establish a --minsvlen value. Clair3 short-variant calls, haplotype-specific bcftools consensus, the 50-bp flanks and Tandem Repeat Finder characterization are separate steps."
       },
       {
         "tool_id": "ucsc-liftover",
@@ -22643,12 +22644,31 @@
         "matched_text": "Sniffles",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": "1.0.7",
         "evidence_selection": "highest-scored-eligible-method-sentence",
         "evidence_paragraph_sha256": "7bf75024502e5784be4631d09f5c312b498043f486bc5880ae6a6facf60f6894",
-        "use_summary": "Long-read structural variant discovery.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11549052/ (section: Methods / SV identification and pan-SV library construction)"
+        "use_summary": "Called long-read structural variants with Sniffles 1.0.7 after NGMLR mapping to ZS11, applied the stated quality/support/size/duplicate filters, and used the Sniffles population-calling workflow after separate SURVIVOR merging.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11549052/ (section: Methods / SV identification and pan-SV library construction)",
+        "implementation_scope_note": "Preserve the legacy C++ edition. The preceding paragraph describes removing UNRESOLVED/IMPRECISE calls, fewer than four supporting reads, calls shorter than 50 bp and duplicates; retain its wording without inferring unspecified field/duplicate rules. SURVIVOR 1.0.3 parameters 10 1 1 1 0 50 belong to a separate merge. The population recipe and complete commands are not frozen; Sniffles2 SNF combining is not evidence of implementing this legacy workflow.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 36,
+            "section": "Methods / SV identification and pan-SV library construction",
+            "paragraph_sha256": "9bb389c5cfaeed4a44acdb4026652672e187175df48b9e8df19fac492d6c300d",
+            "evidence_role": "method-details",
+            "named_anchor": {
+              "paragraph_index": 37,
+              "section": "Methods / SV identification and pan-SV library construction",
+              "paragraph_sha256": "7bf75024502e5784be4631d09f5c312b498043f486bc5880ae6a6facf60f6894"
+            },
+            "shared_terms": [
+              "ZS11",
+              "SVs"
+            ],
+            "relation_note": "The named Sniffles paragraph explicitly links its SV filters to the preceding whole-genome alignment paragraph. This pointer supplies those stated conditions without inventing field mappings, duplicate definitions or a Boolean expression."
+          }
+        ]
       },
       {
         "tool_id": "stringtie",
@@ -28551,12 +28571,13 @@
         "matched_text": "Sniffles2",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
-        "version_reported_near_name": null,
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
+        "version_reported_near_name": "2.0.7",
         "evidence_selection": "highest-scored-eligible-method-sentence",
         "evidence_paragraph_sha256": "5b9566ef10f1dd98aadf747b7fb6769e3007508fd7209fa5060bdd69cb108dab",
-        "use_summary": "Long-read structural variant discovery.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10703688/ (section: Methods / Long-read whole-genome sequencing)"
+        "use_summary": "Called structural variants with Sniffles2 2.0.7 on tumor and normal ONT alignments separately, contributing to a two-of-four-caller consensus.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10703688/ (section: Methods / Long-read whole-genome sequencing)",
+        "implementation_scope_note": "Sniffles was not run in paired somatic mode in this statement. SAVANA supplied the paired mode; cuteSV, SVIM and Sniffles ran separately on tumor and normal. The orientation and 1-kb padded-overlap consensus merge is separate from Sniffles. Supplementary Note 4 is referenced, and the main paragraph does not specify complete Sniffles settings."
       }
     ],
     "status": "extracted",
@@ -35900,12 +35921,20 @@
         "matched_text": "Sniffles",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": "2.0.7",
         "evidence_selection": "highest-scored-eligible-method-sentence",
         "evidence_paragraph_sha256": "894b847e78c6bf18abe3805169895d99c944ef49fc673099fb8cce1d9ae717f9",
-        "use_summary": "Long-read structural variant discovery.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12597820/ (section: Methods / Assembly evaluation)"
+        "use_summary": "Used default Sniffles 2.0.7 SV calls from HiFi and ONT alignments for assembly evaluation and a hybrid assembly-correction workflow, with the technologies called independently.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12597820/ (section: Methods / Assembly evaluation)",
+        "implementation_scope_note": "The polishing paragraph explicitly describes independent HiFi and ONT call sets. Do not infer pooled calling from the evaluation paragraph's term hybrid. Iris polishes insertion/deletion sequences, Jasmine merges the two call sets, Merfin filters, and bcftools incorporates corrections; these are separate tools, not Sniffles operations.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 36,
+            "section": "Methods / Assembly polishing",
+            "paragraph_sha256": "9ad3cb3dc377bd61f2e56729100c15f60383a232f669c927ec7976d314e35204"
+          }
+        ]
       },
       {
         "tool_id": "star",
@@ -50420,12 +50449,25 @@
         "matched_text": "Sniffles",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
-        "version_reported_near_name": null,
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
+        "version_reported_near_name": "2.4",
         "evidence_selection": "highest-scored-eligible-method-sentence",
         "evidence_paragraph_sha256": "afae40590c0471eca457be9bfb919a6d81ea8baf54ccae541cff0cda69ff95f7",
-        "use_summary": "Long-read structural variant discovery.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12597825/ (section: Results / Locityper accurately genotypes challenging loci / Locityper outperforms variant calling pipelines)"
+        "use_summary": "Generated phased structural variants with Sniffles 2.4 from HiFi reads haplotagged after WhatsHap phasing, for comparison with Locityper and a Sniffles-plus-DeepVariant call set.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12597825/ (section: Results / Locityper accurately genotypes challenging loci / Locityper outperforms variant calling pipelines)",
+        "implementation_scope_note": "The method paragraph supplies version 2.4 beyond the results anchor. WhatsHap 2.3 performs short-variant phasing and read haplotagging; Sniffles consumes those assignments. RTG vcfmerge combines the outputs, while bcftools consensus reconstructs haplotypes and the workflow removes conflicting calls and symbolic alternatives except <DEL>. Do not attribute those operations to Sniffles or infer an unreported complete calling command.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 83,
+            "section": "Methods / Benchmarking Locityper",
+            "paragraph_sha256": "15ea26b5f4a59b5783f1376a210febc87fa21e895357c9eb28f96b57a2cdbece"
+          },
+          {
+            "paragraph_index": 84,
+            "section": "Methods / Benchmarking Locityper",
+            "paragraph_sha256": "652ecd6a44269d7bbc4648fc6e90b84ac3538b1205f37c2f49bdef421630e760"
+          }
+        ]
       },
       {
         "tool_id": "strobealign",
@@ -50890,12 +50932,13 @@
         "matched_text": "Sniffles",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": "2.3.2",
         "evidence_selection": "highest-scored-eligible-method-sentence",
         "evidence_paragraph_sha256": "06d71b99b7cdb469bb26e7fa149125d0b811a8a1a971755eb2135c1ac3720e92",
-        "use_summary": "Long-read structural variant discovery.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13447089/ (section: Methods / SV-based graph pangenome construction and SV genotyping)"
+        "use_summary": "Called structural variants with Sniffles 2.3.2 on minimap2 alignments of HiFi and CLR accessions, as one of four read-based callers in an SV graph-pangenome workflow.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13447089/ (section: Methods / SV-based graph pangenome construction and SV genotyping)",
+        "implementation_scope_note": "The stated downstream retention conditions are pass flag, read depth at least four and length below 20 kb. The source does not identify the depth field, so do not silently equate it with Sniffles SUPPORT. SURVIVOR merges five caller-derived sets using 1-kb distance and agreement by at least two callers on SV type; Syri/MUMmer assembly calls and retention of larger MUMmer SVs are separate. Sniffles settings are otherwise unreported."
       },
       {
         "tool_id": "star",

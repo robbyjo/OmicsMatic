@@ -660,7 +660,7 @@ Nature · 2023-12-13 · [DOI](https://doi.org/10.1038/s41586-023-06842-7) · [Pr
 | Guppy | Nanopore basecalling; distinguish the fish name. | Methods / ONT data processing |
 | minimap2 | Mapped ONT reads with minimap2 2.22 using -x map-ont -a --secondary=no --MD to sex-specific XY/XO hg38 or T2T-CHM13 references. | Methods / Alignment to reference genome |
 | RepeatMasker | Scanned extended variant alleles with RepeatMasker 4.1.2-p1 using -species human -gff -s -norna -nolow, then classified mobile elements with inclusive 75% consensus and variant-coverage thresholds. | Methods / Structural variation repeat classification |
-| Sniffles | Long-read structural variant discovery. | Methods / Analysis of STRs |
+| Sniffles | Called indels and structural variants described as larger than 20 bp with Sniffles2 2.0.2, guided by tandem-repeat annotations, within a custom local STR genotyping workflow. | Methods / Analysis of STRs |
 | UCSC liftOver | Mapped structural-variant coordinates from T2T-CHM13 to hg38 before comparisons with gnomAD, deCODE and HGSVC SV sets using reciprocal-overlap categories. | Methods / Comparison to annotations |
 
 XML SHA-256: `8c03b8a89cf60855e270dd75a5c5cfa6fe4d9ca7cbcf0e64cfe471e50db97249`. Exact evidence paragraph hashes and locators are in [papers.json](papers.json).
@@ -2024,7 +2024,7 @@ Nature Genetics · 2024-11-05 · [DOI](https://doi.org/10.1038/s41588-024-01957-
 | MACS | Called Brassica ATAC and histone ChIP peaks with MACS2 2.1.3.3 against accession-specific genomes at effective size 9.6e8. Reported ATAC shift -100, extension 200, literal --board and bedGraph output; ChIP used bedGraph output and the same declared effective size. | Methods / Analyses of ChIP–seq and ATAC–seq |
 | Picard | Alignment QC, duplicates and sequence processing. | Methods / Analyses of ChIP–seq and ATAC–seq |
 | SAMtools | Alignment manipulation and QC. | Methods / SNP/indel calling for B. napus accessions |
-| Sniffles | Long-read structural variant discovery. | Methods / SV identification and pan-SV library construction |
+| Sniffles | Called long-read structural variants with Sniffles 1.0.7 after NGMLR mapping to ZS11, applied the stated quality/support/size/duplicate filters, and used the Sniffles population-calling workflow after separate SURVIVOR merging. | Methods / SV identification and pan-SV library construction |
 | StringTie | Calculated gene or transcript TPM with StringTie 1.3.6 defaults after HISAT2 alignment and separate SAMtools filtering of low-MAPQ, nonunique and unmapped reads. | Methods / RNA-seq data analysis |
 | Trimmomatic | Used Trimmomatic0.36 for adapter/low-quality RNA-seq filtering before HISAT2 alignment to ZS11; SAMtools mapping filters preceded StringTie TPM calculation. | Methods / RNA-seq data analysis |
 
@@ -2556,7 +2556,7 @@ Nature Genetics · 2023-11-09 · [DOI](https://doi.org/10.1038/s41588-023-01540-
 | ASCAT | Allele-specific tumor copy-number analysis. | Methods / Short-read whole-genome sequencing |
 | BWA | DNA read alignment. | Methods / Nominating NAHR junctions |
 | minimap2 | Mapped ONT tumor/normal reads to GRCh37 using minimap2 2.17 before multiple structural-variant callers and consensus selection. | Methods / Long-read whole-genome sequencing |
-| Sniffles | Long-read structural variant discovery. | Methods / Long-read whole-genome sequencing |
+| Sniffles | Called structural variants with Sniffles2 2.0.7 on tumor and normal ONT alignments separately, contributing to a two-of-four-caller consensus. | Methods / Long-read whole-genome sequencing |
 
 XML SHA-256: `1f2e71d123a957c43821e96ac278e379a344577931404eb2d4f7c57fb4f2a7b8`. Exact evidence paragraph hashes and locators are in [papers.json](papers.json).
 
@@ -3221,7 +3221,7 @@ Nature Genetics · 2025-10-21 · [DOI](https://doi.org/10.1038/s41588-025-02367-
 | RepeatMasker | Used RepeatMasker4.1.5 with the default Dfam library in Mus musculus mode to annotate repeats in T2T mouse assemblies, including centromeric repeats supporting placement of unplaced telomeric contigs. | Methods / Assembly curation |
 | SAMtools | Alignment manipulation and QC. | Methods / PAR assembly using PacBio walking method |
 | seqtk | Detected canonical terminal telomeric repeats with telo to assess assembly ends and locate candidate unplaced telomere-bearing contigs. Also used seqtk in manually supported assembly curation to incorporate missing terminal sequence and introduce 100-bp model gaps. | Methods / Assembly evaluation |
-| Sniffles | Long-read structural variant discovery. | Methods / Assembly evaluation |
+| Sniffles | Used default Sniffles 2.0.7 SV calls from HiFi and ONT alignments for assembly evaluation and a hybrid assembly-correction workflow, with the technologies called independently. | Methods / Assembly evaluation |
 | STAR | Splice-aware bulk RNA read alignment and optional raw gene counts. | Methods / Gene prediction and annotation |
 | SyRI | Assembly-to-assembly structural rearrangement analysis. | Methods / Inversions methods |
 | Verkko | Generated the selected base haplotype-separated assemblies before manual chromosome curation. | Methods / Assembly evaluation |
@@ -4657,7 +4657,7 @@ Nature Genetics · 2025-10-17 · [DOI](https://doi.org/10.1038/s41588-025-02362-
 | Locityper | Read recruitment and probabilistic WGS locus/haplotype genotyping. | Results / Locityper accurately genotypes challenging loci / Locityper outperforms variant calling pipelines |
 | minimap2 | Used minimap2 for long-read mapping within Locityper WGS preprocessing against a predefined background region for insert-size, error-profile and read-depth modeling. | Methods / WGS dataset preprocessing |
 | SAMtools | Alignment manipulation and QC. | Methods / Benchmarking Locityper |
-| Sniffles | Long-read structural variant discovery. | Results / Locityper accurately genotypes challenging loci / Locityper outperforms variant calling pipelines |
+| Sniffles | Generated phased structural variants with Sniffles 2.4 from HiFi reads haplotagged after WhatsHap phasing, for comparison with Locityper and a Sniffles-plus-DeepVariant call set. | Results / Locityper accurately genotypes challenging loci / Locityper outperforms variant calling pipelines |
 | Strobealign | Short-read DNA mapping. | Methods / WGS dataset preprocessing |
 | WhatsHap | Read-based haplotype phasing. | Methods / Benchmarking Locityper |
 
@@ -4692,7 +4692,7 @@ Nature Genetics · 2026-07-21 · [DOI](https://doi.org/10.1038/s41588-026-02682-
 | Picard | Alignment QC, duplicates and sequence processing. | Methods / SNP and InDel calling of 422 accessions |
 | PLINK | Used for LD-based variant selection. | Methods / RNA-seq, eQTL and TWAS analysis |
 | RepeatMasker | Annotated genome repeats using RepeatMasker4.1.2-p1 with homology evidence from RepBase20180823 after RepeatModeler2.0.3 library construction; downstream gene annotation filtered transcripts overlapping repeats by more than20%. | Methods / Repeat and protein-coding gene annotations |
-| Sniffles | Long-read structural variant discovery. | Methods / SV-based graph pangenome construction and SV genotyping |
+| Sniffles | Called structural variants with Sniffles 2.3.2 on minimap2 alignments of HiFi and CLR accessions, as one of four read-based callers in an SV graph-pangenome workflow. | Methods / SV-based graph pangenome construction and SV genotyping |
 | STAR | Splice-aware bulk RNA read alignment and optional raw gene counts. | Methods / RNA-seq, eQTL and TWAS analysis |
 | StringTie | Assembled strand-specific RNA-seq alignments into transcripts with StringTie2.2.1 as evidence for protein-coding gene annotation. | Methods / Repeat and protein-coding gene annotations |
 

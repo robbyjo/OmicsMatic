@@ -1,5 +1,45 @@
 # 250-paper omics/GWAS toolbox catalog
 
+**Current checkpoint: 91 new integrations**: 17 native Java subsets and 74 tested
+upstream adapters. There are **94 including three existing adapters**, with
+**250 named tools still missing**. These are scoped workflows, not complete
+packages or whole-paper reproduction. Cell Ranger remains excluded.
+
+The fixed cohort contains 250 papers: Nature 71, Nature Genetics 104 and AJHG 75,
+published from 2023-10-23 through 2026-10-23. No time extension was needed.
+There are 400 observed tools from 438 definitions, 2,465 paper/tool observations,
+1,009 reviewed roles and 353 supporting pointers. This checkpoint adds six
+primary Sniffles reviews and one availability row. All 1,003 earlier reviews,
+399 other inventory rows, paper identities and observed memberships remain exact.
+
+Read [Sniffles workflows](../SNIFFLES_WORKFLOWS.md) for the standalone Java
+entry points, exact original editions, permitted private installation and a
+complete toy CRAM/reference example. Original calling remains upstream. The
+canonical executable is unchanged.
+
+**Require exit 0 AND root COMPLETED.json analysis_admitted=true for the whole
+batch.** Read [WARNINGS.md](WARNINGS.md), complete original logs/VCFs and process
+receipts. **SKIP3 skips dependent calling** when exact permitted software is
+unavailable or execution/installation is forbidden. **FAIL2 admits no case,
+including earlier complete cases.** Preserve failed/provisional output, correct
+the named cause and retry NEW paths. Analysis installs nothing.
+
+Legacy event-segment size and modern alignment length are distinct settings.
+Retain the original legacy missing-deletion and DUP-to-INV discrepancies; never
+relabel calls. A fatal zero-byte VCF is failed output, even with original exit0.
+Existing read HP/PS phasing does not perform haplotagging. Unreported paper
+commands, Boolean filters and depth fields remain unresolved. Frozen verification
+checks integrity/consistency, not fresh calling, independent SV refitting,
+authenticity, biological accuracy or whole-paper reproduction.
+
+The preceding guide follows verbatim as history. Its counts and missing badges
+describe earlier checkpoints. The broader implementation goal remains active.
+
+<details>
+<summary>Historical prior catalog document, retained verbatim</summary>
+
+# 250-paper omics/GWAS toolbox catalog
+
 **Current checkpoint: 90 new integrations**: 17 native Java subsets and 73 tested
 upstream adapters. There are **93 including three existing adapters**, with
 **251 named tools still missing**. These are scoped workflows, not complete
@@ -1029,6 +1069,8 @@ The [implementation queue](implementation-plan.md) and `tool-inventory.json`
 distinguish missing tools, related existing methods, existing adapters/lookups,
 and newly validated subsets. Complete the remaining integrations and semantic
 coverage review before marking the overall goal complete.
+
+</details>
 
 </details>
 

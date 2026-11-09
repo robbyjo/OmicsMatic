@@ -58,10 +58,13 @@ public final class SnifflesWorkflowCli {
             write(out.resolve("input-mapping.json"), inputRows); freeze(out.resolve("input-mapping.json"), pins, capacity);
             Path processes = Files.createDirectory(out.resolve("processes")), prepared = Files.createDirectory(out.resolve("prepared")), cases = Files.createDirectory(out.resolve("analyses"));
             SnifflesProcess.Check check = () -> {
-                cancel(root); stable(pins, capacity, root); runtime.verify();
+                cancel(root); stable(pins, capacity, root);
                 for (var entry : populations.entrySet()) require(entry.getValue().equals(population(entry.getKey())), "Previously completed evidence population changed: " + entry.getKey());
                 budget(root, limits.process());
             };
+            // Full source/library checks surround every upstream process. Pure
+            // Java view/freezing steps consume only the frozen data checked above.
+            SnifflesProcess.Check upstreamCheck = () -> { check.verify(); runtime.verify(); };
             Runnable cancellation = () -> { try { cancel(root); budget(root, limits.process()); } catch (IOException failure) { throw new java.io.UncheckedIOException(failure); } };
             var groups = new LinkedHashMap<String, List<SnifflesWorkflowRequest.Input>>();
             for (var input : request.inputs()) if (input.kind().equals("bam") || input.kind().equals("cram")) groups.computeIfAbsent(input.reference() == null ? "" : input.reference(), key -> new ArrayList<>()).add(input);
@@ -75,7 +78,7 @@ public final class SnifflesWorkflowCli {
                 var payload = new LinkedHashMap<String, Object>(); payload.put("reference", entry.getKey().isEmpty() ? null : captured.get(entry.getKey()).toString()); payload.put("reference_cache", cache == null ? null : cache.toString()); payload.put("alignments", alignmentRows); payload.put("limits", limits.worker());
                 Path data = home.resolve("request.json"); write(data, payload); freeze(data, pins, capacity); active = processes.resolve(name);
                 var environment = environment(cache == null ? emptyReferenceCache : cache); write(home.resolve("environment.json"), environment); freeze(home.resolve("environment.json"), pins, capacity);
-                var result = SnifflesProcess.executeOwned(worker(runtime.root(), helpers, "prepare", home, data), environment, active, limits.process(), check, cancellation, List.of(inputs, helpers, prepared, cases));
+                var result = SnifflesProcess.executeOwned(worker(runtime.root(), helpers, "prepare", home, data), environment, active, limits.process(), upstreamCheck, cancellation, List.of(inputs, helpers, prepared, cases));
                 require(result.exitCode() == 0 && result.ownedLiveAfterCleanup().isEmpty(), "Original-format preparation failed");
                 var report = read(home.resolve("PREPARED.json"), 16777216); require(text(report.get("status")).equals("PASS_COMPLETE_ORIGINAL_PYSAM_PREPARATION_ONLY"), "Missing complete upstream format/index preparation");
                 preparationDiagnostics(result.stderr(), entry.getValue(), captured, warnings, name, limits.vcf().maximumLineCharacters());
@@ -86,6 +89,8 @@ public final class SnifflesWorkflowCli {
             for (var analysis : request.analyses()) {
                 Path home = Files.createDirectory(cases.resolve(analysis.id())), original = Files.createDirectory(home.resolve("original")), exports = Files.createDirectory(home.resolve("native"));
                 var input = request.input(analysis.input()); var inspection = inspections.get(analysis.input()); require(inspection != null, "Missing complete captured alignment inspection");
+                if (analysis.edition() == SnifflesVcf.Edition.V1_0_7 && analysis.genotype() != null)
+                    warnings.add(analysis.id() + ": Original Sniffles 1.0.7 force-genotyping emitted SVTYPE=INV for a declared DUP in a constructed control, including zero read support and genotype 0/0. Inspect raw output SVTYPE, read support and genotypes; do not relabel records to match supplied sites. Calling completion does not certify source accuracy.");
                 if (analysis.phase() && (integer(inspection.get("HP_tagged_records"), 0, Long.MAX_VALUE) == 0 || integer(inspection.get("PS_tagged_records"), 0, Long.MAX_VALUE) == 0))
                     warnings.add(analysis.id() + ": --phase requested with absent HP or PS assignments. The original caller may return unphased or missing-phase values. Provide haplotagged reads when phased SVs are required; this adapter does not phase untagged reads.");
                 Path vcf = original.resolve("calls.vcf"); var arguments = arguments(analysis, input, captured, vcf);
@@ -95,7 +100,7 @@ public final class SnifflesWorkflowCli {
                 write(home.resolve("command.json"), command); freeze(home.resolve("command.json"), pins, capacity); active = processes.resolve("case-" + analysis.id());
                 var environment = environment(referenceCaches.getOrDefault(input.reference(), emptyReferenceCache)); write(home.resolve("environment.json"), environment); freeze(home.resolve("environment.json"), pins, capacity);
                 System.out.println("Sniffles " + analysis.edition().version() + " " + analysis.id() + " (provisional)");
-                var result = SnifflesProcess.executeOwned(command, environment, active, limits.process(), check, cancellation, List.of(inputs, helpers, prepared, cases));
+                var result = SnifflesProcess.executeOwned(command, environment, active, limits.process(), upstreamCheck, cancellation, List.of(inputs, helpers, prepared, cases));
                 require(result.exitCode() == 0 && result.ownedLiveAfterCleanup().isEmpty(), "Original caller or owned cleanup failed");
                 diagnostics(result.stdout(), result.stderr(), limits.vcf().maximumLineCharacters());
                 if (analysis.edition() != SnifflesVcf.Edition.V1_0_7) require(text(read(home.resolve("PROGRAM-RETURNED.json"), 1048576).get("status")).equals("ORIGINAL_SNIFFLES2_PROGRAM_RETURNED_ONLY"), "Original source did not return normally");
@@ -110,12 +115,17 @@ public final class SnifflesWorkflowCli {
                 write(home.resolve("PROVISIONAL.json"), report); completed.add(report);
                 freeze(home, pins, capacity); populations.put(home, population(home)); freeze(active, pins, capacity); populations.put(active, population(active)); check.verify();
             }
-            check.verify(); var after = SnifflesHost.capture(runtime.root(), out.resolve("host-after"), () -> { cancel(root); stable(pins, capacity, root); });
-            require(runtime.host().equals(after), "Original host/library/search bindings changed across the complete batch"); check.verify();
+            // Library probes do not consume completed scientific result files.
+            // Rehash all frozen results before and after this complete census;
+            // each probe still checks cancellation and its native helper pins.
+            // No hash is cached across original caller/preparation processes.
+            upstreamCheck.verify(); var after = SnifflesHost.capture(runtime.root(), out.resolve("host-after"), () -> cancel(root));
+            require(runtime.host().equals(after), "Original host/library/search bindings changed across the complete batch"); upstreamCheck.verify();
             write(out.resolve("result-files.json"), inventory(out, capacity)); budget(out, limits.process());
             state.put("status", "PASS_COMPLETE_ORIGINAL_SNIFFLES_AND_NATIVE_VCF_WORKFLOW"); state.put("analysis_admitted", true); state.put("analyses", completed);
             state.put("result_files_pin", pin(out.resolve("result-files.json"), 67108864, () -> {})); state.put("raw_inputs_unchanged", true); state.put("source_namespace_patched", false); state.put("analysis_installed_software", false); state.put("owned_live_after_cleanup", List.of());
             state.put("independent_SV_calling_or_biological_reproduction_certified", false); code = 0;
+            state.put("final_library_census_integrity_scope", "Full frozen input/helper/result and runtime checks immediately before and after the complete final library census. Each library probe checks cancellation and native helper/configuration pins. Original caller/preparation processes retain full source/runtime/data checks before and after every execution; pure Java view/freezing stages check frozen data/populations/capacities. No checksum cache crosses original processes.");
         } catch (SnifflesProcess.UnavailableDependency unavailable) { state.put("status", completed.isEmpty() ? "SKIP3_SNIFFLES_DEPENDENCY_OR_MODE_UNAVAILABLE" : "FAIL2_SNIFFLES_RUNTIME_CHANGED_AFTER_PROVISIONAL_CASES"); details(state, unavailable, active); code = completed.isEmpty() ? 3 : 2; }
         catch (Exception failure) { details(state, failure, active); }
         finally {
@@ -140,7 +150,8 @@ public final class SnifflesWorkflowCli {
         var result = new ArrayList<>(List.of(legacy ? "--mapped_reads" : "--input", captured.get(input.id()).toString(), "--vcf", vcf.toString()));
         option(result, "--threads", analysis.threads()); option(result, legacy ? "--min_length" : "--minsvlen", analysis.minSvlen());
         option(result, legacy ? "--min_support" : "--minsupport", analysis.minSupport()); option(result, legacy ? "--minmapping_qual" : "--mapq", analysis.mapq());
-        option(result, legacy ? "--min_seq_size" : "--min-alignment-length", analysis.minAlignmentLength());
+        option(result, "--min-alignment-length", analysis.minAlignmentLength());
+        option(result, "--min_seq_size", analysis.legacyMinSegmentSize());
         if (analysis.phase()) result.add("--phase"); if (analysis.legacyGenotype()) result.add("--genotype");
         if (analysis.sampleId() != null) result.add("--sample-id=" + analysis.sampleId());
         if (input.reference() != null) result.addAll(List.of("--reference", captured.get(input.reference()).toString()));
@@ -273,7 +284,7 @@ public final class SnifflesWorkflowCli {
     }
     private static void cancel(Path root) throws IOException { SnifflesRuntimeCli.cancel(root); }
     private static void details(Map<String, Object> state, Exception failure, Path process) {
-        state.put("analysis_admitted", false); state.put("error", failure.toString());
+        state.put("analysis_admitted", false); state.put("error", failureText(failure));
         if (process != null) {
             state.put("active_original_process", process.toString()); var tail = new StringBuilder();
             for (String name : List.of("process.stderr", "process.stdout")) { Path file = process.resolve(name); if (!Files.isRegularFile(file, LinkOption.NOFOLLOW_LINKS)) continue;
@@ -281,6 +292,25 @@ public final class SnifflesWorkflowCli {
             }
             state.put("original_diagnostic_tail", tail.toString());
         }
+    }
+    private static String failureText(Throwable failure) {
+        var pending = new java.util.ArrayDeque<Throwable>();
+        var labels = new java.util.ArrayDeque<String>();
+        var seen = java.util.Collections.newSetFromMap(new java.util.IdentityHashMap<Throwable, Boolean>());
+        var text = new StringBuilder(); pending.add(failure); labels.add(""); int remaining = 32;
+        while (!pending.isEmpty() && remaining-- > 0) {
+            Throwable item = pending.remove(); String label = labels.remove();
+            if (!seen.add(item)) continue;
+            if (!text.isEmpty()) text.append('\n');
+            text.append(label).append(item);
+            if (item.getCause() != null) { pending.add(item.getCause()); labels.add("CAUSE: "); }
+            for (Throwable suppressed : item.getSuppressed()) {
+                if (pending.size() >= 32) break;
+                pending.add(suppressed); labels.add("SUPPRESSED: ");
+            }
+        }
+        if (!pending.isEmpty()) text.append("\nAdditional diagnostic causes omitted from this bounded summary; preserve complete process logs.");
+        return text.toString();
     }
     private static void warnings(Path out, Map<String, Object> state, List<String> warnings) throws IOException {
         var text = new StringBuilder("# " + state.get("status") + "\n\n" + SnifflesRuntimeProfile.ACTION + "\n\n");
