@@ -1,0 +1,96 @@
+{
+  "status": "six-primary-bound-Rsubread-role-reviews",
+  "reviews": [
+    {
+      "paper_id": "P013",
+      "review": {
+        "pmcid": "PMC11798873",
+        "doi": "10.1038/s41586-024-08333-9",
+        "tool_id": "rsubread",
+        "evidence_paragraph_sha256": "77ae1e5b3010bd98d4d9b14d6f1a0f5e4d4eec85ec56f0d3d817cd10adedf481",
+        "use_summary": "Used the Rsubread featureCounts function with an mm9 UCSC-gene GTF, choosing paired- or single-end settings for each sample, before combining the count tables with cbind and performing separate DESeq2 analysis.",
+        "implementation_scope_note": "The Rsubread edition and complete counting settings are unreported. Preserve the separate library declarations and feature/sample order when combining tables. R count-list and annotation behavior must be validated separately from standalone featureCounts; do not attribute DESeq2 transformations or testing to Rsubread."
+      }
+    },
+    {
+      "paper_id": "P029",
+      "review": {
+        "pmcid": "PMC7618714",
+        "doi": "10.1038/s41586-025-09834-x",
+        "tool_id": "rsubread",
+        "evidence_paragraph_sha256": "6527f1221c6fd9e67102fe96e4da938dd9c02b027bdbf3beb309a1f0b9ec5c43",
+        "use_summary": "Quantified yeast gene-level reads using Rsubread featureCounts, reporting Rsubread 2.23.2 and R 4.4.1 after separate BCL Convert and DRAGEN RNA processing.",
+        "implementation_scope_note": "Retain the literal reported package and R versions. Recovery of an upstream source snapshot reporting 2.23.2 does not identify the paper binary. The reference is S. cerevisiae R64-1-1; counting options and annotation edition are unreported. DESeq2 1.48.1 remains a separate step.",
+        "version_reported_near_name": "2.23.2"
+      }
+    },
+    {
+      "paper_id": "P133",
+      "review": {
+        "pmcid": "PMC12695660",
+        "doi": "10.1038/s41588-025-02388-8",
+        "tool_id": "rsubread",
+        "evidence_paragraph_sha256": "0702fc6fbba6f8517bfd5c194c52aea68fb53ff1cc85f0de03c1a6a67b3e86fd",
+        "use_summary": "Used the Rsubread counting interface for uniquely mapped single-end RNA-seq exon-to-gene counts with junction reporting, and separately for paired-end ATAC counts over shared nonoverlapping peak regions.",
+        "implementation_scope_note": "The article spells the RNA function featurecount; preserve that statement separately from the package API. The linked author ATAC script at commit3aeb503348e52b1f0b88d47839427380250c0ea5 explicitly calls Rsubread::featureCounts on a SAF-style data.frame with paired-end input, no multi-mapping, maxFragLength=100 and autosort=TRUE, leaving checkFragLength and countReadPairs unspecified. It later renames columns separately; no package edition is established. The inspected RNA figure/revision script contains no Rsubread counting call, which does not resolve all author materials. RNA article settings specify exon/gene_id meta-features, no multi-overlap/multi-mapping, unstranded single-end data, juncCounts=TRUE and genome=NULL. Do not silently enable ATAC length filtering or infer a paper runtime. STAR, shared-peak preparation, normalization and DESeq2 remain separate.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 40,
+            "section": "Methods / ATAC-seq data processing",
+            "paragraph_sha256": "93cde454fd755c9ea684a26686ae71ca8242d1882767aafcf3c66c345767d5f3"
+          }
+        ]
+      }
+    },
+    {
+      "paper_id": "P139",
+      "review": {
+        "pmcid": "PMC11525195",
+        "doi": "10.1038/s41588-024-01892-7",
+        "tool_id": "rsubread",
+        "evidence_paragraph_sha256": "9c804d351001a066882385743b853f1cf791ea73b738aa9d0d496fc3c34221c3",
+        "use_summary": "Used Rsubread to load the processed paired-end RNA-seq data into R after separate STAR alignment and SAMtools sorting, indexing and deduplication, before DESeq2 testing.",
+        "implementation_scope_note": "The source does not name an Rsubread function, package edition, annotation or counting arguments. Do not infer featureCounts or claim exact paper execution from this generic loading statement. The later minimum-count filter and DESeq2 analysis are separate."
+      }
+    },
+    {
+      "paper_id": "P172",
+      "review": {
+        "pmcid": "PMC10806738",
+        "doi": "10.1016/j.ajhg.2023.11.010",
+        "tool_id": "rsubread",
+        "evidence_paragraph_sha256": "3fb761a60d5809b8a1c802984e66785884646986077fe427fb7e08363cb99977",
+        "use_summary": "Obtained exon read counts with Rsubread after separate STAR alignment to GRCh38; a results paragraph describes count filtering before DESeq2 analysis.",
+        "implementation_scope_note": "The Rsubread function, edition, exon-to-gene aggregation and counting options are unreported. Preserve the article's literal 15 bp paired-end library statement rather than rewriting it as 150 bp. Explicit feature-level and meta-feature counting controls do not identify the missing paper choice. STAR, filtering, DESeq2 and Reactome enrichment remain separate.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 22,
+            "section": "Results / Transcriptome analysis reveals differential expression of c-Myc target genes",
+            "paragraph_sha256": "b996b2becd1cbadfb7f8a934f1dbbf3593bcdaf72b994ba739f646b050eb1f78"
+          }
+        ]
+      }
+    },
+    {
+      "paper_id": "P223",
+      "review": {
+        "pmcid": "PMC11339655",
+        "doi": "10.1016/j.ajhg.2024.06.018",
+        "tool_id": "rsubread",
+        "evidence_paragraph_sha256": "4c5b5a51658efb96cabd0943ccfec2ce8e97b73de281161bc3befafcfa197df1",
+        "use_summary": "Used Rsubread featureCounts with junction-count reporting and custom GENCODE transcript annotations to extract junction reads; seqinr supplied a separate biological-sequence role.",
+        "implementation_scope_note": "Retain the custom annotation requirement, exon-junction identities and supporting counts. The source does not freeze the package edition, full counting settings or custom scripts, and its phrase featureCounts, juncCounts is not proof of a standalone juncCounts function. Salmon/edgeR expression counts and nanopore basecalling/mapping are separate workflows."
+      }
+    }
+  ],
+  "primary_audit": {
+    "bytes": 80019,
+    "sha256": "d56b32c5f5543bd6730e24f64a074d23a251606abe2aba1fef39aa1154e4f8b0"
+  },
+  "author_code_audit": {
+    "bytes": 3279,
+    "sha256": "32dd566e72393e976eb6faabe6fa48c0a2cc28ebd1d0682a5cfa01e433eeffc8"
+  },
+  "whole_paper_reproduced": false,
+  "whole_goal_complete": false
+}

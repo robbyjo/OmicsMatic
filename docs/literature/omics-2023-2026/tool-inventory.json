@@ -4444,10 +4444,30 @@
       "P172",
       "P223"
     ],
-    "implementation_status": "missing",
-    "implementation_source": null,
-    "implementation_scope": "Additional named software from primary alignment/quantification source review; a related adapter, installed executable or generic Java helper does not establish this workflow. Integration and independent validation pending.",
-    "validation_note": "Existing overlap/adapters require paper-specific option checks; missing integrations remain pending."
+    "implementation_status": "upstream-adapter-validated",
+    "implementation_source": "src/main/java/org/jlinalg/cli/RsubreadWorkflowCli.java",
+    "implementation_scope": "Original Rsubread 2.26.0/R4.6.1 and selected unmodified 2.23.2 commit 666b63dc50fa5d0e5cd4c9b7e805b6f6aa2f12f6/R4.4.1 Windows x86_64 bulk short-read counting. Explicit per-library paired/read-pair/strand settings, GTF/SAF and extra attributes, fractional/stranded/fragment options, complete original RDS/annotation/summary/14-field junction outputs, literal target mappings and atomic batch admission. Java retains named counts and typed value tables and checks chromosome/strand union lengths and full result relationships. Read RSUBREAD_WORKFLOWS.md. Original read assignment and junction discovery/counting remain upstream. Long reads, single-cell/UMI, alignment, read-group expansion, per-read reports, double-GeneID interpretation and whole-package/paper reproduction are not exposed.",
+    "validation_note": "Both JDK21/25 compiler artifacts independently pass 58 complete separate-original count-list comparisons: 50 WindowsJVM21 and eight WindowsJVM25 per compiler. Portable frozen verification passes Windows25/Linux21; actual Linux binding/counting skips. Real forbidden/missing/mutated/shadow-import skips, late original/native/capacity failures, cancellation, deeper inconsistent-result rejections and original-process timeout/output/interruption controls remain retained. Beginner private GPL package/source export, data export, bind/count/verify examples pass. All14 prior value classes and R resources remain unchanged; four new CLI compiler-bytecode differences are recorded. Six primary roles preserve explicit versus unreported settings, independent downstream methods and the unknown paper binary among22 commits reporting2.23.2. The P133 author ATAC call leaves checkFragLength/countReadPairs unspecified; maxFragLength alone does not enable filtering. Original input parsing/identifier coercion and complete R object serialization are not independently reproduced in Java. Read warnings and original objects; no scientific binding hash is refreshed.",
+    "source_roles_reviewed": 6,
+    "source_role_coverage": "rsubread-role-coverage.json",
+    "project_adapter_available": true,
+    "canonical_adapter_available": false,
+    "development_candidate": "docs/literature/rsubread-execution-development/rsubread-workflow-development.jar",
+    "development_candidate_sha256": "a4951b8ad4825f1c6364d4e04c1211b686bd13ec6e646418d76e70afd82dcf41",
+    "development_cli_class": "org.jlinalg.cli.RsubreadWorkflowCli",
+    "runtime_binding_cli_class": "org.jlinalg.cli.RsubreadRuntimeCli",
+    "runtime_export_command": "python tools/literature/export_rsubread_runtime_package.py",
+    "native_helpers": [
+      "src/main/java/org/jlinalg/sequence/RsubreadCountMatrix.java",
+      "src/main/java/org/jlinalg/sequence/RsubreadDataFrame.java",
+      "src/main/java/org/jlinalg/sequence/RsubreadCountResult.java"
+    ],
+    "analysis_installs_software": false,
+    "independent_read_counting": false,
+    "independent_junction_counting": false,
+    "whole_package_implemented": false,
+    "whole_paper_reproduced": false,
+    "whole_goal_complete": false
   },
   {
     "id": "maxquant",

@@ -270,7 +270,7 @@ Nature · 2024-12-18 · [DOI](https://doi.org/10.1038/s41586-024-08333-9) · [Pr
 | Nextflow | Used the Nextflow distiller-nf pipeline for mm9 Micro-C alignment and processing, with make_pairsam=False, drop_readid=False, --add-columns mapq --walks-policy mask and max_mismatch_bp=1. Produced balanced multi-resolution cooler files at the listed100bp–10Mb resolutions; merged15U/20U libraries with pairtools. | Methods / Bioinformatics / Sequencing data processing and alignment |
 | Picard | Alignment QC, duplicates and sequence processing. | Methods / Bioinformatics / Sequencing data processing and alignment |
 | PyMOL | Visualized a mononucleosome based on PDB5NL0 with PyMOL v3.0; separately aligned the predicted MYC/MAX-TFAP2C complex to PDB8J0K with align and calculated electrostatic surface charge using the APBS plugin. | Methods / Bioinformatics / Protein structure visualization |
-| Rsubread | Used RsubRead featureCounts to quantify mouse RNA-seq against mm9 GTF. | Methods / Bioinformatics / Gene expression analysis |
+| Rsubread | Used the Rsubread featureCounts function with an mm9 UCSC-gene GTF, choosing paired- or single-end settings for each sample, before combining the count tables with cbind and performing separate DESeq2 analysis. | Methods / Bioinformatics / Gene expression analysis |
 | SAMtools | Alignment manipulation and QC. | Methods / Bioinformatics / Sequencing data processing and alignment |
 | STAR | Splice-aware bulk RNA read alignment and optional raw gene counts. | Methods / Bioinformatics / Sequencing data processing and alignment |
 | Tomtom | Compared motifs discovered by MEME/DREME to canonical JASPAR motifs with Tomtom in a MEME-ChIP analysis. | Methods / Bioinformatics / Motif discovery |
@@ -579,7 +579,7 @@ Nature · 2025-12-10 · [DOI](https://doi.org/10.1038/s41586-025-09834-x) · [Pr
 | featureCounts | Quantified yeast RNA-seq against R64-1-1 using Rsubread featureCounts after BCLConvert demultiplexing and DRAGEN RNA processing. The paragraph reports Rsubread 2.23.2 with R 4.4.1. | Methods / Gene expression analysis |
 | Jalview | Alignment visualization and manual inspection. | Methods / Evolutionary analysis |
 | MAFFT | Aligned Saccharomyces MGE1 homolog protein sequences with 7.505 using local pairwise alignment and a 1,000-iteration maximum; Jalview then calculated conservation and displayed the alignment. | Methods / Evolutionary analysis |
-| Rsubread | Used the Rsubread featureCounts interface for yeast RNA-seq counts; reported version 2.23.2 with R 4.4.1. | Methods / Gene expression analysis |
+| Rsubread | Quantified yeast gene-level reads using Rsubread featureCounts, reporting Rsubread 2.23.2 and R 4.4.1 after separate BCL Convert and DRAGEN RNA processing. | Methods / Gene expression analysis |
 
 XML SHA-256: `e4a97689207af74f04de28e08e53fd28f02f5589e0be6aa1fc53d12589ae281d`. Exact evidence paragraph hashes and locators are in [papers.json](papers.json).
 
@@ -2646,7 +2646,7 @@ Nature Genetics · 2025-11-05 · [DOI](https://doi.org/10.1038/s41588-025-02388-
 | MetaboAnalyst | Metabolomic statistics and pathway analysis. | Methods / Mass spectrometry |
 | Picard | Alignment QC, duplicates and sequence processing. | Methods / ChIP–seq data analyses |
 | PyMOL | Performed structural alignments and figure rendering of experimental/AlphaFold3 AR-PTGES3 complex models with PyMOL. | Methods / Structural modeling of AR–PTGES3 complexes |
-| Rsubread | R interface for read mapping, feature/junction counting and variant analysis. | Methods / RNA sequencing |
+| Rsubread | Used the Rsubread counting interface for uniquely mapped single-end RNA-seq exon-to-gene counts with junction reporting, and separately for paired-end ATAC counts over shared nonoverlapping peak regions. | Methods / RNA sequencing |
 | SAMtools | Alignment manipulation and QC. | Methods / ChIP–seq data analyses |
 | STAR | Splice-aware bulk RNA read alignment and optional raw gene counts. | Methods / RNA sequencing |
 | Tomtom | Annotated MEME-discovered motifs from differentially accessible promoter/intergenic ATAC peaks by comparing them to known JASPAR motifs with Tomtom. | Methods / ATAC-seq data processing / Over-representation analysis / TF binding analysis |
@@ -2760,7 +2760,7 @@ Nature Genetics · 2024-10-03 · [DOI](https://doi.org/10.1038/s41588-024-01892-
 | DESeq2 | Used DESeq2 for expression changes in BET-inhibitor-treated cardiomyocytes, keeping genes with at least 10 counts across replicates before differential analysis. | Methods / Assessing BETi sensitivity in CMs |
 | MEME | Named MEME Suite as the provider of Tomtom for motif-similarity comparisons. Hierarchically clustered similarities and summarized TF-class motif pairs passing q < 0.1. | Methods / Analysis of TF BS syntax |
 | Picard | Alignment QC, duplicates and sequence processing. | Methods / ASA in GM12878 |
-| Rsubread | R interface for read mapping, feature/junction counting and variant analysis. | Methods / Assessing BETi sensitivity in CMs |
+| Rsubread | Used Rsubread to load the processed paired-end RNA-seq data into R after separate STAR alignment and SAMtools sorting, indexing and deduplication, before DESeq2 testing. | Methods / Assessing BETi sensitivity in CMs |
 | SAMtools | Alignment manipulation and QC. | Methods / GM12878 ATAC–seq processing and peak scoring |
 | STAR | Splice-aware bulk RNA read alignment and optional raw gene counts. | Methods / Assessing BETi sensitivity in CMs |
 | Tomtom | Computed motif similarities with Tomtom using stated default settings, visualized them by hierarchical clustering, and summarized similar pairs passing q < 0.1 as fractions of possible motif pairs within TF classes. | Methods / Analysis of TF BS syntax |
@@ -3383,7 +3383,7 @@ American Journal of Human Genetics · 2023-12-22 · [DOI](https://doi.org/10.101
 | DESeq2 | Used DESeq2 on Rsubread gene/exon read counts for wild-type versus MAX Arg60Gln transcriptome comparisons. The results describe filtering genes with fewer than five reads in all samples, retaining 20,868 genes and selecting adjusted P<0.05. | Subjects and methods / mRNA sequencing |
 | FastQC | Sequencing read quality assessment. | Subjects and methods / mRNA sequencing |
 | PyMOL | Used explicitly open-source PyMOL v1.7.6.0 for molecular modelling/rendering of a c-Myc/Max heterodimer,choosing a Gln60 rotamer and manually setting K392 chi1-chi4 to gauche+,trans,gauche-,trans. | Subjects and methods / Molecular modeling |
-| Rsubread | R interface for read mapping, feature/junction counting and variant analysis. | Subjects and methods / mRNA sequencing |
+| Rsubread | Obtained exon read counts with Rsubread after separate STAR alignment to GRCh38; a results paragraph describes count filtering before DESeq2 analysis. | Subjects and methods / mRNA sequencing |
 | STAR | Splice-aware bulk RNA read alignment and optional raw gene counts. | Subjects and methods / mRNA sequencing |
 
 XML SHA-256: `7b28cbb7dd78fa4950da9634c7c42ba8548c7580c229037c06f752c9b0b1431c`. Exact evidence paragraph hashes and locators are in [papers.json](papers.json).
@@ -4268,7 +4268,7 @@ American Journal of Human Genetics · 2024-07-30 · [DOI](https://doi.org/10.101
 | Integrative Genomics Viewer (IGV) | Visualized GRCh38-mapped Oxford Nanopore amplicon reads in IGV;the supporting data-analysis paragraph also reports genome visualization with IGV and UCSC Genome Browser. | Subjects, material, and methods / Oxford nanopore amplicon sequencing |
 | MACS | Called MACS2 ATAC peaks after hg38 mapping, mitochondrial/exclusion-list removal and SAMtools markdup using no model, extension 150, shift -75, human genome shortcut and keep-all duplicates; intersected promoter windows and normalized promoter counts. | Subjects, material, and methods / Assay for transposase-accessible chromatin with high-throughput sequencing (ATAC-seq) |
 | MAJIQ | Splicing quantification and differential analysis. | Subjects, material, and methods / Data resources and analysis |
-| Rsubread | Used Rsubread featureCounts/juncCounts with custom GENCODE transcript annotations for junction-read extraction. | Subjects, material, and methods / Short-read RNA-seq |
+| Rsubread | Used Rsubread featureCounts with junction-count reporting and custom GENCODE transcript annotations to extract junction reads; seqinr supplied a separate biological-sequence role. | Subjects, material, and methods / Short-read RNA-seq |
 | Salmon | Used Salmon to generate read-count estimates from short-read RNA-seq in a workflow that also used HISAT2, StringTie and Ballgown. Performed differential expression with edgeR and gene-symbol assignment with biomaRt. | Subjects, material, and methods / Short-read RNA-seq |
 | SAMtools | Alignment manipulation and QC. | Subjects, material, and methods / Assay for transposase-accessible chromatin with high-throughput sequencing (ATAC-seq) |
 | seqinr | Used seqinr for biological sequence retrieval/analysis in a custom Rsubread junction-read extraction workflow. | Subjects, material, and methods / Short-read RNA-seq |
