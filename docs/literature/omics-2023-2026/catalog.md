@@ -1430,7 +1430,7 @@ Nature Genetics · 2023-12-28 · [DOI](https://doi.org/10.1038/s41588-023-01584-
 | LDSC | Used for SNP heritability estimation. | Methods / Estimation of population-specific or shared causal variants at associated loci |
 | MAGMA | Used MAGMA gene,competitive gene-set and gene-property analyses with an ancestry-proportioned custom1000Genomes panel,MSigDB7,GTEx8 and single-cell expression. Applied BH-FDR and conditional reanalysis of significant terms. | Methods / Functional annotation and GSEA |
 | Minimac | The 23andMe data pipeline phased array genotypes using Finch or Eagle2, then imputed with Minimac3 using a combined 1000 Genomes Phase III/UK10K reference described on GRCh38 before ancestry-stratified Parkinson disease association. | Methods / 23andMe diverse ancestry data |
-| MR-MEGA | Trans-ancestry meta-regression. | Methods / MAMA |
+| MR-MEGA | Used MR-MEGA0.2 with three ancestry axes for multi-ancestry Parkinson disease meta-regression across seven cohorts, distinguished ancestry-related from residual heterogeneity, and used reported per-variant lnBF values for downstream locus fine-mapping. | Methods / MAMA |
 | PLINK | Used for genetic association analysis. | Methods / MAMA |
 | SMR | Used previously completed European-only multi-SNP SMR results for44 selected genes near novel Parkinson disease loci, restricting tissues and applying FDR0.05 plus removal of signals with reported HEIDI P<0.05. | Methods / Functional annotation and GSEA |
 
@@ -2090,7 +2090,7 @@ Nature Genetics · 2023-11-30 · [DOI](https://doi.org/10.1038/s41588-023-01569-
 | MAGMA | Used MAGMA1.08 through FUMA1.3.8 with a1000Genomes EastAsian LD panel,19033 protein-coding genes and15485 MSigDB7 gene sets; compared analyses across annotation-window choices. | Methods / Gene-based analysis and pathway analyses |
 | METAL | GWAS meta-analysis. | Methods / Genome-wide association analysis |
 | Minimac | Prephased with Eagle2 2.4.1 and imputed using Minimac4 1.0.2 against1000 Genomes Phase3 v5 ALL; BBJ1-12K/BBJ2-42K also used the GRCh38 high-coverage 1000 Genomes panel. Chromosome X was phased and imputed separately in men and women; association excluded R2 < 0.3. | Methods / Genotyping and imputation |
-| MR-MEGA | Trans-ancestry meta-regression. | Methods / Cross-ancestry meta-analysis |
+| MR-MEGA | Used MR-MEGA0.2 for cross-ancestry meta-regression with four multidimensional-scaling ancestry axes, then recalculated P values from chi-square statistics because the original probability calculation did not support very small P values. | Methods / Cross-ancestry meta-analysis |
 | MR-PRESSO | MR pleiotropy/outlier sensitivity. | Methods / Two-sample MR analysis |
 | PLINK | Used for genotype quality control; LD-based variant selection. | Methods / Genome-wide association analysis |
 | Popcorn | Cross-population genetic correlation. | Methods / Genetic correlation estimation |
@@ -3169,7 +3169,7 @@ Nature Genetics · 2026-07-29 · [DOI](https://doi.org/10.1038/s41588-026-02704-
 | LDSC | Used for association inflation assessment. | Methods / Meta-analyses of individual cohort results |
 | MAGMA | Used MAGMA within FUMA1.3.7 for gene-set and tissue-expression enrichment across54GTEx8 tissues; independent-variant selection used FUMA r-squared0.05. | Methods / Functional enrichment and tissue expression analysis |
 | METAL | GWAS meta-analysis. | Methods / Meta-analyses of individual cohort results |
-| MR-MEGA | Trans-ancestry meta-regression. | Results / Fine-mapping results and ancestry-related heterogeneity |
+| MR-MEGA | Used MR-MEGA to examine index-variant effect heterogeneity attributable to ancestry rather than residual effects; six index variants showed significant ancestry-related heterogeneity. | Results / Fine-mapping results and ancestry-related heterogeneity |
 | PLINK | Used for LD-based variant selection; genetic association analysis. | Methods / Meta-analyses of individual cohort results |
 | Seurat | Single-cell QC, normalization, integration, clustering or annotation. | Methods / Functional enrichment and tissue expression analysis |
 | TwoSampleMR | Instrument harmonization and two-sample Mendelian randomization. | Methods / Mendelian randomization |

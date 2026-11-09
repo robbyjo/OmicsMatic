@@ -16021,12 +16021,25 @@
         "matched_text": "MR-MEGA",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": "0.2",
         "evidence_selection": "highest-scored-eligible-method-sentence",
         "evidence_paragraph_sha256": "8d194298b34b36ebf804dab8850e0c17e22e9b1835fe139d675adf608b563741",
-        "use_summary": "Trans-ancestry meta-regression.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10786718/ (section: Methods / MAMA)"
+        "use_summary": "Used MR-MEGA0.2 with three ancestry axes for multi-ancestry Parkinson disease meta-regression across seven cohorts, distinguished ancestry-related from residual heterogeneity, and used reported per-variant lnBF values for downstream locus fine-mapping.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10786718/ (section: Methods / MAMA)",
+        "implementation_scope_note": "The study analyzed variants present in at least six of seven cohorts and explicitly applied no genomic control before meta-analysis. Native MR-MEGA0.2 ingestion, three-axis inference, source cohort admission, heterogeneity tests and lnBF are available through mrmega-tools. CrossMap hg19 harmonization, imputation/MAF/autosomal filters and the separate PLINK random-effects analysis remain distinct. Downstream locus-normalized Bayes-factor posterior/credible-set construction, reported significance conditions and MHC/MAPT exclusion are separate from the regression output. Complete paper commands, cohort effect/CI encoding and the exact historical binary are not frozen; no whole-paper reproduction is claimed.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 19,
+            "section": "Methods / MAMA",
+            "paragraph_sha256": "a590d720cde03863b10ad038e14d7436793dd577b421dbcd06ce5a82feebaa54"
+          },
+          {
+            "paragraph_index": 22,
+            "section": "Methods / Fine-mapping",
+            "paragraph_sha256": "be5666f07b9baf96b7fe0f650e6d313abca3cb38429621f3ee86ea19f34de0dd"
+          }
+        ]
       },
       {
         "tool_id": "plink",
@@ -23450,12 +23463,13 @@
         "matched_text": "MR-MEGA",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": "0.2",
         "evidence_selection": "highest-scored-eligible-method-sentence",
         "evidence_paragraph_sha256": "ddea9fb873f4f12d1c1796f2ee6855aa340e4a34578e115d3255b84430013759",
-        "use_summary": "Trans-ancestry meta-regression.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10703676/ (section: Methods / Cross-ancestry meta-analysis)"
+        "use_summary": "Used MR-MEGA0.2 for cross-ancestry meta-regression with four multidimensional-scaling ancestry axes, then recalculated P values from chi-square statistics because the original probability calculation did not support very small P values.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10703676/ (section: Methods / Cross-ancestry meta-analysis)",
+        "implementation_scope_note": "The four-axis MR-MEGA0.2 analysis is separate from the preceding METAL fixed-effect analyses. Do not infer two aggregate input cohorts from EAS/EUR labels. Native mrmega-tools supports four inferred axes and retains raw/adjusted chi-square and degree fields; explicitly named stable native survival probabilities are independently R-tested and do not overwrite original approximation fields. Exact paper cohort inputs, GC flags, source binary and recalculation code are unstated; the current tested workflow does not establish historical file or whole-paper reproduction."
       },
       {
         "tool_id": "mrpresso",
@@ -35163,12 +35177,13 @@
         "matched_text": "MR-MEGA",
         "extraction_score": -5,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": null,
         "evidence_selection": "highest-scored-eligible-method-sentence",
         "evidence_paragraph_sha256": "3e5a5706f93eb699ba6b4f9088aa3a1c3934bf10beabe8e2b9eb7c7878d34d68",
-        "use_summary": "Trans-ancestry meta-regression.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13447099/ (section: Results / Fine-mapping results and ancestry-related heterogeneity)"
+        "use_summary": "Used MR-MEGA to examine index-variant effect heterogeneity attributable to ancestry rather than residual effects; six index variants showed significant ancestry-related heterogeneity.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13447099/ (section: Results / Fine-mapping results and ancestry-related heterogeneity)",
+        "implementation_scope_note": "The source does not specify the MR-MEGA edition, ancestry-axis count, complete input/test family, command or GC settings. The six significant index variants are reported findings, not evidence that only those variants were tested. Native mrmega-tools supports separate ancestry and residual tests with explicit supplied/inferred axes, but does not infer those missing paper settings or variant population. The adjacent SuSiEx credible-set analysis is separate and must not be attributed to MR-MEGA."
       },
       {
         "tool_id": "plink",

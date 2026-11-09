@@ -1,5 +1,44 @@
 # 250-paper omics/GWAS toolbox catalog
 
+**Current checkpoint: 92 new integrations**: 18 native Java methods and 74 tested
+upstream adapters. There are **95 including three existing adapters**, with
+**249 named tools still missing**. These are scoped implementations, not whole
+packages or whole-paper reproductions. Cell Ranger remains excluded by the user.
+
+The unchanged fixed cohort contains 250 papers: Nature71, Nature Genetics104 and
+AJHG75, published from2023-10-23 through2026-10-23. No time extension was needed.
+There are400 observed tools from438 definitions,2465 observations,1,012 reviewed
+roles and355 supporting pointers. This checkpoint adds three primary MR-MEGA
+reviews and one native availability row. All1,009 earlier reviews,399 other
+inventory rows, paper identities and observed memberships remain exact.
+
+Read [MR-MEGA integration](../MRMEGA_INTEGRATION.md) for the mrmega-tools project
+command, settings, native float32/ancestry/GC behavior and tested root supplement.
+Native user analysis needs no original MR-MEGA, compiler, R or installation.
+The canonical executable is unchanged. Two errors in unpublished review drafts
+were corrected against retained primary XML: P072 requires at least six of seven
+cohorts; P162 reports six significant index variants. The incorrect drafts remain
+frozen as history and were never applied to the catalog.
+
+**Require exit0, run.json PASS_NATIVE_MRMEGA_WITH_WARNINGS and an admitted
+results.tsv. Read [WARNINGS.md](WARNINGS.md) and every row/variant disposition.**
+FAIL2 admits no result table; partials stay under partial/. Correct the named
+cause and retry NEW paths. SmallCohortCount rows retain NA tests. Source odd
+lambda medians, duplicate/N behavior, no_alleles sign flips and float32 boundaries
+are explicit. Native stable P fields never overwrite original approximation
+fields. Original-reference prerequisites are separate: if installation/execution
+is forbidden or unavailable, skip dependent reference work with named recovery.
+
+The broader250-paper goal remains active. Frozen verification checks integrity
+and stored relationships, not fresh scientific execution, independent user-data
+refitting, authenticity or whole-paper reproduction. The preceding guide follows
+verbatim as history; its counts and badges describe earlier checkpoints.
+
+<details>
+<summary>Historical prior catalog document, retained verbatim</summary>
+
+# 250-paper omics/GWAS toolbox catalog
+
 **Current checkpoint: 91 new integrations**: 17 native Java subsets and 74 tested
 upstream adapters. There are **94 including three existing adapters**, with
 **250 named tools still missing**. These are scoped workflows, not complete
@@ -1069,6 +1108,8 @@ The [implementation queue](implementation-plan.md) and `tool-inventory.json`
 distinguish missing tools, related existing methods, existing adapters/lookups,
 and newly validated subsets. Complete the remaining integrations and semantic
 coverage review before marking the overall goal complete.
+
+</details>
 
 </details>
 

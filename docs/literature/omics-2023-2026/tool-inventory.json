@@ -6113,10 +6113,29 @@
       "P105",
       "P162"
     ],
-    "implementation_status": "missing",
-    "implementation_source": null,
-    "implementation_scope": "No equivalent workflow identified in the current source inventory.",
-    "validation_note": "Existing overlap/adapters require paper-specific option checks; missing integrations remain pending."
+    "implementation_status": "native-subset-validated",
+    "implementation_source": "src/main/java/org/jlinalg/meta/MrMegaWorkflow.java",
+    "implementation_scope": "Native Java MR-MEGA0.2 quantitative/binary GWAS file workflow through mrmega-tools: source-ordered allele alignment, exact float32 frequencies/effects/SE/weights, inferred or supplied ancestry axes, residual-scaled covariance, association/ancestry/residual heterogeneity tests, lnBF and input/output genomic control. Native stable survival probabilities are explicitly named and retain separate original approximation fields in validation. No original MR-MEGA or R installation is needed for analysis. Read MRMEGA_INTEGRATION.md and all warnings. Locus posterior/credible-set construction, CrossMap/METAL/PLINK/SuSiEx, unstated paper inputs/options and whole-paper reproduction remain separate.",
+    "validation_note": "Twenty-two original complete GWAS families passed across two compiler builds and three JVMs:132 complete file flows,4134 full-precision fits,12402 independently R-checked native probabilities,144 actual CLI refusals and six analytic odd-median controls. Root dispatcher validation additionally checks the same native outputs and preserved predecessor help routes. Source odd medians, duplicate overwrites, no_alleles sign flips and observed MDS/bin behavior are retained with explicit warnings; malformed numeric tokens and source-undefined cases fail clearly. Frozen checks inspect integrity and stored numeric relationships; they do not refit current user data, authenticate execution or certify a paper. Canonical executable unchanged.",
+    "project_adapter_available": true,
+    "canonical_adapter_available": false,
+    "source_roles_reviewed": 3,
+    "source_role_coverage": "mrmega-role-coverage.json",
+    "development_candidate": "docs/literature/mrmega-catalog-development/mrmega-root-javac21.jar",
+    "development_candidate_sha256": "80a452b325f0d395e0b8f832cc169ba71db814b42f2904f98de62073d9176e5d",
+    "development_cli_class": "org.jlinalg.cli.MrMegaWorkflowCli",
+    "root_cli_class": "org.jlinalg.cli.JLinAlgCli",
+    "root_command": "mrmega-tools",
+    "native_workflow_proof": "docs/literature/mrmega-workflow-development/VALIDATION.json",
+    "native_helpers": [
+      "src/main/java/org/jlinalg/meta/MrMegaRegression.java",
+      "src/main/java/org/jlinalg/meta/MrMegaAncestry.java"
+    ],
+    "analysis_installs_software": false,
+    "original_runtime_required": false,
+    "whole_package_implemented": false,
+    "whole_paper_reproduced": false,
+    "whole_goal_complete": false
   },
   {
     "id": "gwama",
