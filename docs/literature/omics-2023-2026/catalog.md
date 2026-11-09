@@ -183,7 +183,7 @@ Nature · 2024-12-18 · [DOI](https://doi.org/10.1038/s41586-024-08334-8) · [Pr
 | Tool | How used | Evidence location |
 | --- | --- | --- |
 | Enrichr | Gene-set enrichment. | Methods / TISSUE differential gene expression analysis and pathway enrichment |
-| gseapy | Python gene-set enrichment analysis. | Methods / TISSUE differential gene expression analysis and pathway enrichment |
+| gseapy | Used GSEApy1.0.4 Enrichr with GO_Biological_Process_2023 on separately upregulated/downregulated TISSUE differential-expression lists; the later Methods passage specifies mouse organism and all imputed genes as background. | Methods / TISSUE differential gene expression analysis and pathway enrichment |
 | Leiden | Grouped observations into communities using a neighborhood graph. | Methods / Cell-type clustering and identification |
 | Scanpy | Used for expression normalization; cell clustering. | Methods / Cell-type clustering and identification |
 | Scrublet | Applied Scrublet separately per MERFISH experiment with a score cutoff of 0.18, before segmentation-volume and expression filters and volume/total-count normalization. | Methods / Cell segmentation and MERFISH data preprocessing |
@@ -1088,7 +1088,7 @@ Nature · 2023-12-13 · [DOI](https://doi.org/10.1038/s41586-023-06819-6) · [Pr
 | edgeR | Count-based differential expression analysis. | Methods / Droplet paired-tag / GO enrichment analysis |
 | Enrichr | Gene-set enrichment. | Methods / Droplet paired-tag / GO enrichment analysis |
 | FIMO | Used FIMO 5.5.3 with JASPAR CORE vertebrate motifs to scan hg38 sequences of cCREs and differentially methylated regions. Averaged conservation, divergence or PhastCons scores at motif occurrences and used TFClass annotations. Later averaged motif PhastCons within each peak and weighted peak conservation by cell-type peak activity. | Methods / TF motif scanning |
-| gseapy | Python gene-set enrichment analysis. | Methods / Droplet paired-tag / GO enrichment analysis |
+| gseapy | Used the GSEApy Enrichr module with GO biological process2021 and analysis-specific backgrounds: expressed genes, genes with ABC enhancers, genes tested for cell-type differential expression, or tested genes with an ABC link. | Methods / Droplet paired-tag / GO enrichment analysis |
 | Harmony | Batch integration of cell embeddings. | Methods / 10x multiome sequence data processing and clustering |
 | HOMER | Used HOMER annotatePeaks.pl with hg38 to annotate transposable-element association and TSS proximity for human DMRs, peaks, loops and boundaries, and repeated TE annotation for mouse ATAC peaks with mm10. | Methods / Droplet paired-tag / Annotation of TEs and TSS proximity |
 | LDSC | Used for annotation-stratified genetic enrichment. | Methods / GWAS variant enrichment |
@@ -1261,7 +1261,7 @@ Nature · 2026-08-26 · [DOI](https://doi.org/10.1038/s41586-026-10964-z) · [Pr
 | --- | --- | --- |
 | Cell Ranger | Used Cell Ranger v8.0.1 mkfastq to demultiplex BCL files, count against mm10-2020-A for barcode/UMI expression processing and reported clustering/differential expression, then aggr for multiple sequencing runs. | Methods / snRNA-seq analysis |
 | GSEA | Ranked gene-set enrichment. | Methods / snRNA-seq analysis |
-| gseapy | Used gseapy for gene-set enrichment downstream of single-cell processing. | Methods / snRNA-seq analysis |
+| gseapy | Reported GSEA through GSEApy1.1.8 after single-cell integration and differential-expression processing, referring to the general package tutorial. | Methods / snRNA-seq analysis |
 | Leiden | Grouped observations into communities using a neighborhood graph. | Methods / snRNA-seq analysis |
 | MAGIC | Used MAGIC-imputed counts to visualize violin plots in the single-cell workflow. | Methods / snRNA-seq analysis |
 | PyWGCNA | Used PyWGCNA for coexpression-network analysis in the single-cell workflow. | Methods / snRNA-seq analysis |
@@ -1550,7 +1550,7 @@ Nature Genetics · 2024-11-29 · [DOI](https://doi.org/10.1038/s41588-024-01989-
 | Tool | How used | Evidence location |
 | --- | --- | --- |
 | DESeq2 | Used DESeq2 for expression differences between clone-specific ART-related and expected unrelated samples, referring to a TRACERx method and Supplementary Note 31 for details. | Methods / Identifying clone-specific ART |
-| gseapy | Python gene-set enrichment analysis. | Methods / Identifying clone-specific ART |
+| gseapy | Reported GSEApy gene set variation analysis supporting altered replication-timing classifications with matched bulk expression and comparison against915 samples from347 other patients; a separate GSEApy enrichment analysis used selected amplifications in high-proliferation clones. | Methods / Identifying clone-specific ART |
 | SPRINTER | Single-cell replication and copy-number analysis. | Methods / The SPRINTER algorithm |
 
 XML SHA-256: `7caba2fdd0455dc9c05e509ae46a0a19b3f1db1d22b2cab66bd75ebe3c8312a5`. Exact evidence paragraph hashes and locators are in [papers.json](papers.json).
@@ -1917,7 +1917,7 @@ Nature Genetics · 2026-09-24 · [DOI](https://doi.org/10.1038/s41588-026-02745-
 | DESeq2 | Used DESeq2 1.40.2 median-of-ratios normalization, pairwise two-sided Wald tests, BH correction and fold-change shrinkage, with adjusted P<0.05 and absolute log2FC>1 selection. Used VST across all samples for individual-gene comparisons. | Methods / Gene expression analysis |
 | Enrichr | Gene-set enrichment. | Methods / Functional annotation and pathway enrichment |
 | GSEA | Ranked gene-set enrichment. | Methods / Identification of Group 4 EnhBiv and Group 3 ReprPC signature genes |
-| gseapy | Python gene-set enrichment analysis. | Methods / Identification of Group 4 EnhBiv and Group 3 ReprPC signature genes |
+| gseapy | Reported GSEApy1.1.3 enrichment of regulators in Group4 EnhBiv-enriched promoters using human-relevant ChEA regulator-target associations, with a two-tailed hypergeometric test and FDR correction. | Methods / Identification of Group 4 EnhBiv and Group 3 ReprPC signature genes |
 
 XML SHA-256: `49f9874fb22a1e420c6cfbf330d7623514fe91d1d983d9dcc8940967836b7214`. Exact evidence paragraph hashes and locators are in [papers.json](papers.json).
 
@@ -3145,7 +3145,7 @@ Nature Genetics · 2026-07-30 · [DOI](https://doi.org/10.1038/s41588-026-02665-
 | CellPhoneDB | Used CellPhoneDB to identify spatially plausible interactions with each pathologist-annotated histologic neighborhood as a distinct microenvironment; Results report569such interactions. Used CytoSignal separately for a spatially resolved signaling analysis. | Methods / Histologic neighborhood annotation |
 | Cell Ranger | Aligned scRNA-seq samples with CellRanger v7.2.0 to generate the expression matrix used for annotation and connectivity. | Methods / Bioinformatic analysis: scRNA-seq |
 | Enrichr | Gene-set enrichment. | Methods / Pathway analysis |
-| gseapy | Python gene-set enrichment analysis. | Methods / Pathway analysis |
+| gseapy | Used GSEApy1.1.2 through EnrichR for WikiPathway_2023_Human enrichment, with all measured expressed genes as background and input genes selected by adjusted P<0.05. | Methods / Pathway analysis |
 | Leiden | Grouped observations into communities using a neighborhood graph. | Methods / Bioinformatic analysis: scRNA-seq |
 | Scanpy | Single-cell expression processing and analysis. | Methods / Bioinformatic analysis: scRNA-seq |
 | Scrublet | Used Scrublet 0.2.3 to remove predicted doublets in the single-cell preprocessing workflow. | Methods / Bioinformatic analysis: scRNA-seq |

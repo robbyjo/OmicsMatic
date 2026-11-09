@@ -1,5 +1,47 @@
 # 250-paper omics/GWAS toolbox catalog
 
+**Current checkpoint: 88 new integrations**: 17 native Java subsets and 71 tested
+upstream adapters. There are **91 including three existing adapters**, with
+**253 named tools still missing**. These counts describe scoped workflows,
+not complete packages or whole-paper reproduction. Cell Ranger is excluded.
+
+The catalog retains 250 papers: Nature 71, Nature Genetics 104 and AJHG 75.
+Its review window is 2023-10-23 through 2026-10-23; no extension was needed.
+There are 400 observed tools from 438 definitions, 2,465 paper/tool observations,
+993 reviewed roles and 344 supporting pointers. This update changes only the
+GSEApy availability row and six GSEApy paper roles. All other 399 tool rows,
+987 reviews, paper identities and observed-tool memberships remain exact.
+
+GSEApy is available through development `org.jlinalg.cli.GseapyWorkflowCli`
+and separate `GseapyExecutionSetupCli`. It runs explicit original-class local
+Enrichr, prerank, GSEA, ssGSEA and GSVA workflows for four exact editions.
+Read [the execution guide](../GSEAPY_EXECUTION.md) and
+[current catalog guide](../GSEAPY_CATALOG.md). The canonical executable is unchanged.
+Original preprocessing, permutations/RNG and GSVA fitting remain upstream.
+
+**SKIP3 skips dependent analysis** when required software, permitted storage or
+installation/download permission is unavailable. **FAIL2 admits no case from
+the whole requested batch, including earlier completed cases.** Preserve all
+original failures and provisionals, correct the named cause and retry NEW paths.
+Require exit 0 AND `analysis-status.json result_admitted=true`. RUN installs nothing.
+Read [WARNINGS.md](WARNINGS.md), native audits and original/process logs.
+
+Do not infer historical remote library contents, unspecified GSEA/GSVA modes or
+paper settings. P098 reports a two-tailed test; the original local statistics
+uses a one-sided upper tail. That discrepancy remains unresolved. Preserve
+version-specific curves, SymRank no-op, zero-permutation placeholders and
+nonfinite diagnostics. Native normalized-null auditing requires finite sort
+inputs; unsupported families fail the whole batch.
+
+The full preceding document follows verbatim as history. Its earlier counts
+and missing badges describe those checkpoints. Use the current summary,
+inventory and guides for availability. The implementation goal remains active.
+
+<details>
+<summary>Historical prior catalog document, retained verbatim</summary>
+
+# 250-paper omics/GWAS toolbox catalog
+
 **Current checkpoint: 87 new integrations** (17 native Java subsets and70 tested
 upstream adapters), **90 including three existing adapters**, with **254 named
 tools still missing**. These are explicitly scoped implementations, not claims
@@ -888,6 +930,8 @@ The [implementation queue](implementation-plan.md) and `tool-inventory.json`
 distinguish missing tools, related existing methods, existing adapters/lookups,
 and newly validated subsets. Complete the remaining integrations and semantic
 coverage review before marking the overall goal complete.
+
+</details>
 
 </details>
 

@@ -2913,8 +2913,16 @@
       "doi": "10.1038/s41586-026-10964-z",
       "tool_id": "gseapy",
       "evidence_paragraph_sha256": "fdf34b81ceb66604bbc42478f2d06eb90c29805d1215bf9ec6862d0afe7f7af9",
-      "use_summary": "Used gseapy for gene-set enrichment downstream of single-cell processing.",
-      "implementation_scope_note": "Exact enrichment inputs/options need reconstruction; unrelated Java enrichment methods do not establish package parity."
+      "use_summary": "Reported GSEA through GSEApy1.1.8 after single-cell integration and differential-expression processing, referring to the general package tutorial.",
+      "implementation_scope_note": "The cited paragraph does not specify prerank versus phenotype GSEA versus another enrichment API, ranked statistic, gene sets, size limits, permutations, seed or background. Preserve that ambiguity; the Pearson-normalized, squared-root normalized and MAGIC-imputed matrices have separate stated uses and do not establish GSEA input eligibility.",
+      "version_reported_near_name": "1.1.8",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 41,
+          "section": "Methods / Python packages for data analysis",
+          "paragraph_sha256": "fc94f72e4021ea383417332ae0708c3b1a9e051c304f71add3b322564f8d0502"
+        }
+      ]
     },
     {
       "pmcid": "PMC13668712",
@@ -11330,6 +11338,68 @@
       "usage_context": "tf-target-regulatory-evidence-resource",
       "version_reported_near_name": null,
       "supporting_evidence": []
+    },
+    {
+      "pmcid": "PMC11798877",
+      "doi": "10.1038/s41586-024-08334-8",
+      "tool_id": "gseapy",
+      "evidence_paragraph_sha256": "31cf7ef85ba76a8f3879c0d5219597dba95c67df38816b7bc26dce431799fe01",
+      "use_summary": "Used GSEApy1.0.4 Enrichr with GO_Biological_Process_2023 on separately upregulated/downregulated TISSUE differential-expression lists; the later Methods passage specifies mouse organism and all imputed genes as background.",
+      "implementation_scope_note": "A remote Enrichr service/library call is distinct from offline enrichment against an explicitly supplied local library. Preserve direction-specific input lists, exact2023 resource and all-imputed-gene background. Do not substitute the separate topGO analysis, all MERFISH-measured genes or a generic default population. The package edition does not freeze the remote server or gene-set contents.",
+      "version_reported_near_name": "1.0.4",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 118,
+          "section": "Methods / Statistics and reproducibility",
+          "paragraph_sha256": "7e78c4eca6888b3b9013446157e1d2745221e2ed6a58797232bcea4deea48d68"
+        },
+        {
+          "paragraph_index": 119,
+          "section": "Methods / Statistics and reproducibility",
+          "paragraph_sha256": "9323b27c980e897392c6fa252eb4a767fa936cdfd307e477be06bc3d26ea9273"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC10719095",
+      "doi": "10.1038/s41586-023-06819-6",
+      "tool_id": "gseapy",
+      "evidence_paragraph_sha256": "53b42a68d4014019a562e3f0714768d062b06cf3b777589991d6fcef571098e0",
+      "use_summary": "Used the GSEApy Enrichr module with GO biological process2021 and analysis-specific backgrounds: expressed genes, genes with ABC enhancers, genes tested for cell-type differential expression, or tested genes with an ABC link.",
+      "implementation_scope_note": "The package edition and precise calls are not reported here. Keep each background attached to its stated comparison; do not pool backgrounds or infer default population size, organism mapping or a preranked GSEA mode."
+    },
+    {
+      "pmcid": "PMC11735394",
+      "doi": "10.1038/s41588-024-01989-z",
+      "tool_id": "gseapy",
+      "evidence_paragraph_sha256": "b05c388e09b05a3066d3e3fa86c51f7ccfcfc2345b4211cb0b3947a3296609a6",
+      "use_summary": "Reported GSEApy gene set variation analysis supporting altered replication-timing classifications with matched bulk expression and comparison against915 samples from347 other patients; a separate GSEApy enrichment analysis used selected amplifications in high-proliferation clones.",
+      "implementation_scope_note": "The named GSVA citation is not sufficient to infer the GSEApy gsva or ssgsea callable. Supplementary Notes31 and34 are referenced for details; package edition and exact input/ranking/permutation settings remain unresolved from these paragraphs. Do not credit the separate DESeq2 gene test to GSEApy or claim independent validation of patient specificity.",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 51,
+          "section": "Methods / Genomic alterations enriched in high-proliferation clones",
+          "paragraph_sha256": "14afbe78d3175d8658f9ffff342bb5717c59a0f934800046830b1a5b22195e26"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC13649585",
+      "doi": "10.1038/s41588-026-02745-1",
+      "tool_id": "gseapy",
+      "evidence_paragraph_sha256": "f2d9c2121058c07765f8aa9898eea668ad959caf2843464584248bfcd2449699",
+      "use_summary": "Reported GSEApy1.1.3 enrichment of regulators in Group4 EnhBiv-enriched promoters using human-relevant ChEA regulator-target associations, with a two-tailed hypergeometric test and FDR correction.",
+      "implementation_scope_note": "The source statement explicitly says two-tailed. Original local GSEApy stats.calc_pvalues instead computes a one-sided upper hypergeometric tail. Retain this unresolved method discrepancy; do not relabel it as the original local Enrichr test, infer a background, silently replace the reported tail or claim paper reproduction.",
+      "version_reported_near_name": "1.1.3"
+    },
+    {
+      "pmcid": "PMC13447095",
+      "doi": "10.1038/s41588-026-02665-0",
+      "tool_id": "gseapy",
+      "evidence_paragraph_sha256": "dcc1827c9e13cb62fffe891ab58ec1e733a9271037c69e7a2ea44cc10ea465da",
+      "use_summary": "Used GSEApy1.1.2 through EnrichR for WikiPathway_2023_Human enrichment, with all measured expressed genes as background and input genes selected by adjusted P<0.05.",
+      "implementation_scope_note": "Keep the expressed-gene background and exact named pathway resource. The adjusted-P threshold selects input genes; this paragraph does not specify the enrichment multiple-testing family, exact library contents or a frozen remote service. Local prepared-library execution is separate from recovering historical Enrichr responses.",
+      "version_reported_near_name": "1.1.2"
     }
   ]
 }

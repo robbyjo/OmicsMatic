@@ -1,0 +1,28 @@
+# Copyright (C) 2026 JLinAlg contributors; SPDX-License-Identifier: GPL-3.0-or-later
+"""Preserve preceding focused checks and add explicit GSEApy card, role, warning and mobile coverage."""
+from setup_deseq2_reference import ROOT
+
+EXTRA=r'''
+ await page.setViewportSize({width:1440,height:1000});await page.goto('http://127.0.0.1:8768/literature-review.html');await page.evaluate(()=>document.documentElement.dataset.theme='light');await page.locator('#tools-tab').click();await page.locator('#query').fill('gseapy');const gc=page.locator('#results article').filter({has:page.getByRole('heading',{name:/^gseapy \(/i})});assert.equal(await gc.count(),1);const gt=(await gc.innerText()).toLowerCase();for(const term of ['GseapyWorkflowCli','1.0.4','1.1.2','1.1.3','1.1.8','float64','original-null','40420','two-tailed','one-sided','finite'])assert(gt.includes(term.toLowerCase()),term);await gc.screenshot({path:path.join(out,'gseapy-card-desktop.png'),style:'header{visibility:hidden!important}'});checks.push('GSEApy card exposes four exact editions, scoped original workflows, native observed-null audits and unresolved two-tailed paper semantics');
+ const gr=JSON.parse(fs.readFileSync(path.join(root,'docs/literature/omics-2023-2026/tool-inventory.json'))).find(t=>t.id==='gseapy');const gp=JSON.parse(fs.readFileSync(path.join(root,'docs/literature/gseapy-execution-development/VALIDATION.json')));assert.equal(gr.implementation_status,'upstream-adapter-validated');assert.equal(gr.development_candidate,gp.artifact.path);assert.equal(gr.development_candidate_sha256,gp.artifact.sha256);assert.equal(gr.development_cli_class,'org.jlinalg.cli.GseapyWorkflowCli');assert.equal(gr.runtime_setup_cli_class,'org.jlinalg.cli.GseapyExecutionSetupCli');for(const flag of ['analysis_installs_software','canonical_adapter_available','independent_permutation_generation','independent_gsva_refit','whole_package_implemented','whole_paper_reproduced'])assert.equal(gr[flag],false);checks.push('GSEApy card points to its exact admitted development artifact with separate setup and explicit scientific boundaries');
+ const gd=JSON.parse(fs.readFileSync(path.join(root,'tools/literature/gseapy-use-reviews.json'))).reviews;await page.locator('#papers-tab').click();for(const d of gd){const paper=papers.find(p=>p.paper_id===d.paper_id);await page.locator('#query').fill(paper.doi);assert.equal(await page.locator('#results article').count(),1);const content=clean(await page.locator('#'+d.paper_id).textContent());assert(content.includes(clean(d.review.use_summary)),d.paper_id+' summary');assert(content.includes(clean(d.review.implementation_scope_note)),d.paper_id+' scientific scope');}checks.push('all six GSEApy paper roles retain exact backgrounds, remote/local distinctions, unreported modes and the unresolved two-tailed discrepancy');
+ await page.goto('http://127.0.0.1:8768/literature-warnings.html');const ga=page.locator('#gseapy-required-actions');assert(await ga.isVisible());const gat=(await ga.innerText()).toLowerCase();for(const term of ['SKIP3','FAIL2','earlier completed cases','RUN installs nothing','--allow-install','--allow-download','NEW paths','result_admitted=true','original-error.traceback','two-tailed','one-sided','P062','P079','NaN/Inf','finite','SymRank','hard OS'])assert(gat.includes(term.toLowerCase()),term);await ga.screenshot({path:path.join(out,'gseapy-actions-desktop.png'),style:'header{visibility:hidden!important}'});checks.push('GSEApy warnings prominently state permitted setup, dependent-analysis skips, atomic failure and source-domain recovery');
+ await page.setViewportSize({width:390,height:1000});await page.evaluate(()=>document.documentElement.dataset.theme='dark');assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));await ga.screenshot({path:path.join(out,'gseapy-actions-mobile-dark.png'),style:'header{visibility:hidden!important}'});assert.equal(errors.length,0,errors.join('\n'));const gu=JSON.parse(fs.readFileSync(path.join(root,'tools/literature/reviewed-uses.json'))).reviews;assert.equal(gu.length,993);assert.equal(gu.filter(r=>r.tool_id==='gseapy').length,6);assert.equal(gu.reduce((s,r)=>s+(r.supporting_evidence||[]).length,0),344);checks.push('GSEApy dark warnings fit390px without overflow or browser errors;993 roles and344 support pointers retain six GSEApy uses');
+'''
+
+
+def generated():
+    tools=ROOT/'tools/literature';text=(tools/'check_scfates_review_ui.cjs').read_text(encoding='utf8')
+    for a,b in [("['upstream-adapter-validated',70],['missing',254]","['upstream-adapter-validated',71],['missing',253]"),('400 cataloged tools,87 new integrations,254 missing','400 cataloged tools,88 new integrations,253 missing'),('scfates-ui-verification.json','gseapy-ui-verification.json'),('Passed21 focused current CellPhoneDB, Palantir and scFates browser checks','Passed26 focused current CellPhoneDB, Palantir, scFates and GSEApy browser checks')]:assert text.count(a)==1,a;text=text.replace(a,b)
+    marker=' const inventory=JSON.parse';assert text.count(marker)==1;text=text.replace(marker,EXTRA+marker);wrapper=(tools/'validate_scfates_catalog_ui.py').read_text(encoding='utf8').replace('scfates','gseapy');return {tools/'check_gseapy_review_ui.cjs':text.encode(),tools/'validate_gseapy_catalog_ui.py':wrapper.encode()}
+
+
+def verify():
+    for p,raw in generated().items():assert p.read_bytes()==raw,'Current focused UI derivation differs: '+str(p)
+
+
+if __name__=='__main__':
+    for p,raw in generated().items():
+        if p.exists():assert p.read_bytes()==raw
+        else:p.write_bytes(raw)
+    verify();print('Prepared299 unchanged general checks and26 current focused checks; preceding source checks unchanged')

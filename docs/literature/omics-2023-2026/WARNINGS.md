@@ -1,3 +1,17 @@
+## GSEApy: warnings and required actions
+
+Use development GseapyWorkflowCli, separate GseapyExecutionSetupCli and GSEAPY_EXECUTION.md. Require exit0 AND analysis-status.json result_admitted=true. Read WARNINGS.md, native-audit.json, original stdout/stderr, original-error.traceback, manifests and process receipts. Keep all inputs and failed/provisional outputs. The canonical executable is unchanged.
+
+SKIP3: skip dependent analysis when the exact permitted Linux x86_64 Python3.11.17 base, four original namespaces, receipt, storage or installation requirements are unavailable. Export the kit and read SETUP.md. Prepare NEW case-sensitive paths; install only with permitted --allow-install, and obtain uncached exact archives with permitted --allow-download or a verified cache. Otherwise retain the skip. RUN installs nothing. Declare1.0.4/1.1.2/1.1.3/1.1.8 explicitly;1.0.4 has no GSVA. Do not infer a paper edition.
+
+FAIL2: no result from the whole requested batch, including earlier completed cases. Preserve every original error and provisional table, correct the named input/source/numeric/runtime/timeout/capacity cause and retry NEW paths. Never refresh old scientific binding hashes. A successful original worker or an existing CSV alone does not admit a result. Owned-process, wall-time and sampled-output supervision is not hard OS CPU/memory containment.
+
+Supply explicit local libraries, backgrounds, literal IDs, matrices/sample classes, scientific settings and source-change/nonfinite/empty-result policies. Native local Enrichr uses a one-sided upper hypergeometric tail; P098 reports two-tailed enrichment, an unresolved paper-method discrepancy. Historical Enrichr resource/server contents are not reconstructed. P062 does not resolve the GSEA mode and P079 does not resolve gsva versus ssgsea; do not infer those APIs. Keep comparison-specific gene universes and input-selection thresholds separate from enrichment correction families.
+
+Original1.0.4 convenience ssGSEA ignores named options; this adapter binds original classes. All editions retain the fast ssGSEA sum equation and SymRank no-op. Original permuted ssGSEA P/FDR diagnostics carry the source publication warning. Legacy phenotype curves remain raw signed while ES is weighted;1.1.8 weights both. Leading genes follow the original curve. Original Poisson clipping, case conversion and aggregation require declared policies; no identifier repair, epsilon, add-one correction or substitute ranked BH is introduced.
+
+Read source NaN/Inf diagnostics and zero-permutation NES placeholders. Native normalized-null sorting supports finite inputs only; an unsupported family fails the whole batch. Original preprocessing, RNG/permutations and GSVA fitting remain upstream. No independent calibration, full-package, biological or whole-paper reproduction. Cell Ranger remains excluded; the250-paper implementation goal stays active.
+
 ## scFates: warnings and required actions
 
 Use development **ScfatesWorkflowCli**, separate **ScfatesSetupCli** and **SCFATES_WORKFLOW.md**. Require exit0 AND `analysis-status.json result_admitted=true`. Read console warnings, WARNINGS.md, native-audit.json, original stdout/stderr and original-error.traceback before using results. Keep all inputs, snapshots, manifests and process receipts. The canonical executable is unchanged.
