@@ -4085,6 +4085,48 @@
     "whole_goal_complete": false
   },
   {
+    "id": "cistarget",
+    "name": "cisTarget",
+    "pattern": "\\bcis[- ]?target\\b",
+    "role": "Recovery-curve motif enrichment and regulatory target analysis",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Individually identified in primary Methods during completeness review; scientific role, resource-only use and runtime requirements must be checked per paper; integration pending.",
+    "paper_count": 7,
+    "papers": [
+      "P047",
+      "P058",
+      "P061",
+      "P065",
+      "P094",
+      "P100",
+      "P145"
+    ],
+    "implementation_status": "native-subset-validated",
+    "implementation_source": "src/main/java/org/jlinalg/cli/CisTargetWorkflowCli.java",
+    "implementation_scope": "Native Java cistarget-tools ranked-feature TSV analysis: complete motif-background recovery curves, AUC, NES, exact leading-target membership, strict/inclusive selection, missing-signature dispositions and exact supplied motif-to-TF joins. Explicit ctxcore0.2.0/NumPy1.26.4 or RcisTarget1.29.0 exact iCisTarget profiles preserve distinct cutoffs, SD and reduction conventions. Optional tested PyArrow17.0.0 converter exports complete Feather V1/V2 rankings without rank shifts. No upstream runtime is required for native TSV analysis. DNA/Cluster-Buster scoring, interval overlap, SCENIC/SCENIC+ network fitting, AUCell, score-database analysis, annotation inference and R approximate leading edges remain separate. Read CISTARGET_INTEGRATION.md and every warning.",
+    "validation_note": "672 complete original numerical comparisons across two compiler builds and three JVMs;96 native TSV flows, six positive original-Feather file flows, six literal example runs,60 CLI refusals and actual converter SKIP3/FAIL2 controls. The main dispatcher matches all108 native output populations and12 predecessor GWAS flows, with72 dispatch contracts. Python references execute original public ctxcore functions; R references execute unchanged original function definitions under R4.6.1, without installing the full R package. Source finite-NES rounding artifacts on identical AUCs are retained with prominent warnings. Frozen verification checks stored integrity/relationships, not refitting, execution authenticity or biological/paper reproduction.",
+    "project_adapter_available": true,
+    "canonical_adapter_available": false,
+    "source_roles_reviewed": 7,
+    "source_role_coverage": "cistarget-role-coverage.json",
+    "development_candidate": "docs/literature/cistarget-catalog-development/cistarget-root-javac21.jar",
+    "development_candidate_sha256": "b1a709309181e5cd90dd27cae13af9df5a529126ac82d82a77ce2dec778315cd",
+    "development_cli_class": "org.jlinalg.cli.CisTargetWorkflowCli",
+    "root_cli_class": "org.jlinalg.cli.JLinAlgCli",
+    "root_command": "cistarget-tools",
+    "native_workflow_proof": "docs/literature/cistarget-development/VALIDATION.json",
+    "native_helpers": [
+      "src/main/java/org/jlinalg/enrichment/CisTargetRecovery.java"
+    ],
+    "analysis_installs_software": false,
+    "original_runtime_required": false,
+    "full_R_package_installed": false,
+    "whole_package_implemented": false,
+    "whole_paper_reproduced": false,
+    "whole_goal_complete": false
+  },
+  {
     "id": "biomart",
     "name": "biomaRt",
     "pattern": "(?<![A-Za-z0-9_])(?:(?-i:biomaRt))(?![A-Za-z0-9_])",
@@ -4552,28 +4594,6 @@
     "whole_package_implemented": false,
     "whole_paper_reproduced": false,
     "whole_goal_complete": false
-  },
-  {
-    "id": "cistarget",
-    "name": "cisTarget",
-    "pattern": "\\bcisTarget\\b",
-    "role": "Recovery-curve motif enrichment and regulatory target analysis",
-    "current_coverage": "missing",
-    "existing_source": null,
-    "coverage_note": "Individually identified in primary Methods during completeness review; scientific role, resource-only use and runtime requirements must be checked per paper; integration pending.",
-    "paper_count": 6,
-    "papers": [
-      "P047",
-      "P058",
-      "P061",
-      "P065",
-      "P094",
-      "P100"
-    ],
-    "implementation_status": "missing",
-    "implementation_source": null,
-    "implementation_scope": "Individually identified in primary Methods during completeness review; scientific role, resource-only use and runtime requirements must be checked per paper; integration pending.",
-    "validation_note": "Existing overlap/adapters require paper-specific option checks; missing integrations remain pending."
   },
   {
     "id": "cellchat",

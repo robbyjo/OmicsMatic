@@ -1,6 +1,6 @@
 # Omics and GWAS paper catalog
 
-250 papers; 400 named tools; 2465 paper-tool observations.
+250 papers; 400 named tools; 2466 paper-tool observations.
 
 Window: 2023-10-23 through 2026-10-23, inclusive. No extension was required.
 
@@ -944,7 +944,7 @@ Nature · 2023-12-13 · [DOI](https://doi.org/10.1038/s41586-023-06823-w) · [Pr
 | --- | --- | --- |
 | ALLCools | Methylome datasets, clustering, integration and differential methylation. | Methods / Mapping and preprocessing |
 | BEDTools | Genomic interval manipulation and overlap. | Methods / Mapping and preprocessing |
-| cisTarget | Recovery-curve motif enrichment and regulatory target analysis. | Methods / TF motif enrichment |
+| cisTarget | Applied recovery-curve cisTarget motif enrichment to cluster hypo-DMRs, normalized motif AUC against the motif collection, and selected motifs with AUC>0.01 and NES>3. | Methods / TF motif enrichment |
 | Cluster-Buster | Clustered DNA motif scanning. | Methods / TF motif enrichment |
 | Leiden | Grouped observations into communities using a neighborhood graph. | Methods / Integration between snmC-seq, epi-retro-seq and scRNA-seq |
 | SCENIC+ | Multiomic regulatory-network tools and motif reference resources. | Methods / TF motif enrichment |
@@ -1180,7 +1180,7 @@ Nature · 2023-12-13 · [DOI](https://doi.org/10.1038/s41586-023-06817-8) · [Pr
 | AUCell | Rank-based gene-set activity scoring. | Methods / snRNA-seq / SCENIC |
 | CellBender | Removed ambient RNA from each snRNA-seq sample with CellBender 0.2.1 remove-background using reported default parameters, before merging and downstream Seurat processing. | Methods / snRNA-seq / snRNA-seq preprocessing, quality control and removal of second-order nuclei |
 | Cell Ranger | Aligned snRNA-seq to mm10-2020-A with CellRanger v6.1.2. Built separate GFP or mScarlet custom references with v5.0.1 mkref and used v6.1.2 in the reported 10x cloud workflow to detect reporter transcripts. | Methods / snRNA-seq / cDNA amplification and library construction |
-| cisTarget | Recovery-curve motif enrichment and regulatory target analysis. | Methods / snRNA-seq / SCENIC |
+| cisTarget | Used SCENIC grn, ctx with nes_threshold2.5 and min_genes10, then aucell for SPN regulon activity; downloaded mouse TF resources and the v9 mouse motif-annotation collection from cisTarget resources. | Methods / snRNA-seq / SCENIC |
 | Enrichr | Gene-set enrichment. | Methods / snRNA-seq / Differential expression and Gene Ontology analysis |
 | Louvain | Grouped observations into communities using a neighborhood graph. | Methods / snRNA-seq / snRNA-seq preprocessing, quality control and removal of second-order nuclei |
 | SCENIC | Single-cell regulatory network inference. | Methods / snRNA-seq / SCENIC |
@@ -1232,7 +1232,7 @@ Nature · 2023-12-13 · [DOI](https://doi.org/10.1038/s41586-023-06805-y) · [Pr
 | Bismark | Mapped bisulfite reads in single-cell methylome/chromatin-contact workflows. | Methods / Mapping and primary QC |
 | Bowtie 2 | Provided short-read alignment within the bisulfite-mapping pipeline. | Methods / Mapping and primary QC |
 | cemba-data / YAP | Ran the YAP single-cell methylome/chromatin-contact mapping pipeline. | Methods / Mapping and primary QC |
-| cisTarget | Enriched TF motifs in correlated DMR sets using NES thresholds. | Methods / GRN analysis / DMR motif scan and TF motif enrichment analysis |
+| cisTarget | Ran cisTarget separately on positively and negatively correlated DMR sets for each TF, selected motifs at NES>3, and used leading-edge analysis to assign motif occurrence from Cluster-Buster scores. | Methods / GRN analysis / DMR motif scan and TF motif enrichment analysis |
 | Cluster-Buster | Scanned grouped motif PWMs over DMRs with hidden Markov models. | Methods / GRN analysis / DMR motif scan and TF motif enrichment analysis |
 | Cutadapt | Demultiplexed single-cell FASTQ reads before mapping. | Methods / Mapping and primary QC |
 | deepTools | Used deepTools3.5.1 to profile chromosome-domain boundary probabilities at transcripts over±2Mb with25kb bins. | Methods / Cell and cluster-level chromatin conformation analysis / Domain boundary probability and transcript body mC fraction correlation |
@@ -1311,7 +1311,7 @@ Nature · 2023-12-12 · [DOI](https://doi.org/10.1038/s41586-023-06936-2) · [Pr
 | bcl2fastq | Demultiplexed sequencing reads using bcl2fastq 2.20 before Trim Galore and custom-reference bwa-mem2 processing. | Methods / OmniATAC-seq |
 | BEDTools | Genomic interval manipulation and overlap. | Methods / Motif annotation |
 | BWA-MEM2 | Mapped trimmed reads to custom hg38 augmented with integrated sequences as extra chromosomes using BWA-MEM2 2.2.1, before SAMtools cleanup and deepTools RPGC tracks. | Methods / OmniATAC-seq |
-| cisTarget | Recovery-curve motif enrichment and regulatory target analysis. | Methods / Motif annotation |
+| cisTarget | Compared TF-Modisco patterns with the cisTarget motif collection using Tomtom to identify similar TF binding sites. | Methods / Motif annotation |
 | Cluster-Buster | Clustered DNA motif scanning. | Methods / Motif annotation |
 | deepTools | Generated RPGC-normalized ATAC and ChIP bigWigs with deepTools3.5.0 bamCoverage after BWA-MEM2 alignment to ordinary/custom hg38 and SAMtools cleanup. A different paragraph uses the pyBigWig stats library for fly-window means. | Methods / OmniATAC-seq |
 | MACS | Called peaks with MACS2 2.1.2.1 callpeak after bwa-mem2 alignment, SAMtools sorting/deduplication and blacklist removal; generated separate RPGC-normalized bigWig tracks with deepTools. | Methods / ChIP–seq |
@@ -1829,7 +1829,7 @@ Nature Genetics · 2026-09-24 · [DOI](https://doi.org/10.1038/s41588-026-02748-
 | --- | --- | --- |
 | Cell Ranger | Used Cell Ranger ARC with reported default settings to align joint snRNA/ATAC data to human hg38 and obtain modality count matrices and fragment files. | Methods / Preprocessing and normalization of joint snRNA/ATAC–seq data |
 | CellTypist | Reference-based cell-type classification. | Methods / Visium and Stereo-seq sample preparation and data analysis |
-| cisTarget | Recovery-curve motif enrichment and regulatory target analysis. | Methods / SCENIC+ |
+| cisTarget | Supplied precomputed human cisTarget ranking and score databases plus the SCENIC+ motif collection to the SCENIC+ eGRN pipeline with a2Mb search space on each side of gene TSSs. | Methods / SCENIC+ |
 | GenomicRanges | Used GenomicRanges subsetByOverlaps() and findOverlaps() to intersect accessible or linked peaks with SNPs and other regulatory datasets after hg38 coordinate harmonization. | Methods / Downstream multi-omic analysis and visualizations |
 | Harmony | Batch integration of cell embeddings. | Methods / Processing of scRNA-seq |
 | IRanges | Used IRangesv2.40.0 with GenomicRanges overlap functions for regulatory-interval comparisons after lifting datasets to hg38. | Methods / Downstream multi-omic analysis and visualizations |
@@ -1958,7 +1958,7 @@ Nature Genetics · 2025-11-24 · [DOI](https://doi.org/10.1038/s41588-025-02407-
 | cell2location | Spatial cell-type deconvolution. | Methods / Computational analysis / Spatial mapping of cell types in Visium ST using cell2location |
 | CellChat | Ligand-receptor cell communication inference. | Methods / Computational analysis / Identifying differentially flowing signal variables |
 | CellPhoneDB | Used CellPhoneDB5.0.0 for scRNA-seq cluster interactions, requiring all interaction members in at least10% of relevant cells and permuting cell-cluster labels1000times to assess cell-type specificity of ligand–receptor expression means. Visualized pairs atP≤0.01 with CCplotR; spatial communication used COMMOT separately. | Methods / Computational analysis / Cell–cell interaction analysis |
-| cisTarget | Recovery-curve motif enrichment and regulatory target analysis. | Methods / Computational analysis / Analysis of GRNs |
+| cisTarget | Used pySCENIC0.12.1 with GRNBoost2 and ctx dropout masking, a1390-human-TF list, v9 human motif-to-TF annotations and the hg38 RefSeq-r80 mc9nr500bp-up/100bp-down ranking database, followed by AUCell. | Methods / Computational analysis / Analysis of GRNs |
 | Harmony | Batch integration of cell embeddings. | Methods / Computational analysis / scRNA-seq data processing |
 | Leiden | Grouped observations into communities using a neighborhood graph. | Methods / Computational analysis / scRNA-seq data processing |
 | Milo | Single-cell neighborhood differential abundance. | Methods / Computational analysis / Differential abundance analysis |
@@ -2863,6 +2863,7 @@ Nature Genetics · 2026-08-14 · [DOI](https://doi.org/10.1038/s41588-026-02709-
 | SoupX | Estimated ambient contamination with SoupX1.6.2 autoEstCont and corrected the count matrix with adjustCounts, using supplied raw matrices, filtered counts and clusters. | Methods / snRNA-seq of hNCs / snRNA-seq data preprocessing and annotation |
 | UCell | Rank-based single-cell gene-set scoring. | Methods / snRNA-seq of hNCs / Neuronal maturation score calculation |
 | Ensembl VEP | Variant consequence annotation. | Methods / WES data |
+| cisTarget | Used pySCENIC0.12.1/GRNBoost2 on20000 sampled normalized/log-transformed nuclei with hg38_10kbp_up_10kbp_down_full_tx_v10 rankings and motifs-v10nr TF motifs from the cis-target database; then AUCell on the full dataset. | Methods / snRNA-seq of hNCs / Regulon analysis |
 
 XML SHA-256: `9fdbbf6616ee60cf8d1b808afb0ab48d16a2e156eb5d9dbdd8602fd405fc3b46`. Exact evidence paragraph hashes and locators are in [papers.json](papers.json).
 

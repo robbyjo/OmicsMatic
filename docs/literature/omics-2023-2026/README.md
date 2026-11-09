@@ -1,3 +1,41 @@
+# 250 paper omics and GWAS toolbox catalog
+
+**Current checkpoint: 93 new scoped integrations** — 19 native Java methods and
+74 tested upstream adapters. There are **96 including three existing adapters**,
+with **248 named tools still missing**. These are scoped implementations with
+explicit limits. Cell Ranger remains excluded at the user's request.
+
+The unchanged fixed cohort contains 250 papers: 71 Nature, 104 Nature Genetics and
+75 AJHG articles from 2023-10-23 through 2026-10-23. No time extension was needed.
+The catalog contains 400 observed tools from 438 definitions, 2,466 paper–tool
+observations, 1,018 reviewed roles and 356 supporting pointers.
+
+Read [cisTarget integration](../CISTARGET_INTEGRATION.md) for the native
+`cistarget-tools` command, explicit numerical profiles, complete ranked-feature
+inputs, optional Feather conversion and required warning/failure actions.
+The seven source roles distinguish algorithm execution, SCENIC/SCENIC+ inputs and
+motif-collection use. P145 adds one missed “cis-target” Methods resource
+observation. P061 has one explicit review enrichment, with its prior text
+retained. All 1,011 other prior reviews and every unrelated observation remain
+unchanged. The 399 unrelated tool entries also remain unchanged.
+
+Current records: [tool inventory](tool-inventory.json), [papers](papers.json),
+[summary](summary.json), [warnings and required actions](WARNINGS.md), and
+[cisTarget source-role coverage](cistarget-role-coverage.json).
+
+Native TSV analysis installs nothing. Optional Feather conversion requires a
+permitted private PyArrow 17.0.0 runtime: SKIP3 means skip the conversion and its
+dependent analysis until that prerequisite is available. FAIL2 admits no result;
+preserve partials, correct the named problem and retry new paths. Read every
+warning and disposition, especially undefined or rounding-only NES values.
+
+The full 250-paper implementation and paper-wide semantic review remain open.
+The material below is retained historical checkpoint documentation; its opening
+counts and availability statements describe that earlier checkpoint.
+
+<details>
+<summary>Historical MR-MEGA checkpoint and retained catalog material</summary>
+
 # 250-paper omics/GWAS toolbox catalog
 
 **Current checkpoint: 92 new integrations**: 18 native Java methods and 74 tested
@@ -1108,6 +1146,8 @@ The [implementation queue](implementation-plan.md) and `tool-inventory.json`
 distinguish missing tools, related existing methods, existing adapters/lookups,
 and newly validated subsets. Complete the remaining integrations and semantic
 coverage review before marking the overall goal complete.
+
+</details>
 
 </details>
 

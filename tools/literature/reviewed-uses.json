@@ -243,8 +243,9 @@
       "doi": "10.1038/s41586-023-06805-y",
       "tool_id": "cistarget",
       "evidence_paragraph_sha256": "f3998ee4cb4f5c77c3c184fbf32a4ae6ffad04bddb0f45c22d5c9a8133d5d9d3",
-      "use_summary": "Enriched TF motifs in correlated DMR sets using NES thresholds.",
-      "implementation_scope_note": "Native recovery AUC alone does not implement cisTarget normalization and regulatory-target analysis."
+      "use_summary": "Ran cisTarget separately on positively and negatively correlated DMR sets for each TF, selected motifs at NES>3, and used leading-edge analysis to assign motif occurrence from Cluster-Buster scores.",
+      "implementation_scope_note": "Positive and negative DMR sets must remain separate. Native prepared-ranking AUC/NES and exact leading-target membership do not generate Cluster-Buster scores, infer the original database/edition or reconstruct TF-DMR edge selection. The paper does not resolve Python versus R cutoff/SD conventions; select a documented source profile explicitly rather than inferring historical parity.",
+      "version_reported_near_name": null
     },
     {
       "pmcid": "PMC10719113",
@@ -11653,6 +11654,67 @@
       "use_summary": "Used MR-MEGA to examine index-variant effect heterogeneity attributable to ancestry rather than residual effects; six index variants showed significant ancestry-related heterogeneity.",
       "implementation_scope_note": "The source does not specify the MR-MEGA edition, ancestry-axis count, complete input/test family, command or GC settings. The six significant index variants are reported findings, not evidence that only those variants were tested. Native mrmega-tools supports separate ancestry and residual tests with explicit supplied/inferred axes, but does not infer those missing paper settings or variant population. The adjacent SuSiEx credible-set analysis is separate and must not be attributed to MR-MEGA.",
       "version_reported_near_name": null
+    },
+    {
+      "pmcid": "PMC10719087",
+      "doi": "10.1038/s41586-023-06823-w",
+      "tool_id": "cistarget",
+      "evidence_paragraph_sha256": "af68a39bec12c8f31ae87a8427add1ea1abb643f3409e6064d089e73a1c2f2a1",
+      "use_summary": "Applied recovery-curve cisTarget motif enrichment to cluster hypo-DMRs, normalized motif AUC against the motif collection, and selected motifs with AUC>0.01 and NES>3.",
+      "implementation_scope_note": "The two10th-quantile mCG filters define each input DMR set. TF expression>0 and normalized mCH<1 in at least one enriched cluster are separate biological postfilters. Native ranked-feature AUC/NES requires the complete declared motif background and explicit strict thresholds; it does not score DNA, infer the paper database/edition, select DMRs or apply expression/methylation filters.",
+      "version_reported_near_name": null
+    },
+    {
+      "pmcid": "PMC10719099",
+      "doi": "10.1038/s41586-023-06817-8",
+      "tool_id": "cistarget",
+      "evidence_paragraph_sha256": "e3340edfa2ca5937e05fa588a8ea1eeecbe3d6ceae3aac946495d2d3ac3846f1",
+      "use_summary": "Used SCENIC grn, ctx with nes_threshold2.5 and min_genes10, then aucell for SPN regulon activity; downloaded mouse TF resources and the v9 mouse motif-annotation collection from cisTarget resources.",
+      "implementation_scope_note": "The cisTarget-resource URL and SCENIC ctx invocation do not identify a separately executed cisTarget package or its edition. Coexpression inference, motif annotation/TF filtering, minimum regulon size, AUCell and cluster averaging/scaling remain pipeline operations. A native ranked-feature enrichment calculation does not reproduce this SCENIC workflow.",
+      "version_reported_near_name": null
+    },
+    {
+      "pmcid": "PMC10830415",
+      "doi": "10.1038/s41586-023-06936-2",
+      "tool_id": "cistarget",
+      "evidence_paragraph_sha256": "1c11cce5d0c2bf601b139beb7421b07be8cd36c8f7ff69ac7360e39828712fc0",
+      "use_summary": "Compared TF-Modisco patterns with the cisTarget motif collection using Tomtom to identify similar TF binding sites.",
+      "implementation_scope_note": "This is motif-collection use through Tomtom, not evidence of a cisTarget enrichment execution. Preserve the motif-collection identity and Tomtom settings as separate requirements. Native cisTarget enrichment does not implement TF-Modisco, Tomtom motif comparison or annotation transfer.",
+      "version_reported_near_name": null
+    },
+    {
+      "pmcid": "PMC13649600",
+      "doi": "10.1038/s41588-026-02748-y",
+      "tool_id": "cistarget",
+      "evidence_paragraph_sha256": "675a8af666d1a78db1e76333c052aa2ad316fa17f8978b8d9c332f4f628d71f6",
+      "use_summary": "Supplied precomputed human cisTarget ranking and score databases plus the SCENIC+ motif collection to the SCENIC+ eGRN pipeline with a2Mb search space on each side of gene TSSs.",
+      "implementation_scope_note": "SEACells0.3.3 metacells, pycisTopic2.0a0 topic/candidate-region analysis and Scanpy1.8.2 RNA preprocessing are separate steps. The source does not identify an independently run cisTarget package edition. Native motif-ranking enrichment does not consume score databases as ranks or reproduce SCENIC+ eGRNs, enhancer-gene linking or the default pipeline.",
+      "version_reported_near_name": null
+    },
+    {
+      "pmcid": "PMC12695644",
+      "doi": "10.1038/s41588-025-02407-8",
+      "tool_id": "cistarget",
+      "evidence_paragraph_sha256": "27970e3de9dbc27c090abd13cd8ea0f2d6f5e27a2863770f1bea4033b7a9cd29",
+      "use_summary": "Used pySCENIC0.12.1 with GRNBoost2 and ctx dropout masking, a1390-human-TF list, v9 human motif-to-TF annotations and the hg38 RefSeq-r80 mc9nr500bp-up/100bp-down ranking database, followed by AUCell.",
+      "implementation_scope_note": "Five percent of cells per broad cell type were sampled. mask_dropouts=True computes TF-target correlations using cells with nonzero expression. The pySCENIC version is not a standalone cisTarget edition. Native enrichment does not reproduce coexpression inference, dropout masking, regulon pruning, AUCell/RSS, Wilcoxon differential testing or igraph/ggraph network construction.",
+      "version_reported_near_name": null
+    },
+    {
+      "pmcid": "PMC13553309",
+      "doi": "10.1038/s41588-026-02709-5",
+      "tool_id": "cistarget",
+      "evidence_paragraph_sha256": "cfa33e675e1cc5429017fde2cd322a20eb99e38f646df48d1d7d14da9ded2220",
+      "use_summary": "Used pySCENIC0.12.1/GRNBoost2 on20000 sampled normalized/log-transformed nuclei with hg38_10kbp_up_10kbp_down_full_tx_v10 rankings and motifs-v10nr TF motifs from the cis-target database; then AUCell on the full dataset.",
+      "implementation_scope_note": "Ranking and annotation resources feed pySCENIC. Per-sample/cell-type activity averaging and Wilcoxon comparisons are separate. A native cisTarget calculation does not reproduce GRNBoost2, regulon construction, AUCell or condition comparisons. No standalone cisTarget edition is specified.",
+      "version_reported_near_name": null,
+      "supporting_evidence": [
+        {
+          "paragraph_index": 64,
+          "section": "Data availability",
+          "paragraph_sha256": "f92a8689f2daadba43e8e258517682ac3cfd6db7828271d10ba086609963e9e0"
+        }
+      ]
     }
   ]
 }
