@@ -1,6 +1,6 @@
 # Omics and GWAS paper catalog
 
-250 papers; 400 named tools; 2466 paper-tool observations.
+250 papers; 402 named tools; 2475 paper-tool observations.
 
 Window: 2023-10-23 through 2026-10-23, inclusive. No extension was required.
 
@@ -2544,6 +2544,7 @@ Nature Genetics · 2026-08-27 · [DOI](https://doi.org/10.1038/s41588-026-02722-
 | PRS-CS | Inferred separate population-specific Alzheimer disease PRS weights using ancestry-matched 1000 Genomes HapMap3 LD panels; PRSice2 applied scores without clumping before ADGC combination-weight learning and ADSP evaluation. | Methods / PRS development / PRS-CS |
 | PRS-CSx | Cross-population Bayesian polygenic scoring. | Methods / PRS development / PRS-CSx |
 | PRSice | Clumping and thresholding polygenic score construction. | Methods / PRS development / PRSice2 |
+| GENESIS | Relatedness and population-substructure assessment. Association of Alzheimer disease polygenic risk scores with disease, adjusting for covariates and a kinship matrix. | Methods / WGS and quality control in the ADSP dataset |
 
 XML SHA-256: `b318d7cad15920ee6ff59627209e75e46087bc52a41a6a87ceae355cca4be752`. Exact evidence paragraph hashes and locators are in [papers.json](papers.json).
 
@@ -2577,6 +2578,8 @@ Nature Genetics · 2024-10-08 · [DOI](https://doi.org/10.1038/s41588-024-01939-
 | PLINK | Genotype QC, association, relatedness, LD or score calculations. | Methods / Genotype data and quality control |
 | SAIGE | Analyzed binary neuropathology phenotypes with SAIGE logistic mixed models and additive variant score tests;SAIGE1.1.3 is listed among null-model packages used in the two-stage analysis. | Methods / Statistical analyses / Single-variant GWAS |
 | SAMtools | Alignment manipulation and QC. | Methods / Genotype data and quality control |
+| GENESIS | PC-AiR generated ten genetic principal components used as fixed-effect covariates. | Methods / Statistical analyses / Single-variant GWAS |
+| SNPRelate | Named in a collective package list for the GRM/null-model stage of cohort association analyses. | Methods / Statistical analyses / Single-variant GWAS |
 
 XML SHA-256: `42855fc8ef19d7ccdf79bee7cc0514baccf199463be2d5b85dfffed42f0fb4ee`. Exact evidence paragraph hashes and locators are in [papers.json](papers.json).
 
@@ -2811,6 +2814,7 @@ Nature Genetics · 2023-10-30 · [DOI](https://doi.org/10.1038/s41588-023-01553-
 | LOFTEE | Used high-confidence LOFTEE loss-of-function predictions in the coding_filter1 rare-variant mask, with separate qualifying missense variants; retained the coding set when adding regulatory variants for coding_noncoding_filter1. | Methods / Association analyses |
 | RFMix | Local ancestry inference. | Methods / Estimation of genetic ancestry proportions |
 | Ensembl VEP | Variant consequence annotation. | Methods / Association analyses |
+| GENESIS | Generalized linear mixed-model association tests in cis and trans, with a sparse fourth-degree PC-Relate kinship matrix as a random effect. | Methods / Association analyses |
 
 XML SHA-256: `03028ba5e150ca461688b1c933746b720067aef46a9353621c4d7b38262d53e4`. Exact evidence paragraph hashes and locators are in [papers.json](papers.json).
 
@@ -3333,6 +3337,7 @@ Nature Genetics · 2025-10-20 · [DOI](https://doi.org/10.1038/s41588-025-02344-
 | PEER | Latent confounder estimation. | Methods / Prioritizing eQTLs in PBMCs bulk expression profiles |
 | Picard | Alignment QC, duplicates and sequence processing. | Methods / Genotype quality control |
 | PLINK | Used for genetic principal components. | Methods / Genotype quality control |
+| SNPRelate | Genotype principal component analysis on508883 variants previously selected with PLINK indep-pairwise in the IAV perturbation cohort. Genotype principal component analysis on292681 variants previously selected with PLINK indep-pairwise in the CA/PA/MTB perturbation cohort. | Methods / Genotype quality control |
 
 XML SHA-256: `ea3565b3d487b40dbbd57675e2825b39fda6b485cba722cd505701adc18d3739`. Exact evidence paragraph hashes and locators are in [papers.json](papers.json).
 
@@ -3720,6 +3725,8 @@ American Journal of Human Genetics · 2026-06-22 · [DOI](https://doi.org/10.101
 | PLINK 2 | Used for genetic principal components. | Methods / Genetic data analysis and genome-wide association study / PCA and genetic relationship matrix generation |
 | SAIGE | Used SAIGE1.3.6 to build ancestry-specific sparse GRMs and run two-stage binary GWAS on BGEN srWGS data;single-variant tests required MAC>=200 and Firth effect correction at P<=0.05. | Methods / Genetic data analysis and genome-wide association study / GWAS |
 | SHAP | Model feature attribution. | Methods / Risk prediction / Shapley Additive Explanations values |
+| GENESIS | PC-AiR principal components for non-European ancestry groups using SNPRelate KING-robust relatedness. | Methods / Genetic data analysis and genome-wide association study / PCA and genetic relationship matrix generation |
+| SNPRelate | KING-robust pairwise relatedness supplied to GENESIS PC-AiR for principal components in non-European ancestry groups. | Methods / Genetic data analysis and genome-wide association study / PCA and genetic relationship matrix generation |
 
 XML SHA-256: `bbebe3e62f8b9224f40e8de19d2bd1d63234fcaabf742de36a379b05a0750db2`. Exact evidence paragraph hashes and locators are in [papers.json](papers.json).
 
@@ -4140,6 +4147,7 @@ American Journal of Human Genetics · 2025-09-11 · [DOI](https://doi.org/10.101
 | Picard | Alignment QC, duplicates and sequence processing. | Subjects and methods / Exome coverage downsampling |
 | PLINK 2 | Used for LD-based variant selection. | Subjects and methods / Genetic validation: GWAS |
 | REGENIE | Ran REGENIE in two steps: ridge whole-genome predictors on 611713 variants, then association on 9607831 imputed variants with age, ever-smoking, batch, WES release and ten PCs. | Subjects and methods / Genetic validation: GWAS |
+| SNPRelate | snpgdsLDpruning generated a set of 149605 SNPs used by PLINK2 for principal components in European-ancestry men. | Subjects and methods / Genetic validation: GWAS |
 
 XML SHA-256: `b4f22a1a3ee0ce4ac55290d2a0ded9d2b62f193e2e5e1363198f2068676a1967`. Exact evidence paragraph hashes and locators are in [papers.json](papers.json).
 
@@ -4186,6 +4194,7 @@ American Journal of Human Genetics · 2024-08-12 · [DOI](https://doi.org/10.101
 | QTLtools | Molecular QTL mapping and QC. | Material and methods / Skin gene expression profiles |
 | STAR | Splice-aware bulk RNA read alignment and optional raw gene counts. | Material and methods / Skin gene expression profiles |
 | SuSiE | Bayesian fine-mapping and credible sets. | Material and methods / Sharing of skin meQTLs and skin eQTLs |
+| GENESIS | Twenty genetic principal components from common HapMap3 SNPs after exclusion of long-range LD regions; used in ancestry-outlier assessment. | Material and methods / Identification of skin meQTLs |
 
 XML SHA-256: `e4fadb062adf4cc95728affb2ee19c5e59af94b50cce138a693a6dbb5f073112`. Exact evidence paragraph hashes and locators are in [papers.json](papers.json).
 

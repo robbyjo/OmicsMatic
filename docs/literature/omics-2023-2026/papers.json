@@ -28548,6 +28548,30 @@
         "evidence_paragraph_sha256": "5897408900d50d454ad9fcc1466ef7940a1f027f2e0a41a1afa8c624b7115ef2",
         "use_summary": "Clumping and thresholding polygenic score construction.",
         "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13553296/ (section: Methods / PRS development / PRSice2)"
+      },
+      {
+        "tool_id": "genesis",
+        "tool": "GENESIS",
+        "analysis_role": "Relatedness-aware ancestry components and genetic association models",
+        "evidence_section": "Methods / WGS and quality control in the ADSP dataset",
+        "evidence_paragraph_index": 36,
+        "matched_text": "GENESIS",
+        "extraction_score": 15,
+        "usage_context": "analysis-method-description",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
+        "version_reported_near_name": "2.16.1",
+        "evidence_selection": "individually-reviewed-paragraph",
+        "evidence_paragraph_sha256": "99237e4564c97f0a974ac3a5f720038e719fc3fbbf72a282e7305117e9725eb9",
+        "use_summary": "Relatedness and population-substructure assessment. Association of Alzheimer disease polygenic risk scores with disease, adjusting for covariates and a kinship matrix.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13553296/ (section: Methods / WGS and quality control in the ADSP dataset)",
+        "implementation_scope_note": "GENESIS workflows remain unimplemented. Native/SNPRelate KING coefficients and ordinary PCA do not implement GENESIS PC-AiR, PC-Relate or relatedness-adjusted model fitting. Require the paper version and explicit function/model settings before a permitted original runtime execution. Supplementary Note 7 is cited but was not reviewed here; the primary paragraph does not identify the exact functions or settings. Do not infer an exact GENESIS fitting function, link or covariance settings from this paragraph.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 51,
+            "section": "Methods / Statistical analysis",
+            "paragraph_sha256": "94b865bbc668ee622618f984d48feeb9d5eba474dfeb534c5d186291733bb6ab"
+          }
+        ]
       }
     ],
     "status": "extracted",
@@ -28880,6 +28904,40 @@
         "evidence_paragraph_sha256": "771cbda6deab4176e5328380dbc7cca3b3c89478fd63d5f137e183756043c47b",
         "use_summary": "Alignment manipulation and QC.",
         "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11549054/ (section: Methods / Genotype data and quality control)"
+      },
+      {
+        "tool_id": "genesis",
+        "tool": "GENESIS",
+        "analysis_role": "Relatedness-aware ancestry components and genetic association models",
+        "evidence_section": "Methods / Statistical analyses / Single-variant GWAS",
+        "evidence_paragraph_index": 52,
+        "matched_text": "GENESIS",
+        "extraction_score": 15,
+        "usage_context": "analysis-method-description",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
+        "version_reported_near_name": "2.26.0",
+        "evidence_selection": "individually-reviewed-paragraph",
+        "evidence_paragraph_sha256": "742e8d6f9b81868607acfad42e606882b28eef31a58888eb6d33aaed87d22827",
+        "use_summary": "PC-AiR generated ten genetic principal components used as fixed-effect covariates.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11549054/ (section: Methods / Statistical analyses / Single-variant GWAS)",
+        "implementation_scope_note": "GENESIS workflows remain unimplemented. Native/SNPRelate KING coefficients and ordinary PCA do not implement GENESIS PC-AiR, PC-Relate or relatedness-adjusted model fitting. Require the paper version and explicit function/model settings before a permitted original runtime execution. No PC-AiR settings or exact call are supplied in this paragraph."
+      },
+      {
+        "tool_id": "snprelate",
+        "tool": "SNPRelate",
+        "analysis_role": "Genotype PCA, genetic relatedness, LD pruning and relationship matrices",
+        "evidence_section": "Methods / Statistical analyses / Single-variant GWAS",
+        "evidence_paragraph_index": 53,
+        "matched_text": "SNPRelate",
+        "extraction_score": 15,
+        "usage_context": "analysis-method-description",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
+        "version_reported_near_name": "1.30.1",
+        "evidence_selection": "individually-reviewed-paragraph",
+        "evidence_paragraph_sha256": "f7f22a013eeaab77c24861cdb84d3f796f9747a5ed2c63124b638d5a81f57151",
+        "use_summary": "Named in a collective package list for the GRM/null-model stage of cohort association analyses.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11549054/ (section: Methods / Statistical analyses / Single-variant GWAS)",
+        "implementation_scope_note": "Scoped typed original SNPRelate1.46.0 KING-robust, LD pruning, GRM and exact/randomized PCA execution is validated; use SNPRELATE_INTEGRATION.md and require an admitted runtime/result. The paper-specific host, version, family context, LD estimator/window/start/seed, GRM estimator and input population must be explicit. P130 reports1.30.1; a1.46.0 run does not reproduce that historical version. The paragraph groups GWASTools, SNPRelate, POLMM, GRAB and/or SAIGE; it does not uniquely assign a function or null-model fit to SNPRelate. Do not invent that assignment."
       }
     ],
     "status": "extracted",
@@ -31480,6 +31538,23 @@
         "evidence_paragraph_sha256": "00d07ab417100578b9a81dc9ce6c0f8151765543561af4ae073b32aad4457ee0",
         "use_summary": "Variant consequence annotation.",
         "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10632132/ (section: Methods / Association analyses)"
+      },
+      {
+        "tool_id": "genesis",
+        "tool": "GENESIS",
+        "analysis_role": "Relatedness-aware ancestry components and genetic association models",
+        "evidence_section": "Methods / Association analyses",
+        "evidence_paragraph_index": 30,
+        "matched_text": "GENESIS",
+        "extraction_score": 15,
+        "usage_context": "analysis-method-description",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
+        "version_reported_near_name": null,
+        "evidence_selection": "individually-reviewed-paragraph",
+        "evidence_paragraph_sha256": "21b42a4150ffcb83f154175c19ed32e39e618b3c3ffe71e54bd3ba75dbbc53e8",
+        "use_summary": "Generalized linear mixed-model association tests in cis and trans, with a sparse fourth-degree PC-Relate kinship matrix as a random effect.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10632132/ (section: Methods / Association analyses)",
+        "implementation_scope_note": "GENESIS workflows remain unimplemented. Native/SNPRelate KING coefficients and ordinary PCA do not implement GENESIS PC-AiR, PC-Relate or relatedness-adjusted model fitting. Require the paper version and explicit function/model settings before a permitted original runtime execution. Exact GENESIS version, function calls and sparsification settings are not specified in this paragraph."
       }
     ],
     "status": "extracted",
@@ -37168,6 +37243,30 @@
         "evidence_paragraph_sha256": "040b72d7b7de42beb87b7b5397fa8caa42832af29dedecac8fa16358d1715920",
         "use_summary": "Used for genetic principal components.",
         "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12597823/ (section: Methods / Genotype quality control)"
+      },
+      {
+        "tool_id": "snprelate",
+        "tool": "SNPRelate",
+        "analysis_role": "Genotype PCA, genetic relatedness, LD pruning and relationship matrices",
+        "evidence_section": "Methods / Genotype quality control",
+        "evidence_paragraph_index": 28,
+        "matched_text": "SNPRelate",
+        "extraction_score": 15,
+        "usage_context": "analysis-method-description",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
+        "version_reported_near_name": null,
+        "evidence_selection": "individually-reviewed-paragraph",
+        "evidence_paragraph_sha256": "040b72d7b7de42beb87b7b5397fa8caa42832af29dedecac8fa16358d1715920",
+        "use_summary": "Genotype principal component analysis on508883 variants previously selected with PLINK indep-pairwise in the IAV perturbation cohort. Genotype principal component analysis on292681 variants previously selected with PLINK indep-pairwise in the CA/PA/MTB perturbation cohort.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12597823/ (section: Methods / Genotype quality control)",
+        "implementation_scope_note": "Scoped typed original SNPRelate1.46.0 KING-robust, LD pruning, GRM and exact/randomized PCA execution is validated; use SNPRELATE_INTEGRATION.md and require an admitted runtime/result. The paper-specific host, version, family context, LD estimator/window/start/seed, GRM estimator and input population must be explicit. P130 reports1.30.1; a1.46.0 run does not reproduce that historical version. No SNPRelate version, exact PCA function, eigen solver or component count is reported. PLINK pruning is a separate upstream step; do not replace the SNPRelate PCA host or infer its defaults. No SNPRelate version, exact PCA function, eigen solver or component count is reported. Picard liftover and PLINK pruning remain separate operations.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 29,
+            "section": "Methods / Genotype quality control",
+            "paragraph_sha256": "7f401c840c57d107aa621f9035137e345adb82741b864d548f8d6dc54c7a53c7"
+          }
+        ]
       }
     ],
     "status": "extracted",
@@ -41232,6 +41331,40 @@
         "evidence_paragraph_sha256": "5236e4f599b8363313a88fa49600564c28f6541b4f697b946ecd92a5945c74f0",
         "use_summary": "Model feature attribution.",
         "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13384252/ (section: Methods / Risk prediction / Shapley Additive Explanations values)"
+      },
+      {
+        "tool_id": "genesis",
+        "tool": "GENESIS",
+        "analysis_role": "Relatedness-aware ancestry components and genetic association models",
+        "evidence_section": "Methods / Genetic data analysis and genome-wide association study / PCA and genetic relationship matrix generation",
+        "evidence_paragraph_index": 15,
+        "matched_text": "GENESIS",
+        "extraction_score": 15,
+        "usage_context": "analysis-method-description",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
+        "version_reported_near_name": null,
+        "evidence_selection": "individually-reviewed-paragraph",
+        "evidence_paragraph_sha256": "da7363e369cb8c75e6ed07b72db9917f3ff1bcf722cbc9fe296ffd51e4b73afb",
+        "use_summary": "PC-AiR principal components for non-European ancestry groups using SNPRelate KING-robust relatedness.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13384252/ (section: Methods / Genetic data analysis and genome-wide association study / PCA and genetic relationship matrix generation)",
+        "implementation_scope_note": "GENESIS workflows remain unimplemented. Native/SNPRelate KING coefficients and ordinary PCA do not implement GENESIS PC-AiR, PC-Relate or relatedness-adjusted model fitting. Require the paper version and explicit function/model settings before a permitted original runtime execution. Exact GENESIS version and PC-AiR settings are unreported; do not attribute the separate PLINK2/SAIGE steps to GENESIS."
+      },
+      {
+        "tool_id": "snprelate",
+        "tool": "SNPRelate",
+        "analysis_role": "Genotype PCA, genetic relatedness, LD pruning and relationship matrices",
+        "evidence_section": "Methods / Genetic data analysis and genome-wide association study / PCA and genetic relationship matrix generation",
+        "evidence_paragraph_index": 15,
+        "matched_text": "SNPRelate",
+        "extraction_score": 15,
+        "usage_context": "analysis-method-description",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
+        "version_reported_near_name": null,
+        "evidence_selection": "individually-reviewed-paragraph",
+        "evidence_paragraph_sha256": "da7363e369cb8c75e6ed07b72db9917f3ff1bcf722cbc9fe296ffd51e4b73afb",
+        "use_summary": "KING-robust pairwise relatedness supplied to GENESIS PC-AiR for principal components in non-European ancestry groups.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13384252/ (section: Methods / Genetic data analysis and genome-wide association study / PCA and genetic relationship matrix generation)",
+        "implementation_scope_note": "Scoped typed original SNPRelate1.46.0 KING-robust, LD pruning, GRM and exact/randomized PCA execution is validated; use SNPRELATE_INTEGRATION.md and require an admitted runtime/result. The paper-specific host, version, family context, LD estimator/window/start/seed, GRM estimator and input population must be explicit. P130 reports1.30.1; a1.46.0 run does not reproduce that historical version. This is the SNPRelate-hosted method. The European PLINK2 pca approx and SAIGE sparse-GRM steps are distinct; the paragraph does not specify SNPRelate version or KING filtering/family settings."
       }
     ],
     "status": "extracted",
@@ -45410,6 +45543,23 @@
         "use_summary": "Ran REGENIE in two steps: ridge whole-genome predictors on 611713 variants, then association on 9607831 imputed variants with age, ever-smoking, batch, WES release and ten PCs.",
         "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12696490/ (section: Subjects and methods / Genetic validation: GWAS)",
         "implementation_scope_note": "A tested REGENIE 4.1.3 fit/variant/gene-mask subset is available; published versions and full paper pipelines are not validated. Exact variant panels, phenotype model/correction settings and caller release are not specified in this selected paragraph. Predictor construction and imputed-variant testing remain distinct stages."
+      },
+      {
+        "tool_id": "snprelate",
+        "tool": "SNPRelate",
+        "analysis_role": "Genotype PCA, genetic relatedness, LD pruning and relationship matrices",
+        "evidence_section": "Subjects and methods / Genetic validation: GWAS",
+        "evidence_paragraph_index": 28,
+        "matched_text": "snpgdsLDpruning",
+        "extraction_score": 15,
+        "usage_context": "analysis-method-description",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
+        "version_reported_near_name": null,
+        "evidence_selection": "individually-reviewed-paragraph",
+        "evidence_paragraph_sha256": "83b4989f6ea51884d173d39670bd5a3bbcf558fe6786a9f416c955437beb3387",
+        "use_summary": "snpgdsLDpruning generated a set of 149605 SNPs used by PLINK2 for principal components in European-ancestry men.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12696490/ (section: Subjects and methods / Genetic validation: GWAS)",
+        "implementation_scope_note": "Scoped typed original SNPRelate1.46.0 KING-robust, LD pruning, GRM and exact/randomized PCA execution is validated; use SNPRELATE_INTEGRATION.md and require an admitted runtime/result. The paper-specific host, version, family context, LD estimator/window/start/seed, GRM estimator and input population must be explicit. P130 reports1.30.1; a1.46.0 run does not reproduce that historical version. Exact SNPRelate version, LD method, random seed and pruning settings are unreported. Do not substitute PLINK clumping/pruning semantics."
       }
     ],
     "status": "extracted",
@@ -45836,6 +45986,23 @@
         "evidence_paragraph_sha256": "beec1e9ae5c2822d21af5659f4f13d8157d81bd4b3d35e644c2dc7446a8f8985",
         "use_summary": "Bayesian fine-mapping and credible sets.",
         "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11393713/ (section: Material and methods / Sharing of skin meQTLs and skin eQTLs)"
+      },
+      {
+        "tool_id": "genesis",
+        "tool": "GENESIS",
+        "analysis_role": "Relatedness-aware ancestry components and genetic association models",
+        "evidence_section": "Material and methods / Identification of skin meQTLs",
+        "evidence_paragraph_index": 18,
+        "matched_text": "GENESIS",
+        "extraction_score": 15,
+        "usage_context": "analysis-method-description",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
+        "version_reported_near_name": null,
+        "evidence_selection": "individually-reviewed-paragraph",
+        "evidence_paragraph_sha256": "8091dc23e0d35d8f2a764e0ea111b92e1473170daae329f0aca226872888ee8a",
+        "use_summary": "Twenty genetic principal components from common HapMap3 SNPs after exclusion of long-range LD regions; used in ancestry-outlier assessment.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11393713/ (section: Material and methods / Identification of skin meQTLs)",
+        "implementation_scope_note": "GENESIS workflows remain unimplemented. Native/SNPRelate KING coefficients and ordinary PCA do not implement GENESIS PC-AiR, PC-Relate or relatedness-adjusted model fitting. Require the paper version and explicit function/model settings before a permitted original runtime execution. The paragraph does not identify the exact GENESIS function or version; PC-AiR must not be inferred automatically."
       }
     ],
     "status": "extracted",

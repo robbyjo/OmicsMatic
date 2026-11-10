@@ -219,6 +219,8 @@ public final class JLinAlgCli {
             return DeepToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
         if (arguments.length > 0 && arguments[0].equals("diamond-tools"))
             return DiamondToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("snprelate-tools"))
+            return SnprelateToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
         if (arguments.length > 0 && arguments[0].equals("cellchat-tools"))
             return CellChatToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
         if (arguments.length > 0 && arguments[0].equals("cistarget-tools"))
@@ -424,6 +426,7 @@ public final class JLinAlgCli {
               java -jar omicsmatic-<version>.jar single-cell-qc --help
               java -jar omicsmatic-<version>.jar cellbender-tools --help
               java -jar omicsmatic-<version>.jar diamond-tools --help
+              java -jar omicsmatic-<version>.jar snprelate-tools --help
               java -jar omicsmatic-<version>.jar cellchat-tools --help
               java -jar omicsmatic-<version>.jar cistarget-tools --help
               java -jar omicsmatic-<version>.jar mrmega-tools --help

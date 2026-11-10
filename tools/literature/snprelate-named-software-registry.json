@@ -1,0 +1,20 @@
+[
+  {
+    "id": "snprelate",
+    "name": "SNPRelate",
+    "pattern": "(?<![A-Za-z0-9_])(?:SNPRelate|snpgds[A-Za-z0-9_]+)(?![A-Za-z0-9_])",
+    "role": "Genotype PCA, genetic relatedness, LD pruning and relationship matrices",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Native1.46.0 KING/QC components are validated separately; typed upstream workflows remain under validation. P170 uses genotype PCA after separate PLINK pruning; P191 uses SNPRelate-hosted KING for GENESIS PC-AiR; P216 explicitly names snpgdsLDpruning. P130 names1.30.1 in a collective GRM/null-model package list without uniquely assigning functions. Do not substitute standalone KING, PLINK pruning, ordinary PCA in a different host or a different package version."
+  },
+  {
+    "id": "genesis",
+    "name": "GENESIS",
+    "pattern": "(?-i:(?<![A-Za-z0-9_])GENESIS(?![A-Za-z0-9_]))",
+    "role": "Relatedness-aware ancestry components and genetic association models",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Reviewed uses include PC-AiR, relatedness-adjusted polygenic-score models, PC-Relate-informed GLMM association and principal components with an unspecified function. Versions2.16.1 and2.26.0 are reported in distinct papers. SNPRelate KING does not implement these GENESIS analyses. Ordinary lowercase genesis in biological prose is excluded."
+  }
+]

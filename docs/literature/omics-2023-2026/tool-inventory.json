@@ -5274,6 +5274,27 @@
     "whole_goal_complete": false
   },
   {
+    "id": "genesis",
+    "name": "GENESIS",
+    "pattern": "(?-i:(?<![A-Za-z0-9_])GENESIS(?![A-Za-z0-9_]))",
+    "role": "Relatedness-aware ancestry components and genetic association models",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Reviewed uses include PC-AiR, relatedness-adjusted polygenic-score models, PC-Relate-informed GLMM association and principal components with an unspecified function. Versions2.16.1 and2.26.0 are reported in distinct papers. SNPRelate KING does not implement these GENESIS analyses. Ordinary lowercase genesis in biological prose is excluded.",
+    "paper_count": 5,
+    "papers": [
+      "P128",
+      "P130",
+      "P142",
+      "P191",
+      "P219"
+    ],
+    "implementation_status": "missing",
+    "implementation_source": null,
+    "implementation_scope": "Reviewed uses include PC-AiR, relatedness-adjusted polygenic-score models, PC-Relate-informed GLMM association and principal components with an unspecified function. Versions2.16.1 and2.26.0 are reported in distinct papers. SNPRelate KING does not implement these GENESIS analyses. Ordinary lowercase genesis in biological prose is excluded.",
+    "validation_note": "Existing overlap/adapters require paper-specific option checks; missing integrations remain pending."
+  },
+  {
     "id": "snpeff",
     "name": "SnpEff",
     "pattern": "(?<![A-Za-z0-9_])(?:SnpEff)(?![A-Za-z0-9_])",
@@ -5732,6 +5753,44 @@
     "implementation_source": null,
     "implementation_scope": "Additional software identified during full-text/code-link completeness review; integration and independent validation pending.",
     "validation_note": "Existing overlap/adapters require paper-specific option checks; missing integrations remain pending."
+  },
+  {
+    "id": "snprelate",
+    "name": "SNPRelate",
+    "pattern": "(?<![A-Za-z0-9_])(?:SNPRelate|snpgds[A-Za-z0-9_]+)(?![A-Za-z0-9_])",
+    "role": "Genotype PCA, genetic relatedness, LD pruning and relationship matrices",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Scoped original SNPRelate1.46.0 KING-robust, LD pruning, GRM and exact/randomized PCA; native full genotype/QC/identity auditing. Four papers are reviewed; historical settings remain explicit.",
+    "paper_count": 4,
+    "papers": [
+      "P130",
+      "P170",
+      "P191",
+      "P216"
+    ],
+    "implementation_status": "upstream-adapter-validated",
+    "implementation_source": "src/main/java/org/jlinalg/cli/SnprelateToolsCli.java",
+    "implementation_scope": "Typed snprelate-tools on an explicitly pinned private Windows R4.6.1 runtime. Complete variant-major diploid biallelic hard calls, numeric chromosome/position order and literal FID/IID/variant sidecars. Explicit GDS layout, QC, family context, LD estimator/window/start/seed, six GRM methods or exact/randomized PCA options. Native Java independently checks complete genotype transport, SNPRelate1.46 scalar QC and KING coefficients. LD/GRM/PCA execute unchanged upstream; saved verification checks full output contracts and PCA invariants without independently refitting those estimators. Explicit setup/profile preparation is separate; analysis installs nothing. Java-only saved verification works on Windows and Linux. Read SNPRELATE_INTEGRATION.md.",
+    "validation_note": "320 complete source-case dispositions:186 preceding KING/LD/GRM successes,54 empty-QC preflight refusals and80 successful original PCA analyses.11520 complete KING/GRM matrix cells and complete source PCA fields/signs/placeholders are compared. Current verifier replays all240 prior bundles480 times on Windows/Linux; PCA has160 saved checks.60 focused JUnit executions,40 resealed scientific/protocol mutation refusals, four helper/skip/preservation checks and33 root commands include four actual original analyses. Source nonfinite outputs and Weighted-to-EIGMIX reporting alias remain unchanged. Raw DSPEVX uncomputed NaNs, randomized projection zero padding, seed state and source signs remain visible. No historical paper reproduction, independent LD/GRM/PCA refit, producer authentication, biological accuracy or production-cohort performance claim.",
+    "project_adapter_available": true,
+    "canonical_adapter_available": false,
+    "source_roles_reviewed": 4,
+    "source_role_coverage": "snprelate-role-coverage.json",
+    "development_candidate": "docs/literature/snprelate-tools-development/snprelate-root-javac21.jar",
+    "development_candidate_sha256": "27d450148a7ee3a46ab4e9519b4e782b9382d39506ed1ad14fe8446538fa20ba",
+    "development_cli_class": "org.jlinalg.cli.SnprelateToolsCli",
+    "root_cli_class": "org.jlinalg.cli.JLinAlgCli",
+    "root_command": "snprelate-tools",
+    "workflow_proof": "docs/literature/snprelate-tools-development/VALIDATION.json",
+    "original_runtime_required": true,
+    "analysis_installs_software": false,
+    "supported_source_versions": [
+      "1.46.0"
+    ],
+    "whole_package_implemented": false,
+    "whole_paper_reproduced": false,
+    "whole_goal_complete": false
   },
   {
     "id": "tensorqtl",
