@@ -11970,6 +11970,84 @@
       "use_summary": "Twenty genetic principal components from common HapMap3 SNPs after exclusion of long-range LD regions; used in ancestry-outlier assessment.",
       "implementation_scope_note": "Scoped original GENESIS2.42.0 PC-AiR, supplied-PC PC-Relate, null models and single-variant association dispatch are validated with typed requests and native admission checks; use GENESIS_INTEGRATION.md. Current2.42.0 does not reproduce a historical or unstated paper version/settings. The source reports twenty PCs with common HapMap3 SNP/long-range-LD exclusions but does not identify the GENESIS function or version. The current twenty-PC control does not establish that the paper used PC-AiR.",
       "version_reported_near_name": null
+    },
+    {
+      "pmcid": "PMC12807864",
+      "doi": "10.1038/s41588-025-02397-7",
+      "tool_id": "mtag",
+      "evidence_paragraph_sha256": "17f7e0249b91867cc9e8e0a6530a9a82ba7b29c85528161afb22f34a3f9c1333",
+      "use_summary": "Jointly analyzed aortic valve area, mean gradient, peak velocity and aortic-stenosis GWAS summary statistics with MTAG 1.0.8 at reported default settings; computed maxFDR. The enhanced statistics were used later to construct polygenic scores.",
+      "implementation_scope_note": "Scoped original MTAG1.0.8 common-SNP workflows with explicit two-to-eight-trait inputs, native effect/tail/identity/diagnostic audits and complete saved verification are available through mtag-tools; read MTAG_INTEGRATION.md. This tested source commit does not establish the paper historical commit or reconstruct its unreported settings. The source explicitly reports a four-way default-settings analysis and maxFDR. REGENIE inputs, the aortic-stenosis METAL meta-analysis and downstream PRScs scoring remain separate. The complete literal command and source commit are unreported; do not infer them from a version number.",
+      "version_reported_near_name": "1.0.8",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 53,
+          "section": "Methods / MTAG",
+          "paragraph_sha256": "f09c4ddb9eb715264330d28d4b6d58947fdd86ac04dfc06e8e26420114470f22"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC11631763",
+      "doi": "10.1038/s41588-024-01975-5",
+      "tool_id": "mtag",
+      "evidence_paragraph_sha256": "93c5ad979b916b43ef1c9180045fdd5458932f263ae2278112d3fcae976d981e",
+      "use_summary": "Screened DCM, NICM, HCM and eight left-ventricular MRI GWASs for genetic correlation. Selected Ecc and indexed LV end-systolic volume from two clusters with positive rg>0.7, then combined them with DCM in a three-trait MTAG 1.0.8 run using default parameters. Reported maxFDR 0.03 and an approximately 73% effective-sample-size increase for DCM.",
+      "implementation_scope_note": "Scoped original MTAG1.0.8 common-SNP workflows with explicit two-to-eight-trait inputs, native effect/tail/identity/diagnostic audits and complete saved verification are available through mtag-tools; read MTAG_INTEGRATION.md. This tested source commit does not establish the paper historical commit or reconstruct its unreported settings. The final run combines DCM, Ecc and LVESVi; the initial correlation screen is a different stage. The selection is positive rg>0.7, not an absolute-correlation rule. The authors separate JATS equation provides n_snp_eff=1/(2*MAF*(1-MAF)*SE^2), recorded in mtag-P088-equation-source-review.json; it is not attributed to the adjacent paragraph text. Supply explicitly prepared Z/N and preserve author units. The original source beta/SE input mode is disabled; no replacement input mode or effective-N definition is inferred.",
+      "version_reported_near_name": "1.0.8",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 27,
+          "section": "Methods / Multitrait analyses",
+          "paragraph_sha256": "ad9a3351a885262b8b89a3b7675e5e485d1ea9d83c99bea1200fad6a10f304df"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC11631752",
+      "doi": "10.1038/s41588-024-01952-y",
+      "tool_id": "mtag",
+      "evidence_paragraph_sha256": "e020bf1944ac3b4fd33e02197bbffe82c4cc34cef8d38e41cb26ccd0f874054b",
+      "use_summary": "Combined the primary DCM GWAS with cardiac-MRI GWASs selected by absolute genetic correlation |rg|>0.7 after separate LDSC screening of ten traits. The paragraph explicitly reports MTAG 1.0.8 and maxFDR 2.7%.",
+      "implementation_scope_note": "Scoped original MTAG1.0.8 common-SNP workflows with explicit two-to-eight-trait inputs, native effect/tail/identity/diagnostic audits and complete saved verification are available through mtag-tools; read MTAG_INTEGRATION.md. This tested source commit does not establish the paper historical commit or reconstruct its unreported settings. Separate LDSC1.0.1 screening considered ten MRI traits, with selection by absolute |rg|>0.7. The paragraph reports MTAG1.0.8 but does not enumerate the final selected trait files or give the complete command. Do not substitute the ten screening candidates for the final inputs.",
+      "version_reported_near_name": "1.0.8",
+      "supporting_evidence": []
+    },
+    {
+      "pmcid": "PMC10703690",
+      "doi": "10.1038/s41588-023-01563-z",
+      "tool_id": "mtag",
+      "evidence_paragraph_sha256": "bf089836c7012db544f1f93873b48e7ca6ed8e45850a2443fe898c8206a8e956",
+      "use_summary": "Jointly analyzed EUR cannabis-use-disorder, alcohol-use-disorder and FTND nicotine-dependence GWAS statistics. Removed duplicate, MAF<=0.01 and strand-ambiguous variants beforehand; reported 5,894,946 cannabis variants after QC and 3,540,940 after joint MTAG analysis, with significance P<5e-8.",
+      "implementation_scope_note": "Scoped original MTAG1.0.8 common-SNP workflows with explicit two-to-eight-trait inputs, native effect/tail/identity/diagnostic audits and complete saved verification are available through mtag-tools; read MTAG_INTEGRATION.md. This tested source commit does not establish the paper historical commit or reconstruct its unreported settings. Pre-MTAG duplicate/MAF<=0.01/strand QC, original EUR GWAS and METAL meta-analysis are separate. The version, literal command, per-SNP Ns and covariance/reference settings are unstated. Reported total AUD/FTND Ns are not per-SNP Ns. Source keep-first deduplication does not reconstruct the paper unspecified duplicate-removal policy; provide explicitly prepared inputs and retain every disposition.",
+      "version_reported_near_name": null,
+      "supporting_evidence": []
+    },
+    {
+      "pmcid": "PMC10703686",
+      "doi": "10.1038/s41588-023-01559-9",
+      "tool_id": "mtag",
+      "evidence_paragraph_sha256": "9e817079f0452d7bcc34a75fd26559e9c96a85445e67c6930f1bdcf1426ddfea",
+      "use_summary": "Compared six selections of MDD-related GWAS inputs to create integrated LifetimeMDD statistics. Repeated GWAS and MTAG within each 90% training fold before separate PRSice scoring of held-out participants. Used MTAG-derived effective N downstream in LDSC, and reported input-sensitive findings and heritability inflation.",
+      "implementation_scope_note": "Scoped original MTAG1.0.8 common-SNP workflows with explicit two-to-eight-trait inputs, native effect/tail/identity/diagnostic audits and complete saved verification are available through mtag-tools; read MTAG_INTEGRATION.md. This tested source commit does not establish the paper historical commit or reconstruct its unreported settings. Six input selections and fold-specific90% training analyses are separate requests; no automatic inclusion of217 phenotypes or reuse of held-out data is authorized by this description. The authors report input-sensitive results and heritability inflation. The full six sets require the figure/supplement. MTAG version/complete commands are unstated. The paper explicitly uses MTAG-derived effective N downstream in LDSC; distinguish it from per-SNP, case/control and imputation effective Ns, then choose and label the intended downstream value.",
+      "version_reported_near_name": null,
+      "supporting_evidence": [
+        {
+          "paragraph_index": 15,
+          "section": "Results / MTAG improves GWAS power but is sensitive to inputs",
+          "paragraph_sha256": "b5026e73bde99d1ab560142d6681c2fe6db1073aa17dff6d94d4f326abed2b5f"
+        },
+        {
+          "paragraph_index": 16,
+          "section": "Results / MTAG improves GWAS power but is sensitive to inputs",
+          "paragraph_sha256": "afcefea1c72c39441f5b20d5faeb63ccab8e99a2ffbcd055b4f37602ddde1758"
+        },
+        {
+          "paragraph_index": 43,
+          "section": "Methods / In-sample PRS prediction of phenotypes in UK Biobank with ten-fold cross-validation",
+          "paragraph_sha256": "c2996ce6b7cc8ac7fccb093ed2579a8141d053c2eff7e06262662ef463df2270"
+        }
+      ]
     }
   ]
 }

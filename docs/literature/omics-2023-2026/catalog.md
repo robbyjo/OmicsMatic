@@ -1526,7 +1526,7 @@ Nature Genetics · 2025-12-19 · [DOI](https://doi.org/10.1038/s41588-025-02397-
 | GSEA | Ranked gene-set enrichment. | Methods / Tissue and cell-type enrichment with MAGMA |
 | MAGMA | Used MAGMA1.09b defaults with GRCh37 annotations and a precomputed European1000Genomes reference; genes and gene sets were tested with per-trait BH-FDR below0.05. | Methods / MAGMA gene-set analysis |
 | METAL | GWAS meta-analysis. | Methods / Study overview |
-| MTAG | Multi-trait GWAS analysis. | Methods / Study overview |
+| MTAG | Jointly analyzed aortic valve area, mean gradient, peak velocity and aortic-stenosis GWAS summary statistics with MTAG 1.0.8 at reported default settings; computed maxFDR. The enhanced statistics were used later to construct polygenic scores. | Methods / Study overview |
 | REGENIE | Ran phenotype GWAS with REGENIE 2.2.4, adjusting for sex, age, age squared at cMRI, array, scanner identifier and ten genetic ancestry PCs. | Methods / GWAS |
 | TwoSampleMR | Instrument harmonization and two-sample Mendelian randomization. | Methods / Mendelian randomization for aortic valve function and aortic stenosis |
 
@@ -1706,7 +1706,7 @@ Nature Genetics · 2024-11-21 · [DOI](https://doi.org/10.1038/s41588-024-01975-
 | LDSC | Used for SNP heritability estimation. | Methods / Heritability and genetic correlations |
 | MAGMA | Computed gene-level associations with MAGMA1.10 using European1000Genomes Phase3 LD, then supplied those results to PoPS0.2 feature-based prioritization for18383 genes. | Methods / Locus definitions, variant annotation and gene prioritization / Polygenic priority score |
 | METAL | GWAS meta-analysis. | Methods / GWAS meta-analyses |
-| MTAG | Multi-trait GWAS analysis. | Methods / Multitrait analyses |
+| MTAG | Screened DCM, NICM, HCM and eight left-ventricular MRI GWASs for genetic correlation. Selected Ecc and indexed LV end-systolic volume from two clusters with positive rg>0.7, then combined them with DCM in a three-trait MTAG 1.0.8 run using default parameters. Reported maxFDR 0.03 and an approximately 73% effective-sample-size increase for DCM. | Methods / Multitrait analyses |
 | PLINK 2 | Used for LD-based variant selection. | Methods / Locus definitions, variant annotation and gene prioritization / MR and colocalization for eQTLs and pQTLs |
 | PoPS | Effector-gene prioritization using polygenic features. | Methods / Locus definitions, variant annotation and gene prioritization / Polygenic priority score |
 | REGENIE | Ran NICM and stricter NI-DCM case-control GWAS with REGENIE in FinnGen, UKB and MGB after biobank-specific ICD definitions and heart-failure exclusions from controls. | Methods / GWAS for dilated cardiomyopathy |
@@ -1754,7 +1754,7 @@ Nature Genetics · 2024-11-21 · [DOI](https://doi.org/10.1038/s41588-024-01952-
 | LDAK | SNP heritability and polygenic modelling. | Methods / SNP-based heritability estimation |
 | LDSC | Used for cross-trait genetic correlation. | Methods / Discovery GWAS and multitrait analysis of GWAS |
 | METAL | GWAS meta-analysis. | Methods / Discovery GWAS and multitrait analysis of GWAS |
-| MTAG | Multi-trait GWAS analysis. | Methods / Discovery GWAS and multitrait analysis of GWAS |
+| MTAG | Combined the primary DCM GWAS with cardiac-MRI GWASs selected by absolute genetic correlation \|rg\|>0.7 after separate LDSC screening of ten traits. The paragraph explicitly reports MTAG 1.0.8 and maxFDR 2.7%. | Methods / Discovery GWAS and multitrait analysis of GWAS |
 | MultiXcan | Joint tissue predicted expression association. | Methods / Transcriptome-wide association study |
 | PLINK | Genotype QC, association, relatedness, LD or score calculations. | Methods / Polygenic risk score generation and testing |
 | PolyFun | Functional-prior fine-mapping. | Methods / Functionally informed fine-mapping of genomic loci |
@@ -2244,7 +2244,7 @@ Nature Genetics · 2023-11-20 · [DOI](https://doi.org/10.1038/s41588-023-01563-
 | LDSC | Used for SNP heritability estimation. | Methods / LDSC and SNP-based heritability |
 | METAL | GWAS meta-analysis. | Methods / MVP genotyping, imputation, quality control, and GWAS and meta-analysis |
 | Minimac | MVP biallelic SNPs were imputed using Minimac4 with the African Genome Resources panel; indels/complex variants were imputed independently with 1000 Genomes Phase3 then merged. Separately, iPSYCH used Eagle 2.3.5/Minimac and HRC v1.0 in a phased imputation pipeline. | Methods / MVP genotyping, imputation, quality control, and GWAS and meta-analysis |
-| MTAG | Multi-trait GWAS analysis. | Methods / Multi-trait analysis of GWAS |
+| MTAG | Jointly analyzed EUR cannabis-use-disorder, alcohol-use-disorder and FTND nicotine-dependence GWAS statistics. Removed duplicate, MAF<=0.01 and strand-ambiguous variants beforehand; reported 5,894,946 cannabis variants after QC and 3,540,940 after joint MTAG analysis, with significance P<5e-8. | Methods / Multi-trait analysis of GWAS |
 | PLINK | Used PLINK 1.9 to analyze a new Yale-Penn case-control tranche of unrelated individuals not included in earlier GWAS or meta-analyses. | Methods / MVP genotyping, imputation, quality control, and GWAS and meta-analysis |
 | PLINK 2 | Used PLINK 2.0 logistic regression for MVP cannabis-use-disorder GWAS, with sex, age and ten covariates called positive controls in the source. Applied ancestry-specific allele-frequency and best-guess genotype missingness rules. | Methods / MVP genotyping, imputation, quality control, and GWAS and meta-analysis |
 | TwoSampleMR | Instrument harmonization and two-sample Mendelian randomization. | Methods / Mendelian randomization |
@@ -2297,7 +2297,7 @@ Nature Genetics · 2023-11-20 · [DOI](https://doi.org/10.1038/s41588-023-01559-
 | FlashPCA | Genetic principal components. | Methods / GWASs on observed or imputed phenotypes |
 | LDSC | Used for SNP heritability estimation; cross-trait genetic correlation. | Methods / SNP-based heritability and genetic correlation |
 | METASOFT | Meta-analysis and heterogeneity assessment. | Methods / GWASs on observed or imputed phenotypes |
-| MTAG | Multi-trait GWAS analysis. | Methods / SNP-based heritability and genetic correlation |
+| MTAG | Compared six selections of MDD-related GWAS inputs to create integrated LifetimeMDD statistics. Repeated GWAS and MTAG within each 90% training fold before separate PRSice scoring of held-out participants. Used MTAG-derived effective N downstream in LDSC, and reported input-sensitive findings and heritability inflation. | Methods / SNP-based heritability and genetic correlation |
 | PLINK 2 | Used for genetic association analysis. | Methods / GWASs on observed or imputed phenotypes |
 | PRSice | Clumping and thresholding polygenic score construction. | Methods / In-sample PRS prediction of phenotypes in UK Biobank with ten-fold cross-validation |
 

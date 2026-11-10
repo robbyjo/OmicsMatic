@@ -5186,7 +5186,7 @@
     "role": "Multi-trait GWAS analysis",
     "current_coverage": "missing",
     "existing_source": null,
-    "coverage_note": "No equivalent workflow identified in the current source inventory.",
+    "coverage_note": "Scoped original MTAG1.0.8 common-SNP workflows with explicit inputs, native effect/tail/identity/diagnostic audits and saved verification. Five primary paper roles reviewed; original input/model/default and version gaps remain explicit.",
     "paper_count": 5,
     "papers": [
       "P077",
@@ -5195,10 +5195,36 @@
       "P112",
       "P115"
     ],
-    "implementation_status": "missing",
-    "implementation_source": null,
-    "implementation_scope": "No equivalent workflow identified in the current source inventory.",
-    "validation_note": "Existing overlap/adapters require paper-specific option checks; missing integrations remain pending."
+    "implementation_status": "upstream-adapter-validated",
+    "implementation_source": "src/main/java/org/jlinalg/cli/MtagToolsCli.java",
+    "implementation_scope": "Typed mtag-tools supervises unchanged original1.0.8 in a private exact Linux x86_64 Python2.7.15/NumPy1.16.4/pandas0.24.2/SciPy1.2.1 environment. Explicit ordered two-to-eight-trait autosomal biallelic SNP TSV/gzip/bzip2 inputs; provided/LDSC residual covariance, provided/GMM/numerical genetic covariance, perfect/equal-h2 constraints and supported maxFDR grid or spike/slab choices. Native Java audits complete parsed identities/coordinates/allele operations, every trait output, full-matrix effect algebra, source SciPy-tail zeros and every diagnostic ledger row. Fitting/full source QC/maxFDR formulas remain upstream. Default freq can bypass internal MAF munging; violating retained SNPs are refused. Ineffective no-flip, broken n_max/custom grids, union meta_format and NPY covariance intake are skipped; no replacement source/model/header/threshold is inferred. Result per-SNP N and source GWAS-equivalent N remain distinct. Read MTAG_INTEGRATION.md.",
+    "validation_note": "25 original option controls:20 admitted workflows,4 expected scientific refusals,1 capability skip;172625 admitted trait-result rows.60 portable option replays,3 admitted root workflows plus1 source error/3 skips,9 root saved replays,24 portable safety/tamper protocols and5 setup refusals. Additional original4-through8-trait workflows include the full default4-trait10-interval maxFDR grid and15 saved replays. Source-bound Cephes tails retain386088 finite comparisons and35853 numerical zeros across3 JVMs. Reused synthetic populations are not independent biological datasets. No independent LDSC/maxFDR fitting, producer authenticity, biological accuracy or whole-paper reconstruction is certified.",
+    "project_adapter_available": true,
+    "canonical_adapter_available": false,
+    "source_roles_reviewed": 5,
+    "source_role_coverage": "mtag-source-role-coverage.json",
+    "development_candidate": "docs/literature/mtag-workflow-development/mtag-root-javac21.jar",
+    "development_candidate_sha256": "dc4148a7b1982b356318f6dec0851aa966a0218942076c75d33313a186931381",
+    "development_cli_class": "org.jlinalg.cli.MtagToolsCli",
+    "root_cli_class": "org.jlinalg.cli.JLinAlgCli",
+    "root_command": "mtag-tools",
+    "workflow_proof": "docs/literature/mtag-workflow-development/VALIDATION.json",
+    "dimension_proof": "docs/literature/mtag-dimensions-development/VALIDATION.json",
+    "native_components": [
+      "MtagEstimator",
+      "MtagScipy121NormalTail",
+      "MtagAlgebra"
+    ],
+    "original_runtime_required": true,
+    "analysis_installs_software": false,
+    "runtime_setup_export_available": true,
+    "download_install_available": true,
+    "supported_source_versions": [
+      "1.0.8"
+    ],
+    "whole_package_implemented": false,
+    "whole_paper_reproduced": false,
+    "whole_goal_complete": false
   },
   {
     "id": "pops",
