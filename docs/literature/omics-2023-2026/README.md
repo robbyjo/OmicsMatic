@@ -1,5 +1,51 @@
 # 250 paper omics and GWAS toolbox catalog
 
+**Current checkpoint: 94 new scoped integrations**: 19 native Java methods and
+75 tested upstream adapters. There are **97 including three existing adapters**,
+with **247 named tools still missing**. Cell Ranger remains excluded at the
+user's request. The full toolbox goal remains active.
+
+The fixed cohort contains 250 papers: 71 Nature, 104 Nature Genetics and 75 AJHG
+articles from 2023-10-23 through 2026-10-23. No time extension was needed.
+There are 400 observed tools from 438 definitions, 2,466 paper-tool observations,
+1,024 source-bound reviewed roles and 357 supporting pointers. Paper-wide
+semantic review and implementation remain incomplete.
+
+Read [CellChat integration](../CELLCHAT_INTEGRATION.md) for the `cellchat-tools`
+root command, self-contained standalone alternatives, explicit original source
+profiles, database exports and required actions. Six reviewed paper roles
+distinguish resource use, original inference, network embedding/comparison and
+sample-aware strengths. This adds one tested scoped adapter. All 1,018 previous
+reviews and the 399 unrelated tool entries remain unchanged.
+
+**Warnings and required actions:** SKIP3 means skip dependent analysis until the
+exact permitted prerequisite is available; if installation is unavailable or
+forbidden, keep it skipped. FAIL2 admits no new result: preserve the attempt,
+fix the named cause and retry new paths. Analysis installs nothing. Require
+exit 0, result_admitted=true and successful complete verification; read every
+warning, original output, provenance and captured parent warning.
+
+Original CellChat invalid p-fields, fallback zeros, FNN/SNN anomalies,
+missing/nonfinite strengths, parallel RNG warnings and UMAP variability remain
+visible. They are not repaired or made valid by transport success. P060's custom
+score aggregation remains unresolved: skip that study-score analysis until the
+exact implementation is supplied. CellChat database export remains available.
+Spyrrow, CellTrek, LIANA and FlowSig are separate tool roles; Spyrrow remains
+missing in the catalog. Historical paper reproduction is not claimed.
+
+Current records: [tool inventory](tool-inventory.json), [papers](papers.json),
+[summary](summary.json), [warnings and required actions](WARNINGS.md) and
+[CellChat source-role coverage](cellchat-role-coverage.json).
+
+The generated reference and earlier checkpoints below are retained exactly.
+Individual historical notes retain their own counts and availability limits;
+the current records above are authoritative for this checkpoint.
+
+<details>
+<summary>Generated catalog reference and retained historical checkpoints</summary>
+
+# 250 paper omics and GWAS toolbox catalog
+
 **Current checkpoint: 93 new scoped integrations** — 19 native Java methods and
 74 tested upstream adapters. There are **96 including three existing adapters**,
 with **248 named tools still missing**. These are scoped implementations with
@@ -1146,6 +1192,8 @@ The [implementation queue](implementation-plan.md) and `tool-inventory.json`
 distinguish missing tools, related existing methods, existing adapters/lookups,
 and newly validated subsets. Complete the remaining integrations and semantic
 coverage review before marking the overall goal complete.
+
+</details>
 
 </details>
 

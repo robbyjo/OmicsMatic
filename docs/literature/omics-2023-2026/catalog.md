@@ -1214,7 +1214,7 @@ Nature · 2023-12-13 · [DOI](https://doi.org/10.1038/s41586-023-06808-9) · [Pr
 | Tool | How used | Evidence location |
 | --- | --- | --- |
 | ALLCools | Methylome datasets, clustering, integration and differential methylation. | Methods / Integration of MERFISH data with scRNA-seq data |
-| CellChat | Ligand-receptor cell communication inference. | Methods / Ligand–receptor analysis and analysis of other genes upregulating in interacting cell pairs |
+| CellChat | Used CellChat ligand-receptor database entries for subclass-level analysis after restricting transferred labels to confidence above0.8; calculated a custom communication score on imputed expression. | Methods / Ligand–receptor analysis and analysis of other genes upregulating in interacting cell pairs |
 | Leiden | Grouped observations into communities using a neighborhood graph. | Methods / Spatial module analysis |
 | Scanpy | Used for expression normalization. | Methods / Integration of MERFISH data with scRNA-seq data |
 | Scrublet | Applied Scrublet to MERFISH profiles after volume correction and normalization to 250, using a score cutoff greater than 0.25 and removing about four percent. | Methods / Preprocessing of MERFISH data |
@@ -1638,7 +1638,7 @@ Nature Genetics · 2024-11-22 · [DOI](https://doi.org/10.1038/s41588-024-01961-
 | Tool | How used | Evidence location |
 | --- | --- | --- |
 | CellBender | Quantified and corrected ambient RNA with CellBender 0.2.0 remove-background in Parse-derived snRNA-seq count matrices; also corrected ambient RNA per sample while uniformly reprocessing three published datasets quantified with kallisto bustools. | Methods / Preprocessing gene expression data |
-| CellChat | Ligand-receptor cell communication inference. | Methods / Cell–cell signaling analysis |
+| CellChat | Used CellChat1.1.3 and CellChatDB.human on normalized single-cell expression with cell-type/CellTrek-region annotations, removing groups with fewer than30 cells. Separate condition objects underwent overexpression selection, PPI projection, communication inference/filtering, pathway aggregation and centrality, followed by merged functional/structural similarity, information-flow comparisons, mapped ligand/receptor differential expression and bubble plots. Extended Data Figure7d also requires joint functional pathway embedding and clustering. | Methods / Cell–cell signaling analysis |
 | Enrichr | Gene-set enrichment. | Methods / Differential gene expression analysis |
 | Harmony | Batch integration of cell embeddings. | Methods / Reprocessing publicly available single-nucleus gene expression datasets |
 | kallisto | Used the count workflow from kallisto bustools to pseudoalign published Alzheimer snRNA-seq libraries against GRCh38 and obtain gene/UMI matrices. | Methods / Reprocessing publicly available single-nucleus gene expression datasets |
@@ -1746,7 +1746,7 @@ Nature Genetics · 2024-11-21 · [DOI](https://doi.org/10.1038/s41588-024-01952-
 | Tool | How used | Evidence location |
 | --- | --- | --- |
 | ANNOVAR | Variant functional annotation. | Methods / Functionally informed fine-mapping of genomic loci |
-| CellChat | Ligand-receptor cell communication inference. | Methods / Pathway enrichment analysis of effector genes, DEGs and intercellular communication in DCM single-nucleus transcriptomics |
+| CellChat | Used CellChatv1.0 with default settings in R4.0.3 to infer cell-type communication in DCM/control single-nucleus data from the curated ligand-receptor database and law-of-mass-action model; endocardial cells were distinguished from other endothelial cells. | Methods / Pathway enrichment analysis of effector genes, DEGs and intercellular communication in DCM single-nucleus transcriptomics |
 | coloc | Shared-signal colocalization analysis. | Methods / Colocalization with gene expression |
 | edgeR | Count-based differential expression analysis. | Methods / Tissue, cell type and cell state heritability enrichment |
 | GCTA | Used for genetic association analysis; conditional or joint association analysis. | Methods / ABC model / Conditional GWAS analysis |
@@ -1956,7 +1956,7 @@ Nature Genetics · 2025-11-24 · [DOI](https://doi.org/10.1038/s41588-025-02407-
 | --- | --- | --- |
 | AUCell | Rank-based gene-set activity scoring. | Methods / Computational analysis / Analysis of GRNs |
 | cell2location | Spatial cell-type deconvolution. | Methods / Computational analysis / Spatial mapping of cell types in Visium ST using cell2location |
-| CellChat | Ligand-receptor cell communication inference. | Methods / Computational analysis / Identifying differentially flowing signal variables |
+| CellChat | Used CellChat2.1.2 ligand-receptor communication inference to supply unique interactions/flows for downstream FlowSig0.1.2 analysis. | Methods / Computational analysis / Identifying differentially flowing signal variables |
 | CellPhoneDB | Used CellPhoneDB5.0.0 for scRNA-seq cluster interactions, requiring all interaction members in at least10% of relevant cells and permuting cell-cluster labels1000times to assess cell-type specificity of ligand–receptor expression means. Visualized pairs atP≤0.01 with CCplotR; spatial communication used COMMOT separately. | Methods / Computational analysis / Cell–cell interaction analysis |
 | cisTarget | Used pySCENIC0.12.1 with GRNBoost2 and ctx dropout masking, a1390-human-TF list, v9 human motif-to-TF annotations and the hg38 RefSeq-r80 mc9nr500bp-up/100bp-down ranking database, followed by AUCell. | Methods / Computational analysis / Analysis of GRNs |
 | Harmony | Batch integration of cell embeddings. | Methods / Computational analysis / scRNA-seq data processing |
@@ -2852,7 +2852,7 @@ Nature Genetics · 2026-08-14 · [DOI](https://doi.org/10.1038/s41588-026-02709-
 | --- | --- | --- |
 | AUCell | Rank-based gene-set activity scoring. | Methods / snRNA-seq of hNCs / Regulon analysis |
 | BCFtools | Variant manipulation, calling, normalization and filtering. | Methods / WES data |
-| CellChat | Ligand-receptor cell communication inference. | Methods / snRNA-seq of hNCs / Cell–cell communication |
+| CellChat | Used CellChat2.2.0 with CellChatDB.human excluding non-protein signaling. Replicates were pooled within each condition for default overexpression/communication inference, min.samples3/min.cells10 communication filtering, pathways and incoming/outgoing strengths. Strength differences above0.25 were followed by separate per-sample inference and Wilcoxon comparisons across conditions. | Methods / snRNA-seq of hNCs / Cell–cell communication |
 | Cell Ranger | Processed four multiplexed nuclei libraries using Cell Ranger multi in Multiplex Flex mode with GRCh38-2024-A and the v1.1.0_GRCh38-2024-A human probe set. | Methods / snRNA-seq of hNCs / snRNA-seq data preprocessing and annotation |
 | DESeq2 | Used DESeq2 1.40.2 on cell-type pseudobulk profiles from SoupX-corrected counts, estimating size factors on the unfiltered pseudobulk population before fitting filtered genes. Adjusted mitochondrial/ambient/batch covariates and selected FDR<0.05, absolute log2FC>0.5. A separate dementia comparison used 70 donors and eight covariates. | Methods / snRNA-seq of hNCs / Differential expression and pathway enrichment analysis |
 | Harmony | Batch integration of cell embeddings. | Methods / snRNA-seq of hNCs / snRNA-seq data preprocessing and annotation |
@@ -3265,7 +3265,7 @@ Nature Genetics · 2025-10-21 · [DOI](https://doi.org/10.1038/s41588-025-02353-
 
 | Tool | How used | Evidence location |
 | --- | --- | --- |
-| CellChat | Ligand-receptor cell communication inference. | Methods / CosMx data analysis / Neighborhood-based cell–cell communication analysis |
+| CellChat | Combined CellChat human database entries with CellPhoneDB2.0 and iTALK into4028 ligand-receptor pairs for CosMx neighborhood analysis; Spyrrow0.1 commu.cn.call computed adjacent-region activity as the square root of sender-ligand times receiver-receptor expression. | Methods / CosMx data analysis / Neighborhood-based cell–cell communication analysis |
 | CellPhoneDB | Reused a reported CellPhoneDB2.0 human ligand–receptor database alongside CellChat and iTALK resources to form a combined4028-pair set for spatial-neighborhood analysis performed by Spyrrow0.1 commu.cn.call. | Methods / CosMx data analysis / Neighborhood-based cell–cell communication analysis |
 | Harmony | Batch integration of cell embeddings. | Methods / CosMx data analysis / Data quality control and processing |
 | Leiden | Grouped observations into communities using a neighborhood graph. | Methods / CODEX data analysis / Cell typing |

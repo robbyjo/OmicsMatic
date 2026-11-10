@@ -1,3 +1,15 @@
+## CellChat: warnings and required actions
+
+Use cellchat-tools with the published root supplement plus its recorded canonical dependency, explicit workflow family and exact source/runtime profile. Require exit0, result_admitted=true and successful complete --verify. Read CELLCHAT_INTEGRATION.md, WARNINGS.md, original stdout/stderr, provenance, complete comparison tables and every captured parent's warnings. Analysis installs nothing.
+
+SKIP3 means skip the dependent analysis. Install/download the named exact prerequisites only where allowed, using new private paths; if forbidden or unavailable, leave analysis skipped. FAIL2 admits no new result, including earlier successful steps in the attempt. Preserve the files, correct the named cause and retry NEW output directories. Native/logical capacities do not enforce host RAM/disk quotas or authenticate producers.
+
+Original source warnings remain scientifically material: negative/out-of-range p-fields are invalid p-values; graph and rankNet fallback zeros are not successful estimates. Original FNN duplicate/omitted neighbors and SNN values outside[0,1] are retained without clipping, rescaling or repair. Missing groups/features remain NA; original NaN/Inf tests remain nonfinite. Do not turn any of these into a valid association or null result.
+
+Original1.1.3 default automatic parallel clustering emits RNG-misuse warnings. Preserve them; the source reports potentially invalid random-number use. Explicit original sequential clustering is a separate analysis. The unchanged original UMAP constructor omits random_state, and separate default runs produced different coordinates/co-clustering despite source seeds. Neither seeds nor sequential R clustering establish exact whole-pipeline replay. Do not inject future.seed/random_state, silently replace the UMAP engine/metric/orientation, or infer historical paper execution.
+
+P060 uses CellChatDB with a custom score whose printed component-product aggregation remains unresolved: skip its study-score analysis until the exact implementation is supplied; resource export alone is supported. P167 uses CellChatDB within a separate Spyrrow neighborhood score, and Spyrrow remains missing in the catalog. CellTrek, LIANA and FlowSig are separate methods. P145 comparison direction is explicit because the primary text does not resolve its sign convention. Tested source candidates do not identify historical paper environments. Cell Ranger remains excluded by the user; the full250-paper goal remains active.
+
 ## cisTarget: warnings and required actions
 
 Use cistarget-tools with the published root supplement, recorded project dependency and explicit source profile, AUC integration parameter, recovery bound, motif-selection thresholds and overlap requirement. Read CISTARGET_INTEGRATION.md and CISTARGET_DEVELOPMENT.md. Native TSV analysis requires Java and installs nothing. Require exit0, run.json PASS_NATIVE_CISTARGET_WITH_WARNINGS and enriched-motifs.tsv; read WARNINGS.md, all-motifs.tsv and every signature/annotation disposition.

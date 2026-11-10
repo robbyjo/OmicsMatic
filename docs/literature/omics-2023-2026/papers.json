@@ -13768,12 +13768,13 @@
         "matched_text": "CellChat",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-paragraph",
         "evidence_paragraph_sha256": "c854e18b6142002dece59a0d92ee7778ac29fde592093a03b784ff9656c75284",
-        "use_summary": "Ligand-receptor cell communication inference.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10719103/ (section: Methods / Ligand–receptor analysis and analysis of other genes upregulating in interacting cell pairs)"
+        "use_summary": "Used CellChat ligand-receptor database entries for subclass-level analysis after restricting transferred labels to confidence above0.8; calculated a custom communication score on imputed expression.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10719103/ (section: Methods / Ligand–receptor analysis and analysis of other genes upregulating in interacting cell pairs)",
+        "implementation_scope_note": "Resource-only CellChat role. Complete edition/species database table exports preserve original interaction, complex, cofactor and gene information, literal identifiers, component order and missingness. The printed product over ligand/receptor component indices does not resolve the exact study-score implementation. No computeCommunProb execution, database edition/species, Hill-score substitution or historical study reproduction is inferred."
       },
       {
         "tool_id": "leiden",
@@ -18076,12 +18077,20 @@
         "matched_text": "CellChat",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": "1.1.3",
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-paragraph",
         "evidence_paragraph_sha256": "d031e563508b78735664d88dc33463ad11192849c72463945d9d4f392e8cab43",
-        "use_summary": "Ligand-receptor cell communication inference.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11631771/ (section: Methods / Cell–cell signaling analysis)"
+        "use_summary": "Used CellChat1.1.3 and CellChatDB.human on normalized single-cell expression with cell-type/CellTrek-region annotations, removing groups with fewer than30 cells. Separate condition objects underwent overexpression selection, PPI projection, communication inference/filtering, pathway aggregation and centrality, followed by merged functional/structural similarity, information-flow comparisons, mapped ligand/receptor differential expression and bubble plots. Extended Data Figure7d also requires joint functional pathway embedding and clustering.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11631771/ (section: Methods / Cell–cell signaling analysis)",
+        "implementation_scope_note": "The complete original1.1.3 comparison and network adapters support these distinct method families on caller-prepared data. Global removal when either condition has fewer than30 cells, database/PPI choice and raw.use consumption remain explicit. The posted humanDB/PPI.mouse/raw.use=TRUE example and eval=FALSE embedding chunks do not establish historical execution. Original FNN duplicate/omitted neighbors, SNN values outside[0,1], invalid p-fields, rankNet fallback zeros, parallel RNG warnings and UMAP variability remain visible. No source repair, automatic engine/sequential fallback or seed-based deterministic replay is claimed. CellTrek coordinate prediction, LIANA and the Pearson comparison are separate roles.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 52,
+            "section": "Methods / Cell–cell signaling analysis",
+            "paragraph_sha256": "7ea79ca3230171240bc654af71390e68ffb3d39d1a33b03b348b32314e937170"
+          }
+        ]
       },
       {
         "tool_id": "enrichr",
@@ -19348,12 +19357,13 @@
         "matched_text": "CellChat",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": "1.0",
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-paragraph",
         "evidence_paragraph_sha256": "9cbf24628514b2c74648fd66605e3887e554620bd4f6a8ab52847d1002d40cc8",
-        "use_summary": "Ligand-receptor cell communication inference.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11631752/ (section: Methods / Pathway enrichment analysis of effector genes, DEGs and intercellular communication in DCM single-nucleus transcriptomics)"
+        "use_summary": "Used CellChatv1.0 with default settings in R4.0.3 to infer cell-type communication in DCM/control single-nucleus data from the curated ligand-receptor database and law-of-mass-action model; endocardial cells were distinguished from other endothelial cells.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11631752/ (section: Methods / Pathway enrichment analysis of effector genes, DEGs and intercellular communication in DCM single-nucleus transcriptomics)",
+        "implementation_scope_note": "The complete original1.0.0 inference adapter includes overexpression selection, full-network native-checked projection, explicit raw.use=FALSE consumption, original inference, optional filtering, pathways and centrality. Source1.0.0 is a tested available candidate under R4.6.1, not the recovered paper commit or R4.0.3 environment. Database/species/PPI and filtering must be explicit. Original subsetDB vector-equality/recycling behavior and raw-p-only exports are documented; partial multi-category requests are refused instead of silently repaired. Native prepared scores alone are not the complete workflow."
       },
       {
         "tool_id": "coloc",
@@ -21747,12 +21757,13 @@
         "matched_text": "CellChat",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": "2.1.2",
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-paragraph",
         "evidence_paragraph_sha256": "6a039a8fdd69a7f9c4bc250a0d39a1bb2184afe8fdc9030f548726909467858d",
-        "use_summary": "Ligand-receptor cell communication inference.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12695644/ (section: Methods / Computational analysis / Identifying differentially flowing signal variables)"
+        "use_summary": "Used CellChat2.1.2 ligand-receptor communication inference to supply unique interactions/flows for downstream FlowSig0.1.2 analysis.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12695644/ (section: Methods / Computational analysis / Identifying differentially flowing signal variables)",
+        "implementation_scope_note": "The complete original2.1.2 adapter supports the human Secreted Signaling, smoothData(PPI.human), raw.use=FALSE, population.size=FALSE and explicitly absent filterCommunication profile found in the posted study code. The code uses an unversioned installer, so it does not identify the historical CellChat commit. Supplied sample identities remain retained. FlowSig causal/information-flow modeling, its tests and adjusted-P/logFC thresholds are separate roles; the CellChat adapter does not replace them."
       },
       {
         "tool_id": "cellphonedb",
@@ -31747,12 +31758,13 @@
         "matched_text": "CellChat",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": "2.2.0",
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-paragraph",
         "evidence_paragraph_sha256": "ed736251b4c9a90f21e4d33b72a7a8b9ec60be672e18d4c15c6dd821856d9618",
-        "use_summary": "Ligand-receptor cell communication inference.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13553309/ (section: Methods / snRNA-seq of hNCs / Cell–cell communication)"
+        "use_summary": "Used CellChat2.2.0 with CellChatDB.human excluding non-protein signaling. Replicates were pooled within each condition for default overexpression/communication inference, min.samples3/min.cells10 communication filtering, pathways and incoming/outgoing strengths. Strength differences above0.25 were followed by separate per-sample inference and Wilcoxon comparisons across conditions.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13553309/ (section: Methods / snRNA-seq of hNCs / Cell–cell communication)",
+        "implementation_scope_note": "The complete original2.2.0 strength adapter fits pooled conditions and every declared sample, exports LR/pathway incoming/outgoing node strengths and original Wilcoxon results, and retains missing/nonfinite dispositions. Directed-edge tests are a separate diagnostic and do not replace node-strength comparison. Difference mode absolute/positive/negative and exact-test handling are explicit; the primary wording does not resolve the sign convention. Equality does not pass0.25. The original filterCommunication <=min.cells boundary is preserved. Tested source candidates do not identify the paper commit. Original fallback zeros, invalid p-fields and NaN tests remain visible; no missing group/feature is filled with zero."
       },
       {
         "tool_id": "cellranger",
@@ -36336,12 +36348,13 @@
         "matched_text": "CellChat",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-paragraph",
         "evidence_paragraph_sha256": "e559e6007c9e6706b8413557c2479473cb7eaa8557da1615efcb330b34548f42",
-        "use_summary": "Ligand-receptor cell communication inference.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12597830/ (section: Methods / CosMx data analysis / Neighborhood-based cell–cell communication analysis)"
+        "use_summary": "Combined CellChat human database entries with CellPhoneDB2.0 and iTALK into4028 ligand-receptor pairs for CosMx neighborhood analysis; Spyrrow0.1 commu.cn.call computed adjacent-region activity as the square root of sender-ligand times receiver-receptor expression.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12597830/ (section: Methods / CosMx data analysis / Neighborhood-based cell–cell communication analysis)",
+        "implementation_scope_note": "Resource-only CellChat use through a separate Spyrrow method. Complete original human database exports preserve names, components, order and missingness without inventing a reported database release. Combined-database construction, adjacency/region definitions and the neighborhood geometric-mean score belong to the separate Spyrrow role, which remains missing in the catalog. CellChat Hill probabilities do not replace that activity score."
       },
       {
         "tool_id": "cellphonedb",
