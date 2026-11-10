@@ -5280,7 +5280,7 @@
     "role": "Relatedness-aware ancestry components and genetic association models",
     "current_coverage": "missing",
     "existing_source": null,
-    "coverage_note": "Reviewed uses include PC-AiR, relatedness-adjusted polygenic-score models, PC-Relate-informed GLMM association and principal components with an unspecified function. Versions2.16.1 and2.26.0 are reported in distinct papers. SNPRelate KING does not implement these GENESIS analyses. Ordinary lowercase genesis in biological prose is excluded.",
+    "coverage_note": "Scoped original GENESIS2.42.0 PC-AiR, supplied-PC PC-Relate, Gaussian/binomial/Poisson models and single-variant tests, with native matrix partition/rank/input/output audits. Five paper roles reviewed; historical and unstated settings remain explicit.",
     "paper_count": 5,
     "papers": [
       "P128",
@@ -5289,10 +5289,32 @@
       "P191",
       "P219"
     ],
-    "implementation_status": "missing",
-    "implementation_source": null,
-    "implementation_scope": "Reviewed uses include PC-AiR, relatedness-adjusted polygenic-score models, PC-Relate-informed GLMM association and principal components with an unspecified function. Versions2.16.1 and2.26.0 are reported in distinct papers. SNPRelate KING does not implement these GENESIS analyses. Ordinary lowercase genesis in biological prose is excluded.",
-    "validation_note": "Existing overlap/adapters require paper-specific option checks; missing integrations remain pending."
+    "implementation_status": "upstream-adapter-validated",
+    "implementation_source": "src/main/java/org/jlinalg/cli/GenesisWorkflowToolsCli.java",
+    "implementation_scope": "Typed genesis-tools with an exact private Windows R4.6.1/longdouble64 runtime. Explicit diploid biallelic autosomal hard calls, complete FID/IID populations and caller-supplied matrices, PCs and model designs. PC-AiR supports declared exact/randomized ancestry components and matrix partitions; PC-Relate preserves original IBD and scaled connected-component covariance. Models support ordinary/mixed/group fits, Gaussian two-stage rank transforms and single-variant Score, SPA, BinomiRare or one-covariate GxE Wald tests. Native Java checks finite rank/quantiles, complete genotypes/QC/order, covariance, model design/convergence/effective engine, association algebra, carrier probabilities and Poisson-binomial PMFs. Estimator fitting remains upstream. True mixed CMP currently fails in original2.42.0 and admits no result; ordinary CMP can execute a prominently labelled BinomiRare fallback. Missing permitted dependencies skip3; source/scientific failures admit no result2. No automatic software installation or source repair. Read GENESIS_INTEGRATION.md.",
+    "validation_note": "61 declared option-branch controls:53 native component successes,five scientific refusals,three original errors; no project result admitted by that component collection.13 root-routed literal examples yield11 admitted original workflows and two retained source/scientific refusals,with33 saved replays,12 help checks and an explicit missing-runtime skip. Separate frozen controls include756264 complete finite-rank score comparisons,24 rank API JUnit executions,87 coherently resealed scientific refusals and prior source-field/partition controls. Repeated synthetic inputs are not independent biological datasets. Original signs,uncomputed placeholders,unconstrained IBD,boundary auxiliaries and effective GLM/test fallbacks remain visible. No independent model/PCA/kinship refit, historical-paper reproduction, software authenticity or production-scale claim.",
+    "project_adapter_available": true,
+    "canonical_adapter_available": false,
+    "source_roles_reviewed": 5,
+    "source_role_coverage": "genesis-source-role-coverage.json",
+    "development_candidate": "docs/literature/genesis-tools-development/genesis-root-javac21.jar",
+    "development_candidate_sha256": "48fd60a8b54c966adb081845a01cfba827e5ed87e68c74dc0c42b11e9e8c5b39",
+    "development_cli_class": "org.jlinalg.cli.GenesisWorkflowToolsCli",
+    "root_cli_class": "org.jlinalg.cli.JLinAlgCli",
+    "root_command": "genesis-tools",
+    "workflow_proof": "docs/literature/genesis-tools-development/VALIDATION.json",
+    "native_components": [
+      "GenesisPcairPartition",
+      "GenesisRankNormalisation"
+    ],
+    "original_runtime_required": true,
+    "analysis_installs_software": false,
+    "supported_source_versions": [
+      "2.42.0"
+    ],
+    "whole_package_implemented": false,
+    "whole_paper_reproduced": false,
+    "whole_goal_complete": false
   },
   {
     "id": "snpeff",

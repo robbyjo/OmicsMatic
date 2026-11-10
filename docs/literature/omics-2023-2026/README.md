@@ -1,53 +1,48 @@
 # 250 paper omics and GWAS toolbox catalog
 
-**Current checkpoint: 96 new scoped integrations**: 19 native Java methods and
-77 tested upstream adapters. There are **99 including three existing adapters**,
-with **247 named tools still missing**. Cell Ranger remains excluded at the
+**Current checkpoint: 97 new scoped integrations**: 19 native Java methods and
+78 tested upstream adapters. There are **100 including three existing adapters**,
+with **246 named tools still missing**. Cell Ranger remains excluded at the
 user's request. The full toolbox goal remains active.
 
 The fixed collection contains 250 papers: 71 Nature, 104 Nature Genetics and
 75 AJHG articles from 2023-10-23 through 2026-10-23. No time extension was needed.
-There are 402 observed tools from 440 definitions, 2,475 paper-tool observations,
+There are 402 observed tools, 2,475 paper-tool observations,
 1,038 source-bound reviewed roles and 369 supporting pointers. Paper-wide
 semantic review and implementation remain incomplete.
 
-Read [SNPRelate workflows](../SNPRELATE_INTEGRATION.md) for the development JAR,
-`snprelate-tools` root route, explicit private Windows runtime preparation,
-complete requests and portable saved verification. KING-robust, LD pruning,
-GRM and exact/randomized PCA use original SNPRelate 1.46.0. Native Java checks
-complete genotypes, QC, identities and KING coefficients. Source LD/GRM/PCA
-estimators execute upstream; mathematical invariant checks do not refit them.
-The released executable remains a separately pinned dependency of the root
-supplement; it has no new route by itself.
+Read [GENESIS workflows](../GENESIS_INTEGRATION.md) for the typed development
+`genesis-tools` route, complete synthetic inputs/requests and exact private
+runtime preparation. Current GENESIS2.42.0 runs PC-AiR, supplied-PC PC-Relate,
+null models and single-variant tests with stated native scientific audits.
+Five primary paper roles are reviewed. P128's separately reviewed supplement
+names historical2.16.1 pcairPartition cutoff0.044; downstream function/settings
+gaps remain explicit. Current2.42.0 does not reconstruct historical or unstated
+paper analyses. [Retained interaction findings](../GENESIS_NUMERICAL_FINDINGS.md)
+explain two additional R_NA refusals without filling or dropping source values.
 
-The source census adds SNPRelate and GENESIS definitions and nine observations,
-preserving all 1,029 earlier reviews, 2,466 earlier observations and 400 earlier
-tool objects. Citation formatting hid P170 from the earlier SNPRelate search.
-The corrected SNPRelate list is P130, P170, P191 and P216. GENESIS has five
-reviewed papers and remains missing; its private runtime preparation is not
-an implemented analysis. Read [GENESIS status](../GENESIS_DEVELOPMENT.md).
-The missing-tool count increased because two omitted packages were catalogued
-and one received a scoped adapter.
+[SNPRelate workflows](../SNPRELATE_INTEGRATION.md) remain a distinct integration
+for original1.46.0 KING-robust, LD pruning, GRM and PCA. Its four reviewed paper
+roles and all other401 tool objects are preserved. Current source contains new
+root routes; the released executable is a separately pinned dependency and
+has no new route by itself. Saved scientific verification works without R.
 
-**Warnings and required actions:** SKIP3 means skip the dependent analysis until
-the exact permitted prerequisite is available. Download/install only where
-allowed; if unavailable or forbidden, keep analysis skipped. FAIL2 admits no
-result: preserve the attempt, inspect its named cause and original logs,
-correct it explicitly and retry new paths. Analysis installs nothing.
-Require exit 0, `result_admitted=true` and successful complete verification,
-then review every warning, raw output and `downstream_eligible` disposition.
-
-Never fill source NaNs, rename identities, change calls, clamp eigenvalues or
-switch versions to suppress a failure. Empty QC populations are refused.
-Duplicate variant IDs and unassessable source values block downstream use.
-Historical paper versions and unspecified settings remain unresolved.
-SNPRelate 1.46.0 does not reproduce P130's reported 1.30.1. GENESIS PC-AiR,
-PC-Relate and relatedness-adjusted models remain separate analyses.
+**Warnings and required actions:** SKIP3 means skip dependent original analysis
+when exact prerequisites are unavailable or forbidden. Install/download only
+where allowed into NEW private paths; otherwise leave analysis skipped.
+FAIL2 admits no result, including partial output. Preserve every attempt and
+resolve its named source/input/process/scientific cause before retrying NEW
+paths. Require exit0, result_admitted=true and complete --verify; then inspect
+warnings, effective methods and every variant disposition. Analysis installs
+nothing. Original true mixed CMP errors, probabilities above1, malformed PC
+shapes and required missing interaction fields admit no result; source values
+are not repaired.
 
 Current records: [tool inventory](tool-inventory.json), [papers](papers.json),
 [summary](summary.json), [warnings and required actions](WARNINGS.md),
-[source-role coverage](snprelate-role-coverage.json) and
-[validation checkpoint](snprelate-catalog-validation.json).
+[GENESIS source roles](genesis-source-role-coverage.json),
+[GENESIS validation](genesis-catalog-validation.json) and
+[the earlier SNPRelate checkpoint](snprelate-catalog-validation.json).
 
 The generated reference and earlier checkpoints below are retained exactly.
 Their historical counts describe those checkpoints; the records above describe

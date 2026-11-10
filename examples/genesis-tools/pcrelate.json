@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "version": "2.42.0",
+  "mode": "pcrelate",
+  "runtime_profile": "../runtime-profile.json",
+  "out": "../results/pcrelate",
+  "threads": 1,
+  "layout": "snp-first",
+  "limits": {
+    "input_bytes": 100000000,
+    "output_bytes": 500000000,
+    "output_files": 1000,
+    "samples": 200,
+    "variants": 2000,
+    "rows": 2000000,
+    "pair_variant_operations": 1000000000,
+    "working_bytes": 1000000000,
+    "wall_seconds": 300
+  },
+  "inputs": {
+    "bfile": "../inputs/cohort",
+    "pcs": "../inputs/pcs.tsv",
+    "training_samples": "../inputs/training.tsv",
+    "sample_selection": null
+  },
+  "options": {
+    "pc_columns": [
+      "PC1",
+      "PC2",
+      "PC3"
+    ],
+    "scale": "overall",
+    "ibd_probabilities": true,
+    "sample_block_size": 5000,
+    "snp_block_size": 64,
+    "maf_threshold": 0.01,
+    "maf_bound_method": "filter",
+    "small_sample_correct": true,
+    "seed": 20261110,
+    "covariance_output": {
+      "threshold": 0.04419417382415922,
+      "scale_kin": 2
+    }
+  }
+}

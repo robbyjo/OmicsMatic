@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "version": "2.42.0",
+  "mode": "null-model",
+  "runtime_profile": "../runtime-profile.json",
+  "out": "../results/null-two-stage-group",
+  "threads": 1,
+  "layout": "snp-first",
+  "limits": {
+    "input_bytes": 100000000,
+    "output_bytes": 500000000,
+    "output_files": 1000,
+    "samples": 200,
+    "variants": 2000,
+    "rows": 2000000,
+    "pair_variant_operations": 1000000000,
+    "working_bytes": 1000000000,
+    "wall_seconds": 300
+  },
+  "inputs": {
+    "phenotypes": "../inputs/phenotypes-gaussian-group.tsv",
+    "covariances": [
+      {
+        "name": "declared",
+        "values": "../inputs/covariance.values.tsv",
+        "samples": "../inputs/matrix-samples.tsv"
+      }
+    ]
+  },
+  "options": {
+    "outcome": "quantitative",
+    "covariates": [
+      "age",
+      "PRS"
+    ],
+    "group_variable": "group",
+    "family": "gaussian",
+    "two_stage": true,
+    "normalisation": "by.group",
+    "rescale": "residSD",
+    "start": null,
+    "tolerance": 0.0001,
+    "max_iterations": 100,
+    "EM_iterations": 0,
+    "drop_zeros": true,
+    "covariance_alignment": "phenotype-order"
+  }
+}
