@@ -1,0 +1,23 @@
+# Copyright (C) 2026 JLinAlg contributors; SPDX-License-Identifier: GPL-3.0-or-later
+args <- commandArgs(TRUE);out <- args[1];archives <- args[2:3];lib <- file.path(out,'R-lib')
+stopifnot(!dir.exists(lib),dir.create(lib));.libPaths(c(lib,args[-(1:3)],.Library),include.site=FALSE)
+status <- 'SKIP3_ORIGINAL_NETWORK_REFERENCE_UNAVAILABLE';detail <- '';warnings <- list();health <- list()
+tryCatch(withCallingHandlers({
+  stopifnot(as.character(getRversion())=='4.6.1',.Platform$OS.type=='windows')
+  for(archive in archives)install.packages(archive,repos=NULL,type='source',lib=lib,INSTALL_opts=c('--no-multiarch'))
+  stopifnot(as.character(packageVersion('future'))=='1.23.0',as.character(packageVersion('future.apply'))=='1.8.1',as.character(packageVersion('CellChat'))=='1.1.3')
+  library(CellChat);setwd(out);future::plan('multiprocess',workers=2)
+  health$workers <- future.apply::future_sapply(1:6,function(i)paste(i+1L,Sys.getpid(),as.character(packageVersion('future')),as.character(packageVersion('future.apply')),sep='|'))
+  stopifnot(identical(as.integer(vapply(strsplit(health$workers,'|',fixed=TRUE),'[[',character(1),1)),2:7))
+  future::plan(future::sequential)
+  data <- matrix(1:64,8,8,dimnames=list(paste0('gene',1:8),paste0('cell',1:8)))
+  object <- CellChat::createCellChat(data,meta=data.frame(labels=rep(c('A','B'),each=4),row.names=colnames(data)),group.by='labels')
+  embedding <- matrix(c(1,1,1,2,2,1,2,2,11,11,11,12,12,11,12,12),8,2,byrow=TRUE,dimnames=list(paste0('path',1:8),c('UMAP1','UMAP2')))
+  object@netP$similarity <- list(functional=list(dr=list(single=embedding)))
+  object <- CellChat::netClustering(object,type='functional')
+  health$original_default_clustering <- unname(object@netP$similarity$functional$group$single);stopifnot(length(health$original_default_clustering)==8L,all(is.finite(health$original_default_clustering)),all(health$original_default_clustering>=1))
+  status <- 'PASS_ORIGINAL_NETWORK_REFERENCE_SETUP_ONLY'
+},warning=function(w){warnings[[length(warnings)+1L]] <<- conditionMessage(w);invokeRestart('muffleWarning')}),error=function(e){detail <<- conditionMessage(e)})
+try(future::plan(future::sequential),silent=TRUE)
+writeLines(capture.output(sessionInfo()),file.path(out,'session-info.txt'));jsonlite::write_json(list(status=status,detail=detail,warnings=warnings,health=health,analysis_admitted=FALSE),file.path(out,'R-RESULT.json'),pretty=TRUE,auto_unbox=TRUE)
+quit(status=if(startsWith(status,'PASS_'))0L else 3L)
