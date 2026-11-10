@@ -4787,7 +4787,7 @@
     "role": "Protein sequence alignment",
     "current_coverage": "missing",
     "existing_source": null,
-    "coverage_note": "Discovered during per-paper completeness review; integration and independent validation pending.",
+    "coverage_note": "Scoped original DIAMOND protein/translated-query alignment, database creation and native transport checks; exact source profiles, failed source cases and study-cutoff limits remain explicit.",
     "paper_count": 5,
     "papers": [
       "P017",
@@ -4796,10 +4796,35 @@
       "P171",
       "P248"
     ],
-    "implementation_status": "missing",
-    "implementation_source": null,
-    "implementation_scope": "Discovered during per-paper completeness review; integration and independent validation pending.",
-    "validation_note": "Existing overlap/adapters require paper-specific option checks; missing integrations remain pending."
+    "implementation_status": "upstream-adapter-validated",
+    "implementation_source": "src/main/java/org/jlinalg/cli/DiamondToolsCli.java",
+    "implementation_scope": "Java diamond-tools dispatch to unchanged original2.0.0/2.0.15/2.1.8 database creation, blastp and standard-code non-frameshift blastx on complete caller-prepared inputs. Compatible14-field output retains the ordinary12-field population plus sequence lengths. Native Java checks complete input records, literal IDs, coordinates, identity/gap counts, coordinate-derived coverage and query dispositions. Existing native databases remain opaque to independent reference-population auditing. Explicit Linux runtime setup/download is separate; analysis installs nothing. Self-contained standalone and root supplement commands are documented in DIAMOND_INTEGRATION.md.",
+    "validation_note": "Five primary-bound roles distinguish reference annotation, all-versus-all comparison, translated queries and downstream methods. Complete synthetic controls compare78 original source-option cases:72 successes and six preserved original failures, plus six existing-database comparisons and one actual explicit-download alignment. Two compiler builds pass216 routed complete saved-bundle checks on Windows21/25 and Linux21,18 failed-bundle refusals, three dependency skips,15 unchanged CellChat predecessor checks and three routed original alignments;22 protocol controls cover missing dependencies, capacity/time failure and rehashed semantic refusals. Earlier extended-field source crashes, verifier-notation failure and explicit wall-time failure remain retained. Original2.0.0 unmasked/composition-zero crashes and tested2.1.8 paired-FASTQ failures admit no result. Positive min-score overrides E-value; top/max-target conflicts and top100 sentinel remain source behavior. Rounded/zero E-values, duplicate IDs and no-hit limits remain visible. No independent alignment/scoring/E-value refit, producer authentication or historical paper reproduction. P017 reports no source version and has different/unspecified coverage denominators; P054 score100 does not resolve raw/bit/external cutoff interpretation. Those study choices require exact specification; downstream biological classification, DBSCAN/KDE, GraftM and mSynOrths remain separate.",
+    "project_adapter_available": true,
+    "canonical_adapter_available": false,
+    "source_roles_reviewed": 5,
+    "source_role_coverage": "diamond-role-coverage.json",
+    "development_candidate": "docs/literature/diamond-development/diamond-root-javac21.jar",
+    "development_candidate_sha256": "0a24854ad534015a23b840aeb1e17c0e9d21a4ac2354e84155c8ef5c40103ff6",
+    "development_cli_class": "org.jlinalg.cli.DiamondToolsCli",
+    "root_cli_class": "org.jlinalg.cli.JLinAlgCli",
+    "root_command": "diamond-tools",
+    "workflow_proof": "docs/literature/diamond-development/VALIDATION.json",
+    "native_helpers": [
+      "src/main/java/org/jlinalg/cli/DiamondAudit.java",
+      "src/main/java/org/jlinalg/cli/DiamondSequences.java",
+      "src/main/java/org/jlinalg/cli/DiamondRequest.java"
+    ],
+    "original_runtime_required": true,
+    "analysis_installs_software": false,
+    "supported_source_versions": [
+      "2.0.0",
+      "2.0.15",
+      "2.1.8"
+    ],
+    "whole_package_implemented": false,
+    "whole_paper_reproduced": false,
+    "whole_goal_complete": false
   },
   {
     "id": "fastqtl",

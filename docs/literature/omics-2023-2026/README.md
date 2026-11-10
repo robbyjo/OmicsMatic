@@ -1,5 +1,55 @@
 # 250 paper omics and GWAS toolbox catalog
 
+**Current checkpoint: 95 new scoped integrations**: 19 native Java methods and
+76 tested upstream adapters. There are **98 including three existing adapters**,
+with **246 named tools still missing**. Cell Ranger remains excluded at the
+user's request. The full toolbox goal remains active.
+
+The fixed collection contains 250 papers: 71 Nature, 104 Nature Genetics and
+75 AJHG articles from 2023-10-23 through 2026-10-23. No time extension was needed.
+There are 400 observed tools from 438 definitions, 2,466 paper-tool observations,
+1,029 source-bound reviewed roles and 367 supporting pointers. Paper-wide
+semantic review and implementation remain incomplete.
+
+Read [DIAMOND integration](../DIAMOND_INTEGRATION.md) for the self-contained Java
+command, `diamond-tools` root route, explicit Linux source/runtime setup and
+complete requests. Five reviewed roles add one scoped upstream adapter while
+preserving all 1,024 prior reviews and 399 unrelated tool entries. Original
+2.0.0/2.0.15/2.1.8 alignment controls cover 78 source cases: 72 successful
+comparisons and six preserved original failures. Complete saved-bundle checks
+and native audits do not independently refit alignments or reproduce papers.
+
+**Warnings and required actions:** SKIP3 means skip the dependent analysis until
+the exact permitted prerequisite is available. Download/install only where
+allowed; if unavailable or forbidden, keep the analysis skipped. FAIL2 admits
+no result, including earlier successful steps: preserve the attempt, inspect
+the named cause and original logs, correct it explicitly and retry new paths.
+Analysis installs nothing. Require exit 0, result_admitted=true and successful
+complete verification, then read every warning and original output.
+
+DIAMOND source crashes, tested paired-FASTQ failures, cutoff precedence,
+rounded/zero E-values and duplicate-ID ambiguity remain visible. P017 has no
+reported version and uses different or unspecified coverage denominators.
+P054's score100 does not resolve raw versus bit score or an external filter:
+require that exact study interpretation before claiming the cutoff. Downstream
+classification, abundance, DBSCAN/KDE, GraftM and mSynOrths remain separate.
+Existing CellChat warnings and its unresolved P060 custom-score analysis remain
+in force; Spyrrow remains missing.
+
+Current records: [tool inventory](tool-inventory.json), [papers](papers.json),
+[summary](summary.json), [warnings and required actions](WARNINGS.md),
+[DIAMOND source-role coverage](diamond-role-coverage.json) and
+[validation checkpoint](diamond-catalog-validation.json).
+
+The generated reference and earlier checkpoints below are retained exactly.
+Their historical counts describe those checkpoints; current records above
+describe this checkpoint.
+
+<details>
+<summary>Generated catalog reference and retained historical checkpoints</summary>
+
+# 250 paper omics and GWAS toolbox catalog
+
 **Current checkpoint: 94 new scoped integrations**: 19 native Java methods and
 75 tested upstream adapters. There are **97 including three existing adapters**,
 with **247 named tools still missing**. Cell Ranger remains excluded at the
@@ -1192,6 +1242,8 @@ The [implementation queue](implementation-plan.md) and `tool-inventory.json`
 distinguish missing tools, related existing methods, existing adapters/lookups,
 and newly validated subsets. Complete the remaining integrations and semantic
 coverage review before marking the overall goal complete.
+
+</details>
 
 </details>
 

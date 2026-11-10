@@ -335,7 +335,7 @@ Nature · 2023-12-18 · [DOI](https://doi.org/10.1038/s41586-023-06955-z) · [Pr
 
 | Tool | How used | Evidence location |
 | --- | --- | --- |
-| DIAMOND | Protein sequence alignment. | Methods / Detection of protein clusters specifically from uncultivated taxa |
+| DIAMOND | Used sensitive DIAMOND protein and translated-nucleotide searches to assess gene-family novelty, expression evidence, ecological distribution, functional matches and representative family abundance. Reported E-value thresholds were generally below0.001; different steps specify query coverage above50%, target coverage at least50%, or coverage without an explicit denominator. | Methods / Detection of protein clusters specifically from uncultivated taxa |
 | HyPhy | Ran HyPhy BUSTED with the paper’s stated default settings on back-translated codon alignments and previously reconstructed FastTree2 trees. Retrieved the reported full-codon-model dN/dS summary and discarded gene families with values above 0.5. | Methods / Calculation of dN/dS |
 | t-SNE | Visualized log-transformed gene-family abundances with scikit-learn after DIAMOND-based homologue mapping and prevalence-based family/sample selection. | Methods / Ecological distribution of gene families |
 
@@ -718,7 +718,7 @@ Nature · 2023-12-13 · [DOI](https://doi.org/10.1038/s41586-023-06838-3) · [Pr
 | bcl2fastq | Demultiplexed pooled NovaSeq 6000 paired-end shotgun metagenomic reads with bcl2fastq. | Methods / MAGs / Short-read shotgun sequencing |
 | Bowtie 2 | Short-read alignment. | Methods / MAGs / Short-read shotgun sequencing |
 | DESeq2 | Used DESeq2 1.34.0 variance stabilization on the unfiltered Kallisto count population before retaining 837 MAGs selected using TPM>5 in more than 40% of 707 samples. Transformed abundances then entered linear mixed models relating MAGs to WLZ. | Methods / Defining the relationship between MAG abundances and WLZ |
-| DIAMOND | Protein sequence alignment. | Methods / Subsystem-based annotation and prediction of functional capabilities (inferred metabolic phenotypes) of MAGs and cultured P. copri strains |
+| DIAMOND | Aligned predicted MAG proteins and separately predicted gene fragments against a curated protein database with DIAMOND2.0.0; used the50 highest bit-score hits for subsequent domain-boundary clustering and annotation. | Methods / Subsystem-based annotation and prediction of functional capabilities (inferred metabolic phenotypes) of MAGs and cultured P. copri strains |
 | edgeR | Count-based differential expression analysis. | Methods / Microbial RNA-seq analysis of MAG gene expression |
 | FastQC | Sequencing read quality assessment. | Methods / Microbial RNA-seq analysis of MAG gene expression |
 | fgsea | Ranked WLZ-associated MAG transcripts by fold-change direction times negative log10 P and tested metabolic-pathway transcript sets of at least ten genes across treatment, response-quartile, time and interaction contrasts; used BH q below 0.1. | Methods / Microbial RNA-seq analysis of MAG gene expression |
@@ -1112,7 +1112,7 @@ Nature · 2025-12-03 · [DOI](https://doi.org/10.1038/s41586-025-09794-2) · [Pr
 | Tool | How used | Evidence location |
 | --- | --- | --- |
 | Cutadapt | Adapter trimming. | Methods / Bacterial and eukaryotic rRNA gene operon library preparation, sequencing and processing |
-| DIAMOND | Protein sequence alignment. | Methods / Gene-centric investigation of short-read metagenomes |
+| DIAMOND | Searched predicted proteins against curated NarG/NxrA and AmoA/PmoA protein sets using DIAMOND2.1.8 with a reported score cutoff of100, before alignment-score-ratio selection of true-positive sequences and construction of GraftM search packages. | Methods / Gene-centric investigation of short-read metagenomes |
 | fastp | Preprocessed paired-end short-read metagenomes with fastp 0.23.2, including PE adapter detection, overlap correction, right-side quality cutting, quality/length filtering and deduplication. | Methods / Short-read metagenomic library preparation, sequencing and processing |
 | Guppy | Nanopore basecalling; distinguish the fish name. | Methods / Nearly full-length bacterial 16S rRNA gene amplicon library preparation, sequencing and processing |
 | IQ-TREE | Used 2.2.0.3 for protein phylogenies with 1,000 ultrafast replicates and ModelFinder-selected LG+R6, LG+F+R10 or LG+F+R8, plus WAG+R for archaeal AmoA. Separately used 2.4.0 with GTR+F+I+R10 on 591 amoA nucleotide sites, and 2.1.2 with WAG+G and 1,000 ultrafast replicates on concatenated GTDB marker proteins. | Methods / Gene-centric investigation of short-read metagenomes |
@@ -3349,7 +3349,7 @@ Nature Genetics · 2026-07-22 · [DOI](https://doi.org/10.1038/s41588-026-02678-
 | Bowtie 2 | Short-read alignment. | Methods / Centromeric region identification |
 | BWA-MEM2 | Mapped cleaned whole-genome reads from new and published accessions to the Kronos genome using BWA-MEM2 2.3 defaults before LUSH-DNASeq SNP/short-indel genotyping and biallelic quality filtering. | Methods / Variant calling and filtering |
 | deepTools | Converted filtered CENH3 ChIP-seq BAMs to normalized bigWig with deepTools3.5.5 defaults for visualization. | Methods / Centromeric region identification |
-| DIAMOND | Protein sequence alignment. | Methods / Genome annotation |
+| DIAMOND | Compared predicted proteins with UniMag, UniPoa and PTREP using DIAMOND2.1.8 as evidence for high-confidence, low-confidence and transposon-related gene-model classifications. | Methods / Genome annotation |
 | GCTA | Used for genetic principal components. | Methods / Phylogenetic tree and population structure analysis |
 | GEMMA | Mixed-model association or variance components. | Methods / Genome-wide association studies |
 | hifiasm | Used hifiasm 0.22.0-r689 for hybrid HiFi plus ONT ultra-long contig construction and a separate ONT-only assembly in wheat; the hybrid-derived assembly later served as the reference framework for independent scaffolding and iterative gap filling. | Methods / Genome assembly / Step 1. Contig construction |
@@ -4676,7 +4676,7 @@ Nature Genetics · 2026-07-21 · [DOI](https://doi.org/10.1038/s41588-026-02682-
 | clusterProfiler | Performed GO enrichment following the RNA-seq/eQTL/TWAS analysis and differential-gene selection with adjusted P below 0.05 and absolute log2 fold change at least one. | Methods / RNA-seq, eQTL and TWAS analysis |
 | coloc | Shared-signal colocalization analysis. | Methods / RNA-seq, eQTL and TWAS analysis |
 | DESeq2 | Used DESeq2 R package 1.30.1 for RNA-seq differential expression, selecting adjusted P<0.05 and absolute log2FC>=1. FPKM/TPM quantifications were described separately in the broader expression/QTL workflow. | Methods / RNA-seq, eQTL and TWAS analysis |
-| DIAMOND | Protein sequence alignment. | Methods / Repeat and protein-coding gene annotations |
+| DIAMOND | Used DIAMOND2.0.15 against NR for functional annotation with E<1e-5, and for all-versus-all protein comparisons at a1e-5 cutoff before syntenic gene-family clustering. | Methods / Repeat and protein-coding gene annotations |
 | fastp | Applied default fastp 0.25.0 quality assessment/preprocessing to resequencing reads before BWA-MEM alignment, Picard duplicate removal and GATK variant calling. | Methods / SNP and InDel calling of 422 accessions |
 | GATK | Called SNPs and small indels with HaplotypeCaller, then used separate SNP QD/FS/MQ/MQRankSum/ReadPosRankSum and indel QD/FS/ReadPosRankSum thresholds. Non-biallelic variants and variants below reported depth 5 were excluded afterward. | Methods / SNP and InDel calling of 422 accessions |
 | GCTA | Used for genetic principal components. | Methods / Phylogeny and population structure |
