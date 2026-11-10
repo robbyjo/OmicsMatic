@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "out": "REPLACE_WITH_NEW_ABSOLUTE_OUTPUT_DIRECTORY",
+  "runtime_profile": "REPLACE_WITH_EXACT_EDITION_RUNTIME_PROFILE",
+  "analysis": {
+    "schema_version": 1,
+    "source_label": "2.1.2",
+    "mode": "condition-inference",
+    "expression_units": "external-log-normalized-nonnegative",
+    "expression": "expression.tsv",
+    "metadata": "metadata.tsv",
+    "group_order": [
+      "sender",
+      "receiver",
+      "other"
+    ],
+    "condition_order": [
+      "CTRL",
+      "MASL",
+      "MASH"
+    ],
+    "species": "human",
+    "database_categories": [
+      "Secreted Signaling"
+    ],
+    "prefilter_min_group_cells": 0,
+    "overexpression": {
+      "only_positive": true,
+      "thresh_pc": 0,
+      "thresh_fc": 0,
+      "thresh_p": 0.05
+    },
+    "projection": {
+      "species": "human",
+      "alpha": 0.5,
+      "normalization": "rows"
+    },
+    "inference": {
+      "type": "triMean",
+      "trim": 0.1,
+      "raw_use": false,
+      "population_size": false,
+      "nboot": 100,
+      "seed": 1,
+      "Kh": 0.5,
+      "n": 1
+    },
+    "network": {
+      "pvalue_threshold": 0.05
+    },
+    "prefilter_scope": "any-condition",
+    "sample_order": [
+      "CTRL-1",
+      "CTRL-2",
+      "CTRL-3",
+      "MASL-1",
+      "MASL-2",
+      "MASL-3",
+      "MASH-1",
+      "MASH-2",
+      "MASH-3"
+    ],
+    "filter": null
+  },
+  "limits": {
+    "input_bytes": 268435456,
+    "output_bytes": 1073741824,
+    "wall_seconds": 1800,
+    "max_genes": 100000,
+    "max_cells": 100000,
+    "max_files": 200000,
+    "runtime_bytes": 34359738368,
+    "projection_working_bytes": 2147483648,
+    "projection_arithmetic_updates": 200000000000
+  }
+}
