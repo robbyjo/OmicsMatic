@@ -1,0 +1,128 @@
+{
+  "status": "FIVE_SOURCE_BOUND_MTAG_ROLE_DRAFTS_NOT_APPLIED",
+  "applied_to_catalog": false,
+  "reviews": [
+    {
+      "paper_id": "P077",
+      "pmcid": "PMC12807864",
+      "doi": "10.1038/s41588-025-02397-7",
+      "xml_sha256": "bf145faa08ab089977ae3be06d6c1927a49fef4a65527e52b28eadfddd351803",
+      "tool_id": "mtag",
+      "reported_version": "1.0.8",
+      "use_summary": "Jointly analyzed four summary-statistic sets: aortic valve area, mean gradient, peak velocity and aortic stenosis. The Methods report MTAG1.0.8 with default settings and calculation of maxFDR. Enhanced statistics were subsequently used for polygenic scores.",
+      "implementation_scope_note": "GWAS, METAL meta-analysis, phenotype construction, PRScs scores and external validation are separate. Complete literal flags, source commit, input files and maxFDR grid are unreported; default settings do not supply a complete command.",
+      "evidence": [
+        {
+          "paragraph_index": 42,
+          "section": "Methods / Study overview",
+          "paragraph_sha256": "17f7e0249b91867cc9e8e0a6530a9a82ba7b29c85528161afb22f34a3f9c1333"
+        },
+        {
+          "paragraph_index": 53,
+          "section": "Methods / MTAG",
+          "paragraph_sha256": "f09c4ddb9eb715264330d28d4b6d58947fdd86ac04dfc06e8e26420114470f22"
+        }
+      ],
+      "whole_paper_reproduced": false,
+      "historical_source_commit_known": false
+    },
+    {
+      "paper_id": "P088",
+      "pmcid": "PMC11631763",
+      "doi": "10.1038/s41588-024-01975-5",
+      "xml_sha256": "9a809b741a416b28a354287c263b3662ef5137e6e616b1855b999b9355534623",
+      "tool_id": "mtag",
+      "reported_version": "1.0.8",
+      "use_summary": "Initially assessed genetic correlations across DCM, NICM, HCM and eight left-ventricular MRI traits. Selected Ecc and indexed LV end-systolic volume from two clusters with positive rg>0.7, then combined those two GWAS with DCM using default MTAG parameters. Reported maxFDR0.03 and an approximately73% effective-sample-size increase for DCM.",
+      "implementation_scope_note": "Trait screening and the initial correlation matrix are distinct from the final three-trait run. Supply declared per-SNP effective sample sizes from the authors method. Full input bytes, source commit, exact flag list and maxFDR grid remain unknown; do not replace positive rg>0.7 by an absolute-correlation rule.",
+      "evidence": [
+        {
+          "paragraph_index": 26,
+          "section": "Methods / Multitrait analyses",
+          "paragraph_sha256": "93c5ad979b916b43ef1c9180045fdd5458932f263ae2278112d3fcae976d981e"
+        },
+        {
+          "paragraph_index": 27,
+          "section": "Methods / Multitrait analyses",
+          "paragraph_sha256": "ad9a3351a885262b8b89a3b7675e5e485d1ea9d83c99bea1200fad6a10f304df"
+        }
+      ],
+      "whole_paper_reproduced": false,
+      "historical_source_commit_known": false
+    },
+    {
+      "paper_id": "P090",
+      "pmcid": "PMC11631752",
+      "doi": "10.1038/s41588-024-01952-y",
+      "xml_sha256": "9134de1e47ed25c8ca3033729d6b60846a95603b762996d6aac9d2ef4926c3ca",
+      "tool_id": "mtag",
+      "reported_version": "1.0.8",
+      "use_summary": "Combined the primary GWAS with cardiac-MRI traits selected for absolute genetic correlation |rg|>0.7 after separate LDSC screening of ten traits. The paragraph explicitly reports mtag1.0.8 and maxFDR2.7%.",
+      "implementation_scope_note": "METAL meta-analysis and LDSC1.0.1 screening are separate steps. Complete selected input files, commands, covariance/reference choices and maxFDR grid are not specified in this paragraph; do not infer the final trait set from the ten screening candidates.",
+      "evidence": [
+        {
+          "paragraph_index": 22,
+          "section": "Methods / Discovery GWAS and multitrait analysis of GWAS",
+          "paragraph_sha256": "e020bf1944ac3b4fd33e02197bbffe82c4cc34cef8d38e41cb26ccd0f874054b"
+        }
+      ],
+      "whole_paper_reproduced": false,
+      "historical_source_commit_known": false
+    },
+    {
+      "paper_id": "P112",
+      "pmcid": "PMC10703690",
+      "doi": "10.1038/s41588-023-01563-z",
+      "xml_sha256": "2ce4288e884bff3b58799766776b155aa6864290922f0419feec437793ddab61",
+      "tool_id": "mtag",
+      "reported_version": null,
+      "use_summary": "Jointly analyzed EUR cannabis-use-disorder summary statistics with alcohol-use disorder and FTND nicotine dependence. Removed duplicate SNPs, MAF<=0.01 and strand-ambiguous variants beforehand. Reported5894946 cannabis variants after QC and3540940 after the joint MTAG analysis; significance P<5e-8.",
+      "implementation_scope_note": "Upstream EUR GWAS/meta-analysis and duplicate/MAF/strand QC are separate. MTAG version, exact commands, per-SNP sample-size inputs and covariance/reference settings are not reported here. The reported total AUD/FTND sample sizes do not establish every per-SNP N.",
+      "evidence": [
+        {
+          "paragraph_index": 36,
+          "section": "Methods / Multi-trait analysis of GWAS",
+          "paragraph_sha256": "bf089836c7012db544f1f93873b48e7ca6ed8e45850a2443fe898c8206a8e956"
+        }
+      ],
+      "whole_paper_reproduced": false,
+      "historical_source_commit_known": false
+    },
+    {
+      "paper_id": "P115",
+      "pmcid": "PMC10703686",
+      "doi": "10.1038/s41588-023-01559-9",
+      "xml_sha256": "c6056f0d3f5891d77895c2aa10063553b1735f4ddc7c8d1103eb0c4e81744fe8",
+      "tool_id": "mtag",
+      "reported_version": null,
+      "use_summary": "Compared six selections of MDD-related GWAS inputs to create integrated LifetimeMDD statistics. Evaluated sensitivity to the input phenotypes and ten-fold prediction with GWAS and MTAG confined to each90% training fold, followed by separate PRSice scoring on held-out participants. Used MTAG-derived effective sample sizes for downstream LDSC.",
+      "implementation_scope_note": "Imputation and PRS construction/evaluation are separate. Complete six trait sets require the figure/supplement; the primary paragraphs do not give an exact MTAG version, command or maxFDR grid. MTAG effective sample size, case-control effective N and imputation-related effective N are distinct definitions and must not be interchanged.",
+      "evidence": [
+        {
+          "paragraph_index": 42,
+          "section": "Methods / SNP-based heritability and genetic correlation",
+          "paragraph_sha256": "9e817079f0452d7bcc34a75fd26559e9c96a85445e67c6930f1bdcf1426ddfea"
+        },
+        {
+          "paragraph_index": 15,
+          "section": "Results / MTAG improves GWAS power but is sensitive to inputs",
+          "paragraph_sha256": "b5026e73bde99d1ab560142d6681c2fe6db1073aa17dff6d94d4f326abed2b5f"
+        },
+        {
+          "paragraph_index": 16,
+          "section": "Results / MTAG improves GWAS power but is sensitive to inputs",
+          "paragraph_sha256": "afcefea1c72c39441f5b20d5faeb63ccab8e99a2ffbcd055b4f37602ddde1758"
+        },
+        {
+          "paragraph_index": 43,
+          "section": "Methods / In-sample PRS prediction of phenotypes in UK Biobank with ten-fold cross-validation",
+          "paragraph_sha256": "c2996ce6b7cc8ac7fccb093ed2579a8141d053c2eff7e06262662ef463df2270"
+        }
+      ],
+      "whole_paper_reproduced": false,
+      "historical_source_commit_known": false
+    }
+  ],
+  "full_article_prose_redistributed": false,
+  "catalog_implementation_credit": false
+}
