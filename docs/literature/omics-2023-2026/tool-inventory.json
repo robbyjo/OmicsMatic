@@ -4556,6 +4556,54 @@
     "validation_note": "Existing overlap/adapters require paper-specific option checks; missing integrations remain pending."
   },
   {
+    "id": "scdrs",
+    "name": "scDRS",
+    "pattern": "(?<![A-Za-z0-9_])(?:scDRSs?)(?![A-Za-z0-9_])",
+    "role": "Single-cell disease relevance scoring",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Scoped original scDRS 1.0.0/1.0.1/1.0.2 workflows with separate native numerical components. Six primary paper roles reviewed, including the previously missed plural scDRSs in P169; unreported settings remain explicit.",
+    "paper_count": 6,
+    "papers": [
+      "P021",
+      "P024",
+      "P055",
+      "P085",
+      "P123",
+      "P169"
+    ],
+    "implementation_status": "upstream-adapter-validated",
+    "implementation_source": "src/main/java/org/jlinalg/cli/ScdrsToolsCli.java",
+    "implementation_scope": "Typed scdrs-tools supervises unchanged original scDRS 1.0.0/1.0.1/1.0.2 CLI functions in an exact private Linux Python 3.10.16 runtime: gene-set munging, single-dataset H5AD preprocessing/scoring, matched controls, covariates, proportion adjustment, group association/Geary heterogeneity, annotation correlation and gene prioritization. Native Java audits all output coordinates, identifiers, finite values, source processes and provenance; optional group BH uses one trait/annotation family in this dataset with strict q<cutoff. Original scoring, LOESS, covariate fitting and graphs remain upstream. Ordinary Pearson coefficients are separate from corr_mcp/corr_mcz. No automatic batch correction, MAGMA input preparation, covariate repair, historical version replacement or control reduction. Broader package and whole-paper reproduction remain unfinished. Read SCDRS_INTEGRATION.md.",
+    "validation_note": "23 original CLI controls cover 877998 byte-identical numerical/gene-weight coordinates and 69 saved JVM checks, including 1000 genes/1000 controls in 1.0.1 and 1.0.2. One staged root workflow and 3 saved root checks preserve predecessor scientific bytes. 36 refusal/tamper controls admit no failed result. Native explicit-family BH matches 67161 double q values and 67161 strict cutoff decisions across 3 JVMs. All 24 packaged bundles replay on Windows Java 21/25 and Linux Java 21 without Python fitting. Synthetic controls do not establish biological validity, producer authenticity, independent full-model refitting, historical author commits or large-atlas performance.",
+    "project_adapter_available": true,
+    "canonical_adapter_available": false,
+    "source_roles_reviewed": 6,
+    "source_role_coverage": "scdrs-source-role-coverage.json",
+    "development_candidate": "docs/literature/scdrs-workflow-development/scdrs-root-javac21.jar",
+    "development_candidate_sha256": "662b6ed8a8184807226624bab7a8f283e052761ad32f889cb29bd58bfe6cc6f1",
+    "development_cli_class": "org.jlinalg.cli.ScdrsToolsCli",
+    "root_cli_class": "org.jlinalg.cli.JLinAlgCli",
+    "root_command": "scdrs-tools",
+    "workflow_proof": "docs/literature/scdrs-workflow-development/VALIDATION.json",
+    "native_proof": "docs/literature/scdrs-native-development/validation.json",
+    "native_components": [
+      "ScdrsScores"
+    ],
+    "supported_source_versions": [
+      "1.0.0",
+      "1.0.1",
+      "1.0.2"
+    ],
+    "original_runtime_required": true,
+    "analysis_installs_software": false,
+    "runtime_setup_export_available": true,
+    "download_install_available": true,
+    "whole_package_implemented": false,
+    "whole_paper_reproduced": false,
+    "whole_goal_complete": false
+  },
+  {
     "id": "sniffles",
     "name": "Sniffles",
     "pattern": "(?<![A-Za-z0-9_])(?:Sniffles2?)(?![A-Za-z0-9_])",
@@ -4845,27 +4893,6 @@
     "implementation_status": "method-overlap",
     "implementation_source": "src/main/java/org/jlinalg/pipeline/StreamingOmicsAssociationPipeline.java",
     "implementation_scope": "Related native method; upstream software options and numerical equivalence require separate validation.",
-    "validation_note": "Existing overlap/adapters require paper-specific option checks; missing integrations remain pending."
-  },
-  {
-    "id": "scdrs",
-    "name": "scDRS",
-    "pattern": "(?<![A-Za-z0-9_])(?:scDRS)(?![A-Za-z0-9_])",
-    "role": "Single-cell disease relevance scoring",
-    "current_coverage": "missing",
-    "existing_source": null,
-    "coverage_note": "Additional software identified during full-text/code-link completeness review; integration and independent validation pending.",
-    "paper_count": 5,
-    "papers": [
-      "P021",
-      "P024",
-      "P055",
-      "P085",
-      "P123"
-    ],
-    "implementation_status": "missing",
-    "implementation_source": null,
-    "implementation_scope": "Additional software identified during full-text/code-link completeness review; integration and independent validation pending.",
     "validation_note": "Existing overlap/adapters require paper-specific option checks; missing integrations remain pending."
   },
   {

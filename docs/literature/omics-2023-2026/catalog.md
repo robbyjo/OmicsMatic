@@ -1,6 +1,6 @@
 # Omics and GWAS paper catalog
 
-250 papers; 402 named tools; 2475 paper-tool observations.
+250 papers; 402 named tools; 2476 paper-tool observations.
 
 Window: 2023-10-23 through 2026-10-23, inclusive. No extension was required.
 
@@ -422,7 +422,7 @@ Nature · 2026-09-23 · [DOI](https://doi.org/10.1038/s41586-026-10271-7) · [Pr
 | mashr | mashr0.2.79 with adapted dreamlet run_mash shrinks age-associated effects across nine EN, seven IN and four glial subclasses. Group scores multiply 1-LFSR, require nominal P<0.05 in at least two group members, and select scores>0.9. Tau expression specificity and enrichment are separate downstream analyses. | Methods / Degree of sharing across the EN, IN and glial subclasses |
 | Monocle | Used Monocle3 1.0.0 on the reported UMAT embedding to reconstruct lineage trajectories and select shortest paths; a modified graph_test with covariates identified trajectory-associated genes. | Methods / Pseudotime analysis and dynamically expressed gene identification and downstream analysis |
 | Scanpy | Single-cell expression processing and analysis. | Methods / Preprocessing of the snRNA-seq dataset / Rigorous quality-control pipeline |
-| scDRS | Single-cell disease relevance scoring. | Methods / Single-cell polygenic disease risk score |
+| scDRS | Used scDRS1.0.1 to compute nucleus-level disease scores in DLPFC lifespan data from MAGMA gene z-score weights and gene-specific technical noise. Requested20 mean and20 variance bins; used200 mean/variance-matched control sets, vs weighting and normalized control-score output. | Methods / Single-cell polygenic disease risk score |
 | SCENIC+ | Multiomic regulatory-network tools and motif reference resources. | Methods / Inference of transcriptional regulators of pseudotime gene modules |
 | Scrublet | Used Scrublet 0.2.3 with 10 principal components independently per batch; subsequent downsampling to 1000 UMIs, CPM and log transformation were separate. | Methods / Integrated analysis of lifespan replication dataset / Integration and annotation |
 | scVI | Used scvi-tools 1.2.0 to transfer class and subclass annotations from an in-house reference cohort after multi-dataset snRNA-seq preprocessing. | Methods / Integrated analysis of lifespan replication dataset / Integration and annotation |
@@ -486,7 +486,7 @@ Nature · 2026-09-23 · [DOI](https://doi.org/10.1038/s41586-025-09573-z) · [Pr
 | PLINK 2 | Used explicitly named PLINK (v.2.0) to calculate ancestry PCs after MAF>=0.01, HWE P>=1e-10, variant missingness<=0.01, high-LD-region exclusion and LD pruning with a 1000-kb window, step 10 and r2=0.2. The later EUR set uses autosomal biallelic variants, imputation R2>0.8, HWE P>=1e-6, missingness<=0.02 and ancestry-specific ALFA MAF>=0.01. PLINK 2 also computes AD PRS from separately estimated PRS-CS-auto weights, including and excluding APOE. | Methods / Processing of genotypes |
 | PRS-CS | Inferred Alzheimer disease SNP weights with PRS-CS-auto using a developers' 1000 Genomes LD panel and reported a=1,b=0.5,1000 iterations,500 burn-in and thinning5; PLINK2 then computed individual scores. | Methods / PRS calculation |
 | Scanpy | Single-cell expression processing and analysis. | Methods / Processing of snRNA-seq data / Alignment |
-| scDRS | Single-cell disease relevance scoring. | Methods / Genetic heritability analysis of polygenic risk |
+| scDRS | Applied scDRS after MAGMA across neurological and other GWAS traits, using the top1000 gene weights sorted by z-score and reported default scDRS settings. The AD GWAS excluded APOE; MAGMA annotation used35kb upstream/10kb downstream windows with named1000Genomes EUR and NCBI38 files. | Methods / Genetic heritability analysis of polygenic risk |
 | Scrublet | Applied Scrublet to infer further doublets after initial quality filtering, normalization/log transformation and an initial Leiden clustering. | Methods / Processing of snRNA-seq data / Doublet detection |
 | scVI | Used scANVI for RADC-to-Xenium label transfer after restricting the reference to shared panel genes: five layers,30 latent variables,20 reference epochs with at least 100 cells/cluster/epoch and 100 transfer epochs. | Methods / Spatial validation of cellular taxonomy / Class label prediction |
 | Squidpy | Spatial neighborhood and expression analysis. | Methods / Spatial validation of cellular taxonomy / Definition of rough laminar layers within tissue |
@@ -1140,7 +1140,7 @@ Nature · 2023-12-13 · [DOI](https://doi.org/10.1038/s41586-023-06818-7) · [Pr
 | MAGMA | Used MAGMA1.10 with a10kb annotation window and GRCh37/1000Genomes to produce gene z-scores, then selected top1000 genes for scDRS after human-to-mouse orthologue conversion; reused precomputed scores for many traits. | Methods / Brain preparation / Heritability enrichment with scDRS |
 | RCTD | Spatial cell-type deconvolution. | Methods / Brain preparation / Cell type mapping into the Slide-seq dataset with RCTD |
 | Scanpy | Used for exploratory representation. | Methods / Brain preparation / Clustering of snRNA-seq data / Visualization of clusters |
-| scDRS | Single-cell disease relevance scoring. | Methods / Brain preparation / Heritability enrichment with scDRS |
+| scDRS | Used scDRS1.0.2 with reported default settings to investigate GWAS-trait enrichment in snRNA-seq cell types, computing cell-level disease associations against control-gene-score distributions. | Methods / Brain preparation / Heritability enrichment with scDRS |
 | Seurat | Used for cell clustering. | Methods / Brain preparation / Clustering of snRNA-seq data / Quality control of clusters |
 | t-SNE | Visualized 250 principal components of cluster-subsampled nuclei using openTSNE 1.0.0, perplexity 350 and exaggeration four. | Methods / Brain preparation / Clustering of snRNA-seq data / Visualization of clusters |
 
@@ -1648,7 +1648,7 @@ Nature Genetics · 2024-11-22 · [DOI](https://doi.org/10.1038/s41588-024-01961-
 | Monocle | Used monocle3 1.3.1 fit_models GLMs to relate spatial gene expression to amyloid Getis-Ord Gi* hotspot scores, adjusting for biological sample and UMI count; followed significant Wald-test results with positive Pearson-correlation filtering. | Methods / Identifying amyloid-associated gene expression signatures in human and mouse |
 | Scanpy | Single-cell expression processing and analysis. | Methods / Initial snRNA-seq data analysis |
 | scArches | Single-cell reference transfer. | Methods / Reference-based integration of snRNA-seq datasets |
-| scDRS | Single-cell disease relevance scoring. | Methods / Polygenic disease enrichment analysis in ST and snRNA-seq |
+| scDRS | Used scDRS1.0.0 for cell-level and group-level polygenic enrichment in spatial and single-nucleus datasets, with1000 mean/variance-matched controls and supplied74 human/22 mouse disease gene sets. Analyzed datasets and disease/genotype/age strata separately; subsequently correlated AD scores with module eigengenes using Pearson correlation. | Methods / Polygenic disease enrichment analysis in ST and snRNA-seq |
 | Scrublet | Applied Scrublet 0.2.3 with defaults per experiment after splitpipe and CellBender 0.2.0; percentile-based doublet/count/mitochondrial QC followed. | Methods / Preprocessing gene expression data |
 | scVI | Trained scVI for 50 epochs with two 128-node hidden layers,30 latent dimensions and dropout 0.1, adjusting the reported batch and continuous/categorical sample, diagnosis, region, age, mitochondrial, UMI, PMI and RIN covariates before Scanpy clustering. | Methods / Initial snRNA-seq data analysis |
 | Seurat | Single-cell QC, normalization, integration, clustering or annotation. | Methods / ST clustering analysis |
@@ -2448,7 +2448,7 @@ Nature Genetics · 2026-09-07 · [DOI](https://doi.org/10.1038/s41588-026-02741-
 | REGENIE | Ran REGENIE 3.3 MS case-control association in the selected UKB white-British cohort with age, sex and ten PCs after stated sample/variant and imputation QC. | Methods / UK Biobank |
 | SAIGE | Used SAIGE0.45 GLMMs for Japanese multiple-sclerosis GWAS and SAIGE1.0.7 for Genomics England European-ancestry analysis,adjusting for age,sex and ten PCs. | Methods / GWAS of the Japanese datasets |
 | Scanpy | Used for cell clustering. | Methods / Manual annotation of PBMC scRNA-seq data |
-| scDRS | Single-cell disease relevance scoring. | Methods / Detection of cell types associated with MS |
+| scDRS | Used scDRS1.0.2 on PBMC and MS-lesion datasets with top1000 cross-population MAGMA genes outside chr6:25-34Mb MHC. Computed1000 control scores; included genes-per-cell, age and sex covariates; performed cell-type association tests and BH correction across cell types within each dataset, declaring FDR<0.05. | Methods / Detection of cell types associated with MS |
 | scds | Ran scds 1.18 alongside Scrublet per sample after CellRanger and CellBender. | Methods / Alignment, quantification and QC of PBMC scRNA-seq data |
 | Scrublet | Ran Scrublet 0.2.3 and scds 1.18 per sample after CellRanger 7 and CellBender 0.1.0 processing. | Methods / Alignment, quantification and QC of PBMC scRNA-seq data |
 | SHAPEIT | Estimated haplotypes for Japanese datasets using SHAPEIT4 before Minimac4 genotype imputation; the imputation reference comprised 11,754 Japanese whole-genome-sequenced individuals. | Methods / QC and imputation in the Japanese datasets |
@@ -3321,6 +3321,7 @@ Nature Genetics · 2024-09-16 · [DOI](https://doi.org/10.1038/s41588-024-01900-
 | SuSiE | Bayesian fine-mapping and credible sets. | Methods / Fine-mapping of risk loci |
 | OmniPath | Obtained regulatory interaction evidence from OmniPath and DoRothEA for transcription-factor–target links, combining curated knowledge, ChIP-seq, motif and expression evidence in the effector-gene investigation. Expression-informed interactions use TCGA tumors or GTEx normal tissues. | Methods / Gene evidence |
 | DoRothEA | Obtained transcription-factor–target regulatory interactions from the DoRothEA and OmniPath resources, using evidence from curated literature, ChIP-seq peaks, binding-site motifs and expression-inferred interactions. The expression evidence derives from TCGA tumors or GTEx normal tissues. | Methods / Gene evidence |
+| scDRS | Used scDRS1.0.1, written as scDRSs in the article, to link CRC GWAS risk with Tabula Sapiens v4 and Gut Cell Atlas expression. MAGMA1.10 defined the top1000 putative disease genes; normalized cell scores were tested against pooled control scores across gene sets and cells. | Methods / Cell-type specificity of risk variants |
 
 XML SHA-256: `35e6eef968caa63cd301d6867f6353d88441df9bd960be9d32288a4e86561782`. Exact evidence paragraph hashes and locators are in [papers.json](papers.json).
 

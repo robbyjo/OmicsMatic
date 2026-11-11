@@ -1,65 +1,62 @@
 # 250 paper omics and GWAS toolbox catalog
 
-**Current checkpoint: 98 new scoped integrations**: 19 native Java methods and
-79 tested upstream adapters. There are **101 including three existing adapters**,
-with **245 named tools still missing**. Cell Ranger remains excluded at the
+**Current checkpoint: 99 new scoped integrations**: 19 native Java methods and
+80 tested upstream adapters. There are **102 including three existing adapters**,
+with **244 named tools still missing**. Cell Ranger remains excluded at the
 user's request. The full toolbox goal remains active.
 
 The fixed collection contains 250 papers: 71 Nature, 104 Nature Genetics and
 75 AJHG articles from 2023-10-23 through 2026-10-23. No time extension was needed.
-There are 402 observed tools, 2,475 paper-tool observations,
-1,043 source-bound reviewed roles and 374 supporting paragraph pointers.
-Paper-wide semantic review and implementation remain incomplete.
+There are 402 observed tools, 2,476 paper-tool observations, 1,049 source-bound
+reviewed roles and 375 supporting paragraph pointers. Paper-wide semantic
+review and implementation remain incomplete.
 
-Read [MTAG setup, analysis and recovery](../MTAG_INTEGRATION.md) for the typed
-`mtag-tools` development route and exact private Linux runtime preparation.
-The current original1.0.8 profile supports explicit two-to-eight-trait common-SNP
-analysis with stated native audits. Five paper roles preserve their distinct
-trait screens, QC and downstream sample-size choices. P088's author equation
-has a separate [primary-source receipt](mtag-P088-equation-source-review.json);
-it is not attributed to the adjacent paragraph alone. Three papers report1.0.8;
-P112/P115 leave the version unstated. A version label does not prove the source
-commit or reconstruct author commands.
+Read [scDRS setup, analysis and recovery](../SCDRS_INTEGRATION.md) for the typed
+`scdrs-tools` route, exact private Linux runtime preparation and complete JSON
+requests. Original 1.0.0/1.0.1/1.0.2 functions implement gene-set munging,
+single-dataset H5AD scoring and downstream workflows. Native numerical
+components and explicit-family BH remain separately described and tested.
 
-The original option matrix has25 cases:20 admitted workflows,four expected
-scientific refusals and one skip, covering172625 trait-result rows. Additional
-original4-through8-trait controls include the complete default4-trait10-interval
-maxFDR calculation,30000 trait-result rows and15 saved replays. Source fitting,
-full QC and maxFDR formulas remain upstream. Reused synthetic populations are
-not independent biological datasets or paper reproductions.
+Six primary paper roles preserve distinct settings. P021 reports 1.0.1 and
+200 controls; P085 reports 1.0.0 and 1000 controls; P055/P123 report 1.0.2.
+P024 leaves the version unstated. P169 writes the plural scDRSs and reports
+1.0.1 with separate atlas inputs, but no exact command, control count or
+preprocessing. A source-reviewed registry overlay corrects that omitted
+observation without modifying the historical base registry. Unreported
+settings and historical author commits are not inferred.
 
-[GENESIS workflows](../GENESIS_INTEGRATION.md) and
-[SNPRelate workflows](../SNPRELATE_INTEGRATION.md) remain distinct integrations.
-All401 other tool objects and1,038 earlier review objects are preserved.
-The development root supplement needs the separately pinned canonical JAR;
-the released executable alone has no new command. Saved MTAG verification
-works without Python or fitting. No released executable is overwritten.
+The 23 original workflow controls cover 877998 byte-identical numerical and
+gene-weight coordinates and 69 saved JVM checks. Two controls use 1000 disease
+genes and 1000 controls. All 24 packaged bundles replay on Windows Java21/25
+and Linux Java21. Native BH matches 67161 double q values and strict cutoff
+decisions across three JVMs; 36 refusal/tamper controls admit no failed result.
+These are synthetic controls, not biological replication or an atlas benchmark.
+
+[MTAG](../MTAG_INTEGRATION.md), [GENESIS](../GENESIS_INTEGRATION.md) and
+[SNPRelate](../SNPRELATE_INTEGRATION.md) retain their distinct workflows and
+evidence. All 401 other tool objects and 1043 earlier review objects are
+preserved. The root supplement requires the separately pinned canonical JAR;
+the released executable alone has no new command. No release or Pages
+deployment is performed by this catalog update.
 
 **Warnings and required actions:** SKIP3 means skip dependent analysis when
-exact software or capabilities are unavailable or forbidden. Install/download
-only where permitted into NEW private paths; otherwise leave analysis skipped.
-FAIL2 admits no result, including partial original output. Require wrapper
-exit0, result_admitted=true, COMPLETED.json and complete saved --verify, then
-inspect every warning, source log and native ledger before interpretation.
-Original MTAG can return process exit0 after a scientific error. Default freq
-can bypass internal MAF munging; violating retained SNPs are refused. No-flip,
-n_max and custom-grid source limitations are not silently repaired. Source
-P=0 underflow and distinct per-SNP/GWAS-equivalent/case-control/imputation N
-definitions remain visible. Preserve each attempt and resolve its named cause
-before retrying NEW paths. Do not reduce a grid or change scientific settings
-merely to hide failure. Analysis installs nothing.
+exact permitted software or capabilities are unavailable or forbidden.
+Download/install only where permitted, with explicit options and NEW private
+paths; otherwise leave analysis skipped. Analysis installs nothing. FAIL2
+admits no result, including partial original outputs. Require wrapper exit0,
+result_admitted=true, COMPLETED.json and complete saved --verify, then review
+every warning, original log, identifier and covariate disposition ledger.
+Preserve each attempt, resolve its named cause and retry NEW paths. Do not
+repair identifiers/NaN/Inf, silently encode covariates, replace historical
+versions, reduce controls or pool correction families to conceal failure.
+Logical resource checks are not OS RAM quotas. Hashes establish integrity,
+not producer authenticity; saved verification does not independently refit
+LOESS, covariates, scores or graphs. Original corr_mcp/corr_mcz are distinct
+from ordinary Pearson r. Native BH uses one trait/annotation family within
+this dataset, with strict q<declared cutoff. Read the integration guide.
 
 Current records: [tool inventory](tool-inventory.json), [papers](papers.json),
-[summary](summary.json), [warnings and required actions](WARNINGS.md),
-[MTAG primary roles](mtag-source-role-coverage.json),
-[MTAG catalog validation](mtag-catalog-validation.json),
-[typed workflow evidence](../mtag-workflow-development/VALIDATION.json),
-[dimension evidence](../mtag-dimensions-development/VALIDATION.json) and
-[the earlier GENESIS checkpoint](genesis-catalog-validation.json).
-
-The generated reference and earlier checkpoints below are retained exactly.
-Their historical counts describe those checkpoints; the records above describe
-the current checkpoint.
+[summary](summary.json), [warnings and required actions](WARNINGS.md).
 
 <details>
 <summary>Generated catalog reference and retained historical checkpoints</summary>

@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "version": "1.0.2",
+  "runtime_profile": "/absolute/NEW-scdrs-profile/runtime.json",
+  "output_dir": "/absolute/NEW-scdrs-analysis",
+  "operation": "score-and-downstream",
+  "inputs": {
+    "h5ad": "/absolute/expression.h5ad",
+    "gene_sets": "/absolute/disease.gs",
+    "covariates": "/absolute/covariates.tsv",
+    "scores": null,
+    "gene_statistics": null
+  },
+  "expression": {"species": "human", "raw_counts": false, "filter_data": false},
+  "scoring": {
+    "gene_set_species": "human", "controls": 1000, "match": "mean_var",
+    "weighting": "vs", "adjust_proportions": null,
+    "return_control_raw": false, "return_control_normalized": true
+  },
+  "downstream": {
+    "groups": ["celltype"], "correlations": ["module"], "gene_analysis": false,
+    "knn_neighbors": 15, "knn_pcs": 20, "group_bh": true, "group_fdr": 0.05
+  },
+  "gene_sets": null,
+  "limits": {
+    "input_bytes": 20000000, "output_bytes": 256000000,
+    "working_bytes": 2000000000, "files": 3000, "wall_seconds": 600,
+    "cells": 1000, "genes": 5000, "nonzeros": 500000,
+    "matrix_elements": 1000000, "traits": 10
+  }
+}

@@ -219,6 +219,8 @@ public final class JLinAlgCli {
             return DeepToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
         if (arguments.length > 0 && arguments[0].equals("diamond-tools"))
             return DiamondToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("scdrs-tools"))
+            return ScdrsToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
         if (arguments.length > 0 && arguments[0].equals("mtag-tools"))
             return MtagToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
         if (arguments.length > 0 && arguments[0].equals("genesis-tools"))
@@ -430,6 +432,7 @@ public final class JLinAlgCli {
               java -jar omicsmatic-<version>.jar single-cell-qc --help
               java -jar omicsmatic-<version>.jar cellbender-tools --help
               java -jar omicsmatic-<version>.jar diamond-tools --help
+              java -jar omicsmatic-<version>.jar scdrs-tools --help
               java -jar omicsmatic-<version>.jar mtag-tools --help
               java -jar omicsmatic-<version>.jar genesis-tools --help
               java -jar omicsmatic-<version>.jar snprelate-tools --help

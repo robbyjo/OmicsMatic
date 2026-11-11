@@ -12048,6 +12048,72 @@
           "paragraph_sha256": "c2996ce6b7cc8ac7fccb093ed2579a8141d053c2eff7e06262662ef463df2270"
         }
       ]
+    },
+    {
+      "pmcid": "PMC13600939",
+      "doi": "10.1038/s41586-026-10271-7",
+      "tool_id": "scdrs",
+      "evidence_paragraph_sha256": "77f13866b8a2fe3377ea2f2b3e7fdee19df443ab759074018c77f039f1f40b55",
+      "use_summary": "Used scDRS1.0.1 to compute nucleus-level disease scores in DLPFC lifespan data from MAGMA gene z-score weights and gene-specific technical noise. Requested20 mean and20 variance bins; used200 mean/variance-matched control sets, vs weighting and normalized control-score output.",
+      "implementation_scope_note": "Scoped original scDRS1.0.0/1.0.1/1.0.2 workflows and separate native numerical components are implemented; read SCDRS_INTEGRATION.md. Tested release tags do not establish an author source commit or reconstruct unreported commands. The primary paragraph explicitly gives1.0.1, correcting the prior unreported version field. Preserve200 controls and the stated flags instead of substituting the CLI default1000. MAGMA weights and expression preparation remain explicit inputs.",
+      "version_reported_near_name": "1.0.1",
+      "supporting_evidence": []
+    },
+    {
+      "pmcid": "PMC13600946",
+      "doi": "10.1038/s41586-025-09573-z",
+      "tool_id": "scdrs",
+      "evidence_paragraph_sha256": "fceec2fa3eaaeca950b89f94113cb04947f1af1be0417baf61e45ea1390d4c18",
+      "use_summary": "Applied scDRS after MAGMA across neurological and other GWAS traits, using the top1000 gene weights sorted by z-score and reported default scDRS settings. The AD GWAS excluded APOE; MAGMA annotation used35kb upstream/10kb downstream windows with named1000Genomes EUR and NCBI38 files.",
+      "implementation_scope_note": "Scoped original scDRS1.0.0/1.0.1/1.0.2 workflows and separate native numerical components are implemented; read SCDRS_INTEGRATION.md. Tested release tags do not establish an author source commit or reconstruct unreported commands. The version, source commit and complete scDRS command are unreported. Gene ranking, APOE exclusion, genome/LD-reference compatibility and MAGMA windows are upstream preparation; no scDRS version or variant-exclusion policy is inferred.",
+      "version_reported_near_name": null,
+      "supporting_evidence": []
+    },
+    {
+      "pmcid": "PMC10719111",
+      "doi": "10.1038/s41586-023-06818-7",
+      "tool_id": "scdrs",
+      "evidence_paragraph_sha256": "bcda9eac3a5602a922b08dc18a96ebf7c2af394f435f844332333764c2ad9715",
+      "use_summary": "Used scDRS1.0.2 with reported default settings to investigate GWAS-trait enrichment in snRNA-seq cell types, computing cell-level disease associations against control-gene-score distributions.",
+      "implementation_scope_note": "Scoped original scDRS1.0.0/1.0.1/1.0.2 workflows and separate native numerical components are implemented; read SCDRS_INTEGRATION.md. Tested release tags do not establish an author source commit or reconstruct unreported commands. Default settings are reported, but this anchor does not specify every input, normalization, covariate or downstream command. Do not attribute all package features to this use or infer a historical source commit.",
+      "version_reported_near_name": "1.0.2",
+      "supporting_evidence": []
+    },
+    {
+      "pmcid": "PMC11631771",
+      "doi": "10.1038/s41588-024-01961-x",
+      "tool_id": "scdrs",
+      "evidence_paragraph_sha256": "eae963d101028ce004a368ea03750787eafdc4483f0b43233fe5671e6ac73590",
+      "use_summary": "Used scDRS1.0.0 for cell-level and group-level polygenic enrichment in spatial and single-nucleus datasets, with1000 mean/variance-matched controls and supplied74 human/22 mouse disease gene sets. Analyzed datasets and disease/genotype/age strata separately; subsequently correlated AD scores with module eigengenes using Pearson correlation.",
+      "implementation_scope_note": "Scoped original scDRS1.0.0/1.0.1/1.0.2 workflows and separate native numerical components are implemented; read SCDRS_INTEGRATION.md. Tested release tags do not establish an author source commit or reconstruct unreported commands. Keep each dataset and stratum separate; scDRS does not automatically remove batch effects. Supply the selected curated gene-set release. Ordinary module-score Pearson coefficients are a distinct step from the scDRS correlation Monte Carlo output; the existing StatisticalTests.correlation Java API is available for explicitly aligned vectors.",
+      "version_reported_near_name": "1.0.0",
+      "supporting_evidence": []
+    },
+    {
+      "pmcid": "PMC13553293",
+      "doi": "10.1038/s41588-026-02741-5",
+      "tool_id": "scdrs",
+      "evidence_paragraph_sha256": "d47e25758b90f6bde77a53eeaac6e67d2360d680beeac5c8b95b1fd0e8a4ece8",
+      "use_summary": "Used scDRS1.0.2 on PBMC and MS-lesion datasets with top1000 cross-population MAGMA genes outside chr6:25-34Mb MHC. Computed1000 control scores; included genes-per-cell, age and sex covariates; performed cell-type association tests and BH correction across cell types within each dataset, declaring FDR<0.05.",
+      "implementation_scope_note": "Scoped original scDRS1.0.0/1.0.1/1.0.2 workflows and separate native numerical components are implemented; read SCDRS_INTEGRATION.md. Tested release tags do not establish an author source commit or reconstruct unreported commands. Provide explicitly prepared disease genes and covariates; immune-cell removal and MHC exclusion are separate input decisions. Choose one BH family across all tested cell types in each dataset, with strict q<0.05. A successful synthetic control does not reproduce the cohort or biological findings.",
+      "version_reported_near_name": "1.0.2",
+      "supporting_evidence": []
+    },
+    {
+      "pmcid": "PMC11525171",
+      "doi": "10.1038/s41588-024-01900-w",
+      "tool_id": "scdrs",
+      "evidence_paragraph_sha256": "abe0879ea5b8169b13d5587c9caa79753d851968b46df8b533a390ea1a3061b7",
+      "use_summary": "Used scDRS1.0.1, written as scDRSs in the article, to link CRC GWAS risk with Tabula Sapiens v4 and Gut Cell Atlas expression. MAGMA1.10 defined the top1000 putative disease genes; normalized cell scores were tested against pooled control scores across gene sets and cells.",
+      "implementation_scope_note": "Scoped original scDRS1.0.0/1.0.1/1.0.2 workflows and separate native numerical components are implemented; read SCDRS_INTEGRATION.md. Tested release tags do not establish an author source commit or reconstruct unreported commands. The methods explicitly report1.0.1, while the plural scDRSs caused the old name matcher to omit this observation. The two atlas inputs are distinct datasets. The exact command, control count, preprocessing and source commit are not stated; do not infer these from the atlas sizes or version label.",
+      "version_reported_near_name": "1.0.1",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 5,
+          "section": "Results / Cell specificity and chromatin landscape at risk loci",
+          "paragraph_sha256": "94ad5147853745ca37336f086f4754f49f0dc21fede4f0b492245a887729a569"
+        }
+      ]
     }
   ]
 }
