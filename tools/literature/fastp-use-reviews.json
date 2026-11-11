@@ -1,0 +1,107 @@
+[
+  {
+    "paper_id": "P007",
+    "primary_paragraph": 51,
+    "reported_version": "1.0.1",
+    "review": {
+      "pmcid": "PMC13668659",
+      "doi": "10.1038/s41586-026-11053-x",
+      "tool_id": "fastp",
+      "evidence_paragraph_sha256": "3c15a8c0afc45aba419bab6d3d724cffd850ab776f85e9e81a35e31ed0676d00",
+      "use_summary": "Removed adapters and described quality trimming of 80-bp paired-end ATAC-seq/CUT&Tag reads with fastp 1.0.1 defaults before Bowtie2 mapping.",
+      "implementation_scope_note": "The paper describes default processing, not explicit sliding-window cutting; v1.0.1 cut_front/cut_tail/cut_right are disabled by default. Header-dependent poly-G behavior and concrete inputs matter. FastQC, alignment, duplicate removal and peak calling are separate.",
+      "supporting_evidence": [],
+      "version_reported_near_name": "1.0.1"
+    }
+  },
+  {
+    "paper_id": "P046",
+    "primary_paragraph": 30,
+    "reported_version": "0.22.0",
+    "review": {
+      "pmcid": "PMC13668669",
+      "doi": "10.1038/s41586-026-10987-6",
+      "tool_id": "fastp",
+      "evidence_paragraph_sha256": "322d8db8af1e24889e14b163392b5fcc25d406ab15a668fbe5b8f881a02ee52d",
+      "use_summary": "Trimmed RNA-seq reads to 100 bp with fastp 0.22.0 before STAR/RSEM.",
+      "implementation_scope_note": "The paper does not give a full command or the exact end/global-cutting option. max_len1=100 is an available caller-selected setting, not proof of the authors' command. Do not infer every library's pairing, adapter/poly-G settings or correction.",
+      "supporting_evidence": [],
+      "version_reported_near_name": "0.22.0"
+    }
+  },
+  {
+    "paper_id": "P054",
+    "primary_paragraph": 50,
+    "reported_version": "0.23.2",
+    "review": {
+      "pmcid": "PMC12823411",
+      "doi": "10.1038/s41586-025-09794-2",
+      "tool_id": "fastp",
+      "evidence_paragraph_sha256": "b2859aeaa2b70e3b9ff15715fd4aa81e09981b759f7d3fc879d448560d0823b6",
+      "use_summary": "Preprocessed paired-end short-read metagenomes with fastp 0.23.2, including PE adapter detection, overlap correction, right-side quality cutting, quality/length filtering and deduplication.",
+      "implementation_scope_note": "Explicit options: --detect_adapter_for_pe --correction --cut_right --cut_right_window_size 4 --cut_right_mean_quality 20 --average_qual 30 --length_required 100 --dedup --dup_calc_accuracy 6. The paragraph also says barcode trimming but does not specify barcode identities/positions. Accuracy 6 requires 24 GiB for the source Bloom buffer plus overhead; do not silently lower it. GNU Parallel, pigz and downstream analyses remain separate.",
+      "supporting_evidence": [],
+      "version_reported_near_name": "0.23.2"
+    }
+  },
+  {
+    "paper_id": "P089",
+    "primary_paragraph": 30,
+    "reported_version": "0.23",
+    "review": {
+      "pmcid": "PMC10703697",
+      "doi": "10.1038/s41588-023-01561-1",
+      "tool_id": "fastp",
+      "evidence_paragraph_sha256": "1b6deaf9e45ca54d6864b9629ab448f5f50e4247dca92f786a0d20ad640ad72f",
+      "use_summary": "Used fastp v0.23 for WGS preprocessing, removing adapters and reads with over 40% Q<15 bases, then retaining clean reads of at least 45 bp before BWA/SAMtools/Picard.",
+      "implementation_scope_note": "The v0.23 patch is unresolved; do not silently equate it to 0.23.2 or another edition. Reported thresholds are qualified_quality_phred 15, unqualified_percent_limit 40 and length_required 45; full effective options and header-driven behavior are not reported.",
+      "supporting_evidence": [],
+      "version_reported_near_name": "0.23"
+    }
+  },
+  {
+    "paper_id": "P110",
+    "primary_paragraph": 49,
+    "reported_version": null,
+    "review": {
+      "pmcid": "PMC12695648",
+      "doi": "10.1038/s41588-025-02409-6",
+      "tool_id": "fastp",
+      "evidence_paragraph_sha256": "b8ee0c2ce8208e736b6d8dae2555d90e7ca85b56630e720797d3b31eb7b9e5be",
+      "use_summary": "Used fastp to trim ChIP-seq reads before Bowtie2 mapping and downstream Sambamba, deepTools, IGV and MACS3 analysis.",
+      "implementation_scope_note": "The fastp version and complete effective options are unreported. Do not infer a fastp edition, adapter, window, poly-G or quality threshold from the downstream tools or protocols.",
+      "supporting_evidence": [],
+      "version_reported_near_name": null
+    }
+  },
+  {
+    "paper_id": "P223",
+    "primary_paragraph": 13,
+    "reported_version": null,
+    "review": {
+      "pmcid": "PMC11339655",
+      "doi": "10.1016/j.ajhg.2024.06.018",
+      "tool_id": "fastp",
+      "evidence_paragraph_sha256": "33f2163d97d3cdb6e45c8a88bb46f1190e2a4cd814cebb9958c0fb7ce70dd9b8",
+      "use_summary": "Applied fastp standard adapter/quality trimming to ATAC-seq reads before Bowtie2 mapping and subsequent read/peak/promoter processing.",
+      "implementation_scope_note": "The paragraph reports standard settings but no fastp version or complete command. Defaults are version/header dependent. GNU Parallel, mitochondrial/ENCODE filtering, SAMtools, MACS2 and BEDTools are separate steps.",
+      "supporting_evidence": [],
+      "version_reported_near_name": null
+    }
+  },
+  {
+    "paper_id": "P248",
+    "primary_paragraph": 48,
+    "reported_version": "0.25.0",
+    "review": {
+      "pmcid": "PMC13447089",
+      "doi": "10.1038/s41588-026-02682-z",
+      "tool_id": "fastp",
+      "evidence_paragraph_sha256": "209e8a8961cced5db214cc1e481243ff70faf79a983f23cf9d5d533970cd5306",
+      "use_summary": "Applied default fastp 0.25.0 quality assessment/preprocessing to resequencing reads before BWA-MEM alignment, Picard duplicate removal and GATK variant calling.",
+      "implementation_scope_note": "Do not invent additional filtering or cutting flags from the phrase quality assessment/default settings. Exact input/output choices and effective header-dependent behavior are not reported. Read preprocessing does not reproduce alignments, variant calling or the 422-accession/186-RIL study.",
+      "supporting_evidence": [],
+      "version_reported_near_name": "0.25.0"
+    }
+  }
+]

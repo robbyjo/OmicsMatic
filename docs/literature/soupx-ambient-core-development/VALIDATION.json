@@ -1,0 +1,2422 @@
+{
+  "schema_version": 1,
+  "status": "passed-native-SoupX-ambient-arithmetic-and-request-contracts",
+  "archive": {
+    "bytes": 14094055,
+    "sha256": "8e72f5d3eec57c44664304c3a2079a58c49726a3ce6867fdb482d9c52370d5dc"
+  },
+  "warnings_document": {
+    "bytes": 2735,
+    "sha256": "f060e1585390bd2a16d2666d77db36c73a74df72851b8f5842c2bf9abcbce9e2"
+  },
+  "source_pins": {
+    "docs/literature/SOUPX_AMBIENT_DEVELOPMENT.md": {
+      "bytes": 7718,
+      "sha256": "ab0385d5ffd7ebd4069b563a301d47577810ef95df8c8ca9b864bfe2ea2c7f2a"
+    },
+    "examples/soupx-ambient-core/.gitattributes": {
+      "bytes": 8,
+      "sha256": "705fd4d6451a31d36b3df7de96f83f30ac976c9b4a6d1e51671d8e2f33e2d0da"
+    },
+    "examples/soupx-ambient-core/Example.java": {
+      "bytes": 1652,
+      "sha256": "a1aa1d737b9f701ea5419b14edb1c18ed63fda7d3a3e1c84958a66c7aafc4b06"
+    },
+    "src/main/java/org/jlinalg/cli/SoupXWorkflowRequest.java": {
+      "bytes": 12479,
+      "sha256": "7ac873183af66d1adb20f8c084beac2c3e9eef19b3935717a3e6950dc70c3a22"
+    },
+    "src/main/java/org/jlinalg/singlecell/SoupXAmbient.java": {
+      "bytes": 12726,
+      "sha256": "a6589d2414082ffb088b83ec1a84b0d0fc1294972fab12d7e85e177ca34c4325"
+    },
+    "src/test/java/org/jlinalg/cli/SoupXAmbientTest.java": {
+      "bytes": 8810,
+      "sha256": "83d80a8542471991aa0ab9b0e474488e551a2910acd2f384dc4616c60af75a0a"
+    },
+    "src/test/java/org/jlinalg/cli/SoupXWorkflowRequestTest.java": {
+      "bytes": 6228,
+      "sha256": "9a4c99a41a3f1757b8013432fdcffab7fe2b8591974979cf788ddb0595d57aa4"
+    },
+    "src/test/resources/org/jlinalg/singlecell/soupx-ambient/.gitattributes": {
+      "bytes": 8,
+      "sha256": "705fd4d6451a31d36b3df7de96f83f30ac976c9b4a6d1e51671d8e2f33e2d0da"
+    },
+    "src/test/resources/org/jlinalg/singlecell/soupx-ambient/ORIGINS.json": {
+      "bytes": 1808,
+      "sha256": "77e951e77eee513a4782da04864ea750cccd6f8d455640d4506a78b403bb23ab"
+    },
+    "src/test/resources/org/jlinalg/singlecell/soupx-ambient/inputs-v1.json.gz": {
+      "bytes": 221978,
+      "sha256": "7f2f1d1090831f8f67117ba8a5c354d13a6672e46aee97917e425498bf2791d6"
+    },
+    "src/test/resources/org/jlinalg/singlecell/soupx-ambient/original-1.3.0-v1.json.gz": {
+      "bytes": 367965,
+      "sha256": "cabd2602585f698cfc81a3279cb7f44aa9a85b82c7c020b67523ad294138da9f"
+    },
+    "src/test/resources/org/jlinalg/singlecell/soupx-ambient/original-1.6.2-v1.json.gz": {
+      "bytes": 363973,
+      "sha256": "a9ff8d79530b76b33e26e4c6b4bb8b5f55c1d5d3abac003059c49b4b46723248"
+    },
+    "src/test/resources/org/jlinalg/singlecell/soupx-ambient/poisson-diagnosis-v1.json.gz": {
+      "bytes": 1412,
+      "sha256": "e30b0a80f0a3e8d66936357419f568ac969d68c24f5c96d198139ac7bb7852c7"
+    },
+    "tools/literature/audit_soupx_ambient_controls.py": {
+      "bytes": 5634,
+      "sha256": "097ceb834e3ff3badd83166cbfbdc89aee60dc86913af301950cbcc20f90655c"
+    },
+    "tools/literature/build_soupx_ambient_core.py": {
+      "bytes": 3211,
+      "sha256": "a7803d1147c347f5d5b2eb7e0515f7e3f2320f6956f35c21b521a9cf01f35054"
+    },
+    "tools/literature/collect_soupx_ambient.R": {
+      "bytes": 9838,
+      "sha256": "869670e73b5a4686997ec7043f5545595b65a4a060a1f92ac3e3d7df078efa8d"
+    },
+    "tools/literature/collect_soupx_ambient.py": {
+      "bytes": 4539,
+      "sha256": "06338a4b1b236b2e5a7c493d47242a8e490be955384a3741d35b93c199067e9d"
+    },
+    "tools/literature/diagnose_soupx_poisson.R": {
+      "bytes": 1671,
+      "sha256": "dc8b16287ce56989842e2db9c4bdedda14ebee08841d5b423676c962a09bc426"
+    },
+    "tools/literature/diagnose_soupx_poisson.py": {
+      "bytes": 3853,
+      "sha256": "4a86f3ac1a9e06f5f3314c9e2ab0bc45dfadc2553be70f1fd9aba205b93c472a"
+    },
+    "tools/literature/pack_soupx_ambient_fixtures.py": {
+      "bytes": 2172,
+      "sha256": "8887421780631d8c4a68d377fdac537bf68b182c1865909c5fea581b5b08d896"
+    },
+    "tools/literature/run_soupx_ambient_example.py": {
+      "bytes": 2299,
+      "sha256": "d85d99f3759adf9b265c566431e4a0812a6efbcb873afff0760dffe0812a5b9d"
+    },
+    "tools/literature/seal_soupx_ambient_core.py": {
+      "bytes": 9724,
+      "sha256": "aac1476fcc782aa9d9c06b3cf9e74cadc1ee19e64754fb35893f92a010b5b891"
+    },
+    "tools/literature/soupx_ambient_core_evidence.py": {
+      "bytes": 5426,
+      "sha256": "7a5c7b50e58b0900609dce24cb15d4770ea225f1c76d833fa77b6afd132d1477"
+    },
+    "tools/literature/validate_soupx_ambient_core.py": {
+      "bytes": 4964,
+      "sha256": "9f94e2a30787e12639ac3e516802a319e901eda1dd0a89732468d75cc8bec0fe"
+    }
+  },
+  "parent_proofs": {
+    "docs/literature/tfidf-markers-development/VALIDATION.json": {
+      "bytes": 417467,
+      "sha256": "5f0ecc52fb99b54ea18214ae344ddec50b4f785991fd8457df8e306ac7499077"
+    },
+    "docs/literature/tfidf-markers-development/controls.zip": {
+      "bytes": 29450023,
+      "sha256": "694503604a8015722336411ca00e1a5226e30e2f6ac58b3caf0fe616c351210a"
+    }
+  },
+  "artifact": {
+    "path": "build/literature-review/soupx-runtime/ambient-core-build-1/omicsmatic-0.3.7-soupx-ambient-core-development.jar",
+    "bytes": 167276090,
+    "sha256": "00821d812a089ff0842f6991b9c1a65818fbef3243ea937b112e813b3f90b7c3"
+  },
+  "parent_artifact": {
+    "path": "build/literature-review/soupx-runtime/marker-build-1/omicsmatic-0.3.7-tfidf-markers-development.jar",
+    "bytes": 167251286,
+    "sha256": "791a94b8fbd56624c20fc74cb004d3d09863998dc7b4eb41c5bee34ac2d297cf"
+  },
+  "unchanged_parent_entries": 20553,
+  "added_entries": [
+    "org/jlinalg/cli/SoupXWorkflowRequest$Request.class",
+    "org/jlinalg/cli/SoupXWorkflowRequest.class",
+    "org/jlinalg/singlecell/SoupXAmbient$Budget.class",
+    "org/jlinalg/singlecell/SoupXAmbient$Counts.class",
+    "org/jlinalg/singlecell/SoupXAmbient$Entry.class",
+    "org/jlinalg/singlecell/SoupXAmbient$GlobalPoisson.class",
+    "org/jlinalg/singlecell/SoupXAmbient$Mask.class",
+    "org/jlinalg/singlecell/SoupXAmbient$Profile.class",
+    "org/jlinalg/singlecell/SoupXAmbient.class"
+  ],
+  "canonical_executable_unchanged": {
+    "bytes": 164898617,
+    "sha256": "545917aaf820f2fe404873e1f0bc72186ebe90d3a11fd7f6f26f592115fbf2f2"
+  },
+  "tests_per_JVM": 28,
+  "JVMs": 3,
+  "original_cases": 55,
+  "reference_audits": {
+    "1.6.2": {
+      "profile_gene_rows": 904,
+      "manual_mask_decisions": 186,
+      "analytical_original_Poisson_comparisons": 3,
+      "original_corrected_matrices_checked": 12,
+      "reference_cases": 28
+    },
+    "1.3.0": {
+      "profile_gene_rows": 904,
+      "manual_mask_decisions": 186,
+      "analytical_original_Poisson_comparisons": 3,
+      "original_corrected_matrices_checked": 12,
+      "reference_cases": 27
+    }
+  },
+  "executed_native_example": true,
+  "native_core_admitted": true,
+  "ambient_workflow_admitted": false,
+  "implementation_credit": false,
+  "whole_paper_reproduced": false,
+  "whole_goal_complete": false,
+  "archive_layout": "sha256-objects-with-logical-file-map",
+  "archive_members": 210,
+  "logical_files": 351,
+  "archive_file_pins": {
+    "objects/6e4beeb5888ddc81a6b314841627b6c17939d272a2e4dbcac11ebf77b254aa5e": {
+      "bytes": 3394381,
+      "sha256": "6e4beeb5888ddc81a6b314841627b6c17939d272a2e4dbcac11ebf77b254aa5e"
+    },
+    "objects/adac0948e082ccf983ee5283057faec3567f41e4539d0b48afd761546d011ce5": {
+      "bytes": 3392935,
+      "sha256": "adac0948e082ccf983ee5283057faec3567f41e4539d0b48afd761546d011ce5"
+    },
+    "objects/ef0dcd9a878e290fb3a6179fb0e1a7359dd62f8856940679990be3c38b464d03": {
+      "bytes": 1077,
+      "sha256": "ef0dcd9a878e290fb3a6179fb0e1a7359dd62f8856940679990be3c38b464d03"
+    },
+    "objects/2fd3129bddb4d683b34fa0ba1055704ad710f288c4c951ca8802862c151828c6": {
+      "bytes": 5210179,
+      "sha256": "2fd3129bddb4d683b34fa0ba1055704ad710f288c4c951ca8802862c151828c6"
+    },
+    "objects/412f4d5f16986c3a2b6f3e69ab7bb322a28dfb7daedc2444d7250b6932447fe4": {
+      "bytes": 3308,
+      "sha256": "412f4d5f16986c3a2b6f3e69ab7bb322a28dfb7daedc2444d7250b6932447fe4"
+    },
+    "objects/7ce0e268d837e7a7f8f5a282636468d74bdfa614da184edaa91099b16c470675": {
+      "bytes": 1483,
+      "sha256": "7ce0e268d837e7a7f8f5a282636468d74bdfa614da184edaa91099b16c470675"
+    },
+    "objects/daa56e6b3ca600f229c7d061bdb0eac5c8c89f1479781c0be73dcc87d864c3eb": {
+      "bytes": 26525,
+      "sha256": "daa56e6b3ca600f229c7d061bdb0eac5c8c89f1479781c0be73dcc87d864c3eb"
+    },
+    "objects/9f0250216e7b10df170a85ba29b12425102a374bd2bbbf0a826c7b62e2309242": {
+      "bytes": 6864,
+      "sha256": "9f0250216e7b10df170a85ba29b12425102a374bd2bbbf0a826c7b62e2309242"
+    },
+    "objects/3ac619bdd7cdf2a8c124625bc77dc17ce8ed602428b1a6e56ce5d0bc04ef428e": {
+      "bytes": 9753,
+      "sha256": "3ac619bdd7cdf2a8c124625bc77dc17ce8ed602428b1a6e56ce5d0bc04ef428e"
+    },
+    "objects/4e8db7a23212aa3b7a8d614c7fdb7c3993c3c2eee4fa42256e68e8c8e4924376": {
+      "bytes": 3928,
+      "sha256": "4e8db7a23212aa3b7a8d614c7fdb7c3993c3c2eee4fa42256e68e8c8e4924376"
+    },
+    "objects/dbbea4dab9341e154024263ae4bce7f4669cffcd7571de0522ab5d20b91c7e9e": {
+      "bytes": 108,
+      "sha256": "dbbea4dab9341e154024263ae4bce7f4669cffcd7571de0522ab5d20b91c7e9e"
+    },
+    "objects/e271e142b839c56c2d3f2d720ff26fdf574bae2537e9b77c5e36cb557b457598": {
+      "bytes": 9,
+      "sha256": "e271e142b839c56c2d3f2d720ff26fdf574bae2537e9b77c5e36cb557b457598"
+    },
+    "objects/a7c02fc9a87488f7066739aad15bdd9fa0b5b4c3780a1aba4a8a35f18410ca03": {
+      "bytes": 1077,
+      "sha256": "a7c02fc9a87488f7066739aad15bdd9fa0b5b4c3780a1aba4a8a35f18410ca03"
+    },
+    "objects/6526ed4c04a663a7682b28fdbe20b259bf5eef8b5f101a0ff183bf038f5d217c": {
+      "bytes": 3308,
+      "sha256": "6526ed4c04a663a7682b28fdbe20b259bf5eef8b5f101a0ff183bf038f5d217c"
+    },
+    "objects/385b6c2f89d091af8dec7063aaf0a4fcf64a3b8ec940715d14758fc0b5e4894d": {
+      "bytes": 1483,
+      "sha256": "385b6c2f89d091af8dec7063aaf0a4fcf64a3b8ec940715d14758fc0b5e4894d"
+    },
+    "objects/2ac29916252297b7cc7b76906e37f2e00d99723413cbe92ee43946beea261e7a": {
+      "bytes": 9809,
+      "sha256": "2ac29916252297b7cc7b76906e37f2e00d99723413cbe92ee43946beea261e7a"
+    },
+    "objects/1b1ef94520899b76792922f280cdfe20f0c6a1e1f40006b3cdf5a10890e2a403": {
+      "bytes": 3877,
+      "sha256": "1b1ef94520899b76792922f280cdfe20f0c6a1e1f40006b3cdf5a10890e2a403"
+    },
+    "objects/484a03d146503dfc3643da93f74a6a35b1c2b45178b93ace8deb103a6a7ba62d": {
+      "bytes": 62,
+      "sha256": "484a03d146503dfc3643da93f74a6a35b1c2b45178b93ace8deb103a6a7ba62d"
+    },
+    "objects/3363ef205c7d3fcf598255769fdb6467d43d4107bf87dd599bdedec366e4a6e0": {
+      "bytes": 1604,
+      "sha256": "3363ef205c7d3fcf598255769fdb6467d43d4107bf87dd599bdedec366e4a6e0"
+    },
+    "objects/c3f473e9b4d77002918f2c756ebd726bfcd78f4cbbfbfb3e8bbccd6d7bf13b33": {
+      "bytes": 3699,
+      "sha256": "c3f473e9b4d77002918f2c756ebd726bfcd78f4cbbfbfb3e8bbccd6d7bf13b33"
+    },
+    "objects/6123a7838f9cf26e04bd856ca4d36f2d49591cd38ed156c16386e5f589f06a8e": {
+      "bytes": 121688,
+      "sha256": "6123a7838f9cf26e04bd856ca4d36f2d49591cd38ed156c16386e5f589f06a8e"
+    },
+    "objects/625d1ad91865120d1a3228c0ce69b90f55ce5489da909050af520ad5e80e22f9": {
+      "bytes": 57998,
+      "sha256": "625d1ad91865120d1a3228c0ce69b90f55ce5489da909050af520ad5e80e22f9"
+    },
+    "objects/da55c4711f80fa5fcdb84ba1317133e7467d9b93f8347a71cc20e831d3c91eef": {
+      "bytes": 3986,
+      "sha256": "da55c4711f80fa5fcdb84ba1317133e7467d9b93f8347a71cc20e831d3c91eef"
+    },
+    "objects/7dfe2622c22a7d3a1dcd7ba7ce91b6c9cc959dc08fb87aadca12c07602c12275": {
+      "bytes": 50380,
+      "sha256": "7dfe2622c22a7d3a1dcd7ba7ce91b6c9cc959dc08fb87aadca12c07602c12275"
+    },
+    "objects/9bcb527b977e4707e3dfecee01fbc49af2082f2ac99f6a4381e3873bbcb3937b": {
+      "bytes": 116862,
+      "sha256": "9bcb527b977e4707e3dfecee01fbc49af2082f2ac99f6a4381e3873bbcb3937b"
+    },
+    "objects/3f73591bb608edfef6f9c097367b2a0c2c442e816e8e36001046706c7e4d58b0": {
+      "bytes": 26106,
+      "sha256": "3f73591bb608edfef6f9c097367b2a0c2c442e816e8e36001046706c7e4d58b0"
+    },
+    "objects/c6b70b81d78f016f1650b82e244ab2520caedf2e174fbc879a6c85f3400b6968": {
+      "bytes": 5377047,
+      "sha256": "c6b70b81d78f016f1650b82e244ab2520caedf2e174fbc879a6c85f3400b6968"
+    },
+    "objects/595944572700a2704a2b42a032b695307f12fbcadb941244e0b753d3c59c7fb2": {
+      "bytes": 31700,
+      "sha256": "595944572700a2704a2b42a032b695307f12fbcadb941244e0b753d3c59c7fb2"
+    },
+    "objects/b330d052bea3d58acee995c3bc6fdd9f580b27272bf5fe245b64b09ffc66ad85": {
+      "bytes": 350327,
+      "sha256": "b330d052bea3d58acee995c3bc6fdd9f580b27272bf5fe245b64b09ffc66ad85"
+    },
+    "objects/0245647cb9d653701eb8a9fd34ca6c0c5ac7ccee8b6c579ab3215dad1ce62e84": {
+      "bytes": 124529,
+      "sha256": "0245647cb9d653701eb8a9fd34ca6c0c5ac7ccee8b6c579ab3215dad1ce62e84"
+    },
+    "objects/ca54d14062f68e50d67c173bc2557d8f6df60d45860ea19610bf50cb3326aae6": {
+      "bytes": 321046,
+      "sha256": "ca54d14062f68e50d67c173bc2557d8f6df60d45860ea19610bf50cb3326aae6"
+    },
+    "objects/1e5bfd24578b43d78240525f4c0810a85606a929d8b8106c44e204e9071f03aa": {
+      "bytes": 124524,
+      "sha256": "1e5bfd24578b43d78240525f4c0810a85606a929d8b8106c44e204e9071f03aa"
+    },
+    "objects/f9c080585d4843de9c67daabc701b2f3c01f3c0950984595be8c540151e8ea34": {
+      "bytes": 321033,
+      "sha256": "f9c080585d4843de9c67daabc701b2f3c01f3c0950984595be8c540151e8ea34"
+    },
+    "objects/320b86e4b2c7e2777b56cd822f3c4cef95dcdae7935b794831a783f12c4915d5": {
+      "bytes": 122948,
+      "sha256": "320b86e4b2c7e2777b56cd822f3c4cef95dcdae7935b794831a783f12c4915d5"
+    },
+    "objects/5204b46dc8085147678282fc719a484aac73925bb45f09d031fa829ef3725c42": {
+      "bytes": 182327,
+      "sha256": "5204b46dc8085147678282fc719a484aac73925bb45f09d031fa829ef3725c42"
+    },
+    "objects/0383e2eb0b60e3cc639e56f125a9be8aade2f616699a643dc61c5817099ac0a6": {
+      "bytes": 182325,
+      "sha256": "0383e2eb0b60e3cc639e56f125a9be8aade2f616699a643dc61c5817099ac0a6"
+    },
+    "objects/284a084bd3e498f98b2b37fe7617c493a5d22ca782d526a2863186f8d23f214c": {
+      "bytes": 147644,
+      "sha256": "284a084bd3e498f98b2b37fe7617c493a5d22ca782d526a2863186f8d23f214c"
+    },
+    "objects/98e547de0dcb6d95c7a863b30f528e7ae1ba932f690b200adb0c3e760f821cde": {
+      "bytes": 357982,
+      "sha256": "98e547de0dcb6d95c7a863b30f528e7ae1ba932f690b200adb0c3e760f821cde"
+    },
+    "objects/d22a5e5b2c601f8f103d38e85019803e699b8a3f1c08adc4a0c33f31da21102a": {
+      "bytes": 124777,
+      "sha256": "d22a5e5b2c601f8f103d38e85019803e699b8a3f1c08adc4a0c33f31da21102a"
+    },
+    "objects/4272f7761a5e16593000d5cad3a86e2dca16d1b224b0347751d25a65b6c61e6a": {
+      "bytes": 299301,
+      "sha256": "4272f7761a5e16593000d5cad3a86e2dca16d1b224b0347751d25a65b6c61e6a"
+    },
+    "objects/38ba8ad2c9e271390f3dbb429ea87b74727b7a29b3800c21e45d13422ef8bba5": {
+      "bytes": 117171,
+      "sha256": "38ba8ad2c9e271390f3dbb429ea87b74727b7a29b3800c21e45d13422ef8bba5"
+    },
+    "objects/c686ae680372e15b11a05ec9b2f99abe4c033310b9e45f99a11783e9fae8daa2": {
+      "bytes": 27400,
+      "sha256": "c686ae680372e15b11a05ec9b2f99abe4c033310b9e45f99a11783e9fae8daa2"
+    },
+    "objects/d215d8f772a7b89f2c4d87f81de6669154eae903d3337eb98b5b54b5c039511e": {
+      "bytes": 117173,
+      "sha256": "d215d8f772a7b89f2c4d87f81de6669154eae903d3337eb98b5b54b5c039511e"
+    },
+    "objects/49c3b3dcb6c20e498af08a012dabdde77357c70deefd706784f142f90cc3f205": {
+      "bytes": 28392,
+      "sha256": "49c3b3dcb6c20e498af08a012dabdde77357c70deefd706784f142f90cc3f205"
+    },
+    "objects/2ccbf49cc6498e09a98151c27f8e40b6e63e5acdfc9b04a6182aadfa2699aa09": {
+      "bytes": 117168,
+      "sha256": "2ccbf49cc6498e09a98151c27f8e40b6e63e5acdfc9b04a6182aadfa2699aa09"
+    },
+    "objects/4f0fe4565df01cff5fb5fbf0c21626d6ee3362cc978e0ca9513833f3fb5765d7": {
+      "bytes": 27272,
+      "sha256": "4f0fe4565df01cff5fb5fbf0c21626d6ee3362cc978e0ca9513833f3fb5765d7"
+    },
+    "objects/35f06e87d7e52c827efce66c8aed078efdc17288281a0256d809e126b4b56588": {
+      "bytes": 138406,
+      "sha256": "35f06e87d7e52c827efce66c8aed078efdc17288281a0256d809e126b4b56588"
+    },
+    "objects/ec403fe07cf3877505ff600d81fb68cdebd23144d8e0488019c9343094c319d4": {
+      "bytes": 359106,
+      "sha256": "ec403fe07cf3877505ff600d81fb68cdebd23144d8e0488019c9343094c319d4"
+    },
+    "objects/e7d84515d342af1ed755805031351f9d65b6d2db41e14d1efef6e47593026203": {
+      "bytes": 124531,
+      "sha256": "e7d84515d342af1ed755805031351f9d65b6d2db41e14d1efef6e47593026203"
+    },
+    "objects/7b10bb234bbb2354b12122054c9357b9fb938c9510cd5faf1e4bb27702b79411": {
+      "bytes": 321058,
+      "sha256": "7b10bb234bbb2354b12122054c9357b9fb938c9510cd5faf1e4bb27702b79411"
+    },
+    "objects/9b420b4e97e615738f0cf108ee9801c2464d2a651d2219a2af8451803b27a852": {
+      "bytes": 124561,
+      "sha256": "9b420b4e97e615738f0cf108ee9801c2464d2a651d2219a2af8451803b27a852"
+    },
+    "objects/382a1f459123c185bb03d089d61aedec612662350ff72d4688c1050fc5ebfd6d": {
+      "bytes": 321034,
+      "sha256": "382a1f459123c185bb03d089d61aedec612662350ff72d4688c1050fc5ebfd6d"
+    },
+    "objects/da01c73c5332781e529464831e02bdcd864820a6d86fc3e3f76e257b41412979": {
+      "bytes": 321032,
+      "sha256": "da01c73c5332781e529464831e02bdcd864820a6d86fc3e3f76e257b41412979"
+    },
+    "objects/17004caad96bb357435998261828f704e9133d43c634da71b490981ea5540754": {
+      "bytes": 146800,
+      "sha256": "17004caad96bb357435998261828f704e9133d43c634da71b490981ea5540754"
+    },
+    "objects/2d5bca1444ed8918e91309159f8e196fd7745daddfc8ce4cd4b8a6e6cf573234": {
+      "bytes": 376146,
+      "sha256": "2d5bca1444ed8918e91309159f8e196fd7745daddfc8ce4cd4b8a6e6cf573234"
+    },
+    "objects/117c119e5476ceedea5266ec86d7e627565cb7dba4183928e6132fe18995d5de": {
+      "bytes": 124539,
+      "sha256": "117c119e5476ceedea5266ec86d7e627565cb7dba4183928e6132fe18995d5de"
+    },
+    "objects/309fa43cd7d6a160194a1f82078366b20b18ada1d11c0ceb8099c5014bcc8794": {
+      "bytes": 321015,
+      "sha256": "309fa43cd7d6a160194a1f82078366b20b18ada1d11c0ceb8099c5014bcc8794"
+    },
+    "objects/fee31ea92c40259e2cf9f4adad666c3897cacf97d1e28ae231eb6757a2551c71": {
+      "bytes": 5250656,
+      "sha256": "fee31ea92c40259e2cf9f4adad666c3897cacf97d1e28ae231eb6757a2551c71"
+    },
+    "objects/f3a31be578273756d9f98603c6b2eda386d9ee76b9747f5d2fbee9cd8ae38079": {
+      "bytes": 102753,
+      "sha256": "f3a31be578273756d9f98603c6b2eda386d9ee76b9747f5d2fbee9cd8ae38079"
+    },
+    "objects/fafe5d117a8671512cb2909bbe09b8058d3158b7f873bd53d7f43e8bd2736410": {
+      "bytes": 249487,
+      "sha256": "fafe5d117a8671512cb2909bbe09b8058d3158b7f873bd53d7f43e8bd2736410"
+    },
+    "objects/d9cfd282f7c2146e715c6c17d13134f9df3d502f6be771df7271433e132ef4b3": {
+      "bytes": 16529,
+      "sha256": "d9cfd282f7c2146e715c6c17d13134f9df3d502f6be771df7271433e132ef4b3"
+    },
+    "objects/4fe58cb12b5e7961c110eff82741cd50959b8a7a1dde62833be2888bcf3f427f": {
+      "bytes": 16464,
+      "sha256": "4fe58cb12b5e7961c110eff82741cd50959b8a7a1dde62833be2888bcf3f427f"
+    },
+    "objects/2c8caffbad0b592bdbdb107c516f8ef36fac1cc5fac63b264b3ff5f0a368d588": {
+      "bytes": 271,
+      "sha256": "2c8caffbad0b592bdbdb107c516f8ef36fac1cc5fac63b264b3ff5f0a368d588"
+    },
+    "objects/734c27169a6f4a4eb40a31609dadebbbea1baddc94bc90e87477a6b46c53109c": {
+      "bytes": 247594,
+      "sha256": "734c27169a6f4a4eb40a31609dadebbbea1baddc94bc90e87477a6b46c53109c"
+    },
+    "objects/656056a575b065c0e5eeea643bd3945e15d3135237f553358cbec8b42c57b2eb": {
+      "bytes": 16238,
+      "sha256": "656056a575b065c0e5eeea643bd3945e15d3135237f553358cbec8b42c57b2eb"
+    },
+    "objects/1a1d3f8a69abb9ff677f0d8308222c4202067d276849b6da9e3a1176f9225372": {
+      "bytes": 1585,
+      "sha256": "1a1d3f8a69abb9ff677f0d8308222c4202067d276849b6da9e3a1176f9225372"
+    },
+    "objects/581479a9f419c56da151ab2d90273f3684d11db15427ee952a12f2ee28c2a65b": {
+      "bytes": 114297,
+      "sha256": "581479a9f419c56da151ab2d90273f3684d11db15427ee952a12f2ee28c2a65b"
+    },
+    "objects/3917dc4923c58febe58dd8f542ff6ffdf9fa37658c83fa94f725b0a3de180fbe": {
+      "bytes": 21649,
+      "sha256": "3917dc4923c58febe58dd8f542ff6ffdf9fa37658c83fa94f725b0a3de180fbe"
+    },
+    "objects/e6550cfca5e6a873c8253bb8cd170445c6a7ba764387218dba8cb8912315c350": {
+      "bytes": 116670,
+      "sha256": "e6550cfca5e6a873c8253bb8cd170445c6a7ba764387218dba8cb8912315c350"
+    },
+    "objects/276d25a25d2a039dfb13f8206a142b88cc5ad6fc69e2721313a5c8199e6b34f7": {
+      "bytes": 26103,
+      "sha256": "276d25a25d2a039dfb13f8206a142b88cc5ad6fc69e2721313a5c8199e6b34f7"
+    },
+    "objects/0dd81705dc72d1cbc4e9b59481d7f83691310f0371ced58ed4288c847c765dda": {
+      "bytes": 21649,
+      "sha256": "0dd81705dc72d1cbc4e9b59481d7f83691310f0371ced58ed4288c847c765dda"
+    },
+    "objects/f108a236d31481fd6a782d254ddbb0f948119004aadc6bd479e53046fa87cc51": {
+      "bytes": 21676,
+      "sha256": "f108a236d31481fd6a782d254ddbb0f948119004aadc6bd479e53046fa87cc51"
+    },
+    "objects/74c9ad90aa7a6c1be534af4b0dc7a25894a837b4189da56c4aaacdffe282790c": {
+      "bytes": 8830,
+      "sha256": "74c9ad90aa7a6c1be534af4b0dc7a25894a837b4189da56c4aaacdffe282790c"
+    },
+    "objects/869670e73b5a4686997ec7043f5545595b65a4a060a1f92ac3e3d7df078efa8d": {
+      "bytes": 9838,
+      "sha256": "869670e73b5a4686997ec7043f5545595b65a4a060a1f92ac3e3d7df078efa8d"
+    },
+    "objects/06338a4b1b236b2e5a7c493d47242a8e490be955384a3741d35b93c199067e9d": {
+      "bytes": 4539,
+      "sha256": "06338a4b1b236b2e5a7c493d47242a8e490be955384a3741d35b93c199067e9d"
+    },
+    "objects/7b91ed5c7ed9c3f8b64adc1992f3cbdd72be959613e156539aa673524bc5f108": {
+      "bytes": 141,
+      "sha256": "7b91ed5c7ed9c3f8b64adc1992f3cbdd72be959613e156539aa673524bc5f108"
+    },
+    "objects/adeef9aa0f030f94d94dd02c859a366e9195d607a56c25eb71a13e2d003902d7": {
+      "bytes": 65,
+      "sha256": "adeef9aa0f030f94d94dd02c859a366e9195d607a56c25eb71a13e2d003902d7"
+    },
+    "objects/fcb6334729dbd2ce771c008a9d838c0ab2d928f9bd1c1fc5b7bbeeb610f2722e": {
+      "bytes": 1075,
+      "sha256": "fcb6334729dbd2ce771c008a9d838c0ab2d928f9bd1c1fc5b7bbeeb610f2722e"
+    },
+    "objects/98c888cdc910daba130c50e883138b79ead351f2debb61d6339c8078cce3d1c9": {
+      "bytes": 5212308,
+      "sha256": "98c888cdc910daba130c50e883138b79ead351f2debb61d6339c8078cce3d1c9"
+    },
+    "objects/a1451685f68fb53c80682e7b109ddc1b67875fe92b13f260c06ccc37963212b0": {
+      "bytes": 3304,
+      "sha256": "a1451685f68fb53c80682e7b109ddc1b67875fe92b13f260c06ccc37963212b0"
+    },
+    "objects/449c8d9fca2561e9cb90cda336243583349b8eef85f0e84b6890a177ed13b602": {
+      "bytes": 1481,
+      "sha256": "449c8d9fca2561e9cb90cda336243583349b8eef85f0e84b6890a177ed13b602"
+    },
+    "objects/96e5cd7a5ceb42b9c7108ecad34bfa890f62177041a62be62aade66f3d370cd3": {
+      "bytes": 27874,
+      "sha256": "96e5cd7a5ceb42b9c7108ecad34bfa890f62177041a62be62aade66f3d370cd3"
+    },
+    "objects/37da4e1c4f719c0e2f0b9cb67567a229f92dfcfd0a8fb8cd41cc2896084c2693": {
+      "bytes": 414,
+      "sha256": "37da4e1c4f719c0e2f0b9cb67567a229f92dfcfd0a8fb8cd41cc2896084c2693"
+    },
+    "objects/db7ea1fef9bcda45fcb5224ca06196b322b7dacc04683bea3ce7a3e710d5f401": {
+      "bytes": 1410,
+      "sha256": "db7ea1fef9bcda45fcb5224ca06196b322b7dacc04683bea3ce7a3e710d5f401"
+    },
+    "objects/5e8772e99dadb4ecfa820d6907b18913784ce9fcff6c7cc13065b8e7d5e09803": {
+      "bytes": 3304,
+      "sha256": "5e8772e99dadb4ecfa820d6907b18913784ce9fcff6c7cc13065b8e7d5e09803"
+    },
+    "objects/20f2732051fc9665cef6dcd220fcbaf85b77d720aafd43dd9fd7223d70752636": {
+      "bytes": 128999,
+      "sha256": "20f2732051fc9665cef6dcd220fcbaf85b77d720aafd43dd9fd7223d70752636"
+    },
+    "objects/a9637795724af327fb67fd27a95ef3e0295a25d0a0dca8550dedbe584c554bc5": {
+      "bytes": 28923,
+      "sha256": "a9637795724af327fb67fd27a95ef3e0295a25d0a0dca8550dedbe584c554bc5"
+    },
+    "objects/cb80971041c92ff4da5c1c12d8e79f3710a223779263b191f57be27428368334": {
+      "bytes": 127780,
+      "sha256": "cb80971041c92ff4da5c1c12d8e79f3710a223779263b191f57be27428368334"
+    },
+    "objects/c16c9b1818bf3ceedf43fa5ab32b880b457063b9e96815a067dd4f8ac4683bb3": {
+      "bytes": 28198,
+      "sha256": "c16c9b1818bf3ceedf43fa5ab32b880b457063b9e96815a067dd4f8ac4683bb3"
+    },
+    "objects/52226e18b4d4d193fe8ab882008cb852f11a599893565ce73a4820c72c6f846f": {
+      "bytes": 360,
+      "sha256": "52226e18b4d4d193fe8ab882008cb852f11a599893565ce73a4820c72c6f846f"
+    },
+    "objects/122fa932a3f88bbd1d44f73051a64c2a856c3ed84e7ca149361babed299c0f3c": {
+      "bytes": 5289831,
+      "sha256": "122fa932a3f88bbd1d44f73051a64c2a856c3ed84e7ca149361babed299c0f3c"
+    },
+    "objects/186feb666917ca385ec2054701bc0826983327a387744edb51c97daa6c99bc26": {
+      "bytes": 31675,
+      "sha256": "186feb666917ca385ec2054701bc0826983327a387744edb51c97daa6c99bc26"
+    },
+    "objects/750f6616153b9c560bf75eacac7eac4a8a8427616ca1ae2a90f64e8c310d1055": {
+      "bytes": 350345,
+      "sha256": "750f6616153b9c560bf75eacac7eac4a8a8427616ca1ae2a90f64e8c310d1055"
+    },
+    "objects/1983975d509f6fb6d35ea971f0c9673b9d3bbfca5786dbcccc323468583db8bc": {
+      "bytes": 321001,
+      "sha256": "1983975d509f6fb6d35ea971f0c9673b9d3bbfca5786dbcccc323468583db8bc"
+    },
+    "objects/c9d6c64bdd786337667b25a7b965db8b66d8fb4201571c51fdb0f4b4aa543a0f": {
+      "bytes": 320987,
+      "sha256": "c9d6c64bdd786337667b25a7b965db8b66d8fb4201571c51fdb0f4b4aa543a0f"
+    },
+    "objects/38003986cca01f2ae3479e3370877fde103e0977a53a9522dc112b229478ab7b": {
+      "bytes": 182327,
+      "sha256": "38003986cca01f2ae3479e3370877fde103e0977a53a9522dc112b229478ab7b"
+    },
+    "objects/ea78baec2a35898d2d7bc79a92c0bf83b70639b0d0f7c060809ee4b24f791dcc": {
+      "bytes": 182325,
+      "sha256": "ea78baec2a35898d2d7bc79a92c0bf83b70639b0d0f7c060809ee4b24f791dcc"
+    },
+    "objects/67654fc27d499936116cb5a7c2c502765d2a29a7327484229bddc8bbda21f808": {
+      "bytes": 147617,
+      "sha256": "67654fc27d499936116cb5a7c2c502765d2a29a7327484229bddc8bbda21f808"
+    },
+    "objects/88bd95bd5999fdc25b92b061c6d195e67338998c963bf57b19777ad82ce3beb1": {
+      "bytes": 358000,
+      "sha256": "88bd95bd5999fdc25b92b061c6d195e67338998c963bf57b19777ad82ce3beb1"
+    },
+    "objects/d78c233e55a6b205415cf3e48c37ee82bb99ace1df2a11a7774f7fb1e2577aa8": {
+      "bytes": 299301,
+      "sha256": "d78c233e55a6b205415cf3e48c37ee82bb99ace1df2a11a7774f7fb1e2577aa8"
+    },
+    "objects/32014ed053d2ee5355f0aac6b111116c8bb33e7644b6e3c734d109a76bf7fc0e": {
+      "bytes": 27455,
+      "sha256": "32014ed053d2ee5355f0aac6b111116c8bb33e7644b6e3c734d109a76bf7fc0e"
+    },
+    "objects/f2a126aa89291ce28f65f4d290f072423d5e1573ed037fa80d91a5a5c894d97d": {
+      "bytes": 28583,
+      "sha256": "f2a126aa89291ce28f65f4d290f072423d5e1573ed037fa80d91a5a5c894d97d"
+    },
+    "objects/5e57764c34ab512f048ad388acd9e0f87f863fb4e94ba29c5703e60613449ddf": {
+      "bytes": 370,
+      "sha256": "5e57764c34ab512f048ad388acd9e0f87f863fb4e94ba29c5703e60613449ddf"
+    },
+    "objects/9b127102c2ce909da7dfe12801fa817034b1ae8217e730563fed4f9dd576c159": {
+      "bytes": 27272,
+      "sha256": "9b127102c2ce909da7dfe12801fa817034b1ae8217e730563fed4f9dd576c159"
+    },
+    "objects/35d5cd10df461f64c8ff96d3f0b33f88a7993810bd6d0286ada8c76a3acf4fbe": {
+      "bytes": 140531,
+      "sha256": "35d5cd10df461f64c8ff96d3f0b33f88a7993810bd6d0286ada8c76a3acf4fbe"
+    },
+    "objects/b3f8dc8a2e62f31dd8f034c4e19e3ab7a0c0b2b850d7994e058e6e8e9149f20e": {
+      "bytes": 359530,
+      "sha256": "b3f8dc8a2e62f31dd8f034c4e19e3ab7a0c0b2b850d7994e058e6e8e9149f20e"
+    },
+    "objects/0c1ff971088449180fb449b6984ce2eb7e96252ee982e82c6dac99d2f7bd8150": {
+      "bytes": 124497,
+      "sha256": "0c1ff971088449180fb449b6984ce2eb7e96252ee982e82c6dac99d2f7bd8150"
+    },
+    "objects/c42503f694eb83e0f42bf6d54293ef28d166099d8033bc7a23497fd1056414be": {
+      "bytes": 321012,
+      "sha256": "c42503f694eb83e0f42bf6d54293ef28d166099d8033bc7a23497fd1056414be"
+    },
+    "objects/24e66220df107ffe262029710d1b67f8a261e2551913d2800b9c89fc8b207854": {
+      "bytes": 321034,
+      "sha256": "24e66220df107ffe262029710d1b67f8a261e2551913d2800b9c89fc8b207854"
+    },
+    "objects/2fa173c5993b354f6b394befe703e3d9da68dffed7bad766097d4957be017dbd": {
+      "bytes": 321032,
+      "sha256": "2fa173c5993b354f6b394befe703e3d9da68dffed7bad766097d4957be017dbd"
+    },
+    "objects/e7076cdabd8c4e13999b64c6bb61cbd9b110c86da352363a82b71c23c4cf07c3": {
+      "bytes": 146810,
+      "sha256": "e7076cdabd8c4e13999b64c6bb61cbd9b110c86da352363a82b71c23c4cf07c3"
+    },
+    "objects/ee614e1e186db6d23b7812dba494f3a6788bde4b95d9513405a733f4325963f9": {
+      "bytes": 376249,
+      "sha256": "ee614e1e186db6d23b7812dba494f3a6788bde4b95d9513405a733f4325963f9"
+    },
+    "objects/157023e3df91528e6bcc6ea0126f07c7fad62caaac0abc1a1b4c24a41909fe2f": {
+      "bytes": 124508,
+      "sha256": "157023e3df91528e6bcc6ea0126f07c7fad62caaac0abc1a1b4c24a41909fe2f"
+    },
+    "objects/d83d09cb1b445ea9e66f3c5c28ba1c7c79b6ee362cfcfc8503372d39ea927351": {
+      "bytes": 321013,
+      "sha256": "d83d09cb1b445ea9e66f3c5c28ba1c7c79b6ee362cfcfc8503372d39ea927351"
+    },
+    "objects/0e835cacfa4dfe627b63f2a40a1eb56fe75d70edde3770a835f1222e02b19495": {
+      "bytes": 249411,
+      "sha256": "0e835cacfa4dfe627b63f2a40a1eb56fe75d70edde3770a835f1222e02b19495"
+    },
+    "objects/8444a79b3a6648e9781e0de16c095aa0697d6a086cb339f309c74498d0efb7ca": {
+      "bytes": 16529,
+      "sha256": "8444a79b3a6648e9781e0de16c095aa0697d6a086cb339f309c74498d0efb7ca"
+    },
+    "objects/a7f6d2b18321916e8c8b40d675b398dbbda987a995e89800a025eeec1ade11ef": {
+      "bytes": 247519,
+      "sha256": "a7f6d2b18321916e8c8b40d675b398dbbda987a995e89800a025eeec1ade11ef"
+    },
+    "objects/44edfec3af77e4f11ed4b274293c8af4552ffea366da9198918c201885c0209c": {
+      "bytes": 16238,
+      "sha256": "44edfec3af77e4f11ed4b274293c8af4552ffea366da9198918c201885c0209c"
+    },
+    "objects/a9837836ba110f75243e83d0e0d62b150bad9a567003a942af1449ef9ade0827": {
+      "bytes": 1481,
+      "sha256": "a9837836ba110f75243e83d0e0d62b150bad9a567003a942af1449ef9ade0827"
+    },
+    "objects/70331c4bc176868478c1102c35ce15426fb7925c4d543592bdf86f3647189f85": {
+      "bytes": 21649,
+      "sha256": "70331c4bc176868478c1102c35ce15426fb7925c4d543592bdf86f3647189f85"
+    },
+    "objects/033077d59407459e458d35d3d74a555de304ca5daa561b554ed4c077aacf68f6": {
+      "bytes": 26103,
+      "sha256": "033077d59407459e458d35d3d74a555de304ca5daa561b554ed4c077aacf68f6"
+    },
+    "objects/8bb2b0ea3ab51c8e0917a70524fc9d574018afd07b227c65110d91710cdd7666": {
+      "bytes": 21649,
+      "sha256": "8bb2b0ea3ab51c8e0917a70524fc9d574018afd07b227c65110d91710cdd7666"
+    },
+    "objects/3a152140272454841c356608af7a453be8cfd77f12b350f7442c385ffaca3cc6": {
+      "bytes": 21676,
+      "sha256": "3a152140272454841c356608af7a453be8cfd77f12b350f7442c385ffaca3cc6"
+    },
+    "objects/08ddaf20b3c99df152477744addd89ffd53f85ac6add9dbd8aac443934d483a6": {
+      "bytes": 65,
+      "sha256": "08ddaf20b3c99df152477744addd89ffd53f85ac6add9dbd8aac443934d483a6"
+    },
+    "objects/09fc98754cf60f7e720e0ca4d3df8da3b674f19abc2753942ca46641bbef84e2": {
+      "bytes": 1931,
+      "sha256": "09fc98754cf60f7e720e0ca4d3df8da3b674f19abc2753942ca46641bbef84e2"
+    },
+    "objects/d49de7afb67cdca3a5c0fe1abe4f7e5d7d1db869f030c5f564ff6bfb2ffdf8ce": {
+      "bytes": 10059,
+      "sha256": "d49de7afb67cdca3a5c0fe1abe4f7e5d7d1db869f030c5f564ff6bfb2ffdf8ce"
+    },
+    "objects/1ee4550417650a40fdfac4d79b74363e6e7bbdaa4d1a35285be4aec955778a48": {
+      "bytes": 14680,
+      "sha256": "1ee4550417650a40fdfac4d79b74363e6e7bbdaa4d1a35285be4aec955778a48"
+    },
+    "objects/80d59a8cd4d530e4f9dc1cd8560862de0a0e8792d83007a7f47423c1396b9bd2": {
+      "bytes": 1088,
+      "sha256": "80d59a8cd4d530e4f9dc1cd8560862de0a0e8792d83007a7f47423c1396b9bd2"
+    },
+    "objects/6e113192eea32dab90c62ea3fb14aad45c3f6fa0915f2a1f36246e4fad4e0174": {
+      "bytes": 4000,
+      "sha256": "6e113192eea32dab90c62ea3fb14aad45c3f6fa0915f2a1f36246e4fad4e0174"
+    },
+    "objects/2542d87866f5adc53026c432208b7bc5ea8ddee1edffa2bcf41d8dd660ac850d": {
+      "bytes": 1752,
+      "sha256": "2542d87866f5adc53026c432208b7bc5ea8ddee1edffa2bcf41d8dd660ac850d"
+    },
+    "objects/e4fa32fa37d081e9fbf892a017e494f5154e7c05dcb1882dcf64ff41a4c454df": {
+      "bytes": 1971,
+      "sha256": "e4fa32fa37d081e9fbf892a017e494f5154e7c05dcb1882dcf64ff41a4c454df"
+    },
+    "objects/76b98591e9e4184d8f27a7adce49479f3d1864f39768fa199025cbc82986c7f4": {
+      "bytes": 3411,
+      "sha256": "76b98591e9e4184d8f27a7adce49479f3d1864f39768fa199025cbc82986c7f4"
+    },
+    "objects/82db179d543208f41e63a6be748b488064a902d09eb744d5765f19ebeb263e86": {
+      "bytes": 2826,
+      "sha256": "82db179d543208f41e63a6be748b488064a902d09eb744d5765f19ebeb263e86"
+    },
+    "objects/e075365a4e3ab24376629acc4b81838b017d678b450ab2282584e36f8032384f": {
+      "bytes": 15028,
+      "sha256": "e075365a4e3ab24376629acc4b81838b017d678b450ab2282584e36f8032384f"
+    },
+    "objects/1627678b094ba08b890396920cbb13661193e1d609a31cc4c20fdccd1fc298a0": {
+      "bytes": 660,
+      "sha256": "1627678b094ba08b890396920cbb13661193e1d609a31cc4c20fdccd1fc298a0"
+    },
+    "objects/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "objects/7ac873183af66d1adb20f8c084beac2c3e9eef19b3935717a3e6950dc70c3a22": {
+      "bytes": 12479,
+      "sha256": "7ac873183af66d1adb20f8c084beac2c3e9eef19b3935717a3e6950dc70c3a22"
+    },
+    "objects/a6589d2414082ffb088b83ec1a84b0d0fc1294972fab12d7e85e177ca34c4325": {
+      "bytes": 12726,
+      "sha256": "a6589d2414082ffb088b83ec1a84b0d0fc1294972fab12d7e85e177ca34c4325"
+    },
+    "objects/a7803d1147c347f5d5b2eb7e0515f7e3f2320f6956f35c21b521a9cf01f35054": {
+      "bytes": 3211,
+      "sha256": "a7803d1147c347f5d5b2eb7e0515f7e3f2320f6956f35c21b521a9cf01f35054"
+    },
+    "objects/ed11efa3625c8c2289072a84d0a224e3e8729a13b5e05b822eea4811d8f9db4b": {
+      "bytes": 776,
+      "sha256": "ed11efa3625c8c2289072a84d0a224e3e8729a13b5e05b822eea4811d8f9db4b"
+    },
+    "objects/992bcbcdb5c1f87398014edab7dcbf4089f7315d89883442059d43203086c932": {
+      "bytes": 3672,
+      "sha256": "992bcbcdb5c1f87398014edab7dcbf4089f7315d89883442059d43203086c932"
+    },
+    "objects/c59b41ae0ef4426e1429a6f0f3fe603f527fa22d9fb9861d01bfda97f8be4c4c": {
+      "bytes": 387,
+      "sha256": "c59b41ae0ef4426e1429a6f0f3fe603f527fa22d9fb9861d01bfda97f8be4c4c"
+    },
+    "objects/36fa44448084b482130a945f4a8783e93178af6485e55f322d5a3cc22e165f56": {
+      "bytes": 130,
+      "sha256": "36fa44448084b482130a945f4a8783e93178af6485e55f322d5a3cc22e165f56"
+    },
+    "objects/2101740cba58c14ac433ad64bccfdc105a872f3ff0003b84126b36e64dc5e576": {
+      "bytes": 1094,
+      "sha256": "2101740cba58c14ac433ad64bccfdc105a872f3ff0003b84126b36e64dc5e576"
+    },
+    "objects/59ecd447bcb5a5a7930fe22785bddfd8c60580742336fa02043ab9ff9316ac98": {
+      "bytes": 1958,
+      "sha256": "59ecd447bcb5a5a7930fe22785bddfd8c60580742336fa02043ab9ff9316ac98"
+    },
+    "objects/4656f4928c82e8bc4fea1098dc6a6ebc43ae263d26577516d7f6506c768c7545": {
+      "bytes": 760,
+      "sha256": "4656f4928c82e8bc4fea1098dc6a6ebc43ae263d26577516d7f6506c768c7545"
+    },
+    "objects/a763811f2158afe27204e2d8d1fcf075ba71c5f183269fd12b3a36e78574d4b0": {
+      "bytes": 8132,
+      "sha256": "a763811f2158afe27204e2d8d1fcf075ba71c5f183269fd12b3a36e78574d4b0"
+    },
+    "objects/9a4c99a41a3f1757b8013432fdcffab7fe2b8591974979cf788ddb0595d57aa4": {
+      "bytes": 6228,
+      "sha256": "9a4c99a41a3f1757b8013432fdcffab7fe2b8591974979cf788ddb0595d57aa4"
+    },
+    "objects/705fd4d6451a31d36b3df7de96f83f30ac976c9b4a6d1e51671d8e2f33e2d0da": {
+      "bytes": 8,
+      "sha256": "705fd4d6451a31d36b3df7de96f83f30ac976c9b4a6d1e51671d8e2f33e2d0da"
+    },
+    "objects/77e951e77eee513a4782da04864ea750cccd6f8d455640d4506a78b403bb23ab": {
+      "bytes": 1808,
+      "sha256": "77e951e77eee513a4782da04864ea750cccd6f8d455640d4506a78b403bb23ab"
+    },
+    "objects/7f2f1d1090831f8f67117ba8a5c354d13a6672e46aee97917e425498bf2791d6": {
+      "bytes": 221978,
+      "sha256": "7f2f1d1090831f8f67117ba8a5c354d13a6672e46aee97917e425498bf2791d6"
+    },
+    "objects/cabd2602585f698cfc81a3279cb7f44aa9a85b82c7c020b67523ad294138da9f": {
+      "bytes": 367965,
+      "sha256": "cabd2602585f698cfc81a3279cb7f44aa9a85b82c7c020b67523ad294138da9f"
+    },
+    "objects/a9ff8d79530b76b33e26e4c6b4bb8b5f55c1d5d3abac003059c49b4b46723248": {
+      "bytes": 363973,
+      "sha256": "a9ff8d79530b76b33e26e4c6b4bb8b5f55c1d5d3abac003059c49b4b46723248"
+    },
+    "objects/9f94e2a30787e12639ac3e516802a319e901eda1dd0a89732468d75cc8bec0fe": {
+      "bytes": 4964,
+      "sha256": "9f94e2a30787e12639ac3e516802a319e901eda1dd0a89732468d75cc8bec0fe"
+    },
+    "objects/430390b3db818b089069909f4c10982bc7da1b9e86c468d22ed6e5b1905be730": {
+      "bytes": 1958,
+      "sha256": "430390b3db818b089069909f4c10982bc7da1b9e86c468d22ed6e5b1905be730"
+    },
+    "objects/b70a00f3405442c45d1c658cd622c06a28219dd42c210cb73f3f4739cdfd100d": {
+      "bytes": 1737,
+      "sha256": "b70a00f3405442c45d1c658cd622c06a28219dd42c210cb73f3f4739cdfd100d"
+    },
+    "objects/e66bbc56e9f664a31d2654a0bfaad02095b55a17fa1913d4090835e0ed80ed49": {
+      "bytes": 131,
+      "sha256": "e66bbc56e9f664a31d2654a0bfaad02095b55a17fa1913d4090835e0ed80ed49"
+    },
+    "objects/038837934899d45dde9fa9db8e679564478eae406743a03c0007f7330d3e3145": {
+      "bytes": 8035,
+      "sha256": "038837934899d45dde9fa9db8e679564478eae406743a03c0007f7330d3e3145"
+    },
+    "objects/4b1663ccf2144bff7bea131a9517909a9cf957664f69783dfbb3e462a1b6bbf6": {
+      "bytes": 8137,
+      "sha256": "4b1663ccf2144bff7bea131a9517909a9cf957664f69783dfbb3e462a1b6bbf6"
+    },
+    "objects/b906370c840a315d9db348999bef72edef1008f28217786c420f651546322645": {
+      "bytes": 2872,
+      "sha256": "b906370c840a315d9db348999bef72edef1008f28217786c420f651546322645"
+    },
+    "objects/2de671c6f676088c572df6739d77d89d009ebdcbe33b93c309f084e2b9c0225d": {
+      "bytes": 2126,
+      "sha256": "2de671c6f676088c572df6739d77d89d009ebdcbe33b93c309f084e2b9c0225d"
+    },
+    "objects/ea24ce454bdd90eba0d77c4537683f4fdc875146aa2f92800b22d335c8f1f5d9": {
+      "bytes": 13630,
+      "sha256": "ea24ce454bdd90eba0d77c4537683f4fdc875146aa2f92800b22d335c8f1f5d9"
+    },
+    "objects/f4335745bad8c86db780fb56d30f9aa6f97fbb989fff37e963eb42a19a487b54": {
+      "bytes": 10848,
+      "sha256": "f4335745bad8c86db780fb56d30f9aa6f97fbb989fff37e963eb42a19a487b54"
+    },
+    "objects/437023a3f824c8918c4f4ef110b373d1f006199bae86df41b36abb6ad3b41f45": {
+      "bytes": 1775,
+      "sha256": "437023a3f824c8918c4f4ef110b373d1f006199bae86df41b36abb6ad3b41f45"
+    },
+    "objects/7cadafd27ad6e8c48d55f4c930627bd451e4ab359e9c371df3e06155d430dc88": {
+      "bytes": 133,
+      "sha256": "7cadafd27ad6e8c48d55f4c930627bd451e4ab359e9c371df3e06155d430dc88"
+    },
+    "objects/2b6d1e7e77d7521e590c66af7b21f64a226c4f5f73656962d36ad10bfed45eeb": {
+      "bytes": 8136,
+      "sha256": "2b6d1e7e77d7521e590c66af7b21f64a226c4f5f73656962d36ad10bfed45eeb"
+    },
+    "objects/ac1074424f3b8349aee29958f2325d809738e284a1c9126da715665d9b5b5515": {
+      "bytes": 1762,
+      "sha256": "ac1074424f3b8349aee29958f2325d809738e284a1c9126da715665d9b5b5515"
+    },
+    "objects/677abf2895474b4c30787988c1a3ad27ea76d490adac1991cf439332d42ed873": {
+      "bytes": 8136,
+      "sha256": "677abf2895474b4c30787988c1a3ad27ea76d490adac1991cf439332d42ed873"
+    },
+    "objects/82177ea9ba530ab6918f89d02b3e202ada91279c53e51f74e5a3adbba1236e1e": {
+      "bytes": 1958,
+      "sha256": "82177ea9ba530ab6918f89d02b3e202ada91279c53e51f74e5a3adbba1236e1e"
+    },
+    "objects/8c28f1fbccd4fd3cd933ae07caff69add78b879edfe333a80d219f81a3a80334": {
+      "bytes": 1737,
+      "sha256": "8c28f1fbccd4fd3cd933ae07caff69add78b879edfe333a80d219f81a3a80334"
+    },
+    "objects/7e0bd321aeb370211d82b17048f2108fb9807cb29ad57d975a547e4bda3104a6": {
+      "bytes": 8125,
+      "sha256": "7e0bd321aeb370211d82b17048f2108fb9807cb29ad57d975a547e4bda3104a6"
+    },
+    "objects/e7f8232cf0073204fb534a5a48398c19ff4d85189545e33b0764bf2c578d6b95": {
+      "bytes": 8102,
+      "sha256": "e7f8232cf0073204fb534a5a48398c19ff4d85189545e33b0764bf2c578d6b95"
+    },
+    "objects/3b0f413d1bbd0fb8ade6db55647513f1c61f3f421aa64a84d30a25ee8e025889": {
+      "bytes": 13612,
+      "sha256": "3b0f413d1bbd0fb8ade6db55647513f1c61f3f421aa64a84d30a25ee8e025889"
+    },
+    "objects/b118564a5833857a2d5c59599836c738c085f7a57ec233d80f40517b224ca353": {
+      "bytes": 1775,
+      "sha256": "b118564a5833857a2d5c59599836c738c085f7a57ec233d80f40517b224ca353"
+    },
+    "objects/230d51d0f145625b69fd8af36367dde9fd0c76f1b07bb55b3075294fba3c39e4": {
+      "bytes": 8226,
+      "sha256": "230d51d0f145625b69fd8af36367dde9fd0c76f1b07bb55b3075294fba3c39e4"
+    },
+    "objects/d041d7f1d73ec34f6acc28a0f7a0d094ec8c257932db336b9e8439400aa739d5": {
+      "bytes": 1762,
+      "sha256": "d041d7f1d73ec34f6acc28a0f7a0d094ec8c257932db336b9e8439400aa739d5"
+    },
+    "objects/0e66a2273fed5aec46622e08c30f4d8b1acc1dd059ddc69dba57e86f4bedb901": {
+      "bytes": 8226,
+      "sha256": "0e66a2273fed5aec46622e08c30f4d8b1acc1dd059ddc69dba57e86f4bedb901"
+    },
+    "objects/28b02d0ab71471b1a5413e33b5eb88fe3ac55f5005142c02454e5dc2b61e5895": {
+      "bytes": 1958,
+      "sha256": "28b02d0ab71471b1a5413e33b5eb88fe3ac55f5005142c02454e5dc2b61e5895"
+    },
+    "objects/ee7cab395e02a8546ce6413dbac9b3c5150b0afd25c02407d669b13b8c6a929a": {
+      "bytes": 1458,
+      "sha256": "ee7cab395e02a8546ce6413dbac9b3c5150b0afd25c02407d669b13b8c6a929a"
+    },
+    "objects/d2dbba2dcff5fefed58b41ccb73543ab8b91a4adc1de87375b681f429e065ecb": {
+      "bytes": 8824,
+      "sha256": "d2dbba2dcff5fefed58b41ccb73543ab8b91a4adc1de87375b681f429e065ecb"
+    },
+    "objects/e30b0a80f0a3e8d66936357419f568ac969d68c24f5c96d198139ac7bb7852c7": {
+      "bytes": 1412,
+      "sha256": "e30b0a80f0a3e8d66936357419f568ac969d68c24f5c96d198139ac7bb7852c7"
+    },
+    "objects/73361d5657101533281b36df901b1065f871a96163d485ed319a0fa1ad6169d8": {
+      "bytes": 4663,
+      "sha256": "73361d5657101533281b36df901b1065f871a96163d485ed319a0fa1ad6169d8"
+    },
+    "objects/cd67a8d4811b96a4e95f4c5006eb50987668dcfad0e44767330e9caaa675522c": {
+      "bytes": 1958,
+      "sha256": "cd67a8d4811b96a4e95f4c5006eb50987668dcfad0e44767330e9caaa675522c"
+    },
+    "objects/8c42330f4542b7f3b46ddc0fed255f7530b05594edb16b8bbd4c95573225d908": {
+      "bytes": 1737,
+      "sha256": "8c42330f4542b7f3b46ddc0fed255f7530b05594edb16b8bbd4c95573225d908"
+    },
+    "objects/14d1553265241a6cedddaa49a9127f3876bc32fb0aadfbac78d556ebbded50bf": {
+      "bytes": 466,
+      "sha256": "14d1553265241a6cedddaa49a9127f3876bc32fb0aadfbac78d556ebbded50bf"
+    },
+    "objects/83d80a8542471991aa0ab9b0e474488e551a2910acd2f384dc4616c60af75a0a": {
+      "bytes": 8810,
+      "sha256": "83d80a8542471991aa0ab9b0e474488e551a2910acd2f384dc4616c60af75a0a"
+    },
+    "objects/7290e6c52e608887c701aa589459defde2c7bf14c643f8e36e2783ab20cf0e41": {
+      "bytes": 14159,
+      "sha256": "7290e6c52e608887c701aa589459defde2c7bf14c643f8e36e2783ab20cf0e41"
+    },
+    "objects/3fba17f32eaf312c96aa502a11a96422f205e306f3f25a95686171d0e973eba2": {
+      "bytes": 1775,
+      "sha256": "3fba17f32eaf312c96aa502a11a96422f205e306f3f25a95686171d0e973eba2"
+    },
+    "objects/aea744a2fcb05fb63cd80198b136e3e60e673d7550a58a82448c29661293c850": {
+      "bytes": 481,
+      "sha256": "aea744a2fcb05fb63cd80198b136e3e60e673d7550a58a82448c29661293c850"
+    },
+    "objects/e6595b481464091b566bbf4d4323345b2b004ef609ad5e4347a46b8c371966e3": {
+      "bytes": 1762,
+      "sha256": "e6595b481464091b566bbf4d4323345b2b004ef609ad5e4347a46b8c371966e3"
+    },
+    "objects/0aa02fce5cde08c02f010093133596730a94dad65c6128317aa2dc7cffcc8deb": {
+      "bytes": 481,
+      "sha256": "0aa02fce5cde08c02f010093133596730a94dad65c6128317aa2dc7cffcc8deb"
+    },
+    "objects/dd2ffdb259abec48e6f129dd6ae920867ec5a660ab79c2d0bb1bfbc463ff4a4b": {
+      "bytes": 9736,
+      "sha256": "dd2ffdb259abec48e6f129dd6ae920867ec5a660ab79c2d0bb1bfbc463ff4a4b"
+    },
+    "objects/28a3ac4812d457d78848fa06e407032c85ff37b4202f882d6ef826588cb33683": {
+      "bytes": 1478,
+      "sha256": "28a3ac4812d457d78848fa06e407032c85ff37b4202f882d6ef826588cb33683"
+    },
+    "objects/8b31fb7a579c400644ff29f123122d10f168459754f71e3d8a8d954bee79503b": {
+      "bytes": 9736,
+      "sha256": "8b31fb7a579c400644ff29f123122d10f168459754f71e3d8a8d954bee79503b"
+    },
+    "objects/d3c03ae08a8fc596b9e31882b58d80f660abd40d9223b7f30478813abd8f3f0b": {
+      "bytes": 1478,
+      "sha256": "d3c03ae08a8fc596b9e31882b58d80f660abd40d9223b7f30478813abd8f3f0b"
+    },
+    "objects/9c5f380bc8252b30baab79516764a81814ff350f7d53d5f655157be7af393aec": {
+      "bytes": 23984,
+      "sha256": "9c5f380bc8252b30baab79516764a81814ff350f7d53d5f655157be7af393aec"
+    },
+    "objects/1a3d718aa2f8b2f4395a8f18e09053ebb6fcf856f69d1bc82c6e29bb02c289d1": {
+      "bytes": 5215886,
+      "sha256": "1a3d718aa2f8b2f4395a8f18e09053ebb6fcf856f69d1bc82c6e29bb02c289d1"
+    },
+    "objects/dc8b16287ce56989842e2db9c4bdedda14ebee08841d5b423676c962a09bc426": {
+      "bytes": 1671,
+      "sha256": "dc8b16287ce56989842e2db9c4bdedda14ebee08841d5b423676c962a09bc426"
+    },
+    "objects/4a86f3ac1a9e06f5f3314c9e2ab0bc45dfadc2553be70f1fd9aba205b93c472a": {
+      "bytes": 3853,
+      "sha256": "4a86f3ac1a9e06f5f3314c9e2ab0bc45dfadc2553be70f1fd9aba205b93c472a"
+    },
+    "objects/ab0385d5ffd7ebd4069b563a301d47577810ef95df8c8ca9b864bfe2ea2c7f2a": {
+      "bytes": 7718,
+      "sha256": "ab0385d5ffd7ebd4069b563a301d47577810ef95df8c8ca9b864bfe2ea2c7f2a"
+    },
+    "objects/a1aa1d737b9f701ea5419b14edb1c18ed63fda7d3a3e1c84958a66c7aafc4b06": {
+      "bytes": 1652,
+      "sha256": "a1aa1d737b9f701ea5419b14edb1c18ed63fda7d3a3e1c84958a66c7aafc4b06"
+    },
+    "objects/097ceb834e3ff3badd83166cbfbdc89aee60dc86913af301950cbcc20f90655c": {
+      "bytes": 5634,
+      "sha256": "097ceb834e3ff3badd83166cbfbdc89aee60dc86913af301950cbcc20f90655c"
+    },
+    "objects/8887421780631d8c4a68d377fdac537bf68b182c1865909c5fea581b5b08d896": {
+      "bytes": 2172,
+      "sha256": "8887421780631d8c4a68d377fdac537bf68b182c1865909c5fea581b5b08d896"
+    },
+    "objects/d85d99f3759adf9b265c566431e4a0812a6efbcb873afff0760dffe0812a5b9d": {
+      "bytes": 2299,
+      "sha256": "d85d99f3759adf9b265c566431e4a0812a6efbcb873afff0760dffe0812a5b9d"
+    },
+    "objects/aac1476fcc782aa9d9c06b3cf9e74cadc1ee19e64754fb35893f92a010b5b891": {
+      "bytes": 9724,
+      "sha256": "aac1476fcc782aa9d9c06b3cf9e74cadc1ee19e64754fb35893f92a010b5b891"
+    },
+    "objects/7a5c7b50e58b0900609dce24cb15d4770ea225f1c76d833fa77b6afd132d1477": {
+      "bytes": 5426,
+      "sha256": "7a5c7b50e58b0900609dce24cb15d4770ea225f1c76d833fa77b6afd132d1477"
+    },
+    "objects/fa846f50a8c94a9bd30b8ac43fa71bb546548a6ab630d2be9105bd565e61b46a": {
+      "bytes": 338,
+      "sha256": "fa846f50a8c94a9bd30b8ac43fa71bb546548a6ab630d2be9105bd565e61b46a"
+    },
+    "objects/8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643": {
+      "bytes": 18092,
+      "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+    },
+    "objects/9e9d35a6c030fbd0a412aa32f8a51bf74d219277d97f7175b95d0464d8eee647": {
+      "bytes": 1510,
+      "sha256": "9e9d35a6c030fbd0a412aa32f8a51bf74d219277d97f7175b95d0464d8eee647"
+    },
+    "logical-files.json": {
+      "bytes": 78350,
+      "sha256": "8300f5ffcc6afa3ecc45aaa5979efeb75bf373703f23e0524f467a67d0473edd"
+    }
+  },
+  "logical_file_pins": {
+    "artifact-candidate-entries.json": {
+      "bytes": 3394381,
+      "sha256": "6e4beeb5888ddc81a6b314841627b6c17939d272a2e4dbcac11ebf77b254aa5e"
+    },
+    "artifact-parent-entries.json": {
+      "bytes": 3392935,
+      "sha256": "adac0948e082ccf983ee5283057faec3567f41e4539d0b48afd761546d011ce5"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.3.0-1/COMPLETED.json": {
+      "bytes": 1077,
+      "sha256": "ef0dcd9a878e290fb3a6179fb0e1a7359dd62f8856940679990be3c38b464d03"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.3.0-1/LIBRARIES-AFTER.json": {
+      "bytes": 5210179,
+      "sha256": "2fd3129bddb4d683b34fa0ba1055704ad710f288c4c951ca8802862c151828c6"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.3.0-1/LIBRARIES-BEFORE.json": {
+      "bytes": 5210179,
+      "sha256": "2fd3129bddb4d683b34fa0ba1055704ad710f288c4c951ca8802862c151828c6"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.3.0-1/STARTED.json": {
+      "bytes": 3308,
+      "sha256": "412f4d5f16986c3a2b6f3e69ab7bb322a28dfb7daedc2444d7250b6932447fe4"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.3.0-1/process.json": {
+      "bytes": 1483,
+      "sha256": "7ce0e268d837e7a7f8f5a282636468d74bdfa614da184edaa91099b16c470675"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.3.0-1/source-snapshot/build/literature-review/soupx-runtime/reference-1.3.0-2/COMPLETED.json": {
+      "bytes": 26525,
+      "sha256": "daa56e6b3ca600f229c7d061bdb0eac5c8c89f1479781c0be73dcc87d864c3eb"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.3.0-1/source-snapshot/build/literature-review/soupx-runtime/source-recovery-1/1.3.0/SOURCE.json": {
+      "bytes": 6864,
+      "sha256": "9f0250216e7b10df170a85ba29b12425102a374bd2bbbf0a826c7b62e2309242"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.3.0-1/source-snapshot/tools/literature/collect_soupx_ambient.R": {
+      "bytes": 9753,
+      "sha256": "3ac619bdd7cdf2a8c124625bc77dc17ce8ed602428b1a6e56ce5d0bc04ef428e"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.3.0-1/source-snapshot/tools/literature/collect_soupx_ambient.py": {
+      "bytes": 3928,
+      "sha256": "4e8db7a23212aa3b7a8d614c7fdb7c3993c3c2eee4fa42256e68e8c8e4924376"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.3.0-1/stderr": {
+      "bytes": 108,
+      "sha256": "dbbea4dab9341e154024263ae4bce7f4669cffcd7571de0522ab5d20b91c7e9e"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.3.0-1/stdout": {
+      "bytes": 9,
+      "sha256": "e271e142b839c56c2d3f2d720ff26fdf574bae2537e9b77c5e36cb557b457598"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.3.0-2/COMPLETED.json": {
+      "bytes": 1077,
+      "sha256": "a7c02fc9a87488f7066739aad15bdd9fa0b5b4c3780a1aba4a8a35f18410ca03"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.3.0-2/LIBRARIES-AFTER.json": {
+      "bytes": 5210179,
+      "sha256": "2fd3129bddb4d683b34fa0ba1055704ad710f288c4c951ca8802862c151828c6"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.3.0-2/LIBRARIES-BEFORE.json": {
+      "bytes": 5210179,
+      "sha256": "2fd3129bddb4d683b34fa0ba1055704ad710f288c4c951ca8802862c151828c6"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.3.0-2/STARTED.json": {
+      "bytes": 3308,
+      "sha256": "6526ed4c04a663a7682b28fdbe20b259bf5eef8b5f101a0ff183bf038f5d217c"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.3.0-2/process.json": {
+      "bytes": 1483,
+      "sha256": "385b6c2f89d091af8dec7063aaf0a4fcf64a3b8ec940715d14758fc0b5e4894d"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.3.0-2/source-snapshot/build/literature-review/soupx-runtime/reference-1.3.0-2/COMPLETED.json": {
+      "bytes": 26525,
+      "sha256": "daa56e6b3ca600f229c7d061bdb0eac5c8c89f1479781c0be73dcc87d864c3eb"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.3.0-2/source-snapshot/build/literature-review/soupx-runtime/source-recovery-1/1.3.0/SOURCE.json": {
+      "bytes": 6864,
+      "sha256": "9f0250216e7b10df170a85ba29b12425102a374bd2bbbf0a826c7b62e2309242"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.3.0-2/source-snapshot/tools/literature/collect_soupx_ambient.R": {
+      "bytes": 9809,
+      "sha256": "2ac29916252297b7cc7b76906e37f2e00d99723413cbe92ee43946beea261e7a"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.3.0-2/source-snapshot/tools/literature/collect_soupx_ambient.py": {
+      "bytes": 3877,
+      "sha256": "1b1ef94520899b76792922f280cdfe20f0c6a1e1f40006b3cdf5a10890e2a403"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.3.0-2/stderr": {
+      "bytes": 62,
+      "sha256": "484a03d146503dfc3643da93f74a6a35b1c2b45178b93ace8deb103a6a7ba62d"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.3.0-2/stdout": {
+      "bytes": 9,
+      "sha256": "e271e142b839c56c2d3f2d720ff26fdf574bae2537e9b77c5e36cb557b457598"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.3.0-3/COMPLETED.json": {
+      "bytes": 1604,
+      "sha256": "3363ef205c7d3fcf598255769fdb6467d43d4107bf87dd599bdedec366e4a6e0"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.3.0-3/LIBRARIES-AFTER.json": {
+      "bytes": 5210179,
+      "sha256": "2fd3129bddb4d683b34fa0ba1055704ad710f288c4c951ca8802862c151828c6"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.3.0-3/LIBRARIES-BEFORE.json": {
+      "bytes": 5210179,
+      "sha256": "2fd3129bddb4d683b34fa0ba1055704ad710f288c4c951ca8802862c151828c6"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.3.0-3/STARTED.json": {
+      "bytes": 3699,
+      "sha256": "c3f473e9b4d77002918f2c756ebd726bfcd78f4cbbfbfb3e8bbccd6d7bf13b33"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.3.0-3/auto-legacy-declared-apply/original-return.rds": {
+      "bytes": 121688,
+      "sha256": "6123a7838f9cf26e04bd856ca4d36f2d49591cd38ed156c16386e5f589f06a8e"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.3.0-3/auto-legacy-declared-apply/result.json": {
+      "bytes": 57998,
+      "sha256": "625d1ad91865120d1a3228c0ce69b90f55ce5489da909050af520ad5e80e22f9"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.3.0-3/auto-legacy-defaults/original-return.rds": {
+      "bytes": 3986,
+      "sha256": "da55c4711f80fa5fcdb84ba1317133e7467d9b93f8347a71cc20e831d3c91eef"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.3.0-3/auto-legacy-defaults/result.json": {
+      "bytes": 50380,
+      "sha256": "7dfe2622c22a7d3a1dcd7ba7ce91b6c9cc959dc08fb87aadca12c07602c12275"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.3.0-3/constructor-gene-order-mismatch/original-return.rds": {
+      "bytes": 116862,
+      "sha256": "9bcb527b977e4707e3dfecee01fbc49af2082f2ac99f6a4381e3873bbcb3937b"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.3.0-3/constructor-gene-order-mismatch/result.json": {
+      "bytes": 26106,
+      "sha256": "3f73591bb608edfef6f9c097367b2a0c2c442e816e8e36001046706c7e4d58b0"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.3.0-3/controls.json": {
+      "bytes": 5377047,
+      "sha256": "c6b70b81d78f016f1650b82e244ab2520caedf2e174fbc879a6c85f3400b6968"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.3.0-3/first-cluster-FALSE-source-branch/original-return.rds": {
+      "bytes": 31700,
+      "sha256": "595944572700a2704a2b42a032b695307f12fbcadb941244e0b753d3c59c7fb2"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.3.0-3/first-cluster-FALSE-source-branch/result.json": {
+      "bytes": 350327,
+      "sha256": "b330d052bea3d58acee995c3bc6fdd9f580b27272bf5fe245b64b09ffc66ad85"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.3.0-3/fixed-cell-only-multinomial-FALSE/original-return.rds": {
+      "bytes": 124529,
+      "sha256": "0245647cb9d653701eb8a9fd34ca6c0c5ac7ccee8b6c579ab3215dad1ce62e84"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.3.0-3/fixed-cell-only-multinomial-FALSE/result.json": {
+      "bytes": 321046,
+      "sha256": "ca54d14062f68e50d67c173bc2557d8f6df60d45860ea19610bf50cb3326aae6"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.3.0-3/fixed-cell-only-multinomial-TRUE/original-return.rds": {
+      "bytes": 124524,
+      "sha256": "1e5bfd24578b43d78240525f4c0810a85606a929d8b8106c44e204e9071f03aa"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.3.0-3/fixed-cell-only-multinomial-TRUE/result.json": {
+      "bytes": 321033,
+      "sha256": "f9c080585d4843de9c67daabc701b2f3c01f3c0950984595be8c540151e8ea34"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.3.0-3/fixed-cell-only-soupOnly-FALSE/original-return.rds": {
+      "bytes": 122948,
+      "sha256": "320b86e4b2c7e2777b56cd822f3c4cef95dcdae7935b794831a783f12c4915d5"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.3.0-3/fixed-cell-only-soupOnly-FALSE/result.json": {
+      "bytes": 182327,
+      "sha256": "5204b46dc8085147678282fc719a484aac73925bb45f09d031fa829ef3725c42"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.3.0-3/fixed-cell-only-soupOnly-TRUE/original-return.rds": {
+      "bytes": 122948,
+      "sha256": "320b86e4b2c7e2777b56cd822f3c4cef95dcdae7935b794831a783f12c4915d5"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.3.0-3/fixed-cell-only-soupOnly-TRUE/result.json": {
+      "bytes": 182325,
+      "sha256": "0383e2eb0b60e3cc639e56f125a9be8aade2f616699a643dc61c5817099ac0a6"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.3.0-3/fixed-cell-only-subtraction-FALSE/original-return.rds": {
+      "bytes": 147644,
+      "sha256": "284a084bd3e498f98b2b37fe7617c493a5d22ca782d526a2863186f8d23f214c"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.3.0-3/fixed-cell-only-subtraction-FALSE/result.json": {
+      "bytes": 357982,
+      "sha256": "98e547de0dcb6d95c7a863b30f528e7ae1ba932f690b200adb0c3e760f821cde"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.3.0-3/fixed-cell-only-subtraction-TRUE/original-return.rds": {
+      "bytes": 124777,
+      "sha256": "d22a5e5b2c601f8f103d38e85019803e699b8a3f1c08adc4a0c33f31da21102a"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.3.0-3/fixed-cell-only-subtraction-TRUE/result.json": {
+      "bytes": 299301,
+      "sha256": "4272f7761a5e16593000d5cad3a86e2dca16d1b224b0347751d25a65b6c61e6a"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.3.0-3/fixed-rho-0.5/original-return.rds": {
+      "bytes": 117171,
+      "sha256": "38ba8ad2c9e271390f3dbb429ea87b74727b7a29b3800c21e45d13422ef8bba5"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.3.0-3/fixed-rho-0.5/result.json": {
+      "bytes": 27400,
+      "sha256": "c686ae680372e15b11a05ec9b2f99abe4c033310b9e45f99a11783e9fae8daa2"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.3.0-3/fixed-rho-0.9/original-return.rds": {
+      "bytes": 117173,
+      "sha256": "d215d8f772a7b89f2c4d87f81de6669154eae903d3337eb98b5b54b5c039511e"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.3.0-3/fixed-rho-0.9/result.json": {
+      "bytes": 28392,
+      "sha256": "49c3b3dcb6c20e498af08a012dabdde77357c70deefd706784f142f90cc3f205"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.3.0-3/fixed-rho-0/original-return.rds": {
+      "bytes": 117168,
+      "sha256": "2ccbf49cc6498e09a98151c27f8e40b6e63e5acdfc9b04a6182aadfa2699aa09"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.3.0-3/fixed-rho-0/result.json": {
+      "bytes": 27272,
+      "sha256": "4f0fe4565df01cff5fb5fbf0c21626d6ee3362cc978e0ca9513833f3fb5765d7"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.3.0-3/fixed-supplied-clusters-multinomial-FALSE/original-return.rds": {
+      "bytes": 138406,
+      "sha256": "35f06e87d7e52c827efce66c8aed078efdc17288281a0256d809e126b4b56588"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.3.0-3/fixed-supplied-clusters-multinomial-FALSE/result.json": {
+      "bytes": 359106,
+      "sha256": "ec403fe07cf3877505ff600d81fb68cdebd23144d8e0488019c9343094c319d4"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.3.0-3/fixed-supplied-clusters-multinomial-TRUE/original-return.rds": {
+      "bytes": 124531,
+      "sha256": "e7d84515d342af1ed755805031351f9d65b6d2db41e14d1efef6e47593026203"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.3.0-3/fixed-supplied-clusters-multinomial-TRUE/result.json": {
+      "bytes": 321058,
+      "sha256": "7b10bb234bbb2354b12122054c9357b9fb938c9510cd5faf1e4bb27702b79411"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.3.0-3/fixed-supplied-clusters-soupOnly-FALSE/original-return.rds": {
+      "bytes": 124561,
+      "sha256": "9b420b4e97e615738f0cf108ee9801c2464d2a651d2219a2af8451803b27a852"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.3.0-3/fixed-supplied-clusters-soupOnly-FALSE/result.json": {
+      "bytes": 321034,
+      "sha256": "382a1f459123c185bb03d089d61aedec612662350ff72d4688c1050fc5ebfd6d"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.3.0-3/fixed-supplied-clusters-soupOnly-TRUE/original-return.rds": {
+      "bytes": 124561,
+      "sha256": "9b420b4e97e615738f0cf108ee9801c2464d2a651d2219a2af8451803b27a852"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.3.0-3/fixed-supplied-clusters-soupOnly-TRUE/result.json": {
+      "bytes": 321032,
+      "sha256": "da01c73c5332781e529464831e02bdcd864820a6d86fc3e3f76e257b41412979"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.3.0-3/fixed-supplied-clusters-subtraction-FALSE/original-return.rds": {
+      "bytes": 146800,
+      "sha256": "17004caad96bb357435998261828f704e9133d43c634da71b490981ea5540754"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.3.0-3/fixed-supplied-clusters-subtraction-FALSE/result.json": {
+      "bytes": 376146,
+      "sha256": "2d5bca1444ed8918e91309159f8e196fd7745daddfc8ce4cd4b8a6e6cf573234"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.3.0-3/fixed-supplied-clusters-subtraction-TRUE/original-return.rds": {
+      "bytes": 124539,
+      "sha256": "117c119e5476ceedea5266ec86d7e627565cb7dba4183928e6132fe18995d5de"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.3.0-3/fixed-supplied-clusters-subtraction-TRUE/result.json": {
+      "bytes": 321015,
+      "sha256": "309fa43cd7d6a160194a1f82078366b20b18ada1d11c0ceb8099c5014bcc8794"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.3.0-3/inputs.json": {
+      "bytes": 5250656,
+      "sha256": "fee31ea92c40259e2cf9f4adad666c3897cacf97d1e28ae231eb6757a2551c71"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.3.0-3/inputs.rds": {
+      "bytes": 102753,
+      "sha256": "f3a31be578273756d9f98603c6b2eda386d9ee76b9747f5d2fbee9cd8ae38079"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.3.0-3/manual-automatic-mask-cell-only/original-return.rds": {
+      "bytes": 249487,
+      "sha256": "fafe5d117a8671512cb2909bbe09b8058d3158b7f873bd53d7f43e8bd2736410"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.3.0-3/manual-automatic-mask-cell-only/result.json": {
+      "bytes": 16529,
+      "sha256": "d9cfd282f7c2146e715c6c17d13134f9df3d502f6be771df7271433e132ef4b3"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.3.0-3/manual-automatic-mask-supplied-clusters/original-return.rds": {
+      "bytes": 249487,
+      "sha256": "fafe5d117a8671512cb2909bbe09b8058d3158b7f873bd53d7f43e8bd2736410"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.3.0-3/manual-automatic-mask-supplied-clusters/result.json": {
+      "bytes": 16464,
+      "sha256": "4fe58cb12b5e7961c110eff82741cd50959b8a7a1dde62833be2888bcf3f427f"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.3.0-3/manual-no-accepted-cells/result.json": {
+      "bytes": 271,
+      "sha256": "2c8caffbad0b592bdbdb107c516f8ef36fac1cc5fac63b264b3ff5f0a368d588"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.3.0-3/manual-supplied-mask/original-return.rds": {
+      "bytes": 247594,
+      "sha256": "734c27169a6f4a4eb40a31609dadebbbea1baddc94bc90e87477a6b46c53109c"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.3.0-3/manual-supplied-mask/result.json": {
+      "bytes": 16238,
+      "sha256": "656056a575b065c0e5eeea643bd3945e15d3135237f553358cbec8b42c57b2eb"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.3.0-3/process.json": {
+      "bytes": 1585,
+      "sha256": "1a1d3f8a69abb9ff677f0d8308222c4202067d276849b6da9e3a1176f9225372"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.3.0-3/profile-0-10/original-return.rds": {
+      "bytes": 114297,
+      "sha256": "581479a9f419c56da151ab2d90273f3684d11db15427ee952a12f2ee28c2a65b"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.3.0-3/profile-0-10/result.json": {
+      "bytes": 21649,
+      "sha256": "3917dc4923c58febe58dd8f542ff6ffdf9fa37658c83fa94f725b0a3de180fbe"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.3.0-3/profile-0-100/original-return.rds": {
+      "bytes": 116670,
+      "sha256": "e6550cfca5e6a873c8253bb8cd170445c6a7ba764387218dba8cb8912315c350"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.3.0-3/profile-0-100/result.json": {
+      "bytes": 26103,
+      "sha256": "276d25a25d2a039dfb13f8206a142b88cc5ad6fc69e2721313a5c8199e6b34f7"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.3.0-3/profile-1-20/original-return.rds": {
+      "bytes": 114297,
+      "sha256": "581479a9f419c56da151ab2d90273f3684d11db15427ee952a12f2ee28c2a65b"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.3.0-3/profile-1-20/result.json": {
+      "bytes": 21649,
+      "sha256": "0dd81705dc72d1cbc4e9b59481d7f83691310f0371ced58ed4288c847c765dda"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.3.0-3/profile-no-selected-droplets/original-return.rds": {
+      "bytes": 114297,
+      "sha256": "581479a9f419c56da151ab2d90273f3684d11db15427ee952a12f2ee28c2a65b"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.3.0-3/profile-no-selected-droplets/result.json": {
+      "bytes": 21676,
+      "sha256": "f108a236d31481fd6a782d254ddbb0f948119004aadc6bd479e53046fa87cc51"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.3.0-3/source-snapshot/build/literature-review/soupx-runtime/reference-1.3.0-2/COMPLETED.json": {
+      "bytes": 26525,
+      "sha256": "daa56e6b3ca600f229c7d061bdb0eac5c8c89f1479781c0be73dcc87d864c3eb"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.3.0-3/source-snapshot/build/literature-review/soupx-runtime/source-intake-1/1.6.2/SOURCE.json": {
+      "bytes": 8830,
+      "sha256": "74c9ad90aa7a6c1be534af4b0dc7a25894a837b4189da56c4aaacdffe282790c"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.3.0-3/source-snapshot/build/literature-review/soupx-runtime/source-recovery-1/1.3.0/SOURCE.json": {
+      "bytes": 6864,
+      "sha256": "9f0250216e7b10df170a85ba29b12425102a374bd2bbbf0a826c7b62e2309242"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.3.0-3/source-snapshot/tools/literature/collect_soupx_ambient.R": {
+      "bytes": 9838,
+      "sha256": "869670e73b5a4686997ec7043f5545595b65a4a060a1f92ac3e3d7df078efa8d"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.3.0-3/source-snapshot/tools/literature/collect_soupx_ambient.py": {
+      "bytes": 4539,
+      "sha256": "06338a4b1b236b2e5a7c493d47242a8e490be955384a3741d35b93c199067e9d"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.3.0-3/stderr": {
+      "bytes": 141,
+      "sha256": "7b91ed5c7ed9c3f8b64adc1992f3cbdd72be959613e156539aa673524bc5f108"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.3.0-3/stdout": {
+      "bytes": 65,
+      "sha256": "adeef9aa0f030f94d94dd02c859a366e9195d607a56c25eb71a13e2d003902d7"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.6.2-1/COMPLETED.json": {
+      "bytes": 1075,
+      "sha256": "fcb6334729dbd2ce771c008a9d838c0ab2d928f9bd1c1fc5b7bbeeb610f2722e"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.6.2-1/LIBRARIES-AFTER.json": {
+      "bytes": 5212308,
+      "sha256": "98c888cdc910daba130c50e883138b79ead351f2debb61d6339c8078cce3d1c9"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.6.2-1/LIBRARIES-BEFORE.json": {
+      "bytes": 5212308,
+      "sha256": "98c888cdc910daba130c50e883138b79ead351f2debb61d6339c8078cce3d1c9"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.6.2-1/STARTED.json": {
+      "bytes": 3304,
+      "sha256": "a1451685f68fb53c80682e7b109ddc1b67875fe92b13f260c06ccc37963212b0"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.6.2-1/inputs.rds": {
+      "bytes": 102753,
+      "sha256": "f3a31be578273756d9f98603c6b2eda386d9ee76b9747f5d2fbee9cd8ae38079"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.6.2-1/process.json": {
+      "bytes": 1481,
+      "sha256": "449c8d9fca2561e9cb90cda336243583349b8eef85f0e84b6890a177ed13b602"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.6.2-1/source-snapshot/build/literature-review/soupx-runtime/reference-1.6.2-1/COMPLETED.json": {
+      "bytes": 27874,
+      "sha256": "96e5cd7a5ceb42b9c7108ecad34bfa890f62177041a62be62aade66f3d370cd3"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.6.2-1/source-snapshot/build/literature-review/soupx-runtime/source-intake-1/1.6.2/SOURCE.json": {
+      "bytes": 8830,
+      "sha256": "74c9ad90aa7a6c1be534af4b0dc7a25894a837b4189da56c4aaacdffe282790c"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.6.2-1/source-snapshot/tools/literature/collect_soupx_ambient.R": {
+      "bytes": 9753,
+      "sha256": "3ac619bdd7cdf2a8c124625bc77dc17ce8ed602428b1a6e56ce5d0bc04ef428e"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.6.2-1/source-snapshot/tools/literature/collect_soupx_ambient.py": {
+      "bytes": 3928,
+      "sha256": "4e8db7a23212aa3b7a8d614c7fdb7c3993c3c2eee4fa42256e68e8c8e4924376"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.6.2-1/stderr": {
+      "bytes": 414,
+      "sha256": "37da4e1c4f719c0e2f0b9cb67567a229f92dfcfd0a8fb8cd41cc2896084c2693"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.6.2-1/stdout": {
+      "bytes": 9,
+      "sha256": "e271e142b839c56c2d3f2d720ff26fdf574bae2537e9b77c5e36cb557b457598"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.6.2-2/COMPLETED.json": {
+      "bytes": 1410,
+      "sha256": "db7ea1fef9bcda45fcb5224ca06196b322b7dacc04683bea3ce7a3e710d5f401"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.6.2-2/LIBRARIES-AFTER.json": {
+      "bytes": 5212308,
+      "sha256": "98c888cdc910daba130c50e883138b79ead351f2debb61d6339c8078cce3d1c9"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.6.2-2/LIBRARIES-BEFORE.json": {
+      "bytes": 5212308,
+      "sha256": "98c888cdc910daba130c50e883138b79ead351f2debb61d6339c8078cce3d1c9"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.6.2-2/STARTED.json": {
+      "bytes": 3304,
+      "sha256": "5e8772e99dadb4ecfa820d6907b18913784ce9fcff6c7cc13065b8e7d5e09803"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.6.2-2/auto-P145-overrides/original-return.rds": {
+      "bytes": 128999,
+      "sha256": "20f2732051fc9665cef6dcd220fcbaf85b77d720aafd43dd9fd7223d70752636"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.6.2-2/auto-P145-overrides/result.json": {
+      "bytes": 28923,
+      "sha256": "a9637795724af327fb67fd27a95ef3e0295a25d0a0dca8550dedbe584c554bc5"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.6.2-2/auto-current-defaults/original-return.rds": {
+      "bytes": 127780,
+      "sha256": "cb80971041c92ff4da5c1c12d8e79f3710a223779263b191f57be27428368334"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.6.2-2/auto-current-defaults/result.json": {
+      "bytes": 28198,
+      "sha256": "c16c9b1818bf3ceedf43fa5ab32b880b457063b9e96815a067dd4f8ac4683bb3"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.6.2-2/constructor-gene-order-mismatch/result.json": {
+      "bytes": 360,
+      "sha256": "52226e18b4d4d193fe8ab882008cb852f11a599893565ce73a4820c72c6f846f"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.6.2-2/controls.json": {
+      "bytes": 5289831,
+      "sha256": "122fa932a3f88bbd1d44f73051a64c2a856c3ed84e7ca149361babed299c0f3c"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.6.2-2/first-cluster-FALSE-source-branch/original-return.rds": {
+      "bytes": 31675,
+      "sha256": "186feb666917ca385ec2054701bc0826983327a387744edb51c97daa6c99bc26"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.6.2-2/first-cluster-FALSE-source-branch/result.json": {
+      "bytes": 350345,
+      "sha256": "750f6616153b9c560bf75eacac7eac4a8a8427616ca1ae2a90f64e8c310d1055"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.6.2-2/fixed-cell-only-multinomial-FALSE/original-return.rds": {
+      "bytes": 124529,
+      "sha256": "0245647cb9d653701eb8a9fd34ca6c0c5ac7ccee8b6c579ab3215dad1ce62e84"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.6.2-2/fixed-cell-only-multinomial-FALSE/result.json": {
+      "bytes": 321001,
+      "sha256": "1983975d509f6fb6d35ea971f0c9673b9d3bbfca5786dbcccc323468583db8bc"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.6.2-2/fixed-cell-only-multinomial-TRUE/original-return.rds": {
+      "bytes": 124524,
+      "sha256": "1e5bfd24578b43d78240525f4c0810a85606a929d8b8106c44e204e9071f03aa"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.6.2-2/fixed-cell-only-multinomial-TRUE/result.json": {
+      "bytes": 320987,
+      "sha256": "c9d6c64bdd786337667b25a7b965db8b66d8fb4201571c51fdb0f4b4aa543a0f"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.6.2-2/fixed-cell-only-soupOnly-FALSE/original-return.rds": {
+      "bytes": 122948,
+      "sha256": "320b86e4b2c7e2777b56cd822f3c4cef95dcdae7935b794831a783f12c4915d5"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.6.2-2/fixed-cell-only-soupOnly-FALSE/result.json": {
+      "bytes": 182327,
+      "sha256": "38003986cca01f2ae3479e3370877fde103e0977a53a9522dc112b229478ab7b"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.6.2-2/fixed-cell-only-soupOnly-TRUE/original-return.rds": {
+      "bytes": 122948,
+      "sha256": "320b86e4b2c7e2777b56cd822f3c4cef95dcdae7935b794831a783f12c4915d5"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.6.2-2/fixed-cell-only-soupOnly-TRUE/result.json": {
+      "bytes": 182325,
+      "sha256": "ea78baec2a35898d2d7bc79a92c0bf83b70639b0d0f7c060809ee4b24f791dcc"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.6.2-2/fixed-cell-only-subtraction-FALSE/original-return.rds": {
+      "bytes": 147617,
+      "sha256": "67654fc27d499936116cb5a7c2c502765d2a29a7327484229bddc8bbda21f808"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.6.2-2/fixed-cell-only-subtraction-FALSE/result.json": {
+      "bytes": 358000,
+      "sha256": "88bd95bd5999fdc25b92b061c6d195e67338998c963bf57b19777ad82ce3beb1"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.6.2-2/fixed-cell-only-subtraction-TRUE/original-return.rds": {
+      "bytes": 124777,
+      "sha256": "d22a5e5b2c601f8f103d38e85019803e699b8a3f1c08adc4a0c33f31da21102a"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.6.2-2/fixed-cell-only-subtraction-TRUE/result.json": {
+      "bytes": 299301,
+      "sha256": "d78c233e55a6b205415cf3e48c37ee82bb99ace1df2a11a7774f7fb1e2577aa8"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.6.2-2/fixed-rho-0.5/original-return.rds": {
+      "bytes": 117171,
+      "sha256": "38ba8ad2c9e271390f3dbb429ea87b74727b7a29b3800c21e45d13422ef8bba5"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.6.2-2/fixed-rho-0.5/result.json": {
+      "bytes": 27455,
+      "sha256": "32014ed053d2ee5355f0aac6b111116c8bb33e7644b6e3c734d109a76bf7fc0e"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.6.2-2/fixed-rho-0.9-forced/original-return.rds": {
+      "bytes": 117173,
+      "sha256": "d215d8f772a7b89f2c4d87f81de6669154eae903d3337eb98b5b54b5c039511e"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.6.2-2/fixed-rho-0.9-forced/result.json": {
+      "bytes": 28583,
+      "sha256": "f2a126aa89291ce28f65f4d290f072423d5e1573ed037fa80d91a5a5c894d97d"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.6.2-2/fixed-rho-0.9/result.json": {
+      "bytes": 370,
+      "sha256": "5e57764c34ab512f048ad388acd9e0f87f863fb4e94ba29c5703e60613449ddf"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.6.2-2/fixed-rho-0/original-return.rds": {
+      "bytes": 117168,
+      "sha256": "2ccbf49cc6498e09a98151c27f8e40b6e63e5acdfc9b04a6182aadfa2699aa09"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.6.2-2/fixed-rho-0/result.json": {
+      "bytes": 27272,
+      "sha256": "9b127102c2ce909da7dfe12801fa817034b1ae8217e730563fed4f9dd576c159"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.6.2-2/fixed-supplied-clusters-multinomial-FALSE/original-return.rds": {
+      "bytes": 140531,
+      "sha256": "35d5cd10df461f64c8ff96d3f0b33f88a7993810bd6d0286ada8c76a3acf4fbe"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.6.2-2/fixed-supplied-clusters-multinomial-FALSE/result.json": {
+      "bytes": 359530,
+      "sha256": "b3f8dc8a2e62f31dd8f034c4e19e3ab7a0c0b2b850d7994e058e6e8e9149f20e"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.6.2-2/fixed-supplied-clusters-multinomial-TRUE/original-return.rds": {
+      "bytes": 124497,
+      "sha256": "0c1ff971088449180fb449b6984ce2eb7e96252ee982e82c6dac99d2f7bd8150"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.6.2-2/fixed-supplied-clusters-multinomial-TRUE/result.json": {
+      "bytes": 321012,
+      "sha256": "c42503f694eb83e0f42bf6d54293ef28d166099d8033bc7a23497fd1056414be"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.6.2-2/fixed-supplied-clusters-soupOnly-FALSE/original-return.rds": {
+      "bytes": 124561,
+      "sha256": "9b420b4e97e615738f0cf108ee9801c2464d2a651d2219a2af8451803b27a852"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.6.2-2/fixed-supplied-clusters-soupOnly-FALSE/result.json": {
+      "bytes": 321034,
+      "sha256": "24e66220df107ffe262029710d1b67f8a261e2551913d2800b9c89fc8b207854"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.6.2-2/fixed-supplied-clusters-soupOnly-TRUE/original-return.rds": {
+      "bytes": 124561,
+      "sha256": "9b420b4e97e615738f0cf108ee9801c2464d2a651d2219a2af8451803b27a852"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.6.2-2/fixed-supplied-clusters-soupOnly-TRUE/result.json": {
+      "bytes": 321032,
+      "sha256": "2fa173c5993b354f6b394befe703e3d9da68dffed7bad766097d4957be017dbd"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.6.2-2/fixed-supplied-clusters-subtraction-FALSE/original-return.rds": {
+      "bytes": 146810,
+      "sha256": "e7076cdabd8c4e13999b64c6bb61cbd9b110c86da352363a82b71c23c4cf07c3"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.6.2-2/fixed-supplied-clusters-subtraction-FALSE/result.json": {
+      "bytes": 376249,
+      "sha256": "ee614e1e186db6d23b7812dba494f3a6788bde4b95d9513405a733f4325963f9"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.6.2-2/fixed-supplied-clusters-subtraction-TRUE/original-return.rds": {
+      "bytes": 124508,
+      "sha256": "157023e3df91528e6bcc6ea0126f07c7fad62caaac0abc1a1b4c24a41909fe2f"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.6.2-2/fixed-supplied-clusters-subtraction-TRUE/result.json": {
+      "bytes": 321013,
+      "sha256": "d83d09cb1b445ea9e66f3c5c28ba1c7c79b6ee362cfcfc8503372d39ea927351"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.6.2-2/inputs.json": {
+      "bytes": 5250656,
+      "sha256": "fee31ea92c40259e2cf9f4adad666c3897cacf97d1e28ae231eb6757a2551c71"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.6.2-2/inputs.rds": {
+      "bytes": 102753,
+      "sha256": "f3a31be578273756d9f98603c6b2eda386d9ee76b9747f5d2fbee9cd8ae38079"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.6.2-2/manual-automatic-mask-cell-only/original-return.rds": {
+      "bytes": 249411,
+      "sha256": "0e835cacfa4dfe627b63f2a40a1eb56fe75d70edde3770a835f1222e02b19495"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.6.2-2/manual-automatic-mask-cell-only/result.json": {
+      "bytes": 16529,
+      "sha256": "8444a79b3a6648e9781e0de16c095aa0697d6a086cb339f309c74498d0efb7ca"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.6.2-2/manual-automatic-mask-supplied-clusters/original-return.rds": {
+      "bytes": 249411,
+      "sha256": "0e835cacfa4dfe627b63f2a40a1eb56fe75d70edde3770a835f1222e02b19495"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.6.2-2/manual-automatic-mask-supplied-clusters/result.json": {
+      "bytes": 16464,
+      "sha256": "4fe58cb12b5e7961c110eff82741cd50959b8a7a1dde62833be2888bcf3f427f"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.6.2-2/manual-no-accepted-cells/result.json": {
+      "bytes": 271,
+      "sha256": "2c8caffbad0b592bdbdb107c516f8ef36fac1cc5fac63b264b3ff5f0a368d588"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.6.2-2/manual-supplied-mask/original-return.rds": {
+      "bytes": 247519,
+      "sha256": "a7f6d2b18321916e8c8b40d675b398dbbda987a995e89800a025eeec1ade11ef"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.6.2-2/manual-supplied-mask/result.json": {
+      "bytes": 16238,
+      "sha256": "44edfec3af77e4f11ed4b274293c8af4552ffea366da9198918c201885c0209c"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.6.2-2/process.json": {
+      "bytes": 1481,
+      "sha256": "a9837836ba110f75243e83d0e0d62b150bad9a567003a942af1449ef9ade0827"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.6.2-2/profile-0-10/original-return.rds": {
+      "bytes": 114297,
+      "sha256": "581479a9f419c56da151ab2d90273f3684d11db15427ee952a12f2ee28c2a65b"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.6.2-2/profile-0-10/result.json": {
+      "bytes": 21649,
+      "sha256": "70331c4bc176868478c1102c35ce15426fb7925c4d543592bdf86f3647189f85"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.6.2-2/profile-0-100/original-return.rds": {
+      "bytes": 116670,
+      "sha256": "e6550cfca5e6a873c8253bb8cd170445c6a7ba764387218dba8cb8912315c350"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.6.2-2/profile-0-100/result.json": {
+      "bytes": 26103,
+      "sha256": "033077d59407459e458d35d3d74a555de304ca5daa561b554ed4c077aacf68f6"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.6.2-2/profile-1-20/original-return.rds": {
+      "bytes": 114297,
+      "sha256": "581479a9f419c56da151ab2d90273f3684d11db15427ee952a12f2ee28c2a65b"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.6.2-2/profile-1-20/result.json": {
+      "bytes": 21649,
+      "sha256": "8bb2b0ea3ab51c8e0917a70524fc9d574018afd07b227c65110d91710cdd7666"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.6.2-2/profile-no-selected-droplets/original-return.rds": {
+      "bytes": 114297,
+      "sha256": "581479a9f419c56da151ab2d90273f3684d11db15427ee952a12f2ee28c2a65b"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.6.2-2/profile-no-selected-droplets/result.json": {
+      "bytes": 21676,
+      "sha256": "3a152140272454841c356608af7a453be8cfd77f12b350f7442c385ffaca3cc6"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.6.2-2/source-snapshot/build/literature-review/soupx-runtime/reference-1.6.2-1/COMPLETED.json": {
+      "bytes": 27874,
+      "sha256": "96e5cd7a5ceb42b9c7108ecad34bfa890f62177041a62be62aade66f3d370cd3"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.6.2-2/source-snapshot/build/literature-review/soupx-runtime/source-intake-1/1.6.2/SOURCE.json": {
+      "bytes": 8830,
+      "sha256": "74c9ad90aa7a6c1be534af4b0dc7a25894a837b4189da56c4aaacdffe282790c"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.6.2-2/source-snapshot/tools/literature/collect_soupx_ambient.R": {
+      "bytes": 9809,
+      "sha256": "2ac29916252297b7cc7b76906e37f2e00d99723413cbe92ee43946beea261e7a"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.6.2-2/source-snapshot/tools/literature/collect_soupx_ambient.py": {
+      "bytes": 3877,
+      "sha256": "1b1ef94520899b76792922f280cdfe20f0c6a1e1f40006b3cdf5a10890e2a403"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.6.2-2/stderr": {
+      "bytes": 141,
+      "sha256": "7b91ed5c7ed9c3f8b64adc1992f3cbdd72be959613e156539aa673524bc5f108"
+    },
+    "build/literature-review/soupx-runtime/ambient-controls-1.6.2-2/stdout": {
+      "bytes": 65,
+      "sha256": "08ddaf20b3c99df152477744addd89ffd53f85ac6add9dbd8aac443934d483a6"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-build-1/COMPLETED.json": {
+      "bytes": 1931,
+      "sha256": "09fc98754cf60f7e720e0ca4d3df8da3b674f19abc2753942ca46641bbef84e2"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-build-1/classes/org/jlinalg/cli/SoupXWorkflowRequest$Request.class": {
+      "bytes": 10059,
+      "sha256": "d49de7afb67cdca3a5c0fe1abe4f7e5d7d1db869f030c5f564ff6bfb2ffdf8ce"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-build-1/classes/org/jlinalg/cli/SoupXWorkflowRequest.class": {
+      "bytes": 14680,
+      "sha256": "1ee4550417650a40fdfac4d79b74363e6e7bbdaa4d1a35285be4aec955778a48"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-build-1/classes/org/jlinalg/singlecell/SoupXAmbient$Budget.class": {
+      "bytes": 1088,
+      "sha256": "80d59a8cd4d530e4f9dc1cd8560862de0a0e8792d83007a7f47423c1396b9bd2"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-build-1/classes/org/jlinalg/singlecell/SoupXAmbient$Counts.class": {
+      "bytes": 4000,
+      "sha256": "6e113192eea32dab90c62ea3fb14aad45c3f6fa0915f2a1f36246e4fad4e0174"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-build-1/classes/org/jlinalg/singlecell/SoupXAmbient$Entry.class": {
+      "bytes": 1752,
+      "sha256": "2542d87866f5adc53026c432208b7bc5ea8ddee1edffa2bcf41d8dd660ac850d"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-build-1/classes/org/jlinalg/singlecell/SoupXAmbient$GlobalPoisson.class": {
+      "bytes": 1971,
+      "sha256": "e4fa32fa37d081e9fbf892a017e494f5154e7c05dcb1882dcf64ff41a4c454df"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-build-1/classes/org/jlinalg/singlecell/SoupXAmbient$Mask.class": {
+      "bytes": 3411,
+      "sha256": "76b98591e9e4184d8f27a7adce49479f3d1864f39768fa199025cbc82986c7f4"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-build-1/classes/org/jlinalg/singlecell/SoupXAmbient$Profile.class": {
+      "bytes": 2826,
+      "sha256": "82db179d543208f41e63a6be748b488064a902d09eb744d5765f19ebeb263e86"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-build-1/classes/org/jlinalg/singlecell/SoupXAmbient.class": {
+      "bytes": 15028,
+      "sha256": "e075365a4e3ab24376629acc4b81838b017d678b450ab2282584e36f8032384f"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-build-1/compile.json": {
+      "bytes": 660,
+      "sha256": "1627678b094ba08b890396920cbb13661193e1d609a31cc4c20fdccd1fc298a0"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-build-1/compile.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-build-1/compile.stdout": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-build-1/source-snapshot/src/main/java/org/jlinalg/cli/SoupXWorkflowRequest.java": {
+      "bytes": 12479,
+      "sha256": "7ac873183af66d1adb20f8c084beac2c3e9eef19b3935717a3e6950dc70c3a22"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-build-1/source-snapshot/src/main/java/org/jlinalg/singlecell/SoupXAmbient.java": {
+      "bytes": 12726,
+      "sha256": "a6589d2414082ffb088b83ec1a84b0d0fc1294972fab12d7e85e177ca34c4325"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-build-1/source-snapshot/tools/literature/build_soupx_ambient_core.py": {
+      "bytes": 3211,
+      "sha256": "a7803d1147c347f5d5b2eb7e0515f7e3f2320f6956f35c21b521a9cf01f35054"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-example-1/COMPLETED.json": {
+      "bytes": 776,
+      "sha256": "ed11efa3625c8c2289072a84d0a224e3e8729a13b5e05b822eea4811d8f9db4b"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-example-1/classes/Example.class": {
+      "bytes": 3672,
+      "sha256": "992bcbcdb5c1f87398014edab7dcbf4089f7315d89883442059d43203086c932"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-example-1/compile.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-example-1/compile.stdout": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-example-1/process.json": {
+      "bytes": 387,
+      "sha256": "c59b41ae0ef4426e1429a6f0f3fe603f527fa22d9fb9861d01bfda97f8be4c4c"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-example-1/stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-example-1/stdout": {
+      "bytes": 130,
+      "sha256": "36fa44448084b482130a945f4a8783e93178af6485e55f322d5a3cc22e165f56"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-validation-1/RunSoupAmbient.java": {
+      "bytes": 1094,
+      "sha256": "2101740cba58c14ac433ad64bccfdc105a872f3ff0003b84126b36e64dc5e576"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-validation-1/compile.json": {
+      "bytes": 1958,
+      "sha256": "59ecd447bcb5a5a7930fe22785bddfd8c60580742336fa02043ab9ff9316ac98"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-validation-1/compile.stderr": {
+      "bytes": 760,
+      "sha256": "4656f4928c82e8bc4fea1098dc6a6ebc43ae263d26577516d7f6506c768c7545"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-validation-1/compile.stdout": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-validation-1/source-snapshot/src/test/java/org/jlinalg/cli/SoupXAmbientTest.java": {
+      "bytes": 8132,
+      "sha256": "a763811f2158afe27204e2d8d1fcf075ba71c5f183269fd12b3a36e78574d4b0"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-validation-1/source-snapshot/src/test/java/org/jlinalg/cli/SoupXWorkflowRequestTest.java": {
+      "bytes": 6228,
+      "sha256": "9a4c99a41a3f1757b8013432fdcffab7fe2b8591974979cf788ddb0595d57aa4"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-validation-1/source-snapshot/src/test/resources/org/jlinalg/singlecell/soupx-ambient/.gitattributes": {
+      "bytes": 8,
+      "sha256": "705fd4d6451a31d36b3df7de96f83f30ac976c9b4a6d1e51671d8e2f33e2d0da"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-validation-1/source-snapshot/src/test/resources/org/jlinalg/singlecell/soupx-ambient/ORIGINS.json": {
+      "bytes": 1808,
+      "sha256": "77e951e77eee513a4782da04864ea750cccd6f8d455640d4506a78b403bb23ab"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-validation-1/source-snapshot/src/test/resources/org/jlinalg/singlecell/soupx-ambient/inputs-v1.json.gz": {
+      "bytes": 221978,
+      "sha256": "7f2f1d1090831f8f67117ba8a5c354d13a6672e46aee97917e425498bf2791d6"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-validation-1/source-snapshot/src/test/resources/org/jlinalg/singlecell/soupx-ambient/original-1.3.0-v1.json.gz": {
+      "bytes": 367965,
+      "sha256": "cabd2602585f698cfc81a3279cb7f44aa9a85b82c7c020b67523ad294138da9f"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-validation-1/source-snapshot/src/test/resources/org/jlinalg/singlecell/soupx-ambient/original-1.6.2-v1.json.gz": {
+      "bytes": 363973,
+      "sha256": "a9ff8d79530b76b33e26e4c6b4bb8b5f55c1d5d3abac003059c49b4b46723248"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-validation-1/source-snapshot/tools/literature/validate_soupx_ambient_core.py": {
+      "bytes": 4964,
+      "sha256": "9f94e2a30787e12639ac3e516802a319e901eda1dd0a89732468d75cc8bec0fe"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-validation-2/RunSoupAmbient.java": {
+      "bytes": 1094,
+      "sha256": "2101740cba58c14ac433ad64bccfdc105a872f3ff0003b84126b36e64dc5e576"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-validation-2/compile.json": {
+      "bytes": 1958,
+      "sha256": "430390b3db818b089069909f4c10982bc7da1b9e86c468d22ed6e5b1905be730"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-validation-2/compile.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-validation-2/compile.stdout": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-validation-2/linux-java21.process.json": {
+      "bytes": 1737,
+      "sha256": "b70a00f3405442c45d1c658cd622c06a28219dd42c210cb73f3f4739cdfd100d"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-validation-2/linux-java21.stderr": {
+      "bytes": 131,
+      "sha256": "e66bbc56e9f664a31d2654a0bfaad02095b55a17fa1913d4090835e0ed80ed49"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-validation-2/linux-java21.stdout": {
+      "bytes": 8035,
+      "sha256": "038837934899d45dde9fa9db8e679564478eae406743a03c0007f7330d3e3145"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-validation-2/source-snapshot/src/test/java/org/jlinalg/cli/SoupXAmbientTest.java": {
+      "bytes": 8137,
+      "sha256": "4b1663ccf2144bff7bea131a9517909a9cf957664f69783dfbb3e462a1b6bbf6"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-validation-2/source-snapshot/src/test/java/org/jlinalg/cli/SoupXWorkflowRequestTest.java": {
+      "bytes": 6228,
+      "sha256": "9a4c99a41a3f1757b8013432fdcffab7fe2b8591974979cf788ddb0595d57aa4"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-validation-2/source-snapshot/src/test/resources/org/jlinalg/singlecell/soupx-ambient/.gitattributes": {
+      "bytes": 8,
+      "sha256": "705fd4d6451a31d36b3df7de96f83f30ac976c9b4a6d1e51671d8e2f33e2d0da"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-validation-2/source-snapshot/src/test/resources/org/jlinalg/singlecell/soupx-ambient/ORIGINS.json": {
+      "bytes": 1808,
+      "sha256": "77e951e77eee513a4782da04864ea750cccd6f8d455640d4506a78b403bb23ab"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-validation-2/source-snapshot/src/test/resources/org/jlinalg/singlecell/soupx-ambient/inputs-v1.json.gz": {
+      "bytes": 221978,
+      "sha256": "7f2f1d1090831f8f67117ba8a5c354d13a6672e46aee97917e425498bf2791d6"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-validation-2/source-snapshot/src/test/resources/org/jlinalg/singlecell/soupx-ambient/original-1.3.0-v1.json.gz": {
+      "bytes": 367965,
+      "sha256": "cabd2602585f698cfc81a3279cb7f44aa9a85b82c7c020b67523ad294138da9f"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-validation-2/source-snapshot/src/test/resources/org/jlinalg/singlecell/soupx-ambient/original-1.6.2-v1.json.gz": {
+      "bytes": 363973,
+      "sha256": "a9ff8d79530b76b33e26e4c6b4bb8b5f55c1d5d3abac003059c49b4b46723248"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-validation-2/source-snapshot/tools/literature/validate_soupx_ambient_core.py": {
+      "bytes": 4964,
+      "sha256": "9f94e2a30787e12639ac3e516802a319e901eda1dd0a89732468d75cc8bec0fe"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-validation-2/test-classes/RunSoupAmbient.class": {
+      "bytes": 2872,
+      "sha256": "b906370c840a315d9db348999bef72edef1008f28217786c420f651546322645"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-validation-2/test-classes/org/jlinalg/cli/SoupXAmbientTest$Case.class": {
+      "bytes": 2126,
+      "sha256": "2de671c6f676088c572df6739d77d89d009ebdcbe33b93c309f084e2b9c0225d"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-validation-2/test-classes/org/jlinalg/cli/SoupXAmbientTest.class": {
+      "bytes": 13630,
+      "sha256": "ea24ce454bdd90eba0d77c4537683f4fdc875146aa2f92800b22d335c8f1f5d9"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-validation-2/test-classes/org/jlinalg/cli/SoupXWorkflowRequestTest.class": {
+      "bytes": 10848,
+      "sha256": "f4335745bad8c86db780fb56d30f9aa6f97fbb989fff37e963eb42a19a487b54"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-validation-2/windows-java21.process.json": {
+      "bytes": 1775,
+      "sha256": "437023a3f824c8918c4f4ef110b373d1f006199bae86df41b36abb6ad3b41f45"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-validation-2/windows-java21.stderr": {
+      "bytes": 133,
+      "sha256": "7cadafd27ad6e8c48d55f4c930627bd451e4ab359e9c371df3e06155d430dc88"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-validation-2/windows-java21.stdout": {
+      "bytes": 8136,
+      "sha256": "2b6d1e7e77d7521e590c66af7b21f64a226c4f5f73656962d36ad10bfed45eeb"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-validation-2/windows-java25.process.json": {
+      "bytes": 1762,
+      "sha256": "ac1074424f3b8349aee29958f2325d809738e284a1c9126da715665d9b5b5515"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-validation-2/windows-java25.stderr": {
+      "bytes": 133,
+      "sha256": "7cadafd27ad6e8c48d55f4c930627bd451e4ab359e9c371df3e06155d430dc88"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-validation-2/windows-java25.stdout": {
+      "bytes": 8136,
+      "sha256": "677abf2895474b4c30787988c1a3ad27ea76d490adac1991cf439332d42ed873"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-validation-3/RunSoupAmbient.java": {
+      "bytes": 1094,
+      "sha256": "2101740cba58c14ac433ad64bccfdc105a872f3ff0003b84126b36e64dc5e576"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-validation-3/compile.json": {
+      "bytes": 1958,
+      "sha256": "82177ea9ba530ab6918f89d02b3e202ada91279c53e51f74e5a3adbba1236e1e"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-validation-3/compile.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-validation-3/compile.stdout": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-validation-3/linux-java21.process.json": {
+      "bytes": 1737,
+      "sha256": "8c28f1fbccd4fd3cd933ae07caff69add78b879edfe333a80d219f81a3a80334"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-validation-3/linux-java21.stderr": {
+      "bytes": 131,
+      "sha256": "e66bbc56e9f664a31d2654a0bfaad02095b55a17fa1913d4090835e0ed80ed49"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-validation-3/linux-java21.stdout": {
+      "bytes": 8125,
+      "sha256": "7e0bd321aeb370211d82b17048f2108fb9807cb29ad57d975a547e4bda3104a6"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-validation-3/source-snapshot/src/test/java/org/jlinalg/cli/SoupXAmbientTest.java": {
+      "bytes": 8102,
+      "sha256": "e7f8232cf0073204fb534a5a48398c19ff4d85189545e33b0764bf2c578d6b95"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-validation-3/source-snapshot/src/test/java/org/jlinalg/cli/SoupXWorkflowRequestTest.java": {
+      "bytes": 6228,
+      "sha256": "9a4c99a41a3f1757b8013432fdcffab7fe2b8591974979cf788ddb0595d57aa4"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-validation-3/source-snapshot/src/test/resources/org/jlinalg/singlecell/soupx-ambient/.gitattributes": {
+      "bytes": 8,
+      "sha256": "705fd4d6451a31d36b3df7de96f83f30ac976c9b4a6d1e51671d8e2f33e2d0da"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-validation-3/source-snapshot/src/test/resources/org/jlinalg/singlecell/soupx-ambient/ORIGINS.json": {
+      "bytes": 1808,
+      "sha256": "77e951e77eee513a4782da04864ea750cccd6f8d455640d4506a78b403bb23ab"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-validation-3/source-snapshot/src/test/resources/org/jlinalg/singlecell/soupx-ambient/inputs-v1.json.gz": {
+      "bytes": 221978,
+      "sha256": "7f2f1d1090831f8f67117ba8a5c354d13a6672e46aee97917e425498bf2791d6"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-validation-3/source-snapshot/src/test/resources/org/jlinalg/singlecell/soupx-ambient/original-1.3.0-v1.json.gz": {
+      "bytes": 367965,
+      "sha256": "cabd2602585f698cfc81a3279cb7f44aa9a85b82c7c020b67523ad294138da9f"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-validation-3/source-snapshot/src/test/resources/org/jlinalg/singlecell/soupx-ambient/original-1.6.2-v1.json.gz": {
+      "bytes": 363973,
+      "sha256": "a9ff8d79530b76b33e26e4c6b4bb8b5f55c1d5d3abac003059c49b4b46723248"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-validation-3/source-snapshot/tools/literature/validate_soupx_ambient_core.py": {
+      "bytes": 4964,
+      "sha256": "9f94e2a30787e12639ac3e516802a319e901eda1dd0a89732468d75cc8bec0fe"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-validation-3/test-classes/RunSoupAmbient.class": {
+      "bytes": 2872,
+      "sha256": "b906370c840a315d9db348999bef72edef1008f28217786c420f651546322645"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-validation-3/test-classes/org/jlinalg/cli/SoupXAmbientTest$Case.class": {
+      "bytes": 2126,
+      "sha256": "2de671c6f676088c572df6739d77d89d009ebdcbe33b93c309f084e2b9c0225d"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-validation-3/test-classes/org/jlinalg/cli/SoupXAmbientTest.class": {
+      "bytes": 13612,
+      "sha256": "3b0f413d1bbd0fb8ade6db55647513f1c61f3f421aa64a84d30a25ee8e025889"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-validation-3/test-classes/org/jlinalg/cli/SoupXWorkflowRequestTest.class": {
+      "bytes": 10848,
+      "sha256": "f4335745bad8c86db780fb56d30f9aa6f97fbb989fff37e963eb42a19a487b54"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-validation-3/windows-java21.process.json": {
+      "bytes": 1775,
+      "sha256": "b118564a5833857a2d5c59599836c738c085f7a57ec233d80f40517b224ca353"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-validation-3/windows-java21.stderr": {
+      "bytes": 133,
+      "sha256": "7cadafd27ad6e8c48d55f4c930627bd451e4ab359e9c371df3e06155d430dc88"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-validation-3/windows-java21.stdout": {
+      "bytes": 8226,
+      "sha256": "230d51d0f145625b69fd8af36367dde9fd0c76f1b07bb55b3075294fba3c39e4"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-validation-3/windows-java25.process.json": {
+      "bytes": 1762,
+      "sha256": "d041d7f1d73ec34f6acc28a0f7a0d094ec8c257932db336b9e8439400aa739d5"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-validation-3/windows-java25.stderr": {
+      "bytes": 133,
+      "sha256": "7cadafd27ad6e8c48d55f4c930627bd451e4ab359e9c371df3e06155d430dc88"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-validation-3/windows-java25.stdout": {
+      "bytes": 8226,
+      "sha256": "0e66a2273fed5aec46622e08c30f4d8b1acc1dd059ddc69dba57e86f4bedb901"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-validation-4/RunSoupAmbient.java": {
+      "bytes": 1094,
+      "sha256": "2101740cba58c14ac433ad64bccfdc105a872f3ff0003b84126b36e64dc5e576"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-validation-4/compile.json": {
+      "bytes": 1958,
+      "sha256": "28b02d0ab71471b1a5413e33b5eb88fe3ac55f5005142c02454e5dc2b61e5895"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-validation-4/compile.stderr": {
+      "bytes": 1458,
+      "sha256": "ee7cab395e02a8546ce6413dbac9b3c5150b0afd25c02407d669b13b8c6a929a"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-validation-4/compile.stdout": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-validation-4/source-snapshot/src/test/java/org/jlinalg/cli/SoupXAmbientTest.java": {
+      "bytes": 8824,
+      "sha256": "d2dbba2dcff5fefed58b41ccb73543ab8b91a4adc1de87375b681f429e065ecb"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-validation-4/source-snapshot/src/test/java/org/jlinalg/cli/SoupXWorkflowRequestTest.java": {
+      "bytes": 6228,
+      "sha256": "9a4c99a41a3f1757b8013432fdcffab7fe2b8591974979cf788ddb0595d57aa4"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-validation-4/source-snapshot/src/test/resources/org/jlinalg/singlecell/soupx-ambient/.gitattributes": {
+      "bytes": 8,
+      "sha256": "705fd4d6451a31d36b3df7de96f83f30ac976c9b4a6d1e51671d8e2f33e2d0da"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-validation-4/source-snapshot/src/test/resources/org/jlinalg/singlecell/soupx-ambient/ORIGINS.json": {
+      "bytes": 1808,
+      "sha256": "77e951e77eee513a4782da04864ea750cccd6f8d455640d4506a78b403bb23ab"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-validation-4/source-snapshot/src/test/resources/org/jlinalg/singlecell/soupx-ambient/inputs-v1.json.gz": {
+      "bytes": 221978,
+      "sha256": "7f2f1d1090831f8f67117ba8a5c354d13a6672e46aee97917e425498bf2791d6"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-validation-4/source-snapshot/src/test/resources/org/jlinalg/singlecell/soupx-ambient/original-1.3.0-v1.json.gz": {
+      "bytes": 367965,
+      "sha256": "cabd2602585f698cfc81a3279cb7f44aa9a85b82c7c020b67523ad294138da9f"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-validation-4/source-snapshot/src/test/resources/org/jlinalg/singlecell/soupx-ambient/original-1.6.2-v1.json.gz": {
+      "bytes": 363973,
+      "sha256": "a9ff8d79530b76b33e26e4c6b4bb8b5f55c1d5d3abac003059c49b4b46723248"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-validation-4/source-snapshot/src/test/resources/org/jlinalg/singlecell/soupx-ambient/poisson-diagnosis-v1.json.gz": {
+      "bytes": 1412,
+      "sha256": "e30b0a80f0a3e8d66936357419f568ac969d68c24f5c96d198139ac7bb7852c7"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-validation-4/source-snapshot/tools/literature/validate_soupx_ambient_core.py": {
+      "bytes": 4964,
+      "sha256": "9f94e2a30787e12639ac3e516802a319e901eda1dd0a89732468d75cc8bec0fe"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-validation-5/COMPLETED.json": {
+      "bytes": 4663,
+      "sha256": "73361d5657101533281b36df901b1065f871a96163d485ed319a0fa1ad6169d8"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-validation-5/RunSoupAmbient.java": {
+      "bytes": 1094,
+      "sha256": "2101740cba58c14ac433ad64bccfdc105a872f3ff0003b84126b36e64dc5e576"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-validation-5/compile.json": {
+      "bytes": 1958,
+      "sha256": "cd67a8d4811b96a4e95f4c5006eb50987668dcfad0e44767330e9caaa675522c"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-validation-5/compile.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-validation-5/compile.stdout": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-validation-5/linux-java21.process.json": {
+      "bytes": 1737,
+      "sha256": "8c42330f4542b7f3b46ddc0fed255f7530b05594edb16b8bbd4c95573225d908"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-validation-5/linux-java21.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-validation-5/linux-java21.stdout": {
+      "bytes": 466,
+      "sha256": "14d1553265241a6cedddaa49a9127f3876bc32fb0aadfbac78d556ebbded50bf"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-validation-5/source-snapshot/src/test/java/org/jlinalg/cli/SoupXAmbientTest.java": {
+      "bytes": 8810,
+      "sha256": "83d80a8542471991aa0ab9b0e474488e551a2910acd2f384dc4616c60af75a0a"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-validation-5/source-snapshot/src/test/java/org/jlinalg/cli/SoupXWorkflowRequestTest.java": {
+      "bytes": 6228,
+      "sha256": "9a4c99a41a3f1757b8013432fdcffab7fe2b8591974979cf788ddb0595d57aa4"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-validation-5/source-snapshot/src/test/resources/org/jlinalg/singlecell/soupx-ambient/.gitattributes": {
+      "bytes": 8,
+      "sha256": "705fd4d6451a31d36b3df7de96f83f30ac976c9b4a6d1e51671d8e2f33e2d0da"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-validation-5/source-snapshot/src/test/resources/org/jlinalg/singlecell/soupx-ambient/ORIGINS.json": {
+      "bytes": 1808,
+      "sha256": "77e951e77eee513a4782da04864ea750cccd6f8d455640d4506a78b403bb23ab"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-validation-5/source-snapshot/src/test/resources/org/jlinalg/singlecell/soupx-ambient/inputs-v1.json.gz": {
+      "bytes": 221978,
+      "sha256": "7f2f1d1090831f8f67117ba8a5c354d13a6672e46aee97917e425498bf2791d6"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-validation-5/source-snapshot/src/test/resources/org/jlinalg/singlecell/soupx-ambient/original-1.3.0-v1.json.gz": {
+      "bytes": 367965,
+      "sha256": "cabd2602585f698cfc81a3279cb7f44aa9a85b82c7c020b67523ad294138da9f"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-validation-5/source-snapshot/src/test/resources/org/jlinalg/singlecell/soupx-ambient/original-1.6.2-v1.json.gz": {
+      "bytes": 363973,
+      "sha256": "a9ff8d79530b76b33e26e4c6b4bb8b5f55c1d5d3abac003059c49b4b46723248"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-validation-5/source-snapshot/src/test/resources/org/jlinalg/singlecell/soupx-ambient/poisson-diagnosis-v1.json.gz": {
+      "bytes": 1412,
+      "sha256": "e30b0a80f0a3e8d66936357419f568ac969d68c24f5c96d198139ac7bb7852c7"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-validation-5/source-snapshot/tools/literature/validate_soupx_ambient_core.py": {
+      "bytes": 4964,
+      "sha256": "9f94e2a30787e12639ac3e516802a319e901eda1dd0a89732468d75cc8bec0fe"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-validation-5/test-classes/RunSoupAmbient.class": {
+      "bytes": 2872,
+      "sha256": "b906370c840a315d9db348999bef72edef1008f28217786c420f651546322645"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-validation-5/test-classes/org/jlinalg/cli/SoupXAmbientTest$Case.class": {
+      "bytes": 2126,
+      "sha256": "2de671c6f676088c572df6739d77d89d009ebdcbe33b93c309f084e2b9c0225d"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-validation-5/test-classes/org/jlinalg/cli/SoupXAmbientTest.class": {
+      "bytes": 14159,
+      "sha256": "7290e6c52e608887c701aa589459defde2c7bf14c643f8e36e2783ab20cf0e41"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-validation-5/test-classes/org/jlinalg/cli/SoupXWorkflowRequestTest.class": {
+      "bytes": 10848,
+      "sha256": "f4335745bad8c86db780fb56d30f9aa6f97fbb989fff37e963eb42a19a487b54"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-validation-5/windows-java21.process.json": {
+      "bytes": 1775,
+      "sha256": "3fba17f32eaf312c96aa502a11a96422f205e306f3f25a95686171d0e973eba2"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-validation-5/windows-java21.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-validation-5/windows-java21.stdout": {
+      "bytes": 481,
+      "sha256": "aea744a2fcb05fb63cd80198b136e3e60e673d7550a58a82448c29661293c850"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-validation-5/windows-java25.process.json": {
+      "bytes": 1762,
+      "sha256": "e6595b481464091b566bbf4d4323345b2b004ef609ad5e4347a46b8c371966e3"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-validation-5/windows-java25.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "build/literature-review/soupx-runtime/ambient-core-validation-5/windows-java25.stdout": {
+      "bytes": 481,
+      "sha256": "0aa02fce5cde08c02f010093133596730a94dad65c6128317aa2dc7cffcc8deb"
+    },
+    "build/literature-review/soupx-runtime/poisson-diagnosis-1/1.3.0/diagnosis.json": {
+      "bytes": 9736,
+      "sha256": "dd2ffdb259abec48e6f129dd6ae920867ec5a660ab79c2d0bb1bfbc463ff4a4b"
+    },
+    "build/literature-review/soupx-runtime/poisson-diagnosis-1/1.3.0/process.json": {
+      "bytes": 1478,
+      "sha256": "28a3ac4812d457d78848fa06e407032c85ff37b4202f882d6ef826588cb33683"
+    },
+    "build/literature-review/soupx-runtime/poisson-diagnosis-1/1.3.0/stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "build/literature-review/soupx-runtime/poisson-diagnosis-1/1.3.0/stdout": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "build/literature-review/soupx-runtime/poisson-diagnosis-1/1.6.2/diagnosis.json": {
+      "bytes": 9736,
+      "sha256": "8b31fb7a579c400644ff29f123122d10f168459754f71e3d8a8d954bee79503b"
+    },
+    "build/literature-review/soupx-runtime/poisson-diagnosis-1/1.6.2/process.json": {
+      "bytes": 1478,
+      "sha256": "d3c03ae08a8fc596b9e31882b58d80f660abd40d9223b7f30478813abd8f3f0b"
+    },
+    "build/literature-review/soupx-runtime/poisson-diagnosis-1/1.6.2/stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "build/literature-review/soupx-runtime/poisson-diagnosis-1/1.6.2/stdout": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "build/literature-review/soupx-runtime/poisson-diagnosis-1/COMPLETED.json": {
+      "bytes": 23984,
+      "sha256": "9c5f380bc8252b30baab79516764a81814ff350f7d53d5f655157be7af393aec"
+    },
+    "build/literature-review/soupx-runtime/poisson-diagnosis-1/LIBRARIES-AFTER.json": {
+      "bytes": 5215886,
+      "sha256": "1a3d718aa2f8b2f4395a8f18e09053ebb6fcf856f69d1bc82c6e29bb02c289d1"
+    },
+    "build/literature-review/soupx-runtime/poisson-diagnosis-1/LIBRARIES-BEFORE.json": {
+      "bytes": 5215886,
+      "sha256": "1a3d718aa2f8b2f4395a8f18e09053ebb6fcf856f69d1bc82c6e29bb02c289d1"
+    },
+    "build/literature-review/soupx-runtime/poisson-diagnosis-1/source-snapshot/build/literature-review/soupx-runtime/ambient-controls-1.3.0-3/manual-automatic-mask-cell-only/original-return.rds": {
+      "bytes": 249487,
+      "sha256": "fafe5d117a8671512cb2909bbe09b8058d3158b7f873bd53d7f43e8bd2736410"
+    },
+    "build/literature-review/soupx-runtime/poisson-diagnosis-1/source-snapshot/build/literature-review/soupx-runtime/ambient-controls-1.3.0-3/manual-automatic-mask-supplied-clusters/original-return.rds": {
+      "bytes": 249487,
+      "sha256": "fafe5d117a8671512cb2909bbe09b8058d3158b7f873bd53d7f43e8bd2736410"
+    },
+    "build/literature-review/soupx-runtime/poisson-diagnosis-1/source-snapshot/build/literature-review/soupx-runtime/ambient-controls-1.3.0-3/manual-supplied-mask/original-return.rds": {
+      "bytes": 247594,
+      "sha256": "734c27169a6f4a4eb40a31609dadebbbea1baddc94bc90e87477a6b46c53109c"
+    },
+    "build/literature-review/soupx-runtime/poisson-diagnosis-1/source-snapshot/build/literature-review/soupx-runtime/ambient-controls-1.6.2-2/manual-automatic-mask-cell-only/original-return.rds": {
+      "bytes": 249411,
+      "sha256": "0e835cacfa4dfe627b63f2a40a1eb56fe75d70edde3770a835f1222e02b19495"
+    },
+    "build/literature-review/soupx-runtime/poisson-diagnosis-1/source-snapshot/build/literature-review/soupx-runtime/ambient-controls-1.6.2-2/manual-automatic-mask-supplied-clusters/original-return.rds": {
+      "bytes": 249411,
+      "sha256": "0e835cacfa4dfe627b63f2a40a1eb56fe75d70edde3770a835f1222e02b19495"
+    },
+    "build/literature-review/soupx-runtime/poisson-diagnosis-1/source-snapshot/build/literature-review/soupx-runtime/ambient-controls-1.6.2-2/manual-supplied-mask/original-return.rds": {
+      "bytes": 247519,
+      "sha256": "a7f6d2b18321916e8c8b40d675b398dbbda987a995e89800a025eeec1ade11ef"
+    },
+    "build/literature-review/soupx-runtime/poisson-diagnosis-1/source-snapshot/tools/literature/diagnose_soupx_poisson.R": {
+      "bytes": 1671,
+      "sha256": "dc8b16287ce56989842e2db9c4bdedda14ebee08841d5b423676c962a09bc426"
+    },
+    "build/literature-review/soupx-runtime/poisson-diagnosis-1/source-snapshot/tools/literature/diagnose_soupx_poisson.py": {
+      "bytes": 3853,
+      "sha256": "4a86f3ac1a9e06f5f3314c9e2ab0bc45dfadc2553be70f1fd9aba205b93c472a"
+    },
+    "candidate-owned-entry/org/jlinalg/cli/SoupXWorkflowRequest$Request.class": {
+      "bytes": 10059,
+      "sha256": "d49de7afb67cdca3a5c0fe1abe4f7e5d7d1db869f030c5f564ff6bfb2ffdf8ce"
+    },
+    "candidate-owned-entry/org/jlinalg/cli/SoupXWorkflowRequest.class": {
+      "bytes": 14680,
+      "sha256": "1ee4550417650a40fdfac4d79b74363e6e7bbdaa4d1a35285be4aec955778a48"
+    },
+    "candidate-owned-entry/org/jlinalg/singlecell/SoupXAmbient$Budget.class": {
+      "bytes": 1088,
+      "sha256": "80d59a8cd4d530e4f9dc1cd8560862de0a0e8792d83007a7f47423c1396b9bd2"
+    },
+    "candidate-owned-entry/org/jlinalg/singlecell/SoupXAmbient$Counts.class": {
+      "bytes": 4000,
+      "sha256": "6e113192eea32dab90c62ea3fb14aad45c3f6fa0915f2a1f36246e4fad4e0174"
+    },
+    "candidate-owned-entry/org/jlinalg/singlecell/SoupXAmbient$Entry.class": {
+      "bytes": 1752,
+      "sha256": "2542d87866f5adc53026c432208b7bc5ea8ddee1edffa2bcf41d8dd660ac850d"
+    },
+    "candidate-owned-entry/org/jlinalg/singlecell/SoupXAmbient$GlobalPoisson.class": {
+      "bytes": 1971,
+      "sha256": "e4fa32fa37d081e9fbf892a017e494f5154e7c05dcb1882dcf64ff41a4c454df"
+    },
+    "candidate-owned-entry/org/jlinalg/singlecell/SoupXAmbient$Mask.class": {
+      "bytes": 3411,
+      "sha256": "76b98591e9e4184d8f27a7adce49479f3d1864f39768fa199025cbc82986c7f4"
+    },
+    "candidate-owned-entry/org/jlinalg/singlecell/SoupXAmbient$Profile.class": {
+      "bytes": 2826,
+      "sha256": "82db179d543208f41e63a6be748b488064a902d09eb744d5765f19ebeb263e86"
+    },
+    "candidate-owned-entry/org/jlinalg/singlecell/SoupXAmbient.class": {
+      "bytes": 15028,
+      "sha256": "e075365a4e3ab24376629acc4b81838b017d678b450ab2282584e36f8032384f"
+    },
+    "current-source/docs/literature/SOUPX_AMBIENT_DEVELOPMENT.md": {
+      "bytes": 7718,
+      "sha256": "ab0385d5ffd7ebd4069b563a301d47577810ef95df8c8ca9b864bfe2ea2c7f2a"
+    },
+    "current-source/examples/soupx-ambient-core/.gitattributes": {
+      "bytes": 8,
+      "sha256": "705fd4d6451a31d36b3df7de96f83f30ac976c9b4a6d1e51671d8e2f33e2d0da"
+    },
+    "current-source/examples/soupx-ambient-core/Example.java": {
+      "bytes": 1652,
+      "sha256": "a1aa1d737b9f701ea5419b14edb1c18ed63fda7d3a3e1c84958a66c7aafc4b06"
+    },
+    "current-source/src/main/java/org/jlinalg/cli/SoupXWorkflowRequest.java": {
+      "bytes": 12479,
+      "sha256": "7ac873183af66d1adb20f8c084beac2c3e9eef19b3935717a3e6950dc70c3a22"
+    },
+    "current-source/src/main/java/org/jlinalg/singlecell/SoupXAmbient.java": {
+      "bytes": 12726,
+      "sha256": "a6589d2414082ffb088b83ec1a84b0d0fc1294972fab12d7e85e177ca34c4325"
+    },
+    "current-source/src/test/java/org/jlinalg/cli/SoupXAmbientTest.java": {
+      "bytes": 8810,
+      "sha256": "83d80a8542471991aa0ab9b0e474488e551a2910acd2f384dc4616c60af75a0a"
+    },
+    "current-source/src/test/java/org/jlinalg/cli/SoupXWorkflowRequestTest.java": {
+      "bytes": 6228,
+      "sha256": "9a4c99a41a3f1757b8013432fdcffab7fe2b8591974979cf788ddb0595d57aa4"
+    },
+    "current-source/src/test/resources/org/jlinalg/singlecell/soupx-ambient/.gitattributes": {
+      "bytes": 8,
+      "sha256": "705fd4d6451a31d36b3df7de96f83f30ac976c9b4a6d1e51671d8e2f33e2d0da"
+    },
+    "current-source/src/test/resources/org/jlinalg/singlecell/soupx-ambient/ORIGINS.json": {
+      "bytes": 1808,
+      "sha256": "77e951e77eee513a4782da04864ea750cccd6f8d455640d4506a78b403bb23ab"
+    },
+    "current-source/src/test/resources/org/jlinalg/singlecell/soupx-ambient/inputs-v1.json.gz": {
+      "bytes": 221978,
+      "sha256": "7f2f1d1090831f8f67117ba8a5c354d13a6672e46aee97917e425498bf2791d6"
+    },
+    "current-source/src/test/resources/org/jlinalg/singlecell/soupx-ambient/original-1.3.0-v1.json.gz": {
+      "bytes": 367965,
+      "sha256": "cabd2602585f698cfc81a3279cb7f44aa9a85b82c7c020b67523ad294138da9f"
+    },
+    "current-source/src/test/resources/org/jlinalg/singlecell/soupx-ambient/original-1.6.2-v1.json.gz": {
+      "bytes": 363973,
+      "sha256": "a9ff8d79530b76b33e26e4c6b4bb8b5f55c1d5d3abac003059c49b4b46723248"
+    },
+    "current-source/src/test/resources/org/jlinalg/singlecell/soupx-ambient/poisson-diagnosis-v1.json.gz": {
+      "bytes": 1412,
+      "sha256": "e30b0a80f0a3e8d66936357419f568ac969d68c24f5c96d198139ac7bb7852c7"
+    },
+    "current-source/tools/literature/audit_soupx_ambient_controls.py": {
+      "bytes": 5634,
+      "sha256": "097ceb834e3ff3badd83166cbfbdc89aee60dc86913af301950cbcc20f90655c"
+    },
+    "current-source/tools/literature/build_soupx_ambient_core.py": {
+      "bytes": 3211,
+      "sha256": "a7803d1147c347f5d5b2eb7e0515f7e3f2320f6956f35c21b521a9cf01f35054"
+    },
+    "current-source/tools/literature/collect_soupx_ambient.R": {
+      "bytes": 9838,
+      "sha256": "869670e73b5a4686997ec7043f5545595b65a4a060a1f92ac3e3d7df078efa8d"
+    },
+    "current-source/tools/literature/collect_soupx_ambient.py": {
+      "bytes": 4539,
+      "sha256": "06338a4b1b236b2e5a7c493d47242a8e490be955384a3741d35b93c199067e9d"
+    },
+    "current-source/tools/literature/diagnose_soupx_poisson.R": {
+      "bytes": 1671,
+      "sha256": "dc8b16287ce56989842e2db9c4bdedda14ebee08841d5b423676c962a09bc426"
+    },
+    "current-source/tools/literature/diagnose_soupx_poisson.py": {
+      "bytes": 3853,
+      "sha256": "4a86f3ac1a9e06f5f3314c9e2ab0bc45dfadc2553be70f1fd9aba205b93c472a"
+    },
+    "current-source/tools/literature/pack_soupx_ambient_fixtures.py": {
+      "bytes": 2172,
+      "sha256": "8887421780631d8c4a68d377fdac537bf68b182c1865909c5fea581b5b08d896"
+    },
+    "current-source/tools/literature/run_soupx_ambient_example.py": {
+      "bytes": 2299,
+      "sha256": "d85d99f3759adf9b265c566431e4a0812a6efbcb873afff0760dffe0812a5b9d"
+    },
+    "current-source/tools/literature/seal_soupx_ambient_core.py": {
+      "bytes": 9724,
+      "sha256": "aac1476fcc782aa9d9c06b3cf9e74cadc1ee19e64754fb35893f92a010b5b891"
+    },
+    "current-source/tools/literature/soupx_ambient_core_evidence.py": {
+      "bytes": 5426,
+      "sha256": "7a5c7b50e58b0900609dce24cb15d4770ea225f1c76d833fa77b6afd132d1477"
+    },
+    "current-source/tools/literature/validate_soupx_ambient_core.py": {
+      "bytes": 4964,
+      "sha256": "9f94e2a30787e12639ac3e516802a319e901eda1dd0a89732468d75cc8bec0fe"
+    },
+    "licenses/NOTICE.txt": {
+      "bytes": 338,
+      "sha256": "fa846f50a8c94a9bd30b8ac43fa71bb546548a6ab630d2be9105bd565e61b46a"
+    },
+    "licenses/upstream-SoupX-GPL-2.txt": {
+      "bytes": 18092,
+      "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+    },
+    "retained-attempts-diagnosis.json": {
+      "bytes": 1510,
+      "sha256": "9e9d35a6c030fbd0a412aa32f8a51bf74d219277d97f7175b95d0464d8eee647"
+    }
+  }
+}

@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "mode": "ANALYZE",
+  "profile": "DESeq2-1.52.0-R4.6.1",
+  "counts": "../deseq2-inference/counts.tsv",
+  "samples": "../deseq2-inference/samples.tsv",
+  "out": "../../build/deseq2-tools-example-shrinkage",
+  "variables": [
+    {
+      "name": "donor",
+      "kind": "factor",
+      "levels": [
+        "d1",
+        "d2",
+        "d3",
+        "d4",
+        "d5",
+        "d6"
+      ]
+    },
+    {
+      "name": "condition",
+      "kind": "factor",
+      "levels": [
+        "\u5bf9\u7167",
+        "\u5904\u7406"
+      ]
+    }
+  ],
+  "design": {
+    "intercept": true,
+    "terms": [
+      [
+        "donor"
+      ],
+      [
+        "condition"
+      ]
+    ]
+  },
+  "fit": {
+    "test": "Wald",
+    "fit_type": "mean",
+    "size_factor_type": "ratio",
+    "min_replicates_for_replace": "Inf"
+  },
+  "results": [
+    {
+      "id": "normal",
+      "selector": {
+        "kind": "coefficient",
+        "index": 7
+      },
+      "shrink": {
+        "type": "normal"
+      }
+    },
+    {
+      "id": "apeglm",
+      "selector": {
+        "kind": "coefficient",
+        "index": 7
+      },
+      "shrink": {
+        "type": "apeglm"
+      }
+    },
+    {
+      "id": "ashr",
+      "selector": {
+        "kind": "factor",
+        "factor": "condition",
+        "numerator": "\u5904\u7406",
+        "denominator": "\u5bf9\u7167"
+      },
+      "shrink": {
+        "type": "ashr"
+      }
+    }
+  ],
+  "transforms": [],
+  "seed": 9221,
+  "save_fitted_object": true,
+  "keep_genes": "../deseq2-inference/keep.tsv",
+  "rscript": "C:/Program Files/R/R-4.6.1/bin/Rscript.exe",
+  "r_libraries": [
+    "../../build/deseq2-user-runtime/R-lib"
+  ],
+  "maximum_output_bytes": 100000000,
+  "timeout_seconds": 180
+}

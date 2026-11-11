@@ -1,0 +1,21 @@
+# Copyright (C) 2026 JLinAlg contributors; SPDX-License-Identifier: GPL-3.0-or-later
+"""Complete the retained catalog-only bootstrap using the actual content-addressed archive reader."""
+import argparse,json,subprocess,sys
+from pathlib import Path
+from setup_deseq2_reference import ROOT,pin,save
+from signac_scan_evidence import unpack,byte_pin
+from catalog_source_integrity import verify_source
+
+def main():
+    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--out',required=True,type=Path);a=p.parse_args();out=a.out.resolve();base=ROOT/'build/literature-review/loftee-runtime';data=ROOT/'docs/literature/omics-2023-2026';failed=base/'catalog-render-bootstrap-1';assert out.is_relative_to(base) and not out.exists();out.mkdir();assert json.loads((failed/'COMPLETED.json').read_bytes())['status']=='FAIL2_README_ARCHIVE_PHYSICAL_MEMBER_ASSUMPTION';assert json.loads((data/'loftee-role-coverage.json').read_bytes())['applied'];old=(failed/'before-README.md').read_bytes();text=old.decode('utf8')
+    for before,after in [('80 new scoped integrations (17 native Java methods and 63 upstream','81 new scoped integrations (17 native Java methods and 64 upstream'),('adapters), or 83 including three existing adapters; 251 named tools still need','adapters), or 84 including three existing adapters; 250 named tools still need')]:assert text.count(before)==1;text=text.replace(before,after)
+    text=text.replace('## License','The [LOFTEE workflow guide](docs/literature/LOFTEE_WORKFLOWS.md) covers the tested\noriginal annotation adapter, exact private runtime preparation, complete native\naudits and a compressed synthetic example. VEP cache execution remains skipped;\npaper-specific transcript selection and variant masks remain separate.\n\n## License');assert (ROOT/'README.md').read_bytes()==text.encode('utf8');verify_source(ROOT,data,'tools/literature/render_review.py',byte_pin((failed/'before-render_review.py').read_bytes())['sha256']);historical=[]
+    for name in ['smr-catalog-support.zip','dndscv-catalog-support.zip']:
+        proof=json.loads((data/name.replace('-support.zip','-validation.json')).read_bytes());raw=unpack(data/name,proof)['current-source/README.md'];historical.append(dict(archive=name,archive_pin=pin(data/name),document=byte_pin(raw)))
+    descriptor=data/'loftee-root-readme-evolution.json';assert not descriptor.exists();save(descriptor,dict(schema_version=1,status='passed-exact-README-documentation-evolution',path='README.md',after=pin(ROOT/'README.md'),historical_documents=historical,scientific_source_exception_added=False));command=[sys.executable,str(ROOT/'tools/literature/render_review.py')]
+    with (out/'render.stdout').open('xb') as first,(out/'render.stderr').open('xb') as second:r=subprocess.run(command,cwd=ROOT,stdout=first,stderr=second,timeout=1200)
+    save(out/'render.process.json',dict(command=command,exit_code=r.returncode));assert r.returncode==0,'Inspect retained renderer failure';before={t['id']:t for t in json.loads((failed/'before-tool-inventory.json').read_bytes())};current={t['id']:t for t in json.loads((data/'tool-inventory.json').read_bytes())};assert len(before)==len(current)==390 and {k for k in before if before[k]!=current[k]}=={'loftee'};counts=json.loads((data/'summary.json').read_bytes())['implementation_status_counts'];assert (counts['native-subset-validated'],counts['upstream-adapter-validated'],counts['missing'])==(17,64,250);save(out/'COMPLETED.json',dict(status='passed-exact-one-tool-LOFTEE-catalog-render-after-retained-bootstrap-failure',source_pins={f.relative_to(ROOT).as_posix():pin(f) for f in [Path(__file__).resolve(),ROOT/'tools/literature/render_review.py',ROOT/'tools/literature/loftee_catalog.py',ROOT/'tools/literature/prepare_loftee_catalog_render.py']},failed_bootstrap_receipt=pin(failed/'COMPLETED.json'),new_scoped_integrations=81,including_existing_adapters=84,missing=250,other_tool_rows_preserved=389,scientific_source_exception_added=False,whole_goal_complete=False));print('Rendered81 new scoped integrations;389 other tool rows preserved; original bootstrap failure retained')
+
+if __name__=='__main__':
+    if not __debug__:raise RuntimeError('Never disable exact metadata recovery checks')
+    main()

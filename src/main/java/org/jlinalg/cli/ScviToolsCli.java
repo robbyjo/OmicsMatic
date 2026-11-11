@@ -1,0 +1,72 @@
+/* Copyright (C) 2026 JLinAlg contributors; SPDX-License-Identifier: GPL-3.0-or-later */
+package org.jlinalg.cli;
+
+import java.io.IOException;
+import java.io.PrintStream;
+import java.nio.file.*;
+import java.util.*;
+
+/** Public exact-provider fit,reference/query and reviewed saved-reference execution. */
+final class ScviToolsCli {
+    private ScviToolsCli() { }
+    private static final String RECOVERY="Required action: retain this attempt and inspect WARNINGS.md, analysis-status.json and the original process stderr/ledgers. Supply the exact permitted runtime or correct the named source/model/input cause, then rerun with a NEW --out directory. When installation or execution is forbidden, leave the affected analysis skipped. Partial outputs do not establish completion of the requested workflow.";
+    static int run(String[] arguments,PrintStream output,PrintStream error){
+        Path root=null;boolean owned=false;ScviRecipe.Spec spec=null;var warnings=new ArrayList<String>();
+        try{
+            if(arguments.length==0||Arrays.asList(arguments).contains("--help")){help(output);return 0;}
+            var options=new HashMap<String,String>();for(int i=0;i<arguments.length;i+=2){if(i+1>=arguments.length||!Set.of("--recipe","--out").contains(arguments[i])||options.put(arguments[i],arguments[i+1])!=null)throw new IOException("Use scvi-tools --recipe FILE.json --out NEW_DIRECTORY");}
+            if(options.size()!=2)throw new IOException("Explicit --recipe and NEW --out are required");
+            root=Path.of(options.get("--out")).toAbsolutePath().normalize();if(root.getParent()==null||!root.getParent().toRealPath().equals(root.getParent()))throw new IOException("Output requires an existing canonical parent");Files.createDirectory(root);owned=true;
+            Path sourceDir=Files.createDirectory(root.resolve("source"));Path recipe=Path.of(options.get("--recipe")).toAbsolutePath().normalize();var source=ScviText.copy(new ScviText.Source(recipe,ScviText.Encoding.PLAIN_UTF8),sourceDir.resolve("recipe.json"),1_048_576,()->{});
+            spec=ScviRecipe.read(recipe);if(!source.sha256().equals(spec.sha256()))throw new IOException("Recipe changed between protected copy and typed decoding");source.verify(1_048_576,()->{});ScviRecipe.Spec selected=spec;
+            Runnable check=()->{if(Thread.currentThread().isInterrupted())throw new IllegalStateException("scVI analysis cancelled");};var software=software(check);
+            if(spec.model()!=null&&!spec.model().review().permitsPickleCodeExecution())throw new ScviModelBytes.TrustRequired("Saved model source trust was declined;no original model loader was invoked. Review the genuine source and exact SHA256 before permitting pickle execution,or retain this analysis as skipped.");
+            output.println("Admitting exact original CPU runtime;fixed synthetic training/reload health is required.");var runtime=ScviRuntime.admit(spec.python(),spec.release(),root.resolve("runtime"),ScviRuntime.Limits.health(),check);var results=new ArrayList<ScviWorkflow.Result>();
+            if(spec.operation()!=ScviRecipe.Operation.CHECK){
+                Path inputs=Files.createDirectory(root.resolve("inputs"));ScviWorkflow.Data reference=null,query=null;ScviProjection.Prepared projection=null;
+                if(spec.reference()!=null)reference=prepare(spec.reference(),Files.createDirectory(inputs.resolve("reference")),root,check);
+                if(spec.query()!=null)query=prepare(spec.query(),Files.createDirectory(inputs.resolve("query")),root,check);
+                if(spec.operation()==ScviRecipe.Operation.TRANSFER){
+                    projection=ScviProjection.pair(reference.matrix(),query.matrix(),spec.genePolicy(),projectionLimits(spec),root.resolve("projection"),check);reference=projected(reference,projection.reference(),projection);query=projected(query,projection.query(),projection);
+                }
+                ScviModelMetadata.Info referenceModel=null;
+                if(spec.fit()!=null){spec.verify(check);source.verify(1_048_576,check);output.println("Running original reference/embedding fit;all cells and complete outputs will be audited.");var result=ScviWorkflow.fit(runtime,reference,spec.fit(),root.resolve("reference-analysis"),spec.limits(),check);results.add(result);referenceModel=result.finalModel();}
+                if(spec.operation()==ScviRecipe.Operation.QUERY){
+                    var m=spec.model();var bytes=ScviModelBytes.prepare(m.path(),m.review(),spec.release(),m.family(),root.resolve("reviewed-reference"),spec.limits().model(),check);var inspected=ScviModelMetadata.inspect(runtime,List.of(bytes),List.of(ScviModelMetadata.Expected.query()),root.resolve("reference-inspection"),spec.limits().metadata(),check,root);referenceModel=inspected.models().get(0);referenceModel.requireFloat32Profile();
+                    Path genes=Files.createDirectory(root.resolve("projection-input")).resolve("reference-genes.tsv");Files.writeString(genes,String.join("\n",referenceModel.genes())+"\n",StandardOpenOption.CREATE_NEW);projection=ScviProjection.query(new ScviText.Source(genes,ScviText.Encoding.PLAIN_UTF8),query.matrix(),spec.transfer().genePolicy(),projectionLimits(spec),root.resolve("projection"),check);query=projected(query,projection.query(),projection);
+                }
+                if(spec.transfer()!=null){spec.verify(check);source.verify(1_048_576,check);output.println("Running original fixed-reference query transfer with reviewed metadata mappings.");var result=ScviWorkflow.query(runtime,query,spec.transfer(),referenceModel,spec.bridge(),root.resolve("query-analysis"),spec.limits(),check);results.add(result);}
+                if(projection!=null)projection.verify(check);for(var result:results)result.verify(check);
+            }
+            selected.verify(check);source.verify(1_048_576,check);runtime.verify(check);ScviProcess.workspaceBytes(root,spec.limits().process(),List.of());
+            if(!software.equals(software(check)))throw new IOException("Selected executable source or Java platform identity changed during analysis");
+            warnings.add("Input reviews are investigator declarations;numeric validation does not establish preprocessing provenance,biological accuracy or convergence. Inspect every matrix/covariate/projection conversion ledger.");warnings.add("Fixed synthetic runtime-health diagnostics are retained at runtime/run/process.stderr and runtime/runtime-admission.json;CHECK does not analyze user study data.");
+            if(spec.model()!=null)warnings.add("Original pickle loading was permitted only for the explicitly reviewed model SHA256 "+spec.model().review().expectedSha256()+". Review source identity and reviewed-reference/model-review.json before reuse;integrity hashes do not establish authenticity.");
+            for(var result:results){Path original=result.directory().resolve("run/result/warnings.json");ScviText.hash(original,spec.limits().reportBytes(),check);Object records=SimpleJson.parse(Files.readString(original));if(!(records instanceof List<?> list))throw new IOException("Original warnings report differs");for(Object item:list){if(!(item instanceof Map<?,?> warning)||!(warning.get("message") instanceof String message)||!(warning.get("category") instanceof String category))throw new IOException("Original warning record differs");warnings.add("Original "+category+" ("+root.relativize(original)+"): "+message);}warnings.add("Complete original warnings and diagnostics: "+root.relativize(original)+"; "+root.relativize(result.directory().resolve("run/process.stderr"))+"; owned-process ledger run/process.json.");}
+            if(spec.fit()!=null&&spec.fit().network() instanceof ScviModelRequest.SysviNetwork n&&n.prior() instanceof ScviModelRequest.Vamp v)warnings.add(v.pseudoinputCellIndices().isEmpty()?"SysVI1.3.0 automatic VampPrior uses the gene count as its cell-index bound. This run preserves original selection and actual saved indices;do not infer uniform selection over all cells. An out-of-range original draw fails without repair.":"SysVI VampPrior uses explicitly reviewed cell indices;this differs from unspecified/default pseudoinput selection. Preserve the request and saved actual indices.");
+            boolean analysis=spec.operation()!=ScviRecipe.Operation.CHECK;writeStatus(root,0,analysis?"ADMITTED_ORIGINAL_MODEL_ANALYSIS":"EXACT_RUNTIME_CHECKED_NO_USER_MODEL_ANALYSIS",analysis,warnings,null);
+            var tree=ScviRuntime.tree(root,new ScviRuntime.Limits(spec.limits().process().workspaceBytes(),spec.limits().process().fileCount(),spec.limits().retainedBytes(),spec.limits().reportBytes(),spec.limits().process()),check);var stages=new ArrayList<Object>();for(var result:results)stages.addAll(result.stages());
+            Files.writeString(root.resolve("manifest.json"),ScviJson.json(Map.of("schema","omicsmatic-scvi-result-v1","operation",spec.operation(),"model_analysis_completed",analysis,"recipe_source_sha256",source.sha256(),"profile",ScviRuntime.PROFILE,"stages",stages,"software",software,"members_before_manifest",tree.members(),"warnings","WARNINGS.md"))+"\n",StandardOpenOption.CREATE_NEW);ScviProcess.workspaceBytes(root,spec.limits().process(),List.of());
+            error.println("SCVI REVIEW REQUIRED: "+root.resolve("WARNINGS.md"));output.println(analysis?"Original scVI analysis admitted after complete native audits: "+root:"Exact runtime checked;no user model analysis performed: "+root);return 0;
+        }catch(Exception|OutOfMemoryError failure){
+            int code=failure instanceof ScviRuntime.Unavailable||failure instanceof ScviProcess.UnavailableDependency||failure instanceof ScviModelBytes.TrustRequired||failure instanceof ScviModelMetadata.Unsupported?3:2;
+            if(failure instanceof OutOfMemoryError)warnings.add("Java heap exhausted. Required action: lower admitted input/retained-memory capacities or supply more Java heap with -Xmx before -jar,then rerun with a NEW output directory.");
+            if(owned){try{Files.deleteIfExists(root.resolve("manifest.json"));warnings.add((code==3?"ANALYSIS SKIPPED: ":"ANALYSIS FAILED: ")+failure.getMessage());warnings.add(RECOVERY);writeStatus(root,code,code==3?"SKIPPED_REQUIRED_CAPABILITY_OR_TRUST_UNAVAILABLE":"FAILED_REQUESTED_WORKFLOW_NOT_ADMITTED",false,warnings,failure.toString());}catch(IOException|OutOfMemoryError reportFailure){error.println("Could not retain complete status: "+reportFailure.getMessage());}}
+            error.println((code==3?"SCVI ANALYSIS SKIPPED (exit3): ":"SCVI ANALYSIS FAILED (exit2): ")+failure.getMessage()+"\n"+RECOVERY+(owned?"\n"+root.resolve("WARNINGS.md"):""));return code;
+        }
+    }
+    private static ScviWorkflow.Data prepare(ScviRecipe.Input input,Path directory,Path wholeRoot,Runnable check)throws IOException{var matrix=ScviMatrix.prepare(input.matrix(),directory.resolve("matrix"),check);var covariates=ScviCovariates.prepare(matrix,input.metadata(),input.covariates(),directory.resolve("covariates"),check);return new ScviWorkflow.Data(matrix,covariates,input.layer(),input.categoryOrder(),null,wholeRoot);}
+    private static ScviWorkflow.Data projected(ScviWorkflow.Data source,ScviMatrix.Prepared matrix,ScviProjection.Prepared projection){return new ScviWorkflow.Data(matrix,source.covariates(),source.layer(),source.categoryOrder(),projection,source.wholeAnalysisRoot());}
+    private static ScviProjection.Limits projectionLimits(ScviRecipe.Spec spec){return new ScviProjection.Limits(spec.limits().process().workspaceBytes(),spec.limits().process().fileCount(),spec.limits().retainedBytes(),spec.matrixLimits());}
+    private static Map<String,Object> software(Runnable check)throws IOException{
+        var source=ScviToolsCli.class.getProtectionDomain().getCodeSource();if(source==null)throw new IOException("Selected Java executable source cannot be established");Path location;
+        try{location=Path.of(source.getLocation().toURI()).toAbsolutePath().normalize();}catch(java.net.URISyntaxException|IllegalArgumentException bad){throw new IOException("Require a trusted local Java executable source",bad);}
+        Path real=location.toRealPath();Map<String,Object> code=Files.isDirectory(real,LinkOption.NOFOLLOW_LINKS)?Map.of("kind","development-classes-directory","location",location,"real_path",real):Map.of("kind","packaged-jar","location",location,"real_path",real,"sha256",ScviText.hash(real,4_294_967_296L,check));
+        return Map.of("java_runtime",System.getProperty("java.runtime.version","unknown"),"java_vendor",System.getProperty("java.vendor","unknown"),"os",System.getProperty("os.name","unknown"),"architecture",System.getProperty("os.arch","unknown"),"jvm_max_heap_bytes",Runtime.getRuntime().maxMemory(),"executable",code);
+    }
+    private static void writeStatus(Path root,int code,String status,boolean analysis,List<String> warnings,String failure)throws IOException{
+        var record=new TreeMap<String,Object>();record.put("status",status);record.put("exit_code",code);record.put("model_analysis_completed",analysis);record.put("warnings",warnings);record.put("error",failure);record.put("required_action",code==0?"Review input/conversion provenance and all original warnings before interpreting results.":RECOVERY);
+        Files.writeString(root.resolve("analysis-status.json"),ScviJson.json(record)+"\n");Files.writeString(root.resolve("WARNINGS.md"),"# scVI "+(code==3?"ANALYSIS SKIPPED":code==2?"ANALYSIS FAILED":"REVIEW REQUIRED")+"\n\n"+String.join("\n\n",warnings)+"\n\n"+(code==0?"Review the admitted stage list and original warnings before interpretation.":RECOVERY)+"\n");
+    }
+    private static void help(PrintStream out){out.println("Usage: java -jar omicsmatic.jar scvi-tools --recipe FILE.json --out NEW_DIRECTORY\n\nClosed recipe operations: CHECK,FIT,TRANSFER,QUERY. Exact original scvi-tools1.3.0 Linux x86_64 CPU profile only;use Linux Java inside WSL on Windows. Raw-count SCVI/SCANVI and reviewed signed-expression SysVI are distinct. Saved references require explicit genuine-source/SHA256 review permitting pickle execution.\n\nExit0: verified requested result (CHECK performs no user analysis). Exit3: required runtime/capability/trust unavailable;analysis skipped. Exit2: invalid input,integrity or execution failure;attempt retained. Read WARNINGS.md and analysis-status.json. See docs/literature/SCVI_DEVELOPMENT.md and examples/scvi-workflow/ for recipes and limits.");}
+}

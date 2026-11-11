@@ -1,0 +1,1512 @@
+{
+  "schema_version": 1,
+  "status": "passed-native-grouped-peak-preparation-not-MACS-workflow",
+  "source_pins": {
+    "src/main/java/org/jlinalg/sequence/SignacPeakPreparation.java": {
+      "bytes": 9276,
+      "sha256": "b0fb504df6543aaffdb0df6f8aadfec00b4682509f7d54fad91328e4c0c44db2"
+    },
+    "src/test/java/org/jlinalg/cli/SignacPeakPreparationTest.java": {
+      "bytes": 7908,
+      "sha256": "5901867ef2dace521452d97c7e81756ac7f05a767026d079fa944dffa66c3f4b"
+    },
+    "docs/literature/SIGNAC_PEAK_PREPARATION_DEVELOPMENT.md": {
+      "bytes": 9193,
+      "sha256": "7d98c5ad9f37a336c565980b7e1ae8f9299b5f0304431d59a27406900a70b27c"
+    },
+    "src/test/resources/org/jlinalg/sequence/signac-peak-preparation/.gitattributes": {
+      "bytes": 97,
+      "sha256": "4a8fd9a9b112daa703e0a7b6c085bf3ff0959150ce5db0221615b50a72376e8b"
+    },
+    "src/test/resources/org/jlinalg/sequence/signac-peak-preparation/CAPTURE.json": {
+      "bytes": 47225,
+      "sha256": "c13162e718416689c15e85141ecec884db0f462aacf03b1bcd461eed5be97c73"
+    },
+    "src/test/resources/org/jlinalg/sequence/signac-peak-preparation/MIT-LICENSE.txt": {
+      "bytes": 1054,
+      "sha256": "b83b519ba57365c6fceeb26cb7c34b94fbc8320cd7cbd907538b5c013bf046a8"
+    },
+    "src/test/resources/org/jlinalg/sequence/signac-peak-preparation/original-cases.json": {
+      "bytes": 7839,
+      "sha256": "f8f5fd0bec7d88fa0342e6ac557e460b06c23efa9bbc0b8493046c53879978c1"
+    },
+    "src/test/resources/org/jlinalg/sequence/signac-peak-preparation/original-controls.zip": {
+      "bytes": 76946,
+      "sha256": "5e0d913295c4c6b018cda645a4e0d7398ee05fd3475e5b6c0dc1b0bbcdb830da"
+    },
+    "examples/signac-peak-preparation/.gitattributes": {
+      "bytes": 90,
+      "sha256": "9c20a32a55a0c0cb3e7d6f4c96b7d90d4d121f4f23b4b56e22c2b7c528056165"
+    },
+    "examples/signac-peak-preparation/fragments.tsv": {
+      "bytes": 155,
+      "sha256": "7ab41ecdc4010d15fc20f8916f6fc6384f086b29cccb8e2dfea0ba56c93d7a5c"
+    },
+    "examples/signac-peak-preparation/PeakPreparationExample.java": {
+      "bytes": 1554,
+      "sha256": "11435610f6373ecf6e1ce7c30616e0bfddba1040851ee73f58c0b05fd9f7d6b6"
+    },
+    "examples/signac-peak-preparation/README.md": {
+      "bytes": 3083,
+      "sha256": "7e0d6ec07a106ed71fc35059f9f174c0798eefba99e3a02dea83efa29c119417"
+    },
+    "tools/literature/close_signac_peak_preparation.py": {
+      "bytes": 7677,
+      "sha256": "2f81da971af6516cfffc396878dd8412d307bb43c27ff5a9606f1bfae55d0eb4"
+    },
+    "tools/literature/verify_signac_peak_preparation.py": {
+      "bytes": 4835,
+      "sha256": "bab71f4efc8eed1128761cd5fafa2e9c6103c3f2fbca433dda2012790184979a"
+    },
+    "tools/literature/freeze_signac_peak_preparation_fixtures.py": {
+      "bytes": 2682,
+      "sha256": "b081dbb89442505f886f0ff9e13cf10d8fb16b1b160aeb66cc7e6291314812da"
+    },
+    "tools/literature/collect_signac_peak_preparation.R": {
+      "bytes": 7044,
+      "sha256": "1133acc5ee406e4be416f055914b76a6a01c91774f0cc268abe106f731243166"
+    },
+    "tools/literature/collect_signac_peak_split_linux.py": {
+      "bytes": 4901,
+      "sha256": "55370d87be566abb1084000d906beacf60024ea0f2002f519b4b862664b3a792"
+    },
+    "tools/literature/validate_signac_peak_preparation.py": {
+      "bytes": 6287,
+      "sha256": "a4bd8eb672591f54020ccbeaeb7177010306855065f67329929ab8a6e90df1ee"
+    },
+    "tools/literature/validate_signac_peak_preparation_example.py": {
+      "bytes": 4105,
+      "sha256": "0225c5fde5881abb7a0a3c0b5d8d3c452e10d327d8b5c87992e19991dc55d889"
+    },
+    "tools/literature/signac-peak-preparation-development.init.gradle": {
+      "bytes": 424,
+      "sha256": "46a058c6b05c0d505ab538525704a25e1c86f7221c5c60ddb4dd01c02a2bec5f"
+    }
+  },
+  "archive": {
+    "bytes": 351084,
+    "sha256": "c74436f93074fdc603316170845f2ffa4e2258af0882a7c0cb5546fddf59e131"
+  },
+  "warnings_document": {
+    "bytes": 1920,
+    "sha256": "d3fe59c4898a5378ee28c5c15170b940da9b23144f1ba29d1be564a55af74d90"
+  },
+  "archive_layout": "sha256-objects-with-logical-file-map",
+  "archive_members": 117,
+  "logical_files": 212,
+  "archive_file_pins": {
+    "objects/4dc16529cbdc3d7605f199962914fe6d19971dd04405413b3f3a151c9c14a3b0": {
+      "bytes": 1840,
+      "sha256": "4dc16529cbdc3d7605f199962914fe6d19971dd04405413b3f3a151c9c14a3b0"
+    },
+    "objects/3743d07c258b47802abb521cc5a2e807e43710c0448c31d80370358a1d3b5fd1": {
+      "bytes": 2454,
+      "sha256": "3743d07c258b47802abb521cc5a2e807e43710c0448c31d80370358a1d3b5fd1"
+    },
+    "objects/812e5d444eebef3b886b4a74eaec8d276d945a131612088fb59a6eea48654329": {
+      "bytes": 2657,
+      "sha256": "812e5d444eebef3b886b4a74eaec8d276d945a131612088fb59a6eea48654329"
+    },
+    "objects/d24c0ff8428cb32f772198c93144f0a3ee8eddd5878c9479cfb7c5b272ba3d62": {
+      "bytes": 3144,
+      "sha256": "d24c0ff8428cb32f772198c93144f0a3ee8eddd5878c9479cfb7c5b272ba3d62"
+    },
+    "objects/9846523bc338e7f5956b9154e59168ab052b043a8024f5e914892f908fa1c12b": {
+      "bytes": 15129,
+      "sha256": "9846523bc338e7f5956b9154e59168ab052b043a8024f5e914892f908fa1c12b"
+    },
+    "objects/fad2db4bfa4a34d14345b388f795798adff2e5dccc47f630214f974f65b231f9": {
+      "bytes": 2582,
+      "sha256": "fad2db4bfa4a34d14345b388f795798adff2e5dccc47f630214f974f65b231f9"
+    },
+    "objects/84471e96f4a76cbd455dec2b7953db88498b69d3b0b595da65f5cbb8a646b515": {
+      "bytes": 3766,
+      "sha256": "84471e96f4a76cbd455dec2b7953db88498b69d3b0b595da65f5cbb8a646b515"
+    },
+    "objects/6b423e99c7bf72e26b3101deeb9d15e364ad4131ba254dd53bd39868c020dd99": {
+      "bytes": 621,
+      "sha256": "6b423e99c7bf72e26b3101deeb9d15e364ad4131ba254dd53bd39868c020dd99"
+    },
+    "objects/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "objects/286ede655522bb8ad261aabeab550b726f8f25e9229e8c275606abfe5b0d7db9": {
+      "bytes": 652,
+      "sha256": "286ede655522bb8ad261aabeab550b726f8f25e9229e8c275606abfe5b0d7db9"
+    },
+    "objects/39dc42a648b6959be2c7f1f172c22ea4b0f7d81227bc568b3d0e1fdceac93235": {
+      "bytes": 744,
+      "sha256": "39dc42a648b6959be2c7f1f172c22ea4b0f7d81227bc568b3d0e1fdceac93235"
+    },
+    "objects/71f13b708a7b370a52962fd10720bb7480241db8505961f78d4fe083329f650f": {
+      "bytes": 41,
+      "sha256": "71f13b708a7b370a52962fd10720bb7480241db8505961f78d4fe083329f650f"
+    },
+    "objects/b67931d4d96f6c748a515c143acad5fc4d40391ece635ada0267ded566b60291": {
+      "bytes": 20,
+      "sha256": "b67931d4d96f6c748a515c143acad5fc4d40391ece635ada0267ded566b60291"
+    },
+    "objects/f610711191a9f95bb667ebef51daed2eff0b9c0f51be687de60c0c9981024779": {
+      "bytes": 652,
+      "sha256": "f610711191a9f95bb667ebef51daed2eff0b9c0f51be687de60c0c9981024779"
+    },
+    "objects/dbc7e66565840245b9603732280cd86dbf8649b9277e517ab147ff4a50f84401": {
+      "bytes": 1076,
+      "sha256": "dbc7e66565840245b9603732280cd86dbf8649b9277e517ab147ff4a50f84401"
+    },
+    "objects/face17a812f32bac2b842d67ab8e597a4684d60f00db6ef5d958b1350b43bcbe": {
+      "bytes": 131,
+      "sha256": "face17a812f32bac2b842d67ab8e597a4684d60f00db6ef5d958b1350b43bcbe"
+    },
+    "objects/5d8df5175a0e11fa68e9c8ab443952082747c60237f78c6237b73007d18b7364": {
+      "bytes": 647,
+      "sha256": "5d8df5175a0e11fa68e9c8ab443952082747c60237f78c6237b73007d18b7364"
+    },
+    "objects/6f37c2fe135dbb7162e87983e568955b890a3379fb7fceca24f50202cd6be000": {
+      "bytes": 774,
+      "sha256": "6f37c2fe135dbb7162e87983e568955b890a3379fb7fceca24f50202cd6be000"
+    },
+    "objects/d7f65771f3d32081778bb6d74bab5c2abbcd83a8009fc9932fc91fcb3d95113f": {
+      "bytes": 647,
+      "sha256": "d7f65771f3d32081778bb6d74bab5c2abbcd83a8009fc9932fc91fcb3d95113f"
+    },
+    "objects/af7b5311fdc92cf0e1a7a2f6a4dd5152a31a885a77f7490c3691b0c821637b27": {
+      "bytes": 1080,
+      "sha256": "af7b5311fdc92cf0e1a7a2f6a4dd5152a31a885a77f7490c3691b0c821637b27"
+    },
+    "objects/1a14827c89d41863e1fff5015f615dd595e498ceff7d78964c08c361e272e137": {
+      "bytes": 135,
+      "sha256": "1a14827c89d41863e1fff5015f615dd595e498ceff7d78964c08c361e272e137"
+    },
+    "objects/425cd8e616482d40b27c311d0c2206cf44be1c6d33b7904ae40ddd188a4a56a1": {
+      "bytes": 639,
+      "sha256": "425cd8e616482d40b27c311d0c2206cf44be1c6d33b7904ae40ddd188a4a56a1"
+    },
+    "objects/829d34df31d65451603170d155decd7e0f0cdc229dfd13925858c96f9c7060a8": {
+      "bytes": 774,
+      "sha256": "829d34df31d65451603170d155decd7e0f0cdc229dfd13925858c96f9c7060a8"
+    },
+    "objects/6060277ec4eca417923935c747c40927c94e0967f96e46464be8631129b1e08f": {
+      "bytes": 639,
+      "sha256": "6060277ec4eca417923935c747c40927c94e0967f96e46464be8631129b1e08f"
+    },
+    "objects/7601227b8ce0152b2b03447c697b695182bc42835edb9dc456d9aab035b3a42f": {
+      "bytes": 4602,
+      "sha256": "7601227b8ce0152b2b03447c697b695182bc42835edb9dc456d9aab035b3a42f"
+    },
+    "objects/f992e9232969a3a29000786ec33ed1f8a77167dae67bee793d3853330ea386d7": {
+      "bytes": 1325,
+      "sha256": "f992e9232969a3a29000786ec33ed1f8a77167dae67bee793d3853330ea386d7"
+    },
+    "objects/6007d856810b1deb2863a4e78738d97f3f6c57d476efba516103583f06ec971b": {
+      "bytes": 3440,
+      "sha256": "6007d856810b1deb2863a4e78738d97f3f6c57d476efba516103583f06ec971b"
+    },
+    "objects/6ca3de6a157c6bf98504a425f7d325f8197ed01f23a63292da9e3c9dc3014cf0": {
+      "bytes": 16138,
+      "sha256": "6ca3de6a157c6bf98504a425f7d325f8197ed01f23a63292da9e3c9dc3014cf0"
+    },
+    "objects/f01a2126bc20f4957d0836e77cd2475b54dcc2214db07b68ab485d2f00e2e99c": {
+      "bytes": 1903,
+      "sha256": "f01a2126bc20f4957d0836e77cd2475b54dcc2214db07b68ab485d2f00e2e99c"
+    },
+    "objects/2ff46bda35c1c08046ac82dce73edadc5e96c2d74b48315eb3eed40ed04c12a7": {
+      "bytes": 1779,
+      "sha256": "2ff46bda35c1c08046ac82dce73edadc5e96c2d74b48315eb3eed40ed04c12a7"
+    },
+    "objects/3ad55b823d0cb0c9ac88faf7485a45bbfbf1db3a75bdc9a8f685d7684a4fee9e": {
+      "bytes": 466,
+      "sha256": "3ad55b823d0cb0c9ac88faf7485a45bbfbf1db3a75bdc9a8f685d7684a4fee9e"
+    },
+    "objects/01b0eecf748646bba3aad7e0c09fc2dbc56eaab1452037a2ef5607e509448800": {
+      "bytes": 1808,
+      "sha256": "01b0eecf748646bba3aad7e0c09fc2dbc56eaab1452037a2ef5607e509448800"
+    },
+    "objects/388208f1831883689bd50f23795fb5c9328273949398602ded174cd336c321fb": {
+      "bytes": 480,
+      "sha256": "388208f1831883689bd50f23795fb5c9328273949398602ded174cd336c321fb"
+    },
+    "objects/782ecac402c5cd6d5d5b0cd2d3d1c5a280691cca10f219d2b377199a65631079": {
+      "bytes": 1800,
+      "sha256": "782ecac402c5cd6d5d5b0cd2d3d1c5a280691cca10f219d2b377199a65631079"
+    },
+    "objects/67c132ea78bae3d9c042c924fdc9806dd1c90eecbec16be4a81448f0c2144b13": {
+      "bytes": 480,
+      "sha256": "67c132ea78bae3d9c042c924fdc9806dd1c90eecbec16be4a81448f0c2144b13"
+    },
+    "objects/fc12dc4c93468503a3a9390ef91dd81176a2c37c28a5fc8608ca6721c62c9a9f": {
+      "bytes": 262,
+      "sha256": "fc12dc4c93468503a3a9390ef91dd81176a2c37c28a5fc8608ca6721c62c9a9f"
+    },
+    "objects/624a18fa2628695b75acf172462a6a2da8fabb96c67f1611bdc72270bd211979": {
+      "bytes": 556,
+      "sha256": "624a18fa2628695b75acf172462a6a2da8fabb96c67f1611bdc72270bd211979"
+    },
+    "objects/9300ae41fadf77c7697eca1a14b6e284e9b163faffe17e2a8261be4b7c0d2840": {
+      "bytes": 6963,
+      "sha256": "9300ae41fadf77c7697eca1a14b6e284e9b163faffe17e2a8261be4b7c0d2840"
+    },
+    "objects/dbed75dc05fba14dd6902e1e3f1866102b8b55ad0764d8cd29da11f138563186": {
+      "bytes": 82,
+      "sha256": "dbed75dc05fba14dd6902e1e3f1866102b8b55ad0764d8cd29da11f138563186"
+    },
+    "objects/eed9504c2d6b3f678c7545c9c6a257510f0cbfa631e711037289682401796fc4": {
+      "bytes": 16,
+      "sha256": "eed9504c2d6b3f678c7545c9c6a257510f0cbfa631e711037289682401796fc4"
+    },
+    "objects/6d4e6fc2aed434b0507524253f0c6fde521b34a7c5b73e00d4dd8d6b6aca414f": {
+      "bytes": 36,
+      "sha256": "6d4e6fc2aed434b0507524253f0c6fde521b34a7c5b73e00d4dd8d6b6aca414f"
+    },
+    "objects/116249b2bd71cae2c8e888f229969e073108aae13ebe86d28192dbfddfd7b414": {
+      "bytes": 31,
+      "sha256": "116249b2bd71cae2c8e888f229969e073108aae13ebe86d28192dbfddfd7b414"
+    },
+    "objects/1d603177d52ec274dd4b6ed689d4787f4a822c93f74c6181cefe69afbe0ea750": {
+      "bytes": 16,
+      "sha256": "1d603177d52ec274dd4b6ed689d4787f4a822c93f74c6181cefe69afbe0ea750"
+    },
+    "objects/b7d4b2dd9a6aadad4115afea87f4888eefc84f2a03799ebfcad671a0a5e90892": {
+      "bytes": 17,
+      "sha256": "b7d4b2dd9a6aadad4115afea87f4888eefc84f2a03799ebfcad671a0a5e90892"
+    },
+    "objects/d752d7d36beb8c778ac3b94a6482c39f5ccaefa6c525709c66951f3041a7d366": {
+      "bytes": 28,
+      "sha256": "d752d7d36beb8c778ac3b94a6482c39f5ccaefa6c525709c66951f3041a7d366"
+    },
+    "objects/5e1bcdd8d670b89094f8b4d2a621b87250a54e338d25aa3016751674db4cf672": {
+      "bytes": 31,
+      "sha256": "5e1bcdd8d670b89094f8b4d2a621b87250a54e338d25aa3016751674db4cf672"
+    },
+    "objects/78d8bdee2d830d6f37c3b1306effcade0292ce89b2bb059adda287f4c781e2bf": {
+      "bytes": 51,
+      "sha256": "78d8bdee2d830d6f37c3b1306effcade0292ce89b2bb059adda287f4c781e2bf"
+    },
+    "objects/95705328ad4592068a4fb00b16a2089c2baa4df43ff37bb56a465dae4b73b086": {
+      "bytes": 52,
+      "sha256": "95705328ad4592068a4fb00b16a2089c2baa4df43ff37bb56a465dae4b73b086"
+    },
+    "objects/eb42ba30a4a284b14d56fb4564649263f209e7b9f1d65775155e39772b4f2a78": {
+      "bytes": 13,
+      "sha256": "eb42ba30a4a284b14d56fb4564649263f209e7b9f1d65775155e39772b4f2a78"
+    },
+    "objects/7a36690ae10be4af3cb108986142276e1eb966dbcb409d2eee298d88ab39235b": {
+      "bytes": 15,
+      "sha256": "7a36690ae10be4af3cb108986142276e1eb966dbcb409d2eee298d88ab39235b"
+    },
+    "objects/f5200e622afa39fbbb28e3dc7e8806fe260d49d4d6019b0c1d6c2e089a2dfcaa": {
+      "bytes": 29,
+      "sha256": "f5200e622afa39fbbb28e3dc7e8806fe260d49d4d6019b0c1d6c2e089a2dfcaa"
+    },
+    "objects/f9e8c8373646472d5dbe2a1dee6394f92670ca63c1c2dc2eb1367cde4972e5b2": {
+      "bytes": 39,
+      "sha256": "f9e8c8373646472d5dbe2a1dee6394f92670ca63c1c2dc2eb1367cde4972e5b2"
+    },
+    "objects/b6a0573fc04ea57f2442b53ffbd0d2848cbdae13cd4a48c01b9e64b3d66c31f1": {
+      "bytes": 37,
+      "sha256": "b6a0573fc04ea57f2442b53ffbd0d2848cbdae13cd4a48c01b9e64b3d66c31f1"
+    },
+    "objects/5ea8d15f9907583db526c5d78d31bbc1c9d4cb36bbdb2bc3853a1d49a0a68442": {
+      "bytes": 98,
+      "sha256": "5ea8d15f9907583db526c5d78d31bbc1c9d4cb36bbdb2bc3853a1d49a0a68442"
+    },
+    "objects/675cdaaf03ac1a9e7acf640b7cd31ff361853c97fc0b4452e7d3041a53fb9da8": {
+      "bytes": 33,
+      "sha256": "675cdaaf03ac1a9e7acf640b7cd31ff361853c97fc0b4452e7d3041a53fb9da8"
+    },
+    "objects/57cfaae71450419c8c1756a5b9215001becef0865a5ca200f45bb0c79d16f499": {
+      "bytes": 17,
+      "sha256": "57cfaae71450419c8c1756a5b9215001becef0865a5ca200f45bb0c79d16f499"
+    },
+    "objects/fbead9d122e4eb7096c9ab8bf7ab91586b0839da0c0cec40b0616e7b18148ae2": {
+      "bytes": 18,
+      "sha256": "fbead9d122e4eb7096c9ab8bf7ab91586b0839da0c0cec40b0616e7b18148ae2"
+    },
+    "objects/f6b9ff57af8e259f00c6fddfc8b60900b0e97465624eae90dc6a0d6f53867fce": {
+      "bytes": 84,
+      "sha256": "f6b9ff57af8e259f00c6fddfc8b60900b0e97465624eae90dc6a0d6f53867fce"
+    },
+    "objects/9c80bda6675785bac8012ae4d585405546ed014d494b2bd8123a8a8c443bf1c5": {
+      "bytes": 262,
+      "sha256": "9c80bda6675785bac8012ae4d585405546ed014d494b2bd8123a8a8c443bf1c5"
+    },
+    "objects/a835b39ed6b2763dfda5d4fdc94a4bb0d2a8c197074522a011e388bfedda5c4f": {
+      "bytes": 13415,
+      "sha256": "a835b39ed6b2763dfda5d4fdc94a4bb0d2a8c197074522a011e388bfedda5c4f"
+    },
+    "objects/22631ede91ab58b5f8c0477511a42850d049598afe1ce7ef0a73ac75fb1edc2b": {
+      "bytes": 2227,
+      "sha256": "22631ede91ab58b5f8c0477511a42850d049598afe1ce7ef0a73ac75fb1edc2b"
+    },
+    "objects/80a6bb04061f7aa471cef73ee37779acc799310de5e345d32458f57200b39735": {
+      "bytes": 52,
+      "sha256": "80a6bb04061f7aa471cef73ee37779acc799310de5e345d32458f57200b39735"
+    },
+    "objects/f7fd0f33d689f22c3fd5a02f6c42bc0fcc84492c220381d441c703916ba03e88": {
+      "bytes": 9416,
+      "sha256": "f7fd0f33d689f22c3fd5a02f6c42bc0fcc84492c220381d441c703916ba03e88"
+    },
+    "objects/677a94cd9257978c127fbc0f620727b93d8e788f7d870fae0bfd35b208697aaa": {
+      "bytes": 204,
+      "sha256": "677a94cd9257978c127fbc0f620727b93d8e788f7d870fae0bfd35b208697aaa"
+    },
+    "objects/1d0c908f827dd581134d4ddfabaab7c8cc5b25078a99bdfb67ba707ec672183e": {
+      "bytes": 611,
+      "sha256": "1d0c908f827dd581134d4ddfabaab7c8cc5b25078a99bdfb67ba707ec672183e"
+    },
+    "objects/4d93dce53600f47cb1c8fcc1f674aeb42f082822f8b3e8f04b074697a2a76506": {
+      "bytes": 6,
+      "sha256": "4d93dce53600f47cb1c8fcc1f674aeb42f082822f8b3e8f04b074697a2a76506"
+    },
+    "objects/a7ce6ca86363b5f447dd62e6e9f736a28c1af59d56e2c65af4ca0e7913f675c9": {
+      "bytes": 21,
+      "sha256": "a7ce6ca86363b5f447dd62e6e9f736a28c1af59d56e2c65af4ca0e7913f675c9"
+    },
+    "objects/2728c519e947dace909e80df57b2e8f44ee756b21f41522ddad92443337f2661": {
+      "bytes": 15,
+      "sha256": "2728c519e947dace909e80df57b2e8f44ee756b21f41522ddad92443337f2661"
+    },
+    "objects/6b090b80c6b0e5d7b69d73e119a838fa0d2a9163f3435281edb76fb02ef0496c": {
+      "bytes": 34,
+      "sha256": "6b090b80c6b0e5d7b69d73e119a838fa0d2a9163f3435281edb76fb02ef0496c"
+    },
+    "objects/f13340172b80484bb54de9ecbd3bcfad291937f2b916400f53e9fc0d4985cf8e": {
+      "bytes": 434,
+      "sha256": "f13340172b80484bb54de9ecbd3bcfad291937f2b916400f53e9fc0d4985cf8e"
+    },
+    "objects/138d7ea44da277d01a4670fbbc031b1d29669aa71e170f11b594ef18859481d3": {
+      "bytes": 607,
+      "sha256": "138d7ea44da277d01a4670fbbc031b1d29669aa71e170f11b594ef18859481d3"
+    },
+    "objects/daee1cd25194ae952d046ad9b9c81d3c07dc5332440b58d6d7461b248be56712": {
+      "bytes": 4,
+      "sha256": "daee1cd25194ae952d046ad9b9c81d3c07dc5332440b58d6d7461b248be56712"
+    },
+    "objects/ae10ffbb1cabf24435d9b64a08ee781defd0084be6b1241a00682b5062aa3036": {
+      "bytes": 8,
+      "sha256": "ae10ffbb1cabf24435d9b64a08ee781defd0084be6b1241a00682b5062aa3036"
+    },
+    "objects/25ab771dcfc76c1896ef6cca46e951264f476cf8c671636e80da9fa95a5c09a6": {
+      "bytes": 15,
+      "sha256": "25ab771dcfc76c1896ef6cca46e951264f476cf8c671636e80da9fa95a5c09a6"
+    },
+    "objects/10329635c858878c2489d71ddbbc4a185208d0f9809da78f3f9120a2319ce492": {
+      "bytes": 16,
+      "sha256": "10329635c858878c2489d71ddbbc4a185208d0f9809da78f3f9120a2319ce492"
+    },
+    "objects/fcc8e486dc7650545d879a934d6f0ad4f923fe6e2928beb3ad3161b48c4143ba": {
+      "bytes": 615,
+      "sha256": "fcc8e486dc7650545d879a934d6f0ad4f923fe6e2928beb3ad3161b48c4143ba"
+    },
+    "objects/8142c36faec58713fe4a9867c5d7b3157e9f3c231f31416ce2dfe5c6dcc7b66d": {
+      "bytes": 4,
+      "sha256": "8142c36faec58713fe4a9867c5d7b3157e9f3c231f31416ce2dfe5c6dcc7b66d"
+    },
+    "objects/d14dcfdab6c62446dfc312865b36130c81beb23d405bf850b070ab2043181364": {
+      "bytes": 8,
+      "sha256": "d14dcfdab6c62446dfc312865b36130c81beb23d405bf850b070ab2043181364"
+    },
+    "objects/2baf3e7969e6a1528923bea73f4b405d2da5f2bf140af8a249270a34f25d24b6": {
+      "bytes": 655,
+      "sha256": "2baf3e7969e6a1528923bea73f4b405d2da5f2bf140af8a249270a34f25d24b6"
+    },
+    "objects/3c2446693d79a975a36bbde979bc3cd9ca18d992faa619f120b47bc077e7f407": {
+      "bytes": 655,
+      "sha256": "3c2446693d79a975a36bbde979bc3cd9ca18d992faa619f120b47bc077e7f407"
+    },
+    "objects/fbfb3988be4501f51f8a151466edb35b5b31fc4494ce2a22c24ca954abb52efe": {
+      "bytes": 29,
+      "sha256": "fbfb3988be4501f51f8a151466edb35b5b31fc4494ce2a22c24ca954abb52efe"
+    },
+    "objects/74e30b8c7d450b919f33132689c5d43cfc600cdba772b677a0a95989ab5fb3b6": {
+      "bytes": 48,
+      "sha256": "74e30b8c7d450b919f33132689c5d43cfc600cdba772b677a0a95989ab5fb3b6"
+    },
+    "objects/2c68eae63e5dfb4d24c81d96d9c2e7d249001e85379ab52c0be9b7b57fba6593": {
+      "bytes": 647,
+      "sha256": "2c68eae63e5dfb4d24c81d96d9c2e7d249001e85379ab52c0be9b7b57fba6593"
+    },
+    "objects/d519bfc4940f0703a1a080d7c61fb582edf3c895118a3071e79b60403ce96a0f": {
+      "bytes": 6,
+      "sha256": "d519bfc4940f0703a1a080d7c61fb582edf3c895118a3071e79b60403ce96a0f"
+    },
+    "objects/61c4fb0a665daa88f59843fd7205650ab6f853c91794de96ac65d51b0b4a08fc": {
+      "bytes": 16,
+      "sha256": "61c4fb0a665daa88f59843fd7205650ab6f853c91794de96ac65d51b0b4a08fc"
+    },
+    "objects/b9fe0bca449298d806fe0080c3e2ed6a1af0485cfcc2a48bf0837649f16ae888": {
+      "bytes": 49,
+      "sha256": "b9fe0bca449298d806fe0080c3e2ed6a1af0485cfcc2a48bf0837649f16ae888"
+    },
+    "objects/279ca50faaefbd89ab83f085c1f7c4282ffb66c910f0986209e4582a356eb0be": {
+      "bytes": 655,
+      "sha256": "279ca50faaefbd89ab83f085c1f7c4282ffb66c910f0986209e4582a356eb0be"
+    },
+    "objects/f698e0038dbf913db6cf392a66cc3cf1c1e90a537b1d9cd5c02077cb843a330d": {
+      "bytes": 655,
+      "sha256": "f698e0038dbf913db6cf392a66cc3cf1c1e90a537b1d9cd5c02077cb843a330d"
+    },
+    "objects/6313c9f96646ee3a0160de77489e638c77fa018627a18af1f1602b248904b5d8": {
+      "bytes": 28,
+      "sha256": "6313c9f96646ee3a0160de77489e638c77fa018627a18af1f1602b248904b5d8"
+    },
+    "objects/2f4f6239ec43df84cb145e88c1006c8a66359344185b27974bf346cf98e0f28c": {
+      "bytes": 44768,
+      "sha256": "2f4f6239ec43df84cb145e88c1006c8a66359344185b27974bf346cf98e0f28c"
+    },
+    "objects/dcced5bece6e97f081334ae69efc57b49bfe00cb88447061824d7bd0abe91698": {
+      "bytes": 626,
+      "sha256": "dcced5bece6e97f081334ae69efc57b49bfe00cb88447061824d7bd0abe91698"
+    },
+    "objects/0064239fd286073ff0a920502e0ce34090f90ea616daff10f4aaef01801d3c4b": {
+      "bytes": 635,
+      "sha256": "0064239fd286073ff0a920502e0ce34090f90ea616daff10f4aaef01801d3c4b"
+    },
+    "objects/95318421169b72a8a8fb05c90bb75270b2238bf3ec769625a819da5092653069": {
+      "bytes": 16,
+      "sha256": "95318421169b72a8a8fb05c90bb75270b2238bf3ec769625a819da5092653069"
+    },
+    "objects/2fe4c0874c3b103987bba6d1879757a5b8bd494eb70d71646b433955a53e8da8": {
+      "bytes": 17,
+      "sha256": "2fe4c0874c3b103987bba6d1879757a5b8bd494eb70d71646b433955a53e8da8"
+    },
+    "objects/7d98c5ad9f37a336c565980b7e1ae8f9299b5f0304431d59a27406900a70b27c": {
+      "bytes": 9193,
+      "sha256": "7d98c5ad9f37a336c565980b7e1ae8f9299b5f0304431d59a27406900a70b27c"
+    },
+    "objects/9c20a32a55a0c0cb3e7d6f4c96b7d90d4d121f4f23b4b56e22c2b7c528056165": {
+      "bytes": 90,
+      "sha256": "9c20a32a55a0c0cb3e7d6f4c96b7d90d4d121f4f23b4b56e22c2b7c528056165"
+    },
+    "objects/11435610f6373ecf6e1ce7c30616e0bfddba1040851ee73f58c0b05fd9f7d6b6": {
+      "bytes": 1554,
+      "sha256": "11435610f6373ecf6e1ce7c30616e0bfddba1040851ee73f58c0b05fd9f7d6b6"
+    },
+    "objects/7e0d6ec07a106ed71fc35059f9f174c0798eefba99e3a02dea83efa29c119417": {
+      "bytes": 3083,
+      "sha256": "7e0d6ec07a106ed71fc35059f9f174c0798eefba99e3a02dea83efa29c119417"
+    },
+    "objects/7ab41ecdc4010d15fc20f8916f6fc6384f086b29cccb8e2dfea0ba56c93d7a5c": {
+      "bytes": 155,
+      "sha256": "7ab41ecdc4010d15fc20f8916f6fc6384f086b29cccb8e2dfea0ba56c93d7a5c"
+    },
+    "objects/b0fb504df6543aaffdb0df6f8aadfec00b4682509f7d54fad91328e4c0c44db2": {
+      "bytes": 9276,
+      "sha256": "b0fb504df6543aaffdb0df6f8aadfec00b4682509f7d54fad91328e4c0c44db2"
+    },
+    "objects/5901867ef2dace521452d97c7e81756ac7f05a767026d079fa944dffa66c3f4b": {
+      "bytes": 7908,
+      "sha256": "5901867ef2dace521452d97c7e81756ac7f05a767026d079fa944dffa66c3f4b"
+    },
+    "objects/4a8fd9a9b112daa703e0a7b6c085bf3ff0959150ce5db0221615b50a72376e8b": {
+      "bytes": 97,
+      "sha256": "4a8fd9a9b112daa703e0a7b6c085bf3ff0959150ce5db0221615b50a72376e8b"
+    },
+    "objects/c13162e718416689c15e85141ecec884db0f462aacf03b1bcd461eed5be97c73": {
+      "bytes": 47225,
+      "sha256": "c13162e718416689c15e85141ecec884db0f462aacf03b1bcd461eed5be97c73"
+    },
+    "objects/b83b519ba57365c6fceeb26cb7c34b94fbc8320cd7cbd907538b5c013bf046a8": {
+      "bytes": 1054,
+      "sha256": "b83b519ba57365c6fceeb26cb7c34b94fbc8320cd7cbd907538b5c013bf046a8"
+    },
+    "objects/f8f5fd0bec7d88fa0342e6ac557e460b06c23efa9bbc0b8493046c53879978c1": {
+      "bytes": 7839,
+      "sha256": "f8f5fd0bec7d88fa0342e6ac557e460b06c23efa9bbc0b8493046c53879978c1"
+    },
+    "objects/5e0d913295c4c6b018cda645a4e0d7398ee05fd3475e5b6c0dc1b0bbcdb830da": {
+      "bytes": 76946,
+      "sha256": "5e0d913295c4c6b018cda645a4e0d7398ee05fd3475e5b6c0dc1b0bbcdb830da"
+    },
+    "objects/2f81da971af6516cfffc396878dd8412d307bb43c27ff5a9606f1bfae55d0eb4": {
+      "bytes": 7677,
+      "sha256": "2f81da971af6516cfffc396878dd8412d307bb43c27ff5a9606f1bfae55d0eb4"
+    },
+    "objects/1133acc5ee406e4be416f055914b76a6a01c91774f0cc268abe106f731243166": {
+      "bytes": 7044,
+      "sha256": "1133acc5ee406e4be416f055914b76a6a01c91774f0cc268abe106f731243166"
+    },
+    "objects/55370d87be566abb1084000d906beacf60024ea0f2002f519b4b862664b3a792": {
+      "bytes": 4901,
+      "sha256": "55370d87be566abb1084000d906beacf60024ea0f2002f519b4b862664b3a792"
+    },
+    "objects/b081dbb89442505f886f0ff9e13cf10d8fb16b1b160aeb66cc7e6291314812da": {
+      "bytes": 2682,
+      "sha256": "b081dbb89442505f886f0ff9e13cf10d8fb16b1b160aeb66cc7e6291314812da"
+    },
+    "objects/46a058c6b05c0d505ab538525704a25e1c86f7221c5c60ddb4dd01c02a2bec5f": {
+      "bytes": 424,
+      "sha256": "46a058c6b05c0d505ab538525704a25e1c86f7221c5c60ddb4dd01c02a2bec5f"
+    },
+    "objects/a4bd8eb672591f54020ccbeaeb7177010306855065f67329929ab8a6e90df1ee": {
+      "bytes": 6287,
+      "sha256": "a4bd8eb672591f54020ccbeaeb7177010306855065f67329929ab8a6e90df1ee"
+    },
+    "objects/0225c5fde5881abb7a0a3c0b5d8d3c452e10d327d8b5c87992e19991dc55d889": {
+      "bytes": 4105,
+      "sha256": "0225c5fde5881abb7a0a3c0b5d8d3c452e10d327d8b5c87992e19991dc55d889"
+    },
+    "objects/bab71f4efc8eed1128761cd5fafa2e9c6103c3f2fbca433dda2012790184979a": {
+      "bytes": 4835,
+      "sha256": "bab71f4efc8eed1128761cd5fafa2e9c6103c3f2fbca433dda2012790184979a"
+    },
+    "objects/e4dce2a62edec8e36ceda05d5eb5a05e1f804da59abf46df1d164858b22bd76e": {
+      "bytes": 4483,
+      "sha256": "e4dce2a62edec8e36ceda05d5eb5a05e1f804da59abf46df1d164858b22bd76e"
+    },
+    "objects/e86e9550919434bd8fb3c0c7d4c32a0bc9cc96169966e6be10af4b3b01cad9e2": {
+      "bytes": 1218225,
+      "sha256": "e86e9550919434bd8fb3c0c7d4c32a0bc9cc96169966e6be10af4b3b01cad9e2"
+    },
+    "logical-files.json": {
+      "bytes": 44611,
+      "sha256": "681b4445981d445f90f8cb9c8d9f0a7d8c7b71f8af9c7c1695d7fa6668393441"
+    }
+  },
+  "logical_file_pins": {
+    "actual-new-classes/org/jlinalg/sequence/SignacPeakPreparation$CellGroup.class": {
+      "bytes": 1840,
+      "sha256": "4dc16529cbdc3d7605f199962914fe6d19971dd04405413b3f3a151c9c14a3b0"
+    },
+    "actual-new-classes/org/jlinalg/sequence/SignacPeakPreparation$Group.class": {
+      "bytes": 2454,
+      "sha256": "3743d07c258b47802abb521cc5a2e807e43710c0448c31d80370358a1d3b5fd1"
+    },
+    "actual-new-classes/org/jlinalg/sequence/SignacPeakPreparation$Limits.class": {
+      "bytes": 2657,
+      "sha256": "812e5d444eebef3b886b4a74eaec8d276d945a131612088fb59a6eea48654329"
+    },
+    "actual-new-classes/org/jlinalg/sequence/SignacPeakPreparation$Result.class": {
+      "bytes": 3144,
+      "sha256": "d24c0ff8428cb32f772198c93144f0a3ee8eddd5878c9479cfb7c5b272ba3d62"
+    },
+    "actual-new-classes/org/jlinalg/sequence/SignacPeakPreparation.class": {
+      "bytes": 15129,
+      "sha256": "9846523bc338e7f5956b9154e59168ab052b043a8024f5e914892f908fa1c12b"
+    },
+    "build/literature-review/signac-runtime/peaks-preparation-example-1/COMPLETED.json": {
+      "bytes": 2582,
+      "sha256": "fad2db4bfa4a34d14345b388f795798adff2e5dccc47f630214f974f65b231f9"
+    },
+    "build/literature-review/signac-runtime/peaks-preparation-example-1/classes/PeakPreparationExample.class": {
+      "bytes": 3766,
+      "sha256": "84471e96f4a76cbd455dec2b7953db88498b69d3b0b595da65f5cbb8a646b515"
+    },
+    "build/literature-review/signac-runtime/peaks-preparation-example-1/compile.process.json": {
+      "bytes": 621,
+      "sha256": "6b423e99c7bf72e26b3101deeb9d15e364ad4131ba254dd53bd39868c020dd99"
+    },
+    "build/literature-review/signac-runtime/peaks-preparation-example-1/compile.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "build/literature-review/signac-runtime/peaks-preparation-example-1/compile.stdout": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "build/literature-review/signac-runtime/peaks-preparation-example-1/linux-java21-existing-output.process.json": {
+      "bytes": 652,
+      "sha256": "286ede655522bb8ad261aabeab550b726f8f25e9229e8c275606abfe5b0d7db9"
+    },
+    "build/literature-review/signac-runtime/peaks-preparation-example-1/linux-java21-existing-output.stderr": {
+      "bytes": 744,
+      "sha256": "39dc42a648b6959be2c7f1f172c22ea4b0f7d81227bc568b3d0e1fdceac93235"
+    },
+    "build/literature-review/signac-runtime/peaks-preparation-example-1/linux-java21-existing-output.stdout": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "build/literature-review/signac-runtime/peaks-preparation-example-1/linux-java21-output/g1.bed": {
+      "bytes": 41,
+      "sha256": "71f13b708a7b370a52962fd10720bb7480241db8505961f78d4fe083329f650f"
+    },
+    "build/literature-review/signac-runtime/peaks-preparation-example-1/linux-java21-output/g2.bed": {
+      "bytes": 20,
+      "sha256": "b67931d4d96f6c748a515c143acad5fc4d40391ece635ada0267ded566b60291"
+    },
+    "build/literature-review/signac-runtime/peaks-preparation-example-1/linux-java21-output/g3.bed": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "build/literature-review/signac-runtime/peaks-preparation-example-1/linux-java21.process.json": {
+      "bytes": 652,
+      "sha256": "f610711191a9f95bb667ebef51daed2eff0b9c0f51be687de60c0c9981024779"
+    },
+    "build/literature-review/signac-runtime/peaks-preparation-example-1/linux-java21.stderr": {
+      "bytes": 1076,
+      "sha256": "dbc7e66565840245b9603732280cd86dbf8649b9277e517ab147ff4a50f84401"
+    },
+    "build/literature-review/signac-runtime/peaks-preparation-example-1/linux-java21.stdout": {
+      "bytes": 131,
+      "sha256": "face17a812f32bac2b842d67ab8e597a4684d60f00db6ef5d958b1350b43bcbe"
+    },
+    "build/literature-review/signac-runtime/peaks-preparation-example-1/windows-java21-existing-output.process.json": {
+      "bytes": 647,
+      "sha256": "5d8df5175a0e11fa68e9c8ab443952082747c60237f78c6237b73007d18b7364"
+    },
+    "build/literature-review/signac-runtime/peaks-preparation-example-1/windows-java21-existing-output.stderr": {
+      "bytes": 774,
+      "sha256": "6f37c2fe135dbb7162e87983e568955b890a3379fb7fceca24f50202cd6be000"
+    },
+    "build/literature-review/signac-runtime/peaks-preparation-example-1/windows-java21-existing-output.stdout": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "build/literature-review/signac-runtime/peaks-preparation-example-1/windows-java21-output/g1.bed": {
+      "bytes": 41,
+      "sha256": "71f13b708a7b370a52962fd10720bb7480241db8505961f78d4fe083329f650f"
+    },
+    "build/literature-review/signac-runtime/peaks-preparation-example-1/windows-java21-output/g2.bed": {
+      "bytes": 20,
+      "sha256": "b67931d4d96f6c748a515c143acad5fc4d40391ece635ada0267ded566b60291"
+    },
+    "build/literature-review/signac-runtime/peaks-preparation-example-1/windows-java21-output/g3.bed": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "build/literature-review/signac-runtime/peaks-preparation-example-1/windows-java21.process.json": {
+      "bytes": 647,
+      "sha256": "d7f65771f3d32081778bb6d74bab5c2abbcd83a8009fc9932fc91fcb3d95113f"
+    },
+    "build/literature-review/signac-runtime/peaks-preparation-example-1/windows-java21.stderr": {
+      "bytes": 1080,
+      "sha256": "af7b5311fdc92cf0e1a7a2f6a4dd5152a31a885a77f7490c3691b0c821637b27"
+    },
+    "build/literature-review/signac-runtime/peaks-preparation-example-1/windows-java21.stdout": {
+      "bytes": 135,
+      "sha256": "1a14827c89d41863e1fff5015f615dd595e498ceff7d78964c08c361e272e137"
+    },
+    "build/literature-review/signac-runtime/peaks-preparation-example-1/windows-java25-existing-output.process.json": {
+      "bytes": 639,
+      "sha256": "425cd8e616482d40b27c311d0c2206cf44be1c6d33b7904ae40ddd188a4a56a1"
+    },
+    "build/literature-review/signac-runtime/peaks-preparation-example-1/windows-java25-existing-output.stderr": {
+      "bytes": 774,
+      "sha256": "829d34df31d65451603170d155decd7e0f0cdc229dfd13925858c96f9c7060a8"
+    },
+    "build/literature-review/signac-runtime/peaks-preparation-example-1/windows-java25-existing-output.stdout": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "build/literature-review/signac-runtime/peaks-preparation-example-1/windows-java25-output/g1.bed": {
+      "bytes": 41,
+      "sha256": "71f13b708a7b370a52962fd10720bb7480241db8505961f78d4fe083329f650f"
+    },
+    "build/literature-review/signac-runtime/peaks-preparation-example-1/windows-java25-output/g2.bed": {
+      "bytes": 20,
+      "sha256": "b67931d4d96f6c748a515c143acad5fc4d40391ece635ada0267ded566b60291"
+    },
+    "build/literature-review/signac-runtime/peaks-preparation-example-1/windows-java25-output/g3.bed": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "build/literature-review/signac-runtime/peaks-preparation-example-1/windows-java25.process.json": {
+      "bytes": 639,
+      "sha256": "6060277ec4eca417923935c747c40927c94e0967f96e46464be8631129b1e08f"
+    },
+    "build/literature-review/signac-runtime/peaks-preparation-example-1/windows-java25.stderr": {
+      "bytes": 1080,
+      "sha256": "af7b5311fdc92cf0e1a7a2f6a4dd5152a31a885a77f7490c3691b0c821637b27"
+    },
+    "build/literature-review/signac-runtime/peaks-preparation-example-1/windows-java25.stdout": {
+      "bytes": 135,
+      "sha256": "1a14827c89d41863e1fff5015f615dd595e498ceff7d78964c08c361e272e137"
+    },
+    "build/literature-review/signac-runtime/peaks-preparation-native-matrix-1/COMPLETED.json": {
+      "bytes": 4602,
+      "sha256": "7601227b8ce0152b2b03447c697b695182bc42835edb9dc456d9aab035b3a42f"
+    },
+    "build/literature-review/signac-runtime/peaks-preparation-native-matrix-1/RunPeakPreparation.java": {
+      "bytes": 1325,
+      "sha256": "f992e9232969a3a29000786ec33ed1f8a77167dae67bee793d3853330ea386d7"
+    },
+    "build/literature-review/signac-runtime/peaks-preparation-native-matrix-1/classes/RunPeakPreparation.class": {
+      "bytes": 3440,
+      "sha256": "6007d856810b1deb2863a4e78738d97f3f6c57d476efba516103583f06ec971b"
+    },
+    "build/literature-review/signac-runtime/peaks-preparation-native-matrix-1/classes/org/jlinalg/cli/SignacPeakPreparationTest.class": {
+      "bytes": 16138,
+      "sha256": "6ca3de6a157c6bf98504a425f7d325f8197ed01f23a63292da9e3c9dc3014cf0"
+    },
+    "build/literature-review/signac-runtime/peaks-preparation-native-matrix-1/compile.process.json": {
+      "bytes": 1903,
+      "sha256": "f01a2126bc20f4957d0836e77cd2475b54dcc2214db07b68ab485d2f00e2e99c"
+    },
+    "build/literature-review/signac-runtime/peaks-preparation-native-matrix-1/compile.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "build/literature-review/signac-runtime/peaks-preparation-native-matrix-1/compile.stdout": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "build/literature-review/signac-runtime/peaks-preparation-native-matrix-1/linux-java21.process.json": {
+      "bytes": 1779,
+      "sha256": "2ff46bda35c1c08046ac82dce73edadc5e96c2d74b48315eb3eed40ed04c12a7"
+    },
+    "build/literature-review/signac-runtime/peaks-preparation-native-matrix-1/linux-java21.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "build/literature-review/signac-runtime/peaks-preparation-native-matrix-1/linux-java21.stdout": {
+      "bytes": 466,
+      "sha256": "3ad55b823d0cb0c9ac88faf7485a45bbfbf1db3a75bdc9a8f685d7684a4fee9e"
+    },
+    "build/literature-review/signac-runtime/peaks-preparation-native-matrix-1/windows-java21.process.json": {
+      "bytes": 1808,
+      "sha256": "01b0eecf748646bba3aad7e0c09fc2dbc56eaab1452037a2ef5607e509448800"
+    },
+    "build/literature-review/signac-runtime/peaks-preparation-native-matrix-1/windows-java21.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "build/literature-review/signac-runtime/peaks-preparation-native-matrix-1/windows-java21.stdout": {
+      "bytes": 480,
+      "sha256": "388208f1831883689bd50f23795fb5c9328273949398602ded174cd336c321fb"
+    },
+    "build/literature-review/signac-runtime/peaks-preparation-native-matrix-1/windows-java25.process.json": {
+      "bytes": 1800,
+      "sha256": "782ecac402c5cd6d5d5b0cd2d3d1c5a280691cca10f219d2b377199a65631079"
+    },
+    "build/literature-review/signac-runtime/peaks-preparation-native-matrix-1/windows-java25.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "build/literature-review/signac-runtime/peaks-preparation-native-matrix-1/windows-java25.stdout": {
+      "bytes": 480,
+      "sha256": "67c132ea78bae3d9c042c924fdc9806dd1c90eecbec16be4a81448f0c2144b13"
+    },
+    "build/literature-review/signac-runtime/peaks-preparation-original-1/PROCESS.json": {
+      "bytes": 262,
+      "sha256": "fc12dc4c93468503a3a9390ef91dd81176a2c37c28a5fc8608ca6721c62c9a9f"
+    },
+    "build/literature-review/signac-runtime/peaks-preparation-original-1/SUPERSEDED.md": {
+      "bytes": 556,
+      "sha256": "624a18fa2628695b75acf172462a6a2da8fabb96c67f1611bdc72270bd211979"
+    },
+    "build/literature-review/signac-runtime/peaks-preparation-original-1/collector-attempted.R": {
+      "bytes": 6963,
+      "sha256": "9300ae41fadf77c7697eca1a14b6e284e9b163faffe17e2a8261be4b7c0d2840"
+    },
+    "build/literature-review/signac-runtime/peaks-preparation-original-1/original/basic/input1.tsv": {
+      "bytes": 82,
+      "sha256": "dbed75dc05fba14dd6902e1e3f1866102b8b55ad0764d8cd29da11f138563186"
+    },
+    "build/literature-review/signac-runtime/peaks-preparation-original-1/original/basic/split/A.bed": {
+      "bytes": 16,
+      "sha256": "eed9504c2d6b3f678c7545c9c6a257510f0cbfa631e711037289682401796fc4"
+    },
+    "build/literature-review/signac-runtime/peaks-preparation-original-1/original/basic/split/B.bed": {
+      "bytes": 36,
+      "sha256": "6d4e6fc2aed434b0507524253f0c6fde521b34a7c5b73e00d4dd8d6b6aca414f"
+    },
+    "build/literature-review/signac-runtime/peaks-preparation-original-1/original/basic/split/C.bed": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "build/literature-review/signac-runtime/peaks-preparation-original-1/original/crlf/input1.tsv": {
+      "bytes": 31,
+      "sha256": "116249b2bd71cae2c8e888f229969e073108aae13ebe86d28192dbfddfd7b414"
+    },
+    "build/literature-review/signac-runtime/peaks-preparation-original-1/original/crlf/split/A.bed": {
+      "bytes": 16,
+      "sha256": "1d603177d52ec274dd4b6ed689d4787f4a822c93f74c6181cefe69afbe0ea750"
+    },
+    "build/literature-review/signac-runtime/peaks-preparation-original-1/original/crlf/split/B.bed": {
+      "bytes": 17,
+      "sha256": "b7d4b2dd9a6aadad4115afea87f4888eefc84f2a03799ebfcad671a0a5e90892"
+    },
+    "build/literature-review/signac-runtime/peaks-preparation-original-1/original/mapped/input1.tsv": {
+      "bytes": 82,
+      "sha256": "dbed75dc05fba14dd6902e1e3f1866102b8b55ad0764d8cd29da11f138563186"
+    },
+    "build/literature-review/signac-runtime/peaks-preparation-original-1/original/mapped/split/A.bed": {
+      "bytes": 16,
+      "sha256": "eed9504c2d6b3f678c7545c9c6a257510f0cbfa631e711037289682401796fc4"
+    },
+    "build/literature-review/signac-runtime/peaks-preparation-original-1/original/mapped/split/B.bed": {
+      "bytes": 36,
+      "sha256": "6d4e6fc2aed434b0507524253f0c6fde521b34a7c5b73e00d4dd8d6b6aca414f"
+    },
+    "build/literature-review/signac-runtime/peaks-preparation-original-1/original/multiple_sources/input1.tsv": {
+      "bytes": 82,
+      "sha256": "dbed75dc05fba14dd6902e1e3f1866102b8b55ad0764d8cd29da11f138563186"
+    },
+    "build/literature-review/signac-runtime/peaks-preparation-original-1/original/multiple_sources/input2.tsv": {
+      "bytes": 28,
+      "sha256": "d752d7d36beb8c778ac3b94a6482c39f5ccaefa6c525709c66951f3041a7d366"
+    },
+    "build/literature-review/signac-runtime/peaks-preparation-original-1/original/multiple_sources/split/A.bed": {
+      "bytes": 31,
+      "sha256": "5e1bcdd8d670b89094f8b4d2a621b87250a54e338d25aa3016751674db4cf672"
+    },
+    "build/literature-review/signac-runtime/peaks-preparation-original-1/original/multiple_sources/split/B.bed": {
+      "bytes": 51,
+      "sha256": "78d8bdee2d830d6f37c3b1306effcade0292ce89b2bb059adda287f4c781e2bf"
+    },
+    "build/literature-review/signac-runtime/peaks-preparation-original-1/original/name_collision/input1.tsv": {
+      "bytes": 82,
+      "sha256": "dbed75dc05fba14dd6902e1e3f1866102b8b55ad0764d8cd29da11f138563186"
+    },
+    "build/literature-review/signac-runtime/peaks-preparation-original-1/original/name_collision/split/grp_A.bed": {
+      "bytes": 52,
+      "sha256": "95705328ad4592068a4fb00b16a2089c2baa4df43ff37bb56a465dae4b73b086"
+    },
+    "build/literature-review/signac-runtime/peaks-preparation-original-1/original/no_final_newline/input1.tsv": {
+      "bytes": 13,
+      "sha256": "eb42ba30a4a284b14d56fb4564649263f209e7b9f1d65775155e39772b4f2a78"
+    },
+    "build/literature-review/signac-runtime/peaks-preparation-original-1/original/no_final_newline/input2.tsv": {
+      "bytes": 15,
+      "sha256": "7a36690ae10be4af3cb108986142276e1eb966dbcb409d2eee298d88ab39235b"
+    },
+    "build/literature-review/signac-runtime/peaks-preparation-original-1/original/no_final_newline/split/A.bed": {
+      "bytes": 29,
+      "sha256": "f5200e622afa39fbbb28e3dc7e8806fe260d49d4d6019b0c1d6c2e089a2dfcaa"
+    },
+    "build/literature-review/signac-runtime/peaks-preparation-original-1/original/no_final_newline/split/B.bed": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "build/literature-review/signac-runtime/peaks-preparation-original-1/original/parse-bedpe/fixture_peaks.narrowPeak": {
+      "bytes": 39,
+      "sha256": "f9e8c8373646472d5dbe2a1dee6394f92670ca63c1c2dc2eb1367cde4972e5b2"
+    },
+    "build/literature-review/signac-runtime/peaks-preparation-original-1/original/parse-broad/fixture_peaks.broadPeak": {
+      "bytes": 37,
+      "sha256": "b6a0573fc04ea57f2442b53ffbd0d2848cbdae13cd4a48c01b9e64b3d66c31f1"
+    },
+    "build/literature-review/signac-runtime/peaks-preparation-original-1/original/parse-empty/fixture_peaks.narrowPeak": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "build/literature-review/signac-runtime/peaks-preparation-original-1/original/parse-narrow/fixture_peaks.narrowPeak": {
+      "bytes": 98,
+      "sha256": "5ea8d15f9907583db526c5d78d31bbc1c9d4cb36bbdb2bc3853a1d49a0a68442"
+    },
+    "build/literature-review/signac-runtime/peaks-preparation-original-1/original/six_columns/input1.tsv": {
+      "bytes": 33,
+      "sha256": "675cdaaf03ac1a9e7acf640b7cd31ff361853c97fc0b4452e7d3041a53fb9da8"
+    },
+    "build/literature-review/signac-runtime/peaks-preparation-original-1/original/six_columns/split/A.bed": {
+      "bytes": 17,
+      "sha256": "57cfaae71450419c8c1756a5b9215001becef0865a5ca200f45bb0c79d16f499"
+    },
+    "build/literature-review/signac-runtime/peaks-preparation-original-1/original/six_columns/split/B.bed": {
+      "bytes": 18,
+      "sha256": "fbead9d122e4eb7096c9ab8bf7ab91586b0839da0c0cec40b0616e7b18148ae2"
+    },
+    "build/literature-review/signac-runtime/peaks-preparation-original-1/stderr": {
+      "bytes": 84,
+      "sha256": "f6b9ff57af8e259f00c6fddfc8b60900b0e97465624eae90dc6a0d6f53867fce"
+    },
+    "build/literature-review/signac-runtime/peaks-preparation-original-1/stdout": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "build/literature-review/signac-runtime/peaks-preparation-original-2/PROCESS.json": {
+      "bytes": 262,
+      "sha256": "9c80bda6675785bac8012ae4d585405546ed014d494b2bd8123a8a8c443bf1c5"
+    },
+    "build/literature-review/signac-runtime/peaks-preparation-original-2/original/RESULT.json": {
+      "bytes": 13415,
+      "sha256": "a835b39ed6b2763dfda5d4fdc94a4bb0d2a8c197074522a011e388bfedda5c4f"
+    },
+    "build/literature-review/signac-runtime/peaks-preparation-original-2/original/basic/input1.tsv": {
+      "bytes": 82,
+      "sha256": "dbed75dc05fba14dd6902e1e3f1866102b8b55ad0764d8cd29da11f138563186"
+    },
+    "build/literature-review/signac-runtime/peaks-preparation-original-2/original/basic/split/A.bed": {
+      "bytes": 16,
+      "sha256": "eed9504c2d6b3f678c7545c9c6a257510f0cbfa631e711037289682401796fc4"
+    },
+    "build/literature-review/signac-runtime/peaks-preparation-original-2/original/basic/split/B.bed": {
+      "bytes": 36,
+      "sha256": "6d4e6fc2aed434b0507524253f0c6fde521b34a7c5b73e00d4dd8d6b6aca414f"
+    },
+    "build/literature-review/signac-runtime/peaks-preparation-original-2/original/basic/split/C.bed": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "build/literature-review/signac-runtime/peaks-preparation-original-2/original/crlf/input1.tsv": {
+      "bytes": 31,
+      "sha256": "116249b2bd71cae2c8e888f229969e073108aae13ebe86d28192dbfddfd7b414"
+    },
+    "build/literature-review/signac-runtime/peaks-preparation-original-2/original/crlf/split/A.bed": {
+      "bytes": 16,
+      "sha256": "1d603177d52ec274dd4b6ed689d4787f4a822c93f74c6181cefe69afbe0ea750"
+    },
+    "build/literature-review/signac-runtime/peaks-preparation-original-2/original/crlf/split/B.bed": {
+      "bytes": 17,
+      "sha256": "b7d4b2dd9a6aadad4115afea87f4888eefc84f2a03799ebfcad671a0a5e90892"
+    },
+    "build/literature-review/signac-runtime/peaks-preparation-original-2/original/mapped/input1.tsv": {
+      "bytes": 82,
+      "sha256": "dbed75dc05fba14dd6902e1e3f1866102b8b55ad0764d8cd29da11f138563186"
+    },
+    "build/literature-review/signac-runtime/peaks-preparation-original-2/original/mapped/split/A.bed": {
+      "bytes": 16,
+      "sha256": "eed9504c2d6b3f678c7545c9c6a257510f0cbfa631e711037289682401796fc4"
+    },
+    "build/literature-review/signac-runtime/peaks-preparation-original-2/original/mapped/split/B.bed": {
+      "bytes": 36,
+      "sha256": "6d4e6fc2aed434b0507524253f0c6fde521b34a7c5b73e00d4dd8d6b6aca414f"
+    },
+    "build/literature-review/signac-runtime/peaks-preparation-original-2/original/multiple_sources/input1.tsv": {
+      "bytes": 82,
+      "sha256": "dbed75dc05fba14dd6902e1e3f1866102b8b55ad0764d8cd29da11f138563186"
+    },
+    "build/literature-review/signac-runtime/peaks-preparation-original-2/original/multiple_sources/input2.tsv": {
+      "bytes": 28,
+      "sha256": "d752d7d36beb8c778ac3b94a6482c39f5ccaefa6c525709c66951f3041a7d366"
+    },
+    "build/literature-review/signac-runtime/peaks-preparation-original-2/original/multiple_sources/split/A.bed": {
+      "bytes": 31,
+      "sha256": "5e1bcdd8d670b89094f8b4d2a621b87250a54e338d25aa3016751674db4cf672"
+    },
+    "build/literature-review/signac-runtime/peaks-preparation-original-2/original/multiple_sources/split/B.bed": {
+      "bytes": 51,
+      "sha256": "78d8bdee2d830d6f37c3b1306effcade0292ce89b2bb059adda287f4c781e2bf"
+    },
+    "build/literature-review/signac-runtime/peaks-preparation-original-2/original/name_collision/input1.tsv": {
+      "bytes": 82,
+      "sha256": "dbed75dc05fba14dd6902e1e3f1866102b8b55ad0764d8cd29da11f138563186"
+    },
+    "build/literature-review/signac-runtime/peaks-preparation-original-2/original/name_collision/split/grp_A.bed": {
+      "bytes": 52,
+      "sha256": "95705328ad4592068a4fb00b16a2089c2baa4df43ff37bb56a465dae4b73b086"
+    },
+    "build/literature-review/signac-runtime/peaks-preparation-original-2/original/no_final_newline/input1.tsv": {
+      "bytes": 13,
+      "sha256": "eb42ba30a4a284b14d56fb4564649263f209e7b9f1d65775155e39772b4f2a78"
+    },
+    "build/literature-review/signac-runtime/peaks-preparation-original-2/original/no_final_newline/input2.tsv": {
+      "bytes": 15,
+      "sha256": "7a36690ae10be4af3cb108986142276e1eb966dbcb409d2eee298d88ab39235b"
+    },
+    "build/literature-review/signac-runtime/peaks-preparation-original-2/original/no_final_newline/split/A.bed": {
+      "bytes": 29,
+      "sha256": "f5200e622afa39fbbb28e3dc7e8806fe260d49d4d6019b0c1d6c2e089a2dfcaa"
+    },
+    "build/literature-review/signac-runtime/peaks-preparation-original-2/original/no_final_newline/split/B.bed": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "build/literature-review/signac-runtime/peaks-preparation-original-2/original/parse-bedpe/fixture_peaks.narrowPeak": {
+      "bytes": 39,
+      "sha256": "f9e8c8373646472d5dbe2a1dee6394f92670ca63c1c2dc2eb1367cde4972e5b2"
+    },
+    "build/literature-review/signac-runtime/peaks-preparation-original-2/original/parse-broad/fixture_peaks.broadPeak": {
+      "bytes": 37,
+      "sha256": "b6a0573fc04ea57f2442b53ffbd0d2848cbdae13cd4a48c01b9e64b3d66c31f1"
+    },
+    "build/literature-review/signac-runtime/peaks-preparation-original-2/original/parse-empty/fixture_peaks.narrowPeak": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "build/literature-review/signac-runtime/peaks-preparation-original-2/original/parse-narrow/fixture_peaks.narrowPeak": {
+      "bytes": 98,
+      "sha256": "5ea8d15f9907583db526c5d78d31bbc1c9d4cb36bbdb2bc3853a1d49a0a68442"
+    },
+    "build/literature-review/signac-runtime/peaks-preparation-original-2/original/session-info.txt": {
+      "bytes": 2227,
+      "sha256": "22631ede91ab58b5f8c0477511a42850d049598afe1ce7ef0a73ac75fb1edc2b"
+    },
+    "build/literature-review/signac-runtime/peaks-preparation-original-2/original/six_columns/input1.tsv": {
+      "bytes": 33,
+      "sha256": "675cdaaf03ac1a9e7acf640b7cd31ff361853c97fc0b4452e7d3041a53fb9da8"
+    },
+    "build/literature-review/signac-runtime/peaks-preparation-original-2/original/six_columns/split/A.bed": {
+      "bytes": 17,
+      "sha256": "57cfaae71450419c8c1756a5b9215001becef0865a5ca200f45bb0c79d16f499"
+    },
+    "build/literature-review/signac-runtime/peaks-preparation-original-2/original/six_columns/split/B.bed": {
+      "bytes": 18,
+      "sha256": "fbead9d122e4eb7096c9ab8bf7ab91586b0839da0c0cec40b0616e7b18148ae2"
+    },
+    "build/literature-review/signac-runtime/peaks-preparation-original-2/stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "build/literature-review/signac-runtime/peaks-preparation-original-2/stdout": {
+      "bytes": 52,
+      "sha256": "80a6bb04061f7aa471cef73ee37779acc799310de5e345d32458f57200b39735"
+    },
+    "build/literature-review/signac-runtime/peaks-split-linux-original-1/COMPLETED.json": {
+      "bytes": 9416,
+      "sha256": "f7fd0f33d689f22c3fd5a02f6c42bc0fcc84492c220381d441c703916ba03e88"
+    },
+    "build/literature-review/signac-runtime/peaks-split-linux-original-1/Rcpp.h": {
+      "bytes": 204,
+      "sha256": "677a94cd9257978c127fbc0f620727b93d8e788f7d870fae0bfd35b208697aaa"
+    },
+    "build/literature-review/signac-runtime/peaks-split-linux-original-1/basic-0.process.json": {
+      "bytes": 611,
+      "sha256": "1d0c908f827dd581134d4ddfabaab7c8cc5b25078a99bdfb67ba707ec672183e"
+    },
+    "build/literature-review/signac-runtime/peaks-split-linux-original-1/basic-0.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "build/literature-review/signac-runtime/peaks-split-linux-original-1/basic-0.stdout": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "build/literature-review/signac-runtime/peaks-split-linux-original-1/basic/groups.txt": {
+      "bytes": 6,
+      "sha256": "4d93dce53600f47cb1c8fcc1f674aeb42f082822f8b3e8f04b074697a2a76506"
+    },
+    "build/literature-review/signac-runtime/peaks-split-linux-original-1/basic/input0.tsv": {
+      "bytes": 82,
+      "sha256": "dbed75dc05fba14dd6902e1e3f1866102b8b55ad0764d8cd29da11f138563186"
+    },
+    "build/literature-review/signac-runtime/peaks-split-linux-original-1/basic/map0.tsv": {
+      "bytes": 21,
+      "sha256": "a7ce6ca86363b5f447dd62e6e9f736a28c1af59d56e2c65af4ca0e7913f675c9"
+    },
+    "build/literature-review/signac-runtime/peaks-split-linux-original-1/basic/split/A.bed": {
+      "bytes": 15,
+      "sha256": "2728c519e947dace909e80df57b2e8f44ee756b21f41522ddad92443337f2661"
+    },
+    "build/literature-review/signac-runtime/peaks-split-linux-original-1/basic/split/B.bed": {
+      "bytes": 34,
+      "sha256": "6b090b80c6b0e5d7b69d73e119a838fa0d2a9163f3435281edb76fb02ef0496c"
+    },
+    "build/literature-review/signac-runtime/peaks-split-linux-original-1/basic/split/C.bed": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "build/literature-review/signac-runtime/peaks-split-linux-original-1/compile.process.json": {
+      "bytes": 434,
+      "sha256": "f13340172b80484bb54de9ecbd3bcfad291937f2b916400f53e9fc0d4985cf8e"
+    },
+    "build/literature-review/signac-runtime/peaks-split-linux-original-1/compile.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "build/literature-review/signac-runtime/peaks-split-linux-original-1/compile.stdout": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "build/literature-review/signac-runtime/peaks-split-linux-original-1/crlf-0.process.json": {
+      "bytes": 607,
+      "sha256": "138d7ea44da277d01a4670fbbc031b1d29669aa71e170f11b594ef18859481d3"
+    },
+    "build/literature-review/signac-runtime/peaks-split-linux-original-1/crlf-0.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "build/literature-review/signac-runtime/peaks-split-linux-original-1/crlf-0.stdout": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "build/literature-review/signac-runtime/peaks-split-linux-original-1/crlf/groups.txt": {
+      "bytes": 4,
+      "sha256": "daee1cd25194ae952d046ad9b9c81d3c07dc5332440b58d6d7461b248be56712"
+    },
+    "build/literature-review/signac-runtime/peaks-split-linux-original-1/crlf/input0.tsv": {
+      "bytes": 31,
+      "sha256": "116249b2bd71cae2c8e888f229969e073108aae13ebe86d28192dbfddfd7b414"
+    },
+    "build/literature-review/signac-runtime/peaks-split-linux-original-1/crlf/map0.tsv": {
+      "bytes": 8,
+      "sha256": "ae10ffbb1cabf24435d9b64a08ee781defd0084be6b1241a00682b5062aa3036"
+    },
+    "build/literature-review/signac-runtime/peaks-split-linux-original-1/crlf/split/A.bed": {
+      "bytes": 15,
+      "sha256": "25ab771dcfc76c1896ef6cca46e951264f476cf8c671636e80da9fa95a5c09a6"
+    },
+    "build/literature-review/signac-runtime/peaks-split-linux-original-1/crlf/split/B.bed": {
+      "bytes": 16,
+      "sha256": "10329635c858878c2489d71ddbbc4a185208d0f9809da78f3f9120a2319ce492"
+    },
+    "build/literature-review/signac-runtime/peaks-split-linux-original-1/mapped-0.process.json": {
+      "bytes": 615,
+      "sha256": "fcc8e486dc7650545d879a934d6f0ad4f923fe6e2928beb3ad3161b48c4143ba"
+    },
+    "build/literature-review/signac-runtime/peaks-split-linux-original-1/mapped-0.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "build/literature-review/signac-runtime/peaks-split-linux-original-1/mapped-0.stdout": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "build/literature-review/signac-runtime/peaks-split-linux-original-1/mapped/groups.txt": {
+      "bytes": 4,
+      "sha256": "8142c36faec58713fe4a9867c5d7b3157e9f3c231f31416ce2dfe5c6dcc7b66d"
+    },
+    "build/literature-review/signac-runtime/peaks-split-linux-original-1/mapped/input0.tsv": {
+      "bytes": 82,
+      "sha256": "dbed75dc05fba14dd6902e1e3f1866102b8b55ad0764d8cd29da11f138563186"
+    },
+    "build/literature-review/signac-runtime/peaks-split-linux-original-1/mapped/map0.tsv": {
+      "bytes": 8,
+      "sha256": "d14dcfdab6c62446dfc312865b36130c81beb23d405bf850b070ab2043181364"
+    },
+    "build/literature-review/signac-runtime/peaks-split-linux-original-1/mapped/split/A.bed": {
+      "bytes": 15,
+      "sha256": "2728c519e947dace909e80df57b2e8f44ee756b21f41522ddad92443337f2661"
+    },
+    "build/literature-review/signac-runtime/peaks-split-linux-original-1/mapped/split/B.bed": {
+      "bytes": 34,
+      "sha256": "6b090b80c6b0e5d7b69d73e119a838fa0d2a9163f3435281edb76fb02ef0496c"
+    },
+    "build/literature-review/signac-runtime/peaks-split-linux-original-1/multiple_sources-0.process.json": {
+      "bytes": 655,
+      "sha256": "2baf3e7969e6a1528923bea73f4b405d2da5f2bf140af8a249270a34f25d24b6"
+    },
+    "build/literature-review/signac-runtime/peaks-split-linux-original-1/multiple_sources-0.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "build/literature-review/signac-runtime/peaks-split-linux-original-1/multiple_sources-0.stdout": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "build/literature-review/signac-runtime/peaks-split-linux-original-1/multiple_sources-1.process.json": {
+      "bytes": 655,
+      "sha256": "3c2446693d79a975a36bbde979bc3cd9ca18d992faa619f120b47bc077e7f407"
+    },
+    "build/literature-review/signac-runtime/peaks-split-linux-original-1/multiple_sources-1.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "build/literature-review/signac-runtime/peaks-split-linux-original-1/multiple_sources-1.stdout": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "build/literature-review/signac-runtime/peaks-split-linux-original-1/multiple_sources/groups.txt": {
+      "bytes": 4,
+      "sha256": "8142c36faec58713fe4a9867c5d7b3157e9f3c231f31416ce2dfe5c6dcc7b66d"
+    },
+    "build/literature-review/signac-runtime/peaks-split-linux-original-1/multiple_sources/input0.tsv": {
+      "bytes": 82,
+      "sha256": "dbed75dc05fba14dd6902e1e3f1866102b8b55ad0764d8cd29da11f138563186"
+    },
+    "build/literature-review/signac-runtime/peaks-split-linux-original-1/multiple_sources/input1.tsv": {
+      "bytes": 28,
+      "sha256": "d752d7d36beb8c778ac3b94a6482c39f5ccaefa6c525709c66951f3041a7d366"
+    },
+    "build/literature-review/signac-runtime/peaks-split-linux-original-1/multiple_sources/map0.tsv": {
+      "bytes": 8,
+      "sha256": "d14dcfdab6c62446dfc312865b36130c81beb23d405bf850b070ab2043181364"
+    },
+    "build/literature-review/signac-runtime/peaks-split-linux-original-1/multiple_sources/map1.tsv": {
+      "bytes": 8,
+      "sha256": "d14dcfdab6c62446dfc312865b36130c81beb23d405bf850b070ab2043181364"
+    },
+    "build/literature-review/signac-runtime/peaks-split-linux-original-1/multiple_sources/split/A.bed": {
+      "bytes": 29,
+      "sha256": "fbfb3988be4501f51f8a151466edb35b5b31fc4494ce2a22c24ca954abb52efe"
+    },
+    "build/literature-review/signac-runtime/peaks-split-linux-original-1/multiple_sources/split/B.bed": {
+      "bytes": 48,
+      "sha256": "74e30b8c7d450b919f33132689c5d43cfc600cdba772b677a0a95989ab5fb3b6"
+    },
+    "build/literature-review/signac-runtime/peaks-split-linux-original-1/name_collision-0.process.json": {
+      "bytes": 647,
+      "sha256": "2c68eae63e5dfb4d24c81d96d9c2e7d249001e85379ab52c0be9b7b57fba6593"
+    },
+    "build/literature-review/signac-runtime/peaks-split-linux-original-1/name_collision-0.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "build/literature-review/signac-runtime/peaks-split-linux-original-1/name_collision-0.stdout": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "build/literature-review/signac-runtime/peaks-split-linux-original-1/name_collision/groups.txt": {
+      "bytes": 6,
+      "sha256": "d519bfc4940f0703a1a080d7c61fb582edf3c895118a3071e79b60403ce96a0f"
+    },
+    "build/literature-review/signac-runtime/peaks-split-linux-original-1/name_collision/input0.tsv": {
+      "bytes": 82,
+      "sha256": "dbed75dc05fba14dd6902e1e3f1866102b8b55ad0764d8cd29da11f138563186"
+    },
+    "build/literature-review/signac-runtime/peaks-split-linux-original-1/name_collision/map0.tsv": {
+      "bytes": 16,
+      "sha256": "61c4fb0a665daa88f59843fd7205650ab6f853c91794de96ac65d51b0b4a08fc"
+    },
+    "build/literature-review/signac-runtime/peaks-split-linux-original-1/name_collision/split/grp_A.bed": {
+      "bytes": 49,
+      "sha256": "b9fe0bca449298d806fe0080c3e2ed6a1af0485cfcc2a48bf0837649f16ae888"
+    },
+    "build/literature-review/signac-runtime/peaks-split-linux-original-1/no_final_newline-0.process.json": {
+      "bytes": 655,
+      "sha256": "279ca50faaefbd89ab83f085c1f7c4282ffb66c910f0986209e4582a356eb0be"
+    },
+    "build/literature-review/signac-runtime/peaks-split-linux-original-1/no_final_newline-0.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "build/literature-review/signac-runtime/peaks-split-linux-original-1/no_final_newline-0.stdout": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "build/literature-review/signac-runtime/peaks-split-linux-original-1/no_final_newline-1.process.json": {
+      "bytes": 655,
+      "sha256": "f698e0038dbf913db6cf392a66cc3cf1c1e90a537b1d9cd5c02077cb843a330d"
+    },
+    "build/literature-review/signac-runtime/peaks-split-linux-original-1/no_final_newline-1.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "build/literature-review/signac-runtime/peaks-split-linux-original-1/no_final_newline-1.stdout": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "build/literature-review/signac-runtime/peaks-split-linux-original-1/no_final_newline/groups.txt": {
+      "bytes": 4,
+      "sha256": "daee1cd25194ae952d046ad9b9c81d3c07dc5332440b58d6d7461b248be56712"
+    },
+    "build/literature-review/signac-runtime/peaks-split-linux-original-1/no_final_newline/input0.tsv": {
+      "bytes": 13,
+      "sha256": "eb42ba30a4a284b14d56fb4564649263f209e7b9f1d65775155e39772b4f2a78"
+    },
+    "build/literature-review/signac-runtime/peaks-split-linux-original-1/no_final_newline/input1.tsv": {
+      "bytes": 15,
+      "sha256": "7a36690ae10be4af3cb108986142276e1eb966dbcb409d2eee298d88ab39235b"
+    },
+    "build/literature-review/signac-runtime/peaks-split-linux-original-1/no_final_newline/map0.tsv": {
+      "bytes": 8,
+      "sha256": "ae10ffbb1cabf24435d9b64a08ee781defd0084be6b1241a00682b5062aa3036"
+    },
+    "build/literature-review/signac-runtime/peaks-split-linux-original-1/no_final_newline/map1.tsv": {
+      "bytes": 8,
+      "sha256": "ae10ffbb1cabf24435d9b64a08ee781defd0084be6b1241a00682b5062aa3036"
+    },
+    "build/literature-review/signac-runtime/peaks-split-linux-original-1/no_final_newline/split/A.bed": {
+      "bytes": 28,
+      "sha256": "6313c9f96646ee3a0160de77489e638c77fa018627a18af1f1602b248904b5d8"
+    },
+    "build/literature-review/signac-runtime/peaks-split-linux-original-1/no_final_newline/split/B.bed": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "build/literature-review/signac-runtime/peaks-split-linux-original-1/original-split": {
+      "bytes": 44768,
+      "sha256": "2f4f6239ec43df84cb145e88c1006c8a66359344185b27974bf346cf98e0f28c"
+    },
+    "build/literature-review/signac-runtime/peaks-split-linux-original-1/runner.cpp": {
+      "bytes": 626,
+      "sha256": "dcced5bece6e97f081334ae69efc57b49bfe00cb88447061824d7bd0abe91698"
+    },
+    "build/literature-review/signac-runtime/peaks-split-linux-original-1/six_columns-0.process.json": {
+      "bytes": 635,
+      "sha256": "0064239fd286073ff0a920502e0ce34090f90ea616daff10f4aaef01801d3c4b"
+    },
+    "build/literature-review/signac-runtime/peaks-split-linux-original-1/six_columns-0.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "build/literature-review/signac-runtime/peaks-split-linux-original-1/six_columns-0.stdout": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "build/literature-review/signac-runtime/peaks-split-linux-original-1/six_columns/groups.txt": {
+      "bytes": 4,
+      "sha256": "daee1cd25194ae952d046ad9b9c81d3c07dc5332440b58d6d7461b248be56712"
+    },
+    "build/literature-review/signac-runtime/peaks-split-linux-original-1/six_columns/input0.tsv": {
+      "bytes": 33,
+      "sha256": "675cdaaf03ac1a9e7acf640b7cd31ff361853c97fc0b4452e7d3041a53fb9da8"
+    },
+    "build/literature-review/signac-runtime/peaks-split-linux-original-1/six_columns/map0.tsv": {
+      "bytes": 8,
+      "sha256": "ae10ffbb1cabf24435d9b64a08ee781defd0084be6b1241a00682b5062aa3036"
+    },
+    "build/literature-review/signac-runtime/peaks-split-linux-original-1/six_columns/split/A.bed": {
+      "bytes": 16,
+      "sha256": "95318421169b72a8a8fb05c90bb75270b2238bf3ec769625a819da5092653069"
+    },
+    "build/literature-review/signac-runtime/peaks-split-linux-original-1/six_columns/split/B.bed": {
+      "bytes": 17,
+      "sha256": "2fe4c0874c3b103987bba6d1879757a5b8bd494eb70d71646b433955a53e8da8"
+    },
+    "current-source/docs/literature/SIGNAC_PEAK_PREPARATION_DEVELOPMENT.md": {
+      "bytes": 9193,
+      "sha256": "7d98c5ad9f37a336c565980b7e1ae8f9299b5f0304431d59a27406900a70b27c"
+    },
+    "current-source/examples/signac-peak-preparation/.gitattributes": {
+      "bytes": 90,
+      "sha256": "9c20a32a55a0c0cb3e7d6f4c96b7d90d4d121f4f23b4b56e22c2b7c528056165"
+    },
+    "current-source/examples/signac-peak-preparation/PeakPreparationExample.java": {
+      "bytes": 1554,
+      "sha256": "11435610f6373ecf6e1ce7c30616e0bfddba1040851ee73f58c0b05fd9f7d6b6"
+    },
+    "current-source/examples/signac-peak-preparation/README.md": {
+      "bytes": 3083,
+      "sha256": "7e0d6ec07a106ed71fc35059f9f174c0798eefba99e3a02dea83efa29c119417"
+    },
+    "current-source/examples/signac-peak-preparation/fragments.tsv": {
+      "bytes": 155,
+      "sha256": "7ab41ecdc4010d15fc20f8916f6fc6384f086b29cccb8e2dfea0ba56c93d7a5c"
+    },
+    "current-source/src/main/java/org/jlinalg/sequence/SignacPeakPreparation.java": {
+      "bytes": 9276,
+      "sha256": "b0fb504df6543aaffdb0df6f8aadfec00b4682509f7d54fad91328e4c0c44db2"
+    },
+    "current-source/src/test/java/org/jlinalg/cli/SignacPeakPreparationTest.java": {
+      "bytes": 7908,
+      "sha256": "5901867ef2dace521452d97c7e81756ac7f05a767026d079fa944dffa66c3f4b"
+    },
+    "current-source/src/test/resources/org/jlinalg/sequence/signac-peak-preparation/.gitattributes": {
+      "bytes": 97,
+      "sha256": "4a8fd9a9b112daa703e0a7b6c085bf3ff0959150ce5db0221615b50a72376e8b"
+    },
+    "current-source/src/test/resources/org/jlinalg/sequence/signac-peak-preparation/CAPTURE.json": {
+      "bytes": 47225,
+      "sha256": "c13162e718416689c15e85141ecec884db0f462aacf03b1bcd461eed5be97c73"
+    },
+    "current-source/src/test/resources/org/jlinalg/sequence/signac-peak-preparation/MIT-LICENSE.txt": {
+      "bytes": 1054,
+      "sha256": "b83b519ba57365c6fceeb26cb7c34b94fbc8320cd7cbd907538b5c013bf046a8"
+    },
+    "current-source/src/test/resources/org/jlinalg/sequence/signac-peak-preparation/original-cases.json": {
+      "bytes": 7839,
+      "sha256": "f8f5fd0bec7d88fa0342e6ac557e460b06c23efa9bbc0b8493046c53879978c1"
+    },
+    "current-source/src/test/resources/org/jlinalg/sequence/signac-peak-preparation/original-controls.zip": {
+      "bytes": 76946,
+      "sha256": "5e0d913295c4c6b018cda645a4e0d7398ee05fd3475e5b6c0dc1b0bbcdb830da"
+    },
+    "current-source/tools/literature/close_signac_peak_preparation.py": {
+      "bytes": 7677,
+      "sha256": "2f81da971af6516cfffc396878dd8412d307bb43c27ff5a9606f1bfae55d0eb4"
+    },
+    "current-source/tools/literature/collect_signac_peak_preparation.R": {
+      "bytes": 7044,
+      "sha256": "1133acc5ee406e4be416f055914b76a6a01c91774f0cc268abe106f731243166"
+    },
+    "current-source/tools/literature/collect_signac_peak_split_linux.py": {
+      "bytes": 4901,
+      "sha256": "55370d87be566abb1084000d906beacf60024ea0f2002f519b4b862664b3a792"
+    },
+    "current-source/tools/literature/freeze_signac_peak_preparation_fixtures.py": {
+      "bytes": 2682,
+      "sha256": "b081dbb89442505f886f0ff9e13cf10d8fb16b1b160aeb66cc7e6291314812da"
+    },
+    "current-source/tools/literature/signac-peak-preparation-development.init.gradle": {
+      "bytes": 424,
+      "sha256": "46a058c6b05c0d505ab538525704a25e1c86f7221c5c60ddb4dd01c02a2bec5f"
+    },
+    "current-source/tools/literature/validate_signac_peak_preparation.py": {
+      "bytes": 6287,
+      "sha256": "a4bd8eb672591f54020ccbeaeb7177010306855065f67329929ab8a6e90df1ee"
+    },
+    "current-source/tools/literature/validate_signac_peak_preparation_example.py": {
+      "bytes": 4105,
+      "sha256": "0225c5fde5881abb7a0a3c0b5d8d3c452e10d327d8b5c87992e19991dc55d889"
+    },
+    "current-source/tools/literature/verify_signac_peak_preparation.py": {
+      "bytes": 4835,
+      "sha256": "bab71f4efc8eed1128761cd5fafa2e9c6103c3f2fbca433dda2012790184979a"
+    },
+    "normal-Gradle-tests.xml": {
+      "bytes": 4483,
+      "sha256": "e4dce2a62edec8e36ceda05d5eb5a05e1f804da59abf46df1d164858b22bd76e"
+    },
+    "parent-VALIDATION.json": {
+      "bytes": 1218225,
+      "sha256": "e86e9550919434bd8fb3c0c7d4c32a0bc9cc96169966e6be10af4b3b01cad9e2"
+    }
+  },
+  "artifact": {
+    "path": "build/literature-review/signac-runtime/peaks-preparation-development/omicsmatic-0.3.7-signac-peak-preparation-development.jar",
+    "bytes": 165271791,
+    "sha256": "5c6396a11ca6e2dea53a2a5f7b6a77c5bc16ee99c5cf0ae59507c95c006e20eb"
+  },
+  "parent": {
+    "bytes": 165260062,
+    "sha256": "31c2be9cbec607bfbc73445f2b517cfee51e9c5ba614c9da8f64d2bce0742dcb"
+  },
+  "changed_parent_entries": [],
+  "new_class_entries": [
+    "org/jlinalg/sequence/SignacPeakPreparation$CellGroup.class",
+    "org/jlinalg/sequence/SignacPeakPreparation$Group.class",
+    "org/jlinalg/sequence/SignacPeakPreparation$Limits.class",
+    "org/jlinalg/sequence/SignacPeakPreparation$Result.class",
+    "org/jlinalg/sequence/SignacPeakPreparation.class"
+  ],
+  "canonical_executable_preserved": {
+    "bytes": 164898617,
+    "sha256": "545917aaf820f2fe404873e1f0bc72186ebe90d3a11fd7f6f26f592115fbf2f2"
+  },
+  "normal_Gradle_tests": 32,
+  "actual_JAR_tests_per_JVM": 32,
+  "JVMs": [
+    {
+      "JVM": "windows-java21",
+      "tests": 32,
+      "passed": 32,
+      "skipped": 0
+    },
+    {
+      "JVM": "windows-java25",
+      "tests": 32,
+      "passed": 32,
+      "skipped": 0
+    },
+    {
+      "JVM": "linux-java21",
+      "tests": 32,
+      "passed": 32,
+      "skipped": 0
+    }
+  ],
+  "original_split_cases": 7,
+  "compression_variants_per_case": 2,
+  "original_Windows_newline_difference_preserved": true,
+  "matching_unchanged_cpp_editions": [
+    "1.9.0",
+    "1.14.0",
+    "1.17.1"
+  ],
+  "synthetic_example_JVMs": 3,
+  "catalog_counts": {
+    "papers": 250,
+    "tools": 387,
+    "observations": 2444,
+    "new_scoped_integrations": 70,
+    "including_existing": 73,
+    "missing": 258
+  },
+  "catalog_snapshot_pins": {
+    "summary.json": {
+      "bytes": 1181,
+      "sha256": "468d1071b84cf9a43387d863c40c55d4f9ea705539ebf4703aa82b72ea8b9dfd"
+    },
+    "tool-inventory.json": {
+      "bytes": 520699,
+      "sha256": "20c83a252e826ddf2682cf179d4f5e58dbe75ece7d108e8b09743ff82ae6254a"
+    },
+    "papers.json": {
+      "bytes": 3122885,
+      "sha256": "86bfdb64b4a3333c21ceb9dc9f55568ebb4c174e49f9714608f379c12b226f97"
+    },
+    "SHA256SUMS": {
+      "bytes": 40945,
+      "sha256": "527bf7015faa9ef9114d3d737498e02305f0646dfd9eb70f82dbde36b244b983"
+    }
+  },
+  "Signac_catalog_status": "missing",
+  "native_grouped_fragment_preparation": true,
+  "actual_MACS_peak_fits": false,
+  "MACS_runtime_admitted": false,
+  "complete_CallPeaks_workflow": false,
+  "root_dispatch_added": false,
+  "catalog_implementation_credit": false,
+  "full_Linux_Signac_runtime": false,
+  "historical_whole_packages_executed": false,
+  "installed_DLL_source_authentication": false,
+  "biological_accuracy_certified": false,
+  "full_paper_reproduction": false,
+  "full_project_test_suite_run": false,
+  "released": false,
+  "pushed": false,
+  "deployed": false,
+  "whole_goal_complete": false
+}

@@ -1,0 +1,21 @@
+# Palantir and trajectory/spatial source-role catalog update
+
+The fixed cohort remains250 papers:71 Nature,104 Nature Genetics and75 AJHG, collected in the original2023-10-23 through2026-10-23 window. No time extension was needed. The catalog now records **400 named tools,2,465 paper-tool observations,988 reviewed uses and340 supporting pointers**. **86 new scoped integrations** are available:17 native subsets and69 upstream adapters, or89 including three existing adapters. **255 named tools remain missing.** Five newly recognized names add four missing entries while the validated Palantir adapter receives credit. Whole-paper semantic completeness and the full implementation goal remain open.
+
+The [catalog validation](omics-2023-2026/palantir-catalog-validation.json) binds the exact [original Palantir coordinate adapter](PALANTIR_WORKFLOW_DEVELOPMENT.md), both editions, native audits and artifact SHA-256. Its original namespace, runtime and scientific evidence remain unchanged. The canonical executable remains unchanged; use the documented development JAR and explicit public classes.
+
+Eight source-bound roles are appended to the prior980 reviews; none of those980 reviews or the prior2,457 observations is changed. All250 original XML hashes and DOIs are checked. The new definitions are matched throughout the cohort, and all eight body-paragraph mentions receive separate semantic reviews. The draft file remains an immutable historical draft; the applied ledger identifies the current reviews.
+
+| Tool | Papers and reviewed use | Current implementation status |
+|---|---|---|
+| Palantir | P024: microglial pseudotime comparator, selecting the highest correlation over200 starting-cell choices. P094: multiscale diffusion-space construction upstream of scFates. | Scoped original1.4.4/1.4.6 coordinate workflows with native Java audits; paper editions and unreported settings are not inferred. |
+| scFates | P094: distinct200-node UMAP and3,000-node per-sample diffusion-space SimplePPT trees and downstream pseudotime. | Missing. The Palantir adapter and generic graph-distance code do not implement the tree fit. |
+| SAW | P094: Stereo-seq mapping/counting/segmentation, edition unreported. P117:7.0.0/GRCh38, binned and segmented-cell outputs. | Missing; source/license/runtime review is still required before permitted setup. |
+| Stereopy | P094:0.12.1 h5ad conversion. P117:1.1.0 GEF-to-AnnData followed by a separate R script to Seurat. | Missing; preserve editions and both conversion stages. |
+| DoRothEA | P169: TF-target regulatory evidence reused alongside OmniPath, with resource snapshot/confidence settings unspecified. | Missing; this role does not establish a DoRothEA/VIPER activity fit. |
+
+**Warnings and recovery:** read [WARNINGS.md](omics-2023-2026/WARNINGS.md), the Palantir guide and each analysis status. Missing or forbidden dependencies mean **SKIP3: skip dependent analysis**. **FAIL2 admits no result from the whole batch, including earlier completed cases.** Preserve originals, logs and provisionals; correct the named cause and retry NEW paths. Separate setup needs explicit install/download permission and exact dependencies. RUN installs nothing. Cell Ranger remains excluded.
+
+Original Palantir probabilities below0.01 are clipped after entropy computation without renormalizing rows. Preserve the clipping/mass warnings and explicit empty-fate policy. Native audits do not independently refit trajectories. P024's maximum-over200 selection is not held-out accuracy; P094's Palantir role does not establish a fate-probability analysis. DataFrame versus AnnData output labels, actual waypoint counts and source-version differences remain explicit.
+
+The evidence bundle preserves the previous catalog snapshot, exact review/render/browser-count deltas, source audit, original scientific gates, updated browser checks, desktop/mobile captures and failed development attempts. Only catalog metadata and documentation evolve. The shared-source compatibility allowlist remains exactly seven dispatcher/catalog paths; no scientific-source or verifier exception is added. No release, hosted website deployment, whole-package or biological/paper reproduction is claimed.

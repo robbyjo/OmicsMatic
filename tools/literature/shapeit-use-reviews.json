@@ -1,0 +1,170 @@
+[
+  {
+    "paper_id": "P019",
+    "primary_paragraph": 59,
+    "review": {
+      "pmcid": "PMC13600940",
+      "doi": "10.1038/s41586-026-10836-6",
+      "tool_id": "shapeit",
+      "evidence_paragraph_sha256": "41d6355a30dda16812b341a0151e6c85bffb9aa61a6d48667278080a18067d8f",
+      "use_summary": "Used MVP Release 4 genotypes whose data core pre-phased and imputed against TOPMed with SHAPEIT4 v4.1.3 and Minimac4 before the study-specific ancestry and GWAS/TWAS quality control.",
+      "implementation_scope_note": "This is a supplied upstream data-processing stage. TOPMed data access, Minimac imputation, ancestry assignment and GReX estimation are separate; do not infer that the study authors reran the MVP core phasing.",
+      "version_reported_near_name": "4.1.3",
+      "supporting_evidence": []
+    }
+  },
+  {
+    "paper_id": "P041",
+    "primary_paragraph": 53,
+    "review": {
+      "pmcid": "PMC10733150",
+      "doi": "10.1038/s41586-023-06831-w",
+      "tool_id": "shapeit",
+      "evidence_paragraph_sha256": "fa3c8083eb6788c7b861635470da2fef87502856443a04dab603e2542b3841a7",
+      "use_summary": "Phased genomes with the reported ShapeIT v2.12 at default parameters, using the low-coverage 1000 Genomes reference panel and phase-informative reads. Linked reads were used to estimate switch error rates and select a phasing strategy.",
+      "implementation_scope_note": "Retain the literal reported v2.12: the legacy distribution separately labels r-builds and GLIBC2.12, so this text does not uniquely identify a runtime. Read-aware phasing and reference-panel integration cannot be substituted with ordinary SHAPEIT4/5 cohort phasing. Supplementary Note 2 supplies further strategy details; its full protocol remains to be reviewed. Legacy SHAPEIT2 has separate restricted academic terms.",
+      "version_reported_near_name": "2.12 (as reported; build unresolved)",
+      "supporting_evidence": []
+    }
+  },
+  {
+    "paper_id": "P084",
+    "primary_paragraph": 40,
+    "review": {
+      "pmcid": "PMC10786715",
+      "doi": "10.1038/s41588-023-01600-x",
+      "tool_id": "shapeit",
+      "evidence_paragraph_sha256": "788a227d8e5886f3064cbaa0b6ce3ddf496b515f546459304f91e11aba23c2f7",
+      "use_summary": "Described UKBB genotypes produced by a two-step SHAPEIT pre-phasing and IMPUTE2 imputation process using HRC and UK10K haplotype resources, followed by the stated cohort and variant quality control.",
+      "implementation_scope_note": "The SHAPEIT generation and patch are not reported. The paragraph also calls the post-imputation metric Minimac r2 and states a MAC>100 removal; retain these source attributions without inventing a Minimac execution or repairing the inequality. Phasing, untyped-variant imputation and post-imputation QC are separate.",
+      "version_reported_near_name": null,
+      "supporting_evidence": []
+    }
+  },
+  {
+    "paper_id": "P097",
+    "primary_paragraph": 32,
+    "review": {
+      "pmcid": "PMC12695657",
+      "doi": "10.1038/s41588-025-02413-w",
+      "tool_id": "shapeit",
+      "evidence_paragraph_sha256": "c100ba29c458b9dc8835dcae695a3a00a06ab6d096236cdc52cd02f9e0fbe7cc",
+      "use_summary": "Reported QMDiab Omni2.5 array processing with SHAPEIT and 1000 Genomes phase3 haplotypes, described in the paper as imputation. Genotypes were available for 325 samples with proteomics data.",
+      "implementation_scope_note": "The SHAPEIT generation, patch and exact phasing/imputation commands are not stated. Do not assign the separately described Tarkin Minimac3 or PLINK/bcftools settings to the QMDiab SHAPEIT stage, or invent another QMDiab imputation program.",
+      "version_reported_near_name": null,
+      "supporting_evidence": []
+    }
+  },
+  {
+    "paper_id": "P123",
+    "primary_paragraph": 33,
+    "review": {
+      "pmcid": "PMC13553293",
+      "doi": "10.1038/s41588-026-02741-5",
+      "tool_id": "shapeit",
+      "evidence_paragraph_sha256": "a5933db9454467762013970a30dc1e624419cb04818c04bfe082ea11228968de",
+      "use_summary": "Estimated haplotypes for Japanese datasets using SHAPEIT4 before Minimac4 genotype imputation; the imputation reference comprised 11,754 Japanese whole-genome-sequenced individuals.",
+      "implementation_scope_note": "The reference panel is specified for imputation, but the text does not uniquely specify SHAPEIT4 patch or whether that panel was supplied to SHAPEIT4 itself. Do not infer reference-mode command flags or imputation equivalence from the phaser name.",
+      "version_reported_near_name": "4; patch unstated",
+      "supporting_evidence": []
+    }
+  },
+  {
+    "paper_id": "P136",
+    "primary_paragraph": 30,
+    "review": {
+      "pmcid": "PMC11525193",
+      "doi": "10.1038/s41588-024-01913-5",
+      "tool_id": "shapeit",
+      "evidence_paragraph_sha256": "786ac8379a0b3c4ecb697c4bf1b35666ab9d89591dc2c47dcce0643e2416a52f",
+      "use_summary": "Phased the BBJ first cohort with SHAPEIT2, reported as v.2.837, before Minimac4 imputation. The separately supplied ToMMo dataset used SHAPEIT2 v2.R837 before IMPUTE2 imputation.",
+      "implementation_scope_note": "Preserve both literal version strings and cohort assignments. BBJ second-cohort and NCGG phasing used EAGLE2, not SHAPEIT2; the imputation programs and downstream QC are separate. Legacy exact-build and license eligibility remain necessary for an original SHAPEIT2 execution.",
+      "version_reported_near_name": "2; BBJ1 v.2.837; ToMMo v2.R837",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 31,
+          "section": "Methods / Haplotype phasing and imputation",
+          "paragraph_sha256": "a0cbd20644b50598b9785aafa1e4eb4c1058cc107c813d6f3d25683c7350b6c4"
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "P149",
+    "primary_paragraph": 40,
+    "review": {
+      "pmcid": "PMC10632135",
+      "doi": "10.1038/s41588-023-01538-0",
+      "tool_id": "shapeit",
+      "evidence_paragraph_sha256": "c6d55e197541470af2a914ac39f75e8401ff47afc51265ecf7b572cba614b085",
+      "use_summary": "Phased quality-controlled US Intermountain chip genotypes using SHAPEIT4; long-range phased chip samples and in-house methods were then used to prepare the sequence-variant haplotype reference panel.",
+      "implementation_scope_note": "The SHAPEIT4 patch is not stated. WGS calling with Graphtyper, the in-house long-range phasing/reference construction and later imputation are distinct stages; a standard SHAPEIT4 run does not reproduce that complete reference-building pipeline.",
+      "version_reported_near_name": "4; patch unstated",
+      "supporting_evidence": []
+    }
+  },
+  {
+    "paper_id": "P180",
+    "primary_paragraph": 18,
+    "review": {
+      "pmcid": "PMC11739871",
+      "doi": "10.1016/j.ajhg.2024.10.022",
+      "tool_id": "shapeit",
+      "evidence_paragraph_sha256": "6c261d593bce543493f182ee469031f99cbd4cf2c990c272919da6011e2f1127",
+      "use_summary": "Used SHAPEIT5 with 1000 Genomes phase3 haplotypes for MSMC demographic analyses. Separately used phase_common_static with that reference before CHROMOPAINTER, and common-marker phasing of Armenian genomes before the IMPUTE5 imputation benchmark.",
+      "implementation_scope_note": "The patch and full parameter sets are not reported. The paper writes phasing_common in its imputation section; retain that wording as a source label while distinguishing the actual upstream phase_common program. CHROMOPAINTER, MSMC and IMPUTE5 analyses, masking and reference augmentation remain separate.",
+      "version_reported_near_name": "5; patch unstated",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 16,
+          "section": "Material and methods / Population genomic analyses",
+          "paragraph_sha256": "d94c868e99d1a1ec56babbca1fe876d62666452bdd0f3979d893e2ac15cf75e5"
+        },
+        {
+          "paragraph_index": 30,
+          "section": "Material and methods / Imputation",
+          "paragraph_sha256": "546a38b0958f0a6c616e61393d1e0558187399976e6f32c93fe16c7b5b696640"
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "P184",
+    "primary_paragraph": 22,
+    "review": {
+      "pmcid": "PMC13504326",
+      "doi": "10.1016/j.ajhg.2026.06.003",
+      "tool_id": "shapeit",
+      "evidence_paragraph_sha256": "6570c84dc0b960a14f6d6f6d6bea8e983ce70d5f0a8626eaf7c65dff81dfe225",
+      "use_summary": "Filled missing genotypes with SHAPEIT5 in cohort-only mode, without an external reference, after constructing the 229,986-SNP harmonized ancestry-prediction input set.",
+      "implementation_scope_note": "This is missing-call imputation within the retained SNP set, not evidence of reference-panel imputation of additional untyped variants. PLINK SNP intersection, MAF/missingness filters, LD pruning, HLA exclusion and neural-network ancestry prediction are separate.",
+      "version_reported_near_name": "5; patch unstated",
+      "supporting_evidence": []
+    }
+  },
+  {
+    "paper_id": "P210",
+    "primary_paragraph": 19,
+    "review": {
+      "pmcid": "PMC13277689",
+      "doi": "10.1016/j.ajhg.2026.04.005",
+      "tool_id": "shapeit",
+      "evidence_paragraph_sha256": "70766d01c000238d94f7135d622e5a3d71f73e604f7d63c21eaa6c3ee5ee36d3",
+      "use_summary": "Used a Snakemake SHAPEIT5 wrapper for chromosome chunks in G&H, BBJ and BioMe, combining exome and array genotypes with exome variants prioritized at overlaps. Common variants, described as MAF>0.001, formed the scaffold for rare-variant phasing; the UKB expansion used a similar two-stage procedure. Downstream compound-heterozygote analyses retained PP>0.90.",
+      "implementation_scope_note": "The patch, chunk/ligation details and exact parameter files are not given in these paragraphs. Preserve the paper's strict MAF wording without assuming that a current --filter-maf 0.001 implementation has the same equality boundary. 100kGP reused external phased data; AOU was not phased and used homozygous burdens only. Posterior filtering, recessive burden construction and association analysis are separate.",
+      "version_reported_near_name": "5; patch unstated",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 20,
+          "section": "Methods / Statistical phasing and recessive burden calculation",
+          "paragraph_sha256": "10455cb8992d783753d5d2b102081712f6fcb5d1cf0e0140ade347dc34e1ab3b"
+        },
+        {
+          "paragraph_index": 37,
+          "section": "Results / Characterizing bi-allelic variation across biobanks",
+          "paragraph_sha256": "e9c83993b1b87cd29ab540358e4849ae0926815c56f53c2b68d7a64476db6445"
+        }
+      ]
+    }
+  }
+]

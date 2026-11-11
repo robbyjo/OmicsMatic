@@ -1,0 +1,15 @@
+# Copyright (C) 2026 JLinAlg contributors; SPDX-License-Identifier: GPL-3.0-or-later
+"""Create a portable exact-original Palantir setup profile; never rewrite an existing profile."""
+import argparse,json
+from pathlib import Path
+from setup_deseq2_reference import ROOT,pin,save
+
+def main():
+    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--out',required=True,type=Path);a=p.parse_args();out=a.out.resolve();assert out.is_relative_to(ROOT/'build/literature-review/palantir-runtime') and not out.exists();out.mkdir(parents=True);kit=ROOT/'src/main/resources/org/jlinalg/omics/palantir-workflow';source_root=ROOT/'build/literature-review/palantir-runtime/source-intake-3';source=json.loads((source_root/'SOURCE.json').read_bytes());locks=json.loads((ROOT/'build/literature-review/palantir-runtime/reference-setup-2/dependency-locks.json').read_bytes());assert source['status']=='PASS_EXACT_OFFICIAL_PALANTIR_SOURCE_ONLY' and len(locks['archives'])==48;editions={};attribute=kit/'.gitattributes';assert not attribute.exists();attribute.write_text('* -text whitespace=-blank-at-eol,-blank-at-eof,-space-before-tab,cr-at-eol\n',encoding='utf8',newline='\n')
+    for edition,profile in source['versions'].items():
+        original=source_root/edition/profile['wheel']['filename'];assert pin(original)=={k:profile['wheel'][k] for k in ['bytes','sha256']};target=kit/'original'/profile['wheel']['filename'];target.parent.mkdir(parents=True,exist_ok=True);assert not target.exists();target.write_bytes(original.read_bytes());editions[edition]=dict(wheel=profile['wheel'],members=profile['wheel_members'],revision=profile['revision'])
+    inventory=kit/'setup/inventory.py';assert not inventory.exists();inventory.write_bytes((ROOT/'tools/literature/inventory_hail_runtime_linux.py').read_bytes());base=ROOT/'src/main/resources/org/jlinalg/omics/cellphonedb-workflow/profiles.json';profile=dict(schema_version=1,editions=editions,python_version='3.11.17',base_profile=pin(base),base_runtime_policy='Existing exact permitted project CellPhoneDB Python runtime is shared read-only; no CellPhoneDB analysis is executed. Export that kit separately when the base is missing; forbidden installation skips dependent analysis.',dependency_archives=locks['archives'],source_profile=pin(source_root/'SOURCE.json'),namespace_patched=False,analysis_installs_software=False);files=[p for p in kit.rglob('*') if p.is_file() and p.relative_to(kit).parts[0] in ['setup','original']];profile['files']={p.relative_to(kit).as_posix():pin(p) for p in files};save(kit/'profiles.json',profile);save(out/'COMPLETED.json',dict(status='PASS_EXACT_ORIGINAL_PALANTIR_WORKFLOW_SETUP_PROFILE_ONLY',profile=pin(kit/'profiles.json'),members=len(files),dependency_archives=48,source_pins={Path(__file__).resolve().relative_to(ROOT).as_posix():pin(Path(__file__))},implementation_credit=False,whole_goal_complete=False));print('Prepared exact original2-edition setup kit;48 locked archives; shared Python base remains read-only')
+
+if __name__=='__main__':
+    if not __debug__:raise RuntimeError('Never disable exact setup profile checks')
+    main()

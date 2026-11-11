@@ -25,34 +25,47 @@ final class FumaLociCli {
     private static final Set<String> ALLOWED=Set.of("method","gwas","reference","ld","reference-id","ld-floor",
         "lead-p","candidate-p","maf","independent-r2","lead-r2","merge-distance-bp","merge-boundary",
         "include-reference","mhc","regions","predefined","add-independent","ties","unmatched-reference",
-        "empty","max-bytes","max-gwas","max-reference","max-pairs","max-work","out","locus-options-file");
-    private static final String SCOPE="NATIVE LOCUS MODULE ONLY: supplied-reference LD/MAF selection, independent variants, lead SNPs and consistent genomic-risk-locus components. No LD estimation, resource download, liftover, annotation, ANNOVAR, MAGMA, expression or hosted FUMA analysis is performed. Required action: declare the exact reference assembly/population/release and complete sparse-LD floor; do not use this module as a full SNP2GENE workflow.";
+        "empty","max-bytes","max-gwas","max-reference","max-pairs","max-work","out","locus-options-file",
+        "reference-bundle","expected-reference-assembly","window-bp","window-index-gap","max-samples","max-variants","max-word-work","max-owned-bytes","max-output-bytes","max-metadata-bytes");
+    private static final String SCOPE="NATIVE LOCUS MODULE ONLY: supplied-reference LD/MAF selection, independent variants, lead SNPs and consistent genomic-risk-locus components. Captured hardcall reference bundles are fully replayed before admission; raw LD/MAF remains a caller declaration. No resource download, liftover, annotation, ANNOVAR, MAGMA, expression or hosted FUMA analysis is performed. Required action: declare the exact reference assembly/population/release, sparse-LD floor and window; do not use this module as a full SNP2GENE workflow.";
     static int run(String[] args,PrintStream out,PrintStream err) {
         if (Arrays.asList(args).contains("--help")) {out.println(help());return 0;}
         try {
             Map<String,String> o=parse(args);if (!required(o,"method").equals("loci")) throw new IllegalArgumentException("--method must be loci");
-            for (String name:List.of("gwas","reference","ld","reference-id","ld-floor","lead-p","candidate-p","maf","independent-r2","lead-r2","merge-distance-bp","merge-boundary","include-reference","mhc","add-independent","ties","unmatched-reference","empty","out")) required(o,name);
+            for (String name:List.of("gwas","lead-p","candidate-p","maf","independent-r2","lead-r2","merge-distance-bp","merge-boundary","include-reference","mhc","add-independent","ties","unmatched-reference","empty","out")) required(o,name);
+            if(o.containsKey("reference-bundle")){
+                for(String name:List.of("reference","ld","reference-id","ld-floor","window-bp","window-index-gap"))if(o.containsKey(name))throw new IllegalArgumentException("--reference-bundle carries its authoritative protocol; do not override --"+name);
+            }else{
+                if(o.containsKey("expected-reference-assembly"))throw new IllegalArgumentException("--expected-reference-assembly requires --reference-bundle");
+                for(String name:List.of("reference","ld","reference-id","ld-floor"))required(o,name);
+                if(o.containsKey("window-bp")!=o.containsKey("window-index-gap"))throw new IllegalArgumentException("Supply both --window-bp and --window-index-gap for bounded raw LD");
+            }
             int[] code={0};transaction(o,"fuma-loci",(directory,manifest)->{
                 Map<String,Object> session=new LinkedHashMap<>();Map<Path,String> sources=new LinkedHashMap<>();List<String> warnings=new ArrayList<>();warnings.add(SCOPE);
                 try {
                     if (o.containsKey("locus-options-file")) {Path p=Path.of(o.get("locus-options-file")).toAbsolutePath().normalize();if (!hash(p).equals(o.get("options-sha256"))) throw new IOException("Options carrier changed before analysis");sources.put(p,o.get("options-sha256"));}
                     int maxBytes=integer(o,"max-bytes",268435456,1,1073741824),maxGwas=integer(o,"max-gwas",1000000,1,2000000),maxReference=integer(o,"max-reference",2000000,1,10000000),maxPairs=integer(o,"max-pairs",2000000,0,20000000);
+                    FumaReferenceCli.Admission admitted=o.containsKey("reference-bundle")?FumaReferenceCli.admit(Path.of(o.get("reference-bundle")),o,sources):null;
+                    if(admitted!=null&&o.containsKey("expected-reference-assembly")&&!admitted.assembly().equals(o.get("expected-reference-assembly")))throw new IOException("Captured reference assembly differs from --expected-reference-assembly; no liftover or relabeling is performed");
+                    Path referencePath=admitted==null?Path.of(o.get("reference")):admitted.reference(),ldPath=admitted==null?Path.of(o.get("ld")):admitted.ld();
+                    String referenceId=admitted==null?o.get("reference-id"):admitted.identity();double ldFloor=admitted==null?number(o,"ld-floor",0):admitted.floor();
+                    FumaLocusDefinition.LdWindow window=admitted!=null?admitted.window():o.containsKey("window-bp")?new FumaLocusDefinition.LdWindow(Long.parseLong(o.get("window-bp")),Integer.parseInt(o.get("window-index-gap"))):FumaLocusDefinition.LdWindow.unlimited();
                     long merge=Long.parseLong(o.get("merge-distance-bp")),work=Long.parseLong(o.getOrDefault("max-work","100000000"));
                     String boundary=choice(o,"merge-boundary",Set.of("strict","inclusive")),ties=choice(o,"ties",Set.of("error","position"));choice(o,"unmatched-reference",Set.of("error","exclude"));choice(o,"empty",Set.of("error","retain"));
                     var gwasTable=read(Path.of(o.get("gwas")),sources,maxBytes,maxGwas);gwasTable.require("chr","pos","non_effect_allele","effect_allele","rsID","p");List<FumaLocusDefinition.Gwas> gwas=new ArrayList<>();Map<String,String> literalP=new HashMap<>();Map<String,FumaLocusDefinition.Gwas> gwasByUid=new HashMap<>();
                     for (String[] row:gwasTable.rows()) {
                         var g=new FumaLocusDefinition.Gwas(gwasTable.integer(row,"chr"),gwasTable.integer(row,"pos"),gwasTable.value(row,"non_effect_allele"),gwasTable.value(row,"effect_allele"),gwasTable.value(row,"rsID"),finite(gwasTable.value(row,"p"),"GWAS P"));gwas.add(g);literalP.put(g.uid(),gwasTable.value(row,"p"));gwasByUid.put(g.uid(),g);
                     }
-                    var refTable=read(Path.of(o.get("reference")),sources,maxBytes,maxReference);refTable.require("chr","pos","A1","A2","rsID","MAF");List<FumaLocusDefinition.ReferenceVariant> variants=new ArrayList<>();
+                    var refTable=read(referencePath,sources,maxBytes,maxReference);refTable.require("chr","pos","A1","A2","rsID","MAF");List<FumaLocusDefinition.ReferenceVariant> variants=new ArrayList<>();
                     for (String[] row:refTable.rows()) variants.add(new FumaLocusDefinition.ReferenceVariant(refTable.integer(row,"chr"),refTable.integer(row,"pos"),refTable.value(row,"A1"),refTable.value(row,"A2"),refTable.value(row,"rsID"),finite(refTable.value(row,"MAF"),"reference MAF")));
-                    var ldTable=read(Path.of(o.get("ld")),sources,maxBytes,maxPairs);ldTable.require("chr","pos1","pos2","r2");List<FumaLocusDefinition.LdPair> pairs=new ArrayList<>();for (String[] row:ldTable.rows()) pairs.add(new FumaLocusDefinition.LdPair(ldTable.integer(row,"chr"),ldTable.integer(row,"pos1"),ldTable.integer(row,"pos2"),finite(ldTable.value(row,"r2"),"LD r2")));
+                    var ldTable=read(ldPath,sources,maxBytes,maxPairs);ldTable.require("chr","pos1","pos2","r2");List<FumaLocusDefinition.LdPair> pairs=new ArrayList<>();for (String[] row:ldTable.rows()) pairs.add(new FumaLocusDefinition.LdPair(ldTable.integer(row,"chr"),ldTable.integer(row,"pos1"),ldTable.integer(row,"pos2"),finite(ldTable.value(row,"r2"),"LD r2")));
                     List<FumaLocusDefinition.Interval> regions=new ArrayList<>();
                     if (o.containsKey("regions")) {var input=read(Path.of(o.get("regions")),sources,maxBytes,100000);input.require("chr","start","end");for (String[] row:input.rows()) regions.add(new FumaLocusDefinition.Interval(input.integer(row,"chr"),input.integer(row,"start"),input.integer(row,"end")));if (regions.isEmpty()) throw new IOException("Empty predefined-region table");}
                     List<String> seeds=new ArrayList<>();if (o.containsKey("predefined")) {var input=read(Path.of(o.get("predefined")),sources,maxBytes,maxGwas);input.require("uid");for (String[] row:input.rows()) seeds.add(input.value(row,"uid"));if (seeds.isEmpty()) throw new IOException("Empty predefined-UID table");}
                     boolean add=bool(o,"add-independent",true);if (seeds.isEmpty()&&!add) throw new IllegalArgumentException("Without predefined UIDs, --add-independent must be true");
                     FumaLocusDefinition.Interval mhc=null;
                     if (!o.get("mhc").equals("none")) {String[] values=o.get("mhc").split(":",-1);if (values.length!=3||!values[0].equals("6")) throw new IllegalArgumentException("--mhc must be none or 6:START:END in the declared assembly");mhc=new FumaLocusDefinition.Interval(6,Integer.parseInt(values[1]),Integer.parseInt(values[2]));}
-                    var reference=new FumaLocusDefinition.Reference(o.get("reference-id"),variants,pairs,number(o,"ld-floor",0));
+                    var reference=new FumaLocusDefinition.Reference(referenceId,variants,pairs,ldFloor,window);
                     var protocol=new FumaLocusDefinition.Options(number(o,"lead-p",5e-8),number(o,"candidate-p",.05),number(o,"maf",0),number(o,"independent-r2",.6),number(o,"lead-r2",.1),merge,bool(o,"include-reference",true),mhc,regions,seeds,add,ties.equals("error")?FumaLocusDefinition.Ties.ERROR:FumaLocusDefinition.Ties.POSITION,boundary.equals("strict")?FumaLocusDefinition.MergeBoundary.SOURCE_STRICT:FumaLocusDefinition.MergeBoundary.INCLUSIVE,work);
                     var result=FumaLocusDefinition.define(gwas,reference,protocol);warnings.addAll(result.warnings());
                     table(directory.resolve("input-gwas.tsv"),gwasTable.header(),gwasTable.rows());
@@ -72,7 +85,8 @@ final class FumaLociCli {
                     List<String[]> loci=new ArrayList<>();for (var l:result.loci()) loci.add(new String[]{""+l.index(),l.top().uid(),l.top().rsId(),""+l.chromosome(),""+l.top().position(),literalP.get(l.top().uid()),""+l.start(),""+l.end(),""+l.candidateUids().size(),""+l.gwasCandidates(),""+l.independentUids().size(),String.join(";",l.independentUids()),""+l.leadUids().size(),String.join(";",l.leadUids())});
                     table(directory.resolve("loci.tsv"),List.of("locus","top_uid","top_rsID","chr","top_pos","p","start","end","n_candidates","n_gwas_candidates","n_independent","independent_uids","n_leads","lead_uids"),loci);
                     session.put("reference_id",reference.identity());session.put("reference_variants",reference.variantCount());session.put("ld_floor",reference.storedMinimumR2());session.put("gwas_rows",gwas.size());session.put("candidate_rows",result.candidates().size());session.put("independent_variants",result.independent().size());session.put("lead_variants",result.leads().size());session.put("risk_loci",result.loci().size());session.put("work",result.work());session.put("locus_rule","complete-transitive-interval-components");session.put("merge_boundary",boundary);session.put("p_parser","Java full-precision finite double;original decimal strings retained");session.put("options",o);
-                    warnings.add("LD COVERAGE AND LOCUS RULE REQUIRE REVIEW: unlisted within-chromosome pairs are declared strictly below --ld-floor; a zero floor requires all pairs. The module cannot prove omitted LD or reference ancestry/build from a sparse file. Complete interval components correct observed original backward-bridge defects; legacy count columns and complete block counts are distinct. Inspect every declared resource and ld-memberships.tsv/independent.tsv/loci.tsv before downstream use.");
+                    session.put("reference_preparation_replayed",admitted!=null);session.put("ld_window_bp",window.maximumDistanceBp());session.put("ld_window_index_gap",window.maximumIndexGap());
+                    warnings.add("LD COVERAGE AND LOCUS RULE REQUIRE REVIEW: unlisted IN-WINDOW within-chromosome pairs are strictly below the declared LD floor; zero requires all IN-WINDOW pairs. Outside-window pairs are uncomputed protocol exclusions, not observed zero/weak LD or established biological independence. A reference bundle is completely recomputed from its captured selected calls before admission; raw sparse files remain a caller assertion. Assembly/ancestry declarations are not independently proved. Complete interval components correct observed original backward-bridge defects; legacy count columns and complete block counts are distinct. Inspect every declared resource and ld-memberships.tsv/independent.tsv/loci.tsv before downstream use.");
                     for (var e:sources.entrySet()) if (!hash(e.getKey()).equals(e.getValue())) throw new IOException("Input changed during analysis: "+e.getKey());
                     manifest.put("analysis_status",result.independent().isEmpty()?"completed-empty-with-review-warnings":"completed-with-review-warnings");
                 } catch (Exception failure) {code[0]=2;manifest.put("analysis_status","failed");session.put("error",failure.toString());RnaToolRuntime.quarantine(directory);session.put("retained_files_location","partial/");warnings.add(0,"ANALYSIS FAILED: "+failure.getMessage()+". Required action: inspect session.json and partial/ audits, correct the named input/parameter/resource-budget issue, and rerun to a new directory. No partial table is admitted as a completed analysis.");}
@@ -98,6 +112,8 @@ final class FumaLociCli {
     private static String choice(Map<String,String> o,String name,Set<String> values) {String value=required(o,name);if (!values.contains(value)) throw new IllegalArgumentException("--"+name+" must be one of "+values);return value;}
     private static String help() {return """
         Native supplied-reference FUMA locus module (Java only; broader SNP2GENE unfinished).
+          fuma-tools --method loci --gwas GWAS.tsv --reference-bundle CAPTURE_DIRECTORY
+            [same locus options below, omitting raw reference/id/floor/window options]
           fuma-tools --method loci --gwas GWAS.tsv --reference REFERENCE.tsv --ld LD.tsv
             --reference-id ASSEMBLY_POPULATION_RELEASE --ld-floor 0.05
             --lead-p 5e-8 --candidate-p 0.05 --maf 0 --independent-r2 0.6 --lead-r2 0.1
@@ -110,7 +126,12 @@ final class FumaLociCli {
         Reference: chr,pos,rsID,A1,A2,MAF. LD: chr,pos1,pos2,r2 (undirected; omit self).
         Regions: chr,start,end (inclusive); predefined: uid (chr:pos:sorted-alleles).
         All inputs plain UTF-8 TSV, numeric chromosomes, one-based positive coordinates.
-        Unlisted LD pairs must be strictly below the explicit floor; zero requires all pairs.
+        Bundle mode verifies hashes and replays the COMPLETE captured genotype family before loci.
+        Optional bundle assertion: --expected-reference-assembly ASSEMBLY (also set by workflow).
+        Raw mode: optionally supply BOTH --window-bp BP and --window-index-gap GAP (inclusive).
+        Without those raw flags, the original unbounded sparse assertion is preserved.
+        Unlisted IN-WINDOW LD pairs must be strictly below the floor; zero requires all in-window
+          pairs. Outside-window LD is UNCOMPUTED, not observed zero/weak LD.
         One reference variant per coordinate is required by the source's positional LD model.
         Native complete interval components fix observed original backward-merge defects.
         Strict merge matches source code distance; inclusive is an explicit alternate boundary.

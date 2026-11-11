@@ -1,0 +1,224 @@
+{
+  "r_version": "4.6.1",
+  "platform": "x86_64-w64-mingw32",
+  "required_packages": {
+    "cicero": "1.3.9",
+    "monocle3": "1.4.27",
+    "Biobase": "2.72.0",
+    "BiocGenerics": "0.58.1",
+    "Matrix": "1.7.5",
+    "data.table": "1.18.6.1",
+    "dplyr": "1.2.1",
+    "plyr": "1.8.9",
+    "FNN": "1.1.4.1",
+    "glasso": "1.11",
+    "VGAM": "1.1.14",
+    "GenomicRanges": "1.64.0",
+    "IRanges": "2.46.0",
+    "S4Vectors": "0.50.3",
+    "SummarizedExperiment": "1.42.0",
+    "Gviz": "1.56.0",
+    "ggplot2": "4.0.3",
+    "reshape2": "1.4.5",
+    "tibble": "3.3.1",
+    "tidyr": "1.3.2",
+    "stringi": "1.8.9",
+    "stringr": "1.6.0",
+    "jsonlite": "2.0.0",
+    "RhpcBLASctl": "0.23.42"
+  },
+  "glasso_formals": "as.pairlist(alist(s = , rho = , nobs = NULL, zero = NULL, thr = 1e-04, maxit = 10000, approx = FALSE, penalize.diagonal = TRUE, start = c(\"cold\", \n    \"warm\"), w.init = NULL, wi.init = NULL, trace = FALSE))",
+  "cov2cor_body": "{\n    p <- (d <- dim(V))[1L]\n    if (!is.numeric(V) || length(d) != 2L || p != d[2L]) \n        stop(\"'V' is not a square numeric matrix\")\n    pos <- !is.na(Is <- D <- diag(V, names = FALSE)) & D > 0\n    Is[pos] <- sqrt(1/D[pos])\n    Is[!pos] <- NaN\n    if (any(!pos) || any(!is.finite(Is))) \n        warning(\"diag(V) had non-positive or NA entries; the non-finite result may be dubious\")\n    r <- V\n    r[] <- Is * V * rep(Is, each = p)\n    if (p) \n        r[seq.int(from = 1L, by = p + 1L, length.out = p)] <- 1\n    r\n}",
+  "schema_version": 1,
+  "version": "1.3.9",
+  "files": {
+    "1.3.9/cicero/DESCRIPTION": {
+      "bytes": 1503,
+      "sha256": "734791007932e8c89c4c91f830fcc45d634683f47cbc07367000446a1b8e5ac7"
+    },
+    "1.3.9/cicero/LICENSE": {
+      "bytes": 1088,
+      "sha256": "215bc21718236b749668dfd6d0af16295e82447ecdb65397ce2c62ee45903505"
+    },
+    "1.3.9/cicero/R/activityScores.R": {
+      "bytes": 13909,
+      "sha256": "5aabe4e116fd0c948dbf9a09636498300bf7cf2c1bbf49e3e15be8303f76eee9"
+    },
+    "1.3.9/cicero/R/aggregate.R": {
+      "bytes": 7360,
+      "sha256": "898f126fb21eca29148a9b4b24e5a387b8a9b21426b79bec68d326924565b6fc"
+    },
+    "1.3.9/cicero/R/cicero.R": {
+      "bytes": 515,
+      "sha256": "38e71d0bac82c0e4bcaa981ebf1e9caabe9d9e8dbb379e2fa75956e5078f1ea1"
+    },
+    "1.3.9/cicero/R/data.R": {
+      "bytes": 1914,
+      "sha256": "c9cec7690cff954f13f556f23b7712facb3cdbf03d80e4fe6dcb1ef126c611ae"
+    },
+    "1.3.9/cicero/R/fromGviz.R": {
+      "bytes": 2776,
+      "sha256": "16d938c67f39ae8e49a6098a1274750542d804b4cb02d2d64d0444bcae30f16d"
+    },
+    "1.3.9/cicero/R/plotting.R": {
+      "bytes": 33997,
+      "sha256": "e1a76a0a5f231c4991af32ae89846217708a73b8b84c75b12592d8d4945e5ca2"
+    },
+    "1.3.9/cicero/R/runCicero.R": {
+      "bytes": 41677,
+      "sha256": "6dd769bce1371d9b2a341ebd5e40f6a9dd5c2073d72f3839851bbbe00b1878e8"
+    },
+    "1.3.9/cicero/R/utils.R": {
+      "bytes": 19726,
+      "sha256": "c6b0231ba57cbec0e24f8adf2530d0cee58b86b13b6f6651bb4880d7dc4452af"
+    },
+    "1.3.9/monocle3/DESCRIPTION": {
+      "bytes": 3198,
+      "sha256": "f7c6238413dda51373a06b9b4a1551a73f8d25666ae23fb3d83b88c92582be1e"
+    },
+    "1.3.9/monocle3/LICENSE": {
+      "bytes": 43,
+      "sha256": "1637c70cad982fb636e25d0931ff159eced22f2e049683befea77d5cad85d53e"
+    },
+    "1.3.9/monocle3/LICENSE.md": {
+      "bytes": 1072,
+      "sha256": "b7ffa3b6468275a835ff126367080e201d92f8e1f2e024e4c24d3c488e2ce7f2"
+    },
+    "1.3.9/monocle3/R/alignment.R": {
+      "bytes": 9358,
+      "sha256": "5bfffb756baed21fc36feb42e58f18d66b600435324d2e14b502429ff8386237"
+    },
+    "1.3.9/monocle3/R/bpcells.R.0": {
+      "bytes": 12216,
+      "sha256": "3e5ccba948cc8b51a8d83c9f3c483ce35d70f0dfa211dc21fcab46da1336eaf2"
+    },
+    "1.3.9/monocle3/R/cell_data_set.R": {
+      "bytes": 7113,
+      "sha256": "d26a5d3979e5b01710dd216b726cb63811be93b542ac5a0200739d3fd1a5534e"
+    },
+    "1.3.9/monocle3/R/cluster_cells.R": {
+      "bytes": 27589,
+      "sha256": "06671484582a79c8e344af3db1cc1ddddba60c015fd750c812d9543ab6e68384"
+    },
+    "1.3.9/monocle3/R/cluster_genes.R": {
+      "bytes": 28942,
+      "sha256": "d87138cd5c4ab173106d1ae18a43d79641f1f897c9babb68ee6b3f9f6b8779bc"
+    },
+    "1.3.9/monocle3/R/expr_models.R": {
+      "bytes": 32698,
+      "sha256": "76cd1ece733c34561ba10c72e99ca234e0d2574865809a6e65090409c283326a"
+    },
+    "1.3.9/monocle3/R/find_markers.R": {
+      "bytes": 24744,
+      "sha256": "55757c2ac34fe3194d2addddf2b8b177db6fc1ae0874c5a0277984e3eb7b7463"
+    },
+    "1.3.9/monocle3/R/generics.R": {
+      "bytes": 24658,
+      "sha256": "7761b78c2598ad5b41dc763330100a382b684f2897b871d723f637339c8fad78"
+    },
+    "1.3.9/monocle3/R/graph_test.R": {
+      "bytes": 26105,
+      "sha256": "19efc2848dd0cf543465b5c73a57940b19022af97c0e1923f64cd5e108e57b6e"
+    },
+    "1.3.9/monocle3/R/identity.R": {
+      "bytes": 17436,
+      "sha256": "18ca90c0fc82d667721ec787a88cdf93b5153b53ba5a874b54857b81f5a2b466"
+    },
+    "1.3.9/monocle3/R/io.R": {
+      "bytes": 118942,
+      "sha256": "ba153bfb960911531d73f9f537ba88632673906946a0584293bc2cbe9d01217e"
+    },
+    "1.3.9/monocle3/R/label_transfer.R": {
+      "bytes": 24919,
+      "sha256": "6a2b8bd096895e7f4b1d7dd0f5ab0f9bf99f582d23e49f82c2e6422a8efe391e"
+    },
+    "1.3.9/monocle3/R/learn_graph.R": {
+      "bytes": 55836,
+      "sha256": "a76c4d5350e59407ba02a6a7b4b5a11ecf5cdc39d6c38b3b5164939722ad6fcb"
+    },
+    "1.3.9/monocle3/R/load_cellranger_data.R": {
+      "bytes": 7653,
+      "sha256": "8e856bf83160dc28b3b43c8dd04867c2fb2f90d9132acdace830cb184634478d"
+    },
+    "1.3.9/monocle3/R/matrix.R": {
+      "bytes": 47073,
+      "sha256": "cc8bbc73c29d56a813c1314d8817ff734a48cda4b1810432668e54d70d3d756b"
+    },
+    "1.3.9/monocle3/R/methods-cell_data_set.R": {
+      "bytes": 1049,
+      "sha256": "6d7b3c2bb17ffb269786dec9e84e43b110ec76180ce1434c65dae3cd07cbe2d6"
+    },
+    "1.3.9/monocle3/R/nearest_neighbors.R": {
+      "bytes": 67687,
+      "sha256": "5787b5a1d3e6687a1a65085e4d71a4bb34cc4581f0d66173ba5e37094deeee9e"
+    },
+    "1.3.9/monocle3/R/order_cells.R": {
+      "bytes": 20227,
+      "sha256": "1518f6b3eb834fff6c76724c2e5be8a3b51432c39891ba3fa4925c0364a20866"
+    },
+    "1.3.9/monocle3/R/pca.R": {
+      "bytes": 18535,
+      "sha256": "259452ad11f828c17cb55e8dd17fb2deba17ebc900e7c42c47d8959e2dab304c"
+    },
+    "1.3.9/monocle3/R/plotting.R": {
+      "bytes": 98254,
+      "sha256": "b3d4d29e6c6f43f206cff370011efe726e0da73c30eebb5cabdac9d3878bca61"
+    },
+    "1.3.9/monocle3/R/preprocess_cds.R": {
+      "bytes": 18972,
+      "sha256": "315679361b8f2cc468d4632b1494c6b565bfecdb2e2363a772b78fdd68755a70"
+    },
+    "1.3.9/monocle3/R/projection.R": {
+      "bytes": 28974,
+      "sha256": "8da6c894a98c5e9091637486fcee804ae47870471d9ef7abee3e70ab636b78aa"
+    },
+    "1.3.9/monocle3/R/RcppExports.R": {
+      "bytes": 375,
+      "sha256": "400742d0e60947029df3ebcf109a600b9774f71478cda9eacf18eb7c11743201"
+    },
+    "1.3.9/monocle3/R/reduce_dimensions.R": {
+      "bytes": 19300,
+      "sha256": "d0f0b97dbf8aa093417f50e3d4cb0112ed64b48772586604eed436ad47ce76a3"
+    },
+    "1.3.9/monocle3/R/select_cells.R": {
+      "bytes": 22917,
+      "sha256": "920c0ac392036b29e2f6a4ca80d6db7859117c8467ed7f8a5e6325b5f0940c3a"
+    },
+    "1.3.9/monocle3/R/utils.R": {
+      "bytes": 53165,
+      "sha256": "7277b876612dde52b8222711a10e8cf6a6d2873011a3449e2ec316f195c87d45"
+    },
+    "1.3.9/monocle3/R/zzz.R": {
+      "bytes": 6619,
+      "sha256": "7a279e16459be9dacfc33c86b00b10cfebcd5270caac1f875780738402251e3b"
+    }
+  },
+  "guarded_functions": {
+    "cicero": [
+      "make_atac_cds",
+      "split_peak_names",
+      "make_cicero_cds",
+      "estimate_distance_parameter",
+      "generate_cicero_models",
+      "assemble_connections",
+      "reconcile",
+      "generate_windows",
+      "get_genomic_range",
+      "calc_dist_matrix",
+      "find_distance_parameter",
+      "get_rho_mat"
+    ],
+    "monocle3": [
+      "new_cell_data_set",
+      "estimate_size_factors",
+      "estimate_sf_sparse",
+      "estimate_sf_dense",
+      "detect_genes"
+    ]
+  },
+  "source_authentication_scope": "Exact package versions and selected unchanged Cicero/Monocle3 R bodies/formals; not complete dependency/native-DLL authentication",
+  "reference_control": {
+    "bytes": 1334,
+    "sha256": "9a0f649c633d1130eb165f961ccf8ec26aea7dc5bcea5be9f45ed1135d87be6e"
+  }
+}

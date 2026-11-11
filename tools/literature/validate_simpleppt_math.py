@@ -1,0 +1,21 @@
+# Copyright (C) 2026 JLinAlg contributors; SPDX-License-Identifier: GPL-3.0-or-later
+"""Validate complete original CPU arithmetic and observed fit-step equations on three actual JVMs."""
+import argparse,json,subprocess,sys,traceback
+from pathlib import Path
+sys.path.insert(0,str(Path(__file__).resolve().parent))
+from setup_deseq2_reference import ROOT,pin,save
+from validate_mashr_native import JAVA21
+
+def main():
+ p=argparse.ArgumentParser(description=__doc__);p.add_argument('--build',type=Path,required=True);p.add_argument('--reference',type=Path,required=True);p.add_argument('--out',type=Path,required=True);a=p.parse_args();out=a.out.resolve();assert not out.exists() and out.is_relative_to(ROOT/'build/literature-review/scfates-runtime');out.mkdir(parents=True);state=dict(status='FAIL2_NATIVE_SIMPLEPPT_ARITHMETIC_VALIDATION',runs=[],implementation_credit=False,whole_goal_complete=False)
+ try:
+  build=json.loads((a.build.resolve()/'COMPLETED.json').read_bytes());assert build['status']=='PASS_COMPILED_NATIVE_SIMPLEPPT_CPU_ARITHMETIC_ONLY';jar=ROOT/build['artifact']['path'];assert pin(jar)=={k:build['artifact'][k] for k in ['bytes','sha256']};reference=a.reference.resolve();parent=json.loads((reference/'COMPLETED.json').read_bytes());assert parent['status']=='PASS_FULL_ORIGINAL_SCFATES_CPU_REFERENCE_FAMILY_ONLY' and parent['all_runtime_trees_unchanged'];original=reference/'original';report=json.loads((original/'COMPLETED.json').read_bytes());assert report['status']=='PASS_COMPLETE_ORIGINAL_SCFATES_CPU_ARITHMETIC_AND_WORKFLOWS_ONLY' and len(report['arithmetic_cases'])==40 and report['successful_original_workflows']==9 and report['expected_original_errors']==3;sourcepins={Path(__file__).resolve().relative_to(ROOT).as_posix():pin(Path(__file__).resolve()),(original/'COMPLETED.json').relative_to(ROOT).as_posix():pin(original/'COMPLETED.json'),(reference/'COMPLETED.json').relative_to(ROOT).as_posix():pin(reference/'COMPLETED.json')};canonical=pin(ROOT/'build/cli/omicsmatic-0.3.7.jar')
+  for label,java,is_linux,major in [('windows21',str(JAVA21/'java.exe'),False,'21'),('windows25','C:/Program Files/Common Files/Oracle/Java/javapath/java.exe',False,'25'),('linux21','/usr/bin/java',True,'21')]:
+   home=out/label;home.mkdir()
+   def path(p):return '/mnt/d/projects/JLinAlg/'+p.relative_to(ROOT).as_posix() if is_linux else str(p)
+   def command(args):return ['wsl','-d','JLinAlg-Omics-SAIGE-20261026','--exec',java,*args] if is_linux else [java,*args]
+   version=subprocess.run(command(['-version']),capture_output=True,timeout=60);(home/'version.stdout').write_bytes(version.stdout);(home/'version.stderr').write_bytes(version.stderr);text=(version.stdout+version.stderr).decode('utf8',errors='replace');assert version.returncode==0 and ('"'+major+'.' in text or '"'+major+'"' in text);cmd=command(['-Xmx3g','-cp',path(jar),'org.jlinalg.cli.SimplePptMathMatrix',path(original),path(home/'native.json')]);run=subprocess.run(cmd,cwd=ROOT,capture_output=True,timeout=600);(home/'stdout').write_bytes(run.stdout);(home/'stderr').write_bytes(run.stderr);record=dict(label=label,command=cmd,exit_code=run.returncode);save(home/'process.json',record);assert run.returncode==0,run.stderr.decode('utf8',errors='replace');actual=json.loads((home/'native.json').read_bytes());assert actual['status']=='PASS_COMPLETE_ORIGINAL_SIMPLEPPT_CPU_ARITHMETIC_ONLY' and actual['cases']==40 and actual['actual_original_fit_observations']==10 and actual['native_rejections']==14 and not actual['complete_tree_fitter'] and not actual['implementation_credit'];record['report']=actual;state['runs'].append(record)
+  assert all(pin(ROOT/n)==v for n,v in build['source_pins'].items()) and all(pin(ROOT/n)==v for n,v in sourcepins.items()) and pin(ROOT/'build/cli/omicsmatic-0.3.7.jar')==canonical;state.update(status='PASS_THREE_JVM_COMPLETE_SIMPLEPPT_CPU_ARITHMETIC_AND_OBSERVED_FIT_EQUATIONS_ONLY',artifact=build['artifact'],source_pins=sourcepins,canonical_executable_unchanged=canonical)
+ except Exception as error:state['error']=repr(error);(out/'error.traceback').write_text(traceback.format_exc(),encoding='utf8')
+ save(out/'COMPLETED.json',state);print(state['status'],state.get('error',''));return 0 if state['status'].startswith('PASS_') else 2
+if __name__=='__main__':raise SystemExit(main())

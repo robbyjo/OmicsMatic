@@ -1,0 +1,144 @@
+{
+  "schema_version": 1,
+  "status": "passed-original-mashr-learning-and-native-numeric-development-validation",
+  "recorded_utc": "2026-11-02T10:06:24.729838+00:00",
+  "scope": "Typed original PCA/ED, residual correlation and representative-population fit, followed by independent complete training-likelihood/target-posterior checks. Development only.",
+  "source_pins": {
+    "docs/literature/MASHR_WORKFLOW_DEVELOPMENT.md": {
+      "bytes": 9684,
+      "sha256": "11f987076a190e6de285fe9c21e92e762e790e1a0fbe695390c85ac9efbea1ed"
+    },
+    "src/main/java/org/jlinalg/cli/MashWorkflowAudit.java": {
+      "bytes": 17872,
+      "sha256": "36f4a5568a8c0bc35508c8c02d75456d4c4338752d9af935509710bd985edc4b"
+    },
+    "src/test/java/org/jlinalg/cli/MashWorkflowAuditTest.java": {
+      "bytes": 10183,
+      "sha256": "2b14c30a3fbbceb3aa516c16de6c2951f14b6149971ec17cf20656678af90fe2"
+    },
+    "src/main/resources/org/jlinalg/omics/mashr-workflow/analysis.R": {
+      "bytes": 20026,
+      "sha256": "9f3e5aa4f63a84a6f3955e6671c2b1cec7e9494af5cca5cdf71e8e582b587322"
+    },
+    "src/test/resources/org/jlinalg/cli/mashr-workflow/.gitattributes": {
+      "bytes": 12,
+      "sha256": "f5401ca32d05733723bc068935f49a09b716f60e7845fed111741462f8739e3a"
+    },
+    "src/test/resources/org/jlinalg/cli/mashr-workflow/original-controls.zip": {
+      "bytes": 5817297,
+      "sha256": "28187ad99751081f608473ffe6a24f2a7e61081e9eb5bdddfddc6de361239d42"
+    },
+    "examples/mashr-native/MashSingletonExample.java": {
+      "bytes": 2267,
+      "sha256": "a3418e95f4b5ef766b07d56dbf012899181642dff98eaba0e683984bbd58ea90"
+    },
+    "tools/literature/collect_mashr_workflow_controls.py": {
+      "bytes": 14590,
+      "sha256": "f2eb6a5e12f9e971dee556d219a87640a222608a5f75f89dc194a3f4422a9c56"
+    },
+    "tools/literature/freeze_mashr_workflow_controls.py": {
+      "bytes": 5192,
+      "sha256": "638f6e3c8835c95e24895677403ab5190d092ca9eb10f5936fdb4df1c90d1fe7"
+    },
+    "tools/literature/validate_mashr_workflow.py": {
+      "bytes": 8694,
+      "sha256": "b1e1d08ead6b65b89906dfc8087cbe1f676d22d53aa923c0d6454fe8f421850a"
+    },
+    "tools/literature/MashWorkflowProbe.java": {
+      "bytes": 1812,
+      "sha256": "67f4df4056869585e1949bb932398c8d202e83ad5012c6fb41ade1704e283c9c"
+    },
+    "tools/literature/validate_mashr_native.py": {
+      "bytes": 8916,
+      "sha256": "4759fc9a2a900caa3c1b1ce669abbafa1b4f8c900a13c265fb2cf27437b0752a"
+    },
+    "tools/literature/mashr-development.init.gradle": {
+      "bytes": 1227,
+      "sha256": "ece7e4df65e864c713cd387aa4626107c4fb6dd18f53fb13453d22e69e72914b"
+    }
+  },
+  "artifact": {
+    "path": "build/literature-review/mashr-runtime/workflow-development-1/package-4/omicsmatic-0.3.7-mashr-development.jar",
+    "bytes": 162643572,
+    "sha256": "991488c854e928f2f47477ebb07478a3b636990bb02bfe97619287507364bb42"
+  },
+  "evidence_archive": {
+    "path": "docs/literature/mashr-workflow-development-controls.zip",
+    "bytes": 8226695,
+    "sha256": "22dcad93d2165c6dde4fed74c3f4769b9ea46d88b1773fcd5374d9ec3e8f7714"
+  },
+  "original_controls": {
+    "protocols": 26,
+    "completed_original_workflows": 17,
+    "expected_FAIL2": 8,
+    "expected_dependency_SKIP3": 1,
+    "unchanged_Rhome_and_private_package_files": 5637,
+    "target_population_leakage_control": "passed; learned model files byte-identical after target-only alterations",
+    "native_training_rows": 1700,
+    "native_target_rows": 440,
+    "numeric_comparisons": 138625,
+    "maximum_absolute_error": 3.410605131648481e-13,
+    "maximum_scaled_error": 3.11972669919669e-14
+  },
+  "tests": {
+    "focused_Gradle": 220,
+    "actual_JAR_per_JVM": 220,
+    "JVMs": [
+      "Windows Java21",
+      "Windows Java25",
+      "Linux Java21"
+    ],
+    "heap_mib": 128,
+    "failures": 0,
+    "skips": 0,
+    "full_project_suite_rerun": false
+  },
+  "standalone_native_singleton_example": {
+    "analytic_fit_and_posterior_passed": true,
+    "JVMs": [
+      "Windows Java21",
+      "Windows Java25",
+      "Linux Java21"
+    ],
+    "padding_or_engine_substitution": false,
+    "integrated_native_workflow_available": false
+  },
+  "warnings": [
+    {
+      "code": "ORIGINAL_SINGLE_FEATURE_FAILURES",
+      "action": "Retain the Rcpp native abort and R dimension failures. The driver reports these rather than padding/rerouting data. Use the tested native Java API; integrated singleton execution remains pending."
+    },
+    {
+      "code": "ED_AND_RESIDUAL_EM_SOURCE_STOPPING",
+      "action": "Inspect original logs and exact returned candidates/models. ED exposes no convergence flag; residual EM can roll back and has legacy counter/history indexing. A limit is not promoted to convergence."
+    },
+    {
+      "code": "DEVELOPMENT_ONLY",
+      "action": "Complete managed runtime admission, native singleton orchestration, typed public CLI, full study bundles and final eight-paper semantic curation before promoting mashr."
+    }
+  ],
+  "jdistlib_dependency": {
+    "bytes": 43416685,
+    "sha256": "8b50aaa11d2cbd512525e0d74f8e609f40db9f4fc179ccb7a885a82257e0ac81",
+    "unchanged_packaged_members": 933
+  },
+  "canonical_artifact_unchanged": {
+    "bytes": 162107844,
+    "sha256": "bd1a3b2448d7016ae4ded3f30a6c5ae92e05a0078ae688f4b93d046cc355eeb2"
+  },
+  "previous_native_foundation_source_pins_still_exact": true,
+  "source_to_upstream_binary_rebuild_verified": false,
+  "public_runtime_or_bundle_admitted": false,
+  "whole_mashr_integrated": false,
+  "whole_paper_reproduced": false,
+  "whole_goal_achieved": false,
+  "released_or_deployed": false,
+  "new_work_pushed": false,
+  "catalog_counts_unchanged": {
+    "new_scoped_integrations": 61,
+    "native": 13,
+    "upstream": 48,
+    "missing_named_tools": 259,
+    "mashr_status": "missing"
+  }
+}

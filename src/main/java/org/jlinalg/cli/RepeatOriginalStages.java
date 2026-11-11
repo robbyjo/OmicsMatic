@@ -70,6 +70,7 @@ final class RepeatOriginalStages {
         if(!spec.profile().equals(resources.payload().profile()))throw new IOException("Original stage request and payload profiles differ");
         for(var snapshot:input.snapshots())if(snapshot.original().startsWith(root))throw new IOException("Protected original source lies inside the new stage result directory");
         var limits=RepeatProcess.Limits.from(spec);var processLimits=reserve(limits);
+        originalPaths(resources.sourceRoot(),input.query().path(),input.library()==null?null:input.library().path(),root);
         Commands command=commands(spec,resources.sourceRoot(),input.query().path(),input.library()==null?null:input.library().path(),root,input.query().staged().residues());
         input.verify(check);resources.verify(check);check.run();Files.createDirectory(root);
         try{
@@ -132,6 +133,10 @@ final class RepeatOriginalStages {
     static RepeatProcess.Limits reserve(RepeatProcess.Limits source)throws IOException{
         if(source.workspaceBytes()<=RESERVE_BYTES||source.fileCount()<=RESERVE_MEMBERS)throw new IOException("Original stage capacity cannot cover256KiB/nine reserved root/finalization members");
         return new RepeatProcess.Limits(source.wallMillis(),source.addressSpaceBytes(),source.cpuSeconds(),source.fileBytes(),source.openFiles(),source.workspaceBytes()-RESERVE_BYTES,source.fileCount()-RESERVE_MEMBERS,source.processes(),source.threads(),source.sampledRssBytes(),source.monitorMillis());
+    }
+    static void originalPaths(Path source,Path query,Path library,Path output)throws IOException{
+        RepeatPayload.originalPath(source);RepeatPayload.originalPath(query);RepeatPayload.originalPath(output);
+        if(library!=null)RepeatPayload.originalPath(library);
     }
     static OutputFence fence(Path root,RepeatProcess.Limits limits,Runnable check)throws IOException{
         var capacity=new RepeatBundle.Limits(limits.workspaceBytes(),limits.fileCount());

@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "out": "REPLACE_WITH_NEW_ABSOLUTE_OUTPUT_DIRECTORY",
+  "runtime_profile": "REPLACE_WITH_EXACT_EDITION_RUNTIME_PROFILE",
+  "analysis": {
+    "schema_version": 1,
+    "source_label": "1.0.0",
+    "mode": "condition-inference",
+    "expression_units": "external-log-normalized-nonnegative",
+    "expression": "expression.tsv",
+    "metadata": "metadata.tsv",
+    "group_order": [
+      "sender",
+      "receiver",
+      "other"
+    ],
+    "condition_order": [
+      "control",
+      "treated"
+    ],
+    "species": "human",
+    "database_categories": [
+      "Secreted Signaling",
+      "ECM-Receptor",
+      "Cell-Cell Contact"
+    ],
+    "prefilter_min_group_cells": 0,
+    "overexpression": {
+      "only_positive": true,
+      "thresh_pc": 0,
+      "thresh_fc": 0,
+      "thresh_p": 0.05
+    },
+    "projection": {
+      "species": "human",
+      "alpha": 0.5,
+      "normalization": "rows"
+    },
+    "inference": {
+      "type": "triMean",
+      "trim": null,
+      "raw_use": false,
+      "population_size": false,
+      "nboot": 100,
+      "seed": 1,
+      "Kh": 0.5,
+      "n": 1
+    },
+    "network": {
+      "pvalue_threshold": 0.05
+    },
+    "prefilter_scope": "any-condition",
+    "sample_order": [
+      "control-1",
+      "control-2",
+      "control-3",
+      "treated-1",
+      "treated-2",
+      "treated-3"
+    ],
+    "filter": {
+      "min_cells": 10,
+      "min_samples": null,
+      "rare_keep": false
+    }
+  },
+  "limits": {
+    "input_bytes": 268435456,
+    "output_bytes": 1073741824,
+    "wall_seconds": 1800,
+    "max_genes": 100000,
+    "max_cells": 100000,
+    "max_files": 200000,
+    "runtime_bytes": 34359738368,
+    "projection_working_bytes": 2147483648,
+    "projection_arithmetic_updates": 200000000000
+  }
+}

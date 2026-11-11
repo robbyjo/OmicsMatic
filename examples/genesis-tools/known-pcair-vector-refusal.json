@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "version": "2.42.0",
+  "mode": "pcair",
+  "runtime_profile": "../runtime-profile.json",
+  "out": "../results/known-pcair-vector-refusal",
+  "threads": 1,
+  "layout": "snp-first",
+  "limits": {
+    "input_bytes": 100000000,
+    "output_bytes": 500000000,
+    "output_files": 1000,
+    "samples": 200,
+    "variants": 2000,
+    "rows": 2000000,
+    "pair_variant_operations": 1000000000,
+    "working_bytes": 1000000000,
+    "wall_seconds": 300
+  },
+  "inputs": {
+    "bfile": "../inputs/cohort",
+    "kinship": {
+      "values": "../inputs/kinship.values.tsv",
+      "samples": "../inputs/matrix-samples.tsv"
+    },
+    "divergence": {
+      "values": "../inputs/kinship.values.tsv",
+      "samples": "../inputs/matrix-samples.tsv"
+    },
+    "sample_selection": null,
+    "forced_unrelated": null
+  },
+  "options": {
+    "gds_handle": "gds.class",
+    "kinship_threshold": 0.02209708691207961,
+    "divergence_threshold": -0.02209708691207961,
+    "eigen_count": 1,
+    "algorithm": "exact",
+    "eigen_method": "DSPEVX",
+    "bayesian": false,
+    "aux_dim": 6,
+    "iterations": 3,
+    "seed": 20261110,
+    "remove_monomorphic": true,
+    "maf": 0.005,
+    "missing_rate": 0.01
+  }
+}

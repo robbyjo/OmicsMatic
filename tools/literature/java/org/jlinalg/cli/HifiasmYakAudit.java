@@ -1,0 +1,27 @@
+/* Copyright (C) 2026 JLinAlg contributors; SPDX-License-Identifier: GPL-3.0-or-later */
+package org.jlinalg.cli;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.List;
+import java.util.Map;
+import org.jlinalg.assembly.HifiasmYak;
+import static org.jlinalg.cli.Monocle3WorkflowRequest.*;
+
+/** Complete original-source count summaries and bucket-wise capacity/corruption checks under128MiB heap. */
+public final class HifiasmYakAudit {
+    private HifiasmYakAudit(){ }
+    private static int rejected;
+    @FunctionalInterface private interface Action{void run()throws Exception;}
+    private static void reject(Action action)throws Exception{try{action.run();}catch(IOException|IllegalArgumentException expected){rejected++;return;}throw new AssertionError("Invalid streaming YAK accepted");}
+    private static byte[] yak(int k,int prefix,long capacity,long...keys){ByteBuffer bytes=ByteBuffer.allocate(16+(1<<prefix)*8+keys.length*8).order(ByteOrder.LITTLE_ENDIAN);bytes.put(new byte[]{'Y','A','K',2}).putInt(k).putInt(prefix).putInt(10);for(int b=0;b<(1<<prefix);b++){bytes.putInt(b==0?(int)capacity:0).putInt(b==0?keys.length:0);if(b==0)for(long key:keys)bytes.putLong(key);}return bytes.array();}
+    private static HifiasmYak.Inspection inspect(byte[] bytes)throws IOException{return HifiasmYak.inspect(new ByteArrayInputStream(bytes),new HifiasmYak.Limits(10000000,10000000,1000000));}
+    public static void main(String[] args)throws Exception{
+        require(args.length==3,"Require cases, root and NEW output");Path root=Path.of(args[1]).toAbsolutePath().normalize(),out=Path.of(args[2]).toAbsolutePath().normalize();Files.createDirectory(out);var cases=list(GseapyExecutionRuntime.read(Path.of(args[0]).toAbsolutePath().normalize(),16777216).get("cases"));int done=0;long largest=0;
+        for(Object raw:cases){var c=object(raw);Path file=root.resolve(text(c.get("path")));var pin=NextflowFiles.fingerprint(c.get("pin"),1073741824);require(pin.equals(NextflowFiles.pin(file,1073741824,()->{})),"Complete original YAK fixture changed");HifiasmYak.Inspection actual;try(var input=Files.newInputStream(file)){actual=HifiasmYak.inspect(input,new HifiasmYak.Limits(pin.bytes(),1000000000,1500000));}var expected=object(c.get("expected"));require(actual.k()==integer(expected.get("k"),1,63)&&actual.prefixBits()==integer(expected.get("prefix_bits"),10,20)&&actual.entries()==integer(expected.get("entries"),0,Long.MAX_VALUE)&&actual.occupiedBuckets()==integer(expected.get("occupied_buckets"),0,1048576)&&actual.maximumBucketEntries()==integer(expected.get("maximum_bucket_entries"),0,1500000)&&actual.bytes()==pin.bytes()&&actual.unsignedHashSum().equals(expected.get("hash_sum"))&&actual.unsignedHashXor().equals(expected.get("hash_xor")),"Streaming full metadata differs from original source and independent arithmetic");var histogram=list(expected.get("histogram"));for(int i=0;i<1024;i++)require(actual.countHistogram().get(i)==integer(histogram.get(i),0,Long.MAX_VALUE),"Complete original ten-bit count family differs");require(actual.entries()==actual.countHistogram().stream().mapToLong(Long::longValue).sum(),"Complete streaming count population differs");if(actual.entries()==0)require(actual.minimumCount().isEmpty()&&actual.maximumCount().isEmpty(),"Empty source table acquired an invented count");else{int min=0,max=1023;while(actual.countHistogram().get(min)==0)min++;while(actual.countHistogram().get(max)==0)max--;require(actual.minimumCount().orElseThrow()==min&&actual.maximumCount().orElseThrow()==max,"Source min/max counters differ");}NextflowFiles.writeJson(out.resolve(text(c.get("id"))+".json"),HifiasmJson.value(actual));largest=Math.max(largest,actual.entries());done++;}
+        require(largest==27000027&&Runtime.getRuntime().maxMemory()<=140000000,"Large-table test must run under128MiB heap");byte[] good=yak(31,10,4,1025,2050);reject(()->inspect(new byte[0]));reject(()->inspect(new byte[]{'Y','A','K',1}));reject(()->inspect(java.util.Arrays.copyOf(good,good.length-1)));reject(()->inspect(yak(31,10,4,1025,1026)));reject(()->inspect(yak(31,10,3,1025)));reject(()->inspect(yak(31,10,0,1025)));reject(()->inspect(yak(1,10,4,1025)));reject(()->inspect(yak(31,20,4,Long.MIN_VALUE)));byte[] trailing=java.util.Arrays.copyOf(good,good.length+1);reject(()->inspect(trailing));byte[] counter=good.clone();counter[12]=11;reject(()->inspect(counter));reject(()->HifiasmYak.inspect(new ByteArrayInputStream(good),new HifiasmYak.Limits(16,10,10)));reject(()->HifiasmYak.inspect(new ByteArrayInputStream(good),new HifiasmYak.Limits(10000,1,10)));reject(()->HifiasmYak.inspect(new ByteArrayInputStream(good),new HifiasmYak.Limits(10000,10,1)));reject(()->new HifiasmYak.Limits(1,1,1));reject(()->new HifiasmYak.Limits(10000,1,25000001));require(rejected==15,"Full streaming domain/corruption family differs");NextflowFiles.writeJson(out.resolve("COMPLETED.json"),Map.of("status","passed-original-and-independent-full-streaming-YAK-controls-under128MiB-heap","complete_tables",done,"largest_entries",largest,"corrupt_or_domain_families_rejected",rejected,"maximum_java_heap",Runtime.getRuntime().maxMemory(),"workflow_uses_streaming",false,"implementation_credit",false));System.out.println("Passed "+done+" full source tables, "+largest+" entries under128MiB heap and15 corruption/domain families");
+    }
+}

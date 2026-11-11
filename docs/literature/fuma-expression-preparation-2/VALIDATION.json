@@ -1,0 +1,3477 @@
+{
+  "schema_version": 1,
+  "status": "passed-native-FUMA-sample-expression-preparation-and-typed-handoff",
+  "recorded_utc": "2026-11-02T19:32:43.597805+00:00",
+  "artifact": {
+    "path": "build/literature-review/fuma-runtime/expression-preparation-development-1/package-3/omicsmatic-0.3.7-fuma-development.jar",
+    "bytes": 162905995,
+    "sha256": "31cf870041c75396a1dc434d682993fbbd94a5e7712337b2ce427e0686a4111f"
+  },
+  "scope": "Explicit raw sample TPM/RPKM -> raw >1 gene eligibility, cap50/log2(x+1), label means, selected-sample-centered label means, unweighted label Average -> typed supplied-expression/DEG analysis and actual original MAGMA property fitting. No DEG generation, t-test, clustering or historical resource claim.",
+  "tests_per_JVM": 148,
+  "new_tests_per_JVM": 44,
+  "prior_reference_and_core_tests_per_JVM": 104,
+  "heap_mib": 128,
+  "platforms": [
+    "windows-java21",
+    "windows-java25",
+    "linux-java21"
+  ],
+  "affected_family_tests": {
+    "tests": 663,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "runtime_home": "build/omics-magma",
+    "runtime_sha256": "e05e3d963215a973064852ec33640118d65745884cc800a5119ca7cffe6cb859"
+  },
+  "independent_reference": {
+    "type": "independent base-R implementation of published method; NOT original FUMA preprocessing runtime",
+    "cases_per_JVM": 16,
+    "gene_rows_per_JVM": 192,
+    "numeric_fields_per_JVM": 2112,
+    "finite_reference_comparisons_per_JVM": 2094,
+    "retained_base_R_raw_mean_overflows_per_JVM": 18,
+    "overflow_departures": [
+      {
+        "case": "complete-63",
+        "gene": "ENSG7.7",
+        "column": "raw:L2",
+        "reference": "Inf",
+        "native": "Double.MAX_VALUE"
+      },
+      {
+        "case": "complete-63",
+        "gene": "ENSG7.7",
+        "column": "raw:L1",
+        "reference": "Inf",
+        "native": "Double.MAX_VALUE"
+      },
+      {
+        "case": "complete-63",
+        "gene": "ENSG7.7",
+        "column": "raw:L0",
+        "reference": "Inf",
+        "native": "Double.MAX_VALUE"
+      },
+      {
+        "case": "complete-64",
+        "gene": "ENSG7.7",
+        "column": "raw:L2",
+        "reference": "Inf",
+        "native": "Double.MAX_VALUE"
+      },
+      {
+        "case": "complete-64",
+        "gene": "ENSG7.7",
+        "column": "raw:L1",
+        "reference": "Inf",
+        "native": "Double.MAX_VALUE"
+      },
+      {
+        "case": "complete-65",
+        "gene": "ENSG7.7",
+        "column": "raw:L2",
+        "reference": "Inf",
+        "native": "Double.MAX_VALUE"
+      },
+      {
+        "case": "subset-129",
+        "gene": "ENSG7.7",
+        "column": "raw:L2",
+        "reference": "Inf",
+        "native": "Double.MAX_VALUE"
+      },
+      {
+        "case": "subset-129",
+        "gene": "ENSG7.7",
+        "column": "raw:L1",
+        "reference": "Inf",
+        "native": "Double.MAX_VALUE"
+      },
+      {
+        "case": "subset-129",
+        "gene": "ENSG7.7",
+        "column": "raw:L0",
+        "reference": "Inf",
+        "native": "Double.MAX_VALUE"
+      },
+      {
+        "case": "subset-63",
+        "gene": "ENSG7.7",
+        "column": "raw:L2",
+        "reference": "Inf",
+        "native": "Double.MAX_VALUE"
+      },
+      {
+        "case": "subset-63",
+        "gene": "ENSG7.7",
+        "column": "raw:L1",
+        "reference": "Inf",
+        "native": "Double.MAX_VALUE"
+      },
+      {
+        "case": "subset-63",
+        "gene": "ENSG7.7",
+        "column": "raw:L0",
+        "reference": "Inf",
+        "native": "Double.MAX_VALUE"
+      },
+      {
+        "case": "subset-64",
+        "gene": "ENSG7.7",
+        "column": "raw:L2",
+        "reference": "Inf",
+        "native": "Double.MAX_VALUE"
+      },
+      {
+        "case": "subset-64",
+        "gene": "ENSG7.7",
+        "column": "raw:L1",
+        "reference": "Inf",
+        "native": "Double.MAX_VALUE"
+      },
+      {
+        "case": "subset-64",
+        "gene": "ENSG7.7",
+        "column": "raw:L0",
+        "reference": "Inf",
+        "native": "Double.MAX_VALUE"
+      },
+      {
+        "case": "subset-65",
+        "gene": "ENSG7.7",
+        "column": "raw:L2",
+        "reference": "Inf",
+        "native": "Double.MAX_VALUE"
+      },
+      {
+        "case": "subset-65",
+        "gene": "ENSG7.7",
+        "column": "raw:L1",
+        "reference": "Inf",
+        "native": "Double.MAX_VALUE"
+      },
+      {
+        "case": "subset-65",
+        "gene": "ENSG7.7",
+        "column": "raw:L0",
+        "reference": "Inf",
+        "native": "Double.MAX_VALUE"
+      }
+    ],
+    "eligibility_decisions_per_JVM": 192,
+    "reported_scope": "Native raw means use stable scaling; every deliberately constructed maximum-double raw row remains finite. Finite comparison tolerance absolute5e-14 plus relative1e-12. No source field is silently replaced or removed.",
+    "fixture": {
+      "path": "src/test/resources/org/jlinalg/enrichment/fuma-expression-preparation/independent-R-controls.zip",
+      "bytes": 52405,
+      "sha256": "ae92c5a9f1c63ea778fabf8db9bf5d325213cc2e1f07781b0eb76ce6e252423a"
+    }
+  },
+  "public_commands": [
+    {
+      "label": "create-inputs",
+      "argv": [
+        "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin\\java.exe",
+        "-Xmx128m",
+        "-cp",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\fuma-runtime\\expression-preparation-development-1\\example-classes-1",
+        "CreateInputs",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\fuma-runtime\\expression-preparation-development-1\\commands-3\\work"
+      ],
+      "exit_code": 0
+    },
+    {
+      "label": "typed-workflow",
+      "argv": [
+        "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin\\java.exe",
+        "-Xmx128m",
+        "-jar",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\fuma-runtime\\expression-preparation-development-1\\package-3\\omicsmatic-0.3.7-fuma-development.jar",
+        "fuma-tools",
+        "--method",
+        "workflow",
+        "--workflow-options-file",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\fuma-runtime\\expression-preparation-development-1\\commands-3\\work\\workflow.json",
+        "--out",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\fuma-runtime\\expression-preparation-development-1\\commands-3\\work\\workflow-1"
+      ],
+      "exit_code": 0
+    },
+    {
+      "label": "standalone-tsv",
+      "argv": [
+        "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin\\java.exe",
+        "-Xmx128m",
+        "-jar",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\fuma-runtime\\expression-preparation-development-1\\package-3\\omicsmatic-0.3.7-fuma-development.jar",
+        "fuma-tools",
+        "--method",
+        "prepare-expression",
+        "--matrix",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\fuma-runtime\\expression-preparation-development-1\\commands-3\\work\\input\\raw.tsv",
+        "--format",
+        "tsv",
+        "--samples",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\fuma-runtime\\expression-preparation-development-1\\commands-3\\work\\input\\samples.tsv",
+        "--labels",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\fuma-runtime\\expression-preparation-development-1\\commands-3\\work\\input\\labels.tsv",
+        "--extra-samples",
+        "exclude",
+        "--build",
+        "synthetic-GRCh37",
+        "--annotation-id",
+        "annotation-v1",
+        "--expression-id",
+        "synthetic-v1",
+        "--gene-namespace",
+        "exact-ensembl",
+        "--units",
+        "tpm",
+        "--empty",
+        "error",
+        "--out",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\fuma-runtime\\expression-preparation-development-1\\commands-3\\work\\standalone-1"
+      ],
+      "exit_code": 0
+    },
+    {
+      "label": "prepare-magma-covariates",
+      "argv": [
+        "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin\\java.exe",
+        "-Xmx128m",
+        "-jar",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\fuma-runtime\\expression-preparation-development-1\\package-3\\omicsmatic-0.3.7-fuma-development.jar",
+        "fuma-tools",
+        "--method",
+        "prepare-expression",
+        "--matrix",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\fuma-runtime\\expression-preparation-development-1\\commands-3\\work\\magma-raw\\input.tsv",
+        "--format",
+        "tsv",
+        "--samples",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\fuma-runtime\\expression-preparation-development-1\\commands-3\\work\\magma-raw\\samples.tsv",
+        "--labels",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\fuma-runtime\\expression-preparation-development-1\\commands-3\\work\\magma-raw\\labels.tsv",
+        "--extra-samples",
+        "error",
+        "--build",
+        "GRCh38",
+        "--annotation-id",
+        "owned-synthetic-gene-IDs",
+        "--expression-id",
+        "owned-synthetic-expression",
+        "--gene-namespace",
+        "exact-synthetic",
+        "--units",
+        "tpm",
+        "--empty",
+        "error",
+        "--out",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\fuma-runtime\\expression-preparation-development-1\\commands-3\\work\\magma-prepared"
+      ],
+      "exit_code": 0
+    },
+    {
+      "label": "actual-original-magma-fit",
+      "argv": [
+        "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin\\java.exe",
+        "-Xmx128m",
+        "-jar",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\fuma-runtime\\expression-preparation-development-1\\package-3\\omicsmatic-0.3.7-fuma-development.jar",
+        "magma-tools",
+        "--method",
+        "properties",
+        "--build",
+        "GRCh38",
+        "--home",
+        "D:\\projects\\JLinAlg\\build\\omics-magma",
+        "--gene-bundle",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\fuma-runtime\\expression-preparation-development-1\\commands-3\\work\\magma-intake\\gene-bundle",
+        "--properties",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\fuma-runtime\\expression-preparation-development-1\\commands-3\\work\\magma-prepared\\gene-covariates.tsv",
+        "--property-direction",
+        "positive",
+        "--condition-hide",
+        "Average",
+        "--missing-values",
+        "error",
+        "--max-missing",
+        "0",
+        "--seed",
+        "42",
+        "--out",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\fuma-runtime\\expression-preparation-development-1\\commands-3\\work\\magma-fit"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "original_MAGMA": {
+    "version": "1.10 (win/s)",
+    "runtime": {
+      "bytes": 6102846,
+      "sha256": "e05e3d963215a973064852ec33640118d65745884cc800a5119ca7cffe6cb859"
+    },
+    "genes": 201,
+    "tested_tissues": 3,
+    "condition_hide": "Average",
+    "data": "wholly synthetic owned expression and sealed owned synthetic gene fit"
+  },
+  "source_role_audit": {
+    "path": "role-coverage.json",
+    "bytes": 18631,
+    "sha256": "9a73477bd92f96ed08453cf84038250300a3c096f4deee030c77355607131115",
+    "roles": 14,
+    "new_preparation_relevant_papers": [
+      "P072",
+      "P105",
+      "P162"
+    ]
+  },
+  "source_pins": {
+    "src/test/java/org/jlinalg/genetics/HardcallLdTest.java": {
+      "bytes": 8984,
+      "sha256": "64a0f22b4f2f664142b738653a8aa9368603d68fcf3604ea16aeac4aef85f682"
+    },
+    "src/test/java/org/jlinalg/genetics/HardcallLdOriginalTest.java": {
+      "bytes": 7930,
+      "sha256": "e5918a34995524c631c665128a4a3471a156fd9383f8cc4aa8bfab079c4b4c7b"
+    },
+    "src/test/java/org/jlinalg/genetics/FumaLdWindowTest.java": {
+      "bytes": 6063,
+      "sha256": "0adf13842fc6acfc8bd698d96d06bead5374de062a0c9e9e299e8252a5e09063"
+    },
+    "src/test/java/org/jlinalg/genetics/FumaLocusDefinitionTest.java": {
+      "bytes": 15222,
+      "sha256": "74b87d6e528e361a7ab9e04fff9deac356615817c8946a0a085032fbc21091db"
+    },
+    "src/test/java/org/jlinalg/genetics/FumaReferencePreparationTest.java": {
+      "bytes": 10583,
+      "sha256": "a2a5ca275682424abd7b373ca77a1acbc548746c2673dd84d379d759cd0512e1"
+    },
+    "src/test/java/org/jlinalg/genetics/FumaReferenceOriginalTest.java": {
+      "bytes": 6750,
+      "sha256": "c49c241744dc4fe82619f399f246fb8a63224ef3a1f78e53ae3c0cbdffb223e0"
+    },
+    "src/test/java/org/jlinalg/cli/FumaReferenceCliTest.java": {
+      "bytes": 17301,
+      "sha256": "16b6cb9226323c3eeffc8bb281ba4081a78cb30e91746eaf68a889ea0cd42540"
+    },
+    "src/test/java/org/jlinalg/cli/FumaLociCliTest.java": {
+      "bytes": 6089,
+      "sha256": "44c5ae70b3b3b19c7a52ca04af678cad3663fbf327b217598efb7e0576669d1d"
+    },
+    "src/test/java/org/jlinalg/enrichment/FumaExpressionPreparationTest.java": {
+      "bytes": 7988,
+      "sha256": "c789b8ae5b1354f25da91cc7faa2333903372f1f39d7f1450f8046d6439aa587"
+    },
+    "src/test/java/org/jlinalg/enrichment/FumaExpressionPreparationRTest.java": {
+      "bytes": 4230,
+      "sha256": "b7bfd509ee80c52813fb9f120d7aea5b30281cdb68230b81950f12d6b06c1f65"
+    },
+    "src/test/java/org/jlinalg/cli/FumaExpressionPrepareCliTest.java": {
+      "bytes": 13802,
+      "sha256": "68118551df8a805cd74553667231f9ad94188ffe0b38ff2320a5fda427c97473"
+    },
+    "src/main/java/org/jlinalg/enrichment/FumaExpressionPreparation.java": {
+      "bytes": 9469,
+      "sha256": "54af507af06e20b8d42c464cf628eeb2ac68664d4e26f4412f576427e4c2169f"
+    },
+    "src/main/java/org/jlinalg/cli/FumaExpressionPrepareCli.java": {
+      "bytes": 22397,
+      "sha256": "47f385aecdf9117abdae584e863b23391961ca0e219161e69556950644ba2930"
+    },
+    "src/main/java/org/jlinalg/cli/FumaToolsCli.java": {
+      "bytes": 21226,
+      "sha256": "e5d0bf452dc4fafdf1b4f557ee225d585b8da29402c11495eef4d303e032a9af"
+    },
+    "src/main/java/org/jlinalg/cli/FumaWorkflowCli.java": {
+      "bytes": 35104,
+      "sha256": "c7800a914d9db7c76634fea677d96d9a36da68076878cc618ac59824ebe903bb"
+    },
+    "tools/literature/validate_fuma_expression_preparation.py": {
+      "bytes": 8618,
+      "sha256": "c7c97919d8dea35f9476a19ace76c8778cd8d030dca4e650c1ac3953ff2e355d"
+    },
+    "tools/literature/validate_fuma_reference_workflow.py": {
+      "bytes": 9362,
+      "sha256": "24be4e62667d0b61e16704ab1fc6ecb33c8599089ecdd006f8b7103a7ce02e0d"
+    },
+    "tools/literature/validate_mashr_native.py": {
+      "bytes": 8916,
+      "sha256": "4759fc9a2a900caa3c1b1ce669abbafa1b4f8c900a13c265fb2cf27437b0752a"
+    },
+    "tools/literature/collect_fuma_expression_preparation_controls.R": {
+      "bytes": 3492,
+      "sha256": "aebbfd68f088ed6b37aa68ca7c6cece219a991b78071195751e3955199b3c2ac"
+    },
+    "tools/literature/freeze_fuma_expression_controls.py": {
+      "bytes": 2888,
+      "sha256": "8702c0ba9897fd483a9af44b5282cb5f11b284d8cf4a5b08bea725eebb84d060"
+    },
+    "tools/literature/fuma-development.init.gradle": {
+      "bytes": 1211,
+      "sha256": "5431276c826baaa6276847287f050751e27a46ed42c4ed9bac7fbc1d59849a8f"
+    },
+    "src/test/resources/org/jlinalg/enrichment/fuma-expression-preparation/independent-R-controls.zip": {
+      "bytes": 52405,
+      "sha256": "ae92c5a9f1c63ea778fabf8db9bf5d325213cc2e1f07781b0eb76ce6e252423a"
+    },
+    "src/test/resources/org/jlinalg/enrichment/fuma-expression-preparation/.gitattributes": {
+      "bytes": 8,
+      "sha256": "705fd4d6451a31d36b3df7de96f83f30ac976c9b4a6d1e51671d8e2f33e2d0da"
+    },
+    "docs/literature/FUMA_EXPRESSION_PREPARATION.md": {
+      "bytes": 6950,
+      "sha256": "7319f778c8a54a09dc75ed856d8746b2c05dd64642c07013971cb897374b4609"
+    },
+    "examples/fuma-expression-preparation/.gitattributes": {
+      "bytes": 8,
+      "sha256": "705fd4d6451a31d36b3df7de96f83f30ac976c9b4a6d1e51671d8e2f33e2d0da"
+    },
+    "examples/fuma-expression-preparation/CreateInputs.java": {
+      "bytes": 1587,
+      "sha256": "77cf01f1a16eb18edd9b9317d57232a75b6979d5f2ddb357779f8861a8aece0b"
+    },
+    "examples/fuma-expression-preparation/README.md": {
+      "bytes": 1133,
+      "sha256": "f5e00c30406c28b5707fb0d0a4a4cfc2bdbecebe3f197ef5dea11f80da5837c3"
+    },
+    "examples/fuma-expression-preparation/workflow.json": {
+      "bytes": 675,
+      "sha256": "62b496c813a50c85fc5807b1b6db652102e2fdb3da407becc688bcaf45021072"
+    },
+    "tools/literature/validate_fuma_expression_commands.py": {
+      "bytes": 7817,
+      "sha256": "49acd16b449eeff1e9f9abfc25d3a77fe6c9c59d0c8263a80450b3d4a1e7c277"
+    },
+    "examples/fuma-tissue-workflow/prepare_inputs.py": {
+      "bytes": 5820,
+      "sha256": "ed849366c6340a352a8b8cf9c4812bbb6c8d3f02e1808f0e463efa49ce56bcc6"
+    },
+    "examples/fuma-tissue-workflow/synthetic-inputs.zip": {
+      "bytes": 270253,
+      "sha256": "144b2bdbe3de33d492c6cb09124e1053c17a5792d39d0ea1c17dab3b8a6a747b"
+    },
+    "tools/literature/fuma-use-reviews.json": {
+      "bytes": 17557,
+      "sha256": "50f17795652fc1d2c2e542435972bbe6cfecc45b1c4ae2a453cd0f5bb37bd535"
+    },
+    "tools/literature/reviewed-uses.json": {
+      "bytes": 620530,
+      "sha256": "0f6b84686560ce67e09dbc6628704fa886b595d2b544c827734126c8c5f67df1"
+    },
+    "tools/literature/tool-registry.json": {
+      "bytes": 164377,
+      "sha256": "908f8185b566b8bbe6f554c8edaddb0e22a3d9b6d928f14b9e5fcf1e795e5aae"
+    },
+    "docs/literature/omics-2023-2026/papers.json": {
+      "bytes": 3038083,
+      "sha256": "92a9c116ffd1f2d9d91e778064b3327b00ffa6336a907ae36e3885df2e8d70f1"
+    },
+    "docs/literature/omics-2023-2026/tool-inventory.json": {
+      "bytes": 491542,
+      "sha256": "a0b8d6e6c387a319d7a80ab3bc75cdb89ea89ef8362c973c5b523f0033e1e059"
+    },
+    "docs/literature/omics-2023-2026/summary.json": {
+      "bytes": 1181,
+      "sha256": "6ad38a85dff86bbb6ed5505256dce27336de01220a33a75016e75c6a9b6ff464"
+    },
+    "tools/literature/audit_fuma_preparation_roles.py": {
+      "bytes": 6967,
+      "sha256": "5ac84ef88114f6a2517b428adf87a9bbc94ae08e7bdacf7220233f442df55d3a"
+    },
+    "build/literature-review/fuma-runtime/expression-preparation-development-1/matrix-3/COMPLETED.json": {
+      "bytes": 20077,
+      "sha256": "cf04a539878ebb64fca9b273e280edc8c74aa33540c7d6943491a23fca36b8d5"
+    },
+    "examples/fuma-reference/.gitattributes": {
+      "bytes": 8,
+      "sha256": "705fd4d6451a31d36b3df7de96f83f30ac976c9b4a6d1e51671d8e2f33e2d0da"
+    },
+    "docs/literature/fuma-expression-preparation-2/.gitattributes": {
+      "bytes": 8,
+      "sha256": "705fd4d6451a31d36b3df7de96f83f30ac976c9b4a6d1e51671d8e2f33e2d0da"
+    }
+  },
+  "prior_checkpoint": {
+    "path": "docs/literature/fuma-reference-workflow/VALIDATION.json",
+    "bytes": 67013,
+    "sha256": "699c7d67dce15f162524db4346a7199ae372d3e3b5a1676eb3e625b8f662d357"
+  },
+  "unchanged_prior_packaged_classes": 17680,
+  "changed_prior_packaged_classes": [
+    "org/jlinalg/cli/FumaToolsCli.class",
+    "org/jlinalg/cli/FumaWorkflowCli$Runner.class",
+    "org/jlinalg/cli/FumaWorkflowCli.class"
+  ],
+  "new_packaged_classes": [
+    "org/jlinalg/cli/FumaExpressionPrepareCli$Lines.class",
+    "org/jlinalg/cli/FumaExpressionPrepareCli$Output$1.class",
+    "org/jlinalg/cli/FumaExpressionPrepareCli$Output.class",
+    "org/jlinalg/cli/FumaExpressionPrepareCli.class",
+    "org/jlinalg/enrichment/FumaExpressionPreparation$Disposition.class",
+    "org/jlinalg/enrichment/FumaExpressionPreparation$Frame.class",
+    "org/jlinalg/enrichment/FumaExpressionPreparation$Limits.class",
+    "org/jlinalg/enrichment/FumaExpressionPreparation$Row.class",
+    "org/jlinalg/enrichment/FumaExpressionPreparation$Sample.class",
+    "org/jlinalg/enrichment/FumaExpressionPreparation$Sum.class",
+    "org/jlinalg/enrichment/FumaExpressionPreparation.class"
+  ],
+  "owned_classes": {
+    "org/jlinalg/cli/FumaExpressionPrepareCli$Lines.class": {
+      "bytes": 2766,
+      "sha256": "8864bec42ee1200f51cfaa1808b18acba716a36e303cf8afa434e985480f5287"
+    },
+    "org/jlinalg/cli/FumaExpressionPrepareCli$Output$1.class": {
+      "bytes": 1596,
+      "sha256": "8e78b521cab07f3ee21986a5677b6274d55d95d268719cafb634bd1ace91ecbc"
+    },
+    "org/jlinalg/cli/FumaExpressionPrepareCli$Output.class": {
+      "bytes": 1446,
+      "sha256": "22fa49d00eda1a21e98972952edfd518dfc5427b4494c6609f5494e731528282"
+    },
+    "org/jlinalg/cli/FumaExpressionPrepareCli.class": {
+      "bytes": 31712,
+      "sha256": "8084a2df57fd550dbbd5dfbdbb50e9d7b037f9a638ce1737c0cafb07c56f59b5"
+    },
+    "org/jlinalg/cli/FumaToolsCli.class": {
+      "bytes": 28673,
+      "sha256": "89a62e42877ab0fdef4520056ec8528e50284ff037e74b9ac75db7416eabb5b4"
+    },
+    "org/jlinalg/cli/FumaWorkflowCli$Runner.class": {
+      "bytes": 20366,
+      "sha256": "7b9837877e39f95fc384548675b3f6db959fb14ed8d3eacbdf3d8e4889afe94a"
+    },
+    "org/jlinalg/cli/FumaWorkflowCli.class": {
+      "bytes": 29757,
+      "sha256": "c6ac0171cccbabeed54688fb850750e14064e0d4b76f41c7c9cf028dcafe75c0"
+    },
+    "org/jlinalg/enrichment/FumaExpressionPreparation$Disposition.class": {
+      "bytes": 1418,
+      "sha256": "f43103c9ce962f79cfd80a9be7c18b75105ace5827cd3082197e8768a3b976c7"
+    },
+    "org/jlinalg/enrichment/FumaExpressionPreparation$Frame.class": {
+      "bytes": 1976,
+      "sha256": "59ab9655a11d8838da3bc0fb2b617f386ccaa81290aafe49e3e634df0fcc7d2d"
+    },
+    "org/jlinalg/enrichment/FumaExpressionPreparation$Limits.class": {
+      "bytes": 2295,
+      "sha256": "d83f7f38205be83fe2cc87e41ea3ad4bcdb07b6ff97a45612ea17c5d8164857f"
+    },
+    "org/jlinalg/enrichment/FumaExpressionPreparation$Row.class": {
+      "bytes": 1817,
+      "sha256": "6f3da20949809c257e1dd2107c88cf1b6cffafe90587f55f272d7d5267a237a3"
+    },
+    "org/jlinalg/enrichment/FumaExpressionPreparation$Sample.class": {
+      "bytes": 1813,
+      "sha256": "337e5e8a0cb93379fdfb721067e045627f9b3ca84427f0e419b74a85cbd6c83b"
+    },
+    "org/jlinalg/enrichment/FumaExpressionPreparation$Sum.class": {
+      "bytes": 836,
+      "sha256": "16b1a9acd6a2f40cf23de5df90688587333aa34a5cd42c290f8dfd57881f47fd"
+    },
+    "org/jlinalg/enrichment/FumaExpressionPreparation.class": {
+      "bytes": 9312,
+      "sha256": "af989e371e99dfa3eab4e0ff05317be3f53f625130b748448f64dfbf287e3729"
+    }
+  },
+  "canonical_executable_unchanged": {
+    "bytes": 162107844,
+    "sha256": "bd1a3b2448d7016ae4ded3f30a6c5ae92e05a0078ae688f4b93d046cc355eeb2"
+  },
+  "source_LF_normalization": {
+    "status": "LF-normalization-produces-identical-packaged-entry-bytes",
+    "entries": 19264,
+    "prior_jar_sha256": "69aa56cbf943f6c57f166c695f0c0b55da2406ffbd6e6d8224767cfd4d3690ee",
+    "final_jar_sha256": "69aa56cbf943f6c57f166c695f0c0b55da2406ffbd6e6d8224767cfd4d3690ee",
+    "old_source_sha256": "be6ac7ee9a090ece8e76acaba2c2e7051ef0a40536e167e736aa9ea23421e744",
+    "final_source_sha256": "c7800a914d9db7c76634fea677d96d9a36da68076878cc618ac59824ebe903bb"
+  },
+  "metadata_correction": {
+    "status": "passed-single-CLI-metadata-correction-with-identical-scientific-tables",
+    "previous_checkpoint": {
+      "path": "docs/literature/fuma-expression-preparation/VALIDATION.json",
+      "sha256": "af8509613b603ce55bab669402458efe16342850944cd4bbd07a0d502396de67"
+    },
+    "prior_artifact_sha256": "69aa56cbf943f6c57f166c695f0c0b55da2406ffbd6e6d8224767cfd4d3690ee",
+    "final_artifact_sha256": "31cf870041c75396a1dc434d682993fbbd94a5e7712337b2ce427e0686a4111f",
+    "changed_packaged_entries": [
+      "org/jlinalg/cli/FumaExpressionPrepareCli.class"
+    ],
+    "scientific_tables_unchanged": [
+      {
+        "path": "workflow-1/expression-preparation/log2.tsv",
+        "bytes": 82,
+        "sha256": "b39310f679dff0a4db0222c440732d13149fb386a0f4a45b1ef4fe3f342c59d1"
+      },
+      {
+        "path": "workflow-1/expression-preparation/norm.tsv",
+        "bytes": 98,
+        "sha256": "5abb73afbc791207511d49e17e7800906f00d6ea68f2328eb8549d3027eeb807"
+      },
+      {
+        "path": "workflow-1/expression-preparation/gene-covariates.tsv",
+        "bytes": 127,
+        "sha256": "46b386071eebfb8610c019e13b26ec72c49a569384ececf830a720cc95631f48"
+      },
+      {
+        "path": "workflow-1/expression-preparation/gene-audit.tsv",
+        "bytes": 408,
+        "sha256": "cfbe788e1f970c9b9e8bd321e435ceae49ba02663ecbc8eeb0554aed4f687bcb"
+      },
+      {
+        "path": "workflow-1/expression-preparation/sample-selection.tsv",
+        "bytes": 96,
+        "sha256": "255e9227046b08b315d5e48d79fb81a7b78c207d93d680d90de42eebce8e753b"
+      },
+      {
+        "path": "workflow-1/expression-preparation/label-samples.tsv",
+        "bytes": 22,
+        "sha256": "d3dfb40fed4783dd6658eb7e178481df3a8671ec31f3f0e502749fff99ab6f20"
+      },
+      {
+        "path": "standalone-1/log2.tsv",
+        "bytes": 82,
+        "sha256": "b39310f679dff0a4db0222c440732d13149fb386a0f4a45b1ef4fe3f342c59d1"
+      },
+      {
+        "path": "standalone-1/norm.tsv",
+        "bytes": 98,
+        "sha256": "5abb73afbc791207511d49e17e7800906f00d6ea68f2328eb8549d3027eeb807"
+      },
+      {
+        "path": "standalone-1/gene-covariates.tsv",
+        "bytes": 127,
+        "sha256": "46b386071eebfb8610c019e13b26ec72c49a569384ececf830a720cc95631f48"
+      },
+      {
+        "path": "standalone-1/gene-audit.tsv",
+        "bytes": 356,
+        "sha256": "1cf9ba09627d8074cc47b8e87f619a46a22dd419bd37cb0edcdbf0ab44373ddb"
+      },
+      {
+        "path": "standalone-1/sample-selection.tsv",
+        "bytes": 96,
+        "sha256": "255e9227046b08b315d5e48d79fb81a7b78c207d93d680d90de42eebce8e753b"
+      },
+      {
+        "path": "standalone-1/label-samples.tsv",
+        "bytes": 22,
+        "sha256": "d3dfb40fed4783dd6658eb7e178481df3a8671ec31f3f0e502749fff99ab6f20"
+      },
+      {
+        "path": "workflow-1/expression/log2-expression.tsv",
+        "bytes": 99,
+        "sha256": "65795286fc9009173fabc28a51549aa11bdb18fc64d80dd6b2b5ed4a907c812a"
+      },
+      {
+        "path": "workflow-1/expression/norm-expression.tsv",
+        "bytes": 115,
+        "sha256": "72800229efbe82b831c0e0542e489680c6554f54903ef6a30354e46f5123dbf6"
+      },
+      {
+        "path": "workflow-1/expression/DEG.txt",
+        "bytes": 146,
+        "sha256": "ef6798410ac4b8f83ef2a443985b1434165aa95a1d1602e6078b5ebb7351072d"
+      },
+      {
+        "path": "workflow-1/expression/deg-tests.tsv",
+        "bytes": 396,
+        "sha256": "f9b0893bb01b7a07e12c6e0684e8068e82dca1767bf18a6adab779edcfa278e0"
+      },
+      {
+        "path": "workflow-1/expression/expressed-background.tsv",
+        "bytes": 19,
+        "sha256": "a34d278a79bf8bec733397074ace29213a31b2a2b5d1a4048a1a49b80391c804"
+      },
+      {
+        "path": "workflow-1/expression/query-outside-background.tsv",
+        "bytes": 5,
+        "sha256": "d1c56c30f7381f37cb620d0e6074a14983dd9e914a14553a9348b4753d1dc84a"
+      },
+      {
+        "path": "magma-prepared/log2.tsv",
+        "bytes": 11916,
+        "sha256": "e5025f9f1910857b6eebec466f522a8cbc2e9000d3e7c7c349b5138f874dc410"
+      },
+      {
+        "path": "magma-prepared/norm.tsv",
+        "bytes": 13071,
+        "sha256": "acdb45402f13379240cb1c3e0ac5eaca1e9f139f945430b4035ea387369b3e8a"
+      },
+      {
+        "path": "magma-prepared/gene-covariates.tsv",
+        "bytes": 15542,
+        "sha256": "0b51985b4e31f8aa8b17a3655bb7bbc383595b79900c47603628676fe7315adc"
+      },
+      {
+        "path": "magma-prepared/gene-audit.tsv",
+        "bytes": 22053,
+        "sha256": "cd12fb4aa7d31706292b428f632a36168b6c32cf8f01e361dfaae3fdf0cf4378"
+      },
+      {
+        "path": "magma-prepared/sample-selection.tsv",
+        "bytes": 196,
+        "sha256": "ca88c3e40e253ebea2d26c915da380b75022993356d1ca2af4e00d88098dfa2f"
+      },
+      {
+        "path": "magma-prepared/label-samples.tsv",
+        "bytes": 44,
+        "sha256": "9f72420500239de24eb1680efa61f17ba93ee5f19c5a7962fd5212cbe13ed4b5"
+      },
+      {
+        "path": "magma-fit/results.tsv",
+        "bytes": 200,
+        "sha256": "b447a716fbcd15db161f758a1f7cdf363dd4624cfeb13440a28c789aef06fe16"
+      },
+      {
+        "path": "magma-fit/input.properties.tsv",
+        "bytes": 15542,
+        "sha256": "0b51985b4e31f8aa8b17a3655bb7bbc383595b79900c47603628676fe7315adc"
+      }
+    ],
+    "old_label_counts_type": "Java int-array identity string",
+    "corrected_label_counts": [
+      1,
+      3
+    ]
+  },
+  "public_command_artifact_note": "Commands-3 and matrix-3 use final package-3. The earlier checkpoint is retained separately; the corrected JSON sample counts are checked directly. Every scientific table and every prior packaged class except the single CLI metadata writer are byte-identical to package-2.",
+  "archive": {
+    "path": "controls.zip",
+    "bytes": 3541238,
+    "sha256": "306cd996c5f60353bddbe776b38af4b2c5b255af4cb802ccd30d94ad710c0e25",
+    "entries": 676
+  },
+  "archive_files": {
+    "correction/build-3.log": {
+      "bytes": 834,
+      "sha256": "e59841d9d01275da4d9320cad09b1c5461f1ade52de3a3e0d20f32ba1c92e518"
+    },
+    "correction/commands-3.log": {
+      "bytes": 135,
+      "sha256": "2cc452192cdcd3af06a31a048d395dab0773e3bd732b628ec1edcb8d00e785e9"
+    },
+    "correction/family-tests-3-summary.json": {
+      "bytes": 200,
+      "sha256": "87ad597904fc218f592d3461ffc04e05a53b7d040a5f3244a280d6f1aae0642f"
+    },
+    "correction/family-tests-3.log": {
+      "bytes": 630,
+      "sha256": "741718b66b410ab0d77ea2257683d49f200c6979fe746edcd4cb98a2b31b8131"
+    },
+    "correction/matrix-3.log": {
+      "bytes": 217,
+      "sha256": "0178c1cb46e9acb3d9dbaee37bb618939affd6da70816eb39df82426a9150011"
+    },
+    "correction/metadata-correction-comparison.json": {
+      "bytes": 5109,
+      "sha256": "d7a3989debbe9e7f085cc5263715c10a56f231bb159225b6484eeb8421bb4a5c"
+    },
+    "correction/role-audit-3.log": {
+      "bytes": 165,
+      "sha256": "2342652e55f1c2ba219038a14fd02e0b1942f3bd06cdc814e5fbf8af7e4ba60c"
+    },
+    "evidence/commands-3/COMPLETED.json": {
+      "bytes": 24811,
+      "sha256": "bda32fe5f8e75aaa90d998accb0efe8d3cf015104430fb4a2ed655b567c66c11"
+    },
+    "evidence/commands-3/actual-original-magma-fit.json": {
+      "bytes": 1165,
+      "sha256": "de99436ab8e38770ee18ae2d5eaa5eeb3e52e4994990695fb14a9ccf667a51a7"
+    },
+    "evidence/commands-3/actual-original-magma-fit.stderr": {
+      "bytes": 156,
+      "sha256": "ff6a7a39cb1acffd02cf795f59e6b8b419b91af5e06c6be00eb6ce5df3470c5b"
+    },
+    "evidence/commands-3/actual-original-magma-fit.stdout": {
+      "bytes": 148,
+      "sha256": "767d5a86911e8b0a900c5f21ff0745f98aab40f24a63c1d80d711dadce845e70"
+    },
+    "evidence/commands-3/create-inputs.json": {
+      "bytes": 443,
+      "sha256": "afa0378520f66483110c169b6edd91ecba57a90bda6f2cc62bf5590c7c273dbe"
+    },
+    "evidence/commands-3/create-inputs.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "evidence/commands-3/create-inputs.stdout": {
+      "bytes": 150,
+      "sha256": "4b04872cf3e611c7bc8b999dd3eaba48ef1d426c59fd4df24c2a0b86c1f54b8a"
+    },
+    "evidence/commands-3/prepare-magma-covariates.json": {
+      "bytes": 1353,
+      "sha256": "a39ca83e1901f4f1ecfaa5ff7b57e67298c332b17ff9b671e3f4687bbf788300"
+    },
+    "evidence/commands-3/prepare-magma-covariates.stderr": {
+      "bytes": 157,
+      "sha256": "e7f09fe54dd8c977df4d16fb49374a444b4fe434d86d2ed210fe906d405fdffb"
+    },
+    "evidence/commands-3/prepare-magma-covariates.stdout": {
+      "bytes": 185,
+      "sha256": "47bad08f42653acc184ba60b5125427ef0461fa6ea73262d697904619bb9eb2f"
+    },
+    "evidence/commands-3/standalone-tsv.json": {
+      "bytes": 1312,
+      "sha256": "9e38fbe9220e01e8a1945b85806baa40a50720c9305af968f38208092c15bebb"
+    },
+    "evidence/commands-3/standalone-tsv.stderr": {
+      "bytes": 155,
+      "sha256": "138b1f016df55751706c306712f34cc6492f9fd16ce5989986c670be1e66eb0e"
+    },
+    "evidence/commands-3/standalone-tsv.stdout": {
+      "bytes": 183,
+      "sha256": "5dc16c9d8df56ace9ef6c9f0d51982768892b2dc371aba968444bf923fe3711b"
+    },
+    "evidence/commands-3/typed-workflow.json": {
+      "bytes": 702,
+      "sha256": "2945481ef038f62c3708d0be00a8f73e03d4ef067404c2dc73d468e3ca14871c"
+    },
+    "evidence/commands-3/typed-workflow.stderr": {
+      "bytes": 153,
+      "sha256": "8d8126ce843f8a3ea757ed8a0219258d95b4061c57bd4663fd9fa95afeacf9fc"
+    },
+    "evidence/commands-3/typed-workflow.stdout": {
+      "bytes": 159,
+      "sha256": "847800ec11e544075e84c9d781ad7d48fb8768718fd6e34dc6619ef44bd28219"
+    },
+    "evidence/commands-3/work/input/background.txt": {
+      "bytes": 14,
+      "sha256": "5c4704c0cd07ddda1c07a39d963db18f28f2dd9589c7f479496f100c8d1eab6a"
+    },
+    "evidence/commands-3/work/input/deg.tsv": {
+      "bytes": 76,
+      "sha256": "34489cf2a0e91c3502a8fa5b08420bdd1eabaa04609a329cb07ecc554dec7b9b"
+    },
+    "evidence/commands-3/work/input/labels.tsv": {
+      "bytes": 10,
+      "sha256": "fc868f8c3b99b165742852310b1738630b14b973b45b260a704db5005752af8a"
+    },
+    "evidence/commands-3/work/input/query.txt": {
+      "bytes": 14,
+      "sha256": "5c4704c0cd07ddda1c07a39d963db18f28f2dd9589c7f479496f100c8d1eab6a"
+    },
+    "evidence/commands-3/work/input/raw.gct": {
+      "bytes": 176,
+      "sha256": "88c7f6fce2fe4d5e4331aedd1b4264dfd96a72663e1b74ebe5f30660aaa49e9c"
+    },
+    "evidence/commands-3/work/input/raw.tsv": {
+      "bytes": 95,
+      "sha256": "5a9b0100250f929168713eb1712ab07a10e336572a195ed6bf743bd71002071b"
+    },
+    "evidence/commands-3/work/input/samples.tsv": {
+      "bytes": 33,
+      "sha256": "1efd8d95bb35fd51732e0a619ab7825d12ccfacac154c72447a32ffc21239a57"
+    },
+    "evidence/commands-3/work/input/symbols.tsv": {
+      "bytes": 36,
+      "sha256": "5c101d98660f094c5f1f6bdc348c2f3496398fc09f37358195bd630f6d862eb9"
+    },
+    "evidence/commands-3/work/magma-fit.config.yaml": {
+      "bytes": 853,
+      "sha256": "988b4a89b66e2bd360adc25ea9127da7c958511c877ad457609dbf2824e982e6"
+    },
+    "evidence/commands-3/work/magma-fit/WARNINGS.md": {
+      "bytes": 1380,
+      "sha256": "8a493918748c3b1e983a4bdaddaf90e26b9fcc98affee5e722d718fee2405db4"
+    },
+    "evidence/commands-3/work/magma-fit/analysis-status.json": {
+      "bytes": 37,
+      "sha256": "d26488e7a635450d1996b3ad4fd647c836c46896f30ac9d51b9c6bab4c9d8fe9"
+    },
+    "evidence/commands-3/work/magma-fit/analysis.gsa.genes.out.txt": {
+      "bytes": 18569,
+      "sha256": "29a5d0763a0144ef8ff17b63e09dfa385e92f692f2f6771f4f1dc868b0ff233c"
+    },
+    "evidence/commands-3/work/magma-fit/analysis.gsa.out.txt": {
+      "bytes": 631,
+      "sha256": "02c367d87b0dba24317d92fb620810575f23eea0a83767277731fac19168643b"
+    },
+    "evidence/commands-3/work/magma-fit/analysis.log": {
+      "bytes": 2784,
+      "sha256": "1fbb273e53ec5a17f1ce1219fab4ffeee7dedb20b95c5be961c70f776784552a"
+    },
+    "evidence/commands-3/work/magma-fit/input.properties.tsv": {
+      "bytes": 15542,
+      "sha256": "0b51985b4e31f8aa8b17a3655bb7bbc383595b79900c47603628676fe7315adc"
+    },
+    "evidence/commands-3/work/magma-fit/manifest.yaml": {
+      "bytes": 2778,
+      "sha256": "2aee20476c363cf85ea80a4fcfe397761b35acaf07b6fd4f47c9ce65fbd75eb4"
+    },
+    "evidence/commands-3/work/magma-fit/results.tsv": {
+      "bytes": 200,
+      "sha256": "b447a716fbcd15db161f758a1f7cdf363dd4624cfeb13440a28c789aef06fe16"
+    },
+    "evidence/commands-3/work/magma-fit/session.yaml": {
+      "bytes": 3086,
+      "sha256": "f264abe47ba7a92a6098b406c206deb01df196f7154b9b01387907e9fdbbbe57"
+    },
+    "evidence/commands-3/work/magma-fit/version.log": {
+      "bytes": 30,
+      "sha256": "d7caa2af2a9caa9c963352ef57e13f3fcbf6e39995c1760f6013264f682a583f"
+    },
+    "evidence/commands-3/work/magma-intake/datasets.tsv": {
+      "bytes": 140,
+      "sha256": "66d74b6a71e0aa7b565cbc309d33c9f070a45564b2ddc4edcda62160d5bcd45c"
+    },
+    "evidence/commands-3/work/magma-intake/gene-bundle/gene-status.tsv": {
+      "bytes": 2875,
+      "sha256": "6af237cc717582b515d0e86e4bc949202af16bcc8e192e9d6114faebd7005dac"
+    },
+    "evidence/commands-3/work/magma-intake/gene-bundle/genes.raw": {
+      "bytes": 209201,
+      "sha256": "97a0703caf4475e1e14fdadd4ecdd9186f0703d9db30ec483994331a9be7c54f"
+    },
+    "evidence/commands-3/work/magma-intake/gene-bundle/magma-bundle.json": {
+      "bytes": 397,
+      "sha256": "da62f1f1ca6f06dc82af772a7b3fc87a17ea578d8a70d94d235e3a2c23d4ec93"
+    },
+    "evidence/commands-3/work/magma-intake/gene-bundle/results.tsv": {
+      "bytes": 9522,
+      "sha256": "6dc2612df3b6aff179e29e23d7a431e62c8496685c5bfbd490ce9983a4148cfe"
+    },
+    "evidence/commands-3/work/magma-intake/input-manifest.json": {
+      "bytes": 1811,
+      "sha256": "3abf882205ed83c9d42455ac13c1311a4b8b34c2b6ff839af260c9b910b74f1d"
+    },
+    "evidence/commands-3/work/magma-intake/marginal.json": {
+      "bytes": 405,
+      "sha256": "2e60a4a6748113a133e95a5886513bb7aaee90dfd6e0dfa7b4a3eaf082f1a0fc"
+    },
+    "evidence/commands-3/work/magma-intake/parent.json": {
+      "bytes": 427,
+      "sha256": "c60093c0a67f5cb58e3d58ce1d60f78879dd65c9091d17f2d20078c31e98ad62"
+    },
+    "evidence/commands-3/work/magma-intake/properties/detailed54.tsv": {
+      "bytes": 226060,
+      "sha256": "12e2e33c7bda60ea24f99ceb82a782bb1fd37093f1afcb63610d891824ac421c"
+    },
+    "evidence/commands-3/work/magma-intake/properties/general30.tsv": {
+      "bytes": 127712,
+      "sha256": "baddb9774ee11a20436b49f4a9a2e126f2095a044fd205feddeea44446519997"
+    },
+    "evidence/commands-3/work/magma-intake/properties/long-labels.tsv": {
+      "bytes": 16571,
+      "sha256": "4d2baeaaf3783441e7fc3fae0e7616be06b4182a180a7df0f853771287747a09"
+    },
+    "evidence/commands-3/work/magma-intake/properties/missing.tsv": {
+      "bytes": 16422,
+      "sha256": "78fa82a24ac685f17bec9ca56fe5de7010b885906eb7f8d94e1a5a697452198b"
+    },
+    "evidence/commands-3/work/magma-intake/recipes.json": {
+      "bytes": 1953,
+      "sha256": "5fd1f3234a9ddfb1f7a92081b8d32dae929f2c0bd986af7e5ba099fbc744945e"
+    },
+    "evidence/commands-3/work/magma-intake/reference/detailed.gsa.out.txt": {
+      "bytes": 4876,
+      "sha256": "52f0a0ffd1eac6e9e2b84ab0f84175150fdab483515d69dc89b929a9cca6dcbe"
+    },
+    "evidence/commands-3/work/magma-intake/reference/drop.gsa.out.txt": {
+      "bytes": 647,
+      "sha256": "93238332c7a7ea1dc0f314c6a9bca9f31691e286ceb7acb5df441a6581818d4c"
+    },
+    "evidence/commands-3/work/magma-intake/reference/general.gsa.out.txt": {
+      "bytes": 2915,
+      "sha256": "08661771e1764928c4ff5cbcf67452d7ab73619b1ee4e725a06db02854770d22"
+    },
+    "evidence/commands-3/work/magma-intake/reference/long.gsa.out.txt": {
+      "bytes": 871,
+      "sha256": "be8b58e93c0b1f305a4daa1ba6badf0d420c9a037678213a03797cede8ad7059"
+    },
+    "evidence/commands-3/work/magma-intake/reference/mean.gsa.out.txt": {
+      "bytes": 647,
+      "sha256": "35efa734ac3d7b8fba8e23e2e3c645eb4e550bf43e7563c9cb6aa2173ca28e23"
+    },
+    "evidence/commands-3/work/magma-intake/reference/step1.tsv": {
+      "bytes": 7855,
+      "sha256": "736a1084244e889130333b2462732019a8db41bbb81b48012b2ef074a6175aec"
+    },
+    "evidence/commands-3/work/magma-intake/source-provenance.json": {
+      "bytes": 2294,
+      "sha256": "d12ef20f7288f79239a94ff611dba64c64f794d628ae2b653139340e54ffd50b"
+    },
+    "evidence/commands-3/work/magma-prepared.config.yaml": {
+      "bytes": 1009,
+      "sha256": "71160af5bddea3396d15813535b3e8b457289ba8037ff7d436c7942ba1c521b8"
+    },
+    "evidence/commands-3/work/magma-prepared/WARNINGS.md": {
+      "bytes": 1419,
+      "sha256": "b54cb23d4ed2e89f111cee28ff05e772b5c0fa37bf477fde957d1c67f6689ea8"
+    },
+    "evidence/commands-3/work/magma-prepared/analysis-status.json": {
+      "bytes": 44,
+      "sha256": "fd45555c4ada96814c2ace5aceab8ef063d3c67f0e6d6813dc017ed2e2d06161"
+    },
+    "evidence/commands-3/work/magma-prepared/gene-audit.tsv": {
+      "bytes": 22053,
+      "sha256": "cd12fb4aa7d31706292b428f632a36168b6c32cf8f01e361dfaae3fdf0cf4378"
+    },
+    "evidence/commands-3/work/magma-prepared/gene-covariates.tsv": {
+      "bytes": 15542,
+      "sha256": "0b51985b4e31f8aa8b17a3655bb7bbc383595b79900c47603628676fe7315adc"
+    },
+    "evidence/commands-3/work/magma-prepared/label-samples.tsv": {
+      "bytes": 44,
+      "sha256": "9f72420500239de24eb1680efa61f17ba93ee5f19c5a7962fd5212cbe13ed4b5"
+    },
+    "evidence/commands-3/work/magma-prepared/log2.tsv": {
+      "bytes": 11916,
+      "sha256": "e5025f9f1910857b6eebec466f522a8cbc2e9000d3e7c7c349b5138f874dc410"
+    },
+    "evidence/commands-3/work/magma-prepared/manifest.yaml": {
+      "bytes": 2416,
+      "sha256": "1dbef9c8d814d464c0913c4984ba7b3bb355538d9e416af0e44ffba4bfa65e42"
+    },
+    "evidence/commands-3/work/magma-prepared/norm.tsv": {
+      "bytes": 13071,
+      "sha256": "acdb45402f13379240cb1c3e0ac5eaca1e9f139f945430b4035ea387369b3e8a"
+    },
+    "evidence/commands-3/work/magma-prepared/sample-selection.tsv": {
+      "bytes": 196,
+      "sha256": "ca88c3e40e253ebea2d26c915da380b75022993356d1ca2af4e00d88098dfa2f"
+    },
+    "evidence/commands-3/work/magma-prepared/session.json": {
+      "bytes": 3225,
+      "sha256": "255ff457c6b14f3a30296a04f6db600ffd10274699f16eee4b862874fde81f78"
+    },
+    "evidence/commands-3/work/magma-raw/input.tsv": {
+      "bytes": 35197,
+      "sha256": "0ccdb0c78f2c8d32fe8d426d332999211dbe85cfcebfd252b81285c1ff3e3d33"
+    },
+    "evidence/commands-3/work/magma-raw/labels.tsv": {
+      "bytes": 30,
+      "sha256": "002b90ffe4384110f57bfb5129cd96b075446d10c3947d53792176b329d737b0"
+    },
+    "evidence/commands-3/work/magma-raw/samples.tsv": {
+      "bytes": 112,
+      "sha256": "e0fec3b5080e2db6b0d950f16394d702a0594d0fc91613a57564453b69c1b876"
+    },
+    "evidence/commands-3/work/standalone-1.config.yaml": {
+      "bytes": 978,
+      "sha256": "7d2c1f448969c528942057218302a099ab2a2cd9215782e17c5bbf3bde1585c1"
+    },
+    "evidence/commands-3/work/standalone-1/WARNINGS.md": {
+      "bytes": 1783,
+      "sha256": "8b341b80f34decf3a53f4cc3154cc42cd239d790f648f98a78e54a37efb2e21a"
+    },
+    "evidence/commands-3/work/standalone-1/analysis-status.json": {
+      "bytes": 44,
+      "sha256": "fd45555c4ada96814c2ace5aceab8ef063d3c67f0e6d6813dc017ed2e2d06161"
+    },
+    "evidence/commands-3/work/standalone-1/gene-audit.tsv": {
+      "bytes": 356,
+      "sha256": "1cf9ba09627d8074cc47b8e87f619a46a22dd419bd37cb0edcdbf0ab44373ddb"
+    },
+    "evidence/commands-3/work/standalone-1/gene-covariates.tsv": {
+      "bytes": 127,
+      "sha256": "46b386071eebfb8610c019e13b26ec72c49a569384ececf830a720cc95631f48"
+    },
+    "evidence/commands-3/work/standalone-1/label-samples.tsv": {
+      "bytes": 22,
+      "sha256": "d3dfb40fed4783dd6658eb7e178481df3a8671ec31f3f0e502749fff99ab6f20"
+    },
+    "evidence/commands-3/work/standalone-1/log2.tsv": {
+      "bytes": 82,
+      "sha256": "b39310f679dff0a4db0222c440732d13149fb386a0f4a45b1ef4fe3f342c59d1"
+    },
+    "evidence/commands-3/work/standalone-1/manifest.yaml": {
+      "bytes": 2371,
+      "sha256": "a78a82400179a898535e9a2d6aa19a8291d81e9221ffdb981e33f04ed2df7711"
+    },
+    "evidence/commands-3/work/standalone-1/norm.tsv": {
+      "bytes": 98,
+      "sha256": "5abb73afbc791207511d49e17e7800906f00d6ea68f2328eb8549d3027eeb807"
+    },
+    "evidence/commands-3/work/standalone-1/sample-selection.tsv": {
+      "bytes": 96,
+      "sha256": "255e9227046b08b315d5e48d79fb81a7b78c207d93d680d90de42eebce8e753b"
+    },
+    "evidence/commands-3/work/standalone-1/session.json": {
+      "bytes": 3513,
+      "sha256": "54c3e023acafbb18b264b25ea1fcbb4d4759dbc36badfc1bdefec35f86bf99c2"
+    },
+    "evidence/commands-3/work/workflow-1.config.yaml": {
+      "bytes": 497,
+      "sha256": "e0e77127b1eeae963fbc4a4a43e5ff92bbdc8c128ae89f701223bd4f070f2a34"
+    },
+    "evidence/commands-3/work/workflow-1/WARNINGS.md": {
+      "bytes": 1586,
+      "sha256": "14b36aace4fd17c196719d4f63a51ad2d39c9e49cecfbf1a51876377fca2a800"
+    },
+    "evidence/commands-3/work/workflow-1/analysis-status.json": {
+      "bytes": 58,
+      "sha256": "4c031ee5e79509611244a7b2aa4fd81d64f299b5486e311665d6e64a665bc8fd"
+    },
+    "evidence/commands-3/work/workflow-1/expression-preparation/WARNINGS.md": {
+      "bytes": 1783,
+      "sha256": "8b341b80f34decf3a53f4cc3154cc42cd239d790f648f98a78e54a37efb2e21a"
+    },
+    "evidence/commands-3/work/workflow-1/expression-preparation/analysis-status.json": {
+      "bytes": 44,
+      "sha256": "fd45555c4ada96814c2ace5aceab8ef063d3c67f0e6d6813dc017ed2e2d06161"
+    },
+    "evidence/commands-3/work/workflow-1/expression-preparation/gene-audit.tsv": {
+      "bytes": 408,
+      "sha256": "cfbe788e1f970c9b9e8bd321e435ceae49ba02663ecbc8eeb0554aed4f687bcb"
+    },
+    "evidence/commands-3/work/workflow-1/expression-preparation/gene-covariates.tsv": {
+      "bytes": 127,
+      "sha256": "46b386071eebfb8610c019e13b26ec72c49a569384ececf830a720cc95631f48"
+    },
+    "evidence/commands-3/work/workflow-1/expression-preparation/label-samples.tsv": {
+      "bytes": 22,
+      "sha256": "d3dfb40fed4783dd6658eb7e178481df3a8671ec31f3f0e502749fff99ab6f20"
+    },
+    "evidence/commands-3/work/workflow-1/expression-preparation/log2.tsv": {
+      "bytes": 82,
+      "sha256": "b39310f679dff0a4db0222c440732d13149fb386a0f4a45b1ef4fe3f342c59d1"
+    },
+    "evidence/commands-3/work/workflow-1/expression-preparation/manifest.yaml": {
+      "bytes": 2396,
+      "sha256": "c4603f4bb220ec4351eca0ced25c2edb3f65d6df33b7a797a9591bc7ef00ff12"
+    },
+    "evidence/commands-3/work/workflow-1/expression-preparation/norm.tsv": {
+      "bytes": 98,
+      "sha256": "5abb73afbc791207511d49e17e7800906f00d6ea68f2328eb8549d3027eeb807"
+    },
+    "evidence/commands-3/work/workflow-1/expression-preparation/sample-selection.tsv": {
+      "bytes": 96,
+      "sha256": "255e9227046b08b315d5e48d79fb81a7b78c207d93d680d90de42eebce8e753b"
+    },
+    "evidence/commands-3/work/workflow-1/expression-preparation/session.json": {
+      "bytes": 3537,
+      "sha256": "afd40cedd43e7e8017ad4eb8a160005b6bee46ac4a6e65a94932187aa00551fa"
+    },
+    "evidence/commands-3/work/workflow-1/expression/DEG.txt": {
+      "bytes": 146,
+      "sha256": "ef6798410ac4b8f83ef2a443985b1434165aa95a1d1602e6078b5ebb7351072d"
+    },
+    "evidence/commands-3/work/workflow-1/expression/WARNINGS.md": {
+      "bytes": 517,
+      "sha256": "bc90dfa5bdcd04a30108a2e1d633d5bdbe084fa7f9dcb5ec5e14f3b3d37a8d0e"
+    },
+    "evidence/commands-3/work/workflow-1/expression/analysis-status.json": {
+      "bytes": 44,
+      "sha256": "fd45555c4ada96814c2ace5aceab8ef063d3c67f0e6d6813dc017ed2e2d06161"
+    },
+    "evidence/commands-3/work/workflow-1/expression/deg-tests.tsv": {
+      "bytes": 396,
+      "sha256": "f9b0893bb01b7a07e12c6e0684e8068e82dca1767bf18a6adab779edcfa278e0"
+    },
+    "evidence/commands-3/work/workflow-1/expression/expressed-background.tsv": {
+      "bytes": 19,
+      "sha256": "a34d278a79bf8bec733397074ace29213a31b2a2b5d1a4048a1a49b80391c804"
+    },
+    "evidence/commands-3/work/workflow-1/expression/log2-expression.tsv": {
+      "bytes": 99,
+      "sha256": "65795286fc9009173fabc28a51549aa11bdb18fc64d80dd6b2b5ed4a907c812a"
+    },
+    "evidence/commands-3/work/workflow-1/expression/manifest.yaml": {
+      "bytes": 3517,
+      "sha256": "078109f43480d3e05393766445a6e2a9c8ebfa2786ee63d927f1906fce9511a5"
+    },
+    "evidence/commands-3/work/workflow-1/expression/norm-expression.tsv": {
+      "bytes": 115,
+      "sha256": "72800229efbe82b831c0e0542e489680c6554f54903ef6a30354e46f5123dbf6"
+    },
+    "evidence/commands-3/work/workflow-1/expression/query-outside-background.tsv": {
+      "bytes": 5,
+      "sha256": "d1c56c30f7381f37cb620d0e6074a14983dd9e914a14553a9348b4753d1dc84a"
+    },
+    "evidence/commands-3/work/workflow-1/expression/session.json": {
+      "bytes": 2073,
+      "sha256": "a21b2d608c24385725036d0744814c41b9b760694752faf109b0dc3f1638c98d"
+    },
+    "evidence/commands-3/work/workflow-1/logs/expression-preparation.stderr": {
+      "bytes": 176,
+      "sha256": "687f799556190b8b365d80b47d91cab4b9f3ad3d3814194b22e8c50d4ac66e26"
+    },
+    "evidence/commands-3/work/workflow-1/logs/expression-preparation.stdout": {
+      "bytes": 204,
+      "sha256": "1912de7bb62c01c7b700b042dae4c627e75b14f91e58bc7cf99e164972ea9d1a"
+    },
+    "evidence/commands-3/work/workflow-1/logs/expression.stderr": {
+      "bytes": 166,
+      "sha256": "9dcda7c72d0533decf9a4bff089021c8e6bffca2b26b8ca39821c10518a108f4"
+    },
+    "evidence/commands-3/work/workflow-1/logs/expression.stdout": {
+      "bytes": 177,
+      "sha256": "e51090e2da7471a8b4f800c884f7943a39148a7b66932a542e679aa00152253d"
+    },
+    "evidence/commands-3/work/workflow-1/manifest.json": {
+      "bytes": 10319,
+      "sha256": "202d2711494f43792f96da968ed88a363c125124d6fb3e07d800b5094b74108a"
+    },
+    "evidence/commands-3/work/workflow-1/workflow-config.json": {
+      "bytes": 675,
+      "sha256": "62b496c813a50c85fc5807b1b6db652102e2fdb3da407becc688bcaf45021072"
+    },
+    "evidence/commands-3/work/workflow-1/workflow-journal.json": {
+      "bytes": 685,
+      "sha256": "58069c51cfbe302229f04a4a847de44e9364d5cc0aa887feceecbbc58acb7cdc"
+    },
+    "evidence/commands-3/work/workflow.json": {
+      "bytes": 675,
+      "sha256": "62b496c813a50c85fc5807b1b6db652102e2fdb3da407becc688bcaf45021072"
+    },
+    "evidence/example-classes-1/CreateInputs.class": {
+      "bytes": 3105,
+      "sha256": "d0fbbfd61a93f28f67cdd991cd6d286c415982af315786c195b445d1d5d57248"
+    },
+    "evidence/family-tests-3-results/TEST-org.jlinalg.cli.FumaAnnotationCliTest.xml": {
+      "bytes": 4051,
+      "sha256": "ef1aa8f408f441ecf706f84b23a0ee860c8e07ebb2cd1c17701e410c25e659f6"
+    },
+    "evidence/family-tests-3-results/TEST-org.jlinalg.cli.FumaAssociationCliTest.xml": {
+      "bytes": 4313,
+      "sha256": "ac0df7f1687264da0b1db3d6b413fac8fe31d32d2d7665c2215e59213205e728"
+    },
+    "evidence/family-tests-3-results/TEST-org.jlinalg.cli.FumaCelltypeCliTest.xml": {
+      "bytes": 2328,
+      "sha256": "b4213632acc54a74b9cae4010c72bbee441758955a63fa4f8c53ad5e1fca9dfc"
+    },
+    "evidence/family-tests-3-results/TEST-org.jlinalg.cli.FumaCelltypeInputsTest.xml": {
+      "bytes": 1964,
+      "sha256": "baf0233977315cf053a05d47af2e56d1bac577c6d7b8208e01398ffef0209c65"
+    },
+    "evidence/family-tests-3-results/TEST-org.jlinalg.cli.FumaChromatinCliTest.xml": {
+      "bytes": 1423,
+      "sha256": "9d03b3934783879fe0d77e805f57075eaae26f3002ec6477f8d430aa69c5c92e"
+    },
+    "evidence/family-tests-3-results/TEST-org.jlinalg.cli.FumaExpressionCliTest.xml": {
+      "bytes": 2406,
+      "sha256": "cc563424b25df41e9c7519c528e067c2e00b15e2355582d456e90ca9d1c4b6dd"
+    },
+    "evidence/family-tests-3-results/TEST-org.jlinalg.cli.FumaExpressionPrepareCliTest.xml": {
+      "bytes": 2887,
+      "sha256": "586c6f4a43e4fc658e5cac050d3cf6db77cf74f1bf06b0baed6f6ee14531df65"
+    },
+    "evidence/family-tests-3-results/TEST-org.jlinalg.cli.FumaFisherCliTest.xml": {
+      "bytes": 3583,
+      "sha256": "5a12aef4e368202ef8d06bc6d6405d0f36f0e2bbb54b9c675b0cbea6b1e6f094"
+    },
+    "evidence/family-tests-3-results/TEST-org.jlinalg.cli.FumaGeneScoresCliTest.xml": {
+      "bytes": 1155,
+      "sha256": "c5efda4b5ce5246b211dce7803feecfbca4e277b57e0a4e7bc78e274dc26a056"
+    },
+    "evidence/family-tests-3-results/TEST-org.jlinalg.cli.FumaLociCliTest.xml": {
+      "bytes": 1360,
+      "sha256": "5ef861e64b90226955950641ff437599d8942d01307a08bbc6b36c100253d193"
+    },
+    "evidence/family-tests-3-results/TEST-org.jlinalg.cli.FumaMagmaReportCliTest.xml": {
+      "bytes": 3606,
+      "sha256": "35933cd630d15b3703dc2a704279246baba52d92eb7ecf0860f1c169b4228176"
+    },
+    "evidence/family-tests-3-results/TEST-org.jlinalg.cli.FumaMappingCliTest.xml": {
+      "bytes": 1638,
+      "sha256": "416e3e667113ec8cd15b0be8f3804e7c77ab4744da0123a21e73f8cba030b165"
+    },
+    "evidence/family-tests-3-results/TEST-org.jlinalg.cli.FumaNoveltyCliTest.xml": {
+      "bytes": 4220,
+      "sha256": "4a7117343e62b8ff62b44d7b7f1a38402e4a472a607a97a9642c896c8cab7bcd"
+    },
+    "evidence/family-tests-3-results/TEST-org.jlinalg.cli.FumaReferenceCliTest.xml": {
+      "bytes": 2861,
+      "sha256": "0b3890994c7b8ef0ba45466cb63696a6a71dd8ae49f78e0392786297ee750812"
+    },
+    "evidence/family-tests-3-results/TEST-org.jlinalg.cli.FumaToolsCliTest.xml": {
+      "bytes": 1089,
+      "sha256": "85e4b554091d36eeb5f0dd310bde383b312201c084d16235d1ff98ac95699f8e"
+    },
+    "evidence/family-tests-3-results/TEST-org.jlinalg.cli.FumaWorkflowCliTest.xml": {
+      "bytes": 3048,
+      "sha256": "9cdb4dc5f630390686005cf9a1f0f9f38a87ca5fbc42f82f74c97072f2239dc5"
+    },
+    "evidence/family-tests-3-results/TEST-org.jlinalg.cli.MagmaConditioningTest.xml": {
+      "bytes": 472,
+      "sha256": "b6ac0151d44722ad713fc1b2c8f33accd6b0a20767010769133ac5fb39bc29f6"
+    },
+    "evidence/family-tests-3-results/TEST-org.jlinalg.enrichment.FumaCelltypeAnalysisTest.xml": {
+      "bytes": 3812,
+      "sha256": "8f38ad00de9fe0de7b08bc8245a827c2cde40440e2f18885195b6d965e082aa9"
+    },
+    "evidence/family-tests-3-results/TEST-org.jlinalg.enrichment.FumaDegEnrichmentTest.xml": {
+      "bytes": 2317,
+      "sha256": "ded84d110c754a6868d7b3ca8ffe5f9d7c744211e54bdf4ffe34f7caa800caf4"
+    },
+    "evidence/family-tests-3-results/TEST-org.jlinalg.enrichment.FumaExpressionPreparationRTest.xml": {
+      "bytes": 2132,
+      "sha256": "153665f4ba9b25fc7cbf07c5ec3d854ba63612fe8111182f632c67aba0f3ec6c"
+    },
+    "evidence/family-tests-3-results/TEST-org.jlinalg.enrichment.FumaExpressionPreparationTest.xml": {
+      "bytes": 2094,
+      "sha256": "c42ec0010e3d9e5841bd0bed7c18b25317f02939857ebba90df1b0e09a0a1111"
+    },
+    "evidence/family-tests-3-results/TEST-org.jlinalg.enrichment.FumaGeneExpressionTest.xml": {
+      "bytes": 1748,
+      "sha256": "a9994f2b3af7e1655df36fa375eeaba3e0fa1ee48c257df32d523ebfcbcb9bb8"
+    },
+    "evidence/family-tests-3-results/TEST-org.jlinalg.enrichment.FumaGeneSetEnrichmentTest.xml": {
+      "bytes": 3191,
+      "sha256": "625f3ad22d65977daaf94131730df83800ba300506d08821a7f37b30b55bfa43"
+    },
+    "evidence/family-tests-3-results/TEST-org.jlinalg.enrichment.FumaMagmaReportTest.xml": {
+      "bytes": 3137,
+      "sha256": "e67157713c3795abf0ccdb58ddfd26cda4dfd9fbe5a7ca05e7255ac22d55573b"
+    },
+    "evidence/family-tests-3-results/TEST-org.jlinalg.genetics.FumaChromatinMappingTest.xml": {
+      "bytes": 4973,
+      "sha256": "e26d06a740722a6242554dcaae343c2187f28a5ccf4ccc1a245cbe2488ee3360"
+    },
+    "evidence/family-tests-3-results/TEST-org.jlinalg.genetics.FumaFisherExactTest.xml": {
+      "bytes": 3170,
+      "sha256": "cda199cae9fc58383d3e7d0ce2cd96e3aafd6631cab8f79a9a6848bd1e3866dc"
+    },
+    "evidence/family-tests-3-results/TEST-org.jlinalg.genetics.FumaFisherFamiliesTest.xml": {
+      "bytes": 2993,
+      "sha256": "632fbc268ffdc431b7bb9b683c20e089e3db3b092b310bbc88b9e7ebbdf24345"
+    },
+    "evidence/family-tests-3-results/TEST-org.jlinalg.genetics.FumaFisherGroupsTest.xml": {
+      "bytes": 3809,
+      "sha256": "4a5c1c1b0ce5c7f1a9a13241f393fafbfbc2e3182f95a49f4db0d4d07ef891ed"
+    },
+    "evidence/family-tests-3-results/TEST-org.jlinalg.genetics.FumaGeneScoreAnnotationsTest.xml": {
+      "bytes": 3139,
+      "sha256": "45b9e74702b43fbd20e4e286812291b9519aadc53c04528e160937d98cea749e"
+    },
+    "evidence/family-tests-3-results/TEST-org.jlinalg.genetics.FumaKnownAssociationsTest.xml": {
+      "bytes": 4222,
+      "sha256": "1d506bbf6cc50657e78169ee7c9ded935d0b02d760322df7bd431a63c6d6b9de"
+    },
+    "evidence/family-tests-3-results/TEST-org.jlinalg.genetics.FumaLdWindowTest.xml": {
+      "bytes": 1405,
+      "sha256": "bf88bd8b64c58d887d4425156308b6747d7fc3814f7672eebdbc05ad76d1989e"
+    },
+    "evidence/family-tests-3-results/TEST-org.jlinalg.genetics.FumaLocusDefinitionTest.xml": {
+      "bytes": 3766,
+      "sha256": "7d5dc6f72882dcb060911d835921d5619164d5536c65b853f757da5a4a09cfc5"
+    },
+    "evidence/family-tests-3-results/TEST-org.jlinalg.genetics.FumaLocusNoveltyTest.xml": {
+      "bytes": 2721,
+      "sha256": "4eff0e26a9c7ca098f65a6c66a060b531b1828dceb6f1e4117c084c141692aa4"
+    },
+    "evidence/family-tests-3-results/TEST-org.jlinalg.genetics.FumaReferenceOriginalTest.xml": {
+      "bytes": 1267,
+      "sha256": "dec3b127ccfea0feca47de50af20b5ef9bf467f5f1d26fa945f180c8716ea20f"
+    },
+    "evidence/family-tests-3-results/TEST-org.jlinalg.genetics.FumaReferencePreparationTest.xml": {
+      "bytes": 2299,
+      "sha256": "1c88083dd8e436a41cbe4abfd6eeaa29319a219e8bdd0c2f44f1c699e7185454"
+    },
+    "evidence/family-tests-3-results/TEST-org.jlinalg.genetics.FumaVariantAnnotationsTest.xml": {
+      "bytes": 4736,
+      "sha256": "eb0e4bacc64acd84477d1dca73629bc0962916515c65961433f796b4ce0e579e"
+    },
+    "evidence/family-tests-3-results/TEST-org.jlinalg.genetics.FumaVariantGeneMappingTest.xml": {
+      "bytes": 4031,
+      "sha256": "26e0373c5b035ba894df1b5b6b4ef3140a6892236f61370108d1a415a2a2496f"
+    },
+    "evidence/family-tests-3-results/TEST-org.jlinalg.genetics.HardcallLdOriginalTest.xml": {
+      "bytes": 1347,
+      "sha256": "fd01a87d60502aef924c4db7d930b520c686abe3fc999d42168be7e89722863a"
+    },
+    "evidence/family-tests-3-results/TEST-org.jlinalg.genetics.HardcallLdTest.xml": {
+      "bytes": 2078,
+      "sha256": "accc29c6cc7ce64671c231eafc01026089af487277a3b8e19b280865b210308f"
+    },
+    "evidence/independent-R-controls-1/R-version.txt": {
+      "bytes": 35,
+      "sha256": "75a804f1bb59d9fff037d5fc0dce05c8556721694e00dc83813be74afa6f3648"
+    },
+    "evidence/independent-R-controls-1/SCOPE.txt": {
+      "bytes": 345,
+      "sha256": "44e085bf45164679c4c5c45bca7cfe0534d575fab30c791c36a2f73b0a8c7ed2"
+    },
+    "evidence/independent-R-controls-1/complete-129/expected.tsv": {
+      "bytes": 1940,
+      "sha256": "82b10e62d877076e66824c94e5cd73bc1185bf611dde1b2f7174719305aa6a60"
+    },
+    "evidence/independent-R-controls-1/complete-129/input.tsv": {
+      "bytes": 18733,
+      "sha256": "a1643653a9b27f218b5258a213078560d68977ef08e25e84df0d464e17116684"
+    },
+    "evidence/independent-R-controls-1/complete-129/labels.tsv": {
+      "bytes": 19,
+      "sha256": "5dcf1f2a6395c1d94d5b850c648f7bb9a312a6b755e02da83fd5e03b2beffef1"
+    },
+    "evidence/independent-R-controls-1/complete-129/samples.tsv": {
+      "bytes": 1067,
+      "sha256": "2ad47531b4473fe651f06647e622d88311562bf02d3fc2fc2ec30d1be303d6a3"
+    },
+    "evidence/independent-R-controls-1/complete-200/expected.tsv": {
+      "bytes": 1901,
+      "sha256": "b191d7aa7fed86bfa18e409b623f22506c32d8e4003f2aaafb2eaba58d3dfc12"
+    },
+    "evidence/independent-R-controls-1/complete-200/input.tsv": {
+      "bytes": 29046,
+      "sha256": "166974dc37d8e570095c8fd610ae6479e7af922471473970532b68acf84f7789"
+    },
+    "evidence/independent-R-controls-1/complete-200/labels.tsv": {
+      "bytes": 19,
+      "sha256": "5dcf1f2a6395c1d94d5b850c648f7bb9a312a6b755e02da83fd5e03b2beffef1"
+    },
+    "evidence/independent-R-controls-1/complete-200/samples.tsv": {
+      "bytes": 1706,
+      "sha256": "f7c84a9aed6e7d011014c97554b297cc80edcab7c2f0f8e51d95433874453a12"
+    },
+    "evidence/independent-R-controls-1/complete-3/expected.tsv": {
+      "bytes": 1730,
+      "sha256": "e05a6dc00be9c484720aeb4ace0fc31326591b2eaa5e979bd45e7010648e099a"
+    },
+    "evidence/independent-R-controls-1/complete-3/input.tsv": {
+      "bytes": 546,
+      "sha256": "c909f152b18d46e08e3f8605b9c8daab96e6940e43e1403569fac22d26bae961"
+    },
+    "evidence/independent-R-controls-1/complete-3/labels.tsv": {
+      "bytes": 19,
+      "sha256": "5dcf1f2a6395c1d94d5b850c648f7bb9a312a6b755e02da83fd5e03b2beffef1"
+    },
+    "evidence/independent-R-controls-1/complete-3/samples.tsv": {
+      "bytes": 35,
+      "sha256": "6fbd4fc7adee65c009fbcfffd5556fb0e57f69208df3279d9dab449a1bdfb262"
+    },
+    "evidence/independent-R-controls-1/complete-4/expected.tsv": {
+      "bytes": 1746,
+      "sha256": "0c54b417ab495b8f1787478781b08c3e8422d4ca597166548ebb0f81a54704df"
+    },
+    "evidence/independent-R-controls-1/complete-4/input.tsv": {
+      "bytes": 691,
+      "sha256": "fe2a08a67ad502ea6213dbf453a8526ab81c774789279524f6810720ecd06115"
+    },
+    "evidence/independent-R-controls-1/complete-4/labels.tsv": {
+      "bytes": 19,
+      "sha256": "5dcf1f2a6395c1d94d5b850c648f7bb9a312a6b755e02da83fd5e03b2beffef1"
+    },
+    "evidence/independent-R-controls-1/complete-4/samples.tsv": {
+      "bytes": 42,
+      "sha256": "6a655c4bf8c0c9037fa2006cf9c72aaad6985334e5fb9d291226afe60e25a842"
+    },
+    "evidence/independent-R-controls-1/complete-5/expected.tsv": {
+      "bytes": 1786,
+      "sha256": "d6793f132bc1ef43903ca632fe50e16c75350163b2eb47f1488639880478e38e"
+    },
+    "evidence/independent-R-controls-1/complete-5/input.tsv": {
+      "bytes": 833,
+      "sha256": "2e4add5242acb052560b6baccc3bf3cf5acb80f63c8e6773f6b95263b41c39a3"
+    },
+    "evidence/independent-R-controls-1/complete-5/labels.tsv": {
+      "bytes": 19,
+      "sha256": "5dcf1f2a6395c1d94d5b850c648f7bb9a312a6b755e02da83fd5e03b2beffef1"
+    },
+    "evidence/independent-R-controls-1/complete-5/samples.tsv": {
+      "bytes": 49,
+      "sha256": "d3f64ff8d865e287d241174d246765ede89735256e6eba8d4604093feaa7de3b"
+    },
+    "evidence/independent-R-controls-1/complete-63/expected.tsv": {
+      "bytes": 1872,
+      "sha256": "afb3abf75288ecbef59d36a4d9a088307ff5bd42b4876340705ca3f156185508"
+    },
+    "evidence/independent-R-controls-1/complete-63/input.tsv": {
+      "bytes": 9193,
+      "sha256": "5ca73463f304e4ab8a5d882482ccdbc608a4d9f64519a9f133566929c9bb4030"
+    },
+    "evidence/independent-R-controls-1/complete-63/labels.tsv": {
+      "bytes": 19,
+      "sha256": "5dcf1f2a6395c1d94d5b850c648f7bb9a312a6b755e02da83fd5e03b2beffef1"
+    },
+    "evidence/independent-R-controls-1/complete-63/samples.tsv": {
+      "bytes": 509,
+      "sha256": "f6747fa47b9413154b3a051e9431305f4011f75f3d3bbe01e6e915993e264a86"
+    },
+    "evidence/independent-R-controls-1/complete-64/expected.tsv": {
+      "bytes": 1859,
+      "sha256": "f9de8b70e6544bbf38e5e83891ab011946dcccabc2dac5817d5214fa17a03383"
+    },
+    "evidence/independent-R-controls-1/complete-64/input.tsv": {
+      "bytes": 9327,
+      "sha256": "636547c1c883d3e7880de4f584aef6e4540a138a646f0e019bf10d3c9b55414c"
+    },
+    "evidence/independent-R-controls-1/complete-64/labels.tsv": {
+      "bytes": 19,
+      "sha256": "5dcf1f2a6395c1d94d5b850c648f7bb9a312a6b755e02da83fd5e03b2beffef1"
+    },
+    "evidence/independent-R-controls-1/complete-64/samples.tsv": {
+      "bytes": 517,
+      "sha256": "d0dfe2b43351934d12c26d6a37c18a8612d55b801850c6917d0c5a7367e5b3f2"
+    },
+    "evidence/independent-R-controls-1/complete-65/expected.tsv": {
+      "bytes": 1882,
+      "sha256": "97cf5b678bec1a6155dc947d25f94341c5d429e5a6ea9470048de6ecd0c25c78"
+    },
+    "evidence/independent-R-controls-1/complete-65/input.tsv": {
+      "bytes": 9480,
+      "sha256": "e5e32b1b0d559850a8c9c082defff2ac55760a12befc3553a38c04e714ff33f0"
+    },
+    "evidence/independent-R-controls-1/complete-65/labels.tsv": {
+      "bytes": 19,
+      "sha256": "5dcf1f2a6395c1d94d5b850c648f7bb9a312a6b755e02da83fd5e03b2beffef1"
+    },
+    "evidence/independent-R-controls-1/complete-65/samples.tsv": {
+      "bytes": 525,
+      "sha256": "61eb50089dd193c5c1b3c12e240acae14aeb03cad35b083eb0fa5c9fc74b10b7"
+    },
+    "evidence/independent-R-controls-1/sessionInfo.txt": {
+      "bytes": 434,
+      "sha256": "6240954ecbc5c1bda456a0b7e67d01fd9379fbbac52741124b6ff12f25eba193"
+    },
+    "evidence/independent-R-controls-1/subset-129/expected.tsv": {
+      "bytes": 1833,
+      "sha256": "80f06a16563afb571a499a99481dd75c32d8409f8bed42dc6e5cbc21feb5048f"
+    },
+    "evidence/independent-R-controls-1/subset-129/input.tsv": {
+      "bytes": 18763,
+      "sha256": "fdcf2357202697e01183d14a1f1c67aeea92fcfd69715ad2233795c4824d3154"
+    },
+    "evidence/independent-R-controls-1/subset-129/labels.tsv": {
+      "bytes": 19,
+      "sha256": "5dcf1f2a6395c1d94d5b850c648f7bb9a312a6b755e02da83fd5e03b2beffef1"
+    },
+    "evidence/independent-R-controls-1/subset-129/samples.tsv": {
+      "bytes": 716,
+      "sha256": "89b205f76768a050ec0359456e63c3813e067bdc0d8685269e0d633bbe03bcd6"
+    },
+    "evidence/independent-R-controls-1/subset-200/expected.tsv": {
+      "bytes": 1877,
+      "sha256": "c5e50a6c311566e28f826cfd5d849c49d117bf0adbd296cfc88a9d45e5981125"
+    },
+    "evidence/independent-R-controls-1/subset-200/input.tsv": {
+      "bytes": 29073,
+      "sha256": "a07b366979147cef1c4bfc39a2c91ab4a2d8e4a5df76403fc50da89f16d477c7"
+    },
+    "evidence/independent-R-controls-1/subset-200/labels.tsv": {
+      "bytes": 19,
+      "sha256": "5dcf1f2a6395c1d94d5b850c648f7bb9a312a6b755e02da83fd5e03b2beffef1"
+    },
+    "evidence/independent-R-controls-1/subset-200/samples.tsv": {
+      "bytes": 1148,
+      "sha256": "b913645271989a02666c2a239781c680a109a74c5e8a1c8bc5eb588f53638a3f"
+    },
+    "evidence/independent-R-controls-1/subset-3/expected.tsv": {
+      "bytes": 1724,
+      "sha256": "af4b615aa8d9215040847002339d2aaf5d0edf365175d7035bc119b7c9f5e78e"
+    },
+    "evidence/independent-R-controls-1/subset-3/input.tsv": {
+      "bytes": 544,
+      "sha256": "b597a87e059c8fdce77de1381d7d17183b71e28f6166af685cd16ee72fcd02c9"
+    },
+    "evidence/independent-R-controls-1/subset-3/labels.tsv": {
+      "bytes": 19,
+      "sha256": "5dcf1f2a6395c1d94d5b850c648f7bb9a312a6b755e02da83fd5e03b2beffef1"
+    },
+    "evidence/independent-R-controls-1/subset-3/samples.tsv": {
+      "bytes": 35,
+      "sha256": "6fbd4fc7adee65c009fbcfffd5556fb0e57f69208df3279d9dab449a1bdfb262"
+    },
+    "evidence/independent-R-controls-1/subset-4/expected.tsv": {
+      "bytes": 1688,
+      "sha256": "16d2ed03bd81371c05e838aa22809d59a7561739019faf71d64fb96b52af47c6"
+    },
+    "evidence/independent-R-controls-1/subset-4/input.tsv": {
+      "bytes": 690,
+      "sha256": "dee7d96b5c24438115c524b28c3fa578795d39eb3c1f53d9430dcb02d619a524"
+    },
+    "evidence/independent-R-controls-1/subset-4/labels.tsv": {
+      "bytes": 19,
+      "sha256": "5dcf1f2a6395c1d94d5b850c648f7bb9a312a6b755e02da83fd5e03b2beffef1"
+    },
+    "evidence/independent-R-controls-1/subset-4/samples.tsv": {
+      "bytes": 42,
+      "sha256": "6a655c4bf8c0c9037fa2006cf9c72aaad6985334e5fb9d291226afe60e25a842"
+    },
+    "evidence/independent-R-controls-1/subset-5/expected.tsv": {
+      "bytes": 1767,
+      "sha256": "7d926959749957bac7cb04ae563937967c3b7d767206fb953af3e12405a24414"
+    },
+    "evidence/independent-R-controls-1/subset-5/input.tsv": {
+      "bytes": 835,
+      "sha256": "136e3fca9617dd5f9cedc30941ae777ac32379ff19af7116cafbdde379c78461"
+    },
+    "evidence/independent-R-controls-1/subset-5/labels.tsv": {
+      "bytes": 19,
+      "sha256": "5dcf1f2a6395c1d94d5b850c648f7bb9a312a6b755e02da83fd5e03b2beffef1"
+    },
+    "evidence/independent-R-controls-1/subset-5/samples.tsv": {
+      "bytes": 42,
+      "sha256": "dd445c8d3e835204f78bd9bd1473416fb6ac08dfffcb213a9060a054b0dc18bb"
+    },
+    "evidence/independent-R-controls-1/subset-63/expected.tsv": {
+      "bytes": 1822,
+      "sha256": "c7f54c3094db25068baf1cecd7e0a76d44aabb7cf4edfc88fbc982d1debeb45d"
+    },
+    "evidence/independent-R-controls-1/subset-63/input.tsv": {
+      "bytes": 9193,
+      "sha256": "00b6667298b1bd4cfa1187b91adad27dc212dbc198a09d1ddfea6efee0b71f2e"
+    },
+    "evidence/independent-R-controls-1/subset-63/labels.tsv": {
+      "bytes": 19,
+      "sha256": "5dcf1f2a6395c1d94d5b850c648f7bb9a312a6b755e02da83fd5e03b2beffef1"
+    },
+    "evidence/independent-R-controls-1/subset-63/samples.tsv": {
+      "bytes": 344,
+      "sha256": "6791dfa7db138f6462cdbe6638cd2c1c62da8d16b6e6dd03396a6e9ed1facf65"
+    },
+    "evidence/independent-R-controls-1/subset-64/expected.tsv": {
+      "bytes": 1848,
+      "sha256": "0b633835eda54d5d358e7035e749c867edecd13d21f5a4819248571d83f33ad8"
+    },
+    "evidence/independent-R-controls-1/subset-64/input.tsv": {
+      "bytes": 9337,
+      "sha256": "2d8b7fc5b317348b29014ca847b53a2aa860fe0148d6fac262cc982ae026d58f"
+    },
+    "evidence/independent-R-controls-1/subset-64/labels.tsv": {
+      "bytes": 19,
+      "sha256": "5dcf1f2a6395c1d94d5b850c648f7bb9a312a6b755e02da83fd5e03b2beffef1"
+    },
+    "evidence/independent-R-controls-1/subset-64/samples.tsv": {
+      "bytes": 352,
+      "sha256": "48473eb277e7196ad8722e2f10af938b5797436b9a06065683612599a59b55fb"
+    },
+    "evidence/independent-R-controls-1/subset-65/expected.tsv": {
+      "bytes": 1860,
+      "sha256": "b7055d92182a665dc2d63e6fd9224654cd5b7a352da650acd3220ede5491b15d"
+    },
+    "evidence/independent-R-controls-1/subset-65/input.tsv": {
+      "bytes": 9470,
+      "sha256": "a86a30c3584a74be7a1999c14b1a1664b9083eee551d133a860e9c0c0ed2c985"
+    },
+    "evidence/independent-R-controls-1/subset-65/labels.tsv": {
+      "bytes": 19,
+      "sha256": "5dcf1f2a6395c1d94d5b850c648f7bb9a312a6b755e02da83fd5e03b2beffef1"
+    },
+    "evidence/independent-R-controls-1/subset-65/samples.tsv": {
+      "bytes": 360,
+      "sha256": "45d5c6209bbcee5d5d9ca575f2948cd477f267a2a623513e148cdd4fd5d271cb"
+    },
+    "evidence/independent-R-controls-2/R-version.txt": {
+      "bytes": 35,
+      "sha256": "75a804f1bb59d9fff037d5fc0dce05c8556721694e00dc83813be74afa6f3648"
+    },
+    "evidence/independent-R-controls-2/SCOPE.txt": {
+      "bytes": 345,
+      "sha256": "44e085bf45164679c4c5c45bca7cfe0534d575fab30c791c36a2f73b0a8c7ed2"
+    },
+    "evidence/independent-R-controls-2/complete-129/expected.tsv": {
+      "bytes": 1940,
+      "sha256": "82b10e62d877076e66824c94e5cd73bc1185bf611dde1b2f7174719305aa6a60"
+    },
+    "evidence/independent-R-controls-2/complete-129/input.tsv": {
+      "bytes": 18733,
+      "sha256": "a1643653a9b27f218b5258a213078560d68977ef08e25e84df0d464e17116684"
+    },
+    "evidence/independent-R-controls-2/complete-129/labels.tsv": {
+      "bytes": 19,
+      "sha256": "5dcf1f2a6395c1d94d5b850c648f7bb9a312a6b755e02da83fd5e03b2beffef1"
+    },
+    "evidence/independent-R-controls-2/complete-129/samples.tsv": {
+      "bytes": 1067,
+      "sha256": "2ad47531b4473fe651f06647e622d88311562bf02d3fc2fc2ec30d1be303d6a3"
+    },
+    "evidence/independent-R-controls-2/complete-200/expected.tsv": {
+      "bytes": 1901,
+      "sha256": "b191d7aa7fed86bfa18e409b623f22506c32d8e4003f2aaafb2eaba58d3dfc12"
+    },
+    "evidence/independent-R-controls-2/complete-200/input.tsv": {
+      "bytes": 29046,
+      "sha256": "166974dc37d8e570095c8fd610ae6479e7af922471473970532b68acf84f7789"
+    },
+    "evidence/independent-R-controls-2/complete-200/labels.tsv": {
+      "bytes": 19,
+      "sha256": "5dcf1f2a6395c1d94d5b850c648f7bb9a312a6b755e02da83fd5e03b2beffef1"
+    },
+    "evidence/independent-R-controls-2/complete-200/samples.tsv": {
+      "bytes": 1706,
+      "sha256": "f7c84a9aed6e7d011014c97554b297cc80edcab7c2f0f8e51d95433874453a12"
+    },
+    "evidence/independent-R-controls-2/complete-3/expected.tsv": {
+      "bytes": 1730,
+      "sha256": "e05a6dc00be9c484720aeb4ace0fc31326591b2eaa5e979bd45e7010648e099a"
+    },
+    "evidence/independent-R-controls-2/complete-3/input.tsv": {
+      "bytes": 546,
+      "sha256": "c909f152b18d46e08e3f8605b9c8daab96e6940e43e1403569fac22d26bae961"
+    },
+    "evidence/independent-R-controls-2/complete-3/labels.tsv": {
+      "bytes": 19,
+      "sha256": "5dcf1f2a6395c1d94d5b850c648f7bb9a312a6b755e02da83fd5e03b2beffef1"
+    },
+    "evidence/independent-R-controls-2/complete-3/samples.tsv": {
+      "bytes": 35,
+      "sha256": "6fbd4fc7adee65c009fbcfffd5556fb0e57f69208df3279d9dab449a1bdfb262"
+    },
+    "evidence/independent-R-controls-2/complete-4/expected.tsv": {
+      "bytes": 1746,
+      "sha256": "0c54b417ab495b8f1787478781b08c3e8422d4ca597166548ebb0f81a54704df"
+    },
+    "evidence/independent-R-controls-2/complete-4/input.tsv": {
+      "bytes": 691,
+      "sha256": "fe2a08a67ad502ea6213dbf453a8526ab81c774789279524f6810720ecd06115"
+    },
+    "evidence/independent-R-controls-2/complete-4/labels.tsv": {
+      "bytes": 19,
+      "sha256": "5dcf1f2a6395c1d94d5b850c648f7bb9a312a6b755e02da83fd5e03b2beffef1"
+    },
+    "evidence/independent-R-controls-2/complete-4/samples.tsv": {
+      "bytes": 42,
+      "sha256": "6a655c4bf8c0c9037fa2006cf9c72aaad6985334e5fb9d291226afe60e25a842"
+    },
+    "evidence/independent-R-controls-2/complete-5/expected.tsv": {
+      "bytes": 1786,
+      "sha256": "d6793f132bc1ef43903ca632fe50e16c75350163b2eb47f1488639880478e38e"
+    },
+    "evidence/independent-R-controls-2/complete-5/input.tsv": {
+      "bytes": 833,
+      "sha256": "2e4add5242acb052560b6baccc3bf3cf5acb80f63c8e6773f6b95263b41c39a3"
+    },
+    "evidence/independent-R-controls-2/complete-5/labels.tsv": {
+      "bytes": 19,
+      "sha256": "5dcf1f2a6395c1d94d5b850c648f7bb9a312a6b755e02da83fd5e03b2beffef1"
+    },
+    "evidence/independent-R-controls-2/complete-5/samples.tsv": {
+      "bytes": 49,
+      "sha256": "d3f64ff8d865e287d241174d246765ede89735256e6eba8d4604093feaa7de3b"
+    },
+    "evidence/independent-R-controls-2/complete-63/expected.tsv": {
+      "bytes": 1872,
+      "sha256": "afb3abf75288ecbef59d36a4d9a088307ff5bd42b4876340705ca3f156185508"
+    },
+    "evidence/independent-R-controls-2/complete-63/input.tsv": {
+      "bytes": 9193,
+      "sha256": "5ca73463f304e4ab8a5d882482ccdbc608a4d9f64519a9f133566929c9bb4030"
+    },
+    "evidence/independent-R-controls-2/complete-63/labels.tsv": {
+      "bytes": 19,
+      "sha256": "5dcf1f2a6395c1d94d5b850c648f7bb9a312a6b755e02da83fd5e03b2beffef1"
+    },
+    "evidence/independent-R-controls-2/complete-63/samples.tsv": {
+      "bytes": 509,
+      "sha256": "f6747fa47b9413154b3a051e9431305f4011f75f3d3bbe01e6e915993e264a86"
+    },
+    "evidence/independent-R-controls-2/complete-64/expected.tsv": {
+      "bytes": 1859,
+      "sha256": "f9de8b70e6544bbf38e5e83891ab011946dcccabc2dac5817d5214fa17a03383"
+    },
+    "evidence/independent-R-controls-2/complete-64/input.tsv": {
+      "bytes": 9327,
+      "sha256": "636547c1c883d3e7880de4f584aef6e4540a138a646f0e019bf10d3c9b55414c"
+    },
+    "evidence/independent-R-controls-2/complete-64/labels.tsv": {
+      "bytes": 19,
+      "sha256": "5dcf1f2a6395c1d94d5b850c648f7bb9a312a6b755e02da83fd5e03b2beffef1"
+    },
+    "evidence/independent-R-controls-2/complete-64/samples.tsv": {
+      "bytes": 517,
+      "sha256": "d0dfe2b43351934d12c26d6a37c18a8612d55b801850c6917d0c5a7367e5b3f2"
+    },
+    "evidence/independent-R-controls-2/complete-65/expected.tsv": {
+      "bytes": 1882,
+      "sha256": "97cf5b678bec1a6155dc947d25f94341c5d429e5a6ea9470048de6ecd0c25c78"
+    },
+    "evidence/independent-R-controls-2/complete-65/input.tsv": {
+      "bytes": 9480,
+      "sha256": "e5e32b1b0d559850a8c9c082defff2ac55760a12befc3553a38c04e714ff33f0"
+    },
+    "evidence/independent-R-controls-2/complete-65/labels.tsv": {
+      "bytes": 19,
+      "sha256": "5dcf1f2a6395c1d94d5b850c648f7bb9a312a6b755e02da83fd5e03b2beffef1"
+    },
+    "evidence/independent-R-controls-2/complete-65/samples.tsv": {
+      "bytes": 525,
+      "sha256": "61eb50089dd193c5c1b3c12e240acae14aeb03cad35b083eb0fa5c9fc74b10b7"
+    },
+    "evidence/independent-R-controls-2/sessionInfo.txt": {
+      "bytes": 434,
+      "sha256": "6240954ecbc5c1bda456a0b7e67d01fd9379fbbac52741124b6ff12f25eba193"
+    },
+    "evidence/independent-R-controls-2/subset-129/expected.tsv": {
+      "bytes": 1833,
+      "sha256": "80f06a16563afb571a499a99481dd75c32d8409f8bed42dc6e5cbc21feb5048f"
+    },
+    "evidence/independent-R-controls-2/subset-129/input.tsv": {
+      "bytes": 18763,
+      "sha256": "fdcf2357202697e01183d14a1f1c67aeea92fcfd69715ad2233795c4824d3154"
+    },
+    "evidence/independent-R-controls-2/subset-129/labels.tsv": {
+      "bytes": 19,
+      "sha256": "5dcf1f2a6395c1d94d5b850c648f7bb9a312a6b755e02da83fd5e03b2beffef1"
+    },
+    "evidence/independent-R-controls-2/subset-129/samples.tsv": {
+      "bytes": 716,
+      "sha256": "89b205f76768a050ec0359456e63c3813e067bdc0d8685269e0d633bbe03bcd6"
+    },
+    "evidence/independent-R-controls-2/subset-200/expected.tsv": {
+      "bytes": 1877,
+      "sha256": "c5e50a6c311566e28f826cfd5d849c49d117bf0adbd296cfc88a9d45e5981125"
+    },
+    "evidence/independent-R-controls-2/subset-200/input.tsv": {
+      "bytes": 29073,
+      "sha256": "a07b366979147cef1c4bfc39a2c91ab4a2d8e4a5df76403fc50da89f16d477c7"
+    },
+    "evidence/independent-R-controls-2/subset-200/labels.tsv": {
+      "bytes": 19,
+      "sha256": "5dcf1f2a6395c1d94d5b850c648f7bb9a312a6b755e02da83fd5e03b2beffef1"
+    },
+    "evidence/independent-R-controls-2/subset-200/samples.tsv": {
+      "bytes": 1148,
+      "sha256": "b913645271989a02666c2a239781c680a109a74c5e8a1c8bc5eb588f53638a3f"
+    },
+    "evidence/independent-R-controls-2/subset-3/expected.tsv": {
+      "bytes": 1724,
+      "sha256": "af4b615aa8d9215040847002339d2aaf5d0edf365175d7035bc119b7c9f5e78e"
+    },
+    "evidence/independent-R-controls-2/subset-3/input.tsv": {
+      "bytes": 544,
+      "sha256": "b597a87e059c8fdce77de1381d7d17183b71e28f6166af685cd16ee72fcd02c9"
+    },
+    "evidence/independent-R-controls-2/subset-3/labels.tsv": {
+      "bytes": 19,
+      "sha256": "5dcf1f2a6395c1d94d5b850c648f7bb9a312a6b755e02da83fd5e03b2beffef1"
+    },
+    "evidence/independent-R-controls-2/subset-3/samples.tsv": {
+      "bytes": 35,
+      "sha256": "6fbd4fc7adee65c009fbcfffd5556fb0e57f69208df3279d9dab449a1bdfb262"
+    },
+    "evidence/independent-R-controls-2/subset-4/expected.tsv": {
+      "bytes": 1688,
+      "sha256": "16d2ed03bd81371c05e838aa22809d59a7561739019faf71d64fb96b52af47c6"
+    },
+    "evidence/independent-R-controls-2/subset-4/input.tsv": {
+      "bytes": 690,
+      "sha256": "dee7d96b5c24438115c524b28c3fa578795d39eb3c1f53d9430dcb02d619a524"
+    },
+    "evidence/independent-R-controls-2/subset-4/labels.tsv": {
+      "bytes": 19,
+      "sha256": "5dcf1f2a6395c1d94d5b850c648f7bb9a312a6b755e02da83fd5e03b2beffef1"
+    },
+    "evidence/independent-R-controls-2/subset-4/samples.tsv": {
+      "bytes": 42,
+      "sha256": "6a655c4bf8c0c9037fa2006cf9c72aaad6985334e5fb9d291226afe60e25a842"
+    },
+    "evidence/independent-R-controls-2/subset-5/expected.tsv": {
+      "bytes": 1767,
+      "sha256": "7d926959749957bac7cb04ae563937967c3b7d767206fb953af3e12405a24414"
+    },
+    "evidence/independent-R-controls-2/subset-5/input.tsv": {
+      "bytes": 835,
+      "sha256": "136e3fca9617dd5f9cedc30941ae777ac32379ff19af7116cafbdde379c78461"
+    },
+    "evidence/independent-R-controls-2/subset-5/labels.tsv": {
+      "bytes": 19,
+      "sha256": "5dcf1f2a6395c1d94d5b850c648f7bb9a312a6b755e02da83fd5e03b2beffef1"
+    },
+    "evidence/independent-R-controls-2/subset-5/samples.tsv": {
+      "bytes": 42,
+      "sha256": "dd445c8d3e835204f78bd9bd1473416fb6ac08dfffcb213a9060a054b0dc18bb"
+    },
+    "evidence/independent-R-controls-2/subset-63/expected.tsv": {
+      "bytes": 1822,
+      "sha256": "c7f54c3094db25068baf1cecd7e0a76d44aabb7cf4edfc88fbc982d1debeb45d"
+    },
+    "evidence/independent-R-controls-2/subset-63/input.tsv": {
+      "bytes": 9193,
+      "sha256": "00b6667298b1bd4cfa1187b91adad27dc212dbc198a09d1ddfea6efee0b71f2e"
+    },
+    "evidence/independent-R-controls-2/subset-63/labels.tsv": {
+      "bytes": 19,
+      "sha256": "5dcf1f2a6395c1d94d5b850c648f7bb9a312a6b755e02da83fd5e03b2beffef1"
+    },
+    "evidence/independent-R-controls-2/subset-63/samples.tsv": {
+      "bytes": 344,
+      "sha256": "6791dfa7db138f6462cdbe6638cd2c1c62da8d16b6e6dd03396a6e9ed1facf65"
+    },
+    "evidence/independent-R-controls-2/subset-64/expected.tsv": {
+      "bytes": 1848,
+      "sha256": "0b633835eda54d5d358e7035e749c867edecd13d21f5a4819248571d83f33ad8"
+    },
+    "evidence/independent-R-controls-2/subset-64/input.tsv": {
+      "bytes": 9337,
+      "sha256": "2d8b7fc5b317348b29014ca847b53a2aa860fe0148d6fac262cc982ae026d58f"
+    },
+    "evidence/independent-R-controls-2/subset-64/labels.tsv": {
+      "bytes": 19,
+      "sha256": "5dcf1f2a6395c1d94d5b850c648f7bb9a312a6b755e02da83fd5e03b2beffef1"
+    },
+    "evidence/independent-R-controls-2/subset-64/samples.tsv": {
+      "bytes": 352,
+      "sha256": "48473eb277e7196ad8722e2f10af938b5797436b9a06065683612599a59b55fb"
+    },
+    "evidence/independent-R-controls-2/subset-65/expected.tsv": {
+      "bytes": 1860,
+      "sha256": "b7055d92182a665dc2d63e6fd9224654cd5b7a352da650acd3220ede5491b15d"
+    },
+    "evidence/independent-R-controls-2/subset-65/input.tsv": {
+      "bytes": 9470,
+      "sha256": "a86a30c3584a74be7a1999c14b1a1664b9083eee551d133a860e9c0c0ed2c985"
+    },
+    "evidence/independent-R-controls-2/subset-65/labels.tsv": {
+      "bytes": 19,
+      "sha256": "5dcf1f2a6395c1d94d5b850c648f7bb9a312a6b755e02da83fd5e03b2beffef1"
+    },
+    "evidence/independent-R-controls-2/subset-65/samples.tsv": {
+      "bytes": 360,
+      "sha256": "45d5c6209bbcee5d5d9ca575f2948cd477f267a2a623513e148cdd4fd5d271cb"
+    },
+    "evidence/matrix-3/COMPLETED.json": {
+      "bytes": 20077,
+      "sha256": "cf04a539878ebb64fca9b273e280edc8c74aa33540c7d6943491a23fca36b8d5"
+    },
+    "evidence/matrix-3/RunFumaExpressionChecks.java": {
+      "bytes": 2258,
+      "sha256": "266ded75854b610364b43f4b13e0eda883b8c134549dca4362d758ffffeab986"
+    },
+    "evidence/matrix-3/classes/RunFumaExpressionChecks.class": {
+      "bytes": 4409,
+      "sha256": "8e3565b8af86b8e870489d3aacd411d444be09943d23f463e47a496ee919480b"
+    },
+    "evidence/matrix-3/classes/org/jlinalg/cli/FumaExpressionPrepareCliTest.class": {
+      "bytes": 16943,
+      "sha256": "b505e08e87a3c9b12bcb14c1d11371e3ab53e55d2efd785405e4f7370e22952f"
+    },
+    "evidence/matrix-3/classes/org/jlinalg/cli/FumaLociCliTest.class": {
+      "bytes": 8579,
+      "sha256": "3b69ed7ea66e2a725a4cff3991dc2359ad4b5fa05c903c35384e72169e2f0ad3"
+    },
+    "evidence/matrix-3/classes/org/jlinalg/cli/FumaReferenceCliTest.class": {
+      "bytes": 21114,
+      "sha256": "4da4b243897ea2936136da3f48089d31bf4c1ef2f6d103231ef69916d799a2d1"
+    },
+    "evidence/matrix-3/classes/org/jlinalg/enrichment/FumaExpressionPreparationRTest.class": {
+      "bytes": 9266,
+      "sha256": "e171555151b2a4163eee5c68fe7de69fc291e4f3b786b6e82c45c7081b5df274"
+    },
+    "evidence/matrix-3/classes/org/jlinalg/enrichment/FumaExpressionPreparationTest.class": {
+      "bytes": 11131,
+      "sha256": "30f6637d4f04fc6180b4f813abff412cf08a3c50bee774bdba629a7b0bd8711a"
+    },
+    "evidence/matrix-3/classes/org/jlinalg/genetics/FumaLdWindowTest.class": {
+      "bytes": 9620,
+      "sha256": "6aa20eb68ca12a1567213c86282ec68a733560bdbb4110dba686b0ef29641d3e"
+    },
+    "evidence/matrix-3/classes/org/jlinalg/genetics/FumaLocusDefinitionTest.class": {
+      "bytes": 17619,
+      "sha256": "2214e316550aea352ba8c1cc6f5292c7e6c72f3c370a1cf6d3de72481b6a7155"
+    },
+    "evidence/matrix-3/classes/org/jlinalg/genetics/FumaReferenceOriginalTest$1.class": {
+      "bytes": 2062,
+      "sha256": "dc5be2f190ca5c9b2d423141e7d7e51f37a1e335a24f5c56ef773a8f8faa28ff"
+    },
+    "evidence/matrix-3/classes/org/jlinalg/genetics/FumaReferenceOriginalTest.class": {
+      "bytes": 15741,
+      "sha256": "c266ad743afd88ff1d629b679afc62ab36eaf255927199674fac3908122240a4"
+    },
+    "evidence/matrix-3/classes/org/jlinalg/genetics/FumaReferencePreparationTest$1.class": {
+      "bytes": 1477,
+      "sha256": "dc28551bc42bec18936dd91fde8328e8bdf00888573079922b5353461b4cf8f4"
+    },
+    "evidence/matrix-3/classes/org/jlinalg/genetics/FumaReferencePreparationTest$Sink.class": {
+      "bytes": 2394,
+      "sha256": "6ccfe48435468594dcc172484b2c9e9f0818193d9e35e3ff9ecd141a50e0c12f"
+    },
+    "evidence/matrix-3/classes/org/jlinalg/genetics/FumaReferencePreparationTest.class": {
+      "bytes": 19131,
+      "sha256": "67c9c1bcf68b4910a8ee27270a7356c1dff3498eeafc09d696bd0329b81e684d"
+    },
+    "evidence/matrix-3/classes/org/jlinalg/genetics/HardcallLdOriginalTest.class": {
+      "bytes": 14273,
+      "sha256": "2495023b3d2a80137699e34e1f7b31772700f2f4ce68acbe624acc26a880e4b1"
+    },
+    "evidence/matrix-3/classes/org/jlinalg/genetics/HardcallLdTest.class": {
+      "bytes": 12911,
+      "sha256": "0cd46efd235374f97e99a03da8e5f1114346344bed7ecaeb9243225a4d03107c"
+    },
+    "evidence/matrix-3/compile.json": {
+      "bytes": 2883,
+      "sha256": "18f0bae64769215589ce361349a479b792a2be6123c98d85e832724d56c0b7cf"
+    },
+    "evidence/matrix-3/compile.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "evidence/matrix-3/compile.stdout": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "evidence/matrix-3/linux-java21/junit.json": {
+      "bytes": 1827,
+      "sha256": "0a5827e79ca7a8018c4b2f1c18459c1a5081f779c3fd8d33065af56400b8c9e0"
+    },
+    "evidence/matrix-3/linux-java21/junit.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "evidence/matrix-3/linux-java21/junit.stdout": {
+      "bytes": 503,
+      "sha256": "7fa6340e1888929726f58e1d59c485abbfb938207fc270e0dec551ccedd115a1"
+    },
+    "evidence/matrix-3/windows-java21/junit.json": {
+      "bytes": 1864,
+      "sha256": "de1bc639e1df41fd662833e5a9f1ec9e43fd11ee51041edc21f7131b3a01e6ba"
+    },
+    "evidence/matrix-3/windows-java21/junit.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "evidence/matrix-3/windows-java21/junit.stdout": {
+      "bytes": 522,
+      "sha256": "30394a670e746dedaef73a132e60957790a7aeba94c996d0c3fd1bd5ffcc79dd"
+    },
+    "evidence/matrix-3/windows-java25/junit.json": {
+      "bytes": 1857,
+      "sha256": "3bfb76c2ad754f8b34fe9943942cd82a3010184ffaeffb5b4dbcd3b5c2e18a3a"
+    },
+    "evidence/matrix-3/windows-java25/junit.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "evidence/matrix-3/windows-java25/junit.stdout": {
+      "bytes": 518,
+      "sha256": "ec76f3bd383c9d5e4269c656b3508bc8d89513d1eec4b6592f49151d54eb75a2"
+    },
+    "evidence/role-audit-3/coverage.json": {
+      "bytes": 18628,
+      "sha256": "406a8eaf81f321876a1a536a242f318b9869d040ce3a91bfa5c9142c9c79f5c2"
+    },
+    "history/R-comparison-tests-1-snapshot/FumaExpressionPreparationRTest.java": {
+      "bytes": 3801,
+      "sha256": "f43495890d8190cf2e3915bce8068bac559d0aaeb7e4b3ef0a615bdb6877dc42"
+    },
+    "history/R-comparison-tests-1-snapshot/TEST-org.jlinalg.enrichment.FumaExpressionPreparationRTest.xml": {
+      "bytes": 8503,
+      "sha256": "846e8a939ed38ab4ad4006e45cded2253447b07dfa756161989a8cca356a5f9e"
+    },
+    "history/commands-1/FAILURE.json": {
+      "bytes": 260,
+      "sha256": "b10ba19876e80e9dbcb1eaddf0297e3b12060d9eb8c41695cbda05813a5ea9b9"
+    },
+    "history/commands-1/actual-original-magma-fit.json": {
+      "bytes": 1165,
+      "sha256": "9fa2d2b5406cb57bb774f9a4b5665cf3e81a3e8f5f958c298a513d13293bd30e"
+    },
+    "history/commands-1/actual-original-magma-fit.stderr": {
+      "bytes": 156,
+      "sha256": "b32abee0c8da68bbd288723608d1daff1818a258143496c73869dbc7d53ca7d8"
+    },
+    "history/commands-1/actual-original-magma-fit.stdout": {
+      "bytes": 148,
+      "sha256": "babaccce5625fbc796e5c0bb9421dab1ca5881964f7e459d0660c39b91d9ebad"
+    },
+    "history/commands-1/create-inputs.json": {
+      "bytes": 443,
+      "sha256": "6e8d3fc96882d8a49aa6f4028a143a5ded697bcca9cabf920456771c85169b33"
+    },
+    "history/commands-1/create-inputs.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "history/commands-1/create-inputs.stdout": {
+      "bytes": 150,
+      "sha256": "564d53470b7d300b1cd3b7d11835234fa3a5073d3421177c3b3017350e3ad209"
+    },
+    "history/commands-1/prepare-magma-covariates.json": {
+      "bytes": 1353,
+      "sha256": "57f19014cf243f99bbb6d9eb40c997f91e0465a9f8da8e537c9163da279d7b5e"
+    },
+    "history/commands-1/prepare-magma-covariates.stderr": {
+      "bytes": 157,
+      "sha256": "2a9a283b16cbf13f9a2c62f8d6e6c2dfa2b5a617a4ab3b63d5fb11cbf2813201"
+    },
+    "history/commands-1/prepare-magma-covariates.stdout": {
+      "bytes": 185,
+      "sha256": "244b6d28fb67cfb2ad995361ce2b901808dd744e480d2caff0e86539f5459eaf"
+    },
+    "history/commands-1/standalone-tsv.json": {
+      "bytes": 1312,
+      "sha256": "0832e65ecbcd856eae45cc8184e8674b2597da3018de45f13f51761a5becd33e"
+    },
+    "history/commands-1/standalone-tsv.stderr": {
+      "bytes": 155,
+      "sha256": "ebbc7adb772f4225230128c9b4c830aee26829ae64c6ace150f479c1bcc8a056"
+    },
+    "history/commands-1/standalone-tsv.stdout": {
+      "bytes": 183,
+      "sha256": "d6067313ffa7e27342ec9baf1d794f6364ddf429606f0f87c73409887f174774"
+    },
+    "history/commands-1/typed-workflow.json": {
+      "bytes": 702,
+      "sha256": "3569ba0cd7a93c241dcc2e263fe0a9698bd82389c46d26ae8bdfdd367467f504"
+    },
+    "history/commands-1/typed-workflow.stderr": {
+      "bytes": 153,
+      "sha256": "6a416542691a97ed489c6550848a6b514c87c66bc406c3bf864881a390a7210f"
+    },
+    "history/commands-1/typed-workflow.stdout": {
+      "bytes": 159,
+      "sha256": "57fb1c420d782f068661efe7e8a7acd9f00d62de1cc002b0641967212badf648"
+    },
+    "history/commands-1/validator-before-session-fix.py": {
+      "bytes": 7400,
+      "sha256": "31d0fa3b85034743374894b983cddeb81a87d8170ca9721b11ca3306d21574f9"
+    },
+    "history/commands-1/work/input/background.txt": {
+      "bytes": 14,
+      "sha256": "5c4704c0cd07ddda1c07a39d963db18f28f2dd9589c7f479496f100c8d1eab6a"
+    },
+    "history/commands-1/work/input/deg.tsv": {
+      "bytes": 76,
+      "sha256": "34489cf2a0e91c3502a8fa5b08420bdd1eabaa04609a329cb07ecc554dec7b9b"
+    },
+    "history/commands-1/work/input/labels.tsv": {
+      "bytes": 10,
+      "sha256": "fc868f8c3b99b165742852310b1738630b14b973b45b260a704db5005752af8a"
+    },
+    "history/commands-1/work/input/query.txt": {
+      "bytes": 14,
+      "sha256": "5c4704c0cd07ddda1c07a39d963db18f28f2dd9589c7f479496f100c8d1eab6a"
+    },
+    "history/commands-1/work/input/raw.gct": {
+      "bytes": 176,
+      "sha256": "88c7f6fce2fe4d5e4331aedd1b4264dfd96a72663e1b74ebe5f30660aaa49e9c"
+    },
+    "history/commands-1/work/input/raw.tsv": {
+      "bytes": 95,
+      "sha256": "5a9b0100250f929168713eb1712ab07a10e336572a195ed6bf743bd71002071b"
+    },
+    "history/commands-1/work/input/samples.tsv": {
+      "bytes": 33,
+      "sha256": "1efd8d95bb35fd51732e0a619ab7825d12ccfacac154c72447a32ffc21239a57"
+    },
+    "history/commands-1/work/input/symbols.tsv": {
+      "bytes": 36,
+      "sha256": "5c101d98660f094c5f1f6bdc348c2f3496398fc09f37358195bd630f6d862eb9"
+    },
+    "history/commands-1/work/magma-fit.config.yaml": {
+      "bytes": 853,
+      "sha256": "e75608ea0cd9952d23c8bfccd8900f76d0962784c0556ba610eef34fb9a715f6"
+    },
+    "history/commands-1/work/magma-fit/WARNINGS.md": {
+      "bytes": 1380,
+      "sha256": "8a493918748c3b1e983a4bdaddaf90e26b9fcc98affee5e722d718fee2405db4"
+    },
+    "history/commands-1/work/magma-fit/analysis-status.json": {
+      "bytes": 37,
+      "sha256": "d26488e7a635450d1996b3ad4fd647c836c46896f30ac9d51b9c6bab4c9d8fe9"
+    },
+    "history/commands-1/work/magma-fit/analysis.gsa.genes.out.txt": {
+      "bytes": 18569,
+      "sha256": "29a5d0763a0144ef8ff17b63e09dfa385e92f692f2f6771f4f1dc868b0ff233c"
+    },
+    "history/commands-1/work/magma-fit/analysis.gsa.out.txt": {
+      "bytes": 631,
+      "sha256": "02c367d87b0dba24317d92fb620810575f23eea0a83767277731fac19168643b"
+    },
+    "history/commands-1/work/magma-fit/analysis.log": {
+      "bytes": 2779,
+      "sha256": "efc7c885d9d220ff7285925f118f6e1ac57fc01f4bfc1fe2d39eb31c00817dc7"
+    },
+    "history/commands-1/work/magma-fit/input.properties.tsv": {
+      "bytes": 15542,
+      "sha256": "0b51985b4e31f8aa8b17a3655bb7bbc383595b79900c47603628676fe7315adc"
+    },
+    "history/commands-1/work/magma-fit/manifest.yaml": {
+      "bytes": 2778,
+      "sha256": "ee9a0debfa9ab5ba9ce8c379537315eaecae080c33ad770a3c7af88dcc6d4f73"
+    },
+    "history/commands-1/work/magma-fit/results.tsv": {
+      "bytes": 200,
+      "sha256": "b447a716fbcd15db161f758a1f7cdf363dd4624cfeb13440a28c789aef06fe16"
+    },
+    "history/commands-1/work/magma-fit/session.yaml": {
+      "bytes": 3084,
+      "sha256": "b904780db28d8eb10fddf37164c4d9c4896e745ab54efc66ad979280d3d97eea"
+    },
+    "history/commands-1/work/magma-fit/version.log": {
+      "bytes": 30,
+      "sha256": "d7caa2af2a9caa9c963352ef57e13f3fcbf6e39995c1760f6013264f682a583f"
+    },
+    "history/commands-1/work/magma-intake/datasets.tsv": {
+      "bytes": 140,
+      "sha256": "66d74b6a71e0aa7b565cbc309d33c9f070a45564b2ddc4edcda62160d5bcd45c"
+    },
+    "history/commands-1/work/magma-intake/gene-bundle/gene-status.tsv": {
+      "bytes": 2875,
+      "sha256": "6af237cc717582b515d0e86e4bc949202af16bcc8e192e9d6114faebd7005dac"
+    },
+    "history/commands-1/work/magma-intake/gene-bundle/genes.raw": {
+      "bytes": 209201,
+      "sha256": "97a0703caf4475e1e14fdadd4ecdd9186f0703d9db30ec483994331a9be7c54f"
+    },
+    "history/commands-1/work/magma-intake/gene-bundle/magma-bundle.json": {
+      "bytes": 397,
+      "sha256": "da62f1f1ca6f06dc82af772a7b3fc87a17ea578d8a70d94d235e3a2c23d4ec93"
+    },
+    "history/commands-1/work/magma-intake/gene-bundle/results.tsv": {
+      "bytes": 9522,
+      "sha256": "6dc2612df3b6aff179e29e23d7a431e62c8496685c5bfbd490ce9983a4148cfe"
+    },
+    "history/commands-1/work/magma-intake/input-manifest.json": {
+      "bytes": 1811,
+      "sha256": "3abf882205ed83c9d42455ac13c1311a4b8b34c2b6ff839af260c9b910b74f1d"
+    },
+    "history/commands-1/work/magma-intake/marginal.json": {
+      "bytes": 405,
+      "sha256": "2e60a4a6748113a133e95a5886513bb7aaee90dfd6e0dfa7b4a3eaf082f1a0fc"
+    },
+    "history/commands-1/work/magma-intake/parent.json": {
+      "bytes": 427,
+      "sha256": "c60093c0a67f5cb58e3d58ce1d60f78879dd65c9091d17f2d20078c31e98ad62"
+    },
+    "history/commands-1/work/magma-intake/properties/detailed54.tsv": {
+      "bytes": 226060,
+      "sha256": "12e2e33c7bda60ea24f99ceb82a782bb1fd37093f1afcb63610d891824ac421c"
+    },
+    "history/commands-1/work/magma-intake/properties/general30.tsv": {
+      "bytes": 127712,
+      "sha256": "baddb9774ee11a20436b49f4a9a2e126f2095a044fd205feddeea44446519997"
+    },
+    "history/commands-1/work/magma-intake/properties/long-labels.tsv": {
+      "bytes": 16571,
+      "sha256": "4d2baeaaf3783441e7fc3fae0e7616be06b4182a180a7df0f853771287747a09"
+    },
+    "history/commands-1/work/magma-intake/properties/missing.tsv": {
+      "bytes": 16422,
+      "sha256": "78fa82a24ac685f17bec9ca56fe5de7010b885906eb7f8d94e1a5a697452198b"
+    },
+    "history/commands-1/work/magma-intake/recipes.json": {
+      "bytes": 1953,
+      "sha256": "5fd1f3234a9ddfb1f7a92081b8d32dae929f2c0bd986af7e5ba099fbc744945e"
+    },
+    "history/commands-1/work/magma-intake/reference/detailed.gsa.out.txt": {
+      "bytes": 4876,
+      "sha256": "52f0a0ffd1eac6e9e2b84ab0f84175150fdab483515d69dc89b929a9cca6dcbe"
+    },
+    "history/commands-1/work/magma-intake/reference/drop.gsa.out.txt": {
+      "bytes": 647,
+      "sha256": "93238332c7a7ea1dc0f314c6a9bca9f31691e286ceb7acb5df441a6581818d4c"
+    },
+    "history/commands-1/work/magma-intake/reference/general.gsa.out.txt": {
+      "bytes": 2915,
+      "sha256": "08661771e1764928c4ff5cbcf67452d7ab73619b1ee4e725a06db02854770d22"
+    },
+    "history/commands-1/work/magma-intake/reference/long.gsa.out.txt": {
+      "bytes": 871,
+      "sha256": "be8b58e93c0b1f305a4daa1ba6badf0d420c9a037678213a03797cede8ad7059"
+    },
+    "history/commands-1/work/magma-intake/reference/mean.gsa.out.txt": {
+      "bytes": 647,
+      "sha256": "35efa734ac3d7b8fba8e23e2e3c645eb4e550bf43e7563c9cb6aa2173ca28e23"
+    },
+    "history/commands-1/work/magma-intake/reference/step1.tsv": {
+      "bytes": 7855,
+      "sha256": "736a1084244e889130333b2462732019a8db41bbb81b48012b2ef074a6175aec"
+    },
+    "history/commands-1/work/magma-intake/source-provenance.json": {
+      "bytes": 2294,
+      "sha256": "d12ef20f7288f79239a94ff611dba64c64f794d628ae2b653139340e54ffd50b"
+    },
+    "history/commands-1/work/magma-prepared.config.yaml": {
+      "bytes": 1009,
+      "sha256": "e03d651b052394ae2b56e6178dab70c6dd248ad6cd40fe0f34666e148900a8b1"
+    },
+    "history/commands-1/work/magma-prepared/WARNINGS.md": {
+      "bytes": 1419,
+      "sha256": "b54cb23d4ed2e89f111cee28ff05e772b5c0fa37bf477fde957d1c67f6689ea8"
+    },
+    "history/commands-1/work/magma-prepared/analysis-status.json": {
+      "bytes": 44,
+      "sha256": "fd45555c4ada96814c2ace5aceab8ef063d3c67f0e6d6813dc017ed2e2d06161"
+    },
+    "history/commands-1/work/magma-prepared/gene-audit.tsv": {
+      "bytes": 22053,
+      "sha256": "cd12fb4aa7d31706292b428f632a36168b6c32cf8f01e361dfaae3fdf0cf4378"
+    },
+    "history/commands-1/work/magma-prepared/gene-covariates.tsv": {
+      "bytes": 15542,
+      "sha256": "0b51985b4e31f8aa8b17a3655bb7bbc383595b79900c47603628676fe7315adc"
+    },
+    "history/commands-1/work/magma-prepared/label-samples.tsv": {
+      "bytes": 44,
+      "sha256": "9f72420500239de24eb1680efa61f17ba93ee5f19c5a7962fd5212cbe13ed4b5"
+    },
+    "history/commands-1/work/magma-prepared/log2.tsv": {
+      "bytes": 11916,
+      "sha256": "e5025f9f1910857b6eebec466f522a8cbc2e9000d3e7c7c349b5138f874dc410"
+    },
+    "history/commands-1/work/magma-prepared/manifest.yaml": {
+      "bytes": 2416,
+      "sha256": "4a0b05847cce1b9d536888ddbabcf2aae4d11a92edae95e428a8d1a12e6e9505"
+    },
+    "history/commands-1/work/magma-prepared/norm.tsv": {
+      "bytes": 13071,
+      "sha256": "acdb45402f13379240cb1c3e0ac5eaca1e9f139f945430b4035ea387369b3e8a"
+    },
+    "history/commands-1/work/magma-prepared/sample-selection.tsv": {
+      "bytes": 196,
+      "sha256": "ca88c3e40e253ebea2d26c915da380b75022993356d1ca2af4e00d88098dfa2f"
+    },
+    "history/commands-1/work/magma-prepared/session.json": {
+      "bytes": 3231,
+      "sha256": "016f8eecb481631c0dcbc18bcbfc720dcf63de861e120a38a60ef1a1e1f27b33"
+    },
+    "history/commands-1/work/magma-raw/input.tsv": {
+      "bytes": 35197,
+      "sha256": "0ccdb0c78f2c8d32fe8d426d332999211dbe85cfcebfd252b81285c1ff3e3d33"
+    },
+    "history/commands-1/work/magma-raw/labels.tsv": {
+      "bytes": 30,
+      "sha256": "002b90ffe4384110f57bfb5129cd96b075446d10c3947d53792176b329d737b0"
+    },
+    "history/commands-1/work/magma-raw/samples.tsv": {
+      "bytes": 112,
+      "sha256": "e0fec3b5080e2db6b0d950f16394d702a0594d0fc91613a57564453b69c1b876"
+    },
+    "history/commands-1/work/standalone-1.config.yaml": {
+      "bytes": 978,
+      "sha256": "5174f254e88bca708086b45d0379ccd7c671247aae28519fa7635e32dd329d14"
+    },
+    "history/commands-1/work/standalone-1/WARNINGS.md": {
+      "bytes": 1783,
+      "sha256": "8b341b80f34decf3a53f4cc3154cc42cd239d790f648f98a78e54a37efb2e21a"
+    },
+    "history/commands-1/work/standalone-1/analysis-status.json": {
+      "bytes": 44,
+      "sha256": "fd45555c4ada96814c2ace5aceab8ef063d3c67f0e6d6813dc017ed2e2d06161"
+    },
+    "history/commands-1/work/standalone-1/gene-audit.tsv": {
+      "bytes": 356,
+      "sha256": "1cf9ba09627d8074cc47b8e87f619a46a22dd419bd37cb0edcdbf0ab44373ddb"
+    },
+    "history/commands-1/work/standalone-1/gene-covariates.tsv": {
+      "bytes": 127,
+      "sha256": "46b386071eebfb8610c019e13b26ec72c49a569384ececf830a720cc95631f48"
+    },
+    "history/commands-1/work/standalone-1/label-samples.tsv": {
+      "bytes": 22,
+      "sha256": "d3dfb40fed4783dd6658eb7e178481df3a8671ec31f3f0e502749fff99ab6f20"
+    },
+    "history/commands-1/work/standalone-1/log2.tsv": {
+      "bytes": 82,
+      "sha256": "b39310f679dff0a4db0222c440732d13149fb386a0f4a45b1ef4fe3f342c59d1"
+    },
+    "history/commands-1/work/standalone-1/manifest.yaml": {
+      "bytes": 2371,
+      "sha256": "25057fed2879a8c1ebf51b865ba4877a9fd783be3d38ef7f940686eb875419fd"
+    },
+    "history/commands-1/work/standalone-1/norm.tsv": {
+      "bytes": 98,
+      "sha256": "5abb73afbc791207511d49e17e7800906f00d6ea68f2328eb8549d3027eeb807"
+    },
+    "history/commands-1/work/standalone-1/sample-selection.tsv": {
+      "bytes": 96,
+      "sha256": "255e9227046b08b315d5e48d79fb81a7b78c207d93d680d90de42eebce8e753b"
+    },
+    "history/commands-1/work/standalone-1/session.json": {
+      "bytes": 3521,
+      "sha256": "0a01b90e8e037847a530768a456a149c0e1ce8a2a7e34fd6de36507a8df23315"
+    },
+    "history/commands-1/work/workflow-1.config.yaml": {
+      "bytes": 497,
+      "sha256": "20adc9f66eedefe421737caf3e03ed4b540ca59cc8241df4138bb5477146146d"
+    },
+    "history/commands-1/work/workflow-1/WARNINGS.md": {
+      "bytes": 1586,
+      "sha256": "14b36aace4fd17c196719d4f63a51ad2d39c9e49cecfbf1a51876377fca2a800"
+    },
+    "history/commands-1/work/workflow-1/analysis-status.json": {
+      "bytes": 58,
+      "sha256": "8400f76c8ef3df59af503f99067aecd38517a169f624b90b7fc8f0411e2fa6cc"
+    },
+    "history/commands-1/work/workflow-1/expression-preparation/WARNINGS.md": {
+      "bytes": 1783,
+      "sha256": "8b341b80f34decf3a53f4cc3154cc42cd239d790f648f98a78e54a37efb2e21a"
+    },
+    "history/commands-1/work/workflow-1/expression-preparation/analysis-status.json": {
+      "bytes": 44,
+      "sha256": "fd45555c4ada96814c2ace5aceab8ef063d3c67f0e6d6813dc017ed2e2d06161"
+    },
+    "history/commands-1/work/workflow-1/expression-preparation/gene-audit.tsv": {
+      "bytes": 408,
+      "sha256": "cfbe788e1f970c9b9e8bd321e435ceae49ba02663ecbc8eeb0554aed4f687bcb"
+    },
+    "history/commands-1/work/workflow-1/expression-preparation/gene-covariates.tsv": {
+      "bytes": 127,
+      "sha256": "46b386071eebfb8610c019e13b26ec72c49a569384ececf830a720cc95631f48"
+    },
+    "history/commands-1/work/workflow-1/expression-preparation/label-samples.tsv": {
+      "bytes": 22,
+      "sha256": "d3dfb40fed4783dd6658eb7e178481df3a8671ec31f3f0e502749fff99ab6f20"
+    },
+    "history/commands-1/work/workflow-1/expression-preparation/log2.tsv": {
+      "bytes": 82,
+      "sha256": "b39310f679dff0a4db0222c440732d13149fb386a0f4a45b1ef4fe3f342c59d1"
+    },
+    "history/commands-1/work/workflow-1/expression-preparation/manifest.yaml": {
+      "bytes": 2396,
+      "sha256": "46802313c02c587769265ce4a576dd1ba58564f45adc97b2c7fac5b928f2aa3e"
+    },
+    "history/commands-1/work/workflow-1/expression-preparation/norm.tsv": {
+      "bytes": 98,
+      "sha256": "5abb73afbc791207511d49e17e7800906f00d6ea68f2328eb8549d3027eeb807"
+    },
+    "history/commands-1/work/workflow-1/expression-preparation/sample-selection.tsv": {
+      "bytes": 96,
+      "sha256": "255e9227046b08b315d5e48d79fb81a7b78c207d93d680d90de42eebce8e753b"
+    },
+    "history/commands-1/work/workflow-1/expression-preparation/session.json": {
+      "bytes": 3544,
+      "sha256": "e637a5c057344f103f23f1c76378205331a322bbec57e6f6aa90f607ce6e9586"
+    },
+    "history/commands-1/work/workflow-1/expression/DEG.txt": {
+      "bytes": 146,
+      "sha256": "ef6798410ac4b8f83ef2a443985b1434165aa95a1d1602e6078b5ebb7351072d"
+    },
+    "history/commands-1/work/workflow-1/expression/WARNINGS.md": {
+      "bytes": 517,
+      "sha256": "bc90dfa5bdcd04a30108a2e1d633d5bdbe084fa7f9dcb5ec5e14f3b3d37a8d0e"
+    },
+    "history/commands-1/work/workflow-1/expression/analysis-status.json": {
+      "bytes": 44,
+      "sha256": "fd45555c4ada96814c2ace5aceab8ef063d3c67f0e6d6813dc017ed2e2d06161"
+    },
+    "history/commands-1/work/workflow-1/expression/deg-tests.tsv": {
+      "bytes": 396,
+      "sha256": "f9b0893bb01b7a07e12c6e0684e8068e82dca1767bf18a6adab779edcfa278e0"
+    },
+    "history/commands-1/work/workflow-1/expression/expressed-background.tsv": {
+      "bytes": 19,
+      "sha256": "a34d278a79bf8bec733397074ace29213a31b2a2b5d1a4048a1a49b80391c804"
+    },
+    "history/commands-1/work/workflow-1/expression/log2-expression.tsv": {
+      "bytes": 99,
+      "sha256": "65795286fc9009173fabc28a51549aa11bdb18fc64d80dd6b2b5ed4a907c812a"
+    },
+    "history/commands-1/work/workflow-1/expression/manifest.yaml": {
+      "bytes": 3517,
+      "sha256": "857c70341cfb0d758f4fe7fd99217a737141485f304d7618afde2fb90d8ecf85"
+    },
+    "history/commands-1/work/workflow-1/expression/norm-expression.tsv": {
+      "bytes": 115,
+      "sha256": "72800229efbe82b831c0e0542e489680c6554f54903ef6a30354e46f5123dbf6"
+    },
+    "history/commands-1/work/workflow-1/expression/query-outside-background.tsv": {
+      "bytes": 5,
+      "sha256": "d1c56c30f7381f37cb620d0e6074a14983dd9e914a14553a9348b4753d1dc84a"
+    },
+    "history/commands-1/work/workflow-1/expression/session.json": {
+      "bytes": 2073,
+      "sha256": "cd5e6829b8bb88dae1b5ccab6f9affcd33abce0428ac54b50eb9e22ef95dbbe9"
+    },
+    "history/commands-1/work/workflow-1/logs/expression-preparation.stderr": {
+      "bytes": 176,
+      "sha256": "2ae30baf4bbef1fbf0260832ecc509205dcd6110cf77a301408375feb197fdf0"
+    },
+    "history/commands-1/work/workflow-1/logs/expression-preparation.stdout": {
+      "bytes": 204,
+      "sha256": "f229104fff8a857a7603b372e0d167fa0ae2771d2f4e1555dd42c883f98323d3"
+    },
+    "history/commands-1/work/workflow-1/logs/expression.stderr": {
+      "bytes": 166,
+      "sha256": "c10862d8635177e4b48095352723f36d215dd03ae75d0d5a3b8d0702233f230c"
+    },
+    "history/commands-1/work/workflow-1/logs/expression.stdout": {
+      "bytes": 177,
+      "sha256": "45dc3d4528a022e0ca9535fd5041153a8d91928e9b48ac7925f136fdcdfc72fc"
+    },
+    "history/commands-1/work/workflow-1/manifest.json": {
+      "bytes": 10319,
+      "sha256": "34d6d05177617e8c339178a23cbe38ca548a6ef0b40d1c537db0c55f2879eb40"
+    },
+    "history/commands-1/work/workflow-1/workflow-config.json": {
+      "bytes": 675,
+      "sha256": "62b496c813a50c85fc5807b1b6db652102e2fdb3da407becc688bcaf45021072"
+    },
+    "history/commands-1/work/workflow-1/workflow-journal.json": {
+      "bytes": 685,
+      "sha256": "3a9a84112c89c772b0731b04259104b1f949b5785bef840f37b0ff0ae1fe9016"
+    },
+    "history/commands-1/work/workflow.json": {
+      "bytes": 675,
+      "sha256": "62b496c813a50c85fc5807b1b6db652102e2fdb3da407becc688bcaf45021072"
+    },
+    "history/commands-2/COMPLETED.json": {
+      "bytes": 24642,
+      "sha256": "30f41d93ba8b90dfcfc94d14fa590c6ada628ae16c35581b6c15c772fc795679"
+    },
+    "history/commands-2/actual-original-magma-fit.json": {
+      "bytes": 1165,
+      "sha256": "4b019991033b94c9a107966fce5d6754100f65b81a3fc3b6164ab9d962c1f66e"
+    },
+    "history/commands-2/actual-original-magma-fit.stderr": {
+      "bytes": 156,
+      "sha256": "86c0d2bf04c18af3e75b09bf373e8911bd2dc02b3bb0a56b3bb0ea93eba2be0a"
+    },
+    "history/commands-2/actual-original-magma-fit.stdout": {
+      "bytes": 148,
+      "sha256": "20054d889e5c627b0a700f20e49b1cf4881dfdfdfd04d5ae51274fc6d46150e0"
+    },
+    "history/commands-2/create-inputs.json": {
+      "bytes": 443,
+      "sha256": "e49beeecb9313ae2bc1a37ee493900cc8b3c23d64e247f8fb7c9c5671ee9a89c"
+    },
+    "history/commands-2/create-inputs.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "history/commands-2/create-inputs.stdout": {
+      "bytes": 150,
+      "sha256": "49b09e69c2386be98d564dfcb81702f10f70fef36decd7d0bbdc6096e04f4e15"
+    },
+    "history/commands-2/prepare-magma-covariates.json": {
+      "bytes": 1353,
+      "sha256": "05c1d602cfb73cd467e8a67a9aabac23f9bb109f5734436f96428a599b18a657"
+    },
+    "history/commands-2/prepare-magma-covariates.stderr": {
+      "bytes": 157,
+      "sha256": "b95d6a36c772edf7881f0474be6074db22f90e1fa339d290640d8fd98ccd02d0"
+    },
+    "history/commands-2/prepare-magma-covariates.stdout": {
+      "bytes": 185,
+      "sha256": "85d721f3660f8c8bf60877e08460822c55835afcf13a09c2903273f27236a384"
+    },
+    "history/commands-2/standalone-tsv.json": {
+      "bytes": 1312,
+      "sha256": "95c41db281749d8dda32f348046a52c570da115cbd143d1d04318589455b1dcf"
+    },
+    "history/commands-2/standalone-tsv.stderr": {
+      "bytes": 155,
+      "sha256": "5f51c10bccbcbfa5b2e758662f429a5feb2b67b7b9c3332bc681b7afb013472b"
+    },
+    "history/commands-2/standalone-tsv.stdout": {
+      "bytes": 183,
+      "sha256": "82e424682654366b012b2eca908c502af4b0b34a7f79b77d545cd7eb62046a65"
+    },
+    "history/commands-2/typed-workflow.json": {
+      "bytes": 702,
+      "sha256": "b5c4ad47b565654679637bcfc18a93283058acc21da9caf1c45285e69aa3ea08"
+    },
+    "history/commands-2/typed-workflow.stderr": {
+      "bytes": 153,
+      "sha256": "59b4f29f2adac9e896555f53a436bb5ebea4fe54becc3f360597ccc58970f2ad"
+    },
+    "history/commands-2/typed-workflow.stdout": {
+      "bytes": 159,
+      "sha256": "1df7b2533aac0afc271ca362c22cbd2ae1872023b75bd403b259397da1f35fc8"
+    },
+    "history/commands-2/work/input/background.txt": {
+      "bytes": 14,
+      "sha256": "5c4704c0cd07ddda1c07a39d963db18f28f2dd9589c7f479496f100c8d1eab6a"
+    },
+    "history/commands-2/work/input/deg.tsv": {
+      "bytes": 76,
+      "sha256": "34489cf2a0e91c3502a8fa5b08420bdd1eabaa04609a329cb07ecc554dec7b9b"
+    },
+    "history/commands-2/work/input/labels.tsv": {
+      "bytes": 10,
+      "sha256": "fc868f8c3b99b165742852310b1738630b14b973b45b260a704db5005752af8a"
+    },
+    "history/commands-2/work/input/query.txt": {
+      "bytes": 14,
+      "sha256": "5c4704c0cd07ddda1c07a39d963db18f28f2dd9589c7f479496f100c8d1eab6a"
+    },
+    "history/commands-2/work/input/raw.gct": {
+      "bytes": 176,
+      "sha256": "88c7f6fce2fe4d5e4331aedd1b4264dfd96a72663e1b74ebe5f30660aaa49e9c"
+    },
+    "history/commands-2/work/input/raw.tsv": {
+      "bytes": 95,
+      "sha256": "5a9b0100250f929168713eb1712ab07a10e336572a195ed6bf743bd71002071b"
+    },
+    "history/commands-2/work/input/samples.tsv": {
+      "bytes": 33,
+      "sha256": "1efd8d95bb35fd51732e0a619ab7825d12ccfacac154c72447a32ffc21239a57"
+    },
+    "history/commands-2/work/input/symbols.tsv": {
+      "bytes": 36,
+      "sha256": "5c101d98660f094c5f1f6bdc348c2f3496398fc09f37358195bd630f6d862eb9"
+    },
+    "history/commands-2/work/magma-fit.config.yaml": {
+      "bytes": 853,
+      "sha256": "c1d9505ba050abb16dcb80f4500731a4579b39b2fa01d4e040972252af8424dd"
+    },
+    "history/commands-2/work/magma-fit/WARNINGS.md": {
+      "bytes": 1380,
+      "sha256": "8a493918748c3b1e983a4bdaddaf90e26b9fcc98affee5e722d718fee2405db4"
+    },
+    "history/commands-2/work/magma-fit/analysis-status.json": {
+      "bytes": 37,
+      "sha256": "d26488e7a635450d1996b3ad4fd647c836c46896f30ac9d51b9c6bab4c9d8fe9"
+    },
+    "history/commands-2/work/magma-fit/analysis.gsa.genes.out.txt": {
+      "bytes": 18569,
+      "sha256": "29a5d0763a0144ef8ff17b63e09dfa385e92f692f2f6771f4f1dc868b0ff233c"
+    },
+    "history/commands-2/work/magma-fit/analysis.gsa.out.txt": {
+      "bytes": 631,
+      "sha256": "02c367d87b0dba24317d92fb620810575f23eea0a83767277731fac19168643b"
+    },
+    "history/commands-2/work/magma-fit/analysis.log": {
+      "bytes": 2779,
+      "sha256": "c6f8f437eff9ce072677971017a66b03045052ab9686e0faa32658a36c0e84f3"
+    },
+    "history/commands-2/work/magma-fit/input.properties.tsv": {
+      "bytes": 15542,
+      "sha256": "0b51985b4e31f8aa8b17a3655bb7bbc383595b79900c47603628676fe7315adc"
+    },
+    "history/commands-2/work/magma-fit/manifest.yaml": {
+      "bytes": 2778,
+      "sha256": "86f2d6e87006750c9c4f2f378cde5f9ab168317abcba0f3ea35ec50a805eb6f3"
+    },
+    "history/commands-2/work/magma-fit/results.tsv": {
+      "bytes": 200,
+      "sha256": "b447a716fbcd15db161f758a1f7cdf363dd4624cfeb13440a28c789aef06fe16"
+    },
+    "history/commands-2/work/magma-fit/session.yaml": {
+      "bytes": 3084,
+      "sha256": "168a91f38f00365deafd06ebcc070969f54b9b78d9a0da49d7f4543233f46d88"
+    },
+    "history/commands-2/work/magma-fit/version.log": {
+      "bytes": 30,
+      "sha256": "d7caa2af2a9caa9c963352ef57e13f3fcbf6e39995c1760f6013264f682a583f"
+    },
+    "history/commands-2/work/magma-intake/datasets.tsv": {
+      "bytes": 140,
+      "sha256": "66d74b6a71e0aa7b565cbc309d33c9f070a45564b2ddc4edcda62160d5bcd45c"
+    },
+    "history/commands-2/work/magma-intake/gene-bundle/gene-status.tsv": {
+      "bytes": 2875,
+      "sha256": "6af237cc717582b515d0e86e4bc949202af16bcc8e192e9d6114faebd7005dac"
+    },
+    "history/commands-2/work/magma-intake/gene-bundle/genes.raw": {
+      "bytes": 209201,
+      "sha256": "97a0703caf4475e1e14fdadd4ecdd9186f0703d9db30ec483994331a9be7c54f"
+    },
+    "history/commands-2/work/magma-intake/gene-bundle/magma-bundle.json": {
+      "bytes": 397,
+      "sha256": "da62f1f1ca6f06dc82af772a7b3fc87a17ea578d8a70d94d235e3a2c23d4ec93"
+    },
+    "history/commands-2/work/magma-intake/gene-bundle/results.tsv": {
+      "bytes": 9522,
+      "sha256": "6dc2612df3b6aff179e29e23d7a431e62c8496685c5bfbd490ce9983a4148cfe"
+    },
+    "history/commands-2/work/magma-intake/input-manifest.json": {
+      "bytes": 1811,
+      "sha256": "3abf882205ed83c9d42455ac13c1311a4b8b34c2b6ff839af260c9b910b74f1d"
+    },
+    "history/commands-2/work/magma-intake/marginal.json": {
+      "bytes": 405,
+      "sha256": "2e60a4a6748113a133e95a5886513bb7aaee90dfd6e0dfa7b4a3eaf082f1a0fc"
+    },
+    "history/commands-2/work/magma-intake/parent.json": {
+      "bytes": 427,
+      "sha256": "c60093c0a67f5cb58e3d58ce1d60f78879dd65c9091d17f2d20078c31e98ad62"
+    },
+    "history/commands-2/work/magma-intake/properties/detailed54.tsv": {
+      "bytes": 226060,
+      "sha256": "12e2e33c7bda60ea24f99ceb82a782bb1fd37093f1afcb63610d891824ac421c"
+    },
+    "history/commands-2/work/magma-intake/properties/general30.tsv": {
+      "bytes": 127712,
+      "sha256": "baddb9774ee11a20436b49f4a9a2e126f2095a044fd205feddeea44446519997"
+    },
+    "history/commands-2/work/magma-intake/properties/long-labels.tsv": {
+      "bytes": 16571,
+      "sha256": "4d2baeaaf3783441e7fc3fae0e7616be06b4182a180a7df0f853771287747a09"
+    },
+    "history/commands-2/work/magma-intake/properties/missing.tsv": {
+      "bytes": 16422,
+      "sha256": "78fa82a24ac685f17bec9ca56fe5de7010b885906eb7f8d94e1a5a697452198b"
+    },
+    "history/commands-2/work/magma-intake/recipes.json": {
+      "bytes": 1953,
+      "sha256": "5fd1f3234a9ddfb1f7a92081b8d32dae929f2c0bd986af7e5ba099fbc744945e"
+    },
+    "history/commands-2/work/magma-intake/reference/detailed.gsa.out.txt": {
+      "bytes": 4876,
+      "sha256": "52f0a0ffd1eac6e9e2b84ab0f84175150fdab483515d69dc89b929a9cca6dcbe"
+    },
+    "history/commands-2/work/magma-intake/reference/drop.gsa.out.txt": {
+      "bytes": 647,
+      "sha256": "93238332c7a7ea1dc0f314c6a9bca9f31691e286ceb7acb5df441a6581818d4c"
+    },
+    "history/commands-2/work/magma-intake/reference/general.gsa.out.txt": {
+      "bytes": 2915,
+      "sha256": "08661771e1764928c4ff5cbcf67452d7ab73619b1ee4e725a06db02854770d22"
+    },
+    "history/commands-2/work/magma-intake/reference/long.gsa.out.txt": {
+      "bytes": 871,
+      "sha256": "be8b58e93c0b1f305a4daa1ba6badf0d420c9a037678213a03797cede8ad7059"
+    },
+    "history/commands-2/work/magma-intake/reference/mean.gsa.out.txt": {
+      "bytes": 647,
+      "sha256": "35efa734ac3d7b8fba8e23e2e3c645eb4e550bf43e7563c9cb6aa2173ca28e23"
+    },
+    "history/commands-2/work/magma-intake/reference/step1.tsv": {
+      "bytes": 7855,
+      "sha256": "736a1084244e889130333b2462732019a8db41bbb81b48012b2ef074a6175aec"
+    },
+    "history/commands-2/work/magma-intake/source-provenance.json": {
+      "bytes": 2294,
+      "sha256": "d12ef20f7288f79239a94ff611dba64c64f794d628ae2b653139340e54ffd50b"
+    },
+    "history/commands-2/work/magma-prepared.config.yaml": {
+      "bytes": 1009,
+      "sha256": "5fa819c786dea14ddd0b6e434cee1dc332c59e36d2d547e45521946af4162231"
+    },
+    "history/commands-2/work/magma-prepared/WARNINGS.md": {
+      "bytes": 1419,
+      "sha256": "b54cb23d4ed2e89f111cee28ff05e772b5c0fa37bf477fde957d1c67f6689ea8"
+    },
+    "history/commands-2/work/magma-prepared/analysis-status.json": {
+      "bytes": 44,
+      "sha256": "fd45555c4ada96814c2ace5aceab8ef063d3c67f0e6d6813dc017ed2e2d06161"
+    },
+    "history/commands-2/work/magma-prepared/gene-audit.tsv": {
+      "bytes": 22053,
+      "sha256": "cd12fb4aa7d31706292b428f632a36168b6c32cf8f01e361dfaae3fdf0cf4378"
+    },
+    "history/commands-2/work/magma-prepared/gene-covariates.tsv": {
+      "bytes": 15542,
+      "sha256": "0b51985b4e31f8aa8b17a3655bb7bbc383595b79900c47603628676fe7315adc"
+    },
+    "history/commands-2/work/magma-prepared/label-samples.tsv": {
+      "bytes": 44,
+      "sha256": "9f72420500239de24eb1680efa61f17ba93ee5f19c5a7962fd5212cbe13ed4b5"
+    },
+    "history/commands-2/work/magma-prepared/log2.tsv": {
+      "bytes": 11916,
+      "sha256": "e5025f9f1910857b6eebec466f522a8cbc2e9000d3e7c7c349b5138f874dc410"
+    },
+    "history/commands-2/work/magma-prepared/manifest.yaml": {
+      "bytes": 2416,
+      "sha256": "92b4cec1a0802084edd77fa1d83c2551d0997831fe7e115b76ef4496fbd0fd44"
+    },
+    "history/commands-2/work/magma-prepared/norm.tsv": {
+      "bytes": 13071,
+      "sha256": "acdb45402f13379240cb1c3e0ac5eaca1e9f139f945430b4035ea387369b3e8a"
+    },
+    "history/commands-2/work/magma-prepared/sample-selection.tsv": {
+      "bytes": 196,
+      "sha256": "ca88c3e40e253ebea2d26c915da380b75022993356d1ca2af4e00d88098dfa2f"
+    },
+    "history/commands-2/work/magma-prepared/session.json": {
+      "bytes": 3231,
+      "sha256": "455a992ec5009817f03fe8ffc82915be4b341e7ef06940a5bdb9c66ec665baae"
+    },
+    "history/commands-2/work/magma-raw/input.tsv": {
+      "bytes": 35197,
+      "sha256": "0ccdb0c78f2c8d32fe8d426d332999211dbe85cfcebfd252b81285c1ff3e3d33"
+    },
+    "history/commands-2/work/magma-raw/labels.tsv": {
+      "bytes": 30,
+      "sha256": "002b90ffe4384110f57bfb5129cd96b075446d10c3947d53792176b329d737b0"
+    },
+    "history/commands-2/work/magma-raw/samples.tsv": {
+      "bytes": 112,
+      "sha256": "e0fec3b5080e2db6b0d950f16394d702a0594d0fc91613a57564453b69c1b876"
+    },
+    "history/commands-2/work/standalone-1.config.yaml": {
+      "bytes": 978,
+      "sha256": "e4e4b42e429cb3fc45b26f2865569e9fb1857b132f4a5eb15d0b3595cbcf0869"
+    },
+    "history/commands-2/work/standalone-1/WARNINGS.md": {
+      "bytes": 1783,
+      "sha256": "8b341b80f34decf3a53f4cc3154cc42cd239d790f648f98a78e54a37efb2e21a"
+    },
+    "history/commands-2/work/standalone-1/analysis-status.json": {
+      "bytes": 44,
+      "sha256": "fd45555c4ada96814c2ace5aceab8ef063d3c67f0e6d6813dc017ed2e2d06161"
+    },
+    "history/commands-2/work/standalone-1/gene-audit.tsv": {
+      "bytes": 356,
+      "sha256": "1cf9ba09627d8074cc47b8e87f619a46a22dd419bd37cb0edcdbf0ab44373ddb"
+    },
+    "history/commands-2/work/standalone-1/gene-covariates.tsv": {
+      "bytes": 127,
+      "sha256": "46b386071eebfb8610c019e13b26ec72c49a569384ececf830a720cc95631f48"
+    },
+    "history/commands-2/work/standalone-1/label-samples.tsv": {
+      "bytes": 22,
+      "sha256": "d3dfb40fed4783dd6658eb7e178481df3a8671ec31f3f0e502749fff99ab6f20"
+    },
+    "history/commands-2/work/standalone-1/log2.tsv": {
+      "bytes": 82,
+      "sha256": "b39310f679dff0a4db0222c440732d13149fb386a0f4a45b1ef4fe3f342c59d1"
+    },
+    "history/commands-2/work/standalone-1/manifest.yaml": {
+      "bytes": 2371,
+      "sha256": "9885e79a8e195102a09a049eeb020dd9ca444723fd37b5279bf854d1a77b3725"
+    },
+    "history/commands-2/work/standalone-1/norm.tsv": {
+      "bytes": 98,
+      "sha256": "5abb73afbc791207511d49e17e7800906f00d6ea68f2328eb8549d3027eeb807"
+    },
+    "history/commands-2/work/standalone-1/sample-selection.tsv": {
+      "bytes": 96,
+      "sha256": "255e9227046b08b315d5e48d79fb81a7b78c207d93d680d90de42eebce8e753b"
+    },
+    "history/commands-2/work/standalone-1/session.json": {
+      "bytes": 3521,
+      "sha256": "1b2fa2401b3e09d2e328c935d5947013db28c341b10cc717bcd3c4d17c1ea830"
+    },
+    "history/commands-2/work/workflow-1.config.yaml": {
+      "bytes": 497,
+      "sha256": "288b2922438a368dcd901847003a29410aed162700abbfa921bc93b659f721e1"
+    },
+    "history/commands-2/work/workflow-1/WARNINGS.md": {
+      "bytes": 1586,
+      "sha256": "14b36aace4fd17c196719d4f63a51ad2d39c9e49cecfbf1a51876377fca2a800"
+    },
+    "history/commands-2/work/workflow-1/analysis-status.json": {
+      "bytes": 58,
+      "sha256": "4c031ee5e79509611244a7b2aa4fd81d64f299b5486e311665d6e64a665bc8fd"
+    },
+    "history/commands-2/work/workflow-1/expression-preparation/WARNINGS.md": {
+      "bytes": 1783,
+      "sha256": "8b341b80f34decf3a53f4cc3154cc42cd239d790f648f98a78e54a37efb2e21a"
+    },
+    "history/commands-2/work/workflow-1/expression-preparation/analysis-status.json": {
+      "bytes": 44,
+      "sha256": "fd45555c4ada96814c2ace5aceab8ef063d3c67f0e6d6813dc017ed2e2d06161"
+    },
+    "history/commands-2/work/workflow-1/expression-preparation/gene-audit.tsv": {
+      "bytes": 408,
+      "sha256": "cfbe788e1f970c9b9e8bd321e435ceae49ba02663ecbc8eeb0554aed4f687bcb"
+    },
+    "history/commands-2/work/workflow-1/expression-preparation/gene-covariates.tsv": {
+      "bytes": 127,
+      "sha256": "46b386071eebfb8610c019e13b26ec72c49a569384ececf830a720cc95631f48"
+    },
+    "history/commands-2/work/workflow-1/expression-preparation/label-samples.tsv": {
+      "bytes": 22,
+      "sha256": "d3dfb40fed4783dd6658eb7e178481df3a8671ec31f3f0e502749fff99ab6f20"
+    },
+    "history/commands-2/work/workflow-1/expression-preparation/log2.tsv": {
+      "bytes": 82,
+      "sha256": "b39310f679dff0a4db0222c440732d13149fb386a0f4a45b1ef4fe3f342c59d1"
+    },
+    "history/commands-2/work/workflow-1/expression-preparation/manifest.yaml": {
+      "bytes": 2396,
+      "sha256": "3f16b8e91c518ea84bbdf470c8de283b723efd6eb2d087b58241ccc295223c73"
+    },
+    "history/commands-2/work/workflow-1/expression-preparation/norm.tsv": {
+      "bytes": 98,
+      "sha256": "5abb73afbc791207511d49e17e7800906f00d6ea68f2328eb8549d3027eeb807"
+    },
+    "history/commands-2/work/workflow-1/expression-preparation/sample-selection.tsv": {
+      "bytes": 96,
+      "sha256": "255e9227046b08b315d5e48d79fb81a7b78c207d93d680d90de42eebce8e753b"
+    },
+    "history/commands-2/work/workflow-1/expression-preparation/session.json": {
+      "bytes": 3544,
+      "sha256": "5c473e025199ca42915c13e598ca89510e5ec0200e425fd80a7b4830b830b53c"
+    },
+    "history/commands-2/work/workflow-1/expression/DEG.txt": {
+      "bytes": 146,
+      "sha256": "ef6798410ac4b8f83ef2a443985b1434165aa95a1d1602e6078b5ebb7351072d"
+    },
+    "history/commands-2/work/workflow-1/expression/WARNINGS.md": {
+      "bytes": 517,
+      "sha256": "bc90dfa5bdcd04a30108a2e1d633d5bdbe084fa7f9dcb5ec5e14f3b3d37a8d0e"
+    },
+    "history/commands-2/work/workflow-1/expression/analysis-status.json": {
+      "bytes": 44,
+      "sha256": "fd45555c4ada96814c2ace5aceab8ef063d3c67f0e6d6813dc017ed2e2d06161"
+    },
+    "history/commands-2/work/workflow-1/expression/deg-tests.tsv": {
+      "bytes": 396,
+      "sha256": "f9b0893bb01b7a07e12c6e0684e8068e82dca1767bf18a6adab779edcfa278e0"
+    },
+    "history/commands-2/work/workflow-1/expression/expressed-background.tsv": {
+      "bytes": 19,
+      "sha256": "a34d278a79bf8bec733397074ace29213a31b2a2b5d1a4048a1a49b80391c804"
+    },
+    "history/commands-2/work/workflow-1/expression/log2-expression.tsv": {
+      "bytes": 99,
+      "sha256": "65795286fc9009173fabc28a51549aa11bdb18fc64d80dd6b2b5ed4a907c812a"
+    },
+    "history/commands-2/work/workflow-1/expression/manifest.yaml": {
+      "bytes": 3517,
+      "sha256": "cc9496c6b81bd9b4846e1a42f9768dbbc1bf9897c1e816f83a8aea84e90cd3e6"
+    },
+    "history/commands-2/work/workflow-1/expression/norm-expression.tsv": {
+      "bytes": 115,
+      "sha256": "72800229efbe82b831c0e0542e489680c6554f54903ef6a30354e46f5123dbf6"
+    },
+    "history/commands-2/work/workflow-1/expression/query-outside-background.tsv": {
+      "bytes": 5,
+      "sha256": "d1c56c30f7381f37cb620d0e6074a14983dd9e914a14553a9348b4753d1dc84a"
+    },
+    "history/commands-2/work/workflow-1/expression/session.json": {
+      "bytes": 2073,
+      "sha256": "7c3fce4cfc1783a4db32b9de20cb999a9da46209e87d6484c0233b5212e0fe60"
+    },
+    "history/commands-2/work/workflow-1/logs/expression-preparation.stderr": {
+      "bytes": 176,
+      "sha256": "f4ccc20e58de5d4197309cbec48f8e89c106060e812f92dc3d9a50e68fe68a25"
+    },
+    "history/commands-2/work/workflow-1/logs/expression-preparation.stdout": {
+      "bytes": 204,
+      "sha256": "58b08abe4c543567a2940616ed81e79dda95358e1269e38a5a2de30c5a5c444a"
+    },
+    "history/commands-2/work/workflow-1/logs/expression.stderr": {
+      "bytes": 166,
+      "sha256": "11f42989df519922beb75b3a28662b2b5f56822143580b4bc7f8f8c85696f7bb"
+    },
+    "history/commands-2/work/workflow-1/logs/expression.stdout": {
+      "bytes": 177,
+      "sha256": "44f7e9cbb2a5a4515f88f7157d1cc52d5a2ca7803e654705466f7a300e719f94"
+    },
+    "history/commands-2/work/workflow-1/manifest.json": {
+      "bytes": 10319,
+      "sha256": "395d7438f7b8a6ddab5da1a72aa6d0650721948458039ab8e0109cee04de31f3"
+    },
+    "history/commands-2/work/workflow-1/workflow-config.json": {
+      "bytes": 675,
+      "sha256": "62b496c813a50c85fc5807b1b6db652102e2fdb3da407becc688bcaf45021072"
+    },
+    "history/commands-2/work/workflow-1/workflow-journal.json": {
+      "bytes": 688,
+      "sha256": "0e2f6aec67a71cf6a167d98f0687ace675be76571b5aa0e8fadff82676c2ad16"
+    },
+    "history/commands-2/work/workflow.json": {
+      "bytes": 675,
+      "sha256": "62b496c813a50c85fc5807b1b6db652102e2fdb3da407becc688bcaf45021072"
+    },
+    "history/family-tests-1-snapshot/FumaExpressionPrepareCliTest.java": {
+      "bytes": 13685,
+      "sha256": "53797b18743cfa672a708b82f7201c458333bc4ab86d231794f0ff7065295a49"
+    },
+    "history/matrix-1/COMPLETED.json": {
+      "bytes": 19908,
+      "sha256": "cebb84cc567184d7cc2a030cdf7e4640148fbd5be9a2242a7ab5561f9d23289b"
+    },
+    "history/matrix-1/RunFumaExpressionChecks.java": {
+      "bytes": 2258,
+      "sha256": "266ded75854b610364b43f4b13e0eda883b8c134549dca4362d758ffffeab986"
+    },
+    "history/matrix-1/classes/RunFumaExpressionChecks.class": {
+      "bytes": 4409,
+      "sha256": "8e3565b8af86b8e870489d3aacd411d444be09943d23f463e47a496ee919480b"
+    },
+    "history/matrix-1/classes/org/jlinalg/cli/FumaExpressionPrepareCliTest.class": {
+      "bytes": 16692,
+      "sha256": "9e6468c02e078b83f2aeb07ecbba19c1cda6c13d6aa64c3b8754260afb108a92"
+    },
+    "history/matrix-1/classes/org/jlinalg/cli/FumaLociCliTest.class": {
+      "bytes": 8579,
+      "sha256": "3b69ed7ea66e2a725a4cff3991dc2359ad4b5fa05c903c35384e72169e2f0ad3"
+    },
+    "history/matrix-1/classes/org/jlinalg/cli/FumaReferenceCliTest.class": {
+      "bytes": 21114,
+      "sha256": "4da4b243897ea2936136da3f48089d31bf4c1ef2f6d103231ef69916d799a2d1"
+    },
+    "history/matrix-1/classes/org/jlinalg/enrichment/FumaExpressionPreparationRTest.class": {
+      "bytes": 9266,
+      "sha256": "e171555151b2a4163eee5c68fe7de69fc291e4f3b786b6e82c45c7081b5df274"
+    },
+    "history/matrix-1/classes/org/jlinalg/enrichment/FumaExpressionPreparationTest.class": {
+      "bytes": 11131,
+      "sha256": "30f6637d4f04fc6180b4f813abff412cf08a3c50bee774bdba629a7b0bd8711a"
+    },
+    "history/matrix-1/classes/org/jlinalg/genetics/FumaLdWindowTest.class": {
+      "bytes": 9620,
+      "sha256": "6aa20eb68ca12a1567213c86282ec68a733560bdbb4110dba686b0ef29641d3e"
+    },
+    "history/matrix-1/classes/org/jlinalg/genetics/FumaLocusDefinitionTest.class": {
+      "bytes": 17619,
+      "sha256": "2214e316550aea352ba8c1cc6f5292c7e6c72f3c370a1cf6d3de72481b6a7155"
+    },
+    "history/matrix-1/classes/org/jlinalg/genetics/FumaReferenceOriginalTest$1.class": {
+      "bytes": 2062,
+      "sha256": "dc5be2f190ca5c9b2d423141e7d7e51f37a1e335a24f5c56ef773a8f8faa28ff"
+    },
+    "history/matrix-1/classes/org/jlinalg/genetics/FumaReferenceOriginalTest.class": {
+      "bytes": 15741,
+      "sha256": "c266ad743afd88ff1d629b679afc62ab36eaf255927199674fac3908122240a4"
+    },
+    "history/matrix-1/classes/org/jlinalg/genetics/FumaReferencePreparationTest$1.class": {
+      "bytes": 1477,
+      "sha256": "dc28551bc42bec18936dd91fde8328e8bdf00888573079922b5353461b4cf8f4"
+    },
+    "history/matrix-1/classes/org/jlinalg/genetics/FumaReferencePreparationTest$Sink.class": {
+      "bytes": 2394,
+      "sha256": "6ccfe48435468594dcc172484b2c9e9f0818193d9e35e3ff9ecd141a50e0c12f"
+    },
+    "history/matrix-1/classes/org/jlinalg/genetics/FumaReferencePreparationTest.class": {
+      "bytes": 19131,
+      "sha256": "67c9c1bcf68b4910a8ee27270a7356c1dff3498eeafc09d696bd0329b81e684d"
+    },
+    "history/matrix-1/classes/org/jlinalg/genetics/HardcallLdOriginalTest.class": {
+      "bytes": 14273,
+      "sha256": "2495023b3d2a80137699e34e1f7b31772700f2f4ce68acbe624acc26a880e4b1"
+    },
+    "history/matrix-1/classes/org/jlinalg/genetics/HardcallLdTest.class": {
+      "bytes": 12911,
+      "sha256": "0cd46efd235374f97e99a03da8e5f1114346344bed7ecaeb9243225a4d03107c"
+    },
+    "history/matrix-1/compile.json": {
+      "bytes": 2883,
+      "sha256": "a789a47d522fc6b661279507f3033295feaba36c9bdab99abf55f69bec1ef73a"
+    },
+    "history/matrix-1/compile.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "history/matrix-1/compile.stdout": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "history/matrix-1/linux-java21/junit.json": {
+      "bytes": 1827,
+      "sha256": "41d1f12417152d21cb764fa328a117462517d5f7145413786686235b69895813"
+    },
+    "history/matrix-1/linux-java21/junit.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "history/matrix-1/linux-java21/junit.stdout": {
+      "bytes": 503,
+      "sha256": "93807b6c1dc4df0a8c7117517618fe9a895ec31fdd5c2f02595baf833e2d6d74"
+    },
+    "history/matrix-1/windows-java21/junit.json": {
+      "bytes": 1864,
+      "sha256": "f502eadb28fde6fa75cc59612a8222ba580d3c87faa358a082ee84c54371de66"
+    },
+    "history/matrix-1/windows-java21/junit.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "history/matrix-1/windows-java21/junit.stdout": {
+      "bytes": 522,
+      "sha256": "0461f85e3b0587c5e409b331888add6e44891a605309b0765bfa714e70fd7985"
+    },
+    "history/matrix-1/windows-java25/junit.json": {
+      "bytes": 1857,
+      "sha256": "92cd93445be49acf8c4111ed797befd300db6c200d15f689e7530f55ed0e06c9"
+    },
+    "history/matrix-1/windows-java25/junit.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "history/matrix-1/windows-java25/junit.stdout": {
+      "bytes": 518,
+      "sha256": "877609d9a2a05506c1c800d2ad609680ceb68fc39a0beac7ca07b1a6e072f339"
+    },
+    "history/matrix-2/COMPLETED.json": {
+      "bytes": 20077,
+      "sha256": "67b0edab8e36b776f679f905bfb50c46ed1aef552e141bf97305904b709ca7e9"
+    },
+    "history/matrix-2/RunFumaExpressionChecks.java": {
+      "bytes": 2258,
+      "sha256": "266ded75854b610364b43f4b13e0eda883b8c134549dca4362d758ffffeab986"
+    },
+    "history/matrix-2/classes/RunFumaExpressionChecks.class": {
+      "bytes": 4409,
+      "sha256": "8e3565b8af86b8e870489d3aacd411d444be09943d23f463e47a496ee919480b"
+    },
+    "history/matrix-2/classes/org/jlinalg/cli/FumaExpressionPrepareCliTest.class": {
+      "bytes": 16692,
+      "sha256": "9e6468c02e078b83f2aeb07ecbba19c1cda6c13d6aa64c3b8754260afb108a92"
+    },
+    "history/matrix-2/classes/org/jlinalg/cli/FumaLociCliTest.class": {
+      "bytes": 8579,
+      "sha256": "3b69ed7ea66e2a725a4cff3991dc2359ad4b5fa05c903c35384e72169e2f0ad3"
+    },
+    "history/matrix-2/classes/org/jlinalg/cli/FumaReferenceCliTest.class": {
+      "bytes": 21114,
+      "sha256": "4da4b243897ea2936136da3f48089d31bf4c1ef2f6d103231ef69916d799a2d1"
+    },
+    "history/matrix-2/classes/org/jlinalg/enrichment/FumaExpressionPreparationRTest.class": {
+      "bytes": 9266,
+      "sha256": "e171555151b2a4163eee5c68fe7de69fc291e4f3b786b6e82c45c7081b5df274"
+    },
+    "history/matrix-2/classes/org/jlinalg/enrichment/FumaExpressionPreparationTest.class": {
+      "bytes": 11131,
+      "sha256": "30f6637d4f04fc6180b4f813abff412cf08a3c50bee774bdba629a7b0bd8711a"
+    },
+    "history/matrix-2/classes/org/jlinalg/genetics/FumaLdWindowTest.class": {
+      "bytes": 9620,
+      "sha256": "6aa20eb68ca12a1567213c86282ec68a733560bdbb4110dba686b0ef29641d3e"
+    },
+    "history/matrix-2/classes/org/jlinalg/genetics/FumaLocusDefinitionTest.class": {
+      "bytes": 17619,
+      "sha256": "2214e316550aea352ba8c1cc6f5292c7e6c72f3c370a1cf6d3de72481b6a7155"
+    },
+    "history/matrix-2/classes/org/jlinalg/genetics/FumaReferenceOriginalTest$1.class": {
+      "bytes": 2062,
+      "sha256": "dc5be2f190ca5c9b2d423141e7d7e51f37a1e335a24f5c56ef773a8f8faa28ff"
+    },
+    "history/matrix-2/classes/org/jlinalg/genetics/FumaReferenceOriginalTest.class": {
+      "bytes": 15741,
+      "sha256": "c266ad743afd88ff1d629b679afc62ab36eaf255927199674fac3908122240a4"
+    },
+    "history/matrix-2/classes/org/jlinalg/genetics/FumaReferencePreparationTest$1.class": {
+      "bytes": 1477,
+      "sha256": "dc28551bc42bec18936dd91fde8328e8bdf00888573079922b5353461b4cf8f4"
+    },
+    "history/matrix-2/classes/org/jlinalg/genetics/FumaReferencePreparationTest$Sink.class": {
+      "bytes": 2394,
+      "sha256": "6ccfe48435468594dcc172484b2c9e9f0818193d9e35e3ff9ecd141a50e0c12f"
+    },
+    "history/matrix-2/classes/org/jlinalg/genetics/FumaReferencePreparationTest.class": {
+      "bytes": 19131,
+      "sha256": "67c9c1bcf68b4910a8ee27270a7356c1dff3498eeafc09d696bd0329b81e684d"
+    },
+    "history/matrix-2/classes/org/jlinalg/genetics/HardcallLdOriginalTest.class": {
+      "bytes": 14273,
+      "sha256": "2495023b3d2a80137699e34e1f7b31772700f2f4ce68acbe624acc26a880e4b1"
+    },
+    "history/matrix-2/classes/org/jlinalg/genetics/HardcallLdTest.class": {
+      "bytes": 12911,
+      "sha256": "0cd46efd235374f97e99a03da8e5f1114346344bed7ecaeb9243225a4d03107c"
+    },
+    "history/matrix-2/compile.json": {
+      "bytes": 2883,
+      "sha256": "ea073e78da663ac33951c18c1dae05a65cef5b1d7a282e5f76b027f902f427c4"
+    },
+    "history/matrix-2/compile.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "history/matrix-2/compile.stdout": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "history/matrix-2/linux-java21/junit.json": {
+      "bytes": 1827,
+      "sha256": "bd075b600996a01c0b7666da6c6f7d92e3abeda9f3da97618d8121a323d2416a"
+    },
+    "history/matrix-2/linux-java21/junit.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "history/matrix-2/linux-java21/junit.stdout": {
+      "bytes": 503,
+      "sha256": "69a910f8dc84859bd1c9d63784e2f6d1cd7da22cfb84d8380751e6205b4d7bad"
+    },
+    "history/matrix-2/windows-java21/junit.json": {
+      "bytes": 1864,
+      "sha256": "4ac25c08bfea18f01a3fae050228863fa2729f89904bd13fa5c6cea8bd966c34"
+    },
+    "history/matrix-2/windows-java21/junit.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "history/matrix-2/windows-java21/junit.stdout": {
+      "bytes": 522,
+      "sha256": "5433f66dc1649cc3c2a8e4814399f6b7b9429a1da3c80c1613b1a4e428072436"
+    },
+    "history/matrix-2/windows-java25/junit.json": {
+      "bytes": 1857,
+      "sha256": "b948423b0f099e606946018a80efd1a493944f5c95970a8a74907dab8d35b83e"
+    },
+    "history/matrix-2/windows-java25/junit.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "history/matrix-2/windows-java25/junit.stdout": {
+      "bytes": 518,
+      "sha256": "dd2840f1638ee8b43f3af3e763024c109a60e5a4839c06b17f479f379ea3497d"
+    },
+    "history/metadata-correction-before/FUMA_EXPRESSION_PREPARATION.md": {
+      "bytes": 6948,
+      "sha256": "1fdb4b6880189fea8d82104d9098f4aba4a975e7c16fa4ed34bc6c8d850c1ff2"
+    },
+    "history/metadata-correction-before/FumaExpressionPrepareCli.java": {
+      "bytes": 22365,
+      "sha256": "42452bf9773417e2debdcd012bd9575ca34f0356652d603e6a493214e7e8e112"
+    },
+    "history/metadata-correction-before/FumaExpressionPrepareCliTest.java": {
+      "bytes": 13682,
+      "sha256": "ce4b646333653eb71df630f3b0690d6926a1aae2e2fdb6ea57f429dcd6011b15"
+    },
+    "history/metadata-correction-before/validate_fuma_expression_commands.py": {
+      "bytes": 7706,
+      "sha256": "d2cd9ec47fcbf4c2458be39ec2d82201f0219eea6bd7d7c35c6c643e0b4ffa75"
+    },
+    "history/role-audit-1/coverage.json": {
+      "bytes": 18628,
+      "sha256": "44cca72237523d13c2c59c12599a62a4e58ad6a35edeb5112b9dbff8c4477dfe"
+    },
+    "logs/FumaWorkflowCli-before-LF.java": {
+      "bytes": 35291,
+      "sha256": "be6ac7ee9a090ece8e76acaba2c2e7051ef0a40536e167e736aa9ea23421e744"
+    },
+    "logs/LF-rebuild-comparison.json": {
+      "bytes": 467,
+      "sha256": "f43dedacd7d60c62ca0ec44d725eb43af5d8d25afece3eb67b945efd57e8d642"
+    },
+    "logs/R-comparison-tests-1.log": {
+      "bytes": 6037,
+      "sha256": "66556652e22d80fe08b400898706452f9d663ac92defe530366c03d552f4f0bb"
+    },
+    "logs/R-comparison-tests-2.log": {
+      "bytes": 631,
+      "sha256": "9e57b2c2cfb55bb5cb8fe36cb0f5c0c2d58adec91d4b3eaf2e1c412390af1fd4"
+    },
+    "logs/build-1.log": {
+      "bytes": 834,
+      "sha256": "6d0498826c05a9ebecca2bf46cf28da72ae6567cacfd9de19109cbda2579a446"
+    },
+    "logs/build-2.log": {
+      "bytes": 834,
+      "sha256": "8c488d93274bd66210e502151c36525124562c4e705e7d79cc75e65de5d3fc78"
+    },
+    "logs/cli-tests-1.log": {
+      "bytes": 817,
+      "sha256": "05a7ef57530dee05af70a02cde4eb09a80b9c86509502e633101f64302ed7749"
+    },
+    "logs/commands-1.log": {
+      "bytes": 1250,
+      "sha256": "0598fed32909b9c173437e83730c86f4978a37f94fa359243f533a06df132739"
+    },
+    "logs/commands-2.log": {
+      "bytes": 135,
+      "sha256": "2cc452192cdcd3af06a31a048d395dab0773e3bd732b628ec1edcb8d00e785e9"
+    },
+    "logs/example-compile-1.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/family-tests-1.log": {
+      "bytes": 5959,
+      "sha256": "df34e279bd09c1354cdc51bef8c67abb0194620e048f234e4aca3660c22ef7e6"
+    },
+    "logs/family-tests-2.log": {
+      "bytes": 653,
+      "sha256": "c5a6de609431357e8f80f5fad488fcdfd36a93e963ddbeaf2ca9926401704182"
+    },
+    "logs/family-tests-3-summary.json": {
+      "bytes": 200,
+      "sha256": "87ad597904fc218f592d3461ffc04e05a53b7d040a5f3244a280d6f1aae0642f"
+    },
+    "logs/freeze-controls-1.log": {
+      "bytes": 232,
+      "sha256": "546fbfcf95fe86ff42cfa84951baa301bf7a9c7eb3209872e9427b081a1229b9"
+    },
+    "logs/independent-R-controls-1.log": {
+      "bytes": 260,
+      "sha256": "7806b07bcaca56b6a2545d0d796da4cabac68a21d9ba9ca6510fdfa3d6d92bd5"
+    },
+    "logs/independent-R-controls-2.log": {
+      "bytes": 72,
+      "sha256": "d2ed17c88c825dac9e5381e72a1a137ec380f83b0586cdf0a4ff9882b08cab23"
+    },
+    "logs/matrix-1.log": {
+      "bytes": 217,
+      "sha256": "0178c1cb46e9acb3d9dbaee37bb618939affd6da70816eb39df82426a9150011"
+    },
+    "logs/matrix-2.log": {
+      "bytes": 217,
+      "sha256": "0178c1cb46e9acb3d9dbaee37bb618939affd6da70816eb39df82426a9150011"
+    },
+    "logs/native-tests-1.log": {
+      "bytes": 742,
+      "sha256": "e908057a6cfe4c338c597dcc07c84caaeaea4971593ff0b5993034a639c5154c"
+    },
+    "logs/role-audit-1.log": {
+      "bytes": 165,
+      "sha256": "2342652e55f1c2ba219038a14fd02e0b1942f3bd06cdc814e5fbf8af7e4ba60c"
+    },
+    "logs/role-audit-2.log": {
+      "bytes": 165,
+      "sha256": "2342652e55f1c2ba219038a14fd02e0b1942f3bd06cdc814e5fbf8af7e4ba60c"
+    },
+    "prior/reference-workflow-VALIDATION.json": {
+      "bytes": 67013,
+      "sha256": "699c7d67dce15f162524db4346a7199ae372d3e3b5a1676eb3e625b8f662d357"
+    },
+    "prior/reference-workflow-controls.zip": {
+      "bytes": 803820,
+      "sha256": "f85a98c46f9d8032f9794343a740b22565b08e8049e24bc736f310ab79217b98"
+    },
+    "source/build/literature-review/fuma-runtime/expression-preparation-development-1/matrix-3/COMPLETED.json": {
+      "bytes": 20077,
+      "sha256": "cf04a539878ebb64fca9b273e280edc8c74aa33540c7d6943491a23fca36b8d5"
+    },
+    "source/docs/literature/FUMA_EXPRESSION_PREPARATION.md": {
+      "bytes": 6950,
+      "sha256": "7319f778c8a54a09dc75ed856d8746b2c05dd64642c07013971cb897374b4609"
+    },
+    "source/docs/literature/fuma-expression-preparation-2/.gitattributes": {
+      "bytes": 8,
+      "sha256": "705fd4d6451a31d36b3df7de96f83f30ac976c9b4a6d1e51671d8e2f33e2d0da"
+    },
+    "source/docs/literature/omics-2023-2026/papers.json": {
+      "bytes": 3038083,
+      "sha256": "92a9c116ffd1f2d9d91e778064b3327b00ffa6336a907ae36e3885df2e8d70f1"
+    },
+    "source/docs/literature/omics-2023-2026/summary.json": {
+      "bytes": 1181,
+      "sha256": "6ad38a85dff86bbb6ed5505256dce27336de01220a33a75016e75c6a9b6ff464"
+    },
+    "source/docs/literature/omics-2023-2026/tool-inventory.json": {
+      "bytes": 491542,
+      "sha256": "a0b8d6e6c387a319d7a80ab3bc75cdb89ea89ef8362c973c5b523f0033e1e059"
+    },
+    "source/examples/fuma-expression-preparation/.gitattributes": {
+      "bytes": 8,
+      "sha256": "705fd4d6451a31d36b3df7de96f83f30ac976c9b4a6d1e51671d8e2f33e2d0da"
+    },
+    "source/examples/fuma-expression-preparation/CreateInputs.java": {
+      "bytes": 1587,
+      "sha256": "77cf01f1a16eb18edd9b9317d57232a75b6979d5f2ddb357779f8861a8aece0b"
+    },
+    "source/examples/fuma-expression-preparation/README.md": {
+      "bytes": 1133,
+      "sha256": "f5e00c30406c28b5707fb0d0a4a4cfc2bdbecebe3f197ef5dea11f80da5837c3"
+    },
+    "source/examples/fuma-expression-preparation/workflow.json": {
+      "bytes": 675,
+      "sha256": "62b496c813a50c85fc5807b1b6db652102e2fdb3da407becc688bcaf45021072"
+    },
+    "source/examples/fuma-reference/.gitattributes": {
+      "bytes": 8,
+      "sha256": "705fd4d6451a31d36b3df7de96f83f30ac976c9b4a6d1e51671d8e2f33e2d0da"
+    },
+    "source/examples/fuma-tissue-workflow/prepare_inputs.py": {
+      "bytes": 5820,
+      "sha256": "ed849366c6340a352a8b8cf9c4812bbb6c8d3f02e1808f0e463efa49ce56bcc6"
+    },
+    "source/examples/fuma-tissue-workflow/synthetic-inputs.zip": {
+      "bytes": 270253,
+      "sha256": "144b2bdbe3de33d492c6cb09124e1053c17a5792d39d0ea1c17dab3b8a6a747b"
+    },
+    "source/record-checkpoint.py": {
+      "bytes": 13979,
+      "sha256": "395d8b0aaf83423f810c21a1b8f539baf2e5dec7046365ef77810ca6c4fa494f"
+    },
+    "source/src/main/java/org/jlinalg/cli/FumaExpressionPrepareCli.java": {
+      "bytes": 22397,
+      "sha256": "47f385aecdf9117abdae584e863b23391961ca0e219161e69556950644ba2930"
+    },
+    "source/src/main/java/org/jlinalg/cli/FumaToolsCli.java": {
+      "bytes": 21226,
+      "sha256": "e5d0bf452dc4fafdf1b4f557ee225d585b8da29402c11495eef4d303e032a9af"
+    },
+    "source/src/main/java/org/jlinalg/cli/FumaWorkflowCli.java": {
+      "bytes": 35104,
+      "sha256": "c7800a914d9db7c76634fea677d96d9a36da68076878cc618ac59824ebe903bb"
+    },
+    "source/src/main/java/org/jlinalg/enrichment/FumaExpressionPreparation.java": {
+      "bytes": 9469,
+      "sha256": "54af507af06e20b8d42c464cf628eeb2ac68664d4e26f4412f576427e4c2169f"
+    },
+    "source/src/test/java/org/jlinalg/cli/FumaExpressionPrepareCliTest.java": {
+      "bytes": 13802,
+      "sha256": "68118551df8a805cd74553667231f9ad94188ffe0b38ff2320a5fda427c97473"
+    },
+    "source/src/test/java/org/jlinalg/cli/FumaLociCliTest.java": {
+      "bytes": 6089,
+      "sha256": "44c5ae70b3b3b19c7a52ca04af678cad3663fbf327b217598efb7e0576669d1d"
+    },
+    "source/src/test/java/org/jlinalg/cli/FumaReferenceCliTest.java": {
+      "bytes": 17301,
+      "sha256": "16b6cb9226323c3eeffc8bb281ba4081a78cb30e91746eaf68a889ea0cd42540"
+    },
+    "source/src/test/java/org/jlinalg/enrichment/FumaExpressionPreparationRTest.java": {
+      "bytes": 4230,
+      "sha256": "b7bfd509ee80c52813fb9f120d7aea5b30281cdb68230b81950f12d6b06c1f65"
+    },
+    "source/src/test/java/org/jlinalg/enrichment/FumaExpressionPreparationTest.java": {
+      "bytes": 7988,
+      "sha256": "c789b8ae5b1354f25da91cc7faa2333903372f1f39d7f1450f8046d6439aa587"
+    },
+    "source/src/test/java/org/jlinalg/genetics/FumaLdWindowTest.java": {
+      "bytes": 6063,
+      "sha256": "0adf13842fc6acfc8bd698d96d06bead5374de062a0c9e9e299e8252a5e09063"
+    },
+    "source/src/test/java/org/jlinalg/genetics/FumaLocusDefinitionTest.java": {
+      "bytes": 15222,
+      "sha256": "74b87d6e528e361a7ab9e04fff9deac356615817c8946a0a085032fbc21091db"
+    },
+    "source/src/test/java/org/jlinalg/genetics/FumaReferenceOriginalTest.java": {
+      "bytes": 6750,
+      "sha256": "c49c241744dc4fe82619f399f246fb8a63224ef3a1f78e53ae3c0cbdffb223e0"
+    },
+    "source/src/test/java/org/jlinalg/genetics/FumaReferencePreparationTest.java": {
+      "bytes": 10583,
+      "sha256": "a2a5ca275682424abd7b373ca77a1acbc548746c2673dd84d379d759cd0512e1"
+    },
+    "source/src/test/java/org/jlinalg/genetics/HardcallLdOriginalTest.java": {
+      "bytes": 7930,
+      "sha256": "e5918a34995524c631c665128a4a3471a156fd9383f8cc4aa8bfab079c4b4c7b"
+    },
+    "source/src/test/java/org/jlinalg/genetics/HardcallLdTest.java": {
+      "bytes": 8984,
+      "sha256": "64a0f22b4f2f664142b738653a8aa9368603d68fcf3604ea16aeac4aef85f682"
+    },
+    "source/src/test/resources/org/jlinalg/enrichment/fuma-expression-preparation/.gitattributes": {
+      "bytes": 8,
+      "sha256": "705fd4d6451a31d36b3df7de96f83f30ac976c9b4a6d1e51671d8e2f33e2d0da"
+    },
+    "source/src/test/resources/org/jlinalg/enrichment/fuma-expression-preparation/independent-R-controls.zip": {
+      "bytes": 52405,
+      "sha256": "ae92c5a9f1c63ea778fabf8db9bf5d325213cc2e1f07781b0eb76ce6e252423a"
+    },
+    "source/tools/literature/audit_fuma_preparation_roles.py": {
+      "bytes": 6967,
+      "sha256": "5ac84ef88114f6a2517b428adf87a9bbc94ae08e7bdacf7220233f442df55d3a"
+    },
+    "source/tools/literature/collect_fuma_expression_preparation_controls.R": {
+      "bytes": 3492,
+      "sha256": "aebbfd68f088ed6b37aa68ca7c6cece219a991b78071195751e3955199b3c2ac"
+    },
+    "source/tools/literature/freeze_fuma_expression_controls.py": {
+      "bytes": 2888,
+      "sha256": "8702c0ba9897fd483a9af44b5282cb5f11b284d8cf4a5b08bea725eebb84d060"
+    },
+    "source/tools/literature/fuma-development.init.gradle": {
+      "bytes": 1211,
+      "sha256": "5431276c826baaa6276847287f050751e27a46ed42c4ed9bac7fbc1d59849a8f"
+    },
+    "source/tools/literature/fuma-use-reviews.json": {
+      "bytes": 17557,
+      "sha256": "50f17795652fc1d2c2e542435972bbe6cfecc45b1c4ae2a453cd0f5bb37bd535"
+    },
+    "source/tools/literature/reviewed-uses.json": {
+      "bytes": 620530,
+      "sha256": "0f6b84686560ce67e09dbc6628704fa886b595d2b544c827734126c8c5f67df1"
+    },
+    "source/tools/literature/tool-registry.json": {
+      "bytes": 164377,
+      "sha256": "908f8185b566b8bbe6f554c8edaddb0e22a3d9b6d928f14b9e5fcf1e795e5aae"
+    },
+    "source/tools/literature/validate_fuma_expression_commands.py": {
+      "bytes": 7817,
+      "sha256": "49acd16b449eeff1e9f9abfc25d3a77fe6c9c59d0c8263a80450b3d4a1e7c277"
+    },
+    "source/tools/literature/validate_fuma_expression_preparation.py": {
+      "bytes": 8618,
+      "sha256": "c7c97919d8dea35f9476a19ace76c8778cd8d030dca4e650c1ac3953ff2e355d"
+    },
+    "source/tools/literature/validate_fuma_reference_workflow.py": {
+      "bytes": 9362,
+      "sha256": "24be4e62667d0b61e16704ab1fc6ecb33c8599089ecdd006f8b7103a7ce02e0d"
+    },
+    "source/tools/literature/validate_mashr_native.py": {
+      "bytes": 8916,
+      "sha256": "4759fc9a2a900caa3c1b1ce669abbafa1b4f8c900a13c265fb2cf27437b0752a"
+    }
+  },
+  "retained_failed_or_warning_attempts": [
+    "Earlier docs/literature/fuma-expression-preparation checkpoint retained: numerical tables passed, but session label_sample_counts was serialized as a Java int-array identity string. Corrected to a JSON integer list; strengthened existing test and public verifier, reran663 family tests and148 tests/JVM, and compared every affected scientific output byte.",
+    "independent-R-controls-1: unsupported C.UTF-8 startup locale warnings. Reexecuted with LC_ALL=C; every scientific input/output TSV byte matched. Both runs retained.",
+    "R-comparison-tests-1: seven cases exposed actual base-R raw means Inf at constant maximum finite-double inputs. Fixture unchanged; tests now retain the exact discrepancy and require finite native Double.MAX_VALUE only for that constructed row. Native math was not changed to force reference parity.",
+    "family-tests-1: three extra parentheses in new workflow test assertions prevented test compilation. Corrected test syntax; native numerical code unchanged.",
+    "commands-1: every public command, including original MAGMA fitting, exited0; verifier expected session.json but existing MAGMA publishes session.yaml. Corrected receipt lookup and reran commands-2. A PyYAML availability probe found no module installed; the verifier reads only the two fixed plain scalar runtime receipts, so no new dependency/install was needed.",
+    "LF normalization: edited FumaWorkflowCli.java was CRLF despite repository LF policy. Preserved pre-normalization source, rebuilt to a new package, proved all19264 entry bytes and complete JAR SHA256 identical, and bound final LF source hashes to fresh148-test/JVM matrix-2. Example attributes preserve exact JSON/source bytes on later checkouts."
+  ],
+  "claims": {
+    "native_expression_preparation_available_in_candidate": true,
+    "streaming_TSV_and_GCT12": true,
+    "typed_expression_prepare_handoff": true,
+    "actual_original_MAGMA_fit": true,
+    "original_FUMA_preprocessing_runtime": false,
+    "DEG_generation_available": false,
+    "heatmap_clustering_available": false,
+    "resource_ID_conversion_available": false,
+    "historical_or_whole_paper_equivalence": false,
+    "catalog_promoted": false,
+    "whole_goal_complete": false,
+    "released_or_deployed": false,
+    "pushed": false
+  },
+  "required_action": "Use FUMA_EXPRESSION_PREPARATION.md and the identified candidate. Declare raw TPM/RPKM units, sample/label selection, namespaces and resource releases. Inspect every gene exclusion and the distinction between sample-weighted centering and unweighted MAGMA Average. Review strict >1 boundaries and extreme raw-value warnings; verify units before biological use. Correct named format, selection, integrity, numerical or capacity failures and rerun the complete request to a new directory. Native commands need no external runtime; unavailable/forbidden MAGMA must SKIP3 with its stated recovery. DEG memberships remain supplied and separate; no t-test, clustering or historical reconstruction is implied. Refresh stale FUMA catalog scope next using this source-role review, without inventing historical/full-paper equivalence as a tool-availability gate."
+}

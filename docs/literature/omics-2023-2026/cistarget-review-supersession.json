@@ -1,0 +1,79 @@
+{
+  "status": "one-explicit-source-bound-cisTarget-review-enrichment",
+  "supersessions": [
+    {
+      "paper_id": "P061",
+      "review_index": 29,
+      "before": {
+        "pmcid": "PMC10719113",
+        "doi": "10.1038/s41586-023-06805-y",
+        "tool_id": "cistarget",
+        "evidence_paragraph_sha256": "f3998ee4cb4f5c77c3c184fbf32a4ae6ffad04bddb0f45c22d5c9a8133d5d9d3",
+        "use_summary": "Enriched TF motifs in correlated DMR sets using NES thresholds.",
+        "implementation_scope_note": "Native recovery AUC alone does not implement cisTarget normalization and regulatory-target analysis."
+      },
+      "after": {
+        "pmcid": "PMC10719113",
+        "doi": "10.1038/s41586-023-06805-y",
+        "tool_id": "cistarget",
+        "evidence_paragraph_sha256": "f3998ee4cb4f5c77c3c184fbf32a4ae6ffad04bddb0f45c22d5c9a8133d5d9d3",
+        "use_summary": "Ran cisTarget separately on positively and negatively correlated DMR sets for each TF, selected motifs at NES>3, and used leading-edge analysis to assign motif occurrence from Cluster-Buster scores.",
+        "implementation_scope_note": "Positive and negative DMR sets must remain separate. Native prepared-ranking AUC/NES and exact leading-target membership do not generate Cluster-Buster scores, infer the original database/edition or reconstruct TF-DMR edge selection. The paper does not resolve Python versus R cutoff/SD conventions; select a documented source profile explicitly rather than inferring historical parity.",
+        "version_reported_near_name": null
+      },
+      "reason": "Enrich the earlier generic AUC-only scope note with the source-specific positive/negative DMR sets, strict NES and leading-edge role; retain the complete prior review archive."
+    }
+  ],
+  "source_anchors": {
+    "P047": {
+      "pmcid": "PMC10719087",
+      "doi": "10.1038/s41586-023-06823-w",
+      "xml_sha256": "894cd1e454d83639da755f2847f9dbf66d198fa33e25e2c1903c71a04f8de01e",
+      "primary_paragraph": 84,
+      "primary_sha256": "af68a39bec12c8f31ae87a8427add1ea1abb643f3409e6064d089e73a1c2f2a1"
+    },
+    "P058": {
+      "pmcid": "PMC10719099",
+      "doi": "10.1038/s41586-023-06817-8",
+      "xml_sha256": "75c2262af9c034eff4f733e4f60dd326625ff33c95cd402bd80b7bcf9f8f0608",
+      "primary_paragraph": 55,
+      "primary_sha256": "e3340edfa2ca5937e05fa588a8ea1eeecbe3d6ceae3aac946495d2d3ac3846f1"
+    },
+    "P061": {
+      "pmcid": "PMC10719113",
+      "doi": "10.1038/s41586-023-06805-y",
+      "xml_sha256": "f95adca75114b3a845747d11afb578d29e9272a860b2b5161493c841a0f19107",
+      "primary_paragraph": 95,
+      "primary_sha256": "f3998ee4cb4f5c77c3c184fbf32a4ae6ffad04bddb0f45c22d5c9a8133d5d9d3"
+    },
+    "P065": {
+      "pmcid": "PMC10830415",
+      "doi": "10.1038/s41586-023-06936-2",
+      "xml_sha256": "644c378b160cecd1c5249fcf19e7cab7ce35e80822d0182a54998f83e8084a83",
+      "primary_paragraph": 44,
+      "primary_sha256": "1c11cce5d0c2bf601b139beb7421b07be8cd36c8f7ff69ac7360e39828712fc0"
+    },
+    "P094": {
+      "pmcid": "PMC13649600",
+      "doi": "10.1038/s41588-026-02748-y",
+      "xml_sha256": "ebd1e6a9559b288607109df25a9ef952fa78b93f938a81cb3f954c7678a8af35",
+      "primary_paragraph": 36,
+      "primary_sha256": "675a8af666d1a78db1e76333c052aa2ad316fa17f8978b8d9c332f4f628d71f6"
+    },
+    "P100": {
+      "pmcid": "PMC12695644",
+      "doi": "10.1038/s41588-025-02407-8",
+      "xml_sha256": "26ab3e5a8e6387851333b9f42f11e590cd4d7f0e73ba15689752650febdd414e",
+      "primary_paragraph": 48,
+      "primary_sha256": "27970e3de9dbc27c090abd13cd8ea0f2d6f5e27a2863770f1bea4033b7a9cd29"
+    },
+    "P145": {
+      "pmcid": "PMC13553309",
+      "doi": "10.1038/s41588-026-02709-5",
+      "xml_sha256": "9fdbbf6616ee60cf8d1b808afb0ab48d16a2e156eb5d9dbdd8602fd405fc3b46",
+      "primary_paragraph": 53,
+      "primary_sha256": "cfa33e675e1cc5429017fde2cd322a20eb99e38f646df48d1d7d14da9ded2220"
+    }
+  },
+  "prior_review_preserved": true
+}

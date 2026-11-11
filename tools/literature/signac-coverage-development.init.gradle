@@ -1,0 +1,7 @@
+// Copyright (C) 2026 JLinAlg contributors; SPDX-License-Identifier: GPL-3.0-or-later
+gradle.projectsEvaluated {
+    rootProject.tasks.named('executableJar', org.gradle.api.tasks.bundling.Jar).configure {
+        destinationDirectory.set(rootProject.file('build/literature-review/signac-runtime/coverage-tools-development'))
+        archiveFileName.set('omicsmatic-0.3.7-signac-coverage-development.jar')
+    }
+}

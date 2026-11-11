@@ -1,0 +1,901 @@
+[
+  {
+    "paper_id": "P004",
+    "review": {
+      "pmcid": "PMC10781638",
+      "doi": "10.1038/s41586-023-06872-1",
+      "tool_id": "deseq2",
+      "evidence_paragraph_sha256": "d753c2907f7844e55b52c90dfc48eae362c057d65d545cc56bbb360b434f84e4",
+      "use_summary": "Used DESeq2 1.34.0 to compare ATAC-seq accessibility in 50-kb bins between alpha-amanitin-treated and untreated samples, retaining bins with adjusted P<0.05. The same analysis describes CPM/log-transformed profiles separately.",
+      "implementation_scope_note": "The count-bin test is distinct from CPM/log-profile visualization. The paragraph does not establish that transformed profiles were DESeq2 count inputs; do not pass CPM or log values as raw counts. Bin construction and paper-specific design remain separate.",
+      "version_reported_near_name": "1.34.0",
+      "usage_context": "analysis-method-description",
+      "supporting_evidence": []
+    }
+  },
+  {
+    "paper_id": "P007",
+    "review": {
+      "pmcid": "PMC13668659",
+      "doi": "10.1038/s41586-026-11053-x",
+      "tool_id": "deseq2",
+      "evidence_paragraph_sha256": "7eeed2d5fef73720a84651b3dce523ac6c343b37792948b0cf8649deadf9da67",
+      "use_summary": "Tested expression differences using a DESeq2 likelihood-ratio model including cell condition and species. Repeated analysis after aligning to human and ape references, adjusted P values by BH and described fold-change shrinkage. Cross-reference agreement and direction filters selected final genes.",
+      "implementation_scope_note": "The reduced model and shrinkage method are unstated. Prepare both count populations and explicit model/contrasts; do not infer a reduced model, current shrinker or historical edition. Agreement/direction criteria across alignments are downstream operations.",
+      "version_reported_near_name": null,
+      "usage_context": "analysis-method-description",
+      "supporting_evidence": []
+    }
+  },
+  {
+    "paper_id": "P013",
+    "review": {
+      "pmcid": "PMC11798873",
+      "doi": "10.1038/s41586-024-08333-9",
+      "tool_id": "deseq2",
+      "evidence_paragraph_sha256": "77ae1e5b3010bd98d4d9b14d6f1a0f5e4d4eec85ec56f0d3d817cd10adedf481",
+      "use_summary": "Used DESeq2 1.22.2 after excluding genes with zero counts in all samples, estimated size factors and produced regularized-log values. Compared samples with MEFs at 72 h using results with lfcThreshold=1, altHypothesis=greaterAbs and alpha=0.05; transformed values supported exploratory comparisons.",
+      "implementation_scope_note": "Preserve the reported threshold test rather than replacing it with a post hoc fold-change filter. Current 1.52.0 greaterAbs behavior is not certified as identical to the older test. Correlation, variable-gene selection and PCA remain downstream.",
+      "version_reported_near_name": "1.22.2",
+      "usage_context": "analysis-method-description",
+      "supporting_evidence": []
+    }
+  },
+  {
+    "paper_id": "P016",
+    "review": {
+      "pmcid": "PMC10765522",
+      "doi": "10.1038/s41586-023-06845-4",
+      "tool_id": "deseq2",
+      "evidence_paragraph_sha256": "b363ef5ce78e55af86ce9cd0a18c394c41a26727f355f5674e8848635f36d56a",
+      "use_summary": "Used DESeq2-normalized RNA-seq gene counts for expression comparisons and MA plots between control and knockout mice, identifying changes at adjusted P<0.05. Normalized counts also supported gene-expression displays; PCA excluded Olfr genes.",
+      "implementation_scope_note": "The DESeq2 edition, full design and effective statistical options are unstated. Mapping/read filtering, MA/PCA graphics and gene exclusion for PCA remain separate; normalized output is not a replacement for raw fit inputs.",
+      "version_reported_near_name": null,
+      "usage_context": "analysis-method-description",
+      "supporting_evidence": []
+    }
+  },
+  {
+    "paper_id": "P018",
+    "review": {
+      "pmcid": "PMC12823447",
+      "doi": "10.1038/s41586-025-09770-w",
+      "tool_id": "deseq2",
+      "evidence_paragraph_sha256": "3eac1d7a5b949669f4a3c0676c74412adbdd53fa660d3134e61132ed11d17c5a",
+      "use_summary": "Called DESeq2 1.14.1 through HOMER 4.10 getDiffExpression.pl, using the described default normalization and replicate-based dispersion handling. Selected differentially expressed genes at BH-adjusted P<0.05.",
+      "implementation_scope_note": "The adapter does not reconstruct the HOMER wrapper or the complete historical 1.14.1 environment. Supply prepared counts and explicit current-model options; do not assume historical wrapper defaults match current DESeq2.",
+      "version_reported_near_name": "1.14.1",
+      "usage_context": "analysis-method-description",
+      "supporting_evidence": []
+    }
+  },
+  {
+    "paper_id": "P020",
+    "review": {
+      "pmcid": "PMC12823405",
+      "doi": "10.1038/s41586-025-09869-0",
+      "tool_id": "deseq2",
+      "evidence_paragraph_sha256": "1c7938d0d0b5f112763d04ec607b889c54236029a010d01a90bce32ea7b1ae2d",
+      "use_summary": "Used DESeq2 1.22.2 for RNA-seq differential expression with adjusted P<0.05 and absolute log2 fold change>1. A separate human post-versus-pre analysis used a DESeq2 negative-binomial Wald test and BH correction before pathway analyses.",
+      "implementation_scope_note": "The reported fold-change cutoff is a selection criterion, not evidence of lfcThreshold hypothesis testing. The second call does not state its edition. GSVA/GSEA and sample preparation remain separate.",
+      "version_reported_near_name": "1.22.2",
+      "usage_context": "analysis-method-description",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 35,
+          "section": "Methods / RNA-seq analyses",
+          "paragraph_sha256": "94d387bc55a72ef306a33a08e4442c2ac0aebf21bc4189f396c77956275ad8e4"
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "P029",
+    "review": {
+      "pmcid": "PMC7618714",
+      "doi": "10.1038/s41586-025-09834-x",
+      "tool_id": "deseq2",
+      "evidence_paragraph_sha256": "6527f1221c6fd9e67102fe96e4da938dd9c02b027bdbf3beb309a1f0b9ec5c43",
+      "use_summary": "Used DESeq2 1.48.1 with described default settings for differential gene expression from featureCounts-derived RNA-seq counts.",
+      "implementation_scope_note": "The effective design, contrast and statistical thresholds are not specified in this paragraph. The current 1.52.0 runtime is explicit and does not silently substitute for a historical package; featureCounts preparation remains separate.",
+      "version_reported_near_name": "1.48.1",
+      "usage_context": "analysis-method-description",
+      "supporting_evidence": []
+    }
+  },
+  {
+    "paper_id": "P031",
+    "review": {
+      "pmcid": "PMC12872457",
+      "doi": "10.1038/s41586-025-09829-8",
+      "tool_id": "deseq2",
+      "evidence_paragraph_sha256": "5dbf2e23286ea8c61f8ff8d5ce9a1d3a3f2c53ad445f5f6ef976c04cc9d8f24e",
+      "use_summary": "Used DESeq2 1.26.0 on raw counts in human M-cell single-cell analysis and on mouse M-cell/enterocyte comparisons, and separately analyzed bulk M-cell organoid RNA-seq. Reported context-specific fold-change/P cutoffs; the statistics section describes a two-sided negative-binomial Wald test.",
+      "implementation_scope_note": "Do not infer donor pseudobulking or relabel reported P cutoffs as adjusted P. Human marker criteria include absolute log2FC>=2 and P<=0.001; bulk criteria include absolute log2FC>=1 and P<=0.01. Enrichr, GSEA and Fisher tests are separate.",
+      "version_reported_near_name": "1.26.0",
+      "usage_context": "analysis-method-description",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 57,
+          "section": "Methods / Re-analysis of scRNA-seq datasets of mouse intestinal tissue- or organoid-derived M cells",
+          "paragraph_sha256": "3f715d41aa62f521d1eef8f81462b13ccb39ca0ca1ef7f863e10207665898777"
+        },
+        {
+          "paragraph_index": 71,
+          "section": "Methods / Bulk RNA sequencing of M cell organoids",
+          "paragraph_sha256": "f848061f019987780e0bfa8f21f618fec550e4ca6b806ea20813cc2fb6a9a492"
+        },
+        {
+          "paragraph_index": 73,
+          "section": "Methods / Quantification and statistics analysis",
+          "paragraph_sha256": "a8647f2825fa21fa81895434600fc66573cdea3708988249613c07c21b204bfb"
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "P032",
+    "review": {
+      "pmcid": "PMC11754113",
+      "doi": "10.1038/s41586-024-08314-y",
+      "tool_id": "deseq2",
+      "evidence_paragraph_sha256": "e7b0553d53dd6a851cff918ce17148221bdd8fef20e7e256f824506f11d2603d",
+      "use_summary": "Used DESeq2 1.32.0 for donor-adjusted RNA/ADT pseudobulk perturbation comparisons. Separate uses include bulk RNA-seq with size factors estimated across all samples, CUT&RUN mark differences and size-factor-scaled tracks, and variance stabilization for activation-gene selection before GSVA scoring.",
+      "implementation_scope_note": "Preserve the full normalization population before explicit row/subset selection. This adapter does not construct pseudobulk/ADT counts, CUT&RUN peaks/tracks, activation gene sets or GSVA scores. One prepared fit is not the complete multi-assay pipeline.",
+      "version_reported_near_name": "1.32.0",
+      "usage_context": "analysis-method-description",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 40,
+          "section": "Methods / Bulk RNA-seq analysis",
+          "paragraph_sha256": "d86fe889bf7856122a191a6dbe3b46502b83898d6070445a1be0d05c76e0d79f"
+        },
+        {
+          "paragraph_index": 51,
+          "section": "Methods / CUT&RUN analysis",
+          "paragraph_sha256": "b553234abc3965fb21d3a79ae88531fb3e6ee7eb18f079fdfd4f5672f7722da6"
+        },
+        {
+          "paragraph_index": 56,
+          "section": "Methods / MED12 CAR activation scoring",
+          "paragraph_sha256": "e15c2e914e8ed16d6546c345fb35deaa7008091d0927a9ed21fe14e90ab629d7"
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "P037",
+    "review": {
+      "pmcid": "PMC10764277",
+      "doi": "10.1038/s41586-023-06838-3",
+      "tool_id": "deseq2",
+      "evidence_paragraph_sha256": "039c80418c9802a33cc80e5639ef06d66588da4a7eb66760493371e41e18ac2e",
+      "use_summary": "Used DESeq2 1.34.0 variance stabilization on the unfiltered Kallisto count population before retaining 837 MAGs selected using TPM>5 in more than 40% of 707 samples. Transformed abundances then entered linear mixed models relating MAGs to WLZ.",
+      "implementation_scope_note": "Run the transformation on the unfiltered population and select rows afterwards. keep_genes before transformation would change this sequence. Kallisto estimated-count preparation is unstated; TPM filtering and the subsequent mixed models are separate.",
+      "version_reported_near_name": "1.34.0",
+      "usage_context": "analysis-method-description",
+      "supporting_evidence": []
+    }
+  },
+  {
+    "paper_id": "P040",
+    "review": {
+      "pmcid": "PMC13645638",
+      "doi": "10.1038/s41586-026-10954-1",
+      "tool_id": "deseq2",
+      "evidence_paragraph_sha256": "cf5e717c148917f5cb6f9ef14860d8162ad66088099b42dfef4bbdac84d68d5e",
+      "use_summary": "Used DESeq2 1.48.2 for bulk stimulated-T-cell expression differences from HOMER/RefSeq-derived counts, after an expression filter described using RPKM. Selected genes at adjusted P<0.05 and absolute log2FC>0.5.",
+      "implementation_scope_note": "Use the underlying count matrix, not RPKM as raw counts. The expression filter and post hoc fold-change cutoff do not establish a thresholded Wald test. HOMER/count construction and exact model settings remain separate.",
+      "version_reported_near_name": "1.48.2",
+      "usage_context": "analysis-method-description",
+      "supporting_evidence": []
+    }
+  },
+  {
+    "paper_id": "P044",
+    "review": {
+      "pmcid": "PMC11711094",
+      "doi": "10.1038/s41586-024-08307-x",
+      "tool_id": "deseq2",
+      "evidence_paragraph_sha256": "df9c621ac10926c44e81517531b9a0399a085d52a62d812dd672fa26eab5d4ca",
+      "use_summary": "Used DESeq2 1.26.0 to identify differential accessibility in an ATAC-seq peak atlas built around summits extended by 500 bp in each direction.",
+      "implementation_scope_note": "Peak/atlas construction, read counting and HOMER motif analysis are separate requirements. The paragraph does not state all model/contrast settings; current original-runtime fitting does not certify the historical full pipeline.",
+      "version_reported_near_name": "1.26.0",
+      "usage_context": "analysis-method-description",
+      "supporting_evidence": []
+    }
+  },
+  {
+    "paper_id": "P046",
+    "review": {
+      "pmcid": "PMC13668669",
+      "doi": "10.1038/s41586-026-10987-6",
+      "tool_id": "deseq2",
+      "evidence_paragraph_sha256": "322d8db8af1e24889e14b163392b5fcc25d406ab15a668fbe5b8f881a02ee52d",
+      "use_summary": "Used DESeq2 for multifactor RNA-seq differential expression accounting for genotype and individual, and regularized-log transformation for clustering. Separately used DiffBind 3.4.11 with DESeq2 for differential accessibility at FDR<0.01.",
+      "implementation_scope_note": "The DESeq2 edition is unstated. TMM/RPKM descriptions must not be silently treated as raw counts. limma removeBatchEffect, clustering, DiffBind peak preparation and wrapper behavior remain separate.",
+      "version_reported_near_name": null,
+      "usage_context": "analysis-method-description",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 32,
+          "section": "Methods / ATAC-seq library creation and analysis",
+          "paragraph_sha256": "e967c58d10341ebd9802e0491d1b0bc2a21f109aff6ddf977cc23c173427d147"
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "P049",
+    "review": {
+      "pmcid": "PMC13668678",
+      "doi": "10.1038/s41586-026-10981-y",
+      "tool_id": "deseq2",
+      "evidence_paragraph_sha256": "7ca557ef5e8e814866f24687137c0da72cf7f7c919943d0351f0c74467ac87a8",
+      "use_summary": "Reported DESeq2 1.44 for human retinal pseudobulk comparisons. Additional calls compared resilient/susceptible RGC groups, normalized and regularized-log-transformed five bootstrap populations of 100 nuclei for resilience regression, reanalyzed EAE mouse RNA-seq and analyzed neuronal Cfh-knockout cultures.",
+      "implementation_scope_note": "The patch edition is unstated. Bootstrap construction, Seurat aggregation, AUCell, resilience linear models and other downstream tests are separate. Preserve biological replication and each normalization population; bootstraps are not independent biological donors.",
+      "version_reported_near_name": "1.44",
+      "usage_context": "analysis-method-description",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 37,
+          "section": "Methods / Human tissue / Analysis of resilient and susceptible RGC subtypes",
+          "paragraph_sha256": "3d6c594297af07afc57406e51b39521f1606ce8576074d73362e806cd86db6b0"
+        },
+        {
+          "paragraph_index": 38,
+          "section": "Methods / Human tissue / Linear regression analysis of intrinsic susceptibility and resilience genes",
+          "paragraph_sha256": "f7146b488f1c1c3d4857bf58115e97888ddaa2a7b9d3f9aa0c54ce4b87aecde9"
+        },
+        {
+          "paragraph_index": 47,
+          "section": "Methods / Animal models / Analysis of published EAE sequencing datasets",
+          "paragraph_sha256": "574a983134f82207ae2a5d41f7569e85de1eff671fc25d4229e2b11532967ba7"
+        },
+        {
+          "paragraph_index": 57,
+          "section": "Methods / Cell culture / RNA-seq analysis of neuronal Cfh-cKO cultures",
+          "paragraph_sha256": "97c437bfab311b1f7d3a64a6715c124c3193eb5a2c91869ae24abdf17c855313"
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "P050",
+    "review": {
+      "pmcid": "PMC10781626",
+      "doi": "10.1038/s41586-023-06821-y",
+      "tool_id": "deseq2",
+      "evidence_paragraph_sha256": "57c44a55cc007a9521bd21d67f94f8eebda2fe6ab80afe7fe9bbb5f9cb4a719a",
+      "use_summary": "Used the default DESeq2 analysis in iDEP 0.96 for RNA-seq. A separate ATAC-seq analysis counted peak reads with featureCounts and used DESeq2 with two biological replicates.",
+      "implementation_scope_note": "The underlying DESeq2 edition and full iDEP options are unstated. Do not infer adjusted P from the paper's P wording or treat a displayed fold-change cutoff as an lfcThreshold test. iDEP and peak/count preparation are separate.",
+      "version_reported_near_name": null,
+      "usage_context": "analysis-method-description",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 47,
+          "section": "Methods / ATAC–seq",
+          "paragraph_sha256": "e12f052ce57697b8e37d8ec7c8a80fa989609538f6306ff7fa68796b68b05b62"
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "P051",
+    "review": {
+      "pmcid": "PMC12823425",
+      "doi": "10.1038/s41586-025-09807-0",
+      "tool_id": "deseq2",
+      "evidence_paragraph_sha256": "cf43d68fadb315dbac3c2e655fe5033f94437e1c676b2c9612a1a25801efafb0",
+      "use_summary": "Used DESeq2 1.30.1 with a likelihood-ratio test to find genes changing across experimental conditions in bulk neutrophil RNA-seq. Pairwise comparisons in the same analysis used limma/edgeR separately.",
+      "implementation_scope_note": "Do not attribute limma/edgeR pairwise tests or downstream k-means clustering to DESeq2. An explicit full/reduced design is required for the current LRT; unstated historical options are not inferred.",
+      "version_reported_near_name": "1.30.1",
+      "usage_context": "analysis-method-description",
+      "supporting_evidence": []
+    }
+  },
+  {
+    "paper_id": "P052",
+    "review": {
+      "pmcid": "PMC13668671",
+      "doi": "10.1038/s41586-026-10952-3",
+      "tool_id": "deseq2",
+      "evidence_paragraph_sha256": "506d899c60947a6d6d59a1659048df4876daf411efeb603b19e70dad31a35fab",
+      "use_summary": "Reported Azenta RNA-seq differential-expression analysis using DESeq2 after aligning STV-C8 RNA reads to the human transcriptome with STAR.",
+      "implementation_scope_note": "The DESeq2 edition, exact count preparation, model and cutoffs are unstated. STAR alignment, vendor workflow and characterization of vesicle RNA content are separate; no whole-vendor-pipeline equivalence is claimed.",
+      "version_reported_near_name": null,
+      "usage_context": "analysis-method-description",
+      "supporting_evidence": []
+    }
+  },
+  {
+    "paper_id": "P079",
+    "review": {
+      "pmcid": "PMC11735394",
+      "doi": "10.1038/s41588-024-01989-z",
+      "tool_id": "deseq2",
+      "evidence_paragraph_sha256": "b05c388e09b05a3066d3e3fa86c51f7ccfcfc2345b4211cb0b3947a3296609a6",
+      "use_summary": "Used DESeq2 for expression differences between clone-specific ART-related and expected unrelated samples, referring to a TRACERx method and Supplementary Note 31 for details.",
+      "implementation_scope_note": "Edition and effective model/contrast settings remain unresolved from the checked main text. The cited supplementary method is not reconstructed here. Clone assignment and ART/ctDNA analysis are separate.",
+      "version_reported_near_name": null,
+      "usage_context": "analysis-method-description",
+      "supporting_evidence": []
+    }
+  },
+  {
+    "paper_id": "P082",
+    "review": {
+      "pmcid": "PMC11631769",
+      "doi": "10.1038/s41588-024-01999-x",
+      "tool_id": "deseq2",
+      "evidence_paragraph_sha256": "ca44d238ba149b628e05398ce1a466404ae438b1e859861e914d481d3a0e16b9",
+      "use_summary": "Listed DESeq2 among software used in Code availability for the complex-karyotype AML single-cell multiomics study. The checked main-text Methods and eight retained author R Markdown scripts do not establish a particular DESeq2 analysis call.",
+      "implementation_scope_note": "Exact DESeq2 role and edition remain unresolved. Do not attribute the separately described scran Welch marker tests, linear models or scNOVA discriminant analysis to DESeq2. This is a reviewed software-use declaration, not a reproduced differential-expression workflow.",
+      "version_reported_near_name": null,
+      "usage_context": "reported-software-list-role-unresolved",
+      "supporting_evidence": []
+    }
+  },
+  {
+    "paper_id": "P086",
+    "review": {
+      "pmcid": "PMC12807868",
+      "doi": "10.1038/s41588-025-02419-4",
+      "tool_id": "deseq2",
+      "evidence_paragraph_sha256": "b36ac0ba8ef1107c38979b92a976bdfca0d2fd184c24740571263f5250e0991c",
+      "use_summary": "Used DESeq2 varianceStabilizingTransformation for each bulk transcriptome dataset, followed by described z scoring/merging and batch correction, then exploratory UMAP and gene comparisons. The paper attributes ComBat_seq to the DESeq2 package.",
+      "implementation_scope_note": "Preserve the attribution discrepancy: ComBat_seq belongs to sva, not DESeq2. Its raw-count contract and the reported transformed/z-scored sequence need resolution; do not substitute ComBat or coerce transformed values to counts. Batch correction and UMAP are separate.",
+      "version_reported_near_name": null,
+      "usage_context": "analysis-method-description",
+      "supporting_evidence": []
+    }
+  },
+  {
+    "paper_id": "P088",
+    "review": {
+      "pmcid": "PMC11631763",
+      "doi": "10.1038/s41588-024-01975-5",
+      "tool_id": "deseq2",
+      "evidence_paragraph_sha256": "d899670986e0a999c90da1503e94e761b1f366bd826bef02c289518666aa4cac",
+      "use_summary": "Reported DESeq2 1.20.0 for cardiac cell-type analyses. The checked supplement describes DESeq2 normalization of donor/cell-type pseudobulk counts after edgeR filtering, followed by limma-voom tests for cell-type programs and DCM-versus-control differences. Disease testing used disease and sex covariates with BH correction.",
+      "implementation_scope_note": "Credit DESeq2 normalization, not limma-voom differential tests or stratified-LDSC heritability. Supplement physical pages 69,71–73 specify distinct populations/designs; filtering, pseudobulking, limma-voom and gene-program/SNP annotation remain separate. Exact normalization options are unstated.",
+      "version_reported_near_name": "1.20.0",
+      "usage_context": "normalization-method-description",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 38,
+          "section": "Methods / Cardiac-cell-type enrichment",
+          "paragraph_sha256": "61e8ed669d9939010820c3aad4edbb86ebb0b6063ed2769b3e8e2de330892ec9",
+          "evidence_role": "method-details",
+          "named_anchor": {
+            "paragraph_index": 59,
+            "section": "Code availability",
+            "paragraph_sha256": "d899670986e0a999c90da1503e94e761b1f366bd826bef02c289518666aa4cac"
+          },
+          "shared_terms": [
+            "cell-type-specific"
+          ],
+          "relation_note": "The named software declaration identifies cell-type-specific heritability preparation; these Methods paragraphs describe the cardiac cell-type analyses whose exact normalization/testing roles are detailed in the checked supplement."
+        },
+        {
+          "paragraph_index": 41,
+          "section": "Methods / Single-cell expression and DE",
+          "paragraph_sha256": "ca73da3366c42e108fc5d2dea1101a2355301c42742888d0c2c96ac77385e033",
+          "evidence_role": "method-details",
+          "named_anchor": {
+            "paragraph_index": 59,
+            "section": "Code availability",
+            "paragraph_sha256": "d899670986e0a999c90da1503e94e761b1f366bd826bef02c289518666aa4cac"
+          },
+          "shared_terms": [
+            "cell-type-specific"
+          ],
+          "relation_note": "The named software declaration identifies cell-type-specific heritability preparation; these Methods paragraphs describe the cardiac cell-type analyses whose exact normalization/testing roles are detailed in the checked supplement."
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "P092",
+    "review": {
+      "pmcid": "PMC13649587",
+      "doi": "10.1038/s41588-026-02755-z",
+      "tool_id": "deseq2",
+      "evidence_paragraph_sha256": "35456787331632c92cd28b56f474c4875f585a4c7055762ae923cedfa41cd083",
+      "use_summary": "Used DESeq2 varianceStabilizingTransformation on read counts to visualize accessibility at significant caQTLs with box plots.",
+      "implementation_scope_note": "This use is normalization/transformation for visualization, not evidence that DESeq2 mapped caQTLs. The edition and transformation options are unstated; QTL fitting and plotting remain separate.",
+      "version_reported_near_name": null,
+      "usage_context": "analysis-method-description",
+      "supporting_evidence": []
+    }
+  },
+  {
+    "paper_id": "P096",
+    "review": {
+      "pmcid": "PMC11631765",
+      "doi": "10.1038/s41588-024-01990-6",
+      "tool_id": "deseq2",
+      "evidence_paragraph_sha256": "6bcc350b5feda1da2102f0ec641d5d611b675e642271e5a20b72a8a6844c1761",
+      "use_summary": "Used DESeq2 1.40.1 for age-dependent single-nucleus expression analysis. The supplement sums raw counts by cluster/sample, collapses technical replicates, filters genes expressed in>10% of nuclei and uses design single_cell_chemistry+age_group with a Wald test and BH adjustment. Positive fold changes indicate paediatric expression.",
+      "implementation_scope_note": "The supplement supports chemistry adjustment and biological-replicate aggregation, not arbitrary cell-level independence. PCA/dispersion diagnostics, pathway enrichment and pseudotime analysis remain separate. Current runtime execution is not historical 1.40.1 whole-environment reproduction.",
+      "version_reported_near_name": "1.40.1",
+      "usage_context": "analysis-method-description",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 47,
+          "section": "Methods / Pathway enrichment analysis of snRNA-seq datasets",
+          "paragraph_sha256": "2a3ff4a4b658338fefff541e4c93390b0fd1493abbed207d5e07570d8a1d67f8"
+        },
+        {
+          "paragraph_index": 48,
+          "section": "Methods / Pathway enrichment analysis of snRNA-seq datasets",
+          "paragraph_sha256": "84ce15396b00d74ca76e735359a56bbd82508dd399da56ee24b7038ed62292ab"
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "P098",
+    "review": {
+      "pmcid": "PMC13649585",
+      "doi": "10.1038/s41588-026-02745-1",
+      "tool_id": "deseq2",
+      "evidence_paragraph_sha256": "80f02df55cef495fec417fe4234d12f05d91ab44ffe2c0661e0b5cb63ee9d654",
+      "use_summary": "Used DESeq2 1.40.2 median-of-ratios normalization, pairwise two-sided Wald tests, BH correction and fold-change shrinkage, with adjusted P<0.05 and absolute log2FC>1 selection. Used VST across all samples for individual-gene comparisons.",
+      "implementation_scope_note": "The paragraph explicitly reports 1.40.2 despite the initial extractor missing it. The shrinker is unspecified; do not infer apeglm/ashr. The fold-change selection is not an explicit threshold test. rstatix/Holm and t/Wilcoxon comparisons are separate.",
+      "version_reported_near_name": "1.40.2",
+      "usage_context": "analysis-method-description",
+      "supporting_evidence": []
+    }
+  },
+  {
+    "paper_id": "P101",
+    "review": {
+      "pmcid": "PMC10703678",
+      "doi": "10.1038/s41588-023-01571-z",
+      "tool_id": "deseq2",
+      "evidence_paragraph_sha256": "d4a8574e9cb30d87c993a41916bd33966ce218ac691428df8cb329653b8061f3",
+      "use_summary": "Used DESeq2 1.32.0 for wild-versus-domesticated gene-expression differences after featureCounts quantification, with adjusted P<=0.05 and a reported absolute fold-change cutoff>=1.5.",
+      "implementation_scope_note": "Preserve the source's fold-change units; do not silently turn 1.5 into a log2 threshold. Count preparation, sample/model choices and GO enrichment are separate.",
+      "version_reported_near_name": "1.32.0",
+      "usage_context": "analysis-method-description",
+      "supporting_evidence": []
+    }
+  },
+  {
+    "paper_id": "P108",
+    "review": {
+      "pmcid": "PMC10703692",
+      "doi": "10.1038/s41588-023-01560-2",
+      "tool_id": "deseq2",
+      "evidence_paragraph_sha256": "4319f3778854369f6ed922fd60231927a52896a61e33bbb5a8d4b0ad0bb8bc6c",
+      "use_summary": "Used DESeq2 1.38.3 variance stabilization in expression reference-panel processing for GTEx, developmental brain and adult brain analyses, alongside described TMM/log-CPM normalization, batch handling and residualization before predictive/QTL models.",
+      "implementation_scope_note": "The reported order and count units across TMM, VST, log-space and residualization are ambiguous. Do not pass normalized floating values as raw counts or silently rewrite the sequence. ComBat/SVA, PEER/HCP and QTLtools are separate.",
+      "version_reported_near_name": "1.38.3",
+      "usage_context": "analysis-method-description",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 47,
+          "section": "Methods / Developmental brain reference panel processing and model training",
+          "paragraph_sha256": "5885d1aff6d0c385cd4aef8d4c88f5d6e2d56fce26b3023508ce02e5c6604195"
+        },
+        {
+          "paragraph_index": 51,
+          "section": "Methods / Adult brain reference panel processing and model training",
+          "paragraph_sha256": "a6b9a13816c441d5f6a6eaaa7ff1d33391502003ff0c6ffd8a70cfccdf40459a"
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "P110",
+    "review": {
+      "pmcid": "PMC12695648",
+      "doi": "10.1038/s41588-025-02409-6",
+      "tool_id": "deseq2",
+      "evidence_paragraph_sha256": "cb6713d63eb56ca9582650883efd0455f8ca2795f96ac61b544c8f705077906b",
+      "use_summary": "Used DESeq2 on Kallisto est_counts RNA-seq quantifications, selecting differential expression at adjusted P<0.01.",
+      "implementation_scope_note": "The edition and estimated-count import/rounding procedure are unstated. Do not silently round or substitute TPM as counts. The adapter supports explicit R-round handling when requested; that capability does not establish the paper's procedure.",
+      "version_reported_near_name": null,
+      "usage_context": "analysis-method-description",
+      "supporting_evidence": []
+    }
+  },
+  {
+    "paper_id": "P113",
+    "review": {
+      "pmcid": "PMC12695661",
+      "doi": "10.1038/s41588-025-02404-x",
+      "tool_id": "deseq2",
+      "evidence_paragraph_sha256": "8db076b3ef572ebe46f107de763eaf6b76dcb7191436828ada78765971e47864",
+      "use_summary": "Used DESeq2 default median-abundance size factors and fold-change results for EU-seq, then subtracted the median fold change of expressed genes. Also normalized 12 replicates before matched treated/control ratios, log2 conversion, median adjustment and averaging over time points; size factors scaled genome-browser tracks.",
+      "implementation_scope_note": "Median-centering and matched-ratio calculations are custom downstream operations, not automatic DESeq2 inference. Preserve each normalization cohort; track generation and regulatory classification remain separate. Edition/model details are unstated.",
+      "version_reported_near_name": null,
+      "usage_context": "analysis-method-description",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 79,
+          "section": "Methods / Processing of EU-seq data",
+          "paragraph_sha256": "1e3964ffb9cc57f6ccc712741db98b758d8af2ae8cfd130cf2f0b9799b5e4dab"
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "P121",
+    "review": {
+      "pmcid": "PMC10703691",
+      "doi": "10.1038/s41588-023-01565-x",
+      "tool_id": "deseq2",
+      "evidence_paragraph_sha256": "a297a0ea20d94cd58a4966b164bc8f9549739006487d316ad97ea0a7466d2889",
+      "use_summary": "Used DESeq2 1.30.1 on explicitly rounded RSEM counts with a paired experimental-replicate/genotype design and three replicates. Used adjacent-stage information for dispersion estimation, disabled independent filtering for reported contrasts and selected changes at FDR<0.05 and fold change>1.25.",
+      "implementation_scope_note": "Preserve explicit R rounding, sample populations and independentFiltering=FALSE. The cutoff is post hoc, not evidence of a thresholded hypothesis. Do not silently resolve genotype-label spelling or construct RSEM/adjacent-stage cohorts.",
+      "version_reported_near_name": "1.30.1",
+      "usage_context": "analysis-method-description",
+      "supporting_evidence": []
+    }
+  },
+  {
+    "paper_id": "P124",
+    "review": {
+      "pmcid": "PMC10703699",
+      "doi": "10.1038/s41588-023-01554-0",
+      "tool_id": "deseq2",
+      "evidence_paragraph_sha256": "bd3d000148ce9590a715a7b72ed16a55df463ee50e475c3b6de7b5c53519f435",
+      "use_summary": "Used DESeq2 for guide-abundance differences in FACS screens, RNA-seq Wald tests and ATAC-seq differences; only the ATAC-seq paragraph explicitly reports version 1.36. Guide results fed empirical controls and mRRA gene aggregation, and CRISPR-knockout guide comparisons were followed by MAGeCK gene analysis.",
+      "implementation_scope_note": "Version 1.36 applies to the ATAC-seq context; other calls do not state their edition. Empirical null/P calculations, ten-million-null mRRA aggregation, weighted guide effects, MAGeCK and sequencing preparation are separate.",
+      "version_reported_near_name": null,
+      "usage_context": "analysis-method-description",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 47,
+          "section": "Methods / Gene-level analysis for FACS-based TF CRISPRi and CRISPRa screens",
+          "paragraph_sha256": "a71156bb056f4f82e28322eea99e6b264451aab0cfa6c2ee4448faea3c705414"
+        },
+        {
+          "paragraph_index": 53,
+          "section": "Methods / RNA sequencing",
+          "paragraph_sha256": "bed9893784bf97e8c78c0b3f7feb17b9da53d04caa203443ef281f36ca95b6e2"
+        },
+        {
+          "paragraph_index": 55,
+          "section": "Methods / ATAC-seq",
+          "paragraph_sha256": "9da5cf123f884f9c7a732f03d64e8a75cbd3ae28a3b3cda287b5eed08f511941"
+        },
+        {
+          "paragraph_index": 63,
+          "section": "Methods / TFome CRISPRko screen analyses",
+          "paragraph_sha256": "c57a6f8a8c9c2c8949ddbf390a8f26c4fce8ca2983fb00e42994b90a63254ed0"
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "P133",
+    "review": {
+      "pmcid": "PMC12695660",
+      "doi": "10.1038/s41588-025-02388-8",
+      "tool_id": "deseq2",
+      "evidence_paragraph_sha256": "a7d53649be37f400b11ee7e82698172b2d53d4cdb3e8984f1a8f52f016e5e05a",
+      "use_summary": "Used DESeq2 Wald statistics to rank genes for fgsea, and separately fit RNA-seq PTGES3 knockdown/control and ATAC-seq accessible-region differences, applying adjusted P<0.05 and absolute log2FC>1 selection.",
+      "implementation_scope_note": "The edition and effective models are unstated. Do not replace post hoc fold-change selection with lfcThreshold testing. fgsea, STRING analysis and accessible-region/count preparation remain separate.",
+      "version_reported_near_name": null,
+      "usage_context": "analysis-method-description",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 36,
+          "section": "Methods / RNA sequencing",
+          "paragraph_sha256": "0702fc6fbba6f8517bfd5c194c52aea68fb53ff1cc85f0de03c1a6a67b3e86fd"
+        },
+        {
+          "paragraph_index": 40,
+          "section": "Methods / ATAC-seq data processing",
+          "paragraph_sha256": "93cde454fd755c9ea684a26686ae71ca8242d1882767aafcf3c66c345767d5f3"
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "P137",
+    "review": {
+      "pmcid": "PMC12695633",
+      "doi": "10.1038/s41588-025-02349-1",
+      "tool_id": "deseq2",
+      "evidence_paragraph_sha256": "ca4ec995d499a7737e1546e2ecd2c3aa8a026880c3d5af905b005c807333956d",
+      "use_summary": "Used DESeq2 variance stabilization for between-sample comparisons of the same gene. TPM was described separately for constitutive gene-expression comparisons; an EPICC 2.Rmd script was referenced.",
+      "implementation_scope_note": "The edition, exact VST settings and referenced script call are not established here. TPM is not a raw-count input. Gene-expression summaries and the complete EPICC workflow remain separate.",
+      "version_reported_near_name": null,
+      "usage_context": "analysis-method-description",
+      "supporting_evidence": []
+    }
+  },
+  {
+    "paper_id": "P139",
+    "review": {
+      "pmcid": "PMC11525195",
+      "doi": "10.1038/s41588-024-01892-7",
+      "tool_id": "deseq2",
+      "evidence_paragraph_sha256": "9c804d351001a066882385743b853f1cf791ea73b738aa9d0d496fc3c34221c3",
+      "use_summary": "Used DESeq2 for expression changes in BET-inhibitor-treated cardiomyocytes, keeping genes with at least 10 counts across replicates before differential analysis.",
+      "implementation_scope_note": "Edition and full model options are unstated. Preserve the reported filtering population instead of guessing per-sample filtering. BET sensitivity assays, transcription-factor binding and other downstream analyses are separate.",
+      "version_reported_near_name": null,
+      "usage_context": "analysis-method-description",
+      "supporting_evidence": []
+    }
+  },
+  {
+    "paper_id": "P145",
+    "review": {
+      "pmcid": "PMC13553309",
+      "doi": "10.1038/s41588-026-02709-5",
+      "tool_id": "deseq2",
+      "evidence_paragraph_sha256": "1bd5a88cd69b5ff6d2684cb3224629290cce0865089dd80434c8b3d3599b30c7",
+      "use_summary": "Used DESeq2 1.40.2 on cell-type pseudobulk profiles from SoupX-corrected counts, estimating size factors on the unfiltered pseudobulk population before fitting filtered genes. Adjusted mitochondrial/ambient/batch covariates and selected FDR<0.05, absolute log2FC>0.5. A separate dementia comparison used 70 donors and eight covariates.",
+      "implementation_scope_note": "Preserve the unfiltered normalization cohort and distinct covariate designs. SoupX correction, pseudobulk generation and rounding are not supplied or inferred. The post hoc fold-change criterion is not a thresholded Wald test.",
+      "version_reported_near_name": "1.40.2",
+      "usage_context": "analysis-method-description",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 55,
+          "section": "Methods / snRNA-seq of hNCs / Comparison with dementia DEGs",
+          "paragraph_sha256": "01536faee70b92da9ca30a8d3880772b8bf2287463b28a5d7fb02bd904ed3c67"
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "P151",
+    "review": {
+      "pmcid": "PMC13447110",
+      "doi": "10.1038/s41588-026-02681-0",
+      "tool_id": "deseq2",
+      "evidence_paragraph_sha256": "781883d28307ec0b63b464c1bdcda0ae2f1f44cca73d739564b3dd000ce0fd2c",
+      "use_summary": "Imported Salmon quantification through tximport and used DESeq2 contrasts across baseline/stimulation and targeting/scrambled conditions, separately for CRISPR activation/inhibition, after low-count filtering with alpha=0.05. Also reanalyzed TL1A gene counts.",
+      "implementation_scope_note": "The adapter does not implement tximport quantifier import or transcript-length offset construction. Prepared counts and any required normalization factors must be explicit. Do not equate a plain rounded count matrix with the complete Salmon/tximport pipeline.",
+      "version_reported_near_name": null,
+      "usage_context": "analysis-method-description",
+      "supporting_evidence": []
+    }
+  },
+  {
+    "paper_id": "P155",
+    "review": {
+      "pmcid": "PMC12695649",
+      "doi": "10.1038/s41588-025-02389-7",
+      "tool_id": "deseq2",
+      "evidence_paragraph_sha256": "90faa2837fef110b5bcb40d43064467031b15607ad3136dc785fa8882d2b09a6",
+      "use_summary": "Used DESeq2 for RNA-seq expression analysis; the paragraph attaches version 1.14.1 to wording that mentions both the DESeq2 package and R.",
+      "implementation_scope_note": "The version attribution is ambiguous, so the DESeq2 edition remains null rather than guessing that 1.14.1 is the package or R edition. Supply explicit count/model settings; no historical whole-environment claim is made.",
+      "version_reported_near_name": null,
+      "usage_context": "analysis-method-description",
+      "supporting_evidence": []
+    }
+  },
+  {
+    "paper_id": "P163",
+    "review": {
+      "pmcid": "PMC11525197",
+      "doi": "10.1038/s41588-024-01911-7",
+      "tool_id": "deseq2",
+      "evidence_paragraph_sha256": "f11db64e64c381d4d50c970dd8b31c3ad8befc35e220149c57939234056cc41e",
+      "use_summary": "Used DESeq2 for RNA-seq normalization/differential expression and Wald-based gene ranking, and VST for ATAC-seq clustering. For chromatin comparisons with n>2, DiffBind 3.12 used DESEQ2 at FDR<0.1; n=1 comparisons used a different Goodpeaks script.",
+      "implementation_scope_note": "Do not attribute n=1 Goodpeaks comparisons to DESeq2. DiffBind preparation, gene-ranking construction, fgsea, binarization/k-means and hypergeometric tests remain separate. The DESeq2 edition is unstated.",
+      "version_reported_near_name": null,
+      "usage_context": "analysis-method-description",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 66,
+          "section": "Methods / Data processing",
+          "paragraph_sha256": "9f36842607514c9b657e3b217c8e671c09d1d2c5b120255537adab8b2c7058cd"
+        },
+        {
+          "paragraph_index": 70,
+          "section": "Methods / Data processing",
+          "paragraph_sha256": "ef0417aee6780220c506ed794851cafb78a132047a96611cf7ef15cb9202efaf"
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "P165",
+    "review": {
+      "pmcid": "PMC13447109",
+      "doi": "10.1038/s41588-026-02673-0",
+      "tool_id": "deseq2",
+      "evidence_paragraph_sha256": "3681564b1d464ef5cd33904817819b70e3a2d10096384a4155dff1da4e74ff6d",
+      "use_summary": "Used DESeq2 for bulk RNA-seq differential expression and ranked genes by descending log fold change for GSEA.",
+      "implementation_scope_note": "The edition and effective model/contrast options are unstated. GSEA and sequencing/count preparation are separate; ranking capability does not reproduce the full pathway workflow.",
+      "version_reported_near_name": null,
+      "usage_context": "analysis-method-description",
+      "supporting_evidence": []
+    }
+  },
+  {
+    "paper_id": "P172",
+    "review": {
+      "pmcid": "PMC10806738",
+      "doi": "10.1016/j.ajhg.2023.11.010",
+      "tool_id": "deseq2",
+      "evidence_paragraph_sha256": "3fb761a60d5809b8a1c802984e66785884646986077fe427fb7e08363cb99977",
+      "use_summary": "Used DESeq2 on Rsubread gene/exon read counts for wild-type versus MAX Arg60Gln transcriptome comparisons. The results describe filtering genes with fewer than five reads in all samples, retaining 20,868 genes and selecting adjusted P<0.05.",
+      "implementation_scope_note": "Preserve the stated filtering rule and genotype comparison. The edition and full model options are unstated. Rsubread counting, c-Myc target interpretation and Reactome analysis remain separate.",
+      "version_reported_near_name": null,
+      "usage_context": "analysis-method-description",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 22,
+          "section": "Results / Transcriptome analysis reveals differential expression of c-Myc target genes",
+          "paragraph_sha256": "b996b2becd1cbadfb7f8a934f1dbbf3593bcdaf72b994ba739f646b050eb1f78"
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "P176",
+    "review": {
+      "pmcid": "PMC12824618",
+      "doi": "10.1016/j.ajhg.2025.12.002",
+      "tool_id": "deseq2",
+      "evidence_paragraph_sha256": "b99e39ad6a595b6999dffeacbd5fd4bab2a641ef13abc112e335e859d1371636",
+      "use_summary": "Used DESeq2 median-of-ratios normalization before estimating unwanted technical variation with SVA and residualizing expression values.",
+      "implementation_scope_note": "SVA fitting and residualization are separate operations, not DESeq2 features. The edition and effective normalization population are unstated; do not feed residualized expression back as raw counts.",
+      "version_reported_near_name": null,
+      "usage_context": "analysis-method-description",
+      "supporting_evidence": []
+    }
+  },
+  {
+    "paper_id": "P183",
+    "review": {
+      "pmcid": "PMC12824624",
+      "doi": "10.1016/j.ajhg.2025.11.012",
+      "tool_id": "deseq2",
+      "evidence_paragraph_sha256": "fb324bc6aec4fad8aebbfa4d56715247e588f2e53817be568502e968b2856a17",
+      "use_summary": "Used DESeq2 for lncRNA, circRNA and protein-coding gene differences in schizophrenia/control organoids and neuronal/nonneuronal populations. lncRNA/protein-coding filters used TPM>0.1 and more than six reads in at least 20% of samples; BH-adjusted P<0.05 selected differences.",
+      "implementation_scope_note": "The TPM/read filters do not establish TPM as DESeq2 raw input. Preserve the distinct 8+8 organoid and 10+10 neuronal populations; edition and full model details are unstated. circRNA/count construction remains separate.",
+      "version_reported_near_name": null,
+      "usage_context": "analysis-method-description",
+      "supporting_evidence": []
+    }
+  },
+  {
+    "paper_id": "P187",
+    "review": {
+      "pmcid": "PMC12805840",
+      "doi": "10.1016/j.ajhg.2025.11.009",
+      "tool_id": "deseq2",
+      "evidence_paragraph_sha256": "0df8ca98e5339047c923c14af61e0cea31b066433e1a0e0839d2b047832dc75e",
+      "use_summary": "Used EDASeq GC correction and DESeq2 size factors for cell-type ATAC marker comparisons, retaining mean counts>=10 and differential peaks at FDR<0.05. Additional caQTL/eQTL workflows used DESeq2 normalization/VST before inverse-normal transformation and FastQTL.",
+      "implementation_scope_note": "EDASeq normalization factors, inverse-normal transformation and FastQTL fitting are separate. Do not attribute QTL association tests to DESeq2 or assume an unprovided factor matrix equals the paper's GC correction. caQTL/eQTL windows and covariates remain explicit external steps.",
+      "version_reported_near_name": null,
+      "usage_context": "analysis-method-description",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 18,
+          "section": "Material and methods / Mapping caQTL",
+          "paragraph_sha256": "45cd41caa4c044909016b52cd2262f086615e118d7fdefd3ef3579494d047f3d"
+        },
+        {
+          "paragraph_index": 21,
+          "section": "Material and methods / Mapping eQTL and power analysis",
+          "paragraph_sha256": "e452fb66a698a5c5c244afdf2c4c2c0eb4f71140106f2cf683ff05af4232578c"
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "P197",
+    "review": {
+      "pmcid": "PMC11568763",
+      "doi": "10.1016/j.ajhg.2024.09.006",
+      "tool_id": "deseq2",
+      "evidence_paragraph_sha256": "35d2ec75a53be47ec8c6578019bb9bf9c0213d4c3019a25b878707a1e9326d02",
+      "use_summary": "Reported DESeq2 normalization and differential expression after Salmon transcriptome quantification, with P<0.05 and absolute log2FC>1.5 selection. The paragraph states R 4.2.2.",
+      "implementation_scope_note": "R 4.2.2 is not a DESeq2 edition. Count import/rounding and whether the reported P is adjusted are unresolved; do not infer either. Salmon preparation and pathway interpretation remain separate.",
+      "version_reported_near_name": null,
+      "usage_context": "analysis-method-description",
+      "supporting_evidence": []
+    }
+  },
+  {
+    "paper_id": "P215",
+    "review": {
+      "pmcid": "PMC11480806",
+      "doi": "10.1016/j.ajhg.2024.07.022",
+      "tool_id": "deseq2",
+      "evidence_paragraph_sha256": "d889e62159d6760124cda41f201bc1616e9572b6f7e82aa7674447511f6abd27",
+      "use_summary": "Used raw gene counts from Kallisto as DESeq2 inputs for control-versus-CSS expression differences, reporting P<0.05 and FDR<5%. TPM values were used separately in violin plots.",
+      "implementation_scope_note": "Keep the explicit raw-count versus TPM-display distinction. The edition, estimated-count import details and full model settings are unstated; no silent rounding or whole Kallisto pipeline is supplied.",
+      "version_reported_near_name": null,
+      "usage_context": "analysis-method-description",
+      "supporting_evidence": []
+    }
+  },
+  {
+    "paper_id": "P220",
+    "review": {
+      "pmcid": "PMC12696503",
+      "doi": "10.1016/j.ajhg.2025.08.013",
+      "tool_id": "deseq2",
+      "evidence_paragraph_sha256": "1e09429b8a2f7b1793f0a42cb48d92049c70a41543f2688bdf2fa4ee9310de54",
+      "use_summary": "Used DESeq2 1.42.0 to normalize RSEM transcript counts in adipose cells. In CRISPR adipocyte RNA-seq, removed raw counts below 10 and compared with the Cas9 empty baseline. A separate pathway analysis used regularized-log-transformed counts for GSEA.",
+      "implementation_scope_note": "RSEM/count preparation, filtering details and GSEA are separate. Preserve the reported ranking/direction convention; rlog output does not itself implement pathway testing. Exact historical runtime equivalence is not certified.",
+      "version_reported_near_name": "1.42.0",
+      "usage_context": "analysis-method-description",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 48,
+          "section": "Material and methods / Wet lab methods / Differential expression analysis of CRISPR adipocyte RNA-seq",
+          "paragraph_sha256": "09a72e084cea170c8dac08e7b63d37a73246508a9c9c2e90aecb853482b2b849"
+        },
+        {
+          "paragraph_index": 51,
+          "section": "Material and methods / Wet lab methods / Pathway enrichment in CRISPR RNA-seq data",
+          "paragraph_sha256": "d1e71ac0a478776f92436ddcd15f551d0f28b747be1c45625e3d1fd2e23b6aab"
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "P226",
+    "review": {
+      "pmcid": "PMC12440709",
+      "doi": "10.1016/j.ajhg.2025.08.004",
+      "tool_id": "deseq2",
+      "evidence_paragraph_sha256": "63c220bb84f217545f8dcb4f3b4929e36716156307ab41fda5e713f355c35474",
+      "use_summary": "Reported Salmon TPM quantification followed by differential expression with DESeq2 through Galaxy.",
+      "implementation_scope_note": "The reported TPM input is inconsistent with the raw-count contract of this adapter. Preserve the unit discrepancy; obtain the actual count/import procedure rather than converting TPM to counts, rounding it or claiming the Galaxy workflow is reproduced. Edition is unstated.",
+      "version_reported_near_name": null,
+      "usage_context": "analysis-method-description",
+      "supporting_evidence": []
+    }
+  },
+  {
+    "paper_id": "P228",
+    "review": {
+      "pmcid": "PMC12696504",
+      "doi": "10.1016/j.ajhg.2025.07.020",
+      "tool_id": "deseq2",
+      "evidence_paragraph_sha256": "01517774821f1b2b595af4e11306edaf2d8d84b7b27e4c8259c79df66d3df8e2",
+      "use_summary": "Used DESeq2 Wald testing with adjusted P<0.1 and removed Y-chromosome genes downstream. A separate comparison collapsed technical replicates with collapseReplicates and described a one-sided Wald test for SMS downregulation versus control.",
+      "implementation_scope_note": "Preserve technical versus biological replicate identity. The actual one-sided results arguments are not supplied; DESeq() alone does not select them. Explicit less testing demonstrates current capability without establishing the paper's unreported arguments. Edition is unstated.",
+      "version_reported_near_name": null,
+      "usage_context": "analysis-method-description",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 15,
+          "section": "Material and methods / Bulk RNA-seq and RT-qPCR",
+          "paragraph_sha256": "84a3e57fdc7b8fb35fd88971c54e6c1cb3d7db204ba318749e1bbd69a1ffde0f"
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "P248",
+    "review": {
+      "pmcid": "PMC13447089",
+      "doi": "10.1038/s41588-026-02682-z",
+      "tool_id": "deseq2",
+      "evidence_paragraph_sha256": "52fe6be353d3040efaa65ce0dce5f1a65a61f652bcd412d7a9586979b37dcc43",
+      "use_summary": "Used DESeq2 R package 1.30.1 for RNA-seq differential expression, selecting adjusted P<0.05 and absolute log2FC>=1. FPKM/TPM quantifications were described separately in the broader expression/QTL workflow.",
+      "implementation_scope_note": "The paragraph explicitly states 1.30.1 despite the initial extractor missing it. Do not use FPKM/TPM as raw counts or turn the post hoc cutoff into lfcThreshold testing. Count import, eQTL/TWAS and sample preparation remain separate.",
+      "version_reported_near_name": "1.30.1",
+      "usage_context": "analysis-method-description",
+      "supporting_evidence": []
+    }
+  },
+  {
+    "paper_id": "P249",
+    "review": {
+      "pmcid": "PMC12597824",
+      "doi": "10.1038/s41588-025-02346-4",
+      "tool_id": "deseq2",
+      "evidence_paragraph_sha256": "b565dc0165669ed183034d862944c8dbe745ea7c3be9ca2e6cf333822e0ba5c9",
+      "use_summary": "Described correction of raw TPM values across tissues with the default DESeq2 function before pangenome-derived allele expression comparisons.",
+      "implementation_scope_note": "Preserve the reported raw-TPM wording and unresolved function/count-unit discrepancy. This adapter requires raw counts or explicitly declared estimated-count rounding; it does not convert TPM to counts. Edition and effective call are unstated.",
+      "version_reported_near_name": null,
+      "usage_context": "analysis-method-description",
+      "supporting_evidence": []
+    }
+  }
+]

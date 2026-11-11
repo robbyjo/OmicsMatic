@@ -1,0 +1,67 @@
+{
+  "status": "passed-read-only-P133-linked-author-code-audit",
+  "paper_id": "P133",
+  "pmcid": "PMC12695660",
+  "doi": "10.1038/s41588-025-02388-8",
+  "xml_sha256": "f70438623e8599bd86e6c1b747ee584bd36e8afbc84d715badca1641edf29f25",
+  "repository": "https://github.com/haolongli87/ptges3_resources",
+  "commit": "3aeb503348e52b1f0b88d47839427380250c0ea5",
+  "audited_files": [
+    {
+      "path": "atacseq_sgPTGES3/scripts/02_prepare_atacseq_feature_counts.R",
+      "url": "https://raw.githubusercontent.com/haolongli87/ptges3_resources/3aeb503348e52b1f0b88d47839427380250c0ea5/atacseq_sgPTGES3/scripts/02_prepare_atacseq_feature_counts.R",
+      "bytes": 12550,
+      "sha256": "dc0a87e0d4f35444e8ad4fb713b7190af6c9cb170b400d4c19d0c8358eba5df4"
+    },
+    {
+      "path": "atacseq_sgPTGES3/scripts/config_paths.R",
+      "url": "https://raw.githubusercontent.com/haolongli87/ptges3_resources/3aeb503348e52b1f0b88d47839427380250c0ea5/atacseq_sgPTGES3/scripts/config_paths.R",
+      "bytes": 1914,
+      "sha256": "03bef2e3eeb5849c0e83d9c7699d03addba3ef7c0e86cc51fa224f94f9409f46"
+    },
+    {
+      "path": "rnaseq_sgPTGES3/scripts/reproduce_RNAseq_figures_and_NG_revision.R",
+      "url": "https://raw.githubusercontent.com/haolongli87/ptges3_resources/3aeb503348e52b1f0b88d47839427380250c0ea5/rnaseq_sgPTGES3/scripts/reproduce_RNAseq_figures_and_NG_revision.R",
+      "bytes": 17566,
+      "sha256": "144f88b638399c4e04d936ca3b03b350791bb056a64f5f73c85399d6a0278abb"
+    }
+  ],
+  "atac": {
+    "path": "atacseq_sgPTGES3/scripts/02_prepare_atacseq_feature_counts.R",
+    "url": "https://github.com/haolongli87/ptges3_resources/blob/3aeb503348e52b1f0b88d47839427380250c0ea5/atacseq_sgPTGES3/scripts/02_prepare_atacseq_feature_counts.R#L106",
+    "call_lines": [
+      106,
+      114
+    ],
+    "API": "Rsubread::featureCounts",
+    "explicit_arguments": {
+      "files": "files.bam",
+      "annot.ext": "regionsToCount",
+      "isPairedEnd": "TRUE",
+      "countMultiMappingReads": "FALSE",
+      "maxFragLength": "100",
+      "autosort": "TRUE",
+      "nthreads": "nthreads",
+      "verbose": "FALSE"
+    },
+    "annotation_argument_kind": "Explicitly constructed SAF-style data.frame from consensus peak regions",
+    "checkFragLength_reported": false,
+    "countReadPairs_reported": false,
+    "package_edition_identified": false,
+    "later_sample_rename_line": 118,
+    "sample_rename_is_separate": true
+  },
+  "rna": {
+    "path": "rnaseq_sgPTGES3/scripts/reproduce_RNAseq_figures_and_NG_revision.R",
+    "Rsubread_or_featureCounts_call_found": false,
+    "scope": "Only this linked RNA figure/revision script was scanned; absence here does not imply absence in all author materials"
+  },
+  "required_actions": "Retain the article spelling featurecount as reported and the actual ATAC API as a separate code observation. Declare an edition, checkFragLength and countReadPairs explicitly for new analysis. Do not infer a fragment-length filter from maxFragLength=100 or apply the later sample rename to the original returned object.",
+  "scripts_executed": false,
+  "raw_author_scripts_redistributed": false,
+  "license_identified": false,
+  "paper_binary_identified": false,
+  "catalog_changed": false,
+  "implementation_credit": false,
+  "whole_goal_complete": false
+}

@@ -1,0 +1,20 @@
+# Copyright (C) 2026 JLinAlg contributors; SPDX-License-Identifier: GPL-3.0-or-later
+"""Check default discovery of all45 LOFTEE workflow tests on both Windows JVMs, including six explicit Linux-only skips."""
+import argparse,json,os,subprocess
+from pathlib import Path
+from setup_deseq2_reference import ROOT,pin,save
+from validate_mashr_native import JAVA21,LIBS
+
+def main():
+    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--native',required=True,type=Path);p.add_argument('--out',required=True,type=Path);a=p.parse_args();out=a.out.resolve();assert out.is_relative_to(ROOT/'build/literature-review/loftee-runtime') and not out.exists();out.mkdir();native=json.loads((a.native/'COMPLETED.json').read_bytes());assert [r['tests'] for r in native['JVMs']]==[39,39,45] and all(r['exit_code']==r['skipped']==0 for r in native['JVMs']);jar=ROOT/native['artifact']['path'];assert pin(jar)=={k:native['artifact'][k] for k in ['bytes','sha256']};tests=a.native.resolve()/'test-classes';libraries=sorted(LIBS.glob('*.jar'));runner=out/'RunAllLoftee.java';runner.write_text('''import java.io.*;import org.junit.platform.launcher.core.*;import org.junit.platform.launcher.listeners.SummaryGeneratingListener;import static org.junit.platform.engine.discovery.DiscoverySelectors.selectClass;
+public final class RunAllLoftee{public static void main(String[] a)throws Exception{if(!System.getProperty("os.name").startsWith("Windows"))throw new AssertionError("Windows discovery check");if(!Class.forName("org.jlinalg.cli.LofteeRuntimeTreeTest").getProtectionDomain().getCodeSource().getLocation().toURI().equals(new File(a[0]).toURI()))throw new AssertionError("Wrong test classes");var l=new SummaryGeneratingListener();LauncherFactory.create().execute(LauncherDiscoveryRequestBuilder.request().selectors(selectClass("org.jlinalg.cli.LofteeWorkflowTest"),selectClass("org.jlinalg.cli.LofteeCompressedInputsTest"),selectClass("org.jlinalg.cli.LofteeRuntimeTreeTest")).build(),l);var r=l.getSummary();r.printTo(new PrintWriter(System.out));r.printFailuresTo(new PrintWriter(System.out));if(r.getTestsFoundCount()!=45||r.getTestsSucceededCount()!=39||r.getTestsSkippedCount()!=6||r.getTestsAbortedCount()!=0||r.getTestsFailedCount()!=0||r.getContainersFailedCount()!=0)throw new AssertionError("Wrong all-class Windows applicability");}}
+''',encoding='utf8',newline='\n');classes=out/'runner-classes';classes.mkdir();entries=[classes,tests,jar,ROOT/'src/test/resources',*libraries];pins={Path(__file__).resolve().relative_to(ROOT).as_posix():pin(Path(__file__)),**native['source_pins']};reports=[]
+    def run(name,command):
+        r=subprocess.run(command,cwd=ROOT,capture_output=True,timeout=120);(out/(name+'.stdout')).write_bytes(r.stdout);(out/(name+'.stderr')).write_bytes(r.stderr);save(out/(name+'.process.json'),dict(command=command,exit_code=r.returncode));assert r.returncode==0,name
+    run('compile',[str(JAVA21/'javac.exe'),'--release','17','-Xlint:all','-Werror','-cp',os.pathsep.join(map(str,[jar,*libraries])),'-d',str(classes),str(runner)])
+    for name,java in [('windows-java21',JAVA21/'java.exe'),('windows-java25',Path('C:/Program Files/Common Files/Oracle/Java/javapath/java.exe'))]:run(name,[str(java),'-cp',os.pathsep.join(map(str,entries)),'RunAllLoftee',str(tests)]);reports.append(dict(name=name,exit_code=0,discovered=45,passed=39,explicit_Linux_only_skipped=6,failed=0,aborted=0))
+    assert all(pin(ROOT/n)==v for n,v in pins.items());save(out/'COMPLETED.json',dict(status='passed-default-Windows-discovery-with-explicit-Linux-only-test-applicability',source_pins=pins,artifact=native['artifact'],JVMs=reports,Linux_all45_already_passed=True,scientific_tests_or_refusal_assertions_removed=False,whole_goal_complete=False));print('Default all-class discovery passed on Windows Java21/25:39 passed,6 explicit Linux-only skips,0 failures; Linux all45 passed')
+
+if __name__=='__main__':
+    if not __debug__:raise RuntimeError('Never disable default platform-discovery checks')
+    main()

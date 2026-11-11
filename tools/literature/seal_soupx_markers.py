@@ -1,0 +1,48 @@
+# Copyright (C) 2026 JLinAlg contributors; SPDX-License-Identifier: GPL-3.0-or-later
+"""Seal native marker evidence, all original attempts and seven unapplied paper-role drafts."""
+import json,zipfile
+from setup_deseq2_reference import ROOT,pin,save
+from signac_scan_evidence import pack,byte_pin
+
+
+def main():
+    base=ROOT/'build/literature-review/soupx-runtime';target=ROOT/'docs/literature/tfidf-markers-development';assert not target.exists();build=json.loads((base/'marker-build-1/COMPLETED.json').read_bytes());validation=json.loads((base/'marker-validation-3/COMPLETED.json').read_bytes());boundary=json.loads((base/'marker-boundaries-2/COMPLETED.json').read_bytes());roles=json.loads((base/'role-audit-2/COMPLETED.json').read_bytes());assert validation['component_admitted'] and all(p['artifact']==build['artifact'] for p in [validation,boundary]);assert roles['roles']==7 and not roles['applied'];files={}
+    attempts=['source-intake-1','source-recovery-1','reference-1.6.2-1','reference-1.3.0-1','reference-1.3.0-2','marker-build-1','marker-validation-1','marker-validation-2','marker-validation-3','marker-boundaries-1','marker-boundaries-2','role-audit-2']+[f'marker-controls-{v}-{i}' for v in ['1.6.2','1.3.0'] for i in [1,2,3]]
+    for name in attempts:
+        for path in (base/name).rglob('*'):
+            relative=path.relative_to(base/name)
+            if not path.is_file() or path.suffix in ['.jar','.pyc'] or 'R-lib' in relative.parts or '__pycache__' in relative.parts or any(p.startswith('Rtmp') for p in relative.parts):continue
+            files[path.relative_to(ROOT).as_posix()]=path.read_bytes()
+    files['retained-attempts-diagnosis.json']=(json.dumps(dict(first_historical_CRAN_download='HTTP404; preserved partial1.6.2 intake; recovered official1.3.0 source candidate separately',first_legacy_health='Preparation used current calcSoupProfile argument for historical constructor. The historical constructor estimated and dropped droplets before a second estimate; corrected only the owned preparation program and installed into NEW reference-1.3.0-2.',first_boundary_probe='Historical source cannot coerce a diagonal ddiMatrix to dgTMatrix in this Matrix edition. New probe explicitly constructs the stated CSC input, with identical counts and axes; original functions remain unchanged.',first_native_validation='170/171 tests passed; one extra hand-written test incorrectly expected a mathematically exact q=1 from floating-point hypergeometric arithmetic. Corrected the test expectation to use the computed strict boundary and retained original/native/mathematical comparisons.',initial_reference_encoding='Initial JSON displayed some near-one values as1. Preserve those attempts and v1 fixtures. Final controls retain17-digit numeric strings and original RDS objects; final boundary cutoffs use actual17-digit source values.',first_role_audit='Literal TF-IDF abbreviation was not in P008; the source spells out inverse document frequency. Corrected the owned source assertion, re-read all7 papers and added separately named P087/P145 supporting paragraphs.'),indent=2)+'\n').encode('utf8')
+    files['licenses/upstream-SoupX-GPL-2.txt']=(__import__('pathlib').Path('C:/Program Files/R/R-4.6.1/share/licenses/GPL-2')).read_bytes()
+    files['licenses/NOTICE.txt']=b'Original SoupX source by Matthew Daniel Young is GPL-2, retained unchanged with its DESCRIPTION and notices. Its source and runtime are separate from the independently written GPL-3-or-later Java component. Owned separate R reference/preparation programs are GPL-2.0-or-later. No original SoupX code is embedded into the development JAR.\n'
+    jar=ROOT/build['artifact']['path'];parent=ROOT/build['parent_artifact']['path'];assert pin(jar)=={k:build['artifact'][k] for k in ['bytes','sha256']}
+    with zipfile.ZipFile(parent) as before,zipfile.ZipFile(jar) as after:
+        old={n:byte_pin(before.read(n)) for n in before.namelist()};new={n:byte_pin(after.read(n)) for n in after.namelist()};assert all(new[n]==v for n,v in old.items()) and set(new)-set(old)==set(build['added_entries'])
+        for name in build['added_entries']:files['candidate-owned-entry/'+name]=after.read(name)
+    for label,entries in [('parent',old),('candidate',new)]:files['artifact-'+label+'-entries.json']=(json.dumps(entries,sort_keys=True,indent=2)+'\n').encode('utf8')
+    names={p.relative_to(ROOT).as_posix() for p in (ROOT/'tools/literature').glob('*soupx*') if p.is_file()};names.update(['src/main/java/org/jlinalg/singlecell/TfidfMarkers.java','src/main/java/org/jlinalg/cli/TfidfMarkersCli.java','src/test/java/org/jlinalg/cli/TfidfMarkersTest.java','docs/literature/TFIDF_MARKERS_DEVELOPMENT.md']);names.update(p.relative_to(ROOT).as_posix() for folder in ['examples/tfidf-markers','src/test/resources/org/jlinalg/singlecell/soupx-markers'] for p in (ROOT/folder).glob('*') if p.is_file());pins={n:pin(ROOT/n) for n in sorted(names)};files.update({'current-source/'+n:(ROOT/n).read_bytes() for n in pins})
+    for proof in [build,validation,boundary,roles]:assert all(pin(ROOT/n)==v for n,v in proof['source_pins'].items())
+    target.mkdir();(target/'.gitattributes').write_text('* -text\n',encoding='utf8',newline='\n');layout=pack(target/'controls.zip',files);assert (target/'controls.zip').stat().st_size<100000000
+    warning=target/'WARNINGS.md';warning.write_text('''# TF-IDF marker component: warnings and required actions
+
+**SoupX ambient RNA integration is unfinished.** The new Java component provides supplied-cluster marker statistics only. It is not counted as an implemented SoupX tool. The catalog remains76 new scoped integrations,255 missing. Read [the guide](../TFIDF_MARKERS_DEVELOPMENT.md) before analysis. The canonical/released executable, prior scientific proofs, existing libraries and unrelated local work remain unchanged.
+
+**Require exit0 and result_admitted=true.** Review WARNINGS.md, analysis-status.json, provenance.json, complete statistics.tsv and selected markers.tsv. Declare expression units, cutoff, N and FDR. No clustering, normalization, paper settings, ID repair or missing-value omission is inferred.
+
+**A selected marker can have q>=FDR.** The original top-N branch can choose such genes; selected_outside_fdr and a prominent warning expose this behavior. ALL returns every strictly passing gene. Zero-expression genes retain Inf IDF/NaN TF-IDF in complete statistics.
+
+**Cutoff arithmetic requires review.** Native/original double calculations can fall on a different side of an exact mathematical boundary. The two-cell/two-gene control has exact rational q=1; captured R/Java enriched-gene q values lie slightly below1. Original and native strict FDR=1 return markers; original17-digit q-as-cutoff calls are retained separately. Near-cutoff warnings use max(64 ulps,3e-12 relative), without changing native classification. Inspect the exact chosen upstream runtime when that classification matters.
+
+**FAIL2 means no admitted result.** Preserve inputs, diagnostics and unadmitted-partial-results. Correct the named input, work/table capacity, heap or storage cause and retry NEW paths. Invalid request syntax may fail before a bundle exists; stderr provides actions. Native execution installs nothing and needs Java only.
+
+**Original references are separate.** Source1.6.2 comes from CRAN; a failed1.3.0 CRAN URL returned404 before recovery of an official GitHub source candidate. Version labels do not establish paper commits. Current R4.6.1/Matrix1.7-5/Seurat5.6.0 is not a historical paper environment. Both private installs and original controls passed with unchanged preexisting libraries. If exact dependencies or installation are unavailable, preserve SKIP3 and skip dependent original analysis; do not silently upgrade, patch original functions or substitute versions. Initial preparation/storage failures, original warnings and rounded reference displays remain in the archive; final controls retain17-digit strings and original RDS objects.
+
+The7 primary-role drafts preserve manual ALB/Csf1r roles, secondary validation versus correction, explicit P145 overrides, and separate downstream analyses. They remain unapplied until ambient workflows are ready. No biological validation, complete package/paper reconstruction, release or whole-goal completion is claimed. Cell Ranger remains excluded.
+''',encoding='utf8',newline='\n')
+    save(target/'VALIDATION.json',dict(schema_version=1,status='passed-native-tfidf-marker-component-controls',archive=pin(target/'controls.zip'),warnings_document=pin(warning),source_pins=pins,artifact=build['artifact'],parent_artifact=build['parent_artifact'],unchanged_parent_entries=build['unchanged_parent_entries'],added_entries=build['added_entries'],canonical_executable_unchanged=build['canonical_executable_unchanged'],tests_per_JVM=171,JVMs=3,packaged_protocols=28,boundary_protocols=4,original_input_cases_per_edition=83,original_returned_cases_per_edition=79,original_error_cases_per_edition=4,original_selected_and_diagnostic_calls=324,primary_role_drafts=7,supporting_role_paragraphs=2,component_admitted=True,ambient_workflow_admitted=False,implementation_credit=False,whole_paper_reproduced=False,whole_goal_complete=False,**layout));(target/'SHA256SUMS').write_text(''.join(pin(target/n)['sha256']+'  '+n+'\n' for n in ['controls.zip','WARNINGS.md','VALIDATION.json']),encoding='utf8',newline='\n');print('Sealed',len(files),'logical files;',pin(target/'controls.zip')['bytes'],'archive bytes')
+
+
+if __name__=='__main__':
+    if not __debug__:raise RuntimeError('Never disable source/evidence checks')
+    main()

@@ -1,0 +1,13 @@
+# Native analytical normal fitting: warnings and required actions
+
+Require exit0 and result_admitted=true. Read [the workflow guide](../NORMAL_FIT_WORKFLOWS.md), status, provenance and every fit/test row. The estimator is explicitly unweighted analytical normal-mle. The canonical executable and installed libraries are unchanged; native analysis needs Java only and installs nothing.
+
+**ESTIMATOR DIFFERENCES ARE PRESERVED.** The original fitdistrplus1.2-6 default MLE uses a numerical optimizer. It fails on tiny-scale and nearly constant controls, while the analytical method solves their positive-variance likelihood. Original all-zero MLE returns SD0.1 with convergence0 and warnings; original moment matching returns SD0 and infinite likelihood. Native fitting refuses zero variance. Complete original objects, errors and warnings remain retained. This is not optimizer/Hessian/covariance, weighted/censored, bootstrap, every distribution or full-package equivalence.
+
+**FAIL2: no result is admitted**, including an earlier completed fit if later writing/testing fails. Retain unadmitted-partial-results, captured inputs and all diagnostics. Correct the named input, representability, capacity, heap or storage cause and retry NEW paths. Never omit NA/NaN/Inf values, repair IDs, recode scores or silently rescale to force success. Invalid request syntax can fail before an output bundle exists; stderr gives recovery actions.
+
+**BACKGROUND REVIEW:** explicitly declare origin, tail, BH, cutoff and strict/inclusive rule. No shuffle, independence, normality or BH calibration is established. Every row remains; a cutoff flag is not an inferred retention instruction. P043 does not name its function, estimator, version or shuffle implementation. Preserve its filtering-direction ambiguity. Do not silently remove original Cicero NA values to construct a background.
+
+**TAIL PRECISION:** ordinary p/q underflow stays numeric zero, with finite log p/log q retained where representable. -Inf labels an unrepresentable log tail. Cutoff classification uses ordinary BH q; log q does not silently replace it. Numeric zero is not proof of literally zero probability.
+
+Original reference capture needs its exact permitted R4.6.1/fitdistrplus1.2-6 profile and reports SKIP3 when unavailable. The Java workflow does not require R. Original controls do not authenticate execution, establish paper settings or biological validity. Native/source evidence and catalog integration credit are separate. The full250-paper goal remains active; Cell Ranger is excluded and py-monocle license preference remains pending.

@@ -1,0 +1,191 @@
+{
+  "schema_version": 1,
+  "scope": "Complete original eager filter helper outputs on both complete upstream default-workflow mapped BAMs and explicit synthetic boundary records. All36 populations; not a full eager workflow or biological admission.",
+  "source_helper": {
+    "path": "/var/tmp/omicsmatic-nfcore-sources-1/eager-2.4.4/bin/filter_bam_fragment_length.py",
+    "pin": {
+      "bytes": 2240,
+      "sha256": "b79f3b69c81a4096920b28d66f64f4bfef280a59c1a5de0ae4ec2bfa9ae2dd91"
+    }
+  },
+  "original_image": {
+    "bytes": 1534111744,
+    "sha256": "f362aa83b0d14de991b8c4fd048eab5570aad72eaec7eca5397968b2761524c2"
+  },
+  "upstream_input_commit": "a3a3dc48261dbdc0aba8e36272471c353fc62487",
+  "upstream_url": "https://github.com/nf-core/test-datasets/tree/a3a3dc48261dbdc0aba8e36272471c353fc62487/testdata/Mammoth",
+  "original_eager_version": "2.4.4",
+  "original_eager_commit": "43a239bd132b4a6ccf791d7052f537f3d22b700c",
+  "source_oracles": {
+    "bytes": 66899,
+    "sha256": "92b788c10fa1250182a95ff09726456a4c3aabed0532981a0f6be559817b7bc3"
+  },
+  "reference_files": {
+    "inputs/input0.bam": {
+      "bytes": 434615,
+      "sha256": "a6f4fa6d0e99f5610c3b2dd9e54f09e30849b8574e067a3d1aaae96527919adf"
+    },
+    "inputs/input1.bam": {
+      "bytes": 509926,
+      "sha256": "f1aa028fa0b57a8988c25909df71316a4326585cc1160dbade494f405d63d1bd"
+    },
+    "inputs/input2.bam": {
+      "bytes": 562,
+      "sha256": "a35e52866059db88c7534e856c72e7f5e9e186576ad7c51a31cff98c236c0733"
+    },
+    "original/input0-min-1-allfalse.bam": {
+      "bytes": 58178,
+      "sha256": "4ef19c91cd9f642ab7fe56953a616549a960ac0cad91ef8b149db02f3d84f593"
+    },
+    "original/input0-min-1-alltrue.bam": {
+      "bytes": 434615,
+      "sha256": "a6f4fa6d0e99f5610c3b2dd9e54f09e30849b8574e067a3d1aaae96527919adf"
+    },
+    "original/input0-min0-allfalse.bam": {
+      "bytes": 58178,
+      "sha256": "4ef19c91cd9f642ab7fe56953a616549a960ac0cad91ef8b149db02f3d84f593"
+    },
+    "original/input0-min0-alltrue.bam": {
+      "bytes": 434615,
+      "sha256": "a6f4fa6d0e99f5610c3b2dd9e54f09e30849b8574e067a3d1aaae96527919adf"
+    },
+    "original/input0-min30-allfalse.bam": {
+      "bytes": 58178,
+      "sha256": "4ef19c91cd9f642ab7fe56953a616549a960ac0cad91ef8b149db02f3d84f593"
+    },
+    "original/input0-min30-alltrue.bam": {
+      "bytes": 434615,
+      "sha256": "a6f4fa6d0e99f5610c3b2dd9e54f09e30849b8574e067a3d1aaae96527919adf"
+    },
+    "original/input0-min35-allfalse.bam": {
+      "bytes": 57793,
+      "sha256": "ec686a4f468219ca68d77971aea468959e221bd804bae51676d2cd6afbe2c00e"
+    },
+    "original/input0-min35-alltrue.bam": {
+      "bytes": 424314,
+      "sha256": "dc0c692a6e89d9368fc5374590a0909fc3b5bd395bdb81f729109cbcb6cb6884"
+    },
+    "original/input0-min76-allfalse.bam": {
+      "bytes": 35023,
+      "sha256": "48eede51d593f50213566590e623bf5db8d4dd9f646e72e4900a8b72ac7aee85"
+    },
+    "original/input0-min76-alltrue.bam": {
+      "bytes": 221480,
+      "sha256": "63a198fd25bab6c8bcac980d95ba3167c9145a98b20a745b7c4acc127fb8810c"
+    },
+    "original/input0-min100000-allfalse.bam": {
+      "bytes": 361,
+      "sha256": "2a5af6aa7bec792ddf3f6c726e8fc0e37cc0ed0236e580261ccac518944dfaef"
+    },
+    "original/input0-min100000-alltrue.bam": {
+      "bytes": 361,
+      "sha256": "2a5af6aa7bec792ddf3f6c726e8fc0e37cc0ed0236e580261ccac518944dfaef"
+    },
+    "original/input1-min-1-allfalse.bam": {
+      "bytes": 88452,
+      "sha256": "b266cf32b7c4c25b06664f3724dde60e11dc60b1fb01230992a14dea18412f25"
+    },
+    "original/input1-min-1-alltrue.bam": {
+      "bytes": 509926,
+      "sha256": "f1aa028fa0b57a8988c25909df71316a4326585cc1160dbade494f405d63d1bd"
+    },
+    "original/input1-min0-allfalse.bam": {
+      "bytes": 88452,
+      "sha256": "b266cf32b7c4c25b06664f3724dde60e11dc60b1fb01230992a14dea18412f25"
+    },
+    "original/input1-min0-alltrue.bam": {
+      "bytes": 509926,
+      "sha256": "f1aa028fa0b57a8988c25909df71316a4326585cc1160dbade494f405d63d1bd"
+    },
+    "original/input1-min30-allfalse.bam": {
+      "bytes": 88452,
+      "sha256": "b266cf32b7c4c25b06664f3724dde60e11dc60b1fb01230992a14dea18412f25"
+    },
+    "original/input1-min30-alltrue.bam": {
+      "bytes": 509926,
+      "sha256": "f1aa028fa0b57a8988c25909df71316a4326585cc1160dbade494f405d63d1bd"
+    },
+    "original/input1-min35-allfalse.bam": {
+      "bytes": 87373,
+      "sha256": "6d3f2837997cf1b0a5c8f5370d13a8fc70a4edcc1028e51965c6ecd46fa956e0"
+    },
+    "original/input1-min35-alltrue.bam": {
+      "bytes": 493518,
+      "sha256": "5627fe82d5301f941d6e2205688573f0aa93c44d5da3cd3e94218ae7c6bdbd76"
+    },
+    "original/input1-min76-allfalse.bam": {
+      "bytes": 39931,
+      "sha256": "bc7f78e9d0c3e67c8e9fef2ac616a57a0daf576e55c0fcaefece4603a9ba859d"
+    },
+    "original/input1-min76-alltrue.bam": {
+      "bytes": 207766,
+      "sha256": "664dd5e46b8d7d1c99b4aa3af649ededf7704c923a43c446839c3e842488c4c3"
+    },
+    "original/input1-min100000-allfalse.bam": {
+      "bytes": 358,
+      "sha256": "5b7b88c0291041ca1210f439109a00b7e2fcffbafa089268af51951873d6f304"
+    },
+    "original/input1-min100000-alltrue.bam": {
+      "bytes": 358,
+      "sha256": "5b7b88c0291041ca1210f439109a00b7e2fcffbafa089268af51951873d6f304"
+    },
+    "original/input2-min-1-allfalse.bam": {
+      "bytes": 518,
+      "sha256": "d705afa541d5cd5a09a1247e129f1171e0efaa79a013e36f2877037c07f78de6"
+    },
+    "original/input2-min-1-alltrue.bam": {
+      "bytes": 562,
+      "sha256": "a35e52866059db88c7534e856c72e7f5e9e186576ad7c51a31cff98c236c0733"
+    },
+    "original/input2-min0-allfalse.bam": {
+      "bytes": 518,
+      "sha256": "d705afa541d5cd5a09a1247e129f1171e0efaa79a013e36f2877037c07f78de6"
+    },
+    "original/input2-min0-alltrue.bam": {
+      "bytes": 562,
+      "sha256": "a35e52866059db88c7534e856c72e7f5e9e186576ad7c51a31cff98c236c0733"
+    },
+    "original/input2-min30-allfalse.bam": {
+      "bytes": 459,
+      "sha256": "a7d16dd822acf156c3b79b0b40475c89226b21311bd1a5a6f8577bced153ba38"
+    },
+    "original/input2-min30-alltrue.bam": {
+      "bytes": 484,
+      "sha256": "ff3f3dc8f78326d1c4c1400bc590bb6de710840fef1199d8dd45e7cbf593f90d"
+    },
+    "original/input2-min35-allfalse.bam": {
+      "bytes": 331,
+      "sha256": "d8a6c17097e3fb247d2b02f3769a42dd0e8ddba37f352ccd2de7fcc010323deb"
+    },
+    "original/input2-min35-alltrue.bam": {
+      "bytes": 331,
+      "sha256": "d8a6c17097e3fb247d2b02f3769a42dd0e8ddba37f352ccd2de7fcc010323deb"
+    },
+    "original/input2-min76-allfalse.bam": {
+      "bytes": 163,
+      "sha256": "e4a3d3a182bb3fcbe597bddbabdb17f2ef119a712231ade51f92f51f22eed7b6"
+    },
+    "original/input2-min76-alltrue.bam": {
+      "bytes": 163,
+      "sha256": "e4a3d3a182bb3fcbe597bddbabdb17f2ef119a712231ade51f92f51f22eed7b6"
+    },
+    "original/input2-min100000-allfalse.bam": {
+      "bytes": 163,
+      "sha256": "e4a3d3a182bb3fcbe597bddbabdb17f2ef119a712231ade51f92f51f22eed7b6"
+    },
+    "original/input2-min100000-alltrue.bam": {
+      "bytes": 163,
+      "sha256": "e4a3d3a182bb3fcbe597bddbabdb17f2ef119a712231ade51f92f51f22eed7b6"
+    },
+    "cases.json": {
+      "bytes": 10223,
+      "sha256": "3ccbe519fbff3d2defb01d09a1628c5b4596843519fc3091c2d0e9c6e84adc4b"
+    }
+  },
+  "reference_zip": {
+    "bytes": 5799578,
+    "sha256": "b493cbccc86798b9fbfe4ca1242c96084f5a602a19ad2912821c6f91b93e1897"
+  },
+  "own_synthetic_boundary_fixture": "12 records: query length boundaries, soft/hard clips, TLEN signs, flags, absent sequence and unchanged NaN/Inf tags.",
+  "biological_result": false
+}

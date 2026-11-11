@@ -1,0 +1,17 @@
+# Copyright (C) 2026 JLinAlg contributors; SPDX-License-Identifier: GPL-3.0-or-later
+"""Record the confirmed -I/PYTHONHASHSEED conflict without changing any frozen runtime, source or output."""
+import argparse,json,subprocess
+from pathlib import Path
+from setup_deseq2_reference import ROOT,pin,save
+
+
+def main():
+    parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--out',required=True,type=Path);args=parser.parse_args();out=args.out.resolve();assert out.is_relative_to(ROOT/'build/literature-review/spyrrow-runtime') and not out.exists();out.mkdir(parents=True);python='/mnt/d/projects/JLinAlg/build/cellphonedb-workflow-case-sensitive-1/runtime-1/bin/python';code="import sys,os,json;print(json.dumps(dict(python=sys.version,ignore_environment=sys.flags.ignore_environment,hash_randomization=sys.flags.hash_randomization,safe_path=sys.flags.safe_path,no_user_site=sys.flags.no_user_site,declared_seed=os.environ.get('PYTHONHASHSEED'),hash=hash('Spyrrow ligand'),algorithm=sys.hash_info.algorithm)))";records=[]
+    sources=['src/main/java/org/jlinalg/cli/CellPhoneDbWorkflowRequest.java','src/main/resources/org/jlinalg/omics/cellphonedb-workflow/supervisor.py'];before={n:pin(ROOT/n) for n in sources};assert 'python_hash_seed' in (ROOT/sources[0]).read_text(encoding='utf8') and "'-I'" in (ROOT/sources[1]).read_text(encoding='utf8')
+    for label,flags,seed in [('isolated-zero-1',['-I','-B'],'0'),('isolated-zero-2',['-I','-B'],'0'),('explicit-zero-1',['-B','-P','-s'],'0'),('explicit-zero-2',['-B','-P','-s'],'0'),('explicit-123-1',['-B','-P','-s'],'123'),('explicit-123-2',['-B','-P','-s'],'123')]:
+        command=['wsl','-d','JLinAlg-Omics-SAIGE-20261026','--exec','/usr/bin/env','-u','PYTHONPATH','-u','PYTHONHOME','PYTHONHASHSEED='+seed,python,*flags,'-c',code];run=subprocess.run(command,capture_output=True,timeout=30);(out/(label+'.stdout')).write_bytes(run.stdout);(out/(label+'.stderr')).write_bytes(run.stderr);assert run.returncode==0;record=json.loads(run.stdout);assert record['declared_seed']==seed and record['algorithm']=='siphash13';assert record['ignore_environment']==(1 if '-I' in flags else 0) and record['safe_path'] and record['no_user_site'];records.append(dict(label=label,command=command,exit_code=run.returncode,observed=record))
+    assert records[0]['observed']['hash_randomization']==records[1]['observed']['hash_randomization']==1;assert records[2]['observed']['hash_randomization']==records[3]['observed']['hash_randomization']==0;assert records[2]['observed']['hash']==records[3]['observed']['hash'] and records[4]['observed']['hash']==records[5]['observed']['hash'];assert all(pin(ROOT/n)==want for n,want in before.items());save(out/'COMPLETED.json',dict(status='CONFIRMED_OPEN_CELLPHONEDB_PYTHON_HASH_SEED_OPTION_DEFECT',records=records,affected_source_pins=before,source_or_runtime_changed=False,scientific_outputs_relabelled=False,full_goal_complete=False,required_action='Do not interpret the first-generation CellPhoneDB python_hash_seed option as effective or relabel retained runs as hash-seeded. Skip work requiring controlled Python hash ordering until a separately validated runner correction is available. NumPy global/permutation RNG seeds are separate. The new Spyrrow component collector uses -B -P -s with a sanitized environment and asserts the effective seed0 flags.'))
+    print('Confirmed -I ignores PYTHONHASHSEED; explicit safe-path/no-user-site launch honors both tested seeds. CellPhoneDB correction remains open.')
+
+
+if __name__=='__main__':main()

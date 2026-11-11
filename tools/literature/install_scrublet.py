@@ -47,7 +47,8 @@ def probe(python,report):
 
 def install(args):
     environment=args.environment.resolve();root_report=args.report.resolve();root_report.mkdir(parents=True,exist_ok=True)
-    report=root_report/'attempts'/dt.datetime.now(dt.timezone.utc).strftime('%Y%m%dT%H%M%S.%fZ');report.mkdir(parents=True)
+    attempts=root_report/'attempts';attempts.mkdir(parents=True,exist_ok=True)
+    report=Path(tempfile.mkdtemp(prefix=dt.datetime.now(dt.timezone.utc).strftime('%Y%m%dT%H%M%S.%fZ')+'-',dir=attempts))
     python=environment/('Scripts/python.exe' if sys.platform=='win32' else 'bin/python');marker=environment/MARKER;record=dict(environment=str(environment),lock_sha256=digest(LOCK),install_authorized=args.allow_install,source_build_authorized=args.allow_source_build,recorded_utc=dt.datetime.now(dt.timezone.utc).isoformat(),attempt=str(report))
     try:
         if marker.is_file():

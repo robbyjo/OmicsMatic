@@ -1,0 +1,25 @@
+Salmon inferential-replicate format compatibility
+
+The native Java SalmonInferentialReplicates class is an independent complete
+stream decoder. It follows GZipWriter.cpp/writeBootstrap and writeMeta plus
+scripts/ConvertBootstrapsToTSV.py in original COMBINE-lab/salmon releases
+1.0.0, 1.1.0, 1.5.2, 1.8.0 and 1.9.0. Original sources are GPL-3.0-or-later:
+https://github.com/COMBINE-lab/salmon
+https://salmon.readthedocs.io/en/latest/license.html
+
+Admitted encoding: original Linux x86_64 native little-endian IEEE754 double,
+sample-major complete vectors; exact tab-separated names with final newline;
+one complete gzip member per stream. The names and expected replicate/target
+population must be independently bound to the original quantifier metadata.
+The Java decoder rejects truncation, extra compressed/decompressed data, CRC or
+size mismatches and nonfinite/negative counts; it never infers completion from
+an EOF exception as the historical conversion script can do.
+
+This is not a Salmon read mapper, abundance optimizer, uncertainty calibration,
+single-cell alevin decoder or public workflow admission. A consumer may receive
+provisional values before a later failure and must stage them until the complete
+receipt succeeds. No passing prefix is a result. Preserved estimates, including
+signed zero, remain distinct from observed integer read/fragment counts.
+
+Runtime setup, complete quantification output audit, original index/reference
+binding, packaged command and whole-paper reproduction require separate gates.

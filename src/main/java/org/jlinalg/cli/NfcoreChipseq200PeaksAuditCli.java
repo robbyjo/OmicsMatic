@@ -1,0 +1,42 @@
+/* Copyright (C) 2026 JLinAlg contributors; SPDX-License-Identifier: GPL-3.0-or-later */
+package org.jlinalg.cli;
+
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Set;
+import org.jlinalg.sequence.FastaIndexes;
+import static org.jlinalg.cli.NextflowFiles.*;
+
+/** Complete original v2 consensus/annotation/QC consistency checks using source-proven shared methods. */
+public final class NfcoreChipseq200PeaksAuditCli {
+    private NfcoreChipseq200PeaksAuditCli() { }
+    static final String ACTION = "Required action: this is an original ChIP-seq2.0.0 consensus/annotation/QC component, with zero catalog-tool or biological admission. Require complete runtime/input/BAM, library-complexity and original DESeq2 QC contracts before full-profile downstream claims. Preserve original IDs, source gene-ID overwrite behavior, missing values, tied assignments and all failed attempts. Original zero-based BED Start is copied directly into SAF, with no silent plus-one repair; ordinary one-based SAF interpretation differs by one base. HOMER feature classifications/PDF rendering remain original methods. FAIL2 admits no component result; read the named discrepancy and WARNINGS.md, preserve originals and retry a NEW path after resolving its cause. Hashes establish integrity, not author history or biological validity. Cell Ranger remains excluded.";
+    public static void main(String[] args) {
+        Path out = null; boolean owned = false;
+        try {
+            if (args.length == 1 && args[0].equals("--help")) { emit(System.out, "--engine-result COMPLETE_ORIGINAL_V2_ATTEMPT --out NEW_AUDIT\n" + ACTION); return; }
+            var options = new LinkedHashMap<String, String>(); for (int i = 0; i < args.length; i += 2) if (i + 1 >= args.length || !Set.of("--engine-result", "--out").contains(args[i]) || options.putIfAbsent(args[i], args[i + 1]) != null) throw new IOException("Require complete unique v2 peak audit options"); if (options.size() != 2) throw new IOException("Declare complete original v2 result and NEW audit explicitly");
+            Path selected = Path.of(options.get("--engine-result")).toAbsolutePath().normalize(); out = Path.of(options.get("--out")).toAbsolutePath().normalize(); var verified = NfcoreEngineBundle.verify(selected, () -> { }); Path producer = Path.of(text(object(json(verified.attempt().resolve("session.json"), 67108864)).get("producer_root")));
+            if (out.getParent() == null || !out.getParent().toRealPath().equals(out.getParent()) || out.startsWith(selected) || selected.startsWith(out) || out.startsWith(verified.attempt()) || verified.attempt().startsWith(out) || producer.isAbsolute() && (out.startsWith(producer) || producer.startsWith(out))) throw new IOException("Audit must be NEW, canonical and disjoint from original producer/result"); Files.createDirectory(out); owned = true;
+            var data = new NfcoreChipseq200Files(verified); data.verifySource(); var mappings = NfcoreChipseq200Peaks.mappings(data); var peaks = new NfcoreChipseq200Peaks(data, mappings); var reference = new LinkedHashMap<String, Long>(); for (var row : FastaIndexes.build(data.files.inputPath(text(data.files.parameters().get("fasta"))))) reference.put(row.getContig(), row.getSize()); var gtf = NfcoreChipseq121Annotations.gtf(data.files.inputPath(text(data.files.parameters().get("gtf"))), reference);
+            var annotated = new LinkedHashMap<String, NfcoreChipseq121Annotations.Annotation>(); var details = new ArrayList<Map<String, Object>>(); long total = 0, ties = 0, missing = 0;
+            for (var row : peaks.raw.entrySet()) {
+                for (var peak : row.getValue()) if (!reference.containsKey(peak.contig()) || peak.end() > reference.get(peak.contig())) throw new IOException("Original peak geometry/reference differs");
+                var result = NfcoreChipseq121Annotations.audit(data.files.output(peaks.base + row.getKey() + "_peaks.annotatePeaks.txt"), NfcoreChipseq121Annotations.macs(row.getValue()), gtf); annotated.put(row.getKey(), result); total += result.peaks(); ties += result.tiedAssignments(); missing += result.missingGtfContigs();
+            }
+            for (var group : peaks.groups) {
+                if (group.consensus() == null) { details.add(Map.of("antibody", group.antibody(), "consensus_status", "original-source-condition-false", "negative_finding", false)); continue; }
+                var result = NfcoreChipseq121Annotations.audit(data.files.output(group.prefix() + ".annotatePeaks.txt"), NfcoreChipseq121Annotations.consensus(group.consensus().rows()), gtf); NfcoreChipseq121Annotations.combined(data.files.output(group.prefix() + ".boolean.txt"), data.files.output(group.prefix() + ".boolean.annotatePeaks.txt"), result, group.consensus().rows()); total += result.peaks(); ties += result.tiedAssignments(); missing += result.missingGtfContigs(); details.add(Map.of("antibody", group.antibody(), "original_consensus", group.consensus().document(), "complete_consensus_annotation_rows", result.peaks()));
+            }
+            var feature = NfcoreChipseq121Annotations.featureQc(data.files.output(peaks.base + "qc/macs2_annotatePeaks.summary.txt"), annotated); var statistics = NfcoreChipseq121Annotations.peakQc(data.files.output(peaks.base + "qc/macs2_peak.summary.txt"), peaks.raw); NfcoreChipseq121Annotations.multiqc(data.files.output(peaks.base + "qc/macs2_annotatePeaks.summary.txt"), data.files.output(peaks.base + "qc/macs2_annotatePeaks.summary_mqc.tsv"), data.files.inputMember(data.files.alias("workflow") + "/assets/multiqc/peak_annotation_header.txt"));
+            var after = NfcoreEngineBundle.verify(selected, () -> { }); if (!after.attempt().equals(verified.attempt()) || !after.manifest().equals(verified.manifest())) throw new IOException("Original selected result/latest changed during v2 peak audit"); var lookup = NfcoreChipseq121Annotations.geneLookup(gtf); var report = new LinkedHashMap<String, Object>(); report.put("status", "COMPLETE_CHIPSEQ200_ORIGINAL_CONSENSUS_ANNOTATION_QC_COMPONENT_ONLY"); report.put("original_engine_manifest", verified.manifest()); report.put("source_files_checked", 203); report.put("antibodies", details); report.put("original_peak_rows", peaks.raw.values().stream().mapToLong(java.util.List::size).sum()); report.put("complete_annotation_rows", total); report.put("compatible_TSS_ties", ties); report.put("missing_GTF_contig_rows", missing); report.put("raw_transcript_TSS_rows", lookup.rawTranscriptRows()); report.put("active_gene_TSS_rows", lookup.activeGeneRows()); report.put("overwritten_source_TSS_rows_retained", lookup.overwrittenRows()); report.put("feature_QC", feature); report.put("peak_QC", statistics); report.put("scientific_result_admitted", false); report.put("nfcore_tool_credit", 0); writeJson(out.resolve("audit.json"), report); Files.writeString(out.resolve("WARNINGS.md"), "# Original v2 peak/annotation component only\n\n" + ACTION + "\n\nSource-compatible tied assignments: " + ties + "; source missing-TSS rows: " + missing + "; earlier transcript rows overwritten in the source gene-ID lookup, retained in raw input: " + lookup.overwrittenRows() + ".\n", StandardCharsets.UTF_8, StandardOpenOption.CREATE_NEW); writeJson(out.resolve("COMPONENT_AUDIT_COMPLETED.json"), Map.of("status", "complete-original-v2-peak-annotation-component-only", "audit", pin(out.resolve("audit.json"), 67108864, () -> { }), "scientific_result_admitted", false, "nfcore_tool_credit", 0)); emit(System.out, "Complete original v2 consensus/annotation/QC component passed: " + total + " annotation rows.\n" + ACTION);
+        } catch (Exception | LinkageError failure) { emit(System.err, "FAIL2 NO V2 PEAK COMPONENT: " + failure + "\n" + ACTION); if (owned && out != null) try { writeJson(out.resolve("FAILURE.json"), Map.of("status", "FAIL2", "error", failure.toString(), "required_action", ACTION)); Files.writeString(out.resolve("WARNINGS.md"), "# FAIL2\n\n" + failure + "\n\n" + ACTION + "\n", StandardCharsets.UTF_8, StandardOpenOption.CREATE_NEW); } catch (IOException diagnostic) { emit(System.err, "Retain failed audit; diagnostic write failed: " + diagnostic); } System.exit(2); }
+    }
+    private static void emit(java.io.PrintStream output, String text) { output.writeBytes((text + "\n").getBytes(StandardCharsets.UTF_8)); }
+}

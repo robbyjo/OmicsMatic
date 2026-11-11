@@ -57,6 +57,15 @@ final class RepeatInputs {
             if (!actual.equals(ownedSha256)) throw new IOException("RepeatMasker protected preparation changed or contains unexpected members");
         }
     }
+    /** The prepared bytes/identity mapping stay unchanged when an outer workflow reserves its own workspace. */
+    static Prepared rebudget(Prepared source,RepeatRecipe.Spec spec)throws IOException{
+        var a=source.spec();var limits=a.limits();
+        var adjusted=new RepeatRecipe.Limits(limits.fasta(),limits.annotations(),limits.inputBytes(),limits.indexBytes(),limits.retainedBytes(),spec.limits().workspaceBytes(),spec.limits().fileCount());
+        var expected=new RepeatRecipe.Spec(a.recipe(),a.recipeSha256(),a.resourceRoot(),a.operation(),a.mode(),a.profile(),a.assembly(),a.review(),a.query(),a.library(),a.annotations(),a.masked(),a.species(),a.staging(),a.mask(),a.selection(),a.parameters(),adjusted,a.process());
+        if(a.operation()!=RepeatRecipe.Operation.SEARCH||!expected.equals(spec)||spec.limits().workspaceBytes()>limits.workspaceBytes()||spec.limits().fileCount()>limits.fileCount())
+            throw new IOException("Only a reduction of the outer original-workflow workspace/member budget may change after preparation");
+        return new Prepared(spec,source.work(),source.query(),source.library(),source.masked(),source.annotationPath(),source.annotations(),source.annotationValidation(),source.suppliedMaskAudit(),source.snapshots(),source.ownedSha256(),source.warnings());
+    }
     static Prepared prepare(RepeatRecipe.Spec spec, Path suppliedWork, Runnable check) throws IOException {
         Objects.requireNonNull(spec); Objects.requireNonNull(check); spec.verify(); check.run();
         if (spec.limits().retainedBytes() > Runtime.getRuntime().maxMemory() / 4 * 3)

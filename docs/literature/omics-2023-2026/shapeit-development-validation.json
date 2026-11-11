@@ -1,0 +1,105 @@
+{
+  "schema_version": 1,
+  "status": "passed-native-reader-and-diploid-output-audit-foundation",
+  "tool_id": "shapeit",
+  "implementation_status": "missing",
+  "native_initial_target_audit_API_available": true,
+  "public_upstream_adapter_available": false,
+  "whole_paper_reproduced": false,
+  "scope": "Native original initial target-reader encoding and complete diploid-output audit. Actual upstream cohort controls are retained; no public phasing/file/runtime/reference/scaffold/rare/ligation workflow is credited.",
+  "source_evidence": [
+    {
+      "path": "LICENSES/SHAPEIT4-MIT.txt",
+      "sha256": "a5f4ffd1f3573d4a937c61a3e906afda13c09fb8027056fea65a9df8dc81151a"
+    },
+    {
+      "path": "LICENSES/SHAPEIT5-MIT.txt",
+      "sha256": "caaabefc02c4b97767c472216ec1c1cc3267f26dd2d1c40b889597101ee2e5a8"
+    },
+    {
+      "path": "src/main/java/org/jlinalg/genetics/ShapeitGenotypes.java",
+      "sha256": "d8001dabd03d092490853c5616e856048f3d7e0f4c9e893095497f8e916f03e4"
+    },
+    {
+      "path": "src/main/resources/META-INF/licenses/SHAPEIT4-MIT.txt",
+      "sha256": "a5f4ffd1f3573d4a937c61a3e906afda13c09fb8027056fea65a9df8dc81151a"
+    },
+    {
+      "path": "src/main/resources/META-INF/licenses/SHAPEIT5-MIT.txt",
+      "sha256": "caaabefc02c4b97767c472216ec1c1cc3267f26dd2d1c40b889597101ee2e5a8"
+    },
+    {
+      "path": "src/test/java/org/jlinalg/genetics/ShapeitGenotypesTest.java",
+      "sha256": "b56ec18de08787fe6ca8cd0897e4459552b482dd509ff415ec7b16a79ec8531b"
+    },
+    {
+      "path": "src/test/resources/org/jlinalg/genetics/shapeit-reference/initial-reader.zip",
+      "sha256": "7ce0722fbe1499ed72d5a46d81c9945d1141b24a7abbec07e5e1d3ce799e8f02"
+    },
+    {
+      "path": "tools/literature/shapeit-reference/MakeWireFixture.cpp",
+      "sha256": "b13b02057e8527c756f1f46e33e9a99f621988b622bb28b74de9b69c1e8dcf95"
+    },
+    {
+      "path": "tools/literature/shapeit-reference/ReaderProtocol.cpp",
+      "sha256": "6a4d24303a3d27f85c13486eb48f881fdb6b16e5994b51155a5ff1feca2e6431"
+    },
+    {
+      "path": "tools/literature/shapeit-reference/collect_reader_evidence.py",
+      "sha256": "d8cd3547b855a9af2dcedcf0417f44b9744b0e647a371ea0ef85fa5b654f1330"
+    },
+    {
+      "path": "tools/literature/shapeit_development_validation.py",
+      "sha256": "863c59d6471ed93bfcac38ccbd3a9fb507ad16cf01969ba5521af1ec13646148"
+    },
+    {
+      "path": "tools/literature/test_shapeit_development_validation.py",
+      "sha256": "e65e574c36456201d561b9529caa937e4903a3de6d5130cc4f21ff8ff5b47777"
+    }
+  ],
+  "native_controls": {
+    "path": "shapeit-native-controls.zip",
+    "sha256": "514a3f188c05ad3a3c08eade18fb917045a9c950ea484aca1be836497a2b8fc2",
+    "bytes": 1345147,
+    "members": 55,
+    "decoded_bytes": 1642340
+  },
+  "native_candidate_sha256": "21d73538a402aff4bee03ccc6dadbba2e64207d4e2dc33a4bbff339b5534e368",
+  "original_controls_sha256": "7ce0722fbe1499ed72d5a46d81c9945d1141b24a7abbec07e5e1d3ce799e8f02",
+  "tests_per_JVM": 15,
+  "JVM_profiles": {
+    "Windows21": {
+      "tests": 15,
+      "passed": 15,
+      "skipped": 0
+    },
+    "Windows25": {
+      "tests": 15,
+      "passed": 15,
+      "skipped": 0
+    },
+    "Linux21": {
+      "tests": 15,
+      "passed": 15,
+      "skipped": 0
+    }
+  },
+  "original_reader_cells": 800,
+  "original_cohort_output_cells": 800,
+  "browser_checks": 543,
+  "reviewed_roles": 10,
+  "reviewed_uses": 744,
+  "supporting_pointers": 212,
+  "new_integrations": 56,
+  "total_with_existing": 59,
+  "missing": 263,
+  "legacy_SHAPEIT2": {
+    "status": "SKIPPED-runtime-not-downloaded-or-executed",
+    "required_action": "Supply permitted license eligibility and the exact historical build before original legacy analysis."
+  },
+  "historical_SHAPEIT5": {
+    "status": "unvalidated-singleton-posterior-workflow",
+    "required_action": "Verify the paper-linked5.0.0/contig runtime and singleton PP semantics; current5.1.1 controls do not establish that behavior.",
+    "linked_wrapper_commit": "dacb4647a27fa792cd03b14beb2cba3a1f74d7c9"
+  }
+}

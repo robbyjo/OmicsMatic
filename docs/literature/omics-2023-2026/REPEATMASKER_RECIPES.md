@@ -16,11 +16,9 @@ java -jar build/cli/omicsmatic-0.3.7.jar repeat-tools --verify build/repeat-nati
 Always use a new output directory and read `WARNINGS.md`. Each operation has
 distinct completion flags; no native completion certifies an original search,
 annotation completeness or biological absence. Require `COMPLETED.json`, its
-matching manifest and read-only verification. Original `SEARCH` admission remains unfinished; requests are retained
-as `SKIP3` with required actions. No analysis installs software or substitutes
-an edition.
+matching manifest and read-only verification. Original `SEARCH` is separately available with an exact admitted runtime; see the [public workflow](REPEATMASKER_PUBLIC_WORKFLOW.md). Missing or unsupported prerequisites retain `SKIP3` and required actions. No analysis installs software or substitutes an edition.
 
-Analysis `--options-file` accepts exactly UTF-8 `recipe` and `out` string fields.
+Analysis `--options-file` accepts UTF-8 `recipe` and `out` string fields and an optional `runtime` string for SEARCH; no other fields are accepted.
 For a launcher that cannot pass Unicode verification paths, use
 `--verify-options-file` with exactly one UTF-8 `directory` string. These paths
 resolve from the working directory, with absolute paths recommended. Both
@@ -157,10 +155,7 @@ descriptors, workspace, members, processes, threads and sampled RSS.
 The internal supervisor enforces these requested budgets in eight controlled
 original searches, accounting for protected preparations and run files together.
 Hard address-space, CPU, file-size and descriptor limits are per process;
-aggregate RSS is sampled. The public runtime/resource/cache binding remains
-unfinished. Process completion does not certify a scientific result. Both tested
-original editions can emit a no-hit `.out` without `.masked` or `.tbl`; that
-case needs an explicit result contract before admission. Read the
+aggregate RSS is sampled. The public runtime/resource/cache binding is now validated for the declared profiles. Process completion alone does not certify a scientific result. Both tested original editions can emit a no-hit `.out` without `.masked` or `.tbl`; the admitted result contract preserves these absences explicitly. Read the
 [current validation and no-hit warning](REPEATMASKER_NATIVE_STATUS.md).
 
 **Staging decision:** native annotation reuse requires `EXACT_SOURCE`.
@@ -211,9 +206,7 @@ gzip; every CRC/member/trailer and physical EOF is checked. Query-count/base,
 edition/mode/engine mismatches, duplicate or missing headers and truncation fail.
 No-hit mask/table absences remain absent and never certify biological absence.
 
-This is an internal development primitive, not a public SEARCH workflow.
-Host/provider admission and final workflow/catalog gates remain unfinished;
-public SEARCH still returns SKIP3. Process limits apply independently to each
+This component is now used by the separately validated public SEARCH workflow. Host/provider admission and final workflow gates pass for the declared profiles; SEARCH without required prerequisites returns SKIP3. Process limits apply independently to each
 original stage while logical input/resource/output capacity is shared. Hashing
 and output-audit time are outside the watched child wall limit. Read the
 [exact evidence and remaining scope](REPEATMASKER_NATIVE_STATUS.md).

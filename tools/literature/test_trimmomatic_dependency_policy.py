@@ -42,4 +42,15 @@ class TrimmomaticPolicyTest(unittest.TestCase):
     def test_previous_attempt_and_diagnostics_retained(self):
         self.call();code,d=self.call(True);self.assertEqual(0,code);self.assertEqual(1,len(d['history']));self.assertEqual('skipped-install-not-permitted',d['history'][0]['status']);self.assertEqual(2,len(list((self.args.report/'attempts').iterdir())))
 
+    def test_attempts_at_the_same_clock_instant_keep_distinct_reports(self):
+        instant=installer.dt.datetime(2026,11,1,tzinfo=installer.dt.timezone.utc)
+        with patch.object(installer.dt,'datetime') as clock:
+            clock.now.return_value=instant
+            first_code,first=self.call();second_code,second=self.call(True)
+        self.assertEqual(3,first_code);self.assertEqual(0,second_code)
+        self.assertNotEqual(first['attempt'],second['attempt'])
+        self.assertTrue(Path(first['attempt']).is_dir());self.assertTrue(Path(second['attempt']).is_dir())
+        self.assertEqual('skipped-install-not-permitted',second['history'][0]['status'])
+        self.assertEqual(2,len(list((self.args.report/'attempts').iterdir())))
+
 if __name__=='__main__':unittest.main()

@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "engine": "scoped-Signac-workflow-router",
+  "workflows": [
+    {
+      "name": "normalize",
+      "modes": "NORMALIZE / TOP_FEATURES / VERIFY",
+      "requirements": "Java",
+      "delegate": "org.jlinalg.cli.SignacNormalizationCli",
+      "example": "examples/signac-normalize/README.md"
+    },
+    {
+      "name": "lsi",
+      "modes": "FIT / VERIFY",
+      "requirements": "declared R/Signac/SVD dependencies",
+      "delegate": "org.jlinalg.cli.SignacLsiRequestCli",
+      "example": "examples/signac-lsi/README.md"
+    },
+    {
+      "name": "fragments",
+      "modes": "FEATURE_MATRIX / COUNT_FRAGMENTS / NUCLEOSOME_SIGNAL / BINARIZE_CSC / VERIFY",
+      "requirements": "Java",
+      "delegate": "org.jlinalg.cli.SignacFragmentsRequestCli",
+      "example": "examples/signac-fragments/README.md"
+    },
+    {
+      "name": "annotations",
+      "modes": "TSS_FAST / TSS_PROFILE / GENE_ACTIVITY / VERIFY",
+      "requirements": "Java",
+      "delegate": "org.jlinalg.cli.SignacAnnotationsRequestCli",
+      "example": "examples/signac-annotations/README.md"
+    },
+    {
+      "name": "motifs",
+      "modes": "ENRICH / VERIFY",
+      "requirements": "Java; explicit supplied motif/query/background populations",
+      "delegate": "org.jlinalg.cli.SignacMotifsRequestCli",
+      "example": "examples/signac-motifs/README.md"
+    },
+    {
+      "name": "scan",
+      "modes": "FIT / VERIFY",
+      "requirements": "declared R/motifmatchr/reference/motif dependencies",
+      "delegate": "org.jlinalg.cli.SignacScanRequestCli",
+      "example": "examples/signac-scan/README.md"
+    },
+    {
+      "name": "links",
+      "modes": "FIT / VERIFY",
+      "requirements": "declared R/Signac background dependencies",
+      "delegate": "org.jlinalg.cli.SignacLinksRequestCli",
+      "example": "examples/signac-links/README.md"
+    },
+    {
+      "name": "markers",
+      "modes": "PAIR / ALL / VERIFY",
+      "requirements": "declared current Seurat/R statistical profile",
+      "delegate": "org.jlinalg.cli.SeuratDifferentialCli",
+      "example": "examples/seurat-differential/README.md"
+    },
+    {
+      "name": "peaks",
+      "modes": "POOLED / GROUPED / VERIFY",
+      "requirements": "Linux Java + exact private MACS/Python for calling; Java-only VERIFY",
+      "delegate": "org.jlinalg.cli.SignacPeaksCli",
+      "example": "examples/signac-peaks/README.md"
+    },
+    {
+      "name": "coverage",
+      "modes": "COVERAGE / VERIFY",
+      "requirements": "full Java desktop/font/PNG runtime",
+      "delegate": "org.jlinalg.cli.SignacCoverageCli",
+      "example": "examples/signac-coverage/README.md"
+    },
+    {
+      "name": "chromvar",
+      "modes": "BACKGROUND / DEVIATIONS / VERIFY",
+      "requirements": "existing chromvar-tools contracts; R background or native deviations",
+      "delegate": "org.jlinalg.cli.ChromVarToolsCli",
+      "example": "examples/chromvar-background/README.md"
+    }
+  ],
+  "explicit_workflow_for_VERIFY": true,
+  "reinterprets_request_paths_or_scientific_settings": false,
+  "analysis_installs_software": false,
+  "missing_or_forbidden_requirements": "SKIP3: skip dependent analysis; provide the permitted exact profile where allowed, then retry into NEW outputs.",
+  "failures": "FAIL2: no result admitted, including partial files; preserve attempts and correct the named cause before NEW outputs.",
+  "historical_whole_packages": false,
+  "whole_paper_reproduction": false,
+  "execution_authentication": false,
+  "duplicate_chromVAR_implementation_credit": false
+}

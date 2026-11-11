@@ -1,0 +1,101 @@
+{
+  "schema_version": 1,
+  "status": "passed-seven-existing-biomaRt-primary-role-reviews",
+  "roles": [
+    {
+      "paper_id": "P049",
+      "pmcid": "PMC13668678",
+      "doi": "10.1038/s41586-026-10981-y",
+      "evidence_paragraph_index": 57,
+      "evidence_paragraph_sha256": "97c437bfab311b1f7d3a64a6715c124c3193eb5a2c91869ae24abdf17c855313",
+      "use_summary": "Annotated gene lists with biomaRt2.60.1 in neuronal Cfh-cKO culture RNA-seq analysis.",
+      "implementation_scope_note": "The exact annotation attributes,query and Ensembl release are unspecified; preserve supplied gene-list IDs and species rather than assuming transcript quantification or a nearest-gene model.",
+      "version_reported_near_name": "2.60.1",
+      "supporting_evidence": []
+    },
+    {
+      "paper_id": "P117",
+      "pmcid": "PMC13553300",
+      "doi": "10.1038/s41588-026-02737-1",
+      "evidence_paragraph_index": 52,
+      "evidence_paragraph_sha256": "22495a680de02e382d6637c60838fb13fe4042d8feb0de6650268443069622f8",
+      "use_summary": "Used biomaRt when excluding mitochondrial,ribosomal and X/Y chromosome genes from the sexual-dimorphism pathway analysis.",
+      "implementation_scope_note": "This is annotation-based gene exclusion,not RNA-seq transcript import. Exact filtering lists and annotation release remain to be recovered; KEGG/WikiPathways enrichment through DOSE/clusterProfiler is separate.",
+      "version_reported_near_name": null,
+      "supporting_evidence": []
+    },
+    {
+      "paper_id": "P134",
+      "pmcid": "PMC13553295",
+      "doi": "10.1038/s41588-026-02714-8",
+      "evidence_paragraph_index": 44,
+      "evidence_paragraph_sha256": "db898cdf55a9c3299f25d6ec8a1316423648f8100e03cc779f45029efdaefc48",
+      "use_summary": "Used biomaRt together with kallisto0.44.0 and tximport for GRCh38 mRNA/ncRNA gene-expression quantification from PLATE-seq drug-perturbation libraries.",
+      "implementation_scope_note": "Exact annotation queries,release and mapping are unspecified; importing an existing transcript-to-gene TSV does not implement biomaRt.",
+      "version_reported_near_name": null,
+      "supporting_evidence": []
+    },
+    {
+      "paper_id": "P162",
+      "pmcid": "PMC13447099",
+      "doi": "10.1038/s41588-026-02704-w",
+      "evidence_paragraph_index": 42,
+      "evidence_paragraph_sha256": "d0a603ed3dc1036898725608881c0bd67e06f41c9953e1dca41030c88d0cab5e",
+      "use_summary": "Filtered hypothyroid/cis-eQTL colocalization results to protein-coding genes according to gene IDs using the biomaRt R package.",
+      "implementation_scope_note": "Gene-biotype annotation/filtering is separate from colocalization inference; exact Ensembl release and query settings are unspecified.",
+      "version_reported_near_name": null,
+      "supporting_evidence": []
+    },
+    {
+      "paper_id": "P223",
+      "pmcid": "PMC11339655",
+      "doi": "10.1016/j.ajhg.2024.06.018",
+      "evidence_paragraph_index": 10,
+      "evidence_paragraph_sha256": "4c5b5a51658efb96cabd0943ccfec2ce8e97b73de281161bc3befafcfa197df1",
+      "use_summary": "Assigned Ensembl identifiers to gene symbols with biomaRt for short-read RNA-seq differential-expression analysis using edgeR.",
+      "implementation_scope_note": "ID-to-symbol mapping is separate from edgeR testing. The source does not specify one-to-many mapping resolution or annotation release; retain original IDs rather than silently merging symbols.",
+      "version_reported_near_name": null,
+      "supporting_evidence": []
+    },
+    {
+      "paper_id": "P238",
+      "pmcid": "PMC11339621",
+      "doi": "10.1016/j.ajhg.2024.06.001",
+      "evidence_paragraph_index": 17,
+      "evidence_paragraph_sha256": "a307bda60f7d2d20eabb426c729b5ec6249d58457f2c6f68dd24d3bffa0c6961",
+      "use_summary": "Downloaded Ensembl gene-ontology terms for each query and control gene through biomaRt.",
+      "implementation_scope_note": "Term retrieval is separate from downstream GO testing and the query/control background. Preserve annotation release,term identities and multiple-mapping decisions; no automatic enrichment choice is established.",
+      "version_reported_near_name": null,
+      "supporting_evidence": []
+    },
+    {
+      "paper_id": "P250",
+      "pmcid": "PMC11390475",
+      "doi": "10.1038/s41588-024-01898-1",
+      "evidence_paragraph_index": 65,
+      "evidence_paragraph_sha256": "4d8e7d7ea680d817d5f6e56bec497982f616bf9b0c755d41d9c1ae3d769a5a9a",
+      "use_summary": "Annotated the closest gene for GWAS results using Ensembl GRCh37 BioMart through the biomaRt package.",
+      "implementation_scope_note": "Preserve the declared GRCh37 coordinates. The exact closest-gene distance/tie rule and annotation release are not specified; this is not transcript import or evidence of a generic gene-window equivalence.",
+      "version_reported_near_name": null,
+      "supporting_evidence": []
+    }
+  ],
+  "new_reviews_added": 0,
+  "reviewed_uses_preserved": 952,
+  "observations_preserved": 2450,
+  "supporting_pointers_preserved": 328,
+  "papers_pin": {
+    "bytes": 3183898,
+    "sha256": "752c5ee4206a686729ca608939a6e5ed17ce4e11964f83b49b4fbc910616b1aa"
+  },
+  "reviews_pin": {
+    "bytes": 812409,
+    "sha256": "82ce06dbd9839bb3175e4598839e94ff340eb1aad809890f0193361622ed9868"
+  },
+  "primary_audit": {
+    "bytes": 1464,
+    "sha256": "00d4f4b239b100030d07bfbf40e442ddfee5738e8cc431712320644f398079d0"
+  },
+  "semantic_paper_wide_completeness_open": true,
+  "whole_goal_complete": false
+}

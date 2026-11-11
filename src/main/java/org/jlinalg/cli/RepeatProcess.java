@@ -64,6 +64,17 @@ final class RepeatProcess {
     }
     static Result executeOwned(List<String> command, Map<String, String> environment, Path newWork,
             Limits limits, Check integrity, Runnable cancellation, List<Path> accountedRoots) throws IOException {
+        return execute(command,environment,newWork,limits,integrity,cancellation,accountedRoots,false);
+    }
+    /** ldd uses exit 1 for a static/non-dynamic image; its caller must validate the exact output and ELF image. */
+    static Result inspectLibraries(Path binary, Map<String,String> environment, Path newWork,
+            Limits limits, Check integrity, Runnable cancellation, List<Path> accountedRoots) throws IOException {
+        if(!binary.isAbsolute()||!binary.normalize().equals(binary)||!Files.isRegularFile(binary,LinkOption.NOFOLLOW_LINKS)
+                ||!binary.toRealPath().equals(binary))throw new IOException("Library inspection requires a canonical regular image");
+        return execute(List.of("/usr/bin/ldd",binary.toString()),environment,newWork,limits,integrity,cancellation,accountedRoots,true);
+    }
+    private static Result execute(List<String> command, Map<String,String> environment, Path newWork,
+            Limits limits, Check integrity, Runnable cancellation, List<Path> accountedRoots, boolean libraryInspection) throws IOException {
         Objects.requireNonNull(limits, "limits"); Objects.requireNonNull(integrity, "integrity"); Objects.requireNonNull(cancellation, "cancellation");
         if (!System.getProperty("os.name").equals("Linux")) throw new UnavailableDependency("Owned RepeatMasker execution requires Linux Java");
         Path work = newWork.toAbsolutePath().normalize();
@@ -78,6 +89,9 @@ final class RepeatProcess {
         invocation.addAll(List.copyOf(command));
         Path stdout = work.resolve("process.stdout"), stderr = work.resolve("process.stderr"), ledger = work.resolve("process.json");
         var record = new LinkedHashMap<String, Object>(); record.put("status", "launching"); record.put("command", invocation); record.put("limits", limits);
+        record.put("process_purpose",libraryInspection?"library-binding-inspection-only":"strict-zero-exit-process");
+        record.put("accepted_process_exit_codes",libraryInspection?List.of(0,1):List.of(0));
+        record.put("proc_sample_policy","Recheck identity/terminal liveness when a procfs record disappears during a read;unreadable metadata for a still-live identity is a failure. RSS remains periodically sampled,not a hard aggregate bound.");
         record.put("accounted_roots", scopes); record.put("scope", "Prepared/run logical file bytes and member counts are combined. Hard per-process AS/CPU/file/nofile limits; wall/workspace/process/thread and sampled aggregate RSS checks. Sampled RSS is not a hard aggregate RSS bound.");
         Process child = null; Guard guard = null; IOException failure = null; long started = System.nanoTime();
         try {
@@ -95,7 +109,7 @@ final class RepeatProcess {
             }
             guard.observe(); guard.enforce(limits); guard.workspace = Math.max(guard.workspace, workspace(work, limits, scopes));
             record.put("exit_code", child.exitValue());
-            if (child.exitValue() != 0) throw new IOException("Original RepeatMasker process failed, exit " + child.exitValue());
+            if (child.exitValue() != 0 && !(libraryInspection && child.exitValue() == 1)) throw new IOException("Original RepeatMasker process failed, exit " + child.exitValue());
             if (!guard.live().isEmpty()) throw new IOException("Original RepeatMasker main exited with live owned workers; cleanup is required and no result is admitted");
         } catch (InterruptedException interrupted) {
             Thread.currentThread().interrupt(); failure = new IOException("RepeatMasker process interrupted; no result is admitted", interrupted);
@@ -146,23 +160,47 @@ final class RepeatProcess {
                 TimeUnit.NANOSECONDS.toMillis(System.nanoTime() - started), guard.workspace, guard.rss, guard.processes, guard.threads, guard.identities(), guard.live());
     }
 
-    private record Sample(Identity identity, long rssBytes, int threads) { }
+    record Sample(Identity identity, long rssBytes, int threads) { }
+    @FunctionalInterface interface ProcReader { String read(Path path,int maximum)throws IOException; }
     private static Sample sample(long pid) throws IOException {
+        return sample(pid,RepeatProcess::bounded);
+    }
+    /** Package-private deterministic seam for procfs disappearance and live-read failure tests. */
+    static Sample sample(long pid,ProcReader reader) throws IOException {
         Path root = Path.of("/proc", Long.toString(pid));
+        Identity observed=null;
         try {
-            String stat = bounded(root.resolve("stat"), 65536); int end = stat.lastIndexOf(')');
-            if (end < 1) throw new IOException("Malformed owned process identity"); String[] f = stat.substring(end + 2).trim().split(" +");
-            if (f.length < 20) throw new IOException("Incomplete owned process identity");
-            var identity = new Identity(pid, Long.parseLong(f[19]), Long.parseLong(f[1]), Long.parseLong(f[2]), Long.parseLong(f[3]), f[0]);
+            var identity = processIdentity(pid,reader.read(root.resolve("stat"),65536));observed=identity;
             long rss = 0; int threads = 0;
-            for (String line : bounded(root.resolve("status"), 65536).split("\n")) {
+            for (String line : reader.read(root.resolve("status"), 65536).split("\n")) {
                 if (line.startsWith("VmRSS:")) { String[] fields = line.trim().split("\\s+"); if (fields.length != 3 || !fields[2].equals("kB")) throw new IOException("Unknown Linux RSS units"); rss = Math.multiplyExact(Long.parseLong(fields[1]), 1024); }
                 if (line.startsWith("Threads:")) threads = Integer.parseInt(line.substring(8).trim());
             }
             if (threads < 1 || rss < 0) throw new IOException("Invalid process thread/RSS metrics");
-            return new Sample(identity, rss, threads);
+            Identity ending=processIdentity(pid,reader.read(root.resolve("stat"),65536));
+            if(ending.startTicks()!=identity.startTicks()||terminal(ending))return null;
+            return new Sample(ending, rss, threads);
         } catch (NoSuchFileException vanished) { return null; }
+        catch(IOException unreadable){
+            // ESRCH can occur after a procfs descriptor was opened. Recheck identity instead of trusting error text.
+            try{
+                Identity current=processIdentity(pid,reader.read(root.resolve("stat"),65536));
+                if(terminal(current)||(observed!=null&&current.startTicks()!=observed.startTicks()))return null;
+            }catch(NoSuchFileException vanished){return null;}
+            catch(IOException recheck){
+                if(recheck!=unreadable)unreadable.addSuppressed(recheck);
+                try{if(ProcessHandle.of(pid).map(handle->!handle.isAlive()).orElse(true))return null;}
+                catch(SecurityException forbidden){unreadable.addSuppressed(forbidden);}
+            }
+            throw unreadable;
+        }
         catch (NumberFormatException | ArithmeticException malformed) { throw new IOException("Invalid process identity/metrics", malformed); }
+    }
+    private static Identity processIdentity(long pid,String stat)throws IOException{
+        int end=stat.lastIndexOf(')');if(end<1||end+2>=stat.length())throw new IOException("Malformed owned process identity");
+        String[] fields=stat.substring(end+2).trim().split(" +");if(fields.length<20)throw new IOException("Incomplete owned process identity");
+        try{return new Identity(pid,Long.parseLong(fields[19]),Long.parseLong(fields[1]),Long.parseLong(fields[2]),Long.parseLong(fields[3]),fields[0]);}
+        catch(NumberFormatException malformed){throw new IOException("Invalid owned process identity",malformed);}
     }
     private static boolean terminal(Identity value) { return value.state.equals("Z") || value.state.equals("X"); }
 

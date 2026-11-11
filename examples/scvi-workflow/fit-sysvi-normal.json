@@ -1,0 +1,87 @@
+{
+  "schema": "omicsmatic-scvi-workflow-v1",
+  "operation": "FIT",
+  "profile": "scvi-tools-1.3.0-linux-x86_64-py3123-cpu",
+  "release": "1.3.0",
+  "python": "/absolute/path/to/scvi130/venv/bin/python",
+  "limits": {
+    "preset": "bounded-scvi-v1"
+  },
+  "reference_data": {
+    "matrix": {
+      "path": "data/reference-signed.mtx",
+      "encoding": "PLAIN_UTF8"
+    },
+    "genes": {
+      "path": "data/reference-genes.tsv",
+      "encoding": "PLAIN_UTF8"
+    },
+    "cells": {
+      "path": "data/reference-cells.tsv",
+      "encoding": "PLAIN_UTF8"
+    },
+    "metadata": {
+      "path": "data/reference-metadata.tsv",
+      "encoding": "PLAIN_UTF8"
+    },
+    "kind": "SIGNED_EXPRESSION",
+    "precision": "EXACT_FLOAT32",
+    "duplicates": "REJECT",
+    "layer": "X",
+    "batch": "batch",
+    "categorical": [
+      "site"
+    ],
+    "continuous": [
+      "age"
+    ],
+    "labels": null,
+    "unlabeled_category": null,
+    "label_use": "NONE",
+    "known_reference_labels": [],
+    "continuous_precision": "EXACT_FLOAT32",
+    "category_order": {},
+    "review": {
+      "preprocessing": "Synthetic gene centering only;not paper Pearson normalization",
+      "gene_selection": "All supplied synthetic genes;any projection is recorded explicitly",
+      "cell_population": "All32 synthetic reference cells",
+      "evidence_and_decision": "Synthetic transport demonstration only;not paper reproduction,biological validation or convergence evidence"
+    }
+  },
+  "fit": {
+    "network": {
+      "kind": "SYSVI",
+      "hidden": 16,
+      "latent": 3,
+      "layers": 1,
+      "dropout": 0.1,
+      "prior": {
+        "kind": "STANDARD_NORMAL"
+      },
+      "trainable_priors": true,
+      "embed_categorical_covariates": false,
+      "variance": "FEATURE",
+      "weight_batches": false
+    },
+    "training": {
+      "epochs": 1,
+      "train_fraction": 0.75,
+      "validation_fraction": 0.25,
+      "shuffle_split": true,
+      "batch_size": 8,
+      "seed": 68004,
+      "optimizer": "ADAM",
+      "learning_rate": 0.001,
+      "weight_decay": 1e-06,
+      "epsilon": 0.01,
+      "warmup": {
+        "unit": "NONE",
+        "count": 0
+      },
+      "minimum_kl_weight": 0.0,
+      "maximum_kl_weight": 1.0,
+      "early_stopping": null
+    },
+    "annotation": null
+  }
+}

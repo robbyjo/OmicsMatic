@@ -1,0 +1,293 @@
+{
+  "schema_version": 1,
+  "status": "passed-twenty-primary-source-role-reviews-applied",
+  "reviews_applied": true,
+  "roles": [
+    {
+      "paper_id": "P003",
+      "primary_paragraph": 130,
+      "review": {
+        "pmcid": "PMC12804090",
+        "doi": "10.1038/s41586-025-09890-3",
+        "tool_id": "rsem",
+        "evidence_paragraph_sha256": "3de9f9ef320f4b694681b064ffe19f8ab5036e35edc3c8c088e3044db130fc49",
+        "use_summary": "Estimated gene-level expected counts from alignment BAM files using RSEM; NOIseq separately normalized them to RPKM.",
+        "implementation_scope_note": "The paragraph does not specify the RSEM release, reference edition, transcript-projection command, strand or fitting options. NOIseq normalization and expression-quartile classification are separate operations.",
+        "version_reported_near_name": null,
+        "supporting_evidence": []
+      }
+    },
+    {
+      "paper_id": "P039",
+      "primary_paragraph": 54,
+      "review": {
+        "pmcid": "PMC10764288",
+        "doi": "10.1038/s41586-023-06837-4",
+        "tool_id": "rsem",
+        "evidence_paragraph_sha256": "a71458ea2698c49a1c405e193888ed5ef0136431e001d4c749757c316fbd3c40",
+        "use_summary": "Described RSEM-derived bulk mouse-brain gene TPM, produced after STAR alignment, as a comparator for Slide-tags and Slide-seq.",
+        "implementation_scope_note": "The bulk comparator was published previously; this paragraph does not establish new RSEM processing of Slide-tags or Slide-seq reads. The RSEM release and fitting/reference details are unstated. UMI-based APTM construction and Pearson comparisons are separate.",
+        "version_reported_near_name": null,
+        "supporting_evidence": []
+      }
+    },
+    {
+      "paper_id": "P040",
+      "primary_paragraph": 34,
+      "review": {
+        "pmcid": "PMC13645638",
+        "doi": "10.1038/s41586-026-10954-1",
+        "tool_id": "rsem",
+        "evidence_paragraph_sha256": "90cf72abf7c6559cb7a1954cde2969d55e3379c737b1c004a66fb2ef4267b78f",
+        "use_summary": "Reused log2(x + 1)-transformed RSEM-normalized TCGA counts and phenotype data downloaded from UCSC Xena.",
+        "implementation_scope_note": "This is precomputed-resource reuse, not evidence of running RSEM on new alignments. The normalization provenance, RSEM release and reference reconstruction are not established here. GEPIA2 correlations and cytokine selection are separate analyses.",
+        "version_reported_near_name": null,
+        "supporting_evidence": []
+      }
+    },
+    {
+      "paper_id": "P046",
+      "primary_paragraph": 30,
+      "review": {
+        "pmcid": "PMC13668669",
+        "doi": "10.1038/s41586-026-10987-6",
+        "tool_id": "rsem",
+        "evidence_paragraph_sha256": "322d8db8af1e24889e14b163392b5fcc25d406ab15a668fbe5b8f881a02ee52d",
+        "use_summary": "Performed strand-specific RSEM quantification against GENCODE 38 after STAR alignment to hg38.",
+        "implementation_scope_note": "The release is explicitly 1.2.28. Exact RSEM options and the strand direction are unstated; strand-specific does not choose forward versus reverse. Read trimming, edgeR TMM/RPKM, DESeq2 testing and limma batch removal are separate.",
+        "version_reported_near_name": "1.2.28",
+        "supporting_evidence": []
+      }
+    },
+    {
+      "paper_id": "P051",
+      "primary_paragraph": 79,
+      "review": {
+        "pmcid": "PMC12823425",
+        "doi": "10.1038/s41586-025-09807-0",
+        "tool_id": "rsem",
+        "evidence_paragraph_sha256": "cf43d68fadb315dbac3c2e655fe5033f94437e1c676b2c9612a1a25801efafb0",
+        "use_summary": "Quantified expression with RSEM 1.3.1 using stated default options against GRCm38 or GRCh38, depending on the analysis.",
+        "implementation_scope_note": "The paragraph does not resolve the exact annotation edition, aligner, reference preparation or per-library configuration. Adapter trimming, quality control and downstream limma, edgeR, DESeq2 and clustering are separate operations.",
+        "version_reported_near_name": "1.3.1",
+        "supporting_evidence": []
+      }
+    },
+    {
+      "paper_id": "P121",
+      "primary_paragraph": 45,
+      "review": {
+        "pmcid": "PMC10703691",
+        "doi": "10.1038/s41588-023-01565-x",
+        "tool_id": "rsem",
+        "evidence_paragraph_sha256": "a297a0ea20d94cd58a4966b164bc8f9549739006487d316ad97ea0a7466d2889",
+        "use_summary": "Quantified stranded paired-end RNA-seq using the RSEM-STAR pipeline against GENCODE 36 lifted to hg19, with seed 1618, posterior mean estimates, credibility intervals and estimated read-start distributions.",
+        "implementation_scope_note": "Reported options are --seed 1618 --calc-pme --calc-ci --estimate-rspd --paired-end. STAR 2.7.3a alignment, rounding estimated counts, expression filtering and paired DESeq2 models are separate. The exact strandedness argument and other unstated defaults are not inferred.",
+        "version_reported_near_name": "1.3.2",
+        "supporting_evidence": []
+      }
+    },
+    {
+      "paper_id": "P157",
+      "primary_paragraph": 42,
+      "review": {
+        "pmcid": "PMC11525184",
+        "doi": "10.1038/s41588-024-01896-3",
+        "tool_id": "rsem",
+        "evidence_paragraph_sha256": "5cd9c52cbad4baf3f7ac75388ac1abd1a11c790344535fa013cfc60bb555d0d6",
+        "use_summary": "Quantified transcripts with RSEM 1.3.0 after STAR 2.5.3a alignment to hg38 in a GTEx-based expression/eQTL workflow.",
+        "implementation_scope_note": "The paragraph gives no exact RSEM options or annotation edition. Sample QC, TMM normalization, filtering, PEER adjustment, fastQTL and meta-analysis are separate, and changes from the earlier GTEx workflow are not silently reconstructed.",
+        "version_reported_near_name": "1.3.0",
+        "supporting_evidence": []
+      }
+    },
+    {
+      "paper_id": "P182",
+      "primary_paragraph": 12,
+      "review": {
+        "pmcid": "PMC11639091",
+        "doi": "10.1016/j.ajhg.2024.10.019",
+        "tool_id": "rsem",
+        "evidence_paragraph_sha256": "519f224c8489e92e951812f943dfe4087329c8e8fff25bdb3bc55c6660c2f382",
+        "use_summary": "Described RSEM processing of STAR alignment files against the transcriptome and aggregation of RSEM gene-level results with the GTEx aggregate_rsem_results.py workflow.",
+        "implementation_scope_note": "The reference is described as GRCh38 Ensembl release 105 cDNA and noncoding sequences, but the RSEM release, exact projection command and fitting options are unstated. This wording does not establish a generic genomic-BAM-to-transcriptome conversion by the new adapter. featureCounts, Picard, dupRadar and RSeQC are separate.",
+        "version_reported_near_name": null,
+        "supporting_evidence": []
+      }
+    },
+    {
+      "paper_id": "P203",
+      "primary_paragraph": 12,
+      "review": {
+        "pmcid": "PMC11568756",
+        "doi": "10.1016/j.ajhg.2024.09.001",
+        "tool_id": "rsem",
+        "evidence_paragraph_sha256": "edabe647d70fc77a4bef381d2d245d43f7db351304e54a6e500cf8ecb1824da7",
+        "use_summary": "Quantified genes and transcripts with RSEM 1.3.0 after STAR 2.4.2a alignment.",
+        "implementation_scope_note": "The primary paragraph explicitly supplies RSEM 1.3.0, which the initial near-name extractor missed. The reference edition and fitting options are unstated. VOOM transformation, low-expression and chromosome filtering, sample exclusions and quantile normalization are separate.",
+        "version_reported_near_name": "1.3.0",
+        "supporting_evidence": []
+      }
+    },
+    {
+      "paper_id": "P220",
+      "primary_paragraph": 45,
+      "review": {
+        "pmcid": "PMC12696503",
+        "doi": "10.1016/j.ajhg.2025.08.013",
+        "tool_id": "rsem",
+        "evidence_paragraph_sha256": "1e09429b8a2f7b1793f0a42cb48d92049c70a41543f2688bdf2fa4ee9310de54",
+        "use_summary": "Estimated transcript quantities using RSEM 1.3.2 after STAR 2.7.10b alignment of paired-end human adipocyte RNA-seq.",
+        "implementation_scope_note": "The paragraph does not give the exact RSEM options or annotation edition. Library preparation, differentiation/knockdown sampling and DESeq2 1.42.0 normalization remain separate from RSEM fitting.",
+        "version_reported_near_name": "1.3.2",
+        "supporting_evidence": []
+      }
+    },
+    {
+      "paper_id": "P032",
+      "primary_paragraph": 50,
+      "review": {
+        "pmcid": "PMC11754113",
+        "doi": "10.1038/s41586-024-08314-y",
+        "tool_id": "bcl2fastq",
+        "evidence_paragraph_sha256": "1fd25d43a407a6b8328a292bf7a1d8d9c50874ebe29c97e8d0f7f1566ee1b123",
+        "use_summary": "Generated CUT&RUN FASTQ files with bcl2fastq 2.19 and the explicit --minimum-trimmed-read-length 8 setting.",
+        "implementation_scope_note": "Do not substitute a different 2.19 patch or 2.20 without an explicit version choice. The sample sheet, cycle masks and other conversion/demultiplexing settings are unstated. Cutadapt trimming, Bowtie2 alignment, spike-in scaling and peak calling are separate.",
+        "version_reported_near_name": "2.19",
+        "supporting_evidence": []
+      }
+    },
+    {
+      "paper_id": "P037",
+      "primary_paragraph": 33,
+      "review": {
+        "pmcid": "PMC10764277",
+        "doi": "10.1038/s41586-023-06838-3",
+        "tool_id": "bcl2fastq",
+        "evidence_paragraph_sha256": "f3ac61ba81f4432914e6822f88683da73381bb40bb9d09d9173c8c9a8f3cb25c",
+        "use_summary": "Demultiplexed pooled NovaSeq 6000 paired-end shotgun metagenomic reads with bcl2fastq.",
+        "implementation_scope_note": "No release, sample-sheet layout, index-orientation rule or mismatch allowance is specified. Trim Galore quality/adapter processing and removal of human-mapping reads are downstream operations.",
+        "version_reported_near_name": null,
+        "supporting_evidence": []
+      }
+    },
+    {
+      "paper_id": "P050",
+      "primary_paragraph": 47,
+      "review": {
+        "pmcid": "PMC10781626",
+        "doi": "10.1038/s41586-023-06821-y",
+        "tool_id": "bcl2fastq",
+        "evidence_paragraph_sha256": "e12f052ce57697b8e37d8ec7c8a80fa989609538f6306ff7fa68796b68b05b62",
+        "use_summary": "Reported bcl2fastq V3 for demultiplexing multiplexed paired-end ATAC-seq reads before nf-core processing.",
+        "implementation_scope_note": "The literal reported V3 identifier remains unresolved; it is not silently mapped to bcl2fastq 2.20 or to BCL Convert. The downstream pipeline name and its trimming, alignment, duplicate merging, peak calling and differential analyses are separate.",
+        "version_reported_near_name": "V3",
+        "supporting_evidence": []
+      }
+    },
+    {
+      "paper_id": "P051",
+      "primary_paragraph": 79,
+      "review": {
+        "pmcid": "PMC12823425",
+        "doi": "10.1038/s41586-025-09807-0",
+        "tool_id": "bcl2fastq",
+        "evidence_paragraph_sha256": "cf43d68fadb315dbac3c2e655fe5033f94437e1c676b2c9612a1a25801efafb0",
+        "use_summary": "Reported bcl2fastq 2.20.0.422 for producing sample FASTQ files in a preprocessing description that also names CASAVA and RTA.",
+        "implementation_scope_note": "The paragraph does not resolve which libraries used each historical component or supply sample sheets and cycle/index policies. Cutadapt, FastQC, RSEM and differential-expression tools are separate. Mixed historical wording is retained rather than reconstructed as one certified execution chain.",
+        "version_reported_near_name": "2.20.0.422",
+        "supporting_evidence": []
+      }
+    },
+    {
+      "paper_id": "P056",
+      "primary_paragraph": 54,
+      "review": {
+        "pmcid": "PMC12804087",
+        "doi": "10.1038/s41586-025-09762-w",
+        "tool_id": "bcl2fastq",
+        "evidence_paragraph_sha256": "0b3c503dccf440245f908fbb98e94ec29c2cdba1c9f306c800633d8b361b1f02",
+        "use_summary": "Converted NovaSeq 6000 raw sequencing data to FASTQ using the two reported bcl2fastq versions 2.19.1.403 and 2.20.0.422 within the HOLMES workflow.",
+        "implementation_scope_note": "Both releases are stated in the primary paragraph; the version used for each sample is unresolved. The reported .cblc spelling is not silently treated as a verified file-format declaration. Alignment, SNV/indel calling, annotation and copy-number analyses are separate.",
+        "version_reported_near_name": "2.19.1.403; 2.20.0.422",
+        "supporting_evidence": []
+      }
+    },
+    {
+      "paper_id": "P063",
+      "primary_paragraph": 23,
+      "review": {
+        "pmcid": "PMC12872466",
+        "doi": "10.1038/s41586-025-09932-w",
+        "tool_id": "bcl2fastq",
+        "evidence_paragraph_sha256": "b0cd97817c1ce4c99562a2841e661eed380739caab9b75298474d78b036fc4c1",
+        "use_summary": "Reported bcl2fastq upstream of Cell Ranger multi processing for GEX, antibody-capture and VDJ libraries.",
+        "implementation_scope_note": "The paper calls this base-calling, but that wording alone does not establish an independent raw-image base-caller or specific conversion settings. No bcl2fastq release is given. Cell Ranger remains excluded by the user; Seurat HTO/pHLA cell demultiplexing is a separate later operation.",
+        "version_reported_near_name": null,
+        "supporting_evidence": []
+      }
+    },
+    {
+      "paper_id": "P065",
+      "primary_paragraph": 70,
+      "review": {
+        "pmcid": "PMC10830415",
+        "doi": "10.1038/s41586-023-06936-2",
+        "tool_id": "bcl2fastq",
+        "evidence_paragraph_sha256": "3a035f26078e3a958e2dcb78ae008ae23f243e96006b2f1b2aecbdab7ea0b736",
+        "use_summary": "Demultiplexed sequencing reads using bcl2fastq 2.20 before Trim Galore and custom-reference bwa-mem2 processing.",
+        "implementation_scope_note": "No exact 2.20 patch, sample sheet, mismatch allowance or index-orientation policy is supplied. Trimming, alignment, duplicate removal, blacklist filtering and deepTools normalization are separate.",
+        "version_reported_near_name": "2.20",
+        "supporting_evidence": []
+      }
+    },
+    {
+      "paper_id": "P099",
+      "primary_paragraph": 43,
+      "review": {
+        "pmcid": "PMC10703679",
+        "doi": "10.1038/s41588-023-01572-y",
+        "tool_id": "bcl2fastq",
+        "evidence_paragraph_sha256": "a6283b7cfb58a890415789418c2a875d69dedfa8b6ee1463288951ab75ef2fb3",
+        "use_summary": "Converted base calls to FASTQ and demultiplexed them with bcl2fastq 2.19.0.316 while allowing one mismatched barcode base.",
+        "implementation_scope_note": "The paper describes the allowance as edit distance less than two; that wording does not establish insertion/deletion matching semantics. Cell selection, read subsampling, peak calling and HTSeq-based peak-count construction are separate downstream steps.",
+        "version_reported_near_name": "2.19.0.316",
+        "supporting_evidence": []
+      }
+    },
+    {
+      "paper_id": "P169",
+      "primary_paragraph": 30,
+      "review": {
+        "pmcid": "PMC11525171",
+        "doi": "10.1038/s41588-024-01900-w",
+        "tool_id": "bcl2fastq",
+        "evidence_paragraph_sha256": "b3e7885ec3a397ab8e6e2ae833ffda5a6b9253eaa59c83eed26a0c7bfc1d56e7",
+        "use_summary": "Converted raw MPRA sequencing data to FASTQ using bcl2fastq before MPRAflow barcode association and counting.",
+        "implementation_scope_note": "The release and conversion/index settings are unstated. Library-adapter editing, perfect-match probe association, barcode filtering and MPRAnalyze statistical models are separate from bcl2fastq.",
+        "version_reported_near_name": null,
+        "supporting_evidence": []
+      }
+    },
+    {
+      "paper_id": "P228",
+      "primary_paragraph": 14,
+      "review": {
+        "pmcid": "PMC12696504",
+        "doi": "10.1016/j.ajhg.2025.07.020",
+        "tool_id": "bcl2fastq",
+        "evidence_paragraph_sha256": "01517774821f1b2b595af4e11306edaf2d8d84b7b27e4c8259c79df66d3df8e2",
+        "use_summary": "Converted NovaSeq BCL data to FASTQ and demultiplexed paired-end RNA-seq with bcl2fastq 2.20, allowing one index mismatch.",
+        "implementation_scope_note": "Image analysis/base calling is separately attributed to NovaSeq Control software. The exact bcl2fastq patch, sample sheet, orientation and cycle masks are unstated. Trimming, STAR alignment, featureCounts, DESeq2 and g:Profiler are separate.",
+        "version_reported_near_name": "2.20",
+        "supporting_evidence": []
+      }
+    }
+  ],
+  "prior_reviews_preserved": 714,
+  "reviewed_uses": 734,
+  "supporting_pointers": 207,
+  "unrelated_observations_preserved": 2408,
+  "paper_wide_semantic_completeness_open": true,
+  "whole_paper_reproduced": false
+}

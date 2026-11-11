@@ -1,0 +1,22 @@
+// Keep the canonical executable intact during Nextflow adapter development.
+allprojects {
+    afterEvaluate {
+        def supplied = rootProject.findProperty('nextflowDevelopmentOut')
+        if (supplied == null || supplied.toString().trim().isEmpty()) {
+            throw new GradleException('Supply -PnextflowDevelopmentOut=NEW_DIRECTORY_UNDER_BUILD')
+        }
+        def base = rootProject.layout.buildDirectory.get().asFile.canonicalFile.toPath()
+        def target = rootProject.file(supplied.toString()).canonicalFile
+        if (!target.toPath().startsWith(base) || target.toPath() == base || target.exists()) {
+            throw new GradleException('Nextflow development output must be a NEW directory under build')
+        }
+        tasks.named('executableJar', org.gradle.api.tasks.bundling.Jar) {
+            destinationDirectory = target
+            archiveFileName = "omicsmatic-${project.version}-nextflow-development.jar"
+            doFirst {
+                if (archiveFile.get().asFile.exists()) throw new GradleException('Preserve the existing development executable; choose a NEW directory')
+            }
+            doLast { println("Nextflow development JAR: ${archiveFile.get().asFile}") }
+        }
+    }
+}

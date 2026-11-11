@@ -1,0 +1,262 @@
+[
+  {
+    "paper_id": "P101",
+    "review": {
+      "pmcid": "PMC10703678",
+      "doi": "10.1038/s41588-023-01571-z",
+      "tool_id": "stringtie",
+      "evidence_paragraph_sha256": "c55c77a96ef7517b8bd678bbff6f001825b9525e05b670dd40995b389c87275d",
+      "use_summary": "Assembled transcript models from HISAT2 RNA-seq alignments with StringTie2 2.1.7 defaults as transcriptome evidence for MAKER-based genome annotation.",
+      "implementation_scope_note": "The reported transcript-sequence wording does not specify an additional FASTA-extraction command. The adapter produces original GTF models; alignment, sequence extraction, MAKER, ab initio models and downstream annotation are separate. No exact whole-paper reference/input population is supplied.",
+      "version_reported_near_name": "2.1.7",
+      "usage_context": "analysis-method-description",
+      "supporting_evidence": []
+    },
+    "source_roles": [
+      {
+        "operation": "ASSEMBLE",
+        "version": "2.1.7",
+        "settings": "reported defaults"
+      }
+    ],
+    "xml_sha256": "ce1d3127ae8ceee02365eba3cae0c946505b733d66ae78d41eaa565177a6a98e",
+    "primary_paragraph_index": 35
+  },
+  {
+    "paper_id": "P102",
+    "review": {
+      "pmcid": "PMC11549052",
+      "doi": "10.1038/s41588-024-01957-7",
+      "tool_id": "stringtie",
+      "evidence_paragraph_sha256": "2f774f50b6c37e42486d2ea61ddeaf003e9abf92af07a40a8aad47de1e970490",
+      "use_summary": "Calculated gene or transcript TPM with StringTie 1.3.6 defaults after HISAT2 alignment and separate SAMtools filtering of low-MAPQ, nonunique and unmapped reads.",
+      "implementation_scope_note": "The primary paragraph explicitly reports 1.3.6 despite the earlier automated null-version extraction. Guide and exact assembly/estimation command are unstated; do not infer -e or assign the preceding SAMtools filters to StringTie. Original1.3.6 abundance behavior remains distinct from later editions.",
+      "version_reported_near_name": "1.3.6",
+      "usage_context": "analysis-method-description",
+      "supporting_evidence": []
+    },
+    "source_roles": [
+      {
+        "operation": "TPM_FROM_GENOMIC_ALIGNMENTS",
+        "version": "1.3.6",
+        "settings": "reported defaults; exact assembly/estimation command and guide unstated"
+      }
+    ],
+    "xml_sha256": "425ec8beaa23c8950a7cdbc6ecc8f51be44208b47b20acfb8e7affecc0bd0a4e",
+    "primary_paragraph_index": 39
+  },
+  {
+    "paper_id": "P109",
+    "review": {
+      "pmcid": "PMC11631756",
+      "doi": "10.1038/s41588-024-01967-5",
+      "tool_id": "stringtie",
+      "evidence_paragraph_sha256": "b10dee046ccb2eefa3869f3a1ad0481409d1cad0ad2bf7719ae63749aee00162",
+      "use_summary": "Reported using StringTie 1.3.0 to extract mapping states after HISAT2 RNA-seq alignment during annotation of repeat-masked grape haplotypes.",
+      "implementation_scope_note": "The literal mapping states wording is methodologically unclear: StringTie is not relabeled as the aligner, and no exact assembly, abundance or mapping-state extraction command is inferred. BRAKER, PASA, MAKER, AUGUSTUS and TE annotation remain separate. Exact1.3.0 is available, but this unclear source role is not claimed as reproduced.",
+      "version_reported_near_name": "1.3.0",
+      "usage_context": "analysis-method-description",
+      "supporting_evidence": []
+    },
+    "source_roles": [
+      {
+        "operation": "UNCLEAR_REPORTED_MAPPING_STATES",
+        "version": "1.3.0",
+        "settings": "not printed; preserve ambiguity"
+      }
+    ],
+    "xml_sha256": "7aaea692a224ee167d84331b0b2ed24c870a03734bd568252deba2a156e78a4e",
+    "primary_paragraph_index": 27
+  },
+  {
+    "paper_id": "P110",
+    "review": {
+      "pmcid": "PMC12695648",
+      "doi": "10.1038/s41588-025-02409-6",
+      "tool_id": "stringtie",
+      "evidence_paragraph_sha256": "cb6713d63eb56ca9582650883efd0455f8ca2795f96ac61b544c8f705077906b",
+      "use_summary": "Used StringTie for gene-model TPM across species after HISAT2 alignment; separately predicted transcript models with StringTie2.1.2 and combined StringTie/Trinity models through Mikado and PASA for annotation updates.",
+      "implementation_scope_note": "The primary TPM paragraph gives no StringTie edition or exact quantification command. The separately reported2.1.2 belongs to transcript-model prediction and is not assigned to TPM. Kallisto estimated counts/DESeq2 differential expression and deepTools track generation remain separate; Trinity, GMAP, Mikado, Augustus, Liftoff and PASA are not StringTie options.",
+      "version_reported_near_name": null,
+      "usage_context": "analysis-method-description",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 56,
+          "section": "Methods / Genome assembly and re-annotation",
+          "paragraph_sha256": "056f56e9861eb7006a6cd696653f43647954e76a8eb1c45137fdf1625f9e06b6"
+        },
+        {
+          "paragraph_index": 57,
+          "section": "Methods / Genome assembly and re-annotation",
+          "paragraph_sha256": "1545eafa0aa8c2766d73069d36a48145a2ca64796870caa6bc5a029791074372"
+        }
+      ]
+    },
+    "source_roles": [
+      {
+        "operation": "TPM_FROM_GENOMIC_ALIGNMENTS",
+        "version": null,
+        "settings": "edition and exact command unstated"
+      },
+      {
+        "operation": "ASSEMBLE",
+        "version": "2.1.2",
+        "settings": "transcript-model prediction; HISAT2 -dta/intron settings belong to the aligner"
+      },
+      {
+        "operation": "ANNOTATION_EVIDENCE",
+        "version": "2.1.2",
+        "settings": "as-above StringTie/Trinity models supplied to separate Mikado/PASA workflow"
+      }
+    ],
+    "xml_sha256": "60ec7e72b2a2ec2bef4fe2a9695ce9668fb05548951d3f624c9865080509232b",
+    "primary_paragraph_index": 46
+  },
+  {
+    "paper_id": "P171",
+    "review": {
+      "pmcid": "PMC13447107",
+      "doi": "10.1038/s41588-026-02678-9",
+      "tool_id": "stringtie",
+      "evidence_paragraph_sha256": "6c4a67905e58e8f7dd9e1527cd037ee386a8fc14fad221e417c53887d6d7c6f0",
+      "use_summary": "Assembled STAR RNA-seq alignments with StringTie3.0.0 using reported -m150 -t -f0.3 -rf; also merged RNA-seq/Iso-seq transcript assemblies and later combined transcriptome-derived/homology annotation evidence.",
+      "implementation_scope_note": "The literal -rf fails in all seven retained original editions; it is never silently corrected or claimed reproduced. Explicit --rf is a separate documented control supported by six editions, including3.0.0. The first merge reports -m150 but omits the complete merge invocation; the later combination with cuffcompare also omits exact commands. Iso-seq mapping/collapse, GMAP, cuffcompare, TransDecoder, Augustus and GeneMark are separate.",
+      "version_reported_near_name": "3.0.0",
+      "usage_context": "analysis-method-description",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 40,
+          "section": "Methods / Genome annotation",
+          "paragraph_sha256": "ee7e98084e8eccebdc5327c0e66f4638e14095c2ec7e2a14808dc0781c32230e"
+        }
+      ]
+    },
+    "source_roles": [
+      {
+        "operation": "ASSEMBLE",
+        "version": "3.0.0",
+        "reported_flags": [
+          "-m",
+          "150",
+          "-t",
+          "-f",
+          "0.3",
+          "-rf"
+        ],
+        "discrepancy": "literal -rf rejected by all seven originals; explicit documented --rf remains separate"
+      },
+      {
+        "operation": "MERGE",
+        "version": "3.0.0",
+        "reported_flags": [
+          "-m",
+          "150"
+        ],
+        "settings": "complete invocation unstated"
+      },
+      {
+        "operation": "ANNOTATION_EVIDENCE_COMBINATION",
+        "version": "3.0.0",
+        "settings": "combination with cuffcompare; complete invocation unstated"
+      }
+    ],
+    "xml_sha256": "ff3ca782d6de1cb39d389e91226f83dec87f7b14265fc75e264318f3724193fa",
+    "primary_paragraph_index": 38
+  },
+  {
+    "paper_id": "P183",
+    "review": {
+      "pmcid": "PMC12824624",
+      "doi": "10.1016/j.ajhg.2025.11.012",
+      "tool_id": "stringtie",
+      "evidence_paragraph_sha256": "57dacde3bef40f518dcf82943ea240c821bcfe5559abd396bb04461039f724fd",
+      "use_summary": "Assembled STAR alignments with a supplied GENCODE guide using StringTie -G, then combined sample transcript models with StringTie --merge for lncRNA discovery.",
+      "implementation_scope_note": "StringTie edition and remaining parameters are unstated. The source names hg19 alignment together with GENCODEv38; exact compatible reference/guide resources remain unresolved and are not silently relabeled. The adjacent StringTie GffCompare wording describes a separate comparison tool, not this adapter. BlastX/CPC2 filtering and RNA-SeQC2.3.5 expression estimation are separate; their counts/TPM are not attributed to StringTie.",
+      "version_reported_near_name": null,
+      "usage_context": "analysis-method-description",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 8,
+          "section": "Material and methods / Identification and quantification of lncRNAs in the 10 primary brain RNA-seq datasets",
+          "paragraph_sha256": "01134b1cf7f13038c82f5e816b92e8d4d4bd23f82a4be3fce321dc2dd0e11a1d"
+        },
+        {
+          "paragraph_index": 22,
+          "section": "Results / Identifying lncRNAs and circRNAs in the brain cortex",
+          "paragraph_sha256": "56a5b73c18997fbed45d431d169f4e436580d13ed2d931826091bdc2bc1bba75"
+        }
+      ]
+    },
+    "source_roles": [
+      {
+        "operation": "ASSEMBLE",
+        "version": null,
+        "reported_flags": [
+          "-G"
+        ],
+        "settings": "exact edition and guide resource compatibility unresolved"
+      },
+      {
+        "operation": "MERGE",
+        "version": null,
+        "reported_flags": [
+          "--merge"
+        ],
+        "settings": "exact edition and remaining options unstated"
+      },
+      {
+        "operation": "SEPARATE_GFFCOMPARE",
+        "version": null,
+        "settings": "retain named source paragraph without attributing GffCompare to this adapter"
+      }
+    ],
+    "xml_sha256": "f712738d2996e5a02826e4d939365bf1889c12ba08f9f65621cecc07798abedc",
+    "primary_paragraph_index": 7
+  },
+  {
+    "paper_id": "P223",
+    "review": {
+      "pmcid": "PMC11339655",
+      "doi": "10.1016/j.ajhg.2024.06.018",
+      "tool_id": "stringtie",
+      "evidence_paragraph_sha256": "4c5b5a51658efb96cabd0943ccfec2ce8e97b73de281161bc3befafcfa197df1",
+      "use_summary": "Included StringTie in an unspecified HISAT2/StringTie/Ballgown short-read RNA-seq workflow on GRCh38/hg38 iNeuron data.",
+      "implementation_scope_note": "The combined aligned and mapped wording does not identify a precise StringTie command or edition. Do not relabel StringTie as the aligner or claim Ballgown differential testing. Salmon-generated counts, edgeR differential expression, biomaRt identifiers and Rsubread junction counts are separate steps.",
+      "version_reported_near_name": null,
+      "usage_context": "analysis-method-description",
+      "supporting_evidence": []
+    },
+    "source_roles": [
+      {
+        "operation": "UNSPECIFIED_HISAT2_STRINGTIE_BALLGOWN_WORKFLOW",
+        "version": null,
+        "settings": "exact StringTie command/edition unstated"
+      }
+    ],
+    "xml_sha256": "12a39771e280e2ac90433d9881faae4b4b3d11bde9e35070997f405b2409a342",
+    "primary_paragraph_index": 10
+  },
+  {
+    "paper_id": "P248",
+    "review": {
+      "pmcid": "PMC13447089",
+      "doi": "10.1038/s41588-026-02682-z",
+      "tool_id": "stringtie",
+      "evidence_paragraph_sha256": "6e413cb59f116f49368d799bea6077eecce578593ecd5227be0c58b01eb7dc0d",
+      "use_summary": "Assembled strand-specific RNA-seq alignments into transcripts with StringTie2.2.1 as evidence for protein-coding gene annotation.",
+      "implementation_scope_note": "The exact StringTie command and strand convention are not printed; strand-specific data do not justify inventing --rf or --fr. BRAKER2 intron hints, GenomeThreader homology, EVidenceModeler model choice/segment settings, repeat-overlap filtering, DIAMOND, InterPro and KEGG annotation remain separate.",
+      "version_reported_near_name": "2.2.1",
+      "usage_context": "analysis-method-description",
+      "supporting_evidence": []
+    },
+    "source_roles": [
+      {
+        "operation": "ASSEMBLE",
+        "version": "2.2.1",
+        "settings": "exact command and strand convention unstated"
+      }
+    ],
+    "xml_sha256": "6d73b939291dc5f2f13f1da8a89a7835c4195e4b38553c6c08410107d61400e5",
+    "primary_paragraph_index": 43
+  }
+]

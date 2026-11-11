@@ -1,0 +1,419 @@
+{
+  "schema_version": 1,
+  "status": "passed-native-alignment-accounting-and-source-linked-decoder-development",
+  "recorded_utc": "2026-10-31T22:36:48.463496+00:00",
+  "scope": "Complete canonical SAM semantics plus privately source-linked original SAM/BAM/CRAM decoding with per-record effective dictionary state. Protected runtime/reference/fitting workflow and portable setup remain unfinished.",
+  "tests_per_JVM": 111,
+  "profiles": {
+    "Windows21": {
+      "passed": 111,
+      "skipped": 0
+    },
+    "Windows25": {
+      "passed": 111,
+      "skipped": 0
+    },
+    "Linux21": {
+      "passed": 111,
+      "skipped": 0
+    }
+  },
+  "focused_skips": 0,
+  "strict_Java17_and_javadoc": true,
+  "candidate": "build/literature-review/rsem-runtime/alignment-native-matrix-1/omicsmatic-0.3.7.jar",
+  "candidate_sha256": "98f8770bfe535ac4fb480e14f60bfe0945fa791113545783cf2823f7ea56c6d2",
+  "changed_existing_JAR_members": [
+    "org/jlinalg/sequence/RsemCounts.class"
+  ],
+  "added_JAR_members": [
+    "org/jlinalg/sequence/RsemSamAlignments$1.class",
+    "org/jlinalg/sequence/RsemSamAlignments$Accounting.class",
+    "org/jlinalg/sequence/RsemSamAlignments$Check.class",
+    "org/jlinalg/sequence/RsemSamAlignments$Counter.class",
+    "org/jlinalg/sequence/RsemSamAlignments$FileAudit.class",
+    "org/jlinalg/sequence/RsemSamAlignments$Finding.class",
+    "org/jlinalg/sequence/RsemSamAlignments$Group.class",
+    "org/jlinalg/sequence/RsemSamAlignments$Hit.class",
+    "org/jlinalg/sequence/RsemSamAlignments$Limits.class",
+    "org/jlinalg/sequence/RsemSamAlignments$Lines.class",
+    "org/jlinalg/sequence/RsemSamAlignments$MetadataLines.class",
+    "org/jlinalg/sequence/RsemSamAlignments$Options.class",
+    "org/jlinalg/sequence/RsemSamAlignments$Pending.class",
+    "org/jlinalg/sequence/RsemSamAlignments$Record.class",
+    "org/jlinalg/sequence/RsemSamAlignments$RecordMetadata.class",
+    "org/jlinalg/sequence/RsemSamAlignments$Sam.class",
+    "org/jlinalg/sequence/RsemSamAlignments$Sink.class",
+    "org/jlinalg/sequence/RsemSamAlignments$State.class",
+    "org/jlinalg/sequence/RsemSamAlignments$Summary.class",
+    "org/jlinalg/sequence/RsemSamAlignments$Target.class",
+    "org/jlinalg/sequence/RsemSamAlignments.class"
+  ],
+  "all_other_predecessor_JAR_members_preserved": true,
+  "source_count_correction": {
+    "invariant": "nIsoMulti equals all alignable groups with more than one hit,including gene-multimappers and duplicate hits; nMulti<=nIsoMulti; exact histogram consistency.",
+    "prior_native_failure_retained": true,
+    "prior_native_exit": 2,
+    "original_source_profiles": 5,
+    "original_formats": [
+      "sam",
+      "bam",
+      "cram"
+    ],
+    "valid_original_cross_gene_cases": 15,
+    "existing_method_corrected": "src/main/java/org/jlinalg/sequence/RsemCounts.java",
+    "incorrect_test_expectation_replaced": "nIsoMulti was incorrectly treated as a subset of nUnique"
+  },
+  "differential_cases": {
+    "source_cases": 580,
+    "successful_decodes": 575,
+    "successful_decodable_parser_projections": 478,
+    "retained_original_parser_failures": 97,
+    "decoder_failures": 5,
+    "comparison_fields": [
+      "complete .cnt accounting",
+      "all .dat coordinates",
+      "full .omit list",
+      "every FASTA/FASTQ byte",
+      "all physical decoded records",
+      "metadata completion population"
+    ]
+  },
+  "original_read_flag_vectors": 2640,
+  "source_release_profiles": [
+    "1.2.28",
+    "1.3.0",
+    "1.3.1",
+    "1.3.2",
+    "1.3.3"
+  ],
+  "fixture": {
+    "path": "src/test/resources/org/jlinalg/sequence/rsem-reference/alignment-fixtures.zip",
+    "sha256": "c22c99f8e414d864df86367b01a825237810c4c9a744eb8f1c100dbfb901f72c",
+    "bytes": 1169285,
+    "payload_files": 3992,
+    "CRAM_reference_and_index_included": true
+  },
+  "original_abundance_vectors_per_JVM": 668,
+  "existing_original_fitting_result_pairs": 59,
+  "existing_separate_original_writer_pairs": 24,
+  "decoder_controls": [
+    {
+      "label": "missing-cram-reference",
+      "exit_code": 3,
+      "diagnostic": "Required action: supply the exact permitted local CRAM reference and its .fai;dependent decoding is skipped\n",
+      "no_output_created": true
+    },
+    {
+      "label": "unavailable-cram-reference",
+      "exit_code": 3,
+      "diagnostic": "Required local CRAM reference is unavailable\n",
+      "no_output_created": true
+    },
+    {
+      "label": "missing-cram-reference-index",
+      "exit_code": 3,
+      "diagnostic": "Required local CRAM reference .fai is unavailable\n",
+      "no_output_created": true
+    },
+    {
+      "label": "existing-output-refused",
+      "exit_code": 2,
+      "existing_bytes_preserved": true
+    },
+    {
+      "label": "truncated-binary-refused",
+      "exit_code": 2,
+      "diagnostic": "[W::bam_hdr_read] EOF marker is absent. The input is probably truncated.\nOriginal decoder failed before complete end of input\n",
+      "no_metadata_completion": true
+    }
+  ],
+  "source_validator_exit0_invalid_is_not_success": true,
+  "source_header_text_effective_length_disagreement_retained": true,
+  "source_semantics_and_fitting_safety_separate": true,
+  "source_evidence": [
+    {
+      "path": "docs/literature/RSEM_ALIGNMENT_ADMISSION.md",
+      "sha256": "926dd91c05d0c6bd0590d2594c9fe23193b40d40824d6bb3dd195f6aeb211eac"
+    },
+    {
+      "path": "docs/literature/RSEM_DEVELOPMENT.md",
+      "sha256": "a5219866acc799273f35fe3c5ad6a4e0748aff0e77f6ec95054a3fba9ea89968"
+    },
+    {
+      "path": "docs/literature/RSEM_FILE_READERS.md",
+      "sha256": "f782ad26788d3d307e5abf3d6bc6baf7838da2e588fc31268e4cf6cd1c7569d3"
+    },
+    {
+      "path": "docs/literature/RSEM_RESULT_AUDIT.md",
+      "sha256": "6973d2c30469896c19f62e56f6a2491779c49ecc946ea2e4ed0923bc568f5c2a"
+    },
+    {
+      "path": "examples/rsem-native-audit/README.md",
+      "sha256": "fd0d8240b7ce07f4373e5885ba2f547e810eea88af5064174ceef60182bccd12"
+    },
+    {
+      "path": "examples/rsem-native-audit/RsemNativeAuditExample.java",
+      "sha256": "55d03300d8ddbd9f8207325be77bf18a75a1dd12a1e89df8d2d7251834558cc5"
+    },
+    {
+      "path": "examples/rsem-native-audit/synthetic-original-output.zip",
+      "sha256": "656c1ed7a470a4b8c442b112c902846c81117a6c5765420958a795eb099d1884"
+    },
+    {
+      "path": "src/main/java/org/jlinalg/sequence/RsemAbundance.java",
+      "sha256": "7107b279598b512a5eb0e4f4662f5bec83772a847fa981f52ffb723ecaf1452d"
+    },
+    {
+      "path": "src/main/java/org/jlinalg/sequence/RsemCounts.java",
+      "sha256": "e851cbbb44e5caf4bf4165bb0dc25297abb2b7e9ba66ac359eca7619949ad835"
+    },
+    {
+      "path": "src/main/java/org/jlinalg/sequence/RsemEvidence.java",
+      "sha256": "c510a03568c1824d3404c3dfd382ea646ee4890c8de1e69e383a71e80300db91"
+    },
+    {
+      "path": "src/main/java/org/jlinalg/sequence/RsemModel.java",
+      "sha256": "6261527cd8b416ab12e946912ed67705b776e5b5e400e81b64ef02a010f333f7"
+    },
+    {
+      "path": "src/main/java/org/jlinalg/sequence/RsemPrintedNumber.java",
+      "sha256": "008bac421005a355292ca6f49c172f405883223697237dc52d9ff14ee3629493"
+    },
+    {
+      "path": "src/main/java/org/jlinalg/sequence/RsemReference.java",
+      "sha256": "74996a8afae1bff58273b76da918bc66b6e466f4bbd7b30ecc95057cdb213a97"
+    },
+    {
+      "path": "src/main/java/org/jlinalg/sequence/RsemResults.java",
+      "sha256": "9873b7c8f56189941197d33451387c18dfd949a4191a31c2dd2130d598ead236"
+    },
+    {
+      "path": "src/main/java/org/jlinalg/sequence/RsemSamAlignments.java",
+      "sha256": "71cc09d4877fe425ecd5ff17467b5f19a42846eeff04f296b9142e21610eeb95"
+    },
+    {
+      "path": "src/main/java/org/jlinalg/sequence/RsemText.java",
+      "sha256": "5b9ce9f83bc46a3d6d3746f1edfda330c5d9df285d746e1706d0e55f68fc3973"
+    },
+    {
+      "path": "src/main/resources/META-INF/licenses/RSEM-GPL-3.0.txt",
+      "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903"
+    },
+    {
+      "path": "src/test/java/org/jlinalg/sequence/RsemAbundanceTest.java",
+      "sha256": "b36e4e27debaedda7ae03e4d6f8a09d8c0d0bf62372a2593db48e8d6a46b2b53"
+    },
+    {
+      "path": "src/test/java/org/jlinalg/sequence/RsemAdmissionTest.java",
+      "sha256": "f19ffe7c54d89d3c38646c4353db95f70206530f99e0c1d44934bad19e0eb196"
+    },
+    {
+      "path": "src/test/java/org/jlinalg/sequence/RsemCountsTest.java",
+      "sha256": "1adfa986a1206c6797869ebb2a1e397fc61f37106858c54cdc44c57603594c12"
+    },
+    {
+      "path": "src/test/java/org/jlinalg/sequence/RsemPrintedNumberTest.java",
+      "sha256": "4e462c2b3c099bc6626e13c162dd41e919cb14b44abc0751b1ab1b352284cfc1"
+    },
+    {
+      "path": "src/test/java/org/jlinalg/sequence/RsemResultsTest.java",
+      "sha256": "34cec0e5391986bdd7ae6a78dc4156b85a9ce025eb6cd2b594861154c9483b34"
+    },
+    {
+      "path": "src/test/java/org/jlinalg/sequence/RsemSamAlignmentsTest.java",
+      "sha256": "7ca059bd5b56cfe6cc497f25aa32dbb4cc2c5cd2364523bf381261dbea8ad552"
+    },
+    {
+      "path": "src/test/resources/org/jlinalg/sequence/rsem-reference/alignment-fixtures.zip",
+      "sha256": "c22c99f8e414d864df86367b01a825237810c4c9a744eb8f1c100dbfb901f72c"
+    },
+    {
+      "path": "src/test/resources/org/jlinalg/sequence/rsem-reference/arithmetic.tsv",
+      "sha256": "011354d05cde7707fd2ae6479fc707a46144f80d7330f243d2e32e38bb2484d8"
+    },
+    {
+      "path": "src/test/resources/org/jlinalg/sequence/rsem-reference/historical.tsv",
+      "sha256": "b834c19f05e42c62bf95353728e5952e9f3d76a8bfc72921ae2cfc4302163173"
+    },
+    {
+      "path": "src/test/resources/org/jlinalg/sequence/rsem-reference/provenance.json",
+      "sha256": "a36e434de243e3ce5449d2b3795e1781d89ebf481f5d1e53955c3897b2a9cf28"
+    },
+    {
+      "path": "src/test/resources/org/jlinalg/sequence/rsem-reference/reference-model-fixtures.zip",
+      "sha256": "e972d1842f4829996b24375418d8162741eef097635a46c770ec10dbe65b49cb"
+    },
+    {
+      "path": "src/test/resources/org/jlinalg/sequence/rsem-reference/result-fixtures.zip",
+      "sha256": "b8ed9638384dccf91b09ac124d84313c6815b1eac9bb4bcef8f0477e032adddb"
+    },
+    {
+      "path": "src/test/resources/org/jlinalg/sequence/rsem-reference/writer-fixtures.zip",
+      "sha256": "a0938c035a0f57a0ad0583dda1aa4ad476d8f900465530bf0e89b2356c68c954"
+    },
+    {
+      "path": "src/test/resources/org/jlinalg/sequence/rsem-reference/writer-provenance.json",
+      "sha256": "eff5655c674779190fc606c72722af8fe129c442d3bfde4bc43a4517632d304f"
+    },
+    {
+      "path": "tools/literature/rsem-reference/arithmetic.cpp",
+      "sha256": "28544e9a33189c71142a7bcfcc27600be4b4a7eded1fcc3f1e020f91c85f182c"
+    },
+    {
+      "path": "tools/literature/rsem-reference/decode.cpp",
+      "sha256": "f6cb8e71fc5172374f0cf860a5b6524134c0337048a0ef5e0460c435cde239e7"
+    },
+    {
+      "path": "tools/literature/rsem-reference/low-quality.cpp",
+      "sha256": "6ac508a6406358ac3cf0948caef7ddbd5060b1cbaa509a40d0b5c55c4f55ce6a"
+    },
+    {
+      "path": "tools/literature/rsem-reference/writer.cpp",
+      "sha256": "5a112a7ab9936f9ec1e29877ac771e3b64622511ce7b0c8129e03b907d76e873"
+    }
+  ],
+  "local_evidence": [
+    {
+      "path": "build/literature-review/rsem-runtime/alignment-native-matrix-1/observed.json",
+      "sha256": "7dd2bedd186081b7f2af0ccde78421267372809be7009d158e4684a8403a5459"
+    },
+    {
+      "path": "build/literature-review/rsem-runtime/alignment-original-1/observed.json",
+      "sha256": "4f2ff85331ad94acff6e5025d681eaed75d47d4c2f3d7af36b0be1131004cfcf"
+    },
+    {
+      "path": "build/literature-review/rsem-runtime/alignment-decoder-1/observed.json",
+      "sha256": "e7e9837223fbebd36053d7be3743c9e234765336b5b3df028bcdd8f6c56e3ff7"
+    },
+    {
+      "path": "build/literature-review/rsem-runtime/alignment-bridge-1/observed.json",
+      "sha256": "f15e04085e6704d44db9595bb3c0f20c3053dbad53ccaf37fdd6c1352ce492c0"
+    },
+    {
+      "path": "build/literature-review/rsem-runtime/alignment-extra-1/observed.json",
+      "sha256": "f1a6d3d23e2c9704816ae3a6b078767089d7533cd1dfcdf91fcf5d1a256cd962"
+    },
+    {
+      "path": "build/literature-review/rsem-runtime/counts-invariant-recovery-1/observed.json",
+      "sha256": "03c43a824ee7b7cb248f26c7834856595caab1798f0a0030aad35cd49a6eaeba"
+    },
+    {
+      "path": "build/literature-review/rsem-runtime/source-downloads-1/archives.json",
+      "sha256": "8e5444e9bc5051d344244b2aa386d64e78b6588b38b5808087edfc81b803c052"
+    },
+    {
+      "path": "build/literature-review/rsem-runtime/result-native-matrix-2/observed.json",
+      "sha256": "68949f322180fd36cf9662cac281825a4a2fcf2b3499c894c52ac56d48fcdccc"
+    },
+    {
+      "path": "build/literature-review/rsem-runtime/result-example-matrix-1/observed.json",
+      "sha256": "4ee1dd8b2301ac0b49f4e4e3b10208300b9299864629e1920fee3cc340dba4ba"
+    },
+    {
+      "path": "build/literature-review/rsem-runtime/alignment-example-matrix-1/observed.json",
+      "sha256": "4887c43b17d5a3af95dfd3d10721dd605f8dda1ed95e58512fd8006344b2bdc0"
+    }
+  ],
+  "portable_runtime_admission_available": false,
+  "public_fitting_workflow_available": false,
+  "biological_or_whole_paper_reproduction_certified": false,
+  "new_integrations": 55,
+  "total_with_existing": 58,
+  "missing": 264,
+  "whole_goal_complete": false,
+  "current_native_example": {
+    "profiles": {
+      "Windows21": {
+        "complete_transcripts": 6,
+        "complete_genes": 4,
+        "complete_numeric_fields": 162,
+        "consumed_hashes": 8,
+        "warnings": 2,
+        "existing_output_refused": true,
+        "existing_output_preserved": true,
+        "altered_input_refused_before_output": true
+      },
+      "Windows25": {
+        "complete_transcripts": 6,
+        "complete_genes": 4,
+        "complete_numeric_fields": 162,
+        "consumed_hashes": 8,
+        "warnings": 2,
+        "existing_output_refused": true,
+        "existing_output_preserved": true,
+        "altered_input_refused_before_output": true
+      },
+      "Linux21": {
+        "complete_transcripts": 6,
+        "complete_genes": 4,
+        "complete_numeric_fields": 162,
+        "consumed_hashes": 8,
+        "warnings": 2,
+        "existing_output_refused": true,
+        "existing_output_preserved": true,
+        "altered_input_refused_before_output": true
+      }
+    },
+    "strict_Java17_and_javadoc": true,
+    "process_commands": 9,
+    "original_tool_invoked": false
+  },
+  "publication_documentation_update": {
+    "recorded_utc": "2026-10-31T22:44:31.917056+00:00",
+    "scope": "Reader/example documentation now points to the current 111-test milestone and freshly rerun example. Scientific source hashes unchanged from exact-package matrix.",
+    "changes": [
+      {
+        "path": "docs/literature/RSEM_FILE_READERS.md",
+        "prior_sha256": "7c7b44d3a56deb8d849906564e75b2fd87ac0d449aee2b44595d91cfe997cee5",
+        "sha256": "f782ad26788d3d307e5abf3d6bc6baf7838da2e588fc31268e4cf6cd1c7569d3"
+      },
+      {
+        "path": "examples/rsem-native-audit/README.md",
+        "prior_sha256": "5fb1daff562f0d40dae49e590959eea31d0e2c518c808ee8539a806cca58338f",
+        "sha256": "fd0d8240b7ce07f4373e5885ba2f547e810eea88af5064174ceef60182bccd12"
+      }
+    ]
+  },
+  "runtime_documentation_update": {
+    "recorded_utc": "2026-10-31T23:45:14.009280+00:00",
+    "scope": "Documentation-only pointer to the separately validated runtime development layer. Existing native alignment/count scientific sources,tests and fixtures are unchanged.",
+    "changes": [
+      {
+        "path": "docs/literature/RSEM_DEVELOPMENT.md",
+        "prior_sha256": "8a3a04b7ed7a6b09b635183f812209dff14289ac57c6374af4a68faca33d1ce5",
+        "current_sha256": "be40b2b3a9d88244f1cbf7e87e0650149df862060effafd6541a77ef75433f28"
+      }
+    ],
+    "separate_validation": {
+      "path": "docs/literature/RSEM_RUNTIME_VALIDATION.json",
+      "sha256": "4380922d430899375ff0730ca5f3136f0b30bcc918f74bc0915c7e97be936c52"
+    }
+  },
+  "source_setup_documentation_update": {
+    "recorded_utc": "2026-11-01T00:50:06.592746+00:00",
+    "scope": "Only development documentation now identifies the retained historical runtime candidate and the failed current setup; native alignment/count science, tests and fixtures remain unchanged.",
+    "changes": [
+      {
+        "path": "docs/literature/RSEM_DEVELOPMENT.md",
+        "prior_sha256": "be40b2b3a9d88244f1cbf7e87e0650149df862060effafd6541a77ef75433f28",
+        "current_sha256": "4f922cbe8a1029bdf5d9a646641a0fcf3d29d109b982a4dba4730c784f5963f3"
+      }
+    ],
+    "historical_runtime_record_prior_sha256": "b1ac87bae30e414c0592a2bb87ad9e6ce3d9edb4dbc9790bd2400d3017d32b67"
+  },
+  "source_build_documentation_update": {
+    "recorded_utc": "2026-11-01T02:42:10.091303+00:00",
+    "scope": "Documentation-only forward pointer to fresh source-build/runtime controls;native alignment/count science,tests and fixtures are unchanged.",
+    "changes": [
+      {
+        "path": "docs/literature/RSEM_DEVELOPMENT.md",
+        "prior_sha256": "4f922cbe8a1029bdf5d9a646641a0fcf3d29d109b982a4dba4730c784f5963f3",
+        "current_sha256": "a5219866acc799273f35fe3c5ad6a4e0748aff0e77f6ec95054a3fba9ea89968"
+      }
+    ],
+    "separate_validation": {
+      "path": "docs/literature/RSEM_SOURCE_SETUP_VALIDATION.json",
+      "sha256": "1abff00be14ca48e833adf520be8837305075c8778e34f8ca2ba9365b85b91e7"
+    }
+  }
+}

@@ -1,4 +1,512 @@
+# 250 paper omics and GWAS toolbox catalog
+
+**Current checkpoint: 99 new scoped integrations**: 19 native Java methods and
+80 tested upstream adapters. There are **102 including three existing adapters**,
+with **244 named tools still missing**. Cell Ranger remains excluded at the
+user's request. The full toolbox goal remains active.
+
+The fixed collection contains 250 papers: 71 Nature, 104 Nature Genetics and
+75 AJHG articles from 2023-10-23 through 2026-10-23. No time extension was needed.
+There are 402 observed tools, 2,476 paper-tool observations, 1,049 source-bound
+reviewed roles and 375 supporting paragraph pointers. Paper-wide semantic
+review and implementation remain incomplete.
+
+Read [scDRS setup, analysis and recovery](../SCDRS_INTEGRATION.md) for the typed
+`scdrs-tools` route, exact private Linux runtime preparation and complete JSON
+requests. Original 1.0.0/1.0.1/1.0.2 functions implement gene-set munging,
+single-dataset H5AD scoring and downstream workflows. Native numerical
+components and explicit-family BH remain separately described and tested.
+
+Six primary paper roles preserve distinct settings. P021 reports 1.0.1 and
+200 controls; P085 reports 1.0.0 and 1000 controls; P055/P123 report 1.0.2.
+P024 leaves the version unstated. P169 writes the plural scDRSs and reports
+1.0.1 with separate atlas inputs, but no exact command, control count or
+preprocessing. A source-reviewed registry overlay corrects that omitted
+observation without modifying the historical base registry. Unreported
+settings and historical author commits are not inferred.
+
+The 23 original workflow controls cover 877998 byte-identical numerical and
+gene-weight coordinates and 69 saved JVM checks. Two controls use 1000 disease
+genes and 1000 controls. All 24 packaged bundles replay on Windows Java21/25
+and Linux Java21. Native BH matches 67161 double q values and strict cutoff
+decisions across three JVMs; 36 refusal/tamper controls admit no failed result.
+These are synthetic controls, not biological replication or an atlas benchmark.
+
+[MTAG](../MTAG_INTEGRATION.md), [GENESIS](../GENESIS_INTEGRATION.md) and
+[SNPRelate](../SNPRELATE_INTEGRATION.md) retain their distinct workflows and
+evidence. All 401 other tool objects and 1043 earlier review objects are
+preserved. The root supplement requires the separately pinned canonical JAR;
+the released executable alone has no new command. No release or Pages
+deployment is performed by this catalog update.
+
+**Warnings and required actions:** SKIP3 means skip dependent analysis when
+exact permitted software or capabilities are unavailable or forbidden.
+Download/install only where permitted, with explicit options and NEW private
+paths; otherwise leave analysis skipped. Analysis installs nothing. FAIL2
+admits no result, including partial original outputs. Require wrapper exit0,
+result_admitted=true, COMPLETED.json and complete saved --verify, then review
+every warning, original log, identifier and covariate disposition ledger.
+Preserve each attempt, resolve its named cause and retry NEW paths. Do not
+repair identifiers/NaN/Inf, silently encode covariates, replace historical
+versions, reduce controls or pool correction families to conceal failure.
+Logical resource checks are not OS RAM quotas. Hashes establish integrity,
+not producer authenticity; saved verification does not independently refit
+LOESS, covariates, scores or graphs. Original corr_mcp/corr_mcz are distinct
+from ordinary Pearson r. Native BH uses one trait/annotation family within
+this dataset, with strict q<declared cutoff. Read the integration guide.
+
+Current records: [tool inventory](tool-inventory.json), [papers](papers.json),
+[summary](summary.json), [warnings and required actions](WARNINGS.md).
+
+<details>
+<summary>Generated catalog reference and retained historical checkpoints</summary>
+
+# 250 paper omics and GWAS toolbox catalog
+
+**Current checkpoint: 95 new scoped integrations**: 19 native Java methods and
+76 tested upstream adapters. There are **98 including three existing adapters**,
+with **246 named tools still missing**. Cell Ranger remains excluded at the
+user's request. The full toolbox goal remains active.
+
+The fixed collection contains 250 papers: 71 Nature, 104 Nature Genetics and
+75 AJHG articles from 2023-10-23 through 2026-10-23. No time extension was needed.
+There are 400 observed tools from 438 definitions, 2,466 paper-tool observations,
+1,029 source-bound reviewed roles and 367 supporting pointers. Paper-wide
+semantic review and implementation remain incomplete.
+
+Read [DIAMOND integration](../DIAMOND_INTEGRATION.md) for the self-contained Java
+command, `diamond-tools` root route, explicit Linux source/runtime setup and
+complete requests. Five reviewed roles add one scoped upstream adapter while
+preserving all 1,024 prior reviews and 399 unrelated tool entries. Original
+2.0.0/2.0.15/2.1.8 alignment controls cover 78 source cases: 72 successful
+comparisons and six preserved original failures. Complete saved-bundle checks
+and native audits do not independently refit alignments or reproduce papers.
+
+**Warnings and required actions:** SKIP3 means skip the dependent analysis until
+the exact permitted prerequisite is available. Download/install only where
+allowed; if unavailable or forbidden, keep the analysis skipped. FAIL2 admits
+no result, including earlier successful steps: preserve the attempt, inspect
+the named cause and original logs, correct it explicitly and retry new paths.
+Analysis installs nothing. Require exit 0, result_admitted=true and successful
+complete verification, then read every warning and original output.
+
+DIAMOND source crashes, tested paired-FASTQ failures, cutoff precedence,
+rounded/zero E-values and duplicate-ID ambiguity remain visible. P017 has no
+reported version and uses different or unspecified coverage denominators.
+P054's score100 does not resolve raw versus bit score or an external filter:
+require that exact study interpretation before claiming the cutoff. Downstream
+classification, abundance, DBSCAN/KDE, GraftM and mSynOrths remain separate.
+Existing CellChat warnings and its unresolved P060 custom-score analysis remain
+in force; Spyrrow remains missing.
+
+Current records: [tool inventory](tool-inventory.json), [papers](papers.json),
+[summary](summary.json), [warnings and required actions](WARNINGS.md),
+[DIAMOND source-role coverage](diamond-role-coverage.json) and
+[validation checkpoint](diamond-catalog-validation.json).
+
+The generated reference and earlier checkpoints below are retained exactly.
+Their historical counts describe those checkpoints; current records above
+describe this checkpoint.
+
+<details>
+<summary>Generated catalog reference and retained historical checkpoints</summary>
+
+# 250 paper omics and GWAS toolbox catalog
+
+**Current checkpoint: 94 new scoped integrations**: 19 native Java methods and
+75 tested upstream adapters. There are **97 including three existing adapters**,
+with **247 named tools still missing**. Cell Ranger remains excluded at the
+user's request. The full toolbox goal remains active.
+
+The fixed cohort contains 250 papers: 71 Nature, 104 Nature Genetics and 75 AJHG
+articles from 2023-10-23 through 2026-10-23. No time extension was needed.
+There are 400 observed tools from 438 definitions, 2,466 paper-tool observations,
+1,024 source-bound reviewed roles and 357 supporting pointers. Paper-wide
+semantic review and implementation remain incomplete.
+
+Read [CellChat integration](../CELLCHAT_INTEGRATION.md) for the `cellchat-tools`
+root command, self-contained standalone alternatives, explicit original source
+profiles, database exports and required actions. Six reviewed paper roles
+distinguish resource use, original inference, network embedding/comparison and
+sample-aware strengths. This adds one tested scoped adapter. All 1,018 previous
+reviews and the 399 unrelated tool entries remain unchanged.
+
+**Warnings and required actions:** SKIP3 means skip dependent analysis until the
+exact permitted prerequisite is available; if installation is unavailable or
+forbidden, keep it skipped. FAIL2 admits no new result: preserve the attempt,
+fix the named cause and retry new paths. Analysis installs nothing. Require
+exit 0, result_admitted=true and successful complete verification; read every
+warning, original output, provenance and captured parent warning.
+
+Original CellChat invalid p-fields, fallback zeros, FNN/SNN anomalies,
+missing/nonfinite strengths, parallel RNG warnings and UMAP variability remain
+visible. They are not repaired or made valid by transport success. P060's custom
+score aggregation remains unresolved: skip that study-score analysis until the
+exact implementation is supplied. CellChat database export remains available.
+Spyrrow, CellTrek, LIANA and FlowSig are separate tool roles; Spyrrow remains
+missing in the catalog. Historical paper reproduction is not claimed.
+
+Current records: [tool inventory](tool-inventory.json), [papers](papers.json),
+[summary](summary.json), [warnings and required actions](WARNINGS.md) and
+[CellChat source-role coverage](cellchat-role-coverage.json).
+
+The generated reference and earlier checkpoints below are retained exactly.
+Individual historical notes retain their own counts and availability limits;
+the current records above are authoritative for this checkpoint.
+
+<details>
+<summary>Generated catalog reference and retained historical checkpoints</summary>
+
+# 250 paper omics and GWAS toolbox catalog
+
+**Current checkpoint: 93 new scoped integrations** — 19 native Java methods and
+74 tested upstream adapters. There are **96 including three existing adapters**,
+with **248 named tools still missing**. These are scoped implementations with
+explicit limits. Cell Ranger remains excluded at the user's request.
+
+The unchanged fixed cohort contains 250 papers: 71 Nature, 104 Nature Genetics and
+75 AJHG articles from 2023-10-23 through 2026-10-23. No time extension was needed.
+The catalog contains 400 observed tools from 438 definitions, 2,466 paper–tool
+observations, 1,018 reviewed roles and 356 supporting pointers.
+
+Read [cisTarget integration](../CISTARGET_INTEGRATION.md) for the native
+`cistarget-tools` command, explicit numerical profiles, complete ranked-feature
+inputs, optional Feather conversion and required warning/failure actions.
+The seven source roles distinguish algorithm execution, SCENIC/SCENIC+ inputs and
+motif-collection use. P145 adds one missed “cis-target” Methods resource
+observation. P061 has one explicit review enrichment, with its prior text
+retained. All 1,011 other prior reviews and every unrelated observation remain
+unchanged. The 399 unrelated tool entries also remain unchanged.
+
+Current records: [tool inventory](tool-inventory.json), [papers](papers.json),
+[summary](summary.json), [warnings and required actions](WARNINGS.md), and
+[cisTarget source-role coverage](cistarget-role-coverage.json).
+
+Native TSV analysis installs nothing. Optional Feather conversion requires a
+permitted private PyArrow 17.0.0 runtime: SKIP3 means skip the conversion and its
+dependent analysis until that prerequisite is available. FAIL2 admits no result;
+preserve partials, correct the named problem and retry new paths. Read every
+warning and disposition, especially undefined or rounding-only NES values.
+
+The full 250-paper implementation and paper-wide semantic review remain open.
+The material below is retained historical checkpoint documentation; its opening
+counts and availability statements describe that earlier checkpoint.
+
+<details>
+<summary>Historical MR-MEGA checkpoint and retained catalog material</summary>
+
+# 250-paper omics/GWAS toolbox catalog
+
+**Current checkpoint: 92 new integrations**: 18 native Java methods and 74 tested
+upstream adapters. There are **95 including three existing adapters**, with
+**249 named tools still missing**. These are scoped implementations, not whole
+packages or whole-paper reproductions. Cell Ranger remains excluded by the user.
+
+The unchanged fixed cohort contains 250 papers: Nature71, Nature Genetics104 and
+AJHG75, published from2023-10-23 through2026-10-23. No time extension was needed.
+There are400 observed tools from438 definitions,2465 observations,1,012 reviewed
+roles and355 supporting pointers. This checkpoint adds three primary MR-MEGA
+reviews and one native availability row. All1,009 earlier reviews,399 other
+inventory rows, paper identities and observed memberships remain exact.
+
+Read [MR-MEGA integration](../MRMEGA_INTEGRATION.md) for the mrmega-tools project
+command, settings, native float32/ancestry/GC behavior and tested root supplement.
+Native user analysis needs no original MR-MEGA, compiler, R or installation.
+The canonical executable is unchanged. Two errors in unpublished review drafts
+were corrected against retained primary XML: P072 requires at least six of seven
+cohorts; P162 reports six significant index variants. The incorrect drafts remain
+frozen as history and were never applied to the catalog.
+
+**Require exit0, run.json PASS_NATIVE_MRMEGA_WITH_WARNINGS and an admitted
+results.tsv. Read [WARNINGS.md](WARNINGS.md) and every row/variant disposition.**
+FAIL2 admits no result table; partials stay under partial/. Correct the named
+cause and retry NEW paths. SmallCohortCount rows retain NA tests. Source odd
+lambda medians, duplicate/N behavior, no_alleles sign flips and float32 boundaries
+are explicit. Native stable P fields never overwrite original approximation
+fields. Original-reference prerequisites are separate: if installation/execution
+is forbidden or unavailable, skip dependent reference work with named recovery.
+
+The broader250-paper goal remains active. Frozen verification checks integrity
+and stored relationships, not fresh scientific execution, independent user-data
+refitting, authenticity or whole-paper reproduction. The preceding guide follows
+verbatim as history; its counts and badges describe earlier checkpoints.
+
+<details>
+<summary>Historical prior catalog document, retained verbatim</summary>
+
+# 250-paper omics/GWAS toolbox catalog
+
+**Current checkpoint: 91 new integrations**: 17 native Java subsets and 74 tested
+upstream adapters. There are **94 including three existing adapters**, with
+**250 named tools still missing**. These are scoped workflows, not complete
+packages or whole-paper reproduction. Cell Ranger remains excluded.
+
+The fixed cohort contains 250 papers: Nature 71, Nature Genetics 104 and AJHG 75,
+published from 2023-10-23 through 2026-10-23. No time extension was needed.
+There are 400 observed tools from 438 definitions, 2,465 paper/tool observations,
+1,009 reviewed roles and 353 supporting pointers. This checkpoint adds six
+primary Sniffles reviews and one availability row. All 1,003 earlier reviews,
+399 other inventory rows, paper identities and observed memberships remain exact.
+
+Read [Sniffles workflows](../SNIFFLES_WORKFLOWS.md) for the standalone Java
+entry points, exact original editions, permitted private installation and a
+complete toy CRAM/reference example. Original calling remains upstream. The
+canonical executable is unchanged.
+
+**Require exit 0 AND root COMPLETED.json analysis_admitted=true for the whole
+batch.** Read [WARNINGS.md](WARNINGS.md), complete original logs/VCFs and process
+receipts. **SKIP3 skips dependent calling** when exact permitted software is
+unavailable or execution/installation is forbidden. **FAIL2 admits no case,
+including earlier complete cases.** Preserve failed/provisional output, correct
+the named cause and retry NEW paths. Analysis installs nothing.
+
+Legacy event-segment size and modern alignment length are distinct settings.
+Retain the original legacy missing-deletion and DUP-to-INV discrepancies; never
+relabel calls. A fatal zero-byte VCF is failed output, even with original exit0.
+Existing read HP/PS phasing does not perform haplotagging. Unreported paper
+commands, Boolean filters and depth fields remain unresolved. Frozen verification
+checks integrity/consistency, not fresh calling, independent SV refitting,
+authenticity, biological accuracy or whole-paper reproduction.
+
+The preceding guide follows verbatim as history. Its counts and missing badges
+describe earlier checkpoints. The broader implementation goal remains active.
+
+<details>
+<summary>Historical prior catalog document, retained verbatim</summary>
+
+# 250-paper omics/GWAS toolbox catalog
+
+**Current checkpoint: 90 new integrations**: 17 native Java subsets and 73 tested
+upstream adapters. There are **93 including three existing adapters**, with
+**251 named tools still missing**. These are scoped workflows, not complete
+packages or whole-paper reproduction. Cell Ranger remains excluded.
+
+The fixed cohort contains 250 papers: Nature 71, Nature Genetics 104 and AJHG 75,
+published from 2023-10-23 through 2026-10-23. No time extension was needed.
+There are 400 observed tools from 438 definitions, 2,465 paper/tool observations,
+1,003 reviewed roles and 349 supporting pointers. This update refines three
+Rsubread reviews, adds three, and changes one availability row. All 997 other
+reviews, 399 other inventory rows, paper identities and observed memberships
+remain exact.
+
+Rsubread bulk counting is available through standalone development
+`org.jlinalg.cli.RsubreadWorkflowCli`, with `RsubreadRuntimeCli` for binding.
+Read [the complete guide](../RSUBREAD_WORKFLOWS.md). Two explicit original Windows
+profiles provide Rsubread 2.26.0/R4.6.1 and selected 2.23.2/R4.4.1 counting.
+Typed per-library units/strand, exact GTF/SAF inputs and mappings, original RDS
+objects and complete native value/relationship checks are retained. Original
+read assignment and junction discovery/counting remain upstream. The canonical
+executable is unchanged.
+
+**Require exit 0 AND root COMPLETED.json analysis_admitted=true for the entire batch.**
+Read [WARNINGS.md](WARNINGS.md), original errors/logs, objects and process receipts.
+**SKIP3 skips dependent analysis** when permitted exact software/bindings are
+unavailable or execution/installation is forbidden. **FAIL2 admits no case,
+including earlier completed cases.** Preserve failed/provisional output, correct
+the named cause and retry NEW paths. Original GPL package/source export requires
+explicit permission; analysis installs nothing. Linux counting/binding skips,
+while frozen native verification is portable.
+
+Declare library units and settings explicitly. Fragment thresholds do not enable
+filtering when checkFragLength=false; preserve the P133 ATAC omissions and later
+separate sample rename. The 2.23.2 label appears in 22 recovered upstream commits;
+the selected source retains development warnings and does not identify the paper
+binary. Unreported APIs, editions and annotation/aggregation choices remain
+unresolved. Do not replace missing or automatically coerced identifiers.
+
+Both JDK21/25 compiler artifacts independently pass 58 complete separate-original
+comparisons: 50 WindowsJVM21 and eight WindowsJVM25 per compiler. Real runtime
+skips, late original/native failures, cancellation, timeout/output/interruption,
+deeper corruptions and beginner package/data-export/bind/count/verify examples
+pass. Four new CLI bytecode differences are recorded, while all 14 prior value
+classes and R resources remain unchanged. VERIFY is structural consistency,
+not independent refitting, source-input parsing parity or execution authentication.
+No independent alignment/junction counting, full-package or paper claim is made.
+
+The complete preceding document follows verbatim as history. Earlier counts and
+missing badges describe their checkpoints; use the current inventory and guides.
+The broader implementation goal remains active.
+
+<details>
+<summary>Historical prior catalog document, retained verbatim</summary>
+
+# 250-paper omics/GWAS toolbox catalog
+
+**Current checkpoint: 89 new integrations**: 17 native Java subsets and 72 tested
+upstream adapters. There are **92 including three existing adapters**, with
+**252 named tools still missing**. These are scoped workflows, not complete
+packages or whole-paper reproduction. Cell Ranger remains excluded.
+
+The fixed cohort contains 250 papers: Nature 71, Nature Genetics 104 and AJHG 75,
+published from 2023-10-23 through 2026-10-23. No time extension was needed.
+There are 400 observed tools from 438 definitions, 2,465 paper/tool observations,
+1,000 reviewed roles and 347 supporting pointers. This update adds seven hifiasm
+roles and one availability row. All 993 previous reviews, other 399 inventory
+rows, paper identities and observed-tool memberships remain exact.
+
+Hifiasm is available through development `org.jlinalg.cli.HifiasmWorkflowCli`,
+with separate `HifiasmSetupCli` and `HifiasmRuntimeCli`. Read
+[the complete guide](../HIFIASM.md). Six exact original source profiles provide
+the declared HiFi, trio, Hi-C, UL and ONT modes. Native Java inspects all reads,
+parental entries, complete graphs and literal FASTA exports. Original correction,
+overlap construction, consensus and phasing remain upstream. The canonical
+executable is unchanged.
+
+**Require exit 0 AND COMPLETED.json analysis_admitted=true for the entire batch.**
+Read [WARNINGS.md](WARNINGS.md), graph audits, original stderr and process receipts.
+**SKIP3 skips dependent analysis** when required permitted software or installation
+is unavailable. **FAIL2 admits no case, including earlier completed cases.**
+Preserve failed/provisional outputs and named causes; correct the problem and
+retry NEW paths. Analysis installs nothing.
+
+Old 0.14.2/0.15.1 Hi-C is excluded after retained original crashes. ONT-only
+0.22.0 requires genuine FASTQ qualities. Unreported paper settings and revision
+suffixes remain unresolved. Small-control defaults need explicit capacity
+overrides for real genomes; streaming parental checks do not reduce the
+assembler's own memory needs. Graph integrity does not certify consensus,
+phasing, completeness or biological quality. Keep scaffolding and QC separate.
+
+The full preceding document follows verbatim as history. Earlier counts and
+missing badges describe their checkpoints. Use the current inventory and guides
+for availability. The broader implementation goal remains active.
+
+<details>
+<summary>Historical prior catalog document, retained verbatim</summary>
+
+# 250-paper omics/GWAS toolbox catalog
+
+**Current checkpoint: 88 new integrations**: 17 native Java subsets and 71 tested
+upstream adapters. There are **91 including three existing adapters**, with
+**253 named tools still missing**. These counts describe scoped workflows,
+not complete packages or whole-paper reproduction. Cell Ranger is excluded.
+
+The catalog retains 250 papers: Nature 71, Nature Genetics 104 and AJHG 75.
+Its review window is 2023-10-23 through 2026-10-23; no extension was needed.
+There are 400 observed tools from 438 definitions, 2,465 paper/tool observations,
+993 reviewed roles and 344 supporting pointers. This update changes only the
+GSEApy availability row and six GSEApy paper roles. All other 399 tool rows,
+987 reviews, paper identities and observed-tool memberships remain exact.
+
+GSEApy is available through development `org.jlinalg.cli.GseapyWorkflowCli`
+and separate `GseapyExecutionSetupCli`. It runs explicit original-class local
+Enrichr, prerank, GSEA, ssGSEA and GSVA workflows for four exact editions.
+Read [the execution guide](../GSEAPY_EXECUTION.md) and
+[current catalog guide](../GSEAPY_CATALOG.md). The canonical executable is unchanged.
+Original preprocessing, permutations/RNG and GSVA fitting remain upstream.
+
+**SKIP3 skips dependent analysis** when required software, permitted storage or
+installation/download permission is unavailable. **FAIL2 admits no case from
+the whole requested batch, including earlier completed cases.** Preserve all
+original failures and provisionals, correct the named cause and retry NEW paths.
+Require exit 0 AND `analysis-status.json result_admitted=true`. RUN installs nothing.
+Read [WARNINGS.md](WARNINGS.md), native audits and original/process logs.
+
+Do not infer historical remote library contents, unspecified GSEA/GSVA modes or
+paper settings. P098 reports a two-tailed test; the original local statistics
+uses a one-sided upper tail. That discrepancy remains unresolved. Preserve
+version-specific curves, SymRank no-op, zero-permutation placeholders and
+nonfinite diagnostics. Native normalized-null auditing requires finite sort
+inputs; unsupported families fail the whole batch.
+
+The full preceding document follows verbatim as history. Its earlier counts
+and missing badges describe those checkpoints. Use the current summary,
+inventory and guides for availability. The implementation goal remains active.
+
+<details>
+<summary>Historical prior catalog document, retained verbatim</summary>
+
+# 250-paper omics/GWAS toolbox catalog
+
+**Current checkpoint: 87 new integrations** (17 native Java subsets and70 tested
+upstream adapters), **90 including three existing adapters**, with **254 named
+tools still missing**. These are explicitly scoped implementations, not claims
+of complete packages or whole-paper reproduction. Cell Ranger remains excluded.
+
+The frozen catalog contains250 papers (Nature71, Nature Genetics104 and AJHG75),
+400 observed named tools from438 registry definitions,2465 paper/tool observations,
+988 reviewed uses and340 supporting pointers. Its original review window is
+2023-10-23 through2026-10-23; no extension was needed. All paper identities,
+observations, reviewed roles and399 other tool rows are preserved by this update.
+
+scFates is now available through the validated development
+`org.jlinalg.cli.ScfatesWorkflowCli`, with separate `ScfatesSetupCli` setup.
+It executes original scFates1.2.5/SimplePPT1.1.7 CPU tree/root/pseudotime on explicit
+prepared coordinates. Read [the execution guide](../SCFATES_WORKFLOW.md) and
+[catalog integration guide](../SCFATES_CATALOG.md). The canonical executable
+is unchanged. P094's edition/root/iterations and biological results are not inferred.
+
+**SKIP3 skips dependent analysis** if compatible software or installation/download
+permission is unavailable. **FAIL2 admits no case from the entire requested batch**,
+including earlier completed cases. Keep original inputs, failures, provisionals
+and logs; correct the named cause and retry NEW paths. RUN installs nothing.
+Read [WARNINGS.md](WARNINGS.md), console warnings, native audits and process receipts.
+Original NaN/Inf, zero assignments, missing milestones, directional root rounding,
+scalar-edge projection, initialization bookkeeping and NumPy ties remain explicit.
+No palette, fallback probability, renormalization or annotation is fabricated.
+
+The earlier Palantir checkpoint and all prior text follow verbatim as history.
+Use the current summary/inventory and the current implementation guide for
+availability; historical missing counts and pending statements describe those
+earlier checkpoints. The250-paper implementation goal remains active.
+
+<details>
+<summary>Historical prior catalog document, retained verbatim</summary>
+
+# Literature-driven omics toolbox: current status
+
+The fixed cohort contains **250 papers,400 named tools,2,465 paper-tool observations,988 reviewed uses and340 supporting paragraph pointers**. Current scoped availability is **86 new integrations:17 native subsets and69 upstream adapters**, or **89 including three existing adapters**. **255 tools remain missing.** Paper-wide semantic completeness and the full implementation goal remain open. Five newly recognized names add four missing entries; Palantir receives the one new adapter credit.
+
+Read the [current catalog update](../PALANTIR_CATALOG.md), [Palantir setup/workflow guide](../PALANTIR_WORKFLOW_DEVELOPMENT.md), [catalog validation](palantir-catalog-validation.json), [summary](summary.json) and [tool inventory](tool-inventory.json). Eight source-bound Palantir/scFates/SAW/Stereopy/DoRothEA roles are appended to the prior980 reviews. Raw paper identities, all prior observations and all prior reviews are retained. Original source versions and unreported paper choices remain explicit.
+
+**Warnings and recovery:** read [WARNINGS.md](WARNINGS.md) and every analysis status. Missing or forbidden dependencies mean **SKIP3: skip dependent analysis**. **FAIL2 admits no atomic result, including earlier completed outputs.** Preserve originals and provisionals, resolve the named cause and retry NEW paths. Separate permitted setup is explicit; RUN installs nothing. Original Palantir clipping can reduce fate-row mass while entropy retains its preclip meaning. Native audits do not independently refit trajectories. Cell Ranger remains excluded.
+
+Run current read-only verification from the project root:
+
+```powershell
+python -I -B tools/literature/verify_palantir_catalog.py
+python -I -B tools/literature/palantir_workflow_evidence.py
+```
+
+The source-pointer audit additionally needs the local original XML/extraction cache. The original three-year window remains2023-10-23 through2026-10-23; no extension was needed. The canonical executable is unchanged. No release or website deployment is claimed; unfinished literature pages remain excluded from Pages.
+
+## Retained historical documentation
+
+All text below is preserved byte for byte from the previous document. Its counts and statements labelled current are historical and are superseded by the status above.
+
+<details>
+<summary>Previous status documents and evidence links</summary>
+
+# Literature-driven omics toolbox: current status
+
+The fixed cohort contains **250 papers, 390 named tools, 2,450 paper-tool observations, 932 reviewed uses and 322 supporting paragraph pointers**. Current scoped availability is **78 new integrations: 17 native subsets and 61 upstream adapters**, or **81 including three existing adapters**. **253 tools remain missing**. Paper-wide semantic completeness and the full implementation goal remain open.
+
+The [dndscv workflow guide](../DNDSCV_WORKFLOWS.md) covers native coding annotation/opportunity arithmetic and source-bound original selection, with offline source export, exact private setup, a runnable example and explicit SKIP3/FAIL2 recovery. Seven primary roles and eleven supporting paragraphs preserve custom coverage, mouse references, clone-level events, IntOGen consensus boundaries, the unresolved0.1.0 versus0.0.1.0 version and pentanucleotide/filter ambiguities. Complete tables and N/L arrays match24 original case executions;64 native coding and17 workflow checks pass per JVM on Windows Java21/25 and Linux Java21. See the [validation and public opaque-object omission limits](../dndscv-workflow-development/VALIDATION.json).
+
+Prior [SoupX](../SOUPX_WORKFLOWS.md), [fitdistrplus and Cicero](../FITDISTRPLUS_SOURCE_REVIEW.md) coverage remains available. The canonical executable is unchanged; use the documented separate development JARs or build current sources.
+
+**Warnings and recovery:** read [WARNINGS.md](WARNINGS.md) and every analysis status. Missing/forbidden original dependencies mean SKIP3 and skip the dependent analysis. FAIL2 admits no atomic result, including earlier completed outputs. Preserve failed/partial evidence, correct the named cause and retry NEW paths. No silent omission, ID repair, score replacement, rescaling or version/method substitution occurs. Cell Ranger remains excluded and py-monocle's license decision remains pending.
+
+Current verification:
+
+```powershell
+python tools/literature/dndscv_workflow_evidence.py
+python tools/literature/audit_dndscv_catalog.py
+python tools/literature/verify_dndscv_review_context.py
+python tools/literature/verify_dndscv_catalog.py
+```
+
+Run these commands from the repository root. The source-pointer audit needs the local original XML/extraction cache. Use [summary.json](summary.json) and [tool-inventory.json](tool-inventory.json) for current counts and exact scopes. The original three-year window remains2023-10-23 through2026-10-23; no extension was needed. No release or website deployment is claimed; unfinished literature pages remain excluded from Pages.
+
+## Retained historical checkpoints
+
+The text below is preserved from earlier milestones. Its counts and statements labeled current describe those earlier checkpoints; they do not replace the current status above.
+
+<details>
+<summary>Earlier milestone text and evidence links</summary>
+
 # Literature-driven omics toolbox expansion
+
+**RepeatMasker public workflow validated:** native annotation reuse and original two-stage SEARCH pass complete output/tree comparisons in both declared profiles. [Workflow and required actions](REPEATMASKER_PUBLIC_WORKFLOW.md) and [validation](repeatmasker-validation.json) retain unsupported editions, resource permissions and scientific limits. The full 250-paper goal remains active.
 
 **Eagle 2.4.1 cohort/reference phasing is now a validated scoped development integration.**
 Use `eagle-tools` with native VCF/BCF2.2 checks and protected source/conversion
@@ -7,9 +515,11 @@ ledgers. The [workflow](EAGLE_WORKFLOWS.md), [BCF guide](EAGLE_BCF_STATUS.md),
 retain exact input, edition, matching and missingness boundaries. All 169 strict
 tests pass on each of three JVMs; 40 original-matched phasing protocols cover
 692,743 calls, and the copyable BCF examples match 512 direct-original calls.
-The current catalog has **53 new validated integrations plus 3 existing
-adapters (56 total)** and **266 missing**. It retains 250 papers, 379 named
-tools, 2,428 observations, 693 reviewed uses and 202 supporting pointers.
+The current catalog has **54 new validated integrations plus 3 existing
+adapters (57 total)** and **265 missing**. It retains 250 papers, 379 named
+tools, 2,428 observations, 703 reviewed uses and 203 supporting pointers.
+
+[Eleven RepeatMasker source roles](REPEATMASKER_SOURCE_REVIEW.md) distinguish annotation reuse from search and masking. The scoped original workflow is available; read REPEATMASKER_PUBLIC_WORKFLOW.md for exact profiles and recovery.
 
 **Required action:** use an admitted Linux runtime for original phasing; skip
 the dependent analysis with **SKIP3** when a dependency or requested capability
@@ -795,3 +1305,27 @@ The [implementation queue](implementation-plan.md) and `tool-inventory.json`
 distinguish missing tools, related existing methods, existing adapters/lookups,
 and newly validated subsets. Complete the remaining integrations and semantic
 coverage review before marking the overall goal complete.
+
+</details>
+
+</details>
+
+</details>
+
+</details>
+
+</details>
+
+</details>
+
+</details>
+
+</details>
+
+</details>
+
+</details>
+
+</details>
+
+</details>

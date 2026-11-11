@@ -1,0 +1,160 @@
+{
+  "schema_version": 1,
+  "status": "source-reviewed-sharing-methods-development-not-catalog-promotion",
+  "upstream": {
+    "version": "0.2.79",
+    "source_url": "https://github.com/stephenslab/mashr/blob/cbf046294caeecb3f84d3c588c14bb29ca3f8f39/R/get_functions.R",
+    "source_pin": {
+      "bytes": 9096,
+      "sha256": "12ebd57fa59f671ac9baf23912525c6c8de418b9367d6d70876a937f441592c7"
+    }
+  },
+  "source_paragraphs": [
+    {
+      "pmcid": "PMC13600940",
+      "xml": {
+        "bytes": 333586,
+        "sha256": "67a35ac2cd25950973379382addff05cb689b1a4b1424c71ec1e54b7e8b01209"
+      },
+      "paragraphs": [
+        {
+          "paragraph_index": 51,
+          "section": "Methods / mash Analysis",
+          "text_sha256": "12b105f6ca043601f7a2b08a3a8fda775bb7508fc5da7661fa9484f16287e44d"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC13600939",
+      "xml": {
+        "bytes": 281310,
+        "sha256": "d6e691fbafe8e1c42b7a5dbfab7d06ad9e456f833141e7d1b54c2cba9107b1cd"
+      },
+      "paragraphs": [
+        {
+          "paragraph_index": 94,
+          "section": "Methods / Degree of sharing across the EN, IN and glial subclasses",
+          "text_sha256": "f1d2f3c8c50f7f237fdd159e3e2c5ae71bd9887fcc536efa975b35b8f28122b4"
+        },
+        {
+          "paragraph_index": 97,
+          "section": "Methods / Degree of sharing across the EN, IN and glial subclasses / Mashr analysis",
+          "text_sha256": "4349cb94707abb2795b547d3149e098fd8a7bb46e48aa8097c5694cd223c0878"
+        },
+        {
+          "paragraph_index": 98,
+          "section": "Methods / Degree of sharing across the EN, IN and glial subclasses / Mashr analysis",
+          "text_sha256": "2e9690d30593c4fcfa7eac4c874d6d769e11f5505e17be361ab362aca0f9d16e"
+        },
+        {
+          "paragraph_index": 99,
+          "section": "Methods / Degree of sharing across the EN, IN and glial subclasses / Mashr analysis",
+          "text_sha256": "b6a6f68c5dfe98bd8efebf9d1dcc2d744bf4d72320f70bff95e360d0350593f9"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC13600946",
+      "xml": {
+        "bytes": 388960,
+        "sha256": "95f294a27bf20b44f42ea8b780e347b1cd16849df0e48ee9745ac43600cd7c07"
+      },
+      "paragraphs": [
+        {
+          "paragraph_index": 84,
+          "section": "Methods / Evaluation of shared disease signatures",
+          "text_sha256": "7ec9bbe7eb609663fc9bbe6b72c2236d552e0292b562cbe461cba2f32cfc999d"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC13649587",
+      "xml": {
+        "bytes": 264630,
+        "sha256": "d0274e977260abcc52aecd4abe6f0e8b8901a5948beae068b28661a402dd5126"
+      },
+      "paragraphs": [
+        {
+          "paragraph_index": 55,
+          "section": "Methods / MashR",
+          "text_sha256": "69bf04647b1a6ebc5eab71fd96482cd79860a3d441bd9422f32c63068cda15ca"
+        },
+        {
+          "paragraph_index": 56,
+          "section": "Methods / CaQTL effect-size and motif disruption score correlation",
+          "text_sha256": "7b0a6a7e2fcd06cddf4c745d1d3592a76440dbe3afdc8b07c895cd7cf0ec8432"
+        },
+        {
+          "paragraph_index": 57,
+          "section": "Methods / Pairwise caQTL effect-size correlation",
+          "text_sha256": "135b5baed720b2de6391bf2a5b8f6576cccb355ee07a1553a0cba7d25c9d4be9"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC11568790",
+      "xml": {
+        "bytes": 271554,
+        "sha256": "405d53aae833dabbdca2d4dcf82fd0ce5d250102cd27c27f0e707acbb3b4163f"
+      },
+      "paragraphs": [
+        {
+          "paragraph_index": 15,
+          "section": "Subjects, material, and methods / Identifying shared cis-sQTLs and differences in effect sizes",
+          "text_sha256": "e9fbe85a71da9f6b4e608bbf694d921fbb71fa1c282c794e81a28f80b435a4bc"
+        },
+        {
+          "paragraph_index": 27,
+          "section": "Results / Characterization of Indonesian cis-sQTLs in whole blood",
+          "text_sha256": "64db6a5d0f0df369b7cf5a5f8fb0a6b068d81e3857b3cee298d452866afa3bf5"
+        }
+      ]
+    }
+  ],
+  "methods": [
+    {
+      "name": "significance selection and condition count",
+      "semantics": "Upstream significance is strictly below the explicit threshold, selected rows sorted stably by their minimum. Repeated condition indices retain upstream count semantics. An explicit inclusive boundary supports the separately reported P019 convention."
+    },
+    {
+      "name": "posterior-mean pairwise sharing",
+      "semantics": "Use each pair union of strictly significant rows. Compare the literal transformed-mean ratio strictly between factor and reciprocal factor. Mirror the upper triangle. Empty selection and selected undefined 0/0 are distinct retained states. Factor zero is literal source division, including infinities/underflow; factor one keeps strict bounds."
+    },
+    {
+      "name": "P021 marginal sign-score product",
+      "semantics": "Multiply 1-LFSR over explicitly named groups. The paper also requires nominal P<0.05 in at least two subclasses, then uses score>0.9. This score does not establish independence, same-sign effect directions, Pr(nonzero), or a joint posterior probability."
+    }
+  ],
+  "P092_supplement": {
+    "review_status": "relevant full page text and rendered page visually reviewed",
+    "pdf_source": {
+      "url": "https://static-content.springer.com/esm/art%3A10.1038%2Fs41588-026-02755-z/MediaObjects/41588_2026_2755_MOESM1_ESM.pdf",
+      "bytes": 313288,
+      "sha256": "8086a1bd0cab5f8e26329cdb1f146107855f0854d211755d427e78ae64db7adc"
+    },
+    "reviewed_pdf_page": 4,
+    "render": {
+      "bytes": 449246,
+      "sha256": "c028b9126391e6bbea41fc300381a5cacefceaeec054577cee20bd193294dbe5"
+    },
+    "section": "mashR",
+    "method_paraphrase": "The note specifies mashr0.2.79. Effects are Pi minus 0.5; the stated SE formula is abs(beta/sqrt(Chi-square)). Fitting uses tests available across all cell types with finite nonmissing effects and SE. Strong rows have FDR below 10% in any cell type; two million remaining peak-SNP pairs form a random control subset. Queries select the lowest-q SNP per peak across cell types. Missing query effects and SE are explicitly zero and 1e-6. The resulting effects and LFSR support significance at 0.05.",
+    "unresolved": [
+      "The beta symbol in the SE formula requires explicit input-field mapping; do not infer a transformation from unsigned P values.",
+      "PCA/ED settings, mixture optimizer choices, random seed and other unreported fit settings remain analyst-supplied; do not infer them from a version number.",
+      "The very small reported missing-query SE must not be silently changed to 1e6 or 1e10. Zero/invalid derived SE still needs explicit analysis admission."
+    ],
+    "body_only_draft_supersession": "This supplement adds an explicit MASH query-input missingness rule beyond the previously reviewed downstream RASQUAL correlation rule. The earlier frozen draft is preserved as history."
+  },
+  "P024_formal_composite": {
+    "status": "unresolved-not-substituted",
+    "reason": "The article mentions a formal nonzero-effect composite across eight disease contrasts and a literal posterior threshold >=0.05. Its referenced formal test and exact contrast construction are not established by the P021 marginal sign product; no automatic substitution is implemented."
+  },
+  "claims": {
+    "paper_role_coverage_complete": false,
+    "study_route_available": false,
+    "catalog_promoted": false,
+    "whole_paper_reproduced": false,
+    "biological_accuracy_certified": false
+  }
+}

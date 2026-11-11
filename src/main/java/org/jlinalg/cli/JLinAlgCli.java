@@ -28,6 +28,32 @@ public final class JLinAlgCli {
             if (arguments.length > 0 && arguments[0].equals("study"))
                 return StudyCli.run(Arrays.copyOfRange(
                     arguments, 1, arguments.length), output, errorOutput);
+            if (arguments.length > 0 && arguments[0].equals("nextflow-tools"))
+                return NextflowToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+            if (arguments.length > 0 && arguments[0].equals("salmon-tools"))
+                return SalmonToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+            if (arguments.length > 0 && arguments[0].equals("tomtom-tools"))
+                return TomtomToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+            if (arguments.length > 0 && arguments[0].equals("bigwig-tools"))
+                return BigWigToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+            if (arguments.length > 0 && arguments[0].equals("stringtie-tools"))
+                return StringTieToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+            if (arguments.length > 0 && arguments[0].equals("chromvar-tools"))
+                return ChromVarToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+            if (arguments.length > 0 && arguments[0].equals("deseq2-tools"))
+                return Deseq2InferenceCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+            if (arguments.length > 0 && arguments[0].equals("deseq2-normalize"))
+                return Deseq2NormalizationCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+            if (arguments.length > 0 && arguments[0].equals("signac-tools"))
+                return SignacToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+            if (arguments.length > 0 && arguments[0].equals("htseq-tools"))
+                return HtseqToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+            if (arguments.length > 0 && arguments[0].equals("meme-tools"))
+                return MemeToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+            if (arguments.length > 0 && arguments[0].equals("chipseeker-tools"))
+                return ChipSeekerToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+            if (arguments.length > 0 && arguments[0].equals("monocle-tools"))
+                return MonocleToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
             ProjectConfiguration.Resolved config = ProjectConfiguration.resolve(arguments,
                 java.nio.file.Path.of("").toAbsolutePath(), java.nio.file.Path.of(System.getProperty("user.home")));
             arguments = config.arguments();
@@ -81,6 +107,10 @@ public final class JLinAlgCli {
             return SignatureScoreCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
         if (arguments.length > 0 && arguments[0].equals("intervals"))
             return GenomicIntervalCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("scvi-tools"))
+            return ScviToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("rsem-tools"))
+            return RsemToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
         if (arguments.length > 0 && arguments[0].equals("cell-embed"))
             return CellEmbeddingCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
         if (arguments.length > 0 && arguments[0].equals("sequence-qc"))
@@ -149,6 +179,18 @@ public final class JLinAlgCli {
             return AdmixtureToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
         if (arguments.length > 0 && arguments[0].equals("eagle-tools"))
             return EagleToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("shapeit-tools"))
+            return ShapeitToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("pal2nal-tools"))
+            return Pal2NalToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("mashr-tools"))
+            return MashToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("fastp-tools"))
+            return FastpToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("mafft-tools"))
+            return MafftToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("iqtree-tools"))
+            return IqtreeToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
         if (arguments.length > 0 && arguments[0].equals("repeat-tools"))
             return RepeatToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
         if (arguments.length > 0 && arguments[0].equals("minimac-tools"))
@@ -175,6 +217,22 @@ public final class JLinAlgCli {
             return QuantileNormalizeCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
         if (arguments.length > 0 && arguments[0].equals("deep-tools"))
             return DeepToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("diamond-tools"))
+            return DiamondToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("scdrs-tools"))
+            return ScdrsToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("mtag-tools"))
+            return MtagToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("genesis-tools"))
+            return GenesisWorkflowToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("snprelate-tools"))
+            return SnprelateToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("cellchat-tools"))
+            return CellChatToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("cistarget-tools"))
+            return CisTargetWorkflowCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("mrmega-tools"))
+            return MrMegaWorkflowCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
         if (arguments.length > 0 && arguments[0].equals("magma-tools"))
             return MagmaToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
         if (arguments.length > 0 && arguments[0].equals("single-cell-qc"))
@@ -354,6 +412,8 @@ public final class JLinAlgCli {
               java -jar omicsmatic-<version>.jar study --help
               java -jar omicsmatic-<version>.jar signature-score --help
               java -jar omicsmatic-<version>.jar intervals --help
+              java -jar omicsmatic-<version>.jar scvi-tools --help
+              java -jar omicsmatic-<version>.jar rsem-tools --help
               java -jar omicsmatic-<version>.jar cell-embed --help
               java -jar omicsmatic-<version>.jar sequence-qc --help
               java -jar omicsmatic-<version>.jar sequence-tools --help
@@ -371,6 +431,14 @@ public final class JLinAlgCli {
               java -jar omicsmatic-<version>.jar hisat-tools --help
               java -jar omicsmatic-<version>.jar single-cell-qc --help
               java -jar omicsmatic-<version>.jar cellbender-tools --help
+              java -jar omicsmatic-<version>.jar diamond-tools --help
+              java -jar omicsmatic-<version>.jar scdrs-tools --help
+              java -jar omicsmatic-<version>.jar mtag-tools --help
+              java -jar omicsmatic-<version>.jar genesis-tools --help
+              java -jar omicsmatic-<version>.jar snprelate-tools --help
+              java -jar omicsmatic-<version>.jar cellchat-tools --help
+              java -jar omicsmatic-<version>.jar cistarget-tools --help
+              java -jar omicsmatic-<version>.jar mrmega-tools --help
               java -jar omicsmatic-<version>.jar magma-tools --help
               java -jar omicsmatic-<version>.jar trimmomatic-tools --help
               java -jar omicsmatic-<version>.jar deep-tools --help
@@ -392,6 +460,25 @@ public final class JLinAlgCli {
               java -jar omicsmatic-<version>.jar saige-tools --help
               java -jar omicsmatic-<version>.jar admixture-tools --help
               java -jar omicsmatic-<version>.jar eagle-tools --help
+              java -jar omicsmatic-<version>.jar shapeit-tools --help
+              java -jar omicsmatic-<version>.jar pal2nal-tools --help
+              java -jar omicsmatic-<version>.jar mashr-tools --help
+              java -jar omicsmatic-<version>.jar nextflow-tools --help
+              java -jar omicsmatic-<version>.jar salmon-tools --help
+              java -jar omicsmatic-<version>.jar tomtom-tools --help
+              java -jar omicsmatic-<version>.jar chromvar-tools --help
+              java -jar omicsmatic-<version>.jar deseq2-tools --help
+              java -jar omicsmatic-<version>.jar deseq2-normalize --help
+              java -jar omicsmatic-<version>.jar signac-tools --help
+              java -jar omicsmatic-<version>.jar htseq-tools --help
+              java -jar omicsmatic-<version>.jar meme-tools --help
+              java -jar omicsmatic-<version>.jar chipseeker-tools --help
+              java -jar omicsmatic-<version>.jar monocle-tools --help
+              java -jar omicsmatic-<version>.jar bigwig-tools --help
+              java -jar omicsmatic-<version>.jar stringtie-tools --help
+              java -jar omicsmatic-<version>.jar fastp-tools --help
+              java -jar omicsmatic-<version>.jar mafft-tools --help
+              java -jar omicsmatic-<version>.jar iqtree-tools --help
               java -jar omicsmatic-<version>.jar repeat-tools --help
               java -jar omicsmatic-<version>.jar minimac-tools --help
               java -jar omicsmatic-<version>.jar homer-scan --help

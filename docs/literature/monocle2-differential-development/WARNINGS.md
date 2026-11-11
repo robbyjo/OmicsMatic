@@ -1,0 +1,13 @@
+# Monocle2 differential development adapter — warnings and required actions
+
+Require analysis-status.json result_admitted=true before interpreting results. The separate additive development JAR preserves every parent entry and the canonical executable; it is not the released/root Monocle3 command. Use MONOCLE2_DIFFERENTIAL_DEVELOPMENT.md and its executed Linux example.
+
+**SKIP3:** Windows Java, unavailable/forbidden Linux runtime, mismatched edition, or missing exact dependencies skip dependent analysis. Use Linux Java through WSL with Linux paths and the recorded R4.2.1/Monocle2.26.0/private dependency profile, including the separate original HSMMSingleCell1.18.0 library, only where installation is permitted. Analysis installs nothing. Otherwise retain the skip and do not report results.
+
+**FAIL2:** any original failed gene, input mismatch, original error, timeout, capacity breach or audit failure admits no atomic batch result, including earlier completed cases. Original failed-gene p/q=1 values remain failures, not valid nulls. Correct the named cause and retry NEW paths; preserve every attempt and never force success by dropping genes, repairing IDs, imputation or replacing nonfinite values.
+
+**Original family failures are retained:** free-dispersion negbinomial and binary/proportion binomialff fail with the condition has length > 1 in the original helper under this VGAM profile. Original bodies/family vectors are not patched; no results are admitted. Fixed-size negbinomial.size (relative/unscaled) and continuous uninormal controls match independent original runs. Dispersion controls preserve original dplyr deprecation warnings. Packages built under R4.2.3 run under R4.2.1 with original warnings retained.
+
+Earlier attempts include an independent probe aborting at the original family error, a Java temporary-file traversal race during R cleanup, and source bindings correctly rejecting a validation after source edits. They remain unadmitted. The final worker uses no-follow file attributes and tolerates only disappearing temporary paths; other file errors and symlinks remain failures.
+
+Exact selected versions and eleven original R bodies/formals are checked, not every native binary/dependency source. Native Java checks probabilities and BH, not independent refitting. The original differential function does not return internal VGAM fitted models. Logical capacities are not OS quotas. No biological certification, historical patch/formula reconstruction, Monocle3/custom graph-test/Cicero/py-monocle equivalence, additional catalog integration credit or whole-goal completion is claimed.

@@ -1,0 +1,20 @@
+AddMotifs.ChromatinAssay <- function(
+  object,
+  genome,
+  pfm,
+  verbose = TRUE,
+  ...
+) {
+  motif <- AddMotifs(
+    object = granges(x = object),
+    genome = genome,
+    pfm = pfm,
+    verbose = verbose
+  )
+  object <- SetAssayData(
+    object = object,
+    slot = 'motifs',
+    new.data = motif
+  )
+  return(object)
+}

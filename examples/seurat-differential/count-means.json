@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "mode": "PAIR",
+  "profile": "Seurat-5.6.0-R4.6.1-base",
+  "out": "../../build/seurat-differential-example-count-means",
+  "counts": "counts.mtx",
+  "features": "features.txt",
+  "cells": "cells.txt",
+  "metadata": "metadata.tsv",
+  "group_column": "group",
+  "group_levels": [
+    "a",
+    "b",
+    "c"
+  ],
+  "data_source": "counts",
+  "test": "wilcox",
+  "test_slot": "counts",
+  "fc_slot": "counts",
+  "min_pct": 0,
+  "logfc_threshold": 0,
+  "only_positive": false,
+  "seed": 17,
+  "rscript": "C:/Program Files/R/R-4.6.1/bin/Rscript.exe",
+  "r_libraries": [
+    "../../build/literature-review/signac-runtime/reference-setup-1/R-lib",
+    "../../build/omics-sctransform-r"
+  ],
+  "timeout_seconds": 180,
+  "maximum_output_bytes": 100000000,
+  "contrast": {
+    "numerator": [
+      "a"
+    ],
+    "denominator": [
+      "b"
+    ]
+  }
+}

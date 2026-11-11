@@ -1,0 +1,467 @@
+{
+  "schema_version": 1,
+  "status": "eight-paper-mashr-methods-reviewed-composite-formula-resolved-scoped-development",
+  "role_count": 8,
+  "roles": [
+    {
+      "paper_id": "P019",
+      "doi": "10.1038/s41586-026-10836-6",
+      "pmcid": "PMC13600940",
+      "article_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13600940/",
+      "title": "Single-nucleus transcriptome-wide association study of human brain disorders",
+      "source_gzip": {
+        "bytes": 63267,
+        "sha256": "349a70ccd924c6ebca8dd6f874a015241304d7c184554ca7d173c3c8d8fe8004"
+      },
+      "source_xml": {
+        "bytes": 333586,
+        "sha256": "67a35ac2cd25950973379382addff05cb689b1a4b1424c71ec1e54b7e8b01209"
+      },
+      "evidence": [
+        {
+          "paragraph_index": 51,
+          "section": "Methods / mash Analysis",
+          "text_sha256": "12b105f6ca043601f7a2b08a3a8fda775bb7508fc5da7661fa9484f16287e44d"
+        }
+      ],
+      "reported_mashr_version": null,
+      "status": "methods-reviewed-scoped-implementation-with-explicit-unreported-inputs",
+      "role": "Class-level S-snTWAS shrinkage uses Z proxies with SE1, missing Z0/SE1e10, data-driven covariances, and excludes EUR Endo/mural. Specificity counts LFSR<=0.05 conditions and retains counts from one through five among six conditions.",
+      "implemented": [
+        "explicit supplied/canonical or original-source data-driven covariance preparation",
+        "native posterior fit/prediction",
+        "explicit inclusive significance and counts"
+      ],
+      "unresolved": [
+        "Actual input matrices, excluded-population membership, random seed and unreported covariance/optimizer settings must be supplied. Z proxies are not original effect magnitudes."
+      ],
+      "paper_reproduced": false,
+      "catalog_promoted": false
+    },
+    {
+      "paper_id": "P021",
+      "doi": "10.1038/s41586-026-10271-7",
+      "pmcid": "PMC13600939",
+      "article_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13600939/",
+      "title": "Lifespan single-cell transcriptomic atlas of the human prefrontal cortex",
+      "source_gzip": {
+        "bytes": 61091,
+        "sha256": "2ac6abdc2fdedb6cf1e3d493aaec64e75e1df785e8d3c2cf3a4fd2eb7382f94c"
+      },
+      "source_xml": {
+        "bytes": 281310,
+        "sha256": "d6e691fbafe8e1c42b7a5dbfab7d06ad9e456f833141e7d1b54c2cba9107b1cd"
+      },
+      "evidence": [
+        {
+          "paragraph_index": 94,
+          "section": "Methods / Degree of sharing across the EN, IN and glial subclasses",
+          "text_sha256": "f1d2f3c8c50f7f237fdd159e3e2c5ae71bd9887fcc536efa975b35b8f28122b4"
+        },
+        {
+          "paragraph_index": 95,
+          "section": "Methods / Degree of sharing across the EN, IN and glial subclasses",
+          "text_sha256": "a1c377b220c8d327c988fa7505e1c00f997b916e381903c5d851344821e6ac46"
+        },
+        {
+          "paragraph_index": 97,
+          "section": "Methods / Degree of sharing across the EN, IN and glial subclasses / Mashr analysis",
+          "text_sha256": "4349cb94707abb2795b547d3149e098fd8a7bb46e48aa8097c5694cd223c0878"
+        },
+        {
+          "paragraph_index": 98,
+          "section": "Methods / Degree of sharing across the EN, IN and glial subclasses / Mashr analysis",
+          "text_sha256": "2e9690d30593c4fcfa7eac4c874d6d769e11f5505e17be361ab362aca0f9d16e"
+        },
+        {
+          "paragraph_index": 99,
+          "section": "Methods / Degree of sharing across the EN, IN and glial subclasses / Mashr analysis",
+          "text_sha256": "b6a6f68c5dfe98bd8efebf9d1dcc2d744bf4d72320f70bff95e360d0350593f9"
+        },
+        {
+          "paragraph_index": 101,
+          "section": "Methods / Degree of sharing across the EN, IN and glial subclasses / Cell-specificity score",
+          "text_sha256": "6dcdb29625d58b19d9e3c7a6bc1da736ae1a3b4f58c045738bb71c7e1bd7b5ed"
+        }
+      ],
+      "reported_mashr_version": "0.2.79",
+      "status": "methods-reviewed-scoped-implementation-with-explicit-unreported-inputs",
+      "role": "mashr0.2.79 with adapted dreamlet run_mash shrinks age-associated effects across nine EN, seven IN and four glial subclasses. Group scores multiply 1-LFSR, require nominal P<0.05 in at least two group members, and select scores>0.9. Tau expression specificity and enrichment are separate downstream analyses.",
+      "implemented": [
+        "native posterior fit/prediction",
+        "explicit named group marginal sign products",
+        "separate nominal-P gate and strict score cutoff"
+      ],
+      "unresolved": [
+        "Do not infer nominal P from posterior LFSR. Actual group/age matrices, fit choices and the adapted run_mash edition must be supplied. Products do not certify equal directions or joint nonzero probability."
+      ],
+      "paper_reproduced": false,
+      "catalog_promoted": false
+    },
+    {
+      "paper_id": "P024",
+      "doi": "10.1038/s41586-025-09573-z",
+      "pmcid": "PMC13600946",
+      "article_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13600946/",
+      "title": "Single-cell atlas of transcriptomic vulnerability across brain disorders",
+      "source_gzip": {
+        "bytes": 83271,
+        "sha256": "a272518fabc9b2b5b49a5d486a518de96e7d04d36451afb68f5f586bae90e288"
+      },
+      "source_xml": {
+        "bytes": 388960,
+        "sha256": "95f294a27bf20b44f42ea8b780e347b1cd16849df0e48ee9745ac43600cd7c07"
+      },
+      "evidence": [
+        {
+          "paragraph_index": 84,
+          "section": "Methods / Evaluation of shared disease signatures",
+          "text_sha256": "7ec9bbe7eb609663fc9bbe6b72c2236d552e0292b562cbe461cba2f32cfc999d"
+        },
+        {
+          "paragraph_index": 119,
+          "section": "Code availability",
+          "text_sha256": "401979d324f3cd1263e725511953ee953fef2e47a3bd650e2dea34c3242f87f4"
+        }
+      ],
+      "reported_mashr_version": null,
+      "status": "methods-reviewed-scoped-implementation-with-explicit-unreported-inputs",
+      "role": "MASH integrates gene/cell-type effects across disease contrasts. Paragraph84 cites P104 via reference168 for composite nonzero-effect testing; it reports all eight disease contrasts and shared scores>=0.05. The inspected downstream author script separately removes shared genes at scores>=0.01 before correlations.",
+      "implemented": [
+        "native fit/prediction",
+        "explicit independent-marginal composite ALL mode and inclusive cutoff"
+      ],
+      "unresolved": [
+        "Exact disease-contrast construction, composite-producing CSV and generating script are not established by the inspected public caller. Do not reconcile the separate >=0.05 article and >=0.01 downstream exclusion stages or change them to 0.95.",
+        "Current dreamlet source is a pinned reference, not a proven paper binary edition."
+      ],
+      "paper_reproduced": false,
+      "catalog_promoted": false,
+      "companion_reference": {
+        "reference_id": "CR168",
+        "paper_id": "P104",
+        "doi": "10.1038/s41588-026-02733-5",
+        "text_sha256": "9a7f1c543b78129979d698f414526802e7608cb3e02be1fab06986c67858e5a2"
+      }
+    },
+    {
+      "paper_id": "P073",
+      "doi": "10.1038/s41588-024-02019-8",
+      "pmcid": "PMC11631754",
+      "article_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11631754/",
+      "title": "Single-cell RNA sequencing of peripheral blood links cell-type-specific regulation of splicing to autoimmune and inflammatory diseases",
+      "source_gzip": {
+        "bytes": 47923,
+        "sha256": "be9f1d97a82e58801c80d2491342d140a1981b176a43632c33334230cdd7de7e"
+      },
+      "source_xml": {
+        "bytes": 222949,
+        "sha256": "1c5a9bc6f69280e434474ef1cb19729d0fb6bcbb8977c0daf6a68765553bdfe4"
+      },
+      "evidence": [
+        {
+          "paragraph_index": 42,
+          "section": "Methods / cis-sQTL mapping",
+          "text_sha256": "23f33f097b01a1dc3452732e6e0d672103bf9760cd579cbbcba203cab0351b77"
+        }
+      ],
+      "reported_mashr_version": "0.2.79",
+      "status": "methods-reviewed-scoped-implementation-with-explicit-unreported-inputs",
+      "role": "mashr0.2.79 learns empirical correlation from 20,000 random cis-sQTL tests and data-driven covariances from strong minimum-P tests per gene, then predicts posterior means and LFSR for the strong targets.",
+      "implemented": [
+        "separate representative fit/control, strong covariance and posterior target populations",
+        "original-source PCA/ED and native posterior model"
+      ],
+      "unresolved": [
+        "The article describes nominal-P inputs without a complete signed-effect/SE conversion. Require signed effects and valid SE; never invent signs from unsigned P. Random subset, mixture fitting and other unreported settings remain explicit inputs."
+      ],
+      "paper_reproduced": false,
+      "catalog_promoted": false
+    },
+    {
+      "paper_id": "P092",
+      "doi": "10.1038/s41588-026-02755-z",
+      "pmcid": "PMC13649587",
+      "article_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13649587/",
+      "title": "Single-cell analysis of chromatin accessibility in the human intestine identifies regulatory programs and clarifies genetic associations in Crohn\u2019s disease",
+      "source_gzip": {
+        "bytes": 52097,
+        "sha256": "e71a5ffc27fbcd76f64709d5d8298b1a4139ec8a0a00a8a6557b73b31cab450d"
+      },
+      "source_xml": {
+        "bytes": 264630,
+        "sha256": "d0274e977260abcc52aecd4abe6f0e8b8901a5948beae068b28661a402dd5126"
+      },
+      "evidence": [
+        {
+          "paragraph_index": 55,
+          "section": "Methods / MashR",
+          "text_sha256": "69bf04647b1a6ebc5eab71fd96482cd79860a3d441bd9422f32c63068cda15ca"
+        },
+        {
+          "paragraph_index": 56,
+          "section": "Methods / CaQTL effect-size and motif disruption score correlation",
+          "text_sha256": "7b0a6a7e2fcd06cddf4c745d1d3592a76440dbe3afdc8b07c895cd7cf0ec8432"
+        },
+        {
+          "paragraph_index": 57,
+          "section": "Methods / Pairwise caQTL effect-size correlation",
+          "text_sha256": "135b5baed720b2de6391bf2a5b8f6576cccb355ee07a1553a0cba7d25c9d4be9"
+        }
+      ],
+      "reported_mashr_version": "0.2.79",
+      "status": "methods-reviewed-scoped-implementation-with-explicit-unreported-inputs",
+      "role": "The reviewed Supplementary Note specifies mashr0.2.79, effects Pi-0.5 and SE=abs(beta/sqrt(Chi-square)). Complete finite cell-type tests define fitting; strong rows have FDR<10% in any cell type and two million remaining pairs form random controls. Queries use the minimum-q SNP per peak. Missing query effects/SE are explicitly 0/1e-6. Downstream RASQUAL effect correlations and motif/Spearman/BH steps are separate.",
+      "implemented": [
+        "separate fit/control, strong covariance and target populations",
+        "explicit supplied missing effect/SE policy",
+        "native posterior means and LFSR"
+      ],
+      "unresolved": [
+        "Map beta to an explicit input field and admit finite positive SE; do not guess from unsigned P.",
+        "Preserve reported SE1e-6 rather than changing it to 1e6 or 1e10. Unreported PCA/ED, optimizer and seed choices require explicit settings."
+      ],
+      "paper_reproduced": false,
+      "catalog_promoted": false,
+      "supplement": {
+        "review_status": "relevant full page text and rendered page visually reviewed",
+        "pdf_source": {
+          "url": "https://static-content.springer.com/esm/art%3A10.1038%2Fs41588-026-02755-z/MediaObjects/41588_2026_2755_MOESM1_ESM.pdf",
+          "bytes": 313288,
+          "sha256": "8086a1bd0cab5f8e26329cdb1f146107855f0854d211755d427e78ae64db7adc"
+        },
+        "reviewed_pdf_page": 4,
+        "render": {
+          "bytes": 449246,
+          "sha256": "c028b9126391e6bbea41fc300381a5cacefceaeec054577cee20bd193294dbe5"
+        },
+        "section": "mashR",
+        "method_paraphrase": "The note specifies mashr0.2.79. Effects are Pi minus 0.5; the stated SE formula is abs(beta/sqrt(Chi-square)). Fitting uses tests available across all cell types with finite nonmissing effects and SE. Strong rows have FDR below 10% in any cell type; two million remaining peak-SNP pairs form a random control subset. Queries select the lowest-q SNP per peak across cell types. Missing query effects and SE are explicitly zero and 1e-6. The resulting effects and LFSR support significance at 0.05.",
+        "unresolved": [
+          "The beta symbol in the SE formula requires explicit input-field mapping; do not infer a transformation from unsigned P values.",
+          "PCA/ED settings, mixture optimizer choices, random seed and other unreported fit settings remain analyst-supplied; do not infer them from a version number.",
+          "The very small reported missing-query SE must not be silently changed to 1e6 or 1e10. Zero/invalid derived SE still needs explicit analysis admission."
+        ],
+        "body_only_draft_supersession": "This supplement adds an explicit MASH query-input missingness rule beyond the previously reviewed downstream RASQUAL correlation rule. The earlier frozen draft is preserved as history."
+      }
+    },
+    {
+      "paper_id": "P104",
+      "doi": "10.1038/s41588-026-02733-5",
+      "pmcid": "PMC13649572",
+      "article_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13649572/",
+      "title": "Single-nucleus atlas of cell-type specific genetic regulation in the human brain",
+      "source_gzip": {
+        "bytes": 39659,
+        "sha256": "0bd9fe231afff19fb8e0418ad3b21e20c24c0bbbb95bae70b839f98900406e25"
+      },
+      "source_xml": {
+        "bytes": 191895,
+        "sha256": "d92b674fe5e2053354f2693a2409628e5e729bd59cd613a8f76558e48860c248"
+      },
+      "evidence": [
+        {
+          "paragraph_index": 12,
+          "section": "Results / Cell type specificity of genetic regulatory effects reveals distinct mechanisms in neurodegenerative disease risk",
+          "text_sha256": "de5c43e0e5057a822970376801bcfebca1504449786c4eedf96a91cda44d7930"
+        },
+        {
+          "paragraph_index": 47,
+          "section": "Methods / Sample selection and preprocessing / Identifying shared and cell type-specific genetic regulatory effects",
+          "text_sha256": "27c978cdbd8863dd3ed11bd25ba03e6c0a30ece6a5929a6d507108b618f7ca2f"
+        },
+        {
+          "paragraph_index": 48,
+          "section": "Methods / Sample selection and preprocessing / Identifying shared and cell type-specific genetic regulatory effects",
+          "text_sha256": "df438531295a12f4b4d3988650b03ef475e6d1443660415ff92b1237d0124cce"
+        },
+        {
+          "paragraph_index": 49,
+          "section": "Methods / Sample selection and preprocessing / Identifying shared and cell type-specific genetic regulatory effects",
+          "text_sha256": "9556c8b0ca624b80aba7b317551ae63d09c0334b8927bea692ce31c54c62a0d0"
+        },
+        {
+          "paragraph_index": 50,
+          "section": "Methods / Sample selection and preprocessing / Identifying shared and cell type-specific genetic regulatory effects",
+          "text_sha256": "8616350f85a4badea7a50ec95ee8cdf3c153ae17ee9c7315a35a2b077eabea8a"
+        },
+        {
+          "paragraph_index": 67,
+          "section": "Code availability",
+          "text_sha256": "04b7ff02739d936f19b70fbfc99ddc037e33ad1d761dc51efa61560a60481d97"
+        }
+      ],
+      "reported_mashr_version": "0.2.79",
+      "status": "methods-reviewed-scoped-implementation-with-explicit-unreported-inputs",
+      "role": "mashr0.2.79 learns a prior from genes expressed in every cell type and empirical correlation from 600,000 random variant-trait pairs. Minimum-P targets use coefficient/SE, with missing coefficient0/SE1e6. The composite method sets p=1-LFSR and assumes independent marginal proxies: ALL=prod(p[include])*prod(1-p[exclude]); ANY=(1-prod(1-p[include]))*prod(1-p[exclude]). The article explicitly uses score>0.5 and reports a stricter 0.8 cutoff.",
+      "implemented": [
+        "original-source covariance preparation and native posterior fit/prediction",
+        "native ALL/AT_LEAST_ONE included conditions and excluded complements",
+        "source-rounded decisions with separate stable-log diagnostics"
+      ],
+      "unresolved": [
+        "Exact boundary at the reported 0.8 cutoff is unestablished by the inspected methods/caller; select a comparator explicitly.",
+        "The inspected caller uses exact name membership. Regex-looking subclass strings do not establish automatic regex expansion or full matrix lineage.",
+        "Paper dreamlet binary edition, full data and unreported fit choices remain unresolved. The marginal proxy is not joint posterior integration or a certified bound under arbitrary dependence."
+      ],
+      "paper_reproduced": false,
+      "catalog_promoted": false
+    },
+    {
+      "paper_id": "P201",
+      "doi": "10.1016/j.ajhg.2024.09.004",
+      "pmcid": "PMC11568790",
+      "article_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11568790/",
+      "title": "Profiling genetically driven alternative splicing across the Indonesian archipelago",
+      "source_gzip": {
+        "bytes": 50987,
+        "sha256": "148bd83d433a98d400e7028fef4e02dce0562c3717ae994dae7afc9a16993b7d"
+      },
+      "source_xml": {
+        "bytes": 271554,
+        "sha256": "405d53aae833dabbdca2d4dcf82fd0ce5d250102cd27c27f0e707acbb3b4163f"
+      },
+      "evidence": [
+        {
+          "paragraph_index": 15,
+          "section": "Subjects, material, and methods / Identifying shared cis-sQTLs and differences in effect sizes",
+          "text_sha256": "e9fbe85a71da9f6b4e608bbf694d921fbb71fa1c282c794e81a28f80b435a4bc"
+        },
+        {
+          "paragraph_index": 27,
+          "section": "Results / Characterization of Indonesian cis-sQTLs in whole blood",
+          "text_sha256": "64db6a5d0f0df369b7cf5a5f8fb0a6b068d81e3857b3cee298d452866afa3bf5"
+        }
+      ],
+      "reported_mashr_version": null,
+      "status": "methods-reviewed-scoped-implementation-with-explicit-unreported-inputs",
+      "role": "Population sQTL sharing uses QTLTools effect/SE, a random40% set for null correlation and prior fitting, and a strong minimum-P SNP/intron-cluster set for covariance learning and prediction. Sharing requires the same sign and magnitudes within factor0.5; significance is LFSR<0.05. European MAF exclusions leave some variants untested.",
+      "implemented": [
+        "explicit training/strong/target populations",
+        "posterior-mean pairwise sharing, strict factor bounds and LFSR union selection"
+      ],
+      "unresolved": [
+        "Exact selected rows, seed, unreported covariance choices and denominator populations remain explicit inputs. Variants excluded by MAF are untested, not biological replication failures."
+      ],
+      "paper_reproduced": false,
+      "catalog_promoted": false
+    },
+    {
+      "paper_id": "P213",
+      "doi": "10.1016/j.ajhg.2026.04.003",
+      "pmcid": "PMC13277697",
+      "article_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13277697/",
+      "title": "The impact of sex on the immune system explored at the single-cell level",
+      "source_gzip": {
+        "bytes": 44244,
+        "sha256": "f96cab6e1967d4b20f8eaf3eaa5bdf96318bd9873c468e2f6e27f11297cef49f"
+      },
+      "source_xml": {
+        "bytes": 235232,
+        "sha256": "959d396766e52593b434ed2bdb8b14f926e2213e84c92615dcd3a13e5069d952"
+      },
+      "evidence": [
+        {
+          "paragraph_index": 12,
+          "section": "Methods / Sex-differential expression analysis",
+          "text_sha256": "800bcdbee49b0fe0f427d7db7b6ca8e9e857717a7316ee91e51827315ce46b77"
+        }
+      ],
+      "reported_mashr_version": null,
+      "status": "methods-reviewed-scoped-implementation-with-explicit-unreported-inputs",
+      "role": "Cell-type meta-analysis uses Z scores derived from log2FC, canonical covariances and residual measurement-correlation EM. Untested log2FC is set to0. LFSR<0.05 and original cell-type |log2FC|>0.1 are separate gates; Seurat/MAST are upstream steps.",
+      "implemented": [
+        "canonical covariances and native conditional residual-correlation EM",
+        "native posterior and explicit LFSR cutoff"
+      ],
+      "unresolved": [
+        "A complete signed Z/SE conversion and untested-value SE are unreported; do not infer them. Keep the original-scale fold-change gate separate from Z/posterior scales. Native EM scope and optimizer departures remain as documented."
+      ],
+      "paper_reproduced": false,
+      "catalog_promoted": false
+    }
+  ],
+  "author_code": {
+    "nps_ad_commit": "71323f6bb1354888f4998bbd72b515d8253bd5f8",
+    "PsychADxD_commit": "168c2435f9ed026b2fd38ad34681bca41853d884",
+    "files": [
+      {
+        "url": "https://github.com/DiseaseNeuroGenomics/nps_ad/blob/71323f6bb1354888f4998bbd72b515d8253bd5f8/analysis/freeze2/eQTL/mashr_class.R",
+        "bytes": 5091,
+        "sha256": "b46a7ac9503280a2378b4e13b238539bb131835e700147455b609c531146871a",
+        "reviewed_lines": [
+          108,
+          113,
+          140,
+          156,
+          164
+        ],
+        "finding": "The caller supplies 1-LFSR, explicit include and setdiff exclusion to the internal dreamlet ALL helper; >0.5 is literal.",
+        "full_script_redistributed": false
+      },
+      {
+        "url": "https://github.com/DiseaseNeuroGenomics/nps_ad/blob/71323f6bb1354888f4998bbd72b515d8253bd5f8/analysis/freeze2/eQTL/mashr_subclass.R",
+        "bytes": 19853,
+        "sha256": "de84ce766ac181ffd9d70535cca8f1821388151e85c799f5b7aadd5c66273b5e",
+        "reviewed_lines": [
+          103,
+          115
+        ],
+        "finding": "Some included strings resemble regexes; the pinned helper requires exact column names. No automatic expansion is inferred.",
+        "full_script_redistributed": false
+      },
+      {
+        "url": "https://github.com/DiseaseNeuroGenomics/PsychADxD/blob/168c2435f9ed026b2fd38ad34681bca41853d884/5_cross-disorder_expression/PsychAD_cross-disorder_dreamlet.r",
+        "bytes": 11620,
+        "sha256": "265f44c0e2f73684c078ce296ceaa0c2eb4889b8889c65931e865d6f2b39f4d8",
+        "reviewed_lines": [
+          60,
+          62
+        ],
+        "finding": "A precomputed PsychAD_mashr_shared.csv is read and scores>=0.01 select genes removed before downstream cross-disorder correlations. This is not the generating composite calculation.",
+        "full_script_redistributed": false
+      }
+    ]
+  },
+  "original_composite_reference": {
+    "commit": "6ddcb83fb060eae989e541b6b82b46b3eaebd7bb",
+    "files": {
+      "R/compositePosteriorTest.R": {
+        "url": "https://raw.githubusercontent.com/DiseaseNeuroGenomics/dreamlet/6ddcb83fb060eae989e541b6b82b46b3eaebd7bb/R/compositePosteriorTest.R",
+        "bytes": 4175,
+        "sha256": "e70cfe931adaaff3f04a2679d82cfd2d79f91dfd251429e9bbe1fcf622ce830d"
+      },
+      "DESCRIPTION": {
+        "url": "https://raw.githubusercontent.com/DiseaseNeuroGenomics/dreamlet/6ddcb83fb060eae989e541b6b82b46b3eaebd7bb/DESCRIPTION",
+        "bytes": 2627,
+        "sha256": "7441602644fd0091bcc9d288d3a03bdff4508e8c1444cbe6a4aacd5fa217e638"
+      }
+    },
+    "version": "1.9.3",
+    "license": "Artistic-2.0",
+    "source_function_executed_unchanged": true,
+    "full_dreamlet_package_installed_or_validated": false,
+    "paper_binary_edition_identified": false,
+    "semantics": "Exact column membership; repeated/overlapping selectors retained; NA/NaN probabilities become0; empty ALL/ANY inclusion factors1/0; unlisted columns ignored.",
+    "native_domain_restriction": "Native API admits only probabilities in [0,1] or explicitly permitted NaN; original utility itself does not range-validate."
+  },
+  "historical_inputs": {
+    "docs/literature/MASHR_PAPER_ROLE_DRAFT.json": {
+      "bytes": 10671,
+      "sha256": "f25d49be1f62dd9417ee7174d0bff3533241d9014e4cbae10d8eb305a54e903b"
+    },
+    "docs/literature/mashr-sharing/method-audit.json": {
+      "bytes": 7532,
+      "sha256": "3191ec08794777df07187109910a8952d27957a17b69c32170be4e00c8e1dcf4"
+    }
+  },
+  "claims": {
+    "method_formula_resolved": true,
+    "all_eight_method_roles_reviewed": true,
+    "paper_reproduction_complete": false,
+    "paper_binary_editions_identified": false,
+    "study_route_available": false,
+    "catalog_promoted": false
+  },
+  "required_action": "Supply the identified paper-specific matrices, selectors, scales, nominal P and unreported fit choices explicitly. Inspect source/log numerical diagnostics. Do not infer signs, biological absence, joint posterior probability, missing binary editions or whole-paper reproduction from a scoped tool result."
+}

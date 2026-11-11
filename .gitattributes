@@ -6,6 +6,9 @@
 *.md text eol=lf
 *.csv text eol=lf
 *.R text eol=lf
+
+# Original multivariate-shrinkage reference archives are checksummed as bytes.
+src/test/resources/org/jlinalg/shrinkage/mashr-original/*.zip -text
 gradlew text eol=lf
 *.bat text eol=crlf
 
@@ -152,3 +155,191 @@ src/test/resources/fuma-known-associations/reference.tsv -text whitespace=cr-at-
 
 # Frozen PRS-CS original reference captures are covered by their local SHA256SUMS.
 src/test/resources/org/jlinalg/genetics/prscs-reference/** -text whitespace=cr-at-eol
+
+# Fixed original RepeatMasker scientific controls retain their pinned source bytes.
+src/main/resources/org/jlinalg/omics/repeat-health/** -text whitespace=cr-at-eol
+
+# Original RepeatMasker .out table padding belongs to the pinned control bytes.
+src/main/resources/org/jlinalg/omics/repeat-health/**/expected.out -text whitespace=-blank-at-eol,cr-at-eol
+
+# The original-workflow example source is retained with its validation receipts.
+examples/repeat-original-workflow/** -text whitespace=cr-at-eol
+
+# scVI source and fixtures retain the bytes recorded by scientific validation.
+src/main/java/org/jlinalg/cli/Scvi*.java -text whitespace=cr-at-eol
+src/main/resources/org/jlinalg/omics/scvi*.py -text whitespace=cr-at-eol
+src/test/java/org/jlinalg/cli/Scvi*Test.java -text whitespace=cr-at-eol
+examples/scvi-workflow/** -text whitespace=cr-at-eol
+.gitattributes -text whitespace=cr-at-eol
+LICENSES/scvi-tools-BSD-3-Clause.txt -text whitespace=cr-at-eol
+docs/literature/SCVI_DEVELOPMENT.md -text whitespace=cr-at-eol
+src/main/java/org/jlinalg/cli/JLinAlgCli.java -text whitespace=cr-at-eol
+src/main/java/org/jlinalg/singlecell/Scvi*.java -text whitespace=cr-at-eol
+src/main/resources/META-INF/licenses/scvi-tools-BSD-3-Clause.txt -text whitespace=cr-at-eol
+src/test/java/org/jlinalg/singlecell/Scvi*Test.java -text whitespace=cr-at-eol
+src/test/resources/org/jlinalg/singlecell/scvi-default-kernels.tsv -text whitespace=cr-at-eol
+site/literature-review.html -text whitespace=cr-at-eol
+site/literature-warnings.html -text whitespace=cr-at-eol
+
+# RSEM original-function fixtures and source evidence retain their exact bytes.
+src/main/java/org/jlinalg/sequence/Rsem*.java -text whitespace=cr-at-eol
+src/test/java/org/jlinalg/sequence/Rsem*Test.java -text whitespace=cr-at-eol
+src/test/resources/org/jlinalg/sequence/rsem-reference/** -text whitespace=cr-at-eol
+docs/literature/RSEM_DEVELOPMENT.md -text whitespace=cr-at-eol
+docs/literature/BCL2FASTQ_RUNTIME_STATUS.md -text whitespace=cr-at-eol
+LICENSES/RSEM-GPL-3.0.txt -text whitespace=cr-at-eol
+src/main/resources/META-INF/licenses/RSEM-GPL-3.0.txt -text whitespace=cr-at-eol
+
+# Validation records are linked by exact SHA-256 values across Git checkouts.
+docs/literature/RSEM*_VALIDATION.json -text whitespace=cr-at-eol
+
+# RSEM runtime source pins retain their tested bytes across checkouts.
+src/main/java/org/jlinalg/cli/Rsem*.java -text whitespace=cr-at-eol
+src/test/java/org/jlinalg/cli/Rsem*Test.java -text whitespace=cr-at-eol
+
+# Historical validation records are also referenced by exact SHA-256 values.
+docs/literature/rsem-runtime-history/*.json -text whitespace=cr-at-eol
+
+# Preserve byte-pinned RSEM example preparation and provenance on every checkout.
+examples/rsem-workflow/prepare_inputs.py -text whitespace=cr-at-eol
+examples/rsem-workflow/provenance.json -text whitespace=cr-at-eol
+
+# Preserve original SHAPEIT notices embedded in native-audit provenance.
+LICENSES/SHAPEIT4-MIT.txt -text whitespace=cr-at-eol
+LICENSES/SHAPEIT5-MIT.txt -text whitespace=cr-at-eol
+src/main/resources/META-INF/licenses/SHAPEIT4-MIT.txt -text whitespace=cr-at-eol
+src/main/resources/META-INF/licenses/SHAPEIT5-MIT.txt -text whitespace=cr-at-eol
+
+# Preserve the original XCF reader attribution used by SHAPEIT5 selection.
+LICENSES/SHAPEIT5-XCF-MIT.txt -text whitespace=cr-at-eol
+src/main/resources/META-INF/licenses/SHAPEIT5-XCF-MIT.txt -text whitespace=cr-at-eol
+
+# Preserve the new byte-pinned MEME workflow proof and example sources.
+docs/literature/meme-discovery-workflow-development/** -text whitespace=cr-at-eol
+examples/meme-discovery/** -text whitespace=cr-at-eol
+
+# Preserve the byte-pinned ChIPseeker evidence and executed examples.
+docs/literature/chipseeker-annotation-development/** -text whitespace=cr-at-eol
+examples/chipseeker/** -text whitespace=cr-at-eol
+
+# Preserve exact upstream ChIPseeker whitespace in the four frozen source editions.
+src/main/resources/org/jlinalg/omics/chipseeker-annotation/1.22.1/** -text whitespace=-blank-at-eol,-blank-at-eof,cr-at-eol
+src/main/resources/org/jlinalg/omics/chipseeker-annotation/1.26.2/** -text whitespace=-blank-at-eol,-blank-at-eof,cr-at-eol
+src/main/resources/org/jlinalg/omics/chipseeker-annotation/1.34.1/** -text whitespace=-blank-at-eol,-blank-at-eof,cr-at-eol
+src/main/resources/org/jlinalg/omics/chipseeker-annotation/1.48.1/** -text whitespace=-blank-at-eol,-blank-at-eof,cr-at-eol
+
+# Preserve the native Monocle pseudotime evidence, examples and exact upstream whitespace.
+docs/literature/monocle3-pseudotime-development/** -text whitespace=cr-at-eol
+examples/monocle3-pseudotime/** -text whitespace=cr-at-eol
+src/main/resources/org/jlinalg/omics/monocle3-pseudotime/1.0.0/** -text whitespace=-blank-at-eol,-blank-at-eof,cr-at-eol
+src/main/resources/org/jlinalg/omics/monocle3-pseudotime/1.3.1/** -text whitespace=-blank-at-eol,-blank-at-eof,cr-at-eol
+src/main/resources/org/jlinalg/omics/monocle3-pseudotime/1.4.27/** -text whitespace=-blank-at-eol,-blank-at-eof,cr-at-eol
+
+# Preserve the separate current Monocle3 workflow evidence and original upstream whitespace.
+docs/literature/monocle3-workflow-development/** -text whitespace=cr-at-eol
+examples/monocle3-workflow/** -text whitespace=cr-at-eol
+src/main/resources/org/jlinalg/omics/monocle3-workflow/1.4.27/** -text whitespace=-blank-at-eol,-blank-at-eof,cr-at-eol
+
+# Preserve root Monocle development controls and executed literal-graph examples.
+docs/literature/monocle-tools-development/** -text whitespace=cr-at-eol
+examples/monocle-tools/** -text whitespace=cr-at-eol
+
+# Preserve the original Monocle2 reference-only scientific evidence as bytes.
+docs/literature/monocle2-reference-development/** -text whitespace=cr-at-eol
+
+# Preserve the separate Monocle2 adapter evidence, examples and original R whitespace.
+docs/literature/monocle2-differential-development/** -text whitespace=cr-at-eol
+examples/monocle2-differential/** -text whitespace=cr-at-eol
+src/main/resources/org/jlinalg/omics/monocle2-differential/2.26.0/** -text whitespace=-blank-at-eol,-blank-at-eof,cr-at-eol
+
+# Preserve separate Cicero controls, literal examples and exact upstream R bytes.
+docs/literature/cicero-coaccessibility-development/** -text whitespace=cr-at-eol
+examples/cicero-coaccessibility/** -text whitespace=cr-at-eol
+src/main/resources/org/jlinalg/omics/cicero-workflow/1.3.9/** -text whitespace=-blank-at-eol,-blank-at-eof,-space-before-tab,cr-at-eol
+
+# Preserve native Cicero prediction evidence and literal supplied-row examples.
+docs/literature/cicero-prediction-development/** -text whitespace=cr-at-eol
+examples/cicero-prediction-subset/** -text whitespace=cr-at-eol
+
+# Preserve analytical normal-fit evidence and literal numeric examples.
+docs/literature/normal-fit-development/** -text whitespace=cr-at-eol
+examples/normal-fit/** -text whitespace=cr-at-eol
+
+# Preserve exact validated historical KING source bytes across checkout.
+src/main/java/org/jlinalg/cli/KingHistoricalAudit.java -text whitespace=cr-at-eol
+src/main/java/org/jlinalg/cli/KingHistoricalToolsCli.java -text whitespace=cr-at-eol
+
+# Preserve native SNPRelate replay manifests and standalone artifact bytes.
+docs/literature/snprelate-native-development/** -text whitespace=cr-at-eol
+
+# Preserve the frozen SNPRelate workflow evidence on every checkout.
+docs/literature/snprelate-tools-development/** -text whitespace=cr-at-eol
+
+# Frozen native GENESIS partition evidence and owned binary base controls.
+docs/literature/genesis-native-development/** -text whitespace=cr-at-eol
+src/test/resources/org/jlinalg/genetics/genesis-partition/** -text whitespace=cr-at-eol
+
+# Preserve frozen GENESIS workflow development evidence and verifier source bytes.
+docs/literature/genesis-workflow-development/** -text whitespace=cr-at-eol
+src/main/resources/org/jlinalg/omics/genesis/prepare_genesis_runtime.py -text whitespace=cr-at-eol
+tools/literature/build_genesis_tools.py -text whitespace=cr-at-eol
+tools/literature/compare_genesis_workflow_controls.py -text whitespace=cr-at-eol
+tools/literature/test_genesis_request_contracts.py -text whitespace=cr-at-eol
+tools/literature/test_genesis_tools_protocol.py -text whitespace=cr-at-eol
+tools/literature/verify_genesis_workflow_evidence.py -text whitespace=cr-at-eol
+tools/literature/seal_genesis_workflow_evidence.py -text whitespace=cr-at-eol
+
+# Preserve separate native rank and extended GENESIS development evidence.
+docs/literature/genesis-extended-workflow-development/** -text whitespace=cr-at-eol
+tools/literature/build_genesis_rank_native.py -text whitespace=cr-at-eol
+tools/literature/validate_genesis_rank_native.py -text whitespace=cr-at-eol
+tools/literature/extend_genesis_runtime.py -text whitespace=cr-at-eol
+tools/literature/build_genesis_workflow_tools.py -text whitespace=cr-at-eol
+tools/literature/test_genesis_workflow_tools_protocol.py -text whitespace=cr-at-eol
+tools/literature/verify_genesis_extended_evidence.py -text whitespace=cr-at-eol
+tools/literature/seal_genesis_extended_evidence.py -text whitespace=cr-at-eol
+tools/literature/test_genesis_extended_replay_contracts.py -text whitespace=cr-at-eol
+
+# Preserve scoped GENESIS root workflow evidence and complete literal examples.
+docs/literature/genesis-tools-development/** -text whitespace=cr-at-eol
+examples/genesis-tools/** -text whitespace=cr-at-eol
+tools/literature/validate_genesis_workflow_branches.py -text whitespace=cr-at-eol
+tools/literature/wire_genesis_dispatch.py -text whitespace=cr-at-eol
+tools/literature/build_genesis_dispatch.py -text whitespace=cr-at-eol
+tools/literature/prepare_genesis_examples.py -text whitespace=cr-at-eol
+tools/literature/validate_genesis_dispatch.py -text whitespace=cr-at-eol
+tools/literature/apply_genesis_catalog_roles.py -text whitespace=cr-at-eol
+tools/literature/genesis_catalog.py -text whitespace=cr-at-eol
+tools/literature/verify_genesis_tools_evidence.py -text whitespace=cr-at-eol
+tools/literature/seal_genesis_tools_evidence.py -text whitespace=cr-at-eol
+
+# Preserve exact GENESIS catalog metadata verifier and browser source bytes.
+tools/literature/audit_genesis_catalog.py -text whitespace=cr-at-eol
+tools/literature/run_genesis_catalog_checks.py -text whitespace=cr-at-eol
+tools/literature/wire_genesis_catalog.py -text whitespace=cr-at-eol
+tools/literature/render_genesis_catalog.py -text whitespace=cr-at-eol
+tools/literature/refresh_genesis_catalog_metadata.py -text whitespace=cr-at-eol
+tools/literature/validate_genesis_catalog_ui.py -text whitespace=cr-at-eol
+tools/literature/check_genesis_catalog_ui.cjs -text whitespace=cr-at-eol
+tools/literature/verify_genesis_catalog.py -text whitespace=cr-at-eol
+tools/literature/seal_genesis_catalog.py -text whitespace=cr-at-eol
+
+# Preserve exact MTAG catalog,primary-review,guide and browser metadata bytes.
+tools/literature/curate_mtag_uses.py -text whitespace=cr-at-eol
+tools/literature/mtag_catalog.py -text whitespace=cr-at-eol
+tools/literature/wire_mtag_dispatch.py -text whitespace=cr-at-eol
+tools/literature/wire_mtag_catalog.py -text whitespace=cr-at-eol
+tools/literature/refresh_mtag_catalog_metadata.py -text whitespace=cr-at-eol
+tools/literature/render_mtag_catalog.py -text whitespace=cr-at-eol
+tools/literature/audit_mtag_catalog.py -text whitespace=cr-at-eol
+tools/literature/run_mtag_catalog_checks.py -text whitespace=cr-at-eol
+tools/literature/validate_mtag_catalog_ui.py -text whitespace=cr-at-eol
+tools/literature/check_mtag_catalog_ui.cjs -text whitespace=cr-at-eol
+tools/literature/check_mtag_genesis_review_ui.cjs -text whitespace=cr-at-eol
+tools/literature/verify_mtag_catalog.py -text whitespace=cr-at-eol
+tools/literature/seal_mtag_catalog.py -text whitespace=cr-at-eol
+docs/literature/MTAG_INTEGRATION.md -text whitespace=cr-at-eol
+docs/literature/mtag-request-example.json -text whitespace=cr-at-eol
+
+# Preserve the scoped scDRS typed request example as evidence bytes.
+docs/literature/scdrs-request-example.json -text whitespace=cr-at-eol

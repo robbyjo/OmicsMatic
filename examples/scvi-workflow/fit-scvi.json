@@ -1,0 +1,89 @@
+{
+  "schema": "omicsmatic-scvi-workflow-v1",
+  "operation": "FIT",
+  "profile": "scvi-tools-1.3.0-linux-x86_64-py3123-cpu",
+  "release": "1.3.0",
+  "python": "/absolute/path/to/scvi130/venv/bin/python",
+  "limits": {
+    "preset": "bounded-scvi-v1"
+  },
+  "reference_data": {
+    "matrix": {
+      "path": "data/reference-counts.mtx",
+      "encoding": "PLAIN_UTF8"
+    },
+    "genes": {
+      "path": "data/reference-genes.tsv",
+      "encoding": "PLAIN_UTF8"
+    },
+    "cells": {
+      "path": "data/reference-cells.tsv",
+      "encoding": "PLAIN_UTF8"
+    },
+    "metadata": {
+      "path": "data/reference-metadata.tsv",
+      "encoding": "PLAIN_UTF8"
+    },
+    "kind": "RAW_COUNTS",
+    "precision": "EXACT_FLOAT32",
+    "duplicates": "REJECT",
+    "layer": "counts",
+    "batch": "batch",
+    "categorical": [
+      "site"
+    ],
+    "continuous": [
+      "age"
+    ],
+    "labels": null,
+    "unlabeled_category": null,
+    "label_use": "NONE",
+    "known_reference_labels": [],
+    "continuous_precision": "EXACT_FLOAT32",
+    "category_order": {},
+    "review": {
+      "preprocessing": "Synthetic raw nonnegative integer counts;no normalization",
+      "gene_selection": "All supplied synthetic genes;any projection is recorded explicitly",
+      "cell_population": "All32 synthetic reference cells",
+      "evidence_and_decision": "Synthetic transport demonstration only;not paper reproduction,biological validation or convergence evidence"
+    }
+  },
+  "fit": {
+    "network": {
+      "kind": "COUNT",
+      "hidden": 16,
+      "latent": 3,
+      "layers": 1,
+      "dropout": 0.1,
+      "likelihood": "ZINB",
+      "dispersion": "GENE_BATCH",
+      "latent_distribution": "NORMAL",
+      "log_variational": true,
+      "encode_covariates": true,
+      "deeply_inject_covariates": true,
+      "batch_norm": "BOTH",
+      "layer_norm": "NONE",
+      "observed_library": true
+    },
+    "training": {
+      "epochs": 1,
+      "train_fraction": 0.75,
+      "validation_fraction": 0.25,
+      "shuffle_split": true,
+      "batch_size": 8,
+      "seed": 68001,
+      "optimizer": "ADAM",
+      "learning_rate": 0.001,
+      "weight_decay": 1e-06,
+      "epsilon": 0.01,
+      "warmup": {
+        "unit": "EPOCHS",
+        "count": 400
+      },
+      "minimum_kl_weight": 0.0,
+      "maximum_kl_weight": 1.0,
+      "early_stopping": null
+    },
+    "annotation": null
+  }
+}

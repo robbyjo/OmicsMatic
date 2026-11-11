@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "version": "2.42.0",
+  "mode": "association",
+  "runtime_profile": "../runtime-profile.json",
+  "out": "../results/association-binomial-score",
+  "threads": 1,
+  "layout": "snp-first",
+  "limits": {
+    "input_bytes": 100000000,
+    "output_bytes": 500000000,
+    "output_files": 1000,
+    "samples": 200,
+    "variants": 2000,
+    "rows": 2000000,
+    "pair_variant_operations": 1000000000,
+    "working_bytes": 1000000000,
+    "wall_seconds": 300
+  },
+  "inputs": {
+    "phenotypes": "../inputs/phenotypes-binomial-mixed.tsv",
+    "covariances": [
+      {
+        "name": "declared",
+        "values": "../inputs/covariance.values.tsv",
+        "samples": "../inputs/matrix-samples.tsv"
+      }
+    ],
+    "bfile": "../inputs/cohort"
+  },
+  "options": {
+    "model": {
+      "outcome": "binary",
+      "covariates": [
+        "age",
+        "PRS"
+      ],
+      "group_variable": null,
+      "family": "binomial",
+      "two_stage": false,
+      "normalisation": "all",
+      "rescale": "residSD",
+      "start": null,
+      "tolerance": 0.0001,
+      "max_iterations": 300,
+      "EM_iterations": 10,
+      "drop_zeros": true,
+      "covariance_alignment": "phenotype-order"
+    },
+    "test": "Score",
+    "coding": "additive",
+    "recalc_p_threshold": 0.05,
+    "interaction": null,
+    "male_diploid": true,
+    "snp_block_size": 64
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "out": "../../../../build/literature-review/cellchat-runtime/public-workflow-example-1",
+  "runtime_profile": "../../../../build/literature-review/cellchat-runtime/runtime-profile-1/runtime-profile.json",
+  "analysis": {
+    "schema_version": 1,
+    "source_label": "2.2.0-2025-release",
+    "expression_units": "external-log-normalized-nonnegative",
+    "mode": "condition-and-sample",
+    "expression": "expression.tsv",
+    "metadata": "metadata.tsv",
+    "group_order": [
+      "sender",
+      "receiver",
+      "other"
+    ],
+    "sample_order": [
+      "control-1",
+      "control-2",
+      "control-3",
+      "treated-1",
+      "treated-2",
+      "treated-3"
+    ],
+    "condition_order": [
+      "control",
+      "treated"
+    ],
+    "species": "human",
+    "database_categories": [
+      "Secreted Signaling",
+      "ECM-Receptor",
+      "Cell-Cell Contact"
+    ],
+    "prefilter_min_group_cells": 0,
+    "overexpression": {
+      "only_positive": true,
+      "thresh_pc": 0,
+      "thresh_fc": 0,
+      "thresh_p": 0.05,
+      "do_fast": true,
+      "variable_both": true
+    },
+    "inference": {
+      "type": "triMean",
+      "trim": 0.1,
+      "population_size": false,
+      "nboot": 19,
+      "seed": 1,
+      "Kh": 0.5,
+      "n": 1
+    },
+    "condition_filter": {
+      "min_cells": 10,
+      "min_samples": 3,
+      "rare_keep": false
+    },
+    "sample_filter": {
+      "min_cells": 10,
+      "min_samples": 1,
+      "rare_keep": false
+    },
+    "network": {
+      "pvalue_threshold": 0.05
+    },
+    "comparison": {
+      "alternative": "two.sided",
+      "exact": false,
+      "continuity_correction": true,
+      "strength_difference_threshold": 0.25
+    }
+  },
+  "limits": {
+    "input_bytes": 268435456,
+    "output_bytes": 1073741824,
+    "wall_seconds": 1800,
+    "max_genes": 100000,
+    "max_cells": 100000,
+    "max_files": 200000,
+    "runtime_bytes": 34359738368
+  }
+}

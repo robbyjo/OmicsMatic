@@ -1,0 +1,11 @@
+# Copyright (C) 2026 JLinAlg contributors; SPDX-License-Identifier: GPL-3.0-or-later
+# Exact local-source preparation only. No dependency installer or user selection model.
+a<-commandArgs(TRUE);out<-a[1];source<-a[2];private<-a[3];.libPaths(c(private,a[-(1:4)],.Library),include.site=FALSE)
+stopifnot(as.character(getRversion())=="4.6.1",R.version$platform=="x86_64-w64-mingw32",requireNamespace("jsonlite",quietly=TRUE));profile<-jsonlite::fromJSON(a[4],simplifyVector=FALSE)
+for(name in setdiff(names(profile$packages),"dndscv")){if(!requireNamespace(name,quietly=TRUE))stop(paste("Required dependency unavailable:",name));if(as.character(packageVersion(name))!=profile$packages[[name]])stop(paste("Exact dependency required:",name,profile$packages[[name]]))}
+install.packages(source,repos=NULL,type="source",lib=private,dependencies=FALSE);suppressPackageStartupMessages(library(dndscv));stopifnot(normalizePath(system.file(package="dndscv"),winslash="/")==normalizePath(file.path(private,"dndscv"),winslash="/"))
+original<-new.env(parent=asNamespace("dndscv"));for(path in list.files(file.path(source,"R"),pattern="[.]R$",full.names=TRUE))sys.source(path,original,keep.source=FALSE);guards<-Filter(function(n)is.function(get(n,original,inherits=FALSE)),ls(original,all.names=TRUE));stopifnot(setequal(guards,unlist(profile$guarded_functions,use.names=FALSE)))
+for(name in guards){x<-get(name,original,inherits=FALSE);y<-get(name,asNamespace("dndscv"),inherits=FALSE);stopifnot(identical(formals(x),formals(y)),identical(body(x),body(y)))}
+for(name in names(profile$files)[startsWith(names(profile$files),"data/")])stopifnot(unname(tools::md5sum(file.path(source,name)))==unname(tools::md5sum(file.path(system.file(package="dndscv"),name))))
+versions<-setNames(lapply(names(profile$packages),function(n)as.character(packageVersion(n))),names(profile$packages));stopifnot(identical(versions,profile$packages));jsonlite::write_json(list(status="loaded-exact-original-dndscv-runtime-only",versions=versions,R_version=as.character(getRversion()),platform=R.version$platform,source_bodies_and_formals_checked=TRUE,source_data_matches=TRUE,analysis_admitted=FALSE),file.path(out,"R-RESULT.json"),pretty=TRUE,auto_unbox=TRUE)
+cat("Exact unchanged original source installed privately; no user analysis admitted.\n")

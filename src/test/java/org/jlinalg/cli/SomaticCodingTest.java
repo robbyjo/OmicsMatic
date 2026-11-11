@@ -1,0 +1,38 @@
+/* Copyright (C) 2026 JLinAlg contributors; SPDX-License-Identifier: GPL-3.0-or-later */
+package org.jlinalg.cli;
+
+import java.io.*;
+import java.util.*;
+import java.util.stream.Stream;
+import java.util.zip.GZIPInputStream;
+import org.jlinalg.genetics.SomaticCoding;
+import org.jlinalg.genetics.SomaticCoding.*;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.jlinalg.cli.Monocle3WorkflowRequest.*;
+
+class SomaticCodingTest {
+    static Map<String,Object> fixture()throws IOException{try(var in=new GZIPInputStream(Objects.requireNonNull(SomaticCodingTest.class.getResourceAsStream("/org/jlinalg/genetics/dndscv/coding-controls-v1.json.gz")))){return object(NextflowParameters.parse(NextflowFiles.utf8(in.readAllBytes()),64<<20,5000000));}}
+    record Reference(String name,Map<String,Object> value){@Override public String toString(){return name;}}
+    static Stream<Reference> references()throws IOException{var rows=new ArrayList<Reference>();for(Object o:list(fixture().get("reference_genes"))){var r=object(o);rows.add(new Reference(text(r.get("name")),r));}return rows.stream();}
+    static Gene gene(Map<String,Object> r)throws IOException{var exons=new ArrayList<Interval>();for(Object o:list(r.get("exons"))){var p=list(o);exons.add(new Interval(integer(p.get(0),1,Long.MAX_VALUE),integer(p.get(1),1,Long.MAX_VALUE)));}var positions=list(r.get("splice_positions"));long[] splice=new long[positions.size()];for(int i=0;i<splice.length;i++)splice[i]=integer(positions.get(i),1,Long.MAX_VALUE);return new Gene(text(r.get("name")),text(r.get("chromosome")),(int)integer(r.get("strand"),-1,1),exons,text(r.get("cds")),text(r.get("up")),text(r.get("down")),splice,text(r.get("splice")),text(r.get("splice_up")),text(r.get("splice_down")));}
+    @ParameterizedTest @MethodSource("references") void everyOriginalReferenceOpportunityAndCoordinate(Reference reference)throws Exception{
+        var r=reference.value();Gene gene=gene(r);var observed=gene.opportunities();var expected=list(r.get("L"));assertEquals(768,expected.size());long[][] counts=observed.counts();long total=0;for(int c=0;c<4;c++)for(int row=0;row<192;row++){assertEquals(integer(expected.get(c*192+row),0,Long.MAX_VALUE),counts[row][c],reference.name()+":"+row+":"+c);total+=counts[row][c];}
+        assertEquals(total,observed.countedChanges());assertEquals(3L*(text(r.get("cds")).length()+list(r.get("splice_positions")).size()),total+observed.unresolvedContexts()+observed.stopLossChanges());
+        int offset=0;for(Interval exon:gene.exons())for(long position=exon.start();position<=exon.end();position++){assertEquals(gene.strand()==1?offset:gene.cds().length()-1-offset,gene.codingIndex(position));offset++;}assertEquals(gene.cds().length(),offset);assertEquals(-1,gene.codingIndex(0));
+    }
+    @Test void all64OriginalTranslationsAnd4096ConsequencePairs()throws Exception{
+        var f=fixture();var codons=strings(f.get("codons"),64);var amino=object(f.get("amino_acids"));assertEquals(64,codons.size());assertEquals(new HashSet<>(codons),amino.keySet());for(int i=0;i<64;i++){assertEquals(text(amino.get(codons.get(i))).charAt(0),SomaticCoding.translate(codons.get(i)));for(int j=0;j<64;j++){char a=text(amino.get(codons.get(i))).charAt(0),b=text(amino.get(codons.get(j))).charAt(0);Impact expected=a==b?Impact.SYNONYMOUS:b=='*'?Impact.NONSENSE:a=='*'?Impact.STOP_LOSS:Impact.MISSENSE;assertEquals(expected,SomaticCoding.consequence(codons.get(i),codons.get(j)));}}
+    }
+    @Test void all192OriginalChannelLabelsAndInverse()throws Exception{
+        var rows=strings(fixture().get("channels"),192);assertEquals(192,new HashSet<>(rows).size());for(int i=0;i<192;i++){assertEquals(rows.get(i),SomaticCoding.channelLabel(i));assertEquals(i,SomaticCoding.channel(rows.get(i).substring(0,3),rows.get(i).charAt(5)));}
+    }
+    @Test void nativePlusStrandSynonymousAndWrongReference(){Gene g=new Gene("NA","1",1,List.of(new Interval(100,108)),"ATGGAGTAA","CCCCCCCCC","GGGGGGGGG",new long[0],"","","");Annotation a=g.annotate("1",105,'G','A');assertEquals(Impact.SYNONYMOUS,a.impact());assertEquals("GAG>GAA",a.codonChange());assertEquals("G6A",a.nucleotideChange());assertEquals("E2E",a.aminoAcidChange());assertTrue(a.counted());assertFalse(a.wrongReference());Annotation wrong=g.annotate("1",105,'C','A');assertTrue(wrong.wrongReference());assertFalse(wrong.counted());}
+    @Test void minusStrandExonOrderAndComplement(){Gene g=new Gene("δ","chrX",-1,List.of(new Interval(100,102),new Interval(200,205)),"ATGGAGTAA","CCCCCCCCC","GGGGGGGGG",new long[0],"","","");Annotation a=g.annotate("chrX",205,'T','C');assertEquals(0,a.codingIndex());assertEquals("ATG>GTG",a.codonChange());assertEquals("M1V",a.aminoAcidChange());assertEquals('A',a.referenceCoding());assertEquals('G',a.alternateCoding());assertTrue(a.counted());assertEquals(8,g.codingIndex(100));assertEquals(6,g.codingIndex(102));assertEquals(5,g.codingIndex(200));assertEquals(-1,g.codingIndex(150));}
+    @Test void splicePriorityAndStopLossRemainSeparate(){Gene g=new Gene("TRUE","1",1,List.of(new Interval(1,9)),"ATGGAGTAA","CCCCCCCCC","GGGGGGGGG",new long[]{4},"G","A","T");Annotation splice=g.annotate("1",4,'G','A');assertEquals(Impact.ESSENTIAL_SPLICE,splice.impact());assertEquals(".",splice.codonChange());assertEquals(-1,splice.codingIndex());assertTrue(splice.counted());Annotation loss=g.annotate("1",7,'T','C');assertEquals(Impact.STOP_LOSS,loss.impact());assertFalse(loss.counted());assertEquals("*3Q",loss.aminoAcidChange());}
+    @Test void ambiguousFlanksCountAsUnassignedAndRemainLiteral(){var o=SomaticCoding.opportunities("ATG","CNN","GGG","G","N","T");assertEquals(9,o.unresolvedContexts());assertEquals(3,o.countedChanges());assertEquals('X',SomaticCoding.translate("TAN"));assertThrows(IllegalArgumentException.class,()->SomaticCoding.opportunities("ATN","CCC","GGG","","",""));}
+    @Test void explicitWeightsAndDefensiveCounts(){var o=SomaticCoding.opportunities("ATG","CCC","GGG","","","");long[][] counts=o.counts();double[][] weights=new double[192][4];for(double[] row:weights)Arrays.fill(row,1.5);double[][] result=SomaticCoding.weighted(counts,weights);for(int i=0;i<192;i++)for(int j=0;j<4;j++)assertEquals(counts[i][j]*1.5,result[i][j]);counts[0][0]=998;assertNotEquals(998,o.counts()[0][0]);weights[0][0]=Double.NaN;assertThrows(IllegalArgumentException.class,()->SomaticCoding.weighted(o.counts(),weights));weights[0][0]=-1;assertThrows(IllegalArgumentException.class,()->SomaticCoding.weighted(o.counts(),weights));}
+    @Test void malformedAxesContextsAndCoordinatesAreRefused(){assertThrows(IllegalArgumentException.class,()->SomaticCoding.translate("atg"));assertThrows(IllegalArgumentException.class,()->SomaticCoding.channel("AAA",'A'));assertThrows(IllegalArgumentException.class,()->SomaticCoding.channelLabel(192));assertThrows(IllegalArgumentException.class,()->new Interval(0,1));assertThrows(IllegalArgumentException.class,()->new Gene("x","1",1,List.of(new Interval(1,3),new Interval(3,5)),"ATGAAA","CCCCCC","GGGGGG",new long[0],"","",""));assertThrows(IllegalArgumentException.class,()->new Gene("x","1",1,List.of(new Interval(1,2)),"ATG","CCC","GGG",new long[0],"","",""));Gene g=new Gene("x","1",1,List.of(new Interval(1,3)),"ATG","CCC","GGG",new long[0],"","","");assertThrows(IllegalArgumentException.class,()->g.annotate("chr1",1,'A','T'));assertThrows(IllegalArgumentException.class,()->g.annotate("1",4,'A','T'));assertThrows(IllegalArgumentException.class,()->g.annotate("1",1,'A','A'));}
+}

@@ -1,0 +1,460 @@
+{
+  "schema_version": 1,
+  "profile": "original-ChIPseeker-annotation-R461-current-dependencies-v1",
+  "r_version": "4.6.1",
+  "editions": {
+    "1.22.1": {
+      "source_url": "https://bioconductor.org/packages/3.10/bioc/src/contrib/ChIPseeker_1.22.1.tar.gz",
+      "archive": {
+        "bytes": 5422874,
+        "sha256": "94006926d0eea50a88a5b4c6c3fdaa04c9591bb43fa45d85ec22a80159e55011"
+      },
+      "license": "Artistic-2.0"
+    },
+    "1.26.2": {
+      "source_url": "https://bioconductor.org/packages/3.12/bioc/src/contrib/ChIPseeker_1.26.2.tar.gz",
+      "archive": {
+        "bytes": 5422083,
+        "sha256": "df3ca3741825c84ef7bdfbfb4781135ade20ca90e98a658d3657c5ac393e29e4"
+      },
+      "license": "Artistic-2.0"
+    },
+    "1.34.1": {
+      "source_url": "https://bioconductor.org/packages/3.16/bioc/src/contrib/ChIPseeker_1.34.1.tar.gz",
+      "archive": {
+        "bytes": 7079806,
+        "sha256": "799c33c45ed2e894ef39cb92cbd97544e18226df47d4c3721f19c4960eab294b"
+      },
+      "license": "Artistic-2.0"
+    },
+    "1.48.1": {
+      "source_url": "https://bioconductor.org/packages/3.23/bioc/src/contrib/ChIPseeker_1.48.1.tar.gz",
+      "archive": {
+        "bytes": 7864395,
+        "sha256": "3d59c0912551274d032b640fa44437ac0c3ec4bc032cceebfc5ed2842fcbd32f"
+      },
+      "license": "Artistic-2.0"
+    }
+  },
+  "required_packages": {
+    "AnnotationDbi": "1.74.0",
+    "BiocGenerics": "0.58.1",
+    "GenomicFeatures": "1.64.0",
+    "GenomicRanges": "1.64.0",
+    "GenomeInfoDb": "1.48.0",
+    "IRanges": "2.46.0",
+    "S4Vectors": "0.50.3",
+    "Seqinfo": "1.2.0",
+    "jsonlite": "2.0.0",
+    "dplyr": "1.2.1",
+    "magrittr": "2.0.5",
+    "yulab.utils": "0.2.5"
+  },
+  "files": {
+    "1.22.1/DESCRIPTION": {
+      "bytes": 2876,
+      "sha256": "f64f27625c52b4257b236c61bacdf2db548477d0abe0826146c307dfd5a03512"
+    },
+    "1.22.1/NAMESPACE": {
+      "bytes": 3526,
+      "sha256": "056c301313adb4b048bf7d9aa7bce926777388106e5816fcd5c8b6a91e04f175"
+    },
+    "1.22.1/R/AllGenerics.R": {
+      "bytes": 1471,
+      "sha256": "82ec7301941454f99f4f8c9946534d7a5e03149bf0fcd023f920616a8454d1c3"
+    },
+    "1.22.1/R/ChIPseeker-package.R": {
+      "bytes": 849,
+      "sha256": "eb347d1812616c79943cc895c6988f54b17f540b7c63c8a4753c528e50b888f7"
+    },
+    "1.22.1/R/GEO.R": {
+      "bytes": 10402,
+      "sha256": "b4bf3eac8e028dd567b6870c9c47c8a1ce11246e548c5c959316da99023a5326"
+    },
+    "1.22.1/R/addGeneAnno.R": {
+      "bytes": 1791,
+      "sha256": "d0fc56939edf367ffae0475babb43b511a67aacad70799ef103dedc20ccf7c39"
+    },
+    "1.22.1/R/annotatePeak.R": {
+      "bytes": 10696,
+      "sha256": "40d66f492fc96e05bf32bb9479297126043d193bcdcfaff3a6760db4a5e4d074"
+    },
+    "1.22.1/R/covplot.R": {
+      "bytes": 5194,
+      "sha256": "10010d02a47f9a0fb1e437a0c0776d198d4acb76b97d5e32cbc5799bc2ee82f6"
+    },
+    "1.22.1/R/csAnno.R": {
+      "bytes": 9670,
+      "sha256": "80ec945716fd47ff2958ebee1d1baac5f9e1e8961333a47944d50d741e4fd2fe"
+    },
+    "1.22.1/R/enrichOverlap.R": {
+      "bytes": 8934,
+      "sha256": "42e01100fa49eadb31277c6b4c80285f6b595dbb9768d823f466c3e7531cffd0"
+    },
+    "1.22.1/R/getFlankingGene.R": {
+      "bytes": 2326,
+      "sha256": "a8485d4f40b2ba63d05c7a2fec1b37d89c2e65b461f3fa08fe39f7f6de80c0d1"
+    },
+    "1.22.1/R/getGenomicAnnotation.R": {
+      "bytes": 8914,
+      "sha256": "18880cebbb81d108bb05bfe8e4de23794317ec19c8809acb5e9dfefe8a1fcc92"
+    },
+    "1.22.1/R/getNearestFeatureIndicesAndDistances.R": {
+      "bytes": 5690,
+      "sha256": "599e14b879a34de1581b8e576a7b572b2e23f99c414dab9d049c498442b630cf"
+    },
+    "1.22.1/R/plotAnno.R": {
+      "bytes": 7417,
+      "sha256": "97f4670adc1b44965eae16142d8b62422f757de93463ba1094b71da4f6acb912"
+    },
+    "1.22.1/R/plotDistToTSS.R": {
+      "bytes": 5189,
+      "sha256": "eb93c9ad20f0e55a554596f776a0808114d7b470d3bc7266e1db217159c08537"
+    },
+    "1.22.1/R/plotTagMatrix.R": {
+      "bytes": 11719,
+      "sha256": "b070067ff3bc4c132a4682d7d6a8b2e8e0d3662b79f6649d07909e69f33b9338"
+    },
+    "1.22.1/R/readPeakFile.R": {
+      "bytes": 2117,
+      "sha256": "2ff680daabdc91b572e900b3741a6167c814190c723bed0a0dee1fbb6905b12f"
+    },
+    "1.22.1/R/seq2gene.R": {
+      "bytes": 2196,
+      "sha256": "097cb52d25040c779de4ca8a8caf77bf40e9a3e0dd0c9e59e1e99ae67510cd50"
+    },
+    "1.22.1/R/subset.R": {
+      "bytes": 742,
+      "sha256": "d2bedbc9d98a7873b322d70a699e8bbb32ac7f3f3c3599654c6c7f474776cd0f"
+    },
+    "1.22.1/R/tagMatrix.R": {
+      "bytes": 7479,
+      "sha256": "5d01543e890dd624c701c5097921d63317431b243b38c4c7ab75ad87f3c4d9c3"
+    },
+    "1.22.1/R/upsetplot.R": {
+      "bytes": 2257,
+      "sha256": "d669ed8862408c895d0c27bcdbbf1923caf8208705e01091fdbff6990bc9c397"
+    },
+    "1.22.1/R/utilities.R": {
+      "bytes": 13504,
+      "sha256": "f928306636ac97d670258b1843d70002b6f33d1e507faebff697477e3dfacf90"
+    },
+    "1.22.1/R/vennpie.R": {
+      "bytes": 2497,
+      "sha256": "2d3360a4d14493a449d13fc9956a84fb108c82ca8834d47dab4f6df86f370523"
+    },
+    "1.22.1/R/vennplot.R": {
+      "bytes": 2533,
+      "sha256": "21493ef44e1d0dbed96c305867554fdeb7cfc5c72a4a82b3cc2837f526509874"
+    },
+    "1.22.1/R/zzz.R": {
+      "bytes": 914,
+      "sha256": "fdac4e4f66b7321615af1b097abf94cf5feb6427beaec57aa808ab5d96548016"
+    },
+    "1.26.2/DESCRIPTION": {
+      "bytes": 2888,
+      "sha256": "913b307858d6535aa3fb1d7c1349d2c296bd12b61ff1f852e6ca697b955b47c2"
+    },
+    "1.26.2/NAMESPACE": {
+      "bytes": 3526,
+      "sha256": "056c301313adb4b048bf7d9aa7bce926777388106e5816fcd5c8b6a91e04f175"
+    },
+    "1.26.2/R/AllGenerics.R": {
+      "bytes": 1471,
+      "sha256": "82ec7301941454f99f4f8c9946534d7a5e03149bf0fcd023f920616a8454d1c3"
+    },
+    "1.26.2/R/ChIPseeker-package.R": {
+      "bytes": 849,
+      "sha256": "eb347d1812616c79943cc895c6988f54b17f540b7c63c8a4753c528e50b888f7"
+    },
+    "1.26.2/R/GEO.R": {
+      "bytes": 10409,
+      "sha256": "4141749eea6dd292da54e1d78798f4e2b72f90ed140e212d2beb0730b0db621f"
+    },
+    "1.26.2/R/addGeneAnno.R": {
+      "bytes": 1791,
+      "sha256": "d0fc56939edf367ffae0475babb43b511a67aacad70799ef103dedc20ccf7c39"
+    },
+    "1.26.2/R/annotatePeak.R": {
+      "bytes": 10696,
+      "sha256": "40d66f492fc96e05bf32bb9479297126043d193bcdcfaff3a6760db4a5e4d074"
+    },
+    "1.26.2/R/covplot.R": {
+      "bytes": 5214,
+      "sha256": "ab3d12d2ae6ce39721a6e95f8448dbfb3c4d92373587465ea751365d3ef54017"
+    },
+    "1.26.2/R/csAnno.R": {
+      "bytes": 9670,
+      "sha256": "80ec945716fd47ff2958ebee1d1baac5f9e1e8961333a47944d50d741e4fd2fe"
+    },
+    "1.26.2/R/enrichOverlap.R": {
+      "bytes": 8934,
+      "sha256": "42e01100fa49eadb31277c6b4c80285f6b595dbb9768d823f466c3e7531cffd0"
+    },
+    "1.26.2/R/getFlankingGene.R": {
+      "bytes": 2326,
+      "sha256": "a8485d4f40b2ba63d05c7a2fec1b37d89c2e65b461f3fa08fe39f7f6de80c0d1"
+    },
+    "1.26.2/R/getGenomicAnnotation.R": {
+      "bytes": 9035,
+      "sha256": "ffc1b98d5f3cbfd687795b593aff64c343169e14be9993b17230cc1aa024f557"
+    },
+    "1.26.2/R/getNearestFeatureIndicesAndDistances.R": {
+      "bytes": 5690,
+      "sha256": "599e14b879a34de1581b8e576a7b572b2e23f99c414dab9d049c498442b630cf"
+    },
+    "1.26.2/R/plotAnno.R": {
+      "bytes": 7417,
+      "sha256": "97f4670adc1b44965eae16142d8b62422f757de93463ba1094b71da4f6acb912"
+    },
+    "1.26.2/R/plotDistToTSS.R": {
+      "bytes": 5189,
+      "sha256": "eb93c9ad20f0e55a554596f776a0808114d7b470d3bc7266e1db217159c08537"
+    },
+    "1.26.2/R/plotTagMatrix.R": {
+      "bytes": 11719,
+      "sha256": "b070067ff3bc4c132a4682d7d6a8b2e8e0d3662b79f6649d07909e69f33b9338"
+    },
+    "1.26.2/R/readPeakFile.R": {
+      "bytes": 2117,
+      "sha256": "2ff680daabdc91b572e900b3741a6167c814190c723bed0a0dee1fbb6905b12f"
+    },
+    "1.26.2/R/seq2gene.R": {
+      "bytes": 2196,
+      "sha256": "097cb52d25040c779de4ca8a8caf77bf40e9a3e0dd0c9e59e1e99ae67510cd50"
+    },
+    "1.26.2/R/subset.R": {
+      "bytes": 742,
+      "sha256": "d2bedbc9d98a7873b322d70a699e8bbb32ac7f3f3c3599654c6c7f474776cd0f"
+    },
+    "1.26.2/R/tagMatrix.R": {
+      "bytes": 7479,
+      "sha256": "5d01543e890dd624c701c5097921d63317431b243b38c4c7ab75ad87f3c4d9c3"
+    },
+    "1.26.2/R/upsetplot.R": {
+      "bytes": 2257,
+      "sha256": "d669ed8862408c895d0c27bcdbbf1923caf8208705e01091fdbff6990bc9c397"
+    },
+    "1.26.2/R/utilities.R": {
+      "bytes": 13504,
+      "sha256": "8c5406841dbd265c975846791cd7e1213ce74f6ca5a84a5f7e5b3faf1521f2d9"
+    },
+    "1.26.2/R/vennpie.R": {
+      "bytes": 2497,
+      "sha256": "2d3360a4d14493a449d13fc9956a84fb108c82ca8834d47dab4f6df86f370523"
+    },
+    "1.26.2/R/vennplot.R": {
+      "bytes": 2533,
+      "sha256": "21493ef44e1d0dbed96c305867554fdeb7cfc5c72a4a82b3cc2837f526509874"
+    },
+    "1.26.2/R/zzz.R": {
+      "bytes": 914,
+      "sha256": "fdac4e4f66b7321615af1b097abf94cf5feb6427beaec57aa808ab5d96548016"
+    },
+    "1.34.1/DESCRIPTION": {
+      "bytes": 3218,
+      "sha256": "308d08bc94532849e3ef8f58d9dda1a8a70dc938b02e66b33eeab6f256622a85"
+    },
+    "1.34.1/NAMESPACE": {
+      "bytes": 3813,
+      "sha256": "cc62effe9d2ae2f1ac7e2341e663600d07789ca9358c1d26fd626a784b0f3628"
+    },
+    "1.34.1/R/AllGenerics.R": {
+      "bytes": 1519,
+      "sha256": "2a2c511e854f7e8583d78ef9bb22ee9360d9ea4334eb1fc576b44032cbbc12ba"
+    },
+    "1.34.1/R/ChIPseeker-package.R": {
+      "bytes": 849,
+      "sha256": "eb347d1812616c79943cc895c6988f54b17f540b7c63c8a4753c528e50b888f7"
+    },
+    "1.34.1/R/GEO.R": {
+      "bytes": 10409,
+      "sha256": "4141749eea6dd292da54e1d78798f4e2b72f90ed140e212d2beb0730b0db621f"
+    },
+    "1.34.1/R/addGeneAnno.R": {
+      "bytes": 1843,
+      "sha256": "d22769cd1139835dda2f5e642f7157b3a4282cde21543282000613b980bc34a8"
+    },
+    "1.34.1/R/annotatePeak.R": {
+      "bytes": 12270,
+      "sha256": "2d440c815fc5911e620aa3956989949b5c963ef7cf6e0f7a54bc4db751731783"
+    },
+    "1.34.1/R/covplot.R": {
+      "bytes": 6145,
+      "sha256": "30cd7b72dd9e3b16090141b5a646033e867247d7f7d8f72dfc42de164d0f19d9"
+    },
+    "1.34.1/R/csAnno.R": {
+      "bytes": 13640,
+      "sha256": "5291fb89fd3a2c6bf7cd49f0a1e255ece65ff05e76692ecebbe3795ddbdd46d7"
+    },
+    "1.34.1/R/enrichOverlap.R": {
+      "bytes": 8934,
+      "sha256": "42e01100fa49eadb31277c6b4c80285f6b595dbb9768d823f466c3e7531cffd0"
+    },
+    "1.34.1/R/getFlankingGene.R": {
+      "bytes": 2326,
+      "sha256": "a8485d4f40b2ba63d05c7a2fec1b37d89c2e65b461f3fa08fe39f7f6de80c0d1"
+    },
+    "1.34.1/R/getGenomicAnnotation.R": {
+      "bytes": 9636,
+      "sha256": "b969ec4bee9d4a3e4724a3d5b53a7933799dca2cce22def51652253d28410b9b"
+    },
+    "1.34.1/R/getNearestFeatureIndicesAndDistances.R": {
+      "bytes": 5690,
+      "sha256": "599e14b879a34de1581b8e576a7b572b2e23f99c414dab9d049c498442b630cf"
+    },
+    "1.34.1/R/plotAnno.R": {
+      "bytes": 7615,
+      "sha256": "9858801c6a8f141735cd476fef0bbe5dcf14d1f1b8895e571301754f3124cd5d"
+    },
+    "1.34.1/R/plotDistToTSS.R": {
+      "bytes": 5189,
+      "sha256": "eb93c9ad20f0e55a554596f776a0808114d7b470d3bc7266e1db217159c08537"
+    },
+    "1.34.1/R/plotTagMatrix.R": {
+      "bytes": 64279,
+      "sha256": "e5499ca39d81fddd3d0b02235a49a4b92589d4306e806dbccda3cd203fd17f3c"
+    },
+    "1.34.1/R/readPeakFile.R": {
+      "bytes": 2195,
+      "sha256": "31f85000e87b5e8976d1c43b4a19f6941c3fb3227656c0b70d0a327a58d4156f"
+    },
+    "1.34.1/R/seq2gene.R": {
+      "bytes": 2776,
+      "sha256": "916c6cac2048499e44e1968394960e5c14a86be4422fa21390f80a3f684add3f"
+    },
+    "1.34.1/R/subset.R": {
+      "bytes": 742,
+      "sha256": "d2bedbc9d98a7873b322d70a699e8bbb32ac7f3f3c3599654c6c7f474776cd0f"
+    },
+    "1.34.1/R/tagMatrix.R": {
+      "bytes": 41459,
+      "sha256": "e4af6f388f955a30369d63b5ea99f6f0a9b3f34cea3c42e7933c1d9075de899b"
+    },
+    "1.34.1/R/upsetplot.R": {
+      "bytes": 2257,
+      "sha256": "d669ed8862408c895d0c27bcdbbf1923caf8208705e01091fdbff6990bc9c397"
+    },
+    "1.34.1/R/utilities.R": {
+      "bytes": 15570,
+      "sha256": "637a475d40ac08783f138ccf75ab33c998a7ebe879cfc36000e6a1125058c195"
+    },
+    "1.34.1/R/vennpie.R": {
+      "bytes": 2632,
+      "sha256": "f717141261a7c64a8b4cc75ee47df738ea9829fcb589b071d2dda2aff9858691"
+    },
+    "1.34.1/R/vennplot.R": {
+      "bytes": 3394,
+      "sha256": "c586f1909687b64e2dc92d74c5d63771d2c3d4292558e018ceb46b0710e6494e"
+    },
+    "1.34.1/R/zzz.R": {
+      "bytes": 987,
+      "sha256": "d62a95fda6ce8543b8fc3fb2829d0a60dc6ec1d07b9819e8b3f6830c3ca40322"
+    },
+    "1.48.1/DESCRIPTION": {
+      "bytes": 3472,
+      "sha256": "b68cbc1cdce2dbc119352e21768994b0c723f76ab46f132da7854889097beec8"
+    },
+    "1.48.1/NAMESPACE": {
+      "bytes": 4458,
+      "sha256": "0986821b2fa516f4450024969ecc4e887cb2034100c878901066dca75ec5c535"
+    },
+    "1.48.1/R/AllGenerics.R": {
+      "bytes": 1204,
+      "sha256": "dbb8cecc82436e78099a246fd587775432b2e1e2925a3fbad3fb9064d2687d79"
+    },
+    "1.48.1/R/ChIPseeker-package.R": {
+      "bytes": 390,
+      "sha256": "0533d5d397cf9646843c718e60a4dec54c7b6d1ffcc705e2c5f1c799e70d13ff"
+    },
+    "1.48.1/R/GEO.R": {
+      "bytes": 10409,
+      "sha256": "4141749eea6dd292da54e1d78798f4e2b72f90ed140e212d2beb0730b0db621f"
+    },
+    "1.48.1/R/addGeneAnno.R": {
+      "bytes": 1843,
+      "sha256": "d22769cd1139835dda2f5e642f7157b3a4282cde21543282000613b980bc34a8"
+    },
+    "1.48.1/R/annotatePeak.R": {
+      "bytes": 12271,
+      "sha256": "c4e14528fadad9d3d0b25ad5ab027ef43f59d1b1fa557f3be542e31d3146e4f2"
+    },
+    "1.48.1/R/covplot.R": {
+      "bytes": 5949,
+      "sha256": "84f9357d5c3989a8fea431930e5edca8309e07fccce2cceb46dc2905b8692fde"
+    },
+    "1.48.1/R/csAnno.R": {
+      "bytes": 14415,
+      "sha256": "2912062823c070f6a0270a0078e738581ed9a7d2941619715baa9958046fd671"
+    },
+    "1.48.1/R/dplyr-verb.R": {
+      "bytes": 1870,
+      "sha256": "f4278491a56ecbdeb694e4e98b79ec99ddc070cd2997e63954ff072626e96313"
+    },
+    "1.48.1/R/enrichOverlap.R": {
+      "bytes": 9321,
+      "sha256": "54bcd28fd1b2c60ca063618960bf7aa039cf420ec6c4aa31fabb8e3e960a948d"
+    },
+    "1.48.1/R/getFlankingGene.R": {
+      "bytes": 2326,
+      "sha256": "a8485d4f40b2ba63d05c7a2fec1b37d89c2e65b461f3fa08fe39f7f6de80c0d1"
+    },
+    "1.48.1/R/getGenomicAnnotation.R": {
+      "bytes": 10504,
+      "sha256": "9d54c6dc0e9791e9fd341f27bbdff7ec40d36e7076221331d4759eabcfb442fc"
+    },
+    "1.48.1/R/getNearestFeatureIndicesAndDistances.R": {
+      "bytes": 5690,
+      "sha256": "599e14b879a34de1581b8e576a7b572b2e23f99c414dab9d049c498442b630cf"
+    },
+    "1.48.1/R/plotAnno.R": {
+      "bytes": 7572,
+      "sha256": "f1e5aea851fb7bea0478fc24a252402fc2a35bc967269a4278bf0d6e5b5b242e"
+    },
+    "1.48.1/R/plotDistToTSS.R": {
+      "bytes": 6987,
+      "sha256": "2778317cca6f6c27c901db143bc985d59c7869e353785f11a5bd0c5439817b84"
+    },
+    "1.48.1/R/plotTagMatrix.R": {
+      "bytes": 95628,
+      "sha256": "8f5608ae73cd5eced8fcbf185814ea051e9f12ea1c614393e6992c0a2fd3f903"
+    },
+    "1.48.1/R/readPeakFile.R": {
+      "bytes": 2227,
+      "sha256": "e39380abaf8281a78ed8ec59c7687a9e699a9737347306c0d9e0973d21236199"
+    },
+    "1.48.1/R/seq2gene.R": {
+      "bytes": 3399,
+      "sha256": "a2fe59a6fce13f8829245e236e4c042909feb5b4d0f639b6f97395c361f0d385"
+    },
+    "1.48.1/R/subset.R": {
+      "bytes": 742,
+      "sha256": "d2bedbc9d98a7873b322d70a699e8bbb32ac7f3f3c3599654c6c7f474776cd0f"
+    },
+    "1.48.1/R/tagMatrix.R": {
+      "bytes": 41666,
+      "sha256": "b4c5c4babe0f5d97eace5316f8b80a77e57b6e105ae5b5e8444fa18fd393b54e"
+    },
+    "1.48.1/R/upsetplot.R": {
+      "bytes": 2257,
+      "sha256": "d669ed8862408c895d0c27bcdbbf1923caf8208705e01091fdbff6990bc9c397"
+    },
+    "1.48.1/R/utilities.R": {
+      "bytes": 21044,
+      "sha256": "ecafb4f729c02d304fd87de41cc52ae0ca4ad7bf9cfce59022e822d00c955663"
+    },
+    "1.48.1/R/vennpie.R": {
+      "bytes": 2632,
+      "sha256": "f717141261a7c64a8b4cc75ee47df738ea9829fcb589b071d2dda2aff9858691"
+    },
+    "1.48.1/R/vennplot.R": {
+      "bytes": 3355,
+      "sha256": "03d8e2a78f4f1b10a6ae22900113c603df217cacd75c3ca391e348b1ad524d8c"
+    },
+    "1.48.1/R/zzz.R": {
+      "bytes": 407,
+      "sha256": "303e6c7e0aa727a4dbfb8df19353dda30aa4ab5248875e1e5d6d8158af990cec"
+    }
+  },
+  "source_guard_scope": "Exact original ChIPseeker function bodies/formals and declared dependency versions. Not historical dependency environments, native-DLL source authentication or whole-paper equivalence."
+}

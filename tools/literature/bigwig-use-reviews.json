@@ -1,0 +1,69 @@
+[
+  {
+    "paper_id": "P013",
+    "review": {
+      "pmcid": "PMC11798873",
+      "doi": "10.1038/s41586-024-08333-9",
+      "tool_id": "ucsc-bedgraphtobigwig",
+      "evidence_paragraph_sha256": "66fbdf07ac7992071578948c265ab0bc2b3c4939ea5970e609261f874db8d450",
+      "use_summary": "Converted bedtools genomecov bedGraph of one-base Micro-C contact junctions to bigWig, then used that track as a deepTools sample input.",
+      "implementation_scope_note": "The converter does not construct junction coordinates, run genomecov or perform downstream deepTools analyses. Converter edition, chromosome-size input, precision, compression and zoom settings are unstated; the linked binary directory is not a pinned edition.",
+      "version_reported_near_name": null,
+      "usage_context": "analysis-method-description",
+      "supporting_evidence": []
+    }
+  },
+  {
+    "paper_id": "P050",
+    "review": {
+      "pmcid": "PMC10781626",
+      "doi": "10.1038/s41586-023-06821-y",
+      "tool_id": "ucsc-bedgraphtobigwig",
+      "evidence_paragraph_sha256": "7c82ee1cdcd75de24dc88a845a82d71b4343a5d28abfa3fbfe76d9a1852c88fa",
+      "use_summary": "Sorted MACS2 ChIP-seq pileup bedGraph with sort -k1,1 -k2,2n, then converted it with BedGraphToBigWig for genome-browser visualization and downstream deepTools gene-centred analysis.",
+      "implementation_scope_note": "The source specifies the T. gondii TGME49 reference and the sort command, but no exact converter edition or chromosome-size input. The sort locale is unstated. MACS2 peak calling, deepTools binning/clustering and nf-core/HOMER analyses are separate steps, not converter options.",
+      "version_reported_near_name": null,
+      "usage_context": "analysis-method-description",
+      "supporting_evidence": []
+    }
+  },
+  {
+    "paper_id": "P110",
+    "review": {
+      "pmcid": "PMC12695648",
+      "doi": "10.1038/s41588-025-02409-6",
+      "tool_id": "ucsc-bedgraphtobigwig",
+      "evidence_paragraph_sha256": "9ab45546ac838a0d13bc2dde21e544bb90a23fff72113c563b551bc072f5267b",
+      "use_summary": "Generated bigWig tracks with UCSC bedGraphToBigWig, reported as v4, after Nanopore modified-base processing and partitioning sites into AT, AA, AC and AG contexts.",
+      "implementation_scope_note": "Preserve the literal reported v4: its relationship to converter release versus BBI file format is unresolved; do not relabel it as current converter2.10. Reference assemblies are listed separately, while the converter chromosome-size input and options are unstated. Guppy/modbam2bed calls, sequence-context extraction and deepTools methylation summaries are separate steps.",
+      "version_reported_near_name": "v4",
+      "usage_context": "analysis-method-description",
+      "supporting_evidence": []
+    }
+  },
+  {
+    "paper_id": "P138",
+    "review": {
+      "pmcid": "PMC13553301",
+      "doi": "10.1038/s41588-026-02729-1",
+      "tool_id": "ucsc-bedgraphtobigwig",
+      "evidence_paragraph_sha256": "472c0e7941e4c606c1913beb19e4e773562fdb554ecc90f98947afb20c561906",
+      "use_summary": "Converted MACS2 ATAC-seq bedGraph pileup tracks to bigWig after processing mm10 embryo reads and calling peaks on separate and merged biological replicates.",
+      "implementation_scope_note": "Converter edition, exact chromosome-size input and conversion options are unstated. The reported MACS2 shift/extension/duplicate settings and replicate-confidence peak selection do not belong to bedGraphToBigWig. The converter does not merge reads, call peaks or establish replicate reproducibility.",
+      "version_reported_near_name": null,
+      "usage_context": "analysis-method-description",
+      "supporting_evidence": []
+    }
+  },
+  {
+    "paper_id": "P163",
+    "review": {
+      "pmcid": "PMC11525197",
+      "doi": "10.1038/s41588-024-01911-7",
+      "tool_id": "ucsc-bedgraphtobigwig",
+      "evidence_paragraph_sha256": "b7c4273d16d9c388e975990c42dd98f2966f691674eca94a1b99786ea0834757",
+      "use_summary": "Converted normalized CUT&Tag bedGraph to bigWig with bedGraphToBigWig for IGV visualization.",
+      "implementation_scope_note": "Exact chromosome-size/reference input and converter release are not stated. Native summaries/threshold peaks do not create a bigWig index or verify converter parity."
+    }
+  }
+]

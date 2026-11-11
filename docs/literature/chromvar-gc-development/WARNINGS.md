@@ -1,0 +1,13 @@
+# WARNINGS / REQUIRED ACTIONS — CHROMVAR GC DEVELOPMENT
+
+UNDEFINED_GC — Original bias is (C+G)/(A+C+G+T). Ambiguity, gaps and masks are excluded. All-ambiguous/empty sequences retain NaN. Inspect all values and reference/range identities before dependent background sampling; do not silently replace undefined values or filter rows. Signac GC percent/100 is a different denominator when ambiguity is present.
+
+REFERENCE_FAILURE — Missing contigs, duplicate peak identities, out-of-range intervals, invalid residues/references, mismatched indexes and capacity failures admit no result. Preserve the failure, correct the named cause and retry into NEW paths. The API does not write source reference/index files. Coordinate conversion and assembly provenance remain the caller's responsibility.
+
+WINDOWS_JAVA25_COMMAND_LINE — The retained first example failed before entering the native API because this environment's Java25 rejected a Unicode output-path argument. The documented ASCII-path example passed on Java21/25; the fresh Linux example also passed with a Unicode path. Use ASCII helper arguments here or a separately tested caller reading UTF-8 configuration. Biological identifiers must not be renamed as a workaround.
+
+UPSTREAM_BACKGROUND — Source intake controls ran the two unchanged R samplers and current public Matrix interface on recorded current dependencies. Fifteen populations produced nine successful populations and six retained source failures, with exact seeded background matrices and 626-integer before/after RNG states matching across interfaces. Constant bias/intensity, zero pooled counts, undefined bias and one/two-peak rank failures are not repaired. Matching source replay is not independent Java RNG validation, DLL source authentication or a finished end-user background adapter.
+
+SKIP_DEPENDENT_ANALYSIS — Native GC and prepared deviation scoring require Java. A separately needed original sampler requires its exact R/packages. If installation is forbidden or the runtime is unavailable, skip that dependent analysis and name the requirements/action needed to resume; do not admit a substitute result. No installation was attempted here.
+
+SCOPE_AND_PUBLICATION — This is local native API development and synthetic example validation. Historical whole packages, BSgenome container methods, the complete Signac workflow, biological accuracy, root dispatch, catalog credit, release, push and deployment are not certified. Scientific tests bind to the pinned development JAR. The shared canonical JAR is preserved and is a separate build. Hashes establish integrity, not authenticity. Catalog counts remain 68 new integrations, 71 including existing tools, and 259 missing.

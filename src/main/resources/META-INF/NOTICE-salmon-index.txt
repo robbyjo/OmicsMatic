@@ -1,0 +1,28 @@
+SalmonIndexReferences is an independently written Java decoder of original
+Pufferfish reference-table serialization. It does not implement the index graph
+or Salmon quantification and does not authenticate an external producer.
+
+The original Salmon releases 1.0.0, 1.1.0, 1.5.2, 1.8.0 and 1.9.0 name Pufferfish
+tags salmon-v1.0.0, salmon-v1.1.0, salmon-v1.5.2, salmon-v1.8.0 and salmon-v1.9.0
+in scripts/fetchPufferfish.sh, with exact archive SHA-256 checksums. All five
+captured official ZIPs match those original declarations. Primary repository:
+https://github.com/COMBINE-lab/pufferfish (GPL-3.0).
+
+Relevant original members, under the exact corresponding tag:
+  src/PufferfishIndex.cpp: reads refNames_, refExt_, contigTable_, full lengths.
+  src/PufferfishBinaryGFAReader.cpp: serializes full names, short-reference
+    extension vector, and contig positions; writes normalized lengths.
+  include/Util.hpp: Position serializes uint32 transcript_id_ and pos_.
+    The high position bit is source orientation; the remaining31 bits are start.
+  include/PufferfishBaseIndex.hpp: full-reference ID is id + refExt_[id].
+  src/FixFasta.cpp: writes complete_ref_lens.bin before graph serialization.
+
+The Java reader fixes the ABI to original Linux x86_64 little-endian Cereal
+uint64 sizes and uint32 length/position fields. It consumes all three files and
+every position, including exact EOF. Names, original/normalized lengths and ID
+projections remain distinct. A reference without a contig ID remains a member of
+the full reference population. This is not a decoy, raw-FASTA, graph-topology,
+contig-end, whole-index, process-completion or biological-accuracy certificate.
+The pipeline must supply its separate complete original-process, reference,
+decoy and full-index provenance/admission gates. Stage position callbacks until
+the whole decoder returns successfully; any later failure invalidates a prefix.

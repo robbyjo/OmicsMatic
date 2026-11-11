@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "runtime_profile": "runtime/runtime.json",
+  "output_dir": "NEW-mtag-output",
+  "traits": [
+    {"name": "trait1", "input": "trait1.tsv"},
+    {"name": "trait2", "input": "trait2.tsv"}
+  ],
+  "columns": {"snp":"SNP","chr":"CHR","bp":"BP","a1":"A1","a2":"A2","z":"Z","n":"N","freq":"EAF","p":"P","info":null},
+  "filters": {"maf_min":[0.01,0.01],"n_min":[1,1],"n_max":null,"info_min":null,"homogeneous_kind":"none","homogeneous_values":null,"include":[],"exclude":[],"chromosomes":[],"include_ambiguous":false},
+  "covariance": {"sigma":"ldsc","sigma_file":null,"omega":"gmm","omega_file":null,"constraint":"none","no_overlap":false,"tolerance":0.000001,"ld_reference":"bundled_1kg_eur","ld_reference_dir":null},
+  "fdr": {"mode":"grid","intervals":2,"grid_file":null,"p_significant":0.00000005,"cores":1},
+  "standardized_effects": false,
+  "force_low_signal": false,
+  "median_z_cutoff": 0.1,
+  "limits": {"rows_per_trait":50000,"input_bytes":1000000000,"output_bytes":1000000000,"working_bytes":1000000000,"wall_seconds":1800,"maximum_files":1000,"maximum_fdr_grid_points":20000},
+  "no_allele_flipping": false,
+  "meta_format": false
+}

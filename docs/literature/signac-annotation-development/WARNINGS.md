@@ -1,0 +1,17 @@
+# WARNINGS / REQUIRED ACTIONS
+
+LEGACY_TSS_SOURCE_BOUNDARIES — Fast and profile TSS modes can differ in the original package. Preserve endpoint offsets, mode and populations. Do not substitute a generic overlap window, Tn5 shift or ATACqc and label it legacy TSSEnrichment. Inspect score kinds; infinity or source NaN-to-zero normalization is not a passing biological QC decision.
+
+FAIL2 — Original missing-chromosome-only fast chunks, single-row profiles, trimmed profile indices and zero-background profile Matrix-class failures are retained. Invalid formats, inconsistent known/unknown sequence lengths, exceeded capacity and altered captured results also fail. Preserve attempts, correct the named cause and rerun to NEW output. Never silently skip TSSs, change modes or treat partial tables/failed verification as results. Review process_n and choose a justified single chunk where appropriate and feasible.
+
+PROFILE_SOURCE_POPULATION_AND_PRUNING — Profile rows follow file/map order; duplicate cell labels attach the first score, with object percentiles computed after attachment. Background fallback still uses profile rows. The source prunes chromosomes cumulatively across files and combines strand matrices by row position. Review mappings, file order and chromosome inventories; do not pool or restore source-pruned counts silently. The legacy cells argument is ignored and warned; use an explicitly justified object cell universe instead.
+
+ANNOTATION_UNION_AND_FIRST_METADATA — Gene activity unions annotation rows per gene ID, uses first strand/biotype/name and discards original sequence lengths. It is not longest-isoform selection. Coding filtering is after union for activity and before union for annotation-derived TSSs. Review annotation provenance and order. Strict max_width filtering precedes promoter extension.
+
+IDENTICAL_COORDINATES_USE_FIRST_GENE_NAME — Source coordinate aliases can produce duplicate output gene names, all assigned the first name. Retain that warning and review the ambiguity. Downstream normalization/LSI requires unique IDs; an explicit, documented transformation is necessary or that analysis remains skipped/failed. Gene activity is an accessibility-derived fragment proxy, not measured RNA expression.
+
+UTF-8 / COORDINATES — Keep request filenames/paths ASCII on the tested Windows launchers; put exact Unicode data paths and IDs inside UTF-8 JSON/tables. Position/annotation coordinates are one-based closed; fragments are BED zero-based half-open. Unknown sequence lengths preserve source negative offsets, while known linear lengths trim. The genome_build label is a declaration, not reference compatibility certification.
+
+SKIP3 — Native TSS and gene activity need no R installation. Optional LSI requires the exact pinned R runtime and working native dependencies. If missing, provide/install the named runtime only where permitted and rerun to NEW output; otherwise retain the skip and skip dependent analysis. No analysis performs an automatic installation.
+
+DEVELOPMENT SCOPE — Original Signac1.17.1 was executed; historical package binaries were not. Motifs/chromVAR, peak links, differential accessibility and full Signac integration remain incomplete. The catalog remains68 new integrations (71 including existing),259 missing. No full runtime DLL/host closure or biological QC certification is claimed. Prior sources, runtime-library content and canonical executable are preserved. No release, push, deployment or whole-goal completion occurred.

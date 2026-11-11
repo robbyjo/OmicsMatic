@@ -1,0 +1,134 @@
+{
+  "status": "five-primary-bound-diamond-role-reviews",
+  "reviews": [
+    {
+      "paper_id": "P017",
+      "role_kind": "multi-database-protein-and-translated-query-searches",
+      "review": {
+        "pmcid": "PMC10849945",
+        "doi": "10.1038/s41586-023-06955-z",
+        "tool_id": "diamond",
+        "evidence_paragraph_sha256": "7a63d64328f92e6fe38b45f53a2d1bbaf8e1fcc4116ff38378036856f6472d83",
+        "use_summary": "Used sensitive DIAMOND protein and translated-nucleotide searches to assess gene-family novelty, expression evidence, ecological distribution, functional matches and representative family abundance. Reported E-value thresholds were generally below0.001; different steps specify query coverage above50%, target coverage at least50%, or coverage without an explicit denominator.",
+        "implementation_scope_note": "Scoped original blastp/blastx alignment and coordinate-derived coverage audits on complete caller-prepared inputs. No DIAMOND version is specified, so an explicit tested source candidate is required. Query and subject coverage, strict versus inclusive boundaries, sequence orientation and database release must be chosen for the particular step; no generic coverage rule is inferred. Printed E-values are rounded and do not reconstruct exact strict study cutoffs. No novelty classification, abundance aggregation, resistance annotation, t-SNE, eggNOG or HMMER execution is implied.",
+        "version_reported_near_name": null,
+        "supporting_evidence": [
+          {
+            "paragraph_index": 49,
+            "section": "Methods / Mapping to metatranscriptomic datasets",
+            "paragraph_sha256": "a3cef38a84f3c3aea8241662a600c7df17c66e0e7f2eddf24e6900fd6ad2c143"
+          },
+          {
+            "paragraph_index": 53,
+            "section": "Methods / Small peptide analyses",
+            "paragraph_sha256": "fe357c1a8f5abbb9e795a83c13227a39f9db72dce6118b188aec45d33d4e77ed"
+          },
+          {
+            "paragraph_index": 55,
+            "section": "Methods / Ecological distribution of gene families",
+            "paragraph_sha256": "7e0dae8ab13d40c1874ddfc7ff072169caee451745a87d6b78337ebc7c4a01ad"
+          },
+          {
+            "paragraph_index": 56,
+            "section": "Methods / Ecological distribution of gene families",
+            "paragraph_sha256": "e1e29bb674963357dc506e66153af57951ae05a17bbc25d1b2740dd45845f49f"
+          },
+          {
+            "paragraph_index": 63,
+            "section": "Methods / Functional predictions",
+            "paragraph_sha256": "f7ef0949a796e46658133dfb16a3f0faf82b70bc818aa39dcab14a55e25aad61"
+          },
+          {
+            "paragraph_index": 67,
+            "section": "Methods / Functional predictions",
+            "paragraph_sha256": "f0fe0fdbcbc1dfda61c31f97cbf960cfcd5471be7b525d34f937269dedaff7df"
+          },
+          {
+            "paragraph_index": 68,
+            "section": "Methods / Functional predictions",
+            "paragraph_sha256": "40219fc8bd44c55206c31aa77c5c8484124964fa3709275be274467b7d212fb3"
+          },
+          {
+            "paragraph_index": 70,
+            "section": "Methods / Structural predictions",
+            "paragraph_sha256": "af78bb02b520e6b9526521a27a1aa6b09fcfd009a8e6bacc864dadeef18594f1"
+          },
+          {
+            "paragraph_index": 77,
+            "section": "Methods / Functional profiling and biomarker discovery",
+            "paragraph_sha256": "5fb1b470d3fb595f3bef578a4d5bafaf9d76143ef43ae97c10fd1a2dc5b28879"
+          }
+        ]
+      },
+      "prior_review": null,
+      "action": "new-primary-bound-review"
+    },
+    {
+      "paper_id": "P037",
+      "role_kind": "reference-protein-alignment-before-domain-annotation",
+      "review": {
+        "pmcid": "PMC10764277",
+        "doi": "10.1038/s41586-023-06838-3",
+        "tool_id": "diamond",
+        "evidence_paragraph_sha256": "2b57d8ec8a06a0a3834bae48489464447ac932ef254dfd4683a425eef952ca8c",
+        "use_summary": "Aligned predicted MAG proteins and separately predicted gene fragments against a curated protein database with DIAMOND2.0.0; used the50 highest bit-score hits for subsequent domain-boundary clustering and annotation.",
+        "implementation_scope_note": "Original2.0.0 database creation and protein alignment support explicit target limits and preserve original hit populations, coordinate fields and ties. The reference sequences and choices not reported in the paragraph remain caller inputs. Source max-target reporting is retained without claiming exhaustive biological annotation or a separately established study tie rule. DBSCAN, Gaussian KDE, local-minimum selection and majority-rule metabolic annotation are separate downstream methods; prodigal and scikit-learn versions are not DIAMOND versions.",
+        "version_reported_near_name": "2.0.0"
+      },
+      "prior_review": null,
+      "action": "new-primary-bound-review"
+    },
+    {
+      "paper_id": "P054",
+      "role_kind": "curated-marker-protein-search-before-score-ratio-selection",
+      "review": {
+        "pmcid": "PMC12823411",
+        "doi": "10.1038/s41586-025-09794-2",
+        "tool_id": "diamond",
+        "evidence_paragraph_sha256": "9ded1fc33129bc60b1b988418c9d69561b2e80507bd304c0fce141b5a76d089f",
+        "use_summary": "Searched predicted proteins against curated NarG/NxrA and AmoA/PmoA protein sets using DIAMOND2.1.8 with a reported score cutoff of100, before alignment-score-ratio selection of true-positive sequences and construction of GraftM search packages.",
+        "implementation_scope_note": "Original2.1.8 protein search is available on explicit caller-prepared reference sets. Its positive min-score option is a bit-score cutoff and overrides E-value filtering. The article wording does not independently establish whether its reported score100 means that option, another raw score or an external filter: require the exact study interpretation before claiming the study cutoff. Alignment-score-ratio classification, curated set assembly and GraftM remain separate methods.",
+        "version_reported_near_name": "2.1.8"
+      },
+      "prior_review": null,
+      "action": "new-primary-bound-review"
+    },
+    {
+      "paper_id": "P171",
+      "role_kind": "predicted-protein-searches-against-three-curated-databases",
+      "review": {
+        "pmcid": "PMC13447107",
+        "doi": "10.1038/s41588-026-02678-9",
+        "tool_id": "diamond",
+        "evidence_paragraph_sha256": "44254404f4fbe7096952be6464b01f9017dcc1bfb2200a1b5ed51e4d334dec82",
+        "use_summary": "Compared predicted proteins with UniMag, UniPoa and PTREP using DIAMOND2.1.8 as evidence for high-confidence, low-confidence and transposon-related gene-model classifications.",
+        "implementation_scope_note": "Original2.1.8 blastp and complete no-hit/hit dispositions are available for each explicitly supplied curated reference. The June2025 database snapshots, original search choices and downstream gene-model classification are not inferred or downloaded automatically. Translational completeness, Iso-seq promotion, HC/LC logic and InterProScan domain/GO annotation remain separate steps. A missing reported hit alone is not proof of biological absence.",
+        "version_reported_near_name": "2.1.8"
+      },
+      "prior_review": null,
+      "action": "new-primary-bound-review"
+    },
+    {
+      "paper_id": "P248",
+      "role_kind": "reference-annotation-and-all-versus-all-protein-comparison",
+      "review": {
+        "pmcid": "PMC13447089",
+        "doi": "10.1038/s41588-026-02682-z",
+        "tool_id": "diamond",
+        "evidence_paragraph_sha256": "6e413cb59f116f49368d799bea6077eecce578593ecd5227be0c58b01eb7dc0d",
+        "use_summary": "Used DIAMOND2.0.15 against NR for functional annotation with E<1e-5, and for all-versus-all protein comparisons at a1e-5 cutoff before syntenic gene-family clustering.",
+        "implementation_scope_note": "Original2.0.15 protein database creation and blastp support supplied NR references and all-versus-all comparisons. Both the original12-field output population and the compatible14-field profile are tested. Extended audit-field experiments crashed the unchanged2.0.15 binary and remain failed evidence; they are not used by the admitted profile. Printed E-values do not establish exact strict study cutoffs. mSynOrths, InterPro, KEGG BLASTP, gene-family categorization and evolutionary-rate analysis remain separate methods.",
+        "version_reported_near_name": "2.0.15",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 44,
+            "section": "Methods / Syntenic gene family analyses",
+            "paragraph_sha256": "2443c25b9027860fddb9fc64fe61e4f74e32a76185e37c508878f31f987d851f"
+          }
+        ]
+      },
+      "prior_review": null,
+      "action": "new-primary-bound-review"
+    }
+  ]
+}

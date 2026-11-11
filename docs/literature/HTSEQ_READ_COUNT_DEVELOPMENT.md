@@ -1,0 +1,47 @@
+# Native HTSeq prepared-read counting development
+
+`HtseqReadCounter` applies original HTSeq 2.1.2 filter precedence, mate strand interpretation and deterministic NONE/ALL/FRACTION allocation to explicitly prepared read units. It reuses the frozen native interval-set index. Java execution needs no Python. Use the [checked example](../../examples/htseq-read-count/README.md) and the separate `htseq-read-count-development` JAR; the older canonical executable is preserved.
+
+This milestone executes real original SAM/GTF counting for reference, then independently replays downstream counting in Java. The original HTSeq parser and pair iterator supplied the prepared inputs. It does **not** establish native SAM/GTF parsing, native pairing, random allocation, a public HTSeq root command, or a complete paper workflow. HTSeq remains missing in the tool inventory until the public workflow and role-admission gates are complete.
+
+Build with `-I tools/literature/htseq-read-count-development.init.gradle executableJar`. Java 17+ is required; actual-JAR tests use Windows Java 21/25 and Linux Java 21. The immutable model contains every feature identity, including zero-count features, and exact annotation chromosome names. Unit inputs retain layout, mate identity, alignment/secondary/supplementary flags, literal MAPQ, an optional integer NH tag and original M/=/X blocks. Input parsing, flag interpretation and pairing must already be supplied; the counter does not invent those preparations.
+
+**Original behaviors to retain:**
+
+- Unaligned and ignored-flag checks precede NH/quality checks. NH nonunique handling precedes minimum MAPQ. Under ALL/FRACTION, the same unit can increment both nonunique and another summary category.
+- A missing first-mate NH tag short-circuits the original combined test. The native decision reports `FIRST_MATE_MISSING_TAG_ABORTED`; it does not repair the source behavior by checking the second tag anyway.
+- A present unaligned mate can trigger the original low-MAPQ rule; an absent mate is a different input. Both absent/unaligned yields `NOT_ALIGNED`.
+- Mate 2 is inverted for YES/NO and mate 1 is inverted for REVERSE. NO uses an unstranded annotation index. SAM block strands must remain `+` or `-` before these transforms.
+- An unknown chromosome in either mate aborts the whole unit's feature assignment, including a valid matching mate. Genome aliases are never repaired.
+- FRACTION divides by the number of assigned features, without dividing by NH. ALL can allocate a full count to multiple features. The five summary categories therefore do not always sum to the number of units or to gene counts.
+- Minimum MAPQ is inclusive: minimum 21 implements a strict MAPQ>20 filter. Literal MAPQ 255 is retained. Random allocation is not independently replayed natively.
+
+**Required action after a refusal:** retain inputs and the exception, correct the stated coordinate, strand/layout, capacity or cancellation cause, then retry. No partial `Counts` result is returned. Do not drop invalid mates, change annotation/feature identities, relax filters or normalize away a discrepancy. Callers retain failed attempts; this library API does not create a run/status bundle. Empty input retains zero-count features and is not evidence of biological absence.
+
+`count` consumes units in order and retains only aggregate counts/statistics. The declared maximum is 1–10^12 units; exceeding it refuses the result. Annotation/overlap bounds come from `HtseqFeatureAssignment.Limits`. These limits constrain logical populations rather than JVM resident memory. Results/models are immutable. Count increments use source IEEE double arithmetic for fractional allocations and retain rounding; no integer rounding, normalization or statistical model is substituted.
+
+Current-source validation covers 40 complete original count tables, 198 gene values and all 200 values in the five source summary categories, from 627 original parsed/paired units. The values match exactly, including one-third allocations. The current reference executed 44 actual SAM/GTF count calls: 42 successful calls and two retained input failures. Two seeded random calls are retained as upstream controls and excluded from native replay. These are reused tiny synthetic populations across option/format combinations, not independent biological datasets.
+
+The combined actual-JAR matrix has 2,315 passing tests without skips on each of three JVMs: 91 new counting tests plus the 2,224 frozen interval tests. Every existing entry from the interval development parent JAR is byte-identical. The reference raw count tables, original errors, prepared inputs and exact source files are retained separately from native results.
+
+Four historical HTSeq editions were also compiled and exercised as original programs in isolated environments. These installations do not establish whole historical environment or paper-exact reproduction:
+
+| HTSeq | Private Python/dependencies | Real original calls | Successes / retained failures | Relevant edition boundary |
+| --- | --- | ---: | ---: | --- |
+| 0.5.3 | Python 2.7.18; NumPy 1.16.6; pysam 0.15.4 | 28 | 24 / 4 | Default minimum MAPQ 0; unprefixed summary names; unknown chromosomes warn/skip without incrementing `no_feature`; name-sorted SAM only in this command |
+| 0.6.0 | Python 2.7.18; NumPy 1.16.6; pysam 0.15.4 | 31 | 27 / 4 | Default minimum MAPQ 10; prefixed summary names; unknown chromosomes increment `__no_feature`; SAM/BAM and name/position order |
+| 0.11.1 | Python 3.9.20; NumPy 1.23.5; pysam 0.19.1 | 39 | 37 / 2 | Nonunique NONE/ALL; secondary/supplementary policies; no FRACTION/RANDOM options |
+| 0.13.5 | Python 3.9.20; NumPy 1.23.5; pysam 0.19.1 | 43 | 41 / 2 | NONE/ALL/FRACTION/RANDOM and original package behavior under the declared current build environment |
+| 2.1.2 | Python 3.12.3; NumPy 2.2.6; pysam 0.23.3 | 44 | 42 / 2 | Current prepared-read native replay profile; original parser/pairing still supply input |
+
+The 185 counted reference calls include 171 successes and 14 retained source failures. HTSeq 0.5.3/0.6.0 refuse header-only SAM and `=`/`X` CIGAR operations in these controls; all editions retain the missing-ID/stranded-annotation failures. An earlier 59-call Python 2 bridge attempt supplied JSON Unicode filenames instead of real CLI byte strings. Those transport-invalid failures are retained and excluded from these successful-runtime counts. Corrected UTF-8 argument transport changes no HTSeq counting source.
+
+The first 0.11.1/0.13.5 builds requested the Python SDK's absent default Clang compiler. A separate installer derived with only existing GCC/G++ selection succeeds; the failed attempts and original installer remain preserved. Python 2.7.18 was built from the official Python.org archive, with its published MD5 checked and a retained SHA-256; no signature claim is made. Source archives are publisher-hash checked, and shared Python libraries remain unchanged. Upstream build-generated bindings are not a manually translated counting implementation.
+
+All installed scientific Python modules bind byte-for-byte to their original release sources: 5/5/5/8/14 modules across the five profiles. Upstream-generated `StepVector.py` and `_version.py` are separately inventoried. The 2.1.2 wheel omits the obsolete source-archive command `HTSeq/scripts/count_old.py`; it was not installed or executed. The first binder correctly stopped at that omission. Recovery checks that exact packaging boundary, refuses every other missing/added scientific module, preserves the failed binder, reuses four hash-checked completed inventories and captures the fifth. These are recorded private-home inventories, including bytecode; reused inventories are explicitly not fresh scans or host/runtime authentication.
+
+**Missing/forbidden dependency policy:** native prepared-read counting needs Java only. Future upstream-dependent analysis must produce SKIP3 and skip the affected analysis if its required exact permitted runtime is unavailable or installation is forbidden. Where permitted, provision the named exact profile and retry into NEW paths; otherwise retain the skip. A source/runtime integrity, input, process or capacity failure admits no partial analysis. Do not silently substitute versions, rewrite unsupported CIGARs, repair identifiers or reinterpret a source failure as negative biology.
+
+P005 reports 0.6.0 using the spelling HT-seq; P020 reports 0.5.3; P044/P121 report 0.13.5; P113's RNA step reports 0.11.1, while its EU step does not separately state an edition. P195 reports only 0.13, without a patch release. P099/P148 editions and many effective flags remain unknown. P099 uses custom peak-by-cell read presence rather than the standard gene counter. Eight primary-source role reviews are now applied, preserving all 890 earlier reviews and every unrelated observation. The catalog has 2,446 observations and 898 reviews. The complete file-counting interface remains pending admission; no current native profile is silently assigned to an unstated historical workflow.
+
+At this checkpoint the catalog remains 71 new scoped integrations, 74 including existing adapters, and 257 missing tools. Cell Ranger stays excluded. Hashes establish integrity, not signatures, host/DLL authenticity, or execution authenticity. No full project suite, biological certification, whole-paper reproduction, release, push, deployment or whole-goal completion is claimed.
