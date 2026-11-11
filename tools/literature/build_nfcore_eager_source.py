@@ -5,7 +5,7 @@ from pathlib import Path
 from setup_deseq2_reference import ROOT,pin,save
 from validate_nfcore_engine import BASE,JAVA,JAVA25
 
-SOURCES=['src/main/java/org/jlinalg/cli/'+n+'.java' for n in ['NfcoreEagerContainers','NfcoreEagerSourceCli','NfcoreEagerFilterCli']]+['src/main/java/org/jlinalg/workflow/NfcoreEagerReadFilter.java']
+SOURCES=['src/main/java/org/jlinalg/cli/'+n+'.java' for n in ['NfcoreEagerContainers','NfcoreEagerSourceCli','NfcoreEagerFilterCli','NfcoreEagerScreeningCli']]+['src/main/java/org/jlinalg/workflow/NfcoreEagerReadFilter.java','src/main/java/org/jlinalg/workflow/NfcoreEagerScreeningReads.java']
 RESOURCE='src/main/resources/org/jlinalg/omics/nfcore-eager-runtime/images.json'
 LICENSE='src/main/resources/org/jlinalg/omics/nfcore-eager/MIT-nf-core.txt'
 def main():

@@ -123,6 +123,10 @@ compared; no index or repaired sort order is fabricated. Graphviz is unavailable
 in the control environment, so the optional rendered execution DAG is missing.
 Provide permitted Graphviz for that diagram; task/output completion does not
 claim diagram completeness. Locale warnings, raw version/help exits and all
-other source diagnostics remain retained. Full capture genotyping, ancestry,
-provider discrepancy resolution, scientific contracts and broader nf-core family
-admission remain outstanding.
+other source diagnostics remain retained. The later
+[screening and private capture checkpoint](NFCORE_EAGER_SCREENING.md) adds a native
+screening audit and a private GATK 3.8 software control. Ancestry, remaining capture
+and screening scientific contracts, author-provider discrepancy resolution and
+broader nf-core family admission remain outstanding. The validation record in
+this earlier checkpoint applies to its original commit; changed controller and
+builder sources are recorded by the later checkpoint.
