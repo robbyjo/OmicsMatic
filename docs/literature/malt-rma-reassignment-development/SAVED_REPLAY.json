@@ -1,0 +1,131 @@
+{
+  "status": "PASS_SAVED_NATIVE_MALT_RMA_SERIAL_REASSIGNMENT_REPLAY_ONLY",
+  "new_tool_credit": 0,
+  "full_malt_adapter_admitted": false,
+  "alignment_executed": false,
+  "biological_result_admitted": false,
+  "whole_goal_complete": false,
+  "versions": {
+    "21-java.exe": {
+      "command": [
+        "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin\\java.exe",
+        "-version"
+      ],
+      "exit_code": 0,
+      "major": 21,
+      "expected": 21
+    },
+    "21-javac.exe": {
+      "command": [
+        "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin\\javac.exe",
+        "--version"
+      ],
+      "exit_code": 0,
+      "major": 21,
+      "expected": 21
+    },
+    "25-java.exe": {
+      "command": [
+        "C:\\Program Files\\Common Files\\Oracle\\Java\\javapath_target_617256625\\java.exe",
+        "-version"
+      ],
+      "exit_code": 0,
+      "major": 25,
+      "expected": 25
+    },
+    "25-javac.exe": {
+      "command": [
+        "C:\\Program Files\\Common Files\\Oracle\\Java\\javapath_target_617256625\\javac.exe",
+        "--version"
+      ],
+      "exit_code": 0,
+      "major": 25,
+      "expected": 25
+    },
+    "linux21": {
+      "command": [
+        "wsl.exe",
+        "-d",
+        "JLinAlg-Omics-SAIGE-20261026",
+        "--exec",
+        "/usr/bin/java",
+        "-version"
+      ],
+      "exit_code": 0,
+      "major": 21,
+      "expected": 21
+    }
+  },
+  "results": [
+    {
+      "compiler": "21",
+      "runtime": "windows21",
+      "raw_reads": 172,
+      "raw_matches": 175,
+      "reader_refusals": 12,
+      "serial_profiles": 32,
+      "serial_read_assignments": 2752,
+      "cli_profiles": 5,
+      "cli_refusals": 4
+    },
+    {
+      "compiler": "21",
+      "runtime": "windows25",
+      "raw_reads": 172,
+      "raw_matches": 175,
+      "reader_refusals": 12,
+      "serial_profiles": 32,
+      "serial_read_assignments": 2752,
+      "cli_profiles": 5,
+      "cli_refusals": 4
+    },
+    {
+      "compiler": "21",
+      "runtime": "linux21",
+      "raw_reads": 172,
+      "raw_matches": 175,
+      "reader_refusals": 12,
+      "serial_profiles": 32,
+      "serial_read_assignments": 2752,
+      "cli_profiles": 5,
+      "cli_refusals": 4
+    },
+    {
+      "compiler": "25",
+      "runtime": "windows21",
+      "raw_reads": 172,
+      "raw_matches": 175,
+      "reader_refusals": 12,
+      "serial_profiles": 32,
+      "serial_read_assignments": 2752,
+      "cli_profiles": 5,
+      "cli_refusals": 4
+    },
+    {
+      "compiler": "25",
+      "runtime": "windows25",
+      "raw_reads": 172,
+      "raw_matches": 175,
+      "reader_refusals": 12,
+      "serial_profiles": 32,
+      "serial_read_assignments": 2752,
+      "cli_profiles": 5,
+      "cli_refusals": 4
+    },
+    {
+      "compiler": "25",
+      "runtime": "linux21",
+      "raw_reads": 172,
+      "raw_matches": 175,
+      "reader_refusals": 12,
+      "serial_profiles": 32,
+      "serial_read_assignments": 2752,
+      "cli_profiles": 5,
+      "cli_refusals": 4
+    }
+  ],
+  "evidence_files": 1052,
+  "original_runtime_rerun": false,
+  "junit_receipt_checked_not_rerun": true,
+  "required_action": "Required action: retain the complete inputs and this attempt. Supply the permitted exact MALT0.4.1 reader jars with --runtime, or allow --install-runtime to download the documented public package. Supply JDK21, JDK25 and the named WSL Linux Java21 runtime; retry a NEW --out under build/literature-review/nfcore-runtime. If a prerequisite cannot be installed, skip the dependent verification and analysis. No full MALT, alignment or biological result is admitted."
+}
