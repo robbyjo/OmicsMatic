@@ -1,0 +1,259 @@
+{
+  "status": "PASS_ALL_SIX_NATIVE_SCOPES_PACKAGED",
+  "platform": "Windows-11-10.0.26300-SP0",
+  "java_version": "openjdk version \"21.0.4\" 2024-07-16 LTS\r\nOpenJDK Runtime Environment Temurin-21.0.4+7 (build 21.0.4+7-LTS)\r\nOpenJDK 64-Bit Server VM Temurin-21.0.4+7 (build 21.0.4+7-LTS, mixed mode, sharing)\r\n",
+  "jar": "D:\\projects\\JLinAlg\\build\\native-tool-replacements\\build\\cli\\omicsmatic-0.3.7.jar",
+  "jar_sha256": "f3cafb6e9febc9d52f8d8f2724ac3813c18590ea98a4bb9725189add92b05c25",
+  "calls": [
+    {
+      "name": "enrichment",
+      "command": [
+        "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin\\java.exe",
+        "-jar",
+        "D:\\projects\\JLinAlg\\build\\native-tool-replacements\\build\\cli\\omicsmatic-0.3.7.jar",
+        "gseapy-native",
+        "--input",
+        "D:\\projects\\JLinAlg\\build\\native-tool-replacements\\examples\\native-tools\\enrichr.json",
+        "--edition",
+        "1.1.8",
+        "--identifier-policy",
+        "source",
+        "--out",
+        "D:\\projects\\JLinAlg\\build\\native-tool-replacements\\build\\native-tools-smoke-windows21-final\\enrichment"
+      ],
+      "exit_code": 0,
+      "status": {
+        "status": "completed",
+        "result_admitted": true,
+        "engine": "native-java"
+      }
+    },
+    {
+      "name": "qc",
+      "command": [
+        "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin\\java.exe",
+        "-jar",
+        "D:\\projects\\JLinAlg\\build\\native-tool-replacements\\build\\cli\\omicsmatic-0.3.7.jar",
+        "sequence-qc",
+        "--engine",
+        "native",
+        "--method",
+        "fastqc",
+        "--reads",
+        "D:\\projects\\JLinAlg\\build\\native-tool-replacements\\examples\\native-tools\\reads_R1.fastq",
+        "--reads2",
+        "D:\\projects\\JLinAlg\\build\\native-tool-replacements\\examples\\native-tools\\reads_R2.fastq",
+        "--no-config",
+        "--out",
+        "D:\\projects\\JLinAlg\\build\\native-tool-replacements\\build\\native-tools-smoke-windows21-final\\qc"
+      ],
+      "exit_code": 0,
+      "status": {
+        "status": "completed",
+        "result_admitted": true,
+        "engine": "native-java"
+      }
+    },
+    {
+      "name": "trim",
+      "command": [
+        "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin\\java.exe",
+        "-jar",
+        "D:\\projects\\JLinAlg\\build\\native-tool-replacements\\build\\cli\\omicsmatic-0.3.7.jar",
+        "sequence-qc",
+        "--engine",
+        "native",
+        "--method",
+        "cutadapt",
+        "--reads",
+        "D:\\projects\\JLinAlg\\build\\native-tool-replacements\\examples\\native-tools\\reads_R1.fastq",
+        "--reads2",
+        "D:\\projects\\JLinAlg\\build\\native-tool-replacements\\examples\\native-tools\\reads_R2.fastq",
+        "--adapter3",
+        "AGATCGGAAGAGC",
+        "--adapter3-2",
+        "ACGT",
+        "--quality-cutoff",
+        "20",
+        "--minimum-length",
+        "6",
+        "--error-rate",
+        "0",
+        "--no-config",
+        "--out",
+        "D:\\projects\\JLinAlg\\build\\native-tool-replacements\\build\\native-tools-smoke-windows21-final\\trim"
+      ],
+      "exit_code": 0,
+      "status": {
+        "status": "completed",
+        "result_admitted": true,
+        "engine": "native-java"
+      }
+    },
+    {
+      "name": "report",
+      "command": [
+        "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin\\java.exe",
+        "-jar",
+        "D:\\projects\\JLinAlg\\build\\native-tool-replacements\\build\\cli\\omicsmatic-0.3.7.jar",
+        "sequence-qc",
+        "--engine",
+        "native",
+        "--method",
+        "multiqc",
+        "--reports",
+        "D:\\projects\\JLinAlg\\build\\native-tool-replacements\\build\\native-tools-smoke-windows21-final\\reports.tsv",
+        "--no-config",
+        "--out",
+        "D:\\projects\\JLinAlg\\build\\native-tool-replacements\\build\\native-tools-smoke-windows21-final\\report"
+      ],
+      "exit_code": 0,
+      "status": {
+        "status": "completed",
+        "result_admitted": true,
+        "engine": "native-java"
+      }
+    },
+    {
+      "name": "sorted",
+      "command": [
+        "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin\\java.exe",
+        "-jar",
+        "D:\\projects\\JLinAlg\\build\\native-tool-replacements\\build\\cli\\omicsmatic-0.3.7.jar",
+        "hts-tools",
+        "--engine",
+        "native",
+        "--method",
+        "sam-sort",
+        "--input",
+        "D:\\projects\\JLinAlg\\build\\native-tool-replacements\\examples\\native-tools\\reads.sam",
+        "--create-index",
+        "true",
+        "--max-records-in-ram",
+        "1",
+        "--no-config",
+        "--out",
+        "D:\\projects\\JLinAlg\\build\\native-tool-replacements\\build\\native-tools-smoke-windows21-final\\sorted"
+      ],
+      "exit_code": 0,
+      "status": {
+        "status": "completed",
+        "result_admitted": true,
+        "engine": "native-java"
+      }
+    },
+    {
+      "name": "selected",
+      "command": [
+        "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin\\java.exe",
+        "-jar",
+        "D:\\projects\\JLinAlg\\build\\native-tool-replacements\\build\\cli\\omicsmatic-0.3.7.jar",
+        "hts-tools",
+        "--engine",
+        "native",
+        "--method",
+        "sam-view",
+        "--input",
+        "D:\\projects\\JLinAlg\\build\\native-tool-replacements\\build\\native-tools-smoke-windows21-final\\sorted\\alignment.bam",
+        "--region",
+        "chr1:1-100",
+        "--no-config",
+        "--out",
+        "D:\\projects\\JLinAlg\\build\\native-tool-replacements\\build\\native-tools-smoke-windows21-final\\selected"
+      ],
+      "exit_code": 0,
+      "status": {
+        "status": "completed",
+        "result_admitted": true,
+        "engine": "native-java"
+      }
+    },
+    {
+      "name": "index",
+      "command": [
+        "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin\\java.exe",
+        "-jar",
+        "D:\\projects\\JLinAlg\\build\\native-tool-replacements\\build\\cli\\omicsmatic-0.3.7.jar",
+        "hts-tools",
+        "--engine",
+        "native",
+        "--method",
+        "sam-index",
+        "--input",
+        "D:\\projects\\JLinAlg\\build\\native-tool-replacements\\build\\native-tools-smoke-windows21-final\\sorted\\alignment.bam",
+        "--no-config",
+        "--out",
+        "D:\\projects\\JLinAlg\\build\\native-tool-replacements\\build\\native-tools-smoke-windows21-final\\index"
+      ],
+      "exit_code": 0,
+      "status": {
+        "status": "completed",
+        "result_admitted": true,
+        "engine": "native-java"
+      }
+    },
+    {
+      "name": "flags",
+      "command": [
+        "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin\\java.exe",
+        "-jar",
+        "D:\\projects\\JLinAlg\\build\\native-tool-replacements\\build\\cli\\omicsmatic-0.3.7.jar",
+        "hts-tools",
+        "--engine",
+        "native",
+        "--method",
+        "sam-flagstat",
+        "--input",
+        "D:\\projects\\JLinAlg\\build\\native-tool-replacements\\examples\\native-tools\\reads.sam",
+        "--no-config",
+        "--out",
+        "D:\\projects\\JLinAlg\\build\\native-tool-replacements\\build\\native-tools-smoke-windows21-final\\flags"
+      ],
+      "exit_code": 0,
+      "status": {
+        "status": "completed",
+        "result_admitted": true,
+        "engine": "native-java"
+      }
+    },
+    {
+      "name": "count",
+      "command": [
+        "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin\\java.exe",
+        "-jar",
+        "D:\\projects\\JLinAlg\\build\\native-tool-replacements\\build\\cli\\omicsmatic-0.3.7.jar",
+        "htseq-tools",
+        "--engine",
+        "native",
+        "--request",
+        "D:\\projects\\JLinAlg\\build\\native-tool-replacements\\build\\native-tools-smoke-windows21-final\\count.json"
+      ],
+      "exit_code": 0,
+      "status": {
+        "status": "completed",
+        "result_admitted": true,
+        "engine": "native-java"
+      }
+    },
+    {
+      "name": "verify",
+      "command": [
+        "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin\\java.exe",
+        "-jar",
+        "D:\\projects\\JLinAlg\\build\\native-tool-replacements\\build\\cli\\omicsmatic-0.3.7.jar",
+        "htseq-tools",
+        "--engine",
+        "native",
+        "--request",
+        "D:\\projects\\JLinAlg\\build\\native-tool-replacements\\build\\native-tools-smoke-windows21-final\\verify.json"
+      ],
+      "exit_code": 0,
+      "status": {
+        "status": "completed",
+        "result_admitted": true,
+        "engine": "native-java"
+      }
+    }
+  ],
+  "scope": "Ten real packaged Java commands, six bounded native workflow scopes, synthetic inputs and known output assertions. No upstream analysis runtime or installation was used."
+}

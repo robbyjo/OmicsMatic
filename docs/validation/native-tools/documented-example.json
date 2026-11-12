@@ -1,0 +1,223 @@
+{
+  "status": "PASS_ALL_NINE_DOCUMENTED_COMMANDS",
+  "jar_sha256": "f3cafb6e9febc9d52f8d8f2724ac3813c18590ea98a4bb9725189add92b05c25",
+  "calls": [
+    {
+      "command": [
+        "C:/Program Files/Java/jdk-25/bin/java.exe",
+        "-jar",
+        "D:/projects/JLinAlg/build/native-tool-replacements/build/cli/omicsmatic-0.3.7.jar",
+        "gseapy-native",
+        "--input",
+        "examples/native-tools/enrichr.json",
+        "--edition",
+        "1.1.8",
+        "--identifier-policy",
+        "source",
+        "--out",
+        "build/native-tools-example/enrichment"
+      ],
+      "exit_code": 0,
+      "status": {
+        "status": "completed",
+        "result_admitted": true,
+        "engine": "native-java"
+      }
+    },
+    {
+      "command": [
+        "C:/Program Files/Java/jdk-25/bin/java.exe",
+        "-jar",
+        "D:/projects/JLinAlg/build/native-tool-replacements/build/cli/omicsmatic-0.3.7.jar",
+        "sequence-qc",
+        "--engine",
+        "native",
+        "--method",
+        "fastqc",
+        "--reads",
+        "examples/native-tools/reads_R1.fastq",
+        "--reads2",
+        "examples/native-tools/reads_R2.fastq",
+        "--out",
+        "build/native-tools-example/qc",
+        "--no-config"
+      ],
+      "exit_code": 0,
+      "status": {
+        "status": "completed",
+        "result_admitted": true,
+        "engine": "native-java"
+      }
+    },
+    {
+      "command": [
+        "C:/Program Files/Java/jdk-25/bin/java.exe",
+        "-jar",
+        "D:/projects/JLinAlg/build/native-tool-replacements/build/cli/omicsmatic-0.3.7.jar",
+        "sequence-qc",
+        "--engine",
+        "native",
+        "--method",
+        "cutadapt",
+        "--reads",
+        "examples/native-tools/reads_R1.fastq",
+        "--reads2",
+        "examples/native-tools/reads_R2.fastq",
+        "--adapter3",
+        "AGATCGGAAGAGC",
+        "--adapter3-2",
+        "ACGT",
+        "--quality-cutoff",
+        "20",
+        "--minimum-length",
+        "6",
+        "--error-rate",
+        "0",
+        "--out",
+        "build/native-tools-example/trim",
+        "--no-config"
+      ],
+      "exit_code": 0,
+      "status": {
+        "status": "completed",
+        "result_admitted": true,
+        "engine": "native-java"
+      }
+    },
+    {
+      "command": [
+        "C:/Program Files/Java/jdk-25/bin/java.exe",
+        "-jar",
+        "D:/projects/JLinAlg/build/native-tool-replacements/build/cli/omicsmatic-0.3.7.jar",
+        "sequence-qc",
+        "--engine",
+        "native",
+        "--method",
+        "multiqc",
+        "--reports",
+        "examples/native-tools/reports.tsv",
+        "--out",
+        "build/native-tools-example/report",
+        "--no-config"
+      ],
+      "exit_code": 0,
+      "status": {
+        "status": "completed",
+        "result_admitted": true,
+        "engine": "native-java"
+      }
+    },
+    {
+      "command": [
+        "C:/Program Files/Java/jdk-25/bin/java.exe",
+        "-jar",
+        "D:/projects/JLinAlg/build/native-tool-replacements/build/cli/omicsmatic-0.3.7.jar",
+        "hts-tools",
+        "--engine",
+        "native",
+        "--method",
+        "sam-sort",
+        "--input",
+        "examples/native-tools/reads.sam",
+        "--create-index",
+        "true",
+        "--max-records-in-ram",
+        "1",
+        "--out",
+        "build/native-tools-example/sorted",
+        "--no-config"
+      ],
+      "exit_code": 0,
+      "status": {
+        "status": "completed",
+        "result_admitted": true,
+        "engine": "native-java"
+      }
+    },
+    {
+      "command": [
+        "C:/Program Files/Java/jdk-25/bin/java.exe",
+        "-jar",
+        "D:/projects/JLinAlg/build/native-tool-replacements/build/cli/omicsmatic-0.3.7.jar",
+        "hts-tools",
+        "--engine",
+        "native",
+        "--method",
+        "sam-view",
+        "--input",
+        "build/native-tools-example/sorted/alignment.bam",
+        "--region",
+        "chr1:1-100",
+        "--out",
+        "build/native-tools-example/selected",
+        "--no-config"
+      ],
+      "exit_code": 0,
+      "status": {
+        "status": "completed",
+        "result_admitted": true,
+        "engine": "native-java"
+      }
+    },
+    {
+      "command": [
+        "C:/Program Files/Java/jdk-25/bin/java.exe",
+        "-jar",
+        "D:/projects/JLinAlg/build/native-tool-replacements/build/cli/omicsmatic-0.3.7.jar",
+        "hts-tools",
+        "--engine",
+        "native",
+        "--method",
+        "sam-flagstat",
+        "--input",
+        "examples/native-tools/reads.sam",
+        "--out",
+        "build/native-tools-example/flags",
+        "--no-config"
+      ],
+      "exit_code": 0,
+      "status": {
+        "status": "completed",
+        "result_admitted": true,
+        "engine": "native-java"
+      }
+    },
+    {
+      "command": [
+        "C:/Program Files/Java/jdk-25/bin/java.exe",
+        "-jar",
+        "D:/projects/JLinAlg/build/native-tool-replacements/build/cli/omicsmatic-0.3.7.jar",
+        "htseq-tools",
+        "--engine",
+        "native",
+        "--request",
+        "examples/native-tools/htseq-count.json"
+      ],
+      "exit_code": 0,
+      "status": {
+        "status": "completed",
+        "result_admitted": true,
+        "engine": "native-java"
+      }
+    },
+    {
+      "command": [
+        "C:/Program Files/Java/jdk-25/bin/java.exe",
+        "-jar",
+        "D:/projects/JLinAlg/build/native-tool-replacements/build/cli/omicsmatic-0.3.7.jar",
+        "htseq-tools",
+        "--engine",
+        "native",
+        "--request",
+        "examples/native-tools/htseq-verify.json"
+      ],
+      "exit_code": 0,
+      "status": {
+        "status": "completed",
+        "result_admitted": true,
+        "engine": "native-java"
+      }
+    }
+  ],
+  "native_htseq_help_checked": true
+}

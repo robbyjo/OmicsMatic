@@ -1,0 +1,278 @@
+{
+  "status": "PASS_ALL_SIX_NATIVE_SCOPES_PACKAGED",
+  "platform": "Linux-6.18.58.1-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "java_version": "openjdk version \"21.0.13.0.3\" 2026-10-24\nOpenJDK Runtime Environment (build 21.0.13.0.3+1-1-24.04.1-Ubuntu)\nOpenJDK 64-Bit Server VM (build 21.0.13.0.3+1-1-24.04.1-Ubuntu, mixed mode, sharing)\n",
+  "jar": "/mnt/d/projects/JLinAlg/build/native-tool-replacements/build/cli/omicsmatic-0.3.7.jar",
+  "jar_sha256": "f3cafb6e9febc9d52f8d8f2724ac3813c18590ea98a4bb9725189add92b05c25",
+  "calls": [
+    {
+      "name": "enrichment",
+      "command": [
+        "/usr/lib/jvm/java-21-openjdk-amd64/bin/java",
+        "-jar",
+        "/mnt/d/projects/JLinAlg/build/native-tool-replacements/build/cli/omicsmatic-0.3.7.jar",
+        "gseapy-native",
+        "--input",
+        "/mnt/d/projects/JLinAlg/build/native-tool-replacements/examples/native-tools/enrichr.json",
+        "--edition",
+        "1.1.8",
+        "--identifier-policy",
+        "source",
+        "--out",
+        "/mnt/d/projects/JLinAlg/build/native-tool-replacements/build/native-tools-smoke-linux21-final/enrichment"
+      ],
+      "exit_code": 0,
+      "status": {
+        "status": "completed",
+        "result_admitted": true,
+        "engine": "native-java"
+      }
+    },
+    {
+      "name": "qc",
+      "command": [
+        "/usr/lib/jvm/java-21-openjdk-amd64/bin/java",
+        "-jar",
+        "/mnt/d/projects/JLinAlg/build/native-tool-replacements/build/cli/omicsmatic-0.3.7.jar",
+        "sequence-qc",
+        "--engine",
+        "native",
+        "--method",
+        "fastqc",
+        "--reads",
+        "/mnt/d/projects/JLinAlg/build/native-tool-replacements/examples/native-tools/reads_R1.fastq",
+        "--reads2",
+        "/mnt/d/projects/JLinAlg/build/native-tool-replacements/examples/native-tools/reads_R2.fastq",
+        "--no-config",
+        "--out",
+        "/mnt/d/projects/JLinAlg/build/native-tool-replacements/build/native-tools-smoke-linux21-final/qc"
+      ],
+      "exit_code": 0,
+      "status": {
+        "status": "completed",
+        "result_admitted": true,
+        "engine": "native-java"
+      }
+    },
+    {
+      "name": "trim",
+      "command": [
+        "/usr/lib/jvm/java-21-openjdk-amd64/bin/java",
+        "-jar",
+        "/mnt/d/projects/JLinAlg/build/native-tool-replacements/build/cli/omicsmatic-0.3.7.jar",
+        "sequence-qc",
+        "--engine",
+        "native",
+        "--method",
+        "cutadapt",
+        "--reads",
+        "/mnt/d/projects/JLinAlg/build/native-tool-replacements/examples/native-tools/reads_R1.fastq",
+        "--reads2",
+        "/mnt/d/projects/JLinAlg/build/native-tool-replacements/examples/native-tools/reads_R2.fastq",
+        "--adapter3",
+        "AGATCGGAAGAGC",
+        "--adapter3-2",
+        "ACGT",
+        "--quality-cutoff",
+        "20",
+        "--minimum-length",
+        "6",
+        "--error-rate",
+        "0",
+        "--no-config",
+        "--out",
+        "/mnt/d/projects/JLinAlg/build/native-tool-replacements/build/native-tools-smoke-linux21-final/trim"
+      ],
+      "exit_code": 0,
+      "status": {
+        "status": "completed",
+        "result_admitted": true,
+        "engine": "native-java"
+      }
+    },
+    {
+      "name": "report",
+      "command": [
+        "/usr/lib/jvm/java-21-openjdk-amd64/bin/java",
+        "-jar",
+        "/mnt/d/projects/JLinAlg/build/native-tool-replacements/build/cli/omicsmatic-0.3.7.jar",
+        "sequence-qc",
+        "--engine",
+        "native",
+        "--method",
+        "multiqc",
+        "--reports",
+        "/mnt/d/projects/JLinAlg/build/native-tool-replacements/build/native-tools-smoke-linux21-final/reports.tsv",
+        "--no-config",
+        "--out",
+        "/mnt/d/projects/JLinAlg/build/native-tool-replacements/build/native-tools-smoke-linux21-final/report"
+      ],
+      "exit_code": 0,
+      "status": {
+        "status": "completed",
+        "result_admitted": true,
+        "engine": "native-java"
+      }
+    },
+    {
+      "name": "sorted",
+      "command": [
+        "/usr/lib/jvm/java-21-openjdk-amd64/bin/java",
+        "-jar",
+        "/mnt/d/projects/JLinAlg/build/native-tool-replacements/build/cli/omicsmatic-0.3.7.jar",
+        "hts-tools",
+        "--engine",
+        "native",
+        "--method",
+        "sam-sort",
+        "--input",
+        "/mnt/d/projects/JLinAlg/build/native-tool-replacements/examples/native-tools/reads.sam",
+        "--create-index",
+        "true",
+        "--max-records-in-ram",
+        "1",
+        "--no-config",
+        "--out",
+        "/mnt/d/projects/JLinAlg/build/native-tool-replacements/build/native-tools-smoke-linux21-final/sorted"
+      ],
+      "exit_code": 0,
+      "status": {
+        "status": "completed",
+        "result_admitted": true,
+        "engine": "native-java"
+      }
+    },
+    {
+      "name": "selected",
+      "command": [
+        "/usr/lib/jvm/java-21-openjdk-amd64/bin/java",
+        "-jar",
+        "/mnt/d/projects/JLinAlg/build/native-tool-replacements/build/cli/omicsmatic-0.3.7.jar",
+        "hts-tools",
+        "--engine",
+        "native",
+        "--method",
+        "sam-view",
+        "--input",
+        "/mnt/d/projects/JLinAlg/build/native-tool-replacements/build/native-tools-smoke-linux21-final/sorted/alignment.bam",
+        "--region",
+        "chr1:1-100",
+        "--no-config",
+        "--out",
+        "/mnt/d/projects/JLinAlg/build/native-tool-replacements/build/native-tools-smoke-linux21-final/selected"
+      ],
+      "exit_code": 0,
+      "status": {
+        "status": "completed",
+        "result_admitted": true,
+        "engine": "native-java"
+      }
+    },
+    {
+      "name": "index",
+      "command": [
+        "/usr/lib/jvm/java-21-openjdk-amd64/bin/java",
+        "-jar",
+        "/mnt/d/projects/JLinAlg/build/native-tool-replacements/build/cli/omicsmatic-0.3.7.jar",
+        "hts-tools",
+        "--engine",
+        "native",
+        "--method",
+        "sam-index",
+        "--input",
+        "/mnt/d/projects/JLinAlg/build/native-tool-replacements/build/native-tools-smoke-linux21-final/sorted/alignment.bam",
+        "--no-config",
+        "--out",
+        "/mnt/d/projects/JLinAlg/build/native-tool-replacements/build/native-tools-smoke-linux21-final/index"
+      ],
+      "exit_code": 0,
+      "status": {
+        "status": "completed",
+        "result_admitted": true,
+        "engine": "native-java"
+      }
+    },
+    {
+      "name": "flags",
+      "command": [
+        "/usr/lib/jvm/java-21-openjdk-amd64/bin/java",
+        "-jar",
+        "/mnt/d/projects/JLinAlg/build/native-tool-replacements/build/cli/omicsmatic-0.3.7.jar",
+        "hts-tools",
+        "--engine",
+        "native",
+        "--method",
+        "sam-flagstat",
+        "--input",
+        "/mnt/d/projects/JLinAlg/build/native-tool-replacements/examples/native-tools/reads.sam",
+        "--no-config",
+        "--out",
+        "/mnt/d/projects/JLinAlg/build/native-tool-replacements/build/native-tools-smoke-linux21-final/flags"
+      ],
+      "exit_code": 0,
+      "status": {
+        "status": "completed",
+        "result_admitted": true,
+        "engine": "native-java"
+      }
+    },
+    {
+      "name": "count",
+      "command": [
+        "/usr/lib/jvm/java-21-openjdk-amd64/bin/java",
+        "-jar",
+        "/mnt/d/projects/JLinAlg/build/native-tool-replacements/build/cli/omicsmatic-0.3.7.jar",
+        "htseq-tools",
+        "--engine",
+        "native",
+        "--request",
+        "/mnt/d/projects/JLinAlg/build/native-tool-replacements/build/native-tools-smoke-linux21-final/count.json"
+      ],
+      "exit_code": 0,
+      "status": {
+        "status": "completed",
+        "result_admitted": true,
+        "engine": "native-java"
+      }
+    },
+    {
+      "name": "verify",
+      "command": [
+        "/usr/lib/jvm/java-21-openjdk-amd64/bin/java",
+        "-jar",
+        "/mnt/d/projects/JLinAlg/build/native-tool-replacements/build/cli/omicsmatic-0.3.7.jar",
+        "htseq-tools",
+        "--engine",
+        "native",
+        "--request",
+        "/mnt/d/projects/JLinAlg/build/native-tool-replacements/build/native-tools-smoke-linux21-final/verify.json"
+      ],
+      "exit_code": 0,
+      "status": {
+        "status": "completed",
+        "result_admitted": true,
+        "engine": "native-java"
+      }
+    },
+    {
+      "name": "cross-verify",
+      "command": [
+        "/usr/lib/jvm/java-21-openjdk-amd64/bin/java",
+        "-jar",
+        "/mnt/d/projects/JLinAlg/build/native-tool-replacements/build/cli/omicsmatic-0.3.7.jar",
+        "htseq-tools",
+        "--engine",
+        "native",
+        "--request",
+        "/mnt/d/projects/JLinAlg/build/native-tool-replacements/build/native-tools-smoke-linux21-final/cross-verify.json"
+      ],
+      "exit_code": 0,
+      "status": {
+        "status": "completed",
+        "result_admitted": true,
+        "engine": "native-java"
+      }
+    }
+  ],
+  "scope": "Ten real packaged Java commands, six bounded native workflow scopes, synthetic inputs and known output assertions. No upstream analysis runtime or installation was used."
+}
