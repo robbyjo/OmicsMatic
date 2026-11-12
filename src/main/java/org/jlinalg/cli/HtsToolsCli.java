@@ -25,10 +25,10 @@ import static org.jlinalg.cli.FollowupSupport.*;
 final class HtsToolsCli {
     private HtsToolsCli() { }
     private static final String VERSION = "1.24";
-    private static final Set<String> COMMON = Set.of("method", "input", "samtools", "bcftools", "out", "threads", "timeout");
+    private static final Set<String> COMMON = Set.of("method", "input", "samtools", "bcftools", "out", "threads", "timeout", "engine");
     private static final Map<String, Set<String>> SPECIFIC = Map.ofEntries(
         Map.entry("sam-view", Set.of("min-mapq", "require-flags", "exclude-flags", "region")),
-        Map.entry("sam-sort", Set.of("sort-order", "memory-mb", "create-index")), Map.entry("sam-index", Set.of()), Map.entry("sam-flagstat", Set.of()),
+        Map.entry("sam-sort", Set.of("sort-order", "memory-mb", "create-index", "max-records-in-ram")), Map.entry("sam-index", Set.of()), Map.entry("sam-flagstat", Set.of()),
         Map.entry("sam-markdup", Set.of("remove-duplicates", "memory-mb", "optical-distance")),
         Map.entry("sam-mpileup", Set.of("reference", "region", "min-mapq", "min-baseq", "max-depth", "baq", "exclude-flags")),
         Map.entry("bcf-call", Set.of("reference", "region", "ploidy", "min-mapq", "min-baseq", "max-depth")),
@@ -45,7 +45,12 @@ final class HtsToolsCli {
             boolean sam = method.startsWith("sam-"); String tool = sam ? "samtools" : "bcftools";
             for (String key : o.keySet()) if ((!COMMON.contains(key) && !SPECIFIC.get(method).contains(key))
                     || key.equals(sam ? "bcftools" : "samtools")) throw new IllegalArgumentException("--" + key + " does not apply to " + method);
-            required(o, "input"); required(o, tool);
+            required(o, "input");
+            String engine=o.getOrDefault("engine","upstream");
+            if(engine.equals("native"))return NativeHtsCli.run(o,output,error);
+            if(!engine.equals("upstream"))throw new IllegalArgumentException("engine must be native or upstream");
+            if(o.containsKey("max-records-in-ram"))throw new IllegalArgumentException("max-records-in-ram requires --engine native");
+            required(o, tool);
             if (o.containsKey("threads") && Set.of("sam-mpileup", "bcf-stats").contains(method)) throw new IllegalArgumentException("--threads does not apply to " + method);
             int threads = integer(o, "threads", 0, 0, 16), timeout = integer(o, "timeout", 3600, 1, 86400);
             int[] exit = {0};
@@ -363,6 +368,12 @@ final class HtsToolsCli {
     private static final class DependencyUnavailable extends IOException { private static final long serialVersionUID=1L; DependencyUnavailable(String message) { super(message); } }
     static String help() { return """
         hts-tools --method METHOD --input LOCAL_FILE --out NEW_DIR [--threads 0 --timeout 3600]
+        --engine native: Java-only sam-view, sam-sort, sam-index and sam-flagstat.
+          Native selection streams SAM/BAM and needs no index. Native sorting accepts
+          --max-records-in-ram 100000, --sort-order coordinate|queryname, --create-index false;
+          query names are lexicographic; equal-key order/compression are not byte-identical upstream.
+          Native mode rejects executable/thread/memory-mb options; record bounds are not RAM quotas.
+          Default --engine upstream retains the pinned external workflows below.
         fasta-index: native Java, no external executable; uncompressed FASTA -> ORIGINAL_NAME.fai.
           Indexes actual LF/CRLF byte widths. Existing source/index files are preserved.
         SAMtools methods require --samtools EXECUTABLE (version 1.24 with HTSlib 1.24):

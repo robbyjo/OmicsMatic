@@ -28,6 +28,8 @@ public final class JLinAlgCli {
             if (arguments.length > 0 && arguments[0].equals("study"))
                 return StudyCli.run(Arrays.copyOfRange(
                     arguments, 1, arguments.length), output, errorOutput);
+            if (arguments.length > 0 && arguments[0].equals("gseapy-native"))
+                return GseapyNativeCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
             if (arguments.length > 0 && arguments[0].equals("nextflow-tools"))
                 return NextflowToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
             if (arguments.length > 0 && arguments[0].equals("salmon-tools"))

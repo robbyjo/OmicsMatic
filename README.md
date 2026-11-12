@@ -62,6 +62,11 @@ See the [command-line plotting vignette](https://robbyjo.github.io/OmicsMatic/pl
 
 ## Literature-driven bioinformatics toolbox
 
+The [native replacement guide](docs/native-tool-replacements.md) provides
+Java-only local enrichment, QC/reporting, SAM/BAM processing, adapter trimming
+and HTSeq file counting, with a [complete synthetic example](examples/native-tools/README.md).
+Choose each native engine explicitly; existing upstream adapters remain available.
+
 The [250-paper catalog](docs/literature/omics-2023-2026/README.md) records 390 named
 tools and 2,450 paper-tool observations from Nature, Nature Genetics and AJHG.
 There are 85 new scoped integrations (17 native Java methods and 68 upstream

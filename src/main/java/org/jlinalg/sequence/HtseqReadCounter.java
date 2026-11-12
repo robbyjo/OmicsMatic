@@ -145,39 +145,43 @@ public final class HtseqReadCounter {
     public static Decision assess(Model model,Unit unit,Config config) { return assess(model,unit,config,()->false); }
 
     public static Counts count(Model model,Iterable<Unit> units,Config config,long maximumUnits,BooleanSupplier cancelled) {
-        Objects.requireNonNull(model,"model");Objects.requireNonNull(units,"units");Objects.requireNonNull(config,"config");
-        if (maximumUnits<1 || maximumUnits>1_000_000_000_000L) throw new IllegalArgumentException("Counting-unit bound must be1..1e12");
-        if (model.index.stranded()!=(config.stranded!=Strand.NO)) throw new IllegalArgumentException("Feature index strand domain differs from counting configuration");
-        check(cancelled);
-        Map<String,Double> counts=new LinkedHashMap<>();for (String feature:model.featureIds)counts.put(feature,0.0);
-        long processed=0,empty=0,ambiguous=0,lowqual=0,notaligned=0,nonunique=0,secondary=0,supplementary=0,unique=0,unknown=0;
-        for (Unit unit:units) {
-            check(cancelled);
-            if (processed==maximumUnits) throw new IllegalArgumentException("Counting-unit capacity exceeded; no count result admitted");
-            processed++;
-            Decision decision=assess(model,unit,config,cancelled);
-            if (decision.alignmentNotUnique) nonunique++;
-            if (decision.unknownChromosome) unknown++;
-            switch(decision.state) {
-                case NO_FEATURE -> empty++;
-                case AMBIGUOUS -> ambiguous++;
-                case LOW_QUALITY -> lowqual++;
-                case NOT_ALIGNED -> notaligned++;
-                case IGNORED_SECONDARY -> secondary++;
-                case IGNORED_SUPPLEMENTARY -> supplementary++;
-                case ASSIGNED -> unique++;
-                case ALIGNMENT_NOT_UNIQUE -> { }
-            }
-            for (var allocation:decision.allocations.entrySet()) {
-                check(cancelled);
-                Double previous=counts.get(allocation.getKey());
-                if (previous==null) throw new IllegalStateException("Assigned feature missing from annotation identities");
-                counts.put(allocation.getKey(),previous+allocation.getValue());
-            }
-        }
-        return new Counts(model.featureIds,counts,new Statistics(empty,ambiguous,lowqual,notaligned,nonunique,secondary,supplementary,unique,unknown),processed);
+        Objects.requireNonNull(units,"units");var accumulator=new Accumulator(model,config,maximumUnits,cancelled);
+        for(Unit unit:units)accumulator.add(unit);
+        return accumulator.snapshot();
     }
     public static Counts count(Model model,Iterable<Unit> units,Config config,long maximumUnits) { return count(model,units,config,maximumUnits,()->false); }
+
+    /** Streaming accumulation; no complete read population is retained in memory. */
+    public static final class Accumulator {
+        private final Model model;
+        private final Config config;
+        private final long maximum;
+        private final BooleanSupplier cancelled;
+        private final Map<String,Double> counts=new LinkedHashMap<>();
+        private long processed,empty,ambiguous,lowqual,notaligned,nonunique,secondary,supplementary,unique,unknown;
+        public Accumulator(Model model,Config config,long maximumUnits,BooleanSupplier cancelled) {
+            this.model=Objects.requireNonNull(model);this.config=Objects.requireNonNull(config);this.cancelled=Objects.requireNonNull(cancelled);
+            if(maximumUnits<1||maximumUnits>1_000_000_000_000L)throw new IllegalArgumentException("Counting-unit bound must be1..1e12");maximum=maximumUnits;
+            if(model.index.stranded()!=(config.stranded!=Strand.NO))throw new IllegalArgumentException("Feature index strand domain differs from counting configuration");
+            check(cancelled);for(String id:model.featureIds)counts.put(id,0.0);
+        }
+        /** Classify and add one complete prepared unit; invalid input returns no decision. */
+        public Decision add(Unit unit) {
+            check(cancelled);if(processed==maximum)throw new IllegalArgumentException("Counting-unit capacity exceeded; no count result admitted");
+            Decision decision=assess(model,unit,config,cancelled);processed++;
+            if(decision.alignmentNotUnique)nonunique++;if(decision.unknownChromosome)unknown++;
+            switch(decision.state) {
+                case NO_FEATURE->empty++;case AMBIGUOUS->ambiguous++;case LOW_QUALITY->lowqual++;case NOT_ALIGNED->notaligned++;
+                case IGNORED_SECONDARY->secondary++;case IGNORED_SUPPLEMENTARY->supplementary++;case ASSIGNED->unique++;case ALIGNMENT_NOT_UNIQUE->{ }
+            }
+            for(var allocation:decision.allocations.entrySet()) {
+                check(cancelled);Double prior=counts.get(allocation.getKey());if(prior==null)throw new IllegalStateException("Assigned feature missing from annotation identities");counts.put(allocation.getKey(),prior+allocation.getValue());
+            }
+            return decision;
+        }
+        /** Immutable snapshot, including every zero-count feature. */
+        public Counts snapshot(){check(cancelled);return new Counts(model.featureIds,counts,new Statistics(empty,ambiguous,lowqual,notaligned,nonunique,secondary,supplementary,unique,unknown),processed);}
+    }
 
     private static NhCheck nh(Unit unit) {
         if (unit.layout==Layout.SINGLE) return unit.first.nh==null?NhCheck.MISSING_TAG:unit.first.nh>1?NhCheck.NONUNIQUE:NhCheck.AT_MOST_ONE;

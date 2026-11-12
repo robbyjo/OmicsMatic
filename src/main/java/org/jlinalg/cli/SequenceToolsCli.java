@@ -24,11 +24,11 @@ import static org.jlinalg.cli.FollowupSupport.*;
 /** Typed sequencing QC adapters; no shell command templates or implicit installation. */
 final class SequenceToolsCli {
     private SequenceToolsCli() { }
-    private static final Set<String> COMMON = Set.of("method", "out", "timeout");
+    private static final Set<String> COMMON = Set.of("method", "out", "timeout", "engine");
     private static final Set<String> CUTADAPT = Set.of("python", "reads", "reads2", "adapter3", "adapter3-2",
-        "minimum-length", "quality-cutoff", "overlap", "error-rate", "cores", "cut-left");
-    private static final Set<String> FASTQC = Set.of("reads", "reads2", "fastqc-home", "java", "threads", "memory-mb");
-    private static final Set<String> MULTIQC = Set.of("python", "reports");
+        "minimum-length", "quality-cutoff", "overlap", "error-rate", "cores", "cut-left", "alignment-operations");
+    private static final Set<String> FASTQC = Set.of("reads", "reads2", "fastqc-home", "java", "threads", "memory-mb", "maximum-positions");
+    private static final Set<String> MULTIQC = Set.of("python", "reports", "maximum-report-characters");
     private static final Set<String> FIXED = Set.of("reads", "reads2", "first-base", "last-base", "minimum-length");
 
     static int run(String[] arguments, PrintStream output, PrintStream error) {
@@ -43,7 +43,17 @@ final class SequenceToolsCli {
             };
             for (String key : o.keySet()) if (!COMMON.contains(key) && !applicable.contains(key))
                 throw new IllegalArgumentException("--" + key + " does not apply to " + method);
+            String engine=o.getOrDefault("engine","upstream");
+            if(!Set.of("native","upstream").contains(engine))throw new IllegalArgumentException("engine must be native or upstream");
             if (method.equals("trim-fixed")) return FixedTrimCli.run(o, output, error);
+            if(engine.equals("native"))return NativeToolSupport.run(o,"native-sequence-"+method,(directory,manifest)->{
+                if(method.equals("fastqc"))NativeQcReports.fastq(o,directory,manifest);
+                else if(method.equals("multiqc"))NativeQcReports.aggregate(o,directory,manifest);
+                else NativeAdapterTrim.trim(o,directory,manifest);
+            },output,error);
+            if(o.containsKey("maximum-positions"))throw new IllegalArgumentException("maximum-positions requires --engine native");
+            if(o.containsKey("alignment-operations"))throw new IllegalArgumentException("alignment-operations requires --engine native");
+            if(o.containsKey("maximum-report-characters"))throw new IllegalArgumentException("maximum-report-characters requires --engine native");
             final int[] exit = {0}; final boolean[] findings = {false};
             transaction(o, "sequence-qc-" + method, (directory, manifest) -> {
                 Map<String, Object> session = new LinkedHashMap<>();
@@ -396,6 +406,15 @@ final class SequenceToolsCli {
     }
     static String help() { return """
         sequence-qc --method trim-fixed|cutadapt|fastqc|multiqc --out NEW_DIR
+        Select --engine native for Java-only cutadapt, fastqc basic measurements and multiqc reports.
+          No executable/runtime options apply to the native engine. Default remains upstream.
+          Native cutadapt: --alignment-operations 1000000000 limits DP and prefilter work.
+          Native fastqc: --maximum-positions 100000; raw unbinned measurements with INFO,
+            no inferred FastQC thresholds, contamination/duplication or adapter-content module.
+          Native multiqc: --maximum-report-characters 16777216, explicit source reports only;
+            also accepts native QC ZIP/native trimming JSON. Original files/findings retained.
+          Both engines use the scientific input options below; upstream dependency options apply
+            only to --engine upstream. See docs/native-tool-replacements.md for full examples.
         trim-fixed --reads INPUT.fastq[.gz] [--reads2 MATE.fastq[.gz]]
           [--first-base 1 --last-base 0 --minimum-length 1]. Native Java; no Python.
           One-based inclusive original-read positions; last-base 0 keeps through end.
