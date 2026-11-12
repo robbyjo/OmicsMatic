@@ -1,0 +1,121 @@
+{
+  "all250_xmls_censused": true,
+  "false_positive_exclusions": [
+    {
+      "classification": "growth medium ingredient, not software",
+      "paper": "P110",
+      "paragraph": 30,
+      "term": "malt extract"
+    },
+    {
+      "classification": "author surname/citation, not HOPS software",
+      "paper": "P214",
+      "paragraph": 32,
+      "term": "Hops/Hops et al."
+    }
+  ],
+  "global_catalog_changed": false,
+  "main_source_pointers": [
+    {
+      "doi": "10.1038/s41586-024-08515-5",
+      "paper_id": "P002",
+      "paragraph_index": 7,
+      "paragraph_sha256": "f0c2eb0d76fabd67fb9e3670cfe85d7f5500b4386fa14cee6e7c6296aa7ff09c",
+      "pmcid": "PMC11964931",
+      "section": "Screening and capturing ancient treponemal DNA",
+      "xml_sha256": "7970057057eb527abb957f1fb9b21306dc3c3eeb89dcdc4aa3b874df7ee15965"
+    },
+    {
+      "doi": "10.1038/s41586-024-08515-5",
+      "paper_id": "P002",
+      "paragraph_index": 29,
+      "paragraph_sha256": "1f645f2ce00682d71111e245d3ea612de2a76106f25d7db551d4f4c3e88b1501",
+      "pmcid": "PMC11964931",
+      "section": "Methods / Computational screening for T. pallidum DNA",
+      "xml_sha256": "7970057057eb527abb957f1fb9b21306dc3c3eeb89dcdc4aa3b874df7ee15965"
+    }
+  ],
+  "new_tool_credit": 0,
+  "ordinary_version_text": "MALT v0.5.2",
+  "roles": [
+    {
+      "current_control": "MALT0.4.1/eager2.4.4 software control; not proof of exact author environment.",
+      "data_requirement": "Complete stated bacterial/viral2017 database and unspecified additional eukaryotic selection.",
+      "main_paragraphs": [
+        7,
+        29
+      ],
+      "paper": "P002",
+      "reported_malt_version": null,
+      "reported_pipeline": "nf-core/eager2.4.4 with Nextflow21.04.1",
+      "role": "pathogen-screening-in-eager",
+      "tool": "MALT",
+      "use": "Taxonomic alignment for ancient pathogen screening; HOPS evaluates candidates."
+    },
+    {
+      "citation_after_version": "61",
+      "current_control": "Not implemented by the0.4.1 adapter; do not substitute its version or fixed maximum-alignments-per-reference1.",
+      "data_requirement": "Representative spirochete genomes dated2021-02-24 and accession2taxid dated2021-02-12.",
+      "main_paragraphs": [
+        7
+      ],
+      "paper": "P002",
+      "reported_malt_version": "0.5.2",
+      "reported_options": {
+        "aligned_reads_output": true,
+        "alignment": "SemiGlobal",
+        "heap": "130G",
+        "maximum_alignments_per_query": 25,
+        "maximum_alignments_per_reference": 100000,
+        "memory_mode": "load",
+        "minimum_identity": 90,
+        "minimum_identity_LCA": 0.0,
+        "minimum_support": 0,
+        "mode": "BlastN",
+        "parallel_gc_threads": 1,
+        "support_percent": 0.01,
+        "threads": 16,
+        "top_percent": 1
+      },
+      "role": "custom-TPA-screen",
+      "supplement_paragraphs": [
+        235,
+        236,
+        237,
+        238
+      ],
+      "tool": "MALT",
+      "use": "Build a91-spirochete reference index and screen the separate sequencing-dataset collection."
+    },
+    {
+      "boundary": "Some low-read candidates remain unassessable, not negative findings.",
+      "main_paragraphs": [
+        7,
+        29
+      ],
+      "paper": "P002",
+      "reported_version": null,
+      "role": "candidate-authentication",
+      "tool": "HOPS",
+      "use": "Evaluate pathogen candidates from MALT output and damage-related profiles."
+    },
+    {
+      "boundary": "Do not equate this extraction role with complete HOPS or inherit its unreported version.",
+      "paper": "P002",
+      "reported_version": null,
+      "role": "custom-TPA-RMA-extraction",
+      "supplement_paragraphs": [
+        246
+      ],
+      "tool": "MaltExtract",
+      "upstream_url": "https://github.com/rhuebler/MaltExtract",
+      "use": "Extract target-species information from RMA; manual summary/damage assessment and a separate7508-genome re-screen follow."
+    }
+  ],
+  "source_versions_conflated": false,
+  "status": "SOURCE_BOUND_MALT_HOPS_MALTEXTRACT_ROLES_NOT_YET_APPLIED_TO_GLOBAL_CATALOG",
+  "supplement_run_evidence_sha256": "ea93844122a3b4c63e4e3eb1b0600caacce086ca186b75eead876ed642aa3a46",
+  "supplement_sha256": "cefa7be7b2bb5313cce9ddb23d5369020c2ef74a90b99daf78a889270db23451",
+  "version_citation": "61",
+  "whole_goal_complete": false
+}
