@@ -1,0 +1,5 @@
+# No whole-tool or biological result admitted
+
+Explicit native-accession-alternative changes the original accession-mapping method; both unclassified and mapped indexes are retained. CUSTOM052/STANDALONE and additional settings are explicit choices. Historical2017/2021 and91-genome databases are not reconstructed. These three mitochondrial-reference software controls cannot replace those databases. Paper130GiB/16-worker resources are representable but not claimed executed. Empty/insufficient results do not establish biological absence.
+
+If a required installation/runtime/execution is forbidden or unavailable, SKIP3 the dependent analysis. If scientific/input/integrity/capacity checks fail, FAIL2 admits no result. Read FAILURE.json, WARNINGS_FAILURE.md and the named stage stderr, supply only permitted exact prerequisites or correct the named problem, then retry a NEW directory. A prior complete index remains independently verifiable after a later workflow failure. See ../MALT052_WORKFLOW.md.

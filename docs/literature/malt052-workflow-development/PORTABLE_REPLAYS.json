@@ -1,0 +1,209 @@
+{
+  "status": "PASS_CURRENT_COMPLETE_MALT052_WORKFLOWS_WINDOWS21_WINDOWS25_LINUX21",
+  "new_tool_credit": 0,
+  "whole_goal_complete": false,
+  "calls": [
+    {
+      "label": "copy-complete-four",
+      "command": [
+        "wsl.exe",
+        "-d",
+        "JLinAlg-Omics-SAIGE-20261026",
+        "--",
+        "/usr/bin/python3",
+        "-c",
+        "from pathlib import Path;import shutil,json;source=Path('/var/tmp/omicsmatic-malt052-workflow-controls-1');out=Path('/mnt/d/projects/JLinAlg/build/literature-review/nfcore-runtime/malt052-workflow-portable-2/cases');assert not out.exists();assert shutil.disk_usage(out.parent).free>8*1024**3;out.mkdir();[shutil.copytree(source/c,out/c) for c in ['A','B','dna5','support59']];print(json.dumps({'copied_files':sum(1 for p in out.rglob('*') if p.is_file())}))"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 31.710898399353027
+    },
+    {
+      "label": "windows21-A",
+      "command": [
+        "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin\\java.exe",
+        "-Xmx3g",
+        "-jar",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\malt052-workflow-build21-2\\malt052-workflow-development.jar",
+        "--verify",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\malt052-workflow-portable-2\\cases\\A",
+        "--reader-runtime",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\malt052-public-reader-setup-1",
+        "--out",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\malt052-workflow-portable-2\\windows21-A"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 11.2088303565979
+    },
+    {
+      "label": "windows21-B",
+      "command": [
+        "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin\\java.exe",
+        "-Xmx3g",
+        "-jar",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\malt052-workflow-build21-2\\malt052-workflow-development.jar",
+        "--verify",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\malt052-workflow-portable-2\\cases\\B",
+        "--reader-runtime",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\malt052-public-reader-setup-1",
+        "--out",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\malt052-workflow-portable-2\\windows21-B"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 11.5772545337677
+    },
+    {
+      "label": "windows21-dna5",
+      "command": [
+        "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin\\java.exe",
+        "-Xmx3g",
+        "-jar",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\malt052-workflow-build21-2\\malt052-workflow-development.jar",
+        "--verify",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\malt052-workflow-portable-2\\cases\\dna5",
+        "--reader-runtime",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\malt052-public-reader-setup-1",
+        "--out",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\malt052-workflow-portable-2\\windows21-dna5"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 9.896315574645996
+    },
+    {
+      "label": "windows21-support59",
+      "command": [
+        "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin\\java.exe",
+        "-Xmx3g",
+        "-jar",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\malt052-workflow-build21-2\\malt052-workflow-development.jar",
+        "--verify",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\malt052-workflow-portable-2\\cases\\support59",
+        "--reader-runtime",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\malt052-public-reader-setup-1",
+        "--out",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\malt052-workflow-portable-2\\windows21-support59"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 9.899358034133911
+    },
+    {
+      "label": "windows25-A",
+      "command": [
+        "C:\\Program Files\\Java\\jdk-25\\bin\\java.exe",
+        "-Xmx3g",
+        "-jar",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\malt052-workflow-build25-2\\malt052-workflow-development.jar",
+        "--verify",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\malt052-workflow-portable-2\\cases\\A",
+        "--reader-runtime",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\malt052-public-reader-setup-1",
+        "--out",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\malt052-workflow-portable-2\\windows25-A"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 11.869205713272095
+    },
+    {
+      "label": "linux-owned-verification-parent",
+      "command": [
+        "wsl.exe",
+        "-d",
+        "JLinAlg-Omics-SAIGE-20261026",
+        "--",
+        "/bin/mkdir",
+        "-m",
+        "700",
+        "/var/tmp/omicsmatic-malt052-workflow-portable-replay-2"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 5.636294603347778
+    },
+    {
+      "label": "linux21-restored-windows-A",
+      "command": [
+        "wsl.exe",
+        "-d",
+        "JLinAlg-Omics-SAIGE-20261026",
+        "--",
+        "/usr/bin/java",
+        "-Xmx3g",
+        "-jar",
+        "/mnt/d/projects/JLinAlg/build/literature-review/nfcore-runtime/malt052-workflow-build21-2/malt052-workflow-development.jar",
+        "--verify",
+        "/mnt/d/projects/JLinAlg/build/literature-review/nfcore-runtime/malt052-workflow-portable-2/cases/A",
+        "--reader-runtime",
+        "/mnt/d/projects/JLinAlg/build/literature-review/nfcore-runtime/malt052-public-reader-setup-1",
+        "--out",
+        "/var/tmp/omicsmatic-malt052-workflow-portable-replay-2/A"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 40.04953193664551
+    },
+    {
+      "label": "linux21-restored-windows-B",
+      "command": [
+        "wsl.exe",
+        "-d",
+        "JLinAlg-Omics-SAIGE-20261026",
+        "--",
+        "/usr/bin/java",
+        "-Xmx3g",
+        "-jar",
+        "/mnt/d/projects/JLinAlg/build/literature-review/nfcore-runtime/malt052-workflow-build21-2/malt052-workflow-development.jar",
+        "--verify",
+        "/mnt/d/projects/JLinAlg/build/literature-review/nfcore-runtime/malt052-workflow-portable-2/cases/B",
+        "--reader-runtime",
+        "/mnt/d/projects/JLinAlg/build/literature-review/nfcore-runtime/malt052-public-reader-setup-1",
+        "--out",
+        "/var/tmp/omicsmatic-malt052-workflow-portable-replay-2/B"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 38.89373278617859
+    },
+    {
+      "label": "linux21-restored-windows-dna5",
+      "command": [
+        "wsl.exe",
+        "-d",
+        "JLinAlg-Omics-SAIGE-20261026",
+        "--",
+        "/usr/bin/java",
+        "-Xmx3g",
+        "-jar",
+        "/mnt/d/projects/JLinAlg/build/literature-review/nfcore-runtime/malt052-workflow-build21-2/malt052-workflow-development.jar",
+        "--verify",
+        "/mnt/d/projects/JLinAlg/build/literature-review/nfcore-runtime/malt052-workflow-portable-2/cases/dna5",
+        "--reader-runtime",
+        "/mnt/d/projects/JLinAlg/build/literature-review/nfcore-runtime/malt052-public-reader-setup-1",
+        "--out",
+        "/var/tmp/omicsmatic-malt052-workflow-portable-replay-2/dna5"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 38.43149733543396
+    },
+    {
+      "label": "linux21-restored-windows-support59",
+      "command": [
+        "wsl.exe",
+        "-d",
+        "JLinAlg-Omics-SAIGE-20261026",
+        "--",
+        "/usr/bin/java",
+        "-Xmx3g",
+        "-jar",
+        "/mnt/d/projects/JLinAlg/build/literature-review/nfcore-runtime/malt052-workflow-build21-2/malt052-workflow-development.jar",
+        "--verify",
+        "/mnt/d/projects/JLinAlg/build/literature-review/nfcore-runtime/malt052-workflow-portable-2/cases/support59",
+        "--reader-runtime",
+        "/mnt/d/projects/JLinAlg/build/literature-review/nfcore-runtime/malt052-public-reader-setup-1",
+        "--out",
+        "/var/tmp/omicsmatic-malt052-workflow-portable-replay-2/support59"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 39.28889203071594
+    }
+  ],
+  "windows21_complete_populations": 4,
+  "windows25_complete_populations": 1,
+  "linux21_complete_populations": 4,
+  "original_fitting_repeated": false
+}
