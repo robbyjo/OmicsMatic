@@ -1,0 +1,143 @@
+{
+  "status": "PASS_OUTPUT_PREFIX_PREFLIGHT_AND_UNCHANGED_COMPLETE_SCIENTIFIC_OUTPUT",
+  "source_changes": {
+    "src/main/java/org/jlinalg/cli/HopsPostprocessingCli.java": {
+      "before": {
+        "bytes": 33513,
+        "sha256": "57be8703f41d8e6a8622a7081c99837387b95fd14c0d98a9aea895cb2656976b"
+      },
+      "after": {
+        "bytes": 34086,
+        "sha256": "7dccf522a2db10ac2b13e904177e29d98fe8683150a76d62de883d5e38252140"
+      }
+    },
+    "src/test/java/org/jlinalg/cli/HopsPostprocessingAuditTest.java": {
+      "before": {
+        "bytes": 6505,
+        "sha256": "4a0f4bb21cba891ff7cf2bd12d02ab959838777086cde40faa0dd448884ead2d"
+      },
+      "after": {
+        "bytes": 7290,
+        "sha256": "5ff7c8239cbc2b7cbbc18337397ac786b7294e9a67b04a72f23955a8c784f765"
+      }
+    },
+    "docs/literature/HOPS_POSTPROCESSING.md": {
+      "before": {
+        "bytes": 9228,
+        "sha256": "b7bea91c8006b86a82a28b9e56d8b63210cccc9d696929f35fc8e57a0d070af1"
+      },
+      "after": {
+        "bytes": 9694,
+        "sha256": "6cc36d4d7a720508045e141e4b02fc5330cffb76987c72e4dca2f20b750d8143"
+      }
+    }
+  },
+  "complete_guard_controls": {
+    "status": "PASS_HOPS035_OUTPUT_PREFIX_REFUSALS_AND_COMPLETE_ORIGINAL_FITTING",
+    "calls": [
+      {
+        "label": "space",
+        "out": "/var/tmp/omicsmatic-hops035-prefix-guard-controls-1/space prefix",
+        "command": [
+          "/usr/bin/java",
+          "-Xmx3g",
+          "-jar",
+          "/mnt/d/projects/JLinAlg/build/literature-review/nfcore-runtime/hops035-postprocessing-build21-5/hops035-postprocessing-development.jar",
+          "--maltextract-bundle",
+          "/var/tmp/omicsmatic-hops035-post-adapter-controls-1/complete10001-2/bundle/extraction",
+          "--reader-runtime",
+          "/mnt/d/projects/JLinAlg/build/literature-review/nfcore-runtime/maltextract17-public-reader-setup-1",
+          "--post-runtime",
+          "/var/tmp/omicsmatic-hops035-public-runtime-2",
+          "--filter",
+          "def_anc",
+          "--emit-json",
+          "true",
+          "--out",
+          "/var/tmp/omicsmatic-hops035-prefix-guard-controls-1/space prefix"
+        ],
+        "exit_code": 2,
+        "expected_exit": 2,
+        "elapsed_seconds": 12.133786916732788
+      },
+      {
+        "label": "semicolon",
+        "out": "/var/tmp/omicsmatic-hops035-prefix-guard-controls-1/run;true",
+        "command": [
+          "/usr/bin/java",
+          "-Xmx3g",
+          "-jar",
+          "/mnt/d/projects/JLinAlg/build/literature-review/nfcore-runtime/hops035-postprocessing-build21-5/hops035-postprocessing-development.jar",
+          "--maltextract-bundle",
+          "/var/tmp/omicsmatic-hops035-post-adapter-controls-1/complete10001-2/bundle/extraction",
+          "--reader-runtime",
+          "/mnt/d/projects/JLinAlg/build/literature-review/nfcore-runtime/maltextract17-public-reader-setup-1",
+          "--post-runtime",
+          "/var/tmp/omicsmatic-hops035-public-runtime-2",
+          "--filter",
+          "def_anc",
+          "--emit-json",
+          "true",
+          "--out",
+          "/var/tmp/omicsmatic-hops035-prefix-guard-controls-1/run;true"
+        ],
+        "exit_code": 2,
+        "expected_exit": 2,
+        "elapsed_seconds": 4.376929998397827
+      },
+      {
+        "label": "normal",
+        "out": "/var/tmp/omicsmatic-hops035-prefix-guard-controls-1/normal:prefix-1",
+        "command": [
+          "/usr/bin/java",
+          "-Xmx3g",
+          "-jar",
+          "/mnt/d/projects/JLinAlg/build/literature-review/nfcore-runtime/hops035-postprocessing-build21-5/hops035-postprocessing-development.jar",
+          "--maltextract-bundle",
+          "/var/tmp/omicsmatic-hops035-post-adapter-controls-1/complete10001-2/bundle/extraction",
+          "--reader-runtime",
+          "/mnt/d/projects/JLinAlg/build/literature-review/nfcore-runtime/maltextract17-public-reader-setup-1",
+          "--post-runtime",
+          "/var/tmp/omicsmatic-hops035-public-runtime-2",
+          "--filter",
+          "def_anc",
+          "--emit-json",
+          "true",
+          "--out",
+          "/var/tmp/omicsmatic-hops035-prefix-guard-controls-1/normal:prefix-1"
+        ],
+        "exit_code": 0,
+        "expected_exit": 0,
+        "elapsed_seconds": 58.62603211402893
+      }
+    ],
+    "upstream_script_changed": false,
+    "negative_original_process_launched": false,
+    "source_unchanged": true,
+    "original_fitting_successes": 1,
+    "guard_refusals": 2,
+    "new_tool_credit": 0,
+    "whole_goal_complete": false
+  },
+  "unit_tests_per_JVM": 33,
+  "archive": {
+    "bytes": 15693208,
+    "sha256": "b0c0eff0b1e33ca5ab5d3b775c9eb290aaece605d210488cddaff9c29ced8962"
+  },
+  "logical_evidence_files": 242,
+  "logical_evidence_bytes": 130113055,
+  "original_statistic_fields_identical": true,
+  "original_TSV_JSON_identical": true,
+  "complete_PDFs_identical_except_creation_modification_dates": [
+    "heatmap_overview_Wevid.pdf",
+    "pdf_candidate_profiles/Homo_sapiens/stp1_population10001.rma6_Homo_sapiens_summary.pdf"
+  ],
+  "previous_qualification": "superseded-guards/before-prefix-check/VALIDATION.json",
+  "public_saved_replay_status": "PASS_CURRENT_GUARD_REVISION_COMPLETE_PUBLIC_PROVIDER_REPLAY",
+  "additional_tool_credit": 0,
+  "whole_goal_complete": false,
+  "current_saved_replay": {
+    "bytes": 27764,
+    "sha256": "94262d94ce3b280b803800af2df0b1cff1b2dc94815ab6d3ad152df5ec870484"
+  }
+}

@@ -859,3 +859,33 @@ software-control oracles; arbitrary damage/coverage cells are not independently
 recalculated. Checksums do not authenticate a producer or establish pathogen
 authenticity/absence. Author settings/resources remain unknown. The paper's
 separate bacterial rescreen and whole MALT/HOPS are not admitted by this badge.
+
+
+## HOPS: original candidate assessment and required actions
+
+**Original HOPS me_po extraction, damage-related candidate plots and workspace
+assessment are available through a scoped standalone adapter.** Use
+[HOPS_INTEGRATION.md](../HOPS_INTEGRATION.md). The canonical/released executable
+and root dispatcher are unchanged. Author version/settings are unknown; the
+declared HOPS0.35/MaltExtract1.7/Java8/R4.0.5 profile is a tested choice.
+
+**Select the method explicitly.** source-def-anc preserves original sampling,
+destacking and duplicate removal. Stock1.7 can inspect only the first10,000
+assigned reads even if downSampling? says Off. complete-def-anc deliberately
+disables those operations and changes results; do not switch just to pass a
+plot/check. Captured raw inputs and complete populations are never silently
+repaired or truncated by adapter capacities. Nonfinite values stay literal.
+
+**Missing/forbidden exact runtime or installation: SKIP3 dependent analysis.**
+Install permitted pinned providers in NEW directories or leave it skipped.
+**FAIL2: no result admitted.** Retain FAILURE.json, WARNINGS_FAILURE.md and all
+process stderr. Fix the named input/capacity/integrity/process problem before a
+NEW run. The original driver can return0 after a child returns1; both child
+exits, fatal logs and complete outputs are checked. Failed/empty plots and
+low-read evidence do not establish absence. Review original profiles manually.
+
+Saved verification freshly decodes RData but repeats no original fitting,
+authenticates no producer and establishes no biological accuracy. MALT
+index/alignment, dated reference databases, manual authentication and whole
+HOPS/MALT/paper reproduction remain separate. Earlier source-only qualification
+notices below are historical and do not negate this scoped operation badge.

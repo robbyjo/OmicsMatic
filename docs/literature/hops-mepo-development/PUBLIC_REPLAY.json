@@ -1,0 +1,300 @@
+{
+  "status": "PASS_CURRENT_SOURCE_COMPLETE_MEPO_PUBLIC_REPLAY",
+  "provider": "/var/tmp/omicsmatic-hops035-public-runtime-1",
+  "application_JVM": "linux21",
+  "complete_replay": {
+    "status": "PASS_COMPLETE_ORIGINAL_HOPS_MEPO_SAVED_REPLAY",
+    "original_fitting_repeated": false,
+    "original_plotting_repeated": false,
+    "new_tool_credit": 0,
+    "whole_hops_qualified": false,
+    "whole_goal_complete": false,
+    "restored_members": 5665,
+    "restored_bytes": 1619480214,
+    "unique_objects": 457,
+    "complete_workflows": 3,
+    "specific_refusals": 10,
+    "independent_original_comparisons": 2,
+    "original_child_failure_retained": true,
+    "commands": [
+      {
+        "label": "build",
+        "command": [
+          "/usr/bin/python3",
+          "/mnt/d/projects/JLinAlg/tools/literature/hops_mepo/build.py",
+          "--java-bin",
+          "/usr/bin",
+          "--out",
+          "/var/tmp/omicsmatic-hops-mepo-public-replay-1/build"
+        ],
+        "exit_code": 0,
+        "expected_exit": 0,
+        "expected_cause": null
+      },
+      {
+        "label": "verify-source-multi-1",
+        "command": [
+          "/usr/bin/java",
+          "-Xmx3g",
+          "-jar",
+          "/var/tmp/omicsmatic-hops-mepo-public-replay-1/build/hops-mepo-development.jar",
+          "--verify",
+          "/var/tmp/omicsmatic-hops-mepo-public-replay-1/evidence/controls/source-multi-1/bundle",
+          "--reader-runtime",
+          "/mnt/d/projects/JLinAlg/build/literature-review/nfcore-runtime/maltextract17-public-reader-setup-1",
+          "--post-runtime",
+          "/var/tmp/omicsmatic-hops035-public-runtime-1",
+          "--out",
+          "/var/tmp/omicsmatic-hops-mepo-public-replay-1/calls/source-multi-1"
+        ],
+        "exit_code": 0,
+        "expected_exit": 0,
+        "expected_cause": null
+      },
+      {
+        "label": "verify-complete-multi-1",
+        "command": [
+          "/usr/bin/java",
+          "-Xmx3g",
+          "-jar",
+          "/var/tmp/omicsmatic-hops-mepo-public-replay-1/build/hops-mepo-development.jar",
+          "--verify",
+          "/var/tmp/omicsmatic-hops-mepo-public-replay-1/evidence/controls/complete-multi-1/bundle",
+          "--reader-runtime",
+          "/mnt/d/projects/JLinAlg/build/literature-review/nfcore-runtime/maltextract17-public-reader-setup-1",
+          "--post-runtime",
+          "/var/tmp/omicsmatic-hops035-public-runtime-1",
+          "--out",
+          "/var/tmp/omicsmatic-hops-mepo-public-replay-1/calls/complete-multi-1"
+        ],
+        "exit_code": 0,
+        "expected_exit": 0,
+        "expected_cause": null
+      },
+      {
+        "label": "verify-source-multi-jdk25-1",
+        "command": [
+          "/usr/bin/java",
+          "-Xmx3g",
+          "-jar",
+          "/var/tmp/omicsmatic-hops-mepo-public-replay-1/build/hops-mepo-development.jar",
+          "--verify",
+          "/var/tmp/omicsmatic-hops-mepo-public-replay-1/evidence/controls/source-multi-jdk25-1/bundle",
+          "--reader-runtime",
+          "/mnt/d/projects/JLinAlg/build/literature-review/nfcore-runtime/maltextract17-public-reader-setup-1",
+          "--post-runtime",
+          "/var/tmp/omicsmatic-hops035-public-runtime-1",
+          "--out",
+          "/var/tmp/omicsmatic-hops-mepo-public-replay-1/calls/source-multi-jdk25-1"
+        ],
+        "exit_code": 0,
+        "expected_exit": 0,
+        "expected_cause": null
+      },
+      {
+        "label": "refuse-false-tool-credit",
+        "command": [
+          "/usr/bin/java",
+          "-Xmx3g",
+          "-jar",
+          "/var/tmp/omicsmatic-hops-mepo-public-replay-1/build/hops-mepo-development.jar",
+          "--verify",
+          "/var/tmp/omicsmatic-hops-mepo-public-replay-1/evidence/refusals/fixtures/false-tool-credit",
+          "--reader-runtime",
+          "/mnt/d/projects/JLinAlg/build/literature-review/nfcore-runtime/maltextract17-public-reader-setup-1",
+          "--post-runtime",
+          "/var/tmp/omicsmatic-hops035-public-runtime-1",
+          "--out",
+          "/var/tmp/omicsmatic-hops-mepo-public-replay-1/calls/refuse-false-tool-credit"
+        ],
+        "exit_code": 2,
+        "expected_exit": 2,
+        "expected_cause": "Nextflow integer is outside its declared range"
+      },
+      {
+        "label": "refuse-false-whole-tool-claim",
+        "command": [
+          "/usr/bin/java",
+          "-Xmx3g",
+          "-jar",
+          "/var/tmp/omicsmatic-hops-mepo-public-replay-1/build/hops-mepo-development.jar",
+          "--verify",
+          "/var/tmp/omicsmatic-hops-mepo-public-replay-1/evidence/refusals/fixtures/false-whole-tool-claim",
+          "--reader-runtime",
+          "/mnt/d/projects/JLinAlg/build/literature-review/nfcore-runtime/maltextract17-public-reader-setup-1",
+          "--post-runtime",
+          "/var/tmp/omicsmatic-hops035-public-runtime-1",
+          "--out",
+          "/var/tmp/omicsmatic-hops-mepo-public-replay-1/calls/refuse-false-whole-tool-claim"
+        ],
+        "exit_code": 2,
+        "expected_exit": 2,
+        "expected_cause": "Contradictory original-operation qualification scope"
+      },
+      {
+        "label": "refuse-relabel-stock-complete",
+        "command": [
+          "/usr/bin/java",
+          "-Xmx3g",
+          "-jar",
+          "/var/tmp/omicsmatic-hops-mepo-public-replay-1/build/hops-mepo-development.jar",
+          "--verify",
+          "/var/tmp/omicsmatic-hops-mepo-public-replay-1/evidence/refusals/fixtures/relabel-stock-complete",
+          "--reader-runtime",
+          "/mnt/d/projects/JLinAlg/build/literature-review/nfcore-runtime/maltextract17-public-reader-setup-1",
+          "--post-runtime",
+          "/var/tmp/omicsmatic-hops035-public-runtime-1",
+          "--out",
+          "/var/tmp/omicsmatic-hops-mepo-public-replay-1/calls/refuse-relabel-stock-complete"
+        ],
+        "exit_code": 2,
+        "expected_exit": 2,
+        "expected_cause": "Original config/profile differs"
+      },
+      {
+        "label": "refuse-changed-config-method",
+        "command": [
+          "/usr/bin/java",
+          "-Xmx3g",
+          "-jar",
+          "/var/tmp/omicsmatic-hops-mepo-public-replay-1/build/hops-mepo-development.jar",
+          "--verify",
+          "/var/tmp/omicsmatic-hops-mepo-public-replay-1/evidence/refusals/fixtures/changed-config-method",
+          "--reader-runtime",
+          "/mnt/d/projects/JLinAlg/build/literature-review/nfcore-runtime/maltextract17-public-reader-setup-1",
+          "--post-runtime",
+          "/var/tmp/omicsmatic-hops035-public-runtime-1",
+          "--out",
+          "/var/tmp/omicsmatic-hops-mepo-public-replay-1/calls/refuse-changed-config-method"
+        ],
+        "exit_code": 2,
+        "expected_exit": 2,
+        "expected_cause": "Original config/profile differs"
+      },
+      {
+        "label": "refuse-failed-child-with-zero-driver",
+        "command": [
+          "/usr/bin/java",
+          "-Xmx3g",
+          "-jar",
+          "/var/tmp/omicsmatic-hops-mepo-public-replay-1/build/hops-mepo-development.jar",
+          "--verify",
+          "/var/tmp/omicsmatic-hops-mepo-public-replay-1/evidence/refusals/fixtures/failed-child-with-zero-driver",
+          "--reader-runtime",
+          "/mnt/d/projects/JLinAlg/build/literature-review/nfcore-runtime/maltextract17-public-reader-setup-1",
+          "--post-runtime",
+          "/var/tmp/omicsmatic-hops035-public-runtime-1",
+          "--out",
+          "/var/tmp/omicsmatic-hops-mepo-public-replay-1/calls/refuse-failed-child-with-zero-driver"
+        ],
+        "exit_code": 2,
+        "expected_exit": 2,
+        "expected_cause": "Original HOPS child exits are not exactly two successes"
+      },
+      {
+        "label": "refuse-changed-rma-source-row",
+        "command": [
+          "/usr/bin/java",
+          "-Xmx3g",
+          "-jar",
+          "/var/tmp/omicsmatic-hops-mepo-public-replay-1/build/hops-mepo-development.jar",
+          "--verify",
+          "/var/tmp/omicsmatic-hops-mepo-public-replay-1/evidence/refusals/fixtures/changed-rma-source-row",
+          "--reader-runtime",
+          "/mnt/d/projects/JLinAlg/build/literature-review/nfcore-runtime/maltextract17-public-reader-setup-1",
+          "--post-runtime",
+          "/var/tmp/omicsmatic-hops035-public-runtime-1",
+          "--out",
+          "/var/tmp/omicsmatic-hops-mepo-public-replay-1/calls/refuse-changed-rma-source-row"
+        ],
+        "exit_code": 2,
+        "expected_exit": 2,
+        "expected_cause": "Original complete RMA source declaration differs"
+      },
+      {
+        "label": "refuse-fatal-original-log",
+        "command": [
+          "/usr/bin/java",
+          "-Xmx3g",
+          "-jar",
+          "/var/tmp/omicsmatic-hops-mepo-public-replay-1/build/hops-mepo-development.jar",
+          "--verify",
+          "/var/tmp/omicsmatic-hops-mepo-public-replay-1/evidence/refusals/fixtures/fatal-original-log",
+          "--reader-runtime",
+          "/mnt/d/projects/JLinAlg/build/literature-review/nfcore-runtime/maltextract17-public-reader-setup-1",
+          "--post-runtime",
+          "/var/tmp/omicsmatic-hops035-public-runtime-1",
+          "--out",
+          "/var/tmp/omicsmatic-hops-mepo-public-replay-1/calls/refuse-fatal-original-log"
+        ],
+        "exit_code": 2,
+        "expected_exit": 2,
+        "expected_cause": "Original extraction logged a fatal error despite possible zero exit"
+      },
+      {
+        "label": "refuse-changed-scientific-export",
+        "command": [
+          "/usr/bin/java",
+          "-Xmx3g",
+          "-jar",
+          "/var/tmp/omicsmatic-hops-mepo-public-replay-1/build/hops-mepo-development.jar",
+          "--verify",
+          "/var/tmp/omicsmatic-hops-mepo-public-replay-1/evidence/refusals/fixtures/changed-scientific-export",
+          "--reader-runtime",
+          "/mnt/d/projects/JLinAlg/build/literature-review/nfcore-runtime/maltextract17-public-reader-setup-1",
+          "--post-runtime",
+          "/var/tmp/omicsmatic-hops035-public-runtime-1",
+          "--out",
+          "/var/tmp/omicsmatic-hops-mepo-public-replay-1/calls/refuse-changed-scientific-export"
+        ],
+        "exit_code": 2,
+        "expected_exit": 2,
+        "expected_cause": "Fresh original RData fields differ"
+      },
+      {
+        "label": "refuse-missing-profile-pdf",
+        "command": [
+          "/usr/bin/java",
+          "-Xmx3g",
+          "-jar",
+          "/var/tmp/omicsmatic-hops-mepo-public-replay-1/build/hops-mepo-development.jar",
+          "--verify",
+          "/var/tmp/omicsmatic-hops-mepo-public-replay-1/evidence/refusals/fixtures/missing-profile-pdf",
+          "--reader-runtime",
+          "/mnt/d/projects/JLinAlg/build/literature-review/nfcore-runtime/maltextract17-public-reader-setup-1",
+          "--post-runtime",
+          "/var/tmp/omicsmatic-hops035-public-runtime-1",
+          "--out",
+          "/var/tmp/omicsmatic-hops-mepo-public-replay-1/calls/refuse-missing-profile-pdf"
+        ],
+        "exit_code": 2,
+        "expected_exit": 2,
+        "expected_cause": "Complete original PDF population differs"
+      },
+      {
+        "label": "refuse-missing-interpretation-warnings",
+        "command": [
+          "/usr/bin/java",
+          "-Xmx3g",
+          "-jar",
+          "/var/tmp/omicsmatic-hops-mepo-public-replay-1/build/hops-mepo-development.jar",
+          "--verify",
+          "/var/tmp/omicsmatic-hops-mepo-public-replay-1/evidence/refusals/fixtures/missing-interpretation-warnings",
+          "--reader-runtime",
+          "/mnt/d/projects/JLinAlg/build/literature-review/nfcore-runtime/maltextract17-public-reader-setup-1",
+          "--post-runtime",
+          "/var/tmp/omicsmatic-hops035-public-runtime-1",
+          "--out",
+          "/var/tmp/omicsmatic-hops-mepo-public-replay-1/calls/refuse-missing-interpretation-warnings"
+        ],
+        "exit_code": 2,
+        "expected_exit": 2,
+        "expected_cause": "Prominent saved warnings differ"
+      }
+    ]
+  },
+  "original_fitting_repeated": false,
+  "new_tool_credit": 0,
+  "whole_hops_qualified": false,
+  "whole_goal_complete": false
+}

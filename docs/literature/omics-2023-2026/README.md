@@ -1,9 +1,16 @@
 # 250 paper omics and GWAS toolbox catalog
 
-**Current checkpoint: 100 new scoped integrations**: 19 native Java
-subsets and 81 tested upstream adapters; 103 including
-3 existing adapters. **246 named tools remain missing.**
+**Current checkpoint: 101 new scoped integrations**: 19 native Java
+subsets and 82 tested upstream adapters; 104 including
+3 existing adapters. **245 named tools remain missing.**
 Cell Ranger remains excluded at the user's request. The full goal is active.
+
+**HOPS original extraction and candidate assessment are now available** through
+a scoped standalone me_po workflow with explicit stock/complete profiles. Read
+[HOPS_INTEGRATION.md](../HOPS_INTEGRATION.md) for setup, method choices and
+prominent SKIP3/FAIL2 recovery. Historical source-only notices remain retained;
+the badge does not automate biological authentication, recover author settings
+or qualify MALT alignment/index creation or the historical databases.
 
 **MaltExtract target extraction and original summary/damage output are now available**
 through a scoped original1.7 standalone workflow. Read
