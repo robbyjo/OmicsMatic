@@ -1,9 +1,17 @@
 # 250 paper omics and GWAS toolbox catalog
 
-**Current checkpoint: 99 new scoped integrations**: 19 native Java
-subsets and 80 tested upstream adapters; 102 including
-3 existing adapters. **247 named tools remain missing.**
+**Current checkpoint: 100 new scoped integrations**: 19 native Java
+subsets and 81 tested upstream adapters; 103 including
+3 existing adapters. **246 named tools remain missing.**
 Cell Ranger remains excluded at the user's request. The full goal is active.
+
+**MaltExtract target extraction and original summary/damage output are now available**
+through a scoped original1.7 standalone workflow. Read
+[MALTEXTRACT_INTEGRATION.md](../MALTEXTRACT_INTEGRATION.md). The authors'
+version/settings/resources remain unknown; manual assessment and the separate
+bacterial rescreen remain separate operations. Canonical/released executables
+are unchanged. Earlier MALT-family source-only notices below are historical;
+this scoped badge does not qualify the whole package, MALT or HOPS.
 
 The fixed cohort contains 250 papers: 71 Nature, 104 Nature Genetics and 75
 AJHG articles from 2023-10-23 through 2026-10-23. No extension was needed.

@@ -832,3 +832,30 @@ Three source-reviewed tool additions retain separate provenance: MALT and HOPS h
 These additions improve the catalog and add no whole-tool or biological credit. The source-tested MALT 0.4.1 development controller does not fulfill the separate 0.5.2 role. Complete HOPS and MaltExtract operations remain unfinished; their unreported versions, settings and resource choices remain unknown. See `MALT_ALIGNMENT.md` and `MALT_HOPS_PAPER_ROLES.md`.
 
 **Required action:** match the declared source version and operation, qualify a permitted runtime, provide the complete dated reference/mapping and query populations, and retain original warnings and failures. If any prerequisite is unavailable or cannot be installed, skip its dependent analysis. A small software-control index does not reproduce the historical 91-spirochete or 7,508-genome bacterial analyses. Insufficient-read candidates remain unassessable.
+
+
+## MaltExtract: scoped original workflow and required actions
+
+**Scoped target extraction and original summary/damage output are available.**
+Use [MALTEXTRACT_INTEGRATION.md](../MALTEXTRACT_INTEGRATION.md) and the separate
+development JAR; the canonical/released executable is unchanged. Runtime fitting
+requires the pinned HOPS0.35 MaltExtract1.7/Linux OpenJDK8.0.144 provider, complete
+RMA6, ncbi.map/ncbi.tre and literal target names. Choose profile and provenance
+explicitly. Install/download only where permitted; otherwise SKIP3 the dependent
+analysis. FAIL2 admits no result. Retain diagnostics and retry a NEW directory.
+
+**Stock downsampling can be hidden by an Off flag.** The actual10001-read
+control examined10000 and destacked to1 retained read while downSampling? was
+Off. Skip full-population interpretation of that stock result. If complete
+extraction is intended, explicitly choose a complete profile; it changes the
+method by disabling sampling, destacking and duplicate removal.
+
+Original NaN/Inf cells remain literal. Ambiguous table interpretation is skipped;
+no imputation or padding occurs. SEVERE errors can accompany exit0 and refuse
+admission. Review all original error/log files and the damage tables manually.
+The damage denominator counts source-length>=20 alignments and differs from the
+filter-table alignment count. Saved verification checks consistency and fixed
+software-control oracles; arbitrary damage/coverage cells are not independently
+recalculated. Checksums do not authenticate a producer or establish pathogen
+authenticity/absence. Author settings/resources remain unknown. The paper's
+separate bacterial rescreen and whole MALT/HOPS are not admitted by this badge.

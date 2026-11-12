@@ -1,0 +1,601 @@
+{
+  "status": "PASS_SCOPED_MALTEXTRACT17_UPSTREAM_ADAPTER_ADMISSION",
+  "before_archive": {
+    "bytes": 1637753,
+    "sha256": "a56d99a709c585b6b09f090bbe0a0b677f1507deb23510bde3e305e6fc2054df"
+  },
+  "before_inventory": {
+    "bytes": 608452,
+    "sha256": "6899f6222f8920937779336b04713b985899551a828f1fb1bcd449c9ae3bb0b1"
+  },
+  "before_entry": {
+    "id": "maltextract",
+    "name": "MaltExtract",
+    "pattern": "(?<![A-Za-z0-9_])(?-i:MaltExtract)(?![A-Za-z0-9_])",
+    "role": "Target-species RMA extraction and alignment/damage-related summaries",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "P002 supplement section 3.3 names MaltExtract but does not state its version/settings. Qualify a permitted original provider, reference taxonomy/resources and the declared extraction/filter choices. Manual candidate assessment and the separate 7508-genome bacterial rescreen remain distinct. The old standalone repository README explicitly refers users to HOPS for current instructions. Read MALT_HOPS_PAPER_ROLES.md; no extraction or biological result is admitted.",
+    "paper_count": 1,
+    "papers": [
+      "P002"
+    ],
+    "implementation_status": "missing",
+    "implementation_source": null,
+    "implementation_scope": "P002 supplement section 3.3 names MaltExtract but does not state its version/settings. Qualify a permitted original provider, reference taxonomy/resources and the declared extraction/filter choices. Manual candidate assessment and the separate 7508-genome bacterial rescreen remain distinct. The old standalone repository README explicitly refers users to HOPS for current instructions. Read MALT_HOPS_PAPER_ROLES.md; no extraction or biological result is admitted.",
+    "validation_note": "Existing overlap/adapters require paper-specific option checks; missing integrations remain pending."
+  },
+  "after_entry": {
+    "id": "maltextract",
+    "name": "MaltExtract",
+    "pattern": "(?<![A-Za-z0-9_])(?-i:MaltExtract)(?![A-Za-z0-9_])",
+    "role": "Target-species RMA extraction and alignment/damage-related summaries",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "The P002 supplementary DOCX names MaltExtract for target candidate extraction followed by manual summary/damage assessment. A declared1.7 software profile is now qualified for those output-producing operations; unreported author choices are not inferred.",
+    "paper_count": 1,
+    "papers": [
+      "P002"
+    ],
+    "implementation_status": "upstream-adapter-validated",
+    "implementation_source": "src/main/java/org/jlinalg/cli/MaltExtractWorkflowCli.java",
+    "implementation_scope": "Supervised unchanged original MaltExtract1.7 from the GPL HOPS0.35 distribution, with exact Linux OpenJDK8.0.144 runtime, literal target-name lookup, source-specific descendant selection, complete RMA6 snapshots, original target FASTA/BLAST extraction and all original summary/damage/coverage/distribution tables. Explicit source-default, complete-default and complete-def-anc profiles; complete profiles deliberately disable destacking, duplicate removal and downsampling. Native Java audits complete stored classes/counts and complete-profile read multisets. Manual candidate assessment remains a human task. Author version/settings/resources are unreported; the historical91-spirochete and7508-genome screening analyses and whole MALT/HOPS remain separate. Read MALTEXTRACT_INTEGRATION.md.",
+    "validation_note": "Seven complete original productions,516 byte-identical scientific-file comparisons with independent originals,76027 original descendant cases and16 complete-map name cases. All21 focused tests passed without skips/failures. Complete saved replay passed on Windows JDK21/25 and Linux JDK21, including8 rehashed contradiction refusals per platform. Five failed attempts are retained, including original SEVERE output errors with exit0. A complete10001-read RMA showed stock processing stopping at10000 with downSampling? Off; the complete default profile retained10001. Saved verification does not independently recalculate arbitrary damage/coverage cells, repeat original fitting, authenticate a producer or establish biological accuracy.",
+    "project_adapter_available": true,
+    "canonical_adapter_available": false,
+    "root_dispatch_available": false,
+    "development_adapter_cli": "java -jar maltextract17-workflow-jdk21.jar",
+    "development_candidate": "docs/literature/maltextract17-integration/maltextract17-workflow-jdk21.jar",
+    "development_candidate_sha256": "af9693cebc8706af364b66921aaa903370ddc005bf36a2408bdbb8b1bcfa826f",
+    "development_build": "tools/literature/maltextract17_workflow/build.py",
+    "source_roles_reviewed": 1,
+    "source_role_coverage": "maltextract17-adapter-role-coverage.json",
+    "workflow_validation": "../maltextract17-workflow-development/VALIDATION.json",
+    "runtime_profiles": [
+      "source-default",
+      "complete-default",
+      "complete-def-anc"
+    ],
+    "external_analysis_runtime_required": true,
+    "whole_paper_reproduced": false,
+    "biological_accuracy_certified": false,
+    "producer_authenticated": false,
+    "paper_exact_unknown_settings_available": false,
+    "whole_tool_qualified": false
+  },
+  "after_files": {
+    "docs/literature/omics-2023-2026/tool-inventory.json": {
+      "bytes": 600115,
+      "sha256": "48853a18e2d7c3d73468709d6094a2ac75ddf5e97a17f7aa858540e11982ea36"
+    },
+    "docs/literature/omics-2023-2026/summary.json": {
+      "bytes": 1146,
+      "sha256": "be93c406c745016e5ff2d45f1a11a39073f2ae9714f82628c1e4448d5ad33579"
+    },
+    "docs/literature/omics-2023-2026/README.md": {
+      "bytes": 98108,
+      "sha256": "3c4229fee6b296b8d2b26c28b8d81ed87a4a026f2adddf6e64e0fb887b3767dd"
+    },
+    "docs/literature/omics-2023-2026/WARNINGS.md": {
+      "bytes": 212882,
+      "sha256": "7c9cc01de2034c00a754cac826c19f0dd6ef4525e8ea045635b45429f51e0c85"
+    },
+    "site/literature-review.html": {
+      "bytes": 3638246,
+      "sha256": "989094bd8498fa419ebdb761a277f2ab02272fffeaa47b7e8b99ed324eab6deb"
+    },
+    "site/literature-warnings.html": {
+      "bytes": 327564,
+      "sha256": "d6dfb3057b72665e815dbe1e7a949ed4bad8c024e8e1ca539e30a2912ade93b8"
+    }
+  },
+  "protected": {
+    "docs/literature/omics-2023-2026/papers.json": {
+      "bytes": 3300970,
+      "sha256": "7939185a68799db773c509d8d544f1602d18c3f18724943e2736d90a642de064"
+    },
+    "tools/literature/reviewed-uses.json": {
+      "bytes": 934726,
+      "sha256": "1fdff92ea7c6b13cca99ffe19fa53a7f4407adbbc053a8029d31f73f9b76aa08"
+    },
+    "build/cli/omicsmatic-0.3.7.jar": {
+      "bytes": 164898617,
+      "sha256": "545917aaf820f2fe404873e1f0bc72186ebe90d3a11fd7f6f26f592115fbf2f2"
+    }
+  },
+  "workflow_validation": {
+    "bytes": 5861,
+    "sha256": "14815b52ca0309fe699db34326492b9884717e61da17650cf5311e7b779dee3c"
+  },
+  "workflow_archive": {
+    "bytes": 33804912,
+    "sha256": "1bbd6148b7f351f16329eb70cabcea591eade2c62b1cb2b8ad19629defc910ac"
+  },
+  "role_coverage": {
+    "bytes": 3383,
+    "sha256": "9831b6474aad73a4204cd913242eb2d909d6200b47194696cb3eaadc47c8a4e8"
+  },
+  "primary_source_audit": {
+    "status": "PASS250_CURRENT_PRIMARY_SOURCES_WITH_REVIEWED_DISPATCH_AND_DOCS",
+    "whole_goal_complete": false,
+    "primary_audit": {
+      "status": "PASS250_PRIMARY_ARTICLES_2478_JATS_OBSERVATIONS_ONE_TYPED_DOCX_OBSERVATION_AND1052_REVIEWS",
+      "whole_goal_complete": false,
+      "source_papers": 250,
+      "observations": 2479,
+      "main_article_observations": 2478,
+      "supplementary_docx_observations": 1,
+      "reviewed_uses": 1052,
+      "main_article_supporting_pointers": 377,
+      "supplementary_secondary_pointers": 4,
+      "prior_observations_unchanged": 2476,
+      "prior_reviews_unchanged": 1049,
+      "new_named_tools": 3,
+      "new_whole_tool_credit": 0,
+      "derived_registry_entries": 443,
+      "complete_main_software_census": [
+        [
+          "P002",
+          "hops"
+        ],
+        [
+          "P002",
+          "malt"
+        ]
+      ],
+      "paper_wide_semantic_review_open": true,
+      "source_pins": {
+        "tools/literature/audit_malt_source_catalog.py": {
+          "bytes": 7328,
+          "sha256": "e3178adde4deab2d04f1a5c83114ce7bd5c089753e866fab47471071a04c34b2"
+        },
+        "tools/literature/malt_primary_sources.py": {
+          "bytes": 7674,
+          "sha256": "8e9156047760053b125c0689da55d0eef54b1ae8103d2c5376937d7e1fa47950"
+        },
+        "tools/literature/malt_source_catalog.py": {
+          "bytes": 4197,
+          "sha256": "edb6a6a8bb7628a9669490e987393dafc74009917cb8db5bad9fbeb6c4ae829a"
+        },
+        "tools/literature/malt_source_registry.py": {
+          "bytes": 2704,
+          "sha256": "2b6208d4d47c04669714a010bab9c42060b0a4ecd312a1a914f6a6f684d979c3"
+        },
+        "tools/literature/collect_omics_review.py": {
+          "bytes": 31152,
+          "sha256": "64198266fd706c13a1a4e624a2d68e9779477081c5b8644f2fade3114c780396"
+        },
+        "tools/literature/collect_htseq_omics.py": {
+          "bytes": 1715,
+          "sha256": "a17514846ab9990a83c48cf754d48aa00c0402fc5af71595689ce19579f2294f"
+        }
+      },
+      "papers": {
+        "bytes": 3300970,
+        "sha256": "7939185a68799db773c509d8d544f1602d18c3f18724943e2736d90a642de064"
+      },
+      "reviews": {
+        "bytes": 934726,
+        "sha256": "1fdff92ea7c6b13cca99ffe19fa53a7f4407adbbc053a8029d31f73f9b76aa08"
+      }
+    },
+    "source_files": 10948,
+    "primary_cache_files": 250,
+    "shared_predecessor_views": {
+      "src/main/java/org/jlinalg/cli/JLinAlgCli.java": {
+        "current": {
+          "bytes": 50011,
+          "sha256": "cb14367c079da29ce25c4416f37dc9c5f06b690033eda1a34bfa3349864ae47a"
+        },
+        "reviewed": {
+          "bytes": 49816,
+          "sha256": "bcc8bee3c2335d3971db0e88189c1d1879f4d3d6ac0eb65c205e6fcb8b54831f"
+        }
+      },
+      "README.md": {
+        "current": {
+          "bytes": 6725,
+          "sha256": "6ed9a78e743af50714fee07bd525b9bd3d484cafe1e4f4d0ed8233da1ba24fc7"
+        },
+        "reviewed": {
+          "bytes": 6393,
+          "sha256": "85b8169c2217b4365ebfc98831637cfe0fb8b908bc88eb21154301bcc4d8928f"
+        }
+      }
+    },
+    "scientific_source_files_overridden": false,
+    "primary_files_overridden": false,
+    "scientific_verifiers_changed": false,
+    "new_tool_credit": 0,
+    "paper_wide_semantic_review_open": true
+  },
+  "source_pins": {
+    "LICENSE": {
+      "bytes": 35149,
+      "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
+    },
+    "src/main/java/org/jlinalg/cli/MaltExtractWorkflowCli.java": {
+      "bytes": 38020,
+      "sha256": "006c51c65bf386e0be4c4374588c8fde89fb9753aa85a67fbbf7b090dd7ccff5"
+    },
+    "src/main/java/org/jlinalg/cli/NextflowFiles.java": {
+      "bytes": 11223,
+      "sha256": "f92f44f95a5844fc65c8bf949a4180a0d43deb499127f8d0c60e05fc048e7cd7"
+    },
+    "src/main/java/org/jlinalg/cli/NextflowJson.java": {
+      "bytes": 3893,
+      "sha256": "26e6cbb0536c1b8f1eadc9807bd511756a9de0fe25ffac6e954adc47feec88d9"
+    },
+    "src/main/java/org/jlinalg/cli/NextflowParameters.java": {
+      "bytes": 8962,
+      "sha256": "7ca939ae608453f6f1e029aa3405f8386c9b1d7cb3ce42d902c34ef54df5b173"
+    },
+    "src/main/java/org/jlinalg/cli/NextflowProcess.java": {
+      "bytes": 27403,
+      "sha256": "5fc5e6252f9b7076a39139341a7663cec9441717df79dc09bcd162e20b86c040"
+    },
+    "src/main/java/org/jlinalg/cli/NfcoreProcess.java": {
+      "bytes": 30739,
+      "sha256": "9dd9f4961a431cb36223505033ff9503c2be3a3b5008911969451c4224a9c423"
+    },
+    "src/main/java/org/jlinalg/cli/SimpleJson.java": {
+      "bytes": 6107,
+      "sha256": "8425dc1a2179763af43c86898cf2b21d8c17dc76bdcabe0133d0ddcb6d6add5b"
+    },
+    "src/main/java/org/jlinalg/metagenomics/MaltExtractOutputAudit.java": {
+      "bytes": 15596,
+      "sha256": "698d5f1125a94c46cc9eec92a8432c7abcb9cf3de2476057d3002223c2026d4a"
+    },
+    "src/main/java/org/jlinalg/metagenomics/MaltExtractReadProjection.java": {
+      "bytes": 8160,
+      "sha256": "502cf68c76ba4609765496cc67ec72a1c1c2ff19e08b5dee662902cd08ffdd45"
+    },
+    "src/main/java/org/jlinalg/metagenomics/MaltExtractRmaReader.java": {
+      "bytes": 13973,
+      "sha256": "01b07457b7c8f606cdd6553e58645f37fb9d6e2932f1d99a66ec527be21a28df"
+    },
+    "src/main/java/org/jlinalg/metagenomics/MaltExtractSelection.java": {
+      "bytes": 9037,
+      "sha256": "fcee7148fb47ba0c5d36cf3715844c2944975be15839777b3ff78bb746cffe74"
+    },
+    "src/main/java/org/jlinalg/metagenomics/MaltExtractTaxonomy.java": {
+      "bytes": 7365,
+      "sha256": "3b338fca40f3918c76d99fd3807f19223ec457fa2b4d039ef20b9ee96ec8e923"
+    },
+    "src/main/java/org/jlinalg/workflow/LinuxProcessSnapshot.java": {
+      "bytes": 12672,
+      "sha256": "ce0bf79679712035225d09de4952aea027afa02cec494e1c5a3a77397d280720"
+    },
+    "src/test/java/org/jlinalg/cli/MaltExtractReadsCliTest.java": {
+      "bytes": 3439,
+      "sha256": "46e5f8448ff95b45e24d850b3adcfa6efe37294e2afbb07e3f8501ac8b28177f"
+    },
+    "src/test/java/org/jlinalg/cli/MaltExtractWorkflowCliTest.java": {
+      "bytes": 3395,
+      "sha256": "c9774322c91503d43816d1b5483f27fd63877e615f797515dc91be1cef531488"
+    },
+    "src/test/java/org/jlinalg/metagenomics/MaltExtractReadProjectionTest.java": {
+      "bytes": 8412,
+      "sha256": "76af459ffaf17579f0e94345d9004b86da0d614360a428180988cbc66b7ea445"
+    },
+    "src/test/java/org/jlinalg/metagenomics/MaltExtractRmaReaderTest.java": {
+      "bytes": 1219,
+      "sha256": "3e525489adf5b84e3bbb7f6067323bb08fd24ad426883bbdc5d493a892fcd527"
+    },
+    "src/test/java/org/jlinalg/metagenomics/MaltExtractSelectionTest.java": {
+      "bytes": 3057,
+      "sha256": "1b99d3905e65aee735aee8e5715a10cdd6a0870c91e7cee8cfc4d16b45920717"
+    },
+    "src/test/java/org/jlinalg/metagenomics/MaltExtractTaxonomyTest.java": {
+      "bytes": 2144,
+      "sha256": "9b261a6fac863cadb932020d0cbb0878dcca58cc0779bc4f79e63b21cffa02d5"
+    },
+    "src/test/resources/maltextract17-native-controls.zip": {
+      "bytes": 386018,
+      "sha256": "dbf1d785f28479e6b7f92286b2eac16c298d3d8f8564f5038044d49df2ba753b"
+    },
+    "tools/literature/maltextract17_workflow/build.py": {
+      "bytes": 4764,
+      "sha256": "ef080c57d9905f9c353956a07a6e3f8b2c27df603b96562cff9aea790d7176d9"
+    },
+    "tools/literature/maltextract17_workflow/java/MaltExtractNamesNativeProbe.java": {
+      "bytes": 2366,
+      "sha256": "29b4052ebebae0205add63c2521b51f2b17bb24d3a7c2dcb26717f4088c0cdad"
+    },
+    "tools/literature/maltextract17_workflow/java/MaltExtractNamesSourceProbe.java": {
+      "bytes": 2267,
+      "sha256": "ff04c756b56656c74428e62e0f2601cec88407a199ab0aad04c9d24b2af91914"
+    },
+    "tools/literature/maltextract17_workflow/java/MaltExtractSelectionNativeProbe.java": {
+      "bytes": 1828,
+      "sha256": "b9e2afa88f623617fad78035b740557236978db82fc3d0613f580fe4f168c30d"
+    },
+    "tools/literature/maltextract17_workflow/java/MaltExtractSelectionSourceProbe.java": {
+      "bytes": 1814,
+      "sha256": "b257b91100ca45db334259bab8f2fa412bbd7d1edaceeea315d01e692a7937c3"
+    },
+    "tools/literature/maltextract17_workflow/setup.py": {
+      "bytes": 9072,
+      "sha256": "640bbc7831e06929f1ef3a02969378f9133022e0d59487ff090bd4ca12855b1e"
+    },
+    "tools/literature/maltextract17_workflow/verify.py": {
+      "bytes": 10609,
+      "sha256": "a60729e3587d234b1069c58578388000325151632e230733caa66cdacc1f963b"
+    },
+    "tools/literature/maltextract17_catalog/admit.py": {
+      "bytes": 10891,
+      "sha256": "7c3f5c8ea6b17660d1234cf2508747597eed8ecb2c05e92ef7f1be49b697f300"
+    },
+    "tools/literature/maltextract17_catalog/audit.py": {
+      "bytes": 352,
+      "sha256": "f081388915358dc1ed9d70e0c6e59c661e7d58ca5b3c93a712f787e2e1e0ff4f"
+    },
+    "tools/literature/maltextract17_catalog/audit_prepared.py": {
+      "bytes": 4423,
+      "sha256": "75acb522dc7755faacb5f9b9e5d9d62b6922ead2806ffb29a9871a757aa9697c"
+    },
+    "tools/literature/maltextract17_catalog/audit_snapshot.py": {
+      "bytes": 5356,
+      "sha256": "c0ebd3f8524f555ee47346b2c793bd26ba016df279aa4a5dce168956f8057eb9"
+    },
+    "tools/literature/maltextract17_catalog/dispatcher.py": {
+      "bytes": 2691,
+      "sha256": "f238729bd69b95f3b4fb7a912d813f9e446bcfccfd78f38dcf43b39548c87b4c"
+    },
+    "tools/literature/maltextract17_catalog/metadata.py": {
+      "bytes": 6728,
+      "sha256": "962ce6c096c5a82248d3185618104d49d959da395a7b1f4c7bef27a6018a43a2"
+    },
+    "tools/literature/maltextract17_catalog/test_dispatcher.py": {
+      "bytes": 2521,
+      "sha256": "71addec1bd2704f97910dc9f955a4c7f105ecf182b1914804132b1c9a98402f9"
+    },
+    "tools/literature/maltextract17_catalog/verify.py": {
+      "bytes": 5216,
+      "sha256": "a82a5cf540ef1fb5ab6c8ad6034db15ff3297abf2d996e9fd156aa0d69f6cc01"
+    }
+  },
+  "candidate_builds": {
+    "21": {
+      "status": "READY_ORIGINAL_MALTEXTRACT17_WORKFLOW_DEVELOPMENT_ADAPTER",
+      "analysis_qualified": false,
+      "whole_goal_complete": false,
+      "sources": {
+        "src/main/java/org/jlinalg/metagenomics/MaltExtractTaxonomy.java": {
+          "bytes": 7365,
+          "sha256": "3b338fca40f3918c76d99fd3807f19223ec457fa2b4d039ef20b9ee96ec8e923"
+        },
+        "src/main/java/org/jlinalg/metagenomics/MaltExtractRmaReader.java": {
+          "bytes": 13973,
+          "sha256": "01b07457b7c8f606cdd6553e58645f37fb9d6e2932f1d99a66ec527be21a28df"
+        },
+        "src/main/java/org/jlinalg/metagenomics/MaltExtractReadProjection.java": {
+          "bytes": 8160,
+          "sha256": "502cf68c76ba4609765496cc67ec72a1c1c2ff19e08b5dee662902cd08ffdd45"
+        },
+        "src/main/java/org/jlinalg/metagenomics/MaltExtractSelection.java": {
+          "bytes": 9037,
+          "sha256": "fcee7148fb47ba0c5d36cf3715844c2944975be15839777b3ff78bb746cffe74"
+        },
+        "src/main/java/org/jlinalg/metagenomics/MaltExtractOutputAudit.java": {
+          "bytes": 15596,
+          "sha256": "698d5f1125a94c46cc9eec92a8432c7abcb9cf3de2476057d3002223c2026d4a"
+        },
+        "src/main/java/org/jlinalg/cli/MaltExtractWorkflowCli.java": {
+          "bytes": 38020,
+          "sha256": "006c51c65bf386e0be4c4374588c8fde89fb9753aa85a67fbbf7b090dd7ccff5"
+        },
+        "src/main/java/org/jlinalg/cli/NextflowFiles.java": {
+          "bytes": 11223,
+          "sha256": "f92f44f95a5844fc65c8bf949a4180a0d43deb499127f8d0c60e05fc048e7cd7"
+        },
+        "src/main/java/org/jlinalg/cli/NextflowJson.java": {
+          "bytes": 3893,
+          "sha256": "26e6cbb0536c1b8f1eadc9807bd511756a9de0fe25ffac6e954adc47feec88d9"
+        },
+        "src/main/java/org/jlinalg/cli/NextflowParameters.java": {
+          "bytes": 8962,
+          "sha256": "7ca939ae608453f6f1e029aa3405f8386c9b1d7cb3ce42d902c34ef54df5b173"
+        },
+        "src/main/java/org/jlinalg/cli/SimpleJson.java": {
+          "bytes": 6107,
+          "sha256": "8425dc1a2179763af43c86898cf2b21d8c17dc76bdcabe0133d0ddcb6d6add5b"
+        },
+        "src/main/java/org/jlinalg/cli/NextflowProcess.java": {
+          "bytes": 27403,
+          "sha256": "5fc5e6252f9b7076a39139341a7663cec9441717df79dc09bcd162e20b86c040"
+        },
+        "src/main/java/org/jlinalg/cli/NfcoreProcess.java": {
+          "bytes": 30739,
+          "sha256": "9dd9f4961a431cb36223505033ff9503c2be3a3b5008911969451c4224a9c423"
+        },
+        "src/main/java/org/jlinalg/workflow/LinuxProcessSnapshot.java": {
+          "bytes": 12672,
+          "sha256": "ce0bf79679712035225d09de4952aea027afa02cec494e1c5a3a77397d280720"
+        }
+      },
+      "versions": {
+        "java": "openjdk version \"21.0.4\" 2024-07-16 LTS\r\nOpenJDK Runtime Environment Temurin-21.0.4+7 (build 21.0.4+7-LTS)\r\nOpenJDK 64-Bit Server VM Temurin-21.0.4+7 (build 21.0.4+7-LTS, mixed mode, sharing)\r\n",
+        "javac": "javac 21.0.4\r\n",
+        "jar": "jar 21.0.4\r\n"
+      },
+      "artifact": {
+        "bytes": 156899,
+        "sha256": "af9693cebc8706af364b66921aaa903370ddc005bf36a2408bdbb8b1bcfa826f"
+      },
+      "bytecode_target": 17,
+      "upstream_programs_bundled": false
+    },
+    "25": {
+      "status": "READY_ORIGINAL_MALTEXTRACT17_WORKFLOW_DEVELOPMENT_ADAPTER",
+      "analysis_qualified": false,
+      "whole_goal_complete": false,
+      "sources": {
+        "src/main/java/org/jlinalg/metagenomics/MaltExtractTaxonomy.java": {
+          "bytes": 7365,
+          "sha256": "3b338fca40f3918c76d99fd3807f19223ec457fa2b4d039ef20b9ee96ec8e923"
+        },
+        "src/main/java/org/jlinalg/metagenomics/MaltExtractRmaReader.java": {
+          "bytes": 13973,
+          "sha256": "01b07457b7c8f606cdd6553e58645f37fb9d6e2932f1d99a66ec527be21a28df"
+        },
+        "src/main/java/org/jlinalg/metagenomics/MaltExtractReadProjection.java": {
+          "bytes": 8160,
+          "sha256": "502cf68c76ba4609765496cc67ec72a1c1c2ff19e08b5dee662902cd08ffdd45"
+        },
+        "src/main/java/org/jlinalg/metagenomics/MaltExtractSelection.java": {
+          "bytes": 9037,
+          "sha256": "fcee7148fb47ba0c5d36cf3715844c2944975be15839777b3ff78bb746cffe74"
+        },
+        "src/main/java/org/jlinalg/metagenomics/MaltExtractOutputAudit.java": {
+          "bytes": 15596,
+          "sha256": "698d5f1125a94c46cc9eec92a8432c7abcb9cf3de2476057d3002223c2026d4a"
+        },
+        "src/main/java/org/jlinalg/cli/MaltExtractWorkflowCli.java": {
+          "bytes": 38020,
+          "sha256": "006c51c65bf386e0be4c4374588c8fde89fb9753aa85a67fbbf7b090dd7ccff5"
+        },
+        "src/main/java/org/jlinalg/cli/NextflowFiles.java": {
+          "bytes": 11223,
+          "sha256": "f92f44f95a5844fc65c8bf949a4180a0d43deb499127f8d0c60e05fc048e7cd7"
+        },
+        "src/main/java/org/jlinalg/cli/NextflowJson.java": {
+          "bytes": 3893,
+          "sha256": "26e6cbb0536c1b8f1eadc9807bd511756a9de0fe25ffac6e954adc47feec88d9"
+        },
+        "src/main/java/org/jlinalg/cli/NextflowParameters.java": {
+          "bytes": 8962,
+          "sha256": "7ca939ae608453f6f1e029aa3405f8386c9b1d7cb3ce42d902c34ef54df5b173"
+        },
+        "src/main/java/org/jlinalg/cli/SimpleJson.java": {
+          "bytes": 6107,
+          "sha256": "8425dc1a2179763af43c86898cf2b21d8c17dc76bdcabe0133d0ddcb6d6add5b"
+        },
+        "src/main/java/org/jlinalg/cli/NextflowProcess.java": {
+          "bytes": 27403,
+          "sha256": "5fc5e6252f9b7076a39139341a7663cec9441717df79dc09bcd162e20b86c040"
+        },
+        "src/main/java/org/jlinalg/cli/NfcoreProcess.java": {
+          "bytes": 30739,
+          "sha256": "9dd9f4961a431cb36223505033ff9503c2be3a3b5008911969451c4224a9c423"
+        },
+        "src/main/java/org/jlinalg/workflow/LinuxProcessSnapshot.java": {
+          "bytes": 12672,
+          "sha256": "ce0bf79679712035225d09de4952aea027afa02cec494e1c5a3a77397d280720"
+        }
+      },
+      "versions": {
+        "java": "java version \"25\" 2025-09-16 LTS\r\nJava(TM) SE Runtime Environment (build 25+37-LTS-3491)\r\nJava HotSpot(TM) 64-Bit Server VM (build 25+37-LTS-3491, mixed mode, sharing)\r\n",
+        "javac": "javac 25\r\n",
+        "jar": "jar 25\r\n"
+      },
+      "artifact": {
+        "bytes": 156884,
+        "sha256": "595b6e4082dcd33e07c8f462a68196dfea46b933fc2e0094c984209288bd95e9"
+      },
+      "bytecode_target": 17,
+      "upstream_programs_bundled": false
+    }
+  },
+  "candidates": {
+    "21": {
+      "bytes": 156899,
+      "sha256": "af9693cebc8706af364b66921aaa903370ddc005bf36a2408bdbb8b1bcfa826f"
+    },
+    "25": {
+      "bytes": 156884,
+      "sha256": "595b6e4082dcd33e07c8f462a68196dfea46b933fc2e0094c984209288bd95e9"
+    }
+  },
+  "old_counts": {
+    "upstream-adapter-validated": 80,
+    "method-overlap": 47,
+    "excluded-by-user": 1,
+    "native-subset-validated": 19,
+    "existing-adapter": 3,
+    "existing-lookup": 7,
+    "missing": 247,
+    "existing-export": 1
+  },
+  "new_counts": {
+    "upstream-adapter-validated": 81,
+    "method-overlap": 47,
+    "excluded-by-user": 1,
+    "native-subset-validated": 19,
+    "existing-adapter": 3,
+    "existing-lookup": 7,
+    "missing": 246,
+    "existing-export": 1
+  },
+  "changed_tool_ids": [
+    "maltextract"
+  ],
+  "refreshed_existing_scope_notes": [
+    {
+      "paper_id": "P019",
+      "tool_id": "shapeit",
+      "before": "The current source-c34d command covers ordinary diploid-GT common-stage fitting. This paper's reported edition, supplied phase, rare/ligation/posterior, downstream imputation and full pipeline retain their own source-specific requirements; the paper workflow is not marked reproduced. Read SHAPEIT_COMMON_WORKFLOW.md and the retained source-role review. This is a supplied upstream data-processing stage. TOPMed data access, Minimac imputation, ancestry assignment and GReX estimation are separate; do not infer that the study authors reran the MVP core phasing.",
+      "after": "This is a supplied upstream data-processing stage. TOPMed data access, Minimac imputation, ancestry assignment and GReX estimation are separate; do not infer that the study authors reran the MVP core phasing."
+    },
+    {
+      "paper_id": "P041",
+      "tool_id": "shapeit",
+      "before": "The current source-c34d command covers ordinary diploid-GT common-stage fitting. This paper's reported edition, supplied phase, rare/ligation/posterior, downstream imputation and full pipeline retain their own source-specific requirements; the paper workflow is not marked reproduced. Read SHAPEIT_COMMON_WORKFLOW.md and the retained source-role review. Retain the literal reported v2.12: the legacy distribution separately labels r-builds and GLIBC2.12, so this text does not uniquely identify a runtime. Read-aware phasing and reference-panel integration cannot be substituted with ordinary SHAPEIT4/5 cohort phasing. Supplementary Note 2 supplies further strategy details; its full protocol remains to be reviewed. Legacy SHAPEIT2 has separate restricted academic terms.",
+      "after": "Retain the literal reported v2.12: the legacy distribution separately labels r-builds and GLIBC2.12, so this text does not uniquely identify a runtime. Read-aware phasing and reference-panel integration cannot be substituted with ordinary SHAPEIT4/5 cohort phasing. Supplementary Note 2 supplies further strategy details; its full protocol remains to be reviewed. Legacy SHAPEIT2 has separate restricted academic terms."
+    },
+    {
+      "paper_id": "P084",
+      "tool_id": "shapeit",
+      "before": "The current source-c34d command covers ordinary diploid-GT common-stage fitting. This paper's reported edition, supplied phase, rare/ligation/posterior, downstream imputation and full pipeline retain their own source-specific requirements; the paper workflow is not marked reproduced. Read SHAPEIT_COMMON_WORKFLOW.md and the retained source-role review. The SHAPEIT generation and patch are not reported. The paragraph also calls the post-imputation metric Minimac r2 and states a MAC>100 removal; retain these source attributions without inventing a Minimac execution or repairing the inequality. Phasing, untyped-variant imputation and post-imputation QC are separate.",
+      "after": "The SHAPEIT generation and patch are not reported. The paragraph also calls the post-imputation metric Minimac r2 and states a MAC>100 removal; retain these source attributions without inventing a Minimac execution or repairing the inequality. Phasing, untyped-variant imputation and post-imputation QC are separate."
+    },
+    {
+      "paper_id": "P097",
+      "tool_id": "shapeit",
+      "before": "The current source-c34d command covers ordinary diploid-GT common-stage fitting. This paper's reported edition, supplied phase, rare/ligation/posterior, downstream imputation and full pipeline retain their own source-specific requirements; the paper workflow is not marked reproduced. Read SHAPEIT_COMMON_WORKFLOW.md and the retained source-role review. The SHAPEIT generation, patch and exact phasing/imputation commands are not stated. Do not assign the separately described Tarkin Minimac3 or PLINK/bcftools settings to the QMDiab SHAPEIT stage, or invent another QMDiab imputation program.",
+      "after": "The SHAPEIT generation, patch and exact phasing/imputation commands are not stated. Do not assign the separately described Tarkin Minimac3 or PLINK/bcftools settings to the QMDiab SHAPEIT stage, or invent another QMDiab imputation program."
+    },
+    {
+      "paper_id": "P123",
+      "tool_id": "shapeit",
+      "before": "The current source-c34d command covers ordinary diploid-GT common-stage fitting. This paper's reported edition, supplied phase, rare/ligation/posterior, downstream imputation and full pipeline retain their own source-specific requirements; the paper workflow is not marked reproduced. Read SHAPEIT_COMMON_WORKFLOW.md and the retained source-role review. The reference panel is specified for imputation, but the text does not uniquely specify SHAPEIT4 patch or whether that panel was supplied to SHAPEIT4 itself. Do not infer reference-mode command flags or imputation equivalence from the phaser name.",
+      "after": "The reference panel is specified for imputation, but the text does not uniquely specify SHAPEIT4 patch or whether that panel was supplied to SHAPEIT4 itself. Do not infer reference-mode command flags or imputation equivalence from the phaser name."
+    },
+    {
+      "paper_id": "P136",
+      "tool_id": "shapeit",
+      "before": "The current source-c34d command covers ordinary diploid-GT common-stage fitting. This paper's reported edition, supplied phase, rare/ligation/posterior, downstream imputation and full pipeline retain their own source-specific requirements; the paper workflow is not marked reproduced. Read SHAPEIT_COMMON_WORKFLOW.md and the retained source-role review. Preserve both literal version strings and cohort assignments. BBJ second-cohort and NCGG phasing used EAGLE2, not SHAPEIT2; the imputation programs and downstream QC are separate. Legacy exact-build and license eligibility remain necessary for an original SHAPEIT2 execution.",
+      "after": "Preserve both literal version strings and cohort assignments. BBJ second-cohort and NCGG phasing used EAGLE2, not SHAPEIT2; the imputation programs and downstream QC are separate. Legacy exact-build and license eligibility remain necessary for an original SHAPEIT2 execution."
+    },
+    {
+      "paper_id": "P149",
+      "tool_id": "shapeit",
+      "before": "The current source-c34d command covers ordinary diploid-GT common-stage fitting. This paper's reported edition, supplied phase, rare/ligation/posterior, downstream imputation and full pipeline retain their own source-specific requirements; the paper workflow is not marked reproduced. Read SHAPEIT_COMMON_WORKFLOW.md and the retained source-role review. The SHAPEIT4 patch is not stated. WGS calling with Graphtyper, the in-house long-range phasing/reference construction and later imputation are distinct stages; a standard SHAPEIT4 run does not reproduce that complete reference-building pipeline.",
+      "after": "The SHAPEIT4 patch is not stated. WGS calling with Graphtyper, the in-house long-range phasing/reference construction and later imputation are distinct stages; a standard SHAPEIT4 run does not reproduce that complete reference-building pipeline."
+    },
+    {
+      "paper_id": "P180",
+      "tool_id": "shapeit",
+      "before": "The current source-c34d command covers ordinary diploid-GT common-stage fitting. This paper's reported edition, supplied phase, rare/ligation/posterior, downstream imputation and full pipeline retain their own source-specific requirements; the paper workflow is not marked reproduced. Read SHAPEIT_COMMON_WORKFLOW.md and the retained source-role review. The patch and full parameter sets are not reported. The paper writes phasing_common in its imputation section; retain that wording as a source label while distinguishing the actual upstream phase_common program. CHROMOPAINTER, MSMC and IMPUTE5 analyses, masking and reference augmentation remain separate.",
+      "after": "The patch and full parameter sets are not reported. The paper writes phasing_common in its imputation section; retain that wording as a source label while distinguishing the actual upstream phase_common program. CHROMOPAINTER, MSMC and IMPUTE5 analyses, masking and reference augmentation remain separate."
+    },
+    {
+      "paper_id": "P184",
+      "tool_id": "shapeit",
+      "before": "The current source-c34d command covers ordinary diploid-GT common-stage fitting. This paper's reported edition, supplied phase, rare/ligation/posterior, downstream imputation and full pipeline retain their own source-specific requirements; the paper workflow is not marked reproduced. Read SHAPEIT_COMMON_WORKFLOW.md and the retained source-role review. This is missing-call imputation within the retained SNP set, not evidence of reference-panel imputation of additional untyped variants. PLINK SNP intersection, MAF/missingness filters, LD pruning, HLA exclusion and neural-network ancestry prediction are separate.",
+      "after": "This is missing-call imputation within the retained SNP set, not evidence of reference-panel imputation of additional untyped variants. PLINK SNP intersection, MAF/missingness filters, LD pruning, HLA exclusion and neural-network ancestry prediction are separate."
+    },
+    {
+      "paper_id": "P210",
+      "tool_id": "shapeit",
+      "before": "The current source-c34d command covers ordinary diploid-GT common-stage fitting. This paper's reported edition, supplied phase, rare/ligation/posterior, downstream imputation and full pipeline retain their own source-specific requirements; the paper workflow is not marked reproduced. Read SHAPEIT_COMMON_WORKFLOW.md and the retained source-role review. The patch, chunk/ligation details and exact parameter files are not given in these paragraphs. Preserve the paper's strict MAF wording without assuming that a current --filter-maf 0.001 implementation has the same equality boundary. 100kGP reused external phased data; AOU was not phased and used homozygous burdens only. Posterior filtering, recessive burden construction and association analysis are separate.",
+      "after": "The patch, chunk/ligation details and exact parameter files are not given in these paragraphs. Preserve the paper's strict MAF wording without assuming that a current --filter-maf 0.001 implementation has the same equality boundary. 100kGP reused external phased data; AOU was not phased and used homozygous burdens only. Posterior filtering, recessive burden construction and association analysis are separate."
+    }
+  ],
+  "unchanged_observations": 2479,
+  "unchanged_reviews": 1052,
+  "unchanged_named_tools": 405,
+  "new_scoped_integration_credit": 1,
+  "whole_tool_credit": 0,
+  "whole_goal_complete": false
+}

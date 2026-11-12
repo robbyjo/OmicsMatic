@@ -7943,15 +7943,36 @@
     "role": "Target-species RMA extraction and alignment/damage-related summaries",
     "current_coverage": "missing",
     "existing_source": null,
-    "coverage_note": "P002 supplement section 3.3 names MaltExtract but does not state its version/settings. Qualify a permitted original provider, reference taxonomy/resources and the declared extraction/filter choices. Manual candidate assessment and the separate 7508-genome bacterial rescreen remain distinct. The old standalone repository README explicitly refers users to HOPS for current instructions. Read MALT_HOPS_PAPER_ROLES.md; no extraction or biological result is admitted.",
+    "coverage_note": "The P002 supplementary DOCX names MaltExtract for target candidate extraction followed by manual summary/damage assessment. A declared1.7 software profile is now qualified for those output-producing operations; unreported author choices are not inferred.",
     "paper_count": 1,
     "papers": [
       "P002"
     ],
-    "implementation_status": "missing",
-    "implementation_source": null,
-    "implementation_scope": "P002 supplement section 3.3 names MaltExtract but does not state its version/settings. Qualify a permitted original provider, reference taxonomy/resources and the declared extraction/filter choices. Manual candidate assessment and the separate 7508-genome bacterial rescreen remain distinct. The old standalone repository README explicitly refers users to HOPS for current instructions. Read MALT_HOPS_PAPER_ROLES.md; no extraction or biological result is admitted.",
-    "validation_note": "Existing overlap/adapters require paper-specific option checks; missing integrations remain pending."
+    "implementation_status": "upstream-adapter-validated",
+    "implementation_source": "src/main/java/org/jlinalg/cli/MaltExtractWorkflowCli.java",
+    "implementation_scope": "Supervised unchanged original MaltExtract1.7 from the GPL HOPS0.35 distribution, with exact Linux OpenJDK8.0.144 runtime, literal target-name lookup, source-specific descendant selection, complete RMA6 snapshots, original target FASTA/BLAST extraction and all original summary/damage/coverage/distribution tables. Explicit source-default, complete-default and complete-def-anc profiles; complete profiles deliberately disable destacking, duplicate removal and downsampling. Native Java audits complete stored classes/counts and complete-profile read multisets. Manual candidate assessment remains a human task. Author version/settings/resources are unreported; the historical91-spirochete and7508-genome screening analyses and whole MALT/HOPS remain separate. Read MALTEXTRACT_INTEGRATION.md.",
+    "validation_note": "Seven complete original productions,516 byte-identical scientific-file comparisons with independent originals,76027 original descendant cases and16 complete-map name cases. All21 focused tests passed without skips/failures. Complete saved replay passed on Windows JDK21/25 and Linux JDK21, including8 rehashed contradiction refusals per platform. Five failed attempts are retained, including original SEVERE output errors with exit0. A complete10001-read RMA showed stock processing stopping at10000 with downSampling? Off; the complete default profile retained10001. Saved verification does not independently recalculate arbitrary damage/coverage cells, repeat original fitting, authenticate a producer or establish biological accuracy.",
+    "project_adapter_available": true,
+    "canonical_adapter_available": false,
+    "root_dispatch_available": false,
+    "development_adapter_cli": "java -jar maltextract17-workflow-jdk21.jar",
+    "development_candidate": "docs/literature/maltextract17-integration/maltextract17-workflow-jdk21.jar",
+    "development_candidate_sha256": "af9693cebc8706af364b66921aaa903370ddc005bf36a2408bdbb8b1bcfa826f",
+    "development_build": "tools/literature/maltextract17_workflow/build.py",
+    "source_roles_reviewed": 1,
+    "source_role_coverage": "maltextract17-adapter-role-coverage.json",
+    "workflow_validation": "../maltextract17-workflow-development/VALIDATION.json",
+    "runtime_profiles": [
+      "source-default",
+      "complete-default",
+      "complete-def-anc"
+    ],
+    "external_analysis_runtime_required": true,
+    "whole_paper_reproduced": false,
+    "biological_accuracy_certified": false,
+    "producer_authenticated": false,
+    "paper_exact_unknown_settings_available": false,
+    "whole_tool_qualified": false
   },
   {
     "id": "nfcore-eager",
@@ -8526,7 +8547,7 @@
   {
     "id": "ls-gkm",
     "name": "LS-GKM",
-    "pattern": "(?<![A-Za-z0-9_])(?:LS[-– ]GKM)(?![A-Za-z0-9_])",
+    "pattern": "(?<![A-Za-z0-9_])(?:LS[-\u2013 ]GKM)(?![A-Za-z0-9_])",
     "role": "Gapped-kmer SVM training and sequence prediction",
     "current_coverage": "missing",
     "existing_source": null,
