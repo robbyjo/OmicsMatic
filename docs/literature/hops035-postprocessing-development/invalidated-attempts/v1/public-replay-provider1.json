@@ -1,0 +1,298 @@
+{
+  "status": "PASS_COMPLETE_HOPS035_POSTPROCESSING_SAVED_REPLAY_WITH_FRESH_RDATA_DECODING",
+  "original_fitting_repeated": false,
+  "original_plotting_repeated": false,
+  "new_tool_credit": 0,
+  "whole_hops_qualified": false,
+  "whole_goal_complete": false,
+  "restored_members": 3031,
+  "restored_bytes": 1962730791,
+  "unique_objects": 472,
+  "complete_workflow_bundles": 3,
+  "sample_taxon_pairs": 22,
+  "source_statistic_cells": 308,
+  "metadata_refusals": 9,
+  "native_source_pairs": 2901,
+  "native_classification_boundaries": 420,
+  "native_refusals": 7,
+  "original_failed_attempts_retained": 3,
+  "independent_original_RData_comparisons": 3,
+  "commands": [
+    {
+      "label": "build",
+      "command": [
+        "/usr/bin/python3",
+        "/mnt/d/projects/JLinAlg/tools/literature/hops035_workflow/build.py",
+        "--java-bin",
+        "/usr/bin",
+        "--out",
+        "/var/tmp/omicsmatic-hops035-public-replay-r1-1/build"
+      ],
+      "exit_code": 0,
+      "expected_exit": 0
+    },
+    {
+      "label": "native-javac",
+      "command": [
+        "/usr/bin/javac",
+        "--release",
+        "17",
+        "-Xlint:all",
+        "-Werror",
+        "-encoding",
+        "UTF-8",
+        "-sourcepath",
+        "",
+        "-cp",
+        "/var/tmp/omicsmatic-hops035-public-replay-r1-1/build/classes",
+        "-d",
+        "/var/tmp/omicsmatic-hops035-public-replay-r1-1/native-helper",
+        "/mnt/d/projects/JLinAlg/tools/literature/java/HopsEvidenceControl.java"
+      ],
+      "exit_code": 0,
+      "expected_exit": 0
+    },
+    {
+      "label": "native-original-controls",
+      "command": [
+        "/usr/bin/java",
+        "-Xmx1g",
+        "-cp",
+        "/var/tmp/omicsmatic-hops035-public-replay-r1-1/build/classes:/var/tmp/omicsmatic-hops035-public-replay-r1-1/native-helper",
+        "org.jlinalg.cli.HopsEvidenceControl",
+        "/var/tmp/omicsmatic-hops035-public-replay-r1-1/native-controls.json",
+        "/var/tmp/omicsmatic-hops035-public-replay-r1-1/native-result"
+      ],
+      "exit_code": 0,
+      "expected_exit": 0
+    },
+    {
+      "label": "verify-complete10001-2",
+      "command": [
+        "/usr/bin/java",
+        "-Xmx3g",
+        "-jar",
+        "/var/tmp/omicsmatic-hops035-public-replay-r1-1/build/hops035-postprocessing-development.jar",
+        "--verify",
+        "/var/tmp/omicsmatic-hops035-public-replay-r1-1/evidence/controls/complete10001-2/bundle",
+        "--reader-runtime",
+        "/mnt/d/projects/JLinAlg/build/literature-review/nfcore-runtime/maltextract17-public-reader-setup-1",
+        "--post-runtime",
+        "/var/tmp/omicsmatic-hops035-public-runtime-1",
+        "--out",
+        "/var/tmp/omicsmatic-hops035-public-replay-r1-1/calls/complete10001-2"
+      ],
+      "exit_code": 0,
+      "expected_exit": 0
+    },
+    {
+      "label": "verify-multi-sample-1",
+      "command": [
+        "/usr/bin/java",
+        "-Xmx3g",
+        "-jar",
+        "/var/tmp/omicsmatic-hops035-public-replay-r1-1/build/hops035-postprocessing-development.jar",
+        "--verify",
+        "/var/tmp/omicsmatic-hops035-public-replay-r1-1/evidence/controls/multi-sample-1/bundle",
+        "--reader-runtime",
+        "/mnt/d/projects/JLinAlg/build/literature-review/nfcore-runtime/maltextract17-public-reader-setup-1",
+        "--post-runtime",
+        "/var/tmp/omicsmatic-hops035-public-runtime-1",
+        "--out",
+        "/var/tmp/omicsmatic-hops035-public-replay-r1-1/calls/multi-sample-1"
+      ],
+      "exit_code": 0,
+      "expected_exit": 0
+    },
+    {
+      "label": "verify-hyphen-jdk25-1",
+      "command": [
+        "/usr/bin/java",
+        "-Xmx3g",
+        "-jar",
+        "/var/tmp/omicsmatic-hops035-public-replay-r1-1/build/hops035-postprocessing-development.jar",
+        "--verify",
+        "/var/tmp/omicsmatic-hops035-public-replay-r1-1/evidence/controls/hyphen-jdk25-1/bundle",
+        "--reader-runtime",
+        "/mnt/d/projects/JLinAlg/build/literature-review/nfcore-runtime/maltextract17-public-reader-setup-1",
+        "--post-runtime",
+        "/var/tmp/omicsmatic-hops035-public-runtime-1",
+        "--out",
+        "/var/tmp/omicsmatic-hops035-public-replay-r1-1/calls/hyphen-jdk25-1"
+      ],
+      "exit_code": 0,
+      "expected_exit": 0
+    },
+    {
+      "label": "refuse-false-tool-credit",
+      "command": [
+        "/usr/bin/java",
+        "-Xmx3g",
+        "-jar",
+        "/var/tmp/omicsmatic-hops035-public-replay-r1-1/build/hops035-postprocessing-development.jar",
+        "--verify",
+        "/var/tmp/omicsmatic-hops035-public-replay-r1-1/evidence/refusals/false-tool-credit/bundle",
+        "--reader-runtime",
+        "/mnt/d/projects/JLinAlg/build/literature-review/nfcore-runtime/maltextract17-public-reader-setup-1",
+        "--post-runtime",
+        "/var/tmp/omicsmatic-hops035-public-runtime-1",
+        "--out",
+        "/var/tmp/omicsmatic-hops035-public-replay-r1-1/calls/refuse-false-tool-credit"
+      ],
+      "exit_code": 2,
+      "expected_exit": 2
+    },
+    {
+      "label": "refuse-false-native-class",
+      "command": [
+        "/usr/bin/java",
+        "-Xmx3g",
+        "-jar",
+        "/var/tmp/omicsmatic-hops035-public-replay-r1-1/build/hops035-postprocessing-development.jar",
+        "--verify",
+        "/var/tmp/omicsmatic-hops035-public-replay-r1-1/evidence/refusals/false-native-class/bundle",
+        "--reader-runtime",
+        "/mnt/d/projects/JLinAlg/build/literature-review/nfcore-runtime/maltextract17-public-reader-setup-1",
+        "--post-runtime",
+        "/var/tmp/omicsmatic-hops035-public-runtime-1",
+        "--out",
+        "/var/tmp/omicsmatic-hops035-public-replay-r1-1/calls/refuse-false-native-class"
+      ],
+      "exit_code": 2,
+      "expected_exit": 2
+    },
+    {
+      "label": "refuse-changed-scientific-double",
+      "command": [
+        "/usr/bin/java",
+        "-Xmx3g",
+        "-jar",
+        "/var/tmp/omicsmatic-hops035-public-replay-r1-1/build/hops035-postprocessing-development.jar",
+        "--verify",
+        "/var/tmp/omicsmatic-hops035-public-replay-r1-1/evidence/refusals/changed-scientific-double/bundle",
+        "--reader-runtime",
+        "/mnt/d/projects/JLinAlg/build/literature-review/nfcore-runtime/maltextract17-public-reader-setup-1",
+        "--post-runtime",
+        "/var/tmp/omicsmatic-hops035-public-runtime-1",
+        "--out",
+        "/var/tmp/omicsmatic-hops035-public-replay-r1-1/calls/refuse-changed-scientific-double"
+      ],
+      "exit_code": 2,
+      "expected_exit": 2
+    },
+    {
+      "label": "refuse-NA-relabeled-NaN",
+      "command": [
+        "/usr/bin/java",
+        "-Xmx3g",
+        "-jar",
+        "/var/tmp/omicsmatic-hops035-public-replay-r1-1/build/hops035-postprocessing-development.jar",
+        "--verify",
+        "/var/tmp/omicsmatic-hops035-public-replay-r1-1/evidence/refusals/NA-relabeled-NaN/bundle",
+        "--reader-runtime",
+        "/mnt/d/projects/JLinAlg/build/literature-review/nfcore-runtime/maltextract17-public-reader-setup-1",
+        "--post-runtime",
+        "/var/tmp/omicsmatic-hops035-public-runtime-1",
+        "--out",
+        "/var/tmp/omicsmatic-hops035-public-replay-r1-1/calls/refuse-NA-relabeled-NaN"
+      ],
+      "exit_code": 2,
+      "expected_exit": 2
+    },
+    {
+      "label": "refuse-corrupted-rdata",
+      "command": [
+        "/usr/bin/java",
+        "-Xmx3g",
+        "-jar",
+        "/var/tmp/omicsmatic-hops035-public-replay-r1-1/build/hops035-postprocessing-development.jar",
+        "--verify",
+        "/var/tmp/omicsmatic-hops035-public-replay-r1-1/evidence/refusals/corrupted-rdata/bundle",
+        "--reader-runtime",
+        "/mnt/d/projects/JLinAlg/build/literature-review/nfcore-runtime/maltextract17-public-reader-setup-1",
+        "--post-runtime",
+        "/var/tmp/omicsmatic-hops035-public-runtime-1",
+        "--out",
+        "/var/tmp/omicsmatic-hops035-public-replay-r1-1/calls/refuse-corrupted-rdata"
+      ],
+      "exit_code": 2,
+      "expected_exit": 2
+    },
+    {
+      "label": "refuse-missing-profile-pdf",
+      "command": [
+        "/usr/bin/java",
+        "-Xmx3g",
+        "-jar",
+        "/var/tmp/omicsmatic-hops035-public-replay-r1-1/build/hops035-postprocessing-development.jar",
+        "--verify",
+        "/var/tmp/omicsmatic-hops035-public-replay-r1-1/evidence/refusals/missing-profile-pdf/bundle",
+        "--reader-runtime",
+        "/mnt/d/projects/JLinAlg/build/literature-review/nfcore-runtime/maltextract17-public-reader-setup-1",
+        "--post-runtime",
+        "/var/tmp/omicsmatic-hops035-public-runtime-1",
+        "--out",
+        "/var/tmp/omicsmatic-hops035-public-replay-r1-1/calls/refuse-missing-profile-pdf"
+      ],
+      "exit_code": 2,
+      "expected_exit": 2
+    },
+    {
+      "label": "refuse-changed-tsv-cell",
+      "command": [
+        "/usr/bin/java",
+        "-Xmx3g",
+        "-jar",
+        "/var/tmp/omicsmatic-hops035-public-replay-r1-1/build/hops035-postprocessing-development.jar",
+        "--verify",
+        "/var/tmp/omicsmatic-hops035-public-replay-r1-1/evidence/refusals/changed-tsv-cell/bundle",
+        "--reader-runtime",
+        "/mnt/d/projects/JLinAlg/build/literature-review/nfcore-runtime/maltextract17-public-reader-setup-1",
+        "--post-runtime",
+        "/var/tmp/omicsmatic-hops035-public-runtime-1",
+        "--out",
+        "/var/tmp/omicsmatic-hops035-public-replay-r1-1/calls/refuse-changed-tsv-cell"
+      ],
+      "exit_code": 2,
+      "expected_exit": 2
+    },
+    {
+      "label": "refuse-changed-original-command",
+      "command": [
+        "/usr/bin/java",
+        "-Xmx3g",
+        "-jar",
+        "/var/tmp/omicsmatic-hops035-public-replay-r1-1/build/hops035-postprocessing-development.jar",
+        "--verify",
+        "/var/tmp/omicsmatic-hops035-public-replay-r1-1/evidence/refusals/changed-original-command/bundle",
+        "--reader-runtime",
+        "/mnt/d/projects/JLinAlg/build/literature-review/nfcore-runtime/maltextract17-public-reader-setup-1",
+        "--post-runtime",
+        "/var/tmp/omicsmatic-hops035-public-runtime-1",
+        "--out",
+        "/var/tmp/omicsmatic-hops035-public-replay-r1-1/calls/refuse-changed-original-command"
+      ],
+      "exit_code": 2,
+      "expected_exit": 2
+    },
+    {
+      "label": "refuse-contradictory-launch",
+      "command": [
+        "/usr/bin/java",
+        "-Xmx3g",
+        "-jar",
+        "/var/tmp/omicsmatic-hops035-public-replay-r1-1/build/hops035-postprocessing-development.jar",
+        "--verify",
+        "/var/tmp/omicsmatic-hops035-public-replay-r1-1/evidence/refusals/contradictory-launch/bundle",
+        "--reader-runtime",
+        "/mnt/d/projects/JLinAlg/build/literature-review/nfcore-runtime/maltextract17-public-reader-setup-1",
+        "--post-runtime",
+        "/var/tmp/omicsmatic-hops035-public-runtime-1",
+        "--out",
+        "/var/tmp/omicsmatic-hops035-public-replay-r1-1/calls/refuse-contradictory-launch"
+      ],
+      "exit_code": 2,
+      "expected_exit": 2
+    }
+  ]
+}
