@@ -1,0 +1,59 @@
+{
+  "status": "PASS_NATIVE_INDEX_MISSING_JDK_SKIP3_AND_EXISTING_OUTPUT_PRESERVATION",
+  "receipt": {
+    "status": "PASS_NATIVE_INDEX_MISSING_JDK_SKIP3_AND_EXISTING_OUTPUT_PRESERVATION",
+    "whole_goal_complete": false,
+    "missing_jdk_skip3": true,
+    "explicit_user_recovery": true,
+    "existing_output_untouched": true,
+    "no_dependent_analysis_executed": true
+  },
+  "source_harness": {
+    "bytes": 2056,
+    "sha256": "344ee8c4cddf60434fe1ba65248f4c4f1d2ac3371e40622687e0ec709ea19eee"
+  },
+  "source_text": "from pathlib import Path\nimport hashlib,json,subprocess,sys,traceback\nR=Path(__file__).resolve().parents[3];B=R/'build/literature-review/nfcore-runtime';O=B/'malt-index-native-prerequisites-1';assert not O.exists();O.mkdir();state=dict(status='FAIL2_NATIVE_INDEX_PREREQUISITES',whole_goal_complete=False)\ndef save(p,v):p.write_text(json.dumps(v,indent=2)+'\\n')\ntry:\n command=[sys.executable,str(R/'tools/literature/build_malt_index_taxonomy.py'),'--java-bin',str(O/'no-installed-jdk'),'--out',str(O/'missing-jdk')];r=subprocess.run(command,stdin=subprocess.DEVNULL,capture_output=True,timeout=30);(O/'missing-jdk.stdout').write_bytes(r.stdout);(O/'missing-jdk.stderr').write_bytes(r.stderr);save(O/'missing-jdk.process.json',dict(command=command,exit_code=r.returncode));assert r.returncode==3 and b'SKIP3' in r.stdout and b'Required action:' in r.stdout and b'skip this dependent' in r.stdout\n failure=json.loads((O/'missing-jdk/FAILURE.json').read_bytes());assert failure['dependent_analysis_skipped'] and (O/'missing-jdk/WARNINGS_FAILURE.md').is_file() and not list((O/'missing-jdk').glob('*.jar'))\n existing=O/'existing';existing.mkdir();keep=existing/'retained.txt';keep.write_bytes(b'original result\\n');command[-1]=str(existing);r=subprocess.run(command,stdin=subprocess.DEVNULL,capture_output=True,timeout=30);(O/'existing.stdout').write_bytes(r.stdout);(O/'existing.stderr').write_bytes(r.stderr);save(O/'existing.process.json',dict(command=command,exit_code=r.returncode));assert r.returncode==3 and keep.read_bytes()==b'original result\\n' and [p.name for p in existing.iterdir()]==['retained.txt']\n state.update(status='PASS_NATIVE_INDEX_MISSING_JDK_SKIP3_AND_EXISTING_OUTPUT_PRESERVATION',missing_jdk_skip3=True,explicit_user_recovery=True,existing_output_untouched=True,no_dependent_analysis_executed=True)\nexcept Exception as e:state.update(cause=repr(e),traceback=traceback.format_exc())\nsave(O/'COMPLETED.json',state);print(state['status'],state.get('cause',''),flush=True);raise SystemExit(0 if state['status'].startswith('PASS_') else 2)\n",
+  "cases": [
+    {
+      "label": "missing-jdk",
+      "process": {
+        "command": [
+          "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+          "D:\\projects\\JLinAlg\\tools\\literature\\build_malt_index_taxonomy.py",
+          "--java-bin",
+          "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\malt-index-native-prerequisites-1\\no-installed-jdk",
+          "--out",
+          "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\malt-index-native-prerequisites-1\\missing-jdk"
+        ],
+        "exit_code": 3
+      },
+      "stdout": "SKIP3_BUILD_PREREQUISITE_UNAVAILABLE FileNotFoundError('Missing required JDK tool: D:\\\\projects\\\\JLinAlg\\\\build\\\\literature-review\\\\nfcore-runtime\\\\malt-index-native-prerequisites-1\\\\no-installed-jdk\\\\java.exe') \nRequired action: supply a permitted complete JDK21 or JDK25 via --java-bin and choose a NEW --out directory. If Java installation/compiler access is unavailable or forbidden, skip this dependent build/analysis. Retain failed directories and diagnostics. This builds a native alternative index-mapping stage; upstream MALT alignment remains separately required and qualified.\n",
+      "stderr": ""
+    },
+    {
+      "label": "existing",
+      "process": {
+        "command": [
+          "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+          "D:\\projects\\JLinAlg\\tools\\literature\\build_malt_index_taxonomy.py",
+          "--java-bin",
+          "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\malt-index-native-prerequisites-1\\no-installed-jdk",
+          "--out",
+          "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\malt-index-native-prerequisites-1\\existing"
+        ],
+        "exit_code": 3
+      },
+      "stdout": "SKIP3_BUILD_PREREQUISITE_UNAVAILABLE FileExistsError(17, 'Cannot create a file when that file already exists') \nRequired action: supply a permitted complete JDK21 or JDK25 via --java-bin and choose a NEW --out directory. If Java installation/compiler access is unavailable or forbidden, skip this dependent build/analysis. Retain failed directories and diagnostics. This builds a native alternative index-mapping stage; upstream MALT alignment remains separately required and qualified.\n",
+      "stderr": ""
+    }
+  ],
+  "owned_failure": {
+    "status": "SKIP3_BUILD_PREREQUISITE_UNAVAILABLE",
+    "whole_goal_complete": false,
+    "cause": "FileNotFoundError('Missing required JDK tool: D:\\\\projects\\\\JLinAlg\\\\build\\\\literature-review\\\\nfcore-runtime\\\\malt-index-native-prerequisites-1\\\\no-installed-jdk\\\\java.exe')",
+    "traceback": "Traceback (most recent call last):\n  File \"D:\\projects\\JLinAlg\\tools\\literature\\build_malt_index_taxonomy.py\", line 21, in main\n    if not binary.is_file():raise FileNotFoundError('Missing required JDK tool: '+str(binary))\n                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nFileNotFoundError: Missing required JDK tool: D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\malt-index-native-prerequisites-1\\no-installed-jdk\\java.exe\n",
+    "dependent_analysis_skipped": true,
+    "required_action": "Required action: supply a permitted complete JDK21 or JDK25 via --java-bin and choose a NEW --out directory. If Java installation/compiler access is unavailable or forbidden, skip this dependent build/analysis. Retain failed directories and diagnostics. This builds a native alternative index-mapping stage; upstream MALT alignment remains separately required and qualified."
+  },
+  "owned_warning": "# SKIP3_BUILD_PREREQUISITE_UNAVAILABLE\n\nMissing required JDK tool: D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\malt-index-native-prerequisites-1\\no-installed-jdk\\java.exe\n\nRequired action: supply a permitted complete JDK21 or JDK25 via --java-bin and choose a NEW --out directory. If Java installation/compiler access is unavailable or forbidden, skip this dependent build/analysis. Retain failed directories and diagnostics. This builds a native alternative index-mapping stage; upstream MALT alignment remains separately required and qualified.\n"
+}
