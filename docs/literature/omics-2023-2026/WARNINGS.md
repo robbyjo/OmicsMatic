@@ -889,3 +889,34 @@ authenticates no producer and establishes no biological accuracy. MALT
 index/alignment, dated reference databases, manual authentication and whole
 HOPS/MALT/paper reproduction remain separate. Earlier source-only qualification
 notices below are historical and do not negate this scoped operation badge.
+
+
+## MALT: complete DNA index-to-alignment workflow and required actions
+
+**Complete original MALT0.5.2 seed building and BlastN screening are available
+through a scoped standalone workflow.** Read
+[MALT052_INTEGRATION.md](../MALT052_INTEGRATION.md). The canonical/released
+executable and root dispatcher are unchanged. Select CUSTOM052 or STANDALONE
+explicitly. The supplement reports0.5.2 for the custom screen; the main pipeline
+version remains unreported.
+
+**Select native-accession-alternative mapping explicitly.** Original0.5.2's
+accession-map path remains unqualified. Preserve its unclassified native/index
+and the separate mapped derived/index. The adapter checks complete reference,
+mapping, query and original output populations plus the exact full index
+handoff; declared capacities refuse rather than substitute a prefix.
+
+**Missing/forbidden runtime, installation or execution: SKIP3 dependent analysis.**
+Supply only permitted exact prerequisites and retry a NEW directory, or leave
+the dependent analysis skipped. **FAIL2 admits no result:** retain FAILURE.json,
+WARNINGS_FAILURE.md and both original stderr logs. Correct the named input,
+resource, process or scientific/integrity issue before a NEW run. A completed
+index can remain independently usable after later alignment fails.
+
+The historical2017/2021/91-genome databases and complete study queries are not
+reconstructed. The130GiB/16-worker request is representable but not claimed
+executed. Current controls use three complete mitochondrial references and
+cannot replace the paper's database. Empty/insufficient alignments never prove
+absence. Saved verification repeats no original fitting and authenticates no
+producer. Whole MALT/HOPS/nf-core/paper and biological reproduction remain open.
+Older source-component notices are retained as historical qualification scope.
