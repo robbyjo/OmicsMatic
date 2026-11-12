@@ -1,0 +1,1242 @@
+{
+  "status": "PASS_THREE_COMPLETE_ORIGINAL_WORKFLOW_REPLAYS_WINDOWS21_WINDOWS25_LINUX21",
+  "replays": [
+    {
+      "platform": "windows-jdk21",
+      "process": {
+        "command": [
+          "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+          "D:\\projects\\JLinAlg\\tools\\literature\\maltextract17_workflow\\verify.py",
+          "--java-bin",
+          "C:/Program Files/Eclipse Adoptium/jdk-21.0.4.7-hotspot/bin",
+          "--runtime",
+          "D:/projects/JLinAlg/build/literature-review/nfcore-runtime/maltextract17-public-reader-setup-1",
+          "--out",
+          "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-workflow-replay-win21-1\\replay"
+        ],
+        "exit_code": 0,
+        "elapsed_seconds": 144.29053044319153
+      },
+      "replay": {
+        "status": "PASS_COMPLETE_ORIGINAL_MALTEXTRACT17_WORKFLOW_SAVED_REPLAY",
+        "original_fitting_repeated": false,
+        "arbitrary_original_statistics_recomputed": false,
+        "whole_goal_complete": false,
+        "restored_members": 3358,
+        "restored_bytes": 2178993703,
+        "unique_objects": 627,
+        "original_name_cases": 16,
+        "original_descendant_cases": 76027,
+        "complete_workflow_bundles": 7,
+        "metadata_refusals": 8,
+        "original_scientific_comparisons": [
+          {
+            "case": "source-default-1",
+            "complete_original_scientific_files": 86
+          },
+          {
+            "case": "complete-default-1",
+            "complete_original_scientific_files": 86
+          },
+          {
+            "case": "complete-defanc-2",
+            "complete_original_scientific_files": 172
+          },
+          {
+            "case": "complete-defanc-3",
+            "complete_original_scientific_files": 172
+          }
+        ],
+        "commands": [
+          {
+            "label": "build",
+            "command": [
+              "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+              "D:\\projects\\JLinAlg\\tools\\literature\\maltextract17_workflow\\build.py",
+              "--java-bin",
+              "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin",
+              "--out",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-workflow-replay-win21-1\\replay\\build"
+            ],
+            "exit_code": 0,
+            "expected_exit": 0
+          },
+          {
+            "label": "probe-javac",
+            "command": [
+              "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin\\javac.exe",
+              "--release",
+              "17",
+              "-Xlint:all",
+              "-Werror",
+              "-encoding",
+              "UTF-8",
+              "-cp",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-workflow-replay-win21-1\\replay\\build\\classes",
+              "-d",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-workflow-replay-win21-1\\replay\\probes",
+              "D:\\projects\\JLinAlg\\tools\\literature\\maltextract17_workflow\\java\\MaltExtractNamesNativeProbe.java",
+              "D:\\projects\\JLinAlg\\tools\\literature\\maltextract17_workflow\\java\\MaltExtractSelectionNativeProbe.java"
+            ],
+            "exit_code": 0,
+            "expected_exit": 0
+          },
+          {
+            "label": "names",
+            "command": [
+              "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin\\java.exe",
+              "-Xmx3g",
+              "-cp",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-workflow-replay-win21-1\\replay\\build\\classes;D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-workflow-replay-win21-1\\replay\\probes",
+              "MaltExtractNamesNativeProbe",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-workflow-replay-win21-1\\replay\\evidence\\oracles\\names\\fixture\\cases.tsv",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-workflow-replay-win21-1\\replay\\names.tsv"
+            ],
+            "exit_code": 0,
+            "expected_exit": 0
+          },
+          {
+            "label": "selection",
+            "command": [
+              "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin\\java.exe",
+              "-Xmx3g",
+              "-cp",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-workflow-replay-win21-1\\replay\\build\\classes;D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-workflow-replay-win21-1\\replay\\probes",
+              "MaltExtractSelectionNativeProbe",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-workflow-replay-win21-1\\replay\\evidence\\oracles\\selection\\fixture\\cases.tsv",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-workflow-replay-win21-1\\replay\\selection.tsv"
+            ],
+            "exit_code": 0,
+            "expected_exit": 0
+          },
+          {
+            "label": "verify-source-default-1",
+            "command": [
+              "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin\\java.exe",
+              "-Xmx3g",
+              "-jar",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-workflow-replay-win21-1\\replay\\build\\maltextract17-workflow-development.jar",
+              "--verify",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-workflow-replay-win21-1\\replay\\evidence\\controls\\source-default-1\\bundle",
+              "--runtime",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-public-reader-setup-1"
+            ],
+            "exit_code": 0,
+            "expected_exit": 0
+          },
+          {
+            "label": "verify-complete-default-1",
+            "command": [
+              "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin\\java.exe",
+              "-Xmx3g",
+              "-jar",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-workflow-replay-win21-1\\replay\\build\\maltextract17-workflow-development.jar",
+              "--verify",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-workflow-replay-win21-1\\replay\\evidence\\controls\\complete-default-1\\bundle",
+              "--runtime",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-public-reader-setup-1"
+            ],
+            "exit_code": 0,
+            "expected_exit": 0
+          },
+          {
+            "label": "verify-complete-defanc-2",
+            "command": [
+              "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin\\java.exe",
+              "-Xmx3g",
+              "-jar",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-workflow-replay-win21-1\\replay\\build\\maltextract17-workflow-development.jar",
+              "--verify",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-workflow-replay-win21-1\\replay\\evidence\\controls\\complete-defanc-2\\bundle",
+              "--runtime",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-public-reader-setup-1"
+            ],
+            "exit_code": 0,
+            "expected_exit": 0
+          },
+          {
+            "label": "verify-complete-defanc-3",
+            "command": [
+              "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin\\java.exe",
+              "-Xmx3g",
+              "-jar",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-workflow-replay-win21-1\\replay\\build\\maltextract17-workflow-development.jar",
+              "--verify",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-workflow-replay-win21-1\\replay\\evidence\\controls\\complete-defanc-3\\bundle",
+              "--runtime",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-public-reader-setup-1"
+            ],
+            "exit_code": 0,
+            "expected_exit": 0
+          },
+          {
+            "label": "verify-special-names-1",
+            "command": [
+              "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin\\java.exe",
+              "-Xmx3g",
+              "-jar",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-workflow-replay-win21-1\\replay\\build\\maltextract17-workflow-development.jar",
+              "--verify",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-workflow-replay-win21-1\\replay\\evidence\\controls\\special-names-1\\bundle",
+              "--runtime",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-public-reader-setup-1"
+            ],
+            "exit_code": 0,
+            "expected_exit": 0
+          },
+          {
+            "label": "verify-sampling-stock-1",
+            "command": [
+              "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin\\java.exe",
+              "-Xmx3g",
+              "-jar",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-workflow-replay-win21-1\\replay\\build\\maltextract17-workflow-development.jar",
+              "--verify",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-workflow-replay-win21-1\\replay\\evidence\\controls\\sampling-stock-1\\bundle",
+              "--runtime",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-public-reader-setup-1"
+            ],
+            "exit_code": 0,
+            "expected_exit": 0
+          },
+          {
+            "label": "verify-sampling-complete-1",
+            "command": [
+              "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin\\java.exe",
+              "-Xmx3g",
+              "-jar",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-workflow-replay-win21-1\\replay\\build\\maltextract17-workflow-development.jar",
+              "--verify",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-workflow-replay-win21-1\\replay\\evidence\\controls\\sampling-complete-1\\bundle",
+              "--runtime",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-public-reader-setup-1"
+            ],
+            "exit_code": 0,
+            "expected_exit": 0
+          },
+          {
+            "label": "refuse-false-tool-credit",
+            "command": [
+              "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin\\java.exe",
+              "-Xmx3g",
+              "-jar",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-workflow-replay-win21-1\\replay\\build\\maltextract17-workflow-development.jar",
+              "--verify",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-workflow-replay-win21-1\\replay\\evidence\\damaged\\false-tool-credit\\bundle",
+              "--runtime",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-public-reader-setup-1"
+            ],
+            "exit_code": 2,
+            "expected_exit": 2
+          },
+          {
+            "label": "refuse-insufficient-complete-reads",
+            "command": [
+              "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin\\java.exe",
+              "-Xmx3g",
+              "-jar",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-workflow-replay-win21-1\\replay\\build\\maltextract17-workflow-development.jar",
+              "--verify",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-workflow-replay-win21-1\\replay\\evidence\\damaged\\insufficient-complete-reads\\bundle",
+              "--runtime",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-public-reader-setup-1"
+            ],
+            "exit_code": 2,
+            "expected_exit": 2
+          },
+          {
+            "label": "refuse-false-selected-taxa",
+            "command": [
+              "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin\\java.exe",
+              "-Xmx3g",
+              "-jar",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-workflow-replay-win21-1\\replay\\build\\maltextract17-workflow-development.jar",
+              "--verify",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-workflow-replay-win21-1\\replay\\evidence\\damaged\\false-selected-taxa\\bundle",
+              "--runtime",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-public-reader-setup-1"
+            ],
+            "exit_code": 2,
+            "expected_exit": 2
+          },
+          {
+            "label": "refuse-changed-original-command",
+            "command": [
+              "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin\\java.exe",
+              "-Xmx3g",
+              "-jar",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-workflow-replay-win21-1\\replay\\build\\maltextract17-workflow-development.jar",
+              "--verify",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-workflow-replay-win21-1\\replay\\evidence\\damaged\\changed-original-command\\bundle",
+              "--runtime",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-public-reader-setup-1"
+            ],
+            "exit_code": 2,
+            "expected_exit": 2
+          },
+          {
+            "label": "refuse-hidden-stock-sampling",
+            "command": [
+              "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin\\java.exe",
+              "-Xmx3g",
+              "-jar",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-workflow-replay-win21-1\\replay\\build\\maltextract17-workflow-development.jar",
+              "--verify",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-workflow-replay-win21-1\\replay\\evidence\\damaged\\hidden-stock-sampling\\bundle",
+              "--runtime",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-public-reader-setup-1"
+            ],
+            "exit_code": 2,
+            "expected_exit": 2
+          },
+          {
+            "label": "refuse-false-damage-denominator",
+            "command": [
+              "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin\\java.exe",
+              "-Xmx3g",
+              "-jar",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-workflow-replay-win21-1\\replay\\build\\maltextract17-workflow-development.jar",
+              "--verify",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-workflow-replay-win21-1\\replay\\evidence\\damaged\\false-damage-denominator\\bundle",
+              "--runtime",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-public-reader-setup-1"
+            ],
+            "exit_code": 2,
+            "expected_exit": 2
+          },
+          {
+            "label": "refuse-missing-original-output",
+            "command": [
+              "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin\\java.exe",
+              "-Xmx3g",
+              "-jar",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-workflow-replay-win21-1\\replay\\build\\maltextract17-workflow-development.jar",
+              "--verify",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-workflow-replay-win21-1\\replay\\evidence\\damaged\\missing-original-output\\bundle",
+              "--runtime",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-public-reader-setup-1"
+            ],
+            "exit_code": 2,
+            "expected_exit": 2
+          },
+          {
+            "label": "refuse-contradictory-launch",
+            "command": [
+              "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin\\java.exe",
+              "-Xmx3g",
+              "-jar",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-workflow-replay-win21-1\\replay\\build\\maltextract17-workflow-development.jar",
+              "--verify",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-workflow-replay-win21-1\\replay\\evidence\\damaged\\contradictory-launch\\bundle",
+              "--runtime",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-public-reader-setup-1"
+            ],
+            "exit_code": 2,
+            "expected_exit": 2
+          }
+        ],
+        "new_tool_credit": 0
+      },
+      "build": {
+        "status": "READY_ORIGINAL_MALTEXTRACT17_WORKFLOW_DEVELOPMENT_ADAPTER",
+        "analysis_qualified": false,
+        "whole_goal_complete": false,
+        "sources": {
+          "src/main/java/org/jlinalg/metagenomics/MaltExtractTaxonomy.java": {
+            "bytes": 7365,
+            "sha256": "3b338fca40f3918c76d99fd3807f19223ec457fa2b4d039ef20b9ee96ec8e923"
+          },
+          "src/main/java/org/jlinalg/metagenomics/MaltExtractRmaReader.java": {
+            "bytes": 13973,
+            "sha256": "01b07457b7c8f606cdd6553e58645f37fb9d6e2932f1d99a66ec527be21a28df"
+          },
+          "src/main/java/org/jlinalg/metagenomics/MaltExtractReadProjection.java": {
+            "bytes": 8160,
+            "sha256": "502cf68c76ba4609765496cc67ec72a1c1c2ff19e08b5dee662902cd08ffdd45"
+          },
+          "src/main/java/org/jlinalg/metagenomics/MaltExtractSelection.java": {
+            "bytes": 9037,
+            "sha256": "fcee7148fb47ba0c5d36cf3715844c2944975be15839777b3ff78bb746cffe74"
+          },
+          "src/main/java/org/jlinalg/metagenomics/MaltExtractOutputAudit.java": {
+            "bytes": 15596,
+            "sha256": "698d5f1125a94c46cc9eec92a8432c7abcb9cf3de2476057d3002223c2026d4a"
+          },
+          "src/main/java/org/jlinalg/cli/MaltExtractWorkflowCli.java": {
+            "bytes": 38020,
+            "sha256": "006c51c65bf386e0be4c4374588c8fde89fb9753aa85a67fbbf7b090dd7ccff5"
+          },
+          "src/main/java/org/jlinalg/cli/NextflowFiles.java": {
+            "bytes": 11223,
+            "sha256": "f92f44f95a5844fc65c8bf949a4180a0d43deb499127f8d0c60e05fc048e7cd7"
+          },
+          "src/main/java/org/jlinalg/cli/NextflowJson.java": {
+            "bytes": 3893,
+            "sha256": "26e6cbb0536c1b8f1eadc9807bd511756a9de0fe25ffac6e954adc47feec88d9"
+          },
+          "src/main/java/org/jlinalg/cli/NextflowParameters.java": {
+            "bytes": 8962,
+            "sha256": "7ca939ae608453f6f1e029aa3405f8386c9b1d7cb3ce42d902c34ef54df5b173"
+          },
+          "src/main/java/org/jlinalg/cli/SimpleJson.java": {
+            "bytes": 6107,
+            "sha256": "8425dc1a2179763af43c86898cf2b21d8c17dc76bdcabe0133d0ddcb6d6add5b"
+          },
+          "src/main/java/org/jlinalg/cli/NextflowProcess.java": {
+            "bytes": 27403,
+            "sha256": "5fc5e6252f9b7076a39139341a7663cec9441717df79dc09bcd162e20b86c040"
+          },
+          "src/main/java/org/jlinalg/cli/NfcoreProcess.java": {
+            "bytes": 30739,
+            "sha256": "9dd9f4961a431cb36223505033ff9503c2be3a3b5008911969451c4224a9c423"
+          },
+          "src/main/java/org/jlinalg/workflow/LinuxProcessSnapshot.java": {
+            "bytes": 12672,
+            "sha256": "ce0bf79679712035225d09de4952aea027afa02cec494e1c5a3a77397d280720"
+          }
+        },
+        "versions": {
+          "java": "openjdk version \"21.0.4\" 2024-07-16 LTS\r\nOpenJDK Runtime Environment Temurin-21.0.4+7 (build 21.0.4+7-LTS)\r\nOpenJDK 64-Bit Server VM Temurin-21.0.4+7 (build 21.0.4+7-LTS, mixed mode, sharing)\r\n",
+          "javac": "javac 21.0.4\r\n",
+          "jar": "jar 21.0.4\r\n"
+        },
+        "artifact": {
+          "bytes": 156899,
+          "sha256": "af9693cebc8706af364b66921aaa903370ddc005bf36a2408bdbb8b1bcfa826f"
+        },
+        "bytecode_target": 17,
+        "upstream_programs_bundled": false
+      },
+      "complete_receipt_pin": {
+        "bytes": 15096,
+        "sha256": "bfd3ebb0666d95edce42c945795795b615ddcccba3b797b4feec7d77de19c980"
+      }
+    },
+    {
+      "platform": "windows-jdk25",
+      "process": {
+        "command": [
+          "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+          "D:\\projects\\JLinAlg\\tools\\literature\\maltextract17_workflow\\verify.py",
+          "--java-bin",
+          "C:/Program Files/Java/jdk-25/bin",
+          "--runtime",
+          "D:/projects/JLinAlg/build/literature-review/nfcore-runtime/maltextract17-public-reader-setup-1",
+          "--out",
+          "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-workflow-replay-win25-1\\replay"
+        ],
+        "exit_code": 0,
+        "elapsed_seconds": 137.23528695106506
+      },
+      "replay": {
+        "status": "PASS_COMPLETE_ORIGINAL_MALTEXTRACT17_WORKFLOW_SAVED_REPLAY",
+        "original_fitting_repeated": false,
+        "arbitrary_original_statistics_recomputed": false,
+        "whole_goal_complete": false,
+        "restored_members": 3358,
+        "restored_bytes": 2178993703,
+        "unique_objects": 627,
+        "original_name_cases": 16,
+        "original_descendant_cases": 76027,
+        "complete_workflow_bundles": 7,
+        "metadata_refusals": 8,
+        "original_scientific_comparisons": [
+          {
+            "case": "source-default-1",
+            "complete_original_scientific_files": 86
+          },
+          {
+            "case": "complete-default-1",
+            "complete_original_scientific_files": 86
+          },
+          {
+            "case": "complete-defanc-2",
+            "complete_original_scientific_files": 172
+          },
+          {
+            "case": "complete-defanc-3",
+            "complete_original_scientific_files": 172
+          }
+        ],
+        "commands": [
+          {
+            "label": "build",
+            "command": [
+              "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+              "D:\\projects\\JLinAlg\\tools\\literature\\maltextract17_workflow\\build.py",
+              "--java-bin",
+              "C:\\Program Files\\Java\\jdk-25\\bin",
+              "--out",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-workflow-replay-win25-1\\replay\\build"
+            ],
+            "exit_code": 0,
+            "expected_exit": 0
+          },
+          {
+            "label": "probe-javac",
+            "command": [
+              "C:\\Program Files\\Java\\jdk-25\\bin\\javac.exe",
+              "--release",
+              "17",
+              "-Xlint:all",
+              "-Werror",
+              "-encoding",
+              "UTF-8",
+              "-cp",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-workflow-replay-win25-1\\replay\\build\\classes",
+              "-d",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-workflow-replay-win25-1\\replay\\probes",
+              "D:\\projects\\JLinAlg\\tools\\literature\\maltextract17_workflow\\java\\MaltExtractNamesNativeProbe.java",
+              "D:\\projects\\JLinAlg\\tools\\literature\\maltextract17_workflow\\java\\MaltExtractSelectionNativeProbe.java"
+            ],
+            "exit_code": 0,
+            "expected_exit": 0
+          },
+          {
+            "label": "names",
+            "command": [
+              "C:\\Program Files\\Java\\jdk-25\\bin\\java.exe",
+              "-Xmx3g",
+              "-cp",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-workflow-replay-win25-1\\replay\\build\\classes;D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-workflow-replay-win25-1\\replay\\probes",
+              "MaltExtractNamesNativeProbe",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-workflow-replay-win25-1\\replay\\evidence\\oracles\\names\\fixture\\cases.tsv",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-workflow-replay-win25-1\\replay\\names.tsv"
+            ],
+            "exit_code": 0,
+            "expected_exit": 0
+          },
+          {
+            "label": "selection",
+            "command": [
+              "C:\\Program Files\\Java\\jdk-25\\bin\\java.exe",
+              "-Xmx3g",
+              "-cp",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-workflow-replay-win25-1\\replay\\build\\classes;D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-workflow-replay-win25-1\\replay\\probes",
+              "MaltExtractSelectionNativeProbe",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-workflow-replay-win25-1\\replay\\evidence\\oracles\\selection\\fixture\\cases.tsv",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-workflow-replay-win25-1\\replay\\selection.tsv"
+            ],
+            "exit_code": 0,
+            "expected_exit": 0
+          },
+          {
+            "label": "verify-source-default-1",
+            "command": [
+              "C:\\Program Files\\Java\\jdk-25\\bin\\java.exe",
+              "-Xmx3g",
+              "-jar",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-workflow-replay-win25-1\\replay\\build\\maltextract17-workflow-development.jar",
+              "--verify",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-workflow-replay-win25-1\\replay\\evidence\\controls\\source-default-1\\bundle",
+              "--runtime",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-public-reader-setup-1"
+            ],
+            "exit_code": 0,
+            "expected_exit": 0
+          },
+          {
+            "label": "verify-complete-default-1",
+            "command": [
+              "C:\\Program Files\\Java\\jdk-25\\bin\\java.exe",
+              "-Xmx3g",
+              "-jar",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-workflow-replay-win25-1\\replay\\build\\maltextract17-workflow-development.jar",
+              "--verify",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-workflow-replay-win25-1\\replay\\evidence\\controls\\complete-default-1\\bundle",
+              "--runtime",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-public-reader-setup-1"
+            ],
+            "exit_code": 0,
+            "expected_exit": 0
+          },
+          {
+            "label": "verify-complete-defanc-2",
+            "command": [
+              "C:\\Program Files\\Java\\jdk-25\\bin\\java.exe",
+              "-Xmx3g",
+              "-jar",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-workflow-replay-win25-1\\replay\\build\\maltextract17-workflow-development.jar",
+              "--verify",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-workflow-replay-win25-1\\replay\\evidence\\controls\\complete-defanc-2\\bundle",
+              "--runtime",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-public-reader-setup-1"
+            ],
+            "exit_code": 0,
+            "expected_exit": 0
+          },
+          {
+            "label": "verify-complete-defanc-3",
+            "command": [
+              "C:\\Program Files\\Java\\jdk-25\\bin\\java.exe",
+              "-Xmx3g",
+              "-jar",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-workflow-replay-win25-1\\replay\\build\\maltextract17-workflow-development.jar",
+              "--verify",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-workflow-replay-win25-1\\replay\\evidence\\controls\\complete-defanc-3\\bundle",
+              "--runtime",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-public-reader-setup-1"
+            ],
+            "exit_code": 0,
+            "expected_exit": 0
+          },
+          {
+            "label": "verify-special-names-1",
+            "command": [
+              "C:\\Program Files\\Java\\jdk-25\\bin\\java.exe",
+              "-Xmx3g",
+              "-jar",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-workflow-replay-win25-1\\replay\\build\\maltextract17-workflow-development.jar",
+              "--verify",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-workflow-replay-win25-1\\replay\\evidence\\controls\\special-names-1\\bundle",
+              "--runtime",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-public-reader-setup-1"
+            ],
+            "exit_code": 0,
+            "expected_exit": 0
+          },
+          {
+            "label": "verify-sampling-stock-1",
+            "command": [
+              "C:\\Program Files\\Java\\jdk-25\\bin\\java.exe",
+              "-Xmx3g",
+              "-jar",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-workflow-replay-win25-1\\replay\\build\\maltextract17-workflow-development.jar",
+              "--verify",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-workflow-replay-win25-1\\replay\\evidence\\controls\\sampling-stock-1\\bundle",
+              "--runtime",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-public-reader-setup-1"
+            ],
+            "exit_code": 0,
+            "expected_exit": 0
+          },
+          {
+            "label": "verify-sampling-complete-1",
+            "command": [
+              "C:\\Program Files\\Java\\jdk-25\\bin\\java.exe",
+              "-Xmx3g",
+              "-jar",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-workflow-replay-win25-1\\replay\\build\\maltextract17-workflow-development.jar",
+              "--verify",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-workflow-replay-win25-1\\replay\\evidence\\controls\\sampling-complete-1\\bundle",
+              "--runtime",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-public-reader-setup-1"
+            ],
+            "exit_code": 0,
+            "expected_exit": 0
+          },
+          {
+            "label": "refuse-false-tool-credit",
+            "command": [
+              "C:\\Program Files\\Java\\jdk-25\\bin\\java.exe",
+              "-Xmx3g",
+              "-jar",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-workflow-replay-win25-1\\replay\\build\\maltextract17-workflow-development.jar",
+              "--verify",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-workflow-replay-win25-1\\replay\\evidence\\damaged\\false-tool-credit\\bundle",
+              "--runtime",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-public-reader-setup-1"
+            ],
+            "exit_code": 2,
+            "expected_exit": 2
+          },
+          {
+            "label": "refuse-insufficient-complete-reads",
+            "command": [
+              "C:\\Program Files\\Java\\jdk-25\\bin\\java.exe",
+              "-Xmx3g",
+              "-jar",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-workflow-replay-win25-1\\replay\\build\\maltextract17-workflow-development.jar",
+              "--verify",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-workflow-replay-win25-1\\replay\\evidence\\damaged\\insufficient-complete-reads\\bundle",
+              "--runtime",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-public-reader-setup-1"
+            ],
+            "exit_code": 2,
+            "expected_exit": 2
+          },
+          {
+            "label": "refuse-false-selected-taxa",
+            "command": [
+              "C:\\Program Files\\Java\\jdk-25\\bin\\java.exe",
+              "-Xmx3g",
+              "-jar",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-workflow-replay-win25-1\\replay\\build\\maltextract17-workflow-development.jar",
+              "--verify",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-workflow-replay-win25-1\\replay\\evidence\\damaged\\false-selected-taxa\\bundle",
+              "--runtime",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-public-reader-setup-1"
+            ],
+            "exit_code": 2,
+            "expected_exit": 2
+          },
+          {
+            "label": "refuse-changed-original-command",
+            "command": [
+              "C:\\Program Files\\Java\\jdk-25\\bin\\java.exe",
+              "-Xmx3g",
+              "-jar",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-workflow-replay-win25-1\\replay\\build\\maltextract17-workflow-development.jar",
+              "--verify",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-workflow-replay-win25-1\\replay\\evidence\\damaged\\changed-original-command\\bundle",
+              "--runtime",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-public-reader-setup-1"
+            ],
+            "exit_code": 2,
+            "expected_exit": 2
+          },
+          {
+            "label": "refuse-hidden-stock-sampling",
+            "command": [
+              "C:\\Program Files\\Java\\jdk-25\\bin\\java.exe",
+              "-Xmx3g",
+              "-jar",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-workflow-replay-win25-1\\replay\\build\\maltextract17-workflow-development.jar",
+              "--verify",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-workflow-replay-win25-1\\replay\\evidence\\damaged\\hidden-stock-sampling\\bundle",
+              "--runtime",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-public-reader-setup-1"
+            ],
+            "exit_code": 2,
+            "expected_exit": 2
+          },
+          {
+            "label": "refuse-false-damage-denominator",
+            "command": [
+              "C:\\Program Files\\Java\\jdk-25\\bin\\java.exe",
+              "-Xmx3g",
+              "-jar",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-workflow-replay-win25-1\\replay\\build\\maltextract17-workflow-development.jar",
+              "--verify",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-workflow-replay-win25-1\\replay\\evidence\\damaged\\false-damage-denominator\\bundle",
+              "--runtime",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-public-reader-setup-1"
+            ],
+            "exit_code": 2,
+            "expected_exit": 2
+          },
+          {
+            "label": "refuse-missing-original-output",
+            "command": [
+              "C:\\Program Files\\Java\\jdk-25\\bin\\java.exe",
+              "-Xmx3g",
+              "-jar",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-workflow-replay-win25-1\\replay\\build\\maltextract17-workflow-development.jar",
+              "--verify",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-workflow-replay-win25-1\\replay\\evidence\\damaged\\missing-original-output\\bundle",
+              "--runtime",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-public-reader-setup-1"
+            ],
+            "exit_code": 2,
+            "expected_exit": 2
+          },
+          {
+            "label": "refuse-contradictory-launch",
+            "command": [
+              "C:\\Program Files\\Java\\jdk-25\\bin\\java.exe",
+              "-Xmx3g",
+              "-jar",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-workflow-replay-win25-1\\replay\\build\\maltextract17-workflow-development.jar",
+              "--verify",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-workflow-replay-win25-1\\replay\\evidence\\damaged\\contradictory-launch\\bundle",
+              "--runtime",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\maltextract17-public-reader-setup-1"
+            ],
+            "exit_code": 2,
+            "expected_exit": 2
+          }
+        ],
+        "new_tool_credit": 0
+      },
+      "build": {
+        "status": "READY_ORIGINAL_MALTEXTRACT17_WORKFLOW_DEVELOPMENT_ADAPTER",
+        "analysis_qualified": false,
+        "whole_goal_complete": false,
+        "sources": {
+          "src/main/java/org/jlinalg/metagenomics/MaltExtractTaxonomy.java": {
+            "bytes": 7365,
+            "sha256": "3b338fca40f3918c76d99fd3807f19223ec457fa2b4d039ef20b9ee96ec8e923"
+          },
+          "src/main/java/org/jlinalg/metagenomics/MaltExtractRmaReader.java": {
+            "bytes": 13973,
+            "sha256": "01b07457b7c8f606cdd6553e58645f37fb9d6e2932f1d99a66ec527be21a28df"
+          },
+          "src/main/java/org/jlinalg/metagenomics/MaltExtractReadProjection.java": {
+            "bytes": 8160,
+            "sha256": "502cf68c76ba4609765496cc67ec72a1c1c2ff19e08b5dee662902cd08ffdd45"
+          },
+          "src/main/java/org/jlinalg/metagenomics/MaltExtractSelection.java": {
+            "bytes": 9037,
+            "sha256": "fcee7148fb47ba0c5d36cf3715844c2944975be15839777b3ff78bb746cffe74"
+          },
+          "src/main/java/org/jlinalg/metagenomics/MaltExtractOutputAudit.java": {
+            "bytes": 15596,
+            "sha256": "698d5f1125a94c46cc9eec92a8432c7abcb9cf3de2476057d3002223c2026d4a"
+          },
+          "src/main/java/org/jlinalg/cli/MaltExtractWorkflowCli.java": {
+            "bytes": 38020,
+            "sha256": "006c51c65bf386e0be4c4374588c8fde89fb9753aa85a67fbbf7b090dd7ccff5"
+          },
+          "src/main/java/org/jlinalg/cli/NextflowFiles.java": {
+            "bytes": 11223,
+            "sha256": "f92f44f95a5844fc65c8bf949a4180a0d43deb499127f8d0c60e05fc048e7cd7"
+          },
+          "src/main/java/org/jlinalg/cli/NextflowJson.java": {
+            "bytes": 3893,
+            "sha256": "26e6cbb0536c1b8f1eadc9807bd511756a9de0fe25ffac6e954adc47feec88d9"
+          },
+          "src/main/java/org/jlinalg/cli/NextflowParameters.java": {
+            "bytes": 8962,
+            "sha256": "7ca939ae608453f6f1e029aa3405f8386c9b1d7cb3ce42d902c34ef54df5b173"
+          },
+          "src/main/java/org/jlinalg/cli/SimpleJson.java": {
+            "bytes": 6107,
+            "sha256": "8425dc1a2179763af43c86898cf2b21d8c17dc76bdcabe0133d0ddcb6d6add5b"
+          },
+          "src/main/java/org/jlinalg/cli/NextflowProcess.java": {
+            "bytes": 27403,
+            "sha256": "5fc5e6252f9b7076a39139341a7663cec9441717df79dc09bcd162e20b86c040"
+          },
+          "src/main/java/org/jlinalg/cli/NfcoreProcess.java": {
+            "bytes": 30739,
+            "sha256": "9dd9f4961a431cb36223505033ff9503c2be3a3b5008911969451c4224a9c423"
+          },
+          "src/main/java/org/jlinalg/workflow/LinuxProcessSnapshot.java": {
+            "bytes": 12672,
+            "sha256": "ce0bf79679712035225d09de4952aea027afa02cec494e1c5a3a77397d280720"
+          }
+        },
+        "versions": {
+          "java": "java version \"25\" 2025-09-16 LTS\r\nJava(TM) SE Runtime Environment (build 25+37-LTS-3491)\r\nJava HotSpot(TM) 64-Bit Server VM (build 25+37-LTS-3491, mixed mode, sharing)\r\n",
+          "javac": "javac 25\r\n",
+          "jar": "jar 25\r\n"
+        },
+        "artifact": {
+          "bytes": 156884,
+          "sha256": "595b6e4082dcd33e07c8f462a68196dfea46b933fc2e0094c984209288bd95e9"
+        },
+        "bytecode_target": 17,
+        "upstream_programs_bundled": false
+      },
+      "complete_receipt_pin": {
+        "bytes": 14602,
+        "sha256": "0ea20388de667ee7d20501a715a17b7ec0d50eddb4e62132d7b75e43b9e705a7"
+      }
+    },
+    {
+      "platform": "linux-jdk21",
+      "process": {
+        "command": [
+          "/usr/bin/python3",
+          "/mnt/d/projects/JLinAlg/tools/literature/maltextract17_workflow/verify.py",
+          "--java-bin",
+          "/usr/bin",
+          "--runtime",
+          "/mnt/d/projects/JLinAlg/build/literature-review/nfcore-runtime/maltextract17-public-reader-setup-1",
+          "--out",
+          "/var/tmp/omicsmatic-maltextract17-workflow-replay-linux21-1/replay"
+        ],
+        "exit_code": 0,
+        "elapsed_seconds": 129.0084846019745
+      },
+      "replay": {
+        "status": "PASS_COMPLETE_ORIGINAL_MALTEXTRACT17_WORKFLOW_SAVED_REPLAY",
+        "original_fitting_repeated": false,
+        "arbitrary_original_statistics_recomputed": false,
+        "whole_goal_complete": false,
+        "restored_members": 3358,
+        "restored_bytes": 2178993703,
+        "unique_objects": 627,
+        "original_name_cases": 16,
+        "original_descendant_cases": 76027,
+        "complete_workflow_bundles": 7,
+        "metadata_refusals": 8,
+        "original_scientific_comparisons": [
+          {
+            "case": "source-default-1",
+            "complete_original_scientific_files": 86
+          },
+          {
+            "case": "complete-default-1",
+            "complete_original_scientific_files": 86
+          },
+          {
+            "case": "complete-defanc-2",
+            "complete_original_scientific_files": 172
+          },
+          {
+            "case": "complete-defanc-3",
+            "complete_original_scientific_files": 172
+          }
+        ],
+        "commands": [
+          {
+            "label": "build",
+            "command": [
+              "/usr/bin/python3",
+              "/mnt/d/projects/JLinAlg/tools/literature/maltextract17_workflow/build.py",
+              "--java-bin",
+              "/usr/bin",
+              "--out",
+              "/var/tmp/omicsmatic-maltextract17-workflow-replay-linux21-1/replay/build"
+            ],
+            "exit_code": 0,
+            "expected_exit": 0
+          },
+          {
+            "label": "probe-javac",
+            "command": [
+              "/usr/bin/javac",
+              "--release",
+              "17",
+              "-Xlint:all",
+              "-Werror",
+              "-encoding",
+              "UTF-8",
+              "-cp",
+              "/var/tmp/omicsmatic-maltextract17-workflow-replay-linux21-1/replay/build/classes",
+              "-d",
+              "/var/tmp/omicsmatic-maltextract17-workflow-replay-linux21-1/replay/probes",
+              "/mnt/d/projects/JLinAlg/tools/literature/maltextract17_workflow/java/MaltExtractNamesNativeProbe.java",
+              "/mnt/d/projects/JLinAlg/tools/literature/maltextract17_workflow/java/MaltExtractSelectionNativeProbe.java"
+            ],
+            "exit_code": 0,
+            "expected_exit": 0
+          },
+          {
+            "label": "names",
+            "command": [
+              "/usr/bin/java",
+              "-Xmx3g",
+              "-cp",
+              "/var/tmp/omicsmatic-maltextract17-workflow-replay-linux21-1/replay/build/classes:/var/tmp/omicsmatic-maltextract17-workflow-replay-linux21-1/replay/probes",
+              "MaltExtractNamesNativeProbe",
+              "/var/tmp/omicsmatic-maltextract17-workflow-replay-linux21-1/replay/evidence/oracles/names/fixture/cases.tsv",
+              "/var/tmp/omicsmatic-maltextract17-workflow-replay-linux21-1/replay/names.tsv"
+            ],
+            "exit_code": 0,
+            "expected_exit": 0
+          },
+          {
+            "label": "selection",
+            "command": [
+              "/usr/bin/java",
+              "-Xmx3g",
+              "-cp",
+              "/var/tmp/omicsmatic-maltextract17-workflow-replay-linux21-1/replay/build/classes:/var/tmp/omicsmatic-maltextract17-workflow-replay-linux21-1/replay/probes",
+              "MaltExtractSelectionNativeProbe",
+              "/var/tmp/omicsmatic-maltextract17-workflow-replay-linux21-1/replay/evidence/oracles/selection/fixture/cases.tsv",
+              "/var/tmp/omicsmatic-maltextract17-workflow-replay-linux21-1/replay/selection.tsv"
+            ],
+            "exit_code": 0,
+            "expected_exit": 0
+          },
+          {
+            "label": "verify-source-default-1",
+            "command": [
+              "/usr/bin/java",
+              "-Xmx3g",
+              "-jar",
+              "/var/tmp/omicsmatic-maltextract17-workflow-replay-linux21-1/replay/build/maltextract17-workflow-development.jar",
+              "--verify",
+              "/var/tmp/omicsmatic-maltextract17-workflow-replay-linux21-1/replay/evidence/controls/source-default-1/bundle",
+              "--runtime",
+              "/mnt/d/projects/JLinAlg/build/literature-review/nfcore-runtime/maltextract17-public-reader-setup-1"
+            ],
+            "exit_code": 0,
+            "expected_exit": 0
+          },
+          {
+            "label": "verify-complete-default-1",
+            "command": [
+              "/usr/bin/java",
+              "-Xmx3g",
+              "-jar",
+              "/var/tmp/omicsmatic-maltextract17-workflow-replay-linux21-1/replay/build/maltextract17-workflow-development.jar",
+              "--verify",
+              "/var/tmp/omicsmatic-maltextract17-workflow-replay-linux21-1/replay/evidence/controls/complete-default-1/bundle",
+              "--runtime",
+              "/mnt/d/projects/JLinAlg/build/literature-review/nfcore-runtime/maltextract17-public-reader-setup-1"
+            ],
+            "exit_code": 0,
+            "expected_exit": 0
+          },
+          {
+            "label": "verify-complete-defanc-2",
+            "command": [
+              "/usr/bin/java",
+              "-Xmx3g",
+              "-jar",
+              "/var/tmp/omicsmatic-maltextract17-workflow-replay-linux21-1/replay/build/maltextract17-workflow-development.jar",
+              "--verify",
+              "/var/tmp/omicsmatic-maltextract17-workflow-replay-linux21-1/replay/evidence/controls/complete-defanc-2/bundle",
+              "--runtime",
+              "/mnt/d/projects/JLinAlg/build/literature-review/nfcore-runtime/maltextract17-public-reader-setup-1"
+            ],
+            "exit_code": 0,
+            "expected_exit": 0
+          },
+          {
+            "label": "verify-complete-defanc-3",
+            "command": [
+              "/usr/bin/java",
+              "-Xmx3g",
+              "-jar",
+              "/var/tmp/omicsmatic-maltextract17-workflow-replay-linux21-1/replay/build/maltextract17-workflow-development.jar",
+              "--verify",
+              "/var/tmp/omicsmatic-maltextract17-workflow-replay-linux21-1/replay/evidence/controls/complete-defanc-3/bundle",
+              "--runtime",
+              "/mnt/d/projects/JLinAlg/build/literature-review/nfcore-runtime/maltextract17-public-reader-setup-1"
+            ],
+            "exit_code": 0,
+            "expected_exit": 0
+          },
+          {
+            "label": "verify-special-names-1",
+            "command": [
+              "/usr/bin/java",
+              "-Xmx3g",
+              "-jar",
+              "/var/tmp/omicsmatic-maltextract17-workflow-replay-linux21-1/replay/build/maltextract17-workflow-development.jar",
+              "--verify",
+              "/var/tmp/omicsmatic-maltextract17-workflow-replay-linux21-1/replay/evidence/controls/special-names-1/bundle",
+              "--runtime",
+              "/mnt/d/projects/JLinAlg/build/literature-review/nfcore-runtime/maltextract17-public-reader-setup-1"
+            ],
+            "exit_code": 0,
+            "expected_exit": 0
+          },
+          {
+            "label": "verify-sampling-stock-1",
+            "command": [
+              "/usr/bin/java",
+              "-Xmx3g",
+              "-jar",
+              "/var/tmp/omicsmatic-maltextract17-workflow-replay-linux21-1/replay/build/maltextract17-workflow-development.jar",
+              "--verify",
+              "/var/tmp/omicsmatic-maltextract17-workflow-replay-linux21-1/replay/evidence/controls/sampling-stock-1/bundle",
+              "--runtime",
+              "/mnt/d/projects/JLinAlg/build/literature-review/nfcore-runtime/maltextract17-public-reader-setup-1"
+            ],
+            "exit_code": 0,
+            "expected_exit": 0
+          },
+          {
+            "label": "verify-sampling-complete-1",
+            "command": [
+              "/usr/bin/java",
+              "-Xmx3g",
+              "-jar",
+              "/var/tmp/omicsmatic-maltextract17-workflow-replay-linux21-1/replay/build/maltextract17-workflow-development.jar",
+              "--verify",
+              "/var/tmp/omicsmatic-maltextract17-workflow-replay-linux21-1/replay/evidence/controls/sampling-complete-1/bundle",
+              "--runtime",
+              "/mnt/d/projects/JLinAlg/build/literature-review/nfcore-runtime/maltextract17-public-reader-setup-1"
+            ],
+            "exit_code": 0,
+            "expected_exit": 0
+          },
+          {
+            "label": "refuse-false-tool-credit",
+            "command": [
+              "/usr/bin/java",
+              "-Xmx3g",
+              "-jar",
+              "/var/tmp/omicsmatic-maltextract17-workflow-replay-linux21-1/replay/build/maltextract17-workflow-development.jar",
+              "--verify",
+              "/var/tmp/omicsmatic-maltextract17-workflow-replay-linux21-1/replay/evidence/damaged/false-tool-credit/bundle",
+              "--runtime",
+              "/mnt/d/projects/JLinAlg/build/literature-review/nfcore-runtime/maltextract17-public-reader-setup-1"
+            ],
+            "exit_code": 2,
+            "expected_exit": 2
+          },
+          {
+            "label": "refuse-insufficient-complete-reads",
+            "command": [
+              "/usr/bin/java",
+              "-Xmx3g",
+              "-jar",
+              "/var/tmp/omicsmatic-maltextract17-workflow-replay-linux21-1/replay/build/maltextract17-workflow-development.jar",
+              "--verify",
+              "/var/tmp/omicsmatic-maltextract17-workflow-replay-linux21-1/replay/evidence/damaged/insufficient-complete-reads/bundle",
+              "--runtime",
+              "/mnt/d/projects/JLinAlg/build/literature-review/nfcore-runtime/maltextract17-public-reader-setup-1"
+            ],
+            "exit_code": 2,
+            "expected_exit": 2
+          },
+          {
+            "label": "refuse-false-selected-taxa",
+            "command": [
+              "/usr/bin/java",
+              "-Xmx3g",
+              "-jar",
+              "/var/tmp/omicsmatic-maltextract17-workflow-replay-linux21-1/replay/build/maltextract17-workflow-development.jar",
+              "--verify",
+              "/var/tmp/omicsmatic-maltextract17-workflow-replay-linux21-1/replay/evidence/damaged/false-selected-taxa/bundle",
+              "--runtime",
+              "/mnt/d/projects/JLinAlg/build/literature-review/nfcore-runtime/maltextract17-public-reader-setup-1"
+            ],
+            "exit_code": 2,
+            "expected_exit": 2
+          },
+          {
+            "label": "refuse-changed-original-command",
+            "command": [
+              "/usr/bin/java",
+              "-Xmx3g",
+              "-jar",
+              "/var/tmp/omicsmatic-maltextract17-workflow-replay-linux21-1/replay/build/maltextract17-workflow-development.jar",
+              "--verify",
+              "/var/tmp/omicsmatic-maltextract17-workflow-replay-linux21-1/replay/evidence/damaged/changed-original-command/bundle",
+              "--runtime",
+              "/mnt/d/projects/JLinAlg/build/literature-review/nfcore-runtime/maltextract17-public-reader-setup-1"
+            ],
+            "exit_code": 2,
+            "expected_exit": 2
+          },
+          {
+            "label": "refuse-hidden-stock-sampling",
+            "command": [
+              "/usr/bin/java",
+              "-Xmx3g",
+              "-jar",
+              "/var/tmp/omicsmatic-maltextract17-workflow-replay-linux21-1/replay/build/maltextract17-workflow-development.jar",
+              "--verify",
+              "/var/tmp/omicsmatic-maltextract17-workflow-replay-linux21-1/replay/evidence/damaged/hidden-stock-sampling/bundle",
+              "--runtime",
+              "/mnt/d/projects/JLinAlg/build/literature-review/nfcore-runtime/maltextract17-public-reader-setup-1"
+            ],
+            "exit_code": 2,
+            "expected_exit": 2
+          },
+          {
+            "label": "refuse-false-damage-denominator",
+            "command": [
+              "/usr/bin/java",
+              "-Xmx3g",
+              "-jar",
+              "/var/tmp/omicsmatic-maltextract17-workflow-replay-linux21-1/replay/build/maltextract17-workflow-development.jar",
+              "--verify",
+              "/var/tmp/omicsmatic-maltextract17-workflow-replay-linux21-1/replay/evidence/damaged/false-damage-denominator/bundle",
+              "--runtime",
+              "/mnt/d/projects/JLinAlg/build/literature-review/nfcore-runtime/maltextract17-public-reader-setup-1"
+            ],
+            "exit_code": 2,
+            "expected_exit": 2
+          },
+          {
+            "label": "refuse-missing-original-output",
+            "command": [
+              "/usr/bin/java",
+              "-Xmx3g",
+              "-jar",
+              "/var/tmp/omicsmatic-maltextract17-workflow-replay-linux21-1/replay/build/maltextract17-workflow-development.jar",
+              "--verify",
+              "/var/tmp/omicsmatic-maltextract17-workflow-replay-linux21-1/replay/evidence/damaged/missing-original-output/bundle",
+              "--runtime",
+              "/mnt/d/projects/JLinAlg/build/literature-review/nfcore-runtime/maltextract17-public-reader-setup-1"
+            ],
+            "exit_code": 2,
+            "expected_exit": 2
+          },
+          {
+            "label": "refuse-contradictory-launch",
+            "command": [
+              "/usr/bin/java",
+              "-Xmx3g",
+              "-jar",
+              "/var/tmp/omicsmatic-maltextract17-workflow-replay-linux21-1/replay/build/maltextract17-workflow-development.jar",
+              "--verify",
+              "/var/tmp/omicsmatic-maltextract17-workflow-replay-linux21-1/replay/evidence/damaged/contradictory-launch/bundle",
+              "--runtime",
+              "/mnt/d/projects/JLinAlg/build/literature-review/nfcore-runtime/maltextract17-public-reader-setup-1"
+            ],
+            "exit_code": 2,
+            "expected_exit": 2
+          }
+        ],
+        "new_tool_credit": 0
+      },
+      "build": {
+        "status": "READY_ORIGINAL_MALTEXTRACT17_WORKFLOW_DEVELOPMENT_ADAPTER",
+        "analysis_qualified": false,
+        "whole_goal_complete": false,
+        "sources": {
+          "src/main/java/org/jlinalg/metagenomics/MaltExtractTaxonomy.java": {
+            "bytes": 7365,
+            "sha256": "3b338fca40f3918c76d99fd3807f19223ec457fa2b4d039ef20b9ee96ec8e923"
+          },
+          "src/main/java/org/jlinalg/metagenomics/MaltExtractRmaReader.java": {
+            "bytes": 13973,
+            "sha256": "01b07457b7c8f606cdd6553e58645f37fb9d6e2932f1d99a66ec527be21a28df"
+          },
+          "src/main/java/org/jlinalg/metagenomics/MaltExtractReadProjection.java": {
+            "bytes": 8160,
+            "sha256": "502cf68c76ba4609765496cc67ec72a1c1c2ff19e08b5dee662902cd08ffdd45"
+          },
+          "src/main/java/org/jlinalg/metagenomics/MaltExtractSelection.java": {
+            "bytes": 9037,
+            "sha256": "fcee7148fb47ba0c5d36cf3715844c2944975be15839777b3ff78bb746cffe74"
+          },
+          "src/main/java/org/jlinalg/metagenomics/MaltExtractOutputAudit.java": {
+            "bytes": 15596,
+            "sha256": "698d5f1125a94c46cc9eec92a8432c7abcb9cf3de2476057d3002223c2026d4a"
+          },
+          "src/main/java/org/jlinalg/cli/MaltExtractWorkflowCli.java": {
+            "bytes": 38020,
+            "sha256": "006c51c65bf386e0be4c4374588c8fde89fb9753aa85a67fbbf7b090dd7ccff5"
+          },
+          "src/main/java/org/jlinalg/cli/NextflowFiles.java": {
+            "bytes": 11223,
+            "sha256": "f92f44f95a5844fc65c8bf949a4180a0d43deb499127f8d0c60e05fc048e7cd7"
+          },
+          "src/main/java/org/jlinalg/cli/NextflowJson.java": {
+            "bytes": 3893,
+            "sha256": "26e6cbb0536c1b8f1eadc9807bd511756a9de0fe25ffac6e954adc47feec88d9"
+          },
+          "src/main/java/org/jlinalg/cli/NextflowParameters.java": {
+            "bytes": 8962,
+            "sha256": "7ca939ae608453f6f1e029aa3405f8386c9b1d7cb3ce42d902c34ef54df5b173"
+          },
+          "src/main/java/org/jlinalg/cli/SimpleJson.java": {
+            "bytes": 6107,
+            "sha256": "8425dc1a2179763af43c86898cf2b21d8c17dc76bdcabe0133d0ddcb6d6add5b"
+          },
+          "src/main/java/org/jlinalg/cli/NextflowProcess.java": {
+            "bytes": 27403,
+            "sha256": "5fc5e6252f9b7076a39139341a7663cec9441717df79dc09bcd162e20b86c040"
+          },
+          "src/main/java/org/jlinalg/cli/NfcoreProcess.java": {
+            "bytes": 30739,
+            "sha256": "9dd9f4961a431cb36223505033ff9503c2be3a3b5008911969451c4224a9c423"
+          },
+          "src/main/java/org/jlinalg/workflow/LinuxProcessSnapshot.java": {
+            "bytes": 12672,
+            "sha256": "ce0bf79679712035225d09de4952aea027afa02cec494e1c5a3a77397d280720"
+          }
+        },
+        "versions": {
+          "java": "openjdk version \"21.0.13.0.3\" 2026-10-24\nOpenJDK Runtime Environment (build 21.0.13.0.3+1-1-24.04.1-Ubuntu)\nOpenJDK 64-Bit Server VM (build 21.0.13.0.3+1-1-24.04.1-Ubuntu, mixed mode, sharing)\n",
+          "javac": "javac 21.0.13.0.3\n",
+          "jar": "jar 21.0.13.0.3\n"
+        },
+        "artifact": {
+          "bytes": 156895,
+          "sha256": "0000da6f7558b11e813211ca0502dd9e40aa728bb2213c917528e7a09ae1e234"
+        },
+        "bytecode_target": 17,
+        "upstream_programs_bundled": false
+      },
+      "complete_receipt_pin": {
+        "bytes": 11946,
+        "sha256": "681967c77eb16771e51455f3ba967b20f5c6c3e1498651862682e320a9d4a37f"
+      }
+    }
+  ],
+  "original_fitting_repeated": false,
+  "arbitrary_original_statistics_recomputed": false,
+  "new_tool_credit": 0,
+  "whole_goal_complete": false
+}

@@ -1,0 +1,20 @@
+{
+  "status": "PENDING_CATALOG_ADMISSION_PREEXISTING_DISPATCHER_SOURCE_CHAIN_FAILURE",
+  "paper_audit": {
+    "status": "FAIL2_MALT_FAMILY_CURRENT_SOURCE_AUDIT",
+    "whole_goal_complete": false,
+    "cause": "ValueError('Current shared source differs from its exact reviewed after state')",
+    "traceback": "Traceback (most recent call last):\n  File \"D:\\projects\\JLinAlg\\tools\\literature\\audit_malt_source_catalog.py\", line 21, in main\n    registry={r['id']:r for r in load_catalog_registry(ROOT)};assert len(registry)==443 and len(reviews)==1052;sp=supplement();sources={};observations=0;main=0;supp=0;census=[];aliases=[];prior_census=[]\n                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\projects\\JLinAlg\\tools\\literature\\malt_source_catalog.py\", line 45, in load_catalog_registry\n    verify_extension(root);rows=prior.load_catalog_registry(predecessor_view(root));assert len(rows)==440\n                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\projects\\JLinAlg\\tools\\literature\\scdrs_catalog.py\", line 103, in load_catalog_registry\n    verify_review_extension(root, data, json.loads((root / 'tools/literature/reviewed-uses.json').read_bytes())['reviews'])\n  File \"D:\\projects\\JLinAlg\\tools\\literature\\scdrs_catalog.py\", line 97, in verify_review_extension\n    old, old_data = _old_context(root, data)\n                    ^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\projects\\JLinAlg\\tools\\literature\\scdrs_catalog.py\", line 46, in _old_context\n    old = predecessor_view(root, data, restore_catalog)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\projects\\JLinAlg\\tools\\literature\\scdrs_catalog.py\", line 29, in predecessor_view\n    overrides[name] = raw if byte_pin(raw)['sha256'] == row['before_sha256'] else reverse_delta(raw, row)\n                                                                                  ^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\projects\\JLinAlg\\tools\\literature\\catalog_source_integrity.py\", line 30, in reverse_delta\n    raise ValueError('Current shared source differs from its exact reviewed after state')\nValueError: Current shared source differs from its exact reviewed after state\n"
+  },
+  "dispatcher_path": "src/main/java/org/jlinalg/cli/JLinAlgCli.java",
+  "current_dispatcher": {
+    "bytes": 50011,
+    "sha256": "cb14367c079da29ce25c4416f37dc9c5f06b690033eda1a34bfa3349864ae47a"
+  },
+  "unchanged_from_turn_start_commit": "9d0a181d0ed8ab0c6564ac05845126f6c03532f9",
+  "reviewed_after_sha256": "bcc8bee3c2335d3971db0e88189c1d1879f4d3d6ac0eb65c205e6fcb8b54831f",
+  "workflow_validation_passed": true,
+  "new_tool_credit": 0,
+  "whole_goal_complete": false,
+  "required_action": "Maintainer/agent must review the incoming dispatcher-only changes, preserve historical reviewed bytes through an exact versioned compatibility view, and rerun the unchanged250-paper source audit. Do not refresh historical hashes blindly or grant catalog credit while the audit fails."
+}
