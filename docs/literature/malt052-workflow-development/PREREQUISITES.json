@@ -1,0 +1,121 @@
+{
+  "status": "PASS_THREE_MALT052_WORKFLOW_PREREQUISITE_AND_COMPLETE_CAPACITY_CONTROLS",
+  "new_tool_credit": 0,
+  "whole_goal_complete": false,
+  "calls": [
+    {
+      "label": "windows-skip-original-fitting",
+      "command": [
+        "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin\\java.exe",
+        "-jar",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\malt052-workflow-build21-2\\malt052-workflow-development.jar",
+        "--runtime",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\malt052-workflow-policy-1\\missing-runtime",
+        "--fasta",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\malt052-workflow-portable-1\\A\\index-build\\inputs\\fasta\\000000.fa",
+        "--mapping",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\malt052-workflow-portable-1\\A\\index-build\\inputs\\mapping.tsv",
+        "--query",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\malt052-workflow-portable-1\\A\\alignment\\inputs\\reads.fastq.gz",
+        "--format",
+        "two-column",
+        "--namespace",
+        "literal",
+        "--method",
+        "native-accession-alternative",
+        "--profile",
+        "CUSTOM052",
+        "--out",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\nfcore-runtime\\malt052-workflow-policy-1\\windows-skipped"
+      ],
+      "exit_code": 3,
+      "expected_exit": 3,
+      "expected_cause": "SKIP3 DEPENDENT ANALYSIS SKIPPED",
+      "elapsed_seconds": 0.21412253379821777
+    },
+    {
+      "label": "missing-provider",
+      "command": [
+        "wsl.exe",
+        "-d",
+        "JLinAlg-Omics-SAIGE-20261026",
+        "--",
+        "/usr/bin/java",
+        "-Xmx2g",
+        "-jar",
+        "/mnt/d/projects/JLinAlg/build/literature-review/nfcore-runtime/malt052-workflow-build21-2/malt052-workflow-development.jar",
+        "--runtime",
+        "/var/tmp/omicsmatic-malt052-workflow-policy-1/unavailable",
+        "--fasta",
+        "/var/tmp/omicsmatic-malt052-workflow-controls-1/inputs/references.fa",
+        "--mapping",
+        "/var/tmp/omicsmatic-malt052-workflow-controls-1/inputs/mapping.tsv",
+        "--query",
+        "/var/tmp/omicsmatic-malt052-workflow-controls-1/inputs/A.fastq.gz",
+        "--format",
+        "two-column",
+        "--namespace",
+        "literal",
+        "--method",
+        "native-accession-alternative",
+        "--profile",
+        "CUSTOM052",
+        "--out",
+        "/var/tmp/omicsmatic-malt052-workflow-policy-1/missing-provider"
+      ],
+      "exit_code": 3,
+      "expected_exit": 3,
+      "expected_cause": "SKIP3 DEPENDENT ANALYSIS SKIPPED",
+      "elapsed_seconds": 0.7848536968231201
+    },
+    {
+      "label": "whole-reference-capacity",
+      "command": [
+        "wsl.exe",
+        "-d",
+        "JLinAlg-Omics-SAIGE-20261026",
+        "--",
+        "/usr/bin/java",
+        "-Xmx2g",
+        "-jar",
+        "/mnt/d/projects/JLinAlg/build/literature-review/nfcore-runtime/malt052-workflow-build21-2/malt052-workflow-development.jar",
+        "--runtime",
+        "/var/tmp/omicsmatic-malt052-public-setup-1",
+        "--fasta",
+        "/var/tmp/omicsmatic-malt052-workflow-controls-1/inputs/references.fa",
+        "--mapping",
+        "/var/tmp/omicsmatic-malt052-workflow-controls-1/inputs/mapping.tsv",
+        "--query",
+        "/var/tmp/omicsmatic-malt052-workflow-controls-1/inputs/A.fastq.gz",
+        "--format",
+        "two-column",
+        "--namespace",
+        "literal",
+        "--method",
+        "native-accession-alternative",
+        "--profile",
+        "CUSTOM052",
+        "--out",
+        "/var/tmp/omicsmatic-malt052-workflow-policy-1/whole-reference-capacity",
+        "--maximum-references",
+        "2"
+      ],
+      "exit_code": 2,
+      "expected_exit": 2,
+      "expected_cause": "FAIL2 NO RESULT ADMITTED",
+      "elapsed_seconds": 1.77439284324646
+    }
+  ],
+  "proof": {
+    "missing-provider": {
+      "failure": true,
+      "complete": false,
+      "original_launched": false
+    },
+    "whole-reference-capacity": {
+      "failure": true,
+      "complete": false,
+      "original_launched": false
+    }
+  }
+}
