@@ -19,7 +19,8 @@ Evidence includes three successful complete workflows with22 sample–taxon pair
 308 node/numeric fields, both JSON choices, a10001-read control, a hyphenated
 sample name, nine rehashed contradiction refusals, two complete public R installs,
 four missing-dependency/capacity/retention controls, and an installer-group timeout
-control. All31 focused/adjacent tests pass on Windows JDK21 and25. The frozen
+control. All33 focused/adjacent tests pass on Windows JDK21 and25, including two
+output-prefix guard tests added to the original31-test suite. The frozen
 native oracle separately covers2901 statistic pairs,420 class boundaries and
 seven refusals. Three independent original RData productions agree.
 
@@ -32,9 +33,15 @@ permitted installation. The original GPL postprocessing source and unchanged
 workspace functions/output retain upstream attribution and license notices.
 
 `VALIDATION.json` records source/archive identities and exact qualification scope.
-`PACKAGED_APPLICATION_IDENTITY.json` proves that final candidates preserve every
-program/resource payload member from the producing candidates. Container dates
-may differ. Public saved replay rebuilds the application, restores all logical
+`PACKAGED_APPLICATION_IDENTITY.json` records the guard revision: only
+`HopsPostprocessingCli.class` differs from the earlier candidate on each compiler;
+every scientific class and packaged R resource remains byte-identical. Published
+JARs are exact copies of the new producing JARs. The previous candidates and
+identity proof remain under `superseded-guards/before-prefix-check`.
+`prefix-guard-controls.zip.xz` retains the complete new production and both
+pre-execution refusals. `PREFIX_GUARD_VALIDATION.json` records their results and
+the complete scientific/plot comparison. Public saved replay rebuilds the
+application, restores all logical
 evidence, checks native original controls, freshly decodes all three successful
 workspaces and rejects the nine altered bundles. It repeats no fitting/plotting.
 

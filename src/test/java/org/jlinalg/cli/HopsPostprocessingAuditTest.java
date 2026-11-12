@@ -76,4 +76,12 @@ final class HopsPostprocessingAuditTest {
         int code=HopsPostprocessingCli.run(new String[]{"--help"},new java.io.PrintStream(stdout,true,StandardCharsets.UTF_8),new java.io.PrintStream(stderr,true,StandardCharsets.UTF_8));
         assertEquals(0,code);assertTrue(stdout.toString(StandardCharsets.UTF_8).contains("Required action:"));assertTrue(stdout.toString(StandardCharsets.UTF_8).contains("skip dependent analysis"));assertEquals(0,stderr.size());
     }
+    @Test void originalPlotPrefixContractRetainsSafeLiteralPaths() {
+        for(String prefix:List.of("/var/tmp/hops-run_1.2","/var/tmp/group:1/run"))assertDoesNotThrow(()->HopsPostprocessingCli.requireOriginalPlotPrefix(prefix));
+    }
+    @Test void originalShellMkdirCannotReceiveAnUnqualifiedOutputPrefix() {
+        for(String prefix:List.of("/var/tmp/my analysis","/var/tmp/run;touch_marker","/var/tmp/$(id)","/var/tmp/run`id`","/var/tmp/glob*","/var/tmp/a\nb","/var/tmp/a\\b")) {
+            var failure=assertThrows(java.io.IOException.class,()->HopsPostprocessingCli.requireOriginalPlotPrefix(prefix));assertTrue(failure.getMessage().contains("choose a NEW native-Linux output prefix"));assertTrue(failure.getMessage().contains("before original execution"));
+        }
+    }
 }

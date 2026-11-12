@@ -22,6 +22,13 @@ Java17 bytecode. Windows can build the module and run native unit tests, while
 original execution/RData decoding require Linux. In WSL, put output directories on its native filesystem,
 such as `/var/tmp`, rather than `/mnt/c` or `/mnt/d`.
 
+**Original plotting requires a safe output prefix.** Its unchanged R script
+passes the prefix to an unquoted shell `mkdir`. Use only ASCII letters/digits,
+slash, underscore, dot, colon or hyphen, for example `/var/tmp/hops-post-NEW`.
+Spaces, shell punctuation and other characters cause FAIL2 before original
+execution. Retain that failed attempt and choose a NEW prefix; no path is
+renamed. Saved verification only loads RData and does not run that shell command.
+
 Build this separate development application from the repository root:
 
 ```sh

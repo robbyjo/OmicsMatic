@@ -36,7 +36,7 @@ public final class HopsPostprocessingCli {
             }
             Caps caps=caps(o);String filter=required(o,"--filter"),json=required(o,"--emit-json");
             if(!Set.of("default","def_anc").contains(filter)||!Set.of("true","false").contains(json))throw new IOException("Explicit original filter default/def_anc and emit-json true/false required");
-            var snapshot=HopsPostprocessingProvider.inspect(provider);nativeFilesystem(out);
+            var snapshot=HopsPostprocessingProvider.inspect(provider);nativeFilesystem(out);requireOriginalPlotPrefix(out.toString());
             checkExtraction(source,reader,out.resolve("source-check.stdout"),out.resolve("source-check.stderr"));
             Path bundle=Files.createDirectory(out.resolve("bundle")),extraction=bundle.resolve("extraction");copyTree(source,extraction,caps);
             var extractionPins=inventory(extraction,caps,null);checkExtraction(extraction,reader,out.resolve("captured-check.stdout"),out.resolve("captured-check.stderr"));
@@ -167,6 +167,10 @@ public final class HopsPostprocessingCli {
         if(nodes.isEmpty()||nodes.size()>caps.taxa())throw new IOException("Complete original target population is empty or exceeds capacity");return List.copyOf(nodes);
     }
     private static void nativeFilesystem(Path p)throws IOException {if(!System.getProperty("os.name").equals("Linux")||Set.of("9p","drvfs","cifs","smbfs").contains(Files.getFileStore(p).type()))throw new HopsPostprocessingProvider.Unavailable("Original materialization/execution requires a native Linux filesystem");}
+    /** The unchanged original R script interpolates this prefix into shell mkdir. */
+    static void requireOriginalPlotPrefix(String prefix)throws IOException {
+        if(!prefix.matches("/[A-Za-z0-9_./:-]+"))throw new IOException("Original R plotting uses an unquoted shell mkdir: choose a NEW native-Linux output prefix containing only ASCII letters/digits, slash, underscore, dot, colon or hyphen. Spaces, shell punctuation and other unqualified characters are refused before original execution; no path is renamed.");
+    }
     private static void copyTree(Path source,Path target,Caps caps)throws IOException {
         var pins=inventory(source,caps,null);Files.createDirectory(target);
         for(var entry:pins.entrySet()) {Path destination=target.resolve(entry.getKey());Files.createDirectories(destination.getParent());Files.copy(source.resolve(entry.getKey()),destination);}

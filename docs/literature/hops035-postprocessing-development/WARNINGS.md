@@ -18,6 +18,12 @@ process's `process.stderr`. Original processing errors are in
 `export-process/process.stderr` or a saved verification's
 `reexport-process/process.stderr`. Keep the entire failed attempt.
 
+**FAIL2 before original plotting: the output prefix must contain only ASCII
+letters/digits, slash, underscore, dot, colon or hyphen.** The unchanged R script
+uses an unquoted shell `mkdir`; spaces and shell punctuation are refused before
+it runs. Keep the failed attempt and choose a NEW safe prefix. Paths are never
+renamed. Saved verification only loads RData and does not run that shell command.
+
 The unchanged original `default` script fails with `undefined columns selected`.
 If default-only processing is required, skip this R stage and review retained
 MaltExtract tables manually. Do not switch to `def_anc` merely to make a check
