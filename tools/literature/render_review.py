@@ -10,6 +10,7 @@ import hashlib
 import html
 import json
 import re
+import sys
 from pathlib import Path
 from scdrs_catalog import diamond_metadata, DIAMOND_WARNING, DIAMOND_ACTIONS
 from scdrs_catalog import cellchat_metadata, CELLCHAT_WARNING, CELLCHAT_ACTIONS
@@ -51,6 +52,9 @@ from quantification_catalog import quantification_metadata, QUANT_WARNING, QUANT
 # Contextualize only two historical shared-build guards; scientific checks stay strict.
 from catalog_shared_build_context import fuma_metadata, mashr_metadata
 from scdrs_catalog import fuma_metadata, mashr_metadata, eagle_metadata, shapeit_metadata, iqtree_metadata, mafft_metadata, pal2nal_metadata, fastp_metadata, nextflow_metadata, salmon_metadata, tomtom_metadata, bigwig_metadata, stringtie_metadata, chromvar_metadata, deseq2_metadata, signac_metadata, htseq_metadata, repeat_metadata, scvi_metadata, quantification_metadata
+
+from malt_source_catalog import *
+from malt_source_render import append_source_notes, refresh_current_catalog
 
 ROOT = Path(__file__).resolve().parents[2]
 DATA = ROOT / "docs/literature/omics-2023-2026"
@@ -139,6 +143,7 @@ def main():
     counts = Counter(t["tool_id"] for p in papers for t in p["tools"])
     tools = []
     for tool_id, count in counts.most_common():
+        print('Checking catalog metadata:', tool_id, file=sys.stderr, flush=True)
         tool = dict(registry[tool_id]); tool["paper_count"] = count
         tool["papers"] = [p["paper_id"] for p in papers if any(t["tool_id"] == tool_id for t in p["tools"])]
         if tool_id == "cellranger":
@@ -722,7 +727,7 @@ def main():
                      f"{p['journal']} · {p['first_publication_date']} · [DOI]({p['publisher_url']}) · [Primary full text]({p['fulltext_url']})", "",
                      "| Tool | How used | Evidence location |", "| --- | --- | --- |"]
         for tool in p["tools"]:
-            cells = [tool["tool"], tool["use_summary"], tool["evidence_section"]]
+            cells = [tool["tool"], tool["use_summary"], tool["evidence_section"] + ("; supplementary DOCX: " + tool["evidence_source_url"] if tool.get("evidence_source_kind") == "supplementary-docx" else "")]
             markdown.append("| " + " | ".join(c.replace("|", "\\|").replace("\n", " ") for c in cells) + " |")
         markdown += ["", f"XML SHA-256: `{p['xml_sha256']}`. Exact evidence paragraph hashes and locators are in [papers.json](papers.json).", ""]
         title = p["title"].replace("{", "\\{").replace("}", "\\}")
@@ -1310,6 +1315,7 @@ const byId=new Map(tools.map(t=>[t.id,t]));let mode='papers';
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 function supportingEvidence(p){let value=`<br>Supporting paragraph ${esc(p.paragraph_index)}: ${esc(p.section)}<br><code>${esc(p.paragraph_sha256)}</code>`;
 if(p.evidence_role==='method-details'){const a=p.named_anchor;value+=`<br><strong>Method details; named tool anchor:</strong> paragraph ${esc(a.paragraph_index)}: ${esc(a.section)}<br><code>${esc(a.paragraph_sha256)}</code><br>Shared method: ${esc(p.shared_terms.join(', '))}<br>${esc(p.relation_note)}`;}return value;}
+function supplementaryEvidence(p){return `<br>Supplementary DOCX: <a data-link="${esc(p.source_url)}">source document</a>; ${esc(p.section)}<br>Word paragraph index ${esc(p.paragraph_index)} (zero-based, including empty paragraphs)<br><code>${esc(p.paragraph_sha256)}</code>`;}
 const el=id=>document.getElementById(id);
 for(const journal of Object.keys(summary.journals))el('journal').add(new Option(journal,journal));
 for(const year of Object.keys(summary.years))el('year').add(new Option(year,year));
@@ -1319,7 +1325,7 @@ function renderContent(){const q=el('query').value.trim().toLowerCase(),j=el('jo
 const filtered=papers.filter(p=>(!j||p.journal_abbreviation===j)&&(!y||p.publication_year===y));
 if(mode==='papers'){const rows=filtered.filter(p=>(!q||JSON.stringify(p).toLowerCase().includes(q))&&(!c||p.tools.some(t=>byId.get(t.tool_id).implementation_status===c)));
 el('count').textContent=`${rows.length} of 250 papers`;
-el('results').innerHTML=rows.map(p=>`<article class="review-card" id="${esc(p.paper_id)}"><h2>${esc(p.paper_id)}: ${esc(p.title)}</h2><p class="review-meta">${esc(p.journal)} · ${esc(p.first_publication_date)} · <a data-link="${esc(p.publisher_url)}">DOI</a> · <a data-link="${esc(p.fulltext_url)}">Primary full text</a></p><div class="review-table"><table><thead><tr><th>Tool</th><th>How used</th><th>Tool-level coverage</th></tr></thead><tbody>${p.tools.filter(t=>!c||byId.get(t.tool_id).implementation_status===c).map(t=>`<tr><td>${esc(t.tool)}${t.version_reported_near_name?'<br>reported '+esc(t.version_reported_near_name):''}</td><td>${esc(t.use_summary)}<details><summary>Evidence locator</summary>${esc(t.evidence_section)}<br>paragraph ${t.evidence_paragraph_index}<br><code>${esc(t.evidence_paragraph_sha256)}</code><br>${esc(t.usage_context)}${(t.supporting_evidence||[]).map(supportingEvidence).join('')}</details></td><td>${esc(byId.get(t.tool_id).implementation_status)}${t.implementation_scope_note?'<p><strong>Scope for this paper:</strong> '+esc(t.implementation_scope_note)+'</p>':''}</td></tr>`).join('')}</tbody></table></div><details><summary>Source provenance</summary>PMCID: ${esc(p.pmcid)}<br>XML SHA-256: <code>${esc(p.xml_sha256)}</code><br>${esc(p.review_status||'Source catalogued; semantic completeness review open')}</details></article>`).join('');
+el('results').innerHTML=rows.map(p=>`<article class="review-card" id="${esc(p.paper_id)}"><h2>${esc(p.paper_id)}: ${esc(p.title)}</h2><p class="review-meta">${esc(p.journal)} · ${esc(p.first_publication_date)} · <a data-link="${esc(p.publisher_url)}">DOI</a> · <a data-link="${esc(p.fulltext_url)}">Primary full text</a></p><div class="review-table"><table><thead><tr><th>Tool</th><th>How used</th><th>Tool-level coverage</th></tr></thead><tbody>${p.tools.filter(t=>!c||byId.get(t.tool_id).implementation_status===c).map(t=>`<tr><td>${esc(t.tool)}${t.version_reported_near_name?'<br>reported '+esc(t.version_reported_near_name):''}</td><td>${esc(t.use_summary)}<details><summary>Evidence locator</summary>${t.evidence_source_kind==='supplementary-docx'?'<strong>Supplementary DOCX</strong>; zero-based Word index, including empty paragraphs<br><a data-link="'+esc(t.evidence_source_url)+'">Source document</a><br>':'Main article JATS; one-based paragraph index<br>'}${esc(t.evidence_section)}<br>paragraph ${t.evidence_paragraph_index}<br><code>${esc(t.evidence_paragraph_sha256)}</code><br>${esc(t.usage_context)}${(t.supporting_evidence||[]).map(supportingEvidence).join('')}${(t.supplementary_evidence||[]).map(supplementaryEvidence).join('')}</details></td><td>${esc(byId.get(t.tool_id).implementation_status)}${t.implementation_scope_note?'<p><strong>Scope for this paper:</strong> '+esc(t.implementation_scope_note)+'</p>':''}</td></tr>`).join('')}</tbody></table></div><details><summary>Source provenance</summary>PMCID: ${esc(p.pmcid)}<br>XML SHA-256: <code>${esc(p.xml_sha256)}</code><br>${esc(p.review_status||'Source catalogued; semantic completeness review open')}</details></article>`).join('');
 }else{const ids=new Set(filtered.flatMap(p=>p.tools.map(t=>t.tool_id)));const rows=tools.filter(t=>ids.has(t.id)&&(!q||JSON.stringify(t).toLowerCase().includes(q))&&(!c||t.implementation_status===c));el('count').textContent=`${rows.length} named tools`;
 el('results').innerHTML=rows.map(t=>`<article class="review-card"><h2>${esc(t.name)} <small>(${t.paper_count} papers)</small></h2><p>${esc(t.role)}</p><p><strong>${esc(t.implementation_status)}</strong> · ${esc(t.implementation_scope)}</p><p>${esc(t.validation_note)}</p>${t.historical_validation_note?'<details class="fuma-card-history"><summary>Earlier FUMA module scope and validation (historical)</summary><p>Earlier candidate and counts are retained below. Current availability and candidate are stated above.</p><p>'+esc(t.historical_implementation_scope)+'</p><p>'+esc(t.historical_validation_note)+'</p></details>':''}${t.implementation_source?'<p>Local source: <code>'+esc(t.implementation_source)+'</code></p>':''}<details><summary>Paper IDs</summary>${esc(t.papers.join(', '))}</details></article>`).join('');}}
 function render(){renderContent();for(const a of document.querySelectorAll('a[data-link]')){const u=new URL(a.dataset.link);if(u.protocol==='https:')a.href=u.href;}}
@@ -1340,7 +1346,10 @@ for(const value of ['papers','tools'])el(value+'-tab').onclick=()=>{mode=value;f
     print(json.dumps(summary))
 
 
+    append_source_notes(ROOT, DATA)
+
+
 if __name__ == "__main__":
     main()
     refresh_genesis_metadata(ROOT, DATA)
-    refresh_scdrs_metadata(ROOT, DATA)
+    refresh_current_catalog(ROOT, DATA)

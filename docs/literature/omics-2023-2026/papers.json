@@ -238,6 +238,136 @@
         "implementation_scope_note": "The paragraph does not name MEM versus backtrack. Both explicit algorithms are available with a seed-length option; reconcile the exact nf-core/eager workflow before selecting one. The 0.7.19 fixture contract does not prove 0.7.12 parity."
       },
       {
+        "tool_id": "hops",
+        "tool": "HOPS",
+        "analysis_role": "Ancient-pathogen candidate assessment from metagenomic alignment evidence",
+        "evidence_section": "Methods / Computational screening for T. pallidum DNA",
+        "evidence_paragraph_index": 29,
+        "matched_text": "HOPS",
+        "extraction_score": 15,
+        "usage_context": "analysis-method-description",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
+        "version_reported_near_name": null,
+        "evidence_selection": "individually-reviewed-paragraph",
+        "evidence_paragraph_sha256": "1f645f2ce00682d71111e245d3ea612de2a76106f25d7db551d4f4c3e88b1501",
+        "use_summary": "Used the HOPS workflow to assess pathogen candidates from MALT screening and damage-related profiles. Candidates with too few reads to assess remained unassessable; this did not establish absence.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11964931/ (section: Methods / Computational screening for T. pallidum DNA)",
+        "implementation_scope_note": "HOPS version and extraction/filter settings are unreported in the main Methods paragraph. Native evidence statistics are scoped components; complete HOPS, MaltExtract and paper-specific authenticity assessment remain open. Preserve the stated 2017 database requirements and distinguish the custom 0.5.2 screening stage.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 7,
+            "paragraph_sha256": "f0c2eb0d76fabd67fb9e3670cfe85d7f5500b4386fa14cee6e7c6296aa7ff09c",
+            "section": "Screening and capturing ancient treponemal DNA"
+          }
+        ]
+      },
+      {
+        "tool_id": "malt",
+        "tool": "MALT",
+        "analysis_role": "Metagenomic alignment, taxonomic classification and reference-index building",
+        "evidence_section": "Methods / Computational screening for T. pallidum DNA",
+        "evidence_paragraph_index": 29,
+        "matched_text": "MALT",
+        "extraction_score": 15,
+        "usage_context": "analysis-method-description",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
+        "version_reported_near_name": null,
+        "evidence_selection": "individually-reviewed-paragraph",
+        "evidence_paragraph_sha256": "1f645f2ce00682d71111e245d3ea612de2a76106f25d7db551d4f4c3e88b1501",
+        "use_summary": "Used MALT within eager/HOPS for ancient-pathogen screening against a stated 2017 database. Separately built a 91-spirochete custom index and screened 36214 sequencing datasets with MALT 0.5.2, BlastN/SemiGlobal, identity 90%, up to 25 alignments per query and 100000 per reference, followed by target extraction and a separate bacterial rescreen.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11964931/ (section: Methods / Computational screening for T. pallidum DNA)",
+        "implementation_scope_note": "The main article does not report the eager-screening MALT version. The 0.4.1 development adapter is a software control, not proof of the authors environment or the separate 0.5.2 role. The supplement reports 0.5.2 followed by superscript citation 61, not 0.5.261. Custom reference dates, accession mapping, aligned-read output and 130G/16-worker execution remain separate requirements; current small controls do not reproduce the historical analysis.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 7,
+            "paragraph_sha256": "f0c2eb0d76fabd67fb9e3670cfe85d7f5500b4386fa14cee6e7c6296aa7ff09c",
+            "section": "Screening and capturing ancient treponemal DNA"
+          }
+        ],
+        "supplementary_evidence": [
+          {
+            "paragraph_index": 235,
+            "paragraph_index_basis": "zero-based-all-Word-paragraphs-including-empty",
+            "paragraph_sha256": "4fade99fdfd2ef9c62a129b7e4467f324c07ce48fa7cf0f643060d9d9703d92d",
+            "paragraph_xml_sha256": "b547ee7df001521336cb4dba6e2609003a34b3185a6607c957e06d57fe3eb192",
+            "source_kind": "supplementary-docx",
+            "source_url": "https://media.springernature.com/full/springer-static/esm/art%3A10.1038%2Fs41586-024-08515-5/MediaObjects/41586_2024_8515_MOESM1_ESM.docx",
+            "document_sha256": "cefa7be7b2bb5313cce9ddb23d5369020c2ef74a90b99daf78a889270db23451",
+            "document_part": "word/document.xml",
+            "document_part_sha256": "d104c27548d65f194fefddddcf2d590f256bb7e3100df83822cb8dfcba5d6219",
+            "section": "Supplementary information / 3.2 Taxonomic identification using MALT"
+          },
+          {
+            "paragraph_index": 236,
+            "paragraph_index_basis": "zero-based-all-Word-paragraphs-including-empty",
+            "paragraph_sha256": "889b634561b6e8116a3247d2e83be3f996ed0385c0d0e3e306a3f780d206474e",
+            "paragraph_xml_sha256": "3042110f258152856e00ebd9a73c2c1c3ccb1b873b13768a2c36a9c13d5f0d8b",
+            "source_kind": "supplementary-docx",
+            "source_url": "https://media.springernature.com/full/springer-static/esm/art%3A10.1038%2Fs41586-024-08515-5/MediaObjects/41586_2024_8515_MOESM1_ESM.docx",
+            "document_sha256": "cefa7be7b2bb5313cce9ddb23d5369020c2ef74a90b99daf78a889270db23451",
+            "document_part": "word/document.xml",
+            "document_part_sha256": "d104c27548d65f194fefddddcf2d590f256bb7e3100df83822cb8dfcba5d6219",
+            "section": "Supplementary information / 3.2 Taxonomic identification using MALT"
+          },
+          {
+            "paragraph_index": 237,
+            "paragraph_index_basis": "zero-based-all-Word-paragraphs-including-empty",
+            "paragraph_sha256": "794434407d5bc6a73e1657863abc74658052558871c63ebaac78ac20aa17f799",
+            "paragraph_xml_sha256": "90ff086951fbdbd4f915f65a57a31925445321d1d685a8b867610981d66a8bc0",
+            "source_kind": "supplementary-docx",
+            "source_url": "https://media.springernature.com/full/springer-static/esm/art%3A10.1038%2Fs41586-024-08515-5/MediaObjects/41586_2024_8515_MOESM1_ESM.docx",
+            "document_sha256": "cefa7be7b2bb5313cce9ddb23d5369020c2ef74a90b99daf78a889270db23451",
+            "document_part": "word/document.xml",
+            "document_part_sha256": "d104c27548d65f194fefddddcf2d590f256bb7e3100df83822cb8dfcba5d6219",
+            "section": "Supplementary information / 3.2 Taxonomic identification using MALT"
+          },
+          {
+            "paragraph_index": 238,
+            "paragraph_index_basis": "zero-based-all-Word-paragraphs-including-empty",
+            "paragraph_sha256": "ae659bceb3609078085fb384bed6a1d4831ec26796accc77bdff317a3501770b",
+            "paragraph_xml_sha256": "7815d0e1658c59f6d27e7dfddcbfda7b09c6ab1fb83e773e6a21d4fbddf48591",
+            "source_kind": "supplementary-docx",
+            "source_url": "https://media.springernature.com/full/springer-static/esm/art%3A10.1038%2Fs41586-024-08515-5/MediaObjects/41586_2024_8515_MOESM1_ESM.docx",
+            "document_sha256": "cefa7be7b2bb5313cce9ddb23d5369020c2ef74a90b99daf78a889270db23451",
+            "document_part": "word/document.xml",
+            "document_part_sha256": "d104c27548d65f194fefddddcf2d590f256bb7e3100df83822cb8dfcba5d6219",
+            "section": "Supplementary information / 3.2 Taxonomic identification using MALT"
+          }
+        ]
+      },
+      {
+        "tool_id": "maltextract",
+        "tool": "MaltExtract",
+        "analysis_role": "Target-species RMA extraction and alignment/damage-related summaries",
+        "evidence_section": "Supplementary information / 3.3 Candidate identification and RMA extraction",
+        "evidence_paragraph_index": 246,
+        "matched_text": "MaltExtract",
+        "extraction_score": 0,
+        "usage_context": "analysis-method-description",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
+        "version_reported_near_name": null,
+        "evidence_selection": "exact-reviewed-supplementary-paragraph",
+        "evidence_paragraph_sha256": "0cc52e84ed408439d40fd60429710d4f181e55413d0cdab38a4e75622c6d67b7",
+        "use_summary": "Used MaltExtract on custom-screening RMA6 output to identify Treponema pallidum subsp. pallidum candidates. Extraction was followed by manual summary/damage assessment and a separate screen against 7508 bacterial genomes.",
+        "evidence_locator": "https://media.springernature.com/full/springer-static/esm/art%3A10.1038%2Fs41586-024-08515-5/MediaObjects/41586_2024_8515_MOESM1_ESM.docx (supplement section 3.3; Word paragraph index246, zero-based including empty paragraphs)",
+        "implementation_scope_note": "This evidence is supplementary DOCX section 3.3, not a main-JATS paragraph. MaltExtract version and filter/resource settings are unreported. Qualify the original provider and explicit choices; do not infer defaults from the outdated standalone README or substitute the 0.4.1 RMA reassignment command.",
+        "evidence_source_kind": "supplementary-docx",
+        "evidence_source_url": "https://media.springernature.com/full/springer-static/esm/art%3A10.1038%2Fs41586-024-08515-5/MediaObjects/41586_2024_8515_MOESM1_ESM.docx",
+        "evidence_document_sha256": "cefa7be7b2bb5313cce9ddb23d5369020c2ef74a90b99daf78a889270db23451",
+        "supplementary_primary_source": {
+          "paragraph_index": 246,
+          "paragraph_index_basis": "zero-based-all-Word-paragraphs-including-empty",
+          "paragraph_sha256": "0cc52e84ed408439d40fd60429710d4f181e55413d0cdab38a4e75622c6d67b7",
+          "paragraph_xml_sha256": "81df3289c052782f9db7b53508bb1bc0deb9d2a7e80054ef61832ffe58cb459c",
+          "source_kind": "supplementary-docx",
+          "source_url": "https://media.springernature.com/full/springer-static/esm/art%3A10.1038%2Fs41586-024-08515-5/MediaObjects/41586_2024_8515_MOESM1_ESM.docx",
+          "document_sha256": "cefa7be7b2bb5313cce9ddb23d5369020c2ef74a90b99daf78a889270db23451",
+          "document_part": "word/document.xml",
+          "document_part_sha256": "d104c27548d65f194fefddddcf2d590f256bb7e3100df83822cb8dfcba5d6219",
+          "section": "Supplementary information / 3.3 Candidate identification and RMA extraction"
+        }
+      },
+      {
         "tool_id": "nextflow",
         "tool": "Nextflow",
         "analysis_role": "Analysis pipeline orchestration",

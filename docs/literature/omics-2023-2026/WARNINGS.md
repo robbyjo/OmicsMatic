@@ -823,3 +823,12 @@ java -jar build/cli/omicsmatic-0.3.7.jar cell-embed --method harmony \
 ```
 
 Alternatively repair/build the pinned upstream C++ package in an approved Windows development environment. The failed local attempts remain in `build/literature-review/dependencies/harmony-install.log` and `harmony-source-install.log`. Rerun to a new output directory after the dependency is available.
+
+
+## MALT family source types and required actions
+
+Three source-reviewed tool additions retain separate provenance: MALT and HOPS have main-article JATS anchors; MaltExtract is named in the P002 supplementary DOCX, section 3.3. Its `evidence_source_kind` is `supplementary-docx`, and paragraph index 246 is zero-based over all Word paragraphs, including empty ones. It is not a main-article paragraph. MALT's four supplementary supporting pointers identify the separate custom 0.5.2 reference-building/screening role. The version is 0.5.2 followed by superscript citation 61; the concatenated text is not version 0.5.261.
+
+These additions improve the catalog and add no whole-tool or biological credit. The source-tested MALT 0.4.1 development controller does not fulfill the separate 0.5.2 role. Complete HOPS and MaltExtract operations remain unfinished; their unreported versions, settings and resource choices remain unknown. See `MALT_ALIGNMENT.md` and `MALT_HOPS_PAPER_ROLES.md`.
+
+**Required action:** match the declared source version and operation, qualify a permitted runtime, provide the complete dated reference/mapping and query populations, and retain original warnings and failures. If any prerequisite is unavailable or cannot be installed, skip its dependent analysis. A small software-control index does not reproduce the historical 91-spirochete or 7,508-genome bacterial analyses. Insufficient-read candidates remain unassessable.

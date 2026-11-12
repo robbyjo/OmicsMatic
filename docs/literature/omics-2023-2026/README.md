@@ -1,62 +1,46 @@
 # 250 paper omics and GWAS toolbox catalog
 
-**Current checkpoint: 99 new scoped integrations**: 19 native Java methods and
-80 tested upstream adapters. There are **102 including three existing adapters**,
-with **244 named tools still missing**. Cell Ranger remains excluded at the
-user's request. The full toolbox goal remains active.
+**Current checkpoint: 99 new scoped integrations**: 19 native Java
+subsets and 80 tested upstream adapters; 102 including
+3 existing adapters. **247 named tools remain missing.**
+Cell Ranger remains excluded at the user's request. The full goal is active.
 
-The fixed collection contains 250 papers: 71 Nature, 104 Nature Genetics and
-75 AJHG articles from 2023-10-23 through 2026-10-23. No time extension was needed.
-There are 402 observed tools, 2,476 paper-tool observations, 1,049 source-bound
-reviewed roles and 375 supporting paragraph pointers. Paper-wide semantic
-review and implementation remain incomplete.
+The fixed cohort contains 250 papers: 71 Nature, 104 Nature Genetics and 75
+AJHG articles from 2023-10-23 through 2026-10-23. No extension was needed.
+There are **405 named tools, 2,479 paper-tool observations and 1,052 reviewed
+uses**, with 377 main-article supporting pointers, four supplementary supporting
+pointers and one separately typed supplementary primary observation.
 
-Read [scDRS setup, analysis and recovery](../SCDRS_INTEGRATION.md) for the typed
-`scdrs-tools` route, exact private Linux runtime preparation and complete JSON
-requests. Original 1.0.0/1.0.1/1.0.2 functions implement gene-set munging,
-single-dataset H5AD scoring and downstream workflows. Native numerical
-components and explicit-family BH remain separately described and tested.
+The three MALT-family additions retain all 2,476 prior observations and all
+1,049 prior reviews. MALT and HOPS have main-article anchors; MaltExtract's
+source is the P002 supplementary DOCX. Its Word paragraph index 246 is
+zero-based and includes empty paragraphs. It is not a main-JATS pointer.
+The custom MALT version is 0.5.2 followed by superscript citation 61.
 
-Six primary paper roles preserve distinct settings. P021 reports 1.0.1 and
-200 controls; P085 reports 1.0.0 and 1000 controls; P055/P123 report 1.0.2.
-P024 leaves the version unstated. P169 writes the plural scDRSs and reports
-1.0.1 with separate atlas inputs, but no exact command, control count or
-preprocessing. A source-reviewed registry overlay corrects that omitted
-observation without modifying the historical base registry. Unreported
-settings and historical author commits are not inferred.
+These additions grant no new whole-tool or biological credit. Read
+[MALT alignment](../MALT_ALIGNMENT.md) and
+[distinct MALT/HOPS/MaltExtract roles](../MALT_HOPS_PAPER_ROLES.md).
+The 0.4.1 controller and native components do not fulfill the separate 0.5.2
+custom database-building/screening role. Full HOPS and MaltExtract operations
+remain unfinished. Unreported versions, resources and settings remain unknown.
 
-The 23 original workflow controls cover 877998 byte-identical numerical and
-gene-weight coordinates and 69 saved JVM checks. Two controls use 1000 disease
-genes and 1000 controls. All 24 packaged bundles replay on Windows Java21/25
-and Linux Java21. Native BH matches 67161 double q values and strict cutoff
-decisions across three JVMs; 36 refusal/tamper controls admit no failed result.
-These are synthetic controls, not biological replication or an atlas benchmark.
+[scDRS](../SCDRS_INTEGRATION.md), [MTAG](../MTAG_INTEGRATION.md),
+[GENESIS](../GENESIS_INTEGRATION.md) and [SNPRelate](../SNPRELATE_INTEGRATION.md)
+retain their separately validated workflows and source-specific boundaries.
+Coverage badges describe scoped integrations, not complete package, historical
+environment, full-paper or biological reproduction.
 
-[MTAG](../MTAG_INTEGRATION.md), [GENESIS](../GENESIS_INTEGRATION.md) and
-[SNPRelate](../SNPRELATE_INTEGRATION.md) retain their distinct workflows and
-evidence. All 401 other tool objects and 1043 earlier review objects are
-preserved. The root supplement requires the separately pinned canonical JAR;
-the released executable alone has no new command. No release or Pages
-deployment is performed by this catalog update.
+**Warnings and required actions:** install or download only where permitted.
+If an exact dependency cannot be supplied or installed, keep its dependent
+analysis skipped with SKIP3. FAIL2 admits no result; retain complete inputs,
+partial outputs, original logs and warnings, resolve the named cause, and retry
+a NEW output directory. Do not repair identifiers, nonfinite values, clips or
+settings to conceal a failure. Hashes establish integrity, not authorship;
+saved replay does not independently refit or authenticate a producer.
 
-**Warnings and required actions:** SKIP3 means skip dependent analysis when
-exact permitted software or capabilities are unavailable or forbidden.
-Download/install only where permitted, with explicit options and NEW private
-paths; otherwise leave analysis skipped. Analysis installs nothing. FAIL2
-admits no result, including partial original outputs. Require wrapper exit0,
-result_admitted=true, COMPLETED.json and complete saved --verify, then review
-every warning, original log, identifier and covariate disposition ledger.
-Preserve each attempt, resolve its named cause and retry NEW paths. Do not
-repair identifiers/NaN/Inf, silently encode covariates, replace historical
-versions, reduce controls or pool correction families to conceal failure.
-Logical resource checks are not OS RAM quotas. Hashes establish integrity,
-not producer authenticity; saved verification does not independently refit
-LOESS, covariates, scores or graphs. Original corr_mcp/corr_mcz are distinct
-from ordinary Pearson r. Native BH uses one trait/annotation family within
-this dataset, with strict q<declared cutoff. Read the integration guide.
-
-Current records: [tool inventory](tool-inventory.json), [papers](papers.json),
-[summary](summary.json), [warnings and required actions](WARNINGS.md).
+Current records: [inventory](tool-inventory.json), [papers](papers.json),
+[summary](summary.json), [warnings](WARNINGS.md), and
+[typed MALT source coverage](malt-source-role-coverage.json).
 
 <details>
 <summary>Generated catalog reference and retained historical checkpoints</summary>
@@ -1329,3 +1313,12 @@ coverage review before marking the overall goal complete.
 </details>
 
 </details>
+
+
+## MALT family source types and required actions
+
+Three source-reviewed tool additions retain separate provenance: MALT and HOPS have main-article JATS anchors; MaltExtract is named in the P002 supplementary DOCX, section 3.3. Its `evidence_source_kind` is `supplementary-docx`, and paragraph index 246 is zero-based over all Word paragraphs, including empty ones. It is not a main-article paragraph. MALT's four supplementary supporting pointers identify the separate custom 0.5.2 reference-building/screening role. The version is 0.5.2 followed by superscript citation 61; the concatenated text is not version 0.5.261.
+
+These additions improve the catalog and add no whole-tool or biological credit. The source-tested MALT 0.4.1 development controller does not fulfill the separate 0.5.2 role. Complete HOPS and MaltExtract operations remain unfinished; their unreported versions, settings and resource choices remain unknown. See `MALT_ALIGNMENT.md` and `MALT_HOPS_PAPER_ROLES.md`.
+
+**Required action:** match the declared source version and operation, qualify a permitted runtime, provide the complete dated reference/mapping and query populations, and retain original warnings and failures. If any prerequisite is unavailable or cannot be installed, skip its dependent analysis. A small software-control index does not reproduce the historical 91-spirochete or 7,508-genome bacterial analyses. Insufficient-read candidates remain unassessable.

@@ -1,6 +1,6 @@
 # Omics and GWAS paper catalog
 
-250 papers; 402 named tools; 2476 paper-tool observations.
+250 papers; 405 named tools; 2479 paper-tool observations.
 
 Window: 2023-10-23 through 2026-10-23, inclusive. No extension was required.
 
@@ -33,6 +33,9 @@ Nature · 2024-12-18 · [DOI](https://doi.org/10.1038/s41586-024-08515-5) · [Pr
 | BEAST | Bayesian phylogenetic inference and divergence analysis. | Methods / Molecular dating |
 | BEDTools | Genomic interval manipulation and overlap. | Methods / Virulence factor analysis |
 | BWA | Mapped preprocessed ancient-DNA shotgun/capture reads to GRCh37 with BWA 0.7.12 and seed length 32 inside nf-core/eager. | Methods / Human ancestry analyses |
+| HOPS | Used the HOPS workflow to assess pathogen candidates from MALT screening and damage-related profiles. Candidates with too few reads to assess remained unassessable; this did not establish absence. | Methods / Computational screening for T. pallidum DNA |
+| MALT | Used MALT within eager/HOPS for ancient-pathogen screening against a stated 2017 database. Separately built a 91-spirochete custom index and screened 36214 sequencing datasets with MALT 0.5.2, BlastN/SemiGlobal, identity 90%, up to 25 alignments per query and 100000 per reference, followed by target extraction and a separate bacterial rescreen. | Methods / Computational screening for T. pallidum DNA |
+| MaltExtract | Used MaltExtract on custom-screening RMA6 output to identify Treponema pallidum subsp. pallidum candidates. Extraction was followed by manual summary/damage assessment and a separate screen against 7508 bacterial genomes. | Supplementary information / 3.3 Candidate identification and RMA extraction; supplementary DOCX: https://media.springernature.com/full/springer-static/esm/art%3A10.1038%2Fs41586-024-08515-5/MediaObjects/41586_2024_8515_MOESM1_ESM.docx |
 | Nextflow | Used Nextflow21.04.1 to orchestrate nf-core/eager2.4.4 for ancient-DNA read processing, human-read removal and HOPS assessment of MALT output. The described pipeline includes adapter/quality trimming, mapping, MAPQ filtering, duplicate removal and damage profiling. | Methods / Computational screening for T. pallidum DNA |
 | nf-core | Reusable sequencing analysis pipelines. | Methods / Computational screening for T. pallidum DNA |
 | nf-core/eager | Processed ancient-DNA shotgun and human-enriched capture data using nf-core/eager 2.3.4, coordinating preprocessing/mapping and ANGSD contamination estimation. | Methods / Human ancestry analyses |

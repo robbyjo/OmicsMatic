@@ -392,3 +392,17 @@ tools/literature/java/MaltAlignmentRefusalReplay.java -text whitespace=cr-at-eol
 
 # Keep source-role and distinct-version intake receipts byte exact.
 docs/literature/malt-hops-paper-roles/** -text whitespace=cr-at-eol
+
+# Preserve explicit main/supplementary MALT source reviews and metadata history.
+tools/literature/malt_source_registry.py -text whitespace=cr-at-eol
+tools/literature/malt_primary_sources.py -text whitespace=cr-at-eol
+tools/literature/malt_source_catalog.py -text whitespace=cr-at-eol
+tools/literature/malt_source_render.py -text whitespace=cr-at-eol
+tools/literature/curate_malt_source_roles.py -text whitespace=cr-at-eol
+tools/literature/audit_malt_source_catalog.py -text whitespace=cr-at-eol
+tools/literature/java/Malt052AlignmentProbe.java -text whitespace=cr-at-eol
+docs/literature/omics-2023-2026/malt-* -text whitespace=cr-at-eol
+
+# Keep complete derived predecessor UI assertions and typed source checks exact.
+tools/literature/check_malt*_ui.cjs -text whitespace=cr-at-eol
+tools/literature/validate_malt_source_catalog_ui.py -text whitespace=cr-at-eol
