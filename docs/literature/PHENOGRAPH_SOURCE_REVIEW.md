@@ -1,0 +1,11 @@
+# Rphenograph source review and catalog gap
+
+**OPEN — this is a newly verified catalog omission, not an implemented tool or a recovered paper runtime.** The current 406-tool inventory has no Rphenograph entry; its count has not been increased by this review. The next primary-catalog amendment must add the observation and review with an explicit version warning. The broader paper-wide semantic audit remains open.
+
+P040, [PLA2G2D in tumour-draining lymph nodes regulates anti-tumour immunity](https://doi.org/10.1038/s41586-026-10954-1), reports Rphenograph **v.0.1.1**, **k = 40**, for clustering FastMNN-corrected imaging mass cytometry measurements. Marker-based lineage annotation, subclustering and visual inspection follow. Those human annotation steps are distinct from FastMNN correction and from graph clustering.
+
+The census checks every main-article paragraph in all 250 pinned XML sources using `Rphenograph` and `PhenoGraph` name boundaries. It finds P040 paragraph29, in Methods / Cell-type annotation, and no other main-article match. It does not establish supplement, author-code or paper-wide completeness. [CENSUS.json](phenograph-source-review/CENSUS.json) retains all 250 source hashes and the matching paragraph hash.
+
+**Version warning:** the [official Rphenograph repository](https://github.com/JinmiaoChenLab/Rphenograph) has four inspected commits; every available DESCRIPTION reports **0.99.1**, with **Artistic-2.0** terms. The selected current source commit is `0298487f0ee13aac55eb77d19992f6bd878ba2fc`. This inspected history does not recover the paper's literal **0.1.1**. Do not silently correct that literal or describe 0.99.1 as the paper's exact version. [SOURCE.json](phenograph-source-review/SOURCE.json) records the complete inspected version history and retained source archive fingerprint.
+
+Required action for implementation: investigate the cited method and other official version records, preserve the discrepancy, then test any explicitly selected candidate on complete prepared populations. Compare complete nearest-neighbor graphs, Jaccard weights and clustering with the matching original source. Runtime or installation restrictions must skip the dependent analysis with visible recovery instructions. No source was executed in this intake and no implementation credit is awarded.

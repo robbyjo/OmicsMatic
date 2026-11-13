@@ -1,5 +1,24 @@
 # 250 paper omics and GWAS toolbox catalog
 
+**Current checkpoint: 103 new scoped integrations**: 19 native Java subsets and 84 tested upstream adapters; 106 including 3 existing adapters. **245 named tools remain missing.** Cell Ranger remains excluded at the user's request. The full goal is active.
+
+**Batchelor / FastMNN now has two qualified selected workflows.** P040 has original 1.29.0 fastMNN on complete prepared protein/log-expression data, with native Java factor/reconstruction checks. P051 retains the selected Monocle 1.3.7/Batchelor 1.20 reducedMNN integration. Read [BATCHELOR129_INTEGRATION.md](../BATCHELOR129_INTEGRATION.md) and [the FastMNN workflow guide](../FASTMNN129_WORKFLOW_DEVELOPMENT.md) for exact source candidates, setup, explicit method choices and limitations. The paper patches/calls/settings remain unknown; this is one scoped upstream admission, not whole-package or paper reproduction.
+
+**Rphenograph is newly recorded and remains missing.** P040 reports 0.1.1 with k = 40 after correction; all four inspected official source commits report 0.99.1. Preserve the reported literal and discrepancy. No Rphenograph code was executed or qualified. Adding this missing tool offsets the Batchelor admission, so missing stays 245. Current use records retain every previous 2481 observation and 1054 review unchanged, then append one Rphenograph observation/review.
+
+The fixed cohort contains **250 papers**: 71 Nature, 104 Nature Genetics and 75 AJHG articles from **2023-10-23 through 2026-10-23**. No time extension was needed. There are **407 named tools, 2,482 paper-tool observations and 1,055 reviewed uses**, with 378 main-article supporting pointers, four supplementary supporting pointers and one separately typed supplementary primary observation. Paper-wide semantic completeness is unproven.
+
+**SKIP3 — skip dependent analysis if the exact permitted runtime, download, installation or execution cannot be supplied.** Setup and analysis are separate; use the documented helper only where allowed. Analysis installs nothing. Windows supports saved-result audits; original analysis requires permitted Linux/WSL and Linux paths.
+
+**FAIL2 — no result is admitted on input, source, numeric, timeout, capacity or process failure.** Keep complete inputs, status, WARNINGS.md, original logs and any unadmitted RDS. Correct the named cause and retry a NEW output. Original unnamed-weight errors are preserved; a named batch_weights dictionary is an explicit different request. FACTORS checks all lazy model factors and zero reconstructed entries; ALL_VALUES additionally checks the full streamed reconstruction. Hashes establish integrity, not producer authentication.
+
+Current records: [inventory](tool-inventory.json),[papers](papers.json),[summary](summary.json),[warnings](WARNINGS.md),[current selected Batchelor coverage](batchelor129-role-coverage.json). Verify this amendment with `python tools/literature/batchelor129_catalog/verify.py --out build/literature-review/monocle-runtime/NEW-catalog-check`; add `--rescan-sources` to read all 250 exact cached XML sources. The generic historical generators below do not reproduce this cumulative admission and must not overwrite the current catalog.
+
+<details>
+<summary>Retained prior catalog checkpoints and notices (historical)</summary>
+
+# 250 paper omics and GWAS toolbox catalog
+
 **Current checkpoint: 102 new scoped integrations**: 19 native Java
 subsets and 83 tested upstream adapters; 105 including
 3 existing adapters. **245 named tools remain missing.**
@@ -1352,3 +1371,5 @@ Three source-reviewed tool additions retain separate provenance: MALT and HOPS h
 These additions improve the catalog and add no whole-tool or biological credit. The source-tested MALT 0.4.1 development controller does not fulfill the separate 0.5.2 role. Complete HOPS and MaltExtract operations remain unfinished; their unreported versions, settings and resource choices remain unknown. See `MALT_ALIGNMENT.md` and `MALT_HOPS_PAPER_ROLES.md`.
 
 **Required action:** match the declared source version and operation, qualify a permitted runtime, provide the complete dated reference/mapping and query populations, and retain original warnings and failures. If any prerequisite is unavailable or cannot be installed, skip its dependent analysis. A small software-control index does not reproduce the historical 91-spirochete or 7,508-genome bacterial analyses. Insufficient-read candidates remain unassessable.
+
+</details>

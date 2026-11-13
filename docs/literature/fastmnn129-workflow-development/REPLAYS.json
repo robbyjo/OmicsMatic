@@ -1,0 +1,199 @@
+{
+  "status": "PASS_THREE_COMPLETE_PUBLIC_RESTORATIONS_REBUILDS_AND_NATIVE_REPLAYS",
+  "logical_files_restored_per_platform": 6949,
+  "calls": [
+    {
+      "label": "windows21",
+      "command": [
+        "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "D:\\projects\\JLinAlg\\tools\\literature\\fastmnn129\\verify.py",
+        "--java-bin",
+        "C:/Program Files/Eclipse Adoptium/jdk-21.0.4.7-hotspot/bin",
+        "--out",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\monocle-runtime\\fastmnn129-public-replays-1\\windows21"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 41.82281184196472
+    },
+    {
+      "label": "windows25",
+      "command": [
+        "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "D:\\projects\\JLinAlg\\tools\\literature\\fastmnn129\\verify.py",
+        "--java-bin",
+        "C:/Program Files/Java/jdk-25/bin",
+        "--out",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\monocle-runtime\\fastmnn129-public-replays-1\\windows25"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 38.060850620269775
+    },
+    {
+      "label": "linux21",
+      "command": [
+        "wsl.exe",
+        "-d",
+        "JLinAlg-Omics-SAIGE-20261026",
+        "--user",
+        "root",
+        "--exec",
+        "/usr/bin/python3",
+        "/mnt/d/projects/JLinAlg/tools/literature/fastmnn129/verify.py",
+        "--java-bin",
+        "/usr/lib/jvm/java-21-openjdk-amd64/bin",
+        "--out",
+        "/mnt/d/projects/JLinAlg/build/literature-review/monocle-runtime/fastmnn129-public-replays-1/linux21"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 485.4847264289856
+    }
+  ],
+  "results": {
+    "windows21": {
+      "status": "PASS_COMPLETE_SAVED_FASTMNN129_MODEL_AND_REFUSAL_COMPARISONS",
+      "calls": [
+        {
+          "label": "build",
+          "command": [
+            "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+            "D:\\projects\\JLinAlg\\tools\\literature\\fastmnn129\\build.py",
+            "--java-bin",
+            "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin",
+            "--out",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\monocle-runtime\\fastmnn129-public-replays-1\\windows21\\build"
+          ],
+          "exit_code": 0
+        },
+        {
+          "label": "packaged-controls",
+          "command": [
+            "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+            "D:\\projects\\JLinAlg\\tools\\literature\\fastmnn129\\test_protocol.py",
+            "--java",
+            "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin\\java.exe",
+            "--jar",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\monocle-runtime\\fastmnn129-public-replays-1\\windows21\\build\\fastmnn129-workflow-development.jar",
+            "--reference",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\monocle-runtime\\fastmnn129-public-replays-1\\windows21\\evidence\\bank",
+            "--factors",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\monocle-runtime\\fastmnn129-public-replays-1\\windows21\\evidence\\factors\\worker-result.json",
+            "--request",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\monocle-runtime\\fastmnn129-public-replays-1\\windows21\\evidence\\bank\\default\\request.json",
+            "--legacy-result",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\monocle-runtime\\fastmnn129-public-replays-1\\windows21\\evidence\\legacy\\worker-result.json",
+            "--out",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\monocle-runtime\\fastmnn129-public-replays-1\\windows21\\packaged-controls"
+          ],
+          "exit_code": 0
+        }
+      ],
+      "complete_successful_original_models": 17,
+      "original_failure_cases": 2,
+      "packaged_checks": 43,
+      "original_fitting_repeated": false,
+      "RDS_reloaded": false,
+      "producer_authenticated": false,
+      "new_tool_credit": 0,
+      "whole_goal_complete": false
+    },
+    "windows25": {
+      "status": "PASS_COMPLETE_SAVED_FASTMNN129_MODEL_AND_REFUSAL_COMPARISONS",
+      "calls": [
+        {
+          "label": "build",
+          "command": [
+            "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+            "D:\\projects\\JLinAlg\\tools\\literature\\fastmnn129\\build.py",
+            "--java-bin",
+            "C:\\Program Files\\Java\\jdk-25\\bin",
+            "--out",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\monocle-runtime\\fastmnn129-public-replays-1\\windows25\\build"
+          ],
+          "exit_code": 0
+        },
+        {
+          "label": "packaged-controls",
+          "command": [
+            "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+            "D:\\projects\\JLinAlg\\tools\\literature\\fastmnn129\\test_protocol.py",
+            "--java",
+            "C:\\Program Files\\Java\\jdk-25\\bin\\java.exe",
+            "--jar",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\monocle-runtime\\fastmnn129-public-replays-1\\windows25\\build\\fastmnn129-workflow-development.jar",
+            "--reference",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\monocle-runtime\\fastmnn129-public-replays-1\\windows25\\evidence\\bank",
+            "--factors",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\monocle-runtime\\fastmnn129-public-replays-1\\windows25\\evidence\\factors\\worker-result.json",
+            "--request",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\monocle-runtime\\fastmnn129-public-replays-1\\windows25\\evidence\\bank\\default\\request.json",
+            "--legacy-result",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\monocle-runtime\\fastmnn129-public-replays-1\\windows25\\evidence\\legacy\\worker-result.json",
+            "--out",
+            "D:\\projects\\JLinAlg\\build\\literature-review\\monocle-runtime\\fastmnn129-public-replays-1\\windows25\\packaged-controls"
+          ],
+          "exit_code": 0
+        }
+      ],
+      "complete_successful_original_models": 17,
+      "original_failure_cases": 2,
+      "packaged_checks": 43,
+      "original_fitting_repeated": false,
+      "RDS_reloaded": false,
+      "producer_authenticated": false,
+      "new_tool_credit": 0,
+      "whole_goal_complete": false
+    },
+    "linux21": {
+      "status": "PASS_COMPLETE_SAVED_FASTMNN129_MODEL_AND_REFUSAL_COMPARISONS",
+      "calls": [
+        {
+          "label": "build",
+          "command": [
+            "/usr/bin/python3",
+            "/mnt/d/projects/JLinAlg/tools/literature/fastmnn129/build.py",
+            "--java-bin",
+            "/usr/lib/jvm/java-21-openjdk-amd64/bin",
+            "--out",
+            "/mnt/d/projects/JLinAlg/build/literature-review/monocle-runtime/fastmnn129-public-replays-1/linux21/build"
+          ],
+          "exit_code": 0
+        },
+        {
+          "label": "packaged-controls",
+          "command": [
+            "/usr/bin/python3",
+            "/mnt/d/projects/JLinAlg/tools/literature/fastmnn129/test_protocol.py",
+            "--java",
+            "/usr/lib/jvm/java-21-openjdk-amd64/bin/java",
+            "--jar",
+            "/mnt/d/projects/JLinAlg/build/literature-review/monocle-runtime/fastmnn129-public-replays-1/linux21/build/fastmnn129-workflow-development.jar",
+            "--reference",
+            "/mnt/d/projects/JLinAlg/build/literature-review/monocle-runtime/fastmnn129-public-replays-1/linux21/evidence/bank",
+            "--factors",
+            "/mnt/d/projects/JLinAlg/build/literature-review/monocle-runtime/fastmnn129-public-replays-1/linux21/evidence/factors/worker-result.json",
+            "--request",
+            "/mnt/d/projects/JLinAlg/build/literature-review/monocle-runtime/fastmnn129-public-replays-1/linux21/evidence/bank/default/request.json",
+            "--legacy-result",
+            "/mnt/d/projects/JLinAlg/build/literature-review/monocle-runtime/fastmnn129-public-replays-1/linux21/evidence/legacy/worker-result.json",
+            "--out",
+            "/mnt/d/projects/JLinAlg/build/literature-review/monocle-runtime/fastmnn129-public-replays-1/linux21/packaged-controls"
+          ],
+          "exit_code": 0
+        }
+      ],
+      "complete_successful_original_models": 17,
+      "original_failure_cases": 2,
+      "packaged_checks": 42,
+      "original_fitting_repeated": false,
+      "RDS_reloaded": false,
+      "producer_authenticated": false,
+      "new_tool_credit": 0,
+      "whole_goal_complete": false
+    }
+  },
+  "packaged_checks": 128,
+  "original_R_fitting_repeated": false,
+  "RDS_reloaded": false,
+  "producer_authenticated": false,
+  "whole_goal_complete": false
+}
