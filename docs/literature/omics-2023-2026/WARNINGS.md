@@ -1,4 +1,19 @@
 
+## Current image-analysis coverage and required actions
+
+**Current catalog: 250 papers, 430 named software families, 2,669 observations and 1,130 individually reviewed uses.** Fifty additional ImageJ uses and one newly recorded Bleach Corrector use have individual primary-source reviews. The previous P040 ImageJ review and all 1,079 previous reviews remain unchanged. Fifty earlier extraction records are enriched with their complete original records retained as history; the other 2,618 observations are unchanged. The full semantic review remains open.
+
+**105 new scoped integrations are available: 19 native Java subsets and 86 upstream workflows; 108 including 3 existing adapters. 266 named families remain missing.** The two new admissions are complete original ImageJ 1.54t core and selected original CorrectBleach 2.1.0/ImageJ 1.53t. A separate native Java histogram engine is part of the CorrectBleach admission, not a second tool credit. These are standalone development workflows; the canonical executable is unchanged. A broader plugin/software name census is still under individual review and is not included in these totals.
+
+**ImageJ 1.54t does not supply Fiji distributions, ImageJ2, external plugins or paper-specific custom scripts.** P040 reports the selected core edition; other reported editions and ambiguous literals remain explicit. Fifty-one reviewed family uses are not 51 reproduced workflows. TrakEM2, Cell Counter, StarDist, Fast4DReg and other named components need distinct qualification. The original component guides retain their pre-admission qualification snapshots; this catalog states current admission.
+
+**Histogram matching must not be used for intensity quantification.** P026 reports XY drift correction followed by Bleach Corrector, but no plugin edition, correction method, baseline or fit settings. The explicit 2.1.0 workflow offers original simple ratio, exponential-with-offset fitting and histogram matching; no method is inferred. Failed/nonfinite original corrections remain unadmitted. Two-point optimizer success is preserved without claiming model adequacy.
+
+**SKIP3 skips dependent analysis** when the permitted exact runtime, display, provider, source, plugin, download, installation or execution is absent/forbidden. Supply documented prerequisites only where permitted and retry NEW paths. ImageJ core macros require full AWT and a working display; the selected CorrectBleach API workflow was tested headlessly. **FAIL2 admits no result:** retain complete inputs/images/models, WARNINGS.md, status and original process logs, resolve the stated cause and retry NEW paths. Cell Ranger remains excluded. Source hashes establish integrity, not producer authentication or biological correctness. No original image analysis or installation occurs during this catalog audit.
+
+<details><summary>Retained previous warnings (historical)</summary>
+
+
 ## Current software census, candidate versions and required actions
 
 **Current catalog: 250 papers, 429 named software families, 2,668 paper-tool observations and 1,079 reviewed uses.** Twenty-two names omitted by the old registry add186 source-anchored observations across the same 250 papers. Twenty-two P040 uses and two P082 author-inventory statements have individual reviews. The 162 other new summaries still require individual review. All 2,482 previous observations and 1,055 reviews remain unchanged. The full semantic review and 250-paper objective remain open.
@@ -985,6 +1000,8 @@ output path. Disconnected infinite pseudotime values remain present. LEARN
 does not admit a pseudotime result. Do not infer roots or repair values to
 conceal failures. Full Batchelor, study reproduction and biological accuracy
 remain unproven; the250-paper goal remains active.
+
+</details>
 
 </details>
 
