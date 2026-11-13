@@ -1,0 +1,284 @@
+[
+  {
+    "pmcid": "PMC13645638",
+    "doi": "10.1038/s41586-026-10954-1",
+    "tool_id": "cytomapper",
+    "evidence_paragraph_sha256": "3464c1c1e537533ef0ed58c20b82001f90306bb8c04d1e07696c0f2d084633c6",
+    "use_summary": "Used for marker-based phenotype gating and visual validation of labels on cell masks with image marker expression; a separate paragraph explicitly reports plotPixels for channel visualization. The gating function and package version are not reported.",
+    "implementation_scope_note": "No new implementation or original runtime is qualified by this source review. Retain exact labels, reported versions, acquisition/data-reuse distinctions and unresolved functions/settings. Skip only dependent analyses if a required permitted licensed runtime, installation or execution cannot be supplied.",
+    "version_reported_near_name": null,
+    "usage_context": "analysis-method-description",
+    "supporting_evidence": [
+      {
+        "paragraph_index": 31,
+        "paragraph_sha256": "a7760954baf93caf02d4389c350d560a093423cdc556d75d7e9b90769fe4b9a6",
+        "section": "Methods / Image visualization"
+      }
+    ]
+  },
+  {
+    "pmcid": "PMC13645638",
+    "doi": "10.1038/s41586-026-10954-1",
+    "tool_id": "cellprofiler",
+    "evidence_paragraph_sha256": "eb90fab4e947873c1a35b61104244efcbac4d78b77e5c50abbadfebad4edb1da",
+    "use_summary": "Cropped IMC images for supervised pixel classification, then generated cell masks, segmented images and extracted single-cell staining measurements in the named IMC segmentation workflow.",
+    "implementation_scope_note": "No new implementation or original runtime is qualified by this source review. Retain exact labels, reported versions, acquisition/data-reuse distinctions and unresolved functions/settings. Skip only dependent analyses if a required permitted licensed runtime, installation or execution cannot be supplied.",
+    "version_reported_near_name": "4.2.5",
+    "usage_context": "analysis-method-description",
+    "supporting_evidence": []
+  },
+  {
+    "pmcid": "PMC13645638",
+    "doi": "10.1038/s41586-026-10954-1",
+    "tool_id": "ilastik",
+    "evidence_paragraph_sha256": "eb90fab4e947873c1a35b61104244efcbac4d78b77e5c50abbadfebad4edb1da",
+    "use_summary": "Supervised pixel classification of nucleus, cytoplasm and background from selected IMC markers, trained on cropped images from multiple patient ROIs; its stacks were upscaled before segmentation.",
+    "implementation_scope_note": "No new implementation or original runtime is qualified by this source review. Retain exact labels, reported versions, acquisition/data-reuse distinctions and unresolved functions/settings. Skip only dependent analyses if a required permitted licensed runtime, installation or execution cannot be supplied.",
+    "version_reported_near_name": "1.4.0",
+    "usage_context": "analysis-method-description",
+    "supporting_evidence": []
+  },
+  {
+    "pmcid": "PMC13645638",
+    "doi": "10.1038/s41586-026-10954-1",
+    "tool_id": "steinbock",
+    "evidence_paragraph_sha256": "eb90fab4e947873c1a35b61104244efcbac4d78b77e5c50abbadfebad4edb1da",
+    "use_summary": "Validated the IMC segmentation strategy using the authors-provided Linux Docker workflow: hot-pixel preprocessing at threshold50, Mesmer segmentation with stated nuclear/cytoplasmic markers, and per-object intensities and spatial properties.",
+    "implementation_scope_note": "No new implementation or original runtime is qualified by this source review. Retain exact labels, reported versions, acquisition/data-reuse distinctions and unresolved functions/settings. Skip only dependent analyses if a required permitted licensed runtime, installation or execution cannot be supplied.",
+    "version_reported_near_name": "0.16.3",
+    "usage_context": "analysis-method-description",
+    "supporting_evidence": []
+  },
+  {
+    "pmcid": "PMC13645638",
+    "doi": "10.1038/s41586-026-10954-1",
+    "tool_id": "deepcell_mesmer",
+    "evidence_paragraph_sha256": "eb90fab4e947873c1a35b61104244efcbac4d78b77e5c50abbadfebad4edb1da",
+    "use_summary": "DeepCell/Mesmer provided automated cell segmentation in the steinbock validation workflow using stated nuclear and cytoplasmic markers. TissueNet is described as its training-data provenance; author-side model retraining is not established. Preserve the reported Mesmer0.4.1 literal.",
+    "implementation_scope_note": "No new implementation or original runtime is qualified by this source review. Retain exact labels, reported versions, acquisition/data-reuse distinctions and unresolved functions/settings. Skip only dependent analyses if a required permitted licensed runtime, installation or execution cannot be supplied. The specific source/input/application distinction described in the use summary remains unresolved; no replacement is inferred.",
+    "version_reported_near_name": "0.4.1",
+    "usage_context": "analysis-method-description",
+    "supporting_evidence": []
+  },
+  {
+    "pmcid": "PMC13645638",
+    "doi": "10.1038/s41586-026-10954-1",
+    "tool_id": "rrscale",
+    "evidence_paragraph_sha256": "5c7694140a5b174f4432e138890d7e19a0503c83d3e2ba3d30e2ad92a6e73dc7",
+    "use_summary": "The paper attributes the inverse-hyperbolic-sine transformation of IMC measurements to the asinh function in rrscale1.0. Its precise package source and any cofactor are not recovered; do not silently substitute a similarly named package or another transform.",
+    "implementation_scope_note": "No new implementation or original runtime is qualified by this source review. Retain exact labels, reported versions, acquisition/data-reuse distinctions and unresolved functions/settings. Skip only dependent analyses if a required permitted licensed runtime, installation or execution cannot be supplied. The specific source/input/application distinction described in the use summary remains unresolved; no replacement is inferred.",
+    "version_reported_near_name": "1.0",
+    "usage_context": "analysis-method-description",
+    "supporting_evidence": []
+  },
+  {
+    "pmcid": "PMC13645638",
+    "doi": "10.1038/s41586-026-10954-1",
+    "tool_id": "imcrtools",
+    "evidence_paragraph_sha256": "d59ea31f11f0457ee8a23045116a12fd4b4663987c59d1966a36d1b964a114b6",
+    "use_summary": "Used buildSpatialGraph with Delaunay triangulation and maximum distance20; testInteractions compared cell-type interaction counts with label-permutation nulls and interaction/avoidance scores; aggregateNeighbors counted phenotypic neighbors before k-means(k10); minDistToCells supported distances and dyad neighborhoods at15 or30micrometers.",
+    "implementation_scope_note": "No new implementation or original runtime is qualified by this source review. Retain exact labels, reported versions, acquisition/data-reuse distinctions and unresolved functions/settings. Skip only dependent analyses if a required permitted licensed runtime, installation or execution cannot be supplied.",
+    "version_reported_near_name": "0.1.8",
+    "usage_context": "analysis-method-description",
+    "supporting_evidence": []
+  },
+  {
+    "pmcid": "PMC13645638",
+    "doi": "10.1038/s41586-026-10954-1",
+    "tool_id": "fiji_imagej",
+    "evidence_paragraph_sha256": "a7760954baf93caf02d4389c350d560a093423cdc556d75d7e9b90769fe4b9a6",
+    "use_summary": "Generated composite images of selected channels with reported ImageJ core version1.54t in Fiji; removed outlier pixels, applied median or Gaussian filtering at reported0.5-pixel radius, and scaled contrast. Exact outlier/scaling settings and the Fiji distribution are not recovered.",
+    "implementation_scope_note": "No new implementation or original runtime is qualified by this source review. Retain exact labels, reported versions, acquisition/data-reuse distinctions and unresolved functions/settings. Skip only dependent analyses if a required permitted licensed runtime, installation or execution cannot be supplied. The specific source/input/application distinction described in the use summary remains unresolved; no replacement is inferred.",
+    "version_reported_near_name": "1.54t",
+    "usage_context": "analysis-method-description",
+    "supporting_evidence": []
+  },
+  {
+    "pmcid": "PMC13645638",
+    "doi": "10.1038/s41586-026-10954-1",
+    "tool_id": "geomxtools",
+    "evidence_paragraph_sha256": "2574fc7f40cef14c99ecf635dd22c7379ec22aef956beac7fb962af3e2e160c6",
+    "use_summary": "Used Q3 normalization and linear mixed models for differential expression in GeoMx whole-transcriptome spatial profiling, after the reported segment filtering; the statistical-analysis paragraph independently names its LMM role.",
+    "implementation_scope_note": "No new implementation or original runtime is qualified by this source review. Retain exact labels, reported versions, acquisition/data-reuse distinctions and unresolved functions/settings. Skip only dependent analyses if a required permitted licensed runtime, installation or execution cannot be supplied.",
+    "version_reported_near_name": "3.10.0",
+    "usage_context": "analysis-method-description",
+    "supporting_evidence": [
+      {
+        "paragraph_index": 54,
+        "paragraph_sha256": "34bfee0cad2751c1d5bb0fb39b91e7673cffc3180d5753adcd963a79abe24f92",
+        "section": "Methods / Statistical analysis"
+      }
+    ]
+  },
+  {
+    "pmcid": "PMC13645638",
+    "doi": "10.1038/s41586-026-10954-1",
+    "tool_id": "metascape",
+    "evidence_paragraph_sha256": "cf5e717c148917f5cb6f9ef14860d8162ad66088099b42dfef4bbdac84d68d5e",
+    "use_summary": "Performed pathway enrichment on differentially expressed genes from GeoMx spatial profiling and bulk T-cell RNA-seq. The bulk workflow reports Metascape3.5; detailed enrichment settings are not recovered.",
+    "implementation_scope_note": "No new implementation or original runtime is qualified by this source review. Retain exact labels, reported versions, acquisition/data-reuse distinctions and unresolved functions/settings. Skip only dependent analyses if a required permitted licensed runtime, installation or execution cannot be supplied.",
+    "version_reported_near_name": "3.5",
+    "usage_context": "analysis-method-description",
+    "supporting_evidence": [
+      {
+        "paragraph_index": 32,
+        "paragraph_sha256": "2574fc7f40cef14c99ecf635dd22c7379ec22aef956beac7fb962af3e2e160c6",
+        "section": "Methods / GeoMx digital spatial profiling"
+      }
+    ]
+  },
+  {
+    "pmcid": "PMC13645638",
+    "doi": "10.1038/s41586-026-10954-1",
+    "tool_id": "gepia2",
+    "evidence_paragraph_sha256": "90cf72abf7c6559cb7a1954cde2969d55e3379c737b1c004a66fb2ef4267b78f",
+    "use_summary": "Used the GEPIA2 TCGA browser to calculate Pearson correlations and associated P values between PLA2G2D and cytokine expression across tumor types, with stated subtype/isoform selection for plotting.",
+    "implementation_scope_note": "No new implementation or original runtime is qualified by this source review. Retain exact labels, reported versions, acquisition/data-reuse distinctions and unresolved functions/settings. Skip only dependent analyses if a required permitted licensed runtime, installation or execution cannot be supplied.",
+    "version_reported_near_name": null,
+    "usage_context": "analysis-method-description",
+    "supporting_evidence": []
+  },
+  {
+    "pmcid": "PMC13645638",
+    "doi": "10.1038/s41586-026-10954-1",
+    "tool_id": "flowjo",
+    "evidence_paragraph_sha256": "18c83fcb4b86ec1c285b4fc21e88c1e57a222cd0504c2eec1241c85102e405c2",
+    "use_summary": "Used FlowJo10.0 to analyze flow-cytometry data from the TDLN T-cell stimulation assay. Exact FlowJo workspace/gating settings are not reported.",
+    "implementation_scope_note": "No new implementation or original runtime is qualified by this source review. Retain exact labels, reported versions, acquisition/data-reuse distinctions and unresolved functions/settings. Skip only dependent analyses if a required permitted licensed runtime, installation or execution cannot be supplied.",
+    "version_reported_near_name": "10.0",
+    "usage_context": "analysis-method-description",
+    "supporting_evidence": []
+  },
+  {
+    "pmcid": "PMC13645638",
+    "doi": "10.1038/s41586-026-10954-1",
+    "tool_id": "genorm",
+    "evidence_paragraph_sha256": "d238ac4b738fa1f191f17e07d2ca2e864ff33a7398309989e5f3b0684ca73516",
+    "use_summary": "Used ACTB and HPRT1 reference genes to derive a normalization factor for PLA2G2D qPCR, then expressed fold changes relative to controls. The text describes a geometric mean of Cq values; the exact software and input representation remain unresolved and must not be silently reinterpreted.",
+    "implementation_scope_note": "No new implementation or original runtime is qualified by this source review. Retain exact labels, reported versions, acquisition/data-reuse distinctions and unresolved functions/settings. Skip only dependent analyses if a required permitted licensed runtime, installation or execution cannot be supplied. The specific source/input/application distinction described in the use summary remains unresolved; no replacement is inferred.",
+    "version_reported_near_name": null,
+    "usage_context": "analysis-method-description",
+    "supporting_evidence": []
+  },
+  {
+    "pmcid": "PMC13645638",
+    "doi": "10.1038/s41586-026-10954-1",
+    "tool_id": "rstatix",
+    "evidence_paragraph_sha256": "34bfee0cad2751c1d5bb0fb39b91e7673cffc3180d5753adcd963a79abe24f92",
+    "use_summary": "Used a two-sided t-test for differential IMC cell abundances. The variance assumption, exact call and comparison grouping are not reported.",
+    "implementation_scope_note": "No new implementation or original runtime is qualified by this source review. Retain exact labels, reported versions, acquisition/data-reuse distinctions and unresolved functions/settings. Skip only dependent analyses if a required permitted licensed runtime, installation or execution cannot be supplied.",
+    "version_reported_near_name": "0.7.2",
+    "usage_context": "analysis-method-description",
+    "supporting_evidence": []
+  },
+  {
+    "pmcid": "PMC13645638",
+    "doi": "10.1038/s41586-026-10954-1",
+    "tool_id": "ggpubr",
+    "evidence_paragraph_sha256": "34bfee0cad2751c1d5bb0fb39b91e7673cffc3180d5753adcd963a79abe24f92",
+    "use_summary": "Used stat_compare_means for Wilcoxon signed-rank and unpaired t-test comparisons, and stat_cor for Pearson correlation coefficients. Preserve the reported test choices; figure-specific calls and plotting settings are not recovered.",
+    "implementation_scope_note": "No new implementation or original runtime is qualified by this source review. Retain exact labels, reported versions, acquisition/data-reuse distinctions and unresolved functions/settings. Skip only dependent analyses if a required permitted licensed runtime, installation or execution cannot be supplied.",
+    "version_reported_near_name": "0.6.0",
+    "usage_context": "analysis-method-description",
+    "supporting_evidence": []
+  },
+  {
+    "pmcid": "PMC13645638",
+    "doi": "10.1038/s41586-026-10954-1",
+    "tool_id": "graphpad_prism",
+    "evidence_paragraph_sha256": "34bfee0cad2751c1d5bb0fb39b91e7673cffc3180d5753adcd963a79abe24f92",
+    "use_summary": "Used Prism10 for statistical analyses of flow cytometry, tumor growth, survival and IHC/immunofluorescence. The paragraph states paired/unpaired t-tests and Wilcoxon comparisons where appropriate but does not recover every figure-specific Prism procedure or project.",
+    "implementation_scope_note": "No new implementation or original runtime is qualified by this source review. Retain exact labels, reported versions, acquisition/data-reuse distinctions and unresolved functions/settings. Skip only dependent analyses if a required permitted licensed runtime, installation or execution cannot be supplied.",
+    "version_reported_near_name": "10",
+    "usage_context": "analysis-method-description",
+    "supporting_evidence": []
+  },
+  {
+    "pmcid": "PMC13645638",
+    "doi": "10.1038/s41586-026-10954-1",
+    "tool_id": "qupath",
+    "evidence_paragraph_sha256": "9ceb981f9cadc8559917519a217a0ed21074255af7669665042eec5eecf8210f",
+    "use_summary": "Used QuPath0.5.1 positive-cell detection on brightfield H-DAB slide ROIs with stated stain vectors, resolution, background/nuclear/area thresholds, cell expansion and DAB positivity thresholds0.08/0.16/0.24; exported ROI measurements for tissue/patient summaries.",
+    "implementation_scope_note": "No new implementation or original runtime is qualified by this source review. Retain exact labels, reported versions, acquisition/data-reuse distinctions and unresolved functions/settings. Skip only dependent analyses if a required permitted licensed runtime, installation or execution cannot be supplied.",
+    "version_reported_near_name": "0.5.1",
+    "usage_context": "analysis-method-description",
+    "supporting_evidence": []
+  },
+  {
+    "pmcid": "PMC13645638",
+    "doi": "10.1038/s41586-026-10954-1",
+    "tool_id": "ucsc_xena",
+    "evidence_paragraph_sha256": "90cf72abf7c6559cb7a1954cde2969d55e3379c737b1c004a66fb2ef4267b78f",
+    "use_summary": "Obtained TCGA melanoma RSEM-normalized expression and curated phenotype data from UCSC Xena, followed by the stated log2(x+1) transformation. This is data reuse; it does not establish a new RSEM execution by the authors.",
+    "implementation_scope_note": "No new implementation or original runtime is qualified by this source review. Retain exact labels, reported versions, acquisition/data-reuse distinctions and unresolved functions/settings. Skip only dependent analyses if a required permitted licensed runtime, installation or execution cannot be supplied.",
+    "version_reported_near_name": null,
+    "usage_context": "provided-expression-data-reuse",
+    "supporting_evidence": []
+  },
+  {
+    "pmcid": "PMC13645638",
+    "doi": "10.1038/s41586-026-10954-1",
+    "tool_id": "imc_segmentation",
+    "evidence_paragraph_sha256": "eb90fab4e947873c1a35b61104244efcbac4d78b77e5c50abbadfebad4edb1da",
+    "use_summary": "Named the Bodenmiller IMC segmentation pipeline for conversion of MCD/text into TIFF, hot-pixel filtering, CellProfiler cropping/segmentation and ilastik classification. Exact pipeline source revision and orchestration settings remain unresolved.",
+    "implementation_scope_note": "No new implementation or original runtime is qualified by this source review. Retain exact labels, reported versions, acquisition/data-reuse distinctions and unresolved functions/settings. Skip only dependent analyses if a required permitted licensed runtime, installation or execution cannot be supplied. The specific source/input/application distinction described in the use summary remains unresolved; no replacement is inferred.",
+    "version_reported_near_name": null,
+    "usage_context": "analysis-method-description",
+    "supporting_evidence": []
+  },
+  {
+    "pmcid": "PMC13645638",
+    "doi": "10.1038/s41586-026-10954-1",
+    "tool_id": "abi_sds",
+    "evidence_paragraph_sha256": "d238ac4b738fa1f191f17e07d2ca2e864ff33a7398309989e5f3b0684ca73516",
+    "use_summary": "ABI SDS1.5.1 determined qPCR Cq values for ACTB and HPRT1 before the separate reported geNorm normalization step. The licensed runtime and instrument measurements are not supplied.",
+    "implementation_scope_note": "No new implementation or original runtime is qualified by this source review. Retain exact labels, reported versions, acquisition/data-reuse distinctions and unresolved functions/settings. Skip only dependent analyses if a required permitted licensed runtime, installation or execution cannot be supplied.",
+    "version_reported_near_name": "1.5.1",
+    "usage_context": "instrument-acquisition-or-calling-software",
+    "supporting_evidence": []
+  },
+  {
+    "pmcid": "PMC13645638",
+    "doi": "10.1038/s41586-026-10954-1",
+    "tool_id": "facsdiva",
+    "evidence_paragraph_sha256": "1712cbc53a915f79560df1c993e7e3cc724433c454d9f48fee560de42ff4378c",
+    "use_summary": "BD FACS Diva9 accompanied acquisition/analysis on the FACSymphony A5 in the flow-cytometry workflow. Exact software commands and instrument configuration are not reported.",
+    "implementation_scope_note": "No new implementation or original runtime is qualified by this source review. Retain exact labels, reported versions, acquisition/data-reuse distinctions and unresolved functions/settings. Skip only dependent analyses if a required permitted licensed runtime, installation or execution cannot be supplied.",
+    "version_reported_near_name": "9",
+    "usage_context": "instrument-acquisition-or-calling-software",
+    "supporting_evidence": []
+  },
+  {
+    "pmcid": "PMC13645638",
+    "doi": "10.1038/s41586-026-10954-1",
+    "tool_id": "cytof_software",
+    "evidence_paragraph_sha256": "436046ef2a127e7ec3549e1b16e10c76d48fdb63ab9a72b4f55a4eaa4fc19e84",
+    "use_summary": "CyTOF software7.1 acquired IMC images on the Hyperion Imaging System. This is an acquisition-software role; no separate offline analytical procedure or instrument control is implemented here.",
+    "implementation_scope_note": "No new implementation or original runtime is qualified by this source review. Retain exact labels, reported versions, acquisition/data-reuse distinctions and unresolved functions/settings. Skip only dependent analyses if a required permitted licensed runtime, installation or execution cannot be supplied.",
+    "version_reported_near_name": "7.1",
+    "usage_context": "instrument-acquisition-or-calling-software",
+    "supporting_evidence": []
+  },
+  {
+    "pmcid": "PMC11631769",
+    "doi": "10.1038/s41588-024-01999-x",
+    "tool_id": "facsdiva",
+    "evidence_paragraph_sha256": "ca44d238ba149b628e05398ce1a466404ae438b1e859861e914d481d3a0e16b9",
+    "use_summary": "Explicitly listed by the authors among software used in this study; the availability statement does not establish particular FACSDiva procedures or instrument settings.",
+    "implementation_scope_note": "No new implementation or original runtime is qualified by this source review. Retain exact labels, reported versions, acquisition/data-reuse distinctions and unresolved functions/settings. Skip only dependent analyses if a required permitted licensed runtime, installation or execution cannot be supplied.",
+    "version_reported_near_name": null,
+    "usage_context": "author-software-inventory; operations-unreported",
+    "supporting_evidence": []
+  },
+  {
+    "pmcid": "PMC11631769",
+    "doi": "10.1038/s41588-024-01999-x",
+    "tool_id": "graphpad_prism",
+    "evidence_paragraph_sha256": "ca44d238ba149b628e05398ce1a466404ae438b1e859861e914d481d3a0e16b9",
+    "use_summary": "Explicitly listed by the authors among software used in this study; the availability statement does not establish particular Prism statistical functions.",
+    "implementation_scope_note": "No new implementation or original runtime is qualified by this source review. Retain exact labels, reported versions, acquisition/data-reuse distinctions and unresolved functions/settings. Skip only dependent analyses if a required permitted licensed runtime, installation or execution cannot be supplied.",
+    "version_reported_near_name": "9.3.1",
+    "usage_context": "author-software-inventory; operations-unreported",
+    "supporting_evidence": []
+  }
+]
