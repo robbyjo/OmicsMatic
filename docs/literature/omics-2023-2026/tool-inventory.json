@@ -11098,5 +11098,94 @@
     "paper_role_coverage": {
       "P026": "Explicit original 2.1.0/ImageJ 1.53t workflow with all three original methods and optional native Java histogram engine. P026 reports no plugin edition/method/settings; histogram matching is inappropriate for intensity quantification. Read IMAGEJ_CATALOG_INTEGRATION.md. Fast4DReg registration is separate; no unreported edition/method/settings are inferred."
     }
+  },
+  {
+    "id": "wesanderson",
+    "name": "wesanderson",
+    "pattern": "(?<![A-Za-z0-9_])(?:wesanderson)(?![A-Za-z0-9_])",
+    "role": "Construct color scales for microbiome ontology levels",
+    "current_coverage": "native-subset-validated",
+    "existing_source": "src/main/java/org/jlinalg/plot/WesAnderson037.java",
+    "coverage_note": "Native Java 0.3.7 scalar palette vectors and a separately selected original R4.5.3 provider. P054 reports 0.3.7 but no palette, color count or MFOD1 category mapping. viridisLite gradients and R graphics are separate. Read PALETTE_ALLELIC_CATALOG.md.",
+    "paper_count": 1,
+    "source_roles_reviewed": 1,
+    "whole_tool_qualified": false,
+    "whole_paper_reproduced": false,
+    "paper_exact_unknown_settings_available": false,
+    "canonical_adapter_available": false,
+    "root_dispatch_available": false,
+    "papers": [
+      "P054"
+    ],
+    "implementation_status": "native-subset-validated",
+    "implementation_source": "src/main/java/org/jlinalg/plot/WesAnderson037.java",
+    "implementation_scope": "Native Java wesanderson 0.3.7 bounded scalar discrete/continuous palette vectors, attributes and complete saved-result verification; 24 immutable palettes. Explicit standalone executable; original R 4.5.3 provider is separate. P054 palette/count/MFOD1 mapping and call are unknown. R graphics, general R coercion and viridisLite gradients are outside the native subset. Read PALETTE_ALLELIC_CATALOG.md.",
+    "validation_note": "Three platforms each matched 6,108 original API cases and 224,445 returned colors, with 3,397 original failures retained; 72 CLI cases and 63 complete saved replays per platform. Two actual private original installations, 9 setup refusals and Windows/Linux offline native rebuilds passed. Earlier 604 mismatches and corrected-source controls remain retained; no paper palette was inferred.",
+    "project_adapter_available": true,
+    "development_candidate_available": true,
+    "development_candidate": "docs/literature/wesanderson037-workflow-development/wesanderson037-native-windows21-development.jar",
+    "development_candidate_sha256": "d1e054f0798061364e69f423d86aedbe1e1c720b5a55d7e6c4f2d3ce18c070ff",
+    "development_build": "tools/literature/wesanderson037/build.py",
+    "development_adapter_cli": "java -jar docs/literature/wesanderson037-workflow-development/wesanderson037-native-windows21-development.jar generate --name GrandBudapest1 --n 4 --type discrete --out NEW-output",
+    "workflow_validation": "../wesanderson037-workflow-development/VALIDATION.json",
+    "source_role_coverage": "palette-allelic-role-coverage.json",
+    "new_scoped_integration_credit": 1,
+    "paper_role_coverage": {
+      "P054": "Native Java 0.3.7 scalar palette vectors and a separately selected original R4.5.3 provider. P054 reports 0.3.7 but no palette, color count or MFOD1 category mapping. viridisLite gradients and R graphics are separate. Read PALETTE_ALLELIC_CATALOG.md. The primary paragraph reports wesanderson 0.3.7 and R4.2.3 to R4.4.0, but no palette, color count, category mapping or discrete/continuous call. The native Java scalar component was compared with original 0.3.7 on R4.5.3. R graphics and viridisLite are separate; no paper settings are inferred."
+    },
+    "uncovered_roles": [
+      "Unknown paper palette, color count, discrete/continuous call and MFOD1 category mapping",
+      "Author R4.2.3 to R4.4.0 runtime and supplementary plotting code",
+      "R graphics and general R-language coercion",
+      "Separate viridisLite continuous gradients"
+    ]
+  },
+  {
+    "id": "allelicseries",
+    "name": "AllelicSeries / COAST-SS",
+    "pattern": "(?<![A-Za-z0-9_])(?:AllelicSeries|COAST[-\\s]*SS)(?![A-Za-z0-9_])",
+    "role": "Identify rare coding-variant allelic series from summary statistics",
+    "current_coverage": "missing",
+    "existing_source": "",
+    "coverage_note": "P204 reports AllelicSeries 1.1.2; exact equivalence to the separately tested 0.1.1.2 candidate is unresolved. The candidate provides unchanged original R exports, batch execution and native Java summary burden components. No reported-edition substitution or catalog credit. Read PALETTE_ALLELIC_CATALOG.md.",
+    "paper_count": 1,
+    "source_roles_reviewed": 1,
+    "whole_tool_qualified": false,
+    "whole_paper_reproduced": false,
+    "paper_exact_unknown_settings_available": false,
+    "canonical_adapter_available": false,
+    "root_dispatch_available": false,
+    "papers": [
+      "P204"
+    ],
+    "implementation_status": "missing",
+    "implementation_source": "",
+    "implementation_scope": "The reported AllelicSeries 1.1.2 edition remains missing. Explicit 0.1.1.2 candidate: unchanged original R single-call and batch exports, including COAST/COASTSS/SKAT-O; selected native Java summary burden components are separate. Requires the ready private Linux/WSL R 4.5.3 provider; the Python entry point is source, not a standalone JAR. Quantitative traits, aligned supplied inputs and original model limitations apply. No 20K-gene benchmark or author preprocessing is reproduced. Read PALETTE_ALLELIC_CATALOG.md and ALLELICSERIES0112_BATCH.md.",
+    "validation_note": "Candidate 0.1.1.2 only: 1,026 complete batch calls compared with an independent unchanged original package, including 1,022 complete returned objects and 4 original errors; all identifiers, conditions and RNG states compared. All 16 original exports, 8 batch refusals, 5 scalar/real-zero controls and lossless tables passed. Native 539 cases/2,623 values matched on three Java platforms. These controls do not establish reported 1.1.2 equivalence or binary/discrete calibration.",
+    "project_adapter_available": false,
+    "development_candidate_available": true,
+    "development_candidate": "tools/literature/allelicseries0112/batch.py",
+    "development_candidate_sha256": "eed501f52f69de21028116cbe8a155edf7b7781d053213073e76adb727266d8d",
+    "development_candidate_kind": "python-source-entrypoint-requires-qualified-provider",
+    "development_build": "tools/literature/allelicseries0112/provider.py",
+    "development_adapter_cli": "python tools/literature/allelicseries0112/batch.py --provider READY-provider --function COASTSS --arguments-rds aligned-gene-requests.rds --allow-analysis --out NEW-output",
+    "native_candidate_component": "src/main/java/org/jlinalg/genetics/AllelicSeries0112.java",
+    "available_candidate_versions": [
+      "0.1.1.2"
+    ],
+    "reported_version_unresolved": "1.1.2",
+    "paper_build_equivalence_proven": false,
+    "workflow_validation": "../allelicseries0112-batch-development/VALIDATION.json",
+    "source_role_coverage": "palette-allelic-role-coverage.json",
+    "new_scoped_integration_credit": 0,
+    "paper_role_coverage": {
+      "P204": "P204 reports AllelicSeries 1.1.2; exact equivalence to the separately tested 0.1.1.2 candidate is unresolved. The candidate provides unchanged original R exports, batch execution and native Java summary burden components. No reported-edition substitution or catalog credit. Read PALETTE_ALLELIC_CATALOG.md. The reported 1.1.2 edition remains unresolved. The separately selected 0.1.1.2 candidate supplies original R exports and a batch adapter, plus native Java summary burden components. COAST/SKAT-O remain upstream R. This is a quantitative-trait method; binary/discrete calibration, author preprocessing, ancestry models and paper runtime benchmarks are not established by this implementation."
+    },
+    "uncovered_roles": [
+      "Reported1.1.2 edition and author runtime/settings",
+      "Author input preparation, allele/variant alignment, annotation and LD provenance",
+      "Binary/discrete trait calibration and ancestry-specific model validation",
+      "Paper20K-gene performance and biological reproduction"
+    ]
   }
 ]

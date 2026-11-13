@@ -1,6 +1,27 @@
 # 250-paper omics and GWAS toolbox catalog
 
 
+## Current palette and allelic-series coverage: warnings and required actions
+
+**Current catalog: 250 papers, 432 named software families, 2,671 observations and 1,132 individually reviewed uses.** Two newly recorded paper-family uses cover all 27 named primary paragraphs in the exact 250-source census. All 430 previous families, 2,669 observations and 1,130 reviews remain unchanged. The fixed cohort is 71 Nature, 104 Nature Genetics and 75 AJHG papers, 2023-10-23 through 2026-10-23; no time extension was needed. The full semantic review and implementation objective remain open.
+
+**106 new scoped integrations are available: 20 native Java subsets and 86 upstream workflows; 109 including 3 existing adapters. 267 named families remain missing.** Only wesanderson gains new implementation credit here. Its native scalar 0.3.7 palette engine and explicit standalone executable have complete original controls. The separate original R provider needs its documented permitted R 4.5.3 runtime. The canonical executable and root dispatch are unchanged. Component guides retain their pre-admission qualification snapshots; this catalog records the later admission.
+
+**P054 reports wesanderson 0.3.7 for MFOD1 ontology colors, but no palette, color count, category mapping or discrete/continuous call.** Do not infer these choices. The paper's R 4.2.3 to R 4.4.0 differs from the original reference R 4.5.3. Native scalar colors do not supply R graphics or general R-language coercion. The separately named viridisLite 0.4.2 gradients are not covered by this admission. Read WESANDERSON037_WORKFLOW_DEVELOPMENT.md and PALETTE_ALLELIC_CATALOG.md for exact operations and explicit commands.
+
+**P204 reports AllelicSeries 1.1.2; the separately tested 0.1.1.2 candidate is not proven equivalent. The reported edition remains missing and earns zero credit.** The candidate runs unchanged original R exports, including full COAST/COASTSS/SKAT-O, in single-call or batch workflows. Native Java supplies selected summary burden components, not full COAST/SKAT-O. Quantitative-trait derivation does not establish binary/discrete calibration or ancestry robustness. Supplied effects/SEs, MAF, LD and annotations must already align; no author preprocessing, missing-LD assumption, 20K-gene timing or paper reproduction is inferred. Read ALLELICSERIES0112_BATCH.md and its provider instructions; explicitly choose this candidate only when appropriate.
+
+**SKIP3 skips dependent analysis** when required downloads, installation, source, compiler, runtime, provider, display or execution are missing/forbidden. Supply only permitted prerequisites using the linked guides and retry NEW paths. Native palette generation needs Java, not R. Original AllelicSeries execution needs the ready private Linux/WSL R 4.5.3 provider. Cell Ranger and Cell Ranger ARC remain excluded by user request.
+
+**FAIL2 admits no complete result.** Retain inputs, original returned objects/errors, all conditions, complete indexes, status and warnings; resolve the named cause and retry NEW paths. Review every original warning and justify or correct the input/model choice. A low-level scalar zero returned before association computation, an ambiguous zero, an original error or a nonfinite return is retained but unadmitted. A genuinely computed probability zero with explicit positive SEs is preserved. Failed batches retain successful entries but admit no complete batch. Do not remove failed genes or relabel a partial batch as complete. ImageJ distributions/plugins remain separate; histogram matching must not be used for intensity quantification. Hashes establish integrity, not producer authentication or biological correctness. This catalog audit executes no new original analysis or installation.
+
+Read [current source roles, executable commands and recovery](../PALETTE_ALLELIC_CATALOG.md). Validate with `python tools/literature/palette_allelic_catalog/verify.py --out build/literature-review/monocle-runtime/NEW-palette-allelic-check`; `--rescan-sources` checks all250 exact cached primary XMLs. Full semantic review and implementation remain open.
+
+<details><summary>Retained previous catalog checkpoints (historical)</summary>
+
+# 250-paper omics and GWAS toolbox catalog
+
+
 ## Current image-analysis coverage and required actions
 
 **Current catalog: 250 papers, 430 named software families, 2,669 observations and 1,130 individually reviewed uses.** Fifty additional ImageJ uses and one newly recorded Bleach Corrector use have individual primary-source reviews. The previous P040 ImageJ review and all 1,079 previous reviews remain unchanged. Fifty earlier extraction records are enriched with their complete original records retained as history; the other 2,618 observations are unchanged. The full semantic review remains open.
@@ -1405,6 +1426,8 @@ Three source-reviewed tool additions retain separate provenance: MALT and HOPS h
 These additions improve the catalog and add no whole-tool or biological credit. The source-tested MALT 0.4.1 development controller does not fulfill the separate 0.5.2 role. Complete HOPS and MaltExtract operations remain unfinished; their unreported versions, settings and resource choices remain unknown. See `MALT_ALIGNMENT.md` and `MALT_HOPS_PAPER_ROLES.md`.
 
 **Required action:** match the declared source version and operation, qualify a permitted runtime, provide the complete dated reference/mapping and query populations, and retain original warnings and failures. If any prerequisite is unavailable or cannot be installed, skip its dependent analysis. A small software-control index does not reproduce the historical 91-spirochete or 7,508-genome bacterial analyses. Insufficient-read candidates remain unassessable.
+
+</details>
 
 </details>
 

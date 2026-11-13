@@ -15395,6 +15395,29 @@
         "evidence_paragraph_sha256": "75e3afe4dfd939f6f45fc1414e6f9e11269ba27111f0b75a08132e8f9a187ae4",
         "use_summary": "Named in the source Methods/analysis description; the exact operation summary requires individual review.",
         "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12823411/ (section: Methods / Estimation of the Danish terrestrial diversity)"
+      },
+      {
+        "tool_id": "wesanderson",
+        "tool": "wesanderson",
+        "analysis_role": "Construct color scales for microbiome ontology levels",
+        "evidence_section": "Methods / Data exploration and visualization",
+        "evidence_paragraph_index": 93,
+        "matched_text": "wesanderson",
+        "evidence_paragraph_sha256": "49a7527526389e9d16df6a393894090861be3f2b1a7fa3379335150b931f03e8",
+        "evidence_selection": "individually-reviewed-explicit-primary-analysis-anchor",
+        "review_status": "individually-reviewed-primary-source-roles; whole-paper-method-review-open",
+        "use_summary": "Constructed the color scale for MFOD1 ontology levels. The separate viridisLite 0.4.2 package supplied colorblind-friendly continuous gradients.",
+        "implementation_scope_note": "The primary paragraph reports wesanderson 0.3.7 and R4.2.3 to R4.4.0, but no palette, color count, category mapping or discrete/continuous call. The native Java scalar component was compared with original 0.3.7 on R4.5.3. R graphics and viridisLite are separate; no paper settings are inferred.",
+        "version_reported_near_name": "0.3.7",
+        "usage_context": "Complete primary visualization paragraph and retained known-palette scan; supplementary analysis code remains unaudited.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 93,
+            "paragraph_sha256": "49a7527526389e9d16df6a393894090861be3f2b1a7fa3379335150b931f03e8",
+            "section": "Methods / Data exploration and visualization"
+          }
+        ],
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12823411/ (section: Methods / Data exploration and visualization)"
       }
     ],
     "status": "extracted",
@@ -47845,6 +47868,154 @@
         "evidence_paragraph_sha256": "a1caeaf182d001dfaa1b30f60d2658b5480b530a2ee7a399ea2ccf33b4efe5a0",
         "use_summary": "Variant consequence annotation.",
         "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12808971/ (section: Material and methods / Preparation of UKB data / Whole-exome sequencing data)"
+      },
+      {
+        "tool_id": "allelicseries",
+        "tool": "AllelicSeries / COAST-SS",
+        "analysis_role": "Identify rare coding-variant allelic series from summary statistics",
+        "evidence_section": "Material and methods / Preparation of UKB data / Association analysis",
+        "evidence_paragraph_index": 36,
+        "matched_text": "COAST-SS",
+        "evidence_paragraph_sha256": "d435fa8afc7f400f4d00922a09b7c26d662c6246b36386e09ad6b830708d1930",
+        "evidence_selection": "individually-reviewed-explicit-primary-analysis-anchor",
+        "review_status": "individually-reviewed-primary-source-roles; whole-paper-method-review-open",
+        "use_summary": "Ran COAST-SS with full in-sample LD for UKB lipid traits, then borrowed UKB LD for UKB/MVP meta-analysis and TOPMed replication. Per-variant effects/SEs, MAFs, LD and annotations are upstream inputs; missing UKB LD was treated as independence in the paper.",
+        "implementation_scope_note": "The reported 1.1.2 edition remains unresolved. The separately selected 0.1.1.2 candidate supplies original R exports and a batch adapter, plus native Java summary burden components. COAST/SKAT-O remain upstream R. This is a quantitative-trait method; binary/discrete calibration, author preprocessing, ancestry models and paper runtime benchmarks are not established by this implementation.",
+        "version_reported_near_name": "1.1.2",
+        "usage_context": "All26 named primary paragraphs were individually reviewed in the retained intake. Paragraph36 anchors actual software use; overview, derivation, simulations, benchmarking, limitations and repeated availability statements do not imply separate executions.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 3,
+            "paragraph_sha256": "2d67c9d7e14f482654cde6eb75c436dcb3dfd55e907a851137671c533da861d3",
+            "section": "Introduction"
+          },
+          {
+            "paragraph_index": 10,
+            "paragraph_sha256": "959a60c4387c9c7b62e0dea72bdcb1e81364f1746996251fbabad29eb39598c9",
+            "section": "Material and methods / Discrepancies from the original COAST"
+          },
+          {
+            "paragraph_index": 11,
+            "paragraph_sha256": "aeb622788046ef0da4e046507d28cade4ce085dd37606b9b0dc75934a3d5f3f4",
+            "section": "Material and methods / COAST from summary statistics"
+          },
+          {
+            "paragraph_index": 29,
+            "paragraph_sha256": "3a2cc43b08aeedab1225004f70e91a4f45f76d13ab54ec7a14ce36abd7f7c41b",
+            "section": "Material and methods / Simulation studies / Type I error"
+          },
+          {
+            "paragraph_index": 31,
+            "paragraph_sha256": "75dd2ab121e7b610213b81235a4d6bf6735d4764e98c1c89b554ccf574ba81b3",
+            "section": "Material and methods / Runtime analysis"
+          },
+          {
+            "paragraph_index": 36,
+            "paragraph_sha256": "d435fa8afc7f400f4d00922a09b7c26d662c6246b36386e09ad6b830708d1930",
+            "section": "Material and methods / Preparation of UKB data / Association analysis"
+          },
+          {
+            "paragraph_index": 37,
+            "paragraph_sha256": "315623aaad02dffebb59dc53a31aa1b265a98cface164bf5dc732ac53f32b7bc",
+            "section": "Material and methods / Meta-analysis"
+          },
+          {
+            "paragraph_index": 39,
+            "paragraph_sha256": "f17056403a2d5eb7cc3a20c2c1b35706e94ed917bbc657f13ecbf87888f8029c",
+            "section": "Material and methods / TOPMed analysis"
+          },
+          {
+            "paragraph_index": 40,
+            "paragraph_sha256": "3ef9069399bfeda1524cc68ad2c54bac62d901d918fbb417cad8f6605460c8a4",
+            "section": "Results / COAST-SS runs COAST starting from summary statistics"
+          },
+          {
+            "paragraph_index": 41,
+            "paragraph_sha256": "8e09b334f7b6a36b559e61e89572147912bccdd3478fa11bde37e31cce8e4d60",
+            "section": "Results / COAST-SS remains valid in the absence of perfect LD information"
+          },
+          {
+            "paragraph_index": 42,
+            "paragraph_sha256": "e1866a64d8f57836eb7a4ae8af8197e28d4f04abc705351b72aae6f5982f4057",
+            "section": "Results / COAST-SS remains valid in the absence of perfect LD information"
+          },
+          {
+            "paragraph_index": 43,
+            "paragraph_sha256": "57f3639bf3e4b00213f6c5e8b893bbdb44e64bbb0a38eac8aecc8853ed5a81c6",
+            "section": "Results / COAST-SS remains valid in the absence of perfect LD information"
+          },
+          {
+            "paragraph_index": 44,
+            "paragraph_sha256": "300ebdec89663841428543c5039ba05090292fbfae4cfb6cc0133b62fe8e4486",
+            "section": "Results / COAST-SS remains valid in the absence of perfect LD information"
+          },
+          {
+            "paragraph_index": 45,
+            "paragraph_sha256": "d58f7cfe97e0e331c362c5999d96925edb89f3eb39bf65d89b6bdddfcb469671",
+            "section": "Results / COAST-SS substantially accelerates genome-wide analyses"
+          },
+          {
+            "paragraph_index": 47,
+            "paragraph_sha256": "06b276b353b978397df3ccba8f144a06c1e503fdd5f34fc01aaad5838d7b1b3a",
+            "section": "Results / Alternate annotation and weighting schemes provide consistent results"
+          },
+          {
+            "paragraph_index": 48,
+            "paragraph_sha256": "941cbb6cea21288f7fcf13509e167ab2dd2f1047fffbab64670afbb3b8825a32",
+            "section": "Results / COAST-SS identifies new candidate allelic series for lipid traits"
+          },
+          {
+            "paragraph_index": 49,
+            "paragraph_sha256": "33cc0aac79d6009b4e22ae7ba58aa15cb12094766f79daf87dbf7e1de5f22f4a",
+            "section": "Results / COAST-SS identifies new candidate allelic series for lipid traits"
+          },
+          {
+            "paragraph_index": 50,
+            "paragraph_sha256": "eec25f9c267390ad2738aeb5ed76821c16bd4b9d7eb5e790a04475f0017109d1",
+            "section": "Results / COAST-SS identifies new candidate allelic series for lipid traits"
+          },
+          {
+            "paragraph_index": 51,
+            "paragraph_sha256": "b3a2a1ab0008c50d0d57ac962f325891d535251d599be1476d6648a055e4036f",
+            "section": "Discussion"
+          },
+          {
+            "paragraph_index": 52,
+            "paragraph_sha256": "d63aeec5fd9a5ddfba754aa4fe5e1df3d8e5c77d774fd59f789fd0b9cfa07fe7",
+            "section": "Discussion"
+          },
+          {
+            "paragraph_index": 54,
+            "paragraph_sha256": "b78e5439721d18eb5b5292ffc575704fa6ae18370b4b9c3231d1fb455224737a",
+            "section": "Discussion"
+          },
+          {
+            "paragraph_index": 55,
+            "paragraph_sha256": "94867ca34234c69a6c505835a2f190612ef6eac3ab1cc8d5a1813fb3399799f9",
+            "section": "Discussion"
+          },
+          {
+            "paragraph_index": 56,
+            "paragraph_sha256": "4ef80eeaafeb56b198b5c8429c2433113ed47699a450b604f71a679fd30a769c",
+            "section": "Discussion"
+          },
+          {
+            "paragraph_index": 57,
+            "paragraph_sha256": "9f7ddfe4d50207fb10545cfcfafb7156cc97a4494e19bd0f5bde4e6bcd132ae8",
+            "section": "Discussion"
+          },
+          {
+            "paragraph_index": 58,
+            "paragraph_sha256": "2b72aa76c6847c1de8fa8e8616d3f661b0aed6a4b7c0771457e42e6129025d88",
+            "section": "Data and code availability"
+          },
+          {
+            "paragraph_index": 64,
+            "paragraph_sha256": "2b72aa76c6847c1de8fa8e8616d3f661b0aed6a4b7c0771457e42e6129025d88",
+            "section": "Associated Data / Data Availability Statement"
+          }
+        ],
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12808971/ (section: Material and methods / Preparation of UKB data / Association analysis)"
       }
     ],
     "status": "extracted",
