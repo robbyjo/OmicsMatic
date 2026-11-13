@@ -7834,6 +7834,46 @@
     "validation_note": "Existing overlap/adapters require paper-specific option checks; missing integrations remain pending."
   },
   {
+    "id": "batchelor",
+    "name": "Batchelor / FastMNN",
+    "pattern": "(?<![A-Za-z0-9_])(?:batchelor|fastMNN|reducedMNN|mnnCorrect|multiBatchNorm|rescaleBatches|correctExperiments)(?![A-Za-z0-9_])",
+    "role": "Batch correction and integration of single-cell expression or imaging-protein measurements",
+    "current_coverage": "missing",
+    "existing_source": "src/main/java/org/jlinalg/cli/Monocle137WorkflowCli.java",
+    "coverage_note": "P051 Batchelor1.20.0 has a tested selected Monocle1.3.7/reducedMNN workflow. P040 reports FastMNN1.29 on transformed imaging-protein data, and its author processing notebook imports batchelor, but the correction call and exact package version were not recovered. The distinct FastMNN role remains missing; reducedMNN does not substitute for it.",
+    "paper_count": 2,
+    "papers": [
+      "P040",
+      "P051"
+    ],
+    "implementation_status": "missing",
+    "implementation_source": "src/main/java/org/jlinalg/cli/Monocle137WorkflowCli.java",
+    "implementation_scope": "Partial original upstream integration: Monocle3 1.3.7 align_cds -> Batchelor1.20 reducedMNN on explicitly prepared expression and batch labels, followed by UMAP/clustering/graph learning and explicit-root native ordering. P040 fastMNN on imaging-protein measurements, reported method version1.29, remains unimplemented. The whole named package therefore remains missing; no new scoped integration badge is awarded. Read BATCHELOR_INTEGRATION.md.",
+    "validation_note": "The selected P051 interpretation passed complete original64-gene/480-cell pipeline controls, independent original reducedMNN alignment equality, PCA/LSI, residual adjustment, clustering and explicit-root checks. Disconnected control retains240 infinite cells. Public complete-archive replay passed Windows Java21/25 and Linux Java21. These controls do not establish the paper function/settings or validate P040 fastMNN/protein processing.",
+    "partial_upstream_adapter_available": true,
+    "project_adapter_available": false,
+    "canonical_adapter_available": false,
+    "root_dispatch_available": false,
+    "development_adapter_cli": "java -jar monocle137-workflow-jdk21.jar",
+    "development_candidate": "docs/literature/monocle137-workflow-development/monocle137-workflow-jdk21.jar",
+    "development_candidate_sha256": "97906be6345c25d9e8b344255674d717b12b9b00ff9cab2414ac92e14107133c",
+    "development_build": "tools/literature/monocle137/build.py",
+    "source_roles_reviewed": 2,
+    "source_role_coverage": "batchelor-role-coverage.json",
+    "workflow_validation": "../monocle137-workflow-development/VALIDATION.json",
+    "covered_selected_roles": [
+      "P051: explicitly selected reducedMNN interpretation"
+    ],
+    "uncovered_roles": [
+      "P040: fastMNN on imaging-protein measurements; reported method version1.29"
+    ],
+    "external_analysis_runtime_required": true,
+    "new_scoped_integration_credit": 0,
+    "whole_tool_qualified": false,
+    "whole_paper_reproduced": false,
+    "paper_exact_unknown_settings_available": false
+  },
+  {
     "id": "bowtie1",
     "name": "Bowtie 1",
     "pattern": "\\bBowtie[\\s-]*(?:v(?:ersion)?\\.?\\s*)?1(?:\\.\\d+){0,2}\\b",
