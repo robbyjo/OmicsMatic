@@ -920,3 +920,36 @@ cannot replace the paper's database. Empty/insufficient alignments never prove
 absence. Saved verification repeats no original fitting and authenticates no
 producer. Whole MALT/HOPS/nf-core/paper and biological reproduction remain open.
 Older source-component notices are retained as historical qualification scope.
+
+
+## Batchelor and FastMNN: supported operation, remaining gap and required actions
+
+**P051: a tested original Batchelor1.20 reducedMNN integration is available**
+through the selected Monocle3 1.3.7 workflow. Read
+[BATCHELOR_INTEGRATION.md](../BATCHELOR_INTEGRATION.md). It uses explicit inputs,
+batch labels and roots, with separate LEARN and RUN admission. The original
+paper integration function, inputs, settings and roots remain unreported.
+
+**P040 FastMNN on imaging-protein data remains missing.** The paper reports
+method version1.29; do not reinterpret it as a recovered Batchelor package
+patch. The author notebook imports batchelor but supplies no recovered
+correction call or session information; the annotation notebook is empty.
+Do not replace fastMNN with reducedMNN or treat transformed protein signals
+as RNA counts. This newly recognized role keeps Batchelor's overall status
+missing, with a partial upstream adapter available. No new integration badge
+is awarded. The checkpoint remains102 scoped integrations; missing tools rise
+to245 because the previously omitted package is now visible.
+
+**SKIP3: skip dependent analysis if the exact Linux R/Monocle/Batchelor runtime
+cannot be supplied or installed where permitted.** The candidate JAR contains
+no original runtime. Setup and analysis are separate; use the documented
+helper with installation/download flags only on permitted hosts. Analysis
+installs nothing. Windows users can use permitted WSL and Linux Java paths.
+
+**FAIL2: no result is admitted on input, integrity, capacity, process or
+scientific failures.** Preserve complete inputs, WARNINGS.md, status and
+original process/RDS diagnostics; correct the named cause and retry a NEW
+output path. Disconnected infinite pseudotime values remain present. LEARN
+does not admit a pseudotime result. Do not infer roots or repair values to
+conceal failures. Full Batchelor, study reproduction and biological accuracy
+remain unproven; the250-paper goal remains active.

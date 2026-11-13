@@ -2,8 +2,15 @@
 
 **Current checkpoint: 102 new scoped integrations**: 19 native Java
 subsets and 83 tested upstream adapters; 105 including
-3 existing adapters. **244 named tools remain missing.**
+3 existing adapters. **245 named tools remain missing.**
 Cell Ranger remains excluded at the user's request. The full goal is active.
+
+**Batchelor / FastMNN: two omitted roles are now catalogued.** P051 has a
+tested selected Batchelor1.20 reducedMNN integration through Monocle1.3.7.
+P040 FastMNN on imaging-protein data remains missing, so no new integration
+badge is awarded. Read [BATCHELOR_INTEGRATION.md](../BATCHELOR_INTEGRATION.md)
+for the precise distinction, setup, warnings and recovery actions. All2,479
+prior observations and1,052 prior reviews remain unchanged.
 
 **MALT complete DNA index building and original0.5.2 BlastN screening are now
 available** through an owned standalone workflow with an explicit native
@@ -30,8 +37,8 @@ this scoped badge does not qualify the whole package, MALT or HOPS.
 
 The fixed cohort contains 250 papers: 71 Nature, 104 Nature Genetics and 75
 AJHG articles from 2023-10-23 through 2026-10-23. No extension was needed.
-There are **405 named tools, 2,479 paper-tool observations and 1,052 reviewed
-uses**, with 377 main-article supporting pointers, four supplementary supporting
+There are **406 named tools, 2,481 paper-tool observations and 1,054 reviewed
+uses**, with 378 main-article supporting pointers, four supplementary supporting
 pointers and one separately typed supplementary primary observation.
 
 The three MALT-family additions retain all 2,476 prior observations and all

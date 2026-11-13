@@ -1,0 +1,87 @@
+{
+  "status": "PASS_TWO_PRIMARY_BATCHELOR_ROLES_WITH_EXPLICIT_FASTMNN_GAP",
+  "source_observations": {
+    "P040": {
+      "tool_id": "batchelor",
+      "tool": "Batchelor / FastMNN",
+      "analysis_role": "Batch correction and integration of single-cell expression or imaging-protein measurements",
+      "evidence_section": "Methods / Processing and normalization of IMC data",
+      "evidence_paragraph_index": 28,
+      "matched_text": "fastMNN",
+      "extraction_score": 15,
+      "usage_context": "imaging-protein-fastmnn",
+      "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
+      "version_reported_near_name": "1.29",
+      "evidence_selection": "individually-reviewed-paragraph",
+      "evidence_paragraph_sha256": "5c7694140a5b174f4432e138890d7e19a0503c83d3e2ba3d30e2ad92a6e73dc7",
+      "use_summary": "Batch-corrected transformed imaging mass cytometry measurements by ablation run, including Ki-67 expression; used the corrected measurements for cell clustering and annotation.",
+      "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13645638/ (section: Methods / Processing and normalization of IMC data)",
+      "implementation_scope_note": "The paper reports fastMNN v.1.29 for imaging mass cytometry after transformation and QC, not raw RNA counts. The author processing notebook imports batchelor, supporting package association, but contains no recovered fastMNN call/sessionInfo; its cell-annotation notebook is empty at reviewed commit c8074a59e2fd6497e4e613eb2b2f9ea4f2a85e3d. Preserve the literal reported method version 1.29; no Batchelor package patch or execution settings are established. The tested Monocle1.3.7/Batchelor1.20 reducedMNN workflow does not implement this distinct FastMNN/protein role. No author code was executed or redistributed; repository license metadata is absent.",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 29,
+          "section": "Methods / Cell-type annotation",
+          "paragraph_sha256": "3464c1c1e537533ef0ed58c20b82001f90306bb8c04d1e07696c0f2d084633c6"
+        }
+      ]
+    },
+    "P051": {
+      "tool_id": "batchelor",
+      "tool": "Batchelor / FastMNN",
+      "analysis_role": "Batch correction and integration of single-cell expression or imaging-protein measurements",
+      "evidence_section": "Methods / Single-cell transcriptomics on mouse neutrophils / Velocyto analysis",
+      "evidence_paragraph_index": 86,
+      "matched_text": "Batchelor",
+      "extraction_score": 15,
+      "usage_context": "single-cell-batch-integration",
+      "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
+      "version_reported_near_name": "1.20.0",
+      "evidence_selection": "individually-reviewed-paragraph",
+      "evidence_paragraph_sha256": "314baa7c4aec361901f183a11e4d398633d423ea5504c110eb1a24f5e99ad517",
+      "use_summary": "Integrated single-cell samples to address batch effects before Monocle3 dimensional reduction, clustering and pseudotime.",
+      "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12823425/ (section: Methods / Single-cell transcriptomics on mouse neutrophils / Velocyto analysis)",
+      "implementation_scope_note": "Batchelor1.20.0 batch integration is reported before Monocle3 1.3.7 trajectories. A tested selected implementation uses original Monocle1.3.7 align_cds calling original Batchelor1.20 reducedMNN on caller-prepared coordinates, with complete source controls. This is an explicit interpretation: the paper integration function, commit, transformation, graph settings and roots are unreported. It does not recover the paper call, implement P040 FastMNN/protein processing, qualify all Batchelor operations or reproduce the study. Read BATCHELOR_INTEGRATION.md and MONOCLE137_WORKFLOW_DEVELOPMENT.md.",
+      "supporting_evidence": []
+    }
+  },
+  "appended_reviews": [
+    {
+      "pmcid": "PMC13645638",
+      "doi": "10.1038/s41586-026-10954-1",
+      "tool_id": "batchelor",
+      "evidence_paragraph_sha256": "5c7694140a5b174f4432e138890d7e19a0503c83d3e2ba3d30e2ad92a6e73dc7",
+      "use_summary": "Batch-corrected transformed imaging mass cytometry measurements by ablation run, including Ki-67 expression; used the corrected measurements for cell clustering and annotation.",
+      "implementation_scope_note": "The paper reports fastMNN v.1.29 for imaging mass cytometry after transformation and QC, not raw RNA counts. The author processing notebook imports batchelor, supporting package association, but contains no recovered fastMNN call/sessionInfo; its cell-annotation notebook is empty at reviewed commit c8074a59e2fd6497e4e613eb2b2f9ea4f2a85e3d. Preserve the literal reported method version 1.29; no Batchelor package patch or execution settings are established. The tested Monocle1.3.7/Batchelor1.20 reducedMNN workflow does not implement this distinct FastMNN/protein role. No author code was executed or redistributed; repository license metadata is absent.",
+      "version_reported_near_name": "1.29",
+      "usage_context": "imaging-protein-fastmnn",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 29,
+          "section": "Methods / Cell-type annotation",
+          "paragraph_sha256": "3464c1c1e537533ef0ed58c20b82001f90306bb8c04d1e07696c0f2d084633c6"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC12823425",
+      "doi": "10.1038/s41586-025-09807-0",
+      "tool_id": "batchelor",
+      "evidence_paragraph_sha256": "314baa7c4aec361901f183a11e4d398633d423ea5504c110eb1a24f5e99ad517",
+      "use_summary": "Integrated single-cell samples to address batch effects before Monocle3 dimensional reduction, clustering and pseudotime.",
+      "implementation_scope_note": "Batchelor1.20.0 batch integration is reported before Monocle3 1.3.7 trajectories. A tested selected implementation uses original Monocle1.3.7 align_cds calling original Batchelor1.20 reducedMNN on caller-prepared coordinates, with complete source controls. This is an explicit interpretation: the paper integration function, commit, transformation, graph settings and roots are unreported. It does not recover the paper call, implement P040 FastMNN/protein processing, qualify all Batchelor operations or reproduce the study. Read BATCHELOR_INTEGRATION.md and MONOCLE137_WORKFLOW_DEVELOPMENT.md.",
+      "version_reported_near_name": "1.20.0",
+      "usage_context": "single-cell-batch-integration",
+      "supporting_evidence": []
+    }
+  ],
+  "covered_selected_roles": [
+    "P051: explicitly selected reducedMNN interpretation"
+  ],
+  "uncovered_roles": [
+    "P040: fastMNN on imaging-protein measurements; reported method version1.29"
+  ],
+  "paper_function_and_settings_recovered": false,
+  "whole_tool_qualified": false,
+  "new_scoped_integration_credit": 0,
+  "whole_goal_complete": false
+}
