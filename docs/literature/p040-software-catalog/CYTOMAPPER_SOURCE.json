@@ -1,0 +1,2234 @@
+{
+  "status": "RECOVERED_ORIGINAL_CYTOMAPPER_SOURCE_NOT_RUNTIME_QUALIFICATION",
+  "source_repository": "https://git.bioconductor.org/packages/cytomapper",
+  "source_branch": "RELEASE_3_23",
+  "source_commit": "f3e2850ae4ca6df9810eecf6de1b7755160da7c8",
+  "version": "1.24.0",
+  "license": "GPL (>= 2)",
+  "declared_minimum_R": "4.0",
+  "paper_version_reported": false,
+  "source_members": {
+    ".gitignore": {
+      "bytes": 992,
+      "sha256": "9dfdc8e93c4dbc3ec18e227dc67b10dcf909aaa4294d0a974a3807e78879203c"
+    },
+    ".Rbuildignore": {
+      "bytes": 189,
+      "sha256": "3a99adbb93493e8ebc5211eb22ed2035b933fa7a091a94528ea98a5e6c97443c"
+    },
+    "DESCRIPTION": {
+      "bytes": 2427,
+      "sha256": "f9d720189d39138f12973d65446a1bcba9d8ffb069685c9e85195c601254f348"
+    },
+    "NAMESPACE": {
+      "bytes": 3759,
+      "sha256": "d1c1feb430b8e85871977eaf164e7b1b1ba0652a2b58aaedd04ecda95ddef7bd"
+    },
+    "NEWS": {
+      "bytes": 5796,
+      "sha256": "aa46a5a39a05a7297c68f45c6245e540a60998742480dc8cc1d7c0988f943b80"
+    },
+    "README.md": {
+      "bytes": 7311,
+      "sha256": "79d5591d8ce8db18a857872f2a61287feba1a258af8ff65dfb0f86021edcd851"
+    },
+    "_pkgdown.yml": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".github/.gitignore": {
+      "bytes": 8,
+      "sha256": "8f27a8e64eb5eb6c1fc9780d8ef46aace5babe35efc390844b22308fb96cb858"
+    },
+    "data/pancreasImages.RData": {
+      "bytes": 331248,
+      "sha256": "2d2f477cb02beab4cb94250339466f7228542cd5b06b55fe3573d69f6872d676"
+    },
+    "data/pancreasMasks.RData": {
+      "bytes": 7408,
+      "sha256": "b732c41c0c45761ff155bf6e57d8247cb1ddd1ebfa61542c8a384a998d668fff"
+    },
+    "data/pancreasSCE.RData": {
+      "bytes": 33824,
+      "sha256": "cffc1c0a0d26502f7688be1a5b24c150ce111323884413d78c4e85e341d287cf"
+    },
+    "inst/CITATION": {
+      "bytes": 788,
+      "sha256": "c2edb0cc3704e11e4cc1b2db59f1680c9558de1b3f99bd1bb88bdb5566ad7c76"
+    },
+    "man/compImage.Rd": {
+      "bytes": 3255,
+      "sha256": "16a354c52e45f3ad64a29497720dbda45e767200c3a470c0bf76739766958be3"
+    },
+    "man/CytoImageList-manipulation.Rd": {
+      "bytes": 4746,
+      "sha256": "cecdda45432b4780c1c4c84ac7bc8147bd94248dfb4e8243d6c90431e725862d"
+    },
+    "man/CytoImageList-naming.Rd": {
+      "bytes": 2042,
+      "sha256": "e7f0f48623ada24ffa16152cbd4441931f85fb9229a35a65f1ecd0efffc9cf07"
+    },
+    "man/CytoImageList-subsetting.Rd": {
+      "bytes": 6218,
+      "sha256": "9ab5543ac98587f3cc03286fe2eba21c9431b1be57b6a2cee3bd7d3dc8c47172"
+    },
+    "man/CytoImageList.Rd": {
+      "bytes": 4573,
+      "sha256": "63cd2a15ee8fd8fe94d02218bb3d6e3a55058e1b69630dea669df44449675db6"
+    },
+    "man/cytomapperShiny.Rd": {
+      "bytes": 6751,
+      "sha256": "c696b997a1b4c0d2b71c338a5ea8bf15715886c8a71ffdb58e58ec34368e7282"
+    },
+    "man/loadImages.Rd": {
+      "bytes": 5341,
+      "sha256": "f323f0e0b18189bd89e3fafe9cb216a178afc74ff164f7a1ae5b4103505d53f9"
+    },
+    "man/measureObjects.Rd": {
+      "bytes": 6913,
+      "sha256": "97242cf04f2c096469c2cb17d474a30b9a1984f271dcf94c5925c8e7296e5d26"
+    },
+    "man/pancreasImages.Rd": {
+      "bytes": 981,
+      "sha256": "c1d85351efda2726eec7d4e8c63aac9f405cb701b4374d8be36d85ee752d6171"
+    },
+    "man/pancreasMasks.Rd": {
+      "bytes": 1115,
+      "sha256": "91983bffb540edd34a86bfc7b4435bba91a7a414f90fa59ca2d9471b445501f9"
+    },
+    "man/pancreasSCE.Rd": {
+      "bytes": 2224,
+      "sha256": "0ca4b8a9982453d8c7b295828a1982c20236773f87dcb58f10bee1fc6cccdce9"
+    },
+    "man/plotCells.Rd": {
+      "bytes": 7124,
+      "sha256": "8ba200f3660f697a55ad96c0a561f10138d401c6e28e0c73041483e1f4c14372"
+    },
+    "man/plotPixels.Rd": {
+      "bytes": 7287,
+      "sha256": "fe3110a6d7a234bea4bb9e0496eaaa9022bc98b144f06b7f97c739de966f98d0"
+    },
+    "man/plotting-param.Rd": {
+      "bytes": 9835,
+      "sha256": "40eaaa6e7ca42d550d3326de49666e97f6656fe067ace2596f799b62fd2e2fd1"
+    },
+    "R/AllClasses.R": {
+      "bytes": 395,
+      "sha256": "5d70191c6b94777136dd5d88f9a008282c7954d3c7b6bc7c263ac8967f65bc5b"
+    },
+    "R/AllGenerics.R": {
+      "bytes": 915,
+      "sha256": "f897d6de9ea02225dbccaaa3013dd6b3d37e0565b825fb24db814c14cf8a7fc3"
+    },
+    "R/compImage.R": {
+      "bytes": 4364,
+      "sha256": "f58e2e37d666e30b4344e8490b3600218fe593e61f9ea3cbba9e3fa07d0a798b"
+    },
+    "R/CytoImageList-class.R": {
+      "bytes": 2183,
+      "sha256": "767e2ded535a2224d2512fccfb75148228b05579a0e0072a8c728e86584a194f"
+    },
+    "R/CytoImageList-utils.R": {
+      "bytes": 21644,
+      "sha256": "3452a1ba8860aa7c7dc6dda8212a0fa698511e61f17f8271e5f6c2b1ee7f737c"
+    },
+    "R/CytoImageList.R": {
+      "bytes": 9325,
+      "sha256": "93b60b605ba81ccb6fc59f7bb1f790967b7031c8a0db7645f38d44e2937efcc5"
+    },
+    "R/cytomapperShiny.R": {
+      "bytes": 7895,
+      "sha256": "e57818a78b6becd235301d60cc9710db93516ccafd1ee10c7676087f0549617a"
+    },
+    "R/data.R": {
+      "bytes": 3944,
+      "sha256": "41d4d8fa4a78405a2dcb1c18d9a45c01aa921ddc565d9201656d3e4027add640"
+    },
+    "R/loadImages.R": {
+      "bytes": 8456,
+      "sha256": "204dd126f7159ddec7d9f4615c2fbfcb45be98e97a76f6701690dd680f55c3f3"
+    },
+    "R/measureObjects.R": {
+      "bytes": 12971,
+      "sha256": "74c9e7da0792c6f4c0c51423e71ecfac2ffd778b65e7d6e288de138d2d5f8659"
+    },
+    "R/namespace.R": {
+      "bytes": 59,
+      "sha256": "2afc11224406d0745bef14ecb61f861702a79a0e4448aa96823760fa61f2ff99"
+    },
+    "R/plotCells.R": {
+      "bytes": 11384,
+      "sha256": "ae3fd3010fcbb330d9269effbdb1e179e64c6d2bb56519a64e048653c089a635"
+    },
+    "R/plotPixels.R": {
+      "bytes": 11917,
+      "sha256": "4f0aa299bb5164bbaa6d346eec19659e823137bb31cd80af837db9fe59b37928"
+    },
+    "R/plotting-param.R": {
+      "bytes": 28937,
+      "sha256": "0fd3ef274fcdf78907c637cd70ad053b7947e9da1f8711a3d9ffc621133bbdef"
+    },
+    "R/plotting-utils.R": {
+      "bytes": 45497,
+      "sha256": "8289052db88b3000ce2916590fb1b0d01ff85eeb863b90a9c513f0e26a95d3f4"
+    },
+    "R/server-utils.R": {
+      "bytes": 34928,
+      "sha256": "2eb9dd1eeaf0eddaa79a8986c09fa29af727cc3b2bc0342ffa387ff28640aee9"
+    },
+    "R/shiny-server.R": {
+      "bytes": 2370,
+      "sha256": "3272ac8cf225656ca77ba2160bdb49d5beb08286935bd08dbffe62d84e5e9e75"
+    },
+    "R/shiny-ui.R": {
+      "bytes": 5376,
+      "sha256": "4c9419223cbcf55c816533fa1b18944cce76c099ca1a440f5e474eb58f9a4a0a"
+    },
+    "R/subsetting-utils.R": {
+      "bytes": 13389,
+      "sha256": "8d6db0a04a838ec598a5388f6f716f17eb509c15940eb53deec2150b5cac090c"
+    },
+    "R/validityChecks.R": {
+      "bytes": 26599,
+      "sha256": "dbff0f7192f6ac4cf0ec71bbffe7a5e5248bebbfaeec4f34240bb63b0e9f0c03"
+    },
+    "R/validityChecksShiny.R": {
+      "bytes": 2266,
+      "sha256": "c589eca8897eef4fb5ecaf76a7206fbdf03155c06ea068119b07e7da2f46550f"
+    },
+    "tests/testthat.R": {
+      "bytes": 68,
+      "sha256": "9efa5d5c1d087781003e3e1e5f53162d1f84724380c4cafbadbcdc33c3baa8c0"
+    },
+    "vignettes/cytomapper.Rmd": {
+      "bytes": 42213,
+      "sha256": "562a9f6471fe19a61b6e36d626713ec0efe69f6f6efa5143807ce94cd9ebd184"
+    },
+    "vignettes/cytomapper_ondisk.Rmd": {
+      "bytes": 7863,
+      "sha256": "dd079caa26d0dddf1ecacb7875392f86e468033482742714943957e08aaac513"
+    },
+    "vignettes/cytomapper_sticker.png": {
+      "bytes": 155067,
+      "sha256": "d75b35cc41bf41d3834c1a09db122d55704567b701eaacfb813ead15353d6f1c"
+    },
+    "vignettes/library.bib": {
+      "bytes": 2850,
+      "sha256": "03c40c4df6aeaadb479dd3cee18beb0919f370a8ddcd0471b7f48c21fe88164c"
+    },
+    ".github/workflows/build-checks-devel.yml": {
+      "bytes": 2494,
+      "sha256": "79c32d97df38324fff6dadaa9e7b5754f0af884922f82301f35ba743b39ce879"
+    },
+    ".github/workflows/build-checks-release.yml": {
+      "bytes": 2498,
+      "sha256": "8b311c919add86e0360e42b721d9a884f37baf85ba3cd09aeadad8febb346f20"
+    },
+    ".github/workflows/docs.yml": {
+      "bytes": 1569,
+      "sha256": "29a006f297fc9e02c61649d5c05158c6c939bf44d84ee9e49139841a59845687"
+    },
+    "inst/extdata/E34_imc.tiff": {
+      "bytes": 200878,
+      "sha256": "2b445fd49295733a4ae52a9c8288550abce4e20847ba23f3936354343ebe7e7a"
+    },
+    "inst/extdata/E34_mask.tiff": {
+      "bytes": 20182,
+      "sha256": "a826dbb11b9890103f1d9982c0a22ba83efce8b7bc18c78c01a92efa8c550d74"
+    },
+    "inst/extdata/G01_imc.tiff": {
+      "bytes": 200878,
+      "sha256": "8f61411d0674b3743c6b2d0cbf88ffe0172d8c582fbb1af74dcca228ea1bd0ea"
+    },
+    "inst/extdata/G01_mask.tiff": {
+      "bytes": 20182,
+      "sha256": "492cabf2664d83d0408777205becf5973f72720cbd691da57852b48f7f772aa5"
+    },
+    "inst/extdata/J02_imc.tiff": {
+      "bytes": 200878,
+      "sha256": "2fe5e7fe9a2a4eed7b33f81f8b59488df94b3e66ba2ef9ac12d877d6df9e7f10"
+    },
+    "inst/extdata/J02_mask.tiff": {
+      "bytes": 20182,
+      "sha256": "c1eef5fad8c93368c5b7551b433b17b4dc0d9be57b58d5c574a32c892be09450"
+    },
+    "inst/scripts/1_LoadPancreasData.Rmd": {
+      "bytes": 7222,
+      "sha256": "bc2156df587e839be3439f2e05077efaaf950696c6e830256e9994c4ecafe3e3"
+    },
+    "inst/scripts/2_LoadPancreasImages.Rmd": {
+      "bytes": 4176,
+      "sha256": "d1a69c248c9f37d36afe60beedcd96a25c1afd7980e89ca089bc9611a0f0de50"
+    },
+    "inst/scripts/3_GenerateToyData.Rmd": {
+      "bytes": 9254,
+      "sha256": "fce6dd0fc72da23315c6150b1b4175298e53c919f8497b92fe99858c8857d720"
+    },
+    "inst/scripts/README.md": {
+      "bytes": 3472,
+      "sha256": "cc71c6e291d19211f31de433d0840ec882113ab5b19597258e03155312bcab85"
+    },
+    "tests/testthat/testthat-problems.rds": {
+      "bytes": 10337,
+      "sha256": "d8e78e69e1617473ec7682d8afe5f3a177f689d96cb31dd701be8a7a6797ce55"
+    },
+    "tests/testthat/test_compImage.R": {
+      "bytes": 23714,
+      "sha256": "72716a6eb8beb661e179dbd896f0058d146b5b03499f1c2182a7a0204caef692"
+    },
+    "tests/testthat/test_CytoImageList-manipulation.R": {
+      "bytes": 35759,
+      "sha256": "fdba5123ebd82e2c7b48aff7e27fdd7d6161e96130fdfd0701a0716d2a1c7d21"
+    },
+    "tests/testthat/test_CytoImageList-manipulation_ondisk.R": {
+      "bytes": 39532,
+      "sha256": "db161b3a1019fc364e78c88a5727e7d10d8ef087c153f24849327853870005af"
+    },
+    "tests/testthat/test_CytoImageList-naming.R": {
+      "bytes": 1731,
+      "sha256": "f1f788b140827245361606fa6e588e6c3e89de7cfa01c828d6b2417b6abc502c"
+    },
+    "tests/testthat/test_CytoImageList-naming_ondisk.R": {
+      "bytes": 2610,
+      "sha256": "22e177c5cb235cafd31efed0344a5a5a8c2a3615ee1828452fec41001e047e0b"
+    },
+    "tests/testthat/test_CytoImageList-subsetting.R": {
+      "bytes": 10596,
+      "sha256": "a704c2fd99395a144b7a107a600c8cfc1a9d692b87350a8d318842125453d448"
+    },
+    "tests/testthat/test_CytoImageList-subsetting_ondisk.R": {
+      "bytes": 12385,
+      "sha256": "10dca5e4c04fdcb40806f73ee81dc85998bd114d94a0556ea15f468b96c11a6d"
+    },
+    "tests/testthat/test_CytoImageList.R": {
+      "bytes": 1672,
+      "sha256": "f47c9eb96e2603f1cf5ca8b5b3a988e4f238e14eff286324aef37235131938b7"
+    },
+    "tests/testthat/test_CytoImageList_ondisk.R": {
+      "bytes": 10047,
+      "sha256": "4e2b75df19194e4cb8c17f38afbf988e6087678bc394b65b8fc1291a3a131d00"
+    },
+    "tests/testthat/test_loadImages.R": {
+      "bytes": 6591,
+      "sha256": "82db66cb78f1e4966fa5b9ee8f2c2942237f36cda41477ffc4e55572e3bd0ab9"
+    },
+    "tests/testthat/test_loadImages_ondisk.R": {
+      "bytes": 13370,
+      "sha256": "6a0cfac0d40a66767f69c8cdc93a6b91ae378648e4d1128647cdf8b18282a05c"
+    },
+    "tests/testthat/test_measureObjects.R": {
+      "bytes": 40375,
+      "sha256": "85ae58eb89603c8634d16698ebc41d52ac3a7ea8da7e078f0eb46513e48e9c13"
+    },
+    "tests/testthat/test_measureObjects_ondisk.R": {
+      "bytes": 22211,
+      "sha256": "58c1f7c66fab18338d3516791161d7d61688d9bf4f5965c39c476e1b0de52d07"
+    },
+    "tests/testthat/test_plotCells.R": {
+      "bytes": 22908,
+      "sha256": "0dddc5b23a23e9f85d43d131b2fcc6dc503e79a197ef066e633e2aaed8d06419"
+    },
+    "tests/testthat/test_plotCells_ondisk.R": {
+      "bytes": 18096,
+      "sha256": "be7afc708166941a19048839273f59217978e1fc17ae623b7f7cecbe8916e7f4"
+    },
+    "tests/testthat/test_plotPixels.R": {
+      "bytes": 19804,
+      "sha256": "880ed819ed27795258d790220c30db1adaf9df3e986385dd9ce2126b394694a9"
+    },
+    "tests/testthat/test_plotPixels_ondisk.R": {
+      "bytes": 14231,
+      "sha256": "8a2ae4c2c41d8e5c7f9b39ee1a52b9717096df65372024d4dab1659dc207a7bd"
+    },
+    "tests/testthat/test_plotting-param-validity.R": {
+      "bytes": 25551,
+      "sha256": "9d006783de169e250f8602af8e68f4031bce0c25c3d24576f33a6349de4f2082"
+    },
+    "tests/testthat/test_plotting-param-validity_ondisk.R": {
+      "bytes": 10266,
+      "sha256": "463ccc75a475e3a68e2b91c09d2ef334608fa757958b0fecf46022faaba4ecbe"
+    },
+    "tests/testthat/test_plotting-param.R": {
+      "bytes": 43514,
+      "sha256": "cfe184d02563d23989e481de7f966a693fbf725a8699b54d9241b812f740a518"
+    },
+    "tests/testthat/test_plotting-param_ondisk.R": {
+      "bytes": 42733,
+      "sha256": "6d0df35fe010008ced9d852e0f169f1739c27eb7408c72243714bfdf92e354d1"
+    },
+    "tests/testthat/test_plotting-utils.R": {
+      "bytes": 72841,
+      "sha256": "725c66a07201c649398aa3d3fb86556ea40f214b675f117df60e62d8c2052baa"
+    },
+    "tests/testthat/test_plotting-utils_ondisk.R": {
+      "bytes": 63215,
+      "sha256": "e2649bb72645e9b732aa10e9984e120b5425f887418077a9ba7a38942ec3f256"
+    },
+    "tests/testthat/test_shiny_functions.R": {
+      "bytes": 5249,
+      "sha256": "2b90acd98db1d6b1c37add0e0282dd6891f32bb2f8183c4e9f7d4f2ee36d0e6f"
+    },
+    "tests/testthat/test_shiny_reactive.R": {
+      "bytes": 14263,
+      "sha256": "19d1a4af1476d52095b89b5007493c9d94abf33fb01cccd991e6c22e5230933d"
+    },
+    "tests/testthat/test_shiny_reactive_ondisk.R": {
+      "bytes": 14676,
+      "sha256": "109324ca8aec8ef4a1aef51cc855302eb54a2e2f5d56af14b02792f28399f116"
+    },
+    "tests/testthat/test_shiny_snapshots.R": {
+      "bytes": 6933,
+      "sha256": "582b7c5f3ad4b9617a9e56cd34c78d0e6dfc64dffb518b8a95971ca2b6624915"
+    },
+    "tests/testthat/test_shiny_ui.R": {
+      "bytes": 4692,
+      "sha256": "e968ff26aab4fc941ea895116ed36b56ba3906f2d28d314045d099c6de59fab7"
+    },
+    "tests/testthat/test_shiny_ui_ondisk.R": {
+      "bytes": 1495,
+      "sha256": "4663aa3ec1e942a65f4fc92ffb5bd3afe0e133323fd2e7a542a65399a3a0eeea"
+    },
+    "tests/testthat/test_validity.R": {
+      "bytes": 23133,
+      "sha256": "899b621f7c02b705ac78153309dd79ec059418d4b9f5db9cf26e6bfda5a4f041"
+    },
+    "tests/testthat/test_validity_ondisk.R": {
+      "bytes": 14705,
+      "sha256": "39afb93cbfa7cac55c10ef59d14243148c0a6398d43b65cbe1ec1f22b47e03b5"
+    },
+    "tests/testthat/_snaps/shiny_ui.md": {
+      "bytes": 22941,
+      "sha256": "4feadd5e680b12802eeb942b41203e0671c08f05d7f95c720ef3ef06d7e87d6d"
+    },
+    "tests/testthat/_snaps/shiny_ui.new.md": {
+      "bytes": 22941,
+      "sha256": "f4b8c597b5d591cc008ebb5f9833e6febfe7eae48b36db33e78b4d804c0bb34a"
+    },
+    "tests/testthat/_snaps/shiny_ui_ondisk.md": {
+      "bytes": 6371,
+      "sha256": "b9f53222ca94b871fdb7d9899a255cb08b39d9e0e77b7ed4f96916644990b1c8"
+    },
+    "tests/testthat/apps/images_app/app.R": {
+      "bytes": 295,
+      "sha256": "4d9b96ad552669cded5cf8239a702e576c32a7913241e1a897cefaa3fda0404d"
+    },
+    "tests/testthat/apps/images_app_ondisk/app.R": {
+      "bytes": 465,
+      "sha256": "7a156455af8d9097be56f325e0cd7aa4ef5e3a9c8f01229878d66d23636ccc19"
+    },
+    "tests/testthat/apps/masks_app/app.R": {
+      "bytes": 230,
+      "sha256": "e046a43167c2b44d65c44a13e7071a63a12987ea8a5548bf6b63c5ece4acf5f9"
+    },
+    "tests/testthat/apps/masks_app_ondisk/app.R": {
+      "bytes": 319,
+      "sha256": "0b15cc337c68f1b32777a446cc8e4763f1e0cf2f5195f8b26d8c3eee22e361db"
+    },
+    "tests/testthat/apps/sce_app/app.R": {
+      "bytes": 167,
+      "sha256": "c8cd80e82e65070b0834f25c0c1d5e82924186dab2a81777c9e1d073da9dd8ce"
+    },
+    "tests/testthat/apps/images_app/tests/shinytest.R": {
+      "bytes": 49,
+      "sha256": "98bf7054f81a746dbf0fb3fb9620f8d3ad4c6d0056685bac0909d2651c2a2890"
+    },
+    "tests/testthat/apps/images_app/tests/shinytest/complex_assay_change.R": {
+      "bytes": 2909,
+      "sha256": "4705b00e483dfb1adae18bc88550a17369741edceca7e2bd01200f6c9fa755cd"
+    },
+    "tests/testthat/apps/images_app/tests/shinytest/complex_gating.R": {
+      "bytes": 2836,
+      "sha256": "a3c6c7f87969da2f965d15e9eb62743c73e87c62bc0b766dd226eb48a897d739"
+    },
+    "tests/testthat/apps/images_app/tests/shinytest/complex_plot_change.R": {
+      "bytes": 2273,
+      "sha256": "9243e549a37b2c88f9d52469ef23d8ca90f13e5dfe43ca27251a7c97c5beaaad"
+    },
+    "tests/testthat/apps/images_app/tests/shinytest/complex_sample_change.R": {
+      "bytes": 2511,
+      "sha256": "83565a9d1957fefb05fc4ea736670a1facc91ada5d233423beb900a573d74f79"
+    },
+    "tests/testthat/apps/images_app/tests/shinytest/contrasts_set.R": {
+      "bytes": 1307,
+      "sha256": "fadda185e693ab3f9209bb63907db556f21f44f0f3ef0c8e5f6a625a00099ed2"
+    },
+    "tests/testthat/apps/images_app/tests/shinytest/marker_select.R": {
+      "bytes": 814,
+      "sha256": "28ab9b5d7f344027eb1da4015b93b31bb2305932c0cb6f430eef3949d1d9a4b0"
+    },
+    "tests/testthat/apps/images_app/tests/shinytest/simple_assay_change.R": {
+      "bytes": 801,
+      "sha256": "58016b94b84103085df49ecffa65dd1cc6a4a261c37087199dbb493e8f1cb7ed"
+    },
+    "tests/testthat/apps/images_app/tests/shinytest/simple_gating.R": {
+      "bytes": 749,
+      "sha256": "e1fb4e54cbd74ed4af58427b0cdb6d67450539a10378e297629b1b53eba58b53"
+    },
+    "tests/testthat/apps/images_app/tests/shinytest/simple_plot_change.R": {
+      "bytes": 587,
+      "sha256": "5a8a97f9ef409947c29b276b5529d0c9f6a7a7cb39879a236119fceeba9d5caa"
+    },
+    "tests/testthat/apps/images_app/tests/shinytest/simple_sample_select.R": {
+      "bytes": 525,
+      "sha256": "dcf48633bff82805c620df1bdf455297753e0d3cf1e3350863051c09c393d647"
+    },
+    "tests/testthat/apps/images_app/tests/shinytest/tab_select.R": {
+      "bytes": 637,
+      "sha256": "f3d60583a63e37428944ef89e8f81399f1cc011e621024053f6f7b4adfd04701"
+    },
+    "tests/testthat/apps/images_app/tests/shinytest/complex_assay_change-expected/001.json": {
+      "bytes": 10602,
+      "sha256": "e0f7b42e606f09e8a5fa92cd107053d93104854736a141edb9fa8b885ac688bb"
+    },
+    "tests/testthat/apps/images_app/tests/shinytest/complex_assay_change-expected/001.png": {
+      "bytes": 76337,
+      "sha256": "ea378298437357c86adb9df0b0eab93962561f8d2abc96a6a377bb68df0d9c8f"
+    },
+    "tests/testthat/apps/images_app/tests/shinytest/complex_assay_change-expected/002.json": {
+      "bytes": 166930,
+      "sha256": "f8f95b300d43fee48926ea0bf88181f0ed454401b15b8d97e87a401fe345860c"
+    },
+    "tests/testthat/apps/images_app/tests/shinytest/complex_assay_change-expected/002.png": {
+      "bytes": 72145,
+      "sha256": "1866885fca9977c84f108db66fdd3c6286931f79ed421d72e230715bf99071a6"
+    },
+    "tests/testthat/apps/images_app/tests/shinytest/complex_assay_change-expected/003.json": {
+      "bytes": 168544,
+      "sha256": "eabfe318a87834d7537432ad0db32fe48777e2e4e7ba04aef93c129e637db635"
+    },
+    "tests/testthat/apps/images_app/tests/shinytest/complex_assay_change-expected/003.png": {
+      "bytes": 83493,
+      "sha256": "0cec19b681b033f640b285d243ea4dbc6325df41cc33df69f137c421c2fc26a1"
+    },
+    "tests/testthat/apps/images_app/tests/shinytest/complex_assay_change-expected/004.json": {
+      "bytes": 167017,
+      "sha256": "481030c111dbd9a2e34f499b648cb62f87ee983526f8bde450cc352753549380"
+    },
+    "tests/testthat/apps/images_app/tests/shinytest/complex_assay_change-expected/004.png": {
+      "bytes": 63836,
+      "sha256": "372c0a605e15fc5f6eb91f379954002abb062a6b77797b9eddc0d18386839489"
+    },
+    "tests/testthat/apps/images_app/tests/shinytest/complex_gating-expected/001.json": {
+      "bytes": 4274,
+      "sha256": "abe0baa80ffe47e66477b2e2a4049286d2a0bf5fe89c8ef4f8ecac9541c07fed"
+    },
+    "tests/testthat/apps/images_app/tests/shinytest/complex_gating-expected/001.png": {
+      "bytes": 59004,
+      "sha256": "1e3c406fc8c5d3d99babab77edf0df46385d188c2ccc387c434738661ab19be5"
+    },
+    "tests/testthat/apps/images_app/tests/shinytest/complex_gating-expected/002.json": {
+      "bytes": 318211,
+      "sha256": "88e648ff50df430a6e831d1aa636e024e812c09e6bf6a9fcdea8424edcb26ba4"
+    },
+    "tests/testthat/apps/images_app/tests/shinytest/complex_gating-expected/002.png": {
+      "bytes": 52016,
+      "sha256": "fd9d33119a81a114289820d879ddf6409484093deb51b71556ca79b8f08c11f3"
+    },
+    "tests/testthat/apps/images_app/tests/shinytest/complex_gating-expected/003.json": {
+      "bytes": 318202,
+      "sha256": "24f3f55264cddb8c6a8143195e3fc94a9559f55e212d78371833e2570e1fa263"
+    },
+    "tests/testthat/apps/images_app/tests/shinytest/complex_gating-expected/003.png": {
+      "bytes": 52118,
+      "sha256": "a5301904c9376597712e78a3d388b23f0cc137a88a7088e15cd12dba67b92e4c"
+    },
+    "tests/testthat/apps/images_app/tests/shinytest/complex_gating-expected/004.json": {
+      "bytes": 67427,
+      "sha256": "2bf6b14efc57e9ae69ead965c1b90c6986a292004e254d5bf00c071ff9e0f950"
+    },
+    "tests/testthat/apps/images_app/tests/shinytest/complex_gating-expected/004.png": {
+      "bytes": 70111,
+      "sha256": "86d8fcf10b0df25cdb54ff452a8b76ad50f005b2e8cb98dfd218a33fc85cf588"
+    },
+    "tests/testthat/apps/images_app/tests/shinytest/complex_gating-expected/005.json": {
+      "bytes": 69530,
+      "sha256": "c74333588677422141b2f41f7b5b7ae7885954f674eba3278468be16b50f5d88"
+    },
+    "tests/testthat/apps/images_app/tests/shinytest/complex_gating-expected/005.png": {
+      "bytes": 83168,
+      "sha256": "09fce982150b1dabb46be4b15ffdea33112efe53142278bfc565ca3465f50325"
+    },
+    "tests/testthat/apps/images_app/tests/shinytest/complex_gating-expected/006.json": {
+      "bytes": 69840,
+      "sha256": "e29ece099528c946a4f2b6f271fda36d771e41dede4b3649c0ee52b2bd092080"
+    },
+    "tests/testthat/apps/images_app/tests/shinytest/complex_gating-expected/006.png": {
+      "bytes": 83893,
+      "sha256": "0ba65b24675de66d833608d0218cc1a5f38a326c188120ded9abe526bd7e2098"
+    },
+    "tests/testthat/apps/images_app/tests/shinytest/complex_gating-expected/007.json": {
+      "bytes": 439906,
+      "sha256": "af9bb58e4db4c7b4a67dc7686e34d8dcdb4ab54af67803c24568d734b0e4cd00"
+    },
+    "tests/testthat/apps/images_app/tests/shinytest/complex_gating-expected/007.png": {
+      "bytes": 226380,
+      "sha256": "228c106427a55c30bc7538f956ac12dc5ebaf6de0d94adac523a1ecfca844565"
+    },
+    "tests/testthat/apps/images_app/tests/shinytest/complex_gating-expected/008.json": {
+      "bytes": 441158,
+      "sha256": "84bf49e23b2578461fec12a98f79e4bbc6317b24014f78477818bac544627e79"
+    },
+    "tests/testthat/apps/images_app/tests/shinytest/complex_gating-expected/008.png": {
+      "bytes": 86412,
+      "sha256": "790fcb390b8695e1453b9c570c4d99ffc1d4627e490b8ad584fd3b01a65538d1"
+    },
+    "tests/testthat/apps/images_app/tests/shinytest/complex_plot_change-expected/001.json": {
+      "bytes": 10602,
+      "sha256": "e0f7b42e606f09e8a5fa92cd107053d93104854736a141edb9fa8b885ac688bb"
+    },
+    "tests/testthat/apps/images_app/tests/shinytest/complex_plot_change-expected/001.png": {
+      "bytes": 76337,
+      "sha256": "ea378298437357c86adb9df0b0eab93962561f8d2abc96a6a377bb68df0d9c8f"
+    },
+    "tests/testthat/apps/images_app/tests/shinytest/complex_plot_change-expected/002.json": {
+      "bytes": 52482,
+      "sha256": "3b48d0c8eea95c64869aec22962b4ec815cd0e4604676f9b684ff900529403f1"
+    },
+    "tests/testthat/apps/images_app/tests/shinytest/complex_plot_change-expected/002.png": {
+      "bytes": 44747,
+      "sha256": "cb2a694b3b41cb73ff28f6240ec54a8f08eef8c26222bc36035badfd1bd6ec0e"
+    },
+    "tests/testthat/apps/images_app/tests/shinytest/complex_plot_change-expected/003.json": {
+      "bytes": 53709,
+      "sha256": "76181b66e092e4368c80a56e4dd9dff5d221647adca0a87bbb992aaf29531ed7"
+    },
+    "tests/testthat/apps/images_app/tests/shinytest/complex_plot_change-expected/003.png": {
+      "bytes": 59004,
+      "sha256": "1e3c406fc8c5d3d99babab77edf0df46385d188c2ccc387c434738661ab19be5"
+    },
+    "tests/testthat/apps/images_app/tests/shinytest/complex_plot_change-expected/004.json": {
+      "bytes": 477912,
+      "sha256": "db0abae6b572e439405e760bb236b418a8e2414185fadf7b3ca182aa09842a02"
+    },
+    "tests/testthat/apps/images_app/tests/shinytest/complex_plot_change-expected/004.png": {
+      "bytes": 59004,
+      "sha256": "1e3c406fc8c5d3d99babab77edf0df46385d188c2ccc387c434738661ab19be5"
+    },
+    "tests/testthat/apps/images_app/tests/shinytest/complex_sample_change-expected/001.json": {
+      "bytes": 10602,
+      "sha256": "e0f7b42e606f09e8a5fa92cd107053d93104854736a141edb9fa8b885ac688bb"
+    },
+    "tests/testthat/apps/images_app/tests/shinytest/complex_sample_change-expected/001.png": {
+      "bytes": 76337,
+      "sha256": "ea378298437357c86adb9df0b0eab93962561f8d2abc96a6a377bb68df0d9c8f"
+    },
+    "tests/testthat/apps/images_app/tests/shinytest/complex_sample_change-expected/002.json": {
+      "bytes": 80315,
+      "sha256": "ed679381ff6f16eecd760ec3c9585635b421645b762916259d18fa832847495d"
+    },
+    "tests/testthat/apps/images_app/tests/shinytest/complex_sample_change-expected/002.png": {
+      "bytes": 93227,
+      "sha256": "783a6edd8d522cb07c6a7e97e0388bbd05b256e75be33702e82e5dbe5c60dbed"
+    },
+    "tests/testthat/apps/images_app/tests/shinytest/complex_sample_change-expected/003.json": {
+      "bytes": 84478,
+      "sha256": "bfc55e556d1e2c23c4a672809c7c18cb706399a4ced3e105a56865ddaaddd4f5"
+    },
+    "tests/testthat/apps/images_app/tests/shinytest/complex_sample_change-expected/003.png": {
+      "bytes": 77455,
+      "sha256": "4477859a47ff7f70139b3478fc15121573f0348b521145a526d4ee2e5415cfea"
+    },
+    "tests/testthat/apps/images_app/tests/shinytest/complex_sample_change-expected/004.json": {
+      "bytes": 59511,
+      "sha256": "940cf9aa379486c9875807762348c66f6a0a8a3db06b5d45e74e9d36d5e6c6e2"
+    },
+    "tests/testthat/apps/images_app/tests/shinytest/complex_sample_change-expected/004.png": {
+      "bytes": 76337,
+      "sha256": "ea378298437357c86adb9df0b0eab93962561f8d2abc96a6a377bb68df0d9c8f"
+    },
+    "tests/testthat/apps/images_app/tests/shinytest/complex_sample_change-expected/005.json": {
+      "bytes": 80315,
+      "sha256": "d81167c277ecc9054626531f17243556dfb864ab81f2baef32ab08bad2e0dad8"
+    },
+    "tests/testthat/apps/images_app/tests/shinytest/complex_sample_change-expected/005.png": {
+      "bytes": 93227,
+      "sha256": "783a6edd8d522cb07c6a7e97e0388bbd05b256e75be33702e82e5dbe5c60dbed"
+    },
+    "tests/testthat/apps/images_app/tests/shinytest/complex_sample_change-expected/006.json": {
+      "bytes": 84478,
+      "sha256": "ce3b3b25952e2a3e56d4d0f86873ba83d856a85dffb2fd4ea0def22cb4fe6079"
+    },
+    "tests/testthat/apps/images_app/tests/shinytest/complex_sample_change-expected/006.png": {
+      "bytes": 77455,
+      "sha256": "4477859a47ff7f70139b3478fc15121573f0348b521145a526d4ee2e5415cfea"
+    },
+    "tests/testthat/apps/images_app/tests/shinytest/complex_sample_change-expected/007.json": {
+      "bytes": 80315,
+      "sha256": "c6abecc340514fc93880af74e81711a8864bb452f7ad53829e7bc46d9e386756"
+    },
+    "tests/testthat/apps/images_app/tests/shinytest/complex_sample_change-expected/007.png": {
+      "bytes": 93227,
+      "sha256": "783a6edd8d522cb07c6a7e97e0388bbd05b256e75be33702e82e5dbe5c60dbed"
+    },
+    "tests/testthat/apps/images_app/tests/shinytest/complex_sample_change-expected/008.json": {
+      "bytes": 59511,
+      "sha256": "d35a5de0376b47f718eb61de6e1305a5d7a2df1786656e98ad598cf1574833fb"
+    },
+    "tests/testthat/apps/images_app/tests/shinytest/complex_sample_change-expected/008.png": {
+      "bytes": 76337,
+      "sha256": "ea378298437357c86adb9df0b0eab93962561f8d2abc96a6a377bb68df0d9c8f"
+    },
+    "tests/testthat/apps/images_app/tests/shinytest/complex_sample_change-expected/009.json": {
+      "bytes": 84478,
+      "sha256": "e184fc669374656468c2002d51234f85b48898994df814822a8beca964c37cf8"
+    },
+    "tests/testthat/apps/images_app/tests/shinytest/complex_sample_change-expected/009.png": {
+      "bytes": 77455,
+      "sha256": "4477859a47ff7f70139b3478fc15121573f0348b521145a526d4ee2e5415cfea"
+    },
+    "tests/testthat/apps/images_app/tests/shinytest/contrasts_set-expected/001.json": {
+      "bytes": 4268,
+      "sha256": "66c70d8418a522371b2926b8bdd8102e342c142a1af03e0dc983d4d3ec853799"
+    },
+    "tests/testthat/apps/images_app/tests/shinytest/contrasts_set-expected/001.png": {
+      "bytes": 53500,
+      "sha256": "e01b8e88f315e9c72bf235b175eddafc74f7dbf98db550a1c6d19f0f2ab43c19"
+    },
+    "tests/testthat/apps/images_app/tests/shinytest/contrasts_set-expected/002.json": {
+      "bytes": 139803,
+      "sha256": "f83e36e4281c50d1b2b91c5ff2d4f96ae9955653f98c494ae2faa687c6e2a385"
+    },
+    "tests/testthat/apps/images_app/tests/shinytest/contrasts_set-expected/002.png": {
+      "bytes": 58603,
+      "sha256": "e1e10a6fddb9e88199c9d3e7facb41ac25b770005ed48ad57e858b8770d870be"
+    },
+    "tests/testthat/apps/images_app/tests/shinytest/contrasts_set-expected/003.json": {
+      "bytes": 128465,
+      "sha256": "ac76cf84c71bffd7798612d9238358b8d4c7d45a0b49afcc1d01b126fe87ecf7"
+    },
+    "tests/testthat/apps/images_app/tests/shinytest/contrasts_set-expected/003.png": {
+      "bytes": 48252,
+      "sha256": "60525450c337e19db8ec7b6a4a19feee7787c4283f38d770262f589720cef7c1"
+    },
+    "tests/testthat/apps/images_app/tests/shinytest/marker_select-expected/001.json": {
+      "bytes": 83793,
+      "sha256": "6e3a2cb79cf729a56a2a920ee810787475cde9dceb88b4f4c962a768c0a5d426"
+    },
+    "tests/testthat/apps/images_app/tests/shinytest/marker_select-expected/001.png": {
+      "bytes": 50616,
+      "sha256": "c3e685c993201f614b192c6f8cae72ee180754a7f27e6bff803f7fd97f84e031"
+    },
+    "tests/testthat/apps/images_app/tests/shinytest/marker_select-expected/002.json": {
+      "bytes": 64459,
+      "sha256": "213c150dc1cb59777691d1294e75c09c74d82a5393e9a97d3a090ea08dbec8cd"
+    },
+    "tests/testthat/apps/images_app/tests/shinytest/marker_select-expected/002.png": {
+      "bytes": 55545,
+      "sha256": "362dd0e001adbefec079013ab3022c0b8d28059617622c26d1f59f74d868d49f"
+    },
+    "tests/testthat/apps/images_app/tests/shinytest/simple_assay_change-expected/001.json": {
+      "bytes": 97484,
+      "sha256": "581815b18bf4b75c60bffb7be5906bb50240708a381929533e90d3eba06ce653"
+    },
+    "tests/testthat/apps/images_app/tests/shinytest/simple_assay_change-expected/001.png": {
+      "bytes": 66184,
+      "sha256": "d15ac38f798340b6d46061ce11ed06819524b700e8d94a614e3feacb29b80ffe"
+    },
+    "tests/testthat/apps/images_app/tests/shinytest/simple_assay_change-expected/002.json": {
+      "bytes": 97483,
+      "sha256": "1ce2974a12ebff0114303e65c0e246de31975482d2fb0b964c2cd3528d3bd882"
+    },
+    "tests/testthat/apps/images_app/tests/shinytest/simple_assay_change-expected/002.png": {
+      "bytes": 58742,
+      "sha256": "bd0d26d6c285841cedd0b92f335eb88a05d26ebe9c2175aaa7acfd11aa55e199"
+    },
+    "tests/testthat/apps/images_app/tests/shinytest/simple_assay_change-expected/003.json": {
+      "bytes": 121671,
+      "sha256": "a5cf90fe9a1f30c4e018c85d8fbb7f74401fdfb93868c54fda74840e41d033ed"
+    },
+    "tests/testthat/apps/images_app/tests/shinytest/simple_assay_change-expected/003.png": {
+      "bytes": 95374,
+      "sha256": "05e9af35578352eb518c5bb0bd25328fe00f40a5d4357534a39fd833acf2f84d"
+    },
+    "tests/testthat/apps/images_app/tests/shinytest/simple_assay_change-expected/004.json": {
+      "bytes": 121670,
+      "sha256": "1da281a2235f309205590e5e0f4866146485c51df806525d360891638df88587"
+    },
+    "tests/testthat/apps/images_app/tests/shinytest/simple_assay_change-expected/004.png": {
+      "bytes": 65643,
+      "sha256": "552f1263d207a5d828e71d90274b663a61eb5729372bd6e53a8ee57a4ce539c7"
+    },
+    "tests/testthat/apps/images_app/tests/shinytest/simple_assay_change-expected/005.json": {
+      "bytes": 121671,
+      "sha256": "af7293cabf0b5ebf0b4be7289a795cda8972a3f338b2911b55714c831c286b52"
+    },
+    "tests/testthat/apps/images_app/tests/shinytest/simple_assay_change-expected/005.png": {
+      "bytes": 64829,
+      "sha256": "de3064d2b8cd5b1993c6dabcc3141c3b7d0ee349512e95509ac3575eedf1a379"
+    },
+    "tests/testthat/apps/images_app/tests/shinytest/simple_gating-expected/001.json": {
+      "bytes": 3021,
+      "sha256": "dd6a8af297a6243bf47414e7b897547d4b8baf5334574397fc51d7f1ee53cab8"
+    },
+    "tests/testthat/apps/images_app/tests/shinytest/simple_gating-expected/001.png": {
+      "bytes": 44747,
+      "sha256": "cb2a694b3b41cb73ff28f6240ec54a8f08eef8c26222bc36035badfd1bd6ec0e"
+    },
+    "tests/testthat/apps/images_app/tests/shinytest/simple_gating-expected/002.json": {
+      "bytes": 3334,
+      "sha256": "2d2358d977c44e9b4dc6c419a14d8d1cf8aa171cb0dc91b8adae662cb84025f2"
+    },
+    "tests/testthat/apps/images_app/tests/shinytest/simple_gating-expected/002.png": {
+      "bytes": 46055,
+      "sha256": "209282a6377454ef2920af9829b3ada2585705d9446912fe8e4abdecb51101a3"
+    },
+    "tests/testthat/apps/images_app/tests/shinytest/simple_plot_change-expected/001.json": {
+      "bytes": 3961,
+      "sha256": "32db8bebd185ffe8789a970cfb44bf43ef565e3975e51e8f882b41f098e59459"
+    },
+    "tests/testthat/apps/images_app/tests/shinytest/simple_plot_change-expected/001.png": {
+      "bytes": 58742,
+      "sha256": "bd0d26d6c285841cedd0b92f335eb88a05d26ebe9c2175aaa7acfd11aa55e199"
+    },
+    "tests/testthat/apps/images_app/tests/shinytest/simple_plot_change-expected/002.json": {
+      "bytes": 84848,
+      "sha256": "ccee8081dbb4a015926272a3cd18215a81d138bee6a1939d06ea659a9fc974e3"
+    },
+    "tests/testthat/apps/images_app/tests/shinytest/simple_plot_change-expected/002.png": {
+      "bytes": 57370,
+      "sha256": "2f66c2182e38d276ac9cd88e15d706f680d508a1418c1b2a55edeade9ba21087"
+    },
+    "tests/testthat/apps/images_app/tests/shinytest/simple_plot_change-expected/003.json": {
+      "bytes": 85787,
+      "sha256": "fea16d58c6b7bd6d9ce8a61c9153503e0093cb1fcab68ba4b0ed3bb13f8326a4"
+    },
+    "tests/testthat/apps/images_app/tests/shinytest/simple_plot_change-expected/003.png": {
+      "bytes": 77003,
+      "sha256": "2e5d1e2e8a86def08089646dd2d5158a772d6bb5b5e9c5e48e3ec1e83886eb15"
+    },
+    "tests/testthat/apps/images_app/tests/shinytest/simple_plot_change-expected/004.json": {
+      "bytes": 120980,
+      "sha256": "1cc5019ff327ad5db703453e05473e9caa077c3bc6cedc087037d3335611ca03"
+    },
+    "tests/testthat/apps/images_app/tests/shinytest/simple_plot_change-expected/004.png": {
+      "bytes": 44747,
+      "sha256": "cb2a694b3b41cb73ff28f6240ec54a8f08eef8c26222bc36035badfd1bd6ec0e"
+    },
+    "tests/testthat/apps/images_app/tests/shinytest/simple_sample_select-expected/001.json": {
+      "bytes": 3961,
+      "sha256": "32db8bebd185ffe8789a970cfb44bf43ef565e3975e51e8f882b41f098e59459"
+    },
+    "tests/testthat/apps/images_app/tests/shinytest/simple_sample_select-expected/001.png": {
+      "bytes": 58742,
+      "sha256": "bd0d26d6c285841cedd0b92f335eb88a05d26ebe9c2175aaa7acfd11aa55e199"
+    },
+    "tests/testthat/apps/images_app/tests/shinytest/simple_sample_select-expected/002.json": {
+      "bytes": 145030,
+      "sha256": "a82cd712af08048fe9a024492c1fcc12ec7ab7f8c312d456c8ccff837f1d2057"
+    },
+    "tests/testthat/apps/images_app/tests/shinytest/simple_sample_select-expected/002.png": {
+      "bytes": 68036,
+      "sha256": "89d774758cccba66d829d814e356b7f9a2ac70b1dbb308cd7e95b713bd8926e3"
+    },
+    "tests/testthat/apps/images_app/tests/shinytest/simple_sample_select-expected/003.json": {
+      "bytes": 139435,
+      "sha256": "946a2896bfa723559369fe966fb4a6367d39d60d1ec0d5ad9a5cbb270460e745"
+    },
+    "tests/testthat/apps/images_app/tests/shinytest/simple_sample_select-expected/003.png": {
+      "bytes": 63849,
+      "sha256": "4ec9dccdfed911f02ef2e07f6bcc60b5bb4d54667b3dffb7947852262d2dea99"
+    },
+    "tests/testthat/apps/images_app/tests/shinytest/tab_select-expected/001.json": {
+      "bytes": 3021,
+      "sha256": "dd6a8af297a6243bf47414e7b897547d4b8baf5334574397fc51d7f1ee53cab8"
+    },
+    "tests/testthat/apps/images_app/tests/shinytest/tab_select-expected/001.png": {
+      "bytes": 44747,
+      "sha256": "cb2a694b3b41cb73ff28f6240ec54a8f08eef8c26222bc36035badfd1bd6ec0e"
+    },
+    "tests/testthat/apps/images_app/tests/shinytest/tab_select-expected/002.json": {
+      "bytes": 97483,
+      "sha256": "1ce2974a12ebff0114303e65c0e246de31975482d2fb0b964c2cd3528d3bd882"
+    },
+    "tests/testthat/apps/images_app/tests/shinytest/tab_select-expected/002.png": {
+      "bytes": 58742,
+      "sha256": "bd0d26d6c285841cedd0b92f335eb88a05d26ebe9c2175aaa7acfd11aa55e199"
+    },
+    "tests/testthat/apps/images_app/tests/shinytest/tab_select-expected/003.json": {
+      "bytes": 83848,
+      "sha256": "6c976794b425851331ae5f63eb977b8fe64f3d347028f54fa249f216995d9ce5"
+    },
+    "tests/testthat/apps/images_app/tests/shinytest/tab_select-expected/003.png": {
+      "bytes": 48597,
+      "sha256": "c407efe45313e5e995e0a4facae0a32de436bb7fd41e6586b8013df9ad84ec1f"
+    },
+    "tests/testthat/apps/images_app_ondisk/tests/shinytest.R": {
+      "bytes": 49,
+      "sha256": "98bf7054f81a746dbf0fb3fb9620f8d3ad4c6d0056685bac0909d2651c2a2890"
+    },
+    "tests/testthat/apps/images_app_ondisk/tests/shinytest/complex_assay_change.R": {
+      "bytes": 2909,
+      "sha256": "4705b00e483dfb1adae18bc88550a17369741edceca7e2bd01200f6c9fa755cd"
+    },
+    "tests/testthat/apps/images_app_ondisk/tests/shinytest/complex_gating.R": {
+      "bytes": 2836,
+      "sha256": "a3c6c7f87969da2f965d15e9eb62743c73e87c62bc0b766dd226eb48a897d739"
+    },
+    "tests/testthat/apps/images_app_ondisk/tests/shinytest/complex_plot_change.R": {
+      "bytes": 2273,
+      "sha256": "9243e549a37b2c88f9d52469ef23d8ca90f13e5dfe43ca27251a7c97c5beaaad"
+    },
+    "tests/testthat/apps/images_app_ondisk/tests/shinytest/complex_sample_change.R": {
+      "bytes": 2511,
+      "sha256": "83565a9d1957fefb05fc4ea736670a1facc91ada5d233423beb900a573d74f79"
+    },
+    "tests/testthat/apps/images_app_ondisk/tests/shinytest/contrasts_set.R": {
+      "bytes": 1307,
+      "sha256": "fadda185e693ab3f9209bb63907db556f21f44f0f3ef0c8e5f6a625a00099ed2"
+    },
+    "tests/testthat/apps/images_app_ondisk/tests/shinytest/marker_select.R": {
+      "bytes": 814,
+      "sha256": "28ab9b5d7f344027eb1da4015b93b31bb2305932c0cb6f430eef3949d1d9a4b0"
+    },
+    "tests/testthat/apps/images_app_ondisk/tests/shinytest/simple_assay_change.R": {
+      "bytes": 801,
+      "sha256": "58016b94b84103085df49ecffa65dd1cc6a4a261c37087199dbb493e8f1cb7ed"
+    },
+    "tests/testthat/apps/images_app_ondisk/tests/shinytest/simple_gating.R": {
+      "bytes": 749,
+      "sha256": "e1fb4e54cbd74ed4af58427b0cdb6d67450539a10378e297629b1b53eba58b53"
+    },
+    "tests/testthat/apps/images_app_ondisk/tests/shinytest/simple_plot_change.R": {
+      "bytes": 587,
+      "sha256": "5a8a97f9ef409947c29b276b5529d0c9f6a7a7cb39879a236119fceeba9d5caa"
+    },
+    "tests/testthat/apps/images_app_ondisk/tests/shinytest/simple_sample_select.R": {
+      "bytes": 525,
+      "sha256": "dcf48633bff82805c620df1bdf455297753e0d3cf1e3350863051c09c393d647"
+    },
+    "tests/testthat/apps/images_app_ondisk/tests/shinytest/tab_select.R": {
+      "bytes": 637,
+      "sha256": "f3d60583a63e37428944ef89e8f81399f1cc011e621024053f6f7b4adfd04701"
+    },
+    "tests/testthat/apps/masks_app/tests/shinytest.R": {
+      "bytes": 49,
+      "sha256": "98bf7054f81a746dbf0fb3fb9620f8d3ad4c6d0056685bac0909d2651c2a2890"
+    },
+    "tests/testthat/apps/masks_app/tests/shinytest/complex_assay_change.R": {
+      "bytes": 2909,
+      "sha256": "4705b00e483dfb1adae18bc88550a17369741edceca7e2bd01200f6c9fa755cd"
+    },
+    "tests/testthat/apps/masks_app/tests/shinytest/complex_gating.R": {
+      "bytes": 2837,
+      "sha256": "d0bb20df1b0c135065a8a5eb3eb081613ee868f6bb049ef452fe22c5045e887e"
+    },
+    "tests/testthat/apps/masks_app/tests/shinytest/complex_plot_change.R": {
+      "bytes": 2241,
+      "sha256": "f76bf02a621148d3d41fd836f8818d292c09f3d630191325a7e17132f44e3f29"
+    },
+    "tests/testthat/apps/masks_app/tests/shinytest/complex_sample_change.R": {
+      "bytes": 2511,
+      "sha256": "83565a9d1957fefb05fc4ea736670a1facc91ada5d233423beb900a573d74f79"
+    },
+    "tests/testthat/apps/masks_app/tests/shinytest/marker_select.R": {
+      "bytes": 814,
+      "sha256": "28ab9b5d7f344027eb1da4015b93b31bb2305932c0cb6f430eef3949d1d9a4b0"
+    },
+    "tests/testthat/apps/masks_app/tests/shinytest/simple_assay_change.R": {
+      "bytes": 802,
+      "sha256": "4b4829dcb045aec738d13c07d6e0cdcfd5f8f6939f511df8b12cad79fba168c4"
+    },
+    "tests/testthat/apps/masks_app/tests/shinytest/simple_gating.R": {
+      "bytes": 763,
+      "sha256": "77f26f1076d2fc4ea6f059e5cb6aac7fb782580b01ea2bfbab885ab0981566e6"
+    },
+    "tests/testthat/apps/masks_app/tests/shinytest/simple_plot_change.R": {
+      "bytes": 587,
+      "sha256": "5a8a97f9ef409947c29b276b5529d0c9f6a7a7cb39879a236119fceeba9d5caa"
+    },
+    "tests/testthat/apps/masks_app/tests/shinytest/simple_sample_select.R": {
+      "bytes": 525,
+      "sha256": "dcf48633bff82805c620df1bdf455297753e0d3cf1e3350863051c09c393d647"
+    },
+    "tests/testthat/apps/masks_app/tests/shinytest/tab_select.R": {
+      "bytes": 637,
+      "sha256": "f3d60583a63e37428944ef89e8f81399f1cc011e621024053f6f7b4adfd04701"
+    },
+    "tests/testthat/apps/masks_app/tests/shinytest/complex_assay_change-expected/001.json": {
+      "bytes": 10602,
+      "sha256": "e0f7b42e606f09e8a5fa92cd107053d93104854736a141edb9fa8b885ac688bb"
+    },
+    "tests/testthat/apps/masks_app/tests/shinytest/complex_assay_change-expected/001.png": {
+      "bytes": 76337,
+      "sha256": "ea378298437357c86adb9df0b0eab93962561f8d2abc96a6a377bb68df0d9c8f"
+    },
+    "tests/testthat/apps/masks_app/tests/shinytest/complex_assay_change-expected/002.json": {
+      "bytes": 195761,
+      "sha256": "94bbd4e9b6ce4d755aeea391f9f307899762b3e76aeaf2e230b62ef618c2453a"
+    },
+    "tests/testthat/apps/masks_app/tests/shinytest/complex_assay_change-expected/002.png": {
+      "bytes": 72145,
+      "sha256": "1866885fca9977c84f108db66fdd3c6286931f79ed421d72e230715bf99071a6"
+    },
+    "tests/testthat/apps/masks_app/tests/shinytest/complex_assay_change-expected/003.json": {
+      "bytes": 197375,
+      "sha256": "a2e4996be3dc0b3c194391fd410884c690d49a5fc41a76d67b398ed5a11e8139"
+    },
+    "tests/testthat/apps/masks_app/tests/shinytest/complex_assay_change-expected/003.png": {
+      "bytes": 83493,
+      "sha256": "0cec19b681b033f640b285d243ea4dbc6325df41cc33df69f137c421c2fc26a1"
+    },
+    "tests/testthat/apps/masks_app/tests/shinytest/complex_assay_change-expected/004.json": {
+      "bytes": 189186,
+      "sha256": "c3f10bda534bfeb7a6fe5bdf0ad1a0dd74ba9767ad420eef2a2b2d951bc3ba22"
+    },
+    "tests/testthat/apps/masks_app/tests/shinytest/complex_assay_change-expected/004.png": {
+      "bytes": 63836,
+      "sha256": "372c0a605e15fc5f6eb91f379954002abb062a6b77797b9eddc0d18386839489"
+    },
+    "tests/testthat/apps/masks_app/tests/shinytest/complex_gating-expected/001.json": {
+      "bytes": 4274,
+      "sha256": "abe0baa80ffe47e66477b2e2a4049286d2a0bf5fe89c8ef4f8ecac9541c07fed"
+    },
+    "tests/testthat/apps/masks_app/tests/shinytest/complex_gating-expected/001.png": {
+      "bytes": 59004,
+      "sha256": "1e3c406fc8c5d3d99babab77edf0df46385d188c2ccc387c434738661ab19be5"
+    },
+    "tests/testthat/apps/masks_app/tests/shinytest/complex_gating-expected/002.json": {
+      "bytes": 190463,
+      "sha256": "a2b7a051beb0ecbf05f31bcf20a089fba7c443c8fe540c8c44affdc2b831961f"
+    },
+    "tests/testthat/apps/masks_app/tests/shinytest/complex_gating-expected/002.png": {
+      "bytes": 52016,
+      "sha256": "fd9d33119a81a114289820d879ddf6409484093deb51b71556ca79b8f08c11f3"
+    },
+    "tests/testthat/apps/masks_app/tests/shinytest/complex_gating-expected/003.json": {
+      "bytes": 190454,
+      "sha256": "64c60e94dc51aaad2907021b52c19fa36435c1d52cddfe2b4f386d504ed22fd8"
+    },
+    "tests/testthat/apps/masks_app/tests/shinytest/complex_gating-expected/003.png": {
+      "bytes": 52118,
+      "sha256": "a5301904c9376597712e78a3d388b23f0cc137a88a7088e15cd12dba67b92e4c"
+    },
+    "tests/testthat/apps/masks_app/tests/shinytest/complex_gating-expected/004.json": {
+      "bytes": 44666,
+      "sha256": "efd9468e546deacb62be37ccc26935166d06b1f264531e16f5a447acb414d41a"
+    },
+    "tests/testthat/apps/masks_app/tests/shinytest/complex_gating-expected/004.png": {
+      "bytes": 70111,
+      "sha256": "86d8fcf10b0df25cdb54ff452a8b76ad50f005b2e8cb98dfd218a33fc85cf588"
+    },
+    "tests/testthat/apps/masks_app/tests/shinytest/complex_gating-expected/005.json": {
+      "bytes": 46769,
+      "sha256": "3923620a8e1253bed22482343770815e4b1d934e21b00f2dbde36526322c3296"
+    },
+    "tests/testthat/apps/masks_app/tests/shinytest/complex_gating-expected/005.png": {
+      "bytes": 83168,
+      "sha256": "09fce982150b1dabb46be4b15ffdea33112efe53142278bfc565ca3465f50325"
+    },
+    "tests/testthat/apps/masks_app/tests/shinytest/complex_gating-expected/006.json": {
+      "bytes": 47079,
+      "sha256": "60004b750b17693ae45c554c1de8155fb5f5c16d267d51430c82cb7361dbe3fd"
+    },
+    "tests/testthat/apps/masks_app/tests/shinytest/complex_gating-expected/006.png": {
+      "bytes": 83893,
+      "sha256": "0ba65b24675de66d833608d0218cc1a5f38a326c188120ded9abe526bd7e2098"
+    },
+    "tests/testthat/apps/masks_app/tests/shinytest/complex_gating-expected/007.json": {
+      "bytes": 199422,
+      "sha256": "7a32c106d89e37d2d5c1d05cd27efeeb8fb1575961f31b50c2738513368e6196"
+    },
+    "tests/testthat/apps/masks_app/tests/shinytest/complex_gating-expected/007.png": {
+      "bytes": 86412,
+      "sha256": "790fcb390b8695e1453b9c570c4d99ffc1d4627e490b8ad584fd3b01a65538d1"
+    },
+    "tests/testthat/apps/masks_app/tests/shinytest/complex_plot_change-expected/001.json": {
+      "bytes": 10602,
+      "sha256": "e0f7b42e606f09e8a5fa92cd107053d93104854736a141edb9fa8b885ac688bb"
+    },
+    "tests/testthat/apps/masks_app/tests/shinytest/complex_plot_change-expected/001.png": {
+      "bytes": 76337,
+      "sha256": "ea378298437357c86adb9df0b0eab93962561f8d2abc96a6a377bb68df0d9c8f"
+    },
+    "tests/testthat/apps/masks_app/tests/shinytest/complex_plot_change-expected/002.json": {
+      "bytes": 70186,
+      "sha256": "1b2d51df3f88a1dbf45df663a3e65b7f8ab8aa61190f6397d081c89bf546dd38"
+    },
+    "tests/testthat/apps/masks_app/tests/shinytest/complex_plot_change-expected/002.png": {
+      "bytes": 44747,
+      "sha256": "cb2a694b3b41cb73ff28f6240ec54a8f08eef8c26222bc36035badfd1bd6ec0e"
+    },
+    "tests/testthat/apps/masks_app/tests/shinytest/complex_plot_change-expected/003.json": {
+      "bytes": 71413,
+      "sha256": "d5cbc8c6fe657877caea16a688448a01a4abec4b5358e8b2cec567bc36d81acb"
+    },
+    "tests/testthat/apps/masks_app/tests/shinytest/complex_plot_change-expected/003.png": {
+      "bytes": 59004,
+      "sha256": "1e3c406fc8c5d3d99babab77edf0df46385d188c2ccc387c434738661ab19be5"
+    },
+    "tests/testthat/apps/masks_app/tests/shinytest/complex_plot_change-expected/004.json": {
+      "bytes": 195668,
+      "sha256": "45e766ad1f301aeab0aed1fdb272030ede99c08dc1bdc3191a170e0241bfde26"
+    },
+    "tests/testthat/apps/masks_app/tests/shinytest/complex_plot_change-expected/004.png": {
+      "bytes": 59004,
+      "sha256": "1e3c406fc8c5d3d99babab77edf0df46385d188c2ccc387c434738661ab19be5"
+    },
+    "tests/testthat/apps/masks_app/tests/shinytest/complex_sample_change-expected/001.json": {
+      "bytes": 10602,
+      "sha256": "e0f7b42e606f09e8a5fa92cd107053d93104854736a141edb9fa8b885ac688bb"
+    },
+    "tests/testthat/apps/masks_app/tests/shinytest/complex_sample_change-expected/001.png": {
+      "bytes": 76337,
+      "sha256": "ea378298437357c86adb9df0b0eab93962561f8d2abc96a6a377bb68df0d9c8f"
+    },
+    "tests/testthat/apps/masks_app/tests/shinytest/complex_sample_change-expected/002.json": {
+      "bytes": 80527,
+      "sha256": "57af678939d141324e12bea5a0b104a802cc08d680de46375b2ebd1929e3444f"
+    },
+    "tests/testthat/apps/masks_app/tests/shinytest/complex_sample_change-expected/002.png": {
+      "bytes": 93227,
+      "sha256": "783a6edd8d522cb07c6a7e97e0388bbd05b256e75be33702e82e5dbe5c60dbed"
+    },
+    "tests/testthat/apps/masks_app/tests/shinytest/complex_sample_change-expected/003.json": {
+      "bytes": 72883,
+      "sha256": "7c2cf698993aed4abd5bf0c019ad843f42d6c5215e70c5c9cd78fbbaa1b3ab0b"
+    },
+    "tests/testthat/apps/masks_app/tests/shinytest/complex_sample_change-expected/003.png": {
+      "bytes": 77455,
+      "sha256": "4477859a47ff7f70139b3478fc15121573f0348b521145a526d4ee2e5415cfea"
+    },
+    "tests/testthat/apps/masks_app/tests/shinytest/complex_sample_change-expected/004.json": {
+      "bytes": 77215,
+      "sha256": "44e1b659cf9e11cda777d76fdb5ce8ac5bb3ea0505f232e1db1a2da8e8157666"
+    },
+    "tests/testthat/apps/masks_app/tests/shinytest/complex_sample_change-expected/004.png": {
+      "bytes": 76337,
+      "sha256": "ea378298437357c86adb9df0b0eab93962561f8d2abc96a6a377bb68df0d9c8f"
+    },
+    "tests/testthat/apps/masks_app/tests/shinytest/complex_sample_change-expected/005.json": {
+      "bytes": 80527,
+      "sha256": "0ece0d6473f6cc6f5851f4b05c4d0a8c60d7baae39b19d0c786a2c65faecb454"
+    },
+    "tests/testthat/apps/masks_app/tests/shinytest/complex_sample_change-expected/005.png": {
+      "bytes": 93227,
+      "sha256": "783a6edd8d522cb07c6a7e97e0388bbd05b256e75be33702e82e5dbe5c60dbed"
+    },
+    "tests/testthat/apps/masks_app/tests/shinytest/complex_sample_change-expected/006.json": {
+      "bytes": 72883,
+      "sha256": "2bdb4f335b3e42a6736da67672270a25a6439b49d21009e508926b1f3aae7da4"
+    },
+    "tests/testthat/apps/masks_app/tests/shinytest/complex_sample_change-expected/006.png": {
+      "bytes": 77455,
+      "sha256": "4477859a47ff7f70139b3478fc15121573f0348b521145a526d4ee2e5415cfea"
+    },
+    "tests/testthat/apps/masks_app/tests/shinytest/complex_sample_change-expected/007.json": {
+      "bytes": 80527,
+      "sha256": "e6fc3cc66c8ec676547eb35acece041f60abce13370ea9bca326f541b843c94c"
+    },
+    "tests/testthat/apps/masks_app/tests/shinytest/complex_sample_change-expected/007.png": {
+      "bytes": 93227,
+      "sha256": "783a6edd8d522cb07c6a7e97e0388bbd05b256e75be33702e82e5dbe5c60dbed"
+    },
+    "tests/testthat/apps/masks_app/tests/shinytest/complex_sample_change-expected/008.json": {
+      "bytes": 77215,
+      "sha256": "5f19f1792b3839972c9e7d0af24920a6ac1a407144ec5f36426e261bd008bb45"
+    },
+    "tests/testthat/apps/masks_app/tests/shinytest/complex_sample_change-expected/008.png": {
+      "bytes": 76337,
+      "sha256": "ea378298437357c86adb9df0b0eab93962561f8d2abc96a6a377bb68df0d9c8f"
+    },
+    "tests/testthat/apps/masks_app/tests/shinytest/complex_sample_change-expected/009.json": {
+      "bytes": 72883,
+      "sha256": "a3616625215a08199d1f223905b0db52bd04ddded9e06c19653907f97aeaf26d"
+    },
+    "tests/testthat/apps/masks_app/tests/shinytest/complex_sample_change-expected/009.png": {
+      "bytes": 77455,
+      "sha256": "4477859a47ff7f70139b3478fc15121573f0348b521145a526d4ee2e5415cfea"
+    },
+    "tests/testthat/apps/masks_app/tests/shinytest/marker_select-expected/001.json": {
+      "bytes": 74137,
+      "sha256": "264ae95c6b805aa470bf27b134ccc4789771c20dcd95a6263cdd125a7c58dc62"
+    },
+    "tests/testthat/apps/masks_app/tests/shinytest/marker_select-expected/001.png": {
+      "bytes": 50616,
+      "sha256": "c3e685c993201f614b192c6f8cae72ee180754a7f27e6bff803f7fd97f84e031"
+    },
+    "tests/testthat/apps/masks_app/tests/shinytest/marker_select-expected/002.json": {
+      "bytes": 41698,
+      "sha256": "b4aae4e0328157123d45f1d94d7f78657a341ebc678a36a185ae1309dfe4ca9d"
+    },
+    "tests/testthat/apps/masks_app/tests/shinytest/marker_select-expected/002.png": {
+      "bytes": 55545,
+      "sha256": "362dd0e001adbefec079013ab3022c0b8d28059617622c26d1f59f74d868d49f"
+    },
+    "tests/testthat/apps/masks_app/tests/shinytest/simple_assay_change-expected/001.json": {
+      "bytes": 80661,
+      "sha256": "2ab0c1f2fc2d99893faf0f96f09b793067f5dfb36d226efd3fb8e98fb9734df0"
+    },
+    "tests/testthat/apps/masks_app/tests/shinytest/simple_assay_change-expected/001.png": {
+      "bytes": 66184,
+      "sha256": "d15ac38f798340b6d46061ce11ed06819524b700e8d94a614e3feacb29b80ffe"
+    },
+    "tests/testthat/apps/masks_app/tests/shinytest/simple_assay_change-expected/002.json": {
+      "bytes": 75319,
+      "sha256": "d093a9f6c50d3ec713693cbf197975f49cbc9bb6ed26c84240c23b869edbd461"
+    },
+    "tests/testthat/apps/masks_app/tests/shinytest/simple_assay_change-expected/002.png": {
+      "bytes": 58742,
+      "sha256": "bd0d26d6c285841cedd0b92f335eb88a05d26ebe9c2175aaa7acfd11aa55e199"
+    },
+    "tests/testthat/apps/masks_app/tests/shinytest/simple_assay_change-expected/003.json": {
+      "bytes": 78839,
+      "sha256": "05c439b9b52eba7bfbfe5a34a8d632b6eebb75e0e26faf1492d84e3d41dbbef1"
+    },
+    "tests/testthat/apps/masks_app/tests/shinytest/simple_assay_change-expected/003.png": {
+      "bytes": 83931,
+      "sha256": "71fb614c10b4ab3016bf986815d15b7f0fd04b2b472f41ec71260c75c3f7898c"
+    },
+    "tests/testthat/apps/masks_app/tests/shinytest/simple_assay_change-expected/004.json": {
+      "bytes": 78839,
+      "sha256": "ca263433308b1231546d407a8e604a13b9006a660c9b924aa9e51c217d60774f"
+    },
+    "tests/testthat/apps/masks_app/tests/shinytest/simple_assay_change-expected/004.png": {
+      "bytes": 64829,
+      "sha256": "de3064d2b8cd5b1993c6dabcc3141c3b7d0ee349512e95509ac3575eedf1a379"
+    },
+    "tests/testthat/apps/masks_app/tests/shinytest/simple_gating-expected/001.json": {
+      "bytes": 3961,
+      "sha256": "32db8bebd185ffe8789a970cfb44bf43ef565e3975e51e8f882b41f098e59459"
+    },
+    "tests/testthat/apps/masks_app/tests/shinytest/simple_gating-expected/001.png": {
+      "bytes": 58742,
+      "sha256": "bd0d26d6c285841cedd0b92f335eb88a05d26ebe9c2175aaa7acfd11aa55e199"
+    },
+    "tests/testthat/apps/masks_app/tests/shinytest/simple_gating-expected/002.json": {
+      "bytes": 4274,
+      "sha256": "abe0baa80ffe47e66477b2e2a4049286d2a0bf5fe89c8ef4f8ecac9541c07fed"
+    },
+    "tests/testthat/apps/masks_app/tests/shinytest/simple_gating-expected/002.png": {
+      "bytes": 59004,
+      "sha256": "1e3c406fc8c5d3d99babab77edf0df46385d188c2ccc387c434738661ab19be5"
+    },
+    "tests/testthat/apps/masks_app/tests/shinytest/simple_plot_change-expected/001.json": {
+      "bytes": 3961,
+      "sha256": "32db8bebd185ffe8789a970cfb44bf43ef565e3975e51e8f882b41f098e59459"
+    },
+    "tests/testthat/apps/masks_app/tests/shinytest/simple_plot_change-expected/001.png": {
+      "bytes": 58742,
+      "sha256": "bd0d26d6c285841cedd0b92f335eb88a05d26ebe9c2175aaa7acfd11aa55e199"
+    },
+    "tests/testthat/apps/masks_app/tests/shinytest/simple_plot_change-expected/002.json": {
+      "bytes": 75192,
+      "sha256": "b378369dbdd36fab86b77e6d23d54a1dda5022affea91ddc40e3048ecf1cbf8a"
+    },
+    "tests/testthat/apps/masks_app/tests/shinytest/simple_plot_change-expected/002.png": {
+      "bytes": 57370,
+      "sha256": "2f66c2182e38d276ac9cd88e15d706f680d508a1418c1b2a55edeade9ba21087"
+    },
+    "tests/testthat/apps/masks_app/tests/shinytest/simple_plot_change-expected/003.json": {
+      "bytes": 76131,
+      "sha256": "515b4b8854fda0624b141dea36605743a62b13084ad2b74d65769697b5d46d76"
+    },
+    "tests/testthat/apps/masks_app/tests/shinytest/simple_plot_change-expected/003.png": {
+      "bytes": 77003,
+      "sha256": "2e5d1e2e8a86def08089646dd2d5158a772d6bb5b5e9c5e48e3ec1e83886eb15"
+    },
+    "tests/testthat/apps/masks_app/tests/shinytest/simple_plot_change-expected/004.json": {
+      "bytes": 78148,
+      "sha256": "1cfe32367be187b49b6de33603da1e778c9e86bd2793f57ce59cb78d1db987fa"
+    },
+    "tests/testthat/apps/masks_app/tests/shinytest/simple_plot_change-expected/004.png": {
+      "bytes": 44747,
+      "sha256": "cb2a694b3b41cb73ff28f6240ec54a8f08eef8c26222bc36035badfd1bd6ec0e"
+    },
+    "tests/testthat/apps/masks_app/tests/shinytest/simple_sample_select-expected/001.json": {
+      "bytes": 3961,
+      "sha256": "32db8bebd185ffe8789a970cfb44bf43ef565e3975e51e8f882b41f098e59459"
+    },
+    "tests/testthat/apps/masks_app/tests/shinytest/simple_sample_select-expected/001.png": {
+      "bytes": 58742,
+      "sha256": "bd0d26d6c285841cedd0b92f335eb88a05d26ebe9c2175aaa7acfd11aa55e199"
+    },
+    "tests/testthat/apps/masks_app/tests/shinytest/simple_sample_select-expected/002.json": {
+      "bytes": 78251,
+      "sha256": "1013571bec74154e1f014b3bf91f927dbea66dec469a40517530018318e972b2"
+    },
+    "tests/testthat/apps/masks_app/tests/shinytest/simple_sample_select-expected/002.png": {
+      "bytes": 68036,
+      "sha256": "89d774758cccba66d829d814e356b7f9a2ac70b1dbb308cd7e95b713bd8926e3"
+    },
+    "tests/testthat/apps/masks_app/tests/shinytest/simple_sample_select-expected/003.json": {
+      "bytes": 80459,
+      "sha256": "a0cb36d93a33e74cb4571990a0089640df6e7500efb2fa1e1dcca37ac5bca758"
+    },
+    "tests/testthat/apps/masks_app/tests/shinytest/simple_sample_select-expected/003.png": {
+      "bytes": 63849,
+      "sha256": "4ec9dccdfed911f02ef2e07f6bcc60b5bb4d54667b3dffb7947852262d2dea99"
+    },
+    "tests/testthat/apps/masks_app/tests/shinytest/tab_select-expected/001.json": {
+      "bytes": 3021,
+      "sha256": "dd6a8af297a6243bf47414e7b897547d4b8baf5334574397fc51d7f1ee53cab8"
+    },
+    "tests/testthat/apps/masks_app/tests/shinytest/tab_select-expected/001.png": {
+      "bytes": 44747,
+      "sha256": "cb2a694b3b41cb73ff28f6240ec54a8f08eef8c26222bc36035badfd1bd6ec0e"
+    },
+    "tests/testthat/apps/masks_app/tests/shinytest/tab_select-expected/002.json": {
+      "bytes": 75319,
+      "sha256": "d093a9f6c50d3ec713693cbf197975f49cbc9bb6ed26c84240c23b869edbd461"
+    },
+    "tests/testthat/apps/masks_app/tests/shinytest/tab_select-expected/002.png": {
+      "bytes": 58742,
+      "sha256": "bd0d26d6c285841cedd0b92f335eb88a05d26ebe9c2175aaa7acfd11aa55e199"
+    },
+    "tests/testthat/apps/masks_app/tests/shinytest/tab_select-expected/003.json": {
+      "bytes": 74192,
+      "sha256": "1e51f7790645b7986fc25b2db658fca1da6142480087867d01c5a7ca75e82e3a"
+    },
+    "tests/testthat/apps/masks_app/tests/shinytest/tab_select-expected/003.png": {
+      "bytes": 48597,
+      "sha256": "c407efe45313e5e995e0a4facae0a32de436bb7fd41e6586b8013df9ad84ec1f"
+    },
+    "tests/testthat/apps/masks_app_ondisk/tests/shinytest.R": {
+      "bytes": 49,
+      "sha256": "98bf7054f81a746dbf0fb3fb9620f8d3ad4c6d0056685bac0909d2651c2a2890"
+    },
+    "tests/testthat/apps/masks_app_ondisk/tests/shinytest/complex_assay_change.R": {
+      "bytes": 2909,
+      "sha256": "4705b00e483dfb1adae18bc88550a17369741edceca7e2bd01200f6c9fa755cd"
+    },
+    "tests/testthat/apps/masks_app_ondisk/tests/shinytest/complex_gating.R": {
+      "bytes": 2837,
+      "sha256": "d0bb20df1b0c135065a8a5eb3eb081613ee868f6bb049ef452fe22c5045e887e"
+    },
+    "tests/testthat/apps/masks_app_ondisk/tests/shinytest/complex_plot_change.R": {
+      "bytes": 2241,
+      "sha256": "f76bf02a621148d3d41fd836f8818d292c09f3d630191325a7e17132f44e3f29"
+    },
+    "tests/testthat/apps/masks_app_ondisk/tests/shinytest/complex_sample_change.R": {
+      "bytes": 2511,
+      "sha256": "83565a9d1957fefb05fc4ea736670a1facc91ada5d233423beb900a573d74f79"
+    },
+    "tests/testthat/apps/masks_app_ondisk/tests/shinytest/marker_select.R": {
+      "bytes": 814,
+      "sha256": "28ab9b5d7f344027eb1da4015b93b31bb2305932c0cb6f430eef3949d1d9a4b0"
+    },
+    "tests/testthat/apps/masks_app_ondisk/tests/shinytest/simple_assay_change.R": {
+      "bytes": 802,
+      "sha256": "4b4829dcb045aec738d13c07d6e0cdcfd5f8f6939f511df8b12cad79fba168c4"
+    },
+    "tests/testthat/apps/masks_app_ondisk/tests/shinytest/simple_gating.R": {
+      "bytes": 763,
+      "sha256": "77f26f1076d2fc4ea6f059e5cb6aac7fb782580b01ea2bfbab885ab0981566e6"
+    },
+    "tests/testthat/apps/masks_app_ondisk/tests/shinytest/simple_plot_change.R": {
+      "bytes": 587,
+      "sha256": "5a8a97f9ef409947c29b276b5529d0c9f6a7a7cb39879a236119fceeba9d5caa"
+    },
+    "tests/testthat/apps/masks_app_ondisk/tests/shinytest/simple_sample_select.R": {
+      "bytes": 525,
+      "sha256": "dcf48633bff82805c620df1bdf455297753e0d3cf1e3350863051c09c393d647"
+    },
+    "tests/testthat/apps/masks_app_ondisk/tests/shinytest/tab_select.R": {
+      "bytes": 637,
+      "sha256": "f3d60583a63e37428944ef89e8f81399f1cc011e621024053f6f7b4adfd04701"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest.R": {
+      "bytes": 49,
+      "sha256": "98bf7054f81a746dbf0fb3fb9620f8d3ad4c6d0056685bac0909d2651c2a2890"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/assay_selection.R": {
+      "bytes": 475,
+      "sha256": "42edc15bd0423e1ee44474b5143b7edb890b49ffa57ae5307a96f206fe3271ee"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/download.R": {
+      "bytes": 318,
+      "sha256": "9eb43c10577dd3b8dfd9386307f0da22810b0b124b8e645ba96a5079d5324849"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/gating_1.R": {
+      "bytes": 6037,
+      "sha256": "1e402129783a790a59b4a48b815296e6c04515e972035d69ea3fe5c0f6b2b3ee"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/gating_assay_change.R": {
+      "bytes": 2756,
+      "sha256": "5a2dc83da288f3c5a95900a6482779e2c6084273e5ed88ca1defb2bddb61170f"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/gating_marker_change.R": {
+      "bytes": 1619,
+      "sha256": "d69131ceecb12dba4c0fd1c31a240bb648010dee9bc4f915e3de58a4175a401c"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/gating_plot_reset.R": {
+      "bytes": 1844,
+      "sha256": "6704aab8e5aeb35b53e8a8fe9e43f56adec8c6267592f9954c67c26198bb588d"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/gating_sample_change.R": {
+      "bytes": 2916,
+      "sha256": "3828a8dc03456019314afe85bb204829cfb5307124b868889f19c5780fdf4da5"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/help.R": {
+      "bytes": 399,
+      "sha256": "0c056c0f82e7dde1b9ae27f24865f4a6312864429567f9eaf397db716d79bc9e"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/image_tab_selection.R": {
+      "bytes": 514,
+      "sha256": "e995bc9883a4bf3fe89a9c411cf5d2a7229d3cc9ec8af627e1c835b001959d20"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/marker_selection.R": {
+      "bytes": 1645,
+      "sha256": "4a2d7c76be58c4ed065c17abcb4b01c2702e064606c5757036772f9332abdc95"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/next_prev_sample_change.R": {
+      "bytes": 604,
+      "sha256": "548ebdb2140c51bfe98b7eb0f58e27b5877bf9a3bdf994c1e195f87c5e696303"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/sample_selection.R": {
+      "bytes": 552,
+      "sha256": "adb07c5602eb5f09930d70365b9df9a13fe229ffc2aa292033036651fe1d2886"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/side_panel.R": {
+      "bytes": 638,
+      "sha256": "abc230d5a217f0e40e24f0201fb2b0108574862a322a5ffaa770319db27bd484"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/tab_reset.R": {
+      "bytes": 565,
+      "sha256": "aba139cae3f4736fe2770981dda1de82770b698cc53d513435f4ca9702631523"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/tab_reset_gate_clear.R": {
+      "bytes": 1635,
+      "sha256": "86cb98df6cf6d089c36dfb92427145a10c85018361d31e0bf0fdf8743c3ecc39"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/assay_selection-expected/001.json": {
+      "bytes": 3020,
+      "sha256": "a34ceb140c518a2af545384d329b60c9444fc5f7320f6490b28589038ddcfecf"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/assay_selection-expected/001.png": {
+      "bytes": 44974,
+      "sha256": "f53616dffce42ed3e173452fc779ac806d489191a81b8e876b7837553c558909"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/assay_selection-expected/002.json": {
+      "bytes": 3021,
+      "sha256": "dd6a8af297a6243bf47414e7b897547d4b8baf5334574397fc51d7f1ee53cab8"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/assay_selection-expected/002.png": {
+      "bytes": 45062,
+      "sha256": "c685f905c5f903516b6df3923d9ad6b97b9b534b6c25597a31123bca66c2d612"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/assay_selection-expected/003.json": {
+      "bytes": 3961,
+      "sha256": "32db8bebd185ffe8789a970cfb44bf43ef565e3975e51e8f882b41f098e59459"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/assay_selection-expected/003.png": {
+      "bytes": 59063,
+      "sha256": "e64546b1e487e3fce4020ae6bea209d16f5eb9f947b75226114f5da9d767130b"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/assay_selection-expected/004.json": {
+      "bytes": 3962,
+      "sha256": "4c0daefd976e5fe6804b0d6165f0699226695b1334c2cc758ded1ca7321296bf"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/assay_selection-expected/004.png": {
+      "bytes": 66443,
+      "sha256": "71749ce7ff224ec065c50f39e5436ac92c710362cb24d09442af458322494506"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/assay_selection-expected/005.json": {
+      "bytes": 3910,
+      "sha256": "60eb2a40d934b08ea09f663dcecd5de362f0e7a08d220479424cb168bde4dd9b"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/assay_selection-expected/005.png": {
+      "bytes": 53553,
+      "sha256": "441cdad977e264e01e9ee2e87c7d58d49dddf5a49e725d9ba2c9704a9b0dacd0"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/assay_selection-expected/006.json": {
+      "bytes": 3907,
+      "sha256": "3b29c62dcf1fb461153c6fb6409ba86bd3091b2fa038c9f605eb890d97e75a32"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/assay_selection-expected/006.png": {
+      "bytes": 50970,
+      "sha256": "124fd1200f3a24903f6999df2831e90c859648a292122afe4d9adc468058e624"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/download-expected/001.json": {
+      "bytes": 3961,
+      "sha256": "32db8bebd185ffe8789a970cfb44bf43ef565e3975e51e8f882b41f098e59459"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/download-expected/001.png": {
+      "bytes": 59063,
+      "sha256": "e64546b1e487e3fce4020ae6bea209d16f5eb9f947b75226114f5da9d767130b"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/download-expected/002.json": {
+      "bytes": 3962,
+      "sha256": "07cdacb49ae0dbfd1c2fb8c334e9240648c84a91f36e4c04edb8be8192ad6e45"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/download-expected/002.png": {
+      "bytes": 59063,
+      "sha256": "e64546b1e487e3fce4020ae6bea209d16f5eb9f947b75226114f5da9d767130b"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/gating_1-expected/001.json": {
+      "bytes": 6851,
+      "sha256": "3e8c1059b01ec706288cad38a33c59849175fb004fbe3c6df44305f95a076041"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/gating_1-expected/001.png": {
+      "bytes": 48787,
+      "sha256": "6ea158d0d84bae830c39b94f932c301efde2ea6435e5ee918a81f0b4d258bf5e"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/gating_1-expected/002.json": {
+      "bytes": 7791,
+      "sha256": "9337f6a27a7d347638f85853119e7aee5b2a4936644644e3e56c146b241d23f9"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/gating_1-expected/002.png": {
+      "bytes": 62375,
+      "sha256": "9cccd91b3b05f34df56b06e49fb2c9f8e2437f15ae4375041f213e4375495024"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/gating_1-expected/003.json": {
+      "bytes": 8104,
+      "sha256": "55bda50b3e6117a3ee1768d3346fe9bcc5e6c5e003f0c9b2b5dbd3a7d13858a0"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/gating_1-expected/003.png": {
+      "bytes": 62535,
+      "sha256": "02aa193e61100fc65ae580ac39516d3dde322a671b45ab7c7ef70978736d84cf"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/gating_1-expected/004.json": {
+      "bytes": 9045,
+      "sha256": "a0b4f0aab4d186af82a7f54f15326af643e7f731f38bea5c7422ba36531b2da5"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/gating_1-expected/004.png": {
+      "bytes": 66107,
+      "sha256": "aa8f7638f4b65a6f3075f353770f2bb1b664e85df25aab02de287ddde42d610a"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/gating_1-expected/005.json": {
+      "bytes": 9354,
+      "sha256": "fda19f282cd15f006b80ff684d92b930a32947e602f2630064f356b2bf05765f"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/gating_1-expected/005.png": {
+      "bytes": 66555,
+      "sha256": "4bb3fe476b28847f684505efb8cbb09c2243ea63acef4dee8d4a2f280a310a7a"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/gating_1-expected/006.json": {
+      "bytes": 10293,
+      "sha256": "4d37c119ef322dcae0313fe2b72b5918299bd478f7510f03d3eb821a77dc6b99"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/gating_1-expected/006.png": {
+      "bytes": 74545,
+      "sha256": "e56b927eb4027a1acff7fe075a53d83b36b64b203186fd071ad03ab7d922a1f7"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/gating_1-expected/007.json": {
+      "bytes": 10605,
+      "sha256": "c48fbaabbed22730b01adfcbb6e77a118b8791397e5cfc228ca75f0fa36ed474"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/gating_1-expected/007.png": {
+      "bytes": 74290,
+      "sha256": "75658aa360bfce68b56347fbd9ae6c66dd5ddedd1d5f56bbfd8a25c84494f07c"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/gating_1-expected/008.json": {
+      "bytes": 6929,
+      "sha256": "10135a9a6b8a17ff2aae629642d694d58ec7e9f795735623a85e94af9ec99e22"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/gating_1-expected/008.png": {
+      "bytes": 48787,
+      "sha256": "6ea158d0d84bae830c39b94f932c301efde2ea6435e5ee918a81f0b4d258bf5e"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/gating_1-expected/009.json": {
+      "bytes": 7813,
+      "sha256": "c6417668c1cfe5561d3461cc162c2beef34c27aec24df14ac462938c1b79bcc8"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/gating_1-expected/009.png": {
+      "bytes": 55597,
+      "sha256": "2d0eebf60d6c7349184de495fa32f3d8163d713053b89b30be19eced8845a202"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/gating_1-expected/010.json": {
+      "bytes": 8090,
+      "sha256": "b2b8fc156cdf941c8d9ea2c8a5bc1af76be373f31fbd1407bf3ce58e71ccd183"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/gating_1-expected/010.png": {
+      "bytes": 56864,
+      "sha256": "b8bcb9f037c8f9c0ea332542248040395037a3be66fc2f505a595eb6bf529b2c"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/gating_1-expected/011.json": {
+      "bytes": 8975,
+      "sha256": "a3c4fc9f3ad1d549796424bcc864942aaaf5b38ea2709b9721689800c7a375cb"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/gating_1-expected/011.png": {
+      "bytes": 61365,
+      "sha256": "8cec5e306c310eaea70cba235b49c1c393169650af9f59f6d47422e1d4b9478c"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/gating_1-expected/012.json": {
+      "bytes": 9250,
+      "sha256": "47a96b03d0f49411edae8da6634dd30134ba1dcbfcc95aa5654f7ec291035701"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/gating_1-expected/012.png": {
+      "bytes": 61685,
+      "sha256": "43744e1e77cf4c146e41f3311c29f40377dd326287d9d7dbb8fca9673ff426c0"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/gating_1-expected/013.json": {
+      "bytes": 10140,
+      "sha256": "a7bb991dc5e44964d806247ad08ba1519bd8b4697c62ada630f7ea9e4617cf9f"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/gating_1-expected/013.png": {
+      "bytes": 64928,
+      "sha256": "99734917f6554c22add3ea16856221b53e12da0d839ba686e2d8cef2d9fa7ebf"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/gating_1-expected/014.json": {
+      "bytes": 10419,
+      "sha256": "8fe5fb724a882c9f3a3790fc6b5735870d9d8017ef8d9ff276d74a69a5413a34"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/gating_1-expected/014.png": {
+      "bytes": 65204,
+      "sha256": "57ecda166bbc0ff18c0208e792b28b513d6079b5f0fafcf779fbea324c0468ed"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/gating_1-expected/015.json": {
+      "bytes": 6928,
+      "sha256": "da416325e04d107cbaf7e92a81afcf8b09010d192b87bb85f254d29458448dbb"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/gating_1-expected/015.png": {
+      "bytes": 48610,
+      "sha256": "23e6564419bc678e7134e01f5032d75c5503803455fee6e894c5a7448cc81c7b"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/gating_1-expected/016.json": {
+      "bytes": 6928,
+      "sha256": "da416325e04d107cbaf7e92a81afcf8b09010d192b87bb85f254d29458448dbb"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/gating_1-expected/016.png": {
+      "bytes": 48610,
+      "sha256": "23e6564419bc678e7134e01f5032d75c5503803455fee6e894c5a7448cc81c7b"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/gating_1-expected/017.json": {
+      "bytes": 7870,
+      "sha256": "437742ca5482ca21a4c087cc1170ddc055bfb939c1162be1e70f2d01faa6d903"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/gating_1-expected/017.png": {
+      "bytes": 69929,
+      "sha256": "44c17cad8d4eaecc625dfd7fe467545cbf24de87f085040a796cd31f0860a336"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/gating_1-expected/018.json": {
+      "bytes": 8157,
+      "sha256": "84c3bf92654efe53f4f17a792696eeb600afaeae800c7f1aaab17ac9ea1585a5"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/gating_1-expected/018.png": {
+      "bytes": 70210,
+      "sha256": "084f94ea7c1b27756a481f2f78d99a73acfe048bd0861365cb470bb99d764d5c"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/gating_1-expected/019.json": {
+      "bytes": 9097,
+      "sha256": "828737a68c493b207553a9819f0bb33784e558fc388e17550f1f800e927f15af"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/gating_1-expected/019.png": {
+      "bytes": 75349,
+      "sha256": "f03206586ab9e56472c057bae2ee8269bf7bfc79b852c5cfe84f5ea96f7f2dec"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/gating_1-expected/020.json": {
+      "bytes": 9380,
+      "sha256": "2509c59157272fec456181b3f3f7f8aa483551ecd31dc32c735fcca0b111e13a"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/gating_1-expected/020.png": {
+      "bytes": 75766,
+      "sha256": "4d2f52092eab72aeb23a2e501c4c92d40cf4d338b7bff61e9b924d6d0631126a"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/gating_1-expected/021.json": {
+      "bytes": 10319,
+      "sha256": "5723281502e0bb3b33fd8050a333713f60005a4aac73227a4f77e3f8042cf7d8"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/gating_1-expected/021.png": {
+      "bytes": 84856,
+      "sha256": "97e42b2c8d598d12b79f796996c216307f536897ef809581d12126dae8b4a3aa"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/gating_1-expected/022.json": {
+      "bytes": 10601,
+      "sha256": "fdfe4a04592427fb3b265e26992b2c7cc737462b64a0096847c19b1d601b1e27"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/gating_1-expected/022.png": {
+      "bytes": 84681,
+      "sha256": "3681d486b022e0df8e726e929ed672f2efc4206564577ffe28a69d2baf630e0e"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/gating_1-expected/023.json": {
+      "bytes": 6928,
+      "sha256": "da416325e04d107cbaf7e92a81afcf8b09010d192b87bb85f254d29458448dbb"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/gating_1-expected/023.png": {
+      "bytes": 48610,
+      "sha256": "23e6564419bc678e7134e01f5032d75c5503803455fee6e894c5a7448cc81c7b"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/gating_1-expected/024.json": {
+      "bytes": 7814,
+      "sha256": "540adc23c2a70f24bbe047a213169b6d8d66f48e3cda92e56728ab063ecaab75"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/gating_1-expected/024.png": {
+      "bytes": 60637,
+      "sha256": "3fed9d709fb06433d6a4dbf81188903576d1fad396f34000a9d6f009f63471b9"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/gating_1-expected/025.json": {
+      "bytes": 8085,
+      "sha256": "0891f0d87a4ac14b72fe356a454bac4ab693d73032e065cd00da9cbe119b0129"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/gating_1-expected/025.png": {
+      "bytes": 61838,
+      "sha256": "2148693051d88c353c94aa96023037f3e926fc26d13f72c50f3bd326b67a5341"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/gating_1-expected/026.json": {
+      "bytes": 8972,
+      "sha256": "b2865c3fcde3b6238b649c2a8d3291cdaac17e178c171926415893a5c88871d9"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/gating_1-expected/026.png": {
+      "bytes": 70074,
+      "sha256": "e44ccad5ddfb8408320bd75aa8a086ba7b48d2948b1224762de4d50c9cb68ba8"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/gating_1-expected/027.json": {
+      "bytes": 9243,
+      "sha256": "e79cbe91b8eb4150950759741c933c82d0ba8fa7a18c9546781bba997bd5423a"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/gating_1-expected/027.png": {
+      "bytes": 70405,
+      "sha256": "7534c15c7eeef413e7fbcb6d758575cfacfdfc4a386e4f56f8db1f03ef925622"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/gating_1-expected/028.json": {
+      "bytes": 10134,
+      "sha256": "4f4bcd50c1f7c4cd764721137eaf805440a1d67446e8818ce97fb8058f4dfa2f"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/gating_1-expected/028.png": {
+      "bytes": 74826,
+      "sha256": "c41972acb22e83db8569b533f1feca6a4bddf67b63873abd0a3d0c31c45a079f"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/gating_1-expected/029.json": {
+      "bytes": 10407,
+      "sha256": "ac6f57ba722500863ca442b4993b7d82d74546647ac50e4e893f0de025fb62ab"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/gating_1-expected/029.png": {
+      "bytes": 74995,
+      "sha256": "4e3875f8c2a7e6b856ed71a99acef22433e060fc72c86c813bddef32357ca6b0"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/gating_assay_change-expected/001.json": {
+      "bytes": 10603,
+      "sha256": "383bd8201da8ffb0d30f2975b62b851bca14d4242099b23a68e8669817b059fb"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/gating_assay_change-expected/001.png": {
+      "bytes": 76533,
+      "sha256": "a241993c962ed99a30ddc557e2bd6a42a4aad089a6cb82b331a6e660efeadaab"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/gating_assay_change-expected/002.json": {
+      "bytes": 9098,
+      "sha256": "93fe5fc246c946b5063230182d86ee1b20b14a27704837b6464c754301c1622d"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/gating_assay_change-expected/002.png": {
+      "bytes": 75676,
+      "sha256": "32c1bb11c57e5b0aabeef2d534951ff91deaeb1e2f5464058810cf621b0141b3"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/gating_assay_change-expected/003.json": {
+      "bytes": 10597,
+      "sha256": "d86a8f736153b6042d149fc6ef6dcaad6855430844a9d01ba661d4d0ea8c83eb"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/gating_assay_change-expected/003.png": {
+      "bytes": 91802,
+      "sha256": "e67315124274f6c0b216b40122f62769ca1a5991507c0b7d6b77d0cb3da2e1e6"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/gating_assay_change-expected/004.json": {
+      "bytes": 9096,
+      "sha256": "6e8605909d606e742a7a969d366f2fccdec94567c780e96207f7e0de19767e32"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/gating_assay_change-expected/004.png": {
+      "bytes": 68791,
+      "sha256": "36ba8a811c71784d36b9b95e054fae0e7ac34c4b4d32d3df3a4c4773027ca0c6"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/gating_marker_change-expected/001.json": {
+      "bytes": 10605,
+      "sha256": "c48fbaabbed22730b01adfcbb6e77a118b8791397e5cfc228ca75f0fa36ed474"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/gating_marker_change-expected/001.png": {
+      "bytes": 74625,
+      "sha256": "03cd8771cc734efd3aa0d3f8baddd3fef6286759e619d9c5de5bff7ee27d4a94"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/gating_marker_change-expected/002.json": {
+      "bytes": 10601,
+      "sha256": "d14adeccc8e3fba77f9a2982c795cfe4b1bd59a8c606f0415ea55cfc44f09532"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/gating_marker_change-expected/002.png": {
+      "bytes": 75091,
+      "sha256": "a6a033c71f36677ea4959a26c113b7ad50a134e6444eab5c1e282c1d89198aac"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/gating_marker_change-expected/003.json": {
+      "bytes": 10599,
+      "sha256": "451785966ddc6cecec2584bebe68f8a2cc8f91339ee045b3ce7a17284d697807"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/gating_marker_change-expected/003.png": {
+      "bytes": 79550,
+      "sha256": "f8044f5cbc65b2985cc33cd7954a4b31b33d467b7d31dafec3dd7284446fa87c"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/gating_marker_change-expected/004.json": {
+      "bytes": 10594,
+      "sha256": "01dd2e581e453e780865eb01bd6c9600f008b327289b0bdcb90b3cb4888d8db2"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/gating_marker_change-expected/004.png": {
+      "bytes": 79568,
+      "sha256": "b32b3d927f362da991fe4f6987c21ef3f2472bd327cb207ca16a62d84c53cb5c"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/gating_plot_reset-expected/001.json": {
+      "bytes": 10605,
+      "sha256": "c48fbaabbed22730b01adfcbb6e77a118b8791397e5cfc228ca75f0fa36ed474"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/gating_plot_reset-expected/001.png": {
+      "bytes": 74625,
+      "sha256": "03cd8771cc734efd3aa0d3f8baddd3fef6286759e619d9c5de5bff7ee27d4a94"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/gating_plot_reset-expected/002.json": {
+      "bytes": 5239,
+      "sha256": "cc7413240927efaeb059c675fe6a79952ee87930670e5d0e2145d9ffcb06d97e"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/gating_plot_reset-expected/002.png": {
+      "bytes": 57695,
+      "sha256": "685e867670cfa86785b75ccee206d745f87f641485ecfeb8ec9da64408b0a65d"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/gating_plot_reset-expected/003.json": {
+      "bytes": 7690,
+      "sha256": "3843efb3da7b5f06f007d919826979f20947d85dbff5653e4fb0f8c7c2921fc2"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/gating_plot_reset-expected/003.png": {
+      "bytes": 74791,
+      "sha256": "07a661283e2ea6fa0de3f216ef1b7200f1a11f8a009c049acac1e4af49f16b92"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/gating_plot_reset-expected/004.json": {
+      "bytes": 3550,
+      "sha256": "f8662d3cf95560ef3678a41e2ef228b6a7c1d42264ef3f8dcab02e887fd669b3"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/gating_plot_reset-expected/004.png": {
+      "bytes": 45062,
+      "sha256": "c685f905c5f903516b6df3923d9ad6b97b9b534b6c25597a31123bca66c2d612"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/gating_sample_change-expected/001.json": {
+      "bytes": 10600,
+      "sha256": "4241a394ee5c083a4c310df5a65345ab922484a64c055a488ad90f6fddefc037"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/gating_sample_change-expected/001.png": {
+      "bytes": 76283,
+      "sha256": "2baa88ee9d0339dc7e4e9bd7d40b7890a5d569f94dc6436f9f276ce19e2e8bb4"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/gating_sample_change-expected/002.json": {
+      "bytes": 10600,
+      "sha256": "969faa4b22291df178eff812b1aad1d9398df53b76acdbd0e885a2024f35cc6d"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/gating_sample_change-expected/002.png": {
+      "bytes": 94620,
+      "sha256": "ea758991a9a88b09e9bf711a46191a78d02bd7d74c5936e2f1ef6b948acbcc48"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/gating_sample_change-expected/003.json": {
+      "bytes": 10600,
+      "sha256": "cd3d4b31f849b965f59e0186e96195e18982fb08f2b93d585809848e60793d00"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/gating_sample_change-expected/003.png": {
+      "bytes": 77818,
+      "sha256": "58d9743370182a91db11c447a4b8064caef063efa71beefec35ed0cb8b11596f"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/gating_sample_change-expected/004.json": {
+      "bytes": 9021,
+      "sha256": "cc0062f7911028f54f9ee4a12b058ac16ae87c9cfff94317a99d77787b9b1fe8"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/gating_sample_change-expected/004.png": {
+      "bytes": 75378,
+      "sha256": "861d472741fe8c2736e927a291255f03656ebf5602e715926a7276c3c4806390"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/gating_sample_change-expected/005.json": {
+      "bytes": 10595,
+      "sha256": "3cd087e98bb909c4381c631c37c21f3098a6b8164e692c3edbbe824821d9bc49"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/gating_sample_change-expected/005.png": {
+      "bytes": 100765,
+      "sha256": "b0d5fa2f4fc6bef065e2764023ff80342716688ff8be548b12aeccddba5e5715"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/gating_sample_change-expected/006.json": {
+      "bytes": 10595,
+      "sha256": "9a78dd55c846bfdcb46872c08157384191a4d106a97ee28346412cbc387d0f41"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/gating_sample_change-expected/006.png": {
+      "bytes": 94067,
+      "sha256": "bd36c8a42bc829cde7faca19a46f62ea41559a54eb7aa1654fd4715909bc7043"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/gating_sample_change-expected/007.json": {
+      "bytes": 10595,
+      "sha256": "dfa3deb006d70789bea456b921449f3b5038ca6f3f89a5bf39f3f86b335fd0a0"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/gating_sample_change-expected/007.png": {
+      "bytes": 100840,
+      "sha256": "2568c28115548e377b5f61e3dd78a31b15b086f490c52b2c57d870a26efac9e6"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/help-expected/001.json": {
+      "bytes": 3021,
+      "sha256": "dd6a8af297a6243bf47414e7b897547d4b8baf5334574397fc51d7f1ee53cab8"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/help-expected/001.png": {
+      "bytes": 45062,
+      "sha256": "c685f905c5f903516b6df3923d9ad6b97b9b534b6c25597a31123bca66c2d612"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/help-expected/002.json": {
+      "bytes": 3021,
+      "sha256": "5a16068aa170198fa7612e859178e65f9ea10edf118f189c58e610b99d045b56"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/help-expected/002.png": {
+      "bytes": 163015,
+      "sha256": "ba43e7e1198e79fa7d07e1f4a6c10552c76ee6f243eb0de0da67dc66c2490bf0"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/help-expected/003.json": {
+      "bytes": 3021,
+      "sha256": "07713e225673ebf1ad3a723468b2f2a86570a37a19f15f2e727754ff90c55a27"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/help-expected/003.png": {
+      "bytes": 44201,
+      "sha256": "dc16f5c0d5144db11e3693768c46de86b6fed83e55096a3adbdfd3e3d8aae1dd"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/image_tab_selection-expected/001.json": {
+      "bytes": 3958,
+      "sha256": "7187f739b9d499460dc59417ebdb02accb61447bfae3ec18999dae7953cdaaad"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/image_tab_selection-expected/001.png": {
+      "bytes": 52936,
+      "sha256": "ebf75d389bd4c0fb34b1b7a3885700571b2796d52e9b07e7d5531c64d0d3857f"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/image_tab_selection-expected/002.json": {
+      "bytes": 4121,
+      "sha256": "2713acc27752e16cfe64762641e6e5c4fd920696d46c100ba254f017a90b4c5d"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/image_tab_selection-expected/002.png": {
+      "bytes": 40233,
+      "sha256": "4620c36219fa2827327fc629d242a12e8afeaa7391316e3ef518c42035aea934"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/image_tab_selection-expected/003.json": {
+      "bytes": 4121,
+      "sha256": "d2bc500a63436226ba3766a7b3ed64441edd8ef4742177771a0c66aae6c3725c"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/image_tab_selection-expected/003.png": {
+      "bytes": 52936,
+      "sha256": "ebf75d389bd4c0fb34b1b7a3885700571b2796d52e9b07e7d5531c64d0d3857f"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/image_tab_selection-expected/004.json": {
+      "bytes": 4071,
+      "sha256": "61552c4804220cf85d36b5c33ebf880c38cebe0bd36b20e6fd8e80d2b9bae8c3"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/image_tab_selection-expected/004.png": {
+      "bytes": 48704,
+      "sha256": "c874627479805d15d60a5bd053ae3fc6f6346c8367bdcab694317089ec4f900d"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/image_tab_selection-expected/005.json": {
+      "bytes": 4071,
+      "sha256": "69ed637afcaed6c24ed7502153951157206384180076bd41470788b800b25c16"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/image_tab_selection-expected/005.png": {
+      "bytes": 39524,
+      "sha256": "24482758b572e3eb2ed8dda5f0d9607200be9f32175ca08fb7c8f5ef019310eb"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/image_tab_selection-expected/006.json": {
+      "bytes": 4071,
+      "sha256": "61552c4804220cf85d36b5c33ebf880c38cebe0bd36b20e6fd8e80d2b9bae8c3"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/image_tab_selection-expected/006.png": {
+      "bytes": 48704,
+      "sha256": "c874627479805d15d60a5bd053ae3fc6f6346c8367bdcab694317089ec4f900d"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/marker_selection-expected/001.json": {
+      "bytes": 6851,
+      "sha256": "3e8c1059b01ec706288cad38a33c59849175fb004fbe3c6df44305f95a076041"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/marker_selection-expected/001.png": {
+      "bytes": 49096,
+      "sha256": "cf6fdfb64e41877d1f590dd32a3f664526ffe0288480669b35798ee47d7698e6"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/marker_selection-expected/002.json": {
+      "bytes": 7791,
+      "sha256": "9337f6a27a7d347638f85853119e7aee5b2a4936644644e3e56c146b241d23f9"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/marker_selection-expected/002.png": {
+      "bytes": 62695,
+      "sha256": "76d4288291343839cff568377f339479f39ca37507bc7e0d43104e94f966a901"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/marker_selection-expected/003.json": {
+      "bytes": 7735,
+      "sha256": "8b7686c047aefce6f57d94c4e91e837d9be6051e6e5e8441bd35093c9bd912f6"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/marker_selection-expected/003.png": {
+      "bytes": 55919,
+      "sha256": "0f7d91b30fd870e53d8d68d6df434456ba25cae35e72a5a690c28d05335d5540"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/marker_selection-expected/004.json": {
+      "bytes": 8975,
+      "sha256": "09855266102da2402595930223ff39e01ca846be157e568ee377bc47fadcbb56"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/marker_selection-expected/004.png": {
+      "bytes": 65654,
+      "sha256": "8e8e8356f2f071b4d988ed1679d165fc9087f78de8090b53fe8ea27ac335b03a"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/marker_selection-expected/005.json": {
+      "bytes": 8923,
+      "sha256": "5ccad726769a4854a2eec8e56f3d679287781becb2e6772befa64aaf6dc657c1"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/marker_selection-expected/005.png": {
+      "bytes": 61681,
+      "sha256": "57ed325aad65c0b7a2a724ea5189403a28e7579808fa38357d78b6d4c8d9609f"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/marker_selection-expected/006.json": {
+      "bytes": 10165,
+      "sha256": "ac410d870b5425f8ad93104124affa48dd138ec59237bd4df18a2c06edef6214"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/marker_selection-expected/006.png": {
+      "bytes": 65134,
+      "sha256": "5f6cdc995a9a12611665ec853342463586246b9ec9ac73fd5a6e2e82d5559633"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/marker_selection-expected/007.json": {
+      "bytes": 10114,
+      "sha256": "19aa6f4e22e6d664bf884f173bb94a88972ffdf193bb94872dde974766b7b72d"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/marker_selection-expected/007.png": {
+      "bytes": 65239,
+      "sha256": "c6bcccccd032d1a9fd4041e8e0d05487bd9784c7ef255cd1d590ddbb6205566f"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/next_prev_sample_change-expected/001.json": {
+      "bytes": 3961,
+      "sha256": "32db8bebd185ffe8789a970cfb44bf43ef565e3975e51e8f882b41f098e59459"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/next_prev_sample_change-expected/001.png": {
+      "bytes": 59063,
+      "sha256": "e64546b1e487e3fce4020ae6bea209d16f5eb9f947b75226114f5da9d767130b"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/next_prev_sample_change-expected/002.json": {
+      "bytes": 3961,
+      "sha256": "214995e526482057aa9ecd901a17d01cd89c6df11ac948a5fd590b6d3e603ab8"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/next_prev_sample_change-expected/002.png": {
+      "bytes": 68363,
+      "sha256": "9c40ea2f0c1fc0cb60b95a9e871c8107ee66b241becafb698a152d0643d2bafa"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/next_prev_sample_change-expected/003.json": {
+      "bytes": 3961,
+      "sha256": "80883d7090196c2a38e165b38e0a42bf0137bb9b26467cd07b1397952e4cd88f"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/next_prev_sample_change-expected/003.png": {
+      "bytes": 64180,
+      "sha256": "e72112c55e4ef50da1e901a6de3165d59e6dbc23da7b2ad6fccfd44c58a22895"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/next_prev_sample_change-expected/004.json": {
+      "bytes": 3961,
+      "sha256": "010ed024ee3f71af427589319b83a47706dd70f690aeb6061fd3da091bf61fa8"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/next_prev_sample_change-expected/004.png": {
+      "bytes": 59063,
+      "sha256": "e64546b1e487e3fce4020ae6bea209d16f5eb9f947b75226114f5da9d767130b"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/next_prev_sample_change-expected/005.json": {
+      "bytes": 3961,
+      "sha256": "cba731e5e0f44919a737e47c170e63fad2675470497308b6f638c2a68a833280"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/next_prev_sample_change-expected/005.png": {
+      "bytes": 64180,
+      "sha256": "e72112c55e4ef50da1e901a6de3165d59e6dbc23da7b2ad6fccfd44c58a22895"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/next_prev_sample_change-expected/006.json": {
+      "bytes": 3961,
+      "sha256": "a2f7a17fbd18cf121ca927fd4ac37a4291f92fe9ee9ada127fbdee971fd462e9"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/next_prev_sample_change-expected/006.png": {
+      "bytes": 68363,
+      "sha256": "9c40ea2f0c1fc0cb60b95a9e871c8107ee66b241becafb698a152d0643d2bafa"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/next_prev_sample_change-expected/007.json": {
+      "bytes": 3961,
+      "sha256": "2e908a0523237d6265f354a97b3032466d4a6ea1d75abfd9d30a5de9e57f4c54"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/next_prev_sample_change-expected/007.png": {
+      "bytes": 59063,
+      "sha256": "e64546b1e487e3fce4020ae6bea209d16f5eb9f947b75226114f5da9d767130b"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/sample_selection-expected/001.json": {
+      "bytes": 3021,
+      "sha256": "f9a9051b4998753dc5180b25629eb2cd6f67d0a0a26690cabc6d39dbf7c973b2"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/sample_selection-expected/001.png": {
+      "bytes": 45181,
+      "sha256": "db0adaa7ce7c7f26c7ca9eae0d02cd2c33988c1aafb987ba6abaf5ed515a01d9"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/sample_selection-expected/002.json": {
+      "bytes": 3021,
+      "sha256": "9d08cf10aa6d7ab190d5d65ad2fd860c25dabc3faeb194bd6ccf2ebd64f62fa5"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/sample_selection-expected/002.png": {
+      "bytes": 45228,
+      "sha256": "da340d63fc8d1309ff7e61410bc5f4f7520d6dde8204d34e98473aef3a11880b"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/sample_selection-expected/003.json": {
+      "bytes": 3961,
+      "sha256": "95035d2ce7c66ad168722a4b6a78d087cceb987ce19b58f757b47fc0bce73367"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/sample_selection-expected/003.png": {
+      "bytes": 64180,
+      "sha256": "e72112c55e4ef50da1e901a6de3165d59e6dbc23da7b2ad6fccfd44c58a22895"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/sample_selection-expected/004.json": {
+      "bytes": 3961,
+      "sha256": "1afba3da1da6027e091d2af6a3f07a43ddd6fb4b0787795589a95eef5b0ab450"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/sample_selection-expected/004.png": {
+      "bytes": 68363,
+      "sha256": "9c40ea2f0c1fc0cb60b95a9e871c8107ee66b241becafb698a152d0643d2bafa"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/sample_selection-expected/005.json": {
+      "bytes": 3961,
+      "sha256": "32db8bebd185ffe8789a970cfb44bf43ef565e3975e51e8f882b41f098e59459"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/sample_selection-expected/005.png": {
+      "bytes": 59063,
+      "sha256": "e64546b1e487e3fce4020ae6bea209d16f5eb9f947b75226114f5da9d767130b"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/sample_selection-expected/006.json": {
+      "bytes": 3907,
+      "sha256": "3b29c62dcf1fb461153c6fb6409ba86bd3091b2fa038c9f605eb890d97e75a32"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/sample_selection-expected/006.png": {
+      "bytes": 50970,
+      "sha256": "124fd1200f3a24903f6999df2831e90c859648a292122afe4d9adc468058e624"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/sample_selection-expected/007.json": {
+      "bytes": 3907,
+      "sha256": "b74d19bddaa0e60d92dcfca7e3ffd7e2d53d081ffdf5833cee7c43c7077c9bab"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/sample_selection-expected/007.png": {
+      "bytes": 55538,
+      "sha256": "2de051d36849ae9680684a5d83f0ec5813b415ca856329637ecd872a46830db5"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/sample_selection-expected/008.json": {
+      "bytes": 3907,
+      "sha256": "2d6f6a860098a6fc498de326d94168c6cb3308db2dbc67e571751c1bb1dcac19"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/sample_selection-expected/008.png": {
+      "bytes": 48020,
+      "sha256": "8a87881f2d8af29954ccbc6e67d01e651ab964dcbc4a4a209b38295322d03d8d"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/side_panel-expected/001.json": {
+      "bytes": 3021,
+      "sha256": "dd6a8af297a6243bf47414e7b897547d4b8baf5334574397fc51d7f1ee53cab8"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/side_panel-expected/001.png": {
+      "bytes": 44747,
+      "sha256": "cb2a694b3b41cb73ff28f6240ec54a8f08eef8c26222bc36035badfd1bd6ec0e"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/side_panel-expected/002.json": {
+      "bytes": 3034,
+      "sha256": "af42b73b768f779d1ccf64df5a90f800ad1bab4b6c1bd1bf2d63763693b282a4"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/side_panel-expected/002.png": {
+      "bytes": 34988,
+      "sha256": "2aa01a9b7541abb83ede7f387656898f25269eff48e2edbcd59023e27cd786b2"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/side_panel-expected/003.json": {
+      "bytes": 3021,
+      "sha256": "dd6a8af297a6243bf47414e7b897547d4b8baf5334574397fc51d7f1ee53cab8"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/side_panel-expected/003.png": {
+      "bytes": 21166,
+      "sha256": "636043e8acb2aa1810ad429bf55a26cd3a6f9652deea33108740759b6cf8d576"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/side_panel-expected/004.json": {
+      "bytes": 3024,
+      "sha256": "d48f0de298eb6decec99f4b1c6164ef818a8af84d7e1acc8e73710b9f2f1ec50"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/side_panel-expected/004.png": {
+      "bytes": 31224,
+      "sha256": "a2354686b57f7132d4c2350dbafabfdd8b17e851a541f17b80811e22a3fa00c3"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/side_panel-expected/005.json": {
+      "bytes": 3034,
+      "sha256": "af42b73b768f779d1ccf64df5a90f800ad1bab4b6c1bd1bf2d63763693b282a4"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/side_panel-expected/005.png": {
+      "bytes": 35065,
+      "sha256": "ebcf9353e312802dd8cc2af3d41e7eb9f636c3589cd9b6b46d8323bfbc0648a8"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/side_panel-expected/006.json": {
+      "bytes": 3024,
+      "sha256": "d48f0de298eb6decec99f4b1c6164ef818a8af84d7e1acc8e73710b9f2f1ec50"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/side_panel-expected/006.png": {
+      "bytes": 31224,
+      "sha256": "a2354686b57f7132d4c2350dbafabfdd8b17e851a541f17b80811e22a3fa00c3"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/tab_reset-expected/001.json": {
+      "bytes": 3184,
+      "sha256": "da73c903e39f5a61f3a7a6661a16ac22d98c0a6e52bbdc030f1f9c6468f0af03"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/tab_reset-expected/001.png": {
+      "bytes": 45062,
+      "sha256": "c685f905c5f903516b6df3923d9ad6b97b9b534b6c25597a31123bca66c2d612"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/tab_reset-expected/002.json": {
+      "bytes": 4124,
+      "sha256": "02fd5070fa8f1de04c01628f01b85ad6bdb03da845b58059587e42ae7aed7ae5"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/tab_reset-expected/002.png": {
+      "bytes": 59063,
+      "sha256": "e64546b1e487e3fce4020ae6bea209d16f5eb9f947b75226114f5da9d767130b"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/tab_reset-expected/003.json": {
+      "bytes": 4124,
+      "sha256": "f8169b5cc107f4007c0928cecb89b85d417ffcacac3a61df1cc07ff2d5d6b5c9"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/tab_reset-expected/003.png": {
+      "bytes": 40646,
+      "sha256": "59db670ff078956ad3fe69e006093c928c278c8a99794c0b2cea920cf1846174"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/tab_reset-expected/004.json": {
+      "bytes": 4074,
+      "sha256": "e683a39d208ee9fc121cadc8ec891221976905717f1fb17412f68b51b704413f"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/tab_reset-expected/004.png": {
+      "bytes": 50106,
+      "sha256": "d2ed28e9c6578ec33bf16918607975f0651c7e50fbf2d36c79b1501b816b1b17"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/tab_reset-expected/005.json": {
+      "bytes": 4074,
+      "sha256": "5f7b6f22965ef724d95073d7e5e346c2661effc354000cc53d185de7aa8137dc"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/tab_reset-expected/005.png": {
+      "bytes": 39939,
+      "sha256": "79d46cba5aab5b2dd66aaf6bcd62bd16c507de676ea0f50d3db4f72975f47b3f"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/tab_reset-expected/006.json": {
+      "bytes": 4074,
+      "sha256": "629ca310f5615d3c8047b7ad9b050b6ac03f1dd3134874ba1ceb3d01e35e1fb4"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/tab_reset-expected/006.png": {
+      "bytes": 54370,
+      "sha256": "bd01f1ee3e521481febb987e24fae32a2678e0bfb8f468d29fe0a6f14c03aef7"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/tab_reset-expected/007.json": {
+      "bytes": 4074,
+      "sha256": "574d88723d25824e82e1d05f5c03b2465f3eb8ee3d4ce1808c8ec08f5fd4e84e"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/tab_reset-expected/007.png": {
+      "bytes": 39854,
+      "sha256": "faa26ddc908d66633d76d6ecbf05f392741a7baf8eea7f56753dea76c1e5c8ab"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/tab_reset-expected/008.json": {
+      "bytes": 4074,
+      "sha256": "0c0e54a537a4a767283c72d745e5c10dfd343d8b10f207050de25fe41d247582"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/tab_reset-expected/008.png": {
+      "bytes": 54234,
+      "sha256": "58823b2d969b7828de17846ba16bad0b57c6ebbd978fbed4425d9c3eb3962f05"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/tab_reset_gate_clear-expected/001.json": {
+      "bytes": 10605,
+      "sha256": "c48fbaabbed22730b01adfcbb6e77a118b8791397e5cfc228ca75f0fa36ed474"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/tab_reset_gate_clear-expected/001.png": {
+      "bytes": 74625,
+      "sha256": "03cd8771cc734efd3aa0d3f8baddd3fef6286759e619d9c5de5bff7ee27d4a94"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/tab_reset_gate_clear-expected/002.json": {
+      "bytes": 10768,
+      "sha256": "6f0754cb5f3724c456c1b8cadf97b4e4b5f1bba6f031302b5499e457fba892a2"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/tab_reset_gate_clear-expected/002.png": {
+      "bytes": 43236,
+      "sha256": "6e3201f18db321ade10ce1a43524dd340c969b4eea0f4d1966c7cc8ba61a12fd"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/tab_reset_gate_clear-expected/003.json": {
+      "bytes": 10767,
+      "sha256": "64b610f7e7909041451fba704912ee118dccfbedf252f7f583c6e7444d1814c0"
+    },
+    "tests/testthat/apps/sce_app/tests/shinytest/tab_reset_gate_clear-expected/003.png": {
+      "bytes": 79530,
+      "sha256": "21fd547a826cb922c2ae70c41157fad0c9751256863dfebcc9b8d3ade3ff1256"
+    }
+  },
+  "source_archive": {
+    "bytes": 24616960,
+    "sha256": "82aa54608603f68d0359d9a5700300f40d4a3d8d55117c3db04a90992060fc6b"
+  },
+  "paper_gating_function_recovered": false,
+  "paper_explicit_visualization_function": "plotPixels",
+  "source_executed": false,
+  "runtime_qualified": false,
+  "new_scoped_integration_credit": 0,
+  "whole_goal_complete": false
+}

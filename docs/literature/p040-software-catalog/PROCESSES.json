@@ -1,0 +1,55 @@
+[
+  {
+    "label": "full-source-gate",
+    "command": [
+      "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+      "D:\\projects\\JLinAlg\\tools\\literature\\p040_catalog\\verify.py",
+      "--rescan-sources",
+      "--out",
+      "D:\\projects\\JLinAlg\\build\\literature-review\\monocle-runtime\\p040-catalog-full-source-2"
+    ],
+    "exit_code": 0,
+    "elapsed_seconds": 19.216062545776367
+  },
+  {
+    "label": "boundary-tests",
+    "command": [
+      "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+      "D:\\projects\\JLinAlg\\tools\\literature\\p040_catalog\\test_catalog.py"
+    ],
+    "exit_code": 0,
+    "elapsed_seconds": 6.736279249191284
+  },
+  {
+    "label": "website",
+    "command": [
+      "cmd.exe",
+      "/d",
+      "/c",
+      "D:\\projects\\JLinAlg\\gradlew.bat",
+      "checkWebsite",
+      "--no-daemon",
+      "--no-parallel",
+      "--no-configuration-cache",
+      "--max-workers=2",
+      "--console=plain"
+    ],
+    "exit_code": 0,
+    "elapsed_seconds": 10.356376886367798
+  },
+  {
+    "label": "browser-ui",
+    "command": [
+      "C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1110-778-0_26.1110.778.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe",
+      "D:\\projects\\JLinAlg\\tools\\literature\\p040_catalog\\check_ui.cjs",
+      "C:/Users/User/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules",
+      "C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe",
+      "D:\\projects\\JLinAlg\\build\\literature-review\\monocle-runtime\\p040-catalog-ui-3\\ui",
+      "http://127.0.0.1:58656"
+    ],
+    "exit_code": 0,
+    "elapsed_seconds": 7.9850547313690186,
+    "local_server_closed": true,
+    "ui_source_sha256": "e9988b99de04a304b75f354fc6129353e1e57bafa76dde02c591a76b05f5ace1"
+  }
+]

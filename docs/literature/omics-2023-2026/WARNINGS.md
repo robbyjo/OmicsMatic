@@ -1,4 +1,20 @@
 
+## Current software census, candidate versions and required actions
+
+**Current catalog: 250 papers, 429 named software families, 2,668 paper-tool observations and 1,079 reviewed uses.** Twenty-two names omitted by the old registry add186 source-anchored observations across the same 250 papers. Twenty-two P040 uses and two P082 author-inventory statements have individual reviews. The 162 other new summaries still require individual review. All 2,482 previous observations and 1,055 reviews remain unchanged. The full semantic review and 250-paper objective remain open.
+
+**Coverage remains 103 new scoped integrations: 19 native Java and 84 upstream; 106 including 3 existing adapters. Missing rises to 267 because 22 previously omitted names are now visible.** This amendment awards no implementation badge. Fiji/ImageJ appears in 51 papers; GraphPad Prism in 46 and FlowJo in 27. Image processing, flow cytometry and statistical software are recorded with distinct source roles. Acquisition software requires the relevant instrument/vendor runtime; supplied downstream data can be analyzed using separately qualified tools.
+
+**Rphenograph 0.99.1 is available as an explicit tested development candidate, while the reported 0.1.1 remains unresolved and missing.** The complete original RANN/Jaccard/Louvain workflow and native Java coefficients passed source controls, 86 packaged checks and eight installer refusals, with complete saved models and original failures retained. The source's k=1 error and empty/NaN graph are never repaired or admitted. Do not substitute versions or infer the paper's manual annotation decisions. Read P040_SOFTWARE_REVIEW.md and the versioned RPHENOGRAPH099_WORKFLOW_DEVELOPMENT.md qualification guide. Older guide/catalog totals are retained qualification snapshots; current totals are stated here.
+
+**SKIP3: skip only dependent analysis if a required permitted runtime, download, installation, license or execution cannot be supplied.** Obtain the exact permitted provider and caller-prepared inputs; install only where allowed. No software installation or original analysis is performed by this catalog audit. Cell Ranger remains excluded by the user. A company disclosure of DeepCell, Inc. is not counted as software use.
+
+**FAIL2: admit no result on source, input, numeric, timeout, capacity or process failures.** Keep complete inputs, WARNINGS.md, status, original logs and any unadmitted models. Correct the named cause and retry NEW output. Existing Batchelor/FastMNN workflows remain unchanged: FACTORS checks every factor and zero reconstructed entries; ALL_VALUES checks the complete streamed reconstruction. Original unnamed-weight failures remain preserved; named batch_weights is a distinct explicit request. Source hashes establish integrity, not producer authentication or biological correctness.
+
+<details>
+<summary>Retained previous warnings and checkpoints (historical)</summary>
+
+
 ## Current Batchelor coverage, Rphenograph gap and required actions
 
 **Batchelor now has two qualified selected upstream workflows.** P040 has original 1.29.0 fastMNN on complete prepared signed protein/log-expression matrices, with native Java factor/reconstruction checks. P051 retains the selected Monocle 1.3.7/Batchelor 1.20 reducedMNN workflow. These distinct operations earn one scoped upstream integration badge, not whole-package or paper-reproduction credit. Read [BATCHELOR129_INTEGRATION.md](../BATCHELOR129_INTEGRATION.md).
@@ -969,5 +985,7 @@ output path. Disconnected infinite pseudotime values remain present. LEARN
 does not admit a pseudotime result. Do not infer roots or repair values to
 conceal failures. Full Batchelor, study reproduction and biological accuracy
 remain unproven; the250-paper goal remains active.
+
+</details>
 
 </details>

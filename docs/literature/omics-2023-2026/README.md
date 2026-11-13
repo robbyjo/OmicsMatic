@@ -1,3 +1,18 @@
+# 250-paper omics and GWAS toolbox catalog
+
+**Current checkpoint: 429 named software families,2,668 observations,1,079 reviewed uses.** The fixed 250-paper cohort contains 71 Nature, 104 Nature Genetics and 75 AJHG papers from 2023-10-23 through 2026-10-23; no time extension was needed. P040's Methods review identified 22 omitted names; a full 250-source census adds 186 paper-tool observations. Twenty-two P040 uses and two P082 author-inventory statements have individual reviews;162 other new summaries require individual review. Every prior 2,482 observation and 1,055 review is unchanged. The full semantic review remains open.
+
+**103 new scoped integrations remain available:** 19 native Java subsets and 84 tested upstream adapters; 106 including 3 existing adapters. **267 named tools remain missing**, including the 22 newly recognized names. No badge is awarded by a name census or source review. Cell Ranger remains excluded at the user's request.
+
+**Rphenograph 0.99.1 is separately available as a tested development candidate.** It includes complete original RANN/Jaccard/Louvain execution and native Java coefficients, complete model retention and prominent diagnostics. The paper reports0.1.1; that identity remains unresolved and missing. No automatic edition substitution, paper reproduction or manual annotation is claimed. Read [P040_SOFTWARE_REVIEW.md](../P040_SOFTWARE_REVIEW.md) for current source roles and candidate status. Component qualification guides and previous catalog checkpoints are retained versioned snapshots; current totals are stated on this page.
+
+**SKIP3 skips only dependent analyses** if a required permitted runtime, license, download, installation or execution is unavailable or forbidden. Supply the documented exact provider on a permitted host. **FAIL2 admits no result:** retain complete inputs, WARNINGS.md, status, logs and unadmitted models; correct the named cause and retry NEW output. Acquisition-software roles require the corresponding instrument/vendor runtime; separately qualified downstream tools can use supplied data. No original analysis or software installation occurs during this catalog audit.
+
+Current records: [inventory](tool-inventory.json), [papers](papers.json), [summary](summary.json), [warnings](WARNINGS.md). Validate with `python tools/literature/p040_catalog/verify.py --out build/literature-review/monocle-runtime/NEW-p040-check`; add `--rescan-sources` to read all 250 exact cached XML sources. Historical generators must not overwrite this cumulative catalog. The full 250-paper implementation objective remains active.
+
+<details>
+<summary>Retained previous catalog checkpoints (historical)</summary>
+
 # 250 paper omics and GWAS toolbox catalog
 
 **Current checkpoint: 103 new scoped integrations**: 19 native Java subsets and 84 tested upstream adapters; 106 including 3 existing adapters. **245 named tools remain missing.** Cell Ranger remains excluded at the user's request. The full goal is active.
@@ -1371,5 +1386,7 @@ Three source-reviewed tool additions retain separate provenance: MALT and HOPS h
 These additions improve the catalog and add no whole-tool or biological credit. The source-tested MALT 0.4.1 development controller does not fulfill the separate 0.5.2 role. Complete HOPS and MaltExtract operations remain unfinished; their unreported versions, settings and resource choices remain unknown. See `MALT_ALIGNMENT.md` and `MALT_HOPS_PAPER_ROLES.md`.
 
 **Required action:** match the declared source version and operation, qualify a permitted runtime, provide the complete dated reference/mapping and query populations, and retain original warnings and failures. If any prerequisite is unavailable or cannot be installed, skip its dependent analysis. A small software-control index does not reproduce the historical 91-spirochete or 7,508-genome bacterial analyses. Insufficient-read candidates remain unassessable.
+
+</details>
 
 </details>
