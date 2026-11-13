@@ -1,0 +1,474 @@
+{
+  "status": "CANDIDATE_REGISTRY_NOT_CATALOG_ADMISSION",
+  "definitions": [
+    {
+      "id": "cell_counter",
+      "name": "Cell Counter",
+      "pattern": "(?<![A-Za-z0-9_])(?:Cell[ _-]?Counter)(?![A-Za-z0-9_])"
+    },
+    {
+      "id": "trakem2",
+      "name": "TrakEM2",
+      "pattern": "(?<![A-Za-z0-9_])(?:TrakEM2)(?![A-Za-z0-9_])"
+    },
+    {
+      "id": "trackem_reported",
+      "name": "TrackEM (reported name; identity unresolved)",
+      "pattern": "(?<![A-Za-z0-9_])(?:TrackEM)(?![A-Za-z0-9_])"
+    },
+    {
+      "id": "colonyarea",
+      "name": "ColonyArea",
+      "pattern": "(?<![A-Za-z0-9_])(?:Colony\\s*Area)(?![A-Za-z0-9_])"
+    },
+    {
+      "id": "crosshair",
+      "name": "Crosshair",
+      "pattern": "(?<![A-Za-z0-9_])(?:Crosshair)(?![A-Za-z0-9_])"
+    },
+    {
+      "id": "bigwarp",
+      "name": "BigWarp",
+      "pattern": "(?<![A-Za-z0-9_])(?:BigWarp)(?![A-Za-z0-9_])"
+    },
+    {
+      "id": "grid_collection_stitching",
+      "name": "Grid/Collection Stitching",
+      "pattern": "(?<![A-Za-z0-9_])(?:Grid\\s*/?\\s*Collection\\s*Stitching)(?![A-Za-z0-9_])"
+    },
+    {
+      "id": "microbej",
+      "name": "MicrobeJ",
+      "pattern": "(?<![A-Za-z0-9_])(?:MicrobeJ)(?![A-Za-z0-9_])"
+    },
+    {
+      "id": "fast4dreg",
+      "name": "Fast4DReg",
+      "pattern": "(?<![A-Za-z0-9_])(?:Fast4DReg)(?![A-Za-z0-9_])"
+    },
+    {
+      "id": "object_counter_3d",
+      "name": "3D Objects Counter",
+      "pattern": "(?<![A-Za-z0-9_])(?:3D\\s*Objects?\\s*Counter)(?![A-Za-z0-9_])"
+    },
+    {
+      "id": "diana",
+      "name": "DiAna",
+      "pattern": "(?<![A-Za-z0-9_])(?:DiAna)(?![A-Za-z0-9_])"
+    },
+    {
+      "id": "jacop",
+      "name": "JACoP",
+      "pattern": "(?<![A-Za-z0-9_])(?:JACoP)(?![A-Za-z0-9_])"
+    },
+    {
+      "id": "ictn",
+      "name": "ICTN",
+      "pattern": "(?<![A-Za-z0-9_])(?:ICTN)(?![A-Za-z0-9_])"
+    },
+    {
+      "id": "stardist",
+      "name": "StarDist",
+      "pattern": "(?<![A-Za-z0-9_])(?:StarDist(?:\\s*3D)?)(?![A-Za-z0-9_])"
+    },
+    {
+      "id": "napari",
+      "name": "napari",
+      "pattern": "(?<![A-Za-z0-9_])(?:napari(?![-_\\s]pyclesperanto))(?![A-Za-z0-9_])"
+    },
+    {
+      "id": "pyclesperanto",
+      "name": "pyclesperanto",
+      "pattern": "(?<![A-Za-z0-9_])(?:(?<![-_])pyclesperanto(?:[-_]prototype)?(?![-_]assistant))(?![A-Za-z0-9_])"
+    },
+    {
+      "id": "napari_pyclesperanto_assistant",
+      "name": "napari pyclesperanto assistant",
+      "pattern": "(?<![A-Za-z0-9_])(?:napari[-_\\s]pyclesperanto[-_\\s]assistant)(?![A-Za-z0-9_])"
+    },
+    {
+      "id": "neuronstudio",
+      "name": "NeuronStudio",
+      "pattern": "(?<![A-Za-z0-9_])(?:NeuronStudio)(?![A-Za-z0-9_])"
+    },
+    {
+      "id": "rhclones",
+      "name": "RHClones",
+      "pattern": "(?<![A-Za-z0-9_])(?:RHClones)(?![A-Za-z0-9_])"
+    },
+    {
+      "id": "organaxis",
+      "name": "OrganAxis",
+      "pattern": "(?<![A-Za-z0-9_])(?:OrganAxis)(?![A-Za-z0-9_])"
+    },
+    {
+      "id": "gastrunet",
+      "name": "GastrUnet",
+      "pattern": "(?<![A-Za-z0-9_])(?:GastrUnet)(?![A-Za-z0-9_])"
+    },
+    {
+      "id": "fastai",
+      "name": "fast.ai",
+      "pattern": "(?<![A-Za-z0-9_])(?:fast\\.ai|fastai)(?![A-Za-z0-9_])"
+    },
+    {
+      "id": "albumentations",
+      "name": "albumentations",
+      "pattern": "(?<![A-Za-z0-9_])(?:albumentations)(?![A-Za-z0-9_])"
+    },
+    {
+      "id": "opencv",
+      "name": "OpenCV",
+      "pattern": "(?<![A-Za-z0-9_])(?:OpenCV2?)(?![A-Za-z0-9_])"
+    },
+    {
+      "id": "visium_stitcher",
+      "name": "VisiumStitcher",
+      "pattern": "(?<![A-Za-z0-9_])(?:VisiumStitcher)(?![A-Za-z0-9_])"
+    },
+    {
+      "id": "imaris",
+      "name": "Imaris",
+      "pattern": "(?<![A-Za-z0-9_])(?:Imaris)(?![A-Za-z0-9_])"
+    },
+    {
+      "id": "huygens",
+      "name": "Huygens",
+      "pattern": "(?<![A-Za-z0-9_])(?:Huygens(?:\\s*Professional)?)(?![A-Za-z0-9_])"
+    },
+    {
+      "id": "nikon_denoise_ai",
+      "name": "Nikon Denoise.ai",
+      "pattern": "(?<![A-Za-z0-9_])(?:Denoise[._\\s-]*ai)(?![A-Za-z0-9_])"
+    },
+    {
+      "id": "epson_scan",
+      "name": "Epson Scan",
+      "pattern": "(?<![A-Za-z0-9_])(?:Epson\\s*Scan)(?![A-Za-z0-9_])"
+    },
+    {
+      "id": "adobe_photoshop",
+      "name": "Adobe Photoshop",
+      "pattern": "(?<![A-Za-z0-9_])(?:Photoshop)(?![A-Za-z0-9_])"
+    },
+    {
+      "id": "adobe_illustrator",
+      "name": "Adobe Illustrator",
+      "pattern": "(?<![A-Za-z0-9_])(?:(?:Adobe\\s*)?Illustrator)(?![A-Za-z0-9_])"
+    },
+    {
+      "id": "zen_imaging",
+      "name": "ZEN imaging software",
+      "pattern": "(?<![A-Za-z0-9_])(?:ZEN(?:\\s*(?:blue|black))?)(?![A-Za-z0-9_])"
+    },
+    {
+      "id": "digitalmicrograph",
+      "name": "DigitalMicrograph",
+      "pattern": "(?<![A-Za-z0-9_])(?:Digital\\s*Micrograph)(?![A-Za-z0-9_])"
+    },
+    {
+      "id": "reconstructor",
+      "name": "Reconstructor",
+      "pattern": "(?<![A-Za-z0-9_])(?:(?-i:Reconstructor))(?![A-Za-z0-9_])"
+    },
+    {
+      "id": "nis_elements",
+      "name": "NIS-Elements",
+      "pattern": "(?<![A-Za-z0-9_])(?:NIS[\\s-]*Elements)(?![A-Za-z0-9_])"
+    },
+    {
+      "id": "ndp_view",
+      "name": "NDP.view",
+      "pattern": "(?<![A-Za-z0-9_])(?:NDP[\\s._-]*view(?:\\s*2)?)(?![A-Za-z0-9_])"
+    },
+    {
+      "id": "macsiq_view",
+      "name": "MACSiQ View",
+      "pattern": "(?<![A-Za-z0-9_])(?:MACS\\s*iQ\\s*View)(?![A-Za-z0-9_])"
+    },
+    {
+      "id": "neurolucida",
+      "name": "Neurolucida",
+      "pattern": "(?<![A-Za-z0-9_])(?:Neurolucida(?:\\s*(?:360|Explorer))?)(?![A-Za-z0-9_])"
+    },
+    {
+      "id": "leica_las_x",
+      "name": "Leica LAS X",
+      "pattern": "(?<![A-Za-z0-9_])(?:LAS[\\s-]*X)(?![A-Za-z0-9_])"
+    },
+    {
+      "id": "pytorch",
+      "name": "PyTorch",
+      "pattern": "(?<![A-Za-z0-9_])(?<!Harmony-)(?<!Harmony )PyTorch(?![\\s_-]*(?:Geometric|Lightning))(?![A-Za-z0-9_])"
+    },
+    {
+      "id": "bin2cell",
+      "name": "Bin2cell",
+      "pattern": "(?<![A-Za-z0-9_])(?:bin2cell)(?![A-Za-z0-9_])"
+    },
+    {
+      "id": "concaveman",
+      "name": "concaveman",
+      "pattern": "(?<![A-Za-z0-9_])(?:concaveman)(?![A-Za-z0-9_])"
+    },
+    {
+      "id": "readxl",
+      "name": "readxl",
+      "pattern": "(?<![A-Za-z0-9_])(?:readxl)(?![A-Za-z0-9_])"
+    },
+    {
+      "id": "patchwork",
+      "name": "patchwork",
+      "pattern": "(?<![A-Za-z0-9_])(?:patchwork)(?![A-Za-z0-9_])"
+    },
+    {
+      "id": "ggpmisc",
+      "name": "ggpmisc",
+      "pattern": "(?<![A-Za-z0-9_])(?:ggpmisc)(?![A-Za-z0-9_])"
+    },
+    {
+      "id": "ggtext",
+      "name": "ggtext",
+      "pattern": "(?<![A-Za-z0-9_])(?:ggtext)(?![A-Za-z0-9_])"
+    },
+    {
+      "id": "wesanderson",
+      "name": "wesanderson",
+      "pattern": "(?<![A-Za-z0-9_])(?:wesanderson)(?![A-Za-z0-9_])"
+    },
+    {
+      "id": "viridislite",
+      "name": "viridisLite",
+      "pattern": "(?<![A-Za-z0-9_])(?:viridisLite)(?![A-Za-z0-9_])"
+    },
+    {
+      "id": "inkscape",
+      "name": "Inkscape",
+      "pattern": "(?<![A-Za-z0-9_])(?:Inkscape)(?![A-Za-z0-9_])"
+    },
+    {
+      "id": "numpy",
+      "name": "NumPy",
+      "pattern": "(?<![A-Za-z0-9_])(?:NumPy)(?![A-Za-z0-9_])"
+    },
+    {
+      "id": "pandas",
+      "name": "pandas",
+      "pattern": "(?<![A-Za-z0-9_])(?:pandas)(?![A-Za-z0-9_])"
+    },
+    {
+      "id": "sopa",
+      "name": "Sopa",
+      "pattern": "(?<![A-Za-z0-9_])(?:Sopa)(?![A-Za-z0-9_])"
+    },
+    {
+      "id": "cellpose",
+      "name": "Cellpose",
+      "pattern": "(?<![A-Za-z0-9_])(?:Cellpose)(?![A-Za-z0-9_])"
+    },
+    {
+      "id": "scniche",
+      "name": "scNiche",
+      "pattern": "(?<![A-Za-z0-9_])(?:scNiche)(?![A-Za-z0-9_])"
+    },
+    {
+      "id": "multcomp",
+      "name": "multcomp",
+      "pattern": "(?<![A-Za-z0-9_])(?:multcomp)(?![A-Za-z0-9_])"
+    },
+    {
+      "id": "voyager",
+      "name": "Voyager",
+      "pattern": "(?<![A-Za-z0-9_])(?:Voyager)(?![A-Za-z0-9_])"
+    },
+    {
+      "id": "biorender",
+      "name": "BioRender",
+      "pattern": "(?<![A-Za-z0-9_])(?:BioRender)(?![A-Za-z0-9_])"
+    },
+    {
+      "id": "imspector_pro",
+      "name": "Imspector Pro",
+      "pattern": "(?<![A-Za-z0-9_])(?:Imspector\\s*Pro)(?![A-Za-z0-9_])"
+    },
+    {
+      "id": "visiopharm",
+      "name": "Visiopharm",
+      "pattern": "(?<![A-Za-z0-9_])(?:Visiopharm)(?![A-Za-z0-9_])"
+    },
+    {
+      "id": "leica_bond",
+      "name": "Bond staining software",
+      "pattern": "(?<![A-Za-z0-9_])(?:(?-i:Bond)\\s+\\d+(?:\\.\\d+)+)(?![A-Za-z0-9_])"
+    },
+    {
+      "id": "bd_spectrum_viewer",
+      "name": "BD spectrum viewer",
+      "pattern": "(?<![A-Za-z0-9_])(?:BD\\s+spectrum\\s+viewer)(?![A-Za-z0-9_])"
+    },
+    {
+      "id": "pytorch_geometric",
+      "name": "PyTorch Geometric",
+      "pattern": "(?<![A-Za-z0-9_])PyTorch[\\s_-]*Geometric(?![A-Za-z0-9_])",
+      "existing_family_id": null
+    },
+    {
+      "id": "detectron2",
+      "name": "Detectron2",
+      "pattern": "(?<![A-Za-z0-9_])(?:detectron2)(?![A-Za-z0-9_])",
+      "existing_family_id": null
+    },
+    {
+      "id": "postcode",
+      "name": "PoSTcode",
+      "pattern": "(?<![A-Za-z0-9_])(?:(?-i:PoSTcode))(?![A-Za-z0-9_])",
+      "existing_family_id": null
+    },
+    {
+      "id": "vizgen_vpt",
+      "name": "Vizgen post-processing tool (VPT)",
+      "pattern": "(?<![A-Za-z0-9_])(?:Vizgen\\s+post[-\\s]*processing\\s+tool|VPT)(?![A-Za-z0-9_])",
+      "existing_family_id": null
+    },
+    {
+      "id": "opencomet",
+      "name": "OpenComet",
+      "pattern": "(?<![A-Za-z0-9_])(?:OpenComet)(?![A-Za-z0-9_])",
+      "existing_family_id": null
+    },
+    {
+      "id": "leica_dyeassistant",
+      "name": "Leica DyeAssistant",
+      "pattern": "(?<![A-Za-z0-9_])(?:Dye\\s*Assistant)(?![A-Za-z0-9_])",
+      "existing_family_id": null
+    },
+    {
+      "id": "schard",
+      "name": "schard",
+      "pattern": "(?<![A-Za-z0-9_])(?:schard)(?![A-Za-z0-9_])",
+      "existing_family_id": null
+    },
+    {
+      "id": "emlddmm",
+      "name": "emlddmm",
+      "pattern": "(?<![A-Za-z0-9_])(?:emlddmm)(?![A-Za-z0-9_])",
+      "existing_family_id": null
+    },
+    {
+      "id": "timetree",
+      "name": "TimeTree",
+      "pattern": "(?<![A-Za-z0-9_])(?:TimeTree)(?![A-Za-z0-9_])",
+      "existing_family_id": null
+    },
+    {
+      "id": "washu_comparative_browser",
+      "name": "WashU Comparative Epigenome Browser",
+      "pattern": "(?<![A-Za-z0-9_])(?:WashU(?:\\s+Comparative)?\\s+Epigenome\\s+Browser)(?![A-Za-z0-9_])",
+      "existing_family_id": null
+    },
+    {
+      "id": "mutationmapper",
+      "name": "MutationMapper",
+      "pattern": "(?<![A-Za-z0-9_])(?:MutationMapper)(?![A-Za-z0-9_])",
+      "existing_family_id": null
+    },
+    {
+      "id": "semopy",
+      "name": "semopy",
+      "pattern": "(?<![A-Za-z0-9_])(?:semopy)(?![A-Za-z0-9_])",
+      "existing_family_id": null
+    },
+    {
+      "id": "h5py",
+      "name": "h5py",
+      "pattern": "(?<![A-Za-z0-9_])(?:h5py)(?![A-Za-z0-9_])",
+      "existing_family_id": null
+    },
+    {
+      "id": "ipykernel",
+      "name": "ipykernel",
+      "pattern": "(?<![A-Za-z0-9_])(?:ipykernel)(?![A-Za-z0-9_])",
+      "existing_family_id": null
+    },
+    {
+      "id": "fiji_imagej_spaced_name",
+      "name": "Image J (spaced literal)",
+      "pattern": "(?<![A-Za-z0-9_])(?-i:Image\\s+J)(?![A-Za-z])",
+      "existing_family_id": "fiji_imagej"
+    },
+    {
+      "id": "harmony_pytorch",
+      "name": "Harmony-PyTorch",
+      "pattern": "(?<![A-Za-z0-9_])(?:Harmony[-\\s]+PyTorch)(?![A-Za-z0-9_])",
+      "existing_family_id": null
+    },
+    {
+      "id": "pytorch_lightning",
+      "name": "PyTorch-Lightning",
+      "pattern": "(?<![A-Za-z0-9_])(?:PyTorch[-\\s_]+Lightning)(?![A-Za-z0-9_])",
+      "existing_family_id": null
+    },
+    {
+      "id": "captum",
+      "name": "Captum",
+      "pattern": "(?<![A-Za-z0-9_])(?:Captum)(?![A-Za-z0-9_])",
+      "existing_family_id": null
+    },
+    {
+      "id": "visiopharm_nuclei_detect_ai",
+      "name": "Visiopharm Nuclei detect AI App",
+      "pattern": "(?<![A-Za-z0-9_])(?:Nuclei\\s+detect\\s+AI\\s+App)(?![A-Za-z0-9_])",
+      "existing_family_id": null
+    },
+    {
+      "id": "vizgen_decoding_software",
+      "name": "Vizgen decoding software",
+      "pattern": "(?<![A-Za-z0-9_])(?:Vizgen\\s+software)(?![A-Za-z0-9_])",
+      "existing_family_id": null
+    },
+    {
+      "id": "machina",
+      "name": "MACHINA",
+      "pattern": "(?<![A-Za-z0-9_])(?:MACHINA)(?![A-Za-z0-9_])",
+      "existing_family_id": null
+    },
+    {
+      "id": "julia_distributions",
+      "name": "Distributions.jl",
+      "pattern": "(?<![A-Za-z0-9_])(?:Distributions\\.jl)(?![A-Za-z0-9_])",
+      "existing_family_id": null
+    },
+    {
+      "id": "julia_multipletesting",
+      "name": "MultipleTesting.jl",
+      "pattern": "(?<![A-Za-z0-9_])(?:MultipleTesting\\.jl)(?![A-Za-z0-9_])",
+      "existing_family_id": null
+    },
+    {
+      "id": "theano",
+      "name": "Theano",
+      "pattern": "(?<![A-Za-z0-9_])(?:Theano)(?![A-Za-z0-9_])",
+      "existing_family_id": null
+    },
+    {
+      "id": "allelicseries",
+      "name": "AllelicSeries / COAST-SS",
+      "pattern": "(?<![A-Za-z0-9_])(?:AllelicSeries|COAST[-\\s]*SS)(?![A-Za-z0-9_])",
+      "existing_family_id": null
+    },
+    {
+      "id": "footprintcharter",
+      "name": "FootprintCharter",
+      "pattern": "(?<![A-Za-z0-9_])(?:FootprintCharter)(?![A-Za-z0-9_])",
+      "existing_family_id": null
+    },
+    {
+      "id": "leica_las_legacy",
+      "name": "Leica LAS (legacy reported name)",
+      "pattern": "(?<![A-Za-z0-9_])LAS\\s+software(?![A-Za-z0-9_])",
+      "existing_family_id": null
+    }
+  ],
+  "base_census_sha256": "5eb72761b51d5103c3f95ee51d5585a56afbdd21f55042c28ceb5c1b21009dca",
+  "whole_goal_complete": false
+}
