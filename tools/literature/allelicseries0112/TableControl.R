@@ -1,0 +1,12 @@
+# Copyright (C) 2026 JLinAlg contributors; SPDX-License-Identifier: GPL-3.0-or-later
+args<-commandArgs(trailingOnly=TRUE);stopifnot(length(args)==2L);source(args[1],local=TRUE)
+v<-c(NA_real_,NaN,Inf,-Inf,0,-0,.Machine$double.xmin/2,.Machine$double.xmax,1/3,.Machine$double.eps)
+labels<-c('001','1','a\tb','a\nb','"quoted"','../x',' NA ','gène','gene.v1','gene.v01')
+original<-data.frame(identifier=labels,value=v,check.names=FALSE,stringsAsFactors=FALSE);rownames(original)<-paste0('row-',seq_along(v))
+saveRDS(original,file.path(args[2],'typed-original-table.rds'),version=3)
+write_original_table(original,file.path(args[2],'special-values.tsv'))
+actual<-read.delim(file.path(args[2],'special-values.tsv'),row.names=1,colClasses='character',na.strings=NULL,check.names=FALSE,quote='"',comment.char='')
+stopifnot(identical(actual$identifier,original$identifier),identical(rownames(actual),rownames(original)),identical(actual$value[1:6],c('NA','NaN','Inf','-Inf','0','-0')))
+numeric<-suppressWarnings(as.numeric(actual$value));stopifnot(is.na(numeric[1]),!is.nan(numeric[1]),is.nan(numeric[2]),identical(numeric[3:10],v[3:10],num.eq=FALSE))
+writeLines('PASS_NUMERIC_TSV_NA_NAN_INFINITIES_ROUNDTRIP_AND_LITERAL_IDENTIFIERS',file.path(args[2],'TABLE_COMPLETED.txt'))
+cat('PASS_NUMERIC_TSV_NA_NAN_INFINITIES_ROUNDTRIP_AND_LITERAL_IDENTIFIERS\n')

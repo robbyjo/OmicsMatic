@@ -48,11 +48,19 @@ python3 tools/literature/allelicseries0112/run.py \
 
 Use a NEW output directory for each call. An explicit seed makes stochastic calls reproducible in the same qualified runtime; omitting it preserves the original unseeded behavior. Every call retains the exact input RDS, full original result object, original warning/message/error conditions, RNG state, runtime, source identity, process logs and file manifest. COAST objects also export complete Betas, Counts and Pvals tables when present. Structure previews are abbreviated; `original-value.rds` and `complete-original-return.rds` preserve the full values.
 
-RDS preserves R's distinct `NA`, `NaN` and infinite values. TSV exports use R's `NA` text formatting and do not preserve `NA` versus `NaN` typing; use the complete RDS objects for that distinction.
+RDS preserves complete R types, attributes, `NA`, `NaN` and infinite values. The current numeric TSV projection uses 17-digit text and distinct `NA`, `NaN`, `Inf` and `-Inf` spellings. Row labels occupy the first column. Use a proper quoted TSV reader for identifiers containing tabs/newlines/quotes; use RDS for complete types and attributes. The older checkpoint's TSV formatting remains retained as historical evidence.
 
 Original errors or nonfinite returned values are retained with **FAIL2 and no analysis admission**, including an original COASTSS object whose SKAT component is missing. Read the original conditions and correct the actual cause before retrying. The adapter does not silently replace that component. Successful execution is not validation of input biology, study design, calibration or exact author-runtime reproduction.
 
 Original warnings are printed prominently in the command output and at the start of `WARNINGS.md`. `COMPLETED.json` records their count and whether review is required. Review the original cause, then justify or correct the named input/model choice before using the result. Original errors are also printed with the failure marker and concrete condition text.
+
+The original low-level `BaselineSS`/`SumCountSS` functions return scalar zero when no positive standard errors remain. The adapter retains that exact return and marks **FAIL2/no analysis admission** with `RETURN_ADMISSION_REASON.txt`. It also withholds an ambiguous low-level zero whose sentinel status cannot be established from typed arguments. A computed zero tail probability with explicit positive SEs remains a successful original return. The original method is always called once; admission checks do not replace values or reevaluate an argument expression.
+
+## Batch many genes in one original R process
+
+Use [`batch.py`](batch.py) with a named R list of complete argument lists, one per literal gene identifier. All 16 original exports are supported. The adapter verifies the provider before and after the complete batch and loads one original R namespace for all entries. [Copyable batch examples and result/recovery guidance](../../../docs/literature/ALLELICSERIES0112_BATCH.md) cover this interface.
+
+Every request is processed in its original order, and every original return/error is retained in an ordinal directory. Identifiers are never used as file paths or repaired; the full ID stays in RDS and the quoted index. Missing/duplicate/empty identifiers, malformed argument lists and capacity overflow reject the full batch before any original function call. A failed/nonfinite/scalar-zero entry prevents complete-batch admission, while all completed entries remain visible. There is no automatic gene dropping or prefix admission. A seed is set once for the shared original RNG stream; stochastic results depend on input order.
 
 ## Native Java methods
 
@@ -78,6 +86,6 @@ This synthetic example explicitly selects the weighted-sum method, epsilon and g
 
 Initial native comparisons exposed literal annotation-matrix multiplication effects on `Inf`/`NaN` propagation. The baseline and weighted-sum operations have different multiplication orders. Their failed source snapshots and complete mismatch logs are retained; subsequent passing results do not relabel those failures.
 
-The selected source, official version-lookup evidence, complete original objects and private runtime logs remain separate from the main catalog. The full 250-paper software audit and implementation goal remains open.
+The selected source, official version-lookup evidence, complete original objects and private runtime logs remain separate from the main catalog. The first development checkpoint describes its archived source snapshot; the batch/scalar-admission successor changes project wrappers, not the original package. The full 250-paper software audit and implementation goal remains open.
 
 `paper-use-intake.json` individually binds all 26 named AllelicSeries/COAST-SS source anchors in P204. It distinguishes UKB full in-sample LD, borrowed UKB LD in meta-analysis/TOPMed, model omissions, preprocessing, experiments, interpretation and availability. These are component-development reviews; they do not change the main catalog's reviewed-use totals or establish whole-paper reproduction.

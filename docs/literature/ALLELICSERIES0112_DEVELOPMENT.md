@@ -1,5 +1,7 @@
 # AllelicSeries 0.1.1.2 development checkpoint
 
+**Historical source snapshot:** this checkpoint is retained at commit `0efbca8a`. Its archive contains the exact qualified sources, including the earlier project wrappers and documentation; its source pins describe that snapshot. The [batch/scalar-admission successor](ALLELICSERIES0112_BATCH.md) extends the wrappers and numeric table projection. The original package and earlier evidence are retained.
+
 **Warnings and required actions:** the paper reports `1.1.2`; the actual selected CRAN archive declares `0.1.1.2`. Exact paper-build equivalence remains unproven. Missing/forbidden installation or runtime is **SKIP3**, which skips dependent analysis. Original errors, nonfinite returns and integrity failures admit no analysis; retain the complete failed output, read its original conditions and raw logs, correct the named cause where permitted, and retry NEW paths. See the [copyable setup, original-method and Java API instructions](../../tools/literature/allelicseries0112/README.md).
 
 The complete unchanged original package is now available through a private Linux/WSL R4.5.3 source-install provider and a public method adapter. The selected package archive contains83 original files, SHA-256 `20108a358d2c198dde13e5f32fcb847f15d964b40f1eaf106c5b821ac6917b22`. The provider installs eight fixed original dependency sources in its NEW library, verifies all42 installed R function bodies/formals against the pristine sources, and exposes all16 original function exports. Existing R installations/libraries are retained.

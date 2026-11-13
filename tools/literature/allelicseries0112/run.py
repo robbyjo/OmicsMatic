@@ -4,7 +4,7 @@
 from pathlib import Path
 import argparse,hashlib,json,os,shutil,subprocess,sys,time,traceback
 HERE=Path(__file__).resolve().parent
-ACTION='Required action: use a successful unmodified private provider, a complete named argument-list RDS and explicit --allow-analysis. Supply an explicit --seed for reproducible stochastic calls. Missing/forbidden runtime or execution SKIP3 skips dependent analysis. Original errors and nonfinite returns are retained and admit no analysis; inspect original-error.txt, original-warnings.txt, complete-original-return.rds and raw process logs, correct the named cause and retry NEW paths. Preserve failed outputs. No substitution, automatic variant/allele alignment, category repair, LD repair beyond the actual source behavior, or silent component imputation is performed. The actual archive is0.1.1.2; paper1.1.2 equivalence and biological reproduction remain unproven.'
+ACTION='Required action: use a ready unchanged provider, complete named argument-list RDS and explicit --allow-analysis. Supply --seed for reproducible stochastic calls. Missing/forbidden prerequisites SKIP3 skips dependent analysis. Original errors, nonfinite values and low-level no-positive-SE/unproven scalar-zero returns admit no analysis. Inspect RETURN_ADMISSION_REASON.txt, original-error.txt, original-warnings.txt, complete-original-return.rds and raw logs; correct named causes and retry NEW paths. Preserve original values and failures. No variant/allele alignment, category repair or component imputation is performed. The actual archive is0.1.1.2; paper1.1.2 equivalence and biological reproduction remain unproven.'
 
 def pin(path):
  h=hashlib.sha256();n=0
@@ -42,11 +42,11 @@ def main():
   if out.is_relative_to(prefix) or prefix.is_relative_to(out):raise ValueError('Output overlaps protected R prefix')
   if a.function not in profile['function_exports']:raise ValueError('Select one of the16 original function exports')
   if a.seed is not None and not 0<=a.seed<=2147483647:raise ValueError('Declare an R integer seed in0..2147483647')
-  helpers={n:pin(HERE/n) for n in ['run.py','OriginalRun.R','source-profile.json']};input_pin=pin(a.arguments_rds);shutil.copyfile(a.arguments_rds,out/'arguments.rds');shutil.copyfile(HERE/'source-profile.json',out/'source-profile.json')
+  helpers={n:pin(HERE/n) for n in ['run.py','OriginalRun.R','OriginalProtocol.R','source-profile.json']};input_pin=pin(a.arguments_rds);shutil.copyfile(a.arguments_rds,out/'arguments.rds');shutil.copyfile(HERE/'source-profile.json',out/'source-profile.json')
   save(out/'REQUEST.json',dict(function=a.function,seed=a.seed,input_rds=input_pin,provider_ready=pin(a.provider/'READY.json'),provider_version='0.1.1.2',reported_paper_version='1.1.2',paper_build_equivalence_proven=False,runner_sources=helpers))
   env={k:v for k,v in os.environ.items() if k not in ['R_LIBS','R_LIBS_USER','R_LIBS_SITE','R_DEFAULT_PACKAGES','R_PROFILE_USER','R_ENVIRON_USER']}
   env.update(PATH=str(prefix/'bin')+':/usr/bin:/bin',R_HOME=str(prefix/'lib/R'),LD_LIBRARY_PATH=str(prefix/'lib'),R_PROFILE_USER='/dev/null',R_ENVIRON_USER='/dev/null',R_LIBS=str(library)+':'+str(base),R_LIBS_USER=str(library),R_LIBS_SITE='',LC_ALL='C.UTF-8',OMP_NUM_THREADS='1',OPENBLAS_NUM_THREADS='1',MKL_NUM_THREADS='1')
-  command=list(map(str,[rscript,'--vanilla',HERE/'OriginalRun.R',library,base,a.function,out/'arguments.rds',out,'MISSING' if a.seed is None else a.seed]));start=time.time()
+  command=list(map(str,[rscript,'--vanilla',HERE/'OriginalRun.R',library,base,a.function,out/'arguments.rds',out,'MISSING' if a.seed is None else a.seed,HERE/'OriginalProtocol.R']));start=time.time()
   with (out/'original.stdout').open('xb') as so,(out/'original.stderr').open('xb') as se:
    proc=subprocess.Popen(command,env=env,cwd=out,stdin=subprocess.DEVNULL,stdout=so,stderr=se);save(out/'LIVE.json',dict(pid=proc.pid,command=command,started_unix=start));code=proc.wait()
   row=dict(command=command,exit_code=code,elapsed_seconds=time.time()-start);calls.append(row);save(out/'original.process.json',row)
@@ -56,7 +56,7 @@ def main():
   if not (out/'RETURN_STATUS.txt').is_file():raise ValueError('Original process exited '+str(code)+' before a complete return record; inspect raw logs, no result admitted')
   status=(out/'RETURN_STATUS.txt').read_text().splitlines()
   if len(status)!=4:raise ValueError('Original return-record structure differs; no result admitted')
-  if code or status[0]!='ORIGINAL_RETURN_CAPTURED':raise ValueError('Original function error or nonfinite return; inspect the retained complete result and original conditions')
+  if code or status[0]!='ORIGINAL_RETURN_CAPTURED':raise ValueError('Original error, nonfinite value or low-level scalar-zero return; inspect the complete original packet and admission reason')
   warning_count=int(status[2]);message_count=int(status[3]);notice=''
   if warning_count:
    notice='WARNING: Original function emitted '+str(warning_count)+' warning(s). Required action: review the original warnings below and justify or correct the named input/model choice before using the returned result.\n'+(out/'original-warnings.txt').read_text(encoding='utf8')+'\n'
@@ -69,6 +69,7 @@ def main():
   detail=''
   if owned and (out/'RETURN_STATUS.txt').is_file():detail+=(out/'RETURN_STATUS.txt').read_text(encoding='utf8')+'\n'
   if owned and (out/'original-error.txt').is_file():detail+=(out/'original-error.txt').read_text(encoding='utf8')+'\n'
+  if owned and (out/'RETURN_ADMISSION_REASON.txt').is_file():detail+=(out/'RETURN_ADMISSION_REASON.txt').read_text(encoding='utf8')+'\n'
   if owned:
    v['original_return_or_error_detail']=detail;save(out/'FAILURE.json',v);(out/'WARNINGS_FAILURE.md').write_text(v['status']+'\n'+repr(e)+'\n'+detail+ACTION+'\n',encoding='utf8',newline='\n')
   if detail:print(detail,flush=True)

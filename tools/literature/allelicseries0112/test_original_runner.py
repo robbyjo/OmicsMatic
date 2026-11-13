@@ -14,7 +14,7 @@ def main():
   for protected in [HERE,a.provider.resolve(),a.reference.resolve(),a.historical_reference.resolve()]:
    if out.is_relative_to(protected) or protected.is_relative_to(out):raise ValueError('Output overlaps protected evidence/provider')
   out.mkdir(parents=True,exist_ok=False);owned=True
-  ready=json.loads((a.provider/'READY.json').read_bytes());profile=json.loads((HERE/'source-profile.json').read_bytes());before={n:pin(HERE/n) for n in ['run.py','OriginalRun.R','CompareOriginal.R','MakeRefusalInputs.R','test_original_runner.py','source-profile.json']}
+  ready=json.loads((a.provider/'READY.json').read_bytes());profile=json.loads((HERE/'source-profile.json').read_bytes());before={n:pin(HERE/n) for n in ['run.py','OriginalRun.R','OriginalProtocol.R','CompareOriginal.R','MakeRefusalInputs.R','test_original_runner.py','source-profile.json']}
   prefix=Path(ready['r_prefix']);env={k:v for k,v in os.environ.items() if k not in ['R_LIBS','R_LIBS_USER','R_LIBS_SITE','R_DEFAULT_PACKAGES','R_PROFILE_USER','R_ENVIRON_USER']}
   env.update(PATH=str(prefix/'bin')+':/usr/bin:/bin',R_HOME=str(prefix/'lib/R'),LD_LIBRARY_PATH=str(prefix/'lib'),R_PROFILE_USER='/dev/null',R_ENVIRON_USER='/dev/null',LC_ALL='C.UTF-8',OMP_NUM_THREADS='1',OPENBLAS_NUM_THREADS='1',MKL_NUM_THREADS='1')
   snapshot=out/'source-snapshot';snapshot.mkdir()
