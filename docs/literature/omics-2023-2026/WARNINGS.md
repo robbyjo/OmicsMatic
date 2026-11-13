@@ -1,3 +1,19 @@
+
+## Current Batchelor coverage, Rphenograph gap and required actions
+
+**Batchelor now has two qualified selected upstream workflows.** P040 has original 1.29.0 fastMNN on complete prepared signed protein/log-expression matrices, with native Java factor/reconstruction checks. P051 retains the selected Monocle 1.3.7/Batchelor 1.20 reducedMNN workflow. These distinct operations earn one scoped upstream integration badge, not whole-package or paper-reproduction credit. Read [BATCHELOR129_INTEGRATION.md](../BATCHELOR129_INTEGRATION.md).
+
+**Rphenograph remains missing, with a version discrepancy.** P040 reports 0.1.1 and k = 40 after FastMNN correction. All four inspected official repository commits report 0.99.1. The reported version remains unrecovered; no source was executed or runtime qualified. Marker annotation, subclustering and visual refinement include additional human decisions. One newly recorded missing tool offsets the Batchelor admission: 103 new scoped integrations, 245 missing tools, 407 named tools. Every previous 2481 observation and 1054 review remains unchanged.
+
+**SKIP3: skip dependent analysis when the exact permitted Linux runtime, download, installation or execution is unavailable or forbidden.** Use the separately documented setup helper only where allowed, then supply its actual Rscript/library/pristine-source paths. The JAR contains no original R runtime. Analysis installs nothing. Windows saved-result audits need no R; original analysis needs permitted Linux/WSL with Linux Java and paths. Read [FASTMNN129_WORKFLOW_DEVELOPMENT.md](../FASTMNN129_WORKFLOW_DEVELOPMENT.md).
+
+**FAIL2: no result is admitted on input, source, numeric, capacity, timeout or process failure.** Retain complete inputs, WARNINGS.md, status, original logs and any unadmitted RDS. Correct the named cause and retry a NEW output. Original unnamed numeric weights fail in both retained IRLBA and EXACT controls; changing only PCA backend did not fix them. A named batch_weights dictionary is an explicit different request and must never be inserted automatically.
+
+**FACTORS preserves the complete original lazy model and checks every factor; it evaluates zero reconstructed entries.** ALL_VALUES additionally streams and checks every reconstructed value. Neither mode authenticates a producer, infers author settings or validates biology. The custom tested R4.5.3 source build is distinct from the recommended R4.6 development environment. The prior review notes and notices are retained as historical records. Paper-wide semantic review and the full 250-paper objective remain open; Cell Ranger remains excluded at the user's request.
+
+<details>
+<summary>Retained prior warnings and source checkpoints (historical)</summary>
+
 ## scDRS: warnings and required actions
 
 Read SCDRS_INTEGRATION.md for scdrs-tools, complete typed requests and separate native Java components. The root supplement requires the separately pinned canonical 0.3.7 JAR; the released executable alone has no new command. Original analysis requires Linux x86_64, including permitted WSL. Windows Java 21/25 and Linux Java 21 can verify completed bundles without Python or refitting.
@@ -953,3 +969,5 @@ output path. Disconnected infinite pseudotime values remain present. LEARN
 does not admit a pseudotime result. Do not infer roots or repair values to
 conceal failures. Full Batchelor, study reproduction and biological accuracy
 remain unproven; the250-paper goal remains active.
+
+</details>

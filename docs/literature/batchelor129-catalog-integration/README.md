@@ -1,0 +1,21 @@
+# Current Batchelor admission and Rphenograph source addition
+
+**Current status: 103 new scoped integrations, 407 named tools, 2,482 observations and 1,055 reviewed uses across 250 papers. Missing tools remain 245.** One selected upstream Batchelor admission is offset by one newly recognized missing Rphenograph tool. Read [the current operation/required-action guide](../BATCHELOR129_INTEGRATION.md).
+
+**Rphenograph is missing and the version discrepancy remains open:** P040 reports 0.1.1 with k = 40; all four inspected official source commits report 0.99.1. The literal is preserved. No Rphenograph source was executed or runtime qualified. The two Batchelor operations do not perform clustering or human marker annotation.
+
+**SKIP3:** skip dependent analysis or verification when its exact permitted prerequisites cannot be supplied. **FAIL2:** preserve complete diagnostics, admit no result, correct the named cause and retry a NEW output. Original unnamed FastMNN weights fail in both retained IRLBA and EXACT cases; a named dictionary is an explicit different request. FACTORS evaluates zero reconstructed entries; ALL_VALUES checks every streamed value.
+
+`catalog-before.zip` preserves the exact eight metadata inputs at the previously admitted 102-integration checkpoint. The current gate can overlay only those eight metadata paths when invoking the unchanged predecessor. Scientific code and controls stay live and strict. All 2,481 earlier observations and 1,054 reviews remain unchanged; only one Rphenograph observation/review is appended. The new review compatibility descriptor reconstructs exact earlier bytes and cannot cover scientific code.
+
+`SOURCE_AUDIT.json` and `FIRST_FULL_SOURCE_CHECK.json` record actual full250-source rescans for both name populations and independent original-workflow integrity checks. `CURRENT_CHECK.json` records the final metadata admission. `REGISTRY_CHECK.json` retains every prior matcher and all 38 unobserved original definitions. `BOUNDARY_TESTS.txt` records 17 adversarial controls; `UI_CHECK.json` and screenshots show current/historical scope, exact reported versions and prominent desktop/mobile warnings. `PROCESSES.json` contains actual terminal commands and exits.
+
+`PRESENTATION_REVISION.json`, `previous-local-catalog-proof-and-text.zip` and the retained selector-failure transcript preserve earlier local text/proof and test iterations. The final rendering corrects spacing and singular labels; no original scientific implementation, input, numerical result or paper version changed. These are precommit metadata/UI iterations, not original-analysis failures.
+
+The FastMNN evidence independently retains 17 complete successful models/metadata equal to originals, two preserved original failures, 133 packaged controls, seven setup refusals and 128 full public replay checks. The separate selected Monocle 1.3.7/Batchelor 1.20 reducedMNN workflow retains its own complete source controls and disconnected 240-cell infinite values. Neither qualifies every Batchelor function, unreported author settings, biological accuracy or whole-paper reproduction.
+
+Current metadata identities are in `../omics-2023-2026/batchelor129-catalog-validation.json`; `SHA256SUMS` here covers this evidence directory. Older catalog checksum manifests are retained historical artifacts. Run `tools/literature/batchelor129_catalog/verify.py` from the project root, using NEW output under `build/literature-review/monocle-runtime`. `--rescan-sources` additionally requires all 250 pinned source XML files. Original R fitting is not repeated and RDS is not reloaded.
+
+The preserved predecessor gates also require their exact historical canonical artifact where recorded: `build/cli/omicsmatic-0.3.7.jar`, SHA-256 `545917aaf820f2fe404873e1f0bc72186ebe90d3a11fd7f6f26f592115fbf2f2`. If it is unavailable, leave the dependent gate skipped and restore the exact retained validated artifact before rerunning. The standalone FastMNN analysis and saved-result verifier are separate interfaces; their documented prerequisites and qualification remain distinct from that historical catalog dependency.
+
+The full toolbox goal and paper-wide semantic review remain active. Cell Ranger remains excluded at the user's request. The local literature reports remain excluded from public Pages by the existing deployment workflow.

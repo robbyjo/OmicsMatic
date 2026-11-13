@@ -7838,40 +7838,55 @@
     "name": "Batchelor / FastMNN",
     "pattern": "(?<![A-Za-z0-9_])(?:batchelor|fastMNN|reducedMNN|mnnCorrect|multiBatchNorm|rescaleBatches|correctExperiments)(?![A-Za-z0-9_])",
     "role": "Batch correction and integration of single-cell expression or imaging-protein measurements",
-    "current_coverage": "missing",
-    "existing_source": "src/main/java/org/jlinalg/cli/Monocle137WorkflowCli.java",
-    "coverage_note": "P051 Batchelor1.20.0 has a tested selected Monocle1.3.7/reducedMNN workflow. P040 reports FastMNN1.29 on transformed imaging-protein data, and its author processing notebook imports batchelor, but the correction call and exact package version were not recovered. The distinct FastMNN role remains missing; reducedMNN does not substitute for it.",
+    "current_coverage": "upstream-adapter-validated",
+    "existing_source": "src/main/java/org/jlinalg/cli/FastMnn129WorkflowCli.java",
+    "coverage_note": "Two qualified selected original upstream workflows: P040 FastMNN 1.29.0 source candidate and P051 Monocle 1.3.7/Batchelor 1.20 reducedMNN interpretation. Exact paper settings/patches and whole-package validity remain unproven.",
     "paper_count": 2,
     "papers": [
       "P040",
       "P051"
     ],
-    "implementation_status": "missing",
-    "implementation_source": "src/main/java/org/jlinalg/cli/Monocle137WorkflowCli.java",
-    "implementation_scope": "Partial original upstream integration: Monocle3 1.3.7 align_cds -> Batchelor1.20 reducedMNN on explicitly prepared expression and batch labels, followed by UMAP/clustering/graph learning and explicit-root native ordering. P040 fastMNN on imaging-protein measurements, reported method version1.29, remains unimplemented. The whole named package therefore remains missing; no new scoped integration badge is awarded. Read BATCHELOR_INTEGRATION.md.",
-    "validation_note": "The selected P051 interpretation passed complete original64-gene/480-cell pipeline controls, independent original reducedMNN alignment equality, PCA/LSI, residual adjustment, clustering and explicit-root checks. Disconnected control retains240 infinite cells. Public complete-archive replay passed Windows Java21/25 and Linux Java21. These controls do not establish the paper function/settings or validate P040 fastMNN/protein processing.",
+    "implementation_status": "upstream-adapter-validated",
+    "implementation_source": "src/main/java/org/jlinalg/cli/FastMnn129WorkflowCli.java",
+    "implementation_scope": "Scoped original upstream integration covering both reviewed selected roles: P040 complete prepared protein/log-expression single-matrix fastMNN using selected 1.29.0 source; P051 selected Monocle 1.3.7 align_cds/reducedMNN 1.20 integration. Complete original models/metadata and native factor checks are retained. This does not recover paper settings, implement Rphenograph/manual annotation or qualify every Batchelor function. Read BATCHELOR129_INTEGRATION.md.",
+    "validation_note": "FastMNN: 19 actual original controls, 17 full successful models/metadata byte-for-byte equal to independent originals, two original failures preserved, 133 packaged checks, seven setup refusals and 128 complete public replay checks. Separate P051 workflow retains 64 genes/480 cells, 108 packaged checks and 240 disconnected infinite pseudotimes. Original R fitting and saved replay are distinct; whole-paper and biological validity remain unproven.",
     "partial_upstream_adapter_available": true,
-    "project_adapter_available": false,
+    "project_adapter_available": true,
     "canonical_adapter_available": false,
     "root_dispatch_available": false,
-    "development_adapter_cli": "java -jar monocle137-workflow-jdk21.jar",
-    "development_candidate": "docs/literature/monocle137-workflow-development/monocle137-workflow-jdk21.jar",
-    "development_candidate_sha256": "97906be6345c25d9e8b344255674d717b12b9b00ff9cab2414ac92e14107133c",
-    "development_build": "tools/literature/monocle137/build.py",
+    "development_adapter_cli": "java -jar fastmnn129-workflow-development.jar --request request.json",
+    "development_candidate": "docs/literature/fastmnn129-workflow-development/fastmnn129-workflow-development.jar",
+    "development_candidate_sha256": "2aaf63c441d01a4f95cc65377e567922bef6b316f1a1c346bc8d1ffe46273cbf",
+    "development_build": "tools/literature/fastmnn129/build.py",
     "source_roles_reviewed": 2,
-    "source_role_coverage": "batchelor-role-coverage.json",
-    "workflow_validation": "../monocle137-workflow-development/VALIDATION.json",
+    "source_role_coverage": "batchelor129-role-coverage.json",
+    "workflow_validation": "../fastmnn129-workflow-development/VALIDATION.json",
     "covered_selected_roles": [
+      "P040: selected original 1.29.0 fastMNN prepared-matrix candidate",
       "P051: explicitly selected reducedMNN interpretation"
     ],
-    "uncovered_roles": [
-      "P040: fastMNN on imaging-protein measurements; reported method version1.29"
-    ],
+    "uncovered_roles": [],
     "external_analysis_runtime_required": true,
-    "new_scoped_integration_credit": 0,
+    "new_scoped_integration_credit": 1,
     "whole_tool_qualified": false,
     "whole_paper_reproduced": false,
-    "paper_exact_unknown_settings_available": false
+    "paper_exact_unknown_settings_available": false,
+    "development_candidates": {
+      "P040": {
+        "path": "docs/literature/fastmnn129-workflow-development/fastmnn129-workflow-development.jar",
+        "bytes": 134805,
+        "sha256": "2aaf63c441d01a4f95cc65377e567922bef6b316f1a1c346bc8d1ffe46273cbf"
+      },
+      "P051": {
+        "path": "docs/literature/monocle137-workflow-development/monocle137-workflow-jdk21.jar",
+        "bytes": 145686,
+        "sha256": "97906be6345c25d9e8b344255674d717b12b9b00ff9cab2414ac92e14107133c"
+      }
+    },
+    "paper_role_coverage": {
+      "P040": "Selected original Batchelor 1.29.0 fastMNN source candidate for the reported method 1.29, on complete caller-prepared signed asinh-protein data with explicit batches and parameters. All17 successful complete synthetic models and metadata match independent originals; two original unnamed-weight failures are preserved. Exact author patch/call, Ki-67 handling and settings remain unknown. This operation does not perform Rphenograph clustering or manual cell annotation. Read FASTMNN129_WORKFLOW_DEVELOPMENT.md.",
+      "P051": "Selected original Monocle3 1.3.7 align_cds calling Batchelor 1.20 reducedMNN, followed by explicit graph/root ordering. This is an explicit interpretation of the reported integration role; the paper function, settings and roots remain unrecovered. It is distinct from P040 fastMNN. Read MONOCLE137_WORKFLOW_DEVELOPMENT.md."
+    }
   },
   {
     "id": "bowtie1",
@@ -10298,5 +10313,27 @@
     "implementation_source": null,
     "implementation_scope": "Additional software identified during full-text/code-link completeness review; integration and independent validation pending.",
     "validation_note": "Existing overlap/adapters require paper-specific option checks; missing integrations remain pending."
+  },
+  {
+    "id": "rphenograph",
+    "name": "Rphenograph",
+    "pattern": "(?<![A-Za-z0-9_])Rphenograph(?![A-Za-z0-9_])",
+    "role": "Graph clustering of FastMNN-corrected imaging mass cytometry measurements",
+    "current_coverage": "missing",
+    "existing_source": "",
+    "coverage_note": "P040 reports Rphenograph 0.1.1 with k = 40. All four inspected official repository commits report 0.99.1 under Artistic-2.0. Preserve the reported literal; exact paper version and runtime remain unrecovered. No Rphenograph source was executed or implementation qualified.",
+    "paper_count": 1,
+    "papers": [
+      "P040"
+    ],
+    "implementation_status": "missing",
+    "implementation_source": "",
+    "implementation_scope": "Reported literal Rphenograph 0.1.1 and k = 40 are retained. The inspected official source history has four commits, all reporting 0.99.1 and Artistic-2.0; none recovers 0.1.1. No Rphenograph source was executed or runtime qualified. FastMNN correction does not implement the subsequent graph clustering, marker-based lineage annotation, subclustering or visual refinement. Preserve the version discrepancy; do not silently substitute another version. Read BATCHELOR129_INTEGRATION.md and the retained PHENOGRAPH_SOURCE_REVIEW.md intake.",
+    "validation_note": "All 250 pinned main-article paragraph populations were searched for Rphenograph/PhenoGraph. Only P040 paragraph 29 matched; its source hash, reported 0.1.1 and k = 40 are retained. Four official Git history commits all report 0.99.1. This is source-use curation, not an executable/biological qualification.",
+    "source_roles_reviewed": 1,
+    "new_scoped_integration_credit": 0,
+    "whole_tool_qualified": false,
+    "whole_paper_reproduced": false,
+    "paper_exact_unknown_settings_available": false
   }
 ]
