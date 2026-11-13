@@ -1,0 +1,84 @@
+{
+  "status": "REVIEWED_P085_AUTHOR_CODE_PATHS_NOT_EXECUTED_STUDY_RECONSTRUCTION",
+  "paper_id": "P085",
+  "doi": "10.1038/s41588-024-01961-x",
+  "pmcid": "PMC11631771",
+  "xml_sha256": "059ce76dfa2d2ef1d510a2364803cd1b61962a88aa5a5a0b66fe67de32ccd8e5",
+  "primary_observation": {
+    "tool_id": "monocle",
+    "tool": "Monocle",
+    "analysis_role": "Single-cell trajectory or pseudotime inference",
+    "evidence_section": "Methods / Identifying amyloid-associated gene expression signatures in human and mouse",
+    "evidence_paragraph_index": 55,
+    "matched_text": "monocle3",
+    "extraction_score": 15,
+    "usage_context": "gene-wise-spatial-GLMs",
+    "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
+    "version_reported_near_name": "1.3.1",
+    "evidence_selection": "individually-reviewed-paragraph",
+    "evidence_paragraph_sha256": "51074dc442cad0aa9c42c166b74f774df54f48985e426ca450e852dbc8f1e93f",
+    "use_summary": "Used monocle3 1.3.1 fit_models GLMs to relate spatial gene expression to amyloid Getis-Ord Gi* hotspot scores, adjusting for biological sample and UMI count; followed significant Wald-test results with positive Pearson-correlation filtering.",
+    "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11631771/ (section: Methods / Identifying amyloid-associated gene expression signatures in human and mouse)",
+    "implementation_scope_note": "This is gene-wise GLM inference, not Monocle pseudotime. The model family, exact formula/encoding, normalization and full testing family are unstated. Human grey-matter filtering, mouse regional fits, separate stains and subsequent Pearson filtering remain explicit upstream/downstream steps. The attempted original 1.3.1 runtime is skipped because grr does not compile under R 4.6.1; a current 1.4.27 synthetic quasipoisson probe is not a silent version/family substitution.",
+    "supporting_evidence": []
+  },
+  "repository": "swaruplabUCI/DSAD_Spatial_Miyoshi_Morabito_2024",
+  "selected_commit": "5775f130506d80917461fb27226f44130e2ba783",
+  "selected_files": [
+    {
+      "path": "spatial/amyloid/splitseq_human_amyloid.Rmd",
+      "pin": {
+        "bytes": 29210,
+        "sha256": "7a77712edc860731523bde0323188ed2140766e46b1981ca58c2b0c5a03d80b6"
+      },
+      "response": {
+        "url": "https://raw.githubusercontent.com/swaruplabUCI/DSAD_Spatial_Miyoshi_Morabito_2024/5775f130506d80917461fb27226f44130e2ba783/spatial/amyloid/splitseq_human_amyloid.Rmd",
+        "resolved_url": "https://raw.githubusercontent.com/swaruplabUCI/DSAD_Spatial_Miyoshi_Morabito_2024/5775f130506d80917461fb27226f44130e2ba783/spatial/amyloid/splitseq_human_amyloid.Rmd",
+        "bytes": 29210,
+        "sha256": "7a77712edc860731523bde0323188ed2140766e46b1981ca58c2b0c5a03d80b6"
+      }
+    },
+    {
+      "path": "spatial/amyloid/voyager_gene_signatures_5x.Rmd",
+      "pin": {
+        "bytes": 62112,
+        "sha256": "1f64802279c001fdcc810b01ec7e586829855b35186b000441e9767b9dd0cbfa"
+      },
+      "response": {
+        "url": "https://raw.githubusercontent.com/swaruplabUCI/DSAD_Spatial_Miyoshi_Morabito_2024/5775f130506d80917461fb27226f44130e2ba783/spatial/amyloid/voyager_gene_signatures_5x.Rmd",
+        "resolved_url": "https://raw.githubusercontent.com/swaruplabUCI/DSAD_Spatial_Miyoshi_Morabito_2024/5775f130506d80917461fb27226f44130e2ba783/spatial/amyloid/voyager_gene_signatures_5x.Rmd",
+        "bytes": 62112,
+        "sha256": "1f64802279c001fdcc810b01ec7e586829855b35186b000441e9767b9dd0cbfa"
+      }
+    },
+    {
+      "path": "spatial/amyloid/voyager_gene_signatures_human.Rmd",
+      "pin": {
+        "bytes": 66171,
+        "sha256": "c608967418472cbb323b5142952ea3e457743edc3c62e227df1d2b569b5b4bf1"
+      },
+      "response": {
+        "url": "https://raw.githubusercontent.com/swaruplabUCI/DSAD_Spatial_Miyoshi_Morabito_2024/5775f130506d80917461fb27226f44130e2ba783/spatial/amyloid/voyager_gene_signatures_human.Rmd",
+        "resolved_url": "https://raw.githubusercontent.com/swaruplabUCI/DSAD_Spatial_Miyoshi_Morabito_2024/5775f130506d80917461fb27226f44130e2ba783/spatial/amyloid/voyager_gene_signatures_human.Rmd",
+        "bytes": 66171,
+        "sha256": "c608967418472cbb323b5142952ea3e457743edc3c62e227df1d2b569b5b4bf1"
+      }
+    }
+  ],
+  "author_code_executed": false,
+  "author_code_redistributed": false,
+  "study_data_downloaded": false,
+  "paper_commit_recovered": false,
+  "active_Seurat_assay_recovered": false,
+  "study_expression_transform_recovered": false,
+  "findings": [
+    "Human spatial notebook lines776-940 uses prepared data-slot expression, separate selected grey-matter populations, amyloid Gi score, Sample and nCount_Spatial additive covariates, omitted family/cleaning arguments and coefficient-table q filtering.",
+    "Human notebook lines1120-1180 filters the original supplied expression by positive Hmisc Pearson correlation; no adjusted coefficient-sign or Pearson-p cutoff is added.",
+    "Mouse notebook lines654-770 prepares separate region/cluster and amyloid populations and uses uppercase SAMPLE with nCount_Spatial. These are distinct declared model populations.",
+    "The snRNA notebook lines764-818 uses a separate expression-proportion filter and Amylo_Area, Sample and nCount_RNA formula; it is not the spatial-model population.",
+    "Saved RDS inputs, active assay/transformation, executed notebook state and paper source commit remain unresolved. The historical R4.6.1 attempt remains skipped; the new private R4.3.3 original1.3.1 model runtime passes separate synthetic controls."
+  ],
+  "whole_paper_reproduced": false,
+  "new_tool_credit": 0,
+  "whole_goal_complete": false
+}

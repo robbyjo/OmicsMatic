@@ -1,0 +1,24 @@
+{
+  "first_replay_console_success_observed": true,
+  "first_temporary_output_absent_in_next_WSL_invocation": true,
+  "first_receipt_retention_failed": true,
+  "first_retention_process": {
+    "command": [
+      "wsl.exe",
+      "-d",
+      "JLinAlg-Omics-SAIGE-20261026",
+      "--user",
+      "root",
+      "--exec",
+      "/usr/bin/python3",
+      "-c",
+      "from pathlib import Path\nimport hashlib,json,shutil,tarfile\nsource=Path('/tmp/omicsmatic-monocle137-saved-replay-20261112-1').resolve()\ntarget=Path('/mnt/d/projects/JLinAlg/build/literature-review/monocle-runtime/monocle137-public-replay-linux21-1').resolve()\nroot=Path('/mnt/d/projects/JLinAlg/build/literature-review/monocle-runtime').resolve()\nassert source.name=='omicsmatic-monocle137-saved-replay-20261112-1' and source.parent==Path('/tmp').resolve() and target.is_relative_to(root)\nv=json.loads((source/'COMPLETED.json').read_bytes());assert v['status']=='PASS_COMPLETE_SAVED_MONOCLE137_PIPELINE_GRAPH_AND_REFUSAL_COMPARISONS' and v['packaged_checks']==34\nfor name in ['COMPLETED.json','WARNINGS.md','build.process.json','build.stdout','build.stderr','packaged-controls.process.json','packaged-controls.stdout','packaged-controls.stderr']:shutil.copyfile(source/name,target/name)\narchive=target/'complete-replay-receipts.tar.gz'\nwith tarfile.open(archive,'x:gz') as tar:\n for path in source.iterdir():\n  if path.name not in ['objects','evidence']:tar.add(path,arcname=path.name)\nrecord=dict(status='RETAINED_COMPLETE_LINUX_REPLAY_RECEIPTS',source=str(source),complete_receipts=dict(bytes=archive.stat().st_size,sha256=hashlib.sha256(archive.read_bytes()).hexdigest()),restored_evidence_and_objects_retained_in_original_temporary_output=True,source_control_archive='docs/literature/monocle137-workflow-development/controls.zip',scientific_evidence_changed=False)\n(target/'RETENTION.json').write_text(json.dumps(record,indent=2)+'\\n');print(json.dumps(record),flush=True)\n"
+    ],
+    "exit_code": 1
+  },
+  "first_retention_error": "Traceback (most recent call last):\n  File \"<string>\", line 7, in <module>\n  File \"/usr/lib/python3.12/pathlib.py\", line 1021, in read_bytes\n    with self.open(mode='rb') as f:\n         ^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.12/pathlib.py\", line 1015, in open\n    return io.open(self, mode, buffering, encoding, errors, newline)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nFileNotFoundError: [Errno 2] No such file or directory: '/tmp/omicsmatic-monocle137-saved-replay-20261112-1/COMPLETED.json'\n",
+  "resolution": "Fresh replay and complete receipt retention executed within one Linux invocation; exact receipts stored in LINUX_REPLAY_RECEIPTS.tar.gz",
+  "resolved": true,
+  "scientific_fitting_repeated": false,
+  "source_control_archive_changed": false
+}
