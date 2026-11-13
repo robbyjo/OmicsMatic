@@ -1,0 +1,74 @@
+{
+  "status": "PASS_OFFLINE_SOURCE_REBUILD_AND_ACTUAL_ORIGINAL_IMAGEJ154T_CONTROLS",
+  "calls": [
+    {
+      "label": "provider",
+      "command": [
+        "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "D:\\projects\\JLinAlg\\tools\\literature\\imagej154t\\provider.py",
+        "--java-bin",
+        "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin",
+        "--source-root",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\monocle-runtime\\imagej154t-public21-1\\source",
+        "--allow-build",
+        "--out",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\monocle-runtime\\imagej154t-public21-1\\provider"
+      ],
+      "exit_code": 0
+    },
+    {
+      "label": "build",
+      "command": [
+        "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "D:\\projects\\JLinAlg\\tools\\literature\\imagej154t\\build.py",
+        "--java-bin",
+        "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin",
+        "--provider",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\monocle-runtime\\imagej154t-public21-1\\provider",
+        "--out",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\monocle-runtime\\imagej154t-public21-1\\build"
+      ],
+      "exit_code": 0
+    },
+    {
+      "label": "actual-controls",
+      "command": [
+        "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "D:\\projects\\JLinAlg\\tools\\literature\\imagej154t\\test_workflow.py",
+        "--java-bin",
+        "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin",
+        "--original-jar",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\monocle-runtime\\imagej154t-public21-1\\provider\\ij-1.54t.jar",
+        "--jar",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\monocle-runtime\\imagej154t-public21-1\\build\\imagej154t-workflow-development.jar",
+        "--out",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\monocle-runtime\\imagej154t-public21-1\\actual-controls"
+      ],
+      "exit_code": 0
+    },
+    {
+      "label": "setup-refusals",
+      "command": [
+        "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "D:\\projects\\JLinAlg\\tools\\literature\\imagej154t\\test_setup.py",
+        "--java-bin",
+        "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin",
+        "--source-root",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\monocle-runtime\\imagej154t-public21-1\\source",
+        "--out",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\monocle-runtime\\imagej154t-public21-1\\setup-refusals"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "original_macro_cases": 5,
+  "complete_byte_identical_original_outputs": 14,
+  "refusals": 21,
+  "setup_refusals": 7,
+  "synthetic_plugin_success_cases": 1,
+  "original_source_patched": false,
+  "external_plugins_qualified": false,
+  "paper_reproduction": false,
+  "new_tool_credit": 0,
+  "whole_goal_complete": false
+}

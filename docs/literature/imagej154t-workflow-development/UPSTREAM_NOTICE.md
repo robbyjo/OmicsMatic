@@ -1,0 +1,7 @@
+# Original ImageJ core provenance
+
+ImageJ is developed by Wayne Rasband and contributors. The [official ImageJ introduction](https://imagej.net/ij/docs/intro.html) describes the Java core as public domain. The recovered source is the complete [1.54t release commit](https://github.com/imagej/ImageJ/commit/6797cee444df5e9b0f3d5872d6e87ae748ae9966), including its original resources and precompiled Mac adapters. Original source is unchanged; its Ant target1.6 is compiled as release8 with the documented modern JDKs. Project workflow/diagnostic classes are separate GPL-3.0-or-later additions.
+
+The complete original Git archive is retained in the evidence bundle. The original public APIs and macro interpreter are preserved. Project batch shims initialize the original menus without a main window/startup runner, replace top-level modal macro error presentation with retained original error text/state, and observe original caught command exceptions. They do not replace original scientific algorithms. The executable manifest selects the project workflow; the original `ij.ImageJ` entry point remains present on the classpath.
+
+This is not the Fiji distribution or ImageJ2. No third-party scientific plugins, native Java runtime or biological data are redistributed or qualified by this notice. Plugin licenses and dependencies remain separate. Synthetic interface-test plugins are expressly labeled and provide no scientific-tool credit.
