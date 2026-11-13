@@ -1,0 +1,222 @@
+{
+  "status": "PASS_TWO_OFFLINE_ORIGINAL_SOURCE_DEPENDENCY_REBUILDS_AND_ACTUAL_CONTROLS",
+  "platforms": {
+    "windows21": {
+      "receipt": {
+        "status": "PASS_OFFLINE_ORIGINAL_CORRECTBLEACH210_REBUILD_AND_ACTUAL_NATIVE_IMAGE_CONTROLS",
+        "calls": [
+          {
+            "label": "provider",
+            "command": [
+              "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+              "D:\\projects\\JLinAlg\\tools\\literature\\correctbleach210\\provider.py",
+              "--java-bin",
+              "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin",
+              "--source-root",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\monocle-runtime\\correctbleach210-public21-1\\source",
+              "--dependency-root",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\monocle-runtime\\correctbleach210-public21-1\\dependencies",
+              "--allow-build",
+              "--out",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\monocle-runtime\\correctbleach210-public21-1\\provider"
+            ],
+            "exit_code": 0
+          },
+          {
+            "label": "build",
+            "command": [
+              "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+              "D:\\projects\\JLinAlg\\tools\\literature\\correctbleach210\\build.py",
+              "--java-bin",
+              "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin",
+              "--provider",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\monocle-runtime\\correctbleach210-public21-1\\provider",
+              "--out",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\monocle-runtime\\correctbleach210-public21-1\\build"
+            ],
+            "exit_code": 0
+          },
+          {
+            "label": "native",
+            "command": [
+              "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+              "D:\\projects\\JLinAlg\\tools\\literature\\correctbleach210\\test_native.py",
+              "--java-bin",
+              "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin",
+              "--reference-plugin",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\monocle-runtime\\correctbleach210-public21-1\\dependencies\\CorrectBleach_-2.1.0-scijava.jar",
+              "--out",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\monocle-runtime\\correctbleach210-public21-1\\native"
+            ],
+            "exit_code": 0
+          },
+          {
+            "label": "workflow",
+            "command": [
+              "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+              "D:\\projects\\JLinAlg\\tools\\literature\\correctbleach210\\test_workflow.py",
+              "--java-bin",
+              "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin",
+              "--provider",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\monocle-runtime\\correctbleach210-public21-1\\provider",
+              "--reference-plugin",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\monocle-runtime\\correctbleach210-public21-1\\dependencies\\CorrectBleach_-2.1.0-scijava.jar",
+              "--jar",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\monocle-runtime\\correctbleach210-public21-1\\build\\correctbleach210-workflow-development.jar",
+              "--out",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\monocle-runtime\\correctbleach210-public21-1\\workflow"
+            ],
+            "exit_code": 0
+          },
+          {
+            "label": "setup",
+            "command": [
+              "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+              "D:\\projects\\JLinAlg\\tools\\literature\\correctbleach210\\test_setup.py",
+              "--java-bin",
+              "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin",
+              "--source-root",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\monocle-runtime\\correctbleach210-public21-1\\source",
+              "--dependency-root",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\monocle-runtime\\correctbleach210-public21-1\\dependencies",
+              "--out",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\monocle-runtime\\correctbleach210-public21-1\\setup"
+            ],
+            "exit_code": 0
+          }
+        ],
+        "source_image_cases": 21,
+        "complete_native_histogram_cases": 6,
+        "request_refusals": 24,
+        "setup_refusals": 12,
+        "original_histogram_cases": 1048,
+        "complete_lookup_rows": 212763,
+        "complete_cdf_raw_values": 426993,
+        "original_source_patched": false,
+        "second_exponential_fit_performed": false,
+        "paper_reproduction": false,
+        "new_tool_credit": 0,
+        "whole_goal_complete": false
+      },
+      "verification_source": {
+        "bytes": 12652,
+        "sha256": "0bcacbb7b18112497034ea753a01203fe433e6d9e4f31644f80c88f01491ce4e"
+      },
+      "complete_archive": {
+        "bytes": 13237265,
+        "sha256": "54a3d845c19cc73dec04c5684b3e6e8163ab5151ba5f58f4d82b6ac02b1cddec"
+      }
+    },
+    "linux21": {
+      "receipt": {
+        "status": "PASS_OFFLINE_ORIGINAL_CORRECTBLEACH210_REBUILD_AND_ACTUAL_NATIVE_IMAGE_CONTROLS",
+        "calls": [
+          {
+            "label": "provider",
+            "command": [
+              "/usr/bin/python3",
+              "/mnt/d/projects/JLinAlg/tools/literature/correctbleach210/provider.py",
+              "--java-bin",
+              "/usr/lib/jvm/java-21-openjdk-amd64/bin",
+              "--source-root",
+              "/mnt/d/projects/JLinAlg/build/literature-review/monocle-runtime/correctbleach210-public-linux21-1/source",
+              "--dependency-root",
+              "/mnt/d/projects/JLinAlg/build/literature-review/monocle-runtime/correctbleach210-public-linux21-1/dependencies",
+              "--allow-build",
+              "--out",
+              "/mnt/d/projects/JLinAlg/build/literature-review/monocle-runtime/correctbleach210-public-linux21-1/provider"
+            ],
+            "exit_code": 0
+          },
+          {
+            "label": "build",
+            "command": [
+              "/usr/bin/python3",
+              "/mnt/d/projects/JLinAlg/tools/literature/correctbleach210/build.py",
+              "--java-bin",
+              "/usr/lib/jvm/java-21-openjdk-amd64/bin",
+              "--provider",
+              "/mnt/d/projects/JLinAlg/build/literature-review/monocle-runtime/correctbleach210-public-linux21-1/provider",
+              "--out",
+              "/mnt/d/projects/JLinAlg/build/literature-review/monocle-runtime/correctbleach210-public-linux21-1/build"
+            ],
+            "exit_code": 0
+          },
+          {
+            "label": "native",
+            "command": [
+              "/usr/bin/python3",
+              "/mnt/d/projects/JLinAlg/tools/literature/correctbleach210/test_native.py",
+              "--java-bin",
+              "/usr/lib/jvm/java-21-openjdk-amd64/bin",
+              "--reference-plugin",
+              "/mnt/d/projects/JLinAlg/build/literature-review/monocle-runtime/correctbleach210-public-linux21-1/dependencies/CorrectBleach_-2.1.0-scijava.jar",
+              "--out",
+              "/mnt/d/projects/JLinAlg/build/literature-review/monocle-runtime/correctbleach210-public-linux21-1/native"
+            ],
+            "exit_code": 0
+          },
+          {
+            "label": "workflow",
+            "command": [
+              "/usr/bin/python3",
+              "/mnt/d/projects/JLinAlg/tools/literature/correctbleach210/test_workflow.py",
+              "--java-bin",
+              "/usr/lib/jvm/java-21-openjdk-amd64/bin",
+              "--provider",
+              "/mnt/d/projects/JLinAlg/build/literature-review/monocle-runtime/correctbleach210-public-linux21-1/provider",
+              "--reference-plugin",
+              "/mnt/d/projects/JLinAlg/build/literature-review/monocle-runtime/correctbleach210-public-linux21-1/dependencies/CorrectBleach_-2.1.0-scijava.jar",
+              "--jar",
+              "/mnt/d/projects/JLinAlg/build/literature-review/monocle-runtime/correctbleach210-public-linux21-1/build/correctbleach210-workflow-development.jar",
+              "--out",
+              "/mnt/d/projects/JLinAlg/build/literature-review/monocle-runtime/correctbleach210-public-linux21-1/workflow"
+            ],
+            "exit_code": 0
+          },
+          {
+            "label": "setup",
+            "command": [
+              "/usr/bin/python3",
+              "/mnt/d/projects/JLinAlg/tools/literature/correctbleach210/test_setup.py",
+              "--java-bin",
+              "/usr/lib/jvm/java-21-openjdk-amd64/bin",
+              "--source-root",
+              "/mnt/d/projects/JLinAlg/build/literature-review/monocle-runtime/correctbleach210-public-linux21-1/source",
+              "--dependency-root",
+              "/mnt/d/projects/JLinAlg/build/literature-review/monocle-runtime/correctbleach210-public-linux21-1/dependencies",
+              "--out",
+              "/mnt/d/projects/JLinAlg/build/literature-review/monocle-runtime/correctbleach210-public-linux21-1/setup"
+            ],
+            "exit_code": 0
+          }
+        ],
+        "source_image_cases": 21,
+        "complete_native_histogram_cases": 6,
+        "request_refusals": 24,
+        "setup_refusals": 12,
+        "original_histogram_cases": 1048,
+        "complete_lookup_rows": 212763,
+        "complete_cdf_raw_values": 426993,
+        "original_source_patched": false,
+        "second_exponential_fit_performed": false,
+        "paper_reproduction": false,
+        "new_tool_credit": 0,
+        "whole_goal_complete": false
+      },
+      "verification_source": {
+        "bytes": 12652,
+        "sha256": "0bcacbb7b18112497034ea753a01203fe433e6d9e4f31644f80c88f01491ce4e"
+      },
+      "complete_archive": {
+        "bytes": 13237265,
+        "sha256": "54a3d845c19cc73dec04c5684b3e6e8163ab5151ba5f58f4d82b6ac02b1cddec"
+      }
+    }
+  },
+  "network_required": false,
+  "system_installation_performed": false,
+  "original_source_patched": false,
+  "second_exponential_fit_performed": false,
+  "whole_goal_complete": false
+}
