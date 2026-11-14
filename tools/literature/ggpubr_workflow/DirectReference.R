@@ -1,0 +1,12 @@
+# Copyright (C) 2026 JLinAlg contributors; SPDX-License-Identifier: GPL-3.0-or-later
+args <- commandArgs(TRUE);stopifnot(length(args)==4L,!dir.exists(args[4]))
+provider <- jsonlite::fromJSON(file.path(args[1],'READY.json'))
+.libPaths(c(provider$library,provider$base_library))
+suppressPackageStartupMessages(library(ggpubr,lib.loc=provider$library))
+stopifnot(as.character(getRversion())=='4.3.3',as.character(packageVersion('ggpubr'))==provider$version,as.character(packageVersion('ggplot2'))=='3.4.3')
+dir.create(args[4],recursive=TRUE)
+scope <- new.env(parent=globalenv());scope$input_directory <- normalizePath(args[2],mustWork=TRUE);scope$result_directory <- normalizePath(args[4],mustWork=TRUE)
+sys.source(args[3],envir=scope,keep.source=TRUE)
+stopifnot(identical(scope$analysis_complete,'ALL_DECLARED_ORIGINAL_GGPUBR_PLOTS_AND_TABLES_RETURNED'))
+writeLines(capture.output(sessionInfo()),file.path(args[4],'direct-session-info.txt'))
+cat('PASS_DIRECT_ORIGINAL_GGPUBR_COMPLETE_PLOT_AND_TABLE_POPULATION\n')
