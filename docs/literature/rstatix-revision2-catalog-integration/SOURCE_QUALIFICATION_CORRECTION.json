@@ -1,0 +1,38 @@
+{
+  "status": "PREPUBLICATION_TEST_LITERAL_CASE_CORRECTION_ONLY",
+  "original_proof": {
+    "bytes": 9671,
+    "sha256": "9a92ee5a6fc734142c9cb7937c76f8e9c853cbd7b856bede8f48e2e5e82394c0"
+  },
+  "old_test": {
+    "bytes": 8276,
+    "sha256": "5c899f602a435d90f23958046b036191db0baeec1ca7550729769381a9b84141"
+  },
+  "new_test": {
+    "bytes": 8276,
+    "sha256": "266ab2567e79ac1b29892ac618d5b0a2dfb67104385439238ba5ee8c578a9b8e"
+  },
+  "failed_test_output": {
+    "bytes": 2906,
+    "sha256": "cffb5b86979e822e04931cf989e60eb954856c82b84986acf7a1ac8b7cb05b17"
+  },
+  "delta": [
+    "--- initial-test-catalog.py\n",
+    "+++ test_catalog.py\n",
+    "@@ -32,7 +32,7 @@\n",
+    "  def test_all_six_visible_roles_retain_their_original_text_and_add_recovery(self):",
+    "   self.assertEqual(set(EXPECTED),set(self.row['paper_role_coverage']))",
+    "   for name,text in self.old['paper_role_coverage'].items():self.assertEqual(text+' '+RECOVERY,self.row['paper_role_coverage'][name])",
+    "-  for word in ['wilcoxon_test','wilcox_test','SKIP3','4.2.3','4.4.0','pairing','one-sided']:self.assertIn(word,self.row['paper_role_coverage']['P054'])",
+    "+  for word in ['wilcoxon_test','wilcox_test','SKIP3','4.2.3','4.4.0','Pairing','one-sided']:self.assertIn(word,self.row['paper_role_coverage']['P054'])",
+    "   for word in ['unreported','not another execution','caller choice']:self.assertIn(word,self.row['paper_role_coverage']['P241'])",
+    "  def test_original_R_runtime_not_relabelled_native_or_canonical(self):",
+    "   self.assertIn('not a standalone JAR',self.row['implementation_scope']);self.assertEqual(('0.7.2','4.5.3'),(self.row['selected_upstream_version'],self.row['selected_original_R_version']));self.assertFalse(self.row['canonical_adapter_available']);self.assertFalse(self.row['root_dispatch_available']);self.assertFalse(self.row['whole_tool_qualified']);self.assertFalse(self.row['whole_paper_reproduced'])"
+  ],
+  "required_reason": "The preserved P054 primary-role text says Pairing with a capital P. Correct only the case-sensitive test literal; preserve every source reading and all16 tests.",
+  "main_catalog_files_changed": false,
+  "scientific_sources_changed": false,
+  "scientific_verifiers_changed": false,
+  "new_tool_credit": 0,
+  "whole_goal_complete": false
+}
