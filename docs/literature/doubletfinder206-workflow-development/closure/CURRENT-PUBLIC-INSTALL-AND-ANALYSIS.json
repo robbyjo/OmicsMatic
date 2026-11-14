@@ -1,0 +1,79 @@
+{
+  "status": "PASS_CURRENT_PUBLIC_INSTALL_ANALYSIS_AND_COMPLETE_OBJECT_RNG_PARITY",
+  "calls": [
+    {
+      "label": "install-current-original-private-runtime",
+      "command": [
+        "/usr/bin/python3",
+        "-B",
+        "/mnt/d/projects/JLinAlg/tools/literature/doubletfinder206/install_runtime.py",
+        "--manager",
+        "/mnt/d/projects/JLinAlg/build/literature-review/saige-runtime/pixi-bootstrap-1/pixi",
+        "--out",
+        "/opt/omicsmatic-doubletfinder206-public-install-20261114-3",
+        "--source-archive",
+        "/mnt/d/projects/JLinAlg/build/literature-review/monocle-runtime/doubletfinder-source-intake-1/DoubletFinder-original.tar.gz",
+        "--cache-dir",
+        "/opt/omicsmatic-doubletfinder206-r453-20261114-1/pixi-cache",
+        "--allow-install",
+        "--allow-download"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 25.686749187999965
+    },
+    {
+      "label": "run-current-original-Seurat-fit",
+      "command": [
+        "/usr/bin/python3",
+        "-B",
+        "/mnt/d/projects/JLinAlg/tools/literature/doubletfinder206/run.py",
+        "--runtime",
+        "/opt/omicsmatic-doubletfinder206-public-install-20261114-3/provider",
+        "--request",
+        "/mnt/d/projects/JLinAlg/build/literature-review/monocle-runtime/doubletfinder206-workflow-references-1/lognorm-default-pN/request.rds",
+        "--out",
+        "/mnt/d/projects/JLinAlg/build/literature-review/monocle-runtime/doubletfinder206-public-end-to-end-1/analysis"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 20.122843095000007
+    },
+    {
+      "label": "strict-complete-original-comparison",
+      "command": [
+        "/opt/omicsmatic-doubletfinder206-public-install-20261114-3/runtime/.pixi/envs/default/bin/Rscript",
+        "--vanilla",
+        "/mnt/d/projects/JLinAlg/build/literature-review/monocle-runtime/doubletfinder206-workflow-comparisons-4/CompareAll.R",
+        "/opt/omicsmatic-doubletfinder206-public-install-20261114-3/runtime/library",
+        "/mnt/d/projects/JLinAlg/build/literature-review/monocle-runtime/doubletfinder206-workflow-references-1/lognorm-default-pN",
+        "/mnt/d/projects/JLinAlg/build/literature-review/monocle-runtime/doubletfinder206-public-end-to-end-1/analysis/original",
+        "/mnt/d/projects/JLinAlg/build/literature-review/monocle-runtime/doubletfinder206-public-end-to-end-1/COMPLETE-COMPARISON.json"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 3.449217433000001
+    }
+  ],
+  "private_install": "/opt/omicsmatic-doubletfinder206-public-install-20261114-3",
+  "analysis_status": {
+    "status": "PASS_ORIGINAL_DOUBLET_FINDER206_COMPLETE_R_OBJECT",
+    "exit_code": 0,
+    "result_admitted": true,
+    "R_handler_counts": {
+      "warning": 0,
+      "message": 3,
+      "error": 0
+    },
+    "recognized_iteration_limit_warnings": 0,
+    "convergence_qualified": false,
+    "raw_console_diagnostic_counts_complete": false,
+    "warning_review_required": true,
+    "complete_original_RDS_return": true,
+    "portable_value_tree_claimed": false,
+    "whole_tool_qualified": false,
+    "whole_goal_complete": false,
+    "required_action": "Review every raw console and complete original R condition; raw/native diagnostic totals are unavailable, never zero. Use the unchanged original DoubletFinder 2.0.6 source and the declared private Linux/WSL R 4.5.3 dependency profile. Installation/download must be permitted separately; analysis never installs software. Missing or forbidden requirements SKIP3 skip dependent analysis. FAIL2 admits no complete result. Resolve the named cause and retry NEW writable output paths, retaining all original inputs, complete RDS objects, logs and available partial files. RDS requests must be trusted. Full-object verification requires the exact R runtime and strict CompareOriginal.R; Seurat closures are not flattened into portable numeric summaries. Do not repair cells, identifiers, NA/NaN/Inf, substitute an author edition, change old hashes or waive output differences. The selected profile is not an author environment. The modified scrattch.hicat method and the reported DoubletFinder 3.0 edition remain separate unresolved source audits. No whole-package, biological, paper-reproduction or full-250-paper completion claim is made."
+  },
+  "complete_original_R_objects_compared": 2,
+  "whole_tool_qualified": false,
+  "new_family_credit": 0,
+  "whole_goal_complete": false
+}
