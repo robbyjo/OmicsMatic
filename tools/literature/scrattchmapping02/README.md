@@ -6,20 +6,23 @@ and [validation plus retained-history warnings](../../../docs/literature/scrattc
 The native method needs no R, Python or subprocess. Inspect its returned warning
 messages and nonfinite-review flag before using values.
 
-The full hierarchical mapping adapter remains under development. Installation
-and package loading alone are not analysis qualification. The private prototype
-now installs unchanged original source and loads with the declared Python;
-SeuratObject/Matrix compatibility and full hierarchy controls remain pending.
-No high-level analysis command is available at this checkpoint. If a required
-prerequisite or its installation is forbidden/unavailable, skip dependent
-analysis. Failed/partial files are not a complete result. Retain all original
-inputs and raw logs and retry new paths after resolving the named cause.
+The full hierarchical mapping adapter remains under development. Read the
+[prepared-template development interface and prerequisites](../../../docs/literature/SCRATTCH_MAPPING02_UPSTREAM_DEVELOPMENT.md).
+Its actual original-code controls cover three hierarchy depths, dense/sparse
+queries, bootstrap iteration behavior and original failures. Ten of eleven
+strict comparisons match. The empty-query error embeds a process-specific
+external pointer and fails strict identity even between two original-code runs;
+that failed comparison remains unqualified. No condition field is waived.
+The public installer and final integration qualification remain pending.
+If a required prerequisite or its installation is forbidden/unavailable, skip
+dependent analysis. Failed/partial files are not a complete result. Retain all
+original inputs and raw logs and retry new paths after resolving the named cause.
 
 `native-reference-pixi.toml` and its lock describe the independent original-R
 numeric reference profile, not a recovered paper environment. `verify_native.py`
 checks all frozen numeric exports and, with the exact permitted reference R,
 re-executes all complete original objects and conditions. It installs nothing.
-The full mapping profile remains a separate unfinished setup.
+The full mapping profile remains separate from the native component.
 
 Full-runtime scrattch.io/scrattch.vis dependencies restrict commercial
 redistribution. They are not bundled with this GPL Java component. The selected
