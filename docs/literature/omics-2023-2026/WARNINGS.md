@@ -1,4 +1,23 @@
 
+## Original cell2location workflow: warnings and required actions
+
+**Current catalog: 250 papers, 432 named software families, 2,671 observations and 1,162 individually reviewed uses; 1,509 uses await review.** The fixed cohort remains 71 Nature, 104 Nature Genetics and 75 AJHG papers, 2023-10-23 through 2026-10-23. Six existing cell2location observations were enriched from all nine named primary paragraphs; no paper or observation was added.
+
+**110 scoped new integrations: 20 native Java subsets and 90 original upstream workflows; 113 including 3 existing adapters. 263 named families remain missing.** This adds one upstream cell2location 0.1.3 family credit and zero native Java credit. The full semantic review and implementation goal remains open.
+
+Use python3 tools/literature/cell2location013/run.py --request caller-request.json. This is an explicit Python source entry point with a separate qualified private Linux/WSL CPU Python 3.9.25/Torch 2.0.1+cpu/scvi-tools 0.20.3/Pyro 1.8.6 environment, not a standalone JAR or root dispatch route. Download/install only where permitted using the separate install.py with explicit --allow-install --allow-download and NEW paths. Setup creates no global Python executable links. Analysis installs nothing. Native Windows original execution skips.
+
+**P096 reports 0.7a0, which is not qualified by 0.1.3; dependent historical-edition analysis remains SKIP3.** Preserve the paper's raw-reference wording and the author's log_normalised filename uncertainty; a filename does not prove matrix transformation. Preserve the reported NMF range 5 to 30 and the author code np.arange(5,30), which generates 5 through 29. Other unreported author editions/settings remain unknown. No edition, covariate argument, aggregation operator, input layer or mapping-score field is silently substituted.
+
+**Review every warning/error before using results.** The complete synthetic example retains 17 original delivered warnings and 5 warning/error log records, including undefined NMF diagnostic divisions and explicit CPU/JAX and headless plotting messages. All 647 retained scientific arrays/65,212 elements and 17 independently recorded stages matched direct upstream execution at tolerance zero; 684 result files, all NMF models and both factor settings remain retained. This is not convergence or biological validation. The older shared-object graph limitation and failed recorder/setup/verifier attempts remain preserved with their original scope.
+
+**SKIP3 skips dependent analysis** for missing/forbidden runtime, provider, input, original symbol/dependency, installation/download or execution. Supply only permitted exact prerequisites and retry NEW paths. **FAIL2 admits no complete result.** Retain all original objects, full process.stdout/process.stderr, diagnostics/conditions.json, raw worker-status.json, SUPERVISOR_ERROR.txt, WORKER_DIAGNOSTIC_ERROR.txt, WARNINGS.md, analysis-status.json and MANIFEST.json. Unknown totals are unavailable, not zero, with condition_counts_complete false and warning_review_required true. If the OS prevents recording, retain the complete console and resolve the named filesystem requirement. Never drop failed cases or relabel a partial population complete. Trusted scripts run with account permissions; owned worker supervision is not an OS sandbox or total CPU/RSS enclosure.
+
+Other restrictions remain: Cell Ranger and Cell Ranger ARC are excluded by user request; rstatix uses the qualified revision2 recovery supervisor; ggpubr retains failed/empty statistical-layer eligibility limits; QuPath retains edition/image/model limits; reported AllelicSeries1.1.2 remains unresolved; ImageJ distributions/plugins and unspecified palette assignments stay separate. This admission changes none of those families or their source roles.
+
+<details><summary>Retained previous warnings (historical)</summary>
+
+
 ## Current rstatix revision2 routing: warnings and required actions
 
 **Current catalog: 250 papers, 432 named software families, 2,671 observations and 1,156 individually reviewed uses; 1,515 uses await individual review.** This update changes the existing rstatix workflow route and recovery instructions only. All 250 paper identities, all 2,671 observations, all 1,156 reviews and all six rstatix source readings remain unchanged. The fixed cohort is 71 Nature, 104 Nature Genetics and 75 AJHG papers, 2023-10-23 through 2026-10-23. Full semantic review and implementation remain open.
@@ -1093,6 +1112,8 @@ output path. Disconnected infinite pseudotime values remain present. LEARN
 does not admit a pseudotime result. Do not infer roots or repair values to
 conceal failures. Full Batchelor, study reproduction and biological accuracy
 remain unproven; the250-paper goal remains active.
+
+</details>
 
 </details>
 
