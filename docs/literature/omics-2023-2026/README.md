@@ -1,6 +1,27 @@
 # 250-paper omics and GWAS toolbox catalog
 
 
+## Current rstatix coverage: warnings and required actions
+
+**Current catalog: 250 papers, 432 named software families, 2,671 observations and 1,148 individually reviewed uses; 1,523 uses await individual review.** All 250 exact primary XMLs were searched for rstatix: six paper-family uses and 12 named paragraphs. Five uses gain source reviews; P040's existing observation and review remain unchanged. P241's Web resources link is not another analysis execution. The fixed cohort remains 71 Nature, 104 Nature Genetics and 75 AJHG papers, 2023-10-23 through 2026-10-23; no time extension was needed. The full semantic review and implementation objective remain open.
+
+**108 new scoped integrations are available: 20 native Java subsets and 88 upstream workflows; 111 including 3 existing adapters. 265 named families remain missing.** rstatix gains one upstream workflow credit. Its explicit Python source entry point executes the complete unchanged original rstatix 0.7.2 namespace through a permitted private Linux/WSL R 4.5.3 provider and trusted caller R script. It is not a standalone JAR. The separate native Java one-way Levene API/executable requires no R; it does not supply the other rstatix functions or earn a second family credit. Canonical executable and root dispatch remain unchanged. Read RSTATIX_CATALOG_INTEGRATION.md and RSTATIX072_WORKFLOW_DEVELOPMENT.md for commands, source roles and recovery. Earlier component guides retain their pre-admission snapshots.
+
+**Original-runtime and paper settings remain explicit.** Five papers report rstatix 0.7.2; P241's edition/test/design are unreported. Selected R 4.5.3/car 3.1-5 does not prove equivalence to historical author runtimes, including P054's R 4.2.3 to 4.4.0. P054 literally prints wilcoxon_test; original 0.7.2 exports wilcox_test. Missing literal exports skip dependent analysis; no spelling repair is inferred. Unknown correction families, variance assumptions, pairing order, comparison groups, one-sided direction and group-versus-all dependence must be supplied or resolved. P032's test/correction method is unknown. Original p-value rounding, adjustment, conditions and full RDS objects are preserved; generic native tests are not substituted. Native Levene only covers prepared one-way mean/median-centered vectors, not arbitrary R formulas, grouped operations or custom center functions. No paper is reproduced by this admission.
+
+**SKIP3 skips dependent analysis** when required source, Java/R runtime, provider, input, download, installation, literal export/package or execution is missing/forbidden. Install only where permitted, supply the named prerequisite and retry NEW paths. A READY provider or source entry point is not an analysis result. The original workflow requires explicit ALLOW execution/trusted-code policies. Trusted R scripts run with account permissions, not an OS sandbox or total CPU/RSS containment guarantee; same-group worker supervision does not cover child-created separate sessions. Windows original execution skips; use the qualified Linux/WSL provider. Cell Ranger and Cell Ranger ARC remain excluded by user request.
+
+**FAIL2 admits no complete result.** Retain exact inputs, every complete/partial result, original R object/error/warning, full logs, conditions, manifest and status; correct the named cause and retry NEW paths. Review every original warning in WARNINGS.md, diagnostics/conditions.json, full condition RDS and process logs. Warnings are not muffled; warn=2 still fails. Exit zero after early quit, missing/extra/truncated results, input changes, symlinks and capacity violations refuse admission. Do not drop failed cases or label partial populations complete. Scripts must propagate scientific failures and check their own objects before declaring completion; file/marker checks cannot infer validity of arbitrary R objects, nonfinite values or designs. Native Levene refuses unresolved deviation variance, while retaining the original near-perfect-fit warning and huge statistic in control evidence. Hashes establish integrity, not authenticity, historical runtime equivalence or biological validity. This catalog audit executes no new original analysis or installation.
+
+**Other retained limitations still apply.** QuPath 0.5.1 H-DAB controls do not independently qualify fluorescence/proximity, RNAscope, registration, other editions or custom StarDist models. P204's reported AllelicSeries 1.1.2 remains missing; candidate 0.1.1.2 earns zero credit, and native burden components do not supply full COAST/SKAT-O or binary/discrete calibration. P054's wesanderson palette/count/MFOD1 mapping remain unknown; viridisLite/R graphics are separate. ImageJ distributions/plugins are separate, and histogram matching must not be used for intensity quantification. Consult retained checkpoint guides for earlier tool-specific restrictions.
+
+Read [rstatix source roles, original/native commands and recovery](../RSTATIX_CATALOG_INTEGRATION.md). Validate with `python tools/literature/rstatix_catalog/verify.py --out build/literature-review/monocle-runtime/NEW-rstatix-catalog-check --rescan-sources`. The full semantic review and implementation objective remain open.
+
+<details><summary>Retained previous catalog checkpoints (historical)</summary>
+
+# 250-paper omics and GWAS toolbox catalog
+
+
 ## Current QuPath coverage: warnings and required actions
 
 **Current catalog: 250 papers, 432 named software families, 2,671 observations and 1,143 individually reviewed uses; 1,528 uses await individual review.** All 250 exact primary XMLs were searched for QuPath: 12 paper-family uses and 16 named paragraphs. Eleven uses gain source reviews; P040's existing review is preserved unchanged. An acknowledgement and a downstream output-table paragraph do not establish additional image-analysis executions. The fixed cohort remains 71 Nature, 104 Nature Genetics and 75 AJHG papers, 2023-10-23 through 2026-10-23; no time extension was needed. The full semantic review and implementation objective remain open.
@@ -1447,6 +1468,8 @@ Three source-reviewed tool additions retain separate provenance: MALT and HOPS h
 These additions improve the catalog and add no whole-tool or biological credit. The source-tested MALT 0.4.1 development controller does not fulfill the separate 0.5.2 role. Complete HOPS and MaltExtract operations remain unfinished; their unreported versions, settings and resource choices remain unknown. See `MALT_ALIGNMENT.md` and `MALT_HOPS_PAPER_ROLES.md`.
 
 **Required action:** match the declared source version and operation, qualify a permitted runtime, provide the complete dated reference/mapping and query populations, and retain original warnings and failures. If any prerequisite is unavailable or cannot be installed, skip its dependent analysis. A small software-control index does not reproduce the historical 91-spirochete or 7,508-genome bacterial analyses. Insufficient-read candidates remain unassessable.
+
+</details>
 
 </details>
 

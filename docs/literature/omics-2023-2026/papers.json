@@ -8686,13 +8686,40 @@
         "evidence_paragraph_index": 56,
         "matched_text": "rstatix",
         "extraction_score": 15,
-        "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "usage_context": "All named primary paragraphs individually reviewed; the Web resources link is not an additional execution. Broad whole-paper semantic review remains open.",
+        "review_status": "individually-reviewed-primary-source-roles; whole-paper-method-review-open",
         "version_reported_near_name": "0.7.2",
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-explicit-primary-analysis-anchor",
         "evidence_paragraph_sha256": "e15c2e914e8ed16d6546c345fb35deaa7008091d0927a9ed21fe14e90ab629d7",
-        "use_summary": "Named in the source Methods/analysis description; the exact operation summary requires individual review.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11754113/ (section: Methods / MED12 CAR activation scoring)"
+        "use_summary": "Generated adjusted p values for MED12 CAR activation/GSVA score comparisons.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11754113/ (section: Methods / MED12 CAR activation scoring)",
+        "source_extraction_before_review": {
+          "tool_id": "rstatix",
+          "tool": "rstatix",
+          "analysis_role": "Statistical tests and associated data summaries",
+          "evidence_section": "Methods / MED12 CAR activation scoring",
+          "evidence_paragraph_index": 56,
+          "matched_text": "rstatix",
+          "extraction_score": 15,
+          "usage_context": "analysis-method-description",
+          "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+          "version_reported_near_name": "0.7.2",
+          "evidence_selection": "highest-scored-eligible-method-sentence",
+          "evidence_paragraph_sha256": "e15c2e914e8ed16d6546c345fb35deaa7008091d0927a9ed21fe14e90ab629d7",
+          "use_summary": "Named in the source Methods/analysis description; the exact operation summary requires individual review.",
+          "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11754113/ (section: Methods / MED12 CAR activation scoring)"
+        },
+        "implementation_scope_note": "The adjustment function, method, comparison family and design are not specified near the rstatix mention. DESeq2 transformations, GSVA and plotting remain separate; no test or correction is inferred.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 56,
+            "paragraph_sha256": "e15c2e914e8ed16d6546c345fb35deaa7008091d0927a9ed21fe14e90ab629d7",
+            "section": "Methods / MED12 CAR activation scoring"
+          }
+        ],
+        "named_anchor_classification": {
+          "56": "analysis-role"
+        }
       }
     ],
     "status": "extracted",
@@ -15535,13 +15562,70 @@
         "evidence_paragraph_index": 58,
         "matched_text": "rstatix",
         "extraction_score": 15,
-        "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "usage_context": "All named primary paragraphs individually reviewed; the Web resources link is not an additional execution. Broad whole-paper semantic review remains open.",
+        "review_status": "individually-reviewed-primary-source-roles; whole-paper-method-review-open",
         "version_reported_near_name": "0.7.2",
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-explicit-primary-analysis-anchor",
         "evidence_paragraph_sha256": "75e3afe4dfd939f6f45fc1414e6f9e11269ba27111f0b75a08132e8f9a187ae4",
-        "use_summary": "Named in the source Methods/analysis description; the exact operation summary requires individual review.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12823411/ (section: Methods / Estimation of the Danish terrestrial diversity)"
+        "use_summary": "Used Shapiro normality and Levene variance checks, Pearson correlation, Kruskal-Wallis comparisons, pairwise Mann-Whitney comparisons with Bonferroni or BH adjustment, paired t-tests of false negatives and one-sided group-versus-all Mann-Whitney comparisons.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12823411/ (section: Methods / Estimation of the Danish terrestrial diversity)",
+        "source_extraction_before_review": {
+          "tool_id": "rstatix",
+          "tool": "rstatix",
+          "analysis_role": "Statistical tests and associated data summaries",
+          "evidence_section": "Methods / Estimation of the Danish terrestrial diversity",
+          "evidence_paragraph_index": 58,
+          "matched_text": "rstatix",
+          "extraction_score": 15,
+          "usage_context": "analysis-method-description",
+          "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+          "version_reported_near_name": "0.7.2",
+          "evidence_selection": "highest-scored-eligible-method-sentence",
+          "evidence_paragraph_sha256": "75e3afe4dfd939f6f45fc1414e6f9e11269ba27111f0b75a08132e8f9a187ae4",
+          "use_summary": "Named in the source Methods/analysis description; the exact operation summary requires individual review.",
+          "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12823411/ (section: Methods / Estimation of the Danish terrestrial diversity)"
+        },
+        "implementation_scope_note": "All six named method paragraphs are retained. The paper literally prints wilcoxon_test, whereas original0.7.2 exports wilcox_test; this mismatch is not silently repaired. Exact comparison families, pairing order, alternative direction and group-versus-all data dependence need explicit author inputs. Native Levene covers only one-way prepared vectors with mean/median centering; it does not supply the entire source workflow. The selected reference R4.5.3/car3.1-5 differs from reported R4.2.3 to R4.4.0; historical dependency equivalence is not established.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 58,
+            "paragraph_sha256": "75e3afe4dfd939f6f45fc1414e6f9e11269ba27111f0b75a08132e8f9a187ae4",
+            "section": "Methods / Estimation of the Danish terrestrial diversity"
+          },
+          {
+            "paragraph_index": 65,
+            "paragraph_sha256": "5f68dd07b465c00132bb1a287954c3b828c5db4f58c6ad2224e1bc4ea8b73b8c",
+            "section": "Methods / Effect of drying on diversity metrics and community composition"
+          },
+          {
+            "paragraph_index": 69,
+            "paragraph_sha256": "c482b2dd58ca09ccab2416a30432b1bcd455d56f202bb2f49e080589c8779a0b",
+            "section": "Methods / Effect of drying on diversity metrics and community composition"
+          },
+          {
+            "paragraph_index": 73,
+            "paragraph_sha256": "9c160891e328af16ac2b381245cc010f36541bc7ebaf8209381546479fae98bc",
+            "section": "Methods / Diversity metrics"
+          },
+          {
+            "paragraph_index": 75,
+            "paragraph_sha256": "f17f193e5da72531213a2bbfe477047c14820a9dd54c0314d919de9e5bc54764",
+            "section": "Methods / Habitat classification"
+          },
+          {
+            "paragraph_index": 84,
+            "paragraph_sha256": "ae3b625a9fb5036e98ea063dfe6eda9d54210b8d53f9ef4c6f75bd071ee65671",
+            "section": "Methods / Genome quantification"
+          }
+        ],
+        "named_anchor_classification": {
+          "58": "analysis-role",
+          "65": "analysis-role",
+          "69": "analysis-role",
+          "73": "analysis-role",
+          "75": "analysis-role",
+          "84": "analysis-role"
+        }
       },
       {
         "tool_id": "wesanderson",
@@ -22143,13 +22227,40 @@
         "evidence_paragraph_index": 65,
         "matched_text": "rstatix",
         "extraction_score": 15,
-        "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "usage_context": "All named primary paragraphs individually reviewed; the Web resources link is not an additional execution. Broad whole-paper semantic review remains open.",
+        "review_status": "individually-reviewed-primary-source-roles; whole-paper-method-review-open",
         "version_reported_near_name": "0.7.2",
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-explicit-primary-analysis-anchor",
         "evidence_paragraph_sha256": "c154ac6b9f57829940da5af79b8739c73c7884aed794f5b0d04ee4000ac38603",
-        "use_summary": "Named in the source Methods/analysis description; the exact operation summary requires individual review.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13649586/ (section: Methods / Human liver bulk RNA-seq analysis)"
+        "use_summary": "Compared TMM-normalized OLR1 CPM between fibrosis-stage groups for ARLD/PBC using Wilcoxon rank-sum tests and BH multiple-comparison adjustment.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13649586/ (section: Methods / Human liver bulk RNA-seq analysis)",
+        "source_extraction_before_review": {
+          "tool_id": "rstatix",
+          "tool": "rstatix",
+          "analysis_role": "Statistical tests and associated data summaries",
+          "evidence_section": "Methods / Human liver bulk RNA-seq analysis",
+          "evidence_paragraph_index": 65,
+          "matched_text": "rstatix",
+          "extraction_score": 15,
+          "usage_context": "analysis-method-description",
+          "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+          "version_reported_near_name": "0.7.2",
+          "evidence_selection": "highest-scored-eligible-method-sentence",
+          "evidence_paragraph_sha256": "c154ac6b9f57829940da5af79b8739c73c7884aed794f5b0d04ee4000ac38603",
+          "use_summary": "Named in the source Methods/analysis description; the exact operation summary requires individual review.",
+          "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13649586/ (section: Methods / Human liver bulk RNA-seq analysis)"
+        },
+        "implementation_scope_note": "The paper names wilcox_test. Dataset-specific comparisons, exact/tie/correction choices and the comparison family remain author inputs. Separate stats Spearman tests, ggpubr abundance tests, MiloR and Seurat/MAST roles are not supplied by native Levene.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 65,
+            "paragraph_sha256": "c154ac6b9f57829940da5af79b8739c73c7884aed794f5b0d04ee4000ac38603",
+            "section": "Methods / Human liver bulk RNA-seq analysis"
+          }
+        ],
+        "named_anchor_classification": {
+          "65": "analysis-role"
+        }
       }
     ],
     "status": "extracted",
@@ -24942,13 +25053,40 @@
         "evidence_paragraph_index": 43,
         "matched_text": "rstatix",
         "extraction_score": 15,
-        "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
-        "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "usage_context": "All named primary paragraphs individually reviewed; the Web resources link is not an additional execution. Broad whole-paper semantic review remains open.",
+        "review_status": "individually-reviewed-primary-source-roles; whole-paper-method-review-open",
+        "version_reported_near_name": "0.7.2",
+        "evidence_selection": "individually-reviewed-explicit-primary-analysis-anchor",
         "evidence_paragraph_sha256": "80f02df55cef495fec417fe4234d12f05d91ab44ffe2c0661e0b5cb63ee9d654",
-        "use_summary": "Named in the source Methods/analysis description; the exact operation summary requires individual review.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13649585/ (section: Methods / Gene expression analysis)"
+        "use_summary": "Used t_test for pairwise comparisons of VST-normalized gene expression between medulloblastoma subgroups, with Holm adjustment.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13649585/ (section: Methods / Gene expression analysis)",
+        "source_extraction_before_review": {
+          "tool_id": "rstatix",
+          "tool": "rstatix",
+          "analysis_role": "Statistical tests and associated data summaries",
+          "evidence_section": "Methods / Gene expression analysis",
+          "evidence_paragraph_index": 43,
+          "matched_text": "rstatix",
+          "extraction_score": 15,
+          "usage_context": "analysis-method-description",
+          "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+          "version_reported_near_name": null,
+          "evidence_selection": "highest-scored-eligible-method-sentence",
+          "evidence_paragraph_sha256": "80f02df55cef495fec417fe4234d12f05d91ab44ffe2c0661e0b5cb63ee9d654",
+          "use_summary": "Named in the source Methods/analysis description; the exact operation summary requires individual review.",
+          "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13649585/ (section: Methods / Gene expression analysis)"
+        },
+        "implementation_scope_note": "Variance assumptions, selected comparisons and adjustment family need explicit author inputs. DESeq2 normalization/Wald testing/shrinkage, signature Wilcoxon tests and ggplot2 visualization remain separate. No raw-count analysis or author design is inferred.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 43,
+            "paragraph_sha256": "80f02df55cef495fec417fe4234d12f05d91ab44ffe2c0661e0b5cb63ee9d654",
+            "section": "Methods / Gene expression analysis"
+          }
+        ],
+        "named_anchor_classification": {
+          "43": "analysis-role"
+        }
       }
     ],
     "status": "extracted",
@@ -55033,13 +55171,46 @@
         "evidence_paragraph_index": 54,
         "matched_text": "rstatix",
         "extraction_score": 15,
-        "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
-        "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "usage_context": "All named primary paragraphs individually reviewed; the Web resources link is not an additional execution. Broad whole-paper semantic review remains open.",
+        "review_status": "individually-reviewed-primary-source-roles; whole-paper-method-review-open",
+        "version_reported_near_name": "unreported",
+        "evidence_selection": "individually-reviewed-explicit-primary-analysis-anchor",
         "evidence_paragraph_sha256": "f5c92718f9c1548031611d74041aea94f060e65bfca9f8c9272129f371afdea8",
-        "use_summary": "Named in the source Methods/analysis description; the exact operation summary requires individual review.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11267527/ (section: Material and methods / Statistics)"
+        "use_summary": "Used rstatix for statistical analyses; a separate Web resources paragraph links to the package.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11267527/ (section: Material and methods / Statistics)",
+        "source_extraction_before_review": {
+          "tool_id": "rstatix",
+          "tool": "rstatix",
+          "analysis_role": "Statistical tests and associated data summaries",
+          "evidence_section": "Material and methods / Statistics",
+          "evidence_paragraph_index": 54,
+          "matched_text": "rstatix",
+          "extraction_score": 15,
+          "usage_context": "analysis-method-description",
+          "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+          "version_reported_near_name": null,
+          "evidence_selection": "highest-scored-eligible-method-sentence",
+          "evidence_paragraph_sha256": "f5c92718f9c1548031611d74041aea94f060e65bfca9f8c9272129f371afdea8",
+          "use_summary": "Named in the source Methods/analysis description; the exact operation summary requires individual review.",
+          "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11267527/ (section: Material and methods / Statistics)"
+        },
+        "implementation_scope_note": "The primary paragraph does not identify a software edition, test, design, settings or comparison family. The Web resources link is not another analysis execution. Selected0.7.2 is an explicit development candidate, not a recovered author runtime.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 54,
+            "paragraph_sha256": "f5c92718f9c1548031611d74041aea94f060e65bfca9f8c9272129f371afdea8",
+            "section": "Material and methods / Statistics"
+          },
+          {
+            "paragraph_index": 113,
+            "paragraph_sha256": "4c37ad7165ac10ef79bb9f6d473b7e67653b5aaa87cadb84c26601321bb988ae",
+            "section": "Web resources"
+          }
+        ],
+        "named_anchor_classification": {
+          "54": "analysis-role",
+          "113": "resource-link-only"
+        }
       }
     ],
     "status": "extracted",
