@@ -14449,12 +14449,55 @@
         "matched_text": "scVelo",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "individually-reviewed-primary-source-roles; whole-paper-method-review-open",
         "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-explicit-primary-methods-anchor",
         "evidence_paragraph_sha256": "24c6a80edc36e9f617fd399177b5c7b1dd2152d0ee21a38e96d9fd87ff49644b",
-        "use_summary": "RNA velocity analysis.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12823425/ (section: Methods / Single-cell transcriptomics on mouse neutrophils / Velocyto analysis)"
+        "use_summary": "Models mouse-neutrophil expression change from spliced/unspliced RNA in stochastic mode and projects velocities into an existing UMAP for arrows and streamlines.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12823425/ (section: Methods / Single-cell transcriptomics on mouse neutrophils / Velocyto analysis)",
+        "source_extraction_before_review": {
+          "tool_id": "scvelo",
+          "tool": "scVelo",
+          "analysis_role": "RNA velocity analysis",
+          "evidence_section": "Methods / Single-cell transcriptomics on mouse neutrophils / Velocyto analysis",
+          "evidence_paragraph_index": 85,
+          "matched_text": "scVelo",
+          "extraction_score": 15,
+          "usage_context": "analysis-method-description",
+          "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+          "version_reported_near_name": null,
+          "evidence_selection": "highest-scored-eligible-method-sentence",
+          "evidence_paragraph_sha256": "24c6a80edc36e9f617fd399177b5c7b1dd2152d0ee21a38e96d9fd87ff49644b",
+          "use_summary": "RNA velocity analysis.",
+          "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12823425/ (section: Methods / Single-cell transcriptomics on mouse neutrophils / Velocyto analysis)"
+        },
+        "implementation_scope_note": "The original0.2.4/0.2.5 source workflow supports stochastic velocity, original filtering/normalization, moments, graph/projection and arrow/streamline plots. A separate96-cell/2,100-input-gene control retains2,000 HVGs with50 neighbors and30 PCs. Its min_shared_counts=30 is an explicit caller choice: the paper does not report that exact keyword. The author edition, raw inputs and Seurat-derived UMAP are not inferred. Velocyto preprocessing is separate. Available separate direct Python capability: tools/literature/scvelo024025/run.py with an exact matching permitted Linux/WSL CPU provider and trusted complete-population script; not a standalone JAR or paper reproduction. SKIP3 skips dependent analysis for unavailable/forbidden prerequisites. FAIL2 admits no complete result; retain every available original object, NaN/Inf, warning/error and partial output, and retry NEW paths. Unknown counts remain unavailable, never zero. Four earlier SVGs are irrecoverable; use verified saved-bundle temporary-file copies rather than historical /tmp paths.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 85,
+            "section": "Methods / Single-cell transcriptomics on mouse neutrophils / Velocyto analysis",
+            "paragraph_sha256": "24c6a80edc36e9f617fd399177b5c7b1dd2152d0ee21a38e96d9fd87ff49644b"
+          }
+        ],
+        "named_anchor_classification": [
+          {
+            "paragraph_index": 85,
+            "role": "methods"
+          }
+        ],
+        "reported_settings": {
+          "minimum_spliced_and_unspliced_count_as_reported": 30,
+          "highly_variable_genes": 2000,
+          "moments_neighbors": 50,
+          "moments_PCs": 30,
+          "velocity_mode": "stochastic"
+        },
+        "uncertainties": [
+          "The paper does not name a scVelo edition or complete Python environment.",
+          "The text describes the count threshold but does not provide its exact Python keyword; do not silently choose min_shared_counts.",
+          "The UMAP comes from preceding single-cell analysis; do not infer that scVelo generated it.",
+          "BAM edits, barcode renaming and velocyto0.17.17 count generation are distinct upstream operations."
+        ]
       },
       {
         "tool_id": "seurat",
@@ -18996,12 +19039,59 @@
         "matched_text": "scVelo",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "individually-reviewed-primary-source-roles; whole-paper-method-review-open",
         "version_reported_near_name": "0.24",
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-explicit-primary-methods-anchor",
         "evidence_paragraph_sha256": "d097e4387e4211df1d7f1b624513d8ae5bcc015a4992791869def597ac4998d1",
-        "use_summary": "RNA velocity analysis.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7616500/ (section: Methods / RNA velocity calculations for mesenchymal compartment)"
+        "use_summary": "Runs RNA velocity in the PCW7.2 mesenchymal subset using the named scVelo preprocessing, moments, stochastic velocity, velocity graph and graph plotting functions.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7616500/ (section: Methods / RNA velocity calculations for mesenchymal compartment)",
+        "source_extraction_before_review": {
+          "tool_id": "scvelo",
+          "tool": "scVelo",
+          "analysis_role": "RNA velocity analysis",
+          "evidence_section": "Methods / RNA velocity calculations for mesenchymal compartment",
+          "evidence_paragraph_index": 42,
+          "matched_text": "scVelo",
+          "extraction_score": 15,
+          "usage_context": "analysis-method-description",
+          "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+          "version_reported_near_name": "0.24",
+          "evidence_selection": "highest-scored-eligible-method-sentence",
+          "evidence_paragraph_sha256": "d097e4387e4211df1d7f1b624513d8ae5bcc015a4992791869def597ac4998d1",
+          "use_summary": "RNA velocity analysis.",
+          "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7616500/ (section: Methods / RNA velocity calculations for mesenchymal compartment)"
+        },
+        "implementation_scope_note": "The paper prints0.24. Its exact PyPI endpoint returnedHTTP404; do not relabel it0.2.4. The selected0.2.4/0.2.5 examples exercise named filtering, moments, stochastic velocity, graph and plotting APIs, but the dependent reported-edition analysis remains SKIP3. Unknown author default values and dependencies remain unknown. Available separate direct Python capability: tools/literature/scvelo024025/run.py with an exact matching permitted Linux/WSL CPU provider and trusted complete-population script; not a standalone JAR or paper reproduction. SKIP3 skips dependent analysis for unavailable/forbidden prerequisites. FAIL2 admits no complete result; retain every available original object, NaN/Inf, warning/error and partial output, and retry NEW paths. Unknown counts remain unavailable, never zero. Four earlier SVGs are irrecoverable; use verified saved-bundle temporary-file copies rather than historical /tmp paths.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 42,
+            "section": "Methods / RNA velocity calculations for mesenchymal compartment",
+            "paragraph_sha256": "d097e4387e4211df1d7f1b624513d8ae5bcc015a4992791869def597ac4998d1"
+          }
+        ],
+        "named_anchor_classification": [
+          {
+            "paragraph_index": 42,
+            "role": "methods"
+          }
+        ],
+        "reported_settings": {
+          "biological_subset": "mesenchymal compartment, single PCW7.2 sample",
+          "preprocessing": "filter_and_normalize followed by moments; defaults as reported",
+          "velocity_mode": "stochastic",
+          "named_functions": [
+            "scv.pp.filter_and_normalize",
+            "scv.pp.moments",
+            "scv.tl.velocity",
+            "scv.tl.velocity_graph",
+            "scv.pl.velocity_graph"
+          ]
+        },
+        "uncertainties": [
+          "The printed version is0.24; no exact0.24 release was found on PyPI. Do not silently rewrite it as0.2.4.",
+          "The source describes a spliced-to-unspliced ratio; preserve that wording without inferring another statistic or reversing it.",
+          "Exact author dependencies, default-derived filtering values and input preprocessing state remain unknown."
+        ]
       },
       {
         "tool_id": "spaceranger",
@@ -30572,12 +30662,51 @@
         "matched_text": "scVelo",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "individually-reviewed-primary-source-roles; whole-paper-method-review-open",
         "version_reported_near_name": "0.2.4",
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-explicit-primary-methods-anchor",
         "evidence_paragraph_sha256": "2a161ef933f0436b7f9a0b15205ed6dc93ea897e21e53d9c0a406162a7f0ab25",
-        "use_summary": "RNA velocity analysis.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13553300/ (section: Methods / Transition and velocity analysis)"
+        "use_summary": "Uses scVelo0.2.4 for stochastic transcriptional dynamics and its PAGA implementation to examine possible transitions among focused mouse-ZG clusters.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13553300/ (section: Methods / Transition and velocity analysis)",
+        "source_extraction_before_review": {
+          "tool_id": "scvelo",
+          "tool": "scVelo",
+          "analysis_role": "RNA velocity analysis",
+          "evidence_section": "Methods / Transition and velocity analysis",
+          "evidence_paragraph_index": 57,
+          "matched_text": "scVelo",
+          "extraction_score": 15,
+          "usage_context": "analysis-method-description",
+          "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+          "version_reported_near_name": "0.2.4",
+          "evidence_selection": "highest-scored-eligible-method-sentence",
+          "evidence_paragraph_sha256": "2a161ef933f0436b7f9a0b15205ed6dc93ea897e21e53d9c0a406162a7f0ab25",
+          "use_summary": "RNA velocity analysis.",
+          "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13553300/ (section: Methods / Transition and velocity analysis)"
+        },
+        "implementation_scope_note": "The exact selected0.2.4 original workflow exercises stochastic velocity and original scVelo PAGA. The synthetic state grouping and use_time_prior=False are caller integration choices, not recovered mouse-ZG group labels or PAGA settings. Exact author inputs/preprocessing remain unknown; upstream Velocyto is separate. Available separate direct Python capability: tools/literature/scvelo024025/run.py with an exact matching permitted Linux/WSL CPU provider and trusted complete-population script; not a standalone JAR or paper reproduction. SKIP3 skips dependent analysis for unavailable/forbidden prerequisites. FAIL2 admits no complete result; retain every available original object, NaN/Inf, warning/error and partial output, and retry NEW paths. Unknown counts remain unavailable, never zero. Four earlier SVGs are irrecoverable; use verified saved-bundle temporary-file copies rather than historical /tmp paths.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 57,
+            "section": "Methods / Transition and velocity analysis",
+            "paragraph_sha256": "2a161ef933f0436b7f9a0b15205ed6dc93ea897e21e53d9c0a406162a7f0ab25"
+          }
+        ],
+        "named_anchor_classification": [
+          {
+            "paragraph_index": 57,
+            "role": "methods"
+          }
+        ],
+        "reported_settings": {
+          "velocity_mode": "stochastic",
+          "additional_method": "PAGA from scVelo"
+        },
+        "uncertainties": [
+          "Preprocessing, neighbor count, PAGA options, grouping field and full Python environment are unreported in this paragraph.",
+          "velocyto.py0.17.17 generates the input counts separately; it is not implemented by running scVelo.",
+          "A scVelo PAGA result is not interchangeable with another PAGA implementation without checking original behavior."
+        ]
       },
       {
         "tool_id": "seurat",
@@ -39651,12 +39780,52 @@
         "matched_text": "scVelo",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "individually-reviewed-primary-source-roles; whole-paper-method-review-open",
         "version_reported_near_name": "0.2.5",
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-explicit-primary-methods-anchor",
         "evidence_paragraph_sha256": "b82f4b744e6e481f1e59bf89e624f77d5dce9213533b03d5d0a337b358e56ddd",
-        "use_summary": "RNA velocity analysis.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13447095/ (section: Methods / Bioinformatic analysis: scRNA-seq)"
+        "use_summary": "Uses scVelo0.2.5 with a dynamical RNA-velocity model; the resulting information feeds a separately described CellRank analysis.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13447095/ (section: Methods / Bioinformatic analysis: scRNA-seq)",
+        "source_extraction_before_review": {
+          "tool_id": "scvelo",
+          "tool": "scVelo",
+          "analysis_role": "RNA velocity analysis",
+          "evidence_section": "Methods / Bioinformatic analysis: scRNA-seq",
+          "evidence_paragraph_index": 66,
+          "matched_text": "scVelo",
+          "extraction_score": 15,
+          "usage_context": "analysis-method-description",
+          "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+          "version_reported_near_name": "0.2.5",
+          "evidence_selection": "highest-scored-eligible-method-sentence",
+          "evidence_paragraph_sha256": "b82f4b744e6e481f1e59bf89e624f77d5dce9213533b03d5d0a337b358e56ddd",
+          "use_summary": "RNA velocity analysis.",
+          "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13447095/ (section: Methods / Bioinformatic analysis: scRNA-seq)"
+        },
+        "implementation_scope_note": "The exact selected0.2.5 original workflow exercises dynamical recovery, velocity, graph and latent time with30 neighbors. Synthetic12-gene/15-iteration integration settings do not establish convergence or the author environment. The separate CellRank kernel mixture, seven macrostates and absorption-probability operations are not implemented by this scVelo admission. Available separate direct Python capability: tools/literature/scvelo024025/run.py with an exact matching permitted Linux/WSL CPU provider and trusted complete-population script; not a standalone JAR or paper reproduction. SKIP3 skips dependent analysis for unavailable/forbidden prerequisites. FAIL2 admits no complete result; retain every available original object, NaN/Inf, warning/error and partial output, and retry NEW paths. Unknown counts remain unavailable, never zero. Four earlier SVGs are irrecoverable; use verified saved-bundle temporary-file copies rather than historical /tmp paths.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 66,
+            "section": "Methods / Bioinformatic analysis: scRNA-seq",
+            "paragraph_sha256": "b82f4b744e6e481f1e59bf89e624f77d5dce9213533b03d5d0a337b358e56ddd"
+          }
+        ],
+        "named_anchor_classification": [
+          {
+            "paragraph_index": 66,
+            "role": "methods"
+          }
+        ],
+        "reported_settings": {
+          "neighbors": 30,
+          "velocity_mode": "dynamical",
+          "separate_downstream_tool": "CellRank1.5.1"
+        },
+        "uncertainties": [
+          "The exact dynamical recovery call, fitting options, preprocessing, seed and historical dependency environment are unreported.",
+          "CellRank connectivity/velocity kernel mixing, seven macrostates, top400 cells and absorption probabilities belong to the separate CellRank workflow.",
+          "Neither a successful fit nor an import proves biological or numerical convergence."
+        ]
       },
       {
         "tool_id": "scvi",
@@ -53636,12 +53805,62 @@
         "matched_text": "scvelo",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "individually-reviewed-primary-source-roles; whole-paper-method-review-open",
         "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-explicit-primary-methods-anchor",
         "evidence_paragraph_sha256": "aa8c0330a79d061eed602c897f834c1ce42ceb4dab82a0a46c1cbe01300b24f5",
-        "use_summary": "RNA velocity analysis.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12696504/ (section: Material and methods / snRNA-seq and data analysis)"
+        "use_summary": "Calls the R package velociraptor for scVelo-based RNA velocity and reports latent-time comparisons between SMS and control organoid neuronal states.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12696504/ (section: Material and methods / snRNA-seq and data analysis)",
+        "source_extraction_before_review": {
+          "tool_id": "scvelo",
+          "tool": "scVelo",
+          "analysis_role": "RNA velocity analysis",
+          "evidence_section": "Material and methods / snRNA-seq and data analysis",
+          "evidence_paragraph_index": 13,
+          "matched_text": "scvelo",
+          "extraction_score": 15,
+          "usage_context": "analysis-method-description",
+          "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+          "version_reported_near_name": null,
+          "evidence_selection": "highest-scored-eligible-method-sentence",
+          "evidence_paragraph_sha256": "aa8c0330a79d061eed602c897f834c1ce42ceb4dab82a0a46c1cbe01300b24f5",
+          "use_summary": "RNA velocity analysis.",
+          "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12696504/ (section: Material and methods / snRNA-seq and data analysis)"
+        },
+        "implementation_scope_note": "The paper explicitly uses scVelo through the R velociraptor interface. The direct Python0.2.4/0.2.5 workflow does not qualify that R preprocessing/conversion/environment path, so dependent exact-interface analysis remains skipped. Neither edition nor mode/exact latent-time calls is inferred. The separate named wrapper is registered as missing. Preserve the Velocyto name paired with a velociraptor URL; do not silently relabel count generation or claim neuronal-maturation validity. Available separate direct Python capability: tools/literature/scvelo024025/run.py with an exact matching permitted Linux/WSL CPU provider and trusted complete-population script; not a standalone JAR or paper reproduction. SKIP3 skips dependent analysis for unavailable/forbidden prerequisites. FAIL2 admits no complete result; retain every available original object, NaN/Inf, warning/error and partial output, and retry NEW paths. Unknown counts remain unavailable, never zero. Four earlier SVGs are irrecoverable; use verified saved-bundle temporary-file copies rather than historical /tmp paths. Author software editions, velocity mode and exact calls remain unknown; the R interface is unqualified.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 13,
+            "section": "Material and methods / snRNA-seq and data analysis",
+            "paragraph_sha256": "aa8c0330a79d061eed602c897f834c1ce42ceb4dab82a0a46c1cbe01300b24f5"
+          },
+          {
+            "paragraph_index": 31,
+            "section": "Results / del(17)p11.2 alters the expression of genes associated with cell cycle, neurodevelopment, and synapse assembly in SMS hiPSC-derived cortical organoids",
+            "paragraph_sha256": "abfe8cea746a05ae40467952ca7e108325ddbe6a19d3687a9049e1bc241d139e"
+          }
+        ],
+        "named_anchor_classification": [
+          {
+            "paragraph_index": 13,
+            "role": "methods"
+          },
+          {
+            "paragraph_index": 31,
+            "role": "reported-results-context"
+          }
+        ],
+        "reported_settings": {
+          "reported_interface": "R package velociraptor",
+          "reported_result": "latent time",
+          "source_generation": "Spliced/unspliced counts described as Velocyto from Cell Ranger output"
+        },
+        "uncertainties": [
+          "The scVelo edition, velociraptor edition, velocity mode, runtime and exact latent-time call/settings are unreported.",
+          "Preserve the R wrapper, data conversion and environment requirements separately from direct Python scVelo execution.",
+          "The text names Velocyto but attaches a velociraptor Bioconductor URL; preserve this source/link discrepancy instead of silently relabeling the generating tool.",
+          "Latent time and neuronal-maturation conclusions are reported results; no direction, causal validity or paper reproduction is established by a synthetic example."
+        ]
       },
       {
         "tool_id": "seurat",
@@ -53798,6 +54017,68 @@
         "evidence_paragraph_sha256": "ba6b637d479ff12ed767c6f922a9b95b24602ab1eb17d7915ad11fae95bf01fc",
         "use_summary": "Named in the source Methods/analysis description; the exact operation summary requires individual review.",
         "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12696504/ (section: Material and methods / Statistical analyses)"
+      },
+      {
+        "tool_id": "velociraptor",
+        "tool": "velociraptor",
+        "analysis_role": "Bioconductor R interface for scVelo RNA velocity",
+        "evidence_section": "Material and methods / snRNA-seq and data analysis",
+        "evidence_paragraph_index": 13,
+        "matched_text": "velociraptor",
+        "extraction_score": 15,
+        "usage_context": "analysis-method-description",
+        "review_status": "individually-reviewed-primary-source-roles; whole-paper-method-review-open",
+        "version_reported_near_name": null,
+        "evidence_selection": "individually-reviewed-explicit-primary-methods-anchor",
+        "source_extraction_before_review": {
+          "tool_id": "velociraptor",
+          "tool": "velociraptor",
+          "analysis_role": "Bioconductor R interface for scVelo RNA velocity",
+          "evidence_section": "Material and methods / snRNA-seq and data analysis",
+          "evidence_paragraph_index": 13,
+          "matched_text": "velociraptor",
+          "extraction_score": 15,
+          "usage_context": "analysis-method-description",
+          "review_status": "candidate-methods-evidence",
+          "version_reported_near_name": null,
+          "evidence_selection": "individually-reviewed-paragraph"
+        },
+        "evidence_paragraph_sha256": "aa8c0330a79d061eed602c897f834c1ce42ceb4dab82a0a46c1cbe01300b24f5",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12696504/ (section: Material and methods / snRNA-seq and data analysis)",
+        "use_summary": "Uses the Bioconductor R package velociraptor to call scVelo for organoid RNA-velocity analysis; reported latent-time comparisons belong to the underlying scVelo result context.",
+        "implementation_scope_note": "Missing separate R wrapper. The selected original1.20.0 source declares Python scvelo==0.3.3 and uses R preprocessing plus SingleCellExperiment/AnnData conversion through basilisk/zellkonverter. That selected edition is not asserted to be the author edition. Its private R dependency setup is not an analysis; the original Git-source configure failure remains retained. Dependent interface analysis remains SKIP3 until a matching original wrapper/environment is qualified. Do not substitute the direct0.2.x Python workflow, infer author defaults, repair the source/link discrepancy or claim paper reproduction. SKIP3 skips dependent R-interface analysis for missing/forbidden prerequisites. FAIL2 admits no complete result; preserve all available objects, conditions and failed attempts, keep unknown counts unavailable, and retry NEW paths. Four historical scVelo SVGs are not recovered by this wrapper review. Author software editions, velocity mode and exact calls remain unknown; the R interface is unqualified.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 13,
+            "section": "Material and methods / snRNA-seq and data analysis",
+            "paragraph_sha256": "aa8c0330a79d061eed602c897f834c1ce42ceb4dab82a0a46c1cbe01300b24f5"
+          }
+        ],
+        "named_anchor_classification": [
+          {
+            "paragraph_index": 13,
+            "role": "methods"
+          }
+        ],
+        "reported_settings": {
+          "interface": "R package velociraptor",
+          "wrapper_edition": null,
+          "Python_backend_edition": null,
+          "velocity_mode": null
+        },
+        "uncertainties": [
+          "The scVelo edition, velociraptor edition, velocity mode, runtime and exact latent-time call/settings are unreported.",
+          "Preserve the R wrapper, data conversion and environment requirements separately from direct Python scVelo execution.",
+          "The text names Velocyto but attaches a velociraptor Bioconductor URL; preserve this source/link discrepancy instead of silently relabeling the generating tool.",
+          "Latent time and neuronal-maturation conclusions are reported results; no direction, causal validity or paper reproduction is established by a synthetic example."
+        ],
+        "related_underlying_scvelo_results": [
+          {
+            "paragraph_index": 31,
+            "section": "Results / del(17)p11.2 alters the expression of genes associated with cell cycle, neurodevelopment, and synapse assembly in SMS hiPSC-derived cortical organoids",
+            "paragraph_sha256": "abfe8cea746a05ae40467952ca7e108325ddbe6a19d3687a9049e1bc241d139e"
+          }
+        ]
       }
     ],
     "status": "extracted",

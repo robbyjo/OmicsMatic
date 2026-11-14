@@ -1,4 +1,25 @@
 
+## Original scVelo workflow: warnings and required actions
+
+**Current catalog: 250 papers, 433 named software families, 2,672 observations and 1,168 individually reviewed uses; 1,504 uses await review.** The fixed71 Nature,104 Nature Genetics and75 AJHG papers remain unchanged. Five existing scVelo observations were individually reviewed. The separately named velociraptor R wrapper adds one missing family, one observation and one review; it has zero implementation credit. Seven family-specific anchors occupy six distinct primary paragraphs.
+
+**111 scoped new integrations: 20 native Java subsets and 91 original upstream workflows; 114 including three existing adapters. 263 named families remain missing.** This adds one upstream scVelo family credit and zero native Java credit. The full semantic review and implementation goal remains open.
+
+Use python3 tools/literature/scvelo024025/run.py --request caller-request.json with an exact matching original0.2.4 or0.2.5 Linux/WSL CPU provider and complete trusted Python script. This is a Python source entry point, not a standalone JAR or root dispatch route. Install only where permitted using install.py --version 0.2.4 or --version 0.2.5 with explicit --allow-install --allow-download and NEW paths. Analysis installs nothing. Native Windows original execution skips.
+
+**P070 prints0.24; its dependent reported-edition analysis remains SKIP3.** The exact PyPI endpoint returnedHTTP404; do not relabel it0.2.4. **P228 uses the separate velociraptor R interface, which remains missing and unqualified here.** Its selected original1.20.0 source declares scvelo==0.3.3; direct Python0.2.x providers do not qualify that R preprocessing/conversion/environment path. Neither wrapper nor Python author edition/mode is inferred. Preserve the Velocyto name paired with a velociraptor URL as a source/link discrepancy. P051's exact count-threshold keyword is unreported; min_shared_counts=30 is an explicit caller choice in the larger control.
+
+**Review original NaN loss-history padding and every delivered warning/error.** Complete synthetic original-versus-adapter checks cover54 stages,2,124 arrays,25,165,036 elements,2,272 result files and10 figures at tolerance zero. The stochastic/PAGA and dynamical/latent-time examples retain160 cells/12 genes; two larger stochastic controls retain96 cells and select2,000 HVGs from2,100 input genes with50 neighbors/30 PCs. These are integration controls, not author settings, convergence, independent statistical validity or paper reproduction. Original scVelo suppresses UserWarning during import; zero delivered warnings is not absence of numerical issues. Visible, ignored and promoted warning policies remain distinct.
+
+**Four earlier SVGs were overwritten and cannot be recovered. Original temporary paths are not durable evidence.** At archival review168 original analysis temporary directories and one unit fixture were unavailable; all13 recorded regular temporary-file copies/268,435,479 bytes remain verified in saved analysis bundles. Use native-temporary copies and retained node identities, not historical /tmp paths. Historical original_root_retained flags record presence at controller retention time, not later availability. The original pack worker stopped during final read-only rechecking; separate full archive/source recovery is retained without rewriting its incomplete history.
+
+**SKIP3 skips dependent analysis** for missing/forbidden exact prerequisites, installation/download or execution. Supply only permitted requirements and retry NEW paths. **FAIL2 admits no complete result.** Retain all available original objects, NaN/Inf, raw worker reports, complete process.stdout/process.stderr, diagnostics/conditions.json, WARNINGS.md, analysis-status.json, MANIFEST.json, native-temporary-inventory.json and every SUPERVISOR_ERROR.txt, WORKER_DIAGNOSTIC_ERROR.txt or NATIVE_TEMPORARY_ERROR.txt. Unknown totals are unavailable, never zero: condition_counts_complete false and warning_review_required true. If recording is blocked, retain the complete console and resolve the named filesystem requirement. Never drop failed cases or change saved hashes. Trusted scripts run with account permissions; owned process-group and capacity supervision is not an OS sandbox or total CPU/RSS enclosure.
+
+Other restrictions remain explicit: Cell Ranger and Cell Ranger ARC are excluded by user request; cell2location's reported0.7a0 remains unqualified by0.1.3; rstatix retains revision2 recovery, ggpubr retains failed/empty layer eligibility limits, and other existing tool restrictions are unchanged.
+
+<details><summary>Retained previous warnings (historical)</summary>
+
+
 ## Original cell2location workflow: warnings and required actions
 
 **Current catalog: 250 papers, 432 named software families, 2,671 observations and 1,162 individually reviewed uses; 1,509 uses await review.** The fixed cohort remains 71 Nature, 104 Nature Genetics and 75 AJHG papers, 2023-10-23 through 2026-10-23. Six existing cell2location observations were enriched from all nine named primary paragraphs; no paper or observation was added.
@@ -1112,6 +1133,8 @@ output path. Disconnected infinite pseudotime values remain present. LEARN
 does not admit a pseudotime result. Do not infer roots or repair values to
 conceal failures. Full Batchelor, study reproduction and biological accuracy
 remain unproven; the250-paper goal remains active.
+
+</details>
 
 </details>
 

@@ -1,0 +1,173 @@
+{
+  "status": "FIVE_PRIMARY_SOURCE_READINGS_INTAKE_ONLY_NOT_ADMITTED",
+  "readings": [
+    {
+      "paper_id": "P051",
+      "pmcid": "PMC12823425",
+      "doi": "10.1038/s41586-025-09807-0",
+      "xml_sha256": "9182a4004117036e7be71b48cabb34755f397746ef0fe821dfad01f64fa2c129",
+      "tool_id": "scvelo",
+      "use_summary": "Models mouse-neutrophil expression change from spliced/unspliced RNA in stochastic mode and projects velocities into an existing UMAP for arrows and streamlines.",
+      "version_reported_near_name": null,
+      "reported_settings": {
+        "minimum_spliced_and_unspliced_count_as_reported": 30,
+        "highly_variable_genes": 2000,
+        "moments_neighbors": 50,
+        "moments_PCs": 30,
+        "velocity_mode": "stochastic"
+      },
+      "uncertainties": [
+        "The paper does not name a scVelo edition or complete Python environment.",
+        "The text describes the count threshold but does not provide its exact Python keyword; do not silently choose min_shared_counts.",
+        "The UMAP comes from preceding single-cell analysis; do not infer that scVelo generated it.",
+        "BAM edits, barcode renaming and velocyto0.17.17 count generation are distinct upstream operations."
+      ],
+      "supporting_evidence": [
+        {
+          "paragraph_index": 85,
+          "section": "Methods / Single-cell transcriptomics on mouse neutrophils / Velocyto analysis",
+          "paragraph_sha256": "24c6a80edc36e9f617fd399177b5c7b1dd2152d0ee21a38e96d9fd87ff49644b"
+        }
+      ],
+      "methods_paragraph_index": 85,
+      "review_scope": "Individually read all named primary methods and results paragraphs; intake only, not admitted to catalog review counts.",
+      "implementation_available": false,
+      "paper_reproduced": false
+    },
+    {
+      "paper_id": "P070",
+      "pmcid": "PMC7616500",
+      "doi": "10.1038/s41586-023-06806-x",
+      "xml_sha256": "95a862241ab6a0d94e137e32fdddf4cf5e54469a860271c361cca3ce01a0578f",
+      "tool_id": "scvelo",
+      "use_summary": "Runs RNA velocity in the PCW7.2 mesenchymal subset using the named scVelo preprocessing, moments, stochastic velocity, velocity graph and graph plotting functions.",
+      "version_reported_near_name": "0.24",
+      "reported_settings": {
+        "biological_subset": "mesenchymal compartment, single PCW7.2 sample",
+        "preprocessing": "filter_and_normalize followed by moments; defaults as reported",
+        "velocity_mode": "stochastic",
+        "named_functions": [
+          "scv.pp.filter_and_normalize",
+          "scv.pp.moments",
+          "scv.tl.velocity",
+          "scv.tl.velocity_graph",
+          "scv.pl.velocity_graph"
+        ]
+      },
+      "uncertainties": [
+        "The printed version is0.24; no exact0.24 release was found on PyPI. Do not silently rewrite it as0.2.4.",
+        "The source describes a spliced-to-unspliced ratio; preserve that wording without inferring another statistic or reversing it.",
+        "Exact author dependencies, default-derived filtering values and input preprocessing state remain unknown."
+      ],
+      "supporting_evidence": [
+        {
+          "paragraph_index": 42,
+          "section": "Methods / RNA velocity calculations for mesenchymal compartment",
+          "paragraph_sha256": "d097e4387e4211df1d7f1b624513d8ae5bcc015a4992791869def597ac4998d1"
+        }
+      ],
+      "methods_paragraph_index": 42,
+      "review_scope": "Individually read all named primary methods and results paragraphs; intake only, not admitted to catalog review counts.",
+      "implementation_available": false,
+      "paper_reproduced": false
+    },
+    {
+      "paper_id": "P117",
+      "pmcid": "PMC13553300",
+      "doi": "10.1038/s41588-026-02737-1",
+      "xml_sha256": "e4853ce47676f59ccb1964304954bffadbc36e267dfb8fcb54030f8de728b91a",
+      "tool_id": "scvelo",
+      "use_summary": "Uses scVelo0.2.4 for stochastic transcriptional dynamics and its PAGA implementation to examine possible transitions among focused mouse-ZG clusters.",
+      "version_reported_near_name": "0.2.4",
+      "reported_settings": {
+        "velocity_mode": "stochastic",
+        "additional_method": "PAGA from scVelo"
+      },
+      "uncertainties": [
+        "Preprocessing, neighbor count, PAGA options, grouping field and full Python environment are unreported in this paragraph.",
+        "velocyto.py0.17.17 generates the input counts separately; it is not implemented by running scVelo.",
+        "A scVelo PAGA result is not interchangeable with another PAGA implementation without checking original behavior."
+      ],
+      "supporting_evidence": [
+        {
+          "paragraph_index": 57,
+          "section": "Methods / Transition and velocity analysis",
+          "paragraph_sha256": "2a161ef933f0436b7f9a0b15205ed6dc93ea897e21e53d9c0a406162a7f0ab25"
+        }
+      ],
+      "methods_paragraph_index": 57,
+      "review_scope": "Individually read all named primary methods and results paragraphs; intake only, not admitted to catalog review counts.",
+      "implementation_available": false,
+      "paper_reproduced": false
+    },
+    {
+      "paper_id": "P161",
+      "pmcid": "PMC13447095",
+      "doi": "10.1038/s41588-026-02665-0",
+      "xml_sha256": "c7641339cc2001905b83a8902fe7fbe7ec934ac6a288b435c2c829ccbb09772f",
+      "tool_id": "scvelo",
+      "use_summary": "Uses scVelo0.2.5 with a dynamical RNA-velocity model; the resulting information feeds a separately described CellRank analysis.",
+      "version_reported_near_name": "0.2.5",
+      "reported_settings": {
+        "neighbors": 30,
+        "velocity_mode": "dynamical",
+        "separate_downstream_tool": "CellRank1.5.1"
+      },
+      "uncertainties": [
+        "The exact dynamical recovery call, fitting options, preprocessing, seed and historical dependency environment are unreported.",
+        "CellRank connectivity/velocity kernel mixing, seven macrostates, top400 cells and absorption probabilities belong to the separate CellRank workflow.",
+        "Neither a successful fit nor an import proves biological or numerical convergence."
+      ],
+      "supporting_evidence": [
+        {
+          "paragraph_index": 66,
+          "section": "Methods / Bioinformatic analysis: scRNA-seq",
+          "paragraph_sha256": "b82f4b744e6e481f1e59bf89e624f77d5dce9213533b03d5d0a337b358e56ddd"
+        }
+      ],
+      "methods_paragraph_index": 66,
+      "review_scope": "Individually read all named primary methods and results paragraphs; intake only, not admitted to catalog review counts.",
+      "implementation_available": false,
+      "paper_reproduced": false
+    },
+    {
+      "paper_id": "P228",
+      "pmcid": "PMC12696504",
+      "doi": "10.1016/j.ajhg.2025.07.020",
+      "xml_sha256": "c548343d1317fbd6fcf857ffcd429bb3b2cc4bdc89d0f77206c0589eb4c35ee2",
+      "tool_id": "scvelo",
+      "use_summary": "Calls the R package velociraptor for scVelo-based RNA velocity and reports latent-time comparisons between SMS and control organoid neuronal states.",
+      "version_reported_near_name": null,
+      "reported_settings": {
+        "reported_interface": "R package velociraptor",
+        "reported_result": "latent time",
+        "source_generation": "Spliced/unspliced counts described as Velocyto from Cell Ranger output"
+      },
+      "uncertainties": [
+        "The scVelo edition, velociraptor edition, velocity mode, runtime and exact latent-time call/settings are unreported.",
+        "Preserve the R wrapper, data conversion and environment requirements separately from direct Python scVelo execution.",
+        "The text names Velocyto but attaches a velociraptor Bioconductor URL; preserve this source/link discrepancy instead of silently relabeling the generating tool.",
+        "Latent time and neuronal-maturation conclusions are reported results; no direction, causal validity or paper reproduction is established by a synthetic example."
+      ],
+      "supporting_evidence": [
+        {
+          "paragraph_index": 13,
+          "section": "Material and methods / snRNA-seq and data analysis",
+          "paragraph_sha256": "aa8c0330a79d061eed602c897f834c1ce42ceb4dab82a0a46c1cbe01300b24f5"
+        },
+        {
+          "paragraph_index": 31,
+          "section": "Results / del(17)p11.2 alters the expression of genes associated with cell cycle, neurodevelopment, and synapse assembly in SMS hiPSC-derived cortical organoids",
+          "paragraph_sha256": "abfe8cea746a05ae40467952ca7e108325ddbe6a19d3687a9049e1bc241d139e"
+        }
+      ],
+      "methods_paragraph_index": 13,
+      "review_scope": "Individually read all named primary methods and results paragraphs; intake only, not admitted to catalog review counts.",
+      "implementation_available": false,
+      "paper_reproduced": false
+    }
+  ],
+  "new_individual_catalog_review_credit": 0,
+  "new_tool_credit": 0,
+  "whole_goal_complete": false
+}
