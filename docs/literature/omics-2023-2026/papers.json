@@ -2509,13 +2509,46 @@
         "evidence_paragraph_index": 116,
         "matched_text": "QuPath",
         "extraction_score": 15,
-        "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
-        "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "usage_context": "Complete named primary paragraphs individually reviewed; advice and downstream output-table reuse are not additional QuPath image-analysis executions. Broad whole-paper semantic review remains open.",
+        "review_status": "individually-reviewed-primary-source-roles; whole-paper-method-review-open",
+        "version_reported_near_name": "0.5.1",
+        "evidence_selection": "individually-reviewed-explicit-primary-analysis-anchor",
         "evidence_paragraph_sha256": "e80a60c507a00390d94d9bbd7d55c261b1e7e8fe8a407d4c7a58a87fcbf53735",
-        "use_summary": "Named in the source Methods/analysis description; the exact operation summary requires individual review.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11798877/ (section: Methods / Immunofluorescence quantification of T cell proximity effect via interferon response)"
+        "use_summary": "Segmented DAPI nuclei, expanded cells by2 micrometers, applied manual marker thresholds and measured cell/nuclear intensities. Centroid distances defined T-cell proximity and nearest-NSC comparisons.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11798877/ (section: Methods / Immunofluorescence quantification of T cell proximity effect via interferon response)",
+        "source_extraction_before_review": {
+          "tool_id": "qupath",
+          "tool": "QuPath",
+          "analysis_role": "Digital pathology image segmentation and cell/marker quantification",
+          "evidence_section": "Methods / Immunofluorescence quantification of T cell proximity effect via interferon response",
+          "evidence_paragraph_index": 116,
+          "matched_text": "QuPath",
+          "extraction_score": 15,
+          "usage_context": "analysis-method-description",
+          "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+          "version_reported_near_name": null,
+          "evidence_selection": "highest-scored-eligible-method-sentence",
+          "evidence_paragraph_sha256": "e80a60c507a00390d94d9bbd7d55c261b1e7e8fe8a407d4c7a58a87fcbf53735",
+          "use_summary": "Named in the source Methods/analysis description; the exact operation summary requires individual review.",
+          "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11798877/ (section: Methods / Immunofluorescence quantification of T cell proximity effect via interferon response)"
+        },
+        "implementation_scope_note": "Manual marker thresholds, anatomic ROIs, source channels, distance choices and section/mouse aggregation are separate caller decisions. Both primary image-analysis paragraphs report0.5.1.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 116,
+            "paragraph_sha256": "e80a60c507a00390d94d9bbd7d55c261b1e7e8fe8a407d4c7a58a87fcbf53735",
+            "section": "Methods / Immunofluorescence quantification of T cell proximity effect via interferon response"
+          },
+          {
+            "paragraph_index": 117,
+            "paragraph_sha256": "89c943c8d2dc8da2eec6d5c23d17f9f6b3fa05a76740b9c0db305c802c1388a7",
+            "section": "Methods / Immunofluorescence quantification of NSC proximity effect via exosomes and fatty acid oxidation pathway"
+          }
+        ],
+        "named_anchor_classification": {
+          "116": "image-analysis-role",
+          "117": "image-analysis-role"
+        }
       }
     ],
     "status": "extracted",
@@ -5439,13 +5472,40 @@
         "evidence_paragraph_index": 33,
         "matched_text": "QuPath",
         "extraction_score": 15,
-        "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "usage_context": "Complete named primary paragraphs individually reviewed; advice and downstream output-table reuse are not additional QuPath image-analysis executions. Broad whole-paper semantic review remains open.",
+        "review_status": "individually-reviewed-primary-source-roles; whole-paper-method-review-open",
         "version_reported_near_name": "0.6.0",
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-explicit-primary-analysis-anchor",
         "evidence_paragraph_sha256": "7394856ffb55fae0b64f2ccddf9c7c1f28c63a68dc2f9316695ce2df5e749f84",
-        "use_summary": "Named in the source Methods/analysis description; the exact operation summary requires individual review.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12823405/ (section: Methods / Immunohistochemistry)"
+        "use_summary": "Used foreground pixel classification, manual stroma exclusion and optical-density cell detection to quantify Ki-67-positive fractions, with pathologist review.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12823405/ (section: Methods / Immunohistochemistry)",
+        "source_extraction_before_review": {
+          "tool_id": "qupath",
+          "tool": "QuPath",
+          "analysis_role": "Digital pathology image segmentation and cell/marker quantification",
+          "evidence_section": "Methods / Immunohistochemistry",
+          "evidence_paragraph_index": 33,
+          "matched_text": "QuPath",
+          "extraction_score": 15,
+          "usage_context": "analysis-method-description",
+          "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+          "version_reported_near_name": "0.6.0",
+          "evidence_selection": "highest-scored-eligible-method-sentence",
+          "evidence_paragraph_sha256": "7394856ffb55fae0b64f2ccddf9c7c1f28c63a68dc2f9316695ce2df5e749f84",
+          "use_summary": "Named in the source Methods/analysis description; the exact operation summary requires individual review.",
+          "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12823405/ (section: Methods / Immunohistochemistry)"
+        },
+        "implementation_scope_note": "The paper reports0.6.0, not selected0.5.1. Author pixel classifiers, manual ROIs and review decisions are not recovered.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 33,
+            "paragraph_sha256": "7394856ffb55fae0b64f2ccddf9c7c1f28c63a68dc2f9316695ce2df5e749f84",
+            "section": "Methods / Immunohistochemistry"
+          }
+        ],
+        "named_anchor_classification": {
+          "33": "image-analysis-role"
+        }
       }
     ],
     "status": "extracted",
@@ -5855,13 +5915,46 @@
         "evidence_paragraph_index": 77,
         "matched_text": "QuPath",
         "extraction_score": 15,
-        "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
-        "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "usage_context": "Complete named primary paragraphs individually reviewed; advice and downstream output-table reuse are not additional QuPath image-analysis executions. Broad whole-paper semantic review remains open.",
+        "review_status": "individually-reviewed-primary-source-roles; whole-paper-method-review-open",
+        "version_reported_near_name": "unreported",
+        "evidence_selection": "individually-reviewed-explicit-primary-analysis-anchor",
         "evidence_paragraph_sha256": "4dac5cb8348b60c985ff5b2342f5bbea6f9ed347856078778dd36fbcf6d21670",
-        "use_summary": "Named in the source Methods/analysis description; the exact operation summary requires individual review.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13600939/ (section: Methods / Validation of nucleus composition changes with age using RNAscope / Image analysis)"
+        "use_summary": "Ran cell detection and subcellular RNAscope puncta detection on stitched ROIs, exported detection measurements, then summarized marker-positive cell fractions from QuPath tables.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13600939/ (section: Methods / Validation of nucleus composition changes with age using RNAscope / Image analysis)",
+        "source_extraction_before_review": {
+          "tool_id": "qupath",
+          "tool": "QuPath",
+          "analysis_role": "Digital pathology image segmentation and cell/marker quantification",
+          "evidence_section": "Methods / Validation of nucleus composition changes with age using RNAscope / Image analysis",
+          "evidence_paragraph_index": 77,
+          "matched_text": "QuPath",
+          "extraction_score": 15,
+          "usage_context": "analysis-method-description",
+          "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+          "version_reported_near_name": null,
+          "evidence_selection": "highest-scored-eligible-method-sentence",
+          "evidence_paragraph_sha256": "4dac5cb8348b60c985ff5b2342f5bbea6f9ed347856078778dd36fbcf6d21670",
+          "use_summary": "Named in the source Methods/analysis description; the exact operation summary requires individual review.",
+          "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13600939/ (section: Methods / Validation of nucleus composition changes with age using RNAscope / Image analysis)"
+        },
+        "implementation_scope_note": "Fiji stitching/channel alignment and downstream R summaries are separate. The output-table analysis paragraph is not another QuPath execution or a reported software edition.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 77,
+            "paragraph_sha256": "4dac5cb8348b60c985ff5b2342f5bbea6f9ed347856078778dd36fbcf6d21670",
+            "section": "Methods / Validation of nucleus composition changes with age using RNAscope / Image analysis"
+          },
+          {
+            "paragraph_index": 78,
+            "paragraph_sha256": "0e2ffff7308f9653c70a2d18a1058ac294a59e67b3533c44b7a203dece566793",
+            "section": "Methods / Validation of nucleus composition changes with age using RNAscope / Statistical analysis"
+          }
+        ],
+        "named_anchor_classification": {
+          "77": "image-analysis-role",
+          "78": "downstream-output-table-analysis"
+        }
       }
     ],
     "status": "extracted",
@@ -6679,13 +6772,40 @@
         "evidence_paragraph_index": 77,
         "matched_text": "quPATH",
         "extraction_score": 15,
-        "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
-        "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "usage_context": "Complete named primary paragraphs individually reviewed; advice and downstream output-table reuse are not additional QuPath image-analysis executions. Broad whole-paper semantic review remains open.",
+        "review_status": "individually-reviewed-primary-source-roles; whole-paper-method-review-open",
+        "version_reported_near_name": "unreported",
+        "evidence_selection": "individually-reviewed-explicit-primary-analysis-anchor",
         "evidence_paragraph_sha256": "1608623353bd91f1bcf5605f20caeaaf21b55ec48832997470dfdaaeb871d72d",
-        "use_summary": "Named in the source Methods/analysis description; the exact operation summary requires individual review.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13600946/ (section: Methods / Validation of compositional variation using RNAscope / Image processing and result analysis)"
+        "use_summary": "Selected tissue ROIs, detected DAPI nuclei/cell borders and RNAscope puncta, and exported per-cell measurements for custom cell-type/count summaries.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13600946/ (section: Methods / Validation of compositional variation using RNAscope / Image processing and result analysis)",
+        "source_extraction_before_review": {
+          "tool_id": "qupath",
+          "tool": "QuPath",
+          "analysis_role": "Digital pathology image segmentation and cell/marker quantification",
+          "evidence_section": "Methods / Validation of compositional variation using RNAscope / Image processing and result analysis",
+          "evidence_paragraph_index": 77,
+          "matched_text": "quPATH",
+          "extraction_score": 15,
+          "usage_context": "analysis-method-description",
+          "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+          "version_reported_near_name": null,
+          "evidence_selection": "highest-scored-eligible-method-sentence",
+          "evidence_paragraph_sha256": "1608623353bd91f1bcf5605f20caeaaf21b55ec48832997470dfdaaeb871d72d",
+          "use_summary": "Named in the source Methods/analysis description; the exact operation summary requires individual review.",
+          "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13600946/ (section: Methods / Validation of compositional variation using RNAscope / Image processing and result analysis)"
+        },
+        "implementation_scope_note": "Fiji stitching, manually chosen ROIs/thresholds, custom Python summaries, CLR transformation and group tests are separate. No software edition or author script is inferred.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 77,
+            "paragraph_sha256": "1608623353bd91f1bcf5605f20caeaaf21b55ec48832997470dfdaaeb871d72d",
+            "section": "Methods / Validation of compositional variation using RNAscope / Image processing and result analysis"
+          }
+        ],
+        "named_anchor_classification": {
+          "77": "image-analysis-role"
+        }
       }
     ],
     "status": "extracted",
@@ -13418,13 +13538,40 @@
         "evidence_paragraph_index": 40,
         "matched_text": "QuPath",
         "extraction_score": 15,
-        "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "usage_context": "Complete named primary paragraphs individually reviewed; advice and downstream output-table reuse are not additional QuPath image-analysis executions. Broad whole-paper semantic review remains open.",
+        "review_status": "individually-reviewed-primary-source-roles; whole-paper-method-review-open",
         "version_reported_near_name": "0.4.3",
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-explicit-primary-analysis-anchor",
         "evidence_paragraph_sha256": "115dfb3f1cd784dbdf103be4481c2363243d36261d1d55a88616c4f4c59567b4",
-        "use_summary": "Named in the source Methods/analysis description; the exact operation summary requires individual review.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13668678/ (section: Methods / Human tissue / Image acquisition and quantification of fluorescence multiplex in situ RNA hybridization)"
+        "use_summary": "Read multiplex RNA-FISH images, selected the RGC layer, detected DAPI cells and subcellular spots, then combined single-measurement and composite classifiers for double-positive cells.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13668678/ (section: Methods / Human tissue / Image acquisition and quantification of fluorescence multiplex in situ RNA hybridization)",
+        "source_extraction_before_review": {
+          "tool_id": "qupath",
+          "tool": "QuPath",
+          "analysis_role": "Digital pathology image segmentation and cell/marker quantification",
+          "evidence_section": "Methods / Human tissue / Image acquisition and quantification of fluorescence multiplex in situ RNA hybridization",
+          "evidence_paragraph_index": 40,
+          "matched_text": "QuPath",
+          "extraction_score": 15,
+          "usage_context": "analysis-method-description",
+          "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+          "version_reported_near_name": "0.4.3",
+          "evidence_selection": "highest-scored-eligible-method-sentence",
+          "evidence_paragraph_sha256": "115dfb3f1cd784dbdf103be4481c2363243d36261d1d55a88616c4f4c59567b4",
+          "use_summary": "Named in the source Methods/analysis description; the exact operation summary requires individual review.",
+          "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13668678/ (section: Methods / Human tissue / Image acquisition and quantification of fluorescence multiplex in situ RNA hybridization)"
+        },
+        "implementation_scope_note": "The reported0.4.3 edition, LIF image-series choices, classifier thresholds and trained/custom classifier resources are separate from selected0.5.1.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 40,
+            "paragraph_sha256": "115dfb3f1cd784dbdf103be4481c2363243d36261d1d55a88616c4f4c59567b4",
+            "section": "Methods / Human tissue / Image acquisition and quantification of fluorescence multiplex in situ RNA hybridization"
+          }
+        ],
+        "named_anchor_classification": {
+          "40": "image-analysis-role"
+        }
       }
     ],
     "status": "extracted",
@@ -15853,13 +16000,40 @@
         "evidence_paragraph_index": 55,
         "matched_text": "QuPath",
         "extraction_score": 15,
-        "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
-        "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "usage_context": "Complete named primary paragraphs individually reviewed; advice and downstream output-table reuse are not additional QuPath image-analysis executions. Broad whole-paper semantic review remains open.",
+        "review_status": "individually-reviewed-primary-source-roles; whole-paper-method-review-open",
+        "version_reported_near_name": "unreported",
+        "evidence_selection": "individually-reviewed-explicit-primary-analysis-anchor",
         "evidence_paragraph_sha256": "389dda273fe9c18d8a5fe40b17bc6279584d8f81cea6c1af78d203c1edddfe5f",
-        "use_summary": "Named in the source Methods/analysis description; the exact operation summary requires individual review.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12804087/ (section: Methods / Data analysis and visualization)"
+        "use_summary": "Performed immunohistochemistry and RNAscope image analysis and quantification.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12804087/ (section: Methods / Data analysis and visualization)",
+        "source_extraction_before_review": {
+          "tool_id": "qupath",
+          "tool": "QuPath",
+          "analysis_role": "Digital pathology image segmentation and cell/marker quantification",
+          "evidence_section": "Methods / Data analysis and visualization",
+          "evidence_paragraph_index": 55,
+          "matched_text": "QuPath",
+          "extraction_score": 15,
+          "usage_context": "analysis-method-description",
+          "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+          "version_reported_near_name": null,
+          "evidence_selection": "highest-scored-eligible-method-sentence",
+          "evidence_paragraph_sha256": "389dda273fe9c18d8a5fe40b17bc6279584d8f81cea6c1af78d203c1edddfe5f",
+          "use_summary": "Named in the source Methods/analysis description; the exact operation summary requires individual review.",
+          "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12804087/ (section: Methods / Data analysis and visualization)"
+        },
+        "implementation_scope_note": "The named primary paragraph does not specify the QuPath edition, segmentation algorithm, thresholds or exported data structure; statistical and plotting tools in the paragraph are separate.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 55,
+            "paragraph_sha256": "389dda273fe9c18d8a5fe40b17bc6279584d8f81cea6c1af78d203c1edddfe5f",
+            "section": "Methods / Data analysis and visualization"
+          }
+        ],
+        "named_anchor_classification": {
+          "55": "image-analysis-role"
+        }
       }
     ],
     "status": "extracted",
@@ -16206,13 +16380,52 @@
         "evidence_paragraph_index": 36,
         "matched_text": "QuPath",
         "extraction_score": 15,
-        "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "usage_context": "Complete named primary paragraphs individually reviewed; advice and downstream output-table reuse are not additional QuPath image-analysis executions. Broad whole-paper semantic review remains open.",
+        "review_status": "individually-reviewed-primary-source-roles; whole-paper-method-review-open",
         "version_reported_near_name": "0.4.1",
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-explicit-primary-analysis-anchor",
         "evidence_paragraph_sha256": "d3fb54e6e44c6f3ab4e0638457a12b14abdf80a90613d43c737e174fe96c2cb2",
-        "use_summary": "Named in the source Methods/analysis description; the exact operation summary requires individual review.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10719099/ (section: Methods / Quantification of SPNs across major brain regions)"
+        "use_summary": "Manually annotated polygon ROIs, used positive-cell and composite classification for labelled nuclei, exported ROI counts and nuclear fluorescence measurements.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10719099/ (section: Methods / Quantification of SPNs across major brain regions)",
+        "source_extraction_before_review": {
+          "tool_id": "qupath",
+          "tool": "QuPath",
+          "analysis_role": "Digital pathology image segmentation and cell/marker quantification",
+          "evidence_section": "Methods / Quantification of SPNs across major brain regions",
+          "evidence_paragraph_index": 36,
+          "matched_text": "QuPath",
+          "extraction_score": 15,
+          "usage_context": "analysis-method-description",
+          "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+          "version_reported_near_name": "0.4.1",
+          "evidence_selection": "highest-scored-eligible-method-sentence",
+          "evidence_paragraph_sha256": "d3fb54e6e44c6f3ab4e0638457a12b14abdf80a90613d43c737e174fe96c2cb2",
+          "use_summary": "Named in the source Methods/analysis description; the exact operation summary requires individual review.",
+          "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10719099/ (section: Methods / Quantification of SPNs across major brain regions)"
+        },
+        "implementation_scope_note": "The paper reports0.4.1. Its coronal-series count scaling, ROI decisions and downstream Wilcoxon tests are separate. The acknowledgement of QuPath advice is not another execution.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 36,
+            "paragraph_sha256": "d3fb54e6e44c6f3ab4e0638457a12b14abdf80a90613d43c737e174fe96c2cb2",
+            "section": "Methods / Quantification of SPNs across major brain regions"
+          },
+          {
+            "paragraph_index": 37,
+            "paragraph_sha256": "90663e521747437ac714753de599e7ad084461190582596c54339b3783307ab3",
+            "section": "Methods / Measurement of virus-mediated fluorescent protein expression"
+          },
+          {
+            "paragraph_index": 73,
+            "paragraph_sha256": "9bc3ea4d2807b4b1a8ac6b294d64c73230526b8c1e5c38c83b08a69756195a24",
+            "section": "Acknowledgements"
+          }
+        ],
+        "named_anchor_classification": {
+          "36": "image-analysis-role",
+          "37": "image-analysis-role",
+          "73": "acknowledgement-only"
+        }
       }
     ],
     "status": "extracted",
@@ -24686,13 +24899,40 @@
         "evidence_paragraph_index": 75,
         "matched_text": "QuPath",
         "extraction_score": 15,
-        "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
-        "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "usage_context": "Complete named primary paragraphs individually reviewed; advice and downstream output-table reuse are not additional QuPath image-analysis executions. Broad whole-paper semantic review remains open.",
+        "review_status": "individually-reviewed-primary-source-roles; whole-paper-method-review-open",
+        "version_reported_near_name": "unreported",
+        "evidence_selection": "individually-reviewed-explicit-primary-analysis-anchor",
         "evidence_paragraph_sha256": "93d5150846551f55cee5679d8c7fb3cdd1cd1fc6ed0d3efd7ccedb4608bab530",
-        "use_summary": "Named in the source Methods/analysis description; the exact operation summary requires individual review.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13649585/ (section: Methods / Statistics and reproducibility)"
+        "use_summary": "Imaging scientists quantified tumor-sample immunohistochemistry images in a blinded manner.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13649585/ (section: Methods / Statistics and reproducibility)",
+        "source_extraction_before_review": {
+          "tool_id": "qupath",
+          "tool": "QuPath",
+          "analysis_role": "Digital pathology image segmentation and cell/marker quantification",
+          "evidence_section": "Methods / Statistics and reproducibility",
+          "evidence_paragraph_index": 75,
+          "matched_text": "QuPath",
+          "extraction_score": 15,
+          "usage_context": "analysis-method-description",
+          "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+          "version_reported_near_name": null,
+          "evidence_selection": "highest-scored-eligible-method-sentence",
+          "evidence_paragraph_sha256": "93d5150846551f55cee5679d8c7fb3cdd1cd1fc6ed0d3efd7ccedb4608bab530",
+          "use_summary": "Named in the source Methods/analysis description; the exact operation summary requires individual review.",
+          "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13649585/ (section: Methods / Statistics and reproducibility)"
+        },
+        "implementation_scope_note": "The primary paragraph does not identify the QuPath edition, cell algorithm or thresholds. Blinding and study-design statements are not algorithm settings.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 75,
+            "paragraph_sha256": "93d5150846551f55cee5679d8c7fb3cdd1cd1fc6ed0d3efd7ccedb4608bab530",
+            "section": "Methods / Statistics and reproducibility"
+          }
+        ],
+        "named_anchor_classification": {
+          "75": "image-analysis-role"
+        }
       },
       {
         "tool_id": "rstatix",
@@ -38355,13 +38595,40 @@
         "evidence_paragraph_index": 30,
         "matched_text": "QuPath",
         "extraction_score": 15,
-        "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
-        "version_reported_near_name": "0.2.3",
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "usage_context": "Complete named primary paragraphs individually reviewed; advice and downstream output-table reuse are not additional QuPath image-analysis executions. Broad whole-paper semantic review remains open.",
+        "review_status": "individually-reviewed-primary-source-roles; whole-paper-method-review-open",
+        "version_reported_near_name": "v.0.2.3 to v.0.4.3",
+        "evidence_selection": "individually-reviewed-explicit-primary-analysis-anchor",
         "evidence_paragraph_sha256": "12e819aa929fc00b463417e6cbe086ef649f679ba0fc1437db0966e1c01c5eb4",
-        "use_summary": "Named in the source Methods/analysis description; the exact operation summary requires individual review.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12597831/ (section: Methods / Confocal images acquisition and analysis)"
+        "use_summary": "Used custom StarDist-based nuclei classification, manual channel-intensity thresholds and exported nuclei measurements for downstream expression summaries.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12597831/ (section: Methods / Confocal images acquisition and analysis)",
+        "source_extraction_before_review": {
+          "tool_id": "qupath",
+          "tool": "QuPath",
+          "analysis_role": "Digital pathology image segmentation and cell/marker quantification",
+          "evidence_section": "Methods / Confocal images acquisition and analysis",
+          "evidence_paragraph_index": 30,
+          "matched_text": "QuPath",
+          "extraction_score": 15,
+          "usage_context": "analysis-method-description",
+          "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+          "version_reported_near_name": "0.2.3",
+          "evidence_selection": "highest-scored-eligible-method-sentence",
+          "evidence_paragraph_sha256": "12e819aa929fc00b463417e6cbe086ef649f679ba0fc1437db0966e1c01c5eb4",
+          "use_summary": "Named in the source Methods/analysis description; the exact operation summary requires individual review.",
+          "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12597831/ (section: Methods / Confocal images acquisition and analysis)"
+        },
+        "implementation_scope_note": "The literal reported edition range is retained and does not include selected0.5.1. The custom StarDist classifier/extension, trained model, manual thresholds and Python summaries are separate; stock QuPath alone does not recover them.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 30,
+            "paragraph_sha256": "12e819aa929fc00b463417e6cbe086ef649f679ba0fc1437db0966e1c01c5eb4",
+            "section": "Methods / Confocal images acquisition and analysis"
+          }
+        ],
+        "named_anchor_classification": {
+          "30": "image-analysis-role"
+        }
       }
     ],
     "status": "extracted",
@@ -38935,13 +39202,40 @@
         "evidence_paragraph_index": 70,
         "matched_text": "QuPath",
         "extraction_score": 15,
-        "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
-        "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "usage_context": "Complete named primary paragraphs individually reviewed; advice and downstream output-table reuse are not additional QuPath image-analysis executions. Broad whole-paper semantic review remains open.",
+        "review_status": "individually-reviewed-primary-source-roles; whole-paper-method-review-open",
+        "version_reported_near_name": "unreported",
+        "evidence_selection": "individually-reviewed-explicit-primary-analysis-anchor",
         "evidence_paragraph_sha256": "b55e563e4dac59dea91a6bc871c5f254f316c71ad694870c12417e8d066934af",
-        "use_summary": "Named in the source Methods/analysis description; the exact operation summary requires individual review.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13447095/ (section: Methods / Histologic neighborhood annotation)"
+        "use_summary": "Aligned H&E slide images and supported pathologist histologic-neighborhood annotations, whose locations were used downstream in spatial analysis.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13447095/ (section: Methods / Histologic neighborhood annotation)",
+        "source_extraction_before_review": {
+          "tool_id": "qupath",
+          "tool": "QuPath",
+          "analysis_role": "Digital pathology image segmentation and cell/marker quantification",
+          "evidence_section": "Methods / Histologic neighborhood annotation",
+          "evidence_paragraph_index": 70,
+          "matched_text": "QuPath",
+          "extraction_score": 15,
+          "usage_context": "analysis-method-description",
+          "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+          "version_reported_near_name": null,
+          "evidence_selection": "highest-scored-eligible-method-sentence",
+          "evidence_paragraph_sha256": "b55e563e4dac59dea91a6bc871c5f254f316c71ad694870c12417e8d066934af",
+          "use_summary": "Named in the source Methods/analysis description; the exact operation summary requires individual review.",
+          "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13447095/ (section: Methods / Histologic neighborhood annotation)"
+        },
+        "implementation_scope_note": "The transformation/registration algorithm, annotation decisions and QuPath edition are unreported. GeoPandas, SCANPY, CellPhoneDB and CytoSignal roles remain separate.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 70,
+            "paragraph_sha256": "b55e563e4dac59dea91a6bc871c5f254f316c71ad694870c12417e8d066934af",
+            "section": "Methods / Histologic neighborhood annotation"
+          }
+        ],
+        "named_anchor_classification": {
+          "70": "image-analysis-role"
+        }
       }
     ],
     "status": "extracted",
@@ -52095,13 +52389,40 @@
         "evidence_paragraph_index": 23,
         "matched_text": "QuPath",
         "extraction_score": 15,
-        "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
-        "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "usage_context": "Complete named primary paragraphs individually reviewed; advice and downstream output-table reuse are not additional QuPath image-analysis executions. Broad whole-paper semantic review remains open.",
+        "review_status": "individually-reviewed-primary-source-roles; whole-paper-method-review-open",
+        "version_reported_near_name": "unreported",
+        "evidence_selection": "individually-reviewed-explicit-primary-analysis-anchor",
         "evidence_paragraph_sha256": "4e242dd8344670c65d8d5a7076bf7ae647f1e15056eb1d90d6c0285e5f9f1b21",
-        "use_summary": "Named in the source Methods/analysis description; the exact operation summary requires individual review.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12440709/ (section: Subjects, material, and methods / Image analysis)"
+        "use_summary": "Detected H2B-mRuby nuclei, expanded them2 micrometers to define perinuclear regions and filtered detections using morphology and fluorescence measurements.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12440709/ (section: Subjects, material, and methods / Image analysis)",
+        "source_extraction_before_review": {
+          "tool_id": "qupath",
+          "tool": "QuPath",
+          "analysis_role": "Digital pathology image segmentation and cell/marker quantification",
+          "evidence_section": "Subjects, material, and methods / Image analysis",
+          "evidence_paragraph_index": 23,
+          "matched_text": "QuPath",
+          "extraction_score": 15,
+          "usage_context": "analysis-method-description",
+          "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+          "version_reported_near_name": null,
+          "evidence_selection": "highest-scored-eligible-method-sentence",
+          "evidence_paragraph_sha256": "4e242dd8344670c65d8d5a7076bf7ae647f1e15056eb1d90d6c0285e5f9f1b21",
+          "use_summary": "Named in the source Methods/analysis description; the exact operation summary requires individual review.",
+          "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12440709/ (section: Subjects, material, and methods / Image analysis)"
+        },
+        "implementation_scope_note": "Rolling-ball background subtraction was done in Nikon NIS Elements. QuPath edition and filtering thresholds are unreported; no preprocessing or threshold choice is inferred.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 23,
+            "paragraph_sha256": "4e242dd8344670c65d8d5a7076bf7ae647f1e15056eb1d90d6c0285e5f9f1b21",
+            "section": "Subjects, material, and methods / Image analysis"
+          }
+        ],
+        "named_anchor_classification": {
+          "23": "image-analysis-role"
+        }
       }
     ],
     "status": "extracted",

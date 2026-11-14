@@ -1,4 +1,21 @@
 
+## Current QuPath coverage: warnings and required actions
+
+**Current catalog: 250 papers, 432 named software families, 2,671 observations and 1,143 individually reviewed uses; 1,528 uses await individual review.** All 250 exact primary XMLs were searched for QuPath: 12 paper-family uses and 16 named paragraphs. Eleven uses gain source reviews; P040's existing review is preserved unchanged. An acknowledgement and a downstream output-table paragraph do not establish additional image-analysis executions. The fixed cohort remains 71 Nature, 104 Nature Genetics and 75 AJHG papers, 2023-10-23 through 2026-10-23; no time extension was needed. The full semantic review and implementation objective remain open.
+
+**107 new scoped integrations are available: 20 native Java subsets and 87 upstream workflows; 110 including 3 existing adapters. 266 named families remain missing.** QuPath gains one upstream workflow credit. The explicit standalone Java controller invokes the complete unchanged original QuPath 0.5.1 headless Groovy engine and its embedded Java 21.0.2. It needs a permitted private Windows/Linux x86_64 original provider, a trusted caller script and complete declared inputs/outputs. The canonical executable and root dispatch are unchanged. Read QUPATH_CATALOG_INTEGRATION.md and QUPATH051_WORKFLOW_DEVELOPMENT.md for copyable setup, execution and recovery commands.
+
+**P009 and P040 report QuPath 0.5.1; other reported editions remain separate.** P020 reports 0.6.0, P049 0.4.3, P058 0.4.1 and P158 literally v.0.2.3 to v.0.4.3. Six other papers do not report an edition. Do not substitute 0.5.1 silently. The scientific controls cover six synthetic H-DAB jobs, 72 detections and all 13 complete portable exports per controller on Windows Java 21/25 and Linux Java 21. They do not independently qualify fluorescence/proximity, RNAscope puncta, image registration, custom classifiers or author pipelines. P158's custom StarDist extension/model is not supplied by the stock provider. P040's numeric stain vectors and author ROIs remain unknown, and its printed area-unit wording is retained. No paper is reproduced by this admission; no native segmentation port or whole-tool qualification is claimed.
+
+**SKIP3 skips dependent analysis** when required downloads, installation, original runtime, source, provider, extension/model, display or execution are missing/forbidden. Install only where permitted; supply the named prerequisites, verify the complete native-platform provider and retry NEW paths. A READY setup record is not an analysis result. Source-only checkouts and controller JARs do not contain the original runtime/JRE. Groovy runs with account permissions and requires explicit trusted-code and execution policies. Cell Ranger and Cell Ranger ARC remain excluded by user request.
+
+**FAIL2 admits no complete result.** Retain every input, full image/hierarchy/table, original returned object, condition, status, process log and failed case; resolve the stated cause and retry NEW paths. Review every original warning using WARNINGS.md, ORIGINAL_CONDITIONS.tsv and full logs. The controller requires original exit zero, no selected-format ERROR headers, exactly one completion marker and the entire declared result population. Do not admit partial outputs, drop blank/failed images or relabel a zero-exit logged error successful. Hashes establish integrity, not authenticity, independent statistical validity or biological correctness. This catalog audit executes no new original analysis or installation.
+
+**Other retained limits still apply.** P204's reported AllelicSeries 1.1.2 remains missing; the separate 0.1.1.2 candidate earns zero credit, and selected native burden components do not supply full COAST/SKAT-O or binary/discrete calibration. P054's wesanderson palette/count/MFOD1 mapping remain unknown; viridisLite and R graphics remain separate. ImageJ distributions/plugins are separate, and histogram matching must not be used for intensity quantification. Consult the retained checkpoint guides for all earlier tool-specific restrictions.
+
+<details><summary>Retained previous warnings (historical)</summary>
+
+
 ## Current palette and allelic-series coverage: warnings and required actions
 
 **Current catalog: 250 papers, 432 named software families, 2,671 observations and 1,132 individually reviewed uses.** Two newly recorded paper-family uses cover all 27 named primary paragraphs in the exact 250-source census. All 430 previous families, 2,669 observations and 1,130 reviews remain unchanged. The fixed cohort is 71 Nature, 104 Nature Genetics and 75 AJHG papers, 2023-10-23 through 2026-10-23; no time extension was needed. The full semantic review and implementation objective remain open.
@@ -1017,6 +1034,8 @@ output path. Disconnected infinite pseudotime values remain present. LEARN
 does not admit a pseudotime result. Do not infer roots or repair values to
 conceal failures. Full Batchelor, study reproduction and biological accuracy
 remain unproven; the250-paper goal remains active.
+
+</details>
 
 </details>
 

@@ -1,0 +1,344 @@
+{
+  "status": "PASS_TWELVE_QUPATH_ROLES_WITH_EXPLICIT_EDITION_AND_AUTHOR_MODEL_GAPS",
+  "source_reviews": [
+    {
+      "paper_id": "P009",
+      "pmcid": "PMC11798877",
+      "doi": "10.1038/s41586-024-08334-8",
+      "primary_xml_sha256": "2941b45e600f691aa74a50fd21aab7fdaedc8334713e21b88e5762361df94686",
+      "version_reported_near_name": "0.5.1",
+      "use_summary": "Segmented DAPI nuclei, expanded cells by2 micrometers, applied manual marker thresholds and measured cell/nuclear intensities. Centroid distances defined T-cell proximity and nearest-NSC comparisons.",
+      "implementation_scope_note": "Manual marker thresholds, anatomic ROIs, source channels, distance choices and section/mouse aggregation are separate caller decisions. Both primary image-analysis paragraphs report0.5.1.",
+      "review_scope": "Complete named primary paragraphs; broad whole-paper semantic review remains open.",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 116,
+          "paragraph_sha256": "e80a60c507a00390d94d9bbd7d55c261b1e7e8fe8a407d4c7a58a87fcbf53735",
+          "section": "Methods / Immunofluorescence quantification of T cell proximity effect via interferon response"
+        },
+        {
+          "paragraph_index": 117,
+          "paragraph_sha256": "89c943c8d2dc8da2eec6d5c23d17f9f6b3fa05a76740b9c0db305c802c1388a7",
+          "section": "Methods / Immunofluorescence quantification of NSC proximity effect via exosomes and fatty acid oxidation pathway"
+        }
+      ],
+      "named_anchor_classification": {
+        "116": "image-analysis-role",
+        "117": "image-analysis-role"
+      },
+      "tool_id": "qupath",
+      "evidence_paragraph_index": 116,
+      "evidence_paragraph_sha256": "e80a60c507a00390d94d9bbd7d55c261b1e7e8fe8a407d4c7a58a87fcbf53735",
+      "usage_context": "Complete named primary paragraphs individually reviewed; advice and downstream output-table reuse are not additional QuPath image-analysis executions. Broad whole-paper semantic review remains open."
+    },
+    {
+      "paper_id": "P020",
+      "pmcid": "PMC12823405",
+      "doi": "10.1038/s41586-025-09869-0",
+      "primary_xml_sha256": "a49fb2508352ef4d9c68d4f91f317ce500811d59680d824c9ce5b602219becc4",
+      "version_reported_near_name": "0.6.0",
+      "use_summary": "Used foreground pixel classification, manual stroma exclusion and optical-density cell detection to quantify Ki-67-positive fractions, with pathologist review.",
+      "implementation_scope_note": "The paper reports0.6.0, not selected0.5.1. Author pixel classifiers, manual ROIs and review decisions are not recovered.",
+      "review_scope": "Complete named primary paragraphs; broad whole-paper semantic review remains open.",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 33,
+          "paragraph_sha256": "7394856ffb55fae0b64f2ccddf9c7c1f28c63a68dc2f9316695ce2df5e749f84",
+          "section": "Methods / Immunohistochemistry"
+        }
+      ],
+      "named_anchor_classification": {
+        "33": "image-analysis-role"
+      },
+      "tool_id": "qupath",
+      "evidence_paragraph_index": 33,
+      "evidence_paragraph_sha256": "7394856ffb55fae0b64f2ccddf9c7c1f28c63a68dc2f9316695ce2df5e749f84",
+      "usage_context": "Complete named primary paragraphs individually reviewed; advice and downstream output-table reuse are not additional QuPath image-analysis executions. Broad whole-paper semantic review remains open."
+    },
+    {
+      "paper_id": "P021",
+      "pmcid": "PMC13600939",
+      "doi": "10.1038/s41586-026-10271-7",
+      "primary_xml_sha256": "d6e691fbafe8e1c42b7a5dbfab7d06ad9e456f833141e7d1b54c2cba9107b1cd",
+      "version_reported_near_name": "unreported",
+      "use_summary": "Ran cell detection and subcellular RNAscope puncta detection on stitched ROIs, exported detection measurements, then summarized marker-positive cell fractions from QuPath tables.",
+      "implementation_scope_note": "Fiji stitching/channel alignment and downstream R summaries are separate. The output-table analysis paragraph is not another QuPath execution or a reported software edition.",
+      "review_scope": "Complete named primary paragraphs; broad whole-paper semantic review remains open.",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 77,
+          "paragraph_sha256": "4dac5cb8348b60c985ff5b2342f5bbea6f9ed347856078778dd36fbcf6d21670",
+          "section": "Methods / Validation of nucleus composition changes with age using RNAscope / Image analysis"
+        },
+        {
+          "paragraph_index": 78,
+          "paragraph_sha256": "0e2ffff7308f9653c70a2d18a1058ac294a59e67b3533c44b7a203dece566793",
+          "section": "Methods / Validation of nucleus composition changes with age using RNAscope / Statistical analysis"
+        }
+      ],
+      "named_anchor_classification": {
+        "77": "image-analysis-role",
+        "78": "downstream-output-table-analysis"
+      },
+      "tool_id": "qupath",
+      "evidence_paragraph_index": 77,
+      "evidence_paragraph_sha256": "4dac5cb8348b60c985ff5b2342f5bbea6f9ed347856078778dd36fbcf6d21670",
+      "usage_context": "Complete named primary paragraphs individually reviewed; advice and downstream output-table reuse are not additional QuPath image-analysis executions. Broad whole-paper semantic review remains open."
+    },
+    {
+      "paper_id": "P024",
+      "pmcid": "PMC13600946",
+      "doi": "10.1038/s41586-025-09573-z",
+      "primary_xml_sha256": "95f294a27bf20b44f42ea8b780e347b1cd16849df0e48ee9745ac43600cd7c07",
+      "version_reported_near_name": "unreported",
+      "use_summary": "Selected tissue ROIs, detected DAPI nuclei/cell borders and RNAscope puncta, and exported per-cell measurements for custom cell-type/count summaries.",
+      "implementation_scope_note": "Fiji stitching, manually chosen ROIs/thresholds, custom Python summaries, CLR transformation and group tests are separate. No software edition or author script is inferred.",
+      "review_scope": "Complete named primary paragraphs; broad whole-paper semantic review remains open.",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 77,
+          "paragraph_sha256": "1608623353bd91f1bcf5605f20caeaaf21b55ec48832997470dfdaaeb871d72d",
+          "section": "Methods / Validation of compositional variation using RNAscope / Image processing and result analysis"
+        }
+      ],
+      "named_anchor_classification": {
+        "77": "image-analysis-role"
+      },
+      "tool_id": "qupath",
+      "evidence_paragraph_index": 77,
+      "evidence_paragraph_sha256": "1608623353bd91f1bcf5605f20caeaaf21b55ec48832997470dfdaaeb871d72d",
+      "usage_context": "Complete named primary paragraphs individually reviewed; advice and downstream output-table reuse are not additional QuPath image-analysis executions. Broad whole-paper semantic review remains open."
+    },
+    {
+      "paper_id": "P040",
+      "pmcid": "PMC13645638",
+      "doi": "10.1038/s41586-026-10954-1",
+      "primary_xml_sha256": "613a8a837a2bbebd1501da55e1f7167296630c8a94477fe415cdea0c273c53ad",
+      "version_reported_near_name": "0.5.1",
+      "use_summary": "Used original positive-cell detection on H-DAB slide ROIs with nuclear segmentation, cell expansion and cytoplasmic DAB intensity classes, then exported ROI measurements.",
+      "implementation_scope_note": "Numeric stain vectors and author ROI selections remain unknown. The paper reports threshold values0.08/0.16/0.24 and detailed segmentation parameters; reported area-unit wording remains literal and is not silently repaired to application units.",
+      "review_scope": "Complete named primary paragraphs; broad whole-paper semantic review remains open.",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 36,
+          "paragraph_sha256": "9ceb981f9cadc8559917519a217a0ed21074255af7669665042eec5eecf8210f",
+          "section": "Methods / Automated quantification of PLA2G2D+ cells"
+        }
+      ],
+      "named_anchor_classification": {
+        "36": "image-analysis-role"
+      },
+      "tool_id": "qupath",
+      "evidence_paragraph_index": 36,
+      "evidence_paragraph_sha256": "9ceb981f9cadc8559917519a217a0ed21074255af7669665042eec5eecf8210f",
+      "usage_context": "Complete named primary paragraphs individually reviewed; advice and downstream output-table reuse are not additional QuPath image-analysis executions. Broad whole-paper semantic review remains open."
+    },
+    {
+      "paper_id": "P049",
+      "pmcid": "PMC13668678",
+      "doi": "10.1038/s41586-026-10981-y",
+      "primary_xml_sha256": "732746565cfe445be1f1e2f1ce3b459964fc9f5ea28f7147c0b3a26f4f8d18c3",
+      "version_reported_near_name": "0.4.3",
+      "use_summary": "Read multiplex RNA-FISH images, selected the RGC layer, detected DAPI cells and subcellular spots, then combined single-measurement and composite classifiers for double-positive cells.",
+      "implementation_scope_note": "The reported0.4.3 edition, LIF image-series choices, classifier thresholds and trained/custom classifier resources are separate from selected0.5.1.",
+      "review_scope": "Complete named primary paragraphs; broad whole-paper semantic review remains open.",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 40,
+          "paragraph_sha256": "115dfb3f1cd784dbdf103be4481c2363243d36261d1d55a88616c4f4c59567b4",
+          "section": "Methods / Human tissue / Image acquisition and quantification of fluorescence multiplex in situ RNA hybridization"
+        }
+      ],
+      "named_anchor_classification": {
+        "40": "image-analysis-role"
+      },
+      "tool_id": "qupath",
+      "evidence_paragraph_index": 40,
+      "evidence_paragraph_sha256": "115dfb3f1cd784dbdf103be4481c2363243d36261d1d55a88616c4f4c59567b4",
+      "usage_context": "Complete named primary paragraphs individually reviewed; advice and downstream output-table reuse are not additional QuPath image-analysis executions. Broad whole-paper semantic review remains open."
+    },
+    {
+      "paper_id": "P056",
+      "pmcid": "PMC12804087",
+      "doi": "10.1038/s41586-025-09762-w",
+      "primary_xml_sha256": "43adc653ca98d1d5fb7e866c3e0a89012be1b89f976d820602daa093783ac737",
+      "version_reported_near_name": "unreported",
+      "use_summary": "Performed immunohistochemistry and RNAscope image analysis and quantification.",
+      "implementation_scope_note": "The named primary paragraph does not specify the QuPath edition, segmentation algorithm, thresholds or exported data structure; statistical and plotting tools in the paragraph are separate.",
+      "review_scope": "Complete named primary paragraphs; broad whole-paper semantic review remains open.",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 55,
+          "paragraph_sha256": "389dda273fe9c18d8a5fe40b17bc6279584d8f81cea6c1af78d203c1edddfe5f",
+          "section": "Methods / Data analysis and visualization"
+        }
+      ],
+      "named_anchor_classification": {
+        "55": "image-analysis-role"
+      },
+      "tool_id": "qupath",
+      "evidence_paragraph_index": 55,
+      "evidence_paragraph_sha256": "389dda273fe9c18d8a5fe40b17bc6279584d8f81cea6c1af78d203c1edddfe5f",
+      "usage_context": "Complete named primary paragraphs individually reviewed; advice and downstream output-table reuse are not additional QuPath image-analysis executions. Broad whole-paper semantic review remains open."
+    },
+    {
+      "paper_id": "P058",
+      "pmcid": "PMC10719099",
+      "doi": "10.1038/s41586-023-06817-8",
+      "primary_xml_sha256": "75c2262af9c034eff4f733e4f60dd326625ff33c95cd402bd80b7bcf9f8f0608",
+      "version_reported_near_name": "0.4.1",
+      "use_summary": "Manually annotated polygon ROIs, used positive-cell and composite classification for labelled nuclei, exported ROI counts and nuclear fluorescence measurements.",
+      "implementation_scope_note": "The paper reports0.4.1. Its coronal-series count scaling, ROI decisions and downstream Wilcoxon tests are separate. The acknowledgement of QuPath advice is not another execution.",
+      "review_scope": "Complete named primary paragraphs; broad whole-paper semantic review remains open.",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 36,
+          "paragraph_sha256": "d3fb54e6e44c6f3ab4e0638457a12b14abdf80a90613d43c737e174fe96c2cb2",
+          "section": "Methods / Quantification of SPNs across major brain regions"
+        },
+        {
+          "paragraph_index": 37,
+          "paragraph_sha256": "90663e521747437ac714753de599e7ad084461190582596c54339b3783307ab3",
+          "section": "Methods / Measurement of virus-mediated fluorescent protein expression"
+        },
+        {
+          "paragraph_index": 73,
+          "paragraph_sha256": "9bc3ea4d2807b4b1a8ac6b294d64c73230526b8c1e5c38c83b08a69756195a24",
+          "section": "Acknowledgements"
+        }
+      ],
+      "named_anchor_classification": {
+        "36": "image-analysis-role",
+        "37": "image-analysis-role",
+        "73": "acknowledgement-only"
+      },
+      "tool_id": "qupath",
+      "evidence_paragraph_index": 36,
+      "evidence_paragraph_sha256": "d3fb54e6e44c6f3ab4e0638457a12b14abdf80a90613d43c737e174fe96c2cb2",
+      "usage_context": "Complete named primary paragraphs individually reviewed; advice and downstream output-table reuse are not additional QuPath image-analysis executions. Broad whole-paper semantic review remains open."
+    },
+    {
+      "paper_id": "P098",
+      "pmcid": "PMC13649585",
+      "doi": "10.1038/s41588-026-02745-1",
+      "primary_xml_sha256": "49f9874fb22a1e420c6cfbf330d7623514fe91d1d983d9dcc8940967836b7214",
+      "version_reported_near_name": "unreported",
+      "use_summary": "Imaging scientists quantified tumor-sample immunohistochemistry images in a blinded manner.",
+      "implementation_scope_note": "The primary paragraph does not identify the QuPath edition, cell algorithm or thresholds. Blinding and study-design statements are not algorithm settings.",
+      "review_scope": "Complete named primary paragraphs; broad whole-paper semantic review remains open.",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 75,
+          "paragraph_sha256": "93d5150846551f55cee5679d8c7fb3cdd1cd1fc6ed0d3efd7ccedb4608bab530",
+          "section": "Methods / Statistics and reproducibility"
+        }
+      ],
+      "named_anchor_classification": {
+        "75": "image-analysis-role"
+      },
+      "tool_id": "qupath",
+      "evidence_paragraph_index": 75,
+      "evidence_paragraph_sha256": "93d5150846551f55cee5679d8c7fb3cdd1cd1fc6ed0d3efd7ccedb4608bab530",
+      "usage_context": "Complete named primary paragraphs individually reviewed; advice and downstream output-table reuse are not additional QuPath image-analysis executions. Broad whole-paper semantic review remains open."
+    },
+    {
+      "paper_id": "P158",
+      "pmcid": "PMC12597831",
+      "doi": "10.1038/s41588-025-02368-y",
+      "primary_xml_sha256": "43ad08ecc1cfa9a6ddc89d82679dcf2b5e69d29c23bdcea15009587bddf2b53a",
+      "version_reported_near_name": "v.0.2.3 to v.0.4.3",
+      "use_summary": "Used custom StarDist-based nuclei classification, manual channel-intensity thresholds and exported nuclei measurements for downstream expression summaries.",
+      "implementation_scope_note": "The literal reported edition range is retained and does not include selected0.5.1. The custom StarDist classifier/extension, trained model, manual thresholds and Python summaries are separate; stock QuPath alone does not recover them.",
+      "review_scope": "Complete named primary paragraphs; broad whole-paper semantic review remains open.",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 30,
+          "paragraph_sha256": "12e819aa929fc00b463417e6cbe086ef649f679ba0fc1437db0966e1c01c5eb4",
+          "section": "Methods / Confocal images acquisition and analysis"
+        }
+      ],
+      "named_anchor_classification": {
+        "30": "image-analysis-role"
+      },
+      "tool_id": "qupath",
+      "evidence_paragraph_index": 30,
+      "evidence_paragraph_sha256": "12e819aa929fc00b463417e6cbe086ef649f679ba0fc1437db0966e1c01c5eb4",
+      "usage_context": "Complete named primary paragraphs individually reviewed; advice and downstream output-table reuse are not additional QuPath image-analysis executions. Broad whole-paper semantic review remains open."
+    },
+    {
+      "paper_id": "P161",
+      "pmcid": "PMC13447095",
+      "doi": "10.1038/s41588-026-02665-0",
+      "primary_xml_sha256": "c7641339cc2001905b83a8902fe7fbe7ec934ac6a288b435c2c829ccbb09772f",
+      "version_reported_near_name": "unreported",
+      "use_summary": "Aligned H&E slide images and supported pathologist histologic-neighborhood annotations, whose locations were used downstream in spatial analysis.",
+      "implementation_scope_note": "The transformation/registration algorithm, annotation decisions and QuPath edition are unreported. GeoPandas, SCANPY, CellPhoneDB and CytoSignal roles remain separate.",
+      "review_scope": "Complete named primary paragraphs; broad whole-paper semantic review remains open.",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 70,
+          "paragraph_sha256": "b55e563e4dac59dea91a6bc871c5f254f316c71ad694870c12417e8d066934af",
+          "section": "Methods / Histologic neighborhood annotation"
+        }
+      ],
+      "named_anchor_classification": {
+        "70": "image-analysis-role"
+      },
+      "tool_id": "qupath",
+      "evidence_paragraph_index": 70,
+      "evidence_paragraph_sha256": "b55e563e4dac59dea91a6bc871c5f254f316c71ad694870c12417e8d066934af",
+      "usage_context": "Complete named primary paragraphs individually reviewed; advice and downstream output-table reuse are not additional QuPath image-analysis executions. Broad whole-paper semantic review remains open."
+    },
+    {
+      "paper_id": "P226",
+      "pmcid": "PMC12440709",
+      "doi": "10.1016/j.ajhg.2025.08.004",
+      "primary_xml_sha256": "917b552cde86031ade53ca222a1a96b494ecbf0a2fee979cb0bb83bea2c43377",
+      "version_reported_near_name": "unreported",
+      "use_summary": "Detected H2B-mRuby nuclei, expanded them2 micrometers to define perinuclear regions and filtered detections using morphology and fluorescence measurements.",
+      "implementation_scope_note": "Rolling-ball background subtraction was done in Nikon NIS Elements. QuPath edition and filtering thresholds are unreported; no preprocessing or threshold choice is inferred.",
+      "review_scope": "Complete named primary paragraphs; broad whole-paper semantic review remains open.",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 23,
+          "paragraph_sha256": "4e242dd8344670c65d8d5a7076bf7ae647f1e15056eb1d90d6c0285e5f9f1b21",
+          "section": "Subjects, material, and methods / Image analysis"
+        }
+      ],
+      "named_anchor_classification": {
+        "23": "image-analysis-role"
+      },
+      "tool_id": "qupath",
+      "evidence_paragraph_index": 23,
+      "evidence_paragraph_sha256": "4e242dd8344670c65d8d5a7076bf7ae647f1e15056eb1d90d6c0285e5f9f1b21",
+      "usage_context": "Complete named primary paragraphs individually reviewed; advice and downstream output-table reuse are not additional QuPath image-analysis executions. Broad whole-paper semantic review remains open."
+    }
+  ],
+  "current_paper_role_coverage": {
+    "P009": "Segmented DAPI nuclei, expanded cells by2 micrometers, applied manual marker thresholds and measured cell/nuclear intensities. Centroid distances defined T-cell proximity and nearest-NSC comparisons. Reported 0.5.1. The selected original script engine is available; the H-DAB controls do not independently qualify this DAPI fluorescence/proximity pipeline. Manual thresholds, source channels, author ROIs, 50-micrometer T-cell and 20-micrometer nearest-NSC choices, self-exclusion and section/mouse aggregation must be supplied explicitly.",
+    "P020": "Used foreground pixel classification, manual stroma exclusion and optical-density cell detection to quantify Ki-67-positive fractions, with pathologist review. Reported 0.6.0 differs from selected 0.5.1. No edition equivalence is established. Author foreground pixel classifiers, manual stroma exclusions, thresholds and pathologist decisions are not recovered.",
+    "P021": "Ran cell detection and subcellular RNAscope puncta detection on stitched ROIs, exported detection measurements, then summarized marker-positive cell fractions from QuPath tables. Edition unreported. Selected 0.5.1 is an explicit caller choice. H-DAB controls do not qualify RNAscope subcellular puncta detection or recover author scripts/thresholds. Paragraph 78 analyzes exported tables downstream in R; it is not another QuPath execution. Fiji stitching/alignment remains separate.",
+    "P024": "Selected tissue ROIs, detected DAPI nuclei/cell borders and RNAscope puncta, and exported per-cell measurements for custom cell-type/count summaries. Edition unreported. Selected 0.5.1 is an explicit caller choice. H-DAB controls do not qualify the DAPI/RNAscope puncta pipeline. Manual ROIs, segmentation/spot thresholds and author scripts remain unknown; Fiji stitching, custom Python cell-type summaries, CLR and group tests remain separate.",
+    "P040": "Used original positive-cell detection on H-DAB slide ROIs with nuclear segmentation, cell expansion and cytoplasmic DAB intensity classes, then exported ROI measurements. Reported 0.5.1. The complete original engine is available and synthetic H-DAB positive-cell controls passed. Numeric stain vectors and author ROI selections remain unknown; the 200-by-200-micrometer paper ROIs are not reconstructed. Paper threshold values 0.08/0.16/0.24 remain literal; printed area-unit wording is not silently repaired to application units. No exact paper invocation or biological reproduction is established. The previous individual review remains unchanged.",
+    "P049": "Read multiplex RNA-FISH images, selected the RGC layer, detected DAPI cells and subcellular spots, then combined single-measurement and composite classifiers for double-positive cells. Reported 0.4.3 differs from selected 0.5.1. H-DAB controls do not qualify multiplex RNA-FISH/subcellular spots. LIF series, RGC ROIs, single-measurement/composite classifier choices, thresholds and trained resources remain separate.",
+    "P056": "Performed immunohistochemistry and RNAscope image analysis and quantification. Edition unreported. The source names IHC/RNAscope quantification without specifying an algorithm, thresholds or export structure. The selected original 0.5.1 engine is available; no missing settings or paper pipeline is inferred from this generic mention.",
+    "P058": "Manually annotated polygon ROIs, used positive-cell and composite classification for labelled nuclei, exported ROI counts and nuclear fluorescence measurements. Reported 0.4.1 differs from selected 0.5.1; no other edition is inferred for the second analysis paragraph. Author polygon ROIs, GFP/mScarlet classifier thresholds and coronal-series scaling remain separate; H-DAB controls do not qualify the fluorescence pipeline. Paragraph 73 acknowledges advice and is not another execution. Downstream ggpubr/Wilcoxon tests are separate.",
+    "P098": "Imaging scientists quantified tumor-sample immunohistochemistry images in a blinded manner. Edition unreported. The source establishes blinded tumor IHC quantification without an identified algorithm or thresholds. The selected original 0.5.1 engine is available; blinding is not an algorithm setting and no author pipeline is inferred.",
+    "P158": "Used custom StarDist-based nuclei classification, manual channel-intensity thresholds and exported nuclei measurements for downstream expression summaries. Literal reported range v.0.2.3 to v.0.4.3 excludes selected 0.5.1. Stock QuPath does not recover the custom StarDist extension/classifier, trained model or manual intensity thresholds. H-DAB controls do not qualify that nuclei pipeline. Supply permitted dependencies or skip the dependent analysis; downstream Python summaries remain separate.",
+    "P161": "Aligned H&E slide images and supported pathologist histologic-neighborhood annotations, whose locations were used downstream in spatial analysis. Edition unreported. H&E slide alignment and pathologist neighborhood annotations are source roles, but the registration algorithm, transforms and annotation decisions are unknown. Selected 0.5.1 H-DAB controls do not qualify image registration or author annotation. GeoPandas, SCANPY, CellPhoneDB and CytoSignal remain separate.",
+    "P226": "Detected H2B-mRuby nuclei, expanded them2 micrometers to define perinuclear regions and filtered detections using morphology and fluorescence measurements. Edition unreported. H2B-mRuby nuclei detection and 2-micrometer perinuclear expansion require the author morphology/fluorescence filters, whose thresholds are unknown. Selected 0.5.1 H-DAB controls do not qualify this fluorescence pipeline. Nikon NIS Elements rolling-ball preprocessing remains separate."
+  },
+  "uncovered_roles": [
+    "Other reported editions and unreported author runtime identities",
+    "Author images, ROIs, numeric stain vectors, manual thresholds and exact scripts",
+    "Fluorescence/proximity, RNAscope puncta and image registration independent scientific qualification",
+    "Custom StarDist extension/model and trained classifiers",
+    "GUI user experience and biological/paper reproduction"
+  ],
+  "selected_original_version": "0.5.1",
+  "new_scoped_integration_credit": 1,
+  "existing_P040_review_unchanged": true,
+  "whole_paper_reproduced": false,
+  "whole_tool_qualified": false,
+  "whole_goal_complete": false
+}
