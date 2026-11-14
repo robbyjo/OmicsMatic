@@ -1,0 +1,60 @@
+# velociraptor 1.20.0 workflow validation
+
+Read [the current workflow guide](../../../docs/literature/VELOCIRAPTOR120_WORKFLOWS.md), [the development record](../../../docs/literature/VELOCIRAPTOR_ADAPTER_DEVELOPMENT.md) and the current catalog for availability and exact admission scope. The full250-paper objective remains open; this note grants no family credit or whole-package/paper qualification.
+
+The revised supervisor passed13 complete numeric cases across all7 original S4 signatures,4 complete original SVG/PNG figure cases with8 serialized-graph replays,2 matching original figure errors,32 Linux/R workflow controls and4 actual native Windows skips. All6 complete public examples matched original outputs. Original namespace stack diagnostics remain unresolved and require complete raw-console review. Unknown diagnostic totals remain unavailable, never zero.
+
+The former two-mode checkpoint below is historical. Its source-bound verifier intentionally refuses a changed current runner; use its captured matching sources to replay it. No historical source, result or saved hash is refreshed by the new revision. Read the current guide for explicit setup permissions, missing-prerequisite skips, failed-result refusal and recording-error recovery.
+
+<details><summary>Previous candidate checkpoint (historical)</summary>
+
+# velociraptor 1.20.0 candidate — not an available adapter
+
+**The catalog still marks velociraptor missing. This directory adds zero implementation credit. Skip dependent wrapper analysis until its runtime, complete outputs, controls and original-versus-adapter comparisons qualify.**
+
+## Current checkpoint: complete two-mode development comparisons
+
+The current original-runtime profile uses R 4.5.3, Python 3.12.10, original velociraptor 1.20.0/scvelo 0.3.3, NumPy 2.2.6, Pandas 2.2.3 and a separately selected SciPy 1.16.3. The public private-library installer completed an actual unchanged original `R CMD INSTALL`, installed the original managed backend and passed full namespace/dependency/runtime audits. This is a selected development profile, not recovered author settings.
+
+The current supervised adapter passed both complete independent original references: stochastic `ANY` list dispatch and dynamical `SingleCellExperiment` dispatch, each with all 160 synthetic cells and 12 genes. Strict complete R-value and caller-parameter comparisons passed without numerical or NA/NaN payload waivers. The independent binary value-tree comparisons covered all 941 nodes and 666 atomic payloads (668,143 payload bytes). The dynamical 15-iteration caller budget does not establish convergence or paper reproduction.
+
+Twelve protocol controls and two actual R capacity controls passed against the current execution code. They cover forbidden/missing prerequisites, invalid requests, unchanged pre-existing paths, actual original R errors/warnings/nonfinite values, wall-time termination and a complete-value byte-capacity refusal. Partial calls admitted no complete result. An interrupted worker's unavailable R condition counts remain unavailable, never zero. The original input files and complete private runtime remained unchanged.
+
+Each analysis uses a short private Linux temporary root. Available regular files are copied into the durable output; links and Unix-socket/FIFO nodes are retained as literal metadata without reading streams or following links. Original native roots are not deleted. A normally exiting worker first preserves its complete available R session temporary tree. Live IPC state and terminated process memory are not reconstructed. Earlier failed candidates, original returns, source snapshots and saved hashes remain separate.
+
+The workspace checkpoint is `build/literature-review/monocle-runtime/velociraptor-adapter-checkpoint-1`. It retains current and prior development evidence in bounded archive volumes. Its Windows replay passed all 6,578 archive-member checks across nine volumes and independently compared both complete value trees without installing a backend or fitting a model. Run `verify_checkpoint.py --checkpoint CHECKPOINT --out NEW_OUTPUT` for that development evidence replay. Read [the current development guide](../../../docs/literature/VELOCIRAPTOR_ADAPTER_DEVELOPMENT.md) for setup, request fields, restrictions, status meanings and recovery. Additional mode/dispatch/preprocessing and plot controls, further file-count/file-byte capacity controls and catalog admission remain unfinished. This checkpoint does not award family credit or qualify the whole R wrapper.
+
+The earlier SciPy 1.18.1 comparison remains a failure: velocity pseudotime differed while all other returned fields matched. A separate unwrapped original repeat also differed on that field in 153 of 160 cells (maximum absolute difference `4.5299530029296875e-06`). The original scvelo code omits the newer eigensolver's RNG argument; official SciPy documentation and the retained installed source show OS-entropy initialization. This supplies a source-supported explanation for within-original variability. The new legacy-ARPACK profile passed new complete comparisons; it neither changes old values nor proves universal bit reproducibility. Earlier dependency profiles and all original failures remain retained.
+
+## Earlier source and reference work
+
+The selected unmodified R package is Bioconductor 3.22 velociraptor 1.20.0. Its Linux declaration requires original Python scvelo 0.3.3. These are explicit development choices. P228 does not establish either author edition or the velocity mode; its separate R interface is not supplied by the existing Python 0.2.4/0.2.5 integrations.
+
+Current verified prerequisites and original reference work:
+
+- The official release source has 46 files; all eight R source expression trees match the original release Git commit `67b4a9ec4afba690f124e8d25015b9a02ca79e1a`. The unmodified Git archive's configure failure remains retained.
+- All 11 installed original R function bodies match the release source. The three declared S4 generics have seven registered methods; the two plotting exports are ordinary functions.
+- All 63 installed scvelo 0.3.3 Python files match the original PyPI wheel and the source archive's Python files.
+- Original stochastic and SingleCellExperiment dynamical/latent-time references completed with all 160 synthetic cells and 12 genes. Full RDS results, original inputs, caller parameters and conditions remain retained. A caller's 15-iteration fitting budget is not evidence of convergence or paper reproduction.
+- The original install-time backend layout was provisioned in a private package library. An absent-backend control confirmed that its original manager refuses without creating an environment or initializing Python. A separate matching R 4.5.3 layout was provisioned after an actual dependency build-version warning under R 4.5.2; renewed full stochastic and dynamical references completed under R 4.5.3 and retained complete value trees. At that earlier checkpoint the execution adapter, comparisons and public setup validation were unfinished; the current two-mode status above supersedes that development state. Other modes and plotting remain unqualified.
+- The separate [native Java two-dimensional grid component](../../../docs/literature/VELOCIRAPTOR_GRID120_NATIVE.md) now matches all31 complete original R arithmetic controls:279 fields,14,547 integer values,5,736 finite values and48 nonfinite classes. Observed finite differences were zero;31 guard/input-immutability checks passed. Its three project tests, isolated library JAR packaging, packaged class-origin and guard/example checks passed. It computes neither velocity nor latent time, and adds zero family implementation credit.
+
+`RValues.R` and `RValues.py` are candidate recording/comparison components. Complete stochastic and dynamical original returns produced 446 and 495 value-tree nodes, respectively; serialization left both original values unchanged. Thirteen Python checks exercised complete trees, literal/missing identifiers, signed zero, NA/NaN payload bits, named calls, missing/extra bytes and refusals. Three R refusal cases retained their complete original snapshots. These checks qualify neither a velocity adapter nor arbitrary object types.
+
+The recorder first saves the complete original RDS and then records all supported R value-tree slots, attributes and atomic payloads. Character bytes, encodings, literal `NA` identifiers, missing values, NaN and infinities are distinct. Unsupported types or capacity/recording failures refuse the capture and preserve the original and available partial files. Environment/native-pointer identity and opaque RDS byte parity are not claims of the value-tree format. `CompareOriginal.R` separately requires strict complete R-value equality, including numeric bits, attribute order and environment/pointer identities; it is a development comparator, not a velocity command.
+
+## Warnings and required actions
+
+**An install/import check is insufficient.** The unconstrained original setup installed successfully but failed during real analyses. Original scvelo 0.3.3 uses array-to-scalar conversion rejected by NumPy 2.4+ and list input to `pandas.unique` rejected by Pandas 3+. The current successful reference profile explicitly selects NumPy 2.2.6 and Pandas 2.2.3; the original resolver selected Scanpy 1.12 and AnnData 0.12.19. All earlier environments, failures and diagnostics remain separate. No original algorithm was patched and no author environment was recovered.
+
+**The first synthetic Gillespie reference has a zero-library cell.** Original automatic R size factors reject it. A separate explicit unit-factor control retained the same complete input and encountered a read-only-array failure during original Python normalization. No cell was removed, no pseudocount was added and no factor was silently repaired. Resolve actual input/design requirements before using a tool on study data.
+
+**Inspect every original condition and raw console.** A NumPy-only reference returned a `None` assay and a conversion warning; its complete returned assay remains retained. The later complete dependency profile returned its original stochastic and dynamical structures separately. Original Python log warnings are not all delivered as R conditions, so an R warning count does not establish a universal count. Earlier broad R metadata probes emitted a stack-imbalance diagnostic whose cause is unresolved; the targeted source audit and successful original references do not establish recovery of those old processes' state.
+
+**The R 4.5.2 install-time profile emitted a build-version warning:** its S4Vectors dependency was built under R 4.5.3. All earlier profiles remain retained; the separate matching R 4.5.3 layout and renewed original references completed without that build-version warning in their logs. This does not resolve the distinct native stack diagnostic: it also appeared in the R 4.5.3 grid reference. Its complete raw console, original objects and explicit incomplete diagnostic-count scope remain in the frozen grid reference archive. Neither installation success nor numerical parity establishes absence of runtime issues or validates earlier results across R versions.
+
+**SKIP3:** skip dependent analysis if exact permitted prerequisites, downloads, installation or execution are unavailable. Supply the named permitted prerequisites and retry new private paths. **FAIL2:** admit no complete result after an analysis, integrity or recording failure. Preserve all available inputs, original RDS files, partial outputs, complete stdout/stderr and Python/R diagnostics. Resolve the named cause without dropping cases or changing saved hashes. Early failed references retained R errors and full consoles; Python `py_last_error` was captured explicitly in fresh diagnostic references, without claiming recovery of the earlier terminated processes.
+
+The 250-paper goal remains active. No catalog, released JAR or production dispatch route is changed by this candidate.
+
+</details>
