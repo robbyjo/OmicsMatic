@@ -1,0 +1,77 @@
+# Copyright (C) 2026 JLinAlg contributors; SPDX-License-Identifier: GPL-3.0-or-later
+"""Protect zero-credit routing, every unchanged source reading and frozen scientific prerequisites."""
+from pathlib import Path
+import copy,json,sys,tempfile,unittest
+sys.dont_write_bytecode=True
+sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
+from rstatix_revision2_catalog.model import *
+from rstatix_revision2_catalog.bridge import load_before,metadata_view
+from rstatix_revision2_catalog.qualification import qualification
+
+class RstatixRevisionRoutingTest(unittest.TestCase):
+ @classmethod
+ def setUpClass(cls):
+  cls.before=load_before(ROOT);cls.after=transition(ROOT,cls.before);cls.old=next(t for t in json.loads(cls.before[META[0]]) if t['id']=='rstatix');cls.row=next(t for t in json.loads(cls.after[META[0]]) if t['id']=='rstatix')
+ def reject(self,path,change):
+  after=dict(self.after);value=json.loads(after[path]);change(value);after[path]=encoded(value)
+  with self.assertRaises(ValueError):check_transition(ROOT,self.before,after)
+ def test_all250_papers_2671_observations_and1156_reviews_byte_identical(self):
+  for n in [PAPERS,REVIEWS,META[1]]:self.assertEqual(self.before[n],self.after[n],n)
+  self.assertEqual(250,len(json.loads(self.after[PAPERS])));self.assertEqual(2671,sum(len(p['tools']) for p in json.loads(self.after[PAPERS])));self.assertEqual(1156,len(json.loads(self.after[REVIEWS])['reviews']))
+ def test_other431_families_unchanged(self):self.assertEqual([t for t in json.loads(self.before[META[0]]) if t['id']!='rstatix'],[t for t in json.loads(self.after[META[0]]) if t['id']!='rstatix'])
+ def test_original_family_credit_retained_and_revision_adds_zero(self):
+  for n in ['current_coverage','implementation_status','new_scoped_integration_credit','native_family_credit_added','source_roles_reviewed','selected_upstream_version','selected_original_R_version','native_candidate_component','native_candidate_sha256']:self.assertEqual(self.old[n],self.row[n],n)
+  self.assertEqual((2,0,0),(self.row['supervisor_revision'],self.row['supervisor_revision_integration_credit'],self.row['supervisor_revision_review_credit']))
+  self.assertEqual((109,264,0,0),tuple(check_transition(ROOT,self.before,self.after)[k] for k in ['new_scoped_integrations','missing','new_scoped_integration_credit','added_reviews']))
+ def test_every_runtime_route_points_to_the_exact_qualified_revision(self):
+  for n in ['existing_source','implementation_source','development_candidate']:self.assertEqual(PROGRAM,self.row[n])
+  self.assertEqual(pin(ROOT/PROGRAM)['sha256'],self.row['development_candidate_sha256']);self.assertIn(PROGRAM,self.row['development_adapter_cli']);self.assertEqual('../rstatix072-workflow-revision2/VALIDATION.json',self.row['workflow_validation'])
+ def test_historical_routes_and_validation_preserved_explicitly(self):
+  for old,new in [('development_candidate','historical_development_candidate'),('development_candidate_sha256','historical_development_candidate_sha256'),('workflow_validation','historical_workflow_validation')]:self.assertEqual(self.old[old],self.row[new])
+  self.assertIn(self.old['validation_note'],self.row['validation_note'])
+ def test_all_six_visible_roles_retain_their_original_text_and_add_recovery(self):
+  self.assertEqual(set(EXPECTED),set(self.row['paper_role_coverage']))
+  for name,text in self.old['paper_role_coverage'].items():self.assertEqual(text+' '+RECOVERY,self.row['paper_role_coverage'][name])
+  for word in ['wilcoxon_test','wilcox_test','SKIP3','4.2.3','4.4.0','Pairing','one-sided']:self.assertIn(word,self.row['paper_role_coverage']['P054'])
+  for word in ['unreported','not another execution','caller choice']:self.assertIn(word,self.row['paper_role_coverage']['P241'])
+ def test_original_R_runtime_not_relabelled_native_or_canonical(self):
+  self.assertIn('not a standalone JAR',self.row['implementation_scope']);self.assertEqual(('0.7.2','4.5.3'),(self.row['selected_upstream_version'],self.row['selected_original_R_version']));self.assertFalse(self.row['canonical_adapter_available']);self.assertFalse(self.row['root_dispatch_available']);self.assertFalse(self.row['whole_tool_qualified']);self.assertFalse(self.row['whole_paper_reproduced'])
+ def test_no_integration_summary_change_or_extra_review_allowed(self):
+  self.reject(META[1],lambda d:d['implementation_status_counts'].update(missing=263))
+  self.reject(REVIEWS,lambda d:d['reviews'].append(copy.deepcopy(d['reviews'][0])))
+ def test_no_rewrite_of_any_primary_observation_or_editions(self):
+  self.reject(PAPERS,lambda ps:next(t for p in ps if p['paper_id']=='P054' for t in p['tools'] if t['tool_id']=='rstatix').update(use_summary='All tests were one generic native t-test'))
+  self.reject(PAPERS,lambda ps:next(t for p in ps if p['paper_id']=='P241' for t in p['tools'] if t['tool_id']=='rstatix').update(version_reported_near_name='0.7.2'))
+ def test_no_generic_method_or_canonical_availability_claim(self):
+  self.reject(META[0],lambda ts:next(t for t in ts if t['id']=='rstatix').update(implementation_status='native-subset-validated',canonical_adapter_available=True))
+ def test_stale_runtime_hash_and_old_route_refused(self):
+  self.reject(META[0],lambda ts:next(t for t in ts if t['id']=='rstatix').update(development_candidate_sha256='0'*64))
+  self.reject(META[0],lambda ts:next(t for t in ts if t['id']=='rstatix').update(development_candidate=OLD_PROGRAM))
+ def test_unrelated_family_change_refused(self):self.reject(META[0],lambda ts:next(t for t in ts if t['id']=='ggpubr').update(whole_tool_qualified=True))
+ def test_notice_is_current_prominent_and_retains_required_actions(self):
+  page=self.after[META[4]].decode();self.assertEqual(1,page.count(NOTICE));self.assertLess(page.index('id="rstatix-revision2-required-actions"'),page.index('id="overview"'))
+  for word in ['zero','1,156','1,515','264 named families remain missing','SKIP3','FAIL2','unavailable, not zero','SUPERVISOR_ERROR.txt','WORKER_DIAGNOSTIC_ERROR.txt','Computation failed in','Cell Ranger ARC','retry NEW paths','no new original analysis']:self.assertIn(word,NOTICE)
+  after=dict(self.after);after[META[5]]+=b'Changed warning outside exact transition'
+  with self.assertRaises(ValueError):check_transition(ROOT,self.before,after)
+ def test_scientific_overlays_forbidden_and_files_remain_live(self):
+  for n in [PROGRAM,'tools/literature/rstatix072_workflow_v2/verify.py','tools/literature/rstatix072/source-profile.json',CURATION,WORKFLOW+'/controls.zip']:
+   before=dict(self.before);before[n]=b'forged'
+   with self.assertRaises(ValueError):metadata_view(ROOT,before)
+  with tempfile.TemporaryDirectory(dir=ROOT/'build/literature-review/monocle-runtime') as directory:
+   root=Path(directory);p=root/'scientific.R';p.write_bytes(b'original');view=metadata_view(root,self.before);self.assertEqual(b'original',(view/'scientific.R').read_bytes());p.write_bytes(b'changed');self.assertEqual(b'changed',(view/'scientific.R').read_bytes())
+ def test_changed_scientific_source_refused_before_frozen_import(self):
+  data=ROOT/WORKFLOW;cumulative=json.loads((data/'CUMULATIVE_VERIFICATION.json').read_bytes())
+  with tempfile.TemporaryDirectory(dir=ROOT/'build/literature-review/monocle-runtime') as directory:
+   root=Path(directory)
+   for n in ['VALIDATION.json','CUMULATIVE_VERIFICATION.json']:
+    p=root/WORKFLOW/n;p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes((data/n).read_bytes())
+   for n in cumulative['source_pins']:
+    p=root/n;p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes((ROOT/n).read_bytes())
+   (root/PROGRAM).write_bytes(b'Changed isolated controller source; never execute\n')
+   with self.assertRaisesRegex(ValueError,'Qualified revision2 source differs'):qualification(root)
+ def test_registry470_retains_every_other_definition(self):
+  from rstatix_revision2_catalog.verify import load_catalog_registry
+  from ggpubr_catalog.verify import load_catalog_registry as previous
+  old=previous(metadata_view(ROOT,self.before));new=load_catalog_registry(ROOT)
+  self.assertEqual(470,len(new));self.assertEqual([r for r in old if r['id']!='rstatix'],[r for r in new if r['id']!='rstatix']);self.assertEqual(PROGRAM,next(r for r in new if r['id']=='rstatix')['existing_source'])
+if __name__=='__main__':unittest.main()

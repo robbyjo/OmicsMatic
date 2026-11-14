@@ -1,4 +1,27 @@
 
+## Current rstatix revision2 routing: warnings and required actions
+
+**Current catalog: 250 papers, 432 named software families, 2,671 observations and 1,156 individually reviewed uses; 1,515 uses await individual review.** This update changes the existing rstatix workflow route and recovery instructions only. All 250 paper identities, all 2,671 observations, all 1,156 reviews and all six rstatix source readings remain unchanged. The fixed cohort is 71 Nature, 104 Nature Genetics and 75 AJHG papers, 2023-10-23 through 2026-10-23. Full semantic review and implementation remain open.
+
+**109 scoped new integrations remain available: 20 native Java subsets and 89 upstream workflows; 112 including 3 existing adapters. 264 named families remain missing.** Supervisor revision2 adds zero family, native-method or review credit. Use python3 tools/literature/rstatix072_workflow_v2/run.py with the same exact request schema and a NEW output path. It uses the unchanged original rstatix0.7.2 worker and a permitted private Linux/WSL R4.5.3 provider; it is not a standalone JAR. Native Java one-way Levene remains separate. Canonical executable and root dispatch remain unchanged. Read RSTATIX_REVISION2_CATALOG.md and RSTATIX072_WORKFLOW_REVISION2.md for commands and recovery.
+
+**Interrupted-worker diagnostics require review.** The historical supervisor correctly refused a truncated worker report but could omit WARNINGS.md and MANIFEST.json. Revision2 retains the raw malformed report, partial results, warning/inventory records and WORKER_DIAGNOSTIC_ERROR.txt. Incomplete warning, message and error counts are unavailable, not zero: JSON null, condition_counts_complete false and warning_review_required true. SUPERVISOR_ERROR.txt retains controller tracebacks. No raw report is repaired. Inspect every original condition and full process.stdout/process.stderr, correct the named cause and retry NEW paths.
+
+**Filesystem and monitoring failures admit no complete result.** A disappearing temporary child directory no longer aborts monitoring; missing owned roots, persistent capacity violations and forbidden links still fail. If the OS or a blocked path prevents a warning/status/inventory file, the controller attempts other records independently and prints the named recording failure and required action to its complete console log. Preserve that log and every available partial file; resolve the filesystem prerequisite and retry NEW paths. Unwritable diagnostics cannot be guaranteed. Never treat an incomplete inventory as complete.
+
+**SKIP3 skips dependent analysis** when matching source, runtime, provider, input, literal export/package, permitted installation/download or execution is unavailable/forbidden. Install only where permitted, supply exact prerequisites and retry NEW paths. Windows original execution skips; use native Linux/WSL Python/R. Analysis installs nothing; a READY provider is not an analysis result. Explicit ALLOW execution/trusted-code policies and trusted caller code are required. Account permissions are not an OS sandbox or total CPU/RSS guarantee; same-group supervision excludes child-created separate sessions. Cell Ranger and Cell Ranger ARC remain excluded by user request.
+
+**FAIL2 admits no complete result.** Preserve complete/partial original objects, input identities, warnings/errors, raw malformed diagnostics, logs, inventories and status. Correct the named cause and retry NEW paths. All original warnings remain visible; warn=2 still fails. Early zero exit, missing/extra/truncated results, changed inputs, forbidden links, malformed counts and capacity violations refuse admission. Do not drop cases, repair original algorithms or label partial populations complete. Files/markers and saved hashes do not prove arbitrary-code scientific validity, authenticity, author-runtime equivalence or biological truth.
+
+**Paper roles and editions stay literal.** All six existing rstatix readings and 12 named primary paragraphs are preserved. Five papers report0.7.2; P241 reports no edition or exact test. P054 literally prints wilcoxon_test, while selected0.7.2 exports wilcox_test: the missing literal export skips analysis, with no spelling repair. Author comparisons, pairing, variance assumptions, direction and correction families remain inputs; P032's test/correction method remains unknown. Original p-value rounding, full RDS objects, formulas, grouping, conditions and RNG behavior remain original R behavior. Selected R4.5.3/car3.1-5 differs from historical author profiles. No paper is reproduced.
+
+**Qualification retains the full population and every failed attempt.** All248 original calls,250 declared result files,444 rows and5,664 table cells match direct original R and the predecessor at tolerance zero. All31 earlier controls plus8 malformed-report and2 blocked-recording cases pass:41 Linux workflow controls, one Windows refusal, seven Windows/Linux monitor controls, the complete seven-operation public example and four frozen-verifier refusals. The main evidence has5,185 members, both link identities, blocked empty-directory identities and all failed attempts; an auxiliary control archive is retained. Original worker/statistical sources and earlier scientific verifiers remain unchanged. This catalog gate executes no new original analysis or installation.
+
+**Other retained restrictions still apply.** ggpubr original Computation failed in warnings refuse admission despite rendered files/zero exit; silent empty layers require caller eligibility checks. ggpubr uses separate R4.3.3 providers for0.4.0/0.6.0, not rstatix's R4.5.3 profile. QuPath0.5.1 H-DAB controls do not qualify other editions, fluorescence/proximity, RNAscope, registration or custom StarDist models. P204's reported AllelicSeries1.1.2 remains missing; candidate0.1.1.2 earns no reported-edition credit. Unknown wesanderson palettes/counts/MFOD1 mapping and separate ImageJ distributions/plugins remain unresolved. Read the retained guides for all earlier limits.
+
+<details><summary>Retained previous warnings (historical)</summary>
+
+
 ## Current ggpubr coverage: warnings and required actions
 
 **Current catalog: 250 papers, 432 named software families, 2,671 observations and 1,156 individually reviewed uses; 1,515 uses await individual review.** All 250 exact primary XMLs were searched for ggpubr: nine paper-family uses and 12 named paragraphs. Eight uses gain source reviews; P040's existing observation and review remain unchanged. P241's Web resources link is not another analysis execution. The fixed cohort remains 71 Nature, 104 Nature Genetics and 75 AJHG papers, 2023-10-23 through 2026-10-23; no time extension was needed. Full semantic review and implementation remain open.
@@ -1070,6 +1093,8 @@ output path. Disconnected infinite pseudotime values remain present. LEARN
 does not admit a pseudotime result. Do not infer roots or repair values to
 conceal failures. Full Batchelor, study reproduction and biological accuracy
 remain unproven; the250-paper goal remains active.
+
+</details>
 
 </details>
 
