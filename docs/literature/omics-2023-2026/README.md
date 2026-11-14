@@ -1,3 +1,28 @@
+Current presentation verification: [velociraptor warning layout revision2](../VELOCIRAPTOR_CATALOG_LAYOUT_REVISION2.md). It preserves all scientific evidence, counts and source readings. Use `python tools/literature/velociraptor_catalog/ui_revision2.py --verify --out build/literature-review/monocle-runtime/NEW-wrapper-layout-check --rescan-sources` in the matching qualified checkout.
+
+# 250-paper omics and GWAS toolbox catalog
+
+
+## Original velociraptor R workflow: warnings and required actions
+
+**Current catalog: 250 papers, 433 named software families, 2,672 observations and 1,168 individually reviewed uses; 1,504 uses await review.** The fixed71 Nature,104 Nature Genetics and75 AJHG papers remain unchanged. The existing P228 velociraptor reading retains its primary anchors, role, unknown author settings and uncertainties. Only implementation coverage changes; no paper, observation or review is added.
+
+**112 scoped new integrations: 20 native Java subsets and 92 original upstream workflows; 115 including three existing adapters. 262 named families remain missing.** This adds one upstream velociraptor family credit and zero additional native Java credit. The full semantic review and implementation objective remains open.
+
+Use python3 tools/literature/velociraptor120/run.py --request caller-request.json with an exact permitted original1.20.0 Linux/WSL provider and complete trusted R script. Original R preprocessing, all7 S4 signatures, conversion and declared scvelo0.3.3 backend remain original. Separate figures.py executes original R-only figure functions over supplied complete fits/projections without providing or initializing a Python fitting backend. These are source entry points, not bundled Java CLI commands. Install/download only where permitted with explicit flags and NEW paths; analysis installs nothing. Native Windows analysis and installation skip.
+
+**Original R native stack diagnostics remain unresolved.** Review every raw console and original condition. R handler counts are not universal raw/native/Python diagnostic totals; unknown totals remain unavailable, never zero.13 complete numeric comparisons cover3,732 nodes/2,617 atomic payloads/2,457,351 bytes without equality waivers.4 complete SVG/PNG pairs and8 serialized-graph replays matched original bytes;2 original named-coordinate errors remain failed analyses.36 controls and6 complete public examples passed. These establish selected integration paths, not the entire package, biological validity, convergence or paper reproduction. Graph environment/pointer identity and opaque RDS byte identity are not claimed.
+
+**P228 does not report wrapper/Python editions, velocity mode or exact calls.** The selected R4.5.3/Python3.12.10/NumPy2.2.6/Pandas2.2.3/SciPy1.16.3 profile is a project choice, not recovered author settings. Preserve the Velocyto name beside a velociraptor URL as a source/link discrepancy. The native Java grid component computes neither RNA velocity nor latent time and adds no second family credit. Original named-coordinate DFrame failures are not repaired by renaming axes; separate positive streamline controls use unchanged original PCA coordinates and matching vectors.
+
+**SKIP3 skips dependent analysis** for missing/forbidden prerequisites, installation, download or execution. **FAIL2 admits no complete result**, including final recording failures. Do not infer success from a leftover RDS or figure. Read exit code, analysis-status.json, WARNINGS.md and MANIFEST.json. If status cannot be saved, the console ends with FAIL2 and FINALIZATION_ERROR.json records failure where writable. If all records are blocked, preserve the full console, resolve the named filesystem cause and retry a NEW writable directory. Never overwrite historical evidence, drop failed cases, repair identifiers/NA/NaN/Inf or change saved hashes. Retain full RDS/value trees, graphs, conditions/calls, raw logs, available caller state and native temporary copies; live IPC streams and terminated process memory are not reconstructed. Trusted scripts run with account permissions; this is not an OS sandbox or total CPU/RSS enclosure.
+
+Other restrictions remain unchanged: Cell Ranger/ARC are excluded by user request; printed scVelo0.24 remains unresolved; four historical direct-Python SVGs remain irrecoverable and the wrapper does not recover them. Earlier dependency/profile failures, within-original SciPy1.18.1 pseudotime variability, the failed first example comparator and earlier source revisions remain retained. The first frozen dossier remains in place; a separate current dossier captures stronger complete-example replay without refreshing historical hashes.
+
+Read [velociraptor commands, source role and recovery](../VELOCIRAPTOR120_CATALOG_INTEGRATION.md). Validate with `python tools/literature/velociraptor_catalog/verify.py --out build/literature-review/monocle-runtime/NEW-velociraptor-catalog-check --rescan-sources`. The full goal remains open.
+
+<details><summary>Previous checkpoints (historical)</summary>
+
 # 250-paper omics and GWAS toolbox catalog
 
 
@@ -1566,6 +1591,8 @@ Three source-reviewed tool additions retain separate provenance: MALT and HOPS h
 These additions improve the catalog and add no whole-tool or biological credit. The source-tested MALT 0.4.1 development controller does not fulfill the separate 0.5.2 role. Complete HOPS and MaltExtract operations remain unfinished; their unreported versions, settings and resource choices remain unknown. See `MALT_ALIGNMENT.md` and `MALT_HOPS_PAPER_ROLES.md`.
 
 **Required action:** match the declared source version and operation, qualify a permitted runtime, provide the complete dated reference/mapping and query populations, and retain original warnings and failures. If any prerequisite is unavailable or cannot be installed, skip its dependent analysis. A small software-control index does not reproduce the historical 91-spirochete or 7,508-genome bacterial analyses. Insufficient-read candidates remain unassessable.
+
+</details>
 
 </details>
 
