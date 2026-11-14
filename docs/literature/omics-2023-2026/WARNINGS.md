@@ -1,4 +1,25 @@
 
+## DoubletFinder catalog update: warnings and required actions
+
+**250 papers, 438 named software families, 2,679 observations and 1,180 individually reviewed uses; 1,499 uses await review.** The fixed 71 Nature, 104 Nature Genetics and 75 AJHG papers remain unchanged. Five existing DoubletFinder uses are reviewed. Five newly identified families add seven observations: scrattch.hicat, scrattch.bigcat, scrattch.mapping, R arrow and PyArrow. All five remain missing. P096's earlier Scrublet summary incorrectly said 0.0.2; its primary paragraph reports 0.2. This correction preserves the previous metadata and changes no selected runtime.
+
+**113 scoped new integrations: 20 native Java subsets and 93 original upstream workflows; 116 including three existing adapters. 266 named families remain missing.** DoubletFinder adds one upstream family credit, with no additional native family credit for its three Java components. This is selected workflow coverage, not the whole tool, biological validity, a reproduced paper or completion of the 250-paper objective. The remaining MILTON requirements are explicitly queued for paper-wide scope/registry review.
+
+**SCT convergence is not qualified.** The synthetic original control produced 3,706 original R warnings: 3,694 fractional-count warnings and 12 iteration-limit warnings, plus 17 messages. Optional glmGamPoi was absent and the original native estimator ran. Inspect complete original conditions and raw consoles; raw/native diagnostic totals are unavailable, never zero. Do not treat source-parity output as a converged SCT analysis. Do not round artificial counts, suppress warnings, change saved hashes or overwrite a qualified profile. Any estimator/dependency change requires a NEW runtime/output and fresh original controls.
+
+Use python3 tools/literature/doubletfinder206/run.py --runtime /permitted/provider --request /trusted/request.rds --out /NEW/output. This is an explicit Python source entry point for unchanged original 2.0.6 R operations, not a bundled Java CLI command. Native Java DoubletFinder206 supplies modelHomotypic, findPk summaries and classification of existing pANN scores; it does not fit a new doublet model. The selected R 4.5.3 / Seurat 5.5.1 profile is a project choice, not an author environment. Use the documented installer only where permitted with --allow-install and --allow-download. Native Windows original runtime analysis/installation skips; use an explicitly permitted Linux/WSL provider.
+
+**P059's modified scrattch.hicat 1.0.9 score > 0.3 workflow remains unimplemented. P096's reported DoubletFinder 3.0 edition remains unresolved.** Skip those dependent reported-method analyses. Deposited author code is retained unchanged under CC-BY-4.0. Its legacy _v3 calls, direct as.numeric pK conversion, unused homotypic-adjusted expected count and fixed metadata column require reconciliation. The selected 2.0.6 pK probe returns a factor, but the author's actual pK type is unknown. The deposited Scrublet Script_5.py has a syntax error at line 21 and was neither executed nor repaired; the paper's Boolean fusion is not established by Script_6.R. Do not substitute 2.0.6 for the literal 3.0 edition or silently repair author code.
+
+**New families remain separate.** P058's BIGCAT edition is unknown; do not borrow P059's 0.0.5. P059 reports scrattch.mapping 0.2 hierarchical marker/centroid assignment; its exact calls and metric are unknown. P058 uses Hierarchical Approximate Nearest Neighbour mapping with an unknown package edition. P059's R arrow 12.0.1 loads chunked Parquet expression and queries DEGs; existing DuckDB support is not this R frontend. P250 declares PyArrow 14.0.2 for MILTON development, without establishing a specific analysis operation. Twelve ordinary figure-arrow mentions are classified as nonsoftware. Generic KNN, clustering, Java Parquet support and the DoubletFinder adapter do not qualify these distinct interfaces.
+
+**SKIP3 skips dependent analysis** when exact prerequisites, download, installation or execution are unavailable or forbidden. Supply only permitted prerequisites and retry NEW paths. **FAIL2 admits no complete result**, including terminal recording failure. Read the exit code, analysis-status.json, WARNINGS.md and MANIFEST.json; a leftover RDS is not success. If recording is blocked, preserve the full console and FINALIZATION_ERROR.json where writable, resolve the named filesystem cause and retry a NEW writable directory. Retain original inputs, literal identifiers, NA/NaN/Inf, complete RDS objects, conditions/calls, raw logs and all available partial outputs. Never refresh historical hashes to admit changed evidence. Trusted RDS input is required. Complete object comparison needs the exact original R provider; a portable hash check alone does not qualify Seurat objects.
+
+Other restrictions remain: Cell Ranger/ARC are excluded by user request; earlier scVelo editions, irrecoverable figures and velociraptor native stack diagnostics retain their recorded limitations. All earlier scientific verifiers and evidence remain unchanged. The full semantic review and implementation goal remains open.
+
+<details><summary>Previous warnings (historical)</summary>
+
+
 ## Original velociraptor R workflow: warnings and required actions
 
 **Current catalog: 250 papers, 433 named software families, 2,672 observations and 1,168 individually reviewed uses; 1,504 uses await review.** The fixed71 Nature,104 Nature Genetics and75 AJHG papers remain unchanged. The existing P228 velociraptor reading retains its primary anchors, role, unknown author settings and uncertainties. Only implementation coverage changes; no paper, observation or review is added.
@@ -1152,6 +1173,8 @@ output path. Disconnected infinite pseudotime values remain present. LEARN
 does not admit a pseudotime result. Do not infer roots or repair values to
 conceal failures. Full Batchelor, study reproduction and biological accuracy
 remain unproven; the250-paper goal remains active.
+
+</details>
 
 </details>
 

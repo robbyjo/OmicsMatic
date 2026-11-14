@@ -1,0 +1,858 @@
+{
+  "status": "PRIMARY_ROLES_WITH_SELECTED206_COVERAGE_AND_EXPLICIT_GAPS",
+  "reviews": [
+    {
+      "paper_id": "P053",
+      "pmcid": "PMC10719095",
+      "doi": "10.1038/s41586-023-06819-6",
+      "tool_id": "doubletfinder",
+      "primary_xml_sha256": "09ff276fa0ecc0e114a8e0f9af929fbb974a3124b01ef8ef205ed117198b41fe",
+      "evidence_paragraph_index": 48,
+      "evidence_paragraph_sha256": "1ddf90b323b08a35cd16ea874ec51e81ae36b0475f6c39279d27cf9ec3cdc898",
+      "version_reported_near_name": null,
+      "usage_context": "analysis-method-description",
+      "use_summary": "Predicts multiplets and removes the highest-scoring 10 percent per sample in the multiome RNA workflow and per reaction in the paired-tag human M1 integration workflow.",
+      "reported_settings": {
+        "removed_fraction": 0.1,
+        "paired_tag_reactions": 2
+      },
+      "uncertainties": [
+        "DoubletFinder edition, pN, pK, PC subset, nExp rounding and score-tie policy are unreported.",
+        "Do not infer that every paper uses the same 10 percent rule."
+      ],
+      "supporting_evidence": [
+        {
+          "paragraph_index": 48,
+          "section": "Methods / 10x multiome sequence data processing and clustering",
+          "paragraph_sha256": "1ddf90b323b08a35cd16ea874ec51e81ae36b0475f6c39279d27cf9ec3cdc898"
+        },
+        {
+          "paragraph_index": 86,
+          "section": "Methods / Analysis of paired-tag RNA and H3K27ac / Integration with human or mouse motor cortex 10x multiome RNA",
+          "paragraph_sha256": "6399bd45504da880ee6d06bee88c851f8f4d3f4cbdac032f02e9d82aa4b2dcb6"
+        }
+      ],
+      "implementation_scope_note": "Selected original DoubletFinder 2.0.6 has a tested Linux/WSL R adapter and three native Java components. Unknown author settings and other reported editions remain unqualified. No whole-package, convergence, biological or paper-reproduction claim; no extra native family credit.",
+      "named_anchor_classification": [
+        {
+          "paragraph_index": 48,
+          "kind": "primary-methods"
+        },
+        {
+          "paragraph_index": 86,
+          "kind": "primary-methods"
+        }
+      ],
+      "source_intake_reading": {
+        "paper_id": "P053",
+        "pmcid": "PMC10719095",
+        "doi": "10.1038/s41586-023-06819-6",
+        "paragraphs": [
+          48,
+          86
+        ],
+        "use_summary": "Predicts multiplets and removes the highest-scoring 10 percent per sample in the multiome RNA workflow and per reaction in the paired-tag human M1 integration workflow.",
+        "version_reported": null,
+        "reported_settings": {
+          "removed_fraction": 0.1,
+          "paired_tag_reactions": 2
+        },
+        "context": "The first workflow uses SCTransform and 3,000 variable genes; the second uses log normalization and 3,000 variable genes. The stated 20 PCs describe a downstream neighbor graph, not an explicit DoubletFinder argument.",
+        "uncertainties": [
+          "DoubletFinder edition, pN, pK, PC subset, nExp rounding and score-tie policy are unreported.",
+          "Do not infer that every paper uses the same 10 percent rule."
+        ]
+      }
+    },
+    {
+      "paper_id": "P059",
+      "pmcid": "PMC10719114",
+      "doi": "10.1038/s41586-023-06812-z",
+      "tool_id": "doubletfinder",
+      "primary_xml_sha256": "48771a4387270374add8ea5c2127306e44260dc2dc2d82b0ceb358a060ca1b94",
+      "evidence_paragraph_index": 85,
+      "evidence_paragraph_sha256": "57e06b33f1b040af0369f8f04a4ea02ea4b2f0a8ff0ccba674f646f89230b179",
+      "version_reported_near_name": null,
+      "usage_context": "analysis-method-description",
+      "use_summary": "Removes cells whose doublet score exceeds 0.3 using a modified DoubletFinder algorithm supplied by scrattch.hicat 1.0.9.",
+      "reported_settings": {
+        "removal_comparator": ">",
+        "doublet_score_threshold": 0.3
+      },
+      "uncertainties": [
+        "The modified implementation is not automatically equivalent to the original DoubletFinder R package.",
+        "QC score and gene-count thresholds are separate filtering steps and are not inferred DoubletFinder options.",
+        "Register and audit the separately named scrattch.hicat implementation before granting its runtime credit."
+      ],
+      "supporting_evidence": [
+        {
+          "paragraph_index": 85,
+          "section": "Methods / scRNA-seq / Sequencing data processing and QC",
+          "paragraph_sha256": "57e06b33f1b040af0369f8f04a4ea02ea4b2f0a8ff0ccba674f646f89230b179"
+        }
+      ],
+      "implementation_scope_note": "Original DoubletFinder 2.0.6 does not qualify the modified scrattch.hicat 1.0.9 score > 0.3 workflow; its dependent analysis remains skipped. Selected original DoubletFinder 2.0.6 has a tested Linux/WSL R adapter and three native Java components. Unknown author settings and other reported editions remain unqualified. No whole-package, convergence, biological or paper-reproduction claim; no extra native family credit.",
+      "named_anchor_classification": [
+        {
+          "paragraph_index": 85,
+          "kind": "primary-methods"
+        }
+      ],
+      "source_intake_reading": {
+        "paper_id": "P059",
+        "pmcid": "PMC10719114",
+        "doi": "10.1038/s41586-023-06812-z",
+        "paragraphs": [
+          85
+        ],
+        "use_summary": "Removes cells whose doublet score exceeds 0.3 using a modified DoubletFinder algorithm supplied by scrattch.hicat 1.0.9.",
+        "version_reported": null,
+        "separate_implementation": {
+          "name": "scrattch.hicat",
+          "version": "1.0.9",
+          "url": "https://github.com/AllenInstitute/scrattch.hicat"
+        },
+        "reported_settings": {
+          "removal_comparator": ">",
+          "doublet_score_threshold": 0.3
+        },
+        "uncertainties": [
+          "The modified implementation is not automatically equivalent to the original DoubletFinder R package.",
+          "QC score and gene-count thresholds are separate filtering steps and are not inferred DoubletFinder options.",
+          "Register and audit the separately named scrattch.hicat implementation before granting its runtime credit."
+        ]
+      }
+    },
+    {
+      "paper_id": "P096",
+      "pmcid": "PMC11631765",
+      "doi": "10.1038/s41588-024-01990-6",
+      "tool_id": "doubletfinder",
+      "primary_xml_sha256": "bdf8a7d606e062789c6bd24ca84dcc7c8bc02b0271255e367f45d220d57369f9",
+      "evidence_paragraph_index": 40,
+      "evidence_paragraph_sha256": "32c0aa98a6dad029c628a20520976153a6958fd09234f0c9689c5e2904ad6a8b",
+      "version_reported_near_name": "3.0",
+      "usage_context": "analysis-method-description",
+      "use_summary": "Uses three doublet detectors and removes the union of all DoubletFinder calls with the intersection of DoubletDecon and Scrublet calls.",
+      "reported_settings": {
+        "combined_removal_rule": "DoubletFinder UNION (DoubletDecon INTERSECTION Scrublet)",
+        "DoubletDecon_version": "1.1.5",
+        "Scrublet_version": "0.2"
+      },
+      "uncertainties": [
+        "The literal paper version 3.0 remains unresolved: the deposited script loads DoubletFinder without a package-version declaration and calls the legacy _v3 API.",
+        "Selected 2.0.6 uses the current API with NULL for the initial reuse.pANN; do not translate the deposited FALSE or _v3 calls silently.",
+        "The pK conversion uses as.numeric directly. If the returned pK is a factor it yields a level code; the author runtime object/type is unavailable, so preserve this expression and flag the ambiguity rather than repairing it.",
+        "The fixed metadata-column15 export is retained as deposited and needs author-object/schema reconciliation.",
+        "The deposited Scrublet Script_5.py fails Python parsing at iterate=[0:22]; it was not executed or repaired. Script_6.R formats Scrublet outputs, rather than implementing the paper-stated multi-tool Boolean fusion."
+      ],
+      "supporting_evidence": [
+        {
+          "paragraph_index": 40,
+          "section": "Methods / snRNA-seq quality control",
+          "paragraph_sha256": "32c0aa98a6dad029c628a20520976153a6958fd09234f0c9689c5e2904ad6a8b"
+        }
+      ],
+      "implementation_scope_note": "The literal reported 3.0 edition remains unresolved. Deposited legacy _v3 calls are not silently translated; the factor-to-number pK expression, unused homotypic adjustment and fixed metadata column require source reconciliation. Selected 2.0.6 does not reproduce this paper. Selected original DoubletFinder 2.0.6 has a tested Linux/WSL R adapter and three native Java components. Unknown author settings and other reported editions remain unqualified. No whole-package, convergence, biological or paper-reproduction claim; no extra native family credit.",
+      "named_anchor_classification": [
+        {
+          "paragraph_index": 40,
+          "kind": "primary-methods"
+        }
+      ],
+      "source_intake_reading": {
+        "paper_id": "P096",
+        "pmcid": "PMC11631765",
+        "doi": "10.1038/s41588-024-01990-6",
+        "paragraphs": [
+          40
+        ],
+        "use_summary": "Uses three doublet detectors and removes the union of all DoubletFinder calls with the intersection of DoubletDecon and Scrublet calls.",
+        "version_reported": "3.0",
+        "reported_settings": {
+          "combined_removal_rule": "DoubletFinder UNION (DoubletDecon INTERSECTION Scrublet)",
+          "DoubletDecon_version": "1.1.5",
+          "Scrublet_version": "0.2"
+        },
+        "uncertainties": [
+          "The literal paper version 3.0 remains unresolved: the deposited script loads DoubletFinder without a package-version declaration and calls the legacy _v3 API.",
+          "Selected 2.0.6 uses the current API with NULL for the initial reuse.pANN; do not translate the deposited FALSE or _v3 calls silently.",
+          "The pK conversion uses as.numeric directly. If the returned pK is a factor it yields a level code; the author runtime object/type is unavailable, so preserve this expression and flag the ambiguity rather than repairing it.",
+          "The fixed metadata-column15 export is retained as deposited and needs author-object/schema reconciliation.",
+          "The deposited Scrublet Script_5.py fails Python parsing at iterate=[0:22]; it was not executed or repaired. Script_6.R formats Scrublet outputs, rather than implementing the paper-stated multi-tool Boolean fusion."
+        ],
+        "deposited_author_code": {
+          "doi": "10.5281/zenodo.13321265",
+          "license": "CC-BY-4.0",
+          "script": "Script_3.R",
+          "sha256": "512112168a2289688d7a5045fe2c43b5522df1457ed680885aa998404ec6683b",
+          "legacy_calls": [
+            "paramSweep_v3",
+            "summarizeSweep",
+            "find.pK",
+            "modelHomotypic",
+            "doubletFinder_v3"
+          ],
+          "package_version_declaration_in_script": null
+        },
+        "reported_settings_from_deposited_code": {
+          "unit": "23 explicitly listed samples analyzed separately",
+          "PCs": "1:10",
+          "sct": false,
+          "pN": 0.25,
+          "pK_expression": "as.numeric(bcmvn_normalised$pK[which.max(bcmvn_normalised$BCmetric)])",
+          "expected_doublets": "round(0.1*nrow(unclustered_seurat@meta.data))",
+          "reuse_pANN": false,
+          "homotypic_adjustment": "Exp_poi.adj is computed but the unadjusted nExp_poi is passed to doubletFinder_v3",
+          "input": "Saved per-sample log-normalized _unclustered_seurat.rds; SCT clustering supplies annotations separately"
+        }
+      },
+      "reported_settings_from_deposited_code": {
+        "unit": "23 explicitly listed samples analyzed separately",
+        "PCs": "1:10",
+        "sct": false,
+        "pN": 0.25,
+        "pK_expression": "as.numeric(bcmvn_normalised$pK[which.max(bcmvn_normalised$BCmetric)])",
+        "expected_doublets": "round(0.1*nrow(unclustered_seurat@meta.data))",
+        "reuse_pANN": false,
+        "homotypic_adjustment": "Exp_poi.adj is computed but the unadjusted nExp_poi is passed to doubletFinder_v3",
+        "input": "Saved per-sample log-normalized _unclustered_seurat.rds; SCT clustering supplies annotations separately"
+      },
+      "deposited_author_code": {
+        "doi": "10.5281/zenodo.13321265",
+        "license": "CC-BY-4.0",
+        "script": "Script_3.R",
+        "sha256": "512112168a2289688d7a5045fe2c43b5522df1457ed680885aa998404ec6683b",
+        "legacy_calls": [
+          "paramSweep_v3",
+          "summarizeSweep",
+          "find.pK",
+          "modelHomotypic",
+          "doubletFinder_v3"
+        ],
+        "package_version_declaration_in_script": null
+      }
+    },
+    {
+      "paper_id": "P124",
+      "pmcid": "PMC10703699",
+      "doi": "10.1038/s41588-023-01554-0",
+      "tool_id": "doubletfinder",
+      "primary_xml_sha256": "28ca67729ea914e96b6e7973efa90054a63834a5f18772413ad3708a2e1b172c",
+      "evidence_paragraph_index": 52,
+      "evidence_paragraph_sha256": "b8927c8882602bb4d26003be869bae03c9cd22a4d01c693bfe2c41d3a07a1b10",
+      "version_reported_near_name": null,
+      "usage_context": "analysis-method-description",
+      "use_summary": "Identifies and removes predicted doublets before aggregating high-quality cells across donors and treatments for guide-assignment and differential-expression analyses.",
+      "reported_settings": {},
+      "uncertainties": [
+        "DoubletFinder edition, expected rate, pN, pK, PC subset and exact classification call are unreported."
+      ],
+      "supporting_evidence": [
+        {
+          "paragraph_index": 52,
+          "section": "Methods / Processing and analyzing scRNA-seq",
+          "paragraph_sha256": "b8927c8882602bb4d26003be869bae03c9cd22a4d01c693bfe2c41d3a07a1b10"
+        }
+      ],
+      "implementation_scope_note": "Selected original DoubletFinder 2.0.6 has a tested Linux/WSL R adapter and three native Java components. Unknown author settings and other reported editions remain unqualified. No whole-package, convergence, biological or paper-reproduction claim; no extra native family credit.",
+      "named_anchor_classification": [
+        {
+          "paragraph_index": 52,
+          "kind": "primary-methods"
+        }
+      ],
+      "source_intake_reading": {
+        "paper_id": "P124",
+        "pmcid": "PMC10703699",
+        "doi": "10.1038/s41588-023-01554-0",
+        "paragraphs": [
+          52
+        ],
+        "use_summary": "Identifies and removes predicted doublets before aggregating high-quality cells across donors and treatments for guide-assignment and differential-expression analyses.",
+        "version_reported": null,
+        "reported_settings": {},
+        "context": "Seurat 4.1.0 is reported. The greater-than-four gRNA UMI threshold is downstream guide assignment, not a DoubletFinder parameter.",
+        "uncertainties": [
+          "DoubletFinder edition, expected rate, pN, pK, PC subset and exact classification call are unreported."
+        ]
+      }
+    },
+    {
+      "paper_id": "P192",
+      "pmcid": "PMC11568758",
+      "doi": "10.1016/j.ajhg.2024.10.001",
+      "tool_id": "doubletfinder",
+      "primary_xml_sha256": "6d8f96c90682633e9bbb02269e6cf2d94690dfe31e6f72d9c68770825e1ef658",
+      "evidence_paragraph_index": 17,
+      "evidence_paragraph_sha256": "fffe209282f6856d24158ab0affad17c980d668868fac3ca31170a36fe3ec193",
+      "version_reported_near_name": null,
+      "usage_context": "analysis-method-description",
+      "use_summary": "Removes remaining doublets after demuxlet singlet selection, using pN-pK parameter sweeps and per-batch maxima of the mean-variance normalized bimodality coefficient to select pK.",
+      "reported_settings": {
+        "pN": 0.25,
+        "pK_selection": "per-batch maximum mean-variance normalized bimodality coefficient"
+      },
+      "uncertainties": [
+        "The DoubletFinder edition, PC subset, selected per-batch pK values, expected-doublet count/rate, homotypic adjustment and tie policy are unreported.",
+        "Upstream find.pK computes the complete BC metric table and plots it; it does not itself supply the expected number of doublets or select a unique maximum automatically."
+      ],
+      "supporting_evidence": [
+        {
+          "paragraph_index": 17,
+          "section": "Methods / Processing of SAT snRNA-seq data in RYSA",
+          "paragraph_sha256": "fffe209282f6856d24158ab0affad17c980d668868fac3ca31170a36fe3ec193"
+        }
+      ],
+      "implementation_scope_note": "Selected original DoubletFinder 2.0.6 has a tested Linux/WSL R adapter and three native Java components. Unknown author settings and other reported editions remain unqualified. No whole-package, convergence, biological or paper-reproduction claim; no extra native family credit.",
+      "named_anchor_classification": [
+        {
+          "paragraph_index": 17,
+          "kind": "primary-methods"
+        }
+      ],
+      "source_intake_reading": {
+        "paper_id": "P192",
+        "pmcid": "PMC11568758",
+        "doi": "10.1016/j.ajhg.2024.10.001",
+        "paragraphs": [
+          17
+        ],
+        "use_summary": "Removes remaining doublets after demuxlet singlet selection, using pN-pK parameter sweeps and per-batch maxima of the mean-variance normalized bimodality coefficient to select pK.",
+        "version_reported": null,
+        "reported_settings": {
+          "pN": 0.25,
+          "pK_selection": "per-batch maximum mean-variance normalized bimodality coefficient"
+        },
+        "context": "Thirty PCs and clustering resolution0.5 describe the earlier clustering step. The demuxlet --min-MQ30 option belongs to genotype demultiplexing.",
+        "uncertainties": [
+          "The DoubletFinder edition, PC subset, selected per-batch pK values, expected-doublet count/rate, homotypic adjustment and tie policy are unreported.",
+          "Upstream find.pK computes the complete BC metric table and plots it; it does not itself supply the expected number of doublets or select a unique maximum automatically."
+        ]
+      }
+    },
+    {
+      "paper_id": "P059",
+      "pmcid": "PMC10719114",
+      "doi": "10.1038/s41586-023-06812-z",
+      "tool_id": "scrattch-hicat",
+      "primary_xml_sha256": "48771a4387270374add8ea5c2127306e44260dc2dc2d82b0ceb358a060ca1b94",
+      "evidence_paragraph_index": 85,
+      "evidence_paragraph_sha256": "57e06b33f1b040af0369f8f04a4ea02ea4b2f0a8ff0ccba674f646f89230b179",
+      "version_reported_near_name": "1.0.9",
+      "usage_context": "analysis-method-description",
+      "use_summary": "Uses the modified DoubletFinder method in scrattch.hicat 1.0.9 to remove cells with score strictly greater than 0.3. Later mentions identify HICAT as the predecessor of BIGCAT; they do not establish additional current HICAT analyses.",
+      "reported_settings": {
+        "doublet_score_threshold": 0.3,
+        "removal_comparator": ">"
+      },
+      "uncertainties": [
+        "Exact modified function, arguments and package 1.0.9 runtime still require source qualification.",
+        "Do not attribute BIGCAT rewritten differential expression or clustering to direct execution of its HICAT predecessor."
+      ],
+      "supporting_evidence": [
+        {
+          "paragraph_index": 85,
+          "section": "Methods / scRNA-seq / Sequencing data processing and QC",
+          "paragraph_sha256": "57e06b33f1b040af0369f8f04a4ea02ea4b2f0a8ff0ccba674f646f89230b179"
+        },
+        {
+          "paragraph_index": 87,
+          "section": "Methods / scRNA-seq / Clustering scRNA-seq data",
+          "paragraph_sha256": "72099b426b6bbba9e8e34611963c36f2f6b32474cf0d6de78ec762ca4eba02ea"
+        },
+        {
+          "paragraph_index": 88,
+          "section": "Methods / scRNA-seq / Clustering scRNA-seq data",
+          "paragraph_sha256": "49b56d3231abc70b26a6d014c8a879c9cc16853c7d5f510adf1055e18013bfcb"
+        },
+        {
+          "paragraph_index": 91,
+          "section": "Methods / scRNA-seq / Differential gene expression analysis",
+          "paragraph_sha256": "21ef0a321d804d366f73d62103f9b56505e1b94cdf39d0983b93056dc17de5a6"
+        }
+      ],
+      "implementation_scope_note": "Missing separate family: skip dependent runtime analysis until the exact permitted source, prerequisites and workflow are implemented and tested. No analysis executed or implementation credit.",
+      "named_anchor_classification": [
+        {
+          "paragraph_index": 85,
+          "kind": "primary-methods"
+        },
+        {
+          "paragraph_index": 87,
+          "kind": "historical-predecessor-context"
+        },
+        {
+          "paragraph_index": 88,
+          "kind": "historical-predecessor-context"
+        },
+        {
+          "paragraph_index": 91,
+          "kind": "historical-predecessor-context"
+        }
+      ]
+    },
+    {
+      "paper_id": "P058",
+      "pmcid": "PMC10719099",
+      "doi": "10.1038/s41586-023-06817-8",
+      "tool_id": "scrattch-bigcat",
+      "primary_xml_sha256": "75c2262af9c034eff4f733e4f60dd326625ff33c95cd402bd80b7bcf9f8f0608",
+      "evidence_paragraph_index": 50,
+      "evidence_paragraph_sha256": "bacf42139dfbffb041af474538d2f208ecc84a3633290e4fe26f174b8d142930",
+      "version_reported_near_name": null,
+      "usage_context": "analysis-method-description",
+      "use_summary": "Builds the taxonomy tree with build_dend using type-average expression of 1,871 marker genes; draws 15-neighbor constellation relationships with plot_constellation; integrates WB10x, WB MERFISH and SPN nuclei using i_harmonize.",
+      "reported_settings": {
+        "functions": [
+          "build_dend",
+          "plot_constellation",
+          "i_harmonize"
+        ],
+        "tree_marker_genes": 1871,
+        "constellation_neighbors": 15,
+        "outside_neighbor_fraction_threshold": 0.05,
+        "minimum_SPN_nuclei_in_selected_clusters": 5
+      },
+      "uncertainties": [
+        "Package edition and complete function arguments are unreported. Do not borrow P059 version 0.0.5.",
+        "Code availability names scrattch.mapping separately; do not assign all described mapping or centroid operations to that package.",
+        "The printed BIGCAT availability URL contains a space in Allen Institute; preserve it as a source-link discrepancy."
+      ],
+      "supporting_evidence": [
+        {
+          "paragraph_index": 50,
+          "section": "Methods / snRNA-seq / Constructing the cell-type taxonomy tree",
+          "paragraph_sha256": "bacf42139dfbffb041af474538d2f208ecc84a3633290e4fe26f174b8d142930"
+        },
+        {
+          "paragraph_index": 52,
+          "section": "Methods / snRNA-seq / Constellation plot",
+          "paragraph_sha256": "fe72fee94267bf2e0132734bcd340ac1567e46d5e3bf9480892102e714ceff9d"
+        },
+        {
+          "paragraph_index": 58,
+          "section": "Methods / Spatial localization of SPN types / Integration with AIBS WB MERFISH",
+          "paragraph_sha256": "addfd92c856d945b301c5ecebb4c8053dc813538708e69a821908ae2ef4746c6"
+        },
+        {
+          "paragraph_index": 77,
+          "section": "Code availability",
+          "paragraph_sha256": "74039ed8bc9fcbc30d60bc2eff13b6d97180fbf2e531f0fe41efa8e5646cee29"
+        },
+        {
+          "paragraph_index": 85,
+          "section": "Associated Data / Data Availability Statement",
+          "paragraph_sha256": "74039ed8bc9fcbc30d60bc2eff13b6d97180fbf2e531f0fe41efa8e5646cee29"
+        }
+      ],
+      "implementation_scope_note": "Missing separate family: skip dependent runtime analysis until the exact permitted source, prerequisites and workflow are implemented and tested. No analysis executed or implementation credit.",
+      "named_anchor_classification": [
+        {
+          "paragraph_index": 50,
+          "kind": "primary-methods"
+        },
+        {
+          "paragraph_index": 52,
+          "kind": "primary-methods"
+        },
+        {
+          "paragraph_index": 58,
+          "kind": "primary-methods"
+        },
+        {
+          "paragraph_index": 77,
+          "kind": "declared-code-use"
+        },
+        {
+          "paragraph_index": 85,
+          "kind": "associated-data-duplicate"
+        }
+      ]
+    },
+    {
+      "paper_id": "P059",
+      "pmcid": "PMC10719114",
+      "doi": "10.1038/s41586-023-06812-z",
+      "tool_id": "scrattch-bigcat",
+      "primary_xml_sha256": "48771a4387270374add8ea5c2127306e44260dc2dc2d82b0ceb358a060ca1b94",
+      "evidence_paragraph_index": 87,
+      "evidence_paragraph_sha256": "72099b426b6bbba9e8e34611963c36f2f6b32474cf0d6de78ec762ca4eba02ea",
+      "version_reported_near_name": "0.0.5",
+      "usage_context": "analysis-method-description",
+      "use_summary": "Clusters 10xv2 and 10xv3 separately with iter_clust_big and integrates them iteratively; uses chunked Parquet expression and cluster-level differential-expression summaries. Also detects doublet/noise clusters, selects a MERFISH marker panel, draws constellation plots, performs cell-type centroid mapping/cross-validation and partitioned cross-modality imputation.",
+      "reported_settings": {
+        "functions": [
+          "iter_clust_big",
+          "find_doublet_by_marker",
+          "select_N_markers",
+          "plot_constellation",
+          "map_cells_knn_big",
+          "impute_cross_big"
+        ],
+        "matrix_bins": {
+          "cells": 50000,
+          "genes": 500
+        },
+        "clustering_10xv2": {
+          "q1_th": 0.4,
+          "q_diff_th": 0.7,
+          "de_score_th": 150,
+          "min_cells": 10
+        },
+        "clustering_10xv3": {
+          "q1_th": 0.5,
+          "q_diff_th": 0.7,
+          "de_score_th": 150,
+          "min_cells": 4
+        },
+        "binary_DEG": {
+          "abs_log2FC_greater_than": 1,
+          "adjusted_P_less_than": 0.01,
+          "minimum_DEGs": 8,
+          "per_gene_score_cap": 20
+        },
+        "constellation": {
+          "neighbors": 15,
+          "outside_neighbor_fraction_greater_than": 0.05
+        },
+        "mapping_cross_validation": {
+          "folds": 5,
+          "all_markers": 8460,
+          "TF_markers": 534,
+          "random_marker_sets": 20,
+          "random_set_size": 534,
+          "centroid_index": "Annoy; default cosine distance"
+        }
+      },
+      "uncertainties": [
+        "These roles require original BIGCAT semantics; generic KNN, clustering, marker selection or imputation is not equivalent.",
+        "Complete caller inputs/options, manual borderline-cluster review and paper data are not supplied by the synthetic DoubletFinder controls."
+      ],
+      "supporting_evidence": [
+        {
+          "paragraph_index": 6,
+          "section": "Creation of the mouse brain cell-type atlas",
+          "paragraph_sha256": "5b1fca7bd8b395b7881516566a25363e8988f4bca343f3012098becc29025095"
+        },
+        {
+          "paragraph_index": 87,
+          "section": "Methods / scRNA-seq / Clustering scRNA-seq data",
+          "paragraph_sha256": "72099b426b6bbba9e8e34611963c36f2f6b32474cf0d6de78ec762ca4eba02ea"
+        },
+        {
+          "paragraph_index": 88,
+          "section": "Methods / scRNA-seq / Clustering scRNA-seq data",
+          "paragraph_sha256": "49b56d3231abc70b26a6d014c8a879c9cc16853c7d5f510adf1055e18013bfcb"
+        },
+        {
+          "paragraph_index": 93,
+          "section": "Methods / scRNA-seq / Excluding noise clusters",
+          "paragraph_sha256": "9651186db268292e95a65eaae512df708abfb7d57691f0658f5145373e64deeb"
+        },
+        {
+          "paragraph_index": 96,
+          "section": "Methods / scRNA-seq / Joint clustering 10xv2 and 10xv3 datasets",
+          "paragraph_sha256": "1f4833830564ddb9f9e9869f3e5f988631e21fe55ed190d701db958fc9f11afd"
+        },
+        {
+          "paragraph_index": 102,
+          "section": "Methods / scRNA-seq / MERFISH gene panel design",
+          "paragraph_sha256": "e150a6c7ec1485a3f655e5301455dc4b423de4aa76369d7f2c03f5dabdd50e26"
+        },
+        {
+          "paragraph_index": 107,
+          "section": "Methods / scRNA-seq / Constellation plot",
+          "paragraph_sha256": "f674fe92a9f790a3cc4189c5e5fe711bac74041d189c81e524bb508c77e6e122"
+        },
+        {
+          "paragraph_index": 109,
+          "section": "Methods / scRNA-seq / Assigning cell-type identities within a modality for cross-validation and across modalities",
+          "paragraph_sha256": "4d861420cb95087fe01c25b659c8232be91866bc87617c5da0fb1b1a079fc615"
+        },
+        {
+          "paragraph_index": 114,
+          "section": "Methods / scRNA-seq / Imputation",
+          "paragraph_sha256": "da0aac148e7ed643c7a308b8c81078572888b48dfdcd9c090530d6f3c16ea60e"
+        },
+        {
+          "paragraph_index": 155,
+          "section": "Code availability",
+          "paragraph_sha256": "7425322cdbd1d4fadba5e67ec3216c88509799fc3c782a183c7dce3d69c1bfb3"
+        },
+        {
+          "paragraph_index": 162,
+          "section": "Associated Data / Data Availability Statement",
+          "paragraph_sha256": "7425322cdbd1d4fadba5e67ec3216c88509799fc3c782a183c7dce3d69c1bfb3"
+        }
+      ],
+      "implementation_scope_note": "Missing separate family: skip dependent runtime analysis until the exact permitted source, prerequisites and workflow are implemented and tested. No analysis executed or implementation credit.",
+      "named_anchor_classification": [
+        {
+          "paragraph_index": 6,
+          "kind": "reported-result-or-tool-description"
+        },
+        {
+          "paragraph_index": 87,
+          "kind": "primary-methods"
+        },
+        {
+          "paragraph_index": 88,
+          "kind": "primary-methods"
+        },
+        {
+          "paragraph_index": 93,
+          "kind": "primary-methods"
+        },
+        {
+          "paragraph_index": 96,
+          "kind": "primary-methods"
+        },
+        {
+          "paragraph_index": 102,
+          "kind": "primary-methods"
+        },
+        {
+          "paragraph_index": 107,
+          "kind": "primary-methods"
+        },
+        {
+          "paragraph_index": 109,
+          "kind": "primary-methods"
+        },
+        {
+          "paragraph_index": 114,
+          "kind": "primary-methods"
+        },
+        {
+          "paragraph_index": 155,
+          "kind": "declared-code-use"
+        },
+        {
+          "paragraph_index": 162,
+          "kind": "associated-data-duplicate"
+        }
+      ]
+    },
+    {
+      "paper_id": "P058",
+      "pmcid": "PMC10719099",
+      "doi": "10.1038/s41586-023-06817-8",
+      "tool_id": "scrattch-mapping",
+      "primary_xml_sha256": "75c2262af9c034eff4f733e4f60dd326625ff33c95cd402bd80b7bcf9f8f0608",
+      "evidence_paragraph_index": 57,
+      "evidence_paragraph_sha256": "5ed01ad858567f53f0e9580faaee39f3883a370196d27a4357cd392cc512d50c",
+      "version_reported_near_name": null,
+      "usage_context": "analysis-method-description",
+      "use_summary": "Maps 10x SPN nuclei onto the mouse whole-brain taxonomy using Hierarchical Approximate Nearest Neighbour mapping in scrattch-mapping; calculates correspondence confusion matrices at cluster, supertype and subclass levels and summarizes marker correlations.",
+      "reported_settings": {
+        "mapping_method": "Hierarchical Approximate Nearest Neighbour",
+        "correspondence_levels": [
+          "cluster",
+          "supertype",
+          "subclass"
+        ]
+      },
+      "uncertainties": [
+        "Package edition, exact function, marker list, distance metric and complete caller options are unreported.",
+        "Do not borrow P059 edition 0.2 or conflate this mapping with BIGCAT i_harmonize."
+      ],
+      "supporting_evidence": [
+        {
+          "paragraph_index": 57,
+          "section": "Methods / snRNA-seq / Mapping to AIBS WB scRNA-seq",
+          "paragraph_sha256": "5ed01ad858567f53f0e9580faaee39f3883a370196d27a4357cd392cc512d50c"
+        },
+        {
+          "paragraph_index": 77,
+          "section": "Code availability",
+          "paragraph_sha256": "74039ed8bc9fcbc30d60bc2eff13b6d97180fbf2e531f0fe41efa8e5646cee29"
+        },
+        {
+          "paragraph_index": 85,
+          "section": "Associated Data / Data Availability Statement",
+          "paragraph_sha256": "74039ed8bc9fcbc30d60bc2eff13b6d97180fbf2e531f0fe41efa8e5646cee29"
+        }
+      ],
+      "implementation_scope_note": "Missing separate family: skip dependent runtime analysis until the exact permitted source, prerequisites and workflow are implemented and tested. No analysis executed or implementation credit.",
+      "named_anchor_classification": [
+        {
+          "paragraph_index": 57,
+          "kind": "primary-methods"
+        },
+        {
+          "paragraph_index": 77,
+          "kind": "declared-code-use"
+        },
+        {
+          "paragraph_index": 85,
+          "kind": "associated-data-duplicate"
+        }
+      ]
+    },
+    {
+      "paper_id": "P059",
+      "pmcid": "PMC10719114",
+      "doi": "10.1038/s41586-023-06812-z",
+      "tool_id": "scrattch-mapping",
+      "primary_xml_sha256": "48771a4387270374add8ea5c2127306e44260dc2dc2d82b0ceb358a060ca1b94",
+      "evidence_paragraph_index": 111,
+      "evidence_paragraph_sha256": "5738bf4335fb27b0c3512e93ee3131611267bb1c05ca66ff8e13660ddcb84f65",
+      "version_reported_near_name": "0.2",
+      "usage_context": "analysis-method-description",
+      "use_summary": "Assigns query cells hierarchically through a root/class/subclass/cluster tree. At each internal node, markers discriminate child-node clusters and cells follow the nearest cluster centroid until reaching leaf clusters; the paper also links this hierarchy to MapMyCells.",
+      "reported_settings": {
+        "hierarchy": [
+          "root",
+          "class",
+          "subclass",
+          "cluster"
+        ],
+        "assignment": "nearest cluster centroid using markers selected at each internal node"
+      },
+      "uncertainties": [
+        "Exact function, distance metric, tie policy and all caller arguments are not reported.",
+        "BIGCAT map_cells_knn_big is a separately named package/function path and is not inferred to implement this hierarchy."
+      ],
+      "supporting_evidence": [
+        {
+          "paragraph_index": 17,
+          "section": "An interactive online platform for the atlas",
+          "paragraph_sha256": "11c8fced262ba24406cc4785ff5980c583961fb4662177e38683f3921a47323d"
+        },
+        {
+          "paragraph_index": 111,
+          "section": "Methods / scRNA-seq / Assigning cell-type identities within a modality for cross-validation and across modalities",
+          "paragraph_sha256": "5738bf4335fb27b0c3512e93ee3131611267bb1c05ca66ff8e13660ddcb84f65"
+        },
+        {
+          "paragraph_index": 155,
+          "section": "Code availability",
+          "paragraph_sha256": "7425322cdbd1d4fadba5e67ec3216c88509799fc3c782a183c7dce3d69c1bfb3"
+        },
+        {
+          "paragraph_index": 162,
+          "section": "Associated Data / Data Availability Statement",
+          "paragraph_sha256": "7425322cdbd1d4fadba5e67ec3216c88509799fc3c782a183c7dce3d69c1bfb3"
+        }
+      ],
+      "implementation_scope_note": "Missing separate family: skip dependent runtime analysis until the exact permitted source, prerequisites and workflow are implemented and tested. No analysis executed or implementation credit.",
+      "named_anchor_classification": [
+        {
+          "paragraph_index": 17,
+          "kind": "reported-result-or-tool-description"
+        },
+        {
+          "paragraph_index": 111,
+          "kind": "primary-methods"
+        },
+        {
+          "paragraph_index": 155,
+          "kind": "declared-code-use"
+        },
+        {
+          "paragraph_index": 162,
+          "kind": "associated-data-duplicate"
+        }
+      ]
+    },
+    {
+      "paper_id": "P059",
+      "pmcid": "PMC10719114",
+      "doi": "10.1038/s41586-023-06812-z",
+      "tool_id": "arrow-r",
+      "primary_xml_sha256": "48771a4387270374add8ea5c2127306e44260dc2dc2d82b0ceb358a060ca1b94",
+      "evidence_paragraph_index": 87,
+      "evidence_paragraph_sha256": "72099b426b6bbba9e8e34611963c36f2f6b32474cf0d6de78ec762ca4eba02ea",
+      "version_reported_near_name": "12.0.1",
+      "usage_context": "analysis-method-description",
+      "use_summary": "Uses the R arrow package to load sparse expression matrices stored in Parquet chunks of 50,000 cells by 500 genes, and to query chunked pairwise cluster differential-expression results.",
+      "reported_settings": {
+        "expression_chunk_cells": 50000,
+        "expression_chunk_genes": 500,
+        "format": "Parquet"
+      },
+      "uncertainties": [
+        "Specific Arrow function calls, memory-map settings and query options are unreported.",
+        "Do not conflate the R interface with PyArrow, PacBio Arrow or ordinary figure arrows."
+      ],
+      "supporting_evidence": [
+        {
+          "paragraph_index": 87,
+          "section": "Methods / scRNA-seq / Clustering scRNA-seq data",
+          "paragraph_sha256": "72099b426b6bbba9e8e34611963c36f2f6b32474cf0d6de78ec762ca4eba02ea"
+        },
+        {
+          "paragraph_index": 91,
+          "section": "Methods / scRNA-seq / Differential gene expression analysis",
+          "paragraph_sha256": "21ef0a321d804d366f73d62103f9b56505e1b94cdf39d0983b93056dc17de5a6"
+        }
+      ],
+      "implementation_scope_note": "Missing separate family: skip dependent runtime analysis until the exact permitted source, prerequisites and workflow are implemented and tested. No analysis executed or implementation credit.",
+      "named_anchor_classification": [
+        {
+          "paragraph_index": 87,
+          "kind": "primary-methods"
+        },
+        {
+          "paragraph_index": 91,
+          "kind": "primary-methods"
+        }
+      ]
+    },
+    {
+      "paper_id": "P250",
+      "pmcid": "PMC11390475",
+      "doi": "10.1038/s41588-024-01898-1",
+      "tool_id": "pyarrow",
+      "primary_xml_sha256": "82d090d17841f2642bebd8890f39681ec9ce41c4710f53bcd44ada946fc418c9",
+      "evidence_paragraph_index": 51,
+      "evidence_paragraph_sha256": "e62746ae63bf04ef217f48c8c934910e991ad8a231344c4c4c557cc12a8a2fd5",
+      "version_reported_near_name": "14.0.2",
+      "usage_context": "declared-development-dependency",
+      "use_summary": "Lists PyArrow 14.0.2 among the Python packages used for MILTON development; this requirements paragraph does not establish a specific analysis operation, input format or Arrow API call.",
+      "reported_settings": {
+        "dependency_context": "MILTON development package requirements",
+        "analysis_operation": null
+      },
+      "uncertainties": [
+        "A declared dependency is not evidence for a particular table conversion, file reader, query or runtime analysis."
+      ],
+      "supporting_evidence": [
+        {
+          "paragraph_index": 51,
+          "section": "Methods / Package requirements",
+          "paragraph_sha256": "e62746ae63bf04ef217f48c8c934910e991ad8a231344c4c4c557cc12a8a2fd5"
+        }
+      ],
+      "implementation_scope_note": "Missing separate family: skip dependent runtime analysis until the exact permitted source, prerequisites and workflow are implemented and tested. No analysis executed or implementation credit.",
+      "named_anchor_classification": [
+        {
+          "paragraph_index": 51,
+          "kind": "declared-development-dependency"
+        }
+      ]
+    }
+  ],
+  "paper_role_coverage": {
+    "P053": "Predicts multiplets and removes the highest-scoring 10 percent per sample in the multiome RNA workflow and per reaction in the paired-tag human M1 integration workflow. Selected original DoubletFinder 2.0.6 has a tested Linux/WSL R adapter and three native Java components. Unknown author settings and other reported editions remain unqualified. No whole-package, convergence, biological or paper-reproduction claim; no extra native family credit.",
+    "P059": "Removes cells whose doublet score exceeds 0.3 using a modified DoubletFinder algorithm supplied by scrattch.hicat 1.0.9. Original DoubletFinder 2.0.6 does not qualify the modified scrattch.hicat 1.0.9 score > 0.3 workflow; its dependent analysis remains skipped. Selected original DoubletFinder 2.0.6 has a tested Linux/WSL R adapter and three native Java components. Unknown author settings and other reported editions remain unqualified. No whole-package, convergence, biological or paper-reproduction claim; no extra native family credit.",
+    "P096": "Uses three doublet detectors and removes the union of all DoubletFinder calls with the intersection of DoubletDecon and Scrublet calls. The literal reported 3.0 edition remains unresolved. Deposited legacy _v3 calls are not silently translated; the factor-to-number pK expression, unused homotypic adjustment and fixed metadata column require source reconciliation. Selected 2.0.6 does not reproduce this paper. Selected original DoubletFinder 2.0.6 has a tested Linux/WSL R adapter and three native Java components. Unknown author settings and other reported editions remain unqualified. No whole-package, convergence, biological or paper-reproduction claim; no extra native family credit.",
+    "P124": "Identifies and removes predicted doublets before aggregating high-quality cells across donors and treatments for guide-assignment and differential-expression analyses. Selected original DoubletFinder 2.0.6 has a tested Linux/WSL R adapter and three native Java components. Unknown author settings and other reported editions remain unqualified. No whole-package, convergence, biological or paper-reproduction claim; no extra native family credit.",
+    "P192": "Removes remaining doublets after demuxlet singlet selection, using pN-pK parameter sweeps and per-batch maxima of the mean-variance normalized bimodality coefficient to select pK. Selected original DoubletFinder 2.0.6 has a tested Linux/WSL R adapter and three native Java components. Unknown author settings and other reported editions remain unqualified. No whole-package, convergence, biological or paper-reproduction claim; no extra native family credit."
+  },
+  "missing_new_families": [
+    "scrattch-hicat",
+    "scrattch-bigcat",
+    "scrattch-mapping",
+    "arrow-r",
+    "pyarrow"
+  ],
+  "selected_environment_is_author_environment": false,
+  "reported_3_0_qualified": false,
+  "modified_hicat_1_0_9_qualified": false,
+  "SCT_convergence_qualified": false,
+  "new_upstream_family_credit": 1,
+  "native_family_credit_added": 0,
+  "whole_goal_complete": false
+}

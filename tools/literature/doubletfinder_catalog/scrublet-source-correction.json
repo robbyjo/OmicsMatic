@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "pmcid": "PMC11631765",
+  "tool_id": "scrublet",
+  "before": {
+    "pmcid": "PMC11631765",
+    "doi": "10.1038/s41588-024-01990-6",
+    "tool_id": "scrublet",
+    "evidence_paragraph_sha256": "32c0aa98a6dad029c628a20520976153a6958fd09234f0c9689c5e2904ad6a8b",
+    "use_summary": "Combined dataset-tuned Scrublet 0.0.2, DoubletDecon 1.1.5 and DoubletFinder 3 calls: removed all DoubletFinder calls or the intersection of DoubletDecon and Scrublet calls.",
+    "implementation_scope_note": "Original Scrublet 0.2.3 is a different version; the multi-tool Boolean rule and other callers are separate pending workflows."
+  },
+  "after": {
+    "pmcid": "PMC11631765",
+    "doi": "10.1038/s41588-024-01990-6",
+    "tool_id": "scrublet",
+    "evidence_paragraph_sha256": "32c0aa98a6dad029c628a20520976153a6958fd09234f0c9689c5e2904ad6a8b",
+    "use_summary": "Combines the paper-reported Scrublet 0.2, DoubletDecon 1.1.5 and DoubletFinder 3.0 calls; removes DoubletFinder UNION (DoubletDecon INTERSECTION Scrublet).",
+    "implementation_scope_note": "Original Scrublet 0.2.3 is a different version; the multi-tool Boolean rule and other callers are separate pending workflows.",
+    "source_correction_note": "The primary paragraph reports Scrublet 0.2, not the earlier summary 0.0.2, and DoubletFinder 3.0. Version attribution is corrected without relabeling selected runtimes or claiming paper reproduction."
+  },
+  "anchor": {
+    "paragraph_index": 40,
+    "section": "Methods / snRNA-seq quality control",
+    "paragraph_sha256": "32c0aa98a6dad029c628a20520976153a6958fd09234f0c9689c5e2904ad6a8b"
+  },
+  "author_code_reconciliation": {
+    "doi": "10.5281/zenodo.13321265",
+    "license": "CC-BY-4.0",
+    "script": "Script_3.R",
+    "sha256": "512112168a2289688d7a5045fe2c43b5522df1457ed680885aa998404ec6683b",
+    "legacy_calls": [
+      "paramSweep_v3",
+      "summarizeSweep",
+      "find.pK",
+      "modelHomotypic",
+      "doubletFinder_v3"
+    ],
+    "package_version_declaration_in_script": null
+  }
+}
