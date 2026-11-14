@@ -1,0 +1,13 @@
+# Copyright (C) 2026 JLinAlg contributors; SPDX-License-Identifier: GPL-3.0-or-later
+args <- commandArgs(TRUE)
+stopifnot(length(args)==4L)
+provider <- jsonlite::fromJSON(file.path(args[1],'READY.json'))
+.libPaths(c(provider$library,provider$base_library))
+suppressPackageStartupMessages(library(rstatix,lib.loc=provider$library))
+stopifnot(as.character(getRversion())=='4.5.3',as.character(packageVersion('rstatix'))=='0.7.2',!dir.exists(args[4]))
+dir.create(args[4],recursive=TRUE)
+scope <- new.env(parent=globalenv());scope$input_directory <- normalizePath(args[2],mustWork=TRUE);scope$result_directory <- normalizePath(args[4],mustWork=TRUE)
+sys.source(args[3],envir=scope,keep.source=TRUE)
+stopifnot(identical(scope$analysis_complete,'ALL_248_ORIGINAL_RSTATIX072_CALLS_RETURNED'))
+writeLines(capture.output(sessionInfo()),file.path(args[4],'direct-session-info.txt'))
+cat('PASS_DIRECT_COMPLETE_ORIGINAL_RSTATIX072_CALLER_SCRIPT\n')

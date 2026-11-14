@@ -10787,9 +10787,9 @@
     "name": "rstatix",
     "pattern": "(?<![A-Za-z0-9_])rstatix(?![A-Za-z0-9_])",
     "role": "Statistical tests and associated data summaries",
-    "current_coverage": "missing",
-    "existing_source": "",
-    "coverage_note": "New primary-source census; no original runtime or paper-specific implementation credit is established.",
+    "current_coverage": "upstream-adapter-validated",
+    "existing_source": "tools/literature/rstatix072_workflow/run.py",
+    "coverage_note": "Unchanged original rstatix 0.7.2 trusted-script workflow with complete result/condition capture and a private Linux/WSL R4.5.3 provider. Native one-way Levene is separate. Unknown author designs, correction families, literal function spelling and historical runtime equivalence remain explicit.",
     "paper_count": 6,
     "papers": [
       "P032",
@@ -10799,15 +10799,47 @@
       "P098",
       "P241"
     ],
-    "implementation_status": "missing",
-    "implementation_source": "",
-    "implementation_scope": "Named source roles are catalogued; no original runtime or source-qualified implementation is established here. Acquisition/data-reuse roles and unresolved versions/functions remain explicit. Read P040_SOFTWARE_REVIEW.md.",
-    "validation_note": "All 250 exact primary XML sources were searched for this name. Existing use records were preserved. New name detection is not executable, whole-tool, whole-paper or biological validation.",
-    "source_roles_reviewed": 1,
-    "new_scoped_integration_credit": 0,
+    "implementation_status": "upstream-adapter-validated",
+    "implementation_source": "tools/literature/rstatix072_workflow/run.py",
+    "implementation_scope": "Explicit Python source entry point, not a standalone JAR: complete unchanged original rstatix 0.7.2 namespace through a private Linux/WSL R 4.5.3 provider and trusted caller script. Full formulas/tidy grouping/caller arguments stay in original R; all declared outputs, conditions and failures are retained. Separate native Java Levene handles prepared one-way mean/median-centered vectors only. Original p-value rounding/adjustment remains literal; historical R/dependency, author designs/families and P054 wilcoxon_test spelling gaps are not resolved by examples. Read RSTATIX_CATALOG_INTEGRATION.md. One scoped upstream credit; no whole-tool or paper reproduction.",
+    "validation_note": "All 248 original calls matched independent direct original R: complete returned objects/attributes/arguments/conditions/caller RNG and all 250 scientific result files, covering 444 rows and 5,664 cells. 31 Linux protocols and one Windows skip, public seven-operation example, all 2,411 workflow and 3,852 native/provider evidence members, and eight frozen-verifier refusals are retained. Native Levene: 196 computed cases/784 original scalars, ten refusals,29 API and six CLI checks on each Windows Java21/25 and Linux Java21 profile. Near-perfect-fit warnings/huge original statistics and earlier harness failures remain retained.",
+    "source_roles_reviewed": 6,
+    "new_scoped_integration_credit": 1,
     "whole_tool_qualified": false,
     "whole_paper_reproduced": false,
-    "paper_exact_unknown_settings_available": false
+    "paper_exact_unknown_settings_available": false,
+    "project_adapter_available": true,
+    "canonical_adapter_available": false,
+    "root_dispatch_available": false,
+    "development_candidate_available": true,
+    "development_candidate": "tools/literature/rstatix072_workflow/run.py",
+    "development_candidate_sha256": "1d1537166fd77e0691d3d7cfecf4a07c969d9f1ad70235e99fe6e6f53d046f80",
+    "development_candidate_kind": "python-source-entrypoint-requires-qualified-original-R-provider",
+    "development_build": "tools/literature/rstatix072/provider.py",
+    "development_adapter_cli": "python3 tools/literature/rstatix072_workflow/run.py --request caller-request.json",
+    "native_candidate_component": "src/main/java/org/jlinalg/stats/LeveneTest.java",
+    "native_candidate_executable": "docs/literature/rstatix072-development-checkpoint/levene-native-windows21-development.jar",
+    "native_candidate_sha256": "51576c34ad6e9c4923906578d13d48cbd657c8421a6b59c44e6ac85f623d97c4",
+    "selected_upstream_version": "0.7.2",
+    "selected_original_R_version": "4.5.3",
+    "native_family_credit_added": 0,
+    "workflow_validation": "../rstatix072-workflow-development/VALIDATION.json",
+    "source_role_coverage": "rstatix072-role-coverage.json",
+    "paper_role_coverage": {
+      "P032": "Generated adjusted p values for MED12 CAR activation/GSVA score comparisons. Reported 0.7.2. The test, correction method and comparison family for adjusted GSVA-score p-values remain unknown; no specific t/Wilcoxon test or Holm/BH choice is inferred. DESeq2 transformations, GSVA and plotting remain separate. Selected original rstatix 0.7.2 is available through the explicit Python script entry point and private Linux/WSL R 4.5.3 provider; it is not a standalone JAR. Caller design, parameters, complete population and trusted script remain explicit. Historical author-R/dependency equivalence and paper reproduction are unproven.",
+      "P040": "Calculated two-sided t-tests for differential cell abundances in IMC data. Reported 0.7.2. The source establishes two-sided t-tests of IMC cell abundances, but exact comparison grouping, variance assumption and pairing remain unresolved. Do not infer Welch/equal variance or author design from the example. ggpubr, GeomxTools and GraphPad remain separate; the existing individual review is unchanged. Selected original rstatix 0.7.2 is available through the explicit Python script entry point and private Linux/WSL R 4.5.3 provider; it is not a standalone JAR. Caller design, parameters, complete population and trusted script remain explicit. Historical author-R/dependency equivalence and paper reproduction are unproven.",
+      "P054": "Used Shapiro normality and Levene variance checks, Pearson correlation, Kruskal-Wallis comparisons, pairwise Mann-Whitney comparisons with Bonferroni or BH adjustment, paired t-tests of false negatives and one-sided group-versus-all Mann-Whitney comparisons. Reported 0.7.2; all six analysis paragraphs are retained. The paper literally prints wilcoxon_test, but selected 0.7.2 exports wilcox_test; the literal missing export produces SKIP3 and no spelling repair is inferred. Pairing order, correction families, comparison groups, one-sided direction and group-versus-all dependence remain author inputs. Reported R 4.2.3 to 4.4.0 differs from selected R 4.5.3/car 3.1-5. The original engine handles grouped tests and custom R centers; native Java Levene only handles prepared one-way mean/median-centered vectors. Original rounding/adjustment behavior is retained. Selected original rstatix 0.7.2 is available through the explicit Python script entry point and private Linux/WSL R 4.5.3 provider; it is not a standalone JAR. Caller design, parameters, complete population and trusted script remain explicit. Historical author-R/dependency equivalence and paper reproduction are unproven.",
+      "P087": "Compared TMM-normalized OLR1 CPM between fibrosis-stage groups for ARLD/PBC using Wilcoxon rank-sum tests and BH multiple-comparison adjustment. Reported 0.7.2. Original wilcox_test/BH is available for explicit ARLD/PBC OLR1 CPM comparisons; dataset-specific groups, adjustment family and exact/tie/correction options remain unresolved. stats Spearman tests, ggpubr abundance tests, MiloR and Seurat/MAST are separate. No normalization, sample exclusion or author-R equivalence is inferred. Selected original rstatix 0.7.2 is available through the explicit Python script entry point and private Linux/WSL R 4.5.3 provider; it is not a standalone JAR. Caller design, parameters, complete population and trusted script remain explicit. Historical author-R/dependency equivalence and paper reproduction are unproven.",
+      "P098": "Used t_test for pairwise comparisons of VST-normalized gene expression between medulloblastoma subgroups, with Holm adjustment. The primary paragraph explicitly reports 0.7.2 despite the earlier extractor missing it. Original t_test/Holm is available for supplied VST-normalized expression; variance assumption, exact comparisons and adjustment family remain author inputs. DESeq2 transformations/Wald/shrinkage, signature Wilcoxon tests and plotting remain separate; no raw-count or author-design analysis is inferred. Selected original rstatix 0.7.2 is available through the explicit Python script entry point and private Linux/WSL R 4.5.3 provider; it is not a standalone JAR. Caller design, parameters, complete population and trusted script remain explicit. Historical author-R/dependency equivalence and paper reproduction are unproven.",
+      "P241": "Used rstatix for statistical analyses; a separate Web resources paragraph links to the package. Edition, test, design, settings and comparison family are unreported. Selected 0.7.2 is an explicit caller choice, not a recovered author runtime. Paragraph 113 is a Web resources link, not another execution. Do not infer a particular statistical test from this generic mention. Selected original rstatix 0.7.2 is available through the explicit Python script entry point and private Linux/WSL R 4.5.3 provider; it is not a standalone JAR. Caller design, parameters, complete population and trusted script remain explicit. Historical author-R/dependency equivalence and paper reproduction are unproven."
+    },
+    "uncovered_roles": [
+      "Unknown author comparisons, correction families, variance assumptions, pairing order and one-sided direction",
+      "Literal printed wilcoxon_test versus exported wilcox_test; no spelling repair",
+      "Historical author-R/dependency equivalence and unreported P241 edition/design",
+      "Native general R formulas, grouped/custom-center Levene and other original tests",
+      "Author preprocessing, exact scripts, biological validation and paper reproduction"
+    ]
   },
   {
     "id": "ggpubr",
@@ -10911,9 +10943,9 @@
     "name": "QuPath",
     "pattern": "(?<![A-Za-z0-9_])QuPath(?![A-Za-z0-9_])",
     "role": "Digital pathology image segmentation and cell/marker quantification",
-    "current_coverage": "missing",
-    "existing_source": "",
-    "coverage_note": "New primary-source census; no original runtime or paper-specific implementation credit is established.",
+    "current_coverage": "upstream-adapter-validated",
+    "existing_source": "src/main/java/org/jlinalg/cli/QuPath051WorkflowCli.java",
+    "coverage_note": "Original QuPath 0.5.1 headless Groovy workflow with a qualified Java controller; complete native-platform provider and trusted caller script required. Scientific controls are synthetic H-DAB; other editions, author ROIs/stains/models and fluorescence/RNAscope/registration pipelines remain separately unresolved.",
     "paper_count": 12,
     "papers": [
       "P009",
@@ -10929,15 +10961,48 @@
       "P161",
       "P226"
     ],
-    "implementation_status": "missing",
-    "implementation_source": "",
-    "implementation_scope": "Named source roles are catalogued; no original runtime or source-qualified implementation is established here. Acquisition/data-reuse roles and unresolved versions/functions remain explicit. Read P040_SOFTWARE_REVIEW.md.",
-    "validation_note": "All 250 exact primary XML sources were searched for this name. Existing use records were preserved. New name detection is not executable, whole-tool, whole-paper or biological validation.",
-    "source_roles_reviewed": 1,
-    "new_scoped_integration_credit": 0,
+    "implementation_status": "upstream-adapter-validated",
+    "implementation_source": "src/main/java/org/jlinalg/cli/QuPath051WorkflowCli.java",
+    "implementation_scope": "Complete unchanged original QuPath 0.5.1 headless script engine, embedded Java 21.0.2 and lossless declared inputs/results through an explicit standalone Java controller. Requires a permitted private Windows/Linux x86_64 provider and trusted caller script. Scientific qualification: six synthetic H-DAB image jobs; author fluorescence/proximity, RNAscope, registration, StarDist models and other editions are separate. Read QUPATH_CATALOG_INTEGRATION.md. This is one scoped upstream workflow, not a native segmentation port or reproduced paper.",
+    "validation_note": "Each Windows Java 21/25 and Linux Java 21 controller matched all 13 complete portable exports across six jobs and 72 detections against independent direct original runs. All 12 raw/fixture QPDATA files per controller are retained; opaque QPDATA byte parity is not claimed. Windows/Linux protocol controls: 15/19; setup/archive controls: 6+5 per OS; three actual private installations including one public network setup. All 1,381 archived files and four frozen-verifier refusals are retained. No GUI or paper reproduction is qualified.",
+    "source_roles_reviewed": 12,
+    "new_scoped_integration_credit": 1,
     "whole_tool_qualified": false,
     "whole_paper_reproduced": false,
-    "paper_exact_unknown_settings_available": false
+    "paper_exact_unknown_settings_available": false,
+    "project_adapter_available": true,
+    "canonical_adapter_available": false,
+    "root_dispatch_available": false,
+    "development_candidate_available": true,
+    "development_candidate": "docs/literature/qupath051-workflow-development/qupath051-windows21-development.jar",
+    "development_candidate_sha256": "408ef5d88654463fef44ec321f0c6eb13585b55b3d6ab329aac0772bdcf33106",
+    "development_build": "tools/literature/qupath051/build.py",
+    "development_adapter_cli": "java -jar docs/literature/qupath051-workflow-development/qupath051-windows21-development.jar --request caller-request.json",
+    "workflow_validation": "../qupath051-workflow-development/VALIDATION.json",
+    "source_role_coverage": "qupath051-role-coverage.json",
+    "selected_upstream_version": "0.5.1",
+    "selected_source_commit": "4e6bfc31904be7ee39c10d457149cb962002e1f2",
+    "paper_role_coverage": {
+      "P009": "Segmented DAPI nuclei, expanded cells by2 micrometers, applied manual marker thresholds and measured cell/nuclear intensities. Centroid distances defined T-cell proximity and nearest-NSC comparisons. Reported 0.5.1. The selected original script engine is available; the H-DAB controls do not independently qualify this DAPI fluorescence/proximity pipeline. Manual thresholds, source channels, author ROIs, 50-micrometer T-cell and 20-micrometer nearest-NSC choices, self-exclusion and section/mouse aggregation must be supplied explicitly.",
+      "P020": "Used foreground pixel classification, manual stroma exclusion and optical-density cell detection to quantify Ki-67-positive fractions, with pathologist review. Reported 0.6.0 differs from selected 0.5.1. No edition equivalence is established. Author foreground pixel classifiers, manual stroma exclusions, thresholds and pathologist decisions are not recovered.",
+      "P021": "Ran cell detection and subcellular RNAscope puncta detection on stitched ROIs, exported detection measurements, then summarized marker-positive cell fractions from QuPath tables. Edition unreported. Selected 0.5.1 is an explicit caller choice. H-DAB controls do not qualify RNAscope subcellular puncta detection or recover author scripts/thresholds. Paragraph 78 analyzes exported tables downstream in R; it is not another QuPath execution. Fiji stitching/alignment remains separate.",
+      "P024": "Selected tissue ROIs, detected DAPI nuclei/cell borders and RNAscope puncta, and exported per-cell measurements for custom cell-type/count summaries. Edition unreported. Selected 0.5.1 is an explicit caller choice. H-DAB controls do not qualify the DAPI/RNAscope puncta pipeline. Manual ROIs, segmentation/spot thresholds and author scripts remain unknown; Fiji stitching, custom Python cell-type summaries, CLR and group tests remain separate.",
+      "P040": "Used original positive-cell detection on H-DAB slide ROIs with nuclear segmentation, cell expansion and cytoplasmic DAB intensity classes, then exported ROI measurements. Reported 0.5.1. The complete original engine is available and synthetic H-DAB positive-cell controls passed. Numeric stain vectors and author ROI selections remain unknown; the 200-by-200-micrometer paper ROIs are not reconstructed. Paper threshold values 0.08/0.16/0.24 remain literal; printed area-unit wording is not silently repaired to application units. No exact paper invocation or biological reproduction is established. The previous individual review remains unchanged.",
+      "P049": "Read multiplex RNA-FISH images, selected the RGC layer, detected DAPI cells and subcellular spots, then combined single-measurement and composite classifiers for double-positive cells. Reported 0.4.3 differs from selected 0.5.1. H-DAB controls do not qualify multiplex RNA-FISH/subcellular spots. LIF series, RGC ROIs, single-measurement/composite classifier choices, thresholds and trained resources remain separate.",
+      "P056": "Performed immunohistochemistry and RNAscope image analysis and quantification. Edition unreported. The source names IHC/RNAscope quantification without specifying an algorithm, thresholds or export structure. The selected original 0.5.1 engine is available; no missing settings or paper pipeline is inferred from this generic mention.",
+      "P058": "Manually annotated polygon ROIs, used positive-cell and composite classification for labelled nuclei, exported ROI counts and nuclear fluorescence measurements. Reported 0.4.1 differs from selected 0.5.1; no other edition is inferred for the second analysis paragraph. Author polygon ROIs, GFP/mScarlet classifier thresholds and coronal-series scaling remain separate; H-DAB controls do not qualify the fluorescence pipeline. Paragraph 73 acknowledges advice and is not another execution. Downstream ggpubr/Wilcoxon tests are separate.",
+      "P098": "Imaging scientists quantified tumor-sample immunohistochemistry images in a blinded manner. Edition unreported. The source establishes blinded tumor IHC quantification without an identified algorithm or thresholds. The selected original 0.5.1 engine is available; blinding is not an algorithm setting and no author pipeline is inferred.",
+      "P158": "Used custom StarDist-based nuclei classification, manual channel-intensity thresholds and exported nuclei measurements for downstream expression summaries. Literal reported range v.0.2.3 to v.0.4.3 excludes selected 0.5.1. Stock QuPath does not recover the custom StarDist extension/classifier, trained model or manual intensity thresholds. H-DAB controls do not qualify that nuclei pipeline. Supply permitted dependencies or skip the dependent analysis; downstream Python summaries remain separate.",
+      "P161": "Aligned H&E slide images and supported pathologist histologic-neighborhood annotations, whose locations were used downstream in spatial analysis. Edition unreported. H&E slide alignment and pathologist neighborhood annotations are source roles, but the registration algorithm, transforms and annotation decisions are unknown. Selected 0.5.1 H-DAB controls do not qualify image registration or author annotation. GeoPandas, SCANPY, CellPhoneDB and CytoSignal remain separate.",
+      "P226": "Detected H2B-mRuby nuclei, expanded them2 micrometers to define perinuclear regions and filtered detections using morphology and fluorescence measurements. Edition unreported. H2B-mRuby nuclei detection and 2-micrometer perinuclear expansion require the author morphology/fluorescence filters, whose thresholds are unknown. Selected 0.5.1 H-DAB controls do not qualify this fluorescence pipeline. Nikon NIS Elements rolling-ball preprocessing remains separate."
+    },
+    "uncovered_roles": [
+      "Other reported editions and unreported author runtime identities",
+      "Author images, ROIs, numeric stain vectors, manual thresholds and exact scripts",
+      "Fluorescence/proximity, RNAscope puncta and image registration independent scientific qualification",
+      "Custom StarDist extension/model and trained classifiers",
+      "GUI user experience and biological/paper reproduction"
+    ]
   },
   {
     "id": "ucsc_xena",
@@ -11098,5 +11163,94 @@
     "paper_role_coverage": {
       "P026": "Explicit original 2.1.0/ImageJ 1.53t workflow with all three original methods and optional native Java histogram engine. P026 reports no plugin edition/method/settings; histogram matching is inappropriate for intensity quantification. Read IMAGEJ_CATALOG_INTEGRATION.md. Fast4DReg registration is separate; no unreported edition/method/settings are inferred."
     }
+  },
+  {
+    "id": "wesanderson",
+    "name": "wesanderson",
+    "pattern": "(?<![A-Za-z0-9_])(?:wesanderson)(?![A-Za-z0-9_])",
+    "role": "Construct color scales for microbiome ontology levels",
+    "current_coverage": "native-subset-validated",
+    "existing_source": "src/main/java/org/jlinalg/plot/WesAnderson037.java",
+    "coverage_note": "Native Java 0.3.7 scalar palette vectors and a separately selected original R4.5.3 provider. P054 reports 0.3.7 but no palette, color count or MFOD1 category mapping. viridisLite gradients and R graphics are separate. Read PALETTE_ALLELIC_CATALOG.md.",
+    "paper_count": 1,
+    "source_roles_reviewed": 1,
+    "whole_tool_qualified": false,
+    "whole_paper_reproduced": false,
+    "paper_exact_unknown_settings_available": false,
+    "canonical_adapter_available": false,
+    "root_dispatch_available": false,
+    "papers": [
+      "P054"
+    ],
+    "implementation_status": "native-subset-validated",
+    "implementation_source": "src/main/java/org/jlinalg/plot/WesAnderson037.java",
+    "implementation_scope": "Native Java wesanderson 0.3.7 bounded scalar discrete/continuous palette vectors, attributes and complete saved-result verification; 24 immutable palettes. Explicit standalone executable; original R 4.5.3 provider is separate. P054 palette/count/MFOD1 mapping and call are unknown. R graphics, general R coercion and viridisLite gradients are outside the native subset. Read PALETTE_ALLELIC_CATALOG.md.",
+    "validation_note": "Three platforms each matched 6,108 original API cases and 224,445 returned colors, with 3,397 original failures retained; 72 CLI cases and 63 complete saved replays per platform. Two actual private original installations, 9 setup refusals and Windows/Linux offline native rebuilds passed. Earlier 604 mismatches and corrected-source controls remain retained; no paper palette was inferred.",
+    "project_adapter_available": true,
+    "development_candidate_available": true,
+    "development_candidate": "docs/literature/wesanderson037-workflow-development/wesanderson037-native-windows21-development.jar",
+    "development_candidate_sha256": "d1e054f0798061364e69f423d86aedbe1e1c720b5a55d7e6c4f2d3ce18c070ff",
+    "development_build": "tools/literature/wesanderson037/build.py",
+    "development_adapter_cli": "java -jar docs/literature/wesanderson037-workflow-development/wesanderson037-native-windows21-development.jar generate --name GrandBudapest1 --n 4 --type discrete --out NEW-output",
+    "workflow_validation": "../wesanderson037-workflow-development/VALIDATION.json",
+    "source_role_coverage": "palette-allelic-role-coverage.json",
+    "new_scoped_integration_credit": 1,
+    "paper_role_coverage": {
+      "P054": "Native Java 0.3.7 scalar palette vectors and a separately selected original R4.5.3 provider. P054 reports 0.3.7 but no palette, color count or MFOD1 category mapping. viridisLite gradients and R graphics are separate. Read PALETTE_ALLELIC_CATALOG.md. The primary paragraph reports wesanderson 0.3.7 and R4.2.3 to R4.4.0, but no palette, color count, category mapping or discrete/continuous call. The native Java scalar component was compared with original 0.3.7 on R4.5.3. R graphics and viridisLite are separate; no paper settings are inferred."
+    },
+    "uncovered_roles": [
+      "Unknown paper palette, color count, discrete/continuous call and MFOD1 category mapping",
+      "Author R4.2.3 to R4.4.0 runtime and supplementary plotting code",
+      "R graphics and general R-language coercion",
+      "Separate viridisLite continuous gradients"
+    ]
+  },
+  {
+    "id": "allelicseries",
+    "name": "AllelicSeries / COAST-SS",
+    "pattern": "(?<![A-Za-z0-9_])(?:AllelicSeries|COAST[-\\s]*SS)(?![A-Za-z0-9_])",
+    "role": "Identify rare coding-variant allelic series from summary statistics",
+    "current_coverage": "missing",
+    "existing_source": "",
+    "coverage_note": "P204 reports AllelicSeries 1.1.2; exact equivalence to the separately tested 0.1.1.2 candidate is unresolved. The candidate provides unchanged original R exports, batch execution and native Java summary burden components. No reported-edition substitution or catalog credit. Read PALETTE_ALLELIC_CATALOG.md.",
+    "paper_count": 1,
+    "source_roles_reviewed": 1,
+    "whole_tool_qualified": false,
+    "whole_paper_reproduced": false,
+    "paper_exact_unknown_settings_available": false,
+    "canonical_adapter_available": false,
+    "root_dispatch_available": false,
+    "papers": [
+      "P204"
+    ],
+    "implementation_status": "missing",
+    "implementation_source": "",
+    "implementation_scope": "The reported AllelicSeries 1.1.2 edition remains missing. Explicit 0.1.1.2 candidate: unchanged original R single-call and batch exports, including COAST/COASTSS/SKAT-O; selected native Java summary burden components are separate. Requires the ready private Linux/WSL R 4.5.3 provider; the Python entry point is source, not a standalone JAR. Quantitative traits, aligned supplied inputs and original model limitations apply. No 20K-gene benchmark or author preprocessing is reproduced. Read PALETTE_ALLELIC_CATALOG.md and ALLELICSERIES0112_BATCH.md.",
+    "validation_note": "Candidate 0.1.1.2 only: 1,026 complete batch calls compared with an independent unchanged original package, including 1,022 complete returned objects and 4 original errors; all identifiers, conditions and RNG states compared. All 16 original exports, 8 batch refusals, 5 scalar/real-zero controls and lossless tables passed. Native 539 cases/2,623 values matched on three Java platforms. These controls do not establish reported 1.1.2 equivalence or binary/discrete calibration.",
+    "project_adapter_available": false,
+    "development_candidate_available": true,
+    "development_candidate": "tools/literature/allelicseries0112/batch.py",
+    "development_candidate_sha256": "eed501f52f69de21028116cbe8a155edf7b7781d053213073e76adb727266d8d",
+    "development_candidate_kind": "python-source-entrypoint-requires-qualified-provider",
+    "development_build": "tools/literature/allelicseries0112/provider.py",
+    "development_adapter_cli": "python tools/literature/allelicseries0112/batch.py --provider READY-provider --function COASTSS --arguments-rds aligned-gene-requests.rds --allow-analysis --out NEW-output",
+    "native_candidate_component": "src/main/java/org/jlinalg/genetics/AllelicSeries0112.java",
+    "available_candidate_versions": [
+      "0.1.1.2"
+    ],
+    "reported_version_unresolved": "1.1.2",
+    "paper_build_equivalence_proven": false,
+    "workflow_validation": "../allelicseries0112-batch-development/VALIDATION.json",
+    "source_role_coverage": "palette-allelic-role-coverage.json",
+    "new_scoped_integration_credit": 0,
+    "paper_role_coverage": {
+      "P204": "P204 reports AllelicSeries 1.1.2; exact equivalence to the separately tested 0.1.1.2 candidate is unresolved. The candidate provides unchanged original R exports, batch execution and native Java summary burden components. No reported-edition substitution or catalog credit. Read PALETTE_ALLELIC_CATALOG.md. The reported 1.1.2 edition remains unresolved. The separately selected 0.1.1.2 candidate supplies original R exports and a batch adapter, plus native Java summary burden components. COAST/SKAT-O remain upstream R. This is a quantitative-trait method; binary/discrete calibration, author preprocessing, ancestry models and paper runtime benchmarks are not established by this implementation."
+    },
+    "uncovered_roles": [
+      "Reported1.1.2 edition and author runtime/settings",
+      "Author input preparation, allele/variant alignment, annotation and LD provenance",
+      "Binary/discrete trait calibration and ancestry-specific model validation",
+      "Paper20K-gene performance and biological reproduction"
+    ]
   }
 ]
