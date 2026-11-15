@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "release": "0.4.0",
+  "date": "2026-11-15",
+  "source_base_commit": "f87564288cf6e9d73a7d30164a96689b6ed861da",
+  "branch": "codex/release-v0.4.0-frozen",
+  "status": "software_gate_passed; whole_catalog_predecessor_requalification_pending; not_published",
+  "command": ".\\gradlew.bat check assemble --no-daemon --no-parallel --no-build-cache --max-workers=2 --console=plain",
+  "environment": {
+    "os": "Windows",
+    "jdk": "Eclipse Adoptium 21.0.4+7",
+    "gradle": "9.7.1",
+    "library_target": "Java 17"
+  },
+  "build_script_sha256": "62ad961bd6190c2ba26f80050f532f20a2b107346206c5b93a9af61722f4f81f",
+  "initial_attempt": {
+    "status": "failed_javadoc; full_test_task_passed_with_skips",
+    "elapsed": "35m 35s",
+    "cause": "Javadoc implicitly looked up bundled resource Java launchers with private IGV/Gson dependencies.",
+    "log": "build/release-build.log",
+    "log_sha256": "bbbb59c4df84b3441815a8f722b51f587df619bfba3fd65b5bab01868e1ff365"
+  },
+  "corrected_attempt": {
+    "status": "passed",
+    "elapsed": "1m 24s",
+    "change": "Limit Javadoc sourcepath to main Java source directories; resource/runtime bytes unchanged.",
+    "tests": "UP-TO-DATE: reused the completed full-suite results; no test or numerical-source edits",
+    "existing_javadoc_warnings": 2,
+    "log": "build/release-build-corrected.log",
+    "log_sha256": "794120b6c145bb2114ffa533126e834a62fc39d3fe07b192a6cb0b80018db0cc"
+  },
+  "test_receipt": "tests.json",
+  "test_totals": {
+    "suites": 878,
+    "tests": 25519,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 441,
+    "passed": 25078
+  },
+  "checkWebsite": "passed",
+  "artifacts_directory": "build/release",
+  "artifacts": [
+    {
+      "file": "omicsmatic-0.4.0.jar",
+      "build_source": "build/cli/omicsmatic-0.4.0.jar",
+      "bytes": 192631638,
+      "sha256": "36b3af95f5a0a1c4c849349b026709a81857d216f6616c5e1d9f16a1d6fb160d",
+      "zip_integrity": "passed"
+    },
+    {
+      "file": "omicsmatic-0.4.0-library.jar",
+      "build_source": "build/libs/omicsmatic-0.4.0.jar",
+      "bytes": 41821757,
+      "sha256": "70d90849bf67cacc71f94db6abd91c6ea571b9270940a249b48d088236953109",
+      "zip_integrity": "passed"
+    },
+    {
+      "file": "omicsmatic-0.4.0-sources.jar",
+      "build_source": "build/libs/omicsmatic-0.4.0-sources.jar",
+      "bytes": 30929416,
+      "sha256": "fc3e36a3974feedd35db1a6d63f5a66dddc2110ced4240c835e6e4dab94b2bcb",
+      "zip_integrity": "passed"
+    },
+    {
+      "file": "omicsmatic-0.4.0-javadoc.jar",
+      "build_source": "build/libs/omicsmatic-0.4.0-javadoc.jar",
+      "bytes": 9874101,
+      "sha256": "33071afdc4b2121068bf48127d9507a19d92bea6546247465905c78ac7e7813d",
+      "zip_integrity": "passed"
+    }
+  ],
+  "checksum_file": "build/release/SHA256SUMS.txt",
+  "checksum_sha256": "b9a1194473f976dd2a750a9276d7ee0a13b12692c272a51705353f75cff6ed17",
+  "catalog_integrity": "Frozen catalog file hashes unchanged; this is not a pass of the refused whole-catalog source-baseline verifier.",
+  "catalog_verification_receipt": "catalog-source-baseline-refusal.json"
+}

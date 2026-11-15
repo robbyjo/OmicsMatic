@@ -41,7 +41,9 @@ dependencies. See [runtime setup](docs/runtime-requirements.md) for optional bac
 .\gradlew.bat check executableJar
 ```
 
-The self-contained executable is `build/cli/omicsmatic-0.3.7.jar`.
+The self-contained executable is `build/cli/omicsmatic-0.4.0.jar`.
+The v0.4.0 candidate uses a [frozen toolset](docs/release-0.4.0-freeze.md);
+subsequent tool additions continue separately from this release branch.
 [Published releases](https://github.com/robbyjo/OmicsMatic/releases) are also
 available; source builds may include features beyond the latest release.
 
@@ -50,7 +52,7 @@ available; source builds may include features beyond the latest release.
 Fit a linear regression using the included synthetic phenotype table:
 
 ```shell
-java -jar build/cli/omicsmatic-0.3.7.jar --pheno examples/quickstart/phenotype.tsv --id sample --formula "trait ~ age" --out build/quickstart/results.tsv
+java -jar build/cli/omicsmatic-0.4.0.jar --pheno examples/quickstart/phenotype.tsv --id sample --formula "trait ~ age" --out build/quickstart/results.tsv
 ```
 
 The result contains coefficient estimates, standard errors, and p-values,
