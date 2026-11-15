@@ -1,6 +1,27 @@
 # 250-paper omics and GWAS toolbox catalog
 
 
+## MELODI Presto: corrected identity, warnings and required actions
+
+**250 papers, 445 named families, 2,689 observations and 1,195 reviewed uses; 1,494 uses await review.** The fixed 2023-10-23 through 2026-10-23 cohort remains 71 Nature, 104 Nature Genetics and 75 AJHG papers. The full semantic review and implementation goal remains open.
+
+**P169 uses MELODI Presto for literature triples, not the presto single-cell Wilcoxon/AUC R package.** The erroneous missing-family observation is replaced under the explicit canonical identity melodi-presto, with the old observation retained in the predecessor evidence. PRESTO-Tango in P038 is a plasmid kit; JST PRESTO in P157 is funding. Neither is another software use. The unrelated R source was downloaded for assessment only and was never installed or executed for this candidate. Existing unrelated R-dependency evidence from earlier workflows remains intact.
+
+**121 scoped new integrations: 20 native Java subsets and 101 upstream workflows; 124 including three existing adapters. 265 named families remain missing.** The Java service adapter adds one upstream credit and no native analytic credit. Four omitted families are newly catalogued: OncoScore, oncoEnrichR, IntOGen and HaploReg. Seven new observations plus the corrected existing use receive source-specific reviews. The missing count rises because those omissions are now recorded. The IntOGen 2023 pipeline in P042 differs from P169's reuse of a driver resource released 1 February 2020 and restricted to COADREAD; HaploReg versions 4.1/4.2 and an unreported version belong to different papers. oncoEnrichR 1.4.2.1 is separate from Enrichr. These four families receive no implementation credit.
+
+**The live server snapshot is unknown.** P169 accessed MELODI Presto on3April2024. Supply server_snapshot live-unversioned explicitly for a current query; historical snapshot requests are rejected rather than silently replaced. A current response does not establish novelty, absence of evidence, causal links, a historical database or the authors' original gene-list result. Full semantic triples, literature payloads and historical/failed responses remain private under their original data provenance; software licensing does not relicense them.
+
+**SKIP3 skips dependent analysis** for a named missing or forbidden runtime, permitted networking, service/access or output prerequisite. Supply the permitted requirement, inspect the complete HTTP diagnostics and retry NEW paths; analysis installs nothing. **FAIL2 admits no complete result**, including bad requests, original Error-bearing responses, non-JSON replies, count mismatches, lower-bound/capped totals, truncated data and recording failure after a server return. Preserve all originals and partials. Read WARNINGS.md, FAILURE.json, HTTP.json and complete response.bin, resolve the named cause and retry NEW paths. Only final COMPLETED.json admits a recorded operation. Network transmission requires --allow-network and sends the explicit query terms to the recorded server.
+
+The adapter preserves every original response field and byte, including numeric precision, unknown fields, nulls, identifiers and the sentence Elasticsearch count object. It does not turn error records into empty biological results. Verification rechecks saved integrity and response structure without rerunning the service; hashes do not establish server authenticity or recover an earlier database. Client fixture tests cover all three routes and actual transport/failure boundaries; the source-qualified service receipts distinguish successful live operations from retained failed attempts. Cell Ranger/ARC remain excluded; SingleR2.41 remains unresolved. Whole-tool validity, native analytic replacement, biological accuracy and paper reproduction remain unqualified.
+
+Read [MELODI Presto identity, commands and recovery](../MELODI_PRESTO_SOURCE_AND_SERVICE.md). Current cumulative entry point: `python tools/literature/melodi_catalog/catalog.py --verify` with a NEW output path. Saved integrity checks do not rerun the service or recover a historical snapshot. The full goal remains open.
+
+<details><summary>Previous checkpoints (historical)</summary>
+
+# 250-paper omics and GWAS toolbox catalog
+
+
 ## SPOTlight 1.0.3: warnings and required actions
 
 **250 papers, 441 named software families, 2,682 observations and 1,187 reviewed uses; 1,495 uses await review.** The fixed 2023-10-23 through 2026-10-23 cohort remains 71 Nature, 104 Nature Genetics and 75 AJHG papers. Only the existing P051 SPOTlight implementation coverage note changes. Primary facts, source versions, settings and anchors remain unchanged. The semantic review and implementation goal remains open.
@@ -1787,6 +1808,8 @@ Three source-reviewed tool additions retain separate provenance: MALT and HOPS h
 These additions improve the catalog and add no whole-tool or biological credit. The source-tested MALT 0.4.1 development controller does not fulfill the separate 0.5.2 role. Complete HOPS and MaltExtract operations remain unfinished; their unreported versions, settings and resource choices remain unknown. See `MALT_ALIGNMENT.md` and `MALT_HOPS_PAPER_ROLES.md`.
 
 **Required action:** match the declared source version and operation, qualify a permitted runtime, provide the complete dated reference/mapping and query populations, and retain original warnings and failures. If any prerequisite is unavailable or cannot be installed, skip its dependent analysis. A small software-control index does not reproduce the historical 91-spirochete or 7,508-genome bacterial analyses. Insufficient-read candidates remain unassessable.
+
+</details>
 
 </details>
 

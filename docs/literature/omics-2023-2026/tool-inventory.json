@@ -9912,23 +9912,6 @@
     "validation_note": "Existing overlap/adapters require paper-specific option checks; missing integrations remain pending."
   },
   {
-    "id": "presto",
-    "name": "Presto",
-    "pattern": "(?<![A-Za-z0-9_])(?:(?-i:Presto|presto))(?![A-Za-z0-9_])",
-    "role": "Fast single-cell marker testing",
-    "current_coverage": "missing",
-    "existing_source": null,
-    "coverage_note": "Additional software identified during full-text/code-link completeness review; integration and independent validation pending.",
-    "paper_count": 1,
-    "papers": [
-      "P169"
-    ],
-    "implementation_status": "missing",
-    "implementation_source": null,
-    "implementation_scope": "Additional software identified during full-text/code-link completeness review; integration and independent validation pending.",
-    "validation_note": "Existing overlap/adapters require paper-specific option checks; missing integrations remain pending."
-  },
-  {
     "id": "dorothea",
     "name": "DoRothEA",
     "pattern": "\\bDoRothEA\\b",
@@ -11875,5 +11858,128 @@
     "implementation_source": null,
     "implementation_scope": "Separate original pipeline; source and license/runtime assessment remains open. P051 reports local 1.9.1 processing and another unversioned processing context. Hardware descriptions add no software use or implementation credit.",
     "validation_note": "Source-reviewed use only; no runtime analysis or implementation credit."
+  },
+  {
+    "id": "melodi-presto",
+    "name": "MELODI Presto",
+    "pattern": "(?<![A-Za-z0-9_])MELODI\\s+Presto(?![A-Za-z0-9_])",
+    "role": "Semantic literature-triple enrichment and overlap queries",
+    "current_coverage": "upstream-adapter-validated",
+    "existing_source": "src/main/java/org/jlinalg/cli/MelodiPrestoCli.java",
+    "coverage_note": "Java adapter to complete live MELODI Presto API responses; the original paper server/database snapshot is unknown.",
+    "paper_count": 1,
+    "papers": [
+      "P169"
+    ],
+    "implementation_status": "upstream-adapter-validated",
+    "implementation_source": "src/main/java/org/jlinalg/cli/MelodiPrestoCli.java",
+    "implementation_scope": "Project availability: standalone Java adapter to the live MELODI Presto service, with complete original request/payload/HTTP/response bytes, exact numeric lexemes and unknown fields retained. This is the literature-triple service, not the unrelated presto single-cell Wilcoxon/AUC R package. Live requests require explicit network permission and server_snapshot live-unversioned. Deployed source and database identities remain unknown; no current response replaces the paper access date3April2024. Exact sentence count metadata is retained; lower-bound, capped, inconsistent or Error-bearing responses admit no complete result. Saved-record verification checks all bytes and revalidates the full recorded response without sending another query or proving server authorship. SKIP3 skips missing/forbidden runtime/network/service prerequisites; FAIL2 admits no complete result, including recording failure after a server return. No native analytical, Wilcoxon, local SemMedDB, biological-novelty or paper-reproduction claim is made.",
+    "validation_note": "Actual packaged service calls and complete saved-record readback; real HTTP fixture guards cover all three routes, deadlines, exact counts, original errors, full precision and postreturn recording failure. Source/deployment and historical results are not inferred.",
+    "source_roles_reviewed": 1,
+    "new_scoped_integration_credit": 1,
+    "whole_tool_qualified": false,
+    "whole_paper_reproduced": false,
+    "project_adapter_available": true,
+    "canonical_adapter_available": false,
+    "root_dispatch_available": false,
+    "development_candidate_available": true,
+    "development_candidate": "src/main/java/org/jlinalg/cli/MelodiPrestoCli.java",
+    "development_candidate_kind": "standalone-Java-main-upstream-service-adapter",
+    "development_candidate_sha256": "9f238ee4a3c198c84d33d8e78fb2d76c416aa8cb0c647d979cb9e83f8cb246bf",
+    "development_build": "./gradlew jar",
+    "development_adapter_cli": "java -cp build/libs/OmicsMatic-0.3.7.jar org.jlinalg.cli.MelodiPrestoCli run --request /trusted/request.json --out /NEW/output --allow-network",
+    "selected_environment_is_author_environment": false,
+    "author_deployed_commit_established": false,
+    "author_database_snapshot_established": false,
+    "native_analytical_credit_added": 0,
+    "workflow_validation": "../melodi-service-validation/QUALIFICATION.json",
+    "current_documentation": "docs/literature/MELODI_PRESTO_SOURCE_AND_SERVICE.md"
+  },
+  {
+    "id": "oncoscore",
+    "name": "OncoScore",
+    "pattern": "(?<![A-Za-z0-9_])OncoScore(?![A-Za-z0-9_])",
+    "role": "Text-mining gene associations with cancer",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Source-reviewed software/resource use only; no integration or runtime result is established for this family. Keep each reported release, data snapshot, analysis and data-reuse role distinct. Supply the exact permitted prerequisites before dependent analysis; SKIP3 skips unavailable/forbidden requirements and FAIL2 admits no complete result. No author input, setting or output is inferred.",
+    "paper_count": 1,
+    "papers": [
+      "P169"
+    ],
+    "implementation_status": "missing",
+    "implementation_source": null,
+    "implementation_scope": "Source-reviewed software/resource use only; no integration or runtime result is established for this family. Keep each reported release, data snapshot, analysis and data-reuse role distinct. Supply the exact permitted prerequisites before dependent analysis; SKIP3 skips unavailable/forbidden requirements and FAIL2 admits no complete result. No author input, setting or output is inferred.",
+    "validation_note": "All250 primary sources searched; use-specific roles, versions and reported settings reviewed. No runtime/implementation credit.",
+    "source_roles_reviewed": 1,
+    "new_scoped_integration_credit": 0,
+    "whole_tool_qualified": false,
+    "whole_paper_reproduced": false
+  },
+  {
+    "id": "oncoenrichr",
+    "name": "oncoEnrichR",
+    "pattern": "(?<![A-Za-z0-9_])oncoEnrichR(?![A-Za-z0-9_])",
+    "role": "Cancer-focused gene-set characterization and functional/drug evidence",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Source-reviewed software/resource use only; no integration or runtime result is established for this family. Keep each reported release, data snapshot, analysis and data-reuse role distinct. Supply the exact permitted prerequisites before dependent analysis; SKIP3 skips unavailable/forbidden requirements and FAIL2 admits no complete result. No author input, setting or output is inferred.",
+    "paper_count": 1,
+    "papers": [
+      "P169"
+    ],
+    "implementation_status": "missing",
+    "implementation_source": null,
+    "implementation_scope": "Source-reviewed software/resource use only; no integration or runtime result is established for this family. Keep each reported release, data snapshot, analysis and data-reuse role distinct. Supply the exact permitted prerequisites before dependent analysis; SKIP3 skips unavailable/forbidden requirements and FAIL2 admits no complete result. No author input, setting or output is inferred.",
+    "validation_note": "All250 primary sources searched; use-specific roles, versions and reported settings reviewed. No runtime/implementation credit.",
+    "source_roles_reviewed": 1,
+    "new_scoped_integration_credit": 0,
+    "whole_tool_qualified": false,
+    "whole_paper_reproduced": false
+  },
+  {
+    "id": "intogen",
+    "name": "IntOGen",
+    "pattern": "(?<![A-Za-z0-9_])intOGen(?![A-Za-z0-9_])",
+    "role": "Somatic driver-gene pipeline and distinct driver-cohort resource reuse",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Source-reviewed software/resource use only; no integration or runtime result is established for this family. Keep each reported release, data snapshot, analysis and data-reuse role distinct. Supply the exact permitted prerequisites before dependent analysis; SKIP3 skips unavailable/forbidden requirements and FAIL2 admits no complete result. No author input, setting or output is inferred.",
+    "paper_count": 2,
+    "papers": [
+      "P042",
+      "P169"
+    ],
+    "implementation_status": "missing",
+    "implementation_source": null,
+    "implementation_scope": "Source-reviewed software/resource use only; no integration or runtime result is established for this family. Keep each reported release, data snapshot, analysis and data-reuse role distinct. Supply the exact permitted prerequisites before dependent analysis; SKIP3 skips unavailable/forbidden requirements and FAIL2 admits no complete result. No author input, setting or output is inferred.",
+    "validation_note": "All250 primary sources searched; use-specific roles, versions and reported settings reviewed. No runtime/implementation credit.",
+    "source_roles_reviewed": 2,
+    "new_scoped_integration_credit": 0,
+    "whole_tool_qualified": false,
+    "whole_paper_reproduced": false
+  },
+  {
+    "id": "haploreg",
+    "name": "HaploReg",
+    "pattern": "(?<![A-Za-z0-9_])HaploReg(?![A-Za-z0-9_])",
+    "role": "Variant functional annotation, gene-distance lookup and LD resource queries",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Source-reviewed software/resource use only; no integration or runtime result is established for this family. Keep each reported release, data snapshot, analysis and data-reuse role distinct. Supply the exact permitted prerequisites before dependent analysis; SKIP3 skips unavailable/forbidden requirements and FAIL2 admits no complete result. No author input, setting or output is inferred.",
+    "paper_count": 3,
+    "papers": [
+      "P073",
+      "P169",
+      "P192"
+    ],
+    "implementation_status": "missing",
+    "implementation_source": null,
+    "implementation_scope": "Source-reviewed software/resource use only; no integration or runtime result is established for this family. Keep each reported release, data snapshot, analysis and data-reuse role distinct. Supply the exact permitted prerequisites before dependent analysis; SKIP3 skips unavailable/forbidden requirements and FAIL2 admits no complete result. No author input, setting or output is inferred.",
+    "validation_note": "All250 primary sources searched; use-specific roles, versions and reported settings reviewed. No runtime/implementation credit.",
+    "source_roles_reviewed": 3,
+    "new_scoped_integration_credit": 0,
+    "whole_tool_qualified": false,
+    "whole_paper_reproduced": false
   }
 ]

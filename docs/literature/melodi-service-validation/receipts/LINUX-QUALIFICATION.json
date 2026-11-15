@@ -1,0 +1,78 @@
+{
+  "status": "PASS_ACTUAL_LINUX_PACKAGED_LIVE_ENRICH_AND_ALL_THREE_WINDOWS_RECORD_READBACKS",
+  "calls": [
+    {
+      "name": "enrich-Windows-record-readback",
+      "command": [
+        "/usr/bin/java",
+        "-Xmx512m",
+        "-cp",
+        "/mnt/d/projects/JLinAlg/build/literature-review/monocle-runtime/melodi-packaged-live-2/OmicsMatic-0.3.7.jar",
+        "org.jlinalg.cli.MelodiPrestoCli",
+        "verify",
+        "--bundle",
+        "/mnt/d/projects/JLinAlg/build/literature-review/monocle-runtime/melodi-packaged-live-2/enrich",
+        "--out",
+        "/opt/omicsmatic-melodi-linux-qualification-20261115-1/enrich-readback"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "overlap-Windows-record-readback",
+      "command": [
+        "/usr/bin/java",
+        "-Xmx512m",
+        "-cp",
+        "/mnt/d/projects/JLinAlg/build/literature-review/monocle-runtime/melodi-packaged-live-2/OmicsMatic-0.3.7.jar",
+        "org.jlinalg.cli.MelodiPrestoCli",
+        "verify",
+        "--bundle",
+        "/mnt/d/projects/JLinAlg/build/literature-review/monocle-runtime/melodi-packaged-live-2/overlap",
+        "--out",
+        "/opt/omicsmatic-melodi-linux-qualification-20261115-1/overlap-readback"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "sentence-Windows-record-readback",
+      "command": [
+        "/usr/bin/java",
+        "-Xmx512m",
+        "-cp",
+        "/mnt/d/projects/JLinAlg/build/literature-review/monocle-runtime/melodi-packaged-live-2/OmicsMatic-0.3.7.jar",
+        "org.jlinalg.cli.MelodiPrestoCli",
+        "verify",
+        "--bundle",
+        "/mnt/d/projects/JLinAlg/build/literature-review/monocle-runtime/melodi-packaged-live-2/sentence",
+        "--out",
+        "/opt/omicsmatic-melodi-linux-qualification-20261115-1/sentence-readback"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "actual-live-enrich",
+      "command": [
+        "/usr/bin/java",
+        "-Xmx512m",
+        "-cp",
+        "/mnt/d/projects/JLinAlg/build/literature-review/monocle-runtime/melodi-packaged-live-2/OmicsMatic-0.3.7.jar",
+        "org.jlinalg.cli.MelodiPrestoCli",
+        "run",
+        "--request",
+        "/mnt/d/projects/JLinAlg/build/literature-review/monocle-runtime/melodi-packaged-live-2/enrich-request.json",
+        "--out",
+        "/opt/omicsmatic-melodi-linux-qualification-20261115-1/actual-live-enrich",
+        "--allow-network"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "actual_live_records": 1862,
+  "actual_live_response": {
+    "bytes": 806303,
+    "sha256": "03940fa7a4d784488bea255f8543496a182095b0e30d301732c5f2fe09b52e01"
+  },
+  "server_snapshot_established": false,
+  "fresh_historical_analysis": false,
+  "source_or_server_values_modified": false
+}

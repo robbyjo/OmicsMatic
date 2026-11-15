@@ -11387,6 +11387,40 @@
         "evidence_paragraph_sha256": "8c8107a4b7b62968a75304f09da16c03e6f74777a6e966e557786a2bbbafc7e6",
         "use_summary": "Variant consequence annotation.",
         "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12851938/ (section: Methods / Genomic analysis and interpretation)"
+      },
+      {
+        "tool_id": "intogen",
+        "tool": "IntOGen",
+        "analysis_role": "Somatic driver-gene pipeline and distinct driver-cohort resource reuse",
+        "evidence_section": "Methods / Identification of protein-coding driver genes",
+        "evidence_paragraph_index": 43,
+        "matched_text": "IntOGen",
+        "extraction_score": 15,
+        "usage_context": "analysis-method-description",
+        "evidence_selection": "individually-reviewed-primary-source-identity-and-role",
+        "evidence_paragraph_sha256": "a49a22ebc6de76c07baffda0bc23980f6ea94a230e2ccd208e0418aa4f33ba43",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12851938/ (section: Methods / Identification of protein-coding driver genes)",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
+        "version_reported_near_name": "2023",
+        "use_summary": "Identified protein-coding cancer driver genes with IntOGen v.2023, integrating dNdSCV, OncodriveFML, OncodriveCLUSTL, cBaSE, MutPanning, HotMaps3D and smRegions. Separately annotated candidates against IntOGen cohorts from a prior pan-cancer analysis; that resource reuse does not establish another pipeline execution.",
+        "implementation_scope_note": "Source-reviewed software/resource use only; no integration or runtime result is established for this family. Keep each reported release, data snapshot, analysis and data-reuse role distinct. Supply the exact permitted prerequisites before dependent analysis; SKIP3 skips unavailable/forbidden requirements and FAIL2 admits no complete result. No author input, setting or output is inferred.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 6,
+            "section": "Mutational landscapes and cancer drivers",
+            "paragraph_sha256": "63f99d432869b6a70e5cb708256cc6de5a829f8df725a203ce030876ef40c5d9"
+          },
+          {
+            "paragraph_index": 43,
+            "section": "Methods / Identification of protein-coding driver genes",
+            "paragraph_sha256": "a49a22ebc6de76c07baffda0bc23980f6ea94a230e2ccd208e0418aa4f33ba43"
+          },
+          {
+            "paragraph_index": 47,
+            "section": "Methods / Identification of protein-coding driver genes",
+            "paragraph_sha256": "930d3442a997e2ce99d86e438c354ad1def5beb43df2526a0deb0fa5a8e07862"
+          }
+        ]
       }
     ],
     "status": "extracted",
@@ -20574,6 +20608,30 @@
         "use_summary": "Applied STARsolo waspOutputMode using each sample's post-QC VCF to reduce allelic mapping bias before retaining unique proper pairs that passed WASP filtering.",
         "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11631754/ (section: Methods / Quantification of mRNA AS)",
         "implementation_scope_note": "The typed bulk STAR adapter does not expose WASP or infer a suitable sample VCF. Variant alignment, allele swapping/filter validation and barcode/UMI context remain missing."
+      },
+      {
+        "tool_id": "haploreg",
+        "tool": "HaploReg",
+        "analysis_role": "Variant functional annotation, gene-distance lookup and LD resource queries",
+        "evidence_section": "Results / trans-sQTLs are highly cell-type-specific",
+        "evidence_paragraph_index": 21,
+        "matched_text": "HaploReg",
+        "extraction_score": 15,
+        "usage_context": "resource-query-description",
+        "evidence_selection": "individually-reviewed-primary-source-identity-and-role",
+        "evidence_paragraph_sha256": "e46749808900228b1967ad237f84607d0bae5416bec6d8c66a64bb112160cc47",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11631754/ (section: Results / trans-sQTLs are highly cell-type-specific)",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
+        "version_reported_near_name": null,
+        "use_summary": "Examined HaploReg functional annotations for rs6751481 and rs74258942, reporting blood-specific promoter and enhancer overlaps respectively. The HaploReg release and full query settings are not reported at this anchor; coloc and SuSiE results in the paragraph are separate methods.",
+        "implementation_scope_note": "Source-reviewed software/resource use only; no integration or runtime result is established for this family. Keep each reported release, data snapshot, analysis and data-reuse role distinct. Supply the exact permitted prerequisites before dependent analysis; SKIP3 skips unavailable/forbidden requirements and FAIL2 admits no complete result. No author input, setting or output is inferred.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 21,
+            "section": "Results / trans-sQTLs are highly cell-type-specific",
+            "paragraph_sha256": "e46749808900228b1967ad237f84607d0bae5416bec6d8c66a64bb112160cc47"
+          }
+        ]
       }
     ],
     "status": "extracted",
@@ -42724,22 +42782,6 @@
         "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11525171/ (section: Methods / Fine-mapping of risk loci)"
       },
       {
-        "tool_id": "presto",
-        "tool": "Presto",
-        "analysis_role": "Fast single-cell marker testing",
-        "evidence_section": "Methods / Gene evidence",
-        "evidence_paragraph_index": 49,
-        "matched_text": "Presto",
-        "extraction_score": 15,
-        "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
-        "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
-        "evidence_paragraph_sha256": "232c64703d45d46b578f47a31a6252c32c11565c6cce0f9925a60e214091be0c",
-        "use_summary": "Fast single-cell marker testing.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11525171/ (section: Methods / Gene evidence)"
-      },
-      {
         "tool_id": "smr",
         "tool": "SMR",
         "analysis_role": "Summary-data molecular association or Mendelian randomization",
@@ -42830,6 +42872,141 @@
             "paragraph_index": 5,
             "section": "Results / Cell specificity and chromatin landscape at risk loci",
             "paragraph_sha256": "94ad5147853745ca37336f086f4754f49f0dc21fede4f0b492245a887729a569"
+          }
+        ]
+      },
+      {
+        "tool_id": "melodi-presto",
+        "tool": "MELODI Presto",
+        "analysis_role": "Semantic literature-triple enrichment and overlap queries",
+        "evidence_section": "Methods / Gene evidence",
+        "evidence_paragraph_index": 49,
+        "matched_text": "MELODI Presto",
+        "extraction_score": 15,
+        "usage_context": "analysis-method-description",
+        "evidence_selection": "individually-reviewed-primary-source-identity-and-role",
+        "evidence_paragraph_sha256": "232c64703d45d46b578f47a31a6252c32c11565c6cce0f9925a60e214091be0c",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11525171/ (section: Methods / Gene evidence)",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
+        "version_reported_near_name": null,
+        "use_summary": "Surveyed semantic subject-predicate-object literature triples in MELODI Presto, accessed 3 April 2024, with the candidate gene list as subject and colorectal cancer as object, complementing OncoScore. This is not the presto single-cell Wilcoxon/AUC R package.",
+        "implementation_scope_note": "Project availability: standalone Java adapter to the live MELODI Presto service, with complete original request/payload/HTTP/response bytes, exact numeric lexemes and unknown fields retained. This is the literature-triple service, not the unrelated presto single-cell Wilcoxon/AUC R package. Live requests require explicit network permission and server_snapshot live-unversioned. Deployed source and database identities remain unknown; no current response replaces the paper access date3April2024. Exact sentence count metadata is retained; lower-bound, capped, inconsistent or Error-bearing responses admit no complete result. Saved-record verification checks all bytes and revalidates the full recorded response without sending another query or proving server authorship. SKIP3 skips missing/forbidden runtime/network/service prerequisites; FAIL2 admits no complete result, including recording failure after a server return. No native analytical, Wilcoxon, local SemMedDB, biological-novelty or paper-reproduction claim is made.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 15,
+            "section": "Results / Gene list analysis",
+            "paragraph_sha256": "0b4a3379c1708e0a6b5682b634724f614e8e0085271e5161abf0bd25b50688b4"
+          },
+          {
+            "paragraph_index": 49,
+            "section": "Methods / Gene evidence",
+            "paragraph_sha256": "232c64703d45d46b578f47a31a6252c32c11565c6cce0f9925a60e214091be0c"
+          }
+        ]
+      },
+      {
+        "tool_id": "oncoscore",
+        "tool": "OncoScore",
+        "analysis_role": "Text-mining gene associations with cancer",
+        "evidence_section": "Methods / Gene evidence",
+        "evidence_paragraph_index": 49,
+        "matched_text": "OncoScore",
+        "extraction_score": 15,
+        "usage_context": "analysis-method-description",
+        "evidence_selection": "individually-reviewed-primary-source-identity-and-role",
+        "evidence_paragraph_sha256": "232c64703d45d46b578f47a31a6252c32c11565c6cce0f9925a60e214091be0c",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11525171/ (section: Methods / Gene evidence)",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
+        "version_reported_near_name": "1.30.0",
+        "use_summary": "Ranked candidate target genes by cancer association using literature mining in OncoScore1.30.0; used a score of21.09 as the stated novelty threshold. This analysis is separate from the MELODI Presto literature survey.",
+        "implementation_scope_note": "Source-reviewed software/resource use only; no integration or runtime result is established for this family. Keep each reported release, data snapshot, analysis and data-reuse role distinct. Supply the exact permitted prerequisites before dependent analysis; SKIP3 skips unavailable/forbidden requirements and FAIL2 admits no complete result. No author input, setting or output is inferred.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 15,
+            "section": "Results / Gene list analysis",
+            "paragraph_sha256": "0b4a3379c1708e0a6b5682b634724f614e8e0085271e5161abf0bd25b50688b4"
+          },
+          {
+            "paragraph_index": 49,
+            "section": "Methods / Gene evidence",
+            "paragraph_sha256": "232c64703d45d46b578f47a31a6252c32c11565c6cce0f9925a60e214091be0c"
+          }
+        ]
+      },
+      {
+        "tool_id": "oncoenrichr",
+        "tool": "oncoEnrichR",
+        "analysis_role": "Cancer-focused gene-set characterization and functional/drug evidence",
+        "evidence_section": "Methods / Gene evidence",
+        "evidence_paragraph_index": 50,
+        "matched_text": "oncoEnrichR",
+        "extraction_score": 15,
+        "usage_context": "analysis-method-description",
+        "evidence_selection": "individually-reviewed-primary-source-identity-and-role",
+        "evidence_paragraph_sha256": "28d71cf404534fc00e29007cb45e0002d11facd89a5cc7899c68ef79c20348ff",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11525171/ (section: Methods / Gene evidence)",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
+        "version_reported_near_name": "1.4.2.1",
+        "use_summary": "Characterized candidate gene sets with oncoEnrichR1.4.2.1, including cancer/drug associations, synthetic lethality, gene fitness and protein interactions. The results discussion draws on Open Targets and DepMap; this is not the separate Enrichr pathway-enrichment step.",
+        "implementation_scope_note": "Source-reviewed software/resource use only; no integration or runtime result is established for this family. Keep each reported release, data snapshot, analysis and data-reuse role distinct. Supply the exact permitted prerequisites before dependent analysis; SKIP3 skips unavailable/forbidden requirements and FAIL2 admits no complete result. No author input, setting or output is inferred.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 16,
+            "section": "Results / Gene list analysis",
+            "paragraph_sha256": "647fc1da9ae65b89f9995887212fb9afaf8afdf000ba43f0116c1c793431671b"
+          },
+          {
+            "paragraph_index": 50,
+            "section": "Methods / Gene evidence",
+            "paragraph_sha256": "28d71cf404534fc00e29007cb45e0002d11facd89a5cc7899c68ef79c20348ff"
+          }
+        ]
+      },
+      {
+        "tool_id": "intogen",
+        "tool": "IntOGen",
+        "analysis_role": "Somatic driver-gene pipeline and distinct driver-cohort resource reuse",
+        "evidence_section": "Methods / Gene evidence",
+        "evidence_paragraph_index": 49,
+        "matched_text": "IntOGen",
+        "extraction_score": 15,
+        "usage_context": "resource-data-reuse",
+        "evidence_selection": "individually-reviewed-primary-source-identity-and-role",
+        "evidence_paragraph_sha256": "232c64703d45d46b578f47a31a6252c32c11565c6cce0f9925a60e214091be0c",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11525171/ (section: Methods / Gene evidence)",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
+        "version_reported_near_name": null,
+        "use_summary": "Used the IntOGen driver-gene resource released1February2020, restricted to colorectal COADREAD cohorts, for driver-gene evidence. The source does not establish execution of the IntOGen mutation-analysis pipeline in this paper.",
+        "implementation_scope_note": "Source-reviewed software/resource use only; no integration or runtime result is established for this family. Keep each reported release, data snapshot, analysis and data-reuse role distinct. Supply the exact permitted prerequisites before dependent analysis; SKIP3 skips unavailable/forbidden requirements and FAIL2 admits no complete result. No author input, setting or output is inferred.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 49,
+            "section": "Methods / Gene evidence",
+            "paragraph_sha256": "232c64703d45d46b578f47a31a6252c32c11565c6cce0f9925a60e214091be0c"
+          }
+        ]
+      },
+      {
+        "tool_id": "haploreg",
+        "tool": "HaploReg",
+        "analysis_role": "Variant functional annotation, gene-distance lookup and LD resource queries",
+        "evidence_section": "Methods / Gene evidence",
+        "evidence_paragraph_index": 49,
+        "matched_text": "HaploReg",
+        "extraction_score": 15,
+        "usage_context": "resource-query-description",
+        "evidence_selection": "individually-reviewed-primary-source-identity-and-role",
+        "evidence_paragraph_sha256": "232c64703d45d46b578f47a31a6252c32c11565c6cce0f9925a60e214091be0c",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11525171/ (section: Methods / Gene evidence)",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
+        "version_reported_near_name": "4.1",
+        "use_summary": "Obtained gene-distance information from HaploReg4.1 for candidate-gene evidence. The exact queried variant list and full lookup settings are not recovered.",
+        "implementation_scope_note": "Source-reviewed software/resource use only; no integration or runtime result is established for this family. Keep each reported release, data snapshot, analysis and data-reuse role distinct. Supply the exact permitted prerequisites before dependent analysis; SKIP3 skips unavailable/forbidden requirements and FAIL2 admits no complete result. No author input, setting or output is inferred.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 49,
+            "section": "Methods / Gene evidence",
+            "paragraph_sha256": "232c64703d45d46b578f47a31a6252c32c11565c6cce0f9925a60e214091be0c"
           }
         ]
       }
@@ -47693,6 +47870,30 @@
             "paragraph_index": 21,
             "paragraph_sha256": "032ef976e668aa7a20f8b0e4fbfd641a378318bf2a2fff51af78ff4b785c2d3c",
             "section": "Methods / Adipocyte size measurements in the BMI-discordant MZ twin cohort"
+          }
+        ]
+      },
+      {
+        "tool_id": "haploreg",
+        "tool": "HaploReg",
+        "analysis_role": "Variant functional annotation, gene-distance lookup and LD resource queries",
+        "evidence_section": "Discussion",
+        "evidence_paragraph_index": 54,
+        "matched_text": "HaploReg",
+        "extraction_score": 15,
+        "usage_context": "resource-query-description",
+        "evidence_selection": "individually-reviewed-primary-source-identity-and-role",
+        "evidence_paragraph_sha256": "5da9723011711c6172aa1dedf3e48b059003168e6c8a65e7de05c3ccc627ad5f",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11568758/ (section: Discussion)",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
+        "version_reported_near_name": "4.2",
+        "use_summary": "Used HaploReg4.2 for the reported R-squared=0 LD comparison between TBX15 rs10494217 and rs4659153. The Finns/METSIM R-squared=0.03 comparison and earlier Inuit selection results are distinct; they are not HaploReg outputs from the same population.",
+        "implementation_scope_note": "Source-reviewed software/resource use only; no integration or runtime result is established for this family. Keep each reported release, data snapshot, analysis and data-reuse role distinct. Supply the exact permitted prerequisites before dependent analysis; SKIP3 skips unavailable/forbidden requirements and FAIL2 admits no complete result. No author input, setting or output is inferred.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 54,
+            "section": "Discussion",
+            "paragraph_sha256": "5da9723011711c6172aa1dedf3e48b059003168e6c8a65e7de05c3ccc627ad5f"
           }
         ]
       }
