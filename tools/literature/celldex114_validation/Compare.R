@@ -1,0 +1,29 @@
+# Copyright (C) 2026 JLinAlg contributors; SPDX-License-Identifier: GPL-3.0-or-later
+local({
+ a<-commandArgs(TRUE);stopifnot(length(a)==5L);.libPaths(c(a[[1L]],.libPaths()));requireNamespace('celldex');requireNamespace('ensembldb')
+ direct<-a[[2L]];worker<-a[[3L]];out<-a[[4L]];name<-a[[5L]]
+ eq<-function(x,y)identical(serialize(x,NULL,version=3),serialize(y,NULL,version=3))
+ ds<-jsonlite::read_json(file.path(direct,'STATUS.json'),simplifyVector=TRUE)
+ ws<-jsonlite::read_json(file.path(worker,'R-status.json'),simplifyVector=TRUE)
+ checks<-list(same_completion=identical(ds$returned,ws$original_function_returned),worker_original_started=isTRUE(ws$analysis_started),
+  complete_original_conditions=eq(readRDS(file.path(direct,'complete-conditions.rds')),readRDS(file.path(worker,'complete-original-conditions.rds'))),
+  complete_original_rng=eq(readRDS(file.path(direct,'complete-rng.rds')),readRDS(file.path(worker,'complete-original-rng.rds'))),
+  complete_pre_call_rng=eq(readRDS(file.path(direct,'complete-rng-before.rds')),readRDS(file.path(worker,'complete-original-rng-before.rds'))))
+ if(isTRUE(ds$returned)&&isTRUE(ws$original_function_returned)){
+  original<-readRDS(file.path(direct,'complete-return.rds'));adapted<-readRDS(file.path(worker,'complete-original-return.rds'))
+  checks$whole_original_return<-eq(original,adapted)
+  if(is(original,'SummarizedExperiment')){
+   checks$all_assay_payloads<-identical(lapply(SummarizedExperiment::assays(original),as.matrix),lapply(SummarizedExperiment::assays(adapted),as.matrix))
+   expected<-if(grepl('^immgen',name))c(22134L,830L)else if(grepl('^mouse',name))c(21214L,358L)else NULL
+   if(!is.null(expected)&&!name%in%c('immgen.nonmissing.ontology','mouse.ensembl'))checks$independent_reference_dimensions<-identical(dim(original),expected)
+   checks$literal_gene_and_sample_identifiers<-identical(dimnames(original),dimnames(adapted))
+   checks$all_reference_labels<-eq(SummarizedExperiment::colData(original),SummarizedExperiment::colData(adapted))
+   if(identical(name,'immgen.nonmissing.ontology'))checks$nonmissing_ontology_selection<-all(!is.na(original$label.ont))
+   if(identical(name,'mouse.no.ontology'))checks$no_ontology_field<-!('label.ont'%in%colnames(SummarizedExperiment::colData(original)))
+   if(identical(name,'mouse.ensembl'))checks$original_ensembl_mapping_has_fewer_rows<-all(grepl('^ENSMUSG',rownames(original)))&&nrow(original)<21214L
+  }
+ }
+ passed<-all(unlist(checks));jsonlite::write_json(list(status=if(passed)'PASS_COMPLETE_ORIGINAL_CELLDEX_REFERENCE_COMPARISON'else'FAIL2_CELLDEX_ORIGINAL_COMPARISON_DIFFERS',
+  checks=checks,returned=ds$returned,original_fields_or_environments_removed=FALSE,full_assays_materialized_independently_for_comparison=TRUE),out,pretty=TRUE,auto_unbox=TRUE,null='null')
+ if(!passed)quit(save='no',status=2L,runLast=FALSE)
+})

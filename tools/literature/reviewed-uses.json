@@ -15871,6 +15871,797 @@
           "kind": "declared-development-dependency"
         }
       ]
+    },
+    {
+      "paper_id": "P051",
+      "pmcid": "PMC12823425",
+      "doi": "10.1038/s41586-025-09807-0",
+      "tool_id": "singler",
+      "primary_xml_sha256": "9182a4004117036e7be71b48cabb34755f397746ef0fe821dfad01f64fa2c129",
+      "evidence_paragraph_index": 81,
+      "evidence_paragraph_sha256": "cc978da74845abbf45f15e873b3dcfa7a961078967705fa86eba8f3a57cc2c51",
+      "version_reported_near_name": null,
+      "use_summary": "Annotated mouse neutrophil datasets individually against Immgen for NeuMap construction (release unreported at that anchor); separately used SingleR 2.8.0 with ImmGen for neutrophil identification, and SingleR 2.6.0 with the literally described MouseRNAseq ImmGen references via celldex 1.14.0 plus curated markers in the PDAC/MI analysis. These are distinct analyses; subsequent Seurat projection and SPOTlight deconvolution are separate methods.",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 81,
+          "section": "Methods / Single-cell transcriptomics on mouse neutrophils / Construction of NeuMap and projection of external data",
+          "paragraph_sha256": "cc978da74845abbf45f15e873b3dcfa7a961078967705fa86eba8f3a57cc2c51"
+        },
+        {
+          "paragraph_index": 93,
+          "section": "Methods / Data processing / Cell-type identification and neutrophil subset classification",
+          "paragraph_sha256": "020141a359ea2a932f833ea21405cdcc57ae8148441ad407b755b722e30455c2"
+        },
+        {
+          "paragraph_index": 119,
+          "section": "Methods / Single-cell transcriptomics on human neutrophils / Analyses of PDAC and myocardial infarction (MI) models",
+          "paragraph_sha256": "b280897006d2e6190a7e2bebd0695e5369db236336513823ba3a8315b3dd4c94"
+        }
+      ],
+      "analysis_uses": [
+        {
+          "paragraph_index": 81,
+          "version_reported_at_this_anchor": null,
+          "role": "Per-dataset mouse cell annotation for NeuMap",
+          "reference_literal": "Immgen database",
+          "separate_operations": [
+            "Rhapsody analysis pipeline 1.9.1 processing",
+            "manual second-round QC",
+            "Seurat integration and later MapQuery/TransferData projection"
+          ]
+        },
+        {
+          "paragraph_index": 93,
+          "version_reported_at_this_anchor": "2.8.0",
+          "role": "Cell-type identification and neutrophil subset selection",
+          "reference_literal": "ImmGen"
+        },
+        {
+          "paragraph_index": 119,
+          "version_reported_at_this_anchor": "2.6.0",
+          "role": "Reference-based annotation in PDAC and MI analysis",
+          "reference_literal": "MouseRNAseq ImmGen databases",
+          "reference_loader_software": "celldex",
+          "reference_loader_version": "1.14.0",
+          "additional_annotation_basis": "curated marker genes from the dataset clustering results",
+          "heading_is_human_neutrophils": true,
+          "reference_species_description_repaired": false,
+          "separate_operations": [
+            "Seurat integration/clustering/marker extraction",
+            "SPOTlight 1.0.3 spatial deconvolution and >=10% neutrophil spot rule"
+          ]
+        }
+      ],
+      "named_anchor_classification": [
+        {
+          "paragraph_index": 81,
+          "kind": "primary-methods"
+        },
+        {
+          "paragraph_index": 93,
+          "kind": "primary-methods"
+        },
+        {
+          "paragraph_index": 119,
+          "kind": "primary-methods"
+        }
+      ],
+      "explicit_unknowns": [
+        "exact original function arguments",
+        "marker selection settings",
+        "correlation quantile",
+        "fine-tuning settings",
+        "pruning settings",
+        "reference object snapshot and exact label vector",
+        "caller RNG state",
+        "actual author environment"
+      ],
+      "implementation_scope_note": "Project availability: complete unchanged original SingleR annotation in explicitly selected 1.2.4, 1.8.1, 2.2.0, 2.6.0 and 2.8.0 source profiles, with complete returns, conditions and RNG. The runtime, original references, label vectors, caller settings and RNG must be supplied explicitly; project comparison environments are not recovered author environments. Original errors remain errors. Literal 2.41 is unresolved and its dependent analysis is SKIP3 without version substitution. Source-specific releases/references are not borrowed between analysis contexts. Saved training pointers are records, not reusable live native indexes. SKIP3 skips dependent analysis for unavailable/forbidden requirements; FAIL2 admits no complete result, including recording failure. Whole-tool validity, biological decisions and paper reproduction remain unqualified."
+    },
+    {
+      "paper_id": "P082",
+      "pmcid": "PMC11631769",
+      "doi": "10.1038/s41588-024-01999-x",
+      "tool_id": "singler",
+      "primary_xml_sha256": "c46b71277955179cdc573c3bf2131f9e385491f06ebfc680ddfce7143dc1077e",
+      "evidence_paragraph_index": 45,
+      "evidence_paragraph_sha256": "b200fc5bf3d2f2ac912854aa99b5ce8de3c77e3dd720c3cbe422932ea171bb3c",
+      "version_reported_near_name": null,
+      "use_summary": "Matched leukemic cells to healthy bone-marrow counterparts by Spearman correlation against a published CITE-seq reference containing 30,672 RNA profiles and 25 antibodies. The study software inventory declares SingleR 2.2.0; the method paragraph does not state function arguments or that release locally.",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 45,
+          "section": "Methods / scNOVA–CITE workflow / ‘Reference-based’ annotation of leukemic cells",
+          "paragraph_sha256": "b200fc5bf3d2f2ac912854aa99b5ce8de3c77e3dd720c3cbe422932ea171bb3c"
+        },
+        {
+          "paragraph_index": 64,
+          "section": "Code availability",
+          "paragraph_sha256": "ca44d238ba149b628e05398ce1a466404ae438b1e859861e914d481d3a0e16b9"
+        },
+        {
+          "paragraph_index": 71,
+          "section": "Associated Data / Data Availability Statement",
+          "paragraph_sha256": "ca44d238ba149b628e05398ce1a466404ae438b1e859861e914d481d3a0e16b9"
+        }
+      ],
+      "analysis_uses": [
+        {
+          "paragraph_index": 45,
+          "version_reported_at_this_anchor": null,
+          "role": "Match leukemic cells to healthy bone-marrow counterparts",
+          "annotation_basis_reported": "Spearman correlation",
+          "reference_RNA_profiles": 30672,
+          "reference_antibodies": 25,
+          "study_software_inventory_release": "2.2.0",
+          "inventory_anchors": [
+            64,
+            71
+          ],
+          "inventory_duplicate_is_additional_analysis": false
+        }
+      ],
+      "named_anchor_classification": [
+        {
+          "paragraph_index": 45,
+          "kind": "primary-methods"
+        },
+        {
+          "paragraph_index": 64,
+          "kind": "study-software-inventory"
+        },
+        {
+          "paragraph_index": 71,
+          "kind": "study-software-inventory"
+        }
+      ],
+      "explicit_unknowns": [
+        "exact original function arguments",
+        "marker selection settings",
+        "correlation quantile",
+        "fine-tuning settings",
+        "pruning settings",
+        "reference object snapshot and exact label vector",
+        "caller RNG state",
+        "actual author environment"
+      ],
+      "implementation_scope_note": "Project availability: complete unchanged original SingleR annotation in explicitly selected 1.2.4, 1.8.1, 2.2.0, 2.6.0 and 2.8.0 source profiles, with complete returns, conditions and RNG. The runtime, original references, label vectors, caller settings and RNG must be supplied explicitly; project comparison environments are not recovered author environments. Original errors remain errors. Literal 2.41 is unresolved and its dependent analysis is SKIP3 without version substitution. Source-specific releases/references are not borrowed between analysis contexts. Saved training pointers are records, not reusable live native indexes. SKIP3 skips dependent analysis for unavailable/forbidden requirements; FAIL2 admits no complete result, including recording failure. Whole-tool validity, biological decisions and paper reproduction remain unqualified."
+    },
+    {
+      "paper_id": "P192",
+      "pmcid": "PMC11568758",
+      "doi": "10.1016/j.ajhg.2024.10.001",
+      "tool_id": "singler",
+      "primary_xml_sha256": "6d8f96c90682633e9bbb02269e6cf2d94690dfe31e6f72d9c68770825e1ef658",
+      "evidence_paragraph_index": 16,
+      "evidence_paragraph_sha256": "84c324d009ef5dd98dccadf06b183b42f7a465b32f13aa8d5292a5eae87dc9a0",
+      "version_reported_near_name": "1.2.4",
+      "use_summary": "Annotated KOBS SAT nuclei with SingleR 1.2.4 and the reference datasets used previously in the cited Pan et al. study; separately annotated RYSA SAT nuclei with SingleR 1.8.1 and the Emont adipose reference atlas. The two reference and release declarations are retained independently.",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 16,
+          "section": "Methods / Processing of SAT snRNA-seq data in KOBS",
+          "paragraph_sha256": "84c324d009ef5dd98dccadf06b183b42f7a465b32f13aa8d5292a5eae87dc9a0"
+        },
+        {
+          "paragraph_index": 18,
+          "section": "Methods / Processing of SAT snRNA-seq data in RYSA",
+          "paragraph_sha256": "2c92aea1d107047b1c70418d68df1c2e8c27019042b99a4100be28d45010fb32"
+        }
+      ],
+      "analysis_uses": [
+        {
+          "paragraph_index": 16,
+          "version_reported_at_this_anchor": "1.2.4",
+          "role": "Annotate SAT nuclei from eight KOBS participants",
+          "reference_description": "Same reference datasets as previously described in citation 14",
+          "cited_previous_reference_study": {
+            "authors": "Pan et al.",
+            "year": 2021,
+            "doi": "10.1186/s13073-021-00939-2",
+            "pmcid": "PMC8327600"
+          },
+          "exact_reference_objects_established_in_current_paper": false
+        },
+        {
+          "paragraph_index": 18,
+          "version_reported_at_this_anchor": "1.8.1",
+          "role": "RYSA SAT cell-type annotation",
+          "reference_description": "Emont et al. adipose snRNA-seq/scRNA-seq atlas"
+        }
+      ],
+      "named_anchor_classification": [
+        {
+          "paragraph_index": 16,
+          "kind": "primary-methods"
+        },
+        {
+          "paragraph_index": 18,
+          "kind": "primary-methods"
+        }
+      ],
+      "explicit_unknowns": [
+        "exact original function arguments",
+        "marker selection settings",
+        "correlation quantile",
+        "fine-tuning settings",
+        "pruning settings",
+        "reference object snapshot and exact label vector",
+        "caller RNG state",
+        "actual author environment"
+      ],
+      "implementation_scope_note": "Project availability: complete unchanged original SingleR annotation in explicitly selected 1.2.4, 1.8.1, 2.2.0, 2.6.0 and 2.8.0 source profiles, with complete returns, conditions and RNG. The runtime, original references, label vectors, caller settings and RNG must be supplied explicitly; project comparison environments are not recovered author environments. Original errors remain errors. Literal 2.41 is unresolved and its dependent analysis is SKIP3 without version substitution. Source-specific releases/references are not borrowed between analysis contexts. Saved training pointers are records, not reusable live native indexes. SKIP3 skips dependent analysis for unavailable/forbidden requirements; FAIL2 admits no complete result, including recording failure. Whole-tool validity, biological decisions and paper reproduction remain unqualified."
+    },
+    {
+      "paper_id": "P233",
+      "pmcid": "PMC12461018",
+      "doi": "10.1016/j.ajhg.2025.07.018",
+      "tool_id": "singler",
+      "primary_xml_sha256": "bbb6dfe0c3463e42e5fec1b8f58ca3b48fcb6cda5a5d776fe21a98a4d3eeb901",
+      "evidence_paragraph_index": 8,
+      "evidence_paragraph_sha256": "d63a03bda6013f0581df084b7283b0586612ca452199d90f210b255a2b7df4a4",
+      "version_reported_near_name": "2.41",
+      "use_summary": "Used SingleR, literally reported as 2.41, in residual blood-cell identification/removal alongside Seurat PBMC-reference analysis. That release spelling remains unresolved. The inspected author notebook separately performs four SingleR calls with HPCA and Blueprint/ENCODE main/fine labels, then filters using unpruned labels, and performs a separate Seurat PBMC mapping. Its actual executed commit, release and reference snapshots are unknown; the haemoglobin-expression filter is a separate QC step.",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 8,
+          "section": "Methods / scRNA-seq data analysis",
+          "paragraph_sha256": "d63a03bda6013f0581df084b7283b0586612ca452199d90f210b255a2b7df4a4"
+        }
+      ],
+      "analysis_uses": [
+        {
+          "paragraph_index": 8,
+          "version_reported_at_this_anchor": "2.41",
+          "release_identity_resolved": false,
+          "role": "Residual PBMC/RBC identification in stromal-cell preprocessing",
+          "paper_reference_context": "SingleR alongside Seurat multimodal CITE-seq PBMC reference analysis",
+          "separate_QC": {
+            "genes": [
+              "HBB",
+              "HBA1",
+              "HBA2"
+            ],
+            "reported_transcript_threshold": 3,
+            "reported_comparator": ">",
+            "is_SingleR_scoring_setting": false
+          }
+        }
+      ],
+      "named_anchor_classification": [
+        {
+          "paragraph_index": 8,
+          "kind": "primary-methods"
+        }
+      ],
+      "explicit_unknowns": [
+        "exact original function arguments",
+        "marker selection settings",
+        "correlation quantile",
+        "fine-tuning settings",
+        "pruning settings",
+        "reference object snapshot and exact label vector",
+        "caller RNG state",
+        "actual author environment"
+      ],
+      "implementation_scope_note": "Project availability: complete unchanged original SingleR annotation in explicitly selected 1.2.4, 1.8.1, 2.2.0, 2.6.0 and 2.8.0 source profiles, with complete returns, conditions and RNG. The runtime, original references, label vectors, caller settings and RNG must be supplied explicitly; project comparison environments are not recovered author environments. Original errors remain errors. Literal 2.41 is unresolved and its dependent analysis is SKIP3 without version substitution. Source-specific releases/references are not borrowed between analysis contexts. Saved training pointers are records, not reusable live native indexes. SKIP3 skips dependent analysis for unavailable/forbidden requirements; FAIL2 admits no complete result, including recording failure. Whole-tool validity, biological decisions and paper reproduction remain unqualified.",
+      "inspected_author_notebook": {
+        "commit": "5ec4cbb3a5cdfbf9ed6d24d118a3012f9a07d7ad",
+        "path": "01_Preprocessing/04_FilterBloodCells.Rmd",
+        "url": "https://raw.githubusercontent.com/HsiaoLabUCSF/FDProject/5ec4cbb3a5cdfbf9ed6d24d118a3012f9a07d7ad/01_Preprocessing/04_FilterBloodCells.Rmd",
+        "bytes": 11556,
+        "sha256": "413e9089ef49b0b0da56afcf11da5e27017a718245c592ef634eeb723ecc63eb",
+        "source_only_not_executed": true,
+        "repository": "HsiaoLabUCSF/FDProject",
+        "actual_author_execution_commit_established": false,
+        "reported_literal_release_resolved": false,
+        "source_redistributed": false,
+        "code_license_established": false,
+        "observed_calls": [
+          {
+            "lines": [
+              121,
+              124
+            ],
+            "reference": "celldex::HumanPrimaryCellAtlasData()",
+            "label_fields": [
+              "label.main",
+              "label.fine"
+            ]
+          },
+          {
+            "lines": [
+              131,
+              134
+            ],
+            "reference": "celldex::BlueprintEncodeData()",
+            "label_fields": [
+              "label.main",
+              "label.fine"
+            ]
+          }
+        ],
+        "test_expression_source_observed": "SCT assay data slot converted to a matrix",
+        "pruned_labels_saved_but_unpruned_labels_used_for_observed_filters": true,
+        "separate_Seurat_PBMC_mapping_lines": [
+          174,
+          180
+        ],
+        "separate_Seurat_PBMC_reference_path_literal": "../data/pbmc_multimodal.h5seurat"
+      }
+    },
+    {
+      "paper_id": "P051",
+      "pmcid": "PMC12823425",
+      "doi": "10.1038/s41586-025-09807-0",
+      "tool_id": "celldex",
+      "primary_xml_sha256": "9182a4004117036e7be71b48cabb34755f397746ef0fe821dfad01f64fa2c129",
+      "evidence_paragraph_index": 119,
+      "evidence_paragraph_sha256": "b280897006d2e6190a7e2bebd0695e5369db236336513823ba3a8315b3dd4c94",
+      "version_reported_near_name": "1.14.0",
+      "usage_context": "analysis-method-description",
+      "use_summary": "Retrieved reference profiles for SingleR annotation, described literally as MouseRNAseq ImmGen databases via celldex 1.14.0 in the PDAC/MI analysis. The human-neutrophil subsection and reference wording remain unchanged; exact reference functions and snapshots are not established.",
+      "reported_settings": {
+        "reference_description_literal": "MouseRNAseq ImmGen databases",
+        "exact_reference_function": null,
+        "reference_snapshot": null
+      },
+      "supporting_evidence": [
+        {
+          "paragraph_index": 119,
+          "section": "Methods / Single-cell transcriptomics on human neutrophils / Analyses of PDAC and myocardial infarction (MI) models",
+          "paragraph_sha256": "b280897006d2e6190a7e2bebd0695e5369db236336513823ba3a8315b3dd4c94"
+        }
+      ],
+      "named_anchor_classification": [
+        {
+          "paragraph_index": 119,
+          "kind": "primary-software-analysis"
+        }
+      ],
+      "uncertainties": [
+        "The exact executed source, full environment, original inputs and unreported caller settings are not established."
+      ],
+      "implementation_scope_note": "Project availability: complete unchanged original celldex1.14.0 reference retrieval through a source-built R package and explicit managed cache. Project-selected ImmGenData, MouseRNAseqData, dated fetchReference/fetchMetadata and query controls retain full returns, labels, IDs, conditions, RNG and lazy backing files. Legacy, ontology and Ensembl modes use original semantics; mapping warnings and original gene removal are retained. Cached Hub operations require explicit original LOCAL caller options for offline success; unchanged defaults can still contact the service and fail offline. Reference networking and runtime installation have separate permission flags; no source, identifier, warning-policy or version fallback is added. The literal MouseRNAseq ImmGen wording, human-neutrophil heading and unknown exact author functions/snapshots/options/environment remain unchanged. Original biological reference records remain complete and private; software licensing does not relicense the underlying datasets. SKIP3 skips dependent retrieval for missing/forbidden requirements; FAIL2 admits no complete result, including recording failure. SingleR annotation and SPOTlight deconvolution are separate. Whole-tool validity and paper reproduction remain unqualified."
+    },
+    {
+      "paper_id": "P051",
+      "pmcid": "PMC12823425",
+      "doi": "10.1038/s41586-025-09807-0",
+      "tool_id": "spotlight",
+      "primary_xml_sha256": "9182a4004117036e7be71b48cabb34755f397746ef0fe821dfad01f64fa2c129",
+      "evidence_paragraph_index": 114,
+      "evidence_paragraph_sha256": "5fbf91a29a88cc191609c1ad9a7055546111d407c38f09c078a5fd2717ba47cf",
+      "version_reported_near_name": "1.0.3",
+      "usage_context": "analysis-method-description",
+      "use_summary": "Deconvolved spatial transcriptomic spots using seeded non-negative matrix factorization regression in SPOTlight 1.0.3. The first context uses a LungMap single-cell reference; the PDAC/MI context describes another single-cell reference. Both annotate spots at predicted neutrophil composition >=10%.",
+      "reported_settings": {
+        "method": "seeded NMF regression",
+        "predicted_neutrophil_fraction_threshold": 0.1,
+        "comparator": ">=",
+        "reference_contexts": {
+          "114": "LungMap",
+          "119": "single-cell reference described in this PDAC/MI paragraph"
+        }
+      },
+      "supporting_evidence": [
+        {
+          "paragraph_index": 114,
+          "section": "Methods / Single-cell transcriptomics on human neutrophils / Downstream analysis",
+          "paragraph_sha256": "5fbf91a29a88cc191609c1ad9a7055546111d407c38f09c078a5fd2717ba47cf"
+        },
+        {
+          "paragraph_index": 119,
+          "section": "Methods / Single-cell transcriptomics on human neutrophils / Analyses of PDAC and myocardial infarction (MI) models",
+          "paragraph_sha256": "b280897006d2e6190a7e2bebd0695e5369db236336513823ba3a8315b3dd4c94"
+        }
+      ],
+      "named_anchor_classification": [
+        {
+          "paragraph_index": 114,
+          "kind": "primary-software-analysis"
+        },
+        {
+          "paragraph_index": 119,
+          "kind": "primary-software-analysis"
+        }
+      ],
+      "uncertainties": [
+        "The exact executed source, full environment, original inputs and unreported caller settings are not established."
+      ],
+      "implementation_scope_note": "Project availability: complete unchanged original SPOTlight1.0.3 R/C++ deconvolution from upstream commit0a85246f93167f869de704166627fe6679fe03b5, selected by the project. Complete SPOTlight, trainNMF and runDeconvolution calls and an explicit training/deconvolution composition preserve full original objects, conditions, RNG, IDs and NA/NaN/Inf. In this source, model ns/std use the same routine, min_prop does not filter proportions and extra arguments may be ignored; the original return does not certify NMF convergence. Original zero-signal spot NaN values and source errors remain unchanged. The reported >=10% neutrophil labeling is a separate downstream choice with no inferred reference column. Both full process-specific C++ backtraces are retained; source-origin frames and all other condition fields/calls are compared, without requiring ASLR addresses or wrapper frames to match. Analysis runs offline and installs nothing. SKIP3 skips dependent analysis for missing/forbidden prerequisites; FAIL2 admits no complete result, including recording failure after an original return. Exact author commit, references, markers, settings, seed and environment remain unknown. SingleR annotation and celldex retrieval are separate operations. Whole-tool validity, model convergence, biological accuracy and paper reproduction remain unqualified."
+    },
+    {
+      "paper_id": "P051",
+      "pmcid": "PMC12823425",
+      "doi": "10.1038/s41586-025-09807-0",
+      "tool_id": "bd-rhapsody",
+      "primary_xml_sha256": "9182a4004117036e7be71b48cabb34755f397746ef0fe821dfad01f64fa2c129",
+      "evidence_paragraph_index": 81,
+      "evidence_paragraph_sha256": "cc978da74845abbf45f15e873b3dcfa7a961078967705fa86eba8f3a57cc2c51",
+      "version_reported_near_name": "1.9.1",
+      "usage_context": "analysis-method-description",
+      "use_summary": "Ran the Rhapsody analysis pipeline 1.9.1 locally for mouse GRCm38/gencodevM19-20181206 alignment, quantification, automatic low-quality-cell filtering and doublet tagging/filtering. A separate context reports raw sequencing-file processing with the BD Rhapsody pipeline without a release. The subsequent manual QC and SingleR annotation are separate operations.",
+      "reported_settings": {
+        "local_execution_at_81": true,
+        "mouse_reference": "GRCm38",
+        "annotation_reference_literal": "gencodevM19-20181206",
+        "release_at_104": null,
+        "manual_QC_is_separate": true
+      },
+      "supporting_evidence": [
+        {
+          "paragraph_index": 81,
+          "section": "Methods / Single-cell transcriptomics on mouse neutrophils / Construction of NeuMap and projection of external data",
+          "paragraph_sha256": "cc978da74845abbf45f15e873b3dcfa7a961078967705fa86eba8f3a57cc2c51"
+        },
+        {
+          "paragraph_index": 104,
+          "section": "Methods / Single-cell transcriptomics on human neutrophils / Library preparation",
+          "paragraph_sha256": "a12ea2b02a809d4dd388ecb73172a604610c30d7a483a125ce367327178b3476"
+        }
+      ],
+      "named_anchor_classification": [
+        {
+          "paragraph_index": 81,
+          "kind": "primary-software-analysis"
+        },
+        {
+          "paragraph_index": 104,
+          "kind": "primary-software-analysis"
+        }
+      ],
+      "uncertainties": [
+        "The exact executed source, full environment, original inputs and unreported caller settings are not established."
+      ],
+      "implementation_scope_note": "Missing separate software family. No runtime analysis or implementation credit. Supply the exact permitted source, prerequisites and tested workflow before using it; unavailable/forbidden requirements skip dependent analysis."
+    },
+    {
+      "paper_id": "P169",
+      "pmcid": "PMC11525171",
+      "doi": "10.1038/s41588-024-01900-w",
+      "tool_id": "melodi-presto",
+      "primary_xml_sha256": "35e6eef968caa63cd301d6867f6353d88441df9bd960be9d32288a4e86561782",
+      "evidence_paragraph_index": 49,
+      "evidence_paragraph_sha256": "232c64703d45d46b578f47a31a6252c32c11565c6cce0f9925a60e214091be0c",
+      "version_reported_near_name": null,
+      "usage_context": "analysis-method-description",
+      "use_summary": "Surveyed semantic subject-predicate-object literature triples in MELODI Presto, accessed 3 April 2024, with the candidate gene list as subject and colorectal cancer as object, complementing OncoScore. This is not the presto single-cell Wilcoxon/AUC R package.",
+      "reported_settings": {
+        "access_date": "2024-04-03",
+        "subject": "candidate gene list",
+        "object": "colorectal cancer",
+        "database": "Semantic MEDLINE Database",
+        "author_server_commit": null,
+        "author_database_snapshot": null
+      },
+      "supporting_evidence": [
+        {
+          "paragraph_index": 15,
+          "section": "Results / Gene list analysis",
+          "paragraph_sha256": "0b4a3379c1708e0a6b5682b634724f614e8e0085271e5161abf0bd25b50688b4"
+        },
+        {
+          "paragraph_index": 49,
+          "section": "Methods / Gene evidence",
+          "paragraph_sha256": "232c64703d45d46b578f47a31a6252c32c11565c6cce0f9925a60e214091be0c"
+        }
+      ],
+      "implementation_scope_note": "Project availability: standalone Java adapter to the live MELODI Presto service, with complete original request/payload/HTTP/response bytes, exact numeric lexemes and unknown fields retained. This is the literature-triple service, not the unrelated presto single-cell Wilcoxon/AUC R package. Live requests require explicit network permission and server_snapshot live-unversioned. Deployed source and database identities remain unknown; no current response replaces the paper access date3April2024. Exact sentence count metadata is retained; lower-bound, capped, inconsistent or Error-bearing responses admit no complete result. Saved-record verification checks all bytes and revalidates the full recorded response without sending another query or proving server authorship. SKIP3 skips missing/forbidden runtime/network/service prerequisites; FAIL2 admits no complete result, including recording failure after a server return. No native analytical, Wilcoxon, local SemMedDB, biological-novelty or paper-reproduction claim is made.",
+      "uncertainties": [
+        "Exact executed source/deployed server, complete author inputs and unreported caller settings remain unknown."
+      ]
+    },
+    {
+      "paper_id": "P169",
+      "pmcid": "PMC11525171",
+      "doi": "10.1038/s41588-024-01900-w",
+      "tool_id": "oncoscore",
+      "primary_xml_sha256": "35e6eef968caa63cd301d6867f6353d88441df9bd960be9d32288a4e86561782",
+      "evidence_paragraph_index": 49,
+      "evidence_paragraph_sha256": "232c64703d45d46b578f47a31a6252c32c11565c6cce0f9925a60e214091be0c",
+      "version_reported_near_name": "1.30.0",
+      "usage_context": "analysis-method-description",
+      "use_summary": "Ranked candidate target genes by cancer association using literature mining in OncoScore1.30.0; used a score of21.09 as the stated novelty threshold. This analysis is separate from the MELODI Presto literature survey.",
+      "reported_settings": {
+        "novelty_threshold": 21.09,
+        "threshold_comparator": null,
+        "exact_gene_query_settings": null
+      },
+      "supporting_evidence": [
+        {
+          "paragraph_index": 15,
+          "section": "Results / Gene list analysis",
+          "paragraph_sha256": "0b4a3379c1708e0a6b5682b634724f614e8e0085271e5161abf0bd25b50688b4"
+        },
+        {
+          "paragraph_index": 49,
+          "section": "Methods / Gene evidence",
+          "paragraph_sha256": "232c64703d45d46b578f47a31a6252c32c11565c6cce0f9925a60e214091be0c"
+        }
+      ],
+      "implementation_scope_note": "Source-reviewed software/resource use only; no integration or runtime result is established for this family. Keep each reported release, data snapshot, analysis and data-reuse role distinct. Supply the exact permitted prerequisites before dependent analysis; SKIP3 skips unavailable/forbidden requirements and FAIL2 admits no complete result. No author input, setting or output is inferred.",
+      "uncertainties": [
+        "Exact executed source/deployed server, complete author inputs and unreported caller settings remain unknown."
+      ]
+    },
+    {
+      "paper_id": "P169",
+      "pmcid": "PMC11525171",
+      "doi": "10.1038/s41588-024-01900-w",
+      "tool_id": "oncoenrichr",
+      "primary_xml_sha256": "35e6eef968caa63cd301d6867f6353d88441df9bd960be9d32288a4e86561782",
+      "evidence_paragraph_index": 50,
+      "evidence_paragraph_sha256": "28d71cf404534fc00e29007cb45e0002d11facd89a5cc7899c68ef79c20348ff",
+      "version_reported_near_name": "1.4.2.1",
+      "usage_context": "analysis-method-description",
+      "use_summary": "Characterized candidate gene sets with oncoEnrichR1.4.2.1, including cancer/drug associations, synthetic lethality, gene fitness and protein interactions. The results discussion draws on Open Targets and DepMap; this is not the separate Enrichr pathway-enrichment step.",
+      "reported_settings": {
+        "analysis_domains": [
+          "cancer associations",
+          "drug associations",
+          "synthetic lethality",
+          "gene fitness",
+          "protein-protein interactions"
+        ],
+        "exact_functions": null
+      },
+      "supporting_evidence": [
+        {
+          "paragraph_index": 16,
+          "section": "Results / Gene list analysis",
+          "paragraph_sha256": "647fc1da9ae65b89f9995887212fb9afaf8afdf000ba43f0116c1c793431671b"
+        },
+        {
+          "paragraph_index": 50,
+          "section": "Methods / Gene evidence",
+          "paragraph_sha256": "28d71cf404534fc00e29007cb45e0002d11facd89a5cc7899c68ef79c20348ff"
+        }
+      ],
+      "implementation_scope_note": "Source-reviewed software/resource use only; no integration or runtime result is established for this family. Keep each reported release, data snapshot, analysis and data-reuse role distinct. Supply the exact permitted prerequisites before dependent analysis; SKIP3 skips unavailable/forbidden requirements and FAIL2 admits no complete result. No author input, setting or output is inferred.",
+      "uncertainties": [
+        "Exact executed source/deployed server, complete author inputs and unreported caller settings remain unknown."
+      ]
+    },
+    {
+      "paper_id": "P042",
+      "pmcid": "PMC12851938",
+      "doi": "10.1038/s41586-025-09812-3",
+      "tool_id": "intogen",
+      "primary_xml_sha256": "0b77101ea70ebffaaff42dbf7f46f28824a2ea9bf42e71af721cd20d561ef992",
+      "evidence_paragraph_index": 43,
+      "evidence_paragraph_sha256": "a49a22ebc6de76c07baffda0bc23980f6ea94a230e2ccd208e0418aa4f33ba43",
+      "version_reported_near_name": "2023",
+      "usage_context": "analysis-method-description",
+      "use_summary": "Identified protein-coding cancer driver genes with IntOGen v.2023, integrating dNdSCV, OncodriveFML, OncodriveCLUSTL, cBaSE, MutPanning, HotMaps3D and smRegions. Separately annotated candidates against IntOGen cohorts from a prior pan-cancer analysis; that resource reuse does not establish another pipeline execution.",
+      "reported_settings": {
+        "pipeline_version_literal": "2023",
+        "component_methods": [
+          "dNdSCV",
+          "OncodriveFML",
+          "OncodriveCLUSTL",
+          "cBaSE",
+          "MutPanning",
+          "HotMaps3D",
+          "smRegions"
+        ],
+        "component_versions": null,
+        "cohort_annotation_is_separate": true,
+        "cohort_snapshot": null
+      },
+      "supporting_evidence": [
+        {
+          "paragraph_index": 6,
+          "section": "Mutational landscapes and cancer drivers",
+          "paragraph_sha256": "63f99d432869b6a70e5cb708256cc6de5a829f8df725a203ce030876ef40c5d9"
+        },
+        {
+          "paragraph_index": 43,
+          "section": "Methods / Identification of protein-coding driver genes",
+          "paragraph_sha256": "a49a22ebc6de76c07baffda0bc23980f6ea94a230e2ccd208e0418aa4f33ba43"
+        },
+        {
+          "paragraph_index": 47,
+          "section": "Methods / Identification of protein-coding driver genes",
+          "paragraph_sha256": "930d3442a997e2ce99d86e438c354ad1def5beb43df2526a0deb0fa5a8e07862"
+        }
+      ],
+      "implementation_scope_note": "Source-reviewed software/resource use only; no integration or runtime result is established for this family. Keep each reported release, data snapshot, analysis and data-reuse role distinct. Supply the exact permitted prerequisites before dependent analysis; SKIP3 skips unavailable/forbidden requirements and FAIL2 admits no complete result. No author input, setting or output is inferred.",
+      "uncertainties": [
+        "Exact executed source/deployed server, complete author inputs and unreported caller settings remain unknown."
+      ]
+    },
+    {
+      "paper_id": "P169",
+      "pmcid": "PMC11525171",
+      "doi": "10.1038/s41588-024-01900-w",
+      "tool_id": "intogen",
+      "primary_xml_sha256": "35e6eef968caa63cd301d6867f6353d88441df9bd960be9d32288a4e86561782",
+      "evidence_paragraph_index": 49,
+      "evidence_paragraph_sha256": "232c64703d45d46b578f47a31a6252c32c11565c6cce0f9925a60e214091be0c",
+      "version_reported_near_name": null,
+      "usage_context": "resource-data-reuse",
+      "use_summary": "Used the IntOGen driver-gene resource released1February2020, restricted to colorectal COADREAD cohorts, for driver-gene evidence. The source does not establish execution of the IntOGen mutation-analysis pipeline in this paper.",
+      "reported_settings": {
+        "resource_release_date": "2020-02-01",
+        "cohort_restriction": "COADREAD",
+        "pipeline_execution_established": false
+      },
+      "supporting_evidence": [
+        {
+          "paragraph_index": 49,
+          "section": "Methods / Gene evidence",
+          "paragraph_sha256": "232c64703d45d46b578f47a31a6252c32c11565c6cce0f9925a60e214091be0c"
+        }
+      ],
+      "implementation_scope_note": "Source-reviewed software/resource use only; no integration or runtime result is established for this family. Keep each reported release, data snapshot, analysis and data-reuse role distinct. Supply the exact permitted prerequisites before dependent analysis; SKIP3 skips unavailable/forbidden requirements and FAIL2 admits no complete result. No author input, setting or output is inferred.",
+      "uncertainties": [
+        "Exact executed source/deployed server, complete author inputs and unreported caller settings remain unknown."
+      ]
+    },
+    {
+      "paper_id": "P073",
+      "pmcid": "PMC11631754",
+      "doi": "10.1038/s41588-024-02019-8",
+      "tool_id": "haploreg",
+      "primary_xml_sha256": "1c5a9bc6f69280e434474ef1cb19729d0fb6bcbb8977c0daf6a68765553bdfe4",
+      "evidence_paragraph_index": 21,
+      "evidence_paragraph_sha256": "e46749808900228b1967ad237f84607d0bae5416bec6d8c66a64bb112160cc47",
+      "version_reported_near_name": null,
+      "usage_context": "resource-query-description",
+      "use_summary": "Examined HaploReg functional annotations for rs6751481 and rs74258942, reporting blood-specific promoter and enhancer overlaps respectively. The HaploReg release and full query settings are not reported at this anchor; coloc and SuSiE results in the paragraph are separate methods.",
+      "reported_settings": {
+        "variants": [
+          "rs6751481",
+          "rs74258942"
+        ],
+        "annotations": {
+          "rs6751481": "blood-specific promoter",
+          "rs74258942": "blood-specific enhancer"
+        },
+        "release": null
+      },
+      "supporting_evidence": [
+        {
+          "paragraph_index": 21,
+          "section": "Results / trans-sQTLs are highly cell-type-specific",
+          "paragraph_sha256": "e46749808900228b1967ad237f84607d0bae5416bec6d8c66a64bb112160cc47"
+        }
+      ],
+      "implementation_scope_note": "Source-reviewed software/resource use only; no integration or runtime result is established for this family. Keep each reported release, data snapshot, analysis and data-reuse role distinct. Supply the exact permitted prerequisites before dependent analysis; SKIP3 skips unavailable/forbidden requirements and FAIL2 admits no complete result. No author input, setting or output is inferred.",
+      "uncertainties": [
+        "Exact executed source/deployed server, complete author inputs and unreported caller settings remain unknown."
+      ]
+    },
+    {
+      "paper_id": "P169",
+      "pmcid": "PMC11525171",
+      "doi": "10.1038/s41588-024-01900-w",
+      "tool_id": "haploreg",
+      "primary_xml_sha256": "35e6eef968caa63cd301d6867f6353d88441df9bd960be9d32288a4e86561782",
+      "evidence_paragraph_index": 49,
+      "evidence_paragraph_sha256": "232c64703d45d46b578f47a31a6252c32c11565c6cce0f9925a60e214091be0c",
+      "version_reported_near_name": "4.1",
+      "usage_context": "resource-query-description",
+      "use_summary": "Obtained gene-distance information from HaploReg4.1 for candidate-gene evidence. The exact queried variant list and full lookup settings are not recovered.",
+      "reported_settings": {
+        "information": "gene distance",
+        "exact_query_settings": null
+      },
+      "supporting_evidence": [
+        {
+          "paragraph_index": 49,
+          "section": "Methods / Gene evidence",
+          "paragraph_sha256": "232c64703d45d46b578f47a31a6252c32c11565c6cce0f9925a60e214091be0c"
+        }
+      ],
+      "implementation_scope_note": "Source-reviewed software/resource use only; no integration or runtime result is established for this family. Keep each reported release, data snapshot, analysis and data-reuse role distinct. Supply the exact permitted prerequisites before dependent analysis; SKIP3 skips unavailable/forbidden requirements and FAIL2 admits no complete result. No author input, setting or output is inferred.",
+      "uncertainties": [
+        "Exact executed source/deployed server, complete author inputs and unreported caller settings remain unknown."
+      ]
+    },
+    {
+      "paper_id": "P192",
+      "pmcid": "PMC11568758",
+      "doi": "10.1016/j.ajhg.2024.10.001",
+      "tool_id": "haploreg",
+      "primary_xml_sha256": "6d8f96c90682633e9bbb02269e6cf2d94690dfe31e6f72d9c68770825e1ef658",
+      "evidence_paragraph_index": 54,
+      "evidence_paragraph_sha256": "5da9723011711c6172aa1dedf3e48b059003168e6c8a65e7de05c3ccc627ad5f",
+      "version_reported_near_name": "4.2",
+      "usage_context": "resource-query-description",
+      "use_summary": "Used HaploReg4.2 for the reported R-squared=0 LD comparison between TBX15 rs10494217 and rs4659153. The Finns/METSIM R-squared=0.03 comparison and earlier Inuit selection results are distinct; they are not HaploReg outputs from the same population.",
+      "reported_settings": {
+        "variants": [
+          "rs10494217",
+          "rs4659153"
+        ],
+        "reported_HaploReg_R_squared": 0,
+        "reported_METSIM_R_squared": 0.03,
+        "HaploReg_reference_population": null
+      },
+      "supporting_evidence": [
+        {
+          "paragraph_index": 54,
+          "section": "Discussion",
+          "paragraph_sha256": "5da9723011711c6172aa1dedf3e48b059003168e6c8a65e7de05c3ccc627ad5f"
+        }
+      ],
+      "implementation_scope_note": "Source-reviewed software/resource use only; no integration or runtime result is established for this family. Keep each reported release, data snapshot, analysis and data-reuse role distinct. Supply the exact permitted prerequisites before dependent analysis; SKIP3 skips unavailable/forbidden requirements and FAIL2 admits no complete result. No author input, setting or output is inferred.",
+      "uncertainties": [
+        "Exact executed source/deployed server, complete author inputs and unreported caller settings remain unknown."
+      ]
+    },
+    {
+      "paper_id": "P050",
+      "pmcid": "PMC10781626",
+      "doi": "10.1038/s41586-023-06821-y",
+      "primary_xml_sha256": "2fd4b3123b1b5930fcd5d6e8d5b6bc21edd6f3bcb572a76cbb50e802b77d2cef",
+      "evidence_paragraph_index": 45,
+      "evidence_paragraph_sha256": "57c44a55cc007a9521bd21d67f94f8eebda2fe6ab80afe7fe9bbb5f9cb4a719a",
+      "usage_context": "analysis-method-description",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 45,
+          "section": "Methods / RNA-seq and sequence alignment",
+          "paragraph_sha256": "57c44a55cc007a9521bd21d67f94f8eebda2fe6ab80afe7fe9bbb5f9cb4a719a"
+        }
+      ],
+      "uncertainties": [
+        "Exact author inputs, TPMCalculator version/options and deployed iDEP source snapshot remain unreported."
+      ],
+      "tool_id": "tpmcalculator",
+      "version_reported_near_name": null,
+      "use_summary": "Quantified and normalized RNA-seq transcripts with TPMCalculator. The paragraph separately reports Subread2.0.1 alignment, featureCounts gene read counts and DESeq2 defaults within iDEP.96; none establishes TPMCalculator options or its version.",
+      "reported_settings": {
+        "TPMCalculator_version": null,
+        "TPMCalculator_options": null,
+        "exact_GTF": null,
+        "output_selection": null,
+        "library_preparation": "strand-specific paired-end 2x150 bp",
+        "biological_replicates_per_condition": 3,
+        "upstream_Subread_version": "2.0.1",
+        "upstream_alignment_options_literal": "subread-align -d 50 -D 600–sortReadsByCoordinates",
+        "alignment_reference": "ToxoDB-49 T. gondii ME49",
+        "BioProject": "PRJNA921935",
+        "library_strandedness_is_not_a_TPMCalculator_option": true
+      },
+      "implementation_scope_note": "Project availability: native Java GTF/BAM read assignment and TPM workflow using the explicit original0.0.4 GNU64 comparison profile; original executable prints0.0.3. The author version, options, exact GTF and output selection are unknown. Project controls are not recovered author settings. All original counting/model quirks, missing/present-zero state, nonfinite values, float bridge TPM and six-digit tables are retained. Complete input capture, all32 state fields, raw IEEE bits, conditions, implementation/dependency identities and worker streams are recorded. Saved verification freshly recomputes captured GTF/BAM with the matching recorded implementation; it does not need original file locations. SKIP3 skips unavailable/forbidden prerequisites; FAIL2 admits no complete result, including recording failure after a native return. Only final COMPLETED.json with operation run and result_admitted true admits an analysis. No original quantification program or installer is invoked. HTSJDK5.0.0 transports BAM using explicitly selected JDK decompression. No whole-tool, biological-accuracy or paper-reproduction claim is made."
+    },
+    {
+      "paper_id": "P050",
+      "pmcid": "PMC10781626",
+      "doi": "10.1038/s41586-023-06821-y",
+      "primary_xml_sha256": "2fd4b3123b1b5930fcd5d6e8d5b6bc21edd6f3bcb572a76cbb50e802b77d2cef",
+      "evidence_paragraph_index": 45,
+      "evidence_paragraph_sha256": "57c44a55cc007a9521bd21d67f94f8eebda2fe6ab80afe7fe9bbb5f9cb4a719a",
+      "usage_context": "analysis-method-description",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 45,
+          "section": "Methods / RNA-seq and sequence alignment",
+          "paragraph_sha256": "57c44a55cc007a9521bd21d67f94f8eebda2fe6ab80afe7fe9bbb5f9cb4a719a"
+        }
+      ],
+      "uncertainties": [
+        "Exact author inputs, TPMCalculator version/options and deployed iDEP source snapshot remain unreported."
+      ],
+      "tool_id": "idep",
+      "version_reported_near_name": "iDEP.96",
+      "use_summary": "Conducted differential expression analysis with DESeq2 and default settings within the iDEP.96 web interface. Preserve that literal interface identity; the DESeq2 version, exact deployed source and complete effective defaults are not reported.",
+      "reported_settings": {
+        "interface_version_literal": "iDEP.96",
+        "normalized_release": null,
+        "deployed_source_commit": null,
+        "differential_expression_method": "DESeq2",
+        "settings_literal": "default settings",
+        "DESeq2_version": null,
+        "complete_effective_defaults": null,
+        "upstream_count_source": "featureCounts from Subread",
+        "transcript_TPMCalculator_step_is_separate": true
+      },
+      "implementation_scope_note": "Source-reviewed iDEP web-interface use only; no iDEP installation, runtime or implementation credit. Preserve the literal iDEP.96 without normalizing it to a release or inferring a source commit, deployed snapshot, DESeq2 version or complete defaults. Assess that exact edition, its license and permitted runtime before dependent analysis. SKIP3 skips unavailable/forbidden prerequisites; FAIL2 admits no complete result."
     }
   ]
 }

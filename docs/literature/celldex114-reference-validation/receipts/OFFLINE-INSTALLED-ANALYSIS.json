@@ -1,0 +1,51 @@
+{
+  "status": "PASS_ACTUAL_INSTALLED_CELLDEX114_REFERENCE_AND_COMPLETE_INDEPENDENT_ORIGINAL",
+  "reference_download_allowed": false,
+  "seed_cache_supplied": true,
+  "full_original_returns_conditions_rng_and_all_assays_compared": true,
+  "original_source_or_dependency_algorithms_patched": false,
+  "commands": [
+    {
+      "command": [
+        "/usr/bin/python3",
+        "-B",
+        "/mnt/d/projects/JLinAlg/build/singler-check-1/tools/literature/celldex114/run.py",
+        "--runtime",
+        "/opt/omicsmatic-celldex-public-offline-install-20261115-1-provider",
+        "--request",
+        "/opt/omicsmatic-celldex-local-requests-20261115-1/mouse.default.rds",
+        "--out",
+        "/opt/omicsmatic-celldex-installed-offline-analysis-20261115-1/public",
+        "--reference-cache",
+        "/opt/omicsmatic-celldex-cache-seed-20261115-1"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "/usr/bin/unshare",
+        "--net",
+        "/opt/omicsmatic-celldex-public-offline-install-20261115-1/runtime/.pixi/envs/default/bin/Rscript",
+        "--vanilla",
+        "/mnt/d/projects/JLinAlg/build/singler-check-1/tools/literature/celldex114_validation/DirectReference.R",
+        "/opt/omicsmatic-celldex-installed-offline-analysis-20261115-1/direct-control.json"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "/opt/omicsmatic-celldex-public-offline-install-20261115-1/runtime/.pixi/envs/default/bin/Rscript",
+        "--vanilla",
+        "/mnt/d/projects/JLinAlg/build/singler-check-1/tools/literature/celldex114_validation/Compare.R",
+        "/opt/omicsmatic-celldex-public-offline-install-20261115-1/library",
+        "/opt/omicsmatic-celldex-installed-offline-analysis-20261115-1/independent-original",
+        "/opt/omicsmatic-celldex-installed-offline-analysis-20261115-1/public/original",
+        "/opt/omicsmatic-celldex-installed-offline-analysis-20261115-1/COMPARISON.json",
+        "mouse.default"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "new_family_credit": 0,
+  "whole_goal_complete": false
+}

@@ -1,0 +1,48 @@
+{
+  "status": "PASS_ACTUAL_INSTALLED_SPOTLIGHT103_REFERENCE_AND_COMPLETE_INDEPENDENT_ORIGINAL",
+  "network_disabled": true,
+  "full_original_returns_conditions_calls_and_rng_compared": true,
+  "original_source_or_dependency_algorithms_patched": false,
+  "commands": [
+    {
+      "command": [
+        "/usr/bin/python3",
+        "-B",
+        "/mnt/d/projects/JLinAlg/build/singler-check-1/tools/literature/spotlight103/run.py",
+        "--runtime",
+        "/opt/omicsmatic-spotlight-public-online-install-20261115-1-provider",
+        "--request",
+        "/opt/omicsmatic-spotlight-paired-controls-20261115-2/requests/matrix.default.rds",
+        "--out",
+        "/opt/omicsmatic-spotlight-installed-online-analysis-20261115-1/public"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "/usr/bin/unshare",
+        "--net",
+        "/opt/omicsmatic-spotlight-public-online-install-20261115-1/runtime/.pixi/envs/default/bin/Rscript",
+        "--vanilla",
+        "/mnt/d/projects/JLinAlg/build/singler-check-1/tools/literature/spotlight103_validation/DirectOriginal.R",
+        "/opt/omicsmatic-spotlight-installed-online-analysis-20261115-1/direct-control.json"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "/opt/omicsmatic-spotlight-public-online-install-20261115-1/runtime/.pixi/envs/default/bin/Rscript",
+        "--vanilla",
+        "/mnt/d/projects/JLinAlg/build/singler-check-1/tools/literature/spotlight103_validation/Compare.R",
+        "/opt/omicsmatic-spotlight-public-online-install-20261115-1/library",
+        "/opt/omicsmatic-spotlight-installed-online-analysis-20261115-1/independent-original",
+        "/opt/omicsmatic-spotlight-installed-online-analysis-20261115-1/public/original",
+        "/opt/omicsmatic-spotlight-installed-online-analysis-20261115-1/COMPARISON.json",
+        "matrix.default"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "new_family_credit": 0,
+  "whole_goal_complete": false
+}

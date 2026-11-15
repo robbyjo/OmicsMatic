@@ -1,0 +1,65 @@
+{
+  "status": "PASS_INSTALLED_ORIGINAL_SPOTLIGHT103_NOT_REFERENCE_ANALYSIS",
+  "provider": "/opt/omicsmatic-spotlight-public-online-install-20261115-1-provider",
+  "source_archives": {
+    "GenomeInfoDbData": {
+      "bytes": 12924272,
+      "sha256": "51a33c432e65261ef81a7c2039b17cbdf7a0b417376fdb7ada4d618566f7074e"
+    },
+    "SPOTlight": {
+      "bytes": 581749,
+      "sha256": "cc694e5326846563658738d6c6b5095c6ba65cbeeaa12eaddf24fa95423d484a"
+    }
+  },
+  "calls": [
+    {
+      "command": [
+        "/mnt/d/projects/JLinAlg/build/literature-review/saige-runtime/pixi-bootstrap-1/pixi",
+        "install",
+        "--locked",
+        "--manifest-path",
+        "/opt/omicsmatic-spotlight-public-online-install-20261115-1/runtime/pixi.toml"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "/opt/omicsmatic-spotlight-public-online-install-20261115-1/runtime/.pixi/envs/default/bin/R",
+        "CMD",
+        "INSTALL",
+        "--no-multiarch",
+        "--library=/opt/omicsmatic-spotlight-public-online-install-20261115-1/library",
+        "/opt/omicsmatic-spotlight-public-online-install-20261115-1/build-original/GenomeInfoDbData"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "/opt/omicsmatic-spotlight-public-online-install-20261115-1/runtime/.pixi/envs/default/bin/R",
+        "CMD",
+        "INSTALL",
+        "--no-multiarch",
+        "--library=/opt/omicsmatic-spotlight-public-online-install-20261115-1/library",
+        "/opt/omicsmatic-spotlight-public-online-install-20261115-1/build-original/SPOTlight"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "/usr/bin/python3",
+        "-B",
+        "/mnt/d/projects/JLinAlg/build/singler-check-1/tools/literature/spotlight103/adopt_runtime.py",
+        "--workspace",
+        "/opt/omicsmatic-spotlight-public-online-install-20261115-1",
+        "--out",
+        "/opt/omicsmatic-spotlight-public-online-install-20261115-1-provider",
+        "--source",
+        "GenomeInfoDbData=/opt/omicsmatic-spotlight-public-online-install-20261115-1/source-original/GenomeInfoDbData",
+        "--source",
+        "SPOTlight=/opt/omicsmatic-spotlight-public-online-install-20261115-1/source-original/SPOTlight"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "new_family_credit": 0
+}

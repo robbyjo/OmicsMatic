@@ -1,4 +1,95 @@
 
+## Native TPMCalculator: warnings and required actions
+
+**250 papers, 446 named families, 2,690 observations and 1,197 reviewed uses; 1,493 uses await review.** The fixed 2023-10-23 through 2026-10-23 corpus remains 71 Nature, 104 Nature Genetics and 75 AJHG papers. The full semantic review and implementation goal remains open.
+
+**122 scoped new integrations: 21 native Java subsets and 101 upstream workflows; 125 including three existing adapters. 265 named families remain missing.** TPMCalculator adds one native family. Newly catalogued iDEP remains missing, so the missing-family total is unchanged. P050's two source-specific reviews distinguish transcript quantification/normalization with TPMCalculator from DESeq2 differential expression within the iDEP.96 web interface. iDEP receives no runtime or implementation credit.
+
+**P050 does not report the TPMCalculator version, options, exact GTF or output selection.** The explicit project comparison uses tag0.0.4, whose original executable prints0.0.3; no author edition is inferred. The tag0.0.6 quantification-source equivalence check is not an executed0.0.6 binary comparison. Preserve the literal iDEP.96 without normalizing it to a source release or DESeq2 version. Its exact edition, license, deployed snapshot and runtime remain unqualified. DESeq2 defaults in that interface do not establish TPMCalculator options. Strand-specific library preparation is not a TPMCalculator strand setting.
+
+**Native counting retains the original source behavior.** Both mates count separately; no strand filtering is inferred. Literal -AS gene exclusions, unusual CIGAR/block assignments, bounded gene scans, partial splice updates, GNU gene order, repeated-transcript behavior, unsigned coordinates and float bridge TPM remain observable. Nonfinite values are retained. Source tables use six significant digits and the declared -nan token; complete raw IEEE state and semantic NaN classification remain separate. Inspect WARNINGS.md, WARNINGS.json and products/CONDITIONS.json before interpretation. Do not silently repair identifiers, annotations or NaN/Inf.
+
+**SKIP3 skips dependent analysis** for a named missing/forbidden input, exact Java/dependency implementation or output prerequisite. Supply that permitted requirement and retry NEW output paths. If access or installation is forbidden, leave the dependent analysis skipped. Analysis downloads and installs nothing; the worker is Java and invokes no original counting program. Use Java17+ and the exact HTSJDK5.0.0 transport supplied in the self-contained application or declared dependency JAR. The library-only JAR requires that dependency on its classpath.
+
+**FAIL2 admits no complete result**, including malformed inputs, runtime/capacity failures, changed inputs, replay mismatch and recording failure after native computation returns. Preserve originals and partials. Read FAILURE.json, failure-trace.txt, WARNINGS.md and complete worker/stdout.bin and worker/stderr.bin when present. Resolve the named cause and retry NEW paths. Only final COMPLETED.json with operation run and result_admitted true admits an analysis; worker/RETURN.json and partial tables do not. A verification marker records a replay, not another analysis. Existing outputs are rejected and preserved.
+
+The qualified synthetic scope includes141 focused tests,64 original table cases and full captured-input replays per host, nine public failure controls per host, five cross-host replays each direction, and50,049 original numeric-formatting references. Windows Java25 and Linux Java21 were actually exercised; the self-contained JAR also passed five saved-bundle replays on each host. Verification freshly recomputes complete captured GTF/BAM files with the recorded implementation and compares semantic state/table bytes. Hash integrity is not source authentication or biological validity. Heap, wall time, workspace and metadata limits are explicit operating capacities, not OS total-memory/disk quotas. Cell Ranger/ARC remain excluded; earlier source/license restrictions and failed/historical records remain retained. Whole-tool validity, biological accuracy and paper reproduction remain unqualified.
+
+<details><summary>Previous warnings (historical)</summary>
+
+
+## MELODI Presto: corrected identity, warnings and required actions
+
+**250 papers, 445 named families, 2,689 observations and 1,195 reviewed uses; 1,494 uses await review.** The fixed 2023-10-23 through 2026-10-23 cohort remains 71 Nature, 104 Nature Genetics and 75 AJHG papers. The full semantic review and implementation goal remains open.
+
+**P169 uses MELODI Presto for literature triples, not the presto single-cell Wilcoxon/AUC R package.** The erroneous missing-family observation is replaced under the explicit canonical identity melodi-presto, with the old observation retained in the predecessor evidence. PRESTO-Tango in P038 is a plasmid kit; JST PRESTO in P157 is funding. Neither is another software use. The unrelated R source was downloaded for assessment only and was never installed or executed for this candidate. Existing unrelated R-dependency evidence from earlier workflows remains intact.
+
+**121 scoped new integrations: 20 native Java subsets and 101 upstream workflows; 124 including three existing adapters. 265 named families remain missing.** The Java service adapter adds one upstream credit and no native analytic credit. Four omitted families are newly catalogued: OncoScore, oncoEnrichR, IntOGen and HaploReg. Seven new observations plus the corrected existing use receive source-specific reviews. The missing count rises because those omissions are now recorded. The IntOGen 2023 pipeline in P042 differs from P169's reuse of a driver resource released 1 February 2020 and restricted to COADREAD; HaploReg versions 4.1/4.2 and an unreported version belong to different papers. oncoEnrichR 1.4.2.1 is separate from Enrichr. These four families receive no implementation credit.
+
+**The live server snapshot is unknown.** P169 accessed MELODI Presto on3April2024. Supply server_snapshot live-unversioned explicitly for a current query; historical snapshot requests are rejected rather than silently replaced. A current response does not establish novelty, absence of evidence, causal links, a historical database or the authors' original gene-list result. Full semantic triples, literature payloads and historical/failed responses remain private under their original data provenance; software licensing does not relicense them.
+
+**SKIP3 skips dependent analysis** for a named missing or forbidden runtime, permitted networking, service/access or output prerequisite. Supply the permitted requirement, inspect the complete HTTP diagnostics and retry NEW paths; analysis installs nothing. **FAIL2 admits no complete result**, including bad requests, original Error-bearing responses, non-JSON replies, count mismatches, lower-bound/capped totals, truncated data and recording failure after a server return. Preserve all originals and partials. Read WARNINGS.md, FAILURE.json, HTTP.json and complete response.bin, resolve the named cause and retry NEW paths. Only final COMPLETED.json admits a recorded operation. Network transmission requires --allow-network and sends the explicit query terms to the recorded server.
+
+The adapter preserves every original response field and byte, including numeric precision, unknown fields, nulls, identifiers and the sentence Elasticsearch count object. It does not turn error records into empty biological results. Verification rechecks saved integrity and response structure without rerunning the service; hashes do not establish server authenticity or recover an earlier database. Client fixture tests cover all three routes and actual transport/failure boundaries; the source-qualified service receipts distinguish successful live operations from retained failed attempts. Cell Ranger/ARC remain excluded; SingleR2.41 remains unresolved. Whole-tool validity, native analytic replacement, biological accuracy and paper reproduction remain unqualified.
+
+<details><summary>Previous warnings (historical)</summary>
+
+
+## SPOTlight 1.0.3: warnings and required actions
+
+**250 papers, 441 named software families, 2,682 observations and 1,187 reviewed uses; 1,495 uses await review.** The fixed 2023-10-23 through 2026-10-23 cohort remains 71 Nature, 104 Nature Genetics and 75 AJHG papers. Only the existing P051 SPOTlight implementation coverage note changes. Primary facts, source versions, settings and anchors remain unchanged. The semantic review and implementation goal remains open.
+
+**120 scoped new integrations: 20 native Java subsets and 100 original upstream workflows; 123 including three existing adapters. 262 named families remain missing.** SPOTlight adds one upstream family credit and no native credit. The BD Rhapsody analysis pipeline remains missing. Spotlight Therapeutics is a company and the ordinary verb spotlight is not a software use.
+
+**Original arguments are not guarantees:** in this pinned 1.0.3 source, model ns/std use the same native routine, min_prop does not filter proportions and extra arguments can be accepted without effect. The original return does not certify NMF convergence; an iteration-limited return remains possible. Original all-zero spots can return NaN. Inspect original diagnostics, retain all values and validate fitness for use. The paper's >=10% labeling is a separate downstream analysis decision with no inferred neutrophil column.
+
+P051 reports SPOTlight 1.0.3 in two distinct deconvolution contexts (source paragraphs114/119). The selected original commit0a85246f93167f869de704166627fe6679fe03b5 declares that version and contains its own C++ NMF/NNLS routines; the attempted Bioconductor1.0.3 archive returned404. This exact project source and R4.4.3 comparison environment do not establish the authors' exact commit, inputs, references, markers, settings, seed or environment. SingleR annotation and celldex reference retrieval remain separate operations.
+
+**SKIP3 skips dependent analysis** for the named missing or forbidden exact source, runtime, Linux/network isolation or installation/download requirement. Supply that permitted requirement and retry NEW paths. Installation requires --allow-install; software networking additionally requires --allow-download. Analysis installs and downloads nothing. **FAIL2 admits no complete result**, including original errors, native crashes, altered captured inputs, missing status and postreturn recording failure. Read WARNINGS.md, FAILURE.json, original/R-status.json, all original conditions/RNG and both consoles. Resolve the stated cause, retain originals/partials and retry NEW paths. Only final COMPLETED.json admits a recorded operation.
+
+Twenty-nine independent comparisons produced 20 complete returns and nine original errors. Complete original returns, attributes, intermediate models and RNG matched. All condition fields/calls and original native-origin frames were compared. Both complete C++ backtraces are retained; ASLR addresses and wrapper-dependent frames are not required to be byte-identical. Eleven actual Linux public guards, two Windows prerequisite skips, both public installers and both complete installed-runtime analyses passed. Matching errors never count as successful deconvolution. Full synthetic records and earlier failed attempts are retained. Saved-record readback differs from fresh scientific computation; neither establishes convergence, biological validity, whole-tool validity or paper reproduction.
+
+P233's SingleR2.41 remains unresolved and skipped. Cell Ranger/ARC remain excluded by user request. Earlier source, license and runtime restrictions remain in their guides and historical notices. The full250-paper goal remains open.
+
+<details><summary>Previous warnings (historical)</summary>
+
+
+## celldex 1.14.0: warnings and required actions
+
+**250 papers, 441 named software families, 2,682 observations and 1,187 reviewed uses; 1,495 uses await review.** The fixed 2023-10-23 through 2026-10-23 cohort remains 71 Nature, 104 Nature Genetics and 75 AJHG papers. Paper identities, reported versions and primary settings remain unchanged. Only the existing P051 celldex implementation coverage note changes. The full semantic review and implementation goal remains open.
+
+**119 scoped new integrations: 20 native Java subsets and 99 original upstream workflows; 122 including three existing adapters. 263 named families remain missing.** celldex adds one upstream family credit and no native credit. SPOTlight and the BD Rhapsody analysis pipeline remain separate missing families. ImmGen is a biological reference, and Celldex Therapeutics is a company, not another software use.
+
+P051 reports celldex 1.14.0 and literally describes MouseRNAseq ImmGen reference profiles. Exact functions, snapshots, gene-ID options and the author environment are not established; the human-neutrophil heading and reference wording are retained. The source-built 1.14.0 target uses explicit R4.4.3/Bioconductor3.20 comparison dependencies, selected by the project. Reference retrieval, SingleR annotation and SPOTlight deconvolution are separate operations.
+
+**Offline Hub retrieval needs explicit original LOCAL caller options and a complete cache.** Legacy/ontology and Ensembl paths can contact Hub services even with cached files under their unchanged defaults. Record ExperimentHub and AnnotationHub LOCAL=TRUE in the trusted request when local-only retrieval is intended. The adapter never silently changes those defaults. Original Ensembl conversion can warn and remove unmapped or duplicate mapped genes; read every original warning. Keep lazy-reference backing files at their recorded paths, or explicitly request the original realization option before calling the function.
+
+**SKIP3 skips dependent retrieval** for a named missing or forbidden exact runtime, source, reference, installation, network-isolation or download requirement. Supply that permitted requirement and retry NEW paths. Runtime installation needs --allow-install; reference downloads separately need --allow-download. **FAIL2 admits no complete result**, including original errors, native crashes and recording failures after an original return. Read WARNINGS.md, FAILURE.json, original/R-status.json, complete conditions/RNG and both raw consoles. Resolve the stated input/filesystem cause, preserve all originals/partials and retry NEW paths. Only final COMPLETED.json admits the public operation; a leftover RDS or successful R exit is insufficient.
+
+Sixteen comparisons with explicit LOCAL options produced 12 complete returns and four original errors; complete objects, conditions/RNG and independently materialized lazy assays matched. Earlier default-offline runs had seven returns and nine original errors, including five Hub failures, all retained without results. Twelve actual Linux public guards, two Windows prerequisite skips, both installer branches and both installed-runtime analyses passed. The fresh-download installed analysis started with an empty cache. These checks establish no whole-tool validity, biological accuracy or paper reproduction.
+
+**Complete reference-data records remain local and unchanged.** Public source/receipt checks differ from full private-record readback and fresh computation. The complete private index identifies 4,469 retained files; no reference matrix is redistributed or assigned the software's license. Use the documented permitted inputs/runtime to repeat the controls. P233's SingleR 2.41 remains unresolved and skipped; Cell Ranger/ARC remain excluded by user request. Earlier source, license and runtime restrictions remain in their guides and historical notices.
+
+<details><summary>Previous warnings (historical)</summary>
+
+
+## SingleR: warnings and required actions
+
+**250 papers, 441 named software families, 2,682 observations and 1,187 reviewed uses; 1,495 uses await review.** The fixed 2023-10-23 through 2026-10-23 cohort remains 71 Nature, 104 Nature Genetics and 75 AJHG papers. The full semantic review and implementation goal remains open.
+
+**118 scoped new integrations: 20 native Java subsets and 98 original upstream workflows; 121 including three existing adapters. 264 named families remain missing.** SingleR adds one upstream family across five explicitly selected releases. Four existing paper uses receive source-specific readings. Three newly identified P051 families, celldex, SPOTlight and the BD Rhapsody analysis pipeline, remain missing and receive no implementation credit. Similar company names, an ordinary verb, instrument-only descriptions and ImmGen biological references add no software credit.
+
+**P233 literally reports SingleR 2.41; its identity is unresolved.** Requesting 2.41 produces SKIP3 and skips dependent analysis. Obtain original source/version clarification; do not normalize it to 2.4.1 or substitute another release. Elsewhere the papers report different SingleR releases and references for different analyses. Use each source-specific reading; do not borrow settings across contexts. Project comparison environments are not recovered author environments.
+
+**SKIP3 skips dependent analysis** for missing or forbidden exact software, reference inputs, Linux execution, installation or downloads. Read the named requirement, supply that permitted requirement and retry NEW paths. The installer requires explicit permission flags; analysis installs and downloads nothing. Supply original query/reference objects, labels and intended caller settings. A skip is not an annotation or empty biological result.
+
+**FAIL2 admits no complete result**, including original source errors, native crashes and recording failure after an original return. Preserve originals and partials. Read WARNINGS.md, FAILURE.json, original R-status.json and all raw consoles. Resolve the stated input/filesystem cause and retry NEW paths. Only a final public-runner COMPLETED.json admits the recorded analysis; a leftover RDS or successful R exit is insufficient. Original warnings, IDs, NA/NaN/Inf, conditions and RNG remain intact.
+
+The qualified synthetic comparisons include 250 original controls: 232 complete returns and 18 original errors. Original errors remain errors, including unsupported arguments, label/gene mismatches and the tested custom-assay failure. Read the release-specific warning table before analysis. The first 1.2.4 dependency binary crashed even on finite row medians and remains unqualified; the selected profile rebuilds the same unchanged dependency release. Saved training pointers are records, not reusable live indexes. Whole-tool validity, biological accuracy and paper reproduction remain unqualified. The integration guide gives commands, tested scope, complete records and recovery steps. Cell Ranger/ARC remain excluded by user request; earlier source/license/runtime restrictions remain in their guides and historical notices.
+
+<details><summary>Previous warnings (historical)</summary>
+
+
 ## HICAT 1.0.9: warnings and required actions
 
 **250 papers, 438 named families, 2,679 observations and 1,180 individually reviewed uses; 1,499 uses await review.** The fixed 2023-10-23 through 2026-10-23 cohort remains 71 Nature, 104 Nature Genetics and 75 AJHG papers. All paper identities, reported editions, primary settings, source anchors and uncertainties are unchanged. Only one existing P059 HICAT implementation coverage note changes, in its observation and review. The later HICAT predecessor mentions do not establish additional current HICAT analyses.
@@ -1261,6 +1352,16 @@ output path. Disconnected infinite pseudotime values remain present. LEARN
 does not admit a pseudotime result. Do not infer roots or repair values to
 conceal failures. Full Batchelor, study reproduction and biological accuracy
 remain unproven; the250-paper goal remains active.
+
+</details>
+
+</details>
+
+</details>
+
+</details>
+
+</details>
 
 </details>
 

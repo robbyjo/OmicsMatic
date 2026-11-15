@@ -1,0 +1,30 @@
+// Copyright (C) 2026 JLinAlg contributors; SPDX-License-Identifier: GPL-3.0-or-later
+const fs=require('fs'),path=require('path'),assert=require('assert/strict');
+const [modules,executablePath,output,base]=process.argv.slice(2);
+const {chromium}=require(path.join(modules,'playwright'));fs.mkdirSync(output,{recursive:false});
+(async()=>{const browser=await chromium.launch({executablePath,headless:true});const page=await browser.newPage({viewport:{width:1440,height:1000}}),errors=[];
+page.on('pageerror',e=>errors.push(e.message));try{
+ await page.goto(base+'/literature-review.html');await page.waitForFunction(()=>document.querySelector('#count')?.textContent==='250 of 250 papers');
+ assert.equal(await page.locator('#results article').count(),250);
+ const notice=page.locator('#spotlight103-required-actions');assert.equal(await notice.count(),1);assert(await notice.isVisible());
+ assert(await notice.evaluate(e=>e.compareDocumentPosition(document.querySelector('#overview'))&Node.DOCUMENT_POSITION_FOLLOWING));
+ const history=page.locator('details').filter({has:page.locator('summary').filter({hasText:'Previous celldex checkpoint (historical)'})});assert.equal(await history.count(),1);assert.equal(await history.getAttribute('open'),null);
+ await page.locator('#query').fill('10.1038/s41586-025-09807-0');assert.equal(await page.locator('#results article').count(),1);
+ const row=page.locator('#P051 tbody tr').filter({has:page.locator('td:first-child').filter({hasText:/^SPOTlight/})});assert.equal(await row.count(),1);
+ for(const word of ['1.0.3','upstream-adapter-validated','LungMap','>=10%','min_prop','SKIP3','FAIL2'])assert((await row.innerText()).includes(word),word);
+ await page.locator('#query').fill('');await page.locator('#tools-tab').click();assert.equal(await page.locator('#results article').count(),441);
+ const card=page.locator('#results article').filter({has:page.getByRole('heading',{name:/^SPOTlight \(1 paper/})});assert.equal(await card.count(),1);
+ for(const word of ['1.0.3','upstream-adapter-validated','20complete','9original','NaN','convergence','SKIP3','FAIL2'])assert((await card.innerText()).includes(word),word);
+ await card.screenshot({path:path.join(output,'spotlight-card.png')});
+ const data=JSON.parse(await page.locator('#review-data').textContent());assert.equal(data.summary.implementation_status_counts.missing,262);assert.equal(data.summary.implementation_status_counts['upstream-adapter-validated'],100);assert.equal(data.summary.implementation_status_counts['native-subset-validated'],20);
+ assert.equal(data.papers.flatMap(p=>p.tools).length,2682);assert.equal(data.tools.find(t=>t.id==='bd-rhapsody').implementation_status,'missing');
+ const primary=data.papers.find(p=>p.paper_id==='P051').tools.find(t=>t.tool_id==='spotlight');assert.equal(primary.version_reported_near_name,'1.0.3');
+ assert(primary.use_summary.includes('>=10%'));assert(primary.use_summary.includes('LungMap'));
+ const tool=data.tools.find(t=>t.id==='spotlight');for(const key of ['author_exact_source_commit_established','original_NMF_convergence_certified','biological_accuracy_established','whole_tool_qualified'])assert.equal(tool[key],false);
+ await page.goto(base+'/literature-warnings.html');const warning=page.locator('#spotlight103-required-actions'),text=await warning.innerText();
+ for(const word of ['441 named','2,682','1,187','1,495','120 scoped','262 named','20 complete','nine original','min_prop','NaN','convergence','ASLR','SKIP3','FAIL2','COMPLETED.json','Cell Ranger/ARC'])assert(text.includes(word),word);
+ await warning.screenshot({path:path.join(output,'warnings-desktop.png')});await page.setViewportSize({width:390,height:1000});await page.evaluate(()=>document.documentElement.dataset.theme='dark');
+ await page.locator('#spotlight103-runtime-guide summary').click();assert.equal(await page.locator('#spotlight103-runtime-guide pre:visible').count(),2);assert(await warning.evaluate(e=>e.scrollWidth<=e.clientWidth+1));
+ await warning.screenshot({path:path.join(output,'warnings-mobile.png')});assert.deepEqual(errors,[]);
+ fs.writeFileSync(path.join(output,'COMPLETED.json'),JSON.stringify({status:'PASS_SPOTLIGHT103_PRIMARY_ROLES_COUNTS_ORIGINAL_OPTION_WARNINGS_FAILURE_RECOVERY_AND_MOBILE_COMMANDS_UI',papers:250,named_tools:441,observations:2682,reviewed_uses:1187,new_scoped_integrations:120,missing:262,desktop:'1440x1000',mobile_dark:'390x1000',warning_overflow:false,browser_errors:errors,public_site_deployed:false},null,2)+'\n');
+}finally{await browser.close();}})().catch(error=>{fs.writeFileSync(path.join(output,'FAILURE.json'),JSON.stringify({status:'FAIL2_SPOTLIGHT103_CATALOG_UI_UNADMITTED',error:String(error),stack:error.stack},null,2)+'\n');console.error(error);process.exitCode=2;});

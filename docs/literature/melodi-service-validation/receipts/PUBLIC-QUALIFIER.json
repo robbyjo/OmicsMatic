@@ -1,0 +1,74 @@
+{
+  "status": "PASS_ALL_THREE_CURRENT_PACKAGED_MELODI_SERVICE_OPERATIONS",
+  "operations": [
+    {
+      "operation": "overlap",
+      "exit_code": 0,
+      "command": [
+        "/usr/bin/java",
+        "-Xmx512m",
+        "-cp",
+        "/mnt/d/projects/JLinAlg/build/literature-review/monocle-runtime/melodi-packaged-live-2/OmicsMatic-0.3.7.jar",
+        "org.jlinalg.cli.MelodiPrestoCli",
+        "run",
+        "--request",
+        "/opt/omicsmatic-melodi-public-qualification-20261115-1/overlap-request.json",
+        "--out",
+        "/opt/omicsmatic-melodi-public-qualification-20261115-1/overlap",
+        "--allow-network"
+      ],
+      "records": 4277,
+      "response": {
+        "bytes": 4145341,
+        "sha256": "a6747ad84ba207e102753f4f32281e75967b629f9dddd7cbf5470df0345d186d"
+      }
+    },
+    {
+      "operation": "enrich",
+      "exit_code": 0,
+      "command": [
+        "/usr/bin/java",
+        "-Xmx512m",
+        "-cp",
+        "/mnt/d/projects/JLinAlg/build/literature-review/monocle-runtime/melodi-packaged-live-2/OmicsMatic-0.3.7.jar",
+        "org.jlinalg.cli.MelodiPrestoCli",
+        "run",
+        "--request",
+        "/opt/omicsmatic-melodi-public-qualification-20261115-1/enrich-request.json",
+        "--out",
+        "/opt/omicsmatic-melodi-public-qualification-20261115-1/enrich",
+        "--allow-network"
+      ],
+      "records": 1862,
+      "response": {
+        "bytes": 806303,
+        "sha256": "03940fa7a4d784488bea255f8543496a182095b0e30d301732c5f2fe09b52e01"
+      }
+    },
+    {
+      "operation": "sentence",
+      "exit_code": 0,
+      "command": [
+        "/usr/bin/java",
+        "-Xmx512m",
+        "-cp",
+        "/mnt/d/projects/JLinAlg/build/literature-review/monocle-runtime/melodi-packaged-live-2/OmicsMatic-0.3.7.jar",
+        "org.jlinalg.cli.MelodiPrestoCli",
+        "run",
+        "--request",
+        "/opt/omicsmatic-melodi-public-qualification-20261115-1/sentence-request.json",
+        "--out",
+        "/opt/omicsmatic-melodi-public-qualification-20261115-1/sentence",
+        "--allow-network"
+      ],
+      "records": 5,
+      "response": {
+        "bytes": 3363,
+        "sha256": "2b18208cb461ef16fd90d8a74dcb2c824cdfb8760b3674de39c9ebb4846dbd87"
+      }
+    }
+  ],
+  "author_snapshot_established": false,
+  "native_analytic_credit": 0,
+  "whole_goal_complete": false
+}
