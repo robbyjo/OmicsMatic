@@ -14049,12 +14049,20 @@
         "matched_text": "TPMCalculator",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-primary-source-identity-and-role",
         "evidence_paragraph_sha256": "57c44a55cc007a9521bd21d67f94f8eebda2fe6ab80afe7fe9bbb5f9cb4a719a",
-        "use_summary": "Expression-count and TPM normalization workflow.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10781626/ (section: Methods / RNA-seq and sequence alignment)"
+        "use_summary": "Quantified and normalized RNA-seq transcripts with TPMCalculator. The paragraph separately reports Subread2.0.1 alignment, featureCounts gene read counts and DESeq2 defaults within iDEP.96; none establishes TPMCalculator options or its version.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10781626/ (section: Methods / RNA-seq and sequence alignment)",
+        "implementation_scope_note": "Project availability: native Java GTF/BAM read assignment and TPM workflow using the explicit original0.0.4 GNU64 comparison profile; original executable prints0.0.3. The author version, options, exact GTF and output selection are unknown. Project controls are not recovered author settings. All original counting/model quirks, missing/present-zero state, nonfinite values, float bridge TPM and six-digit tables are retained. Complete input capture, all32 state fields, raw IEEE bits, conditions, implementation/dependency identities and worker streams are recorded. Saved verification freshly recomputes captured GTF/BAM with the matching recorded implementation; it does not need original file locations. SKIP3 skips unavailable/forbidden prerequisites; FAIL2 admits no complete result, including recording failure after a native return. Only final COMPLETED.json with operation run and result_admitted true admits an analysis. No original quantification program or installer is invoked. HTSJDK5.0.0 transports BAM using explicitly selected JDK decompression. No whole-tool, biological-accuracy or paper-reproduction claim is made.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 45,
+            "section": "Methods / RNA-seq and sequence alignment",
+            "paragraph_sha256": "57c44a55cc007a9521bd21d67f94f8eebda2fe6ab80afe7fe9bbb5f9cb4a719a"
+          }
+        ]
       },
       {
         "tool_id": "ucsc-bedgraphtobigwig",
@@ -14110,6 +14118,30 @@
             "paragraph_index": 31,
             "paragraph_sha256": "b1832c16c140547df9f1d8e575d79242404f77469d7952da83a64fc8afa92917",
             "section": "Methods / Immunofluorescence microscopy"
+          }
+        ]
+      },
+      {
+        "tool_id": "idep",
+        "tool": "iDEP",
+        "analysis_role": "Interactive differential-expression web workflow",
+        "matched_text": "iDEP.96",
+        "extraction_score": 15,
+        "evidence_section": "Methods / RNA-seq and sequence alignment",
+        "evidence_paragraph_index": 45,
+        "usage_context": "analysis-method-description",
+        "evidence_selection": "individually-reviewed-primary-source-identity-and-role",
+        "evidence_paragraph_sha256": "57c44a55cc007a9521bd21d67f94f8eebda2fe6ab80afe7fe9bbb5f9cb4a719a",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10781626/ (section: Methods / RNA-seq and sequence alignment)",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
+        "version_reported_near_name": "iDEP.96",
+        "use_summary": "Conducted differential expression analysis with DESeq2 and default settings within the iDEP.96 web interface. Preserve that literal interface identity; the DESeq2 version, exact deployed source and complete effective defaults are not reported.",
+        "implementation_scope_note": "Source-reviewed iDEP web-interface use only; no iDEP installation, runtime or implementation credit. Preserve the literal iDEP.96 without normalizing it to a release or inferring a source commit, deployed snapshot, DESeq2 version or complete defaults. Assess that exact edition, its license and permitted runtime before dependent analysis. SKIP3 skips unavailable/forbidden prerequisites; FAIL2 admits no complete result.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 45,
+            "section": "Methods / RNA-seq and sequence alignment",
+            "paragraph_sha256": "57c44a55cc007a9521bd21d67f94f8eebda2fe6ab80afe7fe9bbb5f9cb4a719a"
           }
         ]
       }
