@@ -1,0 +1,68 @@
+{
+  "status": "PRIMARY_R_ARROW_ROLES_WITH_SELECTED1201_PARQUET_COVERAGE",
+  "reviews": [
+    {
+      "paper_id": "P059",
+      "pmcid": "PMC10719114",
+      "doi": "10.1038/s41586-023-06812-z",
+      "tool_id": "arrow-r",
+      "primary_xml_sha256": "48771a4387270374add8ea5c2127306e44260dc2dc2d82b0ceb358a060ca1b94",
+      "evidence_paragraph_index": 87,
+      "evidence_paragraph_sha256": "72099b426b6bbba9e8e34611963c36f2f6b32474cf0d6de78ec762ca4eba02ea",
+      "version_reported_near_name": "12.0.1",
+      "usage_context": "analysis-method-description",
+      "use_summary": "Uses the R arrow package to load sparse expression matrices stored in Parquet chunks of 50,000 cells by 500 genes, and to query chunked pairwise cluster differential-expression results.",
+      "reported_settings": {
+        "expression_chunk_cells": 50000,
+        "expression_chunk_genes": 500,
+        "format": "Parquet"
+      },
+      "uncertainties": [
+        "Specific Arrow function calls, memory-map settings and query options are unreported.",
+        "Do not conflate the R interface with PyArrow, PacBio Arrow or ordinary figure arrows."
+      ],
+      "supporting_evidence": [
+        {
+          "paragraph_index": 87,
+          "section": "Methods / scRNA-seq / Clustering scRNA-seq data",
+          "paragraph_sha256": "72099b426b6bbba9e8e34611963c36f2f6b32474cf0d6de78ec762ca4eba02ea"
+        },
+        {
+          "paragraph_index": 91,
+          "section": "Methods / scRNA-seq / Differential gene expression analysis",
+          "paragraph_sha256": "21ef0a321d804d366f73d62103f9b56505e1b94cdf39d0983b93056dc17de5a6"
+        }
+      ],
+      "implementation_scope_note": "Project availability: selected original R Arrow 12.0.1 Parquet chunk reads and lazy Dataset filter/select/arrange/collect queries with caller-declared local assets and options. The pinned C++ h32ed672_2_cpu recipe declares no source patches; same-version patched builds are rejected. Thirteen original controls cover ten complete returns and three original failures, including a 50,000-by-500 project fixture. The paper storage schema, exact Arrow calls, memory-map settings and query options remain unreported. Sparse-matrix conversion, live Dataset/Table pointer persistence, biological validity and paper reproduction are not qualified. Complete original conditions are retained; the missing-column trace records actual caller context. Missing/forbidden prerequisites SKIP3 skip dependent analysis; FAIL2 admits no complete result, including recording failure.",
+      "named_anchor_classification": [
+        {
+          "paragraph_index": 87,
+          "kind": "primary-methods"
+        },
+        {
+          "paragraph_index": 91,
+          "kind": "primary-methods"
+        }
+      ]
+    }
+  ],
+  "paper_role_coverage": {
+    "P059": "Uses the R arrow package to load sparse expression matrices stored in Parquet chunks of 50,000 cells by 500 genes, and to query chunked pairwise cluster differential-expression results. Project availability: selected original R Arrow 12.0.1 Parquet chunk reads and lazy Dataset filter/select/arrange/collect queries with caller-declared local assets and options. The pinned C++ h32ed672_2_cpu recipe declares no source patches; same-version patched builds are rejected. Thirteen original controls cover ten complete returns and three original failures, including a 50,000-by-500 project fixture. The paper storage schema, exact Arrow calls, memory-map settings and query options remain unreported. Sparse-matrix conversion, live Dataset/Table pointer persistence, biological validity and paper reproduction are not qualified. Complete original conditions are retained; the missing-column trace records actual caller context. Missing/forbidden prerequisites SKIP3 skip dependent analysis; FAIL2 admits no complete result, including recording failure."
+  },
+  "P059_reported_edition": "12.0.1",
+  "reported_chunk_cells": 50000,
+  "reported_chunk_genes": 500,
+  "author_calls_schema_mmap_query_options_unreported": true,
+  "sparse_matrix_conversion_qualified": false,
+  "author_environment_inferred": false,
+  "live_execution_context_identity_claimed": false,
+  "complete_original_conditions_retained": true,
+  "missing_column_difference": "trace only; actual caller context retained",
+  "selected_CPP_build": "h32ed672_2_cpu",
+  "recipe_source_patches": [],
+  "prior_CPP_build50_invalidated": true,
+  "original_CPP_binary_independently_rebuilt": false,
+  "new_upstream_family_credit": 1,
+  "native_family_credit_added": 0,
+  "whole_goal_complete": false
+}

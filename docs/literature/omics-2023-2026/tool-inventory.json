@@ -11569,25 +11569,49 @@
     "name": "arrow (R)",
     "pattern": "(?<![A-Za-z0-9_])arrow(?=\\s+package\\b)",
     "role": "R Arrow interface for chunked Parquet matrices and DEG queries",
-    "current_coverage": "missing",
-    "existing_source": null,
-    "coverage_note": "R interface 12.0.1 in P059 remains missing. Existing DuckDB Parquet support is not this R interface or paper workflow.",
+    "current_coverage": "upstream-adapter-validated",
+    "existing_source": "tools/literature/arrow1201/run.py",
+    "coverage_note": "Selected original R Arrow 12.0.1 chunk reads and lazy Parquet Dataset queries; author calls/schema/options remain unreported.",
     "paper_count": 1,
     "papers": [
       "P059"
     ],
-    "implementation_status": "missing",
-    "implementation_source": null,
-    "implementation_scope": "R interface 12.0.1 in P059 remains missing. Existing DuckDB Parquet support is not this R interface or paper workflow.",
-    "validation_note": "Primary source identities, named anchors and stated roles reviewed. No runtime analysis executed and no implementation credit.",
+    "implementation_status": "upstream-adapter-validated",
+    "implementation_source": "tools/literature/arrow1201/run.py",
+    "implementation_scope": "Original R Arrow 12.0.1 local Parquet chunk reads and lazy Dataset filter/select/arrange/collect using caller-declared assets and options. Required recipe-unpatched C++ h32ed672_2_cpu; same-version patched builds blocked. Complete collected R data frames and conditions retained. Author sparse-matrix encoding/conversion, exact calls/mmap/query options, other interfaces, live pointers and biological/paper reproduction are not qualified.",
+    "validation_note": "13 direct original controls: 10 complete returns and 3 original failures, including a 50,000-by-500 project fixture. Complete return/RNG identity and numeric payload checks preserve signed zero, NA/NaN, integer64, classes, attributes and order. 12 complete condition controls identical; missing-column differs only in complete trace (actual caller context retained); class/message/call and all other fields agree. 984-member frozen evidence; online/cache-only installs; five real policy/recording tests and UID-65534 permission test. Two unchanged and twelve tampered comparator controls. SKIP3 skips dependent analysis; FAIL2 admits no complete result, including recording failure.",
     "source_roles_reviewed": 1,
-    "new_scoped_integration_credit": 0,
+    "new_scoped_integration_credit": 1,
     "native_family_credit_added": 0,
-    "project_adapter_available": false,
+    "project_adapter_available": true,
     "canonical_adapter_available": false,
     "root_dispatch_available": false,
     "whole_tool_qualified": false,
-    "whole_paper_reproduced": false
+    "whole_paper_reproduced": false,
+    "development_candidate_available": true,
+    "development_candidate": "tools/literature/arrow1201/run.py",
+    "development_candidate_sha256": "51919d2c44dfe5fd751871b69509c9f0ca33717508ca80a701312bf753a78406",
+    "development_candidate_kind": "python-source-entrypoint-requires-exact-recipe-unpatched-Linux-WSL-R-provider",
+    "development_build": "tools/literature/arrow1201/install_runtime.py",
+    "development_adapter_cli": "python3 tools/literature/arrow1201/run.py --runtime /permitted/arrow-provider --request /trusted/request.rds --assets /local/parquet-assets --out /NEW/output",
+    "selected_upstream_versions": [
+      "12.0.1"
+    ],
+    "selected_CPP_build": "h32ed672_2_cpu",
+    "selected_R_version": "4.2.3",
+    "selected_environment_is_author_environment": false,
+    "workflow_validation": "../arrow1201-pristine-workflow-validation/QUALIFICATION.json",
+    "source_role_coverage": "arrow1201-role-coverage.json",
+    "current_documentation": "docs/literature/ARROW1201_CATALOG_INTEGRATION.md",
+    "paper_role_coverage": {
+      "P059": "Uses the R arrow package to load sparse expression matrices stored in Parquet chunks of 50,000 cells by 500 genes, and to query chunked pairwise cluster differential-expression results. Project availability: selected original R Arrow 12.0.1 Parquet chunk reads and lazy Dataset filter/select/arrange/collect queries with caller-declared local assets and options. The pinned C++ h32ed672_2_cpu recipe declares no source patches; same-version patched builds are rejected. Thirteen original controls cover ten complete returns and three original failures, including a 50,000-by-500 project fixture. The paper storage schema, exact Arrow calls, memory-map settings and query options remain unreported. Sparse-matrix conversion, live Dataset/Table pointer persistence, biological validity and paper reproduction are not qualified. Complete original conditions are retained; the missing-column trace records actual caller context. Missing/forbidden prerequisites SKIP3 skip dependent analysis; FAIL2 admits no complete result, including recording failure."
+    },
+    "uncovered_roles": [
+      "The author storage schema, sparse-matrix encoding/conversion and exact Arrow/memory-map/query options",
+      "Other editions/builds/interfaces, remote/cloud sources and live Dataset/Table pointer persistence",
+      "Live execution-context identity and universal raw/native diagnostic totals",
+      "Whole-package, biological validity and paper reproduction"
+    ]
   },
   {
     "id": "pyarrow",
