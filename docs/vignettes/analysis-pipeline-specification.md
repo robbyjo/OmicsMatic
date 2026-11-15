@@ -1,6 +1,6 @@
 # Analysis pipeline specification
 
-> **Scientific workflow specification, updated 2026-10-26.** This document
+> **Scientific workflow specification, updated 2026-11-15.** This document
 > improves the proposed end-to-end pseudocode and maps it to the current source
 > build. Requirements describe the intended workflow; they do not imply that
 > every branch is already automatic. Documenting this specification performs no
@@ -199,11 +199,35 @@ for each phenotype/hypothesis and compatible analysis block:
     allow a validated supplied primary result to satisfy the same scoped contract
     retain replication/sensitivity evidence with their distinct result identities
 
+    plan useful bioinformatics follow-ups from the available tool catalog:
+        identify the scientific question or evidence gap each operation addresses
+        match exact supported tool operations to the available data and references
+        register candidate scope, settings, testing families and expected outputs
+        reuse accepted completed results; execute supported requested missing work
+        retain unsupported, unavailable, failed and not-applicable dispositions
+        validate successful outputs and preserve raw tables, figures and provenance
+        attach typed results to the matching variant/locus/gene/feature/tissue dossier
+        feed eligible evidence into interpretation, impact review and manuscript
+        avoid duplicate analyses or counting shared-input outputs as independent support
+
     for each declared eligible functional follow-up:
         run GO/pathway ORA, ranked GSEA or GWAS enrichment as applicable
         record mapping, tested background, resource release and multiplicity
 
     if this is a GWAS:
+        if multiple SNPs are found in a declared locus or analysis scope:
+            perform conditional analysis using the registered association model
+            initialize conditioning SNPs from a prespecified file when supplied
+            otherwise start with the strongest SNP by primary association P value
+            retain the original covariates and registered dependence structure
+            if forward selection is the declared method:
+                test remaining eligible SNPs conditional on all selected SNPs
+                add the strongest SNP meeting the registered conditional entry rule
+                refit and repeat until no SNP qualifies or a declared limit is reached
+            else:
+                run the configured advanced conditional/joint-analysis software
+            save initial SNPs, selection steps, final joint effects and diagnostics
+            preserve marginal results and report conditional findings separately
         annotate every QC-eligible SNP/variant with ANNOVAR or an equivalent
         look up versioned AlphaGenome scores; predict eligible gaps within budget
         retain per-variant status, per-output scores and missingness reasons
@@ -939,6 +963,65 @@ Phenotype/block-aware nulls, cross-cohort preservation, clustered resampling,
 integrated community/WGCNA orchestration and broader large-scale acceptance
 remain separate requirements.
 
+## 4a. Useful bioinformatics tools and result integration
+
+Select follow-up operations because they answer a declared scientific question
+or fill an evidence gap. The installed/catalogued tool list supplies candidate
+methods; it is not an instruction to run every tool. Selection should consider
+the phenotype, assay, locus/feature identity, tissue, available data, reference
+coverage, supported software profile and computational budget. Use the exact
+operation's capability and validation record, rather than a package name, to
+decide whether a result can be produced.
+
+Examples from the current source catalog include:
+
+| Scientific question | Available method or tool route | Useful result to add | Required inputs and scope |
+| --- | --- | --- | --- |
+| Does a locus contain additional association signals? | Native conditional/secondary-signal methods; a separately configured advanced conditional/joint tool | Conditional association table, selected SNPs, final joint effects and selection path | Compatible genotype/model data or allele-aligned summaries and LD; exact conditioning set and selection rules |
+| Which variants best explain each signal? | Native SuSiE method | Variant PIPs, signal-specific credible sets and convergence diagnostics | Dense regional summaries, sample size and signed allele-aligned LD; fine-mapping is distinct from conditional testing |
+| Which genes could a GWAS locus affect? | Validated native FUMA mapping subset | Variant-to-gene evidence from position, supplied eQTL tracks and chromatin interactions | Explicit gene/track resources, build, tissue and mapping rules; mapping does not itself establish causality |
+| Which genes, pathways or tissues carry association evidence? | MAGMA original-engine adapter, FUMA gene-set/expression modules, GSEApy or native enrichment | Gene/set statistics, tissue-property tests, enrichment, leading-edge genes or supplied-DEG overlap | Appropriate full GWAS/LD or gene-ranking/expression inputs, declared backgrounds/resources and correction families; source expression and DEG generation are separate operations |
+| Do trait and molecular signals share a genetic basis? | Native multi-signal coloc and the SMR/HEIDI original-engine adapter | Signal-pair posteriors, molecular-feature associations and heterogeneity diagnostics | Compatible regional GWAS/QTL data, alleles, LD, ancestry/tissue and overlap policy; retain each method's distinct interpretation |
+| What coding or regulatory consequences are plausible? | VEP/ANNOVAR adapters, LOFTEE original-engine workflow and configured AlphaGenome | Transcript-specific consequences, loss-of-function confidence/flags and molecular prediction outputs | Exact variant/build/sequence, annotation releases and supported resource/runtime profiles |
+| Do implicated regions suggest regulatory mechanisms? | ChIPseeker annotation, HOMER/MEME motif workflows and Tomtom motif comparison | Genomic-feature/nearest-TSS annotations, motif enrichment/discovery and motif-library matches | Compatible peaks or sequences, transcript annotation, matched backgrounds and motif libraries; peak proximity or motif similarity alone does not prove regulation |
+| Is the signal already represented in prior association resources? | Native FUMA known-association and locus-novelty subsets | Matched prior traits/loci, overlap and reference-bounded novelty assessments | Versioned prior-association resource with explicit matching, distance and coverage rules; absence from the resource is not universal novelty |
+| Which cell populations or interactions merit follow-up? | scDRS, CellChat and CellPhoneDB original-engine adapters | Cell/group disease-relevance scores or inferred ligand-receptor/pathway interactions | Suitable single-cell expression, cell/sample labels and the method's gene-set/database inputs; retain donor structure and distinguish inference from measured communication |
+
+The upstream [GCTA COJO documentation](https://yanglab.westlake.edu.cn/software/gcta/)
+describes stepwise selection, joint fitting and conditioning on a SNP-list file.
+It is an example advanced route, not a claim that the current native related
+method reproduces the entire GCTA package. Similarly, native SuSiE/coloc methods
+and bounded FUMA modules must retain their documented scope. See the
+[SuSiE tutorial](cli-susie-tutorial.md),
+[colocalization tutorial](cli-colocalization-tutorial.md),
+[FUMA method guide](https://fuma.ctglab.nl/tutorial) and
+[SMR/HEIDI documentation](https://yanglab.westlake.edu.cn/software/smr).
+
+For every selected operation, declare its expected scientific output before
+execution. Reuse a supplied or previously verified result that satisfies the
+same scope. Otherwise execute through a supported native method, original-engine
+adapter or explicitly configured external workflow; record the exact producer,
+software/version, parameters, input/reference hashes, population, testing family,
+coverage and limitations. A catalog entry does not establish an installed
+runtime or a supported study adapter, and related native methods do not imply
+whole-package equivalence.
+
+Only successfully validated outputs should contribute results to the evidence
+inventory. Preserve complete raw tables, figures and failed/skipped dispositions;
+normalize admitted results to supported typed artifacts and link them by exact
+variant, locus, gene, transcript, molecular feature and tissue identities. If no
+typed study importer exists, retain the output as a linked external artifact and
+record the missing integration rather than manufacturing an accepted result type.
+Carry useful evidence into finding dossiers, impact assessment, manuscript tables,
+figures and supplements, with quantitative claims linked to the original output.
+Retain null/conflicting evidence and avoid counting correlated tools or repeated
+use of the same source data as independent confirmation.
+
+This selection and integration policy extends the workflow specification.
+Automatic scheduling and typed-result support require operation-specific
+implementation and acceptance; this documentation change does not establish
+that every catalogued tool is already connected to the study planner.
+
 ## 5. GWAS annotation and AlphaGenome scoring
 
 Attempt annotation of **every QC-eligible tested variant**, and retain a status
@@ -988,6 +1071,43 @@ declared weights and sensitivity checks. Correlated predictions are not
 independent corroboration. Scores cannot replace association FDR, establish
 the causal SNP or automatically identify its target gene. Public annotation
 does not require participant genotypes once the permissible variant list exists.
+
+### Conditional analysis of multiple SNP signals
+
+When multiple SNPs are found in a declared locus or analysis scope, perform
+conditional analysis to assess additional signals after accounting for selected
+SNPs. Register the candidate region/universe, association model, covariates,
+sample/dependence scope, conditional entry threshold, multiplicity policy,
+tie-breaking rule and stopping criteria before selection. Test the declared
+QC-eligible candidate universe rather than silently restricting subsequent
+conditional tests to the initially significant rows.
+
+Use a prespecified file of conditioning SNPs when supplied; otherwise initialize
+with the strongest SNP by primary association P value. Validate the file's exact
+variant identities, build, alleles and availability, and retain its hash. Keep
+the prespecified conditioning set in each model; unresolved entries require a
+recorded disposition rather than replacement by the strongest SNP.
+
+For **forward selection**, fit the original model with the conditioning SNPs,
+test each remaining eligible SNP conditional on all selected SNPs, add the
+strongest SNP satisfying the registered entry rule, and refit. Repeat until no
+additional SNP qualifies or the declared maximum signals/iterations is reached.
+Preserve the registered analysis population and covariates, and record
+collinearity, insufficient information and failed fits explicitly.
+
+Alternatively, use configured advanced conditional/joint-analysis software
+under its documented input and model requirements. Participant-level methods
+need the appropriate genotype and phenotype data; summary-statistic methods
+need compatible allele-aligned statistics and an appropriate LD reference.
+Retain software/version, settings and source provenance. Fine-mapping alone
+does not satisfy a requested conditional-association analysis.
+
+Report the starting SNPs, complete selection path, conditional tests, final joint
+effects/uncertainty where defined, stopping reason and input/LD limitations.
+Keep marginal primary results and their testing families intact, and identify
+adaptive-selection uncertainty in conditional findings. This addition specifies
+the workflow; it does not itself add executable settings or establish study-run
+integration of an available standalone method.
 
 ## 6. Protein interpretation and AlphaFold
 
