@@ -11491,26 +11491,66 @@
     "name": "scrattch.bigcat",
     "pattern": "(?<![A-Za-z0-9_])scrattch[.-]bigcat(?![A-Za-z0-9_])",
     "role": "Large single-cell atlas clustering, taxonomy, mapping and imputation",
-    "current_coverage": "missing",
-    "existing_source": null,
-    "coverage_note": "Original package-specific out-of-memory clustering, marker, constellation, mapping and imputation workflows remain missing; generic Java clustering is not equivalent.",
+    "current_coverage": "upstream-adapter-validated",
+    "existing_source": "tools/literature/scrattchbigcat005_workflows/run.py",
+    "coverage_note": "Eight original BIGCAT roles across two explicit 0.0.5 source profiles, plus bounded native marker-doublet component; original failures and unknown author settings retained.",
     "paper_count": 2,
     "papers": [
       "P058",
       "P059"
     ],
-    "implementation_status": "missing",
-    "implementation_source": null,
-    "implementation_scope": "Original package-specific out-of-memory clustering, marker, constellation, mapping and imputation workflows remain missing; generic Java clustering is not equivalent.",
-    "validation_note": "Primary source identities, named anchors and stated roles reviewed. No runtime analysis executed and no implementation credit.",
+    "implementation_status": "upstream-adapter-validated",
+    "implementation_source": "tools/literature/scrattchbigcat005_workflows/run.py",
+    "implementation_scope": "Original BIGCAT 0.0.5 build_dend, plot_constellation, i_harmonize, iter_clust_big, find_doublet_by_marker, select_N_markers, map_cells_knn_big and impute_cross_big across explicitly selected 2023/R4.2 and 2022/R4.1 profiles. Original Parquet/FBM/Annoy preparation, all-training-cell centroid cross-validation, constellation assembly and explicit post-integration SPN selection. Author commits, P058 edition, unreported settings, manual biological decisions, reciprocal correspondence, live R-object identity and paper reproduction remain unqualified.",
+    "validation_note": "25 direct original controls: 19 complete returns, six original failures, 3198 comparison fields; complete original objects/conditions/RNG retained. 3335 logical evidence files in five payload volumes. Four nonzero Parquet partitions; 15 PDF pairs/18 pages per side have identical rendered pixels. Both public install branches and actual installed-runtime analyses passed; 12 runtime/policy/recording guards; two unchanged and 11 resealed changed semantic controls. Opaque R class/environment/path differences retained; independent scientific payload and render checks do not claim live-object identity. Separate native Java marker component has 753 source cases. SKIP3 skips dependent analysis; FAIL2 admits no complete result, including recording failure.",
     "source_roles_reviewed": 2,
-    "new_scoped_integration_credit": 0,
+    "new_scoped_integration_credit": 1,
     "native_family_credit_added": 0,
-    "project_adapter_available": false,
+    "project_adapter_available": true,
     "canonical_adapter_available": false,
     "root_dispatch_available": false,
     "whole_tool_qualified": false,
-    "whole_paper_reproduced": false
+    "whole_paper_reproduced": false,
+    "development_candidate_available": true,
+    "development_candidate": "tools/literature/scrattchbigcat005_workflows/run.py",
+    "development_candidate_sha256": "7b68ac794fd42ee1a65b5e2ffcca38adc626d59e533a41bac7b518710f1e7b86",
+    "development_candidate_kind": "python-source-entrypoint-requires-explicit-Linux-WSL-original-profile",
+    "development_build": "tools/literature/scrattchbigcat005_workflows/install_runtime.py",
+    "development_adapter_cli": "python3 tools/literature/scrattchbigcat005_workflows/run.py --runtime /permitted/bigcat-provider --request /trusted/request.rds --assets /local/assets --out /NEW/output",
+    "selected_upstream_versions": [
+      "0.0.5"
+    ],
+    "selected_source_profiles": [
+      "prepublication-2023",
+      "pre-regression-2022"
+    ],
+    "selected_source_commits": [
+      "bbfe5277de63c65a5342e43f3e1eeb1015755fc7",
+      "5134c0b0a107a724f7d1f091c23a73ab691b4a66"
+    ],
+    "selected_R_versions": [
+      "4.2.3",
+      "4.1.3"
+    ],
+    "selected_environment_is_author_environment": false,
+    "author_source_commits_established": false,
+    "P058_edition_established": false,
+    "workflow_validation": "../scrattchbigcat005-workflow-validation/QUALIFICATION.json",
+    "native_component_source": "src/main/java/org/jlinalg/singlecell/scrattch/ScrattchBigcat005.java",
+    "native_component_validation": "../scrattchbigcat005-native-development/VALIDATION.json",
+    "source_role_coverage": "bigcat005-role-coverage.json",
+    "current_documentation": "docs/literature/BIGCAT005_CATALOG_INTEGRATION.md",
+    "paper_role_coverage": {
+      "P058": "Builds the taxonomy tree with build_dend using type-average expression of 1,871 marker genes; draws 15-neighbor constellation relationships with plot_constellation; integrates WB10x, WB MERFISH and SPN nuclei using i_harmonize. Project availability: original build_dend and plot_constellation plus i_harmonize through explicitly selected source profiles. The selected 2023 source retains its ordinary-matrix harmonization indexing error; a separately selected unchanged 2022/R4.1 profile supports tested three-dataset integration with explicit caller sets. The optional at-least-five-SPN selection follows integration at a caller-chosen hierarchy level. It does not reproduce reciprocal correspondence mapping or the separate fewer-than-three-mapped-cells exclusion. P058 edition, author commit and unreported caller arguments remain unknown; synthetic inputs are project choices. Original objects, conditions, RNG and file-backed assets are retained; cross-process live object identity and paper reproduction are not claimed. Missing/forbidden prerequisites SKIP3 skip dependent analysis; FAIL2 admits no complete result.",
+      "P059": "Clusters 10xv2 and 10xv3 separately with iter_clust_big and integrates them iteratively; uses chunked Parquet expression and cluster-level differential-expression summaries. Also detects doublet/noise clusters, selects a MERFISH marker panel, draws constellation plots, performs cell-type centroid mapping/cross-validation and partitioned cross-modality imputation. Project availability: unchanged original iter_clust_big, find_doublet_by_marker, select_N_markers, plot_constellation, map_cells_knn_big and impute_cross_big; a separate native Java helper covers dense marker-doublet detection. Synthetic controls exercise the reported v2/v3 DE settings, 50000-cell/500-gene source bins, fivefold mapping with 8460/534/20x534 panels and all training cells per centroid, and declared coarse/fine FBM imputation partitions. Gene lists, folds, data and unreported caller options are project choices. Explicit source profiles are not recovered author commits. Original vector/default-variable/sparse-score/singleton-bin errors remain failures. Complete values, source distances, conditions, RNG and assets are retained. Live R class/environment/pointer identity, manual biological review, whole-package validity and paper reproduction are not claimed. Missing/forbidden prerequisites SKIP3 skip dependent analysis; FAIL2 admits no complete result."
+    },
+    "uncovered_roles": [
+      "Actual author commits and caller environments, P058 package edition and unreported arguments",
+      "P058 reciprocal taxonomy correspondence and separate fewer-than-three-mapped-cells exclusion",
+      "P059 manual borderline-cluster/marker review and biological annotation decisions",
+      "Source defaults that fail, missing operations in a selected profile, live R-object and pointer identity",
+      "Other source/dependency builds, whole-package validity and biological/paper reproduction"
+    ]
   },
   {
     "id": "scrattch-mapping",

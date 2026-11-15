@@ -1,4 +1,27 @@
 
+## BIGCAT 0.0.5: warnings and required actions
+
+**250 papers, 438 named software families, 2,679 observations and 1,180 individually reviewed uses; 1,499 uses await review.** The 71 Nature, 104 Nature Genetics and 75 AJHG papers, fixed 2023-10-23 through 2026-10-23 source window, paper identities and primary facts are unchanged. Only the implementation coverage notes for the two existing BIGCAT uses change. P058's edition remains unknown; P059 reports 0.0.5. Neither paper establishes its exact Git commit or complete caller environment.
+
+**116 scoped new integrations: 20 native Java subsets and 96 original upstream workflows; 119 including three existing adapters. 263 named families remain missing.** This adds one upstream BIGCAT family credit and zero native family credits. The separately implemented Java marker-doublet helper is a bounded component of this same family. The full semantic review and 250-paper implementation objective remain open. Scoped operation coverage does not establish whole-tool validity or paper reproduction.
+
+The adapter runs eight named original function roles across two explicit source profiles, with original Parquet/FBM/Annoy constructors, centroid cross-validation and constellation assembly. The 2023 snapshot bbfe5277de63c65a5342e43f3e1eeb1015755fc7 and 2022 snapshot 5134c0b0a107a724f7d1f091c23a73ab691b4a66 both report 0.0.5; they are project choices, not recovered author commits. The original 2023 harmonization indexing error is retained. The earlier R 4.1 profile supports tested three-dataset harmonization with explicit caller sets and original warnings, but lacks impute_cross_big. A single profile is not claimed to implement all eight roles successfully. No upstream source or dependency algorithm is patched.
+
+P058's optional at-least-five-SPN selection follows integration at a caller-chosen hierarchy level. It is not a clustering parameter and does not reproduce later reciprocal taxonomy correspondence or the separate fewer-than-three-mapped-cells exclusion. P059 controls use the stated v2/v3 DE settings, source bins of 50,000 cells by 500 genes, fivefold 8,460-marker/534-TF/20-random-534 panels, and sequential coarse/fine FBM imputation partitions. Centroids use all training cells; a separate 240-training-cells-per-class control detects the source summary helper's unrelated 200-cell default. Gene identities, data, folds and unreported caller options are explicit project choices. Manual borderline-cluster review and biological results remain unqualified.
+
+Twenty-five direct original controls produced 19 complete returns and six original failures without results, with 3,198 retained comparison fields. Complete conditions and RNG states remain intact. A nonzero 502-gene by 50,002-cell fixture exercises all four 500-gene/50,000-cell Parquet partitions, with independent reconstruction and mapping-distance checks. Fifteen original PDF pairs contain 18 pages per side with identical rendered pixels. The full 3,335-file logical evidence tree, both public installation records and 12 runtime/policy/recording guards are retained. Two unchanged semantic controls were accepted and 11 changed controls rejected after their integrity manifests were resealed. Six source failures remain failures; matching an error does not create an analysis result.
+
+**Complete original objects and differences are retained.** FBM class-definition identities, cyclic plot environments and temporary Annoy paths can differ between processes. Scientific arrays, complete plot data, derived renders, FBM backing bytes and retained index payloads are checked independently. This does not establish whole live R-object or pointer identity. Original Annoy distances are Euclidean distances between L2-normalized vectors, not silently rewritten cosine scores. Source-produced blank plot pages, NA/NaN/Inf and warnings remain unchanged. Raw/native diagnostic totals are unavailable, never assumed zero; inspect all original conditions and raw consoles.
+
+Use python3 tools/literature/scrattchbigcat005_workflows/run.py with an explicit --runtime provider, trusted --request RDS, --assets and NEW --out paths. This is a Python source entry point, not a bundled Java CLI command. The installer requires an explicit --profile and --allow-install; add --allow-download only where permitted, or supply the exact source cache and complete package cache. Both download-enabled and cache-only installations and actual analyses using their installed runtimes passed. The exact declared recipe-unpatched Arrow C++ build is required. Do not substitute a same-version build or mutate a sealed provider. RDS inputs must be trusted; the adapter is not a sandbox for arbitrary code.
+
+**SKIP3 skips dependent analysis** if exact software, permissions, download, installation or execution requirements are missing or forbidden. **FAIL2 admits no complete result**, including a manifest or final-marker recording failure after R returned. Read WARNINGS.md, FAILURE.json, the original R status, manifests and every raw console. A leftover RDS or successful R return is insufficient; only a final COMPLETED.json admits the recorded operation. Preserve inputs, complete returns/conditions, literal identifiers, NA/NaN/Inf and available partials. Resolve the named prerequisite, input or filesystem cause and retry NEW writable output/workspace paths. No automatic source repair, identifier correction or runtime fallback occurs. See BIGCAT005_CATALOG_INTEGRATION.md for copyable commands and limits.
+
+Other restrictions remain: modified HICAT 1.0.9 and PyArrow remain separate missing families. P250's PyArrow 14.0.2 is a development declaration with no established analysis operation. Mapping retains its prepared-reference-only scope and private noncommercial dependency restrictions. R Arrow's invalidated same-version C++ build50 evidence stays retained and unqualified; its missing-column trace retains the actual caller context. DoubletFinder SCT convergence and reported 3.0 remain unresolved. Cell Ranger/ARC are excluded by user request. Earlier runtime/source/stack/figure limitations remain recorded. All preceding scientific programs, evidence and hashes are unchanged.
+
+<details><summary>Previous warnings (historical)</summary>
+
+
 ## R Arrow 12.0.1: warnings and required actions
 
 **250 papers, 438 named software families, 2,679 observations and 1,180 individually reviewed uses; 1,499 uses await review.** The 71 Nature, 104 Nature Genetics and 75 AJHG papers, fixed 2023-10-23 through 2026-10-23 window and all primary facts remain unchanged. Only implementation coverage for P059's existing R Arrow use changes. P059 reports 12.0.1, Parquet expression chunks of 50,000 cells by 500 genes and pairwise cluster DEG queries. Its exact Arrow calls, storage schema, memory-map settings and query options remain unreported.
@@ -1215,6 +1238,8 @@ output path. Disconnected infinite pseudotime values remain present. LEARN
 does not admit a pseudotime result. Do not infer roots or repair values to
 conceal failures. Full Batchelor, study reproduction and biological accuracy
 remain unproven; the250-paper goal remains active.
+
+</details>
 
 </details>
 
