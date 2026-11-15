@@ -11466,25 +11466,64 @@
     "name": "scrattch.hicat",
     "pattern": "(?<![A-Za-z0-9_])scrattch[.-]hicat(?![A-Za-z0-9_])",
     "role": "Modified doublet detection and predecessor iterative clustering",
-    "current_coverage": "missing",
-    "existing_source": null,
-    "coverage_note": "The reported modified 1.0.9 score workflow is distinct from original DoubletFinder; it remains unimplemented.",
+    "current_coverage": "upstream-adapter-validated",
+    "existing_source": "tools/literature/scrattchhicat109/run.py",
+    "coverage_note": "Selected original HICAT 1.0.9 modified-DoubletFinder scoring with private source-built RANN and independent Java strict-score selection; author settings and source failures retained.",
     "paper_count": 1,
     "papers": [
       "P059"
     ],
-    "implementation_status": "missing",
-    "implementation_source": null,
-    "implementation_scope": "The reported modified 1.0.9 score workflow is distinct from original DoubletFinder; it remains unimplemented.",
-    "validation_note": "Primary source identities, named anchors and stated roles reviewed. No runtime analysis executed and no implementation credit.",
+    "implementation_status": "upstream-adapter-validated",
+    "implementation_source": "tools/literature/scrattchhicat109/run.py",
+    "implementation_scope": "Project availability: the unchanged original doubletFinder function from an explicitly selected prepublication scrattch.hicat 1.0.9 source commit, with privately source-built RANN 2.6.1 and a separate independent Java strict-score selector. The Java component applies the reported score>0.3 predicate to supplied values; equality retains the original row and an unavailable numeric comparison is UNKNOWN. It computes no HICAT score and adds no second family credit. Complete original score objects, literal and duplicate identifiers, conditions/errors and RNG remain intact. Dense/sparse behavior, the over-10000-real-cell sampled-PCA branch and original plotting/dimension/partial-match failures are tested without source repair. The 62 housekeeping genes describe a separate QC score, not an established doublet gene panel. The actual author commit, exact function, caller arguments, gene panel and environment remain unknown; the selected original function/profile and synthetic inputs are project choices. Later HICAT predecessor mentions do not establish additional current HICAT analyses. DESCRIPTION and LICENSE labels remain unresolved; upstream source/runtime and complete native compilation consoles stay private, while whole synthetic scientific records are retained. SKIP3 skips dependent analysis for unavailable/forbidden requirements; FAIL2 admits no complete result, including recording failure. Whole-package validity, predecessor clustering and paper reproduction remain unqualified.",
+    "validation_note": "26 original controls:14 complete returns/12 original failures; whole values, names, conditions and RNG compared, including10001real cells. Both public installs and actual installed analyses,15Linux public guards,Windows SKIP3,17697literal R comparisons and13824actual original scores through packaged Java on Windows25/Linux21,permanentJUnit passed.1337logical records/636unique payloads/36source identities;2unchanged copies accepted,6paired logical-inventory-resealed corruptions rejected. Fresh original replay is required. Whole-tool and paper reproduction unqualified;SKIP3 skips dependent analysis andFAIL2 admits no complete result.",
     "source_roles_reviewed": 1,
-    "new_scoped_integration_credit": 0,
+    "new_scoped_integration_credit": 1,
     "native_family_credit_added": 0,
-    "project_adapter_available": false,
+    "project_adapter_available": true,
     "canonical_adapter_available": false,
     "root_dispatch_available": false,
     "whole_tool_qualified": false,
-    "whole_paper_reproduced": false
+    "whole_paper_reproduced": false,
+    "development_candidate_available": true,
+    "development_candidate": "tools/literature/scrattchhicat109/run.py",
+    "development_candidate_sha256": "401f1eb1af22914393a000fbc7c23cbf056327fd156b7a735bfb40418211e537",
+    "development_candidate_kind": "python-source-entrypoint-private-original-Linux-WSL-runtime-plus-independent-Java-predicate",
+    "development_build": "tools/literature/scrattchhicat109/install_runtime.py",
+    "development_adapter_cli": "python3 tools/literature/scrattchhicat109/run.py --runtime /private/completed-provider --request /trusted/request.rds --out /NEW/output",
+    "selected_upstream_versions": [
+      "1.0.9"
+    ],
+    "selected_source_profiles": [
+      "dev-zy-prepublication-2022"
+    ],
+    "selected_source_commits": [
+      "24a7cd41cc6bdca0b624dc0a3cb74fbc9f75b9e4"
+    ],
+    "selected_R_versions": [
+      "4.2.3"
+    ],
+    "selected_environment_is_author_environment": false,
+    "author_source_commits_established": false,
+    "author_exact_function_established": false,
+    "author_doublet_gene_panel_established": false,
+    "paper_62_housekeeping_QC_is_separate": true,
+    "workflow_validation": "../scrattchhicat109-workflow-validation/QUALIFICATION.json",
+    "native_component_source": "src/main/java/org/jlinalg/singlecell/DoubletScoreThreshold.java",
+    "native_component_scope": "Independent strict comparison and original-row selection on supplied scores; no HICAT score calculation or source-derived native scoring port.",
+    "source_role_coverage": "hicat109-role-coverage.json",
+    "current_documentation": "docs/literature/HICAT109_CATALOG_INTEGRATION.md",
+    "paper_role_coverage": {
+      "P059": "Uses the modified DoubletFinder method in scrattch.hicat 1.0.9 to remove cells with score strictly greater than 0.3. Later mentions identify HICAT as the predecessor of BIGCAT; they do not establish additional current HICAT analyses. Project availability: the unchanged original doubletFinder function from an explicitly selected prepublication scrattch.hicat 1.0.9 source commit, with privately source-built RANN 2.6.1 and a separate independent Java strict-score selector. The Java component applies the reported score>0.3 predicate to supplied values; equality retains the original row and an unavailable numeric comparison is UNKNOWN. It computes no HICAT score and adds no second family credit. Complete original score objects, literal and duplicate identifiers, conditions/errors and RNG remain intact. Dense/sparse behavior, the over-10000-real-cell sampled-PCA branch and original plotting/dimension/partial-match failures are tested without source repair. The 62 housekeeping genes describe a separate QC score, not an established doublet gene panel. The actual author commit, exact function, caller arguments, gene panel and environment remain unknown; the selected original function/profile and synthetic inputs are project choices. Later HICAT predecessor mentions do not establish additional current HICAT analyses. DESCRIPTION and LICENSE labels remain unresolved; upstream source/runtime and complete native compilation consoles stay private, while whole synthetic scientific records are retained. SKIP3 skips dependent analysis for unavailable/forbidden requirements; FAIL2 admits no complete result, including recording failure. Whole-package validity, predecessor clustering and paper reproduction remain unqualified."
+    },
+    "uncovered_roles": [
+      "Actual author source commit, exact function, caller inputs/options, gene panel and environment",
+      "Historical predecessor clustering and other unselected HICAT functions",
+      "Original failures remain failures; no result admitted",
+      "Whole-package validity, biological decisions and paper reproduction"
+    ],
+    "upstream_license_labels_resolved": false,
+    "upstream_source_or_runtime_redistributed": false
   },
   {
     "id": "scrattch-bigcat",

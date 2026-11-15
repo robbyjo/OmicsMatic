@@ -1,0 +1,99 @@
+{
+  "status": "PRIMARY_HICAT109_MODIFIED_DOUBLET_SCORE_WITH_DISTINCT_PREDECESSOR_CONTEXT",
+  "reviews": [
+    {
+      "paper_id": "P059",
+      "pmcid": "PMC10719114",
+      "doi": "10.1038/s41586-023-06812-z",
+      "tool_id": "scrattch-hicat",
+      "primary_xml_sha256": "48771a4387270374add8ea5c2127306e44260dc2dc2d82b0ceb358a060ca1b94",
+      "evidence_paragraph_index": 85,
+      "evidence_paragraph_sha256": "57e06b33f1b040af0369f8f04a4ea02ea4b2f0a8ff0ccba674f646f89230b179",
+      "version_reported_near_name": "1.0.9",
+      "usage_context": "analysis-method-description",
+      "use_summary": "Uses the modified DoubletFinder method in scrattch.hicat 1.0.9 to remove cells with score strictly greater than 0.3. Later mentions identify HICAT as the predecessor of BIGCAT; they do not establish additional current HICAT analyses.",
+      "reported_settings": {
+        "doublet_score_threshold": 0.3,
+        "removal_comparator": ">"
+      },
+      "uncertainties": [
+        "Exact modified function, arguments and package 1.0.9 runtime still require source qualification.",
+        "Do not attribute BIGCAT rewritten differential expression or clustering to direct execution of its HICAT predecessor."
+      ],
+      "supporting_evidence": [
+        {
+          "paragraph_index": 85,
+          "section": "Methods / scRNA-seq / Sequencing data processing and QC",
+          "paragraph_sha256": "57e06b33f1b040af0369f8f04a4ea02ea4b2f0a8ff0ccba674f646f89230b179"
+        },
+        {
+          "paragraph_index": 87,
+          "section": "Methods / scRNA-seq / Clustering scRNA-seq data",
+          "paragraph_sha256": "72099b426b6bbba9e8e34611963c36f2f6b32474cf0d6de78ec762ca4eba02ea"
+        },
+        {
+          "paragraph_index": 88,
+          "section": "Methods / scRNA-seq / Clustering scRNA-seq data",
+          "paragraph_sha256": "49b56d3231abc70b26a6d014c8a879c9cc16853c7d5f510adf1055e18013bfcb"
+        },
+        {
+          "paragraph_index": 91,
+          "section": "Methods / scRNA-seq / Differential gene expression analysis",
+          "paragraph_sha256": "21ef0a321d804d366f73d62103f9b56505e1b94cdf39d0983b93056dc17de5a6"
+        }
+      ],
+      "implementation_scope_note": "Project availability: the unchanged original doubletFinder function from an explicitly selected prepublication scrattch.hicat 1.0.9 source commit, with privately source-built RANN 2.6.1 and a separate independent Java strict-score selector. The Java component applies the reported score>0.3 predicate to supplied values; equality retains the original row and an unavailable numeric comparison is UNKNOWN. It computes no HICAT score and adds no second family credit. Complete original score objects, literal and duplicate identifiers, conditions/errors and RNG remain intact. Dense/sparse behavior, the over-10000-real-cell sampled-PCA branch and original plotting/dimension/partial-match failures are tested without source repair. The 62 housekeeping genes describe a separate QC score, not an established doublet gene panel. The actual author commit, exact function, caller arguments, gene panel and environment remain unknown; the selected original function/profile and synthetic inputs are project choices. Later HICAT predecessor mentions do not establish additional current HICAT analyses. DESCRIPTION and LICENSE labels remain unresolved; upstream source/runtime and complete native compilation consoles stay private, while whole synthetic scientific records are retained. SKIP3 skips dependent analysis for unavailable/forbidden requirements; FAIL2 admits no complete result, including recording failure. Whole-package validity, predecessor clustering and paper reproduction remain unqualified.",
+      "named_anchor_classification": [
+        {
+          "paragraph_index": 85,
+          "kind": "primary-methods"
+        },
+        {
+          "paragraph_index": 87,
+          "kind": "historical-predecessor-context"
+        },
+        {
+          "paragraph_index": 88,
+          "kind": "historical-predecessor-context"
+        },
+        {
+          "paragraph_index": 91,
+          "kind": "historical-predecessor-context"
+        }
+      ]
+    }
+  ],
+  "paper_role_coverage": {
+    "P059": "Uses the modified DoubletFinder method in scrattch.hicat 1.0.9 to remove cells with score strictly greater than 0.3. Later mentions identify HICAT as the predecessor of BIGCAT; they do not establish additional current HICAT analyses. Project availability: the unchanged original doubletFinder function from an explicitly selected prepublication scrattch.hicat 1.0.9 source commit, with privately source-built RANN 2.6.1 and a separate independent Java strict-score selector. The Java component applies the reported score>0.3 predicate to supplied values; equality retains the original row and an unavailable numeric comparison is UNKNOWN. It computes no HICAT score and adds no second family credit. Complete original score objects, literal and duplicate identifiers, conditions/errors and RNG remain intact. Dense/sparse behavior, the over-10000-real-cell sampled-PCA branch and original plotting/dimension/partial-match failures are tested without source repair. The 62 housekeeping genes describe a separate QC score, not an established doublet gene panel. The actual author commit, exact function, caller arguments, gene panel and environment remain unknown; the selected original function/profile and synthetic inputs are project choices. Later HICAT predecessor mentions do not establish additional current HICAT analyses. DESCRIPTION and LICENSE labels remain unresolved; upstream source/runtime and complete native compilation consoles stay private, while whole synthetic scientific records are retained. SKIP3 skips dependent analysis for unavailable/forbidden requirements; FAIL2 admits no complete result, including recording failure. Whole-package validity, predecessor clustering and paper reproduction remain unqualified."
+  },
+  "reported_edition": "1.0.9",
+  "author_commit_exact_function_gene_panel_options_environment_established": false,
+  "selected_source_profile": "dev-zy-prepublication-2022",
+  "selected_original_function": "doubletFinder",
+  "selected_original_commit": "24a7cd41cc6bdca0b624dc0a3cb74fbc9f75b9e4",
+  "primary_method_anchors": [
+    85
+  ],
+  "historical_predecessor_context_anchors": [
+    87,
+    88,
+    91
+  ],
+  "housekeeping_62_gene_QC_is_separate": true,
+  "original_controls": 26,
+  "complete_returns": 14,
+  "original_failures_without_result": 12,
+  "complete_original_objects_conditions_rng_retained": true,
+  "source_or_dependency_algorithms_patched": false,
+  "native_component_only_supplied_score_predicate": true,
+  "native_HICAT_scoring_port": false,
+  "literal_R_comparisons": 17697,
+  "actual_original_scores_compared": 13824,
+  "upstream_source_or_runtime_redistributed": false,
+  "original_license_labels_resolved": false,
+  "new_upstream_family_credit": 1,
+  "native_family_credit_added": 0,
+  "whole_tool_qualified": false,
+  "whole_paper_reproduced": false,
+  "whole_goal_complete": false
+}
