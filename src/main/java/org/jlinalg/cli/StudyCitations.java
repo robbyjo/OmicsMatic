@@ -72,12 +72,12 @@ final class StudyCitations {
         var matcher = TOKEN.matcher(prose); StringBuilder h = new StringBuilder(); int offset = 0;
         Set<String> inline = new LinkedHashSet<>();
         while (matcher.find()) {
-            h.append(esc(prose.substring(offset, matcher.start())));
+            h.append(StudyMathTypography.prose(prose.substring(offset, matcher.start())));
             List<String> keys = List.of(matcher.group(1).split(";")); h.append(cite(keys));
             for (String key : keys) inline.add(resolve(catalog, key.strip()).get("reference_id").toString());
             offset = matcher.end();
         }
-        h.append(esc(prose.substring(offset)));
+        h.append(StudyMathTypography.prose(prose.substring(offset)));
         // Review-mode compatibility: keep old paragraph references visible, without pretending they are claim-local.
         List<String> rest = new ArrayList<>();
         for (Object key : fallback) if (!inline.contains(resolve(catalog, key.toString()).get("reference_id"))) rest.add(key.toString());

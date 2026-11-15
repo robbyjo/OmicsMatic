@@ -52,7 +52,7 @@ final class StudyMethods {
             + "Do not infer settings from current software defaults for historical runs, substitute unrelated citations, invent a parameter rationale, "
             + "or present a query match as verified support. Missing source, parameter or required uncommon-parameter justification remains a review need. "
             + "Report the dataset tissue/sample compartment for each cohort and consider declared differences when interpreting heterogeneity; do not infer causation from a cohort-confounded tissue contrast. "
-            + "Keep audit/editorial commentary in supporting records rather than finished Methods prose.";
+            + "Main Methods explain the scientific design and analyses. Put software versions, resource releases and detailed reproducibility information in Supplementary Methods or availability documentation. Keep internal audit/editorial commentary, hashes and execution histories in separate review records. Include one concise, verified data and code availability statement near the end of the manuscript.";
     }
     static Map<String, Object> policy() { return Map.of("version", 1, "ordered_roles", ROLES, "instructions", instructions()); }
     static Map<String, Object> record(String method, Map<String, Object> parameters, List<?> references, Object justification, List<String> literatureTerms) {

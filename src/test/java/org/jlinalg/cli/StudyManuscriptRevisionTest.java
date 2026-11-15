@@ -17,6 +17,88 @@ import org.junit.jupiter.api.io.TempDir;
 class StudyManuscriptRevisionTest {
     @TempDir Path directory;
 
+    @Test void structuredAbstractIsInsertedOnceAndInheritedAbstractIsReviewedAfterBodyChanges() throws Exception {
+        Path p = project(), r = request(); var revision = StudyYaml.loadArtifact(r);
+        var sections = new ArrayList<Object>(StudyPublicEvidence.list(revision.get("sections")));
+        for (String role : StudyAbstract.ROLES) sections.add(Map.of("id", "summary-" + role, "section", "abstract", "abstract_role", role,
+            "text", role.equals("results") ? "Tested {{H1.meta_analysis#/tested_features}} features." : "Synthetic " + role + " content.",
+            "sources", role.equals("results") ? List.of("H1.meta_analysis") : List.of(), "rationale", "Summarize the completed body."));
+        sections.add(Map.of("id", "availability", "section", "availability", "text", "Artificial inputs and code accompany this test fixture.", "sources", List.of(), "rationale", "State actual fixture availability."));
+        revision.put("sections", sections); StudyPublicEvidence.write(r, revision);
+        Path first = directory.resolve("structured-abstract"); StudyManuscriptRevision.create(p, r, first, StudyProject.Actor.human("scientist"));
+        StudyManuscriptRevision.verifyBundle(first);
+        String main = Files.readString(first.resolve("artifacts/manuscript.html"));
+        assertEquals(1, main.split("<h2>Abstract</h2>", -1).length - 1);
+        for (String role : StudyAbstract.ROLES) assertTrue(main.contains("<h3>" + StudyAbstract.label(role) + "</h3>"));
+        assertTrue(main.indexOf("<h2>Abstract") < main.indexOf("<h2>Introduction"));
+        assertFalse(main.contains("<nav>")); assertFalse(main.contains("Template version"));
+        assertTrue(main.contains("Artificial inputs and code accompany this test fixture."));
+        assertEquals("structure_complete_review_required", StudyYaml.loadArtifact(first.resolve("artifacts/abstract-review.yaml")).get("status"));
+        Path next = directory.resolve("abstract-body-update.yaml");
+        StudyPublicEvidence.write(next, Map.of("schema_version", 1, "id", "body-update", "title", "Molecular associations", "rationale", "Update the body.",
+            "previous_revision", Map.of("manifest", first.resolve("metadata/manifest.yaml").toString(), "sha256", FollowupSupport.hash(first.resolve("metadata/manifest.yaml"))),
+            "sections", List.of(Map.of("id", "main", "section", "results", "text", "The revised comparison tested {{H1.meta_analysis#/tested_features}} features.",
+                "sources", List.of("H1.meta_analysis"), "rationale", "Clarify the final result."))));
+        Path second = directory.resolve("changed-body"); StudyManuscriptRevision.create(p, next, second, StudyProject.Actor.human("scientist"));
+        StudyManuscriptRevision.verifyBundle(second);
+        var review = StudyYaml.loadArtifact(second.resolve("artifacts/abstract-review.yaml"));
+        assertEquals(true, review.get("body_changed_without_abstract_update")); assertEquals("needs_input", review.get("status"));
+    }
+
+    @Test void mathematicalGroupsAndEvidenceBindingsCoexistWithoutChangingSourceText() throws Exception {
+        Path p = project(), r = request();
+        var revision = StudyYaml.loadArtifact(r);
+        var sections = new ArrayList<Object>(StudyPublicEvidence.list(revision.get("sections")));
+        String formula = "P <= 0.05; \\[\\frac{\\sum_i w_i}{{x}} + {{H1.meta_analysis#/tested_features}}\\]";
+        sections.add(Map.of("id", "equation", "section", "methods", "text", formula,
+            "sources", List.of("H1.meta_analysis"), "rationale", "Exercise formatting without modifying the estimator."));
+        sections.add(Map.of("id", "supp-equation", "section", "supplementary", "text", "\\(\\mathrm{SE}(x)\\)",
+            "sources", List.of(), "rationale", "Retain supplemental notation."));
+        revision.put("sections", sections); StudyPublicEvidence.write(r, revision);
+        Path out = directory.resolve("math-revision");
+        StudyManuscriptRevision.create(p, r, out, StudyProject.Actor.human("scientist"));
+        StudyManuscriptRevision.verifyBundle(out);
+        String main = Files.readString(out.resolve("artifacts/manuscript.html"));
+        assertTrue(main.contains("P ≤ 0.05"));
+        assertTrue(main.contains("data-tex=\"\\frac{\\sum_i w_i}{{x}} + 1\""));
+        assertTrue(main.contains("id=\"manuscript-math-renderer\""));
+        assertTrue(Files.readString(out.resolve("artifacts/supplement.html")).contains("data-tex=\"\\mathrm{SE}(x)\""));
+        assertEquals(formula, StudyPublicEvidence.map(sections.get(sections.size() - 2)).get("text"));
+        for (String invalid : List.of("Unresolved {{bad}}", "\\(x + {{H1.meta_analysis#/tested_features}\\)")) {
+            revision.put("sections", List.of(Map.of("id", "bad", "section", "methods", "text", invalid,
+                "sources", List.of(), "rationale", "Reject malformed bindings.")));
+            StudyPublicEvidence.write(r, revision);
+            assertThrows(java.io.IOException.class, () -> StudyManuscriptRevision.create(p, r,
+                directory.resolve("invalid-math-" + invalid.length()), StudyProject.Actor.human("scientist")));
+        }
+    }
+
+    @Test void readingCopyPreservesCaveatsAndParagraphsWhileAbstractStaysOutsideMainBudget() throws Exception {
+        Path p = project(), r = request();
+        var revision = StudyYaml.loadArtifact(r);
+        var sections = new ArrayList<Object>(StudyPublicEvidence.list(revision.get("sections")));
+        String caveat = "The cross-sectional design cannot distinguish temporal ordering.";
+        sections.add(Map.of("id", "summary", "section", "abstract", "text", "AbstractOnlyToken ".repeat(20),
+            "sources", List.of(), "rationale", "Separate abstract scope."));
+        sections.add(Map.of("id", "discussion", "section", "discussion", "text", "A supported interpretation.\n\n" + caveat,
+            "sources", List.of(), "rationale", "EDITORIAL_REASON_SENTINEL"));
+        revision.put("sections", sections); StudyPublicEvidence.write(r, revision);
+        Path out = directory.resolve("reading-copy");
+        StudyManuscriptRevision.create(p, r, out, StudyProject.Actor.human("scientist"));
+        StudyManuscriptRevision.verifyBundle(out);
+        String main = Files.readString(out.resolve("artifacts/manuscript.html"));
+        String review = Files.readString(out.resolve("artifacts/manuscript-review.html"));
+        assertTrue(main.contains(caveat)); assertTrue(review.contains(caveat));
+        assertTrue(main.contains("AbstractOnlyToken"));
+        assertTrue(main.indexOf("AbstractOnlyToken") < main.indexOf("<h2>Introduction</h2>"));
+        assertFalse(main.contains("EDITORIAL_REASON_SENTINEL")); assertTrue(review.contains("EDITORIAL_REASON_SENTINEL"));
+        assertFalse(main.contains("Editorial rationale and evidence")); assertTrue(review.contains("Editorial rationale and evidence"));
+        assertFalse(main.contains("<h3>Discussion</h3>")); assertTrue(review.contains("<h3>Discussion</h3>"));
+        var counts = StudyYaml.loadArtifact(out.resolve("artifacts/word-counts.yaml"));
+        assertEquals(counts.get("main_text_words"), StudyWordBudget.assessRendered(main.replace("AbstractOnlyToken", "Ignored abstract words"), Map.of()).get("main_text_words"));
+        assertTrue(Files.exists(out.resolve("artifacts/manuscript-writing-policy.yaml")));
+    }
+
     @Test void publicDiscussionSourcesAreSnapshottedLocallyAndInheritedWithoutRereadingChangedOriginals()throws Exception {
         Path p=project(),refs=directory.resolve("source-refs.yaml");Files.writeString(refs,"schema_version: 1\nreferences:\n  - {id: 'pmid:123', rationale: 'Synthetic source context.'}\n");Path policy=directory.resolve("source-policy");Files.createDirectory(policy);Files.writeString(policy.resolve("resolved-study.yaml"),"resources: {downloads: automatic}\n");
         Path acquired=StudyCitationSources.fetch(policy,refs,directory.resolve("source-references"),StudyProject.Actor.human("test"),false,new StudyPublicEvidence(uri->new StudyPublicEvidence.Reply(200,"{\"resultList\":{\"result\":[{\"source\":\"MED\",\"id\":\"123\",\"title\":\"Synthetic context\",\"pubYear\":\"2020\"}]}}")));
@@ -54,6 +136,8 @@ class StudyManuscriptRevisionTest {
         assertTrue(supplement.contains(extended));
         assertTrue(supplement.contains("Derived estimate count 1"));
         assertTrue(supplement.contains("&lt;script&gt;not executable&lt;/script&gt;"));
+        assertFalse(supplement.contains("Verified source manifest")); assertFalse(supplement.contains("SHA-256"));
+        assertTrue(Files.readString(out.resolve("artifacts/evidence-review.html")).contains("Verified source manifest"));
         var counts = StudyYaml.loadArtifact(out.resolve("artifacts/word-counts.yaml"));
         assertTrue(((Number) counts.get("supplement_words")).intValue() > 9000);
         assertTrue(((Number) counts.get("main_text_words")).intValue() < 8000);
@@ -242,7 +326,9 @@ class StudyManuscriptRevisionTest {
         assertTrue(Files.readString(out.resolve("artifacts/methods-template.yaml")).contains("methods_role: cohorts"));
         String html = Files.readString(out.resolve("artifacts/manuscript.html"));
         String methods = html.substring(html.indexOf("<h2>Methods</h2>"), html.indexOf("<h2>Results</h2>"));
-        assertTrue(methods.indexOf("describe cohort design") < methods.indexOf("Execution and parameter inventory"));
+        assertTrue(methods.contains("describe cohort design"));
+        assertFalse(methods.contains("Execution and parameter inventory"));
+        assertTrue(Files.readString(out.resolve("artifacts/manuscript-review.html")).contains("Execution and parameter inventory"));
         assertTrue(Files.exists(out.resolve("metadata/participant-study.yaml")));
         assertTrue(Files.readString(out.resolve("artifacts/manuscript.html")).contains("Tested 1 features."));
         assertTrue(Files.readString(out.resolve("artifacts/participant-characteristics.csv")).contains("14.142135623730951"));
@@ -290,7 +376,8 @@ class StudyManuscriptRevisionTest {
         assertTrue(html.indexOf("1-feature analysis") < html.indexOf("Synthetic result 2"));
         assertTrue(html.contains("Synthetic result 6")); assertTrue(html.contains("&lt;script&gt;literal only&lt;/script&gt;"));
         assertFalse(html.contains("<script>literal only")); assertFalse(html.contains("Fewer than three main points"));
-        assertTrue(html.contains("href=\"#result-1\""));
+        assertTrue(Files.readString(out.resolve("artifacts/manuscript-review.html")).contains("href=\"#result-1\""));
+        assertFalse(html.contains("Editorial rationale and evidence"));
         assertTrue(html.indexOf("Narrative paragraph for future_potential") < html.indexOf("Narrative paragraph for next_steps"));
         assertTrue(html.indexOf("Narrative paragraph for limitations") < html.indexOf("Narrative paragraph for overall_conclusion"));
         String claims = Files.readString(out.resolve("artifacts/publication-claims.yaml"));
@@ -424,7 +511,8 @@ class StudyManuscriptRevisionTest {
         Map<String, Object> config = Map.of("provider", "openai", "model", "fixture-model");
         var client = new StudyAssistance((uri, provider, key, body, timeout) -> {
             assertTrue(body.contains("existing manuscript")); assertTrue(body.contains("Tested 1 features."));
-            assertTrue(body.contains("four or five connected prose paragraphs"));
+            assertTrue(body.contains("one connected problem-to-objective argument"));
+            assertTrue(body.contains("OmicsMatic manuscript writing template " + org.jlinalg.study.StudyManuscriptPolicy.VERSION));
             assertTrue(body.contains("importance_and_gap"));
             assertTrue(body.contains("Always start Methods with a description of every participating cohort"));
             assertTrue(body.contains("methods_policy"));
@@ -488,7 +576,8 @@ class StudyManuscriptRevisionTest {
         String html = Files.readString(out.resolve("artifacts/manuscript.html"));
         String methods = html.substring(html.indexOf("<h2>Methods</h2>"), html.indexOf("<h2>Results</h2>"));
         assertTrue(methods.indexOf("describe cohort design") < methods.indexOf("describe association"));
-        assertTrue(methods.contains("Parameters and recorded justifications"));
+        assertFalse(methods.contains("Parameters and recorded justifications"));
+        assertTrue(Files.readString(out.resolve("artifacts/manuscript-review.html")).contains("Parameters and recorded justifications"));
         var parsed = StudyPublicEvidence.map(new org.yaml.snakeyaml.Yaml().load(Files.readString(template)));
         List<Object> sections = new ArrayList<>(StudyPublicEvidence.list(parsed.get("sections")));
         java.util.Collections.reverse(sections); parsed.put("sections", sections);

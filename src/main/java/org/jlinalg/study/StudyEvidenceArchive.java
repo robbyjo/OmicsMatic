@@ -51,6 +51,8 @@ public final class StudyEvidenceArchive {
         limitations.put("omitted", "Original dataset files outside the selected evidence directories, reference caches and software binaries are not bundled. Input hashes and source records identify reconstruction prerequisites. Include original scripts as declared operation artifacts before exporting.");
         limitations.put("regulatory_status", "No assertion of FDA compliance, validated computerized-system status, digital signature or tamper-proof storage. Hashes support integrity checking only.");
         limitations.put("files_sha256", manifest);
+        limitations.put("cleaned_results", StudyCleanup.removals(StudyLedger.read(root)));
+        limitations.put("cleanup_note", "Recorded cleanup preserves original manifests and deletion receipts. Deleted outputs are absent from this archive; it is not a complete copy of those historical analyses.");
         Files.createDirectories(output.getParent());
         Path stage = Files.createTempFile(output.getParent(), ".evidence-archive-", ".zip");
         try {

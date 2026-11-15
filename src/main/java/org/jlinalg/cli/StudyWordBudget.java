@@ -113,7 +113,8 @@ final class StudyWordBudget {
     }
 
     static Map<String, Object> draft(String text, Map<String, Object> policy) {
-        var headings = Pattern.compile("(?im)^(?:#{1,6}\\s*)?(Introduction|Materials and Methods|Methods|Results|Discussion|Conclusions?|References|Abstract|Supplementary.*)\\s*[:#]*\\s*$").matcher(text);
+        text = StudyAbstract.splitDraft(text).body().replace("[TABLE_1]", "");
+        var headings = Pattern.compile("(?im)^(?:#{1,6}\\s*)?(Introduction|Materials and Methods|Methods|Results|Discussion|Conclusions?|Data and (?:code|program) availability|References|Supplementary.*)\\s*[:#]*\\s*$").matcher(text);
         Map<String, Integer> counts = new LinkedHashMap<>(); String previous = ""; int start = 0;
         int supplementaryWords = 0;
         while (headings.find()) {

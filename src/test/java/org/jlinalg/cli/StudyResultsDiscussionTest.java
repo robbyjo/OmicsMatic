@@ -35,6 +35,9 @@ class StudyResultsDiscussionTest {
         var review = StudyResultsDiscussion.assess(Map.of("sections", sections), evidence);
         assertEquals("structure_complete_scientific_review_required", review.get("status"));
         assertTrue(review.get("scientific_review").toString().contains("do not validate scientific claims"));
+        var discussion = map(review.get("discussion_review"));
+        assertEquals("substantive_review_required", discussion.get("status"));
+        assertEquals(false, discussion.get("assessed_by_structural_checks"));
     }
     @Test void resultsFollowMethodsWithNoFiveParagraphCapAndRejectMisclassifiedSources() throws Exception {
         Map<String, Map<String, Object>> evidence = new LinkedHashMap<>(); List<Object> sections = new ArrayList<>();
@@ -58,6 +61,22 @@ class StudyResultsDiscussionTest {
         assertEquals(List.of(), map(sections.get(1)).get("result_ids"));
         assertTrue(StudyResultsDiscussion.assess(template, evidence).toString().contains("link the discussed finding"));
         assertTrue(StudyResultsDiscussion.inventory(evidence).toString().contains("not an impact ranking"));
+        assertEquals(List.of("future_potential", "limitations", "next_steps", "overall_conclusion"),
+            sections.stream().map(StudyPublicEvidence::map).map(p -> p.get("discussion_role"))
+                .filter(role -> role != null && !role.equals("principal_finding")).toList());
+    }
+    @Test void legacyNextStepsBeforeLimitationsRemainAcceptedWithoutReorderingOrSemanticCertification() throws Exception {
+        var evidence = Map.of("H.meta", evidence("meta_analysis"));
+        var sections = new ArrayList<Object>(List.of(result("r", "meta_analysis", "H.meta"), finding(1, List.of("r"))));
+        var closing = tail(); java.util.Collections.swap(closing, 1, 2); sections.addAll(closing);
+        var original = List.copyOf(sections);
+        var review = StudyResultsDiscussion.assess(Map.of("sections", sections,
+            "discussion_selection_note", "Only one defensible finding is available."), evidence);
+        assertEquals("structure_complete_scientific_review_required", review.get("status"));
+        assertEquals(original, sections);
+        assertEquals("substantive_review_required", map(review.get("discussion_review")).get("status"));
+        sections.add(closing.get(1));
+        assertThrows(IOException.class, () -> StudyResultsDiscussion.assess(Map.of("sections", sections), evidence));
     }
     @Test void supportingEvidenceNeedsExplicitRelationshipAndFlagsPartialSources() throws Exception {
         var p = result("r", "meta_analysis", "H.meta");
@@ -72,14 +91,14 @@ class StudyResultsDiscussionTest {
         assertTrue(review.toString().contains("incomplete or empty"));
         assertTrue(review.toString().contains("usable source-level result"));
     }
-    @Test void impactRanksLinksReasonsAndOneParagraphAreChecked() throws Exception {
+    @Test void impactRanksAndLinksAreCheckedWhileConnectedParagraphsAreAllowed() throws Exception {
         var evidence = Map.of("H.meta", evidence("meta_analysis")); var r = result("r", "meta_analysis", "H.meta");
         var p = finding(2, List.of("r"));
         assertThrows(IOException.class, () -> StudyResultsDiscussion.assess(Map.of("sections", List.of(r, p)), evidence));
         p.put("impact_rank", 1); p.put("result_ids", List.of("missing"));
         assertThrows(IOException.class, () -> StudyResultsDiscussion.assess(Map.of("sections", List.of(r, p)), evidence));
         p.put("result_ids", List.of("r")); p.put("text", "First paragraph.\n\nSecond paragraph.");
-        assertThrows(IOException.class, () -> StudyResultsDiscussion.assess(Map.of("sections", List.of(r, p)), evidence));
+        assertDoesNotThrow(() -> StudyResultsDiscussion.assess(Map.of("sections", List.of(r, p)), evidence));
         p.put("text", "One paragraph."); p.remove("impact_reason");
         assertTrue(StudyResultsDiscussion.assess(Map.of("sections", List.of(r, p)), evidence).toString().contains("explain why"));
     }

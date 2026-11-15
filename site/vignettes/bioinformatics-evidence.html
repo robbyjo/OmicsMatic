@@ -511,11 +511,13 @@ new bundle. It does not refit models, amend hypotheses, query databases or call
 an LLM. A supplied LLM-authored editorial request should use <code>--actor-type llm</code>
 and <code>--model</code> with the known model identity, or an explicit unknown declaration.</p>
 <h3 id="develop-the-introduction-from-the-field-to-the-hypotheses">Develop the Introduction from the field to the hypotheses</h3>
-<p>Native first drafts, revision checks and LLM drafting/editorial instructions share
-the same four- or five-paragraph structure:</p>
+<p>Native first drafts, revision checks and LLM drafting/editorial instructions use
+versioned template <strong>2026-11-14.2</strong>. The Introduction develops one argument,
+with four or five paragraphs as a starting plan:</p>
 <ol>
-<li>One or two paragraphs summarizing the relevant field and established findings.</li>
-<li>One paragraph explaining why the study hypothesis is relevant to that field.</li>
+<li>Establish the phenotype or biological problem, then synthesize established
+human research. Define the molecular measurement before discussing hit genes.</li>
+<li>Explain why the measurement, tissue and design address the unresolved question.</li>
 <li>One paragraph explaining why the question matters, what closely related studies
    have already done, and precisely how this study differs.</li>
 <li>One final paragraph stating the overall hypotheses and their scientific motivation.</li>
@@ -526,6 +528,22 @@ explain, not proof of novelty. Do not invent a prespecified motivation from the
 significant results; changed hypotheses belong in the study amendment history.
 The finished Introduction uses connected prose without paragraph mini-headings
 or editorial/audit commentary.</p>
+<p>New native revisions separate <code>manuscript.html</code> (reading copy) from
+<code>manuscript-review.html</code> (annotated copy). Both preserve authored scientific
+caveats; review labels and parameter inventories appear in the latter. Each bundle
+saves the full prompt, version and hash. Table 1 is generated locally from participant
+summaries, with missing or provisional analysis membership explicitly flagged.
+AI drafting inserts that table without automatically sending its values to the model.</p>
+<p>Write the structured abstract last, from the completed body, and place it once
+at the front: Background, Methods, Results, Conclusion. Native revisions support
+<code>abstract_role: background|methods|results|conclusion</code> on <code>section: abstract</code> blocks.
+Missing or unstructured abstracts remain explicit review needs; a changed body
+with an unchanged abstract triggers reconciliation review. Abstract and
+<code>section: availability</code> text are outside the main-text word budget.
+Keep internal versions and audit provenance out of the reading copy, apart from
+a concise data/code availability statement and, when useful, a brief supplement
+note. Develop future implications with evidence-based optimism: explain what a
+finding could enable and the specific validation needed, without stacked hedges.</p>
 <p>Generated bundles provide <code>introduction-template.yaml</code>, a revision request with
 the four roles and explicit placeholders, and <code>introduction-review.yaml</code>, which
 lists missing roles, citation needs and literature coverage. Fill the template
@@ -542,9 +560,9 @@ with reviewed prose and cataloged references. For example, a paragraph under
   rationale: Develop the importance and prior-work comparison after source review.
 </code></pre></div>
 <p>The ordered roles are <code>field_background</code>, <code>hypothesis_relevance</code>,
-<code>importance_and_gap</code>, and <code>hypotheses_and_motivation</code>. The first permits two
-paragraphs; every other role permits one. Blank lines separate paragraphs.
-Unknown roles, roles outside the Introduction, excess paragraphs and reversed
+<code>importance_and_gap</code>, and <code>hypotheses_and_motivation</code>. Four or five
+paragraphs are a starting plan; expand a role when the connected argument requires it.
+Blank lines separate paragraphs. Unknown roles, roles outside the Introduction and reversed
 role order are rejected before a revision bundle is created. Missing roles,
 placeholders and missing citations instead remain explicit writing needs.
 Existing untagged prose is preserved and flagged for classification; it is not
@@ -691,18 +709,20 @@ operation may retain useful retrieved records, but its incomplete status remains
 visible and its usable source-level result must be identified and reviewed.
 Native drafting inventories candidate context without attaching every database
 match to every finding.</p>
-<p>Discussion begins with one connected paragraph about the most impactful finding
-and why it matters, followed by one paragraph each for the second and third.
-Use <code>discussion_role: principal_finding</code>, consecutive <code>impact_rank</code> values 1–3,
+<p>Discussion opens with the biological answer to the study question, then develops
+the selected principal findings in as many connected paragraphs as needed.
+Use <code>discussion_role: principal_finding</code>, consecutive <code>impact_rank</code> values
+through the configured maximum (default five),
 <code>result_ids</code> linking the relevant Results paragraphs, and <code>impact_reason</code>.
 Express that reason in the scientific prose as well as the audit field. Consider
 effect magnitude and uncertainty, replication, biological relevance, sensitivity
 and conflicting evidence; a small P-value or completed operation is not by itself
 a reason for high impact. Different findings can originate in the same analysis,
 but repeated Results links trigger a check that the priorities are genuinely
-distinct. If fewer than three findings merit discussion, remove unused template
+distinct. Keep impact ranks and editorial labels out of article prose. If fewer
+than the configured minimum (default three) findings merit discussion, remove unused template
 slots and explain why in the top-level <code>discussion_selection_note</code>.</p>
-<p>After those paragraphs, use <code>future_potential</code>, <code>next_steps</code>, and <code>limitations</code>
+<p>After the principal findings, use <code>future_potential</code>, <code>next_steps</code>, and <code>limitations</code>
 in that order. Distinguish possible applications and proposed follow-up from work
 actually performed; explain how limitations constrain interpretation. Finish
 with <code>overall_conclusion</code>, either as the final Discussion paragraph or in the

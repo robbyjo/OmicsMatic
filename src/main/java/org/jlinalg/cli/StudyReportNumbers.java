@@ -6,10 +6,29 @@ import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.util.Locale;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Pattern;
 
 /** Presentation only. Never use this formatter for machine-readable result exports. */
 final class StudyReportNumbers {
+    private static final Pattern LONG_DECIMAL = Pattern.compile(
+        "(?<![\\p{L}\\p{N}_./])[+-]?(?:[0-9]+\\.[0-9]{4,}|\\.[0-9]{4,})(?:[eE][+-]?[0-9]+)?(?![\\p{L}\\p{N}_/]|\\.[0-9])");
     private StudyReportNumbers() { }
+    /** Review literal prose/equations without rewriting cutoffs, identifiers or evidence. */
+    static List<String> excessiveDecimals(String text) {
+        List<String> literals = new ArrayList<>();
+        var matches = LONG_DECIMAL.matcher(text);
+        while (matches.find()) {
+            String raw = matches.group();
+            try {
+                // Leading zeroes in an exact small threshold are not excess precision.
+                if (new BigDecimal(raw).stripTrailingZeros().precision() > 4 && !literals.contains(raw))
+                    literals.add(raw);
+            } catch (NumberFormatException ignored) { /* Other validation owns malformed numbers. */ }
+        }
+        return literals;
+    }
     static String field(String key, Object value) {
         return value instanceof Number || java.util.Set.of("beta", "se", "p_value", "BH_FDR", "q_value", "fdr", "FDR",
             "i_squared", "mean", "sd", "percent", "male_percent", "odds_ratio", "fold_enrichment_unweighted",

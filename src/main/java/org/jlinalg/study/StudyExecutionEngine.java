@@ -40,6 +40,7 @@ public final class StudyExecutionEngine {
             throws IOException {
         StudyProject.verify(root);
         StudyPlan plan = StudyPlanner.loadApproved(root);
+        Set<String> unavailable = StudyCleanup.unavailable(root);
         List<Path> priorManifests = new ArrayList<>();
         if (Files.isDirectory(root.resolve("runs"))) try (var paths = Files.walk(root.resolve("runs"))) {
             priorManifests.addAll(paths.filter(path -> path.getFileName().toString().equals("manifest.yaml")
@@ -115,11 +116,16 @@ public final class StudyExecutionEngine {
             cacheIdentity.put("input_scope", scope.mode());
             cacheIdentity.put("input_sha256", inputs);
             cacheIdentity.put("implementation", 86);
+            if (Set.of("report", "manuscript_draft", "impact_assessment").contains(operation.get("type")))
+                cacheIdentity.put("manuscript_template", StudyManuscriptPolicy.identity());
             cacheIdentity.put("software", software);
             String cacheKey = StudyIO.hash(cacheIdentity);
             List<StudyNeed> needs = StudyQuestionRules.prerequisites(study, operation);
             Path reusable = null;
             if (resume && !blocked && needs.isEmpty()) for (Path prior : priorManifests) {
+                String priorId = prior.getParent().getParent().getParent().getFileName()
+                    + "/" + prior.getParent().getFileName();
+                if (unavailable.contains(priorId)) continue;
                 if (verified(prior.getParent(), cacheKey)) {
                     reusable = prior.getParent();
                     break;

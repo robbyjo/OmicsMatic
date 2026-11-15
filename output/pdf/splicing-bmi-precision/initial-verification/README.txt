@@ -1,0 +1,1 @@
+The first focused test run had 44 tests and one failure: the prompt header still said 2026-11-14.5 while StudyManuscriptPolicy.VERSION was 2026-11-14.6. The prompt header was corrected and an explicit header/version regression assertion added before the final test/build run. Full source values and scientific data were unchanged.

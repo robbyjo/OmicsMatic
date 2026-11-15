@@ -535,7 +535,12 @@ public final class StudyPlanner {
             if(impactRequested){var impact = operation(counter, "impact_assessment", "__study__", selected, List.of(String.valueOf(inventory.get("id"))));
                 impact.put("id", "global-study-impact-assessment"); impact.put("scope", "study"); operations.add(impact);publication.add(String.valueOf(impact.get("id")));}
             if (Boolean.TRUE.equals(assistance.get("enabled")) && Boolean.TRUE.equals(assistance.get("manuscript"))) {
-                var draft = operation(counter, "manuscript_draft", "__study__", selected, publication);
+                var draftInputs = new ArrayList<>(publication);
+                operations.stream().map(raw -> StudyIO.map(raw, "operation"))
+                    .filter(op -> "participant_characteristics".equals(op.get("type")))
+                    .forEach(op -> draftInputs.add(String.valueOf(op.get("id"))));
+                var draft = operation(counter, "manuscript_draft", "__study__", selected, draftInputs);
+                draft.put("allow_incomplete_dependencies", true);
                 draft.put("id", "global-study-manuscript-draft"); draft.put("scope", "study"); operations.add(draft); publication.add(String.valueOf(draft.get("id")));
             }
             for (var report : reports) {

@@ -699,6 +699,107 @@ project/
 Generated paths and filenames are recorded in the ledger; moving a portable
 archive does not break result IDs or internal evidence links.
 
+## Reclaim space from obsolete results
+
+The current source build provides `study cleanup`. Build a new executable before
+using these commands; an older released JAR may not contain them. Cleanup removes
+operation output files and preserves the original manifests, approved plans,
+contracts, run summaries and append-only audit history.
+
+A result becomes eligible only when a newer **completed result for the same
+operation and hypothesis** replaces it. The event ledger establishes chronology;
+file modification dates and run-folder names do not. There are two routes:
+
+| Replacement evidence | How it is established |
+| --- | --- |
+| Identical repeated work | A newer verified result has the same cache identity and every output hash. This includes independent copies produced by resume. |
+| Revised analysis | A named scientist records `study supersede`, identifying the old and new result IDs and explaining why the new analysis replaces the old one. Required when inputs, parameters, software or outputs differ. |
+
+A newer failed/waiting result cannot replace a successful result. Failed, null,
+invalidated and exploratory findings do not become obsolete merely because of
+their scientific status. A failed attempt requires an explicit supersession
+decision before its outputs can be removed. Replacement chains retain every
+decision and resolve to a live verified result.
+
+Set the executable and project, rebuild the index, and inspect `index/index.html`
+with **Show historical attempts** enabled:
+
+~~~powershell
+.\gradlew.bat executableJar
+$jar = 'build/cli/omicsmatic-0.3.7.jar'
+$project = 'my-analysis'
+java -jar $jar study index --project $project
+~~~
+
+Copy the exact `RUN/OPERATION` result IDs from the index. For identical copies,
+proceed directly to the preview. For revised analyses:
+
+~~~powershell
+# Replace these values with exact result IDs from your project index.
+$old = 'OLD_RUN/H1.meta_analysis'
+$new = 'NEW_RUN/H1.meta_analysis'
+java -jar $jar study supersede --project $project --result $old --replacement $new --reason 'Corrected input edition replaces the original analysis' --actor-id scientist
+~~~
+
+Current-run results, pinned evidence, manuscript operations, declared study
+inputs, observation evidence, recorded interaction sources and dependencies of
+retained results are protected. Cleanup never deletes source datasets or an
+entire run folder. A provenance link to an original operation manifest remains
+usable because that manifest is retained.
+
+Pin results cited in an external manuscript or otherwise needed for comparison
+before cleanup. The program cannot discover references outside the project.
+Pinning also protects the result's upstream dependencies. `unpin` requires a
+reason; it releases that protection but does not override current-run, input,
+observation or dependency protections. Historical manuscript operations are
+protected by default; an explicit `unpin` can release them after review.
+
+~~~powershell
+java -jar $jar study pin --project $project --result $old --reason 'Cited in manuscript revision 2' --actor-id scientist
+# Later, if the old evidence is no longer required:
+java -jar $jar study unpin --project $project --result $old --reason 'Manuscript now cites the newer result' --actor-id scientist
+~~~
+
+Preview, inspect, then apply:
+
+~~~powershell
+java -jar $jar study cleanup --project $project --dry-run --out cleanup-preview.yaml
+Get-Content cleanup-preview.yaml
+java -jar $jar study cleanup --project $project --apply cleanup-preview.yaml --actor-id scientist
+java -jar $jar study verify --project $project
+~~~
+
+The preview lists exact paths, SHA-256 hashes, logical file sizes, replacement
+evidence, protected results and resume implications. Add repeated `--result ID`
+options to narrow the selection. Retained downstream results can prevent an
+upstream result from being selected on its own. A preview never overwrites an
+existing file. Applying a preview rejects changed project state or a modified
+selection; generate and review a new preview after a run or retention decision.
+The logical byte estimate can differ from physically reclaimed space on a
+filesystem with compression, deduplication or hard links.
+
+Cleanup inventories must fit the audit ledger's event limit. Oversized previews
+are rejected before any deletion intent is written; use smaller `--result`
+selections for a very large inventory.
+
+Deletion runs under the project mutation lock. A `cleanup_started` event records
+the named approver, timestamp, reviewed plan and replacement evidence **before**
+any output is removed. A completion event records the file count and byte total;
+an interruption records the failure. Original manifests remain byte-for-byte
+unchanged. If deletion is interrupted, keep the preview and rerun the same
+`--apply` command. Recovery checks the original inventory and protections,
+never adds new files, and can repair derived views after a process interruption.
+Applying a completed preview again is idempotent.
+
+The index distinguishes historical scientific status from output availability:
+`deleted` or `cleanup_pending`. Deleted files are shown without download links.
+`study verify` accepts only the exact recorded removals; unexpected missing,
+modified or reappearing files still fail verification. Resume skips cleaned
+results and can reuse retained verified replacements. Recomputing a removed
+result requires its original inputs, software and other prerequisites; retained
+hashes alone do not recreate it. Evidence exports include the cleanup records
+and explicitly identify omitted historical outputs.
+
 ## Traceable reports and submission archives
 
 Current generated reports distinguish complete, waiting, and failed evidence,

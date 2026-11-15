@@ -14,7 +14,7 @@ import java.util.Set;
 final class StudyResultsDiscussion {
     static final List<String> RESULTS = StudyMethods.ROLES.stream()
         .filter(r -> !Set.of("cohorts", "reproducibility").contains(r)).toList();
-    static final List<String> DISCUSSION = List.of("principal_finding", "future_potential", "next_steps", "limitations", "overall_conclusion");
+    static final List<String> DISCUSSION = List.of("principal_finding", "future_potential", "limitations", "next_steps", "overall_conclusion");
     private StudyResultsDiscussion() { }
 
     static String instructions() {
@@ -26,7 +26,8 @@ final class StudyResultsDiscussion {
             + "Explain the exact feature/isoform/gene, tissue and phenotype match, direction, limitations and whether the evidence supports, contradicts or only contextualizes the finding. "
             + "For survival findings, distinguish log hazard ratios from odds/risk ratios and absolute risk. Report the endpoint/time-axis, event/censor counts, censoring/PH assumptions and source model. Treat survival_model_context and its separately adjusted or unavailable PH diagnostics as interpretation/sensitivity context, never additional primary discoveries or proof of causality. Preserve the distinction between source LRT P values and subsequent meta-analysis Wald inference. Distinguish finite coefficient existence from calibration and assumption checks; compatible supplied results do not imply a native certificate. Infinite coefficients invalidate ordinary Wald effect inference; a separately justified score or likelihood-ratio P-only result may still be usable under its own protocol.  "
             + "Do not attach all bioinformatics output to every result or treat a protein structure, sequence annotation, search hit or gene-level paper as isoform-specific causal validation. "
-            + "Begin Discussion with the most impactful finding and why it matters, then develop three to five distinct principal findings across the manuscript with reasons. "
+            + "Begin Discussion with a concise biological answer to the study question, then develop three to five distinct principal findings. Express their importance through the science, without announcing impact ranks or 'the second finding'. "
+            + "Make a persuasive, evidence-grounded case for why the study was worthwhile: return to the Introduction's motivation and consequential gap, compare with the closest primary studies, and explain the specific knowledge added, including replication, refinement or informative null findings when warranted. Novelty adjectives and significance counts cannot establish contribution. "
             + "Use discussion_role principal_finding, consecutive impact_rank values up to the configured maximum (default 5), result_ids referring to Results paragraph IDs, and an explicit impact_reason reflected in the prose. "
             + "Rank findings, not analysis types or smallest P-values: weigh effect size and uncertainty, replication, biological relevance, tissue/assay match, sensitivity and contrary evidence. "
             + "Distinct findings may arise from the same analysis; do not present the same finding three times. If fewer than three defensible findings exist, use fewer stories and record why in discussion_selection_note. Each story entry may contain several connected prose paragraphs. "
@@ -35,16 +36,39 @@ final class StudyResultsDiscussion {
             + "Keep a claim-level evidence ledger for each principal story, distinguishing this study's association, a primary source's reported results, inferred mechanistic links, hypotheses and experiments proposed for the future. Bind literature claims to the actual retrieved passages and state the source study's design, species, tissue, molecular trait, phenotype and limitations. A title or abstract excerpt does not establish that a full article was read. Do not invent inaccessible experimental details. The native finding_review contract checks prose/source bindings and depth facets locally; those checks do not certify scientific truth or approve source-text transmission. "
             + "Keep a substantial self-contained synthesis and all conclusion-changing caveats in the main text. Put the complete source-linked discussion, evidence/claim ledger, sensitivity details, alternative mechanisms and proposed validation in a linked finding-specific supplement. Do not truncate evidence to meet a provisional equal per-finding allowance. "
             + "When a study-wide impact assessment exists, use finding_ids to connect each principal story to the same frozen finding in its linked Results paragraphs. Record impact_selection_override_reason for a scientist's change to the selected findings or their priority order; excluded findings cannot be revived by an override. "
-            + "Then discuss future_potential, next_steps and limitations, ending with overall_conclusion (either the final Discussion paragraph or the separate Conclusion, not both). "
-            + "Keep future applications and proposed next steps conditional and distinct from work performed; explain how limitations constrain interpretation and conclusions. "
+            + "Integrate the findings into one coherent answer: explain convergence, complementary evidence and unresolved tension, and how each finding changes the combined interpretation. Shared participants or correlated analyses are not independent confirmation. Do not force discordant results into agreement. Highlight unexpected findings only against a documented study hypothesis or source-supported prior expectation: describe the departure, its implications, alternative explanations and a discriminating test. Label post hoc explanations; omit the surprise claim if no supported expectation exists. "
+            + "Then discuss future_potential, limitations and next_steps, ending with overall_conclusion (either the final Discussion paragraph or the separate Conclusion, not both). Older drafts with next_steps before limitations remain structurally accepted; their argument still requires substantive review. "
+            + "Develop future potential with grounded optimism: connect each promising implication to a finding, explain what it could enable, and name the specific validation needed. Use measured phrases such as 'could help distinguish' or 'if confirmed, may provide a basis for'; avoid stacked hedges or cancelling every prospect with a generic disclaimer. Keep applications proportionate to the evidence and proposed work distinct from work performed. "
+            + "For each material limitation, identify the actual design or evidence gap, its consequence for a specific inference and what remains supported; do not guess bias direction or recite generic weaknesses. Connect feasible follow-up to that uncertainty, explain which alternatives its outcomes would distinguish and how they would change the conclusion. Some limitations can only be reduced or need a different design; do not promise to resolve them all. Prioritize the next step by scientific value and the most consequential uncertainty. End by integrating the evidence into the answer to the Introduction's question, the supported contribution and its scope, and the next justified question, without new results or stronger causal claims. "
+            + "Before finalizing, audit the Discussion's contribution, synthesis, evidence for any surprise and the result-to-limitation-to-next-step reasoning. Editorial review must identify the weakest inference or transition and propose an attributed replacement or specify the evidence needed to repair it. Structural completeness cannot certify persuasiveness or impact. Keep internal versions and audit provenance in review artifacts or a brief supplemental note, outside the scientific Discussion. "
             + "Keep all colocalization signal pairs and distinguish their actual molecular/outcome traits, registered primary prior and sensitivity range; do not select only the largest H4 or count signal pairs as independent loci. Report observed pre-restriction coverage versus candidate matching and convergence/fallback. Source-declared complete regions are not independently certified, and H4 is not association FDR or causal direction. If any colocalization result has evidence_grade exploratory_partial_region_major_limitation, reproduce its required_manuscript_caveat in the main-text limitations: the posterior is conditional on observed selected variants, incomplete coverage can bias it, and a null result is not evidence against sharing. "
             + "Cite retrieved cataloged references where appropriate, retain major contradictory findings in the main text, and keep additional detail in the supplement. "
             + "Never invent results, novelty, causality or drug efficacy to fill the outline. Structural validation is not scientific validation; untagged older prose needs explicit review, not silent rewriting.";
     }
     static Map<String, Object> policy() {
-        return Map.of("version", 3, "results_order", RESULTS, "discussion_order", DISCUSSION,
+        return Map.of("version", 5, "results_order", RESULTS, "discussion_order", DISCUSSION,
+            "template", org.jlinalg.study.StudyManuscriptPolicy.identity(),
             "manuscript_policy", org.jlinalg.study.StudyWorkflowPolicy.manuscript(Map.of()),
             "first_result", "native participant-characteristics Table 1", "instructions", instructions());
+    }
+    static Map<String, Object> discussionReview() {
+        return Map.of("status", "substantive_review_required", "assessed_by_structural_checks", false,
+            "required_argument", List.of(
+                "Answer the Introduction's question and explain the specific contribution relative to the closest primary studies.",
+                "Integrate convergent, complementary and discordant findings without treating dependent evidence as independent confirmation.",
+                "Explain scientific implications and potential impact with an evidence anchor and proportionate conditions.",
+                "Discuss an unexpected finding only against a documented hypothesis or source-supported expectation; otherwise omit the surprise claim.",
+                "Connect each material weakness to the inference it limits, what remains supported, and feasible follow-up or a residual constraint.",
+                "Prioritize discriminating next steps and conclude with the integrated answer, contribution, scope and next justified question."),
+            "reader_questions", List.of(
+                "Why was this study worth doing, and what do we know now that the closest prior studies did not establish?",
+                "How do the results fit together, and what tension or dependence limits the combined conclusion?",
+                "What could the findings enable, and which result supports that implication?",
+                "If a finding is described as unexpected, where is the prior expectation documented and what else could explain the departure?",
+                "Which inference does each important weakness constrain, and what remains defensible?",
+                "Why is the proposed next step the most useful one; which outcomes would change the interpretation and which constraints would remain?",
+                "Does the conclusion answer the motivating question without introducing new results or overstating causality?"),
+            "editorial_action", "Identify the weakest inference or transition and propose an attributed replacement, or specify the missing evidence when prose cannot repair it. Role order and source-ID checks cannot certify persuasiveness, novelty, impact or scientific validity.");
     }
     static String resultRole(Map<String, Object> e) {
         String type = text(e.get("operation_type"));
@@ -97,9 +121,7 @@ final class StudyResultsDiscussion {
         }
         // Empty slots are research needs, not an algorithmic ranking of available analyses.
         for (int rank = 1; rank <= (impact.isEmpty() ? 3 : chosen.size()); rank++) {
-            var p = paragraph("discussion-finding-" + rank, "discussion", "[SCIENTIST INPUT REQUIRED: discuss the "
-                + (rank == 1 ? "most" : rank == 2 ? "second most" : "third most")
-                + " impactful finding and explain why, considering effect size, uncertainty, replication, biology and conflicting evidence.]", List.of());
+            var p = paragraph("discussion-finding-" + rank, "discussion", "[SCIENTIST INPUT REQUIRED: develop this principal finding and its contribution relative to primary studies, considering effect size, uncertainty, replication, biology and conflicting evidence. Explain how it combines with the other findings to answer the motivating question. Highlight a surprise only against a documented prior expectation.]", List.of());
             p.put("discussion_role", "principal_finding"); p.put("impact_rank", rank); p.put("result_ids", List.of());
             p.put("impact_reason", "[SCIENTIST INPUT REQUIRED: justify this priority; no automatic impact ranking.]");
             if (!impact.isEmpty()) {
@@ -112,10 +134,10 @@ final class StudyResultsDiscussion {
         }
         for (String role : DISCUSSION.subList(1, DISCUSSION.size())) {
             String task = switch (role) {
-                case "future_potential" -> "Describe conditional scientific or translational potential, without implying clinical utility or drug efficacy.";
-                case "next_steps" -> "Propose prioritized validation or sensitivity work, with rationale and required data; do not claim it was performed.";
-                case "limitations" -> "Explain design, sample, confounding, uncertainty, tissue/assay and evidence gaps that constrain these conclusions.";
-                default -> "Conclude with the main supported contribution and its scope; introduce no new finding or unsupported causal claim.";
+                case "future_potential" -> "Develop promising scientific implications grounded in these findings: explain what they could enable, why that matters and the specific evidence needed to advance the possibility. Use measured optimism and one meaningful condition rather than repeated disclaimers.";
+                case "next_steps" -> "Prioritize feasible follow-up tied to a specific result or consequential limitation. Explain the required data or experiment, competing interpretations its outcomes would distinguish, how they would change the conclusion and what constraints would remain; do not claim it was performed.";
+                case "limitations" -> "Explain the study's material design or evidence gaps, the inference each constrains and what remains supported. Connect each to feasible follow-up or explain why it can only be reduced or requires a different design; avoid generic pessimism or promises to resolve every weakness.";
+                default -> "Integrate the findings into an answer to the Introduction's motivating question, explain the specific contribution and its scope, and close with the next justified research question; introduce no new finding or unsupported causal claim.";
             };
             var p = paragraph("discussion-" + role.replace('_', '-'), role.equals("overall_conclusion") ? "conclusion" : "discussion",
                 "[SCIENTIST INPUT REQUIRED: " + task + "]", List.of());
@@ -191,7 +213,10 @@ final class StudyResultsDiscussion {
             var p = map(raw); if (!section.equals(p.get("section"))) continue;
             if (!p.containsKey("discussion_role")) { legacy++; continue; }
             String role = text(p.get("discussion_role")); int order = DISCUSSION.indexOf(role);
-            if (order < 0 || order < last || (section.equals("conclusion") && !role.equals("overall_conclusion"))) throw new IOException("Discussion must follow principal findings, future_potential, next_steps, limitations, overall_conclusion order");
+            // New templates put limitations before next steps. Preserve the former order
+            // in authored revisions by treating these two unique roles as the same stage.
+            if (role.equals("next_steps")) order = DISCUSSION.indexOf("limitations");
+            if (order < 0 || order < last || (section.equals("conclusion") && !role.equals("overall_conclusion"))) throw new IOException("Discussion must follow principal findings, future_potential, limitations/next_steps, overall_conclusion order");
             last = order;
             if (!role.equals("principal_finding") && !roles.add(role)) throw new IOException("Duplicate Discussion role: " + role);
             if (missing(p.get("text"))) needs.add(p.get("id") + ": supply reviewed Discussion prose");
@@ -199,7 +224,6 @@ final class StudyResultsDiscussion {
                 roles.add(role); rank++;
                 if (rank > maximumFindings || !Integer.valueOf(rank).equals(p.get("impact_rank")))
                     throw new IOException("Principal findings require consecutive integer impact_rank from 1 through " + maximumFindings);
-                if (text(p.get("text")).strip().split("\\R\\s*\\R").length != 1) throw new IOException("Each principal finding must be one Discussion paragraph");
                 if (missing(p.get("impact_reason"))) needs.add(p.get("id") + ": explain why this finding has this impact rank");
                 if (!(p.get("result_ids") instanceof List<?>)) throw new IOException("principal_finding result_ids must be a list");
                 if (list(p.get("result_ids")).isEmpty()) needs.add(p.get("id") + ": link the discussed finding to Results paragraph IDs");
@@ -221,6 +245,7 @@ final class StudyResultsDiscussion {
         for (String role : DISCUSSION.subList(1, DISCUSSION.size())) if (!roles.contains(role)) needs.add(role + ": missing Discussion or Conclusion paragraph");
         if (legacy > 0) needs.add("Classify " + legacy + " existing Discussion/Conclusion block(s); older prose is preserved, not silently rewritten");
         return Map.of("policy", policy(), "status", needs.isEmpty() ? "structure_complete_scientific_review_required" : "needs_input", "needs", needs,
+            "discussion_review", discussionReview(),
             "principal_finding_paragraphs", rank, "word_budget", wordBudget, "scientific_review", "Verify impact reasons, independence, source-level bioinformatics relevance, citations, adverse evidence and conclusions. Order and source-ID checks do not validate scientific claims.");
     }
 }

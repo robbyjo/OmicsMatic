@@ -614,11 +614,14 @@ and `--model` with the known model identity, or an explicit unknown declaration.
 
 ### Develop the Introduction from the field to the hypotheses
 
-Native first drafts, revision checks and LLM drafting/editorial instructions share
-the same four- or five-paragraph structure:
+Native first drafts, revision checks and LLM drafting/editorial instructions use
+versioned template **2026-11-14.2**. See the [complete writing guide and twelve-paper
+survey](../manuscript-writing-template.md). The Introduction develops one argument,
+with four or five paragraphs as a starting plan:
 
-1. One or two paragraphs summarizing the relevant field and established findings.
-2. One paragraph explaining why the study hypothesis is relevant to that field.
+1. Establish the phenotype or biological problem, then synthesize established
+   human research. Define the molecular measurement before discussing hit genes.
+2. Explain why the measurement, tissue and design address the unresolved question.
 3. One paragraph explaining why the question matters, what closely related studies
    have already done, and precisely how this study differs.
 4. One final paragraph stating the overall hypotheses and their scientific motivation.
@@ -629,6 +632,24 @@ explain, not proof of novelty. Do not invent a prespecified motivation from the
 significant results; changed hypotheses belong in the study amendment history.
 The finished Introduction uses connected prose without paragraph mini-headings
 or editorial/audit commentary.
+
+New native revisions separate `manuscript.html` (reading copy) from
+`manuscript-review.html` (annotated copy). Both preserve authored scientific caveats;
+review labels and parameter inventories appear in the latter. Each bundle saves
+the full prompt, version and hash. Table 1 is generated locally from participant
+summaries, with missing or provisional analysis membership explicitly flagged.
+AI drafting inserts that table without automatically sending its values to the model.
+
+Write the structured abstract last, from the completed body, and place it once
+at the front: Background, Methods, Results, Conclusion. Native revisions support
+`abstract_role: background|methods|results|conclusion` on `section: abstract` blocks.
+Missing or unstructured abstracts remain explicit review needs; a changed body
+with an unchanged abstract triggers reconciliation review. Abstract and
+`section: availability` text are outside the main-text word budget.
+Keep internal versions and audit provenance out of the reading copy, apart from
+a concise data/code availability statement and, when useful, a brief supplement
+note. Develop future implications with evidence-based optimism: explain what a
+finding could enable and the specific validation needed, without stacked hedges.
 
 Generated bundles provide `introduction-template.yaml`, a revision request with
 the four roles and explicit placeholders, and `introduction-review.yaml`, which
@@ -649,9 +670,9 @@ with reviewed prose and cataloged references. For example, a paragraph under
 ```
 
 The ordered roles are `field_background`, `hypothesis_relevance`,
-`importance_and_gap`, and `hypotheses_and_motivation`. The first permits two
-paragraphs; every other role permits one. Blank lines separate paragraphs.
-Unknown roles, roles outside the Introduction, excess paragraphs and reversed
+`importance_and_gap`, and `hypotheses_and_motivation`. Four or five paragraphs
+are a starting plan; expand a role when the connected argument requires it.
+Blank lines separate paragraphs. Unknown roles, roles outside the Introduction and reversed
 role order are rejected before a revision bundle is created. Missing roles,
 placeholders and missing citations instead remain explicit writing needs.
 Existing untagged prose is preserved and flagged for classification; it is not
@@ -792,19 +813,21 @@ visible and its usable source-level result must be identified and reviewed.
 Native drafting inventories candidate context without attaching every database
 match to every finding.
 
-Discussion begins with one connected paragraph about the most impactful finding
-and why it matters, followed by one paragraph each for the second and third.
-Use `discussion_role: principal_finding`, consecutive `impact_rank` values 1–3,
+Discussion opens with the biological answer to the study question, then develops
+the selected principal findings in as many connected paragraphs as needed.
+Use `discussion_role: principal_finding`, consecutive `impact_rank` values
+through the configured maximum (default five),
 `result_ids` linking the relevant Results paragraphs, and `impact_reason`.
 Express that reason in the scientific prose as well as the audit field. Consider
 effect magnitude and uncertainty, replication, biological relevance, sensitivity
 and conflicting evidence; a small P-value or completed operation is not by itself
 a reason for high impact. Different findings can originate in the same analysis,
 but repeated Results links trigger a check that the priorities are genuinely
-distinct. If fewer than three findings merit discussion, remove unused template
+distinct. Keep impact ranks and editorial labels out of article prose. If fewer
+than the configured minimum (default three) findings merit discussion, remove unused template
 slots and explain why in the top-level `discussion_selection_note`.
 
-After those paragraphs, use `future_potential`, `next_steps`, and `limitations`
+After the principal findings, use `future_potential`, `next_steps`, and `limitations`
 in that order. Distinguish possible applications and proposed follow-up from work
 actually performed; explain how limitations constrain interpretation. Finish
 with `overall_conclusion`, either as the final Discussion paragraph or in the

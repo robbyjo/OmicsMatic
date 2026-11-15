@@ -71,6 +71,10 @@ final class StudyAssistance {
         metadata.put("requested_model", config.getOrDefault("model", "not_configured"));
         metadata.put("started_at", Instant.now().toString());
         metadata.put("purpose", purpose);
+        if (Set.of("manuscript", "editorial").contains(purpose)) {
+            metadata.put("manuscript_writing_policy", org.jlinalg.study.StudyManuscriptPolicy.identity());
+            StudyManuscriptWriting.writePolicy(context.outputDirectory());
+        }
         metadata.put("actor", "jlinalg");
         metadata.put("request_sent", false);
         metadata.put("request_attempted", false);
@@ -340,6 +344,14 @@ final class StudyAssistance {
                     "<!doctype html><html lang=\"en\"><meta charset=\"utf-8\"><title>Unreviewed editorial proposals</title><body><h1>Unreviewed editorial proposals</h1><p>No edits have been applied. Verify every number, citation and interpretation before creating a new manuscript revision.</p><pre style=\"white-space:pre-wrap\">"
                     + answer.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;") + "</pre></body></html>", StandardCharsets.UTF_8);
             } else {
+                var localTables = StudyManuscriptWriting.localTables(context);
+                StudyManuscriptWriting.writePolicy(context.outputDirectory());
+                write(context.outputDirectory().resolve("manuscript-readability-review.yaml"), StudyManuscriptWriting.assessDraft(answer, localTables));
+                write(context.outputDirectory().resolve("abstract-review.yaml"), map(StudyManuscriptWriting.assessDraft(answer, localTables).get("abstract_review")));
+                write(context.outputDirectory().resolve("participant-characteristics-review.yaml"), StudyManuscriptWriting.populationReview(localTables));
+                Files.writeString(context.outputDirectory().resolve("participant-characteristics.csv"), StudyPublication.table1Csv(localTables));
+                Files.writeString(context.outputDirectory().resolve("participant-characteristics.html"), "<!doctype html><meta charset=\"utf-8\"><h1>Table 1. Participant characteristics</h1>" + StudyPublication.table1(localTables)
+                    + "<h2>Supplemental Table 1</h2>" + StudyPublication.detailedTable1(localTables, false));
                 if (purpose.equals("manuscript") && evidence.containsKey("manuscript_policy")) {
                     var budget = StudyWordBudget.draft(answer, map(evidence.get("manuscript_policy")));
                     write(context.outputDirectory().resolve("word-counts.yaml"), budget); decision.put("word_budget", budget);
@@ -347,7 +359,8 @@ final class StudyAssistance {
                 }
                 decision.put("draft_status", "unreviewed_not_for_submission");
                 decision.put("required_review", "Scientist must verify every statement, number, citation, causal interpretation, authorship and disclosure before submission");
-                Files.writeString(context.outputDirectory().resolve("manuscript.html"), manuscript(answer, evidence), StandardCharsets.UTF_8);
+                Files.writeString(context.outputDirectory().resolve("manuscript.html"), manuscript(answer, localTables), StandardCharsets.UTF_8);
+                Files.writeString(context.outputDirectory().resolve("manuscript-review.html"), manuscript(answer, localTables, true), StandardCharsets.UTF_8);
             }
             decision.put("status", "completed_unreviewed");
             return finish(folder, metadata, decision, StudyOperationExecutor.State.COMPLETE,
@@ -453,6 +466,7 @@ final class StudyAssistance {
         if (Set.of("literature_support", "manuscript_draft").contains(text(context.operation().get("type")))) {
             Map<String, Object> catalog = StudyReferenceCatalog.build(literatureQueries);
             result.put("introduction_policy", StudyIntroduction.policy());
+            result.put("manuscript_writing_policy", org.jlinalg.study.StudyManuscriptPolicy.identity());
             result.put("methods_policy", StudyMethods.policy());
             result.put("results_discussion_policy", StudyResultsDiscussion.policy());
             result.put("literature_search_coverage", catalog.get("search_coverage"));
@@ -525,6 +539,7 @@ final class StudyAssistance {
                 + "Use web retrieval when available, never fabricate a reference, and omit a phenotype if you cannot cite it. "
                 + "Return only the required structured JSON. These are unreviewed search suggestions, not amendments or approval to interpret a colocalization result.";
             case "editorial" -> "Perform an editorial pass on the supplied existing manuscript, not a new analysis. "
+                + org.jlinalg.study.StudyManuscriptPolicy.instructions() + "\n"
                 + StudyIntroduction.instructions() + " "
                 + StudyMethods.instructions() + " "
                 + StudyCitations.instructions() + " "
@@ -555,15 +570,16 @@ final class StudyAssistance {
                 + "Where source text was actually retrieved, include a literal excerpt of at most 25 words per source, with section or abstract location; never fabricate or paraphrase inside quotation marks. "
                 + "Separate verified excerpts, your interpretations and proposed follow-up experiments; a title-only match is not support. "
                 + "Rank publication stories separately from drug-target opportunities, giving reasons and contrary evidence. Report inaccessible text and search limits. This is not a systematic review.";
-            default -> "Write a first manuscript draft with Introduction, Methods, Results, Discussion, and Conclusion headings. "
+            default -> "Complete the manuscript body first, then write a structured Abstract with Background, Methods, Results and Conclusion. Return that abstract exactly once at the front, followed by Introduction, Methods, Results and Discussion; a separate Conclusion is optional. Include one concise Data and code availability statement near the end. "
+                + org.jlinalg.study.StudyManuscriptPolicy.instructions() + "\n"
                 + "When selected_findings and manuscript_outline are supplied, use their frozen study-wide selection and explicit shortfall note. Section word allowances are adjustable planning allocations; manuscript_policy.word_limit_mode controls whether the total is a target or a strict limit. Retain extended evidence and thorough finding discussions in explicitly linked Supplementary sections. Preserve mandatory caveats in the main text; do not replace impact priorities with P-value ordering. "
                 + StudyIntroduction.instructions() + " "
                 + StudyMethods.instructions() + " "
                 + StudyCitations.instructions() + " "
                 + StudyContextReview.instructions() + " "
                 + StudyResultsDiscussion.instructions() + " "
-                + "Begin Results with Table 1: participant characteristics (N, male n and percent with denominator, age and main phenotype mean plus/minus sample standard deviation, covariates and missingness). "
-                + "Use only verified analysis-sample summaries; if missing, leave explicit placeholders, never use total phenotype-file counts as analysis N. "
+                + "Begin Results with a population overview and the [TABLE_1] marker for locally inserted participant characteristics. Do not generate table cells from guesses. "
+                + "Use only verified analysis-sample counts in prose; if missing, leave explicit placeholders, never use total phenotype-file counts as analysis N. "
                 + "Methods must state hypotheses in ordinary scientific prose, not hypothesis IDs, and give model family, outcome/predictor orientation, biological covariates, technical factors and pedigree/relatedness adjustment from verified provenance. "
                 + "Expand every abbreviation at first use. Results follow Methods order; impact-ranked interpretation belongs in Discussion, not Results. Retain additional details in a Supplement, including null or contradictory results. "
                 + "Keep major limitations and failed replication visible in the main text. Association ranking is not drug-target validation. "
@@ -796,12 +812,30 @@ final class StudyAssistance {
         @Override public void onComplete() { delegate.onComplete(); }
     }
 
-    private static String manuscript(String answer, Map<String, Object> evidence) {
-        return "<!doctype html><html lang=\"en\"><meta charset=\"utf-8\"><title>Unreviewed manuscript draft</title>"
-            + "<style>body{max-width:70rem;margin:2rem auto;font-family:system-ui;padding:1rem}pre{white-space:pre-wrap;overflow-wrap:anywhere}</style>"
-            + "<h1>Unreviewed AI-assisted first draft</h1><p>Not for submission. Verify every claim and citation against the linked audit record. Missing information is not an inferred fact.</p>"
-            + "<p><a href=\"evidence.yaml\">Aggregate evidence supplied</a> · <a href=\"source-map.yaml\">Result lineage</a> · <a href=\"manifest.yaml\">Input/output SHA-256 manifest</a> · <a href=\"llm/interaction-001/metadata.yaml\">Model and timestamps</a></p>"
-            + "<pre>" + escape(answer) + "</pre><h2>Supplied result preview (audit appendix)</h2><pre>" + escape(json(evidence)) + "</pre></html>";
+    static String manuscript(String answer, List<Object> tables) {
+        return manuscript(answer, tables, false);
+    }
+    private static String manuscript(String answer, List<Object> tables, boolean audit) {
+        var draft = StudyAbstract.splitDraft(answer);
+        String abstractText = draft.abstractCount() == 0 ? StudyAbstract.labeledText(StudyAbstract.template()) : draft.abstractText();
+        String table = "<aside><h3>Table 1. Participant characteristics</h3>" + StudyPublication.table1(tables)
+            + "<p><a href=\"participant-characteristics.html\">Detailed participant summaries</a></p></aside>";
+        // Escape model HTML; only native table markup and delimited math enter the renderer.
+        String prose = StudyMathTypography.prose(StudyManuscriptWriting.withAvailability(draft.body()));
+        int marker = prose.indexOf("[TABLE_1]");
+        if (marker >= 0) prose = prose.substring(0, marker) + "</div>" + table + "<div class=\"prose\">"
+            + prose.substring(marker + "[TABLE_1]".length()).replace("[TABLE_1]", "Table 1");
+        else {
+            var results = java.util.regex.Pattern.compile("(?im)^(?:#{1,6}\\s*)?Results\\s*[:#]*\\s*$").matcher(prose);
+            if (results.find()) prose = prose.substring(0, results.end()) + "</div>" + table + "<div class=\"prose\">" + prose.substring(results.end());
+            else prose += "</div>" + table + "<div class=\"prose\">";
+        }
+        return StudyMathTypography.document("<!doctype html><html lang=\"en\"><meta charset=\"utf-8\"><title>Unreviewed manuscript draft</title>"
+            + "<style>body{max-width:70rem;margin:2rem auto;font:17px/1.65 Georgia,serif;padding:1rem}.prose{white-space:pre-wrap;overflow-wrap:anywhere}table{border-collapse:collapse}td,th{padding:.5rem;text-align:left;border-bottom:1px solid #ddd}@media print{nav{display:none}table{font-size:10pt}}</style>"
+            + "<h1>Draft manuscript</h1>"
+            + (audit ? "<p>Draft for scientific review.</p><nav><a href=\"manuscript.html\">Reading copy</a> · <a href=\"evidence.yaml\">Evidence</a> · <a href=\"source-map.yaml\">Source map</a> · <a href=\"abstract-review.yaml\">Abstract review</a> · <a href=\"manuscript-readability-review.yaml\">Writing review</a> · <a href=\"participant-characteristics-review.yaml\">Population review</a> · <a href=\"manuscript-writing-policy.yaml\">Template version</a> · <a href=\"llm/interaction-001/metadata.yaml\">Model provenance</a></nav>" : "")
+            + "<section data-manuscript-abstract=\"true\"><h2>Abstract</h2><div class=\"prose\">" + StudyMathTypography.prose(abstractText) + "</div></section>"
+            + "<div class=\"prose\">" + prose + "</div></html>");
     }
 
     private static String escape(String value) {
