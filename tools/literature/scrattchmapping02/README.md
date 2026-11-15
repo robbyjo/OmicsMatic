@@ -18,7 +18,9 @@ that embeds a process-specific external pointer, including between two original
 runs. That failed record remains retained. Complete saved conditions use strict R
 identity or identical complete native-R serialization, with no condition fields
 deleted or converted and no live pointer-address identity claim.
-Catalog admission remains pending; the mapping family still adds zero credits.
+The [catalog integration](../../../docs/literature/SCRATTCH_MAPPING02_CATALOG_INTEGRATION.md)
+records one scoped upstream mapping family credit. The independent Java component
+adds no second family credit; the full 250-paper objective remains open.
 If a required prerequisite or its installation is forbidden/unavailable, skip
 dependent analysis. Failed/partial files are not a complete result. Retain all
 original inputs and raw logs and retry new paths after resolving the named cause.
@@ -32,5 +34,5 @@ The full mapping profile remains separate from the native component.
 Full-runtime scrattch.io/scrattch.vis dependencies restrict commercial
 redistribution. They are not bundled with this GPL Java component. The selected
 original mapping source is GPL-3, and the derived Java file is GPL-3.0-only.
-The mapping family remains missing in the catalog. The full 250-paper goal
-remains open.
+Historical workflow qualification records predate catalog admission and remain
+unchanged. The current catalog routing is linked above.

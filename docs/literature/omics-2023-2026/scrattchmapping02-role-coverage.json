@@ -1,0 +1,141 @@
+{
+  "status": "PRIMARY_MAPPING_ROLES_WITH_SELECTED02_PREPARED_REFERENCE_COVERAGE",
+  "reviews": [
+    {
+      "paper_id": "P058",
+      "pmcid": "PMC10719099",
+      "doi": "10.1038/s41586-023-06817-8",
+      "tool_id": "scrattch-mapping",
+      "primary_xml_sha256": "75c2262af9c034eff4f733e4f60dd326625ff33c95cd402bd80b7bcf9f8f0608",
+      "evidence_paragraph_index": 57,
+      "evidence_paragraph_sha256": "5ed01ad858567f53f0e9580faaee39f3883a370196d27a4357cd392cc512d50c",
+      "version_reported_near_name": null,
+      "usage_context": "analysis-method-description",
+      "use_summary": "Maps 10x SPN nuclei onto the mouse whole-brain taxonomy using Hierarchical Approximate Nearest Neighbour mapping in scrattch-mapping; calculates correspondence confusion matrices at cluster, supertype and subclass levels and summarizes marker correlations.",
+      "reported_settings": {
+        "mapping_method": "Hierarchical Approximate Nearest Neighbour",
+        "correspondence_levels": [
+          "cluster",
+          "supertype",
+          "subclass"
+        ]
+      },
+      "uncertainties": [
+        "Package edition, exact function, marker list, distance metric and complete caller options are unreported.",
+        "Do not borrow P059 edition 0.2 or conflate this mapping with BIGCAT i_harmonize."
+      ],
+      "supporting_evidence": [
+        {
+          "paragraph_index": 57,
+          "section": "Methods / snRNA-seq / Mapping to AIBS WB scRNA-seq",
+          "paragraph_sha256": "5ed01ad858567f53f0e9580faaee39f3883a370196d27a4357cd392cc512d50c"
+        },
+        {
+          "paragraph_index": 77,
+          "section": "Code availability",
+          "paragraph_sha256": "74039ed8bc9fcbc30d60bc2eff13b6d97180fbf2e531f0fe41efa8e5646cee29"
+        },
+        {
+          "paragraph_index": 85,
+          "section": "Associated Data / Data Availability Statement",
+          "paragraph_sha256": "74039ed8bc9fcbc30d60bc2eff13b6d97180fbf2e531f0fe41efa8e5646cee29"
+        }
+      ],
+      "implementation_scope_note": "Project availability: selected original v0.2 prepared-reference hierarchical mapping with an exact permitted Linux/WSL provider and complete caller-supplied taxonomy/Annoy assets. The paper edition, exact function, metric, markers and caller options remain unknown; v0.2 is not substituted as its reported edition. Paper-specific confusion-matrix/marker-correlation summarization and biological reproduction are not qualified. Missing/forbidden prerequisites SKIP3 skip dependent analysis; FAIL2 admits no complete result.",
+      "named_anchor_classification": [
+        {
+          "paragraph_index": 57,
+          "kind": "primary-methods"
+        },
+        {
+          "paragraph_index": 77,
+          "kind": "declared-code-use"
+        },
+        {
+          "paragraph_index": 85,
+          "kind": "associated-data-duplicate"
+        }
+      ]
+    },
+    {
+      "paper_id": "P059",
+      "pmcid": "PMC10719114",
+      "doi": "10.1038/s41586-023-06812-z",
+      "tool_id": "scrattch-mapping",
+      "primary_xml_sha256": "48771a4387270374add8ea5c2127306e44260dc2dc2d82b0ceb358a060ca1b94",
+      "evidence_paragraph_index": 111,
+      "evidence_paragraph_sha256": "5738bf4335fb27b0c3512e93ee3131611267bb1c05ca66ff8e13660ddcb84f65",
+      "version_reported_near_name": "0.2",
+      "usage_context": "analysis-method-description",
+      "use_summary": "Assigns query cells hierarchically through a root/class/subclass/cluster tree. At each internal node, markers discriminate child-node clusters and cells follow the nearest cluster centroid until reaching leaf clusters; the paper also links this hierarchy to MapMyCells.",
+      "reported_settings": {
+        "hierarchy": [
+          "root",
+          "class",
+          "subclass",
+          "cluster"
+        ],
+        "assignment": "nearest cluster centroid using markers selected at each internal node"
+      },
+      "uncertainties": [
+        "Exact function, distance metric, tie policy and all caller arguments are not reported.",
+        "BIGCAT map_cells_knn_big is a separately named package/function path and is not inferred to implement this hierarchy."
+      ],
+      "supporting_evidence": [
+        {
+          "paragraph_index": 17,
+          "section": "An interactive online platform for the atlas",
+          "paragraph_sha256": "11c8fced262ba24406cc4785ff5980c583961fb4662177e38683f3921a47323d"
+        },
+        {
+          "paragraph_index": 111,
+          "section": "Methods / scRNA-seq / Assigning cell-type identities within a modality for cross-validation and across modalities",
+          "paragraph_sha256": "5738bf4335fb27b0c3512e93ee3131611267bb1c05ca66ff8e13660ddcb84f65"
+        },
+        {
+          "paragraph_index": 155,
+          "section": "Code availability",
+          "paragraph_sha256": "7425322cdbd1d4fadba5e67ec3216c88509799fc3c782a183c7dce3d69c1bfb3"
+        },
+        {
+          "paragraph_index": 162,
+          "section": "Associated Data / Data Availability Statement",
+          "paragraph_sha256": "7425322cdbd1d4fadba5e67ec3216c88509799fc3c782a183c7dce3d69c1bfb3"
+        }
+      ],
+      "implementation_scope_note": "Project availability: selected unchanged original v0.2 run_mapping_on_taxonomy for complete caller-prepared taxonomy/Annoy assets, correlation distance and serial query blocks. Eleven fresh original controls cover hierarchy traversal and bootstrap aggregation; the exact paper function, metric, markers, tie policy and caller arguments remain unreported. Scientific reference/marker discovery, MapMyCells service and biological/paper reproduction are not qualified. The selected R 4.2.3 profile is not an author environment. Missing/forbidden prerequisites SKIP3 skip dependent analysis; FAIL2 admits no complete result.",
+      "named_anchor_classification": [
+        {
+          "paragraph_index": 17,
+          "kind": "reported-result-or-tool-description"
+        },
+        {
+          "paragraph_index": 111,
+          "kind": "primary-methods"
+        },
+        {
+          "paragraph_index": 155,
+          "kind": "declared-code-use"
+        },
+        {
+          "paragraph_index": 162,
+          "kind": "associated-data-duplicate"
+        }
+      ]
+    }
+  ],
+  "paper_role_coverage": {
+    "P058": "Maps 10x SPN nuclei onto the mouse whole-brain taxonomy using Hierarchical Approximate Nearest Neighbour mapping in scrattch-mapping; calculates correspondence confusion matrices at cluster, supertype and subclass levels and summarizes marker correlations. Project availability: selected original v0.2 prepared-reference hierarchical mapping with an exact permitted Linux/WSL provider and complete caller-supplied taxonomy/Annoy assets. The paper edition, exact function, metric, markers and caller options remain unknown; v0.2 is not substituted as its reported edition. Paper-specific confusion-matrix/marker-correlation summarization and biological reproduction are not qualified. Missing/forbidden prerequisites SKIP3 skip dependent analysis; FAIL2 admits no complete result.",
+    "P059": "Assigns query cells hierarchically through a root/class/subclass/cluster tree. At each internal node, markers discriminate child-node clusters and cells follow the nearest cluster centroid until reaching leaf clusters; the paper also links this hierarchy to MapMyCells. Project availability: selected unchanged original v0.2 run_mapping_on_taxonomy for complete caller-prepared taxonomy/Annoy assets, correlation distance and serial query blocks. Eleven fresh original controls cover hierarchy traversal and bootstrap aggregation; the exact paper function, metric, markers, tie policy and caller arguments remain unreported. Scientific reference/marker discovery, MapMyCells service and biological/paper reproduction are not qualified. The selected R 4.2.3 profile is not an author environment. Missing/forbidden prerequisites SKIP3 skip dependent analysis; FAIL2 admits no complete result."
+  },
+  "P058_edition_unknown_preserved": true,
+  "P059_reported_edition": "0.2",
+  "author_calls_and_metric_unreported": true,
+  "scientific_reference_discovery_qualified": false,
+  "MapMyCells_service_qualified": false,
+  "selected_environment_is_author_environment": false,
+  "live_execution_context_identity_claimed": false,
+  "new_upstream_family_credit": 1,
+  "native_family_credit_added": 0,
+  "whole_goal_complete": false
+}

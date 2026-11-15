@@ -1,6 +1,31 @@
 # 250-paper omics and GWAS toolbox catalog
 
 
+## scrattch.mapping: warnings and required actions
+
+**250 papers, 438 named software families, 2,679 observations and 1,180 individually reviewed uses; 1,499 uses await review.** The 71 Nature, 104 Nature Genetics and 75 AJHG papers, fixed source window and primary facts remain unchanged. Only implementation coverage for the two existing mapping uses changes. P058's edition remains unknown; P059 reports v0.2.
+
+**114 scoped new integrations: 20 native Java subsets and 94 original upstream workflows; 117 including three existing adapters. 265 named families remain missing.** This adds one upstream mapping family credit and no additional native family credit. The independent Java dense L2 component is one bounded component of this family. The full semantic review and 250-paper implementation objective remain open.
+
+The selected original v0.2 public run_mapping_on_taxonomy workflow maps against complete caller-prepared taxonomy and Annoy assets, with correlation distance and serial blocks. It supports dense and dgCMatrix queries. Eleven fresh original controls cover three hierarchy depths, bootstrap iteration behavior and source failures: seven complete returns and four original errors without a result. Returned values and RNG states use strict R identity; complete original conditions use strict identity or identical complete native-R serialization. No original condition field is deleted or coerced. The earlier live-pointer identity comparison remains failed and retained, including an independent original-versus-original failure. RDS cannot retain a live C handler pointer address or recreate its execution context; neither is claimed.
+
+**Review all warnings and nonfinite values.** Zero expression retains 180 original analysis warnings and four package-load warnings. A complete original return is not biological validity. R handler totals do not enumerate every raw/native diagnostic; those totals are unavailable, never zero. Duplicate IDs, a single query cell, missing markers and an empty query retain their original failures. Do not rename identifiers, impute missing markers, suppress warnings or change historical hashes to obtain a passing result.
+
+Use python3 tools/literature/scrattchmapping02/run.py --runtime /permitted/provider --request /trusted/request.rds --assets /complete/reference-assets --out /NEW/output. This is a Python source entry point, not a bundled Java CLI command. The permitted-download and cache-only public installers each completed fourteen steps in separate private runtimes. The selected R 4.2.3, BiocNeighbors 1.16.0 and actual Python 3.10.22 profile is a project comparison environment, not a recovered author environment. Original marker/reference discovery, the MapMyCells service, downstream paper-specific summaries, unreported settings and biological/paper reproduction are not qualified. Keep the scrattch.io/scrattch.vis runtime private under their redistribution restrictions; their code is not bundled in project evidence.
+
+**SKIP3 skips dependent analysis** if exact software, permission, download, installation or execution requirements are unavailable or forbidden. **FAIL2 admits no complete result**, including terminal recording failure. Inspect the exit code, analysis-status.json, WARNINGS.md, MANIFEST.json and FINALIZATION_ERROR.json where present. A leftover RDS is not success. Retain original inputs, complete RDS values/conditions, raw consoles and available partials; resolve the named prerequisite or filesystem cause and retry NEW paths. Static inventories remain strict. Live workspace scans tolerate only removed temporary paths; permission errors remain fatal. Trusted RDS inputs and intact absolute Annoy index paths are required.
+
+**Separate unresolved tools remain missing.** Installing HICAT/BIGCAT dependencies does not implement their paper workflows. The modified scrattch.hicat 1.0.9 score workflow, BIGCAT, R arrow and PyArrow remain separate missing families. P058's BIGCAT edition is unknown; P059 reports 0.0.5. R arrow 12.0.1 is distinct from Java Parquet/DuckDB; PyArrow 14.0.2 is a P250 development declaration with an unestablished analysis operation.
+
+Other critical restrictions remain: DoubletFinder SCT convergence is unqualified despite source parity (3,706 original warnings, including 12 iteration-limit warnings); reported DoubletFinder 3.0 remains unresolved. Deposited author code and its syntax/legacy discrepancies remain unchanged. Cell Ranger/ARC are excluded by user request. Earlier scVelo editions, native stack diagnostics and irrecoverable historical figures retain their recorded limitations. All previous scientific verifiers, original evidence and hashes remain unchanged.
+
+Read [mapping source roles, commands and recovery](../SCRATTCH_MAPPING02_CATALOG_INTEGRATION.md). Current complete verification: `python tools/literature/scrattchmapping_catalog/catalog.py --verify --rescan-sources --out build/literature-review/monocle-runtime/NEW-mapping-catalog-check --runtime /permitted/mapping-provider --prior-runtime /permitted/DoubletFinder-provider` (add `--wsl-distro NAME` on Windows). The full goal remains open.
+
+<details><summary>Previous checkpoints (historical)</summary>
+
+# 250-paper omics and GWAS toolbox catalog
+
+
 ## DoubletFinder catalog update: warnings and required actions
 
 **250 papers, 438 named software families, 2,679 observations and 1,180 individually reviewed uses; 1,499 uses await review.** The fixed 71 Nature, 104 Nature Genetics and 75 AJHG papers remain unchanged. Five existing DoubletFinder uses are reviewed. Five newly identified families add seven observations: scrattch.hicat, scrattch.bigcat, scrattch.mapping, R arrow and PyArrow. All five remain missing. P096's earlier Scrublet summary incorrectly said 0.0.2; its primary paragraph reports 0.2. This correction preserves the previous metadata and changes no selected runtime.
@@ -1616,6 +1641,8 @@ Three source-reviewed tool additions retain separate provenance: MALT and HOPS h
 These additions improve the catalog and add no whole-tool or biological credit. The source-tested MALT 0.4.1 development controller does not fulfill the separate 0.5.2 role. Complete HOPS and MaltExtract operations remain unfinished; their unreported versions, settings and resource choices remain unknown. See `MALT_ALIGNMENT.md` and `MALT_HOPS_PAPER_ROLES.md`.
 
 **Required action:** match the declared source version and operation, qualify a permitted runtime, provide the complete dated reference/mapping and query populations, and retain original warnings and failures. If any prerequisite is unavailable or cannot be installed, skip its dependent analysis. A small software-control index does not reproduce the historical 91-spirochete or 7,508-genome bacterial analyses. Insufficient-read candidates remain unassessable.
+
+</details>
 
 </details>
 

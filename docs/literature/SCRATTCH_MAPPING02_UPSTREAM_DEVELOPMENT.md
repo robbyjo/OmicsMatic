@@ -1,7 +1,8 @@
 # scrattch.mapping 0.2 prepared-template workflow development
 
-**Development interface. The mapping family remains missing in the catalog and
-adds zero family credits. Catalog integration qualification remains pending.**
+**Scoped project source interface. The [catalog integration](SCRATTCH_MAPPING02_CATALOG_INTEGRATION.md)
+records one upstream mapping family credit. The independent Java dense L2 component
+adds no additional family credit. The full 250-paper objective remains open.**
 The prepared-template workflow has passed eleven fresh original-code controls
 for strict returned values/RNG and complete saved conditions. A public installer
 has completed both permitted-download
