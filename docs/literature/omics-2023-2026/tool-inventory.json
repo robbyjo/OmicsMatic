@@ -11815,17 +11815,49 @@
     "name": "SPOTlight",
     "pattern": "(?<![A-Za-z0-9_])SPOTlight(?![A-Za-z0-9_]|\\s+Therapeutics)(?=\\s*(?:\\(|package\\b))",
     "role": "Seeded NMF deconvolution of spatial transcriptomic spots",
-    "current_coverage": "missing",
-    "existing_source": null,
-    "coverage_note": "Separate original SPOTlight workflow remains missing. The paper reports version 1.0.3 and a >=10% predicted neutrophil spot rule; no implementation or biological reproduction credit.",
+    "current_coverage": "upstream-adapter-validated",
+    "existing_source": "tools/literature/spotlight103/run.py",
+    "coverage_note": "Original pinned SPOTlight1.0.3 full NMF/NNLS deconvolution, complete original objects and source failures; original unapplied options and uncertified convergence retained.",
     "paper_count": 1,
     "papers": [
       "P051"
     ],
-    "implementation_status": "missing",
-    "implementation_source": null,
-    "implementation_scope": "Separate original SPOTlight workflow remains missing. The paper reports version 1.0.3 and a >=10% predicted neutrophil spot rule; no implementation or biological reproduction credit.",
-    "validation_note": "Source-reviewed use only; no runtime analysis or implementation credit."
+    "implementation_status": "upstream-adapter-validated",
+    "implementation_source": "tools/literature/spotlight103/run.py",
+    "implementation_scope": "Project availability: complete unchanged original SPOTlight1.0.3 R/C++ deconvolution from upstream commit0a85246f93167f869de704166627fe6679fe03b5, selected by the project. Complete SPOTlight, trainNMF and runDeconvolution calls and an explicit training/deconvolution composition preserve full original objects, conditions, RNG, IDs and NA/NaN/Inf. In this source, model ns/std use the same routine, min_prop does not filter proportions and extra arguments may be ignored; the original return does not certify NMF convergence. Original zero-signal spot NaN values and source errors remain unchanged. The reported >=10% neutrophil labeling is a separate downstream choice with no inferred reference column. Both full process-specific C++ backtraces are retained; source-origin frames and all other condition fields/calls are compared, without requiring ASLR addresses or wrapper frames to match. Analysis runs offline and installs nothing. SKIP3 skips dependent analysis for missing/forbidden prerequisites; FAIL2 admits no complete result, including recording failure after an original return. Exact author commit, references, markers, settings, seed and environment remain unknown. SingleR annotation and celldex retrieval are separate operations. Whole-tool validity, model convergence, biological accuracy and paper reproduction remain unqualified.",
+    "validation_note": "29controls:20complete returns/9original errors; full original returns/RNG, condition fields/calls and native origin compared; full process-specific C++ traces retained.11Linux public guards,2Windows skips,both installers and installed analyses. Saved full synthetic record readback passed. No model convergence, biological, whole-tool or paper claim.",
+    "project_adapter_available": true,
+    "canonical_adapter_available": false,
+    "root_dispatch_available": false,
+    "development_candidate_available": true,
+    "development_candidate": "tools/literature/spotlight103/run.py",
+    "development_candidate_sha256": "1d4c5f7cbbf1d6801766c0d3dd51805345df7feba6d7e1d829ef810674a85550",
+    "development_candidate_kind": "python-source-entrypoint-original-Linux-WSL-spatial-deconvolution",
+    "development_build": "tools/literature/spotlight103/install_runtime.py",
+    "development_adapter_cli": "python3 tools/literature/spotlight103/run.py --runtime /permitted/provider --request /trusted/request.rds --out /NEW/output",
+    "selected_upstream_versions": [
+      "1.0.3"
+    ],
+    "selected_R_versions": [
+      "4.4.3"
+    ],
+    "selected_environment_is_author_environment": false,
+    "author_exact_source_commit_established": false,
+    "original_NMF_convergence_certified": false,
+    "author_reference_snapshots_established": false,
+    "author_caller_options_established": false,
+    "workflow_validation": "../spotlight103-deconvolution-validation/QUALIFICATION.json",
+    "current_documentation": "docs/literature/SPOTLIGHT103_CATALOG_INTEGRATION.md",
+    "paper_role_coverage": {
+      "P051": "Deconvolved spatial transcriptomic spots using seeded non-negative matrix factorization regression in SPOTlight 1.0.3. The first context uses a LungMap single-cell reference; the PDAC/MI context describes another single-cell reference. Both annotate spots at predicted neutrophil composition >=10%. Project availability: complete unchanged original SPOTlight1.0.3 R/C++ deconvolution from upstream commit0a85246f93167f869de704166627fe6679fe03b5, selected by the project. Complete SPOTlight, trainNMF and runDeconvolution calls and an explicit training/deconvolution composition preserve full original objects, conditions, RNG, IDs and NA/NaN/Inf. In this source, model ns/std use the same routine, min_prop does not filter proportions and extra arguments may be ignored; the original return does not certify NMF convergence. Original zero-signal spot NaN values and source errors remain unchanged. The reported >=10% neutrophil labeling is a separate downstream choice with no inferred reference column. Both full process-specific C++ backtraces are retained; source-origin frames and all other condition fields/calls are compared, without requiring ASLR addresses or wrapper frames to match. Analysis runs offline and installs nothing. SKIP3 skips dependent analysis for missing/forbidden prerequisites; FAIL2 admits no complete result, including recording failure after an original return. Exact author commit, references, markers, settings, seed and environment remain unknown. SingleR annotation and celldex retrieval are separate operations. Whole-tool validity, model convergence, biological accuracy and paper reproduction remain unqualified."
+    },
+    "source_roles_reviewed": 1,
+    "synthetic_records_complete": true,
+    "biological_accuracy_established": false,
+    "new_scoped_integration_credit": 1,
+    "native_family_credit_added": 0,
+    "whole_tool_qualified": false,
+    "whole_paper_reproduced": false
   },
   {
     "id": "bd-rhapsody",

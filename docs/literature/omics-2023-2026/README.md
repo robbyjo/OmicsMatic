@@ -1,6 +1,29 @@
 # 250-paper omics and GWAS toolbox catalog
 
 
+## SPOTlight 1.0.3: warnings and required actions
+
+**250 papers, 441 named software families, 2,682 observations and 1,187 reviewed uses; 1,495 uses await review.** The fixed 2023-10-23 through 2026-10-23 cohort remains 71 Nature, 104 Nature Genetics and 75 AJHG papers. Only the existing P051 SPOTlight implementation coverage note changes. Primary facts, source versions, settings and anchors remain unchanged. The semantic review and implementation goal remains open.
+
+**120 scoped new integrations: 20 native Java subsets and 100 original upstream workflows; 123 including three existing adapters. 262 named families remain missing.** SPOTlight adds one upstream family credit and no native credit. The BD Rhapsody analysis pipeline remains missing. Spotlight Therapeutics is a company and the ordinary verb spotlight is not a software use.
+
+**Original arguments are not guarantees:** in this pinned 1.0.3 source, model ns/std use the same native routine, min_prop does not filter proportions and extra arguments can be accepted without effect. The original return does not certify NMF convergence; an iteration-limited return remains possible. Original all-zero spots can return NaN. Inspect original diagnostics, retain all values and validate fitness for use. The paper's >=10% labeling is a separate downstream analysis decision with no inferred neutrophil column.
+
+P051 reports SPOTlight 1.0.3 in two distinct deconvolution contexts (source paragraphs114/119). The selected original commit0a85246f93167f869de704166627fe6679fe03b5 declares that version and contains its own C++ NMF/NNLS routines; the attempted Bioconductor1.0.3 archive returned404. This exact project source and R4.4.3 comparison environment do not establish the authors' exact commit, inputs, references, markers, settings, seed or environment. SingleR annotation and celldex reference retrieval remain separate operations.
+
+**SKIP3 skips dependent analysis** for the named missing or forbidden exact source, runtime, Linux/network isolation or installation/download requirement. Supply that permitted requirement and retry NEW paths. Installation requires --allow-install; software networking additionally requires --allow-download. Analysis installs and downloads nothing. **FAIL2 admits no complete result**, including original errors, native crashes, altered captured inputs, missing status and postreturn recording failure. Read WARNINGS.md, FAILURE.json, original/R-status.json, all original conditions/RNG and both consoles. Resolve the stated cause, retain originals/partials and retry NEW paths. Only final COMPLETED.json admits a recorded operation.
+
+Twenty-nine independent comparisons produced 20 complete returns and nine original errors. Complete original returns, attributes, intermediate models and RNG matched. All condition fields/calls and original native-origin frames were compared. Both complete C++ backtraces are retained; ASLR addresses and wrapper-dependent frames are not required to be byte-identical. Eleven actual Linux public guards, two Windows prerequisite skips, both public installers and both complete installed-runtime analyses passed. Matching errors never count as successful deconvolution. Full synthetic records and earlier failed attempts are retained. Saved-record readback differs from fresh scientific computation; neither establishes convergence, biological validity, whole-tool validity or paper reproduction.
+
+P233's SingleR2.41 remains unresolved and skipped. Cell Ranger/ARC remain excluded by user request. Earlier source, license and runtime restrictions remain in their guides and historical notices. The full250-paper goal remains open.
+
+Read [SPOTlight source roles, commands and recovery](../SPOTLIGHT103_CATALOG_INTEGRATION.md). Current cumulative entry point: `python tools/literature/spotlight103_catalog/catalog.py --verify` with a NEW output path. This checks saved source/evidence; fresh computation is separate. The full goal remains open.
+
+<details><summary>Previous checkpoints (historical)</summary>
+
+# 250-paper omics and GWAS toolbox catalog
+
+
 ## celldex 1.14.0: warnings and required actions
 
 **250 papers, 441 named software families, 2,682 observations and 1,187 reviewed uses; 1,495 uses await review.** The fixed 2023-10-23 through 2026-10-23 cohort remains 71 Nature, 104 Nature Genetics and 75 AJHG papers. Paper identities, reported versions and primary settings remain unchanged. Only the existing P051 celldex implementation coverage note changes. The full semantic review and implementation goal remains open.
@@ -1764,6 +1787,8 @@ Three source-reviewed tool additions retain separate provenance: MALT and HOPS h
 These additions improve the catalog and add no whole-tool or biological credit. The source-tested MALT 0.4.1 development controller does not fulfill the separate 0.5.2 role. Complete HOPS and MaltExtract operations remain unfinished; their unreported versions, settings and resource choices remain unknown. See `MALT_ALIGNMENT.md` and `MALT_HOPS_PAPER_ROLES.md`.
 
 **Required action:** match the declared source version and operation, qualify a permitted runtime, provide the complete dated reference/mapping and query populations, and retain original warnings and failures. If any prerequisite is unavailable or cannot be installed, skip its dependent analysis. A small software-control index does not reproduce the historical 91-spirochete or 7,508-genome bacterial analyses. Insufficient-read candidates remain unassessable.
+
+</details>
 
 </details>
 
