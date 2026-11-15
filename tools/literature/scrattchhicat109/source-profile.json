@@ -1,0 +1,1947 @@
+{
+  "schema": "omicsmatic-original-hicat109-source-profile-v1",
+  "package": "scrattch.hicat",
+  "version": "1.0.9",
+  "source_commit": "24a7cd41cc6bdca0b624dc0a3cb74fbc9f75b9e4",
+  "source_date": "2022-05-23T23:58:02Z",
+  "source_profile_name": "dev-zy-prepublication-2022",
+  "author_actual_commit_established": false,
+  "author_exact_function_established": false,
+  "author_environment_inferred": false,
+  "operation": "doubletFinder",
+  "paper": {
+    "paper_id": "P059",
+    "pmcid": "PMC10719114",
+    "doi": "10.1038/s41586-023-06812-z",
+    "paragraph": 85,
+    "doublet_removal_comparison": ">",
+    "doublet_removal_cutoff": 0.3,
+    "author_scoring_inputs_and_options_unreported": true,
+    "housekeeping_62_gene_QC_score_is_separate": true
+  },
+  "packages": {
+    "scrattch.hicat": {
+      "version": "1.0.9",
+      "url": "https://codeload.github.com/AllenInstitute/scrattch.hicat/tar.gz/24a7cd41cc6bdca0b624dc0a3cb74fbc9f75b9e4",
+      "archive": {
+        "bytes": 160522215,
+        "sha256": "15bfb0b867e7077380196e0dd998c8bf1970fca9523429c98609457f288c3224"
+      },
+      "filename": "scrattch.hicat-24a7cd41cc6bdca0b624dc0a3cb74fbc9f75b9e4.tar.gz",
+      "archive_top_level": "scrattch.hicat-24a7cd41cc6bdca0b624dc0a3cb74fbc9f75b9e4",
+      "original_regular_members": {
+        ".Rbuildignore": {
+          "bytes": 105,
+          "sha256": "ed47ac6c2dadd964c728f1a210899bb95718ede991b7cf85cbd7a0766771e3f5",
+          "unix_mode": 436
+        },
+        ".gitignore": {
+          "bytes": 100,
+          "sha256": "f2eda653df6b16daa96866c7fc4565b7d8b63ec06eb652123d3ed9e81eb7d56f",
+          "unix_mode": 436
+        },
+        ".travis.yml": {
+          "bytes": 327,
+          "sha256": "aab2e3f181b89ab5a78f3acb6df58a585ba50b9637ed483a01b38fbe674868ed",
+          "unix_mode": 436
+        },
+        "CONTRIBUTION": {
+          "bytes": 1468,
+          "sha256": "44e18fb4263248e3e215a2904f8952b9da0aa771ec5f6972f28ae2715e42d09f",
+          "unix_mode": 436
+        },
+        "DESCRIPTION": {
+          "bytes": 1591,
+          "sha256": "a9a10d82adc2b2ee354b752138f481bdb504ee7a03d20f138cb0d6ce2204be9a",
+          "unix_mode": 436
+        },
+        "LICENSE": {
+          "bytes": 1841,
+          "sha256": "7a4fead601f1c659e8327ed8de88ac537a995f772bf1a0ea14114a9267f1ef83",
+          "unix_mode": 436
+        },
+        "NAMESPACE": {
+          "bytes": 155,
+          "sha256": "b122ab96f42f791c18fe1a922f5b2ce764e926a48b050f9382bce0f1bf9215ac",
+          "unix_mode": 436
+        },
+        "R/CCA.R": {
+          "bytes": 6542,
+          "sha256": "292528b685a9b7d59c80631812d89d069c5b830ece3814af67201904d784c710",
+          "unix_mode": 436
+        },
+        "R/KNN.graph.R": {
+          "bytes": 25761,
+          "sha256": "21c5e65b1ef75ed573d832415cd527a691e7f6dacef39cc6a6ffd2c43b1b8504",
+          "unix_mode": 436
+        },
+        "R/RcppExports.R": {
+          "bytes": 11825,
+          "sha256": "df1a4ec0ebce1acb9bce9edfc6fe6b2cabfefa993caf5f684c4f8a9d7fade5fc",
+          "unix_mode": 436
+        },
+        "R/annotate.R": {
+          "bytes": 26135,
+          "sha256": "46ec2b0ee6d6ed8021ed720de841cbccf3877cdde28de89c229baa15b4a0c906",
+          "unix_mode": 436
+        },
+        "R/cluster.R": {
+          "bytes": 17781,
+          "sha256": "3fb2f3f2cb64520a899117f4282fd17faa8a374061f6f5cb0b22605447280343",
+          "unix_mode": 436
+        },
+        "R/cluster_cv.R": {
+          "bytes": 3572,
+          "sha256": "9f5845c47631c5b7bc830327cae3804f655b59db368f8fb7753391a9d099208b",
+          "unix_mode": 436
+        },
+        "R/consensusCluster.R": {
+          "bytes": 22082,
+          "sha256": "faecff7bcbbf2cf5809ca7c5bd914829f71d3fac3ced7b74929171d5d6fc49a2",
+          "unix_mode": 436
+        },
+        "R/de.genes.R": {
+          "bytes": 45327,
+          "sha256": "eb5e7aefdb6f7186350e664d574b95bbfb5329ca821719c5f978ee6de5cb08ba",
+          "unix_mode": 436
+        },
+        "R/dend.markers.R": {
+          "bytes": 6341,
+          "sha256": "55d4450849f11a233194bd2dcca45e9da3cc348daed6f4a5bc86e71ac2aab827",
+          "unix_mode": 436
+        },
+        "R/dendro.R": {
+          "bytes": 14327,
+          "sha256": "1223a01bc927047542d3f9b9a393e5faf19df67c075b49341b051d7b103acdb6",
+          "unix_mode": 436
+        },
+        "R/deprecated_function_names.R": {
+          "bytes": 935,
+          "sha256": "7307a68c510b2b440310a5eab21acf30f4fa5c7facb71547dfcb18287ea496ce",
+          "unix_mode": 436
+        },
+        "R/doubletFinder.R": {
+          "bytes": 4105,
+          "sha256": "fb1f5be9ed8464acf3bb0179c412dc1824a2b60e52a813173fe55d0d781053b7",
+          "unix_mode": 436
+        },
+        "R/find_noise_cl.R": {
+          "bytes": 14210,
+          "sha256": "8a835ee89476e8fad16387f3beeb82cb1c54496f3db54736a251cc437ef22333",
+          "unix_mode": 436
+        },
+        "R/harmonize.R": {
+          "bytes": 33619,
+          "sha256": "ddf292dc7b4981075942d9ad6da0ff8dc4b4630abd77d5a26c4d87f174dca939",
+          "unix_mode": 436
+        },
+        "R/harmonize_impute.R": {
+          "bytes": 5986,
+          "sha256": "2bd38c1653d342f2e36c0d6a3b642f0f3218a2e865c2e024ac3e21b5a7fc2db5",
+          "unix_mode": 436
+        },
+        "R/harmonize_merge.R": {
+          "bytes": 16947,
+          "sha256": "7fa22a0a6aded42058e53fed15dacdef048395a4543d8be7d2ba1cfd685d9018",
+          "unix_mode": 436
+        },
+        "R/harmonize_util.R": {
+          "bytes": 18058,
+          "sha256": "4007e2c91746f7e5b0082c5f872dffa54e754b20c587c774c68a65503ef77630",
+          "unix_mode": 436
+        },
+        "R/heatmap.R": {
+          "bytes": 27218,
+          "sha256": "566b18d875774329f2fa1abd86460e315676ae0039deb671f720634cd449ec28",
+          "unix_mode": 436
+        },
+        "R/heatmap4.R": {
+          "bytes": 21532,
+          "sha256": "16a3413730c8f488fe1d67ec57634c385bee8b599269747c27ac2d99530764e8",
+          "unix_mode": 436
+        },
+        "R/human_functions.R": {
+          "bytes": 18259,
+          "sha256": "21fae5a485232d867387a170560cd848f0d1ed36f8a4cb0ccaacb20b8985a571",
+          "unix_mode": 436
+        },
+        "R/human_functions_rename.r": {
+          "bytes": 23463,
+          "sha256": "3c65006b2117570d5afb81d5c25e72efb55f836bd1a61a081972209271232eb1",
+          "unix_mode": 436
+        },
+        "R/map_to_dend.R": {
+          "bytes": 11655,
+          "sha256": "3492977f75af3fdc41ada24e6f709ddb0d01466a79abd3dcda45bfb7504eecae",
+          "unix_mode": 436
+        },
+        "R/markers.R": {
+          "bytes": 20894,
+          "sha256": "d943a7f9ebcffaf1356e8ee87d979963d8934bbab4b474f1075014d2b3e12b6c",
+          "unix_mode": 436
+        },
+        "R/merge_cl.R": {
+          "bytes": 9077,
+          "sha256": "e4045a4b8889cd3ea2e922466df98fa4fee1e5f4c7279d53b4328bd9224bfe11",
+          "unix_mode": 436
+        },
+        "R/normalize.R": {
+          "bytes": 2106,
+          "sha256": "e5ba2324bbb70d7732143c198ce9cfef1e78da26cbdc565382a924254649d2fe",
+          "unix_mode": 436
+        },
+        "R/plot.R": {
+          "bytes": 11258,
+          "sha256": "02993d34110f86e82310ec81091992e014368a9d625ba8ebcbb5b455b78eb765",
+          "unix_mode": 436
+        },
+        "R/reduceDimension_PCA.R": {
+          "bytes": 3163,
+          "sha256": "cd235f5787f14a0deb4625b629aca9bd774c7c9b2003771e31e297448903416a",
+          "unix_mode": 436
+        },
+        "R/reduceDimension_Umap.R": {
+          "bytes": 2840,
+          "sha256": "53d717ff351fad37a98c75620ceaac5375dd052293636efd196d89a16d5eb471",
+          "unix_mode": 436
+        },
+        "R/reduceDimension_WGCNA.R": {
+          "bytes": 9447,
+          "sha256": "4a1a90e485687f7c1002ae4d4d3b177bf143e59955790144e547094d514ba361",
+          "unix_mode": 436
+        },
+        "R/reduceDimension_plot.R": {
+          "bytes": 22734,
+          "sha256": "f576af4e97a3078494efb9d26ab2ce97edcad9ee2d0ad6a84abb524353ae1bfd",
+          "unix_mode": 436
+        },
+        "R/reduceDimension_tSNE.R": {
+          "bytes": 2737,
+          "sha256": "62f97e4a1195a756feb6f72cbfbf3942adf6db4008df10862bf53a6aafb6b173",
+          "unix_mode": 436
+        },
+        "R/util.R": {
+          "bytes": 26201,
+          "sha256": "ecc52729719381a07859d337fce8d1869ebede9c753bab457a8bacec08077db5",
+          "unix_mode": 436
+        },
+        "R/vg.R": {
+          "bytes": 14472,
+          "sha256": "2058275b529025cb4be9d26b4ba958d110cb7a34c773dacfa3f2c1f6c4f3a134",
+          "unix_mode": 436
+        },
+        "README.md": {
+          "bytes": 3134,
+          "sha256": "f9ea9b7ab8600342f34dcb3bbd5b0cf53467be43955aeb8072314dd50eadd96a",
+          "unix_mode": 436
+        },
+        "_pkgdown.yml": {
+          "bytes": 18,
+          "sha256": "37ffa8231a0a24c92870c67bac7a34c2d01e5e5e379143805c3ad52db0571299",
+          "unix_mode": 436
+        },
+        "codecov.yml": {
+          "bytes": 176,
+          "sha256": "7ad8a4aa0ec35d677282a75fdaeb31f29eefba0b47ec7cd1c30f3207779bc096",
+          "unix_mode": 436
+        },
+        "data/Constellation_example/cl.center.df.csv": {
+          "bytes": 4455,
+          "sha256": "50326a98759c8a519eb68d6c09c9c87aed3b5e7c73ee3c107989888f3a783e69",
+          "unix_mode": 436
+        },
+        "data/Constellation_example/knn.cl.df.csv": {
+          "bytes": 143183,
+          "sha256": "5c5fd0478e37bb27af04fd6cacc112e774379a3cf152593271a01ce204628a61",
+          "unix_mode": 436
+        },
+        "data/Constellation_example/plot/20190920_1126_constellation.pdf": {
+          "bytes": 657324,
+          "sha256": "b2475a827124b64f17c445f868010b9a19216f9b3da6cede7e3b0cf56c904d03",
+          "unix_mode": 436
+        },
+        "data/Constellation_example/plot/20191001_0850_constellation.pdf": {
+          "bytes": 662173,
+          "sha256": "f37e89a064392ab80e167af037f8f60a23068054d1aff1f0ecb3cf1f9b664630",
+          "unix_mode": 436
+        },
+        "data/Leiden_test/L4_5_6_IT.rd.dat.rda": {
+          "bytes": 73562404,
+          "sha256": "aec8f701f5f87ada9db6baf2a3ef45ef809ca64976ef401ddc66ccbae9237714",
+          "unix_mode": 436
+        },
+        "data/Leiden_test/L4_5_IT.rd.dat.csv": {
+          "bytes": 104216214,
+          "sha256": "5555887acca7129591b8e91c69da6a7316c9557da93b41e730e5406d8248bc85",
+          "unix_mode": 436
+        },
+        "data/rd_plot_example/anno.df.rda": {
+          "bytes": 5507196,
+          "sha256": "8bcea09dcf5a25591291987fdfa732e4e700ca97f7d0e0d6377f536c29ea4649",
+          "unix_mode": 436
+        },
+        "data/rd_plot_example/example_umap.csv": {
+          "bytes": 495987,
+          "sha256": "6fc9322d3dd34c93c97a1ffd0e0560f8f9cee5903d69340e9964e30b070084bc",
+          "unix_mode": 436
+        },
+        "data/tasic16.anno.rda": {
+          "bytes": 3826,
+          "sha256": "929b698bed2c117e767bd21edce46464e175d81c387ca4bb259e12f1c348680d",
+          "unix_mode": 436
+        },
+        "data/tasic16.cl.df.rda": {
+          "bytes": 409,
+          "sha256": "2ba52785e03431fb90201e4f74213fd2b758f0459bb012c32f7c1aff7b0d3c25",
+          "unix_mode": 436
+        },
+        "data/tasic16.cl.rda": {
+          "bytes": 897,
+          "sha256": "fdd7a9ec7144bb276b1fc3b31ec86988c76fdf80568775a3227a5ca61f66051f",
+          "unix_mode": 436
+        },
+        "data/tasic16.counts.rda": {
+          "bytes": 8665955,
+          "sha256": "f93c9b6b8b1a82e6aa2a0b3931586abbe89db03b36bbe14c8185c75f6f85952b",
+          "unix_mode": 436
+        },
+        "data/tasic16.dat.rda": {
+          "bytes": 12571294,
+          "sha256": "f3e9040bd081e1873b6c1dd4e58796d326eb3f1fe95695ad9b24be19fe935e5b",
+          "unix_mode": 436
+        },
+        "inst/test_folder/test_script.R": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "unix_mode": 436
+        },
+        "inst/testdata/check_neun_result.RData": {
+          "bytes": 178,
+          "sha256": "be9639cb5ef0eb34bdfbad2a4f250667f371a3d2debf4f521a812c943564764f",
+          "unix_mode": 436
+        },
+        "inst/testdata/check_qc_result_1.RData": {
+          "bytes": 91,
+          "sha256": "a3ff885dc83b1f31f45cc33adbb7536994dedc5259ac48b2660c41f5b2baad5c",
+          "unix_mode": 436
+        },
+        "inst/testdata/check_qc_result_1.rda": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "unix_mode": 436
+        },
+        "inst/testdata/check_qc_result_2.RData": {
+          "bytes": 121,
+          "sha256": "92e5aaa0289c9ec37b30d28e9c1691bb3239c0dea824cb681333de6e21a33d68",
+          "unix_mode": 436
+        },
+        "inst/testdata/check_qc_result_2.rda": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "unix_mode": 436
+        },
+        "inst/testdata/glia_anno.Rdata": {
+          "bytes": 98784,
+          "sha256": "cc324d2b7a29482871008d7a2eada7dbba8677ee9aca35209f3651a0711173aa",
+          "unix_mode": 436
+        },
+        "inst/testdata/glia_data.Rdata": {
+          "bytes": 26667871,
+          "sha256": "18356c7d28f7caf6f08a4e6c8234b87d805283da94f023b2c0f3cb5e60d9380b",
+          "unix_mode": 436
+        },
+        "inst/testdata/macaque.anno.rda": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "unix_mode": 436
+        },
+        "inst/testdata/tasic16.anno.rda": {
+          "bytes": 3826,
+          "sha256": "929b698bed2c117e767bd21edce46464e175d81c387ca4bb259e12f1c348680d",
+          "unix_mode": 436
+        },
+        "inst/testdata/tasic16.cl.df.rda": {
+          "bytes": 409,
+          "sha256": "2ba52785e03431fb90201e4f74213fd2b758f0459bb012c32f7c1aff7b0d3c25",
+          "unix_mode": 436
+        },
+        "inst/testdata/tasic16.cl.rda": {
+          "bytes": 897,
+          "sha256": "fdd7a9ec7144bb276b1fc3b31ec86988c76fdf80568775a3227a5ca61f66051f",
+          "unix_mode": 436
+        },
+        "inst/testdata/tasic16.dat.rda": {
+          "bytes": 12571294,
+          "sha256": "f3e9040bd081e1873b6c1dd4e58796d326eb3f1fe95695ad9b24be19fe935e5b",
+          "unix_mode": 436
+        },
+        "man/CCA.Rd": {
+          "bytes": 274,
+          "sha256": "83ebd2b45e5eac3e49760279e45b986259d6e7380e95178f6ce6521817fc9b2e",
+          "unix_mode": 436
+        },
+        "man/CanonCor.Rd": {
+          "bytes": 308,
+          "sha256": "d57a2449527a6c5e44d5b08da36494e0bae259c7d51b282e4fa688928968adc2",
+          "unix_mode": 436
+        },
+        "man/DE_genes_cat_by_cl.Rd": {
+          "bytes": 329,
+          "sha256": "d2f12d41404d33ba194a9fd2de4144b10546b5327b2c792a2d0d33a7c8fe80c6",
+          "unix_mode": 436
+        },
+        "man/DE_genes_pairs.Rd": {
+          "bytes": 362,
+          "sha256": "a8ef8302b10dbdc9eae1c3dc233eefe0c2ff073c8ef3cc7623bbdef4b67521ba",
+          "unix_mode": 436
+        },
+        "man/DE_genes_pw.Rd": {
+          "bytes": 338,
+          "sha256": "032893c19525296938b90794af382f2bd24220b5e5c1c8cb8f237851d3ce228f",
+          "unix_mode": 436
+        },
+        "man/RunUMAP.Rd": {
+          "bytes": 635,
+          "sha256": "bb11e3c00a0baa76aa79ec4389470ea45afcb4e180401be598647f9fc77b5d95",
+          "unix_mode": 436
+        },
+        "man/adjust_color.Rd": {
+          "bytes": 505,
+          "sha256": "4cde395b0c67b4044a8d569cfdeafb8b3c09be4074646cc3f567db91b74ce115",
+          "unix_mode": 436
+        },
+        "man/angle.Rd": {
+          "bytes": 235,
+          "sha256": "3550583bc8469316a0292c2a01fadf2cc656091e6d67db3986ae732c0ea308ad",
+          "unix_mode": 436
+        },
+        "man/avgangle.Rd": {
+          "bytes": 232,
+          "sha256": "ed7b87a092b5520e6392b6f5db31c4dcdcef1446064057a38d3eb57ccc99cdac",
+          "unix_mode": 436
+        },
+        "man/batch_process.Rd": {
+          "bytes": 387,
+          "sha256": "cb54482723eb285ce2be9219639c9e96419c6c672c9f3139defadea966f5ec57",
+          "unix_mode": 436
+        },
+        "man/build_dend.Rd": {
+          "bytes": 410,
+          "sha256": "f7f11ef7f975399865e4ef4c7a021662e2848ce3c629a9b5c3a4824c5f9c3f3a",
+          "unix_mode": 436
+        },
+        "man/build_dend_harmonize.Rd": {
+          "bytes": 380,
+          "sha256": "269d07a973a464056ef864713644f56f83aef54922bc9141de92dbc0e61f4c70",
+          "unix_mode": 436
+        },
+        "man/build_dend_with_means.Rd": {
+          "bytes": 285,
+          "sha256": "671c9f7d2a475dbc99da0641f3be444f40f3357176ae5522b6b47193f22499c8",
+          "unix_mode": 436
+        },
+        "man/build_tsne.Rd": {
+          "bytes": 404,
+          "sha256": "dbee1601b935ca1fb06ee9c68c9523831349609e73ff6c3036f542239e3b99bf",
+          "unix_mode": 436
+        },
+        "man/calc_tau.Rd": {
+          "bytes": 408,
+          "sha256": "094b6932af3ea012b1a780ba501cd9106f9e7ed83f867b78a03529cee7853084",
+          "unix_mode": 436
+        },
+        "man/check_donor.Rd": {
+          "bytes": 1659,
+          "sha256": "7b04aadfa622421d13a2f9e1a763dac3f35c5e6a659be068f9ea42d8a99c450a",
+          "unix_mode": 436
+        },
+        "man/check_neun.Rd": {
+          "bytes": 1102,
+          "sha256": "5bfe3db7d2b429e5dce865e753132eb0005c065d255fa2e7be77424bb3a1e4b0",
+          "unix_mode": 436
+        },
+        "man/check_outlier.Rd": {
+          "bytes": 2634,
+          "sha256": "7bea00619e6da5c383b39889730a7577ac54d3a0ce8acf716542d17602ff9646",
+          "unix_mode": 436
+        },
+        "man/check_qc.Rd": {
+          "bytes": 571,
+          "sha256": "0efe8dbf170ac4f0ad37d43010ff15cc2d563dda3fc4a4f31be394cb8c6d20ed",
+          "unix_mode": 436
+        },
+        "man/clean_outliers.Rd": {
+          "bytes": 297,
+          "sha256": "bedfcbb4e0b5f15faa400e33e883d0fa9f00dfef38030004248e2fc1eb1a6c6c",
+          "unix_mode": 436
+        },
+        "man/collect_co_matrix.Rd": {
+          "bytes": 449,
+          "sha256": "fddd3dcb421d8a98e0b4204fd699a4416eacc64d3c30c41c87f00d7923687549",
+          "unix_mode": 436
+        },
+        "man/comb_de_result.Rd": {
+          "bytes": 459,
+          "sha256": "b6025cd249aee42047f61e005ce6b29bccf3c9175e91e48f5a4baa30beecb00b",
+          "unix_mode": 436
+        },
+        "man/combine_cl.Rd": {
+          "bytes": 307,
+          "sha256": "b744eb76e3b8f27955f8259989f5f540ee5cfc37a70ba0cadb1e0186f2f123d2",
+          "unix_mode": 436
+        },
+        "man/compare_annotate.Rd": {
+          "bytes": 993,
+          "sha256": "e300d45d4aa060d0e2e38ae4da990a747d57c1508985501b74472a3d1919ca19",
+          "unix_mode": 436
+        },
+        "man/compare_plot.Rd": {
+          "bytes": 523,
+          "sha256": "ac91fece9134ec885497b88ac45dd6a358740181dd3ce8ccc1d0fb472a040756",
+          "unix_mode": 436
+        },
+        "man/compute_knn.Rd": {
+          "bytes": 631,
+          "sha256": "346d7c688ef2170b806b91f4bc6f26e0000a464ca607e10fc425d5a8c7e62744",
+          "unix_mode": 436
+        },
+        "man/compute_vg_stats.Rd": {
+          "bytes": 579,
+          "sha256": "31c03c811aafd410984e05e371d948e637ce68ee2d14ab3ac4b6432bbfe66d65",
+          "unix_mode": 436
+        },
+        "man/convert_pair_matrix.Rd": {
+          "bytes": 1178,
+          "sha256": "2ef33a55db66e05563b91b3fd6ae0ad59e9737562dd41b5aec449af3df0b7fd2",
+          "unix_mode": 436
+        },
+        "man/convert_pair_matrix_str.Rd": {
+          "bytes": 1165,
+          "sha256": "1ebb0a110befaca114d9bf3d5131e257f807c9b164e11d91a70f7c2526b5bc2f",
+          "unix_mode": 436
+        },
+        "man/cpm.Rd": {
+          "bytes": 547,
+          "sha256": "daf75a33256d396b73309d8fc0d771ff407425335e3eba19709702b10c115e7a",
+          "unix_mode": 436
+        },
+        "man/create_pairs.Rd": {
+          "bytes": 325,
+          "sha256": "70d3fe6a97f1bd08b16bbf120f178ef982b6c3a88a39bfb3e76d4d7de95edd9d",
+          "unix_mode": 436
+        },
+        "man/cutree_dend.Rd": {
+          "bytes": 272,
+          "sha256": "020ea37a828e07d307f4f89737080b6a3b747625b7611e8e1ade013a12d725ab",
+          "unix_mode": 436
+        },
+        "man/de_all_pairs.Rd": {
+          "bytes": 607,
+          "sha256": "c806b57be00927d6544d1e341e2db45eb8fde850699b7c7a92b50fdafe319999",
+          "unix_mode": 436
+        },
+        "man/de_genes_pairs_multiple.Rd": {
+          "bytes": 621,
+          "sha256": "ab727333c9e1720ecc5e02dc46d6d8b8a9acfff32effbf3bb756a35a609d2552",
+          "unix_mode": 436
+        },
+        "man/de_pair.Rd": {
+          "bytes": 338,
+          "sha256": "06faa64f8ed347b5a98b9ec7da4bcdcbf1a6eb6c6be2ba615490ff740b6cc73e",
+          "unix_mode": 436
+        },
+        "man/de_pair_chisq.Rd": {
+          "bytes": 1404,
+          "sha256": "c7fb77e0f007cbb85872f8b784e029f49c0dab7b6f318aecca9bd832cd7766ea",
+          "unix_mode": 436
+        },
+        "man/de_pair_limma.Rd": {
+          "bytes": 1390,
+          "sha256": "19f7f8f3dd4372bf95bb6e3af94c9c5c7ce1bdd798ef7795a1565fb0b425f0d1",
+          "unix_mode": 436
+        },
+        "man/de_param.Rd": {
+          "bytes": 6149,
+          "sha256": "16f8bec1e75e7f399674262d311df020c99b39c6bc9d7a2ba91abab5b08eebf6",
+          "unix_mode": 436
+        },
+        "man/de_score.Rd": {
+          "bytes": 347,
+          "sha256": "1249cf7f6171805ddefc869f9358ce3e310de493f0392f9b8e9d1cd3299ad714",
+          "unix_mode": 436
+        },
+        "man/de_score_pairs.Rd": {
+          "bytes": 380,
+          "sha256": "5b4cdcfdd30d4130847efc604130c24316812f6f57268b8385a0daa6a17076f9",
+          "unix_mode": 436
+        },
+        "man/de_selected_pairs.Rd": {
+          "bytes": 1331,
+          "sha256": "0782c9c14dd0eb68693112fe019ae46715d95e38b61e55064e1fbd29177bec9e",
+          "unix_mode": 436
+        },
+        "man/de_stats_all_pairs.Rd": {
+          "bytes": 1032,
+          "sha256": "73d7bbff808c6d647191e8959b48b78f67fa1b39739f6b260640cfc0dea549b4",
+          "unix_mode": 436
+        },
+        "man/de_stats_pair.Rd": {
+          "bytes": 862,
+          "sha256": "50aa3219e997fc4e6b806fe215a21f638955bcb09f26b962c761676fd6360caa",
+          "unix_mode": 436
+        },
+        "man/de_stats_selected_pairs.Rd": {
+          "bytes": 1333,
+          "sha256": "384470b62f8617fdf49ac88c903ffc5b82750a0f60bd0aeb7e917f4c8280ca46",
+          "unix_mode": 436
+        },
+        "man/dend_lca.Rd": {
+          "bytes": 314,
+          "sha256": "c0c6f927310eb8970170340de2cee352027430c6564ef8d8643f46f54597e589",
+          "unix_mode": 436
+        },
+        "man/dend_list.Rd": {
+          "bytes": 243,
+          "sha256": "cf8c7467eedc31bd45ba265c14573b0ac980d09a672570a6bb2884ee530c49e2",
+          "unix_mode": 436
+        },
+        "man/dend_match.Rd": {
+          "bytes": 287,
+          "sha256": "52b8f0d715f220a7d9c4a4a85bb71b2015374b747a60b0c247cae1afd4c34492",
+          "unix_mode": 436
+        },
+        "man/display_cl.Rd": {
+          "bytes": 662,
+          "sha256": "6965b8431b7c61f6bc22ad37adeb6062c50135e9dd72d62579e2bbcb2e42de5c",
+          "unix_mode": 436
+        },
+        "man/display_cl4.Rd": {
+          "bytes": 670,
+          "sha256": "94d089e82067f62052a363bf5e569182e96c22643d8600ea9cb76db7d91c85a9",
+          "unix_mode": 436
+        },
+        "man/display_cl_markers_co.ratio.Rd": {
+          "bytes": 526,
+          "sha256": "b7f6bfa72464dc017ab60413a8c5236e33188491e71e7eb8a1630d8c555d4494",
+          "unix_mode": 436
+        },
+        "man/display_cl_one_vs_others.Rd": {
+          "bytes": 618,
+          "sha256": "26dd2d2155e6717bc533f667867aa7630fd8012c4fb4d930d9768cb0f74f6ec2",
+          "unix_mode": 436
+        },
+        "man/doubletFinder.Rd": {
+          "bytes": 1612,
+          "sha256": "8fe5bff675d1fcc491ec1f711d300c09f4a82fe0bffb06f69f594bc79b770671",
+          "unix_mode": 436
+        },
+        "man/edgeMaker.Rd": {
+          "bytes": 419,
+          "sha256": "b936174e93cbb63d48d35f4444503176b641170f954c644ff19347f2676668fa",
+          "unix_mode": 436
+        },
+        "man/fast_tsne.Rd": {
+          "bytes": 429,
+          "sha256": "b004778a3971141762aa0f57b6eff1dde77acc8783b1519fbc860d946332896c",
+          "unix_mode": 436
+        },
+        "man/findVG.Rd": {
+          "bytes": 308,
+          "sha256": "68911964f767af97dc0be5b1e3eee6d59fe449d09a27b0ef6e66a42f26671a2e",
+          "unix_mode": 436
+        },
+        "man/find_doublet.Rd": {
+          "bytes": 343,
+          "sha256": "b4483ed55af0a69eb08d8503950d390956a55911d34c25bfe325cf876360fa54",
+          "unix_mode": 436
+        },
+        "man/find_low_quality_cl.Rd": {
+          "bytes": 916,
+          "sha256": "be4adb13e5d5485940d54948ddceaa3d0b5932b20b34c6869f8640b9e74058f8",
+          "unix_mode": 436
+        },
+        "man/find_vg.Rd": {
+          "bytes": 1214,
+          "sha256": "786e19e84aa293ff27bb30458c73f78e9ec005901b97f4cc4b296e2f204550f7",
+          "unix_mode": 436
+        },
+        "man/gene_dispersion.Rd": {
+          "bytes": 871,
+          "sha256": "d236bae1b3d55d9e008318354fb9baf4b92d204da9cda4295f20a4f58752ee66",
+          "unix_mode": 436
+        },
+        "man/gene_gene_cor_conservation.Rd": {
+          "bytes": 394,
+          "sha256": "e80dad12e3f4b1ae037c419e6fd2d85a2e51ba70b67ca150daf80a501f935822",
+          "unix_mode": 436
+        },
+        "man/gene_loess_fit.Rd": {
+          "bytes": 921,
+          "sha256": "66082846b2683fa512245640218c3ae130638bdc4cd890da0638f529dbe43872",
+          "unix_mode": 436
+        },
+        "man/gene_loess_fit_z.Rd": {
+          "bytes": 560,
+          "sha256": "c57f21904aa6527a314687f7d70b461cbfa0f892e219c5eda5cbb211f3e073a5",
+          "unix_mode": 436
+        },
+        "man/gene_means.Rd": {
+          "bytes": 622,
+          "sha256": "e562b471bf5d4741267725f33ab382af330a77503cc72376a6f405d546697703",
+          "unix_mode": 436
+        },
+        "man/gene_vars.Rd": {
+          "bytes": 768,
+          "sha256": "e9f30cc4045305962cae5715a7c38e58ec9a45c701fbea930e7e77f29ebdf64d",
+          "unix_mode": 436
+        },
+        "man/gene_z.Rd": {
+          "bytes": 734,
+          "sha256": "d6e639f2f28bb3efcbdda5474b7414f5cd249f7a542cf8c47357dcc834d32bfe",
+          "unix_mode": 436
+        },
+        "man/get.markers.num.Rd": {
+          "bytes": 295,
+          "sha256": "d9498f037e7856cdd94b976727f0e2529be09207ddc9043bd64dce301e3fb356",
+          "unix_mode": 436
+        },
+        "man/getTopMarkersByPropNew.Rd": {
+          "bytes": 1586,
+          "sha256": "4e3dcfd54a874106086f2298e5ddad7db9e4748940e07f087064ef6059ce913f",
+          "unix_mode": 436
+        },
+        "man/get_RD_cl_center.Rd": {
+          "bytes": 279,
+          "sha256": "8d5c02907427eb655487d3ce3da9cecd96ce7b9524e89d108f8fc1418ee11a33",
+          "unix_mode": 436
+        },
+        "man/get_beta_score.Rd": {
+          "bytes": 309,
+          "sha256": "55ca4fea6694048e01cd3c9562184bb85193a8941c29286df7ffef97365f4ccf",
+          "unix_mode": 436
+        },
+        "man/get_cell.cl.co.ratio.Rd": {
+          "bytes": 513,
+          "sha256": "3838f56598baa47eeeb828f1e2e3a5321c79e8cd95dda42b465827eec5bcb8e5",
+          "unix_mode": 436
+        },
+        "man/get_cl_df.Rd": {
+          "bytes": 380,
+          "sha256": "9c41f3da51f2382ac5b266cdd3bbac22927d8bc710d702662c742a03f21d8026",
+          "unix_mode": 436
+        },
+        "man/get_cl_mat.Rd": {
+          "bytes": 460,
+          "sha256": "2b021aa02e1b728792a6d0e7d88fa5c033f3a1d005b21e7a3bf2ac943a14ac1a",
+          "unix_mode": 436
+        },
+        "man/get_cl_means.Rd": {
+          "bytes": 470,
+          "sha256": "fb997e8c2f43e87c52f4e2e2cb09f2f121771eb2ff5fc7ae1a48f053ff508f56",
+          "unix_mode": 436
+        },
+        "man/get_cl_means_list.Rd": {
+          "bytes": 421,
+          "sha256": "eb052facd575112e65547aa436eac46322863cfd1f01277ea68bcec6cb9658af",
+          "unix_mode": 436
+        },
+        "man/get_cl_medians.Rd": {
+          "bytes": 482,
+          "sha256": "996b971983e54ba44e1469fd508d2bee10a8eebe8ea967b2a67b1dcaa719b15c",
+          "unix_mode": 436
+        },
+        "man/get_cl_present_list.Rd": {
+          "bytes": 420,
+          "sha256": "32a360e53ec947ecd4fa1bc4094caaf4c6a89145d957f4665c4606b266eee8cf",
+          "unix_mode": 436
+        },
+        "man/get_cl_prop.Rd": {
+          "bytes": 574,
+          "sha256": "f21d0d4d03b782a3453080010ef58ad06db40a7fe8ceffef5707ffd32ca89d11",
+          "unix_mode": 436
+        },
+        "man/get_cl_sim.Rd": {
+          "bytes": 237,
+          "sha256": "c6893c928dda28ae03174a8d95a9b0a61f7603fcc696a80553d564e76e8f8cd3",
+          "unix_mode": 436
+        },
+        "man/get_cl_sim_multiple.Rd": {
+          "bytes": 300,
+          "sha256": "0ff6d68f84702727b33e2573e59e7ba5f248b7c83e4e96953123b54837b0b983",
+          "unix_mode": 436
+        },
+        "man/get_cl_sums.Rd": {
+          "bytes": 464,
+          "sha256": "4286149485ca575f5db4dc52b5c54bbbde113942511dc4dfae0a9e43eee29a89",
+          "unix_mode": 436
+        },
+        "man/get_core_intermediate.Rd": {
+          "bytes": 505,
+          "sha256": "4966e72df98f47655ca82f62a98e8c4793281f393188e4adeaf3dfc40b5c42de",
+          "unix_mode": 436
+        },
+        "man/get_de_genes_sym.Rd": {
+          "bytes": 281,
+          "sha256": "57292cf2a484997661a96bce9fc05462c98b6de7e8db9d39a533bfd29f392677",
+          "unix_mode": 436
+        },
+        "man/get_de_lfc_list.Rd": {
+          "bytes": 267,
+          "sha256": "e1e86420f9748222f0aab7a6160ad3071b66fd476ac90731aba2a6b1b50600ba",
+          "unix_mode": 436
+        },
+        "man/get_de_matrix.Rd": {
+          "bytes": 910,
+          "sha256": "9a172e78483bb7a04d0c0e5a04b5af31043dbb82b827e5dd49d5b39f7971ddd0",
+          "unix_mode": 436
+        },
+        "man/get_de_pair.Rd": {
+          "bytes": 294,
+          "sha256": "bbe312027369a4b8da37f3038106901c03e6024ecd18ef2b26439ea6e089268a",
+          "unix_mode": 436
+        },
+        "man/get_de_result.Rd": {
+          "bytes": 396,
+          "sha256": "911f4c7d9269cba4230929973123dd11a841c5fe85d9b8369d55bdf026586ed5",
+          "unix_mode": 436
+        },
+        "man/get_de_score.Rd": {
+          "bytes": 314,
+          "sha256": "fe26a41bcd33108bb43d786770eaeb53d7cdd4ad446a7ba66bd002c56e5d0679",
+          "unix_mode": 436
+        },
+        "man/get_dend_markers.Rd": {
+          "bytes": 322,
+          "sha256": "35b5d2a39a3bf8a3b4a314e675a35b92c0409621228e38e0dcf35e71e4af45db",
+          "unix_mode": 436
+        },
+        "man/get_dend_markers_direction.Rd": {
+          "bytes": 376,
+          "sha256": "e49badf9d81dedac41860b559cfff58a2fd5683c2390456a2a078fb3179de713",
+          "unix_mode": 436
+        },
+        "man/get_dend_parent.Rd": {
+          "bytes": 273,
+          "sha256": "7b4b696a0fe6d257d08763f0801d5223f472dba9d3bc2334d748decc082ada65",
+          "unix_mode": 436
+        },
+        "man/get_eigen.Rd": {
+          "bytes": 1063,
+          "sha256": "ab15d368f03ebe1ca02c8249a8d5a9cd77f32d9ac7ab0525027cf119094fc2e6",
+          "unix_mode": 436
+        },
+        "man/get_gene_cl_correlation.Rd": {
+          "bytes": 391,
+          "sha256": "cd543356734fc39583a3399032110a8609a57b525fe4d633b6c7b295995e08e4",
+          "unix_mode": 436
+        },
+        "man/get_gene_score.Rd": {
+          "bytes": 338,
+          "sha256": "05e9a1a78015c4244b3c44231fb35525e6a44695adeda1acc9a74f4b0f9cb07a",
+          "unix_mode": 436
+        },
+        "man/get_knn.Rd": {
+          "bytes": 323,
+          "sha256": "6c3942f6b03af9f5778f536e9ad671d9dd835bc921bf6f88d544f193a2d63bc4",
+          "unix_mode": 436
+        },
+        "man/get_knn_batch.Rd": {
+          "bytes": 435,
+          "sha256": "5c8ca3c0bbf9d5592ef03f9a51346d3445f4bb96fa7ae4e970de9f063f0385d5",
+          "unix_mode": 436
+        },
+        "man/get_knn_graph.Rd": {
+          "bytes": 426,
+          "sha256": "42f662bdc1e15eeeb707533d3d08027155994f10c813b84ade6b2c6eb73d880f",
+          "unix_mode": 436
+        },
+        "man/get_knn_weight.Rd": {
+          "bytes": 326,
+          "sha256": "23be2dd353ce5e3c779577de545e9aef22e1af983590866eccc40e90b6380c85",
+          "unix_mode": 436
+        },
+        "man/get_pair_matrix.Rd": {
+          "bytes": 560,
+          "sha256": "b947bea9d624b0a31fcedf2e0ea435c36fa32eebe64bfc897e6475b66d3d5a8a",
+          "unix_mode": 436
+        },
+        "man/get_pair_matrix_coor.Rd": {
+          "bytes": 570,
+          "sha256": "200d0fb3580a33a5ff7e59dbbe7ea2034d962a6c5b134dd9f29da9da098e07c1",
+          "unix_mode": 436
+        },
+        "man/get_pairs.Rd": {
+          "bytes": 457,
+          "sha256": "4611d3295bb113cf65bc7dd6aff26e1070aa60a9022fc60cf5dd46fa65136435",
+          "unix_mode": 436
+        },
+        "man/group_cl.Rd": {
+          "bytes": 1910,
+          "sha256": "5ed06b7900538141e345ea5b63e0763c33612f97f804f74196a1267b5214abf8",
+          "unix_mode": 436
+        },
+        "man/group_specific_markers.Rd": {
+          "bytes": 441,
+          "sha256": "0279b339f877640f412f94b1f720fbf72ffe9db6e8f5cbb3fabb341e1ccb6114",
+          "unix_mode": 436
+        },
+        "man/harmonize.Rd": {
+          "bytes": 349,
+          "sha256": "a940ba803e25e7be32ebae07f7eb09f6619f8e9d3789bceb73121ab8e4d5451d",
+          "unix_mode": 436
+        },
+        "man/heatmap.3.Rd": {
+          "bytes": 9015,
+          "sha256": "3be2013ce8dbc1be9300cd2f8884c5fd6c627ae32cdb3ccb156ba84bb4350984",
+          "unix_mode": 436
+        },
+        "man/heatmap.4.Rd": {
+          "bytes": 2071,
+          "sha256": "465e9a9f838c61e5dba60150db82b05bff9c6da7bf721a82b1f25512b5c254c3",
+          "unix_mode": 436
+        },
+        "man/i_harmonize.Rd": {
+          "bytes": 501,
+          "sha256": "b1b9c515b27b101b9cc947f0f9f60b73bec3eb895eb9b598d0e0467bb7b4ec2b",
+          "unix_mode": 436
+        },
+        "man/impute_knn.Rd": {
+          "bytes": 362,
+          "sha256": "b2bc450fc7d080c6caaabfb47321c88730e51c468ae1209aafc52211acc97d4d",
+          "unix_mode": 436
+        },
+        "man/impute_knn_global.Rd": {
+          "bytes": 587,
+          "sha256": "5d4ed098655b5482056f84d3e2c35ea611d738a2e3bf76437dc05de815d6e0cf",
+          "unix_mode": 436
+        },
+        "man/impute_val_cor.Rd": {
+          "bytes": 352,
+          "sha256": "39012ed93427cffe32d268f1bb263184d0bd6af8187469dc0853147b772ea901",
+          "unix_mode": 436
+        },
+        "man/incrementHex.Rd": {
+          "bytes": 634,
+          "sha256": "a5ed4e0df24a286953eca4354f78766402083ff2b2344825e2e4e938a3864ab0",
+          "unix_mode": 436
+        },
+        "man/iter_clust.Rd": {
+          "bytes": 1159,
+          "sha256": "dbc21b6f22b4e841d03a5057f4f06605e450a230ddb631bd1181f12491ccc9c6",
+          "unix_mode": 436
+        },
+        "man/iter_consensus_clust.Rd": {
+          "bytes": 1443,
+          "sha256": "b6499bfc64b86e823c630a2951ffff22c06ad080b901b70f8c1a5e6393d48845",
+          "unix_mode": 436
+        },
+        "man/iter_impute_knn.Rd": {
+          "bytes": 368,
+          "sha256": "2acdc117f593e5ad93decc1fd501a5e318e41172cf715c641ac778264dff8700",
+          "unix_mode": 436
+        },
+        "man/jaccard.Rd": {
+          "bytes": 370,
+          "sha256": "e81d74b71f493b0a05aa9ca76ce7e485b843c0c18ed678b32c760f41d6dbe38d",
+          "unix_mode": 436
+        },
+        "man/jaccard_leiden.RANN.Rd": {
+          "bytes": 521,
+          "sha256": "9eaa6b5bdea424c2de02e4f32f51dce038f97eeb89ba183ec7c47631ef8e5459",
+          "unix_mode": 436
+        },
+        "man/jaccard_leiden.Rd": {
+          "bytes": 729,
+          "sha256": "6fdce8768dfa0219b0fd147e57f712def829191213b2af0bb8d6f9025a2e93a2",
+          "unix_mode": 436
+        },
+        "man/jaccard_louvain.RANN.Rd": {
+          "bytes": 524,
+          "sha256": "bc01029f7f17a341f6a697aa721e0d2d43a2eb7d23ffb09875eee10fc36d3e3b",
+          "unix_mode": 436
+        },
+        "man/jaccard_louvain.Rd": {
+          "bytes": 528,
+          "sha256": "3cbe67c3108665c066f35bc98f21a8f4c79f08f71328b6ada2aef6010e1ec3fc",
+          "unix_mode": 436
+        },
+        "man/knn_cor.Rd": {
+          "bytes": 281,
+          "sha256": "61c25257e55fb2e9102ef15d24391d9dc6c1f49e00f51a8f9f9f1ce0c8407b93",
+          "unix_mode": 436
+        },
+        "man/knn_cosine.Rd": {
+          "bytes": 296,
+          "sha256": "3ef0e1af5ebd81ecb37c18a74b6b0b56d4bf3c4f3bbced5e22eb05eb1c59833a",
+          "unix_mode": 436
+        },
+        "man/knn_jaccard_louvain.Rd": {
+          "bytes": 294,
+          "sha256": "84ec8e0c5e510648d4eb42c3adcc1201ab1922040afe147c75ee2efa80c8b632",
+          "unix_mode": 436
+        },
+        "man/knn_joint.Rd": {
+          "bytes": 851,
+          "sha256": "dd9f8d603a6ef6fdcb96fcac3115d113f25bfefeaee9ef21590b85dd7bd9e356",
+          "unix_mode": 436
+        },
+        "man/label_dend.Rd": {
+          "bytes": 267,
+          "sha256": "50b8ad6d2869a8ed1bfee60e0ff7a4589ad1706f9f76b35c15e12b574973c216",
+          "unix_mode": 436
+        },
+        "man/lm_matrix.Rd": {
+          "bytes": 239,
+          "sha256": "a1f3a27099dfb4edcc4389fb3fea4a973806fc801e3f304cec256104a6be18d9",
+          "unix_mode": 436
+        },
+        "man/lm_normalize.Rd": {
+          "bytes": 394,
+          "sha256": "ca999ab3e2314c6f153b5cd55bdb2d51aa98a4ccd0ea1d6c89c9a41c3757cad3",
+          "unix_mode": 436
+        },
+        "man/logCPM.Rd": {
+          "bytes": 576,
+          "sha256": "785bafb04bd555a2ea1622377c470651f2bfcef294f515a4d2d17395a744874f",
+          "unix_mode": 436
+        },
+        "man/makeColorsUnique.Rd": {
+          "bytes": 667,
+          "sha256": "11569209aa2af48b7d3ba934b23739ea06fe7a21063422eb376e21177e304dff",
+          "unix_mode": 436
+        },
+        "man/makeLayerLabel.Rd": {
+          "bytes": 630,
+          "sha256": "1d1f0a4efef14de4e402f7b47bd96e736ef12175b72d9badad7c6b9422e64b24",
+          "unix_mode": 436
+        },
+        "man/makeRegionLabel.Rd": {
+          "bytes": 608,
+          "sha256": "031312faa990b8da5561a9c6062c49e32a6753dd3dbdf89d5f3803abbcf77483",
+          "unix_mode": 436
+        },
+        "man/map_by_cor.Rd": {
+          "bytes": 893,
+          "sha256": "f4739fd7e6ff1e78a13a96c3555b0799f9bef3e84e5c101c356a39c6c3c1c112",
+          "unix_mode": 436
+        },
+        "man/map_cl_summary.Rd": {
+          "bytes": 1085,
+          "sha256": "1d0b5753c6eac6a0d009632899f327da662bf2634f06b2c5342ae29505a034b8",
+          "unix_mode": 436
+        },
+        "man/map_cv.Rd": {
+          "bytes": 1015,
+          "sha256": "7afcfa34836eb3a31540ff99690a4391eb36f2ba8f191b00847adf9762bc8b10",
+          "unix_mode": 436
+        },
+        "man/map_dend.Rd": {
+          "bytes": 472,
+          "sha256": "ecd113ec14ed31d77a3656a351ca4a3dd2d394f3b10d50e85f3bd1b265075672",
+          "unix_mode": 436
+        },
+        "man/map_dend_markers.Rd": {
+          "bytes": 369,
+          "sha256": "5f7887872a106b31f8dfa6b29aa3555d2413c03e2b3283168f3eee7c8bcb0704",
+          "unix_mode": 436
+        },
+        "man/map_dend_membership.Rd": {
+          "bytes": 480,
+          "sha256": "377ac3ce33d94b6c182af8312525f8eeac98ec4d5eacde5c61b3239fa4247090",
+          "unix_mode": 436
+        },
+        "man/map_sampling.Rd": {
+          "bytes": 1322,
+          "sha256": "8ebce9a510c7643f02a945bac4d3f858fd6c38f0d10ae1169c2427f824b727a7",
+          "unix_mode": 436
+        },
+        "man/mapping.Rd": {
+          "bytes": 632,
+          "sha256": "82a0dab1b53a8f4fab54d1d2b74dfe63c627aa53adb8e75b7941bfb06cc67bb4",
+          "unix_mode": 436
+        },
+        "man/markers_max_tau.Rd": {
+          "bytes": 335,
+          "sha256": "7d9d26adb7e50a20fef324260a80f0a2d54ec86c4164a3139eae663dcd03a1ce",
+          "unix_mode": 436
+        },
+        "man/markers_tau_one_vs_other.Rd": {
+          "bytes": 422,
+          "sha256": "d76b6c66b07c1d49ef6c6065a01e3c6938556b77af9c342388086a162c0ae4e6",
+          "unix_mode": 436
+        },
+        "man/match_cl.Rd": {
+          "bytes": 895,
+          "sha256": "09b0d0e3cad1643b1d5d39947025740f00011a6875e0236def158c24aaf9d64c",
+          "unix_mode": 436
+        },
+        "man/merge_cl.Rd": {
+          "bytes": 2202,
+          "sha256": "b95727f5bdef7560abf3386d0cbe6778c5737a38be5e25e39ae1b55f1dca914c",
+          "unix_mode": 436
+        },
+        "man/merge_cl_multiple.Rd": {
+          "bytes": 603,
+          "sha256": "2e3b27cdcdbc731ed31231d572300a493bf056b1cd28b3ebbee56bd5ec39c1ca",
+          "unix_mode": 436
+        },
+        "man/merge_knn_result.Rd": {
+          "bytes": 287,
+          "sha256": "eb4dfb25bacc6fe744f9d882865a750368dc36b8b4f3e3a6892995738e763698",
+          "unix_mode": 436
+        },
+        "man/multiplot.Rd": {
+          "bytes": 349,
+          "sha256": "71070bc4886b792fbb4cabe3c5c231b740c23c5c5dcfd4a70060fb9def07a390",
+          "unix_mode": 436
+        },
+        "man/mybgplot3d.Rd": {
+          "bytes": 270,
+          "sha256": "3c136aa177f1d455056a8592e6e495923fabb97e84a08cca76e556024953166f",
+          "unix_mode": 436
+        },
+        "man/node_specific_markers.Rd": {
+          "bytes": 372,
+          "sha256": "be14cdabab6a7867029ebb317eb96fc4d1e703d1fbcd48b0ba9922e575eae2a8",
+          "unix_mode": 436
+        },
+        "man/node_vs_sibling_markers.Rd": {
+          "bytes": 382,
+          "sha256": "e4fc5fe285294362a79907358a0fff2fdd3dc78a6cf74603eb44c42e2fe7221d",
+          "unix_mode": 436
+        },
+        "man/onestep_clust.Rd": {
+          "bytes": 2854,
+          "sha256": "db14c5c3aa57b6337f9d2c30652b47043643fb1fa9b53fa6e7e11a2418684500",
+          "unix_mode": 436
+        },
+        "man/pair_cor.Rd": {
+          "bytes": 681,
+          "sha256": "9cbceb51b91e2386afc220e498103c90aeb92b20cec6c5517f74b3a1f6a555d2",
+          "unix_mode": 436
+        },
+        "man/perp.Rd": {
+          "bytes": 273,
+          "sha256": "1413f88ac7209d021f52a04377cd59cbe0715b9d2ced0f784fc7dbdd838d1655",
+          "unix_mode": 436
+        },
+        "man/perpEnd.Rd": {
+          "bytes": 248,
+          "sha256": "cddeea1a04c9f3afb767d422bb6b004ec360b4ed5123342b09005c3bf31a7bab",
+          "unix_mode": 436
+        },
+        "man/perpMid.Rd": {
+          "bytes": 248,
+          "sha256": "cd34e1db34ee9eb161e4d90ed00ecfe8c5ffd596d0a9edafccf5c1c6acfd51c5",
+          "unix_mode": 436
+        },
+        "man/perpStart.Rd": {
+          "bytes": 254,
+          "sha256": "35a43fc651e976fcba1fd11da1bfcdf99d36d87a53f57616785d788c7fa5b4ef",
+          "unix_mode": 436
+        },
+        "man/plot_2d_select.Rd": {
+          "bytes": 470,
+          "sha256": "8205ab07c61e0718fb469ebed0f9389e2fee2f66b51cdfc3b92cd7448aa9be4e",
+          "unix_mode": 436
+        },
+        "man/plot_3d_label.Rd": {
+          "bytes": 476,
+          "sha256": "064d0a2d26d2623fe7f2b50e09926c0528e697060b56b50e60fac1779c637587",
+          "unix_mode": 436
+        },
+        "man/plot_3d_label_multiple.Rd": {
+          "bytes": 578,
+          "sha256": "efe3f54f05ed518bd0b07302133fcd8b377846aea95003375c64212145ec8701",
+          "unix_mode": 436
+        },
+        "man/plot_3d_select.Rd": {
+          "bytes": 540,
+          "sha256": "4f2f0e2198b006df7bd0b4edf0a1b75d44041cc464233eb7dd6e8da42ef44cbb",
+          "unix_mode": 436
+        },
+        "man/plot_3d_val.Rd": {
+          "bytes": 442,
+          "sha256": "fa650779c9dd015d14fd664dfc4db4eb7bfd724268de11fe1bfa7a852c09d85e",
+          "unix_mode": 436
+        },
+        "man/plot_RD_cl.Rd": {
+          "bytes": 629,
+          "sha256": "a32792d4c0d2957e526d6b0627bad3d8f38b1447c44010fb69ff2927dee18501",
+          "unix_mode": 436
+        },
+        "man/plot_RD_gene.Rd": {
+          "bytes": 328,
+          "sha256": "8b53fad02bf930a6405cb4419b37e1c620625375814c0dc240902655329ec74c",
+          "unix_mode": 436
+        },
+        "man/plot_RD_meta.Rd": {
+          "bytes": 465,
+          "sha256": "06c7574d319a6ba8a7ffe993ec0657aacf4ab835e9c4d7ee105bbfde979f1e01",
+          "unix_mode": 436
+        },
+        "man/plot_cl_cells.Rd": {
+          "bytes": 233,
+          "sha256": "aa5add464d2027159e56d9ee513ab28631ea1b78ecf4f4aeaa4d2973951d19d1",
+          "unix_mode": 436
+        },
+        "man/plot_cl_heatmap.Rd": {
+          "bytes": 774,
+          "sha256": "bc10ad5314867608e1a560aefbb44b8227905cc01a1f37479baade3541053e99",
+          "unix_mode": 436
+        },
+        "man/plot_cl_heatmap4.Rd": {
+          "bytes": 794,
+          "sha256": "2159226c109b0e0ff49b9bb01e87273013ff50d261a97194d8702031de90dce6",
+          "unix_mode": 436
+        },
+        "man/plot_cl_low.Rd": {
+          "bytes": 354,
+          "sha256": "8bced29b3f0ea069ef17d6003c71d17747e05f4dbfcfdc0257a53b8ccbddd57b",
+          "unix_mode": 436
+        },
+        "man/plot_cl_meta_barplot.Rd": {
+          "bytes": 336,
+          "sha256": "7d69410ea9df175178ca4df7807735a0cf0e5adbc6c1301b8168fe22447c3cea",
+          "unix_mode": 436
+        },
+        "man/plot_confusion.Rd": {
+          "bytes": 446,
+          "sha256": "46c2dd8876cb3d8e77094c3c6c4ec907541a3ded0300bd42b6b3ec772c9d4ce6",
+          "unix_mode": 436
+        },
+        "man/plot_de_lfc_num.Rd": {
+          "bytes": 358,
+          "sha256": "1c7e8124f7d64001116404aed3f8fe3d1909770021b9eccbc367633f5d1dd5ec",
+          "unix_mode": 436
+        },
+        "man/plot_de_num.Rd": {
+          "bytes": 408,
+          "sha256": "2b6766639044fdff75c5c73490d81effc6029e110dfda45cd632e02d4ec14525",
+          "unix_mode": 436
+        },
+        "man/plot_dend.Rd": {
+          "bytes": 348,
+          "sha256": "5c31577d1a24bb9f5dc6dd4d7447aeb680ebabf3624a7bc23a3a1af4edcba072",
+          "unix_mode": 436
+        },
+        "man/plot_doublet.Rd": {
+          "bytes": 357,
+          "sha256": "3f6e2247ff37a17c699b01f3c776c2c5391709048d2e82c0e00c0484f16400e7",
+          "unix_mode": 436
+        },
+        "man/plot_low_qc.Rd": {
+          "bytes": 612,
+          "sha256": "76646340e42e59f8932d5ae13f6d3bf40bf7ae69abbfd351c6c4185331fbe6c5",
+          "unix_mode": 436
+        },
+        "man/plot_markers.Rd": {
+          "bytes": 696,
+          "sha256": "6405f043054d1634518e80b816473b6e763ece9198a67374e50ad21805dae0b1",
+          "unix_mode": 436
+        },
+        "man/plot_markers_cl_means.Rd": {
+          "bytes": 560,
+          "sha256": "ffb11afd0e37b46aa10f16fe4ac82335aaded51c5615ff186d91e2cd34473cea",
+          "unix_mode": 436
+        },
+        "man/plot_pair_matrix.Rd": {
+          "bytes": 448,
+          "sha256": "e5b8b61439f9d49ce91111fe6878f7d95a1ea9eadcadd1e01c2a0f7e23e68a56",
+          "unix_mode": 436
+        },
+        "man/plot_tSNE_gene.Rd": {
+          "bytes": 277,
+          "sha256": "49af5cc7e74eeb126a0e9a6d6ba8db44637b54a443b29e6d90594bdec58670f0",
+          "unix_mode": 436
+        },
+        "man/plot_tSNE_meta.Rd": {
+          "bytes": 277,
+          "sha256": "8ce60aa615a62783f70137d3110afa0301f15acff1c584bd29f2520d39fa40eb",
+          "unix_mode": 436
+        },
+        "man/plot_tsne.Rd": {
+          "bytes": 613,
+          "sha256": "312919051737717d73bc057da55748b19155d380834cd0a2a8bad92975aeb8ba",
+          "unix_mode": 436
+        },
+        "man/plot_tsne_cl.Rd": {
+          "bytes": 541,
+          "sha256": "fbd090a7c7b0f06d57ebc01276833d44a5fa7128fd441446994d1ce77e101d34",
+          "unix_mode": 436
+        },
+        "man/plot_vg.Rd": {
+          "bytes": 822,
+          "sha256": "05ad4466b29dd1559bfba8905a43a3a1be94df10305eb8b27b5af65a7da911cc",
+          "unix_mode": 436
+        },
+        "man/prcomp.irlba.Rd": {
+          "bytes": 406,
+          "sha256": "7877d7efd9fb77703b67524882376efb144cf84049c3b7c297991c6b4479a53f",
+          "unix_mode": 436
+        },
+        "man/predict_annotate_cor.Rd": {
+          "bytes": 1014,
+          "sha256": "500136d2b404cba809f32d250a51bf7a0932476180d7aba221410e911187d392",
+          "unix_mode": 436
+        },
+        "man/predict_knn.Rd": {
+          "bytes": 293,
+          "sha256": "00de1ca4f29ea15f7bdbc960cfaa245cd6e42154b46dc63a62ef1bb9d16d2641",
+          "unix_mode": 436
+        },
+        "man/predict_knn_new.Rd": {
+          "bytes": 324,
+          "sha256": "8196f2543b9b107f4672af55eb080ba1b49b272b59e68a9ae090541737b6d71a",
+          "unix_mode": 436
+        },
+        "man/prune_dend.Rd": {
+          "bytes": 317,
+          "sha256": "6f25645a220a301216fd1236e92b2015a42d0b98fef6f328c8ade9a961a8d6fb",
+          "unix_mode": 436
+        },
+        "man/pvclust_show_signif_gradient.Rd": {
+          "bytes": 545,
+          "sha256": "aa7336f6dde5105b9b33c43fd9973e2f60a00849f959a3c23a1e457fde24217d",
+          "unix_mode": 436
+        },
+        "man/rd_PCA.Rd": {
+          "bytes": 473,
+          "sha256": "01c04aaae958e5f3e189248d361b9c2d54336aba1588d0f0f7b8f7e73419d764",
+          "unix_mode": 436
+        },
+        "man/refine_cl.Rd": {
+          "bytes": 1138,
+          "sha256": "7197cb95e9421c6e90df712632d2cbbc7193dd6ea35885cd2f893b4c7c412ab2",
+          "unix_mode": 436
+        },
+        "man/renameAndOrderClusters.Rd": {
+          "bytes": 5285,
+          "sha256": "e1cf122ac48b5aaf3b7f20cfef9fbb2db684f7bcbe7e8d69a189ef7638bc4ec8",
+          "unix_mode": 436
+        },
+        "man/reorder_cl.Rd": {
+          "bytes": 670,
+          "sha256": "17da8a2f8b4f88f74867cdc72da2556f1d14067e383532a290df4375aace721e",
+          "unix_mode": 436
+        },
+        "man/reorder_dend.Rd": {
+          "bytes": 321,
+          "sha256": "b7664e68c9946b8027f9a6c9fb1b85529be828d97b2f1191f2a18d20cfa8fd5b",
+          "unix_mode": 436
+        },
+        "man/reorder_factor.Rd": {
+          "bytes": 870,
+          "sha256": "af955e4deec52afd529c563f0fe9e19ef728036d7cc651502e84b349aea45589",
+          "unix_mode": 436
+        },
+        "man/rescale_samples.Rd": {
+          "bytes": 496,
+          "sha256": "45dc3c72a1bff3e3f81b447cc69900893add3d44886eb9945583260ad6673d88",
+          "unix_mode": 436
+        },
+        "man/resolve_cl.Rd": {
+          "bytes": 436,
+          "sha256": "ed88118c27f0afb42d0200fecdd364de93894a5f373c59a7fcec2cd06c853299",
+          "unix_mode": 436
+        },
+        "man/run_consensus_clust.Rd": {
+          "bytes": 1825,
+          "sha256": "2b151147915d04979b434ceeeb5284672e8aee0453bf55711d30a8a86aeb91df",
+          "unix_mode": 436
+        },
+        "man/sample_cells.Rd": {
+          "bytes": 797,
+          "sha256": "291a97b127c0c5353cb82d4fde5da9b6da624bda0af12138053c2a8da5d33359",
+          "unix_mode": 436
+        },
+        "man/sample_sets_list.Rd": {
+          "bytes": 399,
+          "sha256": "13bca6e007e4aa61440a89a30f7bd72ed1734cca8b2d2b8ff1047d250a0d4f62",
+          "unix_mode": 436
+        },
+        "man/select_N_markers.Rd": {
+          "bytes": 605,
+          "sha256": "4e264cfa6cb5beaa3f72370c91fa94a0762eb53867b0b3bc7d6dafe0ad3cba10",
+          "unix_mode": 436
+        },
+        "man/select_dend_markers.Rd": {
+          "bytes": 500,
+          "sha256": "dfbe476f4f2885398ca11b77ef89ae517249ebe7a1fc824a15f5927e90552f9c",
+          "unix_mode": 436
+        },
+        "man/select_joint_genes.Rd": {
+          "bytes": 660,
+          "sha256": "1fc2d3120460c309eaf5afb5e05109094e6cd3b332fe650e7d567b4b9a2270eb",
+          "unix_mode": 436
+        },
+        "man/select_joint_markers.Rd": {
+          "bytes": 347,
+          "sha256": "546947e44b15944f6d48a2bcf78d6cc50fb9c0454dc16baace49345dd7e4c4df",
+          "unix_mode": 436
+        },
+        "man/select_markers.Rd": {
+          "bytes": 355,
+          "sha256": "95c53a3573e7204a79973d9ac5be694569873eef5e1a185d1da4dc0fe713963b",
+          "unix_mode": 436
+        },
+        "man/select_markers_pair.Rd": {
+          "bytes": 445,
+          "sha256": "12b2683273bd2f5cc9cb69df17a02f1f136c4b7acf89610ebc55a959e95bb617",
+          "unix_mode": 436
+        },
+        "man/select_markers_pair_direction.Rd": {
+          "bytes": 558,
+          "sha256": "814a1a097d71fd6d569dd11210bf78947225685e10cd2e54e95fd5da5692f9df",
+          "unix_mode": 436
+        },
+        "man/select_markers_pair_group.Rd": {
+          "bytes": 545,
+          "sha256": "0e1d7c6dd46ee03722d8afb54771f3f1b0ae9660fe52d73e4c25c79e93b707c0",
+          "unix_mode": 436
+        },
+        "man/select_node_specific_markers.Rd": {
+          "bytes": 628,
+          "sha256": "a1d746d30a79c19b573be8a5cf53f68404218a10dc37661d5489e097dac7c281",
+          "unix_mode": 436
+        },
+        "man/select_pos_dend_markers.Rd": {
+          "bytes": 353,
+          "sha256": "55b53fc3c91c2b5e419371b85a1f7d618c0b42af8715032f6955c99f091e7625",
+          "unix_mode": 436
+        },
+        "man/select_pos_markers.Rd": {
+          "bytes": 509,
+          "sha256": "2c21d3074c9a07bc9bb4d25a86a17e706f531ee7c4c285b64414889fcf86fc61",
+          "unix_mode": 436
+        },
+        "man/set_pair_matrix.Rd": {
+          "bytes": 622,
+          "sha256": "7dd46e17f492e86b40a9381ed560a1fe302ef893664f70a0605dc4586ee2a8eb",
+          "unix_mode": 436
+        },
+        "man/sim_knn.Rd": {
+          "bytes": 242,
+          "sha256": "69d92729050e7a308228d2583fde6b1a1d58882426f09ed1817374c1ddedb9af",
+          "unix_mode": 436
+        },
+        "man/simple_dend.Rd": {
+          "bytes": 274,
+          "sha256": "7c52a9e798148439e780d9d40d4384a915ebd01fb54d5efa16c1e020a813af33",
+          "unix_mode": 436
+        },
+        "man/sparse_cor.Rd": {
+          "bytes": 415,
+          "sha256": "82df6867df24e24ceae6cf3a8e2adadced41a4a76047497e927d5d23043ff73f",
+          "unix_mode": 436
+        },
+        "man/summarize_cl.Rd": {
+          "bytes": 447,
+          "sha256": "d50568ea4528d0342a958c946747de9b964d1d432a3723492f88b655d2dac4ab",
+          "unix_mode": 436
+        },
+        "man/test_knn.Rd": {
+          "bytes": 300,
+          "sha256": "989df944569b12f6f247bada0293d98de47abe0846d644f515af92d01eed84ce",
+          "unix_mode": 436
+        },
+        "man/test_merge.Rd": {
+          "bytes": 314,
+          "sha256": "933ba109e94d6bce797c99ae9bf5eb1facad3ff8a4fea906c13e2512d10bd46b",
+          "unix_mode": 436
+        },
+        "man/unbranch_by_conf.Rd": {
+          "bytes": 293,
+          "sha256": "46409de78e7d6cbda00d49adfe7015b47d2a557cab8c089d8b2f8898784a09fb",
+          "unix_mode": 436
+        },
+        "man/unbranch_by_length.Rd": {
+          "bytes": 307,
+          "sha256": "7618b9e78ef6b47ddb81a53ed017af248d13eaed8820e3a0e90a1c223ae3dd7a",
+          "unix_mode": 436
+        },
+        "man/updateSampDat.Rd": {
+          "bytes": 562,
+          "sha256": "f50a6f528703c1852413f0ba04a572b23318d9b6e88fb05e9b92c4b9c2d78724",
+          "unix_mode": 436
+        },
+        "man/vec_chisq_test.Rd": {
+          "bytes": 1199,
+          "sha256": "2052b9e92a09d6df41fc12bc8f24fabe0c8293170159d18781fa45f3c3d1b5c3",
+          "unix_mode": 436
+        },
+        "man/within_group_specific_markers.Rd": {
+          "bytes": 349,
+          "sha256": "5fb912927adf6f650eeef2f220bf4e1ed2f38eb454cd58f0059bd5d6810d26fb",
+          "unix_mode": 436
+        },
+        "scrattch.hicat.Rproj": {
+          "bytes": 303,
+          "sha256": "a1a7660973835d4a7de7bc083877bf44efd453ddccbb1bb70d2f0bff07dac076",
+          "unix_mode": 436
+        },
+        "src/Makevars": {
+          "bytes": 272,
+          "sha256": "b1ca80ef7f5f4de9af5431f062477eaf73e0bee27c82d5d8774500a810b2d4c2",
+          "unix_mode": 436
+        },
+        "src/RcppExports.cpp": {
+          "bytes": 51842,
+          "sha256": "9518f52b67004300913e199c0ec1b1abf5e784b0e02a28e672eb0c82aa137e4f",
+          "unix_mode": 436
+        },
+        "src/Rcpp_parallel.cpp": {
+          "bytes": 54963,
+          "sha256": "e5a680cd5aaa39abb39d4ff57b3925e73232b87d79f74657be866b794861aafe",
+          "unix_mode": 436
+        },
+        "src/Rcpp_parallel_dense.cpp": {
+          "bytes": 52635,
+          "sha256": "f99bc19c84e01527a3504b8a69202f60517a1f9888017c0cb58d25533e956e79",
+          "unix_mode": 436
+        },
+        "src/Rcpp_parallel_transpose.cpp": {
+          "bytes": 56327,
+          "sha256": "aaa10c6b4357c5f2d6f402281c312fd98fbc53c6c0fb245044b68d5a854f1f36",
+          "unix_mode": 436
+        },
+        "src/Rcpp_parallel_transpose_dense.cpp": {
+          "bytes": 53862,
+          "sha256": "2ea859491f42d63436203c0e5c76c4035773dab7d62137e7281e5c3696b5e205",
+          "unix_mode": 436
+        },
+        "src/data_manipulation.cpp": {
+          "bytes": 15469,
+          "sha256": "48648577bbb999e2dc3d02db42e119e49fc0661369facda64290ee2541dbd100",
+          "unix_mode": 436
+        },
+        "src/data_manipulation.h": {
+          "bytes": 2837,
+          "sha256": "6998ddca6ab8682d12e61d7f7ebbbca7526dc19f06b7200c46f80fc7b724e81d",
+          "unix_mode": 436
+        },
+        "src/impute.cpp": {
+          "bytes": 1400,
+          "sha256": "a7a4201d19490937c7ca554a1c0c7d2b9d76dc3d86b461d43bc214e3004e1dd8",
+          "unix_mode": 436
+        },
+        "src/snn.cpp": {
+          "bytes": 2345,
+          "sha256": "65a708210257b5a1ab6e73c7406426c18a224b84a8244a99c99189909838b71d",
+          "unix_mode": 436
+        },
+        "src/snn.h": {
+          "bytes": 634,
+          "sha256": "4d23319f8531e8383f58cc6ea17cd3597ff19e21afeaa7f10ad11c00f3f84015",
+          "unix_mode": 436
+        },
+        "tests/testthat.R": {
+          "bytes": 72,
+          "sha256": "ad6c53705f0e04b213e2868988fa4e80acb5675a33c459a15ab740becf519c3a",
+          "unix_mode": 436
+        },
+        "tests/testthat/test-CCA.R": {
+          "bytes": 82,
+          "sha256": "14bd97e5fba71af8a0f6ac946699c0e3667296a8536e81207f10ebd9c3d92ad9",
+          "unix_mode": 436
+        },
+        "tests/testthat/test-annotate.R": {
+          "bytes": 13073,
+          "sha256": "7bd848f28ed7fc305f8298d39eec67b2b15577d2981ff7477f01b52d2e8f6bfe",
+          "unix_mode": 436
+        },
+        "tests/testthat/test-cluster.R": {
+          "bytes": 51,
+          "sha256": "6b6d7a9674525999ed04b2159b73d6abb09f59e2394a55a8e7ffa32f6d373bf8",
+          "unix_mode": 436
+        },
+        "tests/testthat/test-cluster_cv.R": {
+          "bytes": 86,
+          "sha256": "54ca91987bb7c9712aecccef03c24a6884fde46f5143e2553eda8d21a22eaea6",
+          "unix_mode": 436
+        },
+        "tests/testthat/test-consensusCluster.R": {
+          "bytes": 440,
+          "sha256": "e6453407b201c06791389992fe82c5f27aa0ae2e998995f81076c0aeb4c655e7",
+          "unix_mode": 436
+        },
+        "tests/testthat/test-de.genes.R": {
+          "bytes": 15815,
+          "sha256": "221681cba91e8029546e8041ae9f78dbb4a505c2a0120cd7e7d999160fa5501a",
+          "unix_mode": 436
+        },
+        "tests/testthat/test-dend.markers.R": {
+          "bytes": 500,
+          "sha256": "c31159664af58eb8f6108beb6b5a7d42e017bea5376335ab539e3a492039c7c4",
+          "unix_mode": 436
+        },
+        "tests/testthat/test-dendro.R": {
+          "bytes": 450,
+          "sha256": "39402787647565d19fa5cf0acd7017cd2b6cfd00005c39fcf5b89161b6f93b86",
+          "unix_mode": 436
+        },
+        "tests/testthat/test-doubletFinder.R": {
+          "bytes": 81,
+          "sha256": "c53849b603f8ba997de8feef2bc74c5d61a9ed70b951a222d1f96d3fceed1285",
+          "unix_mode": 436
+        },
+        "tests/testthat/test-heatmap.R": {
+          "bytes": 71,
+          "sha256": "5f1e404dbcf18c29d464a820aac898b4ef7df70aa6392abb5b3a7611e4cf6107",
+          "unix_mode": 436
+        },
+        "tests/testthat/test-heatmap4.R": {
+          "bytes": 96,
+          "sha256": "92fd396023713c15e20bc08986f1924f034a849f3046500fa1126e918f37e156",
+          "unix_mode": 436
+        },
+        "tests/testthat/test-markers.R": {
+          "bytes": 476,
+          "sha256": "e88eaba62b2b7b25c0837f45bd1242dba3e90939b101f62ea926b4fadd4ab6a0",
+          "unix_mode": 436
+        },
+        "tests/testthat/test-merge_cl.R": {
+          "bytes": 94,
+          "sha256": "6799882e0d4a26adb6b811e371a2f963e5f7427b3e5e42670132a0267e2c698b",
+          "unix_mode": 436
+        },
+        "tests/testthat/test-normalize.R": {
+          "bytes": 98,
+          "sha256": "4f621f24ce5ed9aac05c87e8ffbfa3526b2cb9318526aa8884d15ea9ff1d37a4",
+          "unix_mode": 436
+        },
+        "tests/testthat/test-plot.R": {
+          "bytes": 233,
+          "sha256": "67ba1b62f68861a4c1349fd323a1a04a7647a007f5015dfe00bb2654554eba19",
+          "unix_mode": 436
+        },
+        "tests/testthat/test-reduceDimension_PCA.R": {
+          "bytes": 80,
+          "sha256": "c69cdb1098b9d4ee15e1ca24fbd70de1047f6548c514d752f18d22ffe4c4b917",
+          "unix_mode": 436
+        },
+        "tests/testthat/test-reduceDimension_WGCNA.R": {
+          "bytes": 161,
+          "sha256": "e2934fcdcc5455dcde02ef8ce1d07b46a6e450b9cd03fe5c4b06848f51ca051f",
+          "unix_mode": 436
+        },
+        "tests/testthat/test-reduceDimension_plot.R": {
+          "bytes": 157,
+          "sha256": "45e070793257fe5daf1e976de1803050f3e21725e45192ae4d36de98cca58cdd",
+          "unix_mode": 436
+        },
+        "tests/testthat/test-reduceDimension_tSNE.R": {
+          "bytes": 162,
+          "sha256": "ee61c40f8e6644c3910ed77a0d865bcbdd40542425027208aa36300609bbb20c",
+          "unix_mode": 436
+        },
+        "tests/testthat/test-riverplot.R": {
+          "bytes": 50,
+          "sha256": "4af5a23096335a372396bff8e7d6558767e7d23cf04aa13773ed10d3b5c9806b",
+          "unix_mode": 436
+        },
+        "tests/testthat/test-update.R": {
+          "bytes": 47,
+          "sha256": "cc27f84b4345f5a38a191b3a0b4831d572eef1b4b3b1868b247484df9484d94d",
+          "unix_mode": 436
+        },
+        "tests/testthat/test-util.R": {
+          "bytes": 25295,
+          "sha256": "dc91eeda1e6585128d81c845e904ebd15cfcf0ddd061cebe72afb80fcffbfa45",
+          "unix_mode": 436
+        },
+        "tests/testthat/test-vg.R": {
+          "bytes": 19713,
+          "sha256": "b969657756d7d755f04e6b4ca5731031a73ba59e0da9985d3e428be61ad5bb1d",
+          "unix_mode": 436
+        },
+        "tests/testthat/test_human_functions.R": {
+          "bytes": 3423,
+          "sha256": "625b58927560635a779ec72be8de8d81c46271608e64d242368ad4a15e90dcf6",
+          "unix_mode": 436
+        },
+        "vignettes/deprecated-scrattch.R": {
+          "bytes": 5266,
+          "sha256": "5719b1850f49df49d7db6545eff4270610ba3a571ae2e11802859ca7692583f7",
+          "unix_mode": 436
+        },
+        "vignettes/scrattch.hicat.R": {
+          "bytes": 5581,
+          "sha256": "9ae531d611bf4bec4a9693355d1fc67489f308fe296db213760941f6007f53d8",
+          "unix_mode": 436
+        },
+        "vignettes/scrattch.hicat.html": {
+          "bytes": 260663,
+          "sha256": "80cc46fb4da117d4f1ddb730f74ffb1eaea7c997d0524bf8348e84a6d799d853",
+          "unix_mode": 436
+        },
+        "vignettes/scrattch.hicat_release.Rmd": {
+          "bytes": 21613,
+          "sha256": "36c8bbb23d0891a2a307c8514ac05657a0c5090f0bcf90f08e3e2f44f5ccedb6",
+          "unix_mode": 436
+        },
+        "vignettes/scrattch.hicat_release.html": {
+          "bytes": 472204,
+          "sha256": "8380af63607ad0ffa2d0160c9fa957a231dcbbd72daec4b9adaff78203dea9d9",
+          "unix_mode": 436
+        }
+      },
+      "namespace_functions": 360,
+      "license_discrepancy": {
+        "DESCRIPTION_label": "GPL-3",
+        "LICENSE_file": "Allen Institute BSD-style license with noncommercial redistribution restriction",
+        "LICENSE_sha256": "7a4fead601f1c659e8327ed8de88ac537a995f772bf1a0ea14114a9267f1ef83",
+        "resolved_as_GPL": false,
+        "source_or_runtime_for_public_project_distribution": false,
+        "native_source_port_authorized_by_this_record": false,
+        "intended_use": "Existing user research/nonprofit preference; inspect privately and retain all original terms."
+      }
+    },
+    "RANN": {
+      "version": "2.6.1",
+      "url": "https://cran.r-project.org/src/contrib/Archive/RANN/RANN_2.6.1.tar.gz",
+      "archive": {
+        "bytes": 58136,
+        "sha256": "b299c3dfb7be17aa41e66eff5674fddd2992fb6dd3b10bc59ffbf0c401697182"
+      },
+      "filename": "RANN_2.6.1.tar.gz",
+      "archive_top_level": "RANN",
+      "original_regular_members": {
+        "inst/COPYRIGHT": {
+          "bytes": 1846,
+          "sha256": "d82abfcd997402d32758aaa397fa2425640ebbcd387a84a644b722098cde7999",
+          "unix_mode": 420
+        },
+        "tests/testthat.R": {
+          "bytes": 52,
+          "sha256": "38742dba1176d184c17dbc7ec94409c01063d663e251b4062064ebb7a06ab192",
+          "unix_mode": 420
+        },
+        "tests/testthat/test-nn.R": {
+          "bytes": 5955,
+          "sha256": "504d03d4e467594bcc6a81c2bc2af0817d62b210a5e3c9672d1a7d43df9ea955",
+          "unix_mode": 420
+        },
+        "src/kd_util.cpp": {
+          "bytes": 15030,
+          "sha256": "e9273af48407d8acfca897aa429533763db715f15bbaeb712b78539372943d71",
+          "unix_mode": 420
+        },
+        "src/bd_fix_rad_search.cpp": {
+          "bytes": 2705,
+          "sha256": "436b3d809b99567d54a1404c594e2d5ce8f5dd30a257193d06e98f8b418ca9c8",
+          "unix_mode": 420
+        },
+        "src/Makevars": {
+          "bytes": 30,
+          "sha256": "8f3516fc649e453ae3a043ed561c3e8fa1c3547b8d1a226a1d37a3178d69f46f",
+          "unix_mode": 420
+        },
+        "src/kd_split.cpp": {
+          "bytes": 16890,
+          "sha256": "527b991eb9e1dbba9415ae51173f6949739811997e8eb34004da4af38b49c738",
+          "unix_mode": 420
+        },
+        "src/kd_util.h": {
+          "bytes": 4751,
+          "sha256": "af77ed6b2f56cb24b8841248afe771d5c4aa5128ba237e8bd5b74209bafc22b4",
+          "unix_mode": 420
+        },
+        "src/kd_pr_search.cpp": {
+          "bytes": 8855,
+          "sha256": "82430c4febfb7fcfa64621ee814da3d9960f9fc125f737f3f54784af078af686",
+          "unix_mode": 420
+        },
+        "src/pr_queue_k.h": {
+          "bytes": 4383,
+          "sha256": "aaab469bb2d57c64ea6814ca3ce6271d0038a268f885578fde19f7aa9decca63",
+          "unix_mode": 420
+        },
+        "src/ANN/ANNperf.h": {
+          "bytes": 8208,
+          "sha256": "f44d8a6a6f483d739f1104eae2b15ed9b242ed1644bf7977304eef22f90d45a4",
+          "unix_mode": 420
+        },
+        "src/ANN/ANN.h": {
+          "bytes": 34803,
+          "sha256": "9988edc4b716808f62062acb67de92dee9673822c62a7e877ae7dac021a9fd93",
+          "unix_mode": 420
+        },
+        "src/ANN/ANNx.h": {
+          "bytes": 6328,
+          "sha256": "d0c784de2174ea3683b2819311edae1c205d9eb01acbaaafef2337e923e57176",
+          "unix_mode": 420
+        },
+        "src/bd_tree.cpp": {
+          "bytes": 16224,
+          "sha256": "96b466febfe375ca37302f509a0c16ecba9c0580d8b2b8232c23c3826581c1f8",
+          "unix_mode": 420
+        },
+        "src/bd_tree.h": {
+          "bytes": 3965,
+          "sha256": "b0ba9434a7c533cbc3d6467809ad193b9a79ba93cc3eb134bc9846192f2a5d30",
+          "unix_mode": 420
+        },
+        "src/ANN.cpp": {
+          "bytes": 6690,
+          "sha256": "21bdcd22aa89ad5abefa7edeeb7931efa823faaa8335bb0590de590399975b03",
+          "unix_mode": 420
+        },
+        "src/kd_pr_search.h": {
+          "bytes": 2027,
+          "sha256": "86bcc1ed48e62a9dd5e793541e07fd4273dfa386e8f9a3dd389a802e72458a5a",
+          "unix_mode": 420
+        },
+        "src/pr_queue.h": {
+          "bytes": 4450,
+          "sha256": "185256b98d3edb4dc6f1bbafc3171e6ef798797207a3692fecb619de7e7e6ab7",
+          "unix_mode": 420
+        },
+        "src/kd_split.h": {
+          "bytes": 3713,
+          "sha256": "3776ba4b02a80b978eb38493d97722981b857b8443a1104be26c319e8b747540",
+          "unix_mode": 420
+        },
+        "src/kd_tree.h": {
+          "bytes": 7986,
+          "sha256": "5d04dda64cacfe736b4ac40700c1a37e3e5ffe565cac74404e6606e50c3f7b95",
+          "unix_mode": 420
+        },
+        "src/bd_search.cpp": {
+          "bytes": 2668,
+          "sha256": "c94fa139e56eeb32acfafd8b2dccaf55dbca912b68305eea57bb889e57fc4fe7",
+          "unix_mode": 420
+        },
+        "src/bd_pr_search.cpp": {
+          "bytes": 2731,
+          "sha256": "2578f06dbaa2ee38ac2b9e769117e2e8e857bc0253041b7f2897818dbfcd17c9",
+          "unix_mode": 420
+        },
+        "src/kd_fix_rad_search.cpp": {
+          "bytes": 7284,
+          "sha256": "4be322d43fb04ecec6917bd20e82d32de1e4200e2663c09f9f6058934904fa32",
+          "unix_mode": 420
+        },
+        "src/kd_dump.cpp": {
+          "bytes": 16753,
+          "sha256": "af3c136a17096f58d363b9aa25605a0158ad77e0c0b683a47917021ae4a3d50b",
+          "unix_mode": 420
+        },
+        "src/Makevars.win": {
+          "bytes": 109,
+          "sha256": "be210545b2f142f6bf667f9d50ac28c8cb29ff29c62c74e7beb9b0572fc6292e",
+          "unix_mode": 420
+        },
+        "src/init.c": {
+          "bytes": 519,
+          "sha256": "132fb8b9756c47e6e94b525b55f46dd944e9ae8dac0ab7c53d775bebdf5c8709",
+          "unix_mode": 420
+        },
+        "src/NN.cc": {
+          "bytes": 2931,
+          "sha256": "a302600bff44b39380921d9af7d05cee225059dca650f4a90759a2889a2134be",
+          "unix_mode": 493
+        },
+        "src/brute.cpp": {
+          "bytes": 4093,
+          "sha256": "b0e0a619d7ab82c63c49599f75d779c7029a994cd0f2357cd19d46c7dfba56ee",
+          "unix_mode": 420
+        },
+        "src/kd_fix_rad_search.h": {
+          "bytes": 1798,
+          "sha256": "e4bab843a2526abb2b164730c0c0370fea8c6f07ccb9b4a2de1c866828b7b6f5",
+          "unix_mode": 420
+        },
+        "src/kd_search.cpp": {
+          "bytes": 8608,
+          "sha256": "47ed5be8858f7cd156fdb9bcb4e54b8b46b58c4d97e97a45829d31f601bf1066",
+          "unix_mode": 420
+        },
+        "src/kd_tree.cpp": {
+          "bytes": 15286,
+          "sha256": "cbd2bb6831804bcf9e25f872130bfefe8a6558141e55d63945e535bbf0663282",
+          "unix_mode": 420
+        },
+        "src/kd_search.h": {
+          "bytes": 2049,
+          "sha256": "47a508f81f8ce329961b78e7f8a7a7e17b3b556824f8b190e48c00a15b00ab41",
+          "unix_mode": 420
+        },
+        "NAMESPACE": {
+          "bytes": 74,
+          "sha256": "3ad44412390c1ed4bc577464168be26ff338381601e948c0aefa1f12a7e3d2b5",
+          "unix_mode": 420
+        },
+        "NEWS.md": {
+          "bytes": 1948,
+          "sha256": "b721100d835b21f4136fcc547f38df21ed14e5a3d7c424a4e2ea76410eb78f35",
+          "unix_mode": 420
+        },
+        "R/nn.R": {
+          "bytes": 4927,
+          "sha256": "b7824899d4506b37f5ed19c9b9c3006593b39932865814457990c3d9f5a484d7",
+          "unix_mode": 420
+        },
+        "R/RANN-package.R": {
+          "bytes": 200,
+          "sha256": "fb6b0fa699b2665d999883b6179e96709c427054da590a7c51d0dbc01432f963",
+          "unix_mode": 420
+        },
+        "R/zzz.R": {
+          "bytes": 23,
+          "sha256": "5b8b11464e2c9926d7bc9fbdac0a75f36b8d6b23ca37f8d2c84b169e9debf3b3",
+          "unix_mode": 493
+        },
+        "README.md": {
+          "bytes": 1965,
+          "sha256": "fad3cdac84f1cc6436de577a95e8ed0ac3aecbc484dd44b8f3660ea3bbf57d96",
+          "unix_mode": 420
+        },
+        "MD5": {
+          "bytes": 2037,
+          "sha256": "331404ed16294fe4c125d80efd3bb8e94e6ef7dd60c777f8e919154d964695d9",
+          "unix_mode": 420
+        },
+        "DESCRIPTION": {
+          "bytes": 1092,
+          "sha256": "5cf6155a4350b7872c5033933a75f92a62ba2a3ec2ac328fc8a7ef3d100d3736",
+          "unix_mode": 420
+        },
+        "man/nn2.Rd": {
+          "bytes": 3015,
+          "sha256": "7c0a8b7759d72249df10dcb637ed59acff10f4d7a6d46ab555dab6f4d37fbba6",
+          "unix_mode": 420
+        },
+        "man/RANN-package.Rd": {
+          "bytes": 393,
+          "sha256": "433dbda299e52fdd42657955ca0002c5013d2ab18d8a7820e73d635267d8fd3b",
+          "unix_mode": 420
+        }
+      },
+      "namespace_functions": 1
+    }
+  },
+  "dependency_versions": {
+    "scrattch.hicat": "1.0.9",
+    "RANN": "2.6.1",
+    "Matrix": "1.6.5",
+    "Rcpp": "1.0.11",
+    "RcppEigen": "0.3.4.0.0",
+    "RcppParallel": "5.1.6",
+    "BiocNeighbors": "1.16.0",
+    "beachmat": "2.14.0",
+    "arrow": "12.0.1",
+    "digest": "0.6.36",
+    "ggplot2": "3.5.1",
+    "S4Vectors": "0.36.0"
+  },
+  "selected_R": "4.2.3",
+  "selected_environment_is_author_environment": false,
+  "dependency_profile_note": "Exact locked R4.2.3/Arrow12 dependency environment reused as a project comparison profile; workspace name retains its earlier descriptive label. HICAT and RANN are rebuilt privately from unchanged original source.",
+  "source_or_runtime_for_project_redistribution": false,
+  "source_derived_native_HICAT_port": false,
+  "independent_Java_component": "src/main/java/org/jlinalg/singlecell/DoubletScoreThreshold.java",
+  "independent_Java_scope": "Strict comparison and original-row selection for already supplied scores; factual paper cutoff only.",
+  "new_family_credit": 0,
+  "whole_goal_complete": false
+}
