@@ -91,6 +91,7 @@ final class AnalysisRunner {
     private int pedigreeFileObservationsMatched;
     private int pedigreeAliasesResolved;
     private long unresolvedExactTests;
+    private List<String> adjustmentInputHashes = List.of();
     private org.jlinalg.survival.CoxAdaptiveLikelihood.Result coxLikelihood;
 
     AnalysisRunner(CliOptions options, FormulaPlan plan, RunLog log,
@@ -122,6 +123,8 @@ final class AnalysisRunner {
         info("annotation_rows=" + annotation.size());
 
         boolean genotype = detection.type().equals("gwas");
+        if (options.adjustmentMap != null && (genotype || plan.isCox()))
+            throw new IllegalArgumentException("mapped omics adjustment supports numeric OLS, GLM, LMM and GLMM scans");
         if(!genotype&&(options.minimumHweP>0||options.minimumMissingnessP>0||options.hweSampleFile!=null||options.autosomesOnly||!options.genotypeKind.equals("auto")))throw new IllegalArgumentException("Genotype QC controls require --omics-type gwas");
         List<String> sourceIds;
         VariantSource variantSource = null;
@@ -156,6 +159,8 @@ final class AnalysisRunner {
         GrmContext grm = grm(phenotype, prepared);
         PedigreeContext pedigree = pedigree(phenotype, prepared);
         String model = resolveModel();
+        if (options.adjustmentMap != null && !Set.of("ols", "glm", "lmm", "glmm").contains(model))
+            throw new IllegalArgumentException("mapped omics adjustment requires OLS, GLM, LMM or GLMM");
         if(humanProfile!=null&&(!Set.of("ols","glm").contains(model)||plan.hasRandomEffects()||grm!=null||pedigree!=null))throw new IllegalArgumentException("Registered human ploidy contrasts require independent OLS or GLM; no mixed-model or survival substitution is inferred");
         if(options.explicitBinaryTest&&(!genotype||!model.equals("glm")))throw new IllegalArgumentException("--binary-test requires a genotype GLM");
         if(!options.binaryTest.equals("efficient-score")) {
@@ -223,7 +228,8 @@ final class AnalysisRunner {
         }
         int blockSize = AdaptiveBlockSizer.choose(prepared.ids().size(),
             options.blockSize, options.threads);
-        int associationChunkSize = AdaptiveBlockSizer.chunkSize(blockSize);
+        int associationChunkSize = options.adjustmentMap == null
+            ? AdaptiveBlockSizer.chunkSize(blockSize) : 1;
         int scanWorkerCapacity = AdaptiveBlockSizer.workerCapacity(
             blockSize, associationChunkSize, options.threads);
         resolvedVarianceComponents =
@@ -240,11 +246,22 @@ final class AnalysisRunner {
         info("scan_worker_capacity=" + scanWorkerCapacity);
         info("threads=" + options.threads);
         info("backend=" + options.backend);
+        if (options.adjustmentMap != null) {
+            info("adjustment_map=" + options.adjustmentMap.toAbsolutePath());
+            info("adjustment_sources=" + options.adjustmentOmics);
+            info("adjustment_missingness=per-feature-complete-cases");
+            info("association_response=" + (options.omicsResponse ? "omics" : "phenotype"));
+            output.println("Mapped omics adjustment: exact per-feature refits; response="
+                + (options.omicsResponse ? "omics" : "phenotype") + "; missingness=complete cases");
+        }
         OmicsTransform transform = TransformParser.parse(
             options.transforms, options.transformPlugins);
         if (genotype && !options.transforms.isEmpty())
             throw new IllegalArgumentException(
                 "genotype transforms are not supported in the variant pipeline");
+        // Validate model support even for --dry-run, before opening result files.
+        org.jlinalg.pipeline.ConditionalAssociationFitter adjustedFitter = options.adjustmentMap == null
+            ? null : adjustedFitter(model, fixed, mixed, grm, pedigree);
         if (options.explain || options.dryRun) {
             output.println("omics type: " + detection.type()
                 + " (" + detection.source() + ")");
@@ -258,7 +275,13 @@ final class AnalysisRunner {
                 + " (chunk size=" + associationChunkSize + ")");
             output.println("backend: " + options.backend);
             output.println("output: " + options.output);
-            if (options.dryRun) return 0;
+            if (options.dryRun) {
+                if (options.adjustmentMap != null)
+                    try (var adjustment = MappedOmicsInputs.prepare(options, prepared.ids())) {
+                        info("adjustment_aligned_samples=" + adjustment.sampleIds().size());
+                    }
+                return 0;
+            }
         }
         if (options.resume && Files.exists(Path.of(options.output + ".partial")))
             throw new IllegalArgumentException(
@@ -324,10 +347,14 @@ final class AnalysisRunner {
             }
         }
         Counts counts;
-        try (ConditionalGwasExport summaries=scoreExport;CliResultSink sink = new CliResultSink(options.output,
+        if (options.adjustmentMap != null) adjustmentInputHashes = MappedOmicsInputs.hashes(options);
+        try (var adjustment = options.adjustmentMap == null ? null : MappedOmicsInputs.prepare(options, prepared.ids());
+                ConditionalGwasExport summaries=scoreExport;CliResultSink sink = new CliResultSink(options.output,
                 options.overwrite, genotype, resolvedStatisticType,
-                annotation, genotype ? prepared.caseControlGroups() : null,summaries,genotypeQuality)) {
-            counts = switch (model) {
+                annotation, genotype ? prepared.caseControlGroups() : null,summaries,genotypeQuality, adjustment != null)) {
+            counts = adjustment != null ? Counts.of(org.jlinalg.pipeline.ConditionalOmicsAssociationPipeline.scanTo(
+                numericSource, prepared.ids(), fixed.response(), covariates, adjustment,
+                options.omicsResponse, transform, blockSize, adjustedFitter, engine, sink)) : switch (model) {
                 case "ols" -> scanOls(variantSource, numericSource, genotype,
                     prepared.ids(), fixed, covariates, transform, blockSize,
                     engine, pipeline, sink);
@@ -345,6 +372,12 @@ final class AnalysisRunner {
                 default -> throw new IllegalArgumentException(
                     "omics model is not yet supported: " + model);
             };
+            if (adjustment != null) {
+                if (!adjustmentInputHashes.equals(MappedOmicsInputs.hashes(options)))
+                    throw new IOException("adjustment inputs changed during analysis; output was not finalized");
+                if (counts.tested() == 0)
+                    throw new IllegalArgumentException("all adjusted feature models failed; inspect the .partial output failure_reason column");
+            }
             if(ploidySession!=null)ploidySession.finish();
             sink.finish();
             unresolvedExactTests=sink.unresolvedTests();
@@ -359,6 +392,35 @@ final class AnalysisRunner {
             scanWorkerCapacity, counts);
         return 0;
         } finally {if(ploidySession!=null)ploidySession.close();}
+    }
+
+    private org.jlinalg.pipeline.ConditionalAssociationFitter adjustedFitter(
+            String model, CompiledFormula fixed, CompiledMixedFormula mixed,
+            GrmContext grm, PedigreeContext pedigree) {
+        if (model.equals("ols") || model.equals("glm")) {
+            if (mixed != null || grm != null || pedigree != null)
+                throw new IllegalArgumentException("random effects require an LMM or GLMM for mapped adjustment");
+            if (model.equals("ols") && !options.family.equals("gaussian"))
+                throw new IllegalArgumentException("adjusted OLS requires --family gaussian");
+            return ConditionalOmicsModels.independent(model, family(options.family),
+                fixed.weights(), fixed.offset());
+        }
+        requireRefit("mapped omics " + model);
+        if (mixed != null && !mixed.correlatedRandomEffects().isEmpty())
+            throw new IllegalArgumentException("mapped adjustment currently requires independent random-effect terms");
+        if (model.equals("lmm") && fixed.weights() != null)
+            throw new IllegalArgumentException("weighted mapped LMM is not supported");
+        if (grm != null && pedigree != null)
+            throw new IllegalArgumentException("a pedigree and --grm cannot be combined in one mapped model");
+        RemlOptions reml = RemlOptions.builder()
+            .degreesOfFreedomMethod(dfMethod(options.degreesOfFreedom)).build();
+        if (grm != null)
+            return ConditionalOmicsModels.dense(model, family(options.family),
+                randomComponents(mixed == null ? List.of() : mixed.randomEffects(), fixed.rows(), grm.component()),
+                fixed.weights(), fixed.offset(), reml);
+        SparseRandomStructure structure = sparseStructure(mixed, pedigree);
+        return ConditionalOmicsModels.sparse(model, family(options.family), structure.terms(),
+            structure.precisions(), fixed.weights(), fixed.offset(), reml);
     }
 
     private Counts scanOls(
@@ -935,14 +997,14 @@ final class AnalysisRunner {
         resolvedStatisticType = switch (model) {
             case "glmm", "cox" -> "z";
             case "glm" -> family(options.family).fixedDispersion()
-                ? "z" : options.omics == null ? "t" : "t_approx";
+                ? "z" : options.omics == null || options.adjustmentMap != null ? "t" : "t_approx";
             default -> "t";
         };
         resolvedDfMethod = switch (model) {
             case "glmm", "cox" -> "asymptotic";
             case "glm" -> family(options.family).fixedDispersion()
                 ? "asymptotic"
-                : options.omics == null ? "residual"
+                : options.omics == null || options.adjustmentMap != null ? "residual"
                     : "residual-approximation";
             case "lmm" -> genotype
                 ? "residual-approximation"
@@ -1338,6 +1400,14 @@ final class AnalysisRunner {
             .put("phenotype", options.phenotype.toAbsolutePath())
             .put("omics", options.omics == null ? null
                 : options.omics.toAbsolutePath())
+            .put("adjustment_map", options.adjustmentMap == null ? null : options.adjustmentMap.toAbsolutePath())
+            .putStrings("adjustment_sources", options.adjustmentOmics.entrySet().stream()
+                .map(e -> e.getKey() + "=" + e.getValue().toAbsolutePath()).toList())
+            .putStrings("adjustment_input_sha256", adjustmentInputHashes)
+            .put("adjustment_transforms", options.adjustmentTransforms)
+            .put("adjustment_missingness", options.adjustmentMap == null ? null : "per-feature-complete-cases")
+            .put("adjustment_estimator", options.adjustmentMap == null ? null : "full-model-refit")
+            .put("association_response", options.omicsResponse ? "omics" : "phenotype")
             .put("grm", options.grm == null ? null
                 : options.grm.toAbsolutePath())
             .put("grm_match_column", options.grm == null ? null

@@ -113,6 +113,86 @@ For non-genotype omics, `--variance-components auto` also chooses an exact
 per-feature REML refit. The random-effects pathway is lmer-like, not a
 single-null-model approximation.
 
+### Isoform association adjusted for gene expression, or other omics
+
+Mapped adjustment is available in the source build. Supply each adjustment
+matrix as `--adjust-omics NAME=FILE` and an explicit mapping table. All matrices
+use the feature-by-sample layout above; neither sample order nor feature order
+needs to agree. IDs, including transcript/gene version suffixes, match exactly.
+
+For isoforms adjusted for their own gene, `mapping.tsv` contains:
+
+```text
+feature_id	source	adjustment_id
+ENST000001.2	genes	ENSG000001.5
+ENST000002.1	genes	ENSG000001.5
+ENST000003.4	genes	ENSG000002.7
+```
+
+```powershell
+java -jar omicsmatic-<version>.jar --pheno phenotype.tsv --id sample_id `
+  --omics isoforms.tsv --omics-type expression `
+  --formula "BMI ~ Sex + Age + <omics>" --model ols `
+  --adjust-omics "genes=gene-expression.tsv" --adjust-map mapping.tsv `
+  --out bmi-isoform-gene-adjusted.tsv
+```
+
+Each row fits `BMI ~ Sex + Age + mapped_gene_expression + isoform` and reports
+the isoform coefficient. To fit `isoform ~ BMI + Sex + Age + mapped_gene_expression`
+and report the BMI coefficient, add `--omics-response`; keep the same formula
+template naming BMI on the left. This reverse direction currently requires a
+Gaussian omics response. Continuous expression is never classified as binary
+just because a feature has two observed values.
+
+The same interface works across omics types. For example, add
+`--adjust-omics "proteins=proteins.tsv"` and another mapping row
+`ENST000001.2<TAB>proteins<TAB>PROTEIN_A` to condition that isoform on both its
+gene and the specified protein. Multiple rows for a primary feature mean
+simultaneous adjustment; multiple primary features may share an adjustment
+feature. Sources may also be another level of the same assay, or the same
+matrix with different mapped features. There is no gene-specific naming rule.
+
+`--transform "<omics>=winsor_mad(k=4)"` transforms the primary features;
+`--adjust-transform "genes=log1p() | zscore()"` independently transforms gene
+features. Repeat `--adjust-transform` to append stages to a named source.
+Transformations use the available shared phenotype cohort before per-feature
+complete-case selection. An input already on a log scale needs no extra log.
+
+Adjusted scans use full OLS/GLM fits, REML LMM fits, or Laplace GLMM fits for every
+feature. Existing independent random-effect terms, pedigree, GRM, backend, and
+thread options apply. Relatedness is subset to each model's retained observations;
+variance components are refitted. Cox, genotype scans, correlated random-slope
+blocks, weighted LMM, and resume are not supported on this mapped route.
+
+Missing/nonfinite measurements and samples absent from an adjustment source are
+omitted jointly for that feature's model; they are not mean-imputed. A sample
+absent from an unused source is not removed from that model. Output adds
+`n_samples` and `adjustment_features`, alongside beta, SE, t/z, degrees of freedom,
+p-value and BH FDR. BH uses successful tests within this run. Missing mappings,
+absent adjustment rows, collinearity, insufficient observations, and convergence
+failures produce explicit failed rows. No unadjusted fallback is used. If every
+fit fails, the command returns an error and retains the `.partial` diagnostics
+without publishing a successful result. Duplicate mapping pairs and duplicate
+matrix feature IDs are errors. `--dry-run` validates/stages the adjustment inputs
+and removes its temporary cache, without fitting.
+
+The manifest records source paths, mapping/source SHA-256 hashes, transformations,
+model direction and complete-case policy. Mapped rows are staged in a temporary
+binary file beside the output and removed when the scan closes; numeric data
+in memory comprise a bounded block of primary features and active model arrays,
+alongside the feature-ID/mapping indexes and any shared covariance. Disk use is
+approximately eight bytes per mapped adjustment feature per aligned sample.
+
+These are conditional associations. To compare covariate-only and additionally
+adjusted results, run the original command and the mapped command to separate
+outputs, using identical complete-case participants if the comparison requires
+a common cohort. Inference uses each fitted model's native t/z reference and
+degrees of freedom, rather than the heuristic shared t approximation in `assoc.R`.
+
+See the [runnable synthetic example](../../examples/mapped-omics-association/README.md)
+and the independently generated R `lm`/`glm` references in
+`src/test/resources/mapped-omics`.
+
 ## 3. Common-variant GWAS
 
 Accepted genotype inputs are VCF, BGZF-compressed VCF, BCF, biallelic BGEN

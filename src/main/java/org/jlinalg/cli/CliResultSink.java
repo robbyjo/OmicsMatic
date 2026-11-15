@@ -58,6 +58,9 @@ final class CliResultSink
     private VariantRecord rowVariant;
     private java.util.Map<String,String> rowInference=java.util.Map.of();
     private long unresolvedTests;
+    private final boolean adjustedOmics;
+    private int omicsSamples = -1;
+    private List<String> adjustmentFeatures = List.of();
 
     CliResultSink(
             Path path, boolean overwrite, boolean genotype,
@@ -72,6 +75,13 @@ final class CliResultSink
     }
     CliResultSink(Path path,boolean overwrite,boolean genotype,String statisticType,
             AnnotationLookup annotation,int[] caseControlGroups,ConditionalGwasExport scoreExport,VariantQualityOptions qualityOptions) throws IOException {
+        this(path, overwrite, genotype, statisticType, annotation, caseControlGroups,
+            scoreExport, qualityOptions, false);
+    }
+    CliResultSink(Path path,boolean overwrite,boolean genotype,String statisticType,
+            AnnotationLookup annotation,int[] caseControlGroups,ConditionalGwasExport scoreExport,
+            VariantQualityOptions qualityOptions, boolean adjustedOmics) throws IOException {
+        this.adjustedOmics = adjustedOmics;
         if(!java.util.Arrays.equals(caseControlGroups,qualityOptions.caseControlGroups()))throw new IllegalArgumentException("Output QC and model binary groups must agree");
         this.qualityOptions=qualityOptions;
         this.scoreExport=scoreExport;
@@ -84,6 +94,7 @@ final class CliResultSink
         List<String> header = new ArrayList<>(
             genotype ? GENOTYPE_HEADER : OMICS_HEADER);
         if(genotype)header.addAll(INFERENCE_HEADER);
+        if(adjustedOmics)header.addAll(List.of("n_samples", "adjustment_features"));
         for (String column : annotation.columns())
             header.add("annot_" + column);
         if(scoreExport!=null)header.addAll(ConditionalGwasExport.COLUMNS);
@@ -139,6 +150,8 @@ final class CliResultSink
     @Override
     public void acceptEstimate(OmicsAssociationEstimate estimate)
             throws IOException {
+        omicsSamples = estimate.samples();
+        adjustmentFeatures = estimate.adjustmentFeatures();
         writeOmics("ok", estimate.featureId(), estimate.beta(),
             estimate.standardError(), estimate.statistic(),
             estimate.degreesOfFreedom(), estimate.pValue(), "");
@@ -149,6 +162,9 @@ final class CliResultSink
             throws IOException {
         rowVariant=null;rowStatistics=null;quality=null;
         rowInference=failure.inference();
+        String samples = rowInference.getOrDefault("n_samples", "");
+        omicsSamples = samples.isEmpty() ? -1 : Integer.parseInt(samples);
+        adjustmentFeatures = List.of(rowInference.getOrDefault("adjustment_features", ""));
         if(java.util.Set.of("budget_exceeded","numerical_unavailable").contains(rowInference.getOrDefault("exact_status","")))unresolvedTests++;
         String reason = failureReason(
             failure.exceptionType(), failure.message());
@@ -223,6 +239,10 @@ final class CliResultSink
         addStatistics(fields, beta, standardError, statistic,
             degreesOfFreedom, pValue);
         fields.add(failureReason);
+        if (adjustedOmics) {
+            fields.add(omicsSamples < 0 ? "" : Integer.toString(omicsSamples));
+            fields.add(String.join(";", adjustmentFeatures));
+        }
         fields.addAll(List.of(annotation.values(id)));
         output.write(fields, pValue);
     }

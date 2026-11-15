@@ -673,6 +673,12 @@ public final class JLinAlgCli {
                 Guide: https://robbyjo.github.io/OmicsMatic/vignettes/omics-transforms.html
               --transform-plugin JAR       Trusted Java transform provider
               --omics-type auto|gwas|ewas|expression|proteomics|generic
+              --adjust-omics NAME=FILE      Mapped adjustment matrix; repeat for multiple sources
+              --adjust-map FILE             CSV/TSV: feature_id,source,adjustment_id
+              --adjust-transform NAME=SPEC  Transform one adjustment source; repeat for stages
+              --omics-response              Fit omics ~ phenotype + covariates + mapped features
+                                            Formula still names phenotype on the left; Gaussian only
+                                            Adjusted scans refit OLS/GLM/LMM/GLMM on complete cases
               --annot FILE --annot-id COLUMN --annot-cols c1,c2,...
               --case-value VALUE --control-value VALUE
               Phenotype rows missing any model variable are omitted.

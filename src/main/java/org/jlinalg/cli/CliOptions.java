@@ -13,6 +13,10 @@ import org.jlinalg.compute.BackendPolicy;
 /** Parsed command-line configuration with deliberately dependency-free syntax. */
 final class CliOptions {
     Path omics;
+    Path adjustmentMap;
+    final java.util.Map<String, Path> adjustmentOmics = new java.util.LinkedHashMap<>();
+    final java.util.Map<String, List<String>> adjustmentTransforms = new java.util.LinkedHashMap<>();
+    boolean omicsResponse;
     Path phenotype;
     Path output;
     Path log;
@@ -110,6 +114,17 @@ final class CliOptions {
                 case "--overwrite" -> result.overwrite = true;
                 case "--no-log" -> result.noLog = true;
                 case "--omics" -> result.omics = path(value(arguments, ++index, option));
+                case "--adjust-omics" -> {
+                    String[] pair = namedValue(value(arguments, ++index, option), option);
+                    if (result.adjustmentOmics.putIfAbsent(pair[0], path(pair[1])) != null)
+                        throw new IllegalArgumentException("duplicate adjustment source: " + pair[0]);
+                }
+                case "--adjust-map" -> result.adjustmentMap = path(value(arguments, ++index, option));
+                case "--adjust-transform" -> {
+                    String[] pair = namedValue(value(arguments, ++index, option), option);
+                    result.adjustmentTransforms.computeIfAbsent(pair[0], ignored -> new ArrayList<>()).add(pair[1]);
+                }
+                case "--omics-response" -> result.omicsResponse = true;
                 case "--pheno" -> result.phenotype = path(value(arguments, ++index, option));
                 case "--out" -> result.output = path(value(arguments, ++index, option));
                 case "--log" -> result.log = path(value(arguments, ++index, option));
@@ -205,6 +220,17 @@ final class CliOptions {
     }
 
     void validateForRun() {
+        if (adjustmentMap != null || !adjustmentOmics.isEmpty()
+                || !adjustmentTransforms.isEmpty() || omicsResponse) {
+            if (omics == null || adjustmentMap == null || adjustmentOmics.isEmpty())
+                throw new IllegalArgumentException("mapped adjustment requires --omics, --adjust-omics NAME=FILE and --adjust-map FILE");
+            if (!adjustmentOmics.keySet().containsAll(adjustmentTransforms.keySet()))
+                throw new IllegalArgumentException("--adjust-transform names an unknown adjustment source");
+            if (omicsResponse && (!family.equals("gaussian") || caseValue != null || controlValue != null))
+                throw new IllegalArgumentException("--omics-response currently requires Gaussian omics and no case/control recoding");
+            if (resume)
+                throw new IllegalArgumentException("mapped adjustment does not support --resume; use a new --out");
+        }
         if (phenotype == null || idColumn == null || formula == null
                 || output == null)
             throw new IllegalArgumentException(
@@ -280,6 +306,14 @@ final class CliOptions {
                 "--family " + family + " uses the fixed " + canonical
                     + " link; noncanonical --link overrides are not available"
                     + " in this CLI");
+    }
+
+    private static String[] namedValue(String value, String option) {
+        int separator = value.indexOf('=');
+        if (separator < 1 || separator == value.length() - 1
+                || !value.substring(0, separator).matches("[A-Za-z][A-Za-z0-9_-]*"))
+            throw new IllegalArgumentException(option + " requires NAME=VALUE");
+        return new String[] {value.substring(0, separator), value.substring(separator + 1)};
     }
 
     Path logPath() {

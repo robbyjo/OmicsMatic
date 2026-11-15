@@ -92,6 +92,32 @@ Any other model can participate by implementing the small `AssociationFitter`
 contract and returning `AssociationStatistics`. A fitter must be thread-safe
 and must not mutate or retain the supplied response and design work arrays.
 
+## Mapped covariates across omics or measurement levels
+
+`MappedOmicsAdjustment` stages explicitly mapped feature rows from any number
+of numeric sources in a temporary disk cache, aligning by sample ID. The
+`ConditionalOmicsAssociationPipeline.scanTo` API fits a full model per primary
+feature, with all its mapped covariates. One-to-one, many-to-one and many-to-many
+mappings are supported without special-casing genes or transcripts.
+
+The model is `phenotype ~ fixed + mapped_features + primary_feature`; setting
+`omicsResponse=true` exchanges phenotype and primary feature. The last design
+column is the tested coefficient. The supplied fixed design includes any
+intercept and excludes the tested phenotype/feature. The pipeline jointly omits
+nonfinite observations and passes their original row indices to a thread-safe
+`ConditionalAssociationFitter`. This lets callers subset weights, offsets,
+random-effect designs and both axes of covariance matrices consistently.
+No missing-value imputation occurs, regardless of the ordinary engine's
+predictor-imputation setting. Row transformations run before model-specific
+complete-case selection and should be deterministic and thread-safe.
+
+Results include the model's sample count and source-qualified adjustment IDs.
+Unmapped or non-estimable rows use the configured failure policy. I/O errors
+abort the scan. The CLI exposes this through `--adjust-omics`, `--adjust-map`,
+`--adjust-transform` and `--omics-response`, with full OLS/GLM/REML/Laplace fits.
+See the [association tutorial](vignettes/cli-association-tutorial.md#isoform-association-adjusted-for-gene-expression-or-other-omics)
+for mapping format, model restrictions and inference details.
+
 ## Prepared-null GLM score scan
 
 `FastGlmAssociation` fits the shared-covariate null GLM once and caches the
