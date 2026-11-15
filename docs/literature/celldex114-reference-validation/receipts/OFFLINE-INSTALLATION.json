@@ -1,0 +1,66 @@
+{
+  "status": "PASS_INSTALLED_ORIGINAL_CELLDEX114_NOT_REFERENCE_ANALYSIS",
+  "provider": "/opt/omicsmatic-celldex-public-offline-install-20261115-1-provider",
+  "source_archives": {
+    "GenomeInfoDbData": {
+      "bytes": 12924272,
+      "sha256": "51a33c432e65261ef81a7c2039b17cbdf7a0b417376fdb7ada4d618566f7074e"
+    },
+    "celldex": {
+      "bytes": 412271,
+      "sha256": "46723b3799792f550b2f74cb161a19f581b042080e9dd9455906a82c0cb4b094"
+    }
+  },
+  "calls": [
+    {
+      "command": [
+        "/mnt/d/projects/JLinAlg/build/literature-review/saige-runtime/pixi-bootstrap-1/pixi",
+        "install",
+        "--locked",
+        "--manifest-path",
+        "/opt/omicsmatic-celldex-public-offline-install-20261115-1/runtime/pixi.toml",
+        "--offline"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "/opt/omicsmatic-celldex-public-offline-install-20261115-1/runtime/.pixi/envs/default/bin/R",
+        "CMD",
+        "INSTALL",
+        "--no-multiarch",
+        "--library=/opt/omicsmatic-celldex-public-offline-install-20261115-1/library",
+        "/opt/omicsmatic-celldex-public-offline-install-20261115-1/build-original/GenomeInfoDbData"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "/opt/omicsmatic-celldex-public-offline-install-20261115-1/runtime/.pixi/envs/default/bin/R",
+        "CMD",
+        "INSTALL",
+        "--no-multiarch",
+        "--library=/opt/omicsmatic-celldex-public-offline-install-20261115-1/library",
+        "/opt/omicsmatic-celldex-public-offline-install-20261115-1/build-original/celldex"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "/usr/bin/python3",
+        "-B",
+        "/mnt/d/projects/JLinAlg/build/singler-check-1/tools/literature/celldex114/adopt_runtime.py",
+        "--workspace",
+        "/opt/omicsmatic-celldex-public-offline-install-20261115-1",
+        "--out",
+        "/opt/omicsmatic-celldex-public-offline-install-20261115-1-provider",
+        "--source",
+        "GenomeInfoDbData=/opt/omicsmatic-celldex-public-offline-install-20261115-1/source-original/GenomeInfoDbData",
+        "--source",
+        "celldex=/opt/omicsmatic-celldex-public-offline-install-20261115-1/source-original/celldex"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "new_family_credit": 0
+}

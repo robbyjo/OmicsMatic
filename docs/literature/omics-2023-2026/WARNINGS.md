@@ -1,4 +1,23 @@
 
+## celldex 1.14.0: warnings and required actions
+
+**250 papers, 441 named software families, 2,682 observations and 1,187 reviewed uses; 1,495 uses await review.** The fixed 2023-10-23 through 2026-10-23 cohort remains 71 Nature, 104 Nature Genetics and 75 AJHG papers. Paper identities, reported versions and primary settings remain unchanged. Only the existing P051 celldex implementation coverage note changes. The full semantic review and implementation goal remains open.
+
+**119 scoped new integrations: 20 native Java subsets and 99 original upstream workflows; 122 including three existing adapters. 263 named families remain missing.** celldex adds one upstream family credit and no native credit. SPOTlight and the BD Rhapsody analysis pipeline remain separate missing families. ImmGen is a biological reference, and Celldex Therapeutics is a company, not another software use.
+
+P051 reports celldex 1.14.0 and literally describes MouseRNAseq ImmGen reference profiles. Exact functions, snapshots, gene-ID options and the author environment are not established; the human-neutrophil heading and reference wording are retained. The source-built 1.14.0 target uses explicit R4.4.3/Bioconductor3.20 comparison dependencies, selected by the project. Reference retrieval, SingleR annotation and SPOTlight deconvolution are separate operations.
+
+**Offline Hub retrieval needs explicit original LOCAL caller options and a complete cache.** Legacy/ontology and Ensembl paths can contact Hub services even with cached files under their unchanged defaults. Record ExperimentHub and AnnotationHub LOCAL=TRUE in the trusted request when local-only retrieval is intended. The adapter never silently changes those defaults. Original Ensembl conversion can warn and remove unmapped or duplicate mapped genes; read every original warning. Keep lazy-reference backing files at their recorded paths, or explicitly request the original realization option before calling the function.
+
+**SKIP3 skips dependent retrieval** for a named missing or forbidden exact runtime, source, reference, installation, network-isolation or download requirement. Supply that permitted requirement and retry NEW paths. Runtime installation needs --allow-install; reference downloads separately need --allow-download. **FAIL2 admits no complete result**, including original errors, native crashes and recording failures after an original return. Read WARNINGS.md, FAILURE.json, original/R-status.json, complete conditions/RNG and both raw consoles. Resolve the stated input/filesystem cause, preserve all originals/partials and retry NEW paths. Only final COMPLETED.json admits the public operation; a leftover RDS or successful R exit is insufficient.
+
+Sixteen comparisons with explicit LOCAL options produced 12 complete returns and four original errors; complete objects, conditions/RNG and independently materialized lazy assays matched. Earlier default-offline runs had seven returns and nine original errors, including five Hub failures, all retained without results. Twelve actual Linux public guards, two Windows prerequisite skips, both installer branches and both installed-runtime analyses passed. The fresh-download installed analysis started with an empty cache. These checks establish no whole-tool validity, biological accuracy or paper reproduction.
+
+**Complete reference-data records remain local and unchanged.** Public source/receipt checks differ from full private-record readback and fresh computation. The complete private index identifies 4,469 retained files; no reference matrix is redistributed or assigned the software's license. Use the documented permitted inputs/runtime to repeat the controls. P233's SingleR 2.41 remains unresolved and skipped; Cell Ranger/ARC remain excluded by user request. Earlier source, license and runtime restrictions remain in their guides and historical notices.
+
+<details><summary>Previous warnings (historical)</summary>
+
+
 ## SingleR: warnings and required actions
 
 **250 papers, 441 named software families, 2,682 observations and 1,187 reviewed uses; 1,495 uses await review.** The fixed 2023-10-23 through 2026-10-23 cohort remains 71 Nature, 104 Nature Genetics and 75 AJHG papers. The full semantic review and implementation goal remains open.
@@ -1278,6 +1297,8 @@ output path. Disconnected infinite pseudotime values remain present. LEARN
 does not admit a pseudotime result. Do not infer roots or repair values to
 conceal failures. Full Batchelor, study reproduction and biological accuracy
 remain unproven; the250-paper goal remains active.
+
+</details>
 
 </details>
 

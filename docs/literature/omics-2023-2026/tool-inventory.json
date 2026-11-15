@@ -11767,17 +11767,48 @@
     "name": "celldex",
     "pattern": "(?<![A-Za-z0-9_])celldex(?![A-Za-z0-9_]|\\s+Therapeutics)",
     "role": "Retrieve reference expression profiles and cell labels",
-    "current_coverage": "missing",
-    "existing_source": null,
-    "coverage_note": "Separate reference-data retrieval software; SingleR does not implement celldex. Exact permitted source, historical data snapshots and runtime require separate integration.",
+    "current_coverage": "upstream-adapter-validated",
+    "existing_source": "tools/literature/celldex114/run.py",
+    "coverage_note": "Original celldex1.14.0 reference retrieval with dated/legacy backends, explicit local Hub options, complete original objects and source failures retained.",
     "paper_count": 1,
     "papers": [
       "P051"
     ],
-    "implementation_status": "missing",
-    "implementation_source": null,
-    "implementation_scope": "Separate reference-data retrieval software; SingleR does not implement celldex. Exact permitted source, historical data snapshots and runtime require separate integration.",
-    "validation_note": "Source-reviewed use only; no runtime analysis or implementation credit."
+    "implementation_status": "upstream-adapter-validated",
+    "implementation_source": "tools/literature/celldex114/run.py",
+    "implementation_scope": "Project availability: complete unchanged original celldex1.14.0 reference retrieval through a source-built R package and explicit managed cache. Project-selected ImmGenData, MouseRNAseqData, dated fetchReference/fetchMetadata and query controls retain full returns, labels, IDs, conditions, RNG and lazy backing files. Legacy, ontology and Ensembl modes use original semantics; mapping warnings and original gene removal are retained. Cached Hub operations require explicit original LOCAL caller options for offline success; unchanged defaults can still contact the service and fail offline. Reference networking and runtime installation have separate permission flags; no source, identifier, warning-policy or version fallback is added. The literal MouseRNAseq ImmGen wording, human-neutrophil heading and unknown exact author functions/snapshots/options/environment remain unchanged. Original biological reference records remain complete and private; software licensing does not relicense the underlying datasets. SKIP3 skips dependent retrieval for missing/forbidden requirements; FAIL2 admits no complete result, including recording failure. SingleR annotation and SPOTlight deconvolution are separate. Whole-tool validity and paper reproduction remain unqualified.",
+    "validation_note": "16 explicit-LOCAL controls:12complete returns/4original errors; whole objects/conditions/RNG and lazy payloads.12Linux public guards,2Windows prerequisite skips,both actual installers and installed-runtime analyses.4469private files fully read back; reference matrices not redistributed. Whole-tool/paper reproduction unqualified.",
+    "project_adapter_available": true,
+    "canonical_adapter_available": false,
+    "root_dispatch_available": false,
+    "development_candidate_available": true,
+    "development_candidate": "tools/literature/celldex114/run.py",
+    "development_candidate_sha256": "6c3a163082521f4b92e798ce49b48caf788cec74ee64519c1baf8ec256d4356a",
+    "development_candidate_kind": "python-source-entrypoint-original-Linux-WSL-reference-retrieval",
+    "development_build": "tools/literature/celldex114/install_runtime.py",
+    "development_adapter_cli": "python3 tools/literature/celldex114/run.py --runtime /permitted/provider --request /trusted/request.rds --reference-cache /complete/cache --out /NEW/output",
+    "selected_upstream_versions": [
+      "1.14.0"
+    ],
+    "selected_R_versions": [
+      "4.4.3"
+    ],
+    "selected_environment_is_author_environment": false,
+    "author_reference_functions_established": false,
+    "author_reference_snapshots_established": false,
+    "author_caller_options_established": false,
+    "workflow_validation": "../celldex114-reference-validation/QUALIFICATION.json",
+    "current_documentation": "docs/literature/CELLDEX114_CATALOG_INTEGRATION.md",
+    "paper_role_coverage": {
+      "P051": "Retrieved reference profiles for SingleR annotation, described literally as MouseRNAseq ImmGen databases via celldex 1.14.0 in the PDAC/MI analysis. The human-neutrophil subsection and reference wording remain unchanged; exact reference functions and snapshots are not established. Project availability: complete unchanged original celldex1.14.0 reference retrieval through a source-built R package and explicit managed cache. Project-selected ImmGenData, MouseRNAseqData, dated fetchReference/fetchMetadata and query controls retain full returns, labels, IDs, conditions, RNG and lazy backing files. Legacy, ontology and Ensembl modes use original semantics; mapping warnings and original gene removal are retained. Cached Hub operations require explicit original LOCAL caller options for offline success; unchanged defaults can still contact the service and fail offline. Reference networking and runtime installation have separate permission flags; no source, identifier, warning-policy or version fallback is added. The literal MouseRNAseq ImmGen wording, human-neutrophil heading and unknown exact author functions/snapshots/options/environment remain unchanged. Original biological reference records remain complete and private; software licensing does not relicense the underlying datasets. SKIP3 skips dependent retrieval for missing/forbidden requirements; FAIL2 admits no complete result, including recording failure. SingleR annotation and SPOTlight deconvolution are separate. Whole-tool validity and paper reproduction remain unqualified."
+    },
+    "source_roles_reviewed": 1,
+    "reference_data_redistribution_license_established": false,
+    "reference_matrices_redistributed": false,
+    "new_scoped_integration_credit": 1,
+    "native_family_credit_added": 0,
+    "whole_tool_qualified": false,
+    "whole_paper_reproduced": false
   },
   {
     "id": "spotlight",
