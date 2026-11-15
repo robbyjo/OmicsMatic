@@ -1,0 +1,39 @@
+{
+  "schema": 1,
+  "profile": "original-idep244-r461-windows",
+  "operation": "counts-differential-expression",
+  "expression": "counts.csv",
+  "design": null,
+  "load": {"max_group_name_length": 30},
+  "mapping": {"mode": "disabled", "multiple_map": "max_sd"},
+  "preprocess": {
+    "missing_value": "geneMedian",
+    "min_counts": 0.5,
+    "n_min_samples_count": 1,
+    "counts_transform": 1,
+    "counts_log_start": 4
+  },
+  "analysis": {
+    "fdr": 0.05,
+    "min_fold_change": 2,
+    "comparisons": null,
+    "factors": null,
+    "interactions": null,
+    "block_factors": null,
+    "reference_levels": null,
+    "threshold_wald_test": false,
+    "independent_filtering": true
+  },
+  "rng": {
+    "kind": ["Mersenne-Twister", "Inversion", "Rejection"],
+    "seed": 24405
+  },
+  "locale": "English_United States.utf8",
+  "limits": {
+    "input_bytes": 134217728,
+    "bundle_bytes": 268435456,
+    "files": 20000,
+    "wall_seconds": 180,
+    "vector_heap_mib": 4096
+  }
+}
