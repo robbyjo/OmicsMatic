@@ -54,12 +54,23 @@ def load(path):
     return json.loads(Path(path).read_bytes(), object_pairs_hook=unique)
 
 
+def walk_error(error):
+    """Never silently omit an unreadable subtree from a complete inventory."""
+    raise error
+
+
+def live_walk_error(error):
+    """A running original child can remove a temporary directory during a scan."""
+    if not isinstance(error, FileNotFoundError):
+        raise error
+
+
 def inventory(root, links=True):
     root = Path(root)
     if not root.is_dir() or root.is_symlink():
         raise Unavailable('Required regular directory missing: ' + str(root))
     values = {}
-    for parent, dirs, files in os.walk(root, followlinks=False):
+    for parent, dirs, files in os.walk(root, followlinks=False, onerror=walk_error):
         for name in sorted(dirs + files):
             path = Path(parent) / name
             info = path.lstat()
@@ -100,7 +111,8 @@ def environment(ready, out):
                  PYTHONDONTWRITEBYTECODE='1', CONDA_NO_PLUGINS='true', CONDA_SOLVER='classic',
                  OMP_NUM_THREADS='1', OPENBLAS_NUM_THREADS='1', MKL_NUM_THREADS='1',
                  VECLIB_MAXIMUM_THREADS='1', BLIS_NUM_THREADS='1')
-    value.pop('R_HOME', None)
+    for key in ['R_HOME', 'R_LIBS', 'PYTHONPATH', 'PYTHONHOME']:
+        value.pop(key, None)
     return value
 
 

@@ -4,7 +4,7 @@
 from pathlib import Path
 import argparse, os, shutil, signal, subprocess, sys, time, traceback
 sys.dont_write_bytecode = True
-from Runtime import HERE, ACTION, Unavailable, pin, save, load, check, inventory, environment
+from Runtime import HERE, ACTION, Unavailable, pin, save, load, check, inventory, environment, walk_error, live_walk_error
 
 
 def main():
@@ -23,9 +23,9 @@ def main():
     code = 2
     label = 'FAIL2_UNADMITTED'
 
-    def capacity():
+    def capacity(live=False):
         count = total = 0
-        for parent, dirs, files in os.walk(out, followlinks=False):
+        for parent, dirs, files in os.walk(out, followlinks=False, onerror=live_walk_error if live else walk_error):
             for name in files:
                 try:
                     size = (Path(parent) / name).lstat().st_size
@@ -102,7 +102,7 @@ def main():
                     result = child.wait(timeout=2)
                     break
                 except subprocess.TimeoutExpired:
-                    capacity()
+                    capacity(live=True)
                     if time.monotonic() - start > args.wall_seconds:
                         raise ValueError('Declared original-analysis time capacity exceeded; retry NEW paths with adequate capacity')
         save(out / 'PROCESS.json', dict(command=command, exit_code=result, elapsed_seconds=time.monotonic() - start))

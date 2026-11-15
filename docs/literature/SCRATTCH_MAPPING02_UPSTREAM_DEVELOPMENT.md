@@ -1,12 +1,15 @@
 # scrattch.mapping 0.2 prepared-template workflow development
 
 **Development interface. The mapping family remains missing in the catalog and
-adds zero family credits. A supported public installer and final integration
-qualification are still pending.** The independent native Java normalization
+adds zero family credits. Catalog integration qualification remains pending.**
+The prepared-template workflow has passed eleven fresh original-code controls
+for strict returned values/RNG and complete saved conditions. A public installer
+has completed both permitted-download
+and cache-only setup; see the [installation guide](SCRATTCH_MAPPING02_RUNTIME_INSTALLATION.md).
+The independent native Java normalization
 component is documented in [its own guide](SCRATTCH_MAPPING02_NATIVE_COMPONENTS.md).
 
-**Ten of eleven strict original-code comparisons match; the full workflow gate
-has not passed.** Seven controls match complete returns and three match original
+**The earlier live-reference identity gate remains failed.** Seven controls match complete returns and three match original
 failures, including every analysis condition object and RNG state. The remaining
 empty-query error contains an R error-handler closure whose environment holds a
 process-specific `externalptr`. Strict identity fails between two independent
@@ -14,6 +17,10 @@ original-code calls as well as between the original and adapter. Both calls fail
 without a result; their error class, message and handler function body match.
 The complete objects and failed strict comparison are retained. No diagnostic
 field is discarded or promoted into a passing identity comparison.
+The separate saved-workflow comparison covers all eleven controls, including
+the complete persisted empty-query error. Four original failures admit no
+scientific return; all seven returned objects retain their source values and
+warnings. This qualification concerns the prepared-template mapping path.
 
 `tools/literature/scrattchmapping02/run.py` calls the unchanged original
 `run_mapping_on_taxonomy` function using a caller's complete prepared taxonomy,
@@ -50,9 +57,8 @@ two environments. They differ from `native-reference-pixi.*`, which belongs
 only to the independent native normalization controls. Do not exchange them.
 The full source dependencies include an archived R anndata 0.7.5.6 wrapper and
 original annotation data packages; merely installing the Pixi lock is
-insufficient. Until the public installer is qualified, developers must supply
-an already installed complete profile to the auditor below. Analysis installs
-and downloads nothing.
+insufficient. Use the public installer or supply an already installed complete
+profile to the auditor below. Analysis installs and downloads nothing.
 
 The original scrattch.io and scrattch.vis dependency licenses restrict commercial
 redistribution. Keep their installed runtime private and separate from project
@@ -165,9 +171,26 @@ biological validity; review the complete conditions and data before using it.
 Do not rename cells, impute markers, suppress warnings or replace nonfinite
 values to obtain a passing adapter run.
 
-The full-object comparison requires strict R `identical`: numeric bits,
+The original live-reference comparison uses strict R `identical`: numeric bits,
 NA/NaN representations, field and attribute order, the entire return, RNG state,
-and every analysis condition object. Reference calls run in fresh R processes;
+and every analysis condition object. Its failed empty-query comparison remains
+retained. The saved-workflow comparator preserves strict identity for all returned
+values and RNG states. Complete conditions first use strict R identity; if that
+differs, their complete native-R version-3 serialized representations must be
+byte-identical. No original condition field is selected out, converted or deleted.
+This verifies the information retained in RDS, including complete calls, classes,
+attributes and serialized closure environments. RDS does not retain a live C
+error-handler pointer address or recreate its execution context. That identity
+is not claimed. Raw compressed RDS file identity is also not claimed.
+
+The original-repeat control demonstrates the same empty-query live-reference
+difference and identical complete saved errors. The actual-comparator rejection
+script exercises altered numeric values, field order, RNG, NA versus NaN and error
+fields. Exact serialization alone can also distinguish storage-sharing details
+of R objects that strict R `identical` regards as equal; a strict equal condition
+already passes the complete-object comparison.
+
+Reference calls run in fresh R processes;
 preparing indexes in the same session changes package-startup diagnostics.
 Earlier failed reference comparisons and original runtime failures remain in
 the retained development history. The independent native component's historical
