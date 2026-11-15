@@ -50,6 +50,21 @@ GENE_B,2.0,2.4,2.2,NA</code></pre>
   --transform "&lt;omics&gt; = winsor_mad(k=4)" --out bmi-expression-reml.csv</code></pre></div>
 <p>For non-genotype omics, <code>--variance-components auto</code> also selects an exact per-feature lmer-like REML refit.</p>
 
+<h3 id="mapped-adjustment">Isoforms adjusted for genes, or cross-omics adjustment</h3>
+<p>The source build supports feature-specific adjustment through named matrices and an explicit mapping. Every matrix is feature-by-sample; sample and feature order may differ. IDs, including version suffixes, match exactly.</p>
+<pre><code>feature_id	source	adjustment_id
+ENST000001.2	genes	ENSG000001.5
+ENST000002.1	genes	ENSG000001.5</code></pre>
+<pre><code>java -jar omicsmatic-&lt;version&gt;.jar --pheno phenotype.tsv --id sample_id &#92;
+  --omics isoforms.tsv --omics-type expression &#92;
+  --formula "BMI ~ Sex + Age + &lt;omics&gt;" --model ols &#92;
+  --adjust-omics "genes=gene-expression.tsv" --adjust-map mapping.tsv &#92;
+  --out bmi-isoform-gene-adjusted.tsv</code></pre>
+<p>Each test fits <code>BMI ~ Sex + Age + mapped_gene + isoform</code>. Add <code>--omics-response</code> to fit <code>isoform ~ BMI + Sex + Age + mapped_gene</code> and test BMI; keep the same formula template. This reverse direction requires Gaussian omics. Add more named <code>--adjust-omics NAME=FILE</code> matrices and mapping rows to adjust for multiple genes, proteins, methylation features, or another measurement level simultaneously. A source may be the same matrix with different mapped features.</p>
+<p>Primary transformations use <code>--transform "&lt;omics&gt;=winsor_mad(k=4)"</code>. Independent source transformations use <code>--adjust-transform "genes=log1p() | zscore()"</code>; repeat to append stages. Transformations run in the shared phenotype cohort before per-feature complete-case selection.</p>
+<p>Adjusted OLS, GLM, REML LMM, and Laplace GLMM models are refitted per feature. Independent random effects, pedigree, and GRM follow each feature's retained sample mask. Missing/nonfinite measurements and absent samples are omitted for the affected model. Output adds <code>n_samples</code> and <code>adjustment_features</code>; native model t/z inference and BH FDR use successful fits. Missing mappings, absent adjustment rows, collinearity, insufficient samples and convergence failures remain explicit failed rows. An entirely failed scan retains <code>.partial</code> diagnostics and returns an error. Duplicate mapping pairs and feature IDs are rejected.</p>
+<p>Cox, genotype scans, correlated random-slope blocks, weighted LMM, and resume are not supported on this route. The manifest records adjustment paths, SHA-256 hashes, transformations, direction and missingness policy. Mapped rows use a temporary disk cache removed on close. To compare covariate-only and adjusted estimates, run separate outputs on identical participants when a common cohort is required.</p>
+
 <h2 id="common-gwas">3. Common-variant GWAS</h2>
 <p>Accepted inputs are VCF, VCF.gz, BCF, biallelic BGEN layout 2, and additive-dosage CSV/TSV. VCF/BCF prefers FORMAT/DS and falls back to GT; multiallelic VCF records produce one row per ALT. BGEN supports layout-2 zlib, zstd, or uncompressed blocks but rejects multiallelic records; add <code>--sample-file</code> when IDs are external.</p>
 <pre><code>id,chromosome,position,ref,alt,S001,S002,S003,S004

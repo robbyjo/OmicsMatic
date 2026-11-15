@@ -28,6 +28,8 @@ final class PipelinePaths {
             options.annotation, options.pedigree, options.grm, options.bgenSamples,options.hweSampleFile,options.ploidySamples));
         inputs.removeIf(java.util.Objects::isNull);
         inputs.addAll(options.transformPlugins);
+        inputs.addAll(options.adjustmentOmics.values());
+        if (options.adjustmentMap != null) inputs.add(options.adjustmentMap);
         if (options.grm != null) {
             String value = options.grm.toString();
             String lower = value.toLowerCase(java.util.Locale.ROOT);
