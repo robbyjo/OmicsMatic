@@ -1,6 +1,27 @@
 # 250-paper omics and GWAS toolbox catalog
 
 
+## SingleR: warnings and required actions
+
+**250 papers, 441 named software families, 2,682 observations and 1,187 reviewed uses; 1,495 uses await review.** The fixed 2023-10-23 through 2026-10-23 cohort remains 71 Nature, 104 Nature Genetics and 75 AJHG papers. The full semantic review and implementation goal remains open.
+
+**118 scoped new integrations: 20 native Java subsets and 98 original upstream workflows; 121 including three existing adapters. 264 named families remain missing.** SingleR adds one upstream family across five explicitly selected releases. Four existing paper uses receive source-specific readings. Three newly identified P051 families, celldex, SPOTlight and the BD Rhapsody analysis pipeline, remain missing and receive no implementation credit. Similar company names, an ordinary verb, instrument-only descriptions and ImmGen biological references add no software credit.
+
+**P233 literally reports SingleR 2.41; its identity is unresolved.** Requesting 2.41 produces SKIP3 and skips dependent analysis. Obtain original source/version clarification; do not normalize it to 2.4.1 or substitute another release. Elsewhere the papers report different SingleR releases and references for different analyses. Use each source-specific reading; do not borrow settings across contexts. Project comparison environments are not recovered author environments.
+
+**SKIP3 skips dependent analysis** for missing or forbidden exact software, reference inputs, Linux execution, installation or downloads. Read the named requirement, supply that permitted requirement and retry NEW paths. The installer requires explicit permission flags; analysis installs and downloads nothing. Supply original query/reference objects, labels and intended caller settings. A skip is not an annotation or empty biological result.
+
+**FAIL2 admits no complete result**, including original source errors, native crashes and recording failure after an original return. Preserve originals and partials. Read WARNINGS.md, FAILURE.json, original R-status.json and all raw consoles. Resolve the stated input/filesystem cause and retry NEW paths. Only a final public-runner COMPLETED.json admits the recorded analysis; a leftover RDS or successful R exit is insufficient. Original warnings, IDs, NA/NaN/Inf, conditions and RNG remain intact.
+
+The qualified synthetic comparisons include 250 original controls: 232 complete returns and 18 original errors. Original errors remain errors, including unsupported arguments, label/gene mismatches and the tested custom-assay failure. Read the release-specific warning table before analysis. The first 1.2.4 dependency binary crashed even on finite row medians and remains unqualified; the selected profile rebuilds the same unchanged dependency release. Saved training pointers are records, not reusable live indexes. Whole-tool validity, biological accuracy and paper reproduction remain unqualified. The integration guide gives commands, tested scope, complete records and recovery steps. Cell Ranger/ARC remain excluded by user request; earlier source/license/runtime restrictions remain in their guides and historical notices.
+
+Read [SingleR commands, source roles and recovery](../SINGLER_CATALOG_INTEGRATION.md). Current cumulative entry point: `python tools/literature/singler_catalog/catalog.py --verify` with a NEW output path. Fresh scientific replay is documented separately. The full goal remains open.
+
+<details><summary>Previous checkpoints (historical)</summary>
+
+# 250-paper omics and GWAS toolbox catalog
+
+
 ## HICAT 1.0.9: warnings and required actions
 
 **250 papers, 438 named families, 2,679 observations and 1,180 individually reviewed uses; 1,499 uses await review.** The fixed 2023-10-23 through 2026-10-23 cohort remains 71 Nature, 104 Nature Genetics and 75 AJHG papers. All paper identities, reported editions, primary settings, source anchors and uncertainties are unchanged. Only one existing P059 HICAT implementation coverage note changes, in its observation and review. The later HICAT predecessor mentions do not establish additional current HICAT analyses.
@@ -1720,6 +1741,8 @@ Three source-reviewed tool additions retain separate provenance: MALT and HOPS h
 These additions improve the catalog and add no whole-tool or biological credit. The source-tested MALT 0.4.1 development controller does not fulfill the separate 0.5.2 role. Complete HOPS and MaltExtract operations remain unfinished; their unreported versions, settings and resource choices remain unknown. See `MALT_ALIGNMENT.md` and `MALT_HOPS_PAPER_ROLES.md`.
 
 **Required action:** match the declared source version and operation, qualify a permitted runtime, provide the complete dated reference/mapping and query populations, and retain original warnings and failures. If any prerequisite is unavailable or cannot be installed, skip its dependent analysis. A small software-control index does not reproduce the historical 91-spirochete or 7,508-genome bacterial analyses. Insufficient-read candidates remain unassessable.
+
+</details>
 
 </details>
 

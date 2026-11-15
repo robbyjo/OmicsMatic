@@ -5768,9 +5768,9 @@
     "name": "SingleR",
     "pattern": "(?<![A-Za-z0-9_])(?:SingleR)(?![A-Za-z0-9_])",
     "role": "Reference-based cell annotation",
-    "current_coverage": "missing",
-    "existing_source": null,
-    "coverage_note": "No equivalent workflow identified in the current source inventory.",
+    "current_coverage": "upstream-adapter-validated",
+    "existing_source": "tools/literature/singler_workflows/run.py",
+    "coverage_note": "Complete original annotation in five explicit source releases; literal 2.41 unresolved; source-specific references and original errors retained.",
     "paper_count": 4,
     "papers": [
       "P051",
@@ -5778,10 +5778,55 @@
       "P192",
       "P233"
     ],
-    "implementation_status": "missing",
-    "implementation_source": null,
-    "implementation_scope": "No equivalent workflow identified in the current source inventory.",
-    "validation_note": "Existing overlap/adapters require paper-specific option checks; missing integrations remain pending."
+    "implementation_status": "upstream-adapter-validated",
+    "implementation_source": "tools/literature/singler_workflows/run.py",
+    "implementation_scope": "Project availability: complete unchanged original SingleR annotation in explicitly selected 1.2.4, 1.8.1, 2.2.0, 2.6.0 and 2.8.0 source profiles, with complete returns, conditions and RNG. The runtime, original references, label vectors, caller settings and RNG must be supplied explicitly; project comparison environments are not recovered author environments. Original errors remain errors. Literal 2.41 is unresolved and its dependent analysis is SKIP3 without version substitution. Source-specific releases/references are not borrowed between analysis contexts. Saved training pointers are records, not reusable live native indexes. SKIP3 skips dependent analysis for unavailable/forbidden requirements; FAIL2 admits no complete result, including recording failure. Whole-tool validity, biological decisions and paper reproduction remain unqualified.",
+    "validation_note": "250 paired original controls/232 returns/18 original errors; whole returns, conditions and RNG. 17 Linux public guards,3 Windows prerequisite guards,both actual installs and whole installed analyses; frozen readback and fresh replay. Synthetic scope only.",
+    "project_adapter_available": true,
+    "canonical_adapter_available": false,
+    "root_dispatch_available": false,
+    "development_candidate_available": true,
+    "development_candidate": "tools/literature/singler_workflows/run.py",
+    "development_candidate_sha256": "7872552b485b00fc44afb317e6086eea4a41ece232ed0d0d0d3d2a2cc89e2f4c",
+    "development_candidate_kind": "python-source-entrypoint-original-Linux-WSL-source-built-R-releases",
+    "development_build": "tools/literature/singler_workflows/install_runtime.py",
+    "development_adapter_cli": "python3 tools/literature/singler_workflows/run.py --edition 2.8.0 --runtime /permitted/provider --request /trusted/request.rds --out /NEW/output",
+    "selected_upstream_versions": [
+      "1.2.4",
+      "1.8.1",
+      "2.2.0",
+      "2.6.0",
+      "2.8.0"
+    ],
+    "selected_R_versions": [
+      "4.0.5",
+      "4.1.3",
+      "4.3.3",
+      "4.3.3",
+      "4.4.3"
+    ],
+    "selected_environment_is_author_environment": false,
+    "author_reference_snapshots_established": false,
+    "literal_2_41_resolved": false,
+    "workflow_validation": "../singler-workflow-validation/QUALIFICATION.json",
+    "current_documentation": "docs/literature/SINGLER_CATALOG_INTEGRATION.md",
+    "source_roles_reviewed": 4,
+    "paper_role_coverage": {
+      "P051": "Annotated mouse neutrophil datasets individually against Immgen for NeuMap construction (release unreported at that anchor); separately used SingleR 2.8.0 with ImmGen for neutrophil identification, and SingleR 2.6.0 with the literally described MouseRNAseq ImmGen references via celldex 1.14.0 plus curated markers in the PDAC/MI analysis. These are distinct analyses; subsequent Seurat projection and SPOTlight deconvolution are separate methods. Project availability: complete unchanged original SingleR annotation in explicitly selected 1.2.4, 1.8.1, 2.2.0, 2.6.0 and 2.8.0 source profiles, with complete returns, conditions and RNG. The runtime, original references, label vectors, caller settings and RNG must be supplied explicitly; project comparison environments are not recovered author environments. Original errors remain errors. Literal 2.41 is unresolved and its dependent analysis is SKIP3 without version substitution. Source-specific releases/references are not borrowed between analysis contexts. Saved training pointers are records, not reusable live native indexes. SKIP3 skips dependent analysis for unavailable/forbidden requirements; FAIL2 admits no complete result, including recording failure. Whole-tool validity, biological decisions and paper reproduction remain unqualified.",
+      "P082": "Matched leukemic cells to healthy bone-marrow counterparts by Spearman correlation against a published CITE-seq reference containing 30,672 RNA profiles and 25 antibodies. The study software inventory declares SingleR 2.2.0; the method paragraph does not state function arguments or that release locally. Project availability: complete unchanged original SingleR annotation in explicitly selected 1.2.4, 1.8.1, 2.2.0, 2.6.0 and 2.8.0 source profiles, with complete returns, conditions and RNG. The runtime, original references, label vectors, caller settings and RNG must be supplied explicitly; project comparison environments are not recovered author environments. Original errors remain errors. Literal 2.41 is unresolved and its dependent analysis is SKIP3 without version substitution. Source-specific releases/references are not borrowed between analysis contexts. Saved training pointers are records, not reusable live native indexes. SKIP3 skips dependent analysis for unavailable/forbidden requirements; FAIL2 admits no complete result, including recording failure. Whole-tool validity, biological decisions and paper reproduction remain unqualified.",
+      "P192": "Annotated KOBS SAT nuclei with SingleR 1.2.4 and the reference datasets used previously in the cited Pan et al. study; separately annotated RYSA SAT nuclei with SingleR 1.8.1 and the Emont adipose reference atlas. The two reference and release declarations are retained independently. Project availability: complete unchanged original SingleR annotation in explicitly selected 1.2.4, 1.8.1, 2.2.0, 2.6.0 and 2.8.0 source profiles, with complete returns, conditions and RNG. The runtime, original references, label vectors, caller settings and RNG must be supplied explicitly; project comparison environments are not recovered author environments. Original errors remain errors. Literal 2.41 is unresolved and its dependent analysis is SKIP3 without version substitution. Source-specific releases/references are not borrowed between analysis contexts. Saved training pointers are records, not reusable live native indexes. SKIP3 skips dependent analysis for unavailable/forbidden requirements; FAIL2 admits no complete result, including recording failure. Whole-tool validity, biological decisions and paper reproduction remain unqualified.",
+      "P233": "Used SingleR, literally reported as 2.41, in residual blood-cell identification/removal alongside Seurat PBMC-reference analysis. That release spelling remains unresolved. The inspected author notebook separately performs four SingleR calls with HPCA and Blueprint/ENCODE main/fine labels, then filters using unpruned labels, and performs a separate Seurat PBMC mapping. Its actual executed commit, release and reference snapshots are unknown; the haemoglobin-expression filter is a separate QC step. Project availability: complete unchanged original SingleR annotation in explicitly selected 1.2.4, 1.8.1, 2.2.0, 2.6.0 and 2.8.0 source profiles, with complete returns, conditions and RNG. The runtime, original references, label vectors, caller settings and RNG must be supplied explicitly; project comparison environments are not recovered author environments. Original errors remain errors. Literal 2.41 is unresolved and its dependent analysis is SKIP3 without version substitution. Source-specific releases/references are not borrowed between analysis contexts. Saved training pointers are records, not reusable live native indexes. SKIP3 skips dependent analysis for unavailable/forbidden requirements; FAIL2 admits no complete result, including recording failure. Whole-tool validity, biological decisions and paper reproduction remain unqualified."
+    },
+    "uncovered_roles": [
+      "Literal 2.41 release identity",
+      "Actual author reference objects, label vectors, caller settings and environments",
+      "Original failed inputs admit no result",
+      "Whole-tool validity, biological decisions and paper reproduction"
+    ],
+    "new_scoped_integration_credit": 1,
+    "native_family_credit_added": 0,
+    "whole_tool_qualified": false,
+    "whole_paper_reproduced": false
   },
   {
     "id": "velocyto",
@@ -11716,5 +11761,56 @@
     "root_dispatch_available": false,
     "whole_tool_qualified": false,
     "whole_paper_reproduced": false
+  },
+  {
+    "id": "celldex",
+    "name": "celldex",
+    "pattern": "(?<![A-Za-z0-9_])celldex(?![A-Za-z0-9_]|\\s+Therapeutics)",
+    "role": "Retrieve reference expression profiles and cell labels",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Separate reference-data retrieval software; SingleR does not implement celldex. Exact permitted source, historical data snapshots and runtime require separate integration.",
+    "paper_count": 1,
+    "papers": [
+      "P051"
+    ],
+    "implementation_status": "missing",
+    "implementation_source": null,
+    "implementation_scope": "Separate reference-data retrieval software; SingleR does not implement celldex. Exact permitted source, historical data snapshots and runtime require separate integration.",
+    "validation_note": "Source-reviewed use only; no runtime analysis or implementation credit."
+  },
+  {
+    "id": "spotlight",
+    "name": "SPOTlight",
+    "pattern": "(?<![A-Za-z0-9_])SPOTlight(?![A-Za-z0-9_]|\\s+Therapeutics)(?=\\s*(?:\\(|package\\b))",
+    "role": "Seeded NMF deconvolution of spatial transcriptomic spots",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Separate original SPOTlight workflow remains missing. The paper reports version 1.0.3 and a >=10% predicted neutrophil spot rule; no implementation or biological reproduction credit.",
+    "paper_count": 1,
+    "papers": [
+      "P051"
+    ],
+    "implementation_status": "missing",
+    "implementation_source": null,
+    "implementation_scope": "Separate original SPOTlight workflow remains missing. The paper reports version 1.0.3 and a >=10% predicted neutrophil spot rule; no implementation or biological reproduction credit.",
+    "validation_note": "Source-reviewed use only; no runtime analysis or implementation credit."
+  },
+  {
+    "id": "bd-rhapsody",
+    "name": "BD Rhapsody analysis pipeline",
+    "pattern": "(?<![A-Za-z0-9_])(?:BD\\s+)?Rhapsody\\s+analysis\\s+pipeline(?![A-Za-z0-9_])",
+    "role": "Process Rhapsody sequencing files, align, quantify and filter cells",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Separate original pipeline; source and license/runtime assessment remains open. P051 reports local 1.9.1 processing and another unversioned processing context. Hardware descriptions add no software use or implementation credit.",
+    "paper_count": 1,
+    "papers": [
+      "P051"
+    ],
+    "implementation_status": "missing",
+    "implementation_source": null,
+    "implementation_scope": "Separate original pipeline; source and license/runtime assessment remains open. P051 reports local 1.9.1 processing and another unversioned processing context. Hardware descriptions add no software use or implementation credit.",
+    "validation_note": "Source-reviewed use only; no runtime analysis or implementation credit."
   }
 ]

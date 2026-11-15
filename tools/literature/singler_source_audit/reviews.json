@@ -1,0 +1,441 @@
+{
+  "status": "PASS_CURATED_FOUR_SINGLER_READINGS_AND_ALL_RELATED_NAME_CANDIDATES_NOT_CATALOG_ADMISSION",
+  "schema_version": 1,
+  "reviews": [
+    {
+      "paper_id": "P051",
+      "pmcid": "PMC12823425",
+      "doi": "10.1038/s41586-025-09807-0",
+      "tool_id": "singler",
+      "primary_xml_sha256": "9182a4004117036e7be71b48cabb34755f397746ef0fe821dfad01f64fa2c129",
+      "evidence_paragraph_index": 81,
+      "evidence_paragraph_sha256": "cc978da74845abbf45f15e873b3dcfa7a961078967705fa86eba8f3a57cc2c51",
+      "version_reported_near_name": null,
+      "use_summary": "Annotated mouse neutrophil datasets individually against Immgen for NeuMap construction (release unreported at that anchor); separately used SingleR 2.8.0 with ImmGen for neutrophil identification, and SingleR 2.6.0 with the literally described MouseRNAseq ImmGen references via celldex 1.14.0 plus curated markers in the PDAC/MI analysis. These are distinct analyses; subsequent Seurat projection and SPOTlight deconvolution are separate methods.",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 81,
+          "section": "Methods / Single-cell transcriptomics on mouse neutrophils / Construction of NeuMap and projection of external data",
+          "paragraph_sha256": "cc978da74845abbf45f15e873b3dcfa7a961078967705fa86eba8f3a57cc2c51"
+        },
+        {
+          "paragraph_index": 93,
+          "section": "Methods / Data processing / Cell-type identification and neutrophil subset classification",
+          "paragraph_sha256": "020141a359ea2a932f833ea21405cdcc57ae8148441ad407b755b722e30455c2"
+        },
+        {
+          "paragraph_index": 119,
+          "section": "Methods / Single-cell transcriptomics on human neutrophils / Analyses of PDAC and myocardial infarction (MI) models",
+          "paragraph_sha256": "b280897006d2e6190a7e2bebd0695e5369db236336513823ba3a8315b3dd4c94"
+        }
+      ],
+      "analysis_uses": [
+        {
+          "paragraph_index": 81,
+          "version_reported_at_this_anchor": null,
+          "role": "Per-dataset mouse cell annotation for NeuMap",
+          "reference_literal": "Immgen database",
+          "separate_operations": [
+            "Rhapsody analysis pipeline 1.9.1 processing",
+            "manual second-round QC",
+            "Seurat integration and later MapQuery/TransferData projection"
+          ]
+        },
+        {
+          "paragraph_index": 93,
+          "version_reported_at_this_anchor": "2.8.0",
+          "role": "Cell-type identification and neutrophil subset selection",
+          "reference_literal": "ImmGen"
+        },
+        {
+          "paragraph_index": 119,
+          "version_reported_at_this_anchor": "2.6.0",
+          "role": "Reference-based annotation in PDAC and MI analysis",
+          "reference_literal": "MouseRNAseq ImmGen databases",
+          "reference_loader_software": "celldex",
+          "reference_loader_version": "1.14.0",
+          "additional_annotation_basis": "curated marker genes from the dataset clustering results",
+          "heading_is_human_neutrophils": true,
+          "reference_species_description_repaired": false,
+          "separate_operations": [
+            "Seurat integration/clustering/marker extraction",
+            "SPOTlight 1.0.3 spatial deconvolution and >=10% neutrophil spot rule"
+          ]
+        }
+      ],
+      "named_anchor_classification": [
+        {
+          "paragraph_index": 81,
+          "kind": "primary-methods"
+        },
+        {
+          "paragraph_index": 93,
+          "kind": "primary-methods"
+        },
+        {
+          "paragraph_index": 119,
+          "kind": "primary-methods"
+        }
+      ],
+      "explicit_unknowns": [
+        "exact original function arguments",
+        "marker selection settings",
+        "correlation quantile",
+        "fine-tuning settings",
+        "pruning settings",
+        "reference object snapshot and exact label vector",
+        "caller RNG state",
+        "actual author environment"
+      ],
+      "implementation_scope_note": "Development only: original source-built annotation profiles and complete-return recording are undergoing independent qualification. No catalog implementation credit yet. Literal 2.41 stays unresolved; that dependent analysis is SKIP3, without version substitution. The original reference objects and manual cell-removal choices must be supplied explicitly. Whole-tool validity and paper reproduction remain unqualified."
+    },
+    {
+      "paper_id": "P082",
+      "pmcid": "PMC11631769",
+      "doi": "10.1038/s41588-024-01999-x",
+      "tool_id": "singler",
+      "primary_xml_sha256": "c46b71277955179cdc573c3bf2131f9e385491f06ebfc680ddfce7143dc1077e",
+      "evidence_paragraph_index": 45,
+      "evidence_paragraph_sha256": "b200fc5bf3d2f2ac912854aa99b5ce8de3c77e3dd720c3cbe422932ea171bb3c",
+      "version_reported_near_name": null,
+      "use_summary": "Matched leukemic cells to healthy bone-marrow counterparts by Spearman correlation against a published CITE-seq reference containing 30,672 RNA profiles and 25 antibodies. The study software inventory declares SingleR 2.2.0; the method paragraph does not state function arguments or that release locally.",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 45,
+          "section": "Methods / scNOVA–CITE workflow / ‘Reference-based’ annotation of leukemic cells",
+          "paragraph_sha256": "b200fc5bf3d2f2ac912854aa99b5ce8de3c77e3dd720c3cbe422932ea171bb3c"
+        },
+        {
+          "paragraph_index": 64,
+          "section": "Code availability",
+          "paragraph_sha256": "ca44d238ba149b628e05398ce1a466404ae438b1e859861e914d481d3a0e16b9"
+        },
+        {
+          "paragraph_index": 71,
+          "section": "Associated Data / Data Availability Statement",
+          "paragraph_sha256": "ca44d238ba149b628e05398ce1a466404ae438b1e859861e914d481d3a0e16b9"
+        }
+      ],
+      "analysis_uses": [
+        {
+          "paragraph_index": 45,
+          "version_reported_at_this_anchor": null,
+          "role": "Match leukemic cells to healthy bone-marrow counterparts",
+          "annotation_basis_reported": "Spearman correlation",
+          "reference_RNA_profiles": 30672,
+          "reference_antibodies": 25,
+          "study_software_inventory_release": "2.2.0",
+          "inventory_anchors": [
+            64,
+            71
+          ],
+          "inventory_duplicate_is_additional_analysis": false
+        }
+      ],
+      "named_anchor_classification": [
+        {
+          "paragraph_index": 45,
+          "kind": "primary-methods"
+        },
+        {
+          "paragraph_index": 64,
+          "kind": "study-software-inventory"
+        },
+        {
+          "paragraph_index": 71,
+          "kind": "study-software-inventory"
+        }
+      ],
+      "explicit_unknowns": [
+        "exact original function arguments",
+        "marker selection settings",
+        "correlation quantile",
+        "fine-tuning settings",
+        "pruning settings",
+        "reference object snapshot and exact label vector",
+        "caller RNG state",
+        "actual author environment"
+      ],
+      "implementation_scope_note": "Development only: original source-built annotation profiles and complete-return recording are undergoing independent qualification. No catalog implementation credit yet. Literal 2.41 stays unresolved; that dependent analysis is SKIP3, without version substitution. The original reference objects and manual cell-removal choices must be supplied explicitly. Whole-tool validity and paper reproduction remain unqualified."
+    },
+    {
+      "paper_id": "P192",
+      "pmcid": "PMC11568758",
+      "doi": "10.1016/j.ajhg.2024.10.001",
+      "tool_id": "singler",
+      "primary_xml_sha256": "6d8f96c90682633e9bbb02269e6cf2d94690dfe31e6f72d9c68770825e1ef658",
+      "evidence_paragraph_index": 16,
+      "evidence_paragraph_sha256": "84c324d009ef5dd98dccadf06b183b42f7a465b32f13aa8d5292a5eae87dc9a0",
+      "version_reported_near_name": "1.2.4",
+      "use_summary": "Annotated KOBS SAT nuclei with SingleR 1.2.4 and the reference datasets used previously in the cited Pan et al. study; separately annotated RYSA SAT nuclei with SingleR 1.8.1 and the Emont adipose reference atlas. The two reference and release declarations are retained independently.",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 16,
+          "section": "Methods / Processing of SAT snRNA-seq data in KOBS",
+          "paragraph_sha256": "84c324d009ef5dd98dccadf06b183b42f7a465b32f13aa8d5292a5eae87dc9a0"
+        },
+        {
+          "paragraph_index": 18,
+          "section": "Methods / Processing of SAT snRNA-seq data in RYSA",
+          "paragraph_sha256": "2c92aea1d107047b1c70418d68df1c2e8c27019042b99a4100be28d45010fb32"
+        }
+      ],
+      "analysis_uses": [
+        {
+          "paragraph_index": 16,
+          "version_reported_at_this_anchor": "1.2.4",
+          "role": "Annotate SAT nuclei from eight KOBS participants",
+          "reference_description": "Same reference datasets as previously described in citation 14",
+          "cited_previous_reference_study": {
+            "authors": "Pan et al.",
+            "year": 2021,
+            "doi": "10.1186/s13073-021-00939-2",
+            "pmcid": "PMC8327600"
+          },
+          "exact_reference_objects_established_in_current_paper": false
+        },
+        {
+          "paragraph_index": 18,
+          "version_reported_at_this_anchor": "1.8.1",
+          "role": "RYSA SAT cell-type annotation",
+          "reference_description": "Emont et al. adipose snRNA-seq/scRNA-seq atlas"
+        }
+      ],
+      "named_anchor_classification": [
+        {
+          "paragraph_index": 16,
+          "kind": "primary-methods"
+        },
+        {
+          "paragraph_index": 18,
+          "kind": "primary-methods"
+        }
+      ],
+      "explicit_unknowns": [
+        "exact original function arguments",
+        "marker selection settings",
+        "correlation quantile",
+        "fine-tuning settings",
+        "pruning settings",
+        "reference object snapshot and exact label vector",
+        "caller RNG state",
+        "actual author environment"
+      ],
+      "implementation_scope_note": "Development only: original source-built annotation profiles and complete-return recording are undergoing independent qualification. No catalog implementation credit yet. Literal 2.41 stays unresolved; that dependent analysis is SKIP3, without version substitution. The original reference objects and manual cell-removal choices must be supplied explicitly. Whole-tool validity and paper reproduction remain unqualified."
+    },
+    {
+      "paper_id": "P233",
+      "pmcid": "PMC12461018",
+      "doi": "10.1016/j.ajhg.2025.07.018",
+      "tool_id": "singler",
+      "primary_xml_sha256": "bbb6dfe0c3463e42e5fec1b8f58ca3b48fcb6cda5a5d776fe21a98a4d3eeb901",
+      "evidence_paragraph_index": 8,
+      "evidence_paragraph_sha256": "d63a03bda6013f0581df084b7283b0586612ca452199d90f210b255a2b7df4a4",
+      "version_reported_near_name": "2.41",
+      "use_summary": "Used SingleR, literally reported as 2.41, in residual blood-cell identification/removal alongside Seurat PBMC-reference analysis. That release spelling remains unresolved. The inspected author notebook separately performs four SingleR calls with HPCA and Blueprint/ENCODE main/fine labels, then filters using unpruned labels, and performs a separate Seurat PBMC mapping. Its actual executed commit, release and reference snapshots are unknown; the haemoglobin-expression filter is a separate QC step.",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 8,
+          "section": "Methods / scRNA-seq data analysis",
+          "paragraph_sha256": "d63a03bda6013f0581df084b7283b0586612ca452199d90f210b255a2b7df4a4"
+        }
+      ],
+      "analysis_uses": [
+        {
+          "paragraph_index": 8,
+          "version_reported_at_this_anchor": "2.41",
+          "release_identity_resolved": false,
+          "role": "Residual PBMC/RBC identification in stromal-cell preprocessing",
+          "paper_reference_context": "SingleR alongside Seurat multimodal CITE-seq PBMC reference analysis",
+          "separate_QC": {
+            "genes": [
+              "HBB",
+              "HBA1",
+              "HBA2"
+            ],
+            "reported_transcript_threshold": 3,
+            "reported_comparator": ">",
+            "is_SingleR_scoring_setting": false
+          }
+        }
+      ],
+      "named_anchor_classification": [
+        {
+          "paragraph_index": 8,
+          "kind": "primary-methods"
+        }
+      ],
+      "explicit_unknowns": [
+        "exact original function arguments",
+        "marker selection settings",
+        "correlation quantile",
+        "fine-tuning settings",
+        "pruning settings",
+        "reference object snapshot and exact label vector",
+        "caller RNG state",
+        "actual author environment"
+      ],
+      "implementation_scope_note": "Development only: original source-built annotation profiles and complete-return recording are undergoing independent qualification. No catalog implementation credit yet. Literal 2.41 stays unresolved; that dependent analysis is SKIP3, without version substitution. The original reference objects and manual cell-removal choices must be supplied explicitly. Whole-tool validity and paper reproduction remain unqualified.",
+      "inspected_author_notebook": {
+        "commit": "5ec4cbb3a5cdfbf9ed6d24d118a3012f9a07d7ad",
+        "path": "01_Preprocessing/04_FilterBloodCells.Rmd",
+        "url": "https://raw.githubusercontent.com/HsiaoLabUCSF/FDProject/5ec4cbb3a5cdfbf9ed6d24d118a3012f9a07d7ad/01_Preprocessing/04_FilterBloodCells.Rmd",
+        "bytes": 11556,
+        "sha256": "413e9089ef49b0b0da56afcf11da5e27017a718245c592ef634eeb723ecc63eb",
+        "source_only_not_executed": true,
+        "repository": "HsiaoLabUCSF/FDProject",
+        "actual_author_execution_commit_established": false,
+        "reported_literal_release_resolved": false,
+        "source_redistributed": false,
+        "code_license_established": false,
+        "observed_calls": [
+          {
+            "lines": [
+              121,
+              124
+            ],
+            "reference": "celldex::HumanPrimaryCellAtlasData()",
+            "label_fields": [
+              "label.main",
+              "label.fine"
+            ]
+          },
+          {
+            "lines": [
+              131,
+              134
+            ],
+            "reference": "celldex::BlueprintEncodeData()",
+            "label_fields": [
+              "label.main",
+              "label.fine"
+            ]
+          }
+        ],
+        "test_expression_source_observed": "SCT assay data slot converted to a matrix",
+        "pruned_labels_saved_but_unpruned_labels_used_for_observed_filters": true,
+        "separate_Seurat_PBMC_mapping_lines": [
+          174,
+          180
+        ],
+        "separate_Seurat_PBMC_reference_path_literal": "../data/pbmc_multimodal.h5seurat"
+      }
+    }
+  ],
+  "candidate_classification": {
+    "celldex": [
+      {
+        "paper_id": "P051",
+        "paragraph_index": 119,
+        "kind": "reference-data-retrieval-software",
+        "literal_release": "1.14.0",
+        "analysis_role": "Obtain literally described MouseRNAseq ImmGen reference profiles for SingleR annotation"
+      },
+      {
+        "paper_id": "P069",
+        "paragraph_index": 58,
+        "kind": "company-name-not-software",
+        "company": "Celldex Therapeutics"
+      }
+    ],
+    "spotlight": [
+      {
+        "paper_id": "P032",
+        "paragraph_index": 68,
+        "kind": "company-name-not-software",
+        "company": "Spotlight Therapeutics"
+      },
+      {
+        "paper_id": "P046",
+        "paragraph_index": 2,
+        "kind": "ordinary-verb-not-software"
+      },
+      {
+        "paper_id": "P051",
+        "paragraph_index": 114,
+        "kind": "primary-software-analysis",
+        "literal_release": "1.0.3",
+        "reference_description": "LungMap single-cell reference",
+        "method": "seeded NMF regression",
+        "reported_neutrophil_fraction_threshold": 0.1,
+        "reported_comparator": ">="
+      },
+      {
+        "paper_id": "P051",
+        "paragraph_index": 119,
+        "kind": "primary-software-analysis",
+        "literal_release": "1.0.3",
+        "reference_description": "Single-cell reference described in this PDAC/MI paragraph",
+        "method": "seeded NMF regression",
+        "reported_neutrophil_fraction_threshold": 0.1,
+        "reported_comparator": ">="
+      }
+    ],
+    "bd-rhapsody": [
+      {
+        "paper_id": "P051",
+        "paragraph_index": 3,
+        "kind": "hardware-and-study-description"
+      },
+      {
+        "paper_id": "P051",
+        "paragraph_index": 80,
+        "kind": "library-preparation-and-instrument-hardware"
+      },
+      {
+        "paper_id": "P051",
+        "paragraph_index": 81,
+        "kind": "primary-software-analysis",
+        "literal_release": "1.9.1",
+        "analysis_role": "Local alignment, quantification, automated cell-quality filtering and doublet tagging/filtering",
+        "separate_manual_QC": true
+      },
+      {
+        "paper_id": "P051",
+        "paragraph_index": 85,
+        "kind": "BAM-input-origin-context-not-additional-pipeline-execution"
+      },
+      {
+        "paper_id": "P051",
+        "paragraph_index": 104,
+        "kind": "hardware-plus-unversioned-primary-software-analysis",
+        "literal_release": null,
+        "analysis_role": "Raw sequencing-file processing using the BD Rhapsody analysis pipeline"
+      }
+    ],
+    "immgen-reference": [
+      {
+        "paper_id": "P051",
+        "paragraph_index": 81,
+        "kind": "biological-reference-not-software"
+      },
+      {
+        "paper_id": "P051",
+        "paragraph_index": 93,
+        "kind": "biological-reference-not-software"
+      },
+      {
+        "paper_id": "P051",
+        "paragraph_index": 119,
+        "kind": "biological-reference-not-software"
+      }
+    ]
+  },
+  "proposed_literal_source_correction": {
+    "paper_id": "P233",
+    "tool_id": "singler",
+    "field": "version_reported_near_name",
+    "before": null,
+    "after": "2.41",
+    "supporting_evidence": {
+      "paragraph_index": 8,
+      "section": "Methods / scRNA-seq data analysis",
+      "paragraph_sha256": "d63a03bda6013f0581df084b7283b0586612ca452199d90f210b255a2b7df4a4"
+    },
+    "literal_2_41_interpreted_as_2_4_1": false,
+    "reason": "The original primary paragraph literally contains SingleR (2.41). This records the ambiguous declaration; it does not resolve its identity."
+  },
+  "admitted_catalog_files_changed": false,
+  "new_family_credit": 0,
+  "whole_goal_complete": false
+}

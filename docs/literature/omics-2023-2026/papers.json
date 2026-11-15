@@ -14563,12 +14563,30 @@
         "matched_text": "SingleR",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": null,
         "evidence_selection": "highest-scored-eligible-method-sentence",
         "evidence_paragraph_sha256": "cc978da74845abbf45f15e873b3dcfa7a961078967705fa86eba8f3a57cc2c51",
-        "use_summary": "Reference-based cell annotation.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12823425/ (section: Methods / Single-cell transcriptomics on mouse neutrophils / Construction of NeuMap and projection of external data)"
+        "use_summary": "Annotated mouse neutrophil datasets individually against Immgen for NeuMap construction (release unreported at that anchor); separately used SingleR 2.8.0 with ImmGen for neutrophil identification, and SingleR 2.6.0 with the literally described MouseRNAseq ImmGen references via celldex 1.14.0 plus curated markers in the PDAC/MI analysis. These are distinct analyses; subsequent Seurat projection and SPOTlight deconvolution are separate methods.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12823425/ (section: Methods / Single-cell transcriptomics on mouse neutrophils / Construction of NeuMap and projection of external data)",
+        "implementation_scope_note": "Project availability: complete unchanged original SingleR annotation in explicitly selected 1.2.4, 1.8.1, 2.2.0, 2.6.0 and 2.8.0 source profiles, with complete returns, conditions and RNG. The runtime, original references, label vectors, caller settings and RNG must be supplied explicitly; project comparison environments are not recovered author environments. Original errors remain errors. Literal 2.41 is unresolved and its dependent analysis is SKIP3 without version substitution. Source-specific releases/references are not borrowed between analysis contexts. Saved training pointers are records, not reusable live native indexes. SKIP3 skips dependent analysis for unavailable/forbidden requirements; FAIL2 admits no complete result, including recording failure. Whole-tool validity, biological decisions and paper reproduction remain unqualified.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 81,
+            "section": "Methods / Single-cell transcriptomics on mouse neutrophils / Construction of NeuMap and projection of external data",
+            "paragraph_sha256": "cc978da74845abbf45f15e873b3dcfa7a961078967705fa86eba8f3a57cc2c51"
+          },
+          {
+            "paragraph_index": 93,
+            "section": "Methods / Data processing / Cell-type identification and neutrophil subset classification",
+            "paragraph_sha256": "020141a359ea2a932f833ea21405cdcc57ae8148441ad407b755b722e30455c2"
+          },
+          {
+            "paragraph_index": 119,
+            "section": "Methods / Single-cell transcriptomics on human neutrophils / Analyses of PDAC and myocardial infarction (MI) models",
+            "paragraph_sha256": "b280897006d2e6190a7e2bebd0695e5369db236336513823ba3a8315b3dd4c94"
+          }
+        ]
       },
       {
         "tool_id": "spaceranger",
@@ -14711,6 +14729,88 @@
         "evidence_paragraph_sha256": "a752f46d50c8fca06f15874a7770d1d9812fb0232c84f01e498a61e7a8271dad",
         "use_summary": "Named in the source Methods/analysis description; the exact operation summary requires individual review.",
         "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12823425/ (section: Methods / Quantification and statistical analysis)"
+      },
+      {
+        "tool_id": "celldex",
+        "tool": "celldex",
+        "analysis_role": "Retrieve reference expression profiles and cell labels",
+        "evidence_section": "Methods / Single-cell transcriptomics on human neutrophils / Analyses of PDAC and myocardial infarction (MI) models",
+        "evidence_paragraph_index": 119,
+        "matched_text": "celldex",
+        "extraction_score": 15,
+        "usage_context": "analysis-method-description",
+        "evidence_selection": "individually-reviewed-primary-method-anchor",
+        "evidence_paragraph_sha256": "b280897006d2e6190a7e2bebd0695e5369db236336513823ba3a8315b3dd4c94",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12823425/ (section: Methods / Single-cell transcriptomics on human neutrophils / Analyses of PDAC and myocardial infarction (MI) models)",
+        "use_summary": "Retrieved reference profiles for SingleR annotation, described literally as MouseRNAseq ImmGen databases via celldex 1.14.0 in the PDAC/MI analysis. The human-neutrophil subsection and reference wording remain unchanged; exact reference functions and snapshots are not established.",
+        "implementation_scope_note": "Missing separate software family. No runtime analysis or implementation credit. Supply the exact permitted source, prerequisites and tested workflow before using it; unavailable/forbidden requirements skip dependent analysis.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 119,
+            "section": "Methods / Single-cell transcriptomics on human neutrophils / Analyses of PDAC and myocardial infarction (MI) models",
+            "paragraph_sha256": "b280897006d2e6190a7e2bebd0695e5369db236336513823ba3a8315b3dd4c94"
+          }
+        ],
+        "version_reported_near_name": "1.14.0",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open"
+      },
+      {
+        "tool_id": "spotlight",
+        "tool": "SPOTlight",
+        "analysis_role": "Seeded NMF deconvolution of spatial transcriptomic spots",
+        "evidence_section": "Methods / Single-cell transcriptomics on human neutrophils / Downstream analysis",
+        "evidence_paragraph_index": 114,
+        "matched_text": "SPOTlight",
+        "extraction_score": 15,
+        "usage_context": "analysis-method-description",
+        "evidence_selection": "individually-reviewed-primary-method-anchor",
+        "evidence_paragraph_sha256": "5fbf91a29a88cc191609c1ad9a7055546111d407c38f09c078a5fd2717ba47cf",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12823425/ (section: Methods / Single-cell transcriptomics on human neutrophils / Downstream analysis)",
+        "use_summary": "Deconvolved spatial transcriptomic spots using seeded non-negative matrix factorization regression in SPOTlight 1.0.3. The first context uses a LungMap single-cell reference; the PDAC/MI context describes another single-cell reference. Both annotate spots at predicted neutrophil composition >=10%.",
+        "implementation_scope_note": "Missing separate software family. No runtime analysis or implementation credit. Supply the exact permitted source, prerequisites and tested workflow before using it; unavailable/forbidden requirements skip dependent analysis.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 114,
+            "section": "Methods / Single-cell transcriptomics on human neutrophils / Downstream analysis",
+            "paragraph_sha256": "5fbf91a29a88cc191609c1ad9a7055546111d407c38f09c078a5fd2717ba47cf"
+          },
+          {
+            "paragraph_index": 119,
+            "section": "Methods / Single-cell transcriptomics on human neutrophils / Analyses of PDAC and myocardial infarction (MI) models",
+            "paragraph_sha256": "b280897006d2e6190a7e2bebd0695e5369db236336513823ba3a8315b3dd4c94"
+          }
+        ],
+        "version_reported_near_name": "1.0.3",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open"
+      },
+      {
+        "tool_id": "bd-rhapsody",
+        "tool": "BD Rhapsody analysis pipeline",
+        "analysis_role": "Process Rhapsody sequencing files, align, quantify and filter cells",
+        "evidence_section": "Methods / Single-cell transcriptomics on mouse neutrophils / Construction of NeuMap and projection of external data",
+        "evidence_paragraph_index": 81,
+        "matched_text": "BD Rhapsody analysis pipeline",
+        "extraction_score": 15,
+        "usage_context": "analysis-method-description",
+        "evidence_selection": "individually-reviewed-primary-method-anchor",
+        "evidence_paragraph_sha256": "cc978da74845abbf45f15e873b3dcfa7a961078967705fa86eba8f3a57cc2c51",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12823425/ (section: Methods / Single-cell transcriptomics on mouse neutrophils / Construction of NeuMap and projection of external data)",
+        "use_summary": "Ran the Rhapsody analysis pipeline 1.9.1 locally for mouse GRCm38/gencodevM19-20181206 alignment, quantification, automatic low-quality-cell filtering and doublet tagging/filtering. A separate context reports raw sequencing-file processing with the BD Rhapsody pipeline without a release. The subsequent manual QC and SingleR annotation are separate operations.",
+        "implementation_scope_note": "Missing separate software family. No runtime analysis or implementation credit. Supply the exact permitted source, prerequisites and tested workflow before using it; unavailable/forbidden requirements skip dependent analysis.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 81,
+            "section": "Methods / Single-cell transcriptomics on mouse neutrophils / Construction of NeuMap and projection of external data",
+            "paragraph_sha256": "cc978da74845abbf45f15e873b3dcfa7a961078967705fa86eba8f3a57cc2c51"
+          },
+          {
+            "paragraph_index": 104,
+            "section": "Methods / Single-cell transcriptomics on human neutrophils / Library preparation",
+            "paragraph_sha256": "a12ea2b02a809d4dd388ecb73172a604610c30d7a483a125ce367327178b3476"
+          }
+        ],
+        "version_reported_near_name": "1.9.1",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open"
       }
     ],
     "status": "extracted",
@@ -21890,12 +21990,30 @@
         "matched_text": "SingleR",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": null,
         "evidence_selection": "highest-scored-eligible-method-sentence",
         "evidence_paragraph_sha256": "b200fc5bf3d2f2ac912854aa99b5ce8de3c77e3dd720c3cbe422932ea171bb3c",
-        "use_summary": "Reference-based cell annotation.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11631769/ (section: Methods / scNOVA–CITE workflow / ‘Reference-based’ annotation of leukemic cells)"
+        "use_summary": "Matched leukemic cells to healthy bone-marrow counterparts by Spearman correlation against a published CITE-seq reference containing 30,672 RNA profiles and 25 antibodies. The study software inventory declares SingleR 2.2.0; the method paragraph does not state function arguments or that release locally.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11631769/ (section: Methods / scNOVA–CITE workflow / ‘Reference-based’ annotation of leukemic cells)",
+        "implementation_scope_note": "Project availability: complete unchanged original SingleR annotation in explicitly selected 1.2.4, 1.8.1, 2.2.0, 2.6.0 and 2.8.0 source profiles, with complete returns, conditions and RNG. The runtime, original references, label vectors, caller settings and RNG must be supplied explicitly; project comparison environments are not recovered author environments. Original errors remain errors. Literal 2.41 is unresolved and its dependent analysis is SKIP3 without version substitution. Source-specific releases/references are not borrowed between analysis contexts. Saved training pointers are records, not reusable live native indexes. SKIP3 skips dependent analysis for unavailable/forbidden requirements; FAIL2 admits no complete result, including recording failure. Whole-tool validity, biological decisions and paper reproduction remain unqualified.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 45,
+            "section": "Methods / scNOVA–CITE workflow / ‘Reference-based’ annotation of leukemic cells",
+            "paragraph_sha256": "b200fc5bf3d2f2ac912854aa99b5ce8de3c77e3dd720c3cbe422932ea171bb3c"
+          },
+          {
+            "paragraph_index": 64,
+            "section": "Code availability",
+            "paragraph_sha256": "ca44d238ba149b628e05398ce1a466404ae438b1e859861e914d481d3a0e16b9"
+          },
+          {
+            "paragraph_index": 71,
+            "section": "Associated Data / Data Availability Statement",
+            "paragraph_sha256": "ca44d238ba149b628e05398ce1a466404ae438b1e859861e914d481d3a0e16b9"
+          }
+        ]
       },
       {
         "tool_id": "star",
@@ -47486,12 +47604,25 @@
         "matched_text": "SingleR",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": "1.2.4",
         "evidence_selection": "highest-scored-eligible-method-sentence",
         "evidence_paragraph_sha256": "84c324d009ef5dd98dccadf06b183b42f7a465b32f13aa8d5292a5eae87dc9a0",
-        "use_summary": "Reference-based cell annotation.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11568758/ (section: Methods / Processing of SAT snRNA-seq data in KOBS)"
+        "use_summary": "Annotated KOBS SAT nuclei with SingleR 1.2.4 and the reference datasets used previously in the cited Pan et al. study; separately annotated RYSA SAT nuclei with SingleR 1.8.1 and the Emont adipose reference atlas. The two reference and release declarations are retained independently.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11568758/ (section: Methods / Processing of SAT snRNA-seq data in KOBS)",
+        "implementation_scope_note": "Project availability: complete unchanged original SingleR annotation in explicitly selected 1.2.4, 1.8.1, 2.2.0, 2.6.0 and 2.8.0 source profiles, with complete returns, conditions and RNG. The runtime, original references, label vectors, caller settings and RNG must be supplied explicitly; project comparison environments are not recovered author environments. Original errors remain errors. Literal 2.41 is unresolved and its dependent analysis is SKIP3 without version substitution. Source-specific releases/references are not borrowed between analysis contexts. Saved training pointers are records, not reusable live native indexes. SKIP3 skips dependent analysis for unavailable/forbidden requirements; FAIL2 admits no complete result, including recording failure. Whole-tool validity, biological decisions and paper reproduction remain unqualified.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 16,
+            "section": "Methods / Processing of SAT snRNA-seq data in KOBS",
+            "paragraph_sha256": "84c324d009ef5dd98dccadf06b183b42f7a465b32f13aa8d5292a5eae87dc9a0"
+          },
+          {
+            "paragraph_index": 18,
+            "section": "Methods / Processing of SAT snRNA-seq data in RYSA",
+            "paragraph_sha256": "2c92aea1d107047b1c70418d68df1c2e8c27019042b99a4100be28d45010fb32"
+          }
+        ]
       },
       {
         "tool_id": "star",
@@ -55603,12 +55734,20 @@
         "matched_text": "SingleR",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
-        "version_reported_near_name": null,
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
+        "version_reported_near_name": "2.41",
         "evidence_selection": "highest-scored-eligible-method-sentence",
         "evidence_paragraph_sha256": "d63a03bda6013f0581df084b7283b0586612ca452199d90f210b255a2b7df4a4",
-        "use_summary": "Reference-based cell annotation.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12461018/ (section: Methods / scRNA-seq data analysis)"
+        "use_summary": "Used SingleR, literally reported as 2.41, in residual blood-cell identification/removal alongside Seurat PBMC-reference analysis. That release spelling remains unresolved. The inspected author notebook separately performs four SingleR calls with HPCA and Blueprint/ENCODE main/fine labels, then filters using unpruned labels, and performs a separate Seurat PBMC mapping. Its actual executed commit, release and reference snapshots are unknown; the haemoglobin-expression filter is a separate QC step.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12461018/ (section: Methods / scRNA-seq data analysis)",
+        "implementation_scope_note": "Project availability: complete unchanged original SingleR annotation in explicitly selected 1.2.4, 1.8.1, 2.2.0, 2.6.0 and 2.8.0 source profiles, with complete returns, conditions and RNG. The runtime, original references, label vectors, caller settings and RNG must be supplied explicitly; project comparison environments are not recovered author environments. Original errors remain errors. Literal 2.41 is unresolved and its dependent analysis is SKIP3 without version substitution. Source-specific releases/references are not borrowed between analysis contexts. Saved training pointers are records, not reusable live native indexes. SKIP3 skips dependent analysis for unavailable/forbidden requirements; FAIL2 admits no complete result, including recording failure. Whole-tool validity, biological decisions and paper reproduction remain unqualified.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 8,
+            "section": "Methods / scRNA-seq data analysis",
+            "paragraph_sha256": "d63a03bda6013f0581df084b7283b0586612ca452199d90f210b255a2b7df4a4"
+          }
+        ]
       },
       {
         "tool_id": "soupx",

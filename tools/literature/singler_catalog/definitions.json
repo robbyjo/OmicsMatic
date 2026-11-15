@@ -1,0 +1,29 @@
+[
+  {
+    "id": "celldex",
+    "name": "celldex",
+    "pattern": "(?<![A-Za-z0-9_])celldex(?![A-Za-z0-9_]|\\s+Therapeutics)",
+    "role": "Retrieve reference expression profiles and cell labels",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Separate reference-data retrieval software; SingleR does not implement celldex. Exact permitted source, historical data snapshots and runtime require separate integration."
+  },
+  {
+    "id": "spotlight",
+    "name": "SPOTlight",
+    "pattern": "(?<![A-Za-z0-9_])SPOTlight(?![A-Za-z0-9_]|\\s+Therapeutics)(?=\\s*(?:\\(|package\\b))",
+    "role": "Seeded NMF deconvolution of spatial transcriptomic spots",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Separate original SPOTlight workflow remains missing. The paper reports version 1.0.3 and a >=10% predicted neutrophil spot rule; no implementation or biological reproduction credit."
+  },
+  {
+    "id": "bd-rhapsody",
+    "name": "BD Rhapsody analysis pipeline",
+    "pattern": "(?<![A-Za-z0-9_])(?:BD\\s+)?Rhapsody\\s+analysis\\s+pipeline(?![A-Za-z0-9_])",
+    "role": "Process Rhapsody sequencing files, align, quantify and filter cells",
+    "current_coverage": "missing",
+    "existing_source": null,
+    "coverage_note": "Separate original pipeline; source and license/runtime assessment remains open. P051 reports local 1.9.1 processing and another unversioned processing context. Hardware descriptions add no software use or implementation credit."
+  }
+]
