@@ -1,0 +1,519 @@
+{
+  "schema": "omicsmatic-original-bigcat005-workflow-profiles-v1",
+  "arrow_source_profile": {
+    "path": "tools/literature/arrow1201/source-profile.json",
+    "bytes": 269258,
+    "sha256": "a046f8b5686930b3c376a5a4e0e284d16c454d3a713442ea40cb07daac4690ca"
+  },
+  "required_cpp_artifact": {
+    "name": "libarrow",
+    "version": "12.0.1",
+    "build": "h32ed672_2_cpu",
+    "url": "https://conda.anaconda.org/conda-forge/linux-64/libarrow-12.0.1-h32ed672_2_cpu.conda",
+    "sha256": "ecd656a5b8b37d5855052c1219754e69ec8673cddd0e8be90c3984bdb409aa68"
+  },
+  "profiles": {
+    "prepublication-2023": {
+      "R": "4.2.3",
+      "bigcat": "0.0.5",
+      "namespace_functions": 380,
+      "workflows": ["centroid_cross_validation", "constellation_from_embedding"],
+      "operations": [
+        "build_dend",
+        "plot_constellation",
+        "i_harmonize",
+        "iter_clust_big",
+        "find_doublet_by_marker",
+        "select_N_markers",
+        "map_cells_knn_big",
+        "impute_cross_big"
+      ],
+      "manifest": "reference2023-pixi.toml",
+      "lock": "reference2023-pixi.lock",
+      "source_packages": [
+        {
+          "name": "Rphenograph",
+          "commit": "0298487f0ee13aac55eb77d19992f6bd878ba2fc",
+          "archive": {
+            "bytes": 56945,
+            "sha256": "30d552fffb72b354acce8920742b068eac7481a9a4a0d7100056dc753b2dca00"
+          },
+          "url": "https://codeload.github.com/JinmiaoChenLab/Rphenograph/tar.gz/0298487f0ee13aac55eb77d19992f6bd878ba2fc",
+          "filename": "Rphenograph-0298487f0ee13aac55eb77d19992f6bd878ba2fc.tar.gz",
+          "archive_top_level": "Rphenograph-0298487f0ee13aac55eb77d19992f6bd878ba2fc",
+          "original_members": {
+            "DESCRIPTION": {
+              "bytes": 945,
+              "sha256": "65405aea919757ab1fc74374990231bc6fa2c2342d2e3738c5ca8ddbe71cd7ec"
+            },
+            "NAMESPACE": {
+              "bytes": 280,
+              "sha256": "1094b0771790e4571f3b2eef1157fbe3deabf205b25bae3928433b03c71f8a43"
+            },
+            "R/RcppExports.R": {
+              "bytes": 215,
+              "sha256": "c16b84b1fe751dc4549fd97efa450bed368f0fbc886ea5fa93817cadea7f9323"
+            },
+            "R/phenograph.R": {
+              "bytes": 5195,
+              "sha256": "1f7a36df33cee2e3d49cd884aa00fd349d4bc85e6604c82a75460127e6a79134"
+            },
+            "README.md": {
+              "bytes": 1636,
+              "sha256": "ae4a0e8bf0927ccb0b7b7ffe1a3285968374ff5e3bf8a2ec3667fba46e1cf996"
+            },
+            "Rhpenograph_iris_cluster.png": {
+              "bytes": 54827,
+              "sha256": "94f302f8de1be496dba995d82d2956db5065dbf0767492c6b49e35db16636b53"
+            },
+            "man/Rphenograph.Rd": {
+              "bytes": 2482,
+              "sha256": "aeb0fe2c0a0369bad774825c69f2165a79670bb0f9c725395210bede79150dc6"
+            },
+            "man/find_neighbors.Rd": {
+              "bytes": 942,
+              "sha256": "575e8493dca764ba5c57ee3c8e7a7c48cb1194b62219c97c656633366e47b41b"
+            },
+            "src/RcppExports.cpp": {
+              "bytes": 497,
+              "sha256": "cbba83c80f6f92c965aea7b823b515e0ec99be80fe5f35e9239e6454b48a757f"
+            },
+            "src/jaccard_coeff.cpp": {
+              "bytes": 1230,
+              "sha256": "11b51aa4127f766c1f8a3c574a10c8c31ec8cfa54ad73454c1f996699400f824"
+            }
+          },
+          "license": "Artistic-2.0"
+        },
+        {
+          "name": "scrattch.bigcat",
+          "commit": "bbfe5277de63c65a5342e43f3e1eeb1015755fc7",
+          "archive": {
+            "bytes": 134141,
+            "sha256": "917d0d6fb90a18656a8f7570444515f252cfd3df556c32b773cb57fa05831984"
+          },
+          "url": "https://codeload.github.com/AllenInstitute/scrattch.bigcat/tar.gz/bbfe5277de63c65a5342e43f3e1eeb1015755fc7",
+          "filename": "scrattch.bigcat-bbfe5277de63c65a5342e43f3e1eeb1015755fc7.tar.gz",
+          "archive_top_level": "scrattch.bigcat-bbfe5277de63c65a5342e43f3e1eeb1015755fc7",
+          "original_members": {
+            "CONTRIBUTION": {
+              "bytes": 1468,
+              "sha256": "44e18fb4263248e3e215a2904f8952b9da0aa771ec5f6972f28ae2715e42d09f"
+            },
+            "DESCRIPTION": {
+              "bytes": 1588,
+              "sha256": "828c20dfcf7b9624bddc2faff9f594015a5a6a09285144d3299871570d80a3aa"
+            },
+            "NAMESPACE": {
+              "bytes": 156,
+              "sha256": "6bce784962381b49f1c5dd32370ed704d4728beb36493476e548e2adde85f330"
+            },
+            "R/KNN.graph.R": {
+              "bytes": 32819,
+              "sha256": "ed37dcd3a7c2af72db8179489644e240d84570b5ea321992c2e49e2754960ae4"
+            },
+            "R/RcppExports.R": {
+              "bytes": 11963,
+              "sha256": "696f26764fa2d56f095b7b83cef18068eb10da4de26ecda1f1e3135ced567dd3"
+            },
+            "R/annotate.R": {
+              "bytes": 26140,
+              "sha256": "1aeddd9c5090b31020fcac3705ba1d0d26ce2d94b16aa30d1109ca3dbd83e8c2"
+            },
+            "R/big_util.R": {
+              "bytes": 33820,
+              "sha256": "a76868240765aae531f0bb8b5c4b9c0d9cc898783c10fe577b7eee5d3af88604"
+            },
+            "R/cluster.R": {
+              "bytes": 17787,
+              "sha256": "6f9fdaa505ea1fd4a097e7c9e338ac4023607cfac8d954da503ef18cbb6a457b"
+            },
+            "R/cluster_big.R": {
+              "bytes": 19833,
+              "sha256": "af44af4caf8c5b4a2364dd7d7662bb9121289db0f82660bb66034d06f828b2f0"
+            },
+            "R/consensusCluster.R": {
+              "bytes": 22082,
+              "sha256": "faecff7bcbbf2cf5809ca7c5bd914829f71d3fac3ced7b74929171d5d6fc49a2"
+            },
+            "R/de.genes.R": {
+              "bytes": 46101,
+              "sha256": "0d96639bdbce07657c1f57de0abc3c8d44385cb01810b030a1181765c5561478"
+            },
+            "R/dendro.R": {
+              "bytes": 14500,
+              "sha256": "b57486c814376481e9f3354da6490e5c32271f50f70431ce2df2417c709ae08c"
+            },
+            "R/find_noise_cl.R": {
+              "bytes": 10776,
+              "sha256": "5d9a2c8496dbc200f0720e7bf3708d1d5da07af07f57e55affe3f839110cafa9"
+            },
+            "R/find_noise_cl_big.R": {
+              "bytes": 8298,
+              "sha256": "b8baaa116a8c3ef51e11c6a7986ffd276400e2f064265ad9316e111782844430"
+            },
+            "R/harmonize.R": {
+              "bytes": 40091,
+              "sha256": "d43199f3fab44a8854d1184a1e02a63f6f38d7f40f3ca925914d5d860c323110"
+            },
+            "R/harmonize_impute.R": {
+              "bytes": 11418,
+              "sha256": "8c7ef08f7fdc0ced581ff8576cf40e1c175c5b5199b4b532381f6daecabd2e2f"
+            },
+            "R/harmonize_impute_big.R": {
+              "bytes": 7719,
+              "sha256": "28e50c01bc17af1ba4706c7b7805938f5d3edeb29b91aadf9702a9c0d76f5532"
+            },
+            "R/harmonize_merge.R": {
+              "bytes": 21356,
+              "sha256": "9a9aaa448db65e0dc75ba0832d1691b5a40aebf2ac41930e91ae0fe5de5d8f94"
+            },
+            "R/heatmap.R": {
+              "bytes": 60010,
+              "sha256": "7530acf1f3807ff771323e638cc6110190a932609d1dbd903585577a7ee4b215"
+            },
+            "R/markers.R": {
+              "bytes": 20894,
+              "sha256": "d943a7f9ebcffaf1356e8ee87d979963d8934bbab4b474f1075014d2b3e12b6c"
+            },
+            "R/markers.parquet.R": {
+              "bytes": 19966,
+              "sha256": "5a6fdb8bccdc5fb275dd0869e38ac3fb8d32f870a54d66ad67d452d6cc1e39c1"
+            },
+            "R/merge_cl.R": {
+              "bytes": 9077,
+              "sha256": "e4045a4b8889cd3ea2e922466df98fa4fee1e5f4c7279d53b4328bd9224bfe11"
+            },
+            "R/normalize.R": {
+              "bytes": 2106,
+              "sha256": "e5ba2324bbb70d7732143c198ce9cfef1e78da26cbdc565382a924254649d2fe"
+            },
+            "R/reduceDimension_PCA.R": {
+              "bytes": 3216,
+              "sha256": "86ed6449e3b90ecb0a32b06162562e210c9a8d7338eb60ce54d67e9c8291057e"
+            },
+            "R/reduceDimension_Umap.R": {
+              "bytes": 2840,
+              "sha256": "53d717ff351fad37a98c75620ceaac5375dd052293636efd196d89a16d5eb471"
+            },
+            "R/reduceDimension_WGCNA.R": {
+              "bytes": 9447,
+              "sha256": "4a1a90e485687f7c1002ae4d4d3b177bf143e59955790144e547094d514ba361"
+            },
+            "R/reduceDimension_plot.R": {
+              "bytes": 30493,
+              "sha256": "1813bd4461a33965d1c2d2007c3dc4ee98773f51496fd6d7f8f8c0850655a07d"
+            },
+            "R/reduceDimension_tSNE.R": {
+              "bytes": 2737,
+              "sha256": "62f97e4a1195a756feb6f72cbfbf3942adf6db4008df10862bf53a6aafb6b173"
+            },
+            "R/util.R": {
+              "bytes": 26217,
+              "sha256": "ee5642ffd664d70fccfa2536a8c0f7e76aecb3449cfa365ffe77f71ab5af7b18"
+            },
+            "R/vg.R": {
+              "bytes": 14472,
+              "sha256": "2058275b529025cb4be9d26b4ba958d110cb7a34c773dacfa3f2c1f6c4f3a134"
+            },
+            "src/Makevars": {
+              "bytes": 272,
+              "sha256": "b1ca80ef7f5f4de9af5431f062477eaf73e0bee27c82d5d8774500a810b2d4c2"
+            },
+            "src/RcppExports.cpp": {
+              "bytes": 52050,
+              "sha256": "a777ea22160b60870001a239bacee40f3e631b522c33720c59dbf9f8ce4f9d26"
+            },
+            "src/Rcpp_parallel.cpp": {
+              "bytes": 54963,
+              "sha256": "e5a680cd5aaa39abb39d4ff57b3925e73232b87d79f74657be866b794861aafe"
+            },
+            "src/Rcpp_parallel_dense.cpp": {
+              "bytes": 52635,
+              "sha256": "f99bc19c84e01527a3504b8a69202f60517a1f9888017c0cb58d25533e956e79"
+            },
+            "src/Rcpp_parallel_transpose.cpp": {
+              "bytes": 56327,
+              "sha256": "aaa10c6b4357c5f2d6f402281c312fd98fbc53c6c0fb245044b68d5a854f1f36"
+            },
+            "src/Rcpp_parallel_transpose_dense.cpp": {
+              "bytes": 53862,
+              "sha256": "2ea859491f42d63436203c0e5c76c4035773dab7d62137e7281e5c3696b5e205"
+            },
+            "src/data_manipulation.cpp": {
+              "bytes": 15469,
+              "sha256": "48648577bbb999e2dc3d02db42e119e49fc0661369facda64290ee2541dbd100"
+            },
+            "src/data_manipulation.h": {
+              "bytes": 2837,
+              "sha256": "6998ddca6ab8682d12e61d7f7ebbbca7526dc19f06b7200c46f80fc7b724e81d"
+            },
+            "src/impute.cpp": {
+              "bytes": 1400,
+              "sha256": "a7a4201d19490937c7ca554a1c0c7d2b9d76dc3d86b461d43bc214e3004e1dd8"
+            },
+            "src/snn.cpp": {
+              "bytes": 2345,
+              "sha256": "65a708210257b5a1ab6e73c7406426c18a224b84a8244a99c99189909838b71d"
+            },
+            "src/snn.h": {
+              "bytes": 634,
+              "sha256": "4d23319f8531e8383f58cc6ea17cd3597ff19e21afeaa7f10ad11c00f3f84015"
+            }
+          },
+          "namespace_functions": 380
+        }
+      ],
+      "arrow_from_source": false,
+      "required_conda_artifacts": {
+        "r-arrow": {
+          "name": "r-arrow",
+          "version": "12.0.1",
+          "build": "r42h59595ed_0",
+          "url": "https://conda.anaconda.org/conda-forge/linux-64/r-arrow-12.0.1-r42h59595ed_0.conda",
+          "sha256": "7ef7b825c6af322f15762d1f7f92b330abf6c79746cdd2cb1943a4ffe3f9d619"
+        },
+        "libarrow": {
+          "name": "libarrow",
+          "version": "12.0.1",
+          "build": "h32ed672_2_cpu",
+          "url": "https://conda.anaconda.org/conda-forge/linux-64/libarrow-12.0.1-h32ed672_2_cpu.conda",
+          "sha256": "ecd656a5b8b37d5855052c1219754e69ec8673cddd0e8be90c3984bdb409aa68"
+        }
+      },
+      "known_limits": [
+        "i_harmonize fails on ordinary 2D matrices because compute_knn includes an extra subscript. Select the separately declared earlier source profile explicitly for the tested historical path.",
+        "map_cells_knn_big default method vector errors in this selected R version; explicit scalar methods are project caller choices.",
+        "impute_cross_big defaults reference a caller object impute.dat.list; omitted defaults are not repaired.",
+        "The original Parquet constructor accesses sparse matrix slots directly. Supply the intended dgCMatrix explicitly; dense matrices are not silently converted.",
+        "The original Parquet constructor fails when the last cell bin has one column, including the tested 50001-cell input at col.bin.size=50000. Do not pad or remove cells to conceal the failure."
+      ]
+    },
+    "pre-regression-2022": {
+      "R": "4.1.3",
+      "bigcat": "0.0.5",
+      "namespace_functions": 373,
+      "workflows": ["centroid_cross_validation", "constellation_from_embedding"],
+      "operations": [
+        "build_dend",
+        "plot_constellation",
+        "i_harmonize",
+        "iter_clust_big",
+        "find_doublet_by_marker",
+        "select_N_markers",
+        "map_cells_knn_big"
+      ],
+      "manifest": "reference2022-pixi.toml",
+      "lock": "reference2022-pixi.lock",
+      "source_packages": [
+        {
+          "name": "scrattch.bigcat",
+          "commit": "5134c0b0a107a724f7d1f091c23a73ab691b4a66",
+          "archive": {
+            "bytes": 131609,
+            "sha256": "07640e47375d70ff34da774286e341ede0cbce387685a937465c1106f0deb4a4"
+          },
+          "url": "https://codeload.github.com/AllenInstitute/scrattch.bigcat/tar.gz/5134c0b0a107a724f7d1f091c23a73ab691b4a66",
+          "filename": "scrattch.bigcat-5134c0b0a107a724f7d1f091c23a73ab691b4a66.tar.gz",
+          "archive_top_level": "scrattch.bigcat-5134c0b0a107a724f7d1f091c23a73ab691b4a66",
+          "original_members": {
+            "CONTRIBUTION": {
+              "bytes": 1468,
+              "sha256": "44e18fb4263248e3e215a2904f8952b9da0aa771ec5f6972f28ae2715e42d09f"
+            },
+            "DESCRIPTION": {
+              "bytes": 1588,
+              "sha256": "828c20dfcf7b9624bddc2faff9f594015a5a6a09285144d3299871570d80a3aa"
+            },
+            "NAMESPACE": {
+              "bytes": 156,
+              "sha256": "6bce784962381b49f1c5dd32370ed704d4728beb36493476e548e2adde85f330"
+            },
+            "R/KNN.graph.R": {
+              "bytes": 31073,
+              "sha256": "3e1f844a222658c14181375ce19fef593f57eac4d80a810899324b09c6676c1e"
+            },
+            "R/RcppExports.R": {
+              "bytes": 11963,
+              "sha256": "696f26764fa2d56f095b7b83cef18068eb10da4de26ecda1f1e3135ced567dd3"
+            },
+            "R/annotate.R": {
+              "bytes": 26141,
+              "sha256": "86fc9cd1df5b4cde387c8af235831b305959fc9ff8205c58f83e78403977f300"
+            },
+            "R/big_util.R": {
+              "bytes": 33687,
+              "sha256": "dc6d997fdcbbb2bf00df18b20dea7d6ca7b9f70f3d88357e33614d8d5b4fbf78"
+            },
+            "R/cluster.R": {
+              "bytes": 17787,
+              "sha256": "6f9fdaa505ea1fd4a097e7c9e338ac4023607cfac8d954da503ef18cbb6a457b"
+            },
+            "R/cluster_big.R": {
+              "bytes": 19704,
+              "sha256": "5b3bc1e8fdf16700ac814dfb148e160bb4d2129ca12b5aab919d590e64789f4e"
+            },
+            "R/consensusCluster.R": {
+              "bytes": 22082,
+              "sha256": "faecff7bcbbf2cf5809ca7c5bd914829f71d3fac3ced7b74929171d5d6fc49a2"
+            },
+            "R/de.genes.R": {
+              "bytes": 45961,
+              "sha256": "9b59e1b2fdd0af78399ef90124647e9b5dbb9fe7241ce007abb02404686a47cf"
+            },
+            "R/dendro.R": {
+              "bytes": 14500,
+              "sha256": "b57486c814376481e9f3354da6490e5c32271f50f70431ce2df2417c709ae08c"
+            },
+            "R/find_noise_cl.R": {
+              "bytes": 10776,
+              "sha256": "5d9a2c8496dbc200f0720e7bf3708d1d5da07af07f57e55affe3f839110cafa9"
+            },
+            "R/find_noise_cl_big.R": {
+              "bytes": 8298,
+              "sha256": "b8baaa116a8c3ef51e11c6a7986ffd276400e2f064265ad9316e111782844430"
+            },
+            "R/harmonize.R": {
+              "bytes": 37358,
+              "sha256": "09e84f8236789c6620cacce88a5e8c43302c65e3ed7a3c2584b4c0dc7ede9c69"
+            },
+            "R/harmonize_impute.R": {
+              "bytes": 5984,
+              "sha256": "30bc3d05f19ec85360a1c064a249e23a54991730cb1fcc4089ab88804cf6fe18"
+            },
+            "R/harmonize_impute_big.R": {
+              "bytes": 5046,
+              "sha256": "cc0f5d60a8a71e3fb09d377ded4cf2e953d4a286d399f454c845e6459069fbbb"
+            },
+            "R/harmonize_merge.R": {
+              "bytes": 21356,
+              "sha256": "9a9aaa448db65e0dc75ba0832d1691b5a40aebf2ac41930e91ae0fe5de5d8f94"
+            },
+            "R/heatmap.R": {
+              "bytes": 60010,
+              "sha256": "7530acf1f3807ff771323e638cc6110190a932609d1dbd903585577a7ee4b215"
+            },
+            "R/markers.R": {
+              "bytes": 20894,
+              "sha256": "d943a7f9ebcffaf1356e8ee87d979963d8934bbab4b474f1075014d2b3e12b6c"
+            },
+            "R/markers.parquet.R": {
+              "bytes": 16274,
+              "sha256": "df5333cc54a9d4da46817026497592c182fd5d2102f00c0d05fb10409db4c071"
+            },
+            "R/merge_cl.R": {
+              "bytes": 9077,
+              "sha256": "e4045a4b8889cd3ea2e922466df98fa4fee1e5f4c7279d53b4328bd9224bfe11"
+            },
+            "R/normalize.R": {
+              "bytes": 2106,
+              "sha256": "e5ba2324bbb70d7732143c198ce9cfef1e78da26cbdc565382a924254649d2fe"
+            },
+            "R/reduceDimension_PCA.R": {
+              "bytes": 3216,
+              "sha256": "86ed6449e3b90ecb0a32b06162562e210c9a8d7338eb60ce54d67e9c8291057e"
+            },
+            "R/reduceDimension_Umap.R": {
+              "bytes": 2840,
+              "sha256": "53d717ff351fad37a98c75620ceaac5375dd052293636efd196d89a16d5eb471"
+            },
+            "R/reduceDimension_WGCNA.R": {
+              "bytes": 9447,
+              "sha256": "4a1a90e485687f7c1002ae4d4d3b177bf143e59955790144e547094d514ba361"
+            },
+            "R/reduceDimension_plot.R": {
+              "bytes": 30493,
+              "sha256": "1813bd4461a33965d1c2d2007c3dc4ee98773f51496fd6d7f8f8c0850655a07d"
+            },
+            "R/reduceDimension_tSNE.R": {
+              "bytes": 2737,
+              "sha256": "62f97e4a1195a756feb6f72cbfbf3942adf6db4008df10862bf53a6aafb6b173"
+            },
+            "R/util.R": {
+              "bytes": 26201,
+              "sha256": "ecc52729719381a07859d337fce8d1869ebede9c753bab457a8bacec08077db5"
+            },
+            "R/vg.R": {
+              "bytes": 14472,
+              "sha256": "2058275b529025cb4be9d26b4ba958d110cb7a34c773dacfa3f2c1f6c4f3a134"
+            },
+            "src/Makevars": {
+              "bytes": 272,
+              "sha256": "b1ca80ef7f5f4de9af5431f062477eaf73e0bee27c82d5d8774500a810b2d4c2"
+            },
+            "src/RcppExports.cpp": {
+              "bytes": 52050,
+              "sha256": "a777ea22160b60870001a239bacee40f3e631b522c33720c59dbf9f8ce4f9d26"
+            },
+            "src/Rcpp_parallel.cpp": {
+              "bytes": 54963,
+              "sha256": "e5a680cd5aaa39abb39d4ff57b3925e73232b87d79f74657be866b794861aafe"
+            },
+            "src/Rcpp_parallel_dense.cpp": {
+              "bytes": 52635,
+              "sha256": "f99bc19c84e01527a3504b8a69202f60517a1f9888017c0cb58d25533e956e79"
+            },
+            "src/Rcpp_parallel_transpose.cpp": {
+              "bytes": 56327,
+              "sha256": "aaa10c6b4357c5f2d6f402281c312fd98fbc53c6c0fb245044b68d5a854f1f36"
+            },
+            "src/Rcpp_parallel_transpose_dense.cpp": {
+              "bytes": 53862,
+              "sha256": "2ea859491f42d63436203c0e5c76c4035773dab7d62137e7281e5c3696b5e205"
+            },
+            "src/data_manipulation.cpp": {
+              "bytes": 15469,
+              "sha256": "48648577bbb999e2dc3d02db42e119e49fc0661369facda64290ee2541dbd100"
+            },
+            "src/data_manipulation.h": {
+              "bytes": 2837,
+              "sha256": "6998ddca6ab8682d12e61d7f7ebbbca7526dc19f06b7200c46f80fc7b724e81d"
+            },
+            "src/impute.cpp": {
+              "bytes": 1400,
+              "sha256": "a7a4201d19490937c7ca554a1c0c7d2b9d76dc3d86b461d43bc214e3004e1dd8"
+            },
+            "src/snn.cpp": {
+              "bytes": 2345,
+              "sha256": "65a708210257b5a1ab6e73c7406426c18a224b84a8244a99c99189909838b71d"
+            },
+            "src/snn.h": {
+              "bytes": 634,
+              "sha256": "4d23319f8531e8383f58cc6ea17cd3597ff19e21afeaa7f10ad11c00f3f84015"
+            }
+          },
+          "namespace_functions": 373
+        }
+      ],
+      "arrow_from_source": true,
+      "required_conda_artifacts": {
+        "libarrow": {
+          "name": "libarrow",
+          "version": "12.0.1",
+          "build": "h32ed672_2_cpu",
+          "url": "https://conda.anaconda.org/conda-forge/linux-64/libarrow-12.0.1-h32ed672_2_cpu.conda",
+          "sha256": "ecd656a5b8b37d5855052c1219754e69ec8673cddd0e8be90c3984bdb409aa68"
+        }
+      },
+      "known_limits": [
+        "The authors source commit, edition for P058 and caller environment are unestablished. This is an explicit earlier source profile, never a silent fallback.",
+        "i_harmonize requires the caller global sets. Provide it explicitly in request.globals or retain the original missing-object error.",
+        "R4.1 executes vector if conditions with original warnings; all warnings require review.",
+        "impute_cross_big is absent in this snapshot; use a separately selected profile for that operation."
+      ]
+    }
+  },
+  "arrow_source": {
+    "name": "arrow",
+    "version": "12.0.1",
+    "archive": {
+      "bytes": 4095630,
+      "sha256": "145b78648bd0599f33f7854a3897a58f4bda4c22d329031bf781efb3b74d3d73"
+    },
+    "url": "https://cran.r-project.org/src/contrib/Archive/arrow/arrow_12.0.1.tar.gz",
+    "filename": "arrow_12.0.1.tar.gz",
+    "archive_top_level": "arrow",
+    "license": "Apache-2.0",
+    "original_members_from_pinned_arrow_profile": true
+  }
+}
