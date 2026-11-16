@@ -128,6 +128,37 @@ test heap, and recycles workers after 100 test classes. No test assertion or
 scientific tolerance was relaxed. The second tag target
 `6b9c8d809a582ab7f5eaf7ca5b6378814c162fcf` also produced no release assets.
 
+A targeted Linux/Java 21 regression run passed **41 tests with no failures,
+errors or skips**: all 22 study-pipeline tests, six original Nextflow process
+controls and 13 runtime-integrity checks. All three exact Nextflow versions
+were configured with new permitted setup-only health reports for the current
+host and unchanged locked payloads. Historical runtime reports were preserved.
+The [targeted receipt](https://github.com/robbyjo/OmicsMatic/blob/main/docs/releases/0.4.0/validation/linux-targeted-regression.json)
+records suite counts and raw XML hashes. This targeted run does not replace the
+full Java 17 tagged CI gate or the catalog qualification described below.
+
+### Published release
+
+The [final tagged Linux/Java 17 build](https://github.com/robbyjo/OmicsMatic/actions/runs/43788666502)
+passed `clean check assemble` at commit
+`c29715e6a2159b0b8a0e9b9ffdb5e38a7b7f0ebc`: **25,128 tests passed, 391
+skipped, zero failures and zero errors**, across 878 suites. The
+[CI receipt](https://github.com/robbyjo/OmicsMatic/blob/main/docs/releases/0.4.0/validation/published-linux-ci.json)
+records every suite and the retained test-report archive hash. Optional runtime
+skips remain distinct from the configured targeted controls above.
+
+[v0.4.0 is published](https://github.com/robbyjo/OmicsMatic/releases/tag/v0.4.0)
+with six assets. All five entries in `SHA256SUMS.txt` match GitHub's uploaded
+asset digests; the downloaded inventory exactly matches the frozen manifest.
+The [published asset receipt](https://github.com/robbyjo/OmicsMatic/blob/main/docs/releases/0.4.0/validation/published-assets.json)
+records their sizes and SHA-256 identities. These Linux-built assets have their
+own identities, separate from the earlier Windows candidate.
+
+The executable was downloaded from the public release, its SHA-256 and ZIP
+integrity verified, and `--version` and `--help` executed successfully. It
+reports `0.4.0`. The [download check](https://github.com/robbyjo/OmicsMatic/blob/main/docs/releases/0.4.0/validation/download-smoke-check.json)
+records the exact public executable tested.
+
 ### Catalog verification and retained attempts
 
 1. The new checkout initially lacked the cached primary-paper XML and correctly

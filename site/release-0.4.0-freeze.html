@@ -151,6 +151,32 @@ uses deterministic ordering for other test artifact lookups, provides a 2 GiB
 test heap, and recycles workers after 100 test classes. No test assertion or
 scientific tolerance was relaxed. The second tag target
 <code>6b9c8d809a582ab7f5eaf7ca5b6378814c162fcf</code> also produced no release assets.</p>
+<p>A targeted Linux/Java 21 regression run passed <strong>41 tests with no failures,
+errors or skips</strong>: all 22 study-pipeline tests, six original Nextflow process
+controls and 13 runtime-integrity checks. All three exact Nextflow versions
+were configured with new permitted setup-only health reports for the current
+host and unchanged locked payloads. Historical runtime reports were preserved.
+The <a href="https://github.com/robbyjo/OmicsMatic/blob/main/docs/releases/0.4.0/validation/linux-targeted-regression.json">targeted receipt</a>
+records suite counts and raw XML hashes. This targeted run does not replace the
+full Java 17 tagged CI gate or the catalog qualification described below.</p>
+<h3 id="published-release">Published release</h3>
+<p>The <a href="https://github.com/robbyjo/OmicsMatic/actions/runs/43788666502">final tagged Linux/Java 17 build</a>
+passed <code>clean check assemble</code> at commit
+<code>c29715e6a2159b0b8a0e9b9ffdb5e38a7b7f0ebc</code>: <strong>25,128 tests passed, 391
+skipped, zero failures and zero errors</strong>, across 878 suites. The
+<a href="https://github.com/robbyjo/OmicsMatic/blob/main/docs/releases/0.4.0/validation/published-linux-ci.json">CI receipt</a>
+records every suite and the retained test-report archive hash. Optional runtime
+skips remain distinct from the configured targeted controls above.</p>
+<p><a href="https://github.com/robbyjo/OmicsMatic/releases/tag/v0.4.0">v0.4.0 is published</a>
+with six assets. All five entries in <code>SHA256SUMS.txt</code> match GitHub's uploaded
+asset digests; the downloaded inventory exactly matches the frozen manifest.
+The <a href="https://github.com/robbyjo/OmicsMatic/blob/main/docs/releases/0.4.0/validation/published-assets.json">published asset receipt</a>
+records their sizes and SHA-256 identities. These Linux-built assets have their
+own identities, separate from the earlier Windows candidate.</p>
+<p>The executable was downloaded from the public release, its SHA-256 and ZIP
+integrity verified, and <code>--version</code> and <code>--help</code> executed successfully. It
+reports <code>0.4.0</code>. The <a href="https://github.com/robbyjo/OmicsMatic/blob/main/docs/releases/0.4.0/validation/download-smoke-check.json">download check</a>
+records the exact public executable tested.</p>
 <h3 id="catalog-verification-and-retained-attempts">Catalog verification and retained attempts</h3>
 <ol>
 <li>The new checkout initially lacked the cached primary-paper XML and correctly

@@ -55,6 +55,14 @@ whole-catalog historical source-baseline refusal remains a known limitation;
 skipped optional-runtime checks and historical qualifications are not new
 scientific validation.
 
+Published artifacts passed the full Linux/Java 17 `clean check assemble` gate:
+**25,128 tests passed, 391 skipped, zero failures or errors** across 878 suites.
+See the [successful tagged build](https://github.com/robbyjo/OmicsMatic/actions/runs/43788666502)
+and [published checksums](https://github.com/robbyjo/OmicsMatic/releases/download/v0.4.0/SHA256SUMS.txt).
+The configured Linux regression additionally passed all 41 study and Nextflow
+checks without skips. Optional-runtime skips and the catalog limitation above
+remain explicitly documented.
+
 # OmicsMatic 0.3.7
 
 ## Three degrees of AI collaboration
