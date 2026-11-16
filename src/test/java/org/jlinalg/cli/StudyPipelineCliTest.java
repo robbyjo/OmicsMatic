@@ -882,7 +882,7 @@ class StudyPipelineCliTest {
             "--allow-partial"));
         assertTrue(stdout.contains("state: waiting_for_input"));
         assertTrue(stdout.contains("failed: 0"));
-        Path request = find(project.resolve("runs"), "request.yaml");
+        Path request = findOperationRequest(project.resolve("runs"), "association");
         assertTrue(Files.readString(request).contains(
             "No automatic association adapter is registered"));
         try(var files=Files.walk(project.resolve("runs"))){assertFalse(files.anyMatch(path->path.getFileName().toString().equals("model-review.yaml")));}
@@ -1123,8 +1123,22 @@ class StudyPipelineCliTest {
     private static Path find(Path root, String name) throws IOException {
         try (var paths = Files.walk(root)) {
             return paths.filter(path -> path.getFileName().toString().equals(name))
-                .findFirst().orElseThrow();
+                .sorted().findFirst().orElseThrow();
         }
+    }
+
+    private static Path findOperationRequest(Path root, String operation) throws IOException {
+        var matches = new java.util.ArrayList<Path>();
+        try (var paths = Files.walk(root)) {
+            for (Path path : paths.filter(candidate -> candidate.getFileName().toString()
+                    .equals("request.yaml")).sorted().toList()) {
+                if (operation.equals(StudyYaml.loadArtifact(path).get("operation"))) {
+                    matches.add(path);
+                }
+            }
+        }
+        assertEquals(1, matches.size(), "Expected one request for " + operation + ": " + matches);
+        return matches.get(0);
     }
 
     @SuppressWarnings("unchecked")

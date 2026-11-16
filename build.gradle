@@ -204,6 +204,9 @@ tasks.withType(Javadoc).configureEach {
 
 test {
     useJUnitPlatform()
+    // The full scientific suite exceeds the default 512 MiB worker heap on Java 17.
+    maxHeapSize = '2g'
+    forkEvery = 100
     // Original Nextflow controls require explicitly supplied, exact managed runtimes.
     // Absent runtimes are reported as skips; configured but invalid runtimes still fail.
     ['21.04.1', '22.10.6', '24.04.4'].each { nextflowVersion ->

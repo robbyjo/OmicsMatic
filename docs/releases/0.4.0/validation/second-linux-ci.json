@@ -1,0 +1,18 @@
+{
+  "status": "failed_no_release_assets_published",
+  "workflow_url": "https://github.com/robbyjo/OmicsMatic/actions/runs/43785583685",
+  "initial_tag_commit": "6b9c8d809a582ab7f5eaf7ca5b6378814c162fcf",
+  "completed_tests_before_worker_failure": 25314,
+  "reported_test_failures": 1,
+  "reported_skipped": 392,
+  "full_suite_completed": false,
+  "causes": [
+    "ambiguous request.yaml test lookup",
+    "test worker exhausted default 512 MiB Java heap"
+  ],
+  "failed_cases": [
+    "StudyPipelineCliTest > specializedRawMatrixWaitsInsteadOfRunningBulkAssociation()"
+  ],
+  "raw_logs_sha256": "e885e117143346d7ad624b59f4356691a8ef2a7ca2a38580d03e4fceeacbcd18",
+  "correction_scope": "select the association operation request explicitly; make other single-artifact lookups deterministic; allocate a 2 GiB test heap and recycle workers after 100 test classes; application code and catalog bytes unchanged"
+}
