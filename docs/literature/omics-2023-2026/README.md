@@ -1,5 +1,23 @@
 # 250-paper omics and GWAS toolbox catalog
 
+## Sambamba: current scope, warnings and required actions
+
+This source catalog contains 123 new scoped integrations (21 native, 102 upstream), 126 including existing adapters, with 264 missing families. The fixed 250-paper corpus now has 446 families, 2691 observations and 1199 reviewed uses; 1492 uses and paper-wide semantic completeness remain open. One missed declaration is added; no unrelated review or scientific output is replaced.
+
+**Build current source.** The published v0.4.0 assets are frozen and do not contain this new command. Run `./gradlew executableJar` from this source checkout, then use `java -jar build/cli/omicsmatic-0.4.0.jar sambamba-tools --help`. Supply the exact permitted Linux runtime and an explicit request; use genuine `--verify` replay before accepting a run. A metadata readback is not fresh scientific computation or genuine runtime replay.
+
+**Unsupported declared edition:** P082 lists 0.6.5; its operation is unresolved. Do not substitute 0.6.6. Skip that paper-specific analysis until its operation and a matching profile are validated.
+
+**Original 0.6.6 failures:** retain score-overflow failures and inconsistent original index metadata. No affected original analysis/index is accepted. Rebuild a separate index with native Java and audit the exact pair; explicitly select it downstream. For overflowing reads, use a separately qualified permitted edition/tool for a new analysis or skip. Do not trim reads, change qualities or silently replace a sidecar.
+
+**SKIP3 / FAIL2:** a missing or forbidden prerequisite skips dependent analysis until the named permitted setup is supplied. Any analysis, verification or recording failure admits no complete result. Preserve inputs, failures and raw consoles; correct the named cause and retry NEW output paths. Native Windows skips the original Linux analysis profile. All preceding exclusions, licenses and source restrictions remain applicable, including the user's Cell Ranger/ARC exclusion. Whole-tool, author-environment, biological and whole-paper validity remain unqualified; the full 250-paper objective remains active.
+
+Read [Sambamba commands, scope and recovery](../SAMBAMBA_CATALOG_INTEGRATION.md). Current cumulative verifier: `python -B tools/literature/sambamba_catalog/catalog.py --verify --parent-checkout /trusted/clean-1a9ff82 --baseline-checkout /trusted/clean-357c9301 --out build/NEW-catalog-check`. The original gates stay unchanged; use the separately reviewed source transition and the required retained primary cache. Add `--rescan-sources` for the full frozen primary corpus.
+
+<details><summary>Previous checkpoints (historical)</summary>
+
+# 250-paper omics and GWAS toolbox catalog
+
 
 ## Native TPMCalculator: warnings and required actions
 
@@ -1831,6 +1849,8 @@ Three source-reviewed tool additions retain separate provenance: MALT and HOPS h
 These additions improve the catalog and add no whole-tool or biological credit. The source-tested MALT 0.4.1 development controller does not fulfill the separate 0.5.2 role. Complete HOPS and MaltExtract operations remain unfinished; their unreported versions, settings and resource choices remain unknown. See `MALT_ALIGNMENT.md` and `MALT_HOPS_PAPER_ROLES.md`.
 
 **Required action:** match the declared source version and operation, qualify a permitted runtime, provide the complete dated reference/mapping and query populations, and retain original warnings and failures. If any prerequisite is unavailable or cannot be installed, skip its dependent analysis. A small software-control index does not reproduce the historical 91-spirochete or 7,508-genome bacterial analyses. Insufficient-read candidates remain unassessable.
+
+</details>
 
 </details>
 

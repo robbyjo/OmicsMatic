@@ -1,3 +1,17 @@
+## Sambamba: current scope, warnings and required actions
+
+This source catalog contains 123 new scoped integrations (21 native, 102 upstream), 126 including existing adapters, with 264 missing families. The fixed 250-paper corpus now has 446 families, 2691 observations and 1199 reviewed uses; 1492 uses and paper-wide semantic completeness remain open. One missed declaration is added; no unrelated review or scientific output is replaced.
+
+**Build current source.** The published v0.4.0 assets are frozen and do not contain this new command. Run `./gradlew executableJar` from this source checkout, then use `java -jar build/cli/omicsmatic-0.4.0.jar sambamba-tools --help`. Supply the exact permitted Linux runtime and an explicit request; use genuine `--verify` replay before accepting a run. A metadata readback is not fresh scientific computation or genuine runtime replay.
+
+**Unsupported declared edition:** P082 lists 0.6.5; its operation is unresolved. Do not substitute 0.6.6. Skip that paper-specific analysis until its operation and a matching profile are validated.
+
+**Original 0.6.6 failures:** retain score-overflow failures and inconsistent original index metadata. No affected original analysis/index is accepted. Rebuild a separate index with native Java and audit the exact pair; explicitly select it downstream. For overflowing reads, use a separately qualified permitted edition/tool for a new analysis or skip. Do not trim reads, change qualities or silently replace a sidecar.
+
+**SKIP3 / FAIL2:** a missing or forbidden prerequisite skips dependent analysis until the named permitted setup is supplied. Any analysis, verification or recording failure admits no complete result. Preserve inputs, failures and raw consoles; correct the named cause and retry NEW output paths. Native Windows skips the original Linux analysis profile. All preceding exclusions, licenses and source restrictions remain applicable, including the user's Cell Ranger/ARC exclusion. Whole-tool, author-environment, biological and whole-paper validity remain unqualified; the full 250-paper objective remains active.
+
+<details><summary>Previous warnings (historical)</summary>
+
 
 ## Native TPMCalculator: warnings and required actions
 
@@ -1352,6 +1366,8 @@ output path. Disconnected infinite pseudotime values remain present. LEARN
 does not admit a pseudotime result. Do not infer roots or repair values to
 conceal failures. Full Batchelor, study reproduction and biological accuracy
 remain unproven; the250-paper goal remains active.
+
+</details>
 
 </details>
 

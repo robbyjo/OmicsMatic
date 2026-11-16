@@ -7816,19 +7816,79 @@
     "id": "sambamba",
     "name": "Sambamba",
     "pattern": "(?<![A-Za-z0-9_])(?:Sambamba)(?![A-Za-z0-9_])",
-    "role": "Alignment processing and duplicate removal",
-    "current_coverage": "missing",
-    "existing_source": null,
-    "coverage_note": "Actual Sambamba execution and study-specific duplicate semantics remain missing; SAMtools/Picard are distinct implementations.",
-    "paper_count": 2,
+    "role": "Alignment processing and duplicate marking/removal",
+    "current_coverage": "upstream-adapter-validated",
+    "existing_source": "src/main/java/org/jlinalg/cli/SambambaStreamingWorkflowCli.java",
+    "coverage_note": "Exact original0.6.6/0.8.2 mark/remove profiles; reported0.6.5 remains unsupported and operation unresolved.",
+    "paper_count": 3,
     "papers": [
+      "P082",
       "P110",
       "P198"
     ],
-    "implementation_status": "missing",
-    "implementation_source": null,
-    "implementation_scope": "Actual Sambamba execution and study-specific duplicate semantics remain missing; SAMtools/Picard are distinct implementations.",
-    "validation_note": "Existing overlap/adapters require paper-specific option checks; missing integrations remain pending."
+    "implementation_status": "upstream-adapter-validated",
+    "implementation_source": "src/main/java/org/jlinalg/cli/SambambaStreamingWorkflowCli.java",
+    "implementation_scope": "Build current source for original Sambamba 0.6.6/0.8.2 Linux marking/removal with all 20 request fields, complete captured BAM auditing and genuine original runtime replay. Source-compatible operation controls do not recover author flags, resource settings, binary builds or whole-paper environments. P082 lists 0.6.5; its operation is unresolved and that edition has no validated adapter profile. Never substitute 0.6.6. Original 0.6.6 score-overflow runs remain unaccepted; affected original index metadata must not be repaired or promoted silently. Select a separate audited native index or a separately qualified edition/tool for a new analysis, or skip the affected analysis. BAM/BAI qualification is per exact pair; arbitrary downstream consumers and biological validity remain unqualified.",
+    "validation_note": "Complete original-runtime/replay controls, four-million-record64-MiB runs, adversarial failures and51 BAM/index pairs with30070 independent mapped queries. Original metadata/score failures retained; no independent duplicate classifier or biological validation.",
+    "project_adapter_available": true,
+    "canonical_adapter_available": true,
+    "root_dispatch_available": true,
+    "source_build_required": true,
+    "released_binary_contains_adapter": false,
+    "development_candidate_available": true,
+    "development_candidate": "src/main/java/org/jlinalg/cli/SambambaStreamingWorkflowCli.java",
+    "development_candidate_kind": "Java-wrapper-of-exact-original-Linux-runtime-with-genuine-replay",
+    "development_candidate_sha256": "31b19f7b15dc188e9b061df9dec3e2efb7c970027d6f8b6db495fc05ad3b3a27",
+    "development_build": "./gradlew executableJar",
+    "development_adapter_cli": "java -jar build/cli/omicsmatic-0.4.0.jar sambamba-tools --request /trusted/request.properties --out /NEW/output",
+    "supported_original_editions": [
+      "0.6.6",
+      "0.8.2"
+    ],
+    "unsupported_reported_editions": [
+      "0.6.5"
+    ],
+    "reported_versions_by_paper": {
+      "P082": "0.6.5",
+      "P110": "0.6.6",
+      "P198": "0.8.2"
+    },
+    "paper_role_coverage": {
+      "P082": "Code availability lists Sambamba 0.6.5; its operation is unreported. Unsupported declared edition; operation unresolved. Skip dependent analysis; do not substitute 0.6.6.",
+      "P110": "Removed duplicate ChIP-seq alignments with Sambamba 0.6.6 after fastp trimming and Bowtie2 alignment, before coverage/insert-size visualization and MACS3 peak analysis. Exact subcommand, flags and executable build are unreported. Exact author flags, executable build and whole-paper environment remain unestablished.",
+      "P198": "Marked duplicates with Sambamba 0.8.2 after SAMtools combined each donor’s PAR alignments across haploid cells, before FreeBayes calling. Alignment used hg38 with chrY PAR masked. The doublet-barcode filtering order, full flags and any cell/UMI grouping rule are not established. Exact author flags, executable build and whole-paper environment remain unestablished."
+    },
+    "paper_role_qualification": {
+      "P082": {
+        "use_summary": "Code availability lists Sambamba 0.6.5; its operation is unreported.",
+        "operation_established": false,
+        "reported_edition_supported": false,
+        "whole_paper_reproduced": false
+      },
+      "P110": {
+        "use_summary": "Removed duplicate ChIP-seq alignments with Sambamba 0.6.6 after fastp trimming and Bowtie2 alignment, before coverage/insert-size visualization and MACS3 peak analysis. Exact subcommand, flags and executable build are unreported.",
+        "operation_established": true,
+        "reported_edition_supported": true,
+        "whole_paper_reproduced": false
+      },
+      "P198": {
+        "use_summary": "Marked duplicates with Sambamba 0.8.2 after SAMtools combined each donor’s PAR alignments across haploid cells, before FreeBayes calling. Alignment used hg38 with chrY PAR masked. The doublet-barcode filtering order, full flags and any cell/UMI grouping rule are not established.",
+        "operation_established": true,
+        "reported_edition_supported": true,
+        "whole_paper_reproduced": false
+      }
+    },
+    "selected_environment_is_author_environment": false,
+    "exact_author_binary_build_established": false,
+    "author_options_established": false,
+    "native_analytical_credit_added": 0,
+    "new_scoped_integration_credit": 1,
+    "source_roles_reviewed": 3,
+    "workflow_validation": "../sambamba-streaming-workflow-development/VALIDATION.json",
+    "index_validation": "../bai-query-qualification/QUALIFICATION.json",
+    "current_documentation": "docs/literature/SAMBAMBA_CATALOG_INTEGRATION.md",
+    "whole_tool_qualified": false,
+    "whole_paper_reproduced": false
   },
   {
     "id": "gsmap",

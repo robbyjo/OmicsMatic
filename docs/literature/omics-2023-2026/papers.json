@@ -22188,6 +22188,26 @@
         "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11631769/ (section: Code availability)",
         "implementation_scope_note": "No new implementation or original runtime is qualified by this source review. Retain exact labels, reported versions, acquisition/data-reuse distinctions and unresolved functions/settings. Skip only dependent analyses if a required permitted licensed runtime, installation or execution cannot be supplied.",
         "supporting_evidence": []
+      },
+      {
+        "tool_id": "sambamba",
+        "tool": "Sambamba",
+        "analysis_role": "Declared software; exact Sambamba operation unresolved",
+        "matched_text": "Sambamba",
+        "extraction_score": 0,
+        "evidence_section": "Code availability",
+        "evidence_paragraph_index": 64,
+        "usage_context": "reported-software-list-role-unresolved",
+        "evidence_selection": "individually-reviewed-primary-paragraph",
+        "evidence_paragraph_sha256": "ca44d238ba149b628e05398ce1a466404ae438b1e859861e914d481d3a0e16b9",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11631769/ (section: Code availability)",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
+        "version_reported_near_name": "0.6.5",
+        "use_summary": "Code availability lists Sambamba 0.6.5; its operation is unreported.",
+        "implementation_scope_note": "Declared0.6.5 is unsupported; operation unresolved. No paper-specific analysis or edition substitution is admitted.",
+        "reported_edition_has_validated_project_profile": false,
+        "author_operation_established": false,
+        "whole_paper_reproduced": false
       }
     ],
     "status": "extracted",
@@ -30245,7 +30265,7 @@
       {
         "tool_id": "sambamba",
         "tool": "Sambamba",
-        "analysis_role": "Alignment processing and duplicate removal",
+        "analysis_role": "Duplicate removal before ChIP-seq coverage and peak analysis",
         "evidence_section": "Methods / ChIP–seq library preparation and analysis",
         "evidence_paragraph_index": 49,
         "matched_text": "Sambamba",
@@ -30253,11 +30273,14 @@
         "usage_context": "analysis-method-description",
         "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": "0.6.6",
-        "evidence_selection": "individually-reviewed-paragraph",
+        "evidence_selection": "individually-reviewed-primary-paragraph",
         "evidence_paragraph_sha256": "b8ee0c2ce8208e736b6d8dae2555d90e7ca85b56630e720797d3b31eb7b9e5be",
-        "use_summary": "Removed duplicate ChIP-seq alignments with Sambamba 0.6.6 before MACS3 broad/narrow peak analyses.",
+        "use_summary": "Removed duplicate ChIP-seq alignments with Sambamba 0.6.6 after fastp trimming and Bowtie2 alignment, before coverage/insert-size visualization and MACS3 peak analysis. Exact subcommand, flags and executable build are unreported.",
         "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12695648/ (section: Methods / ChIP–seq library preparation and analysis)",
-        "implementation_scope_note": "Actual Sambamba execution and duplicate contracts remain missing."
+        "implementation_scope_note": "Build current source for original Sambamba 0.6.6/0.8.2 Linux marking/removal with all 20 request fields, complete captured BAM auditing and genuine original runtime replay. Source-compatible operation controls do not recover author flags, resource settings, binary builds or whole-paper environments. P082 lists 0.6.5; its operation is unresolved and that edition has no validated adapter profile. Never substitute 0.6.6. Original 0.6.6 score-overflow runs remain unaccepted; affected original index metadata must not be repaired or promoted silently. Select a separate audited native index or a separately qualified edition/tool for a new analysis, or skip the affected analysis. BAM/BAI qualification is per exact pair; arbitrary downstream consumers and biological validity remain unqualified.",
+        "reported_edition_has_validated_project_profile": true,
+        "author_operation_established": true,
+        "whole_paper_reproduced": false
       },
       {
         "tool_id": "samtools",
@@ -48883,18 +48906,22 @@
       {
         "tool_id": "sambamba",
         "tool": "Sambamba",
-        "analysis_role": "Alignment processing and duplicate removal",
+        "analysis_role": "Duplicate marking before donor-level PAR variant calling",
         "evidence_section": "Methods / Single-sperm sequencing",
         "evidence_paragraph_index": 15,
         "matched_text": "sambamba",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": "0.8.2",
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-primary-paragraph",
         "evidence_paragraph_sha256": "8d8785c53a087ff98eba096f3e2f9e4a4f1c475127a0860b99e1c991d4c031fc",
-        "use_summary": "Alignment processing and duplicate removal.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11568759/ (section: Methods / Single-sperm sequencing)"
+        "use_summary": "Marked duplicates with Sambamba 0.8.2 after SAMtools combined each donor’s PAR alignments across haploid cells, before FreeBayes calling. Alignment used hg38 with chrY PAR masked. The doublet-barcode filtering order, full flags and any cell/UMI grouping rule are not established.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11568759/ (section: Methods / Single-sperm sequencing)",
+        "implementation_scope_note": "Build current source for original Sambamba 0.6.6/0.8.2 Linux marking/removal with all 20 request fields, complete captured BAM auditing and genuine original runtime replay. Source-compatible operation controls do not recover author flags, resource settings, binary builds or whole-paper environments. P082 lists 0.6.5; its operation is unresolved and that edition has no validated adapter profile. Never substitute 0.6.6. Original 0.6.6 score-overflow runs remain unaccepted; affected original index metadata must not be repaired or promoted silently. Select a separate audited native index or a separately qualified edition/tool for a new analysis, or skip the affected analysis. BAM/BAI qualification is per exact pair; arbitrary downstream consumers and biological validity remain unqualified.",
+        "reported_edition_has_validated_project_profile": true,
+        "author_operation_established": true,
+        "whole_paper_reproduced": false
       },
       {
         "tool_id": "samtools",
