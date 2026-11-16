@@ -44,3 +44,9 @@ reference data do not recover author defaults or reproduce that paper. Full GUI,
 whole-tool and biological validity remain unqualified. The 250-paper objective,
 including the remaining semantic review and missing software families, remains
 active.
+
+A separate [genuine-session count profile](IDEP244_SESSION_COUNTS_DEVELOPMENT.md)
+now develops session notifications, original/effective request coherence,
+provider structural checks and literal input-extension capture without changing
+the preserved headless profile. Its controls and limits have their own evidence;
+this is not catalog admission or a completed whole-tool qualification.
