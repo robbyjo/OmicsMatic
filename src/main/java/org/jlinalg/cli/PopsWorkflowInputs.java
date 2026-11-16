@@ -46,16 +46,16 @@ final class PopsWorkflowInputs {
         Map<Path, Path> captures = new LinkedHashMap<>();
         add(captures, requestDirectory, original.get("gene_annotation"), root.resolve("inputs/gene-annotation.tsv")); effective.put("gene_annotation", "inputs/gene-annotation.tsv");
         Path prefix = resolve(requestDirectory, original.get("feature_prefix"));
-        captures.put(Path.of(prefix + ".rows.txt"), root.resolve("inputs/features.rows.txt"));
+        add(captures, requestDirectory, prefix + ".rows.txt", root.resolve("inputs/features.rows.txt"));
         for (int i = 0; i < original.integer("feature_chunks"); i++) {
-            captures.put(Path.of(prefix + ".cols." + i + ".txt"), root.resolve("inputs/features.cols." + i + ".txt"));
-            captures.put(Path.of(prefix + ".mat." + i + ".npy"), root.resolve("inputs/features.mat." + i + ".npy"));
+            add(captures, requestDirectory, prefix + ".cols." + i + ".txt", root.resolve("inputs/features.cols." + i + ".txt"));
+            add(captures, requestDirectory, prefix + ".mat." + i + ".npy", root.resolve("inputs/features.mat." + i + ".npy"));
         }
         effective.put("feature_prefix", "inputs/features");
         if (original.magma()) {
             Path magma = resolve(requestDirectory, original.get("magma_prefix"));
-            captures.put(Path.of(magma + ".genes.out"), root.resolve("inputs/magma.genes.out"));
-            captures.put(Path.of(magma + ".genes.raw"), root.resolve("inputs/magma.genes.raw")); effective.put("magma_prefix", "inputs/magma");
+            add(captures, requestDirectory, magma + ".genes.out", root.resolve("inputs/magma.genes.out"));
+            add(captures, requestDirectory, magma + ".genes.raw", root.resolve("inputs/magma.genes.raw")); effective.put("magma_prefix", "inputs/magma");
         } else {
             add(captures, requestDirectory, original.get("scores"), root.resolve("inputs/scores.tsv")); effective.put("scores", "inputs/scores.tsv");
             for (String key : List.of("score_covariates", "error_covariance")) if (original.get(key) != null) {
@@ -87,6 +87,10 @@ final class PopsWorkflowInputs {
     }
 
     static Data prepare(Path root, Config c, Consumer<String> progress) throws IOException {
+        return prepare(root, c, progress, true);
+    }
+    static Data layout(Path root, Config c) throws IOException { return prepare(root, c, message -> { }, false); }
+    private static Data prepare(Path root, Config c, Consumer<String> progress, boolean numerical) throws IOException {
         Features features = features(root, c, progress); Map<String, Gene> annotation = annotation(input(root, c.get("gene_annotation")), c);
         Path scoreFile = c.magma() ? input(root, c.get("magma_prefix") + ".genes.out") : input(root, c.get("scores"));
         List<String> ids = new ArrayList<>(); List<Double> scores = new ArrayList<>(); Set<String> distinct = new HashSet<>();
@@ -109,7 +113,8 @@ final class PopsWorkflowInputs {
             mapping[i] = position; chromosomes[i] = gene.chromosome; tss[i] = gene.tss;
         }
         Map<String, String> diagnostics = new TreeMap<>(); double[][] covariates; PopsCovariance covariance;
-        if (c.magma()) {
+        if (!numerical) { covariates = null; covariance = null; }
+        else if (c.magma()) {
             Magma parsed = magma(input(root, c.get("magma_prefix") + ".genes.raw"), ids, chromosomes, c, diagnostics);
             covariates = c.bool("use_magma_covariates") ? Pops.magmaCovariates(parsed.nsnps, parsed.nparam, parsed.mac) : null;
             covariance = c.bool("use_magma_error_covariance") ? parsed.covariance : null;
@@ -126,17 +131,19 @@ final class PopsWorkflowInputs {
         }
         Map<String, Integer> featureOrdinals = new HashMap<>(); for (int i = 0; i < features.names.size(); i++) featureOrdinals.put(features.names.get(i), i);
         int[] subset = null; boolean[] controls = null;
-        if (c.get("subset_features") != null) {
+        boolean forward = !c.get("forward_steps").equals("none");
+        if (c.get("subset_features") != null && !forward) {
             List<String> names = tokens(input(root, c.get("subset_features")), c.integer("max_features"), c.integer("max_identifier_chars")); subset = new int[names.size()];
             for (int i = 0; i < names.size(); i++) { Integer ordinal = featureOrdinals.get(names.get(i)); if (ordinal == null) throw new IOException("Requested subset feature is absent: " + names.get(i)); subset[i] = ordinal; }
         }
-        if (c.get("control_features") != null) {
+        if (c.get("control_features") != null && !forward) {
             controls = new boolean[features.names.size()]; int absent = 0;
             for (String name : tokens(input(root, c.get("control_features")), c.integer("max_features"), c.integer("max_identifier_chars"))) {
                 Integer ordinal = featureOrdinals.get(name); if (ordinal == null) absent++; else controls[ordinal] = true;
             }
             diagnostics.put("control_names_absent_from_matrix", Integer.toString(absent));
         }
+        if (forward) diagnostics.put("feature_selection_files_ignored_by_forward_selection", Integer.toString((c.get("subset_features") == null ? 0 : 1) + (c.get("control_features") == null ? 0 : 1)));
         Pops.Selection selection = new Pops.Selection(c.get("p_cutoff").equals("none") ? null : finite(c.get("p_cutoff")),
             c.get("max_selected_by_p").equals("none") ? null : Integer.valueOf(c.get("max_selected_by_p")), subset, controls,
             c.get("forward_steps").equals("none") ? null : Integer.valueOf(c.get("forward_steps")));
@@ -180,7 +187,7 @@ final class PopsWorkflowInputs {
         Map<String, String> rawToAnnotation = new HashMap<>(), annotationToRaw = new HashMap<>();
         try (var reader = Files.newBufferedReader(file)) {
             String version = reader.readLine(), covar = reader.readLine();
-            if (version == null || !version.matches("# VERSION = [0-9]+") || !"# COVAR = NSAMP MAC".equals(covar)) throw new IOException("Declared MAGMA NSAMP/MAC raw schema required");
+            if (version == null || covar == null || version.length() > 1048576 || covar.length() > 1048576) throw new IOException("Two bounded MAGMA raw header lines required; the source skips their contents");
             diagnostics.put("magma_raw_header", version); diagnostics.put("magma_raw_covariates", covar);
             for (String line; (line = reader.readLine()) != null;) {
                 if (count >= n) throw new IOException("Extra MAGMA raw gene rows"); String[] row = rawRow(line);
@@ -288,16 +295,16 @@ final class PopsWorkflowInputs {
             double[] pointers = vector(path.apply("indptr.npy"), c), coordinates = vector(path.apply("indices.npy"), c);
             if (pointers.length != groupOf.length + 1 || coordinates.length != data.length || pointers[0] != 0 || pointers[pointers.length - 1] != data.length) throw new IOException("Sparse covariance pointer/coordinate lengths differ");
             for (int i = 0; i < groupOf.length; i++) {
-                int first = index(pointers[i], data.length + 1), last = index(pointers[i + 1], data.length + 1); if (first > last) throw new IOException("Sparse pointers are not monotone");
+                int first = index(pointers[i], (long) data.length + 1), last = index(pointers[i + 1], (long) data.length + 1); if (first > last) throw new IOException("Sparse pointers are not monotone");
                 for (int k = first; k < last; k++) { int j = index(coordinates[k], groupOf.length); put(format.equals("csr") ? i : j, format.equals("csr") ? j : i, data[k], groupOf, local, blocks, ignored); }
             }
         }
     }
     private static double[] vector(Path path, Config c) throws IOException {
         var array = PopsWorkflowNpy.inspect(path, c.integer("max_header_bytes"), c.number("max_work_bytes"));
-        if (array.elements() > c.number("max_covariance_entries") + 1) throw new IOException("Sparse member exceeds declared entry capacity"); return array.vector();
+        if (array.elements() > 0 && array.elements() - 1 > c.number("max_covariance_entries")) throw new IOException("Sparse member exceeds declared entry capacity"); return array.vector();
     }
-    private static int index(double value, int limit) throws IOException { if (!Double.isFinite(value) || value != Math.rint(value) || value < 0 || value >= limit) throw new IOException("Sparse index/pointer out of range"); return (int) value; }
+    private static int index(double value, long limit) throws IOException { if (!Double.isFinite(value) || value != Math.rint(value) || value < 0 || value >= limit || value > Integer.MAX_VALUE) throw new IOException("Sparse index/pointer out of range"); return (int) value; }
     private static void put(int row, int column, double value, int[] groups, int[] local, List<double[][]> blocks, long[] ignored) {
         if (groups[row] == groups[column]) blocks.get(groups[row])[local[row]][local[column]] += value; else ignored(value, ignored);
     }

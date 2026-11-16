@@ -1,11 +1,10 @@
 # PoPS streaming development snapshot
 
-**Development status:** the native PoPS 0.2 batch API is available to Java
-callers. The prepared-file input classes are internal scaffolding. They have
-compiled successfully, but their file-binding behavior has not completed
-qualification. There is no `pops-tools` command, supervised workflow, completed
-result bundle or replay command in this snapshot. Do not use the internal input
-classes as an accepted analysis workflow.
+**Current source:** the native PoPS 0.2 batch API and the `pops-tools` prepared-input
+workflow are available. Read [the runnable workflow guide](POPS_WORKFLOWS.md) for
+input contracts, resource settings, accepted results, warnings and genuine replay.
+Original PoPS 0.1 and LassoCV adapters and cumulative catalog admission remain
+open. This development extension adds no catalog credit.
 
 The existing [native matrix API and its frozen original-source validation](POPS_NATIVE_DEVELOPMENT.md)
 remain unchanged. The additional public API is
@@ -28,20 +27,31 @@ The regression tests compare all 13 saved original-program cases at batch widths
 of 1, 3 and 64, including both expected failure cases. Additional controls cover
 permuted target rows with extra prediction genes, changed batches, selected-feature
 capacity and invalid feature partitions. Together with the unchanged original
-matrix and eigenvalue tests, the complete PoPS test selection contains 60 tests.
-Run it and build the current source with:
+matrix and eigenvalue tests, the numerical API selection contains 60 tests. The
+workflow adds 132 actual NumPy matrix-format controls, two further reader tests
+and 25 complete workflow/negative controls. All 219 tests pass on Windows and
+Linux Java 21 without skips. Run the combined selection and build current source:
 
 ```powershell
-.\gradlew.bat :test --tests 'org.jlinalg.genetics.Pops*' executableJar --no-daemon --max-workers=2 --console=plain
+.\gradlew.bat :test --tests 'org.jlinalg.genetics.Pops*' --tests 'org.jlinalg.cli.PopsWorkflow*' executableJar --no-daemon --max-workers=2 --console=plain
 ```
 
-The internal `PopsWorkflowNpy`, `PopsWorkflowFiles` and `PopsWorkflowInputs`
-classes prepare future NPY/NPZ, identifier-join and input-capture work. Their
-compilation is not evidence of numerical file-workflow parity, process resource
-enforcement, prominent runtime warning delivery or genuine replay. Those checks
-and the user-facing command remain required before workflow admission. The full
-official tutorial has been compared for the earlier matrix API; it has not yet
-been rerun through this new batch API or these input bindings.
+The unchanged original CLI was run for six additional covariance-format cases:
+CSC, CSR/COO duplicates, dense C-order NPY, big-endian Fortran-order NPY and ignored
+nonfinite cross-chromosome entries. Complete workflow tests compare all 19 cases
+and genuinely replay all 17 successes. Expected source failures remain failures.
+Controls also reject tampered membership, resealed wrong scores, timeout,
+insufficient selection capacity, missing Java and failed output recording.
+
+The full official tutorial passed through the packaged command at batch widths
+128 and 1, and through genuine Windows-to-Linux replay. All three scientific
+result inventories are byte-identical. It retains 16,980 target genes, 18,383
+prediction genes, 508 input features and 258 selected features without
+subsampling. Maximum absolute differences from original PoPS are 2.414e-14 for
+scores, 4.808e-14 for marginal diagnostics and 2.360e-16 for coefficients.
+Each worker had an 8 GiB JVM heap bound and the parent a 1 GiB heap bound.
+These are source-software controls, not author-environment or biological
+reproduction. Complete named private records are separately inventoried.
 
 This snapshot adds no catalog integration credit. PoPS 0.1, original LassoCV
 execution and paper-specific cumulative catalog admission remain open. The
@@ -51,5 +61,7 @@ source for development use.
 The earlier evidence verifier deliberately checks an exact source-file
 membership. To read the frozen evidence with that unchanged verifier, use a clean
 checkout of commit `284dc02002305073136158ade28b48beb64e2721`. New streaming source
-files require a separate extension review; do not refresh historical source or
-evidence hashes merely to make the earlier verifier accept a later tree.
+files use [a separate extension reader](../../tools/literature/pops_workflow/records.py)
+and [saved qualification](pops-workflow-development/STATUS.json). Do not refresh
+historical source or evidence hashes merely to make an earlier verifier accept
+a later tree.
