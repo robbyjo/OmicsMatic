@@ -3,9 +3,11 @@
 **Warnings and required actions:** this is a bounded development profile, with
 no new catalog integration credit. Generated BAI files are retained but have not
 been independently qualified. Use a separately qualified indexer before any
-index-dependent downstream analysis. Adversarial resealed-bundle, late-recording
-failure, spill and additional thread controls remain pending. The complete
-250-paper implementation objective remains open.
+index-dependent downstream analysis. The [subsequent qualification controls](SAMBAMBA_EXECUTION_QUALIFICATION.md)
+cover resealed bundles, late completion-recording failure and observed spill,
+thread and compression behavior. Complete current-tree catalog source review
+and paper-scale capacity remain open. The complete 250-paper implementation
+objective remains open.
 
 The standalone Java entry point runs the exact original Sambamba 0.6.6 or 0.8.2
 Linux x86-64 executable. It captures the input and request, records commands,
@@ -120,6 +122,9 @@ can generate inputs and repeat the fixture matrix and Linux process controls.
 They require explicit paths to the development JAR and permitted original
 executables. Their saved records are evidence of the named executions; reading
 them does not perform a new analysis. Prior checkpoints and failed attempts are
-retained unchanged. Additional adversarial replay, late recording, spill/thread
-controls and the current-tree catalog source review remain required before any
-broader qualification claim.
+retained unchanged. The original validation archive retains the earlier version
+of this guide, including its then-pending controls. The
+[subsequent qualification record](SAMBAMBA_EXECUTION_QUALIFICATION.md) records
+later executions without rewriting that checkpoint. Current-tree catalog source
+review and the documented capacity/index limitations still constrain broader
+qualification claims.
