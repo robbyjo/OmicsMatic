@@ -204,6 +204,16 @@ tasks.withType(Javadoc).configureEach {
 
 test {
     useJUnitPlatform()
+    // Original Nextflow controls require explicitly supplied, exact managed runtimes.
+    // Absent runtimes are reported as skips; configured but invalid runtimes still fail.
+    ['21.04.1', '22.10.6', '24.04.4'].each { nextflowVersion ->
+        def propertyName = "jlinalg.nextflow.home.${nextflowVersion}"
+        def suppliedHome = providers.systemProperty(propertyName)
+        inputs.property(propertyName, suppliedHome.orElse(''))
+        if (suppliedHome.isPresent()) {
+            systemProperty propertyName, suppliedHome.get()
+        }
+    }
     // Optional real-tool tests must not reuse a cache entry that skipped them.
     inputs.property('bowtie2AdapterHome',
         providers.environmentVariable('JLINALG_BOWTIE2_HOME').orElse(''))

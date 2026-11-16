@@ -94,6 +94,28 @@ not turn the refused catalog check into a pass. Tagged CI build results and
 published checksums describe the downloadable assets; local artifact hashes
 above describe the original Windows candidate.
 
+### Linux release checks
+
+The first tagged Linux/Java 17 run reported 25,519 tests, 15 failures and 377
+skips and did not publish assets. Fourteen failures required private Nextflow
+runtimes absent from the hosted runner; the remaining test selected an unrelated
+`decision.yaml` using filesystem iteration order. The release correction changes
+test setup and artifact selection, not application code or the frozen toolset.
+
+Unconfigured Nextflow original-runtime checks now report explicit skips. Supply
+`-Djlinalg.nextflow.home.21.04.1=...`, `-Djlinalg.nextflow.home.22.10.6=...` and
+`-Djlinalg.nextflow.home.24.04.4=...` to Gradle to exercise exact managed runtimes
+and their sibling setup reports. Explicitly configured invalid runtimes still
+fail. Runtime integrity assertions and the scientific comparison controls remain
+active when their prerequisites are provided. The sensitivity test selects the
+decision beside `sensitivity-comparison.tsv` explicitly.
+
+The [initial Linux run](https://github.com/robbyjo/OmicsMatic/actions/runs/43782446941)
+and its failure count remain part of the release history. Subsequent tagged
+builds retain their XML and HTML test reports as workflow artifacts. The initial
+tag target `abf19f30f177e6122966c2ca4e4c0d3e9d03aeea` produced no release assets;
+the corrected tag includes these test-harness and CI-reporting changes.
+
 ### Catalog verification and retained attempts
 
 1. The new checkout initially lacked the cached primary-paper XML and correctly

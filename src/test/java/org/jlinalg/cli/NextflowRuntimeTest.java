@@ -13,8 +13,14 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 class NextflowRuntimeTest {
     @TempDir Path temp;
-    private boolean linux()throws IOException{
-        if(System.getProperty("os.name").equals("Linux"))return true;
+    private boolean linux()throws IOException{return linux("24.04.4");}
+    private boolean linux(String version)throws IOException{
+        if(System.getProperty("os.name").equals("Linux")){
+            org.junit.jupiter.api.Assumptions.assumeTrue(
+                System.getProperty("jlinalg.nextflow.home."+version)!=null,
+                "Optional original Nextflow runtime is not configured: jlinalg.nextflow.home."+version);
+            return true;
+        }
         assertThrows(NextflowRuntime.Unavailable.class,()->NextflowRuntime.open(temp,"linux-x86_64-nextflow-24.04.4",temp.resolve("missing"),()->{}));return false;
     }
     private static Path home(String version){String value=System.getProperty("jlinalg.nextflow.home."+version);assertNotNull(value,"Supply an actual exact managed home for Linux admission checks");return Path.of(value);}
@@ -33,7 +39,7 @@ class NextflowRuntimeTest {
     @Test void absentExactRuntimeOrSetupIsUnavailable(){assertThrows(NextflowRuntime.Unavailable.class,()->NextflowRuntime.open(temp.resolve("missing"),"linux-x86_64-nextflow-24.04.4",temp.resolve("report"),()->{}));}
     @ParameterizedTest @ValueSource(strings={"21.04.1","22.10.6","24.04.4"})
     void nativeAdmissionVerifiesEachActualCompletedSetup(String version)throws Exception{
-        if(!linux())return;var context=NextflowRuntime.open(home(version),"linux-x86_64-nextflow-"+version,report(version),()->{});assertEquals(version,context.version());assertEquals(30,context.helpers().size());assertTrue(context.payload().size()>=400);assertEquals(NextflowFiles.object(NextflowFiles.object(NextflowFiles.json(home(version).resolve(NextflowRuntime.MARKER),2097152)).get("permission_mode_departures")).size(),context.permissionDepartures());context.verify(()->{});
+        if(!linux(version))return;var context=NextflowRuntime.open(home(version),"linux-x86_64-nextflow-"+version,report(version),()->{});assertEquals(version,context.version());assertEquals(30,context.helpers().size());assertTrue(context.payload().size()>=400);assertEquals(NextflowFiles.object(NextflowFiles.object(NextflowFiles.json(home(version).resolve(NextflowRuntime.MARKER),2097152)).get("permission_mode_departures")).size(),context.permissionDepartures());context.verify(()->{});
     }
     @Test void changedManifestPinIsAnIntegrityFailure()throws Exception{
         if(!linux())return;Path report=cloneMetadata("changed-pin");var completion=mutable(NextflowFiles.json(report.resolve("COMPLETED.json"),65536));completion.put("manifest",Map.of("bytes",Files.size(report.resolve("manifest.json")),"sha256","0".repeat(64)));Files.writeString(report.resolve("COMPLETED.json"),NextflowJson.json(completion));IOException failure=assertThrows(IOException.class,()->NextflowRuntime.open(home("24.04.4"),"linux-x86_64-nextflow-24.04.4",report,()->{}));assertFalse(failure instanceof NextflowRuntime.Unavailable);assertTrue(failure.getMessage().contains("completion/manifest"));

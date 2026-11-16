@@ -1,0 +1,31 @@
+{
+  "status": "failed_no_release_assets_published",
+  "workflow_url": "https://github.com/robbyjo/OmicsMatic/actions/runs/43782446941",
+  "initial_tag_commit": "abf19f30f177e6122966c2ca4e4c0d3e9d03aeea",
+  "tests": 25519,
+  "failures": 15,
+  "skipped": 377,
+  "causes": {
+    "missing_optional_exact_nextflow_runtime": 14,
+    "ambiguous_decision_yaml_test_lookup": 1
+  },
+  "failed_cases": [
+    "NextflowOriginalProcessTest > exactOriginalRunsThroughNativeGuard(String, boolean) > 21.04.1 ignoredFailure=false FAILED",
+    "NextflowOriginalProcessTest > exactOriginalRunsThroughNativeGuard(String, boolean) > 21.04.1 ignoredFailure=true FAILED",
+    "NextflowOriginalProcessTest > exactOriginalRunsThroughNativeGuard(String, boolean) > 22.10.6 ignoredFailure=false FAILED",
+    "NextflowOriginalProcessTest > exactOriginalRunsThroughNativeGuard(String, boolean) > 22.10.6 ignoredFailure=true FAILED",
+    "NextflowOriginalProcessTest > exactOriginalRunsThroughNativeGuard(String, boolean) > 24.04.4 ignoredFailure=false FAILED",
+    "NextflowOriginalProcessTest > exactOriginalRunsThroughNativeGuard(String, boolean) > 24.04.4 ignoredFailure=true FAILED",
+    "NextflowRuntimeTest > changedManifestPinIsAnIntegrityFailure() FAILED",
+    "NextflowRuntimeTest > selfConsistentWrongEditionBindingStillFails() FAILED",
+    "NextflowRuntimeTest > changedAdmittedPayloadExpectationFailsBeforeAfterVerification() FAILED",
+    "NextflowRuntimeTest > failedSetupCannotBeAdmittedAsACompletedRuntime() FAILED",
+    "NextflowRuntimeTest > nativeAdmissionVerifiesEachActualCompletedSetup(String) > [1] 21.04.1 FAILED",
+    "NextflowRuntimeTest > nativeAdmissionVerifiesEachActualCompletedSetup(String) > [2] 22.10.6 FAILED",
+    "NextflowRuntimeTest > nativeAdmissionVerifiesEachActualCompletedSetup(String) > [3] 24.04.4 FAILED",
+    "NextflowRuntimeTest > differentKernelRequiresAPermittedHealthRecheck() FAILED",
+    "StudyPipelineCliTest > preapprovedSensitivityRunsOfflineWithoutAnLlmAndKeepsPrimaryResults() FAILED"
+  ],
+  "raw_logs_sha256": "d5a543c1d559a419339eb50604f4b1cb605b43d93ca0c903396dd460941d6880",
+  "correction_scope": "test prerequisite handling, Gradle runtime property forwarding, explicit test artifact lookup, and retained CI reports; application code and catalog bytes unchanged"
+}

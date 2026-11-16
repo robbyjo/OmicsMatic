@@ -54,6 +54,15 @@ jobs:
           grep -Fx "version = '${VERSION}'" build.gradle
       - name: Build and verify release
         run: bash ./gradlew clean check assemble --no-daemon --max-workers=2
+      - name: Retain test reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-test-reports
+          path: |
+            build/test-results/test/*.xml
+            build/reports/tests/test/
+          if-no-files-found: warn
       - name: Prepare release assets and notes
         env:
           RELEASE_TAG: ${{ steps.release_tag.outputs.tag }}

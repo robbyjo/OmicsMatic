@@ -161,10 +161,12 @@ class StudyPipelineCliTest {
             """);
         assertEquals(0, run("study", "auto", study.toString(), "--offline"), stderr);
         assertTrue(stdout.contains("state: completed"), stdout);
-        Path decision = find(project.resolve("runs"), "decision.yaml");
+        // Other operations also emit decision.yaml; filesystem iteration order is not a contract.
+        Path decision = find(project.resolve("runs"), "sensitivity-comparison.tsv")
+            .getParent().resolve("decision.yaml");
         String disposition = Files.readString(decision);
-        assertTrue(disposition.contains("leave_one_cohort_out"));
-        assertTrue(disposition.contains("fixed_random_comparison"));
+        assertTrue(disposition.contains("leave_one_cohort_out"), disposition);
+        assertTrue(disposition.contains("fixed_random_comparison"), disposition);
         try (var paths = Files.walk(decision.getParent())) {
             assertEquals(7, paths.filter(path -> path.getFileName().toString().equals("meta-analysis.tsv")).count());
         }
