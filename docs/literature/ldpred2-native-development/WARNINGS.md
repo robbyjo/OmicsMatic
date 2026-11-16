@@ -1,0 +1,3 @@
+# Warnings and required actions
+
+Development API only: native LDpred2-inf and one grid model; Auto, workflow CLI and full grid orchestration remain open. Build current source; released0.4.0 assets lack these additions. All19 original grid divergences remain unaccepted. Retain inputs/errors; check variant/allele/build/population/sample-size agreement before a new run. Never repair inputs or accept partial callback samples after a later failure. Missing permitted regeneration prerequisites require SKIP3; other failures require FAIL2. Native execution needs no R. Saved records repeat no scientific computation. Large raw binaries/JARs stay local. No new catalog credit and no whole-paper/whole-goal completion.
