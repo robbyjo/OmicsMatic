@@ -40,14 +40,14 @@ On macOS, run `bash` in Terminal if your default shell is zsh.
 
 ~~~powershell
 .\gradlew.bat executableJar --no-daemon --no-parallel
-$jar = (Resolve-Path "build/cli/omicsmatic-0.3.7.jar").Path
+$jar = (Resolve-Path "build/cli/omicsmatic-0.4.0.jar").Path
 ~~~
 
 **Linux / macOS (Bash), from the repository root:**
 
 ~~~bash
 bash ./gradlew executableJar --no-daemon --no-parallel || exit 1
-jar="$PWD/build/cli/omicsmatic-0.3.7.jar"
+jar="$PWD/build/cli/omicsmatic-0.4.0.jar"
 ~~~
 
 ## 2. OpenAI: run the login command
@@ -215,7 +215,7 @@ from PowerShell or Bash. Keep that SSH connection open. Inside its **VM shell**,
 set the actual JAR path and choose a new VM-local credential file:
 
 ~~~bash
-jar="$HOME/OmicsMatic/build/cli/omicsmatic-0.3.7.jar"
+jar="$HOME/OmicsMatic/build/cli/omicsmatic-0.4.0.jar"
 vault="$HOME/.omicsmatic/credentials/openai-oauth.credentials.json"
 java -jar "$jar" study login --provider openai --no-browser --port 1455 --out "$vault"
 ~~~

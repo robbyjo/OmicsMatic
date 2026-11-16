@@ -107,8 +107,8 @@ Use these settings only for R-backed network methods. Native methods reject
 From the repository root:
 
 ```shell
-java -jar build/cli/omicsmatic-0.3.7.jar config --command network --config examples/followup/jlinalg.yaml
-java -jar build/cli/omicsmatic-0.3.7.jar network --config examples/followup/jlinalg.yaml --lambda 0.2 --out build/followup/configured-sparse
+java -jar build/cli/omicsmatic-0.4.0.jar config --command network --config examples/followup/jlinalg.yaml
+java -jar build/cli/omicsmatic-0.4.0.jar network --config examples/followup/jlinalg.yaml --lambda 0.2 --out build/followup/configured-sparse
 ```
 
 The first command prints source paths/hashes and the configured argument expansion;

@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="The frozen tool boundary, software validation and known catalog qualification limitation."><title>OmicsMatic v0.4.0 toolset freeze · OmicsMatic</title>
+<link rel="stylesheet" href="assets/styles.css"><script src="assets/app.js" defer></script></head>
+<body><site-header root="./"></site-header><main id="main">
+<section class="page-hero"><div class="container"><div class="breadcrumbs"><a href="index.html">Home</a><span>/</span><span>v0.4.0</span></div>
+<span class="eyebrow">OmicsMatic v0.4.0</span><h1>OmicsMatic v0.4.0 toolset freeze</h1><p>The frozen tool boundary, software validation and known catalog qualification limitation.</p></div></section>
+<div class="container page-layout"><article class="prose release-guide">
+<p>The v0.4.0 release candidate is isolated on <code>codex/release-v0.4.0-frozen</code>.
+Its integration base is <code>f87564288cf6e9d73a7d30164a96689b6ed861da</code>, captured
+on 2026-11-15. Completed, validated additions are included; ongoing tool
+development continues independently. The original freeze created no public tag
+or release. Publication is now authorized for v0.4.0 with the known catalog
+limitation disclosed in the <a href="release-0.4.0.html">release guide</a>.</p>
+<p><strong>Known catalog qualification limitation.</strong> The merged-source catalog verifier refuses
+the historical SingleR predecessor baseline after the study/manuscript changes.
+The original tool-specific qualifications remain preserved, but they do not
+establish a newly qualified whole catalog on this merged release tree. The
+recorded classifications below describe those existing scoped qualifications.</p>
+<h2 id="included-scope">Included scope</h2>
+<div class="result-table"><table>
+<thead>
+<tr>
+<th>Catalog classification</th>
+<th style="text-align: right;">Families</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Validated native subsets</td>
+<td style="text-align: right;">21</td>
+</tr>
+<tr>
+<td>Validated upstream workflows</td>
+<td style="text-align: right;">101</td>
+</tr>
+<tr>
+<td>Existing adapters</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr>
+<td>Existing lookups</td>
+<td style="text-align: right;">7</td>
+</tr>
+<tr>
+<td>Existing exports</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr>
+<td>Related native methods; upstream equivalence not established</td>
+<td style="text-align: right;">47</td>
+</tr>
+<tr>
+<td>Missing</td>
+<td style="text-align: right;">265</td>
+</tr>
+<tr>
+<td>Explicitly excluded</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr>
+<td>Total named families</td>
+<td style="text-align: right;">446</td>
+</tr>
+</tbody>
+</table></div>
+<p>The first two categories are the <strong>122 newly integrated families</strong>. Including
+the existing adapter, lookup, export and related-method categories gives 180
+entries with some documented support. This is not a count of fully implemented,
+installed, bundled or scientifically validated upstream packages. Supported
+operations and runtime/resource requirements remain specific to each entry.</p>
+<p>The frozen integration includes BIGCAT, HICAT, SingleR, celldex, SPOTlight,
+MELODI and native TPMCalculator. iDEP stays in the missing category. Development
+records retained in the source tree do not admit an unfinished tool. Cell
+Ranger remains excluded. The full research/implementation project remains open.</p>
+<p><a href="https://github.com/robbyjo/OmicsMatic/blob/v0.4.0/docs/releases/0.4.0/toolset-freeze.json">toolset-freeze.json</a> records the exact
+catalog hashes, all tool IDs by status and the integration commit. The original
+catalog, usage records, warnings and tool-specific validation receipts remain
+in the frozen source. New admissions belong to subsequent development; release
+fixes require explicit review and a new validation record without silently
+expanding the admitted toolset.</p>
+<p>The analysis pseudocode includes the requested conditional SNP selection and
+useful tool-based follow-up policy. These are workflow requirements, with the
+distinction between available standalone methods and integrated study operations
+preserved. Existing supplied-result and artifact-linking contracts still apply.</p>
+<h2 id="release-validation">Release validation</h2>
+<p>The isolated software build/test gate passed on Windows with JDK 21.0.4:
+<code>gradlew.bat check assemble --no-daemon --no-parallel --no-build-cache
+--max-workers=2 --console=plain</code>. Across 878 suites, 25,519 tests were reported:
+<strong>25,078 passed, 441 skipped, zero failures and zero errors</strong>. The skips include
+Linux-only controls, optional original runtimes and explicitly gated live or
+fixture checks; they are not fresh upstream validation. The
+<a href="https://github.com/robbyjo/OmicsMatic/blob/v0.4.0/docs/releases/0.4.0/validation/tests.json">test receipt</a> retains all skip reasons,
+suite counts and raw-result hashes. Raw XML and HTML reports remain under
+<code>build/test-results/test</code> and <code>build/reports/tests/test</code> in the release checkout.</p>
+<p>The packaged executable reports <code>0.4.0</code>; its six-sample synthetic OLS
+coefficients and standard errors match an independent NumPy calculation to
+relative/absolute tolerance 1e-12. FUMA, SuSiE and study help entry points work. All 5,839 compiled library
+classes use Java class-file major version 61 (Java 17). Executable, library and
+source and Javadoc JAR ZIP integrity checks passed. These checks do not install or execute
+every optional upstream runtime.</p>
+<p>The initial packaging attempt exposed Javadoc's implicit source lookup through
+resource directories. A resource Java launcher requires its private IGV runtime
+and is not a library API source. The release build now explicitly limits
+Javadoc source lookup to <code>src/main/java</code>; upstream resource bytes are unchanged.
+The corrected <code>check assemble</code> completed successfully, reusing the completed
+full-suite test results. Two existing Javadoc text warnings remain. Both build
+attempts and artifact hashes are recorded in the
+<a href="https://github.com/robbyjo/OmicsMatic/blob/v0.4.0/docs/releases/0.4.0/validation/software-build.json">software-build receipt</a>.</p>
+<p>Local candidate assets are in <code>build/release/</code> in the release checkout:</p>
+<ul>
+<li><code>omicsmatic-0.4.0.jar</code> (executable)</li>
+<li><code>omicsmatic-0.4.0-library.jar</code></li>
+<li><code>omicsmatic-0.4.0-sources.jar</code></li>
+<li><code>omicsmatic-0.4.0-javadoc.jar</code></li>
+<li><code>toolset-freeze.json</code> and <code>SHA256SUMS.txt</code></li>
+</ul>
+<p>The toolset freeze and software gate are complete. The
+<a href="https://github.com/robbyjo/OmicsMatic/releases/tag/v0.4.0">GitHub release</a>
+distributes the software with the catalog limitation below. Original JSON
+receipts preserve their pre-publication status and exact bytes; publication does
+not turn the refused catalog check into a pass. Tagged CI build results and
+published checksums describe the downloadable assets; local artifact hashes
+above describe the original Windows candidate.</p>
+<h3 id="catalog-verification-and-retained-attempts">Catalog verification and retained attempts</h3>
+<ol>
+<li>The new checkout initially lacked the cached primary-paper XML and correctly
+   returned SKIP3. The permitted existing public-source cache was copied with
+   hashes; no source evidence was regenerated.</li>
+<li>Python 3.13 reproduced the same decompressed review delta but a different
+   gzip OS-header byte. The original exact-byte verifier refused that result.</li>
+<li>Running the unchanged verifier with the existing Windows Python 3.12.9
+   runtime reproduced the recorded gzip encoding and reached the substantive
+   predecessor-source check. It returned FAIL2 because preceding tracked files
+   differ from baseline <code>96fc65d3e37917728901f88906cd15c3b386702e</code>.</li>
+</ol>
+<p>The <a href="https://github.com/robbyjo/OmicsMatic/blob/v0.4.0/docs/releases/0.4.0/validation/catalog-source-baseline-refusal.json">source-baseline refusal</a>
+and initial attempts are retained. No expected hash, old qualification or
+scientific verifier was changed to turn the refusal into a pass. Full catalog
+verification requires a separate predecessor integration accounting for the
+merged study/manuscript/cleanup changes and release packaging changes. This
+must be resolved before describing v0.4.0 as a fully verified public release.</p></article><aside class="toc"><strong>On this page</strong><a href="#included-scope">Included scope</a><a href="#release-validation">Release validation</a></aside></div></main><site-footer root="./"></site-footer></body></html>

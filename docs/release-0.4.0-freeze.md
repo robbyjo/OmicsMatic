@@ -3,10 +3,11 @@
 The v0.4.0 release candidate is isolated on `codex/release-v0.4.0-frozen`.
 Its integration base is `f87564288cf6e9d73a7d30164a96689b6ed861da`, captured
 on 2026-11-15. Completed, validated additions are included; ongoing tool
-development continues independently. No GitHub release or public tag is created
-by this freeze.
+development continues independently. The original freeze created no public tag
+or release. Publication is now authorized for v0.4.0 with the known catalog
+limitation disclosed in the [release guide](release-0.4.0.md).
 
-**Publication readiness is pending.** The merged-source catalog verifier refuses
+**Known catalog qualification limitation.** The merged-source catalog verifier refuses
 the historical SingleR predecessor baseline after the study/manuscript changes.
 The original tool-specific qualifications remain preserved, but they do not
 establish a newly qualified whole catalog on this merged release tree. The
@@ -85,9 +86,13 @@ Local candidate assets are in `build/release/` in the release checkout:
 - `omicsmatic-0.4.0-javadoc.jar`
 - `toolset-freeze.json` and `SHA256SUMS.txt`
 
-The toolset freeze and software gate are complete. Publication remains pending
-the separate catalog predecessor requalification below. No release asset is
-published and no public tag is created by this work.
+The toolset freeze and software gate are complete. The
+[GitHub release](https://github.com/robbyjo/OmicsMatic/releases/tag/v0.4.0)
+distributes the software with the catalog limitation below. Original JSON
+receipts preserve their pre-publication status and exact bytes; publication does
+not turn the refused catalog check into a pass. Tagged CI build results and
+published checksums describe the downloadable assets; local artifact hashes
+above describe the original Windows candidate.
 
 ### Catalog verification and retained attempts
 

@@ -22,9 +22,10 @@ class SiteHeader extends HTMLElement {
             <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></span>
             <span>OmicsMatic</span>
           </a>
-          <button class="nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false">â˜°</button>
+          <button class="nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false">&#9776;</button>
           <nav class="nav-links" aria-label="Primary navigation">
             <a href="${root}index.html#features">Features</a>
+            <a href="${root}toolbox.html">Toolbox</a>
             <a href="${root}vignettes/command-line.html">Command line</a>
             <a href="${root}vignettes/index.html">Vignettes</a>
             <a href="${root}verification.html">Verification</a>
@@ -47,7 +48,7 @@ class SiteHeader extends HTMLElement {
     toggle.addEventListener("click", () => {
       const open = nav.classList.toggle("open");
       toggle.setAttribute("aria-expanded", String(open));
-      toggle.textContent = open ? "Ã—" : "â˜°";
+      toggle.textContent = open ? "\u00d7" : "\u2630";
     });
     this.querySelector("[data-theme-select]").addEventListener("change", event => {
       const value = event.target.value;
@@ -67,9 +68,9 @@ class SiteFooter extends HTMLElement {
           <div class="footer-grid">
             <div><a class="brand" href="${root}index.html"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></span><span>OmicsMatic</span></a><p>High-performance Java software for biomedical and multiomics analysis, with optional AI collaboration and investigator control.</p></div>
             <div class="footer-links"><strong>Learn</strong><a href="${root}vignettes/command-line.html">Command-line guide</a><a href="${root}vignettes/index.html">All vignettes</a><a href="${root}citations.html">Scientific citations</a><a href="${root}verification.html">Accuracy and performance</a><a href="https://github.com/robbyjo/OmicsMatic/blob/main/docs/numerical-contract.md">Numerical contract</a></div>
-            <div class="footer-links"><strong>Project</strong><a href="https://github.com/robbyjo/OmicsMatic">Source code</a><a href="https://github.com/robbyjo/OmicsMatic/issues">Issues</a><a href="https://github.com/robbyjo/JDistlib">JDistlib</a></div>
+            <div class="footer-links"><strong>Project</strong><a href="${root}release-0.4.0.html">What’s new in v0.4.0</a><a href="https://github.com/robbyjo/OmicsMatic/releases/tag/v0.4.0">Download v0.4.0</a><a href="https://github.com/robbyjo/OmicsMatic">Source code</a><a href="https://github.com/robbyjo/OmicsMatic/issues">Issues</a><a href="https://github.com/robbyjo/JDistlib">JDistlib</a></div>
           </div>
-          <div class="footer-bottom"><span>© <span data-year></span> OmicsMatic contributors · GPL-3.0-or-later</span><span>OmicsMatic v0.3.7 · Java 17+ · Source: JDistlib 0.10.2 · FP64</span></div>
+          <div class="footer-bottom"><span>© <span data-year></span> OmicsMatic contributors · GPL-3.0-or-later</span><span>OmicsMatic v0.4.0 · Java 17+ · Source: JDistlib 0.10.2 · FP64</span></div>
         </div>
       </footer>`;
     this.querySelector("[data-year]").textContent = new Date().getFullYear();

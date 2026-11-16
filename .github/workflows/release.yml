@@ -17,6 +17,7 @@ permissions:
 jobs:
   release:
     runs-on: ubuntu-latest
+    timeout-minutes: 120
     steps:
       - name: Check out repository
         uses: actions/checkout@v7
@@ -52,7 +53,7 @@ jobs:
           VERSION="${RELEASE_TAG#v}"
           grep -Fx "version = '${VERSION}'" build.gradle
       - name: Build and verify release
-        run: bash ./gradlew clean check assemble
+        run: bash ./gradlew clean check assemble --no-daemon --max-workers=2
       - name: Prepare release assets and notes
         env:
           RELEASE_TAG: ${{ steps.release_tag.outputs.tag }}
@@ -62,7 +63,13 @@ jobs:
           cp "build/cli/omicsmatic-$VERSION.jar" build/release/
           cp "build/libs/omicsmatic-$VERSION.jar" "build/release/omicsmatic-$VERSION-library.jar"
           cp "build/libs/omicsmatic-$VERSION-sources.jar" "build/libs/omicsmatic-$VERSION-javadoc.jar" build/release/
+          if [[ -f "docs/releases/$VERSION/toolset-freeze.json" ]]; then
+            cp "docs/releases/$VERSION/toolset-freeze.json" build/release/
+          fi
           (cd build/release && sha256sum *.jar > SHA256SUMS.txt)
+          if [[ -f build/release/toolset-freeze.json ]]; then
+            (cd build/release && sha256sum toolset-freeze.json >> SHA256SUMS.txt)
+          fi
           awk 'BEGIN {sections=0} /^# / {sections++; if(sections>1) exit} {print}' RELEASE_NOTES.md > build/release-notes.md
       - name: Publish GitHub release
         env:

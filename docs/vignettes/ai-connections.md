@@ -20,7 +20,7 @@ including PowerShell, Bash and cloud/SSH instructions.
 From the directory containing your freshly built executable, for example:
 
 ~~~text
-java -jar omicsmatic-0.3.7.jar study login --provider openai
+java -jar omicsmatic-0.4.0.jar study login --provider openai
 ~~~
 
 `study run` does not initiate consent. Writing `auth: oauth` in `study.yaml`
@@ -41,7 +41,7 @@ For a cloud VM without a browser, use the
 The running JAR needs the credential on its own machine.
 
 Use a **current source build** for encrypted credentials. The executable remains
-named `omicsmatic-0.3.7.jar`; the previously published binary with that name does
+named `omicsmatic-0.4.0.jar`; the previously published binary with that name does
 not necessarily include the newer commands. See
 [build and runtime requirements](https://github.com/robbyjo/OmicsMatic/blob/main/docs/runtime-requirements.md).
 
@@ -120,7 +120,7 @@ These commands build the application and define the JAR and credential paths.
 
 ~~~powershell
 .\gradlew.bat executableJar --no-daemon --no-parallel
-$jar = (Resolve-Path "build/cli/omicsmatic-0.3.7.jar").Path
+$jar = (Resolve-Path "build/cli/omicsmatic-0.4.0.jar").Path
 $vault = Join-Path $env:USERPROFILE ".omicsmatic/credentials/openai.credentials.json"
 java -jar $jar study credentials-save --provider openai --auth api_key --out $vault
 java -jar $jar study credentials-check --file $vault
@@ -130,7 +130,7 @@ java -jar $jar study credentials-check --file $vault
 
 ~~~bash
 bash ./gradlew executableJar --no-daemon --no-parallel || exit 1
-jar="$PWD/build/cli/omicsmatic-0.3.7.jar"
+jar="$PWD/build/cli/omicsmatic-0.4.0.jar"
 vault="$HOME/.omicsmatic/credentials/openai.credentials.json"
 java -jar "$jar" study credentials-save --provider openai --auth api_key --out "$vault"
 java -jar "$jar" study credentials-check --file "$vault"
@@ -652,7 +652,7 @@ Send the encrypted file through SSH; keep its passphrase separate. On the Linux 
 
 ~~~bash
 chmod 600 "$HOME/.omicsmatic/credentials/openai.credentials.json"
-jar="$HOME/OmicsMatic/build/cli/omicsmatic-0.3.7.jar"
+jar="$HOME/OmicsMatic/build/cli/omicsmatic-0.4.0.jar"
 java -jar "$jar" study credentials-check --file "$HOME/.omicsmatic/credentials/openai.credentials.json"
 ~~~
 

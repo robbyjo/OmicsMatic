@@ -222,8 +222,8 @@ and a null result cannot establish absence of a shared causal variant.
 Run the offline synthetic acceptance example with:
 
 ```powershell
-python examples\study-pipeline\supplied-results-workflow.py run build\supplied-results-example --jar build\cli\jlinalg-0.3.7.jar
-python examples\study-pipeline\supplied-results-workflow.py verify build\supplied-results-example --jar build\cli\jlinalg-0.3.7.jar
+python examples\study-pipeline\supplied-results-workflow.py run build\supplied-results-example --jar build\cli\omicsmatic-0.4.0.jar
+python examples\study-pipeline\supplied-results-workflow.py verify build\supplied-results-example --jar build\cli\omicsmatic-0.4.0.jar
 ```
 
 It checks all-supplied reuse, unsigned joint rare-test correction, missing native
@@ -272,8 +272,8 @@ reproduce or certify the original analysis.
 Run the independent offline software regression with:
 
 ```powershell
-python -B examples/study-pipeline/frozen-discovery-workflow.py run build/frozen-discovery-example --jar build/cli/omicsmatic-0.3.7.jar
-python -B examples/study-pipeline/frozen-discovery-workflow.py verify build/frozen-discovery-example --jar build/cli/omicsmatic-0.3.7.jar
+python -B examples/study-pipeline/frozen-discovery-workflow.py run build/frozen-discovery-example --jar build/cli/omicsmatic-0.4.0.jar
+python -B examples/study-pipeline/frozen-discovery-workflow.py verify build/frozen-discovery-example --jar build/cli/omicsmatic-0.4.0.jar
 ```
 
 It checks selected-only and complete source families, native discovery pooling,
@@ -388,8 +388,8 @@ a supplied all-cohort primary meta-analysis remains a separate typed import.
 Run the offline acceptance example with:
 
 ```powershell
-python -B examples/study-pipeline/discovery-scope-workflow.py run build/discovery-scope-example --jar build/cli/omicsmatic-0.3.7.jar
-python -B examples/study-pipeline/discovery-scope-workflow.py verify build/discovery-scope-example --jar build/cli/omicsmatic-0.3.7.jar
+python -B examples/study-pipeline/discovery-scope-workflow.py run build/discovery-scope-example --jar build/cli/omicsmatic-0.4.0.jar
+python -B examples/study-pipeline/discovery-scope-workflow.py verify build/discovery-scope-example --jar build/cli/omicsmatic-0.4.0.jar
 ```
 
 It independently checks native validation coefficients, SEs, P values and sample
@@ -509,8 +509,8 @@ limitations; they provide study context rather than independent replication.
 Run the offline synthetic verifier with NumPy, SciPy and PyYAML:
 
 ```powershell
-python -B examples/study-pipeline/gwas-diagnostics-workflow.py run build/gwas-diagnostic-example --jar build/cli/omicsmatic-0.3.7.jar
-python -B examples/study-pipeline/gwas-diagnostics-workflow.py verify build/gwas-diagnostic-example --jar build/cli/omicsmatic-0.3.7.jar
+python -B examples/study-pipeline/gwas-diagnostics-workflow.py run build/gwas-diagnostic-example --jar build/cli/omicsmatic-0.4.0.jar
+python -B examples/study-pipeline/gwas-diagnostics-workflow.py verify build/gwas-diagnostic-example --jar build/cli/omicsmatic-0.4.0.jar
 ```
 
 The cases include native OLS, two-cohort pooling, supplied complete/selected
@@ -600,8 +600,8 @@ general disclosure or scientific-validity certification.
 Run the offline synthetic acceptance with NumPy, SciPy and PyYAML:
 
 ```powershell
-python -B examples/study-pipeline/scoped-supplied-workflow.py run build/scoped-supplied-example --jar build/cli/omicsmatic-0.3.7.jar
-python -B examples/study-pipeline/scoped-supplied-workflow.py verify build/scoped-supplied-example --jar build/cli/omicsmatic-0.3.7.jar
+python -B examples/study-pipeline/scoped-supplied-workflow.py run build/scoped-supplied-example --jar build/cli/omicsmatic-0.4.0.jar
+python -B examples/study-pipeline/scoped-supplied-workflow.py verify build/scoped-supplied-example --jar build/cli/omicsmatic-0.4.0.jar
 ```
 
 It checks partial/all-supplied graph reuse, missing native work, signed residual
@@ -845,8 +845,8 @@ not suppress missing native comparisons.
 Run the offline NumPy/SciPy/PyYAML acceptance:
 
 ```powershell
-python -B examples/study-pipeline/network-preservation-workflow.py run build/network-preservation-example --jar build/cli/omicsmatic-0.3.7.jar
-python -B examples/study-pipeline/network-preservation-workflow.py verify build/network-preservation-example --jar build/cli/omicsmatic-0.3.7.jar
+python -B examples/study-pipeline/network-preservation-workflow.py run build/network-preservation-example --jar build/cli/omicsmatic-0.4.0.jar
+python -B examples/study-pipeline/network-preservation-workflow.py verify build/network-preservation-example --jar build/cli/omicsmatic-0.4.0.jar
 ```
 
 Its synthetic fixtures include native residual-correlation graphs, supplied and
@@ -1995,7 +1995,7 @@ From the repository root, build the executable JAR:
 
 ~~~powershell
 .\gradlew.bat executableJar
-$jar = (Resolve-Path "build/cli/omicsmatic-0.3.7.jar").Path
+$jar = (Resolve-Path "build/cli/omicsmatic-0.4.0.jar").Path
 ~~~
 
 Copy the example to a disposable working directory so the checked-in files stay
@@ -2943,9 +2943,9 @@ no confidence-ranked subset is silently selected.
 Run the independent acceptance bundle with:
 
 ```powershell
-python examples/study-pipeline/protein-workflow.py run build/my-protein-check --jar build/cli/omicsmatic-0.3.7.jar
+python examples/study-pipeline/protein-workflow.py run build/my-protein-check --jar build/cli/omicsmatic-0.4.0.jar
 # Optional live public TP53 retrieval, distinct from synthetic configured prediction:
-python examples/study-pipeline/protein-workflow.py run build/my-protein-live-check --jar build/cli/omicsmatic-0.3.7.jar --live
+python examples/study-pipeline/protein-workflow.py run build/my-protein-live-check --jar build/cli/omicsmatic-0.4.0.jar --live
 ```
 
 The verifier pins the executable and its own source before execution, independently
@@ -3125,7 +3125,7 @@ the completed source table is retained; it cannot supply a negative alert for
 conditional omission. Original statistical calculations are not rerun by import.
 
 ```powershell
-python examples/study-pipeline/cohort-diagnostics-workflow.py run build/my-cohort-check --jar build/cli/omicsmatic-0.3.7.jar
+python examples/study-pipeline/cohort-diagnostics-workflow.py run build/my-cohort-check --jar build/cli/omicsmatic-0.4.0.jar
 ```
 
 The independent offline verifier pins the executable and its own source before
@@ -3295,7 +3295,7 @@ independent SuSiE/LD calibration, broader assay/source adapters and full manuscr
 claim validation remain separate verification requirements.
 
 ```powershell
-python examples/study-pipeline/colocalization-workflow.py run build/my-coloc-check --jar build/cli/omicsmatic-0.3.7.jar
+python examples/study-pipeline/colocalization-workflow.py run build/my-coloc-check --jar build/cli/omicsmatic-0.4.0.jar
 ```
 
 This verifier pins its own source and the executable before running. Fifteen offline
@@ -3367,7 +3367,7 @@ These scopes do not silently become manuscript primary association findings.
 The offline executable check is:
 
 ```powershell
-python examples/study-pipeline/primary-results-workflow.py run build/primary-acceptance-new --jar build/cli/omicsmatic-0.3.7.jar
+python examples/study-pipeline/primary-results-workflow.py run build/primary-acceptance-new --jar build/cli/omicsmatic-0.4.0.jar
 ```
 
 It pins the executable and executing verifier before generating synthetic cases.
@@ -3459,8 +3459,8 @@ Run the independent packaged acceptance fixture from the repository root,
 using a freshly built executable and a new output directory:
 
 ```powershell
-python examples\study-pipeline\genotype-qc-workflow.py run build\genotype-qc-example --jar build\cli\jlinalg-0.3.7.jar
-python examples\study-pipeline\genotype-qc-workflow.py verify build\genotype-qc-example --jar build\cli\jlinalg-0.3.7.jar
+python examples\study-pipeline\genotype-qc-workflow.py run build\genotype-qc-example --jar build\cli\omicsmatic-0.4.0.jar
+python examples\study-pipeline\genotype-qc-workflow.py verify build\genotype-qc-example --jar build\cli\omicsmatic-0.4.0.jar
 ```
 
 It requires NumPy, SciPy and PyYAML. Its 15 offline synthetic cases pin the
@@ -3536,8 +3536,8 @@ P value/FDR and do not enter the eligible testing family. A dosage or fixed
 offset does not by itself establish sparse-tail or kinship adjustment.
 
 ```powershell
-python examples\study-pipeline\firth-gwas-workflow.py run build\firth-gwas-example --jar build\cli\jlinalg-0.3.7.jar
-python examples\study-pipeline\firth-gwas-workflow.py verify build\firth-gwas-example --jar build\cli\jlinalg-0.3.7.jar
+python examples\study-pipeline\firth-gwas-workflow.py run build\firth-gwas-example --jar build\cli\omicsmatic-0.4.0.jar
+python examples\study-pipeline\firth-gwas-workflow.py verify build\firth-gwas-example --jar build\cli\omicsmatic-0.4.0.jar
 ```
 
 The verifier requires NumPy, SciPy and PyYAML. It pins the executable, executing
@@ -3666,8 +3666,8 @@ verifier and rational-enumeration fixtures before execution. Run it with a new
 output directory and verify using the same pinned JAR:
 
 ```powershell
-python examples/study-pipeline/exact-conditional-workflow.py run build/exact-example --jar build/cli/omicsmatic-0.3.7.jar
-python examples/study-pipeline/exact-conditional-workflow.py verify build/exact-example --jar build/cli/omicsmatic-0.3.7.jar
+python examples/study-pipeline/exact-conditional-workflow.py run build/exact-example --jar build/cli/omicsmatic-0.4.0.jar
+python examples/study-pipeline/exact-conditional-workflow.py verify build/exact-example --jar build/cli/omicsmatic-0.4.0.jar
 ```
 
 These fixtures test finite null masses and state/metadata propagation; they
@@ -3802,8 +3802,8 @@ optimizer limits and incomplete related-test families. The original quantitative
 import workflow remains separately checked.
 
 ```powershell
-python examples/study-pipeline/binary-risk-score-workflow.py run build/binary-score-example --jar build/cli/omicsmatic-0.3.7.jar
-python examples/study-pipeline/binary-risk-score-workflow.py verify build/binary-score-example --jar build/cli/omicsmatic-0.3.7.jar
+python examples/study-pipeline/binary-risk-score-workflow.py run build/binary-score-example --jar build/cli/omicsmatic-0.4.0.jar
+python examples/study-pipeline/binary-risk-score-workflow.py verify build/binary-score-example --jar build/cli/omicsmatic-0.4.0.jar
 ```
 
 
@@ -3979,7 +3979,7 @@ external analysis was not reproduced.
 Run the offline packaged acceptance with a new output directory:
 
 ```powershell
-python examples/study-pipeline/gwas-enrichment-workflow.py run build/my-sldsc-acceptance --jar build/cli/omicsmatic-0.3.7.jar
+python examples/study-pipeline/gwas-enrichment-workflow.py run build/my-sldsc-acceptance --jar build/cli/omicsmatic-0.4.0.jar
 ```
 
 The retained bundle pins the executable, verifier, independent QR reference and
@@ -5296,7 +5296,7 @@ and attempts; a changed source hash invalidates reuse. An import work budget
 can likewise be explicitly amended. The offline acceptance script is:
 
 ```powershell
-python -B examples/study-pipeline/external-genotype-qc-workflow.py run build/external-qc-example --jar build/cli/omicsmatic-0.3.7.jar
+python -B examples/study-pipeline/external-genotype-qc-workflow.py run build/external-qc-example --jar build/cli/omicsmatic-0.4.0.jar
 ```
 
 It pins its executable, verifier, source generator and numerical fixtures before

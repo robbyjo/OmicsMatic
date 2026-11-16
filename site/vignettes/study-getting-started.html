@@ -10,7 +10,7 @@
 You need the same study description and scientific inputs in every mode.
 Start with the small offline example below; then substitute your own files.</p>
 <p>These instructions target the <strong>current source build</strong> of OmicsMatic.
-The executable is still named <code>omicsmatic-0.3.7.jar</code>; that filename does not
+The executable is still named <code>omicsmatic-0.4.0.jar</code>; that filename does not
 mean every source-build feature is in the previously published v0.3.7 binary.
 In particular, the typed completed-analysis imports described here require a
 current source build. See <a href="https://github.com/robbyjo/OmicsMatic/blob/main/docs/runtime-requirements.md">runtime requirements</a>
@@ -256,7 +256,7 @@ a table of significant genes alone cannot supply the enrichment background.</p>
 <p>From the <strong>repository root</strong>, choose your shell and run:</p>
 <p><strong>Windows (PowerShell):</strong></p>
 <div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>.\gradlew.bat executableJar --no-daemon --no-parallel
-$jar = (Resolve-Path &quot;build/cli/omicsmatic-0.3.7.jar&quot;).Path
+$jar = (Resolve-Path &quot;build/cli/omicsmatic-0.4.0.jar&quot;).Path
 $project = Join-Path (Get-Location) &quot;build/my-first-study&quot;
 if (Test-Path -LiteralPath $project) { throw &quot;Choose a fresh project directory.&quot; }
 Copy-Item examples/study-pipeline $project -Recurse
@@ -264,7 +264,7 @@ Set-Location $project
 </code></pre></div>
 <p><strong>Linux / macOS (Bash):</strong></p>
 <div class="code-window"><div class="code-bar"><span>bash</span></div><pre><code>bash ./gradlew executableJar --no-daemon --no-parallel || exit 1
-jar=&quot;$PWD/build/cli/omicsmatic-0.3.7.jar&quot;
+jar=&quot;$PWD/build/cli/omicsmatic-0.4.0.jar&quot;
 project=&quot;$PWD/build/my-first-study&quot;
 if [ -e &quot;$project&quot; ]; then
     printf '%s\n' &quot;Choose a fresh project directory.&quot; &gt;&amp;2

@@ -6,7 +6,7 @@ You need the same study description and scientific inputs in every mode.
 Start with the small offline example below; then substitute your own files.
 
 These instructions target the **current source build** of OmicsMatic.
-The executable is still named `omicsmatic-0.3.7.jar`; that filename does not
+The executable is still named `omicsmatic-0.4.0.jar`; that filename does not
 mean every source-build feature is in the previously published v0.3.7 binary.
 In particular, the typed completed-analysis imports described here require a
 current source build. See [runtime requirements](https://github.com/robbyjo/OmicsMatic/blob/main/docs/runtime-requirements.md)
@@ -264,7 +264,7 @@ From the **repository root**, choose your shell and run:
 
 ~~~powershell
 .\gradlew.bat executableJar --no-daemon --no-parallel
-$jar = (Resolve-Path "build/cli/omicsmatic-0.3.7.jar").Path
+$jar = (Resolve-Path "build/cli/omicsmatic-0.4.0.jar").Path
 $project = Join-Path (Get-Location) "build/my-first-study"
 if (Test-Path -LiteralPath $project) { throw "Choose a fresh project directory." }
 Copy-Item examples/study-pipeline $project -Recurse
@@ -275,7 +275,7 @@ Set-Location $project
 
 ~~~bash
 bash ./gradlew executableJar --no-daemon --no-parallel || exit 1
-jar="$PWD/build/cli/omicsmatic-0.3.7.jar"
+jar="$PWD/build/cli/omicsmatic-0.4.0.jar"
 project="$PWD/build/my-first-study"
 if [ -e "$project" ]; then
     printf '%s\n' "Choose a fresh project directory." >&2

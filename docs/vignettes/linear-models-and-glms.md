@@ -6,13 +6,13 @@ These workflows require only an executable JAR. OmicsMatic v0.3.6 supports the
 OLS, logit, probit, and Poisson examples below:
 
 ```bash
-java -jar jlinalg-0.3.7.jar --pheno phenotype.csv --id SampleName --formula "BMI ~ Sex + Age" --out bmi-ols.csv
+java -jar omicsmatic-0.4.0.jar --pheno phenotype.csv --id SampleName --formula "BMI ~ Sex + Age" --out bmi-ols.csv
 
-java -jar jlinalg-0.3.7.jar --pheno phenotype.csv --omics expression.csv --id SampleName --formula "case_status ~ Sex + Age + <omics>" --family binomial --case-value case --control-value control --out case-expression.csv
+java -jar omicsmatic-0.4.0.jar --pheno phenotype.csv --omics expression.csv --id SampleName --formula "case_status ~ Sex + Age + <omics>" --family binomial --case-value case --control-value control --out case-expression.csv
 
-java -jar build/cli/omicsmatic-0.3.7.jar --pheno phenotype.csv --id SampleName --formula "case_status ~ Sex + Age" --family probit --case-value case --control-value control --out case-probit.csv
+java -jar build/cli/omicsmatic-0.4.0.jar --pheno phenotype.csv --id SampleName --formula "case_status ~ Sex + Age" --family probit --case-value case --control-value control --out case-probit.csv
 
-java -jar jlinalg-0.3.7.jar --pheno phenotype.csv --omics expression.csv --id SampleName --formula "count ~ Sex + Age + <omics>" --family poisson --out count-expression.csv
+java -jar omicsmatic-0.4.0.jar --pheno phenotype.csv --omics expression.csv --id SampleName --formula "count ~ Sex + Age + <omics>" --family poisson --out count-expression.csv
 ```
 
 Use `--family probit` for a binary normal-CDF link and `--family gamma` for

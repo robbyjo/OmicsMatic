@@ -19,7 +19,7 @@ build opens the browser, completes supported OAuth authorization and saves the
 result encrypted. Start with the <a href="ai-login.html">first-login walkthrough</a>,
 including PowerShell, Bash and cloud/SSH instructions.</p>
 <p>From the directory containing your freshly built executable, for example:</p>
-<div class="code-window"><div class="code-bar"><span>text</span></div><pre><code>java -jar omicsmatic-0.3.7.jar study login --provider openai
+<div class="code-window"><div class="code-bar"><span>text</span></div><pre><code>java -jar omicsmatic-0.4.0.jar study login --provider openai
 </code></pre></div>
 <p><code>study run</code> does not initiate consent. Writing <code>auth: oauth</code> in <code>study.yaml</code>
 selects the saved credential; it does not start login during an analysis or batch
@@ -65,7 +65,7 @@ For a cloud VM without a browser, use the
 <a href="ai-login.html#6-a-cloud-vm-without-a-browser">SSH callback procedure</a>.
 The running JAR needs the credential on its own machine.</p>
 <p>Use a <strong>current source build</strong> for encrypted credentials. The executable remains
-named <code>omicsmatic-0.3.7.jar</code>; the previously published binary with that name does
+named <code>omicsmatic-0.4.0.jar</code>; the previously published binary with that name does
 not necessarily include the newer commands. See
 <a href="https://github.com/robbyjo/OmicsMatic/blob/main/docs/runtime-requirements.md">build and runtime requirements</a>.</p>
 <p>Choose one connection below. Before resolving a new project, merge its YAML into
@@ -189,14 +189,14 @@ Keep the generated key ready for the hidden prompt below. Do not put it into
 These commands build the application and define the JAR and credential paths.</p>
 <p><strong>Windows, PowerShell:</strong></p>
 <div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>.\gradlew.bat executableJar --no-daemon --no-parallel
-$jar = (Resolve-Path &quot;build/cli/omicsmatic-0.3.7.jar&quot;).Path
+$jar = (Resolve-Path &quot;build/cli/omicsmatic-0.4.0.jar&quot;).Path
 $vault = Join-Path $env:USERPROFILE &quot;.omicsmatic/credentials/openai.credentials.json&quot;
 java -jar $jar study credentials-save --provider openai --auth api_key --out $vault
 java -jar $jar study credentials-check --file $vault
 </code></pre></div>
 <p><strong>Linux or macOS, Bash:</strong></p>
 <div class="code-window"><div class="code-bar"><span>bash</span></div><pre><code>bash ./gradlew executableJar --no-daemon --no-parallel || exit 1
-jar=&quot;$PWD/build/cli/omicsmatic-0.3.7.jar&quot;
+jar=&quot;$PWD/build/cli/omicsmatic-0.4.0.jar&quot;
 vault=&quot;$HOME/.omicsmatic/credentials/openai.credentials.json&quot;
 java -jar &quot;$jar&quot; study credentials-save --provider openai --auth api_key --out &quot;$vault&quot;
 java -jar &quot;$jar&quot; study credentials-check --file &quot;$vault&quot;
@@ -604,7 +604,7 @@ scp &quot;$vault&quot; researcher@vm.example.org:.omicsmatic/credentials/openai.
 <p>These commands work in PowerShell or Bash with the corresponding <code>vault</code> variable.
 Send the encrypted file through SSH; keep its passphrase separate. On the Linux VM:</p>
 <div class="code-window"><div class="code-bar"><span>bash</span></div><pre><code>chmod 600 &quot;$HOME/.omicsmatic/credentials/openai.credentials.json&quot;
-jar=&quot;$HOME/OmicsMatic/build/cli/omicsmatic-0.3.7.jar&quot;
+jar=&quot;$HOME/OmicsMatic/build/cli/omicsmatic-0.4.0.jar&quot;
 java -jar &quot;$jar&quot; study credentials-check --file &quot;$HOME/.omicsmatic/credentials/openai.credentials.json&quot;
 </code></pre></div>
 <p>Set <code>jar</code> to the actual executable location. Checking the file asks for its

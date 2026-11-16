@@ -60,11 +60,11 @@ produces a JAR with that version in its filename.</p>
 On macOS, run <code>bash</code> in Terminal if your default shell is zsh.</p>
 <p><strong>Windows (PowerShell), from the repository root:</strong></p>
 <div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>.\gradlew.bat executableJar --no-daemon --no-parallel
-$jar = (Resolve-Path &quot;build/cli/omicsmatic-0.3.7.jar&quot;).Path
+$jar = (Resolve-Path &quot;build/cli/omicsmatic-0.4.0.jar&quot;).Path
 </code></pre></div>
 <p><strong>Linux / macOS (Bash), from the repository root:</strong></p>
 <div class="code-window"><div class="code-bar"><span>bash</span></div><pre><code>bash ./gradlew executableJar --no-daemon --no-parallel || exit 1
-jar=&quot;$PWD/build/cli/omicsmatic-0.3.7.jar&quot;
+jar=&quot;$PWD/build/cli/omicsmatic-0.4.0.jar&quot;
 </code></pre></div>
 <h2 id="2-openai-run-the-login-command">2. OpenAI: run the login command</h2>
 <p>Choose a new credential filename outside the study and outside source control.</p>
@@ -181,7 +181,7 @@ to your laptop's browser. This avoids copying a rotating session between machine
 <p>Replace the username/host. The command works with an installed OpenSSH client
 from PowerShell or Bash. Keep that SSH connection open. Inside its <strong>VM shell</strong>,
 set the actual JAR path and choose a new VM-local credential file:</p>
-<div class="code-window"><div class="code-bar"><span>bash</span></div><pre><code>jar=&quot;$HOME/OmicsMatic/build/cli/omicsmatic-0.3.7.jar&quot;
+<div class="code-window"><div class="code-bar"><span>bash</span></div><pre><code>jar=&quot;$HOME/OmicsMatic/build/cli/omicsmatic-0.4.0.jar&quot;
 vault=&quot;$HOME/.omicsmatic/credentials/openai-oauth.credentials.json&quot;
 java -jar &quot;$jar&quot; study login --provider openai --no-browser --port 1455 --out &quot;$vault&quot;
 </code></pre></div>

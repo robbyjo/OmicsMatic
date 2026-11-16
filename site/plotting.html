@@ -17,13 +17,13 @@ silently replaced.</p>
 47,27.5,F,68,follow-up
 </code></pre></div>
 <p>create a grouped scatter plot:</p>
-<div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>java -jar build/cli/omicsmatic-0.3.7.jar plot `
+<div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>java -jar build/cli/omicsmatic-0.4.0.jar plot `
   --type scatter --input examples/plotting/measurements.csv `
   --x age --y bmi --group sex `
   --title &quot;BMI by age&quot; --out bmi-by-age.png
 </code></pre></div>
 <p>The same command can write a vector PDF or SVG by changing <code>--out</code>:</p>
-<div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>java -jar build/cli/omicsmatic-0.3.7.jar plot `
+<div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>java -jar build/cli/omicsmatic-0.4.0.jar plot `
   --type violin --input examples/plotting/measurements.csv `
   --x sex --y bmi --out bmi-by-sex.pdf
 </code></pre></div>
@@ -186,7 +186,7 @@ replicated set. The table records the multiple-testing scope and same-sign rule,
 so a <code>discovery_subset</code> analysis is not mistaken for a symmetric genome-wide
 comparison.</p>
 <p>A standalone two-set diagram uses the same membership contract:</p>
-<div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>java -jar build/cli/omicsmatic-0.3.7.jar plot `
+<div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>java -jar build/cli/omicsmatic-0.4.0.jar plot `
   --type venn --input examples/plotting/venn-memberships.csv `
   --x feature --group set --title &quot;Discovery and replication&quot; `
   --out discovery-replication.pdf

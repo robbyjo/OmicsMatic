@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="New tools, cross-omics adjustment, reusable study results and evidence-linked reporting."><title>What&#x27;s new in OmicsMatic v0.4.0 · OmicsMatic</title>
+<link rel="stylesheet" href="assets/styles.css"><script src="assets/app.js" defer></script></head>
+<body><site-header root="./"></site-header><main id="main">
+<section class="page-hero"><div class="container"><div class="breadcrumbs"><a href="index.html">Home</a><span>/</span><span>v0.4.0</span></div>
+<span class="eyebrow">OmicsMatic v0.4.0</span><h1>What&#x27;s new in OmicsMatic v0.4.0</h1><p>New tools, cross-omics adjustment, reusable study results and evidence-linked reporting.</p></div></section>
+<div class="container page-layout"><article class="prose release-guide">
+<p>OmicsMatic v0.4.0 brings a larger bioinformatics toolbox together with more
+complete study execution, association analysis and evidence-linked reporting.
+The release keeps the frozen tool boundary while ongoing development continues
+on main.</p>
+<p><a href="https://github.com/robbyjo/OmicsMatic/releases/tag/v0.4.0">Download v0.4.0</a> ·
+<a href="vignettes/study-getting-started.html">Start your first study</a> ·
+<a href="https://robbyjo.github.io/OmicsMatic/toolbox.html">Browse the toolbox</a></p>
+<h2 id="bioinformatics-workflows">Bioinformatics workflows</h2>
+<p>The frozen literature catalog contains <strong>122 newly integrated tool families</strong>:
+21 validated native subsets and 101 validated upstream workflows. These counts
+describe recorded, operation-specific qualifications, not complete packages or
+installed runtimes. Existing adapters, lookups, exports and related native
+methods remain separate categories. Of 446 cataloged families, 265 remain
+missing and one is excluded.</p>
+<p>The searchable <a href="https://robbyjo.github.io/OmicsMatic/toolbox.html">tool directory</a>
+lists every family, its supported scope, limitations and source or workflow
+guide. Examples include:</p>
+<ul>
+<li><strong>Sequence and file processing:</strong> native QC, adapter trimming, SAM/BAM
+  operations and HTSeq counting; original-engine routes for STAR, HISAT2,
+  featureCounts, Salmon, kallisto and other sequencing tools.</li>
+<li><strong>Genetic and regulatory interpretation:</strong> FUMA mapping and enrichment
+  subsets, MAGMA, SMR/HEIDI, LOFTEE, HOMER, MEME and Tomtom workflows, alongside
+  native fine-mapping and colocalization methods.</li>
+<li><strong>Single-cell and spatial follow-up:</strong> SingleR and celldex reference-based
+  annotation, SPOTlight deconvolution, HICAT doublet workflows, scDRS, CellChat
+  and CellPhoneDB within their documented profiles.</li>
+<li><strong>Additional completed integrations:</strong> BIGCAT workflows, MELODI service
+  operations and native TPMCalculator. iDEP development remains outside the
+  admitted toolset.</li>
+</ul>
+<p>Use the <a href="native-tool-replacements.html">native replacement guide</a> for Java-only
+operations. Each original-engine route documents its separate installation,
+resources, supported versions and recovery steps. A catalog entry does not
+automatically connect every operation to the study planner.</p>
+<h2 id="association-and-cross-omics-adjustment">Association and cross-omics adjustment</h2>
+<p>Mapped omics adjustment can select feature-specific covariates from multiple
+sources, apply registered transforms and refit on the complete cases for each
+target feature. Supported routes include OLS, GLM, LMM and GLMM; mapped
+adjustment is not supported for Cox or genotype scans. The
+<a href="https://github.com/robbyjo/OmicsMatic/blob/v0.4.0/examples/mapped-omics-association/README.md">worked example</a> shows the mapping
+files, model setup, result metadata and independent comparisons.</p>
+<p>The study guides also cover genotype QC and projected PCs, Firth and exact
+conditional binary tests, rare-set analyses, registered subgroup interactions,
+native Cox association and frozen genetic scores. Choose the model supported
+by the design rather than treating these routes as interchangeable. See the
+<a href="vignettes/cli-association-tutorial.html">association tutorial</a> and the
+<a href="vignettes/study-pipeline-tutorial.html">study pipeline guide</a>.</p>
+<h2 id="reuse-completed-analyses-and-run-missing-work">Reuse completed analyses and run missing work</h2>
+<p>Supply validated primary results, meta-analysis outputs or supported follow-up
+artifacts, then run the work still needed. Reuse preserves result identities,
+testing families and provenance. Partial supplied stages retain explicit
+coverage and unresolved items; they do not silently become complete results.</p>
+<p>Newer study capabilities include cohort overlap and heterogeneity diagnostics,
+covariance-aware pooling, native ranked GSEA and LD-aware category enrichment,
+network modules and preservation, held-out score development, and more complete
+MR and colocalization records. Read the
+<a href="vignettes/study-pipeline-tutorial.html">study tutorial</a> for the exact inputs and
+remaining implementation boundaries.</p>
+<p>Study cleanup now provides an auditable plan and explicit execution controls.
+Inspect <code>study help</code> and the <a href="vignettes/auditable-omics-pipeline.html">pipeline guide</a>
+before removing derived results.</p>
+<h2 id="useful-follow-ups-and-manuscript-evidence">Useful follow-ups and manuscript evidence</h2>
+<p>The <a href="vignettes/analysis-pipeline-specification.html">analysis specification</a>
+now describes conditional SNP analysis starting from the strongest SNP or a
+prespecified file, followed by forward selection or a configured advanced
+method. It also describes selecting useful bioinformatics operations and linking
+their results to the corresponding variants, loci, genes, tissues and findings.
+These are workflow requirements; they do not imply new automatic adapters for
+every tool.</p>
+<p>Manuscript composition and revision carry finding identities, source-linked
+claims, uncertainty and incomplete analyses into reports. Recent template
+improvements cover connected introductions and discussions, structured
+abstracts, local Table 1, mathematical typography and appropriate decimal
+precision. See the <a href="manuscript-writing-template.html">manuscript template</a>,
+<a href="vignettes/study-tools-literature.html">tools and literature guide</a>, and
+<a href="analysis-pipeline-implementation.html">implementation status</a>.</p>
+<h2 id="optional-ai-collaboration">Optional AI collaboration</h2>
+<p>Run <a href="vignettes/ai-no-ai.html">without AI</a>, use an
+<a href="vignettes/ai-advisor.html">AI advisor</a>, or coordinate approved commands with an
+<a href="vignettes/ai-driver.html">external agent</a>. Browser/API setup, OAuth login,
+encrypted credential storage and supported renewal have dedicated
+<a href="vignettes/ai-connections.html">connection guides</a>.</p>
+<p>The built-in advisor uses a bounded evidence preview under the configured
+disclosure policy. Aggregate findings still require review; external agents
+need their own data-access controls. These mechanisms do not constitute a
+whole-system privacy guarantee.</p>
+<h2 id="downloads-verification-and-known-limitations">Downloads, verification and known limitations</h2>
+<p>The release provides an executable JAR, library JAR, sources, Javadoc, the
+frozen tool inventory and SHA-256 checksums. Java 17 is the application target;
+optional upstream runtimes have separate requirements.</p>
+<p>The frozen Windows/JDK 21 run recorded <strong>25,078 passed tests, 441 skipped tests,
+and no failures or errors across 878 suites</strong>. The executable's synthetic OLS
+results matched an independent NumPy calculation, and the build, website links
+and JAR archive checks passed. Skips include optional runtime, platform and live
+checks; software tests do not certify all scientific applications.</p>
+<p><strong>Known catalog limitation:</strong> the catalog-wide verifier refuses changes relative
+to its historical predecessor source baseline. The original tool-specific
+qualifications and the failed verification record are preserved. This release
+does not claim newly verified whole-catalog equivalence or a pass of that check.
+See the <a href="release-0.4.0-freeze.html">freeze and validation record</a> for full details.</p></article><aside class="toc"><strong>On this page</strong><a href="#bioinformatics-workflows">Bioinformatics workflows</a><a href="#association-and-cross-omics-adjustment">Association and cross-omics adjustment</a><a href="#reuse-completed-analyses-and-run-missing-work">Reuse completed analyses and run missing work</a><a href="#useful-follow-ups-and-manuscript-evidence">Useful follow-ups and manuscript evidence</a><a href="#optional-ai-collaboration">Optional AI collaboration</a><a href="#downloads-verification-and-known-limitations">Downloads, verification and known limitations</a></aside></div></main><site-footer root="./"></site-footer></body></html>

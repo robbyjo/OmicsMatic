@@ -1,16 +1,19 @@
 # OmicsMatic 0.4.0
 
-## Frozen release candidate
+## Bioinformatics tools and reusable studies
 
 The toolset is frozen from integration commit
 `f87564288cf6e9d73a7d30164a96689b6ed861da` on 2026-11-15.
 Completed, validated local additions are included. Subsequent development does
 not enter this release without a separate reviewed release fix and validation.
-See [the release boundary](docs/release-0.4.0-freeze.md) and its machine-readable
-inventory. This is a prepared local candidate, not a publication receipt.
-Whole-catalog verification on the merged source currently refuses a historical
-predecessor baseline; its original qualifications and the refusal are retained.
-Publication readiness remains pending the separate predecessor requalification.
+See [the release boundary](https://robbyjo.github.io/OmicsMatic/release-0.4.0-freeze.html) and its machine-readable
+inventory. Read the [v0.4.0 feature guide](https://robbyjo.github.io/OmicsMatic/release-0.4.0.html)
+and [searchable toolbox](https://robbyjo.github.io/OmicsMatic/toolbox.html).
+
+**Known limitation:** whole-catalog verification on the merged source refuses a
+historical predecessor baseline. Original tool-specific qualifications and the
+refusal are preserved; this release does not claim a newly verified whole
+catalog. Optional upstream runtimes are installed separately.
 
 ## Bioinformatics toolbox
 
@@ -44,12 +47,13 @@ Publication readiness remains pending the separate predecessor requalification.
 ## Validation
 
 Release-specific build, catalog checks and artifact identities are recorded in
-[the freeze and validation record](docs/release-0.4.0-freeze.md).
+[the freeze and validation record](https://robbyjo.github.io/OmicsMatic/release-0.4.0-freeze.html).
 The isolated `check assemble` gate passed: 25,078 tests passed, 441 skipped,
 zero failures/errors across 878 suites. Executable, library, source and Javadoc
-JARs are staged locally with SHA-256 checksums. The whole-catalog historical
-source-baseline refusal remains a publication blocker; skipped optional-runtime
-checks and historical tool qualifications are not new scientific validation.
+JARs are provided with SHA-256 checksums and the frozen tool inventory. The
+whole-catalog historical source-baseline refusal remains a known limitation;
+skipped optional-runtime checks and historical qualifications are not new
+scientific validation.
 
 # OmicsMatic 0.3.7
 

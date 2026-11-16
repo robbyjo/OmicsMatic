@@ -44,7 +44,7 @@ From the repository root:
 
 ~~~powershell
 .\gradlew.bat executableJar --no-daemon --no-parallel
-$jar = (Resolve-Path "build/cli/omicsmatic-0.3.7.jar").Path
+$jar = (Resolve-Path "build/cli/omicsmatic-0.4.0.jar").Path
 $project = Join-Path (Get-Location) "build/ai-advisor"
 if (Test-Path -LiteralPath $project) { throw "Choose a fresh project directory." }
 Copy-Item examples/study-pipeline $project -Recurse
@@ -55,7 +55,7 @@ Set-Location $project
 
 ~~~bash
 bash ./gradlew executableJar --no-daemon --no-parallel || exit 1
-jar="$PWD/build/cli/omicsmatic-0.3.7.jar"
+jar="$PWD/build/cli/omicsmatic-0.4.0.jar"
 project="$PWD/build/ai-advisor"
 if [ -e "$project" ]; then
     printf '%s\n' "Choose a fresh project directory." >&2

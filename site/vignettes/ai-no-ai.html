@@ -37,7 +37,7 @@ data-disclosure decisions while learning the commands.</p>
 <p>From the repository root:</p>
 <p><strong>Windows (PowerShell):</strong></p>
 <div class="code-window"><div class="code-bar"><span>powershell</span></div><pre><code>.\gradlew.bat executableJar --no-daemon --no-parallel
-$jar = (Resolve-Path &quot;build/cli/omicsmatic-0.3.7.jar&quot;).Path
+$jar = (Resolve-Path &quot;build/cli/omicsmatic-0.4.0.jar&quot;).Path
 $project = Join-Path (Get-Location) &quot;build/ai-no-ai&quot;
 if (Test-Path -LiteralPath $project) { throw &quot;Choose a fresh project directory.&quot; }
 Copy-Item examples/study-pipeline $project -Recurse
@@ -45,7 +45,7 @@ Set-Location $project
 </code></pre></div>
 <p><strong>Linux / macOS (Bash):</strong></p>
 <div class="code-window"><div class="code-bar"><span>bash</span></div><pre><code>bash ./gradlew executableJar --no-daemon --no-parallel || exit 1
-jar=&quot;$PWD/build/cli/omicsmatic-0.3.7.jar&quot;
+jar=&quot;$PWD/build/cli/omicsmatic-0.4.0.jar&quot;
 project=&quot;$PWD/build/ai-no-ai&quot;
 if [ -e &quot;$project&quot; ]; then
     printf '%s\n' &quot;Choose a fresh project directory.&quot; &gt;&amp;2
