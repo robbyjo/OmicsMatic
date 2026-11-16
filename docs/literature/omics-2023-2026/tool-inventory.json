@@ -5443,23 +5443,101 @@
   {
     "id": "pops",
     "name": "PoPS",
-    "pattern": "(?<![A-Za-z0-9_])(?:(?-i:PoPS))(?![A-Za-z0-9_])",
+    "pattern": "(?<![A-Za-z0-9_])(?:(?-i:PoPS|PoPs))(?![A-Za-z0-9_])",
     "role": "Effector-gene prioritization using polygenic features",
-    "current_coverage": "missing",
-    "existing_source": null,
-    "coverage_note": "Paper-specific method identified during title and code-link review; authentic integration and scientific validation pending.",
-    "paper_count": 5,
+    "current_coverage": "native-subset-validated",
+    "existing_source": "src/main/java/org/jlinalg/cli/PopsWorkflowCli.java",
+    "coverage_note": "Native Java PoPS 0.2 ridge/OLS with complete prepared-input workflows; explicit unchanged original PoPS 0.1 selection/chromosome prediction and 0.2 ridge/OLS/LassoCV/munging adapters. Selected source is not the author commit or environment. Original execution requires a separately installed/adopted Linux x86-64 runtime; no silent edition/method fallback. All 22 autosomes, full official 18383-gene/508-feature examples, actual source convergence refusal, complete captured-input replay and retained failure controls are covered. Explicit ConvergenceWarning means FAIL2 even with finite coefficients; missing permitted prerequisites mean SKIP3 and dependent analysis skipped. Original 0.1 single-selected-feature failure and empty-selection control-only results are preserved. Munging/selection alone are not fitted models. Six source roles distinguish three reported computations from benchmarking and published-score reuse. Score-release provenance, author parameters, LD/reference preparation, downstream ranks/enrichment and whole-paper reproduction remain separate and unqualified. Build current source; released v0.4.0 lacks the commands. This is one scoped native family credit with supplemental original adapters, not multiple tool credits or whole-tool equivalence.",
+    "paper_count": 6,
     "papers": [
       "P088",
       "P090",
       "P120",
       "P153",
-      "P220"
+      "P220",
+      "P236"
     ],
-    "implementation_status": "missing",
-    "implementation_source": null,
-    "implementation_scope": "Paper-specific method identified during title and code-link review; authentic integration and scientific validation pending.",
-    "validation_note": "Existing overlap/adapters require paper-specific option checks; missing integrations remain pending."
+    "implementation_status": "native-subset-validated",
+    "implementation_source": "src/main/java/org/jlinalg/cli/PopsWorkflowCli.java",
+    "implementation_scope": "Native Java PoPS 0.2 ridge/OLS with complete prepared-input workflows; explicit unchanged original PoPS 0.1 selection/chromosome prediction and 0.2 ridge/OLS/LassoCV/munging adapters. Selected source is not the author commit or environment. Original execution requires a separately installed/adopted Linux x86-64 runtime; no silent edition/method fallback. All 22 autosomes, full official 18383-gene/508-feature examples, actual source convergence refusal, complete captured-input replay and retained failure controls are covered. Explicit ConvergenceWarning means FAIL2 even with finite coefficients; missing permitted prerequisites mean SKIP3 and dependent analysis skipped. Original 0.1 single-selected-feature failure and empty-selection control-only results are preserved. Munging/selection alone are not fitted models. Six source roles distinguish three reported computations from benchmarking and published-score reuse. Score-release provenance, author parameters, LD/reference preparation, downstream ranks/enrichment and whole-paper reproduction remain separate and unqualified. Build current source; released v0.4.0 lacks the commands. This is one scoped native family credit with supplemental original adapters, not multiple tool credits or whole-tool equivalence.",
+    "validation_note": "Native 219 Windows/Linux controls and complete tutorial parity; original 270 Windows regressions/32 Linux contracts, 17 successful original profile controls plus two expected failures, all 22 legacy chromosomes, full official fitting/munging, 42 admitted task bundles and 13 genuine replay families. Real 35-warning finite source fit is rejected. No biological or author-setting reproduction claimed.",
+    "native_methods": [
+      "ridge",
+      "linreg"
+    ],
+    "native_edition": "0.2",
+    "native_lasso_available": false,
+    "native_01_available": false,
+    "original_editions": [
+      "0.1",
+      "0.2"
+    ],
+    "original_methods": [
+      "0.1-select",
+      "0.1-predict",
+      "0.1-select-predict",
+      "0.2-ridge",
+      "0.2-linreg",
+      "0.2-lasso",
+      "0.2-munge"
+    ],
+    "root_dispatch_available": true,
+    "project_adapter_available": true,
+    "canonical_adapter_available": true,
+    "source_build_required": true,
+    "released_binary_contains_adapter": false,
+    "whole_tool_qualified": false,
+    "whole_paper_reproduced": false,
+    "author_environment_reproduced": false,
+    "new_scoped_integration_credit": 1,
+    "native_analytical_credit_added": 1,
+    "upstream_family_credit_added": 0,
+    "current_documentation": "docs/literature/POPS_CATALOG_INTEGRATION.md",
+    "source_roles_reviewed": 6,
+    "paper_role_qualification": {
+      "P088": {
+        "reported_version": "0.2",
+        "fresh_estimation_reported": true,
+        "usage_context": "analysis-method-description",
+        "author_options_established": false,
+        "whole_paper_reproduced": false
+      },
+      "P090": {
+        "reported_version": "0.1",
+        "fresh_estimation_reported": true,
+        "usage_context": "analysis-method-description",
+        "author_options_established": false,
+        "whole_paper_reproduced": false
+      },
+      "P120": {
+        "reported_version": "0.2",
+        "fresh_estimation_reported": true,
+        "usage_context": "analysis-method-description",
+        "author_options_established": false,
+        "whole_paper_reproduced": false
+      },
+      "P153": {
+        "reported_version": null,
+        "fresh_estimation_reported": false,
+        "usage_context": "benchmark-or-comparison",
+        "author_options_established": false,
+        "whole_paper_reproduced": false
+      },
+      "P220": {
+        "reported_version": null,
+        "fresh_estimation_reported": false,
+        "usage_context": "external-result-reuse",
+        "author_options_established": false,
+        "whole_paper_reproduced": false
+      },
+      "P236": {
+        "reported_version": null,
+        "fresh_estimation_reported": false,
+        "usage_context": "external-result-reuse",
+        "author_options_established": false,
+        "whole_paper_reproduced": false
+      }
+    }
   },
   {
     "id": "ldak",
