@@ -1,0 +1,82 @@
+{
+  "actual_scientific_project_source_modified": false,
+  "cases": [
+    {
+      "accepted_with_declared_scope": true,
+      "case": "unchanged-source"
+    },
+    {
+      "case": "modified-scientific-source",
+      "cause": "Unreviewed preceding tracked source changed or reviewed anchor unavailable; retain it and create a separate reviewed transition",
+      "exception": "ValueError",
+      "refused": true
+    },
+    {
+      "case": "deleted-scientific-source",
+      "cause": "Unreviewed preceding tracked source changed or reviewed anchor unavailable; retain it and create a separate reviewed transition",
+      "exception": "ValueError",
+      "refused": true
+    },
+    {
+      "case": "moved-scientific-source",
+      "cause": "Unreviewed preceding tracked source changed or reviewed anchor unavailable; retain it and create a separate reviewed transition",
+      "exception": "ValueError",
+      "refused": true
+    },
+    {
+      "accepted_with_declared_scope": true,
+      "case": "metadata-excluded-from-source-diff-only"
+    },
+    {
+      "case": "metadata-still-requires-exact-pins",
+      "cause": "Reviewed source or evidence differs: docs/literature/omics-2023-2026/README.md",
+      "exception": "ValueError",
+      "refused": true
+    },
+    {
+      "accepted_with_declared_scope": true,
+      "case": "own-code-excluded-from-source-diff-only"
+    },
+    {
+      "case": "own-code-still-requires-exact-pins",
+      "cause": "Reviewed source or evidence differs: tools/literature/catalog_source_transition/bridge.py",
+      "exception": "ValueError",
+      "refused": true
+    },
+    {
+      "accepted_with_declared_scope": true,
+      "case": "new-source-addition-does-not-promote-any-tool"
+    },
+    {
+      "case": "unavailable-anchor-is-named-prerequisite",
+      "cause": "Reviewed Git commit is unavailable; supply the permitted complete Git history: 0000000000000000000000000000000000000000",
+      "exception": "FileNotFoundError",
+      "refused": true
+    },
+    {
+      "accepted_with_declared_scope": true,
+      "case": "exact-pins-restored"
+    },
+    {
+      "accepted_with_declared_scope": true,
+      "case": "actual-predecessor-metadata-view-preserved-without-writing"
+    },
+    {
+      "accepted_with_declared_scope": true,
+      "case": "exact-recorded-LF-checkout"
+    },
+    {
+      "accepted_with_declared_scope": true,
+      "case": "exact-recorded-CRLF-checkout"
+    },
+    {
+      "case": "unrecorded-source-bytes-not-normalized",
+      "cause": "Unrecorded checkout bytes differ: src/science.txt",
+      "exception": "ValueError",
+      "refused": true
+    }
+  ],
+  "new_scoped_integration_credit": 0,
+  "scientific_calls_executed": false,
+  "status": "PASS_FIFTEEN_SYNTHETIC_SOURCE_METADATA_VERIFIER_VIEW_AND_CHECKOUT_CONTROLS"
+}
