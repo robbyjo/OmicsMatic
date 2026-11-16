@@ -1,0 +1,3 @@
+# Warnings and required actions
+
+DEVELOPMENT SNAPSHOT. Original-R workflow analysis and auto remain unqualified. Runtime adoption, syntax checks and prerequisite refusal controls do not establish analysis correctness. No new catalog credit. Use the source-build instructions in ../LDPRED2_WORKFLOWS.md. Missing permitted prerequisites: SKIP3, skip dependent analysis, supply the named prerequisite and retry NEW output. Other analysis/verification/recording failures: FAIL2, retain raw inputs/consoles and retry NEW output after correcting the cause. Never refresh old fingerprints to suppress a refusal.
