@@ -59,8 +59,9 @@ The isolated software build/test gate passed on Windows with JDK 21.0.4:
 Linux-only controls, optional original runtimes and explicitly gated live or
 fixture checks; they are not fresh upstream validation. The
 [test receipt](releases/0.4.0/validation/tests.json) retains all skip reasons,
-suite counts and raw-result hashes. Raw XML and HTML reports remain under
-`build/test-results/test` and `build/reports/tests/test` in the release checkout.
+suite counts and raw-result hashes. Original Windows XML reports are retained
+under `build/frozen-tests-before-publication-fix` in the release checkout;
+subsequent test runs have their own logs and CI report artifacts.
 
 The packaged executable reports `0.4.0`; its six-sample synthetic OLS
 coefficients and standard errors match an independent NumPy calculation to
@@ -115,6 +116,17 @@ and its failure count remain part of the release history. Subsequent tagged
 builds retain their XML and HTML test reports as workflow artifacts. The initial
 tag target `abf19f30f177e6122966c2ca4e4c0d3e9d03aeea` produced no release assets;
 the corrected tag includes these test-harness and CI-reporting changes.
+
+The [second Linux run](https://github.com/robbyjo/OmicsMatic/actions/runs/43785583685)
+passed the previously failing checks but stopped after reporting 25,314 tests,
+one failure and 392 skips. A second test selected an unrelated `request.yaml`;
+the worker also exhausted its default 512 MiB heap before completing the suite.
+The [failure receipt](releases/0.4.0/validation/second-linux-ci.json) retains both
+causes. The correction selects the association operation's request explicitly,
+uses deterministic ordering for other test artifact lookups, provides a 2 GiB
+test heap, and recycles workers after 100 test classes. No test assertion or
+scientific tolerance was relaxed. The second tag target
+`6b9c8d809a582ab7f5eaf7ca5b6378814c162fcf` also produced no release assets.
 
 ### Catalog verification and retained attempts
 

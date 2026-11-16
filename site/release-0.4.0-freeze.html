@@ -91,8 +91,9 @@ preserved. Existing supplied-result and artifact-linking contracts still apply.<
 Linux-only controls, optional original runtimes and explicitly gated live or
 fixture checks; they are not fresh upstream validation. The
 <a href="https://github.com/robbyjo/OmicsMatic/blob/v0.4.0/docs/releases/0.4.0/validation/tests.json">test receipt</a> retains all skip reasons,
-suite counts and raw-result hashes. Raw XML and HTML reports remain under
-<code>build/test-results/test</code> and <code>build/reports/tests/test</code> in the release checkout.</p>
+suite counts and raw-result hashes. Original Windows XML reports are retained
+under <code>build/frozen-tests-before-publication-fix</code> in the release checkout;
+subsequent test runs have their own logs and CI report artifacts.</p>
 <p>The packaged executable reports <code>0.4.0</code>; its six-sample synthetic OLS
 coefficients and standard errors match an independent NumPy calculation to
 relative/absolute tolerance 1e-12. FUMA, SuSiE and study help entry points work. All 5,839 compiled library
@@ -140,6 +141,16 @@ and its failure count remain part of the release history. Subsequent tagged
 builds retain their XML and HTML test reports as workflow artifacts. The initial
 tag target <code>abf19f30f177e6122966c2ca4e4c0d3e9d03aeea</code> produced no release assets;
 the corrected tag includes these test-harness and CI-reporting changes.</p>
+<p>The <a href="https://github.com/robbyjo/OmicsMatic/actions/runs/43785583685">second Linux run</a>
+passed the previously failing checks but stopped after reporting 25,314 tests,
+one failure and 392 skips. A second test selected an unrelated <code>request.yaml</code>;
+the worker also exhausted its default 512 MiB heap before completing the suite.
+The <a href="https://github.com/robbyjo/OmicsMatic/blob/v0.4.0/docs/releases/0.4.0/validation/second-linux-ci.json">failure receipt</a> retains both
+causes. The correction selects the association operation's request explicitly,
+uses deterministic ordering for other test artifact lookups, provides a 2 GiB
+test heap, and recycles workers after 100 test classes. No test assertion or
+scientific tolerance was relaxed. The second tag target
+<code>6b9c8d809a582ab7f5eaf7ca5b6378814c162fcf</code> also produced no release assets.</p>
 <h3 id="catalog-verification-and-retained-attempts">Catalog verification and retained attempts</h3>
 <ol>
 <li>The new checkout initially lacked the cached primary-paper XML and correctly
