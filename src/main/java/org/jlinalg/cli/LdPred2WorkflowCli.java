@@ -23,13 +23,13 @@ public final class LdPred2WorkflowCli {
     static final String NOTICE="""
         # Warnings and required actions
 
-        DEVELOPMENT SNAPSHOT: native inf/grid controls have been exercised.
-        The original-R workflow adapter, including auto, still awaits actual
-        end-to-end analysis and genuine replay qualification. Do not treat
-        runtime adoption, R syntax checks or a completion marker as that
-        qualification. No new literature-catalog credit is claimed.
+        DEVELOPMENT SNAPSHOT: qualification is limited to the controls and
+        editions documented in LDPRED2_WORKFLOWS_V2.md. Runtime adoption,
+        syntax checks and completion markers alone do not establish scientific
+        correctness. No full-paper reproduction, automatic chain selection
+        or new literature-catalog credit is claimed.
 
-        LDpred2 prepared-input workflow v1. Native Java implements inf and the
+        LDpred2 prepared-input workflow v2. Native Java implements inf and the
         complete serial grid with R-compatible integer seeds, stream jumps and
         source model ordering. Auto invokes the explicitly adopted original
         bigsnpr 1.12.2 or selected1.12.4 runtime in a Linux x86-64 JVM. Missing or
@@ -76,7 +76,7 @@ public final class LdPred2WorkflowCli {
         Path owned=null;
         try {
             if(args.length==1&&args[0].equals("--help")) {
-                out.println("LDpred2 workflows: --request FILE --out NEW_DIRECTORY\nGenuine recomputation: --verify BUNDLE --out NEW_DIRECTORY\nRequired: "+new java.util.TreeSet<>(REQUIRED)+"\ninf: heritability. grid: models,seed. auto: engine=original,runtime,models,heritability,seed.\nSummary: variant effect_allele other_allele beta beta_se n_eff (tab-separated).\nLD variants: variant effect_allele other_allele. CSC files: little-endian int32 pointers/rows and float64 values.\nGrid models: model h2 p sparse; auto models: model p_init. See LDPRED2_WORKFLOWS.md.\n"+NOTICE);return 0;
+                out.println("LDpred2 workflows: --request FILE --out NEW_DIRECTORY\nGenuine recomputation: --verify BUNDLE --out NEW_DIRECTORY\nRequired: "+new java.util.TreeSet<>(REQUIRED)+"\ninf: heritability. grid: models,seed. auto: engine=original,runtime,models,heritability,seed.\nSummary: variant effect_allele other_allele beta beta_se n_eff (tab-separated).\nLD variants: variant effect_allele other_allele. CSC files: little-endian int32 pointers/rows and float64 values.\nGrid models: model h2 p sparse; auto models: model p_init. See LDPRED2_WORKFLOWS_V2.md.\n"+NOTICE);return 0;
             }
             Map<String,String> options=new TreeMap<>();
             for(int i=0;i<args.length;i+=2){if(i+1==args.length||!args[i].startsWith("--")||options.putIfAbsent(args[i].substring(2),args[i+1])!=null)throw new IllegalArgumentException("Use explicit unique option/value pairs; see --help");}

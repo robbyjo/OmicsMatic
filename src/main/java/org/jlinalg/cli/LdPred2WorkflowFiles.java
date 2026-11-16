@@ -27,7 +27,7 @@ import org.jlinalg.genetics.LdCorrelation;
 
 /** Strict, captured portable CSC inputs and source-specific model settings. */
 final class LdPred2WorkflowFiles {
-    static final String PROFILE="ldpred2-prepared-ld-workflow-v1";
+    static final String PROFILE="ldpred2-prepared-ld-workflow-v2";
     static final List<String> INPUTS=List.of("summary","ld_variants","ld_pointers","ld_rows","ld_values");
     static final Set<String> REQUIRED=Set.of("engine","method","summary","ld_variants","ld_pointers","ld_rows","ld_values","genome_build","ld_population");
     static final Map<String,String> DEFAULTS=Map.ofEntries(

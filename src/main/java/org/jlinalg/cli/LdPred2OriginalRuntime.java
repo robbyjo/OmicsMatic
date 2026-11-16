@@ -14,7 +14,7 @@ import static org.jlinalg.cli.LdPred2WorkflowFiles.*;
 
 /** Original public bigsnpr methods, using an explicitly adopted immutable Linux runtime. */
 final class LdPred2OriginalRuntime {
-    static final String RESOURCE="/org/jlinalg/omics/ldpred2-workflow-v1/Worker.R";
+    static final String RESOURCE="/org/jlinalg/omics/ldpred2-workflow-v2/Worker.R";
     private LdPred2OriginalRuntime() {}
     static Properties check(Config c)throws Exception {return check(c,true);}
     private static Properties check(Config c,boolean full)throws Exception {

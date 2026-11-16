@@ -1,0 +1,3 @@
+# Warnings and required actions
+
+Source-build development workflows. Native inf/grid have synthetic 1.1 million variant controls; original auto has eight-variant original-object controls, not a scale qualification. No full-paper replication or new catalog admission. Missing permitted runtime/helper: SKIP3, skip dependent analysis and supply the named prerequisite only where installation is allowed; retry NEW output. Other analysis/verification/recording failure: FAIL2, retain all provisional data/consoles and correct the named cause before NEW output. Reject source nonfinite candidates; never fill their effects or average rejected chains. Historical v1 source and failed execution remain retained. Do not refresh saved fingerprints. See ../LDPRED2_WORKFLOWS_V2.md.
