@@ -1,3 +1,56 @@
+# OmicsMatic 0.4.0
+
+## Frozen release candidate
+
+The toolset is frozen from integration commit
+`f87564288cf6e9d73a7d30164a96689b6ed861da` on 2026-11-15.
+Completed, validated local additions are included. Subsequent development does
+not enter this release without a separate reviewed release fix and validation.
+See [the release boundary](docs/release-0.4.0-freeze.md) and its machine-readable
+inventory. This is a prepared local candidate, not a publication receipt.
+Whole-catalog verification on the merged source currently refuses a historical
+predecessor baseline; its original qualifications and the refusal are retained.
+Publication readiness remains pending the separate predecessor requalification.
+
+## Bioinformatics toolbox
+
+- Freeze 122 newly integrated tool families: 21 validated native subsets and
+  101 validated upstream workflows. Preserve each operation's supported
+  versions, inputs, runtime requirements, validation evidence and limitations.
+- Retain the separate existing adapter, lookup, export and related-method
+  categories. The complete literature inventory has 446 named families;
+  265 remain missing and one remains explicitly excluded. These counts do not
+  describe 446 bundled or fully implemented packages.
+- Include completed BIGCAT, HICAT, SingleR, celldex, SPOTlight, MELODI and native
+  TPMCalculator work at the frozen commit. iDEP remains unadmitted despite its
+  retained development and source-assessment records.
+- Include selectable native local enrichment, sequence QC/reporting, adapter
+  trimming, basic SAM/BAM operations and HTSeq counting within their documented
+  operation boundaries. Original-engine routes keep their separate dependencies.
+
+## Study analysis and reporting
+
+- Include mapped cross-omics covariates for feature association, completed-result
+  reuse, auditable study cleanup, manuscript composition and mathematical
+  typography changes present in the integration snapshot.
+- Extend the scientific workflow specification with conditional SNP analysis
+  seeded by the strongest SNP or a prespecified file, forward selection or a
+  configured advanced method, and useful tool-based follow-up result integration.
+  These specification additions do not introduce new automatic study adapters.
+- Preserve raw evidence, source identities, complete testing families, missing
+  capabilities and distinctions between primary, conditional and contextual
+  results. External scientific acceptance remains separate from software tests.
+
+## Validation
+
+Release-specific build, catalog checks and artifact identities are recorded in
+[the freeze and validation record](docs/release-0.4.0-freeze.md).
+The isolated `check assemble` gate passed: 25,078 tests passed, 441 skipped,
+zero failures/errors across 878 suites. Executable, library, source and Javadoc
+JARs are staged locally with SHA-256 checksums. The whole-catalog historical
+source-baseline refusal remains a publication blocker; skipped optional-runtime
+checks and historical tool qualifications are not new scientific validation.
+
 # OmicsMatic 0.3.7
 
 ## Three degrees of AI collaboration
