@@ -1,0 +1,17 @@
+{
+  "method_body_and_signature_equal": true,
+  "observations": [
+    {
+      "canonical": "\r\nstatic String json(Object value) {\r\n    if (value == null) return \"null\";\r\n    if (value instanceof Number || value instanceof Boolean) return value.toString();\r\n    if (value instanceof Map<?, ?> map) return \"{\" + String.join(\",\", map.entrySet().stream().sorted(Comparator.comparing((entry)->String.valueOf(entry.getKey()))).map((entry)->json(String.valueOf(entry.getKey())) + \":\" + json(entry.getValue())).toList()) + \"}\";\r\n    if (value instanceof List<?> list) return \"[\" + String.join(\",\", list.stream().map(StudyAssistance::json).toList()) + \"]\";\r\n    StringBuilder escaped = new StringBuilder(\"\\\"\");\r\n    for (char character : value.toString().toCharArray()) {\r\n        if (character == '\\\\' || character == '\\\"') escaped.append('\\\\').append(character); else if (character < 32) escaped.append(String.format(\"\\\\u%04x\", (int)character)); else escaped.append(character);\r\n    }\r\n    return escaped.append('\\\"').toString();\r\n}",
+      "key": "org.jlinalg.cli/StudyAssistance/json(Object)",
+      "uri": "file:///D:/projects/JLinAlg/build/catalog-source-transition/20261115-review-1/baseline-checkout/src/main/java/org/jlinalg/cli/StudyAssistance.java"
+    },
+    {
+      "canonical": "\r\nstatic String json(Object value) {\r\n    if (value == null) return \"null\";\r\n    if (value instanceof Number || value instanceof Boolean) return value.toString();\r\n    if (value instanceof Map<?, ?> map) return \"{\" + String.join(\",\", map.entrySet().stream().sorted(Comparator.comparing((entry)->String.valueOf(entry.getKey()))).map((entry)->json(String.valueOf(entry.getKey())) + \":\" + json(entry.getValue())).toList()) + \"}\";\r\n    if (value instanceof List<?> list) return \"[\" + String.join(\",\", list.stream().map(StudyAssistance::json).toList()) + \"]\";\r\n    StringBuilder escaped = new StringBuilder(\"\\\"\");\r\n    for (char character : value.toString().toCharArray()) {\r\n        if (character == '\\\\' || character == '\\\"') escaped.append('\\\\').append(character); else if (character < 32) escaped.append(String.format(\"\\\\u%04x\", (int)character)); else escaped.append(character);\r\n    }\r\n    return escaped.append('\\\"').toString();\r\n}",
+      "key": "org.jlinalg.cli/StudyAssistance/json(Object)",
+      "uri": "file:///D:/projects/JLinAlg/build/git-publish/20261115-all-main-1/checkout/src/main/java/org/jlinalg/cli/StudyAssistance.java"
+    }
+  ],
+  "semantic_equivalence_of_unrelated_methods_not_claimed": true,
+  "status": "PASS_EXACT_BEFORE_AFTER_JAVAC_JSON_METHOD_AND_CLASS_CONTEXT_REVIEW"
+}
