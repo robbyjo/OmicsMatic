@@ -1,0 +1,214 @@
+{
+  "status": "PASS_PACKAGED_NORMAL_LDPRED2_COMMAND",
+  "checks": [
+    {
+      "label": "malformed-generic-project-config",
+      "command": [
+        "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin\\java.exe",
+        "-Xmx256m",
+        "-jar",
+        "D:\\projects\\JLinAlg\\build\\git-publish\\20261115-all-main-4\\checkout\\build\\ldpred2\\command-qualification-1\\candidate.jar",
+        "--help"
+      ],
+      "exit_code": 2,
+      "expected_exit_code": 2,
+      "seconds": 0.219
+    },
+    {
+      "label": "root-help-without-generic-config",
+      "command": [
+        "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin\\java.exe",
+        "-Xmx256m",
+        "-jar",
+        "D:\\projects\\JLinAlg\\build\\git-publish\\20261115-all-main-4\\checkout\\build\\ldpred2\\command-qualification-1\\candidate.jar",
+        "--help",
+        "--no-config"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "seconds": 0.156
+    },
+    {
+      "label": "normal-command-help",
+      "command": [
+        "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin\\java.exe",
+        "-Xmx256m",
+        "-jar",
+        "D:\\projects\\JLinAlg\\build\\git-publish\\20261115-all-main-4\\checkout\\build\\ldpred2\\command-qualification-1\\candidate.jar",
+        "ldpred2-tools",
+        "--help"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "seconds": 0.141
+    },
+    {
+      "label": "standalone-help",
+      "command": [
+        "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin\\java.exe",
+        "-Xmx256m",
+        "-cp",
+        "D:\\projects\\JLinAlg\\build\\git-publish\\20261115-all-main-4\\checkout\\build\\ldpred2\\command-qualification-1\\candidate.jar",
+        "org.jlinalg.cli.LdPred2WorkflowCli",
+        "--help"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "seconds": 0.14
+    },
+    {
+      "label": "native-full-grid",
+      "command": [
+        "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin\\java.exe",
+        "-Xmx256m",
+        "-jar",
+        "D:\\projects\\JLinAlg\\build\\git-publish\\20261115-all-main-4\\checkout\\build\\ldpred2\\command-qualification-1\\candidate.jar",
+        "ldpred2-tools",
+        "--request",
+        "D:\\projects\\JLinAlg\\build\\git-publish\\20261115-all-main-4\\checkout\\build\\ldpred2\\command-qualification-1\\native.properties",
+        "--out",
+        "D:\\projects\\JLinAlg\\build\\git-publish\\20261115-all-main-4\\checkout\\build\\ldpred2\\command-qualification-1\\native-grid"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "seconds": 1.016
+    },
+    {
+      "label": "native-genuine-recomputation",
+      "command": [
+        "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin\\java.exe",
+        "-Xmx256m",
+        "-jar",
+        "D:\\projects\\JLinAlg\\build\\git-publish\\20261115-all-main-4\\checkout\\build\\ldpred2\\command-qualification-1\\candidate.jar",
+        "ldpred2-tools",
+        "--verify",
+        "D:\\projects\\JLinAlg\\build\\git-publish\\20261115-all-main-4\\checkout\\build\\ldpred2\\command-qualification-1\\native-grid",
+        "--out",
+        "D:\\projects\\JLinAlg\\build\\git-publish\\20261115-all-main-4\\checkout\\build\\ldpred2\\command-qualification-1\\native-replay"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "seconds": 1.0
+    },
+    {
+      "label": "existing-output-refused",
+      "command": [
+        "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin\\java.exe",
+        "-Xmx256m",
+        "-jar",
+        "D:\\projects\\JLinAlg\\build\\git-publish\\20261115-all-main-4\\checkout\\build\\ldpred2\\command-qualification-1\\candidate.jar",
+        "ldpred2-tools",
+        "--request",
+        "D:\\projects\\JLinAlg\\build\\git-publish\\20261115-all-main-4\\checkout\\build\\ldpred2\\command-qualification-1\\native.properties",
+        "--out",
+        "D:\\projects\\JLinAlg\\build\\git-publish\\20261115-all-main-4\\checkout\\build\\ldpred2\\command-qualification-1\\native-grid"
+      ],
+      "exit_code": 2,
+      "expected_exit_code": 2,
+      "seconds": 0.141
+    },
+    {
+      "label": "windows-original-prerequisite-skip",
+      "command": [
+        "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin\\java.exe",
+        "-Xmx256m",
+        "-jar",
+        "D:\\projects\\JLinAlg\\build\\git-publish\\20261115-all-main-4\\checkout\\build\\ldpred2\\command-qualification-1\\candidate.jar",
+        "ldpred2-tools",
+        "--request",
+        "D:\\projects\\JLinAlg\\build\\git-publish\\20261115-all-main-4\\checkout\\build\\ldpred2\\command-qualification-1\\original.properties",
+        "--out",
+        "D:\\projects\\JLinAlg\\build\\git-publish\\20261115-all-main-4\\checkout\\build\\ldpred2\\command-qualification-1\\windows-skipped"
+      ],
+      "exit_code": 3,
+      "expected_exit_code": 3,
+      "seconds": 0.406
+    },
+    {
+      "label": "linux-original-genuine-recomputation",
+      "command": [
+        "wsl.exe",
+        "-d",
+        "JLinAlg-Omics-SAIGE-20261026",
+        "--",
+        "/usr/bin/timeout",
+        "--signal=TERM",
+        "--kill-after=10",
+        "500",
+        "/usr/bin/java",
+        "-Xmx256m",
+        "-jar",
+        "/mnt/d/projects/JLinAlg/build/git-publish/20261115-all-main-4/checkout/build/ldpred2/command-qualification-1/candidate.jar",
+        "ldpred2-tools",
+        "--verify",
+        "/mnt/d/projects/JLinAlg/build/git-publish/20261115-all-main-4/checkout/build/ldpred2/workflow-v2-qualification124-2/auto_mletrue",
+        "--out",
+        "/mnt/d/projects/JLinAlg/build/git-publish/20261115-all-main-4/checkout/build/ldpred2/command-qualification-1/linux-original-replay"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "seconds": 53.234
+    }
+  ],
+  "native_full_grid_and_original_auto_genuine_replay": true,
+  "malformed_generic_configuration_bypassed_only_by_explicit_workflow_command": true,
+  "all_numerical_and_worker_class_bytes_unchanged": true,
+  "new_catalog_credit": 0,
+  "whole_goal_complete": false,
+  "java_tests": {
+    "tests": 25,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "main_alias": "ldpred2-tools",
+  "only_compiled_class_changed": "org/jlinalg/cli/JLinAlgCli.class",
+  "full_project_source_transition_is_separate": true,
+  "source_pins": {
+    "src/main/java/org/jlinalg/cli/JLinAlgCli.java": {
+      "bytes": 51135,
+      "sha256": "d3c290f13686e9d5d0eea0ba6252f986fa56432a7b973b74c14f8efa8c499c86"
+    },
+    "docs/literature/LDPRED2_COMMAND.md": {
+      "bytes": 2451,
+      "sha256": "1da06c9791a239d2f5ca5e9a0cacb228a0aca3bef7a7a8afcc1114633c77393a"
+    },
+    "tools/literature/ldpred2_command_validation/qualify.py": {
+      "bytes": 6131,
+      "sha256": "be84d86a0ddfc567eaa614b9566f225692591ff4054a71dbff3b6ab3131119f5"
+    }
+  },
+  "public_files": {
+    ".gitattributes": {
+      "bytes": 8,
+      "sha256": "705fd4d6451a31d36b3df7de96f83f30ac976c9b4a6d1e51671d8e2f33e2d0da"
+    },
+    "ARCHIVE-PINS.json": {
+      "bytes": 31354,
+      "sha256": "a052a018acde9dba5e114500028946acdf0305badf626de68d48c8ff92362be0"
+    },
+    "PRIVATE-RECORDS.json": {
+      "bytes": 31102,
+      "sha256": "f4f0966fb7b4e342e0a9a6e9e2c0eebc1794807e37ded807d79776ce6458cd3e"
+    },
+    "SOURCE-PINS.json": {
+      "bytes": 476,
+      "sha256": "319dcf7edf7fa24cd7fe486208f6e87dfb119c227766eec16849fdb4c4f8d359"
+    },
+    "source-snapshot.zip": {
+      "bytes": 25204,
+      "sha256": "0a1c283a2b6b2a9c58cf03ffe48d74701016a61547d64947024b82321985b8ab"
+    },
+    "validation-records.zip": {
+      "bytes": 1053256,
+      "sha256": "b258eea03b9c29965f052476975dcf1fe82911fd3a8e8377ee518279df624733"
+    },
+    "WARNINGS.md": {
+      "bytes": 563,
+      "sha256": "4e9ee547d5fedd4b8dc8010a0608239e3d47973ab1b45f969e317f9f039aa0bf"
+    }
+  },
+  "private_files": 175,
+  "private_bytes": 390578998,
+  "large_raw_data_publicly_packaged": false
+}

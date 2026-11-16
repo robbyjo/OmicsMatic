@@ -5280,12 +5280,12 @@
   },
   {
     "id": "ldpred",
-    "name": "LDpred",
+    "name": "LDpred2",
     "pattern": "(?<![A-Za-z0-9_])(?:LDpred(?:[- ]?2)?)(?![A-Za-z0-9_])",
     "role": "LD-aware Bayesian polygenic score construction",
-    "current_coverage": "missing",
-    "existing_source": null,
-    "coverage_note": "No equivalent workflow identified in the current source inventory.",
+    "current_coverage": "native-subset-validated",
+    "existing_source": "src/main/java/org/jlinalg/cli/LdPred2WorkflowCli.java",
+    "coverage_note": "Native Java inf and complete serial grid; exact original bigsnpr 1.12.2 / selected 1.12.4 inf/grid/auto adapters with captured-input recomputation. Full CSC and aligned variant/allele/build/population/effective-N declarations are required; no matching, LD repair or sample-size conversion. Native inf/grid and selected original 1.12.4 auto have 1.1 million variant synthetic controls. Original auto uses 3 chains, 500 burn-in / 200 retained iterations and default MLE. Finite source outputs are not MCMC convergence: causal-fraction estimates differ and no chain pooling/selection is automatic. Source divergence, old failed input validation and metadata-only disease correction remain retained. Linux prerequisites are explicit; SKIP3 skips unavailable analysis, FAIL2 admits no complete collection. LDpred1, author environment, biological LD, prediction/tuning and full-paper reproduction are not qualified. P128/P205 method choices and other unreported author parameters must not be inferred.",
     "paper_count": 5,
     "papers": [
       "P074",
@@ -5294,10 +5294,83 @@
       "P128",
       "P205"
     ],
-    "implementation_status": "missing",
-    "implementation_source": null,
-    "implementation_scope": "No equivalent workflow identified in the current source inventory.",
-    "validation_note": "Existing overlap/adapters require paper-specific option checks; missing integrations remain pending."
+    "implementation_status": "native-subset-validated",
+    "implementation_source": "src/main/java/org/jlinalg/cli/LdPred2WorkflowCli.java",
+    "implementation_scope": "Native Java inf and complete serial grid; exact original bigsnpr 1.12.2 / selected 1.12.4 inf/grid/auto adapters with captured-input recomputation. Full CSC and aligned variant/allele/build/population/effective-N declarations are required; no matching, LD repair or sample-size conversion. Native inf/grid and selected original 1.12.4 auto have 1.1 million variant synthetic controls. Original auto uses 3 chains, 500 burn-in / 200 retained iterations and default MLE. Finite source outputs are not MCMC convergence: causal-fraction estimates differ and no chain pooling/selection is automatic. Source divergence, old failed input validation and metadata-only disease correction remain retained. Linux prerequisites are explicit; SKIP3 skips unavailable analysis, FAIL2 admits no complete collection. LDpred1, author environment, biological LD, prediction/tuning and full-paper reproduction are not qualified. P128/P205 method choices and other unreported author parameters must not be inferred.",
+    "validation_note": "22numerical/workflow tests plus3dispatcher regressions;49native original numerical models;48original small-workflow models; full native1.1-million-variant controls and selected original1.12.4 auto3default700-iteration chains with complete-object comparison and genuine replay. Eight original small-source rejections retained. No chain convergence or biological validation claimed.",
+    "native_methods": [
+      "inf",
+      "grid"
+    ],
+    "upstream_methods": [
+      "inf",
+      "grid",
+      "auto"
+    ],
+    "native_auto_available": false,
+    "LDpred1_supported": false,
+    "root_dispatch_available": true,
+    "project_adapter_available": true,
+    "canonical_adapter_available": true,
+    "source_build_required": true,
+    "released_binary_contains_adapter": false,
+    "supported_original_editions": [
+      "1.12.2",
+      "1.12.4"
+    ],
+    "selected_1124_is_author_commit": false,
+    "author_environment_reproduced": false,
+    "whole_tool_qualified": false,
+    "whole_paper_reproduced": false,
+    "development_adapter_cli": "java -jar build/cli/omicsmatic-0.4.0.jar ldpred2-tools --request /trusted/request.properties --out /NEW/output",
+    "native_sources": [
+      "src/main/java/org/jlinalg/genetics/LdCorrelation.java",
+      "src/main/java/org/jlinalg/genetics/LdPred2.java",
+      "src/main/java/org/jlinalg/genetics/LdPred2Random.java",
+      "src/main/java/org/jlinalg/genetics/LdPred2Seeds.java"
+    ],
+    "current_documentation": "docs/literature/LDPRED2_CATALOG_INTEGRATION.md",
+    "source_roles_reviewed": 5,
+    "new_scoped_integration_credit": 1,
+    "native_analytical_credit_added": 1,
+    "upstream_family_credit_added": 0,
+    "paper_role_qualification": {
+      "P074": {
+        "method": "grid",
+        "reported_version": "1.12.2",
+        "method_choice_established": true,
+        "author_parameters_established": false,
+        "whole_paper_reproduced": false
+      },
+      "P109": {
+        "method": "auto-supported-by-figure",
+        "reported_version": "1.12.4",
+        "method_choice_established": true,
+        "author_parameters_established": false,
+        "whole_paper_reproduced": false
+      },
+      "P125": {
+        "method": "auto",
+        "reported_version": null,
+        "method_choice_established": true,
+        "author_parameters_established": false,
+        "whole_paper_reproduced": false
+      },
+      "P128": {
+        "method": "unresolved-inf-grid-or-auto",
+        "reported_version": null,
+        "method_choice_established": false,
+        "author_parameters_established": false,
+        "whole_paper_reproduced": false
+      },
+      "P205": {
+        "method": "unresolved-inf-grid-or-auto",
+        "reported_version": null,
+        "method_choice_established": false,
+        "author_parameters_established": false,
+        "whole_paper_reproduced": false
+      }
+    }
   },
   {
     "id": "prsice",

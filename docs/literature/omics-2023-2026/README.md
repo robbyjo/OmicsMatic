@@ -1,5 +1,31 @@
 # 250-paper omics and GWAS toolbox catalog
 
+## LDpred2: scope and required actions
+
+**Native and original methods:** native Java inf/grid plus original bigsnpr1.12.2/selected1.12.4 auto are available through `ldpred2-tools`. LDpred1 is unsupported. Build current source; frozen v0.4.0 downloads lack the command.
+
+**Finite is not converged:** the large original-auto control retained3finite chains with materially different causal-fraction estimates. Inspect paths and establish stability/selection before interpreting or combining weights. No automatic pooling or biological validation is supplied.
+
+**Paper settings:** P074 uses actual estimated heritability times0.7/1/1.4; never infer actual h2=1.4. P109 reports1.12.4 but its author commit is unknown. P125 uses auto with UKB European LD; synthetic pair LD is not that resource. P128/P205 inf/grid/auto choices remain unresolved: skip paper-specific execution until resolved rather than choosing project defaults.
+
+**SKIP3 / FAIL2:** unavailable or forbidden prerequisites skip dependent analysis. Install only where allowed, otherwise leave it skipped. Other analysis, verification or recording failures admit no complete result. Retain raw inputs, failed runs and original objects; correct the named cause and retry NEW output. Never repair source nonfinite effects or refresh old fingerprints.
+
+**Current cohort:**250papers,446families,2691observations,1203reviewed uses and1488unreviewed. This adds one scoped native family:124integrations (22native/102upstream),263missing. Five LDpred2 source roles are reviewed; four reviews are new and one is updated. Whole-paper semantic completeness and the full implementation objective remain open.
+
+Read [LDpred2 scope and commands](../LDPRED2_CATALOG_INTEGRATION.md). Current cumulative verifier: `python -B tools/literature/ldpred2_catalog/catalog.py --verify --catalog-parent-checkout /trusted/clean-070ddea4 --previous-parent-checkout /trusted/clean-1a9ff82 --baseline-checkout /trusted/clean-357c9301 --out build/NEW-check`. Add `--rescan-sources` for every frozen primary XML. Old verifiers retain their original source and metadata scope.
+
+<details><summary>Checkpoint before LDpred2 admission (historical)</summary>
+
+# P074 disease-label erratum
+
+P074 studies aortic stenosis. The prior PRS-CS summary incorrectly expanded AS as ankylosing spondylitis; one review and matching observation are corrected. Historical metadata and the unadmitted LDpred2 draft are retained. Estimators, numerical results, version labels, LD/tuning designs and all tool/review counts are unchanged. This correction adds zero implementation credit. Later LDpred2 source/catalog admission and the full250-paper implementation goal remain open.
+
+Read [the source correction](../P074_PRS_DISEASE_ERRATUM.md). Current metadata-only check: `python -B tools/literature/ldpred2_primary/erratum.py --verify --out build/NEW-p074-check`. Historical cumulative verifiers below retain their original scope.
+
+<details><summary>Catalog checkpoint before this disease-only correction (historical)</summary>
+
+# 250-paper omics and GWAS toolbox catalog
+
 ## Sambamba: current scope, warnings and required actions
 
 This source catalog contains 123 new scoped integrations (21 native, 102 upstream), 126 including existing adapters, with 264 missing families. The fixed 250-paper corpus now has 446 families, 2691 observations and 1199 reviewed uses; 1492 uses and paper-wide semantic completeness remain open. One missed declaration is added; no unrelated review or scientific output is replaced.
@@ -1849,6 +1875,10 @@ Three source-reviewed tool additions retain separate provenance: MALT and HOPS h
 These additions improve the catalog and add no whole-tool or biological credit. The source-tested MALT 0.4.1 development controller does not fulfill the separate 0.5.2 role. Complete HOPS and MaltExtract operations remain unfinished; their unreported versions, settings and resource choices remain unknown. See `MALT_ALIGNMENT.md` and `MALT_HOPS_PAPER_ROLES.md`.
 
 **Required action:** match the declared source version and operation, qualify a permitted runtime, provide the complete dated reference/mapping and query populations, and retain original warnings and failures. If any prerequisite is unavailable or cannot be installed, skip its dependent analysis. A small software-control index does not reproduce the historical 91-spirochete or 7,508-genome bacterial analyses. Insufficient-read candidates remain unassessable.
+
+</details>
+
+</details>
 
 </details>
 
