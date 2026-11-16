@@ -40,6 +40,8 @@ public final class JLinAlgCli {
                 return LdPred2WorkflowCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
             if (arguments.length > 0 && arguments[0].equals("pops-tools"))
                 return PopsWorkflowCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+            if (arguments.length > 0 && arguments[0].equals("pops-original-tools"))
+                return PopsOriginalCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
             if (arguments.length > 0 && arguments[0].equals("tomtom-tools"))
                 return TomtomToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
             if (arguments.length > 0 && arguments[0].equals("bigwig-tools"))
@@ -430,6 +432,7 @@ public final class JLinAlgCli {
               java -jar omicsmatic-<version>.jar sambamba-tools --help
               java -jar omicsmatic-<version>.jar ldpred2-tools --help
               java -jar omicsmatic-<version>.jar pops-tools --help
+              java -jar omicsmatic-<version>.jar pops-original-tools --help
               java -jar omicsmatic-<version>.jar read-align --help
               java -jar omicsmatic-<version>.jar gatk-tools --help
               java -jar omicsmatic-<version>.jar star-tools --help
