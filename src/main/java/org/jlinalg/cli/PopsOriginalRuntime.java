@@ -27,6 +27,7 @@ final class PopsOriginalRuntime {
         Path root = Path.of(c.get("runtime"));
         if (!Files.isRegularFile(root.resolve("runtime.properties")) || !Files.isRegularFile(root.resolve("READY.json"))) throw new Prerequisite("Completed original PoPS runtime adoption unavailable: " + root + ". Install/adopt a separate permitted runtime with tools/literature/pops_original, or skip dependent analysis. No installation runs during analysis.");
         root = root.toRealPath(); Properties p = load(root.resolve("runtime.properties"));
+        for (String name : RECORDS) if (!Files.isRegularFile(root.resolve(name)) || !Files.isReadable(root.resolve(name))) throw new Prerequisite("Adopted original runtime record missing or unreadable: " + name + ". Restore the exact permitted setup or skip dependent analysis. No input capture or fitting is started.");
         if (!"original-pops-runtime-v1".equals(p.getProperty("profile")) || !"linux-x86_64".equals(p.getProperty("platform"))) throw new IOException("Selected original PoPS runtime profile differs");
         Path environment = Path.of(p.getProperty("environment")), sources = Path.of(p.getProperty("sources")), python = Path.of(p.getProperty("python"));
         if (!Files.isDirectory(environment) || !Files.isDirectory(sources) || !Files.isExecutable(python)) throw new Prerequisite("Original interpreter/environment/source tree is missing. Restore the exact adopted permitted runtime or skip dependent analysis.");

@@ -100,8 +100,7 @@ public final class PopsOriginalCli {
             if (replay && !Files.readString(old.resolve("runtime-identity.tsv")).equals(PopsWorkflowCode.render(identity))) throw new IOException("Adopted original runtime identity differs; use the original matching runtime, never refreshed fingerprints");
             write(owned.resolve("runtime-identity.tsv"), PopsWorkflowCode.render(identity)); PopsOriginalRuntime.capture(owned, runtime); PopsOriginalInputs.seal(owned, c); PopsOriginalInputs.check(owned, c);
             PopsOriginalFiles.capacity(owned, c); PopsOriginalProcess.execute(owned, c); Map<String, String> summary = PopsOriginalResults.audit(owned, c);
-            var worker = PopsWorkflowResults.strings(load(owned.resolve("WORKER_DONE.properties")));
-            if (!worker.equals(Map.of("profile", PopsOriginalFiles.PROFILE, "edition", c.get("edition"), "task", c.get("task"), "source_jobs", Integer.toString(PopsOriginalCommands.jobs(owned, c).size()), "explicit_convergence_warnings", "0"))) throw new IOException("Original worker receipt differs");
+            checkWorkerReceipt(owned, c);
             PopsOriginalInputs.check(owned, c); PopsOriginalRuntime.sourcesUnchanged(owned); PopsOriginalCode.check(owned);
             if (!identity.equals(PopsOriginalRuntime.identity(runtime))) throw new IOException("Runtime metadata/helper identity changed before admission");
             if (replay && !science(old, c).equals(science(owned, c))) throw new IOException("Genuine original-source refit changed complete scientific results/bindings. Retain both bundles; do not repair discrepancies or refresh fingerprints.");
@@ -128,7 +127,24 @@ public final class PopsOriginalCli {
     private static PopsOriginalFiles.Config checkBundle(Path root) throws IOException {
         var c = PopsOriginalFiles.loadConfig(root.resolve("effective.properties")); var marker = load(root.resolve("COMPLETED.properties"));
         if (!PopsOriginalFiles.PROFILE.equals(marker.getProperty("profile")) || !sha(root.resolve("FILES.tsv")).equals(marker.getProperty("manifest_sha256")) || !sha(root.resolve("runtime-identity.tsv")).equals(marker.getProperty("runtime_identity_sha256"))) throw new IOException("Complete matching original bundle and manifest required");
-        Map<String, String> actual = PopsOriginalFiles.inventory(root, c); actual.remove("FILES.tsv"); actual.remove("COMPLETED.properties"); if (!actual.equals(manifest(root.resolve("FILES.tsv")))) throw new IOException("Complete original bundle bytes/membership differ; no refit admitted"); PopsOriginalInputs.check(root, c); return c;
+        Map<String, String> actual = PopsOriginalFiles.inventory(root, c); actual.remove("FILES.tsv"); actual.remove("COMPLETED.properties"); if (!actual.equals(manifest(root.resolve("FILES.tsv")))) throw new IOException("Complete original bundle bytes/membership differ; no refit admitted");
+        PopsOriginalInputs.check(root, c); Map<String, String> summary = PopsOriginalResults.audit(root, c);
+        Set<String> keys = new HashSet<>(summary.keySet()); keys.addAll(Set.of("kind", "manifest_sha256", "runtime_identity_sha256", "parent_manifest_sha256"));
+        if (!marker.stringPropertyNames().equals(keys)) throw new IOException("Original completion declaration fields differ from the complete task contract");
+        for (var e : summary.entrySet()) if (!e.getValue().equals(marker.getProperty(e.getKey()))) throw new IOException("Original completion declaration differs from audited results: " + e.getKey());
+        String kind = marker.getProperty("kind"), parent = marker.getProperty("parent_manifest_sha256");
+        if (kind.equals("original-task")) { if (!parent.equals("none")) throw new IOException("An original task cannot declare a replay parent"); }
+        else if (kind.equals("genuine-original-recomputation")) {
+            if (!parent.matches("[0-9a-f]{64}")) throw new IOException("Original replay requires a complete parent manifest identity");
+            List<String> capture = Files.readAllLines(root.resolve("CAPTURE.tsv"));
+            if (capture.size() != 2 || !capture.get(0).equals("source_bundle\tmanifest_sha256")) throw new IOException("Original replay parent capture receipt differs");
+            String[] fields = capture.get(1).split("\t", -1); if (fields.length != 2 || fields[0].isEmpty() || !parent.equals(fields[1])) throw new IOException("Original replay parent differs from the captured parent identity");
+        } else throw new IOException("Original completion kind is not an admitted task or genuine recomputation");
+        checkWorkerReceipt(root, c); return c;
+    }
+    private static void checkWorkerReceipt(Path root, PopsOriginalFiles.Config c) throws IOException {
+        var worker = PopsWorkflowResults.strings(load(root.resolve("WORKER_DONE.properties")));
+        if (!worker.equals(Map.of("profile", PopsOriginalFiles.PROFILE, "edition", c.get("edition"), "task", c.get("task"), "source_jobs", Integer.toString(PopsOriginalCommands.jobs(root, c).size()), "explicit_convergence_warnings", "0"))) throw new IOException("Original worker receipt differs");
     }
     private static String warnings(Path root, PopsOriginalFiles.Config c, Map<?, ?> report, PrintStream err) throws IOException {
         StringBuilder text = new StringBuilder();
