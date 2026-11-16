@@ -21,6 +21,16 @@ public final class SnakemakeOriginalProbe {
                 var audit=SnakemakeOriginalEvents.audit(root.resolve("events"),receipt,100000,4_194_304,67_108_864,true,check);
                 System.out.println(SnakemakeOriginalJson.json(Map.of("status","PASS_COMPLETE_ORIGINAL_CONTROLLER_EVENTS_NOT_ANALYSIS","controller_pid",audit.controllerPid(),"run_id",audit.runId(),"streams",audit.streams(),"source_records",audit.sourceRecords(),"final_done",audit.finalDone(),"final_total",audit.finalTotal(),"error_diagnostics",audit.errorDiagnostics(),"jobs",audit.jobs().values().stream().sorted(java.util.Comparator.comparingLong(SnakemakeOriginalEvents.Job::id)).toList())));
             }
+            case "payload" -> {
+                var request=SnakemakeOriginalFiles.object(SnakemakeOriginalFiles.json(root,1_048_576));
+                var result=SnakemakeOriginalRuntime.verifyPayload(Path.of(SnakemakeOriginalFiles.text(request.get("manifest"))),Path.of(SnakemakeOriginalFiles.text(request.get("environment"))),(int)SnakemakeOriginalFiles.integer(request.get("entries"),1,200000),check);
+                System.out.println(SnakemakeOriginalJson.json(Map.of("status","PASS_COMPLETE_PAYLOAD_ONLY_NOT_SELECTED_RUNTIME_OR_ANALYSIS","system_paths",result.systemPaths().size(),"logical_bytes",result.logicalBytes())));
+            }
+            case "workflow" -> {
+                var request=SnakemakeOriginalFiles.object(SnakemakeOriginalFiles.json(root,1_048_576));
+                var result=SnakemakeOriginalWorkflow.execute(Path.of(SnakemakeOriginalFiles.text(request.get("recipe"))),Path.of(SnakemakeOriginalFiles.text(request.get("runtime"))),Path.of(SnakemakeOriginalFiles.text(request.get("out"))),check);
+                System.out.println(SnakemakeOriginalJson.json(Map.of("status","PASS_DEVELOPMENT_CAPTURED_SOURCE_EXECUTION_NOT_FINAL_ADMISSION","logical_jobs",result.events().jobs().size(),"output_declarations",result.outputs().size())));
+            }
             case "process" -> {
                 var request=SnakemakeOriginalFiles.object(SnakemakeOriginalFiles.json(root,1_048_576));
                 var command=SnakemakeOriginalFiles.strings(request.get("command"));var environment=new java.util.TreeMap<String,String>();

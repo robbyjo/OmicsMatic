@@ -29,11 +29,11 @@ final class SnakemakeOriginalRecipe {
         for(String value:configs)member(value);for(String value:targets) { member(value);if(value.startsWith("-"))throw new IOException("Targets must be literal rule names/relative paths, not command-line flags"); }
         if(targets.isEmpty())throw new IOException("Declare explicit target rules/files; do not infer a first rule");
         var sources=new LinkedHashMap<String,Path>();sources.put("workflow",source);
-        for(var entry:object(raw.get("resources")).entrySet()) { String id=text(entry.getKey());if(id.equals("workflow")||!id.matches("[A-Za-z][A-Za-z0-9_-]{0,63}"))throw new IOException("Invalid/reserved captured resource ID");Map<?,?> value=object(entry.getValue());keys(value,"path");sources.put(id,absolute(text(value.get("path")))); }
+        for(var entry:object(raw.get("resources")).entrySet()) { String id=text(entry.getKey());if(Set.of("workflow","published").contains(id)||!id.matches("[A-Za-z][A-Za-z0-9_-]{0,63}"))throw new IOException("Invalid/reserved captured resource ID");Map<?,?> value=object(entry.getValue());keys(value,"path");sources.put(id,absolute(text(value.get("path")))); }
         var environment=new LinkedHashMap<String,String>();
         for(var entry:object(raw.get("environment")).entrySet()) {
             String key=text(entry.getKey()),value=text(entry.getValue());
-            if(!key.matches("[A-Za-z_][A-Za-z0-9_]*")||key.startsWith("PYTHON")||key.startsWith("LD_")||key.startsWith("OMICS_SNAKEMAKE_")||Set.of("PATH","HOME","TMPDIR","XDG_CACHE_HOME","BASH_ENV","ENV","BASHOPTS","SHELLOPTS","CDPATH").contains(key)||value.indexOf('\0')>=0)throw new IOException("Environment key conflicts with protected interpreter/launch bindings: "+key);
+            if(!key.matches("[A-Za-z_][A-Za-z0-9_]*")||key.startsWith("PYTHON")||key.startsWith("LD_")||key.startsWith("SNAKEMAKE_")||key.startsWith("OMICS_SNAKEMAKE_")||Set.of("PATH","HOME","TMPDIR","XDG_CACHE_HOME","BASH_ENV","ENV","BASHOPTS","SHELLOPTS","CDPATH").contains(key)||value.indexOf('\0')>=0)throw new IOException("Environment key conflicts with protected interpreter/launch bindings: "+key);
             environment.put(key,value);
         }
         object(raw.get("parameters"));var tools=new ArrayList<Tool>();var toolNames=new HashSet<String>();
@@ -41,7 +41,7 @@ final class SnakemakeOriginalRecipe {
         var outputs=new ArrayList<Output>();var outputNames=new HashSet<String>();
         for(Object item:list(raw.get("outputs"))) {
             Map<?,?> output=object(item);keys(output,"root","path","kind","allow_empty","comparison");String root=text(output.get("root")),path=text(output.get("path")),kind=text(output.get("kind")),comparison=text(output.get("comparison"));
-            if(!sources.containsKey(root)||!path.isEmpty()&&!member(path).equals(path)||!Set.of("file","directory").contains(kind)||!Set.of("exact","benchmark-measurement").contains(comparison)||!outputNames.add(root+'\t'+path))throw new IOException("Invalid/repeated declared complete output");
+            if(!sources.containsKey(root)&&!root.equals("published")||!path.isEmpty()&&!member(path).equals(path)||!Set.of("file","directory").contains(kind)||!Set.of("exact","benchmark-measurement").contains(comparison)||!outputNames.add(root+'\t'+path))throw new IOException("Invalid/repeated declared complete output");
             if(comparison.equals("benchmark-measurement")&&!kind.equals("file"))throw new IOException("A benchmark measurement declaration must be a complete selected-format file");
             outputs.add(new Output(root,path,kind,bool(output.get("allow_empty")),comparison));
         }

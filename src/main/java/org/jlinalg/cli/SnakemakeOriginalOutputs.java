@@ -51,7 +51,7 @@ final class SnakemakeOriginalOutputs {
             Value value=family.members().get(output.path());if(value==null||!output.kind().equals(value.kind()))throw new IOException("Missing/wrong-kind declared SnakemakeOriginal output: "+output.path());
             if(!output.allowEmpty()){
                 if(value.kind().equals("file")&&value.pin().bytes()==0)throw new IOException("Declared SnakemakeOriginal output is empty: "+output.path());
-                if(value.kind().equals("directory")&&family.members().entrySet().stream().noneMatch(row->row.getKey().startsWith(output.path()+"/")&&row.getValue().kind().equals("file")))throw new IOException("Declared SnakemakeOriginal output directory contains no regular files: "+output.path());
+                if(value.kind().equals("directory")&&family.members().entrySet().stream().noneMatch(row->(output.path().isEmpty()||row.getKey().startsWith(output.path()+"/"))&&row.getValue().kind().equals("file")))throw new IOException("Declared SnakemakeOriginal output directory contains no regular files: "+output.path());
             }
         }
     }
