@@ -1,0 +1,3 @@
+# Scope, warnings and required actions
+
+Native benchmark component only. Complete original-engine project adapter and six-role catalog admission remain open; P190 is pipeline availability, not demonstrated engine execution. Missing permitted private evidence skips the dependent full reader. FAIL2 admits no result. Retain all raw inputs/failed attempts; correct named causes and retry NEW paths. No metric imputation, dropped repeats/jobs, fingerprint refresh or author-parameter inference. Saved readers perform no fresh Java/engine execution or current installed-runtime health check. Full 250-paper goal remains active.
