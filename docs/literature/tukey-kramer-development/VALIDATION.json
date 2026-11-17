@@ -1,0 +1,308 @@
+{
+  "status": "PASS_NATIVE_TUKEY_KRAMER_SCOPED_DEVELOPMENT_COMPONENT",
+  "profile": "native-tukey-kramer-oneway-v1",
+  "qualification_date": "2026-11-17",
+  "scope": "Ordinary one-way independent Gaussian equal-variance all-pairs comparisons; explicit independent-means API shares the supplied residual model.",
+  "tests": {
+    "status": "PASS",
+    "tests": 46,
+    "failures": 0,
+    "errors": 0,
+    "jar": {
+      "bytes": 193643154,
+      "sha256": "0db839b159b5bbd89ee5d573746e00b0d452b56dd8077b7ed7bc858d56f738fb"
+    }
+  },
+  "independent_reference": {
+    "ordinary_fits": 10,
+    "total_pairs": 57,
+    "tukeyhsd_pairs": 55,
+    "exact_student_t_pairs": 2,
+    "additional_positive_tail_checks": 10,
+    "fixtures": "src/test/resources/org/jlinalg/stats/tukey/PROVENANCE.json",
+    "biological_or_paper_datasets_used": false
+  },
+  "packaged": {
+    "processes": 17,
+    "successful_model_fits": 10,
+    "tail_controls": 3,
+    "refusal_controls": 4,
+    "reader": {
+      "bytes": 193643154,
+      "sha256": "0db839b159b5bbd89ee5d573746e00b0d452b56dd8077b7ed7bc858d56f738fb"
+    }
+  },
+  "compatibility": {
+    "status": "PASS_UNCHANGED_EXISTING_SCIENTIFIC_CODE_EXISTING_ADAPTERS_EXAMPLE_AND_LINUX_NATIVE_WITH_EMPTY_PATH",
+    "reader": {
+      "bytes": 193643154,
+      "sha256": "0db839b159b5bbd89ee5d573746e00b0d452b56dd8077b7ed7bc858d56f738fb"
+    },
+    "processes": [
+      {
+        "name": "existing-ldak",
+        "command": [
+          "C:/Program Files/Eclipse Adoptium/jdk-21.0.4.7-hotspot/bin/java.exe",
+          "-jar",
+          "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\tukey\\build-5\\jar\\omicsmatic-0.4.0.jar",
+          "ldak-tools",
+          "verify",
+          "--bundle",
+          "D:\\projects\\JLinAlg\\build\\snakemake-workflow-1\\build\\ldak\\qualification-evidence-1\\records\\qualification-controls-1\\controls\\sumher-quant",
+          "--out",
+          "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\tukey\\compatibility-controls-2\\ldak"
+        ],
+        "exit_code": 0,
+        "seconds": 1.171
+      },
+      {
+        "name": "existing-snpeff",
+        "command": [
+          "C:/Program Files/Eclipse Adoptium/jdk-21.0.4.7-hotspot/bin/java.exe",
+          "-jar",
+          "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\tukey\\build-5\\jar\\omicsmatic-0.4.0.jar",
+          "snpeff-tools",
+          "verify",
+          "--bundle",
+          "D:\\projects\\JLinAlg\\build\\snakemake-workflow-1\\build\\snpeff\\p002-control-1\\run",
+          "--out",
+          "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\tukey\\compatibility-controls-2\\snpeff"
+        ],
+        "exit_code": 0,
+        "seconds": 0.719
+      },
+      {
+        "name": "linux-native-path-empty",
+        "command": [
+          "C:/Windows/System32/wsl.exe",
+          "-d",
+          "JLinAlg-Omics-SAIGE-20261026",
+          "--exec",
+          "/usr/bin/env",
+          "PATH=",
+          "/usr/bin/java",
+          "-Xmx512m",
+          "-jar",
+          "/mnt/d/projects/JLinAlg/build/high-impact-stats-1/build/tukey/build-5/jar/omicsmatic-0.4.0.jar",
+          "posthoc-tools",
+          "tukey",
+          "--input",
+          "/mnt/d/projects/JLinAlg/build/high-impact-stats-1/build/tukey/packaged-controls-3/unbalanced.tsv",
+          "--confidence",
+          "0.95",
+          "--out",
+          "/mnt/d/projects/JLinAlg/build/high-impact-stats-1/build/tukey/compatibility-controls-2/linux-unbalanced"
+        ],
+        "exit_code": 0,
+        "seconds": 8.25
+      },
+      {
+        "name": "documented-example",
+        "command": [
+          "C:/Program Files/Eclipse Adoptium/jdk-21.0.4.7-hotspot/bin/java.exe",
+          "-jar",
+          "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\tukey\\build-5\\jar\\omicsmatic-0.4.0.jar",
+          "posthoc-tools",
+          "tukey",
+          "--input",
+          "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\examples\\posthoc\\groups.tsv",
+          "--confidence",
+          "0.95",
+          "--out",
+          "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\tukey\\compatibility-controls-2\\example"
+        ],
+        "exit_code": 0,
+        "seconds": 0.297
+      },
+      {
+        "name": "linux-positive-tail-path-empty",
+        "command": [
+          "C:/Windows/System32/wsl.exe",
+          "-d",
+          "JLinAlg-Omics-SAIGE-20261026",
+          "--exec",
+          "/usr/bin/env",
+          "PATH=",
+          "/usr/bin/java",
+          "-Xmx512m",
+          "-jar",
+          "/mnt/d/projects/JLinAlg/build/high-impact-stats-1/build/tukey/build-5/jar/omicsmatic-0.4.0.jar",
+          "posthoc-tools",
+          "tukey",
+          "--input",
+          "/mnt/d/projects/JLinAlg/build/high-impact-stats-1/build/tukey/packaged-controls-3/positive-integral-tail.tsv",
+          "--out",
+          "/mnt/d/projects/JLinAlg/build/high-impact-stats-1/build/tukey/compatibility-controls-2/linux-positive-tail"
+        ],
+        "exit_code": 0,
+        "seconds": 0.625
+      }
+    ],
+    "linux_comparisons": 9,
+    "comparison_tables_byte_identical_between_windows_and_linux": true,
+    "package_transition": {
+      "before": {
+        "bytes": 193619999,
+        "sha256": "85621ff1643605118214a93fe714976843f18db9fd69cc1ca3bc531f9ae1e33e"
+      },
+      "after": {
+        "bytes": 193643154,
+        "sha256": "0db839b159b5bbd89ee5d573746e00b0d452b56dd8077b7ed7bc858d56f738fb"
+      },
+      "removed": [],
+      "added": [
+        "org/jlinalg/cli/TukeyKramerCli$MissingPrerequisite.class",
+        "org/jlinalg/cli/TukeyKramerCli.class",
+        "org/jlinalg/stats/StudentizedRangeTail$Rule.class",
+        "org/jlinalg/stats/StudentizedRangeTail.class",
+        "org/jlinalg/stats/TukeyKramer$Comparison.class",
+        "org/jlinalg/stats/TukeyKramer$Group.class",
+        "org/jlinalg/stats/TukeyKramer$Result.class",
+        "org/jlinalg/stats/TukeyKramer.class"
+      ],
+      "changed": [
+        "org/jlinalg/cli/JLinAlgCli.class"
+      ],
+      "existing_scientific_implementations_unchanged": true
+    }
+  },
+  "source_review": {
+    "bytes": 14810,
+    "sha256": "3a4fba11448e1c8550cfcb06c4bdd05c1127b3475c625eb16d55fc99c52fe777"
+  },
+  "source_pins": {
+    "src/main/java/org/jlinalg/cli/JLinAlgCli.java": {
+      "bytes": 53046,
+      "sha256": "a077046ab9cea3ac3d89f415ff96151c5f370e5c91bc85181c3aa744e6dba48c"
+    },
+    "src/main/java/org/jlinalg/cli/TukeyKramerCli.java": {
+      "bytes": 13418,
+      "sha256": "76b478daf90c7402ddc7fca224da33ea8d80e65d97dd185025fc7d3879eff696"
+    },
+    "src/main/java/org/jlinalg/stats/TukeyKramer.java": {
+      "bytes": 7992,
+      "sha256": "f95216184af9b69e3c0aaa430c439d79ccb9b24b787495aa4b2653db0e391501"
+    },
+    "src/main/java/org/jlinalg/stats/StudentizedRangeTail.java": {
+      "bytes": 10816,
+      "sha256": "6b3cea6384382b8f0e5a419b6892b587029bf90bd7c539fb3f56067fecb2bc93"
+    },
+    "src/test/java/org/jlinalg/cli/TukeyKramerCliTest.java": {
+      "bytes": 5594,
+      "sha256": "7f0784c6b5ea18abbce265f372a1dbc8ed560c9d3f38b1c773d044c7350d10db"
+    },
+    "src/test/java/org/jlinalg/stats/TukeyKramerTest.java": {
+      "bytes": 8269,
+      "sha256": "219df84fc5b1182c3bc595b784e3e25b0437d02f7071051dee414e112ab75923"
+    },
+    "src/test/java/org/jlinalg/stats/StudentizedRangeTailTest.java": {
+      "bytes": 2453,
+      "sha256": "684d5a6ecd5517cfa9e4c8e429be80b63428c63bf91236c1199799dbd04465fd"
+    },
+    "tools/literature/tukey_kramer/check_packaged.py": {
+      "bytes": 7556,
+      "sha256": "78d1becffeef5c73f43874119ef9578a937220ccb6d21445634f155b6182050c"
+    },
+    "tools/literature/tukey_kramer/generate_reference.py": {
+      "bytes": 3758,
+      "sha256": "7d06e85ca850c1a251361fc18b69b614effff6085d12a14a886481d6d6e28062"
+    },
+    "tools/literature/tukey_kramer/reference.R": {
+      "bytes": 4915,
+      "sha256": "f2ab898b993474707b491aba3924556dd74c0a965c15c1b4f493ce36caba5b19"
+    },
+    "tools/literature/tukey_kramer/tail_reference.R": {
+      "bytes": 2766,
+      "sha256": "c87ac9cbc110292f3d17a3c57016289eaf103be840b4301d5e696b15f95f06fc"
+    },
+    "src/test/resources/org/jlinalg/stats/tukey/.gitattributes": {
+      "bytes": 8,
+      "sha256": "705fd4d6451a31d36b3df7de96f83f30ac976c9b4a6d1e51671d8e2f33e2d0da"
+    },
+    "src/test/resources/org/jlinalg/stats/tukey/expected.tsv": {
+      "bytes": 9970,
+      "sha256": "6e939b4ca121976cd3b1b0523c69c52ad38084a09b272775d1a3381e52fc0638"
+    },
+    "src/test/resources/org/jlinalg/stats/tukey/inputs.tsv": {
+      "bytes": 6809,
+      "sha256": "fd755e86c0389a14ab18ab1b1401e6db6ef16a32e4da365efb4f3c2b64051a8a"
+    },
+    "src/test/resources/org/jlinalg/stats/tukey/PROVENANCE.json": {
+      "bytes": 2637,
+      "sha256": "937f1aaad228fbddc966002f2cee2b72fc54d2d068cc3b548d03c0ef84e18f6e"
+    },
+    "src/test/resources/org/jlinalg/stats/tukey/tail-expected.tsv": {
+      "bytes": 797,
+      "sha256": "319baae375ddc73b275a232747d5fc8fe9b808fa5a19861d8e7ad4f26642a19b"
+    },
+    "src/test/resources/org/jlinalg/stats/tukey/two-group-exact.tsv": {
+      "bytes": 424,
+      "sha256": "5d10f246f44dd2163d9fe0e642ed4ba5f05dbee595d3955b9ab00f99d2ea82aa"
+    },
+    "docs/vignettes/posthoc-comparisons.md": {
+      "bytes": 7689,
+      "sha256": "5d9de35c416d82313b133cd7f1fec068edfb4c52c33a237332cae99a4010abdf"
+    },
+    "docs/vignettes/README.md": {
+      "bytes": 15222,
+      "sha256": "ffee7ab0ce6bffa62beb27b7d66322e8433b9bb6583919265d0e829710f66fe2"
+    },
+    "docs/literature/IMPLEMENTATION_PRIORITY.md": {
+      "bytes": 2867,
+      "sha256": "6990091d1898470d95bb22ea75926947ab11d9a436e1e4b7da566c2ed5035f5d"
+    },
+    "examples/posthoc/groups.tsv": {
+      "bytes": 202,
+      "sha256": "55f5c6e3d8ee292c91e95756759b36e56d8cba1697eaa9a74fd1c31b27b9d596"
+    }
+  },
+  "retained_attempts": [
+    {
+      "path": "build/tukey/reference-1",
+      "status": "retained_unselected",
+      "reason": "Inherited unsupported C.UTF-8 locale emitted R startup warnings; selected independent R runs use explicit C locale."
+    },
+    {
+      "path": "build/tukey/build-1",
+      "status": "retained_failed_test_assertion",
+      "reason": "Help test expected the word equal while the public help specified common population variance; assertion corrected to test the actual model wording."
+    },
+    {
+      "path": "build/tukey/build-3",
+      "status": "retained_failed_website_check",
+      "reason": "New vignette omitted the required scientific-citation panel markers; panel added around its primary-source citations."
+    },
+    {
+      "path": "build/tukey/build-4",
+      "status": "retained_failed_legacy_numerical_comparison",
+      "reason": "Exact two-group Student-t results exposed low-df legacy TukeyHSD probability/critical-value error. Raw legacy fixtures are preserved and separate independent exact references now check both two-group fits."
+    },
+    {
+      "path": "build/tukey/packaged-controls-2",
+      "status": "retained_failed_harness_assertion",
+      "reason": "Harness incorrectly expected underflow for a low-df model whose true probability is small but representable. Legacy probability floor was investigated; new controls separately test the correct finite tail and true high-df underflow."
+    }
+  ],
+  "evidence_archive": {
+    "path": "controls.zip",
+    "pin": {
+      "bytes": 334389,
+      "sha256": "e72d8c7ceb69fb10f314ef600a3e025f812fb3c26ff7259b96fcf2a219a94239"
+    },
+    "members": 611,
+    "readback_every_member": true,
+    "scope": "Original R references, scientific tables, current source/fixtures, selected process logs/test XML and retained failed attempts. Large compiled readers and original adapter bundles remain at the recorded local paths; this ZIP is not a complete runtime distribution."
+  },
+  "native_analysis_requires_external_runtime": false,
+  "important_numerical_difference": "Exact Student-t two-group identities and independently validated positive tails intentionally differ from legacy ptukey/qtukey numerical artifacts. Raw legacy values remain preserved.",
+  "warnings_and_actions": {
+    "SKIP3": "Skip dependent analysis if input/output access is missing or forbidden; provide permitted accessible paths and retry NEW output.",
+    "FAIL2": "No complete family admitted; preserve input and partial outputs, read FAILURE.txt/WARNINGS.md, correct the cause and retry NEW output.",
+    "numerical_zero": "NUMERIC-WARNING.txt and analysis metadata flag numeric zero; preserve statistic and df. Zero is not an exactly zero mathematical probability."
+  },
+  "availability": "Current source build only; released 0.4.0 JAR is unchanged.",
+  "catalog_integrations_unchanged": 127,
+  "catalog_missing_families_unchanged": 260,
+  "graphpad_family_complete": false,
+  "whole_goal_complete": false
+}

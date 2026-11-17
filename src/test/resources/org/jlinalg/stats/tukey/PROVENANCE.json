@@ -1,0 +1,60 @@
+{
+  "oracle": "R stats::aov plus stats::TukeyHSD(ordered=FALSE) for 55 pairs; exact Student-t identity for two two-group fits",
+  "r_version": "4.6.1",
+  "cases": 10,
+  "comparisons": 57,
+  "worker": {
+    "path": "tools/literature/tukey_kramer/reference.R",
+    "pin": {
+      "bytes": 4915,
+      "sha256": "f2ab898b993474707b491aba3924556dd74c0a965c15c1b4f493ce36caba5b19"
+    }
+  },
+  "files": {
+    "inputs.tsv": {
+      "bytes": 6809,
+      "sha256": "fd755e86c0389a14ab18ab1b1401e6db6ef16a32e4da365efb4f3c2b64051a8a"
+    },
+    "expected.tsv": {
+      "bytes": 9970,
+      "sha256": "6e939b4ca121976cd3b1b0523c69c52ad38084a09b272775d1a3381e52fc0638"
+    },
+    "tail-expected.tsv": {
+      "bytes": 797,
+      "sha256": "319baae375ddc73b275a232747d5fc8fe9b808fa5a19861d8e7ad4f26642a19b"
+    },
+    "two-group-exact.tsv": {
+      "bytes": 424,
+      "sha256": "5d10f246f44dd2163d9fe0e642ed4ba5f05dbee595d3955b9ab00f99d2ea82aa"
+    }
+  },
+  "locale": "C",
+  "warnings": [],
+  "reference_driver": "tools/literature/tukey_kramer/generate_reference.py",
+  "direction": "second group minus first group, in declared group order",
+  "numerical_comparison_tolerance": "2e-10 absolute plus 2e-10 relative",
+  "sources": [
+    "https://stat.ethz.ch/R-manual/R-devel/library/stats/html/TukeyHSD.html",
+    "https://svn.r-project.org/R/trunk/src/library/stats/R/TukeyHSD.R",
+    "https://www.graphpad.com/guides/prism/latest/statistics/stat_the_methods_of_tukey_and_dunne.htm"
+  ],
+  "scope": "Ordinary one-way independent equal-variance group means; no GraphPad runtime or author dataset used.",
+  "tail_validation": {
+    "oracle": "Independent R QUADPACK positive integrals using pnorm/pchisq; exact two-group Student-t identity; analytic three-group tail moment checks",
+    "worker": {
+      "path": "tools/literature/tukey_kramer/tail_reference.R",
+      "pin": {
+        "bytes": 2766,
+        "sha256": "c87ac9cbc110292f3d17a3c57016289eaf103be840b4301d5e696b15f95f06fc"
+      }
+    },
+    "cases": 10,
+    "relative_tolerance": 5e-08,
+    "subnormal_absolute_tolerance_smallest_double_units": 8,
+    "legacy_ptukey_retained": true,
+    "numerical_discrepancy": "Legacy R 4.6.1 ptukey and its Java port exhibit a numerical floor; positive small tails intentionally follow the independent positive integral or exact Student-t identity.",
+    "legacy_low_df_difference": "At df=2 legacy Tukey quadrature and critical values also differ at ordinary probabilities; exact Student-t identity is authoritative for all two-group results."
+  },
+  "legacy_tukeyhsd_outputs_preserved": true,
+  "two_group_exact_reference": "two-group-exact.tsv"
+}

@@ -5,6 +5,10 @@ includes a searchable paper/tool catalog, native signature/interval workflows,
 optional upstream cell representations, an implementation queue and prominent
 dependency warnings with recovery steps.
 
+The source-build [Tukey–Kramer post-hoc guide](posthoc-comparisons.md) adds
+native all-pairs comparisons after an ordinary one-way fit, with adjusted
+probabilities, simultaneous intervals and explicit model/recovery instructions.
+
 ## Featured: three degrees of AI collaboration
 
 Start with **[your first study.yaml](study-getting-started.md)** for the minimum
