@@ -12,6 +12,15 @@ public final class SnakemakeOriginalProbe {
         var root=Path.of(args[1]).toAbsolutePath().normalize();
         Runnable check=()->{if(Thread.currentThread().isInterrupted())throw new java.util.concurrent.CancellationException("Probe interrupted");};
         switch(args[0]) {
+            case "providers" -> {
+                long start=System.nanoTime();var providers=SnakemakeOriginalDeployment.open(root,check);
+                System.out.println(SnakemakeOriginalJson.json(Map.of("status","PASS_COMPLETE_SELECTED_DEPLOYMENT_PROVIDERS_NOT_WORKFLOW_ADMISSION","providers",providers.providers(),"elf_objects",providers.elfObjects(),"external_paths",providers.externalPaths(),"elapsed_millis",(System.nanoTime()-start)/1_000_000)));
+            }
+            case "provider-tree" -> {
+                var request=SnakemakeOriginalFiles.object(SnakemakeOriginalFiles.json(root,67_108_864));
+                SnakemakeOriginalDeployment.verifyTree(Path.of(SnakemakeOriginalFiles.text(request.get("prefix"))),SnakemakeOriginalFiles.object(request.get("nodes")),check);
+                System.out.println("PASS_COMPLETE_PROVIDER_TREE_ONLY_NOT_ANALYSIS");
+            }
             case "runtime" -> {
                 long start=System.nanoTime();var runtime=SnakemakeOriginalRuntime.open(root,check);
                 System.out.println(SnakemakeOriginalJson.json(Map.of("status","PASS_CURRENT_COMPLETE_SELECTED_RUNTIME_NOT_ANALYSIS","entries",runtime.entries(),"manifest",runtime.manifest(),"elapsed_millis",(System.nanoTime()-start)/1_000_000)));

@@ -236,6 +236,11 @@ sealed as data. Original channel-priority diagnostics, earlier failed controls
 and partial installations remain retained. Different Conda query scopes are
 recorded separately; they do not justify removing the upstream warning.
 
+Java provider verification and scoped installation-permission controls are
+described in [SNAKEMAKE_DEPLOYMENT_DEVELOPMENT.md](SNAKEMAKE_DEPLOYMENT_DEVELOPMENT.md).
+They do not yet enable managed Java execution. Nested engine subprocess policy,
+managed-software capture/replay and the remaining admission gates are unfinished.
+
 Source-control qualification scripts still use the recorded development control
 paths. The separate setup utility carries its own pinned synthetic fixtures.
 Do not edit an old receipt or refresh its saved hashes to make changed code pass.
