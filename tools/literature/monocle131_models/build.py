@@ -4,7 +4,7 @@
 from pathlib import Path
 import argparse,hashlib,json,os,re,shutil,subprocess,traceback,urllib.request
 ROOT=Path(__file__).resolve().parents[3]
-JAVA=['cli/Monocle131ModelCli','cli/Monocle131ModelRequest','cli/Monocle131ModelInputs','stats/Monocle131Statistics','cli/NextflowFiles','cli/NextflowJson','cli/NextflowParameters','cli/SimpleJson','cli/NextflowProcess','cli/NfcoreProcess','workflow/LinuxProcessSnapshot']
+JAVA=['cli/Monocle131ModelCli','cli/MonocleMathIdentity','cli/Monocle131ModelRequest','cli/Monocle131ModelInputs','stats/Monocle131Statistics','cli/NextflowFiles','cli/NextflowJson','cli/NextflowParameters','cli/SimpleJson','cli/NextflowProcess','cli/NfcoreProcess','workflow/LinuxProcessSnapshot']
 RES='src/main/resources/org/jlinalg/omics/monocle131-models';SHA='8b50aaa11d2cbd512525e0d74f8e609f40db9f4fc179ccb7a885a82257e0ac81';URL='https://github.com/robbyjo/JDistlib/releases/download/v0.10.2/jdistlib-all-0.10.2.jar'
 ACTION='Required action: supply permitted JDK21/25 and exact JDistlib0.10.2 with --jdistlib-jar or permitted --download-jdistlib, and NEW output. Keep the adjacent jdistlib-all-0.10.2.jar. Original fitting separately requires the qualified Linux R4.3.3/Monocle3 1.3.1 profile and complete prepared expression/metadata. If a needed compiler/runtime/download/install/execution is unavailable or forbidden, SKIP3 skips dependent analysis. Resolve FAIL2 input, source, integrity or scientific causes before retrying NEW paths. Preserve diagnostics; no original R/Monocle runtime is bundled.'
 def pin(p):
@@ -34,10 +34,12 @@ def main():
      if size>67108864:raise ValueError('Complete JDistlib exceeds dependency byte capacity')
      f.write(b)
   if pin(dependency)['sha256']!=SHA:raise ValueError('JDistlib0.10.2 dependency integrity differs')
-  names=['src/main/java/org/jlinalg/'+n+'.java' for n in JAVA]+[RES+'/'+n for n in ['worker.R','source-profile.json']]+['tools/literature/monocle131_models/build.py'];sources={n:pin(ROOT/n) for n in names};classes=out/'classes';classes.mkdir()
+  math_profile='src/main/resources/org/jlinalg/omics/monocle-commands/jdistlib-0.10.2-classes.json'
+  names=['src/main/java/org/jlinalg/'+n+'.java' for n in JAVA]+[RES+'/'+n for n in ['worker.R','source-profile.json']]+[math_profile,'tools/literature/monocle131_models/build.py'];sources={n:pin(ROOT/n) for n in names};classes=out/'classes';classes.mkdir()
   run('javac',[java/('javac'+suffix),'--release','17','-encoding','UTF-8','-Xlint:all','-Werror','-sourcepath','','-cp',dependency,'-d',classes,*[ROOT/'src/main/java/org/jlinalg'/(n+'.java') for n in JAVA]])
   target=classes/'org/jlinalg/omics/monocle131-models';target.mkdir(parents=True)
   for n in ['worker.R','source-profile.json']:shutil.copyfile(ROOT/RES/n,target/n)
+  math_target=classes/'org/jlinalg/omics/monocle-commands';math_target.mkdir(parents=True);shutil.copyfile(ROOT/math_profile,math_target/'jdistlib-0.10.2-classes.json')
   manifest=out/'MANIFEST.MF';manifest.write_text('Manifest-Version: 1.0\nMain-Class: org.jlinalg.cli.Monocle131ModelCli\nClass-Path: jdistlib-all-0.10.2.jar\n\n',encoding='ascii',newline='\n');artifact=out/'monocle131-models-development.jar';run('jar',[java/('jar'+suffix),'--create','--file',artifact,'--manifest',manifest,'-C',classes,'.']);run('help',[java/('java'+suffix),'-jar',artifact,'--help'])
   if b'SKIP3' not in (out/'help.stdout').read_bytes() or b'Required action:' not in (out/'help.stdout').read_bytes():raise ValueError('Packaged recovery instructions absent')
   if any(pin(ROOT/n)!=v for n,v in sources.items()) or pin(dependency)['sha256']!=SHA:raise ValueError('Build source/dependency changed')

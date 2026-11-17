@@ -30,6 +30,11 @@ The [source crosswalk](tukey-kramer-development/SOURCE_REVIEW.json) records
 all 28 matching paragraphs, their identities and the 14 paper classifications;
 all 250 cached primary XML hashes were checked before this ranking was saved.
 
+The [current Monocle command guide](MONOCLE_COMMANDS.md) consolidates the
+separate exact-edition development workflows into the source-build interface.
+Its runtime qualifications and remaining custom-method gaps are recorded
+separately from the historical standalone checkpoints.
+
 The validated LDAK development checkpoint is preserved at local commit
 `e2bf00a9ccf03911ec27f818ef5c6a617e5602f1`, with its matching reader, closed
 evidence and failed attempts. Its six-role catalog preview remains pending

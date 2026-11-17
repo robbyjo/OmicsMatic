@@ -1,0 +1,47 @@
+{
+  "status": "PRIMARY_AND_CURRENT_AUTHOR_CODE_METHOD_DISCOVERY_NO_ANALYSIS_ADMISSION",
+  "paper_id": "P021",
+  "title": "Lifespan single-cell transcriptomic atlas of the human prefrontal cortex",
+  "doi": "10.1038/s41586-026-10271-7",
+  "primary_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13600939/",
+  "primary_xml_sha256": "d6e691fbafe8e1c42b7a5dbfab7d06ad9e456f833141e7d1b54c2cba9107b1cd",
+  "primary_paragraph": {
+    "index": 102,
+    "sha256": "6863e606bbd160300ae25c8c9b4416d9bdc8ee5e73296a967b99312fa17d6759"
+  },
+  "author_repository": "https://github.com/DiseaseNeuroGenomics/DLPFC_Lifespan_Atlas",
+  "selected_current_author_commit": "cf7eb72b1391ce8ad53cc0da62203d14df56d629",
+  "paper_commit_known": false,
+  "author_tree_files": 37,
+  "license_named_files": [],
+  "reviewed_author_source": {
+    "path": "Pseudotime_trajectories/trajectory_reconstruction.r",
+    "bytes": 20709,
+    "sha256": "eb24848c2cc9daa9fbee0b0e6d8b8feea425ff08e9448676c92363fcbe0fc31d",
+    "url": "https://github.com/DiseaseNeuroGenomics/DLPFC_Lifespan_Atlas/blob/cf7eb72b1391ce8ad53cc0da62203d14df56d629/Pseudotime_trajectories/trajectory_reconstruction.r"
+  },
+  "method_findings": {
+    "primitive_call_line": 465,
+    "primitive": "spdep::lm.morantest",
+    "response_preparation": "Default quasipoisson-labelled branch uses log10(count / supplied size_factor + 0.1); uninormal/binomialff-labelled branches retain supplied expression.",
+    "linear_model": "exp ~ Batch + Sex + as.numeric(PMI) + as.numeric(log_n_genes)",
+    "feature_covariate": "log_n_genes is natural log of nFeature_RNA.",
+    "zero_policy": true,
+    "default_alternative": "greater",
+    "multiple_testing": "BH over original OK gene rows; failed rows retain FAIL and NA statistics.",
+    "implementation_note": "The author wrapper replaces two Monocle namespace functions. The separately licensed spdep regression-residual primitive, explicit design matrix and prepared weights are the next native Java target; stock unadjusted Moran is not equivalent.",
+    "function_start_lines": [
+      387,
+      447
+    ]
+  },
+  "boundaries": [
+    "Current author commit is not established as the executed paper commit.",
+    "Author source was inspected privately, not executed or redistributed. No license-named file was present among the captured 37-file tree.",
+    "Model factor coding, fitted graph, raw inputs and full historical Monocle1.0.0 environment are not recovered.",
+    "No new Monocle or GraphPad family integration credit and no paper reproduction is claimed."
+  ],
+  "next_implementation": "Sparse prepared-weight covariate-aware residual Moran test with independent spdep controls, followed by explicit original-edition graph integration.",
+  "source_reference_primitive": "https://r-spatial.github.io/spdep/reference/lm.morantest.html",
+  "whole_goal_complete": false
+}
