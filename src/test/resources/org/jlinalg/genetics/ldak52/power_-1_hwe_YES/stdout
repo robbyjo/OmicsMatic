@@ -1,0 +1,50 @@
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+LDAK - Software for obtaining Linkage Disequilibrium Adjusted Kinships and Loads More
+Version 5.2 - Help pages at http://www.ldak.org
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+There are 6 pairs of arguments:
+--calc-kins-direct result
+--bfile /mnt/d/projects/JLinAlg/build/snakemake-workflow-1/build/ldak/kinship-fixture-1/test
+--weights /mnt/d/projects/JLinAlg/build/snakemake-workflow-1/build/ldak/kinship-fixture-1/weights.txt
+--power -1
+--hwe-stand YES
+--max-threads 1
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+Calculating kinships directly
+
+Predictors will be centred then scaled by V^(-1.0000/2) (option "--power"), where V=2*MAF*(1-MAF), the expected variance assuming Hardy-Weinberg Equilibrium; to instead scale based on observed variance use "--hwe-stand NO"
+
+Add "--kinship-gz YES" and/or "--kinship-raw YES" to save gzipped and/or text versions of the kinship matrix
+
+If memory is an issue, add "--single YES" (then calculations will performed using single precistion)
+
+To run the parallel version of LDAK, use "--max-threads" (this will only reduce runtime for some commands)
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+Reading IDs for 9 samples from /mnt/d/projects/JLinAlg/build/snakemake-workflow-1/build/ldak/kinship-fixture-1/test.fam
+
+Reading details for 12 predictors from /mnt/d/projects/JLinAlg/build/snakemake-workflow-1/build/ldak/kinship-fixture-1/test.bim
+
+Data contain 9 samples and 12 predictors
+
+Reading weights from /mnt/d/projects/JLinAlg/build/snakemake-workflow-1/build/ldak/kinship-fixture-1/weights.txt
+First few weights are: mixed 1.0000 | mostly_het 0.5000 | monomorphic 1.0000 | all_missing 1.0000 | fixed_het 1.0000
+
+By ignoring those with weight zero, number of predictors reduced to 11
+
+Calculating kinships for Chunk 1 of 1
+Warning, Predictor monomorphic is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor all_missing is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor fixed_het is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor one_call is trivial (takes at most one non-missing value) and will be ignored
+
+
+Kinship matrix saved in files with prefix result
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+Mission completed. All your basepair are belong to us :)
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
