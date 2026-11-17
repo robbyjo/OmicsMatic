@@ -13,7 +13,7 @@ def pin(path):
 def write(path,value):
     with path.open('x',encoding='utf-8',newline='\n') as f:json.dump(value,f,indent=2);f.write('\n')
 def main():
-    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--native',type=Path,required=True);p.add_argument('--out',type=Path,required=True);a=p.parse_args();out=a.out.resolve();assert out.is_relative_to(ROOT/'build');out.mkdir(exist_ok=False);shutil.copyfile(__file__,out/'as-run-archiver.py');source=a.native;assert sys.platform=='linux' and source==source.resolve() and not str(source).startswith('/mnt/');completed=json.loads((source/'COMPLETED.json').read_bytes());assert len(completed['cases'])==18 and completed['original_software_unchanged'] and not completed['user_analysis_admitted'];before=pin(source/'COMPLETED.json');archive=out/'managed-capture-evidence.zip';refs={};blobs={}
+    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--native',type=Path,required=True);p.add_argument('--out',type=Path,required=True);p.add_argument('--include-bundles',action='store_true',help='Also retain every completed/provisional managed bundle, sharing unchanged captured objects');a=p.parse_args();out=a.out.resolve();assert out.is_relative_to(ROOT/'build');out.mkdir(exist_ok=False);shutil.copyfile(__file__,out/'as-run-archiver.py');source=a.native;assert sys.platform=='linux' and source==source.resolve() and not str(source).startswith('/mnt/');completed=json.loads((source/'COMPLETED.json').read_bytes());assert len(completed['cases'])==18 and completed['original_software_unchanged'] and not completed['user_analysis_admitted'];before=pin(source/'COMPLETED.json');archive=out/'managed-capture-evidence.zip';refs={};blobs={}
     try:
         with zipfile.ZipFile(archive,'x',allowZip64=True) as z:
             def add(path,name,blob=False):
@@ -40,7 +40,10 @@ def main():
                 for directory in ['objects','helpers','events','process','runtime','deployment','policy-records']:
                     for path in (execution/directory).rglob('*'):
                         if path.is_file():add(path,prefix+directory+'/'+path.relative_to(execution/directory).as_posix(),directory=='objects')
-            index=dict(schema_version=1,scope='Development captured-execution evidence only. Metadata paths and virtual per-case blob files share immutable archive objects; this is not a managed analysis bundle.',source_native=str(source),source_completed=before,files=refs,blobs=blobs)
+                if a.include_bundles:
+                    for path in (execution/'bundle').rglob('*'):
+                        if path.is_file():add(path,prefix+'bundle/'+path.relative_to(execution/'bundle').as_posix(),path.parent.name=='objects')
+            index=dict(schema_version=1,scope='Development managed execution/control evidence, including completed/provisional bundles when explicitly selected. Virtual per-case blob files share immutable archive objects. Public analysis and paper-role admission remain gated.',managed_bundles_included=a.include_bundles,source_native=str(source),source_completed=before,files=refs,blobs=blobs)
             z.writestr('INDEX.json',json.dumps(index,indent=2)+'\n',compress_type=zipfile.ZIP_DEFLATED,compresslevel=3)
         assert pin(source/'COMPLETED.json')==before
         write(out/'ARCHIVED.json',dict(status='ARCHIVED_COMPLETE_NATIVE_MANAGED_CAPTURE_DEVELOPMENT_EVIDENCE',archive=pin(archive),source_completed=before,metadata_and_virtual_blob_references=len(refs),unique_blobs=len(blobs),workflow_runs_repeated=False,user_analysis_admitted=False,new_catalog_credit=0,whole_goal_complete=False));print('PASS_COMPACT_MANAGED_CAPTURE_ARCHIVE '+str(len(refs))+' REFERENCES '+str(len(blobs))+' BLOBS',flush=True)

@@ -67,10 +67,25 @@ public final class SnakemakeOriginalProbe {
                 var result=SnakemakeOriginalWorkflow.execute(Path.of(SnakemakeOriginalFiles.text(request.get("recipe"))),Path.of(SnakemakeOriginalFiles.text(request.get("runtime"))),Path.of(SnakemakeOriginalFiles.text(request.get("out"))),check);
                 System.out.println(SnakemakeOriginalJson.json(Map.of("status","PASS_DEVELOPMENT_CAPTURED_SOURCE_EXECUTION_NOT_FINAL_ADMISSION","logical_jobs",result.events().jobs().size(),"output_declarations",result.outputs().size())));
             }
+            case "managed-bundle" -> {
+                var request=SnakemakeOriginalFiles.object(SnakemakeOriginalFiles.json(root,1_048_576));
+                var result=SnakemakeOriginalManagedBundle.run(Path.of(SnakemakeOriginalFiles.text(request.get("recipe"))),Path.of(SnakemakeOriginalFiles.text(request.get("runtime"))),Path.of(SnakemakeOriginalFiles.text(request.get("out"))),check);
+                System.out.println(SnakemakeOriginalJson.json(Map.of("status","PASS_COMPLETE_MANAGED_WORKFLOW_EVIDENCE_NOT_PUBLIC_ADMISSION","manifest",result.manifest(),"logical_jobs",result.events().jobs().size())));
+            }
             case "bundle" -> {
                 var request=SnakemakeOriginalFiles.object(SnakemakeOriginalFiles.json(root,1_048_576));
                 var result=SnakemakeOriginalWorkflow.run(Path.of(SnakemakeOriginalFiles.text(request.get("recipe"))),Path.of(SnakemakeOriginalFiles.text(request.get("runtime"))),Path.of(SnakemakeOriginalFiles.text(request.get("out"))),check);
                 System.out.println(SnakemakeOriginalJson.json(Map.of("status","PASS_COMPLETE_DECLARED_LOCAL_WORKFLOW_BUNDLE_NOT_PAPER_REPRODUCTION","manifest",result.manifest(),"logical_jobs",result.events().jobs().size())));
+            }
+            case "verify-zip" -> {
+                var request=SnakemakeOriginalFiles.object(SnakemakeOriginalFiles.json(root,1_048_576));
+                Path source=Path.of(SnakemakeOriginalFiles.text(request.get("archive"))).toAbsolutePath().normalize();var before=SnakemakeOriginalFiles.pin(source,1_000_000_000_000L,check);
+                try(var zip=new java.util.zip.ZipFile(source.toFile())){var names=new java.util.HashSet<String>();var entries=zip.entries();while(entries.hasMoreElements()){var entry=entries.nextElement();String name=entry.getName();SnakemakeOriginalFiles.member(entry.isDirectory()?name.substring(0,name.length()-1):name);if(!names.add(name))throw new java.io.IOException("Duplicate standalone archive member");}}
+                try(var archive=java.nio.file.FileSystems.newFileSystem(source,Map.of())){
+                    var verified=SnakemakeOriginalBundle.verify(archive.getPath("/"),check);
+                    System.out.println(SnakemakeOriginalJson.json(Map.of("status","PASS_PORTABLE_STANDALONE_ZIP_WORKFLOW_EVIDENCE","manifest",verified.manifest(),"logical_jobs",verified.events().jobs().size())));
+                }
+                if(!before.equals(SnakemakeOriginalFiles.pin(source,1_000_000_000_000L,check)))throw new java.io.IOException("Standalone archive changed during complete verification");
             }
             case "verify" -> {
                 var result=SnakemakeOriginalBundle.verify(root,check);

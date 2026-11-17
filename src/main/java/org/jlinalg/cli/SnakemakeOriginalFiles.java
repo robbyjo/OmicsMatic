@@ -47,7 +47,7 @@ final class SnakemakeOriginalFiles {
         if(!before.isRegularFile()||before.size()>maximum)throw new IOException("Nonregular or oversized SnakemakeOriginal file: "+path);
         MessageDigest digest;try{digest=MessageDigest.getInstance("SHA-256");}catch(NoSuchAlgorithmException impossible){throw new AssertionError(impossible);}
         long count=0;
-        try(var input=Files.newInputStream(path,LinkOption.NOFOLLOW_LINKS)){
+        try(var input=input(path)){
             byte[] buffer=new byte[65536];for(int n=input.read(buffer);n>=0;n=input.read(buffer)){cancellation.run();count=Math.addExact(count,n);if(count>maximum||count>before.size())throw new IOException("SnakemakeOriginal file grew during complete capture: "+path);digest.update(buffer,0,n);}
         }
         var after=Files.readAttributes(path,BasicFileAttributes.class,LinkOption.NOFOLLOW_LINKS);
@@ -59,11 +59,18 @@ final class SnakemakeOriginalFiles {
         if(maximum<0||maximum==Integer.MAX_VALUE)throw new IOException("Invalid complete SnakemakeOriginal metadata byte capacity");
         var before=Files.readAttributes(path,BasicFileAttributes.class,LinkOption.NOFOLLOW_LINKS);
         if(!before.isRegularFile()||before.size()>maximum||!path.toRealPath().equals(path))throw new IOException("Missing, linked or oversized SnakemakeOriginal metadata: "+path);
-        byte[] raw;try(var input=Files.newInputStream(path,LinkOption.NOFOLLOW_LINKS)){raw=input.readNBytes(maximum+1);}
+        byte[] raw;try(var input=input(path)){raw=input.readNBytes(maximum+1);}
         var after=Files.readAttributes(path,BasicFileAttributes.class,LinkOption.NOFOLLOW_LINKS);
         if(raw.length>maximum||raw.length!=before.size()||raw.length!=after.size()||!before.lastModifiedTime().equals(after.lastModifiedTime())||!Objects.equals(before.fileKey(),after.fileKey()))throw new IOException("SnakemakeOriginal metadata changed or exceeded capacity: "+path);return raw;
     }
     static String utf8(byte[] raw)throws IOException{return StandardCharsets.UTF_8.newDecoder().onMalformedInput(CodingErrorAction.REPORT).onUnmappableCharacter(CodingErrorAction.REPORT).decode(java.nio.ByteBuffer.wrap(raw)).toString();}
+    private static java.io.InputStream input(Path path)throws IOException {
+        // The JDK ZIP namespace contains archive bytes, never host-resolved payload
+        // links, and explicitly rejects NOFOLLOW_LINKS as an input-stream option.
+        // Ordinary filesystems retain the original strict no-follow operation.
+        if(path.getFileSystem().provider().getClass().getName().equals("jdk.nio.zipfs.ZipFileSystemProvider"))return Files.newInputStream(path);
+        return Files.newInputStream(path,LinkOption.NOFOLLOW_LINKS);
+    }
     static Object json(Path path,int maximum)throws IOException{return SnakemakeOriginalParameters.parse(utf8(bytes(path,maximum)),maximum,1000000);}
     static void writeJson(Path path,Object value)throws IOException{Files.writeString(path,SnakemakeOriginalJson.json(value)+"\n",StandardCharsets.UTF_8,StandardOpenOption.CREATE_NEW);}
     static Map<?,?> object(Object value)throws IOException{if(!(value instanceof Map<?,?> map))throw new IOException("Expected SnakemakeOriginal JSON object");return map;}

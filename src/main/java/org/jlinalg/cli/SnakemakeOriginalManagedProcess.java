@@ -19,11 +19,11 @@ import static org.jlinalg.cli.SnakemakeOriginalRecorded.equal;
 final class SnakemakeOriginalManagedProcess {
     static final String RESOURCE="/org/jlinalg/omics/snakemake-managed-v1/";
     static final List<String> HELPERS=List.of("controller.py","deployment_policy.py","omicsmatic_policy_runtime.py","omicsmatic_logger_base.py","snakemake_logger_plugin_omicsmanaged/__init__.py","original_driver.py","managed_parser_policy.py");
-    static final String ACTION="This verifies a supervised original process and its installation policy only. Complete workflow/software/input/output capture, replay, public CLI and paper-role admission remain unfinished. No user analysis or catalog credit is admitted. Missing/forbidden prerequisites require skipping the dependent analysis and restoring the named permitted prerequisite in NEW paths. Retain all original diagnostics, failed attempts and software evidence; never refresh historical hashes or silently substitute deployment software.";
+    static final String ACTION="This verifies a supervised original process and its installation policy only. Complete workflow/software/input/output capture and replay require their separately completed verified bundles; public CLI and paper-role admission remain unfinished. No user analysis or catalog credit is admitted by this process receipt. Missing/forbidden prerequisites require skipping the dependent analysis and restoring the named permitted prerequisite in NEW paths. Retain all original diagnostics, failed attempts and software evidence; never refresh historical hashes or silently substitute deployment software.";
     record Invocation(Path root,Path working,Path runtime,Path providers,Path controllerRequest,Map<String,String> environment,SnakemakeOriginalProcess.Limits limits) {
         Invocation {environment=Map.copyOf(environment);}
     }
-    record Bound(int exitCode,long controllerPid,SnakemakeOriginalInstallationPolicy.Audit policy,Map<String,SnakemakeOriginalProcess.Identity> policyProcesses,Pin processLedger,Pin controllerReceipt,Map<String,Pin> helpers,List<Path> softwareData,SnakemakeOriginalManagedPolicy.Audit parserPolicy) {
+    record Bound(int exitCode,long controllerPid,SnakemakeOriginalInstallationPolicy.Audit policy,Map<String,SnakemakeOriginalProcess.Identity> policyProcesses,Pin processLedger,Pin controllerReceipt,Map<String,Pin> helpers,List<String> softwareData,SnakemakeOriginalManagedPolicy.Audit parserPolicy) {
         Bound {policyProcesses=Map.copyOf(policyProcesses);helpers=Map.copyOf(helpers);softwareData=List.copyOf(softwareData);}
     }
     private SnakemakeOriginalManagedProcess() { }
@@ -94,7 +94,7 @@ final class SnakemakeOriginalManagedProcess {
             if(parserRejected?!eventPids.isEmpty():!eventPids.contains(controllerPid)||!audit.processes().containsAll(eventPids))throw new IOException("Source event processes differ from the actual supervised parser/policy outcome");
             if(schema==2){Map<?,?> streams=object(controller.get("collector_streams"));var names=new HashSet<String>();for(long pid:eventPids){String name="events-"+pid+".jsonl";names.add(name);if(!pin(events.resolve(name),67_108_864,check).equals(fingerprint(streams.get(name),67_108_864)))throw new IOException("Managed source event bytes differ");}if(!streams.keySet().equals(names))throw new IOException("Managed source event declaration differs");}
             if(!pin(ledger,67_108_864,check).equals(ledgerPin)||!pin(receipt,67_108_864,check).equals(receiptPin))throw new IOException("Actual supervisor/controller evidence changed during binding");
-            equal(softwareData,process.get("link_data_roots"),"explicit software staging/package data scopes");result=new Bound(sourceExit,controllerPid,audit,policyIdentities,ledgerPin,receiptPin,helperPins(),softwareData,parserPolicy);
+            equal(softwareData,process.get("link_data_roots"),"explicit software staging/package data scopes");result=new Bound(sourceExit,controllerPid,audit,policyIdentities,ledgerPin,receiptPin,helperPins(),softwareData.stream().map(Path::toString).toList(),parserPolicy);
         }catch(Exception error){failed=error;}
         finally {
             if(runtime!=null)try{runtime.verify(check);}catch(Exception error){if(failed==null)failed=error;else failed.addSuppressed(error);}

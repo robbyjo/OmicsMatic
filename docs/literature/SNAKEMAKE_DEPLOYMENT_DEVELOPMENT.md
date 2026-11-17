@@ -297,5 +297,110 @@ Current development records are under `managed-capture-controls-3`,
 hard links to `shared-objects`; each remains a regular hash-verified file.
 The producer writes `EXECUTED.json` with `user_analysis_admitted=false` only after
 its captured-execution checks pass. It writes no managed final bundle completion
-marker. Final managed sealing/independent verification, replay, public CLI and
-paper-role qualification remain required before catalog admission.
+marker. The separate managed bundle/replay path is described below; public CLI
+and paper-role qualification remain required before catalog admission.
+
+## Portable managed bundles and genuine replay
+
+The development managed bundle path now copies complete control evidence and
+the exact union of captured input, working-state, software/cache and output
+objects into a standalone bundle. It checks a provisional bundle independently
+before writing the completion marker atomically. A complete physical file and
+directory census, content-addressed closure, reader/producer edition, declared
+parameters, selected software, original parser settings, source process records,
+closed per-process installation policies, original job events and declared
+outputs must agree. The reader reconstructs the managed binding from the raw
+records; it does not accept the saved binding or a zero process exit as proof.
+
+Software payload links and device metadata stay literal. Portable verification
+does not open the original Linux paths, execute the engine or interpret container
+links as links on the reader's host. The selected JDK ZIP provider is supported
+as an archive-byte namespace; ordinary filesystem reads retain their strict
+no-follow operation. ZIP verification rejects duplicate/traversing member names
+and checks the complete outer archive bytes before and after reading. Hashes
+establish integrity and consistency, not a signature or trusted-host attestation.
+Arbitrary extra dependencies loaded by trusted workflow code remain outside the
+declared capture scope. These checks do not establish biological validity or
+reproduce an author's environment or complete paper.
+
+The current private package passes **51 Snakemake Java tests** and the website
+check. Its eighteen fresh original-engine controls cover all three deployment
+modes: six completed bundles, six expected missing-software/profile skips and six
+expected upstream-failure/missing-output refusals. A separate Python review
+checks all eighteen raw capture closures and actual process identities.
+Twenty-two Windows controls accept genuine/reencoded evidence and an unordered
+policy-process set, while rejecting nineteen contradictory or damaged copies.
+All six mode/permission combinations also have standalone archives verified by
+the Windows reader with an empty executable search path.
+The negative copies have rebuilt physical manifests, including resealed cached
+bindings where relevant; the reader must still reject inconsistent original
+settings, process ownership, jobs, outputs, software, provider editions and
+warning claims. Neither a Linux runtime nor the producer paths are available to
+that Windows reader.
+
+The changed shared classes also pass twelve fresh preinstalled controls, their
+two-generation original-engine replay and fifteen portable bundle checks. The
+older captured-execution packages and receipts remain frozen; a new reader
+edition does not justify refreshing an old bundle's code hashes.
+
+Genuine managed replay materializes the captured workflow/data, preserves the
+declared settings and typed parameters, and calls the original engine again.
+Borrowed software must still exist at its original prefix and match its complete
+captured state. With installation permitted, the new run uses NEW owned prefixes
+and the original deployers; it never relocates an installed Conda environment.
+Both complete software records are retained. Installation prefixes, software
+tree timestamps and prefix-bearing software bytes can differ between permitted
+fresh installations. Fresh installation follows the unchanged declared
+environment specification and available upstream artifacts; byte-identical
+dependency sets are not certified. Inspect both captured software trees and use
+pinned packages or captured source archives for version-specific comparisons.
+Declared exact outputs still have to match byte for byte:
+an output containing an old absolute Conda prefix is not silently normalized.
+For a path-independent scientific comparison, declare stable analysis outputs in
+a NEW recipe and retain software provenance in the complete working-state
+records. A changed output contract starts a new workflow history; it does not
+retroactively make an earlier failed comparison pass.
+
+**WARNING: missing or forbidden prerequisites skip the dependent replay.** Read
+`FAILURE_WARNINGS.md` and `FAILURE.json`, restore the named permitted prerequisite
+at its declared location, or perform separately permitted setup, then retry NEW
+output. An upstream execution error, incomplete capture, contradictory evidence
+or output comparison mismatch is retained as **FAIL2**, with no matching replay
+admitted. Preserve the parent, new result, stderr, policies and partial bundle;
+an earlier nested success cannot replace a failed outer replay.
+
+Twelve genuine original-engine replay generations now pass: two generations for
+each of the three deployment modes, under both software reuse and permitted
+fresh installation. The controlled original workflow/data directories are
+temporarily unavailable throughout each pair of runs and restored afterward.
+The workflow still computes the expected result from captured inputs. Two
+separate prefix-bearing output controls retain **FAIL2** comparison mismatches;
+a missing-provider control produces **SKIP3** before a new execution starts.
+For output mismatches, both the new result and failed outer replay remain
+available for inspection.
+Original provider/cache trees remain unchanged. All six complete two-generation
+chains, including their parents and both results, also pass offline Windows
+verification from standalone ZIPs with an empty executable search path.
+
+Current development evidence uses `managed-bundle-package-1`,
+`managed-bundle-controls-2`, `managed-bundle-native-review-1`,
+`managed-bundle-conda-archive-1`, `managed-bundle-portable-1` and
+`managed-bundle-preinstalled-*` under `build/snakemake-original/`.
+The replay controls are in `managed-bundle-replay-controls-1`; all six initial
+and replay archive readers are recorded in `managed-bundle-archive-matrix-1`
+and `managed-bundle-replay-archives-1`. `managed-bundle-closure-1` retains the
+private reader, probe, source snapshot, validation records and byte-pinned
+archives with shared storage. Its `HOW-TO-VERIFY.txt` gives an offline verification
+example. Earlier compiler/control editions and the original failed ZIP preflight
+remain separate; their hashes were not refreshed.
+`qualify_managed_capture.py --bundle --defer-export` retains complete native
+records for compact archival; deferring export is not analysis completion.
+`archive_managed_capture.py --include-bundles` preserves all raw cases and
+completed bundles with shared blobs. `archive_workflow_bundle.py` produces a
+standalone ZIP without copying live installed prefixes. Archive failure requires
+a NEW archive path; do not repeat an analysis merely because export failed.
+
+**Public managed analysis and catalog admission remain gated.** This is a
+development qualification path, not a new supported public analysis command.
+It adds no Snakemake catalog credit; the six paper roles and the broader
+250-paper objective remain pending their respective implementation/review work.

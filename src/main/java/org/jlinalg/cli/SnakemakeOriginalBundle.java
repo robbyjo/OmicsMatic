@@ -71,6 +71,7 @@ final class SnakemakeOriginalBundle {
         if(depth>64)throw new IOException("Replay lineage exceeds the explicit 64-generation verification capacity");
         Path root=supplied.toAbsolutePath().normalize();directory(root);if(Files.exists(root.resolve("FAILURE.json")))throw new IOException("Failed workflow/replay root cannot substitute an earlier nested success");
         if(Files.isDirectory(root.resolve("bundle"),LinkOption.NOFOLLOW_LINKS))root=root.resolve("bundle");Map<?,?> marker=object(json(root.resolve("COMPLETED.json"),65536));
+        if("declared-managed-workflow".equals(marker.get("kind")))return SnakemakeOriginalManagedBundle.verify(root,"COMPLETED.json",check);
         return "genuine-rerun".equals(marker.get("kind"))?SnakemakeOriginalReplay.verify(root,"COMPLETED.json",check,depth):verifyLocal(root,"COMPLETED.json",check);
     }
     static Verified verifyLocal(Path root,String markerName,Runnable check)throws IOException {
@@ -114,14 +115,14 @@ final class SnakemakeOriginalBundle {
         tools(request,root,before,after);if(!SnakemakeOriginalWorkflow.warningText(events).equals(utf8(bytes(root.resolve("WARNINGS.md"),request.metadataBytes()))))throw new IOException("Required complete software/source warnings differ");
         return new Verified(root,manifest,root,producer,request,inputs,outputs,events);
     }
-    private static void tools(SnakemakeOriginalRecipe.Request request,Path root,SnakemakeOriginalCapture.Snapshot before,SnakemakeOriginalCapture.Snapshot after)throws IOException {
+    static void tools(SnakemakeOriginalRecipe.Request request,Path root,SnakemakeOriginalCapture.Snapshot before,SnakemakeOriginalCapture.Snapshot after)throws IOException {
         List<?> rows=list(json(root.resolve("tools.json"),request.metadataBytes()));if(rows.size()!=request.tools().size())throw new IOException("Declared tool family differs");var names=new HashSet<String>();
         for(int i=0;i<rows.size();i++) {var expected=request.tools().get(i);Map<?,?> row=object(rows.get(i));keys(row,"name","supplied","resolved","identity");if(!expected.name().equals(row.get("name"))||!expected.executable().equals(row.get("supplied")))throw new IOException("Declared executable binding differs");String real=absolute(text(row.get("resolved")));Map<?,?> identity=object(row.get("identity"));fingerprint(identity.get("pin"),1_073_741_824);if((integer(identity.get("mode"),0,0777)&0111)==0)throw new IOException("Declared executable was not executable");String wrapper="#!/usr/bin/bash\nexec '"+real.replace("'","'\\''")+"' \"$@\"\n";byte[] raw=wrapper.getBytes(StandardCharsets.UTF_8);Pin wanted=new Pin(raw.length,sha(raw));names.add(expected.name());
             for(var state:List.of(before,after)){var item=state.roots().get(0).items().get("bin/"+expected.name());if(item==null||!item.kind().equals("file")||!item.original().pin().equals(wanted)||(item.mode()&0111)==0)throw new IOException("Declared tool wrapper changed");}
         }
         for(var state:List.of(before,after)){var observed=new HashSet<String>();for(String name:state.roots().get(0).items().keySet())if(name.startsWith("bin/"))observed.add(name.substring(4));if(!observed.equals(names))throw new IOException("Complete executable wrapper census differs");}
     }
-    private static List<SnakemakeOriginalWorkflow.Published> outputs(Path root,SnakemakeOriginalRecipe.Request request,String producer,Map<String,String> bindings,Map<String,Node> owned,Runnable check)throws IOException {
+    static List<SnakemakeOriginalWorkflow.Published> outputs(Path root,SnakemakeOriginalRecipe.Request request,String producer,Map<String,String> bindings,Map<String,Node> owned,Runnable check)throws IOException {
         List<?> saved=list(json(root.resolve("outputs.json"),request.metadataBytes()));if(saved.size()!=request.outputs().size())throw new IOException("Declared output family differs");var result=new ArrayList<SnakemakeOriginalWorkflow.Published>();long total=0;int count=0;
         for(int i=0;i<saved.size();i++) {
             var expected=request.outputs().get(i);Map<?,?> item=object(saved.get(i));keys(item,"root","path","kind","comparison","members","bytes","files");if(!expected.root().equals(item.get("root"))||!expected.path().equals(item.get("path"))||!expected.kind().equals(item.get("kind"))||!expected.comparison().equals(item.get("comparison")))throw new IOException("Recorded output contract differs");

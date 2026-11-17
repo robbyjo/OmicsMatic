@@ -66,13 +66,17 @@ final class SnakemakeOriginalEvidence {
     }
     static Map<String,String> environment(String producer,String adopted,SnakemakeOriginalRecipe.Request request){var env=new TreeMap<>(Map.of("PATH",producer+"/workspace/bin:"+adopted+"/bin:/usr/bin:/bin","LANG","C.UTF-8","LC_ALL","C.UTF-8","TZ","UTC","XDG_CACHE_HOME",producer+"/workspace/cache","PYTHONDONTWRITEBYTECODE","1","PYTHONNOUSERSITE","1"));env.putAll(request.environment());return Map.copyOf(env);}
     static void process(Path root,String producer,String working,List<String> command,SnakemakeOriginalRecipe.Request request)throws IOException {
+        var environment=new TreeMap<>(environment(producer,text(object(json(root.resolve("runtime-context.json"),request.metadataBytes())).get("environment")),request));
+        process(root,producer,working,command,environment,request);
+    }
+    static void process(Path root,String producer,String working,List<String> command,Map<String,String> suppliedEnvironment,SnakemakeOriginalRecipe.Request request)throws IOException {
         Map<?,?> ledger=object(json(root.resolve("process/process.json"),request.metadataBytes())),launch=object(json(root.resolve("process/launch.json"),request.metadataBytes()));
         if(!"completed-process-only".equals(ledger.get("status"))||integer(ledger.get("exit_code"),0,255)!=0||!list(ledger.get("owned_live_after_cleanup")).isEmpty())throw new IOException("Original process did not finish successfully with complete owned cleanup");
         List<String> guarded=strings(ledger.get("command"));var limit=request.process();if(guarded.size()!=14+command.size())throw new IOException("Guarded original command length differs");
         var expected=new ArrayList<>(List.of("/usr/bin/setsid","--fork","--wait","/usr/bin/bash","-c","IFS= read -r omics_gate || exit 125; omics_expected=$1; shift; [ \"$omics_gate\" = \"$omics_expected\" ] || exit 125; exec \"$@\"","snakemake-owned-launcher",guarded.get(7),"/usr/bin/prlimit","--as="+limit.addressSpaceBytes(),"--cpu="+limit.cpuSeconds(),"--fsize="+limit.fileBytes(),"--nofile="+limit.openFiles(),"--"));
         // There are fourteen supervisor arguments before the original argv.
         expected.addAll(command);if(!guarded.get(7).matches("[0-9a-f-]{36}"))throw new IOException("Invalid owned launch gate identity");equal(expected,guarded,"owned process invocation");
-        var environment=new TreeMap<>(environment(producer,text(object(json(root.resolve("runtime-context.json"),request.metadataBytes())).get("environment")),request));environment.put("HOME",working);environment.put("TMPDIR",working);
+        var environment=new TreeMap<>(suppliedEnvironment);environment.put("HOME",working);environment.put("TMPDIR",working);
         for(Map<?,?> record:List.of(ledger,launch)){equal(guarded,record.get("command"),"process/launch command");equal(environment,record.get("environment"),"effective process environment");equal(limit,record.get("limits"),"process capacities");if(!working.equals(record.get("working_directory"))||!producer.equals(record.get("workspace_root")))throw new IOException("Recorded owned execution directories differ");}
         if(!"running".equals(launch.get("status")))throw new IOException("Missing original running launch state");
         integer(ledger.get("peak_workspace_bytes"),0,limit.workspaceBytes());integer(ledger.get("peak_sampled_rss_bytes"),0,limit.sampledRssBytes());integer(ledger.get("peak_processes"),1,limit.processes());integer(ledger.get("peak_threads"),1,limit.threads());

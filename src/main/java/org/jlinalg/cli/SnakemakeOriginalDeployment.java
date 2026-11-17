@@ -79,6 +79,54 @@ final class SnakemakeOriginalDeployment {
         verifyRecords(home,expectedMetadata,directories,Set.of("ADOPTED.json"),check);if(!pin(home.resolve("ADOPTED.json"),MAXIMUM,check).equals(marker))throw new IOException("Provider adoption marker changed during complete verification");
         var metadata=new TreeMap<>(expectedMetadata);metadata.put("ADOPTED.json",marker);return new Context(home,providers,metadata,elfObjects,externalPaths);
     }
+    /** Audit captured provider declarations without opening any producer/host software path. */
+    static Map<?,?> recorded(Path root,Runnable check)throws IOException {
+        Map<?,?> context=object(json(root.resolve("deployment-context.json"),MAXIMUM));
+        keys(context,"home","providers","metadata","elfObjects","externalPaths");
+        SnakemakeOriginalRecorded.absolute(text(context.get("home")));
+        var metadata=pinMap(context.get("metadata"));
+        for(var row:metadata.entrySet())if(!pin(root.resolve("deployment").resolve(row.getKey()),MAXIMUM,check).equals(row.getValue()))throw new IOException("Captured provider metadata bytes differ: "+row.getKey());
+        Map<?,?> adopted=object(json(root.resolve("deployment/ADOPTED.json"),MAXIMUM));
+        keys(adopted,"status","schema_version","engine_profile","components","source_controls","host","elf_objects","external_paths","original_diagnostics","metadata","directories","user_analysis_admitted","new_catalog_credit","whole_goal_complete");
+        integer(adopted.get("schema_version"),1,1);
+        if(!"ADOPTED_SELECTED_DEPLOYMENT_PROVIDERS_NOT_JAVA_ANALYSIS_ADAPTER".equals(adopted.get("status"))||!SnakemakeOriginalRuntime.PROFILE.equals(adopted.get("engine_profile"))||!Boolean.FALSE.equals(adopted.get("user_analysis_admitted"))||!Boolean.FALSE.equals(adopted.get("whole_goal_complete"))||integer(adopted.get("new_catalog_credit"),0,0)!=0)throw new IOException("Captured provider adoption/profile claim differs");
+        var prior=new TreeMap<>(metadata);if(prior.remove("ADOPTED.json")==null||!prior.equals(pinMap(adopted.get("metadata"))))throw new IOException("Complete provider metadata declaration differs");
+        Map<?,?> providers=object(context.get("providers")),components=object(adopted.get("components"));keys(providers,"conda","apptainer");keys(components,"conda","apptainer");
+        for(String name:List.of("conda","apptainer")) {
+            Map<?,?> component=object(components.get(name)),selected=object(providers.get(name));
+            keys(component,"prefix","executable","version","manifest","entries","artifact","license");keys(selected,"prefix","executable","version","manifest","entries");
+            String prefix=SnakemakeOriginalRecorded.absolute(text(component.get("prefix")));
+            if(!(prefix+"/bin/"+name).equals(component.get("executable"))||!VERSIONS.get(name).equals(component.get("version"))||!ARTIFACTS.get(name).equals(fingerprint(component.get("artifact"),FILE_MAXIMUM))||!LICENSES.get(name).equals(fingerprint(component.get("license"),MAXIMUM)))throw new IOException("Captured selected provider/archive/license differs");
+            for(String field:List.of("prefix","executable","version","manifest","entries"))SnakemakeOriginalRecorded.equal(component.get(field),selected.get(field),"provider context/adoption "+field);
+            if(!fingerprint(component.get("manifest"),MAXIMUM).equals(metadata.get(name+"-files.json"))||!LICENSES.get(name).equals(metadata.get(name+"-LICENSE.txt")))throw new IOException("Captured provider manifest/license bytes differ");
+            Map<?,?> installed=object(json(root.resolve("deployment/"+name.toUpperCase(java.util.Locale.ROOT)+"-INSTALLED.json"),MAXIMUM));
+            keys(installed,"status","component","prefix","executable","artifact","license","manifest","entries","version","user_analysis_admitted");
+            if(!"INSTALLED_AND_VERSION_PROBED_NOT_SOURCE_WORKFLOW_QUALIFIED".equals(installed.get("status"))||!name.equals(installed.get("component"))||!(VERSIONS.get(name)+'\n').equals(installed.get("version"))||!Boolean.FALSE.equals(installed.get("user_analysis_admitted")))throw new IOException("Captured provider installation declaration differs");
+            for(String field:List.of("prefix","executable","artifact","license","manifest","entries"))SnakemakeOriginalRecorded.equal(component.get(field),installed.get(field),"provider installation "+field);
+            Map<?,?> tree=object(json(root.resolve("deployment/"+name+"-files.json"),MAXIMUM));keys(tree,"schema_version","root","scope","nodes");integer(tree.get("schema_version"),1,1);text(tree.get("scope"));
+            if(!prefix.equals(tree.get("root"))||object(tree.get("nodes")).size()!=integer(component.get("entries"),1,200000))throw new IOException("Captured complete provider prefix/census differs");
+            Map<?,?> nodes=object(tree.get("nodes"));
+            for(var item:nodes.entrySet()) {
+                String path=member(text(item.getKey()));Map<?,?> node=object(item.getValue());String kind=text(node.get("kind"));integer(node.get("mode"),0,07777);
+                if(kind.equals("file")){keys(node,"kind","mode","pin");fingerprint(node.get("pin"),FILE_MAXIMUM);}
+                else if(kind.equals("directory"))keys(node,"kind","mode");
+                else if(kind.equals("symlink")){keys(node,"kind","mode","target","resolved","target_kind","pin");text(node.get("target"));SnakemakeOriginalRecorded.absolute(text(node.get("resolved")));String target=text(node.get("target_kind"));if(target.equals("file"))fingerprint(node.get("pin"),FILE_MAXIMUM);else if(!Set.of("directory","missing").contains(target)||node.get("pin")!=null)throw new IOException("Contradictory captured provider link");}
+                else throw new IOException("Unknown captured provider member kind");
+                int slash=path.lastIndexOf('/');if(slash>=0){Object parent=nodes.get(path.substring(0,slash));if(parent==null||!"directory".equals(object(parent).get("kind")))throw new IOException("Incomplete captured provider parent census");}
+            }
+        }
+        String conda=text(object(providers.get("conda")).get("prefix")),apptainer=text(object(providers.get("apptainer")).get("prefix"));
+        if(SnakemakeOriginalRecorded.within(conda,apptainer)||SnakemakeOriginalRecorded.within(apptainer,conda))throw new IOException("Captured provider prefixes overlap");
+        Map<?,?> host=object(adopted.get("host"));keys(host,"platform","machine","uid","effective_uid");if(!"x86_64".equals(host.get("machine"))||!text(host.get("platform")).startsWith("Linux-"))throw new IOException("Captured provider host profile differs");integer(host.get("uid"),0,4294967295L);integer(host.get("effective_uid"),0,4294967295L);
+        Map<?,?> loader=object(json(root.resolve("deployment/HOST-ELF.json"),MAXIMUM));keys(loader,"scope","objects","external");text(loader.get("scope"));
+        for(String field:List.of("elfObjects","externalPaths")){String old=field.equals("elfObjects")?"elf_objects":"external_paths",data=field.equals("elfObjects")?"objects":"external";long count=integer(context.get(field),1,200000);if(integer(adopted.get(old),1,200000)!=count||object(loader.get(data)).size()!=count)throw new IOException("Captured provider host loader census differs");}
+        Map<?,?> source=object(adopted.get("source_controls"));keys(source,"path","marker","source","export_index");SnakemakeOriginalRecorded.absolute(text(source.get("path")));
+        if(!pin(root.resolve("deployment/SOURCE-RECORDS.json"),MAXIMUM,check).equals(fingerprint(source.get("export_index"),MAXIMUM)))throw new IOException("Captured original provider qualification index differs");
+        Map<?,?> index=object(json(root.resolve("deployment/SOURCE-RECORDS.json"),MAXIMUM));integer(index.get("schema_version"),1,1);var files=pinMap(index.get("files"));
+        if(!fingerprint(source.get("marker"),MAXIMUM).equals(files.get("COMPLETED.json"))||!fingerprint(source.get("source"),MAXIMUM).equals(files.get("SOURCE.json"))||files.containsKey("FAILURE.json"))throw new IOException("Captured source qualification identity differs");
+        if(list(json(root.resolve("deployment/SOURCE-DIAGNOSTICS.json"),MAXIMUM)).size()!=integer(adopted.get("original_diagnostics"),0,1000000))throw new IOException("Captured original provider diagnostics census differs");
+        return context;
+    }
     private static void verifySource(Path home,Map<?,?> source,Map<String,Provider> providers,Runnable check)throws IOException {
         keys(source,"path","marker","source","export_index");Path root=directory(absolutePath(source.get("path")));Map<?,?> index=object(json(home.resolve("SOURCE-RECORDS.json"),MAXIMUM));
         if(!pin(home.resolve("SOURCE-RECORDS.json"),MAXIMUM,check).equals(fingerprint(source.get("export_index"),MAXIMUM)))throw new IOException("Original deployment export index binding differs");

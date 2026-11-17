@@ -348,6 +348,10 @@ final class SnakemakeOriginalProcess {
     private static long workspace(Path root, Limits limits, Path allowedRoot, long additionalBytes, int additionalFiles) throws IOException {
         return workspace(root,limits,allowedRoot,additionalBytes,additionalFiles,List.of());
     }
+    static void checkManagedCapacity(Path root,Limits limits,long additionalBytes,int additionalFiles,List<Path> softwareData)throws IOException {
+        for(Path data:softwareData)if(data.equals(root)||!data.startsWith(root)||!data.toRealPath().equals(data))throw new IOException("Require canonical owned literal software-data capacity roots");
+        workspace(root,limits,root,additionalBytes,additionalFiles,softwareData);
+    }
     private static long workspace(Path root, Limits limits, Path allowedRoot, long additionalBytes, int additionalFiles,List<Path> softwareData) throws IOException {
         for(Path data:softwareData)SnakemakeOriginalFiles.directory(data);
         long[] bytes = {0}; int[] count = {0};
@@ -391,7 +395,7 @@ final class SnakemakeOriginalProcess {
             throw new IOException("Owned SnakemakeOriginal workspace capacity including final diagnostics exceeded");
         return bytes[0];
     }
-    private static String warning(IOException failure) {
+    static String warning(IOException failure) {
         return "# SnakemakeOriginal process " + (failure == null ? "requires complete scientific output audit" : "FAIL2 failed")
                 + "\n\n" + (failure == null ? "Process execution completed. Its exit code does not admit a scientific result; complete the prepared input/output audit." : failure.toString())
                 + "\n\nRequired action: preserve this directory, stdout, stderr and process ledger. Admit results only after the complete scientific output audit. Correct any failure and rerun to a new output directory.\n";

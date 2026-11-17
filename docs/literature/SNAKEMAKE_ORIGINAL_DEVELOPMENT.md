@@ -246,8 +246,8 @@ propagation and its portable Java reader now also have twelve original-engine
 controls bound to the actual Java process supervisor. Explicit software staging
 data has eight separate link/scope/capacity controls; the failed first unpack is
 retained. See the deployment development guide for its warning and recovery steps.
-Final managed bundle verification/replay and the
-remaining admission gates are unfinished.
+Managed portable bundle and replay qualification is described in the deployment
+development guide. Public command and paper-role admission remain unfinished.
 
 The schema-2 managed process path also checks the actual original parser after
 workflow-profile reparse. Twenty-seven packaged controls cover the three
@@ -266,7 +266,7 @@ Eighteen packaged controls cover all three deployment modes, fresh installation,
 reuse, actionable skips, upstream failure and missing outputs. The deployment
 guide documents the retained file-limit/socket-fixture failures and their exact
 recovery steps. This path writes `EXECUTED.json` with analysis admission disabled;
-it does not supply the still-required managed final bundle/replay or public CLI.
+it is separate from the managed bundle/replay qualification path and public CLI.
 
 Source-control qualification scripts still use the recorded development control
 paths. The separate setup utility carries its own pinned synthetic fixtures.
