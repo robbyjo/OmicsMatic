@@ -194,6 +194,48 @@ a FIFO with a regular file. Retain original inputs, source diagnostics and every
 failed attempt, and use new output/setup directories for retries. Native
 benchmark aggregation remains independently usable with complete valid inputs.
 
+## Private deployment-provider checkpoint
+
+**WARNING: installing or adopting these providers does not enable managed
+workflow execution in the Java adapter. Managed Java requests still produce
+SKIP3. The public original-engine command and catalog admission remain unfinished.**
+
+The developer-only `setup_deployment.py` selects Miniforge 26.9.4-2 (Conda
+26.9.4) and Apptainer 1.5.5, verifies pinned download bytes and installs into new
+private prefixes. It requires Linux x86-64, a native case-sensitive filesystem
+preserving POSIX modes and symlinks, and at least 3 GiB of free space. The selected
+Apptainer dependency profile requires glibc 2.38 or later and `dpkg-deb`.
+It extracts private libraries and the exact upstream helper wrapper without
+installing system packages. Run from a checkout with Python 3:
+
+```bash
+mkdir -p "$HOME/.local/share/omicsmatic" build/snakemake-original
+python3 -I -B tools/literature/snakemake_original/setup_deployment.py \
+  --out "$HOME/.local/share/omicsmatic/snakemake-managed-NEW" \
+  --records-out build/snakemake-original/NEW-manager-records \
+  --allow-install
+```
+
+Omit `--allow-install` when installation is forbidden. Setup launches no download
+or installation and records **SKIP3** with recovery instructions. For missing
+host, filesystem, library or execution prerequisites, **skip the dependent
+analysis**, retain the warning and logs, restore the named permitted prerequisite
+and retry new paths. Preserve integrity failures as **FAIL2**; never overwrite a
+failed prefix or refresh historical hashes to admit changed software.
+
+`qualify_deployment.py --help` describes separate synthetic original-source
+controls; `adopt_deployment.py --help` describes provider inventory adoption.
+Original Snakemake 9.27.1 passed Conda, Apptainer and combined deployment controls,
+including installation from its genuine Conda archive. Container bytes and the
+complete provider trees remained unchanged across the controls. The recorded
+host was Ubuntu 24.04 under WSL, glibc 2.39, effective UID 0; these checks do not
+qualify nonroot hosts, other operating systems or a paper's environment.
+The provider audit inspected 282 active ELF objects and recorded 58 external
+library paths. Package-cache payloads and the retained Debian source tree remain
+sealed as data. Original channel-priority diagnostics, earlier failed controls
+and partial installations remain retained. Different Conda query scopes are
+recorded separately; they do not justify removing the upstream warning.
+
 Source-control qualification scripts still use the recorded development control
 paths. The separate setup utility carries its own pinned synthetic fixtures.
 Do not edit an old receipt or refresh its saved hashes to make changed code pass.
