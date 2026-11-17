@@ -68,6 +68,7 @@ def main():
         helpers=ROOT/'src/main/resources/org/jlinalg/omics/snakemake-original-v1';helper_pins={p.relative_to(helpers).as_posix():sha(p) for p in helpers.rglob('*.py')}
         for case in controls['cases']:
             receipt=json.loads((a.driver_controls/case['case']/'DRIVER.json').read_bytes());assert receipt['helpers_before']==receipt['helpers_after']==helper_pins
+            assert receipt['schema_version']==2 and receipt['policy_status']=='PASS_EFFECTIVE_ORIGINAL_PARSER_POLICY' and receipt['upstream_api_called']
         write(out/'DRIVER-CONTROLS.json',dict(record_path=str(a.driver_controls.resolve()),record_sha256=sha(a.driver_controls/'COMPLETED.json'),project_helpers=helper_pins,project_java_adapter_qualified=False))
         env=os.environ.copy()
         for key in ['PYTHONHOME','PYTHONPATH','PYTHONSTARTUP','LD_PRELOAD','LD_AUDIT','LD_LIBRARY_PATH']:env.pop(key,None)

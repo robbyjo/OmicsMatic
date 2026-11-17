@@ -27,7 +27,8 @@ final class SnakemakeOriginalEvents {
     }
     private SnakemakeOriginalEvents() { }
     static Result audit(Path directory,Map<?,?> receipt,int maxRows,int maxLineBytes,long maxBytes,boolean requireJobs,Runnable check) throws IOException {
-        if(!"ORIGINAL_CLI_RETURNED_NOT_ANALYSIS_ADMISSION".equals(receipt.get("status"))||integer(receipt.get("schema_version"),1,1)!=1||integer(receipt.get("exit_code"),0,0)!=0||!list(receipt.get("collector_errors")).isEmpty()||receipt.get("failure")!=null)throw new IOException("Original CLI did not finish successfully with complete event capture");
+        if(!"ORIGINAL_CLI_RETURNED_NOT_ANALYSIS_ADMISSION".equals(receipt.get("status"))||integer(receipt.get("schema_version"),2,2)!=2||integer(receipt.get("exit_code"),0,0)!=0||!list(receipt.get("collector_errors")).isEmpty()||receipt.get("failure")!=null)throw new IOException("Original CLI did not finish successfully with complete event capture");
+        SnakemakeOriginalPolicy.audit(receipt);
         long pid=integer(receipt.get("driver_pid"),1,Long.MAX_VALUE);String run=text(receipt.get("run_id"));
         if(!run.matches("[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}")||!stringMap(receipt.get("helpers_before")).equals(SnakemakeOriginalRuntime.helperPins())||!stringMap(receipt.get("helpers_after")).equals(SnakemakeOriginalRuntime.helperPins()))throw new IOException("Driver run/helper identities differ");
         Map<?,?> declared=object(receipt.get("collector_streams"));var files=new TreeMap<String,Path>();

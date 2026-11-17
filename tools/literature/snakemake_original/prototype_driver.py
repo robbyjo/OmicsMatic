@@ -7,6 +7,9 @@ if not __debug__:raise RuntimeError('Driver qualification assertions must remain
 ROOT=Path(__file__).resolve().parents[3]
 def encoded(value):return (json.dumps(value,indent=2)+'\n').encode()
 def pin(path):return dict(bytes=path.stat().st_size,sha256=hashlib.sha256(path.read_bytes()).hexdigest())
+
+def execution_policy(work,targets,extended=False,keep_incomplete=False,retries=0,latency_wait=5):
+    return dict(schema_version=1,deployment='preinstalled',allow_install=False,expected=dict(snakefile=str(work/'Snakefile'),directory=str(work),targets=targets,configfile=[],executor='local',cores=2,scheduler='greedy',retries=retries,latency_wait=latency_wait,forceall=True,keep_incomplete=keep_incomplete,notemp=False,benchmark_extended=extended,logger=['omicsmatic']))
 def run(command,root,env):
     start=time.monotonic()
     with (root/'outer.stdout').open('xb') as so,(root/'outer.stderr').open('xb') as se:
@@ -28,10 +31,10 @@ def main():
             helpers=root/'helpers';shutil.copytree(ROOT/'src/main/resources/org/jlinalg/omics/snakemake-original-v1',helpers);events=root/'events';events.mkdir()
             argv=['--snakefile',str(work/'Snakefile'),'--directory',str(work),'--executor','local','--cores','2','--scheduler','greedy','--forceall']
             if case=='extended':argv+=['--benchmark-extended']
-            argv+=['--','results/summary.tsv'];request=dict(schema_version=1,run_id=str(uuid.uuid4()),events_directory=str(events),receipt=str(root/'DRIVER.json'),argv=argv);(root/'COMMAND.json').write_bytes(encoded(request))
+            argv+=['--','results/summary.tsv'];request=dict(schema_version=2,run_id=str(uuid.uuid4()),events_directory=str(events),receipt=str(root/'DRIVER.json'),argv=argv,policy=execution_policy(work,['results/summary.tsv'],extended=case=='extended'));(root/'COMMAND.json').write_bytes(encoded(request))
             env=dict(os.environ,PATH=str(Path(sys.executable).parent)+':/usr/bin:/bin',PYTHONDONTWRITEBYTECODE='1',PYTHONNOUSERSITE='1',LC_ALL='C.UTF-8',LANG='C.UTF-8',TZ='UTC',XDG_CACHE_HOME=str(root/'cache'))
             command=['/usr/bin/prlimit','--as=8589934592','--cpu=120','--fsize=67108864','--nofile=4096','--',sys.executable,'-I','-B',str(helpers/'driver.py'),'--command',str(root/'COMMAND.json')]
-            result=run(command,root,env);receipt=json.loads((root/'DRIVER.json').read_bytes());assert receipt['exit_code']==result['exit_code'] and not receipt['collector_errors']
+            result=run(command,root,env);receipt=json.loads((root/'DRIVER.json').read_bytes());assert receipt['exit_code']==result['exit_code'] and not receipt['collector_errors'];assert receipt['policy_status']=='PASS_EFFECTIVE_ORIGINAL_PARSER_POLICY' and receipt['upstream_api_called']
             records=[]
             for path in events.glob('*.jsonl'):
                 lines=path.read_text().splitlines();data=[json.loads(line) for line in lines];assert data and data[0]['record_type']=='collector_opened' and data[-1]['record_type']=='collector_closed' and not data[-1]['collector_failed']

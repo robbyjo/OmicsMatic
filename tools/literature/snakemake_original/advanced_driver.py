@@ -5,7 +5,7 @@ from pathlib import Path
 import argparse,json,os,shutil,sys,traceback,uuid
 if not __debug__:raise RuntimeError('Advanced source-control assertions must remain enabled')
 HERE=Path(__file__).resolve().parent;sys.path.insert(0,str(HERE))
-from prototype_driver import ROOT,encoded,pin,run
+from prototype_driver import ROOT,encoded,pin,run,execution_policy
 
 CASES={
 'run':('''from pathlib import Path
@@ -66,7 +66,7 @@ def main():
             if case=='script':(work/'pipeline.py').write_text('from pathlib import Path\nPath(snakemake.output[0]).write_text("SCRIPT\\n")\n')
             helpers=root/'helpers';shutil.copytree(ROOT/'src/main/resources/org/jlinalg/omics/snakemake-original-v1',helpers);events=root/'events';events.mkdir()
             argv=['--snakefile',str(work/'Snakefile'),'--directory',str(work),'--executor','local','--cores','2','--scheduler','greedy','--forceall','--keep-incomplete','--retries','1' if case=='retry' else '0','--','result.txt']
-            request=dict(schema_version=1,run_id=str(uuid.uuid4()),events_directory=str(events),receipt=str(root/'DRIVER.json'),argv=argv);(root/'COMMAND.json').write_bytes(encoded(request))
+            request=dict(schema_version=2,run_id=str(uuid.uuid4()),events_directory=str(events),receipt=str(root/'DRIVER.json'),argv=argv,policy=execution_policy(work,['result.txt'],keep_incomplete=True,retries=1 if case=='retry' else 0));(root/'COMMAND.json').write_bytes(encoded(request))
             env=dict(os.environ,PATH=str(Path(sys.executable).parent)+':/usr/bin:/bin',PYTHONDONTWRITEBYTECODE='1',PYTHONNOUSERSITE='1',LC_ALL='C.UTF-8',LANG='C.UTF-8',TZ='UTC',XDG_CACHE_HOME=str(root/'cache'))
             result=run(['/usr/bin/prlimit','--as=8589934592','--cpu=120','--fsize=67108864','--nofile=4096','--',sys.executable,'-I','-B',str(helpers/'driver.py'),'--command',str(root/'COMMAND.json')],root,env)
             assert result['exit_code']==0,(case,'Inspect retained original diagnostics')

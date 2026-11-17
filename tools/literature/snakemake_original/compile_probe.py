@@ -9,7 +9,7 @@ def pin(path):return dict(bytes=path.stat().st_size,sha256=hashlib.sha256(path.r
 def write(path,value):
     with path.open('x',encoding='utf-8',newline='\n') as f:json.dump(value,f,indent=2);f.write('\n')
 def main():
-    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--baseline-jar',type=Path,required=True);p.add_argument('--out',type=Path,required=True);a=p.parse_args()
+    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--baseline-jar',type=Path,required=True);p.add_argument('--out',type=Path,required=True);p.add_argument('--packaged',action='store_true',help='Compile only the probe and exercise adapter classes from the byte-pinned JAR');a=p.parse_args()
     out=a.out.resolve();assert out.is_relative_to(ROOT/'build');out.mkdir(parents=True,exist_ok=False)
     assert sys.platform=='linux','Use permitted Linux Java for original-engine qualification'
     jar=a.baseline_jar.resolve();assert jar.is_file();jar_pin=pin(jar)
@@ -17,7 +17,8 @@ def main():
     with zipfile.ZipFile(jar) as z:
         for path in resources.rglob('*'):
             if path.is_file():assert z.read(path.relative_to(ROOT/'src/main/resources').as_posix())==path.read_bytes(),path
-    selected=sorted((ROOT/'src/main/java/org/jlinalg/cli').glob('SnakemakeOriginal*.java'))+[ROOT/'tools/literature/snakemake_original/SnakemakeOriginalProbe.java'];sources={};copied=[]
+    shutil.copyfile(__file__,out/'as-run-compiler.py')
+    selected=([] if a.packaged else sorted((ROOT/'src/main/java/org/jlinalg/cli').glob('SnakemakeOriginal*.java')))+[ROOT/'tools/literature/snakemake_original/SnakemakeOriginalProbe.java'];sources={};copied=[]
     for path in selected:
         name=path.relative_to(ROOT).as_posix();target=out/'as-run'/name;target.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(path,target);assert pin(path)==pin(target);sources[name]=pin(path);copied.append(str(target))
     classes=out/'classes';classes.mkdir();command=['/usr/bin/javac','--release','17','-Xlint:all','-Werror','-cp',str(jar),'-d',str(classes),*copied];start=time.monotonic()
@@ -25,6 +26,6 @@ def main():
     write(out/'PROCESS.json',dict(command=command,exit_code=result.returncode,seconds=round(time.monotonic()-start,3)));assert result.returncode==0,'Inspect retained compiler diagnostics'
     assert all(pin(ROOT/name)==expected for name,expected in sources.items()) and pin(jar)==jar_pin
     class_files={p.relative_to(classes).as_posix():pin(p) for p in sorted(classes.rglob('*.class'))}
-    write(out/'COMPILED.json',dict(status='PASS_FROZEN_CURRENT_ADAPTER_COMPILES_NOT_WORKFLOW_QUALIFICATION',sources=sources,classes=class_files,baseline_jar=dict(path=str(jar),**jar_pin),classpath=str(classes)+':'+str(jar),probe='org.jlinalg.cli.SnakemakeOriginalProbe',user_analysis_admitted=False))
+    write(out/'COMPILED.json',dict(status='PASS_FROZEN_CURRENT_ADAPTER_COMPILES_NOT_WORKFLOW_QUALIFICATION',adapter_class_source='byte-pinned-jar' if a.packaged else 'fresh-frozen-source-compilation',sources=sources,classes=class_files,baseline_jar=dict(path=str(jar),**jar_pin),classpath=str(classes)+':'+str(jar),probe='org.jlinalg.cli.SnakemakeOriginalProbe',user_analysis_admitted=False))
     print('PASS_FROZEN_CURRENT_ADAPTER_COMPILES_NOT_WORKFLOW_QUALIFICATION',flush=True)
 if __name__=='__main__':main()

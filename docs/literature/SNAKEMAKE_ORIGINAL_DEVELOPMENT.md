@@ -110,21 +110,41 @@ Recorded benchmark values remain timing measurements, not deterministic rerun
 references. The checkpoint control retains actual source ordering and checks
 only its declared tag multiset.
 
-The current Snakemake Java regression suite passed 52 tests with no failures,
-errors or skips. The publication check passed 303 targeted Java regression tests,
-complete source compilation, executable-JAR assembly and the website check.
+The current Snakemake Java regression suite passed 34 tests with no failures,
+errors or skips, followed by complete source compilation and private executable-JAR
+assembly. The earlier main-branch publication passed 303 targeted Java regression
+tests and the website check; 33 of those tests were in the Snakemake test classes.
+The previous checkpoint's Snakemake-only count of 52 was incorrect. Raw JUnit XML
+supplies these counts; the current build wrapper's first incorrect expectation
+and its independent assessment remain retained.
 Five Linux setup-policy/export tests passed, including disabled installation,
 existing-path preservation and case-distinct evidence retention. These checks
 do not add catalog credit or complete the 250-paper objective.
 
-The current bundle prototype passed nine successful captured-source cases and
-the expected failed-rule case. Eleven bundles (those nine executions and two
-fresh rerun generations of the configuration/binding case) passed portable
-verification on Windows without the producer Linux paths or engine. A changed
-warning file was rejected. These checks cover the named synthetic controls; they
-do not establish comprehensive corruption resistance or qualify every workflow
-for rerun. Exact class/source pins intentionally require the frozen matching
-reader; old evidence is never rehashed to make a newer reader accept it.
+The current bundle prototype passed twelve captured-source controls: ten
+successful executions, the expected failed rule and a profile-policy skip. Two
+fresh rerun generations each passed for the resource-profile and benchmark
+fixtures, including rerun-of-rerun comparisons. During these controls the original
+caller paths were absent or temporarily relocated; relocated controlled inputs
+were then restored byte-for-byte. Exact class/source pins intentionally require
+the frozen matching reader; old evidence is never rehashed to make a newer reader
+accept it. These checks cover the named synthetic controls and do not qualify
+every workflow for rerun or prove biological accuracy.
+
+The independent corruption qualifier reconstructs the complete owned metadata,
+blob closure, object-file references, physical manifest and completion hash of
+new damaged copies. A valid independently resealed copy passes; fourteen
+contradictory/corrupt cases are rejected, including changed parameters, effective
+deployment or DAG policy, incomplete job events, live-process claims, changed
+outputs, removed warnings, changed/extra helpers and invalid file/directory
+censuses or completion claims. This checks consistency, not authorship or a
+cryptographic signature.
+
+**WARNING: the earlier development reader accepted an internally resealed helper
+edit.** The failed qualification and its frozen reader remain retained. The
+current reader explicitly compares the captured helper census and bytes with
+its exact bundled driver/logger edition. Use newly qualified code and new
+bundles; do not refresh an old bundle's code hashes to make it pass a new reader.
 
 The process controls also exposed a procfs exit race: an already opened process
 record can fail while the process terminates. The supervisor now ignores the
@@ -133,13 +153,31 @@ orphan, timeout and JVM-shutdown controls passed after this change; the original
 failed control remains retained. Explicit allowed locale and timezone values now
 override defaults and are recorded in the launch environment.
 
-Before offering original-engine analysis, finish the effective workflow-profile
-policy audit, comprehensive bundle corruption controls, broader genuine rerun
-comparison, managed workflow software deployment, the public CLI and catalog
-admission for the six reviewed source roles. **Do not use captured profiles to
-request unqualified deployment or alternate execution modes.** Their effective
-settings still need an explicit pre-execution policy guard; the experimental
-recipe alone does not qualify such a profile.
+The driver now checks effective settings after the unchanged original parser
+applies its captured workflow profile and before calling the original API. The
+version-2 command and driver records bind the explicit recipe policy, effective
+controlled settings and the parser's option provenance. Java independently
+checks the same contract when reading complete bundles. Nineteen real parser
+controls passed: ordinary execution, resource overrides and explicit CLI
+precedence, plus sixteen rejected deployment, report, destructive, internal-mode
+or partial-DAG requests. Rejected controls launched no original API, loaded no
+Snakefile and produced no analysis output. The Java workflow retains a prominent
+SKIP3 with the conflicting setting and recovery steps; cleanup or integrity
+failures take precedence over a policy skip.
+
+Changing the driver required new source controls and adoption records. The fresh
+adoption used the existing installed engine without installing software. Its
+complete installed-software manifest is byte-identical to the prior manifest;
+the previous helper receipts were preserved. The private packaged JAR separately
+passed a resource-profile execution and policy-skip control using adapter classes
+loaded directly from that JAR.
+
+Before offering original-engine analysis, finish managed workflow software
+deployment, broader workflow qualification, the public CLI and catalog admission
+for the six reviewed source roles. **Do not request managed installation through
+a captured profile while the recipe selects preinstalled software.** Such a
+conflict is skipped before the original API is called. Remove the conflicting
+profile setting or select a separately qualified deployment, then retry NEW paths.
 The development execution path currently accepts an explicitly selected
 preinstalled deployment. It warns that upstream Conda/Apptainer rule directives
 are inactive in that mode and that arbitrary dependencies loaded by trusted

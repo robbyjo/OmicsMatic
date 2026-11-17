@@ -40,6 +40,14 @@ class SnakemakeOriginalDevelopmentTest {
         var value=request();value.put("environment",Map.of("TZ","America/New_York","LANG","C","LC_ALL","C"));var parsed=SnakemakeOriginalRecipe.read(save(value));var environment=SnakemakeOriginalEvidence.environment("/run","/runtime",parsed);
         assertEquals("America/New_York",environment.get("TZ"));assertEquals("C",environment.get("LANG"));assertEquals("C",environment.get("LC_ALL"));assertEquals("/run/workspace/bin:/runtime/bin:/usr/bin:/bin",environment.get("PATH"));
     }
+    @Test void independentPolicyAuditRejectsProfileDeploymentAndPartialDagEvenWithSuccessClaim()throws Exception {
+        var parsed=SnakemakeOriginalRecipe.read(save(request()));var policy=SnakemakeOriginalPolicy.request("/captured-run","/captured-run/workflow",parsed);var effective=SnakemakeOriginalPolicy.disabled();
+        for(var entry:SnakemakeOriginalFiles.object(policy.get("expected")).entrySet())effective.put((String)entry.getKey(),entry.getValue());
+        var driver=new LinkedHashMap<String,Object>();driver.put("policy",policy);driver.put("effective_policy",effective);driver.put("policy_status","PASS_EFFECTIVE_ORIGINAL_PARSER_POLICY");driver.put("upstream_api_called",true);driver.put("option_sources",Map.of("command_line",Map.of("",Map.of("destination","targets","value",List.of("all")))));
+        assertDoesNotThrow(()->SnakemakeOriginalPolicy.audit(driver));
+        for(var change:List.of(Map.entry("software_deployment_method",List.of("CONDA")),Map.entry("until",List.of("make")),Map.entry("mode","SUBPROCESS"),Map.entry("use_conda",true),Map.entry("summary",true))){var altered=new java.util.TreeMap<>(effective);altered.put(change.getKey(),change.getValue());driver.put("effective_policy",altered);assertThrows(IOException.class,()->SnakemakeOriginalPolicy.audit(driver),change.getKey());}
+        driver.put("effective_policy",effective);driver.put("upstream_api_called",false);assertThrows(IOException.class,()->SnakemakeOriginalPolicy.audit(driver));
+    }
     @Test void protectedEngineEnvironmentAndReservedResourceCannotOverrideBindings()throws Exception {
         for(String key:List.of("PATH","PYTHONPATH","SNAKEMAKE_PROFILE","LD_PRELOAD","OMICS_SNAKEMAKE_EVENTS")){var value=request();value.put("environment",Map.of(key,"injected"));assertThrows(IOException.class,()->SnakemakeOriginalRecipe.read(save(value)),key);}
         var value=request();value.put("resources",Map.of("published",Map.of("path",temp.toString())));assertThrows(IOException.class,()->SnakemakeOriginalRecipe.read(save(value)));

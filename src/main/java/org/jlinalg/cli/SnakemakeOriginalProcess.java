@@ -32,6 +32,12 @@ final class SnakemakeOriginalProcess {
         private static final long serialVersionUID=1L;
         Unavailable(String message) { super(message); }
     }
+    static final class ExitFailure extends IOException {
+        private static final long serialVersionUID=1L;
+        private final int exitCode;
+        ExitFailure(int exitCode) {super("Original SnakemakeOriginal process failed, exit "+exitCode);this.exitCode=exitCode;}
+        int exitCode(){return exitCode;}
+    }
     @FunctionalInterface interface Check { void verify() throws IOException; }
     record Limits(long wallMillis, long addressSpaceBytes, long cpuSeconds, long fileBytes,
             int openFiles, long workspaceBytes, int fileCount, int processes, int threads,
@@ -106,7 +112,7 @@ final class SnakemakeOriginalProcess {
             }
             guard.observe(); guard.enforce(limits); guard.workspace = Math.max(guard.workspace, workspace(observedRoot, limits, allowedRoot));
             record.put("exit_code", child.exitValue());
-            if (child.exitValue() != 0) throw new IOException("Original SnakemakeOriginal process failed, exit " + child.exitValue());
+            if (child.exitValue() != 0) throw new ExitFailure(child.exitValue());
         } catch (InterruptedException interrupted) {
             Thread.currentThread().interrupt(); failure = new IOException("SnakemakeOriginal process interrupted; no result is admitted", interrupted);
         } catch (IOException invalid) { failure = invalid;

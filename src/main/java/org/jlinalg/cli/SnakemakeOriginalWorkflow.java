@@ -53,18 +53,27 @@ final class SnakemakeOriginalWorkflow {
             Object effective=SnakemakeOriginalParameters.bind(request.parameters(),bindings,published);Files.writeString(root.resolve("parameters.json"),SnakemakeOriginalJson.parameters(effective)+"\n",StandardCharsets.UTF_8,StandardOpenOption.CREATE_NEW);
             Path helpers=Files.createDirectory(root.resolve("helpers"));for(String name:SnakemakeOriginalRuntime.HELPERS){Path target=helpers.resolve(name);Files.createDirectories(target.getParent());Files.write(target,SnakemakeOriginalRuntime.resource(name),StandardOpenOption.CREATE_NEW);}
             Files.createDirectory(root.resolve("events"));var argv=arguments(root,working,request);String run=java.util.UUID.randomUUID().toString();
-            writeJson(root.resolve("COMMAND.json"),Map.of("schema_version",1,"run_id",run,"events_directory",root.resolve("events").toString(),"receipt",root.resolve("DRIVER.json").toString(),"argv",argv));
+            writeJson(root.resolve("COMMAND.json"),Map.of("schema_version",2,"run_id",run,"events_directory",root.resolve("events").toString(),"receipt",root.resolve("DRIVER.json").toString(),"argv",argv,"policy",SnakemakeOriginalPolicy.request(root.toString(),working.toString(),request)));
             var command=List.of(runtime.python().toString(),"-I","-B",helpers.resolve("driver.py").toString(),"--command",root.resolve("COMMAND.json").toString());
             var environment=new TreeMap<>(SnakemakeOriginalEvidence.environment(root.toString(),runtime.environment().toString(),request));
             writeJson(root.resolve("invocation.json"),Map.of("command",command,"environment",environment,"working_directory",working.toString(),"bindings",bindings,"producer_root",root.toString(),"forced_complete_target_dag",true,"selected_preinstalled_deployment",true));
             SnakemakeOriginalCapture.verifyOriginals(captured,request.capture(),check);writeJson(root.resolve("working-before.json"),SnakemakeOriginalCapture.working(root,workspace,request.capture(),check));writeJson(root.resolve("code.json"),code());
             var selected=request;
-            SnakemakeOriginalProcess.executeSession(command,environment,root.resolve("process"),working,root,request.process(),()->{
+            try{SnakemakeOriginalProcess.executeSession(command,environment,root.resolve("process"),working,root,request.process(),()->{
                 if(!tools(selected,check).equals(tools))throw new IOException("Declared workflow executable changed");
                 for(Tool tool:tools)if(!utf8(bytes(bin.resolve(tool.name()),65536)).equals(wrapper(tool))||!Files.isExecutable(bin.resolve(tool.name())))throw new IOException("Tool wrapper changed");
                 for(String name:SnakemakeOriginalRuntime.HELPERS)if(!pin(helpers.resolve(name),1_048_576,check).sha256().equals(SnakemakeOriginalRuntime.helperPins().get(name)))throw new IOException("Captured original-engine helper changed");
-            },check);
-            var events=SnakemakeOriginalEvents.audit(root.resolve("events"),object(json(root.resolve("DRIVER.json"),request.metadataBytes())),request.eventRows(),request.metadataBytes(),request.logBytes(),request.execution().requireJobs(),check);writeJson(root.resolve("completion-events.json"),eventsAsJson(events));
+            },check);}catch(SnakemakeOriginalProcess.ExitFailure exit) {
+                if(exit.exitCode()!=3||exit.getSuppressed().length!=0)throw exit;
+                var rejected=object(json(root.resolve("DRIVER.json"),request.metadataBytes()));var ledger=object(json(root.resolve("process/process.json"),request.metadataBytes()));
+                if(!"SKIP3_EFFECTIVE_ORIGINAL_PARSER_POLICY".equals(rejected.get("policy_status"))||!Boolean.FALSE.equals(rejected.get("upstream_api_called"))||integer(rejected.get("schema_version"),2,2)!=2||integer(rejected.get("exit_code"),3,3)!=3||!run.equals(rejected.get("run_id"))||!list(rejected.get("collector_errors")).isEmpty()||!list(ledger.get("owned_live_after_cleanup")).isEmpty())throw exit;
+                SnakemakeOriginalRecorded.equal(SnakemakeOriginalPolicy.request(root.toString(),working.toString(),request),rejected.get("policy"),"rejected source/recipe policy");
+                SnakemakeOriginalRecorded.equal(SnakemakeOriginalRuntime.helperPins(),rejected.get("helpers_before"),"rejected driver helpers before");SnakemakeOriginalRecorded.equal(SnakemakeOriginalRuntime.helperPins(),rejected.get("helpers_after"),"rejected driver helpers after");
+                try(var streams=Files.list(root.resolve("events"))){if(streams.findAny().isPresent())throw exit;}
+                var skip=new SnakemakeOriginalRuntime.Unavailable("Effective workflow profile conflicts with the captured recipe: "+rejected.get("failure"));skip.initCause(exit);throw skip;
+            }
+            var driver=object(json(root.resolve("DRIVER.json"),request.metadataBytes()));
+            var events=SnakemakeOriginalEvents.audit(root.resolve("events"),driver,request.eventRows(),request.metadataBytes(),request.logBytes(),request.execution().requireJobs(),check);writeJson(root.resolve("completion-events.json"),eventsAsJson(events));
             writeJson(root.resolve("DIAGNOSTICS.json"),events.diagnostics());
             Files.writeString(root.resolve("WARNINGS.md"),warningText(events),StandardCharsets.UTF_8,StandardOpenOption.TRUNCATE_EXISTING);
             List<Published> outputs=outputs(root,bindings,published,request,check);writeJson(root.resolve("outputs.json"),outputs);
@@ -75,7 +84,7 @@ final class SnakemakeOriginalWorkflow {
             if(request!=null&&Files.isDirectory(root.resolve("workspace"))&&Files.isDirectory(root.resolve("objects")))try{writeJson(root.resolve("working-after.json"),SnakemakeOriginalCapture.working(root,root.resolve("workspace"),request.capture(),check));}catch(Exception failure){if(failed==null)failed=failure;else failed.addSuppressed(failure);}
             if(runtime!=null)try{runtime.verify(check);}catch(Exception failure){if(failed==null)failed=failure;else failed.addSuppressed(failure);}
             if(failed!=null) {
-                int exit=failed instanceof SnakemakeOriginalRuntime.Unavailable||failed instanceof SnakemakeOriginalProcess.Unavailable?3:2;
+                int exit=(failed instanceof SnakemakeOriginalRuntime.Unavailable||failed instanceof SnakemakeOriginalProcess.Unavailable)&&failed.getSuppressed().length==0?3:2;
                 try{writeJson(root.resolve("FAILURE.json"),Map.of("status",exit==3?"SKIP3-analysis-skipped":"FAIL2-no-result-admitted","exit_code",exit,"error",failed.toString(),"suppressed",java.util.Arrays.stream(failed.getSuppressed()).map(Throwable::toString).toList(),"required_action",ACTION));Files.writeString(root.resolve("FAILURE_WARNINGS.md"),"# Snakemake "+(exit==3?"SKIP3 analysis skipped":"FAIL2 no result admitted")+"\n\n"+failed+"\n\n"+ACTION+"\n",StandardCharsets.UTF_8,StandardOpenOption.CREATE_NEW);}
                 catch(IOException diagnostic){failed.addSuppressed(diagnostic);System.err.println("SNAKEMAKE DIAGNOSTIC WRITE FAILED: "+diagnostic+". "+ACTION);}
             }
@@ -121,7 +130,7 @@ final class SnakemakeOriginalWorkflow {
     private static void source(Path root,Path path)throws IOException {if(!Files.isRegularFile(path)||!path.toRealPath().startsWith(root.resolve("workspace/resources")))throw new IOException("Snakefile/config must be a complete captured regular file: "+path);}
     static Map<String,Pin> code()throws IOException {
         var result=new TreeMap<String,Pin>();
-        for(Class<?> outer:List.of(SnakemakeOriginalWorkflow.class,SnakemakeOriginalCapture.class,SnakemakeOriginalEvents.class,SnakemakeOriginalFiles.class,SnakemakeOriginalJson.class,SnakemakeOriginalOutputs.class,SnakemakeOriginalParameters.class,SnakemakeOriginalProcess.class,SnakemakeOriginalRecipe.class,SnakemakeOriginalRuntime.class,SnakemakeOriginalBundle.class,SnakemakeOriginalRecorded.class,SnakemakeOriginalEvidence.class,SnakemakeOriginalReplay.class,org.jlinalg.workflow.SnakemakeBenchmarks.class))for(Class<?> type:outer.getNestMembers()){String name=type.getName().replace('.','/')+".class";try(var input=type.getResourceAsStream('/'+name)){if(input==null)throw new IOException("Executing adapter class unavailable: "+name);byte[] raw=input.readAllBytes();result.put(name,new Pin(raw.length,sha(raw)));}}
+        for(Class<?> outer:List.of(SnakemakeOriginalWorkflow.class,SnakemakeOriginalCapture.class,SnakemakeOriginalEvents.class,SnakemakeOriginalFiles.class,SnakemakeOriginalJson.class,SnakemakeOriginalOutputs.class,SnakemakeOriginalParameters.class,SnakemakeOriginalProcess.class,SnakemakeOriginalRecipe.class,SnakemakeOriginalRuntime.class,SnakemakeOriginalBundle.class,SnakemakeOriginalRecorded.class,SnakemakeOriginalEvidence.class,SnakemakeOriginalReplay.class,SnakemakeOriginalPolicy.class,org.jlinalg.workflow.SnakemakeBenchmarks.class))for(Class<?> type:outer.getNestMembers()){String name=type.getName().replace('.','/')+".class";try(var input=type.getResourceAsStream('/'+name)){if(input==null)throw new IOException("Executing adapter class unavailable: "+name);byte[] raw=input.readAllBytes();result.put(name,new Pin(raw.length,sha(raw)));}}
         for(String name:SnakemakeOriginalRuntime.HELPERS){byte[] raw=SnakemakeOriginalRuntime.resource(name);result.put("org/jlinalg/omics/snakemake-original-v1/"+name,new Pin(raw.length,sha(raw)));}return Map.copyOf(result);
     }
 }
