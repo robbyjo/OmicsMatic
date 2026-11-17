@@ -14,6 +14,19 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
 class LdakWorkflowCliTest {
+    @Test void implementationPinsAnonymousHelpersAndNormalArithmeticDependencies() throws Exception {
+        Properties actual = LdakWorkflowCli.implementation();
+        for (String name : List.of("org.jlinalg.cli.LdakWorkflowFiles$1", "org.jlinalg.cli.LdakWorkflowProcess$1",
+                "org.jlinalg.compute.BackendContext$1", "jdistlib.accelerator.CpuComputeBackend$1",
+                "jdistlib.accelerator.CpuComputeBackend$2", "jdistlib.accelerator.CpuComputeBackend$3",
+                "jdistlib.math.MathFunctions", "jdistlib.math.Deviance", "jdistlib.accelerator.ComputeBackend")) {
+            try (var input = LdakWorkflowCli.class.getResourceAsStream("/" + name.replace('.', '/') + ".class")) {
+                assertNotNull(input, name);
+                String digest = java.util.HexFormat.of().formatHex(java.security.MessageDigest.getInstance("SHA-256").digest(input.readAllBytes()));
+                assertEquals(digest, actual.getProperty(name), name);
+            }
+        }
+    }
     @TempDir Path root;
     private Properties sumher() throws IOException {
         Properties p = new Properties();

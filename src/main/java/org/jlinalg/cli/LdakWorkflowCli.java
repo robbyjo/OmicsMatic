@@ -255,23 +255,68 @@ public final class LdakWorkflowCli {
         Properties expected = new Properties(); reportFields(expected, report); Properties actual = load(root.resolve("COMPLETED.properties"));
         for (String key : expected.stringPropertyNames()) if (!expected.getProperty(key).equals(actual.getProperty(key))) throw new IOException("Completion/native result count differs: " + key);
     }
-    private static Properties implementation() throws IOException {
-        var types = new TreeSet<Class<?>>((a, b) -> a.getName().compareTo(b.getName()));
+    static Properties implementation() throws IOException {
+        var types = new TreeMap<String, Class<?>>();
         for (Class<?> type : List.of(LdakWorkflowCli.class, LdakWorkflowFiles.class, LdakWorkflowRequest.class, LdakWorkflowProcess.class,
                 LdakWorkflowInputs.class, LdakWorkflowResults.class, LdakWorkflowDiagnostics.class, LdakKinship.class, LdakBedDataset.class,
-                BackendContext.class, BackendPolicy.class, CpuComputeBackend.class, MatrixTranspose.class, Normal.class)) collect(type, types);
+                BackendContext.class, BackendPolicy.class, CpuComputeBackend.class, MatrixTranspose.class, Normal.class,
+                jdistlib.math.MathFunctions.class,
+                jdistlib.accelerator.ComputeBackend.class, jdistlib.accelerator.ComputeApi.class,
+                jdistlib.accelerator.ComputeCapabilities.class, jdistlib.accelerator.ComputeDeviceInfo.class)) collect(type, types);
+        try { collect(Class.forName("jdistlib.math.Deviance", false, Normal.class.getClassLoader()), types); }
+        catch (ClassNotFoundException missing) { throw new IOException("Missing Normal arithmetic dependency jdistlib.math.Deviance", missing); }
         Properties result = new Properties();
-        for (Class<?> type : types) {
-            try (var stream = type.getResourceAsStream("/" + type.getName().replace('.', '/') + ".class")) {
-                if (stream == null) throw new IOException("Missing method bytecode " + type.getName());
+        for (var entry : types.entrySet()) {
+            try (var stream = entry.getValue().getResourceAsStream("/" + entry.getKey().replace('.', '/') + ".class")) {
+                if (stream == null) throw new IOException("Missing method bytecode " + entry.getKey());
                 MessageDigest digest;
                 try { digest = MessageDigest.getInstance("SHA-256"); }
                 catch (NoSuchAlgorithmException impossible) { throw new IllegalStateException(impossible); }
                 byte[] buffer = new byte[16384]; for (int n; (n = stream.read(buffer)) != -1;) digest.update(buffer, 0, n);
-                result.setProperty(type.getName(), HexFormat.of().formatHex(digest.digest()));
+                result.setProperty(entry.getKey(), HexFormat.of().formatHex(digest.digest()));
             }
         }
         return result;
     }
-    private static void collect(Class<?> type, Set<Class<?>> into) { if (into.add(type)) for (Class<?> nested : type.getDeclaredClasses()) collect(nested, into); }
+    private static void collect(Class<?> type, Map<String, Class<?>> into) throws IOException {
+        // Include anonymous/compiler-generated classes, including Java 8 dependency
+        // classes without NestMembers metadata. Restrict enumeration to the actual
+        // defining code source and this top-level class's exact binary-name family.
+        String stem = type.getName().replace('.', '/');
+        var domain = type.getProtectionDomain();
+        if (domain == null || domain.getCodeSource() == null) throw new IOException("Missing defining code source for " + type.getName());
+        Path source;
+        try {
+            var location = domain.getCodeSource().getLocation();
+            if (!location.getProtocol().equals("file")) throw new IOException("Require a local defining code source for " + type.getName());
+            source = Path.of(location.toURI());
+        } catch (java.net.URISyntaxException malformed) { throw new IOException("Invalid method code-source URI", malformed); }
+        if (Files.isDirectory(source)) {
+            Path outer = source.resolve(stem + ".class");
+            String base = outer.getFileName().toString().replaceFirst("\\.class$", "");
+            try (var files = Files.list(outer.getParent())) {
+                for (Path file : files.toList()) {
+                    String name = file.getFileName().toString();
+                    if (name.equals(base + ".class") || name.startsWith(base + "$") && name.endsWith(".class")) {
+                        if (!Files.isRegularFile(file) || Files.isSymbolicLink(file)) throw new IOException("Invalid method class file " + file);
+                        String binary = source.relativize(file).toString().replace('\\', '/');
+                        into.put(binary.substring(0, binary.length() - 6).replace('/', '.'), type);
+                    }
+                }
+            }
+        } else {
+            try (var jar = new java.util.jar.JarFile(source.toFile())) {
+                if (jar.isMultiRelease()) throw new IOException("This profile requires non-multi-release defining class sources");
+                for (var entries = jar.entries(); entries.hasMoreElements();) {
+                    var entry = entries.nextElement(); String name = entry.getName();
+                    if (name.equals(stem + ".class") || name.startsWith(stem + "$") && name.endsWith(".class")) {
+                        if (entry.isDirectory()) throw new IOException("Invalid method class entry " + name);
+                        String binary = name.substring(0, name.length() - 6).replace('/', '.');
+                        if (into.putIfAbsent(binary, type) != null) throw new IOException("Duplicate method class " + binary);
+                    }
+                }
+            }
+        }
+        if (!into.containsKey(type.getName())) throw new IOException("Missing defining method class " + type.getName());
+    }
 }

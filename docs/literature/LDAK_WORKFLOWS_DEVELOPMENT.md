@@ -1,3 +1,9 @@
+# LDAK workflow development history
+
+Use the [current workflow guide](LDAK_WORKFLOWS.md) for commands, restrictions and validation. The earlier development checkpoint below is retained as history.
+
+<details><summary>Development checkpoint before catalog admission (historical)</summary>
+
 # LDAK 5.2 workflow development checkpoint
 
 **Source-build development feature; catalog qualification is pending.**
@@ -15,6 +21,17 @@ execution requires Linux x86_64, including an explicitly invoked permitted WSL.
 the reported input, convergence, capacity or integrity problem and retry using
 new output. Keep failed attempts. Do not edit a bundle or refresh its hashes
 to obtain a pass. Require exit 0, `COMPLETED.properties`, and successful verification.
+
+**Verifier code-identity correction:** the initial development reader omitted
+anonymous helper classes and some numerical dependencies from its method
+fingerprints. The revised source enumerates complete class families from their
+defining JAR/class directory, including older dependency classes without nest
+metadata, and records 48 classes. Rebuild current source and create fresh runs
+and replays to use this guard. Keep earlier bundles with their matching reader
+as historical evidence; their code-identity receipts do not establish this
+expanded coverage. Do not refresh their fingerprints. The numerical algorithms
+and earlier original-tool outputs have not been rewritten. See the
+[recorded correction and package comparison](ldak-workflow-development/CODE-IDENTITY-CORRECTION.json).
 
 ## Implemented commands
 
@@ -40,6 +57,8 @@ establish producer authenticity or biological validity.
 Prepare the pinned original 5.2 runtime with the separately invoked
 [runtime helper](LDAK_KINSHIP_DEVELOPMENT.md#prepare-the-original-runtime).
 Analysis never installs software or downloads a reference implicitly.
+The [copyable tutorial](../../examples/ldak-workflow/README.md) provides offline
+and explicit-download preparation followed by both complete workflows.
 
 ## Explicit request choices
 
@@ -105,10 +124,21 @@ bounds are not JVM RSS limits. Original stage workspace/time monitoring can
 overshoot between polls; it is not an operating-system quota. Provide sufficient
 heap and disk space for input capture, native audits and complete replay.
 
-Validation is incremental. The latest development build passed 57 Java tests
-with no failures or skips. Earlier matching reader artifacts completed genuine
-original SumHer and genotype/thinning/REML controls, replay and Windows/Linux
-verification, including the complete 66-category BLD-LDAK synthetic control.
-Their saved evidence is not silently reassigned to a newer reader. Final
-paper-role qualification, evidence closure and the guarded catalog update remain
-pending; see the six roles in the [native development guide](LDAK_KINSHIP_DEVELOPMENT.md#six-reviewed-source-roles).
+The revised reader passed 58 Java tests with no failures or skips. Fresh
+qualification completed 92 process controls: 46 original-workflow run, verify,
+replay and refusal checks; 20 tutorial-preparation/workflow checks; and 26
+integrity, scientific-audit, code-identity and prerequisite checks. Offline and
+download examples worked with spaces and non-ASCII paths. Changed anonymous
+helper and arithmetic-dependency JAR copies were refused before result acceptance.
+
+Independent inspection checked exact payload membership, every recorded class
+against the reader JAR, original process records and replay-parent links for all
+23 complete positive bundles. The current reader completed the full 66-category,
+1,168,975-regression-predictor synthetic BLD-LDAK run, genuine replay and copied
+Windows verification. Earlier matching readers and failed attempts remain
+separate; their fingerprints were not refreshed. See the
+[recorded validation scope](ldak-workflow-development/WORKFLOW-VALIDATION.json).
+Evidence closure and the guarded catalog update remain pending; see the six
+roles in the [native development guide](LDAK_KINSHIP_DEVELOPMENT.md#six-reviewed-source-roles).
+
+</details>
