@@ -67,4 +67,22 @@ class SnakemakeOriginalDevelopmentTest {
         var root=new SnakemakeOriginalOutputs.Value("directory",null,"/recorded/root",0755);var file=new SnakemakeOriginalOutputs.Value("file",new SnakemakeOriginalFiles.Pin(1,"0".repeat(64)),"/recorded/root/value",0644);var expected=List.of(new SnakemakeOriginalRecipe.Output("published","","directory",false,"exact"));var limits=new SnakemakeOriginalCapture.Limits(100,1000,1000);
         assertDoesNotThrow(()->SnakemakeOriginalOutputs.validate(new SnakemakeOriginalOutputs.Family(Map.of("",root,"value",file),1,1),expected,limits));assertThrows(IOException.class,()->SnakemakeOriginalOutputs.validate(new SnakemakeOriginalOutputs.Family(Map.of("",root),0,0),expected,limits));
     }
+    private Map<String,Object> managedRequest()throws IOException {
+        var value=request();value.put("schema_version",2);var execution=section(value,"execution");execution.put("deployment","conda");value.put("execution",execution);var managed=new java.util.TreeMap<String,Object>();managed.put("providers",temp.resolve("providers").toString());managed.put("conda_environments",null);managed.put("container_images",null);value.put("managed_software",managed);return value;
+    }
+    @Test void managedRecipePreservesBorrowedPrefixWithoutRelocatingIt()throws Exception {
+        var value=managedRequest();var managed=section(value,"managed_software");managed.put("conda_environments",temp.resolve("borrowed-prefix").toString());value.put("managed_software",managed);var parsed=SnakemakeOriginalRecipe.read(save(value));assertEquals(temp.resolve("borrowed-prefix").toString(),parsed.managed().environments());assertNull(parsed.managed().images());assertFalse(parsed.execution().allowInstall());
+    }
+    @Test void installationCannotMutateBorrowedManagedPrefixes()throws Exception {
+        var value=managedRequest();var execution=section(value,"execution");execution.put("allow_install",true);value.put("execution",execution);assertNotNull(SnakemakeOriginalRecipe.read(save(value)).managed());var managed=section(value,"managed_software");managed.put("container_images",temp.resolve("borrowed-images").toString());value.put("managed_software",managed);assertThrows(IOException.class,()->SnakemakeOriginalRecipe.read(save(value)));
+    }
+    @Test void managedProviderAndCacheEnvironmentCannotBeOverridden()throws Exception {
+        for(String key:List.of("CONDARC","CONDA_PKGS_DIRS","MAMBA_ROOT_PREFIX","APPTAINER_BINDPATH","SINGULARITY_TMPDIR","XDG_CONFIG_HOME")){var value=managedRequest();value.put("environment",Map.of(key,"override"));assertThrows(IOException.class,()->SnakemakeOriginalRecipe.read(save(value)),key);}
+    }
+    @Test void declaredManagedToolCannotReplaceAnAdoptedDeployer()throws Exception {
+        for(String name:List.of("conda","mamba","micromamba","apptainer","singularity")){var value=managedRequest();value.put("required_tools",List.of(Map.of("name",name,"path",temp.resolve("binary").toString())));assertThrows(IOException.class,()->SnakemakeOriginalRecipe.read(save(value)),name);}
+    }
+    @Test void finalManagedBundleRemainsGatedBeforeAnySourceExecution()throws Exception {
+        Path recipe=save(managedRequest()),out=temp.resolve("managed-bundle-gate");assertThrows(SnakemakeOriginalRuntime.Unavailable.class,()->SnakemakeOriginalWorkflow.run(recipe,temp.resolve("missing-runtime"),out,()->{}));assertTrue(Files.readString(out.resolve("FAILURE_WARNINGS.md")).contains("SKIP3"));assertFalse(Files.exists(out.resolve("objects")));assertFalse(Files.exists(out.resolve("process")));assertFalse(Files.exists(out.resolve("EXECUTED.json")));
+    }
 }

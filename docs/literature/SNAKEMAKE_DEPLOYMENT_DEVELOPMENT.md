@@ -1,10 +1,11 @@
 # Snakemake deployment verification and installation policy
 
-**WARNING: developer qualification only. Managed execution through the Java
-workflow adapter, binding propagated policy to its owned-process supervisor,
-complete managed-software capture/replay, the public original-engine CLI and
-catalog admission remain unfinished. Managed Java analysis requests still produce SKIP3.
-These controls add no tool integration credit and reproduce no paper.**
+**WARNING: developer qualification only. Captured managed execution now binds
+inputs, original job events, software payloads and outputs to its process policy.
+Final managed bundle verification/replay, the public original-engine CLI and
+catalog admission remain unfinished. The final managed analysis/bundle entrypoint
+still produces SKIP3 before execution. These controls add no tool integration
+credit and reproduce no paper.**
 
 `SnakemakeOriginalDeployment` independently verifies the adopted Conda 26.9.4
 and Apptainer 1.5.5 providers in Java. It checks the complete adoption metadata
@@ -140,9 +141,10 @@ controller's actual arguments and verifies complete cleanup. It also checks the
 selected engine and provider trees before and after execution and materializes
 the exact bundled project helpers. Twelve fresh original-engine controls passed
 through this Java path, covering the same three deployment modes and four
-permission scenarios. These are process and policy controls; managed workflow
-input/software/output capture, replay and public analysis admission remain
-unfinished. Missing, unclosed or contradictory records prevent acceptance of
+permission scenarios. These are process and policy controls; the separately
+qualified captured-execution path is described below. Final managed bundle
+verification, replay and public analysis admission remain unfinished.
+Missing, unclosed or contradictory records prevent acceptance of
 the process/policy receipt. Current raw
 records are retained in `propagated-policy-2` and the current propagated-reader
 control folders under
@@ -162,7 +164,7 @@ declared directory, overlapping scopes and file/byte limits. A fresh complete
 twelve-case Java-supervised family passed in `supervised-policy-2`.
 
 Software-data observation is not complete software capture or a security
-sandbox. The top-level managed workflow still returns **SKIP3**. Use the supported
+sandbox. The final managed analysis/bundle entrypoint still returns **SKIP3**. Use the supported
 preinstalled development path only within its documented scope; retain all
 warnings and failed attempts, and use new output paths after resolving a named
 failure. Do not interpret `SUPERVISED-POLICY.json` as a completed user analysis or
@@ -224,8 +226,76 @@ permitted software or use separately qualified permitted installation. Never
 refresh an older record's hashes to make changed code pass.
 
 This is a parent parser/process-policy gate. It does not establish compatibility
-with every Snakemake profile option or complete managed workflow input, software
-and output capture, replay, a public original-engine CLI, or the six paper roles.
+with every Snakemake profile option or complete final managed bundle verification,
+replay, a public original-engine CLI, or the six paper roles.
 Schema-1 process-only controls remain readable but do not establish this new
 parser contract. Top-level managed workflow analysis still returns **SKIP3**;
 Snakemake receives no new catalog credit from these development controls.
+
+## Captured managed execution
+
+The development `execute` path now accepts schema-2 recipes with explicit
+`managed_software` fields: `providers`, `conda_environments`, and
+`container_images`. The provider path names a qualified adoption. Each cache
+field is either a canonical existing prefix or `null` for a new owned prefix.
+With installation permitted, both cache declarations must be `null`: existing
+borrowed prefixes remain immutable inputs. With installation forbidden, missing
+software produces **SKIP3** and no accepted output. Installed Conda prefixes are
+used at their actual absolute paths; the adapter never relocates them to reuse
+an environment under a different original-engine hash.
+
+Execution captures the complete declared workflow/data roots and preserves typed
+configuration and explicit output bindings. It records software before and after
+the original run, binds original controller events to supervised process/policy
+records, requires all observed scheduled jobs to finish, and captures every
+declared output. A missing declared output prevents acceptance even when the
+original engine exited successfully. Caller inputs and borrowed software are
+verified unchanged. Selected runtime and provider trees are verified before and
+after execution; their complete adoption metadata is retained.
+
+`SnakemakeOriginalSoftwareCapture` stores every regular-file byte in the owned
+content-addressed store and records complete directory/member, mode, file identity,
+literal symlink, FIFO, socket and device metadata. It neither follows payload
+links as host paths nor opens device/FIFO/socket streams. This is a literal
+payload capture, not a seal of arbitrary external dependencies loaded by trusted
+workflow code or a security sandbox. Use the qualified persistent native Linux
+filesystem/profile; a portable metadata reader does not establish execution
+support on its host.
+
+Eighteen packaged original-engine controls passed across Conda, Apptainer and
+combined deployment: six successful captured executions using existing software
+or permitted fresh installation, six expected missing-software/profile skips,
+and six expected upstream-failure/missing-output refusals. They exercise external
+input rebinding, a large integer, a tiny numeric parameter, shadow workers,
+original software activation/container execution, complete events and exact
+expected output values. No author dataset or biological result is certified.
+
+The private package passes fifty Snakemake Java tests. Ten native software-tree
+controls include literal links, FIFO/socket/device metadata, unchanged-timestamp
+byte changes, mode/link/census changes, limits, corrupt objects and contradictory
+shared-blob lengths; no device control was skipped on this host. Nineteen portable
+software-tree controls run without an engine. The preinstalled path additionally
+passes twelve fresh bundle controls, a two-generation replay and fifteen portable
+bundle checks with the changed request/event classes.
+
+**WARNING: the first fresh container pull in the captured-execution matrix hit
+the fixture's 64 MiB per-process file limit.** That failed run, its partial
+software, source stderr and original request remain retained. `limits.file_bytes`
+bounds each captured regular file; `limits.output_file_bytes` becomes the hard
+per-process file-size limit and also applies to downloaded OCI layers and SIF
+creation. Set both sufficiently high for the selected software and keep an
+explicit total workspace budget. The corrected matrix uses 1 GiB for each of
+these file limits and new native/output prefixes. Never edit the failed request
+or refresh its evidence hashes to make it pass. A separate native fixture first
+exceeded the Unix socket pathname limit; its failed family is retained and the
+complete retry uses a shorter socket basename.
+
+Current development records are under `managed-capture-controls-3`,
+`managed-capture-package-1`, `software-capture-controls-2`,
+`software-capture-portable-2` and the `managed-capture-preinstalled-*` families in
+`build/snakemake-original/`. Exported case object files may share storage through
+hard links to `shared-objects`; each remains a regular hash-verified file.
+The producer writes `EXECUTED.json` with `user_analysis_admitted=false` only after
+its captured-execution checks pass. It writes no managed final bundle completion
+marker. Final managed sealing/independent verification, replay, public CLI and
+paper-role qualification remain required before catalog admission.

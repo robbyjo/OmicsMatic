@@ -12,6 +12,12 @@ public final class SnakemakeOriginalProbe {
         var root=Path.of(args[1]).toAbsolutePath().normalize();
         Runnable check=()->{if(Thread.currentThread().isInterrupted())throw new java.util.concurrent.CancellationException("Probe interrupted");};
         switch(args[0]) {
+            case "software-capture", "software-check", "software-live" -> {
+                var request=SnakemakeOriginalFiles.object(SnakemakeOriginalFiles.json(root,4_194_304));var limits=new SnakemakeOriginalCapture.Limits((int)SnakemakeOriginalFiles.integer(request.get("files"),1,1000000),SnakemakeOriginalFiles.integer(request.get("bytes"),1,1000000000000L),SnakemakeOriginalFiles.integer(request.get("file_bytes"),1,1000000000000L));Path owned=Path.of(SnakemakeOriginalFiles.text(request.get("owned"))),metadata=Path.of(SnakemakeOriginalFiles.text(request.get("metadata")));SnakemakeOriginalSoftwareCapture.Snapshot snapshot;
+                if(args[0].equals("software-capture")){var roots=new java.util.TreeMap<String,Path>();for(var row:SnakemakeOriginalFiles.object(request.get("roots")).entrySet())roots.put(SnakemakeOriginalFiles.text(row.getKey()),Path.of(SnakemakeOriginalFiles.text(row.getValue())));snapshot=SnakemakeOriginalSoftwareCapture.capture(owned,roots,limits,check);SnakemakeOriginalFiles.writeJson(metadata,snapshot);}
+                else {snapshot=SnakemakeOriginalSoftwareCapture.decode(SnakemakeOriginalFiles.json(metadata,67_108_864),limits);if(args[0].equals("software-live"))SnakemakeOriginalSoftwareCapture.verifyLive(snapshot,limits,check);else SnakemakeOriginalSoftwareCapture.verifyObjects(owned,snapshot,limits,check);}
+                System.out.println(SnakemakeOriginalJson.json(Map.of("status","PASS_LITERAL_SOFTWARE_PAYLOAD_ONLY_NOT_ANALYSIS","bytes",snapshot.bytes(),"members",snapshot.members())));
+            }
             case "managed-parser-policy" -> {
                 var request=SnakemakeOriginalFiles.object(SnakemakeOriginalFiles.json(root,4_194_304));
                 if(!(request.get("allow_install") instanceof Boolean allow))throw new IllegalArgumentException("Require an explicit parser/installation permission");

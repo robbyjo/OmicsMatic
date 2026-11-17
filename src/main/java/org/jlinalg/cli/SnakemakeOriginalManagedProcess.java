@@ -63,6 +63,7 @@ final class SnakemakeOriginalManagedProcess {
             runtime=SnakemakeOriginalRuntime.open(invocation.runtime(),check);providers=SnakemakeOriginalDeployment.open(invocation.providers(),check);String python=runtime.python().toRealPath().toString();
             writeJson(records.resolve("engine-context.json"),runtime);writeJson(records.resolve("provider-context.json"),providers);
             var environment=new TreeMap<>(invocation.environment());String prefix=providers.providers().get("apptainer").executable().getParent()+":"+providers.providers().get("conda").executable().getParent()+":"+runtime.environment().resolve("bin");environment.put("PATH",prefix+":"+environment.getOrDefault("PATH","/usr/bin:/bin"));environment.put("PYTHONPATH",helpers.toString());environment.put("PYTHONSAFEPATH","1");environment.put("PYTHONDONTWRITEBYTECODE","1");environment.put("PYTHONNOUSERSITE","1");
+            if(environment.containsKey("OMICS_SNAKEMAKE_TOOL_BIN")){Path toolBin=directory(inside(root,environment.get("OMICS_SNAKEMAKE_TOOL_BIN")));environment.put("PATH",toolBin+":"+environment.get("PATH"));}
             var softwareData=new ArrayList<Path>();
             for(String key:List.of("APPTAINER_TMPDIR","CONDA_PKGS_DIRS")) {
                 String declared=environment.get(key);if(declared==null||declared.isEmpty())throw new IOException("Require an explicit owned software staging/cache directory: "+key);

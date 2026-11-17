@@ -17,7 +17,8 @@ final class SnakemakeOriginalRecipe {
     record Tool(String name,String executable) { }
     record Output(String root,String path,String kind,boolean allowEmpty,String comparison) { }
     record Execution(int cores,String scheduler,int retries,int latencyWait,boolean notemp,boolean extended,String deployment,boolean allowInstall,boolean requireJobs) { }
-    record Request(String profile,Workflow workflow,Map<String,String> sources,Object parameters,Map<String,String> environment,List<Tool> tools,List<Output> outputs,Execution execution,SnakemakeOriginalCapture.Limits capture,SnakemakeOriginalProcess.Limits process,int metadataBytes,int eventRows,long logBytes,Map<?,?> declared) {
+    record Managed(String providers,String environments,String images) { }
+    record Request(String profile,Workflow workflow,Map<String,String> sources,Object parameters,Map<String,String> environment,List<Tool> tools,List<Output> outputs,Execution execution,SnakemakeOriginalCapture.Limits capture,SnakemakeOriginalProcess.Limits process,int metadataBytes,int eventRows,long logBytes,Managed managed,Map<?,?> declared) {
         Request { sources=Map.copyOf(sources);environment=Map.copyOf(environment);tools=List.copyOf(tools);outputs=List.copyOf(outputs); }
     }
     private SnakemakeOriginalRecipe() { }
@@ -28,7 +29,7 @@ final class SnakemakeOriginalRecipe {
     /** Validate Linux producer paths as text without accessing them on the reader's host. */
     static Request recorded(Map<?,?> raw)throws IOException {return parse(raw,true);}
     private static Request parse(Map<?,?> raw,boolean recorded)throws IOException {
-        keys(raw,"schema_version","engine_profile","workflow","resources","parameters","environment","required_tools","outputs","execution","limits");integer(raw.get("schema_version"),1,1);
+        long schema=integer(raw.get("schema_version"),1,2);if(schema==1)keys(raw,"schema_version","engine_profile","workflow","resources","parameters","environment","required_tools","outputs","execution","limits");else keys(raw,"schema_version","engine_profile","workflow","resources","parameters","environment","required_tools","outputs","execution","limits","managed_software");
         String profile=text(raw.get("engine_profile"));if(!profile.equals(SnakemakeOriginalRuntime.PROFILE))throw new SnakemakeOriginalRuntime.Unavailable("Exact requested Snakemake profile is unavailable; do not infer author versions or substitute editions");
         Map<?,?> w=object(raw.get("workflow"));keys(w,"path","snakefile","configfiles","targets");String source=absolute(text(w.get("path")),recorded);String snakefile=member(text(w.get("snakefile")));List<String> configs=strings(w.get("configfiles")),targets=strings(w.get("targets"));
         for(String value:configs)member(value);for(String value:targets) { member(value);if(value.startsWith("-"))throw new IOException("Targets must be literal rule names/relative paths, not command-line flags"); }
@@ -56,11 +57,18 @@ final class SnakemakeOriginalRecipe {
         if(!Set.of("greedy","ilp").contains(scheduler))throw new SnakemakeOriginalRuntime.Unavailable("Requested scheduler plugin is not yet qualified; no silent scheduler substitution");
         if(!Set.of("preinstalled","conda","apptainer","conda-apptainer").contains(deployment))throw new SnakemakeOriginalRuntime.Unavailable("Requested software deployment mode is unavailable; no PATH/deployer fallback");
         Execution execution=new Execution((int)integer(x.get("cores"),1,1024),scheduler,(int)integer(x.get("retries"),0,100),(int)integer(x.get("latency_wait_seconds"),0,3600),bool(x.get("notemp")),bool(x.get("benchmark_extended")),deployment,bool(x.get("allow_install")),bool(x.get("require_jobs")));
+        Managed managed=null;
+        if(schema==2){
+            if(deployment.equals("preinstalled"))throw new IOException("Schema-2 managed software requires explicit Conda/Apptainer deployment");Map<?,?> m=object(raw.get("managed_software"));keys(m,"providers","conda_environments","container_images");String providers=absolute(text(m.get("providers")),recorded),environments=m.get("conda_environments")==null?null:absolute(text(m.get("conda_environments")),recorded),images=m.get("container_images")==null?null:absolute(text(m.get("container_images")),recorded);
+            if(execution.allowInstall()&&(environments!=null||images!=null))throw new IOException("Permitted installation must use new owned cache prefixes (null declarations); borrowed prefixes are immutable");
+            for(String key:environment.keySet())if(key.startsWith("CONDA")||key.startsWith("MAMBA")||key.startsWith("APPTAINER")||key.startsWith("SINGULARITY")||key.startsWith("XDG_"))throw new IOException("Managed provider/cache environment is owned by the adapter: "+key);managed=new Managed(providers,environments,images);
+            for(Tool tool:tools)if(Set.of("conda","mamba","micromamba","apptainer","singularity").contains(tool.name()))throw new IOException("Declared tools cannot replace selected managed deployment providers: "+tool.name());
+        }
         Map<?,?> l=object(raw.get("limits"));keys(l,"capture_files","capture_bytes","file_bytes","workspace_bytes","wall_seconds","address_space_bytes","cpu_seconds","output_file_bytes","open_files","processes","threads","sampled_rss_bytes","poll_millis","metadata_bytes","event_rows","log_bytes");
         long fileBytes=integer(l.get("file_bytes"),1,1_000_000_000_000L),total=integer(l.get("capture_bytes"),fileBytes,1_000_000_000_000L);int captureFiles=(int)integer(l.get("capture_files"),4,1_000_000);
         var capture=new SnakemakeOriginalCapture.Limits(captureFiles,total,fileBytes);
         var process=new SnakemakeOriginalProcess.Limits(integer(l.get("wall_seconds"),1,604800)*1000,integer(l.get("address_space_bytes"),16_777_216,1_099_511_627_776L),integer(l.get("cpu_seconds"),1,604800),integer(l.get("output_file_bytes"),1,1_000_000_000_000L),(int)integer(l.get("open_files"),8,1_048_576),integer(l.get("workspace_bytes"),1,1_000_000_000_000L),captureFiles,(int)integer(l.get("processes"),1,4096),(int)integer(l.get("threads"),1,1_048_576),integer(l.get("sampled_rss_bytes"),1,1_099_511_627_776L),(int)integer(l.get("poll_millis"),1,1000));
-        return new Request(profile,new Workflow(source,snakefile,configs,targets),sources,raw.get("parameters"),environment,tools,outputs,execution,capture,process,(int)integer(l.get("metadata_bytes"),1024,67_108_864),(int)integer(l.get("event_rows"),1,10_000_000),integer(l.get("log_bytes"),1024,1_073_741_824),raw);
+        return new Request(profile,new Workflow(source,snakefile,configs,targets),sources,raw.get("parameters"),environment,tools,outputs,execution,capture,process,(int)integer(l.get("metadata_bytes"),1024,67_108_864),(int)integer(l.get("event_rows"),1,10_000_000),integer(l.get("log_bytes"),1024,1_073_741_824),managed,raw);
     }
     private static boolean bool(Object value) throws IOException { if(!(value instanceof Boolean flag))throw new IOException("Require explicit boolean execution/output declarations");return flag; }
     private static String absolute(String value,boolean recorded) throws IOException {

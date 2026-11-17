@@ -31,7 +31,16 @@ final class SnakemakeOriginalEvents {
         SnakemakeOriginalPolicy.audit(receipt);
         long pid=integer(receipt.get("driver_pid"),1,Long.MAX_VALUE);String run=text(receipt.get("run_id"));
         if(!run.matches("[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}")||!stringMap(receipt.get("helpers_before")).equals(SnakemakeOriginalRuntime.helperPins())||!stringMap(receipt.get("helpers_after")).equals(SnakemakeOriginalRuntime.helperPins()))throw new IOException("Driver run/helper identities differ");
-        Map<?,?> declared=object(receipt.get("collector_streams"));var files=new TreeMap<String,Path>();
+        return streams(directory,pid,run,object(receipt.get("collector_streams")),maxRows,maxLineBytes,maxBytes,requireJobs,check);
+    }
+    static Result managed(Path directory,Map<?,?> controller,SnakemakeOriginalManagedProcess.Bound bound,int maxRows,int maxLineBytes,long maxBytes,boolean requireJobs,Runnable check)throws IOException {
+        if(bound.exitCode()!=0||bound.parserPolicy()==null||!bound.parserPolicy().accepted()||!bound.parserPolicy().upstreamApiCalled()||!Boolean.TRUE.equals(controller.get("upstream_api_called"))||!Boolean.TRUE.equals(controller.get("upstream_success"))||!list(controller.get("integrity_errors")).isEmpty()||!list(controller.get("collector_errors")).isEmpty())throw new IOException("Managed source did not finish under an independently verified effective parser policy");
+        if(integer(controller.get("controller_pid"),bound.controllerPid(),bound.controllerPid())!=bound.controllerPid())throw new IOException("Managed controller/event PID differs");
+        String run=null;for(Object value:list(controller.get("policy_processes"))){Map<?,?> policy=object(value);if(integer(policy.get("pid"),1,Long.MAX_VALUE)==bound.controllerPid())run=text(policy.get("run_id"));}if(run==null||!run.matches("[0-9a-f-]{36}"))throw new IOException("Managed controller policy/run identity missing");
+        return streams(directory,bound.controllerPid(),run,object(controller.get("collector_streams")),maxRows,maxLineBytes,maxBytes,requireJobs,check);
+    }
+    private static Result streams(Path directory,long pid,String run,Map<?,?> declared,int maxRows,int maxLineBytes,long maxBytes,boolean requireJobs,Runnable check)throws IOException {
+        var files=new TreeMap<String,Path>();
         try(var paths=Files.list(directory)) { for(Path path:paths.toList()) { String name=path.getFileName().toString();if(!name.matches("events-[1-9][0-9]*\\.jsonl")||!Files.isRegularFile(path,LinkOption.NOFOLLOW_LINKS))throw new IOException("Unexpected/error event stream member: "+name);files.put(name,path); } }
         if(!files.keySet().equals(declared.keySet())||!files.containsKey("events-"+pid+".jsonl"))throw new IOException("Complete event-stream census/controller stream differs");
         long totalBytes=0;int totalRows=0,sourceRows=0,workflows=0,batches=0,done=0,total=0,errors=0,startedGroups=0,reportedGroups=0,pendingGroupMembers=0;var jobs=new LinkedHashMap<Long,Job>();var scheduled=new HashSet<Long>();var grouped=new HashSet<Long>();var completed=new HashSet<Long>();var diagnostics=new ArrayList<Diagnostic>();

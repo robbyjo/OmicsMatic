@@ -172,8 +172,8 @@ the previous helper receipts were preserved. The private packaged JAR separately
 passed a resource-profile execution and policy-skip control using adapter classes
 loaded directly from that JAR.
 
-Before offering original-engine analysis, finish managed workflow software
-deployment, broader workflow qualification, the public CLI and catalog admission
+Before offering original-engine analysis, finish final managed bundle
+verification/replay, broader workflow qualification, the public CLI and catalog admission
 for the six reviewed source roles. **Do not request managed installation through
 a captured profile while the recipe selects preinstalled software.** Such a
 conflict is skipped before the original API is called. Remove the conflicting
@@ -181,8 +181,10 @@ profile setting or select a separately qualified deployment, then retry NEW path
 The development execution path currently accepts an explicitly selected
 preinstalled deployment. It warns that upstream Conda/Apptainer rule directives
 are inactive in that mode and that arbitrary dependencies loaded by trusted
-workflow code are not sealed by the executable list. Managed-deployment requests
-currently produce SKIP3; they never silently fall back to preinstalled software.
+workflow code are not sealed by the executable list. Schema-2 managed recipes
+now have a separately qualified captured-execution development path. Final managed
+analysis/bundle requests still produce SKIP3 before execution; they never fall back
+to preinstalled software.
 No successful setup, runtime, process or execution probe satisfies the remaining
 analysis-admission gates.
 
@@ -196,9 +198,10 @@ benchmark aggregation remains independently usable with complete valid inputs.
 
 ## Private deployment-provider checkpoint
 
-**WARNING: installing or adopting these providers does not enable managed
-workflow execution in the Java adapter. Managed Java requests still produce
-SKIP3. The public original-engine command and catalog admission remain unfinished.**
+**WARNING: installing or adopting these providers does not enable final managed
+analysis admission. The final managed bundle entrypoint still produces SKIP3;
+schema-2 captured execution is a separate development path. The public
+original-engine command and catalog admission remain unfinished.**
 
 The developer-only `setup_deployment.py` selects Miniforge 26.9.4-2 (Conda
 26.9.4) and Apptainer 1.5.5, verifies pinned download bytes and installs into new
@@ -243,7 +246,7 @@ propagation and its portable Java reader now also have twelve original-engine
 controls bound to the actual Java process supervisor. Explicit software staging
 data has eight separate link/scope/capacity controls; the failed first unpack is
 retained. See the deployment development guide for its warning and recovery steps.
-Complete managed-software capture/replay and the
+Final managed bundle verification/replay and the
 remaining admission gates are unfinished.
 
 The schema-2 managed process path also checks the actual original parser after
@@ -255,6 +258,15 @@ early profile skips prove that no original API, deployment call or worker ran.
 The deployment development guide records the failed intermediate attempts and
 current source, package, portable-reader and supervisor evidence. This parent
 parser gate adds no public analysis command or catalog credit.
+
+The schema-2 captured-execution adapter now runs the original managed workflow
+from complete copied workflow/data roots, records literal software/cache payloads
+before and after, audits original completed jobs, and captures declared outputs.
+Eighteen packaged controls cover all three deployment modes, fresh installation,
+reuse, actionable skips, upstream failure and missing outputs. The deployment
+guide documents the retained file-limit/socket-fixture failures and their exact
+recovery steps. This path writes `EXECUTED.json` with analysis admission disabled;
+it does not supply the still-required managed final bundle/replay or public CLI.
 
 Source-control qualification scripts still use the recorded development control
 paths. The separate setup utility carries its own pinned synthetic fixtures.

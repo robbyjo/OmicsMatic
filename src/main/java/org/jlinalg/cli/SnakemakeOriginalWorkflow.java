@@ -23,7 +23,7 @@ final class SnakemakeOriginalWorkflow {
     record Result(Path root,SnakemakeOriginalEvents.Result events,List<Published> outputs) {Result {outputs=List.copyOf(outputs);}}
     private SnakemakeOriginalWorkflow() { }
     static SnakemakeOriginalBundle.Verified run(Path recipe,Path runtime,Path output,Runnable check)throws IOException {
-        Result result=execute(recipe,runtime,output,check);
+        Result result=execute(recipe,runtime,output,check,false);
         try{return SnakemakeOriginalBundle.finish(result.root(),SnakemakeOriginalRecipe.read(result.root().resolve("REQUEST.json")),check);}
         catch(IOException|RuntimeException failure){
             try{writeJson(result.root().resolve("FAILURE.json"),Map.of("status","FAIL2-no-result-admitted","exit_code",2,"error",failure.toString(),"required_action","Retain the complete provisional root and diagnostics. Resolve the bundle discrepancy and retry NEW output; no complete bundle is admitted."));Files.writeString(result.root().resolve("FAILURE_WARNINGS.md"),"# Snakemake FAIL2 bundle incomplete\n\n"+failure+"\n\nRetain all source evidence and retry NEW output after resolving the cause.\n",StandardCharsets.UTF_8,StandardOpenOption.CREATE_NEW);}catch(IOException diagnostic){failure.addSuppressed(diagnostic);}
@@ -31,6 +31,9 @@ final class SnakemakeOriginalWorkflow {
         }
     }
     static Result execute(Path suppliedRecipe,Path runtimeHome,Path suppliedOutput,Runnable check)throws IOException {
+        return execute(suppliedRecipe,runtimeHome,suppliedOutput,check,true);
+    }
+    private static Result execute(Path suppliedRecipe,Path runtimeHome,Path suppliedOutput,Runnable check,boolean managedDevelopment)throws IOException {
         Path root=suppliedOutput.toAbsolutePath().normalize(),recipe=suppliedRecipe.toAbsolutePath().normalize();
         if(root.getParent()==null)throw new IOException("Require a NEW named workflow output directory");directory(root.getParent());Files.createDirectory(root);
         Files.writeString(root.resolve("WARNINGS.md"),"# Original Snakemake workflow scope and warnings\n\n"+ACTION+"\n",StandardCharsets.UTF_8,StandardOpenOption.CREATE_NEW);
@@ -39,7 +42,10 @@ final class SnakemakeOriginalWorkflow {
             Identity recipeBefore=identity(recipe,4_194_304,check);byte[] raw=bytes(recipe,4_194_304);Files.write(root.resolve("REQUEST.json"),raw,StandardOpenOption.CREATE_NEW);
             request=SnakemakeOriginalRecipe.read(root.resolve("REQUEST.json"));if(!recipeBefore.equals(identity(recipe,4_194_304,check)))throw new IOException("Original request changed during initial capture");
             writeJson(root.resolve("request-source.json"),Map.of("path",recipe.toString(),"identity",recipeBefore));
-            if(!request.execution().deployment().equals("preinstalled"))throw new SnakemakeOriginalRuntime.Unavailable("Managed Conda/Apptainer execution is not yet qualified in this development stage. Preserve this skip; use a separately qualified permitted deployment or wait for its adapter qualification. There is no deployer/PATH fallback.");
+            if(!request.execution().deployment().equals("preinstalled")){
+                if(request.managed()==null||!managedDevelopment)throw new SnakemakeOriginalRuntime.Unavailable("Managed final bundle/replay/public analysis admission is not yet qualified. Schema-2 managed software is required for the separate captured-execution development path. Preserve this skip; no deployer/PATH fallback.");
+                result=SnakemakeOriginalManagedWorkflow.execute(root,recipe,recipeBefore,request,runtimeHome,check);
+            }else {
             Files.writeString(root.resolve("WARNINGS.md"),warningText(null),StandardCharsets.UTF_8,StandardOpenOption.TRUNCATE_EXISTING);
             runtime=SnakemakeOriginalRuntime.open(runtimeHome,check);writeJson(root.resolve("runtime-context.json"),runtime);
             Path runtimeRecords=Files.createDirectory(root.resolve("runtime"));for(var entry:runtime.metadata().entrySet()){Path target=runtimeRecords.resolve(entry.getKey());Files.copy(runtime.home().resolve(entry.getKey()),target);if(!pin(target,67_108_864,check).equals(entry.getValue()))throw new IOException("Runtime evidence changed during capture");}
@@ -79,6 +85,7 @@ final class SnakemakeOriginalWorkflow {
             List<Published> outputs=outputs(root,bindings,published,request,check);writeJson(root.resolve("outputs.json"),outputs);
             if(!recipeBefore.equals(identity(recipe,4_194_304,check)))throw new IOException("Original request changed during workflow execution");
             SnakemakeOriginalCapture.verifyOriginals(captured,request.capture(),check);result=new Result(root,events,outputs);
+            }
         }catch(Exception failure){failed=failure;}
         finally {
             if(request!=null&&Files.isDirectory(root.resolve("workspace"))&&Files.isDirectory(root.resolve("objects")))try{writeJson(root.resolve("working-after.json"),SnakemakeOriginalCapture.working(root,root.resolve("workspace"),request.capture(),check));}catch(Exception failure){if(failed==null)failed=failure;else failed.addSuppressed(failure);}
@@ -105,7 +112,7 @@ final class SnakemakeOriginalWorkflow {
         if(events!=null&&!events.diagnostics().isEmpty()){result.append("\n## Original warnings and errors\n\nWARNING: Inspect every retained original diagnostic and source stderr before interpreting outputs. Full records, including formatting arguments, are in DIAGNOSTICS.json.\n\n");for(var diagnostic:events.diagnostics())result.append("    ").append(SnakemakeOriginalJson.json(diagnostic)).append('\n');}
         if(events!=null&&events.errorDiagnostics()>0)result.append("\nWARNING: Original diagnostics contain ").append(events.errorDiagnostics()).append(" error records although all observed jobs eventually completed. Inspect the retained events and source stderr, including every failed retry, before interpreting outputs.\n");return result.toString();
     }
-    private static List<Published> outputs(Path root,Map<String,Path> bindings,Path published,SnakemakeOriginalRecipe.Request request,Runnable check)throws IOException {
+    static List<Published> outputs(Path root,Map<String,Path> bindings,Path published,SnakemakeOriginalRecipe.Request request,Runnable check)throws IOException {
         var result=new ArrayList<Published>();long bytes=0;int count=0;
         for(var output:request.outputs()) {
             Path base=output.root().equals("published")?published:bindings.get(output.root());Path path=base.resolve(output.path()).normalize();if(!path.startsWith(base)||!path.toRealPath().startsWith(root))throw new IOException("Declared output escapes captured resources");
@@ -123,11 +130,11 @@ final class SnakemakeOriginalWorkflow {
         }
         return List.copyOf(result);
     }
-    private static List<Tool> tools(SnakemakeOriginalRecipe.Request request,Runnable check)throws IOException {
+    static List<Tool> tools(SnakemakeOriginalRecipe.Request request,Runnable check)throws IOException {
         var result=new ArrayList<Tool>();for(var tool:request.tools()){Path supplied=Path.of(tool.executable());if(!Files.isExecutable(supplied))throw new SnakemakeOriginalRuntime.Unavailable("Required executable missing or forbidden: "+tool.name()+" at "+tool.executable()+". Install only where permitted or skip this dependent analysis.");Path real=supplied.toRealPath();result.add(new Tool(tool.name(),tool.executable(),real.toString(),identity(real,1_073_741_824,check)));}return List.copyOf(result);
     }
-    private static String wrapper(Tool tool){return "#!/usr/bin/bash\nexec '"+tool.resolved().replace("'","'\\''")+"' \"$@\"\n";}
-    private static void source(Path root,Path path)throws IOException {if(!Files.isRegularFile(path)||!path.toRealPath().startsWith(root.resolve("workspace/resources")))throw new IOException("Snakefile/config must be a complete captured regular file: "+path);}
+    static String wrapper(Tool tool){return "#!/usr/bin/bash\nexec '"+tool.resolved().replace("'","'\\''")+"' \"$@\"\n";}
+    static void source(Path root,Path path)throws IOException {if(!Files.isRegularFile(path)||!path.toRealPath().startsWith(root.resolve("workspace/resources")))throw new IOException("Snakefile/config must be a complete captured regular file: "+path);}
     static Map<String,Pin> code()throws IOException {
         var result=new TreeMap<String,Pin>();
         for(Class<?> outer:List.of(SnakemakeOriginalWorkflow.class,SnakemakeOriginalCapture.class,SnakemakeOriginalEvents.class,SnakemakeOriginalFiles.class,SnakemakeOriginalJson.class,SnakemakeOriginalOutputs.class,SnakemakeOriginalParameters.class,SnakemakeOriginalProcess.class,SnakemakeOriginalRecipe.class,SnakemakeOriginalRuntime.class,SnakemakeOriginalBundle.class,SnakemakeOriginalRecorded.class,SnakemakeOriginalEvidence.class,SnakemakeOriginalReplay.class,SnakemakeOriginalPolicy.class,org.jlinalg.workflow.SnakemakeBenchmarks.class))for(Class<?> type:outer.getNestMembers()){String name=type.getName().replace('.','/')+".class";try(var input=type.getResourceAsStream('/'+name)){if(input==null)throw new IOException("Executing adapter class unavailable: "+name);byte[] raw=input.readAllBytes();result.put(name,new Pin(raw.length,sha(raw)));}}
