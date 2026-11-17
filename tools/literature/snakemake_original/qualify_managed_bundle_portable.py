@@ -15,13 +15,16 @@ def write(path,value):
 
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
-    for name in ['archive','compiled','jar','out']:parser.add_argument('--'+name,type=Path,required=True)
-    parser.add_argument('--java',required=True);args=parser.parse_args();out=args.out.resolve();assert out.is_relative_to(ROOT/'build');out.mkdir(exist_ok=False);shutil.copyfile(__file__,out/'as-run-qualifier.py')
+    for name in ['archive','jar','out']:parser.add_argument('--'+name,type=Path,required=True)
+    parser.add_argument('--compiled',type=Path);parser.add_argument('--public-cli',action='store_true');parser.add_argument('--java',required=True);args=parser.parse_args();out=args.out.resolve();assert out.is_relative_to(ROOT/'build');out.mkdir(exist_ok=False);shutil.copyfile(__file__,out/'as-run-qualifier.py')
     try:
         assert sys.platform=='win32','Use a host without the Linux producer filesystem/runtime'
         archive=args.archive/'bundle.zip';sidecar=json.loads((args.archive/'ARCHIVED.json').read_bytes());before=pin(archive);assert before==sidecar['archive']
-        compiled=json.loads((args.compiled/'COMPILED.json').read_bytes());assert compiled['adapter_class_source']=='byte-pinned-jar';assert pin(args.jar)=={key:compiled['baseline_jar'][key] for key in ['bytes','sha256']}
-        for name,expected in compiled['classes'].items():assert pin(args.compiled/'classes'/name)==expected
+        assert args.public_cli != (args.compiled is not None),'Choose either the actual public CLI or a frozen probe'
+        jar_before=pin(args.jar);compiled=json.loads((args.compiled/'COMPILED.json').read_bytes()) if args.compiled else None
+        if compiled:
+            assert compiled['adapter_class_source']=='byte-pinned-jar';assert jar_before=={key:compiled['baseline_jar'][key] for key in ['bytes','sha256']}
+            for name,expected in compiled['classes'].items():assert pin(args.compiled/'classes'/name)==expected
         with zipfile.ZipFile(archive) as source:
             assert len(source.namelist())==len(set(source.namelist()))
             original={name:source.read(name) for name in source.namelist() if not name.endswith('/')};directories={name[:-1] for name in source.namelist() if name.endswith('/')}
@@ -29,7 +32,8 @@ def main():
         assert json.loads(original['COMPLETED.json'])['kind']=='declared-managed-workflow'
         producer=json.loads(original['invocation.json'])['owned_root'];assert not Path(producer).exists()
         cases=['genuine','reencoded-manifest','reordered-policy-set','wrong-selected-mode','partial-dag-resealed-binding','wrong-command-resealed-request','borrowed-terminal-mutation','wrong-software-roots','missing-software-root-node','inconsistent-shared-length','unowned-controller-resealed-binding','live-owned-process-resealed-binding','missing-closed-policy','missing-original-job-finish-resealed-binding','changed-output-contract','removed-warning','extra-object','extra-directory','false-admission','foreign-runtime-file','wrong-provider-version-resealed-context','missing-helper']
-        rows=[];classpath=str(args.compiled.resolve()/'classes')+os.pathsep+str(args.jar.resolve())
+        if args.public_cli:cases+=['missing-filesystem-proof','false-hardlink-proof','false-atomic-move-proof']
+        rows=[];classpath=str(args.compiled.resolve()/'classes')+os.pathsep+str(args.jar.resolve()) if compiled else None
         for name in cases:
             case=out/name;case.mkdir();files=original.copy();dirs=directories.copy();accepted=name in cases[:3]
             def read(member):return json.loads(files[member])
@@ -80,20 +84,25 @@ def main():
                 adopted=read('deployment/ADOPTED.json');adopted['components']['conda']['version']='conda 0.0.0';adopted['metadata']['CONDA-INSTALLED.json']=digest(files['deployment/CONDA-INSTALLED.json']);put('deployment/ADOPTED.json',adopted)
                 context=read('deployment-context.json');context['providers']['conda']['version']='conda 0.0.0';context['metadata']['CONDA-INSTALLED.json']=digest(files['deployment/CONDA-INSTALLED.json']);context['metadata']['ADOPTED.json']=digest(files['deployment/ADOPTED.json']);put('deployment-context.json',context);put('provider-context.json',context)
             elif name=='missing-helper':files.pop('helpers/managed_parser_policy.py')
+            elif name=='missing-filesystem-proof':files.pop('FILESYSTEM.json')
+            elif name=='false-hardlink-proof':
+                proof=read('FILESYSTEM.json');proof['linked']['fileKey']='unrelated-file-identity';put('FILESYSTEM.json',proof)
+            elif name=='false-atomic-move-proof':
+                proof=read('FILESYSTEM.json');proof['renamed']['modified']='changed-during-move';put('FILESYSTEM.json',proof)
             manifest=read('manifest.json');manifest['files']={member:digest(raw) for member,raw in files.items() if member not in ['manifest.json','COMPLETED.json']};manifest['directories']=sorted(dirs);put('manifest.json',manifest)
             marker=read('COMPLETED.json');marker['manifest']=digest(files['manifest.json'])
-            if name=='false-admission':marker['user_analysis_admitted']=True
+            if name=='false-admission':marker['user_analysis_admitted']=not marker['user_analysis_admitted']
             put('COMPLETED.json',marker);target=case/'bundle.zip'
             with zipfile.ZipFile(target,'x',allowZip64=True) as archive_out:
                 for member in sorted(dirs):archive_out.writestr(member+'/',b'')
                 for member,raw in sorted(files.items()):archive_out.writestr(member,raw,compress_type=zipfile.ZIP_STORED if member.startswith('objects/') else zipfile.ZIP_DEFLATED,compresslevel=None if member.startswith('objects/') else 3)
-            write(case/'REQUEST.json',dict(archive=str(target)));command=[args.java,'-cp',classpath,compiled['probe'],'verify-zip',str(case/'REQUEST.json')];env=os.environ.copy();env['PATH']='';env['PYTHONPATH']='';start=time.monotonic()
+            write(case/'REQUEST.json',dict(archive=str(target)));command=[args.java,'-jar',str(args.jar.resolve()),'snakemake-tools','verify','--bundle',str(target),'--out',str(case/'verification')] if args.public_cli else [args.java,'-cp',classpath,compiled['probe'],'verify-zip',str(case/'REQUEST.json')];env=os.environ.copy();env['PATH']='';env['PYTHONPATH']='';start=time.monotonic()
             with (case/'stdout').open('xb') as so,(case/'stderr').open('xb') as se:result=subprocess.run(command,env=env,stdin=subprocess.DEVNULL,stdout=so,stderr=se,timeout=180)
             row=dict(case=name,command=command,exit_code=result.returncode,expected_acceptance=accepted,seconds=round(time.monotonic()-start,3),archive=pin(target));write(case/'PROCESS.json',row);rows.append(row)
             assert (result.returncode==0)==accepted,(name,'Inspect retained independent portable verifier diagnostics');print(name+' PASS',flush=True)
         assert pin(archive)==before
-        assert pin(args.jar)=={key:compiled['baseline_jar'][key] for key in ['bytes','sha256']}
-        write(out/'COMPLETED.json',dict(status='PASS_TWENTY_TWO_PORTABLE_MANAGED_BUNDLE_AND_RESEALED_SEMANTIC_CONTROLS',cases=rows,source_archive=before,engine_executed=False,path_empty=True,producer_paths_available=False,original_archive_unchanged=True,user_analysis_admitted=False,new_catalog_credit=0,whole_goal_complete=False));print('PASS_TWENTY_TWO_PORTABLE_MANAGED_BUNDLE_CONTROLS',flush=True)
+        assert pin(args.jar)==jar_before
+        write(out/'COMPLETED.json',dict(status='PASS_PORTABLE_MANAGED_BUNDLE_AND_RESEALED_SEMANTIC_CONTROLS',cases=rows,source_archive=before,jar=jar_before,public_cli=args.public_cli,engine_executed=False,path_empty=True,producer_paths_available=False,original_archive_unchanged=True,user_analysis_admitted=False,new_catalog_credit=0,whole_goal_complete=False));print('PASS_PORTABLE_MANAGED_BUNDLE_CONTROLS '+str(len(rows)),flush=True)
     except BaseException as error:
         write(out/'FAILURE.json',dict(error=repr(error),traceback=traceback.format_exc(),required_action='Retain every genuine and altered archive and its diagnostics. Resolve the reader or fixture discrepancy and retry a NEW qualification directory; do not refresh previous receipts.'));raise
 

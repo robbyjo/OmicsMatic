@@ -1,0 +1,268 @@
+{
+  "status": "PASS_ACTUAL_BEGINNER_EXAMPLE_FOUR_ORIGINAL_DEPLOYMENT_MODES",
+  "cases": [
+    {
+      "mode": "preinstalled",
+      "prepare": {
+        "command": [
+          "/usr/bin/python3",
+          "-I",
+          "-B",
+          "/mnt/d/projects/JLinAlg/build/snakemake-workflow-1/examples/snakemake-workflow/prepare.py",
+          "--runtime",
+          "/mnt/d/projects/JLinAlg/build/snakemake-workflow-1/build/snakemake-original/effective-policy-3/adoption",
+          "--out",
+          "/root/.local/share/omicsmatic/snakemake-public-example-20261117-1/preinstalled/example",
+          "--deployment",
+          "preinstalled"
+        ],
+        "working_directory": "/root/.local/share/omicsmatic/snakemake-public-example-20261117-1/preinstalled",
+        "exit_code": 0,
+        "timed_out": false,
+        "seconds": 0.065
+      },
+      "run": {
+        "command": [
+          "/usr/bin/java",
+          "-jar",
+          "/mnt/d/projects/JLinAlg/build/git-publish/20261117-all-main-11/checkout/build/cli/omicsmatic-0.4.0.jar",
+          "snakemake-tools",
+          "run",
+          "--request",
+          "/root/.local/share/omicsmatic/snakemake-public-example-20261117-1/preinstalled/example/recipe.json",
+          "--runtime",
+          "/mnt/d/projects/JLinAlg/build/snakemake-workflow-1/build/snakemake-original/effective-policy-3/adoption",
+          "--out",
+          "/root/.local/share/omicsmatic/snakemake-public-example-20261117-1/preinstalled/example/analysis"
+        ],
+        "working_directory": "/root/.local/share/omicsmatic/snakemake-public-example-20261117-1/preinstalled",
+        "exit_code": 0,
+        "timed_out": false,
+        "seconds": 9.968
+      },
+      "verify": {
+        "command": [
+          "/usr/bin/java",
+          "-jar",
+          "/mnt/d/projects/JLinAlg/build/git-publish/20261117-all-main-11/checkout/build/cli/omicsmatic-0.4.0.jar",
+          "snakemake-tools",
+          "verify",
+          "--bundle",
+          "/root/.local/share/omicsmatic/snakemake-public-example-20261117-1/preinstalled/example/analysis/bundle",
+          "--out",
+          "/root/.local/share/omicsmatic/snakemake-public-example-20261117-2/preinstalled/verification"
+        ],
+        "working_directory": "/root/.local/share/omicsmatic/snakemake-public-example-20261117-2/preinstalled",
+        "exit_code": 0,
+        "timed_out": false,
+        "seconds": 0.973
+      },
+      "native_example": "/root/.local/share/omicsmatic/snakemake-public-example-20261117-1/preinstalled/example",
+      "adopted_completed_run": true
+    },
+    {
+      "mode": "conda",
+      "prepare": {
+        "command": [
+          "/usr/bin/python3",
+          "-I",
+          "-B",
+          "/mnt/d/projects/JLinAlg/build/snakemake-workflow-1/examples/snakemake-workflow/prepare.py",
+          "--runtime",
+          "/mnt/d/projects/JLinAlg/build/snakemake-workflow-1/build/snakemake-original/effective-policy-3/adoption",
+          "--out",
+          "/root/.local/share/omicsmatic/snakemake-public-example-20261117-2/conda/example",
+          "--deployment",
+          "conda",
+          "--providers",
+          "/mnt/d/projects/JLinAlg/build/snakemake-workflow-1/build/snakemake-original/managed-provider-adoption-5",
+          "--conda-environments",
+          "/root/.local/share/omicsmatic/snakemake-managed-controls-20261116-7/conda/working/.snakemake/conda"
+        ],
+        "working_directory": "/root/.local/share/omicsmatic/snakemake-public-example-20261117-2/conda",
+        "exit_code": 0,
+        "timed_out": false,
+        "seconds": 0.116
+      },
+      "run": {
+        "command": [
+          "/usr/bin/java",
+          "-jar",
+          "/mnt/d/projects/JLinAlg/build/git-publish/20261117-all-main-11/checkout/build/cli/omicsmatic-0.4.0.jar",
+          "snakemake-tools",
+          "run",
+          "--request",
+          "/root/.local/share/omicsmatic/snakemake-public-example-20261117-2/conda/example/recipe.json",
+          "--runtime",
+          "/mnt/d/projects/JLinAlg/build/snakemake-workflow-1/build/snakemake-original/effective-policy-3/adoption",
+          "--out",
+          "/root/.local/share/omicsmatic/snakemake-public-example-20261117-2/conda/example/analysis"
+        ],
+        "working_directory": "/root/.local/share/omicsmatic/snakemake-public-example-20261117-2/conda",
+        "exit_code": 0,
+        "timed_out": false,
+        "seconds": 57.755
+      },
+      "verify": {
+        "command": [
+          "/usr/bin/java",
+          "-jar",
+          "/mnt/d/projects/JLinAlg/build/git-publish/20261117-all-main-11/checkout/build/cli/omicsmatic-0.4.0.jar",
+          "snakemake-tools",
+          "verify",
+          "--bundle",
+          "/root/.local/share/omicsmatic/snakemake-public-example-20261117-2/conda/example/analysis/bundle",
+          "--out",
+          "/root/.local/share/omicsmatic/snakemake-public-example-20261117-2/conda/verification"
+        ],
+        "working_directory": "/root/.local/share/omicsmatic/snakemake-public-example-20261117-2/conda",
+        "exit_code": 0,
+        "timed_out": false,
+        "seconds": 3.722
+      },
+      "native_example": "/root/.local/share/omicsmatic/snakemake-public-example-20261117-2/conda/example",
+      "adopted_completed_run": false
+    },
+    {
+      "mode": "apptainer",
+      "prepare": {
+        "command": [
+          "/usr/bin/python3",
+          "-I",
+          "-B",
+          "/mnt/d/projects/JLinAlg/build/snakemake-workflow-1/examples/snakemake-workflow/prepare.py",
+          "--runtime",
+          "/mnt/d/projects/JLinAlg/build/snakemake-workflow-1/build/snakemake-original/effective-policy-3/adoption",
+          "--out",
+          "/root/.local/share/omicsmatic/snakemake-public-example-20261117-2/apptainer/example",
+          "--deployment",
+          "apptainer",
+          "--providers",
+          "/mnt/d/projects/JLinAlg/build/snakemake-workflow-1/build/snakemake-original/managed-provider-adoption-5",
+          "--container-images",
+          "/root/.local/share/omicsmatic/snakemake-managed-controls-20261116-7/images"
+        ],
+        "working_directory": "/root/.local/share/omicsmatic/snakemake-public-example-20261117-2/apptainer",
+        "exit_code": 0,
+        "timed_out": false,
+        "seconds": 0.115
+      },
+      "run": {
+        "command": [
+          "/usr/bin/java",
+          "-jar",
+          "/mnt/d/projects/JLinAlg/build/git-publish/20261117-all-main-11/checkout/build/cli/omicsmatic-0.4.0.jar",
+          "snakemake-tools",
+          "run",
+          "--request",
+          "/root/.local/share/omicsmatic/snakemake-public-example-20261117-2/apptainer/example/recipe.json",
+          "--runtime",
+          "/mnt/d/projects/JLinAlg/build/snakemake-workflow-1/build/snakemake-original/effective-policy-3/adoption",
+          "--out",
+          "/root/.local/share/omicsmatic/snakemake-public-example-20261117-2/apptainer/example/analysis"
+        ],
+        "working_directory": "/root/.local/share/omicsmatic/snakemake-public-example-20261117-2/apptainer",
+        "exit_code": 0,
+        "timed_out": false,
+        "seconds": 40.239
+      },
+      "verify": {
+        "command": [
+          "/usr/bin/java",
+          "-jar",
+          "/mnt/d/projects/JLinAlg/build/git-publish/20261117-all-main-11/checkout/build/cli/omicsmatic-0.4.0.jar",
+          "snakemake-tools",
+          "verify",
+          "--bundle",
+          "/root/.local/share/omicsmatic/snakemake-public-example-20261117-2/apptainer/example/analysis/bundle",
+          "--out",
+          "/root/.local/share/omicsmatic/snakemake-public-example-20261117-2/apptainer/verification"
+        ],
+        "working_directory": "/root/.local/share/omicsmatic/snakemake-public-example-20261117-2/apptainer",
+        "exit_code": 0,
+        "timed_out": false,
+        "seconds": 2.281
+      },
+      "native_example": "/root/.local/share/omicsmatic/snakemake-public-example-20261117-2/apptainer/example",
+      "adopted_completed_run": false
+    },
+    {
+      "mode": "conda-apptainer",
+      "prepare": {
+        "command": [
+          "/usr/bin/python3",
+          "-I",
+          "-B",
+          "/mnt/d/projects/JLinAlg/build/snakemake-workflow-1/examples/snakemake-workflow/prepare.py",
+          "--runtime",
+          "/mnt/d/projects/JLinAlg/build/snakemake-workflow-1/build/snakemake-original/effective-policy-3/adoption",
+          "--out",
+          "/root/.local/share/omicsmatic/snakemake-public-example-20261117-2/conda-apptainer/example",
+          "--deployment",
+          "conda-apptainer",
+          "--providers",
+          "/mnt/d/projects/JLinAlg/build/snakemake-workflow-1/build/snakemake-original/managed-provider-adoption-5",
+          "--conda-environments",
+          "/root/.local/share/omicsmatic/snakemake-managed-controls-20261116-7/conda-apptainer/working/.snakemake/conda",
+          "--container-images",
+          "/root/.local/share/omicsmatic/snakemake-managed-controls-20261116-7/images"
+        ],
+        "working_directory": "/root/.local/share/omicsmatic/snakemake-public-example-20261117-2/conda-apptainer",
+        "exit_code": 0,
+        "timed_out": false,
+        "seconds": 0.114
+      },
+      "run": {
+        "command": [
+          "/usr/bin/java",
+          "-jar",
+          "/mnt/d/projects/JLinAlg/build/git-publish/20261117-all-main-11/checkout/build/cli/omicsmatic-0.4.0.jar",
+          "snakemake-tools",
+          "run",
+          "--request",
+          "/root/.local/share/omicsmatic/snakemake-public-example-20261117-2/conda-apptainer/example/recipe.json",
+          "--runtime",
+          "/mnt/d/projects/JLinAlg/build/snakemake-workflow-1/build/snakemake-original/effective-policy-3/adoption",
+          "--out",
+          "/root/.local/share/omicsmatic/snakemake-public-example-20261117-2/conda-apptainer/example/analysis"
+        ],
+        "working_directory": "/root/.local/share/omicsmatic/snakemake-public-example-20261117-2/conda-apptainer",
+        "exit_code": 0,
+        "timed_out": false,
+        "seconds": 78.398
+      },
+      "verify": {
+        "command": [
+          "/usr/bin/java",
+          "-jar",
+          "/mnt/d/projects/JLinAlg/build/git-publish/20261117-all-main-11/checkout/build/cli/omicsmatic-0.4.0.jar",
+          "snakemake-tools",
+          "verify",
+          "--bundle",
+          "/root/.local/share/omicsmatic/snakemake-public-example-20261117-2/conda-apptainer/example/analysis/bundle",
+          "--out",
+          "/root/.local/share/omicsmatic/snakemake-public-example-20261117-2/conda-apptainer/verification"
+        ],
+        "working_directory": "/root/.local/share/omicsmatic/snakemake-public-example-20261117-2/conda-apptainer",
+        "exit_code": 0,
+        "timed_out": false,
+        "seconds": 3.723
+      },
+      "native_example": "/root/.local/share/omicsmatic/snakemake-public-example-20261117-2/conda-apptainer/example",
+      "adopted_completed_run": false
+    }
+  ],
+  "jar": {
+    "bytes": 193492199,
+    "sha256": "d4b04417edc0f39844edde1475a269a3dc07918c32e09ee3433e6f9440aa6d63"
+  },
+  "example_source": {
+    "bytes": 8446,
+    "sha256": "680b54a34017631a63caab386d65863289e268d2d7f02460a3783c8b3b964aac"
+  },
+  "source_inputs_unchanged": true,
+  "synthetic_only": true,
+  "complete_qualification": false,
+  "new_catalog_credit": 0,
+  "whole_goal_complete": false
+}

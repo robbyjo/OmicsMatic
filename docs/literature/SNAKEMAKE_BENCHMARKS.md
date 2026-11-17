@@ -5,8 +5,10 @@ native recomputation. It sums recorded `cpu_time` and takes the maximum recorded
 `max_rss` per explicit pipeline/replicate. It reads the standard and extended TSV
 formats of selected Snakemake 9.27.1, commit
 `f79d9eb5e2b679e1191818f24335907b041578be`. It does not implement the Snakemake
-workflow language or measure jobs. The separate original-engine adapter and
-catalog admission remain in progress; this component adds no catalog credit.
+workflow language or measure jobs. The separate
+[original-engine commands](SNAKEMAKE_WORKFLOWS.md) cover selected local execution.
+They and this native component belong to one family; benchmark aggregation earns
+no second native integration credit.
 Build current source: released v0.4.0 executables lack the command.
 
 ## Start with the example

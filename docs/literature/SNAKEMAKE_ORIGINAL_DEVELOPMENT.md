@@ -1,10 +1,10 @@
 # Original Snakemake adapter development checkpoint
 
-**Current source update:** the new public workflow commands are present but
-their complete runtime qualification is pending. See
-[SNAKEMAKE_WORKFLOWS.md](SNAKEMAKE_WORKFLOWS.md) for current warnings and recovery
-steps. The checkpoint below describes earlier frozen development editions;
-statements about an absent public dispatcher apply to those editions.
+**Current source:** see [SNAKEMAKE_WORKFLOWS.md](SNAKEMAKE_WORKFLOWS.md) for
+qualified selected public commands, current evidence, warnings and recovery.
+The private checkpoints below describe earlier frozen editions.
+
+<details><summary>Historical private development checkpoints</summary>
 
 **WARNING: unfinished development code. There is no supported original-engine
 analysis command. Completed developer bundles remain experimental and are not
@@ -279,3 +279,5 @@ paths. The separate setup utility carries its own pinned synthetic fixtures.
 Do not edit an old receipt or refresh its saved hashes to make changed code pass.
 Changes to a driver, logger or selected software require new controls and a new
 adoption record.
+
+</details>

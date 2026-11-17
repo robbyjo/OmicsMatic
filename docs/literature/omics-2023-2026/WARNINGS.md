@@ -1,3 +1,15 @@
+# Current literature warnings and required actions
+
+## Snakemake: scoped local workflows
+
+**Available from current source:** original local `snakemake-tools run`, `verify` and `replay`, plus the separate native `benchmark` component. Released v0.4.0 lacks the new workflow commands. Read [commands and scope](../SNAKEMAKE_WORKFLOWS.md).
+
+**SKIP3 / FAIL2:** install only where permitted. Missing/forbidden runtime, provider, cache or filesystem prerequisites skip the dependent analysis; restore the named permitted prerequisite or leave it skipped. Other failures admit no complete result. Preserve source inputs, raw outputs, original diagnostics, invalidated markers and every failed attempt; correct the discrepancy and retry NEW output. Never substitute editions, relocate an installed Conda prefix or refresh historical hashes. Verification establishes captured consistency, not authenticity or biological accuracy.
+
+**Current cohort:** 250 papers, 446 families, 2693 observations, 1214 reviewed uses and 1479 unreviewed. Adding one scoped Snakemake upstream family brings the total to 126 new integrations (23 native/103 upstream), 261 missing; 129 including three existing adapters. P190 is pipeline-code availability, not evidence that its reported analyses used that pipeline. Full semantic review and implementation remain open.
+
+<details><summary>Checkpoint before Snakemake admission (historical)</summary>
+
 # 250-paper omics and GWAS toolbox catalog
 
 ## PoPS: scope, warnings and required actions
@@ -1406,6 +1418,8 @@ output path. Disconnected infinite pseudotime values remain present. LEARN
 does not admit a pseudotime result. Do not infer roots or repair values to
 conceal failures. Full Batchelor, study reproduction and biological accuracy
 remain unproven; the250-paper goal remains active.
+
+</details>
 
 </details>
 

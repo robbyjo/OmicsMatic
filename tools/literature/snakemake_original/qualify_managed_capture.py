@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # Copyright (C) 2026 JLinAlg contributors; SPDX-License-Identifier: GPL-3.0-or-later
-"""Captured original managed workflows with real inputs/software/events/outputs; no final bundle admission."""
+"""Qualify captured managed workflows through a frozen probe or the actual packaged public CLI."""
 from pathlib import Path
 import argparse,json,os,shutil,sys,traceback
 if not __debug__:raise RuntimeError('Qualification assertions must remain enabled')
@@ -56,17 +56,21 @@ def export(stage,out):
 
 def main():
     p=argparse.ArgumentParser(description=__doc__)
-    for name in ['compiled','runtime','providers','source-native','native-out','out']:p.add_argument('--'+name,type=Path,required=True)
-    p.add_argument('--scenarios',nargs='+',choices=['reuse','install','missing','profile-skip','upstream-fail','missing-output'],default=['reuse','install','missing','profile-skip','upstream-fail','missing-output']);p.add_argument('--modes',nargs='+',choices=['conda','apptainer','conda-apptainer'],default=['conda','apptainer','conda-apptainer']);p.add_argument('--bundle',action='store_true',help='Exercise complete managed evidence sealing and independent verification');p.add_argument('--defer-export',action='store_true',help='Retain native evidence for compact archival instead of duplicating per-case blobs on a mounted filesystem');a=p.parse_args();out=a.out.resolve();assert out.is_relative_to(ROOT/'build');out.mkdir(exist_ok=False);shutil.copyfile(__file__,out/'as-run-qualifier.py');stage=None
+    engine=p.add_mutually_exclusive_group(required=True);engine.add_argument('--compiled',type=Path);engine.add_argument('--jar',type=Path,help='Use java -jar ... snakemake-tools run/verify, never the private probe')
+    for name in ['runtime','providers','source-native','native-out','out']:p.add_argument('--'+name,type=Path,required=True)
+    p.add_argument('--scenarios',nargs='+',choices=['reuse','install','missing','profile-skip','profile-shadow','upstream-fail','missing-output'],default=['reuse','install','missing','profile-skip','upstream-fail','missing-output']);p.add_argument('--modes',nargs='+',choices=['conda','apptainer','conda-apptainer'],default=['conda','apptainer','conda-apptainer']);p.add_argument('--bundle',action='store_true',help='Exercise complete managed evidence sealing and independent verification');p.add_argument('--defer-export',action='store_true',help='Retain native evidence for compact archival instead of duplicating per-case blobs on a mounted filesystem');a=p.parse_args();out=a.out.resolve();assert out.is_relative_to(ROOT/'build');out.mkdir(exist_ok=False);shutil.copyfile(__file__,out/'as-run-qualifier.py');stage=None
+    if a.jar:a.bundle=True
     def publish():
         if not a.defer_export:export(stage,out);return
         for name in ['COMPLETED.json','FAILURE.json']:
             if (stage/name).is_file():shutil.copyfile(stage/name,out/('NATIVE-'+name))
         write(out/'NATIVE-EVIDENCE.json',dict(native=str(stage),export_deferred=True,required_action='Retain the complete native family. Archive the completed bundles and raw capture/control evidence into NEW paths; do not rerun analyses because export is deferred or fails.',user_analysis_admitted=False))
     try:
-        assert sys.platform=='linux';stage=a.native_out.absolute();assert stage==stage.resolve() and not stage.exists() and not str(stage).startswith('/mnt/');stage.mkdir();(stage/'cases').mkdir();(stage/'as-run').mkdir();compiled=json.loads((a.compiled/'COMPILED.json').read_bytes())
+        assert sys.platform=='linux';stage=a.native_out.absolute();assert stage==stage.resolve() and not stage.exists() and not str(stage).startswith('/mnt/');stage.mkdir();(stage/'cases').mkdir();(stage/'as-run').mkdir();compiled=json.loads((a.compiled/'COMPILED.json').read_bytes()) if a.compiled else None;jar_pin=pin(a.jar.resolve()) if a.jar else None
         for name in ['qualify_managed_capture.py','qualify_workflows.py','qualify_deployment.py','setup_runtime.py','setup_deployment.py']:shutil.copyfile(HERE/name,stage/'as-run'/name)
-        for name,expected in compiled['sources'].items():assert pin(ROOT/name)==expected,name
+        if compiled:
+            for name,expected in compiled['sources'].items():assert pin(ROOT/name)==expected,name
+        else:write(stage/'PUBLIC-PACKAGE.json',dict(path=str(a.jar.resolve()),pin=jar_pin,commands=['snakemake-tools run','snakemake-tools verify']))
         old=a.source_native.resolve();source=json.loads((old/'SOURCE.json').read_bytes());roots={'conda':old/'conda/working/.snakemake/conda','conda-apptainer':old/'conda-apptainer/working/.snakemake/conda','images':old/'images','conda-provider':Path(source['manager_installation'])/'conda','apptainer-provider':Path(source['apptainer_prefix'])};before={key:dict(root=str(path),nodes=manager_tree(path)) for key,path in roots.items()};write(stage/'IMMUTABLE-BEFORE.json',before);rows=[]
         for scenario in a.scenarios:
             for mode in a.modes:
@@ -78,6 +82,7 @@ def main():
                 if scenario=='upstream-fail':snake=snake.replace('python compute.py','exit 17; python compute.py')
                 (work/'Snakefile').write_text(snake)
                 if scenario=='profile-skip':profile=work/'profiles/default';profile.mkdir(parents=True);(profile/'config.yaml').write_text('until: [make]\n')
+                if scenario=='profile-shadow':profile=work/'profiles/default';profile.mkdir(parents=True);(profile/'config.yaml').write_text('shadow-prefix: '+str(case/'external-shadow')+'\n')
                 if scenario=='install' and mode!='apptainer':archive=work/'.snakemake/conda-archive';archive.parent.mkdir();shutil.copytree(old/'conda/working/.snakemake/conda-archive',archive)
                 request=recipe(work,'run');request['schema_version']=2;request['workflow']['targets']=['make'];request['resources']={'data':dict(path=str(data))};request['parameters']=dict(mode=mode,data_path={'$input':'data','path':'values.txt'},destination={'$output':'summary.tsv'},huge=9007199254740993,tiny=1e-300);request['execution'].update(deployment=mode,allow_install=scenario=='install',cores=1)
                 borrowed=scenario not in ['install','missing'];request['managed_software']=dict(providers=str(a.providers.resolve()),conda_environments=str(roots['conda-apptainer' if mode=='conda-apptainer' else 'conda']) if borrowed and mode!='apptainer' else None,container_images=str(roots['images']) if borrowed and mode!='conda' else None)
@@ -85,7 +90,9 @@ def main():
                 if scenario=='missing-output':request['outputs'].append(dict(root='published',path='not-created.tsv',kind='file',allow_empty=False,comparison='exact'))
                 request['limits'].update(capture_files=200000,capture_bytes=8589934592,file_bytes=1073741824,output_file_bytes=1073741824,workspace_bytes=34359738368,wall_seconds=900,cpu_seconds=900,address_space_bytes=17179869184,processes=96,threads=512,sampled_rss_bytes=8589934592,metadata_bytes=67108864,log_bytes=67108864,poll_millis=25)
                 write(case/'recipe.json',request);write(case/'INPUTS-BEFORE.json',dict(workflow=manager_tree(work),data=manager_tree(data)));launch=case/'LAUNCH.json';write(launch,dict(recipe=str(case/'recipe.json'),runtime=str(a.runtime.resolve()),out=str(case/'execution')))
-                process=execute(case,'execute',['/usr/bin/java','-cp',compiled['classpath'],compiled['probe'],'managed-bundle' if a.bundle else 'workflow',str(launch)],dict(PATH='/usr/bin:/bin',LANG='C.UTF-8',LC_ALL='C.UTF-8',TZ='UTC'),case,1500);positive=scenario in ['reuse','install'];assert (process['exit_code']==0)==positive,(name,'Inspect retained original source, process and capture diagnostics')
+                command=['/usr/bin/java','-jar',str(a.jar.resolve()),'snakemake-tools','run','--request',str(case/'recipe.json'),'--runtime',str(a.runtime.resolve()),'--out',str(case/'execution')] if a.jar else ['/usr/bin/java','-cp',compiled['classpath'],compiled['probe'],'managed-bundle' if a.bundle else 'workflow',str(launch)]
+                process=execute(case,'execute',command,dict(PATH='/usr/bin:/bin',LANG='C.UTF-8',LC_ALL='C.UTF-8',TZ='UTC'),case,1500);positive=scenario in ['reuse','install','profile-shadow'];assert (process['exit_code']==0)==positive,(name,'Inspect retained original source, process and capture diagnostics')
+                if a.jar:assert process['exit_code']==(0 if positive else 3 if scenario in ['missing','profile-skip'] else 2)
                 execution=case/'execution';assert not (execution/'COMPLETED.json').exists();assert (execution/'bundle/COMPLETED.json').is_file()==(a.bundle and positive);assert json.loads((case/'INPUTS-BEFORE.json').read_bytes())==dict(workflow=manager_tree(work),data=manager_tree(data))
                 if positive:
                     assert (execution/'EXECUTED.json').is_file();outputs=json.loads((execution/'outputs.json').read_bytes());table=next(row for row in outputs if row['root']=='published')['members']['']['pin'];assert (execution/'objects'/table['sha256']).read_bytes()==b'total\thuge\ttiny\n5\t9007199254740993\t1e-300\n';assert json.loads((execution/'completion-events.json').read_bytes())['final_done']>=1
@@ -94,12 +101,18 @@ def main():
                     if mode!='apptainer':assert software['conda_prefix'].startswith(selected['environments']+'/')
                     controller=json.loads((execution/'CONTROLLER.json').read_bytes());calls=[item for process in controller['policy_processes'] for item in process['records']]
                     assert (any(item['installation_required'] for item in calls))==(scenario=='install')
+                    if a.jar:
+                        assert json.loads((execution/'bundle/COMPLETED.json').read_bytes())['user_analysis_admitted'] is True
+                        verified=execute(case,'verify',['/usr/bin/java','-jar',str(a.jar.resolve()),'snakemake-tools','verify','--bundle',str(execution/'bundle'),'--out',str(case/'verification')],dict(PATH='/usr/bin:/bin',LANG='C.UTF-8',LC_ALL='C.UTF-8',TZ='UTC'),case,900);assert verified['exit_code']==0
+                    if scenario=='profile-shadow':assert not (case/'external-shadow').exists(),'Captured profile escaped the explicitly owned shadow staging path'
                 else:
                     failure=json.loads((execution/'FAILURE.json').read_bytes());assert failure['exit_code']==(3 if scenario in ['missing','profile-skip'] else 2) and not (execution/'EXECUTED.json').exists()
                 assert (execution/'software-after.json').is_file();rows.append(dict(case=name,mode=mode,scenario=scenario,source_process=process,expected_success=positive));print(name+' PASS',flush=True)
         after={key:dict(root=str(path),nodes=manager_tree(path)) for key,path in roots.items()};write(stage/'IMMUTABLE-AFTER.json',after);assert before==after
-        for name,expected in compiled['sources'].items():assert pin(ROOT/name)==expected,name
-        write(stage/'COMPLETED.json',dict(status='PASS_CAPTURED_MANAGED_ORIGINAL_WORKFLOW_INPUT_SOFTWARE_EVENTS_OUTPUTS_NOT_FINAL_ADMISSION',cases=rows,managed_bundles=a.bundle,original_software_unchanged=True,user_analysis_admitted=False,new_catalog_credit=0,whole_goal_complete=False));publish()
+        if compiled:
+            for name,expected in compiled['sources'].items():assert pin(ROOT/name)==expected,name
+        else:assert pin(a.jar.resolve())==jar_pin
+        write(stage/'COMPLETED.json',dict(status='PASS_PUBLIC_MANAGED_WORKFLOW_RUN_AND_VERIFY_CONTROLS' if a.jar else 'PASS_CAPTURED_MANAGED_ORIGINAL_WORKFLOW_INPUT_SOFTWARE_EVENTS_OUTPUTS_NOT_FINAL_ADMISSION',cases=rows,managed_bundles=a.bundle,public_cli=a.jar is not None,jar=jar_pin,original_software_unchanged=True,user_analysis_admitted=False,new_catalog_credit=0,whole_goal_complete=False));publish()
     except BaseException as error:
         if stage is not None:write(stage/'FAILURE.json',dict(error=repr(error),traceback=traceback.format_exc(),required_action='Retain every original input, source/process diagnostic, partial object and native prefix. Skip dependent analysis; resolve the cause where permitted and retry NEW paths. Never relocate installed Conda prefixes or refresh earlier hashes.'));publish()
         raise

@@ -23,16 +23,16 @@ def main():
                 for raw in iter(lambda:f.read(1048576),b''):digest.update(raw);size+=len(raw)
             actual=dict(bytes=size,sha256=digest.hexdigest());assert actual==expected,name
             if name.startswith('objects/'):assert name[8:]==actual['sha256'] and index['blobs'][actual['sha256']]==actual
-        completed=json.loads(z.read(index['files']['COMPLETED.json']['member']));assert len(completed['cases'])==18 and completed['original_software_unchanged'] and not completed['user_analysis_admitted'] and not completed['whole_goal_complete'];bundles=0
+        completed=json.loads(z.read(index['files']['COMPLETED.json']['member']));public=completed.get('public_cli',False);assert len(completed['cases'])==(21 if public else 18) and completed['original_software_unchanged'] and not completed['user_analysis_admitted'] and not completed['whole_goal_complete'];bundles=0
         if index.get('managed_bundles_included'):
             for case in completed['cases']:
                 prefix='cases/'+case['case']+'/bundle/';files={name[len(prefix):]:value for name,value in index['files'].items() if name.startswith(prefix)}
                 if not case['expected_success']:assert not files;continue
-                manifest=json.loads(z.read(files['manifest.json']['member']));marker=json.loads(z.read(files['COMPLETED.json']['member']));assert marker['kind']=='declared-managed-workflow' and marker['status']=='completed-declared-managed-workflow-evidence' and not marker['user_analysis_admitted'] and marker['manifest']==files['manifest.json']['pin']
+                manifest=json.loads(z.read(files['manifest.json']['member']));marker=json.loads(z.read(files['COMPLETED.json']['member']));assert marker['kind']=='declared-managed-workflow' and marker['status']=='completed-declared-managed-workflow-evidence' and marker['user_analysis_admitted'] is public and marker['manifest']==files['manifest.json']['pin']
                 assert set(files)==set(manifest['files'])|{'manifest.json','COMPLETED.json'}
                 for name,value in manifest['files'].items():assert value==files[name]['pin']
                 bundles+=1
-            assert bundles==6
+            assert bundles==(9 if public else 6)
     assert pin(path)==before
     result=dict(status='PASS_COMPLETE_COMPACT_CAPTURE_ARCHIVE_CENSUS_EVERY_MEMBER_AND_SHARED_BLOB_REFERENCE',archive=before,physical_members=len(members)+1,virtual_references=len(index['files']),unique_blobs=len(index['blobs']),managed_bundles_checked=bundles,engine_executed=False,user_analysis_admitted=False,new_catalog_credit=0,whole_goal_complete=False)
     with (out/'COMPLETED.json').open('x',encoding='utf-8') as f:json.dump(result,f,indent=2);f.write('\n')

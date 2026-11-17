@@ -1,9 +1,10 @@
 # Snakemake deployment verification and installation policy
 
-**Current source update:** private managed bundle and replay qualification is
-recorded later in this guide. The newer public commands still need complete
-runtime qualification; see [SNAKEMAKE_WORKFLOWS.md](SNAKEMAKE_WORKFLOWS.md).
-The opening checkpoint below describes an earlier frozen code edition.
+**Current source:** see [SNAKEMAKE_WORKFLOWS.md](SNAKEMAKE_WORKFLOWS.md) for the
+selected public workflow/deployment qualification and recovery instructions.
+The checkpoints below retain the earlier private development history.
+
+<details><summary>Historical deployment and private qualification checkpoints</summary>
 
 **WARNING: developer qualification only. Captured managed execution now binds
 inputs, original job events, software payloads and outputs to its process policy.
@@ -409,3 +410,5 @@ a NEW archive path; do not repeat an analysis merely because export failed.
 development qualification path, not a new supported public analysis command.
 It adds no Snakemake catalog credit; the six paper roles and the broader
 250-paper objective remain pending their respective implementation/review work.
+
+</details>
