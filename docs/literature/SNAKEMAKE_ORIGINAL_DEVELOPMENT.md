@@ -238,9 +238,12 @@ recorded separately; they do not justify removing the upstream warning.
 
 Java provider verification and scoped installation-permission controls are
 described in [SNAKEMAKE_DEPLOYMENT_DEVELOPMENT.md](SNAKEMAKE_DEPLOYMENT_DEVELOPMENT.md).
-They do not yet enable managed Java execution. Spawned-process permission
-propagation and its portable Java reader have separate synthetic qualification;
-binding them to the execution supervisor, managed-software capture/replay and the
+They do not yet enable managed Java workflow analysis. Spawned-process permission
+propagation and its portable Java reader now also have twelve original-engine
+controls bound to the actual Java process supervisor. Explicit software staging
+data has eight separate link/scope/capacity controls; the failed first unpack is
+retained. See the deployment development guide for its warning and recovery steps.
+Complete managed-software capture/replay and the
 remaining admission gates are unfinished.
 
 Source-control qualification scripts still use the recorded development control

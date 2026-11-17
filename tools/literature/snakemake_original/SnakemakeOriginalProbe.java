@@ -12,6 +12,14 @@ public final class SnakemakeOriginalProbe {
         var root=Path.of(args[1]).toAbsolutePath().normalize();
         Runnable check=()->{if(Thread.currentThread().isInterrupted())throw new java.util.concurrent.CancellationException("Probe interrupted");};
         switch(args[0]) {
+            case "supervised-policy" -> {
+                var request=SnakemakeOriginalFiles.object(SnakemakeOriginalFiles.json(root,4_194_304));var environment=new java.util.TreeMap<String,String>();
+                for(var row:SnakemakeOriginalFiles.object(request.get("environment")).entrySet())environment.put(SnakemakeOriginalFiles.text(row.getKey()),SnakemakeOriginalFiles.text(row.getValue()));
+                var limits=SnakemakeOriginalFiles.object(request.get("limits"));
+                var selected=new SnakemakeOriginalProcess.Limits(SnakemakeOriginalFiles.integer(limits.get("wall_seconds"),1,3600)*1000,SnakemakeOriginalFiles.integer(limits.get("address_space_bytes"),16777216,1099511627776L),SnakemakeOriginalFiles.integer(limits.get("cpu_seconds"),1,3600),SnakemakeOriginalFiles.integer(limits.get("file_bytes"),1,1000000000000L),(int)SnakemakeOriginalFiles.integer(limits.get("open_files"),8,1048576),SnakemakeOriginalFiles.integer(limits.get("workspace_bytes"),1,1000000000000L),(int)SnakemakeOriginalFiles.integer(limits.get("files"),4,1000000),(int)SnakemakeOriginalFiles.integer(limits.get("processes"),1,4096),(int)SnakemakeOriginalFiles.integer(limits.get("threads"),1,1048576),SnakemakeOriginalFiles.integer(limits.get("sampled_rss_bytes"),1,1099511627776L),(int)SnakemakeOriginalFiles.integer(limits.get("poll_millis"),1,1000));
+                var invocation=new SnakemakeOriginalManagedProcess.Invocation(Path.of(SnakemakeOriginalFiles.text(request.get("root"))),Path.of(SnakemakeOriginalFiles.text(request.get("working"))),Path.of(SnakemakeOriginalFiles.text(request.get("runtime"))),Path.of(SnakemakeOriginalFiles.text(request.get("providers"))),Path.of(SnakemakeOriginalFiles.text(request.get("controller_request"))),environment,selected);
+                var result=SnakemakeOriginalManagedProcess.execute(invocation,check);System.out.println(SnakemakeOriginalJson.json(Map.of("status","SUPERVISED_ORIGINAL_PROCESS_POLICY_ONLY_NOT_WORKFLOW_ADMISSION","bound",result)));if(result.exitCode()!=0)System.exit(result.exitCode());
+            }
             case "installation-policy" -> {
                 var request=SnakemakeOriginalFiles.object(SnakemakeOriginalFiles.json(root,4_194_304));var owned=new java.util.HashSet<Long>();
                 for(Object pid:SnakemakeOriginalFiles.list(request.get("owned_processes")))owned.add(SnakemakeOriginalFiles.integer(pid,1,Long.MAX_VALUE));
@@ -61,13 +69,14 @@ public final class SnakemakeOriginalProbe {
                 var result=SnakemakeOriginalReplay.execute(Path.of(SnakemakeOriginalFiles.text(request.get("bundle"))),Path.of(SnakemakeOriginalFiles.text(request.get("runtime"))),Path.of(SnakemakeOriginalFiles.text(request.get("out"))),check);
                 System.out.println(SnakemakeOriginalJson.json(Map.of("status","PASS_GENUINE_ORIGINAL_ENGINE_RERUN_AND_DECLARED_COMPARISON","manifest",result.manifest(),"logical_jobs",result.events().jobs().size())));
             }
-            case "process" -> {
+            case "process", "process-data" -> {
                 var request=SnakemakeOriginalFiles.object(SnakemakeOriginalFiles.json(root,1_048_576));
                 var command=SnakemakeOriginalFiles.strings(request.get("command"));var environment=new java.util.TreeMap<String,String>();
                 for(var row:SnakemakeOriginalFiles.object(request.get("environment")).entrySet())environment.put(SnakemakeOriginalFiles.text(row.getKey()),SnakemakeOriginalFiles.text(row.getValue()));
                 Path owned=Path.of(SnakemakeOriginalFiles.text(request.get("owned"))),working=Path.of(SnakemakeOriginalFiles.text(request.get("working")));
                 var limits=new SnakemakeOriginalProcess.Limits(SnakemakeOriginalFiles.integer(request.get("wall_millis"),1,60000),1_073_741_824,60,16_777_216,256,134_217_728,1000,16,128,536_870_912,10);
-                var result=SnakemakeOriginalProcess.executeSession(command,environment,owned.resolve("process"),working,owned,limits,()->{},check);
+                var data=new java.util.ArrayList<Path>();if(args[0].equals("process-data"))for(Object path:SnakemakeOriginalFiles.list(request.get("software_data")))data.add(Path.of(SnakemakeOriginalFiles.text(path)));
+                var result=args[0].equals("process-data")?SnakemakeOriginalProcess.executeManagedSession(command,environment,owned.resolve("process"),working,owned,limits,data,()->{},check):SnakemakeOriginalProcess.executeSession(command,environment,owned.resolve("process"),working,owned,limits,()->{},check);
                 System.out.println(SnakemakeOriginalJson.json(Map.of("status","PASS_OWNED_PROCESS_ONLY_NOT_ANALYSIS","result",result)));
             }
             default -> throw new IllegalArgumentException("Unknown qualification mode");

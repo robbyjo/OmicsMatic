@@ -63,7 +63,7 @@ final class SnakemakeOriginalProcess {
     /** Package-private seam for real controlled helper-process tests. */
     static Result executeOwned(List<String> command, Map<String, String> environment, Path newWork,
             Path allowedRoot, Limits limits, Check integrity, Runnable cancellation) throws IOException {
-        return execute(command,environment,newWork,newWork,allowedRoot,newWork,limits,integrity,cancellation);
+        return execute(command,environment,newWork,newWork,allowedRoot,newWork,limits,List.of(),integrity,cancellation);
     }
 
     /** Stable engine cwd/cache across attempts; each attempt owns new diagnostics. */
@@ -71,11 +71,20 @@ final class SnakemakeOriginalProcess {
             Path workingDirectory,Path allowedRoot,Limits limits,Check integrity,Runnable cancellation)throws IOException {
         SnakemakeOriginalFiles.directory(workingDirectory);
         if(!workingDirectory.startsWith(allowedRoot))throw new IOException("SnakemakeOriginal session cwd escapes its owned root");
-        return execute(command,environment,newRecord,workingDirectory,allowedRoot,allowedRoot,limits,integrity,cancellation);
+        return execute(command,environment,newRecord,workingDirectory,allowedRoot,allowedRoot,limits,List.of(),integrity,cancellation);
+    }
+
+    /** Explicit software payload trees are observed without interpreting their links as host aliases. */
+    static Result executeManagedSession(List<String> command,Map<String,String> environment,Path newRecord,
+            Path workingDirectory,Path allowedRoot,Limits limits,List<Path> softwareData,Check integrity,Runnable cancellation)throws IOException {
+        SnakemakeOriginalFiles.directory(workingDirectory);var roots=new ArrayList<Path>();
+        for(Path path:softwareData){SnakemakeOriginalFiles.directory(path);if(!path.startsWith(allowedRoot)||path.equals(allowedRoot)||workingDirectory.startsWith(path)||newRecord.startsWith(path)||roots.contains(path))throw new IOException("Invalid explicit owned software-data observation root");roots.add(path);}
+        if(!workingDirectory.startsWith(allowedRoot))throw new IOException("Managed source cwd escapes its owned root");
+        return execute(command,environment,newRecord,workingDirectory,allowedRoot,allowedRoot,limits,List.copyOf(roots),integrity,cancellation);
     }
 
     private static Result execute(List<String> command,Map<String,String> environment,Path newWork,Path workingDirectory,
-            Path allowedRoot,Path observedRoot,Limits limits,Check integrity,Runnable cancellation)throws IOException {
+            Path allowedRoot,Path observedRoot,Limits limits,List<Path> softwareData,Check integrity,Runnable cancellation)throws IOException {
         Objects.requireNonNull(limits, "limits"); Objects.requireNonNull(integrity, "integrity"); Objects.requireNonNull(cancellation, "cancellation");
         if (!System.getProperty("os.name").equals("Linux")) throw new Unavailable("Owned SnakemakeOriginal execution requires Linux Java");
         Path work = newWork.toAbsolutePath().normalize();
@@ -94,6 +103,7 @@ final class SnakemakeOriginalProcess {
         var record = new LinkedHashMap<String, Object>(); record.put("status", "launching"); record.put("command", invocation); record.put("limits", limits);
         record.put("working_directory",workingDirectory.toAbsolutePath().normalize().toString());
         record.put("workspace_root",observedRoot.toAbsolutePath().normalize().toString());
+        if(!softwareData.isEmpty()){record.put("link_data_roots",softwareData);record.put("link_data_scope","Explicit owned container staging/package-cache data. Symlink text and special-file metadata are counted without following/opening payload links/devices. File/byte/process limits remain enforced. This is not result capture, an execution dependency seal or a security sandbox.");}
         record.put("scope", "Hard per-process AS/CPU/file/nofile limits; wall/workspace/process/thread and sampled aggregate RSS checks. Sampled RSS is not a hard aggregate RSS bound.");
         Process child = null; Guard guard = null; IOException failure = null; long started = System.nanoTime();
         try {
@@ -106,11 +116,11 @@ final class SnakemakeOriginalProcess {
             write(work.resolve("launch.json"), record); guard.observe();
             for (;;) {
                 cancellation.run(); guard.requireOpen(); guard.observe(); guard.enforce(limits);
-                guard.workspace = Math.max(guard.workspace, workspace(observedRoot, limits, allowedRoot));
+                guard.workspace = Math.max(guard.workspace, workspace(observedRoot, limits, allowedRoot,0,0,softwareData));
                 if (TimeUnit.NANOSECONDS.toMillis(System.nanoTime() - started) > limits.wallMillis) throw new IOException("SnakemakeOriginal wall-time capacity exceeded");
                 if (child.waitFor(limits.monitorMillis, TimeUnit.MILLISECONDS)) break;
             }
-            guard.observe(); guard.enforce(limits); guard.workspace = Math.max(guard.workspace, workspace(observedRoot, limits, allowedRoot));
+            guard.observe(); guard.enforce(limits); guard.workspace = Math.max(guard.workspace, workspace(observedRoot, limits, allowedRoot,0,0,softwareData));
             record.put("exit_code", child.exitValue());
             if (child.exitValue() != 0) throw new ExitFailure(child.exitValue());
         } catch (InterruptedException interrupted) {
@@ -128,7 +138,7 @@ final class SnakemakeOriginalProcess {
             try {
                 // A successful exit alone never admits scientific results.
                 integrity.verify(); cancellation.run();
-                if (guard != null) guard.workspace = Math.max(guard.workspace, workspace(observedRoot, limits, allowedRoot));
+                if (guard != null) guard.workspace = Math.max(guard.workspace, workspace(observedRoot, limits, allowedRoot,0,0,softwareData));
             } catch (IOException | RuntimeException changed) {
                 if (failure == null) failure = new IOException("SnakemakeOriginal input/runtime/workspace integrity failed after execution", changed); else failure.addSuppressed(changed);
             }
@@ -144,7 +154,7 @@ final class SnakemakeOriginalProcess {
             try {
                 String provisional = SnakemakeOriginalJson.json(record) + "\n";
                 long additionalBytes = provisional.getBytes(StandardCharsets.UTF_8).length + warning(failure).getBytes(StandardCharsets.UTF_8).length;
-                workspace(observedRoot, limits, allowedRoot, additionalBytes, 2);
+                workspace(observedRoot, limits, allowedRoot, additionalBytes, 2,softwareData);
             } catch (IOException capacity) { if (failure == null) failure = capacity; else failure.addSuppressed(capacity); }
             record.put("status", failure == null ? "completed-process-only" : "FAIL2-retained-no-result");
             if (failure != null) { record.put("error", failure.toString()); record.put("suppressed", java.util.Arrays.stream(failure.getSuppressed()).map(Throwable::toString).toList()); }
@@ -336,6 +346,10 @@ final class SnakemakeOriginalProcess {
         workspace(root,limits,root,additionalBytes,additionalFiles);
     }
     private static long workspace(Path root, Limits limits, Path allowedRoot, long additionalBytes, int additionalFiles) throws IOException {
+        return workspace(root,limits,allowedRoot,additionalBytes,additionalFiles,List.of());
+    }
+    private static long workspace(Path root, Limits limits, Path allowedRoot, long additionalBytes, int additionalFiles,List<Path> softwareData) throws IOException {
+        for(Path data:softwareData)SnakemakeOriginalFiles.directory(data);
         long[] bytes = {0}; int[] count = {0};
         Files.walkFileTree(root, new SimpleFileVisitor<>() {
             @Override public FileVisitResult preVisitDirectory(Path path, BasicFileAttributes attrs) throws IOException {
@@ -346,10 +360,11 @@ final class SnakemakeOriginalProcess {
                 if (attrs.isSymbolicLink()) {
                     try {
                         Path target = Files.readSymbolicLink(path);
-                        if (!path.getParent().resolve(target).normalize().startsWith(allowedRoot))
+                        boolean payload=softwareData.stream().anyMatch(path::startsWith);
+                        if (!payload&&!path.getParent().resolve(target).normalize().startsWith(allowedRoot))
                             throw new IOException("SnakemakeOriginal staged link escapes its captured bundle: " + path);
                         try {
-                            if (!path.toRealPath().startsWith(allowedRoot))
+                            if (!payload&&!path.toRealPath().startsWith(allowedRoot))
                                 throw new IOException("SnakemakeOriginal staged link resolves outside its captured bundle: " + path);
                         } catch (NoSuchFileException notYetPresent) { /* A staged target may still be produced. */ }
                         bytes[0] = Math.addExact(bytes[0], target.toString().getBytes(StandardCharsets.UTF_8).length);
@@ -362,7 +377,8 @@ final class SnakemakeOriginalProcess {
                     // presence does not admit them as captured result files.
                     try {
                         int kind = ((Number)Files.getAttribute(path, "unix:mode", LinkOption.NOFOLLOW_LINKS)).intValue() & 0170000;
-                        if (kind != 0010000 && kind != 0140000) throw new IOException("Unexpected SnakemakeOriginal workspace special file: " + path);
+                        boolean payload=softwareData.stream().anyMatch(path::startsWith);
+                        if (kind != 0010000 && kind != 0140000 && !(payload&&(kind==0020000||kind==0060000))) throw new IOException("Unexpected SnakemakeOriginal workspace special file: " + path);
                     } catch (NoSuchFileException disappeared) { return FileVisitResult.CONTINUE; }
                 }
                 if (bytes[0] > limits.workspaceBytes) throw new IOException("Owned SnakemakeOriginal workspace byte capacity exceeded"); return FileVisitResult.CONTINUE;

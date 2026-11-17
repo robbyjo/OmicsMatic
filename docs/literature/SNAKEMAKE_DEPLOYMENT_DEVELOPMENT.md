@@ -132,12 +132,38 @@ original assertion failure for an invalid external-environment `create` call.
 Use newly qualified readers and records. Do not refresh old hashes to make an
 earlier reader or evidence family appear corrected.
 
-The reader checks ownership against the set supplied by its caller. The final
-execution adapter must derive that set from its actual owned-process supervisor
-and bind it to input/software/output capture and replay. A policy record, process
-count or successful source control does not perform that integration. Missing,
-unclosed or contradictory records must prevent result admission. Current raw
+The reader checks ownership against the set supplied by its caller. The new
+package-private `SnakemakeOriginalManagedProcess` derives that set from the actual
+owned-process supervisor's completed ledger. It binds every reported policy PID
+to an observed PID/start-time identity, rejects ambiguous PID reuse, checks the
+controller's actual arguments and verifies complete cleanup. It also checks the
+selected engine and provider trees before and after execution and materializes
+the exact bundled project helpers. Twelve fresh original-engine controls passed
+through this Java path, covering the same three deployment modes and four
+permission scenarios. These are process and policy controls; managed workflow
+input/software/output capture, replay and public analysis admission remain
+unfinished. Missing, unclosed or contradictory records prevent acceptance of
+the process/policy receipt. Current raw
 records are retained in `propagated-policy-2` and the current propagated-reader
 control folders under
 `build/snakemake-original/`; `qualify_propagated_policy.py` and
 `qualify_propagated_records.py` describe the developer inputs with `--help`.
+
+**WARNING: the first Java-supervised fresh image pull was stopped while unpacking
+a legitimate container-root symlink.** Its failed native staging tree, original
+stderr, supervisor ledger and incomplete controller record remain retained in
+`supervised-policy-1`; no result was accepted. The corrected observer treats
+explicit owned container staging and package-cache directories as software data.
+It counts symlink text and special-file metadata without following payload links
+or opening devices. It still enforces file-count and byte limits. Workflow links
+outside these declared data directories retain the original containment checks.
+Eight separate controls cover payload links, workflow escapes, replacement of a
+declared directory, overlapping scopes and file/byte limits. A fresh complete
+twelve-case Java-supervised family passed in `supervised-policy-2`.
+
+Software-data observation is not complete software capture or a security
+sandbox. The top-level managed workflow still returns **SKIP3**. Use the supported
+preinstalled development path only within its documented scope; retain all
+warnings and failed attempts, and use new output paths after resolving a named
+failure. Do not interpret `SUPERVISED-POLICY.json` as a completed user analysis or
+refresh older receipts to make changed code appear qualified.
