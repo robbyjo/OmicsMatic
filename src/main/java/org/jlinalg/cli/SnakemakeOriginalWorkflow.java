@@ -14,28 +14,38 @@ import static org.jlinalg.cli.SnakemakeOriginalFiles.*;
 
 /** Captured original-engine execution under qualification; no public CLI or final bundle admission yet. */
 final class SnakemakeOriginalWorkflow {
-    static final String ACTION="DEVELOPMENT EXECUTION ONLY: final portable bundle verification/replay and software deployment qualification remain unfinished. No user analysis, paper reproduction or catalog integration is admitted. Keep captured inputs, original events, partial outputs and every failed attempt. Missing/forbidden prerequisites skip dependent analysis; install only where permitted and retry NEW paths. This runs trusted upstream workflow code, not a security sandbox.";
+    static final String ACTION="Selected original local workflow evidence. Verify the complete bundle before using declared outputs; request replay for fresh original-engine execution and comparison. Biological accuracy, author environment and whole-paper reproduction are not certified. Managed workflow deployment, public CLI and catalog qualification remain in progress. Keep captured inputs, original events, partial outputs and every failed attempt. Missing/forbidden prerequisites skip dependent analysis; install only where permitted and retry NEW paths. This runs trusted upstream workflow code, not a security sandbox.";
+    private static final String SOFTWARE_WARNING="\nWARNING: The recipe explicitly selects preinstalled software. Under the original engine's selected mode, Conda/Apptainer rule directives remain inactive. The recorded runtime and declared executable paths do not seal arbitrary additional software or data loaded by trusted workflow code. No installation/network sandbox is claimed.\n";
     record Tool(String name,String supplied,String resolved,Identity identity) { }
     record Published(String root,String path,String kind,String comparison,Map<String,SnakemakeOriginalOutputs.Value> members,long bytes,int files) {
         Published { members=Map.copyOf(members); }
     }
     record Result(Path root,SnakemakeOriginalEvents.Result events,List<Published> outputs) {Result {outputs=List.copyOf(outputs);}}
     private SnakemakeOriginalWorkflow() { }
+    static SnakemakeOriginalBundle.Verified run(Path recipe,Path runtime,Path output,Runnable check)throws IOException {
+        Result result=execute(recipe,runtime,output,check);
+        try{return SnakemakeOriginalBundle.finish(result.root(),SnakemakeOriginalRecipe.read(result.root().resolve("REQUEST.json")),check);}
+        catch(IOException|RuntimeException failure){
+            try{writeJson(result.root().resolve("FAILURE.json"),Map.of("status","FAIL2-no-result-admitted","exit_code",2,"error",failure.toString(),"required_action","Retain the complete provisional root and diagnostics. Resolve the bundle discrepancy and retry NEW output; no complete bundle is admitted."));Files.writeString(result.root().resolve("FAILURE_WARNINGS.md"),"# Snakemake FAIL2 bundle incomplete\n\n"+failure+"\n\nRetain all source evidence and retry NEW output after resolving the cause.\n",StandardCharsets.UTF_8,StandardOpenOption.CREATE_NEW);}catch(IOException diagnostic){failure.addSuppressed(diagnostic);}
+            if(failure instanceof IOException io)throw io;throw new IOException("Bundle sealing failed; no result admitted",failure);
+        }
+    }
     static Result execute(Path suppliedRecipe,Path runtimeHome,Path suppliedOutput,Runnable check)throws IOException {
         Path root=suppliedOutput.toAbsolutePath().normalize(),recipe=suppliedRecipe.toAbsolutePath().normalize();
         if(root.getParent()==null)throw new IOException("Require a NEW named workflow output directory");directory(root.getParent());Files.createDirectory(root);
-        Files.writeString(root.resolve("WARNINGS.md"),"# Unfinished original Snakemake adapter\n\n"+ACTION+"\n",StandardCharsets.UTF_8,StandardOpenOption.CREATE_NEW);
+        Files.writeString(root.resolve("WARNINGS.md"),"# Original Snakemake workflow scope and warnings\n\n"+ACTION+"\n",StandardCharsets.UTF_8,StandardOpenOption.CREATE_NEW);
         SnakemakeOriginalRuntime.Context runtime=null;SnakemakeOriginalRecipe.Request request=null;Exception failed=null;Result result=null;
         try {
             Identity recipeBefore=identity(recipe,4_194_304,check);byte[] raw=bytes(recipe,4_194_304);Files.write(root.resolve("REQUEST.json"),raw,StandardOpenOption.CREATE_NEW);
             request=SnakemakeOriginalRecipe.read(root.resolve("REQUEST.json"));if(!recipeBefore.equals(identity(recipe,4_194_304,check)))throw new IOException("Original request changed during initial capture");
             writeJson(root.resolve("request-source.json"),Map.of("path",recipe.toString(),"identity",recipeBefore));
             if(!request.execution().deployment().equals("preinstalled"))throw new SnakemakeOriginalRuntime.Unavailable("Managed Conda/Apptainer execution is not yet qualified in this development stage. Preserve this skip; use a separately qualified permitted deployment or wait for its adapter qualification. There is no deployer/PATH fallback.");
-            Files.writeString(root.resolve("WARNINGS.md"),"\nWARNING: The recipe explicitly selects preinstalled software. Under the original engine's selected mode, Conda/Apptainer rule directives remain inactive. The recorded runtime and declared executable paths do not seal arbitrary additional software or data loaded by trusted workflow code. No installation/network sandbox is claimed.\n",StandardCharsets.UTF_8,StandardOpenOption.APPEND);
+            Files.writeString(root.resolve("WARNINGS.md"),warningText(null),StandardCharsets.UTF_8,StandardOpenOption.TRUNCATE_EXISTING);
             runtime=SnakemakeOriginalRuntime.open(runtimeHome,check);writeJson(root.resolve("runtime-context.json"),runtime);
             Path runtimeRecords=Files.createDirectory(root.resolve("runtime"));for(var entry:runtime.metadata().entrySet()){Path target=runtimeRecords.resolve(entry.getKey());Files.copy(runtime.home().resolve(entry.getKey()),target);if(!pin(target,67_108_864,check).equals(entry.getValue()))throw new IOException("Runtime evidence changed during capture");}
             var tools=tools(request,check);writeJson(root.resolve("tools.json"),tools);
-            var captured=SnakemakeOriginalCapture.create(root,request.sources(),request.capture(),check);writeJson(root.resolve("capture.json"),captured);
+            var liveSources=new TreeMap<String,Path>();for(var entry:request.sources().entrySet())liveSources.put(entry.getKey(),Path.of(entry.getValue()));
+            var captured=SnakemakeOriginalCapture.create(root,liveSources,request.capture(),check);writeJson(root.resolve("capture.json"),captured);
             Path workspace=Files.createDirectory(root.resolve("workspace")),published=Files.createDirectory(workspace.resolve("published"));Files.createDirectory(workspace.resolve("cache"));Path bin=Files.createDirectory(workspace.resolve("bin"));
             var bindings=SnakemakeOriginalCapture.materialize(root,captured,workspace.resolve("resources"),request.capture(),check);Path working=directory(bindings.get("workflow"));
             source(root,working.resolve(request.workflow().snakefile()));for(String name:request.workflow().configfiles())source(root,working.resolve(name));
@@ -45,8 +55,8 @@ final class SnakemakeOriginalWorkflow {
             Files.createDirectory(root.resolve("events"));var argv=arguments(root,working,request);String run=java.util.UUID.randomUUID().toString();
             writeJson(root.resolve("COMMAND.json"),Map.of("schema_version",1,"run_id",run,"events_directory",root.resolve("events").toString(),"receipt",root.resolve("DRIVER.json").toString(),"argv",argv));
             var command=List.of(runtime.python().toString(),"-I","-B",helpers.resolve("driver.py").toString(),"--command",root.resolve("COMMAND.json").toString());
-            var environment=new TreeMap<>(request.environment());environment.putAll(Map.of("PATH",bin+":"+runtime.environment().resolve("bin")+":/usr/bin:/bin","LANG","C.UTF-8","LC_ALL","C.UTF-8","TZ","UTC","XDG_CACHE_HOME",workspace.resolve("cache").toString(),"PYTHONDONTWRITEBYTECODE","1","PYTHONNOUSERSITE","1"));
-            writeJson(root.resolve("invocation.json"),Map.of("command",command,"environment",environment,"working_directory",working.toString(),"bindings",bindings,"forced_complete_target_dag",true,"selected_preinstalled_deployment",true));
+            var environment=new TreeMap<>(SnakemakeOriginalEvidence.environment(root.toString(),runtime.environment().toString(),request));
+            writeJson(root.resolve("invocation.json"),Map.of("command",command,"environment",environment,"working_directory",working.toString(),"bindings",bindings,"producer_root",root.toString(),"forced_complete_target_dag",true,"selected_preinstalled_deployment",true));
             SnakemakeOriginalCapture.verifyOriginals(captured,request.capture(),check);writeJson(root.resolve("working-before.json"),SnakemakeOriginalCapture.working(root,workspace,request.capture(),check));writeJson(root.resolve("code.json"),code());
             var selected=request;
             SnakemakeOriginalProcess.executeSession(command,environment,root.resolve("process"),working,root,request.process(),()->{
@@ -55,7 +65,8 @@ final class SnakemakeOriginalWorkflow {
                 for(String name:SnakemakeOriginalRuntime.HELPERS)if(!pin(helpers.resolve(name),1_048_576,check).sha256().equals(SnakemakeOriginalRuntime.helperPins().get(name)))throw new IOException("Captured original-engine helper changed");
             },check);
             var events=SnakemakeOriginalEvents.audit(root.resolve("events"),object(json(root.resolve("DRIVER.json"),request.metadataBytes())),request.eventRows(),request.metadataBytes(),request.logBytes(),request.execution().requireJobs(),check);writeJson(root.resolve("completion-events.json"),eventsAsJson(events));
-            if(events.errorDiagnostics()>0)Files.writeString(root.resolve("WARNINGS.md"),"\nWARNING: Original diagnostics contain "+events.errorDiagnostics()+" error records although all observed jobs eventually completed. Inspect the retained events and source stderr, including every failed retry, before interpreting outputs.\n",StandardCharsets.UTF_8,StandardOpenOption.APPEND);
+            writeJson(root.resolve("DIAGNOSTICS.json"),events.diagnostics());
+            Files.writeString(root.resolve("WARNINGS.md"),warningText(events),StandardCharsets.UTF_8,StandardOpenOption.TRUNCATE_EXISTING);
             List<Published> outputs=outputs(root,bindings,published,request,check);writeJson(root.resolve("outputs.json"),outputs);
             if(!recipeBefore.equals(identity(recipe,4_194_304,check)))throw new IOException("Original request changed during workflow execution");
             SnakemakeOriginalCapture.verifyOriginals(captured,request.capture(),check);result=new Result(root,events,outputs);
@@ -78,7 +89,12 @@ final class SnakemakeOriginalWorkflow {
         result.add("--configfile");for(String config:request.workflow().configfiles())result.add(working.resolve(config).toString());result.add(root.resolve("parameters.json").toString());result.add("--");result.addAll(request.workflow().targets());return List.copyOf(result);
     }
     static Map<String,Object> eventsAsJson(SnakemakeOriginalEvents.Result events) {
-        return Map.of("controller_pid",events.controllerPid(),"run_id",events.runId(),"streams",events.streams(),"source_records",events.sourceRecords(),"started_batches",events.startedBatches(),"final_done",events.finalDone(),"final_total",events.finalTotal(),"error_diagnostics",events.errorDiagnostics(),"jobs",events.jobs().values().stream().sorted(java.util.Comparator.comparingLong(SnakemakeOriginalEvents.Job::id)).toList());
+        return Map.of("controller_pid",events.controllerPid(),"run_id",events.runId(),"streams",events.streams(),"source_records",events.sourceRecords(),"started_batches",events.startedBatches(),"final_done",events.finalDone(),"final_total",events.finalTotal(),"error_diagnostics",events.errorDiagnostics(),"jobs",events.jobs().values().stream().sorted(java.util.Comparator.comparingLong(SnakemakeOriginalEvents.Job::id)).toList(),"diagnostics",events.diagnostics());
+    }
+    static String warningText(SnakemakeOriginalEvents.Result events)throws IOException {
+        var result=new StringBuilder("# Original Snakemake workflow scope and warnings\n\n"+ACTION+"\n"+SOFTWARE_WARNING);
+        if(events!=null&&!events.diagnostics().isEmpty()){result.append("\n## Original warnings and errors\n\nWARNING: Inspect every retained original diagnostic and source stderr before interpreting outputs. Full records, including formatting arguments, are in DIAGNOSTICS.json.\n\n");for(var diagnostic:events.diagnostics())result.append("    ").append(SnakemakeOriginalJson.json(diagnostic)).append('\n');}
+        if(events!=null&&events.errorDiagnostics()>0)result.append("\nWARNING: Original diagnostics contain ").append(events.errorDiagnostics()).append(" error records although all observed jobs eventually completed. Inspect the retained events and source stderr, including every failed retry, before interpreting outputs.\n");return result.toString();
     }
     private static List<Published> outputs(Path root,Map<String,Path> bindings,Path published,SnakemakeOriginalRecipe.Request request,Runnable check)throws IOException {
         var result=new ArrayList<Published>();long bytes=0;int count=0;
@@ -99,13 +115,13 @@ final class SnakemakeOriginalWorkflow {
         return List.copyOf(result);
     }
     private static List<Tool> tools(SnakemakeOriginalRecipe.Request request,Runnable check)throws IOException {
-        var result=new ArrayList<Tool>();for(var tool:request.tools()){if(!Files.isExecutable(tool.executable()))throw new SnakemakeOriginalRuntime.Unavailable("Required executable missing or forbidden: "+tool.name()+" at "+tool.executable()+". Install only where permitted or skip this dependent analysis.");Path real=tool.executable().toRealPath();result.add(new Tool(tool.name(),tool.executable().toString(),real.toString(),identity(real,1_073_741_824,check)));}return List.copyOf(result);
+        var result=new ArrayList<Tool>();for(var tool:request.tools()){Path supplied=Path.of(tool.executable());if(!Files.isExecutable(supplied))throw new SnakemakeOriginalRuntime.Unavailable("Required executable missing or forbidden: "+tool.name()+" at "+tool.executable()+". Install only where permitted or skip this dependent analysis.");Path real=supplied.toRealPath();result.add(new Tool(tool.name(),tool.executable(),real.toString(),identity(real,1_073_741_824,check)));}return List.copyOf(result);
     }
     private static String wrapper(Tool tool){return "#!/usr/bin/bash\nexec '"+tool.resolved().replace("'","'\\''")+"' \"$@\"\n";}
     private static void source(Path root,Path path)throws IOException {if(!Files.isRegularFile(path)||!path.toRealPath().startsWith(root.resolve("workspace/resources")))throw new IOException("Snakefile/config must be a complete captured regular file: "+path);}
-    private static Map<String,Pin> code()throws IOException {
+    static Map<String,Pin> code()throws IOException {
         var result=new TreeMap<String,Pin>();
-        for(Class<?> outer:List.of(SnakemakeOriginalWorkflow.class,SnakemakeOriginalCapture.class,SnakemakeOriginalEvents.class,SnakemakeOriginalFiles.class,SnakemakeOriginalJson.class,SnakemakeOriginalOutputs.class,SnakemakeOriginalParameters.class,SnakemakeOriginalProcess.class,SnakemakeOriginalRecipe.class,SnakemakeOriginalRuntime.class,org.jlinalg.workflow.SnakemakeBenchmarks.class))for(Class<?> type:outer.getNestMembers()){String name=type.getName().replace('.','/')+".class";try(var input=type.getResourceAsStream('/'+name)){if(input==null)throw new IOException("Executing adapter class unavailable: "+name);byte[] raw=input.readAllBytes();result.put(name,new Pin(raw.length,sha(raw)));}}
+        for(Class<?> outer:List.of(SnakemakeOriginalWorkflow.class,SnakemakeOriginalCapture.class,SnakemakeOriginalEvents.class,SnakemakeOriginalFiles.class,SnakemakeOriginalJson.class,SnakemakeOriginalOutputs.class,SnakemakeOriginalParameters.class,SnakemakeOriginalProcess.class,SnakemakeOriginalRecipe.class,SnakemakeOriginalRuntime.class,SnakemakeOriginalBundle.class,SnakemakeOriginalRecorded.class,SnakemakeOriginalEvidence.class,SnakemakeOriginalReplay.class,org.jlinalg.workflow.SnakemakeBenchmarks.class))for(Class<?> type:outer.getNestMembers()){String name=type.getName().replace('.','/')+".class";try(var input=type.getResourceAsStream('/'+name)){if(input==null)throw new IOException("Executing adapter class unavailable: "+name);byte[] raw=input.readAllBytes();result.put(name,new Pin(raw.length,sha(raw)));}}
         for(String name:SnakemakeOriginalRuntime.HELPERS){byte[] raw=SnakemakeOriginalRuntime.resource(name);result.put("org/jlinalg/omics/snakemake-original-v1/"+name,new Pin(raw.length,sha(raw)));}return Map.copyOf(result);
     }
 }

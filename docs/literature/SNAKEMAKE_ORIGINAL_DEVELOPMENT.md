@@ -1,7 +1,8 @@
 # Original Snakemake adapter development checkpoint
 
 **WARNING: unfinished development code. There is no supported original-engine
-analysis command or accepted analysis bundle in this checkpoint.** The public
+analysis command. Completed developer bundles remain experimental and are not
+accepted user analyses or catalog integration credit.** The public
 `snakemake-tools benchmark` command remains the separate native Java component
 documented in [SNAKEMAKE_BENCHMARKS.md](SNAKEMAKE_BENCHMARKS.md). Use that guide for
 benchmark aggregation. This checkpoint adds no catalog integration credit and
@@ -13,9 +14,14 @@ declared outputs and before/after working-state records. They remain absent
 from the public CLI dispatcher. The Python driver calls the selected upstream
 Snakemake CLI API and a project logger records original events. The qualification
 probe under `tools/literature/snakemake_original/` is a developer entrypoint;
-a successful probe is not analysis admission. Successful development execution
-writes `EXECUTED.json`, explicitly declaring `user_analysis_admitted=false`;
-there is no final `COMPLETED.json` analysis bundle.
+a successful probe is not analysis admission. Development execution writes
+`EXECUTED.json`, explicitly declaring `user_analysis_admitted=false`. The new
+developer `bundle` probe additionally seals `bundle/COMPLETED.json` only after
+its input, process, event, software-record and output checks pass. That marker
+records completion of the experimental evidence format, not public analysis
+admission. The developer `verify` probe reads captured records without invoking
+the producer engine; `replay` performs fresh original-engine execution from
+captured inputs and retains both result families and their comparison.
 
 The selected original edition is Snakemake 9.27.1, official tag commit
 `f79d9eb5e2b679e1191818f24335907b041578be`, with its MIT license retained in
@@ -104,14 +110,36 @@ Recorded benchmark values remain timing measurements, not deterministic rerun
 references. The checkpoint control retains actual source ordering and checks
 only its declared tag multiset.
 
-The current Java regression suite passed 50 tests with no failures/errors/skips.
+The current Snakemake Java regression suite passed 52 tests with no failures,
+errors or skips. The publication check passed 303 targeted Java regression tests,
+complete source compilation, executable-JAR assembly and the website check.
 Five Linux setup-policy/export tests passed, including disabled installation,
 existing-path preservation and case-distinct evidence retention. These checks
 do not add catalog credit or complete the 250-paper objective.
 
-Before offering original-engine analysis, finish and qualify final bundle sealing,
-portable verification, genuine rerun comparison, managed workflow software
-deployment, the public CLI and catalog admission for the six reviewed source roles.
+The current bundle prototype passed nine successful captured-source cases and
+the expected failed-rule case. Eleven bundles (those nine executions and two
+fresh rerun generations of the configuration/binding case) passed portable
+verification on Windows without the producer Linux paths or engine. A changed
+warning file was rejected. These checks cover the named synthetic controls; they
+do not establish comprehensive corruption resistance or qualify every workflow
+for rerun. Exact class/source pins intentionally require the frozen matching
+reader; old evidence is never rehashed to make a newer reader accept it.
+
+The process controls also exposed a procfs exit race: an already opened process
+record can fail while the process terminates. The supervisor now ignores the
+failed sample only after confirming disappearance or a terminal state. Success,
+orphan, timeout and JVM-shutdown controls passed after this change; the original
+failed control remains retained. Explicit allowed locale and timezone values now
+override defaults and are recorded in the launch environment.
+
+Before offering original-engine analysis, finish the effective workflow-profile
+policy audit, comprehensive bundle corruption controls, broader genuine rerun
+comparison, managed workflow software deployment, the public CLI and catalog
+admission for the six reviewed source roles. **Do not use captured profiles to
+request unqualified deployment or alternate execution modes.** Their effective
+settings still need an explicit pre-execution policy guard; the experimental
+recipe alone does not qualify such a profile.
 The development execution path currently accepts an explicitly selected
 preinstalled deployment. It warns that upstream Conda/Apptainer rule directives
 are inactive in that mode and that arbitrary dependencies loaded by trusted

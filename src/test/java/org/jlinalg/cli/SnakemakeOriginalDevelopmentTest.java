@@ -31,6 +31,15 @@ class SnakemakeOriginalDevelopmentTest {
         assertTrue(json.contains("9007199254740993"));assertTrue(json.contains("1e-300"));assertTrue(json.contains("result.tsv"));assertEquals("published",parsed.outputs().get(0).root());
         var args=SnakemakeOriginalWorkflow.arguments(temp.resolve("bundle"),temp.resolve("captured-workflow"),parsed);assertEquals("--",args.get(args.size()-2));assertEquals("all",args.get(args.size()-1));assertTrue(args.contains("--forceall"));assertTrue(args.indexOf(temp.resolve("captured-workflow/a.yaml").toString())<args.indexOf(temp.resolve("captured-workflow/b.json").toString()));
     }
+    @Test void portableRecipeUsesCanonicalRecordedLinuxPathsWithoutOpeningThem()throws Exception {
+        var value=request();var workflow=section(value,"workflow");workflow.put("path","/unavailable-producer/workflow");value.put("workflow",workflow);value.put("resources",Map.of("data",Map.of("path","/unavailable-producer/data")));value.put("required_tools",List.of(Map.of("name","cat","path","/unavailable-producer/bin/cat")));
+        var parsed=SnakemakeOriginalRecipe.recorded(value);assertEquals("/unavailable-producer/workflow",parsed.workflow().source());assertEquals("/unavailable-producer/data",parsed.sources().get("data"));assertEquals("/unavailable-producer/bin/cat",parsed.tools().get(0).executable());
+        for(String path:List.of("C:\\workflow","relative/workflow","/a/../workflow","/a//workflow")){workflow.put("path",path);assertThrows(IOException.class,()->SnakemakeOriginalRecipe.recorded(value),path);}
+    }
+    @Test void permittedExplicitLocaleAndTimezoneOverrideRecordedDefaults()throws Exception {
+        var value=request();value.put("environment",Map.of("TZ","America/New_York","LANG","C","LC_ALL","C"));var parsed=SnakemakeOriginalRecipe.read(save(value));var environment=SnakemakeOriginalEvidence.environment("/run","/runtime",parsed);
+        assertEquals("America/New_York",environment.get("TZ"));assertEquals("C",environment.get("LANG"));assertEquals("C",environment.get("LC_ALL"));assertEquals("/run/workspace/bin:/runtime/bin:/usr/bin:/bin",environment.get("PATH"));
+    }
     @Test void protectedEngineEnvironmentAndReservedResourceCannotOverrideBindings()throws Exception {
         for(String key:List.of("PATH","PYTHONPATH","SNAKEMAKE_PROFILE","LD_PRELOAD","OMICS_SNAKEMAKE_EVENTS")){var value=request();value.put("environment",Map.of(key,"injected"));assertThrows(IOException.class,()->SnakemakeOriginalRecipe.read(save(value)),key);}
         var value=request();value.put("resources",Map.of("published",Map.of("path",temp.toString())));assertThrows(IOException.class,()->SnakemakeOriginalRecipe.read(save(value)));

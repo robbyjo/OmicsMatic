@@ -95,6 +95,7 @@ final class SnakemakeOriginalProcess {
             var cwd=workingDirectory.toAbsolutePath().normalize();
             var builder = new ProcessBuilder(invocation).directory(cwd.toFile()).redirectOutput(stdout.toFile()).redirectError(stderr.toFile());
             var env = builder.environment(); env.clear(); env.putAll(environment); env.put("HOME", cwd.toString()); env.put("TMPDIR", cwd.toString());
+            record.put("environment",Map.copyOf(env));
             child = guard.launch(builder,gate); record.put("owned_launcher_pid", child.pid()); record.put("status", "running");
             write(work.resolve("launch.json"), record); guard.observe();
             for (;;) {
@@ -171,6 +172,22 @@ final class SnakemakeOriginalProcess {
             if (threads < 1 || rss < 0) throw new IOException("Invalid process thread/RSS metrics");
             return new Sample(identity, rss, threads);
         } catch (NoSuchFileException vanished) { return null; }
+        catch (IOException failure) {
+            // An open procfs descriptor can report ESRCH when its process exits
+            // between stat and status reads. Only confirmed disappearance or a
+            // terminal state permits ignoring the failed sample.
+            try {
+                if (Files.notExists(root)) return null;
+                String current = bounded(root.resolve("stat"), 65536);
+                int end = current.lastIndexOf(')');
+                if (end >= 1) {
+                    String[] fields = current.substring(end + 2).trim().split(" +");
+                    if (fields.length > 0 && (fields[0].equals("Z") || fields[0].equals("X"))) return null;
+                }
+            } catch (NoSuchFileException vanished) { return null; }
+            catch (IOException recheck) { failure.addSuppressed(recheck); }
+            throw failure;
+        }
         catch (NumberFormatException | ArithmeticException malformed) { throw new IOException("Invalid process identity/metrics", malformed); }
     }
     private static boolean terminal(Identity value) { return value.state.equals("Z") || value.state.equals("X"); }

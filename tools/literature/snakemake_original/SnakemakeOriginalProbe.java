@@ -31,6 +31,20 @@ public final class SnakemakeOriginalProbe {
                 var result=SnakemakeOriginalWorkflow.execute(Path.of(SnakemakeOriginalFiles.text(request.get("recipe"))),Path.of(SnakemakeOriginalFiles.text(request.get("runtime"))),Path.of(SnakemakeOriginalFiles.text(request.get("out"))),check);
                 System.out.println(SnakemakeOriginalJson.json(Map.of("status","PASS_DEVELOPMENT_CAPTURED_SOURCE_EXECUTION_NOT_FINAL_ADMISSION","logical_jobs",result.events().jobs().size(),"output_declarations",result.outputs().size())));
             }
+            case "bundle" -> {
+                var request=SnakemakeOriginalFiles.object(SnakemakeOriginalFiles.json(root,1_048_576));
+                var result=SnakemakeOriginalWorkflow.run(Path.of(SnakemakeOriginalFiles.text(request.get("recipe"))),Path.of(SnakemakeOriginalFiles.text(request.get("runtime"))),Path.of(SnakemakeOriginalFiles.text(request.get("out"))),check);
+                System.out.println(SnakemakeOriginalJson.json(Map.of("status","PASS_COMPLETE_DECLARED_LOCAL_WORKFLOW_BUNDLE_NOT_PAPER_REPRODUCTION","manifest",result.manifest(),"logical_jobs",result.events().jobs().size())));
+            }
+            case "verify" -> {
+                var result=SnakemakeOriginalBundle.verify(root,check);
+                System.out.println(SnakemakeOriginalJson.json(Map.of("status","PASS_PORTABLE_BUNDLE_AUDIT_WITHOUT_ENGINE_EXECUTION","manifest",result.manifest(),"logical_jobs",result.events().jobs().size())));
+            }
+            case "replay" -> {
+                var request=SnakemakeOriginalFiles.object(SnakemakeOriginalFiles.json(root,1_048_576));
+                var result=SnakemakeOriginalReplay.execute(Path.of(SnakemakeOriginalFiles.text(request.get("bundle"))),Path.of(SnakemakeOriginalFiles.text(request.get("runtime"))),Path.of(SnakemakeOriginalFiles.text(request.get("out"))),check);
+                System.out.println(SnakemakeOriginalJson.json(Map.of("status","PASS_GENUINE_ORIGINAL_ENGINE_RERUN_AND_DECLARED_COMPARISON","manifest",result.manifest(),"logical_jobs",result.events().jobs().size())));
+            }
             case "process" -> {
                 var request=SnakemakeOriginalFiles.object(SnakemakeOriginalFiles.json(root,1_048_576));
                 var command=SnakemakeOriginalFiles.strings(request.get("command"));var environment=new java.util.TreeMap<String,String>();

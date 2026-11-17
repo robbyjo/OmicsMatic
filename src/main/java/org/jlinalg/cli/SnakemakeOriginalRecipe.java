@@ -13,23 +13,28 @@ import static org.jlinalg.cli.SnakemakeOriginalFiles.*;
 
 /** Explicit captured workflow, configuration, software, targets and output contracts. */
 final class SnakemakeOriginalRecipe {
-    record Workflow(Path source,String snakefile,List<String> configfiles,List<String> targets) { Workflow { configfiles=List.copyOf(configfiles);targets=List.copyOf(targets); } }
-    record Tool(String name,Path executable) { }
+    record Workflow(String source,String snakefile,List<String> configfiles,List<String> targets) { Workflow { configfiles=List.copyOf(configfiles);targets=List.copyOf(targets); } }
+    record Tool(String name,String executable) { }
     record Output(String root,String path,String kind,boolean allowEmpty,String comparison) { }
     record Execution(int cores,String scheduler,int retries,int latencyWait,boolean notemp,boolean extended,String deployment,boolean allowInstall,boolean requireJobs) { }
-    record Request(String profile,Workflow workflow,Map<String,Path> sources,Object parameters,Map<String,String> environment,List<Tool> tools,List<Output> outputs,Execution execution,SnakemakeOriginalCapture.Limits capture,SnakemakeOriginalProcess.Limits process,int metadataBytes,int eventRows,long logBytes,Map<?,?> declared) {
+    record Request(String profile,Workflow workflow,Map<String,String> sources,Object parameters,Map<String,String> environment,List<Tool> tools,List<Output> outputs,Execution execution,SnakemakeOriginalCapture.Limits capture,SnakemakeOriginalProcess.Limits process,int metadataBytes,int eventRows,long logBytes,Map<?,?> declared) {
         Request { sources=Map.copyOf(sources);environment=Map.copyOf(environment);tools=List.copyOf(tools);outputs=List.copyOf(outputs); }
     }
     private SnakemakeOriginalRecipe() { }
     static Request read(Path file) throws IOException {
         Map<?,?> raw=object(SnakemakeOriginalParameters.parse(utf8(bytes(file,4_194_304)),4_194_304,100000));
+        return parse(raw,false);
+    }
+    /** Validate Linux producer paths as text without accessing them on the reader's host. */
+    static Request recorded(Map<?,?> raw)throws IOException {return parse(raw,true);}
+    private static Request parse(Map<?,?> raw,boolean recorded)throws IOException {
         keys(raw,"schema_version","engine_profile","workflow","resources","parameters","environment","required_tools","outputs","execution","limits");integer(raw.get("schema_version"),1,1);
         String profile=text(raw.get("engine_profile"));if(!profile.equals(SnakemakeOriginalRuntime.PROFILE))throw new SnakemakeOriginalRuntime.Unavailable("Exact requested Snakemake profile is unavailable; do not infer author versions or substitute editions");
-        Map<?,?> w=object(raw.get("workflow"));keys(w,"path","snakefile","configfiles","targets");Path source=absolute(text(w.get("path")));String snakefile=member(text(w.get("snakefile")));List<String> configs=strings(w.get("configfiles")),targets=strings(w.get("targets"));
+        Map<?,?> w=object(raw.get("workflow"));keys(w,"path","snakefile","configfiles","targets");String source=absolute(text(w.get("path")),recorded);String snakefile=member(text(w.get("snakefile")));List<String> configs=strings(w.get("configfiles")),targets=strings(w.get("targets"));
         for(String value:configs)member(value);for(String value:targets) { member(value);if(value.startsWith("-"))throw new IOException("Targets must be literal rule names/relative paths, not command-line flags"); }
         if(targets.isEmpty())throw new IOException("Declare explicit target rules/files; do not infer a first rule");
-        var sources=new LinkedHashMap<String,Path>();sources.put("workflow",source);
-        for(var entry:object(raw.get("resources")).entrySet()) { String id=text(entry.getKey());if(Set.of("workflow","published").contains(id)||!id.matches("[A-Za-z][A-Za-z0-9_-]{0,63}"))throw new IOException("Invalid/reserved captured resource ID");Map<?,?> value=object(entry.getValue());keys(value,"path");sources.put(id,absolute(text(value.get("path")))); }
+        var sources=new LinkedHashMap<String,String>();sources.put("workflow",source);
+        for(var entry:object(raw.get("resources")).entrySet()) { String id=text(entry.getKey());if(Set.of("workflow","published").contains(id)||!id.matches("[A-Za-z][A-Za-z0-9_-]{0,63}"))throw new IOException("Invalid/reserved captured resource ID");Map<?,?> value=object(entry.getValue());keys(value,"path");sources.put(id,absolute(text(value.get("path")),recorded)); }
         var environment=new LinkedHashMap<String,String>();
         for(var entry:object(raw.get("environment")).entrySet()) {
             String key=text(entry.getKey()),value=text(entry.getValue());
@@ -37,7 +42,7 @@ final class SnakemakeOriginalRecipe {
             environment.put(key,value);
         }
         object(raw.get("parameters"));var tools=new ArrayList<Tool>();var toolNames=new HashSet<String>();
-        for(Object item:list(raw.get("required_tools"))) { Map<?,?> tool=object(item);keys(tool,"name","path");String name=text(tool.get("name"));if(!name.matches("[A-Za-z0-9_.+-]+")||name.equals(".")||name.equals("..")||!toolNames.add(name))throw new IOException("Declare unique literal executable names");tools.add(new Tool(name,absolute(text(tool.get("path"))))); }
+        for(Object item:list(raw.get("required_tools"))) { Map<?,?> tool=object(item);keys(tool,"name","path");String name=text(tool.get("name"));if(!name.matches("[A-Za-z0-9_.+-]+")||name.equals(".")||name.equals("..")||!toolNames.add(name))throw new IOException("Declare unique literal executable names");tools.add(new Tool(name,absolute(text(tool.get("path")),recorded))); }
         var outputs=new ArrayList<Output>();var outputNames=new HashSet<String>();
         for(Object item:list(raw.get("outputs"))) {
             Map<?,?> output=object(item);keys(output,"root","path","kind","allow_empty","comparison");String root=text(output.get("root")),path=text(output.get("path")),kind=text(output.get("kind")),comparison=text(output.get("comparison"));
@@ -58,5 +63,9 @@ final class SnakemakeOriginalRecipe {
         return new Request(profile,new Workflow(source,snakefile,configs,targets),sources,raw.get("parameters"),environment,tools,outputs,execution,capture,process,(int)integer(l.get("metadata_bytes"),1024,67_108_864),(int)integer(l.get("event_rows"),1,10_000_000),integer(l.get("log_bytes"),1024,1_073_741_824),raw);
     }
     private static boolean bool(Object value) throws IOException { if(!(value instanceof Boolean flag))throw new IOException("Require explicit boolean execution/output declarations");return flag; }
-    private static Path absolute(String value) throws IOException { Path path=Path.of(value);if(!path.isAbsolute()||!path.normalize().equals(path))throw new IOException("Declare a canonical absolute original workflow/data/tool path");return path; }
+    private static String absolute(String value,boolean recorded) throws IOException {
+        if(recorded){if(!value.startsWith("/")||value.length()<2)throw new IOException("Recorded producer paths must be canonical absolute Linux text");member(value.substring(1));}
+        else {Path path=Path.of(value);if(!path.isAbsolute()||!path.normalize().equals(path))throw new IOException("Declare a canonical absolute original workflow/data/tool path");}
+        return value;
+    }
 }

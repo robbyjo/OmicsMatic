@@ -161,6 +161,9 @@ final class SnakemakeOriginalCapture {
                 if(!matches){Files.delete(link.path());Files.createSymbolicLink(link.path(),link.path().getParent().relativize(link.target()));changed=true;}}
             if(!changed)break;if(pass==links.size())throw new IOException("Captured symlink topology cannot be materialized faithfully");
         }
+        // Apply restrictive directory modes only after their complete children
+        // and links exist. The source directory permissions are part of staging.
+        for(Root root:snapshot.roots())for(var row:root.items().entrySet().stream().filter(e->e.getValue().kind().equals("directory")).sorted(Comparator.comparingInt((Map.Entry<String,Item> e)->e.getKey().length()).reversed()).toList())permissions(resolve(locations.get(root.key()),row.getKey()),row.getValue().mode());
         var aliases=new TreeMap<String,Path>();for(var row:snapshot.aliases().entrySet()){String[] parts=row.getValue().split("/",2);Path path=destination.resolve(row.getValue()).normalize();if(!path.startsWith(destination)||parts.length!=2||!Files.exists(path))throw new IOException("Incomplete materialized declared resource: "+row.getKey());aliases.put(row.getKey(),path);}
         return Map.copyOf(aliases);
     }
@@ -201,8 +204,10 @@ final class SnakemakeOriginalCapture {
     private static Path resolve(Path root,String member)throws IOException{if(member.isEmpty())return root;SnakemakeOriginalFiles.member(member);Path result=root.resolve(member).normalize();if(!result.startsWith(root))throw new IOException("Captured member escapes owned root");return result;}
     private static String posix(String separator,String value){return separator.equals("\\")?value.replace('\\','/'):value;}
     private static void permissions(Path path,int mode)throws IOException {
-        if(mode<0||!path.getFileSystem().supportedFileAttributeViews().contains("posix"))return;
+        if(mode<0)return;
+        if(!path.getFileSystem().supportedFileAttributeViews().contains("posix"))throw new SnakemakeOriginalRuntime.Unavailable("Destination cannot preserve recorded POSIX input modes; use a permitted native Linux filesystem and NEW output paths");
         var values=EnumSet.noneOf(PosixFilePermission.class);PosixFilePermission[] bits={PosixFilePermission.OWNER_READ,PosixFilePermission.OWNER_WRITE,PosixFilePermission.OWNER_EXECUTE,PosixFilePermission.GROUP_READ,PosixFilePermission.GROUP_WRITE,PosixFilePermission.GROUP_EXECUTE,PosixFilePermission.OTHERS_READ,PosixFilePermission.OTHERS_WRITE,PosixFilePermission.OTHERS_EXECUTE};
         for(int i=0;i<bits.length;i++)if((mode&(0400>>i))!=0)values.add(bits[i]);Files.setPosixFilePermissions(path,values);
+        if(SnakemakeOriginalFiles.mode(path)!=mode)throw new SnakemakeOriginalRuntime.Unavailable("Destination changed recorded input permission modes; use a permitted native Linux filesystem and NEW output paths");
     }
 }

@@ -21,8 +21,9 @@ final class SnakemakeOriginalEvents {
     record Job(long id,String rule,List<String> inputs,List<String> outputs,boolean checkpoint,int informationRecords,int errorRecords,int finishes) {
         Job { inputs=List.copyOf(inputs);outputs=List.copyOf(outputs); }
     }
-    record Result(long controllerPid,String runId,int streams,int sourceRecords,int startedBatches,int finalDone,int finalTotal,int errorDiagnostics,Map<Long,Job> jobs) {
-        Result { jobs=Map.copyOf(jobs); }
+    record Diagnostic(String stream,int sequence,long pid,Map<?,?> record) { }
+    record Result(long controllerPid,String runId,int streams,int sourceRecords,int startedBatches,int finalDone,int finalTotal,int errorDiagnostics,Map<Long,Job> jobs,List<Diagnostic> diagnostics) {
+        Result { jobs=Map.copyOf(jobs);diagnostics=List.copyOf(diagnostics); }
     }
     private SnakemakeOriginalEvents() { }
     static Result audit(Path directory,Map<?,?> receipt,int maxRows,int maxLineBytes,long maxBytes,boolean requireJobs,Runnable check) throws IOException {
@@ -32,7 +33,7 @@ final class SnakemakeOriginalEvents {
         Map<?,?> declared=object(receipt.get("collector_streams"));var files=new TreeMap<String,Path>();
         try(var paths=Files.list(directory)) { for(Path path:paths.toList()) { String name=path.getFileName().toString();if(!name.matches("events-[1-9][0-9]*\\.jsonl")||!Files.isRegularFile(path,LinkOption.NOFOLLOW_LINKS))throw new IOException("Unexpected/error event stream member: "+name);files.put(name,path); } }
         if(!files.keySet().equals(declared.keySet())||!files.containsKey("events-"+pid+".jsonl"))throw new IOException("Complete event-stream census/controller stream differs");
-        long totalBytes=0;int totalRows=0,sourceRows=0,workflows=0,batches=0,done=0,total=0,errors=0,startedGroups=0,reportedGroups=0,pendingGroupMembers=0;var jobs=new LinkedHashMap<Long,Job>();var scheduled=new HashSet<Long>();var grouped=new HashSet<Long>();var completed=new HashSet<Long>();
+        long totalBytes=0;int totalRows=0,sourceRows=0,workflows=0,batches=0,done=0,total=0,errors=0,startedGroups=0,reportedGroups=0,pendingGroupMembers=0;var jobs=new LinkedHashMap<Long,Job>();var scheduled=new HashSet<Long>();var grouped=new HashSet<Long>();var completed=new HashSet<Long>();var diagnostics=new ArrayList<Diagnostic>();
         for(var entry:files.entrySet()) {
             Path path=entry.getValue();Pin expected=fingerprint(declared.get(entry.getKey()),maxBytes);Pin before=pin(path,maxBytes,check);if(!before.equals(expected))throw new IOException("Event stream bytes differ from driver receipt");
             totalBytes=Math.addExact(totalBytes,before.bytes());if(totalBytes>maxBytes)throw new IOException("Complete event streams exceed log_bytes");
@@ -48,6 +49,7 @@ final class SnakemakeOriginalEvents {
                     if(kind.equals("collector_closed")) { keys(item,"record_type","pid","run_id","collector_failed","sequence");if(!Boolean.FALSE.equals(item.get("collector_failed")))throw new IOException("Collector failed; no event result admitted");closed=true;continue; }
                     keys(item,"record_type","pid","run_id","record","sequence");if(!kind.equals("original_log_record"))throw new IOException("Unknown event envelope");
                     sourceRows++;Map<?,?> record=object(item.get("record"));if(integer(record.get("process"),1,Long.MAX_VALUE)!=streamPid)throw new IOException("Original record process differs from collector process");
+                    if(integer(record.get("levelno"),0,Integer.MAX_VALUE)>=30)diagnostics.add(new Diagnostic(entry.getKey(),sequence,streamPid,record));
                     if(streamPid!=pid)continue;Object event=record.get("event");if(event==null)continue;
                     switch(text(event)) {
                         case "workflow_started" -> { workflows++;if(!"9.27.1".equals(record.get("snakemake_version")))throw new IOException("Original started event reports a different edition"); }
@@ -83,7 +85,7 @@ final class SnakemakeOriginalEvents {
         }
         scheduled.addAll(grouped);
         if(workflows!=1||pendingGroupMembers!=0||startedGroups!=reportedGroups||!completed.equals(jobs.keySet())||!scheduled.equals(jobs.keySet())||done!=total||done!=completed.size()||requireJobs&&jobs.isEmpty())throw new IOException("Original controller did not completely finish its reported scheduled job family; no accepted workflow result");
-        return new Result(pid,run,files.size(),sourceRows,batches,done,total,errors,jobs);
+        return new Result(pid,run,files.size(),sourceRows,batches,done,total,errors,jobs,diagnostics);
     }
     private static Map<String,String> stringMap(Object value) throws IOException {var result=new TreeMap<String,String>();for(var entry:object(value).entrySet())result.put(text(entry.getKey()),text(entry.getValue()));return result;}
     private static String readLine(BufferedReader reader,int maximum,Runnable check) throws IOException {
