@@ -46,10 +46,11 @@ samples or variants are never silently truncated. Unlisted weight-map IDs get
 weight zero; a null map explicitly means unit weights for every selected row.
 An unthinned unit-weight matrix is **not** automatically LDAK-Thin.
 
-These classes do not perform LD thinning, REML, SumHer, liability conversion or
-alpha-grid selection. Those stages are required for the paper workflows below.
-Original-runtime probes of those stages have run, but they are not yet an
-implemented captured run/verify/replay adapter.
+These native classes construct and read kinship matrices. The separate
+[development workflow adapter](LDAK_WORKFLOWS_DEVELOPMENT.md) now provides
+captured original LDAK 5.2 thinning, REML, SumHer, liability conversion and
+explicit alpha-grid selection through `ldak-tools run/verify/replay`.
+Its paper-role and global catalog qualification remain unfinished.
 
 ## Use the Java API
 
@@ -164,7 +165,9 @@ evidence for adapter development. They do not validate a paper's BLD-LDAK
 reference, recover its alpha grid, reproduce biology, or establish a full
 captured workflow. See [validation facts](ldak-workflow-development/VALIDATION.json).
 
-The next implementation work is the captured original SumHer and LDAK-Thin/REML
-workflows, native verification and genuine replay, followed by the guarded
-six-role catalog update. The admitted count remains **127 scoped integrations**
-(23 native, 104 upstream); no global catalog metadata changed here.
+The kernel validation records above describe the original native checkpoint;
+they have not been rewritten for later source changes. Subsequent captured
+workflow development is described in the
+[adapter development note](LDAK_WORKFLOWS_DEVELOPMENT.md). The guarded six-role
+catalog update remains pending. The admitted count remains **127 scoped
+integrations** (23 native, 104 upstream); no global catalog metadata changed here.

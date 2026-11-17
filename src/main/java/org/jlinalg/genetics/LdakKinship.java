@@ -64,6 +64,12 @@ public final class LdakKinship {
         public List<Predictor> predictors() { return predictors; }
         /** Row-major FP64 matrix in exact FAM order; the caller owns this copy. */
         public double[] matrix() { return matrix.clone(); }
+        /** Read one matrix entry without allocating a second dense matrix. */
+        public double value(int row, int column) {
+            int n = samples.size();
+            if (row < 0 || column < 0 || row >= n || column >= n) throw new IndexOutOfBoundsException("Kinship row/column");
+            return matrix[row * n + column];
+        }
         public double denominator() { return denominator; }
         public int predictorsUsed() { return predictorsUsed; }
     }

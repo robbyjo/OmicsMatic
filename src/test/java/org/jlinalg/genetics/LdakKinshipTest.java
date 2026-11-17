@@ -109,6 +109,9 @@ class LdakKinshipTest {
             double[] copy = result.matrix();
             copy[0] = -999;
             assertTrue(result.matrix()[0] >= 0);
+            assertEquals(result.matrix()[0], result.value(0, 0));
+            assertThrows(IndexOutOfBoundsException.class, () -> result.value(-1, 0));
+            assertThrows(IndexOutOfBoundsException.class, () -> result.value(0, result.samples().size()));
             assertThrows(UnsupportedOperationException.class, () -> result.samples().clear());
             assertThrows(UnsupportedOperationException.class, () -> result.predictors().clear());
         }

@@ -36,6 +36,8 @@ public final class JLinAlgCli {
                 return SnakemakeToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
             if (arguments.length > 0 && arguments[0].equals("snpeff-tools"))
                 return SnpEffWorkflowCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+            if (arguments.length > 0 && arguments[0].equals("ldak-tools"))
+                return LdakWorkflowCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
             if (arguments.length > 0 && arguments[0].equals("salmon-tools"))
                 return SalmonToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
             if (arguments.length > 0 && arguments[0].equals("sambamba-tools"))
@@ -484,6 +486,7 @@ public final class JLinAlgCli {
               java -jar omicsmatic-<version>.jar nextflow-tools --help
               java -jar omicsmatic-<version>.jar snakemake-tools --help
               java -jar omicsmatic-<version>.jar snpeff-tools --help
+              java -jar omicsmatic-<version>.jar ldak-tools --help
               java -jar omicsmatic-<version>.jar snakemake-tools run --help
               java -jar omicsmatic-<version>.jar snakemake-tools verify --help
               java -jar omicsmatic-<version>.jar snakemake-tools replay --help
