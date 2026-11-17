@@ -246,6 +246,16 @@ retained. See the deployment development guide for its warning and recovery step
 Complete managed-software capture/replay and the
 remaining admission gates are unfinished.
 
+The schema-2 managed process path also checks the actual original parser after
+workflow-profile reparse. Twenty-seven packaged controls cover the three
+deployment modes, permitted profile settings, rejected partial-DAG, dry-run and
+conflicting deployment settings, missing-software skips and legacy requests. Its independent
+Java reader rejects contradictory effective settings and false skip claims;
+early profile skips prove that no original API, deployment call or worker ran.
+The deployment development guide records the failed intermediate attempts and
+current source, package, portable-reader and supervisor evidence. This parent
+parser gate adds no public analysis command or catalog credit.
+
 Source-control qualification scripts still use the recorded development control
 paths. The separate setup utility carries its own pinned synthetic fixtures.
 Do not edit an old receipt or refresh its saved hashes to make changed code pass.

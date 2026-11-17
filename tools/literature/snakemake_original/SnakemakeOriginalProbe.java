@@ -12,6 +12,12 @@ public final class SnakemakeOriginalProbe {
         var root=Path.of(args[1]).toAbsolutePath().normalize();
         Runnable check=()->{if(Thread.currentThread().isInterrupted())throw new java.util.concurrent.CancellationException("Probe interrupted");};
         switch(args[0]) {
+            case "managed-parser-policy" -> {
+                var request=SnakemakeOriginalFiles.object(SnakemakeOriginalFiles.json(root,4_194_304));
+                if(!(request.get("allow_install") instanceof Boolean allow))throw new IllegalArgumentException("Require an explicit parser/installation permission");
+                var result=SnakemakeOriginalManagedPolicy.audit(request.get("policy"),SnakemakeOriginalFiles.object(request.get("controller")),allow,SnakemakeOriginalFiles.text(request.get("working")),SnakemakeOriginalFiles.text(request.get("conda")),SnakemakeOriginalFiles.text(request.get("images")));
+                System.out.println(SnakemakeOriginalJson.json(Map.of("status","PASS_INDEPENDENT_MANAGED_PARSER_POLICY_ONLY","audit",result,"user_analysis_admitted",false)));
+            }
             case "supervised-policy" -> {
                 var request=SnakemakeOriginalFiles.object(SnakemakeOriginalFiles.json(root,4_194_304));var environment=new java.util.TreeMap<String,String>();
                 for(var row:SnakemakeOriginalFiles.object(request.get("environment")).entrySet())environment.put(SnakemakeOriginalFiles.text(row.getKey()),SnakemakeOriginalFiles.text(row.getValue()));

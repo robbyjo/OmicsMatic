@@ -167,3 +167,65 @@ preinstalled development path only within its documented scope; retain all
 warnings and failed attempts, and use new output paths after resolving a named
 failure. Do not interpret `SUPERVISED-POLICY.json` as a completed user analysis or
 refresh older receipts to make changed code appear qualified.
+
+## Effective original managed workflow profiles
+
+The schema-2 development controller now reads the selected original parser's
+actual settings after its workflow-profile reparse. It checks nineteen explicit
+recipe settings, including deployment methods, both cache prefixes, the Conda
+frontend, Apptainer arguments and the project logger, together with the named
+disabled report, destructive and partial-DAG controls. Java independently checks
+the same complete setting census and the original option-source provenance.
+Actual settings come from the original parser; they are not copied from the
+request or inferred from CLI text.
+
+A conflicting profile produces **SKIP3 before the original API is called**.
+The project explicitly opens the controller's scoped installation-policy record
+before parsing, since the original logger settings are constructed later inside
+`args_to_api`. An early rejection closes that actual policy with no deployment
+calls, no workers and no event collectors. Java requires those zero-call and
+zero-worker conditions and checks the controller's PID/start-time identity in
+the actual supervisor ledger. Missing software after a valid parser policy is a
+different skip: the API was called, and its installation-policy records identify
+the blocked original entrypoint. Both cases retain their original diagnostics.
+
+The selected parser stores deployment methods as a set. The unchanged recorder
+sorts set values, so combined deployment is recorded as `APPTAINER, CONDA` even
+when the CLI lists `conda apptainer`. A source audit verifies the original set
+type and recorded representation. This changes the expected metadata contract;
+it does not replace the parser or reorder an author's workflow.
+
+Twenty-seven packaged original-engine controls passed across all three managed
+modes: plain workflows, resource profiles, explicit CLI precedence, partial-DAG
+profiles, environment-module profiles, dry-run profiles, missing-software skips,
+and two legacy process-only request cases. Independent review checks 39 actual
+policy-process identities, twelve original local spawns, nine pre-API profile
+rejections and six blocked deployment calls. The original qualified environments,
+images and both provider trees match their earlier before/after records.
+
+The packaged portable reader passes 21 genuine schema-2 records and a separately
+reencoded positive copy, and rejects 21 damaged contracts or success/skip claims.
+These checks run on Windows with an empty `PATH` and no engine execution. The
+private JAR passes forty Snakemake Java tests and verifies an existing
+preinstalled-workflow bundle without changing that bundle or executing an engine.
+Current records are retained under `managed-parser-packaged-2`,
+`managed-parser-review-1`, `managed-parser-records-1` and
+`managed-parser-package-2` in `build/snakemake-original/`.
+
+**WARNING: earlier attempts failed because a shadow fixture omitted its script
+input, an early rejection lacked an explicit controller policy record, and the
+initial combined-method contract used CLI ordering for a recorded set.** Their
+source snapshots, actual packages, original diagnostics and failed controls are
+retained separately. None is reclassified as a passing current family or admitted
+as analysis. Use the current qualified helper/JAR edition and NEW output paths.
+For a rejected profile, inspect the named setting and remove the conflict or
+select a separately qualified mode. For missing software, restore the complete
+permitted software or use separately qualified permitted installation. Never
+refresh an older record's hashes to make changed code pass.
+
+This is a parent parser/process-policy gate. It does not establish compatibility
+with every Snakemake profile option or complete managed workflow input, software
+and output capture, replay, a public original-engine CLI, or the six paper roles.
+Schema-1 process-only controls remain readable but do not establish this new
+parser contract. Top-level managed workflow analysis still returns **SKIP3**;
+Snakemake receives no new catalog credit from these development controls.
