@@ -12,6 +12,13 @@ public final class SnakemakeOriginalProbe {
         var root=Path.of(args[1]).toAbsolutePath().normalize();
         Runnable check=()->{if(Thread.currentThread().isInterrupted())throw new java.util.concurrent.CancellationException("Probe interrupted");};
         switch(args[0]) {
+            case "installation-policy" -> {
+                var request=SnakemakeOriginalFiles.object(SnakemakeOriginalFiles.json(root,4_194_304));var owned=new java.util.HashSet<Long>();
+                for(Object pid:SnakemakeOriginalFiles.list(request.get("owned_processes")))owned.add(SnakemakeOriginalFiles.integer(pid,1,Long.MAX_VALUE));
+                if(!(request.get("allow_install") instanceof Boolean allow))throw new IllegalArgumentException("Require an explicit installation permission");
+                var result=SnakemakeOriginalInstallationPolicy.audit(Path.of(SnakemakeOriginalFiles.text(request.get("records"))),Path.of(SnakemakeOriginalFiles.text(request.get("configuration"))),SnakemakeOriginalFiles.integer(request.get("controller_pid"),1,Long.MAX_VALUE),owned,SnakemakeOriginalFiles.text(request.get("run_id")),allow,SnakemakeOriginalFiles.text(request.get("python")),SnakemakeOriginalFiles.text(request.get("conda_prefix")),SnakemakeOriginalFiles.text(request.get("image_prefix")),4096,100000,4_194_304,67_108_864,check);
+                System.out.println(SnakemakeOriginalJson.json(Map.of("status","PASS_PROPAGATED_INSTALLATION_POLICY_ONLY_NOT_WORKFLOW_ADMISSION","audit",result)));
+            }
             case "providers" -> {
                 long start=System.nanoTime();var providers=SnakemakeOriginalDeployment.open(root,check);
                 System.out.println(SnakemakeOriginalJson.json(Map.of("status","PASS_COMPLETE_SELECTED_DEPLOYMENT_PROVIDERS_NOT_WORKFLOW_ADMISSION","providers",providers.providers(),"elf_objects",providers.elfObjects(),"external_paths",providers.externalPaths(),"elapsed_millis",(System.nanoTime()-start)/1_000_000)));

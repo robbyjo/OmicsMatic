@@ -1,9 +1,9 @@
 # Snakemake deployment verification and installation policy
 
 **WARNING: developer qualification only. Managed execution through the Java
-workflow adapter, propagation of policy to nested engine subprocesses, complete
-managed-software capture/replay, the public original-engine CLI and catalog
-admission remain unfinished. Managed Java analysis requests still produce SKIP3.
+workflow adapter, binding propagated policy to its owned-process supervisor,
+complete managed-software capture/replay, the public original-engine CLI and
+catalog admission remain unfinished. Managed Java analysis requests still produce SKIP3.
 These controls add no tool integration credit and reproduce no paper.**
 
 `SnakemakeOriginalDeployment` independently verifies the adopted Conda 26.9.4
@@ -61,10 +61,9 @@ Do not refresh old hashes, remove warnings or silently substitute an engine,
 provider, solver or deployment mode. Original channel-priority warnings and
 intentional missing-software error logs remain retained with their control labels.
 
-The scoped guard currently covers the instrumented controller process. It does
-not constrain arbitrary trusted workflow code, filesystem races or independently
-started subprocesses. Nested engine propagation must be qualified before the
-managed Java execution path can be admitted. Use `--help` on
+The scoped guard does not constrain arbitrary trusted workflow code, filesystem
+races or independently started programs. The spawned-process protocol below is
+separately qualified; it is not yet connected to Java workflow admission. Use `--help` on
 `qualify_providers.py`, `qualify_installation_policy.py` and `compile_probe.py`
 for developer control inputs. They require the selected qualified software,
 complete earlier native source fixtures and new persistent output paths; they
@@ -83,3 +82,62 @@ source-cache interface; its failed test source remains retained. Its temporary
 directories were not found when archival was attempted. Later unit fixtures use
 persistent native directories and a separate exported archive. No recovery of
 the unavailable earlier fixtures is claimed.
+
+## Propagation into original spawned engine processes
+
+The selected original local executor starts separate engine processes for shadow
+jobs and `run:` directives. Its general arguments omit logger plugins, and the
+original CLI deliberately disables plugin log handlers in subprocess mode.
+Appending a logger flag alone therefore did not start a child policy. The first
+failed source control and its complete records remain retained.
+
+The project hook calls the unchanged original local executor's
+`additional_general_args` method, then appends `--logger omicsmanaged` to the
+returned arguments. The original CLI constructs the selected plugin's
+`LogHandlerSettings` even when child log handlers are disabled. That settings
+initialization starts a per-process installation policy. The controller closes
+its policy after the original API returns; child processes close theirs at exit.
+Original child log suppression remains unchanged. Parent events and complete
+original stderr are retained alongside separate child policy records; no extra
+child log handlers are enabled.
+
+Twelve original-engine controls passed across Conda, Apptainer and combined
+deployment using shadow jobs: three complete reuses with installation forbidden,
+three missing-software skips in the controller, three permitted fresh installs,
+and three missing-software skips in a spawned child. The child controls use an
+original `onstart` hook after deployment to temporarily move software created
+specifically for the fixture. The child refuses reinstallation, the process
+exits, and the coordinator restores the software. Before/after complete tree
+records agree. Earlier qualified environments, images and both provider trees
+also remain unchanged; they are never moved by these fault controls.
+
+`SnakemakeOriginalInstallationPolicy` independently reads the protocol in Java
+without executing an engine. It checks the explicit run, permission and selected
+interpreter; caller-supplied process ownership; complete opened/closed file pairs;
+one child policy per formatted local spawn; selected upstream source hashes;
+permission decisions and original-call status; Conda prefix/setup-flag bindings;
+the original image URL/cache hash; and required skip recovery text. It accepts
+the twelve source families and a valid independently resealed copy. Seventeen
+contradictions are rejected, including a resealed permission change, another run,
+unowned/missing children, removed skips, changed original-call claims and changed
+spawn arguments, an image falsely relabeled local and an impossible successful
+external-environment creation. Metadata hashes are recomputed in the damaged copies: these
+checks test semantic consistency as well as byte integrity.
+
+**WARNING: an earlier development reader accepted a resealed remote-image record
+relabeled as local.** Its frozen classes, accepted damaged copy and failed
+qualification remain retained. The corrected reader derives the selected Linux
+URI classification and rejects this contradiction; it also preserves the
+original assertion failure for an invalid external-environment `create` call.
+Use newly qualified readers and records. Do not refresh old hashes to make an
+earlier reader or evidence family appear corrected.
+
+The reader checks ownership against the set supplied by its caller. The final
+execution adapter must derive that set from its actual owned-process supervisor
+and bind it to input/software/output capture and replay. A policy record, process
+count or successful source control does not perform that integration. Missing,
+unclosed or contradictory records must prevent result admission. Current raw
+records are retained in `propagated-policy-2` and the current propagated-reader
+control folders under
+`build/snakemake-original/`; `qualify_propagated_policy.py` and
+`qualify_propagated_records.py` describe the developer inputs with `--help`.

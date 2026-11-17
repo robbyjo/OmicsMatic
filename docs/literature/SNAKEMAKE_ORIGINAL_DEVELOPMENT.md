@@ -238,8 +238,10 @@ recorded separately; they do not justify removing the upstream warning.
 
 Java provider verification and scoped installation-permission controls are
 described in [SNAKEMAKE_DEPLOYMENT_DEVELOPMENT.md](SNAKEMAKE_DEPLOYMENT_DEVELOPMENT.md).
-They do not yet enable managed Java execution. Nested engine subprocess policy,
-managed-software capture/replay and the remaining admission gates are unfinished.
+They do not yet enable managed Java execution. Spawned-process permission
+propagation and its portable Java reader have separate synthetic qualification;
+binding them to the execution supervisor, managed-software capture/replay and the
+remaining admission gates are unfinished.
 
 Source-control qualification scripts still use the recorded development control
 paths. The separate setup utility carries its own pinned synthetic fixtures.
