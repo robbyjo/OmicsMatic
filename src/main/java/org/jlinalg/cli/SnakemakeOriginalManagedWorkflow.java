@@ -12,9 +12,9 @@ import java.util.Map;
 import java.util.TreeMap;
 import static org.jlinalg.cli.SnakemakeOriginalFiles.*;
 
-/** Captured managed original execution under qualification; final managed bundle/replay remains gated. */
+/** Complete captured original managed execution before independent final bundle admission. */
 final class SnakemakeOriginalManagedWorkflow {
-    static final String WARNING="Managed workflow evidence is under qualification. The original parser, local executor and deployers are selected, with an explicit per-process installation permission. Selected cache trees are captured literally, including links and special-object metadata; arbitrary additional external dependencies loaded by trusted workflow code are not sealed. Installed Conda prefixes are not relocated. Portable bundle verification and genuine managed replay require their separately completed evidence; public CLI and paper-role admission remain unfinished. No analysis or catalog credit is admitted. Retain all failures and original diagnostics; resolve the named cause where permitted and retry NEW output.";
+    static final String WARNING="Selected original local managed workflow. The original parser, local executor and deployers are selected, with an explicit per-process installation permission and owned shadow staging. Selected cache trees are captured literally, including links and special-object metadata; arbitrary additional external dependencies loaded by trusted workflow code are not sealed. Installed Conda prefixes are not relocated. Require the separately completed and independently verified bundle before using declared outputs; request genuine replay for fresh execution and comparison. Captured execution alone does not admit an analysis or establish paper-specific coverage. Retain all failures and original diagnostics; resolve the named cause where permitted and retry NEW output.";
     private SnakemakeOriginalManagedWorkflow() { }
     static SnakemakeOriginalWorkflow.Result execute(Path root,Path recipe,Identity recipeBefore,SnakemakeOriginalRecipe.Request request,Path runtimeHome,Runnable check)throws IOException {
         if(request.managed()==null||request.execution().deployment().equals("preinstalled"))throw new IOException("Explicit schema-2 managed recipe required");

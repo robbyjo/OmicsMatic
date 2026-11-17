@@ -23,7 +23,7 @@ import static org.jlinalg.cli.SnakemakeOriginalRecorded.*;
 
 /** Complete portable evidence of a declared local workflow, independent of producer paths and runtime. */
 final class SnakemakeOriginalBundle {
-    static final Set<String> TOP_FILES=Set.of("REQUEST.json","request-source.json","runtime-context.json","tools.json","capture.json","parameters.json","COMMAND.json","DRIVER.json","invocation.json","working-before.json","working-after.json","code.json","completion-events.json","DIAGNOSTICS.json","outputs.json","WARNINGS.md","EXECUTED.json");
+    static final Set<String> TOP_FILES=Set.of("REQUEST.json","request-source.json","FILESYSTEM.json","runtime-context.json","tools.json","capture.json","parameters.json","COMMAND.json","DRIVER.json","invocation.json","working-before.json","working-after.json","code.json","completion-events.json","DIAGNOSTICS.json","outputs.json","WARNINGS.md","EXECUTED.json");
     record Verified(Path root,Pin manifest,Path executionRoot,String producer,SnakemakeOriginalRecipe.Request request,SnakemakeOriginalCapture.Snapshot inputs,List<SnakemakeOriginalWorkflow.Published> outputs,SnakemakeOriginalEvents.Result events) {Verified {outputs=List.copyOf(outputs);}}
     record Inventory(Map<String,Pin> files,Set<String> directories) { }
     private SnakemakeOriginalBundle() { }
@@ -88,6 +88,7 @@ final class SnakemakeOriginalBundle {
         if(!helperNames.equals(new HashSet<>(SnakemakeOriginalRuntime.HELPERS)))throw new IOException("Complete captured driver/logger helper census differs from the executing edition");
         for(String name:SnakemakeOriginalRuntime.HELPERS){byte[] helper=SnakemakeOriginalRuntime.resource(name);if(!pin(root.resolve("helpers").resolve(name),1_048_576,check).equals(new Pin(helper.length,sha(helper))))throw new IOException("Captured driver/logger helper bytes differ from the exact executing edition: "+name);}
         Map<?,?> invocation=object(json(root.resolve("invocation.json"),request.metadataBytes()));keys(invocation,"command","environment","working_directory","bindings","producer_root","forced_complete_target_dag","selected_preinstalled_deployment");String producer=absolute(text(invocation.get("producer_root")));
+        SnakemakeOriginalFilesystem.audit(root,producer,check);
         if(!request.execution().deployment().equals("preinstalled")||!Boolean.TRUE.equals(invocation.get("forced_complete_target_dag"))||!Boolean.TRUE.equals(invocation.get("selected_preinstalled_deployment")))throw new IOException("Unqualified or incomplete recorded execution mode");
         var inputs=SnakemakeOriginalCapture.decode(json(root.resolve("capture.json"),request.metadataBytes()),request.capture());var before=SnakemakeOriginalCapture.decode(json(root.resolve("working-before.json"),request.metadataBytes()),request.capture());var after=SnakemakeOriginalCapture.decode(json(root.resolve("working-after.json"),request.metadataBytes()),request.capture());
         for(var state:List.of(before,after))if(state.roots().size()!=1||!state.roots().get(0).source().equals(producer+"/workspace")||!state.roots().get(0).leaf().equals("workspace")||!state.aliases().equals(Map.of("working","r0/workspace")))throw new IOException("Captured working state is not the owned workspace");

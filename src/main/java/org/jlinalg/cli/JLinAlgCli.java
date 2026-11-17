@@ -33,7 +33,7 @@ public final class JLinAlgCli {
             if (arguments.length > 0 && arguments[0].equals("nextflow-tools"))
                 return NextflowToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
             if (arguments.length > 0 && arguments[0].equals("snakemake-tools"))
-                return SnakemakeBenchmarkCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+                return SnakemakeToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
             if (arguments.length > 0 && arguments[0].equals("salmon-tools"))
                 return SalmonToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
             if (arguments.length > 0 && arguments[0].equals("sambamba-tools"))
@@ -480,6 +480,10 @@ public final class JLinAlgCli {
               java -jar omicsmatic-<version>.jar pal2nal-tools --help
               java -jar omicsmatic-<version>.jar mashr-tools --help
               java -jar omicsmatic-<version>.jar nextflow-tools --help
+              java -jar omicsmatic-<version>.jar snakemake-tools --help
+              java -jar omicsmatic-<version>.jar snakemake-tools run --help
+              java -jar omicsmatic-<version>.jar snakemake-tools verify --help
+              java -jar omicsmatic-<version>.jar snakemake-tools replay --help
               java -jar omicsmatic-<version>.jar snakemake-tools benchmark --help
               java -jar omicsmatic-<version>.jar salmon-tools --help
               java -jar omicsmatic-<version>.jar tomtom-tools --help

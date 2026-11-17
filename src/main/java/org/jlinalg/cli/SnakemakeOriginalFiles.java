@@ -63,6 +63,12 @@ final class SnakemakeOriginalFiles {
         var after=Files.readAttributes(path,BasicFileAttributes.class,LinkOption.NOFOLLOW_LINKS);
         if(raw.length>maximum||raw.length!=before.size()||raw.length!=after.size()||!before.lastModifiedTime().equals(after.lastModifiedTime())||!Objects.equals(before.fileKey(),after.fileKey()))throw new IOException("SnakemakeOriginal metadata changed or exceeded capacity: "+path);return raw;
     }
+    static void copyBytes(Path source,Path target,long maximum,Runnable check)throws IOException {
+        if(maximum<0)throw new IOException("Invalid complete SnakemakeOriginal copy capacity");
+        try(var input=input(source);var output=Files.newOutputStream(target,StandardOpenOption.CREATE_NEW)){
+            long count=0;byte[] buffer=new byte[65536];for(int n=input.read(buffer);n>=0;n=input.read(buffer)){check.run();count=Math.addExact(count,n);if(count>maximum)throw new IOException("Complete SnakemakeOriginal copy exceeded capacity");output.write(buffer,0,n);}
+        }
+    }
     static String utf8(byte[] raw)throws IOException{return StandardCharsets.UTF_8.newDecoder().onMalformedInput(CodingErrorAction.REPORT).onUnmappableCharacter(CodingErrorAction.REPORT).decode(java.nio.ByteBuffer.wrap(raw)).toString();}
     private static java.io.InputStream input(Path path)throws IOException {
         // The JDK ZIP namespace contains archive bytes, never host-resolved payload

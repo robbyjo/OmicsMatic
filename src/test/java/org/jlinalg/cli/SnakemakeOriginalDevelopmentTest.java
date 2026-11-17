@@ -82,7 +82,7 @@ class SnakemakeOriginalDevelopmentTest {
     @Test void declaredManagedToolCannotReplaceAnAdoptedDeployer()throws Exception {
         for(String name:List.of("conda","mamba","micromamba","apptainer","singularity")){var value=managedRequest();value.put("required_tools",List.of(Map.of("name",name,"path",temp.resolve("binary").toString())));assertThrows(IOException.class,()->SnakemakeOriginalRecipe.read(save(value)),name);}
     }
-    @Test void finalManagedBundleRemainsGatedBeforeAnySourceExecution()throws Exception {
+    @Test void managedBundleSkipsMissingPrerequisitesBeforeAnySourceExecution()throws Exception {
         Path recipe=save(managedRequest()),out=temp.resolve("managed-bundle-gate");assertThrows(SnakemakeOriginalRuntime.Unavailable.class,()->SnakemakeOriginalWorkflow.run(recipe,temp.resolve("missing-runtime"),out,()->{}));assertTrue(Files.readString(out.resolve("FAILURE_WARNINGS.md")).contains("SKIP3"));assertFalse(Files.exists(out.resolve("objects")));assertFalse(Files.exists(out.resolve("process")));assertFalse(Files.exists(out.resolve("EXECUTED.json")));
     }
 }

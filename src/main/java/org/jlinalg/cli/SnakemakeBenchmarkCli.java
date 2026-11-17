@@ -35,8 +35,8 @@ public final class SnakemakeBenchmarkCli {
         measure processes, establish that a caller's job list covers an entire DAG,
         certify successful biological jobs, or reproduce unreported author settings.
         None of the six reviewed paper roles establishes engine version 9.27.1.
-        The separate original-engine adapter is still under development. No additional
-        catalog credit is claimed here. Build current source; released v0.4.0 lacks
+        Original-engine run/verify/replay are separate operations; this benchmark
+        operation alone claims no additional catalog credit. Build current source; released v0.4.0 lacks
         this command. Whole-paper reproduction and the 250-paper goal remain open.
 
         Require root COMPLETED.properties. --verify validates complete captured input,

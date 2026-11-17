@@ -1,5 +1,10 @@
 # Snakemake deployment verification and installation policy
 
+**Current source update:** private managed bundle and replay qualification is
+recorded later in this guide. The newer public commands still need complete
+runtime qualification; see [SNAKEMAKE_WORKFLOWS.md](SNAKEMAKE_WORKFLOWS.md).
+The opening checkpoint below describes an earlier frozen code edition.
+
 **WARNING: developer qualification only. Captured managed execution now binds
 inputs, original job events, software payloads and outputs to its process policy.
 Final managed bundle verification/replay, the public original-engine CLI and

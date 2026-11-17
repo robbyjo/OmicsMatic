@@ -194,10 +194,7 @@ final class SnakemakeOriginalCapture {
     static String store(Path objects,Path source,SnakemakeOriginalFiles.Pin expected,long maximum,Runnable check)throws IOException {
         Path target=objects.resolve(expected.sha256());
         if(Files.exists(target,LinkOption.NOFOLLOW_LINKS)){if(!SnakemakeOriginalFiles.pin(target,maximum,check).equals(expected))throw new IOException("Changed existing captured object");return expected.sha256();}
-        long count=0;
-        try(var input=Files.newInputStream(source,LinkOption.NOFOLLOW_LINKS);var output=Files.newOutputStream(target,StandardOpenOption.CREATE_NEW)){
-            byte[] buffer=new byte[65536];for(int n=input.read(buffer);n>=0;n=input.read(buffer)){check.run();count=Math.addExact(count,n);if(count>maximum||count>expected.bytes())throw new IOException("Complete source object exceeded capacity during capture");output.write(buffer,0,n);}
-        }
+        SnakemakeOriginalFiles.copyBytes(source,target,Math.min(maximum,expected.bytes()),check);
         if(!SnakemakeOriginalFiles.pin(target,maximum,check).equals(expected))throw new IOException("Complete source object bytes differ after capture");return expected.sha256();
     }
     private static Map<String,Item> sorted(Map<String,Item> values){return new TreeMap<>(values);}
