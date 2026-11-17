@@ -1,0 +1,1559 @@
+{
+  "status": "PASS_SCOPED_ORIGINAL_SNPEFF_ANNOTATION_CATALOG_ADMISSION",
+  "papers": 250,
+  "named_tools": 446,
+  "observations": 2693,
+  "reviewed_uses": 1218,
+  "unreviewed_uses": 1475,
+  "new_scoped_integrations": 127,
+  "native_integrations": 23,
+  "upstream_integrations": 104,
+  "including_existing_adapters": 130,
+  "missing": 260,
+  "registry_definitions": 485,
+  "reviewed_snpeff_roles": 4,
+  "observations_added": 0,
+  "new_scoped_integration_credit": 1,
+  "native_family_credit_added": 0,
+  "upstream_family_credit_added": 1,
+  "whole_goal_complete": false,
+  "sources": {
+    "docs/literature/SNPEFF_WORKFLOWS.md": {
+      "bytes": 13198,
+      "sha256": "0a203d5af92b4bddec167c822bcc1daeca35634703035d0edf3a3c1d20cd23be"
+    },
+    "docs/literature/SNPEFF_WORKFLOWS_DEVELOPMENT.md": {
+      "bytes": 12684,
+      "sha256": "18446ee21154b894e0c7504fd76899235ac84877aef482f3d43fecef03405615"
+    },
+    "docs/literature/snpeff-workflow-development/.gitattributes": {
+      "bytes": 95,
+      "sha256": "f0770b885ccbb0e4d59bd0649fe2b6c3af0d4730f547d5e0eb2690782a11afb9"
+    },
+    "docs/literature/snpeff-workflow-development/PAPER-ROLES.json": {
+      "bytes": 44165,
+      "sha256": "12e22cdd22fdc4112e720c917a02a2a401724ce3049eee2d65464f37a3522309"
+    },
+    "docs/literature/snpeff-workflow-development/VALIDATION.json": {
+      "bytes": 1337,
+      "sha256": "36e0f755bb578f02c6f0e7e3d423a6d910bfafe7e1600590abe3d2dbba5fd6a0"
+    },
+    "examples/snpeff-workflow/prepare.py": {
+      "bytes": 4569,
+      "sha256": "2e2450069713690a4e5a64e7d0b64472be234cc910f2707de45d39a80cfbbbeb"
+    },
+    "src/main/java/org/jlinalg/cli/SnpEffWorkflowCli.java": {
+      "bytes": 24748,
+      "sha256": "7a0c297a63480bc2e4fa9e2d4f1937985e5fa448e5d27851fe06214fb1fdd896"
+    },
+    "src/main/java/org/jlinalg/cli/SnpEffWorkflowDiagnostics.java": {
+      "bytes": 3269,
+      "sha256": "99710280552f814072a57581365a65c01ffb7275b115951bbebe8cc5f2b0f880"
+    },
+    "src/main/java/org/jlinalg/cli/SnpEffWorkflowFiles.java": {
+      "bytes": 10444,
+      "sha256": "e31b23e6e78a33ec209b27af131e5f22bf75eb892b88edab3db3430a58e3a739"
+    },
+    "src/main/java/org/jlinalg/genetics/SnpEffAnnotations.java": {
+      "bytes": 14882,
+      "sha256": "defdfe8bc09f193e9da8905a717ba57ec01141fbc9f1732f92271c160304e7bd"
+    },
+    "src/test/java/org/jlinalg/cli/SnpEffWorkflowCliTest.java": {
+      "bytes": 3447,
+      "sha256": "b6ca45e0abbef9f010d571b6cbc42b141082ccb6a0994d11204df57c7ef15075"
+    },
+    "src/test/java/org/jlinalg/cli/SnpEffWorkflowDiagnosticsTest.java": {
+      "bytes": 2056,
+      "sha256": "7e590faeca2fb10a3424a05737fe4e6bbdbe63ecea81d479ff76b86e6a8ba90d"
+    },
+    "src/test/java/org/jlinalg/genetics/SnpEffAnnotationsTest.java": {
+      "bytes": 5973,
+      "sha256": "ace8a5b8fe4ca1f62dc54461f7f5dd12024ce8e8ecfdb666ccaaca38de979c36"
+    },
+    "src/test/resources/org/jlinalg/genetics/snpeff/.gitattributes": {
+      "bytes": 135,
+      "sha256": "8994adbda13a6086f0dbdc1c81388d80ff9ca80b76981c2b07818508af0bf2d3"
+    },
+    "src/test/resources/org/jlinalg/genetics/snpeff/ERROR-PROVENANCE.json": {
+      "bytes": 1298,
+      "sha256": "23eeb1ed5cd7a9341f35284dbd1040cfff5617f46d15266ed86b58d0349e8542"
+    },
+    "src/test/resources/org/jlinalg/genetics/snpeff/PROVENANCE.json": {
+      "bytes": 2141,
+      "sha256": "419a808063011cf4ef9f59523aae7ac8752c65a50fca4e4c8d27011da7b553a7"
+    },
+    "src/test/resources/org/jlinalg/genetics/snpeff/cds.fa": {
+      "bytes": 206,
+      "sha256": "827cfaea425c30abe872123496feee7cfcfd74e2a6c1666f13e89e97c676a604"
+    },
+    "src/test/resources/org/jlinalg/genetics/snpeff/genes.gff": {
+      "bytes": 1465,
+      "sha256": "f9ceef7fd39f6f1171225cb26548571c02d7c2f33cd4132626f55e3e29704cf6"
+    },
+    "src/test/resources/org/jlinalg/genetics/snpeff/legacy-input.txt": {
+      "bytes": 569,
+      "sha256": "219f95ea933815c566612364136557de9c28a18c91e9d9bb5e203fd5eadae685"
+    },
+    "src/test/resources/org/jlinalg/genetics/snpeff/legacy-invalid-input.txt": {
+      "bytes": 580,
+      "sha256": "fffac57007a335a43f551e18322b45ac6b99495cf8931e75612db4526164e546"
+    },
+    "src/test/resources/org/jlinalg/genetics/snpeff/legacy-original-rejection.stderr": {
+      "bytes": 91,
+      "sha256": "67ce392448b76104c62f357c61be826b04c0ed01932f401d6ca586b3858173de"
+    },
+    "src/test/resources/org/jlinalg/genetics/snpeff/legacy-original-rejection.txt": {
+      "bytes": 2808,
+      "sha256": "f3ba9fd9d3d4398007edd4d8984db573a23277342c9eb131f5784bf5591bdd17"
+    },
+    "src/test/resources/org/jlinalg/genetics/snpeff/legacy-output.txt": {
+      "bytes": 3040,
+      "sha256": "29f3adbb4dbf150e35d6249f89bd3997adbc8dde3cbc78c8a6ea4d67a34c67da"
+    },
+    "src/test/resources/org/jlinalg/genetics/snpeff/modern-input.vcf": {
+      "bytes": 1100,
+      "sha256": "96fc1c7d1aabbd52e55af33146a34f9118c4e0f4969642b7de0c2969da9a361f"
+    },
+    "src/test/resources/org/jlinalg/genetics/snpeff/modern-invalid-input.vcf": {
+      "bytes": 1111,
+      "sha256": "c77d416d7dd9c1270155bcb7c59c43f6186af20c21e494b5d9eca7ebb31ae6b0"
+    },
+    "src/test/resources/org/jlinalg/genetics/snpeff/modern-original-error.vcf": {
+      "bytes": 5624,
+      "sha256": "b81811380cd354e19e5282eae025abd5321080ecfe73921f7fda2c591f3c114e"
+    },
+    "src/test/resources/org/jlinalg/genetics/snpeff/modern-output.vcf": {
+      "bytes": 5872,
+      "sha256": "15aee61ba55d21714883d1ad56696c3b97c3072c709a13c0067024e6b654c74a"
+    },
+    "src/test/resources/org/jlinalg/genetics/snpeff/protein.fa": {
+      "bytes": 86,
+      "sha256": "49ae45bb4f03b648c5f42ec744d5b0a14d910f5106194fac3170d3a37c9c3c5c"
+    },
+    "src/test/resources/org/jlinalg/genetics/snpeff/sequences.fa": {
+      "bytes": 1216,
+      "sha256": "41f346946600258bcb62bf67add91fd3ca9ec35ce7ce95e4f090c660a4bf8b28"
+    },
+    "tools/literature/snpeff/catalog.py": {
+      "bytes": 13624,
+      "sha256": "e3d0954ddaebc0b6a333f4f97b9bdaceb298e92295f24059bb700ff73a7c8192"
+    },
+    "tools/literature/snpeff/model.py": {
+      "bytes": 10626,
+      "sha256": "77b2ebefcff3144fb1c93ef216f6a2da7bf79258c06ca11cc4f5d0fa732168a6"
+    },
+    "tools/literature/snpeff/payloads.py": {
+      "bytes": 6494,
+      "sha256": "5b75746fc2d1ff23ee86e6e759715541b7507c0be731322ddc277a35974ad582"
+    },
+    "tools/literature/snpeff/primary.py": {
+      "bytes": 4377,
+      "sha256": "632db916a781d5a7fdff9dd9c69a6ce601d3c728f7be68d7aed266c1102a057f"
+    },
+    "tools/literature/snpeff/qualification.py": {
+      "bytes": 8270,
+      "sha256": "3e40e8e8781bc37ed8802dafd322d40bde223fd2bfbfdcc104c8b251c4e8fdf0"
+    },
+    "tools/literature/snpeff_original/.gitattributes": {
+      "bytes": 96,
+      "sha256": "46b4176c390f1970b78be4538c8858d8e371f408fe4afb5e11453598877f7947"
+    },
+    "tools/literature/snpeff_original/setup.py": {
+      "bytes": 12928,
+      "sha256": "71ac6f6f0d89242ce655707dc4b3f283f6b5ef5239d1dd1e6e01da216ec5a063"
+    },
+    "tools/literature/snpeff_original/source-profile.json": {
+      "bytes": 84603,
+      "sha256": "92e153fbd8c0ce1a3642b3d588b8b19ce51dbfe6a91a31cce01cb12bfaa82240"
+    },
+    "tools/literature/snpeff_original/test_setup.py": {
+      "bytes": 2154,
+      "sha256": "4afeb85b395d24a3093c330e3b9561eac3590ed936d5f3b77b0b7fe0f61de6db"
+    }
+  },
+  "evidence": {
+    "docs/literature/snpeff-catalog-integration/.gitattributes": {
+      "bytes": 8,
+      "sha256": "705fd4d6451a31d36b3df7de96f83f30ac976c9b4a6d1e51671d8e2f33e2d0da"
+    },
+    "docs/literature/snpeff-catalog-integration/catalog-before.zip": {
+      "bytes": 2228018,
+      "sha256": "d42a92006a6ad13692b491f72fc1805fbc203164cc9114e3b652c13142249333"
+    },
+    "docs/literature/snpeff-catalog-integration/CENSUS.json": {
+      "bytes": 48150,
+      "sha256": "abe9ffb2c9dc294ac526b572cfd3374c4874755c95e55563370a53bd2ad9f8de"
+    },
+    "docs/literature/snpeff-catalog-integration/copied.json": {
+      "bytes": 7669,
+      "sha256": "6f6ad2e4058f99c19cc1919d8ffaf8826e6a2e9b32765c607678fc01087f3b98"
+    },
+    "docs/literature/snpeff-catalog-integration/copied_replay.json": {
+      "bytes": 687,
+      "sha256": "73fd719df289d995e264cc97d9e9d00eb3b02ba1f8005469469deb4e3521858e"
+    },
+    "docs/literature/snpeff-catalog-integration/human.json": {
+      "bytes": 2777,
+      "sha256": "3ccc4dcdaa97378ae21edd183f03eb5733b62f8628855496e14ad9f83056a787"
+    },
+    "docs/literature/snpeff-catalog-integration/negative.json": {
+      "bytes": 6892,
+      "sha256": "2b53f251301c92a1c86bcd2db395edafc11f7f0b8ed27edcb80ead0265e688f1"
+    },
+    "docs/literature/snpeff-catalog-integration/original_errors.json": {
+      "bytes": 4251,
+      "sha256": "3fe5a4e55dd1f84fcfa6f0c8757791b128e486d83dc4985e12723643df486c8a"
+    },
+    "docs/literature/snpeff-catalog-integration/PACKAGE-TRANSITION.json": {
+      "bytes": 435,
+      "sha256": "5ee2ae5ba6ce6da50f47b39921f787bd9b59657585ca50aeffadd3c52f7a610d"
+    },
+    "docs/literature/snpeff-catalog-integration/PAYLOADS.json": {
+      "bytes": 20206,
+      "sha256": "97fc1cb046726b16b936e818b78f01438e514601d583ae372cbe3c277c48e196"
+    },
+    "docs/literature/snpeff-catalog-integration/public.json": {
+      "bytes": 9588,
+      "sha256": "cf904324266d7df847de3f566e96c848d4124e972025114ff1d6cbdaaba639be"
+    },
+    "docs/literature/snpeff-catalog-integration/published_reference.json": {
+      "bytes": 2279,
+      "sha256": "073d753ffd7d5c93c19dba021adc651aef8cddc4710b052bd3846e71a13b0043"
+    },
+    "docs/literature/snpeff-catalog-integration/QUALIFICATION.json": {
+      "bytes": 45077,
+      "sha256": "72c59183e88adb9a85cfd0cdebbfcd1c25aeb3a05c031cfe62d653b4fe106155"
+    },
+    "docs/literature/snpeff-catalog-integration/REGISTRY.json": {
+      "bytes": 207653,
+      "sha256": "15c0a48130c7029ea806a0907f05c27bb3826879219e667f5dcaa4628e786695"
+    },
+    "docs/literature/snpeff-catalog-integration/SOURCE-TRANSITION.json": {
+      "bytes": 9915,
+      "sha256": "8b01db1f2f1013a46b1d58e3f2a9240a3fab641ca06e4ad8dfa55dc98f14ce86"
+    },
+    "docs/literature/snpeff-catalog-integration/SOURCE-TREE.json": {
+      "bytes": 3668574,
+      "sha256": "cb2ac298aa95b9a9469c6a117f1b6592f90aff538eda0ae7869515c7b15bc354"
+    },
+    "docs/literature/snpeff-catalog-integration/WARNINGS.md": {
+      "bytes": 584,
+      "sha256": "a1aa5a6bd667365d25f0617c18573f95dc3b683eeb4381454c5db8a8faa16d0b"
+    },
+    "docs/literature/omics-2023-2026/snpeff-reviews-shared-source-compatibility.json": {
+      "bytes": 1040180,
+      "sha256": "9afa75bbdaeedc7aa481a2cf52212e10a8d4c89d69f4b56c10c822f410a74df7"
+    }
+  },
+  "before": {
+    "docs/literature/omics-2023-2026/papers.json": {
+      "bytes": 3825352,
+      "sha256": "358b18c6da06f436006b4d2c243c28e89e7864dee85215dfef30a48cfeaf4fb1"
+    },
+    "docs/literature/omics-2023-2026/tool-inventory.json": {
+      "bytes": 808899,
+      "sha256": "d68c4dd6cd577c55d903fef47a5dd5f9f69c207422613379e729200968c284e6"
+    },
+    "docs/literature/omics-2023-2026/summary.json": {
+      "bytes": 1147,
+      "sha256": "5a56200366500b18f9e82268681a48ba8c0e4426b099f902e005bfe101b38681"
+    },
+    "docs/literature/omics-2023-2026/README.md": {
+      "bytes": 210667,
+      "sha256": "69a5b6058e1123112f46ce1cad6392f33c93963590f82ca7728fd82a4b16420b"
+    },
+    "docs/literature/omics-2023-2026/WARNINGS.md": {
+      "bytes": 320602,
+      "sha256": "d5754622062ea8829b7161eca7ad5d50d96568c9b1ffeaf7dc90a0856121b51d"
+    },
+    "tools/literature/reviewed-uses.json": {
+      "bytes": 1256199,
+      "sha256": "d10b8ea5a1f38385973dd88ff4814c4bde042bd75793dd085528484c12c3c3fa"
+    },
+    "site/literature-review.html": {
+      "bytes": 4395812,
+      "sha256": "8171b75a65c10e8ba553814ce9cca850713dfb5c755018991da4441d4ee6287a"
+    },
+    "site/literature-warnings.html": {
+      "bytes": 438903,
+      "sha256": "950951de2b275842ba853e7fe9ef6d4df363c746b0d7823f1a4783823ce13396"
+    }
+  },
+  "after": {
+    "docs/literature/omics-2023-2026/papers.json": {
+      "bytes": 3829785,
+      "sha256": "7269af4533b0a3dc6a799b559023d2f9ef793febfc03716f52d1be5082a56c0a"
+    },
+    "docs/literature/omics-2023-2026/tool-inventory.json": {
+      "bytes": 812325,
+      "sha256": "026e0883e6d676a74dbcbab1946b625095706c5bed485d2f8d1f06adbb455c8f"
+    },
+    "docs/literature/omics-2023-2026/summary.json": {
+      "bytes": 1147,
+      "sha256": "fac799bfaed99509c456fce42a2e0bd00fb11a8b54af458e2748fd5edfaf9d2d"
+    },
+    "docs/literature/omics-2023-2026/README.md": {
+      "bytes": 212199,
+      "sha256": "85dcb4865f8018c058ec05ff6ea99b1ceaee172ed1f54f5f80f3b0c449ff38e7"
+    },
+    "docs/literature/omics-2023-2026/WARNINGS.md": {
+      "bytes": 322124,
+      "sha256": "d665032d431cea77870bba045fc9b1b9c54e8324d84083ea750dda4a4b6abcd9"
+    },
+    "tools/literature/reviewed-uses.json": {
+      "bytes": 1261956,
+      "sha256": "8c7387a50670a2b50d6981945557ed2a6b35b0b5a8aae08af8943fbe7010e304"
+    },
+    "site/literature-review.html": {
+      "bytes": 4405049,
+      "sha256": "ad2d2be04df128582ddceb4ca718f9f4eca19b079b7f3544168a8a7dbadcb772"
+    },
+    "site/literature-warnings.html": {
+      "bytes": 440597,
+      "sha256": "669cc522d993021644d551a5092b7197965bed0d56f09f4727af13256c974e60"
+    }
+  },
+  "qualification": {
+    "status": "PASS_CURRENT_SOURCE_SCOPED_ORIGINAL_SNPEFF_AND_PUBLISHED_REFERENCE_COMPATIBILITY",
+    "jar": {
+      "bytes": 193530212,
+      "sha256": "1a7a0429d287f03590351b61f16ee250df78ea912e28fc98ba3687c9e9756d55"
+    },
+    "source_transition": {
+      "status": "PASS_NOTICE_ONLY_FORWARD_SOURCE_TRANSITION",
+      "development_commit": "4973f101c20e4679ec574256f06fe638d2a12407",
+      "files": {
+        "examples/snpeff-workflow/prepare.py": {
+          "before": {
+            "bytes": 4569,
+            "sha256": "2e2450069713690a4e5a64e7d0b64472be234cc910f2707de45d39a80cfbbbeb"
+          },
+          "after": {
+            "bytes": 4569,
+            "sha256": "2e2450069713690a4e5a64e7d0b64472be234cc910f2707de45d39a80cfbbbeb"
+          }
+        },
+        "src/main/java/org/jlinalg/cli/SnpEffWorkflowCli.java": {
+          "before": {
+            "bytes": 24744,
+            "sha256": "aa4a1ca3beef8d20984a861758b9700dd9139aaca5b9327fb7e3cfacda5b47d1"
+          },
+          "after": {
+            "bytes": 24748,
+            "sha256": "7a0c297a63480bc2e4fa9e2d4f1937985e5fa448e5d27851fe06214fb1fdd896"
+          }
+        },
+        "src/main/java/org/jlinalg/cli/SnpEffWorkflowDiagnostics.java": {
+          "before": {
+            "bytes": 3269,
+            "sha256": "99710280552f814072a57581365a65c01ffb7275b115951bbebe8cc5f2b0f880"
+          },
+          "after": {
+            "bytes": 3269,
+            "sha256": "99710280552f814072a57581365a65c01ffb7275b115951bbebe8cc5f2b0f880"
+          }
+        },
+        "src/main/java/org/jlinalg/cli/SnpEffWorkflowFiles.java": {
+          "before": {
+            "bytes": 10444,
+            "sha256": "e31b23e6e78a33ec209b27af131e5f22bf75eb892b88edab3db3430a58e3a739"
+          },
+          "after": {
+            "bytes": 10444,
+            "sha256": "e31b23e6e78a33ec209b27af131e5f22bf75eb892b88edab3db3430a58e3a739"
+          }
+        },
+        "src/main/java/org/jlinalg/genetics/SnpEffAnnotations.java": {
+          "before": {
+            "bytes": 14882,
+            "sha256": "defdfe8bc09f193e9da8905a717ba57ec01141fbc9f1732f92271c160304e7bd"
+          },
+          "after": {
+            "bytes": 14882,
+            "sha256": "defdfe8bc09f193e9da8905a717ba57ec01141fbc9f1732f92271c160304e7bd"
+          }
+        },
+        "src/test/java/org/jlinalg/cli/SnpEffWorkflowCliTest.java": {
+          "before": {
+            "bytes": 3435,
+            "sha256": "aa899a126336ee77851b90b2e4b05d847d5e20f4f3266513f3b02336ee04b6ca"
+          },
+          "after": {
+            "bytes": 3447,
+            "sha256": "b6ca45e0abbef9f010d571b6cbc42b141082ccb6a0994d11204df57c7ef15075"
+          }
+        },
+        "src/test/java/org/jlinalg/cli/SnpEffWorkflowDiagnosticsTest.java": {
+          "before": {
+            "bytes": 2056,
+            "sha256": "7e590faeca2fb10a3424a05737fe4e6bbdbe63ecea81d479ff76b86e6a8ba90d"
+          },
+          "after": {
+            "bytes": 2056,
+            "sha256": "7e590faeca2fb10a3424a05737fe4e6bbdbe63ecea81d479ff76b86e6a8ba90d"
+          }
+        },
+        "src/test/java/org/jlinalg/genetics/SnpEffAnnotationsTest.java": {
+          "before": {
+            "bytes": 5973,
+            "sha256": "ace8a5b8fe4ca1f62dc54461f7f5dd12024ce8e8ecfdb666ccaaca38de979c36"
+          },
+          "after": {
+            "bytes": 5973,
+            "sha256": "ace8a5b8fe4ca1f62dc54461f7f5dd12024ce8e8ecfdb666ccaaca38de979c36"
+          }
+        },
+        "src/test/resources/org/jlinalg/genetics/snpeff/.gitattributes": {
+          "before": {
+            "bytes": 135,
+            "sha256": "8994adbda13a6086f0dbdc1c81388d80ff9ca80b76981c2b07818508af0bf2d3"
+          },
+          "after": {
+            "bytes": 135,
+            "sha256": "8994adbda13a6086f0dbdc1c81388d80ff9ca80b76981c2b07818508af0bf2d3"
+          }
+        },
+        "src/test/resources/org/jlinalg/genetics/snpeff/ERROR-PROVENANCE.json": {
+          "before": {
+            "bytes": 1298,
+            "sha256": "23eeb1ed5cd7a9341f35284dbd1040cfff5617f46d15266ed86b58d0349e8542"
+          },
+          "after": {
+            "bytes": 1298,
+            "sha256": "23eeb1ed5cd7a9341f35284dbd1040cfff5617f46d15266ed86b58d0349e8542"
+          }
+        },
+        "src/test/resources/org/jlinalg/genetics/snpeff/PROVENANCE.json": {
+          "before": {
+            "bytes": 2141,
+            "sha256": "419a808063011cf4ef9f59523aae7ac8752c65a50fca4e4c8d27011da7b553a7"
+          },
+          "after": {
+            "bytes": 2141,
+            "sha256": "419a808063011cf4ef9f59523aae7ac8752c65a50fca4e4c8d27011da7b553a7"
+          }
+        },
+        "src/test/resources/org/jlinalg/genetics/snpeff/cds.fa": {
+          "before": {
+            "bytes": 206,
+            "sha256": "827cfaea425c30abe872123496feee7cfcfd74e2a6c1666f13e89e97c676a604"
+          },
+          "after": {
+            "bytes": 206,
+            "sha256": "827cfaea425c30abe872123496feee7cfcfd74e2a6c1666f13e89e97c676a604"
+          }
+        },
+        "src/test/resources/org/jlinalg/genetics/snpeff/genes.gff": {
+          "before": {
+            "bytes": 1465,
+            "sha256": "f9ceef7fd39f6f1171225cb26548571c02d7c2f33cd4132626f55e3e29704cf6"
+          },
+          "after": {
+            "bytes": 1465,
+            "sha256": "f9ceef7fd39f6f1171225cb26548571c02d7c2f33cd4132626f55e3e29704cf6"
+          }
+        },
+        "src/test/resources/org/jlinalg/genetics/snpeff/legacy-input.txt": {
+          "before": {
+            "bytes": 569,
+            "sha256": "219f95ea933815c566612364136557de9c28a18c91e9d9bb5e203fd5eadae685"
+          },
+          "after": {
+            "bytes": 569,
+            "sha256": "219f95ea933815c566612364136557de9c28a18c91e9d9bb5e203fd5eadae685"
+          }
+        },
+        "src/test/resources/org/jlinalg/genetics/snpeff/legacy-invalid-input.txt": {
+          "before": {
+            "bytes": 580,
+            "sha256": "fffac57007a335a43f551e18322b45ac6b99495cf8931e75612db4526164e546"
+          },
+          "after": {
+            "bytes": 580,
+            "sha256": "fffac57007a335a43f551e18322b45ac6b99495cf8931e75612db4526164e546"
+          }
+        },
+        "src/test/resources/org/jlinalg/genetics/snpeff/legacy-original-rejection.stderr": {
+          "before": {
+            "bytes": 91,
+            "sha256": "67ce392448b76104c62f357c61be826b04c0ed01932f401d6ca586b3858173de"
+          },
+          "after": {
+            "bytes": 91,
+            "sha256": "67ce392448b76104c62f357c61be826b04c0ed01932f401d6ca586b3858173de"
+          }
+        },
+        "src/test/resources/org/jlinalg/genetics/snpeff/legacy-original-rejection.txt": {
+          "before": {
+            "bytes": 2808,
+            "sha256": "f3ba9fd9d3d4398007edd4d8984db573a23277342c9eb131f5784bf5591bdd17"
+          },
+          "after": {
+            "bytes": 2808,
+            "sha256": "f3ba9fd9d3d4398007edd4d8984db573a23277342c9eb131f5784bf5591bdd17"
+          }
+        },
+        "src/test/resources/org/jlinalg/genetics/snpeff/legacy-output.txt": {
+          "before": {
+            "bytes": 3040,
+            "sha256": "29f3adbb4dbf150e35d6249f89bd3997adbc8dde3cbc78c8a6ea4d67a34c67da"
+          },
+          "after": {
+            "bytes": 3040,
+            "sha256": "29f3adbb4dbf150e35d6249f89bd3997adbc8dde3cbc78c8a6ea4d67a34c67da"
+          }
+        },
+        "src/test/resources/org/jlinalg/genetics/snpeff/modern-input.vcf": {
+          "before": {
+            "bytes": 1100,
+            "sha256": "96fc1c7d1aabbd52e55af33146a34f9118c4e0f4969642b7de0c2969da9a361f"
+          },
+          "after": {
+            "bytes": 1100,
+            "sha256": "96fc1c7d1aabbd52e55af33146a34f9118c4e0f4969642b7de0c2969da9a361f"
+          }
+        },
+        "src/test/resources/org/jlinalg/genetics/snpeff/modern-invalid-input.vcf": {
+          "before": {
+            "bytes": 1111,
+            "sha256": "c77d416d7dd9c1270155bcb7c59c43f6186af20c21e494b5d9eca7ebb31ae6b0"
+          },
+          "after": {
+            "bytes": 1111,
+            "sha256": "c77d416d7dd9c1270155bcb7c59c43f6186af20c21e494b5d9eca7ebb31ae6b0"
+          }
+        },
+        "src/test/resources/org/jlinalg/genetics/snpeff/modern-original-error.vcf": {
+          "before": {
+            "bytes": 5624,
+            "sha256": "b81811380cd354e19e5282eae025abd5321080ecfe73921f7fda2c591f3c114e"
+          },
+          "after": {
+            "bytes": 5624,
+            "sha256": "b81811380cd354e19e5282eae025abd5321080ecfe73921f7fda2c591f3c114e"
+          }
+        },
+        "src/test/resources/org/jlinalg/genetics/snpeff/modern-output.vcf": {
+          "before": {
+            "bytes": 5872,
+            "sha256": "15aee61ba55d21714883d1ad56696c3b97c3072c709a13c0067024e6b654c74a"
+          },
+          "after": {
+            "bytes": 5872,
+            "sha256": "15aee61ba55d21714883d1ad56696c3b97c3072c709a13c0067024e6b654c74a"
+          }
+        },
+        "src/test/resources/org/jlinalg/genetics/snpeff/protein.fa": {
+          "before": {
+            "bytes": 86,
+            "sha256": "49ae45bb4f03b648c5f42ec744d5b0a14d910f5106194fac3170d3a37c9c3c5c"
+          },
+          "after": {
+            "bytes": 86,
+            "sha256": "49ae45bb4f03b648c5f42ec744d5b0a14d910f5106194fac3170d3a37c9c3c5c"
+          }
+        },
+        "src/test/resources/org/jlinalg/genetics/snpeff/sequences.fa": {
+          "before": {
+            "bytes": 1216,
+            "sha256": "41f346946600258bcb62bf67add91fd3ca9ec35ce7ce95e4f090c660a4bf8b28"
+          },
+          "after": {
+            "bytes": 1216,
+            "sha256": "41f346946600258bcb62bf67add91fd3ca9ec35ce7ce95e4f090c660a4bf8b28"
+          }
+        },
+        "tools/literature/snpeff_original/.gitattributes": {
+          "before": {
+            "bytes": 96,
+            "sha256": "46b4176c390f1970b78be4538c8858d8e371f408fe4afb5e11453598877f7947"
+          },
+          "after": {
+            "bytes": 96,
+            "sha256": "46b4176c390f1970b78be4538c8858d8e371f408fe4afb5e11453598877f7947"
+          }
+        },
+        "tools/literature/snpeff_original/setup.py": {
+          "before": {
+            "bytes": 12928,
+            "sha256": "71ac6f6f0d89242ce655707dc4b3f283f6b5ef5239d1dd1e6e01da216ec5a063"
+          },
+          "after": {
+            "bytes": 12928,
+            "sha256": "71ac6f6f0d89242ce655707dc4b3f283f6b5ef5239d1dd1e6e01da216ec5a063"
+          }
+        },
+        "tools/literature/snpeff_original/source-profile.json": {
+          "before": {
+            "bytes": 84603,
+            "sha256": "92e153fbd8c0ce1a3642b3d588b8b19ce51dbfe6a91a31cce01cb12bfaa82240"
+          },
+          "after": {
+            "bytes": 84603,
+            "sha256": "92e153fbd8c0ce1a3642b3d588b8b19ce51dbfe6a91a31cce01cb12bfaa82240"
+          }
+        },
+        "tools/literature/snpeff_original/test_setup.py": {
+          "before": {
+            "bytes": 2154,
+            "sha256": "4afeb85b395d24a3093c330e3b9561eac3590ed936d5f3b77b0b7fe0f61de6db"
+          },
+          "after": {
+            "bytes": 2154,
+            "sha256": "4afeb85b395d24a3093c330e3b9561eac3590ed936d5f3b77b0b7fe0f61de6db"
+          }
+        }
+      },
+      "scientific_sources_and_setup_recipe_unchanged": true,
+      "old_fingerprints_refreshed": false,
+      "old_source_or_git_overlaid": false
+    },
+    "package_transition": {
+      "status": "PASS_ALL_PACKAGED_MEMBERS_UNCHANGED_EXCEPT_NOTICE_OWNER",
+      "before": {
+        "bytes": 193530225,
+        "sha256": "012bb0a32c165c609dad229df7a9c1ea0c1c461e8b842f9622ac64924d5c2643"
+      },
+      "after": {
+        "bytes": 193530212,
+        "sha256": "1a7a0429d287f03590351b61f16ee250df78ea912e28fc98ba3687c9e9756d55"
+      },
+      "changed_members": [
+        "org/jlinalg/cli/SnpEffWorkflowCli.class"
+      ],
+      "scientific_readers_unchanged": true
+    },
+    "retained_java_tests": {
+      "tests": 35,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "python_policy_tests": 3,
+    "retained_public_controls": 14,
+    "retained_negative_controls": 16,
+    "current_verifications": 14,
+    "current_genuine_replays": 2,
+    "current_processes": [
+      {
+        "name": "current-help",
+        "command": [
+          "C:/Program Files/Eclipse Adoptium/jdk-21.0.4.7-hotspot/bin/java.exe",
+          "-jar",
+          "D:\\projects\\JLinAlg\\build\\snakemake-workflow-1\\build\\snpeff\\admission-build-1\\jar\\omicsmatic-0.4.0.jar",
+          "snpeff-tools",
+          "--help"
+        ],
+        "exit_code": 0,
+        "seconds": 0.109
+      },
+      {
+        "name": "verify-human-linux-replay",
+        "command": [
+          "C:/Program Files/Eclipse Adoptium/jdk-21.0.4.7-hotspot/bin/java.exe",
+          "-jar",
+          "D:\\projects\\JLinAlg\\build\\snakemake-workflow-1\\build\\snpeff\\admission-build-1\\jar\\omicsmatic-0.4.0.jar",
+          "snpeff-tools",
+          "verify",
+          "--bundle",
+          "D:\\projects\\JLinAlg\\build\\snakemake-workflow-1\\build\\snpeff\\development-evidence-1\\bundles\\human-linux-replay",
+          "--out",
+          "D:\\projects\\JLinAlg\\build\\snakemake-workflow-1\\build\\snpeff\\admission-qualification-1\\verify-human-linux-replay"
+        ],
+        "exit_code": 0,
+        "seconds": 2.781
+      },
+      {
+        "name": "verify-human-original",
+        "command": [
+          "C:/Program Files/Eclipse Adoptium/jdk-21.0.4.7-hotspot/bin/java.exe",
+          "-jar",
+          "D:\\projects\\JLinAlg\\build\\snakemake-workflow-1\\build\\snpeff\\admission-build-1\\jar\\omicsmatic-0.4.0.jar",
+          "snpeff-tools",
+          "verify",
+          "--bundle",
+          "D:\\projects\\JLinAlg\\build\\snakemake-workflow-1\\build\\snpeff\\development-evidence-1\\bundles\\human-original",
+          "--out",
+          "D:\\projects\\JLinAlg\\build\\snakemake-workflow-1\\build\\snpeff\\admission-qualification-1\\verify-human-original"
+        ],
+        "exit_code": 0,
+        "seconds": 2.797
+      },
+      {
+        "name": "verify-human-windows-replay",
+        "command": [
+          "C:/Program Files/Eclipse Adoptium/jdk-21.0.4.7-hotspot/bin/java.exe",
+          "-jar",
+          "D:\\projects\\JLinAlg\\build\\snakemake-workflow-1\\build\\snpeff\\admission-build-1\\jar\\omicsmatic-0.4.0.jar",
+          "snpeff-tools",
+          "verify",
+          "--bundle",
+          "D:\\projects\\JLinAlg\\build\\snakemake-workflow-1\\build\\snpeff\\development-evidence-1\\bundles\\human-windows-replay",
+          "--out",
+          "D:\\projects\\JLinAlg\\build\\snakemake-workflow-1\\build\\snpeff\\admission-qualification-1\\verify-human-windows-replay"
+        ],
+        "exit_code": 0,
+        "seconds": 2.812
+      },
+      {
+        "name": "verify-legacy-replay",
+        "command": [
+          "C:/Program Files/Eclipse Adoptium/jdk-21.0.4.7-hotspot/bin/java.exe",
+          "-jar",
+          "D:\\projects\\JLinAlg\\build\\snakemake-workflow-1\\build\\snpeff\\admission-build-1\\jar\\omicsmatic-0.4.0.jar",
+          "snpeff-tools",
+          "verify",
+          "--bundle",
+          "D:\\projects\\JLinAlg\\build\\snakemake-workflow-1\\build\\snpeff\\development-evidence-1\\bundles\\legacy-replay",
+          "--out",
+          "D:\\projects\\JLinAlg\\build\\snakemake-workflow-1\\build\\snpeff\\admission-qualification-1\\verify-legacy-replay"
+        ],
+        "exit_code": 0,
+        "seconds": 0.578
+      },
+      {
+        "name": "verify-legacy-run",
+        "command": [
+          "C:/Program Files/Eclipse Adoptium/jdk-21.0.4.7-hotspot/bin/java.exe",
+          "-jar",
+          "D:\\projects\\JLinAlg\\build\\snakemake-workflow-1\\build\\snpeff\\admission-build-1\\jar\\omicsmatic-0.4.0.jar",
+          "snpeff-tools",
+          "verify",
+          "--bundle",
+          "D:\\projects\\JLinAlg\\build\\snakemake-workflow-1\\build\\snpeff\\development-evidence-1\\bundles\\legacy-run",
+          "--out",
+          "D:\\projects\\JLinAlg\\build\\snakemake-workflow-1\\build\\snpeff\\admission-qualification-1\\verify-legacy-run"
+        ],
+        "exit_code": 0,
+        "seconds": 0.547
+      },
+      {
+        "name": "verify-legacy-second-generation",
+        "command": [
+          "C:/Program Files/Eclipse Adoptium/jdk-21.0.4.7-hotspot/bin/java.exe",
+          "-jar",
+          "D:\\projects\\JLinAlg\\build\\snakemake-workflow-1\\build\\snpeff\\admission-build-1\\jar\\omicsmatic-0.4.0.jar",
+          "snpeff-tools",
+          "verify",
+          "--bundle",
+          "D:\\projects\\JLinAlg\\build\\snakemake-workflow-1\\build\\snpeff\\development-evidence-1\\bundles\\legacy-second-generation",
+          "--out",
+          "D:\\projects\\JLinAlg\\build\\snakemake-workflow-1\\build\\snpeff\\admission-qualification-1\\verify-legacy-second-generation"
+        ],
+        "exit_code": 0,
+        "seconds": 0.563
+      },
+      {
+        "name": "verify-legacy-wsl-replay",
+        "command": [
+          "C:/Program Files/Eclipse Adoptium/jdk-21.0.4.7-hotspot/bin/java.exe",
+          "-jar",
+          "D:\\projects\\JLinAlg\\build\\snakemake-workflow-1\\build\\snpeff\\admission-build-1\\jar\\omicsmatic-0.4.0.jar",
+          "snpeff-tools",
+          "verify",
+          "--bundle",
+          "D:\\projects\\JLinAlg\\build\\snakemake-workflow-1\\build\\snpeff\\development-evidence-1\\bundles\\legacy-wsl-replay",
+          "--out",
+          "D:\\projects\\JLinAlg\\build\\snakemake-workflow-1\\build\\snpeff\\admission-qualification-1\\verify-legacy-wsl-replay"
+        ],
+        "exit_code": 0,
+        "seconds": 0.562
+      },
+      {
+        "name": "verify-modern-replay",
+        "command": [
+          "C:/Program Files/Eclipse Adoptium/jdk-21.0.4.7-hotspot/bin/java.exe",
+          "-jar",
+          "D:\\projects\\JLinAlg\\build\\snakemake-workflow-1\\build\\snpeff\\admission-build-1\\jar\\omicsmatic-0.4.0.jar",
+          "snpeff-tools",
+          "verify",
+          "--bundle",
+          "D:\\projects\\JLinAlg\\build\\snakemake-workflow-1\\build\\snpeff\\development-evidence-1\\bundles\\modern-replay",
+          "--out",
+          "D:\\projects\\JLinAlg\\build\\snakemake-workflow-1\\build\\snpeff\\admission-qualification-1\\verify-modern-replay"
+        ],
+        "exit_code": 0,
+        "seconds": 0.922
+      },
+      {
+        "name": "verify-modern-run",
+        "command": [
+          "C:/Program Files/Eclipse Adoptium/jdk-21.0.4.7-hotspot/bin/java.exe",
+          "-jar",
+          "D:\\projects\\JLinAlg\\build\\snakemake-workflow-1\\build\\snpeff\\admission-build-1\\jar\\omicsmatic-0.4.0.jar",
+          "snpeff-tools",
+          "verify",
+          "--bundle",
+          "D:\\projects\\JLinAlg\\build\\snakemake-workflow-1\\build\\snpeff\\development-evidence-1\\bundles\\modern-run",
+          "--out",
+          "D:\\projects\\JLinAlg\\build\\snakemake-workflow-1\\build\\snpeff\\admission-qualification-1\\verify-modern-run"
+        ],
+        "exit_code": 0,
+        "seconds": 0.922
+      },
+      {
+        "name": "verify-modern-second-generation",
+        "command": [
+          "C:/Program Files/Eclipse Adoptium/jdk-21.0.4.7-hotspot/bin/java.exe",
+          "-jar",
+          "D:\\projects\\JLinAlg\\build\\snakemake-workflow-1\\build\\snpeff\\admission-build-1\\jar\\omicsmatic-0.4.0.jar",
+          "snpeff-tools",
+          "verify",
+          "--bundle",
+          "D:\\projects\\JLinAlg\\build\\snakemake-workflow-1\\build\\snpeff\\development-evidence-1\\bundles\\modern-second-generation",
+          "--out",
+          "D:\\projects\\JLinAlg\\build\\snakemake-workflow-1\\build\\snpeff\\admission-qualification-1\\verify-modern-second-generation"
+        ],
+        "exit_code": 0,
+        "seconds": 0.922
+      },
+      {
+        "name": "verify-modern-wsl-replay",
+        "command": [
+          "C:/Program Files/Eclipse Adoptium/jdk-21.0.4.7-hotspot/bin/java.exe",
+          "-jar",
+          "D:\\projects\\JLinAlg\\build\\snakemake-workflow-1\\build\\snpeff\\admission-build-1\\jar\\omicsmatic-0.4.0.jar",
+          "snpeff-tools",
+          "verify",
+          "--bundle",
+          "D:\\projects\\JLinAlg\\build\\snakemake-workflow-1\\build\\snpeff\\development-evidence-1\\bundles\\modern-wsl-replay",
+          "--out",
+          "D:\\projects\\JLinAlg\\build\\snakemake-workflow-1\\build\\snpeff\\admission-qualification-1\\verify-modern-wsl-replay"
+        ],
+        "exit_code": 0,
+        "seconds": 0.906
+      },
+      {
+        "name": "verify-p002-published-reference",
+        "command": [
+          "C:/Program Files/Eclipse Adoptium/jdk-21.0.4.7-hotspot/bin/java.exe",
+          "-jar",
+          "D:\\projects\\JLinAlg\\build\\snakemake-workflow-1\\build\\snpeff\\admission-build-1\\jar\\omicsmatic-0.4.0.jar",
+          "snpeff-tools",
+          "verify",
+          "--bundle",
+          "D:\\projects\\JLinAlg\\build\\snakemake-workflow-1\\build\\snpeff\\p002-control-1\\run",
+          "--out",
+          "D:\\projects\\JLinAlg\\build\\snakemake-workflow-1\\build\\snpeff\\admission-qualification-1\\verify-p002-published-reference"
+        ],
+        "exit_code": 0,
+        "seconds": 0.563
+      },
+      {
+        "name": "replay-human",
+        "command": [
+          "C:/Program Files/Eclipse Adoptium/jdk-21.0.4.7-hotspot/bin/java.exe",
+          "-jar",
+          "D:\\projects\\JLinAlg\\build\\snakemake-workflow-1\\build\\snpeff\\admission-build-1\\jar\\omicsmatic-0.4.0.jar",
+          "snpeff-tools",
+          "replay",
+          "--bundle",
+          "D:\\projects\\JLinAlg\\build\\snakemake-workflow-1\\build\\snpeff\\development-evidence-1\\bundles\\human-original",
+          "--out",
+          "D:\\projects\\JLinAlg\\build\\snakemake-workflow-1\\build\\snpeff\\admission-qualification-1\\replay-human"
+        ],
+        "exit_code": 0,
+        "seconds": 46.031
+      },
+      {
+        "name": "verify-replay-human",
+        "command": [
+          "C:/Program Files/Eclipse Adoptium/jdk-21.0.4.7-hotspot/bin/java.exe",
+          "-jar",
+          "D:\\projects\\JLinAlg\\build\\snakemake-workflow-1\\build\\snpeff\\admission-build-1\\jar\\omicsmatic-0.4.0.jar",
+          "snpeff-tools",
+          "verify",
+          "--bundle",
+          "D:\\projects\\JLinAlg\\build\\snakemake-workflow-1\\build\\snpeff\\admission-qualification-1\\replay-human",
+          "--out",
+          "D:\\projects\\JLinAlg\\build\\snakemake-workflow-1\\build\\snpeff\\admission-qualification-1\\verify-replay-human"
+        ],
+        "exit_code": 0,
+        "seconds": 2.75
+      },
+      {
+        "name": "replay-p002",
+        "command": [
+          "C:/Program Files/Eclipse Adoptium/jdk-21.0.4.7-hotspot/bin/java.exe",
+          "-jar",
+          "D:\\projects\\JLinAlg\\build\\snakemake-workflow-1\\build\\snpeff\\admission-build-1\\jar\\omicsmatic-0.4.0.jar",
+          "snpeff-tools",
+          "replay",
+          "--bundle",
+          "D:\\projects\\JLinAlg\\build\\snakemake-workflow-1\\build\\snpeff\\p002-control-1\\run",
+          "--out",
+          "D:\\projects\\JLinAlg\\build\\snakemake-workflow-1\\build\\snpeff\\admission-qualification-1\\replay-p002"
+        ],
+        "exit_code": 0,
+        "seconds": 2.219
+      },
+      {
+        "name": "verify-replay-p002",
+        "command": [
+          "C:/Program Files/Eclipse Adoptium/jdk-21.0.4.7-hotspot/bin/java.exe",
+          "-jar",
+          "D:\\projects\\JLinAlg\\build\\snakemake-workflow-1\\build\\snpeff\\admission-build-1\\jar\\omicsmatic-0.4.0.jar",
+          "snpeff-tools",
+          "verify",
+          "--bundle",
+          "D:\\projects\\JLinAlg\\build\\snakemake-workflow-1\\build\\snpeff\\admission-qualification-1\\replay-p002",
+          "--out",
+          "D:\\projects\\JLinAlg\\build\\snakemake-workflow-1\\build\\snpeff\\admission-qualification-1\\verify-replay-p002"
+        ],
+        "exit_code": 0,
+        "seconds": 0.547
+      }
+    ],
+    "full_hg38kg_reference": {
+      "variants": 969,
+      "annotation_rows": 11905,
+      "diagnostic_rows": 1871,
+      "error_rows": 0
+    },
+    "published_p002_reference": {
+      "synthetic_snps": 67,
+      "annotation_rows": 78,
+      "diagnostic_rows": 0,
+      "reference_bases": 1139633,
+      "author_snp_table": false,
+      "author_binary": false,
+      "author_config_known": false
+    },
+    "private_legacy_redistribution_restrictions": true,
+    "whole_tool_qualified": false,
+    "whole_paper_reproduced": false,
+    "whole_goal_complete": false,
+    "current_payloads": {
+      "status": "PASS_ALL_CAPTURED_PAYLOADS_CURRENT_NATIVE_VERIFICATIONS_AND_GENUINE_REPLAY_LINKS",
+      "bundles": {
+        "human-linux-replay": {
+          "manifest": {
+            "bytes": 10787,
+            "sha256": "50b6d781079a4e3f00defd2ee7da55545093c3fc3878a855070852ddf1957c5b"
+          },
+          "completion": {
+            "bytes": 371,
+            "sha256": "9fe9f07cd37b88a5d15a502f663e556b2d48135ee97976df79cf60f6f58eeece"
+          },
+          "edition": "5.2",
+          "runtime_sha256": "3d630f73332cff635f64301d06e8cc3c12889c794903b8b9be3a82227e47a291",
+          "input_records": 969,
+          "annotation_rows": 11905,
+          "diagnostic_rows": 1871,
+          "genuine_replay": true,
+          "payload_entries": 64,
+          "raw": {
+            "bytes": 1444920,
+            "sha256": "d34c557a8e346e1237d4c7180988afa059aa1f1cbff30fd9da3457a722ddcc30"
+          },
+          "annotations": {
+            "bytes": 1845141,
+            "sha256": "d24cc45fb40833af174545744d7d116fd21495183b8e93337cd0f37b63f2282e"
+          },
+          "diagnostics": {
+            "bytes": 85420,
+            "sha256": "c2adfe2141fb2ebbee30406dd5ad0ef833afe213085aa2ee17e940da200f965f"
+          }
+        },
+        "human-original": {
+          "manifest": {
+            "bytes": 10357,
+            "sha256": "63f442ed96fa3445bf774ce6fb1f203f03549f413d14c9ac967bb5930ccf4c64"
+          },
+          "completion": {
+            "bytes": 348,
+            "sha256": "938c139ce5f8315eb3bdca29ca2d30d4ec5289969357e47b046b755b104360fa"
+          },
+          "edition": "5.2",
+          "runtime_sha256": "3d630f73332cff635f64301d06e8cc3c12889c794903b8b9be3a82227e47a291",
+          "input_records": 969,
+          "annotation_rows": 11905,
+          "diagnostic_rows": 1871,
+          "genuine_replay": false,
+          "payload_entries": 60,
+          "raw": {
+            "bytes": 1444920,
+            "sha256": "d34c557a8e346e1237d4c7180988afa059aa1f1cbff30fd9da3457a722ddcc30"
+          },
+          "annotations": {
+            "bytes": 1845141,
+            "sha256": "d24cc45fb40833af174545744d7d116fd21495183b8e93337cd0f37b63f2282e"
+          },
+          "diagnostics": {
+            "bytes": 85420,
+            "sha256": "c2adfe2141fb2ebbee30406dd5ad0ef833afe213085aa2ee17e940da200f965f"
+          }
+        },
+        "human-windows-replay": {
+          "manifest": {
+            "bytes": 10917,
+            "sha256": "d2674e78ef660f26beef9af327fb83a7adc058232196203371cf0aba6d25ad02"
+          },
+          "completion": {
+            "bytes": 382,
+            "sha256": "883a67ade4b272b62e51692ebeccc817215ccc18cdae0b427da41747fcef467c"
+          },
+          "edition": "5.2",
+          "runtime_sha256": "3d630f73332cff635f64301d06e8cc3c12889c794903b8b9be3a82227e47a291",
+          "input_records": 969,
+          "annotation_rows": 11905,
+          "diagnostic_rows": 1871,
+          "genuine_replay": true,
+          "payload_entries": 64,
+          "raw": {
+            "bytes": 1444920,
+            "sha256": "d34c557a8e346e1237d4c7180988afa059aa1f1cbff30fd9da3457a722ddcc30"
+          },
+          "annotations": {
+            "bytes": 1845141,
+            "sha256": "d24cc45fb40833af174545744d7d116fd21495183b8e93337cd0f37b63f2282e"
+          },
+          "diagnostics": {
+            "bytes": 85420,
+            "sha256": "c2adfe2141fb2ebbee30406dd5ad0ef833afe213085aa2ee17e940da200f965f"
+          }
+        },
+        "legacy-replay": {
+          "manifest": {
+            "bytes": 3864,
+            "sha256": "448b8534fa1d09a3d6e99bf5979f6bc0732cb9c7fd8b72159ed6c431e8e9e456"
+          },
+          "completion": {
+            "bytes": 388,
+            "sha256": "452bf252d7ee5d261e7af457bb562d136a4d642dc1e10c9975736e1a5569e125"
+          },
+          "edition": "3.1i-r354-source",
+          "runtime_sha256": "d29e6257ee81795f895c8c1f94c10f9be00a616ce30cc1a662b36498d7ac6b27",
+          "input_records": 14,
+          "annotation_rows": 29,
+          "diagnostic_rows": 0,
+          "genuine_replay": true,
+          "payload_entries": 28,
+          "raw": {
+            "bytes": 3043,
+            "sha256": "824e0cf795fe4bc805b0257188d6573481bf9fcc859174b4a457c199785e76e2"
+          },
+          "annotations": {
+            "bytes": 2861,
+            "sha256": "077de4bcbebbef2307be81aab93949c958a0401a4573964c82f9874420a357a8"
+          },
+          "diagnostics": {
+            "bytes": 50,
+            "sha256": "10872039e661c1f9b6cb9e9aeafc5c939103b48a4c3d8849c4a0c7cc16897dfc"
+          }
+        },
+        "legacy-run": {
+          "manifest": {
+            "bytes": 3456,
+            "sha256": "d7e27692a5800643b5723c51632802a5f55d5a9e8d930c145a0bdf25d24fbe97"
+          },
+          "completion": {
+            "bytes": 389,
+            "sha256": "af416f393bcf67bc172d73fbb661cd51607afd020ed841711c8f6fca47f9cf06"
+          },
+          "edition": "3.1i-r354-source",
+          "runtime_sha256": "d29e6257ee81795f895c8c1f94c10f9be00a616ce30cc1a662b36498d7ac6b27",
+          "input_records": 14,
+          "annotation_rows": 29,
+          "diagnostic_rows": 0,
+          "genuine_replay": false,
+          "payload_entries": 25,
+          "raw": {
+            "bytes": 3043,
+            "sha256": "824e0cf795fe4bc805b0257188d6573481bf9fcc859174b4a457c199785e76e2"
+          },
+          "annotations": {
+            "bytes": 2861,
+            "sha256": "077de4bcbebbef2307be81aab93949c958a0401a4573964c82f9874420a357a8"
+          },
+          "diagnostics": {
+            "bytes": 50,
+            "sha256": "10872039e661c1f9b6cb9e9aeafc5c939103b48a4c3d8849c4a0c7cc16897dfc"
+          }
+        },
+        "legacy-second-generation": {
+          "manifest": {
+            "bytes": 3864,
+            "sha256": "ebc7efaace8fa830ae14b366f35b9dc8cabe4bf3bb46e5dfb920175230e93e60"
+          },
+          "completion": {
+            "bytes": 388,
+            "sha256": "d323f5e7929472b19a3423fef6d5f21ea89bf17811a0def332307ad063159bf9"
+          },
+          "edition": "3.1i-r354-source",
+          "runtime_sha256": "d29e6257ee81795f895c8c1f94c10f9be00a616ce30cc1a662b36498d7ac6b27",
+          "input_records": 14,
+          "annotation_rows": 29,
+          "diagnostic_rows": 0,
+          "genuine_replay": true,
+          "payload_entries": 28,
+          "raw": {
+            "bytes": 3043,
+            "sha256": "824e0cf795fe4bc805b0257188d6573481bf9fcc859174b4a457c199785e76e2"
+          },
+          "annotations": {
+            "bytes": 2861,
+            "sha256": "077de4bcbebbef2307be81aab93949c958a0401a4573964c82f9874420a357a8"
+          },
+          "diagnostics": {
+            "bytes": 50,
+            "sha256": "10872039e661c1f9b6cb9e9aeafc5c939103b48a4c3d8849c4a0c7cc16897dfc"
+          }
+        },
+        "legacy-wsl-replay": {
+          "manifest": {
+            "bytes": 3806,
+            "sha256": "e75e8b6c7b9bef59ef9520f82d4a496b29078890019dd41ff11c789d94f8a451"
+          },
+          "completion": {
+            "bytes": 377,
+            "sha256": "0d40d8f270e0983e720a4f7809759235c3618478b59f22e5f6219f4228dc9816"
+          },
+          "edition": "3.1i-r354-source",
+          "runtime_sha256": "d29e6257ee81795f895c8c1f94c10f9be00a616ce30cc1a662b36498d7ac6b27",
+          "input_records": 14,
+          "annotation_rows": 29,
+          "diagnostic_rows": 0,
+          "genuine_replay": true,
+          "payload_entries": 28,
+          "raw": {
+            "bytes": 3043,
+            "sha256": "824e0cf795fe4bc805b0257188d6573481bf9fcc859174b4a457c199785e76e2"
+          },
+          "annotations": {
+            "bytes": 2861,
+            "sha256": "077de4bcbebbef2307be81aab93949c958a0401a4573964c82f9874420a357a8"
+          },
+          "diagnostics": {
+            "bytes": 50,
+            "sha256": "10872039e661c1f9b6cb9e9aeafc5c939103b48a4c3d8849c4a0c7cc16897dfc"
+          }
+        },
+        "modern-replay": {
+          "manifest": {
+            "bytes": 4043,
+            "sha256": "77cb00030084b1686bcd7be61d85fbca8f25d532ab1a8895d6d6504669f195de"
+          },
+          "completion": {
+            "bytes": 375,
+            "sha256": "fe8a10e52b672b7685a36649ce543555fa6413b2f3fa6189ca01d28a661d2ae1"
+          },
+          "edition": "5.2",
+          "runtime_sha256": "3d630f73332cff635f64301d06e8cc3c12889c794903b8b9be3a82227e47a291",
+          "input_records": 18,
+          "annotation_rows": 35,
+          "diagnostic_rows": 0,
+          "genuine_replay": true,
+          "payload_entries": 29,
+          "raw": {
+            "bytes": 5861,
+            "sha256": "80708cd62b8eafea097ecefca63613ff91002d67b49c10b8feb776fc2d83d72d"
+          },
+          "annotations": {
+            "bytes": 5224,
+            "sha256": "aeaa2a0f503e741c38e30bc98f361137c3708d170562820e528c67d2d24552ba"
+          },
+          "diagnostics": {
+            "bytes": 42,
+            "sha256": "a8672d94e9880e160b7d227e2d7ad9806c193d53ad2e15008f10dd8db7f6bfb5"
+          }
+        },
+        "modern-run": {
+          "manifest": {
+            "bytes": 3635,
+            "sha256": "2462bf2c916517c3905c49b815bfd1fb4aba7067800c53ee6bcb5a6df7be8952"
+          },
+          "completion": {
+            "bytes": 376,
+            "sha256": "50bdffbc7503610fe8d86e237deb244f18913d4292a52e6444eb26d35a9f0e87"
+          },
+          "edition": "5.2",
+          "runtime_sha256": "3d630f73332cff635f64301d06e8cc3c12889c794903b8b9be3a82227e47a291",
+          "input_records": 18,
+          "annotation_rows": 35,
+          "diagnostic_rows": 0,
+          "genuine_replay": false,
+          "payload_entries": 26,
+          "raw": {
+            "bytes": 5861,
+            "sha256": "80708cd62b8eafea097ecefca63613ff91002d67b49c10b8feb776fc2d83d72d"
+          },
+          "annotations": {
+            "bytes": 5224,
+            "sha256": "aeaa2a0f503e741c38e30bc98f361137c3708d170562820e528c67d2d24552ba"
+          },
+          "diagnostics": {
+            "bytes": 42,
+            "sha256": "a8672d94e9880e160b7d227e2d7ad9806c193d53ad2e15008f10dd8db7f6bfb5"
+          }
+        },
+        "modern-second-generation": {
+          "manifest": {
+            "bytes": 4043,
+            "sha256": "21e5082f029c82438c50f57dd9a0c150d056a7adf761b136e9f73d38853a04c6"
+          },
+          "completion": {
+            "bytes": 375,
+            "sha256": "b80afe85f70efdd5192b6b6230ade240ca9878f08f05db37af1287213c4f34cd"
+          },
+          "edition": "5.2",
+          "runtime_sha256": "3d630f73332cff635f64301d06e8cc3c12889c794903b8b9be3a82227e47a291",
+          "input_records": 18,
+          "annotation_rows": 35,
+          "diagnostic_rows": 0,
+          "genuine_replay": true,
+          "payload_entries": 29,
+          "raw": {
+            "bytes": 5861,
+            "sha256": "80708cd62b8eafea097ecefca63613ff91002d67b49c10b8feb776fc2d83d72d"
+          },
+          "annotations": {
+            "bytes": 5224,
+            "sha256": "aeaa2a0f503e741c38e30bc98f361137c3708d170562820e528c67d2d24552ba"
+          },
+          "diagnostics": {
+            "bytes": 42,
+            "sha256": "a8672d94e9880e160b7d227e2d7ad9806c193d53ad2e15008f10dd8db7f6bfb5"
+          }
+        },
+        "modern-wsl-replay": {
+          "manifest": {
+            "bytes": 3983,
+            "sha256": "d3ae3b4673323f1dbd3ee3fe7ff3c6207d1009eb62d63d477615fd5f7bc5c2f7"
+          },
+          "completion": {
+            "bytes": 364,
+            "sha256": "57727167b369c125c80759dd5a7d5ec3b8db6a678a34ff4b8b33ea1db495cd62"
+          },
+          "edition": "5.2",
+          "runtime_sha256": "3d630f73332cff635f64301d06e8cc3c12889c794903b8b9be3a82227e47a291",
+          "input_records": 18,
+          "annotation_rows": 35,
+          "diagnostic_rows": 0,
+          "genuine_replay": true,
+          "payload_entries": 29,
+          "raw": {
+            "bytes": 5861,
+            "sha256": "80708cd62b8eafea097ecefca63613ff91002d67b49c10b8feb776fc2d83d72d"
+          },
+          "annotations": {
+            "bytes": 5224,
+            "sha256": "aeaa2a0f503e741c38e30bc98f361137c3708d170562820e528c67d2d24552ba"
+          },
+          "diagnostics": {
+            "bytes": 42,
+            "sha256": "a8672d94e9880e160b7d227e2d7ad9806c193d53ad2e15008f10dd8db7f6bfb5"
+          }
+        },
+        "p002-published-reference": {
+          "manifest": {
+            "bytes": 3045,
+            "sha256": "ae5e5760d39caf8e32b61d117082ff67fa8fa7ae43c0674b5fa3aad9a728f2ef"
+          },
+          "completion": {
+            "bytes": 389,
+            "sha256": "645ff016a75259f09a626d36af8d8daee00ac4b24802e400ec55971f58c05144"
+          },
+          "edition": "3.1i-r354-source",
+          "runtime_sha256": "d29e6257ee81795f895c8c1f94c10f9be00a616ce30cc1a662b36498d7ac6b27",
+          "input_records": 67,
+          "annotation_rows": 78,
+          "diagnostic_rows": 0,
+          "genuine_replay": false,
+          "payload_entries": 22,
+          "raw": {
+            "bytes": 13473,
+            "sha256": "48bba38f18e26914553749e901aa2ab018768392755133b7f68a075d597c5f27"
+          },
+          "annotations": {
+            "bytes": 13281,
+            "sha256": "14bba4743d4bd6bc529ba4760a41072504b1f7575ddc1ebed2e16acbc2dc051a"
+          },
+          "diagnostics": {
+            "bytes": 50,
+            "sha256": "10872039e661c1f9b6cb9e9aeafc5c939103b48a4c3d8849c4a0c7cc16897dfc"
+          }
+        },
+        "replay-human": {
+          "manifest": {
+            "bytes": 10917,
+            "sha256": "4eeaaa3acd0182f472fbc099c6b2de4a8b05705d0d216916793c898600079e43"
+          },
+          "completion": {
+            "bytes": 382,
+            "sha256": "1542dd5868be261cc62b8d60ee11e5a06d4c44d24d294c9977b0319d76da4bbf"
+          },
+          "edition": "5.2",
+          "runtime_sha256": "3d630f73332cff635f64301d06e8cc3c12889c794903b8b9be3a82227e47a291",
+          "input_records": 969,
+          "annotation_rows": 11905,
+          "diagnostic_rows": 1871,
+          "genuine_replay": true,
+          "payload_entries": 64,
+          "raw": {
+            "bytes": 1444920,
+            "sha256": "d34c557a8e346e1237d4c7180988afa059aa1f1cbff30fd9da3457a722ddcc30"
+          },
+          "annotations": {
+            "bytes": 1845141,
+            "sha256": "d24cc45fb40833af174545744d7d116fd21495183b8e93337cd0f37b63f2282e"
+          },
+          "diagnostics": {
+            "bytes": 85420,
+            "sha256": "c2adfe2141fb2ebbee30406dd5ad0ef833afe213085aa2ee17e940da200f965f"
+          }
+        },
+        "replay-p002": {
+          "manifest": {
+            "bytes": 3454,
+            "sha256": "82e23a2810611c4aa010d6e4f84e12d0363cb69379848097889b383c478f90bc"
+          },
+          "completion": {
+            "bytes": 388,
+            "sha256": "30aa8a615adb19ceb2a51d4de535ac0977e7254a50de29c3fbecba84fda10a56"
+          },
+          "edition": "3.1i-r354-source",
+          "runtime_sha256": "d29e6257ee81795f895c8c1f94c10f9be00a616ce30cc1a662b36498d7ac6b27",
+          "input_records": 67,
+          "annotation_rows": 78,
+          "diagnostic_rows": 0,
+          "genuine_replay": true,
+          "payload_entries": 25,
+          "raw": {
+            "bytes": 13473,
+            "sha256": "48bba38f18e26914553749e901aa2ab018768392755133b7f68a075d597c5f27"
+          },
+          "annotations": {
+            "bytes": 13281,
+            "sha256": "14bba4743d4bd6bc529ba4760a41072504b1f7575ddc1ebed2e16acbc2dc051a"
+          },
+          "diagnostics": {
+            "bytes": 50,
+            "sha256": "10872039e661c1f9b6cb9e9aeafc5c939103b48a4c3d8849c4a0c7cc16897dfc"
+          }
+        }
+      },
+      "verifications": {
+        "human-linux-replay": {
+          "marker": {
+            "bytes": 301,
+            "sha256": "e443328fd85b935032f3d05e11429763b272bf5ac67e6cd4ad5b8fe7dbeeb485"
+          },
+          "table": {
+            "bytes": 1845141,
+            "sha256": "d24cc45fb40833af174545744d7d116fd21495183b8e93337cd0f37b63f2282e"
+          },
+          "diagnostics": {
+            "bytes": 85420,
+            "sha256": "c2adfe2141fb2ebbee30406dd5ad0ef833afe213085aa2ee17e940da200f965f"
+          }
+        },
+        "human-original": {
+          "marker": {
+            "bytes": 301,
+            "sha256": "a01e0ab3f6516f813eb277a406fc12f45a9217f601f57b5d09040988088ac9f1"
+          },
+          "table": {
+            "bytes": 1845141,
+            "sha256": "d24cc45fb40833af174545744d7d116fd21495183b8e93337cd0f37b63f2282e"
+          },
+          "diagnostics": {
+            "bytes": 85420,
+            "sha256": "c2adfe2141fb2ebbee30406dd5ad0ef833afe213085aa2ee17e940da200f965f"
+          }
+        },
+        "human-windows-replay": {
+          "marker": {
+            "bytes": 301,
+            "sha256": "f5b119a43e59895107f85ad1de2bb052cda5cb6027370a208fe9abb5a1861fa9"
+          },
+          "table": {
+            "bytes": 1845141,
+            "sha256": "d24cc45fb40833af174545744d7d116fd21495183b8e93337cd0f37b63f2282e"
+          },
+          "diagnostics": {
+            "bytes": 85420,
+            "sha256": "c2adfe2141fb2ebbee30406dd5ad0ef833afe213085aa2ee17e940da200f965f"
+          }
+        },
+        "legacy-replay": {
+          "marker": {
+            "bytes": 295,
+            "sha256": "f3d475a74c12c8cffab2d8527dae5645e7126658e61f8256b938c9906408535d"
+          },
+          "table": {
+            "bytes": 2861,
+            "sha256": "077de4bcbebbef2307be81aab93949c958a0401a4573964c82f9874420a357a8"
+          },
+          "diagnostics": {
+            "bytes": 50,
+            "sha256": "10872039e661c1f9b6cb9e9aeafc5c939103b48a4c3d8849c4a0c7cc16897dfc"
+          }
+        },
+        "legacy-run": {
+          "marker": {
+            "bytes": 295,
+            "sha256": "75b607195542b8654c3ad9499beae4bfc58d2902ddcdf304653e9b2364f69fbf"
+          },
+          "table": {
+            "bytes": 2861,
+            "sha256": "077de4bcbebbef2307be81aab93949c958a0401a4573964c82f9874420a357a8"
+          },
+          "diagnostics": {
+            "bytes": 50,
+            "sha256": "10872039e661c1f9b6cb9e9aeafc5c939103b48a4c3d8849c4a0c7cc16897dfc"
+          }
+        },
+        "legacy-second-generation": {
+          "marker": {
+            "bytes": 295,
+            "sha256": "bc24b2dba7fe9fd56b8908ac897666e1e065097b5503914dc73c4cd2ef9b6512"
+          },
+          "table": {
+            "bytes": 2861,
+            "sha256": "077de4bcbebbef2307be81aab93949c958a0401a4573964c82f9874420a357a8"
+          },
+          "diagnostics": {
+            "bytes": 50,
+            "sha256": "10872039e661c1f9b6cb9e9aeafc5c939103b48a4c3d8849c4a0c7cc16897dfc"
+          }
+        },
+        "legacy-wsl-replay": {
+          "marker": {
+            "bytes": 295,
+            "sha256": "431d03d861ca88a57ee5c044160e040ef577d7e7d0a2e05f45f23a45f0d2777a"
+          },
+          "table": {
+            "bytes": 2861,
+            "sha256": "077de4bcbebbef2307be81aab93949c958a0401a4573964c82f9874420a357a8"
+          },
+          "diagnostics": {
+            "bytes": 50,
+            "sha256": "10872039e661c1f9b6cb9e9aeafc5c939103b48a4c3d8849c4a0c7cc16897dfc"
+          }
+        },
+        "modern-replay": {
+          "marker": {
+            "bytes": 295,
+            "sha256": "07470a15ccc9830c5f6cbcca808960f68a9e5bacca7aaa49f0c41b52e82bd766"
+          },
+          "table": {
+            "bytes": 5224,
+            "sha256": "aeaa2a0f503e741c38e30bc98f361137c3708d170562820e528c67d2d24552ba"
+          },
+          "diagnostics": {
+            "bytes": 42,
+            "sha256": "a8672d94e9880e160b7d227e2d7ad9806c193d53ad2e15008f10dd8db7f6bfb5"
+          }
+        },
+        "modern-run": {
+          "marker": {
+            "bytes": 295,
+            "sha256": "872c0ead15985afaf993f2385a7f68dbef399345a4f06ded4feb194083dd1262"
+          },
+          "table": {
+            "bytes": 5224,
+            "sha256": "aeaa2a0f503e741c38e30bc98f361137c3708d170562820e528c67d2d24552ba"
+          },
+          "diagnostics": {
+            "bytes": 42,
+            "sha256": "a8672d94e9880e160b7d227e2d7ad9806c193d53ad2e15008f10dd8db7f6bfb5"
+          }
+        },
+        "modern-second-generation": {
+          "marker": {
+            "bytes": 295,
+            "sha256": "a1996182bebb42958167864d05a12daf9b9e9c1a7051370b0f27e967de34cf9a"
+          },
+          "table": {
+            "bytes": 5224,
+            "sha256": "aeaa2a0f503e741c38e30bc98f361137c3708d170562820e528c67d2d24552ba"
+          },
+          "diagnostics": {
+            "bytes": 42,
+            "sha256": "a8672d94e9880e160b7d227e2d7ad9806c193d53ad2e15008f10dd8db7f6bfb5"
+          }
+        },
+        "modern-wsl-replay": {
+          "marker": {
+            "bytes": 295,
+            "sha256": "f6186d928a11187bb8d23f579eda0a0c320e1a0e98d20bfebfde30b076822e4c"
+          },
+          "table": {
+            "bytes": 5224,
+            "sha256": "aeaa2a0f503e741c38e30bc98f361137c3708d170562820e528c67d2d24552ba"
+          },
+          "diagnostics": {
+            "bytes": 42,
+            "sha256": "a8672d94e9880e160b7d227e2d7ad9806c193d53ad2e15008f10dd8db7f6bfb5"
+          }
+        },
+        "p002-published-reference": {
+          "marker": {
+            "bytes": 295,
+            "sha256": "d4bc50a7be59ef8e69d3110eb161cb9b3974f0013d30816b5a24b2cc4a33ca8e"
+          },
+          "table": {
+            "bytes": 13281,
+            "sha256": "14bba4743d4bd6bc529ba4760a41072504b1f7575ddc1ebed2e16acbc2dc051a"
+          },
+          "diagnostics": {
+            "bytes": 50,
+            "sha256": "10872039e661c1f9b6cb9e9aeafc5c939103b48a4c3d8849c4a0c7cc16897dfc"
+          }
+        },
+        "replay-human": {
+          "marker": {
+            "bytes": 301,
+            "sha256": "2a572c0f09916ed0c70227d56ef2eb3949039df973a1ffca236397b5de64ea56"
+          },
+          "table": {
+            "bytes": 1845141,
+            "sha256": "d24cc45fb40833af174545744d7d116fd21495183b8e93337cd0f37b63f2282e"
+          },
+          "diagnostics": {
+            "bytes": 85420,
+            "sha256": "c2adfe2141fb2ebbee30406dd5ad0ef833afe213085aa2ee17e940da200f965f"
+          }
+        },
+        "replay-p002": {
+          "marker": {
+            "bytes": 295,
+            "sha256": "fd780c15b280a91f3ee2d4043fb71426eff91e109b778ca53e7beabc78ff92cc"
+          },
+          "table": {
+            "bytes": 13281,
+            "sha256": "14bba4743d4bd6bc529ba4760a41072504b1f7575ddc1ebed2e16acbc2dc051a"
+          },
+          "diagnostics": {
+            "bytes": 50,
+            "sha256": "10872039e661c1f9b6cb9e9aeafc5c939103b48a4c3d8849c4a0c7cc16897dfc"
+          }
+        }
+      },
+      "source_files_modified": false,
+      "cryptographic_authenticity_claimed": false
+    },
+    "predecessor": {
+      "baseline_commit": "e0427e007de95e42345ecfaf05f46d49ac95f69c",
+      "verification": {
+        "bytes": 5401,
+        "sha256": "fdb8132fd5e69e046721ed58ab6fa7b21d68dfb62393643fb3b25b0772473f9d"
+      },
+      "original_verifier": {
+        "bytes": 17364,
+        "sha256": "b2cc80767969d8345b95646bc26d0a5435eb26a664abbffee3ada11fbdf73d0d"
+      },
+      "source_checkout_unchanged": true,
+      "historical_fingerprints_refreshed": false
+    }
+  },
+  "unrelated_metadata_preserved": true,
+  "unrelated_scientific_sources_unchanged": true,
+  "original_metadata_snapshot_retained": true,
+  "old_verifiers_or_git_overlaid": false,
+  "source_build_required": true,
+  "released_binary_contains_workflow_adapter": false,
+  "whole_tool_qualified": false,
+  "whole_paper_reproduced": false
+}

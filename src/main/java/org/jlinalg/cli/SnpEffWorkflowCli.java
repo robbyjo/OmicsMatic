@@ -22,7 +22,7 @@ public final class SnpEffWorkflowCli {
     static final String NOTICE = """
         # Warnings and required actions
 
-        DEVELOPMENT PROFILE: source-built OmicsMatic only; no new catalog credit.
+        SOURCE-BUILD PROFILE: catalog qualification is separate from command success.
         5.2 executes the checksum-pinned official upstream Java archive on literal
         DNA SNP/MNP/small-indel VCF. 3.1i-r354-source executes unmodified historical
         r354 sources identifying themselves as 3.1i (build 2012-12-12), compiled

@@ -1,0 +1,65 @@
+{
+  "status": "PASS_SELECTED_LEGACY_SOURCE_BUILD_ON_PUBLISHED_P002_DATABASE",
+  "input": {
+    "status": "PREPARED_SYNTHETIC_SNPS_ON_PUBLISHED_P002_REFERENCE",
+    "contig": "NC_021490.2",
+    "reference_bases": 1139633,
+    "synthetic_variants": 67,
+    "original_author_snp_table": false,
+    "author_binary": false,
+    "publication_reference_data": true,
+    "up_down_stream": 100
+  },
+  "cases": [
+    {
+      "name": "run",
+      "command": [
+        "C:/Program Files/Eclipse Adoptium/jdk-21.0.4.7-hotspot/bin/java.exe",
+        "-jar",
+        "D:\\projects\\JLinAlg\\build\\snakemake-workflow-1\\build\\snpeff\\validate-9\\jar\\omicsmatic-0.4.0.jar",
+        "snpeff-tools",
+        "run",
+        "--request",
+        "D:\\projects\\JLinAlg\\build\\snakemake-workflow-1\\build\\snpeff\\p002-control-1\\request.properties",
+        "--out",
+        "D:\\projects\\JLinAlg\\build\\snakemake-workflow-1\\build\\snpeff\\p002-control-1\\run"
+      ],
+      "exit_code": 0,
+      "seconds": 1.969
+    },
+    {
+      "name": "verify",
+      "command": [
+        "C:/Program Files/Eclipse Adoptium/jdk-21.0.4.7-hotspot/bin/java.exe",
+        "-jar",
+        "D:\\projects\\JLinAlg\\build\\snakemake-workflow-1\\build\\snpeff\\validate-9\\jar\\omicsmatic-0.4.0.jar",
+        "snpeff-tools",
+        "verify",
+        "--bundle",
+        "D:\\projects\\JLinAlg\\build\\snakemake-workflow-1\\build\\snpeff\\p002-control-1\\run",
+        "--out",
+        "D:\\projects\\JLinAlg\\build\\snakemake-workflow-1\\build\\snpeff\\p002-control-1\\verify"
+      ],
+      "exit_code": 0,
+      "seconds": 0.578
+    },
+    {
+      "name": "replay",
+      "command": [
+        "C:/Program Files/Eclipse Adoptium/jdk-21.0.4.7-hotspot/bin/java.exe",
+        "-jar",
+        "D:\\projects\\JLinAlg\\build\\snakemake-workflow-1\\build\\snpeff\\validate-9\\jar\\omicsmatic-0.4.0.jar",
+        "snpeff-tools",
+        "replay",
+        "--bundle",
+        "D:\\projects\\JLinAlg\\build\\snakemake-workflow-1\\build\\snpeff\\p002-control-1\\run",
+        "--out",
+        "D:\\projects\\JLinAlg\\build\\snakemake-workflow-1\\build\\snpeff\\p002-control-1\\replay"
+      ],
+      "exit_code": 0,
+      "seconds": 2.172
+    }
+  ],
+  "whole_paper_reproduced": false,
+  "author_snp_input_known": false
+}

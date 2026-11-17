@@ -1,0 +1,260 @@
+{
+  "status": "PASS_BOTH_PROFILES_RUN_VERIFY_GENUINE_REPLAY_AND_CROSS_OS_SECOND_GENERATION",
+  "cases": [
+    {
+      "name": "modern-run",
+      "command": [
+        "C:/Program Files/Eclipse Adoptium/jdk-21.0.4.7-hotspot/bin/java.exe",
+        "-jar",
+        "D:\\projects\\JLinAlg\\build\\snakemake-workflow-1\\build\\snpeff\\validate-9\\jar\\omicsmatic-0.4.0.jar",
+        "snpeff-tools",
+        "run",
+        "--request",
+        "D:\\projects\\JLinAlg\\build\\snakemake-workflow-1\\build\\snpeff\\public-controls-4\\modern-tutorial\\request.properties",
+        "--out",
+        "D:\\projects\\JLinAlg\\build\\snakemake-workflow-1\\build\\snpeff\\public-controls-4\\modern-run"
+      ],
+      "exit_code": 0,
+      "expected_exit": 0,
+      "seconds": 3.468
+    },
+    {
+      "name": "modern-verify",
+      "command": [
+        "C:/Program Files/Eclipse Adoptium/jdk-21.0.4.7-hotspot/bin/java.exe",
+        "-jar",
+        "D:\\projects\\JLinAlg\\build\\snakemake-workflow-1\\build\\snpeff\\validate-9\\jar\\omicsmatic-0.4.0.jar",
+        "snpeff-tools",
+        "verify",
+        "--bundle",
+        "D:\\projects\\JLinAlg\\build\\snakemake-workflow-1\\build\\snpeff\\public-controls-4\\modern-run",
+        "--out",
+        "D:\\projects\\JLinAlg\\build\\snakemake-workflow-1\\build\\snpeff\\public-controls-4\\modern-verify"
+      ],
+      "exit_code": 0,
+      "expected_exit": 0,
+      "seconds": 1.157
+    },
+    {
+      "name": "modern-replay",
+      "command": [
+        "C:/Program Files/Eclipse Adoptium/jdk-21.0.4.7-hotspot/bin/java.exe",
+        "-jar",
+        "D:\\projects\\JLinAlg\\build\\snakemake-workflow-1\\build\\snpeff\\validate-9\\jar\\omicsmatic-0.4.0.jar",
+        "snpeff-tools",
+        "replay",
+        "--bundle",
+        "D:\\projects\\JLinAlg\\build\\snakemake-workflow-1\\build\\snpeff\\public-controls-4\\modern-run",
+        "--out",
+        "D:\\projects\\JLinAlg\\build\\snakemake-workflow-1\\build\\snpeff\\public-controls-4\\modern-replay"
+      ],
+      "exit_code": 0,
+      "expected_exit": 0,
+      "seconds": 4.593
+    },
+    {
+      "name": "modern-wsl-verify",
+      "command": [
+        "wsl",
+        "-d",
+        "JLinAlg-Omics-SAIGE-20261026",
+        "--exec",
+        "/usr/bin/java",
+        "-jar",
+        "/mnt/d/projects/JLinAlg/build/snakemake-workflow-1/build/snpeff/validate-9/jar/omicsmatic-0.4.0.jar",
+        "snpeff-tools",
+        "verify",
+        "--bundle",
+        "/mnt/d/projects/JLinAlg/build/snakemake-workflow-1/build/snpeff/public-controls-4/modern-run",
+        "--out",
+        "/mnt/d/projects/JLinAlg/build/snakemake-workflow-1/build/snpeff/public-controls-4/modern-wsl-verify"
+      ],
+      "exit_code": 0,
+      "expected_exit": 0,
+      "seconds": 3.016
+    },
+    {
+      "name": "modern-wsl-replay",
+      "command": [
+        "wsl",
+        "-d",
+        "JLinAlg-Omics-SAIGE-20261026",
+        "--exec",
+        "/usr/bin/java",
+        "-jar",
+        "/mnt/d/projects/JLinAlg/build/snakemake-workflow-1/build/snpeff/validate-9/jar/omicsmatic-0.4.0.jar",
+        "snpeff-tools",
+        "replay",
+        "--bundle",
+        "/mnt/d/projects/JLinAlg/build/snakemake-workflow-1/build/snpeff/public-controls-4/modern-run",
+        "--out",
+        "/mnt/d/projects/JLinAlg/build/snakemake-workflow-1/build/snpeff/public-controls-4/modern-wsl-replay"
+      ],
+      "exit_code": 0,
+      "expected_exit": 0,
+      "seconds": 13.359
+    },
+    {
+      "name": "modern-windows-return-verify",
+      "command": [
+        "C:/Program Files/Eclipse Adoptium/jdk-21.0.4.7-hotspot/bin/java.exe",
+        "-jar",
+        "D:\\projects\\JLinAlg\\build\\snakemake-workflow-1\\build\\snpeff\\validate-9\\jar\\omicsmatic-0.4.0.jar",
+        "snpeff-tools",
+        "verify",
+        "--bundle",
+        "D:\\projects\\JLinAlg\\build\\snakemake-workflow-1\\build\\snpeff\\public-controls-4\\modern-wsl-replay",
+        "--out",
+        "D:\\projects\\JLinAlg\\build\\snakemake-workflow-1\\build\\snpeff\\public-controls-4\\modern-windows-return-verify"
+      ],
+      "exit_code": 0,
+      "expected_exit": 0,
+      "seconds": 1.078
+    },
+    {
+      "name": "modern-second-generation",
+      "command": [
+        "C:/Program Files/Eclipse Adoptium/jdk-21.0.4.7-hotspot/bin/java.exe",
+        "-jar",
+        "D:\\projects\\JLinAlg\\build\\snakemake-workflow-1\\build\\snpeff\\validate-9\\jar\\omicsmatic-0.4.0.jar",
+        "snpeff-tools",
+        "replay",
+        "--bundle",
+        "D:\\projects\\JLinAlg\\build\\snakemake-workflow-1\\build\\snpeff\\public-controls-4\\modern-wsl-replay",
+        "--out",
+        "D:\\projects\\JLinAlg\\build\\snakemake-workflow-1\\build\\snpeff\\public-controls-4\\modern-second-generation"
+      ],
+      "exit_code": 0,
+      "expected_exit": 0,
+      "seconds": 4.469
+    },
+    {
+      "name": "legacy-run",
+      "command": [
+        "C:/Program Files/Eclipse Adoptium/jdk-21.0.4.7-hotspot/bin/java.exe",
+        "-jar",
+        "D:\\projects\\JLinAlg\\build\\snakemake-workflow-1\\build\\snpeff\\validate-9\\jar\\omicsmatic-0.4.0.jar",
+        "snpeff-tools",
+        "run",
+        "--request",
+        "D:\\projects\\JLinAlg\\build\\snakemake-workflow-1\\build\\snpeff\\public-controls-4\\legacy-tutorial\\request.properties",
+        "--out",
+        "D:\\projects\\JLinAlg\\build\\snakemake-workflow-1\\build\\snpeff\\public-controls-4\\legacy-run"
+      ],
+      "exit_code": 0,
+      "expected_exit": 0,
+      "seconds": 2.235
+    },
+    {
+      "name": "legacy-verify",
+      "command": [
+        "C:/Program Files/Eclipse Adoptium/jdk-21.0.4.7-hotspot/bin/java.exe",
+        "-jar",
+        "D:\\projects\\JLinAlg\\build\\snakemake-workflow-1\\build\\snpeff\\validate-9\\jar\\omicsmatic-0.4.0.jar",
+        "snpeff-tools",
+        "verify",
+        "--bundle",
+        "D:\\projects\\JLinAlg\\build\\snakemake-workflow-1\\build\\snpeff\\public-controls-4\\legacy-run",
+        "--out",
+        "D:\\projects\\JLinAlg\\build\\snakemake-workflow-1\\build\\snpeff\\public-controls-4\\legacy-verify"
+      ],
+      "exit_code": 0,
+      "expected_exit": 0,
+      "seconds": 0.671
+    },
+    {
+      "name": "legacy-replay",
+      "command": [
+        "C:/Program Files/Eclipse Adoptium/jdk-21.0.4.7-hotspot/bin/java.exe",
+        "-jar",
+        "D:\\projects\\JLinAlg\\build\\snakemake-workflow-1\\build\\snpeff\\validate-9\\jar\\omicsmatic-0.4.0.jar",
+        "snpeff-tools",
+        "replay",
+        "--bundle",
+        "D:\\projects\\JLinAlg\\build\\snakemake-workflow-1\\build\\snpeff\\public-controls-4\\legacy-run",
+        "--out",
+        "D:\\projects\\JLinAlg\\build\\snakemake-workflow-1\\build\\snpeff\\public-controls-4\\legacy-replay"
+      ],
+      "exit_code": 0,
+      "expected_exit": 0,
+      "seconds": 2.438
+    },
+    {
+      "name": "legacy-wsl-verify",
+      "command": [
+        "wsl",
+        "-d",
+        "JLinAlg-Omics-SAIGE-20261026",
+        "--exec",
+        "/usr/bin/java",
+        "-jar",
+        "/mnt/d/projects/JLinAlg/build/snakemake-workflow-1/build/snpeff/validate-9/jar/omicsmatic-0.4.0.jar",
+        "snpeff-tools",
+        "verify",
+        "--bundle",
+        "/mnt/d/projects/JLinAlg/build/snakemake-workflow-1/build/snpeff/public-controls-4/legacy-run",
+        "--out",
+        "/mnt/d/projects/JLinAlg/build/snakemake-workflow-1/build/snpeff/public-controls-4/legacy-wsl-verify"
+      ],
+      "exit_code": 0,
+      "expected_exit": 0,
+      "seconds": 1.687
+    },
+    {
+      "name": "legacy-wsl-replay",
+      "command": [
+        "wsl",
+        "-d",
+        "JLinAlg-Omics-SAIGE-20261026",
+        "--exec",
+        "/usr/bin/java",
+        "-jar",
+        "/mnt/d/projects/JLinAlg/build/snakemake-workflow-1/build/snpeff/validate-9/jar/omicsmatic-0.4.0.jar",
+        "snpeff-tools",
+        "replay",
+        "--bundle",
+        "/mnt/d/projects/JLinAlg/build/snakemake-workflow-1/build/snpeff/public-controls-4/legacy-run",
+        "--out",
+        "/mnt/d/projects/JLinAlg/build/snakemake-workflow-1/build/snpeff/public-controls-4/legacy-wsl-replay"
+      ],
+      "exit_code": 0,
+      "expected_exit": 0,
+      "seconds": 8.313
+    },
+    {
+      "name": "legacy-windows-return-verify",
+      "command": [
+        "C:/Program Files/Eclipse Adoptium/jdk-21.0.4.7-hotspot/bin/java.exe",
+        "-jar",
+        "D:\\projects\\JLinAlg\\build\\snakemake-workflow-1\\build\\snpeff\\validate-9\\jar\\omicsmatic-0.4.0.jar",
+        "snpeff-tools",
+        "verify",
+        "--bundle",
+        "D:\\projects\\JLinAlg\\build\\snakemake-workflow-1\\build\\snpeff\\public-controls-4\\legacy-wsl-replay",
+        "--out",
+        "D:\\projects\\JLinAlg\\build\\snakemake-workflow-1\\build\\snpeff\\public-controls-4\\legacy-windows-return-verify"
+      ],
+      "exit_code": 0,
+      "expected_exit": 0,
+      "seconds": 0.672
+    },
+    {
+      "name": "legacy-second-generation",
+      "command": [
+        "C:/Program Files/Eclipse Adoptium/jdk-21.0.4.7-hotspot/bin/java.exe",
+        "-jar",
+        "D:\\projects\\JLinAlg\\build\\snakemake-workflow-1\\build\\snpeff\\validate-9\\jar\\omicsmatic-0.4.0.jar",
+        "snpeff-tools",
+        "replay",
+        "--bundle",
+        "D:\\projects\\JLinAlg\\build\\snakemake-workflow-1\\build\\snpeff\\public-controls-4\\legacy-wsl-replay",
+        "--out",
+        "D:\\projects\\JLinAlg\\build\\snakemake-workflow-1\\build\\snpeff\\public-controls-4\\legacy-second-generation"
+      ],
+      "exit_code": 0,
+      "expected_exit": 0,
+      "seconds": 2.515
+    }
+  ],
+  "jar_sha256": "012bb0a32c165c609dad229df7a9c1ea0c1c461e8b842f9622ac64924d5c2643"
+}

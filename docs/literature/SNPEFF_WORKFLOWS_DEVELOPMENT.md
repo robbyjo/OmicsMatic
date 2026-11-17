@@ -1,3 +1,10 @@
+# Historical SnpEff development checkpoint
+
+These notes describe commit `4973f101`, before catalog admission. See the
+[current workflow guide](SNPEFF_WORKFLOWS.md) for the validated scope and actions.
+
+<details><summary>Original development notes (historical)</summary>
+
 # SnpEff annotation workflows: development profile
 
 **Build current source. Released OmicsMatic 0.4.0 does not contain these commands.**
@@ -200,3 +207,5 @@ Historical attempts, matching readers and all restricted runtimes remain in
 private development evidence. No whole-tool, whole-paper or catalog admission
 is claimed. Catalog counts and all predecessor receipts remain unchanged;
 the next step is a separately verified source transition and catalog admission.
+
+</details>

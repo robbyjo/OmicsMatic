@@ -1,5 +1,17 @@
 # Current literature warnings and required actions
 
+## SnpEff annotation profiles
+
+**Available from current source:** `snpeff-tools run`, `verify` and genuine `replay`. Released v0.4.0 lacks these commands. Read [commands and scope](../SNPEFF_WORKFLOWS.md).
+
+**SKIP3:** skip dependent analysis when the exact permitted runtime/reference is missing or installation is forbidden; supply it and retry NEW output. **FAIL2:** admit no complete result. Original exit0 is insufficient: retain and inspect `FAILURE.txt`, observed warning counts, `diagnostics.tsv` and `original.stderr`; correct the named cause without repairing bundles or refreshing historical hashes. **Legacy restrictions:** private academic noncommercial use; do not redistribute legacy runtimes or containing evidence without required permissions. **Observed human-reference diagnostics:** 1,871 annotation rows retained original transcript/realignment diagnostics; zero ERROR rows. Review transcript warnings before downstream interpretation. The selected legacy build is not the authors' original binary, and whole-paper reproduction is not established.
+
+**Current cohort:** 250 papers, 446 families, 2693 observations, 1218 reviewed uses and 1475 unreviewed. One scoped SnpEff upstream family brings the total to 127 new integrations (23 native/104 upstream), 260 missing; 130 including three existing adapters. Full semantic review and implementation remain open.
+
+<details><summary>Checkpoint before SnpEff admission (historical)</summary>
+
+# Current literature warnings and required actions
+
 ## Snakemake: scoped local workflows
 
 **Available from current source:** original local `snakemake-tools run`, `verify` and `replay`, plus the separate native `benchmark` component. Released v0.4.0 lacks the new workflow commands. Read [commands and scope](../SNAKEMAKE_WORKFLOWS.md).
@@ -1418,6 +1430,8 @@ output path. Disconnected infinite pseudotime values remain present. LEARN
 does not admit a pseudotime result. Do not infer roots or repair values to
 conceal failures. Full Batchelor, study reproduction and biological accuracy
 remain unproven; the250-paper goal remains active.
+
+</details>
 
 </details>
 

@@ -18,7 +18,7 @@ class SnpEffWorkflowCliTest {
             assertEquals(0, JLinAlgCli.run(new String[]{"snpeff-tools", "--help"}, stream, stream));
         }
         String text = buffer.toString(StandardCharsets.UTF_8);
-        for (String expected : new String[]{"3.1i-r354-source", "SKIP3", "FAIL2", "REPLAY", "noncommercial", "no new catalog credit"}) assertTrue(text.contains(expected), expected);
+        for (String expected : new String[]{"3.1i-r354-source", "SKIP3", "FAIL2", "REPLAY", "noncommercial", "catalog qualification is separate"}) assertTrue(text.contains(expected), expected);
     }
     @Test void existingDestinationIsNeverMutatedEvenOnFailure() throws Exception {
         Path bundle = temporary.resolve("invalid-bundle"); Files.createDirectory(bundle);

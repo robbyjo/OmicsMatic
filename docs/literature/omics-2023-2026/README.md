@@ -1,5 +1,17 @@
 # 250-paper omics and GWAS toolbox catalog
 
+## SnpEff: scope, warnings and required actions
+
+**Available from current source:** `snpeff-tools run`, `verify` and genuine `replay`. Released v0.4.0 lacks these commands. Read [commands and scope](../SNPEFF_WORKFLOWS.md).
+
+**SKIP3:** skip dependent analysis when the exact permitted runtime/reference is missing or installation is forbidden; supply it and retry NEW output. **FAIL2:** admit no complete result. Original exit0 is insufficient: retain and inspect `FAILURE.txt`, observed warning counts, `diagnostics.tsv` and `original.stderr`; correct the named cause without repairing bundles or refreshing historical hashes. **Legacy restrictions:** private academic noncommercial use; do not redistribute legacy runtimes or containing evidence without required permissions. **Observed human-reference diagnostics:** 1,871 annotation rows retained original transcript/realignment diagnostics; zero ERROR rows. Review transcript warnings before downstream interpretation. The selected legacy build is not the authors' original binary, and whole-paper reproduction is not established.
+
+**Current cohort:** 250 papers, 446 families, 2693 observations, 1218 reviewed uses and 1475 unreviewed. One scoped SnpEff upstream family brings the total to 127 new integrations (23 native/104 upstream), 260 missing; 130 including three existing adapters. Full semantic review and implementation remain open.
+
+<details><summary>Checkpoint before SnpEff admission (historical)</summary>
+
+# 250-paper omics and GWAS toolbox catalog
+
 ## Snakemake: scope, warnings and required actions
 
 **Available from current source:** original local `snakemake-tools run`, `verify` and `replay`, plus the separate native `benchmark` component. Released v0.4.0 lacks the new workflow commands. Read [commands and scope](../SNAKEMAKE_WORKFLOWS.md).
@@ -1901,6 +1913,8 @@ Three source-reviewed tool additions retain separate provenance: MALT and HOPS h
 These additions improve the catalog and add no whole-tool or biological credit. The source-tested MALT 0.4.1 development controller does not fulfill the separate 0.5.2 role. Complete HOPS and MaltExtract operations remain unfinished; their unreported versions, settings and resource choices remain unknown. See `MALT_ALIGNMENT.md` and `MALT_HOPS_PAPER_ROLES.md`.
 
 **Required action:** match the declared source version and operation, qualify a permitted runtime, provide the complete dated reference/mapping and query populations, and retain original warnings and failures. If any prerequisite is unavailable or cannot be installed, skip its dependent analysis. A small software-control index does not reproduce the historical 91-spirochete or 7,508-genome bacterial analyses. Insufficient-read candidates remain unassessable.
+
+</details>
 
 </details>
 
