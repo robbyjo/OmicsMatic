@@ -1,0 +1,98 @@
+{
+  "scope": "Seeded synthetic explicit-factor design from independent original spdep1.4-1 reference; not paper inputs or recommended biological settings.",
+  "source_fixture": {
+    "bytes": 838091,
+    "sha256": "35b1222ef726ee67331e5786d291efc224033ff5d92ec725bc042584ffb5c871"
+  },
+  "source_case": "explicit-factor-design/greater",
+  "observations": 60,
+  "design_rank": 6,
+  "genes": 3,
+  "design_columns": [
+    "intercept",
+    "BatchB",
+    "BatchC",
+    "SexM",
+    "PMI",
+    "log_n_genes"
+  ],
+  "inputs": {
+    "design.tsv": {
+      "bytes": 2049,
+      "sha256": "1c7a09c85e49a20bb5cf9230b5fc2e2042cd8777717f95c0712d759169fdc0bd"
+    },
+    "weights.tsv": {
+      "bytes": 1189,
+      "sha256": "f05220db06e692766749f045ba63cb31dffc64849dbb6eb7cf056807273bfddc"
+    },
+    "expression.tsv": {
+      "bytes": 3656,
+      "sha256": "5798e914508b37e9b4df24e57f1ccbafac04724fedad1dfe9bfbc64066116677"
+    }
+  },
+  "expected": {
+    "gene1": {
+      "moran_I": 0.9434813051285535,
+      "expectation": -0.029276178985952604,
+      "variance": 0.017544412623426788,
+      "statistic": [
+        [
+          7.344042211248084
+        ]
+      ],
+      "p_value": [
+        [
+          1.0361885907136904e-13
+        ]
+      ],
+      "log_p_value": [
+        [
+          -29.898057044283668
+        ]
+      ],
+      "q_value": 3.1085657721410713e-13
+    },
+    "gene2": {
+      "moran_I": -0.9759141284994565,
+      "expectation": -0.029276178985952604,
+      "variance": 0.017544412623426788,
+      "statistic": [
+        [
+          -7.146847157207939
+        ]
+      ],
+      "p_value": [
+        [
+          0.999999999999556
+        ]
+      ],
+      "log_p_value": [
+        [
+          -4.439682403832157e-13
+        ]
+      ],
+      "q_value": 0.999999999999556
+    },
+    "gene3": {
+      "moran_I": 0.14864173473457828,
+      "expectation": -0.029276178985952604,
+      "variance": 0.017544412623426788,
+      "statistic": [
+        [
+          1.3432296228388263
+        ]
+      ],
+      "p_value": [
+        [
+          0.08959881621971913
+        ]
+      ],
+      "log_p_value": [
+        [
+          -2.412413170922021
+        ]
+      ],
+      "q_value": 0.1343982243295787
+    }
+  }
+}

@@ -6,6 +6,11 @@ four version-suffixed actions run the existing original-package workers and
 retain their closed input contracts, complete populations and admission rules.
 They do not substitute for one another.
 
+The native [MORAN-LM workflow](../vignettes/covariate-aware-moran.md) separately
+provides covariate-aware residual Moran tests on caller-prepared responses,
+design and directed weights. It requires no R runtime; stock graph learning
+and historical Monocle-specific weight calculation remain separate operations.
+
 ```bash
 ./gradlew executableJar
 java -jar build/cli/omicsmatic-0.4.0.jar monocle-tools --help

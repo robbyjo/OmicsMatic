@@ -1,0 +1,1344 @@
+{
+  "status": "PASS_NATIVE_COVARIATE_AWARE_REGRESSION_RESIDUAL_MORAN_PREPARED_INPUT_COMPONENT",
+  "qualification_date": "2026-11-17",
+  "profile": "native-regression-residual-moran-v1",
+  "reader": {
+    "bytes": 193727606,
+    "sha256": "85306ae56643113ea395af4f527404a5f66ef49dbdbea810077824f3ed366722"
+  },
+  "scope": "Explicit full-rank unweighted linear-model design, complete prepared finite gene responses and positive directed non-self weights; normal-reference inference and complete-family BH.",
+  "source_context": {
+    "paper_id": "P021",
+    "primary_xml_hash_verified": true,
+    "primary_paragraph_hash_verified": true,
+    "review": "docs/literature/monocle-command-development/P021_METHOD_DISCOVERY.json",
+    "author_code_executed": false,
+    "author_code_redistributed": false,
+    "historical_Monocle_weight_calculation_implemented": false
+  },
+  "tests": {
+    "initial_integration": {
+      "status": "PASS",
+      "tests": 559,
+      "failures": 0,
+      "errors": 0,
+      "jar": {
+        "bytes": 193727523,
+        "sha256": "9ad4a90b84ce1b6c0d15f8c9348295c7ca7651c838a866f7eaa18372b71de4f7"
+      }
+    },
+    "final_native_core_and_CLI": {
+      "status": "PASS",
+      "tests": 12,
+      "failures": 0,
+      "errors": 0,
+      "jar": {
+        "bytes": 193727606,
+        "sha256": "85306ae56643113ea395af4f527404a5f66ef49dbdbea810077824f3ed366722"
+      }
+    },
+    "independent_fixture_identity_and_refusal_check": {
+      "status": "PASS",
+      "tests": 12,
+      "failures": 0,
+      "errors": 0
+    },
+    "overlap_note": "The12 native/core tests overlap the initial559 integration tests; do not add them as distinct tests."
+  },
+  "independent_reference": {
+    "status": "PASS_ORIGINAL_SPDEP_LM_MORANTEST_REFERENCE",
+    "process": {
+      "command": [
+        "/mnt/d/projects/JLinAlg/build/literature-review/monocle-runtime/monocle133-reference-setup-1/.pixi/envs/default/bin/Rscript",
+        "--vanilla",
+        "/mnt/d/projects/JLinAlg/build/high-impact-stats-1/tools/literature/regression_moran/reference.R",
+        "/mnt/d/projects/JLinAlg/build/high-impact-stats-1/build/residual-moran-1/reference-1/reference",
+        "/mnt/d/projects/JLinAlg/build/high-impact-stats-1/build/residual-moran-1/upstream-source-intake-1/lm.morantest.R",
+        "/mnt/d/projects/JLinAlg/build/literature-review/monocle-runtime/monocle133-reference-setup-1/.pixi/envs/default/lib/R/library"
+      ],
+      "exit_code": 0,
+      "seconds": 9.76,
+      "worker": {
+        "bytes": 6766,
+        "sha256": "0d56a1c26660d4f005e867733640441d7f048f1e77566f43e77af08dfb6ad616"
+      },
+      "original_source": {
+        "bytes": 3314,
+        "sha256": "22239229336702ff160d331963fb791a55b0489f79ca8e35cd00732186b34c2f"
+      },
+      "rscript": {
+        "bytes": 16960,
+        "sha256": "4fed22f735be930d3deb3a9f29eba24807259aa6f78b2a70e29cd28af55c86a6"
+      }
+    },
+    "cases": 36,
+    "gene_tests": 108,
+    "files": {
+      "COMPLETED.txt": {
+        "bytes": 43,
+        "sha256": "b25ba1d9ad94aa98a4011e5ed972a537f7c0daef025516500c67c1f8157f2eee"
+      },
+      "lm.morantest.R": {
+        "bytes": 3185,
+        "sha256": "5c98379fa07b8a6bf511961685f7c83263a8f90361a3918726a42ca395530528"
+      },
+      "reference.json": {
+        "bytes": 3759630,
+        "sha256": "d772f139253ba78057529251c323b7bb8d1f5b9890ead0c9e083c5d3fe2a7161"
+      },
+      "SESSION.txt": {
+        "bytes": 980,
+        "sha256": "60300dcb769948d428e281a313b971e6416217a0d04e4e1294766c377a6f60c5"
+      },
+      "WARNINGS.json": {
+        "bytes": 3,
+        "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+      }
+    }
+  },
+  "fixture_provenance": {
+    "oracle": "Original spdep1.4-1 lm.morantest after original stats::lm; independent normal log tails and complete-family BH from R",
+    "R_version": "4.3.3",
+    "spdep_version": "1.4-1",
+    "cases": 36,
+    "gene_tests": 108,
+    "graph_cases": 12,
+    "alternatives": [
+      "greater",
+      "less",
+      "two.sided"
+    ],
+    "source": "https://cran.r-project.org/src/contrib/Archive/spdep/spdep_1.4-1.tar.gz",
+    "upstream_source": {
+      "url": "https://cran.r-project.org/src/contrib/Archive/spdep/spdep_1.4-1.tar.gz",
+      "bytes": 4694107,
+      "sha256": "4d0beca3b8b696373a74670f916cca3e77cbe97d002f3be62f172815774f5588",
+      "files": {
+        "spdep/DESCRIPTION": {
+          "bytes": 6678,
+          "sha256": "91715a0b1ee56d4012302c62c7780a10cf7fb6c12439f06a3cbb1947bb5fde10"
+        },
+        "spdep/R/lm.morantest.R": {
+          "bytes": 3314,
+          "sha256": "22239229336702ff160d331963fb791a55b0489f79ca8e35cd00732186b34c2f"
+        }
+      },
+      "archive_members": 294
+    },
+    "installed_function_body_and_formals_identical_to_official_source": true,
+    "workers": {
+      "tools/literature/regression_moran/reference.R": {
+        "bytes": 6766,
+        "sha256": "0d56a1c26660d4f005e867733640441d7f048f1e77566f43e77af08dfb6ad616"
+      },
+      "tools/literature/regression_moran/generate_reference.py": {
+        "bytes": 3788,
+        "sha256": "516387daa49ec949ad6e6196f1382a774b4229d12691e763482898f6a890b0cc"
+      }
+    },
+    "fixture": {
+      "bytes": 838091,
+      "sha256": "35b1222ef726ee67331e5786d291efc224033ff5d92ec725bc042584ffb5c871"
+    },
+    "uncompressed": {
+      "bytes": 3759630,
+      "sha256": "d772f139253ba78057529251c323b7bb8d1f5b9890ead0c9e083c5d3fe2a7161"
+    },
+    "source_matrix_transport": "Original R1x1 matrices in scalar statistic/p/log-p positions are retained, not flattened or numerically changed.",
+    "source_warnings": [],
+    "scope": "Explicit full-rank unweighted linear-model design and prepared directed positive weights. No original Monocle graph calculation, author code or paper dataset used."
+  },
+  "final_packaged_controls": {
+    "status": "PASS_PACKAGED_NATIVE_RESIDUAL_MORAN_ALL108_ORIGINAL_SPDEP_COMPARISONS_AND_REFUSALS",
+    "reader": {
+      "bytes": 193727606,
+      "sha256": "85306ae56643113ea395af4f527404a5f66ef49dbdbea810077824f3ed366722"
+    },
+    "cases": [
+      {
+        "name": "case-00",
+        "source_case": "ring-intercept/greater",
+        "genes": 3
+      },
+      {
+        "name": "case-01",
+        "source_case": "ring-intercept/less",
+        "genes": 3
+      },
+      {
+        "name": "case-02",
+        "source_case": "ring-intercept/two.sided",
+        "genes": 3
+      },
+      {
+        "name": "case-03",
+        "source_case": "directed-row-standardized/greater",
+        "genes": 3
+      },
+      {
+        "name": "case-04",
+        "source_case": "directed-row-standardized/less",
+        "genes": 3
+      },
+      {
+        "name": "case-05",
+        "source_case": "directed-row-standardized/two.sided",
+        "genes": 3
+      },
+      {
+        "name": "case-06",
+        "source_case": "asymmetric-reciprocal/greater",
+        "genes": 3
+      },
+      {
+        "name": "case-07",
+        "source_case": "asymmetric-reciprocal/less",
+        "genes": 3
+      },
+      {
+        "name": "case-08",
+        "source_case": "asymmetric-reciprocal/two.sided",
+        "genes": 3
+      },
+      {
+        "name": "case-09",
+        "source_case": "disconnected-partitions/greater",
+        "genes": 3
+      },
+      {
+        "name": "case-10",
+        "source_case": "disconnected-partitions/less",
+        "genes": 3
+      },
+      {
+        "name": "case-11",
+        "source_case": "disconnected-partitions/two.sided",
+        "genes": 3
+      },
+      {
+        "name": "case-12",
+        "source_case": "outgoing-isolates-adjust-N/greater",
+        "genes": 3
+      },
+      {
+        "name": "case-13",
+        "source_case": "outgoing-isolates-adjust-N/less",
+        "genes": 3
+      },
+      {
+        "name": "case-14",
+        "source_case": "outgoing-isolates-adjust-N/two.sided",
+        "genes": 3
+      },
+      {
+        "name": "case-15",
+        "source_case": "incoming-neighbors-full-N/greater",
+        "genes": 3
+      },
+      {
+        "name": "case-16",
+        "source_case": "incoming-neighbors-full-N/less",
+        "genes": 3
+      },
+      {
+        "name": "case-17",
+        "source_case": "incoming-neighbors-full-N/two.sided",
+        "genes": 3
+      },
+      {
+        "name": "case-18",
+        "source_case": "true-isolates-adjust-N/greater",
+        "genes": 3
+      },
+      {
+        "name": "case-19",
+        "source_case": "true-isolates-adjust-N/less",
+        "genes": 3
+      },
+      {
+        "name": "case-20",
+        "source_case": "true-isolates-adjust-N/two.sided",
+        "genes": 3
+      },
+      {
+        "name": "case-21",
+        "source_case": "no-intercept/greater",
+        "genes": 3
+      },
+      {
+        "name": "case-22",
+        "source_case": "no-intercept/less",
+        "genes": 3
+      },
+      {
+        "name": "case-23",
+        "source_case": "no-intercept/two.sided",
+        "genes": 3
+      },
+      {
+        "name": "case-24",
+        "source_case": "scaled-reordered-design/greater",
+        "genes": 3
+      },
+      {
+        "name": "case-25",
+        "source_case": "scaled-reordered-design/less",
+        "genes": 3
+      },
+      {
+        "name": "case-26",
+        "source_case": "scaled-reordered-design/two.sided",
+        "genes": 3
+      },
+      {
+        "name": "case-27",
+        "source_case": "explicit-factor-design/greater",
+        "genes": 3
+      },
+      {
+        "name": "case-28",
+        "source_case": "explicit-factor-design/less",
+        "genes": 3
+      },
+      {
+        "name": "case-29",
+        "source_case": "explicit-factor-design/two.sided",
+        "genes": 3
+      },
+      {
+        "name": "case-30",
+        "source_case": "general-unnormalized-weights/greater",
+        "genes": 3
+      },
+      {
+        "name": "case-31",
+        "source_case": "general-unnormalized-weights/less",
+        "genes": 3
+      },
+      {
+        "name": "case-32",
+        "source_case": "general-unnormalized-weights/two.sided",
+        "genes": 3
+      },
+      {
+        "name": "case-33",
+        "source_case": "large-sparse-finite-log-tails/greater",
+        "genes": 3
+      },
+      {
+        "name": "case-34",
+        "source_case": "large-sparse-finite-log-tails/less",
+        "genes": 3
+      },
+      {
+        "name": "case-35",
+        "source_case": "large-sparse-finite-log-tails/two.sided",
+        "genes": 3
+      }
+    ],
+    "comparisons": 108,
+    "refusal_controls": 6,
+    "linux_checks": [
+      {
+        "case": "true-isolates-adjust-N/greater",
+        "PATH": "",
+        "comparisons": 3
+      },
+      {
+        "case": "large-sparse-finite-log-tails/two.sided",
+        "PATH": "",
+        "comparisons": 3
+      }
+    ],
+    "processes": [
+      {
+        "name": "case-00",
+        "command": [
+          "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin\\java.exe",
+          "-Xmx512m",
+          "-jar",
+          "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\residual-moran-1\\build-2\\jar\\omicsmatic-0.4.0.jar",
+          "monocle-tools",
+          "MORAN-LM",
+          "--request",
+          "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\residual-moran-1\\packaged-controls-2\\case-00\\request.json"
+        ],
+        "exit_code": 0,
+        "expected_exit": 0,
+        "seconds": 0.375
+      },
+      {
+        "name": "case-01",
+        "command": [
+          "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin\\java.exe",
+          "-Xmx512m",
+          "-jar",
+          "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\residual-moran-1\\build-2\\jar\\omicsmatic-0.4.0.jar",
+          "monocle-tools",
+          "MORAN-LM",
+          "--request",
+          "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\residual-moran-1\\packaged-controls-2\\case-01\\request.json"
+        ],
+        "exit_code": 0,
+        "expected_exit": 0,
+        "seconds": 0.391
+      },
+      {
+        "name": "case-02",
+        "command": [
+          "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin\\java.exe",
+          "-Xmx512m",
+          "-jar",
+          "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\residual-moran-1\\build-2\\jar\\omicsmatic-0.4.0.jar",
+          "monocle-tools",
+          "MORAN-LM",
+          "--request",
+          "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\residual-moran-1\\packaged-controls-2\\case-02\\request.json"
+        ],
+        "exit_code": 0,
+        "expected_exit": 0,
+        "seconds": 0.375
+      },
+      {
+        "name": "case-03",
+        "command": [
+          "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin\\java.exe",
+          "-Xmx512m",
+          "-jar",
+          "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\residual-moran-1\\build-2\\jar\\omicsmatic-0.4.0.jar",
+          "monocle-tools",
+          "MORAN-LM",
+          "--request",
+          "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\residual-moran-1\\packaged-controls-2\\case-03\\request.json"
+        ],
+        "exit_code": 0,
+        "expected_exit": 0,
+        "seconds": 0.359
+      },
+      {
+        "name": "case-04",
+        "command": [
+          "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin\\java.exe",
+          "-Xmx512m",
+          "-jar",
+          "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\residual-moran-1\\build-2\\jar\\omicsmatic-0.4.0.jar",
+          "monocle-tools",
+          "MORAN-LM",
+          "--request",
+          "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\residual-moran-1\\packaged-controls-2\\case-04\\request.json"
+        ],
+        "exit_code": 0,
+        "expected_exit": 0,
+        "seconds": 0.344
+      },
+      {
+        "name": "case-05",
+        "command": [
+          "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin\\java.exe",
+          "-Xmx512m",
+          "-jar",
+          "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\residual-moran-1\\build-2\\jar\\omicsmatic-0.4.0.jar",
+          "monocle-tools",
+          "MORAN-LM",
+          "--request",
+          "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\residual-moran-1\\packaged-controls-2\\case-05\\request.json"
+        ],
+        "exit_code": 0,
+        "expected_exit": 0,
+        "seconds": 0.343
+      },
+      {
+        "name": "case-06",
+        "command": [
+          "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin\\java.exe",
+          "-Xmx512m",
+          "-jar",
+          "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\residual-moran-1\\build-2\\jar\\omicsmatic-0.4.0.jar",
+          "monocle-tools",
+          "MORAN-LM",
+          "--request",
+          "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\residual-moran-1\\packaged-controls-2\\case-06\\request.json"
+        ],
+        "exit_code": 0,
+        "expected_exit": 0,
+        "seconds": 0.469
+      },
+      {
+        "name": "case-07",
+        "command": [
+          "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin\\java.exe",
+          "-Xmx512m",
+          "-jar",
+          "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\residual-moran-1\\build-2\\jar\\omicsmatic-0.4.0.jar",
+          "monocle-tools",
+          "MORAN-LM",
+          "--request",
+          "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\residual-moran-1\\packaged-controls-2\\case-07\\request.json"
+        ],
+        "exit_code": 0,
+        "expected_exit": 0,
+        "seconds": 0.36
+      },
+      {
+        "name": "case-08",
+        "command": [
+          "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin\\java.exe",
+          "-Xmx512m",
+          "-jar",
+          "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\residual-moran-1\\build-2\\jar\\omicsmatic-0.4.0.jar",
+          "monocle-tools",
+          "MORAN-LM",
+          "--request",
+          "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\residual-moran-1\\packaged-controls-2\\case-08\\request.json"
+        ],
+        "exit_code": 0,
+        "expected_exit": 0,
+        "seconds": 0.344
+      },
+      {
+        "name": "case-09",
+        "command": [
+          "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin\\java.exe",
+          "-Xmx512m",
+          "-jar",
+          "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\residual-moran-1\\build-2\\jar\\omicsmatic-0.4.0.jar",
+          "monocle-tools",
+          "MORAN-LM",
+          "--request",
+          "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\residual-moran-1\\packaged-controls-2\\case-09\\request.json"
+        ],
+        "exit_code": 0,
+        "expected_exit": 0,
+        "seconds": 0.344
+      },
+      {
+        "name": "case-10",
+        "command": [
+          "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin\\java.exe",
+          "-Xmx512m",
+          "-jar",
+          "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\residual-moran-1\\build-2\\jar\\omicsmatic-0.4.0.jar",
+          "monocle-tools",
+          "MORAN-LM",
+          "--request",
+          "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\residual-moran-1\\packaged-controls-2\\case-10\\request.json"
+        ],
+        "exit_code": 0,
+        "expected_exit": 0,
+        "seconds": 0.328
+      },
+      {
+        "name": "case-11",
+        "command": [
+          "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin\\java.exe",
+          "-Xmx512m",
+          "-jar",
+          "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\residual-moran-1\\build-2\\jar\\omicsmatic-0.4.0.jar",
+          "monocle-tools",
+          "MORAN-LM",
+          "--request",
+          "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\residual-moran-1\\packaged-controls-2\\case-11\\request.json"
+        ],
+        "exit_code": 0,
+        "expected_exit": 0,
+        "seconds": 0.312
+      },
+      {
+        "name": "case-12",
+        "command": [
+          "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin\\java.exe",
+          "-Xmx512m",
+          "-jar",
+          "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\residual-moran-1\\build-2\\jar\\omicsmatic-0.4.0.jar",
+          "monocle-tools",
+          "MORAN-LM",
+          "--request",
+          "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\residual-moran-1\\packaged-controls-2\\case-12\\request.json"
+        ],
+        "exit_code": 0,
+        "expected_exit": 0,
+        "seconds": 0.328
+      },
+      {
+        "name": "case-13",
+        "command": [
+          "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin\\java.exe",
+          "-Xmx512m",
+          "-jar",
+          "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\residual-moran-1\\build-2\\jar\\omicsmatic-0.4.0.jar",
+          "monocle-tools",
+          "MORAN-LM",
+          "--request",
+          "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\residual-moran-1\\packaged-controls-2\\case-13\\request.json"
+        ],
+        "exit_code": 0,
+        "expected_exit": 0,
+        "seconds": 0.344
+      },
+      {
+        "name": "case-14",
+        "command": [
+          "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin\\java.exe",
+          "-Xmx512m",
+          "-jar",
+          "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\residual-moran-1\\build-2\\jar\\omicsmatic-0.4.0.jar",
+          "monocle-tools",
+          "MORAN-LM",
+          "--request",
+          "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\residual-moran-1\\packaged-controls-2\\case-14\\request.json"
+        ],
+        "exit_code": 0,
+        "expected_exit": 0,
+        "seconds": 0.328
+      },
+      {
+        "name": "case-15",
+        "command": [
+          "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin\\java.exe",
+          "-Xmx512m",
+          "-jar",
+          "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\residual-moran-1\\build-2\\jar\\omicsmatic-0.4.0.jar",
+          "monocle-tools",
+          "MORAN-LM",
+          "--request",
+          "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\residual-moran-1\\packaged-controls-2\\case-15\\request.json"
+        ],
+        "exit_code": 0,
+        "expected_exit": 0,
+        "seconds": 0.344
+      },
+      {
+        "name": "case-16",
+        "command": [
+          "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin\\java.exe",
+          "-Xmx512m",
+          "-jar",
+          "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\residual-moran-1\\build-2\\jar\\omicsmatic-0.4.0.jar",
+          "monocle-tools",
+          "MORAN-LM",
+          "--request",
+          "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\residual-moran-1\\packaged-controls-2\\case-16\\request.json"
+        ],
+        "exit_code": 0,
+        "expected_exit": 0,
+        "seconds": 0.406
+      },
+      {
+        "name": "case-17",
+        "command": [
+          "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin\\java.exe",
+          "-Xmx512m",
+          "-jar",
+          "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\residual-moran-1\\build-2\\jar\\omicsmatic-0.4.0.jar",
+          "monocle-tools",
+          "MORAN-LM",
+          "--request",
+          "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\residual-moran-1\\packaged-controls-2\\case-17\\request.json"
+        ],
+        "exit_code": 0,
+        "expected_exit": 0,
+        "seconds": 0.375
+      },
+      {
+        "name": "case-18",
+        "command": [
+          "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin\\java.exe",
+          "-Xmx512m",
+          "-jar",
+          "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\residual-moran-1\\build-2\\jar\\omicsmatic-0.4.0.jar",
+          "monocle-tools",
+          "MORAN-LM",
+          "--request",
+          "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\residual-moran-1\\packaged-controls-2\\case-18\\request.json"
+        ],
+        "exit_code": 0,
+        "expected_exit": 0,
+        "seconds": 0.328
+      },
+      {
+        "name": "case-19",
+        "command": [
+          "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin\\java.exe",
+          "-Xmx512m",
+          "-jar",
+          "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\residual-moran-1\\build-2\\jar\\omicsmatic-0.4.0.jar",
+          "monocle-tools",
+          "MORAN-LM",
+          "--request",
+          "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\residual-moran-1\\packaged-controls-2\\case-19\\request.json"
+        ],
+        "exit_code": 0,
+        "expected_exit": 0,
+        "seconds": 0.344
+      },
+      {
+        "name": "case-20",
+        "command": [
+          "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin\\java.exe",
+          "-Xmx512m",
+          "-jar",
+          "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\residual-moran-1\\build-2\\jar\\omicsmatic-0.4.0.jar",
+          "monocle-tools",
+          "MORAN-LM",
+          "--request",
+          "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\residual-moran-1\\packaged-controls-2\\case-20\\request.json"
+        ],
+        "exit_code": 0,
+        "expected_exit": 0,
+        "seconds": 0.312
+      },
+      {
+        "name": "case-21",
+        "command": [
+          "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin\\java.exe",
+          "-Xmx512m",
+          "-jar",
+          "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\residual-moran-1\\build-2\\jar\\omicsmatic-0.4.0.jar",
+          "monocle-tools",
+          "MORAN-LM",
+          "--request",
+          "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\residual-moran-1\\packaged-controls-2\\case-21\\request.json"
+        ],
+        "exit_code": 0,
+        "expected_exit": 0,
+        "seconds": 0.375
+      },
+      {
+        "name": "case-22",
+        "command": [
+          "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin\\java.exe",
+          "-Xmx512m",
+          "-jar",
+          "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\residual-moran-1\\build-2\\jar\\omicsmatic-0.4.0.jar",
+          "monocle-tools",
+          "MORAN-LM",
+          "--request",
+          "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\residual-moran-1\\packaged-controls-2\\case-22\\request.json"
+        ],
+        "exit_code": 0,
+        "expected_exit": 0,
+        "seconds": 0.329
+      },
+      {
+        "name": "case-23",
+        "command": [
+          "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin\\java.exe",
+          "-Xmx512m",
+          "-jar",
+          "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\residual-moran-1\\build-2\\jar\\omicsmatic-0.4.0.jar",
+          "monocle-tools",
+          "MORAN-LM",
+          "--request",
+          "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\residual-moran-1\\packaged-controls-2\\case-23\\request.json"
+        ],
+        "exit_code": 0,
+        "expected_exit": 0,
+        "seconds": 0.344
+      },
+      {
+        "name": "case-24",
+        "command": [
+          "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin\\java.exe",
+          "-Xmx512m",
+          "-jar",
+          "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\residual-moran-1\\build-2\\jar\\omicsmatic-0.4.0.jar",
+          "monocle-tools",
+          "MORAN-LM",
+          "--request",
+          "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\residual-moran-1\\packaged-controls-2\\case-24\\request.json"
+        ],
+        "exit_code": 0,
+        "expected_exit": 0,
+        "seconds": 0.343
+      },
+      {
+        "name": "case-25",
+        "command": [
+          "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin\\java.exe",
+          "-Xmx512m",
+          "-jar",
+          "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\residual-moran-1\\build-2\\jar\\omicsmatic-0.4.0.jar",
+          "monocle-tools",
+          "MORAN-LM",
+          "--request",
+          "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\residual-moran-1\\packaged-controls-2\\case-25\\request.json"
+        ],
+        "exit_code": 0,
+        "expected_exit": 0,
+        "seconds": 0.344
+      },
+      {
+        "name": "case-26",
+        "command": [
+          "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin\\java.exe",
+          "-Xmx512m",
+          "-jar",
+          "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\residual-moran-1\\build-2\\jar\\omicsmatic-0.4.0.jar",
+          "monocle-tools",
+          "MORAN-LM",
+          "--request",
+          "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\residual-moran-1\\packaged-controls-2\\case-26\\request.json"
+        ],
+        "exit_code": 0,
+        "expected_exit": 0,
+        "seconds": 0.328
+      },
+      {
+        "name": "case-27",
+        "command": [
+          "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin\\java.exe",
+          "-Xmx512m",
+          "-jar",
+          "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\residual-moran-1\\build-2\\jar\\omicsmatic-0.4.0.jar",
+          "monocle-tools",
+          "MORAN-LM",
+          "--request",
+          "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\residual-moran-1\\packaged-controls-2\\case-27\\request.json"
+        ],
+        "exit_code": 0,
+        "expected_exit": 0,
+        "seconds": 0.438
+      },
+      {
+        "name": "case-28",
+        "command": [
+          "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin\\java.exe",
+          "-Xmx512m",
+          "-jar",
+          "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\residual-moran-1\\build-2\\jar\\omicsmatic-0.4.0.jar",
+          "monocle-tools",
+          "MORAN-LM",
+          "--request",
+          "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\residual-moran-1\\packaged-controls-2\\case-28\\request.json"
+        ],
+        "exit_code": 0,
+        "expected_exit": 0,
+        "seconds": 0.344
+      },
+      {
+        "name": "case-29",
+        "command": [
+          "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin\\java.exe",
+          "-Xmx512m",
+          "-jar",
+          "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\residual-moran-1\\build-2\\jar\\omicsmatic-0.4.0.jar",
+          "monocle-tools",
+          "MORAN-LM",
+          "--request",
+          "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\residual-moran-1\\packaged-controls-2\\case-29\\request.json"
+        ],
+        "exit_code": 0,
+        "expected_exit": 0,
+        "seconds": 0.375
+      },
+      {
+        "name": "case-30",
+        "command": [
+          "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin\\java.exe",
+          "-Xmx512m",
+          "-jar",
+          "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\residual-moran-1\\build-2\\jar\\omicsmatic-0.4.0.jar",
+          "monocle-tools",
+          "MORAN-LM",
+          "--request",
+          "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\residual-moran-1\\packaged-controls-2\\case-30\\request.json"
+        ],
+        "exit_code": 0,
+        "expected_exit": 0,
+        "seconds": 0.343
+      },
+      {
+        "name": "case-31",
+        "command": [
+          "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin\\java.exe",
+          "-Xmx512m",
+          "-jar",
+          "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\residual-moran-1\\build-2\\jar\\omicsmatic-0.4.0.jar",
+          "monocle-tools",
+          "MORAN-LM",
+          "--request",
+          "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\residual-moran-1\\packaged-controls-2\\case-31\\request.json"
+        ],
+        "exit_code": 0,
+        "expected_exit": 0,
+        "seconds": 0.328
+      },
+      {
+        "name": "case-32",
+        "command": [
+          "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin\\java.exe",
+          "-Xmx512m",
+          "-jar",
+          "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\residual-moran-1\\build-2\\jar\\omicsmatic-0.4.0.jar",
+          "monocle-tools",
+          "MORAN-LM",
+          "--request",
+          "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\residual-moran-1\\packaged-controls-2\\case-32\\request.json"
+        ],
+        "exit_code": 0,
+        "expected_exit": 0,
+        "seconds": 0.312
+      },
+      {
+        "name": "case-33",
+        "command": [
+          "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin\\java.exe",
+          "-Xmx512m",
+          "-jar",
+          "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\residual-moran-1\\build-2\\jar\\omicsmatic-0.4.0.jar",
+          "monocle-tools",
+          "MORAN-LM",
+          "--request",
+          "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\residual-moran-1\\packaged-controls-2\\case-33\\request.json"
+        ],
+        "exit_code": 0,
+        "expected_exit": 0,
+        "seconds": 0.812
+      },
+      {
+        "name": "case-34",
+        "command": [
+          "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin\\java.exe",
+          "-Xmx512m",
+          "-jar",
+          "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\residual-moran-1\\build-2\\jar\\omicsmatic-0.4.0.jar",
+          "monocle-tools",
+          "MORAN-LM",
+          "--request",
+          "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\residual-moran-1\\packaged-controls-2\\case-34\\request.json"
+        ],
+        "exit_code": 0,
+        "expected_exit": 0,
+        "seconds": 0.781
+      },
+      {
+        "name": "case-35",
+        "command": [
+          "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin\\java.exe",
+          "-Xmx512m",
+          "-jar",
+          "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\residual-moran-1\\build-2\\jar\\omicsmatic-0.4.0.jar",
+          "monocle-tools",
+          "MORAN-LM",
+          "--request",
+          "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\residual-moran-1\\packaged-controls-2\\case-35\\request.json"
+        ],
+        "exit_code": 0,
+        "expected_exit": 0,
+        "seconds": 0.766
+      },
+      {
+        "name": "missing-input",
+        "command": [
+          "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin\\java.exe",
+          "-Xmx512m",
+          "-jar",
+          "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\residual-moran-1\\build-2\\jar\\omicsmatic-0.4.0.jar",
+          "monocle-tools",
+          "MORAN-LM",
+          "--request",
+          "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\residual-moran-1\\packaged-controls-2\\missing-input.json"
+        ],
+        "exit_code": 3,
+        "expected_exit": 3,
+        "seconds": 0.218
+      },
+      {
+        "name": "unknown-field",
+        "command": [
+          "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin\\java.exe",
+          "-Xmx512m",
+          "-jar",
+          "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\residual-moran-1\\build-2\\jar\\omicsmatic-0.4.0.jar",
+          "monocle-tools",
+          "MORAN-LM",
+          "--request",
+          "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\residual-moran-1\\packaged-controls-2\\unknown-field.json"
+        ],
+        "exit_code": 2,
+        "expected_exit": 2,
+        "seconds": 0.219
+      },
+      {
+        "name": "late-zero-residual",
+        "command": [
+          "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin\\java.exe",
+          "-Xmx512m",
+          "-jar",
+          "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\residual-moran-1\\build-2\\jar\\omicsmatic-0.4.0.jar",
+          "monocle-tools",
+          "MORAN-LM",
+          "--request",
+          "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\residual-moran-1\\packaged-controls-2\\late-zero-residual.json"
+        ],
+        "exit_code": 2,
+        "expected_exit": 2,
+        "seconds": 0.266
+      },
+      {
+        "name": "duplicate-weights",
+        "command": [
+          "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin\\java.exe",
+          "-Xmx512m",
+          "-jar",
+          "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\residual-moran-1\\build-2\\jar\\omicsmatic-0.4.0.jar",
+          "monocle-tools",
+          "MORAN-LM",
+          "--request",
+          "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\residual-moran-1\\packaged-controls-2\\duplicate-weights.json"
+        ],
+        "exit_code": 2,
+        "expected_exit": 2,
+        "seconds": 0.234
+      },
+      {
+        "name": "whole-family-operation-bound",
+        "command": [
+          "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin\\java.exe",
+          "-Xmx512m",
+          "-jar",
+          "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\residual-moran-1\\build-2\\jar\\omicsmatic-0.4.0.jar",
+          "monocle-tools",
+          "MORAN-LM",
+          "--request",
+          "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\residual-moran-1\\packaged-controls-2\\whole-family-operation-bound.json"
+        ],
+        "exit_code": 2,
+        "expected_exit": 2,
+        "seconds": 0.25
+      },
+      {
+        "name": "existing-output",
+        "command": [
+          "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin\\java.exe",
+          "-Xmx512m",
+          "-jar",
+          "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\residual-moran-1\\build-2\\jar\\omicsmatic-0.4.0.jar",
+          "monocle-tools",
+          "MORAN-LM",
+          "--request",
+          "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\residual-moran-1\\packaged-controls-2\\case-00\\request.json"
+        ],
+        "exit_code": 2,
+        "expected_exit": 2,
+        "seconds": 0.204
+      },
+      {
+        "name": "linux-case-18",
+        "command": [
+          "C:\\WINDOWS\\System32\\wsl.exe",
+          "-d",
+          "JLinAlg-Omics-SAIGE-20261026",
+          "--exec",
+          "/usr/bin/env",
+          "PATH=",
+          "/usr/bin/java",
+          "-Xmx512m",
+          "-jar",
+          "/mnt/d/projects/JLinAlg/build/high-impact-stats-1/build/residual-moran-1/build-2/jar/omicsmatic-0.4.0.jar",
+          "monocle-tools",
+          "MORAN-LM",
+          "--request",
+          "/mnt/d/projects/JLinAlg/build/high-impact-stats-1/build/residual-moran-1/packaged-controls-2/linux-case-18.json"
+        ],
+        "exit_code": 0,
+        "expected_exit": 0,
+        "seconds": 7.578
+      },
+      {
+        "name": "linux-case-35",
+        "command": [
+          "C:\\WINDOWS\\System32\\wsl.exe",
+          "-d",
+          "JLinAlg-Omics-SAIGE-20261026",
+          "--exec",
+          "/usr/bin/env",
+          "PATH=",
+          "/usr/bin/java",
+          "-Xmx512m",
+          "-jar",
+          "/mnt/d/projects/JLinAlg/build/high-impact-stats-1/build/residual-moran-1/build-2/jar/omicsmatic-0.4.0.jar",
+          "monocle-tools",
+          "MORAN-LM",
+          "--request",
+          "/mnt/d/projects/JLinAlg/build/high-impact-stats-1/build/residual-moran-1/packaged-controls-2/linux-case-35.json"
+        ],
+        "exit_code": 0,
+        "expected_exit": 0,
+        "seconds": 1.391
+      }
+    ],
+    "source_fixture": {
+      "bytes": 838091,
+      "sha256": "35b1222ef726ee67331e5786d291efc224033ff5d92ec725bc042584ffb5c871"
+    },
+    "original_R_required_for_native_analysis": false
+  },
+  "example_and_existing_package_compatibility": {
+    "status": "PASS_DOCUMENTED_SYNTHETIC_EXAMPLE_UNICODE_PATHS_EXISTING_MATH_GUARD_AND_PACKAGED_TRANSITION",
+    "reader": {
+      "bytes": 193727606,
+      "sha256": "85306ae56643113ea395af4f527404a5f66ef49dbdbea810077824f3ed366722"
+    },
+    "processes": [
+      {
+        "name": "prepare",
+        "command": [
+          "C:/Users/User/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+          "-X",
+          "utf8",
+          "-B",
+          "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\examples\\residual-moran\\prepare.py",
+          "--out",
+          "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\residual-moran-1\\example-and-compatibility-2\\prepared café β",
+          "--request",
+          "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\residual-moran-1\\example-and-compatibility-2\\request.json"
+        ],
+        "exit_code": 0,
+        "seconds": 0.109
+      },
+      {
+        "name": "example",
+        "command": [
+          "C:/Program Files/Eclipse Adoptium/jdk-21.0.4.7-hotspot/bin/java.exe",
+          "-Xmx512m",
+          "-jar",
+          "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\residual-moran-1\\build-2\\jar\\omicsmatic-0.4.0.jar",
+          "monocle-tools",
+          "MORAN-LM",
+          "--request",
+          "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\residual-moran-1\\example-and-compatibility-2\\request.json"
+        ],
+        "exit_code": 0,
+        "seconds": 0.313
+      },
+      {
+        "name": "existing-monocle-math",
+        "command": [
+          "C:/Program Files/Eclipse Adoptium/jdk-21.0.4.7-hotspot/bin/java.exe",
+          "-jar",
+          "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\residual-moran-1\\build-2\\jar\\omicsmatic-0.4.0.jar",
+          "monocle-tools",
+          "MODELS-1.3.1",
+          "--audit-statistics",
+          "D:\\projects\\JLinAlg\\build\\literature-review\\monocle-runtime\\monocle131-model-qualification-2\\normalized-options\\analyses\\default\\statistics.json",
+          "--out",
+          "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\residual-moran-1\\example-and-compatibility-2\\existing-monocle-math"
+        ],
+        "exit_code": 0,
+        "seconds": 2.125
+      }
+    ],
+    "original_example_gene_comparisons": 3,
+    "package_transition": {
+      "before": {
+        "bytes": 193698430,
+        "sha256": "6645a3d5eacf81b22c39d4fe07f7ef1f9aaad66bad79898f9179846449b515ca"
+      },
+      "after": {
+        "bytes": 193727606,
+        "sha256": "85306ae56643113ea395af4f527404a5f66ef49dbdbea810077824f3ed366722"
+      },
+      "changed": [
+        "org/jlinalg/cli/MonocleToolsCli.class"
+      ],
+      "added": [
+        "org/jlinalg/cli/RegressionMoranCli$Capture.class",
+        "org/jlinalg/cli/RegressionMoranCli$Design.class",
+        "org/jlinalg/cli/RegressionMoranCli$Responses.class",
+        "org/jlinalg/cli/RegressionMoranCli.class",
+        "org/jlinalg/spatial/RegressionMoran$Alternative.class",
+        "org/jlinalg/spatial/RegressionMoran$Arc.class",
+        "org/jlinalg/spatial/RegressionMoran$Prepared.class",
+        "org/jlinalg/spatial/RegressionMoran$Result.class",
+        "org/jlinalg/spatial/RegressionMoran$Sum.class",
+        "org/jlinalg/spatial/RegressionMoran.class"
+      ],
+      "removed": [],
+      "all_existing_scientific_packaged_entries_byte_identical": true
+    }
+  },
+  "windows_path_recovery": {
+    "launcher_code_point_probe": "build/residual-moran-1/windows-launcher-probe-1",
+    "source_encoding": "Cp1252",
+    "command_line_beta_codepoint_observed": "U+00DF",
+    "intended_beta_codepoint": "U+03B2",
+    "constructed_Java_Unicode_path_exists": true,
+    "ASCII_request_and_Unicode_data_output_paths_passed": true,
+    "final_skip_recovery_control": {
+      "command": [
+        "C:/Program Files/Eclipse Adoptium/jdk-21.0.4.7-hotspot/bin/java.exe",
+        "-jar",
+        "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\residual-moran-1\\build-2\\jar\\omicsmatic-0.4.0.jar",
+        "monocle-tools",
+        "MORAN-LM",
+        "--request",
+        "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\residual-moran-1\\example-and-compatibility-1\\prepared café β\\request.json"
+      ],
+      "exit_code": 3
+    }
+  },
+  "source_pins": {
+    "src/main/java/org/jlinalg/spatial/RegressionMoran.java": {
+      "bytes": 13570,
+      "sha256": "ccac27032deb46254d7c5ec9451c848be9a069dda394d8afe93438462c2d91e4"
+    },
+    "src/main/java/org/jlinalg/cli/RegressionMoranCli.java": {
+      "bytes": 21385,
+      "sha256": "d294c63fbbd8b14111a6487aad3a383ad635a05cca534ec355e5a79b4a619d95"
+    },
+    "src/main/java/org/jlinalg/cli/MonocleToolsCli.java": {
+      "bytes": 4348,
+      "sha256": "16a6d7b758826788d0a8db103eaa03876899bdecc90d0f3a531b6b0dec0d313b"
+    },
+    "src/test/java/org/jlinalg/cli/RegressionMoranTest.java": {
+      "bytes": 8106,
+      "sha256": "d3cf9a6be8cc29b8878d83794fb43df4bce2c27d005273bb8824d28d1dfd48e3"
+    },
+    "src/test/java/org/jlinalg/cli/RegressionMoranCliTest.java": {
+      "bytes": 8301,
+      "sha256": "1688c320399e78e87a4f224a6022ccaa457d5e2cd434cde34d41bd75f57d79a4"
+    },
+    "docs/vignettes/covariate-aware-moran.md": {
+      "bytes": 11148,
+      "sha256": "e5fab434557dbe9dc501f2c8ff1dd9838e4df626aa8a304eeac076b113c71ece"
+    },
+    "docs/vignettes/README.md": {
+      "bytes": 15457,
+      "sha256": "96287529dacca8ecb0396176ef99b7464d7b8a4a1ca3ef2d0ec78a93ec99853d"
+    },
+    "docs/literature/MONOCLE_COMMANDS.md": {
+      "bytes": 7483,
+      "sha256": "265d1bfcb67dfe8df3852d148d78a0ca99e295d7334a22123ed42303f76332ca"
+    },
+    "docs/literature/IMPLEMENTATION_PRIORITY.md": {
+      "bytes": 3458,
+      "sha256": "e1ef20023e08d60fb902ff45a18e3c2d4761b46be0730881d375975cc127cc61"
+    },
+    "docs/literature/monocle-command-development/P021_METHOD_DISCOVERY.json": {
+      "bytes": 2856,
+      "sha256": "49d4afbfb4001bc02be2937345969199a70e93399d61a6897a4942b1b8e962d5"
+    },
+    "tools/literature/regression_moran/check_packaged.py": {
+      "bytes": 10269,
+      "sha256": "2ecda497c62bd68708f3505ec3b2c75148396cd29f42e1a933fd86403dee6456"
+    },
+    "tools/literature/regression_moran/generate_reference.py": {
+      "bytes": 3788,
+      "sha256": "516387daa49ec949ad6e6196f1382a774b4229d12691e763482898f6a890b0cc"
+    },
+    "tools/literature/regression_moran/reference.R": {
+      "bytes": 6766,
+      "sha256": "0d56a1c26660d4f005e867733640441d7f048f1e77566f43e77af08dfb6ad616"
+    },
+    "examples/residual-moran/.gitattributes": {
+      "bytes": 30,
+      "sha256": "f06202a408fef9b9ea69bb6b1cb8160dbb0378c5bb67a444d510d231813824c8"
+    },
+    "examples/residual-moran/design.tsv": {
+      "bytes": 2049,
+      "sha256": "1c7a09c85e49a20bb5cf9230b5fc2e2042cd8777717f95c0712d759169fdc0bd"
+    },
+    "examples/residual-moran/expression.tsv": {
+      "bytes": 3656,
+      "sha256": "5798e914508b37e9b4df24e57f1ccbafac04724fedad1dfe9bfbc64066116677"
+    },
+    "examples/residual-moran/prepare.py": {
+      "bytes": 3455,
+      "sha256": "94788b2c19921bff07ae38a9d03db4d904fe677f864ea3565d4472199b106f3b"
+    },
+    "examples/residual-moran/PROVENANCE.json": {
+      "bytes": 2204,
+      "sha256": "c032bee9657c0e0cc75f7b1111d4defb5ec274152ef8a6cbd663751df7310024"
+    },
+    "examples/residual-moran/README.md": {
+      "bytes": 2373,
+      "sha256": "1818feb6a704c58aef752dbfb2a751ab9050406759c097ff23009de8da204668"
+    },
+    "examples/residual-moran/weights.tsv": {
+      "bytes": 1189,
+      "sha256": "f05220db06e692766749f045ba63cb31dffc64849dbb6eb7cf056807273bfddc"
+    },
+    "src/test/resources/org/jlinalg/spatial/regression-moran/.gitattributes": {
+      "bytes": 30,
+      "sha256": "f06202a408fef9b9ea69bb6b1cb8160dbb0378c5bb67a444d510d231813824c8"
+    },
+    "src/test/resources/org/jlinalg/spatial/regression-moran/original-spdep-1.4-1.json.gz": {
+      "bytes": 838091,
+      "sha256": "35b1222ef726ee67331e5786d291efc224033ff5d92ec725bc042584ffb5c871"
+    },
+    "src/test/resources/org/jlinalg/spatial/regression-moran/PROVENANCE.json": {
+      "bytes": 1998,
+      "sha256": "b63d007e147634060e30562428a46472c9c67303afe99b971251fc93e21d129a"
+    },
+    "docs/literature/regression-moran-development/.gitattributes": {
+      "bytes": 29,
+      "sha256": "730a35ae3d558080083c3103d9ac8100c3f6561678092abe341701dfa331eb1d"
+    },
+    "docs/literature/regression-moran-development/LICENSE-GPL-3.txt": {
+      "bytes": 35149,
+      "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
+    },
+    "docs/literature/regression-moran-development/README.md": {
+      "bytes": 2675,
+      "sha256": "59a88099b2dc32a7ee24a3f67c000fac202d6163bcf9e6ad8d7d1a168084aab7"
+    },
+    "docs/literature/regression-moran-development/RETAINED_ATTEMPTS.json": {
+      "bytes": 1332,
+      "sha256": "23dde7781b5dd6cbe189b829ae2eb4a9c63ffaac1ef6a993c786e158af7c2b32"
+    },
+    "docs/literature/regression-moran-development/UPSTREAM_CREDITS.md": {
+      "bytes": 1214,
+      "sha256": "9a21d82530bbf78b966f6ff7b805482e2d245e942feef674d1d5beaf63bf7a24"
+    },
+    "docs/literature/regression-moran-development/WARNINGS.md": {
+      "bytes": 2892,
+      "sha256": "d48a69a065ef68efcb34361a66bc61ca5575599a94147c7843268e1eb51fdcb4"
+    }
+  },
+  "retained_attempts": [
+    {
+      "path": "build/residual-moran-1/scientific-probe-1",
+      "status": "failed_harness_numeric_token_transport",
+      "reason": "The standalone probe initially cast lossless JSON NumberToken to Number before any scientific comparison. The corrected probe uses the existing explicit finite-token reader; all108 comparisons then passed."
+    },
+    {
+      "path": "build/residual-moran-1/scientific-probe-2",
+      "status": "failed_probe_compilation",
+      "reason": "Probe reader referenced a helper in the wrong utility class. Scientific implementation/fixtures were unchanged; corrected reader compiled and passed."
+    },
+    {
+      "path": "build/residual-moran-1/example-and-compatibility-1",
+      "status": "retained_windows_launcher_skip3_no_analysis",
+      "reason": "Cp1252 launcher changed command-line beta to sharp-s. The original Unicode file existed; a constructed-Java-path diagnostic proved file I/O supports it. A separate ASCII request path now preserves exact Unicode data/output paths inside UTF8 JSON."
+    },
+    {
+      "path": "build/residual-moran-1/windows-skip-recheck-1",
+      "status": "expected_current_skip3_recovery_control",
+      "reason": "Final executable repeats the unavailable-path skip and emits explicit ASCII-request/UTF8-JSON recovery. No scientific analysis is run for the damaged command-line path."
+    }
+  ],
+  "source_credits": "UPSTREAM_CREDITS.md",
+  "warnings_and_required_actions": "WARNINGS.md",
+  "evidence_archive": {
+    "path": "controls.zip",
+    "pin": {
+      "bytes": 11686435,
+      "sha256": "0700d4f800117e63fb9111ec853c207b3946d31f693ebdbf76b01db7a3b282ac"
+    },
+    "members": 1531,
+    "logical_payload_bytes": 23559177,
+    "every_member_read_back": true,
+    "complete_new_scientific_inputs_outputs": true,
+    "includes_large_compiled_readers": false,
+    "includes_installed_R_runtime": false
+  },
+  "native_analysis_requires_R_or_installation": false,
+  "catalog_integrations_unchanged": 127,
+  "catalog_missing_families_unchanged": 260,
+  "release_jar_changed": false,
+  "pushed": false,
+  "whole_tool_qualified": false,
+  "whole_paper_reproduced": false,
+  "whole_goal_complete": false
+}

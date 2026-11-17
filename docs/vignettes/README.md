@@ -9,6 +9,10 @@ The source-build [Tukey–Kramer post-hoc guide](posthoc-comparisons.md) adds
 native all-pairs comparisons after an ordinary one-way fit, with adjusted
 probabilities, simultaneous intervals and explicit model/recovery instructions.
 
+[Covariate-aware residual Moran testing](covariate-aware-moran.md) adds native
+gene-family graph autocorrelation tests with an explicit design and prepared
+directed weights, original-spdep references and actionable failure reporting.
+
 ## Featured: three degrees of AI collaboration
 
 Start with **[your first study.yaml](study-getting-started.md)** for the minimum

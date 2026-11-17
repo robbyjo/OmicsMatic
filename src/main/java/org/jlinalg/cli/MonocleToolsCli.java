@@ -13,6 +13,8 @@ public final class MonocleToolsCli {
         if(args.length==1&&args[0].equals("--help")) {
             emit(output,"monocle-tools ORDER --request ASCII_PATH.json\n"
                 +"  Native Java Monocle3 prepared-graph ordering; explicit graph, coordinates, principal roots and source profile. No R runtime.\n"
+                +"monocle-tools MORAN-LM --request UTF8_PATH.json\n"
+                +"  Native covariate-aware linear-model residual Moran tests on complete prepared responses, explicit numeric design and directed weights. No R runtime.\n"
                 +"monocle-tools RUN --request ASCII_PATH.json\n"
                 +"  Original Monocle3 1.4.27 raw-count trajectories, gene models and stock Moran tests with exact declared private R runtime.\n"
                 +"monocle-tools MODELS-1.3.1 --request UTF8_PATH.json\n"
@@ -29,6 +31,7 @@ public final class MonocleToolsCli {
                 +"Source-build development workflows; released JAR availability is recorded separately. Cicero, py-monocle, modified paper graph tests and whole-paper reproduction remain separate.");return output.checkError()?2:0;
         }
         if(args.length>0&&args[0].equals("ORDER"))return Monocle3OrderCli.run(Arrays.copyOfRange(args,1,args.length),output,error);
+        if(args.length>0&&args[0].equals("MORAN-LM"))return RegressionMoranCli.run(Arrays.copyOfRange(args,1,args.length),output,error);
         if(args.length>0&&args[0].equals("RUN"))return Monocle3WorkflowCli.run(Arrays.copyOfRange(args,1,args.length),output,error);
         if(args.length>0&&args[0].equals("MODELS-1.3.1"))return Monocle131ModelCli.run(Arrays.copyOfRange(args,1,args.length),output,error);
         if(args.length>0&&args[0].equals("GRAPH-1.3.3"))return Monocle133GraphCli.run(Arrays.copyOfRange(args,1,args.length),output,error);

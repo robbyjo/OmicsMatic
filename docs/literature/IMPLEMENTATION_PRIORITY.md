@@ -34,6 +34,10 @@ The [current Monocle command guide](MONOCLE_COMMANDS.md) consolidates the
 separate exact-edition development workflows into the source-build interface.
 Its runtime qualifications and remaining custom-method gaps are recorded
 separately from the historical standalone checkpoints.
+The [native residual Moran component](../vignettes/covariate-aware-moran.md)
+adds fitted-design correction on explicit prepared weights/responses, with
+108 original-spdep test references. It does not infer the paper's Monocle1.0.0
+weight construction, historical inputs or remaining lineage/embedding choices.
 
 The validated LDAK development checkpoint is preserved at local commit
 `e2bf00a9ccf03911ec27f818ef5c6a617e5602f1`, with its matching reader, closed
