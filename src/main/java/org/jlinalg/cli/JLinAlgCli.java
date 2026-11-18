@@ -39,7 +39,7 @@ public final class JLinAlgCli {
             if (arguments.length > 0 && arguments[0].equals("ldak-tools"))
                 return LdakWorkflowCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
             if (arguments.length > 0 && arguments[0].equals("posthoc-tools"))
-                return TukeyKramerCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+                return PosthocToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
             if (arguments.length > 0 && arguments[0].equals("salmon-tools"))
                 return SalmonToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
             if (arguments.length > 0 && arguments[0].equals("sambamba-tools"))

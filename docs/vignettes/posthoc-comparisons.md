@@ -1,5 +1,8 @@
 # Native Tukey–Kramer multiple comparisons
 
+For independent nonparametric pooled-rank comparisons, see the separate
+[Dunn command and explicit comparison-family guide](dunn-comparisons.md).
+
 `posthoc-tools tukey` fits an ordinary one-way model and compares every pair of
 declared group means. It reports signed mean differences, standard errors,
 Studentized-range statistics, multiplicity-adjusted p-values and simultaneous

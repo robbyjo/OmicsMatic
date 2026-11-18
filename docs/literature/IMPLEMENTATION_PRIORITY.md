@@ -19,6 +19,18 @@ IMPUTE and MaxQuant (six each). Runtime and source-use restrictions need
 tool-specific assessment. Software-name frequency alone does not establish
 that the project needs an entire vendor GUI or instrument-control stack.
 
+The next repeated statistical gap is addressed by the
+[native independent-sample Dunn command](../vignettes/dunn-comparisons.md).
+The source review verifies all 250 primary XML identities, identifies eight
+statistical-use papers and excludes an author-name hit. It distinguishes P122
+Bonferroni, P167 Holm and unresolved model/family/outer-correction choices.
+Its independent reference contains 4,557 comparisons across 36 models. Nine
+Dunnett papers remain separately reviewed and pending, including repeated and
+unequal-variance models. The same audit found five bare-Prism source pointers
+in P215 missing from the current inventory:47 papers name Prism versus 46 in
+the admitted catalog. That canonical correction remains pending; it is not
+silently counted as a completed integration.
+
 The Tukey review found 14 papers with that name. P081 and P176 describe
 box-plot conventions and are excluded from the post-hoc-test count. The
 remaining twelve include one-way, factorial/nested and count-model contexts;
