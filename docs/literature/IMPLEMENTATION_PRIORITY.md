@@ -24,9 +24,14 @@ The next repeated statistical gap is addressed by the
 The source review verifies all 250 primary XML identities, identifies eight
 statistical-use papers and excludes an author-name hit. It distinguishes P122
 Bonferroni, P167 Holm and unresolved model/family/outer-correction choices.
-Its independent reference contains 4,557 comparisons across 36 models. Nine
-Dunnett papers remain separately reviewed and pending, including repeated and
-unequal-variance models. The same audit found five bare-Prism source pointers
+Its independent reference contains 4,557 comparisons across 36 models. The next
+[Dunnett command](../vignettes/dunnett-control-comparisons.md) adds a native Java
+ordinary one-way fit audit and original multcomp 1.4-29 inference for every
+treatment versus one control. Six of the nine Dunnett source contexts are
+ordinary-model component candidates. P006 remains ambiguous, P034 describes
+repeated measures/Geisser-Greenhouse, and P217 has unequal-variance/variant
+ambiguity; those roles remain pending. Exact author inputs and control settings
+still prevent whole-paper attribution. The same audit found five bare-Prism source pointers
 in P215 missing from the previous inventory. The
 [canonical source correction](PRISM_SOURCE_CATALOG.md) now records all 47
 papers. The five paragraphs support one new paper/tool observation and four

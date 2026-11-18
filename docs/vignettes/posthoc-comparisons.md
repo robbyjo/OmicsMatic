@@ -2,6 +2,8 @@
 
 For independent nonparametric pooled-rank comparisons, see the separate
 [Dunn command and explicit comparison-family guide](dunn-comparisons.md).
+For ordinary treatment-control comparisons, use the
+[Dunnett command and original-inference guide](dunnett-control-comparisons.md).
 
 `posthoc-tools tukey` fits an ordinary one-way model and compares every pair of
 declared group means. It reports signed mean differences, standard errors,

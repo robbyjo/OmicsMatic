@@ -11,9 +11,10 @@ public final class PosthocToolsCli {
     public static int run(String[] args,PrintStream output,PrintStream error) {
         if(args.length==0||args.length==1&&args[0].equals("--help")) {
             int legacy=TukeyKramerCli.run(new String[]{"--help"},output,error);if(legacy!=0)return legacy;
-            output.println("\nposthoc-tools dunn --request UTF8_JSON\n  Independent-sample pooled-midrank Dunn comparisons with explicit correction and contrast family. Use dunn --help for its request.\nNative Java analysis; no R or Prism runtime. These methods require their stated model and do not infer a paper's design or settings. Read each output's WARNINGS.md; SKIP3 skips unavailable prerequisites, FAIL2 admits no failed family.");output.flush();return output.checkError()?2:0;
+            output.println("\nposthoc-tools dunn --request UTF8_JSON\n  Native independent-sample pooled-midrank Dunn comparisons with explicit correction and contrast family.\nposthoc-tools dunnett --request UTF8_JSON\n  Java ordinary one-way model audit plus original R multcomp 1.4-29 inference for every treatment versus one control.\nUse the selected method's --help. These methods require their stated model and do not infer a paper's design or settings. Read each output's WARNINGS.md; SKIP3 skips unavailable prerequisites, FAIL2 admits no failed family.");output.flush();return output.checkError()?2:0;
         }
         if(args[0].equals("dunn"))return DunnComparisonsCli.run(Arrays.copyOfRange(args,1,args.length),output,error);
+        if(args[0].equals("dunnett"))return DunnettCli.run(Arrays.copyOfRange(args,1,args.length),output,error);
         return TukeyKramerCli.run(args,output,error);
     }
 }
