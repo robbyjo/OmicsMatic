@@ -20,9 +20,17 @@ removes comparison-only P151 and distinguishes two reused resources from study
 execution. Stratified and wrapper-specific workflows remain separate; these
 native methods do not reproduce all 42 papers.
 
+The next [stratified Java API](../vignettes/stratified-ldsc.md) supplies prepared
+joint partitioned fitting and binary-annotation overlap summaries. It follows
+the selected source partitioned path's fixed initial weights. Forty-eight
+original-core models, 22,596 fields and the same nine tests on Windows/Linux
+are qualified separately. A prepared-data workflow command, input/annotation
+construction and source-specific stratified/wrapper choices remain open. This
+method extension adds no second LDSC family credit.
+
 | Priority | Work | Evidence and benefit |
 |---|---|---|
-| 1 | Remaining stratified LDSC methods and input preparation | The 42 reviewed family roles repeatedly require chromatin/eQTL annotations and enrichment. Reuse the qualified unpartitioned numerical core while preserving the distinct stratified and wrapper requirements. |
+| 1 | Remaining stratified LDSC workflows and input preparation | The 42 reviewed family roles repeatedly require chromatin/eQTL annotations and enrichment. Reuse the qualified partitioned API for a prepared-data command while preserving distinct annotation, stratified and wrapper requirements. |
 | 2 | Remaining Monocle workflows | Nine papers; reuse existing native graph ordering and original Monocle 2/3 adapters while resolving the remaining model, version and custom-workflow gaps. |
 | 3 | Reusable nf-core execution profiles | Six papers; existing sequencing components can support multiple pipeline families. Finish the named profiles and their actual execution gaps. |
 | 4 | Shared cytometry analysis components | FlowJo appears in 27 papers and FACSDiva in 17. Distinguish acquisition/context mentions from computational uses; target reusable FCS, compensation and gating needs. |
