@@ -1,5 +1,19 @@
 # Current literature warnings and required actions
 
+## Prism source correction: counts, scope and required actions
+
+250 papers, 446 named families, 2,694 paper-tool observations, 1,219 individually reviewed uses and 1,475 awaiting individual review. There are 127 admitted scoped integrations (23 native Java and 104 upstream), 260 missing families, and 130 integrations including three existing adapters. Full semantic review and implementation remain open.
+
+The five P215 Prism paragraphs support one new paper-tool observation, one individual review and four supporting pointers. The source specifies two-sided unpaired t-tests of replicate-average measurements and IHC comparisons; broader genomic paragraphs list statistical software without assigning specific operations. The word latest does not recover a numeric Prism edition. Variance assumptions, complete contrast/outcome families, historical settings and author data remain unresolved. Native Java statistical components do not establish a complete Prism replacement or paper reproduction. No implementation badge is added.
+
+SKIP3: skip dependent analysis when a required permitted source, runtime, license, download, installation or execution is unavailable/forbidden. Supply the named permitted prerequisite and retry NEW output. FAIL2: admit no complete result on source, input, numerical, capacity or integrity failure. Preserve complete inputs, warnings, logs, partials and historical evidence; resolve the named cause and retry NEW output. Never repair identifiers, remove failed observations, substitute author versions or refresh historical fingerprints to force success.
+
+Read [the source correction and current method guides](../PRISM_SOURCE_CATALOG.md). No website deployment or release is performed by this catalog correction.
+
+<details><summary>Catalog before the P215 source correction (historical)</summary>
+
+# Current literature warnings and required actions
+
 ## SnpEff annotation profiles
 
 **Available from current source:** `snpeff-tools run`, `verify` and genuine `replay`. Released v0.4.0 lacks these commands. Read [commands and scope](../SNPEFF_WORKFLOWS.md).
@@ -1430,6 +1444,8 @@ output path. Disconnected infinite pseudotime values remain present. LEARN
 does not admit a pseudotime result. Do not infer roots or repair values to
 conceal failures. Full Batchelor, study reproduction and biological accuracy
 remain unproven; the250-paper goal remains active.
+
+</details>
 
 </details>
 

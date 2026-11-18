@@ -1,5 +1,19 @@
 # 250-paper omics and GWAS toolbox catalog
 
+## Prism source correction: counts, scope and required actions
+
+250 papers, 446 named families, 2,694 paper-tool observations, 1,219 individually reviewed uses and 1,475 awaiting individual review. There are 127 admitted scoped integrations (23 native Java and 104 upstream), 260 missing families, and 130 integrations including three existing adapters. Full semantic review and implementation remain open.
+
+The five P215 Prism paragraphs support one new paper-tool observation, one individual review and four supporting pointers. The source specifies two-sided unpaired t-tests of replicate-average measurements and IHC comparisons; broader genomic paragraphs list statistical software without assigning specific operations. The word latest does not recover a numeric Prism edition. Variance assumptions, complete contrast/outcome families, historical settings and author data remain unresolved. Native Java statistical components do not establish a complete Prism replacement or paper reproduction. No implementation badge is added.
+
+SKIP3: skip dependent analysis when a required permitted source, runtime, license, download, installation or execution is unavailable/forbidden. Supply the named permitted prerequisite and retry NEW output. FAIL2: admit no complete result on source, input, numerical, capacity or integrity failure. Preserve complete inputs, warnings, logs, partials and historical evidence; resolve the named cause and retry NEW output. Never repair identifiers, remove failed observations, substitute author versions or refresh historical fingerprints to force success.
+
+Read [the source correction and current method guides](../PRISM_SOURCE_CATALOG.md). No website deployment or release is performed by this catalog correction.
+
+<details><summary>Catalog before the P215 source correction (historical)</summary>
+
+# 250-paper omics and GWAS toolbox catalog
+
 ## SnpEff: scope, warnings and required actions
 
 **Available from current source:** `snpeff-tools run`, `verify` and genuine `replay`. Released v0.4.0 lacks these commands. Read [commands and scope](../SNPEFF_WORKFLOWS.md).
@@ -1913,6 +1927,8 @@ Three source-reviewed tool additions retain separate provenance: MALT and HOPS h
 These additions improve the catalog and add no whole-tool or biological credit. The source-tested MALT 0.4.1 development controller does not fulfill the separate 0.5.2 role. Complete HOPS and MaltExtract operations remain unfinished; their unreported versions, settings and resource choices remain unknown. See `MALT_ALIGNMENT.md` and `MALT_HOPS_PAPER_ROLES.md`.
 
 **Required action:** match the declared source version and operation, qualify a permitted runtime, provide the complete dated reference/mapping and query populations, and retain original warnings and failures. If any prerequisite is unavailable or cannot be installed, skip its dependent analysis. A small software-control index does not reproduce the historical 91-spirochete or 7,508-genome bacterial analyses. Insufficient-read candidates remain unassessable.
+
+</details>
 
 </details>
 

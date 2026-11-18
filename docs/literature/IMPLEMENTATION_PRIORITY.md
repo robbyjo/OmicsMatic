@@ -12,7 +12,7 @@ does not mean that every underlying analysis is absent.
 | 2 | Remaining Monocle workflows | Nine papers; reuse existing native graph ordering and original Monocle 2/3 adapters while resolving the remaining model, version and custom-workflow gaps. |
 | 3 | Reusable nf-core execution profiles | Six papers; existing sequencing components can support multiple pipeline families. Finish the named profiles and their actual execution gaps. |
 | 4 | Shared cytometry analysis components | FlowJo appears in 27 papers and FACSDiva in 17. Distinguish acquisition/context mentions from computational uses; target reusable FCS, compensation and gating needs. |
-| 5 | Further common statistical methods | Prism appears in 46 papers. Map the actual models and fill remaining repeated statistical/interval needs in Java. |
+| 5 | Further common statistical methods | Prism appears in 47 papers after the P215 source correction. Map the actual models and fill remaining repeated statistical/interval needs in Java. |
 
 Other frequent gaps include bcl2fastq and Space Ranger (ten papers each),
 IMPUTE and MaxQuant (six each). Runtime and source-use restrictions need
@@ -27,9 +27,11 @@ Bonferroni, P167 Holm and unresolved model/family/outer-correction choices.
 Its independent reference contains 4,557 comparisons across 36 models. Nine
 Dunnett papers remain separately reviewed and pending, including repeated and
 unequal-variance models. The same audit found five bare-Prism source pointers
-in P215 missing from the current inventory:47 papers name Prism versus 46 in
-the admitted catalog. That canonical correction remains pending; it is not
-silently counted as a completed integration.
+in P215 missing from the previous inventory. The
+[canonical source correction](PRISM_SOURCE_CATALOG.md) now records all 47
+papers. The five paragraphs support one new paper/tool observation and four
+supporting pointers; they add no implementation badge. Previous qualification
+snapshots retain their original pending-correction state and checksums.
 
 The Tukey review found 14 papers with that name. P081 and P176 describe
 box-plot conventions and are excluded from the post-hoc-test count. The
