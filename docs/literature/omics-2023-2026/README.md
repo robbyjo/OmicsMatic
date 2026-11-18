@@ -1,5 +1,19 @@
 # 250-paper omics and GWAS toolbox catalog
 
+## LDSC: reviewed roles and native unpartitioned scope
+
+250 papers, 446 named families, 2,695 paper-tool observations, 1,261 individually reviewed uses and 1,434 awaiting individual review. There are 128 admitted new scoped integrations (24 native Java, 104 upstream), 260 missing families and 131 integrations including three existing adapters. The frozen 2023-10-23..2026-10-23 cohort/window is unchanged; full semantic review and implementation remain open.
+
+Native Java prepared unpartitioned observed-scale Hsq and two-trait RG/Gencov through ldsc-tools h2/rg, selected CBIIT 3.0.2 numerical-core behavior. Explicit intercepts, one/two-step masks, sample sizes/reference M, fixed-stage-weight and ratio jackknives, full row/block/weight diagnostics and no-result statuses are qualified. This is one scoped native family, not complete LDSC software or 42 reproduced papers. Munging, allele/reference preparation, LD-score generation, liability conversion, stratification, multivariate/wrapper-specific behavior and author historical settings remain separate. The 42 reviewed roles distinguish direct analyses, Genomic SEM/gsMap/CELLECT methods and two reused-resource roles. No original binary is inferred from a method mention. Build current source; released 0.4.0 lacks these commands.
+
+SKIP3: skip dependent analysis for unavailable/forbidden input or prerequisite; supply the named permitted resource and retry NEW output. FAIL2: admit no complete result on invalid input, source, numerical, capacity or integrity checks. For RG, preserve component fits and distinct NA/NaN/raw diagnostics when correlation is unreportable. Read FAILURE.txt, WARNINGS.md and model.json; correct the named model/reference/population issue and retry NEW output. Never drop failed SNPs/blocks, force positive heritability, replace NA/NaN or clamp final estimates to obtain success. Explicit retain-raw changes the source range presentation only; it cannot repair invalid uncertainty. No Python installation is needed for the native workflows.
+
+P019/P092 are added, P151 comparison-only is removed and P177 remains excluded. P220/P245 are resource reuse, not study execution. Read [the source crosswalk and current commands](../LDSC_CATALOG_INTEGRATION.md). No website deployment or release occurs in this metadata admission.
+
+<details><summary>Catalog before LDSC correction/admission (historical)</summary>
+
+# 250-paper omics and GWAS toolbox catalog
+
 ## Prism source correction: counts, scope and required actions
 
 250 papers, 446 named families, 2,694 paper-tool observations, 1,219 individually reviewed uses and 1,475 awaiting individual review. There are 127 admitted scoped integrations (23 native Java and 104 upstream), 260 missing families, and 130 integrations including three existing adapters. Full semantic review and implementation remain open.
@@ -1927,6 +1941,8 @@ Three source-reviewed tool additions retain separate provenance: MALT and HOPS h
 These additions improve the catalog and add no whole-tool or biological credit. The source-tested MALT 0.4.1 development controller does not fulfill the separate 0.5.2 role. Complete HOPS and MaltExtract operations remain unfinished; their unreported versions, settings and resource choices remain unknown. See `MALT_ALIGNMENT.md` and `MALT_HOPS_PAPER_ROLES.md`.
 
 **Required action:** match the declared source version and operation, qualify a permitted runtime, provide the complete dated reference/mapping and query populations, and retain original warnings and failures. If any prerequisite is unavailable or cannot be installed, skip its dependent analysis. A small software-control index does not reproduce the historical 91-spirochete or 7,508-genome bacterial analyses. Insufficient-read candidates remain unassessable.
+
+</details>
 
 </details>
 

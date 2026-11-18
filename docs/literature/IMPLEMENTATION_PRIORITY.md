@@ -6,22 +6,23 @@ existing project code and practical runtime availability. A family marked
 missing in the admitted catalog may already have tested components; the status
 does not mean that every underlying analysis is absent.
 
-The current 18 November tranche prioritizes LDSC, with 41 cataloged mentions,
+The current 18 November tranche prioritizes LDSC, with 42 reviewed family roles,
 after the separately qualified common-statistics and cytometry components.
 The [new native Hsq command](../vignettes/ldsc-heritability.md) supplies prepared
 unpartitioned one-step, fixed-intercept and two-step heritability fits, with
 72 unchanged original-core references. The next
 [native RG/Gencov command](../vignettes/ldsc-genetic-correlation.md) adds
 two-trait heritability/covariance/correlation with 72 cross-trait original-core
-references and explicit no-result statuses. Broader LDSC role integration remains
-pending. Its source audit also identifies a
-missing actual sLDSC role in P092 and a comparison-only canonical attribution
-in P151; the [qualification record](ldsc-hsq-development/README.md) preserves
-the findings for a separate canonical correction without granting family credit.
+references and explicit no-result statuses. The
+[catalog integration](LDSC_CATALOG_INTEGRATION.md) admits one scoped native
+family and reviews all 44 lexical candidates. It adds omitted uses in P019/P092,
+removes comparison-only P151 and distinguishes two reused resources from study
+execution. Stratified and wrapper-specific workflows remain separate; these
+native methods do not reproduce all 42 papers.
 
 | Priority | Work | Evidence and benefit |
 |---|---|---|
-| 1 | Native Tukey–Kramer comparisons | Twelve papers mention post-hoc Tukey tests; seven explicitly describe one-way ANOVA/Tukey. Existing Java ANOVA gains a reusable all-pairs follow-up. |
+| 1 | Remaining stratified LDSC methods and input preparation | The 42 reviewed family roles repeatedly require chromatin/eQTL annotations and enrichment. Reuse the qualified unpartitioned numerical core while preserving the distinct stratified and wrapper requirements. |
 | 2 | Remaining Monocle workflows | Nine papers; reuse existing native graph ordering and original Monocle 2/3 adapters while resolving the remaining model, version and custom-workflow gaps. |
 | 3 | Reusable nf-core execution profiles | Six papers; existing sequencing components can support multiple pipeline families. Finish the named profiles and their actual execution gaps. |
 | 4 | Shared cytometry analysis components | FlowJo appears in 27 papers and FACSDiva in 17. Distinguish acquisition/context mentions from computational uses; target reusable FCS, compensation and gating needs. |
@@ -97,6 +98,7 @@ plugin workflow in P051, or the distinct cell-cycle models in P122/P228.
 The validated LDAK development checkpoint is preserved at local commit
 `e2bf00a9ccf03911ec27f818ef5c6a617e5602f1`, with its matching reader, closed
 evidence and failed attempts. Its six-role catalog preview remains pending
-while implementation priority changes. Current admitted counts remain 127
-integrations and 260 missing families; no new family credit is awarded for
-this priority change or a standalone statistical component.
+while implementation priority changes. Current admitted counts are 128 new
+scoped integrations (24 native Java and 104 upstream) and 260 missing families.
+The LDSC admission adds one family credit; standalone statistical components
+and pending LDAK work receive no additional credit here.

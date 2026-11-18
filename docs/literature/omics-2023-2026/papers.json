@@ -5237,6 +5237,29 @@
         "evidence_paragraph_sha256": "41d6355a30dda16812b341a0151e6c85bffb9aa61a6d48667278080a18067d8f",
         "use_summary": "Genetic ancestry principal components.",
         "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13600940/ (section: Methods / I-TWAS and snGReX-PheWAS in MVP / MVP genotype quality control)"
+      },
+      {
+        "tool_id": "ldsc",
+        "tool": "LDSC",
+        "analysis_role": "Reviewed LD-score method or explicitly reused resource",
+        "evidence_section": "Methods / Genetic correlation analysis",
+        "evidence_paragraph_index": 74,
+        "matched_text": "linkage disequilibrium score regression",
+        "extraction_score": 0,
+        "usage_context": "reported-direct-ldscore-analysis",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
+        "version_reported_near_name": null,
+        "evidence_selection": "individually-reviewed-source-role",
+        "evidence_paragraph_sha256": "38b5adbc4ba315ffa9fc44f3ed4ec52f1929a4f613b2f73958be19617e1c26b4",
+        "use_summary": "Estimated bivariate genetic correlations among neuropsychiatric, neurodegenerative and substance-use GWAS, after HapMap3 allele matching with European 1000 Genomes LD weights.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13600940/ (section: Methods / Genetic correlation analysis)",
+        "implementation_scope_note": "Native Java prepared unpartitioned observed-scale Hsq and two-trait RG/Gencov through ldsc-tools h2/rg, selected CBIIT 3.0.2 numerical-core behavior. Explicit intercepts, one/two-step masks, sample sizes/reference M, fixed-stage-weight and ratio jackknives, full row/block/weight diagnostics and no-result statuses are qualified. This is one scoped native family, not complete LDSC software or 42 reproduced papers. Munging, allele/reference preparation, LD-score generation, liability conversion, stratification, multivariate/wrapper-specific behavior and author historical settings remain separate. The 42 reviewed roles distinguish direct analyses, Genomic SEM/gsMap/CELLECT methods and two reused-resource roles. No original binary is inferred from a method mention. Build current source; released 0.4.0 lacks these commands. Source-specific boundary: The author munging, exact summaries/reference files, overlap choices and software edition are not recovered by a prepared-data fit.",
+        "source_attribution": "direct",
+        "native_unpartitioned_profiles_applicable": [
+          "rg"
+        ],
+        "whole_paper_reproduced": false,
+        "supporting_evidence": []
       }
     ],
     "status": "extracted",
@@ -6209,18 +6232,42 @@
       {
         "tool_id": "ldsc",
         "tool": "LDSC",
-        "analysis_role": "SNP heritability, genetic correlation or functional partitioning",
+        "analysis_role": "Reviewed LD-score method or explicitly reused resource",
         "evidence_section": "Methods / Linkage disequilibrium score regression",
-        "evidence_paragraph_index": 63,
+        "evidence_paragraph_index": 65,
         "matched_text": "LDSC",
         "extraction_score": 15,
-        "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
-        "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
-        "evidence_paragraph_sha256": "c1cce2bbc3acf55ff966c5ce529484b0d2e940a01014eb2a471d1d41b1ab969e",
-        "use_summary": "Used for SNP heritability estimation; annotation-stratified genetic enrichment.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12893915/ (section: Methods / Linkage disequilibrium score regression)"
+        "usage_context": "reported-direct-ldscore-analysis",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
+        "version_reported_near_name": "1.0.1",
+        "evidence_selection": "individually-reviewed-source-role",
+        "evidence_paragraph_sha256": "b46e541ce63dbefd0a0075d34acf1be447b62f33fcba9e9216626abb3ffbe30f",
+        "use_summary": "Used stratified LDSC to test open-chromatin annotation heritability enrichment, calculated annotation LD scores with European 1000 Genomes data, and estimated genetic correlations for selected trait pairs.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12893915/ (section: Methods / Linkage disequilibrium score regression)",
+        "implementation_scope_note": "Native Java prepared unpartitioned observed-scale Hsq and two-trait RG/Gencov through ldsc-tools h2/rg, selected CBIIT 3.0.2 numerical-core behavior. Explicit intercepts, one/two-step masks, sample sizes/reference M, fixed-stage-weight and ratio jackknives, full row/block/weight diagnostics and no-result statuses are qualified. This is one scoped native family, not complete LDSC software or 42 reproduced papers. Munging, allele/reference preparation, LD-score generation, liability conversion, stratification, multivariate/wrapper-specific behavior and author historical settings remain separate. The 42 reviewed roles distinguish direct analyses, Genomic SEM/gsMap/CELLECT methods and two reused-resource roles. No original binary is inferred from a method mention. Build current source; released 0.4.0 lacks these commands. Source-specific boundary: The baseline model 1.1 is an annotation resource, not the software edition. Peak construction, LD-score generation, stratification, author inputs and historical 1.0.1 behavior remain separate.",
+        "source_attribution": "direct",
+        "native_unpartitioned_profiles_applicable": [
+          "rg"
+        ],
+        "whole_paper_reproduced": false,
+        "supporting_evidence": [
+          {
+            "paragraph_index": 63,
+            "paragraph_sha256": "c1cce2bbc3acf55ff966c5ce529484b0d2e940a01014eb2a471d1d41b1ab969e",
+            "section": "Methods / Linkage disequilibrium score regression"
+          },
+          {
+            "paragraph_index": 66,
+            "paragraph_sha256": "cbe466af90d9b329f962d4db41d824b5e048f0907bd0fc323fb53600dff87ab3",
+            "section": "Methods / Linkage disequilibrium score regression"
+          },
+          {
+            "paragraph_index": 138,
+            "paragraph_sha256": "6487d017a9a1bf8a46879526fa74aca108da0755dc80f9cbf643d2b11aa2ae01",
+            "section": "Methods / Code availability"
+          }
+        ],
+        "version_reporting_note": "Reported LDSC edition/source provenance; annotation and wrapper versions are separate. Current selected native 3.0.2 core qualification does not establish this historical edition."
       },
       {
         "tool_id": "limma",
@@ -6502,18 +6549,32 @@
       {
         "tool_id": "ldsc",
         "tool": "LDSC",
-        "analysis_role": "SNP heritability, genetic correlation or functional partitioning",
+        "analysis_role": "Reviewed LD-score method or explicitly reused resource",
         "evidence_section": "Methods / Co-heritability analysis",
         "evidence_paragraph_index": 87,
         "matched_text": "LD score regression",
         "extraction_score": 15,
-        "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "usage_context": "reported-direct-ldscore-analysis",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-source-role",
         "evidence_paragraph_sha256": "e4b2c0a70d9bb6429a5b2accbc55b953b7b274bcc8f664e56777ffaa137e990d",
-        "use_summary": "Used for cross-trait genetic correlation.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13600946/ (section: Methods / Co-heritability analysis)"
+        "use_summary": "Estimated trait heritability and pairwise genetic covariance/correlation for six disorders using European reference scores and HapMap3 munging; correlation outputs were compared with expression similarity.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13600946/ (section: Methods / Co-heritability analysis)",
+        "implementation_scope_note": "Native Java prepared unpartitioned observed-scale Hsq and two-trait RG/Gencov through ldsc-tools h2/rg, selected CBIIT 3.0.2 numerical-core behavior. Explicit intercepts, one/two-step masks, sample sizes/reference M, fixed-stage-weight and ratio jackknives, full row/block/weight diagnostics and no-result statuses are qualified. This is one scoped native family, not complete LDSC software or 42 reproduced papers. Munging, allele/reference preparation, LD-score generation, liability conversion, stratification, multivariate/wrapper-specific behavior and author historical settings remain separate. The 42 reviewed roles distinguish direct analyses, Genomic SEM/gsMap/CELLECT methods and two reused-resource roles. No original binary is inferred from a method mention. Build current source; released 0.4.0 lacks these commands. Source-specific boundary: The paper reports a chunksize setting in munging. Exact preparation, author data and the subsequent Spearman analysis are not supplied by the prepared LDSC fits.",
+        "source_attribution": "direct",
+        "native_unpartitioned_profiles_applicable": [
+          "h2",
+          "rg"
+        ],
+        "whole_paper_reproduced": false,
+        "supporting_evidence": [
+          {
+            "paragraph_index": 88,
+            "paragraph_sha256": "2676615f02e425196a881f43e79500badb6b143ef6ff969b528feca142e86cd8",
+            "section": "Methods / Co-heritability analysis"
+          }
+        ]
       },
       {
         "tool_id": "leiden",
@@ -9137,18 +9198,54 @@
       {
         "tool_id": "ldsc",
         "tool": "LDSC",
-        "analysis_role": "SNP heritability, genetic correlation or functional partitioning",
+        "analysis_role": "Reviewed LD-score method or explicitly reused resource",
         "evidence_section": "Methods / Genomic SEM / Genome-wide models",
         "evidence_paragraph_index": 32,
         "matched_text": "LDSC",
         "extraction_score": 15,
-        "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "usage_context": "reported-wrapper-specific-ldscore-method",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-source-role",
         "evidence_paragraph_sha256": "e89a379843a6c8553604675efdb2e3473c350199cd629ed0b1c93e57689c90e4",
-        "use_summary": "SNP heritability, genetic correlation or functional partitioning.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12779569/ (section: Methods / Genomic SEM / Genome-wide models)"
+        "use_summary": "Used multivariable LDSC within Genomic SEM to estimate genetic/sampling covariance matrices, liability-scale heritabilities and annotation-stratified matrices; bivariate intercepts also informed LAVA.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12779569/ (section: Methods / Genomic SEM / Genome-wide models)",
+        "implementation_scope_note": "Native Java prepared unpartitioned observed-scale Hsq and two-trait RG/Gencov through ldsc-tools h2/rg, selected CBIIT 3.0.2 numerical-core behavior. Explicit intercepts, one/two-step masks, sample sizes/reference M, fixed-stage-weight and ratio jackknives, full row/block/weight diagnostics and no-result statuses are qualified. This is one scoped native family, not complete LDSC software or 42 reproduced papers. Munging, allele/reference preparation, LD-score generation, liability conversion, stratification, multivariate/wrapper-specific behavior and author historical settings remain separate. The 42 reviewed roles distinguish direct analyses, Genomic SEM/gsMap/CELLECT methods and two reused-resource roles. No original binary is inferred from a method mention. Build current source; released 0.4.0 lacks these commands. Source-specific boundary: The Genomic SEM implementation, multivariate sampling covariance, prevalence/effective-N rules, cross-ancestry references and stratified workflows are distinct from the selected two-trait native profiles.",
+        "source_attribution": "wrapper",
+        "native_unpartitioned_profiles_applicable": [],
+        "whole_paper_reproduced": false,
+        "supporting_evidence": [
+          {
+            "paragraph_index": 33,
+            "paragraph_sha256": "ee907a181889daa53ee2f16c56fb0cdc19fcf5592c7af9919c9d8f02a7d4e584",
+            "section": "Methods / Genomic SEM / Genome-wide models"
+          },
+          {
+            "paragraph_index": 34,
+            "paragraph_sha256": "16413db811a9e9b2641438711c43121ec869eb3bfec2cad3370bc8ed7fc3941c",
+            "section": "Methods / Genomic SEM / Stratified genomic SEM"
+          },
+          {
+            "paragraph_index": 35,
+            "paragraph_sha256": "cc6526cc447d53a9aad54f7e6bd35e00b34ccbcc547c5eb02350d7aabd46b36d",
+            "section": "Methods / Genomic SEM / Stratified genomic SEM"
+          },
+          {
+            "paragraph_index": 36,
+            "paragraph_sha256": "ecaac65b26ccfaf03e3a82cd0c3aef03ce814f4d69bf72ea355c2dcfe8117863",
+            "section": "Methods / Genomic SEM / Multivariate GWAS"
+          },
+          {
+            "paragraph_index": 38,
+            "paragraph_sha256": "6b8b36e06c47639b419fab32350fab79c51476393cfac449789bebbfc53fadc5",
+            "section": "Methods / Cross-ancestry analyses"
+          },
+          {
+            "paragraph_index": 41,
+            "paragraph_sha256": "b0fa2a9e64a64c441a923fd2cb34b3963a6c23320527dbf83ed8dc785db411f0",
+            "section": "Methods / LAVA"
+          }
+        ]
       },
       {
         "tool_id": "magma",
@@ -12640,18 +12737,23 @@
       {
         "tool_id": "ldsc",
         "tool": "LDSC",
-        "analysis_role": "SNP heritability, genetic correlation or functional partitioning",
+        "analysis_role": "Reviewed LD-score method or explicitly reused resource",
         "evidence_section": "Methods / LDSC regression",
         "evidence_paragraph_index": 49,
         "matched_text": "LDSC",
         "extraction_score": 15,
-        "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "usage_context": "reported-direct-ldscore-analysis",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-source-role",
         "evidence_paragraph_sha256": "24df1af2ec03dc2c2a64e46d3c1c5938b0bb0c86f3213345fb7b92fca9e81706",
-        "use_summary": "SNP heritability, genetic correlation or functional partitioning.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13668669/ (section: Methods / LDSC regression)"
+        "use_summary": "Fit joint stratified LD-score models containing chromatin-interaction or accessibility annotations and baseline annotations for neuropsychiatric-trait heritability enrichment.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13668669/ (section: Methods / LDSC regression)",
+        "implementation_scope_note": "Native Java prepared unpartitioned observed-scale Hsq and two-trait RG/Gencov through ldsc-tools h2/rg, selected CBIIT 3.0.2 numerical-core behavior. Explicit intercepts, one/two-step masks, sample sizes/reference M, fixed-stage-weight and ratio jackknives, full row/block/weight diagnostics and no-result statuses are qualified. This is one scoped native family, not complete LDSC software or 42 reproduced papers. Munging, allele/reference preparation, LD-score generation, liability conversion, stratification, multivariate/wrapper-specific behavior and author historical settings remain separate. The 42 reviewed roles distinguish direct analyses, Genomic SEM/gsMap/CELLECT methods and two reused-resource roles. No original binary is inferred from a method mention. Build current source; released 0.4.0 lacks these commands. Source-specific boundary: Joint annotation construction, LD scores, original model settings and stratified inference are not implemented by unpartitioned Hsq/RG.",
+        "source_attribution": "direct",
+        "native_unpartitioned_profiles_applicable": [],
+        "whole_paper_reproduced": false,
+        "supporting_evidence": []
       },
       {
         "tool_id": "limma",
@@ -15458,18 +15560,23 @@
       {
         "tool_id": "ldsc",
         "tool": "LDSC",
-        "analysis_role": "SNP heritability, genetic correlation or functional partitioning",
+        "analysis_role": "Reviewed LD-score method or explicitly reused resource",
         "evidence_section": "Methods / GWAS variant enrichment",
         "evidence_paragraph_index": 111,
-        "matched_text": "ldsc",
+        "matched_text": "linkage disequilibrium score regression",
         "extraction_score": 15,
-        "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "usage_context": "reported-direct-ldscore-analysis",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-source-role",
         "evidence_paragraph_sha256": "eec8e33e200efef2e3c7c0e8647cd65ed14d2dcd8b4e7a2afcb93829238ab296",
-        "use_summary": "Used for annotation-stratified genetic enrichment.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10719095/ (section: Methods / GWAS variant enrichment)"
+        "use_summary": "Estimated trait-heritability enrichment for cell-type/conservation-group accessible-chromatin annotations jointly with the complete cell-type background annotation.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10719095/ (section: Methods / GWAS variant enrichment)",
+        "implementation_scope_note": "Native Java prepared unpartitioned observed-scale Hsq and two-trait RG/Gencov through ldsc-tools h2/rg, selected CBIIT 3.0.2 numerical-core behavior. Explicit intercepts, one/two-step masks, sample sizes/reference M, fixed-stage-weight and ratio jackknives, full row/block/weight diagnostics and no-result statuses are qualified. This is one scoped native family, not complete LDSC software or 42 reproduced papers. Munging, allele/reference preparation, LD-score generation, liability conversion, stratification, multivariate/wrapper-specific behavior and author historical settings remain separate. The 42 reviewed roles distinguish direct analyses, Genomic SEM/gsMap/CELLECT methods and two reused-resource roles. No original binary is inferred from a method mention. Build current source; released 0.4.0 lacks these commands. Source-specific boundary: The source uses cell-type-specific LDSC with prepared GWAS formatting and annotation/background selection; these stratified operations and exact inputs remain separate.",
+        "source_attribution": "direct",
+        "native_unpartitioned_profiles_applicable": [],
+        "whole_paper_reproduced": false,
+        "supporting_evidence": []
       },
       {
         "tool_id": "louvain",
@@ -20192,18 +20299,25 @@
       {
         "tool_id": "ldsc",
         "tool": "LDSC",
-        "analysis_role": "SNP heritability, genetic correlation or functional partitioning",
+        "analysis_role": "Reviewed LD-score method or explicitly reused resource",
         "evidence_section": "Methods / Estimation of population-specific or shared causal variants at associated loci",
         "evidence_paragraph_index": 23,
         "matched_text": "LD score regression",
         "extraction_score": 15,
-        "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "usage_context": "reported-direct-ldscore-analysis",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-source-role",
         "evidence_paragraph_sha256": "850b14248d2735bd17ed866502b6b3b9d2767af2d7570f6d3e86d29c9a68cb8e",
-        "use_summary": "Used for SNP heritability estimation.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10786718/ (section: Methods / Estimation of population-specific or shared causal variants at associated loci)"
+        "use_summary": "Estimated European and East Asian genome-wide GWAS heritability as an input to the PESCA population-specific/shared-causal-variant workflow.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10786718/ (section: Methods / Estimation of population-specific or shared causal variants at associated loci)",
+        "implementation_scope_note": "Native Java prepared unpartitioned observed-scale Hsq and two-trait RG/Gencov through ldsc-tools h2/rg, selected CBIIT 3.0.2 numerical-core behavior. Explicit intercepts, one/two-step masks, sample sizes/reference M, fixed-stage-weight and ratio jackknives, full row/block/weight diagnostics and no-result statuses are qualified. This is one scoped native family, not complete LDSC software or 42 reproduced papers. Munging, allele/reference preparation, LD-score generation, liability conversion, stratification, multivariate/wrapper-specific behavior and author historical settings remain separate. The 42 reviewed roles distinguish direct analyses, Genomic SEM/gsMap/CELLECT methods and two reused-resource roles. No original binary is inferred from a method mention. Build current source; released 0.4.0 lacks these commands. Source-specific boundary: The PESCA 0.3 edition is not an LDSC edition. Population-specific reference/QC choices, PESCA priors and posterior calculations are not inferred.",
+        "source_attribution": "direct",
+        "native_unpartitioned_profiles_applicable": [
+          "h2"
+        ],
+        "whole_paper_reproduced": false,
+        "supporting_evidence": []
       },
       {
         "tool_id": "magma",
@@ -20454,18 +20568,24 @@
       {
         "tool_id": "ldsc",
         "tool": "LDSC",
-        "analysis_role": "SNP heritability, genetic correlation or functional partitioning",
+        "analysis_role": "Reviewed LD-score method or explicitly reused resource",
         "evidence_section": "Methods / Complex trait associations",
         "evidence_paragraph_index": 46,
-        "matched_text": "LDSC",
+        "matched_text": "S-LDSC",
         "extraction_score": 15,
-        "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "usage_context": "reported-direct-ldscore-analysis",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": "1.0.1",
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-source-role",
         "evidence_paragraph_sha256": "f0325ae7d13421942df3ed20c7a5efed1e5783351ca612d748d905fc6064778f",
-        "use_summary": "Used for SNP heritability estimation; annotation-stratified genetic enrichment.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11631754/ (section: Methods / Complex trait associations)"
+        "use_summary": "Used partitioned S-LDSC to estimate enrichment of sQTL-associated gene windows across twenty complex traits.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11631754/ (section: Methods / Complex trait associations)",
+        "implementation_scope_note": "Native Java prepared unpartitioned observed-scale Hsq and two-trait RG/Gencov through ldsc-tools h2/rg, selected CBIIT 3.0.2 numerical-core behavior. Explicit intercepts, one/two-step masks, sample sizes/reference M, fixed-stage-weight and ratio jackknives, full row/block/weight diagnostics and no-result statuses are qualified. This is one scoped native family, not complete LDSC software or 42 reproduced papers. Munging, allele/reference preparation, LD-score generation, liability conversion, stratification, multivariate/wrapper-specific behavior and author historical settings remain separate. The 42 reviewed roles distinguish direct analyses, Genomic SEM/gsMap/CELLECT methods and two reused-resource roles. No original binary is inferred from a method mention. Build current source; released 0.4.0 lacks these commands. Source-specific boundary: The author gene/window annotations, default historical partitioned pipeline and data are separate; the coloc/LocusCompare operations in the paragraph are other tools.",
+        "source_attribution": "direct",
+        "native_unpartitioned_profiles_applicable": [],
+        "whole_paper_reproduced": false,
+        "supporting_evidence": [],
+        "version_reporting_note": "Reported LDSC edition/source provenance; annotation and wrapper versions are separate. Current selected native 3.0.2 core qualification does not establish this historical edition."
       },
       {
         "tool_id": "leafcutter",
@@ -20820,18 +20940,26 @@
       {
         "tool_id": "ldsc",
         "tool": "LDSC",
-        "analysis_role": "SNP heritability, genetic correlation or functional partitioning",
+        "analysis_role": "Reviewed LD-score method or explicitly reused resource",
         "evidence_section": "Methods / Meta-analysis",
         "evidence_paragraph_index": 38,
         "matched_text": "LD score regression",
         "extraction_score": 15,
-        "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
-        "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "usage_context": "reported-direct-ldscore-analysis",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
+        "version_reported_near_name": "1.0.1",
+        "evidence_selection": "individually-reviewed-source-role",
         "evidence_paragraph_sha256": "3cbbfab2f9015095347d6557f098f338b36571dd5e1252cb54a2fa6baa0e21dd",
-        "use_summary": "Used for association inflation assessment.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12807872/ (section: Methods / Meta-analysis)"
+        "use_summary": "Estimated GWAS LD-score intercepts for standard-error inflation correction and calculated liability-scale SNP heritability.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12807872/ (section: Methods / Meta-analysis)",
+        "implementation_scope_note": "Native Java prepared unpartitioned observed-scale Hsq and two-trait RG/Gencov through ldsc-tools h2/rg, selected CBIIT 3.0.2 numerical-core behavior. Explicit intercepts, one/two-step masks, sample sizes/reference M, fixed-stage-weight and ratio jackknives, full row/block/weight diagnostics and no-result statuses are qualified. This is one scoped native family, not complete LDSC software or 42 reproduced papers. Munging, allele/reference preparation, LD-score generation, liability conversion, stratification, multivariate/wrapper-specific behavior and author historical settings remain separate. The 42 reviewed roles distinguish direct analyses, Genomic SEM/gsMap/CELLECT methods and two reused-resource roles. No original binary is inferred from a method mention. Build current source; released 0.4.0 lacks these commands. Source-specific boundary: Native observed-scale fitting provides an intercept/h2 component only. Author cohort QC, square-root-intercept SE correction, liability conversion and GWAMA meta-analysis remain separate.",
+        "source_attribution": "direct",
+        "native_unpartitioned_profiles_applicable": [
+          "h2"
+        ],
+        "whole_paper_reproduced": false,
+        "supporting_evidence": [],
+        "version_reporting_note": "Reported LDSC edition/source provenance; annotation and wrapper versions are separate. Current selected native 3.0.2 core qualification does not establish this historical edition."
       },
       {
         "tool_id": "metaxcan",
@@ -21233,18 +21361,25 @@
       {
         "tool_id": "ldsc",
         "tool": "LDSC",
-        "analysis_role": "SNP heritability, genetic correlation or functional partitioning",
+        "analysis_role": "Reviewed LD-score method or explicitly reused resource",
         "evidence_section": "Methods / Trait selection",
         "evidence_paragraph_index": 54,
         "matched_text": "LD score regression",
         "extraction_score": 15,
-        "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "usage_context": "reported-direct-ldscore-analysis",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-source-role",
         "evidence_paragraph_sha256": "604b7bde0789a03005058c789aef98aa675ef2e56eb3a4d587002c7da9b39c4b",
-        "use_summary": "Used for SNP heritability estimation.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10786716/ (section: Methods / Trait selection)"
+        "use_summary": "Estimated SNP heritability from GWAS summaries to filter and rank traits before cross-population prediction analyses.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10786716/ (section: Methods / Trait selection)",
+        "implementation_scope_note": "Native Java prepared unpartitioned observed-scale Hsq and two-trait RG/Gencov through ldsc-tools h2/rg, selected CBIIT 3.0.2 numerical-core behavior. Explicit intercepts, one/two-step masks, sample sizes/reference M, fixed-stage-weight and ratio jackknives, full row/block/weight diagnostics and no-result statuses are qualified. This is one scoped native family, not complete LDSC software or 42 reproduced papers. Munging, allele/reference preparation, LD-score generation, liability conversion, stratification, multivariate/wrapper-specific behavior and author historical settings remain separate. The 42 reviewed roles distinguish direct analyses, Genomic SEM/gsMap/CELLECT methods and two reused-resource roles. No original binary is inferred from a method mention. Build current source; released 0.4.0 lacks these commands. Source-specific boundary: The source trait selection, supplied GWAS covariates, references and subsequent phenotypic-correlation filtering are not automatic LDSC input preparation.",
+        "source_attribution": "direct",
+        "native_unpartitioned_profiles_applicable": [
+          "h2"
+        ],
+        "whole_paper_reproduced": false,
+        "supporting_evidence": []
       },
       {
         "tool_id": "metal",
@@ -23613,18 +23748,33 @@
       {
         "tool_id": "ldsc",
         "tool": "LDSC",
-        "analysis_role": "SNP heritability, genetic correlation or functional partitioning",
+        "analysis_role": "Reviewed LD-score method or explicitly reused resource",
         "evidence_section": "Methods / Heritability and genetic correlations",
         "evidence_paragraph_index": 24,
         "matched_text": "LDSC",
         "extraction_score": 15,
-        "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "usage_context": "reported-direct-ldscore-analysis",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": "1.0.1",
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-source-role",
         "evidence_paragraph_sha256": "bc89b00398f7501d989cde4e0de6a9360da9f2c05e4a84226ccfbdc11c945d5a",
-        "use_summary": "Used for SNP heritability estimation.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11631763/ (section: Methods / Heritability and genetic correlations)"
+        "use_summary": "Estimated common-SNP heritability and bivariate genetic correlations for cardiomyopathy meta-analyses, with liability conversion; stratified analyses tested cardiac cell/program enrichment.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11631763/ (section: Methods / Heritability and genetic correlations)",
+        "implementation_scope_note": "Native Java prepared unpartitioned observed-scale Hsq and two-trait RG/Gencov through ldsc-tools h2/rg, selected CBIIT 3.0.2 numerical-core behavior. Explicit intercepts, one/two-step masks, sample sizes/reference M, fixed-stage-weight and ratio jackknives, full row/block/weight diagnostics and no-result statuses are qualified. This is one scoped native family, not complete LDSC software or 42 reproduced papers. Munging, allele/reference preparation, LD-score generation, liability conversion, stratification, multivariate/wrapper-specific behavior and author historical settings remain separate. The 42 reviewed roles distinguish direct analyses, Genomic SEM/gsMap/CELLECT methods and two reused-resource roles. No original binary is inferred from a method mention. Build current source; released 0.4.0 lacks these commands. Source-specific boundary: Nonambiguous HapMap3/EUR reference selection, prevalence assumptions and cell-type annotation workflows remain separate. This LDSC role is distinct from expression normalization elsewhere in the paper.",
+        "source_attribution": "direct",
+        "native_unpartitioned_profiles_applicable": [
+          "h2",
+          "rg"
+        ],
+        "whole_paper_reproduced": false,
+        "supporting_evidence": [
+          {
+            "paragraph_index": 38,
+            "paragraph_sha256": "61e8ed669d9939010820c3aad4edbb86ebb0b6063ed2769b3e8e2de330892ec9",
+            "section": "Methods / Cardiac-cell-type enrichment"
+          }
+        ],
+        "version_reporting_note": "Reported LDSC edition/source provenance; annotation and wrapper versions are separate. Current selected native 3.0.2 core qualification does not establish this historical edition."
       },
       {
         "tool_id": "magma",
@@ -24330,18 +24480,37 @@
       {
         "tool_id": "ldsc",
         "tool": "LDSC",
-        "analysis_role": "SNP heritability, genetic correlation or functional partitioning",
+        "analysis_role": "Reviewed LD-score method or explicitly reused resource",
         "evidence_section": "Methods / Discovery GWAS and multitrait analysis of GWAS",
         "evidence_paragraph_index": 21,
         "matched_text": "LD score regression",
         "extraction_score": 15,
-        "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
-        "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "usage_context": "reported-direct-ldscore-analysis",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
+        "version_reported_near_name": "1.0.1",
+        "evidence_selection": "individually-reviewed-source-role",
         "evidence_paragraph_sha256": "ddad702703af15cf3e53c3898bce349e1ae465f9074db0f491db4cf297a61e11",
-        "use_summary": "Used for cross-trait genetic correlation.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11631752/ (section: Methods / Discovery GWAS and multitrait analysis of GWAS)"
+        "use_summary": "Estimated genetic correlations between cardiomyopathy definitions and imaging traits, and used tissue/cell-program stratified LDSC for heritability enrichment.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11631752/ (section: Methods / Discovery GWAS and multitrait analysis of GWAS)",
+        "implementation_scope_note": "Native Java prepared unpartitioned observed-scale Hsq and two-trait RG/Gencov through ldsc-tools h2/rg, selected CBIIT 3.0.2 numerical-core behavior. Explicit intercepts, one/two-step masks, sample sizes/reference M, fixed-stage-weight and ratio jackknives, full row/block/weight diagnostics and no-result statuses are qualified. This is one scoped native family, not complete LDSC software or 42 reproduced papers. Munging, allele/reference preparation, LD-score generation, liability conversion, stratification, multivariate/wrapper-specific behavior and author historical settings remain separate. The 42 reviewed roles distinguish direct analyses, Genomic SEM/gsMap/CELLECT methods and two reused-resource roles. No original binary is inferred from a method mention. Build current source; released 0.4.0 lacks these commands. Source-specific boundary: MTAG trait selection, sc-linker program-to-SNP construction, baseline conditioning and stratified inference remain distinct; current native profiles do not establish legacy 1.0.1 parity.",
+        "source_attribution": "direct",
+        "native_unpartitioned_profiles_applicable": [
+          "rg"
+        ],
+        "whole_paper_reproduced": false,
+        "supporting_evidence": [
+          {
+            "paragraph_index": 22,
+            "paragraph_sha256": "e020bf1944ac3b4fd33e02197bbffe82c4cc34cef8d38e41cb26ccd0f874054b",
+            "section": "Methods / Discovery GWAS and multitrait analysis of GWAS"
+          },
+          {
+            "paragraph_index": 36,
+            "paragraph_sha256": "9524e33d2186ef793c61eb033c2261af00ae4061539716705959a1315c58708b",
+            "section": "Methods / Tissue, cell type and cell state heritability enrichment"
+          }
+        ],
+        "version_reporting_note": "Reported LDSC edition/source provenance; annotation and wrapper versions are separate. Current selected native 3.0.2 core qualification does not establish this historical edition."
       },
       {
         "tool_id": "metal",
@@ -24972,6 +25141,43 @@
         "use_summary": "Mapped the union of chromatin-accessibility peaks from hg38 to hg19, then extended peak regions1000bp on both sides for SNP annotations used in stratified LDSC.",
         "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13649587/ (section: Methods / Heritability enrichment)",
         "implementation_scope_note": "A tested basic Java chain/interval subset is available; full UCSC/old-version/paper parity is not validated. Extension occurs after conversion and is a separate operation. Reference SNP/MHC restrictions, baseline-LD model and conditional cell-type annotations remain separate."
+      },
+      {
+        "tool_id": "ldsc",
+        "tool": "LDSC",
+        "analysis_role": "Reviewed LD-score method or explicitly reused resource",
+        "evidence_section": "Methods / Heritability enrichment",
+        "evidence_paragraph_index": 58,
+        "matched_text": "sLDSC",
+        "extraction_score": 0,
+        "usage_context": "reported-direct-ldscore-analysis",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
+        "version_reported_near_name": null,
+        "evidence_selection": "individually-reviewed-source-role",
+        "evidence_paragraph_sha256": "1c963dd3d93704d9863cc964c75725f1baceb6973e5d92b57ea22cf06ed52690",
+        "use_summary": "Used sLDSC with baseline-LD 2.2 to test cell-type/topic-specific open-chromatin heritability enrichment for IBD and comparator traits, including additional peak-set conditioning.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13649587/ (section: Methods / Heritability enrichment)",
+        "implementation_scope_note": "Native Java prepared unpartitioned observed-scale Hsq and two-trait RG/Gencov through ldsc-tools h2/rg, selected CBIIT 3.0.2 numerical-core behavior. Explicit intercepts, one/two-step masks, sample sizes/reference M, fixed-stage-weight and ratio jackknives, full row/block/weight diagnostics and no-result statuses are qualified. This is one scoped native family, not complete LDSC software or 42 reproduced papers. Munging, allele/reference preparation, LD-score generation, liability conversion, stratification, multivariate/wrapper-specific behavior and author historical settings remain separate. The 42 reviewed roles distinguish direct analyses, Genomic SEM/gsMap/CELLECT methods and two reused-resource roles. No original binary is inferred from a method mention. Build current source; released 0.4.0 lacks these commands. Source-specific boundary: European reference/HapMap3 selection, MHC exclusion, coordinate conversion, peak extension, conditioning and one-sided standardized-effect testing are source-specific stratified requirements. Baseline 2.2 is not a reported software edition.",
+        "source_attribution": "direct",
+        "native_unpartitioned_profiles_applicable": [],
+        "whole_paper_reproduced": false,
+        "supporting_evidence": [
+          {
+            "paragraph_index": 19,
+            "paragraph_sha256": "30b93d5f5f5f51609ff9ff2d3db0511df4423695965ca0e96fd0e5fc9ba136dd",
+            "section": "Results / Cell-type-specific enrichment of IBD risk"
+          },
+          {
+            "paragraph_index": 20,
+            "paragraph_sha256": "6af2704a064a3177d6d512a0df2feebe3db8c97a7658e5c41b821142b55f3bd5",
+            "section": "Results / Cell-type-specific enrichment of IBD risk"
+          },
+          {
+            "paragraph_index": 47,
+            "paragraph_sha256": "fb0c8fdf5d5fd6fe8e2e805f51902131850be917f0c81430cb446793f49ccbf4",
+            "section": "Methods / Topic modeling and pathway enrichment"
+          }
+        ]
       }
     ],
     "status": "extracted",
@@ -26719,18 +26925,29 @@
       {
         "tool_id": "ldsc",
         "tool": "LDSC",
-        "analysis_role": "SNP heritability, genetic correlation or functional partitioning",
+        "analysis_role": "Reviewed LD-score method or explicitly reused resource",
         "evidence_section": "Methods / LDSC analysis",
         "evidence_paragraph_index": 48,
         "matched_text": "LDSC",
         "extraction_score": 15,
-        "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "usage_context": "reported-direct-ldscore-analysis",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-source-role",
         "evidence_paragraph_sha256": "9f44411bd220fef91c13c24d8f6de55fc3d15dd94357571af3398be749b81372",
-        "use_summary": "SNP heritability, genetic correlation or functional partitioning.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10703679/ (section: Methods / LDSC analysis)"
+        "use_summary": "Used a modified LDSC pipeline to test trait enrichment in mouse cell/subcluster differential-accessibility peaks after mapping human GWAS variants to mouse coordinates.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10703679/ (section: Methods / LDSC analysis)",
+        "implementation_scope_note": "Native Java prepared unpartitioned observed-scale Hsq and two-trait RG/Gencov through ldsc-tools h2/rg, selected CBIIT 3.0.2 numerical-core behavior. Explicit intercepts, one/two-step masks, sample sizes/reference M, fixed-stage-weight and ratio jackknives, full row/block/weight diagnostics and no-result statuses are qualified. This is one scoped native family, not complete LDSC software or 42 reproduced papers. Munging, allele/reference preparation, LD-score generation, liability conversion, stratification, multivariate/wrapper-specific behavior and author historical settings remain separate. The 42 reviewed roles distinguish direct analyses, Genomic SEM/gsMap/CELLECT methods and two reused-resource roles. No original binary is inferred from a method mention. Build current source; released 0.4.0 lacks these commands. Source-specific boundary: The custom cross-species mapping, per-chromosome annotations, regenerated baseline 1.1, coefficient scaling and BH family are not supplied by ordinary unpartitioned fits.",
+        "source_attribution": "direct",
+        "native_unpartitioned_profiles_applicable": [],
+        "whole_paper_reproduced": false,
+        "supporting_evidence": [
+          {
+            "paragraph_index": 49,
+            "paragraph_sha256": "dbe83d7a377afd43897f92338a7980d9490faa4af00d7832c09ec9f72e9be220",
+            "section": "Methods / LDSC analysis"
+          }
+        ]
       },
       {
         "tool_id": "louvain",
@@ -28416,18 +28633,23 @@
       {
         "tool_id": "ldsc",
         "tool": "LDSC",
-        "analysis_role": "SNP heritability, genetic correlation or functional partitioning",
+        "analysis_role": "Reviewed LD-score method or explicitly reused resource",
         "evidence_section": "Methods / Sample selection and preprocessing / Partitioning heritability based on statistical fine-mapping",
         "evidence_paragraph_index": 44,
-        "matched_text": "LDSC",
+        "matched_text": "S-LDSC",
         "extraction_score": 15,
-        "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "usage_context": "reported-direct-ldscore-analysis",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-source-role",
         "evidence_paragraph_sha256": "f593691ed5f7a925cc4a4be46a60b3ba2a08fb29a25c92b5dee857f0860221b3",
-        "use_summary": "Used for SNP heritability estimation; annotation-stratified genetic enrichment.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13649572/ (section: Methods / Sample selection and preprocessing / Partitioning heritability based on statistical fine-mapping)"
+        "use_summary": "Partitioned trait heritability using continuous MaxCPP fine-mapped eQTL annotations, European LD reference data and jointly modeled baseline annotations.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13649572/ (section: Methods / Sample selection and preprocessing / Partitioning heritability based on statistical fine-mapping)",
+        "implementation_scope_note": "Native Java prepared unpartitioned observed-scale Hsq and two-trait RG/Gencov through ldsc-tools h2/rg, selected CBIIT 3.0.2 numerical-core behavior. Explicit intercepts, one/two-step masks, sample sizes/reference M, fixed-stage-weight and ratio jackknives, full row/block/weight diagnostics and no-result statuses are qualified. This is one scoped native family, not complete LDSC software or 42 reproduced papers. Munging, allele/reference preparation, LD-score generation, liability conversion, stratification, multivariate/wrapper-specific behavior and author historical settings remain separate. The 42 reviewed roles distinguish direct analyses, Genomic SEM/gsMap/CELLECT methods and two reused-resource roles. No original binary is inferred from a method mention. Build current source; released 0.4.0 lacks these commands. Source-specific boundary: Constructing MaxCPP, credible-set selection, correlated annotation conditioning and enrichment testing are separate; the prepared unpartitioned profiles do not supply this continuous-annotation role.",
+        "source_attribution": "direct",
+        "native_unpartitioned_profiles_applicable": [],
+        "whole_paper_reproduced": false,
+        "supporting_evidence": []
       },
       {
         "tool_id": "leiden",
@@ -28795,18 +29017,33 @@
       {
         "tool_id": "ldsc",
         "tool": "LDSC",
-        "analysis_role": "SNP heritability, genetic correlation or functional partitioning",
+        "analysis_role": "Reviewed LD-score method or explicitly reused resource",
         "evidence_section": "Methods / LDSC",
         "evidence_paragraph_index": 40,
         "matched_text": "LDSC",
         "extraction_score": 15,
-        "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "usage_context": "reported-direct-ldscore-analysis",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": "1.0.0",
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-source-role",
         "evidence_paragraph_sha256": "004a88be1471b6ba2d79a8e5b1eda60e2cfbd3348e2ebb74535532eca5f06ba1",
-        "use_summary": "Used for annotation-stratified genetic enrichment; association inflation assessment.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10703676/ (section: Methods / LDSC)"
+        "use_summary": "Used East Asian LD scores to assess GWAS confounding and liability-scale heritability, and cross-trait LDSC to estimate genetic correlations after MHC exclusion.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10703676/ (section: Methods / LDSC)",
+        "implementation_scope_note": "Native Java prepared unpartitioned observed-scale Hsq and two-trait RG/Gencov through ldsc-tools h2/rg, selected CBIIT 3.0.2 numerical-core behavior. Explicit intercepts, one/two-step masks, sample sizes/reference M, fixed-stage-weight and ratio jackknives, full row/block/weight diagnostics and no-result statuses are qualified. This is one scoped native family, not complete LDSC software or 42 reproduced papers. Munging, allele/reference preparation, LD-score generation, liability conversion, stratification, multivariate/wrapper-specific behavior and author historical settings remain separate. The 42 reviewed roles distinguish direct analyses, Genomic SEM/gsMap/CELLECT methods and two reused-resource roles. No original binary is inferred from a method mention. Build current source; released 0.4.0 lacks these commands. Source-specific boundary: Population prevalences, author EAS references and historical 1.0.0 behavior remain explicit; native profiles currently qualify observed-scale prepared components.",
+        "source_attribution": "direct",
+        "native_unpartitioned_profiles_applicable": [
+          "h2",
+          "rg"
+        ],
+        "whole_paper_reproduced": false,
+        "supporting_evidence": [
+          {
+            "paragraph_index": 46,
+            "paragraph_sha256": "7630eebd594e33f07436548c949e7b8520cbbffe4a59f568621b488479143526",
+            "section": "Methods / Genetic correlation estimation"
+          }
+        ],
+        "version_reporting_note": "Reported LDSC edition/source provenance; annotation and wrapper versions are separate. Current selected native 3.0.2 core qualification does not establish this historical edition."
       },
       {
         "tool_id": "ldstore",
@@ -30715,18 +30952,29 @@
       {
         "tool_id": "ldsc",
         "tool": "LDSC",
-        "analysis_role": "SNP heritability, genetic correlation or functional partitioning",
+        "analysis_role": "Reviewed LD-score method or explicitly reused resource",
         "evidence_section": "Methods / LDSC and SNP-based heritability",
         "evidence_paragraph_index": 28,
         "matched_text": "LDSC",
         "extraction_score": 15,
-        "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "usage_context": "reported-direct-ldscore-analysis",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-source-role",
         "evidence_paragraph_sha256": "48c922f5167c77600bc3483348b30f84a263849f7b57e6b578e3f55f0df9c47c",
-        "use_summary": "Used for SNP heritability estimation.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10703690/ (section: Methods / LDSC and SNP-based heritability)"
+        "use_summary": "Estimated liability-scale heritability with ancestry/sample-covariate-aware LD scores, used CTG-VL LDSC for broad genetic-correlation comparisons, and tested adult/fetal eQTL annotation enrichment.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10703690/ (section: Methods / LDSC and SNP-based heritability)",
+        "implementation_scope_note": "Native Java prepared unpartitioned observed-scale Hsq and two-trait RG/Gencov through ldsc-tools h2/rg, selected CBIIT 3.0.2 numerical-core behavior. Explicit intercepts, one/two-step masks, sample sizes/reference M, fixed-stage-weight and ratio jackknives, full row/block/weight diagnostics and no-result statuses are qualified. This is one scoped native family, not complete LDSC software or 42 reproduced papers. Munging, allele/reference preparation, LD-score generation, liability conversion, stratification, multivariate/wrapper-specific behavior and author historical settings remain separate. The 42 reviewed roles distinguish direct analyses, Genomic SEM/gsMap/CELLECT methods and two reused-resource roles. No original binary is inferred from a method mention. Build current source; released 0.4.0 lacks these commands. Source-specific boundary: Covariate-LDSC score construction, admixed-ancestry modeling, the web platform, prevalence choices and partitioned annotations are source-specific workflows, not established by accepting a generic prepared LD column.",
+        "source_attribution": "direct",
+        "native_unpartitioned_profiles_applicable": [],
+        "whole_paper_reproduced": false,
+        "supporting_evidence": [
+          {
+            "paragraph_index": 34,
+            "paragraph_sha256": "179118592de9c6f758750fec8fc965ffe8006ef669d37d89b4731a99469458f4",
+            "section": "Methods / Partitioned SNP-based heritability estimation"
+          }
+        ]
       },
       {
         "tool_id": "metal",
@@ -31276,18 +31524,27 @@
       {
         "tool_id": "ldsc",
         "tool": "LDSC",
-        "analysis_role": "SNP heritability, genetic correlation or functional partitioning",
+        "analysis_role": "Reviewed LD-score method or explicitly reused resource",
         "evidence_section": "Methods / SNP-based heritability and genetic correlation",
         "evidence_paragraph_index": 42,
         "matched_text": "LDSC",
         "extraction_score": 15,
-        "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "usage_context": "reported-direct-ldscore-analysis",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": "1.0.11",
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-source-role",
         "evidence_paragraph_sha256": "9e817079f0452d7bcc34a75fd26559e9c96a85445e67c6930f1bdcf1426ddfea",
-        "use_summary": "Used for SNP heritability estimation; cross-trait genetic correlation.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10703686/ (section: Methods / SNP-based heritability and genetic correlation)"
+        "use_summary": "Estimated SNP heritability and pairwise genetic correlations using in-sample UK Biobank LD scores, with explicit phenotype/MTAG-dependent sample-size conventions and liability conversion.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10703686/ (section: Methods / SNP-based heritability and genetic correlation)",
+        "implementation_scope_note": "Native Java prepared unpartitioned observed-scale Hsq and two-trait RG/Gencov through ldsc-tools h2/rg, selected CBIIT 3.0.2 numerical-core behavior. Explicit intercepts, one/two-step masks, sample sizes/reference M, fixed-stage-weight and ratio jackknives, full row/block/weight diagnostics and no-result statuses are qualified. This is one scoped native family, not complete LDSC software or 42 reproduced papers. Munging, allele/reference preparation, LD-score generation, liability conversion, stratification, multivariate/wrapper-specific behavior and author historical settings remain separate. The 42 reviewed roles distinguish direct analyses, Genomic SEM/gsMap/CELLECT methods and two reused-resource roles. No original binary is inferred from a method mention. Build current source; released 0.4.0 lacks these commands. Source-specific boundary: The source literally reports 1.0.11; it is retained without correcting it to 1.0.1. Distinct effective-N definitions, prevalence assumptions and historical edition behavior are not inferred.",
+        "source_attribution": "direct",
+        "native_unpartitioned_profiles_applicable": [
+          "h2",
+          "rg"
+        ],
+        "whole_paper_reproduced": false,
+        "supporting_evidence": [],
+        "version_reporting_note": "Reported LDSC edition/source provenance; annotation and wrapper versions are separate. Literal 1.0.11 is retained; no correction to 1.0.1 is made."
       },
       {
         "tool_id": "metasoft",
@@ -31963,18 +32220,25 @@
       {
         "tool_id": "ldsc",
         "tool": "LDSC",
-        "analysis_role": "SNP heritability, genetic correlation or functional partitioning",
+        "analysis_role": "Reviewed LD-score method or explicitly reused resource",
         "evidence_section": "Methods / Additional analysis of imputed phenotypes",
         "evidence_paragraph_index": 52,
         "matched_text": "LDSC",
         "extraction_score": 15,
-        "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "usage_context": "reported-direct-ldscore-analysis",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-source-role",
         "evidence_paragraph_sha256": "33c4c171395c1105c3c975983e13e40b7e849d5a9f103c0b47b5e830dc095c4e",
-        "use_summary": "SNP heritability, genetic correlation or functional partitioning.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10703681/ (section: Methods / Additional analysis of imputed phenotypes)"
+        "use_summary": "Estimated genetic correlations between selected imputed UK Biobank phenotypes and external GWAS using European 1000 Genomes LD scores.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10703681/ (section: Methods / Additional analysis of imputed phenotypes)",
+        "implementation_scope_note": "Native Java prepared unpartitioned observed-scale Hsq and two-trait RG/Gencov through ldsc-tools h2/rg, selected CBIIT 3.0.2 numerical-core behavior. Explicit intercepts, one/two-step masks, sample sizes/reference M, fixed-stage-weight and ratio jackknives, full row/block/weight diagnostics and no-result statuses are qualified. This is one scoped native family, not complete LDSC software or 42 reproduced papers. Munging, allele/reference preparation, LD-score generation, liability conversion, stratification, multivariate/wrapper-specific behavior and author historical settings remain separate. The 42 reviewed roles distinguish direct analyses, Genomic SEM/gsMap/CELLECT methods and two reused-resource roles. No original binary is inferred from a method mention. Build current source; released 0.4.0 lacks these commands. Source-specific boundary: Exact phenotype summaries, common alleles/SNP populations, references and software settings remain caller/source inputs.",
+        "source_attribution": "direct",
+        "native_unpartitioned_profiles_applicable": [
+          "rg"
+        ],
+        "whole_paper_reproduced": false,
+        "supporting_evidence": []
       },
       {
         "tool_id": "plink2",
@@ -32199,18 +32463,25 @@
       {
         "tool_id": "ldsc",
         "tool": "LDSC",
-        "analysis_role": "SNP heritability, genetic correlation or functional partitioning",
+        "analysis_role": "Reviewed LD-score method or explicitly reused resource",
         "evidence_section": "Methods / Cohorts, association testing and meta-analysis",
         "evidence_paragraph_index": 24,
         "matched_text": "LDSC",
         "extraction_score": 15,
-        "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "usage_context": "reported-direct-ldscore-analysis",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-source-role",
         "evidence_paragraph_sha256": "ca14f3d1d2c35c01392e07c6bf99d608a9cdc5a447994400246ac7557393233d",
-        "use_summary": "Used for association inflation assessment.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12695664/ (section: Methods / Cohorts, association testing and meta-analysis)"
+        "use_summary": "Used LD-score intercepts with HapMap3 CEU scores to assess meta-analysis inflation and correct reported cohort GWAS standard errors by square-root intercept factors.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12695664/ (section: Methods / Cohorts, association testing and meta-analysis)",
+        "implementation_scope_note": "Native Java prepared unpartitioned observed-scale Hsq and two-trait RG/Gencov through ldsc-tools h2/rg, selected CBIIT 3.0.2 numerical-core behavior. Explicit intercepts, one/two-step masks, sample sizes/reference M, fixed-stage-weight and ratio jackknives, full row/block/weight diagnostics and no-result statuses are qualified. This is one scoped native family, not complete LDSC software or 42 reproduced papers. Munging, allele/reference preparation, LD-score generation, liability conversion, stratification, multivariate/wrapper-specific behavior and author historical settings remain separate. The 42 reviewed roles distinguish direct analyses, Genomic SEM/gsMap/CELLECT methods and two reused-resource roles. No original binary is inferred from a method mention. Build current source; released 0.4.0 lacks these commands. Source-specific boundary: The supplied unpartitioned intercept component does not perform the author cohort QC, selective SE correction, METAL meta-analysis or genome-build conversion.",
+        "source_attribution": "direct",
+        "native_unpartitioned_profiles_applicable": [
+          "h2"
+        ],
+        "whole_paper_reproduced": false,
+        "supporting_evidence": []
       },
       {
         "tool_id": "magma",
@@ -32897,18 +33168,23 @@
       {
         "tool_id": "ldsc",
         "tool": "LDSC",
-        "analysis_role": "SNP heritability, genetic correlation or functional partitioning",
+        "analysis_role": "Reviewed LD-score method or explicitly reused resource",
         "evidence_section": "Methods / Spatially resolved mapping of regions associated with MS",
         "evidence_paragraph_index": 50,
         "matched_text": "LD score regression",
         "extraction_score": 15,
-        "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "usage_context": "reported-wrapper-specific-ldscore-method",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-source-role",
         "evidence_paragraph_sha256": "b778bd2fb4c704b1a2bbe259440de5847037cad266ddbaa4c2d44ca01461285b",
-        "use_summary": "SNP heritability, genetic correlation or functional partitioning.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13553293/ (section: Methods / Spatially resolved mapping of regions associated with MS)"
+        "use_summary": "Used the gsMap joint spatial workflow to compute stratified LD scores and spatial LD-score associations for multiple-sclerosis tissue spots, then combine spot P values across slides.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13553293/ (section: Methods / Spatially resolved mapping of regions associated with MS)",
+        "implementation_scope_note": "Native Java prepared unpartitioned observed-scale Hsq and two-trait RG/Gencov through ldsc-tools h2/rg, selected CBIIT 3.0.2 numerical-core behavior. Explicit intercepts, one/two-step masks, sample sizes/reference M, fixed-stage-weight and ratio jackknives, full row/block/weight diagnostics and no-result statuses are qualified. This is one scoped native family, not complete LDSC software or 42 reproduced papers. Munging, allele/reference preparation, LD-score generation, liability conversion, stratification, multivariate/wrapper-specific behavior and author historical settings remain separate. The 42 reviewed roles distinguish direct analyses, Genomic SEM/gsMap/CELLECT methods and two reused-resource roles. No original binary is inferred from a method mention. Build current source; released 0.4.0 lacks these commands. Source-specific boundary: This is an actual LD-score method inside gsMap, not evidence that the original standalone LDSC program ran. Spatial specificity, score construction and Cauchy aggregation remain the gsMap workflow.",
+        "source_attribution": "wrapper",
+        "native_unpartitioned_profiles_applicable": [],
+        "whole_paper_reproduced": false,
+        "supporting_evidence": []
       },
       {
         "tool_id": "magma",
@@ -33616,18 +33892,52 @@
       {
         "tool_id": "ldsc",
         "tool": "LDSC",
-        "analysis_role": "SNP heritability, genetic correlation or functional partitioning",
-        "evidence_section": "Methods / GWAS and meta-analysis",
-        "evidence_paragraph_index": 17,
+        "analysis_role": "Reviewed LD-score method or explicitly reused resource",
+        "evidence_section": "Methods / SNP-based heritability and assessing genetic overlap",
+        "evidence_paragraph_index": 20,
         "matched_text": "LDSC",
         "extraction_score": 15,
-        "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "usage_context": "reported-direct-ldscore-analysis",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
-        "evidence_paragraph_sha256": "ad64236dbf42dacca026509d51db399beedd2c798470e52003ef3553103a2a5f",
-        "use_summary": "Used for SNP heritability estimation.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12695632/ (section: Methods / GWAS and meta-analysis)"
+        "evidence_selection": "individually-reviewed-source-role",
+        "evidence_paragraph_sha256": "05316d4d0df40d3b090c4fcd7bdc6963be9ff9adc3add259e14c85a60e5e7ae9",
+        "use_summary": "Estimated MDD subtype SNP heritabilities and genetic correlations, used liability conversion and tissue/cell-type stratified enrichment, and supplied LDSC-derived relationships to Genomic SEM.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12695632/ (section: Methods / SNP-based heritability and assessing genetic overlap)",
+        "implementation_scope_note": "Native Java prepared unpartitioned observed-scale Hsq and two-trait RG/Gencov through ldsc-tools h2/rg, selected CBIIT 3.0.2 numerical-core behavior. Explicit intercepts, one/two-step masks, sample sizes/reference M, fixed-stage-weight and ratio jackknives, full row/block/weight diagnostics and no-result statuses are qualified. This is one scoped native family, not complete LDSC software or 42 reproduced papers. Munging, allele/reference preparation, LD-score generation, liability conversion, stratification, multivariate/wrapper-specific behavior and author historical settings remain separate. The 42 reviewed roles distinguish direct analyses, Genomic SEM/gsMap/CELLECT methods and two reused-resource roles. No original binary is inferred from a method mention. Build current source; released 0.4.0 lacks these commands. Source-specific boundary: Federated containers, author prevalence sensitivity analyses, annotation scores, stratified tests and multivariate Genomic SEM behavior are distinct from selected prepared observed-scale fits.",
+        "source_attribution": "direct",
+        "native_unpartitioned_profiles_applicable": [
+          "h2",
+          "rg"
+        ],
+        "whole_paper_reproduced": false,
+        "supporting_evidence": [
+          {
+            "paragraph_index": 16,
+            "paragraph_sha256": "b3c8618a11839e4fb6218f0ff038985b274044cb8c010a5ae493b1e3b93768b4",
+            "section": "Methods / Software containers for federated analyses"
+          },
+          {
+            "paragraph_index": 17,
+            "paragraph_sha256": "ad64236dbf42dacca026509d51db399beedd2c798470e52003ef3553103a2a5f",
+            "section": "Methods / GWAS and meta-analysis"
+          },
+          {
+            "paragraph_index": 19,
+            "paragraph_sha256": "dcef618a379b93547450d015663b2c75b26853245437fca3379dec1f45036b8b",
+            "section": "Methods / Tissue-type and cell-type enrichment of SNP heritability with stratified LDSC"
+          },
+          {
+            "paragraph_index": 22,
+            "paragraph_sha256": "2d53958312a4a4aa3ae675e78801f308f9d53c45865fc8cca5b2ef6314d700aa",
+            "section": "Methods / SBayesS"
+          },
+          {
+            "paragraph_index": 23,
+            "paragraph_sha256": "b16e9a58cccd0af6d69ab742b1eae2413729fe2baa28295d85343f6ad0e38155",
+            "section": "Methods / Genomic SEM"
+          }
+        ]
       },
       {
         "tool_id": "magma",
@@ -34787,18 +35097,49 @@
       {
         "tool_id": "ldsc",
         "tool": "LDSC",
-        "analysis_role": "SNP heritability, genetic correlation or functional partitioning",
+        "analysis_role": "Reviewed LD-score method or explicitly reused resource",
         "evidence_section": "Methods / LD score regression",
         "evidence_paragraph_index": 28,
         "matched_text": "LDSC",
         "extraction_score": 15,
-        "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "usage_context": "reported-wrapper-specific-ldscore-method",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-source-role",
         "evidence_paragraph_sha256": "dfe7c90bb412d6d4fb137c291ba89908be20302acc8145ee68eec35480d8e351",
-        "use_summary": "SNP heritability, genetic correlation or functional partitioning.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13553304/ (section: Methods / LD score regression)"
+        "use_summary": "Used Genomic SEM LDSC outputs for trait heritability filtering, genetic/sampling covariance matrices, latent-factor models and subtype genetic correlations; intercepts also supported LCV.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13553304/ (section: Methods / LD score regression)",
+        "implementation_scope_note": "Native Java prepared unpartitioned observed-scale Hsq and two-trait RG/Gencov through ldsc-tools h2/rg, selected CBIIT 3.0.2 numerical-core behavior. Explicit intercepts, one/two-step masks, sample sizes/reference M, fixed-stage-weight and ratio jackknives, full row/block/weight diagnostics and no-result statuses are qualified. This is one scoped native family, not complete LDSC software or 42 reproduced papers. Munging, allele/reference preparation, LD-score generation, liability conversion, stratification, multivariate/wrapper-specific behavior and author historical settings remain separate. The 42 reviewed roles distinguish direct analyses, Genomic SEM/gsMap/CELLECT methods and two reused-resource roles. No original binary is inferred from a method mention. Build current source; released 0.4.0 lacks these commands. Source-specific boundary: The R wrapper, shared multivariate sampling covariance, latent-factor/T-SEM/LCV workflows and reported wrapper versions are not substituted by pairwise native fits.",
+        "source_attribution": "wrapper",
+        "native_unpartitioned_profiles_applicable": [],
+        "whole_paper_reproduced": false,
+        "supporting_evidence": [
+          {
+            "paragraph_index": 33,
+            "paragraph_sha256": "e317ff71e63ce319be32c03f9fb5160c5fdab7153992fd4c2cc2ee593d7b8b0d",
+            "section": "Methods / Latent factor models / Exploratory factor analysis"
+          },
+          {
+            "paragraph_index": 40,
+            "paragraph_sha256": "5b2d19e08f67ed0a5151bd41822950fc327d6c95e751c3cae090ebccb971c631",
+            "section": "Methods / Characterization of physical disease–MDD associations / Social and behavioral traits"
+          },
+          {
+            "paragraph_index": 41,
+            "paragraph_sha256": "ed42a82ec7bcea17c55a8318b044f5b43a87b2f3fa5bd2108c11e00798735cae",
+            "section": "Methods / Gastrointestinal factor follow-up analysis / GORD subtypes"
+          },
+          {
+            "paragraph_index": 42,
+            "paragraph_sha256": "9c9dcdf412be16aa144c410f00b4ce88db64cd93afe09585ebc6fcef98d18689",
+            "section": "Methods / Gastrointestinal factor follow-up analysis / LCV"
+          },
+          {
+            "paragraph_index": 45,
+            "paragraph_sha256": "61cb6e7809722c4eaee20f2d04507fb088d4d320e0709875db3a6e6709946177",
+            "section": "Methods / Biological annotations / Gene expression of second-order factors"
+          }
+        ]
       },
       {
         "tool_id": "magma",
@@ -35972,18 +36313,25 @@
       {
         "tool_id": "ldsc",
         "tool": "LDSC",
-        "analysis_role": "SNP heritability, genetic correlation or functional partitioning",
+        "analysis_role": "Reviewed LD-score method or explicitly reused resource",
         "evidence_section": "Methods / Genetic correlation",
         "evidence_paragraph_index": 37,
         "matched_text": "LDSC",
         "extraction_score": 15,
-        "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "usage_context": "reported-direct-ldscore-analysis",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-source-role",
         "evidence_paragraph_sha256": "28ae803a51543bfd6466348ccaa1d4c745dfb30936c4980ca9104745d09fecdd",
-        "use_summary": "Used for cross-trait genetic correlation.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10632131/ (section: Methods / Genetic correlation)"
+        "use_summary": "Estimated forearm-fracture genetic correlations with other complex traits using cross-trait LDSC restricted to common European HapMap3 variants and precomputed LD scores.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10632131/ (section: Methods / Genetic correlation)",
+        "implementation_scope_note": "Native Java prepared unpartitioned observed-scale Hsq and two-trait RG/Gencov through ldsc-tools h2/rg, selected CBIIT 3.0.2 numerical-core behavior. Explicit intercepts, one/two-step masks, sample sizes/reference M, fixed-stage-weight and ratio jackknives, full row/block/weight diagnostics and no-result statuses are qualified. This is one scoped native family, not complete LDSC software or 42 reproduced papers. Munging, allele/reference preparation, LD-score generation, liability conversion, stratification, multivariate/wrapper-specific behavior and author historical settings remain separate. The 42 reviewed roles distinguish direct analyses, Genomic SEM/gsMap/CELLECT methods and two reused-resource roles. No original binary is inferred from a method mention. Build current source; released 0.4.0 lacks these commands. Source-specific boundary: Exact GWAS summaries, MAF/reference population, allele alignment and author options remain required.",
+        "source_attribution": "direct",
+        "native_unpartitioned_profiles_applicable": [
+          "rg"
+        ],
+        "whole_paper_reproduced": false,
+        "supporting_evidence": []
       },
       {
         "tool_id": "metal",
@@ -36148,18 +36496,26 @@
       {
         "tool_id": "ldsc",
         "tool": "LDSC",
-        "analysis_role": "SNP heritability, genetic correlation or functional partitioning",
+        "analysis_role": "Reviewed LD-score method or explicitly reused resource",
         "evidence_section": "Methods / LD Score regression",
         "evidence_paragraph_index": 35,
         "matched_text": "LD Score regression",
         "extraction_score": 15,
-        "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
-        "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "usage_context": "reported-direct-ldscore-analysis",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
+        "version_reported_near_name": "1.0.1",
+        "evidence_selection": "individually-reviewed-source-role",
         "evidence_paragraph_sha256": "a6bbdc750d964796575bef04fb374b8153a3e8ca6b6d54ae07f0a966ac025985",
-        "use_summary": "Used for association inflation assessment.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11525193/ (section: Methods / LD Score regression)"
+        "use_summary": "Calculated LD-score intercepts, attenuation ratios and genomic inflation summaries using East Asian reference LD scores computed with LDSC.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11525193/ (section: Methods / LD Score regression)",
+        "implementation_scope_note": "Native Java prepared unpartitioned observed-scale Hsq and two-trait RG/Gencov through ldsc-tools h2/rg, selected CBIIT 3.0.2 numerical-core behavior. Explicit intercepts, one/two-step masks, sample sizes/reference M, fixed-stage-weight and ratio jackknives, full row/block/weight diagnostics and no-result statuses are qualified. This is one scoped native family, not complete LDSC software or 42 reproduced papers. Munging, allele/reference preparation, LD-score generation, liability conversion, stratification, multivariate/wrapper-specific behavior and author historical settings remain separate. The 42 reviewed roles distinguish direct analyses, Genomic SEM/gsMap/CELLECT methods and two reused-resource roles. No original binary is inferred from a method mention. Build current source; released 0.4.0 lacks these commands. Source-specific boundary: The native prepared intercept/summary component does not construct the author EAS LD scores or establish historical 1.0.1 execution.",
+        "source_attribution": "direct",
+        "native_unpartitioned_profiles_applicable": [
+          "h2"
+        ],
+        "whole_paper_reproduced": false,
+        "supporting_evidence": [],
+        "version_reporting_note": "Reported LDSC edition/source provenance; annotation and wrapper versions are separate. Current selected native 3.0.2 core qualification does not establish this historical edition."
       },
       {
         "tool_id": "ldstore",
@@ -36891,18 +37247,44 @@
       {
         "tool_id": "ldsc",
         "tool": "LDSC",
-        "analysis_role": "SNP heritability, genetic correlation or functional partitioning",
+        "analysis_role": "Reviewed LD-score method or explicitly reused resource",
         "evidence_section": "Methods / Analyses / SNP-based heritability analyses",
         "evidence_paragraph_index": 62,
         "matched_text": "LD score regression",
         "extraction_score": 15,
-        "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "usage_context": "reported-wrapper-specific-ldscore-method",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-source-role",
         "evidence_paragraph_sha256": "6a0d52dd23292debd8ae47c4bc6e8c2467ad9eda35cb69f5d3a47f8fcbfb6cc6",
-        "use_summary": "SNP heritability, genetic correlation or functional partitioning.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12695639/ (section: Methods / Analyses / SNP-based heritability analyses)"
+        "use_summary": "Used LD-score methods through Genomic SEM to estimate educational-field SNP heritability and genetic correlations, compare adjusted GWAS heritabilities and support genetic PCA GWAS.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12695639/ (section: Methods / Analyses / SNP-based heritability analyses)",
+        "implementation_scope_note": "Native Java prepared unpartitioned observed-scale Hsq and two-trait RG/Gencov through ldsc-tools h2/rg, selected CBIIT 3.0.2 numerical-core behavior. Explicit intercepts, one/two-step masks, sample sizes/reference M, fixed-stage-weight and ratio jackknives, full row/block/weight diagnostics and no-result statuses are qualified. This is one scoped native family, not complete LDSC software or 42 reproduced papers. Munging, allele/reference preparation, LD-score generation, liability conversion, stratification, multivariate/wrapper-specific behavior and author historical settings remain separate. The 42 reviewed roles distinguish direct analyses, Genomic SEM/gsMap/CELLECT methods and two reused-resource roles. No original binary is inferred from a method mention. Build current source; released 0.4.0 lacks these commands. Source-specific boundary: Genomic SEM 0.0.3f and R 4.3.2 are wrapper/environment versions, not LDSC editions. Dependent-estimate comparison, multivariate structure and PCA-GWAS steps remain separate.",
+        "source_attribution": "wrapper",
+        "native_unpartitioned_profiles_applicable": [],
+        "whole_paper_reproduced": false,
+        "supporting_evidence": [
+          {
+            "paragraph_index": 64,
+            "paragraph_sha256": "15a1b1afc75420ee844961421a301a9fb041d91ffd41e23e487312669a01107a",
+            "section": "Methods / Analyses / Genetic analyses adjusting for birthplace and parents’ fields"
+          },
+          {
+            "paragraph_index": 66,
+            "paragraph_sha256": "e676342c2d79af8d7aa1dd62e667a4ca8b40b812cf382625f38d4b19d5fc835d",
+            "section": "Methods / Analyses / Genetic structure of fields: genetic correlations and PCA GWASs"
+          },
+          {
+            "paragraph_index": 67,
+            "paragraph_sha256": "b9b810c7c236bef46cc012d60917e9193c9fd06d7cf8e92cdc4b26dbc529c4c8",
+            "section": "Methods / Analyses / Genetic structure of fields: genetic correlations and PCA GWASs"
+          },
+          {
+            "paragraph_index": 69,
+            "paragraph_sha256": "5769fae990b7feced30745400cf7f3e74af6deaa6d17ca5f8464f01e6075f3fe",
+            "section": "Methods / Analyses / Genetic correlations"
+          }
+        ]
       },
       {
         "tool_id": "metal",
@@ -38056,18 +38438,46 @@
       {
         "tool_id": "ldsc",
         "tool": "LDSC",
-        "analysis_role": "SNP heritability, genetic correlation or functional partitioning",
-        "evidence_section": "Methods / Liability threshold model / Extension to multiple traits",
-        "evidence_paragraph_index": 62,
+        "analysis_role": "Reviewed LD-score method or explicitly reused resource",
+        "evidence_section": "Methods / Optimizing trait selection for covariance estimation in ATSA",
+        "evidence_paragraph_index": 87,
         "matched_text": "LDSC",
         "extraction_score": 15,
-        "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "usage_context": "reported-direct-ldscore-analysis",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
-        "evidence_paragraph_sha256": "af18d82a6e23c1055feffe4bc005c1fab1829d620812c459623e40191334af45",
-        "use_summary": "Used for SNP heritability estimation.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12597826/ (section: Methods / Liability threshold model / Extension to multiple traits)"
+        "evidence_selection": "individually-reviewed-source-role",
+        "evidence_paragraph_sha256": "fac0a9f4c8efccadd8af2a1f38dd099b52a9c2695cca7f0d1e183c48ad4c02f0",
+        "use_summary": "Derived LDSC trait covariance matrices from PheWeb summaries for LTPI trait selection and used genetic-covariance intercepts to build environmental-correlation inputs.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12597826/ (section: Methods / Optimizing trait selection for covariance estimation in ATSA)",
+        "implementation_scope_note": "Native Java prepared unpartitioned observed-scale Hsq and two-trait RG/Gencov through ldsc-tools h2/rg, selected CBIIT 3.0.2 numerical-core behavior. Explicit intercepts, one/two-step masks, sample sizes/reference M, fixed-stage-weight and ratio jackknives, full row/block/weight diagnostics and no-result statuses are qualified. This is one scoped native family, not complete LDSC software or 42 reproduced papers. Munging, allele/reference preparation, LD-score generation, liability conversion, stratification, multivariate/wrapper-specific behavior and author historical settings remain separate. The 42 reviewed roles distinguish direct analyses, Genomic SEM/gsMap/CELLECT methods and two reused-resource roles. No original binary is inferred from a method mention. Build current source; released 0.4.0 lacks these commands. Source-specific boundary: The source liability scale, large multitrait matrices, prevalence/trait filtering and LTPI/ATSA inference remain distinct; a prepared pairwise observed-scale fit is only a component.",
+        "source_attribution": "direct",
+        "native_unpartitioned_profiles_applicable": [
+          "rg"
+        ],
+        "whole_paper_reproduced": false,
+        "supporting_evidence": [
+          {
+            "paragraph_index": 78,
+            "paragraph_sha256": "86499334482334e67f2984e58788dcdead1ea15b5fd3a2e11174c007a0ea4643",
+            "section": "Methods / Estimating \\documentclass[12pt]{minimal} \\usepackage{amsmath} \\usepackage{wasysym} \\usepackage{amsfonts} \\usepackage{amssymb} \\usepackage{amsbsy} \\usepackage{mathrsfs} \\usepackage{upgreek} \\setlength{\\oddsidemargin}{-69pt} \\begin{document}$${{\\boldsymbol{C}}}_{{\\boldsymbol{e}}}$$\\end{document}Ce and \\documentclass[12pt]{minimal} \\usepackage{amsmath} \\usepackage{wasysym} \\usepackage{amsfonts} \\usepackage{amssymb} \\usepackage{amsbsy} \\usepackage{mathrsfs} \\usepackage{upgreek} \\setlength{\\oddsidemargin}{-69pt} \\begin{document}$${\\boldsymbol{\\Sigma }}$$\\end{document}Σ"
+          },
+          {
+            "paragraph_index": 88,
+            "paragraph_sha256": "4807a2903a6995642f372cb3fc9d1da1e867d873f07c75cbb94d94f54414898b",
+            "section": "Methods / Optimizing trait selection for covariance estimation in ATSA"
+          },
+          {
+            "paragraph_index": 58,
+            "paragraph_sha256": "056f7fab0418e1defb964fb283890ad19dc6848f6490bc0cab01ceb79fc32c69",
+            "section": "Methods / Overview of LTPI construction"
+          },
+          {
+            "paragraph_index": 62,
+            "paragraph_sha256": "af18d82a6e23c1055feffe4bc005c1fab1829d620812c459623e40191334af45",
+            "section": "Methods / Liability threshold model / Extension to multiple traits"
+          }
+        ]
       },
       {
         "tool_id": "ltpi",
@@ -38529,18 +38939,32 @@
       {
         "tool_id": "ldsc",
         "tool": "LDSC",
-        "analysis_role": "SNP heritability, genetic correlation or functional partitioning",
-        "evidence_section": "Methods / Association testing and meta-analysis",
-        "evidence_paragraph_index": 45,
+        "analysis_role": "Reviewed LD-score method or explicitly reused resource",
+        "evidence_section": "Methods / Genetic correlations",
+        "evidence_paragraph_index": 50,
         "matched_text": "LD score regression",
         "extraction_score": 15,
-        "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "usage_context": "reported-direct-ldscore-analysis",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
-        "evidence_paragraph_sha256": "25582c716868ef14140f2b2acbcae2be88e023fd821ddd5d594c03cdb9a57af8",
-        "use_summary": "Used for annotation-stratified genetic enrichment; association inflation assessment.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10632135/ (section: Methods / Association testing and meta-analysis)"
+        "evidence_selection": "individually-reviewed-source-role",
+        "evidence_paragraph_sha256": "6a28038d2ba42b2657d5c5ce7f47e27ca94a72ca20a4b7b7fe62f3bbfd08bdd7",
+        "use_summary": "Used LD-score intercepts to adjust GWAS chi-square inflation and cross-trait LDSC to estimate migraine-related genetic correlations, with cohort splitting and correlation meta-analysis.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10632135/ (section: Methods / Genetic correlations)",
+        "implementation_scope_note": "Native Java prepared unpartitioned observed-scale Hsq and two-trait RG/Gencov through ldsc-tools h2/rg, selected CBIIT 3.0.2 numerical-core behavior. Explicit intercepts, one/two-step masks, sample sizes/reference M, fixed-stage-weight and ratio jackknives, full row/block/weight diagnostics and no-result statuses are qualified. This is one scoped native family, not complete LDSC software or 42 reproduced papers. Munging, allele/reference preparation, LD-score generation, liability conversion, stratification, multivariate/wrapper-specific behavior and author historical settings remain separate. The 42 reviewed roles distinguish direct analyses, Genomic SEM/gsMap/CELLECT methods and two reused-resource roles. No original binary is inferred from a method mention. Build current source; released 0.4.0 lacks these commands. Source-specific boundary: Native prepared fits do not apply the author statistic correction, cohort-specific overlap design, meta-analysis or outer Bonferroni family.",
+        "source_attribution": "direct",
+        "native_unpartitioned_profiles_applicable": [
+          "h2",
+          "rg"
+        ],
+        "whole_paper_reproduced": false,
+        "supporting_evidence": [
+          {
+            "paragraph_index": 45,
+            "paragraph_sha256": "25582c716868ef14140f2b2acbcae2be88e023fd821ddd5d594c03cdb9a57af8",
+            "section": "Methods / Association testing and meta-analysis"
+          }
+        ]
       },
       {
         "tool_id": "shapeit",
@@ -38758,18 +39182,48 @@
       {
         "tool_id": "ldsc",
         "tool": "LDSC",
-        "analysis_role": "SNP heritability, genetic correlation or functional partitioning",
-        "evidence_section": "Methods / Parallel analysis",
-        "evidence_paragraph_index": 45,
-        "matched_text": "ldsc",
+        "analysis_role": "Reviewed LD-score method or explicitly reused resource",
+        "evidence_section": "Methods / SNP-based heritability and genetic correlation",
+        "evidence_paragraph_index": 52,
+        "matched_text": "LDSC",
         "extraction_score": 15,
-        "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
-        "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
-        "evidence_paragraph_sha256": "b2f8d693b2e0ecd629b7fe09be3545105cb0ecc3ab44feb83305cb9c4ce1328e",
-        "use_summary": "Used for cross-trait genetic correlation.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11549047/ (section: Methods / Parallel analysis)"
+        "usage_context": "reported-direct-ldscore-analysis",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
+        "version_reported_near_name": "1.0.1",
+        "evidence_selection": "individually-reviewed-source-role",
+        "evidence_paragraph_sha256": "f4161b859cd553319136b622c1dc857a386abbdd4041f58cb4f26686d7e28948",
+        "use_summary": "Estimated inflation/intercept diagnostics, SNP heritability and bivariate correlations; Genomic SEM used correlation/sampling covariance matrices, while S-LDSC and LDSC-SEG tested annotation/cell enrichment.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11549047/ (section: Methods / SNP-based heritability and genetic correlation)",
+        "implementation_scope_note": "Native Java prepared unpartitioned observed-scale Hsq and two-trait RG/Gencov through ldsc-tools h2/rg, selected CBIIT 3.0.2 numerical-core behavior. Explicit intercepts, one/two-step masks, sample sizes/reference M, fixed-stage-weight and ratio jackknives, full row/block/weight diagnostics and no-result statuses are qualified. This is one scoped native family, not complete LDSC software or 42 reproduced papers. Munging, allele/reference preparation, LD-score generation, liability conversion, stratification, multivariate/wrapper-specific behavior and author historical settings remain separate. The 42 reviewed roles distinguish direct analyses, Genomic SEM/gsMap/CELLECT methods and two reused-resource roles. No original binary is inferred from a method mention. Build current source; released 0.4.0 lacks these commands. Source-specific boundary: Genomic SEM 0.0.5, 53-annotation partitioning and expression-specific resources are separate contexts. Exact historical settings and multiple-testing families remain unqualified.",
+        "source_attribution": "direct",
+        "native_unpartitioned_profiles_applicable": [
+          "h2",
+          "rg"
+        ],
+        "whole_paper_reproduced": false,
+        "supporting_evidence": [
+          {
+            "paragraph_index": 42,
+            "paragraph_sha256": "d593e4887f8e99ed7a031377ffe7af3ff3f6b5a3d804d2eb9246264fe12b22bc",
+            "section": "Methods / Selection of GWAS on MetS components and meta-analysis"
+          },
+          {
+            "paragraph_index": 45,
+            "paragraph_sha256": "b2f8d693b2e0ecd629b7fe09be3545105cb0ecc3ab44feb83305cb9c4ce1328e",
+            "section": "Methods / Parallel analysis"
+          },
+          {
+            "paragraph_index": 54,
+            "paragraph_sha256": "2e72e65998b069df8bd13e399df9de63ac07c0fb35f10fee94107a6c5c7a606c",
+            "section": "Methods / Partitioned heritability"
+          },
+          {
+            "paragraph_index": 55,
+            "paragraph_sha256": "a30502fcbe2fa6ca51a798be7f8751bc32d3497a07cccba2253d70a0de62b9a3",
+            "section": "Methods / Cell- and tissue-type-specific analysis"
+          }
+        ],
+        "version_reporting_note": "Reported LDSC edition/source provenance; annotation and wrapper versions are separate. Current selected native 3.0.2 core qualification does not establish this historical edition."
       },
       {
         "tool_id": "magma",
@@ -39039,22 +39493,6 @@
         "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13447110/ (section: Methods / RNA-seq data analysis)",
         "implementation_scope_note": "The adapter does not implement tximport quantifier import or transcript-length offset construction. Prepared counts and any required normalization factors must be explicit. Do not equate a plain rounded count matrix with the complete Salmon/tximport pipeline.",
         "supporting_evidence": []
-      },
-      {
-        "tool_id": "ldsc",
-        "tool": "LDSC",
-        "analysis_role": "SNP heritability, genetic correlation or functional partitioning",
-        "evidence_section": "Methods / RELI analysis",
-        "evidence_paragraph_index": 49,
-        "matched_text": "LD score regression",
-        "extraction_score": 15,
-        "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
-        "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
-        "evidence_paragraph_sha256": "233307febe9009b2adcca24e48a572fa2a95366112aaee626cbbec0c8cdc873a",
-        "use_summary": "Used for annotation-stratified genetic enrichment.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13447110/ (section: Methods / RELI analysis)"
       },
       {
         "tool_id": "salmon",
@@ -39414,18 +39852,24 @@
       {
         "tool_id": "ldsc",
         "tool": "LDSC",
-        "analysis_role": "SNP heritability, genetic correlation or functional partitioning",
+        "analysis_role": "Reviewed LD-score method or explicitly reused resource",
         "evidence_section": "Methods / Applying scE2G to prioritize causal genes and cell types for GWAS loci",
         "evidence_paragraph_index": 66,
-        "matched_text": "LDSC",
+        "matched_text": "S-LDSC",
         "extraction_score": 15,
-        "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "usage_context": "reported-direct-ldscore-analysis",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": "1.0.1",
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-source-role",
         "evidence_paragraph_sha256": "9318784124612e35456e45a0004f034be464ff5b2484ce4f5dd3d3def5bb68af",
-        "use_summary": "Used for SNP heritability estimation; annotation-stratified genetic enrichment.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13447104/ (section: Methods / Applying scE2G to prioritize causal genes and cell types for GWAS loci)"
+        "use_summary": "Used S-LDSC to test enrichment of complex-trait heritability in predicted nonpromoter enhancers jointly with baseline annotations.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13447104/ (section: Methods / Applying scE2G to prioritize causal genes and cell types for GWAS loci)",
+        "implementation_scope_note": "Native Java prepared unpartitioned observed-scale Hsq and two-trait RG/Gencov through ldsc-tools h2/rg, selected CBIIT 3.0.2 numerical-core behavior. Explicit intercepts, one/two-step masks, sample sizes/reference M, fixed-stage-weight and ratio jackknives, full row/block/weight diagnostics and no-result statuses are qualified. This is one scoped native family, not complete LDSC software or 42 reproduced papers. Munging, allele/reference preparation, LD-score generation, liability conversion, stratification, multivariate/wrapper-specific behavior and author historical settings remain separate. The 42 reviewed roles distinguish direct analyses, Genomic SEM/gsMap/CELLECT methods and two reused-resource roles. No original binary is inferred from a method mention. Build current source; released 0.4.0 lacks these commands. Source-specific boundary: The baseline model 2.2 is a resource version. Enhancer thresholds, author GWAS inputs and stratified tests are not supplied by unpartitioned profiles.",
+        "source_attribution": "direct",
+        "native_unpartitioned_profiles_applicable": [],
+        "whole_paper_reproduced": false,
+        "supporting_evidence": [],
+        "version_reporting_note": "Reported LDSC edition/source provenance; annotation and wrapper versions are separate. Current selected native 3.0.2 core qualification does not establish this historical edition."
       },
       {
         "tool_id": "macs",
@@ -41337,18 +41781,37 @@
       {
         "tool_id": "ldsc",
         "tool": "LDSC",
-        "analysis_role": "SNP heritability, genetic correlation or functional partitioning",
-        "evidence_section": "Methods / Meta-analyses of individual cohort results",
-        "evidence_paragraph_index": 34,
+        "analysis_role": "Reviewed LD-score method or explicitly reused resource",
+        "evidence_section": "Methods / Genetic correlation with other traits",
+        "evidence_paragraph_index": 43,
         "matched_text": "LDSC",
         "extraction_score": 15,
-        "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "usage_context": "reported-direct-ldscore-analysis",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
-        "evidence_paragraph_sha256": "fe1625e5e2966dc47b3eb4184e702cdd5decca39bc733bf0bd780d52005a1206",
-        "use_summary": "Used for association inflation assessment.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13447099/ (section: Methods / Meta-analyses of individual cohort results)"
+        "evidence_selection": "individually-reviewed-source-role",
+        "evidence_paragraph_sha256": "7bb8928336bf19d684112a27ef99997fe1ee44be06d82d32b547201f3e8b391b",
+        "use_summary": "Used LD-score intercepts for inflation assessment, pairwise LDSC for thyroid/autoimmune genetic correlations and LDSC-SEG for cell-type heritability enrichment.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13447099/ (section: Methods / Genetic correlation with other traits)",
+        "implementation_scope_note": "Native Java prepared unpartitioned observed-scale Hsq and two-trait RG/Gencov through ldsc-tools h2/rg, selected CBIIT 3.0.2 numerical-core behavior. Explicit intercepts, one/two-step masks, sample sizes/reference M, fixed-stage-weight and ratio jackknives, full row/block/weight diagnostics and no-result statuses are qualified. This is one scoped native family, not complete LDSC software or 42 reproduced papers. Munging, allele/reference preparation, LD-score generation, liability conversion, stratification, multivariate/wrapper-specific behavior and author historical settings remain separate. The 42 reviewed roles distinguish direct analyses, Genomic SEM/gsMap/CELLECT methods and two reused-resource roles. No original binary is inferred from a method mention. Build current source; released 0.4.0 lacks these commands. Source-specific boundary: Expression-specific gene-set construction, one-sided coefficient testing, Bonferroni correction and author Seurat/DICE resources remain distinct from the prepared pairwise fits.",
+        "source_attribution": "direct",
+        "native_unpartitioned_profiles_applicable": [
+          "h2",
+          "rg"
+        ],
+        "whole_paper_reproduced": false,
+        "supporting_evidence": [
+          {
+            "paragraph_index": 34,
+            "paragraph_sha256": "fe1625e5e2966dc47b3eb4184e702cdd5decca39bc733bf0bd780d52005a1206",
+            "section": "Methods / Meta-analyses of individual cohort results"
+          },
+          {
+            "paragraph_index": 41,
+            "paragraph_sha256": "f48e7ab446d5374316c2ebe70fc63e52e5166cada67e6d750522921580df5bdd",
+            "section": "Methods / Functional enrichment and tissue expression analysis"
+          }
+        ]
       },
       {
         "tool_id": "magma",
@@ -45661,18 +46124,23 @@
       {
         "tool_id": "ldsc",
         "tool": "LDSC",
-        "analysis_role": "SNP heritability, genetic correlation or functional partitioning",
+        "analysis_role": "Reviewed LD-score method or explicitly reused resource",
         "evidence_section": "Methods / Functional characterization of co-expression modules",
         "evidence_paragraph_index": 29,
         "matched_text": "LD score regression",
         "extraction_score": 15,
-        "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "usage_context": "reported-direct-ldscore-analysis",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-source-role",
         "evidence_paragraph_sha256": "6fa5c53917d3712110912644736a0b7aef33314c6212c26aa2d976053a2599ef",
-        "use_summary": "Used for SNP heritability estimation; annotation-stratified genetic enrichment.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11639091/ (section: Methods / Functional characterization of co-expression modules)"
+        "use_summary": "Partitioned osteoarthritis-trait heritability among gene coexpression-module windows jointly with baseline annotations and tested module enrichment.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11639091/ (section: Methods / Functional characterization of co-expression modules)",
+        "implementation_scope_note": "Native Java prepared unpartitioned observed-scale Hsq and two-trait RG/Gencov through ldsc-tools h2/rg, selected CBIIT 3.0.2 numerical-core behavior. Explicit intercepts, one/two-step masks, sample sizes/reference M, fixed-stage-weight and ratio jackknives, full row/block/weight diagnostics and no-result statuses are qualified. This is one scoped native family, not complete LDSC software or 42 reproduced papers. Munging, allele/reference preparation, LD-score generation, liability conversion, stratification, multivariate/wrapper-specific behavior and author historical settings remain separate. The 42 reviewed roles distinguish direct analyses, Genomic SEM/gsMap/CELLECT methods and two reused-resource roles. No original binary is inferred from a method mention. Build current source; released 0.4.0 lacks these commands. Source-specific boundary: The ancestry-matched LD model, gene windows, 53 baseline plus six module annotations and outer FDR family require the separate stratified workflow.",
+        "source_attribution": "direct",
+        "native_unpartitioned_profiles_applicable": [],
+        "whole_paper_reproduced": false,
+        "supporting_evidence": []
       },
       {
         "tool_id": "limma",
@@ -46190,18 +46658,23 @@
       {
         "tool_id": "ldsc",
         "tool": "LDSC",
-        "analysis_role": "SNP heritability, genetic correlation or functional partitioning",
+        "analysis_role": "Reviewed LD-score method or explicitly reused resource",
         "evidence_section": "Material and methods / Heritability enrichment analysis and mediated heritability estimation for lncRNAs and circRNAs",
         "evidence_paragraph_index": 17,
-        "matched_text": "LDSC",
+        "matched_text": "S-LDSC",
         "extraction_score": 15,
-        "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "usage_context": "reported-direct-ldscore-analysis",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-source-role",
         "evidence_paragraph_sha256": "ebbf6d8409f6e4abb7062533712da59ec67d38785dc103530f0ce73c9357b356",
-        "use_summary": "Used for SNP heritability estimation; annotation-stratified genetic enrichment.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12824624/ (section: Material and methods / Heritability enrichment analysis and mediated heritability estimation for lncRNAs and circRNAs)"
+        "use_summary": "Used S-LDSC to estimate cis-eQTL heritability enrichment for lncRNA, circRNA and coding-gene annotations, with matched random-SNP resampling and a Delta-method fold-enrichment SE.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12824624/ (section: Material and methods / Heritability enrichment analysis and mediated heritability estimation for lncRNAs and circRNAs)",
+        "implementation_scope_note": "Native Java prepared unpartitioned observed-scale Hsq and two-trait RG/Gencov through ldsc-tools h2/rg, selected CBIIT 3.0.2 numerical-core behavior. Explicit intercepts, one/two-step masks, sample sizes/reference M, fixed-stage-weight and ratio jackknives, full row/block/weight diagnostics and no-result statuses are qualified. This is one scoped native family, not complete LDSC software or 42 reproduced papers. Munging, allele/reference preparation, LD-score generation, liability conversion, stratification, multivariate/wrapper-specific behavior and author historical settings remain separate. The 42 reviewed roles distinguish direct analyses, Genomic SEM/gsMap/CELLECT methods and two reused-resource roles. No original binary is inferred from a method mention. Build current source; released 0.4.0 lacks these commands. Source-specific boundary: Baseline-LDv1.2 is a model-resource label, not the software edition. Matching, 100 resampling runs, partitioned fits and Delta-method inference remain separate.",
+        "source_attribution": "direct",
+        "native_unpartitioned_profiles_applicable": [],
+        "whole_paper_reproduced": false,
+        "supporting_evidence": []
       },
       {
         "tool_id": "peer",
@@ -46639,18 +47112,27 @@
       {
         "tool_id": "ldsc",
         "tool": "LDSC",
-        "analysis_role": "SNP heritability, genetic correlation or functional partitioning",
+        "analysis_role": "Reviewed LD-score method or explicitly reused resource",
         "evidence_section": "Subjects and methods / Genetic correlations and disease enrichment",
         "evidence_paragraph_index": 12,
         "matched_text": "LDSC",
         "extraction_score": 15,
-        "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
-        "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "usage_context": "reported-direct-ldscore-analysis",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
+        "version_reported_near_name": "1.0.1",
+        "evidence_selection": "individually-reviewed-source-role",
         "evidence_paragraph_sha256": "b0f650aeddf72e3bffbbd909e5583ba9388f20a3acdfa4f2102a108905b8e4a4",
-        "use_summary": "Used for SNP heritability estimation; cross-trait genetic correlation.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11639076/ (section: Subjects and methods / Genetic correlations and disease enrichment)"
+        "use_summary": "Estimated SNP heritability and genetic correlations for female-infertility endpoints and reproductive disorders using additive-GWAS summaries.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11639076/ (section: Subjects and methods / Genetic correlations and disease enrichment)",
+        "implementation_scope_note": "Native Java prepared unpartitioned observed-scale Hsq and two-trait RG/Gencov through ldsc-tools h2/rg, selected CBIIT 3.0.2 numerical-core behavior. Explicit intercepts, one/two-step masks, sample sizes/reference M, fixed-stage-weight and ratio jackknives, full row/block/weight diagnostics and no-result statuses are qualified. This is one scoped native family, not complete LDSC software or 42 reproduced papers. Munging, allele/reference preparation, LD-score generation, liability conversion, stratification, multivariate/wrapper-specific behavior and author historical settings remain separate. The 42 reviewed roles distinguish direct analyses, Genomic SEM/gsMap/CELLECT methods and two reused-resource roles. No original binary is inferred from a method mention. Build current source; released 0.4.0 lacks these commands. Source-specific boundary: Disease-enrichment tests in the same paragraph are not automatically LDSC operations. Author summaries, references and historical 1.0.1 settings remain required.",
+        "source_attribution": "direct",
+        "native_unpartitioned_profiles_applicable": [
+          "h2",
+          "rg"
+        ],
+        "whole_paper_reproduced": false,
+        "supporting_evidence": [],
+        "version_reporting_note": "Reported LDSC edition/source provenance; annotation and wrapper versions are separate. Current selected native 3.0.2 core qualification does not establish this historical edition."
       },
       {
         "tool_id": "regenie",
@@ -46964,18 +47446,23 @@
       {
         "tool_id": "ldsc",
         "tool": "LDSC",
-        "analysis_role": "SNP heritability, genetic correlation or functional partitioning",
+        "analysis_role": "Reviewed LD-score method or explicitly reused resource",
         "evidence_section": "Material and methods / Heritability enrichment in cell-type peaks",
         "evidence_paragraph_index": 17,
         "matched_text": "LDSC",
         "extraction_score": 15,
-        "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "usage_context": "reported-direct-ldscore-analysis",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-source-role",
         "evidence_paragraph_sha256": "de81fb59b884760f997b12e79ed5b2d0b8f16f9602bd78b04bb4b87eb43dcc4a",
-        "use_summary": "Used for SNP heritability estimation; annotation-stratified genetic enrichment.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12805840/ (section: Material and methods / Heritability enrichment in cell-type peaks)"
+        "use_summary": "Fit a joint stratified model for cell-type ATAC-peak annotations and baseline annotations to test trait-heritability enrichment using one-sided coefficient tests and BH correction.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12805840/ (section: Material and methods / Heritability enrichment in cell-type peaks)",
+        "implementation_scope_note": "Native Java prepared unpartitioned observed-scale Hsq and two-trait RG/Gencov through ldsc-tools h2/rg, selected CBIIT 3.0.2 numerical-core behavior. Explicit intercepts, one/two-step masks, sample sizes/reference M, fixed-stage-weight and ratio jackknives, full row/block/weight diagnostics and no-result statuses are qualified. This is one scoped native family, not complete LDSC software or 42 reproduced papers. Munging, allele/reference preparation, LD-score generation, liability conversion, stratification, multivariate/wrapper-specific behavior and author historical settings remain separate. The 42 reviewed roles distinguish direct analyses, Genomic SEM/gsMap/CELLECT methods and two reused-resource roles. No original binary is inferred from a method mention. Build current source; released 0.4.0 lacks these commands. Source-specific boundary: Coordinate conversion, reference/annotation selection, baseline 1.2 resources and the correction family are separate source-specific steps.",
+        "source_attribution": "direct",
+        "native_unpartitioned_profiles_applicable": [],
+        "whole_paper_reproduced": false,
+        "supporting_evidence": []
       },
       {
         "tool_id": "louvain",
@@ -48087,18 +48574,23 @@
       {
         "tool_id": "ldsc",
         "tool": "LDSC",
-        "analysis_role": "SNP heritability, genetic correlation or functional partitioning",
+        "analysis_role": "Reviewed LD-score method or explicitly reused resource",
         "evidence_section": "Methods / Prioritizing adipose cell types based on enriched heritability of abdominal obesity",
         "evidence_paragraph_index": 22,
-        "matched_text": "LDSC",
+        "matched_text": "linkage disequilibrium score regression",
         "extraction_score": 15,
-        "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "usage_context": "reported-wrapper-specific-ldscore-method",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-source-role",
         "evidence_paragraph_sha256": "26ca585f2df38c3b1a44850bc99969be9ae6ac5d275af9582e4a5081fd5dc2bc",
-        "use_summary": "Used for SNP heritability estimation; annotation-stratified genetic enrichment.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11568758/ (section: Methods / Prioritizing adipose cell types based on enriched heritability of abdominal obesity)"
+        "use_summary": "Used CELLECT with CELLEX-derived adipose cell-expression specificity and GWAS summaries to perform stratified LD-score cell-type heritability enrichment.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11568758/ (section: Methods / Prioritizing adipose cell types based on enriched heritability of abdominal obesity)",
+        "implementation_scope_note": "Native Java prepared unpartitioned observed-scale Hsq and two-trait RG/Gencov through ldsc-tools h2/rg, selected CBIIT 3.0.2 numerical-core behavior. Explicit intercepts, one/two-step masks, sample sizes/reference M, fixed-stage-weight and ratio jackknives, full row/block/weight diagnostics and no-result statuses are qualified. This is one scoped native family, not complete LDSC software or 42 reproduced papers. Munging, allele/reference preparation, LD-score generation, liability conversion, stratification, multivariate/wrapper-specific behavior and author historical settings remain separate. The 42 reviewed roles distinguish direct analyses, Genomic SEM/gsMap/CELLECT methods and two reused-resource roles. No original binary is inferred from a method mention. Build current source; released 0.4.0 lacks these commands. Source-specific boundary: CELLECT 1.3.0 is a wrapper version, not an LDSC edition. Expression-specificity construction, GWAS resources and stratified pipeline behavior are distinct.",
+        "source_attribution": "wrapper",
+        "native_unpartitioned_profiles_applicable": [],
+        "whole_paper_reproduced": false,
+        "supporting_evidence": []
       },
       {
         "tool_id": "louvain",
@@ -49427,18 +49919,32 @@
       {
         "tool_id": "ldsc",
         "tool": "LDSC",
-        "analysis_role": "SNP heritability, genetic correlation or functional partitioning",
-        "evidence_section": "Subjects and methods / Heritability estimate",
-        "evidence_paragraph_index": 12,
-        "matched_text": "LD Score Regression",
+        "analysis_role": "Reviewed LD-score method or explicitly reused resource",
+        "evidence_section": "Subjects and methods / Genetic correlation",
+        "evidence_paragraph_index": 21,
+        "matched_text": "LDSC",
         "extraction_score": 15,
-        "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "usage_context": "reported-direct-ldscore-analysis",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
-        "evidence_paragraph_sha256": "bdadb4b0cae8ec5f33b48006ab5763d67de5bece5dd822664f8316b183fd8dc2",
-        "use_summary": "Used for SNP heritability estimation.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13393102/ (section: Subjects and methods / Heritability estimate)"
+        "evidence_selection": "individually-reviewed-source-role",
+        "evidence_paragraph_sha256": "5fa7647cdcd4450815955a7928c112817577431805b19339b73176d1023a2d47",
+        "use_summary": "Used LDSC for SNP heritability and pairwise genetic correlations, with munge_sumstats preprocessing and study-computed European high-coverage reference LD scores.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13393102/ (section: Subjects and methods / Genetic correlation)",
+        "implementation_scope_note": "Native Java prepared unpartitioned observed-scale Hsq and two-trait RG/Gencov through ldsc-tools h2/rg, selected CBIIT 3.0.2 numerical-core behavior. Explicit intercepts, one/two-step masks, sample sizes/reference M, fixed-stage-weight and ratio jackknives, full row/block/weight diagnostics and no-result statuses are qualified. This is one scoped native family, not complete LDSC software or 42 reproduced papers. Munging, allele/reference preparation, LD-score generation, liability conversion, stratification, multivariate/wrapper-specific behavior and author historical settings remain separate. The 42 reviewed roles distinguish direct analyses, Genomic SEM/gsMap/CELLECT methods and two reused-resource roles. No original binary is inferred from a method mention. Build current source; released 0.4.0 lacks these commands. Source-specific boundary: The source explicitly uses ldsc.py --rg; raw munging, strand-ambiguous SNP exclusion, author summaries and LD-score generation remain separate prerequisites.",
+        "source_attribution": "direct",
+        "native_unpartitioned_profiles_applicable": [
+          "h2",
+          "rg"
+        ],
+        "whole_paper_reproduced": false,
+        "supporting_evidence": [
+          {
+            "paragraph_index": 12,
+            "paragraph_sha256": "bdadb4b0cae8ec5f33b48006ab5763d67de5bece5dd822664f8316b183fd8dc2",
+            "section": "Subjects and methods / Heritability estimate"
+          }
+        ]
       },
       {
         "tool_id": "magma",
@@ -50053,18 +50559,24 @@
       {
         "tool_id": "ldsc",
         "tool": "LDSC",
-        "analysis_role": "SNP heritability, genetic correlation or functional partitioning",
+        "analysis_role": "Reviewed LD-score method or explicitly reused resource",
         "evidence_section": "Subjects and methods / Partitioned LDSR",
         "evidence_paragraph_index": 24,
         "matched_text": "LD score regression",
         "extraction_score": 15,
-        "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "usage_context": "reported-direct-ldscore-analysis",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": "1.0.1",
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-source-role",
         "evidence_paragraph_sha256": "0150d5a271daf70f1ffb9e2fa51d7645fc4e0f351e4671f68bb39ac51d139a3d",
-        "use_summary": "Used for annotation-stratified genetic enrichment.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11568756/ (section: Subjects and methods / Partitioned LDSR)"
+        "use_summary": "Used partitioned LD-score regression with population-specific eQTL annotations and separately computed European/East Asian reference LD scores, then compared enrichments across populations.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11568756/ (section: Subjects and methods / Partitioned LDSR)",
+        "implementation_scope_note": "Native Java prepared unpartitioned observed-scale Hsq and two-trait RG/Gencov through ldsc-tools h2/rg, selected CBIIT 3.0.2 numerical-core behavior. Explicit intercepts, one/two-step masks, sample sizes/reference M, fixed-stage-weight and ratio jackknives, full row/block/weight diagnostics and no-result statuses are qualified. This is one scoped native family, not complete LDSC software or 42 reproduced papers. Munging, allele/reference preparation, LD-score generation, liability conversion, stratification, multivariate/wrapper-specific behavior and author historical settings remain separate. The 42 reviewed roles distinguish direct analyses, Genomic SEM/gsMap/CELLECT methods and two reused-resource roles. No original binary is inferred from a method mention. Build current source; released 0.4.0 lacks these commands. Source-specific boundary: The attached citation 30 is not part of the 1.0.1 edition. LD construction, annotation enrichment and subsequent Welch comparison remain separate from unpartitioned fits.",
+        "source_attribution": "direct",
+        "native_unpartitioned_profiles_applicable": [],
+        "whole_paper_reproduced": false,
+        "supporting_evidence": [],
+        "version_reporting_note": "Reported LDSC edition/source provenance; annotation and wrapper versions are separate. Current selected native 3.0.2 core qualification does not establish this historical edition."
       },
       {
         "tool_id": "metal",
@@ -53198,18 +53710,24 @@
       {
         "tool_id": "ldsc",
         "tool": "LDSC",
-        "analysis_role": "SNP heritability, genetic correlation or functional partitioning",
+        "analysis_role": "Reviewed LD-score method or explicitly reused resource",
         "evidence_section": "Material and methods / Genetic correlation estimates",
         "evidence_paragraph_index": 38,
         "matched_text": "LD score regression",
         "extraction_score": 15,
-        "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
-        "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "usage_context": "reused-LDSC-derived-estimates-not-study-execution",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
+        "version_reported_near_name": "1.0.1",
+        "evidence_selection": "individually-reviewed-source-role",
         "evidence_paragraph_sha256": "f47ec2f6f41445db8e9860f5416787198b51d25fa91a398ed7505e9d100b9336",
-        "use_summary": "Used for cross-trait genetic correlation.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12696503/ (section: Material and methods / Genetic correlation estimates)"
+        "use_summary": "Reused genetic-correlation estimates from the Neale-lab UK Biobank correlation browser, whose upstream analysis used LDSC 1.0.1.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12696503/ (section: Material and methods / Genetic correlation estimates)",
+        "implementation_scope_note": "Native Java prepared unpartitioned observed-scale Hsq and two-trait RG/Gencov through ldsc-tools h2/rg, selected CBIIT 3.0.2 numerical-core behavior. Explicit intercepts, one/two-step masks, sample sizes/reference M, fixed-stage-weight and ratio jackknives, full row/block/weight diagnostics and no-result statuses are qualified. This is one scoped native family, not complete LDSC software or 42 reproduced papers. Munging, allele/reference preparation, LD-score generation, liability conversion, stratification, multivariate/wrapper-specific behavior and author historical settings remain separate. The 42 reviewed roles distinguish direct analyses, Genomic SEM/gsMap/CELLECT methods and two reused-resource roles. No original binary is inferred from a method mention. Build current source; released 0.4.0 lacks these commands. Source-specific boundary: This is result reuse, not study execution of LDSC. The source reports Excel display zeros for P values at most 1e-308; these are numerical representation limits, not exact-zero probabilities.",
+        "source_attribution": "reused-estimates",
+        "native_unpartitioned_profiles_applicable": [],
+        "whole_paper_reproduced": false,
+        "supporting_evidence": [],
+        "version_reporting_note": "Reported LDSC edition/source provenance; annotation and wrapper versions are separate. Current selected native 3.0.2 core qualification does not establish this historical edition."
       },
       {
         "tool_id": "ldstore",
@@ -57859,18 +58377,38 @@
       {
         "tool_id": "ldsc",
         "tool": "LDSC",
-        "analysis_role": "SNP heritability, genetic correlation or functional partitioning",
+        "analysis_role": "Reviewed LD-score method or explicitly reused resource",
         "evidence_section": "Subjects and methods / Heritability and genetic correlation analyses",
         "evidence_paragraph_index": 17,
         "matched_text": "LD score regression",
         "extraction_score": 15,
-        "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
-        "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "usage_context": "reported-direct-ldscore-analysis",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
+        "version_reported_near_name": "1.0.1",
+        "evidence_selection": "individually-reviewed-source-role",
         "evidence_paragraph_sha256": "22d7f81f31527deff49b44e57ebfb38f6e4c52eb00c24c03d398e10d2df5b946",
-        "use_summary": "Used for SNP heritability estimation.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11267522/ (section: Subjects and methods / Heritability and genetic correlation analyses)"
+        "use_summary": "Estimated discovery-GWAS SNP heritability and genetic correlations with external neurodegenerative GWAS using precomputed European LD scores.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11267522/ (section: Subjects and methods / Heritability and genetic correlation analyses)",
+        "implementation_scope_note": "Native Java prepared unpartitioned observed-scale Hsq and two-trait RG/Gencov through ldsc-tools h2/rg, selected CBIIT 3.0.2 numerical-core behavior. Explicit intercepts, one/two-step masks, sample sizes/reference M, fixed-stage-weight and ratio jackknives, full row/block/weight diagnostics and no-result statuses are qualified. This is one scoped native family, not complete LDSC software or 42 reproduced papers. Munging, allele/reference preparation, LD-score generation, liability conversion, stratification, multivariate/wrapper-specific behavior and author historical settings remain separate. The 42 reviewed roles distinguish direct analyses, Genomic SEM/gsMap/CELLECT methods and two reused-resource roles. No original binary is inferred from a method mention. Build current source; released 0.4.0 lacks these commands. Source-specific boundary: The source software section establishes 1.0.1. Exact summary/reference/overlap choices and historical edition behavior are not recovered by current prepared fits.",
+        "source_attribution": "direct",
+        "native_unpartitioned_profiles_applicable": [
+          "h2",
+          "rg"
+        ],
+        "whole_paper_reproduced": false,
+        "supporting_evidence": [
+          {
+            "paragraph_index": 18,
+            "paragraph_sha256": "4fd4a361a4cb1984c13e9bf37ac03f3351fb316c6576e1dc049bd97ac122ca8a",
+            "section": "Subjects and methods / Heritability and genetic correlation analyses"
+          },
+          {
+            "paragraph_index": 22,
+            "paragraph_sha256": "08f87a7b23755974a0b193a7c6f04ab6a6693d0489c0ccd3225e57482a4c3c47",
+            "section": "Subjects and methods / Software"
+          }
+        ],
+        "version_reporting_note": "Reported LDSC edition/source provenance; annotation and wrapper versions are separate. Current selected native 3.0.2 core qualification does not establish this historical edition."
       },
       {
         "tool_id": "metal",
@@ -58023,18 +58561,36 @@
       {
         "tool_id": "ldsc",
         "tool": "LDSC",
-        "analysis_role": "SNP heritability, genetic correlation or functional partitioning",
-        "evidence_section": "Methods / GLEANR model",
-        "evidence_paragraph_index": 6,
-        "matched_text": "LD-score regression",
+        "analysis_role": "Reviewed LD-score method or explicitly reused resource",
+        "evidence_section": "Methods / UKBB analysis across 137 diverse GWASs / UKBB GLEANR analysis",
+        "evidence_paragraph_index": 36,
+        "matched_text": "LDSC",
         "extraction_score": 15,
-        "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "usage_context": "reported-direct-ldscore-analysis",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
-        "evidence_paragraph_sha256": "3dab04e6bae3d4086dd525259ccade0867813e0ae78a5f81fb27882b166913b6",
-        "use_summary": "SNP heritability, genetic correlation or functional partitioning.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12461026/ (section: Methods / GLEANR model)"
+        "evidence_selection": "individually-reviewed-source-role",
+        "evidence_paragraph_sha256": "902803389b8b1c67be2f41b824db286cb01844f9a2753b0c367b2ce57f4ff02c",
+        "use_summary": "Estimated cross-trait LD-score intercepts to construct the sample-sharing residual-correlation matrix used by GLEANR across GWAS, including an additional trait-selection scaling step.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12461026/ (section: Methods / UKBB analysis across 137 diverse GWASs / UKBB GLEANR analysis)",
+        "implementation_scope_note": "Native Java prepared unpartitioned observed-scale Hsq and two-trait RG/Gencov through ldsc-tools h2/rg, selected CBIIT 3.0.2 numerical-core behavior. Explicit intercepts, one/two-step masks, sample sizes/reference M, fixed-stage-weight and ratio jackknives, full row/block/weight diagnostics and no-result statuses are qualified. This is one scoped native family, not complete LDSC software or 42 reproduced papers. Munging, allele/reference preparation, LD-score generation, liability conversion, stratification, multivariate/wrapper-specific behavior and author historical settings remain separate. The 42 reviewed roles distinguish direct analyses, Genomic SEM/gsMap/CELLECT methods and two reused-resource roles. No original binary is inferred from a method mention. Build current source; released 0.4.0 lacks these commands. Source-specific boundary: The prepared covariance-intercept component does not construct the complete 137-study matrix, perform the source scaling or fit GLEANR.",
+        "source_attribution": "direct",
+        "native_unpartitioned_profiles_applicable": [
+          "rg"
+        ],
+        "whole_paper_reproduced": false,
+        "supporting_evidence": [
+          {
+            "paragraph_index": 13,
+            "paragraph_sha256": "b2ff27ef4ee9b81f66b42957a1c02c5d0baf462b93947e6661000afc6d9e038c",
+            "section": "Methods / GLEANR model / Model-fitting procedure / Estimation of C and decorrelating transformation Wc."
+          },
+          {
+            "paragraph_index": 6,
+            "paragraph_sha256": "3dab04e6bae3d4086dd525259ccade0867813e0ae78a5f81fb27882b166913b6",
+            "section": "Methods / GLEANR model"
+          }
+        ]
       },
       {
         "tool_id": "plink",
@@ -58161,18 +58717,23 @@
       {
         "tool_id": "ldsc",
         "tool": "LDSC",
-        "analysis_role": "SNP heritability, genetic correlation or functional partitioning",
+        "analysis_role": "Reviewed LD-score method or explicitly reused resource",
         "evidence_section": "Results / Partitioning GxE heritability across tissue-specific genes",
         "evidence_paragraph_index": 53,
         "matched_text": "LDSC",
         "extraction_score": 0,
-        "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "usage_context": "reused-LDSC-annotations-not-study-execution",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-source-role",
         "evidence_paragraph_sha256": "fae05c21bbb98a4ed9f78a83db45224b56ea6db7be70eb0582baeca0ab18ca05",
-        "use_summary": "Used for annotation-stratified genetic enrichment.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11267529/ (section: Results / Partitioning GxE heritability across tissue-specific genes)"
+        "use_summary": "Reused baseline LDSC genomic annotations as background covariates in GENIE tissue-specific additive and gene-environment heritability models.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11267529/ (section: Results / Partitioning GxE heritability across tissue-specific genes)",
+        "implementation_scope_note": "Native Java prepared unpartitioned observed-scale Hsq and two-trait RG/Gencov through ldsc-tools h2/rg, selected CBIIT 3.0.2 numerical-core behavior. Explicit intercepts, one/two-step masks, sample sizes/reference M, fixed-stage-weight and ratio jackknives, full row/block/weight diagnostics and no-result statuses are qualified. This is one scoped native family, not complete LDSC software or 42 reproduced papers. Munging, allele/reference preparation, LD-score generation, liability conversion, stratification, multivariate/wrapper-specific behavior and author historical settings remain separate. The 42 reviewed roles distinguish direct analyses, Genomic SEM/gsMap/CELLECT methods and two reused-resource roles. No original binary is inferred from a method mention. Build current source; released 0.4.0 lacks these commands. Source-specific boundary: The cited paragraph describes GENIE fitting and reuse of LDSC annotations, not execution of an LDSC regression program. GENIE/GxE estimation and its resource population remain separate.",
+        "source_attribution": "annotation-resource",
+        "native_unpartitioned_profiles_applicable": [],
+        "whole_paper_reproduced": false,
+        "supporting_evidence": []
       }
     ],
     "status": "extracted",
