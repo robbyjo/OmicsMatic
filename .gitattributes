@@ -1,5 +1,12 @@
 * text=auto
 
+# Preserve checksummed cytometry evidence and original schema/notice bytes.
+docs/literature/cytometry-methods-development/** -text whitespace=cr-at-eol
+src/main/resources/org/jlinalg/cytometry/** -text whitespace=-blank-at-eol,-blank-at-eof,cr-at-eol
+LICENSES/stanford-cytometry-transforms.txt -text
+# Relocated BSD reference bodies retain upstream formatting, including spaces.
+src/main/java/org/jlinalg/cytometry/internal/stanford/*.java whitespace=-blank-at-eol,-blank-at-eof,cr-at-eol
+
 # Release receipts and frozen catalog identities retain their captured bytes.
 docs/releases/0.4.0/** -text whitespace=cr-at-eol
 

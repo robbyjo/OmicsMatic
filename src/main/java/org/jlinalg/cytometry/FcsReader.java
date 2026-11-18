@@ -33,6 +33,8 @@ import java.util.Objects;
 public final class FcsReader implements AutoCloseable {
     /** Explicit vendor TEXT-space-padding support; the original file/segment offsets remain unchanged. */
     public enum TextPolicy { EXACT, ALLOW_TRAILING_SPACE_PADDING }
+    /** Explicit numeric-token formatting interpretation; names and original metadata remain unchanged. */
+    public enum NumericPolicy { EXACT, ALLOW_ASCII_SPACE_PADDING }
     /** A capability outside this reader profile; callers should skip the dependent analysis. */
     public static final class UnsupportedFormatException extends IOException {
         private static final long serialVersionUID = 1L;
@@ -64,6 +66,7 @@ public final class FcsReader implements AutoCloseable {
     private final ByteBuffer row;
     private final long[] masks;
     private final Map<String, String> values;
+    private final NumericPolicy numericPolicy;
     private long eventsRead, maskedValues, nonfiniteValues;
     private boolean closed;
 
@@ -77,16 +80,20 @@ public final class FcsReader implements AutoCloseable {
         return open(path, limits, legacyCharset, TextPolicy.EXACT);
     }
     public static FcsReader open(Path path, Limits limits, Charset legacyCharset, TextPolicy textPolicy) throws IOException {
+        return open(path, limits, legacyCharset, textPolicy, NumericPolicy.EXACT);
+    }
+    public static FcsReader open(Path path, Limits limits, Charset legacyCharset, TextPolicy textPolicy, NumericPolicy numericPolicy) throws IOException {
         Objects.requireNonNull(path); Objects.requireNonNull(limits); Objects.requireNonNull(legacyCharset);
-        Objects.requireNonNull(textPolicy);
+        Objects.requireNonNull(textPolicy); Objects.requireNonNull(numericPolicy);
         FileChannel channel = FileChannel.open(path, StandardOpenOption.READ);
-        try { return new FcsReader(channel, limits, legacyCharset, textPolicy); }
+        try { return new FcsReader(channel, limits, legacyCharset, textPolicy, numericPolicy); }
         catch (IOException | RuntimeException | Error failure) {
             try { channel.close(); } catch (IOException cleanup) { failure.addSuppressed(cleanup); }
             throw failure;
         }
     }
-    private FcsReader(FileChannel channel, Limits limits, Charset legacyCharset, TextPolicy textPolicy) throws IOException {
+    private FcsReader(FileChannel channel, Limits limits, Charset legacyCharset, TextPolicy textPolicy, NumericPolicy numericPolicy) throws IOException {
+        this.numericPolicy = numericPolicy;
         file = channel; originalSize = file.size();
         if (originalSize > limits.fileBytes()) throw new IOException("Complete FCS file exceeds declared capacity");
         byte[] header = read(0, 57, 58);
@@ -100,6 +107,7 @@ public final class FcsReader implements AutoCloseable {
         Charset charset = signature.equals("FCS3.1") ? StandardCharsets.UTF_8 : legacyCharset;
         var keywords = new ArrayList<Keyword>(); var lookup = new LinkedHashMap<String, String>();
         var warnings = new ArrayList<String>();
+        if (numericPolicy == NumericPolicy.ALLOW_ASCII_SPACE_PADDING) warnings.add("Explicit numeric policy permits outer ASCII spaces in recognized numeric metadata tokens. Original keyword values and parameter names remain unchanged; tabs, other whitespace and malformed values are not repaired.");
         parseText(text, charset, keywords, lookup, textPolicy, warnings, signature);
         if (lookup.containsKey("$UNICODE")) throw new UnsupportedFormatException("Legacy $UNICODE requires its declared encoding semantics; this reader does not guess; dependent analysis skipped");
         long ss = optionalNumber(lookup, "$BEGINSTEXT", 0), se = optionalNumber(lookup, "$ENDSTEXT", 0);
@@ -132,14 +140,15 @@ public final class FcsReader implements AutoCloseable {
             if (type.equals("F") && bits != 32 || type.equals("D") && bits != 64) throw new IOException("FCS floating DATA type/parameter width disagree");
             String range = required(lookup, prefix+"R");
             if (type.equals("I")) {
-                long r = unsigned(range, prefix+"R");
+                long r = unsigned(numericMetadataText(range), prefix+"R");
                 if (r < 1 || r > (1L << (int)bits)) throw new IOException("FCS integer range does not fit its declared storage");
                 masks[i-1] = r == 1 ? 0 : (1L << (64-Long.numberOfLeadingZeros(r-1)))-1;
             } else {
                 double r;
-                if (!range.matches("(?:[0-9]+(?:\\.[0-9]*)?|\\.[0-9]+)(?:[eE][+-]?[0-9]+)?")) throw new IOException("FCS floating parameter range must use decimal syntax");
-                try { r = Double.parseDouble(range); } catch (NumberFormatException error) { throw new IOException("Invalid FCS floating parameter range", error); }
-                if (!Double.isFinite(r) || r <= 0 || !range.equals(range.strip())) throw new IOException("Invalid FCS floating parameter range");
+                String parsedRange = numericMetadataText(range);
+                if (!parsedRange.matches("(?:[0-9]+(?:\\.[0-9]*)?|\\.[0-9]+)(?:[eE][+-]?[0-9]+)?")) throw new IOException("FCS floating parameter range must use decimal syntax");
+                try { r = Double.parseDouble(parsedRange); } catch (NumberFormatException error) { throw new IOException("Invalid FCS floating parameter range", error); }
+                if (!Double.isFinite(r) || r <= 0) throw new IOException("Invalid FCS floating parameter range");
             }
             String name = required(lookup, prefix+"N"), amplification = required(lookup, prefix+"E");
             parameters.add(new Parameter(i, name, lookup.get(prefix+"S"), (int)bits, range, amplification, lookup.get(prefix+"G")));
@@ -174,6 +183,16 @@ public final class FcsReader implements AutoCloseable {
     public Info info() { return info; }
     /** Case-insensitive keyword lookup; returns null for absent values. Values are not normalized. */
     public String keyword(String name) { return values.get(Objects.requireNonNull(name).toUpperCase(Locale.ROOT)); }
+    public NumericPolicy numericPolicy() { return numericPolicy; }
+    /** Interpret a numeric token under the explicitly selected policy; never use this on names or identifiers. */
+    public String numericMetadataText(String value) {
+        Objects.requireNonNull(value);
+        if (numericPolicy == NumericPolicy.EXACT) return value;
+        int start = 0, end = value.length();
+        while (start < end && value.charAt(start) == ' ') start++;
+        while (end > start && value.charAt(end-1) == ' ') end--;
+        return value.substring(start,end);
+    }
     /**
      * Reads one complete event into an exactly-sized caller array. Unsigned integers
      * up to 32 bits are exactly representable in double. Returns false only after
@@ -248,8 +267,8 @@ public final class FcsReader implements AutoCloseable {
     private static String required(Map<String, String> values, String key) throws IOException {
         String value = values.get(key); if (value == null) throw new IOException("Required FCS keyword is absent: " + key); return value;
     }
-    private static long number(Map<String, String> values, String key) throws IOException { return unsigned(required(values, key), key); }
-    private static long optionalNumber(Map<String, String> values, String key, long absent) throws IOException { return values.containsKey(key) ? number(values, key) : absent; }
+    private long number(Map<String, String> values, String key) throws IOException { return unsigned(numericMetadataText(required(values, key)), key); }
+    private long optionalNumber(Map<String, String> values, String key, long absent) throws IOException { return values.containsKey(key) ? number(values, key) : absent; }
     private void range(long start, long end) throws IOException {
         if (start < 0 || end < start || end >= originalSize) throw new IOException("FCS declared segment lies outside complete file");
     }

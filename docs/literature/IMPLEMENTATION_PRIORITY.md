@@ -51,8 +51,15 @@ The cytometry census verifies 48 matching paragraphs in 33 distinct papers;
 the FlowJo27 and FACSDiva17 paper sets overlap. The new
 [native stored-channel FCS API](../vignettes/fcs-stored-channels.md) supplies the
 shared event-input component. It preserves explicit encoding/storage choices
-and reports unsupported input forms. This does not implement instrument
-acquisition, a vendor workspace, compensation/gates, the FlowAI/UMAP/FlowSOM
+and reports unsupported input forms. The next
+[native cytometry command](../vignettes/cytometry-gating.md) adds explicit
+compensation/unmixing, transforms and Gating-ML population gates. It runs the
+complete original 10,000-event/30-gate reference file on Windows and Linux,
+with every membership/count table byte-identical between platforms. Its
+[bounded qualification and prominent warnings](cytometry-methods-development/README.md)
+retain contradictory historical controls; no whole-suite or vendor badge is
+claimed. This does not implement instrument acquisition, a vendor workspace,
+descriptive intensity statistics, the FlowAI/UMAP/FlowSOM
 plugin workflow in P051, or the distinct cell-cycle models in P122/P228.
 
 The validated LDAK development checkpoint is preserved at local commit

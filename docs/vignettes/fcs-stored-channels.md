@@ -10,9 +10,10 @@ a current source build; the released 0.4.0 JAR is unchanged.
 The [development evidence](../literature/fcs-reader-development/README.md)
 records independent storage controls and complete upstream-file comparisons.
 The frozen paper census found FlowJo in 27 papers and FACSDiva in 17, across
-33 distinct papers. This API is the shared event-input component. Gating,
-compensation, cell-cycle models, plugins, acquisition and instrument control
-remain separate work; no vendor-family implementation credit is awarded here.
+33 distinct papers. This API is the shared event-input component. A separate
+[native command now adds explicit compensation and Gating-ML gates](cytometry-gating.md).
+Cell-cycle models, plugins, acquisition and instrument control remain separate
+work; no vendor-family implementation credit is awarded here.
 
 Build using the project's normal Gradle/JDK instructions. This API has no
 external scientific runtime, Python, R or installation requirement. For an
@@ -74,6 +75,15 @@ and segment offsets remain unchanged; values ending in spaces before their
 closing delimiter are preserved. No delimiter or empty-value rule is guessed.
 An original fixture whose supplemental TEXT points to its own primary TEXT is
 decoded once with that alias and its warning retained.
+
+Numeric metadata padding is a separate explicit policy. Existing overloads
+continue to use `NumericPolicy.EXACT`. A fifth argument
+`FcsReader.NumericPolicy.ALLOW_ASCII_SPACE_PADDING` permits outer ASCII spaces
+in recognized numeric tokens and records a warning. Original keyword/parameter
+values and all names remain unchanged. Tabs/other malformed tokens still fail.
+The original FACSDiva Gating-ML reference file requires this choice for its
+padded event count/data offset. The [new gating guide](cytometry-gating.md)
+records its complete raw-file execution and the retained strict refusal.
 
 **Required action on refusal:** preserve the complete original file and error.
 `UnsupportedFormatException` means skip the dependent analysis for a capability
