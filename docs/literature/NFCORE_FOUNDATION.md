@@ -1,5 +1,11 @@
 # nf-core development foundation
 
+This page preserves the earlier foundation checkpoint and its historical
+counts. The current source-build interface is `nfcore-tools`; the
+[ATAC-seq 1.2.1 guide](NFCORE_ATACSEQ121.md) records the subsequently qualified
+typed ATAC profile and current warnings. The historical standalone artifact
+below remains unchanged.
+
 **Status: development foundation. The catalog still records nf-core as missing.**
 The validated catalog contains 99 new scoped integrations, including 19 native
 Java implementations and 80 upstream adapters; 102 integrations include the three

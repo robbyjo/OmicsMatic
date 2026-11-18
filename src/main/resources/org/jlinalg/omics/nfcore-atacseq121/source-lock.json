@@ -1,0 +1,443 @@
+{
+  "pipeline": "nf-core/atacseq",
+  "version": "1.2.1",
+  "commit": "1b3a832db5a53c92c2c89a4d6d79455e860461ad",
+  "archive": {
+    "url": "https://codeload.github.com/nf-core/atacseq/tar.gz/1b3a832db5a53c92c2c89a4d6d79455e860461ad",
+    "final_url": "https://codeload.github.com/nf-core/atacseq/tar.gz/1b3a832db5a53c92c2c89a4d6d79455e860461ad",
+    "bytes": 1026072,
+    "sha256": "682b01c651f6e611c61878613b15027f61cc0599940ce8f573c01a9c00ea5375"
+  },
+  "files": {
+    ".gitattributes": {
+      "bytes": 36,
+      "sha256": "e338759ab75cb11f1deede242b9c910fda5f0b1ca05f389700b81a02ca0ac560",
+      "mode": 509
+    },
+    ".github/CONTRIBUTING.md": {
+      "bytes": 3462,
+      "sha256": "c5ed20f64b45a933dde72c8c60606117bcd2d5e17d41bf2619a516c1f2011fe4",
+      "mode": 436
+    },
+    ".github/ISSUE_TEMPLATE/bug_report.md": {
+      "bytes": 999,
+      "sha256": "aef3073da32b38df154392b85d64108d919d17fba41b062420b4b8deb8bf5904",
+      "mode": 436
+    },
+    ".github/ISSUE_TEMPLATE/feature_request.md": {
+      "bytes": 656,
+      "sha256": "4558fd2f990329c7b46a7e4e8166b436a4784222d627a104374a8df6bc368c9b",
+      "mode": 436
+    },
+    ".github/PULL_REQUEST_TEMPLATE.md": {
+      "bytes": 915,
+      "sha256": "cdca4af322de3d97d1677c976bbe99e2adb93af969bbfe2d0a0c64f94a0f0569",
+      "mode": 436
+    },
+    ".github/markdownlint.yml": {
+      "bytes": 199,
+      "sha256": "6462f2af3de8fb200439cce0ec4878dbd8b72213aa7953b842604a98953e4445",
+      "mode": 436
+    },
+    ".github/workflows/awsfulltest.yml": {
+      "bytes": 1715,
+      "sha256": "ec260bd7e33089af00dbaba6cf046c40ccd5c7b77ded874ca1b3585030316eb9",
+      "mode": 436
+    },
+    ".github/workflows/awstest.yml": {
+      "bytes": 1737,
+      "sha256": "d532332353aac1008bf24fbb2759b95af4121c079974ecda64474d0e4dc0e7d0",
+      "mode": 436
+    },
+    ".github/workflows/branch.yml": {
+      "bytes": 570,
+      "sha256": "c1cfc4336d33e39a2b5115519a2a5995bdfd8a37538feedb8bff0a045f7371e6",
+      "mode": 436
+    },
+    ".github/workflows/ci.yml": {
+      "bytes": 4220,
+      "sha256": "69ddc899e06a84a3c4e2778f097039103c5888787e4f7f4c4c97e7e964b6bfb8",
+      "mode": 509
+    },
+    ".github/workflows/linting.yml": {
+      "bytes": 1748,
+      "sha256": "dade28fcbfaef72497a9ef7183b3ace17fa4eceea26ada2fdfc4473c76a241e8",
+      "mode": 509
+    },
+    ".gitignore": {
+      "bytes": 64,
+      "sha256": "75af884231a19c9582fe0b9ba782f00846f90e42e4b3a908a95458e888d8df96",
+      "mode": 509
+    },
+    "CHANGELOG.md": {
+      "bytes": 6997,
+      "sha256": "9c90d01e3174b31c3787778ed3eadac1d0563349fffb5a9b082f9a33ed1632ca",
+      "mode": 436
+    },
+    "CITATIONS.md": {
+      "bytes": 7908,
+      "sha256": "40ffe76ceb0422b37186458861e854c0b606906b62e7c1d8cb0a7ab7bd5a9367",
+      "mode": 436
+    },
+    "CODE_OF_CONDUCT.md": {
+      "bytes": 3233,
+      "sha256": "3d1d37e0e60b7ba5bb43e8fd115de333031aa01af70626a18ae6400598668f36",
+      "mode": 509
+    },
+    "Dockerfile": {
+      "bytes": 680,
+      "sha256": "1902f5387bd53ed6c426ee034bfddf8611d8e94b765a326cc584447e2e24f5ab",
+      "mode": 436
+    },
+    "LICENSE": {
+      "bytes": 1065,
+      "sha256": "504bd9f2ad5b4f65244899e4068bc069ef505d45430e9dd724c51e26ae47d50c",
+      "mode": 509
+    },
+    "README.md": {
+      "bytes": 10173,
+      "sha256": "6e52165c6d34b03bd3d5eacd3cad1b1ae7be3362bcee829dc54077e4b8e22470",
+      "mode": 436
+    },
+    "assets/bamtools_filter_pe.json": {
+      "bytes": 377,
+      "sha256": "5bad015b07c6d6c2090f2ec961d913b54006542e1c2c3f7430ebd3d3501b6fd1",
+      "mode": 509
+    },
+    "assets/bamtools_filter_se.json": {
+      "bytes": 196,
+      "sha256": "0c34a5bc1450ab9c456e0473248eeb79452d57f5283cc6c3a5b699db88eed9c2",
+      "mode": 509
+    },
+    "assets/blacklists/GRCh37-blacklist.bed": {
+      "bytes": 19609,
+      "sha256": "d7b4b7ce4236557d3095aa8a19ba96880e018079ef43d7671ce004e9d0f36b86",
+      "mode": 509
+    },
+    "assets/blacklists/GRCm38-blacklist.bed": {
+      "bytes": 3275,
+      "sha256": "4988e0b8debb816b7537d03e96f882b70d5a7dbe79c9396c2021a7ae067d7f51",
+      "mode": 509
+    },
+    "assets/blacklists/hg19-blacklist.bed": {
+      "bytes": 18786,
+      "sha256": "7894cae8b0b64d3599d3dcec199b9019e2bb8b35a9686fe44d6ac4348977bcde",
+      "mode": 509
+    },
+    "assets/blacklists/hg38-blacklist.bed": {
+      "bytes": 901,
+      "sha256": "76224e254ef700fadb4e9b1f7808041967e58f79a8bac77f9a1a7497392d334e",
+      "mode": 436
+    },
+    "assets/blacklists/mm10-blacklist.bed": {
+      "bytes": 3767,
+      "sha256": "f2e41dac2d7974cebea795ae5bed6f1fbc2289a293c8c38e73e77e8fc7b4d814",
+      "mode": 509
+    },
+    "assets/design_pe.csv": {
+      "bytes": 866,
+      "sha256": "aba55448c836b7629f525e2994d3c5c0cbc6e6d78a1e3356f36760eec5769667",
+      "mode": 436
+    },
+    "assets/design_se.csv": {
+      "bytes": 495,
+      "sha256": "9134c608a1fb47ed45dafb53182db12b3e8ee808be0397c019da50a4ea009452",
+      "mode": 436
+    },
+    "assets/email_template.html": {
+      "bytes": 2506,
+      "sha256": "e869944f2dd03d8dc8e51f521d01d8fd6e90c7cc1ec50023370c9bf89e353cb0",
+      "mode": 509
+    },
+    "assets/email_template.txt": {
+      "bytes": 1132,
+      "sha256": "e8df21199bf950750cefd2bd741fe774c21af3600707483d48ac5556b90d435c",
+      "mode": 509
+    },
+    "assets/multiqc/mlib_deseq2_clustering_header.txt": {
+      "bytes": 638,
+      "sha256": "c77aa76c9ee1d333159a881a9e39f6080a44daf3a5313b794b5a00170b0553e3",
+      "mode": 436
+    },
+    "assets/multiqc/mlib_deseq2_pca_header.txt": {
+      "bytes": 552,
+      "sha256": "d9262611e49f73e00a1d5671150d1adcefeb93505fc5773d6e0031a0f343221a",
+      "mode": 436
+    },
+    "assets/multiqc/mlib_frip_score_header.txt": {
+      "bytes": 538,
+      "sha256": "76ab3ab7b37f4566122f2ebe84d3d1165bdbca27f311a5c7e2ebc8fb8f3ebc2b",
+      "mode": 436
+    },
+    "assets/multiqc/mlib_peak_annotation_header.txt": {
+      "bytes": 426,
+      "sha256": "25023312ebb4fd200a731eb382b52177add069ede69e6a0514358cf628c6a239",
+      "mode": 436
+    },
+    "assets/multiqc/mlib_peak_count_header.txt": {
+      "bytes": 327,
+      "sha256": "006172f9d917caba5b5df380207d0ca44b96e971a5e06b452b68a00b1275f79b",
+      "mode": 436
+    },
+    "assets/multiqc/mrep_deseq2_clustering_header.txt": {
+      "bytes": 638,
+      "sha256": "c77838d0f3444714f3381805f8afccd4d49549271320de3da46a9e41d0cdab70",
+      "mode": 436
+    },
+    "assets/multiqc/mrep_deseq2_pca_header.txt": {
+      "bytes": 552,
+      "sha256": "840a4419c6bbeb94ef3b53cfa36c70594550a5471f55a54745ceb11a775be8ab",
+      "mode": 436
+    },
+    "assets/multiqc/mrep_frip_score_header.txt": {
+      "bytes": 538,
+      "sha256": "0372d7b9cdfa24eac150f3b579f555ae10587972a2a2c3709615e8263a2d4142",
+      "mode": 436
+    },
+    "assets/multiqc/mrep_peak_annotation_header.txt": {
+      "bytes": 426,
+      "sha256": "1b64c1d5f3ad67423c77bc75e673552484f456281d39ef0d994eddeddacc2ab6",
+      "mode": 436
+    },
+    "assets/multiqc/mrep_peak_count_header.txt": {
+      "bytes": 327,
+      "sha256": "df3d931793fe1c2ba28c019effc5115bd2eb3c36db151ff7c3bc656c5ebc88cb",
+      "mode": 436
+    },
+    "assets/multiqc_config.yaml": {
+      "bytes": 5335,
+      "sha256": "1c2bf7741c678c53c474d12200114827b6a9ae2514beeb905a19288a04e00f51",
+      "mode": 509
+    },
+    "assets/nf-core-atacseq_logo.png": {
+      "bytes": 10910,
+      "sha256": "a16331c98b903560fc2f33365b27e0ac3ec3b9f81958561a12dfc9ce41d1470f",
+      "mode": 436
+    },
+    "assets/nf-core-atacseq_social_preview.png": {
+      "bytes": 51685,
+      "sha256": "d0b4f9359881bf58c04c4622ff2413b52628385c234bf548e1076aabec6abe9b",
+      "mode": 436
+    },
+    "assets/nf-core-atacseq_social_preview.svg": {
+      "bytes": 25996,
+      "sha256": "9b36aa76460ea3ba9a7d2ab245237663d6cbcce3687e4884f0ac1330cc35e446",
+      "mode": 436
+    },
+    "assets/sendmail_template.txt": {
+      "bytes": 1107,
+      "sha256": "9f3b61aa078acca48bf61524961017292b6b1d16dde9074f243648775378d6dd",
+      "mode": 509
+    },
+    "bin/bampe_rm_orphan.py": {
+      "bytes": 5820,
+      "sha256": "26a0a049d624d7f8e5953132089e131d644fc5306f63cecc1bc8973ba84869d9",
+      "mode": 509
+    },
+    "bin/check_design.py": {
+      "bytes": 5591,
+      "sha256": "dbb372eb6a878a83f63eaa92821e5ecb9a9277721e2c9aa7e050331efc48090f",
+      "mode": 509
+    },
+    "bin/featurecounts_deseq2.r": {
+      "bytes": 14358,
+      "sha256": "2cc0b8a836db7897fec8237785cb11f045a1044a6eeddce228f750c0f5a38b16",
+      "mode": 509
+    },
+    "bin/get_autosomes.py": {
+      "bytes": 3732,
+      "sha256": "c6b460e95f67cb0269d1397245d14b65fe61a9ba9af3e7c9ca0eaab48a0dcdbc",
+      "mode": 509
+    },
+    "bin/gtf2bed": {
+      "bytes": 3764,
+      "sha256": "5492aaeb8ca17028e4f67d8a9e754b80f344033dafc4782794c5f9041053ecaa",
+      "mode": 509
+    },
+    "bin/igv_files_to_session.py": {
+      "bytes": 5910,
+      "sha256": "6ea7a822abe921e543ae179247d8093f38ff0471ed7111a15372652fa63e5f69",
+      "mode": 509
+    },
+    "bin/macs2_merged_expand.py": {
+      "bytes": 8337,
+      "sha256": "5a5f07555cfe61d3ce22762bd46d625526ddf533a113c1d9718aceaabee2c594",
+      "mode": 509
+    },
+    "bin/markdown_to_html.py": {
+      "bytes": 2944,
+      "sha256": "34a7af36dca5663e67410d4e271bd63b65ad3849207d698617d25e991c9859b4",
+      "mode": 509
+    },
+    "bin/plot_homer_annotatepeaks.r": {
+      "bytes": 8165,
+      "sha256": "9c470854a392edccf5490bbf2713a489f8d2e63f48e6034c7312b8e69fd8d0f2",
+      "mode": 509
+    },
+    "bin/plot_macs_qc.r": {
+      "bytes": 7026,
+      "sha256": "6fdc05901fe1aab744c86ab5afaa041c953dcb7fe38afcd34e7894e2616c1ce8",
+      "mode": 509
+    },
+    "bin/plot_peak_intersect.r": {
+      "bytes": 2669,
+      "sha256": "f223efbbfe9ece3891528633a260199ffb9903a6475825bd158950f6647480ba",
+      "mode": 509
+    },
+    "bin/scrape_software_versions.py": {
+      "bytes": 3158,
+      "sha256": "5c4c2a54b849a0f344112100ced54a0589b0b3f39f6a80702ba2aac126532012",
+      "mode": 509
+    },
+    "conf/base.config": {
+      "bytes": 1567,
+      "sha256": "7380564f24a7cfd5e836e77eb64d09b3f87f7012b296bae916aac847aa7b7307",
+      "mode": 509
+    },
+    "conf/igenomes.config": {
+      "bytes": 31506,
+      "sha256": "221b868ffd1c3e17a29ec5873f14110325ff0671693f2676adf6e29ffc11d0c0",
+      "mode": 509
+    },
+    "conf/test.config": {
+      "bytes": 1075,
+      "sha256": "1a9d0406083681f7daabdd1eca18bfa4714423df8944a813630856d0fdb75901",
+      "mode": 509
+    },
+    "conf/test_full.config": {
+      "bytes": 618,
+      "sha256": "e82a9fef1feb741504c082206ceca03b24bb433d04758ee067d84212a14f85ad",
+      "mode": 509
+    },
+    "docs/README.md": {
+      "bytes": 556,
+      "sha256": "c094294b209da64d5a5231bd464f3e1671531bef553f31ad236ad3e10ad82d97",
+      "mode": 509
+    },
+    "docs/images/igv_screenshot.png": {
+      "bytes": 42674,
+      "sha256": "6ee3453705a236cf6bcd9d42a10d1ba3d2f6ac1061f5d56489dd6549a6aa4dfb",
+      "mode": 509
+    },
+    "docs/images/mqc_annotatePeaks_feature_percentage_plot.png": {
+      "bytes": 24552,
+      "sha256": "3696eb8cede861bbab257add950600e955f5bc15c5f35c86ec3ab646e7c81d29",
+      "mode": 509
+    },
+    "docs/images/mqc_cutadapt_plot.png": {
+      "bytes": 63551,
+      "sha256": "9c95d7f28bb794e3a794aa0605be9b57ba50fc0b9e480ec917eb510032795407",
+      "mode": 509
+    },
+    "docs/images/mqc_deeptools_plotFingerprint_plot.png": {
+      "bytes": 78044,
+      "sha256": "5e80fbb3d10dfebfdef33a69f317f20bce2d162213e0e3b47d53380f50125cf6",
+      "mode": 509
+    },
+    "docs/images/mqc_deeptools_plotProfile_plot.png": {
+      "bytes": 74083,
+      "sha256": "6ba9de1c5f4cb9dec7edc19101d3744b72bf210514b03dac474f238fca7d622b",
+      "mode": 509
+    },
+    "docs/images/mqc_deseq2_pca_plot.png": {
+      "bytes": 21263,
+      "sha256": "633a74f30238335762149ca7a91815e2a454d692e3989d7565702a3a74d07ec4",
+      "mode": 509
+    },
+    "docs/images/mqc_deseq2_sample_similarity_plot.png": {
+      "bytes": 25642,
+      "sha256": "1cd2ad7f1de5b4c49e7992fe234de69aa7e4051b624bfbb86a623884bc25860f",
+      "mode": 509
+    },
+    "docs/images/mqc_featureCounts_assignment_plot.png": {
+      "bytes": 26436,
+      "sha256": "3cdec16a58fb404227dbb8e7cf2210e571ec86762c3d620f3a49afa574b6afb8",
+      "mode": 509
+    },
+    "docs/images/mqc_frip_score_plot.png": {
+      "bytes": 26374,
+      "sha256": "de7260c91877c06c4bc95a1882df262b028deef5f69b68f6dcd2f63ff06e6fae",
+      "mode": 509
+    },
+    "docs/images/mqc_macs2_peak_count_plot.png": {
+      "bytes": 26994,
+      "sha256": "817ac0f3c3465c57dec4347020d18f2ca410c180f4fd9721f366bb96d7ff3af0",
+      "mode": 509
+    },
+    "docs/images/mqc_picard_deduplication_plot.png": {
+      "bytes": 27788,
+      "sha256": "c78280f4d25bc47194e6e7cadc1a0384d232867d6c0b725fab86eb7cc231165a",
+      "mode": 509
+    },
+    "docs/images/mqc_picard_insert_size_plot.png": {
+      "bytes": 59566,
+      "sha256": "de6e1865ab8da323427dd8326c6b94ea526e24d86f40030a6e2fe3647cf1daa4",
+      "mode": 509
+    },
+    "docs/images/mqc_preseq_plot.png": {
+      "bytes": 53270,
+      "sha256": "8c8e6ae174fcf0923d1c359ffda0c68c8110ccf0be0f94144e3bee1f0e58fabc",
+      "mode": 509
+    },
+    "docs/images/mqc_samtools_idxstats_plot.png": {
+      "bytes": 73244,
+      "sha256": "2f94fc0189b336f22789fd4baf79557442cd8d4934e1df25dc89adb203e1fd2e",
+      "mode": 509
+    },
+    "docs/images/mqc_samtools_stats_plot.png": {
+      "bytes": 25307,
+      "sha256": "823f68064578322a9efbb510e16f7286133a84c6c88a05255cafb70f7ea3f771",
+      "mode": 509
+    },
+    "docs/images/nf-core-atacseq_logo.png": {
+      "bytes": 14846,
+      "sha256": "282e02620a6ff679d5163040b22de55ac717599a9e180c54fe94a06ee0dd9340",
+      "mode": 436
+    },
+    "docs/images/r_deseq2_ma_plot.png": {
+      "bytes": 160987,
+      "sha256": "ee6abc5d94be7e75d156c23957442dd20ad1f145ab7b7bef076f772c45e5eb8e",
+      "mode": 509
+    },
+    "docs/images/r_deseq2_volcano_plot.png": {
+      "bytes": 40521,
+      "sha256": "21f16143f04b82dc0bf361f031aa45701a28fc46ac7ace9316f340977fea3d4e",
+      "mode": 509
+    },
+    "docs/images/r_upsetr_intersect_plot.png": {
+      "bytes": 93845,
+      "sha256": "de36c190726eecb64c5d76129fe7c47743ee3beaa24e0ede360b92a6eba08850",
+      "mode": 509
+    },
+    "docs/output.md": {
+      "bytes": 27287,
+      "sha256": "bb55f4a4a3d73cea14f4a9f5af7ad9e999f8b1a1e3f13ca02bd23cebd925d8cf",
+      "mode": 509
+    },
+    "docs/usage.md": {
+      "bytes": 27474,
+      "sha256": "fb709f337855fc5fa99a83b016e35e9e6a32a24c72054a06ce8dd9e24dde22fc",
+      "mode": 509
+    },
+    "environment.yml": {
+      "bytes": 1450,
+      "sha256": "320d074978248c0c7c8b82b97e57aa3340c546914c1bd57f2db0eb628cc51898",
+      "mode": 509
+    },
+    "main.nf": {
+      "bytes": 95528,
+      "sha256": "f6df786fe6964740f4709e0866d9320d26ef558e8894474776943dd0bae7edcf",
+      "mode": 436
+    },
+    "nextflow.config": {
+      "bytes": 5755,
+      "sha256": "9e4b10d16c20e3dbd20937052590a22e580a3be34cfac78b4edc4b1bad8e1ff1",
+      "mode": 436
+    },
+    "nextflow_schema.json": {
+      "bytes": 31528,
+      "sha256": "bf57e20fcaf6cece3a6edf2f8aff40316a0826efbc74ba9f8fb0f9a04dd7bff8",
+      "mode": 436
+    }
+  }
+}

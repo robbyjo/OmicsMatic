@@ -39,6 +39,14 @@ adds fitted-design correction on explicit prepared weights/responses, with
 108 original-spdep test references. It does not infer the paper's Monocle1.0.0
 weight construction, historical inputs or remaining lineage/embedding choices.
 
+The current nf-core tranche addresses two additional ATAC-seq roles in P050 and
+P169. P169 reports atacseq 1.2.1; P050 leaves the edition unreported. The
+[new ATAC guide](NFCORE_ATACSEQ121.md) records the original-source adapter,
+native mapping checks and the completed 88-task reference execution, including
+356 published files and portable verification on Windows and Linux. Remaining
+nf-core pipeline roles still prevent family-level admission.
+The original five-pipeline source lock and its historical checkpoints are retained.
+
 The validated LDAK development checkpoint is preserved at local commit
 `e2bf00a9ccf03911ec27f818ef5c6a617e5602f1`, with its matching reader, closed
 evidence and failed attempts. Its six-role catalog preview remains pending

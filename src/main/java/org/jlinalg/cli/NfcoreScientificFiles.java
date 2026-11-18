@@ -23,7 +23,9 @@ final class NfcoreScientificFiles {
         inputPrefix = producer + "/workspace/resources/";
     }
     Path output(String name) throws IOException {
-        member(name); Map<?, ?> row = object(outputs.get(name));
+        member(name);
+        if (!(outputs.get(name) instanceof Map<?, ?>)) throw new IOException("Required original pipeline output is missing from the complete publication: " + name);
+        Map<?, ?> row = object(outputs.get(name));
         if (!"file".equals(row.get("kind"))) throw new IOException("Required original pipeline output is not a file: " + name);
         return objectFile(fingerprint(row.get("pin"), 1000000000000L));
     }

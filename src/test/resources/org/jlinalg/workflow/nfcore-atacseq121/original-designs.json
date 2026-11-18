@@ -1,0 +1,306 @@
+{
+  "source_commit": "1b3a832db5a53c92c2c89a4d6d79455e860461ad",
+  "original_checker": {
+    "bytes": 5591,
+    "sha256": "dbb372eb6a878a83f63eaa92821e5ecb9a9277721e2c9aa7e050331efc48090f"
+  },
+  "cases": [
+    {
+      "id": "g1-r1-p0",
+      "design": "group,replicate,fastq_1,fastq_2\nG_0,1,/G_0-1-1.fq.gz,\nG_0,1,/G_0-1-2.fq.gz,\n",
+      "valid": true,
+      "original_exit": 0,
+      "checked": "sample_id,fastq_1,fastq_2\nG_0_R1_T1,/G_0-1-1.fq.gz,\nG_0_R1_T2,/G_0-1-2.fq.gz,\n",
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "id": "g1-r1-p1",
+      "design": "group,replicate,fastq_1,fastq_2\nG_0,1,/G_0-1-1.fq.gz,/G_0-1-1-R2.fastq.gz\nG_0,1,/G_0-1-2.fq.gz,/G_0-1-2-R2.fastq.gz\n",
+      "valid": true,
+      "original_exit": 0,
+      "checked": "sample_id,fastq_1,fastq_2\nG_0_R1_T1,/G_0-1-1.fq.gz,/G_0-1-1-R2.fastq.gz\nG_0_R1_T2,/G_0-1-2.fq.gz,/G_0-1-2-R2.fastq.gz\n",
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "id": "g1-r2-p0",
+      "design": "group,replicate,fastq_1,fastq_2\nG_0,2,/G_0-2-1.fq.gz,\nG_0,2,/G_0-2-2.fq.gz,\nG_0,1,/G_0-1-1.fq.gz,\nG_0,1,/G_0-1-2.fq.gz,\n",
+      "valid": true,
+      "original_exit": 0,
+      "checked": "sample_id,fastq_1,fastq_2\nG_0_R1_T1,/G_0-1-1.fq.gz,\nG_0_R1_T2,/G_0-1-2.fq.gz,\nG_0_R2_T1,/G_0-2-1.fq.gz,\nG_0_R2_T2,/G_0-2-2.fq.gz,\n",
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "id": "g1-r2-p1",
+      "design": "group,replicate,fastq_1,fastq_2\nG_0,2,/G_0-2-1.fq.gz,/G_0-2-1-R2.fastq.gz\nG_0,2,/G_0-2-2.fq.gz,/G_0-2-2-R2.fastq.gz\nG_0,1,/G_0-1-1.fq.gz,/G_0-1-1-R2.fastq.gz\nG_0,1,/G_0-1-2.fq.gz,/G_0-1-2-R2.fastq.gz\n",
+      "valid": true,
+      "original_exit": 0,
+      "checked": "sample_id,fastq_1,fastq_2\nG_0_R1_T1,/G_0-1-1.fq.gz,/G_0-1-1-R2.fastq.gz\nG_0_R1_T2,/G_0-1-2.fq.gz,/G_0-1-2-R2.fastq.gz\nG_0_R2_T1,/G_0-2-1.fq.gz,/G_0-2-1-R2.fastq.gz\nG_0_R2_T2,/G_0-2-2.fq.gz,/G_0-2-2-R2.fastq.gz\n",
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "id": "g1-r3-p0",
+      "design": "group,replicate,fastq_1,fastq_2\nG_0,3,/G_0-3-1.fq.gz,\nG_0,3,/G_0-3-2.fq.gz,\nG_0,2,/G_0-2-1.fq.gz,\nG_0,2,/G_0-2-2.fq.gz,\nG_0,1,/G_0-1-1.fq.gz,\nG_0,1,/G_0-1-2.fq.gz,\n",
+      "valid": true,
+      "original_exit": 0,
+      "checked": "sample_id,fastq_1,fastq_2\nG_0_R1_T1,/G_0-1-1.fq.gz,\nG_0_R1_T2,/G_0-1-2.fq.gz,\nG_0_R2_T1,/G_0-2-1.fq.gz,\nG_0_R2_T2,/G_0-2-2.fq.gz,\nG_0_R3_T1,/G_0-3-1.fq.gz,\nG_0_R3_T2,/G_0-3-2.fq.gz,\n",
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "id": "g1-r3-p1",
+      "design": "group,replicate,fastq_1,fastq_2\nG_0,3,/G_0-3-1.fq.gz,/G_0-3-1-R2.fastq.gz\nG_0,3,/G_0-3-2.fq.gz,/G_0-3-2-R2.fastq.gz\nG_0,2,/G_0-2-1.fq.gz,/G_0-2-1-R2.fastq.gz\nG_0,2,/G_0-2-2.fq.gz,/G_0-2-2-R2.fastq.gz\nG_0,1,/G_0-1-1.fq.gz,/G_0-1-1-R2.fastq.gz\nG_0,1,/G_0-1-2.fq.gz,/G_0-1-2-R2.fastq.gz\n",
+      "valid": true,
+      "original_exit": 0,
+      "checked": "sample_id,fastq_1,fastq_2\nG_0_R1_T1,/G_0-1-1.fq.gz,/G_0-1-1-R2.fastq.gz\nG_0_R1_T2,/G_0-1-2.fq.gz,/G_0-1-2-R2.fastq.gz\nG_0_R2_T1,/G_0-2-1.fq.gz,/G_0-2-1-R2.fastq.gz\nG_0_R2_T2,/G_0-2-2.fq.gz,/G_0-2-2-R2.fastq.gz\nG_0_R3_T1,/G_0-3-1.fq.gz,/G_0-3-1-R2.fastq.gz\nG_0_R3_T2,/G_0-3-2.fq.gz,/G_0-3-2-R2.fastq.gz\n",
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "id": "g2-r1-p0",
+      "design": "group,replicate,fastq_1,fastq_2\nG_1,1,/G_1-1-1.fq.gz,\nG_1,1,/G_1-1-2.fq.gz,\nG_0,1,/G_0-1-1.fq.gz,\nG_0,1,/G_0-1-2.fq.gz,\n",
+      "valid": true,
+      "original_exit": 0,
+      "checked": "sample_id,fastq_1,fastq_2\nG_0_R1_T1,/G_0-1-1.fq.gz,\nG_0_R1_T2,/G_0-1-2.fq.gz,\nG_1_R1_T1,/G_1-1-1.fq.gz,\nG_1_R1_T2,/G_1-1-2.fq.gz,\n",
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "id": "g2-r1-p1",
+      "design": "group,replicate,fastq_1,fastq_2\nG_1,1,/G_1-1-1.fq.gz,/G_1-1-1-R2.fastq.gz\nG_1,1,/G_1-1-2.fq.gz,/G_1-1-2-R2.fastq.gz\nG_0,1,/G_0-1-1.fq.gz,/G_0-1-1-R2.fastq.gz\nG_0,1,/G_0-1-2.fq.gz,/G_0-1-2-R2.fastq.gz\n",
+      "valid": true,
+      "original_exit": 0,
+      "checked": "sample_id,fastq_1,fastq_2\nG_0_R1_T1,/G_0-1-1.fq.gz,/G_0-1-1-R2.fastq.gz\nG_0_R1_T2,/G_0-1-2.fq.gz,/G_0-1-2-R2.fastq.gz\nG_1_R1_T1,/G_1-1-1.fq.gz,/G_1-1-1-R2.fastq.gz\nG_1_R1_T2,/G_1-1-2.fq.gz,/G_1-1-2-R2.fastq.gz\n",
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "id": "g2-r2-p0",
+      "design": "group,replicate,fastq_1,fastq_2\nG_1,2,/G_1-2-1.fq.gz,\nG_1,2,/G_1-2-2.fq.gz,\nG_1,1,/G_1-1-1.fq.gz,\nG_1,1,/G_1-1-2.fq.gz,\nG_0,2,/G_0-2-1.fq.gz,\nG_0,2,/G_0-2-2.fq.gz,\nG_0,1,/G_0-1-1.fq.gz,\nG_0,1,/G_0-1-2.fq.gz,\n",
+      "valid": true,
+      "original_exit": 0,
+      "checked": "sample_id,fastq_1,fastq_2\nG_0_R1_T1,/G_0-1-1.fq.gz,\nG_0_R1_T2,/G_0-1-2.fq.gz,\nG_0_R2_T1,/G_0-2-1.fq.gz,\nG_0_R2_T2,/G_0-2-2.fq.gz,\nG_1_R1_T1,/G_1-1-1.fq.gz,\nG_1_R1_T2,/G_1-1-2.fq.gz,\nG_1_R2_T1,/G_1-2-1.fq.gz,\nG_1_R2_T2,/G_1-2-2.fq.gz,\n",
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "id": "g2-r2-p1",
+      "design": "group,replicate,fastq_1,fastq_2\nG_1,2,/G_1-2-1.fq.gz,/G_1-2-1-R2.fastq.gz\nG_1,2,/G_1-2-2.fq.gz,/G_1-2-2-R2.fastq.gz\nG_1,1,/G_1-1-1.fq.gz,/G_1-1-1-R2.fastq.gz\nG_1,1,/G_1-1-2.fq.gz,/G_1-1-2-R2.fastq.gz\nG_0,2,/G_0-2-1.fq.gz,/G_0-2-1-R2.fastq.gz\nG_0,2,/G_0-2-2.fq.gz,/G_0-2-2-R2.fastq.gz\nG_0,1,/G_0-1-1.fq.gz,/G_0-1-1-R2.fastq.gz\nG_0,1,/G_0-1-2.fq.gz,/G_0-1-2-R2.fastq.gz\n",
+      "valid": true,
+      "original_exit": 0,
+      "checked": "sample_id,fastq_1,fastq_2\nG_0_R1_T1,/G_0-1-1.fq.gz,/G_0-1-1-R2.fastq.gz\nG_0_R1_T2,/G_0-1-2.fq.gz,/G_0-1-2-R2.fastq.gz\nG_0_R2_T1,/G_0-2-1.fq.gz,/G_0-2-1-R2.fastq.gz\nG_0_R2_T2,/G_0-2-2.fq.gz,/G_0-2-2-R2.fastq.gz\nG_1_R1_T1,/G_1-1-1.fq.gz,/G_1-1-1-R2.fastq.gz\nG_1_R1_T2,/G_1-1-2.fq.gz,/G_1-1-2-R2.fastq.gz\nG_1_R2_T1,/G_1-2-1.fq.gz,/G_1-2-1-R2.fastq.gz\nG_1_R2_T2,/G_1-2-2.fq.gz,/G_1-2-2-R2.fastq.gz\n",
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "id": "g2-r3-p0",
+      "design": "group,replicate,fastq_1,fastq_2\nG_1,3,/G_1-3-1.fq.gz,\nG_1,3,/G_1-3-2.fq.gz,\nG_1,2,/G_1-2-1.fq.gz,\nG_1,2,/G_1-2-2.fq.gz,\nG_1,1,/G_1-1-1.fq.gz,\nG_1,1,/G_1-1-2.fq.gz,\nG_0,3,/G_0-3-1.fq.gz,\nG_0,3,/G_0-3-2.fq.gz,\nG_0,2,/G_0-2-1.fq.gz,\nG_0,2,/G_0-2-2.fq.gz,\nG_0,1,/G_0-1-1.fq.gz,\nG_0,1,/G_0-1-2.fq.gz,\n",
+      "valid": true,
+      "original_exit": 0,
+      "checked": "sample_id,fastq_1,fastq_2\nG_0_R1_T1,/G_0-1-1.fq.gz,\nG_0_R1_T2,/G_0-1-2.fq.gz,\nG_0_R2_T1,/G_0-2-1.fq.gz,\nG_0_R2_T2,/G_0-2-2.fq.gz,\nG_0_R3_T1,/G_0-3-1.fq.gz,\nG_0_R3_T2,/G_0-3-2.fq.gz,\nG_1_R1_T1,/G_1-1-1.fq.gz,\nG_1_R1_T2,/G_1-1-2.fq.gz,\nG_1_R2_T1,/G_1-2-1.fq.gz,\nG_1_R2_T2,/G_1-2-2.fq.gz,\nG_1_R3_T1,/G_1-3-1.fq.gz,\nG_1_R3_T2,/G_1-3-2.fq.gz,\n",
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "id": "g2-r3-p1",
+      "design": "group,replicate,fastq_1,fastq_2\nG_1,3,/G_1-3-1.fq.gz,/G_1-3-1-R2.fastq.gz\nG_1,3,/G_1-3-2.fq.gz,/G_1-3-2-R2.fastq.gz\nG_1,2,/G_1-2-1.fq.gz,/G_1-2-1-R2.fastq.gz\nG_1,2,/G_1-2-2.fq.gz,/G_1-2-2-R2.fastq.gz\nG_1,1,/G_1-1-1.fq.gz,/G_1-1-1-R2.fastq.gz\nG_1,1,/G_1-1-2.fq.gz,/G_1-1-2-R2.fastq.gz\nG_0,3,/G_0-3-1.fq.gz,/G_0-3-1-R2.fastq.gz\nG_0,3,/G_0-3-2.fq.gz,/G_0-3-2-R2.fastq.gz\nG_0,2,/G_0-2-1.fq.gz,/G_0-2-1-R2.fastq.gz\nG_0,2,/G_0-2-2.fq.gz,/G_0-2-2-R2.fastq.gz\nG_0,1,/G_0-1-1.fq.gz,/G_0-1-1-R2.fastq.gz\nG_0,1,/G_0-1-2.fq.gz,/G_0-1-2-R2.fastq.gz\n",
+      "valid": true,
+      "original_exit": 0,
+      "checked": "sample_id,fastq_1,fastq_2\nG_0_R1_T1,/G_0-1-1.fq.gz,/G_0-1-1-R2.fastq.gz\nG_0_R1_T2,/G_0-1-2.fq.gz,/G_0-1-2-R2.fastq.gz\nG_0_R2_T1,/G_0-2-1.fq.gz,/G_0-2-1-R2.fastq.gz\nG_0_R2_T2,/G_0-2-2.fq.gz,/G_0-2-2-R2.fastq.gz\nG_0_R3_T1,/G_0-3-1.fq.gz,/G_0-3-1-R2.fastq.gz\nG_0_R3_T2,/G_0-3-2.fq.gz,/G_0-3-2-R2.fastq.gz\nG_1_R1_T1,/G_1-1-1.fq.gz,/G_1-1-1-R2.fastq.gz\nG_1_R1_T2,/G_1-1-2.fq.gz,/G_1-1-2-R2.fastq.gz\nG_1_R2_T1,/G_1-2-1.fq.gz,/G_1-2-1-R2.fastq.gz\nG_1_R2_T2,/G_1-2-2.fq.gz,/G_1-2-2-R2.fastq.gz\nG_1_R3_T1,/G_1-3-1.fq.gz,/G_1-3-1-R2.fastq.gz\nG_1_R3_T2,/G_1-3-2.fq.gz,/G_1-3-2-R2.fastq.gz\n",
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "id": "g3-r1-p0",
+      "design": "group,replicate,fastq_1,fastq_2\nG_2,1,/G_2-1-1.fq.gz,\nG_2,1,/G_2-1-2.fq.gz,\nG_1,1,/G_1-1-1.fq.gz,\nG_1,1,/G_1-1-2.fq.gz,\nG_0,1,/G_0-1-1.fq.gz,\nG_0,1,/G_0-1-2.fq.gz,\n",
+      "valid": true,
+      "original_exit": 0,
+      "checked": "sample_id,fastq_1,fastq_2\nG_0_R1_T1,/G_0-1-1.fq.gz,\nG_0_R1_T2,/G_0-1-2.fq.gz,\nG_1_R1_T1,/G_1-1-1.fq.gz,\nG_1_R1_T2,/G_1-1-2.fq.gz,\nG_2_R1_T1,/G_2-1-1.fq.gz,\nG_2_R1_T2,/G_2-1-2.fq.gz,\n",
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "id": "g3-r1-p1",
+      "design": "group,replicate,fastq_1,fastq_2\nG_2,1,/G_2-1-1.fq.gz,/G_2-1-1-R2.fastq.gz\nG_2,1,/G_2-1-2.fq.gz,/G_2-1-2-R2.fastq.gz\nG_1,1,/G_1-1-1.fq.gz,/G_1-1-1-R2.fastq.gz\nG_1,1,/G_1-1-2.fq.gz,/G_1-1-2-R2.fastq.gz\nG_0,1,/G_0-1-1.fq.gz,/G_0-1-1-R2.fastq.gz\nG_0,1,/G_0-1-2.fq.gz,/G_0-1-2-R2.fastq.gz\n",
+      "valid": true,
+      "original_exit": 0,
+      "checked": "sample_id,fastq_1,fastq_2\nG_0_R1_T1,/G_0-1-1.fq.gz,/G_0-1-1-R2.fastq.gz\nG_0_R1_T2,/G_0-1-2.fq.gz,/G_0-1-2-R2.fastq.gz\nG_1_R1_T1,/G_1-1-1.fq.gz,/G_1-1-1-R2.fastq.gz\nG_1_R1_T2,/G_1-1-2.fq.gz,/G_1-1-2-R2.fastq.gz\nG_2_R1_T1,/G_2-1-1.fq.gz,/G_2-1-1-R2.fastq.gz\nG_2_R1_T2,/G_2-1-2.fq.gz,/G_2-1-2-R2.fastq.gz\n",
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "id": "g3-r2-p0",
+      "design": "group,replicate,fastq_1,fastq_2\nG_2,2,/G_2-2-1.fq.gz,\nG_2,2,/G_2-2-2.fq.gz,\nG_2,1,/G_2-1-1.fq.gz,\nG_2,1,/G_2-1-2.fq.gz,\nG_1,2,/G_1-2-1.fq.gz,\nG_1,2,/G_1-2-2.fq.gz,\nG_1,1,/G_1-1-1.fq.gz,\nG_1,1,/G_1-1-2.fq.gz,\nG_0,2,/G_0-2-1.fq.gz,\nG_0,2,/G_0-2-2.fq.gz,\nG_0,1,/G_0-1-1.fq.gz,\nG_0,1,/G_0-1-2.fq.gz,\n",
+      "valid": true,
+      "original_exit": 0,
+      "checked": "sample_id,fastq_1,fastq_2\nG_0_R1_T1,/G_0-1-1.fq.gz,\nG_0_R1_T2,/G_0-1-2.fq.gz,\nG_0_R2_T1,/G_0-2-1.fq.gz,\nG_0_R2_T2,/G_0-2-2.fq.gz,\nG_1_R1_T1,/G_1-1-1.fq.gz,\nG_1_R1_T2,/G_1-1-2.fq.gz,\nG_1_R2_T1,/G_1-2-1.fq.gz,\nG_1_R2_T2,/G_1-2-2.fq.gz,\nG_2_R1_T1,/G_2-1-1.fq.gz,\nG_2_R1_T2,/G_2-1-2.fq.gz,\nG_2_R2_T1,/G_2-2-1.fq.gz,\nG_2_R2_T2,/G_2-2-2.fq.gz,\n",
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "id": "g3-r2-p1",
+      "design": "group,replicate,fastq_1,fastq_2\nG_2,2,/G_2-2-1.fq.gz,/G_2-2-1-R2.fastq.gz\nG_2,2,/G_2-2-2.fq.gz,/G_2-2-2-R2.fastq.gz\nG_2,1,/G_2-1-1.fq.gz,/G_2-1-1-R2.fastq.gz\nG_2,1,/G_2-1-2.fq.gz,/G_2-1-2-R2.fastq.gz\nG_1,2,/G_1-2-1.fq.gz,/G_1-2-1-R2.fastq.gz\nG_1,2,/G_1-2-2.fq.gz,/G_1-2-2-R2.fastq.gz\nG_1,1,/G_1-1-1.fq.gz,/G_1-1-1-R2.fastq.gz\nG_1,1,/G_1-1-2.fq.gz,/G_1-1-2-R2.fastq.gz\nG_0,2,/G_0-2-1.fq.gz,/G_0-2-1-R2.fastq.gz\nG_0,2,/G_0-2-2.fq.gz,/G_0-2-2-R2.fastq.gz\nG_0,1,/G_0-1-1.fq.gz,/G_0-1-1-R2.fastq.gz\nG_0,1,/G_0-1-2.fq.gz,/G_0-1-2-R2.fastq.gz\n",
+      "valid": true,
+      "original_exit": 0,
+      "checked": "sample_id,fastq_1,fastq_2\nG_0_R1_T1,/G_0-1-1.fq.gz,/G_0-1-1-R2.fastq.gz\nG_0_R1_T2,/G_0-1-2.fq.gz,/G_0-1-2-R2.fastq.gz\nG_0_R2_T1,/G_0-2-1.fq.gz,/G_0-2-1-R2.fastq.gz\nG_0_R2_T2,/G_0-2-2.fq.gz,/G_0-2-2-R2.fastq.gz\nG_1_R1_T1,/G_1-1-1.fq.gz,/G_1-1-1-R2.fastq.gz\nG_1_R1_T2,/G_1-1-2.fq.gz,/G_1-1-2-R2.fastq.gz\nG_1_R2_T1,/G_1-2-1.fq.gz,/G_1-2-1-R2.fastq.gz\nG_1_R2_T2,/G_1-2-2.fq.gz,/G_1-2-2-R2.fastq.gz\nG_2_R1_T1,/G_2-1-1.fq.gz,/G_2-1-1-R2.fastq.gz\nG_2_R1_T2,/G_2-1-2.fq.gz,/G_2-1-2-R2.fastq.gz\nG_2_R2_T1,/G_2-2-1.fq.gz,/G_2-2-1-R2.fastq.gz\nG_2_R2_T2,/G_2-2-2.fq.gz,/G_2-2-2-R2.fastq.gz\n",
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "id": "g3-r3-p0",
+      "design": "group,replicate,fastq_1,fastq_2\nG_2,3,/G_2-3-1.fq.gz,\nG_2,3,/G_2-3-2.fq.gz,\nG_2,2,/G_2-2-1.fq.gz,\nG_2,2,/G_2-2-2.fq.gz,\nG_2,1,/G_2-1-1.fq.gz,\nG_2,1,/G_2-1-2.fq.gz,\nG_1,3,/G_1-3-1.fq.gz,\nG_1,3,/G_1-3-2.fq.gz,\nG_1,2,/G_1-2-1.fq.gz,\nG_1,2,/G_1-2-2.fq.gz,\nG_1,1,/G_1-1-1.fq.gz,\nG_1,1,/G_1-1-2.fq.gz,\nG_0,3,/G_0-3-1.fq.gz,\nG_0,3,/G_0-3-2.fq.gz,\nG_0,2,/G_0-2-1.fq.gz,\nG_0,2,/G_0-2-2.fq.gz,\nG_0,1,/G_0-1-1.fq.gz,\nG_0,1,/G_0-1-2.fq.gz,\n",
+      "valid": true,
+      "original_exit": 0,
+      "checked": "sample_id,fastq_1,fastq_2\nG_0_R1_T1,/G_0-1-1.fq.gz,\nG_0_R1_T2,/G_0-1-2.fq.gz,\nG_0_R2_T1,/G_0-2-1.fq.gz,\nG_0_R2_T2,/G_0-2-2.fq.gz,\nG_0_R3_T1,/G_0-3-1.fq.gz,\nG_0_R3_T2,/G_0-3-2.fq.gz,\nG_1_R1_T1,/G_1-1-1.fq.gz,\nG_1_R1_T2,/G_1-1-2.fq.gz,\nG_1_R2_T1,/G_1-2-1.fq.gz,\nG_1_R2_T2,/G_1-2-2.fq.gz,\nG_1_R3_T1,/G_1-3-1.fq.gz,\nG_1_R3_T2,/G_1-3-2.fq.gz,\nG_2_R1_T1,/G_2-1-1.fq.gz,\nG_2_R1_T2,/G_2-1-2.fq.gz,\nG_2_R2_T1,/G_2-2-1.fq.gz,\nG_2_R2_T2,/G_2-2-2.fq.gz,\nG_2_R3_T1,/G_2-3-1.fq.gz,\nG_2_R3_T2,/G_2-3-2.fq.gz,\n",
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "id": "g3-r3-p1",
+      "design": "group,replicate,fastq_1,fastq_2\nG_2,3,/G_2-3-1.fq.gz,/G_2-3-1-R2.fastq.gz\nG_2,3,/G_2-3-2.fq.gz,/G_2-3-2-R2.fastq.gz\nG_2,2,/G_2-2-1.fq.gz,/G_2-2-1-R2.fastq.gz\nG_2,2,/G_2-2-2.fq.gz,/G_2-2-2-R2.fastq.gz\nG_2,1,/G_2-1-1.fq.gz,/G_2-1-1-R2.fastq.gz\nG_2,1,/G_2-1-2.fq.gz,/G_2-1-2-R2.fastq.gz\nG_1,3,/G_1-3-1.fq.gz,/G_1-3-1-R2.fastq.gz\nG_1,3,/G_1-3-2.fq.gz,/G_1-3-2-R2.fastq.gz\nG_1,2,/G_1-2-1.fq.gz,/G_1-2-1-R2.fastq.gz\nG_1,2,/G_1-2-2.fq.gz,/G_1-2-2-R2.fastq.gz\nG_1,1,/G_1-1-1.fq.gz,/G_1-1-1-R2.fastq.gz\nG_1,1,/G_1-1-2.fq.gz,/G_1-1-2-R2.fastq.gz\nG_0,3,/G_0-3-1.fq.gz,/G_0-3-1-R2.fastq.gz\nG_0,3,/G_0-3-2.fq.gz,/G_0-3-2-R2.fastq.gz\nG_0,2,/G_0-2-1.fq.gz,/G_0-2-1-R2.fastq.gz\nG_0,2,/G_0-2-2.fq.gz,/G_0-2-2-R2.fastq.gz\nG_0,1,/G_0-1-1.fq.gz,/G_0-1-1-R2.fastq.gz\nG_0,1,/G_0-1-2.fq.gz,/G_0-1-2-R2.fastq.gz\n",
+      "valid": true,
+      "original_exit": 0,
+      "checked": "sample_id,fastq_1,fastq_2\nG_0_R1_T1,/G_0-1-1.fq.gz,/G_0-1-1-R2.fastq.gz\nG_0_R1_T2,/G_0-1-2.fq.gz,/G_0-1-2-R2.fastq.gz\nG_0_R2_T1,/G_0-2-1.fq.gz,/G_0-2-1-R2.fastq.gz\nG_0_R2_T2,/G_0-2-2.fq.gz,/G_0-2-2-R2.fastq.gz\nG_0_R3_T1,/G_0-3-1.fq.gz,/G_0-3-1-R2.fastq.gz\nG_0_R3_T2,/G_0-3-2.fq.gz,/G_0-3-2-R2.fastq.gz\nG_1_R1_T1,/G_1-1-1.fq.gz,/G_1-1-1-R2.fastq.gz\nG_1_R1_T2,/G_1-1-2.fq.gz,/G_1-1-2-R2.fastq.gz\nG_1_R2_T1,/G_1-2-1.fq.gz,/G_1-2-1-R2.fastq.gz\nG_1_R2_T2,/G_1-2-2.fq.gz,/G_1-2-2-R2.fastq.gz\nG_1_R3_T1,/G_1-3-1.fq.gz,/G_1-3-1-R2.fastq.gz\nG_1_R3_T2,/G_1-3-2.fq.gz,/G_1-3-2-R2.fastq.gz\nG_2_R1_T1,/G_2-1-1.fq.gz,/G_2-1-1-R2.fastq.gz\nG_2_R1_T2,/G_2-1-2.fq.gz,/G_2-1-2-R2.fastq.gz\nG_2_R2_T1,/G_2-2-1.fq.gz,/G_2-2-1-R2.fastq.gz\nG_2_R2_T2,/G_2-2-2.fq.gz,/G_2-2-2-R2.fastq.gz\nG_2_R3_T1,/G_2-3-1.fq.gz,/G_2-3-1-R2.fastq.gz\nG_2_R3_T2,/G_2-3-2.fq.gz,/G_2-3-2-R2.fastq.gz\n",
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "id": "python-unicode-order",
+      "design": "group,replicate,fastq_1,fastq_2\n𐀀,1,/s.fq.gz,/t.fq.gz\n,1,/u.fq.gz,/v.fq.gz\nβ,1,/w.fq.gz,/x.fq.gz\n",
+      "valid": true,
+      "original_exit": 0,
+      "checked": "sample_id,fastq_1,fastq_2\nβ_R1_T1,/w.fq.gz,/x.fq.gz\n_R1_T1,/u.fq.gz,/v.fq.gz\n𐀀_R1_T1,/s.fq.gz,/t.fq.gz\n",
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "id": "source-strip-leading-zero-crlf",
+      "design": "group,replicate,fastq_1,fastq_2\r\n G ,001, /a.fq.gz , /b.fq.gz \r\nG,2,/c.fq.gz,/d.fq.gz\r\n",
+      "valid": true,
+      "original_exit": 0,
+      "checked": "sample_id,fastq_1,fastq_2\nG_R1_T1,/a.fq.gz,/b.fq.gz\nG_R2_T1,/c.fq.gz,/d.fq.gz\n",
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "id": "source-empty-cell-collapse",
+      "design": "group,replicate,fastq_1,fastq_2\nG,,1,/a.fq.gz,/b.fq.gz\n",
+      "valid": true,
+      "original_exit": 0,
+      "checked": "sample_id,fastq_1,fastq_2\nG_R1_T1,/a.fq.gz,/b.fq.gz\n",
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "id": "source-single-trailing-empty",
+      "design": "group,replicate,fastq_1,fastq_2\nG,1,/a.fq.gz,,,\n",
+      "valid": true,
+      "original_exit": 0,
+      "checked": "sample_id,fastq_1,fastq_2\nG_R1_T1,/a.fq.gz,\n",
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "id": "unbalanced",
+      "design": "group,replicate,fastq_1,fastq_2\nA,1,/a.fq.gz,\nB,1,/b.fq.gz,\nB,2,/c.fq.gz,\n",
+      "valid": true,
+      "original_exit": 0,
+      "checked": "sample_id,fastq_1,fastq_2\nA_R1_T1,/a.fq.gz,\nB_R1_T1,/b.fq.gz,\nB_R2_T1,/c.fq.gz,\n",
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "id": "noncontiguous",
+      "design": "group,replicate,fastq_1,fastq_2\nG,1,/a.fq.gz,\nG,3,/b.fq.gz,\n",
+      "valid": false,
+      "original_exit": 1,
+      "checked": null,
+      "stdout": "ERROR: Please check design file: Replicate IDs must start with 1..<num_replicates>\r\nGroup: G, Replicate IDs: [1, 3]\r\n",
+      "stderr": ""
+    },
+    {
+      "id": "zero-replicate",
+      "design": "group,replicate,fastq_1,fastq_2\nG,0,/a.fq.gz,\n",
+      "valid": false,
+      "original_exit": 1,
+      "checked": null,
+      "stdout": "ERROR: Please check design file: Replicate IDs must start with 1..<num_replicates>\r\nGroup: G, Replicate IDs: [0]\r\n",
+      "stderr": ""
+    },
+    {
+      "id": "negative-replicate",
+      "design": "group,replicate,fastq_1,fastq_2\nG,-1,/a.fq.gz,\n",
+      "valid": false,
+      "original_exit": 1,
+      "checked": null,
+      "stdout": "ERROR: Please check design file: Replicate id not an integer!\r\nLine: 'G,-1,/a.fq.gz,'\r\n",
+      "stderr": ""
+    },
+    {
+      "id": "bad-extension",
+      "design": "group,replicate,fastq_1,fastq_2\nG,1,/a.fastq,\n",
+      "valid": false,
+      "original_exit": 1,
+      "checked": null,
+      "stdout": "ERROR: Please check design file: FastQ file has incorrect extension (has to be '.fastq.gz' or 'fq.gz') - /a.fastq\r\nLine: 'G,1,/a.fastq,'\r\n",
+      "stderr": ""
+    },
+    {
+      "id": "mixed",
+      "design": "group,replicate,fastq_1,fastq_2\nG,1,/a.fq.gz,\nG,2,/b.fq.gz,/c.fq.gz\n",
+      "valid": false,
+      "original_exit": 1,
+      "checked": null,
+      "stdout": "ERROR: Please check design file: Mixture of paired-end and single-end reads!\r\n",
+      "stderr": ""
+    },
+    {
+      "id": "group-space",
+      "design": "group,replicate,fastq_1,fastq_2\nA B,1,/a.fq.gz,\n",
+      "valid": false,
+      "original_exit": 1,
+      "checked": null,
+      "stdout": "ERROR: Please check design file: Group id contains spaces!\r\nLine: 'A B,1,/a.fq.gz,'\r\n",
+      "stderr": ""
+    },
+    {
+      "id": "blank-line",
+      "design": "group,replicate,fastq_1,fastq_2\nG,1,/a.fq.gz,\n\n",
+      "valid": false,
+      "original_exit": 1,
+      "checked": null,
+      "stdout": "ERROR: Please check design file: Invalid number of columns (3 for single-end or 4 for paired-end)!\r\nLine: ''\r\n",
+      "stderr": ""
+    },
+    {
+      "id": "empty",
+      "design": "group,replicate,fastq_1,fastq_2\n",
+      "valid": false,
+      "original_exit": 1,
+      "checked": null,
+      "stdout": "",
+      "stderr": "Traceback (most recent call last):\r\n  File \"D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\nfcore-atacseq121-1\\complete-intake-1\\source\\bin\\check_design.py\", line 139, in <module>\r\n    check_design(DesignFileIn=args.DESIGN_FILE_IN,DesignFileOut=args.DESIGN_FILE_OUT)\r\n  File \"D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\nfcore-atacseq121-1\\complete-intake-1\\source\\bin\\check_design.py\", line 91, in check_design\r\n    if min(numColList) != max(numColList):\r\n       ^^^^^^^^^^^^^^^\r\nValueError: min() iterable argument is empty\r\n"
+    },
+    {
+      "id": "BOM-header",
+      "design": "﻿group,replicate,fastq_1,fastq_2\nG,1,/a.fq.gz,\n",
+      "valid": false,
+      "original_exit": 1,
+      "checked": null,
+      "stdout": "ERROR: Please check design file header: ﻿group,replicate,fastq_1,fastq_2 != group,replicate,fastq_1,fastq_2\r\n",
+      "stderr": ""
+    },
+    {
+      "id": "comment-line",
+      "design": "group,replicate,fastq_1,fastq_2\n# comment\nG,1,/a.fq.gz,\n",
+      "valid": false,
+      "original_exit": 1,
+      "checked": null,
+      "stdout": "ERROR: Please check design file: Invalid number of columns (3 for single-end or 4 for paired-end)!\r\nLine: '# comment'\r\n",
+      "stderr": ""
+    }
+  ]
+}

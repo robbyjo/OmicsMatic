@@ -27,6 +27,12 @@ final class NfcoreContainerSet {
     private final NextflowProcess.Limits limits;
 
     NfcoreContainerSet(Path home, Path declaration, Path root, NextflowProcess.Limits limits) throws IOException {
+        this(home, declaration, root, limits, "/org/jlinalg/omics/nfcore-chipseq200/images.json", PROFILE);
+    }
+
+    /** A caller-bound exact source-image profile; the historical ChIP constructor retains its original profile. */
+    NfcoreContainerSet(Path home, Path declaration, Path root, NextflowProcess.Limits limits,
+                       String profileResource, Pin profilePin) throws IOException {
         if (!System.getProperty("os.name").equals("Linux") || !Set.of("amd64", "x86_64").contains(System.getProperty("os.arch"))) throw new NextflowProcess.Unavailable("Original source-declared images require x86_64 Linux Java and permitted unprivileged containers. Analysis skipped.");
         this.home = home; this.root = directory(root); this.limits = limits;
         if (!Files.exists(home, LinkOption.NOFOLLOW_LINKS)) throw new NextflowProcess.Unavailable("Exact admitted private Apptainer home is missing. Complete permitted setup separately; dependent analysis skipped.");
@@ -34,7 +40,7 @@ final class NfcoreContainerSet {
         if (root.startsWith(home) || home.startsWith(root)) throw new IOException("Container runtime and owned workspace must be disjoint");
         for (String name : List.of("/usr/bin/setsid", "/usr/bin/prlimit", "/bin/bash", "/usr/bin/realpath", "/usr/bin/uname")) if (!Files.isExecutable(Path.of(name))) throw new NextflowProcess.Unavailable("Required Linux helper is missing/forbidden: " + name + "; dependent analysis skipped.");
         byte[] raw = resource("/org/jlinalg/omics/nfcore-deseq126/runtime-inventory.json", 1048576); if (!new Pin(raw.length, sha(raw)).equals(INVENTORY)) throw new IOException("Pinned container runtime inventory differs"); inventory = object(SimpleJson.parse(utf8(raw)));
-        raw = resource("/org/jlinalg/omics/nfcore-chipseq200/images.json", 1048576); if (!new Pin(raw.length, sha(raw)).equals(PROFILE)) throw new IOException("Pinned ChIP-seq2.0.0 module/image profile differs"); profile = object(SimpleJson.parse(utf8(raw)));
+        raw = resource(profileResource, 1048576); if (!new Pin(raw.length, sha(raw)).equals(profilePin)) throw new IOException("Pinned source module/image profile differs"); profile = object(SimpleJson.parse(utf8(raw)));
         Map<?, ?> expected = object(profile.get("images")), supplied = object(json(declaration, 1048576)); keys(supplied, "schema_version", "images"); integer(supplied.get("schema_version"), 1, 1); Map<?, ?> paths = object(supplied.get("images"));
         if (!expected.keySet().containsAll(paths.keySet())) throw new IOException("Image declaration contains an unknown source URI");
         if (!paths.keySet().equals(expected.keySet())) throw new NextflowProcess.Unavailable("Incomplete exact source-declared image set. Supply every named image after permitted separate setup; dependent analysis skipped.");
