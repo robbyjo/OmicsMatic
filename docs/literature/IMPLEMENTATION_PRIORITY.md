@@ -24,13 +24,16 @@ The next [stratified Java API](../vignettes/stratified-ldsc.md) supplies prepare
 joint partitioned fitting and binary-annotation overlap summaries. It follows
 the selected source partitioned path's fixed initial weights. Forty-eight
 original-core models, 22,596 fields and the same nine tests on Windows/Linux
-are qualified separately. A prepared-data workflow command, input/annotation
-construction and source-specific stratified/wrapper choices remain open. This
-method extension adds no second LDSC family credit.
+are qualified separately. The [prepared-data workflow command](../vignettes/stratified-ldsc-workflow.md)
+now captures complete inputs, model diagnostics and checked admission/failure
+records. It passes 17 focused API/workflow tests on Windows and Linux, real
+process controls including missing-runtime SKIP3, and all three public examples.
+Input/annotation construction and source-specific stratified/wrapper choices
+remain open. These method extensions add no second LDSC family credit.
 
 | Priority | Work | Evidence and benefit |
 |---|---|---|
-| 1 | Remaining stratified LDSC workflows and input preparation | The 42 reviewed family roles repeatedly require chromatin/eQTL annotations and enrichment. Reuse the qualified partitioned API for a prepared-data command while preserving distinct annotation, stratified and wrapper requirements. |
+| 1 | Remaining LDSC input preparation and source-specific workflows | The 42 reviewed family roles repeatedly require chromatin/eQTL annotations and enrichment. Reuse the qualified prepared-data command while resolving distinct annotation, stratified and wrapper requirements. |
 | 2 | Remaining Monocle workflows | Nine papers; reuse existing native graph ordering and original Monocle 2/3 adapters while resolving the remaining model, version and custom-workflow gaps. |
 | 3 | Reusable nf-core execution profiles | Six papers; existing sequencing components can support multiple pipeline families. Finish the named profiles and their actual execution gaps. |
 | 4 | Shared cytometry analysis components | FlowJo appears in 27 papers and FACSDiva in 17. Distinguish acquisition/context mentions from computational uses; target reusable FCS, compensation and gating needs. |
