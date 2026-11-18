@@ -47,6 +47,14 @@ native mapping checks and the completed 88-task reference execution, including
 nf-core pipeline roles still prevent family-level admission.
 The original five-pipeline source lock and its historical checkpoints are retained.
 
+The cytometry census verifies 48 matching paragraphs in 33 distinct papers;
+the FlowJo27 and FACSDiva17 paper sets overlap. The new
+[native stored-channel FCS API](../vignettes/fcs-stored-channels.md) supplies the
+shared event-input component. It preserves explicit encoding/storage choices
+and reports unsupported input forms. This does not implement instrument
+acquisition, a vendor workspace, compensation/gates, the FlowAI/UMAP/FlowSOM
+plugin workflow in P051, or the distinct cell-cycle models in P122/P228.
+
 The validated LDAK development checkpoint is preserved at local commit
 `e2bf00a9ccf03911ec27f818ef5c6a617e5602f1`, with its matching reader, closed
 evidence and failed attempts. Its six-role catalog preview remains pending
