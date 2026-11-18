@@ -10,8 +10,11 @@ The current 18 November tranche prioritizes LDSC, with 41 cataloged mentions,
 after the separately qualified common-statistics and cytometry components.
 The [new native Hsq command](../vignettes/ldsc-heritability.md) supplies prepared
 unpartitioned one-step, fixed-intercept and two-step heritability fits, with
-72 unchanged original-core references. Genetic correlation and broader
-LDSC role integration remain pending. Its source audit also identifies a
+72 unchanged original-core references. The next
+[native RG/Gencov command](../vignettes/ldsc-genetic-correlation.md) adds
+two-trait heritability/covariance/correlation with 72 cross-trait original-core
+references and explicit no-result statuses. Broader LDSC role integration remains
+pending. Its source audit also identifies a
 missing actual sLDSC role in P092 and a comparison-only canonical attribution
 in P151; the [qualification record](ldsc-hsq-development/README.md) preserves
 the findings for a separate canonical correction without granting family credit.

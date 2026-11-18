@@ -144,8 +144,10 @@ Hash checks establish recorded integrity, not authentic execution or biological
 validity. The prepared design does not establish ancestry/reference matching,
 adequate genomic blocks or a reproduced paper. Genetic correlation, liability
 conversion, stratified/overlap enrichment, LD-score generation and munging remain
-outside this command. Unsupported `rg`, `partitioned` and `ld-score` requests
-produce an explicit skip, without substituting this univariate model.
+outside this Hsq command. Genetic correlation has a separate
+[native RG command](ldsc-genetic-correlation.md) with an explicit common-allele
+contract and correlation reportability. Unsupported `partitioned` and
+`ld-score` requests produce an explicit skip.
 
 The [qualification record](../literature/ldsc-hsq-development/README.md) describes
 72 unchanged original-core reference models, field comparisons, packaged checks,

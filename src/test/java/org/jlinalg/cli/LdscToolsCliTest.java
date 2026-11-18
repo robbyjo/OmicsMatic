@@ -41,7 +41,7 @@ class LdscToolsCliTest {
     @Test void rootDispatcherProvidesMethodHelpBeforeProjectConfiguration() {
         var output=new ByteArrayOutputStream();assertEquals(0,JLinAlgCli.run(new String[]{"ldsc-tools","--help"},new PrintStream(output),System.err));assertTrue(output.toString().contains("unpartitioned observed-scale"));
     }
-    @Test void geneticCorrelationIsExplicitlySkippedRatherThanSubstituted() {
+    @Test void geneticCorrelationRequiresItsOwnRequestRatherThanSubstitutingHsq() {
         var error=new ByteArrayOutputStream();assertEquals(3,LdscToolsCli.run(new String[]{"rg","--request","unread.json"},System.out,new PrintStream(error)));assertTrue(error.toString().contains("SKIP3: DEPENDENT ANALYSIS SKIPPED"));
     }
 }

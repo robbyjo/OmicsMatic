@@ -34,7 +34,7 @@ public final class LdscHeritability {
         @Override public double[] finalWeights(){return finalWeights.clone();}
         private static double[][] copy(double[][] x){return Arrays.stream(x).map(double[]::clone).toArray(double[][]::new);}
     }
-    private record Fit(double slope,double intercept,double[][] deletes,int[] separators,double[] weights) { }
+    record Fit(double slope,double intercept,double[][] deletes,int[] separators,double[] weights) { }
     private LdscHeritability() { }
 
     /**
@@ -123,6 +123,10 @@ public final class LdscHeritability {
             double h2=finite(m*estimate[0]/nbar),intercept=fixed==null?estimate[1]:fixed;
             trace.add(update(stage,iteration,h2,intercept));w=weights(weightLd,wld,ns,m,h2,intercept);
         }
+        return finish(x,y,w,separators,fixed);
+    }
+    /** Shared fixed-final-weight fit; the Hsq arithmetic below is unchanged. */
+    static Fit finish(double[] x,double[] y,double[] w,int[] separators,Double fixed) {
         int blocks=separators.length-1;Moments[] pieces=new Moments[blocks],prefix=new Moments[blocks+1],suffix=new Moments[blocks+1];
         double maximum=Arrays.stream(w).max().orElseThrow();double[] relative=new double[w.length];
         for(int i=0;i<w.length;i++)relative[i]=positive(w[i]/maximum);
@@ -141,19 +145,19 @@ public final class LdscHeritability {
         }
         return w;
     }
-    private static int[] separators(int rows,int blocks) {
+    static int[] separators(int rows,int blocks) {
         int[] result=new int[blocks+1];double step=(double)rows/blocks;
         // Match floor(linspace(0,N,B+1)), including its floating-point placement.
         for(int i=1;i<blocks;i++)result[i]=(int)Math.floor(i*step);result[blocks]=rows;
         return result;
     }
-    private static double[] select(double[] x,int[] selected){double[] result=new double[selected.length];for(int i=0;i<result.length;i++)result[i]=x[selected[i]];return result;}
-    private static final class Sum {
+    static double[] select(double[] x,int[] selected){double[] result=new double[selected.length];for(int i=0;i<result.length;i++)result[i]=x[selected[i]];return result;}
+    static final class Sum {
         double sum,correction;
         void add(double x){double adjusted=x-correction,next=sum+adjusted;correction=(next-sum)-adjusted;sum=finite(next);}
         double value(){return sum;}
     }
-    private static final class Moments {
+    static final class Moments {
         int count;double weight,mx,my,xx,xy;
         void add(double x,double y,double w) {
             double next=positive(weight+w),dx=finite(x-mx),dy=finite(y-my),factor=finite(w*weight/next);
@@ -161,7 +165,7 @@ public final class LdscHeritability {
             mx=finite(mx+w/next*dx);my=finite(my+w/next*dy);weight=next;count++;
         }
     }
-    private static Moments moments(double[] x,double[] y,double[] w,int from,int to) {
+    static Moments moments(double[] x,double[] y,double[] w,int from,int to) {
         double maximum=Arrays.stream(w).max().orElseThrow();var result=new Moments();
         for(int i=from;i<to;i++)result.add(x[i],y[i],positive(w[i]/maximum));return result;
     }
@@ -176,7 +180,7 @@ public final class LdscHeritability {
         r.mx=finite(a.mx+b.weight/r.weight*dx);r.my=finite(a.my+b.weight/r.weight*dy);
         r.xx=finite(a.xx+b.xx+factor*dx*dx);r.xy=finite(a.xy+b.xy+factor*dx*dy);return r;
     }
-    private static double[] fitMoments(Moments m,Double fixed) {
+    static double[] fitMoments(Moments m,Double fixed) {
         double slope,intercept;
         if(fixed==null) {
             if(m.count<2||!(m.xx>0))throw new ArithmeticException("Full/delete LDSC free-intercept design is rank deficient");
@@ -188,7 +192,7 @@ public final class LdscHeritability {
         }
         return new double[]{slope,intercept};
     }
-    private static double[][] covariance(double[][] deletes) {
+    static double[][] covariance(double[][] deletes) {
         int b=deletes.length;double[] means=new double[2];
         for(int j=0;j<2;j++){var sum=new Sum();for(double[] d:deletes)sum.add(d[j]/b);means[j]=sum.value();}
         double[][] result=new double[2][2];
@@ -198,6 +202,6 @@ public final class LdscHeritability {
         }
         return result;
     }
-    private static double finite(double value){if(!Double.isFinite(value))throw new ArithmeticException("Unrepresentable LDSC intermediate/result; no result admitted");return value;}
-    private static double positive(double value){finite(value);if(!(value>0))throw new ArithmeticException("Nonpositive/unrepresentable LDSC weight, scale or design; no result admitted");return value;}
+    static double finite(double value){if(!Double.isFinite(value))throw new ArithmeticException("Unrepresentable LDSC intermediate/result; no result admitted");return value;}
+    static double positive(double value){finite(value);if(!(value>0))throw new ArithmeticException("Nonpositive/unrepresentable LDSC weight, scale or design; no result admitted");return value;}
 }
