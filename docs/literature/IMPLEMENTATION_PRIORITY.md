@@ -6,6 +6,16 @@ existing project code and practical runtime availability. A family marked
 missing in the admitted catalog may already have tested components; the status
 does not mean that every underlying analysis is absent.
 
+The current 18 November tranche prioritizes LDSC, with 41 cataloged mentions,
+after the separately qualified common-statistics and cytometry components.
+The [new native Hsq command](../vignettes/ldsc-heritability.md) supplies prepared
+unpartitioned one-step, fixed-intercept and two-step heritability fits, with
+72 unchanged original-core references. Genetic correlation and broader
+LDSC role integration remain pending. Its source audit also identifies a
+missing actual sLDSC role in P092 and a comparison-only canonical attribution
+in P151; the [qualification record](ldsc-hsq-development/README.md) preserves
+the findings for a separate canonical correction without granting family credit.
+
 | Priority | Work | Evidence and benefit |
 |---|---|---|
 | 1 | Native Tukey–Kramer comparisons | Twelve papers mention post-hoc Tukey tests; seven explicitly describe one-way ANOVA/Tukey. Existing Java ANOVA gains a reusable all-pairs follow-up. |
