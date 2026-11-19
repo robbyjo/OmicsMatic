@@ -46,6 +46,12 @@ public final class PlinkRelatednessCli {
             var captured=new LinkedHashMap<String,Object>(raw);captured.put("bfile","inputs/cohort");captured.put("out",".");json(stage.resolve("request.json"),captured);
             var runtime=new PlinkRelatednessRuntime(home,stage,r,clock);
             Files.createDirectory(stage.resolve("inputs"));var inputPins=new TreeMap<String,String>();var originalPins=new TreeMap<String,String>();
+            long declaredInputBytes=0;
+            for(String suffix:List.of(".fam",".bim",".bed")){
+                Path original=Path.of(input+suffix);require(Files.isRegularFile(original,LinkOption.NOFOLLOW_LINKS),"Missing/linked original genotype input: "+original);
+                declaredInputBytes=Math.addExact(declaredInputBytes,Files.size(original));
+                require(declaredInputBytes<=l.inputBytes(),"Combined original input_bytes capacity exceeded before hashing/capture");
+            }
             for(String suffix:List.of(".fam",".bim",".bed"))originalPins.put(suffix,hash(Path.of(input+suffix),clock));
             long remaining=l.inputBytes();for(String suffix:List.of(".fam",".bim",".bed")){Path target=stage.resolve("inputs/cohort"+suffix);remaining-=copy(Path.of(input+suffix),target,remaining,clock);String digest=hash(target,clock);require(digest.equals(originalPins.get(suffix)),"Original input changed before the complete snapshot");inputPins.put("inputs/cohort"+suffix,digest);}
             manifest.put("input_sha256",inputPins);

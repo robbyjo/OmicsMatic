@@ -63,18 +63,23 @@ final class PlinkRelatednessRuntime {
     void execute(List<String> arguments,String name)throws IOException {
         verify();clock.check();var command=new ArrayList<String>();command.add(executable.toString());command.addAll(arguments);
         var record=new LinkedHashMap<String,Object>();record.put("command",command);record.put("working_directory","worker");record.put("stage",name);record.put("started_at",Instant.now().toString());record.put("executable_sha256",pins.get(text(object(object(lock.get("engines"),"engines").get(request.engine()),"engine"),"executable")));
+        String system=System.getenv("SystemRoot");if(system==null)throw new Unavailable("Windows SystemRoot is unavailable",null);
+        var builder=new ProcessBuilder(command).directory(stage.resolve("worker").toFile());
+        var environment=builder.environment();environment.clear();environment.put("SystemRoot",system);environment.put("WINDIR",system);environment.put("PATH",Path.of(system,"System32").toString());environment.put("LC_ALL","C");environment.put("OMP_NUM_THREADS","1");
+        for(String variable:List.of("TEMP","TMP")){String value=System.getenv(variable);if(value!=null)environment.put(variable,value);}
+        int exit=executeOwned(builder,stage,name,request.limits(),clock,record);
+        require(exit==0,"Original "+request.engine()+" "+name+" exited "+exit+"; inspect worker/"+name+".stdout/.stderr and result.log");
+        verify();
+    }
+    /** Shared lifecycle for an already selected command; no runtime/profile admission here. */
+    static int executeOwned(ProcessBuilder builder,Path stage,String name,PlinkRelatednessContracts.Limits limits,Clock clock,Map<String,Object> record)throws IOException {
         Path worker=stage.resolve("worker"),stdout=worker.resolve(name+".stdout"),stderr=worker.resolve(name+".stderr");
         Process process=null;boolean completed=false,interrupted=false;
         try {
-            var builder=new ProcessBuilder(command).directory(worker.toFile()).redirectOutput(stdout.toFile()).redirectError(stderr.toFile());
-            String system=System.getenv("SystemRoot");if(system==null)throw new Unavailable("Windows SystemRoot is unavailable",null);
-            var environment=builder.environment();environment.clear();environment.put("SystemRoot",system);environment.put("WINDIR",system);environment.put("PATH",Path.of(system,"System32").toString());environment.put("LC_ALL","C");environment.put("OMP_NUM_THREADS","1");
-            for(String variable:List.of("TEMP","TMP")){String value=System.getenv(variable);if(value!=null)environment.put(variable,value);}
-            try{process=builder.start();}catch(IOException e){throw new Unavailable("Could not launch exact original program: "+e.getMessage(),e);}
+            builder.redirectOutput(stdout.toFile()).redirectError(stderr.toFile());
+            try{process=builder.start();}catch(IOException e){throw new Unavailable("Could not launch owned program: "+e.getMessage(),e);}
             record.put("owned_pid",process.pid());record.put("owned_start_instant",process.info().startInstant().map(Instant::toString).orElse("unavailable"));
-            monitor(process,stage,request.limits(),clock);completed=true;record.put("exit_code",process.exitValue());
-            require(process.exitValue()==0,"Original "+request.engine()+" "+name+" exited "+process.exitValue()+"; inspect worker/"+name+".stdout/.stderr and result.log");
-            verify();
+            monitor(process,stage,limits,clock);completed=true;record.put("exit_code",process.exitValue());return process.exitValue();
         }catch(InterruptedException e){interrupted=true;throw new InterruptedIOException("Owned original process interrupted");}
         finally {
             interrupted|=Thread.interrupted();

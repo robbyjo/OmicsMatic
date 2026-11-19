@@ -1,5 +1,17 @@
 # Current toolbox handover
 
+**Continue from the [scoped PLINK-relatedness workflow checkpoint](PLINK_RELATEDNESS_CHECKPOINT_2026-11-19.md).**
+The original workflows now have 16 pilot expectations, 54 packaged controls,
+four 257-participant original profiles, Windows/Linux JVM checks and actual
+owned-process cleanup evidence. Read the [guide](../vignettes/plink-relatedness-workflows.md),
+[example](../../examples/plink-relatedness/README.md) and
+[proof/readback instructions](plink-relatedness-development/README.md).
+Next finish the 92 PLINK/PLINK 2/KING source-role census and cumulative catalog
+admission. No new family credit has been awarded; totals remain 131 new scoped
+integrations, 1,339 reviewed uses and 1,357 pending. The wider goal is unfinished.
+
+<details><summary>Prior PLINK development handover (historical)</summary>
+
 **For the current handoff, start with the
 [PLINK relatedness development handover](HANDOVER_2026-11-19_PLINK_RELATEDNESS.md)
 and [pinned synthetic checkpoint](plink-relatedness-handover/README.md).**
@@ -116,6 +128,8 @@ promise coordinate equality across input or host changes.
 Private evidence stores and restricted runtimes remain local. Both literature
 pages remain withheld from Pages; the review notice follows long older notices,
 and full warnings-page mobile layout remains unqualified.
+
+</details>
 
 </details>
 

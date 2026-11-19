@@ -1,5 +1,10 @@
 # Toolbox handover: PLINK relatedness development
 
+**Update:** the [workflow checkpoint](PLINK_RELATEDNESS_CHECKPOINT_2026-11-19.md)
+supersedes this draft's pending qualification tasks for its stated scope.
+Source-role review and catalog admission remain unfinished. The original
+development packet and its source/artifact pins below are retained unchanged.
+
 **Development checkpoint, not a qualified analysis integration. The 250-paper
 collection is complete; implementation and individual source review remain
 unfinished. Do not award PLINK, PLINK 2 or KING catalog credit from this snapshot.**
