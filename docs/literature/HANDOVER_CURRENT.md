@@ -1,10 +1,15 @@
 # Current toolbox handover
 
-Read [the original METAL workflow checkpoint](METAL_WORKFLOW_CHECKPOINT_2026-11-18.md)
-for the latest resumed work and immediate catalog-admission steps, then
-[the METAL handover](HANDOVER_2026-11-18_METAL.md) for the wider project inventory.
-The native SDK component and typed original runtime workflow are now qualified.
-Older checkpoints, draft status and evidence remain historical records.
+Start with [the catalog handover of 18 November 2026](HANDOVER_2026-11-18_CATALOG.md).
+It records the exact remaining work, current worktree, commands, evidence paths
+and warnings. The [saved primary census](metal-catalog-handover/PRIMARY-CENSUS.json)
+and [fresh checks](metal-catalog-handover/CHECKS.json) preserve the latest audit.
 
 The 250-paper cohort is collected. Implementation and individual paper/tool
-review remain unfinished. METAL catalog admission remains pending; no new family credit or release is claimed here.
+review remain unfinished: 129 scoped integrations and 1,429 observations awaiting
+review in the canonical catalog. The native weighted-Z component and original
+METAL workflow are qualified; METAL's 24 reviewed roles still need catalog
+admission. No new family credit or release is claimed by this handover.
+
+Older handovers describe historical states. In particular, do not restart the
+weighted-Z or original METAL adapter implementations from their old draft lists.

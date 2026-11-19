@@ -1,0 +1,14 @@
+{
+  "status": "RETAINED_CORRECTED_DEVELOPER_WRAPPER_FAILURE",
+  "failed_attempt": "build/handover-20261118-catalog-1/metal-primary",
+  "error": {
+    "status": "FAIL2_NO_COMPLETED_PRIMARY_AUDIT",
+    "error": "list indices must be integers or slices, not str"
+  },
+  "cause": "The new command-line wrapper indexed registry(), which returns a list, as a dictionary. The existing audit function and prior successful census were unaffected.",
+  "correction": "Select the definition with next(tool for tool in registry() if tool['id']=='metal').",
+  "retry": "build/handover-20261118-catalog-1/metal-primary-2",
+  "retry_status": "PASS_ALL250_PRIMARY_IDENTITIES_24_INDIVIDUAL_METAL_ROLES_AND47_NAMED_PARAGRAPHS",
+  "retry_matches_previous_success": true,
+  "unresolved": false
+}
