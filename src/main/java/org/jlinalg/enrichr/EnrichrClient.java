@@ -76,7 +76,7 @@ public final class EnrichrClient {
         Reply send(Request request) throws IOException, InterruptedException;
     }
     /** Failures retain the completed/partial exchanges; callers must persist these diagnostics. */
-    public static final class Failure extends IOException {
+    @SuppressWarnings("serial") public static final class Failure extends IOException {
         private final List<Exchange> exchanges;
         private final Integer explicitExitCode;
         Failure(String message, List<Exchange> exchanges) { this(message, exchanges, null); }
@@ -246,7 +246,7 @@ public final class EnrichrClient {
             .getBytes(StandardCharsets.UTF_8);
     }
 
-    private static final class InterruptedTransfer extends InterruptedException {
+    @SuppressWarnings("serial") private static final class InterruptedTransfer extends InterruptedException {
         final Reply reply;
         InterruptedTransfer(Reply reply) { super("HTTP transfer interrupted; captured prefix retained"); this.reply = reply; }
     }

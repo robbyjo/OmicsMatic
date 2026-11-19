@@ -28,6 +28,8 @@ public final class JLinAlgCli {
             if (arguments.length > 0 && arguments[0].equals("study"))
                 return StudyCli.run(Arrays.copyOfRange(
                     arguments, 1, arguments.length), output, errorOutput);
+            if (arguments.length > 0 && arguments[0].equals("enrichr-tools"))
+                return EnrichrWorkflowCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
             if (arguments.length > 0 && arguments[0].equals("gseapy-native"))
                 return GseapyNativeCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
             if (arguments.length > 0 && arguments[0].equals("nextflow-tools"))
@@ -473,6 +475,7 @@ public final class JLinAlgCli {
               java -jar omicsmatic-<version>.jar magma-tools --help
               java -jar omicsmatic-<version>.jar trimmomatic-tools --help
               java -jar omicsmatic-<version>.jar deep-tools --help
+              java -jar omicsmatic-<version>.jar enrichr-tools --help
               java -jar omicsmatic-<version>.jar enrichment-tools --help
               java -jar omicsmatic-<version>.jar favor-annotate --help
               java -jar omicsmatic-<version>.jar fuma-tools --help

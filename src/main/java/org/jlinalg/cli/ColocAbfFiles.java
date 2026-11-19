@@ -12,7 +12,7 @@ import org.jlinalg.coloc.*;
 /** Bounded immutable capture and complete bundle inventory; no overwrite or cleanup. */
 final class ColocAbfFiles {
     private ColocAbfFiles() { }
-    static final class Unavailable extends IOException {
+    @SuppressWarnings("serial") static final class Unavailable extends IOException {
         Unavailable(String message,Exception cause){super(message,cause);}
     }
     static byte[] bytes(Path path,long cap)throws IOException {

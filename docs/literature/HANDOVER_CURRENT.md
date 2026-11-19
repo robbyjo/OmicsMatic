@@ -1,5 +1,15 @@
 # Current toolbox handover
 
+**Start with the [Enrichr workflow development handover](HANDOVER_2026-11-19_ENRICHR_WORKFLOW.md).**
+RUN/VERIFY/REPLAY are implemented. The strict normal Gradle JAR passed 42 tests
+on each of three JVMs; a separate composed reference artifact passed live
+standard/custom/library commands and cross-host offline proofs. Fresh live and
+example qualification of the normal JAR, source-role crosswalk and cumulative
+admission remain open. Counts stay **135 scoped integrations, 1,439 reviewed
+uses and 1,261 pending**. The handover records exact artifact identities,
+historical verifier refusals, prominent recovery actions and private transfer
+paths. The overall goal is unfinished; no release or website change is made.
+
 **Current: [Enrichr source census and Java API component checkpoint](ENRICHR_COMPONENT_CHECKPOINT_2026-11-19.md).**
 The 25-role source census passed all 250 XML identities on Windows/Linux.
 The current-service Java API component passed 16 tests on three JVMs, isolated
