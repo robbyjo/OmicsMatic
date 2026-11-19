@@ -41,6 +41,12 @@ public final class LdscLdScores {
     /** All pairs within [start,end), plus pairs from [left,start) into this chunk.
      * The first chunk is the original algorithm's initial clique. */
     public record Chunk(int start,int end,int left) { }
+    /** Exact selected-source graph before genotype pair accumulation. */
+    public record Pairing(int requestedChunkSize,int effectiveChunkSize,int[] nominalWindowLefts,
+            List<Chunk> chunks,long correlations,int maximumResidentVariants) {
+        public Pairing {nominalWindowLefts=nominalWindowLefts.clone();chunks=List.copyOf(chunks);}
+        @Override public int[] nominalWindowLefts(){return nominalWindowLefts.clone();}
+    }
     public record Result(int inputVariants,int samples,int annotations,int requestedChunkSize,
             int effectiveChunkSize,double window,double minimumMaf,boolean binaryAnnotations,
             int[] retainedInputIndices,int[] nominalWindowLefts,List<VariantAudit> variantAudit,
@@ -81,6 +87,24 @@ public final class LdscLdScores {
         double[] row=source.readVariant(index);require(row!=null&&row.length==n,"Every declared sample requires a hard-call field");return row.clone();
     }
 
+    /** Plans the original chunk graph for already retained, ordered coordinates.
+     * This does not filter genotypes or infer the coordinate population. */
+    public static Pairing pairing(double[] retainedCoordinates,double window,int chunkSize) {
+        require(retainedCoordinates!=null&&retainedCoordinates.length>0&&Double.isFinite(window)&&window>=0&&chunkSize>0,"Nonempty retained coordinates, finite nonnegative window and positive chunk required");
+        double[] coords=retainedCoordinates.clone();int retained=coords.length;
+        for(int i=0;i<retained;i++)require(Double.isFinite(coords[i])&&(i==0||coords[i]>=coords[i-1]),"Finite nondecreasing retained coordinates required");finite(coords[retained-1]-coords[0]);
+        int[] lefts=new int[retained];int left=0;for(int i=0;i<retained;i++){while(left<i&&coords[i]-coords[left]>window)left++;lefts[i]=left;}
+        int first=0;while(first<retained&&lefts[first]==0)first++;long rounded=((long)first+chunkSize-1)/chunkSize*chunkSize;int effective=chunkSize;
+        if(rounded>retained){effective=1;first=retained;}else first=(int)rounded;
+        var chunks=new ArrayList<Chunk>();chunks.add(new Chunk(0,first,0));long pairs=(long)first*(first+1L)/2;int maximumResident=first;
+        for(int start=first;start<retained;) {
+            int end=(int)Math.min((long)retained,(long)start+effective),span=start-lefts[start];int width=(int)(((long)span+effective-1)/effective*effective),from=start-width;
+            require(from>=0&&from<=start,"Source chunk graph is inconsistent");chunks.add(new Chunk(start,end,from));int size=end-start;
+            pairs=Math.addExact(pairs,Math.addExact((long)size*width,(long)size*(size+1L)/2));maximumResident=Math.max(maximumResident,end-from);start=end;
+        }
+        return new Pairing(chunkSize,effective,lefts,chunks,pairs,maximumResident);
+    }
+
     /** Computes selected source unbiased r² = r²-(1-r²)/(N-2), including negative
      * terms and self-correlations. Missing calls are observed-mean imputed before
      * population-SD normalization across all N declared individuals. Variants are
@@ -96,7 +120,11 @@ public final class LdscLdScores {
         require(k>=1&&k<=limits.maximumAnnotations()&&(annotations==null||annotations.length==m),"Matching complete annotation matrix required");
         require(Double.isFinite(window)&&window>=0&&chunkSize>0&&Double.isFinite(minimumMaf)&&minimumMaf>=0&&minimumMaf<=.5,"Finite nonnegative window, positive chunk size and MAF threshold in [0,.5] required");
         long cells=Math.multiplyExact((long)m,k);require(cells<=limits.maximumOutputCells(),"Complete annotation/output population exceeds cell capacity; no truncation");
-        long baseBytes=Math.addExact(Math.multiplyExact(32,cells),Math.addExact(512L*m,24L*n));require(baseBytes<=limits.maximumEstimatedBytes(),"Complete LD-score population exceeds estimated retained-byte capacity");
+        long vectors=Math.multiplyExact(64L,k);
+        // Counts/corrections/result copies need O(K) storage even for tiny M.
+        // Binary overlap work and defensive result copies need four KxK arrays.
+        long overlapBytes=binaryAnnotations?Math.addExact(Math.multiplyExact(32L,Math.multiplyExact((long)k,k)),256L*k):0;
+        long baseBytes=Math.addExact(Math.addExact(Math.multiplyExact(32,cells),Math.addExact(512L*m,24L*n)),Math.addExact(vectors,overlapBytes));require(baseBytes<=limits.maximumEstimatedBytes(),"Complete LD-score population exceeds estimated retained-byte capacity");
         double[] coords=coordinates.clone();for(int i=0;i<m;i++)require(Double.isFinite(coords[i])&&(i==0||coords[i]>=coords[i-1]),"Finite nondecreasing coordinates required; no sorting or coordinate repair");finite(coords[m-1]-coords[0]);
         double[][] annot=new double[m][k];
         for(int i=0;i<m;i++) {
@@ -114,16 +142,9 @@ public final class LdscLdScores {
             audit.add(new VariantAudit(variant,called,n-called,frequency,maf,mean,sd,keep,decision,hash));
         }
         require(retained>0,"All declared variants fail the explicit source MAF/variable-call filter; no LD scores admitted");selected=Arrays.copyOf(selected,retained);
-        int[] lefts=new int[retained];int left=0;for(int i=0;i<retained;i++){while(left<i&&coords[selected[i]]-coords[selected[left]]>window)left++;lefts[i]=left;}
-        int first=0;while(first<retained&&lefts[first]==0)first++;long rounded=((long)first+chunkSize-1)/chunkSize*chunkSize;int effective=chunkSize;
-        if(rounded>retained){effective=1;first=retained;}else first=(int)rounded;
-        var chunks=new ArrayList<Chunk>();chunks.add(new Chunk(0,first,0));long pairs=(long)first*(first+1L)/2;int maximumResident=first;
-        for(int start=first;start<retained;) {
-            int end=(int)Math.min((long)retained,(long)start+effective),span=start-lefts[start];int width=(int)(((long)span+effective-1)/effective*effective),from=start-width;
-            require(from>=0&&from<=start,"Source chunk graph is inconsistent");chunks.add(new Chunk(start,end,from));int size=end-start;
-            pairs=Math.addExact(pairs,Math.addExact((long)size*width,(long)size*(size+1L)/2));maximumResident=Math.max(maximumResident,end-from);start=end;
-        }
-        long cacheCells=Math.multiplyExact((long)maximumResident,n),work=Math.multiplyExact(pairs,n+2L*k);
+        double[] retainedCoords=new double[retained];for(int i=0;i<retained;i++)retainedCoords[i]=coords[selected[i]];
+        Pairing graph=pairing(retainedCoords,window,chunkSize);int[] lefts=graph.nominalWindowLefts();int effective=graph.effectiveChunkSize();List<Chunk> chunks=graph.chunks();long pairs=graph.correlations();
+        long cacheCells=Math.multiplyExact((long)graph.maximumResidentVariants(),n),work=Math.multiplyExact(pairs,n+2L*k);
         if(binaryAnnotations)work=Math.addExact(work,Math.multiplyExact((long)retained,k*(long)k));
         require(pairs<=limits.maximumPairs()&&work<=limits.maximumMultiplyAdds(),"Complete source chunk graph exceeds correlation/work capacity; no pairs or variants removed");
         require(cacheCells<=limits.maximumCachedGenotypeCells(),"Complete source chunk window exceeds normalized-genotype cache capacity");long bytes=Math.addExact(baseBytes,Math.multiplyExact(cacheCells,8));require(bytes<=limits.maximumEstimatedBytes(),"Complete source graph exceeds estimated retained-byte capacity");

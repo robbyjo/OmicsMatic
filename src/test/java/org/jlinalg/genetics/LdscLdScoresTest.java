@@ -91,4 +91,10 @@ class LdscLdScoresTest {
     @Test void duplicateSampleOrdinalsRefuseRatherThanReplicateIndividuals()throws Exception {
         Model model=models(fixtures()).get(0);try(var data=PlinkBedDataset.open(model.prefix,model.ids)){assertThrows(IllegalArgumentException.class,()->LdscLdScores.fromPlink(data,new int[]{0,0,1},model.coords,model.annotations,model.binary,model.window,model.chunk,model.maf,LdscLdScores.Limits.defaults()));}
     }
+    @Test void overlapAndCountVectorStorageAreAdmittedBeforeReadingCalls() {
+        double[][] ann=new double[2][200];for(double[] row:ann)Arrays.fill(row,1);AtomicInteger reads=new AtomicInteger();var data=calls();var source=new LdscLdScores.Genotypes(){public int samples(){return 4;}public int variants(){return 2;}public double[] readVariant(int i){reads.incrementAndGet();return data[i];}};
+        var limits=new LdscLdScores.Limits(100,100,256,100000,100000,100000,1000000,1<<20);
+        var failure=assertThrows(IllegalArgumentException.class,()->LdscLdScores.compute(source,new double[]{0,0},ann,true,0,1,0,limits));assertTrue(failure.getMessage().contains("retained-byte capacity"));assertEquals(0,reads.get());
+        var graph=LdscLdScores.pairing(new double[]{0,1,2,100},0,50);assertEquals(10,graph.correlations());assertEquals(1,graph.effectiveChunkSize());assertEquals(4,graph.maximumResidentVariants());assertEquals(1,graph.chunks().size());graph.nominalWindowLefts()[0]=99;assertEquals(0,graph.nominalWindowLefts()[0]);
+    }
 }
