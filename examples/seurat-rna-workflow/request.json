@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "mode": "RUN",
+  "counts": "inputs/counts.mtx",
+  "features": "inputs/features.txt",
+  "cells": "inputs/cells.txt",
+  "metadata": "inputs/metadata.tsv",
+  "out": "run-1",
+  "normalization": "LogNormalize",
+  "variable_features": 80,
+  "pca": {
+    "solver": "exact",
+    "components": 10
+  },
+  "neighbors": {
+    "k": 12,
+    "method": "rann",
+    "dimensions": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ]
+  },
+  "clustering": {
+    "algorithm": 1,
+    "resolutions": [
+      0.4,
+      0.8
+    ]
+  },
+  "umap": {
+    "neighbors": 12,
+    "epochs": 60
+  },
+  "tsne": {
+    "perplexity": 10,
+    "iterations": 500
+  },
+  "rscript": "C:/path/to/R-4.6.1/bin/Rscript.exe",
+  "r_libraries": [
+    "D:/path/to/private-Seurat-5.6.0-library"
+  ],
+  "timeout_seconds": 180,
+  "maximum_dense_entries": 200000,
+  "maximum_graph_edges": 20000,
+  "maximum_work": 1000000000,
+  "maximum_output_bytes": 100000000
+}

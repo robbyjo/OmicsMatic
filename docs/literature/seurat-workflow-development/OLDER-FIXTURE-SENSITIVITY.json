@@ -1,0 +1,82 @@
+{
+  "status": "PASS_INDEPENDENT_SAVED_ORIGINAL_PCA_AND_CLUSTER_COMPARISON",
+  "scope": "PCA finite values within 1e-10 relative-to-one; exact cluster tables. UMAP/t-SNE discrepancies, if any, are reported without suppression and are not admitted as equality solely by this status.",
+  "profiles": {
+    "log-exact-rann-louvain": {
+      "pca.tsv": {
+        "fields": 960,
+        "maximum_relative_to_one_error": 4.6531853561183494e-15
+      },
+      "umap.tsv": {
+        "fields": 192,
+        "maximum_relative_to_one_error": 4.084638036728188e-15
+      },
+      "tsne.tsv": {
+        "fields": 192,
+        "maximum_relative_to_one_error": 4.141820330850596e-15
+      },
+      "clusters.tsv": {
+        "exact_cell_column_label_agreement": true,
+        "explicit_protocol_headers_checked": true,
+        "rows": 96
+      }
+    },
+    "log-default-annoy-slm": {
+      "pca.tsv": {
+        "fields": 960,
+        "maximum_relative_to_one_error": 4.372785975908326e-15
+      },
+      "umap.tsv": {
+        "fields": 192,
+        "maximum_relative_to_one_error": 4.084638036728188e-15
+      },
+      "tsne.tsv": {
+        "fields": 192,
+        "maximum_relative_to_one_error": 4.801728456490335e-15
+      },
+      "clusters.tsv": {
+        "exact_cell_column_label_agreement": true,
+        "explicit_protocol_headers_checked": true,
+        "rows": 96
+      }
+    },
+    "log-regression-irlba-rann-multilevel": {
+      "pca.tsv": {
+        "fields": 960,
+        "maximum_relative_to_one_error": 3.5876857040761934e-13
+      },
+      "umap.tsv": {
+        "fields": 192,
+        "maximum_relative_to_one_error": 3.3348079100898255e-15
+      },
+      "tsne.tsv": {
+        "fields": 192,
+        "maximum_relative_to_one_error": 1.8105581046184045
+      },
+      "clusters.tsv": {
+        "exact_cell_column_label_agreement": true,
+        "explicit_protocol_headers_checked": true,
+        "rows": 96
+      }
+    },
+    "sct-v2-igraph-leiden": {
+      "pca.tsv": {
+        "fields": 960,
+        "maximum_relative_to_one_error": 4.711332467953865e-15
+      },
+      "umap.tsv": {
+        "fields": 192,
+        "maximum_relative_to_one_error": 4.5019077564404145e-15
+      },
+      "tsne.tsv": {
+        "fields": 192,
+        "maximum_relative_to_one_error": 4.879260663973048e-15
+      },
+      "clusters.tsv": {
+        "exact_cell_column_label_agreement": true,
+        "explicit_protocol_headers_checked": true,
+        "rows": 96
+      }
+    }
+  }
+}

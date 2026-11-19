@@ -1,0 +1,460 @@
+{
+  "status": "PASS_REAL_RUNTIME_AND_RESEALED_CORRUPTION_CONTROLS",
+  "controls": {
+    "missing-rscript": {
+      "exit_code": 3,
+      "expected": 3,
+      "seconds": 0.8430000000007567,
+      "command": [
+        "C:/Program Files/Eclipse Adoptium/jdk-21.0.4.7-hotspot/bin/java.exe",
+        "-Xmx1g",
+        "-cp",
+        "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\seurat-workflow-1\\qualification-1\\omicsmatic-0.4.0.jar",
+        "org.jlinalg.cli.SeuratWorkflowCli",
+        "--request",
+        "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\seurat-workflow-1\\controls-1\\missing-rscript\\request.json"
+      ],
+      "state": {
+        "engine": "upstream-Seurat-RNA-workflow-R",
+        "error": "org.jlinalg.cli.SeuratWorkflowRuntime$Unavailable: Declared Rscript is unavailable or execution is forbidden: D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\seurat-workflow-1\\controls-1\\absent-Rscript.exe",
+        "profile": "Seurat-5.6.0-R4.6.1-RNA-workflow",
+        "required_action": "Read WARNINGS.md, analysis-status.json, diagnostics.json and worker/worker-report.json/logs. SKIP3 means the affected analysis was skipped: supply the named exact permitted runtime/backend in declared private libraries, or leave it skipped. FAIL2 admits no complete result: preserve inputs, partials and diagnostics, correct the named input/model/source/process/capacity cause and retry into NEW output paths. No silent identifier repair, nonfinite replacement, population truncation or algorithm/backend substitution. VERIFY checks captured consistency and stated native arithmetic without R; it does not authenticate a coordinated fabricated capture or refit original models. REPLAY runs the original models again and needs the exact permitted runtime; stochastic/host-dependent byte equality is not promised.",
+        "results_admitted": false,
+        "status": "SKIP3_DEPENDENT_ANALYSIS_SKIPPED"
+      }
+    },
+    "missing-library": {
+      "exit_code": 3,
+      "expected": 3,
+      "seconds": 0.9069999999992433,
+      "command": [
+        "C:/Program Files/Eclipse Adoptium/jdk-21.0.4.7-hotspot/bin/java.exe",
+        "-Xmx1g",
+        "-cp",
+        "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\seurat-workflow-1\\qualification-1\\omicsmatic-0.4.0.jar",
+        "org.jlinalg.cli.SeuratWorkflowCli",
+        "--request",
+        "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\seurat-workflow-1\\controls-1\\missing-library\\request.json"
+      ],
+      "state": {
+        "engine": "upstream-Seurat-RNA-workflow-R",
+        "error": "org.jlinalg.cli.SeuratWorkflowRuntime$Unavailable: Declared R library is unavailable: D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\seurat-workflow-1\\controls-1\\absent-library",
+        "profile": "Seurat-5.6.0-R4.6.1-RNA-workflow",
+        "required_action": "Read WARNINGS.md, analysis-status.json, diagnostics.json and worker/worker-report.json/logs. SKIP3 means the affected analysis was skipped: supply the named exact permitted runtime/backend in declared private libraries, or leave it skipped. FAIL2 admits no complete result: preserve inputs, partials and diagnostics, correct the named input/model/source/process/capacity cause and retry into NEW output paths. No silent identifier repair, nonfinite replacement, population truncation or algorithm/backend substitution. VERIFY checks captured consistency and stated native arithmetic without R; it does not authenticate a coordinated fabricated capture or refit original models. REPLAY runs the original models again and needs the exact permitted runtime; stochastic/host-dependent byte equality is not promised.",
+        "results_admitted": false,
+        "status": "SKIP3_DEPENDENT_ANALYSIS_SKIPPED"
+      }
+    },
+    "wall-limit": {
+      "exit_code": 2,
+      "expected": 2,
+      "seconds": 1.9839999999967404,
+      "command": [
+        "C:/Program Files/Eclipse Adoptium/jdk-21.0.4.7-hotspot/bin/java.exe",
+        "-Xmx1g",
+        "-cp",
+        "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\seurat-workflow-1\\qualification-1\\omicsmatic-0.4.0.jar",
+        "org.jlinalg.cli.SeuratWorkflowCli",
+        "--request",
+        "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\seurat-workflow-1\\controls-1\\wall-limit\\request.json"
+      ],
+      "state": {
+        "engine": "upstream-Seurat-RNA-workflow-R",
+        "error": "java.io.IOException: Original Seurat worker timed out; owned process tree cleanup was requested",
+        "profile": "Seurat-5.6.0-R4.6.1-RNA-workflow",
+        "required_action": "Read WARNINGS.md, analysis-status.json, diagnostics.json and worker/worker-report.json/logs. SKIP3 means the affected analysis was skipped: supply the named exact permitted runtime/backend in declared private libraries, or leave it skipped. FAIL2 admits no complete result: preserve inputs, partials and diagnostics, correct the named input/model/source/process/capacity cause and retry into NEW output paths. No silent identifier repair, nonfinite replacement, population truncation or algorithm/backend substitution. VERIFY checks captured consistency and stated native arithmetic without R; it does not authenticate a coordinated fabricated capture or refit original models. REPLAY runs the original models again and needs the exact permitted runtime; stochastic/host-dependent byte equality is not promised.",
+        "results_admitted": false,
+        "status": "FAIL2_NO_RESULT_ADMITTED"
+      }
+    },
+    "output-limit": {
+      "exit_code": 2,
+      "expected": 2,
+      "seconds": 6.344000000004598,
+      "command": [
+        "C:/Program Files/Eclipse Adoptium/jdk-21.0.4.7-hotspot/bin/java.exe",
+        "-Xmx1g",
+        "-cp",
+        "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\seurat-workflow-1\\qualification-1\\omicsmatic-0.4.0.jar",
+        "org.jlinalg.cli.SeuratWorkflowCli",
+        "--request",
+        "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\seurat-workflow-1\\controls-1\\output-limit\\request.json"
+      ],
+      "state": {
+        "engine": "upstream-Seurat-RNA-workflow-R",
+        "error": "java.io.IOException: maximum_output_bytes exceeded by the original worker; no result admitted",
+        "profile": "Seurat-5.6.0-R4.6.1-RNA-workflow",
+        "required_action": "Read WARNINGS.md, analysis-status.json, diagnostics.json and worker/worker-report.json/logs. SKIP3 means the affected analysis was skipped: supply the named exact permitted runtime/backend in declared private libraries, or leave it skipped. FAIL2 admits no complete result: preserve inputs, partials and diagnostics, correct the named input/model/source/process/capacity cause and retry into NEW output paths. No silent identifier repair, nonfinite replacement, population truncation or algorithm/backend substitution. VERIFY checks captured consistency and stated native arithmetic without R; it does not authenticate a coordinated fabricated capture or refit original models. REPLAY runs the original models again and needs the exact permitted runtime; stochastic/host-dependent byte equality is not promised.",
+        "results_admitted": false,
+        "status": "FAIL2_NO_RESULT_ADMITTED"
+      }
+    },
+    "dense-limit": {
+      "exit_code": 2,
+      "expected": 2,
+      "seconds": 0.7339999999967404,
+      "command": [
+        "C:/Program Files/Eclipse Adoptium/jdk-21.0.4.7-hotspot/bin/java.exe",
+        "-Xmx1g",
+        "-cp",
+        "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\seurat-workflow-1\\qualification-1\\omicsmatic-0.4.0.jar",
+        "org.jlinalg.cli.SeuratWorkflowCli",
+        "--request",
+        "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\seurat-workflow-1\\controls-1\\dense-limit\\request.json"
+      ],
+      "state": {
+        "engine": "upstream-Seurat-RNA-workflow-R",
+        "error": "java.io.IOException: Require at least 3 features/4 cells and full RNA population within maximum_dense_entries",
+        "profile": "Seurat-5.6.0-R4.6.1-RNA-workflow",
+        "required_action": "Read WARNINGS.md, analysis-status.json, diagnostics.json and worker/worker-report.json/logs. SKIP3 means the affected analysis was skipped: supply the named exact permitted runtime/backend in declared private libraries, or leave it skipped. FAIL2 admits no complete result: preserve inputs, partials and diagnostics, correct the named input/model/source/process/capacity cause and retry into NEW output paths. No silent identifier repair, nonfinite replacement, population truncation or algorithm/backend substitution. VERIFY checks captured consistency and stated native arithmetic without R; it does not authenticate a coordinated fabricated capture or refit original models. REPLAY runs the original models again and needs the exact permitted runtime; stochastic/host-dependent byte equality is not promised.",
+        "results_admitted": false,
+        "status": "FAIL2_NO_RESULT_ADMITTED"
+      }
+    },
+    "unknown-field": {
+      "exit_code": 2,
+      "expected": 2,
+      "seconds": 0.125,
+      "command": [
+        "C:/Program Files/Eclipse Adoptium/jdk-21.0.4.7-hotspot/bin/java.exe",
+        "-Xmx1g",
+        "-cp",
+        "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\seurat-workflow-1\\qualification-1\\omicsmatic-0.4.0.jar",
+        "org.jlinalg.cli.SeuratWorkflowCli",
+        "--request",
+        "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\seurat-workflow-1\\controls-1\\unknown-field\\request.json"
+      ]
+    },
+    "unavailable-requested-leidenbase": {
+      "exit_code": 3,
+      "expected": 3,
+      "seconds": 4.453000000001339,
+      "command": [
+        "C:/Program Files/Eclipse Adoptium/jdk-21.0.4.7-hotspot/bin/java.exe",
+        "-Xmx1g",
+        "-cp",
+        "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\seurat-workflow-1\\qualification-1\\omicsmatic-0.4.0.jar",
+        "org.jlinalg.cli.SeuratWorkflowCli",
+        "--request",
+        "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\seurat-workflow-1\\controls-1\\unavailable-requested-leidenbase\\request.json"
+      ],
+      "state": {
+        "engine": "upstream-Seurat-RNA-workflow-R",
+        "error": "org.jlinalg.cli.SeuratWorkflowRuntime$Unavailable: Required package unavailable: leidenbase need 0.1.36. Preserve inputs, partials and logs; inspect WARNINGS.md and worker-report.json. Supply exact permitted dependencies or leave the dependent analysis skipped. Correct named input/model/source/capacity failures and retry into a NEW output directory.",
+        "profile": "Seurat-5.6.0-R4.6.1-RNA-workflow",
+        "required_action": "Read WARNINGS.md, analysis-status.json, diagnostics.json and worker/worker-report.json/logs. SKIP3 means the affected analysis was skipped: supply the named exact permitted runtime/backend in declared private libraries, or leave it skipped. FAIL2 admits no complete result: preserve inputs, partials and diagnostics, correct the named input/model/source/process/capacity cause and retry into NEW output paths. No silent identifier repair, nonfinite replacement, population truncation or algorithm/backend substitution. VERIFY checks captured consistency and stated native arithmetic without R; it does not authenticate a coordinated fabricated capture or refit original models. REPLAY runs the original models again and needs the exact permitted runtime; stochastic/host-dependent byte equality is not promised.",
+        "results_admitted": false,
+        "status": "SKIP3_DEPENDENT_ANALYSIS_SKIPPED"
+      }
+    },
+    "wrong-cell-order": {
+      "exit_code": 2,
+      "expected": 2,
+      "seconds": 0.7339999999967404,
+      "command": [
+        "C:/Program Files/Eclipse Adoptium/jdk-21.0.4.7-hotspot/bin/java.exe",
+        "-Xmx1g",
+        "-cp",
+        "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\seurat-workflow-1\\qualification-1\\omicsmatic-0.4.0.jar",
+        "org.jlinalg.cli.SeuratWorkflowCli",
+        "--request",
+        "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\seurat-workflow-1\\controls-1\\wrong-cell-order\\request.json"
+      ],
+      "state": {
+        "engine": "upstream-Seurat-RNA-workflow-R",
+        "error": "java.io.IOException: Metadata rows must match exact count-cell identities/order",
+        "profile": "Seurat-5.6.0-R4.6.1-RNA-workflow",
+        "required_action": "Read WARNINGS.md, analysis-status.json, diagnostics.json and worker/worker-report.json/logs. SKIP3 means the affected analysis was skipped: supply the named exact permitted runtime/backend in declared private libraries, or leave it skipped. FAIL2 admits no complete result: preserve inputs, partials and diagnostics, correct the named input/model/source/process/capacity cause and retry into NEW output paths. No silent identifier repair, nonfinite replacement, population truncation or algorithm/backend substitution. VERIFY checks captured consistency and stated native arithmetic without R; it does not authenticate a coordinated fabricated capture or refit original models. REPLAY runs the original models again and needs the exact permitted runtime; stochastic/host-dependent byte equality is not promised.",
+        "results_admitted": false,
+        "status": "FAIL2_NO_RESULT_ADMITTED"
+      }
+    },
+    "source-model-no-expression": {
+      "exit_code": 2,
+      "expected": 2,
+      "seconds": 4.328000000001339,
+      "command": [
+        "C:/Program Files/Eclipse Adoptium/jdk-21.0.4.7-hotspot/bin/java.exe",
+        "-Xmx1g",
+        "-cp",
+        "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\seurat-workflow-1\\qualification-1\\omicsmatic-0.4.0.jar",
+        "org.jlinalg.cli.SeuratWorkflowCli",
+        "--request",
+        "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\seurat-workflow-1\\controls-1\\source-model-no-expression\\request.json"
+      ],
+      "state": {
+        "engine": "upstream-Seurat-RNA-workflow-R",
+        "error": "java.io.IOException: Original Seurat failed: invalid 'x'",
+        "profile": "Seurat-5.6.0-R4.6.1-RNA-workflow",
+        "required_action": "Read WARNINGS.md, analysis-status.json, diagnostics.json and worker/worker-report.json/logs. SKIP3 means the affected analysis was skipped: supply the named exact permitted runtime/backend in declared private libraries, or leave it skipped. FAIL2 admits no complete result: preserve inputs, partials and diagnostics, correct the named input/model/source/process/capacity cause and retry into NEW output paths. No silent identifier repair, nonfinite replacement, population truncation or algorithm/backend substitution. VERIFY checks captured consistency and stated native arithmetic without R; it does not authenticate a coordinated fabricated capture or refit original models. REPLAY runs the original models again and needs the exact permitted runtime; stochastic/host-dependent byte equality is not promised.",
+        "results_admitted": false,
+        "status": "FAIL2_NO_RESULT_ADMITTED"
+      }
+    },
+    "loaded-source-guard": {
+      "exit_code": 2,
+      "expected": 2,
+      "seconds": 4.5,
+      "command": [
+        "C:/Program Files/Eclipse Adoptium/jdk-21.0.4.7-hotspot/bin/java.exe",
+        "-Xmx1g",
+        "-cp",
+        "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\seurat-workflow-1\\controls-1\\altered-reference-resources;D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\seurat-workflow-1\\qualification-1\\omicsmatic-0.4.0.jar",
+        "org.jlinalg.cli.SeuratWorkflowCli",
+        "--request",
+        "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\seurat-workflow-1\\controls-1\\loaded-source-guard\\request.json"
+      ],
+      "state": {
+        "engine": "upstream-Seurat-RNA-workflow-R",
+        "error": "java.io.IOException: Original Seurat failed: Loaded source body/formals differ: RunPCA.default",
+        "profile": "Seurat-5.6.0-R4.6.1-RNA-workflow",
+        "required_action": "Read WARNINGS.md, analysis-status.json, diagnostics.json and worker/worker-report.json/logs. SKIP3 means the affected analysis was skipped: supply the named exact permitted runtime/backend in declared private libraries, or leave it skipped. FAIL2 admits no complete result: preserve inputs, partials and diagnostics, correct the named input/model/source/process/capacity cause and retry into NEW output paths. No silent identifier repair, nonfinite replacement, population truncation or algorithm/backend substitution. VERIFY checks captured consistency and stated native arithmetic without R; it does not authenticate a coordinated fabricated capture or refit original models. REPLAY runs the original models again and needs the exact permitted runtime; stochastic/host-dependent byte equality is not promised.",
+        "results_admitted": false,
+        "status": "FAIL2_NO_RESULT_ADMITTED"
+      }
+    },
+    "refuse-verify-missing-rscript": {
+      "exit_code": 2,
+      "expected": 2,
+      "seconds": 0.18800000000192085,
+      "command": [
+        "C:/Program Files/Eclipse Adoptium/jdk-21.0.4.7-hotspot/bin/java.exe",
+        "-Xmx1g",
+        "-cp",
+        "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\seurat-workflow-1\\qualification-1\\omicsmatic-0.4.0.jar",
+        "org.jlinalg.cli.SeuratWorkflowCli",
+        "--request",
+        "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\seurat-workflow-1\\controls-1\\refuse-verify-missing-rscript\\request.json"
+      ]
+    },
+    "refuse-verify-missing-library": {
+      "exit_code": 2,
+      "expected": 2,
+      "seconds": 0.20399999999790452,
+      "command": [
+        "C:/Program Files/Eclipse Adoptium/jdk-21.0.4.7-hotspot/bin/java.exe",
+        "-Xmx1g",
+        "-cp",
+        "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\seurat-workflow-1\\qualification-1\\omicsmatic-0.4.0.jar",
+        "org.jlinalg.cli.SeuratWorkflowCli",
+        "--request",
+        "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\seurat-workflow-1\\controls-1\\refuse-verify-missing-library\\request.json"
+      ]
+    },
+    "refuse-verify-wall-limit": {
+      "exit_code": 2,
+      "expected": 2,
+      "seconds": 0.2180000000007567,
+      "command": [
+        "C:/Program Files/Eclipse Adoptium/jdk-21.0.4.7-hotspot/bin/java.exe",
+        "-Xmx1g",
+        "-cp",
+        "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\seurat-workflow-1\\qualification-1\\omicsmatic-0.4.0.jar",
+        "org.jlinalg.cli.SeuratWorkflowCli",
+        "--request",
+        "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\seurat-workflow-1\\controls-1\\refuse-verify-wall-limit\\request.json"
+      ]
+    },
+    "refuse-verify-output-limit": {
+      "exit_code": 2,
+      "expected": 2,
+      "seconds": 0.23500000000058208,
+      "command": [
+        "C:/Program Files/Eclipse Adoptium/jdk-21.0.4.7-hotspot/bin/java.exe",
+        "-Xmx1g",
+        "-cp",
+        "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\seurat-workflow-1\\qualification-1\\omicsmatic-0.4.0.jar",
+        "org.jlinalg.cli.SeuratWorkflowCli",
+        "--request",
+        "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\seurat-workflow-1\\controls-1\\refuse-verify-output-limit\\request.json"
+      ]
+    },
+    "refuse-verify-dense-limit": {
+      "exit_code": 2,
+      "expected": 2,
+      "seconds": 0.23399999999674037,
+      "command": [
+        "C:/Program Files/Eclipse Adoptium/jdk-21.0.4.7-hotspot/bin/java.exe",
+        "-Xmx1g",
+        "-cp",
+        "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\seurat-workflow-1\\qualification-1\\omicsmatic-0.4.0.jar",
+        "org.jlinalg.cli.SeuratWorkflowCli",
+        "--request",
+        "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\seurat-workflow-1\\controls-1\\refuse-verify-dense-limit\\request.json"
+      ]
+    },
+    "refuse-verify-unavailable-requested-leidenbase": {
+      "exit_code": 2,
+      "expected": 2,
+      "seconds": 0.2190000000045984,
+      "command": [
+        "C:/Program Files/Eclipse Adoptium/jdk-21.0.4.7-hotspot/bin/java.exe",
+        "-Xmx1g",
+        "-cp",
+        "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\seurat-workflow-1\\qualification-1\\omicsmatic-0.4.0.jar",
+        "org.jlinalg.cli.SeuratWorkflowCli",
+        "--request",
+        "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\seurat-workflow-1\\controls-1\\refuse-verify-unavailable-requested-leidenbase\\request.json"
+      ]
+    },
+    "refuse-verify-wrong-cell-order": {
+      "exit_code": 2,
+      "expected": 2,
+      "seconds": 0.17199999999866122,
+      "command": [
+        "C:/Program Files/Eclipse Adoptium/jdk-21.0.4.7-hotspot/bin/java.exe",
+        "-Xmx1g",
+        "-cp",
+        "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\seurat-workflow-1\\qualification-1\\omicsmatic-0.4.0.jar",
+        "org.jlinalg.cli.SeuratWorkflowCli",
+        "--request",
+        "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\seurat-workflow-1\\controls-1\\refuse-verify-wrong-cell-order\\request.json"
+      ]
+    },
+    "refuse-verify-source-model-no-expression": {
+      "exit_code": 2,
+      "expected": 2,
+      "seconds": 0.23400000000401633,
+      "command": [
+        "C:/Program Files/Eclipse Adoptium/jdk-21.0.4.7-hotspot/bin/java.exe",
+        "-Xmx1g",
+        "-cp",
+        "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\seurat-workflow-1\\qualification-1\\omicsmatic-0.4.0.jar",
+        "org.jlinalg.cli.SeuratWorkflowCli",
+        "--request",
+        "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\seurat-workflow-1\\controls-1\\refuse-verify-source-model-no-expression\\request.json"
+      ]
+    },
+    "refuse-verify-loaded-source-guard": {
+      "exit_code": 2,
+      "expected": 2,
+      "seconds": 0.23500000000058208,
+      "command": [
+        "C:/Program Files/Eclipse Adoptium/jdk-21.0.4.7-hotspot/bin/java.exe",
+        "-Xmx1g",
+        "-cp",
+        "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\seurat-workflow-1\\qualification-1\\omicsmatic-0.4.0.jar",
+        "org.jlinalg.cli.SeuratWorkflowCli",
+        "--request",
+        "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\seurat-workflow-1\\controls-1\\refuse-verify-loaded-source-guard\\request.json"
+      ]
+    },
+    "raw-hash-corruption": {
+      "exit_code": 2,
+      "expected": 2,
+      "seconds": 0.4219999999986612,
+      "command": [
+        "C:/Program Files/Eclipse Adoptium/jdk-21.0.4.7-hotspot/bin/java.exe",
+        "-Xmx1g",
+        "-cp",
+        "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\seurat-workflow-1\\qualification-1\\omicsmatic-0.4.0.jar",
+        "org.jlinalg.cli.SeuratWorkflowCli",
+        "--request",
+        "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\seurat-workflow-1\\controls-1\\raw-hash-corruption\\request.json"
+      ]
+    },
+    "resealed-snn": {
+      "exit_code": 2,
+      "expected": 2,
+      "seconds": 0.7649999999994179,
+      "command": [
+        "C:/Program Files/Eclipse Adoptium/jdk-21.0.4.7-hotspot/bin/java.exe",
+        "-Xmx1g",
+        "-cp",
+        "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\seurat-workflow-1\\qualification-1\\omicsmatic-0.4.0.jar",
+        "org.jlinalg.cli.SeuratWorkflowCli",
+        "--request",
+        "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\seurat-workflow-1\\controls-1\\resealed-snn\\request.json"
+      ]
+    },
+    "resealed-pca": {
+      "exit_code": 2,
+      "expected": 2,
+      "seconds": 0.7180000000007567,
+      "command": [
+        "C:/Program Files/Eclipse Adoptium/jdk-21.0.4.7-hotspot/bin/java.exe",
+        "-Xmx1g",
+        "-cp",
+        "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\seurat-workflow-1\\qualification-1\\omicsmatic-0.4.0.jar",
+        "org.jlinalg.cli.SeuratWorkflowCli",
+        "--request",
+        "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\seurat-workflow-1\\controls-1\\resealed-pca\\request.json"
+      ]
+    },
+    "resealed-preparation": {
+      "exit_code": 2,
+      "expected": 2,
+      "seconds": 0.5309999999954016,
+      "command": [
+        "C:/Program Files/Eclipse Adoptium/jdk-21.0.4.7-hotspot/bin/java.exe",
+        "-Xmx1g",
+        "-cp",
+        "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\seurat-workflow-1\\qualification-1\\omicsmatic-0.4.0.jar",
+        "org.jlinalg.cli.SeuratWorkflowCli",
+        "--request",
+        "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\seurat-workflow-1\\controls-1\\resealed-preparation\\request.json"
+      ]
+    },
+    "resealed-source": {
+      "exit_code": 2,
+      "expected": 2,
+      "seconds": 0.25,
+      "command": [
+        "C:/Program Files/Eclipse Adoptium/jdk-21.0.4.7-hotspot/bin/java.exe",
+        "-Xmx1g",
+        "-cp",
+        "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\seurat-workflow-1\\qualification-1\\omicsmatic-0.4.0.jar",
+        "org.jlinalg.cli.SeuratWorkflowCli",
+        "--request",
+        "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\seurat-workflow-1\\controls-1\\resealed-source\\request.json"
+      ]
+    },
+    "resealed-warnings": {
+      "exit_code": 2,
+      "expected": 2,
+      "seconds": 0.9850000000005821,
+      "command": [
+        "C:/Program Files/Eclipse Adoptium/jdk-21.0.4.7-hotspot/bin/java.exe",
+        "-Xmx1g",
+        "-cp",
+        "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\seurat-workflow-1\\qualification-1\\omicsmatic-0.4.0.jar",
+        "org.jlinalg.cli.SeuratWorkflowCli",
+        "--request",
+        "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\seurat-workflow-1\\controls-1\\resealed-warnings\\request.json"
+      ]
+    },
+    "replay": {
+      "exit_code": 0,
+      "expected": 0,
+      "command": [
+        "C:/Program Files/Eclipse Adoptium/jdk-21.0.4.7-hotspot/bin/java.exe",
+        "-Xmx1g",
+        "-cp",
+        "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\seurat-workflow-1\\qualification-1\\omicsmatic-0.4.0.jar",
+        "org.jlinalg.cli.SeuratWorkflowCli",
+        "--request",
+        "D:\\projects\\JLinAlg\\build\\high-impact-stats-1\\build\\seurat-workflow-1\\controls-1\\replay\\request.json"
+      ],
+      "selected_published_views_byte_identical": true,
+      "prior_capture_unchanged": true
+    }
+  },
+  "owned_timeout_processes": [
+    {
+      "alive_after_cleanup": false,
+      "pid": 27136
+    },
+    {
+      "alive_after_cleanup": false,
+      "pid": 9228
+    },
+    {
+      "alive_after_cleanup": false,
+      "pid": 32832
+    },
+    {
+      "alive_after_cleanup": false,
+      "pid": 19876
+    }
+  ]
+}
