@@ -1,5 +1,11 @@
 # Current toolbox handover
 
+**Start with the [final 19 November handover](HANDOVER_2026-11-19_FINAL.md).**
+It records completed work, ordered next priorities, exact skip/error recovery,
+private transfer requirements and the preserved worktree overlay archive.
+The COLOC admission is pushed to main; totals are 135 new scoped integrations
+and 1,261 tool uses still awaiting review. The full goal remains unfinished.
+
 **Current: [COLOC cumulative catalog admission is complete](COLOC_CATALOG_CHECKPOINT_2026-11-19.md).**
 Fresh post-admission source/predecessor/qualification verification passed.
 Totals are **135 new scoped integrations (25 native Java +110 upstream),
