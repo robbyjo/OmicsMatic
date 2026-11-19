@@ -1,6 +1,14 @@
 # Current toolbox handover
 
-**Current: [PLINK-family cumulative catalog admission is complete](PLINK_CATALOG_CHECKPOINT_2026-11-19.md).**
+**Current handoff: [COLOC ABF implementation and ordered remaining work](HANDOVER_2026-11-19_COLOC_ABF.md).**
+The new native library component passed 40 reference/boundary tests on Windows
+Java 21/25 and Linux Java 21. Its 27-role source audit passed all 250 frozen
+paper identities. Source, tests, synthetic reference fixture, compact evidence,
+warnings/recovery and machine-transfer instructions are saved. Ordinary-summary
+CLI/workflow and cumulative COLOC catalog admission remain open; no additional
+family credit is awarded. Continue higher-impact scopes after those steps.
+
+**Catalog baseline: [PLINK-family cumulative catalog admission is complete](PLINK_CATALOG_CHECKPOINT_2026-11-19.md).**
 The fresh post-admission audit passed. Totals are **134 new scoped integrations
 (24 native Java + 110 upstream), 2,700 observations, 1,413 reviewed uses and
 1,287 pending**. All earlier reviews, immutable evidence and source guards are
