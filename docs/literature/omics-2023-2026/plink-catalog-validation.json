@@ -1,0 +1,890 @@
+{
+  "status": "PASS_PLINK_FAMILY_CUMULATIVE_ADMISSION_96_ROLES_THREE_SCOPED_ADAPTERS",
+  "papers": 250,
+  "named_tools": 446,
+  "registry_definitions": 485,
+  "observations": 2700,
+  "reviewed_uses": 1413,
+  "unreviewed_uses": 1287,
+  "positive_plink_family_roles": 96,
+  "existing_reviews_retained": 1339,
+  "new_review_records": 74,
+  "observations_added": 4,
+  "observations_removed": 0,
+  "new_scoped_integrations": 134,
+  "native_integrations": 24,
+  "upstream_integrations": 110,
+  "including_existing_adapters": 137,
+  "missing": 259,
+  "method_overlap": 41,
+  "new_scoped_integration_credit": 3,
+  "upstream_family_credit_added": 3,
+  "native_family_credit_added": 0,
+  "whole_goal_complete": false,
+  "base_commit": "9ae51b21b01967b357f932d3a76688645fad1df0",
+  "source_code": {
+    "tools/literature/plink_catalog/admission_model.py": {
+      "bytes": 10808,
+      "sha256": "234d72c8e977472801029a4df56de7929def1e84db7d4ed1201cc9a146fad713"
+    },
+    "tools/literature/plink_catalog/evidence.py": {
+      "bytes": 5903,
+      "sha256": "06817c8bd36122b134a3b36d827bf3b06111a332585e59851fafdb44d3cb18d8"
+    },
+    "tools/literature/plink_catalog/catalog.py": {
+      "bytes": 13268,
+      "sha256": "b9639d8ee6cafa960d2df61ab97d6179e4793d1f5348bd317fb2a1cdfa8c90a7"
+    },
+    "tools/literature/plink_catalog/test_admission.py": {
+      "bytes": 8908,
+      "sha256": "770f42bd8c7a3e74a7a6abefeaea7769d188aaa480c8ea4ab1a58d014285d2b0"
+    },
+    "tools/literature/plink_catalog/ADMISSION.md": {
+      "bytes": 3656,
+      "sha256": "e443eb0595cbe47d72fee3ee732dcf24e794509f73d24a266ff70aa59e0f1e36"
+    }
+  },
+  "foundation_sources": {
+    "docs/literature/HISTORICAL_KING_INTEGRATION.md": {
+      "bytes": 9800,
+      "sha256": "84c851bcdcc233b55a5dc049547ac540f2202394bd70e7670b9e991a96f666f8"
+    },
+    "docs/literature/KING_INTEGRATION.md": {
+      "bytes": 11980,
+      "sha256": "7722eed48d080e96af62b9d3891f0e810f8b3c9dca85a094d7facbc79959ae61"
+    },
+    "docs/literature/NATIVE_KING_ROBUST.md": {
+      "bytes": 12605,
+      "sha256": "7ffa3c12323cc23a34ff7f2486b374f1847c705d5ecf49ad2d33791aa9491200"
+    },
+    "docs/literature/NATIVE_KING_THRESHOLDS.md": {
+      "bytes": 4165,
+      "sha256": "7609d4ade82e3712cbebf5fddd4f7218d9e08dc179097b9dd619ade876391ac2"
+    },
+    "examples/native-king/KingBedExample.java": {
+      "bytes": 3336,
+      "sha256": "c61ca59eaf1b6eff6dcc02da26d8b04e72770de4737a6d0dcb9c9569cd91d187"
+    },
+    "examples/native-king/KingThresholdExample.java": {
+      "bytes": 1295,
+      "sha256": "ddf24c45ae264d25483ccf8c2ff65363e6f8d165c58a6a9079eea8e989861de0"
+    },
+    "examples/plink-relatedness/make_requests.py": {
+      "bytes": 2295,
+      "sha256": "4bcae79aab0ee19c953c3f33cc330050c5acadf8c0beca5417e53837bf9812c1"
+    },
+    "src/main/java/org/jlinalg/cli/GenotypeScoreCli.java": {
+      "bytes": 24214,
+      "sha256": "08d8339fc44d854f13c256d5958a2e51a61b219f2d39914225aadd14877096e5"
+    },
+    "src/main/java/org/jlinalg/cli/KingAudit.java": {
+      "bytes": 22339,
+      "sha256": "9c3f8b6c521f8b83fbd8687a3f06b83bfaca8c6873134fbe5fc95afec2788b07"
+    },
+    "src/main/java/org/jlinalg/cli/KingHistoricalAudit.java": {
+      "bytes": 13019,
+      "sha256": "5063fe29bbf33f32b5cc644fcbea1cd3065c32cc9dca5d9ea9b1a4c77ea2d091"
+    },
+    "src/main/java/org/jlinalg/cli/KingHistoricalProfiles.java": {
+      "bytes": 1727,
+      "sha256": "750cc2c9c914d72771a6a8c7ca4cd9ba76d9772eae5463f42ce5109e39d7459b"
+    },
+    "src/main/java/org/jlinalg/cli/KingHistoricalRequest.java": {
+      "bytes": 1592,
+      "sha256": "f27e8553616cee6e6f370a957074cc87623d991f12f797d27ca2791f6d814105"
+    },
+    "src/main/java/org/jlinalg/cli/KingHistoricalToolsCli.java": {
+      "bytes": 32042,
+      "sha256": "0a5f78391a6b92f73f01d16763b93cc071a9efef4222ea985f4a3c2ffda8c5f5"
+    },
+    "src/main/java/org/jlinalg/cli/KingRequest.java": {
+      "bytes": 2935,
+      "sha256": "28f2ed26ed42d1b52de2a65502af528b17614e66392c1c4c993a88cbf5e86294"
+    },
+    "src/main/java/org/jlinalg/cli/KingToolsCli.java": {
+      "bytes": 32413,
+      "sha256": "1b95aad3ab7855c52c247d4ad1c6b54ad17011be72f19d81b7a506fc5ea0835d"
+    },
+    "src/main/java/org/jlinalg/cli/NextflowFiles.java": {
+      "bytes": 11223,
+      "sha256": "f92f44f95a5844fc65c8bf949a4180a0d43deb499127f8d0c60e05fc048e7cd7"
+    },
+    "src/main/java/org/jlinalg/cli/NextflowJson.java": {
+      "bytes": 3893,
+      "sha256": "26e6cbb0536c1b8f1eadc9807bd511756a9de0fe25ffac6e954adc47feec88d9"
+    },
+    "src/main/java/org/jlinalg/cli/NextflowParameters.java": {
+      "bytes": 8962,
+      "sha256": "7ca939ae608453f6f1e029aa3405f8386c9b1d7cb3ce42d902c34ef54df5b173"
+    },
+    "src/main/java/org/jlinalg/cli/PlinkGlmInputs.java": {
+      "bytes": 17931,
+      "sha256": "0bf17b5d3576d3adc447516dc829a4738af705606c1f1fee3a24e55223cbc84a"
+    },
+    "src/main/java/org/jlinalg/cli/PlinkPcaCli.java": {
+      "bytes": 22323,
+      "sha256": "d173f8f26781f0522883d4bdea0bd25143de9b76b0d660b89b3534f391330c7d"
+    },
+    "src/main/java/org/jlinalg/cli/PlinkPcaInputs.java": {
+      "bytes": 9348,
+      "sha256": "54a73cfee12771f724782673858a2026f578277375d3f5b45f0510198a41409a"
+    },
+    "src/main/java/org/jlinalg/cli/PlinkPcaQuality.java": {
+      "bytes": 5195,
+      "sha256": "0f89ce303e641b0b3ae343e6e3204a5f969bdf413256c4276fec2eb686b7d112"
+    },
+    "src/main/java/org/jlinalg/cli/PlinkPcaReports.java": {
+      "bytes": 10508,
+      "sha256": "15e25cdc412a38c6a40a2fde65cc54a85f080186bec506e2116c8aaa1434f669"
+    },
+    "src/main/java/org/jlinalg/cli/PlinkPruneCli.java": {
+      "bytes": 20040,
+      "sha256": "461abf1f4a9d20d56f2e30865aeb6e2ef68b6b6ef811761567fac750a470e903"
+    },
+    "src/main/java/org/jlinalg/cli/PlinkQcCli.java": {
+      "bytes": 16438,
+      "sha256": "b256ddf7e9e2cdc78ef55d144a63480d545d7e6b75d7388a086b503fb3d2dbbc"
+    },
+    "src/main/java/org/jlinalg/cli/PlinkQcInputs.java": {
+      "bytes": 15144,
+      "sha256": "785590b22d21ab5d9fabe0c3b2a9536f4f3bcbed85c4b91280d35d1a3d72d63a"
+    },
+    "src/main/java/org/jlinalg/cli/PlinkQcPipeline.java": {
+      "bytes": 20363,
+      "sha256": "502e2161716f7a92204c5fa84dd5a63ed72ed35f6e5edb9508e4dae68a62bb3e"
+    },
+    "src/main/java/org/jlinalg/cli/PlinkQcReports.java": {
+      "bytes": 8328,
+      "sha256": "3366645baf796a3d2d2b879474ec0c0434a63effa245218988934ca70e1df54e"
+    },
+    "src/main/java/org/jlinalg/cli/PlinkRelatednessCli.java": {
+      "bytes": 20184,
+      "sha256": "e0e43edfd60a359acf2a43c6cfe87a09fe45e4ea0172efc481711b7a72828e37"
+    },
+    "src/main/java/org/jlinalg/cli/PlinkRelatednessContracts.java": {
+      "bytes": 5190,
+      "sha256": "5d21da48b2025980b8ba923d3274bf9d9098ab8852b2b4845a84aa34f3336b87"
+    },
+    "src/main/java/org/jlinalg/cli/PlinkRelatednessInputs.java": {
+      "bytes": 9198,
+      "sha256": "5e93418d9ad7a66eb11f18f0196c75da9658e96887217d66bfd83588b44070bb"
+    },
+    "src/main/java/org/jlinalg/cli/PlinkRelatednessReports.java": {
+      "bytes": 19444,
+      "sha256": "c39a6524efcad55a309126c38f6aa19716055b9e285f414f34fb02e7c53760e2"
+    },
+    "src/main/java/org/jlinalg/cli/PlinkRelatednessRuntime.java": {
+      "bytes": 13633,
+      "sha256": "dde4d1b9233071b678245b9b49113dcef0838b2daf9b2b2fd1923ba1fcaabe79"
+    },
+    "src/main/java/org/jlinalg/cli/PlinkRelatednessSupport.java": {
+      "bytes": 12383,
+      "sha256": "1a06d80f1b0c851a13bfba1716446611644832fd3507a4a75afcf1e6695713f8"
+    },
+    "src/main/java/org/jlinalg/cli/PlinkRuntime.java": {
+      "bytes": 9985,
+      "sha256": "2a85936d20b36307d0705c2914a3e888883af7acea1098c18696a7e99c4ba766"
+    },
+    "src/main/java/org/jlinalg/cli/PlinkToolsCli.java": {
+      "bytes": 25818,
+      "sha256": "0706da9e6d841af32de395dc6dd728f5f1223c97a308a780b833a8f9b23e04de"
+    },
+    "src/main/java/org/jlinalg/cli/SimpleJson.java": {
+      "bytes": 6107,
+      "sha256": "8425dc1a2179763af43c86898cf2b21d8c17dc76bdcabe0133d0ddcb6d6add5b"
+    },
+    "src/main/java/org/jlinalg/genetics/DiploidScores.java": {
+      "bytes": 10594,
+      "sha256": "8ba79c896bbb087d2ed9100e364bcc3eeaa75c2f4cc409e6ea78c9c278b92ed3"
+    },
+    "src/main/java/org/jlinalg/genetics/KingKinshipThreshold.java": {
+      "bytes": 5195,
+      "sha256": "38831fc077e3defee91b90a89d19bfb5d8b95c59c6758721083c034c492af818"
+    },
+    "src/main/java/org/jlinalg/genetics/KingRobustKinship.java": {
+      "bytes": 14756,
+      "sha256": "0bc5b70b220ed0751a6a7a638236c710ad50d0b11e5d14b7fcda28df0fe2a8f7"
+    },
+    "src/main/java/org/jlinalg/genetics/PlinkAssociations.java": {
+      "bytes": 14422,
+      "sha256": "e27fb1e25ff590519a62de967c9c994308ff4a2abde412859c5248425534b3ef"
+    },
+    "src/main/java/org/jlinalg/genetics/PlinkBedDataset.java": {
+      "bytes": 15260,
+      "sha256": "7cf9ea9081bd0298555436c54916742990f1480f7db133872d62bdc275c13872"
+    },
+    "src/main/java/org/jlinalg/genetics/PlinkBedLdClumper.java": {
+      "bytes": 24878,
+      "sha256": "1c1da1028a8efa18900918beadbf74f1e64a7abcc6aa9747bc557a7d6e8a4f25"
+    },
+    "src/main/java/org/jlinalg/genetics/PlinkConfidenceIntervals.java": {
+      "bytes": 6019,
+      "sha256": "9b787e9bdf25eb4d77707a55fe0661e352472489f619d440c2417cfef143d114"
+    },
+    "src/main/resources/org/jlinalg/omics/king-historical/setup_king_historical_runtime.py": {
+      "bytes": 9393,
+      "sha256": "4d20fb8188b4ebd5beee5d549b692dade3c28b4fabcf45b1e2c351f6cfa76230"
+    },
+    "src/main/resources/org/jlinalg/omics/king/setup_king_runtime.py": {
+      "bytes": 8243,
+      "sha256": "105c65f9760be742c4d017fc180bcf21b5b0bcfbe357d26c516f6097ae703d5e"
+    },
+    "src/main/resources/org/jlinalg/omics/plink-relatedness-setup/.gitattributes": {
+      "bytes": 29,
+      "sha256": "730a35ae3d558080083c3103d9ac8100c3f6561678092abe341701dfa331eb1d"
+    },
+    "src/main/resources/org/jlinalg/omics/plink-relatedness-setup/install_plink.py": {
+      "bytes": 10608,
+      "sha256": "72ab1eef9cb607bc53e4cb1aac3a07b9501a12787599571d2037d114e2b61f2d"
+    },
+    "src/main/resources/org/jlinalg/omics/plink-relatedness-setup/plink-runtime-lock.json": {
+      "bytes": 2478,
+      "sha256": "58b05d2d20d9c277436db1dc5a5beddfb43acbe452c175fb51aa396f71c1d421"
+    },
+    "src/main/resources/org/jlinalg/omics/plink-relatedness-setup/setup_plink_relatedness.py": {
+      "bytes": 884,
+      "sha256": "f934032da4491d424fb46debb70ff2a1b115bcce7527fb4987bd5625302ab2b5"
+    },
+    "src/test/java/org/jlinalg/cli/PlinkRelatednessContractsTest.java": {
+      "bytes": 4888,
+      "sha256": "13c4a6c3bfad44560b281383a71a01f7967d461815ec0ee4ec6d59b3cfeec856"
+    },
+    "src/test/java/org/jlinalg/cli/PlinkRelatednessOwnedProcessTest.java": {
+      "bytes": 6530,
+      "sha256": "370412492e6ba4494d0460423de621a3bffbab133433c3ac77ca1c2d2bff6fc9"
+    },
+    "src/test/java/org/jlinalg/cli/PlinkRelatednessProcessFixture.java": {
+      "bytes": 1093,
+      "sha256": "1b2ca38072084cc9e01b69d24aed878888525f6d015fb720b9affe10b34fcaec"
+    },
+    "src/test/java/org/jlinalg/genetics/KingKinshipThresholdTest.java": {
+      "bytes": 4122,
+      "sha256": "80a3392f36c065f6930eb47bee06f5fccc29a59f753887a2a0d07b445dc6ea19"
+    },
+    "src/test/java/org/jlinalg/genetics/KingRobustKinshipTest.java": {
+      "bytes": 9436,
+      "sha256": "971d6b170e37e58ca8bcfbbe0647ff33658fddc6cb280097974b5d78b7a51717"
+    },
+    "src/test/java/org/jlinalg/genetics/KingRobustReferenceProbe.java": {
+      "bytes": 4152,
+      "sha256": "85b9e038b36a113061242b3b216cc115fd21710e1238dd6ddb89be4017b206bd"
+    },
+    "src/test/resources/org/jlinalg/genetics/native-king-original-reference.zip": {
+      "bytes": 25051,
+      "sha256": "2cc5ed11f1a4b405ead731cd7b10133657c7a4c786ee8b00ff0030423a86ed49"
+    },
+    "tools/literature/audit_king_historical_reference.py": {
+      "bytes": 4587,
+      "sha256": "ba13c66c6d22b70301119a520b328005d7638bc3f9739ac117a92de7d70bf018"
+    },
+    "tools/literature/audit_king_reference_parity.py": {
+      "bytes": 3151,
+      "sha256": "af25836e112cc9bef2fd6c8f2a43e7d6581fa616fc07f82f47f089bf9fe6412a"
+    },
+    "tools/literature/audit_plink_relatedness_roles.py": {
+      "bytes": 5837,
+      "sha256": "954d70637c00290002664bc2b216e5aacc311f64bf86e7aef53d62708c4d34fd"
+    },
+    "tools/literature/build_king.py": {
+      "bytes": 4541,
+      "sha256": "0efc1e796f703f4038abc19d1c33829aad53ac09bc41e13cd3506d92ebde8fc5"
+    },
+    "tools/literature/build_king_historical.py": {
+      "bytes": 4701,
+      "sha256": "fafcb1c00b49e914e7f93c16297a0e80cf990a54964808e6dc074c197ecae9d5"
+    },
+    "tools/literature/build_king_threshold_api.py": {
+      "bytes": 5249,
+      "sha256": "76b0dce1b10a256f4e539b9727d29256619c54c6ac8314f951a86ce61c668c3b"
+    },
+    "tools/literature/build_native_king_api.py": {
+      "bytes": 6834,
+      "sha256": "ae89ec98edf147c9ef191de679bac14851f75ad0d785e67f8c5c01a8591edc82"
+    },
+    "tools/literature/build_plink_relatedness_workflows.py": {
+      "bytes": 4156,
+      "sha256": "b02065bdac0a177cf3be5f9fa8d0c99f93c0097dcaaa12ad315ea1aa060fabab"
+    },
+    "tools/literature/catalog_fixed_cohort.py": {
+      "bytes": 3039,
+      "sha256": "0669020e4761629d4f41444c608174fb48438e61fd96e721c50389514b34d4f3"
+    },
+    "tools/literature/catalog_source_integrity.py": {
+      "bytes": 3767,
+      "sha256": "a8a5e0e09d97f74dd14925e60cb195b9bba9c1679052f8c3b26842050e55ad13"
+    },
+    "tools/literature/collect_king_synthetic.py": {
+      "bytes": 5605,
+      "sha256": "e6880dc2d443e06e0b5247b71d88941490c829cdaecf9a6f6c031114f6cffdb8"
+    },
+    "tools/literature/collect_king_workflows.py": {
+      "bytes": 7234,
+      "sha256": "00569e4bccc2118edf2a199ed8677b78c2ad35bd9363514288b2136492872cf3"
+    },
+    "tools/literature/collect_omics_review.py": {
+      "bytes": 31152,
+      "sha256": "64198266fd706c13a1a4e624a2d68e9779477081c5b8644f2fade3114c780396"
+    },
+    "tools/literature/collect_plink_relatedness_reference.py": {
+      "bytes": 7060,
+      "sha256": "acbcee2c2336eec690fae5bdec77a6e44869f127c63f76799decf9979cf39fce"
+    },
+    "tools/literature/common_statistics/prism_catalog.py": {
+      "bytes": 22948,
+      "sha256": "ddb613f7a1adfb631d3668b51f2943d959af284cd045afcf2c4d5e1b3683ae2e"
+    },
+    "tools/literature/freeze_native_king_reference.py": {
+      "bytes": 3499,
+      "sha256": "ddea5a90be1c70a0550fbc76efc2494f0fd0267babf4df2421c7ca5c9ff46ae1"
+    },
+    "tools/literature/install_plink.py": {
+      "bytes": 10608,
+      "sha256": "72ab1eef9cb607bc53e4cb1aac3a07b9501a12787599571d2037d114e2b61f2d"
+    },
+    "tools/literature/intake_king_historical.py": {
+      "bytes": 4816,
+      "sha256": "00d16fe8c2d59661c0fd0eee2c3d6c2bf5397c4cf1251999c289a1368dc59e60"
+    },
+    "tools/literature/ldak_catalog/catalog.py": {
+      "bytes": 18686,
+      "sha256": "c4e488b8e2aff8ac5f115fae8fae4c6c372cf257a41157a2cd20167be96d0c23"
+    },
+    "tools/literature/ldak_catalog/evidence.py": {
+      "bytes": 2105,
+      "sha256": "2c1694a63fa163ee30af67ebe4262ab50594050f377e2807faa3871d02b4aa12"
+    },
+    "tools/literature/ldak_catalog/model.py": {
+      "bytes": 12924,
+      "sha256": "4a60a00259fb4089214b5fd6a06846c857cc321467e22894a7e244d79a32f7b8"
+    },
+    "tools/literature/ldak_original/audit_roles.py": {
+      "bytes": 3274,
+      "sha256": "dcd81720495578c81cb26efd5585a9ac488ba03eb4a90cb1cbb786fd2a37646a"
+    },
+    "tools/literature/ldak_workflows/model.py": {
+      "bytes": 12479,
+      "sha256": "d895e14f002c07a2bccdc98648a01b3587243577810e2cec1b8fbe9f078dac21"
+    },
+    "tools/literature/ldak_workflows/payloads.py": {
+      "bytes": 10483,
+      "sha256": "104efd6b8fb5e3f6e871b56b16958fcde5262236a816f5e04e64eab86f053e19"
+    },
+    "tools/literature/ldak_workflows/primary.py": {
+      "bytes": 3948,
+      "sha256": "055ea54ac790dd19350719b6467244b490dccdc93e253226cfa8363f8dca16d5"
+    },
+    "tools/literature/ldsc_hsq/catalog.py": {
+      "bytes": 27835,
+      "sha256": "eacd0d2f5e49a3834dafbb3db416abd4b6c06f90aa10d7d398442623d779711d"
+    },
+    "tools/literature/metal_catalog/catalog.py": {
+      "bytes": 13245,
+      "sha256": "ed769fa0cd301fd5832da8a30130441e8f456282ec49d47eff9d4740cf2e9b14"
+    },
+    "tools/literature/metal_catalog/evidence.py": {
+      "bytes": 8845,
+      "sha256": "14f0d0846356d7b83f7f5376c5ebfe063d9ea87914df9dde56c5d15ce12b8f2d"
+    },
+    "tools/literature/metal_catalog/model.py": {
+      "bytes": 15327,
+      "sha256": "3c0708209410b7622a3c27da0bbd14f4e09cf2553ef93ce9e11877e6c9544efe"
+    },
+    "tools/literature/metal_catalog/primary.py": {
+      "bytes": 6126,
+      "sha256": "d01bdd1c54b20d8390979aa7a7701e5b583754c942bd7c05bba36fdfc480a5dc"
+    },
+    "tools/literature/metal_catalog/test_catalog.py": {
+      "bytes": 7293,
+      "sha256": "d625aee8fa5100e1d682e17068000feb982e2a1a2be317f32fcdd87c2ee02695"
+    },
+    "tools/literature/metal_workflows/reviews.py": {
+      "bytes": 7553,
+      "sha256": "89c6967fb57c42c41f3356285d96859d4a27d7640e028db7e28510e0221b638d"
+    },
+    "tools/literature/metal_workflows/verify.py": {
+      "bytes": 11728,
+      "sha256": "a5c23af7fe8451a27620ad28c0b9ffaa98a97495f944e8956a541ac6a87694d2"
+    },
+    "tools/literature/plink-runtime-lock.json": {
+      "bytes": 2478,
+      "sha256": "58b05d2d20d9c277436db1dc5a5beddfb43acbe452c175fb51aa396f71c1d421"
+    },
+    "tools/literature/plink_catalog/P114-AUTHOR-CODE.json": {
+      "bytes": 3489,
+      "sha256": "f590f25cf5a8103bbfc5695991474a46123284bc4515b4677d2edffeda50bd87"
+    },
+    "tools/literature/plink_catalog/README.md": {
+      "bytes": 3306,
+      "sha256": "03e06888c52081dbfccbe913f9ff0c760e03b23b42452f85e42db7d4e81757dc"
+    },
+    "tools/literature/plink_catalog/fixture_project.py": {
+      "bytes": 9081,
+      "sha256": "452f13c791989d78ba9bb2a48a3bf2744984f503c3d047398af1dc6317b647dd"
+    },
+    "tools/literature/plink_catalog/model.py": {
+      "bytes": 15206,
+      "sha256": "a9993ada84df430d58a641ae44efc95246018cdf56f42f0384821862ac3fa363"
+    },
+    "tools/literature/plink_catalog/primary.py": {
+      "bytes": 19009,
+      "sha256": "51bb035efbddb65b56c37380030f01e4f41f22b5cc45760608c7267cc2e48f97"
+    },
+    "tools/literature/plink_catalog/reproduce_proposal.py": {
+      "bytes": 4696,
+      "sha256": "17ba64e8948529ba60b76d4f9dd9858c9341bb49f067bcbc66ab062cb106c419"
+    },
+    "tools/literature/plink_catalog/reviews.py": {
+      "bytes": 56303,
+      "sha256": "592232c752c85b4a93ba102b85ae5c6d2cb1f8692edf62a434e6859270b6248c"
+    },
+    "tools/literature/plink_catalog/test_components.py": {
+      "bytes": 3729,
+      "sha256": "b62bc4483d6cc43b5080dfe7757936ba249b0cfbf0eadbe22dbe32465c190a79"
+    },
+    "tools/literature/plink_catalog/test_fixture_project.py": {
+      "bytes": 6054,
+      "sha256": "7a473ccdd4d7a97d8e74a817ca90e3e1cbbc5b3731259b5ab034d1752a6c0302"
+    },
+    "tools/literature/plink_catalog/test_model.py": {
+      "bytes": 4351,
+      "sha256": "74c7ff34cb92913dfdc652ae99ff676f539a05ae03f3810239d1d70f857f8aac"
+    },
+    "tools/literature/plink_catalog/test_primary.py": {
+      "bytes": 5098,
+      "sha256": "393e69a368329b6095fa804eb768fb70b8ce529890f9c73eb9c0785357f2a254"
+    },
+    "tools/literature/plink_catalog/verify_components.py": {
+      "bytes": 8432,
+      "sha256": "5cddc0902efd34a2f6fa2071fefd90ba67cd25e52fd34a111bce76bf01259cc4"
+    },
+    "tools/literature/probe_king_historical.py": {
+      "bytes": 5375,
+      "sha256": "cd31d228690b17a0e7208d0272a8a425fc5b132209fa711b61169b2b1c37a013"
+    },
+    "tools/literature/probe_king_runtime.py": {
+      "bytes": 4128,
+      "sha256": "e26519d09cb9526e402be23c6da9295dcf48038c0c9322e94281988335ee80a7"
+    },
+    "tools/literature/seal_king_evidence.py": {
+      "bytes": 5946,
+      "sha256": "c70673d7eb90b01ecdb1c4a131da66dbd65b292d568507dd3ec862ae0f8ac457"
+    },
+    "tools/literature/seal_king_historical_evidence.py": {
+      "bytes": 8329,
+      "sha256": "d352b59142cd12c95157bfbb5fbddb052c5ebaa9b0ea67fd6fd159839c07262a"
+    },
+    "tools/literature/seal_native_king.py": {
+      "bytes": 6900,
+      "sha256": "eb074748c2fc35a9a25722e4701b9c1c09bed0ed7d5414e85153fea6a6fc8248"
+    },
+    "tools/literature/setup_deseq2_reference.py": {
+      "bytes": 4962,
+      "sha256": "549669b2f8490bbe948ec0022f1c207462bae1f8b4ccf8184c9147c41b63ecbd"
+    },
+    "tools/literature/setup_snprelate_reference.py": {
+      "bytes": 8384,
+      "sha256": "5d1c297b75b33c787706b1283a22d44d7a85e755dee4dc102ec94508e90b0199"
+    },
+    "tools/literature/seurat_catalog/P160-SUPPLEMENT.json": {
+      "bytes": 2256,
+      "sha256": "103bb80ce28d0e162121644643cfefef9590a5031ac2290becafa8697acf8774"
+    },
+    "tools/literature/seurat_catalog/README.md": {
+      "bytes": 1638,
+      "sha256": "92b26074debb57f8a0be100725191bcb6b8e42ec0674902b8643c44ca4f4cf06"
+    },
+    "tools/literature/seurat_catalog/catalog.py": {
+      "bytes": 17014,
+      "sha256": "65ffa72b171decc1e35920d26779b8a0bca406db982b7fa8aa2f45596201b0b5"
+    },
+    "tools/literature/seurat_catalog/evidence.py": {
+      "bytes": 17805,
+      "sha256": "64f6c51a53e7233d9184aa8117a1d6b4464463981326c5592aae0e7ce1f5b72c"
+    },
+    "tools/literature/seurat_catalog/model.py": {
+      "bytes": 20012,
+      "sha256": "80e2c43a96118e53c331630d7eb844a60814d7750b027be7554480cfca18bb56"
+    },
+    "tools/literature/seurat_catalog/primary.py": {
+      "bytes": 12028,
+      "sha256": "8c9d8c9ce320cf37569f9c9a739e6287861653a0752214b8c9c1890d53b21837"
+    },
+    "tools/literature/seurat_catalog/reviews.py": {
+      "bytes": 35782,
+      "sha256": "4f53ae58943d524a197d56e84a35e86f9bee6c8819ff4d40f3f825367c536fe8"
+    },
+    "tools/literature/seurat_catalog/test_admission.py": {
+      "bytes": 8788,
+      "sha256": "2a3fec013708a14af9d7b07c490a11dbbbdfba40aaadb08e85fa0bfa13f954db"
+    },
+    "tools/literature/seurat_catalog/test_catalog.py": {
+      "bytes": 5911,
+      "sha256": "836e117cf6c9d6cb554726c422071f23cbac2e4884ab24937d7af8732cace7e9"
+    },
+    "tools/literature/seurat_preprocessing/verify.py": {
+      "bytes": 10681,
+      "sha256": "c3fca06b21b56d5e3ae14ead5bf94d997a605e9a17e891b150b284dd9e815c4b"
+    },
+    "tools/literature/seurat_workflow/verify.py": {
+      "bytes": 9638,
+      "sha256": "ff413f9fccea680960735037da92eaf5b7072d886a50a27610cdf062c0445810"
+    },
+    "tools/literature/signac_scan_evidence.py": {
+      "bytes": 3678,
+      "sha256": "ea043ed30afb186672397d30532b749080da0bc1f0549cb21c89e620844f44be"
+    },
+    "tools/literature/test_king_contracts.py": {
+      "bytes": 9197,
+      "sha256": "32cd368dd6d47b15718e1e4206a1e3f455da84b964f03d5a371c22c1bde82d2e"
+    },
+    "tools/literature/test_king_historical_contracts.py": {
+      "bytes": 9486,
+      "sha256": "dda8f0c6eb4ace6a7862324dd3d2d2e3a6290bcbfb1c29294b5be9b8beb80f91"
+    },
+    "tools/literature/test_king_threshold_contracts.py": {
+      "bytes": 7750,
+      "sha256": "84173f7a2045167b5ad0f33a9eedd778d5eef369d17207b24dd0bd6be871ea08"
+    },
+    "tools/literature/test_native_king_contracts.py": {
+      "bytes": 7259,
+      "sha256": "619e0023d19ed4353002feddaa64ae6afe93da0c54cf69446151eeab1f61a5e4"
+    },
+    "tools/literature/validate_king_adapter.py": {
+      "bytes": 5241,
+      "sha256": "b0faf4ab98d77f7a7bd662ea1e719fa14e20dcb9d7ead7396a1f9e82aa472c83"
+    },
+    "tools/literature/validate_king_historical.py": {
+      "bytes": 8400,
+      "sha256": "ec3278622a9565822b9692c0a381094c2ec8f46fcab5289d2d8b7e6d1bde1ffd"
+    },
+    "tools/literature/validate_native_king_reference.py": {
+      "bytes": 7278,
+      "sha256": "5473b5c006eb6aee2dab9eceb12f1c3db29251cee581fda8ba6e73eb3fbd93e5"
+    },
+    "tools/literature/verify_genotype_score.py": {
+      "bytes": 18820,
+      "sha256": "cb82d33f2db47bf6e90dc6948a550a91cb362bf09b08b560041a5653952704cb"
+    },
+    "tools/literature/verify_king_evidence.py": {
+      "bytes": 6210,
+      "sha256": "fd09b614b6c5f9fe36fd31fc29e5848840c2273b0ec583b6eadefb8dbd647f65"
+    },
+    "tools/literature/verify_king_historical_evidence.py": {
+      "bytes": 8797,
+      "sha256": "c5be211e2bb4ac0adf168b48e3e88927be3af65e3568b25c1ccd86b335b1128e"
+    },
+    "tools/literature/verify_native_king_evidence.py": {
+      "bytes": 5860,
+      "sha256": "f3908dbe144402c85afdad0e9858ef042c9da7662e3b2299d3951ef33d74f2b6"
+    },
+    "tools/literature/verify_plink_ci_math.py": {
+      "bytes": 9901,
+      "sha256": "1e0de14d98b79b0fb70bb80d3177ca81bd7b855e00db3ab997ef8a43fe692187"
+    },
+    "tools/literature/verify_plink_ci_upstream.py": {
+      "bytes": 13073,
+      "sha256": "18cb717642777d19c171791e115f820244e6e8d37c34807ed64c0e963d508d4b"
+    },
+    "tools/literature/verify_plink_pca.py": {
+      "bytes": 17056,
+      "sha256": "2aee8521f460215301104d274694bc0ccfc75576edc6368f1802fdae0bd719bc"
+    },
+    "tools/literature/verify_plink_prune.py": {
+      "bytes": 14281,
+      "sha256": "5bbfe374c8215effd9c05633931b7f96aa9a1db5a5bf37e77910a9fea9f2f2bd"
+    },
+    "tools/literature/verify_plink_qc.py": {
+      "bytes": 21711,
+      "sha256": "3a98b252e515981fd08e8afc328d3a80bc855949d642d297fe6934e6d7d340cd"
+    },
+    "tools/literature/verify_plink_relatedness_workflows.py": {
+      "bytes": 5991,
+      "sha256": "53ff6dead57ca6b1754873e6656267174b2e2d9d2bf23b0e2efe14214723fb17"
+    },
+    "tools/literature/verify_plink_upstream.py": {
+      "bytes": 22849,
+      "sha256": "530533959558b64ae857e716100bd711bad9197481e67d6224a47a284f066113"
+    },
+    "tools/literature/verify_seurat_differential_development.py": {
+      "bytes": 11765,
+      "sha256": "443946fb67b201ec41bc8de104a0569b34736fc54525b4a729d6762eeff78635"
+    },
+    "tools/literature/verify_seurat_marker_summary.py": {
+      "bytes": 2636,
+      "sha256": "5d4279cd1eb96b817af88a64ece20129ba21481b806df0c6cea4d940a050524f"
+    },
+    "tools/literature/wire_signac_catalog.py": {
+      "bytes": 3637,
+      "sha256": "23c0be53229564d11d63f183bdad52e91054824d89c1028fc108ddd3c9e92a22"
+    }
+  },
+  "before": {
+    "docs/literature/omics-2023-2026/papers.json": {
+      "bytes": 4075100,
+      "sha256": "3e945a964ea891e7888c71675cc9c7e579f7a8f5fdc77da7e4250e63b04d770e"
+    },
+    "docs/literature/omics-2023-2026/tool-inventory.json": {
+      "bytes": 877940,
+      "sha256": "9609b7765735b8cb514d3bac02040b3d108c2e4aab24b0329d5ec54ffa0792f6"
+    },
+    "docs/literature/omics-2023-2026/summary.json": {
+      "bytes": 1147,
+      "sha256": "d5d7b13acb58c17b7ae2acdecb2cf0cb28e2b61134b500ad4c8c53ca756554e1"
+    },
+    "docs/literature/omics-2023-2026/README.md": {
+      "bytes": 224271,
+      "sha256": "a9fe3d3e2d0bec317bdfd17b1e30517cd47c259ef1fbcd8fc04e86d17b3a7ef0"
+    },
+    "docs/literature/omics-2023-2026/WARNINGS.md": {
+      "bytes": 334236,
+      "sha256": "e6f99ef5ed1ad028b7fa990f2196820b6dbdcdf7b9c5344a2461895f30b5ffad"
+    },
+    "tools/literature/reviewed-uses.json": {
+      "bytes": 1493064,
+      "sha256": "c64d2f02a3ae9cc54ceec2c82ff635b86b9d5886fd3e9d68dcf8a5baf6d681f4"
+    },
+    "site/literature-review.html": {
+      "bytes": 4677591,
+      "sha256": "ddd01887af34cbbaadd3d228f3dc47f1d07d3dc7713ad5bfcf1baf273f32e28a"
+    },
+    "site/literature-warnings.html": {
+      "bytes": 453919,
+      "sha256": "6fc3f4fec47d4ec12367f91458a4e838348cf0010dcd039c4d5e709775be121a"
+    }
+  },
+  "after": {
+    "docs/literature/omics-2023-2026/papers.json": {
+      "bytes": 4176699,
+      "sha256": "76c76ad04e387e1cf9348e686d4b94dca18259590380e7a22d4849c1548d7c89"
+    },
+    "docs/literature/omics-2023-2026/tool-inventory.json": {
+      "bytes": 952901,
+      "sha256": "b0b68f8398d10bb9ecbdb5d9b899fd9724bf7fa4ff1ad1d50daf5a4e88b2f3d8"
+    },
+    "docs/literature/omics-2023-2026/summary.json": {
+      "bytes": 1147,
+      "sha256": "4f3402da09c4282fd6a1098e37f3889b55b4d8034bd49371e4891942a3719203"
+    },
+    "docs/literature/omics-2023-2026/README.md": {
+      "bytes": 226126,
+      "sha256": "ad705bd6d49ebe8db08d155566bb28f2c78fc70c60817db14661c14d744b6c81"
+    },
+    "docs/literature/omics-2023-2026/WARNINGS.md": {
+      "bytes": 336099,
+      "sha256": "12a3bdf331c65da6033d19eeec501bd95a819c8d9a38631db5aa5e68ad7bef4c"
+    },
+    "tools/literature/reviewed-uses.json": {
+      "bytes": 1553572,
+      "sha256": "bbf05c43ea21b87cdc7e8ae6c4480fb807f4dc2572bd22a3e33d1a0a1750fd43"
+    },
+    "site/literature-review.html": {
+      "bytes": 4866158,
+      "sha256": "34d294ecad93dd91829bac34c464243c9038a67e4cc3e0447d41e75798a1cec2"
+    },
+    "site/literature-warnings.html": {
+      "bytes": 456127,
+      "sha256": "d9166acb14dd7ce67613d3d7c8e20a913005577a1d2fe69da7b69c61cf7a48cc"
+    }
+  },
+  "predecessor_audit": {
+    "status": "PASS_UNCHANGED_SEURAT_METAL_LDAK_ON_ACTUAL_STAGE_BYTES",
+    "proof": {
+      "bytes": 47117,
+      "sha256": "e7b8d1c42fc3febc09e5729e3a98de9dacf1f071172d74e5438a434376d6478a"
+    },
+    "result": {
+      "papers": 250,
+      "named_tools": 446,
+      "registry_definitions": 485,
+      "observations": 2696,
+      "reviewed_uses": 1339,
+      "unreviewed_uses": 1357,
+      "positive_seurat_roles": 50,
+      "direct_package_roles": 48,
+      "method_reimplementation_roles": 2,
+      "new_review_records": 49,
+      "existing_reviews_retained": 1290,
+      "observations_added": [
+        {
+          "paper_id": "P160",
+          "tool_id": "seurat",
+          "evidence_type": "author-supplementary-pdf"
+        }
+      ],
+      "observations_removed": [],
+      "new_scoped_integrations": 131,
+      "native_integrations": 24,
+      "upstream_integrations": 107,
+      "including_existing_adapters": 134,
+      "missing": 259,
+      "method_overlap": 44,
+      "new_scoped_integration_credit": 1,
+      "upstream_family_credit_added": 1,
+      "native_family_credit_added": 0,
+      "whole_goal_complete": false
+    },
+    "seurat_qualification_payloads": 151,
+    "historical_full_marker_audit": {
+      "status": "SKIP3_MISSING_EXACT_HISTORICAL_CANONICAL_JAR",
+      "expected": {
+        "bytes": 164898617,
+        "sha256": "545917aaf820f2fe404873e1f0bc72186ebe90d3a11fd7f6f26f592115fbf2f2"
+      },
+      "path": "build/cli/omicsmatic-0.3.7.jar",
+      "affected_scope": "Historical full offline marker-verifier mains only; current RNA/native audits and explicit method-JAR identity checks are separate.",
+      "required_action": "Restore the original canonical JAR with exactly this byte count/SHA-256 to rerun those unchanged historical mains; otherwise leave them skipped. Do not replace it with the different published release or refresh old hashes."
+    },
+    "source_xml_identities_checked": 250,
+    "source_PDF_pages_checked": 7,
+    "original_R_reexecuted": false,
+    "scientific_source_overlay_used": false
+  },
+  "component_qualification": {
+    "status": "PASS_SOURCE_BOUND_PLINK_FAMILY_COMPONENT_CLOSURE",
+    "component_audit": {
+      "status": "PASS_RETAINED_PLINK_COMPONENT_EVIDENCE_AND_EXACT_FIXTURES",
+      "evidence_files": 6615,
+      "fixture_files": 125,
+      "explicit_fixture_restorations": 41,
+      "original_programs_reexecuted_now": false,
+      "current_JAR_executed_now": false,
+      "current_working_checkout_legacy_verifiers_all_pass": false,
+      "earlier_failures_retained": true,
+      "new_family_credit": 0,
+      "full_catalog_admitted": false,
+      "whole_goal_complete": false
+    },
+    "artifacts": {
+      "docs/literature/plink-component-qualification/FIXTURES.json": {
+        "bytes": 66819,
+        "sha256": "a0b20cc1979b9b2eb93a2304be3b07b40fb470a44d29c363df7a07f02a5eebaf"
+      },
+      "docs/literature/plink-component-qualification/QUALIFICATION.json": {
+        "bytes": 1370943,
+        "sha256": "e3dae4e5bdc8e652c346ad48658e623e6d359f680d2d103d79e9e7981474e735"
+      },
+      "docs/literature/plink-component-qualification/READBACK.json": {
+        "bytes": 8982,
+        "sha256": "62084822355db01855b18bcecf275407677e8bdad0ea15e990d00acf65d58fed"
+      },
+      "docs/literature/plink-component-qualification/README.md": {
+        "bytes": 8297,
+        "sha256": "8fd1b64ff08f7292cf38eaa536ffaa019f2cf783e5ac5249c76fc430779b2098"
+      },
+      "docs/literature/plink-component-qualification/evidence.zip": {
+        "bytes": 6029464,
+        "sha256": "72ea8e7bd8b4d95b282dec12a9075838aef134b726849391de3088e62875ceb3"
+      },
+      "docs/literature/plink-component-qualification/fixtures.zip": {
+        "bytes": 265779,
+        "sha256": "691da38dd76c46a93a51e2c281eb051c710cc57988e90b8ef9fd8497462e8ba9"
+      },
+      "docs/literature/plink-source-review/.gitattributes": {
+        "bytes": 29,
+        "sha256": "730a35ae3d558080083c3103d9ac8100c3f6561678092abe341701dfa331eb1d"
+      },
+      "docs/literature/plink-source-review/CENSUS.json": {
+        "bytes": 327587,
+        "sha256": "d41325ab7caadf56b169373ccfce7020a8413a9ab72177ea55da2c6df91e5e73"
+      },
+      "docs/literature/plink-source-review/CROSSWALK.md": {
+        "bytes": 67082,
+        "sha256": "2e35351cc81d26fe5b8f7a09b0ff22f7a9dbfa4ae565dfc167dc037267c1537e"
+      },
+      "docs/literature/plink-source-review/QUALIFICATION.json": {
+        "bytes": 15559,
+        "sha256": "d0b108f22a3e671bfe64673c96984737bc0dbfe56c62d3708870fff27c291593"
+      },
+      "docs/literature/plink-source-review/READBACK.json": {
+        "bytes": 2385,
+        "sha256": "5010b53fa0ec28a9d097ed120eeba70be147a3d5dca33b1fdcd12df746730155"
+      },
+      "docs/literature/plink-source-review/README.md": {
+        "bytes": 2367,
+        "sha256": "0a2e8a36859a467719c77d5788f7b4e887606adb4d4d0fe83da8c09bae6679a3"
+      },
+      "docs/literature/plink-source-review/diagnostics.zip": {
+        "bytes": 11801,
+        "sha256": "da1a24571b5c8fa6a857f25557a444e6f01a084d2d6e9b53fd3e923dabc4c32c"
+      },
+      "docs/literature/plink-source-review/proposal.zip": {
+        "bytes": 2570037,
+        "sha256": "093bb6c308bc652284e8e087fbb813259e0bc0d8d67d3e9bb77f02c7e02c988b"
+      }
+    },
+    "original_programs_reexecuted": false,
+    "historical_fingerprints_refreshed": false,
+    "whole_tool_qualified": false,
+    "whole_paper_reproduced": false
+  },
+  "predecessor_current_manifest": {
+    "manifest": {
+      "bytes": 81234,
+      "sha256": "cfa2dd1abf2b3ecf0da57098a4ffaf737c830c4ea9c86463cab292f013aaf13a"
+    },
+    "entries": 803,
+    "mismatches": [],
+    "missing_entries": [],
+    "extra_entries": []
+  },
+  "evidence": {
+    "docs/literature/plink-catalog-admission/.gitattributes": {
+      "bytes": 29,
+      "sha256": "730a35ae3d558080083c3103d9ac8100c3f6561678092abe341701dfa331eb1d"
+    },
+    "docs/literature/plink-catalog-admission/catalog-before.zip": {
+      "bytes": 2441970,
+      "sha256": "7638eeb4353f75af2410aadef814018eeaa0a809d44ec8a20f89992fff970afd"
+    },
+    "docs/literature/plink-catalog-admission/PREDECESSOR-CHECK.json": {
+      "bytes": 1949,
+      "sha256": "e96a7c3193a44b5c83da00093bd31a7dee516cd8432b9b3263e3b8b0f53f9015"
+    },
+    "docs/literature/plink-catalog-admission/PREVIOUS-SHA256SUMS": {
+      "bytes": 81234,
+      "sha256": "cfa2dd1abf2b3ecf0da57098a4ffaf737c830c4ea9c86463cab292f013aaf13a"
+    },
+    "docs/literature/plink-catalog-admission/QUALIFICATION.json": {
+      "bytes": 3182,
+      "sha256": "fb865324363fbd4629db220591701d9f2ec2d7131639c2a5ee8dd1c200b0ca4c"
+    },
+    "docs/literature/plink-catalog-admission/REGISTRY.json": {
+      "bytes": 212297,
+      "sha256": "264e6099a2896576bf322e2bfe925b11c356a47905814a93218d633233a399b8"
+    },
+    "docs/literature/plink-catalog-admission/verifier-source.zip": {
+      "bytes": 15903,
+      "sha256": "13c8d4b39b24b12b19899419c8c49d2d71df60d1922d13abfe96edd63d9e73bc"
+    },
+    "docs/literature/plink-catalog-admission/WARNINGS.md": {
+      "bytes": 1826,
+      "sha256": "88755cfb8b7b5fc47e090a00ef230d6d980f14f41f502dcad14e4532bd29cc41"
+    },
+    "docs/literature/omics-2023-2026/plink-source-role-coverage.json": {
+      "bytes": 327587,
+      "sha256": "d41325ab7caadf56b169373ccfce7020a8413a9ab72177ea55da2c6df91e5e73"
+    },
+    "docs/literature/omics-2023-2026/plink-catalog-shared-source-compatibility.json": {
+      "bytes": 987,
+      "sha256": "3b295883e9e784ff3a33f6afdc588aeb42430b803b29eed8eaeae50fb9c2af26"
+    },
+    "docs/literature/PLINK_CATALOG_INTEGRATION.md": {
+      "bytes": 7703,
+      "sha256": "947f9f6223e2dafc81003f617a1935541e34d06c2a8ea9f06c611ff9bb5ef54b"
+    }
+  },
+  "scientific_engines_changed": false,
+  "historical_fingerprints_refreshed": false,
+  "earlier_sources_or_verifiers_overlaid": false,
+  "website_deployed": false,
+  "historical_full_marker_audit": {
+    "status": "SKIP3_MISSING_EXACT_HISTORICAL_CANONICAL_JAR",
+    "expected": {
+      "bytes": 164898617,
+      "sha256": "545917aaf820f2fe404873e1f0bc72186ebe90d3a11fd7f6f26f592115fbf2f2"
+    },
+    "path": "build/cli/omicsmatic-0.3.7.jar",
+    "affected_scope": "Historical full offline marker-verifier mains only; current RNA/native audits and explicit method-JAR identity checks are separate.",
+    "required_action": "Restore the original canonical JAR with exactly this byte count/SHA-256 to rerun those unchanged historical mains; otherwise leave them skipped. Do not replace it with the different published release or refresh old hashes."
+  }
+}

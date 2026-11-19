@@ -19821,6 +19821,919 @@
       ],
       "pmcid": "PMC12461018",
       "doi": "10.1016/j.ajhg.2025.07.018"
+    },
+    {
+      "pmcid": "PMC13600940",
+      "doi": "10.1038/s41586-026-10836-6",
+      "tool_id": "king",
+      "evidence_paragraph_sha256": "41d6355a30dda16812b341a0151e6c85bffb9aa61a6d48667278080a18067d8f",
+      "use_summary": "Uses a KING coefficient threshold of 0.0884 in separate MVP and FACS-MG sample-quality-control stages.",
+      "implementation_scope_note": "The text does not identify the KING executable, host, edition or removal tie policy. ROSMAP PLINK IBD pi_hat greater than 0.1875 is a different estimator and cohort.",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 71,
+          "section": "Methods / S-snTWAS validation",
+          "paragraph_sha256": "48a47cf2276fc36e3cd1e2e270fde3596e65ba4d97a08947ba5c7d48fb587fa1"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC13600946",
+      "doi": "10.1038/s41586-025-09573-z",
+      "tool_id": "king",
+      "evidence_paragraph_sha256": "b1df40f22572173634ca78c39faf11f5cff5323d173d478bea9bf94066ea33b0",
+      "use_summary": "Excludes highly related samples using a KING kinship coefficient greater than 0.177 during genotype quality control.",
+      "implementation_scope_note": "A coefficient name does not identify standalone KING, PLINK 2 or SNPRelate execution; no KING edition, pair-selection command or tie policy is supplied."
+    },
+    {
+      "pmcid": "PMC12779569",
+      "doi": "10.1038/s41586-025-09820-3",
+      "tool_id": "plink",
+      "evidence_paragraph_sha256": "26a32e9e4e14a263a68cc24e3bd7facf1e3e656529a01c1eddbb7e847216ae7a",
+      "use_summary": "Defines CC-GWAS and genomic-SEM loci using PLINK clumping at r2 0.1 within 3000 kb, with ancestry-specific 1000 Genomes references, followed by separate merging of nearby locus windows.",
+      "implementation_scope_note": "The additional 100-kb merging rule differs from the clump window. Univariate benchmarking uses more liberal significance/QC choices; complete clump P-value flags are not supplied.",
+      "version_reported_near_name": "1.9"
+    },
+    {
+      "pmcid": "PMC10733150",
+      "doi": "10.1038/s41586-023-06831-w",
+      "tool_id": "plink",
+      "evidence_paragraph_sha256": "c0282ea971a46bd6362323194f298fbd1a113b45c6508c2a3a170b1fc31e2828",
+      "use_summary": "Merges comparison genotypes, excludes triallelic sites, keeps specified population subsets and tabulates allele frequencies/counts; also calculates allele-frequency-corrected covariance and contributes empirical demographic summary statistics.",
+      "implementation_scope_note": "KING supplies relatedness inference, while PLINK --keep applies selected IDs. Whole-dataset minor-allele orientation, ancestry masking, sampling replicates and ADMIXTOOLS/tskit statistics remain separate; the paragraph does not assign every listed statistic individually to PLINK.",
+      "version_reported_near_name": "1.9",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 59,
+          "section": "Methods / Genomic variation",
+          "paragraph_sha256": "a2b5f61a26a1026dc20b4dd811f9893f590135c324d0f1fa73b7e5ce44fb395e"
+        },
+        {
+          "paragraph_index": 60,
+          "section": "Methods / Genomic variation",
+          "paragraph_sha256": "75a884926eadb96a908356083123fb91841d19fb64750fe43d3a850f8b91ed43"
+        },
+        {
+          "paragraph_index": 62,
+          "section": "Methods / Genomic variation",
+          "paragraph_sha256": "921c83f1a79f030cf7e4e0051b1d1982e516037588dd1fead1af813aef6a50c5"
+        },
+        {
+          "paragraph_index": 66,
+          "section": "Methods / Segregating sites and progressive sampling",
+          "paragraph_sha256": "fe3573c7eb74eb26388e84ca89ccd33c5a209759f55c54315c6c1786ea33558d"
+        },
+        {
+          "paragraph_index": 68,
+          "section": "Methods / Population structure",
+          "paragraph_sha256": "c3baa8b033e71803d6f414ff06f073a0e8d610f9d2b310b9b87af71e96fd22d2"
+        },
+        {
+          "paragraph_index": 83,
+          "section": "Methods / Demographic modelling of the historical relationships within Australia",
+          "paragraph_sha256": "3c1157b7db97168cf2e50baec9cf7fb80f9b9b709746e21fdae16e21d5f1e10c"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC10733150",
+      "doi": "10.1038/s41586-023-06831-w",
+      "tool_id": "king",
+      "evidence_paragraph_sha256": "0e1ca4b37e3beb0aaec6f3f953b3d4e6e20aac28b10407918a580d0254558625",
+      "use_summary": "Uses KING --unrelated --degree 2 on unmasked NCIG plus PNG genotypes, then applies additional ancestry/outlier selections; discusses relatedness constraints for later population subsamples.",
+      "implementation_scope_note": "No KING edition is stated. The initial unmasked selection and later ancestry-masked subsets differ; reported exceptions retain two third-degree pairs in Yarrabah rather than declaring every final group unrelated.",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 59,
+          "section": "Methods / Genomic variation",
+          "paragraph_sha256": "a2b5f61a26a1026dc20b4dd811f9893f590135c324d0f1fa73b7e5ce44fb395e"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC12872451",
+      "doi": "10.1038/s41586-025-09811-4",
+      "tool_id": "plink",
+      "evidence_paragraph_sha256": "15bddf0e26cc96bef56c08d96152eabef96d601fcd33d8ccbacf9a08b38bce61",
+      "use_summary": "Filters and LD-prunes the ancient/modern comparison dataset, uses PLINK --pca for the analysis described as PCoA, and computes ROH for complete genomes.",
+      "implementation_scope_note": "The main comparison explicitly uses pseudohaploid genotypes. Current diploid hard-call workflows are not an automatic replacement. Preserve the source PCoA/--pca wording; smartpca projection settings belong to EIGENSOFT and MSMC is separate.",
+      "version_reported_near_name": "1.9",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 36,
+          "section": "Methods / Analysis of pseudohaploidized data",
+          "paragraph_sha256": "922084936f54248ab4f37ae4890d9b93192c1f8a18e6987610ce1db388b4df9c"
+        },
+        {
+          "paragraph_index": 39,
+          "section": "Methods / Analysis of complete genomes",
+          "paragraph_sha256": "d0240f7badad2f920470ae0ac939f8c4f32d530d1abb889c90bccd2e589c1b00"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC12711557",
+      "doi": "10.1038/s41586-025-09799-x",
+      "tool_id": "plink",
+      "evidence_paragraph_sha256": "5cd46a280dfcf0357371ffdc839d279716c06b3dfbdc9aab2f20117b42fad9b8",
+      "use_summary": "LD-prunes SNP panels with 200-variant windows and step 25, using r2 thresholds 0.4 for population ancestry analysis and 0.5 for the reference panel used by genotype-likelihood relatedness analysis.",
+      "implementation_scope_note": "The two pruning thresholds belong to different analyses. EIGENSOFT computes/project PCs and lcMLkin estimates relatedness from genotype likelihoods; PLINK is not the kinship estimator here.",
+      "version_reported_near_name": "1.90",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 24,
+          "section": "Methods / Relatedness analyses",
+          "paragraph_sha256": "0d71562f5cec7a694ce2a65ffa6255ab6e1c39f93ae171b683a70f0632c1c3a9"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC10786718",
+      "doi": "10.1038/s41588-023-01584-8",
+      "tool_id": "plink",
+      "evidence_paragraph_sha256": "8d194298b34b36ebf804dab8850e0c17e22e9b1835fe139d675adf608b563741",
+      "use_summary": "Performs random-effect GWAS meta-analysis alongside MR-MEGA meta-regression for the multi-ancestry analysis.",
+      "implementation_scope_note": "Preserve the source wording that random effects detect homogeneous allelic effects; do not silently replace it with fixed effects. MR-MEGA supplies ancestry axes/meta-regression, and no complete PLINK meta command is given.",
+      "version_reported_near_name": "1.9"
+    },
+    {
+      "pmcid": "PMC11631754",
+      "doi": "10.1038/s41588-024-02019-8",
+      "tool_id": "plink",
+      "evidence_paragraph_sha256": "2e681672b57d7e3c906a4ff4f464f0a118b7f5f99bed8363f607ce9549017ff0",
+      "use_summary": "Runs PCA on autosomal nonpalindromic AIDA genotypes merged with 1000 Genomes after the described imputation and variant filters.",
+      "implementation_scope_note": "GenomeStudio PLINK-format export is not a PLINK executable run. BCFtools performs the merge; the paragraph does not unambiguously assign every preceding QC filter to PLINK. Exact PCA and imputed-input choices are unstated.",
+      "version_reported_near_name": "1.9"
+    },
+    {
+      "pmcid": "PMC10786716",
+      "doi": "10.1038/s41588-023-01583-9",
+      "tool_id": "plink",
+      "evidence_paragraph_sha256": "c537f0bb91429b3abfeff5b989c116976d73799698b5f5cc244597bc8d65490a",
+      "use_summary": "Defines BridgePRS loci by clumping GWAS statistics against ancestry-specific LD, reporting clump-p1 and clump-p2 0.01, clump-kb 1000 and clump-r2 0.01.",
+      "implementation_scope_note": "The named PLINK 1.9 stage is locus definition. Release-2 GWAS and external BridgePRS/PRS-CSx estimation are separate; repeated availability lists add no new execution role.",
+      "version_reported_near_name": "1.9"
+    },
+    {
+      "pmcid": "PMC11631763",
+      "doi": "10.1038/s41588-024-01975-5",
+      "tool_id": "plink",
+      "evidence_paragraph_sha256": "d899670986e0a999c90da1503e94e761b1f366bd826bef02c289518666aa4cac",
+      "use_summary": "The code-availability narrative explicitly reports that most contributing datasets used various PLINK versions for genotype quality control.",
+      "implementation_scope_note": "This is an explicit reported QC role rather than a bare software URL/list. It does not allocate exact releases or QC flags by cohort, establish that every cohort pipeline was rerun locally, or assign GWAS to PLINK; the cited supplementary table is not audited here.",
+      "additional_primary_evidence": [
+        "P088-DIRECT-QC-AVAILABILITY"
+      ]
+    },
+    {
+      "pmcid": "PMC11631763",
+      "doi": "10.1038/s41588-024-01975-5",
+      "tool_id": "plink2",
+      "evidence_paragraph_sha256": "8fe8a6edb99f20ef298a14f1c9fe8a883953592b3fd9b263703f79dac5192285",
+      "use_summary": "Clumps cis-eQTL/pQTL instruments for MR at P below 5e-8, r2 below 0.0005 and a 10-Mb window, and applies PRS-CS weights to All of Us participants with --score.",
+      "implementation_scope_note": "PRS-CS estimates weights; subsequent PC residualization and standardization are separate. The code-availability release range is not one exact build, and generic cohort QC cannot be assigned to a specific PLINK release without the cited supplementary table.",
+      "version_reported_near_name": "various versions from May 2020 release onwards",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 47,
+          "section": "Methods / PRS analyses / Association with DCM and systolic HF in All of Us",
+          "paragraph_sha256": "ddee5b1296f08b8ffab8ce484fdc7629f0d515fb26ce4174396d8d73ea2884dd"
+        },
+        {
+          "paragraph_index": 59,
+          "section": "Code availability",
+          "paragraph_sha256": "d899670986e0a999c90da1503e94e761b1f366bd826bef02c289518666aa4cac"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC11631752",
+      "doi": "10.1038/s41588-024-01952-y",
+      "tool_id": "plink",
+      "evidence_paragraph_sha256": "bcdc0db06ac40e35cb8aa29991574eb07548e414661c051f352181d25e546448",
+      "use_summary": "Applies PRS-CS-derived weights with PLINK --score to UKB participants using variants shared by base, target and LD-reference datasets.",
+      "implementation_scope_note": "PRS-CS trains weights; source cohort relatedness/QC statements do not identify PLINK as the kinship estimator. Score allele/column/denominator/missingness settings are unstated, and predictive models/AUROC are separate R analyses.",
+      "version_reported_near_name": "1.9"
+    },
+    {
+      "pmcid": "PMC13649587",
+      "doi": "10.1038/s41588-026-02755-z",
+      "tool_id": "plink",
+      "evidence_paragraph_sha256": "aacb7368614ea9b2dced134f11145a043e4eda2459363a5787b8a6893c0c431a",
+      "use_summary": "Calculates LD in a merged study and European 1000 Genomes panel and treats GWAS/caQTL variants with r2 greater than 0.8 as overlapping.",
+      "implementation_scope_note": "The LD statistic/phase flags and complete panel-preparation recipe are not specified; a thresholded overlap rule is not a complete clumping recipe.",
+      "version_reported_near_name": "1.9"
+    },
+    {
+      "pmcid": "PMC10703678",
+      "doi": "10.1038/s41588-023-01571-z",
+      "tool_id": "plink",
+      "evidence_paragraph_sha256": "b35bd15167f5996ea887ed6dba0f5bf9f709e7ed655b348dbe9eb53b06c0dcdf",
+      "use_summary": "Runs PCA of broomcorn millet accessions using 4DTv sites and obtains an LD-pruned SNP panel with indep-pairwise 50 5 0.2 for population-structure analyses.",
+      "implementation_scope_note": "These are nonhuman accessions. The current human autosomal hard-call workflow does not establish this chromosome/ploidy/site contract. PopLDDecay computes the separately described LD decay; IQ-TREE and ancestry-clustering programs are separate.",
+      "version_reported_near_name": "1.90b6.18",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 31,
+          "section": "Methods / Phylogeny and population structure",
+          "paragraph_sha256": "6d69501e516d976d542a3eee50f5ae85b918cca544bf063586893c419a0a6190"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC13649572",
+      "doi": "10.1038/s41588-026-02733-5",
+      "tool_id": "king",
+      "evidence_paragraph_sha256": "35415485d87c2621416341ab2501fe984c558a0c75ef5394199755dba7c4735b",
+      "use_summary": "Excludes highly related brain-tissue donors using a KING coefficient greater than 0.177 alongside sex, heterozygosity and missingness exclusions.",
+      "implementation_scope_note": "No KING edition, executable host, source flags or sample-selection tie policy is supplied; TOPMed phasing/imputation and other sample QC are distinct."
+    },
+    {
+      "pmcid": "PMC10703676",
+      "doi": "10.1038/s41588-023-01569-7",
+      "tool_id": "plink",
+      "evidence_paragraph_sha256": "8def66c08a11c52444fc1b6e6ae9b80d8744d8768039f44c758dba8d4422c6eb",
+      "use_summary": "LD-prunes genotyped variants using indep-pairwise 50 5 0.2 for SAIGE null-model estimation, with a stated MAF greater than 1% panel restriction.",
+      "implementation_scope_note": "SAIGE fits the relatedness-aware null and association models. PLINK is panel preparation, not the mixed-model or SPA implementation; no PLINK edition is stated."
+    },
+    {
+      "pmcid": "PMC10703676",
+      "doi": "10.1038/s41588-023-01569-7",
+      "tool_id": "king",
+      "evidence_paragraph_sha256": "9f2396e7e447457bb3fb3c04f43132a40ba309ba5970f0cececb34156a927edc",
+      "use_summary": "Restricts separate BBJ blood-group analyses and LD reference samples to individuals described by a KING coefficient below 0.0884.",
+      "implementation_scope_note": "The source uses kingship wording and supplies no KING host or edition. The two selected sample populations differ; LDstore computes dosage LD and SAIGE/SuSiE perform separate analyses. Preserve the strict less-than criterion without inventing a cutoff command.",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 50,
+          "section": "Methods / Fine-mapping and variant annotation",
+          "paragraph_sha256": "c0a90a202b816ba02745e80d6f491f5c4d37c216e82f9492925f6b35cf86da16"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC13649558",
+      "doi": "10.1038/s41588-026-02713-9",
+      "tool_id": "plink2",
+      "evidence_paragraph_sha256": "dc1102ad35f2da38a801edc691848aafa0aac3cadf4d342f4ca1c6a3e54bbe6a",
+      "use_summary": "Runs additive dosage GLM association with Firth fallback for AD case/control cohorts and uses PLINK 2 clumping to define signals within loci at r2 greater than 0.01.",
+      "implementation_scope_note": "The GWAS and clumping LD use imputed dosages, beyond the current hard-call contracts. SNPTEST probabilities and REGENIE Firth are different programs. Exact build, full flags and per-cohort composition are not supplied.",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 17,
+          "section": "Methods / Definition of loci",
+          "paragraph_sha256": "afd1fe0724aabd41005cd63638b1fde53d7e6bdceae6d401d97668007abdfa7e"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC10703692",
+      "doi": "10.1038/s41588-023-01560-2",
+      "tool_id": "plink",
+      "evidence_paragraph_sha256": "f50abab636c794efe478d438f7eccd808f519a3abf68a646bb6b151064315a77",
+      "use_summary": "Applies HWE, frequency and variant/sample missingness QC before imputation, including per-chromosome sample missingness, then performs additional post-imputation and post-merge QC and duplicate-variant removal.",
+      "implementation_scope_note": "CrossMap, HRC reference checks, TOPMed, bcftools and SnpArrays.jl have distinct roles. SnpArrays.jl estimates the GRM used to identify replicate individuals; PLINK binary conversion alone is not relatedness inference.",
+      "version_reported_near_name": "1.90b6.21",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 50,
+          "section": "Methods / Adult brain reference panel processing and model training",
+          "paragraph_sha256": "6c0b9a45df9fa2061912cfc06d72d36f69220ff241514b3b84717af398b4ba62"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC11631756",
+      "doi": "10.1038/s41588-024-01967-5",
+      "tool_id": "plink",
+      "evidence_paragraph_sha256": "2020fe6a44f6c785a75872a21755fe09584e8c5cff423bc44dd4ea25ea99e8b5",
+      "use_summary": "The grape pangenome study attributes SNP/SV LD calculation to PLINK and separately performs PLINK PCA before PHATE embedding of PCs.",
+      "implementation_scope_note": "Retain the unusual source LD edition 3.31 separately from PCA edition 1.9; do not silently replace it or treat it as an available project runtime. Nonhuman genome/SV handling is outside the current human biallelic SNP contract; PopLDdecay plotting and phateR are separate.",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 33,
+          "section": "Methods / Population genetic analyses",
+          "paragraph_sha256": "4d0e8a5075ed923e59070566a045512db61f3a8a3758b82e793f9ada1d003d73"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC13649597",
+      "doi": "10.1038/s41588-026-02732-6",
+      "tool_id": "plink",
+      "evidence_paragraph_sha256": "958c861023141e81c1b9503020a78c2486257e4775ae0800ec5429a0822e4191",
+      "use_summary": "Paper-linked archived scripts invoke PLINK 1.07 for CNV filtering, map creation and per-gene CNV-count exports, with staged type, size, frequency and region choices.",
+      "implementation_scope_note": "The XML Methods paragraph alone describes a file format, not execution. This role requires the exact paper-linked Zenodo author archive; scripts specify the workflow but were not executed here. A script explicitly ignores PLINK P values, so do not attribute downstream association inference to those values. Current SNP workflows do not implement legacy CNV operations.",
+      "version_reported_near_name": "1.07",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 32,
+          "section": "Methods / Rare CNV calling and QC in EAS samples",
+          "paragraph_sha256": "347535a72141fe72be5de98da6bc180d705c56a98a824553f601dd88d37b82e9"
+        }
+      ],
+      "additional_primary_evidence": [
+        "P114-AUTHOR-CODE"
+      ]
+    },
+    {
+      "pmcid": "PMC13649597",
+      "doi": "10.1038/s41588-026-02732-6",
+      "tool_id": "plink2",
+      "evidence_paragraph_sha256": "41c4e85ebfde638860aafeba33fdf10eda8231e585f3ca0c73953f98b28b329f",
+      "use_summary": "Applies PRS-CS posterior weights with PLINK 2 --score chromosome by chromosome, sums scores across autosomes and standardizes the genome-wide PRS.",
+      "implementation_scope_note": "PRS-CS estimates weights with its own shrinkage/reference settings. Variant exclusions, chromosome summation and standardization are separate composition steps; score allele, denominator and missingness flags are unstated."
+    },
+    {
+      "pmcid": "PMC10703686",
+      "doi": "10.1038/s41588-023-01559-9",
+      "tool_id": "plink2",
+      "evidence_paragraph_sha256": "6a6c9fd5be7adaf36a4d4b1aa12cd1c503ba195fb59ce467bca951c97634536f",
+      "use_summary": "Uses logistic regression for binary traits and linear regression for quantitative traits in observed/imputed-phenotype UKB GWAS, with imputed genotype data and genotype PCs/array covariates.",
+      "implementation_scope_note": "flashPCA provides the PCs; METASOFT performs the separate heterogeneity meta-analysis. The source does not specify hard-call versus dosage import or Firth behavior; phenotype imputation is a different task.",
+      "version_reported_near_name": "2"
+    },
+    {
+      "pmcid": "PMC12695626",
+      "doi": "10.1038/s41588-025-02398-6",
+      "tool_id": "plink",
+      "evidence_paragraph_sha256": "26f78290a292b448543c6841a7aaf0cd58929a53c1ef3655120b0f59669d384a",
+      "use_summary": "LD-prunes the SNP panel for bigsnpr PC calculation with indep-pairwise 60000 6000 0.4, alongside the stated MAF restriction.",
+      "implementation_scope_note": "The first window argument has no kb suffix; do not silently reinterpret its units. KING --ibdseg determines relatives and bigsnpr supplies PCs/OADP projection; the paragraph does not attribute association regression to PLINK."
+    },
+    {
+      "pmcid": "PMC12695626",
+      "doi": "10.1038/s41588-025-02398-6",
+      "tool_id": "king",
+      "evidence_paragraph_sha256": "26f78290a292b448543c6841a7aaf0cd58929a53c1ef3655120b0f59669d384a",
+      "use_summary": "Uses KING --ibdseg to identify samples without third-degree or closer relatives for the PC reference subset.",
+      "implementation_scope_note": "No KING edition or full segment/selection settings are supplied. IBD-segment inference is not interchangeable with PI_HAT or KING-robust coefficients; bigsnpr handles PC projection of relatives."
+    },
+    {
+      "pmcid": "PMC12695664",
+      "doi": "10.1038/s41588-025-02410-z",
+      "tool_id": "plink",
+      "evidence_paragraph_sha256": "2f8c5c4181176badfee5c9c412dcca751460f80d4141f684a5852ae379b678b2",
+      "use_summary": "Defines independent risk-locus SNPs by PLINK clumping using the reported 1-Mb window and r2 threshold 0.1, then defines loci around lowest-P leads.",
+      "implementation_scope_note": "The source renders flags as --clump kb 1000 and --r2 0.1; retain the ambiguity rather than claiming an executable author command. GWAS-catalog queries and later locus labeling are separate.",
+      "version_reported_near_name": "1.9"
+    },
+    {
+      "pmcid": "PMC13553293",
+      "doi": "10.1038/s41588-026-02741-5",
+      "tool_id": "plink2",
+      "evidence_paragraph_sha256": "247be0443edf64c76515d4c72bdacc351a9fb0619cd594630a7614c8426cba5a",
+      "use_summary": "Calculates KING kinship in PLINK 2, excluding duplicates above 0.354 during Japanese sample QC and relatives above 0.0884 for the separate HLA analysis.",
+      "implementation_scope_note": "Thresholds and selected populations differ by stage; preserve strict greater-than comparisons and do not infer the sample tie policy. R glm performs HLA association and stepwise conditioning; no standalone KING or exact PLINK build is given.",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 41,
+          "section": "Methods / HLA imputation and association study",
+          "paragraph_sha256": "70ffa489d75d8224776c2735c8b2307a7d7bd0192d20bfccb6865b86fb04df3b"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC13553293",
+      "doi": "10.1038/s41588-026-02741-5",
+      "tool_id": "king",
+      "evidence_paragraph_sha256": "247be0443edf64c76515d4c72bdacc351a9fb0619cd594630a7614c8426cba5a",
+      "use_summary": "Uses the KING kinship estimator through PLINK 2 for duplicate filtering and a separate HLA unrelated subset, with respective thresholds greater than 0.354 and 0.0884.",
+      "implementation_scope_note": "This is a named estimator with an explicit PLINK 2 host, not standalone KING execution or a KING edition. Its kinship coefficients are not IBD PI_HAT.",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 41,
+          "section": "Methods / HLA imputation and association study",
+          "paragraph_sha256": "70ffa489d75d8224776c2735c8b2307a7d7bd0192d20bfccb6865b86fb04df3b"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC12695632",
+      "doi": "10.1038/s41588-025-02396-8",
+      "tool_id": "plink",
+      "evidence_paragraph_sha256": "ad64236dbf42dacca026509d51db399beedd2c798470e52003ef3553103a2a5f",
+      "use_summary": "Uses PLINK --clump on genome-wide significant meta-analysis SNPs to identify loci before deriving physically overlapping gene lists.",
+      "implementation_scope_note": "REGENIE performs cohort GWAS and METAL combines results. No PLINK edition, LD reference, r2/window/P2 settings or complete locus-to-gene recipe is stated."
+    },
+    {
+      "pmcid": "PMC11549054",
+      "doi": "10.1038/s41588-024-01939-9",
+      "tool_id": "plink",
+      "evidence_paragraph_sha256": "771cbda6deab4176e5328380dbc7cca3b3c89478fd63d5f137e183756043c47b",
+      "use_summary": "Names PLINK 1.9 and 2.0 in shared post-imputation processing and explicitly uses PLINK 1.9 --clump with a pairwise r2 threshold reported as at most 0.05 to identify independent loci.",
+      "implementation_scope_note": "Do not allocate all shared processing exclusively to release 1. GRM/null/score tests use named R packages, and METAL meta-analysis is separate. The clump window and full reference contract are unstated.",
+      "version_reported_near_name": "1.9",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 53,
+          "section": "Methods / Statistical analyses / Single-variant GWAS",
+          "paragraph_sha256": "f7f22a013eeaab77c24861cdb84d3f796f9747a5ed2c63124b638d5a81f57151"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC11549054",
+      "doi": "10.1038/s41588-024-01939-9",
+      "tool_id": "plink2",
+      "evidence_paragraph_sha256": "771cbda6deab4176e5328380dbc7cca3b3c89478fd63d5f137e183756043c47b",
+      "use_summary": "Explicitly names PLINK 2.0 alongside PLINK 1.9 and other programs for postprocessing cohort genotype data after TOPMed imputation.",
+      "implementation_scope_note": "The compound release statement establishes use of release 2 but does not allocate each QC or postprocessing operation to it. Later --clump is explicitly release 1.9; do not transfer it or the R-package association models to PLINK 2.",
+      "version_reported_near_name": "2.0",
+      "additional_primary_evidence": [
+        "P130-COMPOUND-RELEASE"
+      ]
+    },
+    {
+      "pmcid": "PMC11549054",
+      "doi": "10.1038/s41588-024-01939-9",
+      "tool_id": "king",
+      "evidence_paragraph_sha256": "22d006ae63c752aa9298dae4b8f9a95beb202874726a40a5740d1ecac49edee4",
+      "use_summary": "Identifies participants shared between ROSMAP and NACC with KING 2.2.7 and preferentially retains NACC records.",
+      "implementation_scope_note": "The exact KING mode, duplicate threshold and command are unstated. Preferential NACC retention is an author policy, not an inferred default duplicate-removal algorithm.",
+      "version_reported_near_name": "2.2.7"
+    },
+    {
+      "pmcid": "PMC13553304",
+      "doi": "10.1038/s41588-026-02735-3",
+      "tool_id": "plink",
+      "evidence_paragraph_sha256": "9615ada37a0f813b569c2a99f15dc50fcb05af63233b068487c0846c7a554387",
+      "use_summary": "Clumps QSNP heterogeneity results using PLINK with P1 5e-8, P2 5e-4, r2 0.10 and a 1000-kb window; separately uses PLINK clumping through FUMA to define loci.",
+      "implementation_scope_note": "The two clumping stages have different settings and roles. FUMA controls the second workflow/reference; Open Targets novelty lookup and bedtools overlap are separate. Preserve source inequality/default descriptions without manufacturing author flags.",
+      "version_reported_near_name": "1.90",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 38,
+          "section": "Methods / Multivariate GWAS / Independent loci and QSNP heterogeneity",
+          "paragraph_sha256": "af1453591edf0b68df5b1eb9ec115ea39ba95352cd5b60fb48e0edd8d3063be2"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC10632131",
+      "doi": "10.1038/s41588-023-01527-3",
+      "tool_id": "plink",
+      "evidence_paragraph_sha256": "1a3032e17b64d761ca2d072062921337c0beec279fa702df87f5b826ca08c5f0",
+      "use_summary": "Participating cohorts estimate additive forearm-fracture associations with logistic models in SAIGE or PLINK before METAL meta-analysis.",
+      "implementation_scope_note": "Software/cohort allocation and family-structure adjustment are not specified in this paragraph. The combined results include X-linked variants and imputation, outside a blanket claim for current autosomal hard-call GLM."
+    },
+    {
+      "pmcid": "PMC11525193",
+      "doi": "10.1038/s41588-024-01913-5",
+      "tool_id": "plink2",
+      "evidence_paragraph_sha256": "cbdc12541bc138ce4ea4812469c662e1c3189e12fc3ead2abb024664284b0e42",
+      "use_summary": "Uses PLINK 2 linear regression when BOLT-LMM fails to converge and dosage logistic regression for case/control analysis, after excluding individuals described by PI_HAT greater than 0.25.",
+      "implementation_scope_note": "The paragraph does not identify the program that estimated PI_HAT. BOLT-LMM, sex-stratified X-chromosome analysis and METAL combination are separate; current hard-call GLM does not establish dosage/X or the complete fallback policy."
+    },
+    {
+      "pmcid": "PMC12597826",
+      "doi": "10.1038/s41588-025-02370-4",
+      "tool_id": "plink",
+      "evidence_paragraph_sha256": "37726a634afe77ac5b97a33b61643fb298b46a849ef7358c07a8aaaaa228f03b",
+      "use_summary": "Performs European autosomal genotype/sample QC before REGENIE GWAS, excluding HLA and applying frequency/count and missingness criteria.",
+      "implementation_scope_note": "The HWE criterion is described as a P value beyond 1e-15, without an unambiguous direction; do not silently convert it to a numeric filter. No PLINK edition is stated, and REGENIE performs association testing."
+    },
+    {
+      "pmcid": "PMC11525182",
+      "doi": "10.1038/s41588-024-01919-z",
+      "tool_id": "plink",
+      "evidence_paragraph_sha256": "29d1da98b0d48535523d0e00a700af6c14bdc43bd26187926c42daf1c575959f",
+      "use_summary": "Clumps Pan-UKBB summary statistics with reported PLINK defaults and P below 1e-7/MAF above 1%, then supplies independently associated variants as conditional covariates to DeepRVAT/SEAK or REGENIE.",
+      "implementation_scope_note": "PLINK supplies clumping, not the later rare-variant conditional models. Multiple-GWAS P-value combination and historical default/reference choices are not specified; the gene 500-kb covariate rule is distinct from the clump window.",
+      "version_reported_near_name": "1.9"
+    },
+    {
+      "pmcid": "PMC11525179",
+      "doi": "10.1038/s41588-024-01910-8",
+      "tool_id": "plink",
+      "evidence_paragraph_sha256": "8227065abfff064200397a2c9939ae44ddfc3ffc02d7c8f833cbef7ad9de8ebc",
+      "use_summary": "LD-prunes reference genotypes with indep-pairwise 50 5 0.2 before genetic-ancestry grouping and projection of DDD/GeneDx samples.",
+      "implementation_scope_note": "GCTA computes reference PCs and projections, followed by umap-learn embedding. Genotype quality/depth restrictions and related-sample exclusion are described separately and are not evidence that PLINK performs every step."
+    },
+    {
+      "pmcid": "PMC13447099",
+      "doi": "10.1038/s41588-026-02704-w",
+      "tool_id": "plink",
+      "evidence_paragraph_sha256": "55b81ca1f879714330c3e7ddc2e6ab032bc42bfe925442249bdb42a941a2e83b",
+      "use_summary": "Uses LD-based clumping against HRC-imputed UKB reference data to retain independent variants at r2 at most 0.01 within plus/minus 1 Mb, then combines nearby independent variants into loci and assesses correlation with known variants.",
+      "implementation_scope_note": "The later 1-Mb locus merging and known-variant r2 greater-than-0.1 rule within plus/minus 10 Mb are separate. The text alternates clumping/pruning terminology and gives no exact edition or command; genotype dosage handling is unstated."
+    },
+    {
+      "pmcid": "PMC13447103",
+      "doi": "10.1038/s41588-026-02697-6",
+      "tool_id": "king",
+      "evidence_paragraph_sha256": "7983e1639638911ad392921d1709faa10d9d47dc1bad50be061c5d064f5fae68",
+      "use_summary": "Identifies genetic duplicate/probable-identical-twin pairs with KING and removes one participant from each pair during genotype sample QC.",
+      "implementation_scope_note": "No KING edition, mode, coefficient threshold or retained-participant policy is supplied. Source dosage discretization and ancestry/covariate selections are separate preparation choices."
+    },
+    {
+      "pmcid": "PMC12597823",
+      "doi": "10.1038/s41588-025-02344-6",
+      "tool_id": "plink",
+      "evidence_paragraph_sha256": "040b72d7b7de42beb87b7b5397fa8caa42832af29dedecac8fa16358d1715920",
+      "use_summary": "LD-prunes the separate IAV and CA/PA/MTB genotype panels with indep-pairwise 50 5 0.2 to obtain independent variants before SNPRelate PCA.",
+      "implementation_scope_note": "Retain the distinct reused cohorts, QC thresholds and genome-build preparation. SNPRelate computes PCs; Picard performs the stated liftover. No PLINK edition or upstream low-pass genotype-calling role is established.",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 29,
+          "section": "Methods / Genotype quality control",
+          "paragraph_sha256": "7f401c840c57d107aa621f9035137e345adb82741b864d548f8d6dc54c7a53c7"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC13447107",
+      "doi": "10.1038/s41588-026-02678-9",
+      "tool_id": "plink",
+      "evidence_paragraph_sha256": "0c3ec601dcefe34a879a019cf11fadaff0ca318a4176aa0e50887cea7dfc62c8",
+      "use_summary": "Uses PLINK for IBS analysis based on pangenome structural variants and for LD pruning with 50-SNP windows, step ten and r2 threshold 0.2 before population analyses.",
+      "implementation_scope_note": "The nonhuman pangenome/SV encoding and chromosome/ploidy contract are outside current human A/C/G/T SNP workflows. GCTA computes PCA, PopLDdecay estimates LD decay and RAxML/ADMIXTURE have separate roles.",
+      "version_reported_near_name": "1.9",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 53,
+          "section": "Methods / Phylogenetic tree and population structure analysis",
+          "paragraph_sha256": "778e3ad5d8fc7399b8285a0d6d69f4767dab53102d53afb2743493919d36b875"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC13504339",
+      "doi": "10.1016/j.ajhg.2026.07.002",
+      "tool_id": "plink",
+      "evidence_paragraph_sha256": "62e22b4396e8b77256bf9def5dbd607e29edbe012baf7581afcbf59f3153fc54",
+      "use_summary": "Performs sample/variant QC and pairwise IBD filtering above 0.185, computes PCs from a separately filtered/LD-pruned panel, and runs covariate-adjusted linear PheWAS for physiological traits.",
+      "implementation_scope_note": "IBD is not KING kinship and the exact IBD command/removal policy is unstated. X variants are included in source analyses, whereas current workflows admit autosomes. Preserve OMIM exclusion, trait transformations and hepatic-specific covariates as separate choices.",
+      "version_reported_near_name": "1.9",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 8,
+          "section": "Material and methods / Principal-component analysis",
+          "paragraph_sha256": "e36eca035374ba5092369ad15c233fd3b112e94d9c52d6ebe6472d5be6db3c88"
+        },
+        {
+          "paragraph_index": 15,
+          "section": "Material and methods / Phenome-wide association analyses of candidate variants",
+          "paragraph_sha256": "08ddac9994d6c98c45c9ba94857e5b8aec0c0983b7cf86dea48c284e4c36be62"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC11739871",
+      "doi": "10.1016/j.ajhg.2024.10.022",
+      "tool_id": "plink",
+      "evidence_paragraph_sha256": "68a2db2739472eaf1d5ec08b14667a116e09d0598207f2946621c141509e9abf",
+      "use_summary": "LD-prunes population datasets for ADMIXTURE, filters a haplotype-analysis panel, calculates ROH with specified scanning settings and estimates r2 for LD-decay distance bins.",
+      "implementation_scope_note": "The ancient/modern combined panel and the separate WGS/chip stages require distinct data contracts. ROH is not supplied by the current QC/prune workflows; CHROMOPAINTER coancestry PCA is separate. Do not infer a complete LD-export command from the 70-kb bin/window description.",
+      "version_reported_near_name": "1.9",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 15,
+          "section": "Material and methods / Population genomic analyses",
+          "paragraph_sha256": "62d9f1b1cfcafc09efadfebf831fd3aa5b41d3755bffe0f26e8ca8483ece52e4"
+        },
+        {
+          "paragraph_index": 16,
+          "section": "Material and methods / Population genomic analyses",
+          "paragraph_sha256": "d94c868e99d1a1ec56babbca1fe876d62666452bdd0f3979d893e2ac15cf75e5"
+        },
+        {
+          "paragraph_index": 23,
+          "section": "Material and methods / Population genomic analyses",
+          "paragraph_sha256": "c24b4cf7ad8db6cfff84a10ef65b4bd6737551f9b2e2f72e92fda6cc7601a1f6"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC11739871",
+      "doi": "10.1016/j.ajhg.2024.10.022",
+      "tool_id": "king",
+      "evidence_paragraph_sha256": "3de1c0b662cacc2bdb03c706daac22bf13fbc73027cc57df617e091af68eaaef",
+      "use_summary": "Checks newly generated WGS and chip samples for relatedness with KING, using a coefficient cutoff of 0.0884 described as filtering second-degree or closer relatives.",
+      "implementation_scope_note": "The exact comparison operator, KING edition, mode and tie policy are not specified; do not infer them or substitute IBD PI_HAT."
+    },
+    {
+      "pmcid": "PMC12824624",
+      "doi": "10.1016/j.ajhg.2025.11.012",
+      "tool_id": "plink",
+      "evidence_paragraph_sha256": "027b02768ead407e4513bde48949307a180dbd4735b54d6c12cee88077184028",
+      "use_summary": "Defines GWAS loci and quasi-independent signals by PLINK clumping for comparisons of protein-coding and noncoding RNA QTL signals across brain-related traits.",
+      "implementation_scope_note": "The Results/figure text establishes current clumping, while edition, LD reference and detailed settings are deferred to supplemental methods. COLOC/SMR/FUSION/OPERA and heritability inference are separate.",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 31,
+          "section": "Results / Identifying lncRNAs and circRNAs associated with brain-related traits",
+          "paragraph_sha256": "445e6509c7212b7de0d99e5b0aec5f2f00f2d8573f81ee0b73b40f911423182c"
+        },
+        {
+          "paragraph_index": 32,
+          "section": "Results / Identifying lncRNAs and circRNAs associated with brain-related traits",
+          "paragraph_sha256": "11b88a4587bf891b6584b372ef2992cd5de650af066eb08ef569c91e9368ede7"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC13504326",
+      "doi": "10.1016/j.ajhg.2026.06.003",
+      "tool_id": "plink",
+      "evidence_paragraph_sha256": "6570c84dc0b960a14f6d6f6d6bea8e983ce70d5f0a8626eaf7c65dff81dfe225",
+      "use_summary": "Filters the harmonized CaG/MHIB/1000 Genomes SNP set for missingness and 1000 Genomes MAF, then LD-prunes with indep-pairwise 50 5 0.5 and excludes the stated HLA interval.",
+      "implementation_scope_note": "The MAF reference population is 1000 Genomes, not automatically the full study cohort. ShapeIT5 performs subsequent cohort-based imputation, and HLA exclusion/variant intersection are separate preparation choices.",
+      "version_reported_near_name": "1.9"
+    },
+    {
+      "pmcid": "PMC13384252",
+      "doi": "10.1016/j.ajhg.2026.05.014",
+      "tool_id": "plink",
+      "evidence_paragraph_sha256": "da7363e369cb8c75e6ed07b72db9917f3ff1bcf722cbc9fe296ffd51e4b73afb",
+      "use_summary": "Applies allele-frequency, sample/variant missingness, HWE, heterozygosity and long-range-LD QC to array data and prepares a 50-kb-window LD-pruned panel for population analysis.",
+      "implementation_scope_note": "PLINK 2 supplies approximate EUR PCA; GENESIS/PC-AiR and SNPRelate KING-robust are other ancestry workflows. SAIGE constructs sparse GRMs and performs GWAS. The initial PLINK BED format does not assign those estimators to PLINK 1.9.",
+      "version_reported_near_name": "1.9",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 16,
+          "section": "Methods / Genetic data analysis and genome-wide association study / GWAS",
+          "paragraph_sha256": "c0fa216676a9e83248adac1178b861596a10c1c15dcb5a2c4b2b942423756be8"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC13384252",
+      "doi": "10.1016/j.ajhg.2026.05.014",
+      "tool_id": "plink2",
+      "evidence_paragraph_sha256": "da7363e369cb8c75e6ed07b72db9917f3ff1bcf722cbc9fe296ffd51e4b73afb",
+      "use_summary": "Computes European-ancestry genotype PCs with the explicitly named plink2 --pca approx method.",
+      "implementation_scope_note": "Other ancestry groups use GENESIS PC-AiR with SNPRelate KING-robust relatedness, while SAIGE makes sparse GRMs. Preserve the explicit approximate-PCA choice without importing settings or a build from those packages."
+    },
+    {
+      "pmcid": "PMC13384252",
+      "doi": "10.1016/j.ajhg.2026.05.014",
+      "tool_id": "king",
+      "evidence_paragraph_sha256": "da7363e369cb8c75e6ed07b72db9917f3ff1bcf722cbc9fe296ffd51e4b73afb",
+      "use_summary": "Uses the KING-robust relatedness method calculated by SNPRelate in the non-European PC-AiR ancestry workflow.",
+      "implementation_scope_note": "The host is SNPRelate, not PLINK 2 or standalone KING. The precise SNPRelate call/family handling is unstated; native pair counts alone do not establish complete host-specific coefficient parity."
+    },
+    {
+      "pmcid": "PMC11568758",
+      "doi": "10.1016/j.ajhg.2024.10.001",
+      "tool_id": "plink",
+      "evidence_paragraph_sha256": "8317d370692c35ef01d05b1fa4eae4391eb060e3e1a417ab488f750edc48b3f6",
+      "use_summary": "Performs KOBS genotype QC, removing problematic/ambiguous/HWE-failing or missing variants and checking genetic against reported sex before imputation.",
+      "implementation_scope_note": "The source writes --sex-check; preserve that spelling without declaring a validated executable command. Current autosomal QC does not implement sex-chromosome checking. Michigan/HRC imputation, Eagle and minimac4 are separate.",
+      "version_reported_near_name": "1.9"
+    },
+    {
+      "pmcid": "PMC11568758",
+      "doi": "10.1016/j.ajhg.2024.10.001",
+      "tool_id": "king",
+      "evidence_paragraph_sha256": "f5e54dc8f30fb620ee5ce86836deec69976e8603463fe89844f739fcec8bcd21",
+      "use_summary": "Uses KING 2.3.2 --unrelated --degree 3 for UKB comparison/iHS subsets and describes the corresponding previously prepared unrelated METSIM set.",
+      "implementation_scope_note": "Keep current UKB selection separate from previously generated METSIM data and from subsequent random matching, liftover, phasing, HaploView LD and iHS calculations. Citation labels are not part of the version or degree.",
+      "version_reported_near_name": "2.3.2",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 28,
+          "section": "Methods / Quality control and phasing of UKB genotype data for iHS calculations",
+          "paragraph_sha256": "0e1c629c38d29778c296bcc01c13795b34dab1224c901baa48656ec34c28106c"
+        },
+        {
+          "paragraph_index": 9,
+          "section": "Methods / Study cohorts / Metabolic syndrome in men cohort",
+          "paragraph_sha256": "7396facfb7df3c13048b7bb852bbcc492aea22049a85e442bf4535dfdd69b1a4"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC13504349",
+      "doi": "10.1016/j.ajhg.2026.05.013",
+      "tool_id": "plink",
+      "evidence_paragraph_sha256": "03b06a62eb7f3d04729a17c46dd67bf3129a101771199b7fb4e02a908866e102",
+      "use_summary": "QC-filters genotype-array variants for REGENIE null fitting and separately filters common imputed variants used for gene-specific conditional analysis.",
+      "implementation_scope_note": "The PLINK PGEN file is a format, not an explicit release-2 execution statement. INFO exclusion, prior phenotype/PRS residualization and REGENIE condition-file models are separate; preserve the distinct MAF thresholds.",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 38,
+          "section": "Methods / Burden testing on phenotype misalignment / Conditioning on common imputed variants when testing misaligned disease status",
+          "paragraph_sha256": "b7adeb4919501be3d1a9143cac8dc002011290d4c145cfa5d706cf9fbca1a6fa"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC13393102",
+      "doi": "10.1016/j.ajhg.2026.05.011",
+      "tool_id": "plink2",
+      "evidence_paragraph_sha256": "d33ec40841066bd55527e4c3c0272134573b8897dc24672558dc70262f68ce7a",
+      "use_summary": "Applies additional MAF 0.01, variant missingness 0.02 and sample missingness 0.05 QC in PLINK 2 to All of Us genotypes before REGENIE GWAS.",
+      "implementation_scope_note": "An earlier population-specific frequency-or-count criterion is distinct from the later all-individual QC. The source does not identify the relatedness estimator/removal policy; REGENIE performs association testing."
+    },
+    {
+      "pmcid": "PMC11568756",
+      "doi": "10.1016/j.ajhg.2024.09.001",
+      "tool_id": "plink",
+      "evidence_paragraph_sha256": "b402a2d52141d8296f032c0ec7de077500dfd0e26140e210a4bed9494b1596dd",
+      "use_summary": "Infers genomic ancestry and sample sex with PLINK and determines in-sample LD regions of common variants for population-specific eQTL fine-mapping.",
+      "implementation_scope_note": "The ancestry algorithm and edition are unspecified. Preserve the source post-imputation LD R2 wording and filtering-direction ambiguity rather than silently converting it to an INFO or pruning criterion. QTLtools matches samples and SuSiEx performs fine-mapping; sex inference requires a separate chromosome contract.",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 11,
+          "section": "Subjects and methods / Sex check and sample swap identification",
+          "paragraph_sha256": "17e73cd5506b50a66805323b390b8fb8700e34b956a160ba24890cd16833a69c"
+        },
+        {
+          "paragraph_index": 18,
+          "section": "Subjects and methods / eQTL fine-mapping",
+          "paragraph_sha256": "f1f809cd4a28cc56cc38b1e5de9277042754d6736100df392f04255583bd5f98"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC13504350",
+      "doi": "10.1016/j.ajhg.2026.05.006",
+      "tool_id": "plink2",
+      "evidence_paragraph_sha256": "6a685b6f6697d5e899db2cc70084a7da3bb9f76b01d579597c7c2c9b9c76f5f4",
+      "use_summary": "Calculates genetic burden from simulated causal SNPs/effects and generates quantitative discovery GWAS summary statistics with PLINK 2 --glm for ancestry-specific simulated populations.",
+      "implementation_scope_note": "R generates/scales non-genetic factors and phenotypes; discovery and fine-tuning/testing partitions differ. No exact PLINK build or score column/allele/missingness contract is supplied, and project qualification is not a claim of the author simulation scale.",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 37,
+          "section": "Results / Simulated data results",
+          "paragraph_sha256": "6f7935a7d79010994ca25787ac0b516e78e669621e3d182801f5e82c9e75b9f0"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC11568757",
+      "doi": "10.1016/j.ajhg.2024.08.014",
+      "tool_id": "plink",
+      "evidence_paragraph_sha256": "17962a59c5c2ba785964151bdeb3a6d930d4d8c01565738aec137d6c6cc621cb",
+      "use_summary": "Clumps harmonized SNP instruments for bidirectional MR with clump-p1 0.0001, clump-p2 0.01, clump-kb 250 and clump-r2 0.01 after the stated exposure-significance restriction.",
+      "implementation_scope_note": "The earlier P below 5e-8 restriction differs from the explicit clump flags. HLA/frequency/Steiger filters and TwoSampleMR effect estimation are separate; CNVs are not the MR instruments.",
+      "version_reported_near_name": "1.9",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 3,
+          "section": "Material and methods / Study material / Software versions",
+          "paragraph_sha256": "745698953ad01fdbb8403100c3559f4231f810bcd73ebb9f760383e15b11498e"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC12614742",
+      "doi": "10.1016/j.ajhg.2025.09.003",
+      "tool_id": "plink",
+      "evidence_paragraph_sha256": "cb79a2dc3e6cdbd85d4efbb57c288e48f2daee127bb1fb144433c4b2b638ff14",
+      "use_summary": "Computes LD r2 between muscle-eQTL and GWAS leads within 500 kb against a European UKB reference, selecting pairs at r2 at least 0.5 for coloc.",
+      "implementation_scope_note": "PLINK supplies the initial LD filter. coloc computes posterior probabilities and prior sensitivity; exact phase/LD-export flags and full historical build behavior are not specified.",
+      "version_reported_near_name": "1.90b3"
+    },
+    {
+      "pmcid": "PMC12614742",
+      "doi": "10.1016/j.ajhg.2025.09.003",
+      "tool_id": "king",
+      "evidence_paragraph_sha256": "bf24bc7f3d74a0be82207caa76c42babfb2e5bea13a70abeaa69308f5bae8a3b",
+      "use_summary": "Assesses FUSION participant family relationships with KING 1.4 and keeps one member of each first- or second-degree relative pair.",
+      "implementation_scope_note": "The paragraph describes current WGS preparation after citing earlier cohort preparation. Exact KING 1.4 mode, threshold and retention policy are unstated. No 1.4 runtime is qualified here, and newer versions are not substituted.",
+      "version_reported_near_name": "1.4",
+      "additional_primary_evidence": [
+        "P212-DIRECT-KING-COHORT"
+      ]
+    },
+    {
+      "pmcid": "PMC12696490",
+      "doi": "10.1016/j.ajhg.2025.08.016",
+      "tool_id": "plink2",
+      "evidence_paragraph_sha256": "83b4989f6ea51884d173d39670bd5a3bbcf558fe6786a9f416c955437beb3387",
+      "use_summary": "Calculates genotype PCs with PLINK 2 in European-ancestry men using the selected LD-pruned SNP panel.",
+      "implementation_scope_note": "SNPRelate snpgdsLDpruning supplies the pruning, not PLINK 2. The paragraph does not give the exact PCA mode/build or unambiguously assign every earlier QC filter to PLINK."
+    },
+    {
+      "pmcid": "PMC12696503",
+      "doi": "10.1016/j.ajhg.2025.08.013",
+      "tool_id": "plink",
+      "evidence_paragraph_sha256": "69ae7258e4ef4523d2dccd0c437a828a26874ff9167677f3ca58862af88be44a",
+      "use_summary": "LD-prunes UKB array genotypes with indep-pairwise 50 5 0.05 to prepare the marker panel used by SAIGE.",
+      "implementation_scope_note": "SAIGE createSparseGRM.R constructs the sparse GRM. Marker sampling/variance-ratio strata and PLINK-format datasets do not establish PLINK relatedness inference or association fitting."
+    },
+    {
+      "pmcid": "PMC13078719",
+      "doi": "10.1016/j.ajhg.2026.02.023",
+      "tool_id": "plink2",
+      "evidence_paragraph_sha256": "ffeaba8b2fa3bd1aef09476b7ba5d90fc39f4ba2550b078b911343359df1a66f",
+      "use_summary": "Uses PLINK 2 in study/reference genotype preparation, including LD pruning, multiallelic-site removal and population exclusions for ancestry analyses.",
+      "implementation_scope_note": "The explicit PCA estimator is EIGENSOFT SmartPCA, not PLINK 2; joint bcftools/PLINK merge attribution does not define a complete PLINK merge command. LD-pruning settings refer to the ADMIXTURE manual without being supplied here.",
+      "version_reported_near_name": "2.0"
+    },
+    {
+      "pmcid": "PMC13078719",
+      "doi": "10.1016/j.ajhg.2026.02.023",
+      "tool_id": "king",
+      "evidence_paragraph_sha256": "8450f01172d8f0c32e8c7778f4385f90bfccfd39d63d2e82bff47df516a89f89",
+      "use_summary": "Checks close relatives with the source-lowercase king 1.4, finding no first- or second-degree relatives and retaining all 100 sequenced participants.",
+      "implementation_scope_note": "The lowercase executable name is distinct from proper-name King mentions. No mode/threshold is supplied, and no KING 1.4 runtime is qualified here; newer profiles are not substituted. Other read/call processing belongs to the separately named programs.",
+      "version_reported_near_name": "1.4",
+      "additional_primary_evidence": [
+        "P229-LOWERCASE-KING"
+      ]
+    },
+    {
+      "pmcid": "PMC13087463",
+      "doi": "10.1016/j.ajhg.2026.02.022",
+      "tool_id": "plink",
+      "evidence_paragraph_sha256": "ec3c9030624c826659de9c613c5e07fc1622bb36e190af10d6258c8b158b7b11",
+      "use_summary": "Constructs GTEx-sample LD reference matrices for GWAS summary data used in coloc.SuSiE analyses, with settings described as defaults.",
+      "implementation_scope_note": "The matrix statistic, allele orientation, missingness and exact export flags are not given. A clumping r2 table is not an automatic substitute for the required fine-mapping LD matrix; coloc.SuSiE supplies the colocalization model.",
+      "version_reported_near_name": "1.90b7.7"
+    },
+    {
+      "pmcid": "PMC11344006",
+      "doi": "10.1016/j.ajhg.2024.06.007",
+      "tool_id": "plink",
+      "evidence_paragraph_sha256": "4020da1f72ce00dbc3ae6f6041824a1bd2afd26cf686876a196eb4851dd305c6",
+      "use_summary": "Computes Gabriel-style LD blocks and squared correlations for biallelic encodings of VNTR haplogroups/tag SNPs; the paper also attributes binned Tajima D calculations to PLINK 1.9.",
+      "implementation_scope_note": "The unusual Tajima D attribution has no validated command here and is retained unresolved. Blocks, phased diversity statistics, custom haplogroup encoding and permutation/binning are not standard clumping. Bibliographic label 34 is not part of edition 1.9.",
+      "version_reported_near_name": "1.9",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 10,
+          "section": "Material and methods / tSNPs and mapping of disease-relevant GWAS SNPs",
+          "paragraph_sha256": "00a75792a5782e28521ac0a414a35308c2bbdf833c5dddae9f99a6331cff48ae"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC11339621",
+      "doi": "10.1016/j.ajhg.2024.06.001",
+      "tool_id": "plink",
+      "evidence_paragraph_sha256": "2a28ce2c02b539e8cbec246e75404c15ea8a9baea734d46ed2f849fb14330cbe",
+      "use_summary": "Filters brain-study genotype variants by HWE, MAF and missingness, and samples by whole-panel or per-chromosome missingness.",
+      "implementation_scope_note": "The per-chromosome sample exclusion is additional to the global threshold. Cohort/ancestry selection, prior central processing and the separate 1000 Genomes LD resource are not all attributed to this PLINK stage.",
+      "version_reported_near_name": "1.9"
+    },
+    {
+      "pmcid": "PMC13087405",
+      "doi": "10.1016/j.ajhg.2026.02.011",
+      "tool_id": "plink",
+      "evidence_paragraph_sha256": "02af48f03b4b18ad9d8457b6b8e6c99343b959ee79caf883a80010d79863de52",
+      "use_summary": "Extracts pgrm replication SNPs that intersect available ATLAS genotypes before applying phenotype-prevalence and association selections.",
+      "implementation_scope_note": "The stated PLINK action is SNP extraction, not association fitting or pgrm generation. Exact extraction flags and allele/ID alignment choices are unstated.",
+      "version_reported_near_name": "1.9"
+    },
+    {
+      "pmcid": "PMC11267522",
+      "doi": "10.1016/j.ajhg.2024.05.017",
+      "tool_id": "plink",
+      "evidence_paragraph_sha256": "c88271d807612616fa04a04630e595b1549f37d13ae5ad24cb26edbb2f586890",
+      "use_summary": "Performs case/control logistic association with PCs, sex and study cohort covariates after MAF and mid-p HWE restrictions, with the same pipeline in replication.",
+      "implementation_scope_note": "MAOS validates selected associations with additional subtype adjustment and METAL combines results. Exact logistic/Firth flags are not supplied; retain the mid-p HWE qualifier rather than silently substituting the ordinary exact tail.",
+      "version_reported_near_name": "1.9",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 22,
+          "section": "Subjects and methods / Software",
+          "paragraph_sha256": "08f87a7b23755974a0b193a7c6f04ab6a6693d0489c0ccd3225e57482a4c3c47"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC12461026",
+      "doi": "10.1016/j.ajhg.2025.07.003",
+      "tool_id": "plink",
+      "evidence_paragraph_sha256": "2908f6c6e31263ae34505b617655896dcbe5add5c553d2d2c288d221297b0ca4",
+      "use_summary": "LD-clumps selected Pan-UKBB/HapMap3 SNPs against a European 1000 Genomes reference, prioritizing variants by the number of studies with nominal significance.",
+      "implementation_scope_note": "Pleiotropy-count priority is not the usual smallest-P lead rule; do not claim ordinary clumping reproduces this custom ordering. INFO/MAF/HLA/HapMap3 filters and GLEANR analysis are separate, and no edition or full clump settings are stated."
+    },
+    {
+      "pmcid": "PMC12461026",
+      "doi": "10.1016/j.ajhg.2025.07.003",
+      "tool_id": "plink2",
+      "evidence_paragraph_sha256": "8d2d2eee0121704a3625a19f7d3dd755115c6ee332e833bd5848d5aabeb9dc52",
+      "use_summary": "Prunes selected FinnGen/UKBB comparison SNPs with the source command fragment indep-pairwise 250kb 0.2 against a European 1000 Genomes LD reference before GLEANR.",
+      "implementation_scope_note": "No explicit step size or PLINK build is supplied; do not invent a third argument. SAIGE supplies the original GWAS and XT-LDSR filters cross-cohort traits. The significance expression has incomplete source formatting and is not a fully validated command contract."
+    },
+    {
+      "pmcid": "PMC12414667",
+      "doi": "10.1016/j.ajhg.2025.06.013",
+      "tool_id": "king",
+      "evidence_paragraph_sha256": "67badf2a28caf5a0439ae775586b65ab85da4fd3e7c31563f50fd2744037fc14",
+      "use_summary": "Uses a KING kinship coefficient cutoff of 0.0884 to exclude close-relative pairs in the MGB exome cohort before calcium analysis.",
+      "implementation_scope_note": "No KING host, edition, exact comparator or retained-sample policy is stated. This MGB step is distinct from UKB PLINK/HAIL QC, and the later calcium linear model is not identified as a KING operation."
+    },
+    {
+      "pmcid": "PMC13447089",
+      "doi": "10.1038/s41588-026-02682-z",
+      "tool_id": "plink",
+      "evidence_paragraph_sha256": "a5fb071254686413ceef033f5011069dcad13514c2ebb0eaf4e1f15a43c6b479",
+      "use_summary": "Clusters lead structural-variant eQTLs by LD in a plant RIL analysis, reporting ld-window-r2 0.2 and ld-window-kb 100.",
+      "implementation_scope_note": "These LD-output window parameters do not specify a standard --clump recipe. Nonhuman structural-variant encoding is outside current human SNP contracts; EMMAX performs association/TWAS and COLOC performs colocalization.",
+      "version_reported_near_name": "1.90b6.10"
+    },
+    {
+      "pmcid": "PMC11390475",
+      "doi": "10.1038/s41588-024-01898-1",
+      "tool_id": "plink2",
+      "evidence_paragraph_sha256": "daafcec63f7c94560029875022bfcccd1b7bf24726417f37becc2649932a2959",
+      "use_summary": "LD-prunes the high-quality genotyped marker set used for REGENIE step 1, with reported r2 below 0.8, a 1-Mb window and 100-kb step.",
+      "implementation_scope_note": "The stated physical step needs clarification before mapping to a variant-step pruning interface. REGENIE performs the association and approximate-Firth stages; the source does not assign those models to PLINK 2."
     }
   ]
 }

@@ -1,5 +1,19 @@
 # 250-paper omics and GWAS toolbox catalog
 
+## PLINK-family scoped admission
+
+250 papers, 446 named families, 2,700 observations, 1,413 individually reviewed positive uses and 1,287 awaiting individual review. There are 134 new scoped integrations (24 native Java and 110 upstream), 259 missing and 41 method-overlap families; 137 integrations include three existing adapters. Four source-supported observations and 74 reviews are added; all 1,339 earlier reviews are retained. The full implementation and semantic-review goal remains open.
+
+Scoped original adapters and separately qualified native helpers are available. The 96 source roles distinguish standalone software, hosted estimators and unspecified hosts. KING 1.4, PLINK 1.07 CNV, source-specific dosage/X/nonhuman/ROH/meta/LD-matrix and other listed gaps remain outside these qualified workflows. Native helper overlap does not prove an author recipe, historical edition equivalence or whole-tool/paper reproduction.
+
+SKIP3: skip the dependent analysis/audit when an exact permitted source, runtime or validation dependency is unavailable or forbidden. Restore the named prerequisite or leave the skip visible. FAIL2: admit no complete result; retain inputs, partials and errors, correct the cause and retry NEW outputs. Do not repair IDs, alleles, source inequalities, nonfinite values, statistics or algorithms. Four legacy PLINK verifiers need the explicit frozen fixture project; their initial working-checkout failures remain retained. Two historical full marker-verifier mains remain SKIP3 for their missing exact old JAR. Both literature reports remain withheld from Pages; this admission creates no release.
+
+Read [the individual source crosswalk and scope](../PLINK_CATALOG_INTEGRATION.md).
+
+<details><summary>Catalog before PLINK-family admission (historical)</summary>
+
+# 250-paper omics and GWAS toolbox catalog
+
 ## Seurat: scoped workflows and source-specific roles
 
 250 papers, 446 named families, 2,696 paper-tool observations, 1,339 individually reviewed positive uses and 1,357 awaiting individual review. There are 131 new scoped integrations (24 native Java and 107 upstream), 259 missing definitions, 44 method-overlap definitions and 134 integrations including three existing adapters. The frozen paper cohort is unchanged; one P160 Seurat use is added from its author supplement. The full implementation and semantic-review goal remains open.
@@ -1983,6 +1997,8 @@ Three source-reviewed tool additions retain separate provenance: MALT and HOPS h
 These additions improve the catalog and add no whole-tool or biological credit. The source-tested MALT 0.4.1 development controller does not fulfill the separate 0.5.2 role. Complete HOPS and MaltExtract operations remain unfinished; their unreported versions, settings and resource choices remain unknown. See `MALT_ALIGNMENT.md` and `MALT_HOPS_PAPER_ROLES.md`.
 
 **Required action:** match the declared source version and operation, qualify a permitted runtime, provide the complete dated reference/mapping and query populations, and retain original warnings and failures. If any prerequisite is unavailable or cannot be installed, skip its dependent analysis. A small software-control index does not reproduce the historical 91-spirochete or 7,508-genome bacterial analyses. Insufficient-read candidates remain unassessable.
+
+</details>
 
 </details>
 

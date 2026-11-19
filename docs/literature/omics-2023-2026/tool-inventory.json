@@ -74,10 +74,10 @@
     "name": "PLINK",
     "pattern": "(?<![A-Za-z0-9_])PLINK(?!\\s*(?:\\(\\s*)?(?:(?:version|v\\.?)\\s*)?2(?:\\.|\\b))(?:\\s*(?:\\(\\s*)?(?:(?:version|v\\.?)\\s*)?1(?:\\.[0-9]+)*(?:[ab][0-9][A-Za-z0-9._-]*)?)?(?![A-Za-z0-9_])",
     "role": "Genotype QC, association, relatedness, LD or score calculations",
-    "current_coverage": "method-overlap",
-    "existing_source": "src/main/java/org/jlinalg/genetics/PlinkBedLdClumper.java",
-    "coverage_note": "Related native method; upstream software options and numerical equivalence require separate validation.",
-    "paper_count": 52,
+    "current_coverage": "upstream-adapter-validated",
+    "existing_source": "src/main/java/org/jlinalg/cli/PlinkToolsCli.java",
+    "coverage_note": "Pinned original PLINK 1.9.0 additive autosomal hard-call GLM, explicit QC, LD pruning and genetic PCA; separately qualified bounded GENOME relatedness with declared native pair checks. Scoped original adapters and separately qualified native helpers are available. The 96 source roles distinguish standalone software, hosted estimators and unspecified hosts. KING 1.4, PLINK 1.07 CNV, source-specific dosage/X/nonhuman/ROH/meta/LD-matrix and other listed gaps remain outside these qualified workflows. Native helper overlap does not prove an author recipe, historical edition equivalence or whole-tool/paper reproduction.",
+    "paper_count": 53,
     "papers": [
       "P019",
       "P023",
@@ -89,6 +89,7 @@
       "P073",
       "P076",
       "P084",
+      "P088",
       "P090",
       "P092",
       "P097",
@@ -132,16 +133,1292 @@
       "P244",
       "P248"
     ],
-    "implementation_status": "method-overlap",
-    "implementation_source": "src/main/java/org/jlinalg/genetics/PlinkBedLdClumper.java",
-    "implementation_scope": "Related native method; upstream software options and numerical equivalence require separate validation. Separately validated native genotype-score applies supplied weights to resolved diploid human autosomal BED hard calls. Explicit ea/oa and supplied effect-allele frequencies, error/mean-impute/omit policies, sum/average/observed versus denominator counts and all-missing unreportability. Java only. See GENOTYPE_SCORE_WORKFLOWS.md. Typed original GLM/QC/pruning/PCA subsets are available in the development candidate; the broader family retains method-overlap.",
-    "validation_note": "Release names, alpha builds, citations and genuine dual-family source uses are reviewed. File-format/URL mentions alone are excluded. The broader adapter remains in progress, while the validated development candidate contains typed original autosomal hard-call GLM/QC, LD pruning and exact/randomized PCA subsets through plink-tools. Their separate original comparisons, focused/package checks and immutable candidate proofs remain distinct; the older canonical a104 lacks this command. The family retains method-overlap because broader options, PRS training, historical and full-paper parity remain open. See PLINK_SOURCE_REVIEW.md and each paper-specific cohort, model, unit and annotation scope. Native score API/BED/CLI passed 41 tests, six actual original comparison workflows with 2,007 reported values, 670 native sample rows and 23 packaged controls. Fresh Java 17 API consumers ran on Java 21/25. Existing overlap status and the PlinkBedLdClumper pointer remain for the broader tool family.",
+    "implementation_status": "upstream-adapter-validated",
+    "implementation_source": "src/main/java/org/jlinalg/cli/PlinkToolsCli.java",
+    "implementation_scope": "Pinned original PLINK 1.9.0 additive autosomal hard-call GLM, explicit QC, LD pruning and genetic PCA; separately qualified bounded GENOME relatedness with declared native pair checks. Scoped original adapters and separately qualified native helpers are available. The 96 source roles distinguish standalone software, hosted estimators and unspecified hosts. KING 1.4, PLINK 1.07 CNV, source-specific dosage/X/nonhuman/ROH/meta/LD-matrix and other listed gaps remain outside these qualified workflows. Native helper overlap does not prove an author recipe, historical edition equivalence or whole-tool/paper reproduction.",
+    "validation_note": "Current candidate original GLM/QC/pruning/PCA/CI/scoring and retained KING evidence; explicit exact frozen fixture restoration preserves initial failures. New relatedness workflow qualification is retained separately. No independent Firth estimator or historical author recipe is claimed.",
     "project_adapter_available": true,
     "canonical_adapter_available": false,
     "development_adapter_cli": "plink-tools",
     "development_candidate": "build/literature-review/beagle-candidate-1/jlinalg-0.3.7.jar",
     "native_helper_source": "src/main/java/org/jlinalg/genetics/DiploidScores.java",
-    "native_helper_cli": "genotype-score"
+    "native_helper_cli": "genotype-score",
+    "source_roles_reviewed": 53,
+    "source_role_coverage": "plink-source-role-coverage.json",
+    "current_documentation": "docs/literature/PLINK_CATALOG_INTEGRATION.md",
+    "component_qualification": "../plink-component-qualification/QUALIFICATION.json",
+    "relatedness_qualification": "../plink-relatedness-development/QUALIFICATION.json",
+    "qualified_component_entrypoints": [
+      "qualified development JAR: plink-tools",
+      "org.jlinalg.cli.PlinkRelatednessCli"
+    ],
+    "paper_role_qualification": {
+      "P019": {
+        "role": "direct-package-analysis",
+        "reported_editions": [],
+        "qualified_component_overlap": [
+          "plink-qc",
+          "plink-pruning",
+          "plink-pca",
+          "plink-relatedness",
+          "native-ld-clump"
+        ],
+        "remaining_roles": [
+          "LD-matrix-export",
+          "sex-chromosome-QC",
+          "staged-cohort-composition",
+          "historical-author-runtime"
+        ],
+        "package_execution_established": true,
+        "author_runtime_executed": false,
+        "author_script_executed": false,
+        "exact_author_settings_established": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P023": {
+        "role": "direct-package-analysis",
+        "reported_editions": [
+          {
+            "literal": "1.90b5.3",
+            "paragraph_indices": [
+              78
+            ],
+            "context": "GWAS clumping"
+          }
+        ],
+        "qualified_component_overlap": [
+          "native-ld-clump"
+        ],
+        "remaining_roles": [
+          "historical-clump-edition",
+          "100kb-lead-merging",
+          "bedtools-gene-annotation"
+        ],
+        "package_execution_established": true,
+        "author_runtime_executed": false,
+        "author_script_executed": false,
+        "exact_author_settings_established": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P035": {
+        "role": "direct-package-analysis",
+        "reported_editions": [
+          {
+            "literal": "1.9",
+            "paragraph_indices": [
+              43
+            ],
+            "context": "LD clumping for locus definitions"
+          }
+        ],
+        "qualified_component_overlap": [
+          "native-ld-clump"
+        ],
+        "remaining_roles": [
+          "historical-clump-options",
+          "cross-analysis-locus-merging",
+          "ancestry-panel-preparation"
+        ],
+        "package_execution_established": true,
+        "author_runtime_executed": false,
+        "author_script_executed": false,
+        "exact_author_settings_established": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P041": {
+        "role": "direct-package-analysis",
+        "reported_editions": [
+          {
+            "literal": "1.9",
+            "paragraph_indices": [
+              68
+            ],
+            "context": "pairwise allele-frequency-corrected covariance"
+          }
+        ],
+        "qualified_component_overlap": [
+          "plink-qc"
+        ],
+        "remaining_roles": [
+          "bmerge-and-recode",
+          "masked-covariance",
+          "subsample-global-minor-allele-orientation",
+          "demographic-summary-composition"
+        ],
+        "package_execution_established": true,
+        "author_runtime_executed": false,
+        "author_script_executed": false,
+        "exact_author_settings_established": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P045": {
+        "role": "direct-package-analysis",
+        "reported_editions": [
+          {
+            "literal": "1.9",
+            "paragraph_indices": [
+              35,
+              39
+            ],
+            "context": "pseudohaploid-data preparation and separate complete-genome ROH"
+          }
+        ],
+        "qualified_component_overlap": [],
+        "remaining_roles": [
+          "pseudohaploid-LD-and-ordination",
+          "ROH",
+          "historical-author-runtime"
+        ],
+        "package_execution_established": true,
+        "author_runtime_executed": false,
+        "author_script_executed": false,
+        "exact_author_settings_established": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P071": {
+        "role": "direct-package-analysis",
+        "reported_editions": [
+          {
+            "literal": "1.90",
+            "paragraph_indices": [
+              22
+            ],
+            "context": "LD pruning before ADMIXTURE"
+          }
+        ],
+        "qualified_component_overlap": [
+          "plink-pruning"
+        ],
+        "remaining_roles": [
+          "historical-pruning-edition",
+          "reference-panel-preparation",
+          "lcMLkin-and-ADMIXTURE-composition"
+        ],
+        "package_execution_established": true,
+        "author_runtime_executed": false,
+        "author_script_executed": false,
+        "exact_author_settings_established": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P072": {
+        "role": "direct-package-analysis",
+        "reported_editions": [
+          {
+            "literal": "1.9",
+            "paragraph_indices": [
+              18
+            ],
+            "context": "random-effect GWAS meta-analysis alongside MR-MEGA"
+          }
+        ],
+        "qualified_component_overlap": [],
+        "remaining_roles": [
+          "original-PLINK-random-effects-meta",
+          "author-input-and-harmonization-contract"
+        ],
+        "package_execution_established": true,
+        "author_runtime_executed": false,
+        "author_script_executed": false,
+        "exact_author_settings_established": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P073": {
+        "role": "direct-package-analysis",
+        "reported_editions": [
+          {
+            "literal": "1.9",
+            "paragraph_indices": [
+              34
+            ],
+            "context": "PCA of merged AIDA and 1000 Genomes genotypes"
+          }
+        ],
+        "qualified_component_overlap": [
+          "plink-pca"
+        ],
+        "remaining_roles": [
+          "imputed-input-preparation",
+          "bcftools-merge",
+          "unreported-PCA-options"
+        ],
+        "package_execution_established": true,
+        "author_runtime_executed": false,
+        "author_script_executed": false,
+        "exact_author_settings_established": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P076": {
+        "role": "direct-package-analysis",
+        "reported_editions": [
+          {
+            "literal": "1.9",
+            "paragraph_indices": [
+              47
+            ],
+            "context": "BridgePRS locus clumping"
+          }
+        ],
+        "qualified_component_overlap": [
+          "native-ld-clump"
+        ],
+        "remaining_roles": [
+          "historical-clump-option-parity",
+          "ancestry-reference-preparation",
+          "BridgePRS-composition"
+        ],
+        "package_execution_established": true,
+        "author_runtime_executed": false,
+        "author_script_executed": false,
+        "exact_author_settings_established": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P084": {
+        "role": "direct-package-analysis",
+        "reported_editions": [
+          {
+            "literal": "1.9",
+            "paragraph_indices": [
+              38,
+              51
+            ],
+            "context": "shared genotype processing and multi-trait clumping"
+          }
+        ],
+        "qualified_component_overlap": [
+          "plink-qc",
+          "native-ld-clump"
+        ],
+        "remaining_roles": [
+          "sex-QC",
+          "multi-trait-clump-replicate",
+          "gene-range-annotation",
+          "PGS-composition"
+        ],
+        "package_execution_established": true,
+        "author_runtime_executed": false,
+        "author_script_executed": false,
+        "exact_author_settings_established": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P088": {
+        "role": "reported-cohort-QC-processing",
+        "reported_editions": [],
+        "qualified_component_overlap": [
+          "plink-qc"
+        ],
+        "remaining_roles": [
+          "cohort-release-and-QC-allocation",
+          "unreported-source-settings"
+        ],
+        "package_execution_established": true,
+        "author_runtime_executed": false,
+        "author_script_executed": false,
+        "exact_author_settings_established": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P090": {
+        "role": "direct-package-analysis",
+        "reported_editions": [
+          {
+            "literal": "1.9",
+            "paragraph_indices": [
+              40
+            ],
+            "context": "application of polygenic score weights"
+          }
+        ],
+        "qualified_component_overlap": [
+          "native-score"
+        ],
+        "remaining_roles": [
+          "unreported-score-contract",
+          "strand-resolution-and-input-overlap",
+          "postscore-models"
+        ],
+        "package_execution_established": true,
+        "author_runtime_executed": false,
+        "author_script_executed": false,
+        "exact_author_settings_established": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P092": {
+        "role": "direct-package-analysis",
+        "reported_editions": [
+          {
+            "literal": "1.9",
+            "paragraph_indices": [
+              63
+            ],
+            "context": "pairwise LD for caQTL/GWAS overlap"
+          }
+        ],
+        "qualified_component_overlap": [
+          "native-ld-statistics"
+        ],
+        "remaining_roles": [
+          "original-LD-export-options",
+          "reference-panel-merge",
+          "author-overlap-composition"
+        ],
+        "package_execution_established": true,
+        "author_runtime_executed": false,
+        "author_script_executed": false,
+        "exact_author_settings_established": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P097": {
+        "role": "direct-package-analysis",
+        "reported_editions": [
+          {
+            "literal": "1.90b7.1",
+            "paragraph_indices": [
+              34,
+              45
+            ],
+            "context": "protein association and missingness Fisher-model analysis"
+          }
+        ],
+        "qualified_component_overlap": [
+          "plink-glm",
+          "native-ld-clump"
+        ],
+        "remaining_roles": [
+          "linear-no-snp",
+          "PLINK-model-fisher",
+          "iterative-conditioning",
+          "historical-clump-edition"
+        ],
+        "package_execution_established": true,
+        "author_runtime_executed": false,
+        "author_script_executed": false,
+        "exact_author_settings_established": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P101": {
+        "role": "direct-package-analysis",
+        "reported_editions": [
+          {
+            "literal": "1.90b6.18",
+            "paragraph_indices": [
+              30
+            ],
+            "context": "broomcorn millet 4DTv-site PCA"
+          }
+        ],
+        "qualified_component_overlap": [],
+        "remaining_roles": [
+          "nonhuman-genome-contract",
+          "4DTv-preparation",
+          "historical-PCA-and-pruning-options"
+        ],
+        "package_execution_established": true,
+        "author_runtime_executed": false,
+        "author_script_executed": false,
+        "exact_author_settings_established": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P105": {
+        "role": "direct-package-analysis",
+        "reported_editions": [],
+        "qualified_component_overlap": [
+          "plink-pruning"
+        ],
+        "remaining_roles": [
+          "unreported-author-edition",
+          "SAIGE-panel-and-model-composition"
+        ],
+        "package_execution_established": true,
+        "author_runtime_executed": false,
+        "author_script_executed": false,
+        "exact_author_settings_established": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P108": {
+        "role": "direct-package-analysis",
+        "reported_editions": [
+          {
+            "literal": "1.90b6.21",
+            "paragraph_indices": [
+              49
+            ],
+            "context": "pre-imputation genotype QC"
+          }
+        ],
+        "qualified_component_overlap": [
+          "plink-qc"
+        ],
+        "remaining_roles": [
+          "per-chromosome-sample-QC",
+          "duplicate-variant-policy",
+          "imputed-and-reference-preparation",
+          "SnpArrays-replicate-selection"
+        ],
+        "package_execution_established": true,
+        "author_runtime_executed": false,
+        "author_script_executed": false,
+        "exact_author_settings_established": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P109": {
+        "role": "direct-package-analysis",
+        "reported_editions": [
+          {
+            "literal": "3.31",
+            "paragraph_indices": [
+              32
+            ],
+            "context": "source-attributed LD calculation"
+          },
+          {
+            "literal": "1.9",
+            "paragraph_indices": [
+              33
+            ],
+            "context": "grape PCA"
+          }
+        ],
+        "qualified_component_overlap": [],
+        "remaining_roles": [
+          "unresolved-source-LD-edition",
+          "nonhuman-and-SV-contract",
+          "author-PCA-options",
+          "PHATE-composition"
+        ],
+        "package_execution_established": true,
+        "author_runtime_executed": false,
+        "author_script_executed": false,
+        "exact_author_settings_established": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P112": {
+        "role": "direct-package-analysis",
+        "reported_editions": [
+          {
+            "literal": "1.9",
+            "paragraph_indices": [
+              26
+            ],
+            "context": "new Yale-Penn GWAS tranche"
+          }
+        ],
+        "qualified_component_overlap": [
+          "plink-glm"
+        ],
+        "remaining_roles": [
+          "unreported-release1-model",
+          "cohort-specific-inputs-and-covariates"
+        ],
+        "package_execution_established": true,
+        "author_runtime_executed": false,
+        "author_script_executed": false,
+        "exact_author_settings_established": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P114": {
+        "role": "author-code-workflow",
+        "reported_editions": [
+          {
+            "literal": "1.07",
+            "paragraph_indices": [
+              64
+            ],
+            "context": "availability label corroborated by a binary path in the frozen author code"
+          }
+        ],
+        "qualified_component_overlap": [],
+        "remaining_roles": [
+          "legacy-1.07-CNV-workflows",
+          "author-code-configuration-and-runtime",
+          "downstream-burden-models"
+        ],
+        "package_execution_established": true,
+        "author_runtime_executed": false,
+        "author_script_executed": false,
+        "exact_author_settings_established": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P116": {
+        "role": "direct-package-analysis",
+        "reported_editions": [],
+        "qualified_component_overlap": [
+          "plink-pruning"
+        ],
+        "remaining_roles": [
+          "unreported-author-edition",
+          "KING-and-bigsnpr-composition"
+        ],
+        "package_execution_established": true,
+        "author_runtime_executed": false,
+        "author_script_executed": false,
+        "exact_author_settings_established": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P120": {
+        "role": "direct-package-analysis",
+        "reported_editions": [
+          {
+            "literal": "1.9",
+            "paragraph_indices": [
+              25
+            ],
+            "context": "LD clumping for risk-locus definition"
+          }
+        ],
+        "qualified_component_overlap": [
+          "native-ld-clump"
+        ],
+        "remaining_roles": [
+          "source-flag-clarification",
+          "reference-panel-and-P-thresholds",
+          "locus-catalog-composition"
+        ],
+        "package_execution_established": true,
+        "author_runtime_executed": false,
+        "author_script_executed": false,
+        "exact_author_settings_established": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P125": {
+        "role": "direct-package-analysis",
+        "reported_editions": [],
+        "qualified_component_overlap": [
+          "native-ld-clump"
+        ],
+        "remaining_roles": [
+          "unreported-clump-contract",
+          "locus-to-gene-composition"
+        ],
+        "package_execution_established": true,
+        "author_runtime_executed": false,
+        "author_script_executed": false,
+        "exact_author_settings_established": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P130": {
+        "role": "direct-package-analysis",
+        "reported_editions": [
+          {
+            "literal": "1.9",
+            "paragraph_indices": [
+              47,
+              53
+            ],
+            "context": "shared genotype postprocessing and explicit LD clumping"
+          }
+        ],
+        "qualified_component_overlap": [
+          "plink-qc",
+          "native-ld-clump"
+        ],
+        "remaining_roles": [
+          "shared-release-operation-allocation",
+          "unreported-clump-window-and-panel",
+          "imputed-input-preparation"
+        ],
+        "package_execution_established": true,
+        "author_runtime_executed": false,
+        "author_script_executed": false,
+        "exact_author_settings_established": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P131": {
+        "role": "direct-and-FUMA-hosted-analysis",
+        "reported_editions": [
+          {
+            "literal": "1.90",
+            "paragraph_indices": [
+              37
+            ],
+            "context": "QSNP heterogeneity clumping"
+          }
+        ],
+        "qualified_component_overlap": [
+          "native-ld-clump"
+        ],
+        "remaining_roles": [
+          "FUMA-locus-composition",
+          "author-reference-and-historical-options"
+        ],
+        "package_execution_established": true,
+        "author_runtime_executed": false,
+        "author_script_executed": false,
+        "exact_author_settings_established": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P135": {
+        "role": "direct-package-analysis",
+        "reported_editions": [],
+        "qualified_component_overlap": [
+          "plink-glm"
+        ],
+        "remaining_roles": [
+          "cohort-software-allocation",
+          "X-and-imputed-input",
+          "unreported-family-structure-and-binary-options"
+        ],
+        "package_execution_established": true,
+        "author_runtime_executed": false,
+        "author_script_executed": false,
+        "exact_author_settings_established": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P147": {
+        "role": "direct-package-analysis",
+        "reported_editions": [],
+        "qualified_component_overlap": [
+          "plink-qc"
+        ],
+        "remaining_roles": [
+          "ambiguous-HWE-direction",
+          "HLA-and-cohort-selection",
+          "unreported-author-edition"
+        ],
+        "package_execution_established": true,
+        "author_runtime_executed": false,
+        "author_script_executed": false,
+        "exact_author_settings_established": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P154": {
+        "role": "direct-package-analysis",
+        "reported_editions": [
+          {
+            "literal": "1.9",
+            "paragraph_indices": [
+              62
+            ],
+            "context": "summary-statistic clumping for conditional covariates"
+          }
+        ],
+        "qualified_component_overlap": [
+          "native-ld-clump"
+        ],
+        "remaining_roles": [
+          "historical-default-and-reference-contract",
+          "unreported-P-combination",
+          "conditional-rare-variant-composition"
+        ],
+        "package_execution_established": true,
+        "author_runtime_executed": false,
+        "author_script_executed": false,
+        "exact_author_settings_established": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P159": {
+        "role": "direct-package-analysis",
+        "reported_editions": [],
+        "qualified_component_overlap": [
+          "plink-pruning"
+        ],
+        "remaining_roles": [
+          "unreported-author-edition",
+          "reference-and-query-preparation",
+          "GCTA-and-UMAP-composition"
+        ],
+        "package_execution_established": true,
+        "author_runtime_executed": false,
+        "author_script_executed": false,
+        "exact_author_settings_established": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P162": {
+        "role": "direct-package-analysis",
+        "reported_editions": [],
+        "qualified_component_overlap": [
+          "native-ld-clump",
+          "native-ld-statistics"
+        ],
+        "remaining_roles": [
+          "imputed-reference-contract",
+          "author-clump-options",
+          "locus-merging-and-knownness-rules"
+        ],
+        "package_execution_established": true,
+        "author_runtime_executed": false,
+        "author_script_executed": false,
+        "exact_author_settings_established": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P170": {
+        "role": "direct-package-analysis",
+        "reported_editions": [],
+        "qualified_component_overlap": [
+          "plink-pruning"
+        ],
+        "remaining_roles": [
+          "cohort-and-build-preparation",
+          "SNPRelate-PCA-composition",
+          "unreported-author-edition"
+        ],
+        "package_execution_established": true,
+        "author_runtime_executed": false,
+        "author_script_executed": false,
+        "exact_author_settings_established": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P171": {
+        "role": "direct-package-analysis",
+        "reported_editions": [
+          {
+            "literal": "1.9",
+            "paragraph_indices": [
+              50,
+              53
+            ],
+            "context": "Kronos pangenome IBS and LD-pruning stages"
+          }
+        ],
+        "qualified_component_overlap": [],
+        "remaining_roles": [
+          "nonhuman-and-SV-contract",
+          "source-IBS-encoding",
+          "historical-pruning-options"
+        ],
+        "package_execution_established": true,
+        "author_runtime_executed": false,
+        "author_script_executed": false,
+        "exact_author_settings_established": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P175": {
+        "role": "direct-package-analysis",
+        "reported_editions": [
+          {
+            "literal": "1.9",
+            "paragraph_indices": [
+              6,
+              8,
+              15
+            ],
+            "context": "genotype QC/IBD, PCA and physiological-trait regression"
+          }
+        ],
+        "qualified_component_overlap": [
+          "plink-qc",
+          "plink-relatedness",
+          "plink-pruning",
+          "plink-pca",
+          "plink-glm"
+        ],
+        "remaining_roles": [
+          "X-chromosome-analysis",
+          "author-IBD-settings-and-selection",
+          "OMIM-and-trait-specific-composition"
+        ],
+        "package_execution_established": true,
+        "author_runtime_executed": false,
+        "author_script_executed": false,
+        "exact_author_settings_established": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P176": {
+        "role": "direct-package-analysis",
+        "reported_editions": [
+          {
+            "literal": "1.9.0",
+            "paragraph_indices": [
+              19
+            ],
+            "context": "genome-wide genotyping QC"
+          }
+        ],
+        "qualified_component_overlap": [
+          "plink-qc"
+        ],
+        "remaining_roles": [
+          "heterozygosity-policy",
+          "array-cohort-composition",
+          "GEMMA-association"
+        ],
+        "package_execution_established": true,
+        "author_runtime_executed": false,
+        "author_script_executed": false,
+        "exact_author_settings_established": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P180": {
+        "role": "direct-package-analysis",
+        "reported_editions": [
+          {
+            "literal": "1.9",
+            "paragraph_indices": [
+              15
+            ],
+            "context": "LD pruning before ADMIXTURE"
+          }
+        ],
+        "qualified_component_overlap": [
+          "plink-qc",
+          "plink-pruning",
+          "native-ld-statistics"
+        ],
+        "remaining_roles": [
+          "ROH",
+          "ancient-genotype-contract",
+          "original-LD-export-and-binning",
+          "haplotype-composition"
+        ],
+        "package_execution_established": true,
+        "author_runtime_executed": false,
+        "author_script_executed": false,
+        "exact_author_settings_established": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P183": {
+        "role": "direct-package-analysis",
+        "reported_editions": [],
+        "qualified_component_overlap": [
+          "native-ld-clump"
+        ],
+        "remaining_roles": [
+          "supplemental-clump-contract",
+          "QTL-and-gene-prioritization-composition"
+        ],
+        "package_execution_established": true,
+        "author_runtime_executed": false,
+        "author_script_executed": false,
+        "exact_author_settings_established": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P184": {
+        "role": "direct-package-analysis",
+        "reported_editions": [
+          {
+            "literal": "1.9",
+            "paragraph_indices": [
+              22
+            ],
+            "context": "harmonized reference SNP filtering and LD pruning"
+          }
+        ],
+        "qualified_component_overlap": [
+          "plink-qc",
+          "plink-pruning"
+        ],
+        "remaining_roles": [
+          "reference-frequency-policy",
+          "harmonization-and-HLA-composition",
+          "ShapeIT5-imputation"
+        ],
+        "package_execution_established": true,
+        "author_runtime_executed": false,
+        "author_script_executed": false,
+        "exact_author_settings_established": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P191": {
+        "role": "direct-package-analysis",
+        "reported_editions": [
+          {
+            "literal": "1.9",
+            "paragraph_indices": [
+              15
+            ],
+            "context": "array QC and LD-pruned PCA panel preparation"
+          }
+        ],
+        "qualified_component_overlap": [
+          "plink-qc",
+          "plink-pruning"
+        ],
+        "remaining_roles": [
+          "heterozygosity-and-long-range-LD-policy",
+          "cohort-and-reference-composition",
+          "SAIGE-and-other-host-methods"
+        ],
+        "package_execution_established": true,
+        "author_runtime_executed": false,
+        "author_script_executed": false,
+        "exact_author_settings_established": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P192": {
+        "role": "direct-package-analysis",
+        "reported_editions": [
+          {
+            "literal": "1.9",
+            "paragraph_indices": [
+              11
+            ],
+            "context": "KOBS pre-imputation genotype QC"
+          }
+        ],
+        "qualified_component_overlap": [
+          "plink-qc"
+        ],
+        "remaining_roles": [
+          "sex-check-command-and-X-contract",
+          "strand-and-reference-preparation",
+          "imputation-and-postimputation-INFO"
+        ],
+        "package_execution_established": true,
+        "author_runtime_executed": false,
+        "author_script_executed": false,
+        "exact_author_settings_established": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P194": {
+        "role": "direct-package-analysis",
+        "reported_editions": [],
+        "qualified_component_overlap": [
+          "plink-qc"
+        ],
+        "remaining_roles": [
+          "PGEN-and-imputed-input-contract",
+          "INFO-filter-and-gene-window-composition",
+          "REGENIE-conditioning"
+        ],
+        "package_execution_established": true,
+        "author_runtime_executed": false,
+        "author_script_executed": false,
+        "exact_author_settings_established": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P200": {
+        "role": "direct-package-analysis",
+        "reported_editions": [
+          {
+            "literal": "1.9",
+            "paragraph_indices": [
+              14
+            ],
+            "context": "sequential significance-tier LD clumping"
+          }
+        ],
+        "qualified_component_overlap": [
+          "native-ld-clump"
+        ],
+        "remaining_roles": [
+          "clump-window-unit-clarification",
+          "sequential-tier-and-singleton-policy",
+          "historical-reference-options"
+        ],
+        "package_execution_established": true,
+        "author_runtime_executed": false,
+        "author_script_executed": false,
+        "exact_author_settings_established": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P203": {
+        "role": "direct-package-analysis",
+        "reported_editions": [],
+        "qualified_component_overlap": [
+          "native-ld-statistics"
+        ],
+        "remaining_roles": [
+          "unreported-ancestry-method",
+          "sex-inference",
+          "LD-export-options",
+          "ambiguous-imputed-QC-contract"
+        ],
+        "package_execution_established": true,
+        "author_runtime_executed": false,
+        "author_script_executed": false,
+        "exact_author_settings_established": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P211": {
+        "role": "direct-package-analysis",
+        "reported_editions": [
+          {
+            "literal": "1.9",
+            "paragraph_indices": [
+              3,
+              11
+            ],
+            "context": "MR instrument clumping"
+          }
+        ],
+        "qualified_component_overlap": [
+          "native-ld-clump"
+        ],
+        "remaining_roles": [
+          "author-LD-reference",
+          "instrument-filter-and-MR-composition",
+          "historical-clump-options"
+        ],
+        "package_execution_established": true,
+        "author_runtime_executed": false,
+        "author_script_executed": false,
+        "exact_author_settings_established": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P212": {
+        "role": "direct-package-analysis",
+        "reported_editions": [
+          {
+            "literal": "1.90b3",
+            "paragraph_indices": [
+              18
+            ],
+            "context": "lead eQTL/GWAS pair LD filtering"
+          }
+        ],
+        "qualified_component_overlap": [
+          "native-ld-statistics"
+        ],
+        "remaining_roles": [
+          "original-LD-export-contract",
+          "reference-panel-preparation",
+          "coloc-composition"
+        ],
+        "package_execution_established": true,
+        "author_runtime_executed": false,
+        "author_script_executed": false,
+        "exact_author_settings_established": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P220": {
+        "role": "direct-package-analysis",
+        "reported_editions": [],
+        "qualified_component_overlap": [
+          "plink-pruning"
+        ],
+        "remaining_roles": [
+          "SAIGE-GRM-and-variance-ratio-composition",
+          "unreported-author-edition"
+        ],
+        "package_execution_established": true,
+        "author_runtime_executed": false,
+        "author_script_executed": false,
+        "exact_author_settings_established": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P234": {
+        "role": "direct-package-analysis",
+        "reported_editions": [
+          {
+            "literal": "1.90b7.7",
+            "paragraph_indices": [
+              31
+            ],
+            "context": "GTEx LD reference-matrix construction"
+          }
+        ],
+        "qualified_component_overlap": [],
+        "remaining_roles": [
+          "original-LD-matrix-contract",
+          "historical-defaults-and-input-alignment",
+          "coloc-SuSiE-composition"
+        ],
+        "package_execution_established": true,
+        "author_runtime_executed": false,
+        "author_script_executed": false,
+        "exact_author_settings_established": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P235": {
+        "role": "direct-package-analysis",
+        "reported_editions": [
+          {
+            "literal": "1.9",
+            "paragraph_indices": [
+              9,
+              10
+            ],
+            "context": "LD blocks, source-attributed Tajima D and haplogroup-tagging LD"
+          }
+        ],
+        "qualified_component_overlap": [
+          "native-ld-statistics"
+        ],
+        "remaining_roles": [
+          "Gabriel-LD-blocks",
+          "unresolved-Tajima-D-attribution",
+          "haplogroup-encoding-and-permutation-composition"
+        ],
+        "package_execution_established": true,
+        "author_runtime_executed": false,
+        "author_script_executed": false,
+        "exact_author_settings_established": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P238": {
+        "role": "direct-package-analysis",
+        "reported_editions": [
+          {
+            "literal": "1.9",
+            "paragraph_indices": [
+              4
+            ],
+            "context": "BrainGVEX/CMC genotype QC"
+          }
+        ],
+        "qualified_component_overlap": [
+          "plink-qc"
+        ],
+        "remaining_roles": [
+          "per-chromosome-sample-QC",
+          "cohort-and-ancestry-composition"
+        ],
+        "package_execution_established": true,
+        "author_runtime_executed": false,
+        "author_script_executed": false,
+        "exact_author_settings_established": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P240": {
+        "role": "direct-package-data-preparation",
+        "reported_editions": [
+          {
+            "literal": "1.9",
+            "paragraph_indices": [
+              12
+            ],
+            "context": "replication SNP extraction"
+          }
+        ],
+        "qualified_component_overlap": [],
+        "remaining_roles": [
+          "explicit-SNP-extraction-contract",
+          "pgrm-and-phenotype-composition"
+        ],
+        "package_execution_established": true,
+        "author_runtime_executed": false,
+        "author_script_executed": false,
+        "exact_author_settings_established": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P242": {
+        "role": "generic-name-in-release2-workflow",
+        "reported_editions": [],
+        "qualified_component_overlap": [
+          "plink-qc"
+        ],
+        "remaining_roles": [
+          "separate-release1-execution-not-established",
+          "source-HWE-wording"
+        ],
+        "package_execution_established": false,
+        "author_runtime_executed": false,
+        "author_script_executed": false,
+        "exact_author_settings_established": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P243": {
+        "role": "direct-package-analysis",
+        "reported_editions": [
+          {
+            "literal": "1.9",
+            "paragraph_indices": [
+              22
+            ],
+            "context": "software edition for case-control association"
+          }
+        ],
+        "qualified_component_overlap": [
+          "plink-glm",
+          "plink-qc"
+        ],
+        "remaining_roles": [
+          "unreported-HWE-population-and-binary-flags",
+          "MAOS-and-meta-composition"
+        ],
+        "package_execution_established": true,
+        "author_runtime_executed": false,
+        "author_script_executed": false,
+        "exact_author_settings_established": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P244": {
+        "role": "direct-package-analysis",
+        "reported_editions": [],
+        "qualified_component_overlap": [
+          "native-ld-statistics"
+        ],
+        "remaining_roles": [
+          "custom-pleiotropy-priority-clumping",
+          "unreported-clump-contract",
+          "GLEANR-and-selection-composition"
+        ],
+        "package_execution_established": true,
+        "author_runtime_executed": false,
+        "author_script_executed": false,
+        "exact_author_settings_established": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P248": {
+        "role": "direct-package-analysis",
+        "reported_editions": [
+          {
+            "literal": "1.90b6.10",
+            "paragraph_indices": [
+              57
+            ],
+            "context": "LD-based clustering of structural-variant eQTL leads"
+          }
+        ],
+        "qualified_component_overlap": [],
+        "remaining_roles": [
+          "nonhuman-and-SV-contract",
+          "custom-LD-clustering",
+          "author-LD-export-and-runtime"
+        ],
+        "package_execution_established": true,
+        "author_runtime_executed": false,
+        "author_script_executed": false,
+        "exact_author_settings_established": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      }
+    },
+    "upstream_family_credit_added": 1,
+    "native_family_credit_added": 0,
+    "new_scoped_integration_credit": 1,
+    "whole_tool_qualified": false,
+    "whole_paper_reproduced": false
   },
   {
     "id": "samtools",
@@ -2773,10 +4050,10 @@
     "name": "PLINK 2",
     "pattern": "(?<![A-Za-z0-9_])PLINK\\s*(?:\\(\\s*)?(?:(?:version|v\\.?)\\s*)?2(?:\\.[0-9]+)*(?:[ab][0-9][A-Za-z0-9._-]*)?(?![A-Za-z0-9_]|\\.[A-Za-z0-9])",
     "role": "Genotype QC, association and score calculation",
-    "current_coverage": "method-overlap",
-    "existing_source": "src/main/java/org/jlinalg/cli/CliOptions.java",
-    "coverage_note": "Related native method; upstream software options and numerical equivalence require separate validation.",
-    "paper_count": 25,
+    "current_coverage": "upstream-adapter-validated",
+    "existing_source": "src/main/java/org/jlinalg/cli/PlinkToolsCli.java",
+    "coverage_note": "Pinned original PLINK 2.0.0-b.1.2 additive autosomal hard-call GLM including Firth/fallback reportability, explicit QC, LD pruning and exact/randomized genetic PCA; separately qualified KING tables, triangular matrices and cutoff workflows. Scoped original adapters and separately qualified native helpers are available. The 96 source roles distinguish standalone software, hosted estimators and unspecified hosts. KING 1.4, PLINK 1.07 CNV, source-specific dosage/X/nonhuman/ROH/meta/LD-matrix and other listed gaps remain outside these qualified workflows. Native helper overlap does not prove an author recipe, historical edition equivalence or whole-tool/paper reproduction.",
+    "paper_count": 26,
     "papers": [
       "P024",
       "P076",
@@ -2789,6 +4066,7 @@
       "P115",
       "P118",
       "P123",
+      "P130",
       "P136",
       "P150",
       "P176",
@@ -2804,16 +4082,647 @@
       "P249",
       "P250"
     ],
-    "implementation_status": "method-overlap",
-    "implementation_source": "src/main/java/org/jlinalg/genetics/PlinkBedLdClumper.java",
-    "implementation_scope": "Related native method; upstream software options and numerical equivalence require separate validation. Separately validated native genotype-score applies supplied weights to resolved diploid human autosomal BED hard calls. Explicit ea/oa and supplied effect-allele frequencies, error/mean-impute/omit policies, sum/average/observed versus denominator counts and all-missing unreportability. Java only. See GENOTYPE_SCORE_WORKFLOWS.md. Typed original GLM/QC/pruning/PCA subsets are available in the development candidate; the broader family retains method-overlap.",
-    "validation_note": "Release names, alpha builds, citations and genuine dual-family source uses are reviewed. File-format/URL mentions alone are excluded. The broader adapter remains in progress, while the validated development candidate contains typed original autosomal hard-call GLM/QC, LD pruning and exact/randomized PCA subsets through plink-tools. Their separate original comparisons, focused/package checks and immutable candidate proofs remain distinct; the older canonical a104 lacks this command. The family retains method-overlap because broader options, PRS training, historical and full-paper parity remain open. See PLINK_SOURCE_REVIEW.md and each paper-specific cohort, model, unit and annotation scope. Native score API/BED/CLI passed 41 tests, six actual original comparison workflows with 2,007 reported values, 670 native sample rows and 23 packaged controls. Fresh Java 17 API consumers ran on Java 21/25. Existing overlap status and the PlinkBedLdClumper pointer remain for the broader tool family.",
+    "implementation_status": "upstream-adapter-validated",
+    "implementation_source": "src/main/java/org/jlinalg/cli/PlinkToolsCli.java",
+    "implementation_scope": "Pinned original PLINK 2.0.0-b.1.2 additive autosomal hard-call GLM including Firth/fallback reportability, explicit QC, LD pruning and exact/randomized genetic PCA; separately qualified KING tables, triangular matrices and cutoff workflows. Scoped original adapters and separately qualified native helpers are available. The 96 source roles distinguish standalone software, hosted estimators and unspecified hosts. KING 1.4, PLINK 1.07 CNV, source-specific dosage/X/nonhuman/ROH/meta/LD-matrix and other listed gaps remain outside these qualified workflows. Native helper overlap does not prove an author recipe, historical edition equivalence or whole-tool/paper reproduction.",
+    "validation_note": "Current candidate original GLM/QC/pruning/PCA/CI/scoring and retained KING evidence; explicit exact frozen fixture restoration preserves initial failures. New relatedness workflow qualification is retained separately. No independent Firth estimator or historical author recipe is claimed.",
     "project_adapter_available": true,
     "canonical_adapter_available": false,
     "development_adapter_cli": "plink-tools",
     "development_candidate": "build/literature-review/beagle-candidate-1/jlinalg-0.3.7.jar",
     "native_helper_source": "src/main/java/org/jlinalg/genetics/DiploidScores.java",
-    "native_helper_cli": "genotype-score"
+    "native_helper_cli": "genotype-score",
+    "source_roles_reviewed": 26,
+    "source_role_coverage": "plink-source-role-coverage.json",
+    "current_documentation": "docs/literature/PLINK_CATALOG_INTEGRATION.md",
+    "component_qualification": "../plink-component-qualification/QUALIFICATION.json",
+    "relatedness_qualification": "../plink-relatedness-development/QUALIFICATION.json",
+    "qualified_component_entrypoints": [
+      "qualified development JAR: plink-tools",
+      "org.jlinalg.cli.PlinkRelatednessCli"
+    ],
+    "paper_role_qualification": {
+      "P024": {
+        "role": "direct-package-analysis",
+        "reported_editions": [
+          {
+            "literal": "2.0",
+            "paragraph_indices": [
+              59,
+              60
+            ],
+            "context": "ancestry PCA and application of AD score weights"
+          }
+        ],
+        "qualified_component_overlap": [
+          "plink-qc",
+          "plink-pruning",
+          "plink-pca",
+          "native-score"
+        ],
+        "remaining_roles": [
+          "imputed-dosage-workflow",
+          "ALFA-annotation",
+          "PRS-CS-training",
+          "unreported-PCA-and-score-options"
+        ],
+        "package_execution_established": true,
+        "author_runtime_executed": false,
+        "author_script_executed": false,
+        "exact_author_settings_established": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P076": {
+        "role": "direct-package-analysis",
+        "reported_editions": [
+          {
+            "literal": "2.0",
+            "paragraph_indices": [
+              51,
+              53,
+              54,
+              55,
+              56
+            ],
+            "context": "UKB quantitative GWAS and imputed-to-hard-call preparation"
+          }
+        ],
+        "qualified_component_overlap": [
+          "plink-glm",
+          "plink-qc"
+        ],
+        "remaining_roles": [
+          "imputed-input-conversion",
+          "MACH-quality-filter",
+          "author-data-partitions",
+          "PRS-method-composition"
+        ],
+        "package_execution_established": true,
+        "author_runtime_executed": false,
+        "author_script_executed": false,
+        "exact_author_settings_established": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P084": {
+        "role": "direct-package-analysis",
+        "reported_editions": [
+          {
+            "literal": "2",
+            "paragraph_indices": [
+              38,
+              39,
+              40,
+              50
+            ],
+            "context": "PLINK2-named screening, MGB and UKBB operations"
+          }
+        ],
+        "qualified_component_overlap": [
+          "plink-qc",
+          "plink-pca",
+          "plink-relatedness",
+          "plink-glm"
+        ],
+        "remaining_roles": [
+          "imputed-dosage-GLM",
+          "sex-QC",
+          "plinkQC-ancestry-selection",
+          "cohort-specific-filter-composition"
+        ],
+        "package_execution_established": true,
+        "author_runtime_executed": false,
+        "author_script_executed": false,
+        "exact_author_settings_established": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P088": {
+        "role": "direct-package-analysis",
+        "reported_editions": [
+          {
+            "literal": "various versions from May 2020 release onwards",
+            "paragraph_indices": [
+              59
+            ],
+            "context": "polygenic scoring release range in code availability"
+          }
+        ],
+        "qualified_component_overlap": [
+          "native-ld-clump",
+          "native-score"
+        ],
+        "remaining_roles": [
+          "unreported-clump-and-score-options",
+          "cohort-QC-version-allocation",
+          "PRS-CS-and-postscore-composition"
+        ],
+        "package_execution_established": true,
+        "author_runtime_executed": false,
+        "author_script_executed": false,
+        "exact_author_settings_established": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P097": {
+        "role": "direct-package-analysis",
+        "reported_editions": [
+          {
+            "literal": "2.00a5LM",
+            "paragraph_indices": [
+              32
+            ],
+            "context": "staged Tarkin variant QC and ten-PC calculation"
+          }
+        ],
+        "qualified_component_overlap": [
+          "plink-qc",
+          "plink-pca"
+        ],
+        "remaining_roles": [
+          "imputed-input-and-bcftools-preparation",
+          "historical-author-build"
+        ],
+        "package_execution_established": true,
+        "author_runtime_executed": false,
+        "author_script_executed": false,
+        "exact_author_settings_established": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P107": {
+        "role": "direct-package-analysis",
+        "reported_editions": [],
+        "qualified_component_overlap": [
+          "plink-glm",
+          "native-ld-clump"
+        ],
+        "remaining_roles": [
+          "dosage-GLM-and-LD",
+          "Firth-inference-validation",
+          "unreported-author-build",
+          "cohort-conditional-meta-composition"
+        ],
+        "package_execution_established": true,
+        "author_runtime_executed": false,
+        "author_script_executed": false,
+        "exact_author_settings_established": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P112": {
+        "role": "direct-package-analysis",
+        "reported_editions": [
+          {
+            "literal": "2.0",
+            "paragraph_indices": [
+              26
+            ],
+            "context": "MVP logistic GWAS"
+          }
+        ],
+        "qualified_component_overlap": [
+          "plink-glm",
+          "plink-qc"
+        ],
+        "remaining_roles": [
+          "source-positive-controls-wording",
+          "unreported-binary-and-Firth-settings",
+          "ancestry-QC-composition"
+        ],
+        "package_execution_established": true,
+        "author_runtime_executed": false,
+        "author_script_executed": false,
+        "exact_author_settings_established": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P114": {
+        "role": "direct-package-analysis",
+        "reported_editions": [],
+        "qualified_component_overlap": [
+          "native-score"
+        ],
+        "remaining_roles": [
+          "unreported-score-contract",
+          "chromosome-summation-and-standardization",
+          "PRS-CS-training"
+        ],
+        "package_execution_established": true,
+        "author_runtime_executed": false,
+        "author_script_executed": false,
+        "exact_author_settings_established": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P115": {
+        "role": "direct-package-analysis",
+        "reported_editions": [
+          {
+            "literal": "2",
+            "paragraph_indices": [
+              41
+            ],
+            "context": "binary and quantitative UKB GWAS"
+          }
+        ],
+        "qualified_component_overlap": [
+          "plink-glm"
+        ],
+        "remaining_roles": [
+          "imputed-genotype-contract",
+          "unreported-binary-options",
+          "phenotype-imputation-and-meta-composition"
+        ],
+        "package_execution_established": true,
+        "author_runtime_executed": false,
+        "author_script_executed": false,
+        "exact_author_settings_established": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P118": {
+        "role": "direct-package-analysis",
+        "reported_editions": [
+          {
+            "literal": "2",
+            "paragraph_indices": [
+              46
+            ],
+            "context": "observed-phenotype models and linear models for imputed phenotypes"
+          }
+        ],
+        "qualified_component_overlap": [
+          "plink-glm"
+        ],
+        "remaining_roles": [
+          "imputed-genotype-contract",
+          "unreported-binary-and-build-options",
+          "AutoComplete-phenotype-imputation"
+        ],
+        "package_execution_established": true,
+        "author_runtime_executed": false,
+        "author_script_executed": false,
+        "exact_author_settings_established": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P123": {
+        "role": "direct-package-analysis",
+        "reported_editions": [],
+        "qualified_component_overlap": [
+          "plink-relatedness"
+        ],
+        "remaining_roles": [
+          "unreported-author-build-and-selection-policy",
+          "R-HLA-association-composition"
+        ],
+        "package_execution_established": true,
+        "author_runtime_executed": false,
+        "author_script_executed": false,
+        "exact_author_settings_established": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P130": {
+        "role": "direct-package-processing-operations-unspecified",
+        "reported_editions": [
+          {
+            "literal": "2.0",
+            "paragraph_indices": [
+              47
+            ],
+            "context": "compound PLINK 1.9 and 2.0 postprocessing statement"
+          }
+        ],
+        "qualified_component_overlap": [
+          "plink-qc"
+        ],
+        "remaining_roles": [
+          "shared-release-operation-allocation",
+          "imputed-input-contract"
+        ],
+        "package_execution_established": true,
+        "author_runtime_executed": false,
+        "author_script_executed": false,
+        "exact_author_settings_established": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P136": {
+        "role": "direct-package-analysis",
+        "reported_editions": [],
+        "qualified_component_overlap": [
+          "plink-glm"
+        ],
+        "remaining_roles": [
+          "dosage-and-X-models",
+          "PI_HAT-host-unspecified",
+          "BOLT-LMM-fallback-composition"
+        ],
+        "package_execution_established": true,
+        "author_runtime_executed": false,
+        "author_script_executed": false,
+        "exact_author_settings_established": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P150": {
+        "role": "direct-package-analysis",
+        "reported_editions": [
+          {
+            "literal": "2.0",
+            "paragraph_indices": [
+              24,
+              61,
+              63
+            ],
+            "context": "KoGES firth-fallback GWAS and separate UKB score application"
+          }
+        ],
+        "qualified_component_overlap": [
+          "plink-glm",
+          "native-score"
+        ],
+        "remaining_roles": [
+          "Firth-inference-validation",
+          "unreported-score-contract",
+          "PRS-CS-and-FUMA-and-COJO-composition"
+        ],
+        "package_execution_established": true,
+        "author_runtime_executed": false,
+        "author_script_executed": false,
+        "exact_author_settings_established": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P176": {
+        "role": "direct-package-analysis",
+        "reported_editions": [
+          {
+            "literal": "2.0.0",
+            "paragraph_indices": [
+              16,
+              17,
+              18
+            ],
+            "context": "distinct common/rare exome SNV QC sets"
+          }
+        ],
+        "qualified_component_overlap": [
+          "plink-qc"
+        ],
+        "remaining_roles": [
+          "source-HWE-threshold-direction",
+          "heterozygosity-and-exome-preparation",
+          "GEMMA-and-gene-based-tests"
+        ],
+        "package_execution_established": true,
+        "author_runtime_executed": false,
+        "author_script_executed": false,
+        "exact_author_settings_established": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P191": {
+        "role": "direct-package-analysis",
+        "reported_editions": [],
+        "qualified_component_overlap": [
+          "plink-pca"
+        ],
+        "remaining_roles": [
+          "unreported-author-build-and-PCA-options",
+          "ancestry-specific-composition"
+        ],
+        "package_execution_established": true,
+        "author_runtime_executed": false,
+        "author_script_executed": false,
+        "exact_author_settings_established": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P200": {
+        "role": "direct-package-analysis",
+        "reported_editions": [],
+        "qualified_component_overlap": [
+          "plink-qc"
+        ],
+        "remaining_roles": [
+          "population-specific-QC-composition",
+          "unreported-relatedness-host",
+          "REGENIE-association"
+        ],
+        "package_execution_established": true,
+        "author_runtime_executed": false,
+        "author_script_executed": false,
+        "exact_author_settings_established": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P205": {
+        "role": "simulation-data-preparation-and-analysis",
+        "reported_editions": [],
+        "qualified_component_overlap": [
+          "native-score",
+          "plink-glm"
+        ],
+        "remaining_roles": [
+          "unreported-score-and-GLM-options",
+          "simulation-and-data-partition-composition"
+        ],
+        "package_execution_established": true,
+        "author_runtime_executed": false,
+        "author_script_executed": false,
+        "exact_author_settings_established": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P216": {
+        "role": "direct-package-analysis",
+        "reported_editions": [],
+        "qualified_component_overlap": [
+          "plink-pca"
+        ],
+        "remaining_roles": [
+          "unreported-PCA-contract",
+          "SNPRelate-pruning-and-cohort-composition"
+        ],
+        "package_execution_established": true,
+        "author_runtime_executed": false,
+        "author_script_executed": false,
+        "exact_author_settings_established": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P224": {
+        "role": "direct-package-analysis",
+        "reported_editions": [
+          {
+            "literal": "2.00a3LM",
+            "paragraph_indices": [
+              48
+            ],
+            "context": "sex-stratified MVP sleep GWAS"
+          }
+        ],
+        "qualified_component_overlap": [
+          "plink-glm"
+        ],
+        "remaining_roles": [
+          "author-model-and-imputed-input-contract",
+          "sex-stratum-and-BMI-model-composition"
+        ],
+        "package_execution_established": true,
+        "author_runtime_executed": false,
+        "author_script_executed": false,
+        "exact_author_settings_established": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P229": {
+        "role": "direct-package-analysis",
+        "reported_editions": [
+          {
+            "literal": "2.0",
+            "paragraph_indices": [
+              11
+            ],
+            "context": "study/reference genotype preparation for ancestry analyses"
+          }
+        ],
+        "qualified_component_overlap": [
+          "plink-qc",
+          "plink-pruning"
+        ],
+        "remaining_roles": [
+          "author-pruning-and-merge-contract",
+          "population-selection-and-EIGENSOFT-composition"
+        ],
+        "package_execution_established": true,
+        "author_runtime_executed": false,
+        "author_script_executed": false,
+        "exact_author_settings_established": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P242": {
+        "role": "direct-package-analysis",
+        "reported_editions": [
+          {
+            "literal": "2.0",
+            "paragraph_indices": [
+              19
+            ],
+            "context": "cohort MAF and complete-call variant QC"
+          }
+        ],
+        "qualified_component_overlap": [
+          "plink-qc"
+        ],
+        "remaining_roles": [
+          "SV-and-ambiguous-SNP-preparation",
+          "generic-HWE-host-wording"
+        ],
+        "package_execution_established": true,
+        "author_runtime_executed": false,
+        "author_script_executed": false,
+        "exact_author_settings_established": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P244": {
+        "role": "direct-package-analysis",
+        "reported_editions": [],
+        "qualified_component_overlap": [
+          "plink-pruning"
+        ],
+        "remaining_roles": [
+          "omitted-step-and-build-contract",
+          "cross-cohort-trait-and-SNP-selection"
+        ],
+        "package_execution_established": true,
+        "author_runtime_executed": false,
+        "author_script_executed": false,
+        "exact_author_settings_established": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P246": {
+        "role": "direct-package-analysis",
+        "reported_editions": [
+          {
+            "literal": "2.00a3.1LM",
+            "paragraph_indices": [
+              6
+            ],
+            "context": "UKB CASR qualifying-variant QC alongside HAIL"
+          }
+        ],
+        "qualified_component_overlap": [
+          "plink-qc"
+        ],
+        "remaining_roles": [
+          "unallocated-PLINK-HAIL-QC-operations",
+          "qualifying-variant-contract",
+          "downstream-Firth-and-Fisher-not-assigned"
+        ],
+        "package_execution_established": true,
+        "author_runtime_executed": false,
+        "author_script_executed": false,
+        "exact_author_settings_established": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P249": {
+        "role": "direct-package-analysis",
+        "reported_editions": [
+          {
+            "literal": "2",
+            "paragraph_indices": [
+              68
+            ],
+            "context": "GEUVADIS chromosome-1 genotype PCs"
+          }
+        ],
+        "qualified_component_overlap": [
+          "plink-pca"
+        ],
+        "remaining_roles": [
+          "unreported-default-build-PC-count-and-mode",
+          "expression-correction-composition"
+        ],
+        "package_execution_established": true,
+        "author_runtime_executed": false,
+        "author_script_executed": false,
+        "exact_author_settings_established": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P250": {
+        "role": "direct-package-analysis",
+        "reported_editions": [],
+        "qualified_component_overlap": [
+          "plink-pruning"
+        ],
+        "remaining_roles": [
+          "source-step-unit-clarification",
+          "unreported-author-build",
+          "REGENIE-model-composition"
+        ],
+        "package_execution_established": true,
+        "author_runtime_executed": false,
+        "author_script_executed": false,
+        "exact_author_settings_established": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      }
+    },
+    "upstream_family_credit_added": 1,
+    "native_family_credit_added": 0,
+    "new_scoped_integration_credit": 1,
+    "whole_tool_qualified": false,
+    "whole_paper_reproduced": false
   },
   {
     "id": "fastqc",
@@ -3883,10 +5792,10 @@
     "name": "KING",
     "pattern": "(?-i:(?<![A-Za-z0-9_])(?:KING)(?![A-Za-z0-9_]))",
     "role": "Genetic kinship and relatedness estimation",
-    "current_coverage": "method-overlap",
-    "existing_source": "src/main/java/org/jlinalg/genetics/GenomicRelationshipMatrix.java",
-    "coverage_note": "Related native method; upstream software options and numerical equivalence require separate validation.",
-    "paper_count": 15,
+    "current_coverage": "upstream-adapter-validated",
+    "existing_source": "src/main/java/org/jlinalg/cli/KingToolsCli.java",
+    "coverage_note": "Exact original standalone KING 2.3.2 bounded kinship/degree/duplicate/unrelated workflows and Linux IBD-coordinate transport; separately qualified historical 2.2.7 and 2.0 kinship/duplicates and exact native cutoff arithmetic. Original 2.0 source-discrepant results are rejected. Scoped original adapters and separately qualified native helpers are available. The 96 source roles distinguish standalone software, hosted estimators and unspecified hosts. KING 1.4, PLINK 1.07 CNV, source-specific dosage/X/nonhuman/ROH/meta/LD-matrix and other listed gaps remain outside these qualified workflows. Native helper overlap does not prove an author recipe, historical edition equivalence or whole-tool/paper reproduction.",
+    "paper_count": 17,
     "papers": [
       "P019",
       "P024",
@@ -3901,13 +5810,382 @@
       "P180",
       "P191",
       "P192",
+      "P212",
       "P224",
+      "P229",
       "P246"
     ],
-    "implementation_status": "method-overlap",
-    "implementation_source": "src/main/java/org/jlinalg/genetics/GenomicRelationshipMatrix.java",
-    "implementation_scope": "Related native method; upstream software options and numerical equivalence require separate validation.",
-    "validation_note": "Existing overlap/adapters require paper-specific option checks; missing integrations remain pending."
+    "implementation_status": "upstream-adapter-validated",
+    "implementation_source": "src/main/java/org/jlinalg/cli/KingToolsCli.java",
+    "implementation_scope": "Exact original standalone KING 2.3.2 bounded kinship/degree/duplicate/unrelated workflows and Linux IBD-coordinate transport; separately qualified historical 2.2.7 and 2.0 kinship/duplicates and exact native cutoff arithmetic. Original 2.0 source-discrepant results are rejected. Scoped original adapters and separately qualified native helpers are available. The 96 source roles distinguish standalone software, hosted estimators and unspecified hosts. KING 1.4, PLINK 1.07 CNV, source-specific dosage/X/nonhuman/ROH/meta/LD-matrix and other listed gaps remain outside these qualified workflows. Native helper overlap does not prove an author recipe, historical edition equivalence or whole-tool/paper reproduction.",
+    "validation_note": "Current candidate original GLM/QC/pruning/PCA/CI/scoring and retained KING evidence; explicit exact frozen fixture restoration preserves initial failures. New relatedness workflow qualification is retained separately. No independent Firth estimator or historical author recipe is claimed.",
+    "project_adapter_available": true,
+    "source_roles_reviewed": 17,
+    "source_role_coverage": "plink-source-role-coverage.json",
+    "current_documentation": "docs/literature/PLINK_CATALOG_INTEGRATION.md",
+    "component_qualification": "../plink-component-qualification/QUALIFICATION.json",
+    "relatedness_qualification": "../plink-relatedness-development/QUALIFICATION.json",
+    "qualified_component_entrypoints": [
+      "published standalone king232/king-historical Java JARs"
+    ],
+    "paper_role_qualification": {
+      "P019": {
+        "role": "named-estimator-host-unspecified",
+        "reported_editions": [],
+        "qualified_component_overlap": [
+          "native-king-counts",
+          "native-king-thresholds"
+        ],
+        "remaining_roles": [
+          "unreported-estimator-host",
+          "author-selection-policy",
+          "cohort-specific-inputs"
+        ],
+        "package_execution_established": false,
+        "author_runtime_executed": false,
+        "author_script_executed": false,
+        "exact_author_settings_established": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P024": {
+        "role": "named-estimator-host-unspecified",
+        "reported_editions": [],
+        "qualified_component_overlap": [
+          "native-king-counts",
+          "native-king-thresholds"
+        ],
+        "remaining_roles": [
+          "unreported-estimator-host",
+          "author-selection-policy"
+        ],
+        "package_execution_established": false,
+        "author_runtime_executed": false,
+        "author_script_executed": false,
+        "exact_author_settings_established": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P041": {
+        "role": "direct-package-analysis",
+        "reported_editions": [],
+        "qualified_component_overlap": [
+          "king232",
+          "native-king-counts"
+        ],
+        "remaining_roles": [
+          "historical-edition-unspecified",
+          "ancestry-masking-and-outlier-selection",
+          "population-subsampling"
+        ],
+        "package_execution_established": true,
+        "author_runtime_executed": false,
+        "author_script_executed": false,
+        "exact_author_settings_established": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P084": {
+        "role": "hosted-plink2-estimator",
+        "reported_editions": [],
+        "qualified_component_overlap": [
+          "plink-relatedness",
+          "native-king-counts"
+        ],
+        "remaining_roles": [
+          "unreported-author-selection-policy"
+        ],
+        "package_execution_established": false,
+        "author_runtime_executed": false,
+        "author_script_executed": false,
+        "exact_author_settings_established": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P104": {
+        "role": "named-estimator-host-unspecified",
+        "reported_editions": [],
+        "qualified_component_overlap": [
+          "native-king-counts",
+          "native-king-thresholds"
+        ],
+        "remaining_roles": [
+          "unreported-estimator-host",
+          "author-selection-policy",
+          "cohort-QC-composition"
+        ],
+        "package_execution_established": false,
+        "author_runtime_executed": false,
+        "author_script_executed": false,
+        "exact_author_settings_established": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P105": {
+        "role": "named-estimator-host-unspecified",
+        "reported_editions": [],
+        "qualified_component_overlap": [
+          "native-king-counts",
+          "native-king-thresholds"
+        ],
+        "remaining_roles": [
+          "unreported-estimator-host",
+          "strict-selection-policy",
+          "LDstore-and-model-composition"
+        ],
+        "package_execution_established": false,
+        "author_runtime_executed": false,
+        "author_script_executed": false,
+        "exact_author_settings_established": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P116": {
+        "role": "direct-package-analysis",
+        "reported_editions": [],
+        "qualified_component_overlap": [
+          "king232"
+        ],
+        "remaining_roles": [
+          "historical-edition-unspecified",
+          "author-segment-and-selection-settings",
+          "bigsnpr-composition"
+        ],
+        "package_execution_established": true,
+        "author_runtime_executed": false,
+        "author_script_executed": false,
+        "exact_author_settings_established": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P123": {
+        "role": "hosted-plink2-estimator",
+        "reported_editions": [],
+        "qualified_component_overlap": [
+          "plink-relatedness",
+          "native-king-counts"
+        ],
+        "remaining_roles": [
+          "unreported-author-selection-policy",
+          "cohort-specific-inputs"
+        ],
+        "package_execution_established": false,
+        "author_runtime_executed": false,
+        "author_script_executed": false,
+        "exact_author_settings_established": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P130": {
+        "role": "direct-package-analysis",
+        "reported_editions": [
+          {
+            "literal": "2.2.7",
+            "paragraph_indices": [
+              45
+            ],
+            "context": "cross-cohort duplicate-participant identification"
+          }
+        ],
+        "qualified_component_overlap": [
+          "king-historical",
+          "native-king-counts"
+        ],
+        "remaining_roles": [
+          "unreported-author-mode-and-threshold",
+          "NACC-preferential-selection"
+        ],
+        "package_execution_established": true,
+        "author_runtime_executed": false,
+        "author_script_executed": false,
+        "exact_author_settings_established": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P168": {
+        "role": "direct-package-analysis",
+        "reported_editions": [],
+        "qualified_component_overlap": [
+          "king232",
+          "native-king-counts"
+        ],
+        "remaining_roles": [
+          "unreported-duplicate-mode-and-edition",
+          "author-retention-policy",
+          "dosage-discretization-and-ancestry-composition"
+        ],
+        "package_execution_established": true,
+        "author_runtime_executed": false,
+        "author_script_executed": false,
+        "exact_author_settings_established": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P180": {
+        "role": "direct-package-analysis",
+        "reported_editions": [],
+        "qualified_component_overlap": [
+          "king232",
+          "native-king-counts",
+          "native-king-thresholds"
+        ],
+        "remaining_roles": [
+          "unreported-author-edition-and-selection-contract"
+        ],
+        "package_execution_established": true,
+        "author_runtime_executed": false,
+        "author_script_executed": false,
+        "exact_author_settings_established": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P191": {
+        "role": "hosted-snprelate-estimator",
+        "reported_editions": [],
+        "qualified_component_overlap": [
+          "native-king-counts"
+        ],
+        "remaining_roles": [
+          "SNPRelate-host-call-and-coefficient-parity",
+          "GENESIS-PC-AiR-composition"
+        ],
+        "package_execution_established": false,
+        "author_runtime_executed": false,
+        "author_script_executed": false,
+        "exact_author_settings_established": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P192": {
+        "role": "direct-package-analysis",
+        "reported_editions": [
+          {
+            "literal": "2.3.2",
+            "paragraph_indices": [
+              9,
+              25,
+              28
+            ],
+            "context": "degree-3 unrelated reference sets in METSIM/UKB analyses"
+          }
+        ],
+        "qualified_component_overlap": [
+          "king232",
+          "native-king-counts"
+        ],
+        "remaining_roles": [
+          "population-and-random-matching-composition",
+          "historical-author-inputs"
+        ],
+        "package_execution_established": true,
+        "author_runtime_executed": false,
+        "author_script_executed": false,
+        "exact_author_settings_established": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P212": {
+        "role": "direct-package-analysis",
+        "reported_editions": [
+          {
+            "literal": "1.4",
+            "paragraph_indices": [
+              8
+            ],
+            "context": "FUSION WGS family-relationship assessment"
+          }
+        ],
+        "qualified_component_overlap": [
+          "native-king-counts"
+        ],
+        "remaining_roles": [
+          "KING1.4-runtime",
+          "unreported-author-mode-and-selection-policy"
+        ],
+        "package_execution_established": true,
+        "author_runtime_executed": false,
+        "author_script_executed": false,
+        "exact_author_settings_established": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P224": {
+        "role": "direct-package-analysis",
+        "reported_editions": [
+          {
+            "literal": "2.0",
+            "paragraph_indices": [
+              48
+            ],
+            "context": "MVP kinship calculation before sex-stratified GWAS"
+          }
+        ],
+        "qualified_component_overlap": [
+          "king-historical",
+          "native-king-counts",
+          "native-king-thresholds"
+        ],
+        "remaining_roles": [
+          "known-KING2.0-discrepancy",
+          "author-input-and-selection-contract",
+          "historical-author-reproduction"
+        ],
+        "package_execution_established": true,
+        "author_runtime_executed": false,
+        "author_script_executed": false,
+        "exact_author_settings_established": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P229": {
+        "role": "direct-package-analysis",
+        "reported_editions": [
+          {
+            "literal": "1.4",
+            "paragraph_indices": [
+              10
+            ],
+            "context": "Omani WGS close-relative check"
+          }
+        ],
+        "qualified_component_overlap": [
+          "native-king-counts"
+        ],
+        "remaining_roles": [
+          "KING1.4-runtime",
+          "unreported-author-mode-and-threshold"
+        ],
+        "package_execution_established": true,
+        "author_runtime_executed": false,
+        "author_script_executed": false,
+        "exact_author_settings_established": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P246": {
+        "role": "named-estimator-host-unspecified",
+        "reported_editions": [],
+        "qualified_component_overlap": [
+          "native-king-counts",
+          "native-king-thresholds"
+        ],
+        "remaining_roles": [
+          "unreported-estimator-host-and-selection-policy",
+          "cohort-and-calcium-model-composition"
+        ],
+        "package_execution_established": false,
+        "author_runtime_executed": false,
+        "author_script_executed": false,
+        "exact_author_settings_established": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      }
+    },
+    "upstream_family_credit_added": 1,
+    "native_family_credit_added": 0,
+    "new_scoped_integration_credit": 1,
+    "whole_tool_qualified": false,
+    "whole_paper_reproduced": false
   },
   {
     "id": "peer",

@@ -1,5 +1,16 @@
 # Current toolbox handover
 
+**Current: [PLINK-family cumulative catalog admission is complete](PLINK_CATALOG_CHECKPOINT_2026-11-19.md).**
+The fresh post-admission audit passed. Totals are **134 new scoped integrations
+(24 native Java + 110 upstream), 2,700 observations, 1,413 reviewed uses and
+1,287 pending**. All earlier reviews, immutable evidence and source guards are
+preserved. Continue the higher-impact remaining scopes and individual reviews;
+the full goal is unfinished. Both literature reports remain withheld from
+Pages, and no release is created. The checkpoint lists exact warnings,
+recovery, resume/transfer paths and the next cumulative predecessor.
+
+<details><summary>Earlier component and handover checkpoints (historical)</summary>
+
 **Latest: [PLINK component qualification checkpoint](PLINK_COMPONENT_CHECKPOINT_2026-11-19.md).**
 Fresh current-candidate checks now cover original GLM/QC/pruning/PCA/CI and
 native scoring, with separate unchanged KING audits. Four initial fixture-hash
@@ -158,6 +169,8 @@ promise coordinate equality across input or host changes.
 Private evidence stores and restricted runtimes remain local. Both literature
 pages remain withheld from Pages; the review notice follows long older notices,
 and full warnings-page mobile layout remains unqualified.
+
+</details>
 
 </details>
 
