@@ -1,5 +1,21 @@
 # 250-paper omics and GWAS toolbox catalog
 
+## COLOC: scoped native workflows and 27 source roles
+
+250 papers, 446 named families, 2,700 observations, 1,439 individually reviewed positive uses and 1,261 awaiting individual review. There are 135 new scoped integrations (25 native Java and 110 upstream), 259 missing and 40 method-overlap families; 138 integrations include three existing adapters. Twenty-six COLOC reviews are appended and all 1,413 earlier reviews, including P190, are retained. The full implementation and semantic-review goal remains open.
+
+Native Java single-causal coloc 6.0.3 ABF from supplied regression/P-value regional statistics, with exact input capture, warnings, RUN/VERIFY/REPLAY and complete native rederivation. A separately qualified native stable credible-BF method is available with explicit source differences.
+
+The 27 reviewed roles distinguish six explicit ABF roles, two mixed ABF/SuSiE roles, three SuSiE roles, 13 unspecified roles, one unspecified multi-causal role and two FUSION-hosted roles. The native BF method is not literal whole-package source parity: H3 arithmetic, weighted conditional SNP probabilities, extreme-weight handling and boundary/refusal behavior differ. Hosted execution, original multi-causal fits, null/per-SNP-prior source mode, historical editions and complete author workflows remain explicit gaps. Current source-build artifacts are required; the published 0.4.0 release predates these workflows.
+
+SKIP3: skip the dependent analysis/audit when an exact permitted source, runtime or validation dependency is unavailable or forbidden; name what must be restored or leave the skip visible. FAIL2: admit no complete result; retain raw inputs, partials and errors, correct the cause and retry NEW outputs. Do not repair IDs, alleles, source inequalities, nonfinite values, statistics or algorithms. Check native BF warnings and defined-posterior flags; undefined zero markers are not probabilities. Earlier PLINK fixture failures and historical marker-verifier SKIP3 gaps remain retained. Both literature reports stay withheld from Pages; no release is created.
+
+Read [the source crosswalk and exact scope](../COLOC_CATALOG_INTEGRATION.md).
+
+<details><summary>Catalog before COLOC admission (historical)</summary>
+
+# 250-paper omics and GWAS toolbox catalog
+
 ## PLINK-family scoped admission
 
 250 papers, 446 named families, 2,700 observations, 1,413 individually reviewed positive uses and 1,287 awaiting individual review. There are 134 new scoped integrations (24 native Java and 110 upstream), 259 missing and 41 method-overlap families; 137 integrations include three existing adapters. Four source-supported observations and 74 reviews are added; all 1,339 earlier reviews are retained. The full implementation and semantic-review goal remains open.
@@ -1997,6 +2013,8 @@ Three source-reviewed tool additions retain separate provenance: MALT and HOPS h
 These additions improve the catalog and add no whole-tool or biological credit. The source-tested MALT 0.4.1 development controller does not fulfill the separate 0.5.2 role. Complete HOPS and MaltExtract operations remain unfinished; their unreported versions, settings and resource choices remain unknown. See `MALT_ALIGNMENT.md` and `MALT_HOPS_PAPER_ROLES.md`.
 
 **Required action:** match the declared source version and operation, qualify a permitted runtime, provide the complete dated reference/mapping and query populations, and retain original warnings and failures. If any prerequisite is unavailable or cannot be installed, skip its dependent analysis. A small software-control index does not reproduce the historical 91-spirochete or 7,508-genome bacterial analyses. Insufficient-read candidates remain unassessable.
+
+</details>
 
 </details>
 

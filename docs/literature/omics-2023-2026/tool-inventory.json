@@ -3958,9 +3958,9 @@
     "name": "coloc",
     "pattern": "(?<![A-Za-z0-9_])(?:coloc(?:\\.abf|\\.susie)?)(?![A-Za-z0-9_])",
     "role": "Shared-signal colocalization analysis",
-    "current_coverage": "method-overlap",
-    "existing_source": "src/main/java/org/jlinalg/coloc/ColocSusie.java",
-    "coverage_note": "Related native method; upstream software options and numerical equivalence require separate validation.",
+    "current_coverage": "native-subset-validated",
+    "existing_source": "src/main/java/org/jlinalg/cli/ColocAbfWorkflowCli.java",
+    "coverage_note": "Native Java single-causal coloc 6.0.3 ABF from supplied regression/P-value regional statistics, with exact input capture, warnings, RUN/VERIFY/REPLAY and complete native rederivation. A separately qualified native stable credible-BF method is available with explicit source differences. The 27 reviewed roles distinguish six explicit ABF roles, two mixed ABF/SuSiE roles, three SuSiE roles, 13 unspecified roles, one unspecified multi-causal role and two FUSION-hosted roles. The native BF method is not literal whole-package source parity: H3 arithmetic, weighted conditional SNP probabilities, extreme-weight handling and boundary/refusal behavior differ. Hosted execution, original multi-causal fits, null/per-SNP-prior source mode, historical editions and complete author workflows remain explicit gaps. Current source-build artifacts are required; the published 0.4.0 release predates these workflows.",
     "paper_count": 27,
     "papers": [
       "P073",
@@ -3991,10 +3991,737 @@
       "P246",
       "P248"
     ],
-    "implementation_status": "method-overlap",
-    "implementation_source": "src/main/java/org/jlinalg/coloc/ColocSusie.java",
-    "implementation_scope": "Related native method; upstream software options and numerical equivalence require separate validation.",
-    "validation_note": "Existing overlap/adapters require paper-specific option checks; missing integrations remain pending."
+    "implementation_status": "native-subset-validated",
+    "implementation_source": "src/main/java/org/jlinalg/cli/ColocAbfWorkflowCli.java",
+    "implementation_scope": "Native Java single-causal coloc 6.0.3 ABF from supplied regression/P-value regional statistics, with exact input capture, warnings, RUN/VERIFY/REPLAY and complete native rederivation. A separately qualified native stable credible-BF method is available with explicit source differences. The 27 reviewed roles distinguish six explicit ABF roles, two mixed ABF/SuSiE roles, three SuSiE roles, 13 unspecified roles, one unspecified multi-causal role and two FUSION-hosted roles. The native BF method is not literal whole-package source parity: H3 arithmetic, weighted conditional SNP probabilities, extreme-weight handling and boundary/refusal behavior differ. Hosted execution, original multi-causal fits, null/per-SNP-prior source mode, historical editions and complete author workflows remain explicit gaps. Current source-build artifacts are required; the published 0.4.0 release predates these workflows.",
+    "validation_note": "Qualified ABF API/workflow and separately qualified stable BF variant. Thirty original ABF cases, 62 workflow tests per JVM; 28 BF source profiles explicitly classified and 50 source/boundary/regression tests per JVM. Twelve BF profiles match completely; other outcomes are not relabeled as source parity.",
+    "source_roles_reviewed": 27,
+    "direct_package_roles": 24,
+    "hosted_roles": 2,
+    "host_unspecified_roles": 1,
+    "source_role_coverage": "coloc-source-role-coverage.json",
+    "current_documentation": "docs/literature/COLOC_CATALOG_INTEGRATION.md",
+    "component_qualification": "../coloc-abf-handover/SNAPSHOT.json",
+    "workflow_qualification": "../coloc-abf-workflow-checks/QUALIFICATION.json",
+    "native_BF_qualification": "../coloc-susie-audit-checks/QUALIFICATION.json",
+    "selected_project_editions": [
+      "6.0.3"
+    ],
+    "source_build_required": true,
+    "released_binary_contains_workflow_adapter": false,
+    "public_CLI_available": true,
+    "qualified_component_entrypoints": [
+      "coloc-abf --request RUN/VERIFY/REPLAY",
+      "coloc (native stable supplied-BF variant)"
+    ],
+    "paper_role_qualification": {
+      "P073": {
+        "method_family": "abf",
+        "host": "direct",
+        "reported_editions": [
+          {
+            "paragraph_index": 46,
+            "literal": "5.2.3",
+            "source_context": "COLOC R package57 v.5.2.3 (with default prior"
+          }
+        ],
+        "use_summary": "Used coloc.abf with GWAS/sQTL beta estimates, at least ten variants and default priors; used sQTL MAFs to estimate quantitative-trait scale. Applied H4>0.75, including cis/trans and dynamic sQTL comparisons.",
+        "required_caution": "Keep each comparison and sample-size/scale declaration explicit. Regional H4 differs from a conditional SNP posterior; LocusCompare visualization and S-LDSC are separate.",
+        "qualified_component_overlap": [
+          "source-compatible-current-ABF-method"
+        ],
+        "native_alternative_overlap": [],
+        "remaining_author_roles": [
+          "Exact author inputs, options, dataset/model preparation and complete workflow are not reproduced.",
+          "Historical editions and original multi-causal fit/LD/credible-set parity are not established.",
+          "Keep each comparison and sample-size/scale declaration explicit. Regional H4 differs from a conditional SNP posterior; LocusCompare visualization and S-LDSC are separate."
+        ],
+        "direct_package_execution_established": true,
+        "comparative_benchmark": false,
+        "native_BF_literal_source_parity": false,
+        "complete_author_workflow_qualified": false,
+        "exact_author_settings_established": false,
+        "author_runtime_executed": false,
+        "whole_paper_reproduced": false
+      },
+      "P074": {
+        "method_family": "unspecified",
+        "host": "direct",
+        "reported_editions": [
+          {
+            "paragraph_index": 45,
+            "literal": "3.2.1",
+            "source_context": "using COLOC (v3.2.1)"
+          },
+          {
+            "paragraph_index": 47,
+            "literal": "5.1.0",
+            "source_context": "using the COLOC (v5.1.0) package"
+          }
+        ],
+        "use_summary": "Used COLOC for aortic-valve eQTL/AS TWAS candidates around gene boundaries and separately for GTEx extravalvular eQTL/GWAS regions around lead variants; both used PP4>0.75.",
+        "required_caution": "The valve stage names 3.2.1 and the GTEx stage 5.1.0; code availability repeats 3.2.1. Preserve the stage-specific editions, distinct window centers and unreported function/priors.",
+        "qualified_component_overlap": [],
+        "native_alternative_overlap": [],
+        "remaining_author_roles": [
+          "Exact author inputs, options, dataset/model preparation and complete workflow are not reproduced.",
+          "Historical editions and original multi-causal fit/LD/credible-set parity are not established.",
+          "The unreported entry point prevents assigning an exact author invocation to either available component.",
+          "The valve stage names 3.2.1 and the GTEx stage 5.1.0; code availability repeats 3.2.1. Preserve the stage-specific editions, distinct window centers and unreported function/priors."
+        ],
+        "direct_package_execution_established": true,
+        "comparative_benchmark": false,
+        "native_BF_literal_source_parity": false,
+        "complete_author_workflow_qualified": false,
+        "exact_author_settings_established": false,
+        "author_runtime_executed": false,
+        "whole_paper_reproduced": false
+      },
+      "P088": {
+        "method_family": "unspecified",
+        "host": "direct",
+        "reported_editions": [
+          {
+            "paragraph_index": 32,
+            "literal": "4.0.4",
+            "source_context": "R-package coloc (v.4.0.4)"
+          }
+        ],
+        "use_summary": "Applied coloc after significant MR results for heart/whole-blood eQTLs and UKB protein pQTLs with DCM/MTAG-DCM. Set p1=p2=1e-4 and p12=1e-6; PP4>0.5 was some evidence and >0.7 strong evidence.",
+        "required_caution": "MR instrument clumping and Bonferroni screens are preceding steps, not coloc SNP filters. Preserve the custom strict shared prior, two thresholds, source datasets and unreported function/input details.",
+        "qualified_component_overlap": [],
+        "native_alternative_overlap": [],
+        "remaining_author_roles": [
+          "Exact author inputs, options, dataset/model preparation and complete workflow are not reproduced.",
+          "Historical editions and original multi-causal fit/LD/credible-set parity are not established.",
+          "The unreported entry point prevents assigning an exact author invocation to either available component.",
+          "MR instrument clumping and Bonferroni screens are preceding steps, not coloc SNP filters. Preserve the custom strict shared prior, two thresholds, source datasets and unreported function/input details."
+        ],
+        "direct_package_execution_established": true,
+        "comparative_benchmark": false,
+        "native_BF_literal_source_parity": false,
+        "complete_author_workflow_qualified": false,
+        "exact_author_settings_established": false,
+        "author_runtime_executed": false,
+        "whole_paper_reproduced": false
+      },
+      "P090": {
+        "method_family": "multi-causal-unspecified",
+        "host": "direct",
+        "reported_editions": [
+          {
+            "paragraph_index": 29,
+            "literal": "5.2.3",
+            "source_context": "R coloc v.5.2.3 (ref. 49)"
+          }
+        ],
+        "use_summary": "Used coloc allowing multiple causal variants to compare DCM GWAS and GTEx eQTLs for genes at DCM loci, choosing tissues with the lowest TWAS P value.",
+        "required_caution": "The multi-causal entry point, LD, priors and signal-fitting settings are not named here. Do not infer an exact coloc.susie recipe solely from allowing multiple variants.",
+        "qualified_component_overlap": [],
+        "native_alternative_overlap": [],
+        "remaining_author_roles": [
+          "Exact author inputs, options, dataset/model preparation and complete workflow are not reproduced.",
+          "Historical editions and original multi-causal fit/LD/credible-set parity are not established.",
+          "The unreported entry point prevents assigning an exact author invocation to either available component.",
+          "The multi-causal entry point, LD, priors and signal-fitting settings are not named here. Do not infer an exact coloc.susie recipe solely from allowing multiple variants."
+        ],
+        "direct_package_execution_established": true,
+        "comparative_benchmark": false,
+        "native_BF_literal_source_parity": false,
+        "complete_author_workflow_qualified": false,
+        "exact_author_settings_established": false,
+        "author_runtime_executed": false,
+        "whole_paper_reproduced": false
+      },
+      "P097": {
+        "method_family": "unspecified",
+        "host": "direct",
+        "reported_editions": [],
+        "use_summary": "Compared Tarkin/QMDiab shared regional variants within +/-1 Mb for replication, requiring H4 to be the most likely hypothesis plus a joint association threshold and direction concordance. Also formed peptide-detection-weighted coloc-MSPA fractions for H3/H4 against UKB-PPP.",
+        "required_caution": "H4 argmax is not a fixed PP4 cutoff. Preserve the separate datasets and joint-P criterion. The weighted coloc-MSPA aggregation is custom post-processing, not coloc prior weighting.",
+        "qualified_component_overlap": [],
+        "native_alternative_overlap": [],
+        "remaining_author_roles": [
+          "Exact author inputs, options, dataset/model preparation and complete workflow are not reproduced.",
+          "Historical editions and original multi-causal fit/LD/credible-set parity are not established.",
+          "The unreported entry point prevents assigning an exact author invocation to either available component.",
+          "H4 argmax is not a fixed PP4 cutoff. Preserve the separate datasets and joint-P criterion. The weighted coloc-MSPA aggregation is custom post-processing, not coloc prior weighting."
+        ],
+        "direct_package_execution_established": true,
+        "comparative_benchmark": false,
+        "native_BF_literal_source_parity": false,
+        "complete_author_workflow_qualified": false,
+        "exact_author_settings_established": false,
+        "author_runtime_executed": false,
+        "whole_paper_reproduced": false
+      },
+      "P102": {
+        "method_family": "unspecified",
+        "host": "direct",
+        "reported_editions": [
+          {
+            "paragraph_index": 49,
+            "literal": "5.1.0",
+            "source_context": "COLOC (v.5.1.0)18"
+          }
+        ],
+        "use_summary": "Compared overlapping SV-eQTL and agronomic SV-GWAS loci with COLOC defaults, using regional H4>0.5 and a shared-variant posterior threshold >0.5.",
+        "required_caution": "Keep regional and variant conditional probabilities distinct. Nonhuman structural-variant association inputs, exact function and phenotype-scale choices are not established by a human SNP workflow.",
+        "qualified_component_overlap": [],
+        "native_alternative_overlap": [],
+        "remaining_author_roles": [
+          "Exact author inputs, options, dataset/model preparation and complete workflow are not reproduced.",
+          "Historical editions and original multi-causal fit/LD/credible-set parity are not established.",
+          "The unreported entry point prevents assigning an exact author invocation to either available component.",
+          "Keep regional and variant conditional probabilities distinct. Nonhuman structural-variant association inputs, exact function and phenotype-scale choices are not established by a human SNP workflow."
+        ],
+        "direct_package_execution_established": true,
+        "comparative_benchmark": false,
+        "native_BF_literal_source_parity": false,
+        "complete_author_workflow_qualified": false,
+        "exact_author_settings_established": false,
+        "author_runtime_executed": false,
+        "whole_paper_reproduced": false
+      },
+      "P104": {
+        "method_family": "unspecified",
+        "host": "direct",
+        "reported_editions": [],
+        "use_summary": "Used coloc on overlapping molecular-QTL/GWAS meta-analysis regions around gene bodies without a P-value filter; normalized trait variance was set to one, other settings default, and PP4>=0.8 denoted colocalization.",
+        "required_caution": "Do not introduce significance filtering or infer a version/function. The separate three-signal moloc analysis is outside two-trait coloc.",
+        "qualified_component_overlap": [],
+        "native_alternative_overlap": [],
+        "remaining_author_roles": [
+          "Exact author inputs, options, dataset/model preparation and complete workflow are not reproduced.",
+          "Historical editions and original multi-causal fit/LD/credible-set parity are not established.",
+          "The unreported entry point prevents assigning an exact author invocation to either available component.",
+          "Do not introduce significance filtering or infer a version/function. The separate three-signal moloc analysis is outside two-trait coloc."
+        ],
+        "direct_package_execution_established": true,
+        "comparative_benchmark": false,
+        "native_BF_literal_source_parity": false,
+        "complete_author_workflow_qualified": false,
+        "exact_author_settings_established": false,
+        "author_runtime_executed": false,
+        "whole_paper_reproduced": false
+      },
+      "P105": {
+        "method_family": "single-and-susie",
+        "host": "direct",
+        "reported_editions": [
+          {
+            "paragraph_index": 54,
+            "literal": "5.1.0",
+            "source_context": "coloc package (v.5.1.0;"
+          }
+        ],
+        "use_summary": "Applied single-causal-variant coloc at significant EAS loci and applied coloc to SuSiE signals at loci with multiple conditionally independent signals.",
+        "required_caution": "Keep the single-causal and SuSiE branches distinct. Exact entry points, priors, LD and conditional/SuSiE settings are not supplied in this paragraph.",
+        "qualified_component_overlap": [
+          "source-compatible-current-ABF-method"
+        ],
+        "native_alternative_overlap": [
+          "native-stable-supplied-credible-BF-method"
+        ],
+        "remaining_author_roles": [
+          "Exact author inputs, options, dataset/model preparation and complete workflow are not reproduced.",
+          "Historical editions and original multi-causal fit/LD/credible-set parity are not established.",
+          "The native BF method is an explicitly different stable statistical variant; source-mode null/per-SNP priors and literal source outputs remain separate gaps.",
+          "Keep the single-causal and SuSiE branches distinct. Exact entry points, priors, LD and conditional/SuSiE settings are not supplied in this paragraph."
+        ],
+        "direct_package_execution_established": true,
+        "comparative_benchmark": false,
+        "native_BF_literal_source_parity": false,
+        "complete_author_workflow_qualified": false,
+        "exact_author_settings_established": false,
+        "author_runtime_executed": false,
+        "whole_paper_reproduced": false
+      },
+      "P120": {
+        "method_family": "hosted-unspecified",
+        "host": "FUSION",
+        "reported_editions": [],
+        "use_summary": "Used FUSION TWAS and its internal COLOC method with selected GTEx tissue weights to link hypothyroidism risk to expression; reported regional PP4>0.75 for candidate gene mapping.",
+        "required_caution": "This is a FUSION-hosted method, not proof of a standalone coloc invocation. The eQTL/TWAS screen is not an automatic SNP-level coloc filter; version/function/priors remain unspecified.",
+        "qualified_component_overlap": [],
+        "native_alternative_overlap": [],
+        "remaining_author_roles": [
+          "Exact author inputs, options, dataset/model preparation and complete workflow are not reproduced.",
+          "Historical editions and original multi-causal fit/LD/credible-set parity are not established.",
+          "The unreported entry point prevents assigning an exact author invocation to either available component.",
+          "Hosted/unspecified-host execution is not validated by a standalone native coloc workflow.",
+          "This is a FUSION-hosted method, not proof of a standalone coloc invocation. The eQTL/TWAS screen is not an automatic SNP-level coloc filter; version/function/priors remain unspecified."
+        ],
+        "direct_package_execution_established": false,
+        "comparative_benchmark": false,
+        "native_BF_literal_source_parity": false,
+        "complete_author_workflow_qualified": false,
+        "exact_author_settings_established": false,
+        "author_runtime_executed": false,
+        "whole_paper_reproduced": false
+      },
+      "P130": {
+        "method_family": "abf",
+        "host": "direct",
+        "reported_editions": [
+          {
+            "paragraph_index": 58,
+            "literal": "5.2.2",
+            "source_context": "coloc 5.2.2R package39"
+          }
+        ],
+        "use_summary": "Used coloc.abf for neuropathology loci and significant GTEx/ROSMAP QTLs, with ordinal case fractions chosen by dichotomization, shared prior 1e-5 and posterior >80%. Also compared selected concordant NPE signals and excluded APOE for that comparison.",
+        "required_caution": "Preserve region-selection versus within-region coverage, source screening and case definitions. The source uses PrC for prior and posterior wording; do not conflate the prior 1e-5 with the posterior threshold.",
+        "qualified_component_overlap": [
+          "source-compatible-current-ABF-method"
+        ],
+        "native_alternative_overlap": [],
+        "remaining_author_roles": [
+          "Exact author inputs, options, dataset/model preparation and complete workflow are not reproduced.",
+          "Historical editions and original multi-causal fit/LD/credible-set parity are not established.",
+          "Preserve region-selection versus within-region coverage, source screening and case definitions. The source uses PrC for prior and posterior wording; do not conflate the prior 1e-5 with the posterior threshold."
+        ],
+        "direct_package_execution_established": true,
+        "comparative_benchmark": false,
+        "native_BF_literal_source_parity": false,
+        "complete_author_workflow_qualified": false,
+        "exact_author_settings_established": false,
+        "author_runtime_executed": false,
+        "whole_paper_reproduced": false
+      },
+      "P131": {
+        "method_family": "hosted-unspecified",
+        "host": "FUSION",
+        "reported_editions": [],
+        "use_summary": "Used FUSION colocalization for second-order disease-MDD GWAS factors with the same GTEx tissue weights, then integrated PP4>0.80 hits with T-SEM and normalized tissue gene proportions.",
+        "required_caution": "FUSION hosts this analysis; standalone coloc version/function is unreported. T-SEM/QGENE filtering, ACAT and normalized gene proportions are separate operations.",
+        "qualified_component_overlap": [],
+        "native_alternative_overlap": [],
+        "remaining_author_roles": [
+          "Exact author inputs, options, dataset/model preparation and complete workflow are not reproduced.",
+          "Historical editions and original multi-causal fit/LD/credible-set parity are not established.",
+          "The unreported entry point prevents assigning an exact author invocation to either available component.",
+          "Hosted/unspecified-host execution is not validated by a standalone native coloc workflow.",
+          "FUSION hosts this analysis; standalone coloc version/function is unreported. T-SEM/QGENE filtering, ACAT and normalized gene proportions are separate operations."
+        ],
+        "direct_package_execution_established": false,
+        "comparative_benchmark": false,
+        "native_BF_literal_source_parity": false,
+        "complete_author_workflow_qualified": false,
+        "exact_author_settings_established": false,
+        "author_runtime_executed": false,
+        "whole_paper_reproduced": false
+      },
+      "P132": {
+        "method_family": "unspecified",
+        "host": "direct",
+        "reported_editions": [],
+        "use_summary": "Used COLOC in R to compare CH GWAS with expression QTLs; the TCL1A example compared the remaining eQTL signal after conditioning on rs78986913.",
+        "required_caution": "The conditional association fit is separate from coloc. Exact regional inputs, software edition, function, priors and a general decision threshold are not specified here.",
+        "qualified_component_overlap": [],
+        "native_alternative_overlap": [],
+        "remaining_author_roles": [
+          "Exact author inputs, options, dataset/model preparation and complete workflow are not reproduced.",
+          "Historical editions and original multi-causal fit/LD/credible-set parity are not established.",
+          "The unreported entry point prevents assigning an exact author invocation to either available component.",
+          "The conditional association fit is separate from coloc. Exact regional inputs, software edition, function, priors and a general decision threshold are not specified here."
+        ],
+        "direct_package_execution_established": true,
+        "comparative_benchmark": false,
+        "native_BF_literal_source_parity": false,
+        "complete_author_workflow_qualified": false,
+        "exact_author_settings_established": false,
+        "author_runtime_executed": false,
+        "whole_paper_reproduced": false
+      },
+      "P157": {
+        "method_family": "abf-and-susie-benchmark",
+        "host": "direct",
+        "reported_editions": [],
+        "use_summary": "Benchmarked single-causal coloc from P-value Bayes factors and SuSiE-coloc over pairs of pure mRNA/protein credible sets; the maximum pairwise H4 represented the gene.",
+        "required_caution": "These are comparison methods, not the main CLPP analysis. The authors retained their strict purity filter and used minimum SuSiE/FINEMAP PIPs separately; do not replace that procedure with generic coloc defaults.",
+        "qualified_component_overlap": [
+          "source-compatible-current-ABF-method"
+        ],
+        "native_alternative_overlap": [
+          "native-stable-supplied-credible-BF-method"
+        ],
+        "remaining_author_roles": [
+          "Exact author inputs, options, dataset/model preparation and complete workflow are not reproduced.",
+          "Historical editions and original multi-causal fit/LD/credible-set parity are not established.",
+          "The native BF method is an explicitly different stable statistical variant; source-mode null/per-SNP priors and literal source outputs remain separate gaps.",
+          "These are comparison methods, not the main CLPP analysis. The authors retained their strict purity filter and used minimum SuSiE/FINEMAP PIPs separately; do not replace that procedure with generic coloc defaults."
+        ],
+        "direct_package_execution_established": true,
+        "comparative_benchmark": true,
+        "native_BF_literal_source_parity": false,
+        "complete_author_workflow_qualified": false,
+        "exact_author_settings_established": false,
+        "author_runtime_executed": false,
+        "whole_paper_reproduced": false
+      },
+      "P170": {
+        "method_family": "abf",
+        "host": "direct",
+        "reported_editions": [],
+        "use_summary": "Used coloc.abf defaults for perturbation-dependent reQTL/GWAS comparisons, H4>0.5, conditional variant probabilities and 95% credible sets; reran QTL/coloc analyses within perturbation-score tertiles.",
+        "required_caution": "FastQTL eGene selection, pseudobulk/tertile construction, credible-set summarization and Fisher enrichment are separate. Results and Methods differ on the nonimmune-trait count; no count is silently repaired.",
+        "qualified_component_overlap": [
+          "source-compatible-current-ABF-method"
+        ],
+        "native_alternative_overlap": [],
+        "remaining_author_roles": [
+          "Exact author inputs, options, dataset/model preparation and complete workflow are not reproduced.",
+          "Historical editions and original multi-causal fit/LD/credible-set parity are not established.",
+          "FastQTL eGene selection, pseudobulk/tertile construction, credible-set summarization and Fisher enrichment are separate. Results and Methods differ on the nonimmune-trait count; no count is silently repaired."
+        ],
+        "direct_package_execution_established": true,
+        "comparative_benchmark": false,
+        "native_BF_literal_source_parity": false,
+        "complete_author_workflow_qualified": false,
+        "exact_author_settings_established": false,
+        "author_runtime_executed": false,
+        "whole_paper_reproduced": false
+      },
+      "P181": {
+        "method_family": "unspecified",
+        "host": "direct",
+        "reported_editions": [],
+        "use_summary": "Applied tests from the coloc R package to significant FUSION multimodal-TWAS hits across traits, using COLOC.PP4>0.8.",
+        "required_caution": "TWAS construction/screens are preceding operations. The coloc function, version, regional variant coverage, priors and scale inputs are not specified here.",
+        "qualified_component_overlap": [],
+        "native_alternative_overlap": [],
+        "remaining_author_roles": [
+          "Exact author inputs, options, dataset/model preparation and complete workflow are not reproduced.",
+          "Historical editions and original multi-causal fit/LD/credible-set parity are not established.",
+          "The unreported entry point prevents assigning an exact author invocation to either available component.",
+          "TWAS construction/screens are preceding operations. The coloc function, version, regional variant coverage, priors and scale inputs are not specified here."
+        ],
+        "direct_package_execution_established": true,
+        "comparative_benchmark": false,
+        "native_BF_literal_source_parity": false,
+        "complete_author_workflow_qualified": false,
+        "exact_author_settings_established": false,
+        "author_runtime_executed": false,
+        "whole_paper_reproduced": false
+      },
+      "P183": {
+        "method_family": "abf",
+        "host": "direct",
+        "reported_editions": [],
+        "use_summary": "Used coloc.abf with p1=p2=1e-4 and p12=1e-5 to integrate eQTL/GWAS data and compare lncRNA/circRNA with neighboring PCG eQTL/sQTL signals in shared regions.",
+        "required_caution": "Methods use PP4>0.8 for GWAS integration; results also describe PP3/PP4>=0.8 for RNA pairs. Preserve these distinct decisions. SMR/HEIDI, OPERA, FUSION and eCAVIAR are separate.",
+        "qualified_component_overlap": [
+          "source-compatible-current-ABF-method"
+        ],
+        "native_alternative_overlap": [],
+        "remaining_author_roles": [
+          "Exact author inputs, options, dataset/model preparation and complete workflow are not reproduced.",
+          "Historical editions and original multi-causal fit/LD/credible-set parity are not established.",
+          "Methods use PP4>0.8 for GWAS integration; results also describe PP3/PP4>=0.8 for RNA pairs. Preserve these distinct decisions. SMR/HEIDI, OPERA, FUSION and eCAVIAR are separate."
+        ],
+        "direct_package_execution_established": true,
+        "comparative_benchmark": false,
+        "native_BF_literal_source_parity": false,
+        "complete_author_workflow_qualified": false,
+        "exact_author_settings_established": false,
+        "author_runtime_executed": false,
+        "whole_paper_reproduced": false
+      },
+      "P185": {
+        "method_family": "abf",
+        "host": "direct",
+        "reported_editions": [
+          {
+            "paragraph_index": 15,
+            "literal": "5.1.0",
+            "source_context": "coloc R package33 (v.5.1.0)"
+          }
+        ],
+        "use_summary": "Used coloc.abf separately for OA GWAS phenotypes and cartilage mQTLs within +/-500 kb, retaining all mQTL test results before colocalization and using shared variants. Applied H4>0.8, then retained genotype-present significant mQTL results.",
+        "required_caution": "The later mQTL FDR filter is post-processing, not the input P-value cutoff. Preserve GWAS-phenotype/probe pairing and distinguish regional H4 from SNP-level evidence.",
+        "qualified_component_overlap": [
+          "source-compatible-current-ABF-method"
+        ],
+        "native_alternative_overlap": [],
+        "remaining_author_roles": [
+          "Exact author inputs, options, dataset/model preparation and complete workflow are not reproduced.",
+          "Historical editions and original multi-causal fit/LD/credible-set parity are not established.",
+          "The later mQTL FDR filter is post-processing, not the input P-value cutoff. Preserve GWAS-phenotype/probe pairing and distinguish regional H4 from SNP-level evidence."
+        ],
+        "direct_package_execution_established": true,
+        "comparative_benchmark": false,
+        "native_BF_literal_source_parity": false,
+        "complete_author_workflow_qualified": false,
+        "exact_author_settings_established": false,
+        "author_runtime_executed": false,
+        "whole_paper_reproduced": false
+      },
+      "P189": {
+        "method_family": "abf",
+        "host": "direct",
+        "reported_editions": [],
+        "use_summary": "Used coloc.abf for protein pQTL/PCOS GWAS regions within +/-500 kb, with p1=p2=1e-4 and p12=1e-5 and H4>0.8. With multiple pQTLs, reported the strongest colocalization per protein.",
+        "required_caution": "Retain per-pQTL tests before the strongest-hit summary. Function priors are explicit but version, scale and complete input construction are not.",
+        "qualified_component_overlap": [
+          "source-compatible-current-ABF-method"
+        ],
+        "native_alternative_overlap": [],
+        "remaining_author_roles": [
+          "Exact author inputs, options, dataset/model preparation and complete workflow are not reproduced.",
+          "Historical editions and original multi-causal fit/LD/credible-set parity are not established.",
+          "Retain per-pQTL tests before the strongest-hit summary. Function priors are explicit but version, scale and complete input construction are not."
+        ],
+        "direct_package_execution_established": true,
+        "comparative_benchmark": false,
+        "native_BF_literal_source_parity": false,
+        "complete_author_workflow_qualified": false,
+        "exact_author_settings_established": false,
+        "author_runtime_executed": false,
+        "whole_paper_reproduced": false
+      },
+      "P190": {
+        "method_family": "unspecified",
+        "host": "unspecified",
+        "reported_editions": [],
+        "use_summary": "Reported COLOC comparisons of MAJIQTL- versus LeafCutter-derived sQTLs with AD/PD GWAS, using PPH4>0.5.",
+        "required_caution": "This Results paragraph establishes reported COLOC analysis, but not its exact R entry point/host, version or settings. Detailed supplementary Note S7.1 is not reviewed here; no default ABF or SuSiE recipe is invented.",
+        "qualified_component_overlap": [],
+        "native_alternative_overlap": [],
+        "remaining_author_roles": [
+          "Exact author inputs, options, dataset/model preparation and complete workflow are not reproduced.",
+          "Historical editions and original multi-causal fit/LD/credible-set parity are not established.",
+          "The unreported entry point prevents assigning an exact author invocation to either available component.",
+          "Hosted/unspecified-host execution is not validated by a standalone native coloc workflow.",
+          "This Results paragraph establishes reported COLOC analysis, but not its exact R entry point/host, version or settings. Detailed supplementary Note S7.1 is not reviewed here; no default ABF or SuSiE recipe is invented."
+        ],
+        "direct_package_execution_established": false,
+        "comparative_benchmark": false,
+        "native_BF_literal_source_parity": false,
+        "complete_author_workflow_qualified": false,
+        "exact_author_settings_established": false,
+        "author_runtime_executed": false,
+        "whole_paper_reproduced": false
+      },
+      "P193": {
+        "method_family": "unspecified",
+        "host": "direct",
+        "reported_editions": [],
+        "use_summary": "Used coloc with GWAS Catalog associations, locally generated linear-model irQTL summary statistics and GTEx v8 eQTLs, checking robustness using an independent eQTL dataset.",
+        "required_caution": "Version, entry point, priors, region, threshold and scale inputs are not stated in this paragraph. The subsequent scipy transcription model is unrelated to coloc inference.",
+        "qualified_component_overlap": [],
+        "native_alternative_overlap": [],
+        "remaining_author_roles": [
+          "Exact author inputs, options, dataset/model preparation and complete workflow are not reproduced.",
+          "Historical editions and original multi-causal fit/LD/credible-set parity are not established.",
+          "The unreported entry point prevents assigning an exact author invocation to either available component.",
+          "Version, entry point, priors, region, threshold and scale inputs are not stated in this paragraph. The subsequent scipy transcription model is unrelated to coloc inference."
+        ],
+        "direct_package_execution_established": true,
+        "comparative_benchmark": false,
+        "native_BF_literal_source_parity": false,
+        "complete_author_workflow_qualified": false,
+        "exact_author_settings_established": false,
+        "author_runtime_executed": false,
+        "whole_paper_reproduced": false
+      },
+      "P201": {
+        "method_family": "unspecified",
+        "host": "direct",
+        "reported_editions": [
+          {
+            "paragraph_index": 20,
+            "literal": "5.2.3",
+            "source_context": "coloc v5.2.3.62 We tested"
+          }
+        ],
+        "use_summary": "Compared significant sQTL loci with hematological GWAS traits using p1=p2=1e-4 and declared p12=1e-6, with common-causal posterior >0.8 and H4/H3>5.",
+        "required_caution": "The source calls 1e-6 a default; retain that explicit value rather than replacing it with the selected current API default. Lead/locus selection and LD visualization are separate; the exact function is not named.",
+        "qualified_component_overlap": [],
+        "native_alternative_overlap": [],
+        "remaining_author_roles": [
+          "Exact author inputs, options, dataset/model preparation and complete workflow are not reproduced.",
+          "Historical editions and original multi-causal fit/LD/credible-set parity are not established.",
+          "The unreported entry point prevents assigning an exact author invocation to either available component.",
+          "The source calls 1e-6 a default; retain that explicit value rather than replacing it with the selected current API default. Lead/locus selection and LD visualization are separate; the exact function is not named."
+        ],
+        "direct_package_execution_established": true,
+        "comparative_benchmark": false,
+        "native_BF_literal_source_parity": false,
+        "complete_author_workflow_qualified": false,
+        "exact_author_settings_established": false,
+        "author_runtime_executed": false,
+        "whole_paper_reproduced": false
+      },
+      "P203": {
+        "method_family": "unspecified",
+        "host": "direct",
+        "reported_editions": [
+          {
+            "paragraph_index": 26,
+            "literal": "5.1.0",
+            "source_context": "coloc R (v.5.1.0) package.31"
+          }
+        ],
+        "use_summary": "Selected independent significant GWAS lead variants, then used all variants in surrounding 100-kb regions for coloc with eQTLs, declaring PP4>0.8.",
+        "required_caution": "Keep all within-region variants and the separate lead-selection step. The stated 10e-6 prior is attributed to eQTL association without an unambiguous parameter allocation; do not silently relabel it p12 or normalize author wording.",
+        "qualified_component_overlap": [],
+        "native_alternative_overlap": [],
+        "remaining_author_roles": [
+          "Exact author inputs, options, dataset/model preparation and complete workflow are not reproduced.",
+          "Historical editions and original multi-causal fit/LD/credible-set parity are not established.",
+          "The unreported entry point prevents assigning an exact author invocation to either available component.",
+          "Keep all within-region variants and the separate lead-selection step. The stated 10e-6 prior is attributed to eQTL association without an unambiguous parameter allocation; do not silently relabel it p12 or normalize author wording."
+        ],
+        "direct_package_execution_established": true,
+        "comparative_benchmark": false,
+        "native_BF_literal_source_parity": false,
+        "complete_author_workflow_qualified": false,
+        "exact_author_settings_established": false,
+        "author_runtime_executed": false,
+        "whole_paper_reproduced": false
+      },
+      "P212": {
+        "method_family": "unspecified",
+        "host": "direct",
+        "reported_editions": [
+          {
+            "paragraph_index": 18,
+            "literal": "5.1.0.1",
+            "source_context": "coloc (v.5.1.0.1)9"
+          }
+        ],
+        "use_summary": "After a separate PLINK LD screen, ran coloc on eQTL/GWAS signal pairs with lead r2>=0.5, using all shared variants within 500 kb of the GWAS lead. Used PPH4>=0.7 and prior-sensitivity comparisons.",
+        "required_caution": "Retain the literal edition 5.1.0.1 and separate LD preselection. Exact function and sensitivity grid are unreported; do not substitute a particular historical runtime or infer its prior choices.",
+        "qualified_component_overlap": [],
+        "native_alternative_overlap": [],
+        "remaining_author_roles": [
+          "Exact author inputs, options, dataset/model preparation and complete workflow are not reproduced.",
+          "Historical editions and original multi-causal fit/LD/credible-set parity are not established.",
+          "The unreported entry point prevents assigning an exact author invocation to either available component.",
+          "Retain the literal edition 5.1.0.1 and separate LD preselection. Exact function and sensitivity grid are unreported; do not substitute a particular historical runtime or infer its prior choices."
+        ],
+        "direct_package_execution_established": true,
+        "comparative_benchmark": false,
+        "native_BF_literal_source_parity": false,
+        "complete_author_workflow_qualified": false,
+        "exact_author_settings_established": false,
+        "author_runtime_executed": false,
+        "whole_paper_reproduced": false
+      },
+      "P219": {
+        "method_family": "susie",
+        "host": "direct",
+        "reported_editions": [],
+        "use_summary": "Used SuSiE-coloc on paired skin meQTL/eQTL signals after allele/beta alignment. Calibrated shared priors using four scenarios and selected p12=0.0019; marginal association quantities are described as p1+p12=0.0026 and p2+p12=0.0122.",
+        "required_caution": "Preserve the source marginal-versus-exclusive prior definitions; do not silently infer the exact p1/p2 arguments from rounded quantities. LD/fitting, calibration selection and mediation are separate; reported comparison uses posterior >0.8.",
+        "qualified_component_overlap": [],
+        "native_alternative_overlap": [
+          "native-stable-supplied-credible-BF-method"
+        ],
+        "remaining_author_roles": [
+          "Exact author inputs, options, dataset/model preparation and complete workflow are not reproduced.",
+          "Historical editions and original multi-causal fit/LD/credible-set parity are not established.",
+          "The native BF method is an explicitly different stable statistical variant; source-mode null/per-SNP priors and literal source outputs remain separate gaps.",
+          "Preserve the source marginal-versus-exclusive prior definitions; do not silently infer the exact p1/p2 arguments from rounded quantities. LD/fitting, calibration selection and mediation are separate; reported comparison uses posterior >0.8."
+        ],
+        "direct_package_execution_established": true,
+        "comparative_benchmark": false,
+        "native_BF_literal_source_parity": false,
+        "complete_author_workflow_qualified": false,
+        "exact_author_settings_established": false,
+        "author_runtime_executed": false,
+        "whole_paper_reproduced": false
+      },
+      "P234": {
+        "method_family": "susie",
+        "host": "direct",
+        "reported_editions": [
+          {
+            "paragraph_index": 31,
+            "literal": "v.5",
+            "source_context": "coloc.SuSiE (v.5)18,23"
+          }
+        ],
+        "use_summary": "Used coloc-SuSiE to compare pcQTL, eQTL and GWAS credible sets within tissues; linked hits and constructed connected-component credible-set groups using reported PPH4>=0.75.",
+        "required_caution": "The source also says greater than 0.75 in prose; retain the explicit >= expressions and note the wording difference. Edition v.5 is partial. PLINK LD estimation, graph grouping and cross-tissue variant-trait deduplication are separate.",
+        "qualified_component_overlap": [],
+        "native_alternative_overlap": [
+          "native-stable-supplied-credible-BF-method"
+        ],
+        "remaining_author_roles": [
+          "Exact author inputs, options, dataset/model preparation and complete workflow are not reproduced.",
+          "Historical editions and original multi-causal fit/LD/credible-set parity are not established.",
+          "The native BF method is an explicitly different stable statistical variant; source-mode null/per-SNP priors and literal source outputs remain separate gaps.",
+          "The source also says greater than 0.75 in prose; retain the explicit >= expressions and note the wording difference. Edition v.5 is partial. PLINK LD estimation, graph grouping and cross-tissue variant-trait deduplication are separate."
+        ],
+        "direct_package_execution_established": true,
+        "comparative_benchmark": false,
+        "native_BF_literal_source_parity": false,
+        "complete_author_workflow_qualified": false,
+        "exact_author_settings_established": false,
+        "author_runtime_executed": false,
+        "whole_paper_reproduced": false
+      },
+      "P246": {
+        "method_family": "susie",
+        "host": "direct",
+        "reported_editions": [],
+        "use_summary": "Fine-mapped the CASR region and tested colocalization with 55 phenotypes using Coloc-SuSiE.",
+        "required_caution": "Exact functions, version, LD, priors and thresholds are deferred to supplementary methods not reviewed here. SKAT-O and logistic-direction analyses are separate; this is not a complete author workflow.",
+        "qualified_component_overlap": [],
+        "native_alternative_overlap": [
+          "native-stable-supplied-credible-BF-method"
+        ],
+        "remaining_author_roles": [
+          "Exact author inputs, options, dataset/model preparation and complete workflow are not reproduced.",
+          "Historical editions and original multi-causal fit/LD/credible-set parity are not established.",
+          "The native BF method is an explicitly different stable statistical variant; source-mode null/per-SNP priors and literal source outputs remain separate gaps.",
+          "Exact functions, version, LD, priors and thresholds are deferred to supplementary methods not reviewed here. SKAT-O and logistic-direction analyses are separate; this is not a complete author workflow."
+        ],
+        "direct_package_execution_established": true,
+        "comparative_benchmark": false,
+        "native_BF_literal_source_parity": false,
+        "complete_author_workflow_qualified": false,
+        "exact_author_settings_established": false,
+        "author_runtime_executed": false,
+        "whole_paper_reproduced": false
+      },
+      "P248": {
+        "method_family": "unspecified",
+        "host": "direct",
+        "reported_editions": [
+          {
+            "paragraph_index": 57,
+            "literal": "5.2.3",
+            "source_context": "COLOC (v5.2.3)108"
+          }
+        ],
+        "use_summary": "Used COLOC to compare SV-eQTL and GWAS signals in a plant RIL study, using H4>0.50 for shared causal variants.",
+        "required_caution": "Retain nonhuman structural-variant context. Exact coloc function and inputs are not stated. EMMAX association/TWAS, PLINK clustering and hotspot permutations are separate steps.",
+        "qualified_component_overlap": [],
+        "native_alternative_overlap": [],
+        "remaining_author_roles": [
+          "Exact author inputs, options, dataset/model preparation and complete workflow are not reproduced.",
+          "Historical editions and original multi-causal fit/LD/credible-set parity are not established.",
+          "The unreported entry point prevents assigning an exact author invocation to either available component.",
+          "Retain nonhuman structural-variant context. Exact coloc function and inputs are not stated. EMMAX association/TWAS, PLINK clustering and hotspot permutations are separate steps."
+        ],
+        "direct_package_execution_established": true,
+        "comparative_benchmark": false,
+        "native_BF_literal_source_parity": false,
+        "complete_author_workflow_qualified": false,
+        "exact_author_settings_established": false,
+        "author_runtime_executed": false,
+        "whole_paper_reproduced": false
+      }
+    },
+    "native_family_credit_added": 1,
+    "upstream_family_credit_added": 0,
+    "new_scoped_integration_credit": 1,
+    "whole_tool_qualified": false,
+    "whole_paper_reproduced": false,
+    "native_BF_literal_source_parity": false
   },
   {
     "id": "clusterprofiler",

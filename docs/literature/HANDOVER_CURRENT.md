@@ -1,5 +1,17 @@
 # Current toolbox handover
 
+**Current: [COLOC cumulative catalog admission is complete](COLOC_CATALOG_CHECKPOINT_2026-11-19.md).**
+Fresh post-admission source/predecessor/qualification verification passed.
+Totals are **135 new scoped integrations (25 native Java +110 upstream),
+2,700 observations, 1,439 reviewed uses and 1,261 pending**. All 1,413 earlier
+reviews and immutable evidence are preserved. Native BF source differences,
+historical/host/fit gaps and marker-verifier SKIP3 remain explicit. Continue
+higher-impact missing scopes and individual reviews; the full goal is open.
+Both literature reports remain withheld from Pages; no release is created.
+The checkpoint gives exact recovery, transfer and next-predecessor instructions.
+
+<details><summary>Earlier COLOC component checkpoints (historical)</summary>
+
 **Current: [COLOC SuSiE source audit and native boundary fixes](COLOC_SUSIE_AUDIT_CHECKPOINT_2026-11-19.md).**
 The existing native stable variant now retains exact IDs and complete-overlap
 pairs, accepts the source's larger shared priors, exposes semantic warnings and
@@ -196,6 +208,8 @@ promise coordinate equality across input or host changes.
 Private evidence stores and restricted runtimes remain local. Both literature
 pages remain withheld from Pages; the review notice follows long older notices,
 and full warnings-page mobile layout remains unqualified.
+
+</details>
 
 </details>
 

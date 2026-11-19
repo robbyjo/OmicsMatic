@@ -21769,17 +21769,69 @@
         "tool_id": "coloc",
         "tool": "coloc",
         "analysis_role": "Shared-signal colocalization analysis",
-        "evidence_section": "Methods / Complex trait associations",
-        "evidence_paragraph_index": 46,
+        "evidence_section": "Results / Dynamic intron use and sQTL across B cell development",
+        "evidence_paragraph_index": 17,
         "matched_text": "coloc.abf",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
-        "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
-        "evidence_paragraph_sha256": "f0325ae7d13421942df3ed20c7a5efed1e5783351ca612d748d905fc6064778f",
-        "use_summary": "Shared-signal colocalization analysis.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11631754/ (section: Methods / Complex trait associations)"
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
+        "version_reported_near_name": "5.2.3",
+        "evidence_selection": "individually-reviewed-source-role",
+        "evidence_paragraph_sha256": "85fe274ba05794ccc25c37687ea38882b7980405dd821fd023c7bc4e90f4c3b0",
+        "use_summary": "Used coloc.abf with GWAS/sQTL beta estimates, at least ten variants and default priors; used sQTL MAFs to estimate quantitative-trait scale. Applied H4>0.75, including cis/trans and dynamic sQTL comparisons.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11631754/ (section: Results / Dynamic intron use and sQTL across B cell development)",
+        "implementation_scope_note": "Keep each comparison and sample-size/scale declaration explicit. Regional H4 differs from a conditional SNP posterior; LocusCompare visualization and S-LDSC are separate.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 20,
+            "section": "Results / trans-sQTLs are highly cell-type-specific",
+            "paragraph_sha256": "cc7745e2cb0e7a7b3c3b983de51f499107b4bdf7794392bd542e67f054eee2d4"
+          },
+          {
+            "paragraph_index": 23,
+            "section": "Results / Aberrant splicing mediates complex diseases",
+            "paragraph_sha256": "f6a155ffe311f27e2a94f42731b351dca8118f82f49ae79d463c97556def15c2"
+          },
+          {
+            "paragraph_index": 24,
+            "section": "Results / Aberrant splicing mediates complex diseases",
+            "paragraph_sha256": "caae6b062744530c8067df9bd30bf8826757a74d07cf48967c5c641aa81ef417"
+          },
+          {
+            "paragraph_index": 46,
+            "section": "Methods / Complex trait associations",
+            "paragraph_sha256": "f0325ae7d13421942df3ed20c7a5efed1e5783351ca612d748d905fc6064778f"
+          }
+        ],
+        "source_role_qualification": {
+          "method_family": "abf",
+          "host": "direct",
+          "reported_editions": [
+            {
+              "paragraph_index": 46,
+              "literal": "5.2.3",
+              "source_context": "COLOC R package57 v.5.2.3 (with default prior"
+            }
+          ],
+          "use_summary": "Used coloc.abf with GWAS/sQTL beta estimates, at least ten variants and default priors; used sQTL MAFs to estimate quantitative-trait scale. Applied H4>0.75, including cis/trans and dynamic sQTL comparisons.",
+          "required_caution": "Keep each comparison and sample-size/scale declaration explicit. Regional H4 differs from a conditional SNP posterior; LocusCompare visualization and S-LDSC are separate.",
+          "qualified_component_overlap": [
+            "source-compatible-current-ABF-method"
+          ],
+          "native_alternative_overlap": [],
+          "remaining_author_roles": [
+            "Exact author inputs, options, dataset/model preparation and complete workflow are not reproduced.",
+            "Historical editions and original multi-causal fit/LD/credible-set parity are not established.",
+            "Keep each comparison and sample-size/scale declaration explicit. Regional H4 differs from a conditional SNP posterior; LocusCompare visualization and S-LDSC are separate."
+          ],
+          "direct_package_execution_established": true,
+          "comparative_benchmark": false,
+          "native_BF_literal_source_parity": false,
+          "complete_author_workflow_qualified": false,
+          "exact_author_settings_established": false,
+          "author_runtime_executed": false,
+          "whole_paper_reproduced": false
+        }
       },
       {
         "tool_id": "deeptools",
@@ -22137,12 +22189,53 @@
         "matched_text": "COLOC",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
-        "version_reported_near_name": "3.2.1",
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
+        "version_reported_near_name": null,
+        "evidence_selection": "individually-reviewed-source-role",
         "evidence_paragraph_sha256": "bedb9b2d5ff21168b2f7c9ab9ca72f32691fccc03837e2601257ad010353b99e",
-        "use_summary": "Shared-signal colocalization analysis.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12807872/ (section: Methods / Transcriptome-wide association analysis)"
+        "use_summary": "Used COLOC for aortic-valve eQTL/AS TWAS candidates around gene boundaries and separately for GTEx extravalvular eQTL/GWAS regions around lead variants; both used PP4>0.75.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12807872/ (section: Methods / Transcriptome-wide association analysis)",
+        "implementation_scope_note": "The valve stage names 3.2.1 and the GTEx stage 5.1.0; code availability repeats 3.2.1. Preserve the stage-specific editions, distinct window centers and unreported function/priors.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 47,
+            "section": "Methods / eQTL colocalization",
+            "paragraph_sha256": "8e0c72fdfb118562456c3079b5d75c5136474394878e1e15d862cc267f61403c"
+          }
+        ],
+        "source_role_qualification": {
+          "method_family": "unspecified",
+          "host": "direct",
+          "reported_editions": [
+            {
+              "paragraph_index": 45,
+              "literal": "3.2.1",
+              "source_context": "using COLOC (v3.2.1)"
+            },
+            {
+              "paragraph_index": 47,
+              "literal": "5.1.0",
+              "source_context": "using the COLOC (v5.1.0) package"
+            }
+          ],
+          "use_summary": "Used COLOC for aortic-valve eQTL/AS TWAS candidates around gene boundaries and separately for GTEx extravalvular eQTL/GWAS regions around lead variants; both used PP4>0.75.",
+          "required_caution": "The valve stage names 3.2.1 and the GTEx stage 5.1.0; code availability repeats 3.2.1. Preserve the stage-specific editions, distinct window centers and unreported function/priors.",
+          "qualified_component_overlap": [],
+          "native_alternative_overlap": [],
+          "remaining_author_roles": [
+            "Exact author inputs, options, dataset/model preparation and complete workflow are not reproduced.",
+            "Historical editions and original multi-causal fit/LD/credible-set parity are not established.",
+            "The unreported entry point prevents assigning an exact author invocation to either available component.",
+            "The valve stage names 3.2.1 and the GTEx stage 5.1.0; code availability repeats 3.2.1. Preserve the stage-specific editions, distinct window centers and unreported function/priors."
+          ],
+          "direct_package_execution_established": true,
+          "comparative_benchmark": false,
+          "native_BF_literal_source_parity": false,
+          "complete_author_workflow_qualified": false,
+          "exact_author_settings_established": false,
+          "author_runtime_executed": false,
+          "whole_paper_reproduced": false
+        }
       },
       {
         "tool_id": "depict",
@@ -25293,12 +25386,48 @@
         "matched_text": "coloc",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": "4.0.4",
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-source-role",
         "evidence_paragraph_sha256": "8fe8a6edb99f20ef298a14f1c9fe8a883953592b3fd9b263703f79dac5192285",
-        "use_summary": "Shared-signal colocalization analysis.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11631763/ (section: Methods / Locus definitions, variant annotation and gene prioritization / MR and colocalization for eQTLs and pQTLs)"
+        "use_summary": "Applied coloc after significant MR results for heart/whole-blood eQTLs and UKB protein pQTLs with DCM/MTAG-DCM. Set p1=p2=1e-4 and p12=1e-6; PP4>0.5 was some evidence and >0.7 strong evidence.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11631763/ (section: Methods / Locus definitions, variant annotation and gene prioritization / MR and colocalization for eQTLs and pQTLs)",
+        "implementation_scope_note": "MR instrument clumping and Bonferroni screens are preceding steps, not coloc SNP filters. Preserve the custom strict shared prior, two thresholds, source datasets and unreported function/input details.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 59,
+            "section": "Code availability",
+            "paragraph_sha256": "d899670986e0a999c90da1503e94e761b1f366bd826bef02c289518666aa4cac"
+          }
+        ],
+        "source_role_qualification": {
+          "method_family": "unspecified",
+          "host": "direct",
+          "reported_editions": [
+            {
+              "paragraph_index": 32,
+              "literal": "4.0.4",
+              "source_context": "R-package coloc (v.4.0.4)"
+            }
+          ],
+          "use_summary": "Applied coloc after significant MR results for heart/whole-blood eQTLs and UKB protein pQTLs with DCM/MTAG-DCM. Set p1=p2=1e-4 and p12=1e-6; PP4>0.5 was some evidence and >0.7 strong evidence.",
+          "required_caution": "MR instrument clumping and Bonferroni screens are preceding steps, not coloc SNP filters. Preserve the custom strict shared prior, two thresholds, source datasets and unreported function/input details.",
+          "qualified_component_overlap": [],
+          "native_alternative_overlap": [],
+          "remaining_author_roles": [
+            "Exact author inputs, options, dataset/model preparation and complete workflow are not reproduced.",
+            "Historical editions and original multi-causal fit/LD/credible-set parity are not established.",
+            "The unreported entry point prevents assigning an exact author invocation to either available component.",
+            "MR instrument clumping and Bonferroni screens are preceding steps, not coloc SNP filters. Preserve the custom strict shared prior, two thresholds, source datasets and unreported function/input details."
+          ],
+          "direct_package_execution_established": true,
+          "comparative_benchmark": false,
+          "native_BF_literal_source_parity": false,
+          "complete_author_workflow_qualified": false,
+          "exact_author_settings_established": false,
+          "author_runtime_executed": false,
+          "whole_paper_reproduced": false
+        }
       },
       {
         "tool_id": "deseq2",
@@ -26183,12 +26312,41 @@
         "matched_text": "coloc",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": "5.2.3",
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-source-role",
         "evidence_paragraph_sha256": "e4c4f8633ef07de71d07c229f60a8b12d0e30f294c2f0b0e636afb94ef4c8eb1",
-        "use_summary": "Shared-signal colocalization analysis.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11631752/ (section: Methods / Colocalization with gene expression)"
+        "use_summary": "Used coloc allowing multiple causal variants to compare DCM GWAS and GTEx eQTLs for genes at DCM loci, choosing tissues with the lowest TWAS P value.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11631752/ (section: Methods / Colocalization with gene expression)",
+        "implementation_scope_note": "The multi-causal entry point, LD, priors and signal-fitting settings are not named here. Do not infer an exact coloc.susie recipe solely from allowing multiple variants.",
+        "source_role_qualification": {
+          "method_family": "multi-causal-unspecified",
+          "host": "direct",
+          "reported_editions": [
+            {
+              "paragraph_index": 29,
+              "literal": "5.2.3",
+              "source_context": "R coloc v.5.2.3 (ref. 49)"
+            }
+          ],
+          "use_summary": "Used coloc allowing multiple causal variants to compare DCM GWAS and GTEx eQTLs for genes at DCM loci, choosing tissues with the lowest TWAS P value.",
+          "required_caution": "The multi-causal entry point, LD, priors and signal-fitting settings are not named here. Do not infer an exact coloc.susie recipe solely from allowing multiple variants.",
+          "qualified_component_overlap": [],
+          "native_alternative_overlap": [],
+          "remaining_author_roles": [
+            "Exact author inputs, options, dataset/model preparation and complete workflow are not reproduced.",
+            "Historical editions and original multi-causal fit/LD/credible-set parity are not established.",
+            "The unreported entry point prevents assigning an exact author invocation to either available component.",
+            "The multi-causal entry point, LD, priors and signal-fitting settings are not named here. Do not infer an exact coloc.susie recipe solely from allowing multiple variants."
+          ],
+          "direct_package_execution_established": true,
+          "comparative_benchmark": false,
+          "native_BF_literal_source_parity": false,
+          "complete_author_workflow_qualified": false,
+          "exact_author_settings_established": false,
+          "author_runtime_executed": false,
+          "whole_paper_reproduced": false
+        }
       },
       {
         "tool_id": "edger",
@@ -28279,17 +28437,52 @@
         "tool_id": "coloc",
         "tool": "coloc",
         "analysis_role": "Shared-signal colocalization analysis",
-        "evidence_section": "Methods / Replication",
-        "evidence_paragraph_index": 35,
+        "evidence_section": "Results / Validity of the MSPA score",
+        "evidence_paragraph_index": 21,
         "matched_text": "coloc",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
-        "evidence_paragraph_sha256": "5fba65ca5eaf59a027d3887512ffd86d25c6aff8f8275fb60d0cc9e07c506607",
-        "use_summary": "Shared-signal colocalization analysis.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12695657/ (section: Methods / Replication)"
+        "evidence_selection": "individually-reviewed-source-role",
+        "evidence_paragraph_sha256": "e65ad44f664cb9ec388d45874e60ef297297e811dea30c4209e3da90a0a52f7f",
+        "use_summary": "Compared Tarkin/QMDiab shared regional variants within +/-1 Mb for replication, requiring H4 to be the most likely hypothesis plus a joint association threshold and direction concordance. Also formed peptide-detection-weighted coloc-MSPA fractions for H3/H4 against UKB-PPP.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12695657/ (section: Results / Validity of the MSPA score)",
+        "implementation_scope_note": "H4 argmax is not a fixed PP4 cutoff. Preserve the separate datasets and joint-P criterion. The weighted coloc-MSPA aggregation is custom post-processing, not coloc prior weighting.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 35,
+            "section": "Methods / Replication",
+            "paragraph_sha256": "5fba65ca5eaf59a027d3887512ffd86d25c6aff8f8275fb60d0cc9e07c506607"
+          },
+          {
+            "paragraph_index": 41,
+            "section": "Methods / Definition of the MSPA score",
+            "paragraph_sha256": "7e3d88663910ece420234dc1908d3d2918d89458184c0f3e1a62b34cf743d033"
+          }
+        ],
+        "source_role_qualification": {
+          "method_family": "unspecified",
+          "host": "direct",
+          "reported_editions": [],
+          "use_summary": "Compared Tarkin/QMDiab shared regional variants within +/-1 Mb for replication, requiring H4 to be the most likely hypothesis plus a joint association threshold and direction concordance. Also formed peptide-detection-weighted coloc-MSPA fractions for H3/H4 against UKB-PPP.",
+          "required_caution": "H4 argmax is not a fixed PP4 cutoff. Preserve the separate datasets and joint-P criterion. The weighted coloc-MSPA aggregation is custom post-processing, not coloc prior weighting.",
+          "qualified_component_overlap": [],
+          "native_alternative_overlap": [],
+          "remaining_author_roles": [
+            "Exact author inputs, options, dataset/model preparation and complete workflow are not reproduced.",
+            "Historical editions and original multi-causal fit/LD/credible-set parity are not established.",
+            "The unreported entry point prevents assigning an exact author invocation to either available component.",
+            "H4 argmax is not a fixed PP4 cutoff. Preserve the separate datasets and joint-P criterion. The weighted coloc-MSPA aggregation is custom post-processing, not coloc prior weighting."
+          ],
+          "direct_package_execution_established": true,
+          "comparative_benchmark": false,
+          "native_BF_literal_source_parity": false,
+          "complete_author_workflow_qualified": false,
+          "exact_author_settings_established": false,
+          "author_runtime_executed": false,
+          "whole_paper_reproduced": false
+        }
       },
       {
         "tool_id": "diann",
@@ -30236,12 +30429,41 @@
         "matched_text": "COLOC",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": "5.1.0",
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-source-role",
         "evidence_paragraph_sha256": "dec1d70d2f6ef77c8e1a8906875733945d95ffba05a065aa718abf2a8707ff89",
-        "use_summary": "Shared-signal colocalization analysis.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11549052/ (section: Methods / Colocalization analysis of GWASs and eQTLs)"
+        "use_summary": "Compared overlapping SV-eQTL and agronomic SV-GWAS loci with COLOC defaults, using regional H4>0.5 and a shared-variant posterior threshold >0.5.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11549052/ (section: Methods / Colocalization analysis of GWASs and eQTLs)",
+        "implementation_scope_note": "Keep regional and variant conditional probabilities distinct. Nonhuman structural-variant association inputs, exact function and phenotype-scale choices are not established by a human SNP workflow.",
+        "source_role_qualification": {
+          "method_family": "unspecified",
+          "host": "direct",
+          "reported_editions": [
+            {
+              "paragraph_index": 49,
+              "literal": "5.1.0",
+              "source_context": "COLOC (v.5.1.0)18"
+            }
+          ],
+          "use_summary": "Compared overlapping SV-eQTL and agronomic SV-GWAS loci with COLOC defaults, using regional H4>0.5 and a shared-variant posterior threshold >0.5.",
+          "required_caution": "Keep regional and variant conditional probabilities distinct. Nonhuman structural-variant association inputs, exact function and phenotype-scale choices are not established by a human SNP workflow.",
+          "qualified_component_overlap": [],
+          "native_alternative_overlap": [],
+          "remaining_author_roles": [
+            "Exact author inputs, options, dataset/model preparation and complete workflow are not reproduced.",
+            "Historical editions and original multi-causal fit/LD/credible-set parity are not established.",
+            "The unreported entry point prevents assigning an exact author invocation to either available component.",
+            "Keep regional and variant conditional probabilities distinct. Nonhuman structural-variant association inputs, exact function and phenotype-scale choices are not established by a human SNP workflow."
+          ],
+          "direct_package_execution_established": true,
+          "comparative_benchmark": false,
+          "native_BF_literal_source_parity": false,
+          "complete_author_workflow_qualified": false,
+          "exact_author_settings_established": false,
+          "author_runtime_executed": false,
+          "whole_paper_reproduced": false
+        }
       },
       {
         "tool_id": "gatk",
@@ -30646,12 +30868,35 @@
         "matched_text": "coloc",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-source-role",
         "evidence_paragraph_sha256": "b4a8915f86102efa4c2d695e51d8a3685b2769e3d6614560928d3cbfd3c54788",
-        "use_summary": "Shared-signal colocalization analysis.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13649572/ (section: Methods / Sample selection and preprocessing / Colocalization of genetic signals from regulatory and disease risk variants)"
+        "use_summary": "Used coloc on overlapping molecular-QTL/GWAS meta-analysis regions around gene bodies without a P-value filter; normalized trait variance was set to one, other settings default, and PP4>=0.8 denoted colocalization.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13649572/ (section: Methods / Sample selection and preprocessing / Colocalization of genetic signals from regulatory and disease risk variants)",
+        "implementation_scope_note": "Do not introduce significance filtering or infer a version/function. The separate three-signal moloc analysis is outside two-trait coloc.",
+        "source_role_qualification": {
+          "method_family": "unspecified",
+          "host": "direct",
+          "reported_editions": [],
+          "use_summary": "Used coloc on overlapping molecular-QTL/GWAS meta-analysis regions around gene bodies without a P-value filter; normalized trait variance was set to one, other settings default, and PP4>=0.8 denoted colocalization.",
+          "required_caution": "Do not introduce significance filtering or infer a version/function. The separate three-signal moloc analysis is outside two-trait coloc.",
+          "qualified_component_overlap": [],
+          "native_alternative_overlap": [],
+          "remaining_author_roles": [
+            "Exact author inputs, options, dataset/model preparation and complete workflow are not reproduced.",
+            "Historical editions and original multi-causal fit/LD/credible-set parity are not established.",
+            "The unreported entry point prevents assigning an exact author invocation to either available component.",
+            "Do not introduce significance filtering or infer a version/function. The separate three-signal moloc analysis is outside two-trait coloc."
+          ],
+          "direct_package_execution_established": true,
+          "comparative_benchmark": false,
+          "native_BF_literal_source_parity": false,
+          "complete_author_workflow_qualified": false,
+          "exact_author_settings_established": false,
+          "author_runtime_executed": false,
+          "whole_paper_reproduced": false
+        }
       },
       {
         "tool_id": "edger",
@@ -31011,12 +31256,45 @@
         "matched_text": "coloc",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
-        "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
+        "version_reported_near_name": "5.1.0",
+        "evidence_selection": "individually-reviewed-source-role",
         "evidence_paragraph_sha256": "827af9300b83cef851ec419a3bb8008c100134a24ad99e9ba0677a23b87e7ee1",
-        "use_summary": "Shared-signal colocalization analysis.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10703676/ (section: Methods / HP-stratified analysis)"
+        "use_summary": "Applied single-causal-variant coloc at significant EAS loci and applied coloc to SuSiE signals at loci with multiple conditionally independent signals.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10703676/ (section: Methods / HP-stratified analysis)",
+        "implementation_scope_note": "Keep the single-causal and SuSiE branches distinct. Exact entry points, priors, LD and conditional/SuSiE settings are not supplied in this paragraph.",
+        "source_role_qualification": {
+          "method_family": "single-and-susie",
+          "host": "direct",
+          "reported_editions": [
+            {
+              "paragraph_index": 54,
+              "literal": "5.1.0",
+              "source_context": "coloc package (v.5.1.0;"
+            }
+          ],
+          "use_summary": "Applied single-causal-variant coloc at significant EAS loci and applied coloc to SuSiE signals at loci with multiple conditionally independent signals.",
+          "required_caution": "Keep the single-causal and SuSiE branches distinct. Exact entry points, priors, LD and conditional/SuSiE settings are not supplied in this paragraph.",
+          "qualified_component_overlap": [
+            "source-compatible-current-ABF-method"
+          ],
+          "native_alternative_overlap": [
+            "native-stable-supplied-credible-BF-method"
+          ],
+          "remaining_author_roles": [
+            "Exact author inputs, options, dataset/model preparation and complete workflow are not reproduced.",
+            "Historical editions and original multi-causal fit/LD/credible-set parity are not established.",
+            "The native BF method is an explicitly different stable statistical variant; source-mode null/per-SNP priors and literal source outputs remain separate gaps.",
+            "Keep the single-causal and SuSiE branches distinct. Exact entry points, priors, LD and conditional/SuSiE settings are not supplied in this paragraph."
+          ],
+          "direct_package_execution_established": true,
+          "comparative_benchmark": false,
+          "native_BF_literal_source_parity": false,
+          "complete_author_workflow_qualified": false,
+          "exact_author_settings_established": false,
+          "author_runtime_executed": false,
+          "whole_paper_reproduced": false
+        }
       },
       {
         "tool_id": "eagle",
@@ -35029,12 +35307,36 @@
         "matched_text": "COLOC",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-source-role",
         "evidence_paragraph_sha256": "0876f6544d61b4752c7b0ec8d16ad276cd0c944edc68c1e52fa429f14cef05a7",
-        "use_summary": "Shared-signal colocalization analysis.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12695664/ (section: Methods / Gene mapping)"
+        "use_summary": "Used FUSION TWAS and its internal COLOC method with selected GTEx tissue weights to link hypothyroidism risk to expression; reported regional PP4>0.75 for candidate gene mapping.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12695664/ (section: Methods / Gene mapping)",
+        "implementation_scope_note": "This is a FUSION-hosted method, not proof of a standalone coloc invocation. The eQTL/TWAS screen is not an automatic SNP-level coloc filter; version/function/priors remain unspecified.",
+        "source_role_qualification": {
+          "method_family": "hosted-unspecified",
+          "host": "FUSION",
+          "reported_editions": [],
+          "use_summary": "Used FUSION TWAS and its internal COLOC method with selected GTEx tissue weights to link hypothyroidism risk to expression; reported regional PP4>0.75 for candidate gene mapping.",
+          "required_caution": "This is a FUSION-hosted method, not proof of a standalone coloc invocation. The eQTL/TWAS screen is not an automatic SNP-level coloc filter; version/function/priors remain unspecified.",
+          "qualified_component_overlap": [],
+          "native_alternative_overlap": [],
+          "remaining_author_roles": [
+            "Exact author inputs, options, dataset/model preparation and complete workflow are not reproduced.",
+            "Historical editions and original multi-causal fit/LD/credible-set parity are not established.",
+            "The unreported entry point prevents assigning an exact author invocation to either available component.",
+            "Hosted/unspecified-host execution is not validated by a standalone native coloc workflow.",
+            "This is a FUSION-hosted method, not proof of a standalone coloc invocation. The eQTL/TWAS screen is not an automatic SNP-level coloc filter; version/function/priors remain unspecified."
+          ],
+          "direct_package_execution_established": false,
+          "comparative_benchmark": false,
+          "native_BF_literal_source_parity": false,
+          "complete_author_workflow_qualified": false,
+          "exact_author_settings_established": false,
+          "author_runtime_executed": false,
+          "whole_paper_reproduced": false
+        }
       },
       {
         "tool_id": "fusion",
@@ -37473,16 +37775,58 @@
         "tool": "coloc",
         "analysis_role": "Shared-signal colocalization analysis",
         "evidence_section": "Methods / Statistical analyses / Colocalization analyses",
-        "evidence_paragraph_index": 58,
+        "evidence_paragraph_index": 57,
         "matched_text": "coloc.abf",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
-        "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
-        "evidence_paragraph_sha256": "bddecbfe067c8a403ae63b22838e3bae4b509d6c6b826608a002ebd6dee75fa9",
-        "use_summary": "Shared-signal colocalization analysis.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11549054/ (section: Methods / Statistical analyses / Colocalization analyses)"
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
+        "version_reported_near_name": "5.2.2",
+        "evidence_selection": "individually-reviewed-source-role",
+        "evidence_paragraph_sha256": "abbe959581ff8522519e14198443ead6f080d394d98bb0380a90e15500e62849",
+        "use_summary": "Used coloc.abf for neuropathology loci and significant GTEx/ROSMAP QTLs, with ordinal case fractions chosen by dichotomization, shared prior 1e-5 and posterior >80%. Also compared selected concordant NPE signals and excluded APOE for that comparison.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11549054/ (section: Methods / Statistical analyses / Colocalization analyses)",
+        "implementation_scope_note": "Preserve region-selection versus within-region coverage, source screening and case definitions. The source uses PrC for prior and posterior wording; do not conflate the prior 1e-5 with the posterior threshold.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 58,
+            "section": "Methods / Statistical analyses / Colocalization analyses",
+            "paragraph_sha256": "bddecbfe067c8a403ae63b22838e3bae4b509d6c6b826608a002ebd6dee75fa9"
+          },
+          {
+            "paragraph_index": 59,
+            "section": "Methods / Statistical analyses / Colocalization analyses",
+            "paragraph_sha256": "e4e6f016d5b6a4bf55355c515d97cbd1141fc16f2596c8a1c4478adcc02e77e7"
+          }
+        ],
+        "source_role_qualification": {
+          "method_family": "abf",
+          "host": "direct",
+          "reported_editions": [
+            {
+              "paragraph_index": 58,
+              "literal": "5.2.2",
+              "source_context": "coloc 5.2.2R package39"
+            }
+          ],
+          "use_summary": "Used coloc.abf for neuropathology loci and significant GTEx/ROSMAP QTLs, with ordinal case fractions chosen by dichotomization, shared prior 1e-5 and posterior >80%. Also compared selected concordant NPE signals and excluded APOE for that comparison.",
+          "required_caution": "Preserve region-selection versus within-region coverage, source screening and case definitions. The source uses PrC for prior and posterior wording; do not conflate the prior 1e-5 with the posterior threshold.",
+          "qualified_component_overlap": [
+            "source-compatible-current-ABF-method"
+          ],
+          "native_alternative_overlap": [],
+          "remaining_author_roles": [
+            "Exact author inputs, options, dataset/model preparation and complete workflow are not reproduced.",
+            "Historical editions and original multi-causal fit/LD/credible-set parity are not established.",
+            "Preserve region-selection versus within-region coverage, source screening and case definitions. The source uses PrC for prior and posterior wording; do not conflate the prior 1e-5 with the posterior threshold."
+          ],
+          "direct_package_execution_established": true,
+          "comparative_benchmark": false,
+          "native_BF_literal_source_parity": false,
+          "complete_author_workflow_qualified": false,
+          "exact_author_settings_established": false,
+          "author_runtime_executed": false,
+          "whole_paper_reproduced": false
+        }
       },
       {
         "tool_id": "favor",
@@ -37885,17 +38229,48 @@
         "tool_id": "coloc",
         "tool": "coloc",
         "analysis_role": "Shared-signal colocalization analysis",
-        "evidence_section": "Methods / Biological annotations / Gene expression of second-order factors",
-        "evidence_paragraph_index": 45,
+        "evidence_section": "Results / Functional annotations of second-order factors",
+        "evidence_paragraph_index": 16,
         "matched_text": "COLOC",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
-        "evidence_paragraph_sha256": "61cb6e7809722c4eaee20f2d04507fb088d4d320e0709875db3a6e6709946177",
-        "use_summary": "Shared-signal colocalization analysis.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13553304/ (section: Methods / Biological annotations / Gene expression of second-order factors)"
+        "evidence_selection": "individually-reviewed-source-role",
+        "evidence_paragraph_sha256": "d959b66ae172370659ff769e25092c0503deff34a2f1f52461e2a96b92f923e9",
+        "use_summary": "Used FUSION colocalization for second-order disease-MDD GWAS factors with the same GTEx tissue weights, then integrated PP4>0.80 hits with T-SEM and normalized tissue gene proportions.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13553304/ (section: Results / Functional annotations of second-order factors)",
+        "implementation_scope_note": "FUSION hosts this analysis; standalone coloc version/function is unreported. T-SEM/QGENE filtering, ACAT and normalized gene proportions are separate operations.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 45,
+            "section": "Methods / Biological annotations / Gene expression of second-order factors",
+            "paragraph_sha256": "61cb6e7809722c4eaee20f2d04507fb088d4d320e0709875db3a6e6709946177"
+          }
+        ],
+        "source_role_qualification": {
+          "method_family": "hosted-unspecified",
+          "host": "FUSION",
+          "reported_editions": [],
+          "use_summary": "Used FUSION colocalization for second-order disease-MDD GWAS factors with the same GTEx tissue weights, then integrated PP4>0.80 hits with T-SEM and normalized tissue gene proportions.",
+          "required_caution": "FUSION hosts this analysis; standalone coloc version/function is unreported. T-SEM/QGENE filtering, ACAT and normalized gene proportions are separate operations.",
+          "qualified_component_overlap": [],
+          "native_alternative_overlap": [],
+          "remaining_author_roles": [
+            "Exact author inputs, options, dataset/model preparation and complete workflow are not reproduced.",
+            "Historical editions and original multi-causal fit/LD/credible-set parity are not established.",
+            "The unreported entry point prevents assigning an exact author invocation to either available component.",
+            "Hosted/unspecified-host execution is not validated by a standalone native coloc workflow.",
+            "FUSION hosts this analysis; standalone coloc version/function is unreported. T-SEM/QGENE filtering, ACAT and normalized gene proportions are separate operations."
+          ],
+          "direct_package_execution_established": false,
+          "comparative_benchmark": false,
+          "native_BF_literal_source_parity": false,
+          "complete_author_workflow_qualified": false,
+          "exact_author_settings_established": false,
+          "author_runtime_executed": false,
+          "whole_paper_reproduced": false
+        }
       },
       {
         "tool_id": "fuma",
@@ -38187,17 +38562,47 @@
         "tool_id": "coloc",
         "tool": "coloc",
         "analysis_role": "Shared-signal colocalization analysis",
-        "evidence_section": "Methods / CH GWAS / RNA eQTL and sQTL analysis",
-        "evidence_paragraph_index": 60,
+        "evidence_section": "Results / CH GWAS variants are involved in expression quantitative trait loci (eQTL), splicing quantitative trait loci (sQTL) and protein quantitative trait loci (pQTL)",
+        "evidence_paragraph_index": 27,
         "matched_text": "COLOC",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
-        "evidence_paragraph_sha256": "b9be2f9156169d53c7c023c38a4f97c8aa128c055a7b2b48e1f9de71d1762240",
-        "use_summary": "Shared-signal colocalization analysis.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10703693/ (section: Methods / CH GWAS / RNA eQTL and sQTL analysis)"
+        "evidence_selection": "individually-reviewed-source-role",
+        "evidence_paragraph_sha256": "924c7a4eaa8ab38a92d34704c81d76ec14ebe6f3fff6b36262cb7432987f2cd7",
+        "use_summary": "Used COLOC in R to compare CH GWAS with expression QTLs; the TCL1A example compared the remaining eQTL signal after conditioning on rs78986913.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10703693/ (section: Results / CH GWAS variants are involved in expression quantitative trait loci (eQTL), splicing quantitative trait loci (sQTL) and protein quantitative trait loci (pQTL))",
+        "implementation_scope_note": "The conditional association fit is separate from coloc. Exact regional inputs, software edition, function, priors and a general decision threshold are not specified here.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 60,
+            "section": "Methods / CH GWAS / RNA eQTL and sQTL analysis",
+            "paragraph_sha256": "b9be2f9156169d53c7c023c38a4f97c8aa128c055a7b2b48e1f9de71d1762240"
+          }
+        ],
+        "source_role_qualification": {
+          "method_family": "unspecified",
+          "host": "direct",
+          "reported_editions": [],
+          "use_summary": "Used COLOC in R to compare CH GWAS with expression QTLs; the TCL1A example compared the remaining eQTL signal after conditioning on rs78986913.",
+          "required_caution": "The conditional association fit is separate from coloc. Exact regional inputs, software edition, function, priors and a general decision threshold are not specified here.",
+          "qualified_component_overlap": [],
+          "native_alternative_overlap": [],
+          "remaining_author_roles": [
+            "Exact author inputs, options, dataset/model preparation and complete workflow are not reproduced.",
+            "Historical editions and original multi-causal fit/LD/credible-set parity are not established.",
+            "The unreported entry point prevents assigning an exact author invocation to either available component.",
+            "The conditional association fit is separate from coloc. Exact regional inputs, software edition, function, priors and a general decision threshold are not specified here."
+          ],
+          "direct_package_execution_established": true,
+          "comparative_benchmark": false,
+          "native_BF_literal_source_parity": false,
+          "complete_author_workflow_qualified": false,
+          "exact_author_settings_established": false,
+          "author_runtime_executed": false,
+          "whole_paper_reproduced": false
+        }
       },
       {
         "tool_id": "gatk",
@@ -43780,17 +44185,51 @@
         "tool_id": "coloc",
         "tool": "coloc",
         "analysis_role": "Shared-signal colocalization analysis",
-        "evidence_section": "Methods / Defining shared and specific QTLs",
-        "evidence_paragraph_index": 58,
+        "evidence_section": "Results / Limited colocalization between eQTLs and pQTLs",
+        "evidence_paragraph_index": 17,
         "matched_text": "coloc",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
-        "evidence_paragraph_sha256": "3fafabfe11afd6c576f1039c11ecd1b1e3c32abfb04100dc3d374617b1bf68c5",
-        "use_summary": "Shared-signal colocalization analysis.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11525184/ (section: Methods / Defining shared and specific QTLs)"
+        "evidence_selection": "individually-reviewed-source-role",
+        "evidence_paragraph_sha256": "48bfa3f8254fa6db7729c7e0fbdb3bcb42e9943c8b0e99516e54db9b2933bba6",
+        "use_summary": "Benchmarked single-causal coloc from P-value Bayes factors and SuSiE-coloc over pairs of pure mRNA/protein credible sets; the maximum pairwise H4 represented the gene.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11525184/ (section: Results / Limited colocalization between eQTLs and pQTLs)",
+        "implementation_scope_note": "These are comparison methods, not the main CLPP analysis. The authors retained their strict purity filter and used minimum SuSiE/FINEMAP PIPs separately; do not replace that procedure with generic coloc defaults.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 58,
+            "section": "Methods / Defining shared and specific QTLs",
+            "paragraph_sha256": "3fafabfe11afd6c576f1039c11ecd1b1e3c32abfb04100dc3d374617b1bf68c5"
+          }
+        ],
+        "source_role_qualification": {
+          "method_family": "abf-and-susie-benchmark",
+          "host": "direct",
+          "reported_editions": [],
+          "use_summary": "Benchmarked single-causal coloc from P-value Bayes factors and SuSiE-coloc over pairs of pure mRNA/protein credible sets; the maximum pairwise H4 represented the gene.",
+          "required_caution": "These are comparison methods, not the main CLPP analysis. The authors retained their strict purity filter and used minimum SuSiE/FINEMAP PIPs separately; do not replace that procedure with generic coloc defaults.",
+          "qualified_component_overlap": [
+            "source-compatible-current-ABF-method"
+          ],
+          "native_alternative_overlap": [
+            "native-stable-supplied-credible-BF-method"
+          ],
+          "remaining_author_roles": [
+            "Exact author inputs, options, dataset/model preparation and complete workflow are not reproduced.",
+            "Historical editions and original multi-causal fit/LD/credible-set parity are not established.",
+            "The native BF method is an explicitly different stable statistical variant; source-mode null/per-SNP priors and literal source outputs remain separate gaps.",
+            "These are comparison methods, not the main CLPP analysis. The authors retained their strict purity filter and used minimum SuSiE/FINEMAP PIPs separately; do not replace that procedure with generic coloc defaults."
+          ],
+          "direct_package_execution_established": true,
+          "comparative_benchmark": true,
+          "native_BF_literal_source_parity": false,
+          "complete_author_workflow_qualified": false,
+          "exact_author_settings_established": false,
+          "author_runtime_executed": false,
+          "whole_paper_reproduced": false
+        }
       },
       {
         "tool_id": "fastqtl",
@@ -47504,17 +47943,58 @@
         "tool_id": "coloc",
         "tool": "coloc",
         "analysis_role": "Shared-signal colocalization analysis",
-        "evidence_section": "Methods / Colocalization analysis",
-        "evidence_paragraph_index": 58,
+        "evidence_section": "Results / reQTLs identify genes with perturbation-specific regulation",
+        "evidence_paragraph_index": 16,
         "matched_text": "coloc",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
-        "evidence_paragraph_sha256": "ab87be7923cb2527913a20e0a6685969ff1c4a0c92193272659ff0b7bf3cd593",
-        "use_summary": "Shared-signal colocalization analysis.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12597823/ (section: Methods / Colocalization analysis)"
+        "evidence_selection": "individually-reviewed-source-role",
+        "evidence_paragraph_sha256": "f5536468b777df644c288d52b7cbc781d011a160201cfa46cc40efd599215161",
+        "use_summary": "Used coloc.abf defaults for perturbation-dependent reQTL/GWAS comparisons, H4>0.5, conditional variant probabilities and 95% credible sets; reran QTL/coloc analyses within perturbation-score tertiles.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12597823/ (section: Results / reQTLs identify genes with perturbation-specific regulation)",
+        "implementation_scope_note": "FastQTL eGene selection, pseudobulk/tertile construction, credible-set summarization and Fisher enrichment are separate. Results and Methods differ on the nonimmune-trait count; no count is silently repaired.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 58,
+            "section": "Methods / Colocalization analysis",
+            "paragraph_sha256": "ab87be7923cb2527913a20e0a6685969ff1c4a0c92193272659ff0b7bf3cd593"
+          },
+          {
+            "paragraph_index": 59,
+            "section": "Methods / Colocalization analysis",
+            "paragraph_sha256": "6bf01e2a4ba3cf6921aa1b417d29da8ca0001ba0f88763f0f55f2f7a164b7f31"
+          },
+          {
+            "paragraph_index": 60,
+            "section": "Methods / Colocalization analysis",
+            "paragraph_sha256": "171dac2da35c3534bb903e48d5f37db936f2b6d997a079947098c5a07db04400"
+          }
+        ],
+        "source_role_qualification": {
+          "method_family": "abf",
+          "host": "direct",
+          "reported_editions": [],
+          "use_summary": "Used coloc.abf defaults for perturbation-dependent reQTL/GWAS comparisons, H4>0.5, conditional variant probabilities and 95% credible sets; reran QTL/coloc analyses within perturbation-score tertiles.",
+          "required_caution": "FastQTL eGene selection, pseudobulk/tertile construction, credible-set summarization and Fisher enrichment are separate. Results and Methods differ on the nonimmune-trait count; no count is silently repaired.",
+          "qualified_component_overlap": [
+            "source-compatible-current-ABF-method"
+          ],
+          "native_alternative_overlap": [],
+          "remaining_author_roles": [
+            "Exact author inputs, options, dataset/model preparation and complete workflow are not reproduced.",
+            "Historical editions and original multi-causal fit/LD/credible-set parity are not established.",
+            "FastQTL eGene selection, pseudobulk/tertile construction, credible-set summarization and Fisher enrichment are separate. Results and Methods differ on the nonimmune-trait count; no count is silently repaired."
+          ],
+          "direct_package_execution_established": true,
+          "comparative_benchmark": false,
+          "native_BF_literal_source_parity": false,
+          "complete_author_workflow_qualified": false,
+          "exact_author_settings_established": false,
+          "author_runtime_executed": false,
+          "whole_paper_reproduced": false
+        }
       },
       {
         "tool_id": "fastqtl",
@@ -49618,12 +50098,35 @@
         "matched_text": "coloc",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-source-role",
         "evidence_paragraph_sha256": "b9e4f65a69f8f4f2907b8d0ab568fac6cc320828de5286e54049208f99785772",
-        "use_summary": "Shared-signal colocalization analysis.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13361010/ (section: Methods / TWAS)"
+        "use_summary": "Applied tests from the coloc R package to significant FUSION multimodal-TWAS hits across traits, using COLOC.PP4>0.8.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13361010/ (section: Methods / TWAS)",
+        "implementation_scope_note": "TWAS construction/screens are preceding operations. The coloc function, version, regional variant coverage, priors and scale inputs are not specified here.",
+        "source_role_qualification": {
+          "method_family": "unspecified",
+          "host": "direct",
+          "reported_editions": [],
+          "use_summary": "Applied tests from the coloc R package to significant FUSION multimodal-TWAS hits across traits, using COLOC.PP4>0.8.",
+          "required_caution": "TWAS construction/screens are preceding operations. The coloc function, version, regional variant coverage, priors and scale inputs are not specified here.",
+          "qualified_component_overlap": [],
+          "native_alternative_overlap": [],
+          "remaining_author_roles": [
+            "Exact author inputs, options, dataset/model preparation and complete workflow are not reproduced.",
+            "Historical editions and original multi-causal fit/LD/credible-set parity are not established.",
+            "The unreported entry point prevents assigning an exact author invocation to either available component.",
+            "TWAS construction/screens are preceding operations. The coloc function, version, regional variant coverage, priors and scale inputs are not specified here."
+          ],
+          "direct_package_execution_established": true,
+          "comparative_benchmark": false,
+          "native_BF_literal_source_parity": false,
+          "complete_author_workflow_qualified": false,
+          "exact_author_settings_established": false,
+          "author_runtime_executed": false,
+          "whole_paper_reproduced": false
+        }
       },
       {
         "tool_id": "deeptools",
@@ -50404,12 +50907,58 @@
         "matched_text": "COLOC",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-source-role",
         "evidence_paragraph_sha256": "bb84693ac3d2cd11e223fb4f33609c40b6cb3132aa86f63c15cf3f63f6974431",
-        "use_summary": "Shared-signal colocalization analysis.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12824624/ (section: Material and methods / Integrative analysis of GWAS and eQTL data)"
+        "use_summary": "Used coloc.abf with p1=p2=1e-4 and p12=1e-5 to integrate eQTL/GWAS data and compare lncRNA/circRNA with neighboring PCG eQTL/sQTL signals in shared regions.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12824624/ (section: Material and methods / Integrative analysis of GWAS and eQTL data)",
+        "implementation_scope_note": "Methods use PP4>0.8 for GWAS integration; results also describe PP3/PP4>=0.8 for RNA pairs. Preserve these distinct decisions. SMR/HEIDI, OPERA, FUSION and eCAVIAR are separate.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 26,
+            "section": "Results / Relationship between lncRNA- or circRNA-eQTLs and PCG-eQTLs/sQTLs",
+            "paragraph_sha256": "fc122afdbefc01324cc8c286e6c1942d205f32b89d9fd6da194ff15a96fe7737"
+          },
+          {
+            "paragraph_index": 27,
+            "section": "Results / Relationship between lncRNA- or circRNA-eQTLs and PCG-eQTLs/sQTLs",
+            "paragraph_sha256": "e7a304457a1bee9102903c76687b2e470a7b919d7fb95c943e3bb8e1a3acdf2c"
+          },
+          {
+            "paragraph_index": 31,
+            "section": "Results / Identifying lncRNAs and circRNAs associated with brain-related traits",
+            "paragraph_sha256": "445e6509c7212b7de0d99e5b0aec5f2f00f2d8573f81ee0b73b40f911423182c"
+          },
+          {
+            "paragraph_index": 32,
+            "section": "Results / Identifying lncRNAs and circRNAs associated with brain-related traits",
+            "paragraph_sha256": "11b88a4587bf891b6584b372ef2992cd5de650af066eb08ef569c91e9368ede7"
+          }
+        ],
+        "source_role_qualification": {
+          "method_family": "abf",
+          "host": "direct",
+          "reported_editions": [],
+          "use_summary": "Used coloc.abf with p1=p2=1e-4 and p12=1e-5 to integrate eQTL/GWAS data and compare lncRNA/circRNA with neighboring PCG eQTL/sQTL signals in shared regions.",
+          "required_caution": "Methods use PP4>0.8 for GWAS integration; results also describe PP3/PP4>=0.8 for RNA pairs. Preserve these distinct decisions. SMR/HEIDI, OPERA, FUSION and eCAVIAR are separate.",
+          "qualified_component_overlap": [
+            "source-compatible-current-ABF-method"
+          ],
+          "native_alternative_overlap": [],
+          "remaining_author_roles": [
+            "Exact author inputs, options, dataset/model preparation and complete workflow are not reproduced.",
+            "Historical editions and original multi-causal fit/LD/credible-set parity are not established.",
+            "Methods use PP4>0.8 for GWAS integration; results also describe PP3/PP4>=0.8 for RNA pairs. Preserve these distinct decisions. SMR/HEIDI, OPERA, FUSION and eCAVIAR are separate."
+          ],
+          "direct_package_execution_established": true,
+          "comparative_benchmark": false,
+          "native_BF_literal_source_parity": false,
+          "complete_author_workflow_qualified": false,
+          "exact_author_settings_established": false,
+          "author_runtime_executed": false,
+          "whole_paper_reproduced": false
+        }
       },
       {
         "tool_id": "cutadapt",
@@ -50877,12 +51426,49 @@
         "matched_text": "coloc",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
-        "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
+        "version_reported_near_name": "5.1.0",
+        "evidence_selection": "individually-reviewed-source-role",
         "evidence_paragraph_sha256": "5423c205cd2fd634966047682c433a97b79e3152aef50db7d056cb5bde2b882b",
-        "use_summary": "Shared-signal colocalization analysis.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11639090/ (section: Methods / Colocalization analysis)"
+        "use_summary": "Used coloc.abf separately for OA GWAS phenotypes and cartilage mQTLs within +/-500 kb, retaining all mQTL test results before colocalization and using shared variants. Applied H4>0.8, then retained genotype-present significant mQTL results.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11639090/ (section: Methods / Colocalization analysis)",
+        "implementation_scope_note": "The later mQTL FDR filter is post-processing, not the input P-value cutoff. Preserve GWAS-phenotype/probe pairing and distinguish regional H4 from SNP-level evidence.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 16,
+            "section": "Methods / Colocalization analysis",
+            "paragraph_sha256": "14f91ff647a36f97f47729e4b9ec30742661baf79277097561f0f2cebe345e5a"
+          }
+        ],
+        "source_role_qualification": {
+          "method_family": "abf",
+          "host": "direct",
+          "reported_editions": [
+            {
+              "paragraph_index": 15,
+              "literal": "5.1.0",
+              "source_context": "coloc R package33 (v.5.1.0)"
+            }
+          ],
+          "use_summary": "Used coloc.abf separately for OA GWAS phenotypes and cartilage mQTLs within +/-500 kb, retaining all mQTL test results before colocalization and using shared variants. Applied H4>0.8, then retained genotype-present significant mQTL results.",
+          "required_caution": "The later mQTL FDR filter is post-processing, not the input P-value cutoff. Preserve GWAS-phenotype/probe pairing and distinguish regional H4 from SNP-level evidence.",
+          "qualified_component_overlap": [
+            "source-compatible-current-ABF-method"
+          ],
+          "native_alternative_overlap": [],
+          "remaining_author_roles": [
+            "Exact author inputs, options, dataset/model preparation and complete workflow are not reproduced.",
+            "Historical editions and original multi-causal fit/LD/credible-set parity are not established.",
+            "The later mQTL FDR filter is post-processing, not the input P-value cutoff. Preserve GWAS-phenotype/probe pairing and distinguish regional H4 from SNP-level evidence."
+          ],
+          "direct_package_execution_established": true,
+          "comparative_benchmark": false,
+          "native_BF_literal_source_parity": false,
+          "complete_author_workflow_qualified": false,
+          "exact_author_settings_established": false,
+          "author_runtime_executed": false,
+          "whole_paper_reproduced": false
+        }
       },
       {
         "tool_id": "limma",
@@ -51770,12 +52356,36 @@
         "matched_text": "coloc",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-source-role",
         "evidence_paragraph_sha256": "b304c8dcefd70ec6aeb641802c41b3a6ce4f12830660935698ab8cca7e34782a",
-        "use_summary": "Shared-signal colocalization analysis.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11639085/ (section: Material and methods / Bayesian colocalization analysis)"
+        "use_summary": "Used coloc.abf for protein pQTL/PCOS GWAS regions within +/-500 kb, with p1=p2=1e-4 and p12=1e-5 and H4>0.8. With multiple pQTLs, reported the strongest colocalization per protein.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11639085/ (section: Material and methods / Bayesian colocalization analysis)",
+        "implementation_scope_note": "Retain per-pQTL tests before the strongest-hit summary. Function priors are explicit but version, scale and complete input construction are not.",
+        "source_role_qualification": {
+          "method_family": "abf",
+          "host": "direct",
+          "reported_editions": [],
+          "use_summary": "Used coloc.abf for protein pQTL/PCOS GWAS regions within +/-500 kb, with p1=p2=1e-4 and p12=1e-5 and H4>0.8. With multiple pQTLs, reported the strongest colocalization per protein.",
+          "required_caution": "Retain per-pQTL tests before the strongest-hit summary. Function priors are explicit but version, scale and complete input construction are not.",
+          "qualified_component_overlap": [
+            "source-compatible-current-ABF-method"
+          ],
+          "native_alternative_overlap": [],
+          "remaining_author_roles": [
+            "Exact author inputs, options, dataset/model preparation and complete workflow are not reproduced.",
+            "Historical editions and original multi-causal fit/LD/credible-set parity are not established.",
+            "Retain per-pQTL tests before the strongest-hit summary. Function priors are explicit but version, scale and complete input construction are not."
+          ],
+          "direct_package_execution_established": true,
+          "comparative_benchmark": false,
+          "native_BF_literal_source_parity": false,
+          "complete_author_workflow_qualified": false,
+          "exact_author_settings_established": false,
+          "author_runtime_executed": false,
+          "whole_paper_reproduced": false
+        }
       },
       {
         "tool_id": "heidi",
@@ -52005,7 +52615,30 @@
         "evidence_paragraph_sha256": "577f90b93e21a97535befde303c65c69f137c4c085fd3eb64d9e3ab3c44006a5",
         "use_summary": "Used COLOC to compare MAJIQTL-derived splicing QTLs with Alzheimer and Parkinson GWAS summary statistics and retained colocalized signals at PPH4>0.5.",
         "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12626415/ (section: Results / MAJIQTL improves sQTL enrichment in functional annotation and identifies sQTLs that explain the GWAS signal for neurodegenerative disorders)",
-        "implementation_scope_note": "The phenotype GWAS summaries come from named previous studies. Priors, exact COLOC implementation/version, variant harmonization and causal-signal assumptions are unstated. A PPH4 cutoff is not a GWAS P-value or experimental causal validation."
+        "implementation_scope_note": "The phenotype GWAS summaries come from named previous studies. Priors, exact COLOC implementation/version, variant harmonization and causal-signal assumptions are unstated. A PPH4 cutoff is not a GWAS P-value or experimental causal validation.",
+        "source_role_qualification": {
+          "method_family": "unspecified",
+          "host": "unspecified",
+          "reported_editions": [],
+          "use_summary": "Reported COLOC comparisons of MAJIQTL- versus LeafCutter-derived sQTLs with AD/PD GWAS, using PPH4>0.5.",
+          "required_caution": "This Results paragraph establishes reported COLOC analysis, but not its exact R entry point/host, version or settings. Detailed supplementary Note S7.1 is not reviewed here; no default ABF or SuSiE recipe is invented.",
+          "qualified_component_overlap": [],
+          "native_alternative_overlap": [],
+          "remaining_author_roles": [
+            "Exact author inputs, options, dataset/model preparation and complete workflow are not reproduced.",
+            "Historical editions and original multi-causal fit/LD/credible-set parity are not established.",
+            "The unreported entry point prevents assigning an exact author invocation to either available component.",
+            "Hosted/unspecified-host execution is not validated by a standalone native coloc workflow.",
+            "This Results paragraph establishes reported COLOC analysis, but not its exact R entry point/host, version or settings. Detailed supplementary Note S7.1 is not reviewed here; no default ABF or SuSiE recipe is invented."
+          ],
+          "direct_package_execution_established": false,
+          "comparative_benchmark": false,
+          "native_BF_literal_source_parity": false,
+          "complete_author_workflow_qualified": false,
+          "exact_author_settings_established": false,
+          "author_runtime_executed": false,
+          "whole_paper_reproduced": false
+        }
       },
       {
         "tool_id": "leafcutter",
@@ -53071,12 +53704,35 @@
         "matched_text": "coloc",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-source-role",
         "evidence_paragraph_sha256": "6c6fe7ee87b88ff67c49037f9c48ae00f3ad97a74375b81252fe16d0bc69a7c2",
-        "use_summary": "Shared-signal colocalization analysis.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12808957/ (section: Methods / Colocalization analysis)"
+        "use_summary": "Used coloc with GWAS Catalog associations, locally generated linear-model irQTL summary statistics and GTEx v8 eQTLs, checking robustness using an independent eQTL dataset.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12808957/ (section: Methods / Colocalization analysis)",
+        "implementation_scope_note": "Version, entry point, priors, region, threshold and scale inputs are not stated in this paragraph. The subsequent scipy transcription model is unrelated to coloc inference.",
+        "source_role_qualification": {
+          "method_family": "unspecified",
+          "host": "direct",
+          "reported_editions": [],
+          "use_summary": "Used coloc with GWAS Catalog associations, locally generated linear-model irQTL summary statistics and GTEx v8 eQTLs, checking robustness using an independent eQTL dataset.",
+          "required_caution": "Version, entry point, priors, region, threshold and scale inputs are not stated in this paragraph. The subsequent scipy transcription model is unrelated to coloc inference.",
+          "qualified_component_overlap": [],
+          "native_alternative_overlap": [],
+          "remaining_author_roles": [
+            "Exact author inputs, options, dataset/model preparation and complete workflow are not reproduced.",
+            "Historical editions and original multi-causal fit/LD/credible-set parity are not established.",
+            "The unreported entry point prevents assigning an exact author invocation to either available component.",
+            "Version, entry point, priors, region, threshold and scale inputs are not stated in this paragraph. The subsequent scipy transcription model is unrelated to coloc inference."
+          ],
+          "direct_package_execution_established": true,
+          "comparative_benchmark": false,
+          "native_BF_literal_source_parity": false,
+          "complete_author_workflow_qualified": false,
+          "exact_author_settings_established": false,
+          "author_runtime_executed": false,
+          "whole_paper_reproduced": false
+        }
       },
       {
         "tool_id": "gcta",
@@ -54502,12 +55158,48 @@
         "matched_text": "coloc",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": "5.2.3",
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-source-role",
         "evidence_paragraph_sha256": "b7230fd78daf6a77fdcad9db35098fc519dfad4edfb3337cd1ad66c43fa93942",
-        "use_summary": "Shared-signal colocalization analysis.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11568790/ (section: Subjects, material, and methods / Colocalization analysis with genome-wide association study hematological traits)"
+        "use_summary": "Compared significant sQTL loci with hematological GWAS traits using p1=p2=1e-4 and declared p12=1e-6, with common-causal posterior >0.8 and H4/H3>5.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11568790/ (section: Subjects, material, and methods / Colocalization analysis with genome-wide association study hematological traits)",
+        "implementation_scope_note": "The source calls 1e-6 a default; retain that explicit value rather than replacing it with the selected current API default. Lead/locus selection and LD visualization are separate; the exact function is not named.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 30,
+            "section": "Results / Indonesian whole-blood cis-sQTLs colocalize with hematological GWAS traits",
+            "paragraph_sha256": "f3814c3b4046be3adc14d6a480284477832575e008780f4804e386d1143be975"
+          }
+        ],
+        "source_role_qualification": {
+          "method_family": "unspecified",
+          "host": "direct",
+          "reported_editions": [
+            {
+              "paragraph_index": 20,
+              "literal": "5.2.3",
+              "source_context": "coloc v5.2.3.62 We tested"
+            }
+          ],
+          "use_summary": "Compared significant sQTL loci with hematological GWAS traits using p1=p2=1e-4 and declared p12=1e-6, with common-causal posterior >0.8 and H4/H3>5.",
+          "required_caution": "The source calls 1e-6 a default; retain that explicit value rather than replacing it with the selected current API default. Lead/locus selection and LD visualization are separate; the exact function is not named.",
+          "qualified_component_overlap": [],
+          "native_alternative_overlap": [],
+          "remaining_author_roles": [
+            "Exact author inputs, options, dataset/model preparation and complete workflow are not reproduced.",
+            "Historical editions and original multi-causal fit/LD/credible-set parity are not established.",
+            "The unreported entry point prevents assigning an exact author invocation to either available component.",
+            "The source calls 1e-6 a default; retain that explicit value rather than replacing it with the selected current API default. Lead/locus selection and LD visualization are separate; the exact function is not named."
+          ],
+          "direct_package_execution_established": true,
+          "comparative_benchmark": false,
+          "native_BF_literal_source_parity": false,
+          "complete_author_workflow_qualified": false,
+          "exact_author_settings_established": false,
+          "author_runtime_executed": false,
+          "whole_paper_reproduced": false
+        }
       },
       {
         "tool_id": "dexseq",
@@ -54824,12 +55516,41 @@
         "matched_text": "coloc",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
-        "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
+        "version_reported_near_name": "5.1.0",
+        "evidence_selection": "individually-reviewed-source-role",
         "evidence_paragraph_sha256": "ca28e0c7cbb2e8fc95713a790761ac3efeb9931ed2dfa3a7388b17e51d5036d0",
-        "use_summary": "Shared-signal colocalization analysis.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11568756/ (section: Subjects and methods / Colocalization)"
+        "use_summary": "Selected independent significant GWAS lead variants, then used all variants in surrounding 100-kb regions for coloc with eQTLs, declaring PP4>0.8.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11568756/ (section: Subjects and methods / Colocalization)",
+        "implementation_scope_note": "Keep all within-region variants and the separate lead-selection step. The stated 10e-6 prior is attributed to eQTL association without an unambiguous parameter allocation; do not silently relabel it p12 or normalize author wording.",
+        "source_role_qualification": {
+          "method_family": "unspecified",
+          "host": "direct",
+          "reported_editions": [
+            {
+              "paragraph_index": 26,
+              "literal": "5.1.0",
+              "source_context": "coloc R (v.5.1.0) package.31"
+            }
+          ],
+          "use_summary": "Selected independent significant GWAS lead variants, then used all variants in surrounding 100-kb regions for coloc with eQTLs, declaring PP4>0.8.",
+          "required_caution": "Keep all within-region variants and the separate lead-selection step. The stated 10e-6 prior is attributed to eQTL association without an unambiguous parameter allocation; do not silently relabel it p12 or normalize author wording.",
+          "qualified_component_overlap": [],
+          "native_alternative_overlap": [],
+          "remaining_author_roles": [
+            "Exact author inputs, options, dataset/model preparation and complete workflow are not reproduced.",
+            "Historical editions and original multi-causal fit/LD/credible-set parity are not established.",
+            "The unreported entry point prevents assigning an exact author invocation to either available component.",
+            "Keep all within-region variants and the separate lead-selection step. The stated 10e-6 prior is attributed to eQTL association without an unambiguous parameter allocation; do not silently relabel it p12 or normalize author wording."
+          ],
+          "direct_package_execution_established": true,
+          "comparative_benchmark": false,
+          "native_BF_literal_source_parity": false,
+          "complete_author_workflow_qualified": false,
+          "exact_author_settings_established": false,
+          "author_runtime_executed": false,
+          "whole_paper_reproduced": false
+        }
       },
       {
         "tool_id": "fastqc",
@@ -56457,12 +57178,41 @@
         "matched_text": "coloc",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": "5.1.0.1",
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-source-role",
         "evidence_paragraph_sha256": "cb79a2dc3e6cdbd85d4efbb57c288e48f2daee127bb1fb144433c4b2b638ff14",
-        "use_summary": "Shared-signal colocalization analysis.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12614742/ (section: Methods / Colocalization with GWAS signals)"
+        "use_summary": "After a separate PLINK LD screen, ran coloc on eQTL/GWAS signal pairs with lead r2>=0.5, using all shared variants within 500 kb of the GWAS lead. Used PPH4>=0.7 and prior-sensitivity comparisons.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12614742/ (section: Methods / Colocalization with GWAS signals)",
+        "implementation_scope_note": "Retain the literal edition 5.1.0.1 and separate LD preselection. Exact function and sensitivity grid are unreported; do not substitute a particular historical runtime or infer its prior choices.",
+        "source_role_qualification": {
+          "method_family": "unspecified",
+          "host": "direct",
+          "reported_editions": [
+            {
+              "paragraph_index": 18,
+              "literal": "5.1.0.1",
+              "source_context": "coloc (v.5.1.0.1)9"
+            }
+          ],
+          "use_summary": "After a separate PLINK LD screen, ran coloc on eQTL/GWAS signal pairs with lead r2>=0.5, using all shared variants within 500 kb of the GWAS lead. Used PPH4>=0.7 and prior-sensitivity comparisons.",
+          "required_caution": "Retain the literal edition 5.1.0.1 and separate LD preselection. Exact function and sensitivity grid are unreported; do not substitute a particular historical runtime or infer its prior choices.",
+          "qualified_component_overlap": [],
+          "native_alternative_overlap": [],
+          "remaining_author_roles": [
+            "Exact author inputs, options, dataset/model preparation and complete workflow are not reproduced.",
+            "Historical editions and original multi-causal fit/LD/credible-set parity are not established.",
+            "The unreported entry point prevents assigning an exact author invocation to either available component.",
+            "Retain the literal edition 5.1.0.1 and separate LD preselection. Exact function and sensitivity grid are unreported; do not substitute a particular historical runtime or infer its prior choices."
+          ],
+          "direct_package_execution_established": true,
+          "comparative_benchmark": false,
+          "native_BF_literal_source_parity": false,
+          "complete_author_workflow_qualified": false,
+          "exact_author_settings_established": false,
+          "author_runtime_executed": false,
+          "whole_paper_reproduced": false
+        }
       },
       {
         "tool_id": "edger",
@@ -57968,12 +58718,49 @@
         "matched_text": "coloc",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-source-role",
         "evidence_paragraph_sha256": "beec1e9ae5c2822d21af5659f4f13d8157d81bd4b3d35e644c2dc7446a8f8985",
-        "use_summary": "Shared-signal colocalization analysis.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11393713/ (section: Material and methods / Sharing of skin meQTLs and skin eQTLs)"
+        "use_summary": "Used SuSiE-coloc on paired skin meQTL/eQTL signals after allele/beta alignment. Calibrated shared priors using four scenarios and selected p12=0.0019; marginal association quantities are described as p1+p12=0.0026 and p2+p12=0.0122.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11393713/ (section: Material and methods / Sharing of skin meQTLs and skin eQTLs)",
+        "implementation_scope_note": "Preserve the source marginal-versus-exclusive prior definitions; do not silently infer the exact p1/p2 arguments from rounded quantities. LD/fitting, calibration selection and mediation are separate; reported comparison uses posterior >0.8.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 34,
+            "section": "Material and methods / Sharing of skin meQTLs and skin eQTLs",
+            "paragraph_sha256": "ded91f3c27aa05bb12c7e9365d710c76325bff609e25fa3cec9342ed4a1ffd01"
+          },
+          {
+            "paragraph_index": 77,
+            "section": "Discussion",
+            "paragraph_sha256": "866911622956b4058216350eff19f7f083b54aee55b88b003dc1b256f0dac4d8"
+          }
+        ],
+        "source_role_qualification": {
+          "method_family": "susie",
+          "host": "direct",
+          "reported_editions": [],
+          "use_summary": "Used SuSiE-coloc on paired skin meQTL/eQTL signals after allele/beta alignment. Calibrated shared priors using four scenarios and selected p12=0.0019; marginal association quantities are described as p1+p12=0.0026 and p2+p12=0.0122.",
+          "required_caution": "Preserve the source marginal-versus-exclusive prior definitions; do not silently infer the exact p1/p2 arguments from rounded quantities. LD/fitting, calibration selection and mediation are separate; reported comparison uses posterior >0.8.",
+          "qualified_component_overlap": [],
+          "native_alternative_overlap": [
+            "native-stable-supplied-credible-BF-method"
+          ],
+          "remaining_author_roles": [
+            "Exact author inputs, options, dataset/model preparation and complete workflow are not reproduced.",
+            "Historical editions and original multi-causal fit/LD/credible-set parity are not established.",
+            "The native BF method is an explicitly different stable statistical variant; source-mode null/per-SNP priors and literal source outputs remain separate gaps.",
+            "Preserve the source marginal-versus-exclusive prior definitions; do not silently infer the exact p1/p2 arguments from rounded quantities. LD/fitting, calibration selection and mediation are separate; reported comparison uses posterior >0.8."
+          ],
+          "direct_package_execution_established": true,
+          "comparative_benchmark": false,
+          "native_BF_literal_source_parity": false,
+          "complete_author_workflow_qualified": false,
+          "exact_author_settings_established": false,
+          "author_runtime_executed": false,
+          "whole_paper_reproduced": false
+        }
       },
       {
         "tool_id": "eagle",
@@ -61903,12 +62690,55 @@
         "matched_text": "coloc.SuSiE",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
-        "version_reported_near_name": "5",
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
+        "version_reported_near_name": "v.5",
+        "evidence_selection": "individually-reviewed-source-role",
         "evidence_paragraph_sha256": "ec3c9030624c826659de9c613c5e07fc1622bb36e190af10d6258c8b158b7b11",
-        "use_summary": "Shared-signal colocalization analysis.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13087463/ (section: Methods / Colocalization of pcQTL, eQTL, and GWAS hits)"
+        "use_summary": "Used coloc-SuSiE to compare pcQTL, eQTL and GWAS credible sets within tissues; linked hits and constructed connected-component credible-set groups using reported PPH4>=0.75.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13087463/ (section: Methods / Colocalization of pcQTL, eQTL, and GWAS hits)",
+        "implementation_scope_note": "The source also says greater than 0.75 in prose; retain the explicit >= expressions and note the wording difference. Edition v.5 is partial. PLINK LD estimation, graph grouping and cross-tissue variant-trait deduplication are separate.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 32,
+            "section": "Methods / Colocalization of pcQTL, eQTL, and GWAS hits",
+            "paragraph_sha256": "b5a8a8943b43a5a750a4e448ac03586acb03f5aa147839e2b7fa128dc6fcc507"
+          },
+          {
+            "paragraph_index": 33,
+            "section": "Methods / Creation of credible set groups",
+            "paragraph_sha256": "93468c6061ba7b0365ea71a9604501fcfd89c23c5df6a6e4634c6f6c76a01144"
+          }
+        ],
+        "source_role_qualification": {
+          "method_family": "susie",
+          "host": "direct",
+          "reported_editions": [
+            {
+              "paragraph_index": 31,
+              "literal": "v.5",
+              "source_context": "coloc.SuSiE (v.5)18,23"
+            }
+          ],
+          "use_summary": "Used coloc-SuSiE to compare pcQTL, eQTL and GWAS credible sets within tissues; linked hits and constructed connected-component credible-set groups using reported PPH4>=0.75.",
+          "required_caution": "The source also says greater than 0.75 in prose; retain the explicit >= expressions and note the wording difference. Edition v.5 is partial. PLINK LD estimation, graph grouping and cross-tissue variant-trait deduplication are separate.",
+          "qualified_component_overlap": [],
+          "native_alternative_overlap": [
+            "native-stable-supplied-credible-BF-method"
+          ],
+          "remaining_author_roles": [
+            "Exact author inputs, options, dataset/model preparation and complete workflow are not reproduced.",
+            "Historical editions and original multi-causal fit/LD/credible-set parity are not established.",
+            "The native BF method is an explicitly different stable statistical variant; source-mode null/per-SNP priors and literal source outputs remain separate gaps.",
+            "The source also says greater than 0.75 in prose; retain the explicit >= expressions and note the wording difference. Edition v.5 is partial. PLINK LD estimation, graph grouping and cross-tissue variant-trait deduplication are separate."
+          ],
+          "direct_package_execution_established": true,
+          "comparative_benchmark": false,
+          "native_BF_literal_source_parity": false,
+          "complete_author_workflow_qualified": false,
+          "exact_author_settings_established": false,
+          "author_runtime_executed": false,
+          "whole_paper_reproduced": false
+        }
       },
       {
         "tool_id": "peer",
@@ -63892,12 +64722,37 @@
         "matched_text": "Coloc",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-source-role",
         "evidence_paragraph_sha256": "28ae65f222857431134f3d2a83878d4bc3981b920d9548a23de1f4d5ecce782b",
-        "use_summary": "Shared-signal colocalization analysis.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12414667/ (section: Subjects, material, and methods / In vitro and computational analyses)"
+        "use_summary": "Fine-mapped the CASR region and tested colocalization with 55 phenotypes using Coloc-SuSiE.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12414667/ (section: Subjects, material, and methods / In vitro and computational analyses)",
+        "implementation_scope_note": "Exact functions, version, LD, priors and thresholds are deferred to supplementary methods not reviewed here. SKAT-O and logistic-direction analyses are separate; this is not a complete author workflow.",
+        "source_role_qualification": {
+          "method_family": "susie",
+          "host": "direct",
+          "reported_editions": [],
+          "use_summary": "Fine-mapped the CASR region and tested colocalization with 55 phenotypes using Coloc-SuSiE.",
+          "required_caution": "Exact functions, version, LD, priors and thresholds are deferred to supplementary methods not reviewed here. SKAT-O and logistic-direction analyses are separate; this is not a complete author workflow.",
+          "qualified_component_overlap": [],
+          "native_alternative_overlap": [
+            "native-stable-supplied-credible-BF-method"
+          ],
+          "remaining_author_roles": [
+            "Exact author inputs, options, dataset/model preparation and complete workflow are not reproduced.",
+            "Historical editions and original multi-causal fit/LD/credible-set parity are not established.",
+            "The native BF method is an explicitly different stable statistical variant; source-mode null/per-SNP priors and literal source outputs remain separate gaps.",
+            "Exact functions, version, LD, priors and thresholds are deferred to supplementary methods not reviewed here. SKAT-O and logistic-direction analyses are separate; this is not a complete author workflow."
+          ],
+          "direct_package_execution_established": true,
+          "comparative_benchmark": false,
+          "native_BF_literal_source_parity": false,
+          "complete_author_workflow_qualified": false,
+          "exact_author_settings_established": false,
+          "author_runtime_executed": false,
+          "whole_paper_reproduced": false
+        }
       },
       {
         "tool_id": "hail",
@@ -64316,12 +65171,41 @@
         "matched_text": "COLOC",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": "5.2.3",
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-source-role",
         "evidence_paragraph_sha256": "a5fb071254686413ceef033f5011069dcad13514c2ebb0eaf4e1f15a43c6b479",
-        "use_summary": "Shared-signal colocalization analysis.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13447089/ (section: Methods / RNA-seq, eQTL and TWAS analysis)"
+        "use_summary": "Used COLOC to compare SV-eQTL and GWAS signals in a plant RIL study, using H4>0.50 for shared causal variants.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13447089/ (section: Methods / RNA-seq, eQTL and TWAS analysis)",
+        "implementation_scope_note": "Retain nonhuman structural-variant context. Exact coloc function and inputs are not stated. EMMAX association/TWAS, PLINK clustering and hotspot permutations are separate steps.",
+        "source_role_qualification": {
+          "method_family": "unspecified",
+          "host": "direct",
+          "reported_editions": [
+            {
+              "paragraph_index": 57,
+              "literal": "5.2.3",
+              "source_context": "COLOC (v5.2.3)108"
+            }
+          ],
+          "use_summary": "Used COLOC to compare SV-eQTL and GWAS signals in a plant RIL study, using H4>0.50 for shared causal variants.",
+          "required_caution": "Retain nonhuman structural-variant context. Exact coloc function and inputs are not stated. EMMAX association/TWAS, PLINK clustering and hotspot permutations are separate steps.",
+          "qualified_component_overlap": [],
+          "native_alternative_overlap": [],
+          "remaining_author_roles": [
+            "Exact author inputs, options, dataset/model preparation and complete workflow are not reproduced.",
+            "Historical editions and original multi-causal fit/LD/credible-set parity are not established.",
+            "The unreported entry point prevents assigning an exact author invocation to either available component.",
+            "Retain nonhuman structural-variant context. Exact coloc function and inputs are not stated. EMMAX association/TWAS, PLINK clustering and hotspot permutations are separate steps."
+          ],
+          "direct_package_execution_established": true,
+          "comparative_benchmark": false,
+          "native_BF_literal_source_parity": false,
+          "complete_author_workflow_qualified": false,
+          "exact_author_settings_established": false,
+          "author_runtime_executed": false,
+          "whole_paper_reproduced": false
+        }
       },
       {
         "tool_id": "deseq2",

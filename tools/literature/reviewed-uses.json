@@ -20734,6 +20734,384 @@
       "evidence_paragraph_sha256": "daafcec63f7c94560029875022bfcccd1b7bf24726417f37becc2649932a2959",
       "use_summary": "LD-prunes the high-quality genotyped marker set used for REGENIE step 1, with reported r2 below 0.8, a 1-Mb window and 100-kb step.",
       "implementation_scope_note": "The stated physical step needs clarification before mapping to a variant-step pruning interface. REGENIE performs the association and approximate-Firth stages; the source does not assign those models to PLINK 2."
+    },
+    {
+      "pmcid": "PMC11631754",
+      "doi": "10.1038/s41588-024-02019-8",
+      "tool_id": "coloc",
+      "evidence_paragraph_sha256": "85fe274ba05794ccc25c37687ea38882b7980405dd821fd023c7bc4e90f4c3b0",
+      "use_summary": "Used coloc.abf with GWAS/sQTL beta estimates, at least ten variants and default priors; used sQTL MAFs to estimate quantitative-trait scale. Applied H4>0.75, including cis/trans and dynamic sQTL comparisons.",
+      "implementation_scope_note": "Keep each comparison and sample-size/scale declaration explicit. Regional H4 differs from a conditional SNP posterior; LocusCompare visualization and S-LDSC are separate.",
+      "version_reported_near_name": "5.2.3",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 20,
+          "section": "Results / trans-sQTLs are highly cell-type-specific",
+          "paragraph_sha256": "cc7745e2cb0e7a7b3c3b983de51f499107b4bdf7794392bd542e67f054eee2d4"
+        },
+        {
+          "paragraph_index": 23,
+          "section": "Results / Aberrant splicing mediates complex diseases",
+          "paragraph_sha256": "f6a155ffe311f27e2a94f42731b351dca8118f82f49ae79d463c97556def15c2"
+        },
+        {
+          "paragraph_index": 24,
+          "section": "Results / Aberrant splicing mediates complex diseases",
+          "paragraph_sha256": "caae6b062744530c8067df9bd30bf8826757a74d07cf48967c5c641aa81ef417"
+        },
+        {
+          "paragraph_index": 46,
+          "section": "Methods / Complex trait associations",
+          "paragraph_sha256": "f0325ae7d13421942df3ed20c7a5efed1e5783351ca612d748d905fc6064778f"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC12807872",
+      "doi": "10.1038/s41588-025-02417-6",
+      "tool_id": "coloc",
+      "evidence_paragraph_sha256": "bedb9b2d5ff21168b2f7c9ab9ca72f32691fccc03837e2601257ad010353b99e",
+      "use_summary": "Used COLOC for aortic-valve eQTL/AS TWAS candidates around gene boundaries and separately for GTEx extravalvular eQTL/GWAS regions around lead variants; both used PP4>0.75.",
+      "implementation_scope_note": "The valve stage names 3.2.1 and the GTEx stage 5.1.0; code availability repeats 3.2.1. Preserve the stage-specific editions, distinct window centers and unreported function/priors.",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 47,
+          "section": "Methods / eQTL colocalization",
+          "paragraph_sha256": "8e0c72fdfb118562456c3079b5d75c5136474394878e1e15d862cc267f61403c"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC11631763",
+      "doi": "10.1038/s41588-024-01975-5",
+      "tool_id": "coloc",
+      "evidence_paragraph_sha256": "8fe8a6edb99f20ef298a14f1c9fe8a883953592b3fd9b263703f79dac5192285",
+      "use_summary": "Applied coloc after significant MR results for heart/whole-blood eQTLs and UKB protein pQTLs with DCM/MTAG-DCM. Set p1=p2=1e-4 and p12=1e-6; PP4>0.5 was some evidence and >0.7 strong evidence.",
+      "implementation_scope_note": "MR instrument clumping and Bonferroni screens are preceding steps, not coloc SNP filters. Preserve the custom strict shared prior, two thresholds, source datasets and unreported function/input details.",
+      "version_reported_near_name": "4.0.4",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 59,
+          "section": "Code availability",
+          "paragraph_sha256": "d899670986e0a999c90da1503e94e761b1f366bd826bef02c289518666aa4cac"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC11631752",
+      "doi": "10.1038/s41588-024-01952-y",
+      "tool_id": "coloc",
+      "evidence_paragraph_sha256": "e4c4f8633ef07de71d07c229f60a8b12d0e30f294c2f0b0e636afb94ef4c8eb1",
+      "use_summary": "Used coloc allowing multiple causal variants to compare DCM GWAS and GTEx eQTLs for genes at DCM loci, choosing tissues with the lowest TWAS P value.",
+      "implementation_scope_note": "The multi-causal entry point, LD, priors and signal-fitting settings are not named here. Do not infer an exact coloc.susie recipe solely from allowing multiple variants.",
+      "version_reported_near_name": "5.2.3"
+    },
+    {
+      "pmcid": "PMC12695657",
+      "doi": "10.1038/s41588-025-02413-w",
+      "tool_id": "coloc",
+      "evidence_paragraph_sha256": "e65ad44f664cb9ec388d45874e60ef297297e811dea30c4209e3da90a0a52f7f",
+      "use_summary": "Compared Tarkin/QMDiab shared regional variants within +/-1 Mb for replication, requiring H4 to be the most likely hypothesis plus a joint association threshold and direction concordance. Also formed peptide-detection-weighted coloc-MSPA fractions for H3/H4 against UKB-PPP.",
+      "implementation_scope_note": "H4 argmax is not a fixed PP4 cutoff. Preserve the separate datasets and joint-P criterion. The weighted coloc-MSPA aggregation is custom post-processing, not coloc prior weighting.",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 35,
+          "section": "Methods / Replication",
+          "paragraph_sha256": "5fba65ca5eaf59a027d3887512ffd86d25c6aff8f8275fb60d0cc9e07c506607"
+        },
+        {
+          "paragraph_index": 41,
+          "section": "Methods / Definition of the MSPA score",
+          "paragraph_sha256": "7e3d88663910ece420234dc1908d3d2918d89458184c0f3e1a62b34cf743d033"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC11549052",
+      "doi": "10.1038/s41588-024-01957-7",
+      "tool_id": "coloc",
+      "evidence_paragraph_sha256": "dec1d70d2f6ef77c8e1a8906875733945d95ffba05a065aa718abf2a8707ff89",
+      "use_summary": "Compared overlapping SV-eQTL and agronomic SV-GWAS loci with COLOC defaults, using regional H4>0.5 and a shared-variant posterior threshold >0.5.",
+      "implementation_scope_note": "Keep regional and variant conditional probabilities distinct. Nonhuman structural-variant association inputs, exact function and phenotype-scale choices are not established by a human SNP workflow.",
+      "version_reported_near_name": "5.1.0"
+    },
+    {
+      "pmcid": "PMC13649572",
+      "doi": "10.1038/s41588-026-02733-5",
+      "tool_id": "coloc",
+      "evidence_paragraph_sha256": "b4a8915f86102efa4c2d695e51d8a3685b2769e3d6614560928d3cbfd3c54788",
+      "use_summary": "Used coloc on overlapping molecular-QTL/GWAS meta-analysis regions around gene bodies without a P-value filter; normalized trait variance was set to one, other settings default, and PP4>=0.8 denoted colocalization.",
+      "implementation_scope_note": "Do not introduce significance filtering or infer a version/function. The separate three-signal moloc analysis is outside two-trait coloc."
+    },
+    {
+      "pmcid": "PMC10703676",
+      "doi": "10.1038/s41588-023-01569-7",
+      "tool_id": "coloc",
+      "evidence_paragraph_sha256": "827af9300b83cef851ec419a3bb8008c100134a24ad99e9ba0677a23b87e7ee1",
+      "use_summary": "Applied single-causal-variant coloc at significant EAS loci and applied coloc to SuSiE signals at loci with multiple conditionally independent signals.",
+      "implementation_scope_note": "Keep the single-causal and SuSiE branches distinct. Exact entry points, priors, LD and conditional/SuSiE settings are not supplied in this paragraph.",
+      "version_reported_near_name": "5.1.0"
+    },
+    {
+      "pmcid": "PMC12695664",
+      "doi": "10.1038/s41588-025-02410-z",
+      "tool_id": "coloc",
+      "evidence_paragraph_sha256": "0876f6544d61b4752c7b0ec8d16ad276cd0c944edc68c1e52fa429f14cef05a7",
+      "use_summary": "Used FUSION TWAS and its internal COLOC method with selected GTEx tissue weights to link hypothyroidism risk to expression; reported regional PP4>0.75 for candidate gene mapping.",
+      "implementation_scope_note": "This is a FUSION-hosted method, not proof of a standalone coloc invocation. The eQTL/TWAS screen is not an automatic SNP-level coloc filter; version/function/priors remain unspecified."
+    },
+    {
+      "pmcid": "PMC11549054",
+      "doi": "10.1038/s41588-024-01939-9",
+      "tool_id": "coloc",
+      "evidence_paragraph_sha256": "abbe959581ff8522519e14198443ead6f080d394d98bb0380a90e15500e62849",
+      "use_summary": "Used coloc.abf for neuropathology loci and significant GTEx/ROSMAP QTLs, with ordinal case fractions chosen by dichotomization, shared prior 1e-5 and posterior >80%. Also compared selected concordant NPE signals and excluded APOE for that comparison.",
+      "implementation_scope_note": "Preserve region-selection versus within-region coverage, source screening and case definitions. The source uses PrC for prior and posterior wording; do not conflate the prior 1e-5 with the posterior threshold.",
+      "version_reported_near_name": "5.2.2",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 58,
+          "section": "Methods / Statistical analyses / Colocalization analyses",
+          "paragraph_sha256": "bddecbfe067c8a403ae63b22838e3bae4b509d6c6b826608a002ebd6dee75fa9"
+        },
+        {
+          "paragraph_index": 59,
+          "section": "Methods / Statistical analyses / Colocalization analyses",
+          "paragraph_sha256": "e4e6f016d5b6a4bf55355c515d97cbd1141fc16f2596c8a1c4478adcc02e77e7"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC13553304",
+      "doi": "10.1038/s41588-026-02735-3",
+      "tool_id": "coloc",
+      "evidence_paragraph_sha256": "d959b66ae172370659ff769e25092c0503deff34a2f1f52461e2a96b92f923e9",
+      "use_summary": "Used FUSION colocalization for second-order disease-MDD GWAS factors with the same GTEx tissue weights, then integrated PP4>0.80 hits with T-SEM and normalized tissue gene proportions.",
+      "implementation_scope_note": "FUSION hosts this analysis; standalone coloc version/function is unreported. T-SEM/QGENE filtering, ACAT and normalized gene proportions are separate operations.",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 45,
+          "section": "Methods / Biological annotations / Gene expression of second-order factors",
+          "paragraph_sha256": "61cb6e7809722c4eaee20f2d04507fb088d4d320e0709875db3a6e6709946177"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC10703693",
+      "doi": "10.1038/s41588-023-01555-z",
+      "tool_id": "coloc",
+      "evidence_paragraph_sha256": "924c7a4eaa8ab38a92d34704c81d76ec14ebe6f3fff6b36262cb7432987f2cd7",
+      "use_summary": "Used COLOC in R to compare CH GWAS with expression QTLs; the TCL1A example compared the remaining eQTL signal after conditioning on rs78986913.",
+      "implementation_scope_note": "The conditional association fit is separate from coloc. Exact regional inputs, software edition, function, priors and a general decision threshold are not specified here.",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 60,
+          "section": "Methods / CH GWAS / RNA eQTL and sQTL analysis",
+          "paragraph_sha256": "b9be2f9156169d53c7c023c38a4f97c8aa128c055a7b2b48e1f9de71d1762240"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC11525184",
+      "doi": "10.1038/s41588-024-01896-3",
+      "tool_id": "coloc",
+      "evidence_paragraph_sha256": "48bfa3f8254fa6db7729c7e0fbdb3bcb42e9943c8b0e99516e54db9b2933bba6",
+      "use_summary": "Benchmarked single-causal coloc from P-value Bayes factors and SuSiE-coloc over pairs of pure mRNA/protein credible sets; the maximum pairwise H4 represented the gene.",
+      "implementation_scope_note": "These are comparison methods, not the main CLPP analysis. The authors retained their strict purity filter and used minimum SuSiE/FINEMAP PIPs separately; do not replace that procedure with generic coloc defaults.",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 58,
+          "section": "Methods / Defining shared and specific QTLs",
+          "paragraph_sha256": "3fafabfe11afd6c576f1039c11ecd1b1e3c32abfb04100dc3d374617b1bf68c5"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC12597823",
+      "doi": "10.1038/s41588-025-02344-6",
+      "tool_id": "coloc",
+      "evidence_paragraph_sha256": "f5536468b777df644c288d52b7cbc781d011a160201cfa46cc40efd599215161",
+      "use_summary": "Used coloc.abf defaults for perturbation-dependent reQTL/GWAS comparisons, H4>0.5, conditional variant probabilities and 95% credible sets; reran QTL/coloc analyses within perturbation-score tertiles.",
+      "implementation_scope_note": "FastQTL eGene selection, pseudobulk/tertile construction, credible-set summarization and Fisher enrichment are separate. Results and Methods differ on the nonimmune-trait count; no count is silently repaired.",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 58,
+          "section": "Methods / Colocalization analysis",
+          "paragraph_sha256": "ab87be7923cb2527913a20e0a6685969ff1c4a0c92193272659ff0b7bf3cd593"
+        },
+        {
+          "paragraph_index": 59,
+          "section": "Methods / Colocalization analysis",
+          "paragraph_sha256": "6bf01e2a4ba3cf6921aa1b417d29da8ca0001ba0f88763f0f55f2f7a164b7f31"
+        },
+        {
+          "paragraph_index": 60,
+          "section": "Methods / Colocalization analysis",
+          "paragraph_sha256": "171dac2da35c3534bb903e48d5f37db936f2b6d997a079947098c5a07db04400"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC13361010",
+      "doi": "10.1016/j.ajhg.2026.06.005",
+      "tool_id": "coloc",
+      "evidence_paragraph_sha256": "b9e4f65a69f8f4f2907b8d0ab568fac6cc320828de5286e54049208f99785772",
+      "use_summary": "Applied tests from the coloc R package to significant FUSION multimodal-TWAS hits across traits, using COLOC.PP4>0.8.",
+      "implementation_scope_note": "TWAS construction/screens are preceding operations. The coloc function, version, regional variant coverage, priors and scale inputs are not specified here."
+    },
+    {
+      "pmcid": "PMC12824624",
+      "doi": "10.1016/j.ajhg.2025.11.012",
+      "tool_id": "coloc",
+      "evidence_paragraph_sha256": "bb84693ac3d2cd11e223fb4f33609c40b6cb3132aa86f63c15cf3f63f6974431",
+      "use_summary": "Used coloc.abf with p1=p2=1e-4 and p12=1e-5 to integrate eQTL/GWAS data and compare lncRNA/circRNA with neighboring PCG eQTL/sQTL signals in shared regions.",
+      "implementation_scope_note": "Methods use PP4>0.8 for GWAS integration; results also describe PP3/PP4>=0.8 for RNA pairs. Preserve these distinct decisions. SMR/HEIDI, OPERA, FUSION and eCAVIAR are separate.",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 26,
+          "section": "Results / Relationship between lncRNA- or circRNA-eQTLs and PCG-eQTLs/sQTLs",
+          "paragraph_sha256": "fc122afdbefc01324cc8c286e6c1942d205f32b89d9fd6da194ff15a96fe7737"
+        },
+        {
+          "paragraph_index": 27,
+          "section": "Results / Relationship between lncRNA- or circRNA-eQTLs and PCG-eQTLs/sQTLs",
+          "paragraph_sha256": "e7a304457a1bee9102903c76687b2e470a7b919d7fb95c943e3bb8e1a3acdf2c"
+        },
+        {
+          "paragraph_index": 31,
+          "section": "Results / Identifying lncRNAs and circRNAs associated with brain-related traits",
+          "paragraph_sha256": "445e6509c7212b7de0d99e5b0aec5f2f00f2d8573f81ee0b73b40f911423182c"
+        },
+        {
+          "paragraph_index": 32,
+          "section": "Results / Identifying lncRNAs and circRNAs associated with brain-related traits",
+          "paragraph_sha256": "11b88a4587bf891b6584b372ef2992cd5de650af066eb08ef569c91e9368ede7"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC11639090",
+      "doi": "10.1016/j.ajhg.2024.10.017",
+      "tool_id": "coloc",
+      "evidence_paragraph_sha256": "5423c205cd2fd634966047682c433a97b79e3152aef50db7d056cb5bde2b882b",
+      "use_summary": "Used coloc.abf separately for OA GWAS phenotypes and cartilage mQTLs within +/-500 kb, retaining all mQTL test results before colocalization and using shared variants. Applied H4>0.8, then retained genotype-present significant mQTL results.",
+      "implementation_scope_note": "The later mQTL FDR filter is post-processing, not the input P-value cutoff. Preserve GWAS-phenotype/probe pairing and distinguish regional H4 from SNP-level evidence.",
+      "version_reported_near_name": "5.1.0",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 16,
+          "section": "Methods / Colocalization analysis",
+          "paragraph_sha256": "14f91ff647a36f97f47729e4b9ec30742661baf79277097561f0f2cebe345e5a"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC11639085",
+      "doi": "10.1016/j.ajhg.2024.10.008",
+      "tool_id": "coloc",
+      "evidence_paragraph_sha256": "b304c8dcefd70ec6aeb641802c41b3a6ce4f12830660935698ab8cca7e34782a",
+      "use_summary": "Used coloc.abf for protein pQTL/PCOS GWAS regions within +/-500 kb, with p1=p2=1e-4 and p12=1e-5 and H4>0.8. With multiple pQTLs, reported the strongest colocalization per protein.",
+      "implementation_scope_note": "Retain per-pQTL tests before the strongest-hit summary. Function priors are explicit but version, scale and complete input construction are not."
+    },
+    {
+      "pmcid": "PMC12808957",
+      "doi": "10.1016/j.ajhg.2025.10.002",
+      "tool_id": "coloc",
+      "evidence_paragraph_sha256": "6c6fe7ee87b88ff67c49037f9c48ae00f3ad97a74375b81252fe16d0bc69a7c2",
+      "use_summary": "Used coloc with GWAS Catalog associations, locally generated linear-model irQTL summary statistics and GTEx v8 eQTLs, checking robustness using an independent eQTL dataset.",
+      "implementation_scope_note": "Version, entry point, priors, region, threshold and scale inputs are not stated in this paragraph. The subsequent scipy transcription model is unrelated to coloc inference."
+    },
+    {
+      "pmcid": "PMC11568790",
+      "doi": "10.1016/j.ajhg.2024.09.004",
+      "tool_id": "coloc",
+      "evidence_paragraph_sha256": "b7230fd78daf6a77fdcad9db35098fc519dfad4edfb3337cd1ad66c43fa93942",
+      "use_summary": "Compared significant sQTL loci with hematological GWAS traits using p1=p2=1e-4 and declared p12=1e-6, with common-causal posterior >0.8 and H4/H3>5.",
+      "implementation_scope_note": "The source calls 1e-6 a default; retain that explicit value rather than replacing it with the selected current API default. Lead/locus selection and LD visualization are separate; the exact function is not named.",
+      "version_reported_near_name": "5.2.3",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 30,
+          "section": "Results / Indonesian whole-blood cis-sQTLs colocalize with hematological GWAS traits",
+          "paragraph_sha256": "f3814c3b4046be3adc14d6a480284477832575e008780f4804e386d1143be975"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC11568756",
+      "doi": "10.1016/j.ajhg.2024.09.001",
+      "tool_id": "coloc",
+      "evidence_paragraph_sha256": "ca28e0c7cbb2e8fc95713a790761ac3efeb9931ed2dfa3a7388b17e51d5036d0",
+      "use_summary": "Selected independent significant GWAS lead variants, then used all variants in surrounding 100-kb regions for coloc with eQTLs, declaring PP4>0.8.",
+      "implementation_scope_note": "Keep all within-region variants and the separate lead-selection step. The stated 10e-6 prior is attributed to eQTL association without an unambiguous parameter allocation; do not silently relabel it p12 or normalize author wording.",
+      "version_reported_near_name": "5.1.0"
+    },
+    {
+      "pmcid": "PMC12614742",
+      "doi": "10.1016/j.ajhg.2025.09.003",
+      "tool_id": "coloc",
+      "evidence_paragraph_sha256": "cb79a2dc3e6cdbd85d4efbb57c288e48f2daee127bb1fb144433c4b2b638ff14",
+      "use_summary": "After a separate PLINK LD screen, ran coloc on eQTL/GWAS signal pairs with lead r2>=0.5, using all shared variants within 500 kb of the GWAS lead. Used PPH4>=0.7 and prior-sensitivity comparisons.",
+      "implementation_scope_note": "Retain the literal edition 5.1.0.1 and separate LD preselection. Exact function and sensitivity grid are unreported; do not substitute a particular historical runtime or infer its prior choices.",
+      "version_reported_near_name": "5.1.0.1"
+    },
+    {
+      "pmcid": "PMC11393713",
+      "doi": "10.1016/j.ajhg.2024.07.010",
+      "tool_id": "coloc",
+      "evidence_paragraph_sha256": "beec1e9ae5c2822d21af5659f4f13d8157d81bd4b3d35e644c2dc7446a8f8985",
+      "use_summary": "Used SuSiE-coloc on paired skin meQTL/eQTL signals after allele/beta alignment. Calibrated shared priors using four scenarios and selected p12=0.0019; marginal association quantities are described as p1+p12=0.0026 and p2+p12=0.0122.",
+      "implementation_scope_note": "Preserve the source marginal-versus-exclusive prior definitions; do not silently infer the exact p1/p2 arguments from rounded quantities. LD/fitting, calibration selection and mediation are separate; reported comparison uses posterior >0.8.",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 34,
+          "section": "Material and methods / Sharing of skin meQTLs and skin eQTLs",
+          "paragraph_sha256": "ded91f3c27aa05bb12c7e9365d710c76325bff609e25fa3cec9342ed4a1ffd01"
+        },
+        {
+          "paragraph_index": 77,
+          "section": "Discussion",
+          "paragraph_sha256": "866911622956b4058216350eff19f7f083b54aee55b88b003dc1b256f0dac4d8"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC13087463",
+      "doi": "10.1016/j.ajhg.2026.02.022",
+      "tool_id": "coloc",
+      "evidence_paragraph_sha256": "ec3c9030624c826659de9c613c5e07fc1622bb36e190af10d6258c8b158b7b11",
+      "use_summary": "Used coloc-SuSiE to compare pcQTL, eQTL and GWAS credible sets within tissues; linked hits and constructed connected-component credible-set groups using reported PPH4>=0.75.",
+      "implementation_scope_note": "The source also says greater than 0.75 in prose; retain the explicit >= expressions and note the wording difference. Edition v.5 is partial. PLINK LD estimation, graph grouping and cross-tissue variant-trait deduplication are separate.",
+      "version_reported_near_name": "v.5",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 32,
+          "section": "Methods / Colocalization of pcQTL, eQTL, and GWAS hits",
+          "paragraph_sha256": "b5a8a8943b43a5a750a4e448ac03586acb03f5aa147839e2b7fa128dc6fcc507"
+        },
+        {
+          "paragraph_index": 33,
+          "section": "Methods / Creation of credible set groups",
+          "paragraph_sha256": "93468c6061ba7b0365ea71a9604501fcfd89c23c5df6a6e4634c6f6c76a01144"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC12414667",
+      "doi": "10.1016/j.ajhg.2025.06.013",
+      "tool_id": "coloc",
+      "evidence_paragraph_sha256": "28ae65f222857431134f3d2a83878d4bc3981b920d9548a23de1f4d5ecce782b",
+      "use_summary": "Fine-mapped the CASR region and tested colocalization with 55 phenotypes using Coloc-SuSiE.",
+      "implementation_scope_note": "Exact functions, version, LD, priors and thresholds are deferred to supplementary methods not reviewed here. SKAT-O and logistic-direction analyses are separate; this is not a complete author workflow."
+    },
+    {
+      "pmcid": "PMC13447089",
+      "doi": "10.1038/s41588-026-02682-z",
+      "tool_id": "coloc",
+      "evidence_paragraph_sha256": "a5fb071254686413ceef033f5011069dcad13514c2ebb0eaf4e1f15a43c6b479",
+      "use_summary": "Used COLOC to compare SV-eQTL and GWAS signals in a plant RIL study, using H4>0.50 for shared causal variants.",
+      "implementation_scope_note": "Retain nonhuman structural-variant context. Exact coloc function and inputs are not stated. EMMAX association/TWAS, PLINK clustering and hotspot permutations are separate steps.",
+      "version_reported_near_name": "5.2.3"
     }
   ]
 }
