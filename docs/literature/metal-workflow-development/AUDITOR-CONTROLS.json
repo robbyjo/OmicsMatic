@@ -1,0 +1,64 @@
+{
+  "status": "PASS_EIGHT_SOURCE_EVIDENCE_AND_AUDITOR_GATES",
+  "controls": [
+    {
+      "name": "intact",
+      "exit_code": 0,
+      "expected": 0
+    },
+    {
+      "name": "changed-source",
+      "exit_code": 2,
+      "expected": 2
+    },
+    {
+      "name": "changed-evidence",
+      "exit_code": 2,
+      "expected": 2
+    },
+    {
+      "name": "changed-scripts",
+      "exit_code": 2,
+      "expected": 2
+    },
+    {
+      "name": "missing-evidence",
+      "exit_code": 3,
+      "expected": 3
+    },
+    {
+      "name": "changed-auditor",
+      "exit_code": 2,
+      "expected": 2
+    },
+    {
+      "name": "reused-output",
+      "exit_code": 2,
+      "expected": 2
+    },
+    {
+      "name": "restored",
+      "exit_code": 0,
+      "expected": 0
+    }
+  ],
+  "authoritative_scientific_inputs_or_results_changed": false,
+  "consoles": {
+    "changed-auditor.stderr": "FAIL2_NO_QUALIFICATION_ADMITTED: Qualification audit source changed; qualify changed audit code separately\nSKIP3: dependent audit/analysis skipped; supply the named permitted source, evidence, Python 3.9+ or Java17+ prerequisite, or leave that analysis skipped. FAIL2: no complete result or qualification admitted. Preserve partials, original inputs and all diagnostics, correct the stated cause, and retry NEW output. Never refresh old method hashes, drop failed cohorts or repair NaN/Inf/P=0. Public bundle views omit restricted runtimes and are not standalone admitted execution bundles. Original-runtime replay is a separate explicit Java command.\n",
+    "changed-auditor.stdout": "",
+    "changed-evidence.stderr": "FAIL2_NO_QUALIFICATION_ADMITTED: Qualification archive bytes differ\nSKIP3: dependent audit/analysis skipped; supply the named permitted source, evidence, Python 3.9+ or Java17+ prerequisite, or leave that analysis skipped. FAIL2: no complete result or qualification admitted. Preserve partials, original inputs and all diagnostics, correct the stated cause, and retry NEW output. Never refresh old method hashes, drop failed cohorts or repair NaN/Inf/P=0. Public bundle views omit restricted runtimes and are not standalone admitted execution bundles. Original-runtime replay is a separate explicit Java command.\n",
+    "changed-evidence.stdout": "",
+    "changed-scripts.stderr": "FAIL2_NO_QUALIFICATION_ADMITTED: Reproduction script archive changed\nSKIP3: dependent audit/analysis skipped; supply the named permitted source, evidence, Python 3.9+ or Java17+ prerequisite, or leave that analysis skipped. FAIL2: no complete result or qualification admitted. Preserve partials, original inputs and all diagnostics, correct the stated cause, and retry NEW output. Never refresh old method hashes, drop failed cohorts or repair NaN/Inf/P=0. Public bundle views omit restricted runtimes and are not standalone admitted execution bundles. Original-runtime replay is a separate explicit Java command.\n",
+    "changed-scripts.stdout": "",
+    "changed-source.stderr": "FAIL2_NO_QUALIFICATION_ADMITTED: Qualified method/setup/review/example source changed: src/main/java/org/jlinalg/cli/MetalWorkflowAudit.java\nSKIP3: dependent audit/analysis skipped; supply the named permitted source, evidence, Python 3.9+ or Java17+ prerequisite, or leave that analysis skipped. FAIL2: no complete result or qualification admitted. Preserve partials, original inputs and all diagnostics, correct the stated cause, and retry NEW output. Never refresh old method hashes, drop failed cohorts or repair NaN/Inf/P=0. Public bundle views omit restricted runtimes and are not standalone admitted execution bundles. Original-runtime replay is a separate explicit Java command.\n",
+    "changed-source.stdout": "",
+    "intact.stderr": "",
+    "intact.stdout": "{\"indexed_public_payloads\": 2398, \"admitted_bundle_views\": 28, \"admitted_original_stages\": 37, \"individual_primary_reviews\": 24, \"canonical_catalog_modified\": false, \"private_payloads_rehashed\": 0, \"private_bundles_reverified_now\": 0, \"status\": \"PASS_ORIGINAL_METAL_TYPED_WORKFLOW_QUALIFICATION\", \"original_runtime_reexecuted\": false, \"whole_goal_complete\": false, \"new_family_credit\": 0, \"public_views_are_standalone_bundles\": false}\n",
+    "missing-evidence.stderr": "SKIP3_DEPENDENT_AUDIT_SKIPPED: [Errno 2] No such file or directory: 'D:\\\\projects\\\\JLinAlg\\\\build\\\\high-impact-stats-1\\\\build\\\\metal-1\\\\adapter-auditor-controls-2\\\\snapshot\\\\docs\\\\literature\\\\metal-workflow-development\\\\qualification-evidence.zip'\nSKIP3: dependent audit/analysis skipped; supply the named permitted source, evidence, Python 3.9+ or Java17+ prerequisite, or leave that analysis skipped. FAIL2: no complete result or qualification admitted. Preserve partials, original inputs and all diagnostics, correct the stated cause, and retry NEW output. Never refresh old method hashes, drop failed cohorts or repair NaN/Inf/P=0. Public bundle views omit restricted runtimes and are not standalone admitted execution bundles. Original-runtime replay is a separate explicit Java command.\n",
+    "missing-evidence.stdout": "",
+    "restored.stderr": "",
+    "restored.stdout": "{\"indexed_public_payloads\": 2398, \"admitted_bundle_views\": 28, \"admitted_original_stages\": 37, \"individual_primary_reviews\": 24, \"canonical_catalog_modified\": false, \"private_payloads_rehashed\": 0, \"private_bundles_reverified_now\": 0, \"status\": \"PASS_ORIGINAL_METAL_TYPED_WORKFLOW_QUALIFICATION\", \"original_runtime_reexecuted\": false, \"whole_goal_complete\": false, \"new_family_credit\": 0, \"public_views_are_standalone_bundles\": false}\n",
+    "reused-output.stderr": "FAIL2_NO_QUALIFICATION_ADMITTED: [WinError 183] Cannot create a file when that file already exists: 'D:\\\\projects\\\\JLinAlg\\\\build\\\\high-impact-stats-1\\\\build\\\\metal-1\\\\adapter-auditor-controls-2\\\\snapshot\\\\build\\\\intact'\nSKIP3: dependent audit/analysis skipped; supply the named permitted source, evidence, Python 3.9+ or Java17+ prerequisite, or leave that analysis skipped. FAIL2: no complete result or qualification admitted. Preserve partials, original inputs and all diagnostics, correct the stated cause, and retry NEW output. Never refresh old method hashes, drop failed cohorts or repair NaN/Inf/P=0. Public bundle views omit restricted runtimes and are not standalone admitted execution bundles. Original-runtime replay is a separate explicit Java command.\n",
+    "reused-output.stdout": ""
+  }
+}
