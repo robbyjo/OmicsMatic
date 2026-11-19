@@ -1,0 +1,155 @@
+{
+  "schema_version": 1,
+  "mode": "RUN",
+  "profile": "Scanpy-1.13.0-CPU-v1",
+  "input": {
+    "format": "matrix_market",
+    "matrix": "matrix.mtx",
+    "cells": "cells",
+    "features": "features",
+    "dtype": "float64",
+    "orientation": "features_by_cells",
+    "obs_columns": {
+      "group": {
+        "levels": [
+          "group-0",
+          "group-1",
+          "group-2"
+        ],
+        "ordered": false
+      }
+    },
+    "var_columns": {}
+  },
+  "steps": [
+    {
+      "operation": "copy_layer",
+      "params": {
+        "name": "counts"
+      }
+    },
+    {
+      "operation": "pp.calculate_qc_metrics",
+      "params": {
+        "percent_top": [
+          5,
+          10
+        ],
+        "log1p": true,
+        "qc_vars": []
+      }
+    },
+    {
+      "operation": "pp.normalize_total",
+      "params": {
+        "target_sum": 10000,
+        "key_added": "normalization_factor"
+      }
+    },
+    {
+      "operation": "pp.log1p",
+      "params": {}
+    },
+    {
+      "operation": "snapshot_raw",
+      "params": {}
+    },
+    {
+      "operation": "pp.highly_variable_genes",
+      "params": {
+        "flavor": "seurat",
+        "n_top_genes": 40,
+        "n_bins": 10,
+        "subset": false
+      },
+      "input_kind": "log1p"
+    },
+    {
+      "operation": "pp.scale",
+      "params": {
+        "zero_center": true,
+        "max_value": 10
+      }
+    },
+    {
+      "operation": "pp.pca",
+      "params": {
+        "n_comps": 10,
+        "svd_solver": "arpack",
+        "rng": 7,
+        "dtype": "float64",
+        "mask_var": "highly_variable"
+      }
+    },
+    {
+      "operation": "pp.neighbors",
+      "params": {
+        "n_neighbors": 10,
+        "n_pcs": 10,
+        "use_rep": "X_pca",
+        "transformer": "sklearn",
+        "metric": "euclidean",
+        "rng": 7
+      }
+    },
+    {
+      "operation": "tl.leiden",
+      "params": {
+        "resolution": 0.6,
+        "flavor": "leidenalg",
+        "directed": true,
+        "rng": 7,
+        "n_iterations": 5
+      }
+    },
+    {
+      "operation": "tl.umap",
+      "params": {
+        "min_dist": 0.3,
+        "maxiter": 30,
+        "rng": 7,
+        "init_pos": "random",
+        "compatibility_layout": true
+      }
+    },
+    {
+      "operation": "tl.score_genes",
+      "params": {
+        "gene_list": [
+          "gene-000",
+          "gene-001",
+          "gene-002",
+          "gene-003",
+          "gene-004"
+        ],
+        "use_raw": true,
+        "ctrl_as_ref": false,
+        "ctrl_size": 4,
+        "n_bins": 4,
+        "rng": 7
+      }
+    },
+    {
+      "operation": "tl.rank_genes_groups",
+      "params": {
+        "groupby": "group",
+        "use_raw": true,
+        "method": "wilcoxon",
+        "tie_correct": true,
+        "corr_method": "benjamini-hochberg",
+        "n_genes": null,
+        "mean_in_log_space": true,
+        "pts": true
+      },
+      "input_kind": "log1p"
+    }
+  ],
+  "limits": {
+    "maximum_cells": 100000,
+    "maximum_features": 100000,
+    "maximum_entries": 20000000,
+    "maximum_dense_entries": 20000000,
+    "maximum_work": 2000000000,
+    "maximum_working_bytes": 1073741824
+  }
+}
