@@ -341,6 +341,9 @@ public final class JLinAlgCli {
         if (arguments.length > 0 && arguments[0].equals("mr-multivariate"))
             return MultivariateMrCli.run(Arrays.copyOfRange(
                 arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("coloc-abf"))
+            return ColocAbfWorkflowCli.run(Arrays.copyOfRange(
+                arguments, 1, arguments.length), output, errorOutput);
         if (arguments.length > 0 && (arguments[0].equals("susie")
                 || arguments[0].equals("coloc")))
             return FineMappingCli.run(arguments[0], Arrays.copyOfRange(
@@ -606,6 +609,8 @@ public final class JLinAlgCli {
               java -jar omicsmatic-<version>.jar mr-multivariate --input FILE
                 --exposures NAME[,NAME...] --outcomes NAME1,NAME2
                 --outcome-correlation MATRIX [--method ivw-fixed|ivw-random|presso]
+              java -jar omicsmatic-<version>.jar coloc-abf --request FILE
+              java -jar omicsmatic-<version>.jar coloc-abf --verify DIRECTORY
               java -jar omicsmatic-<version>.jar susie --summary FILE --ld FILE
                 --sample-size N --out FILE
               java -jar omicsmatic-<version>.jar coloc --trait1 FILE

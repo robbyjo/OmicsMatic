@@ -1,6 +1,15 @@
 # Current toolbox handover
 
-**Current handoff: [COLOC ABF implementation and ordered remaining work](HANDOVER_2026-11-19_COLOC_ABF.md).**
+**Current: [native COLOC ABF file workflow checkpoint](COLOC_ABF_WORKFLOW_CHECKPOINT_2026-11-19.md).**
+RUN/VERIFY/REPLAY now accept explicitly mapped ordinary summary-statistics TSVs.
+All 62 reference/workflow tests passed on Windows Java 21/25 and Linux Java 21,
+with packaged commands, cross-host bundle replay and four existing SuSiE/coloc
+regression tests. Warnings, no-result failures, provenance and exact source
+behavior are explicit. Next finish remaining SuSiE/source-role coverage and
+cumulative COLOC catalog admission. Totals remain 134 scoped integrations and
+1,413 reviewed uses; no additional family credit or release is claimed.
+
+**Earlier component handoff: [COLOC ABF implementation and ordered remaining work](HANDOVER_2026-11-19_COLOC_ABF.md).**
 The new native library component passed 40 reference/boundary tests on Windows
 Java 21/25 and Linux Java 21. Its 27-role source audit passed all 250 frozen
 paper identities. Source, tests, synthetic reference fixture, compact evidence,
