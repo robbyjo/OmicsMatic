@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "mode": "RUN",
+  "out": "../../build/enrichr-example-custom",
+  "service_profile": "enrichr-current-human-mouse-workflow-v1",
+  "operation": "enrichment",
+  "allow_upload": true,
+  "libraries": ["MSigDB_Hallmark_2020"],
+  "query": {"file": "query.txt", "format": "lines"},
+  "background": {"kind": "explicit", "file": "background.txt", "format": "lines"},
+  "allow_unobserved_custom_normalization": true,
+  "description": "OmicsMatic synthetic demonstration; artificial background"
+}

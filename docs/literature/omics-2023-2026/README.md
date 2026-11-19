@@ -1,5 +1,21 @@
 # 250-paper omics and GWAS toolbox catalog
 
+## Enrichr: current-service workflow and 25 source roles
+
+250 papers, 446 named families, 2,703 observations, 1,462 individually reviewed positive uses and 1,241 awaiting individual review. There are 136 new scoped integrations (25 native Java and 111 upstream), 259 missing and 39 method-overlap definitions; 139 integrations include three existing adapters. Twenty-three Enrichr reviews and three source-supported observations are appended; all 1,439 earlier reviews, including P061/P163, are retained. The full implementation and semantic-review goal remains open.
+
+Java file workflow for the current human/mouse Enrichr upstream service: prepared literal gene lists, server-default or explicit custom backgrounds, exact library download, raw/partial capture, all returned terms and numeric tokens, semantic warnings and offline VERIFY/REPLAY. Statistical computation is upstream.
+
+Twenty-five reviewed source roles include 23 enrichment-analysis roles, one library-resource use and one unresolved function/package attribution. Historical clients/library snapshots, Julia local recalculation, FGSEA/intersections, original inputs/options and complete author workflows remain explicit gaps. The service does not reveal its final scoring population; custom normalization is unobserved. Use a current source build: the published 0.4.0 binary predates this command.
+
+SKIP3: skip dependent analysis/audit when the exact permitted source, runtime, service or validation dependency is unavailable; name what to restore and leave the skip visible. FAIL2: no complete result; retain raw inputs, partials and errors, correct the cause and retry NEW outputs. Do not repair IDs, source inequalities, P values, nonfinite values, libraries or algorithms silently. Inspect WARNINGS.md and analysis-status.json. Positive source infinite scores and P=0 are explicit warnings, not capped values. Earlier fixture failures and two historical marker-verifier SKIP3 gaps remain retained. Both literature reports stay withheld from Pages; no release is created.
+
+Read [the source crosswalk and exact scope](../ENRICHR_CATALOG_INTEGRATION.md).
+
+<details><summary>Catalog before Enrichr admission (historical)</summary>
+
+# 250-paper omics and GWAS toolbox catalog
+
 ## COLOC: scoped native workflows and 27 source roles
 
 250 papers, 446 named families, 2,700 observations, 1,439 individually reviewed positive uses and 1,261 awaiting individual review. There are 135 new scoped integrations (25 native Java and 110 upstream), 259 missing and 40 method-overlap families; 138 integrations include three existing adapters. Twenty-six COLOC reviews are appended and all 1,413 earlier reviews, including P190, are retained. The full implementation and semantic-review goal remains open.
@@ -2013,6 +2029,8 @@ Three source-reviewed tool additions retain separate provenance: MALT and HOPS h
 These additions improve the catalog and add no whole-tool or biological credit. The source-tested MALT 0.4.1 development controller does not fulfill the separate 0.5.2 role. Complete HOPS and MaltExtract operations remain unfinished; their unreported versions, settings and resource choices remain unknown. See `MALT_ALIGNMENT.md` and `MALT_HOPS_PAPER_ROLES.md`.
 
 **Required action:** match the declared source version and operation, qualify a permitted runtime, provide the complete dated reference/mapping and query populations, and retain original warnings and failures. If any prerequisite is unavailable or cannot be installed, skip its dependent analysis. A small software-control index does not reproduce the historical 91-spirochete or 7,508-genome bacterial analyses. Insufficient-read candidates remain unassessable.
+
+</details>
 
 </details>
 

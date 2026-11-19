@@ -1,5 +1,14 @@
 # Current toolbox handover
 
+**Current: [Enrichr cumulative catalog checkpoint](ENRICHR_CATALOG_CHECKPOINT_2026-11-19.md).**
+The normal Gradle workflow passed live/current-service, three-JVM, cross-host
+and runnable-example qualification. The 25-role crosswalk adds three observations
+and 23 reviews while preserving all earlier reviews. Totals are **136 scoped
+integrations (25 native Java +111 upstream), 2,703 observations, 1,462 reviewed
+uses and 1,241 pending**. The checkpoint lists exact scope gaps, verifier
+transitions, dependency recovery and transfer paths. Continue high-impact gaps
+and individual review; the overall goal remains open. No release is created.
+
 **Start with the [Enrichr workflow development handover](HANDOVER_2026-11-19_ENRICHR_WORKFLOW.md).**
 RUN/VERIFY/REPLAY are implemented. The strict normal Gradle JAR passed 42 tests
 on each of three JVMs; a separate composed reference artifact passed live
