@@ -1,5 +1,19 @@
 # Current literature warnings and required actions
 
+## METAL: qualified workflows and individually reviewed roles
+
+250 papers, 446 named families, 2,695 paper-tool observations, 1,290 individually reviewed positive uses and 1,405 awaiting individual review. There are 130 new scoped integrations (24 native Java and 106 upstream), 259 missing definitions, 45 method-overlap definitions and 133 integrations including three existing adapters. The frozen 2023-10-23..2026-10-23 cohort is unchanged. The full semantic review and implementation goal remains open.
+
+Typed captured original METAL 2020-05-05 workflows: declared STDERR or SAMPLESIZE scheme, allelic or gene units, per-study and post-meta genomic control, overlap, heterogeneity and pooled frequencies. The 24 positive roles retain individual source settings and unresolved details. Seven explicit 2011 edition reports are not historical-runtime reproductions; a shared 2020 label does not establish the author binary or command. Independent native inverse-variance and signed-Z mathematics remain separately scoped. No whole-tool parity or paper reproduction is claimed.
+
+SKIP3: dependent analysis is skipped for a missing or forbidden permitted runtime, reference or platform. Supply the named prerequisite and retry NEW output, or leave that analysis skipped with its cause and recovery action. FAIL2: no complete result is admitted, including original errors with exit zero. Keep inputs, partials and diagnostics, correct the stated cause and retry NEW output. Require the workflow completion marker and successful verification. Never silently change identifiers, drop contributors, repair NaN/Inf or floor P values. Original METAL source, archives, binaries, notices and author examples remain private because redistribution is restricted. Public evidence views are not standalone admitted execution bundles. Keep complete private stores with their matching frozen reader; do not refresh old fingerprints. The public 0.4.0 release predates this source-build adapter.
+
+Read [the METAL source crosswalk and workflow guide](../METAL_CATALOG_INTEGRATION.md). Twenty-four positive uses are individually reviewed; unreported schemes and author settings remain unknown. No observation is added or removed. No deployment or release is part of this admission.
+
+<details><summary>Catalog before METAL admission (historical)</summary>
+
+# Current literature warnings and required actions
+
 ## LDAK: qualified workflows and corrected source roles
 
 250 papers, 446 named families, 2,695 paper-tool observations, 1,266 individually reviewed positive uses and 1,429 awaiting individual review. There are 129 new scoped integrations (24 native Java and 105 upstream), 259 missing families and 132 integrations including three existing adapters. The frozen 2023-10-23..2026-10-23 cohort is unchanged. The full semantic review and implementation goal remains open.
@@ -1472,6 +1486,8 @@ output path. Disconnected infinite pseudotime values remain present. LEARN
 does not admit a pseudotime result. Do not infer roots or repair values to
 conceal failures. Full Batchelor, study reproduction and biological accuracy
 remain unproven; the250-paper goal remains active.
+
+</details>
 
 </details>
 

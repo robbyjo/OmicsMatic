@@ -174,13 +174,17 @@ private because redistribution is restricted.** Public qualification packets
 contain selected views, not standalone admitted execution bundles. Transfer
 the named private stores separately for a machine handover where permitted.
 
-Original METAL's overlap/frequency control produced Freq 1.2573 from all input
+Original METAL's overlap/frequency control produced Freq 0.2573 from all input
 frequencies 0.3; preserve that source behavior without clipping or certifying
 its uncertainty. Custom declared sample size is printed to six significant
 digits. Declared N, reported Weight and overlap-adjusted N are distinct.
 Post-meta GC reloads printed data and preserves the primary heterogeneity and
 frequency fields. Original log-P output is base 10; the native SDK uses natural
 logs and has different single-cohort conventions. Do not equate these scopes.
+
+Correction recorded during the subsequent catalog admission: the original
+handover mistyped the frequency as 1.2573. The captured source output, workflow
+guide and frozen verifier consistently say 0.2573 and remain unchanged.
 
 Cell Ranger remains excluded. Earlier accepted FIMO research/nonprofit and
 GATK 3.8 academic noncommercial terms persist. Legacy iDEP.96 licensing is

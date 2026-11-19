@@ -1,15 +1,22 @@
 # Current toolbox handover
 
-Start with [the catalog handover of 18 November 2026](HANDOVER_2026-11-18_CATALOG.md).
-It records the exact remaining work, current worktree, commands, evidence paths
-and warnings. The [saved primary census](metal-catalog-handover/PRIMARY-CENSUS.json)
-and [fresh checks](metal-catalog-handover/CHECKS.json) preserve the latest audit.
+Start with [the METAL catalog checkpoint](METAL_CATALOG_CHECKPOINT_2026-11-18.md)
+and [integration guide](METAL_CATALOG_INTEGRATION.md). The admission is complete:
+24 reviewed METAL roles, including literal historical editions and unresolved
+settings, are now in the cumulative catalog. Read the
+[verified result](metal-catalog-validation/VERIFIED.json) and
+[current source census](omics-2023-2026/metal-source-role-coverage.json).
 
 The 250-paper cohort is collected. Implementation and individual paper/tool
-review remain unfinished: 129 scoped integrations and 1,429 observations awaiting
-review in the canonical catalog. The native weighted-Z component and original
-METAL workflow are qualified; METAL's 24 reviewed roles still need catalog
-admission. No new family credit or release is claimed by this handover.
+review remain unfinished: **130 new scoped integrations (24 native Java and
+106 upstream)**, 1,290 reviewed positive uses and **1,405 observations awaiting
+individual review**. There are 133 integrations including three existing
+adapters. Continue high-impact analytical gaps after checking existing
+components and source roles. No release or whole-tool/paper completion is claimed.
 
-Older handovers describe historical states. In particular, do not restart the
-weighted-Z or original METAL adapter implementations from their old draft lists.
+The [earlier handover](HANDOVER_2026-11-18_CATALOG.md) retains machine paths,
+permissions and the wider backlog. Its pending METAL admission is now completed;
+do not restart the weighted-Z, original runtime adapter or source-role reviews.
+Private evidence stores and restricted runtimes remain local. Both literature
+pages remain withheld from Pages; the review notice follows long older notices,
+and full warnings-page mobile layout remains unqualified.
