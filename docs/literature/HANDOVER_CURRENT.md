@@ -1,5 +1,13 @@
 # Current toolbox handover
 
+**Current: [Enrichr source census and Java API component checkpoint](ENRICHR_COMPONENT_CHECKPOINT_2026-11-19.md).**
+The 25-role source census passed all 250 XML identities on Windows/Linux.
+The current-service Java API component passed 16 tests on three JVMs, isolated
+packaged tests and Windows/Linux live probes. The general file workflow and
+cumulative admission remain unfinished; totals stay 135 scoped integrations,
+1,439 reviewed uses and 1,261 pending. The checkpoint lists ordered next work
+and exact warnings/recovery. The prior handover remains the transfer baseline.
+
 **Start with the [final 19 November handover](HANDOVER_2026-11-19_FINAL.md).**
 It records completed work, ordered next priorities, exact skip/error recovery,
 private transfer requirements and the preserved worktree overlay archive.
