@@ -1,5 +1,19 @@
 # 250-paper omics and GWAS toolbox catalog
 
+## Seurat: scoped workflows and source-specific roles
+
+250 papers, 446 named families, 2,696 paper-tool observations, 1,339 individually reviewed positive uses and 1,357 awaiting individual review. There are 131 new scoped integrations (24 native Java and 107 upstream), 259 missing definitions, 44 method-overlap definitions and 134 integrations including three existing adapters. The frozen paper cohort is unchanged; one P160 Seurat use is added from its author supplement. The full implementation and semantic-review goal remains open.
+
+Scoped original Seurat 5.6.0 RNA construction, LogNormalize/VST or SCT v2, typed regression/scaling, PCA, NN/SNN, clustering and optional UMAP/t-SNE with run/verify/replay; separately qualified Wilcoxon/LR prepared-layer markers and native normalization/scaling/SNN/marker summaries. Fifty source-specific roles comprise 48 direct package roles and two adapted-method roles. Anchor integration, transfer/WNN, MAST, module scoring, plots, spatial/protein assay IO and other listed author steps remain outside these qualified workflows. Component overlap is not a complete author recipe, historical runtime or whole-paper reproduction.
+
+SKIP3: the dependent analysis is skipped for an unavailable or forbidden exact permitted runtime, package, backend or source. Supply the named prerequisite in a permitted private environment or leave it skipped. FAIL2: no complete result is admitted. Retain inputs, partials and diagnostics, correct the named model/input/integrity/process/capacity cause and use NEW outputs. Require results_admitted true and successful verification. Do not silently change IDs, populations, nonfinite values, P values or algorithms. Preserve exact inputs: tiny covariate differences can substantially change t-SNE coordinates. The public 0.4.0 release predates these source-build workflows. No whole-tool, historical author-runtime or biological validation is claimed.
+
+P160 is newly supported by author supplementary methods; its XML table label alone was insufficient. P047/P061 remain adapted methodology, P093 is a benchmark and P200 visualizes existing atlas annotations. Read [the Seurat source crosswalk](../SEURAT_CATALOG_INTEGRATION.md). No website deployment or release is part of this admission.
+
+<details><summary>Catalog before Seurat admission (historical)</summary>
+
+# 250-paper omics and GWAS toolbox catalog
+
 ## METAL: qualified workflows and individually reviewed roles
 
 250 papers, 446 named families, 2,695 paper-tool observations, 1,290 individually reviewed positive uses and 1,405 awaiting individual review. There are 130 new scoped integrations (24 native Java and 106 upstream), 259 missing definitions, 45 method-overlap definitions and 133 integrations including three existing adapters. The frozen 2023-10-23..2026-10-23 cohort is unchanged. The full semantic review and implementation goal remains open.
@@ -1969,6 +1983,8 @@ Three source-reviewed tool additions retain separate provenance: MALT and HOPS h
 These additions improve the catalog and add no whole-tool or biological credit. The source-tested MALT 0.4.1 development controller does not fulfill the separate 0.5.2 role. Complete HOPS and MaltExtract operations remain unfinished; their unreported versions, settings and resource choices remain unknown. See `MALT_ALIGNMENT.md` and `MALT_HOPS_PAPER_ROLES.md`.
 
 **Required action:** match the declared source version and operation, qualify a permitted runtime, provide the complete dated reference/mapping and query populations, and retain original warnings and failures. If any prerequisite is unavailable or cannot be installed, skip its dependent analysis. A small software-control index does not reproduce the historical 91-spirochete or 7,508-genome bacterial analyses. Insufficient-read candidates remain unassessable.
+
+</details>
 
 </details>
 

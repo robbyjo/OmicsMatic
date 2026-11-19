@@ -292,11 +292,11 @@
     "id": "seurat",
     "name": "Seurat",
     "pattern": "(?<![A-Za-z0-9_])(?:Seurat)(?![A-Za-z0-9_])",
-    "role": "Single-cell QC, normalization, integration, clustering or annotation",
-    "current_coverage": "method-overlap",
-    "existing_source": "src/main/java/org/jlinalg/cli/SingleCellCli.java",
-    "coverage_note": "Related native method; upstream software options and numerical equivalence require separate validation.",
-    "paper_count": 49,
+    "role": "Single-cell RNA workflows and prepared-layer marker inference; scoped native components",
+    "current_coverage": "upstream-adapter-validated",
+    "existing_source": "src/main/java/org/jlinalg/cli/SeuratWorkflowCli.java",
+    "coverage_note": "Scoped original Seurat 5.6.0 RNA construction, LogNormalize/VST or SCT v2, typed regression/scaling, PCA, NN/SNN, clustering and optional UMAP/t-SNE with run/verify/replay; separately qualified Wilcoxon/LR prepared-layer markers and native normalization/scaling/SNN/marker summaries. Fifty source-specific roles comprise 48 direct package roles and two adapted-method roles. Anchor integration, transfer/WNN, MAST, module scoring, plots, spatial/protein assay IO and other listed author steps remain outside these qualified workflows. Component overlap is not a complete author recipe, historical runtime or whole-paper reproduction.",
+    "paper_count": 50,
     "papers": [
       "P008",
       "P010",
@@ -334,6 +334,7 @@
       "P145",
       "P153",
       "P158",
+      "P160",
       "P162",
       "P165",
       "P166",
@@ -348,10 +349,1318 @@
       "P228",
       "P233"
     ],
-    "implementation_status": "method-overlap",
-    "implementation_source": "src/main/java/org/jlinalg/cli/SingleCellCli.java",
-    "implementation_scope": "Related native method; upstream software options and numerical equivalence require separate validation.",
-    "validation_note": "Existing overlap/adapters require paper-specific option checks; missing integrations remain pending."
+    "implementation_status": "upstream-adapter-validated",
+    "implementation_source": "src/main/java/org/jlinalg/cli/SeuratWorkflowCli.java",
+    "implementation_scope": "Scoped original Seurat 5.6.0 RNA construction, LogNormalize/VST or SCT v2, typed regression/scaling, PCA, NN/SNN, clustering and optional UMAP/t-SNE with run/verify/replay; separately qualified Wilcoxon/LR prepared-layer markers and native normalization/scaling/SNN/marker summaries. Fifty source-specific roles comprise 48 direct package roles and two adapted-method roles. Anchor integration, transfer/WNN, MAST, module scoring, plots, spatial/protein assay IO and other listed author steps remain outside these qualified workflows. Component overlap is not a complete author recipe, historical runtime or whole-paper reproduction.",
+    "validation_note": "Six original RNA profiles and actual replay, 74 selected R function guards, six tests per Windows/Linux JVM and 26 controls. Separately preserved marker/native qualifications. Source roles are not complete author recipes; unsupported operations remain explicit.",
+    "source_roles_reviewed": 50,
+    "positive_roles_reviewed": 50,
+    "direct_package_roles": 48,
+    "method_reimplementation_roles": 2,
+    "excluded_background_contexts": 1,
+    "source_role_coverage": "seurat-source-role-coverage.json",
+    "paper_role_qualification": {
+      "P008": {
+        "role": "direct-package-analysis",
+        "package_execution_established": true,
+        "reported_editions": [],
+        "qualified_component_overlap": [
+          "marker-workflow"
+        ],
+        "remaining_roles": [
+          "unreported-author-test",
+          "CellPhoneDB-composition"
+        ],
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P010": {
+        "role": "direct-package-analysis",
+        "package_execution_established": true,
+        "reported_editions": [
+          {
+            "literal": "5.3.0",
+            "paragraph_indices": [
+              94
+            ],
+            "context": "TIL RNA/ADT and V(D)J processing only"
+          }
+        ],
+        "qualified_component_overlap": [
+          "rna-workflow",
+          "native-preprocessing",
+          "marker-workflow"
+        ],
+        "remaining_roles": [
+          "hashing",
+          "Harmony",
+          "ADT-assay",
+          "reference-projection",
+          "TCR-composition"
+        ],
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P016": {
+        "role": "direct-package-analysis",
+        "package_execution_established": true,
+        "reported_editions": [
+          {
+            "literal": "4.1.0",
+            "paragraph_indices": [
+              32
+            ],
+            "context": "multiome analysis alongside Signac 1.6.0"
+          }
+        ],
+        "qualified_component_overlap": [
+          "sct-normalization",
+          "native-snn"
+        ],
+        "remaining_roles": [
+          "WNN",
+          "multiome-assay",
+          "unreported-SCT-flavor"
+        ],
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P018": {
+        "role": "direct-package-analysis",
+        "package_execution_established": true,
+        "reported_editions": [
+          {
+            "literal": "5.1.0",
+            "paragraph_indices": [
+              52
+            ],
+            "context": "snRNA-seq analysis"
+          }
+        ],
+        "qualified_component_overlap": [
+          "rna-workflow",
+          "sct-normalization",
+          "marker-workflow"
+        ],
+        "remaining_roles": [
+          "IntegrateLayers",
+          "Harmony",
+          "external-annotation"
+        ],
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P031": {
+        "role": "direct-package-analysis",
+        "package_execution_established": true,
+        "reported_editions": [
+          {
+            "literal": "3.1.4",
+            "paragraph_indices": [
+              52
+            ],
+            "context": "M-cell organoid workflow"
+          }
+        ],
+        "qualified_component_overlap": [
+          "rna-workflow",
+          "native-snn"
+        ],
+        "remaining_roles": [
+          "anchor-integration",
+          "existing-object-import",
+          "plotting"
+        ],
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P032": {
+        "role": "direct-package-analysis",
+        "package_execution_established": true,
+        "reported_editions": [
+          {
+            "literal": "4.3.0.1",
+            "paragraph_indices": [
+              36
+            ],
+            "context": "Perturb-seq processing"
+          }
+        ],
+        "qualified_component_overlap": [
+          "rna-workflow",
+          "sct-normalization",
+          "native-preprocessing",
+          "marker-workflow"
+        ],
+        "remaining_roles": [
+          "hashing",
+          "WNN",
+          "ADT-assay",
+          "Harmony",
+          "cell-cycle-scoring",
+          "AggregateExpression"
+        ],
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P039": {
+        "role": "direct-package-analysis",
+        "package_execution_established": true,
+        "reported_editions": [
+          {
+            "literal": "4.3.0",
+            "paragraph_indices": [
+              45,
+              53,
+              56,
+              57,
+              63,
+              73,
+              75
+            ],
+            "context": "multiple Slide-tags RNA analyses"
+          }
+        ],
+        "qualified_component_overlap": [
+          "rna-workflow",
+          "native-snn",
+          "marker-workflow"
+        ],
+        "remaining_roles": [
+          "anchor-integration",
+          "label-transfer",
+          "WNN",
+          "MAST",
+          "AddModuleScore",
+          "plotting"
+        ],
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P040": {
+        "role": "direct-package-analysis",
+        "package_execution_established": true,
+        "reported_editions": [
+          {
+            "literal": "5.3.0",
+            "paragraph_indices": [
+              42
+            ],
+            "context": "mouse tumor/lymph-node scRNA-seq"
+          }
+        ],
+        "qualified_component_overlap": [
+          "rna-workflow",
+          "marker-workflow"
+        ],
+        "remaining_roles": [
+          "Harmony",
+          "study-specific-QC",
+          "manual-annotation"
+        ],
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P043": {
+        "role": "direct-package-analysis",
+        "package_execution_established": true,
+        "reported_editions": [
+          {
+            "literal": "v.5",
+            "paragraph_indices": [
+              40
+            ],
+            "context": "large-scale cross-modality integration; patch unspecified"
+          }
+        ],
+        "qualified_component_overlap": [
+          "rna-workflow"
+        ],
+        "remaining_roles": [
+          "anchor-integration",
+          "label-transfer",
+          "cross-modality-input",
+          "CellOracle-composition"
+        ],
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P046": {
+        "role": "direct-package-analysis",
+        "package_execution_established": true,
+        "reported_editions": [
+          {
+            "literal": "5.4.0",
+            "paragraph_indices": [
+              47
+            ],
+            "context": "oRG scRNA-seq processing"
+          }
+        ],
+        "qualified_component_overlap": [
+          "rna-workflow"
+        ],
+        "remaining_roles": [
+          "cell-cycle-scoring",
+          "study-specific-QC",
+          "manual-annotation"
+        ],
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P047": {
+        "role": "method-reimplementation",
+        "package_execution_established": false,
+        "reported_editions": [
+          {
+            "literal": "v3",
+            "paragraph_indices": [
+              48,
+              61,
+              62,
+              63,
+              64,
+              65
+            ],
+            "context": "methodological reference, not a reported executed Seurat runtime"
+          }
+        ],
+        "qualified_component_overlap": [],
+        "remaining_roles": [
+          "adapted-ALLCools-method"
+        ],
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P049": {
+        "role": "direct-package-analysis",
+        "package_execution_established": true,
+        "reported_editions": [
+          {
+            "literal": "v.5",
+            "paragraph_indices": [
+              34
+            ],
+            "context": "human retinal ganglion cell processing; patch unspecified"
+          }
+        ],
+        "qualified_component_overlap": [
+          "rna-workflow",
+          "marker-workflow"
+        ],
+        "remaining_roles": [
+          "IntegrateLayers",
+          "RPCA-integration",
+          "BuildClusterTree",
+          "AggregateExpression"
+        ],
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P051": {
+        "role": "direct-package-analysis",
+        "package_execution_established": true,
+        "reported_editions": [
+          {
+            "literal": "4.0.5",
+            "paragraph_indices": [
+              81,
+              91
+            ],
+            "context": "mouse reference construction / initial multiome QC"
+          },
+          {
+            "literal": "4.3",
+            "paragraph_indices": [
+              91,
+              116,
+              127
+            ],
+            "context": "initial multiome QC and spatial downstream/neighborhood branches"
+          },
+          {
+            "literal": "5.1.0",
+            "paragraph_indices": [
+              92,
+              118
+            ],
+            "context": "ATAC/RNA annotation and PDAC/MI spatial analyses"
+          },
+          {
+            "literal": "5.1",
+            "paragraph_indices": [
+              94
+            ],
+            "context": "short label for FindTransferAnchors; patch not supplied"
+          },
+          {
+            "literal": "5.2.1",
+            "paragraph_indices": [
+              84,
+              96,
+              105,
+              106,
+              107
+            ],
+            "context": "module scores, object merging and human neutrophil integration"
+          },
+          {
+            "literal": "4.4.0",
+            "paragraph_indices": [
+              110
+            ],
+            "context": "spatial input preprocessing"
+          }
+        ],
+        "qualified_component_overlap": [
+          "rna-workflow",
+          "sct-normalization",
+          "marker-workflow"
+        ],
+        "remaining_roles": [
+          "anchor-integration",
+          "RPCA-integration",
+          "label-transfer",
+          "MapQuery",
+          "AddModuleScore",
+          "spatial-neighborhoods",
+          "reported-correction-boundary"
+        ],
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P053": {
+        "role": "direct-package-analysis",
+        "package_execution_established": true,
+        "reported_editions": [
+          {
+            "literal": "v.4",
+            "paragraph_indices": [
+              48
+            ],
+            "context": "multiome RNA workflow; patch unspecified"
+          }
+        ],
+        "qualified_component_overlap": [
+          "rna-workflow",
+          "sct-normalization"
+        ],
+        "remaining_roles": [
+          "Harmony",
+          "RPCA-integration",
+          "label-transfer",
+          "orthology-composition",
+          "unreported-SCT-flavor"
+        ],
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P055": {
+        "role": "direct-package-analysis",
+        "package_execution_established": true,
+        "reported_editions": [
+          {
+            "literal": "4.2.0",
+            "paragraph_indices": [
+              58
+            ],
+            "context": "SNN/Leiden quality-metric network"
+          }
+        ],
+        "qualified_component_overlap": [
+          "native-snn",
+          "native-preprocessing"
+        ],
+        "remaining_roles": [
+          "provided-metric-embedding",
+          "quality-network",
+          "plotting"
+        ],
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P058": {
+        "role": "direct-package-analysis",
+        "package_execution_established": true,
+        "reported_editions": [
+          {
+            "literal": "4.3.0",
+            "paragraph_indices": [
+              45
+            ],
+            "context": "downstream snRNA-seq analysis"
+          }
+        ],
+        "qualified_component_overlap": [
+          "rna-workflow",
+          "sct-normalization"
+        ],
+        "remaining_roles": [
+          "MAST",
+          "SCT-integration",
+          "AddModuleScore",
+          "SCENIC-composition"
+        ],
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P061": {
+        "role": "method-reimplementation",
+        "package_execution_established": false,
+        "reported_editions": [
+          {
+            "literal": "v.3",
+            "paragraph_indices": [
+              69
+            ],
+            "context": "methodological reference, not an established package execution"
+          }
+        ],
+        "qualified_component_overlap": [],
+        "remaining_roles": [
+          "adapted-atlas-integration"
+        ],
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P063": {
+        "role": "direct-package-analysis",
+        "package_execution_established": true,
+        "reported_editions": [
+          {
+            "literal": "5.3.0",
+            "paragraph_indices": [
+              23
+            ],
+            "context": "GEX/ADT/TCR multiomic analysis"
+          }
+        ],
+        "qualified_component_overlap": [
+          "rna-workflow",
+          "marker-workflow"
+        ],
+        "remaining_roles": [
+          "hashing",
+          "reported-WNN-ambiguity",
+          "ADT-assay",
+          "TCR-composition"
+        ],
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P064": {
+        "role": "direct-package-analysis",
+        "package_execution_established": true,
+        "reported_editions": [
+          {
+            "literal": "4.3.0",
+            "paragraph_indices": [
+              38
+            ],
+            "context": "cross-species retinal workflow"
+          }
+        ],
+        "qualified_component_overlap": [
+          "rna-workflow"
+        ],
+        "remaining_roles": [
+          "anchor-integration",
+          "orthology-composition",
+          "orthotype-merging"
+        ],
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P069": {
+        "role": "direct-package-analysis",
+        "package_execution_established": true,
+        "reported_editions": [
+          {
+            "literal": "4.1",
+            "paragraph_indices": [
+              27
+            ],
+            "context": "mouse expression/hashtag preprocessing; patch unspecified"
+          }
+        ],
+        "qualified_component_overlap": [
+          "native-preprocessing"
+        ],
+        "remaining_roles": [
+          "MULTIseqDemux",
+          "existing-object-import",
+          "IREA-composition"
+        ],
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P073": {
+        "role": "direct-package-analysis",
+        "package_execution_established": true,
+        "reported_editions": [
+          {
+            "literal": "4.1.1",
+            "paragraph_indices": [
+              35
+            ],
+            "context": "initial annotation/QC workflow"
+          }
+        ],
+        "qualified_component_overlap": [
+          "rna-workflow"
+        ],
+        "remaining_roles": [
+          "RCA-composition",
+          "RPCA-integration",
+          "study-specific-QC"
+        ],
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P082": {
+        "role": "direct-package-analysis",
+        "package_execution_established": true,
+        "reported_editions": [
+          {
+            "literal": "4.0.4",
+            "paragraph_indices": [
+              39
+            ],
+            "context": "CITE-seq QC"
+          }
+        ],
+        "qualified_component_overlap": [
+          "sct-normalization",
+          "native-preprocessing",
+          "native-snn"
+        ],
+        "remaining_roles": [
+          "WNN",
+          "ADT-assay",
+          "multimodal-embeddings"
+        ],
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P085": {
+        "role": "direct-package-analysis",
+        "package_execution_established": true,
+        "reported_editions": [
+          {
+            "literal": "4.3.0",
+            "paragraph_indices": [
+              49
+            ],
+            "context": "IMC spatial proteomics only"
+          }
+        ],
+        "qualified_component_overlap": [
+          "native-preprocessing"
+        ],
+        "remaining_roles": [
+          "real-protein-assay",
+          "Harmony",
+          "BayesSpace-composition",
+          "assay-conversion"
+        ],
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P087": {
+        "role": "direct-package-analysis",
+        "package_execution_established": true,
+        "reported_editions": [
+          {
+            "literal": "5.0.0",
+            "paragraph_indices": [
+              48
+            ],
+            "context": "human atlas processing"
+          },
+          {
+            "literal": "5.3.1.0000",
+            "paragraph_indices": [
+              59,
+              61
+            ],
+            "context": "human biopsy and mouse BDL processing"
+          },
+          {
+            "literal": "4.1.3",
+            "paragraph_indices": [
+              60
+            ],
+            "context": "mouse CCl4 processing"
+          },
+          {
+            "literal": "5.2.1",
+            "paragraph_indices": [
+              68
+            ],
+            "context": "spatial protein-intensity analysis"
+          }
+        ],
+        "qualified_component_overlap": [
+          "rna-workflow",
+          "marker-workflow",
+          "native-preprocessing"
+        ],
+        "remaining_roles": [
+          "SketchData",
+          "ProjectIntegration",
+          "ProjectData",
+          "Harmony",
+          "MAST",
+          "RPCA-integration",
+          "label-transfer",
+          "MapQuery",
+          "real-protein-assay"
+        ],
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P088": {
+        "role": "direct-package-data-wrangling",
+        "package_execution_established": true,
+        "reported_editions": [
+          {
+            "literal": "v.5.0",
+            "paragraph_indices": [
+              59
+            ],
+            "context": "code-availability statement for Seurat data wrangling"
+          }
+        ],
+        "qualified_component_overlap": [
+          "native-preprocessing"
+        ],
+        "remaining_roles": [
+          "existing-object-import",
+          "cross-dataset-summaries",
+          "annotation-harmonization"
+        ],
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P093": {
+        "role": "comparative-benchmark",
+        "package_execution_established": true,
+        "reported_editions": [],
+        "qualified_component_overlap": [
+          "rna-workflow"
+        ],
+        "remaining_roles": [
+          "anchor-integration",
+          "label-transfer",
+          "benchmark-only-role"
+        ],
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P094": {
+        "role": "direct-package-analysis",
+        "package_execution_established": true,
+        "reported_editions": [
+          {
+            "literal": "5.0.0",
+            "paragraph_indices": [
+              32
+            ],
+            "context": "joint RNA/ATAC preprocessing alongside Signac"
+          }
+        ],
+        "qualified_component_overlap": [
+          "marker-workflow"
+        ],
+        "remaining_roles": [
+          "ATAC-layer-preparation",
+          "AverageExpression",
+          "AddModuleScore",
+          "Signac-composition"
+        ],
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P096": {
+        "role": "direct-package-analysis",
+        "package_execution_established": true,
+        "reported_editions": [
+          {
+            "literal": "v.2.0",
+            "paragraph_indices": [
+              40,
+              41,
+              42,
+              50
+            ],
+            "context": "literal reported Seurat edition"
+          }
+        ],
+        "qualified_component_overlap": [
+          "sct-normalization",
+          "rna-workflow"
+        ],
+        "remaining_roles": [
+          "reported-edition-API-boundary",
+          "SCT-integration",
+          "label-transfer",
+          "plotting"
+        ],
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P099": {
+        "role": "direct-package-analysis",
+        "package_execution_established": true,
+        "reported_editions": [],
+        "qualified_component_overlap": [
+          "native-snn"
+        ],
+        "remaining_roles": [
+          "co-embedding",
+          "provided-embedding",
+          "scJoint-composition"
+        ],
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P117": {
+        "role": "direct-package-analysis",
+        "package_execution_established": true,
+        "reported_editions": [
+          {
+            "literal": "5.1.0",
+            "paragraph_indices": [
+              68
+            ],
+            "context": "high-resolution spatial analysis"
+          },
+          {
+            "literal": "5.0.1",
+            "paragraph_indices": [
+              73
+            ],
+            "context": "human bin SCT normalization"
+          }
+        ],
+        "qualified_component_overlap": [
+          "sct-normalization",
+          "rna-workflow"
+        ],
+        "remaining_roles": [
+          "spatial-assay",
+          "anchor-integration",
+          "AddModuleScore",
+          "BANKSY-composition",
+          "Harmony",
+          "deconvolved-expression",
+          "cell-cycle-scoring"
+        ],
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P124": {
+        "role": "direct-package-analysis",
+        "package_execution_established": true,
+        "reported_editions": [
+          {
+            "literal": "4.1.0",
+            "paragraph_indices": [
+              52
+            ],
+            "context": "CRISPRi/CRISPRa perturbation analyses"
+          },
+          {
+            "literal": "4.2.0",
+            "paragraph_indices": [
+              54
+            ],
+            "context": "CAR-T product reanalysis"
+          }
+        ],
+        "qualified_component_overlap": [
+          "rna-workflow"
+        ],
+        "remaining_roles": [
+          "MAST",
+          "gRNA-assignment",
+          "study-specific-QC"
+        ],
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P134": {
+        "role": "direct-package-analysis",
+        "package_execution_established": true,
+        "reported_editions": [],
+        "qualified_component_overlap": [
+          "native-snn"
+        ],
+        "remaining_roles": [
+          "provided-protein-activity",
+          "cell-cycle-scoring",
+          "metaVIPER-composition"
+        ],
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P144": {
+        "role": "direct-package-analysis",
+        "package_execution_established": true,
+        "reported_editions": [
+          {
+            "literal": "4.3.0",
+            "paragraph_indices": [
+              46
+            ],
+            "context": "gene-expression processing"
+          }
+        ],
+        "qualified_component_overlap": [
+          "rna-workflow"
+        ],
+        "remaining_roles": [
+          "unreported-author-settings",
+          "mgatk-composition"
+        ],
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P145": {
+        "role": "direct-package-analysis",
+        "package_execution_established": true,
+        "reported_editions": [
+          {
+            "literal": "5.2.1",
+            "paragraph_indices": [
+              50
+            ],
+            "context": "hNC multiplexed-library analysis"
+          }
+        ],
+        "qualified_component_overlap": [
+          "sct-normalization",
+          "rna-workflow"
+        ],
+        "remaining_roles": [
+          "Harmony",
+          "SoupX-composition",
+          "manual-annotation"
+        ],
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P153": {
+        "role": "direct-package-analysis",
+        "package_execution_established": true,
+        "reported_editions": [
+          {
+            "literal": "5.0.3",
+            "paragraph_indices": [
+              45
+            ],
+            "context": "PBMC/pancreatic RNA clustering and annotation"
+          }
+        ],
+        "qualified_component_overlap": [
+          "rna-workflow",
+          "native-preprocessing"
+        ],
+        "remaining_roles": [
+          "Harmony",
+          "custom-Kendall-composition",
+          "Signac-composition"
+        ],
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P158": {
+        "role": "direct-package-analysis",
+        "package_execution_established": true,
+        "reported_editions": [],
+        "qualified_component_overlap": [
+          "sct-normalization",
+          "rna-workflow",
+          "marker-workflow"
+        ],
+        "remaining_roles": [
+          "anchor-integration",
+          "external-annotation",
+          "unreported-SCT-flavor",
+          "unreported-author-test"
+        ],
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P160": {
+        "role": "direct-package-analysis",
+        "package_execution_established": true,
+        "reported_editions": [
+          {
+            "literal": "4.1.1",
+            "paragraph_indices": [],
+            "context": "spatial Visium analysis in the author supplement",
+            "pdf_pages": [
+              27
+            ]
+          },
+          {
+            "literal": "4.3.0.1",
+            "paragraph_indices": [],
+            "context": "single-cell RNA processing in the author supplement",
+            "pdf_pages": [
+              28
+            ]
+          }
+        ],
+        "qualified_component_overlap": [
+          "rna-workflow",
+          "sct-normalization",
+          "marker-workflow"
+        ],
+        "remaining_roles": [
+          "Harmony",
+          "spatial-assay",
+          "AverageExpression",
+          "AddModuleScore",
+          "label-transfer",
+          "author-downsampling"
+        ],
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P162": {
+        "role": "direct-package-analysis",
+        "package_execution_established": true,
+        "reported_editions": [],
+        "qualified_component_overlap": [
+          "marker-workflow"
+        ],
+        "remaining_roles": [
+          "unreported-author-settings",
+          "unreported-author-test",
+          "LDSC-SEG-composition"
+        ],
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P165": {
+        "role": "direct-package-analysis",
+        "package_execution_established": true,
+        "reported_editions": [
+          {
+            "literal": "v5",
+            "paragraph_indices": [
+              60
+            ],
+            "context": "cluster-average expression and marker comparison"
+          }
+        ],
+        "qualified_component_overlap": [
+          "sct-normalization",
+          "rna-workflow",
+          "marker-workflow"
+        ],
+        "remaining_roles": [
+          "Harmony",
+          "label-transfer",
+          "AverageExpression",
+          "reported-setting-ambiguity"
+        ],
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P166": {
+        "role": "direct-package-analysis",
+        "package_execution_established": true,
+        "reported_editions": [
+          {
+            "literal": "4.1.0",
+            "paragraph_indices": [
+              73
+            ],
+            "context": "CEL-seq2 UMAP processing"
+          }
+        ],
+        "qualified_component_overlap": [
+          "rna-workflow",
+          "marker-workflow"
+        ],
+        "remaining_roles": [
+          "unreported-author-test",
+          "null-finding-retention"
+        ],
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P167": {
+        "role": "direct-package-analysis",
+        "package_execution_established": true,
+        "reported_editions": [
+          {
+            "literal": "5.0.1",
+            "paragraph_indices": [
+              19
+            ],
+            "context": "CosMx transcriptomic workflow"
+          }
+        ],
+        "qualified_component_overlap": [
+          "sct-normalization",
+          "rna-workflow",
+          "marker-workflow"
+        ],
+        "remaining_roles": [
+          "CosMx-input",
+          "Harmony",
+          "AddModuleScore",
+          "plotting"
+        ],
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P182": {
+        "role": "direct-package-analysis",
+        "package_execution_established": true,
+        "reported_editions": [
+          {
+            "literal": "v.3",
+            "paragraph_indices": [
+              17
+            ],
+            "context": "fetal/pediatric/organoid RNA preprocessing"
+          }
+        ],
+        "qualified_component_overlap": [
+          "rna-workflow",
+          "marker-workflow"
+        ],
+        "remaining_roles": [
+          "cell-cycle-scoring",
+          "AddModuleScore",
+          "reported-default-boundary"
+        ],
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P187": {
+        "role": "direct-package-analysis",
+        "package_execution_established": true,
+        "reported_editions": [
+          {
+            "literal": "v.5",
+            "paragraph_indices": [
+              9,
+              21
+            ],
+            "context": "nuclei QC and donor/cell-type pseudobulk aggregation"
+          }
+        ],
+        "qualified_component_overlap": [
+          "rna-workflow"
+        ],
+        "remaining_roles": [
+          "DecontX-composition",
+          "IntegrateLayers",
+          "Harmony",
+          "Azimuth-composition",
+          "AggregateExpression"
+        ],
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P192": {
+        "role": "direct-package-analysis",
+        "package_execution_established": true,
+        "reported_editions": [
+          {
+            "literal": "4.3.0",
+            "paragraph_indices": [
+              16,
+              29,
+              31
+            ],
+            "context": "KOBS preprocessing / risk-allele expression and module scoring"
+          },
+          {
+            "literal": "4.3.0.1",
+            "paragraph_indices": [
+              17,
+              18
+            ],
+            "context": "RYSA preprocessing and merged data"
+          },
+          {
+            "literal": "4.0.3",
+            "paragraph_indices": [
+              19
+            ],
+            "context": "KOBS positive cell-type marker selection"
+          }
+        ],
+        "qualified_component_overlap": [
+          "rna-workflow",
+          "marker-workflow"
+        ],
+        "remaining_roles": [
+          "Harmony",
+          "AddModuleScore",
+          "study-specific-grouping"
+        ],
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P200": {
+        "role": "direct-package-visualization",
+        "package_execution_established": true,
+        "reported_editions": [
+          {
+            "literal": "5.3.1",
+            "paragraph_indices": [
+              20
+            ],
+            "context": "human inner-ear atlas DotPlot visualization"
+          }
+        ],
+        "qualified_component_overlap": [],
+        "remaining_roles": [
+          "DotPlot",
+          "existing-object-import"
+        ],
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P213": {
+        "role": "direct-package-analysis",
+        "package_execution_established": true,
+        "reported_editions": [
+          {
+            "literal": "4.4.0",
+            "paragraph_indices": [
+              8,
+              12,
+              13
+            ],
+            "context": "OneK1K RNA analyses"
+          }
+        ],
+        "qualified_component_overlap": [
+          "sct-normalization",
+          "rna-workflow",
+          "marker-workflow"
+        ],
+        "remaining_roles": [
+          "MAST",
+          "Azimuth-composition",
+          "custom-feature-set",
+          "batch-recurrence",
+          "plotting",
+          "MASH-composition"
+        ],
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P223": {
+        "role": "direct-package-analysis",
+        "package_execution_established": true,
+        "reported_editions": [
+          {
+            "literal": "4.3.0",
+            "paragraph_indices": [
+              12
+            ],
+            "context": "joint gene-expression and gRNA-count processing"
+          }
+        ],
+        "qualified_component_overlap": [],
+        "remaining_roles": [
+          "gRNA-assignment",
+          "joint-count-processing",
+          "unreported-author-settings"
+        ],
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P225": {
+        "role": "direct-package-analysis",
+        "package_execution_established": true,
+        "reported_editions": [
+          {
+            "literal": "4.3.0",
+            "paragraph_indices": [
+              9
+            ],
+            "context": "snRNA-seq processing and differential expression"
+          }
+        ],
+        "qualified_component_overlap": [
+          "rna-workflow",
+          "marker-workflow"
+        ],
+        "remaining_roles": [
+          "ATAC-layer-preparation",
+          "Harmony",
+          "Signac-composition",
+          "motif-assignment-boundary"
+        ],
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P228": {
+        "role": "direct-package-analysis",
+        "package_execution_established": true,
+        "reported_editions": [],
+        "qualified_component_overlap": [
+          "sct-normalization",
+          "rna-workflow",
+          "marker-workflow"
+        ],
+        "remaining_roles": [
+          "Harmony",
+          "unreported-SCT-flavor",
+          "unreported-author-test",
+          "sccomp-composition"
+        ],
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P233": {
+        "role": "direct-package-analysis",
+        "package_execution_established": true,
+        "reported_editions": [
+          {
+            "literal": "5.0.2",
+            "paragraph_indices": [
+              8
+            ],
+            "context": "scRNA-seq QC"
+          }
+        ],
+        "qualified_component_overlap": [
+          "rna-workflow"
+        ],
+        "remaining_roles": [
+          "Harmony",
+          "Liger-composition",
+          "Monocle3-conversion",
+          "reference-filtering"
+        ],
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false
+      }
+    },
+    "selected_project_editions": [
+      "5.6.0"
+    ],
+    "source_build_required": true,
+    "released_binary_contains_workflow_adapter": false,
+    "public_CLI_available": true,
+    "whole_tool_qualified": false,
+    "whole_paper_reproduced": false,
+    "new_scoped_integration_credit": 1,
+    "native_family_credit_added": 0,
+    "upstream_family_credit_added": 1,
+    "current_documentation": "docs/literature/SEURAT_CATALOG_INTEGRATION.md"
   },
   {
     "id": "umap",

@@ -1,5 +1,44 @@
 # Current toolbox handover
 
+**Seurat catalog admission is complete. Start with the
+[current checkpoint](SEURAT_CATALOG_CHECKPOINT_2026-11-19.md),
+[50-role source crosswalk](SEURAT_CATALOG_INTEGRATION.md),
+[admission proof](omics-2023-2026/seurat-catalog-validation.json) and
+[checks/evidence](seurat-catalog-checks/README.md).** The qualified RNA workflow
+was already on main; its scoped family is now admitted without changes to
+production scientific code or old verifier/source hashes.
+
+Current totals: **250 papers, 2,696 observations, 131 new scoped integrations
+(24 native Java + 107 upstream), 1,339 reviewed positive uses and 1,357 awaiting
+individual review**. There are 446 named families, 485 effective definitions,
+259 missing and 44 method-overlap definitions; 134 integrations include three
+existing adapters. All 1,290 old reviews and P061 are preserved. The source
+census has 50 positive Seurat roles, including one newly supported use; P083
+remains background. These are bounded integrations, not whole-tool parity.
+
+Next, inspect the existing PLINK components and its 52 source observations
+before implementing the highest-impact missing analysis scope. Other frequent
+analytical gaps include coloc (27 papers), PLINK 2 (25), Enrichr/Scanpy (22
+each), GSEA/SuSiE (19 each), GCTA (17) and edgeR (16). Check actual implemented
+methods and source roles before duplicating work. Continue the wider remaining
+reviews alongside implementation. Seurat integration/transfer/WNN, Harmony,
+MAST, module scores, spatial/protein assay IO and plotting remain separate gaps.
+
+**Historical verification warning:** two old full marker-verifier mains remain
+SKIP3 because their exact historical canonical JAR is missing. Restore the
+original bytes/hash listed in the checkpoint to rerun those checks, or leave
+them skipped. Current RNA/native audits, retained marker source/archive checks
+and all 29 original marker method payloads in the current JAR passed separately.
+No fresh historical full-verifier success or R refit is claimed.
+
+The new notices were checked at 1440px and 390px offline viewports. Full old
+page layout/interactivity remain unqualified; both literature pages stay
+withheld from Pages. No release/deployment was created. Private evidence,
+source PDFs, runtimes and large builds remain local; GitHub is not a machine
+backup. The overall implementation and source-review goal remains unfinished.
+
+<details><summary>Source-review handover before admission (historical)</summary>
+
 **Start with [the current Seurat catalog handover](HANDOVER_2026-11-19_SEURAT_CATALOG.md).**
 The original RNA workflow is implemented, qualified and already on main at
 `9574a7b1c9e20a99b704c91d9512c7137f7935e3`. Its source review now covers 50
@@ -63,5 +102,7 @@ promise coordinate equality across input or host changes.
 Private evidence stores and restricted runtimes remain local. Both literature
 pages remain withheld from Pages; the review notice follows long older notices,
 and full warnings-page mobile layout remains unqualified.
+
+</details>
 
 </details>
