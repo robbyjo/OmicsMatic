@@ -33,7 +33,8 @@ No fresh historical full-verifier success or R refit is claimed.
 
 The new notices were checked at 1440px and 390px offline viewports. Full old
 page layout/interactivity remain unqualified; both literature pages stay
-withheld from Pages. No release/deployment was created. Private evidence,
+withheld from Pages. The normal main-branch Pages workflow may redeploy the
+rest of the site while excluding both reports. No release was created. Private evidence,
 source PDFs, runtimes and large builds remain local; GitHub is not a machine
 backup. The overall implementation and source-review goal remains unfinished.
 

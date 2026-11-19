@@ -129,8 +129,10 @@ The successful renderer used only two isolated public HTML copies, CSP/network
 restrictions and an inherited debugging pipe with no listening port. A permitted
 workspace-only Playwright-core dependency was downloaded with registry integrity
 verification and no install scripts or browser download. No frozen runtime was
-modified. Both literature pages remain withheld from Pages; no release or
-website deployment was created.
+modified. Both literature pages remain withheld from Pages. The normal
+main-branch push triggers the existing Pages workflow, which stages the rest
+of the site while explicitly excluding both reports. This is separate from
+publishing the new literature reports; no release was created.
 
 Publication/preservation receipts:
 `D:/projects/JLinAlg/build/git-publish/20261119-seurat-catalog-28/`.
