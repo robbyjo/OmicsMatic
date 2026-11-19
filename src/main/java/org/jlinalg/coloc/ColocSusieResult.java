@@ -48,4 +48,49 @@ public final class ColocSusieResult {
 
     public ColocOptions options() { return options; }
     public int skippedSignalPairs() { return skippedSignalPairs; }
+
+    /** Whether the mathematical H4-conditional distribution has shared support. */
+    public boolean isSharedVariantPosteriorDefined(int signalPair) {
+        if (signalPair < 0 || signalPair >= signalPairs.size()) {
+            throw new IndexOutOfBoundsException("signal pair index is invalid");
+        }
+        int start = signalPair * commonVariants.size();
+        for (int j = 0; j < commonVariants.size(); j++) {
+            if (sharedVariantPosterior[start + j] > 0.0) return true;
+        }
+        return false;
+    }
+
+    /** Scientific scope and undefined-result warnings; callers should display and retain them. */
+    public List<String> warnings() {
+        var warnings = new java.util.ArrayList<String>();
+        warnings.add("NATIVE_STABLE_COLOC_VARIANT: H3 uses distinct-configuration "
+            + "enumeration, which can retain support rounded to zero by coloc 6.0.3's "
+            + "log-difference. This step does not validate association fits, LD, "
+            + "credible-set selection or historical whole-package/paper parity.");
+        if (options.rawTrait1PriorWeights() != null || options.rawTrait2PriorWeights() != null) {
+            warnings.add("PRIOR_WEIGHTED_CONDITIONAL_SNP_POSTERIOR: this native "
+                + "variant includes prior weights; coloc 6.0.3 returns an unweighted "
+                + "conditional SNP column even when regional hypotheses use weights.");
+        }
+        if (commonVariants.size() == 1 && !signalPairs.isEmpty()) {
+            warnings.add("SINGLE_VARIANT_NATIVE_MODEL: this result retains a "
+                + "normalized hypothesis distribution. The audited coloc 6.0.3 "
+                + "coloc.bf_bf single-variant path returned altered, nonnormalized hypotheses; "
+                + "literal source-output parity is not claimed.");
+        }
+        if (signalPairs.isEmpty()) {
+            warnings.add("NO_RETAINED_SIGNAL_PAIRS: no hypothesis posteriors are "
+                + "reported; this is not evidence for H0 or absence of colocalization.");
+        }
+        for (int pair = 0; pair < signalPairs.size(); pair++) {
+            if (!isSharedVariantPosteriorDefined(pair)) {
+                warnings.add("UNDEFINED_CONDITIONAL_SNP_POSTERIOR_PAIR_" + (pair + 1)
+                    + ": H4 has no shared support. The library's retained zero "
+                    + "vector is an undefined-value marker, not a probability "
+                    + "distribution; do not report it as a SNP posterior.");
+            }
+        }
+        return List.copyOf(warnings);
+    }
 }

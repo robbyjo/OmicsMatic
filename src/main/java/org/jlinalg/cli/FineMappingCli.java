@@ -52,7 +52,7 @@ final class FineMappingCli {
                     output.println(colocHelp());
                     return 0;
                 }
-                runColoc(options, output);
+                runColoc(options, output, error);
             }
             return 0;
         } catch (IOException | IllegalArgumentException exception) {
@@ -110,7 +110,8 @@ final class FineMappingCli {
         }
     }
 
-    private static void runColoc(ColocCliOptions options, PrintStream console)
+    private static void runColoc(ColocCliOptions options, PrintStream console,
+            PrintStream error)
             throws IOException {
         Path variantOutput = options.variantOutput != null
             ? options.variantOutput : Path.of(options.output + ".variants.tsv");
@@ -127,9 +128,20 @@ final class FineMappingCli {
                 options.minimumOverlap, options.trim, null, null);
             ColocSusieResult result = ColocSusie.analyze(
                 trait1, trait2, colocOptions);
+            List<String> warnings = result.warnings();
+            for (String warning : warnings) error.println("WARNING: " + warning);
             if (result.commonVariants().isEmpty()) {
                 throw new IllegalArgumentException(
                     "trait inputs share no variant identifiers");
+            }
+            for (int pair = 0; pair < result.signalPairs().size(); pair++) {
+                if (!result.isSharedVariantPosteriorDefined(pair)) {
+                    throw new IllegalArgumentException(
+                        "conditional SNP posterior is undefined for signal pair "
+                            + (pair + 1) + "; no complete CLI result admitted. "
+                            + "Preserve inputs/logs; inspect shared BF support "
+                            + "before retrying new output paths.");
+                }
             }
             write(options.output, colocTable(result, delimiter(options.output)),
                 options.overwrite);
@@ -149,6 +161,8 @@ final class FineMappingCli {
                 + "shared_prior=" + options.sharedPrior + "\n"
                 + "minimum_posterior_overlap=" + options.minimumOverlap + "\n"
                 + "trim_by_posterior=" + options.trim + "\n"
+                + "method=native-stable-coloc-variant\n"
+                + "warnings=" + String.join(" | ", warnings) + "\n"
                 + "output=" + options.output.toAbsolutePath() + "\n"
                 + "variant_output=" + variantOutput.toAbsolutePath() + "\n";
             journal.metadata(logText);
@@ -186,8 +200,8 @@ final class FineMappingCli {
         Set<String> unique = new HashSet<>();
         for (int row = 0; row < table.rows().size(); row++) {
             String[] fields = table.rows().get(row);
-            String name = fields[variant].trim();
-            if (name.isEmpty() || !unique.add(name)) {
+            String name = fields[variant];
+            if (name.isBlank() || !unique.add(name)) {
                 throw new IllegalArgumentException(
                     "variant identifiers must be nonblank and unique: " + name);
             }
@@ -241,8 +255,7 @@ final class FineMappingCli {
             throw new IOException(
                 "labeled LD matrix needs a row-ID column and variant columns");
         }
-        List<String> columns = Arrays.stream(first).skip(1)
-            .map(String::trim).toList();
+        List<String> columns = Arrays.stream(first).skip(1).toList();
         int size = columns.size();
         if (lines.size() != size + 1) {
             throw new IOException("labeled LD matrix must have one data row "
@@ -255,12 +268,12 @@ final class FineMappingCli {
                 throw new IOException("labeled LD row " + (row + 2)
                     + " has the wrong field count");
             }
-            String name = fields[0].trim();
+            String name = fields[0];
             double[] values = new double[size];
             for (int column = 0; column < size; column++) {
                 values[column] = finite(fields[column + 1], "LD", row + 2);
             }
-            if (name.isEmpty() || rows.put(name, values) != null) {
+            if (name.isBlank() || rows.put(name, values) != null) {
                 throw new IOException(
                     "LD row identifiers must be nonblank and unique");
             }
@@ -317,8 +330,8 @@ final class FineMappingCli {
                 throw new IllegalArgumentException(
                     "effect_index must be nonnegative at row " + (row + 2));
             }
-            String variantId = fields[variant].trim();
-            if (variantId.isEmpty()) {
+            String variantId = fields[variant];
+            if (variantId.isBlank()) {
                 throw new IllegalArgumentException(
                     "variant_id is blank at row " + (row + 2));
             }
@@ -658,6 +671,13 @@ final class FineMappingCli {
             log_bayes_factor. Variant IDs are intersected in trait-1 order.
             The main output reports H0-H4 for each retained signal pair. The
             variant output reports the variant posterior conditional on H4.
+            This native stable variant preserves distinct-configuration H3
+            support; it is not literal coloc 6.0.3 output at numerical/semantic
+            boundaries. Warnings are printed and saved in the log. R's reserved
+            null hypothesis column is refused; provide variant-only log BFs
+            relative to a zero-null baseline. Undefined conditional SNP
+            posteriors refuse a complete CLI result. Ordinary summary-statistic
+            beta/variance or P-value tables belong to coloc-abf instead.
             """;
     }
 

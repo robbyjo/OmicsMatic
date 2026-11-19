@@ -9,7 +9,10 @@ import java.util.Map;
 import org.jlinalg.susie.SusieResult;
 
 /**
- * Multi-signal colocalization compatible with {@code coloc::coloc.susie}.
+ * Native stable multi-signal colocalization from supplied credible-signal BFs.
+ * Distinct-configuration enumeration and prior-weighted conditional SNP
+ * probabilities intentionally differ from selected coloc 6.0.3 source behavior.
+ * This is not a literal full-package replacement; inspect result warnings.
  */
 public final class ColocSusie {
     private ColocSusie() { }
@@ -164,6 +167,12 @@ public final class ColocSusie {
         int variables = input.variants();
         double[] values = input.rawLogBayesFactors();
         double[] result = new double[input.signals()];
+        if (commonIndices.length == variables) {
+            // Identical populations have complete overlap. Computing the same
+            // sum through two floating-point paths can otherwise yield <1.
+            java.util.Arrays.fill(result, 1.0);
+            return result;
+        }
         for (int signal = 0; signal < input.signals(); signal++) {
             int offset = signal * variables;
             double all = logSum(values, offset, variables);

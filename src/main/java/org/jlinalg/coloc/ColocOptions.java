@@ -16,7 +16,6 @@ public record ColocOptions(
         if (!(trait1Prior > 0.0 && trait1Prior < 1.0)
                 || !(trait2Prior > 0.0 && trait2Prior < 1.0)
                 || !(sharedPrior > 0.0 && sharedPrior < 1.0)
-                || sharedPrior > trait1Prior || sharedPrior > trait2Prior
                 || !(minimumPosteriorOverlap >= 0.0
                     && minimumPosteriorOverlap <= 1.0)) {
             throw new IllegalArgumentException("invalid colocalization options");

@@ -34,12 +34,31 @@ public final class ColocSusieInput {
         if (variantNames == null || variantNames.isEmpty()) {
             throw new IllegalArgumentException("variant names are required");
         }
+        if (variantNames.stream().anyMatch(java.util.Objects::isNull)) {
+            throw new IllegalArgumentException("variant names must not be null");
+        }
         List<String> names = List.copyOf(variantNames);
         Set<String> unique = new HashSet<>(names.size());
         for (String name : names) {
             if (name == null || name.isBlank() || !unique.add(name)) {
                 throw new IllegalArgumentException(
                     "variant names must be nonblank and unique");
+            }
+            if (name.equals("null")) {
+                throw new IllegalArgumentException(
+                    "R's reserved null hypothesis column is not a variant; "
+                    + "supply variant-only log Bayes factors relative to the "
+                    + "zero-null baseline and preserve the original data");
+            }
+            for (int i = 0; i < name.length(); i++) {
+                char c = name.charAt(i);
+                if (Character.isHighSurrogate(c)) {
+                    if (++i == name.length() || !Character.isLowSurrogate(name.charAt(i))) {
+                        throw new IllegalArgumentException("variant name has an unpaired surrogate");
+                    }
+                } else if (Character.isLowSurrogate(c)) {
+                    throw new IllegalArgumentException("variant name has an unpaired surrogate");
+                }
             }
         }
         if (logBayesFactors == null || effectIndices == null

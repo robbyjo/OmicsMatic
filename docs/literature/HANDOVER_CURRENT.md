@@ -1,6 +1,16 @@
 # Current toolbox handover
 
-**Current: [native COLOC ABF file workflow checkpoint](COLOC_ABF_WORKFLOW_CHECKPOINT_2026-11-19.md).**
+**Current: [COLOC SuSiE source audit and native boundary fixes](COLOC_SUSIE_AUDIT_CHECKPOINT_2026-11-19.md).**
+The existing native stable variant now retains exact IDs and complete-overlap
+pairs, accepts the source's larger shared priors, exposes semantic warnings and
+refuses undefined conditional CLI results. All 50 source/boundary/regression
+tests passed on Windows Java 21/25 and Linux Java 21, with packaged controls and
+unchanged ABF verification. The 28 original profiles have explicitly different
+coverage outcomes; literal whole-package parity is not claimed. Next finish
+the 27-role coverage matrix and cumulative COLOC admission. Counts remain 134
+scoped integrations and 1,413 reviewed uses; full goal and source gaps remain open.
+
+**Earlier: [native COLOC ABF file workflow checkpoint](COLOC_ABF_WORKFLOW_CHECKPOINT_2026-11-19.md).**
 RUN/VERIFY/REPLAY now accept explicitly mapped ordinary summary-statistics TSVs.
 All 62 reference/workflow tests passed on Windows Java 21/25 and Linux Java 21,
 with packaged commands, cross-host bundle replay and four existing SuSiE/coloc
