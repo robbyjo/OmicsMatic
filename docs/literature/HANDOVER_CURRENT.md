@@ -1,5 +1,13 @@
 # Current toolbox handover
 
+**Latest: [PLINK component qualification checkpoint](PLINK_COMPONENT_CHECKPOINT_2026-11-19.md).**
+Fresh current-candidate checks now cover original GLM/QC/pruning/PCA/CI and
+native scoring, with separate unchanged KING audits. Four initial fixture-hash
+failures remain retained; unchanged producers passed with explicit exact
+frozen fixtures, available through the new restorer/readback. Old source/hash
+guards and current working files were preserved. Finish cumulative catalog
+admission next; official counts and family credit are unchanged.
+
 **Start with the [19 November PLINK catalog handover](HANDOVER_2026-11-19_PLINK_CATALOG.md).**
 It records the ordered remaining work, exact resume commands, private transfer
 locations and prominent SKIP3/FAIL2 recovery instructions. The next task is
