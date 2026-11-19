@@ -1,5 +1,18 @@
 # Current toolbox handover
 
+**For the current handoff, start with the
+[PLINK relatedness development handover](HANDOVER_2026-11-19_PLINK_RELATEDNESS.md)
+and [pinned synthetic checkpoint](plink-relatedness-handover/README.md).**
+Six new Java classes and exact-runtime setup resources are saved as unfinished
+development. The exact candidate compiles and passed 16 original-program pilot
+expectations (13 successful captures also passed Java VERIFY). Qualification,
+Linux/replay/cleanup/corruption controls and source-role admission remain open.
+No PLINK-family credit is added. The handover gives ordered next steps,
+machine-transfer paths and SKIP3/FAIL2 recovery instructions. The 131-integration
+catalog totals below are unchanged; the overall goal remains unfinished.
+
+<details><summary>Completed Seurat catalog milestone and prior context</summary>
+
 **Seurat catalog admission is complete. Start with the
 [current checkpoint](SEURAT_CATALOG_CHECKPOINT_2026-11-19.md),
 [50-role source crosswalk](SEURAT_CATALOG_INTEGRATION.md),
@@ -103,6 +116,8 @@ promise coordinate equality across input or host changes.
 Private evidence stores and restricted runtimes remain local. Both literature
 pages remain withheld from Pages; the review notice follows long older notices,
 and full warnings-page mobile layout remains unqualified.
+
+</details>
 
 </details>
 
