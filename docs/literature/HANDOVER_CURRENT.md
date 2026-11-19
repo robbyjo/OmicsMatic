@@ -1,5 +1,16 @@
 # Current toolbox handover
 
+**Start with the [19 November PLINK catalog handover](HANDOVER_2026-11-19_PLINK_CATALOG.md).**
+It records the ordered remaining work, exact resume commands, private transfer
+locations and prominent SKIP3/FAIL2 recovery instructions. The next task is
+cumulative admission of the existing PLINK/PLINK 2/KING components and 96-role
+source census. Canonical counts remain **131 new scoped integrations, 1,339
+reviewed uses and 1,357 pending**. The tested four-document proposal is not an
+applied catalog. The wider goal remains unfinished; both literature reports
+remain withheld from Pages. No release is created.
+
+## Source-review checkpoint
+
 **Continue from the [PLINK-family source census](PLINK_SOURCE_CENSUS_2026-11-19.md).**
 All 250 XML identities, 96 positive roles, seven non-execution contexts, eight
 proper-name exclusions and the exact P114 author-code archive were checked.
