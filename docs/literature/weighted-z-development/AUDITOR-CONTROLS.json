@@ -1,0 +1,58 @@
+{
+  "status": "PASS_RETAINED_AUDITOR_SUCCESS_SKIP_AND_FAILURE_CONTROLS",
+  "controls": [
+    {
+      "control": "intact-snapshot",
+      "exit_code": 0,
+      "expected": 0
+    },
+    {
+      "control": "changed-source",
+      "exit_code": 2,
+      "expected": 2
+    },
+    {
+      "control": "missing-fixture",
+      "exit_code": 3,
+      "expected": 3
+    },
+    {
+      "control": "changed-archive",
+      "exit_code": 2,
+      "expected": 2
+    },
+    {
+      "control": "wrong-jar",
+      "exit_code": 2,
+      "expected": 2
+    },
+    {
+      "control": "reused-output",
+      "exit_code": 2,
+      "expected": 2
+    },
+    {
+      "control": "restored-snapshot",
+      "exit_code": 0,
+      "expected": 0
+    }
+  ],
+  "authoritative_source_or_evidence_mutated": false,
+  "old_source_hashes_refreshed": false,
+  "consoles": {
+    "changed-archive.stderr": "FAIL2_NO_QUALIFICATION_ADMITTED: ValueError('Qualification archive changed')\nSKIP3: dependent audit/analysis skipped. Supply the named permitted source, evidence or Java 17+ runtime and retry into NEW output. FAIL2: no complete result or qualification admitted. Retain inputs, partials and diagnostics, correct the named cause, and retry NEW output. Never drop invalid cohorts, infer an effect direction, replace zero P with a floor, or repair NaN/Inf to force admission. Read WARNINGS.md. This native independent-cohort component is not a complete METAL workflow; overlap, allele alignment and effective N are caller responsibilities.\n",
+    "changed-archive.stdout": "",
+    "changed-source.stderr": "FAIL2_NO_QUALIFICATION_ADMITTED: ValueError('Qualified source/fixture changed: src/main/java/org/jlinalg/meta/SampleSizeWeightedMetaAnalysis.java')\nSKIP3: dependent audit/analysis skipped. Supply the named permitted source, evidence or Java 17+ runtime and retry into NEW output. FAIL2: no complete result or qualification admitted. Retain inputs, partials and diagnostics, correct the named cause, and retry NEW output. Never drop invalid cohorts, infer an effect direction, replace zero P with a floor, or repair NaN/Inf to force admission. Read WARNINGS.md. This native independent-cohort component is not a complete METAL workflow; overlap, allele alignment and effective N are caller responsibilities.\n",
+    "changed-source.stdout": "",
+    "intact-snapshot.stderr": "",
+    "intact-snapshot.stdout": "{\"indexed_payloads\": 527, \"finite_R_models\": 69, \"finite_R_fields\": 1844, \"retained_unrepresentable_models\": 1, \"retained_unrepresentable_R_fields\": 20, \"tiny_Q_R_models\": 2, \"tiny_Q_R_fields\": 10, \"original_models_each_output\": 62, \"original_numeric_fields\": 844, \"single_cohort_convention_records\": 24, \"original_nonfinite_failure_retained\": true, \"status\": \"PASS_NATIVE_SAMPLE_SIZE_WEIGHTED_Z_COMPONENT\", \"current_jar_hashed\": false, \"scientific_runtime_reexecuted\": false, \"junit_reexecuted\": false, \"new_family_credit\": 0, \"whole_goal_complete\": false}\n",
+    "missing-fixture.stderr": "SKIP3_DEPENDENT_AUDIT_SKIPPED: FileNotFoundError(2, 'No such file or directory')\nSKIP3: dependent audit/analysis skipped. Supply the named permitted source, evidence or Java 17+ runtime and retry into NEW output. FAIL2: no complete result or qualification admitted. Retain inputs, partials and diagnostics, correct the named cause, and retry NEW output. Never drop invalid cohorts, infer an effect direction, replace zero P with a floor, or repair NaN/Inf to force admission. Read WARNINGS.md. This native independent-cohort component is not a complete METAL workflow; overlap, allele alignment and effective N are caller responsibilities.\n",
+    "missing-fixture.stdout": "",
+    "restored-snapshot.stderr": "",
+    "restored-snapshot.stdout": "{\"indexed_payloads\": 527, \"finite_R_models\": 69, \"finite_R_fields\": 1844, \"retained_unrepresentable_models\": 1, \"retained_unrepresentable_R_fields\": 20, \"tiny_Q_R_models\": 2, \"tiny_Q_R_fields\": 10, \"original_models_each_output\": 62, \"original_numeric_fields\": 844, \"single_cohort_convention_records\": 24, \"original_nonfinite_failure_retained\": true, \"status\": \"PASS_NATIVE_SAMPLE_SIZE_WEIGHTED_Z_COMPONENT\", \"current_jar_hashed\": false, \"scientific_runtime_reexecuted\": false, \"junit_reexecuted\": false, \"new_family_credit\": 0, \"whole_goal_complete\": false}\n",
+    "reused-output.stderr": "FAIL2_NO_QUALIFICATION_ADMITTED: FileExistsError(17, 'Cannot create a file when that file already exists')\nSKIP3: dependent audit/analysis skipped. Supply the named permitted source, evidence or Java 17+ runtime and retry into NEW output. FAIL2: no complete result or qualification admitted. Retain inputs, partials and diagnostics, correct the named cause, and retry NEW output. Never drop invalid cohorts, infer an effect direction, replace zero P with a floor, or repair NaN/Inf to force admission. Read WARNINGS.md. This native independent-cohort component is not a complete METAL workflow; overlap, allele alignment and effective N are caller responsibilities.\n",
+    "reused-output.stdout": "",
+    "wrong-jar.stderr": "FAIL2_NO_QUALIFICATION_ADMITTED: ValueError('JAR does not match this qualification; build/qualify changed source separately')\nSKIP3: dependent audit/analysis skipped. Supply the named permitted source, evidence or Java 17+ runtime and retry into NEW output. FAIL2: no complete result or qualification admitted. Retain inputs, partials and diagnostics, correct the named cause, and retry NEW output. Never drop invalid cohorts, infer an effect direction, replace zero P with a floor, or repair NaN/Inf to force admission. Read WARNINGS.md. This native independent-cohort component is not a complete METAL workflow; overlap, allele alignment and effective N are caller responsibilities.\n",
+    "wrong-jar.stdout": ""
+  }
+}

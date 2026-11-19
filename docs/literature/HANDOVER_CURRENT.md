@@ -1,8 +1,10 @@
 # Current toolbox handover
 
-Read [the 18 November 2026 METAL handover](HANDOVER_2026-11-18_METAL.md).
-It supersedes the earlier handover's current-state and next-step instructions;
-older checkpoints and evidence remain historical records.
+Read [the native weighted-Z checkpoint](WEIGHTED_Z_CHECKPOINT_2026-11-18.md)
+for the latest resumed work and immediate next steps, then
+[the METAL handover](HANDOVER_2026-11-18_METAL.md) for the wider project inventory.
+The earlier draft has now been restored and its native SDK component qualified.
+Older checkpoints, draft status and evidence remain historical records.
 
 The 250-paper cohort is collected. Implementation and individual paper/tool
-review remain unfinished. The handover adds no integration credit or release.
+review remain unfinished. The native component adds no METAL family credit or release.
