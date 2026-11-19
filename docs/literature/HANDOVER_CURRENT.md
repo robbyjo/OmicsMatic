@@ -1,5 +1,16 @@
 # Current toolbox handover
 
+**Continue from the [PLINK-family source census](PLINK_SOURCE_CENSUS_2026-11-19.md).**
+All 250 XML identities, 96 positive roles, seven non-execution contexts, eight
+proper-name exclusions and the exact P114 author-code archive were checked.
+Twenty source/proposal tests passed. Four missed uses and 74 appended reviews
+are represented in a tested in-memory core proposal; **canonical admission is
+still unfinished**. Counts remain 2,696 observations, 1,339 reviewed uses and
+131 new scoped integrations. Complete cumulative evidence/qualification,
+compatibility, full metadata/report writing and plan/apply/verify next.
+
+<details><summary>PLINK workflow checkpoint and prior handovers</summary>
+
 **Continue from the [scoped PLINK-relatedness workflow checkpoint](PLINK_RELATEDNESS_CHECKPOINT_2026-11-19.md).**
 The original workflows now have 16 pilot expectations, 54 packaged controls,
 four 257-participant original profiles, Windows/Linux JVM checks and actual
@@ -128,6 +139,8 @@ promise coordinate equality across input or host changes.
 Private evidence stores and restricted runtimes remain local. Both literature
 pages remain withheld from Pages; the review notice follows long older notices,
 and full warnings-page mobile layout remains unqualified.
+
+</details>
 
 </details>
 

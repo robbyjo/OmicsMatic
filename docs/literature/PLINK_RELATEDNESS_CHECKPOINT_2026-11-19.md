@@ -1,5 +1,9 @@
 # Scoped PLINK-relatedness workflow checkpoint
 
+The subsequent [96-role source census](PLINK_SOURCE_CENSUS_2026-11-19.md)
+supersedes the pending 92-observation intake task below. Its source-only
+proposal is tested; cumulative catalog admission still remains unfinished.
+
 **Original PLINK-hosted relatedness workflows and their declared Java checks
 are qualified on synthetic inputs. Full tool/paper parity, paper-role review
 and catalog admission are not complete. New family credit: zero.** Canonical
