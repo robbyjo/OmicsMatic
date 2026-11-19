@@ -1,5 +1,53 @@
 # Current toolbox handover
 
+**Handover, 19 November 2026. Start here; the older checkpoints below are
+retained history.** The latest scientific checkpoint is the Scanpy component
+linked below; the latest admitted cumulative catalog is Enrichr. The full
+250-paper implementation and individual source-review goal is unfinished.
+
+Current admitted totals are **136 new scoped integrations (25 native Java,
+111 upstream), or 139 including three existing adapters**. The 250 collected
+papers have 2,703 tool-use observations: **1,462 reviewed and 1,241 pending**.
+There are 259 missing definitions and 39 with related methods whose source
+equivalence is not established. The new Scanpy component adds no admitted
+family credit yet.
+
+**Next owner, in order:**
+
+1. Read the Scanpy checkpoint and verify/restore its saved component using
+   the linked proof instructions. Preserve existing attempts; use NEW outputs.
+2. Finish useful Scanpy file/upstream RUN/VERIFY/REPLAY workflows around the
+   22 actual paper roles, qualify their source behavior and failure controls,
+   then finish the coverage crosswalk and guarded cumulative admission through
+   the Enrichr predecessor. Reuse the qualified native preprocessing API.
+3. Continue high-impact gaps and the 1,241 pending individual reviews. Recheck
+   current registry/source scope before choosing among SuSiE, GSEA, GCTA,
+   edgeR and other candidates; do not add credit from a family name alone.
+4. Preserve all 22 worktrees, previous evidence, failed attempts and exact
+   runtimes. The Scanpy checkpoint gives private transfer paths. GitHub holds
+   source and compact public proofs; ignored large artifacts and installed
+   environments require separate permitted transfer. Historical dirty overlays
+   are already retained in the linked earlier handover; do not merge them over
+   current main or reset/clean their original worktrees.
+
+**Recovery:** missing/forbidden exact dependencies remain SKIP3; skip their
+dependent analysis and restore the named item. Changed evidence, invalid data,
+undefined numerics and capacity/process failures remain FAIL2 with no complete
+result. Preserve inputs/diagnostics and retry NEW outputs after correction.
+Two historical marker-verifier mains still need the exact original 0.3.7 JAR
+identified in the Scanpy checkpoint. Cell Ranger remains excluded. Both
+literature reports remain withheld from Pages; no release has been created.
+
+**Current: [Scanpy source census and native preprocessing checkpoint](SCANPY_PREPROCESSING_CHECKPOINT_2026-11-19.md).**
+The 250-identity census covers 22 Scanpy roles and 53 named paragraphs. Native
+float64 filtering, normalization, log1p and scaling profiles passed 426 checks
+on each of three JVMs, including 418 original-reference cases. The corrected
+component retains source-specific division, clipping and failure behavior;
+the first candidate and its seven range failures remain preserved. General
+file/upstream workflows and cumulative admission are next. Totals remain
+**136 scoped integrations, 1,462 reviewed uses and 1,241 pending**. The full
+goal is unfinished; the checkpoint lists exact scope, recovery and transfer.
+
 **Current: [Enrichr cumulative catalog checkpoint](ENRICHR_CATALOG_CHECKPOINT_2026-11-19.md).**
 The normal Gradle workflow passed live/current-service, three-JVM, cross-host
 and runnable-example qualification. The 25-role crosswalk adds three observations
