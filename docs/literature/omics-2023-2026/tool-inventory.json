@@ -5919,21 +5919,84 @@
     "name": "LDAK",
     "pattern": "(?<![A-Za-z0-9_])(?:LDAK)(?![A-Za-z0-9_])",
     "role": "SNP heritability and polygenic modelling",
-    "current_coverage": "missing",
-    "existing_source": null,
-    "coverage_note": "No equivalent workflow identified in the current source inventory.",
+    "current_coverage": "upstream-adapter-validated",
+    "existing_source": "src/main/java/org/jlinalg/cli/LdakWorkflowCli.java",
+    "coverage_note": "Original LDAK 5.2 SumHer with complete supplied tagging, explicit inflation/solver/allele/cutoff/liability choices, and optional thinning plus one-kinship REML alpha grids. Native Java FP64 independently recomputes every kinship entry and checks declared liability conversion; thinning audits check set handoff, and SumHer/REML are fitted by the captured original engine. Exact runtime/license/input/output capture, 48-class method identity, independent directory verification and genuine replay. Author binaries, reference snapshots, unreported grids, genotype coding and biological results are not inferred. Missing/forbidden prerequisites mean SKIP3 and dependent analysis skipped. FAIL2 admits no complete result, including original errors with exit zero; retain diagnostics and retry NEW output. Five positive source roles are distinct from the excluded P245 background/prior-work context. The P238 benchmark does not establish its LDAK edition, model or command. See LDAK_CATALOG_INTEGRATION.md.",
     "paper_count": 5,
     "papers": [
       "P090",
       "P109",
       "P120",
       "P171",
-      "P245"
+      "P238"
     ],
-    "implementation_status": "missing",
-    "implementation_source": null,
-    "implementation_scope": "No equivalent workflow identified in the current source inventory.",
-    "validation_note": "Existing overlap/adapters require paper-specific option checks; missing integrations remain pending."
+    "implementation_status": "upstream-adapter-validated",
+    "implementation_source": "src/main/java/org/jlinalg/cli/LdakWorkflowCli.java",
+    "implementation_scope": "Original LDAK 5.2 SumHer with complete supplied tagging, explicit inflation/solver/allele/cutoff/liability choices, and optional thinning plus one-kinship REML alpha grids. Native Java FP64 independently recomputes every kinship entry and checks declared liability conversion; thinning audits check set handoff, and SumHer/REML are fitted by the captured original engine. Exact runtime/license/input/output capture, 48-class method identity, independent directory verification and genuine replay. Author binaries, reference snapshots, unreported grids, genotype coding and biological results are not inferred. Missing/forbidden prerequisites mean SKIP3 and dependent analysis skipped. FAIL2 admits no complete result, including original errors with exit zero; retain diagnostics and retry NEW output. Five positive source roles are distinct from the excluded P245 background/prior-work context. The P238 benchmark does not establish its LDAK edition, model or command. See LDAK_CATALOG_INTEGRATION.md.",
+    "validation_note": "Retained original 5.2 qualification: 58 Java tests, 92 workflow/example/refusal controls, 23 complete bundles and 48 exact method-class fingerprints. The current source-build JAR matches all 48 method classes, verifies all 23 closed bundles and genuinely replays both tutorial modes. Native FP64 kinships and declared liability conversion are checked; no author study reproduction.",
+    "source_roles_reviewed": 6,
+    "positive_roles_reviewed": 5,
+    "excluded_context_roles": 1,
+    "source_role_coverage": "ldak-source-role-coverage.json",
+    "selected_project_editions": [
+      "5.2"
+    ],
+    "source_build_required": true,
+    "released_binary_contains_workflow_adapter": false,
+    "public_CLI_available": true,
+    "whole_tool_qualified": false,
+    "whole_paper_reproduced": false,
+    "new_scoped_integration_credit": 1,
+    "native_family_credit_added": 0,
+    "upstream_family_credit_added": 1,
+    "current_documentation": "docs/literature/LDAK_CATALOG_INTEGRATION.md",
+    "paper_role_qualification": {
+      "P090": {
+        "usage_context": "current-study-summary-statistic-heritability",
+        "reported_engine_version": "5.2",
+        "selected_project_profile": "5.2",
+        "selected_runtime_is_author_binary": false,
+        "exact_author_settings_established": false,
+        "benchmark_method_under_specified": false,
+        "whole_paper_reproduced": false
+      },
+      "P109": {
+        "usage_context": "current-study-genotype-heritability",
+        "reported_engine_version": "5.2",
+        "selected_project_profile": "5.2",
+        "selected_runtime_is_author_binary": false,
+        "exact_author_settings_established": false,
+        "benchmark_method_under_specified": false,
+        "whole_paper_reproduced": false
+      },
+      "P120": {
+        "usage_context": "current-study-summary-statistic-heritability",
+        "reported_engine_version": null,
+        "selected_project_profile": "5.2",
+        "selected_runtime_is_author_binary": false,
+        "exact_author_settings_established": false,
+        "benchmark_method_under_specified": false,
+        "whole_paper_reproduced": false
+      },
+      "P171": {
+        "usage_context": "current-study-genotype-heritability",
+        "reported_engine_version": "5.2",
+        "selected_project_profile": "5.2",
+        "selected_runtime_is_author_binary": false,
+        "exact_author_settings_established": false,
+        "benchmark_method_under_specified": false,
+        "whole_paper_reproduced": false
+      },
+      "P238": {
+        "usage_context": "current-study-comparative-benchmark",
+        "reported_engine_version": null,
+        "selected_project_profile": "5.2",
+        "selected_runtime_is_author_binary": false,
+        "exact_author_settings_established": false,
+        "benchmark_method_under_specified": true,
+        "whole_paper_reproduced": false
+      }
+    }
   },
   {
     "id": "heidi",

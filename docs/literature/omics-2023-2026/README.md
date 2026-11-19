@@ -1,5 +1,19 @@
 # 250-paper omics and GWAS toolbox catalog
 
+## LDAK: qualified workflows and corrected source roles
+
+250 papers, 446 named families, 2,695 paper-tool observations, 1,266 individually reviewed positive uses and 1,429 awaiting individual review. There are 129 new scoped integrations (24 native Java and 105 upstream), 259 missing families and 132 integrations including three existing adapters. The frozen 2023-10-23..2026-10-23 cohort is unchanged. The full semantic review and implementation goal remains open.
+
+Original LDAK 5.2 SumHer with complete supplied tagging, explicit inflation/solver/allele/cutoff/liability choices, and optional thinning plus one-kinship REML alpha grids. Native Java FP64 independently recomputes every kinship entry and checks declared liability conversion; thinning audits check set handoff, and SumHer/REML are fitted by the captured original engine. Exact runtime/license/input/output capture, 48-class method identity, independent directory verification and genuine replay. Author binaries, reference snapshots, unreported grids, genotype coding and biological results are not inferred. Missing/forbidden prerequisites mean SKIP3 and dependent analysis skipped. FAIL2 admits no complete result, including original errors with exit zero; retain diagnostics and retry NEW output. Five positive source roles are distinct from the excluded P245 background/prior-work context. The P238 benchmark does not establish its LDAK edition, model or command. See LDAK_CATALOG_INTEGRATION.md.
+
+SKIP3: dependent analysis is skipped for a missing or forbidden permitted runtime, reference or Linux x86_64 execution environment. Supply the named prerequisite and retry NEW output. FAIL2: no complete result is admitted, including original errors with exit zero. Read FAILURE.txt, WARNINGS.md, DIAGNOSTICS.tsv and both original consoles; retain inputs and partials, correct the named cause and retry NEW output. Require exit 0, COMPLETED.properties and successful verification. Original SumHer tutorial substitutions (18 zero statistics and four tagging floors) require explicit allow-recorded or are refused under forbid; they are not silent native repairs. Keep earlier bundles with matching readers and never refresh old fingerprints. Author binaries, reference snapshots and unreported settings are not inferred. Legacy SnpEff evidence/software retains its separately recorded private academic noncommercial and redistribution restrictions.
+
+P238 is added as an under-specified current-study comparator; P245 is excluded from positive uses and retained in the source census as background/prior work. Five positive roles and one negative/context decision are individually reviewed. Read [the source crosswalk and current workflow guide](../LDAK_CATALOG_INTEGRATION.md). No website deployment or release is part of this admission.
+
+<details><summary>Catalog before LDAK admission (historical)</summary>
+
+# 250-paper omics and GWAS toolbox catalog
+
 ## LDSC: reviewed roles and native unpartitioned scope
 
 250 papers, 446 named families, 2,695 paper-tool observations, 1,261 individually reviewed uses and 1,434 awaiting individual review. There are 128 admitted new scoped integrations (24 native Java, 104 upstream), 260 missing families and 131 integrations including three existing adapters. The frozen 2023-10-23..2026-10-23 cohort/window is unchanged; full semantic review and implementation remain open.
@@ -1941,6 +1955,8 @@ Three source-reviewed tool additions retain separate provenance: MALT and HOPS h
 These additions improve the catalog and add no whole-tool or biological credit. The source-tested MALT 0.4.1 development controller does not fulfill the separate 0.5.2 role. Complete HOPS and MaltExtract operations remain unfinished; their unreported versions, settings and resource choices remain unknown. See `MALT_ALIGNMENT.md` and `MALT_HOPS_PAPER_ROLES.md`.
 
 **Required action:** match the declared source version and operation, qualify a permitted runtime, provide the complete dated reference/mapping and query populations, and retain original warnings and failures. If any prerequisite is unavailable or cannot be installed, skip its dependent analysis. A small software-control index does not reproduce the historical 91-spirochete or 7,508-genome bacterial analyses. Insufficient-read candidates remain unassessable.
+
+</details>
 
 </details>
 
