@@ -1,0 +1,85 @@
+{
+  "status": "PASS_SAVED_EVIDENCE_READBACK_ON_WINDOWS_AND_LINUX",
+  "readbacks": {
+    "windows": {
+      "status": "PASS_SAVED_NATIVE_GCTA_GRM_COMPONENT_EVIDENCE",
+      "current_source_inputs_checked": 9,
+      "producer_integrity": "PASS_EXACT_CAPTURED_PRODUCER_INTEGRITY",
+      "Java_executed_now": false,
+      "original_models_executed_now": false,
+      "saved_original_cases": 35,
+      "saved_exact_float32_fields_per_JVM": 190428,
+      "saved_explicit_no_estimate_refusals_per_JVM": 6,
+      "saved_focused_tests_per_JVM": 9,
+      "JVMs": 3,
+      "GCTA_workflow_complete": false,
+      "catalog_credit": 0,
+      "whole_goal_complete": false
+    },
+    "linux": {
+      "status": "PASS_SAVED_NATIVE_GCTA_GRM_COMPONENT_EVIDENCE",
+      "current_source_inputs_checked": 9,
+      "producer_integrity": "PASS_EXACT_CAPTURED_PRODUCER_INTEGRITY",
+      "Java_executed_now": false,
+      "original_models_executed_now": false,
+      "saved_original_cases": 35,
+      "saved_exact_float32_fields_per_JVM": 190428,
+      "saved_explicit_no_estimate_refusals_per_JVM": 6,
+      "saved_focused_tests_per_JVM": 9,
+      "JVMs": 3,
+      "GCTA_workflow_complete": false,
+      "catalog_credit": 0,
+      "whole_goal_complete": false
+    }
+  },
+  "warning_branches": [
+    {
+      "name": "unavailable-producer",
+      "exit_code": 0,
+      "command": [
+        "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-B",
+        "D:\\projects\\JLinAlg\\build\\gc-2\\tools\\literature\\gcta_native\\verify_evidence.py",
+        "--out",
+        "D:\\projects\\JLinAlg\\build\\gc-2\\build\\gcta-native-1\\saved-warning-branches-1\\unavailable-producer",
+        "--jar",
+        "D:\\projects\\JLinAlg\\build\\gc-2\\build\\gcta-native-1\\exact-producer-unavailable.jar"
+      ],
+      "result": {
+        "status": "PASS_SAVED_NATIVE_GCTA_GRM_COMPONENT_EVIDENCE",
+        "current_source_inputs_checked": 9,
+        "producer_integrity": "SKIP3: supply the exact captured producer at D:\\projects\\JLinAlg\\build\\gc-2\\build\\gcta-native-1\\exact-producer-unavailable.jar",
+        "Java_executed_now": false,
+        "original_models_executed_now": false,
+        "saved_original_cases": 35,
+        "saved_exact_float32_fields_per_JVM": 190428,
+        "saved_explicit_no_estimate_refusals_per_JVM": 6,
+        "saved_focused_tests_per_JVM": 9,
+        "JVMs": 3,
+        "GCTA_workflow_complete": false,
+        "catalog_credit": 0,
+        "whole_goal_complete": false
+      }
+    },
+    {
+      "name": "different-producer",
+      "exit_code": 1,
+      "command": [
+        "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-B",
+        "D:\\projects\\JLinAlg\\build\\gc-2\\tools\\literature\\gcta_native\\verify_evidence.py",
+        "--out",
+        "D:\\projects\\JLinAlg\\build\\gc-2\\build\\gcta-native-1\\saved-warning-branches-1\\different-producer",
+        "--jar",
+        "D:\\projects\\JLinAlg\\build\\gs-5\\build\\gsea-admission-1\\global-gradle-1\\project-build\\cli\\omicsmatic-0.4.0.jar"
+      ],
+      "result": {
+        "status": "FAIL2: NO COMPLETE COMPONENT VERIFICATION",
+        "error": "ValueError('supplied producer differs; do not replace its saved hash')",
+        "recovery": "Retain diagnostics; restore exact qualified source/evidence/producer or use its historical owner. Retry NEW output; never refresh old hashes."
+      }
+    }
+  ],
+  "Java_executed_in_readbacks": false,
+  "scientific_models_executed_in_readbacks": false
+}

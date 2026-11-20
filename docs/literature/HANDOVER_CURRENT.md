@@ -1,5 +1,16 @@
 # Current toolbox handover
 
+**Current: [qualified native GCTA GRM component and remaining work](GCTA_NATIVE_CHECKPOINT_2026-11-20.md).**
+The prepared-hard-call API is now in the normal JAR. Original edge controls,
+independent rational checks, cancellation correction, 190,428 exact fields and
+nine focused tests pass per JVM on Windows21/25 and Linux21; the actual example
+also runs. All 23,522 old JAR payloads remain byte-identical. GCTA/COJO file
+workflows, other model qualification and catalog admission remain unfinished;
+totals stay **140 integrations, 1,548 reviewed and 1,166 pending**. Preserve all
+**24 worktrees**, exact historical owners and separate private runtime/evidence
+transfers. Both reports remain off Pages. Older prototype-only/build-open
+statements below describe historical checkpoints.
+
 **Start here: [GCTA prototype, warnings, remaining work and exact resume paths](HANDOVER_2026-11-20_GCTA.md).**
 The 250-paper cohort and GSEA admission are complete; the full implementation
 and source-review goal remains unfinished. Totals stay **140 scoped integrations

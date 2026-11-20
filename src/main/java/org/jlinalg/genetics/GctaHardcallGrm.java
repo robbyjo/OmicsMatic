@@ -204,6 +204,7 @@ public final class GctaHardcallGrm {
             }
             int index = 0;
             for (int i = 0; i < n; i++) {
+                interrupted();
                 for (int j = 0; j <= i; j++, index++) {
                     double sum = 0.0;
                     int called = 0;
@@ -219,18 +220,23 @@ public final class GctaHardcallGrm {
             }
             processedIncluded += values.size();
             progress.completedBlock(end, m, processedIncluded);
+            interrupted();
             start = end;
         }
         float[] matrix = new float[(int) pairs];
         int index = 0;
-        for (int i = 0; i < n; i++) for (int j = 0; j <= i; j++, index++) {
-            require(counts[index] > 0, "no jointly called retained markers for sample pair "
-                + i + "," + j + "; original zero fallback refused; no complete GRM");
-            // Preserve the cast before multiplication and the float32 product.
-            matrix[index] = (float) (numerator[index] / counts[index]) * weight;
-            require(Float.isFinite(matrix[index]),
-                "nonfinite source GRM value at sample pair " + i + "," + j);
+        for (int i = 0; i < n; i++) {
+            interrupted();
+            for (int j = 0; j <= i; j++, index++) {
+                require(counts[index] > 0, "no jointly called retained markers for sample pair "
+                    + i + "," + j + "; original zero fallback refused; no complete GRM");
+                // Preserve the cast before multiplication and the float32 product.
+                matrix[index] = (float) (numerator[index] / counts[index]) * weight;
+                require(Float.isFinite(matrix[index]),
+                    "nonfinite source GRM value at sample pair " + i + "," + j);
+            }
         }
+        interrupted();
         return new Result(sampleCopy, markers, algorithm, matrix, counts, included, weight);
     }
 
