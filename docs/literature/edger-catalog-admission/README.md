@@ -1,0 +1,7 @@
+# edgeR cumulative admission evidence
+
+Eight exact preceding metadata files, original dispatcher/manifest, unchanged old-owner execution, fresh 250-source function audit, saved global qualification and exact owner source are retained. The source crosswalk distinguishes tested components from unqualified author workflows.
+
+Run `python -B tools/literature/close_edger_catalog.py --verify --out build/edger-verify-NEW`. This catalog owner uses Git for exact preceding source identity; the standalone saved global proof reader executes no Git/R/JVM. No fresh R refit or old full-marker success is claimed here.
+
+SKIP3: dependent analysis skipped; supply the named exact permitted source/input/runtime/package or retain the skip if unavailable or installation is forbidden. FAIL2: no complete result; preserve inputs, original model objects, conditions, partials and logs, resolve the named data/design, numerical, convergence, integrity, capacity or process failure and retry NEW output. Two real old-edition null fits exhaust 251 iterations despite failed=FALSE and finite stock test tables; they are refused. Never silently repair IDs, alleles, populations, editions, thresholds, nonfinite values or algorithms. Read WARNINGS.md and analysis-status.json. Model VERIFY does not refit R or parse binary RDS. Historical author hosts and Linux R fitting are unqualified. Two old full marker-verifier JAR checks remain SKIP3. Cell Ranger stays excluded; both literature HTML reports stay withheld from Pages.

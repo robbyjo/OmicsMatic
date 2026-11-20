@@ -1,5 +1,21 @@
 # Current literature warnings and required actions
 
+## edgeR: native operations, original models and 17 reviewed roles
+
+**Warnings and required actions:** SKIP3: dependent analysis skipped; supply the named exact permitted source/input/runtime/package or retain the skip if unavailable or installation is forbidden. FAIL2: no complete result; preserve inputs, original model objects, conditions, partials and logs, resolve the named data/design, numerical, convergence, integrity, capacity or process failure and retry NEW output. Two real old-edition null fits exhaust 251 iterations despite failed=FALSE and finite stock test tables; they are refused. Never silently repair IDs, alleles, populations, editions, thresholds, nonfinite values or algorithms. Read WARNINGS.md and analysis-status.json. Model VERIFY does not refit R or parse binary RDS. Historical author hosts and Linux R fitting are unqualified. Two old full marker-verifier JAR checks remain SKIP3. Cell Ranger stays excluded; both literature HTML reports stay withheld from Pages.
+
+250 papers, 446 named families, 2,705 observations, 1,520 individually reviewed positive uses and 1,185 pending. There are 139 scoped integrations (25 native Java and 114 upstream), 259 missing and 36 method-overlap definitions; 142 integrations include three existing adapters. All 1,503 earlier reviews remain exact. The full implementation and semantic-review goal remains unfinished.
+
+Global edger-tools and standalone EdgeRWorkflowCli call original edgeR 3.40.2/3.42.4/4.10.7 under explicit Windows R4.6.1 development profiles for prepared counts, filtering, normalization, dispersion and exact/LRT/explicit legacy-or-adjusted QL models. Global edger-normalize and standalone EdgeRNormalizationCli provide native Java TMM/TMMwsp/RLE/upper-quartile/none and raw/log CPM/RPKM for explicit source editions 3.32.1/3.36.0/3.40.2/3.42.4/4.10.7. Both offer closed RUN/VERIFY/REPLAY; native matrix operations do not add a second family credit.
+
+Seventeen reviewed source roles include one added P088 package-role association with its precise operation unresolved. Literal functions, source editions and related development counterparts remain distinct from author settings/hosts and complete workflows. Full old 3.32.1/3.36.0 inference providers are unavailable; selected CPM kernels are not full packages. Exact 3.20.1/3.22.3/3.38.4 models, the power dispersion trend and technical-replicate collapse are unsupported. limma/voom and other packages remain separate. Build current source; the released 0.4.0 binary predates these workflows.
+
+Read [the source crosswalk and exact scope](../EDGER_CATALOG_INTEGRATION.md).
+
+<details><summary>Before edgeR admission (historical)</summary>
+
+# Current literature warnings and required actions
+
 ## SuSiE global command
 
 250 papers, 446 named families, 2,704 observations, 1,503 individually reviewed positive uses and 1,201 awaiting individual review. There are 138 new scoped integrations (25 native Java and 113 upstream), 259 missing and 37 method-overlap definitions; 141 integrations include three existing adapters. All 1,483 earlier reviews remain exact. The full implementation and semantic-review goal remains open.
@@ -1594,6 +1610,8 @@ output path. Disconnected infinite pseudotime values remain present. LEARN
 does not admit a pseudotime result. Do not infer roots or repair values to
 conceal failures. Full Batchelor, study reproduction and biological accuracy
 remain unproven; the250-paper goal remains active.
+
+</details>
 
 </details>
 

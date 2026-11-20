@@ -1,5 +1,17 @@
 # Current toolbox handover
 
+**Current: [edgeR admitted, remaining work and exact resume paths](EDGER_CATALOG_CHECKPOINT_2026-11-20.md).**
+The source-built normal JAR now exposes `edger-tools` and `edger-normalize`.
+Seventeen source roles are reviewed, P088 is added with its precise operation
+unresolved, and one bounded upstream family is credited. Plan/inspect/apply/fresh
+verify, actual original/native workflows, cross-host controls and desktop/mobile
+checks pass. Totals are **139 scoped integrations (25 native +114 upstream),
+1,520 reviewed uses and 1,185 pending**, with 823 clean manifest entries.
+All 1,503 earlier reviews and all 28 worktrees are preserved. The linked
+checkpoint supersedes older edgeR registration/admission-open instructions.
+Keep the full goal active; separately transfer ignored runtimes/complete
+evidence if moving machines. Both literature reports remain withheld from Pages.
+
 **Start here: [current handover, unfinished edgeR admission and exact resume steps](HANDOVER_2026-11-20_EDGER_ADMISSION.md).**
 Both existing edgeR components remain qualified. The unfinished global-command
 edits are preserved as an explicit patch, with a successful normal build,

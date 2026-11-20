@@ -22049,6 +22049,202 @@
           "paragraph_sha256": "a1e930b134e37bf255f7765cd1612548dfedabba5d88b96d88faa558effacbbb"
         }
       ]
+    },
+    {
+      "pmcid": "PMC12823418",
+      "doi": "10.1038/s41586-025-09887-y",
+      "tool_id": "edger",
+      "evidence_paragraph_sha256": "fc93331d733c3acfa03eacffe2f1928ef7b27b2fd06760e0e1378e2519bcb868",
+      "use_summary": "Used edgeR after the in-house CLAW lipidomics workflow to model lipid ion counts by condition, with a blank sample and a log-library-size offset.",
+      "implementation_scope_note": "Lipid MRM ion counts, experimental blank/intercept and log-library offset must be declared literally. CLAW preprocessing and author blank/offset convention are not reproduced; this is not RNA-seq attribution. Original author inputs/settings/host and the whole reported workflow remain unqualified."
+    },
+    {
+      "pmcid": "PMC10764277",
+      "doi": "10.1038/s41586-023-06838-3",
+      "tool_id": "edger",
+      "evidence_paragraph_sha256": "faa05df87b176fd39e0a445f13e63abb127db5dabfdd5697ab52672329fa2161",
+      "use_summary": "Filtered microbial transcripts by CPM and prevalence, applied TMM, estimated dispersions, fitted treatment/week or WLZ-quartile/week interaction models and used glmQLFTest.",
+      "implementation_scope_note": "Exact 3.32.1 full inference is unavailable here. The reported power dispersion trend is not offered by the estimateDisp workflow. Preserve >=5 CPM in >=35% samples and both treatment/week and WLZ/week interaction hypotheses; a default locfit trend is not a substitute. Original author inputs/settings/host and the whole reported workflow remain unqualified.",
+      "version_reported_near_name": "3.32.1",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 49,
+          "section": "Methods / Microbial RNA-seq analysis of MAG gene expression",
+          "paragraph_sha256": "e1483c4b99760986ca60d4c78c7434f8e8349e3f9b4443d20f69901a86556ee6"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC13668669",
+      "doi": "10.1038/s41586-026-10987-6",
+      "tool_id": "edger",
+      "evidence_paragraph_sha256": "322d8db8af1e24889e14b163392b5fcc25d406ab15a668fbe5b8f881a02ee52d",
+      "use_summary": "Used edgeR to obtain TMM-normalized RPKM for gene-level expression, then averaged replicates for downstream analyses.",
+      "implementation_scope_note": "RPKM uses literal gene lengths and declared count/library semantics; replicate averaging is not composed here. DESeq2 differential inference and limma removeBatchEffect remain separate operations. Original author inputs/settings/host and the whole reported workflow remain unqualified.",
+      "version_reported_near_name": "3.32.1"
+    },
+    {
+      "pmcid": "PMC12823425",
+      "doi": "10.1038/s41586-025-09807-0",
+      "tool_id": "edger",
+      "evidence_paragraph_sha256": "cf43d68fadb315dbac3c2e655fe5033f94437e1c676b2c9612a1a25801efafb0",
+      "use_summary": "Used limma and EdgeR together for count processing and pairwise differential expression; used a separate DESeq2 LRT for variation across conditions.",
+      "implementation_scope_note": "Exact 3.20.1 is unsupported. The paper names pairwise edgeR/limma use without a precise edgeR function. Nearby limma 3.32.2 is not an edgeR edition; the DESeq2 LRT is separate. Original author inputs/settings/host and the whole reported workflow remain unqualified.",
+      "version_reported_near_name": "3.20.1"
+    },
+    {
+      "pmcid": "PMC10719095",
+      "doi": "10.1038/s41586-023-06819-6",
+      "tool_id": "edger",
+      "evidence_paragraph_sha256": "c6f165773ab7a9668bcd119305e6b8e19697c0104e46ae23a69722e9b3c6b5f5",
+      "use_summary": "Applied TMM and tagwise dispersion estimation with locfit to species/cell-type pseudobulks, used glmFit and between-species contrasts, and reused the setup for orthologous chromatin peaks.",
+      "implementation_scope_note": "Exact 3.36.0 full inference is unavailable here. Preserve one-to-one orthologues, pseudobulk construction, between-species contrasts, FDR 8.33e-6 and fold-change/detection rules. RNA requires fold change >=2 and detection >=15% in the upregulated cells; peaks require fold change >=4 without that detection threshold. GO background filtering is an additional role. Original author inputs/settings/host and the whole reported workflow remain unqualified.",
+      "version_reported_near_name": "3.36.0",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 6,
+          "section": "Comparing gene expression across species",
+          "paragraph_sha256": "d2ba00e11df42425d777054ffbdcaf2443788b8298ec533d3ffc91484f9e2a2f"
+        },
+        {
+          "paragraph_index": 72,
+          "section": "Methods / Droplet paired-tag / GO enrichment analysis",
+          "paragraph_sha256": "53b42a68d4014019a562e3f0714768d062b06cf3b777589991d6fcef571098e0"
+        },
+        {
+          "paragraph_index": 75,
+          "section": "Methods / Droplet paired-tag / Identification of peaks with species-biased chromatin accessibility",
+          "paragraph_sha256": "e7b9a484f02109d9727d859892640bf574641328ca6d76700438b5c25ac84200"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC13649586",
+      "doi": "10.1038/s41588-026-02774-w",
+      "tool_id": "edger",
+      "evidence_paragraph_sha256": "c154ac6b9f57829940da5af79b8739c73c7884aed794f5b0d04ee4000ac38603",
+      "use_summary": "Used calcNormFactors with TMM, then cpm with normalized library sizes and log=FALSE for liver expression; tested OLR1 relationships separately with Spearman or Wilcoxon procedures.",
+      "implementation_scope_note": "The reported R4.3.2 host is not reproduced. Native TMM/raw CPM matches the named edgeR source operations under an explicit supported edition, not the author dataset/host. sctransform/PCA outliers and stats/rstatix correlation/Wilcoxon/BH operations are separate. Original author inputs/settings/host and the whole reported workflow remain unqualified.",
+      "version_reported_near_name": "3.42.4"
+    },
+    {
+      "pmcid": "PMC11631763",
+      "doi": "10.1038/s41588-024-01975-5",
+      "tool_id": "edger",
+      "evidence_paragraph_sha256": "d899670986e0a999c90da1503e94e761b1f366bd826bef02c289518666aa4cac",
+      "use_summary": "Named edgeR 3.22.3 among the packages used for cell-type-specific heritability analyses, alongside DESeq2, limma and stratified LDSC.",
+      "implementation_scope_note": "Code availability establishes a package-role association, not an edgeR operation. The author fork 3.22.3 and R4.0.0 are unsupported here. Audit supplements and the historical fork; do not infer edgeR normalization from the separate DESeq2 review, or edgeR fitting from LDSC context. Paragraph 70 duplicates paragraph 59 and is not another execution. Original author inputs/settings/host and the whole reported workflow remain unqualified.",
+      "version_reported_near_name": "3.22.3",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 70,
+          "section": "Associated Data / Data Availability Statement",
+          "paragraph_sha256": "d899670986e0a999c90da1503e94e761b1f366bd826bef02c289518666aa4cac"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC11631752",
+      "doi": "10.1038/s41588-024-01952-y",
+      "tool_id": "edger",
+      "evidence_paragraph_sha256": "974318603a33879fb402d4371baa0cda8799fa5fd5957ab8e3f08e78c9d858be",
+      "use_summary": "Used edgeR on cell-type pseudobulks to compare DCM and control left-ventricular samples, defining disease-specific gene programs for heritability analysis.",
+      "implementation_scope_note": "Exact 3.32.1 full inference is unavailable here. Preserve DCM/control pseudobulks, FDR <0.05, absolute log2 fold change >0.5 and the minimum normalized log2-count rule. Recover the cited prior method before selecting a specific edgeR test/design. Original author inputs/settings/host and the whole reported workflow remain unqualified.",
+      "version_reported_near_name": "3.32.1"
+    },
+    {
+      "pmcid": "PMC13649572",
+      "doi": "10.1038/s41588-026-02733-5",
+      "tool_id": "edger",
+      "evidence_paragraph_sha256": "8f56cc6ea1fcdbe011923913864570aecad15fc58911304eac5e098ac83bb6b3",
+      "use_summary": "Used filterByExpr for donor-level pseudobulk expression filtering after requiring at least five nuclei per donor/cell type; described five reads in at least 40% of donors.",
+      "implementation_scope_note": "The literal prose rule (five reads in at least 40% of donors) needs reconciliation with filterByExpr CPM, library and group/design-leverage semantics. Do not replace it with raw-prevalence filtering or assume default parity. Pseudobulk donors require at least five nuclei. Original author inputs/settings/host and the whole reported workflow remain unqualified."
+    },
+    {
+      "pmcid": "PMC10703692",
+      "doi": "10.1038/s41588-023-01560-2",
+      "tool_id": "edger",
+      "evidence_paragraph_sha256": "4319f3778854369f6ed922fd60231927a52896a61e33bbb5a8d4b0ad0bb8bc6c",
+      "use_summary": "TMM-normalized Salmon/tximeta gene and isoform estimates with edgeR before the described DESeq2 transformation and covariate residualization for prediction.",
+      "implementation_scope_note": "3.40.2 is reported only at developing-brain paragraph 47; GTEx paragraph 44 has no edgeR edition. Preserve gene/isoform TMM and the separate DESeq2-VST versus log-CPM wording without silently resolving their order/transform ambiguity. Covariate residualization and prediction are separate. Original author inputs/settings/host and the whole reported workflow remain unqualified.",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 47,
+          "section": "Methods / Developmental brain reference panel processing and model training",
+          "paragraph_sha256": "5885d1aff6d0c385cd4aef8d4c88f5d6e2d56fce26b3023508ce02e5c6604195"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC12597831",
+      "doi": "10.1038/s41588-025-02368-y",
+      "tool_id": "edger",
+      "evidence_paragraph_sha256": "e1b791cf00909101476ae2171f3ce9188f7cfb639792d500f95aae8262bc200b",
+      "use_summary": "Used EdgeR for differential ChIP enrichment after csaw peak definition and loess-normalized reads, then assigned genomic features and visualized peaks.",
+      "implementation_scope_note": "Exact 3.38.4 is unsupported. csaw/loess-normalized ChIP data, offsets, counts/units and model settings require separate intake qualification. Preserve the source threshold log fold change (FC) >2 and P <0.05, without changing it to FDR or a raw fold-change threshold. Original author inputs/settings/host and the whole reported workflow remain unqualified.",
+      "version_reported_near_name": "3.38.4"
+    },
+    {
+      "pmcid": "PMC11639091",
+      "doi": "10.1016/j.ajhg.2024.10.019",
+      "tool_id": "edger",
+      "evidence_paragraph_sha256": "6a8fd2789c8b3297586f67de1ccb42bb758b3d83dd550b60139f31d5646af3c1",
+      "use_summary": "Used TMM normalization and filterByExpr before exploratory cartilage analyses, reporting >=10 counts in at least 158 samples and subsequent robust-PCA outlier removal.",
+      "implementation_scope_note": "Preserve at least 10 counts in at least 158 samples and the 226-sample reference-group context, while reconciling that prose with filterByExpr semantics. The reported R4.1.3/Bioconductor3.1 combination is retained literally as an unresolved runtime inconsistency. Robust-PCA outlier removal is separate. Original author inputs/settings/host and the whole reported workflow remain unqualified."
+    },
+    {
+      "pmcid": "PMC12824624",
+      "doi": "10.1016/j.ajhg.2025.11.012",
+      "tool_id": "edger",
+      "evidence_paragraph_sha256": "3a0c4cccba6681622283f2ead9837d7a1608880ed6daa0f83a2115782de9cbca",
+      "use_summary": "Applied edgeR TMM to robustly expressed lncRNA and protein-coding genes before rank-inverse-normal transformation and PEER covariate estimation.",
+      "implementation_scope_note": "TMM precedes rank-based inverse-normal transformation and PEER; no edgeR differential fit or edition is established. TPM >0.1, counts >6 in at least 20% and upstream cohort filtering remain separate. Original author inputs/settings/host and the whole reported workflow remain unqualified."
+    },
+    {
+      "pmcid": "PMC12614742",
+      "doi": "10.1016/j.ajhg.2025.09.003",
+      "tool_id": "edger",
+      "evidence_paragraph_sha256": "0755e48ea00cbef2242307a451edbac198e2e8cf11d0fe0bdcf6ad9b6bbd214f",
+      "use_summary": "Described a low-count filter, CPM calculation and TMM normalization in edgeR before inverse-normal transformation for study-level eQTL analysis.",
+      "implementation_scope_note": "Retain the literal removal rule (<5 counts in >=25% of individuals), calculated CPM then TMM wording and subsequent inverse-normal transform. The source order/units/prevalence ambiguity is unresolved; the native component offers explicit arithmetic operations, not an inferred repaired pipeline. Original author inputs/settings/host and the whole reported workflow remain unqualified."
+    },
+    {
+      "pmcid": "PMC11339655",
+      "doi": "10.1016/j.ajhg.2024.06.018",
+      "tool_id": "edger",
+      "evidence_paragraph_sha256": "4c5b5a51658efb96cabd0943ccfec2ce8e97b73de281161bc3befafcfa197df1",
+      "use_summary": "Used edgeR on Salmon-generated short-read counts for comparisons between day 0 and later iNeuron time points, reporting log fold changes and adjusted P values.",
+      "implementation_scope_note": "The paper reports edgeR differential expression for iNeuron day-0/later contrasts without edition/function/design. Salmon-derived count units need explicit declaration. HISAT2/StringTie/Ballgown, biomaRt and Rsubread/seqinr junction handling are separate. Original author inputs/settings/host and the whole reported workflow remain unqualified."
+    },
+    {
+      "pmcid": "PMC12696504",
+      "doi": "10.1016/j.ajhg.2025.07.020",
+      "tool_id": "edger",
+      "evidence_paragraph_sha256": "1b4fceedd203637c30a26e70d3136361ce540e2adfa1676b69ef55a42f1a9b8e",
+      "use_summary": "Used estimateDisp for Hi-C interaction count overdispersion and GLM testing, and used TMMwsp on pseudobulk snRNA-seq counts before limma voomLmFit.",
+      "implementation_scope_note": "Two roles are distinct: Hi-C estimateDisp/GLM after ICE/LOESS/contact processing, and snRNA TMMwsp before limma voomLmFit. Corrected-contact count units/offsets, upstream contact filters and the complete Hi-C design are unqualified. limma fitting/BH and adjusted P <0.2 for snRNA are not edgeR NB-test attribution. Original author inputs/settings/host and the whole reported workflow remain unqualified.",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 12,
+          "section": "Material and methods / snRNA-seq and data analysis",
+          "paragraph_sha256": "99f200462063a6de97989b285539ae6919194c52292e1cd573d3eebba003d5eb"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC13087474",
+      "doi": "10.1016/j.ajhg.2026.02.014",
+      "tool_id": "edger",
+      "evidence_paragraph_sha256": "05c7fe9bc06d1edc524057b5448c12d646643308fc382d4ac752230158ae8b16",
+      "use_summary": "Used edgeR for count normalization/expression analysis, CPM-based filtering, sumTechReps in selected external datasets and log2 CPM with prior.count=2; inference used voomLmFit.",
+      "implementation_scope_note": "sumTechReps is explicitly named but is not exposed by either component. Preserve filtering CPM >=2 in at least one fourth of samples before selected technical-replicate merging, then normalization; plotting cpm uses prior.count=2 and log2. Clone:dox contrasts, their between-replicate limitations and voomLmFit inference are separate; no edgeR NB-test function is inferred. Original author inputs/settings/host and the whole reported workflow remain unqualified.",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 14,
+          "section": "Material and methods / Differential expression analysis for XIST-based silencing across clones and selective homolog silencing (or loss)",
+          "paragraph_sha256": "2de6c1507186b2c08b0a43400c02e327a4884e959c31b17d6aacdd4890d449e5"
+        }
+      ]
     }
   ]
 }

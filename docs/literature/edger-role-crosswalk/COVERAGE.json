@@ -1,0 +1,1134 @@
+{
+  "schema_version": 1,
+  "status": "PASS_17_EDGER_SOURCE_ROLE_CROSSWALK_CUMULATIVE_ADMISSION_PROPOSED",
+  "roles": [
+    {
+      "paper_id": "P005",
+      "pmcid": "PMC12823418",
+      "doi": "10.1038/s41586-025-09887-y",
+      "primary_url": "https://doi.org/10.1038/s41586-025-09887-y",
+      "role": "lipid-ion-count-GLM",
+      "usage_summary": "Used edgeR after the in-house CLAW lipidomics workflow to model lipid ion counts by condition, with a blank sample and a log-library-size offset.",
+      "anchors": [
+        {
+          "paragraph_index": 67,
+          "section": "Methods / Lipidomics data analysis",
+          "paragraph_sha256": "fc93331d733c3acfa03eacffe2f1928ef7b27b2fd06760e0e1378e2519bcb868"
+        }
+      ],
+      "reported_versions": [],
+      "existing_observation": true,
+      "proposed_missed_observation": false,
+      "author_runtime_executed": false,
+      "whole_paper_reproduced": false,
+      "frozen_native_checkpoint_caution": "The named primary paragraph concerns lipidomics. A native normalization matrix does not implement CLAW preprocessing, its blank/design conventions or GLM testing; do not infer an edition or attribute all RNA-seq testing from this paragraph.",
+      "source_xml_sha256": "e77488573a78e002932ba5dd67336204b01eed1e60235a00b4e57c442179e74e",
+      "primary_evidence": {
+        "paragraph_index": 67,
+        "section": "Methods / Lipidomics data analysis",
+        "paragraph_sha256": "fc93331d733c3acfa03eacffe2f1928ef7b27b2fd06760e0e1378e2519bcb868"
+      },
+      "primary_anchor_reported_versions": [],
+      "explicit_edgeR_functions": [],
+      "native_matrix_counterparts": [],
+      "original_prepared_count_counterparts": [
+        "supplied-count GLM fit and explicit contrast"
+      ],
+      "matching_reported_native_editions": [],
+      "matching_reported_model_source_profiles": [],
+      "unsupported_reported_model_editions": [],
+      "reported_editions_without_any_qualified_component": [],
+      "operation_unresolved": false,
+      "counterparts_are_not_author_function_attribution": true,
+      "original_author_inputs_and_settings_recovered": false,
+      "author_R_and_dependency_profile_recovered": false,
+      "historical_author_host_reproduced": false,
+      "complete_author_workflow_qualified": false,
+      "full_reported_role_qualified": false,
+      "remaining_author_roles": [
+        "Lipid MRM ion counts, experimental blank/intercept and log-library offset must be declared literally. CLAW preprocessing and author blank/offset convention are not reproduced; this is not RNA-seq attribution.",
+        "Original author inputs/settings/host and the whole reported workflow remain unqualified."
+      ],
+      "canonical_review_appended": false,
+      "canonical_review_proposed": true
+    },
+    {
+      "paper_id": "P037",
+      "pmcid": "PMC10764277",
+      "doi": "10.1038/s41586-023-06838-3",
+      "primary_url": "https://doi.org/10.1038/s41586-023-06838-3",
+      "role": "TMM-and-quasi-likelihood-GLM",
+      "usage_summary": "Filtered microbial transcripts by CPM and prevalence, applied TMM, estimated dispersions, fitted treatment/week or WLZ-quartile/week interaction models and used glmQLFTest.",
+      "anchors": [
+        {
+          "paragraph_index": 48,
+          "section": "Methods / Microbial RNA-seq analysis of MAG gene expression",
+          "paragraph_sha256": "faa05df87b176fd39e0a445f13e63abb127db5dabfdd5697ab52672329fa2161"
+        },
+        {
+          "paragraph_index": 49,
+          "section": "Methods / Microbial RNA-seq analysis of MAG gene expression",
+          "paragraph_sha256": "e1483c4b99760986ca60d4c78c7434f8e8349e3f9b4443d20f69901a86556ee6"
+        }
+      ],
+      "reported_versions": [
+        {
+          "version": "3.32.1",
+          "paragraph_index": 48,
+          "literal": "v.3.32.1"
+        }
+      ],
+      "existing_observation": true,
+      "proposed_missed_observation": false,
+      "author_runtime_executed": false,
+      "whole_paper_reproduced": false,
+      "frozen_native_checkpoint_caution": "Retain >=5 CPM in >=35% of samples and the separate interaction designs. The reported power-method dispersion step is not silently recast as the default estimateDisp pipeline. Native normalization supplies neither filtering, dispersion fitting nor the F-test.",
+      "source_xml_sha256": "812e36432230a2cb9fdad7c98df03a2ab9131acdee41ba0847b8aa9c9aa312f7",
+      "primary_evidence": {
+        "paragraph_index": 48,
+        "section": "Methods / Microbial RNA-seq analysis of MAG gene expression",
+        "paragraph_sha256": "faa05df87b176fd39e0a445f13e63abb127db5dabfdd5697ab52672329fa2161"
+      },
+      "primary_anchor_reported_versions": [
+        "3.32.1"
+      ],
+      "explicit_edgeR_functions": [
+        {
+          "paper_id": "P037",
+          "paragraph_index": 49,
+          "function": "glmQLFTest",
+          "paragraph_sha256": "e1483c4b99760986ca60d4c78c7434f8e8349e3f9b4443d20f69901a86556ee6",
+          "literal": "glmQLFTest",
+          "character_offsets": [
+            141
+          ]
+        }
+      ],
+      "native_matrix_counterparts": [
+        "TMM",
+        "CPM"
+      ],
+      "original_prepared_count_counterparts": [
+        "explicit legacy QL test counterpart; power trend unsupported"
+      ],
+      "matching_reported_native_editions": [
+        "3.32.1"
+      ],
+      "matching_reported_model_source_profiles": [],
+      "unsupported_reported_model_editions": [
+        "3.32.1"
+      ],
+      "reported_editions_without_any_qualified_component": [],
+      "operation_unresolved": false,
+      "counterparts_are_not_author_function_attribution": true,
+      "original_author_inputs_and_settings_recovered": false,
+      "author_R_and_dependency_profile_recovered": false,
+      "historical_author_host_reproduced": false,
+      "complete_author_workflow_qualified": false,
+      "full_reported_role_qualified": false,
+      "remaining_author_roles": [
+        "Exact 3.32.1 full inference is unavailable here. The reported power dispersion trend is not offered by the estimateDisp workflow. Preserve >=5 CPM in >=35% samples and both treatment/week and WLZ/week interaction hypotheses; a default locfit trend is not a substitute.",
+        "Original author inputs/settings/host and the whole reported workflow remain unqualified."
+      ],
+      "canonical_review_appended": false,
+      "canonical_review_proposed": true
+    },
+    {
+      "paper_id": "P046",
+      "pmcid": "PMC13668669",
+      "doi": "10.1038/s41586-026-10987-6",
+      "primary_url": "https://doi.org/10.1038/s41586-026-10987-6",
+      "role": "TMM-RPKM",
+      "usage_summary": "Used edgeR to obtain TMM-normalized RPKM for gene-level expression, then averaged replicates for downstream analyses.",
+      "anchors": [
+        {
+          "paragraph_index": 30,
+          "section": "Methods / RNA-seq library creation and analysis",
+          "paragraph_sha256": "322d8db8af1e24889e14b163392b5fcc25d406ab15a668fbe5b8f881a02ee52d"
+        }
+      ],
+      "reported_versions": [
+        {
+          "version": "3.32.1",
+          "paragraph_index": 30,
+          "literal": "v.3.32.1"
+        }
+      ],
+      "existing_observation": true,
+      "proposed_missed_observation": false,
+      "author_runtime_executed": false,
+      "whole_paper_reproduced": false,
+      "frozen_native_checkpoint_caution": "Literal supplied gene lengths, count preparation and replicate aggregation remain required. Differential tests used DESeq2 and batch-effect removal used limma; neither is attributed to edgeR.",
+      "source_xml_sha256": "06059f0f86607700494cb0b2477f8a9c03605b8c2089576e3b913baac4036be2",
+      "primary_evidence": {
+        "paragraph_index": 30,
+        "section": "Methods / RNA-seq library creation and analysis",
+        "paragraph_sha256": "322d8db8af1e24889e14b163392b5fcc25d406ab15a668fbe5b8f881a02ee52d"
+      },
+      "primary_anchor_reported_versions": [
+        "3.32.1"
+      ],
+      "explicit_edgeR_functions": [],
+      "native_matrix_counterparts": [
+        "TMM",
+        "RPKM"
+      ],
+      "original_prepared_count_counterparts": [],
+      "matching_reported_native_editions": [
+        "3.32.1"
+      ],
+      "matching_reported_model_source_profiles": [],
+      "unsupported_reported_model_editions": [],
+      "reported_editions_without_any_qualified_component": [],
+      "operation_unresolved": false,
+      "counterparts_are_not_author_function_attribution": true,
+      "original_author_inputs_and_settings_recovered": false,
+      "author_R_and_dependency_profile_recovered": false,
+      "historical_author_host_reproduced": false,
+      "complete_author_workflow_qualified": false,
+      "full_reported_role_qualified": false,
+      "remaining_author_roles": [
+        "RPKM uses literal gene lengths and declared count/library semantics; replicate averaging is not composed here. DESeq2 differential inference and limma removeBatchEffect remain separate operations.",
+        "Original author inputs/settings/host and the whole reported workflow remain unqualified."
+      ],
+      "canonical_review_appended": false,
+      "canonical_review_proposed": true
+    },
+    {
+      "paper_id": "P051",
+      "pmcid": "PMC12823425",
+      "doi": "10.1038/s41586-025-09807-0",
+      "primary_url": "https://doi.org/10.1038/s41586-025-09807-0",
+      "role": "limma-edgeR-pairwise-DE",
+      "usage_summary": "Used limma and EdgeR together for count processing and pairwise differential expression; used a separate DESeq2 LRT for variation across conditions.",
+      "anchors": [
+        {
+          "paragraph_index": 79,
+          "section": "Methods / Bulk RNA sequencing of mice and human-derived neutrophils",
+          "paragraph_sha256": "cf43d68fadb315dbac3c2e655fe5033f94437e1c676b2c9612a1a25801efafb0"
+        }
+      ],
+      "reported_versions": [
+        {
+          "version": "3.20.1",
+          "paragraph_index": 79,
+          "literal": "v.3.20.1"
+        }
+      ],
+      "existing_observation": true,
+      "proposed_missed_observation": false,
+      "author_runtime_executed": false,
+      "whole_paper_reproduced": false,
+      "frozen_native_checkpoint_caution": "Preserve the capitalized spelling and distinct package versions: limma 3.32.2 is not the edgeR edition. Exact edgeR functions, designs and options are unstated; 3.20.1 is not a supported native profile.",
+      "source_xml_sha256": "9182a4004117036e7be71b48cabb34755f397746ef0fe821dfad01f64fa2c129",
+      "primary_evidence": {
+        "paragraph_index": 79,
+        "section": "Methods / Bulk RNA sequencing of mice and human-derived neutrophils",
+        "paragraph_sha256": "cf43d68fadb315dbac3c2e655fe5033f94437e1c676b2c9612a1a25801efafb0"
+      },
+      "primary_anchor_reported_versions": [
+        "3.20.1"
+      ],
+      "explicit_edgeR_functions": [],
+      "native_matrix_counterparts": [],
+      "original_prepared_count_counterparts": [
+        "prepared-count differential models; author test function unresolved"
+      ],
+      "matching_reported_native_editions": [],
+      "matching_reported_model_source_profiles": [],
+      "unsupported_reported_model_editions": [
+        "3.20.1"
+      ],
+      "reported_editions_without_any_qualified_component": [
+        "3.20.1"
+      ],
+      "operation_unresolved": false,
+      "counterparts_are_not_author_function_attribution": true,
+      "original_author_inputs_and_settings_recovered": false,
+      "author_R_and_dependency_profile_recovered": false,
+      "historical_author_host_reproduced": false,
+      "complete_author_workflow_qualified": false,
+      "full_reported_role_qualified": false,
+      "remaining_author_roles": [
+        "Exact 3.20.1 is unsupported. The paper names pairwise edgeR/limma use without a precise edgeR function. Nearby limma 3.32.2 is not an edgeR edition; the DESeq2 LRT is separate.",
+        "Original author inputs/settings/host and the whole reported workflow remain unqualified."
+      ],
+      "canonical_review_appended": false,
+      "canonical_review_proposed": true
+    },
+    {
+      "paper_id": "P053",
+      "pmcid": "PMC10719095",
+      "doi": "10.1038/s41586-023-06819-6",
+      "primary_url": "https://doi.org/10.1038/s41586-023-06819-6",
+      "role": "cross-species-pseudobulk-GLM-and-peaks",
+      "usage_summary": "Applied TMM and tagwise dispersion estimation with locfit to species/cell-type pseudobulks, used glmFit and between-species contrasts, and reused the setup for orthologous chromatin peaks.",
+      "anchors": [
+        {
+          "paragraph_index": 6,
+          "section": "Comparing gene expression across species",
+          "paragraph_sha256": "d2ba00e11df42425d777054ffbdcaf2443788b8298ec533d3ffc91484f9e2a2f"
+        },
+        {
+          "paragraph_index": 72,
+          "section": "Methods / Droplet paired-tag / GO enrichment analysis",
+          "paragraph_sha256": "53b42a68d4014019a562e3f0714768d062b06cf3b777589991d6fcef571098e0"
+        },
+        {
+          "paragraph_index": 73,
+          "section": "Methods / Droplet paired-tag / Identification of species-biased gene activity",
+          "paragraph_sha256": "c6f165773ab7a9668bcd119305e6b8e19697c0104e46ae23a69722e9b3c6b5f5"
+        },
+        {
+          "paragraph_index": 75,
+          "section": "Methods / Droplet paired-tag / Identification of peaks with species-biased chromatin accessibility",
+          "paragraph_sha256": "e7b9a484f02109d9727d859892640bf574641328ca6d76700438b5c25ac84200"
+        }
+      ],
+      "reported_versions": [
+        {
+          "version": "3.36.0",
+          "paragraph_index": 72,
+          "literal": "v.3.36.0"
+        },
+        {
+          "version": "3.36.0",
+          "paragraph_index": 73,
+          "literal": "v.3.36.0"
+        }
+      ],
+      "existing_observation": true,
+      "proposed_missed_observation": false,
+      "author_runtime_executed": false,
+      "whole_paper_reproduced": false,
+      "frozen_native_checkpoint_caution": "Preserve one-to-one orthologues, stated FDR 8.33e-6, gene fold-change >=2 and 15% detection requirement, versus peak fold-change >=4 with no cell-detection cut. Native normalization does not qualify filtering, GLM contrasts, orthology construction or detection rules.",
+      "source_xml_sha256": "09ff276fa0ecc0e114a8e0f9af929fbb974a3124b01ef8ef205ed117198b41fe",
+      "primary_evidence": {
+        "paragraph_index": 73,
+        "section": "Methods / Droplet paired-tag / Identification of species-biased gene activity",
+        "paragraph_sha256": "c6f165773ab7a9668bcd119305e6b8e19697c0104e46ae23a69722e9b3c6b5f5"
+      },
+      "primary_anchor_reported_versions": [
+        "3.36.0"
+      ],
+      "explicit_edgeR_functions": [
+        {
+          "paper_id": "P053",
+          "paragraph_index": 73,
+          "function": "glmFit",
+          "paragraph_sha256": "c6f165773ab7a9668bcd119305e6b8e19697c0104e46ae23a69722e9b3c6b5f5",
+          "literal": "glmFit",
+          "character_offsets": [
+            517
+          ]
+        }
+      ],
+      "native_matrix_counterparts": [
+        "TMM"
+      ],
+      "original_prepared_count_counterparts": [
+        "glmFit and explicit between-species contrasts; locfit/tagwise dispersion"
+      ],
+      "matching_reported_native_editions": [
+        "3.36.0"
+      ],
+      "matching_reported_model_source_profiles": [],
+      "unsupported_reported_model_editions": [
+        "3.36.0"
+      ],
+      "reported_editions_without_any_qualified_component": [],
+      "operation_unresolved": false,
+      "counterparts_are_not_author_function_attribution": true,
+      "original_author_inputs_and_settings_recovered": false,
+      "author_R_and_dependency_profile_recovered": false,
+      "historical_author_host_reproduced": false,
+      "complete_author_workflow_qualified": false,
+      "full_reported_role_qualified": false,
+      "remaining_author_roles": [
+        "Exact 3.36.0 full inference is unavailable here. Preserve one-to-one orthologues, pseudobulk construction, between-species contrasts, FDR 8.33e-6 and fold-change/detection rules. RNA requires fold change >=2 and detection >=15% in the upregulated cells; peaks require fold change >=4 without that detection threshold. GO background filtering is an additional role.",
+        "Original author inputs/settings/host and the whole reported workflow remain unqualified."
+      ],
+      "canonical_review_appended": false,
+      "canonical_review_proposed": true
+    },
+    {
+      "paper_id": "P087",
+      "pmcid": "PMC13649586",
+      "doi": "10.1038/s41588-026-02774-w",
+      "primary_url": "https://doi.org/10.1038/s41588-026-02774-w",
+      "role": "TMM-and-unlogged-normalized-CPM",
+      "usage_summary": "Used calcNormFactors with TMM, then cpm with normalized library sizes and log=FALSE for liver expression; tested OLR1 relationships separately with Spearman or Wilcoxon procedures.",
+      "anchors": [
+        {
+          "paragraph_index": 65,
+          "section": "Methods / Human liver bulk RNA-seq analysis",
+          "paragraph_sha256": "c154ac6b9f57829940da5af79b8739c73c7884aed794f5b0d04ee4000ac38603"
+        }
+      ],
+      "reported_versions": [
+        {
+          "version": "3.42.4",
+          "paragraph_index": 65,
+          "literal": "v.3.42.4"
+        }
+      ],
+      "existing_observation": true,
+      "proposed_missed_observation": false,
+      "author_runtime_executed": false,
+      "whole_paper_reproduced": false,
+      "frozen_native_checkpoint_caution": "PCA outlier removal after sctransform VST and downstream stats/rstatix tests are separate. Native prepared-matrix TMM/CPM does not select samples or reproduce the author R4.3.2 deployment.",
+      "source_xml_sha256": "d647fee1d2623c8d4c58ec1d36b7116037e311add277e5f5a258a1ed2a502593",
+      "primary_evidence": {
+        "paragraph_index": 65,
+        "section": "Methods / Human liver bulk RNA-seq analysis",
+        "paragraph_sha256": "c154ac6b9f57829940da5af79b8739c73c7884aed794f5b0d04ee4000ac38603"
+      },
+      "primary_anchor_reported_versions": [
+        "3.42.4"
+      ],
+      "explicit_edgeR_functions": [
+        {
+          "paper_id": "P087",
+          "paragraph_index": 65,
+          "function": "calcNormFactors",
+          "paragraph_sha256": "c154ac6b9f57829940da5af79b8739c73c7884aed794f5b0d04ee4000ac38603",
+          "literal": "calcNormFactors",
+          "character_offsets": [
+            818
+          ]
+        },
+        {
+          "paper_id": "P087",
+          "paragraph_index": 65,
+          "function": "cpm",
+          "paragraph_sha256": "c154ac6b9f57829940da5af79b8739c73c7884aed794f5b0d04ee4000ac38603",
+          "literal": "cpm",
+          "character_offsets": [
+            1014
+          ]
+        }
+      ],
+      "native_matrix_counterparts": [
+        "TMM",
+        "CPM"
+      ],
+      "original_prepared_count_counterparts": [],
+      "matching_reported_native_editions": [
+        "3.42.4"
+      ],
+      "matching_reported_model_source_profiles": [],
+      "unsupported_reported_model_editions": [],
+      "reported_editions_without_any_qualified_component": [],
+      "operation_unresolved": false,
+      "counterparts_are_not_author_function_attribution": true,
+      "original_author_inputs_and_settings_recovered": false,
+      "author_R_and_dependency_profile_recovered": false,
+      "historical_author_host_reproduced": false,
+      "complete_author_workflow_qualified": false,
+      "full_reported_role_qualified": false,
+      "remaining_author_roles": [
+        "The reported R4.3.2 host is not reproduced. Native TMM/raw CPM matches the named edgeR source operations under an explicit supported edition, not the author dataset/host. sctransform/PCA outliers and stats/rstatix correlation/Wilcoxon/BH operations are separate.",
+        "Original author inputs/settings/host and the whole reported workflow remain unqualified."
+      ],
+      "canonical_review_appended": false,
+      "canonical_review_proposed": true
+    },
+    {
+      "paper_id": "P088",
+      "pmcid": "PMC11631763",
+      "doi": "10.1038/s41588-024-01975-5",
+      "primary_url": "https://doi.org/10.1038/s41588-024-01975-5",
+      "role": "cell-type-workflow-package-role",
+      "usage_summary": "Named edgeR 3.22.3 among the packages used for cell-type-specific heritability analyses, alongside DESeq2, limma and stratified LDSC.",
+      "anchors": [
+        {
+          "paragraph_index": 59,
+          "section": "Code availability",
+          "paragraph_sha256": "d899670986e0a999c90da1503e94e761b1f366bd826bef02c289518666aa4cac"
+        },
+        {
+          "paragraph_index": 70,
+          "section": "Associated Data / Data Availability Statement",
+          "paragraph_sha256": "d899670986e0a999c90da1503e94e761b1f366bd826bef02c289518666aa4cac"
+        }
+      ],
+      "reported_versions": [
+        {
+          "version": "3.22.3",
+          "paragraph_index": 59,
+          "literal": "v.3.22.3"
+        }
+      ],
+      "existing_observation": false,
+      "proposed_missed_observation": true,
+      "author_runtime_executed": false,
+      "whole_paper_reproduced": false,
+      "frozen_native_checkpoint_caution": "The code-availability statement supports a missed package observation but does not identify a precise edgeR function here. The associated-data copy is not another execution. Supplement-specific filtering details and the historical 3.22.3 fork require separate audit; no native counterpart is inferred.",
+      "source_xml_sha256": "9a809b741a416b28a354287c263b3662ef5137e6e616b1855b999b9355534623",
+      "primary_evidence": {
+        "paragraph_index": 59,
+        "section": "Code availability",
+        "paragraph_sha256": "d899670986e0a999c90da1503e94e761b1f366bd826bef02c289518666aa4cac"
+      },
+      "primary_anchor_reported_versions": [
+        "3.22.3"
+      ],
+      "explicit_edgeR_functions": [],
+      "native_matrix_counterparts": [],
+      "original_prepared_count_counterparts": [],
+      "matching_reported_native_editions": [],
+      "matching_reported_model_source_profiles": [],
+      "unsupported_reported_model_editions": [],
+      "reported_editions_without_any_qualified_component": [
+        "3.22.3"
+      ],
+      "operation_unresolved": true,
+      "counterparts_are_not_author_function_attribution": true,
+      "original_author_inputs_and_settings_recovered": false,
+      "author_R_and_dependency_profile_recovered": false,
+      "historical_author_host_reproduced": false,
+      "complete_author_workflow_qualified": false,
+      "full_reported_role_qualified": false,
+      "remaining_author_roles": [
+        "Code availability establishes a package-role association, not an edgeR operation. The author fork 3.22.3 and R4.0.0 are unsupported here. Audit supplements and the historical fork; do not infer edgeR normalization from the separate DESeq2 review, or edgeR fitting from LDSC context. Paragraph 70 duplicates paragraph 59 and is not another execution.",
+        "Original author inputs/settings/host and the whole reported workflow remain unqualified."
+      ],
+      "canonical_review_appended": false,
+      "canonical_review_proposed": true
+    },
+    {
+      "paper_id": "P090",
+      "pmcid": "PMC11631752",
+      "doi": "10.1038/s41588-024-01952-y",
+      "primary_url": "https://doi.org/10.1038/s41588-024-01952-y",
+      "role": "cell-type-pseudobulk-disease-DE",
+      "usage_summary": "Used edgeR on cell-type pseudobulks to compare DCM and control left-ventricular samples, defining disease-specific gene programs for heritability analysis.",
+      "anchors": [
+        {
+          "paragraph_index": 37,
+          "section": "Methods / Tissue, cell type and cell state heritability enrichment",
+          "paragraph_sha256": "974318603a33879fb402d4371baa0cda8799fa5fd5957ab8e3f08e78c9d858be"
+        }
+      ],
+      "reported_versions": [
+        {
+          "version": "3.32.1",
+          "paragraph_index": 37,
+          "literal": "v.3.32.1"
+        }
+      ],
+      "existing_observation": true,
+      "proposed_missed_observation": false,
+      "author_runtime_executed": false,
+      "whole_paper_reproduced": false,
+      "frozen_native_checkpoint_caution": "Retain the donor/cell populations, FDR <0.05, absolute log2 fold change >0.5 and reported minimum normalized log2 expression rule. Precise functions/design are deferred to earlier methods; native normalization alone does not implement the disease analysis.",
+      "source_xml_sha256": "9134de1e47ed25c8ca3033729d6b60846a95603b762996d6aac9d2ef4926c3ca",
+      "primary_evidence": {
+        "paragraph_index": 37,
+        "section": "Methods / Tissue, cell type and cell state heritability enrichment",
+        "paragraph_sha256": "974318603a33879fb402d4371baa0cda8799fa5fd5957ab8e3f08e78c9d858be"
+      },
+      "primary_anchor_reported_versions": [
+        "3.32.1"
+      ],
+      "explicit_edgeR_functions": [],
+      "native_matrix_counterparts": [],
+      "original_prepared_count_counterparts": [
+        "prepared-count differential models; author test function unresolved"
+      ],
+      "matching_reported_native_editions": [],
+      "matching_reported_model_source_profiles": [],
+      "unsupported_reported_model_editions": [
+        "3.32.1"
+      ],
+      "reported_editions_without_any_qualified_component": [],
+      "operation_unresolved": false,
+      "counterparts_are_not_author_function_attribution": true,
+      "original_author_inputs_and_settings_recovered": false,
+      "author_R_and_dependency_profile_recovered": false,
+      "historical_author_host_reproduced": false,
+      "complete_author_workflow_qualified": false,
+      "full_reported_role_qualified": false,
+      "remaining_author_roles": [
+        "Exact 3.32.1 full inference is unavailable here. Preserve DCM/control pseudobulks, FDR <0.05, absolute log2 fold change >0.5 and the minimum normalized log2-count rule. Recover the cited prior method before selecting a specific edgeR test/design.",
+        "Original author inputs/settings/host and the whole reported workflow remain unqualified."
+      ],
+      "canonical_review_appended": false,
+      "canonical_review_proposed": true
+    },
+    {
+      "paper_id": "P104",
+      "pmcid": "PMC13649572",
+      "doi": "10.1038/s41588-026-02733-5",
+      "primary_url": "https://doi.org/10.1038/s41588-026-02733-5",
+      "role": "pseudobulk-expression-filtering",
+      "usage_summary": "Used filterByExpr for donor-level pseudobulk expression filtering after requiring at least five nuclei per donor/cell type; described five reads in at least 40% of donors.",
+      "anchors": [
+        {
+          "paragraph_index": 35,
+          "section": "Methods / Sample selection and preprocessing / Analysis of genetic regulatory variants at the pseudobulk level",
+          "paragraph_sha256": "8f56cc6ea1fcdbe011923913864570aecad15fc58911304eac5e098ac83bb6b3"
+        }
+      ],
+      "reported_versions": [],
+      "existing_observation": true,
+      "proposed_missed_observation": false,
+      "author_runtime_executed": false,
+      "whole_paper_reproduced": false,
+      "frozen_native_checkpoint_caution": "Do not substitute a hand-written raw-count prevalence filter for the named function: its group/design, library-size and CPM semantics need explicit reconciliation. Native normalization has no automatic filterByExpr step; edition is unstated.",
+      "source_xml_sha256": "d92b674fe5e2053354f2693a2409628e5e729bd59cd613a8f76558e48860c248",
+      "primary_evidence": {
+        "paragraph_index": 35,
+        "section": "Methods / Sample selection and preprocessing / Analysis of genetic regulatory variants at the pseudobulk level",
+        "paragraph_sha256": "8f56cc6ea1fcdbe011923913864570aecad15fc58911304eac5e098ac83bb6b3"
+      },
+      "primary_anchor_reported_versions": [],
+      "explicit_edgeR_functions": [
+        {
+          "paper_id": "P104",
+          "paragraph_index": 35,
+          "function": "filterByExpr",
+          "paragraph_sha256": "8f56cc6ea1fcdbe011923913864570aecad15fc58911304eac5e098ac83bb6b3",
+          "literal": "filterByExpr",
+          "character_offsets": [
+            363
+          ]
+        }
+      ],
+      "native_matrix_counterparts": [],
+      "original_prepared_count_counterparts": [
+        "filterByExpr with explicit group/design, library and threshold semantics"
+      ],
+      "matching_reported_native_editions": [],
+      "matching_reported_model_source_profiles": [],
+      "unsupported_reported_model_editions": [],
+      "reported_editions_without_any_qualified_component": [],
+      "operation_unresolved": false,
+      "counterparts_are_not_author_function_attribution": true,
+      "original_author_inputs_and_settings_recovered": false,
+      "author_R_and_dependency_profile_recovered": false,
+      "historical_author_host_reproduced": false,
+      "complete_author_workflow_qualified": false,
+      "full_reported_role_qualified": false,
+      "remaining_author_roles": [
+        "The literal prose rule (five reads in at least 40% of donors) needs reconciliation with filterByExpr CPM, library and group/design-leverage semantics. Do not replace it with raw-prevalence filtering or assume default parity. Pseudobulk donors require at least five nuclei.",
+        "Original author inputs/settings/host and the whole reported workflow remain unqualified."
+      ],
+      "canonical_review_appended": false,
+      "canonical_review_proposed": true
+    },
+    {
+      "paper_id": "P108",
+      "pmcid": "PMC10703692",
+      "doi": "10.1038/s41588-023-01560-2",
+      "primary_url": "https://doi.org/10.1038/s41588-023-01560-2",
+      "role": "gene-and-isoform-TMM-for-prediction",
+      "usage_summary": "TMM-normalized Salmon/tximeta gene and isoform estimates with edgeR before the described DESeq2 transformation and covariate residualization for prediction.",
+      "anchors": [
+        {
+          "paragraph_index": 44,
+          "section": "Methods / GTEx processing and model training",
+          "paragraph_sha256": "4319f3778854369f6ed922fd60231927a52896a61e33bbb5a8d4b0ad0bb8bc6c"
+        },
+        {
+          "paragraph_index": 47,
+          "section": "Methods / Developmental brain reference panel processing and model training",
+          "paragraph_sha256": "5885d1aff6d0c385cd4aef8d4c88f5d6e2d56fce26b3023508ce02e5c6604195"
+        }
+      ],
+      "reported_versions": [
+        {
+          "version": "3.40.2",
+          "paragraph_index": 47,
+          "literal": "v3.40.2"
+        }
+      ],
+      "existing_observation": true,
+      "proposed_missed_observation": false,
+      "author_runtime_executed": false,
+      "whole_paper_reproduced": false,
+      "frozen_native_checkpoint_caution": "Version 3.40.2 is stated for developmental-brain processing; do not transfer it to the GTEx paragraph without evidence. Preserve the authors mixed VST/log-CPM wording, inferential replicates, covariate populations and downstream training as separate steps.",
+      "source_xml_sha256": "2b6379547edec29576319cbf8354701af40c7480514415c36d8657075449c182",
+      "primary_evidence": {
+        "paragraph_index": 44,
+        "section": "Methods / GTEx processing and model training",
+        "paragraph_sha256": "4319f3778854369f6ed922fd60231927a52896a61e33bbb5a8d4b0ad0bb8bc6c"
+      },
+      "primary_anchor_reported_versions": [],
+      "explicit_edgeR_functions": [],
+      "native_matrix_counterparts": [
+        "TMM"
+      ],
+      "original_prepared_count_counterparts": [],
+      "matching_reported_native_editions": [
+        "3.40.2"
+      ],
+      "matching_reported_model_source_profiles": [],
+      "unsupported_reported_model_editions": [],
+      "reported_editions_without_any_qualified_component": [],
+      "operation_unresolved": false,
+      "counterparts_are_not_author_function_attribution": true,
+      "original_author_inputs_and_settings_recovered": false,
+      "author_R_and_dependency_profile_recovered": false,
+      "historical_author_host_reproduced": false,
+      "complete_author_workflow_qualified": false,
+      "full_reported_role_qualified": false,
+      "remaining_author_roles": [
+        "3.40.2 is reported only at developing-brain paragraph 47; GTEx paragraph 44 has no edgeR edition. Preserve gene/isoform TMM and the separate DESeq2-VST versus log-CPM wording without silently resolving their order/transform ambiguity. Covariate residualization and prediction are separate.",
+        "Original author inputs/settings/host and the whole reported workflow remain unqualified."
+      ],
+      "canonical_review_appended": false,
+      "canonical_review_proposed": true
+    },
+    {
+      "paper_id": "P158",
+      "pmcid": "PMC12597831",
+      "doi": "10.1038/s41588-025-02368-y",
+      "primary_url": "https://doi.org/10.1038/s41588-025-02368-y",
+      "role": "csaw-ChIP-differential-enrichment",
+      "usage_summary": "Used EdgeR for differential ChIP enrichment after csaw peak definition and loess-normalized reads, then assigned genomic features and visualized peaks.",
+      "anchors": [
+        {
+          "paragraph_index": 23,
+          "section": "Methods / ChIP–seq library preparation and analysis",
+          "paragraph_sha256": "e1b791cf00909101476ae2171f3ce9188f7cfb639792d500f95aae8262bc200b"
+        }
+      ],
+      "reported_versions": [
+        {
+          "version": "3.38.4",
+          "paragraph_index": 23,
+          "literal": "v.3.38.4"
+        }
+      ],
+      "existing_observation": true,
+      "proposed_missed_observation": false,
+      "author_runtime_executed": false,
+      "whole_paper_reproduced": false,
+      "frozen_native_checkpoint_caution": "Keep the stated log fold change >2 and P<0.05, rather than converting them to other fold-change/FDR rules. Exact edgeR functions/design are unstated; csaw, loess, genomic assignment and unsupported 3.38.4 remain separate.",
+      "source_xml_sha256": "43ad08ecc1cfa9a6ddc89d82679dcf2b5e69d29c23bdcea15009587bddf2b53a",
+      "primary_evidence": {
+        "paragraph_index": 23,
+        "section": "Methods / ChIP–seq library preparation and analysis",
+        "paragraph_sha256": "e1b791cf00909101476ae2171f3ce9188f7cfb639792d500f95aae8262bc200b"
+      },
+      "primary_anchor_reported_versions": [
+        "3.38.4"
+      ],
+      "explicit_edgeR_functions": [],
+      "native_matrix_counterparts": [],
+      "original_prepared_count_counterparts": [
+        "prepared-count differential models; author test function unresolved"
+      ],
+      "matching_reported_native_editions": [],
+      "matching_reported_model_source_profiles": [],
+      "unsupported_reported_model_editions": [
+        "3.38.4"
+      ],
+      "reported_editions_without_any_qualified_component": [
+        "3.38.4"
+      ],
+      "operation_unresolved": false,
+      "counterparts_are_not_author_function_attribution": true,
+      "original_author_inputs_and_settings_recovered": false,
+      "author_R_and_dependency_profile_recovered": false,
+      "historical_author_host_reproduced": false,
+      "complete_author_workflow_qualified": false,
+      "full_reported_role_qualified": false,
+      "remaining_author_roles": [
+        "Exact 3.38.4 is unsupported. csaw/loess-normalized ChIP data, offsets, counts/units and model settings require separate intake qualification. Preserve the source threshold log fold change (FC) >2 and P <0.05, without changing it to FDR or a raw fold-change threshold.",
+        "Original author inputs/settings/host and the whole reported workflow remain unqualified."
+      ],
+      "canonical_review_appended": false,
+      "canonical_review_proposed": true
+    },
+    {
+      "paper_id": "P182",
+      "pmcid": "PMC11639091",
+      "doi": "10.1016/j.ajhg.2024.10.019",
+      "primary_url": "https://doi.org/10.1016/j.ajhg.2024.10.019",
+      "role": "TMM-and-filterByExpr-before-exploration",
+      "usage_summary": "Used TMM normalization and filterByExpr before exploratory cartilage analyses, reporting >=10 counts in at least 158 samples and subsequent robust-PCA outlier removal.",
+      "anchors": [
+        {
+          "paragraph_index": 13,
+          "section": "Methods / Bulk RNA-seq of osteoarthritis cartilage samples and preprocessing",
+          "paragraph_sha256": "6a8fd2789c8b3297586f67de1ccb42bb758b3d83dd550b60139f31d5646af3c1"
+        }
+      ],
+      "reported_versions": [],
+      "existing_observation": true,
+      "proposed_missed_observation": false,
+      "author_runtime_executed": false,
+      "whole_paper_reproduced": false,
+      "frozen_native_checkpoint_caution": "Retain the reported 158-sample rule and its 226-sample reference group; do not silently replace it with the function defaults. The source R4.1.3/Bioconductor3.1 combination is retained literally. Repeated-subject structure, filtering and outlier selection are not native normalization.",
+      "source_xml_sha256": "a341dce0f9805f735191516ad0178a8a44ec98248dba13a9941f0a2a8178224e",
+      "primary_evidence": {
+        "paragraph_index": 13,
+        "section": "Methods / Bulk RNA-seq of osteoarthritis cartilage samples and preprocessing",
+        "paragraph_sha256": "6a8fd2789c8b3297586f67de1ccb42bb758b3d83dd550b60139f31d5646af3c1"
+      },
+      "primary_anchor_reported_versions": [],
+      "explicit_edgeR_functions": [
+        {
+          "paper_id": "P182",
+          "paragraph_index": 13,
+          "function": "filterByExpr",
+          "paragraph_sha256": "6a8fd2789c8b3297586f67de1ccb42bb758b3d83dd550b60139f31d5646af3c1",
+          "literal": "filterByExpr",
+          "character_offsets": [
+            160
+          ]
+        }
+      ],
+      "native_matrix_counterparts": [
+        "TMM"
+      ],
+      "original_prepared_count_counterparts": [
+        "filterByExpr with explicit group/design, library and threshold semantics"
+      ],
+      "matching_reported_native_editions": [],
+      "matching_reported_model_source_profiles": [],
+      "unsupported_reported_model_editions": [],
+      "reported_editions_without_any_qualified_component": [],
+      "operation_unresolved": false,
+      "counterparts_are_not_author_function_attribution": true,
+      "original_author_inputs_and_settings_recovered": false,
+      "author_R_and_dependency_profile_recovered": false,
+      "historical_author_host_reproduced": false,
+      "complete_author_workflow_qualified": false,
+      "full_reported_role_qualified": false,
+      "remaining_author_roles": [
+        "Preserve at least 10 counts in at least 158 samples and the 226-sample reference-group context, while reconciling that prose with filterByExpr semantics. The reported R4.1.3/Bioconductor3.1 combination is retained literally as an unresolved runtime inconsistency. Robust-PCA outlier removal is separate.",
+        "Original author inputs/settings/host and the whole reported workflow remain unqualified."
+      ],
+      "canonical_review_appended": false,
+      "canonical_review_proposed": true
+    },
+    {
+      "paper_id": "P183",
+      "pmcid": "PMC12824624",
+      "doi": "10.1016/j.ajhg.2025.11.012",
+      "primary_url": "https://doi.org/10.1016/j.ajhg.2025.11.012",
+      "role": "TMM-before-RINT-and-PEER",
+      "usage_summary": "Applied edgeR TMM to robustly expressed lncRNA and protein-coding genes before rank-inverse-normal transformation and PEER covariate estimation.",
+      "anchors": [
+        {
+          "paragraph_index": 13,
+          "section": "Material and methods / eQTL mapping analysis",
+          "paragraph_sha256": "3a0c4cccba6681622283f2ead9837d7a1608880ed6daa0f83a2115782de9cbca"
+        }
+      ],
+      "reported_versions": [],
+      "existing_observation": true,
+      "proposed_missed_observation": false,
+      "author_runtime_executed": false,
+      "whole_paper_reproduced": false,
+      "frozen_native_checkpoint_caution": "The preceding TPM/count/prevalence filters, RINT tie policy, PEER factors and sample-size rules are distinct operations. No edgeR differential-expression fit or package edition is established by this paragraph.",
+      "source_xml_sha256": "f712738d2996e5a02826e4d939365bf1889c12ba08f9f65621cecc07798abedc",
+      "primary_evidence": {
+        "paragraph_index": 13,
+        "section": "Material and methods / eQTL mapping analysis",
+        "paragraph_sha256": "3a0c4cccba6681622283f2ead9837d7a1608880ed6daa0f83a2115782de9cbca"
+      },
+      "primary_anchor_reported_versions": [],
+      "explicit_edgeR_functions": [],
+      "native_matrix_counterparts": [
+        "TMM"
+      ],
+      "original_prepared_count_counterparts": [],
+      "matching_reported_native_editions": [],
+      "matching_reported_model_source_profiles": [],
+      "unsupported_reported_model_editions": [],
+      "reported_editions_without_any_qualified_component": [],
+      "operation_unresolved": false,
+      "counterparts_are_not_author_function_attribution": true,
+      "original_author_inputs_and_settings_recovered": false,
+      "author_R_and_dependency_profile_recovered": false,
+      "historical_author_host_reproduced": false,
+      "complete_author_workflow_qualified": false,
+      "full_reported_role_qualified": false,
+      "remaining_author_roles": [
+        "TMM precedes rank-based inverse-normal transformation and PEER; no edgeR differential fit or edition is established. TPM >0.1, counts >6 in at least 20% and upstream cohort filtering remain separate.",
+        "Original author inputs/settings/host and the whole reported workflow remain unqualified."
+      ],
+      "canonical_review_appended": false,
+      "canonical_review_proposed": true
+    },
+    {
+      "paper_id": "P212",
+      "pmcid": "PMC12614742",
+      "doi": "10.1016/j.ajhg.2025.09.003",
+      "primary_url": "https://doi.org/10.1016/j.ajhg.2025.09.003",
+      "role": "CPM-TMM-before-inverse-normal-transform",
+      "usage_summary": "Described a low-count filter, CPM calculation and TMM normalization in edgeR before inverse-normal transformation for study-level eQTL analysis.",
+      "anchors": [
+        {
+          "paragraph_index": 10,
+          "section": "Methods / Study-level eQTL analyses",
+          "paragraph_sha256": "0755e48ea00cbef2242307a451edbac198e2e8cf11d0fe0bdcf6ad9b6bbd214f"
+        }
+      ],
+      "reported_versions": [],
+      "existing_observation": true,
+      "proposed_missed_observation": false,
+      "author_runtime_executed": false,
+      "whole_paper_reproduced": false,
+      "frozen_native_checkpoint_caution": "Preserve the literal low-count/prevalence wording and CPM/TMM order uncertainty; do not silently invert thresholds or infer a standard pipeline. Annotation, genotype selection, population PCs and association models are separate; edgeR edition is unstated.",
+      "source_xml_sha256": "92008590eafb6a68abea130c2562bd521c2a12802c66d58289643b773eed00aa",
+      "primary_evidence": {
+        "paragraph_index": 10,
+        "section": "Methods / Study-level eQTL analyses",
+        "paragraph_sha256": "0755e48ea00cbef2242307a451edbac198e2e8cf11d0fe0bdcf6ad9b6bbd214f"
+      },
+      "primary_anchor_reported_versions": [],
+      "explicit_edgeR_functions": [],
+      "native_matrix_counterparts": [
+        "CPM",
+        "TMM"
+      ],
+      "original_prepared_count_counterparts": [],
+      "matching_reported_native_editions": [],
+      "matching_reported_model_source_profiles": [],
+      "unsupported_reported_model_editions": [],
+      "reported_editions_without_any_qualified_component": [],
+      "operation_unresolved": false,
+      "counterparts_are_not_author_function_attribution": true,
+      "original_author_inputs_and_settings_recovered": false,
+      "author_R_and_dependency_profile_recovered": false,
+      "historical_author_host_reproduced": false,
+      "complete_author_workflow_qualified": false,
+      "full_reported_role_qualified": false,
+      "remaining_author_roles": [
+        "Retain the literal removal rule (<5 counts in >=25% of individuals), calculated CPM then TMM wording and subsequent inverse-normal transform. The source order/units/prevalence ambiguity is unresolved; the native component offers explicit arithmetic operations, not an inferred repaired pipeline.",
+        "Original author inputs/settings/host and the whole reported workflow remain unqualified."
+      ],
+      "canonical_review_appended": false,
+      "canonical_review_proposed": true
+    },
+    {
+      "paper_id": "P223",
+      "pmcid": "PMC11339655",
+      "doi": "10.1016/j.ajhg.2024.06.018",
+      "primary_url": "https://doi.org/10.1016/j.ajhg.2024.06.018",
+      "role": "short-read-timepoint-DE",
+      "usage_summary": "Used edgeR on Salmon-generated short-read counts for comparisons between day 0 and later iNeuron time points, reporting log fold changes and adjusted P values.",
+      "anchors": [
+        {
+          "paragraph_index": 10,
+          "section": "Subjects, material, and methods / Short-read RNA-seq",
+          "paragraph_sha256": "4c5b5a51658efb96cabd0943ccfec2ce8e97b73de281161bc3befafcfa197df1"
+        }
+      ],
+      "reported_versions": [],
+      "existing_observation": true,
+      "proposed_missed_observation": false,
+      "author_runtime_executed": false,
+      "whole_paper_reproduced": false,
+      "frozen_native_checkpoint_caution": "The upstream HISAT2/StringTie/Ballgown wording, Salmon options, annotation mapping and junction counting are separate. No precise edgeR function, edition, design or contrast settings are recovered; normalization alone does not perform the tests.",
+      "source_xml_sha256": "12a39771e280e2ac90433d9881faae4b4b3d11bde9e35070997f405b2409a342",
+      "primary_evidence": {
+        "paragraph_index": 10,
+        "section": "Subjects, material, and methods / Short-read RNA-seq",
+        "paragraph_sha256": "4c5b5a51658efb96cabd0943ccfec2ce8e97b73de281161bc3befafcfa197df1"
+      },
+      "primary_anchor_reported_versions": [],
+      "explicit_edgeR_functions": [],
+      "native_matrix_counterparts": [],
+      "original_prepared_count_counterparts": [
+        "prepared-count differential models; author test function unresolved"
+      ],
+      "matching_reported_native_editions": [],
+      "matching_reported_model_source_profiles": [],
+      "unsupported_reported_model_editions": [],
+      "reported_editions_without_any_qualified_component": [],
+      "operation_unresolved": false,
+      "counterparts_are_not_author_function_attribution": true,
+      "original_author_inputs_and_settings_recovered": false,
+      "author_R_and_dependency_profile_recovered": false,
+      "historical_author_host_reproduced": false,
+      "complete_author_workflow_qualified": false,
+      "full_reported_role_qualified": false,
+      "remaining_author_roles": [
+        "The paper reports edgeR differential expression for iNeuron day-0/later contrasts without edition/function/design. Salmon-derived count units need explicit declaration. HISAT2/StringTie/Ballgown, biomaRt and Rsubread/seqinr junction handling are separate.",
+        "Original author inputs/settings/host and the whole reported workflow remain unqualified."
+      ],
+      "canonical_review_appended": false,
+      "canonical_review_proposed": true
+    },
+    {
+      "paper_id": "P228",
+      "pmcid": "PMC12696504",
+      "doi": "10.1016/j.ajhg.2025.07.020",
+      "primary_url": "https://doi.org/10.1016/j.ajhg.2025.07.020",
+      "role": "HiC-dispersion-and-pseudobulk-TMMwsp",
+      "usage_summary": "Used estimateDisp for Hi-C interaction count overdispersion and GLM testing, and used TMMwsp on pseudobulk snRNA-seq counts before limma voomLmFit.",
+      "anchors": [
+        {
+          "paragraph_index": 9,
+          "section": "Material and methods / Hi-C and data analysis",
+          "paragraph_sha256": "1b4fceedd203637c30a26e70d3136361ce540e2adfa1676b69ef55a42f1a9b8e"
+        },
+        {
+          "paragraph_index": 12,
+          "section": "Material and methods / snRNA-seq and data analysis",
+          "paragraph_sha256": "99f200462063a6de97989b285539ae6919194c52292e1cd573d3eebba003d5eb"
+        }
+      ],
+      "reported_versions": [],
+      "existing_observation": true,
+      "proposed_missed_observation": false,
+      "author_runtime_executed": false,
+      "whole_paper_reproduced": false,
+      "frozen_native_checkpoint_caution": "Keep the two omics roles separate. Hi-C ICE/LOESS processing, interaction filters and GLM tests are not TMM; snRNA filtering, limma fitting, batch effects and adjusted-P<0.2 are not supplied by native normalization.",
+      "source_xml_sha256": "c548343d1317fbd6fcf857ffcd429bb3b2cc4bdc89d0f77206c0589eb4c35ee2",
+      "primary_evidence": {
+        "paragraph_index": 9,
+        "section": "Material and methods / Hi-C and data analysis",
+        "paragraph_sha256": "1b4fceedd203637c30a26e70d3136361ce540e2adfa1676b69ef55a42f1a9b8e"
+      },
+      "primary_anchor_reported_versions": [],
+      "explicit_edgeR_functions": [
+        {
+          "paper_id": "P228",
+          "paragraph_index": 9,
+          "function": "estimateDisp",
+          "paragraph_sha256": "1b4fceedd203637c30a26e70d3136361ce540e2adfa1676b69ef55a42f1a9b8e",
+          "literal": "estimateDisp",
+          "character_offsets": [
+            2215
+          ]
+        }
+      ],
+      "native_matrix_counterparts": [
+        "TMMwsp"
+      ],
+      "original_prepared_count_counterparts": [
+        "estimateDisp and supplied-count GLM fit; corrected-contact intake unqualified"
+      ],
+      "matching_reported_native_editions": [],
+      "matching_reported_model_source_profiles": [],
+      "unsupported_reported_model_editions": [],
+      "reported_editions_without_any_qualified_component": [],
+      "operation_unresolved": false,
+      "counterparts_are_not_author_function_attribution": true,
+      "original_author_inputs_and_settings_recovered": false,
+      "author_R_and_dependency_profile_recovered": false,
+      "historical_author_host_reproduced": false,
+      "complete_author_workflow_qualified": false,
+      "full_reported_role_qualified": false,
+      "remaining_author_roles": [
+        "Two roles are distinct: Hi-C estimateDisp/GLM after ICE/LOESS/contact processing, and snRNA TMMwsp before limma voomLmFit. Corrected-contact count units/offsets, upstream contact filters and the complete Hi-C design are unqualified. limma fitting/BH and adjusted P <0.2 for snRNA are not edgeR NB-test attribution.",
+        "Original author inputs/settings/host and the whole reported workflow remain unqualified."
+      ],
+      "canonical_review_appended": false,
+      "canonical_review_proposed": true
+    },
+    {
+      "paper_id": "P237",
+      "pmcid": "PMC13087474",
+      "doi": "10.1016/j.ajhg.2026.02.014",
+      "primary_url": "https://doi.org/10.1016/j.ajhg.2026.02.014",
+      "role": "CPM-filtering-technical-replicates-and-voom",
+      "usage_summary": "Used edgeR for count normalization/expression analysis, CPM-based filtering, sumTechReps in selected external datasets and log2 CPM with prior.count=2; inference used voomLmFit.",
+      "anchors": [
+        {
+          "paragraph_index": 12,
+          "section": "Material and methods / Gene expression analysis across RNA-seq datasets",
+          "paragraph_sha256": "05c7fe9bc06d1edc524057b5448c12d646643308fc382d4ac752230158ae8b16"
+        },
+        {
+          "paragraph_index": 14,
+          "section": "Material and methods / Differential expression analysis for XIST-based silencing across clones and selective homolog silencing (or loss)",
+          "paragraph_sha256": "2de6c1507186b2c08b0a43400c02e327a4884e959c31b17d6aacdd4890d449e5"
+        }
+      ],
+      "reported_versions": [],
+      "existing_observation": true,
+      "proposed_missed_observation": false,
+      "author_runtime_executed": false,
+      "whole_paper_reproduced": false,
+      "frozen_native_checkpoint_caution": "Retain filtering before replicate merging, donor/cell-line definitions, clone:dox contrasts and imbalance cautions. Native CPM does not aggregate replicates, implement filterByExpr or fit limma models; edition is unstated.",
+      "source_xml_sha256": "632943002d2be4f3ac5c25410d55d8084c5479c6bee4011804d95a1aef9e08e3",
+      "primary_evidence": {
+        "paragraph_index": 12,
+        "section": "Material and methods / Gene expression analysis across RNA-seq datasets",
+        "paragraph_sha256": "05c7fe9bc06d1edc524057b5448c12d646643308fc382d4ac752230158ae8b16"
+      },
+      "primary_anchor_reported_versions": [],
+      "explicit_edgeR_functions": [
+        {
+          "paper_id": "P237",
+          "paragraph_index": 12,
+          "function": "sumTechReps",
+          "paragraph_sha256": "05c7fe9bc06d1edc524057b5448c12d646643308fc382d4ac752230158ae8b16",
+          "literal": "sumTechReps",
+          "character_offsets": [
+            687
+          ]
+        },
+        {
+          "paper_id": "P237",
+          "paragraph_index": 12,
+          "function": "cpm",
+          "paragraph_sha256": "05c7fe9bc06d1edc524057b5448c12d646643308fc382d4ac752230158ae8b16",
+          "literal": "cpm",
+          "character_offsets": [
+            785
+          ]
+        }
+      ],
+      "native_matrix_counterparts": [
+        "CPM",
+        "log-CPM"
+      ],
+      "original_prepared_count_counterparts": [],
+      "matching_reported_native_editions": [],
+      "matching_reported_model_source_profiles": [],
+      "unsupported_reported_model_editions": [],
+      "reported_editions_without_any_qualified_component": [],
+      "operation_unresolved": false,
+      "counterparts_are_not_author_function_attribution": true,
+      "original_author_inputs_and_settings_recovered": false,
+      "author_R_and_dependency_profile_recovered": false,
+      "historical_author_host_reproduced": false,
+      "complete_author_workflow_qualified": false,
+      "full_reported_role_qualified": false,
+      "remaining_author_roles": [
+        "sumTechReps is explicitly named but is not exposed by either component. Preserve filtering CPM >=2 in at least one fourth of samples before selected technical-replicate merging, then normalization; plotting cpm uses prior.count=2 and log2. Clone:dox contrasts, their between-replicate limitations and voomLmFit inference are separate; no edgeR NB-test function is inferred.",
+        "Original author inputs/settings/host and the whole reported workflow remain unqualified."
+      ],
+      "canonical_review_appended": false,
+      "canonical_review_proposed": true
+    }
+  ],
+  "source_roles": 17,
+  "exact_primary_sources_scanned": 250,
+  "explicit_function_mentions": 9,
+  "observations_to_add": [
+    "P088"
+  ],
+  "review_records_to_append": 17,
+  "existing_review_records_to_preserve": 1503,
+  "native_editions": [
+    "3.32.1",
+    "3.36.0",
+    "3.40.2",
+    "3.42.4",
+    "4.10.7"
+  ],
+  "model_development_profiles": {
+    "3.40.2": "edgeR-3.40.2-R4.6.1",
+    "3.42.4": "edgeR-3.42.4-R4.6.1",
+    "4.10.7": "edgeR-4.10.7-R4.6.1"
+  },
+  "current_canonical_family_status": "method-overlap",
+  "proposed_upstream_family_credit": 1,
+  "actual_new_family_credit": 0,
+  "native_family_credit_added": 0,
+  "canonical_reviews_appended": 0,
+  "source_function_attribution_invented": false,
+  "whole_tool_qualified": false,
+  "full_author_workflows_reproduced": 0,
+  "whole_goal_complete": false
+}
