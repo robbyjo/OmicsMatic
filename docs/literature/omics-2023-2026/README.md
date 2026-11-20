@@ -1,5 +1,21 @@
 # 250-paper omics and GWAS toolbox catalog
 
+## Native Broad GSEA and 28 reviewed ranked-enrichment roles
+
+**Warnings and required actions:** SKIP3: the affected analysis is skipped; supply the named exact permitted input, source profile, runtime or package, or retain the skip when unavailable or installation is forbidden. Native Broad execution needs no external GSEA installation; an unknown author executor/edition is not silently mapped to a supported profile. FAIL2: NO COMPLETE RESULT; preserve raw inputs, null/model objects, conditions, partials and diagnostics, resolve the named syntax/data/design, numerical/convergence, integrity, capacity or process cause and retry NEW output. Never silently repair identifiers, alleles, populations, thresholds, nonfinite values, editions or algorithms. A supervising JVM terminated without final completion status has no complete result. Cell Ranger stays excluded. Ignored runtimes, producer JARs and complete private evidence require a separate permitted transfer; one historical exact producer still requires backup or SKIP3. Both literature HTML reports remain withheld from Pages. Read each analysis-status.json and WARNINGS.md.
+
+250 papers, 446 named families, 2,714 observations, 1,548 individually reviewed positive uses and 1,166 pending. There are 140 scoped integrations (26 native Java and 114 upstream), 259 missing and 35 method-overlap definitions; 143 integrations include three existing adapters. All 1520 earlier reviews remain exact. Nine missed ranked-enrichment observations are added. The full implementation and paper-wide semantic-review goal remains unfinished.
+
+Native broad-gsea-tools and BroadGseaWorkflowCli implement explicit prepared-data Broad GSEA 4.3.2/4.3.3/4.4.0 source profiles: preranked, expression/gene-set and expression/phenotype nulls, source ranking/randomization/weight options, meandiv NES, nominal P and empirical FDR/FWER. RUN captures literal inputs, complete null families and failures; VERIFY recomputes every scientific byte in NEW output and REPLAY preserves parent lineage. No external GSEA runtime is needed.
+
+The GSEA family is a generic ranked-enrichment catalog label. Its 28 reviewed roles explicitly distinguish Broad, clusterProfiler, fgsea, GSEApy, MAGeCK and unresolved executors. The native Broad component does not validate those other providers or complete author workflows. Only P077/P220 name matching qualified Broad source editions; their author inputs/settings remain unrecovered. P096 source code establishes classic preranked/meandiv settings, 1000 permutations and size 15-200, but 2023.1 is not a resolved executable edition and timestamp is not a recovered historical seed. Vendor input parsing, expression transformation, identifier mapping, probe collapse, collection retrieval, single-sample scoring and whole-paper/biological reproduction are outside this subset. Build current source; the released 0.4.0 binary predates these workflows.
+
+Read [the source crosswalk and exact scope](../GSEA_CATALOG_INTEGRATION.md).
+
+<details><summary>Before GSEA admission (historical)</summary>
+
+# 250-paper omics and GWAS toolbox catalog
+
 ## edgeR: native operations, original models and 17 reviewed roles
 
 **Warnings and required actions:** SKIP3: dependent analysis skipped; supply the named exact permitted source/input/runtime/package or retain the skip if unavailable or installation is forbidden. FAIL2: no complete result; preserve inputs, original model objects, conditions, partials and logs, resolve the named data/design, numerical, convergence, integrity, capacity or process failure and retry NEW output. Two real old-edition null fits exhaust 251 iterations despite failed=FALSE and finite stock test tables; they are refused. Never silently repair IDs, alleles, populations, editions, thresholds, nonfinite values or algorithms. Read WARNINGS.md and analysis-status.json. Model VERIFY does not refit R or parse binary RDS. Historical author hosts and Linux R fitting are unqualified. Two old full marker-verifier JAR checks remain SKIP3. Cell Ranger stays excluded; both literature HTML reports stay withheld from Pages.
@@ -2093,6 +2109,8 @@ Three source-reviewed tool additions retain separate provenance: MALT and HOPS h
 These additions improve the catalog and add no whole-tool or biological credit. The source-tested MALT 0.4.1 development controller does not fulfill the separate 0.5.2 role. Complete HOPS and MaltExtract operations remain unfinished; their unreported versions, settings and resource choices remain unknown. See `MALT_ALIGNMENT.md` and `MALT_HOPS_PAPER_ROLES.md`.
 
 **Required action:** match the declared source version and operation, qualify a permitted runtime, provide the complete dated reference/mapping and query populations, and retain original warnings and failures. If any prerequisite is unavailable or cannot be installed, skip its dependent analysis. A small software-control index does not reproduce the historical 91-spirochete or 7,508-genome bacterial analyses. Insufficient-read candidates remain unassessable.
+
+</details>
 
 </details>
 

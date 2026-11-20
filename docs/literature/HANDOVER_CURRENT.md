@@ -1,5 +1,17 @@
 # Current toolbox handover
 
+**Current: [GSEA admitted, remaining work and exact resume paths](GSEA_CATALOG_CHECKPOINT_2026-11-20.md).**
+Native Broad GSEA and 28 provider-distinct ranked-enrichment roles are admitted.
+The all-250 audit classifies 56 candidates and adds nine missed observations;
+all 1,520 earlier reviews remain exact. Plan/inspect/apply/fresh verify,
+28 controls per Windows/Linux host, six CLI refusals and desktop/mobile checks
+pass. Totals are **140 scoped integrations (26 native +114 upstream), 1,548
+reviewed uses and 1,166 pending**, with 826 clean manifest entries. Preserve
+all **22 worktrees** and separately transfer ignored runtimes/producer JARs/
+complete private evidence. Continue GCTA/COJO source intake and high-impact gaps;
+full toolbox/paper-wide completion remains open. Both reports stay off Pages.
+Lower GSEA-admission-open statements describe superseded checkpoints.
+
 **Start here: [global GSEA command, unfinished admission and exact handoff actions](HANDOVER_2026-11-20_GSEA_GLOBAL.md).**
 The normal JAR now exposes `broad-gsea-tools`; the native scientific classes are
 unchanged. The source-role follow-up, author Script 20 findings and exact next

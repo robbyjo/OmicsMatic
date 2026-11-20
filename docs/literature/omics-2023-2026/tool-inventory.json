@@ -7980,35 +7980,1663 @@
     "name": "GSEA",
     "pattern": "(?<![A-Za-z0-9_])(?:(?:preranked[- ]?)?GSEA)(?![A-Za-z0-9_])",
     "role": "Ranked gene-set enrichment",
-    "current_coverage": "method-overlap",
-    "existing_source": "src/main/java/org/jlinalg/enrichment/RankedEnrichment.java",
-    "coverage_note": "Related native method; upstream software options and numerical equivalence require separate validation.",
-    "paper_count": 19,
+    "current_coverage": "native-subset-validated",
+    "existing_source": "src/main/java/org/jlinalg/cli/BroadGseaWorkflowCli.java",
+    "coverage_note": "Native broad-gsea-tools and BroadGseaWorkflowCli implement explicit prepared-data Broad GSEA 4.3.2/4.3.3/4.4.0 source profiles: preranked, expression/gene-set and expression/phenotype nulls, source ranking/randomization/weight options, meandiv NES, nominal P and empirical FDR/FWER. RUN captures literal inputs, complete null families and failures; VERIFY recomputes every scientific byte in NEW output and REPLAY preserves parent lineage. No external GSEA runtime is needed. The GSEA family is a generic ranked-enrichment catalog label. Its 28 reviewed roles explicitly distinguish Broad, clusterProfiler, fgsea, GSEApy, MAGeCK and unresolved executors. The native Broad component does not validate those other providers or complete author workflows. Only P077/P220 name matching qualified Broad source editions; their author inputs/settings remain unrecovered. P096 source code establishes classic preranked/meandiv settings, 1000 permutations and size 15-200, but 2023.1 is not a resolved executable edition and timestamp is not a recovered historical seed. Vendor input parsing, expression transformation, identifier mapping, probe collapse, collection retrieval, single-sample scoring and whole-paper/biological reproduction are outside this subset. Build current source; the released 0.4.0 binary predates these workflows.",
+    "paper_count": 28,
     "papers": [
       "P018",
       "P020",
       "P031",
       "P037",
       "P040",
+      "P042",
       "P049",
       "P051",
       "P055",
       "P062",
+      "P069",
       "P077",
       "P092",
       "P096",
       "P098",
       "P109",
       "P117",
+      "P133",
       "P134",
       "P144",
+      "P151",
+      "P163",
+      "P165",
+      "P170",
+      "P182",
       "P197",
-      "P220"
+      "P220",
+      "P228"
     ],
-    "implementation_status": "method-overlap",
-    "implementation_source": "src/main/java/org/jlinalg/enrichment/RankedEnrichment.java",
-    "implementation_scope": "Related native method; upstream software options and numerical equivalence require separate validation.",
-    "validation_note": "Existing overlap/adapters require paper-specific option checks; missing integrations remain pending."
+    "implementation_status": "native-subset-validated",
+    "implementation_source": "src/main/java/org/jlinalg/cli/BroadGseaWorkflowCli.java",
+    "implementation_scope": "Native broad-gsea-tools and BroadGseaWorkflowCli implement explicit prepared-data Broad GSEA 4.3.2/4.3.3/4.4.0 source profiles: preranked, expression/gene-set and expression/phenotype nulls, source ranking/randomization/weight options, meandiv NES, nominal P and empirical FDR/FWER. RUN captures literal inputs, complete null families and failures; VERIFY recomputes every scientific byte in NEW output and REPLAY preserves parent lineage. No external GSEA runtime is needed. The GSEA family is a generic ranked-enrichment catalog label. Its 28 reviewed roles explicitly distinguish Broad, clusterProfiler, fgsea, GSEApy, MAGeCK and unresolved executors. The native Broad component does not validate those other providers or complete author workflows. Only P077/P220 name matching qualified Broad source editions; their author inputs/settings remain unrecovered. P096 source code establishes classic preranked/meandiv settings, 1000 permutations and size 15-200, but 2023.1 is not a resolved executable edition and timestamp is not a recovered historical seed. Vendor input parsing, expression transformation, identifier mapping, probe collapse, collection retrieval, single-sample scoring and whole-paper/biological reproduction are outside this subset. Build current source; the released 0.4.0 binary predates these workflows.",
+    "validation_note": "Original-source Broad prepared-data components and global RUN/VERIFY/REPLAY qualified on Windows21/25/Linux21; other providers and complete author workflows remain unqualified. See the source-role crosswalk and exact proof.",
+    "previous_method_overlap_source": "src/main/java/org/jlinalg/enrichment/RankedEnrichment.java",
+    "source_roles_reviewed": 28,
+    "source_role_coverage": "gsea-source-role-coverage.json",
+    "current_documentation": "docs/literature/GSEA_CATALOG_INTEGRATION.md",
+    "workflow_qualification": "../gsea-global-development/QUALIFICATION.json",
+    "source_build_required": true,
+    "released_binary_contains_workflow_adapter": false,
+    "public_CLI_available": true,
+    "global_CLI_dispatch_available": true,
+    "qualified_component_entrypoints": [
+      "broad-gsea-tools --request RUN/VERIFY/REPLAY",
+      "org.jlinalg.cli.BroadGseaWorkflowCli"
+    ],
+    "paper_role_qualification": {
+      "P018": {
+        "paper_id": "P018",
+        "pmcid": "PMC12823447",
+        "doi": "10.1038/s41586-025-09770-w",
+        "source_xml_sha256": "481dd1887424526f042a1651da067eb836e52d1a90ac370277b468a13acc6e9b",
+        "role": "Ranked gene-set enrichment",
+        "reported_provider": "clusterProfiler",
+        "reported_provider_versions": [
+          {
+            "provider": "clusterProfiler",
+            "literal": "4.10.0",
+            "paragraph_index": 48,
+            "character_offset": 1434
+          }
+        ],
+        "primary_evidence": {
+          "paragraph_index": 48,
+          "section": "Methods / Bulk RNA sequencing / Processing and analysis / Pathway analysis",
+          "paragraph_sha256": "f6f1fdf254c1f690ee66a653319b00d562a974f82a547e4725380cf9b07ccb75",
+          "matched_tokens": [
+            {
+              "literal": "Gene-set enrichment",
+              "start": 0,
+              "end": 19
+            },
+            {
+              "literal": "GSEA",
+              "start": 30,
+              "end": 34
+            },
+            {
+              "literal": "GSEA",
+              "start": 535,
+              "end": 539
+            },
+            {
+              "literal": "GSEA",
+              "start": 1462,
+              "end": 1466
+            }
+          ]
+        },
+        "supporting_evidence": [],
+        "usage_summary": "Used clusterProfiler GSEA on log2-fold-change-ranked differential-expression genes for pathway analysis, separately from overrepresentation analysis.",
+        "required_caution": "The selected differential-expression universe is not an all-gene universe. clusterProfiler 4.10.0 is not a Broad GSEA edition; its backend, complete set family and precise options need separate qualification.",
+        "existing_observation": true,
+        "proposed_observation": false,
+        "evidence_kind": "analysis-method-description",
+        "matching_Broad_source_profiles": [],
+        "native_Broad_profile_counterpart_qualified": false,
+        "other_provider_backend_qualified_by_Broad": false,
+        "author_executable_edition_unresolved": true,
+        "exact_author_inputs_recovered": false,
+        "historical_author_seed_recovered": false,
+        "author_runtime_executed": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false,
+        "auxiliary_sources": []
+      },
+      "P020": {
+        "paper_id": "P020",
+        "pmcid": "PMC12823405",
+        "doi": "10.1038/s41586-025-09869-0",
+        "source_xml_sha256": "a49fb2508352ef4d9c68d4f91f317ce500811d59680d824c9ce5b602219becc4",
+        "role": "Ranked gene-set enrichment",
+        "reported_provider": "clusterProfiler and WebGestalt",
+        "reported_provider_versions": [
+          {
+            "provider": "clusterProfiler",
+            "literal": "3.18.1",
+            "paragraph_index": 34,
+            "character_offset": 2405
+          }
+        ],
+        "primary_evidence": {
+          "paragraph_index": 34,
+          "section": "Methods / RNA-seq analyses",
+          "paragraph_sha256": "1c7938d0d0b5f112763d04ec607b889c54236029a010d01a90bce32ea7b1ae2d",
+          "matched_tokens": [
+            {
+              "literal": "gene set enrichment",
+              "start": 2176,
+              "end": 2195
+            },
+            {
+              "literal": "GSEA",
+              "start": 2206,
+              "end": 2210
+            },
+            {
+              "literal": "GSEA",
+              "start": 2459,
+              "end": 2463
+            },
+            {
+              "literal": "gsea",
+              "start": 2516,
+              "end": 2520
+            }
+          ]
+        },
+        "supporting_evidence": [
+          {
+            "paragraph_index": 35,
+            "section": "Methods / RNA-seq analyses",
+            "paragraph_sha256": "94d387bc55a72ef306a33a08e4442c2ac0aebf21bc4189f396c77956275ad8e4",
+            "matched_tokens": [
+              {
+                "literal": "GSEA",
+                "start": 1079,
+                "end": 1083
+              },
+              {
+                "literal": "GSEA",
+                "start": 1132,
+                "end": 1136
+              }
+            ]
+          },
+          {
+            "paragraph_index": 39,
+            "section": "Methods / Proteomics",
+            "paragraph_sha256": "9f4b56ec480daab798391435b2a86d7c8cae81bf35be25c1169b11cb3bb60ed4",
+            "matched_tokens": [
+              {
+                "literal": "GSEA",
+                "start": 86,
+                "end": 90
+              },
+              {
+                "literal": "GSEA",
+                "start": 225,
+                "end": 229
+              }
+            ]
+          }
+        ],
+        "usage_summary": "Used clusterProfiler for RNA pathway enrichment and paired signed-absolute-log10-P ranking; used a separate WebGestalt proteomic ranked analysis with the stated log2-fold-change-times-P statistic.",
+        "required_caution": "Preserve the distinct RNA/protein providers, inputs and literal proteomic ranking formula. Do not change the latter to minus-log P or transfer the clusterProfiler edition to WebGestalt/Broad.",
+        "existing_observation": true,
+        "proposed_observation": false,
+        "evidence_kind": "analysis-method-description",
+        "matching_Broad_source_profiles": [],
+        "native_Broad_profile_counterpart_qualified": false,
+        "other_provider_backend_qualified_by_Broad": false,
+        "author_executable_edition_unresolved": true,
+        "exact_author_inputs_recovered": false,
+        "historical_author_seed_recovered": false,
+        "author_runtime_executed": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false,
+        "auxiliary_sources": []
+      },
+      "P031": {
+        "paper_id": "P031",
+        "pmcid": "PMC12872457",
+        "doi": "10.1038/s41586-025-09829-8",
+        "source_xml_sha256": "5b4d5ab5efcec7e09d836e2cd6e45388588aef1e37683e10fa5f6e242fcb415e",
+        "role": "Ranked gene-set enrichment",
+        "reported_provider": "clusterProfiler",
+        "reported_provider_versions": [
+          {
+            "provider": "clusterProfiler",
+            "literal": "3.14.3",
+            "paragraph_index": 71,
+            "character_offset": 598
+          }
+        ],
+        "primary_evidence": {
+          "paragraph_index": 71,
+          "section": "Methods / Bulk RNA sequencing of M cell organoids",
+          "paragraph_sha256": "f848061f019987780e0bfa8f21f618fec550e4ca6b806ea20813cc2fb6a9a492",
+          "matched_tokens": [
+            {
+              "literal": "GSEA",
+              "start": 561,
+              "end": 565
+            }
+          ]
+        },
+        "supporting_evidence": [],
+        "usage_summary": "Used clusterProfiler GSEA with log2-fold-change ranks and KEGG/GO sets; Enrichr was a separate enrichment role.",
+        "required_caution": "This identifies clusterProfiler, not Broad. Preserve the selected universe, organism/collection versions and correction choices; the Broad component is not its validated backend.",
+        "existing_observation": true,
+        "proposed_observation": false,
+        "evidence_kind": "analysis-method-description",
+        "matching_Broad_source_profiles": [],
+        "native_Broad_profile_counterpart_qualified": false,
+        "other_provider_backend_qualified_by_Broad": false,
+        "author_executable_edition_unresolved": true,
+        "exact_author_inputs_recovered": false,
+        "historical_author_seed_recovered": false,
+        "author_runtime_executed": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false,
+        "auxiliary_sources": []
+      },
+      "P037": {
+        "paper_id": "P037",
+        "pmcid": "PMC10764277",
+        "doi": "10.1038/s41586-023-06838-3",
+        "source_xml_sha256": "812e36432230a2cb9fdad7c98df03a2ab9131acdee41ba0847b8aa9c9aa312f7",
+        "role": "Ranked gene-set enrichment",
+        "reported_provider": "fgsea",
+        "reported_provider_versions": [
+          {
+            "provider": "fgsea",
+            "literal": "3.14",
+            "paragraph_index": 50,
+            "character_offset": 397
+          }
+        ],
+        "primary_evidence": {
+          "paragraph_index": 45,
+          "section": "Methods / Determining the effects of MDCF-2 supplementation on the abundances of WLZ-associated MAGs",
+          "paragraph_sha256": "1dda0b89aaad4ed3ee89fb7317f695b1da20f3509135ef2c1e5e027a5250e8de",
+          "matched_tokens": [
+            {
+              "literal": "GSEA",
+              "start": 876,
+              "end": 880
+            }
+          ]
+        },
+        "supporting_evidence": [
+          {
+            "paragraph_index": 50,
+            "section": "Methods / Microbial RNA-seq analysis of MAG gene expression",
+            "paragraph_sha256": "5d35e6a6a100d42abf21b8a52847c28a34680adabe1508b8a6ba66d536d039be",
+            "matched_tokens": [
+              {
+                "literal": "GSEA",
+                "start": 380,
+                "end": 384
+              }
+            ]
+          }
+        ],
+        "usage_summary": "Used fgsea for MAG-statistic and transcript pathway analyses; the transcript ranking used direction times minus-log10 P, a minimum set size of 10 and q below 0.1.",
+        "required_caution": "The reported v3.14 label is retained literally and remains unresolved as an fgsea executable edition. Keep MAG/transcript rankings and universes separate; a Broad null algorithm is not an fgsea substitute.",
+        "existing_observation": true,
+        "proposed_observation": false,
+        "evidence_kind": "analysis-method-description",
+        "matching_Broad_source_profiles": [],
+        "native_Broad_profile_counterpart_qualified": false,
+        "other_provider_backend_qualified_by_Broad": false,
+        "author_executable_edition_unresolved": true,
+        "exact_author_inputs_recovered": false,
+        "historical_author_seed_recovered": false,
+        "author_runtime_executed": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false,
+        "auxiliary_sources": []
+      },
+      "P040": {
+        "paper_id": "P040",
+        "pmcid": "PMC13645638",
+        "doi": "10.1038/s41586-026-10954-1",
+        "source_xml_sha256": "613a8a837a2bbebd1501da55e1f7167296630c8a94477fe415cdea0c273c53ad",
+        "role": "Ranked gene-set enrichment",
+        "reported_provider": "clusterProfiler",
+        "reported_provider_versions": [
+          {
+            "provider": "clusterProfiler",
+            "literal": "4.3.3",
+            "paragraph_index": 33,
+            "character_offset": 55
+          }
+        ],
+        "primary_evidence": {
+          "paragraph_index": 33,
+          "section": "Methods / GSEA",
+          "paragraph_sha256": "99072c56d11b12252b2335f4351dff3f3156d03de228aaa728baa7b7c62af27e",
+          "matched_tokens": [
+            {
+              "literal": "GSEA",
+              "start": 7,
+              "end": 11
+            },
+            {
+              "literal": "GSEA",
+              "start": 161,
+              "end": 165
+            }
+          ]
+        },
+        "supporting_evidence": [],
+        "usage_summary": "Used clusterProfiler GSEA with custom immune signatures and BH adjustment.",
+        "required_caution": "Version 4.3.3 belongs to clusterProfiler here. It must not select Broad GSEA 4.3.3; custom signatures, rankings, background and package backend remain explicit prerequisites.",
+        "existing_observation": true,
+        "proposed_observation": false,
+        "evidence_kind": "analysis-method-description",
+        "matching_Broad_source_profiles": [],
+        "native_Broad_profile_counterpart_qualified": false,
+        "other_provider_backend_qualified_by_Broad": false,
+        "author_executable_edition_unresolved": true,
+        "exact_author_inputs_recovered": false,
+        "historical_author_seed_recovered": false,
+        "author_runtime_executed": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false,
+        "auxiliary_sources": []
+      },
+      "P042": {
+        "paper_id": "P042",
+        "pmcid": "PMC12851938",
+        "doi": "10.1038/s41586-025-09812-3",
+        "source_xml_sha256": "0b77101ea70ebffaaff42dbf7f46f28824a2ea9bf42e71af721cd20d561ef992",
+        "role": "Ranked gene-set enrichment",
+        "reported_provider": "unresolved",
+        "reported_provider_versions": [],
+        "primary_evidence": {
+          "paragraph_index": 30,
+          "section": "Potential biomarkers from whole genomes",
+          "paragraph_sha256": "2397e902474de788fb25a6f7684e11f88444d409b8603dcdc39d9da161a493e3",
+          "matched_tokens": [
+            {
+              "literal": "gene set enrichment",
+              "start": 965,
+              "end": 984
+            },
+            {
+              "literal": "GSEA",
+              "start": 995,
+              "end": 999
+            }
+          ]
+        },
+        "supporting_evidence": [],
+        "usage_summary": "Reported GSEA results for cell-cycle and DNA-repair pathways in homologous-recombination-deficient breast tumours.",
+        "required_caution": "This is an explicit analysis-result statement, not a recovered software invocation. Executor, edition, input rankings, null family and options remain unresolved; no Broad attribution or author reproduction is claimed.",
+        "existing_observation": false,
+        "proposed_observation": true,
+        "evidence_kind": "analysis-result-statement-operation-unresolved",
+        "matching_Broad_source_profiles": [],
+        "native_Broad_profile_counterpart_qualified": false,
+        "other_provider_backend_qualified_by_Broad": false,
+        "author_executable_edition_unresolved": true,
+        "exact_author_inputs_recovered": false,
+        "historical_author_seed_recovered": false,
+        "author_runtime_executed": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false,
+        "auxiliary_sources": []
+      },
+      "P049": {
+        "paper_id": "P049",
+        "pmcid": "PMC13668678",
+        "doi": "10.1038/s41586-026-10981-y",
+        "source_xml_sha256": "732746565cfe445be1f1e2f1ce3b459964fc9f5ea28f7147c0b3a26f4f8d18c3",
+        "role": "Ranked gene-set enrichment",
+        "reported_provider": "clusterProfiler; separate neuronal executor unresolved",
+        "reported_provider_versions": [],
+        "primary_evidence": {
+          "paragraph_index": 35,
+          "section": "Methods / Human tissue / Clustering and cell type annotation",
+          "paragraph_sha256": "f743722c5961963b2841579da854c34fa2500c559dae4523dabb20188103846c",
+          "matched_tokens": [
+            {
+              "literal": "gene set enrichment",
+              "start": 1293,
+              "end": 1312
+            },
+            {
+              "literal": "GSEA",
+              "start": 1323,
+              "end": 1327
+            }
+          ]
+        },
+        "supporting_evidence": [
+          {
+            "paragraph_index": 57,
+            "section": "Methods / Cell culture / RNA-seq analysis of neuronal Cfh-cKO cultures",
+            "paragraph_sha256": "97c437bfab311b1f7d3a64a6715c124c3193eb5a2c91869ae24abdf17c855313",
+            "matched_tokens": [
+              {
+                "literal": "GSEA",
+                "start": 1196,
+                "end": 1200
+              }
+            ]
+          }
+        ],
+        "usage_summary": "Used clusterProfiler GSEA on reference-cell markers and reported a separate neuronal GSEA role.",
+        "required_caution": "Do not assign the marker-analysis provider or nearby RNA package versions to the separate neuronal analysis. Complete rankings, sets, options and the neuronal executor remain unresolved.",
+        "existing_observation": true,
+        "proposed_observation": false,
+        "evidence_kind": "analysis-method-description",
+        "matching_Broad_source_profiles": [],
+        "native_Broad_profile_counterpart_qualified": false,
+        "other_provider_backend_qualified_by_Broad": false,
+        "author_executable_edition_unresolved": true,
+        "exact_author_inputs_recovered": false,
+        "historical_author_seed_recovered": false,
+        "author_runtime_executed": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false,
+        "auxiliary_sources": []
+      },
+      "P051": {
+        "paper_id": "P051",
+        "pmcid": "PMC12823425",
+        "doi": "10.1038/s41586-025-09807-0",
+        "source_xml_sha256": "9182a4004117036e7be71b48cabb34755f397746ef0fe821dfad01f64fa2c129",
+        "role": "Ranked gene-set enrichment",
+        "reported_provider": "unresolved",
+        "reported_provider_versions": [],
+        "primary_evidence": {
+          "paragraph_index": 120,
+          "section": "Methods / Single-cell transcriptomics on human neutrophils / Analyses of PDAC and myocardial infarction (MI) models",
+          "paragraph_sha256": "612fc23c2d96c9cce8a87583c907307e6b2bc2376f140e54ef1b9ee6b5345f6e",
+          "matched_tokens": [
+            {
+              "literal": "GSEA",
+              "start": 886,
+              "end": 890
+            }
+          ]
+        },
+        "supporting_evidence": [
+          {
+            "paragraph_index": 84,
+            "section": "Methods / Single-cell transcriptomics on mouse neutrophils / Signature projection",
+            "paragraph_sha256": "20bfbeb500c08e2a3b277c21c41ded3bd3979f8edb4ed0ca94ce506ff4cd5179",
+            "matched_tokens": [
+              {
+                "literal": "gene set enrichment",
+                "start": 401,
+                "end": 420
+              },
+              {
+                "literal": "GSEA",
+                "start": 431,
+                "end": 435
+              }
+            ]
+          }
+        ],
+        "usage_summary": "Performed GSEA and overrepresentation analysis on tumour-core expression profiles; a separate passage used GO/GSEA signatures with Seurat AddModuleScore.",
+        "required_caution": "The actual tumour-core execution is the primary anchor. A signature resource or AddModuleScore is not ranked-GSEA software. Executor, edition, rankings and null/options remain unresolved.",
+        "existing_observation": true,
+        "proposed_observation": false,
+        "evidence_kind": "analysis-method-description",
+        "matching_Broad_source_profiles": [],
+        "native_Broad_profile_counterpart_qualified": false,
+        "other_provider_backend_qualified_by_Broad": false,
+        "author_executable_edition_unresolved": true,
+        "exact_author_inputs_recovered": false,
+        "historical_author_seed_recovered": false,
+        "author_runtime_executed": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false,
+        "auxiliary_sources": []
+      },
+      "P055": {
+        "paper_id": "P055",
+        "pmcid": "PMC10719111",
+        "doi": "10.1038/s41586-023-06818-7",
+        "source_xml_sha256": "d8fcd4d6b75d84050aeb06ece62bd18c715d5a71b2e5cd291bb5e75afcd05fa6",
+        "role": "Ranked gene-set enrichment",
+        "reported_provider": "fgsea",
+        "reported_provider_versions": [
+          {
+            "provider": "fgsea",
+            "literal": "1.20.0",
+            "paragraph_index": 92,
+            "character_offset": 926
+          }
+        ],
+        "primary_evidence": {
+          "paragraph_index": 92,
+          "section": "Methods / Brain preparation / Analyses of activity-dependent gene expression / Transcription factor enrichment",
+          "paragraph_sha256": "f34c00b5ac75d871dddf7cfa9eb24f966c586151bd81efb8b4eca94d28079a76",
+          "matched_tokens": [
+            {
+              "literal": "gene set enrichment",
+              "start": 128,
+              "end": 147
+            },
+            {
+              "literal": "GSEA",
+              "start": 158,
+              "end": 162
+            },
+            {
+              "literal": "fgsea",
+              "start": 918,
+              "end": 923
+            },
+            {
+              "literal": "gene set enrichment",
+              "start": 951,
+              "end": 970
+            },
+            {
+              "literal": "fgsea",
+              "start": 1198,
+              "end": 1203
+            }
+          ]
+        },
+        "supporting_evidence": [],
+        "usage_summary": "Used fgsea for positive one-tailed enrichment of Fos-correlated expressed protein-coding genes with set sizes 15-500.",
+        "required_caution": "Retain the one-tailed direction, expressed universe and correlation ranks. Do not replace this with a Broad two-sided procedure or infer an unreported fgsea function/options.",
+        "existing_observation": true,
+        "proposed_observation": false,
+        "evidence_kind": "analysis-method-description",
+        "matching_Broad_source_profiles": [],
+        "native_Broad_profile_counterpart_qualified": false,
+        "other_provider_backend_qualified_by_Broad": false,
+        "author_executable_edition_unresolved": true,
+        "exact_author_inputs_recovered": false,
+        "historical_author_seed_recovered": false,
+        "author_runtime_executed": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false,
+        "auxiliary_sources": []
+      },
+      "P062": {
+        "paper_id": "P062",
+        "pmcid": "PMC13668712",
+        "doi": "10.1038/s41586-026-10964-z",
+        "source_xml_sha256": "bcbebc68b9d568732820eb94dd23b42e575f6d5d037d28d9eabf64e4ad83d61f",
+        "role": "Ranked gene-set enrichment",
+        "reported_provider": "GSEApy",
+        "reported_provider_versions": [
+          {
+            "provider": "GSEApy",
+            "literal": "1.1.8",
+            "paragraph_index": 43,
+            "character_offset": 1516
+          }
+        ],
+        "primary_evidence": {
+          "paragraph_index": 43,
+          "section": "Methods / snRNA-seq analysis",
+          "paragraph_sha256": "fdf34b81ceb66604bbc42478f2d06eb90c29805d1215bf9ec6862d0afe7f7af9",
+          "matched_tokens": [
+            {
+              "literal": "GSEA",
+              "start": 1483,
+              "end": 1487
+            },
+            {
+              "literal": "gseapy",
+              "start": 1507,
+              "end": 1513
+            },
+            {
+              "literal": "gseapy",
+              "start": 1557,
+              "end": 1563
+            }
+          ]
+        },
+        "supporting_evidence": [],
+        "usage_summary": "Used GSEApy 1.1.8 for GSEA after Scanpy processing.",
+        "required_caution": "GSEApy is the named provider. Its ranked-analysis options, randomizer and backend require separate source qualification; the existing native GSEApy ORA component is not ranked GSEA.",
+        "existing_observation": true,
+        "proposed_observation": false,
+        "evidence_kind": "analysis-method-description",
+        "matching_Broad_source_profiles": [],
+        "native_Broad_profile_counterpart_qualified": false,
+        "other_provider_backend_qualified_by_Broad": false,
+        "author_executable_edition_unresolved": true,
+        "exact_author_inputs_recovered": false,
+        "historical_author_seed_recovered": false,
+        "author_runtime_executed": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false,
+        "auxiliary_sources": []
+      },
+      "P069": {
+        "paper_id": "P069",
+        "pmcid": "PMC10781646",
+        "doi": "10.1038/s41586-023-06816-9",
+        "source_xml_sha256": "1f5dc9f2d83bde84f2d970e9c3af4b6586ef50309493d74c8848a55e4a61b3c5",
+        "role": "Ranked gene-set enrichment",
+        "reported_provider": "clusterProfiler",
+        "reported_provider_versions": [
+          {
+            "provider": "clusterProfiler",
+            "literal": "4.2.1",
+            "paragraph_index": 40,
+            "character_offset": 286
+          }
+        ],
+        "primary_evidence": {
+          "paragraph_index": 40,
+          "section": "Methods / Pathway enrichment analysis for NK cells",
+          "paragraph_sha256": "58e0805c3af1aaf4eecfc7ef8f5fa6865f41dd3afedb3b812ecf6f5a1244d731",
+          "matched_tokens": [
+            {
+              "literal": "Gene set enrichment",
+              "start": 218,
+              "end": 237
+            }
+          ]
+        },
+        "supporting_evidence": [
+          {
+            "paragraph_index": 56,
+            "section": "Data availability",
+            "paragraph_sha256": "cdb9d8d999212051ab6217732568feecae784caad2bd5ac752464630b1463856",
+            "matched_tokens": [
+              {
+                "literal": "gsea",
+                "start": 612,
+                "end": 616
+              },
+              {
+                "literal": "gsea",
+                "start": 628,
+                "end": 632
+              }
+            ]
+          },
+          {
+            "paragraph_index": 62,
+            "section": "Associated Data / Data Availability Statement",
+            "paragraph_sha256": "cdb9d8d999212051ab6217732568feecae784caad2bd5ac752464630b1463856",
+            "matched_tokens": [
+              {
+                "literal": "gsea",
+                "start": 612,
+                "end": 616
+              },
+              {
+                "literal": "gsea",
+                "start": 628,
+                "end": 632
+              }
+            ]
+          }
+        ],
+        "usage_summary": "Performed preranked clusterProfiler GSEA for NK-cell GO biological processes using mean IL18-minus-PBS expression differences and FDR below 0.1.",
+        "required_caution": "Preserve the treatment contrast, mean-difference rank and declared collections. Other matches are MSigDB resources; clusterProfiler 4.2.1 is not a Broad edition or a qualified Broad-backend attribution.",
+        "existing_observation": false,
+        "proposed_observation": true,
+        "evidence_kind": "analysis-method-description",
+        "matching_Broad_source_profiles": [],
+        "native_Broad_profile_counterpart_qualified": false,
+        "other_provider_backend_qualified_by_Broad": false,
+        "author_executable_edition_unresolved": true,
+        "exact_author_inputs_recovered": false,
+        "historical_author_seed_recovered": false,
+        "author_runtime_executed": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false,
+        "auxiliary_sources": []
+      },
+      "P077": {
+        "paper_id": "P077",
+        "pmcid": "PMC12807864",
+        "doi": "10.1038/s41588-025-02397-7",
+        "source_xml_sha256": "bf145faa08ab089977ae3be06d6c1927a49fef4a65527e52b28eadfddd351803",
+        "role": "Ranked gene-set enrichment",
+        "reported_provider": "Broad GSEA",
+        "reported_provider_versions": [
+          {
+            "provider": "Broad GSEA",
+            "literal": "4.3.2",
+            "paragraph_index": 55,
+            "character_offset": 389
+          }
+        ],
+        "primary_evidence": {
+          "paragraph_index": 55,
+          "section": "Methods / Tissue and cell-type enrichment with MAGMA",
+          "paragraph_sha256": "64d96485d3604f2e30ca9537e656d8ba0a8025286a89a07ac93463a2c5f6ca82",
+          "matched_tokens": [
+            {
+              "literal": "GSEA",
+              "start": 373,
+              "end": 377
+            }
+          ]
+        },
+        "supporting_evidence": [],
+        "usage_summary": "Used Broad GSEA 4.3.2 to help identify cell clusters where author labels were unavailable, in a study with separate MAGMA tissue/cell-type enrichment.",
+        "required_caution": "The Broad 4.3.2 prepared-data source profile is qualified, but the author rankings, sets and permutation/metric options are unrecovered. The exact supplement describes related MAGMA gene-set preparation and numerical Seurat clusters, without supplying GSEA execution options. Do not transfer MAGMA/GTEx settings to GSEA.",
+        "existing_observation": true,
+        "proposed_observation": false,
+        "evidence_kind": "analysis-method-description",
+        "matching_Broad_source_profiles": [
+          "4.3.2"
+        ],
+        "native_Broad_profile_counterpart_qualified": true,
+        "other_provider_backend_qualified_by_Broad": false,
+        "author_executable_edition_unresolved": false,
+        "exact_author_inputs_recovered": false,
+        "historical_author_seed_recovered": false,
+        "author_runtime_executed": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false,
+        "auxiliary_sources": [
+          "P077-supplement-pages-14-15"
+        ]
+      },
+      "P092": {
+        "paper_id": "P092",
+        "pmcid": "PMC13649587",
+        "doi": "10.1038/s41588-026-02755-z",
+        "source_xml_sha256": "d0274e977260abcc52aecd4abe6f0e8b8901a5948beae068b28661a402dd5126",
+        "role": "Ranked gene-set enrichment",
+        "reported_provider": "clusterProfiler",
+        "reported_provider_versions": [],
+        "primary_evidence": {
+          "paragraph_index": 48,
+          "section": "Methods / Topic modeling and pathway enrichment",
+          "paragraph_sha256": "61db715889506dd6403ae68ec43223e09a9c086d638a6fb406bd71856414d801",
+          "matched_tokens": [
+            {
+              "literal": "gene set enrichment",
+              "start": 652,
+              "end": 671
+            },
+            {
+              "literal": "GSEA",
+              "start": 714,
+              "end": 718
+            }
+          ]
+        },
+        "supporting_evidence": [],
+        "usage_summary": "Used clusterProfiler GSEA on distance-weighted and L2-normalized peak/topic gene scores with msigdbr collections.",
+        "required_caution": "msigdbr 7.5.1 identifies a collection accessor, not Broad software. Preserve score construction, literal gene identifiers and complete collection membership; the provider backend is unqualified here.",
+        "existing_observation": true,
+        "proposed_observation": false,
+        "evidence_kind": "analysis-method-description",
+        "matching_Broad_source_profiles": [],
+        "native_Broad_profile_counterpart_qualified": false,
+        "other_provider_backend_qualified_by_Broad": false,
+        "author_executable_edition_unresolved": true,
+        "exact_author_inputs_recovered": false,
+        "historical_author_seed_recovered": false,
+        "author_runtime_executed": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false,
+        "auxiliary_sources": []
+      },
+      "P096": {
+        "paper_id": "P096",
+        "pmcid": "PMC11631765",
+        "doi": "10.1038/s41588-024-01990-6",
+        "source_xml_sha256": "bdf8a7d606e062789c6bd24ca84dcc7c8bc02b0271255e367f45d220d57369f9",
+        "role": "Ranked gene-set enrichment",
+        "reported_provider": "Broad GSEA",
+        "reported_provider_versions": [
+          {
+            "provider": "Broad GSEA",
+            "literal": "2023.1",
+            "paragraph_index": 48,
+            "character_offset": 99
+          }
+        ],
+        "primary_evidence": {
+          "paragraph_index": 48,
+          "section": "Methods / Pathway enrichment analysis of snRNA-seq datasets",
+          "paragraph_sha256": "84ce15396b00d74ca76e735359a56bbd82508dd399da56ee24b7038ed62292ab",
+          "matched_tokens": [
+            {
+              "literal": "GSEA",
+              "start": 0,
+              "end": 4
+            },
+            {
+              "literal": "GSEA",
+              "start": 82,
+              "end": 86
+            },
+            {
+              "literal": "gsea",
+              "start": 120,
+              "end": 124
+            },
+            {
+              "literal": "gsea",
+              "start": 136,
+              "end": 140
+            },
+            {
+              "literal": "GSEA",
+              "start": 183,
+              "end": 187
+            }
+          ]
+        },
+        "supporting_evidence": [
+          {
+            "paragraph_index": 60,
+            "section": "Supplementary information",
+            "paragraph_sha256": "1aadbd22e3a239ce94147de3d0d830b9d0c6c5cefddf372ee3277021db86772d",
+            "matched_tokens": [
+              {
+                "literal": "GSEA",
+                "start": 8619,
+                "end": 8623
+              },
+              {
+                "literal": "GSEA",
+                "start": 8806,
+                "end": 8810
+              },
+              {
+                "literal": "GSEA",
+                "start": 8976,
+                "end": 8980
+              }
+            ]
+          }
+        ],
+        "usage_summary": "Applied Broad GSEA to all DESeq2-tested genes per cortical cell type. The paper reports log2-fold-change times minus-log2-adjusted-P ranks; author Script 20 uses preranked classic/meandiv testing, 1,000 permutations and size bounds 15-200.",
+        "required_caution": "The paper labels software 2023.1, but the code identifies a 2023.1.Hs collection and no executable edition. Its seed is timestamp. Do not map the label to a supported executable, invent a historical seed or floor zero adjusted P. A read-only audit of all 29 published scripts did not identify an explicit RNK export; the original ranking files remain required. Exact author execution stays SKIP3 pending those prerequisites.",
+        "existing_observation": true,
+        "proposed_observation": false,
+        "evidence_kind": "analysis-method-description",
+        "matching_Broad_source_profiles": [],
+        "native_Broad_profile_counterpart_qualified": false,
+        "other_provider_backend_qualified_by_Broad": false,
+        "author_executable_edition_unresolved": true,
+        "exact_author_inputs_recovered": false,
+        "historical_author_seed_recovered": false,
+        "author_runtime_executed": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false,
+        "auxiliary_sources": [
+          "P096-author-code.zip"
+        ]
+      },
+      "P098": {
+        "paper_id": "P098",
+        "pmcid": "PMC13649585",
+        "doi": "10.1038/s41588-026-02745-1",
+        "source_xml_sha256": "49f9874fb22a1e420c6cfbf330d7623514fe91d1d983d9dcc8940967836b7214",
+        "role": "Ranked gene-set enrichment",
+        "reported_provider": "ranked executor unresolved; separate GSEApy ORA",
+        "reported_provider_versions": [],
+        "primary_evidence": {
+          "paragraph_index": 54,
+          "section": "Methods / Examining gene expression changes following KDM2B perturbation in D283 or DMB006 cells",
+          "paragraph_sha256": "15642883e809a25798eff7f54439f9f82466e46e8513c4d716c2eaf3e396ba9e",
+          "matched_tokens": [
+            {
+              "literal": "GSEA",
+              "start": 45,
+              "end": 49
+            }
+          ]
+        },
+        "supporting_evidence": [
+          {
+            "paragraph_index": 16,
+            "section": "Results / KDM2B promotes EnhBiv and represses neuronal differentiation",
+            "paragraph_sha256": "a351b6bd45555088f43ec321a65e7e863b78c725e0c060fe2f2a2c0c1ac8fe14",
+            "matched_tokens": [
+              {
+                "literal": "Gene set enrichment",
+                "start": 369,
+                "end": 388
+              },
+              {
+                "literal": "GSEA",
+                "start": 399,
+                "end": 403
+              },
+              {
+                "literal": "GSEA",
+                "start": 1580,
+                "end": 1584
+              }
+            ]
+          },
+          {
+            "paragraph_index": 39,
+            "section": "Methods / Identification of Group 4 EnhBiv and Group 3 ReprPC signature genes",
+            "paragraph_sha256": "f2d9c2121058c07765f8aa9898eea668ad959caf2843464584248bfcd2449699",
+            "matched_tokens": [
+              {
+                "literal": "GSEA",
+                "start": 70,
+                "end": 74
+              },
+              {
+                "literal": "GSEApy",
+                "start": 116,
+                "end": 122
+              }
+            ]
+          }
+        ],
+        "usage_summary": "Reported GSEA of RNA perturbation profiles, with a caption describing two-sided 1,000-permutation results, NES above 1.5 and BH-adjusted P below 0.05; separately used GSEApy 1.1.3 for ChEA regulator-target hypergeometric analysis.",
+        "required_caution": "The ChEA paragraph does not establish the ranked-GSEA executor or edition. Retain its distinct hypergeometric wording and the RNA GSEA caption thresholds; do not transfer GSEApy 1.1.3 or Broad empirical FDR semantics between those roles.",
+        "existing_observation": true,
+        "proposed_observation": false,
+        "evidence_kind": "analysis-method-description",
+        "matching_Broad_source_profiles": [],
+        "native_Broad_profile_counterpart_qualified": false,
+        "other_provider_backend_qualified_by_Broad": false,
+        "author_executable_edition_unresolved": true,
+        "exact_author_inputs_recovered": false,
+        "historical_author_seed_recovered": false,
+        "author_runtime_executed": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false,
+        "auxiliary_sources": []
+      },
+      "P109": {
+        "paper_id": "P109",
+        "pmcid": "PMC11631756",
+        "doi": "10.1038/s41588-024-01967-5",
+        "source_xml_sha256": "7aaea692a224ee167d84331b0b2ed24c870a03734bd568252deba2a156e78a4e",
+        "role": "Ranked gene-set enrichment",
+        "reported_provider": "clusterProfiler",
+        "reported_provider_versions": [
+          {
+            "provider": "clusterProfiler",
+            "literal": "4.0",
+            "paragraph_index": 43,
+            "character_offset": 726
+          }
+        ],
+        "primary_evidence": {
+          "paragraph_index": 43,
+          "section": "Methods / Transcriptome and GO enrichment analyses",
+          "paragraph_sha256": "727d9d6b6e5a3ee72e7f86798e246ee5006051a172245b240f875f77a445799b",
+          "matched_tokens": [
+            {
+              "literal": "GSEA",
+              "start": 659,
+              "end": 663
+            }
+          ]
+        },
+        "supporting_evidence": [],
+        "usage_summary": "Used clusterProfiler for plant-expression GO/GSEA analysis with FDR below 0.05.",
+        "required_caution": "Version 4.0 belongs to clusterProfiler, not Broad. Organism identifiers, collection universe, ranking and backend options remain separately required.",
+        "existing_observation": true,
+        "proposed_observation": false,
+        "evidence_kind": "analysis-method-description",
+        "matching_Broad_source_profiles": [],
+        "native_Broad_profile_counterpart_qualified": false,
+        "other_provider_backend_qualified_by_Broad": false,
+        "author_executable_edition_unresolved": true,
+        "exact_author_inputs_recovered": false,
+        "historical_author_seed_recovered": false,
+        "author_runtime_executed": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false,
+        "auxiliary_sources": []
+      },
+      "P117": {
+        "paper_id": "P117",
+        "pmcid": "PMC13553300",
+        "doi": "10.1038/s41588-026-02737-1",
+        "source_xml_sha256": "e4853ce47676f59ccb1964304954bffadbc36e267dfb8fcb54030f8de728b91a",
+        "role": "Ranked gene-set enrichment",
+        "reported_provider": "cacoa/DOSE/clusterProfiler",
+        "reported_provider_versions": [],
+        "primary_evidence": {
+          "paragraph_index": 52,
+          "section": "Methods / Sexual dimorphism analysis",
+          "paragraph_sha256": "22495a680de02e382d6637c60838fb13fe4042d8feb0de6650268443069622f8",
+          "matched_tokens": [
+            {
+              "literal": "GSEA",
+              "start": 70,
+              "end": 74
+            }
+          ]
+        },
+        "supporting_evidence": [],
+        "usage_summary": "Used cacoa with DOSE/clusterProfiler for an extended GSEA of cell-state expression changes.",
+        "required_caution": "Citation digits are not software version suffixes. The separate composition-bootstrap count is not a GSEA permutation count; extended-method/backend choices remain unresolved and are not reproduced by Broad.",
+        "existing_observation": true,
+        "proposed_observation": false,
+        "evidence_kind": "analysis-method-description",
+        "matching_Broad_source_profiles": [],
+        "native_Broad_profile_counterpart_qualified": false,
+        "other_provider_backend_qualified_by_Broad": false,
+        "author_executable_edition_unresolved": true,
+        "exact_author_inputs_recovered": false,
+        "historical_author_seed_recovered": false,
+        "author_runtime_executed": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false,
+        "auxiliary_sources": []
+      },
+      "P133": {
+        "paper_id": "P133",
+        "pmcid": "PMC12695660",
+        "doi": "10.1038/s41588-025-02388-8",
+        "source_xml_sha256": "f70438623e8599bd86e6c1b747ee584bd36e8afbc84d715badca1641edf29f25",
+        "role": "Ranked gene-set enrichment",
+        "reported_provider": "fgsea",
+        "reported_provider_versions": [],
+        "primary_evidence": {
+          "paragraph_index": 25,
+          "section": "Methods / STRING and gene set enrichment analysis",
+          "paragraph_sha256": "a7d53649be37f400b11ee7e82698172b2d53d4cdb3e8984f1a8f52f016e5e05a",
+          "matched_tokens": [
+            {
+              "literal": "gene set enrichment",
+              "start": 13,
+              "end": 32
+            },
+            {
+              "literal": "fgsea",
+              "start": 103,
+              "end": 108
+            }
+          ]
+        },
+        "supporting_evidence": [],
+        "usage_summary": "Performed fgsea preranked enrichment of Hallmark sets using DESeq2 Wald statistics.",
+        "required_caution": "Preserve Wald statistics rather than substituting fold changes. The source citation DOI points to GSEABase; retain that discrepancy without changing the named provider or inventing its edition/function.",
+        "existing_observation": false,
+        "proposed_observation": true,
+        "evidence_kind": "analysis-method-description",
+        "matching_Broad_source_profiles": [],
+        "native_Broad_profile_counterpart_qualified": false,
+        "other_provider_backend_qualified_by_Broad": false,
+        "author_executable_edition_unresolved": true,
+        "exact_author_inputs_recovered": false,
+        "historical_author_seed_recovered": false,
+        "author_runtime_executed": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false,
+        "auxiliary_sources": []
+      },
+      "P134": {
+        "paper_id": "P134",
+        "pmcid": "PMC13553295",
+        "doi": "10.1038/s41588-026-02714-8",
+        "source_xml_sha256": "6d2d8ed42a631cd6643f540253101197fc76f8b489be13e2a9e6c32a2ee99c8c",
+        "role": "Ranked gene-set enrichment",
+        "reported_provider": "unresolved",
+        "reported_provider_versions": [],
+        "primary_evidence": {
+          "paragraph_index": 52,
+          "section": "Methods / Pooled TF overexpression assay (scRNA-seq) / CRISPR KO library design (in vivo)",
+          "paragraph_sha256": "18d6fc03301f975efa792ec536e82360050041d707ff844d2642d713e3515003",
+          "matched_tokens": [
+            {
+              "literal": "GSEA",
+              "start": 665,
+              "end": 669
+            },
+            {
+              "literal": "GSEA",
+              "start": 876,
+              "end": 880
+            }
+          ]
+        },
+        "supporting_evidence": [
+          {
+            "paragraph_index": 53,
+            "section": "Methods / In vivo MR overexpression-mediated transdifferentiation",
+            "paragraph_sha256": "de4323a49aa5da00a88e827a124365cb2c405e90cfb2e84c06c301a25f6d7471",
+            "matched_tokens": [
+              {
+                "literal": "GSEA",
+                "start": 1659,
+                "end": 1663
+              }
+            ]
+          }
+        ],
+        "usage_summary": "Used GSEA with metaVIPER protein activity and essential-gene signatures, including sequential leading-edge conservation; a separate reprogramming analysis reported two-sided GSEA.",
+        "required_caution": "Keep protein-activity, leading-edge conservation and reprogramming roles distinct. Executor, exact null/statistic, sequential-set construction and author inputs/settings are not recovered.",
+        "existing_observation": true,
+        "proposed_observation": false,
+        "evidence_kind": "analysis-method-description",
+        "matching_Broad_source_profiles": [],
+        "native_Broad_profile_counterpart_qualified": false,
+        "other_provider_backend_qualified_by_Broad": false,
+        "author_executable_edition_unresolved": true,
+        "exact_author_inputs_recovered": false,
+        "historical_author_seed_recovered": false,
+        "author_runtime_executed": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false,
+        "auxiliary_sources": []
+      },
+      "P144": {
+        "paper_id": "P144",
+        "pmcid": "PMC12597822",
+        "doi": "10.1038/s41588-025-02374-0",
+        "source_xml_sha256": "880d3a8bb266dbd6172236f4d27161feaf2e49a239b502d71822657893588723",
+        "role": "Ranked gene-set enrichment",
+        "reported_provider": "unresolved",
+        "reported_provider_versions": [],
+        "primary_evidence": {
+          "paragraph_index": 47,
+          "section": "Methods / Correlation of gene expression and heteroplasmy",
+          "paragraph_sha256": "b9313b05c24088fd28398c2f0af925e95fa5070a656a0e8332db87b404d730e0",
+          "matched_tokens": [
+            {
+              "literal": "GSEA",
+              "start": 965,
+              "end": 969
+            }
+          ]
+        },
+        "supporting_evidence": [],
+        "usage_summary": "Applied ranked enrichment using Spearman/Fisher-Z correlation rankings and separate adjusted-OLS heteroplasmy association statistics.",
+        "required_caution": "Preserve the distinct ranking definitions and nonzero-cell selection. No executor/edition is established; do not choose Broad metrics or repair identifiers/nonfinite statistics by inference.",
+        "existing_observation": true,
+        "proposed_observation": false,
+        "evidence_kind": "analysis-method-description",
+        "matching_Broad_source_profiles": [],
+        "native_Broad_profile_counterpart_qualified": false,
+        "other_provider_backend_qualified_by_Broad": false,
+        "author_executable_edition_unresolved": true,
+        "exact_author_inputs_recovered": false,
+        "historical_author_seed_recovered": false,
+        "author_runtime_executed": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false,
+        "auxiliary_sources": []
+      },
+      "P151": {
+        "paper_id": "P151",
+        "pmcid": "PMC13447110",
+        "doi": "10.1038/s41588-026-02681-0",
+        "source_xml_sha256": "1104a9bc5cfeac5ade7332ce7d0f1ab2680e780cdf1d736a3db6a047aa2e9a4c",
+        "role": "Ranked gene-set enrichment",
+        "reported_provider": "MAGeCK pathway",
+        "reported_provider_versions": [
+          {
+            "provider": "MAGeCK pathway",
+            "literal": "0.5.9.5",
+            "paragraph_index": 72,
+            "character_offset": 492
+          }
+        ],
+        "primary_evidence": {
+          "paragraph_index": 72,
+          "section": "Methods / Querying a CRISPRi screen for regulators of ILC3 inflammatory response for multiCOGS-prioritized genes",
+          "paragraph_sha256": "e7e3803dfa35be16892b4afa21b46b2ac743e83312771a583506a151840face3",
+          "matched_tokens": [
+            {
+              "literal": "gene set enrichment",
+              "start": 337,
+              "end": 356
+            }
+          ]
+        },
+        "supporting_evidence": [
+          {
+            "paragraph_index": 29,
+            "section": "Results / multiCOGS prioritizes candidate effector genes for six immune diseases with potential roles in ILC3 inflammatory function",
+            "paragraph_sha256": "af8ed1fbb6350d719a0862ddcd885fbc92fbd4cbed7fe4b5d6b2eb0027241438",
+            "matched_tokens": [
+              {
+                "literal": "gene set enrichment",
+                "start": 1089,
+                "end": 1108
+              }
+            ]
+          }
+        ],
+        "usage_summary": "Used MAGeCK pathway GSEA on 8,149 genes ranked by MAGeCK scores with 100,000 permutations; a 142-gene prioritized list was a separate selection.",
+        "required_caution": "MAGeCK pathway 0.5.9.5 is the reported provider. Its rank statistic and permutation algorithm are not replaced by Broad; retain the full ranked universe and the distinct prioritized set.",
+        "existing_observation": false,
+        "proposed_observation": true,
+        "evidence_kind": "analysis-method-description",
+        "matching_Broad_source_profiles": [],
+        "native_Broad_profile_counterpart_qualified": false,
+        "other_provider_backend_qualified_by_Broad": false,
+        "author_executable_edition_unresolved": true,
+        "exact_author_inputs_recovered": false,
+        "historical_author_seed_recovered": false,
+        "author_runtime_executed": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false,
+        "auxiliary_sources": []
+      },
+      "P163": {
+        "paper_id": "P163",
+        "pmcid": "PMC11525197",
+        "doi": "10.1038/s41588-024-01911-7",
+        "source_xml_sha256": "952a7f7cfb1744af6e4fc1a89ae6f063d4a0bab8d0ecb358d199f722e37b9ee6",
+        "role": "Ranked gene-set enrichment",
+        "reported_provider": "fgsea",
+        "reported_provider_versions": [],
+        "primary_evidence": {
+          "paragraph_index": 69,
+          "section": "Methods / Data processing",
+          "paragraph_sha256": "f11db64e64c381d4d50c970dd8b31c3ad8befc35e220149c57939234056cc41e",
+          "matched_tokens": [
+            {
+              "literal": "Gene Set Enrichment",
+              "start": 540,
+              "end": 559
+            },
+            {
+              "literal": "FGSEA",
+              "start": 570,
+              "end": 575
+            }
+          ]
+        },
+        "supporting_evidence": [
+          {
+            "paragraph_index": 18,
+            "section": "Results / PU.1 repositioning restructures chromatin and transcriptome",
+            "paragraph_sha256": "5a3cee025075a8ce4aa92e7110db21911b664b2721ba70d92bbad81907b1715c",
+            "matched_tokens": [
+              {
+                "literal": "Gene set enrichment",
+                "start": 141,
+                "end": 160
+              }
+            ]
+          }
+        ],
+        "usage_summary": "Used fgsea with direction-times-minus-log-adjusted-P ranks and MSigDB 7.4 chromosome/curated/regulatory/ontology/cell-type/Hallmark collections; Enrichr was separate.",
+        "required_caution": "The collection version is not an fgsea edition. Preserve direction, adjusted-P transform, zero/nonfinite boundaries and complete tested families; no Broad/Enrichr algorithm substitution is admitted.",
+        "existing_observation": false,
+        "proposed_observation": true,
+        "evidence_kind": "analysis-method-description",
+        "matching_Broad_source_profiles": [],
+        "native_Broad_profile_counterpart_qualified": false,
+        "other_provider_backend_qualified_by_Broad": false,
+        "author_executable_edition_unresolved": true,
+        "exact_author_inputs_recovered": false,
+        "historical_author_seed_recovered": false,
+        "author_runtime_executed": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false,
+        "auxiliary_sources": []
+      },
+      "P165": {
+        "paper_id": "P165",
+        "pmcid": "PMC13447109",
+        "doi": "10.1038/s41588-026-02673-0",
+        "source_xml_sha256": "386edeb2a738e47e95aac498040d22bc7ce1b5ae2c0b6e3f151d81aede695a1b",
+        "role": "Ranked gene-set enrichment",
+        "reported_provider": "unresolved",
+        "reported_provider_versions": [],
+        "primary_evidence": {
+          "paragraph_index": 52,
+          "section": "Methods / Bulk RNA sequencing",
+          "paragraph_sha256": "3681564b1d464ef5cd33904817819b70e3a2d10096384a4155dff1da4e74ff6d",
+          "matched_tokens": [
+            {
+              "literal": "gene set enrichment",
+              "start": 591,
+              "end": 610
+            }
+          ]
+        },
+        "supporting_evidence": [
+          {
+            "paragraph_index": 8,
+            "section": "Results / Fetal gene expression marks repair-associated crypt fission",
+            "paragraph_sha256": "b153ffb24b01bf5c911488ef6874330596c37e271864c1e6c5b55636b71b281a",
+            "matched_tokens": [
+              {
+                "literal": "gene set enrichment",
+                "start": 367,
+                "end": 386
+              },
+              {
+                "literal": "GSEA",
+                "start": 397,
+                "end": 401
+              }
+            ]
+          }
+        ],
+        "usage_summary": "Applied GSEA to fetal-repair signatures using bulk DESeq2 results ranked by descending log2 fold change in the stated Muc2 homozygous/heterozygous comparison.",
+        "required_caution": "Executor/edition, null type, seed and exact set membership/options remain unknown. Preserve genotype contrast and rank direction without inferring a Broad invocation.",
+        "existing_observation": false,
+        "proposed_observation": true,
+        "evidence_kind": "analysis-method-description",
+        "matching_Broad_source_profiles": [],
+        "native_Broad_profile_counterpart_qualified": false,
+        "other_provider_backend_qualified_by_Broad": false,
+        "author_executable_edition_unresolved": true,
+        "exact_author_inputs_recovered": false,
+        "historical_author_seed_recovered": false,
+        "author_runtime_executed": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false,
+        "auxiliary_sources": []
+      },
+      "P170": {
+        "paper_id": "P170",
+        "pmcid": "PMC12597823",
+        "doi": "10.1038/s41588-025-02344-6",
+        "source_xml_sha256": "ea3565b3d487b40dbbd57675e2825b39fda6b485cba722cd505701adc18d3739",
+        "role": "Ranked gene-set enrichment",
+        "reported_provider": "fgsea",
+        "reported_provider_versions": [],
+        "primary_evidence": {
+          "paragraph_index": 38,
+          "section": "Methods / Gene pathway enrichment analysis",
+          "paragraph_sha256": "a9e8e4b7ab4ef158c2888cd46a8dd874fe37cae7c15588b69e70ce984d96a226",
+          "matched_tokens": [
+            {
+              "literal": "fgsea",
+              "start": 325,
+              "end": 330
+            }
+          ]
+        },
+        "supporting_evidence": [
+          {
+            "paragraph_index": 7,
+            "section": "Results / Quantifying perturbation states",
+            "paragraph_sha256": "3db0644fb3ff8fbd69ae718f47fcafd1d050835d043b04c056b633958ab96af2",
+            "matched_tokens": [
+              {
+                "literal": "gene set enrichment",
+                "start": 443,
+                "end": 462
+              },
+              {
+                "literal": "GSEA",
+                "start": 475,
+                "end": 479
+              }
+            ]
+          }
+        ],
+        "usage_summary": "Used fgsea on perturbation-correlation ranks with set sizes 15-500, 100,000 permutations and MSigDB Hallmark/C7 signatures.",
+        "required_caution": "The provider is resolved in a non-GSEA-matching methods sentence. Preserve the correlation ranks and stated permutation count; do not assign a Broad source edition or unreported fgsea function.",
+        "existing_observation": false,
+        "proposed_observation": true,
+        "evidence_kind": "analysis-method-description",
+        "matching_Broad_source_profiles": [],
+        "native_Broad_profile_counterpart_qualified": false,
+        "other_provider_backend_qualified_by_Broad": false,
+        "author_executable_edition_unresolved": true,
+        "exact_author_inputs_recovered": false,
+        "historical_author_seed_recovered": false,
+        "author_runtime_executed": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false,
+        "auxiliary_sources": []
+      },
+      "P182": {
+        "paper_id": "P182",
+        "pmcid": "PMC11639091",
+        "doi": "10.1016/j.ajhg.2024.10.019",
+        "source_xml_sha256": "a341dce0f9805f735191516ad0178a8a44ec98248dba13a9941f0a2a8178224e",
+        "role": "Ranked gene-set enrichment",
+        "reported_provider": "fgsea",
+        "reported_provider_versions": [
+          {
+            "provider": "fgsea",
+            "literal": "1.20.0",
+            "paragraph_index": 23,
+            "character_offset": 96
+          }
+        ],
+        "primary_evidence": {
+          "paragraph_index": 23,
+          "section": "Methods / Enrichment analyses",
+          "paragraph_sha256": "c334d4d00a690f4e26fb3e6e8273e6af1be783a3f7a9b613aae3f5b1e8a38900",
+          "matched_tokens": [
+            {
+              "literal": "Gene set enrichment",
+              "start": 0,
+              "end": 19
+            },
+            {
+              "literal": "fgsea",
+              "start": 87,
+              "end": 92
+            }
+          ]
+        },
+        "supporting_evidence": [],
+        "usage_summary": "Used fgsea 1.20.0 on differential-expression log2-fold-change ranks with Reactome/Hallmark sets, size bounds 10-1,500 and FDR-adjusted P below 0.05.",
+        "required_caution": "This explicit ranked-enrichment operation was missed by the original analysis-suffixed keyword search. clusterProfiler 4.2.2 enrichr/enrichGO ORA and its detected-gene background are separate; MSgDB 7.5.1 is a resource label. Broad does not qualify the fgsea backend.",
+        "existing_observation": false,
+        "proposed_observation": true,
+        "evidence_kind": "analysis-method-description",
+        "matching_Broad_source_profiles": [],
+        "native_Broad_profile_counterpart_qualified": false,
+        "other_provider_backend_qualified_by_Broad": false,
+        "author_executable_edition_unresolved": true,
+        "exact_author_inputs_recovered": false,
+        "historical_author_seed_recovered": false,
+        "author_runtime_executed": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false,
+        "auxiliary_sources": []
+      },
+      "P197": {
+        "paper_id": "P197",
+        "pmcid": "PMC11568763",
+        "doi": "10.1016/j.ajhg.2024.09.006",
+        "source_xml_sha256": "88e5e37c9ddcd71c7aaa2429af134c25a7260edde6981956f685345e73b87082",
+        "role": "Ranked gene-set enrichment",
+        "reported_provider": "clusterProfiler",
+        "reported_provider_versions": [],
+        "primary_evidence": {
+          "paragraph_index": 36,
+          "section": "Results / MARK2 loss disrupts early neurogenesis via the downregulation of WNT/β-catenin signaling pathway",
+          "paragraph_sha256": "528c72b99a59c44393f8f411812b13712dce869559bb81fabd3328e6bd6e59e8",
+          "matched_tokens": [
+            {
+              "literal": "GSEA",
+              "start": 1282,
+              "end": 1286
+            }
+          ]
+        },
+        "supporting_evidence": [
+          {
+            "paragraph_index": 13,
+            "section": "Material and methods / RNA sequencing",
+            "paragraph_sha256": "35d2ec75a53be47ec8c6578019bb9bf9c0213d4c3019a25b878707a1e9326d02",
+            "matched_tokens": [
+              {
+                "literal": "gene set enrichment",
+                "start": 1434,
+                "end": 1453
+              },
+              {
+                "literal": "GSEA",
+                "start": 1464,
+                "end": 1468
+              }
+            ]
+          }
+        ],
+        "usage_summary": "Used clusterProfiler for GSEA in the reported selected-gene expression analyses.",
+        "required_caution": "R 4.2.2 is a host label, not a GSEA edition. Retain the source selected-gene thresholds and P versus adjusted-P wording; package backend, exact rankings and complete set families remain unresolved.",
+        "existing_observation": true,
+        "proposed_observation": false,
+        "evidence_kind": "analysis-method-description",
+        "matching_Broad_source_profiles": [],
+        "native_Broad_profile_counterpart_qualified": false,
+        "other_provider_backend_qualified_by_Broad": false,
+        "author_executable_edition_unresolved": true,
+        "exact_author_inputs_recovered": false,
+        "historical_author_seed_recovered": false,
+        "author_runtime_executed": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false,
+        "auxiliary_sources": []
+      },
+      "P220": {
+        "paper_id": "P220",
+        "pmcid": "PMC12696503",
+        "doi": "10.1016/j.ajhg.2025.08.013",
+        "source_xml_sha256": "d8be6d2b664a13ccf501559a92f41fc70280248d93b67c5872cd6d70a7d767f3",
+        "role": "Ranked gene-set enrichment",
+        "reported_provider": "Broad GSEA",
+        "reported_provider_versions": [
+          {
+            "provider": "Broad GSEA",
+            "literal": "4.3.3",
+            "paragraph_index": 51,
+            "character_offset": 47
+          }
+        ],
+        "primary_evidence": {
+          "paragraph_index": 51,
+          "section": "Material and methods / Wet lab methods / Pathway enrichment in CRISPR RNA-seq data",
+          "paragraph_sha256": "d1e71ac0a478776f92436ddcd15f551d0f28b747be1c45625e3d1fd2e23b6aab",
+          "matched_tokens": [
+            {
+              "literal": "gene set enrichment",
+              "start": 8,
+              "end": 27
+            },
+            {
+              "literal": "GSEA",
+              "start": 38,
+              "end": 42
+            },
+            {
+              "literal": "GSEA",
+              "start": 210,
+              "end": 214
+            }
+          ]
+        },
+        "supporting_evidence": [
+          {
+            "paragraph_index": 52,
+            "section": "Material and methods / Wet lab methods / Pathway enrichment in CRISPR RNA-seq data",
+            "paragraph_sha256": "7786b465f06cd4f9c987ab7e22f43b1953202e357872293da41174b2ed2a6e35",
+            "matched_tokens": [
+              {
+                "literal": "GSEA",
+                "start": 171,
+                "end": 175
+              },
+              {
+                "literal": "GSEA",
+                "start": 270,
+                "end": 274
+              }
+            ]
+          }
+        ],
+        "usage_summary": "Used Broad GSEA 4.3.3 on DESeq2 rlog expression matrices with 10,000 permutations and MSigDB 2023.2.Hs KEGG/Reactome/GO collections for CRISPR RNA-seq and hWAT comparisons.",
+        "required_caution": "The Broad 4.3.3 prepared-data source profile is qualified, but author null type, ranking metric, seed and complete inputs/settings remain unrecovered. Positive NES denotes empty Cas9; negative denotes knockdown or wild-type hWAT. The rlog transformation and collection retrieval are separate; do not substitute the same-title preprint for frozen final PMC12696503.",
+        "existing_observation": true,
+        "proposed_observation": false,
+        "evidence_kind": "analysis-method-description",
+        "matching_Broad_source_profiles": [
+          "4.3.3"
+        ],
+        "native_Broad_profile_counterpart_qualified": true,
+        "other_provider_backend_qualified_by_Broad": false,
+        "author_executable_edition_unresolved": false,
+        "exact_author_inputs_recovered": false,
+        "historical_author_seed_recovered": false,
+        "author_runtime_executed": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false,
+        "auxiliary_sources": []
+      },
+      "P228": {
+        "paper_id": "P228",
+        "pmcid": "PMC12696504",
+        "doi": "10.1016/j.ajhg.2025.07.020",
+        "source_xml_sha256": "c548343d1317fbd6fcf857ffcd429bb3b2cc4bdc89d0f77206c0589eb4c35ee2",
+        "role": "Ranked gene-set enrichment",
+        "reported_provider": "fgsea",
+        "reported_provider_versions": [],
+        "primary_evidence": {
+          "paragraph_index": 12,
+          "section": "Material and methods / snRNA-seq and data analysis",
+          "paragraph_sha256": "99f200462063a6de97989b285539ae6919194c52292e1cd573d3eebba003d5eb",
+          "matched_tokens": [
+            {
+              "literal": "Gene set enrichment",
+              "start": 781,
+              "end": 800
+            },
+            {
+              "literal": "fgsea",
+              "start": 889,
+              "end": 894
+            },
+            {
+              "literal": "fgsea",
+              "start": 929,
+              "end": 934
+            }
+          ]
+        },
+        "supporting_evidence": [
+          {
+            "paragraph_index": 30,
+            "section": "Results / del(17)p11.2 alters the expression of genes associated with cell cycle, neurodevelopment, and synapse assembly in SMS hiPSC-derived cortical organoids",
+            "paragraph_sha256": "0e108e1bea94047efd056160c50b0122a0d9aa6629e1ba8cae72faed7b3e930b",
+            "matched_tokens": [
+              {
+                "literal": "gene set enrichment",
+                "start": 2200,
+                "end": 2219
+              },
+              {
+                "literal": "GSEA",
+                "start": 2230,
+                "end": 2234
+              },
+              {
+                "literal": "gene set enrichment",
+                "start": 3796,
+                "end": 3815
+              },
+              {
+                "literal": "GSEA",
+                "start": 3826,
+                "end": 3830
+              }
+            ]
+          }
+        ],
+        "usage_summary": "Used fgsea on t-statistics for all expressed genes; enrichR overrepresentation analysis and rrvgo summarization were separate.",
+        "required_caution": "Retain the all-expressed-gene universe and t-statistic ranking. Exact fgsea edition/options and complete set families remain required; Broad, enrichR and rrvgo are not interchangeable.",
+        "existing_observation": false,
+        "proposed_observation": true,
+        "evidence_kind": "analysis-method-description",
+        "matching_Broad_source_profiles": [],
+        "native_Broad_profile_counterpart_qualified": false,
+        "other_provider_backend_qualified_by_Broad": false,
+        "author_executable_edition_unresolved": true,
+        "exact_author_inputs_recovered": false,
+        "historical_author_seed_recovered": false,
+        "author_runtime_executed": false,
+        "complete_author_workflow_qualified": false,
+        "whole_paper_reproduced": false,
+        "auxiliary_sources": []
+      }
+    },
+    "native_family_credit_added": 1,
+    "upstream_family_credit_added": 0,
+    "new_scoped_integration_credit": 1,
+    "statistical_computation": "native-Broad-source-profiled-prepared-data-GSEA",
+    "whole_tool_qualified": false,
+    "whole_paper_reproduced": false
   },
   {
     "id": "susie",
