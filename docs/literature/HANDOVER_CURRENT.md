@@ -1,5 +1,16 @@
 # Current toolbox handover
 
+**Latest: [native edgeR checkpoint and exact next work](EDGER_NORMALIZATION_CHECKPOINT_2026-11-20.md).**
+Prepared-matrix native normalization/CPM/RPKM and the standalone file workflow
+pass 5,165 checks on each of three JVMs, independent original comparisons,
+actual examples and cross-host replay/verification controls. The source census
+audits 17 positive roles and proposes P088. Cumulative edgeR admission,
+global command discovery and differential-model workflows remain open; admitted
+totals stay **138 integrations, 1,503 reviewed uses and 1,201 pending**.
+Preserve all **26 worktrees**. Full old 3.32.1/3.36.0 package analyses remain
+SKIP3 despite separately qualified normalization kernels. Read the linked
+warnings, exact runtime/evidence paths and next steps before continuing.
+
 **Start here: [final handover, remaining work and exact resume instructions](HANDOVER_2026-11-20_FINAL.md).**
 The normal JAR now exposes `susie-tools`, with separately qualified replay-parent
 protection. The command metadata is current; the manifest has 820 clean entries.
