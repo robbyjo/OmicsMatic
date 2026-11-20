@@ -1,5 +1,18 @@
 # Current toolbox handover
 
+**Latest handover: [GCTA file workflows, warnings and exact remaining tasks](HANDOVER_2026-11-20_GCTA_WORKFLOWS.md).**
+The normal JAR now contains development native/original RUN/VERIFY/REPLAY for
+ten typed prepared-data model names. Sixteen packaged tests pass on three JVMs;
+28 complete cases per Windows/Linux host pass separate-JVM verification.
+Full GCTA qualification, mtCOJO, older editions, global registration and catalog
+admission remain open. Counts stay **140 scoped integrations, 1,548 reviewed
+uses and 1,166 pending**. Preserve all **25 worktrees** and separately transfer
+private runtimes, exact producer JARs and complete evidence before moving
+machines. Both literature reports remain off Pages. No release or full-goal
+completion is claimed. The linked document is the current resume task list;
+lower checkpoints remain retained history. The user paused the implementation
+goal for handover; resume it only when instructed.
+
 **Current: [qualified native GCTA GRM component and remaining work](GCTA_NATIVE_CHECKPOINT_2026-11-20.md).**
 The prepared-hard-call API is now in the normal JAR. Original edge controls,
 independent rational checks, cancellation correction, 190,428 exact fields and
