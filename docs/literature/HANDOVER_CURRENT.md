@@ -1,5 +1,14 @@
 # Current toolbox handover
 
+**Start here: [final handover, remaining work and exact resume instructions](HANDOVER_2026-11-20_FINAL.md).**
+The normal JAR now exposes `susie-tools`, with separately qualified replay-parent
+protection. The command metadata is current; the manifest has 820 clean entries.
+Totals remain **138 scoped integrations (25 native +113 upstream), 1,503 reviewed
+uses and 1,201 pending**. There are 25 preserved worktrees. The full goal is
+unfinished. Preserve and separately transfer ignored runtimes/evidence. Earlier
+dispatch-open and lower-count task lists below describe historical checkpoints;
+the final handover above is the current task list.
+
 **Current: [SuSiE cumulative admission and remaining work, 20 November 2026](SUSIE_CATALOG_CHECKPOINT_2026-11-20.md).**
 The three-edition original-runtime workflow and 20 source roles are admitted.
 P073/P203 are added; the unreviewed P235 orangutan-name false positive is

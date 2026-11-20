@@ -8017,7 +8017,7 @@
     "role": "Bayesian fine-mapping and credible sets",
     "current_coverage": "upstream-adapter-validated",
     "existing_source": "src/main/java/org/jlinalg/cli/SusieWorkflowCli.java",
-    "coverage_note": "Standalone Java file workflow calling original susieR 0.11.92, 0.12.35 and 0.14.2 with exact private R 4.6.1 profiles. Individual design/phenotype, version-specific RSS and sufficient-statistic interfaces; raw input/original RDS capture, RUN, R-free structural VERIFY and original-runtime REPLAY. Invoke org.jlinalg.cli.SusieWorkflowCli from a current source-built JAR. The native global susie command is separate, with no automatic fallback; global susie-tools is not yet added. Twenty source roles distinguish fitting/hosted analysis from three external-result reuse roles. Two missed observations are added and the unreviewed P235 orangutan-name false positive is removed with exact-before preservation. No author standalone function is inferred from a method name. Exact 0.11.43 is unavailable in this adapter (SKIP3); host wrappers, original author inputs/settings/dependencies, allele/locus/LD preparation, sequential selection, FINEMAP consensus, CLPP/coloc and whole author workflows remain explicit gaps. Linux R scientific deployment is not qualified. Build current source; the published 0.4.0 binary predates this entry point.",
+    "coverage_note": "Java file workflow through the global susie-tools command and the retained standalone org.jlinalg.cli.SusieWorkflowCli entry point, calling original susieR 0.11.92, 0.12.35 and 0.14.2 with exact private R 4.6.1 profiles. Individual design/phenotype, version-specific RSS and sufficient-statistic interfaces, raw/original-RDS capture, RUN, R-free structural VERIFY and original-runtime REPLAY. Native global susie stays separate; there is no automatic fallback. Twenty source roles distinguish fitting/hosted analysis from three external-result reuse roles. Two missed observations are added and the unreviewed P235 orangutan-name false positive is removed with exact-before preservation. No author standalone function is inferred from a method name. Exact 0.11.43 is unavailable in this adapter (SKIP3); host wrappers, original author inputs/settings/dependencies, allele/locus/LD preparation, sequential selection, FINEMAP consensus, CLPP/coloc and whole author workflows remain explicit gaps. Linux R scientific deployment is not qualified. Build current source; the published 0.4.0 binary predates this entry point. The root-route change adds no model interface, author-function attribution, family credit or source-review credit. A separately qualified replay-output guard rejects destinations inside the parent, including existing-path aliases, before output creation. The model-fitting code is unchanged. The frozen earlier source/scope guides describe their producing checkpoints; the current global-command guide gives the new invocation. The published 0.4.0 binary predates this route.",
     "paper_count": 20,
     "papers": [
       "P073",
@@ -8043,18 +8043,20 @@
     ],
     "implementation_status": "upstream-adapter-validated",
     "implementation_source": "src/main/java/org/jlinalg/cli/SusieWorkflowCli.java",
-    "implementation_scope": "Standalone Java file workflow calling original susieR 0.11.92, 0.12.35 and 0.14.2 with exact private R 4.6.1 profiles. Individual design/phenotype, version-specific RSS and sufficient-statistic interfaces; raw input/original RDS capture, RUN, R-free structural VERIFY and original-runtime REPLAY. Invoke org.jlinalg.cli.SusieWorkflowCli from a current source-built JAR. The native global susie command is separate, with no automatic fallback; global susie-tools is not yet added. Twenty source roles distinguish fitting/hosted analysis from three external-result reuse roles. Two missed observations are added and the unreviewed P235 orangutan-name false positive is removed with exact-before preservation. No author standalone function is inferred from a method name. Exact 0.11.43 is unavailable in this adapter (SKIP3); host wrappers, original author inputs/settings/dependencies, allele/locus/LD preparation, sequential selection, FINEMAP consensus, CLPP/coloc and whole author workflows remain explicit gaps. Linux R scientific deployment is not qualified. Build current source; the published 0.4.0 binary predates this entry point.",
-    "validation_note": "41 independent original model-object comparisons with numeric difference zero; 38 converged accepted, three nonconverged refused. 73 capture/contract checks per JVM on Windows21/25/Linux21; actual Windows original-runtime REPLAY and five input-interface examples. No Linux R fitting qualification.",
+    "implementation_scope": "Java file workflow through the global susie-tools command and the retained standalone org.jlinalg.cli.SusieWorkflowCli entry point, calling original susieR 0.11.92, 0.12.35 and 0.14.2 with exact private R 4.6.1 profiles. Individual design/phenotype, version-specific RSS and sufficient-statistic interfaces, raw/original-RDS capture, RUN, R-free structural VERIFY and original-runtime REPLAY. Native global susie stays separate; there is no automatic fallback. Twenty source roles distinguish fitting/hosted analysis from three external-result reuse roles. Two missed observations are added and the unreviewed P235 orangutan-name false positive is removed with exact-before preservation. No author standalone function is inferred from a method name. Exact 0.11.43 is unavailable in this adapter (SKIP3); host wrappers, original author inputs/settings/dependencies, allele/locus/LD preparation, sequential selection, FINEMAP consensus, CLPP/coloc and whole author workflows remain explicit gaps. Linux R scientific deployment is not qualified. Build current source; the published 0.4.0 binary predates this entry point. The root-route change adds no model interface, author-function attribution, family credit or source-review credit. A separately qualified replay-output guard rejects destinations inside the parent, including existing-path aliases, before output creation. The model-fitting code is unchanged. The frozen earlier source/scope guides describe their producing checkpoints; the current global-command guide gives the new invocation. The published 0.4.0 binary predates this route.",
+    "validation_note": "Global normal JAR: 173 checks on each of Windows Java21/25 and Linux Java21, with original workflow/native/Scanpy/Enrichr regressions and replay-parent protection; five actual root-route original-model comparisons have numeric difference zero (three converged RUNs, one refused nonconvergence, one replay). All 23458 payloads outside the main dispatcher and replay-control class are unchanged. 41 independent original model-object comparisons with numeric difference zero; 38 converged accepted, three nonconverged refused. 73 capture/contract checks per JVM on Windows21/25/Linux21; actual Windows original-runtime REPLAY and five input-interface examples. No Linux R fitting qualification.",
     "previous_method_overlap_source": "src/main/java/org/jlinalg/susie/Susie.java",
     "source_roles_reviewed": 20,
     "source_role_coverage": "susie-source-role-coverage.json",
-    "current_documentation": "docs/literature/SUSIE_CATALOG_INTEGRATION.md",
+    "current_documentation": "docs/vignettes/susie-tools.md",
     "workflow_qualification": "../susie-workflow-checks/QUALIFICATION.json",
     "source_build_required": true,
     "released_binary_contains_workflow_adapter": false,
     "public_CLI_available": true,
-    "global_CLI_dispatch_available": false,
+    "global_CLI_dispatch_available": true,
     "qualified_component_entrypoints": [
+      "susie-tools --request RUN/VERIFY/REPLAY",
+      "susie-tools --verify",
       "org.jlinalg.cli.SusieWorkflowCli --request RUN/VERIFY/REPLAY",
       "org.jlinalg.cli.SusieWorkflowCli --verify"
     ],
@@ -8726,7 +8728,9 @@
     "new_scoped_integration_credit": 1,
     "statistical_computation": "upstream-original-versioned-susieR",
     "whole_tool_qualified": false,
-    "whole_paper_reproduced": false
+    "whole_paper_reproduced": false,
+    "source_role_documentation": "docs/literature/SUSIE_CATALOG_INTEGRATION.md",
+    "global_command_qualification": "../susie-dispatch-checks/QUALIFICATION.json"
   },
   {
     "id": "igv",

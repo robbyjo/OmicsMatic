@@ -22,12 +22,13 @@ public final class SusieWorkflowCli {
             Path source=Path.of(args[1]).toAbsolutePath().normalize();byte[] original=bytes(source,2_000_000);var raw=parse(original);String mode=text(raw,"mode");
             if(mode.equals("VERIFY")){control(raw,false);verify(resolve(source.getParent(),text(raw,"analysis")));emit(out,"Verified saved SuSiE capture offline. "+SCOPE);return 0;}
             if(mode.equals("REPLAY")) {
-                control(raw,true);Path prior=resolve(source.getParent(),text(raw,"analysis"));verify(prior);var request=read(prior.resolve("request.json"));
+                control(raw,true);Path prior=resolve(source.getParent(),text(raw,"analysis"));verify(prior);
+                Path destination=resolve(source.getParent(),text(raw,"out"));replayOutput(prior,destination);var request=read(prior.resolve("request.json"));
                 for(String key:SusieWorkflowContracts.INPUTS)if(request.containsKey(key))request.put(key,resolve(prior,text(request,key)).toString());
                 var binding=read(prior.resolve("worker/runtime-bindings.json"));
                 request.put("rscript",raw.containsKey("rscript")?resolve(source.getParent(),text(raw,"rscript")).toString():text(binding,"rscript"));
                 request.put("r_libraries",raw.containsKey("r_libraries")?strings(raw.get("r_libraries"),"r_libraries",1,16):binding.get("libraries"));
-                request.put("out",resolve(source.getParent(),text(raw,"out")).toString());
+                request.put("out",destination.toString());
                 return execute(source.getParent(),request,RsemJson.bytes(request),Map.of("analysis",prior.toString(),"seal_sha256",FollowupSupport.hash(prior.resolve("capture-files.json"))),out,err);
             }
             return execute(source.getParent(),raw,original,Map.of(),out,err);
@@ -107,6 +108,15 @@ public final class SusieWorkflowCli {
         try(InputStream input=Files.newInputStream(source);OutputStream output=Files.newOutputStream(target,StandardOpenOption.CREATE_NEW)){
             byte[] buffer=new byte[65536];int read;while((read=input.read(buffer))!=-1){if(Thread.currentThread().isInterrupted())throw new InterruptedIOException("Input capture interrupted");if(read>cap-count)throw new IOException("Input grew beyond declared capacity");output.write(buffer,0,read);count+=read;}}
         if(!before.equals(FollowupSupport.hash(source))||!before.equals(FollowupSupport.hash(target)))throw new IOException("Input changed during capture");return count;
+    }
+    private static void replayOutput(Path prior,Path destination)throws IOException {
+        Path original=prior.toRealPath(),existing=destination.toAbsolutePath().normalize();var missing=new ArrayDeque<Path>();
+        while(!Files.exists(existing,LinkOption.NOFOLLOW_LINKS)) {
+            if(existing.getParent()==null)throw new IOException("Cannot resolve REPLAY output; choose a NEW directory outside the original analysis");
+            missing.addFirst(existing.getFileName());existing=existing.getParent();
+        }
+        Path actual=existing.toRealPath();for(Path name:missing)actual=actual.resolve(name);
+        if(actual.normalize().startsWith(original))throw new IOException("REPLAY output must be outside the original analysis; preserve the parent capture and choose a NEW sibling directory");
     }
     private static Path newOutput(Path root)throws IOException {if(Files.exists(root,LinkOption.NOFOLLOW_LINKS))throw new IOException("Preserve existing output; choose a NEW directory");Files.createDirectories(root.getParent());return Files.createDirectory(root);}
     private static byte[] bytes(Path path,long cap)throws IOException {if(!Files.isRegularFile(path,LinkOption.NOFOLLOW_LINKS)||Files.size(path)>cap)throw new IOException("Require bounded regular JSON input");return Files.readAllBytes(path);}
