@@ -1,5 +1,15 @@
 # Current toolbox handover
 
+**Current handover: [20 November 2026: remaining work, warnings and resume paths](HANDOVER_2026-11-20.md).**
+The original-SuSiE standalone adapter, three edition profiles, runnable
+examples and saved qualification are ready for review. All 73 checks pass
+on each of three JVMs; 41 original model comparisons match, including three
+expected nonconvergence refusals. Global dispatch, per-paper scope crosswalk
+and cumulative SuSiE admission remain open. Admitted totals stay **137 scoped
+integrations, 1,483 reviewed uses and 1,220 pending**. Preserve all 23 worktrees
+and separately transfer ignored runtimes/evidence. The full goal is unfinished.
+The handover above supersedes older open-task statements below.
+
 **Current: [Scanpy cumulative catalog checkpoint](SCANPY_CATALOG_CHECKPOINT_2026-11-19.md).**
 The guarded admission adds 21 reviews for 22 existing roles, preserves every
 earlier review and credits one bounded upstream family with explicit native
