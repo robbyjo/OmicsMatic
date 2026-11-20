@@ -1,5 +1,21 @@
 # 250-paper omics and GWAS toolbox catalog
 
+## Scanpy: bounded current workflow, native APIs and 22 source roles
+
+250 papers, 446 named families, 2,703 observations, 1,483 individually reviewed positive uses and 1,220 awaiting individual review. There are 137 new scoped integrations (25 native Java and 112 upstream), 259 missing and 38 method-overlap definitions; 140 integrations include three existing adapters. Twenty-one Scanpy reviews are appended without new observations; all 1,462 earlier reviews remain exact. Supplementary native components receive no duplicate family credit. The full implementation and semantic-review goal remains open.
+
+Ordered original Scanpy 1.13.0 Linux CPU file workflow through scanpy-tools: explicit MatrixMarket orientation/typed metadata or supplied H5AD, original RUN, offline structural VERIFY and runtime REPLAY. Two qualified programs cover 15 operations. Explicit supplementary Java float64 dense/CSR APIs provide preprocessing (1.9.3/1.13.0), Pearson residual matrices (1.10.4/1.13.0) and dispersion HVGs (Seurat/Cell-Ranger flavors, 1.9.3/1.13.0, including batches). No automatic native/upstream fallback.
+
+Twenty-two source roles are reviewed; P061 and all earlier reviews are preserved. Historical packages, author inputs/options, hosted workflows and whole papers are not reproduced. The 29 development operation names are not 29 qualified operations. Native dispersion HVGs do not implement Seurat-v3/Pearson HVGs; native Pearson matrices do not fit SCT. Other branch, dtype and cohort-capacity gaps remain explicit. Use a current source build: the published 0.4.0 binary predates these Scanpy entry points.
+
+SKIP3: skip dependent analysis/audit when an exact permitted source, runtime or input is unavailable or cannot be installed; identify what to restore and retain the skip. FAIL2: no complete result; preserve inputs, warnings, partials and diagnostics, correct invalid data/model arithmetic, integrity, capacity or process failures and retry NEW outputs. Do not repair IDs, dtype, thresholds, populations, nonfinite values or algorithms silently. Check native usable() before using a result; diagnostic masks are not admitted selections when it is false. Read WARNINGS.md and analysis-status.json. Two historical marker-verifier mains remain SKIP3 pending the exact original JAR. Both literature reports remain withheld from Pages; no release is created.
+
+Read [the source crosswalk and exact scope](../SCANPY_CATALOG_INTEGRATION.md).
+
+<details><summary>Catalog before Scanpy admission (historical)</summary>
+
+# 250-paper omics and GWAS toolbox catalog
+
 ## Enrichr: current-service workflow and 25 source roles
 
 250 papers, 446 named families, 2,703 observations, 1,462 individually reviewed positive uses and 1,241 awaiting individual review. There are 136 new scoped integrations (25 native Java and 111 upstream), 259 missing and 39 method-overlap definitions; 139 integrations include three existing adapters. Twenty-three Enrichr reviews and three source-supported observations are appended; all 1,439 earlier reviews, including P061/P163, are retained. The full implementation and semantic-review goal remains open.
@@ -2029,6 +2045,8 @@ Three source-reviewed tool additions retain separate provenance: MALT and HOPS h
 These additions improve the catalog and add no whole-tool or biological credit. The source-tested MALT 0.4.1 development controller does not fulfill the separate 0.5.2 role. Complete HOPS and MaltExtract operations remain unfinished; their unreported versions, settings and resource choices remain unknown. See `MALT_ALIGNMENT.md` and `MALT_HOPS_PAPER_ROLES.md`.
 
 **Required action:** match the declared source version and operation, qualify a permitted runtime, provide the complete dated reference/mapping and query populations, and retain original warnings and failures. If any prerequisite is unavailable or cannot be installed, skip its dependent analysis. A small software-control index does not reproduce the historical 91-spirochete or 7,508-genome bacterial analyses. Insufficient-read candidates remain unassessable.
+
+</details>
 
 </details>
 

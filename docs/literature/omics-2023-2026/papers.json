@@ -2184,12 +2184,42 @@
         "matched_text": "scanpy",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-source-role",
         "evidence_paragraph_sha256": "842c780137784ea7a449047a46ca841e9536d81c8ac1478fa592e77bca38b7a4",
-        "use_summary": "Single-cell expression processing and analysis.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12893920/ (section: Methods / Analysis of 10x Visium data / Scoring of the fetal fallopian tube decreasing signature in adult data)"
+        "use_summary": "Scored a 15-gene fetal fallopian-tube signature in adult Visium epithelial spots using score_genes, then tested rostrocaudal trends separately.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12893920/ (section: Methods / Analysis of 10x Visium data / Scoring of the fetal fallopian tube decreasing signature in adult data)",
+        "implementation_scope_note": "The Jonckheere decreasing/increasing trend tests and 2,000 permutations are separate. No Scanpy edition, control-gene pool, binning or random seed is reported.",
+        "source_role_qualification": {
+          "role": "gene-signature-scoring",
+          "declared_host": "direct",
+          "reported_editions": [],
+          "reported_operations": [
+            "tl.score_genes"
+          ],
+          "use_summary": "Scored a 15-gene fetal fallopian-tube signature in adult Visium epithelial spots using score_genes, then tested rostrocaudal trends separately.",
+          "required_caution": "The Jonckheere decreasing/increasing trend tests and 2,000 permutations are separate. No Scanpy edition, control-gene pool, binning or random seed is reported.",
+          "current_1130_tested_function_counterparts": [
+            "tl.score_genes"
+          ],
+          "counterparts_are_not_author_function_attribution": true,
+          "native_profile_overlap": [],
+          "qualified_native_component_overlap": [],
+          "native_components_are_explicit_not_automatic_fallback": true,
+          "remaining_author_roles": [
+            "Exact signature, control pool, bins and RNG; Visium preparation and separate trend/permutation tests.",
+            "The Jonckheere decreasing/increasing trend tests and 2,000 permutations are separate. No Scanpy edition, control-gene pool, binning or random seed is reported.",
+            "Exact author inputs, parameters, historical/hosted execution and complete workflow are not reproduced."
+          ],
+          "reusable_supplied_object_intake": false,
+          "full_reported_role_qualified": false,
+          "complete_author_workflow_qualified": false,
+          "historical_package_parity": false,
+          "exact_author_settings_established": false,
+          "author_runtime_executed": false,
+          "whole_paper_reproduced": false
+        }
       },
       {
         "tool_id": "scenicplus",
@@ -2592,12 +2622,81 @@
         "matched_text": "scanpy",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
-        "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
+        "version_reported_near_name": "1.9.1",
+        "evidence_selection": "individually-reviewed-source-role",
         "evidence_paragraph_sha256": "0de9b77ad32b8b310e44589b65abd4c831c84627a6cee7a0ce663a90be6ba3e2",
-        "use_summary": "Used for expression normalization; cell clustering.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11798877/ (section: Methods / Cell-type clustering and identification)"
+        "use_summary": "Scaled log-normalized MERFISH expression with max_value=10, used Leiden and BBKNN/UMAP, and used 20 PCs/15 neighbors for the single-batch reprogramming branch. Trajectories first divided counts by segmentation volume, then used normalize_total defaults.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11798877/ (section: Methods / Cell-type clustering and identification)",
+        "implementation_scope_note": "Keep the BBKNN and single-batch neighbor branches separate. Volume correction, trajectory imputation, sklearn StandardScaler/k-means and spline smoothing are outside these Scanpy operations; defaults do not imply target_sum=10,000.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 73,
+            "section": "Methods / Spatiotemporal gene expression trajectory analysis",
+            "paragraph_sha256": "adea0594bbd1c570a6b2681f73084a9b2a1e5bf4f50f25ba30b0b2a435ff6af0"
+          },
+          {
+            "paragraph_index": 118,
+            "section": "Methods / Statistics and reproducibility",
+            "paragraph_sha256": "7e78c4eca6888b3b9013446157e1d2745221e2ed6a58797232bcea4deea48d68"
+          }
+        ],
+        "source_role_qualification": {
+          "role": "spatial-clustering-and-normalization",
+          "declared_host": "direct",
+          "reported_editions": [
+            {
+              "paragraph_index": 118,
+              "literal": "1.9.1",
+              "source_context": "scanpy (1.9.1)",
+              "refers_to": "Scanpy"
+            }
+          ],
+          "reported_operations": [
+            "pp.scale",
+            "tl.leiden",
+            "external.pp.bbknn",
+            "pp.neighbors",
+            "tl.umap",
+            "pp.normalize_total"
+          ],
+          "use_summary": "Scaled log-normalized MERFISH expression with max_value=10, used Leiden and BBKNN/UMAP, and used 20 PCs/15 neighbors for the single-batch reprogramming branch. Trajectories first divided counts by segmentation volume, then used normalize_total defaults.",
+          "required_caution": "Keep the BBKNN and single-batch neighbor branches separate. Volume correction, trajectory imputation, sklearn StandardScaler/k-means and spline smoothing are outside these Scanpy operations; defaults do not imply target_sum=10,000.",
+          "current_1130_tested_function_counterparts": [
+            "pp.normalize_total",
+            "pp.scale",
+            "pp.pca",
+            "pp.neighbors",
+            "tl.leiden",
+            "tl.umap"
+          ],
+          "counterparts_are_not_author_function_attribution": true,
+          "native_profile_overlap": [],
+          "qualified_native_component_overlap": [
+            {
+              "component": "preprocessing",
+              "operations": [
+                "normalize_total",
+                "scale"
+              ],
+              "relationship": "Related explicit matrix operations; current counterparts are not author-function attribution.",
+              "historical_author_profile_qualified": false
+            }
+          ],
+          "native_components_are_explicit_not_automatic_fallback": true,
+          "remaining_author_roles": [
+            "Historical 1.9.1 behavior, BBKNN, volume correction and separate batch/trajectory populations/settings.",
+            "Keep the BBKNN and single-batch neighbor branches separate. Volume correction, trajectory imputation, sklearn StandardScaler/k-means and spline smoothing are outside these Scanpy operations; defaults do not imply target_sum=10,000.",
+            "Exact author inputs, parameters, historical/hosted execution and complete workflow are not reproduced."
+          ],
+          "reusable_supplied_object_intake": false,
+          "full_reported_role_qualified": false,
+          "complete_author_workflow_qualified": false,
+          "historical_package_parity": false,
+          "exact_author_settings_established": false,
+          "author_runtime_executed": false,
+          "whole_paper_reproduced": false
+        }
       },
       {
         "tool_id": "scrublet",
@@ -2850,12 +2949,54 @@
         "matched_text": "Scanpy",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-source-role",
         "evidence_paragraph_sha256": "8d43b577d1e82d852a1a01a4dc73ab5c1e68c2d81b9f3ae0f83a1474a09dc623",
-        "use_summary": "Used for expression normalization.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12893904/ (section: Methods / STARmap data analysis)"
+        "use_summary": "Normalized and scaled STARmap profiles using stated standard Scanpy procedures before a hierarchical three-level marker-based k-means annotation.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12893904/ (section: Methods / STARmap data analysis)",
+        "implementation_scope_note": "No Scanpy edition, normalization target/log base or exact functions are supplied. Do not assign the separate k-means annotation algorithm to a nonexistent Scanpy k-means entry point.",
+        "source_role_qualification": {
+          "role": "spatial-preprocessing",
+          "declared_host": "direct",
+          "reported_editions": [],
+          "reported_operations": [
+            "normalization-unspecified",
+            "scaling-unspecified"
+          ],
+          "use_summary": "Normalized and scaled STARmap profiles using stated standard Scanpy procedures before a hierarchical three-level marker-based k-means annotation.",
+          "required_caution": "No Scanpy edition, normalization target/log base or exact functions are supplied. Do not assign the separate k-means annotation algorithm to a nonexistent Scanpy k-means entry point.",
+          "current_1130_tested_function_counterparts": [
+            "pp.normalize_total",
+            "pp.scale"
+          ],
+          "counterparts_are_not_author_function_attribution": true,
+          "native_profile_overlap": [],
+          "qualified_native_component_overlap": [
+            {
+              "component": "preprocessing",
+              "operations": [
+                "normalize_total",
+                "scale"
+              ],
+              "relationship": "Related explicit matrix operations; current counterparts are not author-function attribution.",
+              "historical_author_profile_qualified": false
+            }
+          ],
+          "native_components_are_explicit_not_automatic_fallback": true,
+          "remaining_author_roles": [
+            "Normalization/scaling entry points and settings are unspecified; separate hierarchical k-means is not a Scanpy operation.",
+            "No Scanpy edition, normalization target/log base or exact functions are supplied. Do not assign the separate k-means annotation algorithm to a nonexistent Scanpy k-means entry point.",
+            "Exact author inputs, parameters, historical/hosted execution and complete workflow are not reproduced."
+          ],
+          "reusable_supplied_object_intake": false,
+          "full_reported_role_qualified": false,
+          "complete_author_workflow_qualified": false,
+          "historical_package_parity": false,
+          "exact_author_settings_established": false,
+          "author_runtime_executed": false,
+          "whole_paper_reproduced": false
+        }
       },
       {
         "tool_id": "seurat",
@@ -4231,12 +4372,82 @@
         "matched_text": "Scanpy",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": "1.7.0",
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-source-role",
         "evidence_paragraph_sha256": "12239a45a3a5102f500f3694d56993e0ac20c388839035b0f0e3b3fc38c6587b",
-        "use_summary": "Single-cell expression processing and analysis.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11735409/ (section: Methods / Chick scRNA-seq analysis)"
+        "use_summary": "Processed chick and human neuruloid scRNA-seq with Scanpy 1.7.0: distinct QC/high-expression exclusions, target sum 10,000, default HVGs, Harmony integration and graph embeddings. Chick used 10 neighbors/40 PCs and Leiden resolution 3.5; human used 15 neighbors/30 PCs and UMAP-initialized force-directed drawing.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11735409/ (section: Methods / Chick scRNA-seq analysis)",
+        "implementation_scope_note": "Preserve the literal 1% versus 3% high-expression wording; it does not by itself distinguish a top-gene percentage from max_fraction. Cell Ranger remains excluded; DropEst, Scrublet, Harmony and Slingshot are separate tools.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 45,
+            "section": "Methods / Single-cell transcriptomics of posterior neuruloids",
+            "paragraph_sha256": "d4256b9f321ff9fffd046f692b0ab93ac63bd390980626b7f70513b8f13ac641"
+          }
+        ],
+        "source_role_qualification": {
+          "role": "single-cell-preprocessing-and-embedding",
+          "declared_host": "direct",
+          "reported_editions": [
+            {
+              "paragraph_index": 38,
+              "literal": "1.7.0",
+              "source_context": "Scanpy81 (v1.7.0)",
+              "refers_to": "Scanpy"
+            },
+            {
+              "paragraph_index": 45,
+              "literal": "1.7.0",
+              "source_context": "Scanpy81 (v1.7.0)",
+              "refers_to": "Scanpy"
+            }
+          ],
+          "reported_operations": [
+            "normalization",
+            "highly_variable_genes",
+            "pca",
+            "neighbors",
+            "leiden",
+            "umap",
+            "draw_graph"
+          ],
+          "use_summary": "Processed chick and human neuruloid scRNA-seq with Scanpy 1.7.0: distinct QC/high-expression exclusions, target sum 10,000, default HVGs, Harmony integration and graph embeddings. Chick used 10 neighbors/40 PCs and Leiden resolution 3.5; human used 15 neighbors/30 PCs and UMAP-initialized force-directed drawing.",
+          "required_caution": "Preserve the literal 1% versus 3% high-expression wording; it does not by itself distinguish a top-gene percentage from max_fraction. Cell Ranger remains excluded; DropEst, Scrublet, Harmony and Slingshot are separate tools.",
+          "current_1130_tested_function_counterparts": [
+            "pp.normalize_total",
+            "pp.highly_variable_genes:seurat",
+            "pp.pca",
+            "pp.neighbors",
+            "tl.leiden",
+            "tl.umap"
+          ],
+          "counterparts_are_not_author_function_attribution": true,
+          "native_profile_overlap": [],
+          "qualified_native_component_overlap": [
+            {
+              "component": "preprocessing",
+              "operations": [
+                "normalize_total"
+              ],
+              "relationship": "Related explicit matrix operations; current counterparts are not author-function attribution.",
+              "historical_author_profile_qualified": false
+            }
+          ],
+          "native_components_are_explicit_not_automatic_fallback": true,
+          "remaining_author_roles": [
+            "Historical 1.7.0, literal high-expression exclusion, unspecified HVG flavor, Harmony, force-directed graph and chick/human settings.",
+            "Preserve the literal 1% versus 3% high-expression wording; it does not by itself distinguish a top-gene percentage from max_fraction. Cell Ranger remains excluded; DropEst, Scrublet, Harmony and Slingshot are separate tools.",
+            "Exact author inputs, parameters, historical/hosted execution and complete workflow are not reproduced."
+          ],
+          "reusable_supplied_object_intake": false,
+          "full_reported_role_qualified": false,
+          "complete_author_workflow_qualified": false,
+          "historical_package_parity": false,
+          "exact_author_settings_established": false,
+          "author_runtime_executed": false,
+          "whole_paper_reproduced": false
+        }
       },
       {
         "tool_id": "scrublet",
@@ -6160,12 +6371,97 @@
         "matched_text": "Scanpy",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
-        "version_reported_near_name": "1.9.1",
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
+        "version_reported_near_name": null,
+        "evidence_selection": "individually-reviewed-source-role",
         "evidence_paragraph_sha256": "1712652f52482074422d37f8583532390024944d6645615e421f1933c02f0ed5",
-        "use_summary": "Single-cell expression processing and analysis.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13600939/ (section: Methods / Preprocessing of the snRNA-seq dataset / Rigorous quality-control pipeline)"
+        "use_summary": "Used Scanpy 1.9.1 with Pegasus in the main cohort, including a custom cell_ranger-flavor batch-aware HVG wrapper with Source batches and 6,000 genes. A separate 1.9.3 replication branch filtered genes, downsampled to 1,000 UMIs, applied CPM/natural-log-plus-one, chose 6,000 HVGs, PCA explaining 50% variance and 100-neighbor UMAP.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13600939/ (section: Methods / Preprocessing of the snRNA-seq dataset / Rigorous quality-control pipeline)",
+        "implementation_scope_note": "The custom wrapper declares both mean/dispersion cuts and n_top_genes; do not invent their precedence. Downsampling, chromosome/protein-coding restriction, Pegasus import and scVI label transfer remain separate author steps.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 60,
+            "section": "Methods / Preprocessing of the snRNA-seq dataset / UMAP",
+            "paragraph_sha256": "eba56703709fdd047d6b333b997ac8fe9e28c763778218a37a2163fdcc0683ea"
+          },
+          {
+            "paragraph_index": 87,
+            "section": "Methods / Integrated analysis of lifespan replication dataset / Integration and annotation",
+            "paragraph_sha256": "ec03177a4a68f6e7fbbe5bc045848c3ffeee91394d9c8de2a2f7f782e36964b6"
+          }
+        ],
+        "source_role_qualification": {
+          "role": "multi-branch-nuclear-preprocessing",
+          "declared_host": "direct-and-custom-wrapper",
+          "reported_editions": [
+            {
+              "paragraph_index": 54,
+              "literal": "1.9.1",
+              "source_context": "Scanpy (v.1.9.1)",
+              "refers_to": "Scanpy"
+            },
+            {
+              "paragraph_index": 87,
+              "literal": "1.9.3",
+              "source_context": "Scanpy object (v.1.9.3)",
+              "refers_to": "Scanpy"
+            }
+          ],
+          "reported_operations": [
+            "custom-scanpy_hvf_h5ad",
+            "pp.highly_variable_genes",
+            "filtering",
+            "normalization",
+            "log1p",
+            "pca",
+            "neighbors",
+            "umap"
+          ],
+          "use_summary": "Used Scanpy 1.9.1 with Pegasus in the main cohort, including a custom cell_ranger-flavor batch-aware HVG wrapper with Source batches and 6,000 genes. A separate 1.9.3 replication branch filtered genes, downsampled to 1,000 UMIs, applied CPM/natural-log-plus-one, chose 6,000 HVGs, PCA explaining 50% variance and 100-neighbor UMAP.",
+          "required_caution": "The custom wrapper declares both mean/dispersion cuts and n_top_genes; do not invent their precedence. Downsampling, chromosome/protein-coding restriction, Pegasus import and scVI label transfer remain separate author steps.",
+          "current_1130_tested_function_counterparts": [
+            "pp.normalize_total",
+            "pp.log1p",
+            "pp.pca",
+            "pp.neighbors",
+            "tl.umap"
+          ],
+          "counterparts_are_not_author_function_attribution": true,
+          "native_profile_overlap": [],
+          "qualified_native_component_overlap": [
+            {
+              "component": "preprocessing",
+              "operations": [
+                "normalize_total",
+                "log1p"
+              ],
+              "relationship": "Related explicit matrix operations; current counterparts are not author-function attribution.",
+              "historical_author_profile_qualified": false
+            },
+            {
+              "component": "dispersion-hvg",
+              "operations": [
+                "cell_ranger"
+              ],
+              "relationship": "The reported flavor has a native counterpart; author 1.9.1/custom-wrapper precedence is not qualified.",
+              "historical_author_profile_qualified": false
+            }
+          ],
+          "native_components_are_explicit_not_automatic_fallback": true,
+          "remaining_author_roles": [
+            "cell_ranger-flavor batch HVGs/custom wrapper precedence, downsampling, Pegasus/scVI and variance-selected PC count.",
+            "The custom wrapper declares both mean/dispersion cuts and n_top_genes; do not invent their precedence. Downsampling, chromosome/protein-coding restriction, Pegasus import and scVI label transfer remain separate author steps.",
+            "Exact author inputs, parameters, historical/hosted execution and complete workflow are not reproduced.",
+            "Native dispersion HVGs qualify explicit 1.9.3/1.13.0 profiles, not this historical/custom wrapper."
+          ],
+          "reusable_supplied_object_intake": false,
+          "full_reported_role_qualified": false,
+          "complete_author_workflow_qualified": false,
+          "historical_package_parity": false,
+          "exact_author_settings_established": false,
+          "author_runtime_executed": false,
+          "whole_paper_reproduced": false
+        }
       },
       {
         "tool_id": "scdrs",
@@ -7117,13 +7413,46 @@
         "evidence_paragraph_index": 41,
         "matched_text": "scanpy",
         "extraction_score": 15,
-        "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "usage_context": "function-attribution-unspecified",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": "1.9.1",
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-source-role",
         "evidence_paragraph_sha256": "d30641c2bd2c45e17216901a2b9993be14e14c1bc56cd71dc8f807c6937fc4bb",
-        "use_summary": "Single-cell expression processing and analysis.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13600946/ (section: Methods / Processing of snRNA-seq data / Alignment)"
+        "use_summary": "Reported Scanpy 1.9.1 alongside Pegasus 1.7.0 for downstream processing of an 8,898,978-cell by 60,605-gene snRNA-seq matrix.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13600946/ (section: Methods / Processing of snRNA-seq data / Alignment)",
+        "implementation_scope_note": "The paragraph does not allocate individual processing functions between Pegasus and Scanpy. Large author-cohort capacity and exact options are not established by a bounded synthetic workflow.",
+        "source_role_qualification": {
+          "role": "downstream-processing-unspecified",
+          "declared_host": "shared-with-Pegasus",
+          "reported_editions": [
+            {
+              "paragraph_index": 41,
+              "literal": "1.9.1",
+              "source_context": "scanpy (v.1.9.1)",
+              "refers_to": "Scanpy"
+            }
+          ],
+          "reported_operations": [],
+          "use_summary": "Reported Scanpy 1.9.1 alongside Pegasus 1.7.0 for downstream processing of an 8,898,978-cell by 60,605-gene snRNA-seq matrix.",
+          "required_caution": "The paragraph does not allocate individual processing functions between Pegasus and Scanpy. Large author-cohort capacity and exact options are not established by a bounded synthetic workflow.",
+          "current_1130_tested_function_counterparts": [],
+          "counterparts_are_not_author_function_attribution": true,
+          "native_profile_overlap": [],
+          "qualified_native_component_overlap": [],
+          "native_components_are_explicit_not_automatic_fallback": true,
+          "remaining_author_roles": [
+            "No functions allocated between Scanpy/Pegasus; reported 8.9-million-cell cohort capacity is not qualified.",
+            "The paragraph does not allocate individual processing functions between Pegasus and Scanpy. Large author-cohort capacity and exact options are not established by a bounded synthetic workflow.",
+            "Exact author inputs, parameters, historical/hosted execution and complete workflow are not reproduced."
+          ],
+          "reusable_supplied_object_intake": false,
+          "full_reported_role_qualified": false,
+          "complete_author_workflow_qualified": false,
+          "historical_package_parity": false,
+          "exact_author_settings_established": false,
+          "author_runtime_executed": false,
+          "whole_paper_reproduced": false
+        }
       },
       {
         "tool_id": "scdrs",
@@ -8657,12 +8986,59 @@
         "matched_text": "Scanpy",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-source-role",
         "evidence_paragraph_sha256": "99295297ab05d0e584779198d46932f80544532318b54bd2e27b93aea626d740",
-        "use_summary": "Single-cell expression processing and analysis.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12872457/ (section: Methods / Re-analysis of scRNA-seq datasets of mouse intestinal tissue- or organoid-derived M cells)"
+        "use_summary": "Processed mouse intestinal organoid cells in Python 3.11.9: mitochondrial filtering, per-cell normalization, log10 transformation, 2,000 most highly expressed nonmitochondrial/nonribosomal genes, scaling, 50-component PCA and 200-neighbor graphs.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12872457/ (section: Methods / Re-analysis of scRNA-seq datasets of mouse intestinal tissue- or organoid-derived M cells)",
+        "implementation_scope_note": "Python 3.11.9 is not a Scanpy edition. Preserve log10 and most highly expressed genes; do not substitute natural log or highly variable genes.",
+        "source_role_qualification": {
+          "role": "mouse-organoid-preprocessing",
+          "declared_host": "direct",
+          "reported_editions": [],
+          "reported_operations": [
+            "normalization",
+            "log10-transformation",
+            "scaling",
+            "pca",
+            "neighbors"
+          ],
+          "use_summary": "Processed mouse intestinal organoid cells in Python 3.11.9: mitochondrial filtering, per-cell normalization, log10 transformation, 2,000 most highly expressed nonmitochondrial/nonribosomal genes, scaling, 50-component PCA and 200-neighbor graphs.",
+          "required_caution": "Python 3.11.9 is not a Scanpy edition. Preserve log10 and most highly expressed genes; do not substitute natural log or highly variable genes.",
+          "current_1130_tested_function_counterparts": [
+            "pp.normalize_total",
+            "pp.scale",
+            "pp.pca",
+            "pp.neighbors"
+          ],
+          "counterparts_are_not_author_function_attribution": true,
+          "native_profile_overlap": [],
+          "qualified_native_component_overlap": [
+            {
+              "component": "preprocessing",
+              "operations": [
+                "normalize_total",
+                "scale"
+              ],
+              "relationship": "Related explicit matrix operations; current counterparts are not author-function attribution.",
+              "historical_author_profile_qualified": false
+            }
+          ],
+          "native_components_are_explicit_not_automatic_fallback": true,
+          "remaining_author_roles": [
+            "Literal log10 with unstated pseudocount and most highly expressed genes; do not substitute log1p or HVGs.",
+            "Python 3.11.9 is not a Scanpy edition. Preserve log10 and most highly expressed genes; do not substitute natural log or highly variable genes.",
+            "Exact author inputs, parameters, historical/hosted execution and complete workflow are not reproduced."
+          ],
+          "reusable_supplied_object_intake": false,
+          "full_reported_role_qualified": false,
+          "complete_author_workflow_qualified": false,
+          "historical_package_parity": false,
+          "exact_author_settings_established": false,
+          "author_runtime_executed": false,
+          "whole_paper_reproduced": false
+        }
       },
       {
         "tool_id": "seurat",
@@ -14257,12 +14633,73 @@
         "matched_text": "SCANPY",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-source-role",
         "evidence_paragraph_sha256": "37aa8e3a444db74b088259a6ef098cdee9021497bc23bf63d8f4622928d06eb5",
-        "use_summary": "Single-cell expression processing and analysis.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11779626/ (section: Methods / Human scRNA-seq analysis)"
+        "use_summary": "Processed human and mouse cells with QC, HVGs, regression/scaling, PCA/Harmony, Leiden/UMAP, cluster-marker ranking, embedding density and curated gene scores. Human sample scores used the median of cell scores; cross-species comparison used separate pseudobulk/z-score preparation.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11779626/ (section: Methods / Human scRNA-seq analysis)",
+        "implementation_scope_note": "Retain the reported log2-plus-one then normalization order rather than silently rewriting it. No Scanpy edition or rank_genes_groups method is specified. Gene scoring, sample aggregation, CellBender and doublet detection are distinct stages.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 37,
+            "section": "Methods / Mouse scRNA-seq analysis",
+            "paragraph_sha256": "86c82cc2624b79f2abea41bc22d0e74a059f8db8a83bd7f0b188d1cb64a15318"
+          }
+        ],
+        "source_role_qualification": {
+          "role": "human-mouse-single-cell-analysis",
+          "declared_host": "direct",
+          "reported_editions": [],
+          "reported_operations": [
+            "highly-variable-gene-selection",
+            "regress_out",
+            "scale",
+            "pca",
+            "Harmony-wrapper",
+            "tl.leiden",
+            "tl.umap",
+            "tl.rank_genes_groups",
+            "tl.embedding_density",
+            "tl.score_genes"
+          ],
+          "use_summary": "Processed human and mouse cells with QC, HVGs, regression/scaling, PCA/Harmony, Leiden/UMAP, cluster-marker ranking, embedding density and curated gene scores. Human sample scores used the median of cell scores; cross-species comparison used separate pseudobulk/z-score preparation.",
+          "required_caution": "Retain the reported log2-plus-one then normalization order rather than silently rewriting it. No Scanpy edition or rank_genes_groups method is specified. Gene scoring, sample aggregation, CellBender and doublet detection are distinct stages.",
+          "current_1130_tested_function_counterparts": [
+            "pp.scale",
+            "pp.pca",
+            "tl.leiden",
+            "tl.umap",
+            "tl.rank_genes_groups:wilcoxon",
+            "tl.embedding_density",
+            "tl.score_genes"
+          ],
+          "counterparts_are_not_author_function_attribution": true,
+          "native_profile_overlap": [],
+          "qualified_native_component_overlap": [
+            {
+              "component": "preprocessing",
+              "operations": [
+                "scale"
+              ],
+              "relationship": "Related explicit matrix operations; current counterparts are not author-function attribution.",
+              "historical_author_profile_qualified": false
+            }
+          ],
+          "native_components_are_explicit_not_automatic_fallback": true,
+          "remaining_author_roles": [
+            "Reported transformation/normalization order, regression, unspecified HVG/ranking choices, Harmony and cross-species/sample aggregation.",
+            "Retain the reported log2-plus-one then normalization order rather than silently rewriting it. No Scanpy edition or rank_genes_groups method is specified. Gene scoring, sample aggregation, CellBender and doublet detection are distinct stages.",
+            "Exact author inputs, parameters, historical/hosted execution and complete workflow are not reproduced."
+          ],
+          "reusable_supplied_object_intake": false,
+          "full_reported_role_qualified": false,
+          "complete_author_workflow_qualified": false,
+          "historical_package_parity": false,
+          "exact_author_settings_established": false,
+          "author_runtime_executed": false,
+          "whole_paper_reproduced": false
+        }
       },
       {
         "tool_id": "umap",
@@ -17676,12 +18113,53 @@
         "matched_text": "Scanpy",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-source-role",
         "evidence_paragraph_sha256": "525efb3735b2208be51d84c9f2f5bb80643aebe7d297bf6d479405cd394bcbaa",
-        "use_summary": "Used for exploratory representation.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10719111/ (section: Methods / Brain preparation / Clustering of snRNA-seq data / Visualization of clusters)"
+        "use_summary": "Computed 250 PCs after per-cluster subsampling, used 20-neighbor connectivities for cell-type graph aggregation and obtained top-50 Wilcoxon markers per metacluster.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10719111/ (section: Methods / Brain preparation / Clustering of snRNA-seq data / Visualization of clusters)",
+        "implementation_scope_note": "OpenTSNE 1.0.0 performed the t-SNE, not Scanpy. Cell-type adjacency averaging and the Paris dendrogram are separate scikit-network/custom operations; Scanpy edition and tie-correction settings are unstated.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 71,
+            "section": "Methods / Brain preparation / Constructing and analysing cell type dendrogram / Constructing Paris dendrogram and aggregation into groups",
+            "paragraph_sha256": "d6b05c1a85787d23ab6ad96f8b26f872db6cb67ddf39dfbacb64edaec68ba9f3"
+          }
+        ],
+        "source_role_qualification": {
+          "role": "nuclear-PCA-graph-and-markers",
+          "declared_host": "direct",
+          "reported_editions": [],
+          "reported_operations": [
+            "pca",
+            "neighbors-connectivities",
+            "tl.rank_genes_groups"
+          ],
+          "use_summary": "Computed 250 PCs after per-cluster subsampling, used 20-neighbor connectivities for cell-type graph aggregation and obtained top-50 Wilcoxon markers per metacluster.",
+          "required_caution": "OpenTSNE 1.0.0 performed the t-SNE, not Scanpy. Cell-type adjacency averaging and the Paris dendrogram are separate scikit-network/custom operations; Scanpy edition and tie-correction settings are unstated.",
+          "current_1130_tested_function_counterparts": [
+            "pp.pca",
+            "pp.neighbors",
+            "tl.rank_genes_groups:wilcoxon"
+          ],
+          "counterparts_are_not_author_function_attribution": true,
+          "native_profile_overlap": [],
+          "qualified_native_component_overlap": [],
+          "native_components_are_explicit_not_automatic_fallback": true,
+          "remaining_author_roles": [
+            "250-PC/subsampling and custom graph aggregation/Paris; separate OpenTSNE t-SNE; unstated tie correction.",
+            "OpenTSNE 1.0.0 performed the t-SNE, not Scanpy. Cell-type adjacency averaging and the Paris dendrogram are separate scikit-network/custom operations; Scanpy edition and tie-correction settings are unstated.",
+            "Exact author inputs, parameters, historical/hosted execution and complete workflow are not reproduced."
+          ],
+          "reusable_supplied_object_intake": false,
+          "full_reported_role_qualified": false,
+          "complete_author_workflow_qualified": false,
+          "historical_package_parity": false,
+          "exact_author_settings_established": false,
+          "author_runtime_executed": false,
+          "whole_paper_reproduced": false
+        }
       },
       {
         "tool_id": "scdrs",
@@ -19295,12 +19773,75 @@
         "matched_text": "Scanpy",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-source-role",
         "evidence_paragraph_sha256": "9bd5f66a78c5fc67392ccb1101b0bcfb3f384aa92dbe7ab958be606b3d91cc46",
-        "use_summary": "Used for expression normalization.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10719103/ (section: Methods / Integration of MERFISH data with scRNA-seq data)"
+        "use_summary": "Normalized selected scRNA-seq/MERFISH genes to 1,000, applied log1p/scaling, computed 100 PCs and 15-neighbor graphs for integration partitions. The second round retained genes with log dispersions greater than zero from highly_variable_genes.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10719103/ (section: Methods / Integration of MERFISH data with scRNA-seq data)",
+        "implementation_scope_note": "Keep log dispersions >0 distinct from an inferred normalized-dispersion cutoff or HVG mask. METIS partitioning, custom CCA/anchor label transfer and confidence multiplication are not Scanpy package parity.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 64,
+            "section": "Methods / Integration of MERFISH data with scRNA-seq data",
+            "paragraph_sha256": "59456dc2299c63c55db14dac8fb386cbcf2ad317d37e0200f8277f31a364b766"
+          },
+          {
+            "paragraph_index": 65,
+            "section": "Methods / Integration of MERFISH data with scRNA-seq data",
+            "paragraph_sha256": "f472f46d8526b027ce09a2d26ef6cfa1f472f061d136774735c5f936f25b407d"
+          }
+        ],
+        "source_role_qualification": {
+          "role": "cross-modality-reference-integration",
+          "declared_host": "direct-and-custom-SeuratIntegration",
+          "reported_editions": [],
+          "reported_operations": [
+            "normalization",
+            "log1p",
+            "scale",
+            "pca",
+            "neighbors",
+            "pp.highly_variable_genes"
+          ],
+          "use_summary": "Normalized selected scRNA-seq/MERFISH genes to 1,000, applied log1p/scaling, computed 100 PCs and 15-neighbor graphs for integration partitions. The second round retained genes with log dispersions greater than zero from highly_variable_genes.",
+          "required_caution": "Keep log dispersions >0 distinct from an inferred normalized-dispersion cutoff or HVG mask. METIS partitioning, custom CCA/anchor label transfer and confidence multiplication are not Scanpy package parity.",
+          "current_1130_tested_function_counterparts": [
+            "pp.normalize_total",
+            "pp.log1p",
+            "pp.scale",
+            "pp.pca",
+            "pp.neighbors",
+            "pp.highly_variable_genes:seurat"
+          ],
+          "counterparts_are_not_author_function_attribution": true,
+          "native_profile_overlap": [],
+          "qualified_native_component_overlap": [
+            {
+              "component": "preprocessing",
+              "operations": [
+                "normalize_total",
+                "log1p",
+                "scale"
+              ],
+              "relationship": "Related explicit matrix operations; current counterparts are not author-function attribution.",
+              "historical_author_profile_qualified": false
+            }
+          ],
+          "native_components_are_explicit_not_automatic_fallback": true,
+          "remaining_author_roles": [
+            "Select on literal log dispersion >0, not inferred HVG mask; separate custom CCA/anchors, METIS and transfer confidence.",
+            "Keep log dispersions >0 distinct from an inferred normalized-dispersion cutoff or HVG mask. METIS partitioning, custom CCA/anchor label transfer and confidence multiplication are not Scanpy package parity.",
+            "Exact author inputs, parameters, historical/hosted execution and complete workflow are not reproduced."
+          ],
+          "reusable_supplied_object_intake": false,
+          "full_reported_role_qualified": false,
+          "complete_author_workflow_qualified": false,
+          "historical_package_parity": false,
+          "exact_author_settings_established": false,
+          "author_runtime_executed": false,
+          "whole_paper_reproduced": false
+        }
       },
       {
         "tool_id": "scrublet",
@@ -19648,7 +20189,37 @@
         "evidence_paragraph_sha256": "92aceaf697f341459bf122b0a3a703930992846de2c6b651e7ba1a427dbda9a6",
         "use_summary": "Supported iterative Leiden clustering at reported low resolutions.",
         "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10719113/ (section: Methods / Methylome clustering analysis / Methylome clustering)",
-        "implementation_scope_note": "Full iterative clustering and the ALLCools consensus framework are outside current related native methods."
+        "implementation_scope_note": "Full iterative clustering and the ALLCools consensus framework are outside current related native methods.",
+        "source_role_qualification": {
+          "role": "derived-methylome-consensus-clustering",
+          "declared_host": "ALLCools-derived",
+          "reported_editions": [],
+          "reported_operations": [
+            "derived-functions-unspecified",
+            "Leiden-clustering"
+          ],
+          "use_summary": "Used functions derived from ALLCools, Scanpy and scikit-learn during four methylome clustering rounds. The reported Leiden resolutions were 0.25 initially and 0.2–0.5 later within ALLCools ConsensusClustering.",
+          "required_caution": "Preserve the existing review. This is methylome-fraction analysis with derived/hosted functions, not proof of a standalone RNA-count pipeline or the whole ALLCools consensus procedure.",
+          "current_1130_tested_function_counterparts": [
+            "tl.leiden"
+          ],
+          "counterparts_are_not_author_function_attribution": true,
+          "native_profile_overlap": [],
+          "qualified_native_component_overlap": [],
+          "native_components_are_explicit_not_automatic_fallback": true,
+          "remaining_author_roles": [
+            "ALLCools-hosted methylome consensus rounds/resolutions and population; standalone RNA clustering does not reproduce this host.",
+            "Preserve the existing review. This is methylome-fraction analysis with derived/hosted functions, not proof of a standalone RNA-count pipeline or the whole ALLCools consensus procedure.",
+            "Exact author inputs, parameters, historical/hosted execution and complete workflow are not reproduced."
+          ],
+          "reusable_supplied_object_intake": false,
+          "full_reported_role_qualified": false,
+          "complete_author_workflow_qualified": false,
+          "historical_package_parity": false,
+          "exact_author_settings_established": false,
+          "author_runtime_executed": false,
+          "whole_paper_reproduced": false
+        }
       },
       {
         "tool_id": "scenicplus",
@@ -19913,17 +20484,91 @@
         "tool_id": "scanpy",
         "tool": "Scanpy",
         "analysis_role": "Single-cell expression processing and analysis",
-        "evidence_section": "Methods / Python packages for data analysis",
-        "evidence_paragraph_index": 41,
+        "evidence_section": "Methods / snRNA-seq analysis",
+        "evidence_paragraph_index": 43,
         "matched_text": "scanpy",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": "1.10.4",
-        "evidence_selection": "highest-scored-eligible-method-sentence",
-        "evidence_paragraph_sha256": "fc94f72e4021ea383417332ae0708c3b1a9e051c304f71add3b322564f8d0502",
-        "use_summary": "Single-cell expression processing and analysis.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13668712/ (section: Methods / Python packages for data analysis)"
+        "evidence_selection": "individually-reviewed-source-role",
+        "evidence_paragraph_sha256": "fdf34b81ceb66604bbc42478f2d06eb90c29805d1215bf9ec6862d0afe7f7af9",
+        "use_summary": "Used Scanpy 1.10.4 for nuclear QC/Scrublet, Pearson-residual normalization and experimental HVGs before SysVI, then Leiden/UMAP and Wilcoxon markers. Separately used square-rooted normalize_total output for plots and DEG analysis.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13668712/ (section: Methods / snRNA-seq analysis)",
+        "implementation_scope_note": "Do not replace Pearson residuals or the square-root count branch with log normalization. SysVI, MAGIC, pyWGCNA and GSEApy are separate. Repeated Code availability text is context, not another execution role.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 41,
+            "section": "Methods / Python packages for data analysis",
+            "paragraph_sha256": "fc94f72e4021ea383417332ae0708c3b1a9e051c304f71add3b322564f8d0502"
+          }
+        ],
+        "source_role_qualification": {
+          "role": "nuclear-Pearson-preprocessing-and-markers",
+          "declared_host": "direct",
+          "reported_editions": [
+            {
+              "paragraph_index": 43,
+              "literal": "1.10.4",
+              "source_context": "Scanpy v.1.10.4",
+              "refers_to": "Scanpy"
+            }
+          ],
+          "reported_operations": [
+            "pp.scrublet",
+            "experimental.pp.normalize_pearson_residuals",
+            "experimental.pp.highly_variable_genes",
+            "tl.leiden",
+            "tl.umap",
+            "tl.rank_genes_groups",
+            "pp.normalize_total"
+          ],
+          "use_summary": "Used Scanpy 1.10.4 for nuclear QC/Scrublet, Pearson-residual normalization and experimental HVGs before SysVI, then Leiden/UMAP and Wilcoxon markers. Separately used square-rooted normalize_total output for plots and DEG analysis.",
+          "required_caution": "Do not replace Pearson residuals or the square-root count branch with log normalization. SysVI, MAGIC, pyWGCNA and GSEApy are separate. Repeated Code availability text is context, not another execution role.",
+          "current_1130_tested_function_counterparts": [
+            "pp.normalize_total",
+            "tl.leiden",
+            "tl.umap",
+            "tl.rank_genes_groups:wilcoxon"
+          ],
+          "counterparts_are_not_author_function_attribution": true,
+          "native_profile_overlap": [
+            "Pearson-matrix-1.10.4",
+            "Pearson-matrix-1.13.0"
+          ],
+          "qualified_native_component_overlap": [
+            {
+              "component": "preprocessing",
+              "operations": [
+                "normalize_total"
+              ],
+              "relationship": "Related explicit matrix operations; current counterparts are not author-function attribution.",
+              "historical_author_profile_qualified": false
+            },
+            {
+              "component": "pearson-matrix",
+              "operations": [
+                "analytic Pearson residual matrix"
+              ],
+              "relationship": "Matrix transformation only; experimental Pearson HVGs and SysVI remain separate.",
+              "historical_author_profile_qualified": false
+            }
+          ],
+          "native_components_are_explicit_not_automatic_fallback": true,
+          "remaining_author_roles": [
+            "Experimental Pearson HVG selection, Scrublet, SysVI and square-root-normalized plotting/DE branch; native Pearson matrix alone is partial.",
+            "Do not replace Pearson residuals or the square-root count branch with log normalization. SysVI, MAGIC, pyWGCNA and GSEApy are separate. Repeated Code availability text is context, not another execution role.",
+            "Exact author inputs, parameters, historical/hosted execution and complete workflow are not reproduced.",
+            "Native dispersion HVGs do not implement the reported Pearson/seurat_v3 HVG branch."
+          ],
+          "reusable_supplied_object_intake": false,
+          "full_reported_role_qualified": false,
+          "complete_author_workflow_qualified": false,
+          "historical_package_parity": false,
+          "exact_author_settings_established": false,
+          "author_runtime_executed": false,
+          "whole_paper_reproduced": false
+        }
       },
       {
         "tool_id": "scrublet",
@@ -21442,17 +22087,109 @@
         "tool_id": "scanpy",
         "tool": "Scanpy",
         "analysis_role": "Single-cell expression processing and analysis",
-        "evidence_section": "Methods / Digit region analysis of Visium data",
-        "evidence_paragraph_index": 32,
+        "evidence_section": "Methods / Data preprocessing and integration of scRNA-seq data",
+        "evidence_paragraph_index": 36,
         "matched_text": "Scanpy",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
-        "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
-        "evidence_paragraph_sha256": "212f8e82da763b6563ee7c467bcc5251a4228965d50ff289d0c182582f3b7b27",
-        "use_summary": "Used for marker or differential-expression analysis.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7616500/ (section: Methods / Digit region analysis of Visium data)"
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
+        "version_reported_near_name": "1.8.2",
+        "evidence_selection": "individually-reviewed-source-role",
+        "evidence_paragraph_sha256": "6190c620861b21c31ee968ddcc067313394ca521f84bb84ab2ebfa0273e5a715",
+        "use_summary": "Used Scanpy 1.8.2 for per-batch 10,000-count normalization/log1p/HVG selection, scaling/cell-cycle regression, 100-PC/BBKNN integration, Leiden/PAGA/UMAP and diffusion-map/force-directed trajectories. Also reported Visium Wilcoxon marker tests and a custom Scrublet overclustering screen.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7616500/ (section: Methods / Data preprocessing and integration of scRNA-seq data)",
+        "implementation_scope_note": "Keep literal rank_gene_group, score_gene_cell_cycle and scanpt spellings unresolved; do not silently claim execution of corrected paths. BBKNN, custom doublet significance/manual curation and scVelo stochastic velocity are separate stages.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 32,
+            "section": "Methods / Digit region analysis of Visium data",
+            "paragraph_sha256": "212f8e82da763b6563ee7c467bcc5251a4228965d50ff289d0c182582f3b7b27"
+          },
+          {
+            "paragraph_index": 35,
+            "section": "Methods / Doublet detection of scRNA-seq data",
+            "paragraph_sha256": "82c0038f222965bce11cb181ebd354dfcb3ef357f23cf297b3f35353a1ed287b"
+          },
+          {
+            "paragraph_index": 37,
+            "section": "Methods / Clustering and annotation of scRNA-seq data",
+            "paragraph_sha256": "54256afabb84bd7caa87ba4d82fb96551186f940d4602b58475d009687e25c5b"
+          },
+          {
+            "paragraph_index": 41,
+            "section": "Methods / Trajectory analysis of human scRNA-seq data",
+            "paragraph_sha256": "3e9558824aae047260d11f3e3d891357a8fbe4be78b1fed1315c099cc374e3ed"
+          },
+          {
+            "paragraph_index": 42,
+            "section": "Methods / RNA velocity calculations for mesenchymal compartment",
+            "paragraph_sha256": "d097e4387e4211df1d7f1b624513d8ae5bcc015a4992791869def597ac4998d1"
+          }
+        ],
+        "source_role_qualification": {
+          "role": "spatial-single-cell-and-trajectory-analysis",
+          "declared_host": "direct-with-external-wrappers",
+          "reported_editions": [
+            {
+              "paragraph_index": 36,
+              "literal": "1.8.2",
+              "source_context": "Scanpy (v.1.8.2)",
+              "refers_to": "Scanpy"
+            }
+          ],
+          "reported_operations": [
+            "pp.normalize_per_cell",
+            "pp.log1p",
+            "pp.highly_variable_genes",
+            "pp.scale",
+            "score-gene-cell-cycle-reported",
+            "pp.regress_out",
+            "tl.pca",
+            "tl.leiden",
+            "tl.umap",
+            "tl.paga",
+            "tl.diffmap",
+            "pp.neighbors",
+            "draw-graph-reported",
+            "rank-gene-group-reported"
+          ],
+          "use_summary": "Used Scanpy 1.8.2 for per-batch 10,000-count normalization/log1p/HVG selection, scaling/cell-cycle regression, 100-PC/BBKNN integration, Leiden/PAGA/UMAP and diffusion-map/force-directed trajectories. Also reported Visium Wilcoxon marker tests and a custom Scrublet overclustering screen.",
+          "required_caution": "Keep literal rank_gene_group, score_gene_cell_cycle and scanpt spellings unresolved; do not silently claim execution of corrected paths. BBKNN, custom doublet significance/manual curation and scVelo stochastic velocity are separate stages.",
+          "current_1130_tested_function_counterparts": [
+            "pp.log1p",
+            "pp.scale",
+            "pp.pca",
+            "pp.neighbors",
+            "tl.leiden",
+            "tl.umap"
+          ],
+          "counterparts_are_not_author_function_attribution": true,
+          "native_profile_overlap": [],
+          "qualified_native_component_overlap": [
+            {
+              "component": "preprocessing",
+              "operations": [
+                "log1p",
+                "scale"
+              ],
+              "relationship": "Related explicit matrix operations; current counterparts are not author-function attribution.",
+              "historical_author_profile_qualified": false
+            }
+          ],
+          "native_components_are_explicit_not_automatic_fallback": true,
+          "remaining_author_roles": [
+            "Historical normalize_per_cell and literal misspelled paths; regression/cell cycle, BBKNN, PAGA/diffmap/draw graph, custom Scrublet and scVelo.",
+            "Keep literal rank_gene_group, score_gene_cell_cycle and scanpt spellings unresolved; do not silently claim execution of corrected paths. BBKNN, custom doublet significance/manual curation and scVelo stochastic velocity are separate stages.",
+            "Exact author inputs, parameters, historical/hosted execution and complete workflow are not reproduced."
+          ],
+          "reusable_supplied_object_intake": false,
+          "full_reported_role_qualified": false,
+          "complete_author_workflow_qualified": false,
+          "historical_package_parity": false,
+          "exact_author_settings_established": false,
+          "author_runtime_executed": false,
+          "whole_paper_reproduced": false
+        }
       },
       {
         "tool_id": "scenic",
@@ -24427,13 +25164,46 @@
         "evidence_paragraph_index": 48,
         "matched_text": "Scanpy",
         "extraction_score": 15,
-        "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "usage_context": "hosted-software-stack-description",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": "1.9.1",
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-source-role",
         "evidence_paragraph_sha256": "b9b54b48d6a1abe38a559b63f95180e45c535e66165297f5aaaedb698459b015",
-        "use_summary": "Single-cell expression processing and analysis.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13649598/ (section: Methods / Framework architecture / Software tools for analysis)"
+        "use_summary": "Reported Scanpy 1.9.1 in the ArchMap query-to-reference mapping and downstream-analysis software stack, alongside scArches, XGBoost, scvi-tools and scIB.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13649598/ (section: Methods / Framework architecture / Software tools for analysis)",
+        "implementation_scope_note": "The package/version declaration does not establish exact standalone Scanpy functions or recreate the hosted mapping pipeline. The scArches branch and linked requirements need separate author-code checks.",
+        "source_role_qualification": {
+          "role": "hosted-query-reference-analysis-stack",
+          "declared_host": "ArchMap/scArches",
+          "reported_editions": [
+            {
+              "paragraph_index": 48,
+              "literal": "1.9.1",
+              "source_context": "Scanpy (version 1.9.1)",
+              "refers_to": "Scanpy"
+            }
+          ],
+          "reported_operations": [],
+          "use_summary": "Reported Scanpy 1.9.1 in the ArchMap query-to-reference mapping and downstream-analysis software stack, alongside scArches, XGBoost, scvi-tools and scIB.",
+          "required_caution": "The package/version declaration does not establish exact standalone Scanpy functions or recreate the hosted mapping pipeline. The scArches branch and linked requirements need separate author-code checks.",
+          "current_1130_tested_function_counterparts": [],
+          "counterparts_are_not_author_function_attribution": true,
+          "native_profile_overlap": [],
+          "qualified_native_component_overlap": [],
+          "native_components_are_explicit_not_automatic_fallback": true,
+          "remaining_author_roles": [
+            "No exact standalone Scanpy functions established; hosted ArchMap/scArches query/reference model and author requirements remain separate.",
+            "The package/version declaration does not establish exact standalone Scanpy functions or recreate the hosted mapping pipeline. The scArches branch and linked requirements need separate author-code checks.",
+            "Exact author inputs, parameters, historical/hosted execution and complete workflow are not reproduced."
+          ],
+          "reusable_supplied_object_intake": false,
+          "full_reported_role_qualified": false,
+          "complete_author_workflow_qualified": false,
+          "historical_package_parity": false,
+          "exact_author_settings_established": false,
+          "author_runtime_executed": false,
+          "whole_paper_reproduced": false
+        }
       },
       {
         "tool_id": "scarches",
@@ -25057,12 +25827,72 @@
         "matched_text": "SCANPY",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-source-role",
         "evidence_paragraph_sha256": "9fe5fc303a9bdeb4919c1ab76eadd169e3bb6702e7de68d0b32f2e42a994e29e",
-        "use_summary": "Single-cell expression processing and analysis.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11631771/ (section: Methods / Initial snRNA-seq data analysis)"
+        "use_summary": "Normalized study counts and used scVI latent variables for Leiden/UMAP; reprocessed external cohorts with normalize_total/log1p, HVGs, scaling, PCA, Harmony, neighbor graphs and repeat Leiden/UMAP after QC.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11631771/ (section: Methods / Initial snRNA-seq data analysis)",
+        "implementation_scope_note": "Retain the literal sc.ppl.log1p path, ln(CPM) wording and inconsistent cluster-number description without repair. normalize_total defaults do not establish target_sum=1e6. scVI fitting and author percentile/cluster curation are separate.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 33,
+            "section": "Methods / Reprocessing publicly available single-nucleus gene expression datasets",
+            "paragraph_sha256": "88e9de5ba53dbdfd71b23673969dd1e224b8164b4321527b0880b26d183ad290"
+          }
+        ],
+        "source_role_qualification": {
+          "role": "nuclear-processing-and-integration",
+          "declared_host": "direct-with-scVI-and-Harmony",
+          "reported_editions": [],
+          "reported_operations": [
+            "pp.normalize_total",
+            "log1p-reported",
+            "pp.highly_variable_genes",
+            "pp.scale",
+            "tl.pca",
+            "external.pp.harmony_integrate",
+            "pp.neighbors",
+            "tl.leiden",
+            "tl.umap"
+          ],
+          "use_summary": "Normalized study counts and used scVI latent variables for Leiden/UMAP; reprocessed external cohorts with normalize_total/log1p, HVGs, scaling, PCA, Harmony, neighbor graphs and repeat Leiden/UMAP after QC.",
+          "required_caution": "Retain the literal sc.ppl.log1p path, ln(CPM) wording and inconsistent cluster-number description without repair. normalize_total defaults do not establish target_sum=1e6. scVI fitting and author percentile/cluster curation are separate.",
+          "current_1130_tested_function_counterparts": [
+            "pp.normalize_total",
+            "pp.scale",
+            "pp.pca",
+            "pp.neighbors",
+            "tl.leiden",
+            "tl.umap"
+          ],
+          "counterparts_are_not_author_function_attribution": true,
+          "native_profile_overlap": [],
+          "qualified_native_component_overlap": [
+            {
+              "component": "preprocessing",
+              "operations": [
+                "normalize_total",
+                "scale"
+              ],
+              "relationship": "Related explicit matrix operations; current counterparts are not author-function attribution.",
+              "historical_author_profile_qualified": false
+            }
+          ],
+          "native_components_are_explicit_not_automatic_fallback": true,
+          "remaining_author_roles": [
+            "Unresolved sc.ppl.log1p, ln(CPM) target and cluster-count wording; HVGs, scVI/Harmony and manual curation.",
+            "Retain the literal sc.ppl.log1p path, ln(CPM) wording and inconsistent cluster-number description without repair. normalize_total defaults do not establish target_sum=1e6. scVI fitting and author percentile/cluster curation are separate.",
+            "Exact author inputs, parameters, historical/hosted execution and complete workflow are not reproduced."
+          ],
+          "reusable_supplied_object_intake": false,
+          "full_reported_role_qualified": false,
+          "complete_author_workflow_qualified": false,
+          "historical_package_parity": false,
+          "exact_author_settings_established": false,
+          "author_runtime_executed": false,
+          "whole_paper_reproduced": false
+        }
       },
       {
         "tool_id": "scarches",
@@ -27786,17 +28616,101 @@
         "tool_id": "scanpy",
         "tool": "Scanpy",
         "analysis_role": "Single-cell expression processing and analysis",
-        "evidence_section": "Methods",
-        "evidence_paragraph_index": 31,
+        "evidence_section": "Methods / Model parameters / Preprocessing",
+        "evidence_paragraph_index": 39,
         "matched_text": "Scanpy",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": "1.9.3",
-        "evidence_selection": "highest-scored-eligible-method-sentence",
-        "evidence_paragraph_sha256": "86543236edfda9f9de24c5710da403bb099314e8a899b6d2c5788517ed87e3ed",
-        "use_summary": "Single-cell expression processing and analysis.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11631762/ (section: Methods)"
+        "evidence_selection": "individually-reviewed-source-role",
+        "evidence_paragraph_sha256": "8547cd7512d32c8b151112cba56b0203a16f08fae56b2c0b8fcc1e8377a11a9b",
+        "use_summary": "Used Scanpy 1.9.3 in popV 0.2.2: seurat_v3 HVGs (default 4,000), 10K normalization, separate log1p layer, scaling/PCA, BBKNN/UMAP, default marker ranking and marker dotplots. UMAP min_dist was 0.3.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11631762/ (section: Methods / Model parameters / Preprocessing)",
+        "implementation_scope_note": "Preserve raw-count and log layers, the seurat_v3 flavor and popV preprocessing/model context. BBKNN angular-distance settings and scikit-learn classification are separate; defaults do not imply Wilcoxon markers.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 31,
+            "section": "Methods",
+            "paragraph_sha256": "86543236edfda9f9de24c5710da403bb099314e8a899b6d2c5788517ed87e3ed"
+          },
+          {
+            "paragraph_index": 37,
+            "section": "Methods / Model parameters",
+            "paragraph_sha256": "eef6d7d980f9712716e01296bbb615b957c43be5bfcf02a02e0e387bc5e77e15"
+          },
+          {
+            "paragraph_index": 41,
+            "section": "Methods / Model parameters / BBKNN",
+            "paragraph_sha256": "88f08991652352a3c1fcbe3df0563001b12916663c96c573f687efd4eef7d3f7"
+          },
+          {
+            "paragraph_index": 56,
+            "section": "Methods / Evaluation metrics / Differential expression analysis",
+            "paragraph_sha256": "6a888e39d03683e89d6eb48902a4df550a0e05d01ed04ecd8134ff2c01deb319"
+          }
+        ],
+        "source_role_qualification": {
+          "role": "hosted-popV-preprocessing-and-evaluation",
+          "declared_host": "popV",
+          "reported_editions": [
+            {
+              "paragraph_index": 31,
+              "literal": "1.9.3",
+              "source_context": "Scanpy (v1.9.3)",
+              "refers_to": "Scanpy"
+            }
+          ],
+          "reported_operations": [
+            "pp.highly_variable_genes",
+            "normalization",
+            "log1p",
+            "scaling",
+            "pca",
+            "external.pp.bbknn",
+            "UMAP",
+            "tl.rank_genes_groups",
+            "pl.rank_genes_groups_dotplot"
+          ],
+          "use_summary": "Used Scanpy 1.9.3 in popV 0.2.2: seurat_v3 HVGs (default 4,000), 10K normalization, separate log1p layer, scaling/PCA, BBKNN/UMAP, default marker ranking and marker dotplots. UMAP min_dist was 0.3.",
+          "required_caution": "Preserve raw-count and log layers, the seurat_v3 flavor and popV preprocessing/model context. BBKNN angular-distance settings and scikit-learn classification are separate; defaults do not imply Wilcoxon markers.",
+          "current_1130_tested_function_counterparts": [
+            "pp.normalize_total",
+            "pp.log1p",
+            "pp.scale",
+            "pp.pca",
+            "tl.umap",
+            "tl.rank_genes_groups:wilcoxon"
+          ],
+          "counterparts_are_not_author_function_attribution": true,
+          "native_profile_overlap": [],
+          "qualified_native_component_overlap": [
+            {
+              "component": "preprocessing",
+              "operations": [
+                "normalize_total",
+                "log1p",
+                "scale"
+              ],
+              "relationship": "Related explicit matrix operations; current counterparts are not author-function attribution.",
+              "historical_author_profile_qualified": false
+            }
+          ],
+          "native_components_are_explicit_not_automatic_fallback": true,
+          "remaining_author_roles": [
+            "Explicit seurat_v3 HVGs, count/log layers, popV host, BBKNN angular metric, default ranking method and dotplots.",
+            "Preserve raw-count and log layers, the seurat_v3 flavor and popV preprocessing/model context. BBKNN angular-distance settings and scikit-learn classification are separate; defaults do not imply Wilcoxon markers.",
+            "Exact author inputs, parameters, historical/hosted execution and complete workflow are not reproduced.",
+            "Native dispersion HVGs do not implement the reported Pearson/seurat_v3 HVG branch."
+          ],
+          "reusable_supplied_object_intake": false,
+          "full_reported_role_qualified": false,
+          "complete_author_workflow_qualified": false,
+          "historical_package_parity": false,
+          "exact_author_settings_established": false,
+          "author_runtime_executed": false,
+          "whole_paper_reproduced": false
+        }
       },
       {
         "tool_id": "scarches",
@@ -28094,12 +29008,96 @@
         "matched_text": "Scanpy",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-source-role",
         "evidence_paragraph_sha256": "36079fb9996e20c59cdca6ef3487222406da317ebc33a61008f2f99c101e7c56",
-        "use_summary": "Single-cell expression processing and analysis.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13649600/ (section: Methods / Processing of scRNA-seq)"
+        "use_summary": "Used Scanpy 1.9.3 for main embryo RNA preprocessing/graphs, separate raw/denoised spatial branches and PCA embeddings with a Stereo-seq PC1 exclusion. A distinct SCENIC+ metacell RNA branch used Scanpy 1.8.2 normalize_total/log1p/scale.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13649600/ (section: Methods / Processing of scRNA-seq)",
+        "implementation_scope_note": "Do not assign 1.9.3 to the explicit 1.8.2 metacell branch. Denoised data supplied graph/clustering, normalized raw counts supplied GWAS scores. Harmony, denoising, transfer, Squidpy Moran tests, metacells and SCENIC+ are separate.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 30,
+            "section": "Methods / Visium and Stereo-seq sample preparation and data analysis",
+            "paragraph_sha256": "ce20a8a20782741dc47d580a5b267b40dc16e3ad3865c0d8302c02e2f7b9eb55"
+          },
+          {
+            "paragraph_index": 31,
+            "section": "Methods / Spatial codes analysis",
+            "paragraph_sha256": "68ff55419c379410e2ff7593b9ba37f3afbf05fa44b2661f12ac9c1753cd55bb"
+          },
+          {
+            "paragraph_index": 36,
+            "section": "Methods / SCENIC+",
+            "paragraph_sha256": "675a8af666d1a78db1e76333c052aa2ad316fa17f8978b8d9c332f4f628d71f6"
+          }
+        ],
+        "source_role_qualification": {
+          "role": "multi-branch-RNA-spatial-metacell-analysis",
+          "declared_host": "direct",
+          "reported_editions": [
+            {
+              "paragraph_index": 28,
+              "literal": "1.9.3",
+              "source_context": "Scanpy package (v1.9.3)",
+              "refers_to": "Scanpy"
+            },
+            {
+              "paragraph_index": 36,
+              "literal": "1.8.2",
+              "source_context": "Scanpy (v1.8.2)",
+              "refers_to": "Scanpy"
+            }
+          ],
+          "reported_operations": [
+            "normalization",
+            "log1p",
+            "highly-variable-gene-selection",
+            "pca",
+            "regress_out",
+            "pp.neighbors",
+            "Leiden-clustering",
+            "pp.normalize_total",
+            "pp.scale"
+          ],
+          "use_summary": "Used Scanpy 1.9.3 for main embryo RNA preprocessing/graphs, separate raw/denoised spatial branches and PCA embeddings with a Stereo-seq PC1 exclusion. A distinct SCENIC+ metacell RNA branch used Scanpy 1.8.2 normalize_total/log1p/scale.",
+          "required_caution": "Do not assign 1.9.3 to the explicit 1.8.2 metacell branch. Denoised data supplied graph/clustering, normalized raw counts supplied GWAS scores. Harmony, denoising, transfer, Squidpy Moran tests, metacells and SCENIC+ are separate.",
+          "current_1130_tested_function_counterparts": [
+            "pp.normalize_total",
+            "pp.log1p",
+            "pp.scale",
+            "pp.pca",
+            "pp.neighbors",
+            "tl.leiden"
+          ],
+          "counterparts_are_not_author_function_attribution": true,
+          "native_profile_overlap": [],
+          "qualified_native_component_overlap": [
+            {
+              "component": "preprocessing",
+              "operations": [
+                "normalize_total",
+                "log1p",
+                "scale"
+              ],
+              "relationship": "Related explicit matrix operations; current counterparts are not author-function attribution.",
+              "historical_author_profile_qualified": false
+            }
+          ],
+          "native_components_are_explicit_not_automatic_fallback": true,
+          "remaining_author_roles": [
+            "Historical 1.9.3 versus 1.8.2 branches; raw/denoised matrices, PC1 exclusion, regression, denoising, transfer and SCENIC+.",
+            "Do not assign 1.9.3 to the explicit 1.8.2 metacell branch. Denoised data supplied graph/clustering, normalized raw counts supplied GWAS scores. Harmony, denoising, transfer, Squidpy Moran tests, metacells and SCENIC+ are separate.",
+            "Exact author inputs, parameters, historical/hosted execution and complete workflow are not reproduced."
+          ],
+          "reusable_supplied_object_intake": false,
+          "full_reported_role_qualified": false,
+          "complete_author_workflow_qualified": false,
+          "historical_package_parity": false,
+          "exact_author_settings_established": false,
+          "author_runtime_executed": false,
+          "whole_paper_reproduced": false
+        }
       },
       {
         "tool_id": "scenicplus",
@@ -30162,12 +31160,85 @@
         "matched_text": "SCANPY",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": "1.10.3",
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-source-role",
         "evidence_paragraph_sha256": "376256e40650b6c6e6953dbb0460538c8c5ec43679d8077c7c63f4cde82c02ad",
-        "use_summary": "Single-cell expression processing and analysis.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12695644/ (section: Methods / Computational analysis / scRNA-seq data processing)"
+        "use_summary": "Used Scanpy 1.10.3 for RNA QC, library normalization/log transformation, 6,000 HVGs, Harmony-adjusted 30-PC/10-neighbor Leiden/UMAP and Wilcoxon ranking with reported tie correction. MALDI-MSI AnnData preprocessing used separate pixel/metabolite filters and total-ion normalization.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12695644/ (section: Methods / Computational analysis / scRNA-seq data processing)",
+        "implementation_scope_note": "Keep the literal AND in the first RNA QC rule, tie_correct = TRUE as reported, and removal of metabolites expressed in more than 95% of pixels. Do not turn MSI into RNA counts or attribute Hotspot module fitting to Scanpy.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 50,
+            "section": "Methods / Computational analysis / Differential expression and gene set enrichment analysis",
+            "paragraph_sha256": "ecb10ec2c312923378c236b53905c93f93daf706512775cb240e648ed19c3af5"
+          },
+          {
+            "paragraph_index": 53,
+            "section": "Methods / Computational analysis / MALDI-MSI data analysis",
+            "paragraph_sha256": "9c0e68d55f36e693663532c7a387bc0f1225ef1f88413dfbda6fa7080af6776c"
+          }
+        ],
+        "source_role_qualification": {
+          "role": "RNA-and-MALDI-MSI-processing",
+          "declared_host": "direct-and-AnnData-workflow",
+          "reported_editions": [
+            {
+              "paragraph_index": 43,
+              "literal": "1.10.3",
+              "source_context": "SCANPY (v.1.10.3)",
+              "refers_to": "Scanpy"
+            }
+          ],
+          "reported_operations": [
+            "RNA-normalization",
+            "log-transformation",
+            "highly-variable-gene-selection",
+            "pca",
+            "neighbors",
+            "Leiden-clustering",
+            "UMAP",
+            "tl.rank_genes_groups",
+            "MSI-total-ion-normalization"
+          ],
+          "use_summary": "Used Scanpy 1.10.3 for RNA QC, library normalization/log transformation, 6,000 HVGs, Harmony-adjusted 30-PC/10-neighbor Leiden/UMAP and Wilcoxon ranking with reported tie correction. MALDI-MSI AnnData preprocessing used separate pixel/metabolite filters and total-ion normalization.",
+          "required_caution": "Keep the literal AND in the first RNA QC rule, tie_correct = TRUE as reported, and removal of metabolites expressed in more than 95% of pixels. Do not turn MSI into RNA counts or attribute Hotspot module fitting to Scanpy.",
+          "current_1130_tested_function_counterparts": [
+            "pp.normalize_total",
+            "pp.log1p",
+            "pp.pca",
+            "pp.neighbors",
+            "tl.leiden",
+            "tl.umap",
+            "tl.rank_genes_groups:wilcoxon"
+          ],
+          "counterparts_are_not_author_function_attribution": true,
+          "native_profile_overlap": [],
+          "qualified_native_component_overlap": [
+            {
+              "component": "preprocessing",
+              "operations": [
+                "normalize_total",
+                "log1p"
+              ],
+              "relationship": "Related explicit matrix operations; current counterparts are not author-function attribution.",
+              "historical_author_profile_qualified": false
+            }
+          ],
+          "native_components_are_explicit_not_automatic_fallback": true,
+          "remaining_author_roles": [
+            "Historical 1.10.3, literal RNA QC AND and >95% MSI pixel rule, exact HVGs/Harmony; RNA and MSI populations remain distinct.",
+            "Keep the literal AND in the first RNA QC rule, tie_correct = TRUE as reported, and removal of metabolites expressed in more than 95% of pixels. Do not turn MSI into RNA counts or attribute Hotspot module fitting to Scanpy.",
+            "Exact author inputs, parameters, historical/hosted execution and complete workflow are not reproduced."
+          ],
+          "reusable_supplied_object_intake": false,
+          "full_reported_role_qualified": false,
+          "complete_author_workflow_qualified": false,
+          "historical_package_parity": false,
+          "exact_author_settings_established": false,
+          "author_runtime_executed": false,
+          "whole_paper_reproduced": false
+        }
       },
       {
         "tool_id": "scenic",
@@ -31649,13 +32720,46 @@
         "evidence_paragraph_index": 29,
         "matched_text": "scanpy",
         "extraction_score": 15,
-        "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "usage_context": "function-attribution-unspecified",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": "1.9.1",
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-source-role",
         "evidence_paragraph_sha256": "fdb73306b39ca1d0f4f74a02d89a3478512204d4a04ae3ce3f98e5a5e6ad8984",
-        "use_summary": "Single-cell expression processing and analysis.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13649572/ (section: Methods / Sample selection and preprocessing)"
+        "use_summary": "Reported Scanpy 1.9.1 with Pegasus 1.7.0 for downstream processing of per-library nuclear count matrices.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13649572/ (section: Methods / Sample selection and preprocessing)",
+        "implementation_scope_note": "This paragraph does not name exact Scanpy functions or allocate steps between the two packages. STARsolo alignment and Vireo demultiplexing are separate.",
+        "source_role_qualification": {
+          "role": "downstream-processing-unspecified",
+          "declared_host": "shared-with-Pegasus",
+          "reported_editions": [
+            {
+              "paragraph_index": 29,
+              "literal": "1.9.1",
+              "source_context": "scanpy (v.1.9.1)",
+              "refers_to": "Scanpy"
+            }
+          ],
+          "reported_operations": [],
+          "use_summary": "Reported Scanpy 1.9.1 with Pegasus 1.7.0 for downstream processing of per-library nuclear count matrices.",
+          "required_caution": "This paragraph does not name exact Scanpy functions or allocate steps between the two packages. STARsolo alignment and Vireo demultiplexing are separate.",
+          "current_1130_tested_function_counterparts": [],
+          "counterparts_are_not_author_function_attribution": true,
+          "native_profile_overlap": [],
+          "qualified_native_component_overlap": [],
+          "native_components_are_explicit_not_automatic_fallback": true,
+          "remaining_author_roles": [
+            "No functions allocated between Scanpy/Pegasus; STARsolo and Vireo are separate.",
+            "This paragraph does not name exact Scanpy functions or allocate steps between the two packages. STARsolo alignment and Vireo demultiplexing are separate.",
+            "Exact author inputs, parameters, historical/hosted execution and complete workflow are not reproduced."
+          ],
+          "reusable_supplied_object_intake": false,
+          "full_reported_role_qualified": false,
+          "complete_author_workflow_qualified": false,
+          "historical_package_parity": false,
+          "exact_author_settings_established": false,
+          "author_runtime_executed": false,
+          "whole_paper_reproduced": false
+        }
       },
       {
         "tool_id": "soupx",
@@ -36920,12 +38024,68 @@
         "matched_text": "Scanpy",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": "1.9.8",
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-source-role",
         "evidence_paragraph_sha256": "b55f72d8feffa1697c9019be3a6805b0c07526c83b97c3dcd771129946572480",
-        "use_summary": "Used for cell clustering.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13553293/ (section: Methods / Manual annotation of PBMC scRNA-seq data)"
+        "use_summary": "Used Scanpy 1.9.8 for 10,000-count normalization/log1p, 3,000 shared HVGs, PCA, reported Harmony integration and UMAP based on 30 adjusted PCs before manual PBMC annotation.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13553293/ (section: Methods / Manual annotation of PBMC scRNA-seq data)",
+        "implementation_scope_note": "Preserve the stated scanpy.pp.harmony_integrate path as reported; its availability in that edition is not established by a newer root-level function. Shared-HVG batching details, graph settings and manual annotation remain unreported.",
+        "source_role_qualification": {
+          "role": "PBMC-preprocessing-and-annotation",
+          "declared_host": "direct",
+          "reported_editions": [
+            {
+              "paragraph_index": 47,
+              "literal": "1.9.8",
+              "source_context": "Scanpy (v.1.9.8)",
+              "refers_to": "Scanpy"
+            }
+          ],
+          "reported_operations": [
+            "normalization",
+            "log1p",
+            "pp.highly_variable_genes",
+            "pca",
+            "Harmony-path-reported",
+            "UMAP",
+            "visualization"
+          ],
+          "use_summary": "Used Scanpy 1.9.8 for 10,000-count normalization/log1p, 3,000 shared HVGs, PCA, reported Harmony integration and UMAP based on 30 adjusted PCs before manual PBMC annotation.",
+          "required_caution": "Preserve the stated scanpy.pp.harmony_integrate path as reported; its availability in that edition is not established by a newer root-level function. Shared-HVG batching details, graph settings and manual annotation remain unreported.",
+          "current_1130_tested_function_counterparts": [
+            "pp.normalize_total",
+            "pp.log1p",
+            "pp.pca",
+            "tl.umap"
+          ],
+          "counterparts_are_not_author_function_attribution": true,
+          "native_profile_overlap": [],
+          "qualified_native_component_overlap": [
+            {
+              "component": "preprocessing",
+              "operations": [
+                "normalize_total",
+                "log1p"
+              ],
+              "relationship": "Related explicit matrix operations; current counterparts are not author-function attribution.",
+              "historical_author_profile_qualified": false
+            }
+          ],
+          "native_components_are_explicit_not_automatic_fallback": true,
+          "remaining_author_roles": [
+            "Historical 1.9.8 and literal pp.harmony_integrate availability, shared-HVG batching and unstated graph/manual annotation settings.",
+            "Preserve the stated scanpy.pp.harmony_integrate path as reported; its availability in that edition is not established by a newer root-level function. Shared-HVG batching details, graph settings and manual annotation remain unreported.",
+            "Exact author inputs, parameters, historical/hosted execution and complete workflow are not reproduced."
+          ],
+          "reusable_supplied_object_intake": false,
+          "full_reported_role_qualified": false,
+          "complete_author_workflow_qualified": false,
+          "historical_package_parity": false,
+          "exact_author_settings_established": false,
+          "author_runtime_executed": false,
+          "whole_paper_reproduced": false
+        }
       },
       {
         "tool_id": "scdrs",
@@ -45990,12 +47150,89 @@
         "matched_text": "SCANPY",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
-        "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
+        "version_reported_near_name": "1.9.1",
+        "evidence_selection": "individually-reviewed-source-role",
         "evidence_paragraph_sha256": "1a763dd458ff54f047f20b27389dc8fc67605fe3efea79a7f633969e825f045d",
-        "use_summary": "Single-cell expression processing and analysis.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13447095/ (section: Methods / Bioinformatic analysis: scRNA-seq)"
+        "use_summary": "Used Scanpy 1.9.1 for RNA HVGs with sample batches and explicit mean/dispersion cuts, then neighbor/Leiden/UMAP analysis. Separate CosMx and ligand-neighborhood branches used expression/latent representations and Wilcoxon rank-gene comparisons across cell types or neighborhoods.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13447095/ (section: Methods / Bioinformatic analysis: scRNA-seq)",
+        "implementation_scope_note": "Do not collapse RNA, raw CosMx counts, imputed values, scVI/scANVI latent spaces and CytoSignal ligand matrices into one input population. Harmony/scVI/scANVI fitting, spatial neighborhoods and GAMs are separate tools.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 68,
+            "section": "Methods / Bioinformatic analysis: spatial single-cell transcriptomics",
+            "paragraph_sha256": "b0b081eb420911db66c91b4cf4605da8409acc4c50b549c75402e9ca7872d901"
+          },
+          {
+            "paragraph_index": 70,
+            "section": "Methods / Histologic neighborhood annotation",
+            "paragraph_sha256": "b55e563e4dac59dea91a6bc871c5f254f316c71ad694870c12417e8d066934af"
+          },
+          {
+            "paragraph_index": 71,
+            "section": "Methods / Histologic neighborhood annotation",
+            "paragraph_sha256": "e9d15526e33fd0f7411ec98a8a71af07dc677ad0e01f89ab03ed7117683e7c65"
+          }
+        ],
+        "source_role_qualification": {
+          "role": "RNA-spatial-and-ligand-neighborhood-analysis",
+          "declared_host": "direct-with-integration-tools",
+          "reported_editions": [
+            {
+              "paragraph_index": 65,
+              "literal": "1.9.1",
+              "source_context": "SCANPY (version 1.9.1)",
+              "refers_to": "Scanpy"
+            }
+          ],
+          "reported_operations": [
+            "pp.highly_variable_genes",
+            "neighbors",
+            "Leiden-clustering",
+            "UMAP",
+            "rank-genes-Wilcoxon",
+            "normalization",
+            "log-transformation",
+            "pca"
+          ],
+          "use_summary": "Used Scanpy 1.9.1 for RNA HVGs with sample batches and explicit mean/dispersion cuts, then neighbor/Leiden/UMAP analysis. Separate CosMx and ligand-neighborhood branches used expression/latent representations and Wilcoxon rank-gene comparisons across cell types or neighborhoods.",
+          "required_caution": "Do not collapse RNA, raw CosMx counts, imputed values, scVI/scANVI latent spaces and CytoSignal ligand matrices into one input population. Harmony/scVI/scANVI fitting, spatial neighborhoods and GAMs are separate tools.",
+          "current_1130_tested_function_counterparts": [
+            "pp.normalize_total",
+            "pp.log1p",
+            "pp.pca",
+            "pp.neighbors",
+            "tl.leiden",
+            "tl.umap",
+            "tl.rank_genes_groups:wilcoxon"
+          ],
+          "counterparts_are_not_author_function_attribution": true,
+          "native_profile_overlap": [],
+          "qualified_native_component_overlap": [
+            {
+              "component": "preprocessing",
+              "operations": [
+                "normalize_total",
+                "log1p"
+              ],
+              "relationship": "Related explicit matrix operations; current counterparts are not author-function attribution.",
+              "historical_author_profile_qualified": false
+            }
+          ],
+          "native_components_are_explicit_not_automatic_fallback": true,
+          "remaining_author_roles": [
+            "Batch/sample HVGs and literal cuts; separate RNA, CosMx, latent, imputed and ligand matrices; integration/neighborhood/GAM tools.",
+            "Do not collapse RNA, raw CosMx counts, imputed values, scVI/scANVI latent spaces and CytoSignal ligand matrices into one input population. Harmony/scVI/scANVI fitting, spatial neighborhoods and GAMs are separate tools.",
+            "Exact author inputs, parameters, historical/hosted execution and complete workflow are not reproduced."
+          ],
+          "reusable_supplied_object_intake": false,
+          "full_reported_role_qualified": false,
+          "complete_author_workflow_qualified": false,
+          "historical_package_parity": false,
+          "exact_author_settings_established": false,
+          "author_runtime_executed": false,
+          "whole_paper_reproduced": false
+        }
       },
       {
         "tool_id": "scrublet",
@@ -51381,13 +52618,42 @@
         "evidence_paragraph_index": 14,
         "matched_text": "Scanpy",
         "extraction_score": 15,
-        "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "usage_context": "provided-integrated-object-reuse",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-source-role",
         "evidence_paragraph_sha256": "23b563807f072befe664699ede4b1cb3766e0e1114808b1a879fd000aac9b823",
-        "use_summary": "Used for marker or differential-expression analysis; cell annotation; exploratory representation.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11639091/ (section: Methods / scRNA-seq data from osteoarthritis cartilage)"
+        "use_summary": "Used a supplied integrated cartilage scRNA-seq object, broad cell-type reannotation and QC, then displayed representative gene markers and UMAP representations created using Scanpy.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11639091/ (section: Methods / scRNA-seq data from osteoarthritis cartilage)",
+        "implementation_scope_note": "This does not establish de novo normalization, HVG selection, PCA, neighbor graphs or clustering in Scanpy. Preserve the supplied-object provenance and avoid inventing a fit or package edition.",
+        "source_role_qualification": {
+          "role": "supplied-integrated-object-visualization",
+          "declared_host": "direct-on-reused-integrated-object",
+          "reported_editions": [],
+          "reported_operations": [
+            "UMAP-representation",
+            "marker-visualization"
+          ],
+          "use_summary": "Used a supplied integrated cartilage scRNA-seq object, broad cell-type reannotation and QC, then displayed representative gene markers and UMAP representations created using Scanpy.",
+          "required_caution": "This does not establish de novo normalization, HVG selection, PCA, neighbor graphs or clustering in Scanpy. Preserve the supplied-object provenance and avoid inventing a fit or package edition.",
+          "current_1130_tested_function_counterparts": [],
+          "counterparts_are_not_author_function_attribution": true,
+          "native_profile_overlap": [],
+          "qualified_native_component_overlap": [],
+          "native_components_are_explicit_not_automatic_fallback": true,
+          "remaining_author_roles": [
+            "Supplied integrated-object provenance and plotting/reannotation; no de novo normalization/HVG/PCA/neighbor fit is established.",
+            "This does not establish de novo normalization, HVG selection, PCA, neighbor graphs or clustering in Scanpy. Preserve the supplied-object provenance and avoid inventing a fit or package edition.",
+            "Exact author inputs, parameters, historical/hosted execution and complete workflow are not reproduced."
+          ],
+          "reusable_supplied_object_intake": true,
+          "full_reported_role_qualified": false,
+          "complete_author_workflow_qualified": false,
+          "historical_package_parity": false,
+          "exact_author_settings_established": false,
+          "author_runtime_executed": false,
+          "whole_paper_reproduced": false
+        }
       },
       {
         "tool_id": "scrublet",

@@ -1,0 +1,3 @@
+# First unpublished portable-reader attempt
+
+Retained verbatim as an unsuccessful portability attempt. The saved check passed with Git available, but the PATH-empty control skipped because the shared historical manifest helper invokes Git. Do not run or extract this older packet over current source. The original reader, modified document versions, qualification/archive bytes and failed-control diagnostics are retained; unchanged source files remain in the repository with the original pins. The current packet uses an independent saved-manifest audit and leaves admission/scientific owners unchanged.

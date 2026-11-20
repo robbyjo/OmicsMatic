@@ -1,5 +1,16 @@
 # Current toolbox handover
 
+**Current: [Scanpy cumulative catalog checkpoint](SCANPY_CATALOG_CHECKPOINT_2026-11-19.md).**
+The guarded admission adds 21 reviews for 22 existing roles, preserves every
+earlier review and credits one bounded upstream family with explicit native
+components. Totals are **137 scoped integrations, 1,483 reviewed uses and
+1,220 pending**. Plan/inspect/apply/fresh verify, 25 controls on Windows/Linux
+and six CLI refusal controls pass; the manifest has 815 clean entries.
+The short historical checkout succeeds, bringing the preserved total to 23.
+Continue higher-impact missing scopes and individual reviews. Earlier
+admission-open handovers below are superseded; full goal completion remains
+open. The checkpoint gives exact scope, recovery and private transfer paths.
+
 **Handoff: [remaining work and exact resume instructions](HANDOVER_2026-11-19_SCANPY_ADMISSION.md).**
 Start there. Scientific baseline is `d70b229489a7b16206060ca8827539011b6a896a`.
 Global Scanpy dispatch, the 22-role crosswalk and native dispersion HVGs are
