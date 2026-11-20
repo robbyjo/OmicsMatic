@@ -1,5 +1,15 @@
 # Current toolbox handover
 
+**For the requested handoff, start with the
+[final Scanpy handover and remaining-work list](HANDOVER_2026-11-19_SCANPY_FINAL.md).**
+The scientific baseline is main commit `a638b0ae3610001332c46022aeeff5f47bdb706d`.
+It includes all three recent Scanpy milestones. The new handover records the
+exact unfinished work, prominent recovery actions, saved-proof commands and
+separate machine-transfer requirements. All 22 worktrees remain preserved;
+historical dirty variants are already saved in the public overlay archive.
+The whole goal remains unfinished. No Scanpy global-dispatch or catalog-admission
+change has been made since that baseline.
+
 **Handover, 19 November 2026. Start here; the older checkpoints below are
 retained history.** The latest scientific checkpoint is the native Scanpy
 Pearson component; the ordered file workflow is also qualified as linked below.
