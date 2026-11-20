@@ -1,5 +1,16 @@
 # Current toolbox handover
 
+**Latest: [global Scanpy command and 22-paper crosswalk](SCANPY_DISPATCH_CHECKPOINT_2026-11-19.md).**
+The normal JAR now runs `scanpy-tools` through its main entry point.
+RUN/VERIFY/REPLAY, 52 original-reference comparisons and 62 existing tests on
+each of three JVMs pass. Only the global dispatcher class changes; all other
+20,209 classes and resources remain identical. The explicit inverse reader
+preserves historical Enrichr evidence without rewriting old guards. The
+source crosswalk is saved; remaining branches and cumulative admission are
+open. Totals stay **136 integrations, 1,462 reviewed uses and 1,241 pending**.
+The handover below is the preceding snapshot; its dispatch/crosswalk-open
+statements are superseded by this checkpoint.
+
 **For the requested handoff, start with the
 [final Scanpy handover and remaining-work list](HANDOVER_2026-11-19_SCANPY_FINAL.md).**
 The scientific baseline is main commit `a638b0ae3610001332c46022aeeff5f47bdb706d`.
