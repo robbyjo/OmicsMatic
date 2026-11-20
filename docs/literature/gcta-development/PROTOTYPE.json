@@ -1,0 +1,185 @@
+{
+  "schema_version": 1,
+  "status": "DEVELOPMENT_PROTOTYPE_NOT_GCTA_CATALOG_ADMISSION",
+  "baseline": "bdf1c3e8067896131d31cbca3e7de9191aa93a0d",
+  "native_source": {
+    "bytes": 12821,
+    "sha256": "12be9935b8a12c7f370eddd7d139dfd7b7b05635bfeb388f6b02f8b9c7ab3d1b"
+  },
+  "synthetic_evidence": {
+    "bytes": 3116491,
+    "sha256": "b2084a64caab1196ba0f334064e8b8551eb07be77d5658142fd64a554e34c12a"
+  },
+  "cases": [
+    "grm-complete",
+    "grm-missing",
+    "grm-alg1",
+    "grm-bin-A",
+    "grm-bin-B"
+  ],
+  "initial_native_hosts": [
+    "windows-java21",
+    "windows-java25",
+    "linux-java21"
+  ],
+  "exact_float32_fields_per_JVM": 185280,
+  "native_scope": "Prepared autosomal diploid hard-call GRM algorithms 0/1, source 1.94.1 only; initial five-case comparison",
+  "original_core_cases_per_host": 9,
+  "original_core_hosts": [
+    "windows",
+    "linux"
+  ],
+  "advanced_original_exploration": {
+    "windows": [
+      {
+        "mode": "pca",
+        "exit_code": 0,
+        "scientific_qualification_complete": false
+      },
+      {
+        "mode": "reml-positive",
+        "exit_code": 0,
+        "scientific_qualification_complete": false
+      },
+      {
+        "mode": "reml-unconstrained",
+        "exit_code": 0,
+        "scientific_qualification_complete": false
+      },
+      {
+        "mode": "reml-multi",
+        "exit_code": 0,
+        "scientific_qualification_complete": false
+      },
+      {
+        "mode": "ld-score",
+        "exit_code": 0,
+        "scientific_qualification_complete": false
+      },
+      {
+        "mode": "ld-score-adjusted",
+        "exit_code": 0,
+        "scientific_qualification_complete": false
+      },
+      {
+        "mode": "ld-score-region",
+        "exit_code": 0,
+        "scientific_qualification_complete": false
+      },
+      {
+        "mode": "sparse-grm",
+        "exit_code": 0,
+        "scientific_qualification_complete": false
+      },
+      {
+        "mode": "fastGWA-binary",
+        "exit_code": 1,
+        "scientific_qualification_complete": false
+      }
+    ],
+    "linux": [
+      {
+        "mode": "pca",
+        "exit_code": 0,
+        "scientific_qualification_complete": false
+      },
+      {
+        "mode": "reml-positive",
+        "exit_code": 0,
+        "scientific_qualification_complete": false
+      },
+      {
+        "mode": "reml-unconstrained",
+        "exit_code": 0,
+        "scientific_qualification_complete": false
+      },
+      {
+        "mode": "reml-multi",
+        "exit_code": 0,
+        "scientific_qualification_complete": false
+      },
+      {
+        "mode": "ld-score",
+        "exit_code": 0,
+        "scientific_qualification_complete": false
+      },
+      {
+        "mode": "ld-score-adjusted",
+        "exit_code": 0,
+        "scientific_qualification_complete": false
+      },
+      {
+        "mode": "ld-score-region",
+        "exit_code": 0,
+        "scientific_qualification_complete": false
+      },
+      {
+        "mode": "sparse-grm",
+        "exit_code": 0,
+        "scientific_qualification_complete": false
+      },
+      {
+        "mode": "fastGWA-binary",
+        "exit_code": 1,
+        "scientific_qualification_complete": false
+      }
+    ]
+  },
+  "fastGWA_failure": "FAIL2: NO COMPLETE RESULT: can't read 2000 SNPs from the autosomes for tuning (only 768 supplied); retry with a larger separately generated fixture and retain both failures",
+  "unconstrained_source_result": {
+    "converged": true,
+    "V_G": -0.2294,
+    "V_e": 0.912173,
+    "h2": -0.335983,
+    "clamp_or_bound_rejection_allowed": false,
+    "interpretation": "Synthetic exploration; independent REML semantic qualification remains open"
+  },
+  "upstream_source_commit": "6da64e9d8be838d01c34efb974e69c72e861f4c2",
+  "upstream_license": "GPL-3.0 with file-specific LGPL portions; see original source headers",
+  "upstream_source_url": "https://github.com/jianyangqt/gcta/tree/6da64e9d8be838d01c34efb974e69c72e861f4c2",
+  "new_catalog_credit": 0,
+  "canonical_metadata_changed": false,
+  "complete_tool_qualified": false,
+  "normal_producer_built_this_stage": false,
+  "JUnit_edge_corpus_complete": false,
+  "project_file_workflow_implemented": false,
+  "global_command_registered": false,
+  "windows21_probe_classes": {
+    "NativeGctaGrmProbe.class": {
+      "bytes": 5277,
+      "sha256": "950588f1affd092ef065276f60a6a8c27d22772fda3ffc2e80f98844d38f9248"
+    },
+    "org/jlinalg/genetics/GctaHardcallGrm$Algorithm.class": {
+      "bytes": 1213,
+      "sha256": "3d18aa9d026ec25c43d95b73bd827dace89e7790ecae8289c205628353b7fabc"
+    },
+    "org/jlinalg/genetics/GctaHardcallGrm$Disposition.class": {
+      "bytes": 1290,
+      "sha256": "66a1aa6993885bb43650ff08e12e44a604384cd29f12e07dd85d1b50299f356e"
+    },
+    "org/jlinalg/genetics/GctaHardcallGrm$Limits.class": {
+      "bytes": 1908,
+      "sha256": "69682e6a0ddaf509ebdc5c1f55e36f5571245d4f19aba4b07e1e3dd0c4a18b0b"
+    },
+    "org/jlinalg/genetics/GctaHardcallGrm$MarkerInfo.class": {
+      "bytes": 2119,
+      "sha256": "a27af25025f3616d2ff282c8060a936668f99c0fd3c62915ae8563af32b03ec2"
+    },
+    "org/jlinalg/genetics/GctaHardcallGrm$Progress.class": {
+      "bytes": 352,
+      "sha256": "56d2372cd7e06432ce2ed4f43f2f4fbe7e0a6d22394031ca5524cb61ef7ded10"
+    },
+    "org/jlinalg/genetics/GctaHardcallGrm$Result.class": {
+      "bytes": 2321,
+      "sha256": "3c3ca4021a8100abfb09e6bf62406d5a645f8e73351372bdef245b9e1c47a03e"
+    },
+    "org/jlinalg/genetics/GctaHardcallGrm$SampleId.class": {
+      "bytes": 1533,
+      "sha256": "112feed9b8be0a660857c219fca53a80080631be4dece0ec6ead0f9987cfa68b"
+    },
+    "org/jlinalg/genetics/GctaHardcallGrm.class": {
+      "bytes": 8956,
+      "sha256": "7b28434d31e49e92d16f3e4d48f95e723576760afc938750165bc770f5657032"
+    }
+  }
+}

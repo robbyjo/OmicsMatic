@@ -1,5 +1,17 @@
 # Current toolbox handover
 
+**Start here: [GCTA prototype, warnings, remaining work and exact resume paths](HANDOVER_2026-11-20_GCTA.md).**
+The 250-paper cohort and GSEA admission are complete; the full implementation
+and source-review goal remains unfinished. Totals stay **140 scoped integrations
+(26 native +114 upstream), 1,548 reviewed uses and 1,166 pending**. The GCTA
+addition is a development GRM prototype with five initial source-comparison
+cases; no GCTA/COJO credit, file workflow or global command is added. The
+handover prominently records the failed fastGWA tuning prerequisite, valid
+unconstrained estimates, remaining qualification and high-impact priorities.
+Preserve all **23 worktrees** and separately transfer ignored runtimes/producer
+JARs/complete private evidence before moving machines. Both reports remain
+withheld from Pages. Lower checkpoints are retained history.
+
 **Current: [GSEA admitted, remaining work and exact resume paths](GSEA_CATALOG_CHECKPOINT_2026-11-20.md).**
 Native Broad GSEA and 28 provider-distinct ranked-enrichment roles are admitted.
 The all-250 audit classifies 56 candidates and adds nine missed observations;
