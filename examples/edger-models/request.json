@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "mode": "RUN",
+  "counts": "counts.tsv",
+  "groups": "groups.tsv",
+  "group_levels": [
+    "control",
+    "treated",
+    "third"
+  ],
+  "count_units": "raw-counts",
+  "normalization": {
+    "method": "TMM"
+  },
+  "filter": {
+    "method": "filterByExpr",
+    "basis": "design",
+    "order": "before-normalization",
+    "keep_library_sizes": false
+  },
+  "dispersion": {
+    "method": "adjusted-QL-auto"
+  },
+  "rscript": "Rscript-REPLACE",
+  "r_libraries": [
+    "private-R-library-REPLACE"
+  ],
+  "timeout_seconds": 120,
+  "maximum_output_bytes": 50000000,
+  "profile": "edgeR-4.10.7-R4.6.1",
+  "model": "GLM_QLF",
+  "design": "design.tsv",
+  "results": [
+    {
+      "id": "treated coefficient",
+      "coefficients": [
+        2
+      ]
+    },
+    {
+      "id": "treated-control",
+      "contrast": [
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "joint treatment",
+      "coefficients": [
+        2,
+        3
+      ]
+    }
+  ],
+  "fit": {
+    "ql_mode": "adjusted",
+    "top_proportion": 0.3
+  },
+  "out": "output-NEW",
+  "preparation_note": "Synthetic prepared counts with an explicit baseline-intercept design; no paper cohort or biological conclusion is represented."
+}

@@ -1,5 +1,19 @@
 # Current toolbox handover
 
+**Latest: [original edgeR models, remaining work and exact resume paths](EDGER_MODELS_CHECKPOINT_2026-11-20.md).**
+The prepared-count original-runtime component covers filtering, normalization,
+dispersion, exact/LRT and explicit legacy/adjusted QL models. The final normal
+producer has 33 stock compositions, 338 exact complete-object comparisons,
+55 checks per JVM on three hosts, 33-capture cross-host verification, actual
+replay/alias guards and corrected live-file output monitoring. Two genuine
+old-edition exhausted null fits are refused despite finite stock tables;
+current 4.10.7 converges on that input. All original/history evidence is retained.
+Global edgeR registration and cumulative admission remain open; totals stay
+**138 admitted integrations, 1,503 reviewed uses and 1,201 pending**.
+Preserve all **27 worktrees** and separately transfer ignored runtimes/evidence.
+The linked checkpoint supersedes earlier edgeR-model-open task lists below;
+full toolbox completion remains unfinished.
+
 **Latest: [native edgeR checkpoint and exact next work](EDGER_NORMALIZATION_CHECKPOINT_2026-11-20.md).**
 Prepared-matrix native normalization/CPM/RPKM and the standalone file workflow
 pass 5,165 checks on each of three JVMs, independent original comparisons,
