@@ -1,5 +1,17 @@
 # Current toolbox handover
 
+**Current: [native Broad GSEA component, exact evidence and next work](GSEA_NATIVE_CHECKPOINT_2026-11-20.md).**
+The normal JAR now includes native original-source score walks, NES, nominal P,
+empirical FDR and FWER. Three original source profiles complete all three
+10,000-permutation reference forms. Native comparisons pass on three JVMs,
+with source-bound no-result refusals and all 23,485 old JAR payloads unchanged.
+The project file workflow, RUN/VERIFY/REPLAY, global command, remaining source
+reviews and catalog admission stay open. Totals remain **139 integrations,
+1,520 reviewed uses and 1,185 pending**, with 823 manifest entries. No GSEA
+family credit is added. Preserve all **30 worktrees** and separately transfer
+ignored runtimes/complete evidence. Both literature reports stay off Pages.
+The linked checkpoint supersedes older source-build-open instructions below.
+
 **Start here: [current handover, GSEA work and exact remaining tasks](HANDOVER_2026-11-20_GSEA.md).**
 The latest admitted scientific checkpoint is edgeR at main `0de612c6`.
 Totals remain **139 scoped integrations (25 native +114 upstream), 1,520

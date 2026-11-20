@@ -1,0 +1,444 @@
+{
+  "status": "PASS_SAVED_NATIVE_READER_AND_SIX_REFUSALS_ON_TWO_HOSTS",
+  "hosts": 2,
+  "pass_cases": 2,
+  "refusals": 12,
+  "controls": {
+    "status": "PASS_PORTABLE_NATIVE_GSEA_SAVED_QUALIFICATION_AND_REFUSAL_CONTROLS",
+    "results": {
+      "windows": [
+        {
+          "case": "pass",
+          "command": [
+            "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+            "-X",
+            "utf8",
+            "-B",
+            "D:\\projects\\JLinAlg\\build\\gs-2\\tools\\literature\\verify_broad_gsea_native.py",
+            "--packet",
+            "D:\\projects\\JLinAlg\\build\\gs-2\\docs\\literature\\gsea-native-development",
+            "--out",
+            "D:\\projects\\JLinAlg\\build\\gs-2\\build\\gsea-high-impact-2\\native-reader-controls-1\\windows\\pass\\readback",
+            "--jar",
+            "D:\\projects\\JLinAlg\\build\\gs-2\\build\\gsea-high-impact-2\\native-gradle-1\\project-build\\cli\\omicsmatic-0.4.0.jar"
+          ],
+          "exit_code": 0,
+          "expected": 0
+        },
+        {
+          "case": "existing-output",
+          "command": [
+            "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+            "-X",
+            "utf8",
+            "-B",
+            "D:\\projects\\JLinAlg\\build\\gs-2\\tools\\literature\\verify_broad_gsea_native.py",
+            "--packet",
+            "D:\\projects\\JLinAlg\\build\\gs-2\\docs\\literature\\gsea-native-development",
+            "--out",
+            "D:\\projects\\JLinAlg\\build\\gs-2\\build\\gsea-high-impact-2\\native-reader-controls-1\\windows\\existing-output\\readback"
+          ],
+          "exit_code": 2,
+          "expected": 2
+        },
+        {
+          "case": "different-jar",
+          "command": [
+            "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+            "-X",
+            "utf8",
+            "-B",
+            "D:\\projects\\JLinAlg\\build\\gs-2\\tools\\literature\\verify_broad_gsea_native.py",
+            "--packet",
+            "D:\\projects\\JLinAlg\\build\\gs-2\\docs\\literature\\gsea-native-development",
+            "--out",
+            "D:\\projects\\JLinAlg\\build\\gs-2\\build\\gsea-high-impact-2\\native-reader-controls-1\\windows\\different-jar\\readback",
+            "--jar",
+            "D:\\projects\\JLinAlg\\build\\edg-3\\build\\edger-admission-1\\dispatch-gradle-1\\project-build\\cli\\omicsmatic-0.4.0.jar"
+          ],
+          "exit_code": 2,
+          "expected": 2
+        },
+        {
+          "case": "missing-archive",
+          "command": [
+            "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+            "-X",
+            "utf8",
+            "-B",
+            "D:\\projects\\JLinAlg\\build\\gs-2\\tools\\literature\\verify_broad_gsea_native.py",
+            "--packet",
+            "D:\\projects\\JLinAlg\\build\\gs-2\\build\\gsea-high-impact-2\\native-reader-controls-1\\windows\\missing-archive\\packet",
+            "--out",
+            "D:\\projects\\JLinAlg\\build\\gs-2\\build\\gsea-high-impact-2\\native-reader-controls-1\\windows\\missing-archive\\readback"
+          ],
+          "exit_code": 3,
+          "expected": 3
+        },
+        {
+          "case": "changed-archive",
+          "command": [
+            "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+            "-X",
+            "utf8",
+            "-B",
+            "D:\\projects\\JLinAlg\\build\\gs-2\\tools\\literature\\verify_broad_gsea_native.py",
+            "--packet",
+            "D:\\projects\\JLinAlg\\build\\gs-2\\build\\gsea-high-impact-2\\native-reader-controls-1\\windows\\changed-archive\\packet",
+            "--out",
+            "D:\\projects\\JLinAlg\\build\\gs-2\\build\\gsea-high-impact-2\\native-reader-controls-1\\windows\\changed-archive\\readback"
+          ],
+          "exit_code": 2,
+          "expected": 2
+        },
+        {
+          "case": "missing-source-guard",
+          "command": [
+            "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+            "-X",
+            "utf8",
+            "-B",
+            "D:\\projects\\JLinAlg\\build\\gs-2\\tools\\literature\\verify_broad_gsea_native.py",
+            "--packet",
+            "D:\\projects\\JLinAlg\\build\\gs-2\\build\\gsea-high-impact-2\\native-reader-controls-1\\windows\\missing-source-guard\\packet",
+            "--out",
+            "D:\\projects\\JLinAlg\\build\\gs-2\\build\\gsea-high-impact-2\\native-reader-controls-1\\windows\\missing-source-guard\\readback"
+          ],
+          "exit_code": 2,
+          "expected": 2
+        },
+        {
+          "case": "resealed-failed-process",
+          "command": [
+            "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+            "-X",
+            "utf8",
+            "-B",
+            "D:\\projects\\JLinAlg\\build\\gs-2\\tools\\literature\\verify_broad_gsea_native.py",
+            "--packet",
+            "D:\\projects\\JLinAlg\\build\\gs-2\\build\\gsea-high-impact-2\\native-reader-controls-1\\windows\\resealed-failed-process\\packet",
+            "--out",
+            "D:\\projects\\JLinAlg\\build\\gs-2\\build\\gsea-high-impact-2\\native-reader-controls-1\\windows\\resealed-failed-process\\readback"
+          ],
+          "exit_code": 2,
+          "expected": 2
+        }
+      ],
+      "linux": [
+        {
+          "case": "pass",
+          "command": [
+            "C:/Windows/System32/wsl.exe",
+            "-d",
+            "JLinAlg-Omics-SAIGE-20261026",
+            "--exec",
+            "/usr/bin/python3",
+            "-B",
+            "/mnt/d/projects/JLinAlg/build/gs-2/tools/literature/verify_broad_gsea_native.py",
+            "--packet",
+            "/mnt/d/projects/JLinAlg/build/gs-2/docs/literature/gsea-native-development",
+            "--out",
+            "/mnt/d/projects/JLinAlg/build/gs-2/build/gsea-high-impact-2/native-reader-controls-1/linux/pass/readback",
+            "--jar",
+            "/mnt/d/projects/JLinAlg/build/gs-2/build/gsea-high-impact-2/native-gradle-1/project-build/cli/omicsmatic-0.4.0.jar"
+          ],
+          "exit_code": 0,
+          "expected": 0
+        },
+        {
+          "case": "existing-output",
+          "command": [
+            "C:/Windows/System32/wsl.exe",
+            "-d",
+            "JLinAlg-Omics-SAIGE-20261026",
+            "--exec",
+            "/usr/bin/python3",
+            "-B",
+            "/mnt/d/projects/JLinAlg/build/gs-2/tools/literature/verify_broad_gsea_native.py",
+            "--packet",
+            "/mnt/d/projects/JLinAlg/build/gs-2/docs/literature/gsea-native-development",
+            "--out",
+            "/mnt/d/projects/JLinAlg/build/gs-2/build/gsea-high-impact-2/native-reader-controls-1/linux/existing-output/readback"
+          ],
+          "exit_code": 2,
+          "expected": 2
+        },
+        {
+          "case": "different-jar",
+          "command": [
+            "C:/Windows/System32/wsl.exe",
+            "-d",
+            "JLinAlg-Omics-SAIGE-20261026",
+            "--exec",
+            "/usr/bin/python3",
+            "-B",
+            "/mnt/d/projects/JLinAlg/build/gs-2/tools/literature/verify_broad_gsea_native.py",
+            "--packet",
+            "/mnt/d/projects/JLinAlg/build/gs-2/docs/literature/gsea-native-development",
+            "--out",
+            "/mnt/d/projects/JLinAlg/build/gs-2/build/gsea-high-impact-2/native-reader-controls-1/linux/different-jar/readback",
+            "--jar",
+            "/mnt/d/projects/JLinAlg/build/edg-3/build/edger-admission-1/dispatch-gradle-1/project-build/cli/omicsmatic-0.4.0.jar"
+          ],
+          "exit_code": 2,
+          "expected": 2
+        },
+        {
+          "case": "missing-archive",
+          "command": [
+            "C:/Windows/System32/wsl.exe",
+            "-d",
+            "JLinAlg-Omics-SAIGE-20261026",
+            "--exec",
+            "/usr/bin/python3",
+            "-B",
+            "/mnt/d/projects/JLinAlg/build/gs-2/tools/literature/verify_broad_gsea_native.py",
+            "--packet",
+            "/mnt/d/projects/JLinAlg/build/gs-2/build/gsea-high-impact-2/native-reader-controls-1/linux/missing-archive/packet",
+            "--out",
+            "/mnt/d/projects/JLinAlg/build/gs-2/build/gsea-high-impact-2/native-reader-controls-1/linux/missing-archive/readback"
+          ],
+          "exit_code": 3,
+          "expected": 3
+        },
+        {
+          "case": "changed-archive",
+          "command": [
+            "C:/Windows/System32/wsl.exe",
+            "-d",
+            "JLinAlg-Omics-SAIGE-20261026",
+            "--exec",
+            "/usr/bin/python3",
+            "-B",
+            "/mnt/d/projects/JLinAlg/build/gs-2/tools/literature/verify_broad_gsea_native.py",
+            "--packet",
+            "/mnt/d/projects/JLinAlg/build/gs-2/build/gsea-high-impact-2/native-reader-controls-1/linux/changed-archive/packet",
+            "--out",
+            "/mnt/d/projects/JLinAlg/build/gs-2/build/gsea-high-impact-2/native-reader-controls-1/linux/changed-archive/readback"
+          ],
+          "exit_code": 2,
+          "expected": 2
+        },
+        {
+          "case": "missing-source-guard",
+          "command": [
+            "C:/Windows/System32/wsl.exe",
+            "-d",
+            "JLinAlg-Omics-SAIGE-20261026",
+            "--exec",
+            "/usr/bin/python3",
+            "-B",
+            "/mnt/d/projects/JLinAlg/build/gs-2/tools/literature/verify_broad_gsea_native.py",
+            "--packet",
+            "/mnt/d/projects/JLinAlg/build/gs-2/build/gsea-high-impact-2/native-reader-controls-1/linux/missing-source-guard/packet",
+            "--out",
+            "/mnt/d/projects/JLinAlg/build/gs-2/build/gsea-high-impact-2/native-reader-controls-1/linux/missing-source-guard/readback"
+          ],
+          "exit_code": 2,
+          "expected": 2
+        },
+        {
+          "case": "resealed-failed-process",
+          "command": [
+            "C:/Windows/System32/wsl.exe",
+            "-d",
+            "JLinAlg-Omics-SAIGE-20261026",
+            "--exec",
+            "/usr/bin/python3",
+            "-B",
+            "/mnt/d/projects/JLinAlg/build/gs-2/tools/literature/verify_broad_gsea_native.py",
+            "--packet",
+            "/mnt/d/projects/JLinAlg/build/gs-2/build/gsea-high-impact-2/native-reader-controls-1/linux/resealed-failed-process/packet",
+            "--out",
+            "/mnt/d/projects/JLinAlg/build/gs-2/build/gsea-high-impact-2/native-reader-controls-1/linux/resealed-failed-process/readback"
+          ],
+          "exit_code": 2,
+          "expected": 2
+        }
+      ]
+    }
+  },
+  "archive": {
+    "bytes": 16096,
+    "sha256": "8fd35b043c1200b245cbeb7cdab16652e25133798f713d8a9047ca286d4b9cb7"
+  },
+  "files": {
+    "COMPLETED.json": {
+      "bytes": 10203,
+      "sha256": "8c229ecd957ba2f12c35cc7e894e6cb5f603f6cab3788cbf2a79e9b59e2d6dff"
+    },
+    "SOURCE.py": {
+      "bytes": 4330,
+      "sha256": "08ad68bca6b68b90fc28e4f19c3b80e7e617a9924af33d6c09986ee27c0eb937"
+    },
+    "linux/changed-archive/PROCESS.json": {
+      "bytes": 575,
+      "sha256": "9309f8c3de6ebb6497aaa076dcd9c5bc588736b4a9830fe81b78b027688ef08e"
+    },
+    "linux/changed-archive/stderr": {
+      "bytes": 286,
+      "sha256": "1d982164485d69a3090469f3bf81838438e98e0728b96c43e13df05c8a72754e"
+    },
+    "linux/changed-archive/stdout": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "linux/different-jar/PROCESS.json": {
+      "bytes": 669,
+      "sha256": "02e30ca473b635d5bd6b2e58452e23903476be7ffe3db661c6d3868407227d80"
+    },
+    "linux/different-jar/stderr": {
+      "bytes": 284,
+      "sha256": "ae89fedc2498fe8c7880d54d4bfe9aa7c62bd96a7d5227bd898e91afd6f941fc"
+    },
+    "linux/different-jar/stdout": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "linux/existing-output/PROCESS.json": {
+      "bytes": 536,
+      "sha256": "204a7b552cbf8ae5001746d45564b727dd4dd27072883f62c7f70e44b3acd5d3"
+    },
+    "linux/existing-output/stderr": {
+      "bytes": 280,
+      "sha256": "a32c146a3d1899f8f491d78bfe3aede35dd7fd756d5a74f8997f508fab225df9"
+    },
+    "linux/existing-output/stdout": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "linux/missing-archive/PROCESS.json": {
+      "bytes": 575,
+      "sha256": "516541dec1a4a29d9d720097772f748c99881c11f510ff5e8cf73cbb1108bb5c"
+    },
+    "linux/missing-archive/stderr": {
+      "bytes": 417,
+      "sha256": "819855c3c2bc5bcfaa9bbfa5b2e3903e68c027023e3fd5d517192ce0b512e32f"
+    },
+    "linux/missing-archive/stdout": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "linux/missing-source-guard/PROCESS.json": {
+      "bytes": 590,
+      "sha256": "e45ad0e5cd3a6e00620694edaef231d518db69828cf45ef77349a555a5c0b703"
+    },
+    "linux/missing-source-guard/stderr": {
+      "bytes": 292,
+      "sha256": "0e97f6de00963666e2b5e441e54afc80c8bc1a76475912e95120ebc3c60ee876"
+    },
+    "linux/missing-source-guard/stdout": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "linux/pass/PROCESS.json": {
+      "bytes": 649,
+      "sha256": "ba136342c0556edad81b1086518f2c2d1dd261cb19618dd61873939504321151"
+    },
+    "linux/pass/stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "linux/pass/stdout": {
+      "bytes": 590,
+      "sha256": "e0de290122eb81422d675493b917fad577c72d6abbb4b4dfb2c2c777fbc27c60"
+    },
+    "linux/resealed-failed-process/PROCESS.json": {
+      "bytes": 599,
+      "sha256": "92f1e954a17bcdf65f1fe01ed827f063ffec82ead4b5850810b58045b5d10f57"
+    },
+    "linux/resealed-failed-process/stderr": {
+      "bytes": 305,
+      "sha256": "d493968bee89abb5683009debc2d74bf34b429bd7f11972adcc637b9ffd261b8"
+    },
+    "linux/resealed-failed-process/stdout": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "windows/changed-archive/PROCESS.json": {
+      "bytes": 601,
+      "sha256": "4ff99cfc78628ac80e6c36c04776bedd7af3b4a6a759eab27e55b8056607c0ce"
+    },
+    "windows/changed-archive/stderr": {
+      "bytes": 288,
+      "sha256": "04fd9c443c0dd8209e1e15f9dd558a6bc8dcb6be4ce77fbcf96cdfa172f182c7"
+    },
+    "windows/changed-archive/stdout": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "windows/different-jar/PROCESS.json": {
+      "bytes": 696,
+      "sha256": "385952cb1e63b913f62872978b1683a66c5fd9a4a32041f679f3214aca5fd9cd"
+    },
+    "windows/different-jar/stderr": {
+      "bytes": 286,
+      "sha256": "47d033554718b0826ea8b187877cf71debe0a28e951867a01807736b05608189"
+    },
+    "windows/different-jar/stdout": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "windows/existing-output/PROCESS.json": {
+      "bytes": 557,
+      "sha256": "bc784e0483538d02046e2936d9d8ad25c4f4c0d50e0569a3964300f6a9006eea"
+    },
+    "windows/existing-output/stderr": {
+      "bytes": 282,
+      "sha256": "df49e6c68cce953a96a382d4aa07dbbafe345f1fbd54e0f3bcf797f20f600569"
+    },
+    "windows/existing-output/stdout": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "windows/missing-archive/PROCESS.json": {
+      "bytes": 601,
+      "sha256": "e2a9a2fba22830398918ba8fb40a4f3f4d71b889834d74150f002688f7503434"
+    },
+    "windows/missing-archive/stderr": {
+      "bytes": 428,
+      "sha256": "afb1169c0bcc28f9efdbc4c4b58f530f9113d0c319434f2bcadc8b7eb1919fc0"
+    },
+    "windows/missing-archive/stdout": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "windows/missing-source-guard/PROCESS.json": {
+      "bytes": 616,
+      "sha256": "022beca84d1eb86d90c5ffabcff3e0d311a2e5b6b00d6445c1a14c0092844ed2"
+    },
+    "windows/missing-source-guard/stderr": {
+      "bytes": 294,
+      "sha256": "e4ce6b12c6f2926c3d46ff4ab74c71d5136e549c821b6f1e26aebe38bf0806d4"
+    },
+    "windows/missing-source-guard/stdout": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "windows/pass/PROCESS.json": {
+      "bytes": 676,
+      "sha256": "f7bd24fb475fc5d06f9389aabf4812d7369c7d713c4d0f11c88bbff33fba02d7"
+    },
+    "windows/pass/stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "windows/pass/stdout": {
+      "bytes": 610,
+      "sha256": "683792cef38eb4a9498eced7f18c910af5bc9d742af418612717efb1a02a29d1"
+    },
+    "windows/resealed-failed-process/PROCESS.json": {
+      "bytes": 625,
+      "sha256": "d3f6e0d04231dfb17b82114175954daeb535bb90b0a40d447cc5560ab3e3ad77"
+    },
+    "windows/resealed-failed-process/stderr": {
+      "bytes": 307,
+      "sha256": "a460c5a157133654be5841c24f99610473f04743fc0eceadf7bf2014bef59e7d"
+    },
+    "windows/resealed-failed-process/stdout": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "no_original_evidence_or_source_modified": true
+}
