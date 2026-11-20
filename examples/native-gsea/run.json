@@ -1,0 +1,184 @@
+{
+  "schema_version": 1,
+  "mode": "RUN",
+  "engine": "native-broad-gsea-source-core",
+  "out": "run-out",
+  "limits": {
+    "maximum_input_bytes": 10000000,
+    "maximum_output_bytes": 1000000000,
+    "maximum_files": 1024,
+    "timeout_seconds": 180,
+    "heap_mib": 1024,
+    "maximum_dense_cells": 1000000,
+    "maximum_null_cells": 1000000,
+    "maximum_work_per_analysis": 2000000000,
+    "maximum_permutations": 10000
+  },
+  "analyses": [
+    {
+      "id": "4.4.0/PRERANKED",
+      "input": "preranked.json",
+      "form": "PRERANKED",
+      "edition": "4.4.0",
+      "normalization": "meandiv",
+      "permutations": 10000,
+      "seed": "12345",
+      "minimum_size": 15,
+      "maximum_size": 100,
+      "weight": "WEIGHTED"
+    },
+    {
+      "id": "4.4.0/EXPRESSION_PHENOTYPE",
+      "input": "expression.json",
+      "form": "EXPRESSION_PHENOTYPE",
+      "edition": "4.4.0",
+      "normalization": "meandiv",
+      "permutations": 10000,
+      "seed": "12345",
+      "minimum_size": 15,
+      "maximum_size": 100,
+      "weight": "WEIGHTED",
+      "ranking": {
+        "metric": "SIGNAL_TO_NOISE",
+        "median": false,
+        "biased_variance": false,
+        "fix_low_variance": true,
+        "absolute_sort": false,
+        "ascending": false,
+        "class_of_interest": 0
+      },
+      "randomization": "NO_BALANCE"
+    },
+    {
+      "id": "4.4.0/EXPRESSION_GENE_SET",
+      "input": "expression.json",
+      "form": "EXPRESSION_GENE_SET",
+      "edition": "4.4.0",
+      "normalization": "meandiv",
+      "permutations": 10000,
+      "seed": "12345",
+      "minimum_size": 15,
+      "maximum_size": 100,
+      "weight": "WEIGHTED",
+      "ranking": {
+        "metric": "SIGNAL_TO_NOISE",
+        "median": false,
+        "biased_variance": false,
+        "fix_low_variance": true,
+        "absolute_sort": false,
+        "ascending": false,
+        "class_of_interest": 0
+      }
+    },
+    {
+      "id": "4.3.2/PRERANKED",
+      "input": "preranked.json",
+      "form": "PRERANKED",
+      "edition": "4.3.2",
+      "normalization": "meandiv",
+      "permutations": 10000,
+      "seed": "12345",
+      "minimum_size": 15,
+      "maximum_size": 100,
+      "weight": "WEIGHTED"
+    },
+    {
+      "id": "4.3.2/EXPRESSION_PHENOTYPE",
+      "input": "expression.json",
+      "form": "EXPRESSION_PHENOTYPE",
+      "edition": "4.3.2",
+      "normalization": "meandiv",
+      "permutations": 10000,
+      "seed": "12345",
+      "minimum_size": 15,
+      "maximum_size": 100,
+      "weight": "WEIGHTED",
+      "ranking": {
+        "metric": "SIGNAL_TO_NOISE",
+        "median": false,
+        "biased_variance": false,
+        "fix_low_variance": true,
+        "absolute_sort": false,
+        "ascending": false,
+        "class_of_interest": 0
+      },
+      "randomization": "NO_BALANCE"
+    },
+    {
+      "id": "4.3.2/EXPRESSION_GENE_SET",
+      "input": "expression.json",
+      "form": "EXPRESSION_GENE_SET",
+      "edition": "4.3.2",
+      "normalization": "meandiv",
+      "permutations": 10000,
+      "seed": "12345",
+      "minimum_size": 15,
+      "maximum_size": 100,
+      "weight": "WEIGHTED",
+      "ranking": {
+        "metric": "SIGNAL_TO_NOISE",
+        "median": false,
+        "biased_variance": false,
+        "fix_low_variance": true,
+        "absolute_sort": false,
+        "ascending": false,
+        "class_of_interest": 0
+      }
+    },
+    {
+      "id": "4.3.3/PRERANKED",
+      "input": "preranked.json",
+      "form": "PRERANKED",
+      "edition": "4.3.3",
+      "normalization": "meandiv",
+      "permutations": 10000,
+      "seed": "12345",
+      "minimum_size": 15,
+      "maximum_size": 100,
+      "weight": "WEIGHTED"
+    },
+    {
+      "id": "4.3.3/EXPRESSION_PHENOTYPE",
+      "input": "expression.json",
+      "form": "EXPRESSION_PHENOTYPE",
+      "edition": "4.3.3",
+      "normalization": "meandiv",
+      "permutations": 10000,
+      "seed": "12345",
+      "minimum_size": 15,
+      "maximum_size": 100,
+      "weight": "WEIGHTED",
+      "ranking": {
+        "metric": "SIGNAL_TO_NOISE",
+        "median": false,
+        "biased_variance": false,
+        "fix_low_variance": true,
+        "absolute_sort": false,
+        "ascending": false,
+        "class_of_interest": 0
+      },
+      "randomization": "NO_BALANCE"
+    },
+    {
+      "id": "4.3.3/EXPRESSION_GENE_SET",
+      "input": "expression.json",
+      "form": "EXPRESSION_GENE_SET",
+      "edition": "4.3.3",
+      "normalization": "meandiv",
+      "permutations": 10000,
+      "seed": "12345",
+      "minimum_size": 15,
+      "maximum_size": 100,
+      "weight": "WEIGHTED",
+      "ranking": {
+        "metric": "SIGNAL_TO_NOISE",
+        "median": false,
+        "biased_variance": false,
+        "fix_low_variance": true,
+        "absolute_sort": false,
+        "ascending": false,
+        "class_of_interest": 0
+      }
+    }
+  ]
+}

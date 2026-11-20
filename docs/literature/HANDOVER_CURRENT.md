@@ -1,5 +1,17 @@
 # Current toolbox handover
 
+**Resume here: [qualified native GSEA file workflow and exact next work](GSEA_WORKFLOW_CHECKPOINT_2026-11-20.md).**
+Standalone RUN/VERIFY/REPLAY now pass original-source comparisons, 34 refusal
+controls per JVM, actual cross-host replay and exact literal/float32 transport
+checks. Each of three JVMs matches 668,739 original fields; eight focused tests
+pass. Global registration, source-role review and GSEA catalog admission remain
+open. Totals stay **139 integrations, 1,520 reviewed uses and 1,185 pending**,
+with 823 manifest entries. A completed concurrent cleanup retired 12 historical
+worktrees with verified recovery archives; **20 current worktrees** remain.
+**Separately transfer ignored runtimes, producer JARs and complete private
+evidence.** Both literature reports remain off Pages; no release is created.
+Lower workflow-unfinished and 31/32-worktree statements are retained history.
+
 **Resume here: [native GSEA engine, warnings and exact remaining work](HANDOVER_2026-11-20_GSEA_ENGINE.md).**
 The native prepared-data engine is implemented and included in the normal JAR.
 Ranking, source randomizers and complete null families pass 668,739 exact field
