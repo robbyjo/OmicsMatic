@@ -1,8 +1,9 @@
 # Current toolbox handover
 
 **Handover, 19 November 2026. Start here; the older checkpoints below are
-retained history.** The latest scientific checkpoint is the Scanpy ordered
-file workflow linked below; the latest admitted cumulative catalog is Enrichr. The full
+retained history.** The latest scientific checkpoint is the native Scanpy
+Pearson component; the ordered file workflow is also qualified as linked below.
+The latest admitted cumulative catalog is Enrichr. The full
 250-paper implementation and individual source-review goal is unfinished.
 
 Current admitted totals are **136 new scoped integrations (25 native Java,
@@ -14,13 +15,13 @@ family credit yet.
 
 **Next owner, in order:**
 
-1. Read the current Scanpy workflow checkpoint and verify/restore its saved captures using
+1. Read the native Pearson and current Scanpy workflow checkpoints; verify/restore their saved library/captures using
    the linked proof instructions. Preserve existing attempts; use NEW outputs.
 2. Extend qualification of the remaining useful Scanpy branches/historical
    editions from the 22 actual paper roles, add global CLI dispatch with the
    shared-source compatibility transition, then finish the coverage crosswalk
    and guarded cumulative admission through the Enrichr predecessor. Reuse the
-   qualified native preprocessing API and existing current upstream workflow.
+   qualified native Pearson/preprocessing APIs and existing current upstream workflow.
 3. Continue high-impact gaps and the 1,241 pending individual reviews. Recheck
    current registry/source scope before choosing among SuSiE, GSEA, GCTA,
    edgeR and other candidates; do not add credit from a family name alone.
@@ -39,7 +40,18 @@ Two historical marker-verifier mains still need the exact original 0.3.7 JAR
 identified in the Scanpy checkpoint. Cell Ranger remains excluded. Both
 literature reports remain withheld from Pages; no release has been created.
 
-**Current: [Scanpy ordered file-workflow checkpoint](SCANPY_WORKFLOW_CHECKPOINT_2026-11-19.md).**
+**Current: [native Scanpy Pearson component checkpoint](SCANPY_PEARSON_CHECKPOINT_2026-11-19.md).**
+The new pure-Java float64 matrix kernel retains explicit 1.10.4/1.13.0 zero
+conventions and refuses complete matrices for invalid model arithmetic, even
+when clipping looks finite. All 735 checks pass on each of three JVMs,
+including 720 original-package cases; all three library examples pass.
+Both original reference environments remain unchanged. The small development
+library needs no Python or network; its proof/restorer, guide and transfer paths
+are saved. It does not fit SCT, select HVGs or replace P062's separate count/
+SysVI/marker branches. Broader Scanpy qualification and admission remain open;
+catalog totals stay 136 integrations, 1,462 reviews and 1,241 pending.
+
+**Qualified workflow: [Scanpy ordered file-workflow checkpoint](SCANPY_WORKFLOW_CHECKPOINT_2026-11-19.md).**
 The normal Gradle JAR passed RUN/VERIFY/REPLAY, a 13-step MatrixMarket program
 and a four-step supplied-H5AD program covering 15 distinct operations. All 58
 original array/annotation comparisons agree; 20 Java checks pass on each of
