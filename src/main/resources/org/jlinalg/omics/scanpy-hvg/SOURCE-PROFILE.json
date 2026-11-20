@@ -1,0 +1,143 @@
+{
+  "status": "SOURCE_BOUND_NATIVE_DISPERSION_HVG_COMPONENT",
+  "profiles": [
+    "Scanpy-1.9.3-float64",
+    "Scanpy-1.13.0-float64"
+  ],
+  "flavors": [
+    "seurat",
+    "cell_ranger"
+  ],
+  "reference_stacks": {
+    "1.9.3": {
+      "pandas": "1.5.3",
+      "scanpy": "1.9.3",
+      "anndata": "0.8.0",
+      "numba": "0.57.1",
+      "scipy": "1.10.1",
+      "numpy": "1.23.5",
+      "statsmodels": "0.13.5"
+    },
+    "1.13.0": {
+      "fast-array-utils": "1.5.1",
+      "anndata": "0.13.4",
+      "numba": "0.68.1",
+      "numpy": "2.5.5",
+      "pandas": "3.1.1",
+      "scanpy": "1.13.0",
+      "statsmodels": "0.15.0",
+      "scipy": "1.18.1"
+    }
+  },
+  "source_intake": {
+    "status": "PASS_HVG_PINNED_ORIGINAL_SOURCES_ONLY",
+    "wheels": {
+      "1.9.3": {
+        "bytes": 2028888,
+        "sha256": "e1d9b44067de401bca89ef1932e00bc73019f4d67d3907361044618f53bc3767"
+      },
+      "1.13.0": {
+        "bytes": 2053491,
+        "sha256": "1a93f9d2136f1441ae5dfd3fcdbc3d809f6f15cc6581ab7863cd17c5c4cdd22d"
+      }
+    },
+    "files": {
+      "1.9.3/scanpy/preprocessing/_highly_variable_genes.py": {
+        "bytes": 22235,
+        "sha256": "1ffefcbaa4833bb8228ce1c03c9f07e63afcae1bfaaa41f123f4473afd6e2043"
+      },
+      "1.9.3/scanpy/preprocessing/_utils.py": {
+        "bytes": 3256,
+        "sha256": "95563fb39e7497a109a743eff58680b2116bdd4f9691af0ef02341f545c6e121"
+      },
+      "1.9.3/scanpy-1.9.3.dist-info/LICENSE": {
+        "bytes": 1539,
+        "sha256": "06621ca30f9834bc98b072e7089d920fd2ab7e2d0c048993552fe31836b16425"
+      },
+      "1.13.0/scanpy/preprocessing/_highly_variable_genes.py": {
+        "bytes": 34445,
+        "sha256": "c79db82d2dbfacff59eabb2cccfa657ac1bd9e53ac927c3b253f6832390ee4d3"
+      },
+      "1.13.0/scanpy/preprocessing/_utils.py": {
+        "bytes": 700,
+        "sha256": "9fd225e4690d76563f0322f66b0163620aef8beef3e8c982b4795c8ce7ea454f"
+      },
+      "1.13.0/scanpy-1.13.0.dist-info/licenses/LICENSE": {
+        "bytes": 1568,
+        "sha256": "fb02749e4f251401f2c4023b7a30e71f40a21e138b87025036f74c980cfa63b2"
+      }
+    },
+    "source_patched": false,
+    "scientific_programs_run": false,
+    "new_family_credit": 0
+  },
+  "pandas_group_reductions": {
+    "status": "PASS_ORIGINAL_PANDAS_GROUP_REDUCTIONS_SOURCE_ONLY",
+    "sources": [
+      {
+        "version": "1.5.3",
+        "url": "https://raw.githubusercontent.com/pandas-dev/pandas/v1.5.3/pandas/_libs/groupby.pyx",
+        "bytes": 55654,
+        "sha256": "ab46e3dc3b6fd7f406d6a4c7c910f0368df1bcfddb4937d3cfde1d7286fc5e0b"
+      },
+      {
+        "version": "3.1.1",
+        "url": "https://raw.githubusercontent.com/pandas-dev/pandas/v3.1.1/pandas/_libs/groupby.pyx",
+        "bytes": 77857,
+        "sha256": "0aa4c3f99026d6e292b379272bc584de5769351f2f01dc07b57b7d46cde1940d"
+      }
+    ]
+  },
+  "input": "Explicit float64 dense/CSR logarithmized expression and optional explicit batch categories. Only Seurat applies expm1; Cell Ranger uses supplied values directly.",
+  "native_runtime_dependencies": [
+    "java.base"
+  ],
+  "upstream_runtime_is_reference_only": true,
+  "storage": "Immutable unique-ID features-by-cells CSC container representing the transpose of source cells-by-genes CSR; explicit dense storage declares every zero.",
+  "export": "Explicit DataFrame float64 or AnnData normalized-dispersion float32, after selection; immutable input rather than legacy alias mutation.",
+  "numerical_admission": "Explicit Seurat zero-variance missing annotations retain a named source convention. Other invalid/nonfinite model arithmetic or lost positive terms admit no complete selection, including when aggregation looks finite.",
+  "references": {
+    "status": "ORIGINAL_HVG_CASES_UNMODIFIED_EXPLICIT_REFERENCE_SELECTION",
+    "inputs": {
+      "bytes": 947205,
+      "sha256": "350a0ca673fb9b2d3feace592e89bbf6adea573b065bd37a2d2c675ee999999b"
+    },
+    "selected": {
+      "1.9.3": {
+        "original_capture_root": "hvg-reference-2",
+        "result": {
+          "bytes": 7161940,
+          "sha256": "3ae0ec5777ce3568018cfb6e9840c94e48ee2f8ec96e79977f19cd41efda2e54"
+        },
+        "cases": 1280,
+        "original_returns": 778,
+        "runtime_entries_unchanged": 25252
+      },
+      "1.13.0": {
+        "original_capture_root": "hvg-reference-3",
+        "result": {
+          "bytes": 10257172,
+          "sha256": "7d11ed1b259180eba0c1f5e6b4e7ac0044b2cc8b0351d580f9c90510bf5c9464"
+        },
+        "cases": 1280,
+        "original_returns": 854,
+        "runtime_entries_unchanged": 19048
+      }
+    },
+    "retained_attempts": {
+      "hvg_reference_1": "Wrapper rejected old setup-receipt format before scientific imports/analysis.",
+      "hvg_reference_2_current": "Bare batch accessor refused by current original API; all 1280 raw outcomes retained separately.",
+      "hvg_reference_3_runtime_receipt": "Current-edition capture only; its generic status label is not used to infer edition count."
+    },
+    "source_patched": false,
+    "original_results_modified": false,
+    "whole_tool_qualified": false
+  },
+  "fixture": {
+    "bytes": 1185342,
+    "sha256": "eade1481937ee1a2d93be886ed5096d3447814d6109590e9fe2670fac36e1794"
+  },
+  "new_family_credit": 0,
+  "whole_tool_qualified": false,
+  "whole_goal_complete": false
+}

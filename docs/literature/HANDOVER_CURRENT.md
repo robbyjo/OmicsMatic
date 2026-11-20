@@ -1,5 +1,15 @@
 # Current toolbox handover
 
+**Latest: [native dispersion-based Scanpy HVGs](SCANPY_HVG_CHECKPOINT_2026-11-19.md).**
+Explicit float64 Seurat/Cell-Ranger-flavor selection now supports dense/CSR,
+batching, version-specific missing/tie rules and source export precision.
+The normal JAR and isolated Java library each pass 2,574 checks on three JVMs,
+including 2,560 original-package cases; the examples pass without Python.
+All 20,210 previous class payloads remain unchanged. Earlier wrapper/binding
+attempts and the corrected sparse-work guard failure are retained. Broader
+branches and cumulative admission remain open; counts stay **136 integrations,
+1,462 reviewed uses and 1,241 pending**. Reuse the native API; do not restart it.
+
 **Latest: [global Scanpy command and 22-paper crosswalk](SCANPY_DISPATCH_CHECKPOINT_2026-11-19.md).**
 The normal JAR now runs `scanpy-tools` through its main entry point.
 RUN/VERIFY/REPLAY, 52 original-reference comparisons and 62 existing tests on
