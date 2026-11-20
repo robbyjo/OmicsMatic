@@ -1,5 +1,21 @@
 # Current literature warnings and required actions
 
+## SuSiE: three original editions and 20 reviewed source roles
+
+250 papers, 446 named families, 2,704 observations, 1,503 individually reviewed positive uses and 1,201 awaiting individual review. There are 138 new scoped integrations (25 native Java and 113 upstream), 259 missing and 37 method-overlap definitions; 141 integrations include three existing adapters. All 1,483 earlier reviews remain exact. The full implementation and semantic-review goal remains open.
+
+Standalone Java file workflow calling original susieR 0.11.92, 0.12.35 and 0.14.2 with exact private R 4.6.1 profiles. Individual design/phenotype, version-specific RSS and sufficient-statistic interfaces; raw input/original RDS capture, RUN, R-free structural VERIFY and original-runtime REPLAY. Invoke org.jlinalg.cli.SusieWorkflowCli from a current source-built JAR. The native global susie command is separate, with no automatic fallback; global susie-tools is not yet added.
+
+Twenty source roles distinguish fitting/hosted analysis from three external-result reuse roles. Two missed observations are added and the unreviewed P235 orangutan-name false positive is removed with exact-before preservation. No author standalone function is inferred from a method name. Exact 0.11.43 is unavailable in this adapter (SKIP3); host wrappers, original author inputs/settings/dependencies, allele/locus/LD preparation, sequential selection, FINEMAP consensus, CLPP/coloc and whole author workflows remain explicit gaps. Linux R scientific deployment is not qualified. Build current source; the published 0.4.0 binary predates this entry point.
+
+SKIP3: skip dependent analysis/audit when an exact permitted source, runtime, package or input is missing or installation is forbidden; name what must be supplied and retain the skip. FAIL2: no complete result; preserve raw inputs, original model objects, partials, warnings and diagnostics, correct invalid schema/data, integrity, model arithmetic, convergence, capacity or process causes and retry NEW output. Never silently repair IDs, alleles, populations, source editions, thresholds, nonfinite values or algorithms. Inspect WARNINGS.md and analysis-status.json. Structural VERIFY does not independently refit R models or authenticate the host. Two historical marker-verifier JAR prerequisites remain SKIP3. Cell Ranger stays excluded. Both literature reports stay withheld from Pages; no release is created.
+
+Read [the source crosswalk and exact scope](../SUSIE_CATALOG_INTEGRATION.md).
+
+<details><summary>Catalog before SuSiE admission (historical)</summary>
+
+# Current literature warnings and required actions
+
 ## Scanpy: bounded current workflow, native APIs and 22 source roles
 
 250 papers, 446 named families, 2,703 observations, 1,483 individually reviewed positive uses and 1,220 awaiting individual review. There are 137 new scoped integrations (25 native Java and 112 upstream), 259 missing and 38 method-overlap definitions; 140 integrations include three existing adapters. Twenty-one Scanpy reviews are appended without new observations; all 1,462 earlier reviews remain exact. Supplementary native components receive no duplicate family credit. The full implementation and semantic-review goal remains open.
@@ -1562,6 +1578,8 @@ output path. Disconnected infinite pseudotime values remain present. LEARN
 does not admit a pseudotime result. Do not infer roots or repair values to
 conceal failures. Full Batchelor, study reproduction and biological accuracy
 remain unproven; the250-paper goal remains active.
+
+</details>
 
 </details>
 

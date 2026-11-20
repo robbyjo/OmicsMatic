@@ -1,5 +1,17 @@
 # Current toolbox handover
 
+**Current: [SuSiE cumulative admission and remaining work, 20 November 2026](SUSIE_CATALOG_CHECKPOINT_2026-11-20.md).**
+The three-edition original-runtime workflow and 20 source roles are admitted.
+P073/P203 are added; the unreviewed P235 orangutan-name false positive is
+removed with exact-before preservation. All 1,483 earlier reviews remain exact.
+Totals are **138 scoped integrations, 1,503 reviewed uses and 1,201 pending**
+of 2,704 observations. Formal plan/inspect/apply/fresh verify, 25 controls per
+host and desktop/mobile checks pass; the manifest has 818 clean entries.
+All 24 worktrees and unpublished source/notice/UI revisions are preserved.
+Global SuSiE dispatch and the full implementation/review goal remain open.
+The checkpoint gives current warnings, exact resume paths and transfer needs;
+older admission-open handovers below are superseded.
+
 **Current handover: [20 November 2026: remaining work, warnings and resume paths](HANDOVER_2026-11-20.md).**
 The original-SuSiE standalone adapter, three edition profiles, runnable
 examples and saved qualification are ready for review. All 73 checks pass

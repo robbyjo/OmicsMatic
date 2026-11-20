@@ -8015,11 +8015,12 @@
     "name": "SuSiE",
     "pattern": "(?<![A-Za-z0-9_])(?:SuSiE(?:[-_ ]?(?:RSS|R))?|susieR)(?![A-Za-z0-9_])",
     "role": "Bayesian fine-mapping and credible sets",
-    "current_coverage": "method-overlap",
-    "existing_source": "src/main/java/org/jlinalg/susie/Susie.java",
-    "coverage_note": "Related native method; upstream software options and numerical equivalence require separate validation.",
-    "paper_count": 19,
+    "current_coverage": "upstream-adapter-validated",
+    "existing_source": "src/main/java/org/jlinalg/cli/SusieWorkflowCli.java",
+    "coverage_note": "Standalone Java file workflow calling original susieR 0.11.92, 0.12.35 and 0.14.2 with exact private R 4.6.1 profiles. Individual design/phenotype, version-specific RSS and sufficient-statistic interfaces; raw input/original RDS capture, RUN, R-free structural VERIFY and original-runtime REPLAY. Invoke org.jlinalg.cli.SusieWorkflowCli from a current source-built JAR. The native global susie command is separate, with no automatic fallback; global susie-tools is not yet added. Twenty source roles distinguish fitting/hosted analysis from three external-result reuse roles. Two missed observations are added and the unreviewed P235 orangutan-name false positive is removed with exact-before preservation. No author standalone function is inferred from a method name. Exact 0.11.43 is unavailable in this adapter (SKIP3); host wrappers, original author inputs/settings/dependencies, allele/locus/LD preparation, sequential selection, FINEMAP consensus, CLPP/coloc and whole author workflows remain explicit gaps. Linux R scientific deployment is not qualified. Build current source; the published 0.4.0 binary predates this entry point.",
+    "paper_count": 20,
     "papers": [
+      "P073",
       "P090",
       "P092",
       "P095",
@@ -8034,16 +8035,698 @@
       "P181",
       "P186",
       "P200",
+      "P203",
       "P219",
       "P221",
       "P234",
-      "P235",
       "P246"
     ],
-    "implementation_status": "method-overlap",
-    "implementation_source": "src/main/java/org/jlinalg/susie/Susie.java",
-    "implementation_scope": "Related native method; upstream software options and numerical equivalence require separate validation.",
-    "validation_note": "Existing overlap/adapters require paper-specific option checks; missing integrations remain pending."
+    "implementation_status": "upstream-adapter-validated",
+    "implementation_source": "src/main/java/org/jlinalg/cli/SusieWorkflowCli.java",
+    "implementation_scope": "Standalone Java file workflow calling original susieR 0.11.92, 0.12.35 and 0.14.2 with exact private R 4.6.1 profiles. Individual design/phenotype, version-specific RSS and sufficient-statistic interfaces; raw input/original RDS capture, RUN, R-free structural VERIFY and original-runtime REPLAY. Invoke org.jlinalg.cli.SusieWorkflowCli from a current source-built JAR. The native global susie command is separate, with no automatic fallback; global susie-tools is not yet added. Twenty source roles distinguish fitting/hosted analysis from three external-result reuse roles. Two missed observations are added and the unreviewed P235 orangutan-name false positive is removed with exact-before preservation. No author standalone function is inferred from a method name. Exact 0.11.43 is unavailable in this adapter (SKIP3); host wrappers, original author inputs/settings/dependencies, allele/locus/LD preparation, sequential selection, FINEMAP consensus, CLPP/coloc and whole author workflows remain explicit gaps. Linux R scientific deployment is not qualified. Build current source; the published 0.4.0 binary predates this entry point.",
+    "validation_note": "41 independent original model-object comparisons with numeric difference zero; 38 converged accepted, three nonconverged refused. 73 capture/contract checks per JVM on Windows21/25/Linux21; actual Windows original-runtime REPLAY and five input-interface examples. No Linux R fitting qualification.",
+    "previous_method_overlap_source": "src/main/java/org/jlinalg/susie/Susie.java",
+    "source_roles_reviewed": 20,
+    "source_role_coverage": "susie-source-role-coverage.json",
+    "current_documentation": "docs/literature/SUSIE_CATALOG_INTEGRATION.md",
+    "workflow_qualification": "../susie-workflow-checks/QUALIFICATION.json",
+    "source_build_required": true,
+    "released_binary_contains_workflow_adapter": false,
+    "public_CLI_available": true,
+    "global_CLI_dispatch_available": false,
+    "qualified_component_entrypoints": [
+      "org.jlinalg.cli.SusieWorkflowCli --request RUN/VERIFY/REPLAY",
+      "org.jlinalg.cli.SusieWorkflowCli --verify"
+    ],
+    "paper_role_qualification": {
+      "P073": {
+        "role": "fine-mapping-result-description",
+        "declared_host": "direct-unspecified",
+        "reported_editions": [],
+        "standalone_susieR_function_named": false,
+        "use_summary": "Used SuSiE fine-mapping to identify the most likely causal variants for HNRNPLL cis-eQTL/PTPRC trans-sQTL signals in naive CD4+ and CD4+ TEM cells.",
+        "required_caution": "This results paragraph supports an analysis use missed by extraction. Edition, input interface, LD, priors and settings are not specified; colocalization H4 is a separate quantity.",
+        "supplied_input_fit_counterparts": [],
+        "counterparts_are_not_author_function_attribution": true,
+        "reported_package_edition_source_profiles": [],
+        "unestablished_reported_editions": [],
+        "author_R_and_dependency_profile_recovered": false,
+        "supplied_results_resource_or_selection_qualified": false,
+        "remaining_author_roles": [
+          "Input/function attribution is unspecified; no individual/RSS/sufficient interface is assigned to the author.",
+          "No literal susieR edition is established by these source anchors; do not select a historical profile on behalf of the author.",
+          "This results paragraph supports an analysis use missed by extraction. Edition, input interface, LD, priors and settings are not specified; colocalization H4 is a separate quantity.",
+          "Original author inputs, runtime dependencies, complete settings and the whole reported workflow remain unqualified."
+        ],
+        "full_reported_role_qualified": false,
+        "complete_author_workflow_qualified": false,
+        "historical_package_parity": false,
+        "exact_author_settings_established": false,
+        "author_runtime_executed": false,
+        "whole_paper_reproduced": false
+      },
+      "P090": {
+        "role": "functionally-informed-summary-fine-mapping",
+        "declared_host": "PolyFun",
+        "reported_editions": [
+          {
+            "paragraph_index": 26,
+            "literal": "0.11.92",
+            "source_context": "SuSiE v.0.11.92",
+            "refers_to": "susieR"
+          }
+        ],
+        "standalone_susieR_function_named": false,
+        "use_summary": "Used PolyFun 2020-11-14 priors with SuSiE 0.11.92, up to five causal variants and 95% credible sets, separately for DCM GWAS and MTAG loci; LD came from 10,000 UKB European participants.",
+        "required_caution": "PolyFun prior estimation, reference construction, GWAS/MTAG locus populations, cross-analysis aggregation and annotation remain distinct from a supplied-prior standalone fit.",
+        "supplied_input_fit_counterparts": [
+          {
+            "model": "RSS_Z",
+            "function": "susie_rss",
+            "relation": "Supplied aligned z/LD counterpart; the paper does not name this standalone function. Author statistics/LD preparation and hosted calls are unqualified."
+          }
+        ],
+        "counterparts_are_not_author_function_attribution": true,
+        "reported_package_edition_source_profiles": [
+          "SuSiE-0.11.92-R4.6.1"
+        ],
+        "unestablished_reported_editions": [],
+        "author_R_and_dependency_profile_recovered": false,
+        "supplied_results_resource_or_selection_qualified": false,
+        "remaining_author_roles": [
+          "The named hosting stack is not executed by this standalone adapter.",
+          "PolyFun prior estimation, reference construction, GWAS/MTAG locus populations, cross-analysis aggregation and annotation remain distinct from a supplied-prior standalone fit.",
+          "Original author inputs, runtime dependencies, complete settings and the whole reported workflow remain unqualified."
+        ],
+        "full_reported_role_qualified": false,
+        "complete_author_workflow_qualified": false,
+        "historical_package_parity": false,
+        "exact_author_settings_established": false,
+        "author_runtime_executed": false,
+        "whole_paper_reproduced": false
+      },
+      "P092": {
+        "role": "harmonized-summary-fine-mapping",
+        "declared_host": "direct",
+        "reported_editions": [
+          {
+            "paragraph_index": 59,
+            "literal": "0.12.35",
+            "source_context": "susieR (v0.12.35)",
+            "refers_to": "susieR"
+          }
+        ],
+        "standalone_susieR_function_named": false,
+        "use_summary": "Fine-mapped Crohn disease summary statistics with susieR 0.12.35, a uniform prior and up to ten causal variants; compared UKBB and 1000 Genomes European LD references after mapgen harmonization and LDetect block selection.",
+        "required_caution": "Mismatched variants and the chromosome-6 25–35 Mb region were excluded. Reference choice, harmonization and locus selection are author preparation, not inferred or repeated by the fit adapter.",
+        "supplied_input_fit_counterparts": [
+          {
+            "model": "RSS_Z",
+            "function": "susie_rss",
+            "relation": "Supplied aligned z/LD counterpart; the paper does not name this standalone function. Author statistics/LD preparation and hosted calls are unqualified."
+          }
+        ],
+        "counterparts_are_not_author_function_attribution": true,
+        "reported_package_edition_source_profiles": [
+          "SuSiE-0.12.35-R4.6.1"
+        ],
+        "unestablished_reported_editions": [],
+        "author_R_and_dependency_profile_recovered": false,
+        "supplied_results_resource_or_selection_qualified": false,
+        "remaining_author_roles": [
+          "Mismatched variants and the chromosome-6 25–35 Mb region were excluded. Reference choice, harmonization and locus selection are author preparation, not inferred or repeated by the fit adapter.",
+          "Original author inputs, runtime dependencies, complete settings and the whole reported workflow remain unqualified."
+        ],
+        "full_reported_role_qualified": false,
+        "complete_author_workflow_qualified": false,
+        "historical_package_parity": false,
+        "exact_author_settings_established": false,
+        "author_runtime_executed": false,
+        "whole_paper_reproduced": false
+      },
+      "P095": {
+        "role": "received-fine-mapped-eqtl-results",
+        "declared_host": "result-reuse",
+        "reported_editions": [],
+        "standalone_susieR_function_named": false,
+        "use_summary": "Reused GTEx v8 SuSiE-fine-mapped eQTLs from Avsec et al. to benchmark Enformer effect direction; selected EBV-transformed lymphocyte variants with PIP greater than 0.9 and removed conflicting cis-gene directions.",
+        "required_caution": "No new SuSiE fit is established here. The supplied results, strict PIP selection, direction exclusions, Enformer track and bootstrap evaluation are separate from model fitting.",
+        "supplied_input_fit_counterparts": [],
+        "counterparts_are_not_author_function_attribution": true,
+        "reported_package_edition_source_profiles": [],
+        "unestablished_reported_editions": [],
+        "author_R_and_dependency_profile_recovered": false,
+        "supplied_results_resource_or_selection_qualified": false,
+        "remaining_author_roles": [
+          "Reuse of external fine-mapped results: no new SuSiE fit is established; the fit adapter does not retrieve or qualify those resources or downstream selection.",
+          "No literal susieR edition is established by these source anchors; do not select a historical profile on behalf of the author.",
+          "No new SuSiE fit is established here. The supplied results, strict PIP selection, direction exclusions, Enformer track and bootstrap evaluation are separate from model fitting.",
+          "Original author inputs, runtime dependencies, complete settings and the whole reported workflow remain unqualified."
+        ],
+        "full_reported_role_qualified": false,
+        "complete_author_workflow_qualified": false,
+        "historical_package_parity": false,
+        "exact_author_settings_established": false,
+        "author_runtime_executed": false,
+        "whole_paper_reproduced": false
+      },
+      "P105": {
+        "role": "summary-fine-mapping-and-signal-colocalization",
+        "declared_host": "direct-and-coloc",
+        "reported_editions": [
+          {
+            "paragraph_index": 50,
+            "literal": "0.11.92",
+            "source_context": "SuSiE (v.0.11.92",
+            "refers_to": "susieR"
+          }
+        ],
+        "standalone_susieR_function_named": false,
+        "use_summary": "Used SuSiE 0.11.92 with default configurations and ten putative causal variants per locus, using LDstore dosage LD from 171,085 unrelated BBJ participants; used SuSiE signals in multi-signal coloc comparisons.",
+        "required_caution": "Do not silently alter the reported KING threshold, LD preparation, locus boundaries or defaults. Signal colocalization, annotation and HP-stratified analyses require their own declared settings.",
+        "supplied_input_fit_counterparts": [
+          {
+            "model": "RSS_Z",
+            "function": "susie_rss",
+            "relation": "Supplied aligned z/LD counterpart; the paper does not name this standalone function. Author statistics/LD preparation and hosted calls are unqualified."
+          }
+        ],
+        "counterparts_are_not_author_function_attribution": true,
+        "reported_package_edition_source_profiles": [
+          "SuSiE-0.11.92-R4.6.1"
+        ],
+        "unestablished_reported_editions": [],
+        "author_R_and_dependency_profile_recovered": false,
+        "supplied_results_resource_or_selection_qualified": false,
+        "remaining_author_roles": [
+          "Do not silently alter the reported KING threshold, LD preparation, locus boundaries or defaults. Signal colocalization, annotation and HP-stratified analyses require their own declared settings.",
+          "Original author inputs, runtime dependencies, complete settings and the whole reported workflow remain unqualified."
+        ],
+        "full_reported_role_qualified": false,
+        "complete_author_workflow_qualified": false,
+        "historical_package_parity": false,
+        "exact_author_settings_established": false,
+        "author_runtime_executed": false,
+        "whole_paper_reproduced": false
+      },
+      "P108": {
+        "role": "univariate-predictive-regression",
+        "declared_host": "FUSION-and-isoTWAS",
+        "reported_editions": [],
+        "standalone_susieR_function_named": false,
+        "use_summary": "Trained per-isoform and gene-level SuSiE predictive models alongside elastic-net and BLUP alternatives, selecting predictive models by cross-validated adjusted R-squared within the isoTWAS/FUSION framework.",
+        "required_caution": "This is predictive regression, not only a summary fine-mapping task. Model selection, five-fold cross-validation, gene windows, isoform aggregation and the CV R-squared >=0.01 rule are not provided by one standalone fit.",
+        "supplied_input_fit_counterparts": [
+          {
+            "model": "INDIVIDUAL",
+            "function": "susie",
+            "relation": "Supplied design/phenotype regression counterpart; no host, phenotype preparation, cross-validation or null-shuffle orchestration."
+          }
+        ],
+        "counterparts_are_not_author_function_attribution": true,
+        "reported_package_edition_source_profiles": [],
+        "unestablished_reported_editions": [],
+        "author_R_and_dependency_profile_recovered": false,
+        "supplied_results_resource_or_selection_qualified": false,
+        "remaining_author_roles": [
+          "The named hosting stack is not executed by this standalone adapter.",
+          "No literal susieR edition is established by these source anchors; do not select a historical profile on behalf of the author.",
+          "This is predictive regression, not only a summary fine-mapping task. Model selection, five-fold cross-validation, gene windows, isoform aggregation and the CV R-squared >=0.01 rule are not provided by one standalone fit.",
+          "Original author inputs, runtime dependencies, complete settings and the whole reported workflow remain unqualified."
+        ],
+        "full_reported_role_qualified": false,
+        "complete_author_workflow_qualified": false,
+        "historical_package_parity": false,
+        "exact_author_settings_established": false,
+        "author_runtime_executed": false,
+        "whole_paper_reproduced": false
+      },
+      "P127": {
+        "role": "fine-mapped-variant-reuse-for-conditioning",
+        "declared_host": "result-reuse",
+        "reported_editions": [],
+        "standalone_susieR_function_named": false,
+        "use_summary": "Used the highest conditional PIP variant from each SuSiE credible set as conditioning SNPs in REMETA/REGENIE comparisons, and generated REGENIE conditional summary statistics for a REMETA analysis.",
+        "required_caution": "The named results paragraphs do not establish a standalone SuSiE runtime, edition, input interface or fitting settings. REMETA/REGENIE conditioning and buffer/LD-threshold comparisons remain separate.",
+        "supplied_input_fit_counterparts": [],
+        "counterparts_are_not_author_function_attribution": true,
+        "reported_package_edition_source_profiles": [],
+        "unestablished_reported_editions": [],
+        "author_R_and_dependency_profile_recovered": false,
+        "supplied_results_resource_or_selection_qualified": false,
+        "remaining_author_roles": [
+          "Reuse of external fine-mapped results: no new SuSiE fit is established; the fit adapter does not retrieve or qualify those resources or downstream selection.",
+          "No literal susieR edition is established by these source anchors; do not select a historical profile on behalf of the author.",
+          "The named results paragraphs do not establish a standalone SuSiE runtime, edition, input interface or fitting settings. REMETA/REGENIE conditioning and buffer/LD-threshold comparisons remain separate.",
+          "Original author inputs, runtime dependencies, complete settings and the whole reported workflow remain unqualified."
+        ],
+        "full_reported_role_qualified": false,
+        "complete_author_workflow_qualified": false,
+        "historical_package_parity": false,
+        "exact_author_settings_established": false,
+        "author_runtime_executed": false,
+        "whole_paper_reproduced": false
+      },
+      "P151": {
+        "role": "summary-fine-mapping-with-explicit-fallback",
+        "declared_host": "multiCOGS",
+        "reported_editions": [],
+        "standalone_susieR_function_named": false,
+        "use_summary": "Applied susieR to summary-imputed GWAS blocks with minimum P <1e-6; passed SNP probabilities for detected 95% credible-set signals to multiCOGS. Other blocks or runs with no qualifying signals used a separate single-causal-variable approach.",
+        "required_caution": "Preserve the reported fallback as a distinct author algorithm; no automatic substitute is implemented. Per-signal probabilities must not be silently replaced by marginal PIPs. Imputation and multiCOGS scoring are separate.",
+        "supplied_input_fit_counterparts": [
+          {
+            "model": "RSS_Z",
+            "function": "susie_rss",
+            "relation": "Supplied aligned z/LD counterpart; the paper does not name this standalone function. Author statistics/LD preparation and hosted calls are unqualified."
+          }
+        ],
+        "counterparts_are_not_author_function_attribution": true,
+        "reported_package_edition_source_profiles": [],
+        "unestablished_reported_editions": [],
+        "author_R_and_dependency_profile_recovered": false,
+        "supplied_results_resource_or_selection_qualified": false,
+        "remaining_author_roles": [
+          "The named hosting stack is not executed by this standalone adapter.",
+          "No literal susieR edition is established by these source anchors; do not select a historical profile on behalf of the author.",
+          "Preserve the reported fallback as a distinct author algorithm; no automatic substitute is implemented. Per-signal probabilities must not be silently replaced by marginal PIPs. Imputation and multiCOGS scoring are separate.",
+          "Original author inputs, runtime dependencies, complete settings and the whole reported workflow remain unqualified."
+        ],
+        "full_reported_role_qualified": false,
+        "complete_author_workflow_qualified": false,
+        "historical_package_parity": false,
+        "exact_author_settings_established": false,
+        "author_runtime_executed": false,
+        "whole_paper_reproduced": false
+      },
+      "P153": {
+        "role": "received-fine-mapped-benchmark-results",
+        "declared_host": "result-reuse",
+        "reported_editions": [],
+        "standalone_susieR_function_named": false,
+        "use_summary": "Reused eQTL Catalogue V7 and Finucane-laboratory UKB SuSiE results to benchmark enhancer/gene prediction; applied distinct >50% eQTL, >10% noncoding GWAS and >50% coding-variant PIP criteria.",
+        "required_caution": "No new SuSiE fit is reported. Retain the different input resources, phenotype/trait populations, strict PIP cuts and 500-kb credible-set/gene linking rule.",
+        "supplied_input_fit_counterparts": [],
+        "counterparts_are_not_author_function_attribution": true,
+        "reported_package_edition_source_profiles": [],
+        "unestablished_reported_editions": [],
+        "author_R_and_dependency_profile_recovered": false,
+        "supplied_results_resource_or_selection_qualified": false,
+        "remaining_author_roles": [
+          "Reuse of external fine-mapped results: no new SuSiE fit is established; the fit adapter does not retrieve or qualify those resources or downstream selection.",
+          "No literal susieR edition is established by these source anchors; do not select a historical profile on behalf of the author.",
+          "No new SuSiE fit is reported. Retain the different input resources, phenotype/trait populations, strict PIP cuts and 500-kb credible-set/gene linking rule.",
+          "Original author inputs, runtime dependencies, complete settings and the whole reported workflow remain unqualified."
+        ],
+        "full_reported_role_qualified": false,
+        "complete_author_workflow_qualified": false,
+        "historical_package_parity": false,
+        "exact_author_settings_established": false,
+        "author_runtime_executed": false,
+        "whole_paper_reproduced": false
+      },
+      "P157": {
+        "role": "multi-tool-consensus-fine-mapping-and-colocalization",
+        "declared_host": "direct-and-coloc",
+        "reported_editions": [
+          {
+            "paragraph_index": 43,
+            "literal": "0.11.43",
+            "source_context": "susieR v.0.11.43",
+            "refers_to": "susieR"
+          }
+        ],
+        "standalone_susieR_function_named": false,
+        "use_summary": "Used susieR 0.11.43 with summary statistics and in-sample covariate-adjusted LD, five effects, and no minimum-P screening of genes. Reported the minimum FINEMAP/SuSiE PIP and used pure credible-set combinations for SuSiE-coloc comparisons.",
+        "required_caution": "The exact 0.11.43 source is not established by adjacent CRAN editions. FINEMAP minimum-PIP consensus, purity filtering, GTEx result reuse, CLPP enrichment/permutations and conditional sample restrictions remain separate.",
+        "supplied_input_fit_counterparts": [
+          {
+            "model": "RSS_Z",
+            "function": "susie_rss",
+            "relation": "Supplied aligned z/LD counterpart; the paper does not name this standalone function. Author statistics/LD preparation and hosted calls are unqualified."
+          }
+        ],
+        "counterparts_are_not_author_function_attribution": true,
+        "reported_package_edition_source_profiles": [],
+        "unestablished_reported_editions": [
+          "0.11.43"
+        ],
+        "author_R_and_dependency_profile_recovered": false,
+        "supplied_results_resource_or_selection_qualified": false,
+        "remaining_author_roles": [
+          "Exact original 0.11.43 source/runtime is unestablished; explicit profile requests are SKIP3. No adjacent-version substitution.",
+          "The exact 0.11.43 source is not established by adjacent CRAN editions. FINEMAP minimum-PIP consensus, purity filtering, GTEx result reuse, CLPP enrichment/permutations and conditional sample restrictions remain separate.",
+          "Original author inputs, runtime dependencies, complete settings and the whole reported workflow remain unqualified."
+        ],
+        "full_reported_role_qualified": false,
+        "complete_author_workflow_qualified": false,
+        "historical_package_parity": false,
+        "exact_author_settings_established": false,
+        "author_runtime_executed": false,
+        "whole_paper_reproduced": false
+      },
+      "P168": {
+        "role": "sequential-component-count-fine-mapping",
+        "declared_host": "direct",
+        "reported_editions": [
+          {
+            "paragraph_index": 50,
+            "literal": "0.14.2",
+            "source_context": "susieR (v.0.14.2)",
+            "refers_to": "susieR"
+          }
+        ],
+        "standalone_susieR_function_named": false,
+        "use_summary": "Used susieR 0.14.2 on integrated GWAS/ExWAS regions, sequentially considering one through ten credible sets and retaining the largest approximately independent set of lead variants with maximum r-squared <0.25.",
+        "required_caution": "Exonic/imputed variant selection, 690-participant LD construction, iterative choice of component count and corrected lead-significance filtering are explicit author preparation/post-processing, not one fixed-L fit.",
+        "supplied_input_fit_counterparts": [
+          {
+            "model": "RSS_Z",
+            "function": "susie_rss",
+            "relation": "Supplied aligned z/LD counterpart; the paper does not name this standalone function. Author statistics/LD preparation and hosted calls are unqualified."
+          }
+        ],
+        "counterparts_are_not_author_function_attribution": true,
+        "reported_package_edition_source_profiles": [
+          "SuSiE-0.14.2-R4.6.1"
+        ],
+        "unestablished_reported_editions": [],
+        "author_R_and_dependency_profile_recovered": false,
+        "supplied_results_resource_or_selection_qualified": false,
+        "remaining_author_roles": [
+          "Exonic/imputed variant selection, 690-participant LD construction, iterative choice of component count and corrected lead-significance filtering are explicit author preparation/post-processing, not one fixed-L fit.",
+          "Original author inputs, runtime dependencies, complete settings and the whole reported workflow remain unqualified."
+        ],
+        "full_reported_role_qualified": false,
+        "complete_author_workflow_qualified": false,
+        "historical_package_parity": false,
+        "exact_author_settings_established": false,
+        "author_runtime_executed": false,
+        "whole_paper_reproduced": false
+      },
+      "P169": {
+        "role": "functionally-informed-summary-fine-mapping",
+        "declared_host": "PolyFun",
+        "reported_editions": [
+          {
+            "paragraph_index": 39,
+            "literal": "0.11.92",
+            "source_context": "susieR27 v0.11.92",
+            "refers_to": "susieR"
+          }
+        ],
+        "standalone_susieR_function_named": false,
+        "use_summary": "Fine-mapped CRC loci with PolyFun 1.4.1 and susieR 0.11.92 using annotation-based variant priors and Genomics England LD. Chose L from the number of independent variants, with L=2 for a single independent signal.",
+        "required_caution": "Preserve the results/methods difference between cumulative PIP >0.95 and reaching 0.95, and the individual PIP >0.001 rule. These do not define a replacement for source credible sets; PolyFun and locus/reference preparation remain separate.",
+        "supplied_input_fit_counterparts": [
+          {
+            "model": "RSS_Z",
+            "function": "susie_rss",
+            "relation": "Supplied aligned z/LD counterpart; the paper does not name this standalone function. Author statistics/LD preparation and hosted calls are unqualified."
+          }
+        ],
+        "counterparts_are_not_author_function_attribution": true,
+        "reported_package_edition_source_profiles": [
+          "SuSiE-0.11.92-R4.6.1"
+        ],
+        "unestablished_reported_editions": [],
+        "author_R_and_dependency_profile_recovered": false,
+        "supplied_results_resource_or_selection_qualified": false,
+        "remaining_author_roles": [
+          "The named hosting stack is not executed by this standalone adapter.",
+          "Preserve the results/methods difference between cumulative PIP >0.95 and reaching 0.95, and the individual PIP >0.001 rule. These do not define a replacement for source credible sets; PolyFun and locus/reference preparation remain separate.",
+          "Original author inputs, runtime dependencies, complete settings and the whole reported workflow remain unqualified."
+        ],
+        "full_reported_role_qualified": false,
+        "complete_author_workflow_qualified": false,
+        "historical_package_parity": false,
+        "exact_author_settings_established": false,
+        "author_runtime_executed": false,
+        "whole_paper_reproduced": false
+      },
+      "P181": {
+        "role": "hosted-individual-level-fine-mapping-and-pip-colocalization",
+        "declared_host": "tensorQTL-cis_susie",
+        "reported_editions": [],
+        "standalone_susieR_function_named": false,
+        "use_summary": "Ran SuSiE via tensorQTL cis_susie for the strongest RNA phenotype per gene in each GTEx tissue, then used 95% credible-set PIPs for functional enrichment and eCAVIAR-style xQTL/FinnGen CLPP.",
+        "required_caution": "A standalone susieR fit does not qualify tensorQTL hosting. Preserve chromosome/position/REF/ALT matching, shared-variant PIP products and CLPP >0.01; this CLPP is not coloc H4.",
+        "supplied_input_fit_counterparts": [
+          {
+            "model": "INDIVIDUAL",
+            "function": "susie",
+            "relation": "Supplied design/phenotype regression counterpart; no host, phenotype preparation, cross-validation or null-shuffle orchestration."
+          }
+        ],
+        "counterparts_are_not_author_function_attribution": true,
+        "reported_package_edition_source_profiles": [],
+        "unestablished_reported_editions": [],
+        "author_R_and_dependency_profile_recovered": false,
+        "supplied_results_resource_or_selection_qualified": false,
+        "remaining_author_roles": [
+          "The named hosting stack is not executed by this standalone adapter.",
+          "No literal susieR edition is established by these source anchors; do not select a historical profile on behalf of the author.",
+          "A standalone susieR fit does not qualify tensorQTL hosting. Preserve chromosome/position/REF/ALT matching, shared-variant PIP products and CLPP >0.01; this CLPP is not coloc H4.",
+          "Original author inputs, runtime dependencies, complete settings and the whole reported workflow remain unqualified."
+        ],
+        "full_reported_role_qualified": false,
+        "complete_author_workflow_qualified": false,
+        "historical_package_parity": false,
+        "exact_author_settings_established": false,
+        "author_runtime_executed": false,
+        "whole_paper_reproduced": false
+      },
+      "P186": {
+        "role": "gwas-locus-fine-mapping",
+        "declared_host": "direct",
+        "reported_editions": [
+          {
+            "paragraph_index": 10,
+            "literal": "0.12.35",
+            "source_context": "SUSIE v.0.12.35",
+            "refers_to": "susieR"
+          }
+        ],
+        "standalone_susieR_function_named": false,
+        "use_summary": "Fine-mapped genome-wide significant FinnGen female-cohort regions using SuSiE 0.12.35 and used good-quality credible sets to define independent loci after additive and recessive REGENIE analyses.",
+        "required_caution": "The paragraph does not recover the good-quality rule, L, LD source or exact fit arguments. REGENIE models, case/control composition and recessive eligibility are not SuSiE defaults.",
+        "supplied_input_fit_counterparts": [
+          {
+            "model": "RSS_Z",
+            "function": "susie_rss",
+            "relation": "Supplied aligned z/LD counterpart; the paper does not name this standalone function. Author statistics/LD preparation and hosted calls are unqualified."
+          }
+        ],
+        "counterparts_are_not_author_function_attribution": true,
+        "reported_package_edition_source_profiles": [
+          "SuSiE-0.12.35-R4.6.1"
+        ],
+        "unestablished_reported_editions": [],
+        "author_R_and_dependency_profile_recovered": false,
+        "supplied_results_resource_or_selection_qualified": false,
+        "remaining_author_roles": [
+          "The paragraph does not recover the good-quality rule, L, LD source or exact fit arguments. REGENIE models, case/control composition and recessive eligibility are not SuSiE defaults.",
+          "Original author inputs, runtime dependencies, complete settings and the whole reported workflow remain unqualified."
+        ],
+        "full_reported_role_qualified": false,
+        "complete_author_workflow_qualified": false,
+        "historical_package_parity": false,
+        "exact_author_settings_established": false,
+        "author_runtime_executed": false,
+        "whole_paper_reproduced": false
+      },
+      "P200": {
+        "role": "ancestry-weighted-reference-summary-fine-mapping",
+        "declared_host": "direct",
+        "reported_editions": [],
+        "standalone_susieR_function_named": false,
+        "use_summary": "Used SuSiE with L=10 and default prior variance for multi-biobank meta-analysis regions, ancestry/effective-sample-size-weighted reference LD and LD–Z concordance assessment; described 95% minimal credible sets.",
+        "required_caution": "No edition is supplied. Preserve cross-biobank variant intersection, window definitions and the reported LD–Z concordance metric; do not substitute unweighted LD or infer exact s-diagnostic arguments.",
+        "supplied_input_fit_counterparts": [
+          {
+            "model": "RSS_Z",
+            "function": "susie_rss",
+            "relation": "Supplied aligned z/LD counterpart; the paper does not name this standalone function. Author statistics/LD preparation and hosted calls are unqualified."
+          }
+        ],
+        "counterparts_are_not_author_function_attribution": true,
+        "reported_package_edition_source_profiles": [],
+        "unestablished_reported_editions": [],
+        "author_R_and_dependency_profile_recovered": false,
+        "supplied_results_resource_or_selection_qualified": false,
+        "remaining_author_roles": [
+          "No literal susieR edition is established by these source anchors; do not select a historical profile on behalf of the author.",
+          "No edition is supplied. Preserve cross-biobank variant intersection, window definitions and the reported LD–Z concordance metric; do not substitute unweighted LD or infer exact s-diagnostic arguments.",
+          "Original author inputs, runtime dependencies, complete settings and the whole reported workflow remain unqualified."
+        ],
+        "full_reported_role_qualified": false,
+        "complete_author_workflow_qualified": false,
+        "historical_package_parity": false,
+        "exact_author_settings_established": false,
+        "author_runtime_executed": false,
+        "whole_paper_reproduced": false
+      },
+      "P203": {
+        "role": "population-specific-eqtl-fine-mapping-result-description",
+        "declared_host": "direct-unspecified",
+        "reported_editions": [],
+        "standalone_susieR_function_named": false,
+        "use_summary": "Applied SuSiE separately to European, East Asian and African American cis-eQTL results to identify credible SNP sets and candidate causal variants.",
+        "required_caution": "This results paragraph supports a missed analysis use. The 5% empirical gene-level FDR belongs to preceding eQTL mapping; no SuSiE edition, fit interface, prior, L or credible-set coverage is specified.",
+        "supplied_input_fit_counterparts": [],
+        "counterparts_are_not_author_function_attribution": true,
+        "reported_package_edition_source_profiles": [],
+        "unestablished_reported_editions": [],
+        "author_R_and_dependency_profile_recovered": false,
+        "supplied_results_resource_or_selection_qualified": false,
+        "remaining_author_roles": [
+          "Input/function attribution is unspecified; no individual/RSS/sufficient interface is assigned to the author.",
+          "No literal susieR edition is established by these source anchors; do not select a historical profile on behalf of the author.",
+          "This results paragraph supports a missed analysis use. The 5% empirical gene-level FDR belongs to preceding eQTL mapping; no SuSiE edition, fit interface, prior, L or credible-set coverage is specified.",
+          "Original author inputs, runtime dependencies, complete settings and the whole reported workflow remain unqualified."
+        ],
+        "full_reported_role_qualified": false,
+        "complete_author_workflow_qualified": false,
+        "historical_package_parity": false,
+        "exact_author_settings_established": false,
+        "author_runtime_executed": false,
+        "whole_paper_reproduced": false
+      },
+      "P219": {
+        "role": "multi-signal-colocalization",
+        "declared_host": "coloc",
+        "reported_editions": [],
+        "standalone_susieR_function_named": false,
+        "use_summary": "Used SuSiE-coloc for skin cis-eQTL/meQTL pairs after explicit allele/beta flipping, allowing multiple causal signals; reported p12=1.93e-3 and posterior shared-causal probability >0.8.",
+        "required_caution": "Keep the 83,529 methods versus 83,530 results pair counts unresolved. SuSiE fitting, coloc H4, allele harmonization and later mediation are separate; no SuSiE package edition or fit arguments are provided.",
+        "supplied_input_fit_counterparts": [
+          {
+            "model": "RSS_Z",
+            "function": "susie_rss",
+            "relation": "Supplied aligned z/LD counterpart; the paper does not name this standalone function. Author statistics/LD preparation and hosted calls are unqualified."
+          }
+        ],
+        "counterparts_are_not_author_function_attribution": true,
+        "reported_package_edition_source_profiles": [],
+        "unestablished_reported_editions": [],
+        "author_R_and_dependency_profile_recovered": false,
+        "supplied_results_resource_or_selection_qualified": false,
+        "remaining_author_roles": [
+          "The named hosting stack is not executed by this standalone adapter.",
+          "No literal susieR edition is established by these source anchors; do not select a historical profile on behalf of the author.",
+          "Keep the 83,529 methods versus 83,530 results pair counts unresolved. SuSiE fitting, coloc H4, allele harmonization and later mediation are separate; no SuSiE package edition or fit arguments are provided.",
+          "Original author inputs, runtime dependencies, complete settings and the whole reported workflow remain unqualified."
+        ],
+        "full_reported_role_qualified": false,
+        "complete_author_workflow_qualified": false,
+        "historical_package_parity": false,
+        "exact_author_settings_established": false,
+        "author_runtime_executed": false,
+        "whole_paper_reproduced": false
+      },
+      "P221": {
+        "role": "fine-mapping-informed-prediction-penalties",
+        "declared_host": "direct-and-glmnet",
+        "reported_editions": [],
+        "standalone_susieR_function_named": false,
+        "use_summary": "Applied SuSiE to MESA multi-ancestry gene windows using in-sample LD, L=10 and minimum absolute credible-set correlation 0.5; used 1-PIP as elastic-net variant penalties for EN-FM prediction.",
+        "required_caution": "The precise fit interface/edition and upstream phenotype/genotype preparation are not stated. The 1-PIP penalty, glmnet alpha=0.5 and predictive training are not performed by the SuSiE fit itself.",
+        "supplied_input_fit_counterparts": [
+          {
+            "model": "RSS_Z",
+            "function": "susie_rss",
+            "relation": "Supplied aligned z/LD counterpart; the paper does not name this standalone function. Author statistics/LD preparation and hosted calls are unqualified."
+          }
+        ],
+        "counterparts_are_not_author_function_attribution": true,
+        "reported_package_edition_source_profiles": [],
+        "unestablished_reported_editions": [],
+        "author_R_and_dependency_profile_recovered": false,
+        "supplied_results_resource_or_selection_qualified": false,
+        "remaining_author_roles": [
+          "No literal susieR edition is established by these source anchors; do not select a historical profile on behalf of the author.",
+          "The precise fit interface/edition and upstream phenotype/genotype preparation are not stated. The 1-PIP penalty, glmnet alpha=0.5 and predictive training are not performed by the SuSiE fit itself.",
+          "Original author inputs, runtime dependencies, complete settings and the whole reported workflow remain unqualified."
+        ],
+        "full_reported_role_qualified": false,
+        "complete_author_workflow_qualified": false,
+        "historical_package_parity": false,
+        "exact_author_settings_established": false,
+        "author_runtime_executed": false,
+        "whole_paper_reproduced": false
+      },
+      "P234": {
+        "role": "individual-level-pcqtl-eqtl-and-null-fine-mapping",
+        "declared_host": "direct-and-coloc",
+        "reported_editions": [
+          {
+            "paragraph_index": 16,
+            "literal": "0.12.35",
+            "source_context": "susieR v.0.12.35",
+            "refers_to": "susieR"
+          }
+        ],
+        "standalone_susieR_function_named": false,
+        "use_summary": "Ran susieR 0.12.35 on individual-level genotype and PC/expression phenotypes with uniform priors, L=10 and minimum absolute correlation 0.5, without prefiltering phenotype significance; repeated the workflow after genotype shuffling and used coloc.SuSiE for colocalization.",
+        "required_caution": "Preserve the PC versus single-gene phenotype populations and genotype/phenotype matching. Calibration shuffles, phenotype-level FDR, coloc v5 hosting and GWAS/LD preparation remain separate.",
+        "supplied_input_fit_counterparts": [
+          {
+            "model": "INDIVIDUAL",
+            "function": "susie",
+            "relation": "Supplied design/phenotype regression counterpart; no host, phenotype preparation, cross-validation or null-shuffle orchestration."
+          }
+        ],
+        "counterparts_are_not_author_function_attribution": true,
+        "reported_package_edition_source_profiles": [
+          "SuSiE-0.12.35-R4.6.1"
+        ],
+        "unestablished_reported_editions": [],
+        "author_R_and_dependency_profile_recovered": false,
+        "supplied_results_resource_or_selection_qualified": false,
+        "remaining_author_roles": [
+          "Preserve the PC versus single-gene phenotype populations and genotype/phenotype matching. Calibration shuffles, phenotype-level FDR, coloc v5 hosting and GWAS/LD preparation remain separate.",
+          "Original author inputs, runtime dependencies, complete settings and the whole reported workflow remain unqualified."
+        ],
+        "full_reported_role_qualified": false,
+        "complete_author_workflow_qualified": false,
+        "historical_package_parity": false,
+        "exact_author_settings_established": false,
+        "author_runtime_executed": false,
+        "whole_paper_reproduced": false
+      },
+      "P246": {
+        "role": "casr-fine-mapping-and-colocalization",
+        "declared_host": "direct-and-coloc",
+        "reported_editions": [],
+        "standalone_susieR_function_named": false,
+        "use_summary": "Fine-mapped common CASR signals with SuSiE, reporting ten independent causal sets, and tested colocalization with 55 phenotypes using Coloc-SuSiE.",
+        "required_caution": "Ten reported sets do not establish the supplied L argument. Full computational details are deferred to supplemental methods; no edition, exact inputs/LD, priors or fit/colocalization settings are established by these body paragraphs.",
+        "supplied_input_fit_counterparts": [],
+        "counterparts_are_not_author_function_attribution": true,
+        "reported_package_edition_source_profiles": [],
+        "unestablished_reported_editions": [],
+        "author_R_and_dependency_profile_recovered": false,
+        "supplied_results_resource_or_selection_qualified": false,
+        "remaining_author_roles": [
+          "Input/function attribution is unspecified; no individual/RSS/sufficient interface is assigned to the author.",
+          "No literal susieR edition is established by these source anchors; do not select a historical profile on behalf of the author.",
+          "Ten reported sets do not establish the supplied L argument. Full computational details are deferred to supplemental methods; no edition, exact inputs/LD, priors or fit/colocalization settings are established by these body paragraphs.",
+          "Original author inputs, runtime dependencies, complete settings and the whole reported workflow remain unqualified."
+        ],
+        "full_reported_role_qualified": false,
+        "complete_author_workflow_qualified": false,
+        "historical_package_parity": false,
+        "exact_author_settings_established": false,
+        "author_runtime_executed": false,
+        "whole_paper_reproduced": false
+      }
+    },
+    "native_family_credit_added": 0,
+    "upstream_family_credit_added": 1,
+    "new_scoped_integration_credit": 1,
+    "statistical_computation": "upstream-original-versioned-susieR",
+    "whole_tool_qualified": false,
+    "whole_paper_reproduced": false
   },
   {
     "id": "igv",

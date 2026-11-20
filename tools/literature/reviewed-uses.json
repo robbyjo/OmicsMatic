@@ -21742,6 +21742,313 @@
       "evidence_paragraph_sha256": "23b563807f072befe664699ede4b1cb3766e0e1114808b1a879fd000aac9b823",
       "use_summary": "Used a supplied integrated cartilage scRNA-seq object, broad cell-type reannotation and QC, then displayed representative gene markers and UMAP representations created using Scanpy.",
       "implementation_scope_note": "This does not establish de novo normalization, HVG selection, PCA, neighbor graphs or clustering in Scanpy. Preserve the supplied-object provenance and avoid inventing a fit or package edition."
+    },
+    {
+      "pmcid": "PMC11631754",
+      "doi": "10.1038/s41588-024-02019-8",
+      "tool_id": "susie",
+      "evidence_paragraph_sha256": "e46749808900228b1967ad237f84607d0bae5416bec6d8c66a64bb112160cc47",
+      "use_summary": "Used SuSiE fine-mapping to identify the most likely causal variants for HNRNPLL cis-eQTL/PTPRC trans-sQTL signals in naive CD4+ and CD4+ TEM cells.",
+      "implementation_scope_note": "This results paragraph supports an analysis use missed by extraction. Edition, input interface, LD, priors and settings are not specified; colocalization H4 is a separate quantity."
+    },
+    {
+      "pmcid": "PMC11631752",
+      "doi": "10.1038/s41588-024-01952-y",
+      "tool_id": "susie",
+      "evidence_paragraph_sha256": "e1cd916bf21b9caa0a870c92892e39042d6e3d3713f5836a5e46bda62a19712f",
+      "use_summary": "Used PolyFun 2020-11-14 priors with SuSiE 0.11.92, up to five causal variants and 95% credible sets, separately for DCM GWAS and MTAG loci; LD came from 10,000 UKB European participants.",
+      "implementation_scope_note": "PolyFun prior estimation, reference construction, GWAS/MTAG locus populations, cross-analysis aggregation and annotation remain distinct from a supplied-prior standalone fit.",
+      "version_reported_near_name": "0.11.92"
+    },
+    {
+      "pmcid": "PMC13649587",
+      "doi": "10.1038/s41588-026-02755-z",
+      "tool_id": "susie",
+      "evidence_paragraph_sha256": "522b92ab2bed682437649b4c2e501725ab545777adb91e2ea38fcc84c17b69c8",
+      "use_summary": "Fine-mapped Crohn disease summary statistics with susieR 0.12.35, a uniform prior and up to ten causal variants; compared UKBB and 1000 Genomes European LD references after mapgen harmonization and LDetect block selection.",
+      "implementation_scope_note": "Mismatched variants and the chromosome-6 25–35 Mb region were excluded. Reference choice, harmonization and locus selection are author preparation, not inferred or repeated by the fit adapter.",
+      "version_reported_near_name": "0.12.35"
+    },
+    {
+      "pmcid": "PMC10703684",
+      "doi": "10.1038/s41588-023-01574-w",
+      "tool_id": "susie",
+      "evidence_paragraph_sha256": "51eae4f3e535f5f7ceabda490939ca05eda4808d3efb79f4f074fbbffb5e1b28",
+      "use_summary": "Reused GTEx v8 SuSiE-fine-mapped eQTLs from Avsec et al. to benchmark Enformer effect direction; selected EBV-transformed lymphocyte variants with PIP greater than 0.9 and removed conflicting cis-gene directions.",
+      "implementation_scope_note": "No new SuSiE fit is established here. The supplied results, strict PIP selection, direction exclusions, Enformer track and bootstrap evaluation are separate from model fitting."
+    },
+    {
+      "pmcid": "PMC10703676",
+      "doi": "10.1038/s41588-023-01569-7",
+      "tool_id": "susie",
+      "evidence_paragraph_sha256": "c0a90a202b816ba02745e80d6f491f5c4d37c216e82f9492925f6b35cf86da16",
+      "use_summary": "Used SuSiE 0.11.92 with default configurations and ten putative causal variants per locus, using LDstore dosage LD from 171,085 unrelated BBJ participants; used SuSiE signals in multi-signal coloc comparisons.",
+      "implementation_scope_note": "Do not silently alter the reported KING threshold, LD preparation, locus boundaries or defaults. Signal colocalization, annotation and HP-stratified analyses require their own declared settings.",
+      "version_reported_near_name": "0.11.92",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 54,
+          "section": "Methods / HP-stratified analysis",
+          "paragraph_sha256": "827af9300b83cef851ec419a3bb8008c100134a24ad99e9ba0677a23b87e7ee1"
+        },
+        {
+          "paragraph_index": 11,
+          "section": "Results / Characterization of PUD-associated loci in east Asians",
+          "paragraph_sha256": "c3e640b569c6822cbf89866a9cbc50ef3b9dfb70f3f3710b835df0a379e66848"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC10703692",
+      "doi": "10.1038/s41588-023-01560-2",
+      "tool_id": "susie",
+      "evidence_paragraph_sha256": "5b5cb7121624baf0c24d055db6c08fc81cb930614bb3ee6804af50320b6ccedc",
+      "use_summary": "Trained per-isoform and gene-level SuSiE predictive models alongside elastic-net and BLUP alternatives, selecting predictive models by cross-validated adjusted R-squared within the isoTWAS/FUSION framework.",
+      "implementation_scope_note": "This is predictive regression, not only a summary fine-mapping task. Model selection, five-fold cross-validation, gene windows, isoform aggregation and the CV R-squared >=0.01 rule are not provided by one standalone fit.",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 46,
+          "section": "Methods / GTEx processing and model training",
+          "paragraph_sha256": "d8ecc4542e6d42804243480e5dc8f39aab019fa71387051739700a81f904737a"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC12695653",
+      "doi": "10.1038/s41588-025-02390-0",
+      "tool_id": "susie",
+      "evidence_paragraph_sha256": "3bf3369d86fed3869056a1cfa12db63fa91437ee4ac93763bbe3e6e2f8523715",
+      "use_summary": "Used the highest conditional PIP variant from each SuSiE credible set as conditioning SNPs in REMETA/REGENIE comparisons, and generated REGENIE conditional summary statistics for a REMETA analysis.",
+      "implementation_scope_note": "The named results paragraphs do not establish a standalone SuSiE runtime, edition, input interface or fitting settings. REMETA/REGENIE conditioning and buffer/LD-threshold comparisons remain separate.",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 27,
+          "section": "Results / Conditional analysis",
+          "paragraph_sha256": "d071c1d67f4e0c918686c40fe83d6f407ca6959b1d99ecf155ab1101668d9c82"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC13447110",
+      "doi": "10.1038/s41588-026-02681-0",
+      "tool_id": "susie",
+      "evidence_paragraph_sha256": "2a216f49d861720cbc75997e3ad5dff0cd0dee8e1d1d14ec9bc2ec95b3dbd685",
+      "use_summary": "Applied susieR to summary-imputed GWAS blocks with minimum P <1e-6; passed SNP probabilities for detected 95% credible-set signals to multiCOGS. Other blocks or runs with no qualifying signals used a separate single-causal-variable approach.",
+      "implementation_scope_note": "Preserve the reported fallback as a distinct author algorithm; no automatic substitute is implemented. Per-signal probabilities must not be silently replaced by marginal PIPs. Imputation and multiCOGS scoring are separate.",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 17,
+          "section": "Results / multiCOGS links imputed, fine-mapped Crohn’s disease GWAS signals to candidate effector genes through promoter contacts in ILC3s and CD4+ T cells",
+          "paragraph_sha256": "1c7e88802c352607902f3dcdcd947a01ce2e8e0a2a371c1e87e419ae6c5d42e0"
+        },
+        {
+          "paragraph_index": 22,
+          "section": "Results / CLN3 contributes to ILC3 inflammatory capacity",
+          "paragraph_sha256": "3835e36dc5e46fb8cf28c95ea3b44347ef2131cbfb0835a6af9af16aa1b56e5e"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC13447104",
+      "doi": "10.1038/s41588-026-02695-8",
+      "tool_id": "susie",
+      "evidence_paragraph_sha256": "a37fb06002d44a5dd6e58a56d0c1b5df9e86881a28cbf94bc9fb27a072f3e3b7",
+      "use_summary": "Reused eQTL Catalogue V7 and Finucane-laboratory UKB SuSiE results to benchmark enhancer/gene prediction; applied distinct >50% eQTL, >10% noncoding GWAS and >50% coding-variant PIP criteria.",
+      "implementation_scope_note": "No new SuSiE fit is reported. Retain the different input resources, phenotype/trait populations, strict PIP cuts and 500-kb credible-set/gene linking rule.",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 62,
+          "section": "Methods / GWAS benchmark",
+          "paragraph_sha256": "6455f079ea3140676328a578be7b0ae6cafee47cb4461f92cbbc660017580fa4"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC11525184",
+      "doi": "10.1038/s41588-024-01896-3",
+      "tool_id": "susie",
+      "evidence_paragraph_sha256": "637081bbf0db0e7963c99c73e43f4a62588f84d69796296c9cf712a8b72af0bd",
+      "use_summary": "Used susieR 0.11.43 with summary statistics and in-sample covariate-adjusted LD, five effects, and no minimum-P screening of genes. Reported the minimum FINEMAP/SuSiE PIP and used pure credible-set combinations for SuSiE-coloc comparisons.",
+      "implementation_scope_note": "The exact 0.11.43 source is not established by adjacent CRAN editions. FINEMAP minimum-PIP consensus, purity filtering, GTEx result reuse, CLPP enrichment/permutations and conditional sample restrictions remain separate.",
+      "version_reported_near_name": "0.11.43",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 58,
+          "section": "Methods / Defining shared and specific QTLs",
+          "paragraph_sha256": "3fafabfe11afd6c576f1039c11ecd1b1e3c32abfb04100dc3d374617b1bf68c5"
+        },
+        {
+          "paragraph_index": 61,
+          "section": "Methods / Functional enrichment",
+          "paragraph_sha256": "c0eab19d09a0c8586978e76ea1c23717f6b4d549469197df6ca29900cced7ed0"
+        },
+        {
+          "paragraph_index": 63,
+          "section": "Methods / Negative expression correlation analysis",
+          "paragraph_sha256": "38098361db8b75658aa9a7c43a300a3dd2ca59db52e6179385d1bc39414fa732"
+        },
+        {
+          "paragraph_index": 17,
+          "section": "Results / Limited colocalization between eQTLs and pQTLs",
+          "paragraph_sha256": "48bfa3f8254fa6db7729c7e0fbdb3bcb42e9943c8b0e99516e54db9b2933bba6"
+        },
+        {
+          "paragraph_index": 71,
+          "section": "Code availability",
+          "paragraph_sha256": "0b0cc3122806c5d4f9a36985a6f22667adb18baa3db9827cf03f6a7476bedc98"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC13447103",
+      "doi": "10.1038/s41588-026-02697-6",
+      "tool_id": "susie",
+      "evidence_paragraph_sha256": "efbd5f13e4ac785432ed4021837bb0de31eb2b4309e483b379beec4fbf87143d",
+      "use_summary": "Used susieR 0.14.2 on integrated GWAS/ExWAS regions, sequentially considering one through ten credible sets and retaining the largest approximately independent set of lead variants with maximum r-squared <0.25.",
+      "implementation_scope_note": "Exonic/imputed variant selection, 690-participant LD construction, iterative choice of component count and corrected lead-significance filtering are explicit author preparation/post-processing, not one fixed-L fit.",
+      "version_reported_near_name": "0.14.2"
+    },
+    {
+      "pmcid": "PMC11525171",
+      "doi": "10.1038/s41588-024-01900-w",
+      "tool_id": "susie",
+      "evidence_paragraph_sha256": "a8e3a22e8ca6ef8046c242489dd62f47c247e7aa7e4f5f2d4e8c9b530f9f4595",
+      "use_summary": "Fine-mapped CRC loci with PolyFun 1.4.1 and susieR 0.11.92 using annotation-based variant priors and Genomics England LD. Chose L from the number of independent variants, with L=2 for a single independent signal.",
+      "implementation_scope_note": "Preserve the results/methods difference between cumulative PIP >0.95 and reaching 0.95, and the individual PIP >0.001 rule. These do not define a replacement for source credible sets; PolyFun and locus/reference preparation remain separate.",
+      "version_reported_near_name": "0.11.92",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 6,
+          "section": "Results / Statistical fine-mapping of risk loci",
+          "paragraph_sha256": "1832d4d05bda95100c3e9ef7dff26654fe6c718cb10a73ab66399919392a9a60"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC13361010",
+      "doi": "10.1016/j.ajhg.2026.06.005",
+      "tool_id": "susie",
+      "evidence_paragraph_sha256": "8e496ac9472283399b88237b4d2f0d5ec6482a1ab4249edb2b3a91e677694521",
+      "use_summary": "Ran SuSiE via tensorQTL cis_susie for the strongest RNA phenotype per gene in each GTEx tissue, then used 95% credible-set PIPs for functional enrichment and eCAVIAR-style xQTL/FinnGen CLPP.",
+      "implementation_scope_note": "A standalone susieR fit does not qualify tensorQTL hosting. Preserve chromosome/position/REF/ALT matching, shared-variant PIP products and CLPP >0.01; this CLPP is not coloc H4.",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 21,
+          "section": "Methods / Colocalization between xQTLs and FinnGen GWAS",
+          "paragraph_sha256": "221db6084eb405b25bea8fdb21dd070d424c9bd373ed06f82fe57f1f82f8b3ed"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC11639076",
+      "doi": "10.1016/j.ajhg.2024.10.018",
+      "tool_id": "susie",
+      "evidence_paragraph_sha256": "e8c875df148115c3e1463941a11408fdffc16dab3b2f6629ba3928320bda658c",
+      "use_summary": "Fine-mapped genome-wide significant FinnGen female-cohort regions using SuSiE 0.12.35 and used good-quality credible sets to define independent loci after additive and recessive REGENIE analyses.",
+      "implementation_scope_note": "The paragraph does not recover the good-quality rule, L, LD source or exact fit arguments. REGENIE models, case/control composition and recessive eligibility are not SuSiE defaults.",
+      "version_reported_near_name": "0.12.35"
+    },
+    {
+      "pmcid": "PMC13393102",
+      "doi": "10.1016/j.ajhg.2026.05.011",
+      "tool_id": "susie",
+      "evidence_paragraph_sha256": "f63c9479d2741a042e23e90f497cca0716e2efa0fcaca124a3f61c3ab8d2b471",
+      "use_summary": "Used SuSiE with L=10 and default prior variance for multi-biobank meta-analysis regions, ancestry/effective-sample-size-weighted reference LD and LD–Z concordance assessment; described 95% minimal credible sets.",
+      "implementation_scope_note": "No edition is supplied. Preserve cross-biobank variant intersection, window definitions and the reported LD–Z concordance metric; do not substitute unweighted LD or infer exact s-diagnostic arguments.",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 24,
+          "section": "Results / Two independent signals at EYA4 suggest a developmental contribution",
+          "paragraph_sha256": "4380feeaa732ab235dda71a2a2355c35d9259cbd7733553eeee4db34cf0a3e87"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC11568756",
+      "doi": "10.1016/j.ajhg.2024.09.001",
+      "tool_id": "susie",
+      "evidence_paragraph_sha256": "212e17fde001d077d5880572c5183e5fcb04d99927025667d455f575d0796a4b",
+      "use_summary": "Applied SuSiE separately to European, East Asian and African American cis-eQTL results to identify credible SNP sets and candidate causal variants.",
+      "implementation_scope_note": "This results paragraph supports a missed analysis use. The 5% empirical gene-level FDR belongs to preceding eQTL mapping; no SuSiE edition, fit interface, prior, L or credible-set coverage is specified."
+    },
+    {
+      "pmcid": "PMC11393713",
+      "doi": "10.1016/j.ajhg.2024.07.010",
+      "tool_id": "susie",
+      "evidence_paragraph_sha256": "beec1e9ae5c2822d21af5659f4f13d8157d81bd4b3d35e644c2dc7446a8f8985",
+      "use_summary": "Used SuSiE-coloc for skin cis-eQTL/meQTL pairs after explicit allele/beta flipping, allowing multiple causal signals; reported p12=1.93e-3 and posterior shared-causal probability >0.8.",
+      "implementation_scope_note": "Keep the 83,529 methods versus 83,530 results pair counts unresolved. SuSiE fitting, coloc H4, allele harmonization and later mediation are separate; no SuSiE package edition or fit arguments are provided.",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 58,
+          "section": "Results / Shared genetic effects on the skin methylome and transcriptome",
+          "paragraph_sha256": "1600dc94b2df027414c249d4a66de159d965d28ee5f3e3bd8522045fc3aa0ac5"
+        },
+        {
+          "paragraph_index": 77,
+          "section": "Discussion",
+          "paragraph_sha256": "866911622956b4058216350eff19f7f083b54aee55b88b003dc1b256f0dac4d8"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC13078710",
+      "doi": "10.1016/j.ajhg.2026.03.008",
+      "tool_id": "susie",
+      "evidence_paragraph_sha256": "9297bb6f8dadb0d9cd4c9e319822ddbccb5b872b9e512fe64a235676c3ed2085",
+      "use_summary": "Applied SuSiE to MESA multi-ancestry gene windows using in-sample LD, L=10 and minimum absolute credible-set correlation 0.5; used 1-PIP as elastic-net variant penalties for EN-FM prediction.",
+      "implementation_scope_note": "The precise fit interface/edition and upstream phenotype/genotype preparation are not stated. The 1-PIP penalty, glmnet alpha=0.5 and predictive training are not performed by the SuSiE fit itself."
+    },
+    {
+      "pmcid": "PMC13087463",
+      "doi": "10.1016/j.ajhg.2026.02.022",
+      "tool_id": "susie",
+      "evidence_paragraph_sha256": "097c4d63b2da1006263b1c83bdb6cb553d52067fb66491d74d6b26426f4d6b6c",
+      "use_summary": "Ran susieR 0.12.35 on individual-level genotype and PC/expression phenotypes with uniform priors, L=10 and minimum absolute correlation 0.5, without prefiltering phenotype significance; repeated the workflow after genotype shuffling and used coloc.SuSiE for colocalization.",
+      "implementation_scope_note": "Preserve the PC versus single-gene phenotype populations and genotype/phenotype matching. Calibration shuffles, phenotype-level FDR, coloc v5 hosting and GWAS/LD preparation remain separate.",
+      "version_reported_near_name": "0.12.35",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 17,
+          "section": "Methods / Discovery and fine-mapping of pcQTLs and eQTLs",
+          "paragraph_sha256": "e1e04b8803cad913f74e91bc05d74e298989ceddd0448228d13e2f1dc1bed1c8"
+        },
+        {
+          "paragraph_index": 18,
+          "section": "Methods / Discovery and fine-mapping of pcQTLs and eQTLs",
+          "paragraph_sha256": "c47a8744b6dc98af530aaeb31cfea8e306aa096eeec0f393594d0768387a48ad"
+        },
+        {
+          "paragraph_index": 20,
+          "section": "Methods / Fine-mapping calibration",
+          "paragraph_sha256": "4a9e769667460731fbbdc8beb23a5915429fcef82428d37c3ed4f756ee94239b"
+        },
+        {
+          "paragraph_index": 31,
+          "section": "Methods / Colocalization of pcQTL, eQTL, and GWAS hits",
+          "paragraph_sha256": "ec3c9030624c826659de9c613c5e07fc1622bb36e190af10d6258c8b158b7b11"
+        },
+        {
+          "paragraph_index": 37,
+          "section": "Results / A multi-gene QTL framework leverages common variation to detect shared genetic effects",
+          "paragraph_sha256": "b785a50f921012b62af098a42e691c15cd17f179b97bf4138e7df8262169bea1"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC12414667",
+      "doi": "10.1016/j.ajhg.2025.06.013",
+      "tool_id": "susie",
+      "evidence_paragraph_sha256": "28ae65f222857431134f3d2a83878d4bc3981b920d9548a23de1f4d5ecce782b",
+      "use_summary": "Fine-mapped common CASR signals with SuSiE, reporting ten independent causal sets, and tested colocalization with 55 phenotypes using Coloc-SuSiE.",
+      "implementation_scope_note": "Ten reported sets do not establish the supplied L argument. Full computational details are deferred to supplemental methods; no edition, exact inputs/LD, priors or fit/colocalization settings are established by these body paragraphs.",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 32,
+          "section": "Results / CASR variants constitute an allelic series on serum calcium",
+          "paragraph_sha256": "a1e930b134e37bf255f7765cd1612548dfedabba5d88b96d88faa558effacbbb"
+        }
+      ]
     }
   ]
 }
