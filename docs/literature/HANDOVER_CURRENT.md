@@ -1,5 +1,16 @@
 # Current toolbox handover
 
+**Start here: [current handover, GSEA work and exact remaining tasks](HANDOVER_2026-11-20_GSEA.md).**
+The latest admitted scientific checkpoint is edgeR at main `0de612c6`.
+Totals remain **139 scoped integrations (25 native +114 upstream), 1,520
+reviewed uses and 1,185 pending**, with 823 clean manifest entries. New GSEA
+work comprises an all-250 lexical source intake, official source archives and
+an unchanged-source 4.4.0 build; statistical execution, the project workflow,
+remaining semantic review and catalog admission are unfinished. No GSEA credit
+is added. Preserve all **29 worktrees** and separately transfer ignored
+runtimes/source caches/complete evidence. The linked handover is the current
+task list; lower checkpoints remain history. Both reports stay off Pages.
+
 **Current: [edgeR admitted, remaining work and exact resume paths](EDGER_CATALOG_CHECKPOINT_2026-11-20.md).**
 The source-built normal JAR now exposes `edger-tools` and `edger-normalize`.
 Seventeen source roles are reviewed, P088 is added with its precise operation
