@@ -1,5 +1,17 @@
 # Current toolbox handover
 
+**Resume here: [native GSEA engine, warnings and exact remaining work](HANDOVER_2026-11-20_GSEA_ENGINE.md).**
+The native prepared-data engine is implemented and included in the normal JAR.
+Ranking, source randomizers and complete null families pass 668,739 exact field
+checks plus 201 strict refusals on each of three JVMs. The source corpus and
+build/packaged evidence are committed. The project file workflow,
+RUN/VERIFY/REPLAY, global command, source-role review and GSEA catalog admission
+remain unfinished. Totals stay **139 scoped integrations, 1,520 reviewed uses
+and 1,185 pending**, with 823 manifest entries. Preserve all **31 worktrees**.
+**Separately transfer ignored runtimes, producer JARs and complete private
+evidence before moving machines; GitHub does not back them up.** Both literature
+reports remain off Pages. Lower engine-unimplemented instructions are history.
+
 **Current: [native Broad GSEA component, exact evidence and next work](GSEA_NATIVE_CHECKPOINT_2026-11-20.md).**
 The normal JAR now includes native original-source score walks, NES, nominal P,
 empirical FDR and FWER. Three original source profiles complete all three
