@@ -1,5 +1,16 @@
 # Current toolbox handover
 
+**Start here: [current handover, unfinished edgeR admission and exact resume steps](HANDOVER_2026-11-20_EDGER_ADMISSION.md).**
+Both existing edgeR components remain qualified. The unfinished global-command
+edits are preserved as an explicit patch, with a successful normal build,
+three-JVM help smoke checks and strict inverse controls; they are not enabled
+on main or admitted to the catalog. The main dispatcher remains the exact
+qualified baseline. Totals remain **138 scoped integrations (25 native +113
+upstream), 1,503 reviewed uses and 1,201 pending**. Preserve all **28 worktrees**
+and separately transfer ignored runtimes/source caches/complete evidence.
+The linked handover is the current task list; lower snapshots are history.
+The full 250-paper implementation/review goal remains unfinished.
+
 **Latest: [original edgeR models, remaining work and exact resume paths](EDGER_MODELS_CHECKPOINT_2026-11-20.md).**
 The prepared-count original-runtime component covers filtering, normalization,
 dispersion, exact/LRT and explicit legacy/adjusted QL models. The final normal
