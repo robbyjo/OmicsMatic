@@ -1,5 +1,16 @@
 # Current toolbox handover
 
+**Handoff: [remaining work and exact resume instructions](HANDOVER_2026-11-19_SCANPY_ADMISSION.md).**
+Start there. Scientific baseline is `d70b229489a7b16206060ca8827539011b6a896a`.
+Global Scanpy dispatch, the 22-role crosswalk and native dispersion HVGs are
+published. Guarded Scanpy catalog admission has not been implemented; its
+first historical-checkout preparation failed on Windows path length and is
+retained with recovery instructions. All 22 existing worktrees are preserved.
+Current totals remain **136 scoped integrations, 1,462 reviewed uses and
+1,241 pending**. The full goal is unfinished. Ignored evidence/runtimes need
+separate machine transfer. Earlier snapshots below are retained history;
+their superseded dispatch/HVG-open statements are not the current task list.
+
 **Latest: [native dispersion-based Scanpy HVGs](SCANPY_HVG_CHECKPOINT_2026-11-19.md).**
 Explicit float64 Seurat/Cell-Ranger-flavor selection now supports dense/CSR,
 batching, version-specific missing/tie rules and source export precision.
