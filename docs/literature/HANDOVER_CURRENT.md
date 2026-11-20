@@ -1,5 +1,15 @@
 # Current toolbox handover
 
+**Start here: [global GSEA command, unfinished admission and exact handoff actions](HANDOVER_2026-11-20_GSEA_GLOBAL.md).**
+The normal JAR now exposes `broad-gsea-tools`; the native scientific classes are
+unchanged. The source-role follow-up, author Script 20 findings and exact next
+steps are saved. GSEA catalog admission remains open: totals stay **139 scoped
+integrations, 1,520 reviewed uses and 1,185 pending**, with 823 manifest entries.
+Preserve all **21 current worktrees**. **Separately transfer ignored runtimes,
+producer JARs and complete private evidence before moving machines.** Both
+literature reports remain off Pages; no release or whole-goal completion is
+claimed. Lower standalone-only statements describe prior producers.
+
 **Resume here: [qualified native GSEA file workflow and exact next work](GSEA_WORKFLOW_CHECKPOINT_2026-11-20.md).**
 Standalone RUN/VERIFY/REPLAY now pass original-source comparisons, 34 refusal
 controls per JVM, actual cross-host replay and exact literal/float32 transport
