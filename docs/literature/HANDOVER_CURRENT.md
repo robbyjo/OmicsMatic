@@ -1,5 +1,20 @@
 # Current toolbox handover
 
+**Current: [original local-clumping qualification and ordered remaining work](TWOSAMPLEMR_CLUMP_CHECKPOINT_2026-11-21.md).**
+The normal JAR now supplies standalone original local clumping RUN/VERIFY/REPLAY.
+All **707 focused tests** pass per Windows Java21/25 and Linux Java21. Twenty-one
+normal selections, four original/path failures, eleven missing/failed/lifetime
+controls, three real replays, three public examples and five Linux R-free checks
+pass. **81 complete direct-original return/RNG comparisons** match; all 22,320
+preceding JAR payloads and 5,765 private-runtime files remain exact. Original R
+execution remains Windows-only. **Next: reported historical editions, provider/
+dependency profiles, P157/P177 attribution, global registration and guarded catalog
+admission.** Counts stay **143 scoped families, 1,616 reviewed uses and 1,104
+pending**, with zero new credit. Preserve all **42 worktrees** and separately
+transfer ignored runtimes, JARs, full text and complete private evidence with
+checksums. Both literature reports stay off Pages; the full goal is unfinished.
+Lower entries retain historical checkpoints, including the superseded drafts.
+
 **Start here: [21 November 2026 handover, local-clumping draft and ordered next actions](HANDOVER_2026-11-21_LOCAL_CLUMPING.md).**
 The qualified prepared-data workflows are on main; the newest original local
 clumping work is **unfinished development**, saved outside the compiled source
