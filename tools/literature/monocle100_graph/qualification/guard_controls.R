@@ -1,0 +1,12 @@
+# Mutate an owned R process only. Installed original sources/libraries are untouched.
+root<-commandArgs(trailingOnly=TRUE)[1];out<-file.path(root,"worker")
+.libPaths(readLines(file.path(out,"runtime-paths.txt"),warn=FALSE),include.site=FALSE)
+plan<-jsonlite::read_json(file.path(root,"plan.json"),simplifyVector=FALSE)
+ns<-asNamespace("monocle3");name<-"learn_graph";fun<-get(name,ns,inherits=FALSE)
+sha<-function(x)digest::digest(serialize(x,NULL,version=2),algo="sha256",serialize=FALSE)
+before<-list(body=sha(body(fun)),formals=sha(formals(fun)))
+if(plan$kind=="body")body(fun)<-substitute({ORIGINAL;NULL},list(ORIGINAL=body(fun)))else if(plan$kind=="formals")formals(fun)<-c(formals(fun),alist(omicsmatic_changed_argument=TRUE))else stop("Unknown mutation")
+unlockBinding(name,ns);assign(name,fun,ns);lockBinding(name,ns)
+after<-list(body=sha(body(fun)),formals=sha(formals(fun)));stopifnot(!identical(before,after))
+jsonlite::write_json(list(kind=plan$kind,before=before,after=after,installed_source_modified=FALSE),file.path(out,"GUARD-MUTATION.json"),pretty=TRUE,auto_unbox=TRUE,digits=NA)
+source(file.path(root,"source/worker.R"),keep.source=FALSE)

@@ -1,5 +1,27 @@
 # Current toolbox handover
 
+**Current: [qualified original1.0.0 graph stage and exact next work](MONOCLE100_GRAPH_CHECKPOINT_2026-11-21.md).**
+The normal JAR supplies prepared-CDS LEARN/ORDER/RUN and VERIFY/REPLAY. All824
+focused tests pass per Windows Java21/25 and Linux Java21 packaged JVM; a second
+normal build produces identical bytes. All23 actual expectations pass (18 graphs,
+five retained failures/refusals). Original-reference comparisons, including fresh
+public-example calls, match19 learned CDS,21 output CDS,16 orderings and26 RNG
+records; three original errors and two declared convergence refusals are retained.
+All three public operations pass complete replays and three-host verification.
+Five real no-result controls and two actual namespace-change refusals pass. Both
+neighbor engines retain their74 weights,21 inference fields and complete replays.
+All22,403 preceding JAR payloads remain exact; only two reviewed shared-runtime
+classes change,with13 new graph payloads. Preserve **53 worktrees** and30 unchanged
+canonical files. Counts stay **144 scoped families,1630 reviewed/1092 pending**.
+**Next: P021 preparation/modified-test scope, global/bounded Monocle admission
+without duplicate reviews, then remaining high-impact omics/GWAS gaps/reviews.**
+P021 UMAT is not renamed UMAP. Graph/pseudotime is not a gene test or verified
+biological direction. **Transfer ignored runtimes,JARs,full text,author source
+and complete private evidence separately before retiring the machine.** The
+linked checkpoint gives exact paths and prominent SKIP3/FAIL2 recovery. Both
+reports stay off Pages; no release or whole-goal completion is claimed. Lower
+entries retain historical checkpoints and their then-current counts.
+
 **HANDOVER: [unfinished graph draft and exact next actions](HANDOVER_2026-11-21_GRAPH.md).**
 The corpus is complete at250 papers; the full implementation goal is unfinished.
 Counts stay **144 scoped families,1630 reviewed/1092 pending**. The new original

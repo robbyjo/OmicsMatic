@@ -19,6 +19,7 @@ import static org.jlinalg.cli.Monocle100NeighborsContracts.*;
 /** Linux worker ownership, declared environment and before/after executable/package-code identities. */
 final class Monocle100NeighborsRuntime {
     private Monocle100NeighborsRuntime() { }
+    private static final List<String> DEFAULT_PACKAGES=List.of("monocle3","RANN","spdep","slam","Matrix","igraph","jsonlite","digest");
     static final class Unavailable extends IOException {
         private static final long serialVersionUID=1L;
         Unavailable(String message){super(message);}
@@ -37,9 +38,14 @@ final class Monocle100NeighborsRuntime {
         return new RuntimeConfig(value.source(),python,rscript,rHome,value.nativeLibraries().toRealPath(),List.copyOf(libraries));
     }
     static Map<String,Object> code(RuntimeConfig value) throws IOException {
+        return code(value,DEFAULT_PACKAGES);
+    }
+    static Map<String,Object> code(RuntimeConfig value,List<String> packages) throws IOException {
         var result=new LinkedHashMap<String,Object>();
         for(Path path:List.of(value.python(),value.rscript(),value.rHome().resolve("bin/exec/R")))result.put(path.toString(),pin(NextflowFiles.pin(file(path),536870912,()->{})));
-        for(String name:List.of("monocle3","RANN","spdep","slam","Matrix","igraph","jsonlite","digest")) {
+        require(!packages.isEmpty()&&packages.size()<=256&&packages.stream().distinct().count()==packages.size(),"Declare the unique selected runtime package population");
+        for(String name:packages) {
+            require(name.matches("[A-Za-z][A-Za-z0-9.]*"),"Invalid selected runtime package name");
             Path selected=null;for(Path library:value.libraries())if(Files.isDirectory(library.resolve(name))){selected=library.resolve(name).toRealPath();break;}
             if(selected==null)throw new Unavailable("Exact original runtime package is missing: "+name);
             try(var paths=Files.walk(selected)) {
@@ -54,8 +60,12 @@ final class Monocle100NeighborsRuntime {
         return result;
     }
     static void run(Path root,RuntimeConfig runtime,Map<String,Object> parameters,Caps caps) throws Exception {
-        Path worker=root.resolve("worker");json(worker.resolve("runtime.json"),runtime.values());write(worker.resolve("runtime-paths.txt"),String.join("\n",runtime.libraries().stream().map(Path::toString).toList())+"\n");
-        var before=code(runtime);json(root.resolve("runtime-code-before.json"),before);
+        run(root,runtime,parameters,caps,DEFAULT_PACKAGES,PROFILE);
+    }
+    static void run(Path root,RuntimeConfig runtime,Map<String,Object> parameters,Caps caps,List<String> packages,String profile) throws Exception {
+        var runtimeValues=new LinkedHashMap<String,Object>(runtime.values());runtimeValues.put("profile",profile);
+        Path worker=root.resolve("worker");json(worker.resolve("runtime.json"),runtimeValues);write(worker.resolve("runtime-paths.txt"),String.join("\n",runtime.libraries().stream().map(Path::toString).toList())+"\n");
+        var before=code(runtime,packages);json(root.resolve("runtime-code-before.json"),before);
         List<String> command=List.of(runtime.python().toString(),"-I","-B",root.resolve("source/supervisor.py").toString(),root.toString(),Long.toString(ProcessHandle.current().pid()));
         var builder=new ProcessBuilder(command).directory(root.toFile()).redirectOutput(worker.resolve("supervisor.stdout").toFile()).redirectError(worker.resolve("supervisor.stderr").toFile());
         var owned=new AtomicReference<Process>();var descendants=new ArrayList<ProcessHandle>();Thread hook=new Thread(()->{Process process=owned.get();if(process!=null)cleanup(root,process,descendants);},"monocle100-owned-neighbor-cleanup");
@@ -69,9 +79,9 @@ final class Monocle100NeighborsRuntime {
             remember(process,descendants);
             var receipt=read(worker.resolve("PROCESS.json"),caps.jsonBytes());require(list(receipt.getOrDefault("owned_live_after_cleanup",List.of())).isEmpty(),"Owned original workers survived supervisor cleanup");
             if(process.exitValue()==3)throw new Unavailable("Exact original runtime is unavailable; read worker terminal.tsv, report/error and original logs");
-            require(process.exitValue()==0,"Original neighbor process failed: "+receipt.get("status")+"; retain worker/error.json, original-error.txt, stdout.log and stderr.log");
+            require(process.exitValue()==0,"Original Monocle process failed: "+receipt.get("status")+"; retain worker/error.json, original-error.txt, stdout.log and stderr.log");
             List<String> terminal=Files.readAllLines(worker.resolve("terminal.tsv"),StandardCharsets.UTF_8);require(terminal.size()==1&&terminal.get(0).startsWith("PASS\t"),"Original worker did not return a complete successful terminal status");
-            require(code(runtime).equals(before),"Runtime executable or selected package-code bytes changed during analysis");json(root.resolve("runtime-code-after.json"),before);
+            require(code(runtime,packages).equals(before),"Runtime executable or selected package-code bytes changed during analysis");json(root.resolve("runtime-code-after.json"),before);
         } finally {
             if(process!=null){List<Long> live=cleanup(root,process,descendants);json(worker.resolve("SUPERVISOR-END.json"),Map.of("pid",process.pid(),"alive_after_cleanup",process.isAlive(),"owned_live_after_cleanup",live,"elapsed_millis",TimeUnit.NANOSECONDS.toMillis(System.nanoTime()-started)));require(live.isEmpty(),"Owned supervisor or descendants survived bounded cleanup");}
             owned.set(null);try{Runtime.getRuntime().removeShutdownHook(hook);}catch(IllegalStateException ignored){/* Shutdown owns cleanup. */}
