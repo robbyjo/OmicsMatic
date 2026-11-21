@@ -43,14 +43,14 @@ def main():
                 request[key] = str(source / request[key])
         path = folder / 'request.json'
         path.write_text(json.dumps(request, indent=2) + '\n', encoding='utf-8')
-        command = [args.java, '-cp', str(jar), 'org.jlinalg.cli.LimmaWorkflowCli', '--request', str(path)]
+        command = [args.java, '-jar', str(jar), 'limma-tools', '--request', str(path)]
         with (folder / 'RUN.stdout').open('xb') as stdout, (folder / 'RUN.stderr').open('xb') as stderr:
             result = subprocess.run(command, stdin=subprocess.DEVNULL, stdout=stdout, stderr=stderr)
         row = dict(command=command, exit_code=result.returncode,
                    warnings=str(folder / 'analysis/WARNINGS.md'),
                    stderr=str(folder / 'RUN.stderr'))
         if result.returncode == 0:
-            command = [args.java, '-cp', str(jar), 'org.jlinalg.cli.LimmaWorkflowCli', '--verify', str(folder / 'analysis')]
+            command = [args.java, '-jar', str(jar), 'limma-tools', '--verify', str(folder / 'analysis')]
             with (folder / 'VERIFY.stdout').open('xb') as stdout, (folder / 'VERIFY.stderr').open('xb') as stderr:
                 verified = subprocess.run(command, stdin=subprocess.DEVNULL, stdout=stdout, stderr=stderr)
             row['VERIFY_exit_code'] = verified.returncode

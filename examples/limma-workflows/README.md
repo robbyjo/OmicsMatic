@@ -23,4 +23,6 @@ This does not establish original-R execution on Linux or reproduce a paper.
 
 Read the printed warning/status paths after every run. Exit3 means a named
 dependency was skipped; exit2 means no complete result. Keep every attempt and
-retry into new output. Global CLI registration and catalog admission remain open.
+retry into new output. The runner uses the global `limma-tools` command from a
+current source build. Read the [current handover](../../docs/literature/HANDOVER_CURRENT.md)
+for catalog admission and remaining source-role gaps.

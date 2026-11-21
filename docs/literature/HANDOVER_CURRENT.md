@@ -1,5 +1,17 @@
 # Current toolbox handover
 
+**Current: [global limma command and 23 source-role proposals](LIMMA_GLOBAL_CHECKPOINT_2026-11-21.md).**
+The source-built JAR exposes limma-tools RUN/VERIFY/REPLAY, with unchanged science
+payloads. All 78 packaged tests pass per JVM on Windows Java 21/25 and Linux Java 21; six
+original-R examples, eight real replays, 18 positive global verifications, exact
+neighbor help and 22 prior root/GCTA regressions pass. A fresh all 250 source audit
+reviews 18 limma and 5 voom labels across 18 papers, with pinned code attribution
+for P183/P203 and explicit provider/version gaps. Canonical admission is next:
+voom must add zero second-family credit. Counts remain 141 families, 1,575 reviewed
+and 1,140 pending. Preserve all 35 worktrees and separately transfer ignored exact
+runtimes, JARs, full text and complete private evidence. Both reports stay off Pages;
+the full goal remains active and unfinished. Lower entries retain history.
+
 **Current: [limma normal-JAR execution qualification and remaining work](LIMMA_WORKFLOW_QUALIFICATION_2026-11-21.md).**
 The observer now preserves original errors/returns even with incomplete locals
 or failed journal writes. Forty-six fresh normal-JAR analyses match 169 complete

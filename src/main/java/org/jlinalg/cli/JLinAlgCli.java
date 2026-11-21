@@ -70,6 +70,8 @@ public final class JLinAlgCli {
                 return GctaWorkflowCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
             if (arguments.length > 0 && arguments[0].equals("broad-gsea-tools"))
                 return BroadGseaWorkflowCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+            if (arguments.length > 0 && arguments[0].equals("limma-tools"))
+                return LimmaWorkflowCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
             if (arguments.length > 0 && arguments[0].equals("edger-tools"))
                 return EdgeRWorkflowCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
             if (arguments.length > 0 && arguments[0].equals("edger-normalize"))
@@ -526,6 +528,7 @@ public final class JLinAlgCli {
               java -jar omicsmatic-<version>.jar chromvar-tools --help
               java -jar omicsmatic-<version>.jar gcta-tools --help
               java -jar omicsmatic-<version>.jar broad-gsea-tools --help
+              java -jar omicsmatic-<version>.jar limma-tools --help
               java -jar omicsmatic-<version>.jar edger-tools --help
               java -jar omicsmatic-<version>.jar edger-normalize --help
               java -jar omicsmatic-<version>.jar deseq2-tools --help

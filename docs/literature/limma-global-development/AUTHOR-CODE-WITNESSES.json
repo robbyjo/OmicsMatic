@@ -1,0 +1,139 @@
+{
+  "schema_version": 1,
+  "status": "PASS_TWO_PINNED_LINKED_AUTHOR_CODE_SOURCE_WITNESSES_NOT_EXECUTION",
+  "repositories": [
+    {
+      "paper_id": "P183",
+      "repository": "https://github.com/LiChen1990/lncRNA_circRNA_eQTL",
+      "commit": "532bb9334753e4c753ca92c5d8afb34ec6215a97",
+      "commit_date": "2025-04-06T13:34:39Z",
+      "file": {
+        "path": "eQTL_mapping/HBCC.circRNA.eQTL.com.txt",
+        "url": "https://raw.githubusercontent.com/LiChen1990/lncRNA_circRNA_eQTL/532bb9334753e4c753ca92c5d8afb34ec6215a97/eQTL_mapping/HBCC.circRNA.eQTL.com.txt",
+        "git_blob_sha": "a96c3350a5ce3e220ff19ff9ce97d3ce0a9a256b",
+        "bytes": 39392,
+        "sha256": "10aafa985000f87cc2e738f23423bfc76213a8f837e1d001ef31dea66758aa28"
+      },
+      "witnesses": [
+        {
+          "label": "limma-import",
+          "line_number": 53,
+          "line_sha256": "a1d2230125ca9d149726794892426f926e8d1bf21ac4e9ce627c29dc0844d3d2",
+          "pattern": "^library\\(limma\\)$"
+        },
+        {
+          "label": "voom-call",
+          "line_number": 178,
+          "line_sha256": "9f8b55e5d599b7f454949adc8d09d9a552197e861a4251618478d4e4e5a6ab5a",
+          "pattern": "=voom\\("
+        },
+        {
+          "label": "weighted-residual-call",
+          "line_number": 182,
+          "line_sha256": "5b6a159ce367902debaebfb28284c09c01245d9fc788d7b04cebdd06a4a962f7",
+          "pattern": "^CIRI[.]JUNCTION[.]PASS[.]voom[.]log[.]Res=calcResiduals\\("
+        },
+        {
+          "label": "zero-depth-median-rule",
+          "line_number": 170,
+          "line_sha256": "17e37975523b8666b6844b9512e0098b3e07887f7e325c6d8c9e5f271abb0eb4",
+          "pattern": "^CIRI[.]JUNCTION[.]depth\\[which\\(.*=median"
+        },
+        {
+          "label": "sample-name-rewrite",
+          "line_number": 168,
+          "line_sha256": "60ee63950cb6202ba587f978be57061c072c121b55f86ea738683bf9d7b5936b",
+          "pattern": "^colnames\\(CIRI[.]JUNCTION[.]mat\\)<-gsub"
+        },
+        {
+          "label": "alternative-untransformed-residual-path",
+          "line_number": 452,
+          "line_sha256": "88952b80606a1a7dc4f72b8ad08745295afe88630e6987c4a051b8ff5cb270e0",
+          "pattern": "^CIRI[.]JUNCTION[.]PASS[.]voom[.]log[.]Res=calcResiduals\\(CIRI[.]JUNCTION[.]mat"
+        }
+      ],
+      "author_pipeline_executed": false,
+      "paper_executed_commit_correspondence_proven": false,
+      "source_only_audit": true,
+      "original_author_code_redistributed": false
+    },
+    {
+      "paper_id": "P203",
+      "repository": "https://github.com/liusihan/population-compare-pipeline",
+      "commit": "7df0eb9112af0860c2ecb3bf7a5c61aed07bc876",
+      "commit_date": "2024-09-03T00:57:30Z",
+      "file": {
+        "path": "RNA-seq_processing.r",
+        "url": "https://raw.githubusercontent.com/liusihan/population-compare-pipeline/7df0eb9112af0860c2ecb3bf7a5c61aed07bc876/RNA-seq_processing.r",
+        "git_blob_sha": "c1fbf80058a57492623f84b617c9c65746876fa2",
+        "bytes": 15454,
+        "sha256": "5496d5bbc313bb6e35a194bdabd73aaf479a8988d3fac58f6be20e7b47335e5d"
+      },
+      "witnesses": [
+        {
+          "label": "limma-import",
+          "line_number": 77,
+          "line_sha256": "a1d2230125ca9d149726794892426f926e8d1bf21ac4e9ce627c29dc0844d3d2",
+          "pattern": "^library\\(limma\\)$"
+        },
+        {
+          "label": "voom-E-call",
+          "line_number": 78,
+          "line_sha256": "730727803009a087202f1ebe879c02749307e37576d5f0a01f3518674891037d",
+          "pattern": "^log2cpm<-voom\\(count2\\)\\$E"
+        },
+        {
+          "label": "preprocessCore-import",
+          "line_number": 139,
+          "line_sha256": "3eada0f770a02d305f92b0466d685972b42324261a82c84af911d78ba0d76b9f",
+          "pattern": "^library\\(preprocessCore\\)$"
+        },
+        {
+          "label": "separate-quantile-normalization",
+          "line_number": 140,
+          "line_sha256": "c61b310520ec9c6d40e445a8340de61005a1737cd86ef90c9d4ce7e92df8c2dc",
+          "pattern": "^log2cpm[.]fgene[.]fsample[.]qn<-normalize[.]quantiles\\("
+        }
+      ],
+      "author_pipeline_executed": false,
+      "paper_executed_commit_correspondence_proven": false,
+      "source_only_audit": true,
+      "original_author_code_redistributed": false
+    }
+  ],
+  "P228_public_code_observation": {
+    "status": "SAVED_PUBLIC_CODE_AVAILABILITY_OBSERVATIONS",
+    "observations": [
+      {
+        "name": "zenodo",
+        "url": "https://zenodo.org/api/records/15391244",
+        "status": 200,
+        "bytes": 5572,
+        "sha256": "1ddb0355a3e544744a5dbd6e45c3139dcf6a5d44855cea402701c256dcb2b974",
+        "observed_at": "2026-11-21T07:52:45.155261+00:00"
+      },
+      {
+        "name": "linked-repository",
+        "url": "https://api.github.com/repos/QihuangZhang/SMS-RNA-seq",
+        "status": 404,
+        "bytes": 118,
+        "sha256": "4f50e254a719a6b1b06b529bdaa08980e4acf0878aad0090cba7771f6ebdf0b9",
+        "observed_at": "2026-11-21T07:52:45.337523+00:00"
+      }
+    ],
+    "linked_repository_url": "https://github.com/QihuangZhang/SMS-RNA-seq",
+    "observed_repository_publicly_accessible": false,
+    "does_not_establish_private_or_deleted_reason": true,
+    "dataset_downloaded": false,
+    "author_pipeline_executed": false
+  },
+  "code_only_followups": [
+    {
+      "paper_id": "P203",
+      "provider": "preprocessCore",
+      "operation": "normalize.quantiles",
+      "canonical_addition_or_credit": 0,
+      "reason": "Separate provider identified in linked code; requires its own scoped catalog/implementation audit"
+    }
+  ]
+}

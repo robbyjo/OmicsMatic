@@ -1,17 +1,22 @@
 # Prepared-data limma workflows
 
-The standalone `org.jlinalg.cli.LimmaWorkflowCli` runs original limma/edgeR/statmod
+The global `limma-tools` command and standalone `org.jlinalg.cli.LimmaWorkflowCli` run original limma/edgeR/statmod
 methods on prepared matrices. The current normal-JAR execution controls cover
 six operations, with original fitted objects retained. **The module still has
-DEVELOPMENT_SCOPE: global CLI registration, paper-source admission and older
-author editions remain unfinished.** See the
+DEVELOPMENT_SCOPE: full author workflows and older
+author editions remain unfinished.** Source-role and catalog status are tracked
+in the [current handover](HANDOVER_CURRENT.md). See the
 [execution checkpoint](LIMMA_WORKFLOW_QUALIFICATION_2026-11-21.md) for exact
 evidence and remaining work. The separate
 [native Java variance components](LIMMA_VARIANCE.md) require no R runtime.
 
 ## Run the examples
 
-Use the normal executable JAR from this project and an explicitly supplied
+Build current source with `./gradlew.bat executableJar` on Windows (or
+`./gradlew executableJar` on Linux). The ordinary output is
+`build/cli/omicsmatic-0.4.0.jar`. The previously released 0.4.0 binary predates
+`limma-tools`; this change has not created a release. Use that source-built JAR
+and an explicitly supplied
 **R 4.6.1 + limma 3.68.5 + edgeR 4.10.7 + statmod 1.5.2** environment. All three
 packages are required by the current coupled profile, including non-count
 operations. Other dependencies, such as jsonlite, must be available in the
@@ -93,7 +98,7 @@ older author edition or cover every operation in a paper.
 ## Verify and replay
 
 ```powershell
-java -cp 'D:/path/to/omicsmatic-0.4.0.jar' org.jlinalg.cli.LimmaWorkflowCli `
+java -jar 'D:/path/to/omicsmatic-0.4.0.jar' limma-tools `
   --verify 'D:/path/to/complete-analysis'
 ```
 
@@ -115,7 +120,7 @@ For a real original-runtime REPLAY, save this JSON with absolute paths:
 }
 ```
 
-Run it with `java -cp JAR org.jlinalg.cli.LimmaWorkflowCli --request replay.json`.
+Run it with `java -jar JAR limma-tools --request replay.json`.
 The parent must verify first. Replay reuses its declared inputs and runtime
 bindings, optionally with explicit `rscript`/`r_libraries` overrides. It must
 write outside the parent into new output; parent files remain unchanged.
