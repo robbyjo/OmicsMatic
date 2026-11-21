@@ -67,26 +67,52 @@ guard.after<-function() {
  }
 }
 record.internal<-function(label,value) {
- internal.count<<-internal.count+1L;start<-seek(journal,where=NA,rw='write')
- serialize(list(index=internal.count,label=label,value=value),journal,ascii=FALSE,version=3);flush(journal)
- end<-seek(journal,where=NA,rw='write');cat(paste(internal.count,label,start,end,sep='\t'),'\n',file='internal-model-index.tsv',append=TRUE,sep='')
+ internal.count<<-internal.count+1L;index<-internal.count
+ tryCatch({
+  start<-seek(journal,where=NA,rw='write')
+  serialize(list(index=index,label=label,value=value),journal,ascii=FALSE,version=3);flush(journal)
+  end<-seek(journal,where=NA,rw='write');cat(paste(index,label,start,end,sep='\t'),'\n',file='internal-model-index.tsv',append=TRUE,sep='')
+ },error=function(e) {
+  message<-conditionMessage(e)
+  internal.failures<<-c(internal.failures,paste('Original model journal write failed at',label,':',message))
+  tryCatch(retain(paste0('journal-fallback-',label),list(index=index,label=label,value=value,journal_error=message)),error=function(recording) {
+   internal.failures<<-c(internal.failures,paste('Could not persist original model journal fallback:',conditionMessage(recording)))
+  })
+ })
+ invisible(NULL)
 }
 gamma.observer<-function(frame) {
- fields<-intersect(c('iter','maxit','tol','dl','dbeta','dev','mu','lambda','maxinfo','beta','betaold','maxy'),ls(frame,all.names=TRUE))
- state<-mget(fields,envir=frame,inherits=FALSE)
- state$context<-internal.context
- if('iter'%in%fields) {
-  needed<-c('dl','dbeta','dev','mu','tol','lambda','maxinfo')
-  converged<-all(needed%in%fields)&&isTRUE(as.numeric(crossprod(state$dl,state$dbeta))<state$tol||state$dev/max(state$mu)<1e-15)
-  damped<-isTRUE(state$lambda/state$maxinfo>1e15)
-  state$observed_converged<-converged&&!damped
-  gamma.count<<-gamma.count+1L
-  metrics<-c(gamma.count,internal.context$feature_index,state$iter,state$maxit,state$tol,as.numeric(crossprod(state$dl,state$dbeta)),state$dev/max(state$mu),state$lambda/state$maxinfo,as.numeric(state$observed_converged),as.numeric(state$dl),as.numeric(state$dbeta))
-  if(length(metrics)!=13L)stop('Unexpected original two-variance-component convergence metric shape')
-  cat(paste(number(metrics),collapse='\t'),'\n',file='convergence.tsv',append=TRUE,sep='')
-  if(!state$observed_converged)internal.failures<<-c(internal.failures,paste('Original statmod glmgam.fit did not satisfy its source convergence criterion at feature',internal.context$feature_index,internal.context$feature_id))
- }else state$source_early_return<-TRUE
- record.internal('statmod-glmgam-final-locals',state)
+ state<-list()
+ tryCatch({
+  fields<-intersect(c('iter','maxit','tol','dl','dbeta','dev','mu','lambda','maxinfo','beta','betaold','maxy'),ls(frame,all.names=TRUE))
+  state<-mget(fields,envir=frame,inherits=FALSE);state$context<-internal.context
+  if('iter'%in%fields) {
+   needed<-c('maxit','tol','dl','dbeta','dev','mu','lambda','maxinfo')
+   state$missing_observer_fields<-setdiff(needed,fields)
+   if(length(state$missing_observer_fields)) {
+    state$observed_converged<-FALSE
+    internal.failures<<-c(internal.failures,paste('Incomplete original statmod glmgam.fit iteration state; original diagnostic preserved; missing',paste(state$missing_observer_fields,collapse=',')))
+   }else {
+    score.step<-as.numeric(crossprod(state$dl,state$dbeta));relative.deviance<-state$dev/max(state$mu);damping<-state$lambda/state$maxinfo
+    state$observed_converged<-isTRUE(score.step<state$tol||relative.deviance<1e-15)&&!isTRUE(damping>1e15)
+    gamma.count<<-gamma.count+1L
+    metrics<-c(gamma.count,internal.context$feature_index,state$iter,state$maxit,state$tol,score.step,relative.deviance,damping,as.numeric(state$observed_converged),as.numeric(state$dl),as.numeric(state$dbeta))
+    if(length(metrics)!=13L)stop('Unexpected original two-variance-component convergence metric shape')
+    cat(paste(number(metrics),collapse='\t'),'\n',file='convergence.tsv',append=TRUE,sep='')
+    if(!state$observed_converged)internal.failures<<-c(internal.failures,paste('Original statmod glmgam.fit did not satisfy its source convergence criterion at feature',internal.context$feature_index,internal.context$feature_id))
+   }
+  }else state$source_before_iterations<-TRUE
+  record.internal('statmod-glmgam-final-locals',state)
+ },error=function(e) {
+  # on.exit instrumentation must never replace the original result or condition.
+  # The enclosing workflow refuses completion when any observation is incomplete.
+  message<-conditionMessage(e)
+  internal.failures<<-c(internal.failures,paste('statmod observation failed; original diagnostic preserved:',message))
+  tryCatch(record.internal('statmod-observer-error',list(error=message,state=state)),error=function(recording) {
+   internal.failures<<-c(internal.failures,paste('Could not retain statmod observer failure:',conditionMessage(recording)))
+  })
+ })
+ invisible(NULL)
 }
 observed.mixed<-function(y,X,Z,w=NULL,...) {
  caller<-parent.frame();before<-internal.context
@@ -259,9 +285,14 @@ report$runtime_ready<-runtime.ready;report$error<-error;report$required_action<-
 if(exists('p')) {report$profile<-p$profile;report$operation<-p$operation;report$features_input<-p$features;report$samples<-p$samples;report$contrasts<-length(p$contrasts);report$sets<-p$sets}
 write.utf8(c(observed.warnings,adapter.warnings),'warnings.txt');write.utf8(observed.messages,'messages.txt')
 if(runtime.ready) {
- if(!is.null(journal))close(journal)
- tryCatch({saveRDS(objects,'objects-final.rds.part',version=3,compress=FALSE);if(!file.rename('objects-final.rds.part','objects.rds'))stop('Cannot finalize original object bundle')},error=function(e){if(code==0L){code<<-2L;report$status<<-'FAIL2_NO_COMPLETE_RESULT';report$results_admitted<<-FALSE;report$error<<-conditionMessage(e)}})
- if(exists('.Random.seed',envir=.GlobalEnv))saveRDS(.Random.seed,'rng-after.rds',version=3)
+ finalization.failure<-function(label,e) {
+  detail<-paste(label,conditionMessage(e),sep=': ')
+  report$finalization_failures<<-c(report$finalization_failures,list(detail))
+  if(code==0L){code<<-2L;report$status<<-'FAIL2_NO_COMPLETE_RESULT';report$results_admitted<<-FALSE;report$error<<-detail}
+ }
+ if(!is.null(journal))tryCatch(close(journal),error=function(e)finalization.failure('Original journal close failed',e))
+ tryCatch({saveRDS(objects,'objects-final.rds.part',version=3,compress=FALSE);if(!file.rename('objects-final.rds.part','objects.rds'))stop('Cannot finalize original object bundle')},error=function(e)finalization.failure('Original object bundle finalization failed',e))
+ if(exists('.Random.seed',envir=.GlobalEnv))tryCatch(saveRDS(.Random.seed,'rng-after.rds',version=3),error=function(e)finalization.failure('Original RNG capture failed',e))
 }
 if(requireNamespace('jsonlite',quietly=TRUE))jsonlite::write_json(report,'report.json',pretty=TRUE,auto_unbox=TRUE,null='null')
 clean<-function(x)gsub('[\t\r\n]',' ',if(is.null(x))'' else x)

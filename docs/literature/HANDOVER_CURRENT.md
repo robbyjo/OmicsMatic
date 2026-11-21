@@ -1,5 +1,17 @@
 # Current toolbox handover
 
+**Current: [limma normal-JAR execution qualification and remaining work](LIMMA_WORKFLOW_QUALIFICATION_2026-11-21.md).**
+The observer now preserves original errors/returns even with incomplete locals
+or failed journal writes. Forty-six fresh normal-JAR analyses match 169 complete
+stock-original returns exactly; all 72 packaged tests pass per JVM on Windows21/25
+and Linux21. Eight actual replays preserve parent files and exports; owned timeout
+parent/child cleanup, invalid-original-model failures and six executed examples
+pass. Global registration, source-role/catalog admission and older editions remain
+open. Totals stay **141 families, 1,575 reviewed uses and 1,140 pending**.
+Preserve all **34 worktrees** and separately transfer ignored runtimes, exact
+JARs, primary full text and complete private evidence. Both reports stay off Pages.
+The full goal remains active and unfinished; lower entries retain history.
+
 **Latest handover: [21 November 2026 limma workflows and exact remaining work](HANDOVER_2026-11-21_LIMMA_WORKFLOWS.md).**
 The standalone original-R adapter saves six prepared-data operations and 45
 synthetic execution captures with exact independent complete-object comparisons.

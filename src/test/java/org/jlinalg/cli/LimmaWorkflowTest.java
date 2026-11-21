@@ -22,9 +22,9 @@ final class LimmaWorkflowTest {
         return CASES.keySet().stream().map(name->DynamicTest.dynamicTest(name,()->LimmaWorkflowCli.verify(restore(name,home("original-"+name)))));
     }
     @Test void independentCoverageRetainsAllOperationAndBoundaryFamilies()throws Exception {
-        assertEquals(45,CASES.size());var operations=new HashSet<String>();for(Object row:CASES.values())operations.add(text(object(row,"case"),"operation"));
+        assertEquals(46,CASES.size());var operations=new HashSet<String>();for(Object row:CASES.values())operations.add(text(object(row,"case"),"operation"));
         assertEquals(Set.of("LM","VOOM","EDGER_VOOM_LMFIT","BATCH","CAMERAPR","NORMALIZE"),operations);
-        assertTrue(CASES.keySet().containsAll(Set.of("BORROW_ZERO_DF","BORROW_ZERO_DF_TREAT","UTF8_CHUNKS","SMALL_P","MODERN_TREND_SPAN","EDGER_SAMPLE_WEIGHTS","CAMERA_ONE_SET","MULTI_DEPENDENT")));
+        assertTrue(CASES.keySet().containsAll(Set.of("BORROW_ZERO_DF","BORROW_ZERO_DF_TREAT","UTF8_CHUNKS","SMALL_P","TINY_POSITIVE_P","MODERN_TREND_SPAN","EDGER_SAMPLE_WEIGHTS","CAMERA_ONE_SET","MULTI_DEPENDENT")));
     }
     @Test void unicodeNumericAndNaLikeIdentitiesRemainDistinctAcrossOutputChunks()throws Exception {
         Path root=restore("UTF8_CHUNKS",home("utf8"));var input=SusieWorkflowFiles.table(root.resolve("worker/matrix.tsv"),3000,20);var output=SusieWorkflowFiles.table(root.resolve("results/expression.tsv"),3000,20);
@@ -42,13 +42,15 @@ final class LimmaWorkflowTest {
         Path root=restore("PROVIDED_LIBRARIES_FACTORS",home("provided"));var rows=Files.readAllLines(root.resolve("results/normalization.tsv"));for(String line:rows.subList(1,rows.size()))assertEquals(2,Double.parseDouble(line.split("\t",-1)[2]));LimmaWorkflowCli.verify(root);
     }
     @TestFactory Stream<DynamicTest> mathematicalAndSourceContradictionsFailAfterResealing() {
-        return Stream.of("t","positive P zero","positive adjusted P zero","posterior","total df","source script","source zip","identity","journal truncated","convergence flag","snapshot deleted","sigma NA","extra result").map(name->DynamicTest.dynamicTest(name,()->{
-            String source=name.startsWith("positive ")?"SMALL_P":name.equals("journal truncated")||name.equals("convergence flag")?"LM_BLOCK":"LM";
+        return Stream.of("t","positive P zero","positive adjusted P zero","tiny P zero","tiny adjusted P zero","posterior","total df","source script","source zip","identity","journal truncated","convergence flag","snapshot deleted","sigma NA","extra result").map(name->DynamicTest.dynamicTest(name,()->{
+            String source=name.startsWith("tiny ")?"TINY_POSITIVE_P":name.startsWith("positive ")?"SMALL_P":name.equals("journal truncated")||name.equals("convergence flag")?"LM_BLOCK":"LM";
             Path root=restore(source,home("tamper"));
             switch(name) {
                 case "t"->change(root.resolve("results/t.tsv"),1,1,"999");
                 case "positive P zero"->positiveToZero(root.resolve("results/pvalue.tsv"));
                 case "positive adjusted P zero"->positiveToZero(root.resolve("results/padjust.tsv"));
+                case "tiny P zero"->tinyToZero(root.resolve("results/pvalue.tsv"));
+                case "tiny adjusted P zero"->tinyToZero(root.resolve("results/padjust.tsv"));
                 case "posterior"->change(root.resolve("results/variance.tsv"),1,5,"123.456");
                 case "total df"->change(root.resolve("results/variance.tsv"),1,6,"0.5");
                 case "source script"->Files.writeString(root.resolve("source/limma_workflow.R"),"\n# changed\n",StandardCharsets.UTF_8,StandardOpenOption.APPEND);
@@ -102,6 +104,7 @@ final class LimmaWorkflowTest {
         r.put("schema_version",1);r.put("mode","RUN");r.put("profile",LimmaWorkflowContracts.PROFILE);r.put("operation","LM");r.put("out",h.resolve("analysis").toString());r.put("matrix",h.resolve("matrix.tsv").toString());r.put("design",h.resolve("design.tsv").toString());r.put("units","continuous-values");r.put("rscript",h.resolve("missing-Rscript").toString());r.put("r_libraries",List.of(h.resolve("libraries").toString()));r.put("moderation",Map.of("method","EBAYES"));r.put("contrasts",List.of(Map.of("id","difference","values",List.of(0,1))));r.put("adjustment_scope","per-contrast");return r;
     }
     private static void positiveToZero(Path file)throws IOException {var rows=Files.readAllLines(file);int selected=-1;double minimum=1;for(int i=1;i<rows.size();i++){double v=Double.parseDouble(rows.get(i).split("\t",-1)[1]);if(v>0&&v<minimum){selected=i;minimum=v;}}if(selected<0)throw new AssertionError("Missing original positive probability control");change(file,selected,1,"0");}
+    private static void tinyToZero(Path file)throws IOException {var rows=Files.readAllLines(file);for(int i=1;i<rows.size();i++){double v=Double.parseDouble(rows.get(i).split("\t",-1)[1]);if(v>0&&v<1e-50){change(file,i,1,"0");return;}}throw new AssertionError("Missing actual original tiny positive probability control");}
     private static void change(Path file,int row,int column,String value)throws IOException {var lines=Files.readAllLines(file);String[] fields=lines.get(row).split("\t",-1);fields[column]=value;lines.set(row,String.join("\t",fields));Files.write(file,lines,StandardCharsets.UTF_8);}
     private static Path home(String label)throws IOException {Path base=Path.of(System.getProperty("jlinalg.limma.testOutput","build/limma-workflow-test-output")).toAbsolutePath();Files.createDirectories(base);return Files.createTempDirectory(base,label+"-");}
     private static Path restore(String name,Path root)throws IOException {
@@ -109,7 +112,7 @@ final class LimmaWorkflowTest {
         for(var e:files.entrySet()){Path relative=Path.of(e.getKey());if(relative.isAbsolute()||!relative.normalize().equals(relative)||e.getKey().contains("\\")||e.getKey().contains(".."))throw new IOException("Unsafe fixture path");var pin=object(e.getValue(),"pin");byte[] raw=BLOBS.get(text(pin,"sha256"));assertNotNull(raw);assertEquals(((Number)pin.get("bytes")).longValue(),raw.length);Path target=root.resolve(relative);Files.createDirectories(target.getParent());Files.write(target,raw,StandardOpenOption.CREATE_NEW);}return root;
     }
     private static Map<String,Object> fixtures() {
-        try(InputStream source=LimmaWorkflowTest.class.getResourceAsStream("limma-workflow-originals.zip")){assertNotNull(source);try(ZipInputStream zip=new ZipInputStream(source)){Map<String,Object> metadata=null;long bytes=0;var names=new HashSet<String>();for(var entry=zip.getNextEntry();entry!=null;entry=zip.getNextEntry()){assertTrue(names.add(entry.getName()));byte[] raw=zip.readNBytes(32*1024*1024+1);bytes+=raw.length;assertTrue(raw.length<=32*1024*1024&&bytes<=256*1024*1024);if(entry.getName().equals("FIXTURE.json"))metadata=object(SimpleJson.parse(new String(raw,StandardCharsets.UTF_8)),"fixture");else {assertTrue(entry.getName().startsWith("blobs/"));String sha=entry.getName().substring(6);assertEquals(sha,LimmaWorkflowRuntime.sha(raw));assertNull(BLOBS.put(sha,raw));}}assertNotNull(metadata);assertEquals(45,((Number)metadata.get("case_count")).intValue());return object(metadata.get("cases"),"cases");}}
+        try(InputStream source=LimmaWorkflowTest.class.getResourceAsStream("limma-workflow-originals.zip")){assertNotNull(source);try(ZipInputStream zip=new ZipInputStream(source)){Map<String,Object> metadata=null;long bytes=0;var names=new HashSet<String>();for(var entry=zip.getNextEntry();entry!=null;entry=zip.getNextEntry()){assertTrue(names.add(entry.getName()));byte[] raw=zip.readNBytes(32*1024*1024+1);bytes+=raw.length;assertTrue(raw.length<=32*1024*1024&&bytes<=256*1024*1024);if(entry.getName().equals("FIXTURE.json"))metadata=object(SimpleJson.parse(new String(raw,StandardCharsets.UTF_8)),"fixture");else {assertTrue(entry.getName().startsWith("blobs/"));String sha=entry.getName().substring(6);assertEquals(sha,LimmaWorkflowRuntime.sha(raw));assertNull(BLOBS.put(sha,raw));}}assertNotNull(metadata);assertEquals(46,((Number)metadata.get("case_count")).intValue());return object(metadata.get("cases"),"cases");}}
         catch(IOException e){throw new ExceptionInInitializerError(e);}
     }
 }

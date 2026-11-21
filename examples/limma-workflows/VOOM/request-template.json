@@ -1,0 +1,50 @@
+{
+  "adjust_method": "BH",
+  "adjustment_scope": "per-contrast",
+  "contrasts": [
+    {
+      "id": "case minus control",
+      "values": [
+        0,
+        1
+      ]
+    }
+  ],
+  "correlation": {
+    "mode": "none"
+  },
+  "design": "design.tsv",
+  "matrix": "matrix.tsv",
+  "mode": "RUN",
+  "moderation": {
+    "legacy": "auto",
+    "method": "EBAYES",
+    "proportion": 0.01,
+    "robust": false,
+    "stdev_coef_lim": [
+      0.1,
+      4
+    ],
+    "trend": "none"
+  },
+  "normalization": {
+    "a_cutoff": -10000000000.0,
+    "do_weighting": true,
+    "logratio_trim": 0.3,
+    "method": "TMMwsp",
+    "sum_trim": 0.05
+  },
+  "operation": "VOOM",
+  "out": "NEW_ANALYSIS_OUTPUT",
+  "profile": "limma-3.68.5-edgeR-4.10.7-statmod-1.5.2-R4.6.1",
+  "r_libraries": [
+    "PATH_TO_EXACT_PACKAGE_LIBRARY"
+  ],
+  "rscript": "PATH_TO_R_4.6.1_Rscript",
+  "schema_version": 1,
+  "units": "raw-counts",
+  "voom": {
+    "adaptive_span": true,
+    "normalize_method": "none"
+  }
+}
