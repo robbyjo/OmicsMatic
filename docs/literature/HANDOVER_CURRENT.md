@@ -1,5 +1,16 @@
 # Current toolbox handover
 
+**Active goal: [GCTA model-export checks and remaining work](GCTA_MODEL_CHECKPOINT_2026-11-20.md).**
+The source-correct covariance follow-up and 104 export comparisons pass. REML
+summary verification now rejects nine previously admitted invalid controls;
+18 packaged tests and all 56 prior complete captures pass on each of three
+JVMs. Actual process/dependency controls retain failures and verify owned-worker
+termination. GCTA/COJO catalog admission, mtCOJO, older editions and global
+registration remain open. Counts stay **140 integrations, 1,548 reviewed uses
+and 1,166 pending**. Preserve all **26 worktrees** and separately transfer
+private runtimes, exact JARs and complete evidence. Both reports stay off Pages.
+The user resumed the goal after the historical paused handover below.
+
 **Latest handover: [GCTA file workflows, warnings and exact remaining tasks](HANDOVER_2026-11-20_GCTA_WORKFLOWS.md).**
 The normal JAR now contains development native/original RUN/VERIFY/REPLAY for
 ten typed prepared-data model names. Sixteen packaged tests pass on three JVMs;

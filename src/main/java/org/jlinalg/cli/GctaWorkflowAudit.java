@@ -3,6 +3,7 @@
 package org.jlinalg.cli;
 
 import java.io.*;
+import java.math.BigDecimal;
 import java.nio.ByteBuffer;
 import java.nio.charset.CodingErrorAction;
 import java.nio.charset.StandardCharsets;
@@ -156,13 +157,14 @@ final class GctaWorkflowAudit {
         if(lines.isEmpty()||!lines.get(0).equals("Source\tVariance\tSE"))throw new IOException("REML hsq schema differs");
         var objects=new LinkedHashMap<String,Object>();var fixed=new ArrayList<List<Double>>();boolean fixedSection=false;
         for(int i=1;i<lines.size();i++) {
-            String line=lines.get(i);if(line.equals("Fix_eff\tSE")){fixedSection=true;continue;}
+            String line=lines.get(i);if(line.equals("Fix_eff\tSE")){if(fixedSection)throw new IOException("Duplicate REML fixed-effect section");fixedSection=true;continue;}
             String[] f=line.split("\t",-1);
             if(fixedSection){width(f,2,"fixed effect");double b=finite(f[0],"fixed effect"),se=finite(f[1],"fixed SE");if(se<0)throw new IOException("Negative fixed-effect SE");fixed.add(List.of(b,se));}
             else {if(f.length<2||f.length>3||objects.containsKey(f[0]))throw new IOException("Unexpected REML model row");var numbers=new ArrayList<Double>();for(int j=1;j<f.length;j++)numbers.add(finite(f[j],"REML "+f[0]));if(numbers.size()==2&&numbers.get(1)<0)throw new IOException("Negative REML SE");objects.put(f[0],numbers);}
         }
         if(fixed.size()!=input.fixedColumns())throw new IOException("Original fixed-effect design dimension changed; no automatic column removal");
         int q=input.grmSamples().size()+1;var names=new ArrayList<String>();for(int i=0;i<q-1;i++)names.add(q==2?"V(G)":"V(G"+(i+1)+")");names.add("V(e)");
+        remlSummarySchema(objects,names);
         double total=0,absoluteTotal=0;for(String name:names){double value=estimate(objects,name);if(!Boolean.TRUE.equals(r.get("reml_unconstrained"))&&value<0)throw new IOException("Negative constrained variance component");total+=value;absoluteTotal+=Math.abs(value);}
         double sumBound=.5000001e-6*(q+1)+4*q*Math.ulp(absoluteTotal);
         if(Math.abs(total-estimate(objects,"Vp"))>sumBound||estimate(objects,"n")!=input.samples().size())throw new IOException("REML variance total or complete sample cohort differs");
@@ -171,9 +173,10 @@ final class GctaWorkflowAudit {
         var logLines=raw.lines().filter(s->!s.isBlank()).toList();int start=-1;
         for(int i=0;i<logLines.size();i++)if(logLines.get(i).contains("Sampling variance/covariance of the estimates of variance components:"))start=i+1;
         if(start<0||start+q>logLines.size())throw new IOException("Complete original variance-component covariance export missing");
-        var covariance=new ArrayList<List<Double>>();
+        var covariance=new ArrayList<List<Double>>();BigDecimal covarianceSum=BigDecimal.ZERO,covarianceRadius=BigDecimal.ZERO;
         for(int i=0;i<q;i++) {
             String[] f=logLines.get(start+i).strip().split("\\s+");width(f,q,"variance-component covariance");var row=new ArrayList<Double>();for(String s:f)row.add(finite(s,"variance covariance"));
+            for(String value:f){var printed=new BigDecimal(value);covarianceSum=covarianceSum.add(printed);covarianceRadius=covarianceRadius.add(printed.ulp().abs().multiply(new BigDecimal("0.5")));}
             if(row.get(i)<0)throw new IOException("Negative original sampling covariance diagonal");
             double rounding=.5*new java.math.BigDecimal(f[i]).ulp().doubleValue();
             double lower=Math.sqrt(Math.max(0,row.get(i)-rounding)),upper=Math.sqrt(row.get(i)+rounding),reported=se(objects,names.get(i));
@@ -181,6 +184,7 @@ final class GctaWorkflowAudit {
             if(reported+seRadius<lower||reported-seRadius>upper)throw new IOException("REML exported covariance/SE disagree beyond their original decimal rounding intervals");covariance.add(row);
         }
         for(int i=0;i<q;i++)for(int j=0;j<i;j++)if(!covariance.get(i).get(j).equals(covariance.get(j).get(i)))throw new IOException("Asymmetric original sampling covariance");
+        remlSummaryRelations(objects,names,covarianceSum,covarianceRadius);
         var seen=new HashSet<GctaHardcallGrm.SampleId>();long[] rows={0};
         GctaWorkflowFiles.rows(Path.of(prefix+".indi.blp"),r,number(r,"maximum_samples"),f->{
             width(f,2+2*q,"complete BLP export");var id=id(f[0],f[1]);if(!seen.add(id))throw new IOException("Duplicate BLP identity");for(int j=2;j<f.length;j++)finite(f[j],"BLP column");rows[0]++;
@@ -196,6 +200,60 @@ final class GctaWorkflowAudit {
     }
     private static double se(Map<String,Object> values,String key) throws IOException {
         if(!(values.get(key) instanceof List<?> list)||list.size()!=2)throw new IOException("Missing REML uncertainty: "+key);return ((Number)list.get(1)).doubleValue();
+    }
+    private static void remlSummarySchema(Map<String,Object> values,List<String> components) throws IOException {
+        var expected=new LinkedHashSet<String>(components);expected.add("Vp");
+        for(int i=0;i<components.size()-1;i++)expected.add(components.get(i)+"/Vp");
+        if(components.size()>2)expected.add("Sum of V(G)/Vp");
+        var scalars=new HashSet<>(Set.of("logL","n"));
+        // This closed profile uses the original default single-GRM LRT. With
+        // --mgrm and no explicit --reml-lrt, the original omits that test.
+        if(components.size()==2)scalars.addAll(Set.of("logL0","LRT","df","Pval"));
+        expected.addAll(scalars);
+        if(!values.keySet().equals(expected))throw new IOException("REML summary schema is incomplete or differs from the declared observed-scale univariate profile");
+        for(String key:expected)if(!(values.get(key) instanceof List<?> row)||row.size()!=(scalars.contains(key)?1:2))
+            throw new IOException("REML summary schema has an incomplete estimate/uncertainty row: "+key);
+    }
+    private static void remlSummaryRelations(Map<String,Object> values,List<String> components,
+            BigDecimal covarianceSum,BigDecimal covarianceRadius) throws IOException {
+        BigDecimal genetic=BigDecimal.ZERO,geneticRadius=BigDecimal.ZERO;
+        for(int i=0;i<components.size()-1;i++) {
+            String key=components.get(i);double value=estimate(values,key);
+            remlRatio(values,key+"/Vp",BigDecimal.valueOf(value),fixedRadius(value,6));
+            genetic=genetic.add(BigDecimal.valueOf(value));geneticRadius=geneticRadius.add(fixedRadius(value,6));
+        }
+        if(components.size()>2)remlRatio(values,"Sum of V(G)/Vp",genetic,geneticRadius);
+        double totalSE=se(values,"Vp");BigDecimal center=BigDecimal.valueOf(totalSE),radius=fixedRadius(totalSE,6);
+        BigDecimal lower=center.subtract(radius).max(BigDecimal.ZERO),upper=center.add(radius);
+        if(lower.multiply(lower).compareTo(covarianceSum.add(covarianceRadius))>0
+                ||upper.multiply(upper).compareTo(covarianceSum.subtract(covarianceRadius))<0)
+            throw new IOException("REML total variance SE disagrees with the full original component covariance beyond printed rounding intervals");
+        if(components.size()==2) {
+            double statistic=estimate(values,"LRT"),probability=estimate(values,"Pval");
+            if(statistic<0||estimate(values,"df")!=1||probability<0||probability>.5)
+                throw new IOException("REML likelihood-test statistic, degrees of freedom or original one-sided P value is invalid");
+            double full=estimate(values,"logL"),reduced=estimate(values,"logL0");
+            BigDecimal difference=BigDecimal.valueOf(full).subtract(BigDecimal.valueOf(reduced));
+            BigDecimal differenceRadius=fixedRadius(full,3).add(fixedRadius(reduced,3));
+            BigDecimal two=BigDecimal.valueOf(2),stat=BigDecimal.valueOf(statistic),statRadius=fixedRadius(statistic,3);
+            BigDecimal minimum=difference.subtract(differenceRadius).multiply(two).max(BigDecimal.ZERO);
+            BigDecimal maximum=difference.add(differenceRadius).multiply(two).max(BigDecimal.ZERO);
+            if(stat.subtract(statRadius).compareTo(maximum)>0||stat.add(statRadius).compareTo(minimum)<0)
+                throw new IOException("REML likelihood-test statistic disagrees with the original full/null log likelihoods beyond printed rounding intervals");
+        }
+    }
+    private static void remlRatio(Map<String,Object> values,String key,BigDecimal numerator,BigDecimal numeratorRadius) throws IOException {
+        double ratio=estimate(values,key),total=estimate(values,"Vp");
+        BigDecimal h=BigDecimal.valueOf(ratio),vp=BigDecimal.valueOf(total),hRadius=fixedRadius(ratio,6),vpRadius=fixedRadius(total,6);
+        BigDecimal residual=numerator.subtract(h.multiply(vp)).abs();
+        BigDecimal bound=numeratorRadius.add(h.abs().multiply(vpRadius)).add(vp.abs().multiply(hRadius)).add(hRadius.multiply(vpRadius));
+        // Cross multiplication remains defined when printed Vp rounds to zero.
+        // A signed or >1 ratio is valid when consistent; never clamp it.
+        if(residual.compareTo(bound)>0)throw new IOException("REML variance ratio disagrees with original component/total exports beyond printed rounding intervals: "+key);
+    }
+    private static BigDecimal fixedRadius(double value,int places) {
+        return BigDecimal.ONE.scaleByPowerOfTen(-places).multiply(new BigDecimal("0.5000001"))
+            .add(BigDecimal.valueOf(Math.ulp(value)).multiply(BigDecimal.valueOf(4)));
     }
     private static void ld(Path root,Map<String,Object> r,Prepared input,Map<String,Object> report) throws Exception {
         Path path=Path.of(result(root,r)+".score.ld");boolean region=text(r,"model").equals("LD_SCORE_REGION");
