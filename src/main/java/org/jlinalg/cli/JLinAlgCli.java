@@ -70,6 +70,8 @@ public final class JLinAlgCli {
                 return GctaWorkflowCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
             if (arguments.length > 0 && arguments[0].equals("broad-gsea-tools"))
                 return BroadGseaWorkflowCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+            if (arguments.length > 0 && arguments[0].equals("twosamplemr-tools"))
+                return TwoSampleMrToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
             if (arguments.length > 0 && arguments[0].equals("peer-tools"))
                 return PeerWorkflowCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
             if (arguments.length > 0 && arguments[0].equals("limma-tools"))
@@ -530,6 +532,7 @@ public final class JLinAlgCli {
               java -jar omicsmatic-<version>.jar chromvar-tools --help
               java -jar omicsmatic-<version>.jar gcta-tools --help
               java -jar omicsmatic-<version>.jar broad-gsea-tools --help
+              java -jar omicsmatic-<version>.jar twosamplemr-tools --help
               java -jar omicsmatic-<version>.jar peer-tools --help
               java -jar omicsmatic-<version>.jar limma-tools --help
               java -jar omicsmatic-<version>.jar edger-tools --help

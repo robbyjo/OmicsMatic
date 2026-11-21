@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "mode": "RUN",
+  "profile": "TwoSampleMR0.7.14-c08ab8a6-R4.6.1",
+  "operation": "HARMONISE_AND_MR",
+  "out": "../out/modern-prepared",
+  "rscript": "REPLACE_WITH_ABSOLUTE_RSCRIPT",
+  "r_libraries": [
+    "REPLACE_WITH_ABSOLUTE_PRIVATE_LIBRARY"
+  ],
+  "seed": 20261121,
+  "preparation_note": "Synthetic global CLI demonstration with original source-edition semantics and declared present-day dependencies; not author data or paper reproduction",
+  "exposure": "../data/modern-prepared.exposure",
+  "outcome": "../data/modern-prepared.outcome",
+  "harmonise_action": 2,
+  "methods": [
+    "mr_egger_regression",
+    "mr_weighted_median",
+    "mr_ivw",
+    "mr_simple_mode",
+    "mr_weighted_mode"
+  ],
+  "parameters": {
+    "nboot": 1000
+  },
+  "sensitivity": [
+    "HETEROGENEITY",
+    "PLEIOTROPY",
+    "SINGLE_SNP",
+    "LEAVE_ONE_OUT"
+  ]
+}

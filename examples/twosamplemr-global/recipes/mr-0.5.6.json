@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "mode": "RUN",
+  "profile": "TwoSampleMR0.5.6-8db843c0-R4.6.1-Windows64",
+  "operation": "MR",
+  "out": "../out/mr-0.5.6",
+  "rscript": "REPLACE_WITH_EXACT_R_4.6.1_RSCRIPT_PATH",
+  "r_libraries": [
+    "REPLACE_WITH_SELECTED_VERSION_LIBRARY",
+    "REPLACE_WITH_HISTORICAL_EXTRAS_LIBRARY",
+    "REPLACE_WITH_PROTECTED_PRECEDING_LIBRARY"
+  ],
+  "seed": 20261121,
+  "preparation_note": "Synthetic global CLI demonstration with original source-edition semantics and declared present-day dependencies; not author data or paper reproduction",
+  "harmonised": "../data/mr-0.5.6.harmonised",
+  "methods": [
+    "mr_wald_ratio",
+    "mr_egger_regression",
+    "mr_weighted_median",
+    "mr_ivw",
+    "mr_simple_mode",
+    "mr_weighted_mode"
+  ],
+  "parameters": {
+    "nboot": 32
+  },
+  "sensitivity": [],
+  "parameter_policy": "source-defaults-with-overrides"
+}

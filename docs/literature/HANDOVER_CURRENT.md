@@ -1,5 +1,22 @@
 # Current toolbox handover
 
+**Current: [global TwoSampleMR command and catalog admission next](TWOSAMPLEMR_GLOBAL_CHECKPOINT_2026-11-21.md).**
+The source-built JAR exposes **twosamplemr-tools** for all seven exact profiles.
+All858 tests pass per Windows Java21/25 and Linux Java21; seven global examples,
+seven real replays and seven Linux R-free verifications pass. Fresh original
+calls match50 complete returns/RNG. Ten CLI refusals admit no results; six
+neighbor help outputs remain exact. Only the reviewed root dispatcher changes
+among22,375 preceding JAR payloads; all original scientific classes/resources
+remain exact. Fresh all250/14-role audits and16 source refusals pass per host;
+the unchanged preceding PEER catalog owner verifies independently. All46
+worktrees,27 canonical files and private runtimes remain preserved. **Next:
+guarded TwoSampleMR catalog admission**, then remaining high-impact scopes and
+individual reviews. The linked plan's proposed counts are unapplied: current
+totals stay143 scoped families,1,616 reviewed/1,104 pending with zero new credit.
+Both reports stay off Pages; transfer ignored runtimes/JARs/full text/private
+evidence separately with checksums. The full goal is unfinished; lower entries
+retain prior checkpoints.
+
 **Current: [original0.6.8 local clumping and ordered remaining work](TWOSAMPLEMR_HISTORICAL_CLUMP_CHECKPOINT_2026-11-21.md).**
 The normal JAR passes **812 tests** per Windows Java21/25 and Linux Java21,
 25 actual expectations (21 completed selections),14 missing/failed/source/lifetime

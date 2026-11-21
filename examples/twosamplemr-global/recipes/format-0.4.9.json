@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "mode": "RUN",
+  "profile": "TwoSampleMR0.4.9-db55b97a-R4.6.1-Windows64",
+  "operation": "FORMAT",
+  "out": "../out/format-0.4.9",
+  "rscript": "REPLACE_WITH_EXACT_R_4.6.1_RSCRIPT_PATH",
+  "r_libraries": [
+    "REPLACE_WITH_SELECTED_VERSION_LIBRARY",
+    "REPLACE_WITH_HISTORICAL_EXTRAS_LIBRARY",
+    "REPLACE_WITH_PROTECTED_PRECEDING_LIBRARY"
+  ],
+  "seed": 20261121,
+  "preparation_note": "Synthetic global CLI demonstration with original source-edition semantics and declared present-day dependencies; not author data or paper reproduction",
+  "data": "../data/format-0.4.9.data",
+  "format_policy": "source-defaults-with-overrides",
+  "format_options": {
+    "type": "exposure",
+    "phenotype_col": "Trait",
+    "snp_col": "Marker",
+    "beta_col": "Effect",
+    "se_col": "StdError",
+    "eaf_col": "AF",
+    "effect_allele_col": "A1",
+    "other_allele_col": "A2",
+    "pval_col": "P",
+    "samplesize_col": "N",
+    "min_pval": 1e-200
+  }
+}
