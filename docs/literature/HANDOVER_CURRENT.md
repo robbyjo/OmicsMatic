@@ -1,5 +1,21 @@
 # Current toolbox handover
 
+**Current: [original0.6.8 local clumping and ordered remaining work](TWOSAMPLEMR_HISTORICAL_CLUMP_CHECKPOINT_2026-11-21.md).**
+The normal JAR passes **812 tests** per Windows Java21/25 and Linux Java21,
+25 actual expectations (21 completed selections),14 missing/failed/source/lifetime
+controls, three real replays, three examples and five Linux R-free verifications.
+Fresh original calls match **81 complete returns/RNG**; three error comparisons
+match class/static header/RNG while retaining volatile logs. All149 tagged
+TwoSampleMR functions and seven ieugwasr functions are guarded; the two observed
+provider bindings are restored. All22,357 preceding JAR payloads, private runtimes,
+27 canonical files and45 worktrees remain preserved. New static P157/P177 code
+attribution is a proposal: archived bidirectional MR for P157; explicit separate
+IVW provider and inferred median/mode provider for P177. **Next: remaining
+provider/API/source gaps, global registration and guarded admission.** Counts
+stay143 scoped families,1,616 reviewed/1,104 pending with zero new credit. Both
+reports stay off Pages. Transfer ignored runtimes/JARs/full text/private evidence
+separately with checksums. The full goal is unfinished; lower entries retain history.
+
 **Current: [historical TwoSampleMR normal-JAR execution and remaining work](TWOSAMPLEMR_HISTORICAL_CHECKPOINT_2026-11-21.md).**
 All49 normal-JAR cases match expected outcomes (45 successful, four original rank
 errors); fresh tagged namespaces match121 complete returns and four errors/RNG.
