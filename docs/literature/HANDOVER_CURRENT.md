@@ -1,5 +1,18 @@
 # Current toolbox handover
 
+**Latest handover: [21 November 2026 limma workflows and exact remaining work](HANDOVER_2026-11-21_LIMMA_WORKFLOWS.md).**
+The standalone original-R adapter saves six prepared-data operations and 45
+synthetic execution captures with exact independent complete-object comparisons.
+The corrected normal build passes all 69 focused tests; the first failed harness
+attempt remains retained. Full live normal-JAR/cross-host qualification, observer
+error-path review, a tiny positive probability control, global CLI registration,
+historical editions and source-role/catalog admission remain open. Totals stay
+**141 families, 1,575 reviewed uses and 1,140 pending**; no new catalog credit.
+Preserve all **33 worktrees** and transfer ignored exact runtimes, producer JARs,
+primary full text and complete private evidence separately with checksums.
+Both literature reports remain off Pages. The full goal remains unfinished.
+Use this handover first; the lower entries retain historical checkpoints.
+
 **Current: [native limma variance qualification and remaining work](LIMMA_VARIANCE_CHECKPOINT_2026-11-20.md).**
 The normal JAR now contains source-matched limma3.68.5 variance components.
 All 379 tests and 23,873 original field comparisons pass per JVM on Windows21/25

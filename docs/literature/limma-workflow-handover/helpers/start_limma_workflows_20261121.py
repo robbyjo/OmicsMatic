@@ -1,0 +1,6 @@
+from pathlib import Path
+import ast
+R=Path('D:/projects/JLinAlg');source=(R/'build/start_limma_native_20261120.py').read_text(encoding='utf-8')
+for old,new in [("P=R/'build/git-publish/20261120-handover-limma-75-2';T=R/'build/lm-2';O=R/'build/limma-native-start-20261120-1'","P=R/'build/git-publish/20261120-limma-native-76';T=R/'build/lm-3';O=R/'build/limma-workflows-start-20261121-1'"),('3efd2dad141dd330daa121b9322f7a322514c357','30599215177e5a70e705ad8024e82f9b6b7d2f5e'),('len(rows)==31','len(rows)==32'),('codex/limma-native-20261120','codex/limma-workflows-20261121'),('PASS_NEW_LIMMA_NATIVE_WORKTREE','PASS_NEW_LIMMA_WORKFLOWS_WORKTREE'),('prior_worktrees_preserved=31,current_worktrees=32','prior_worktrees_preserved=32,current_worktrees=33'),('progress: handover and limma intake saved, fresh all250 verification and both-host saved readers passed, main push verified; no new family credit','progress: native limma variance component qualified in normal JAR,379 tests and23873 original fields per JVM on three JVMs,20 role proposals,fresh all250 verification,main push verified; no new family credit'),('New limma native checkout;31 predecessors unchanged;32 worktrees','New limma workflows checkout;32 predecessors unchanged;33 worktrees')]:
+    assert old in source,old;source=source.replace(old,new)
+ast.parse(source);exec(compile(source,__file__,'exec'))
