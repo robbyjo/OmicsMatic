@@ -1,0 +1,9 @@
+# Saved Monocle1.0.0 weight-stage checkpoint
+
+Run `python -B tools/literature/monocle100/verify.py --out build/NEW-saved-check` with Python3.11+ without `-O`. Add `--restore` to extract evidence into NEW output. The reader verifies current source/canonical identities, all838 catalog manifest members, archive populations, complete original-source inventory, exact binary-weight projections and recorded normal/three-host/source/context qualification. It executes no Git, Java, R, XML parsing or scientific model. It does not authenticate a producer or repeat original fitting.
+
+The packet retains33 original controls (25 successful/eight failed), raw failed/successful build and test records, actual three-host examples, original source archives/licenses and protected-library before/after hashes.636 tests pass per normal/packaged JVM, with all22378 preceding JAR payloads exact. The public example preserves74 binary64 weights and compares21 original-spdep fields for all three genes. Both-host fresh source/cumulative catalog and three setup refusal controls pass. New family credit is zero; counts stay144 scoped,1630 reviewed,1092 pending.
+
+`INVENTORY.json` maps logical paths to SHA256-addressed members in `checks.zip`. Identical bytes are stored once. Installed runtimes, generated builds/classes/caches and large producers remain private, listed in `PRIVATE-TRANSFER.json`. The first unlogged manual example is retained as an earlier attempt; the formal three-host example supplies captured process transcripts and exit statuses. Failed compilation/harness/source-control attempts remain retained, never promoted as scientific results.
+
+Read [warnings and required actions](WARNINGS.md), the [current checkpoint](../MONOCLE100_CHECKPOINT_2026-11-21.md), [API guide](../MONOCLE100_WEIGHTS.md) and [public example](../../../examples/monocle100-weights/README.md). The whole goal remains active and unfinished. Both reports stay off Pages; no release is created.

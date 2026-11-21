@@ -1,5 +1,21 @@
 # Current toolbox handover
 
+**Current: [Monocle1.0.0 native weights and exact next work](MONOCLE100_CHECKPOINT_2026-11-21.md).**
+The source-built JAR now includes a Java weight-selection API and standalone
+command, with25 successful original graph comparisons and eight retained original
+failures across33 controls. All636 focused tests pass in the normal build and
+per Windows Java21/25 and Linux Java21 packaged JVM. Three actual public examples
+preserve74 exact weights and match21 original-spdep inference fields. All22,378
+preceding JAR payloads remain exact. Fresh250-paper/nine-role and cumulative
+catalog checks pass on both hosts. Counts stay **144 scoped families,1630 reviewed
+and1092 pending**, with zero new family credit. **Next: original1.0.0 nearest-
+neighbor/graph integration and P021 preparation**, then bounded Monocle admission
+and the remaining high-impact gaps/reviews. Preserve all **48 worktrees** and
+separately transfer ignored runtimes, JARs, full text, author source and complete
+private evidence with checksums. The linked checkpoint gives exact paths and
+SKIP3/FAIL2 recovery. Both reports stay off Pages; the full goal remains unfinished.
+Lower entries retain historical checkpoints and their then-current counts.
+
 **Start here: [21 November 2026 catalog handover and exact remaining work](HANDOVER_2026-11-21_CATALOG.md).**
 The collection is complete at 250 papers. TwoSampleMR is now admitted as one
 upstream family with fourteen reviewed source roles, preserving all 1,616 earlier

@@ -1,0 +1,7 @@
+# Original sources and licenses
+
+The retained original Monocle3 1.0.0 source archive is commit004c096f3a3bdaf1e6709a65fb36f40ba775f1ab from https://github.com/cole-trapnell-lab/monocle3,166 exact members. Its DESCRIPTION declares MIT + file LICENSE; the original declaration names2019 Cole Trapnell. The original declaration and complete MIT text are included. Original source/license bytes are retained without relicensing them as project-authored code.
+
+Original spdep1.4-1 source is the official CRAN archive https://cran.r-project.org/src/contrib/Archive/spdep/spdep_1.4-1.tar.gz, SHA2564d0beca3b8b696373a74670f916cca3e77cbe97d002f3be62f172815774f5588. Its DESCRIPTION declares GPL (>=2). The archive retains original copyright/license declarations; complete GPL2 text is included. The selected installed lm.morantest body/formals match the source in that archive. Original R and all installed dependency binaries are separately provisioned, not bundled here.
+
+RANN2.6.2, Matrix1.6-5, slam0.1-55, igraph2.0.3 and R4.3.3 supply the declared original runtime context. Their version/source boundaries are recorded; this packet does not claim all dependency source or a historical paper-era environment is authenticated. New project Java/scripts are GPL-3.0-or-later under the project license. No current author pipeline source or primary full-text article is redistributed or executed by these controls. All new analysis inputs are synthetic.
