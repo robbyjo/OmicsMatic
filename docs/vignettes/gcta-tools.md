@@ -86,6 +86,7 @@ cannot pass VERIFY. Resource limits are logical/monitored bounds, not OS quotas.
 
 See the [global qualification and source-role checkpoint](../literature/GCTA_GLOBAL_CHECKPOINT_2026-11-20.md).
 GCTA and COJO are labels for the same software family, not two independent
-packages. Catalog admission remains open; this command alone adds no family
-or canonical source-review credit. No complete paper or biological reproduction
-is claimed.
+packages. The [catalog admission scope](../literature/GCTA_CATALOG_INTEGRATION.md)
+credits one GCTA family and a COJO alias with zero extra credit, with exact
+source-role and transaction evidence. No complete paper or biological
+reproduction is claimed.

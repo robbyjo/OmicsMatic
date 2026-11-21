@@ -1,5 +1,17 @@
 # Current toolbox handover
 
+**Current: [GCTA/COJO catalog admission and high-impact next work](GCTA_CATALOG_CHECKPOINT_2026-11-20.md).**
+One GCTA upstream family is admitted, with COJO as a validated alias adding no
+extra credit. The guarded transition adds P112/P169, removes P127's unreviewed
+comparison-only COJO and appends 27 reviews while preserving all earlier 1,548.
+Totals are now **141 scoped integrations (26 native +115 upstream), 1,575 reviewed
+uses and 1,140 pending**, with 2,715 observations and 829 clean manifest entries.
+Plan/inspect/apply/fresh verify, 23 controls per Windows/Linux host, five CLI
+refusals and preview/installed desktop/mobile checks pass. Preserve all **30
+worktrees** and separately transfer ignored runtimes, exact JARs, full text and
+complete private evidence. Next priorities include limma, PEER and TwoSampleMR.
+Both reports stay off Pages. The full toolbox/semantic-review goal is unfinished.
+
 **Current: [global GCTA command, expanded source review and remaining work](GCTA_GLOBAL_CHECKPOINT_2026-11-20.md).**
 The normal JAR exposes `gcta-tools` RUN/VERIFY/REPLAY with unchanged scientific
 classes. All 27 packaged tests and 82 prior capture checks pass per JVM on three

@@ -1,0 +1,7 @@
+# GCTA cumulative admission evidence
+
+Exact-before metadata, one implementation/one alias, source-role additions and comparison-only removal, qualified unchanged global dispatcher, previous-owner execution and current owner source are retained.
+
+Run `python -B tools/literature/close_gcta_catalog.py --verify --out build/NEW-gcta-verify`; add `--primary-cache PATH` for a fresh all250 XML audit. Old owners and fingerprints remain unchanged.
+
+SKIP3: dependent analysis skipped; supply the named exact permitted source, input, runtime or package, or retain the skip if installation is forbidden. FAIL2: NO COMPLETE RESULT; preserve raw inputs, original model/null objects, partials and logs, correct the named source/data/design, numerical, convergence, integrity, capacity or process cause and retry NEW output. Never silently repair IDs, alleles, populations, thresholds, nonfinite values, editions or algorithms. Retain valid unconstrained variance/h2 outside 0..1. GCTA 1.94.1 mtCOJO has no liability conversion; original GSMR can exit 0 and write NaN, and those results are refused. Read analysis-status.json, WARNINGS.md, manifest.json and every original worker log. Original-model VERIFY does not refit or authenticate. Cell Ranger stays excluded. Both literature reports remain withheld from Pages. Ignored exact runtimes, JARs, full text and complete private evidence need a separate checksummed transfer.

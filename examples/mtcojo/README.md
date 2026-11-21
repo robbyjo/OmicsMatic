@@ -5,8 +5,9 @@ conditional GWAS results from **already fitted parameters**. The standalone
 original-runtime workflow can estimate GSMR and LDSC quantities with the exact
 qualified GCTA 1.94.1 executable. Neither prepares a study's reference population
 or infers its identifiers, alleles, ploidy or effect scale. The global
-`gcta-tools` command is available in current source; full GCTA catalog admission
-remains unfinished. See the [command guide](../../docs/vignettes/gcta-tools.md).
+`gcta-tools` command is available in current source. The catalog credits one
+GCTA family with COJO as a validated alias; complete author workflows remain
+unqualified. See the [command guide](../../docs/vignettes/gcta-tools.md).
 
 ## Native conditional calculation
 

@@ -10476,19 +10476,21 @@
     "name": "GCTA",
     "pattern": "(?<![A-Za-z0-9_])(?:GCTA)(?![A-Za-z0-9_])",
     "role": "Heritability, mixed-model association or conditional analysis",
-    "current_coverage": "method-overlap",
-    "existing_source": "src/main/java/org/jlinalg/genetics/ConditionalAssociation.java",
-    "coverage_note": "Related native method; upstream software options and numerical equivalence require separate validation.",
-    "paper_count": 17,
+    "current_coverage": "upstream-adapter-validated",
+    "existing_source": "src/main/java/org/jlinalg/cli/GctaWorkflowCli.java",
+    "coverage_note": "Global gcta-tools and standalone GctaWorkflowCli expose exact GCTA 1.94.1 original Windows/Linux GRM, PCA, COJO selection/joint/conditioning, constrained/unconstrained/multi-GRM REML, LD scores, sparse GRM, binary fastGWA and GSMR/supplied-effect mtCOJO on explicitly prepared complete inputs. Native Java components cover source-qualified hard-call GRM,sparse conversion and prepared-parameter conditional equations. RUN captures inputs and raw model/null/partial/error objects; VERIFY checks saved integrity and declared invariants, and REPLAY preserves parent lineage. Native components add no second family credit. GCTA is the single credited upstream family; COJO is its validated-family-alias with zero additional integration credit. The 27 reviewed labels across 19 executed papers distinguish operations, reported editions and unresolved author preparation. Add P112/P169 and remove only P127 comparison-only COJO with exact-before retention. Older 1.92.4/1.93.2/1.93.0 and P140 1.91.7beta/fastGWA, panel correspondence in P169, wheat ploidy in P171, P135 uppercase --MAF and P248 formula/cutoff remain unresolved. The qualified 1.94.1 source does not substitute for those editions or complete author workflows. Build current source; the released 0.4.0 binary predates gcta-tools.",
+    "paper_count": 19,
     "papers": [
       "P090",
       "P105",
+      "P112",
       "P126",
       "P135",
       "P140",
       "P149",
       "P150",
       "P159",
+      "P169",
       "P171",
       "P193",
       "P207",
@@ -10499,10 +10501,823 @@
       "P245",
       "P248"
     ],
-    "implementation_status": "method-overlap",
-    "implementation_source": "src/main/java/org/jlinalg/genetics/ConditionalAssociation.java",
-    "implementation_scope": "Related native method; upstream software options and numerical equivalence require separate validation.",
-    "validation_note": "Existing overlap/adapters require paper-specific option checks; missing integrations remain pending."
+    "implementation_status": "upstream-adapter-validated",
+    "implementation_source": "src/main/java/org/jlinalg/cli/GctaWorkflowCli.java",
+    "implementation_scope": "Global gcta-tools and standalone GctaWorkflowCli expose exact GCTA 1.94.1 original Windows/Linux GRM, PCA, COJO selection/joint/conditioning, constrained/unconstrained/multi-GRM REML, LD scores, sparse GRM, binary fastGWA and GSMR/supplied-effect mtCOJO on explicitly prepared complete inputs. Native Java components cover source-qualified hard-call GRM,sparse conversion and prepared-parameter conditional equations. RUN captures inputs and raw model/null/partial/error objects; VERIFY checks saved integrity and declared invariants, and REPLAY preserves parent lineage. Native components add no second family credit. GCTA is the single credited upstream family; COJO is its validated-family-alias with zero additional integration credit. The 27 reviewed labels across 19 executed papers distinguish operations, reported editions and unresolved author preparation. Add P112/P169 and remove only P127 comparison-only COJO with exact-before retention. Older 1.92.4/1.93.2/1.93.0 and P140 1.91.7beta/fastGWA, panel correspondence in P169, wheat ploidy in P171, P135 uppercase --MAF and P248 formula/cutoff remain unresolved. The qualified 1.94.1 source does not substitute for those editions or complete author workflows. Build current source; the released 0.4.0 binary predates gcta-tools.",
+    "validation_note": "Exact source-profiled prepared-data components and global RUN/VERIFY/REPLAY qualified on Windows21/25/Linux21. Original VERIFY checks invariants without refitting. Read the source crosswalk and exact warnings.",
+    "previous_method_overlap_source": "src/main/java/org/jlinalg/genetics/ConditionalAssociation.java",
+    "implementation_family_id": "gcta",
+    "new_scoped_integration_credit": 1,
+    "upstream_family_credit_added": 1,
+    "native_family_credit_added": 0,
+    "source_role_coverage": "gcta-source-role-coverage.json",
+    "source_roles_reviewed": 19,
+    "current_documentation": "docs/literature/GCTA_CATALOG_INTEGRATION.md",
+    "workflow_qualification": "../gcta-global-development/PROFILE.json",
+    "public_CLI_available": true,
+    "global_CLI_dispatch_available": true,
+    "qualified_component_entrypoints": [
+      "gcta-tools --request RUN/VERIFY/REPLAY",
+      "org.jlinalg.cli.GctaWorkflowCli"
+    ],
+    "source_build_required": true,
+    "released_binary_contains_workflow_adapter": false,
+    "paper_role_qualification": {
+      "P090": {
+        "paper_id": "P090",
+        "pmcid": "PMC11631752",
+        "doi": "10.1038/s41588-024-01952-y",
+        "tool_id": "gcta",
+        "reported_edition": "1.92.4",
+        "operations": [
+          "COJO chromosome-wide selection",
+          "MTCOJO"
+        ],
+        "usage_summary": "Identify independent DCM GWAS/MTAG variants with chromosome-wide stepwise conditional-joint analysis at P<5e-8, also considering qvalue FDR<1% for DCM GWAS. Separately condition DCM on atrial fibrillation, coronary artery disease and systolic blood pressure with European 1000 Genomes LD and distinct binary prevalences.",
+        "required_caution": "The exact 1.92.4 runtime and prevalence behavior are unresolved. The qualified 1.94.1 profile performs no liability conversion. The chromosome-wide fit differs from 500kb locus aggregation/flanks; qvalue thresholding is a separate tool role.",
+        "primary_evidence": [
+          {
+            "paragraph_index": 24,
+            "section": "Methods / Locus identification",
+            "paragraph_sha256": "e4d203e15bae366d25e082e0550bb3f83c461dc632a98f2559b54d4b1bb2cd08",
+            "matching_text_sha256": "a4cafa8adabe253a9e8df658424cae7b1b3ae321dd88d66c23afa13bbf1c864e"
+          },
+          {
+            "paragraph_index": 33,
+            "section": "Methods / ABC model / Conditional GWAS analysis",
+            "paragraph_sha256": "d46f4f5c0a711c89677691a849be278eae776b68346bb4ef512c5a6b27c35243",
+            "matching_text_sha256": "3a70a19e63216acb0f3fc42a8f4dc6b05cfa0c58aec67913907c8a56cb0d36c9"
+          }
+        ],
+        "paper_reproduced": false,
+        "source_xml_sha256": "9134de1e47ed25c8ca3033729d6b60846a95603b762996d6aac9d2ef4926c3ca",
+        "reported_version_witnesses": [
+          {
+            "operation": "reported",
+            "literal": "1.92.4",
+            "paragraph_index": 24,
+            "character_offset": 238
+          }
+        ],
+        "source_name_witness": {
+          "literal": "Genome-wide Complex Trait Analysis",
+          "paragraph_index": 24,
+          "character_offset": 191,
+          "matching_text_sha256": "a4cafa8adabe253a9e8df658424cae7b1b3ae321dd88d66c23afa13bbf1c864e"
+        },
+        "existing_observation": true,
+        "proposed_observation": false,
+        "matching_runtime_edition_only": false,
+        "preparation_and_author_settings_complete": false,
+        "author_runtime_executed": false,
+        "whole_tool_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P105": {
+        "paper_id": "P105",
+        "pmcid": "PMC10703676",
+        "doi": "10.1038/s41588-023-01569-7",
+        "tool_id": "gcta",
+        "reported_edition": "1.93.2",
+        "operations": [
+          "COJO selection and joint fit"
+        ],
+        "usage_summary": "Identify independent peptic-ulcer/subtype associations in East Asian GWAS by stepwise selection and joint fitting, using 20,000 unrelated BBJ best-guess genotype samples, MAF>0.01 and P<5e-8.",
+        "required_caution": "Resolve exact 1.93.2 and retain the EAS reference and explicit genotype preparation. Effect-size comparisons are separate analyses.",
+        "primary_evidence": [
+          {
+            "paragraph_index": 49,
+            "section": "Methods / Conditional analysis by COJO",
+            "paragraph_sha256": "fd00107af92a5165826e2b62cd2fb4bcd44ad630fa3ffa5c91d9a50024c1ccd9",
+            "matching_text_sha256": "7b1b20d22450ed537b7165d5a5c8bc7def27ccb053aae5775960ef932f0fd636"
+          },
+          {
+            "paragraph_index": 60,
+            "section": "Methods / Per-allele effect-size comparison",
+            "paragraph_sha256": "c075f207b324b070949fa9cc914d0177a0f1893fe27ad44fd358b7f768e1b157",
+            "matching_text_sha256": "bd2bb0b810a3100d25e63ed5ccac82bc2f337e538f684324508d823d1c312ea0"
+          }
+        ],
+        "paper_reproduced": false,
+        "source_xml_sha256": "e62de8f4b3c797ec66020a59b641c28d173b3129e3bc6c26f9d731f7daff017f",
+        "reported_version_witnesses": [
+          {
+            "operation": "reported",
+            "literal": "1.93.2",
+            "paragraph_index": 49,
+            "character_offset": 13
+          }
+        ],
+        "source_name_witness": {
+          "literal": "GCTA-COJO",
+          "paragraph_index": 49,
+          "character_offset": 0,
+          "matching_text_sha256": "7b1b20d22450ed537b7165d5a5c8bc7def27ccb053aae5775960ef932f0fd636"
+        },
+        "existing_observation": true,
+        "proposed_observation": false,
+        "matching_runtime_edition_only": false,
+        "preparation_and_author_settings_complete": false,
+        "author_runtime_executed": false,
+        "whole_tool_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P112": {
+        "paper_id": "P112",
+        "pmcid": "PMC10703690",
+        "doi": "10.1038/s41588-023-01563-z",
+        "tool_id": "gcta",
+        "reported_edition": null,
+        "operations": [
+          "MTCOJO"
+        ],
+        "usage_summary": "Run separate European cannabis-use-disorder mtCOJO analyses conditioned on smoking initiation and cigarettes per day; use conditioned summary statistics in a separate downstream Mendelian-randomization analysis.",
+        "required_caution": "The full GCTA name and mtCOJO establish execution missed by the existing extraction. Exact edition and complete conditioning settings remain unstated; downstream MR is not implemented by this conditioning component.",
+        "primary_evidence": [
+          {
+            "paragraph_index": 31,
+            "section": "Methods / Conditional analysis",
+            "paragraph_sha256": "37ab972da1061086552c4d599e7f0e492aa82bcebe9d578ac355ff320cea88e9",
+            "matching_text_sha256": "d132d44c691fdac034e0af79adc68b027eb9723bf99021d49d028d3d96241a4c"
+          },
+          {
+            "paragraph_index": 7,
+            "section": "Results / Conditional analysis",
+            "paragraph_sha256": "6fe5d29a47b887bf6712fe64b2e804d83f27183ed580ebf3d08f85b3cc4ac1e3",
+            "matching_text_sha256": "8c2b19ce05a1b6377a8eb73287c592d03713084422e36fccee6adb38be36de51"
+          }
+        ],
+        "paper_reproduced": false,
+        "source_xml_sha256": "2ce4288e884bff3b58799766776b155aa6864290922f0419feec437793ddab61",
+        "reported_version_witnesses": [],
+        "source_name_witness": {
+          "literal": "Genome-wide Complex Trait Analysis",
+          "paragraph_index": 31,
+          "character_offset": 416,
+          "matching_text_sha256": "d132d44c691fdac034e0af79adc68b027eb9723bf99021d49d028d3d96241a4c"
+        },
+        "existing_observation": false,
+        "proposed_observation": true,
+        "matching_runtime_edition_only": false,
+        "preparation_and_author_settings_complete": false,
+        "author_runtime_executed": false,
+        "whole_tool_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P126": {
+        "paper_id": "P126",
+        "pmcid": "PMC11549050",
+        "doi": "10.1038/s41588-024-01947-9",
+        "tool_id": "gcta",
+        "reported_edition": "1.94.1",
+        "operations": [
+          "COJO conditional/joint analysis"
+        ],
+        "usage_summary": "Perform approximate conditional analysis of meta-GWAS using 45,918 ancestry-matched UKB/MGBB LD samples and stated imputation/dosage filters, treating variants more than 500kb apart as uncorrelated.",
+        "required_caution": "Preserve the literal MAF>=0.0001% unit. Exact preparation and remaining author settings are not recovered; do not silently replace the stated distance rule with defaults.",
+        "primary_evidence": [
+          {
+            "paragraph_index": 41,
+            "section": "Methods / Post-association analysis / Identification of the independent set of T2D-associated markers",
+            "paragraph_sha256": "74be8bbdf3064f37af0e0b2b7c2a41cb3d4f039b2a0c6189cb7ba9f4ee2047c0",
+            "matching_text_sha256": "d19f3a61feb5453b486933d7175fec98ede4e185bf62455691fda90379c2dc45"
+          }
+        ],
+        "paper_reproduced": false,
+        "source_xml_sha256": "52c69604a05c9f2c48debb522594ea3f39de3a7ccf0e701fed27530c99bc7bf5",
+        "reported_version_witnesses": [
+          {
+            "operation": "reported",
+            "literal": "1.94.1",
+            "paragraph_index": 41,
+            "character_offset": 53
+          }
+        ],
+        "source_name_witness": {
+          "literal": "GCTA",
+          "paragraph_index": 41,
+          "character_offset": 35,
+          "matching_text_sha256": "d19f3a61feb5453b486933d7175fec98ede4e185bf62455691fda90379c2dc45"
+        },
+        "existing_observation": true,
+        "proposed_observation": false,
+        "matching_runtime_edition_only": true,
+        "preparation_and_author_settings_complete": false,
+        "author_runtime_executed": false,
+        "whole_tool_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P135": {
+        "paper_id": "P135",
+        "pmcid": "PMC10632131",
+        "doi": "10.1038/s41588-023-01527-3",
+        "tool_id": "gcta",
+        "reported_edition": null,
+        "operations": [
+          "COJO selection",
+          "MTCOJO"
+        ],
+        "usage_summary": "Select conditionally independent associations with COJO and separately condition on estimated bone mineral density using mtCOJO with 5,000 European UKB LD samples.",
+        "required_caution": "Preserve literal uppercase --MAF and reported --cojo-p 5e-8, --cojo-wind 10000 and --cojo-collinear 0.9. Resolve flag case and unstated edition; 10,000kb model windows differ from +/-500kb locus definitions.",
+        "primary_evidence": [
+          {
+            "paragraph_index": 31,
+            "section": "Methods / Multi-SNP-based conditional and joint association analysis",
+            "paragraph_sha256": "5db94cb9c61d4ac20a05b4062b40b0a3255ce6dfb6656cb564fa9b32e4f48fa5",
+            "matching_text_sha256": "509bafe2d68895826bd0bde9ebd15fcf28c8eeaeb8ab88863dc6fa926600774c"
+          },
+          {
+            "paragraph_index": 33,
+            "section": "Methods / Removal of the genetic influences of eBMD on forearm fracture risk",
+            "paragraph_sha256": "18c91c735b5c2c9daa584846ec8a3da938a9799f5c1eda19fa8077cb0eb13998",
+            "matching_text_sha256": "7f9ba643e9c7b3ef0490c7a956b8239e7d13c574e3cc444e5f23b0ca7a1c602b"
+          }
+        ],
+        "paper_reproduced": false,
+        "source_xml_sha256": "0c44b9e6179811684c6fb08bc74539310819e478131a5ec14a6b2ef51c150098",
+        "reported_version_witnesses": [],
+        "source_name_witness": {
+          "literal": "GCTA-COJO",
+          "paragraph_index": 31,
+          "character_offset": 67,
+          "matching_text_sha256": "509bafe2d68895826bd0bde9ebd15fcf28c8eeaeb8ab88863dc6fa926600774c"
+        },
+        "existing_observation": true,
+        "proposed_observation": false,
+        "matching_runtime_edition_only": false,
+        "preparation_and_author_settings_complete": false,
+        "author_runtime_executed": false,
+        "whole_tool_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P140": {
+        "paper_id": "P140",
+        "pmcid": "PMC12695639",
+        "doi": "10.1038/s41588-025-02391-z",
+        "tool_id": "gcta",
+        "reported_edition": "1.91.7beta",
+        "operations": [
+          "FASTGWA_BINARY"
+        ],
+        "usage_summary": "Analyze MoBa binary phenotypes with fastGWA-GLMM and a sparse relatedness matrix, with reported covariate and sex-specific analyses.",
+        "required_caution": "The reported 1.91.7beta and --fastGWA-mlm-binary combination is unresolved. Do not substitute 1.94.1. FinnGen REGENIE 2.2.4 analyses are separate.",
+        "primary_evidence": [
+          {
+            "paragraph_index": 55,
+            "section": "Methods / Analyses / GWA meta-analyses",
+            "paragraph_sha256": "7ed0f847c1481249bbdc1ed1a130e8480475f32152d169e1383625c51987a708",
+            "matching_text_sha256": "0e5afb7568fcbf133a0ad99c35a7f3c7fa8f4b51f8135c95d5b43b1b5a034a31"
+          },
+          {
+            "paragraph_index": 59,
+            "section": "Methods / Analyses / GWA meta-analyses",
+            "paragraph_sha256": "6298de76ec6aa4d4f2eb1b74bf0c47001ab8c2517da4aaca2676adaadfe3bfc7",
+            "matching_text_sha256": "6298de76ec6aa4d4f2eb1b74bf0c47001ab8c2517da4aaca2676adaadfe3bfc7"
+          }
+        ],
+        "paper_reproduced": false,
+        "source_xml_sha256": "0fe7de7050ee813d37932b53c07cb52cc920edf4270ad1eff0ae121aaa0d71cc",
+        "reported_version_witnesses": [
+          {
+            "operation": "reported",
+            "literal": "1.91.7beta",
+            "paragraph_index": 55,
+            "character_offset": 344
+          }
+        ],
+        "source_name_witness": {
+          "literal": "FastGWA-GLMM",
+          "paragraph_index": 55,
+          "character_offset": 232,
+          "matching_text_sha256": "0e5afb7568fcbf133a0ad99c35a7f3c7fa8f4b51f8135c95d5b43b1b5a034a31"
+        },
+        "existing_observation": true,
+        "proposed_observation": false,
+        "matching_runtime_edition_only": false,
+        "preparation_and_author_settings_complete": false,
+        "author_runtime_executed": false,
+        "whole_tool_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P149": {
+        "paper_id": "P149",
+        "pmcid": "PMC10632135",
+        "doi": "10.1038/s41588-023-01538-0",
+        "tool_id": "gcta",
+        "reported_edition": null,
+        "operations": [
+          "approximate conditional analysis; subcommand unresolved"
+        ],
+        "usage_summary": "Apply GCTA approximate conditional analysis to Finnish summary data when searching for secondary signals, using the stated class-specific thresholds and 500kb search region.",
+        "required_caution": "Other cohorts use individual-level genotypes. Do not assign those analyses to GCTA or infer an exact COJO subcommand, edition or model window from the search interval.",
+        "primary_evidence": [
+          {
+            "paragraph_index": 47,
+            "section": "Methods / Association testing and meta-analysis",
+            "paragraph_sha256": "bee4dc2b28f72ef4124ac56582d731c7113ee5791ee2266788328b7faab9e4cb",
+            "matching_text_sha256": "a388073d3511f3ecf7c7518a5c38939ad3dcd6d2e90c614bbcdb41a2261abe09"
+          }
+        ],
+        "paper_reproduced": false,
+        "source_xml_sha256": "1a0fc0dd6a23b6f6035edaf86021ad90a1024a40a474cf1f62c49500ff3a97b1",
+        "reported_version_witnesses": [],
+        "source_name_witness": {
+          "literal": "GCTA",
+          "paragraph_index": 47,
+          "character_offset": 435,
+          "matching_text_sha256": "a388073d3511f3ecf7c7518a5c38939ad3dcd6d2e90c614bbcdb41a2261abe09"
+        },
+        "existing_observation": true,
+        "proposed_observation": false,
+        "matching_runtime_edition_only": false,
+        "preparation_and_author_settings_complete": false,
+        "author_runtime_executed": false,
+        "whole_tool_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P150": {
+        "paper_id": "P150",
+        "pmcid": "PMC11549047",
+        "doi": "10.1038/s41588-024-01933-1",
+        "tool_id": "gcta",
+        "reported_edition": "1.94.1",
+        "operations": [
+          "COJO selection/joint analysis"
+        ],
+        "usage_summary": "Identify conditionally independent lead SNPs using GCTA-COJO stepwise conditional/joint analysis with P<5e-8, a 10Mb window and collinearity<0.9.",
+        "required_caution": "FUMA clumping and annotation are separate. The COJO LD reference cannot be inferred from FUMA settings.",
+        "primary_evidence": [
+          {
+            "paragraph_index": 50,
+            "section": "Methods / MetS multivariate GWAS with Genomic SEM",
+            "paragraph_sha256": "227f76a40e953049138733f1b10af7332a4546aaccd9e5fc74460a8a77ea2ece",
+            "matching_text_sha256": "a30ce06ec7e6e12234256a1596ed75083f15c70849460e7f03f35eed3800fce7"
+          }
+        ],
+        "paper_reproduced": false,
+        "source_xml_sha256": "7c6932a914734569a95e3cbdc6976d0e9bdc128a6b4fdaf51de76407469c2c4f",
+        "reported_version_witnesses": [
+          {
+            "operation": "reported",
+            "literal": "1.94.1",
+            "paragraph_index": 50,
+            "character_offset": 455
+          }
+        ],
+        "source_name_witness": {
+          "literal": "GCTA-COJO",
+          "paragraph_index": 50,
+          "character_offset": 439,
+          "matching_text_sha256": "a30ce06ec7e6e12234256a1596ed75083f15c70849460e7f03f35eed3800fce7"
+        },
+        "existing_observation": true,
+        "proposed_observation": false,
+        "matching_runtime_edition_only": true,
+        "preparation_and_author_settings_complete": false,
+        "author_runtime_executed": false,
+        "whole_tool_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P159": {
+        "paper_id": "P159",
+        "pmcid": "PMC11525179",
+        "doi": "10.1038/s41588-024-01910-8",
+        "tool_id": "gcta",
+        "reported_edition": "1.93.0",
+        "operations": [
+          "PCA"
+        ],
+        "usage_summary": "Compute 20 reference principal components from 1000 Genomes/HGDP genotypes with GCTA.",
+        "required_caution": "Resolve exact 1.93.0. Projection using SNP loadings and later UMAP are distinct roles with their own unrecovered code/settings; PLINK PCA is not an edition substitute.",
+        "primary_evidence": [
+          {
+            "paragraph_index": 29,
+            "section": "Methods / Ancestry assignment / Assigning broad-scale GIA groups",
+            "paragraph_sha256": "8227065abfff064200397a2c9939ae44ddfc3ffc02d7c8f833cbef7ad9de8ebc",
+            "matching_text_sha256": "6294278e3cfac6b00c21fa0018b960ef4039580801d05b1987449faa37ac4f01"
+          }
+        ],
+        "paper_reproduced": false,
+        "source_xml_sha256": "008c4b0ea8d309b4ba19c19cdd9e58124b44510ab62af2216e95ea2633ec7940",
+        "reported_version_witnesses": [
+          {
+            "operation": "reported",
+            "literal": "1.93.0",
+            "paragraph_index": 29,
+            "character_offset": 778
+          }
+        ],
+        "source_name_witness": {
+          "literal": "GCTA",
+          "paragraph_index": 29,
+          "character_offset": 756,
+          "matching_text_sha256": "6294278e3cfac6b00c21fa0018b960ef4039580801d05b1987449faa37ac4f01"
+        },
+        "existing_observation": true,
+        "proposed_observation": false,
+        "matching_runtime_edition_only": false,
+        "preparation_and_author_settings_complete": false,
+        "author_runtime_executed": false,
+        "whole_tool_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P169": {
+        "paper_id": "P169",
+        "pmcid": "PMC11525171",
+        "doi": "10.1038/s41588-024-01900-w",
+        "tool_id": "gcta",
+        "reported_edition": null,
+        "operations": [
+          "COJO conditional/joint analysis"
+        ],
+        "usage_summary": "Identify secondary colorectal-cancer GWAS signals by conditional/joint analysis of East Asian and European summary statistics separately, then combine results by meta-analysis and retain conditional P<5e-8 associations.",
+        "required_caution": "The expanded package name establishes a missed GCTA use. Edition and exact subcommands are unstated. Preserve the reported reference counts 6,684/4,284 and resolve the text's EAS/European to UK10K/1000G respectively correspondence rather than swapping panel labels. The 500kb locus definition is not automatically a model window.",
+        "primary_evidence": [
+          {
+            "paragraph_index": 24,
+            "section": "Methods / GWAS statistics and definition of risk loci",
+            "paragraph_sha256": "c3501a67c97fd5239b5e6fc969b20ad908c37cfa5e9f6f64c73e83c758da5140",
+            "matching_text_sha256": "2ccbe2186fdf4baa266bfd5eca4a0f1c75d969970e6695719364d31ee04874b3"
+          }
+        ],
+        "paper_reproduced": false,
+        "source_xml_sha256": "35e6eef968caa63cd301d6867f6353d88441df9bd960be9d32288a4e86561782",
+        "reported_version_witnesses": [],
+        "source_name_witness": {
+          "literal": "genome-wide complex trait analysis",
+          "paragraph_index": 24,
+          "character_offset": 364,
+          "matching_text_sha256": "2ccbe2186fdf4baa266bfd5eca4a0f1c75d969970e6695719364d31ee04874b3"
+        },
+        "existing_observation": false,
+        "proposed_observation": true,
+        "matching_runtime_edition_only": false,
+        "preparation_and_author_settings_complete": false,
+        "author_runtime_executed": false,
+        "whole_tool_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P171": {
+        "paper_id": "P171",
+        "pmcid": "PMC13447107",
+        "doi": "10.1038/s41588-026-02678-9",
+        "tool_id": "gcta",
+        "reported_edition": "1.94.1",
+        "operations": [
+          "PCA"
+        ],
+        "usage_summary": "Compute genetic principal components with GCTA in tetraploid wheat.",
+        "required_caution": "Recover genotype encoding, ploidy and species/chromosome conventions before execution. The 100,000-variant sample describes phylogeny, not an established PCA input.",
+        "primary_evidence": [
+          {
+            "paragraph_index": 53,
+            "section": "Methods / Phylogenetic tree and population structure analysis",
+            "paragraph_sha256": "778e3ad5d8fc7399b8285a0d6d69f4767dab53102d53afb2743493919d36b875",
+            "matching_text_sha256": "22e15db5faa741037f0d95c0846450d9cd17a8bb0b0f4925cd61646506b2a922"
+          }
+        ],
+        "paper_reproduced": false,
+        "source_xml_sha256": "ff3ca782d6de1cb39d389e91226f83dec87f7b14265fc75e264318f3724193fa",
+        "reported_version_witnesses": [
+          {
+            "operation": "reported",
+            "literal": "1.94.1",
+            "paragraph_index": 53,
+            "character_offset": 762
+          }
+        ],
+        "source_name_witness": {
+          "literal": "GCTA",
+          "paragraph_index": 53,
+          "character_offset": 739,
+          "matching_text_sha256": "22e15db5faa741037f0d95c0846450d9cd17a8bb0b0f4925cd61646506b2a922"
+        },
+        "existing_observation": true,
+        "proposed_observation": false,
+        "matching_runtime_edition_only": true,
+        "preparation_and_author_settings_complete": false,
+        "author_runtime_executed": false,
+        "whole_tool_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P193": {
+        "paper_id": "P193",
+        "pmcid": "PMC12808957",
+        "doi": "10.1016/j.ajhg.2025.10.002",
+        "tool_id": "gcta",
+        "reported_edition": null,
+        "operations": [
+          "REML"
+        ],
+        "usage_summary": "Estimate narrow-sense irQTL heritability by GCTA-GREML using intron PI and GTEx genotypes.",
+        "required_caution": "Edition, GRM, phenotype preparation, covariates and complete fit settings are unresolved; no whole-paper fit is claimed.",
+        "primary_evidence": [
+          {
+            "paragraph_index": 14,
+            "section": "Methods / Narrow-sense heritability estimates of irQTL",
+            "paragraph_sha256": "c00f129a06d71ea4148d014c73119bb595236942d762fc4461ea9a8bf54a7b00",
+            "matching_text_sha256": "1517a3e8eabca734cf39625225e182bdcebdb2fd0abdb02f13430f0510c7ecd4"
+          }
+        ],
+        "paper_reproduced": false,
+        "source_xml_sha256": "8611f79305c31cde3c28ee50d799c8652e494c8d089878a3403ea284c2b12703",
+        "reported_version_witnesses": [],
+        "source_name_witness": {
+          "literal": "GCTA-GREML",
+          "paragraph_index": 14,
+          "character_offset": 8,
+          "matching_text_sha256": "1517a3e8eabca734cf39625225e182bdcebdb2fd0abdb02f13430f0510c7ecd4"
+        },
+        "existing_observation": true,
+        "proposed_observation": false,
+        "matching_runtime_edition_only": false,
+        "preparation_and_author_settings_complete": false,
+        "author_runtime_executed": false,
+        "whole_tool_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P207": {
+        "paper_id": "P207",
+        "pmcid": "PMC11480795",
+        "doi": "10.1016/j.ajhg.2024.08.021",
+        "tool_id": "gcta",
+        "reported_edition": null,
+        "operations": [
+          "COJO independent/joint analysis; exact subcommands unresolved"
+        ],
+        "usage_summary": "Identify common independent/joint signals with GCTA-COJO at P<=1e-7 using LD from 10,000 UKB TOPMed samples before downstream rare-variant burden tests.",
+        "required_caution": "Selection/joint command sequence and edition are unstated. REGENIE, SBAT, SKAT-O and ACAT-V are separate analyses.",
+        "primary_evidence": [
+          {
+            "paragraph_index": 21,
+            "section": "Methods / Analysis of UK Biobank data",
+            "paragraph_sha256": "db5ffaa0029e7d3106ad3fc1114eb7f7b309df83d20c45deb68b6888c9a254ec",
+            "matching_text_sha256": "eaa400530a196a2f38af9f5f5f457c34a74c14df7e3426a4b262cbd6af0499f2"
+          }
+        ],
+        "paper_reproduced": false,
+        "source_xml_sha256": "fc9fc558adee3f0801b7367540e3bcae265c7016ef2abe8e02a190680a2a45dd",
+        "reported_version_witnesses": [],
+        "source_name_witness": {
+          "literal": "GCTA-COJO",
+          "paragraph_index": 21,
+          "character_offset": 1401,
+          "matching_text_sha256": "eaa400530a196a2f38af9f5f5f457c34a74c14df7e3426a4b262cbd6af0499f2"
+        },
+        "existing_observation": true,
+        "proposed_observation": false,
+        "matching_runtime_edition_only": false,
+        "preparation_and_author_settings_complete": false,
+        "author_runtime_executed": false,
+        "whole_tool_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P212": {
+        "paper_id": "P212",
+        "pmcid": "PMC12614742",
+        "doi": "10.1016/j.ajhg.2025.09.003",
+        "tool_id": "gcta",
+        "reported_edition": null,
+        "operations": [
+          "COJO_SELECT",
+          "COJO_CONDITION"
+        ],
+        "usage_summary": "Run cojo-slct and cojo-cond across 26 traits with LD from 40,000 unrelated European UKB samples, using European GWAS subsets when available.",
+        "required_caution": "Exact edition remains unstated; do not assume every GWAS input is European or substitute generic LD clumping.",
+        "primary_evidence": [
+          {
+            "paragraph_index": 16,
+            "section": "Methods / GWAS data for colocalization",
+            "paragraph_sha256": "3f2a53370be1d1ba36c4d4d9a140c61bdc6b41a850be1c7466c959e886c64699",
+            "matching_text_sha256": "043d9a6f69abaf9fbbe6070a6e9fa8b7e27fbb0c62f579d9820d3005c98742ca"
+          }
+        ],
+        "paper_reproduced": false,
+        "source_xml_sha256": "92008590eafb6a68abea130c2562bd521c2a12802c66d58289643b773eed00aa",
+        "reported_version_witnesses": [],
+        "source_name_witness": {
+          "literal": "GCTA cojo",
+          "paragraph_index": 16,
+          "character_offset": 238,
+          "matching_text_sha256": "043d9a6f69abaf9fbbe6070a6e9fa8b7e27fbb0c62f579d9820d3005c98742ca"
+        },
+        "existing_observation": true,
+        "proposed_observation": false,
+        "matching_runtime_edition_only": false,
+        "preparation_and_author_settings_complete": false,
+        "author_runtime_executed": false,
+        "whole_tool_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P216": {
+        "paper_id": "P216",
+        "pmcid": "PMC12696490",
+        "doi": "10.1016/j.ajhg.2025.08.016",
+        "tool_id": "gcta",
+        "reported_edition": null,
+        "operations": [
+          "COJO independent signals; exact subcommand unresolved"
+        ],
+        "usage_summary": "Identify independent association signals with GCTA-COJO using a 5e-8 threshold, reported >1Mb independence and collinearity<0.9.",
+        "required_caution": "Edition and reference-panel details remain unresolved. The independence interval is not automatically a COJO model-window setting.",
+        "primary_evidence": [
+          {
+            "paragraph_index": 30,
+            "section": "Subjects and methods / Genetic validation: GWAS",
+            "paragraph_sha256": "4a63b7263c4848b7d5ca376d25581f9573043754c526bf516bda259f7f00d659",
+            "matching_text_sha256": "b49a02ac7deb55ef1bd1220c866b0cd7020b6ed0bcca4f46bd792c322cdf1332"
+          }
+        ],
+        "paper_reproduced": false,
+        "source_xml_sha256": "b4f22a1a3ee0ce4ac55290d2a0ded9d2b62f193e2e5e1363198f2068676a1967",
+        "reported_version_witnesses": [],
+        "source_name_witness": {
+          "literal": "genome-wide complex trait analysis",
+          "paragraph_index": 30,
+          "character_offset": 64,
+          "matching_text_sha256": "b49a02ac7deb55ef1bd1220c866b0cd7020b6ed0bcca4f46bd792c322cdf1332"
+        },
+        "existing_observation": true,
+        "proposed_observation": false,
+        "matching_runtime_edition_only": false,
+        "preparation_and_author_settings_complete": false,
+        "author_runtime_executed": false,
+        "whole_tool_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P219": {
+        "paper_id": "P219",
+        "pmcid": "PMC11393713",
+        "doi": "10.1016/j.ajhg.2024.07.010",
+        "tool_id": "gcta",
+        "reported_edition": null,
+        "operations": [
+          "COJO_SELECT"
+        ],
+        "usage_summary": "Apply cojo-slct separately to skin methylation QTL and expression QTL conditional analyses.",
+        "required_caution": "Retain the two outcome families and their LD/cis/trans context; exact edition and complete settings are unresolved.",
+        "primary_evidence": [
+          {
+            "paragraph_index": 21,
+            "section": "Material and methods / Identification of skin meQTLs",
+            "paragraph_sha256": "ed6f2837c2fced3954f9fb62b3b29a9a915e2b3d5e800e9dbe14fceea39d7664",
+            "matching_text_sha256": "010961591d4399a2a7243f7cb809adfca55f84105a8c0cc396c62d606a2cd75a"
+          },
+          {
+            "paragraph_index": 32,
+            "section": "Material and methods / Identification of local skin eQTLs",
+            "paragraph_sha256": "390a8a7584fe2b11f03b18dbdd9ca2f047823eb80827dea84a893c5e545c37e5",
+            "matching_text_sha256": "c8515e812bd1ab4effd36dbbab61281cba77dcb615986f9f8df1110a187cc9bf"
+          }
+        ],
+        "paper_reproduced": false,
+        "source_xml_sha256": "e4fadb062adf4cc95728affb2ee19c5e59af94b50cce138a693a6dbb5f073112",
+        "reported_version_witnesses": [],
+        "source_name_witness": {
+          "literal": "cojo",
+          "paragraph_index": 21,
+          "character_offset": 234,
+          "matching_text_sha256": "010961591d4399a2a7243f7cb809adfca55f84105a8c0cc396c62d606a2cd75a"
+        },
+        "existing_observation": true,
+        "proposed_observation": false,
+        "matching_runtime_edition_only": false,
+        "preparation_and_author_settings_complete": false,
+        "author_runtime_executed": false,
+        "whole_tool_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P238": {
+        "paper_id": "P238",
+        "pmcid": "PMC11339621",
+        "doi": "10.1016/j.ajhg.2024.06.001",
+        "tool_id": "gcta",
+        "reported_edition": null,
+        "operations": [
+          "REML unconstrained"
+        ],
+        "usage_summary": "Estimate heritability of covariate-residualized splicing S values by GCTA REML using 1 kb, 10 kb and 100 kb windows.",
+        "required_caution": "The paper explicitly permits heritability outside 0..1. Preserve valid converged unconstrained estimates; prediction and cross-validation are separate analyses.",
+        "primary_evidence": [
+          {
+            "paragraph_index": 10,
+            "section": "Material and methods / Predictive models of alternative splicing",
+            "paragraph_sha256": "d98bc765c04003e0911e97e0cebc7294434d362abf8a765df85eca29fd3c9402",
+            "matching_text_sha256": "60ad3be0145c6283b12592dec73ebdebffba0035dcf00720a830d56418924ae4"
+          }
+        ],
+        "paper_reproduced": false,
+        "source_xml_sha256": "9fd7fe14cbd31d5549507415ad91c6c1770f726c6c753ed8f8e32c4afe467ba9",
+        "reported_version_witnesses": [],
+        "source_name_witness": {
+          "literal": "GCTA",
+          "paragraph_index": 10,
+          "character_offset": 673,
+          "matching_text_sha256": "60ad3be0145c6283b12592dec73ebdebffba0035dcf00720a830d56418924ae4"
+        },
+        "existing_observation": true,
+        "proposed_observation": false,
+        "matching_runtime_edition_only": false,
+        "preparation_and_author_settings_complete": false,
+        "author_runtime_executed": false,
+        "whole_tool_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P245": {
+        "paper_id": "P245",
+        "pmcid": "PMC11267529",
+        "doi": "10.1016/j.ajhg.2024.05.015",
+        "tool_id": "gcta",
+        "reported_edition": null,
+        "operations": [
+          "LD score; exact algorithm unresolved"
+        ],
+        "usage_summary": "Compute in-sample LD scores with GCTA for MAF/LD annotations.",
+        "required_caution": "Exact edition, algorithm and window remain unresolved. The paper-specific GxE estimator and tissue annotations are separate; do not assign LDSC settings automatically.",
+        "primary_evidence": [
+          {
+            "paragraph_index": 25,
+            "section": "Material and methods / Estimating GxE in the UK Biobank",
+            "paragraph_sha256": "023bd85589efa30398ede9eff72044b63ffd1c14ef4af8e964da798b7110d0ef",
+            "matching_text_sha256": "ba4cac3f513fb998252f600ecc89659c9568bcf7d255ab29ae810b94e77f8966"
+          }
+        ],
+        "paper_reproduced": false,
+        "source_xml_sha256": "b9fa462033adb20912de4ac0ef5c2225048ffc2606b045c11524f8b629347f64",
+        "reported_version_witnesses": [],
+        "source_name_witness": {
+          "literal": "GCTA",
+          "paragraph_index": 25,
+          "character_offset": 207,
+          "matching_text_sha256": "ba4cac3f513fb998252f600ecc89659c9568bcf7d255ab29ae810b94e77f8966"
+        },
+        "existing_observation": true,
+        "proposed_observation": false,
+        "matching_runtime_edition_only": false,
+        "preparation_and_author_settings_complete": false,
+        "author_runtime_executed": false,
+        "whole_tool_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P248": {
+        "paper_id": "P248",
+        "pmcid": "PMC13447089",
+        "doi": "10.1038/s41588-026-02682-z",
+        "tool_id": "gcta",
+        "reported_edition": "PCA:1.94.1; REML:1.94",
+        "operations": [
+          "PCA",
+          "multi-GRM REML"
+        ],
+        "usage_summary": "Compute GCTA PCA from 18,600 fourfold-degenerate transversion sites in 422 cucumber accessions and separately fit MAF-stratified multiple-GRM REML.",
+        "required_caution": "Keep the two reported edition labels distinct. Retain rare 0<MAF<0.034 and common MAF>0.034; equality is not assigned. The raw XML formula lacks a fraction node, so recover the publisher expression instead of inferring a formula.",
+        "primary_evidence": [
+          {
+            "paragraph_index": 52,
+            "section": "Methods / Phylogeny and population structure",
+            "paragraph_sha256": "4ee70823595ae60b5270e6a6cd4c1168fe0b9d8760936b639a76e0b43b3e9467",
+            "matching_text_sha256": "7d3722f9d2994af62cab0d12fac8ac1fbd4193de200d82708f1d6305b7437e2a"
+          },
+          {
+            "paragraph_index": 55,
+            "section": "Methods / Heritability estimation",
+            "paragraph_sha256": "a7561cdce336c2f2b3c02f66037431e2c4dd29cc637a74e698553710a99d4c01",
+            "matching_text_sha256": "d253ae382f725219e3d86b7d13500bee2f47b7703bb76f6b27c759732eecb739"
+          }
+        ],
+        "paper_reproduced": false,
+        "source_xml_sha256": "6d73b939291dc5f2f13f1da8a89a7835c4195e4b38553c6c08410107d61400e5",
+        "reported_version_witnesses": [
+          {
+            "operation": "PCA",
+            "literal": "1.94.1",
+            "paragraph_index": 52,
+            "character_offset": 530
+          },
+          {
+            "operation": "REML",
+            "literal": "1.94",
+            "paragraph_index": 55,
+            "character_offset": 118
+          }
+        ],
+        "source_name_witness": {
+          "literal": "GCTA",
+          "paragraph_index": 52,
+          "character_offset": 520,
+          "matching_text_sha256": "7d3722f9d2994af62cab0d12fac8ac1fbd4193de200d82708f1d6305b7437e2a"
+        },
+        "existing_observation": true,
+        "proposed_observation": false,
+        "matching_runtime_edition_only": false,
+        "preparation_and_author_settings_complete": false,
+        "author_runtime_executed": false,
+        "whole_tool_qualified": false,
+        "whole_paper_reproduced": false
+      }
+    },
+    "whole_tool_qualified": false,
+    "whole_paper_reproduced": false
   },
   {
     "id": "edger",
@@ -13126,14 +13941,13 @@
     "name": "GCTA-COJO",
     "pattern": "(?<![A-Za-z0-9_])(?:(?:GCTA[- ]?)?COJO)(?![A-Za-z0-9_])",
     "role": "LD-adjusted conditional or joint GWAS analysis",
-    "current_coverage": "method-overlap",
-    "existing_source": "src/main/java/org/jlinalg/genetics/ConditionalAssociation.java",
-    "coverage_note": "Related native method; upstream software options and numerical equivalence require separate validation.",
-    "paper_count": 9,
+    "current_coverage": "validated-family-alias",
+    "existing_source": "src/main/java/org/jlinalg/cli/GctaWorkflowCli.java",
+    "coverage_note": "Global gcta-tools and standalone GctaWorkflowCli expose exact GCTA 1.94.1 original Windows/Linux GRM, PCA, COJO selection/joint/conditioning, constrained/unconstrained/multi-GRM REML, LD scores, sparse GRM, binary fastGWA and GSMR/supplied-effect mtCOJO on explicitly prepared complete inputs. Native Java components cover source-qualified hard-call GRM,sparse conversion and prepared-parameter conditional equations. RUN captures inputs and raw model/null/partial/error objects; VERIFY checks saved integrity and declared invariants, and REPLAY preserves parent lineage. Native components add no second family credit. GCTA is the single credited upstream family; COJO is its validated-family-alias with zero additional integration credit. The 27 reviewed labels across 19 executed papers distinguish operations, reported editions and unresolved author preparation. Add P112/P169 and remove only P127 comparison-only COJO with exact-before retention. Older 1.92.4/1.93.2/1.93.0 and P140 1.91.7beta/fastGWA, panel correspondence in P169, wheat ploidy in P171, P135 uppercase --MAF and P248 formula/cutoff remain unresolved. The qualified 1.94.1 source does not substitute for those editions or complete author workflows. Build current source; the released 0.4.0 binary predates gcta-tools.",
+    "paper_count": 8,
     "papers": [
       "P105",
       "P126",
-      "P127",
       "P135",
       "P150",
       "P207",
@@ -13141,10 +13955,361 @@
       "P216",
       "P219"
     ],
-    "implementation_status": "method-overlap",
-    "implementation_source": "src/main/java/org/jlinalg/genetics/ConditionalAssociation.java",
-    "implementation_scope": "Related native method; upstream software options and numerical equivalence require separate validation.",
-    "validation_note": "Existing overlap/adapters require paper-specific option checks; missing integrations remain pending."
+    "implementation_status": "validated-family-alias",
+    "implementation_source": "src/main/java/org/jlinalg/cli/GctaWorkflowCli.java",
+    "implementation_scope": "Global gcta-tools and standalone GctaWorkflowCli expose exact GCTA 1.94.1 original Windows/Linux GRM, PCA, COJO selection/joint/conditioning, constrained/unconstrained/multi-GRM REML, LD scores, sparse GRM, binary fastGWA and GSMR/supplied-effect mtCOJO on explicitly prepared complete inputs. Native Java components cover source-qualified hard-call GRM,sparse conversion and prepared-parameter conditional equations. RUN captures inputs and raw model/null/partial/error objects; VERIFY checks saved integrity and declared invariants, and REPLAY preserves parent lineage. Native components add no second family credit. GCTA is the single credited upstream family; COJO is its validated-family-alias with zero additional integration credit. The 27 reviewed labels across 19 executed papers distinguish operations, reported editions and unresolved author preparation. Add P112/P169 and remove only P127 comparison-only COJO with exact-before retention. Older 1.92.4/1.93.2/1.93.0 and P140 1.91.7beta/fastGWA, panel correspondence in P169, wheat ploidy in P171, P135 uppercase --MAF and P248 formula/cutoff remain unresolved. The qualified 1.94.1 source does not substitute for those editions or complete author workflows. Build current source; the released 0.4.0 binary predates gcta-tools.",
+    "validation_note": "Exact source-profiled prepared-data components and global RUN/VERIFY/REPLAY qualified on Windows21/25/Linux21. Original VERIFY checks invariants without refitting. Read the source crosswalk and exact warnings.",
+    "previous_method_overlap_source": "src/main/java/org/jlinalg/genetics/ConditionalAssociation.java",
+    "implementation_family_id": "gcta",
+    "new_scoped_integration_credit": 0,
+    "upstream_family_credit_added": 0,
+    "native_family_credit_added": 0,
+    "source_role_coverage": "gcta-source-role-coverage.json",
+    "source_roles_reviewed": 8,
+    "current_documentation": "docs/literature/GCTA_CATALOG_INTEGRATION.md",
+    "workflow_qualification": "../gcta-global-development/PROFILE.json",
+    "public_CLI_available": true,
+    "global_CLI_dispatch_available": true,
+    "qualified_component_entrypoints": [
+      "gcta-tools --request RUN/VERIFY/REPLAY",
+      "org.jlinalg.cli.GctaWorkflowCli"
+    ],
+    "source_build_required": true,
+    "released_binary_contains_workflow_adapter": false,
+    "paper_role_qualification": {
+      "P105": {
+        "paper_id": "P105",
+        "pmcid": "PMC10703676",
+        "doi": "10.1038/s41588-023-01569-7",
+        "tool_id": "cojo",
+        "reported_edition": "1.93.2",
+        "operations": [
+          "COJO selection and joint fit"
+        ],
+        "usage_summary": "Identify independent peptic-ulcer/subtype associations in East Asian GWAS by stepwise selection and joint fitting, using 20,000 unrelated BBJ best-guess genotype samples, MAF>0.01 and P<5e-8.",
+        "required_caution": "Resolve exact 1.93.2 and retain the EAS reference and explicit genotype preparation. Effect-size comparisons are separate analyses.",
+        "primary_evidence": [
+          {
+            "paragraph_index": 49,
+            "section": "Methods / Conditional analysis by COJO",
+            "paragraph_sha256": "fd00107af92a5165826e2b62cd2fb4bcd44ad630fa3ffa5c91d9a50024c1ccd9",
+            "matching_text_sha256": "7b1b20d22450ed537b7165d5a5c8bc7def27ccb053aae5775960ef932f0fd636"
+          },
+          {
+            "paragraph_index": 60,
+            "section": "Methods / Per-allele effect-size comparison",
+            "paragraph_sha256": "c075f207b324b070949fa9cc914d0177a0f1893fe27ad44fd358b7f768e1b157",
+            "matching_text_sha256": "bd2bb0b810a3100d25e63ed5ccac82bc2f337e538f684324508d823d1c312ea0"
+          }
+        ],
+        "paper_reproduced": false,
+        "source_xml_sha256": "e62de8f4b3c797ec66020a59b641c28d173b3129e3bc6c26f9d731f7daff017f",
+        "reported_version_witnesses": [
+          {
+            "operation": "reported",
+            "literal": "1.93.2",
+            "paragraph_index": 49,
+            "character_offset": 13
+          }
+        ],
+        "source_name_witness": {
+          "literal": "GCTA-COJO",
+          "paragraph_index": 49,
+          "character_offset": 0,
+          "matching_text_sha256": "7b1b20d22450ed537b7165d5a5c8bc7def27ccb053aae5775960ef932f0fd636"
+        },
+        "existing_observation": true,
+        "proposed_observation": false,
+        "matching_runtime_edition_only": false,
+        "preparation_and_author_settings_complete": false,
+        "author_runtime_executed": false,
+        "whole_tool_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P126": {
+        "paper_id": "P126",
+        "pmcid": "PMC11549050",
+        "doi": "10.1038/s41588-024-01947-9",
+        "tool_id": "cojo",
+        "reported_edition": "1.94.1",
+        "operations": [
+          "COJO conditional/joint analysis"
+        ],
+        "usage_summary": "Perform approximate conditional analysis of meta-GWAS using 45,918 ancestry-matched UKB/MGBB LD samples and stated imputation/dosage filters, treating variants more than 500kb apart as uncorrelated.",
+        "required_caution": "Preserve the literal MAF>=0.0001% unit. Exact preparation and remaining author settings are not recovered; do not silently replace the stated distance rule with defaults.",
+        "primary_evidence": [
+          {
+            "paragraph_index": 41,
+            "section": "Methods / Post-association analysis / Identification of the independent set of T2D-associated markers",
+            "paragraph_sha256": "74be8bbdf3064f37af0e0b2b7c2a41cb3d4f039b2a0c6189cb7ba9f4ee2047c0",
+            "matching_text_sha256": "d19f3a61feb5453b486933d7175fec98ede4e185bf62455691fda90379c2dc45"
+          }
+        ],
+        "paper_reproduced": false,
+        "source_xml_sha256": "52c69604a05c9f2c48debb522594ea3f39de3a7ccf0e701fed27530c99bc7bf5",
+        "reported_version_witnesses": [
+          {
+            "operation": "reported",
+            "literal": "1.94.1",
+            "paragraph_index": 41,
+            "character_offset": 53
+          }
+        ],
+        "source_name_witness": {
+          "literal": "GCTA",
+          "paragraph_index": 41,
+          "character_offset": 35,
+          "matching_text_sha256": "d19f3a61feb5453b486933d7175fec98ede4e185bf62455691fda90379c2dc45"
+        },
+        "existing_observation": true,
+        "proposed_observation": false,
+        "matching_runtime_edition_only": true,
+        "preparation_and_author_settings_complete": false,
+        "author_runtime_executed": false,
+        "whole_tool_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P135": {
+        "paper_id": "P135",
+        "pmcid": "PMC10632131",
+        "doi": "10.1038/s41588-023-01527-3",
+        "tool_id": "cojo",
+        "reported_edition": null,
+        "operations": [
+          "COJO selection",
+          "MTCOJO"
+        ],
+        "usage_summary": "Select conditionally independent associations with COJO and separately condition on estimated bone mineral density using mtCOJO with 5,000 European UKB LD samples.",
+        "required_caution": "Preserve literal uppercase --MAF and reported --cojo-p 5e-8, --cojo-wind 10000 and --cojo-collinear 0.9. Resolve flag case and unstated edition; 10,000kb model windows differ from +/-500kb locus definitions.",
+        "primary_evidence": [
+          {
+            "paragraph_index": 31,
+            "section": "Methods / Multi-SNP-based conditional and joint association analysis",
+            "paragraph_sha256": "5db94cb9c61d4ac20a05b4062b40b0a3255ce6dfb6656cb564fa9b32e4f48fa5",
+            "matching_text_sha256": "509bafe2d68895826bd0bde9ebd15fcf28c8eeaeb8ab88863dc6fa926600774c"
+          },
+          {
+            "paragraph_index": 33,
+            "section": "Methods / Removal of the genetic influences of eBMD on forearm fracture risk",
+            "paragraph_sha256": "18c91c735b5c2c9daa584846ec8a3da938a9799f5c1eda19fa8077cb0eb13998",
+            "matching_text_sha256": "7f9ba643e9c7b3ef0490c7a956b8239e7d13c574e3cc444e5f23b0ca7a1c602b"
+          }
+        ],
+        "paper_reproduced": false,
+        "source_xml_sha256": "0c44b9e6179811684c6fb08bc74539310819e478131a5ec14a6b2ef51c150098",
+        "reported_version_witnesses": [],
+        "source_name_witness": {
+          "literal": "GCTA-COJO",
+          "paragraph_index": 31,
+          "character_offset": 67,
+          "matching_text_sha256": "509bafe2d68895826bd0bde9ebd15fcf28c8eeaeb8ab88863dc6fa926600774c"
+        },
+        "existing_observation": true,
+        "proposed_observation": false,
+        "matching_runtime_edition_only": false,
+        "preparation_and_author_settings_complete": false,
+        "author_runtime_executed": false,
+        "whole_tool_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P150": {
+        "paper_id": "P150",
+        "pmcid": "PMC11549047",
+        "doi": "10.1038/s41588-024-01933-1",
+        "tool_id": "cojo",
+        "reported_edition": "1.94.1",
+        "operations": [
+          "COJO selection/joint analysis"
+        ],
+        "usage_summary": "Identify conditionally independent lead SNPs using GCTA-COJO stepwise conditional/joint analysis with P<5e-8, a 10Mb window and collinearity<0.9.",
+        "required_caution": "FUMA clumping and annotation are separate. The COJO LD reference cannot be inferred from FUMA settings.",
+        "primary_evidence": [
+          {
+            "paragraph_index": 50,
+            "section": "Methods / MetS multivariate GWAS with Genomic SEM",
+            "paragraph_sha256": "227f76a40e953049138733f1b10af7332a4546aaccd9e5fc74460a8a77ea2ece",
+            "matching_text_sha256": "a30ce06ec7e6e12234256a1596ed75083f15c70849460e7f03f35eed3800fce7"
+          }
+        ],
+        "paper_reproduced": false,
+        "source_xml_sha256": "7c6932a914734569a95e3cbdc6976d0e9bdc128a6b4fdaf51de76407469c2c4f",
+        "reported_version_witnesses": [
+          {
+            "operation": "reported",
+            "literal": "1.94.1",
+            "paragraph_index": 50,
+            "character_offset": 455
+          }
+        ],
+        "source_name_witness": {
+          "literal": "GCTA-COJO",
+          "paragraph_index": 50,
+          "character_offset": 439,
+          "matching_text_sha256": "a30ce06ec7e6e12234256a1596ed75083f15c70849460e7f03f35eed3800fce7"
+        },
+        "existing_observation": true,
+        "proposed_observation": false,
+        "matching_runtime_edition_only": true,
+        "preparation_and_author_settings_complete": false,
+        "author_runtime_executed": false,
+        "whole_tool_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P207": {
+        "paper_id": "P207",
+        "pmcid": "PMC11480795",
+        "doi": "10.1016/j.ajhg.2024.08.021",
+        "tool_id": "cojo",
+        "reported_edition": null,
+        "operations": [
+          "COJO independent/joint analysis; exact subcommands unresolved"
+        ],
+        "usage_summary": "Identify common independent/joint signals with GCTA-COJO at P<=1e-7 using LD from 10,000 UKB TOPMed samples before downstream rare-variant burden tests.",
+        "required_caution": "Selection/joint command sequence and edition are unstated. REGENIE, SBAT, SKAT-O and ACAT-V are separate analyses.",
+        "primary_evidence": [
+          {
+            "paragraph_index": 21,
+            "section": "Methods / Analysis of UK Biobank data",
+            "paragraph_sha256": "db5ffaa0029e7d3106ad3fc1114eb7f7b309df83d20c45deb68b6888c9a254ec",
+            "matching_text_sha256": "eaa400530a196a2f38af9f5f5f457c34a74c14df7e3426a4b262cbd6af0499f2"
+          }
+        ],
+        "paper_reproduced": false,
+        "source_xml_sha256": "fc9fc558adee3f0801b7367540e3bcae265c7016ef2abe8e02a190680a2a45dd",
+        "reported_version_witnesses": [],
+        "source_name_witness": {
+          "literal": "GCTA-COJO",
+          "paragraph_index": 21,
+          "character_offset": 1401,
+          "matching_text_sha256": "eaa400530a196a2f38af9f5f5f457c34a74c14df7e3426a4b262cbd6af0499f2"
+        },
+        "existing_observation": true,
+        "proposed_observation": false,
+        "matching_runtime_edition_only": false,
+        "preparation_and_author_settings_complete": false,
+        "author_runtime_executed": false,
+        "whole_tool_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P212": {
+        "paper_id": "P212",
+        "pmcid": "PMC12614742",
+        "doi": "10.1016/j.ajhg.2025.09.003",
+        "tool_id": "cojo",
+        "reported_edition": null,
+        "operations": [
+          "COJO_SELECT",
+          "COJO_CONDITION"
+        ],
+        "usage_summary": "Run cojo-slct and cojo-cond across 26 traits with LD from 40,000 unrelated European UKB samples, using European GWAS subsets when available.",
+        "required_caution": "Exact edition remains unstated; do not assume every GWAS input is European or substitute generic LD clumping.",
+        "primary_evidence": [
+          {
+            "paragraph_index": 16,
+            "section": "Methods / GWAS data for colocalization",
+            "paragraph_sha256": "3f2a53370be1d1ba36c4d4d9a140c61bdc6b41a850be1c7466c959e886c64699",
+            "matching_text_sha256": "043d9a6f69abaf9fbbe6070a6e9fa8b7e27fbb0c62f579d9820d3005c98742ca"
+          }
+        ],
+        "paper_reproduced": false,
+        "source_xml_sha256": "92008590eafb6a68abea130c2562bd521c2a12802c66d58289643b773eed00aa",
+        "reported_version_witnesses": [],
+        "source_name_witness": {
+          "literal": "GCTA cojo",
+          "paragraph_index": 16,
+          "character_offset": 238,
+          "matching_text_sha256": "043d9a6f69abaf9fbbe6070a6e9fa8b7e27fbb0c62f579d9820d3005c98742ca"
+        },
+        "existing_observation": true,
+        "proposed_observation": false,
+        "matching_runtime_edition_only": false,
+        "preparation_and_author_settings_complete": false,
+        "author_runtime_executed": false,
+        "whole_tool_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P216": {
+        "paper_id": "P216",
+        "pmcid": "PMC12696490",
+        "doi": "10.1016/j.ajhg.2025.08.016",
+        "tool_id": "cojo",
+        "reported_edition": null,
+        "operations": [
+          "COJO independent signals; exact subcommand unresolved"
+        ],
+        "usage_summary": "Identify independent association signals with GCTA-COJO using a 5e-8 threshold, reported >1Mb independence and collinearity<0.9.",
+        "required_caution": "Edition and reference-panel details remain unresolved. The independence interval is not automatically a COJO model-window setting.",
+        "primary_evidence": [
+          {
+            "paragraph_index": 30,
+            "section": "Subjects and methods / Genetic validation: GWAS",
+            "paragraph_sha256": "4a63b7263c4848b7d5ca376d25581f9573043754c526bf516bda259f7f00d659",
+            "matching_text_sha256": "b49a02ac7deb55ef1bd1220c866b0cd7020b6ed0bcca4f46bd792c322cdf1332"
+          }
+        ],
+        "paper_reproduced": false,
+        "source_xml_sha256": "b4f22a1a3ee0ce4ac55290d2a0ded9d2b62f193e2e5e1363198f2068676a1967",
+        "reported_version_witnesses": [],
+        "source_name_witness": {
+          "literal": "genome-wide complex trait analysis",
+          "paragraph_index": 30,
+          "character_offset": 64,
+          "matching_text_sha256": "b49a02ac7deb55ef1bd1220c866b0cd7020b6ed0bcca4f46bd792c322cdf1332"
+        },
+        "existing_observation": true,
+        "proposed_observation": false,
+        "matching_runtime_edition_only": false,
+        "preparation_and_author_settings_complete": false,
+        "author_runtime_executed": false,
+        "whole_tool_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P219": {
+        "paper_id": "P219",
+        "pmcid": "PMC11393713",
+        "doi": "10.1016/j.ajhg.2024.07.010",
+        "tool_id": "cojo",
+        "reported_edition": null,
+        "operations": [
+          "COJO_SELECT"
+        ],
+        "usage_summary": "Apply cojo-slct separately to skin methylation QTL and expression QTL conditional analyses.",
+        "required_caution": "Retain the two outcome families and their LD/cis/trans context; exact edition and complete settings are unresolved.",
+        "primary_evidence": [
+          {
+            "paragraph_index": 21,
+            "section": "Material and methods / Identification of skin meQTLs",
+            "paragraph_sha256": "ed6f2837c2fced3954f9fb62b3b29a9a915e2b3d5e800e9dbe14fceea39d7664",
+            "matching_text_sha256": "010961591d4399a2a7243f7cb809adfca55f84105a8c0cc396c62d606a2cd75a"
+          },
+          {
+            "paragraph_index": 32,
+            "section": "Material and methods / Identification of local skin eQTLs",
+            "paragraph_sha256": "390a8a7584fe2b11f03b18dbdd9ca2f047823eb80827dea84a893c5e545c37e5",
+            "matching_text_sha256": "c8515e812bd1ab4effd36dbbab61281cba77dcb615986f9f8df1110a187cc9bf"
+          }
+        ],
+        "paper_reproduced": false,
+        "source_xml_sha256": "e4fadb062adf4cc95728affb2ee19c5e59af94b50cce138a693a6dbb5f073112",
+        "reported_version_witnesses": [],
+        "source_name_witness": {
+          "literal": "cojo",
+          "paragraph_index": 21,
+          "character_offset": 234,
+          "matching_text_sha256": "010961591d4399a2a7243f7cb809adfca55f84105a8c0cc396c62d606a2cd75a"
+        },
+        "existing_observation": true,
+        "proposed_observation": false,
+        "matching_runtime_edition_only": false,
+        "preparation_and_author_settings_complete": false,
+        "author_runtime_executed": false,
+        "whole_tool_qualified": false,
+        "whole_paper_reproduced": false
+      }
+    },
+    "whole_tool_qualified": false,
+    "whole_paper_reproduced": false,
+    "family_alias_of": "gcta"
   },
   {
     "id": "htseq",

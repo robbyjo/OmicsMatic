@@ -1,7 +1,7 @@
 # GCTA development workflow: minimal native example
 
-**Global `gcta-tools` is available in current source; GCTA catalog admission
-remains unfinished.** Read the [current command guide](../../docs/vignettes/gcta-tools.md)
+**Global `gcta-tools` is available in current source, with one GCTA family
+credit and COJO as a validated alias.** Read the [current command guide](../../docs/vignettes/gcta-tools.md)
 and [historical workflow warnings](../../docs/literature/HANDOVER_2026-11-20_GCTA_WORKFLOWS.md).
 Java 21+ and Python 3 are required for this example. The native engine requires
 no GCTA executable. Build the normal executable JAR using the project's Gradle
@@ -57,8 +57,8 @@ Windows or Linux GCTA 1.94.1 executable in `runtime`; Windows also requires its
 matching adjacent `libomp.dll`. They are not installed by this example.
 The [mtCOJO examples](../mtcojo/README.md) explain its prepared-parameter native
 component, original-runtime requests and source-specific warnings. Its standalone
-prepared-data execution paths are qualified for 1.94.1; exact older editions,
-and GCTA/COJO catalog admission remain open. The standalone class remains available
+prepared-data execution paths are qualified for 1.94.1; exact older editions
+remain unresolved. The standalone class remains available
 with the same request/verify arguments.
 
 Complete machine-specific requests and raw synthetic inputs for all development

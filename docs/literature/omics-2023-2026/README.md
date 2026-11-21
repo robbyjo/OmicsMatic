@@ -1,5 +1,21 @@
 # 250-paper omics and GWAS toolbox catalog
 
+## GCTA/COJO: one credited family and 27 reviewed labels
+
+**Warnings and required actions:** SKIP3: dependent analysis skipped; supply the named exact permitted source, input, runtime or package, or retain the skip if installation is forbidden. FAIL2: NO COMPLETE RESULT; preserve raw inputs, original model/null objects, partials and logs, correct the named source/data/design, numerical, convergence, integrity, capacity or process cause and retry NEW output. Never silently repair IDs, alleles, populations, thresholds, nonfinite values, editions or algorithms. Retain valid unconstrained variance/h2 outside 0..1. GCTA 1.94.1 mtCOJO has no liability conversion; original GSMR can exit 0 and write NaN, and those results are refused. Read analysis-status.json, WARNINGS.md, manifest.json and every original worker log. Original-model VERIFY does not refit or authenticate. Cell Ranger stays excluded. Both literature reports remain withheld from Pages. Ignored exact runtimes, JARs, full text and complete private evidence need a separate checksummed transfer.
+
+250 papers, 446 named tool labels, 2,715 observations, 1,575 individually reviewed positive uses and 1,140 pending. There are 141 scoped integrations (26 native Java and 115 upstream), one validated family alias with zero extra credit, 259 missing and 33 method-overlap labels; 144 integrations include three existing adapters. All 1,548 earlier reviews remain exact. Full implementation and paper-wide semantic completeness remain unfinished.
+
+Global gcta-tools and standalone GctaWorkflowCli expose exact GCTA 1.94.1 original Windows/Linux GRM, PCA, COJO selection/joint/conditioning, constrained/unconstrained/multi-GRM REML, LD scores, sparse GRM, binary fastGWA and GSMR/supplied-effect mtCOJO on explicitly prepared complete inputs. Native Java components cover source-qualified hard-call GRM,sparse conversion and prepared-parameter conditional equations. RUN captures inputs and raw model/null/partial/error objects; VERIFY checks saved integrity and declared invariants, and REPLAY preserves parent lineage. Native components add no second family credit.
+
+GCTA is the single credited upstream family; COJO is its validated-family-alias with zero additional integration credit. The 27 reviewed labels across 19 executed papers distinguish operations, reported editions and unresolved author preparation. Add P112/P169 and remove only P127 comparison-only COJO with exact-before retention. Older 1.92.4/1.93.2/1.93.0 and P140 1.91.7beta/fastGWA, panel correspondence in P169, wheat ploidy in P171, P135 uppercase --MAF and P248 formula/cutoff remain unresolved. The qualified 1.94.1 source does not substitute for those editions or complete author workflows. Build current source; the released 0.4.0 binary predates gcta-tools.
+
+Read [the source crosswalk](../GCTA_CATALOG_INTEGRATION.md).
+
+<details><summary>Before GCTA admission (historical)</summary>
+
+# 250-paper omics and GWAS toolbox catalog
+
 ## Native Broad GSEA and 28 reviewed ranked-enrichment roles
 
 **Warnings and required actions:** SKIP3: the affected analysis is skipped; supply the named exact permitted input, source profile, runtime or package, or retain the skip when unavailable or installation is forbidden. Native Broad execution needs no external GSEA installation; an unknown author executor/edition is not silently mapped to a supported profile. FAIL2: NO COMPLETE RESULT; preserve raw inputs, null/model objects, conditions, partials and diagnostics, resolve the named syntax/data/design, numerical/convergence, integrity, capacity or process cause and retry NEW output. Never silently repair identifiers, alleles, populations, thresholds, nonfinite values, editions or algorithms. A supervising JVM terminated without final completion status has no complete result. Cell Ranger stays excluded. Ignored runtimes, producer JARs and complete private evidence require a separate permitted transfer; one historical exact producer still requires backup or SKIP3. Both literature HTML reports remain withheld from Pages. Read each analysis-status.json and WARNINGS.md.
@@ -2109,6 +2125,8 @@ Three source-reviewed tool additions retain separate provenance: MALT and HOPS h
 These additions improve the catalog and add no whole-tool or biological credit. The source-tested MALT 0.4.1 development controller does not fulfill the separate 0.5.2 role. Complete HOPS and MaltExtract operations remain unfinished; their unreported versions, settings and resource choices remain unknown. See `MALT_ALIGNMENT.md` and `MALT_HOPS_PAPER_ROLES.md`.
 
 **Required action:** match the declared source version and operation, qualify a permitted runtime, provide the complete dated reference/mapping and query populations, and retain original warnings and failures. If any prerequisite is unavailable or cannot be installed, skip its dependent analysis. A small software-control index does not reproduce the historical 91-spirochete or 7,508-genome bacterial analyses. Insufficient-read candidates remain unassessable.
+
+</details>
 
 </details>
 
