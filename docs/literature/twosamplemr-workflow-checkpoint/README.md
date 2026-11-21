@@ -1,0 +1,11 @@
+# Saved original TwoSampleMR workflow qualification
+
+With Python3.11+ without -O, run `python -B tools/literature/verify_twosamplemr_workflow_checkpoint.py --out build/NEW-saved-check`. This verifies exact current sources, 27 unchanged canonical files, every saved blob and all 835 catalog manifest entries. It reads recorded normal, packaged, actual execution, failure, replay, original-return, example and runtime-census results. It does not execute R, Java, Git, primary XML or models.
+
+The final normal producer and all 667 tests pass per JVM on Windows21/25 and Linux21. All 22,308 preceding JAR payloads remain exact. Original WindowsR4.6.1 executes the pinned TwoSampleMR0.7.14 namespace with 152 source-defined function guards and no namespace rewrites. Seven normal positive cases, ten missing/failed controls, three real replays, seven Linux R-free live verifications and three public examples pass;28 complete original top-level returns/classes/attributes and RNG endpoints match direct unmodified calls.
+
+Full original available arguments/returns/raised errors and RNG states are synthetic. Earlier compiler/exporter/intake failures and superseded successful producers remain retained with their source and logs. No original numerical result, input or tolerance was repaired to clear them. Source objects carry the upstream MIT notice in the retained reference archive; owned observer code carries its project license.
+
+Exact producer JARs, installed runtime files and download archives, systemR4.6.1, primary full text and complete private evidence require a separate checksummed transfer. Runtime census hashes cover5765 private files and96 required package identities;four local dependencies were copied without modifying their source user library. Dependency versions are recorded, not an authentication of a whole host.
+
+Local clumping, historical paper editions, optional/dependency profiles, author attribution, global registration and catalog admission remain open. No new family or review credit. Both literature reports remain off Pages;the full goal is unfinished. See [workflow contract and recovery](../TWOSAMPLEMR_WORKFLOWS.md) and [current handover](../TWOSAMPLEMR_WORKFLOW_CHECKPOINT_2026-11-21.md).

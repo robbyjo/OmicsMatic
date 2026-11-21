@@ -1,5 +1,21 @@
 # Current toolbox handover
 
+**Current: [original TwoSampleMR workflows and ordered remaining work](TWOSAMPLEMR_WORKFLOW_CHECKPOINT_2026-11-21.md).**
+The normal JAR now supplies standalone original-package RUN/VERIFY/REPLAY for
+MR, harmonization, four sensitivity stages and multivariable preparation. All
+667 tests pass per JVM on Windows21/25 and Linux21; 152 source-defined namespace
+functions are guarded without rewriting. Seven actual normal-JAR cases, ten
+missing/failed controls, three real replays, seven Linux R-free verifications,
+three public examples and 28 complete direct-original return/RNG comparisons
+pass. All 22,308 preceding JAR payloads remain exact. **Next: local clumping,
+historical editions, optional/dependency profiles, author attribution, global
+registration and guarded catalog admission.** Counts remain **143 scoped
+families, 1,616 reviewed uses and 1,104 pending**, with zero new TwoSampleMR
+credit. Preserve all **40 worktrees**. The self-contained private runtime census
+pins 5,765 files and 96 package identities, relative to a separate system R4.6.1.
+Transfer ignored runtimes, JARs, full primary text and complete evidence separately
+with checksums. Both literature reports stay off Pages; the full goal is unfinished.
+
 **Current: [native TwoSampleMR statistics and exact remaining work](TWOSAMPLEMR_NATIVE_CHECKPOINT_2026-11-21.md).**
 The normal JAR supplies eight deterministic source-bound methods, median points
 and median inference from supplied sampled effects. All 638 tests pass per JVM
