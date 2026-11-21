@@ -1,5 +1,24 @@
 # Current toolbox handover
 
+**Current: [qualified original1.0.0 neighbors and exact next work](MONOCLE100_NEIGHBORS_CHECKPOINT_2026-11-21.md).**
+The normal JAR now supplies complete prepared-CDS original RANN,explicit original/
+Java weight engines and RUN/VERIFY/REPLAY. All716 focused tests pass per normal
+build and Windows Java21/25/Linux Java21 packaged JVM. All66 execution expectations
+pass (50 complete graphs,16 retained failures); independent original calls match
+66 nearest returns,25 listw objects,eight errors and66 RNG records. Both public
+examples match21 original-spdep fields,perform complete-object replays and verify
+on three hosts. Five real Java/R no-result controls and eight process-only controls
+pass. All22,383 preceding JAR payloads,30 canonical files and **50 worktrees** remain
+preserved. The locale-sensitive guard is fixed; old failed attempts/hashes remain.
+Counts stay **144 scoped families,1630 reviewed/1092 pending**,with zero duplicate
+helper credit. **Next: original1.0.0 graph/preparation and P021's modified-test
+scope,then bounded Monocle admission and remaining high-impact work/reviews.**
+Monocle source summaries already exist; do not add duplicate reviews. **Transfer
+ignored runtimes,JARs,full text,author source and complete private evidence
+separately before retiring the machine.** Read the linked checkpoint's exact
+paths and prominent SKIP3/FAIL2 recovery. Both reports stay off Pages; no release
+or full-goal completion is claimed. Lower entries retain historical checkpoints.
+
 **HANDOVER: [21 November 2026 unfinished neighbor adapter and exact next actions](HANDOVER_2026-11-21_NEIGHBORS.md).**
 The corpus is complete at250 papers; totals remain **144 scoped families,1630
 reviewed uses and1092 pending**. The latest Monocle1.0.0 neighbor adapter failed
