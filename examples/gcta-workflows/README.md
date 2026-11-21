@@ -48,13 +48,16 @@ it checks the saved bundle. Native GRM is recomputed, while original-model
 verification checks declared input/export invariants without independently
 refitting the model.
 
-The ten typed models are `GRM`, `PCA`, `COJO_SELECT`, `COJO_JOINT`,
+The eleven typed models are `GRM`, `PCA`, `COJO_SELECT`, `COJO_JOINT`,
 `COJO_CONDITION`, `REML`, `LD_SCORE`, `LD_SCORE_REGION`, `SPARSE_GRM` and
-`FASTGWA_BINARY`. Only `GRM` and `SPARSE_GRM` accept `engine: "native"`.
+`FASTGWA_BINARY` and `MTCOJO`. Only `GRM` and `SPARSE_GRM` accept `engine: "native"`.
 The remaining models require `engine: "original"` and an exact qualified
 Windows or Linux GCTA 1.94.1 executable in `runtime`; Windows also requires its
 matching adjacent `libomp.dll`. They are not installed by this example.
-mtCOJO is unfinished.
+The [mtCOJO examples](../mtcojo/README.md) explain its prepared-parameter native
+component, original-runtime requests and source-specific warnings. Its standalone
+prepared-data execution paths are qualified for 1.94.1; exact older editions,
+global command discovery and GCTA/COJO catalog admission remain open.
 
 Complete machine-specific requests and raw synthetic inputs for all development
 controls are saved in `normal-workflow-runs-1` inside the public checkpoint

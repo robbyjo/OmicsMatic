@@ -1,5 +1,16 @@
 # Current toolbox handover
 
+**Current: [mtCOJO execution qualification and exact next work](MTCOJO_QUALIFICATION_2026-11-20.md).**
+The unchanged normal producer passes 57 additional actual execution requests,
+18 cross-host replay/alias requests, 24 complete table comparisons and runnable
+native/original examples. Nonfinite zero-exit GSMR results are refused; missing
+prerequisites skip explicitly; all four replay parents remain byte-identical.
+Global GCTA registration, older editions and source-role/catalog admission remain
+open. Totals stay **140 scoped integrations, 1,548 reviewed uses and 1,166 pending**.
+Preserve all **28 worktrees** and separately transfer ignored runtimes, exact
+producer JARs, full text and complete private evidence. Both reports stay off
+Pages. The full 250-paper implementation/review goal remains unfinished.
+
 **Start here: [mtCOJO development handover, warnings and exact remaining work](HANDOVER_2026-11-20_MTCOJO.md).**
 The current native conditional component and original-runtime mtCOJO adapter
 are saved with 24 packaged tests and 56 earlier complete capture checks per JVM
