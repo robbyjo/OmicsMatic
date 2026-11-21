@@ -1,5 +1,24 @@
 # Current toolbox handover
 
+**HANDOVER: [response draft, remaining work and exact resume steps](HANDOVER_2026-11-21_RESPONSES.md).**
+The collection is complete at250 papers; implementation remains unfinished.
+Counts stay **144 scoped families (26 native +118 upstream),1630 reviewed and
+1092 pending uses**. The qualified824-test graph checkpoint below remains the
+usable baseline. Latest response-preparation/dispatch drafts and the seven-test
+draft are preserved outside compiled sources; the original fixture is missing.
+The six-case/66-test R attempt failed its final serialized-body hash guard and
+is **unadmitted**. Later strict source equality diagnosis preserves the one-byte
+discrepancy; it does not repair the run. **Next: guarded source diagnosis, fresh
+reference/fixture, API and actual command tests, normal-JAR qualification, then
+bounded Monocle admission and highest-impact GWAS/omics gaps and1092 reviews.**
+All **54 original worktrees** and Git-visible variants are saved; the publication
+owner is55th. Canonical catalog, production science and site remain unchanged.
+**Transfer ignored runtimes,JARs,full text,private author source and complete
+private evidence separately before retiring this machine.** The handover gives
+prominent warning/error recovery, license decisions and exact restoration paths.
+Both unfinished reports stay off Pages. No new family credit or goal completion
+is claimed. Lower entries retain historical checkpoints and then-current counts.
+
 **Current: [qualified original1.0.0 graph stage and exact next work](MONOCLE100_GRAPH_CHECKPOINT_2026-11-21.md).**
 The normal JAR supplies prepared-CDS LEARN/ORDER/RUN and VERIFY/REPLAY. All824
 focused tests pass per Windows Java21/25 and Linux Java21 packaged JVM; a second
