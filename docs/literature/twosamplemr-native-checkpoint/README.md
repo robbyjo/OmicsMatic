@@ -1,0 +1,7 @@
+# Saved native TwoSampleMR qualification
+
+Run `python -B tools/literature/verify_twosamplemr_native_checkpoint.py --out build/NEW-saved-check` with Python 3.11+ without -O. This checks exact current source/canonical bytes, every blob and all 835 catalog manifest entries, and recorded original/normal/three-JVM/source/example results. It does not run Java, R, Git, primary XML or models.
+
+The source-built API provides eight deterministic methods, median points and median inference from supplied sampled effects. All 638 tests pass per JVM on Windows Java 21/25 and Linux Java 21. All 22,297 preceding JAR payloads remain exact. The 630 unchanged-source R calls retain return/error captures, warnings and RNG endpoints. Earlier five exact-fit failures, strict-compiler classpath failures, the final one-case norm discrepancy and source-witness harness attempts remain retained; inputs, original results and numerical tolerances were not changed to clear them.
+
+The reference archive retains the permitted MIT source/notice and BSD BLAS norm source/notice. It does not constitute an installed TwoSampleMR package. The 14 source roles remain proposals; historical paper editions, R RNG generation, full workflows and global CLI/catalog admission remain open. No new family or review credit. Exact JARs, upstream full archives, primary XML/full paragraphs and complete private evidence require a separate checksummed transfer. Both literature reports remain off Pages. The full goal is unfinished.

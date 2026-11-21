@@ -1,5 +1,19 @@
 # Current toolbox handover
 
+**Current: [native TwoSampleMR statistics and exact remaining work](TWOSAMPLEMR_NATIVE_CHECKPOINT_2026-11-21.md).**
+The normal JAR supplies eight deterministic source-bound methods, median points
+and median inference from supplied sampled effects. All 638 tests pass per JVM
+on Windows Java 21/25 and Linux Java 21; 630 unchanged-source R calls, actual
+examples, fourteen source-role proposals and sixteen source refusals per host
+are retained. All 22,297 preceding JAR payloads remain exact. **Full workflows,
+historical editions, harmonization/clumping, modes, global registration and
+catalog admission remain open.** Counts stay **143 scoped families, 1,616
+reviewed uses and 1,104 pending**; there is no new catalog credit. Preserve all
+**39 worktrees** and separately transfer ignored JARs, upstream archives, primary
+full text and complete private evidence with checksums. The linked checkpoint
+gives source/version boundaries, warnings, retained failed attempts and exact
+resume paths. Both literature reports stay off Pages; the full goal is unfinished.
+
 **Current: [PEER catalog admission and higher-impact next work](PEER_CATALOG_CHECKPOINT_2026-11-21.md).**
 One original dense PEER upstream family and eighteen source-role reviews are
 admitted. Only P074/P107/P169 observations are added; all 1,598 earlier reviews

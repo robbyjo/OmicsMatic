@@ -1,0 +1,62 @@
+{
+  "source_commit": "c08ab8a67b457d8ab87dcb7f6d33d8c8452e4cc6",
+  "source_version": "0.7.14",
+  "source_file": {
+    "bytes": 39907,
+    "sha256": "3ec42fd6995c1f8bae44e1cb0231c0e6f7d9c16329df35898893802bc090ddc6"
+  },
+  "fixture": {
+    "bytes": 1023786,
+    "sha256": "3bb44b0ca6cd47d495e8015fcc22ebb321872d39f7b530af6c81b3ed7686547b"
+  },
+  "members": {
+    "cases.tsv": {
+      "bytes": 776,
+      "sha256": "48228bfd9433eef6fadad8aa163233898cc97e0681c27dad4179d6ca70134e67"
+    },
+    "input.tsv": {
+      "bytes": 69548,
+      "sha256": "21b81d37f5981e59dc92c77cc2bb6e77fa07148a7e7d71e8a752717551903f9c"
+    },
+    "statistics.tsv": {
+      "bytes": 176203,
+      "sha256": "aec3e088551687defb91899931e57af561028ed112b9aee86fb9158ec3a1e21a"
+    },
+    "draws.tsv": {
+      "bytes": 3595897,
+      "sha256": "0a5c59548e7f555ac00bc4b91727fa53ba6b829f40a0cfa0973599bc8a504c48"
+    },
+    "errors.tsv": {
+      "bytes": 229,
+      "sha256": "6af8853685c3779afca456082ac6bb297276e76723c236dfb7860232906fa9df"
+    }
+  },
+  "scope": "Complete finite prepared vectors, positive standard errors, numerical statistic fields; scalar Wald excludes numeric(0); explicit supplied-effect bootstrap draws, not R RNG generation; no R lm container emulation or author/paper edition correspondence.",
+  "whole_tool_qualified": false,
+  "whole_goal_complete": false,
+  "norm_reference": {
+    "algorithm": "Reference BLAS DNRM2 Algorithm978 March2021",
+    "source": "https://raw.githubusercontent.com/wch/r-source/trunk/src/extra/blas/blas2.f90",
+    "source_snapshot": {
+      "bytes": 8548,
+      "sha256": "84b8c76af95b6701276182655265a459fa562243921f37c9ba8b30ef97157d8a"
+    },
+    "license": {
+      "url": "https://raw.githubusercontent.com/Reference-LAPACK/lapack/v3.12.1/LICENSE",
+      "bytes": 2266,
+      "sha256": "978539245c405775bf347b1256c36df4daf8b69a64b099e94b1d53742201621e"
+    }
+  },
+  "runtime_reference": "R4.6.1 Windows UCRT; exact session retained with original controls; no author runtime identity claim",
+  "deterministic_methods": [
+    "mr_wald_ratio",
+    "mr_meta_fixed_simple",
+    "mr_ivw",
+    "mr_ivw_fe",
+    "mr_ivw_mre",
+    "mr_uwr",
+    "mr_egger_regression",
+    "mr_sign"
+  ],
+  "bootstrap_contract": "Explicit replicate-by-variant sampled effects; source delta-method weights held fixed; original R draws/RNG endpoint/replicate SD checked. No native R RNG generation claim."
+}
