@@ -1,5 +1,17 @@
 # Current toolbox handover
 
+**Current: [native limma variance qualification and remaining work](LIMMA_VARIANCE_CHECKPOINT_2026-11-20.md).**
+The normal JAR now contains source-matched limma3.68.5 variance components.
+All 379 tests and 23,873 original field comparisons pass per JVM on Windows21/25
+and Linux21, with actual examples and all 23,548 old JAR payloads unchanged.
+The expanded all250 source audit classifies 20 candidates, including edgeR-only
+P237 and unresolved P228 attribution/spelling. Full models, modern unequal-df,
+trend/robust fitting, file workflows and catalog admission remain open. Totals
+stay **141 families, 1,575 reviewed uses and 1,140 pending**; no new limma credit.
+Preserve all **32 worktrees** and separately transfer ignored exact runtimes,
+JARs, full text and complete private evidence. Both reports stay off Pages.
+The linked checkpoint is the current resume list; lower entries retain history.
+
 **Start here: [20 November 2026 handover and prioritized remaining work](HANDOVER_2026-11-20_LIMMA.md).**
 The verified baseline is main `9b2e159a`: **250 papers, 141 scoped integrations
 (26 native +115 upstream), 1,575 reviewed uses and 1,140 pending**. Limma intake
