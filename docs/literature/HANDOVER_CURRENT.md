@@ -1,5 +1,20 @@
 # Current toolbox handover
 
+**Current: [historical TwoSampleMR normal-JAR execution and remaining work](TWOSAMPLEMR_HISTORICAL_CHECKPOINT_2026-11-21.md).**
+All49 normal-JAR cases match expected outcomes (45 successful, four original rank
+errors); fresh tagged namespaces match121 complete returns and four errors/RNG.
+Four real replays preserve parent files/exports, four public examples pass,16
+missing/failed/source/lifetime controls reject result admission and seven Linux
+R-free verifications pass. Direct replay/example comparisons bring the total to
+**147 complete original returns**. The unchanged producer retains769 packaged
+tests per Windows Java21/25 and Linux Java21. All44 worktrees,27 canonical files
+and the preceding private runtimes remain preserved. **Next: original0.6.8 local
+clumping, provider/dependency profiles, P157/P177 attribution, global registration
+and guarded admission.** Counts stay143 scoped families,1,616 reviewed/1,104
+pending, with zero new credit. Transfer ignored runtimes/JARs/full text/private
+evidence separately with checksums. Both reports stay off Pages; the full goal
+remains unfinished. Lower entries retain prior checkpoints.
+
 **Current handover: [historical TwoSampleMR and exact next actions](HANDOVER_2026-11-21_HISTORICAL_TWOSAMPLEMR.md).**
 Four source-tagged editions now have compiled development adapters for formatting,
 harmonization, MR/sensitivity/modes and multivariable preparation. All **769 focused

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "mode": "RUN",
+  "profile": "TwoSampleMR0.5.7-592ebe05-R4.6.1-Windows64",
+  "operation": "HARMONISE_AND_MR",
+  "out": "../outputs/pipeline-0.5.7",
+  "rscript": "REPLACE_WITH_EXACT_R_4.6.1_RSCRIPT_PATH",
+  "r_libraries": [
+    "REPLACE_WITH_SELECTED_VERSION_LIBRARY",
+    "REPLACE_WITH_HISTORICAL_EXTRAS_LIBRARY",
+    "REPLACE_WITH_PROTECTED_PRECEDING_LIBRARY"
+  ],
+  "seed": 20261121,
+  "preparation_note": "Unmodified synthetic qualification input; explicit tagged source, present-day dependencies and source defaults with declared overrides; not a paper replication",
+  "exposure": "../data/pipeline-0.5.7.exposure.tsv",
+  "outcome": "../data/pipeline-0.5.7.outcome.tsv",
+  "harmonise_action": 2,
+  "methods": [
+    "mr_wald_ratio",
+    "mr_two_sample_ml",
+    "mr_egger_regression",
+    "mr_ivw",
+    "mr_ivw_fe",
+    "mr_ivw_mre"
+  ],
+  "parameters": {
+    "nboot": 32
+  },
+  "sensitivity": [
+    "HETEROGENEITY",
+    "PLEIOTROPY",
+    "SINGLE_SNP",
+    "LEAVE_ONE_OUT"
+  ],
+  "parameter_policy": "source-defaults-with-overrides"
+}
