@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "profile": "monocle100-original-neighbors-r43-v1",
+  "monocle_commit": "004c096f3a3bdaf1e6709a65fb36f40ba775f1ab",
+  "R": "4.3.3",
+  "platform": "x86_64-conda-linux-gnu",
+  "packages": {
+    "monocle3": "1.0.0",
+    "RANN": "2.6.2",
+    "spdep": "1.4.1",
+    "slam": "0.1.55",
+    "Matrix": "1.6.5",
+    "igraph": "2.0.3",
+    "jsonlite": "2.0.0",
+    "digest": "0.6.37"
+  },
+  "guards": {
+    "monocle3": [
+      "calculateLW",
+      "jaccard_coeff",
+      "new_cell_data_set"
+    ],
+    "RANN": [
+      "nn2"
+    ],
+    "spdep": [
+      "nb2listw",
+      "card"
+    ],
+    "slam": [
+      "rowapply_simple_triplet_matrix"
+    ]
+  },
+  "function_fingerprints": {
+    "slam": {
+      "rowapply_simple_triplet_matrix": {
+        "body_sha256": "253cca2091cc774794fa4b1b79efd52381ebed746248c13cda9c01c1f5ae945b",
+        "formals_sha256": "dd7b95babf2cde58cc8438ea77efc4cfcea9efdb87955499b65138bcc601ea4a",
+        "serialization_version": 3,
+        "original_body_formals_identical": true
+      }
+    }
+  },
+  "files": {
+    "reference/monocle3/R/graph_test.R": {
+      "bytes": 17002,
+      "sha256": "e500f904468be725f829b1aafa8488ca851dbb6d997579a31ee8f376d7227fe2"
+    },
+    "reference/monocle3/R/RcppExports.R": {
+      "bytes": 375,
+      "sha256": "400742d0e60947029df3ebcf109a600b9774f71478cda9eacf18eb7c11743201"
+    },
+    "reference/monocle3/R/cell_data_set.R": {
+      "bytes": 5927,
+      "sha256": "9fc064bdadf68a602030bc2622d7521d73d8dfbda3658f6d1137eaa79dd51c78"
+    },
+    "reference/RANN/R/nn.R": {
+      "bytes": 4928,
+      "sha256": "576004062644fa09d12e3122e812fb22547c856ff15b68703a4f39b2ac03d725"
+    },
+    "reference/spdep/R/nb2listw.R": {
+      "bytes": 4610,
+      "sha256": "0cf2d1353c8f785c1727ab1a4f53a3fd9bcfb50bb703a1aae5f45ae070eaf964"
+    },
+    "reference/spdep/R/card.R": {
+      "bytes": 171,
+      "sha256": "3d59381bc3463a613aa4e8deef8968b0a5b8b9015eee76f4d0e4d8b971a358dd"
+    }
+  },
+  "scope": "Original calculateLW on a complete caller-prepared in-memory Monocle1.0.0 CDS; no graph learning, expression/covariate transformation or paper reproduction.",
+  "runtime_authentication": false
+}

@@ -1,5 +1,21 @@
 # Current toolbox handover
 
+**HANDOVER: [21 November 2026 unfinished neighbor adapter and exact next actions](HANDOVER_2026-11-21_NEIGHBORS.md).**
+The corpus is complete at250 papers; totals remain **144 scoped families,1630
+reviewed uses and1092 pending**. The latest Monocle1.0.0 neighbor adapter failed
+its SLAM function guard and admitted no graph or statistical result. Five Java
+drafts and11 resources are preserved byte-exact outside compiled sources. The
+preceding native weight component remains qualified; its636 tests per JVM are
+recorded prior results. This handover adds no scientific qualification or credit.
+All **49 worktrees** are preserved and all Git-visible dirty variants are saved
+in the new checksummed packet. **Next: diagnose the canonical guard, complete
+admission/resource/process controls, qualify the normal JAR and audit P021/Monocle
+roles**, then continue high-impact gaps and1092 reviews. **Transfer ignored
+runtimes, JARs, full text, author source and complete private evidence separately
+before retiring this machine.** The linked handover gives exact paths, commands,
+priorities and prominent SKIP3/FAIL2 recovery. Both reports remain off Pages;
+the overall goal is unfinished. Lower entries retain historical checkpoints.
+
 **Current: [Monocle1.0.0 native weights and exact next work](MONOCLE100_CHECKPOINT_2026-11-21.md).**
 The source-built JAR now includes a Java weight-selection API and standalone
 command, with25 successful original graph comparisons and eight retained original

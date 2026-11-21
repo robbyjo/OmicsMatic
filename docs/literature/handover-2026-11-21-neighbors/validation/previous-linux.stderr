@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "/mnt/d/projects/JLinAlg/build/mo-2/tools/literature/monocle100/verify.py", line 75, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/mnt/d/projects/JLinAlg/build/mo-2/tools/literature/monocle100/verify.py", line 17, in main
+    for name,wanted in {**profile['source_inputs'],**profile['canonical_unchanged']}.items():require(pin(root.joinpath(*parts(name)).read_bytes())==wanted,'Changed current source/canonical bytes: '+name)
+                                                                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/d/projects/JLinAlg/build/mo-2/tools/literature/monocle100/verify.py", line 6, in require
+    if not ok:raise ValueError(message)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: Changed current source/canonical bytes: docs/literature/HANDOVER_CURRENT.md
