@@ -1,5 +1,20 @@
 # Current toolbox handover
 
+**Start here: [20 November 2026 handover and prioritized remaining work](HANDOVER_2026-11-20_LIMMA.md).**
+The verified baseline is main `9b2e159a`: **250 papers, 141 scoped integrations
+(26 native +115 upstream), 1,575 reviewed uses and 1,140 pending**. Limma intake
+has scanned all 250 source identities and found 19 candidate papers, including
+three without a current limma observation. These are candidates awaiting review;
+no review or integration credit has been added. Existing limma 3.68.5 and its
+dependencies were inspected successfully without installation or analysis.
+Next: qualify source-matched limma operations, then PEER and TwoSampleMR.
+Preserve all **31 worktrees**. **Ignored runtimes, exact producer JARs, primary
+full text and complete private evidence require a separate checksummed transfer;
+GitHub is not a complete machine backup.** The linked handover gives exact paths,
+warning recovery and resume checks. The full goal remains unfinished. Both
+literature HTML reports remain withheld from Pages. All lower entries retain
+historical checkpoints; use the link above for the current task list.
+
 **Current: [GCTA/COJO catalog admission and high-impact next work](GCTA_CATALOG_CHECKPOINT_2026-11-20.md).**
 One GCTA upstream family is admitted, with COJO as a validated alias adding no
 extra credit. The guarded transition adds P112/P169, removes P127's unreviewed
