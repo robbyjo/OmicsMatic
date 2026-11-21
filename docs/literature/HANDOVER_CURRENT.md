@@ -1,5 +1,24 @@
 # Current toolbox handover
 
+**HANDOVER: [unfinished graph draft and exact next actions](HANDOVER_2026-11-21_GRAPH.md).**
+The corpus is complete at250 papers; the full implementation goal is unfinished.
+Counts stay **144 scoped families,1630 reviewed/1092 pending**. The new original
+Monocle3 package1.0.0 graph draft passes strict quick compilation and earlier
+small pilots, but the final18-package/error-RNG edits are not live-qualified.
+Its21 direct-original reference cases define16 successes,three original errors
+and two convergence refusals; the adapter has not passed that matrix. Four new
+classes,one shared-runtime extension and graph resources are saved outside the
+compiled tree. The last qualified716-test neighbor baseline remains unchanged.
+All **52 worktrees** and their Git-visible dirty variants are preserved. **Next:
+fresh final-source captures, complete original-object comparisons, contracts,
+normal-JAR/three-host/failure/replay validation, then bounded Monocle admission
+and remaining high-impact gaps/reviews.** Nine Monocle summaries are already
+reviewed: do not duplicate them. **Transfer ignored runtimes,JARs,full text,
+author source and complete private evidence separately before retiring this
+machine.** The linked handover gives exact paths and prominent SKIP3/FAIL2
+recovery. Both reports remain off Pages; no release or goal completion is claimed.
+Lower entries retain historical checkpoints and their then-current counts.
+
 **Current: [qualified original1.0.0 neighbors and exact next work](MONOCLE100_NEIGHBORS_CHECKPOINT_2026-11-21.md).**
 The normal JAR now supplies complete prepared-CDS original RANN,explicit original/
 Java weight engines and RUN/VERIFY/REPLAY. All716 focused tests pass per normal
