@@ -1,5 +1,21 @@
 # Current toolbox handover
 
+**Current handover: [historical TwoSampleMR and exact next actions](HANDOVER_2026-11-21_HISTORICAL_TWOSAMPLEMR.md).**
+Four source-tagged editions now have compiled development adapters for formatting,
+harmonization, MR/sensitivity/modes and multivariable preparation. All **769 focused
+tests** pass in the normal build and per Windows Java21/25 and Linux Java21 packaged
+JVM; all **22,335 prior JAR payloads** remain exact. An earlier quick-compiled pilot
+matches 120 full original returns and four raised errors, including RNG endpoints;
+that comparison is **not normal-JAR live execution qualification**. Actual normal-JAR
+analyses/replays/timeout controls, historical clumping, provider/source attribution,
+global registration and guarded catalog admission remain open. **0.4.9 uses a
+documented documentation-only build; dependency-era reproduction is not established.**
+Counts stay **143 scoped families, 1,616 reviewed uses and 1,104 pending**, with zero
+new credit. Preserve all **43 worktrees**. Ignored exact runtimes, JARs, full text
+and complete private evidence need a separate checksummed transfer. Both literature
+reports stay off Pages; the full goal is unfinished. Use this linked handover first;
+lower entries retain earlier checkpoints.
+
 **Current: [original local-clumping qualification and ordered remaining work](TWOSAMPLEMR_CLUMP_CHECKPOINT_2026-11-21.md).**
 The normal JAR now supplies standalone original local clumping RUN/VERIFY/REPLAY.
 All **707 focused tests** pass per Windows Java21/25 and Linux Java21. Twenty-one

@@ -1,0 +1,10 @@
+from pathlib import Path
+import json,subprocess
+R=Path('D:/projects/JLinAlg');T=R/'build/mr-5';B=T/'build/twosamplemr-historical-1';O=B/'column-order-control-3';O.mkdir();base=B/'java-pilot-2/0.4.9';request=json.loads((base/'multivariable.json').read_bytes());original=Path(request['exposure']);lines=original.read_text(encoding='utf-8').splitlines();cols=lines[0].split('\t');at=cols.index('exposure');labels={'Exposure':'zTrait','Exposure2':'\u00e9Trait'};converted=[lines[0]]
+for line in lines[1:]:
+    row=line.split('\t');row[at]=labels[row[at]];converted.append('\t'.join(row))
+path=O/'exposure.tsv';path.write_text('\n'.join(converted)+'\n',encoding='utf-8',newline='\n');request.update(exposure=str(path),out=str(O/'analysis'),preparation_note='Synthetic non-ASCII phenotype labels distinguish Java UTF16 ordering from original R ordering; no numerical inputs or IDs are changed')
+(O/'request.json').write_text(json.dumps(request,indent=2)+'\n',encoding='utf-8',newline='\n');J=R/'build/mr-4/build/twosamplemr-clump-adapter-1/normal-gradle-2/project-build/cli/omicsmatic-0.4.0.jar';cp=';'.join(map(str,[B/'compile-3/classes',T/'src/main/resources',J]));command=['C:/Program Files/Eclipse Adoptium/jdk-21.0.4.7-hotspot/bin/java.exe','-cp',cp,'org.jlinalg.cli.TwoSampleMrHistoricalCli','--request',str(O/'request.json')]
+with (O/'stdout').open('xb') as stdout,(O/'stderr').open('xb') as stderr:p=subprocess.run(command,cwd=T,stdout=stdout,stderr=stderr,timeout=180)
+manifest=json.loads((O/'analysis/manifest.json').read_bytes());report=json.loads((O/'analysis/worker/report.json').read_bytes()) if (O/'analysis/worker/report.json').exists() else {}
+(O/'RESULT.json').write_text(json.dumps(dict(exit_code=p.returncode,Java_error=manifest.get('error'),original_R_status=report.get('status'),source_functions=report.get('source_functions_guarded'),matrix_columns=report.get('tables',{}).get('mv-exposure_beta.tsv',{}).get('columns')),indent=2)+'\n',encoding='utf-8');print((O/'RESULT.json').read_text())
