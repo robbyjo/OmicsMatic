@@ -1,0 +1,11 @@
+from pathlib import Path
+import ast,json
+R=Path('D:/projects/JLinAlg');T=R/'build/gc-7';B=T/'build/gcta-global-1';prior=json.loads((B/'source-intake-1/CANDIDATES.json').read_bytes());alias=json.loads((B/'source-alias-followup-1/READBACK.json').read_bytes());source=(R/'build/intake_gcta_census_20261120.py').read_text(encoding='utf-8')
+for old,new in {"T=R/'build/gc-1';O=T/'build/gcta-high-impact-1/source-intake-1'":"T=R/'build/gc-7';O=T/'build/gcta-global-1/source-intake-expanded-1'","baseline_commit='bdf1c3e8067896131d31cbca3e7de9191aa93a0d'":"baseline_commit='cfeee186d5068a2af3be33ef9fb69508feefdd17'"}.items():assert old in source;source=source.replace(old,new)
+line=next(line for line in source.splitlines() if line.startswith('pattern=re.compile('));source=source.replace(line,'pattern=re.compile('+repr(prior['pattern']+'|'+alias['pattern'])+',re.I)',1);ast.parse(source);exec(compile(source,__file__,'exec'))
+current=json.loads((O/'CANDIDATES.json').read_bytes());assert current['source_identities']==prior['source_identities'];old={r['paper_id']:r for r in prior['candidates']};new={r['paper_id']:r for r in current['candidates']};assert set(new)-set(old)=={'P169'} and not set(old)-set(new)
+for pid,row in old.items():
+    assert row['existing_observations']==new[pid]['existing_observations']
+    for a in row['anchors']:assert any(b['paragraph_index']==a['paragraph_index'] and b['paragraph_sha256']==a['paragraph_sha256'] and b['matching_text_sha256']==a['matching_text_sha256'] for b in new[pid]['anchors'])
+readback=dict(status='PASS_FRESH_250_EXPANDED_GCTA_SOURCE_CENSUS_23_CANDIDATES',source_identities=current['source_identities'],all_prior_candidate_paragraphs_retained=True,new_papers=['P169'],new_existing_paper_contexts=[dict(paper_id='P090',paragraph_index=24)],candidates=[dict(paper_id=r['paper_id'],pmcid=r['pmcid'],doi=r['doi'],existing_tool_ids=[t['tool_id'] for t in r['existing_observations']],anchors=[{k:a[k] for k in ['paragraph_index','section','paragraph_sha256','matching_text_sha256']} for a in r['anchors']]) for r in current['candidates']],canonical_metadata_modified=False)
+(O/'READBACK.json').write_text(json.dumps(readback,indent=2)+'\n',encoding='utf-8',newline='\n')

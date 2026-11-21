@@ -1,7 +1,8 @@
 # GCTA development workflow: minimal native example
 
-**Development checkpoint; global discovery and GCTA catalog admission remain
-unfinished.** Read the [handover and warnings](../../docs/literature/HANDOVER_2026-11-20_GCTA_WORKFLOWS.md).
+**Global `gcta-tools` is available in current source; GCTA catalog admission
+remains unfinished.** Read the [current command guide](../../docs/vignettes/gcta-tools.md)
+and [historical workflow warnings](../../docs/literature/HANDOVER_2026-11-20_GCTA_WORKFLOWS.md).
 Java 21+ and Python 3 are required for this example. The native engine requires
 no GCTA executable. Build the normal executable JAR using the project's Gradle
 wrapper; use the actual JAR path reported by `executableJar`.
@@ -13,8 +14,8 @@ actual output. Choose a new fixture directory if the named directory exists.
 ```powershell
 python -B examples/gcta-workflows/make_fixture.py --out build/gcta-example-new
 $jar = 'C:/absolute/path/to/omicsmatic-0.4.0.jar'
-java -cp $jar org.jlinalg.cli.GctaWorkflowCli --request build/gcta-example-new/request.json
-java -cp $jar org.jlinalg.cli.GctaWorkflowCli --verify build/gcta-example-new/native-grm-result
+java -jar $jar gcta-tools --request build/gcta-example-new/request.json
+java -jar $jar gcta-tools --verify build/gcta-example-new/native-grm-result
 ```
 
 Input paths and `out` in a request resolve relative to that request file.
@@ -57,7 +58,8 @@ matching adjacent `libomp.dll`. They are not installed by this example.
 The [mtCOJO examples](../mtcojo/README.md) explain its prepared-parameter native
 component, original-runtime requests and source-specific warnings. Its standalone
 prepared-data execution paths are qualified for 1.94.1; exact older editions,
-global command discovery and GCTA/COJO catalog admission remain open.
+and GCTA/COJO catalog admission remain open. The standalone class remains available
+with the same request/verify arguments.
 
 Complete machine-specific requests and raw synthetic inputs for all development
 controls are saved in `normal-workflow-runs-1` inside the public checkpoint

@@ -4,8 +4,9 @@ These examples have two different scopes. The native Java API calculates
 conditional GWAS results from **already fitted parameters**. The standalone
 original-runtime workflow can estimate GSMR and LDSC quantities with the exact
 qualified GCTA 1.94.1 executable. Neither prepares a study's reference population
-or infers its identifiers, alleles, ploidy or effect scale. Full GCTA catalog
-admission and global command registration remain unfinished.
+or infers its identifiers, alleles, ploidy or effect scale. The global
+`gcta-tools` command is available in current source; full GCTA catalog admission
+remains unfinished. See the [command guide](../../docs/vignettes/gcta-tools.md).
 
 ## Native conditional calculation
 
@@ -68,8 +69,8 @@ python -B examples/mtcojo/make_request.py `
   --request-out build/mtcojo-request-new.json
 
 $jar = 'C:/absolute/path/to/omicsmatic-0.4.0.jar'
-java -cp $jar org.jlinalg.cli.GctaWorkflowCli --request build/mtcojo-request-new.json
-java -cp $jar org.jlinalg.cli.GctaWorkflowCli --verify build/mtcojo-original-new
+java -jar $jar gcta-tools --request build/mtcojo-request-new.json
+java -jar $jar gcta-tools --verify build/mtcojo-original-new
 ```
 
 On Linux use the equivalent shell continuation `\`, and supply the exact Linux

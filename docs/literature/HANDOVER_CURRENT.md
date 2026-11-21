@@ -1,5 +1,16 @@
 # Current toolbox handover
 
+**Current: [global GCTA command, expanded source review and remaining work](GCTA_GLOBAL_CHECKPOINT_2026-11-20.md).**
+The normal JAR exposes `gcta-tools` RUN/VERIFY/REPLAY with unchanged scientific
+classes. All 27 packaged tests and 82 prior capture checks pass per JVM on three
+JVMs; actual native/original workflows and legacy help compatibility pass.
+Expanded source-name review finds P169 and adds a P090 role: 27 positive labels
+on 19 executed papers plus four exclusions are reviewed proposals. Guarded
+catalog admission remains open, so totals stay **140 integrations, 1,548 reviewed
+canonical uses and 1,166 pending**. Preserve all **29 worktrees** and separately
+transfer ignored runtimes, exact JARs, full text and complete private evidence.
+Both reports remain off Pages. The full goal is unfinished.
+
 **Current: [mtCOJO execution qualification and exact next work](MTCOJO_QUALIFICATION_2026-11-20.md).**
 The unchanged normal producer passes 57 additional actual execution requests,
 18 cross-host replay/alias requests, 24 complete table comparisons and runnable
