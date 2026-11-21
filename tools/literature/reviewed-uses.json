@@ -23387,6 +23387,283 @@
       "evidence_paragraph_sha256": "99f200462063a6de97989b285539ae6919194c52292e1cd573d3eebba003d5eb",
       "use_summary": "Authors report TMMwsp pseudobulk normalization, attribute voomLmFit to limma, and describe lowercase lmfit with batch effects and BH correction, retaining adjusted P<0.2. Preserve those reported names and attribution as unresolved.",
       "implementation_scope_note": "Current checked namespaces place voomLmFit in edgeR 4.10.7 and lmFit in limma 3.68.5; lowercase lmfit is absent. These facts do not prove historical bindings or repair the author script. The repository linked by the Zenodo record returns public 404 at this audit; exact functions, edition and code remain unresolved. This source review is not a complete author workflow or biological reproduction."
+    },
+    {
+      "pmcid": "PMC13600940",
+      "doi": "10.1038/s41586-026-10836-6",
+      "tool_id": "peer",
+      "evidence_paragraph_sha256": "a599487b6f0c9e7ab3a01294792be73c519b77285a86f18d68e4feac41f9cb9f",
+      "use_summary": "Scaled expression within PsychAD subcohorts, estimated PEER factors, residualized expression and quantile normalized it. Used FastQTL discoveries to choose a factor count closest to 95% of the maximum, then repeated the procedure after combining subcohorts. External ROSMAP/FACS-MG validation used PEER-residualized expression.",
+      "implementation_scope_note": "Factor-count search, scaling, quantile normalization, subcohort combination and prediction validation are separate pipeline steps. The factor-grid increment, ties, author seed and PEER edition are not recovered. This source review is not a complete author workflow or biological reproduction.",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 69,
+          "section": "Methods / Out-of-sample validation of PsychAD snTIMs / Validation of class-level PsychAD snTIMs in ROSMAP",
+          "paragraph_sha256": "73c45783955303723124a0b353751c74c1c1c0d528669f54c585ad1e1c0c24dd",
+          "matching_text_sha256": "73c45783955303723124a0b353751c74c1c1c0d528669f54c585ad1e1c0c24dd"
+        },
+        {
+          "paragraph_index": 70,
+          "section": "Methods / Out-of-sample validation of PsychAD snTIMs / Validation of PsychAD subclass-MG in FACS-MG",
+          "paragraph_sha256": "8d3bd986f1426873853faccbe22f6f566142461b9e1c690db3d8114452ba7577",
+          "matching_text_sha256": "8d3bd986f1426873853faccbe22f6f566142461b9e1c690db3d8114452ba7577"
+        },
+        {
+          "paragraph_index": 71,
+          "section": "Methods / S-snTWAS validation",
+          "paragraph_sha256": "48a47cf2276fc36e3cd1e2e270fde3596e65ba4d97a08947ba5c7d48fb587fa1",
+          "matching_text_sha256": "c5f7a343f6b2b2c1a2ebfb473d8ec1f0fe33aa809c565856be83c5ca1f357281"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC12807872",
+      "doi": "10.1038/s41588-025-02417-6",
+      "tool_id": "peer",
+      "evidence_paragraph_sha256": "40a94bbd1a45bada0158aac6a30cc09f247c1db546c887f46786d5470160e6ce",
+      "use_summary": "Adjusted normalized aortic-valve gene expression for age, sex, smoking status, the first 60 probabilistic-estimation-of-expression-residuals factors and five ancestry PCs before PredictDB elastic-net training with nested cross-validation.",
+      "implementation_scope_note": "Expanded-name positive use was missed by the acronym-only inventory. The paragraph does not establish the PEER edition, factor-fitting options or whether supplied factors were reused. PredictDB fitting and nested validation are separate. This source review is not a complete author workflow or biological reproduction."
+    },
+    {
+      "pmcid": "PMC13649572",
+      "doi": "10.1038/s41588-026-02733-5",
+      "tool_id": "peer",
+      "evidence_paragraph_sha256": "58fb0e6e8f8c24fe27ce281b436794f9b9e29a73e98138c71d6a1be4870cca4b",
+      "use_summary": "Applied the PEER package to identify unobserved covariates. Compared eQTL discovery across 10-98 factors in increments of four using expression normalized for preselected biological/technical covariates, and selected the setting with the most significant eQTLs.",
+      "implementation_scope_note": "The eQTL objective, upstream normalization, tie handling, author edition and seed are not supplied by a single dense fit. This source review is not a complete author workflow or biological reproduction."
+    },
+    {
+      "pmcid": "PMC13649558",
+      "doi": "10.1038/s41588-026-02713-9",
+      "tool_id": "peer",
+      "evidence_paragraph_sha256": "8c7421a8e24afb49294e28f340813fd2b6e3d016f3a9b8092f0554751fca4e23",
+      "use_summary": "Calculated genetic PCs and expression-residual factors separately within APOE strata. Included sex, three genetic PCs and 45 PEER factors for epsilon33 or 15 for epsilon44/epsilon43 in the ROSMAP cis-eQTL analysis.",
+      "implementation_scope_note": "Expanded-name positive use was missed by the acronym-only inventory. Preserve stratum-specific estimation and counts; do not fit one pooled factor model. Author edition and detailed expression preparation are unreported. This source review is not a complete author workflow or biological reproduction."
+    },
+    {
+      "pmcid": "PMC10703692",
+      "doi": "10.1038/s41588-023-01560-2",
+      "tool_id": "peer",
+      "evidence_paragraph_sha256": "4319f3778854369f6ed922fd60231927a52896a61e33bbb5a8d4b0ad0bb8bc6c",
+      "use_summary": "Residualized GTEx gene/isoform expression on the original tissue-specific clinical, demographic, genotype-PC and expression PEER covariates before isoTWAS model training.",
+      "implementation_scope_note": "This is reported reuse of original GTEx covariates, not evidence of a fresh PEER fit. Salmon, tximeta, edgeR/DESeq2 transformations and isoform-fraction/uncertainty calculations are separate providers. This source review is not a complete author workflow or biological reproduction."
+    },
+    {
+      "pmcid": "PMC11525184",
+      "doi": "10.1038/s41588-024-01896-3",
+      "tool_id": "peer",
+      "evidence_paragraph_sha256": "5cd9c52cbad4baf3f7ac75388ac1abd1a11c790344535fa013cfc60bb555d0d6",
+      "use_summary": "Used 60 PEER factors with sex and five genotype PCs for blood eQTL mapping, 15 factors for sQTL mapping, and recalculated 60 factors from the protein/genotype matrices for pQTL mapping. Retained factor terms in COVID-19 severity interaction-QTL models.",
+      "implementation_scope_note": "Keep expression, splicing and protein matrices/counts distinct. STAR/RSEM/LeafCutter processing, FastQTL/tensorQTL models and interaction testing are separate. The PEER edition and complete author settings remain unknown. This source review is not a complete author workflow or biological reproduction.",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 44,
+          "section": "Methods / eQTL and sQTL fine-mapping",
+          "paragraph_sha256": "e27cb6d5f08ec56dde49eb50f7da4c6cb4738db661b73f0c51bd6c7e5d949722",
+          "matching_text_sha256": "bd5cf667ecbfdedbdef56f3b60d9def5aeb96e7350c29865a931860df53c3354"
+        },
+        {
+          "paragraph_index": 47,
+          "section": "Methods / pQTL fine-mapping",
+          "paragraph_sha256": "baf9b2d82730e7a4d4f2440a02a6497e6e6c8cb39415044987d76584522c99d1",
+          "matching_text_sha256": "baf9b2d82730e7a4d4f2440a02a6497e6e6c8cb39415044987d76584522c99d1"
+        },
+        {
+          "paragraph_index": 52,
+          "section": "Methods / ieQTL and ipQTL calling",
+          "paragraph_sha256": "46f476374af6c82f1740835c93da2ea5e973d0ab45dd38790d87a312210cba60",
+          "matching_text_sha256": "a8ebc91475b2770ed40623e7e0db77edb43760ff30572a74d03514c447ee65d9"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC11525171",
+      "doi": "10.1038/s41588-024-01900-w",
+      "tool_id": "peer",
+      "evidence_paragraph_sha256": "697cb96e6d7ae781cdff96df41892ec48a1a3af4b5d959fe4315d321ebb98660",
+      "use_summary": "Used probabilistic-estimation-of-expression-residuals-adjusted expression for Matrix eQTL analysis in the SOCCS and GTEx colorectal datasets, accounting for age, sex, batch and hidden covariates equal to one quarter of each sample size.",
+      "implementation_scope_note": "Expanded-name positive use was missed by the acronym-only inventory. The fractional-count rounding rule, author edition, fitting details and exact residualization pipeline are unstated. Matrix eQTL, META and SMR are separate steps; do not silently exchange cohort labels or sample counts. This source review is not a complete author workflow or biological reproduction."
+    },
+    {
+      "pmcid": "PMC12597823",
+      "doi": "10.1038/s41588-025-02344-6",
+      "tool_id": "peer",
+      "evidence_paragraph_sha256": "5723f0cc56dab8f277f39bd229b63df449a904f316db09dfafa98454a9e206c1",
+      "use_summary": "Applied PEER factor analysis to inverse-rank-normalized pseudobulk expression to remove age, available sex, five genotype PCs and 15 latent factors before bulk cis-eQTL mapping. Also used PEER-factor-analysis residuals in pseudobulk response-eQTL mixed models.",
+      "implementation_scope_note": "Keep perturbation/averaging definitions and the reported Q-value thresholds distinct. Inverse-normal transformation, donor random effects and FastQTL/LME fits are not performed by the PEER core. Author edition and full settings remain unreported. This source review is not a complete author workflow or biological reproduction.",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 41,
+          "section": "Methods / Identifying response eQTL effects",
+          "paragraph_sha256": "7bebf14f79a6db3719bc09eeb5a00b1b7f7e016823a9e1db28f5a66758d3ed16",
+          "matching_text_sha256": "7bebf14f79a6db3719bc09eeb5a00b1b7f7e016823a9e1db28f5a66758d3ed16"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC12824624",
+      "doi": "10.1016/j.ajhg.2025.11.012",
+      "tool_id": "peer",
+      "evidence_paragraph_sha256": "3a0c4cccba6681622283f2ead9837d7a1608880ed6daa0f83a2115782de9cbca",
+      "use_summary": "Estimated latent covariates jointly from the QC-passed lncRNA/PCG expression matrix after edgeR TMM and rank-inverse-normal transformation. Selected 15/30/45/60 factors by the stated sample-size bands, then adjusted QTL phenotypes for age, sex, PEER factors and 20 genetic PCs.",
+      "implementation_scope_note": "Do not assume the lncRNA/PCG factor calculation establishes a separate circRNA PEER fit. TMM/RINT, voom/custom circular-junction preparation, tensorQTL and overlap-aware meta-analysis remain separate. The author PEER edition and seed are not recovered. This source review is not a complete author workflow or biological reproduction.",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 15,
+          "section": "Material and methods / eQTL mapping analysis",
+          "paragraph_sha256": "39c06e19caad2ea12b13a28f85e3c776818ebad2ddf8813f1322212885738a2f",
+          "matching_text_sha256": "f310c1465051fd8dd8033163f6805f7bb97587f93aebe72f57e0c104d011479a"
+        },
+        {
+          "paragraph_index": 24,
+          "section": "Results / Genetic control of lncRNA and circRNA expression",
+          "paragraph_sha256": "b0811564ce6109c6b7f82b2020be10ce76c74ff2941428f10fb8629498e48449",
+          "matching_text_sha256": "7629e44d6cf6a339a76f7b9a9f909047e0368508107e1b8f55425b92e39ba3c0"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC12808957",
+      "doi": "10.1016/j.ajhg.2025.10.002",
+      "tool_id": "peer",
+      "evidence_paragraph_sha256": "384446c2b7cc3c07dac0b0a5eb75819a297d53258503c61816115a2bc5935071",
+      "use_summary": "Used the original GTEx covariate set, including 15 PEER factors, in a covariate-adjusted sensitivity analysis of intron-retention QTL results; the primary regression used no covariates.",
+      "implementation_scope_note": "This positive use is confined to sensitivity analysis. Retain the primary no-covariate model and the reported comparison; do not rewrite the main model as PEER-adjusted or claim fresh PEER inference. This source review is not a complete author workflow or biological reproduction."
+    },
+    {
+      "pmcid": "PMC11568790",
+      "doi": "10.1016/j.ajhg.2024.09.004",
+      "tool_id": "peer",
+      "evidence_paragraph_sha256": "0da0540228994dcc8e433642a4336c024f65832c719f2e282ac69a16f04a5df7",
+      "use_summary": "Controlled latent variation in Indonesian splicing-QTL analysis with the first 29 PEER factors, described as one quarter of sample size, plus five genotype PCs before QTLtools testing.",
+      "implementation_scope_note": "LeafCutter intron-ratio processing, permutations and the later cis-window restriction are separate. Preserve the explicit 29-factor count; no generic sample-size rounding rule or author edition is established. This source review is not a complete author workflow or biological reproduction."
+    },
+    {
+      "pmcid": "PMC11568756",
+      "doi": "10.1016/j.ajhg.2024.09.001",
+      "tool_id": "peer",
+      "evidence_paragraph_sha256": "458f755a94ee5edbf4c8bcf45ad655e0ac95e8908a616ddae825919b2db1383f",
+      "use_summary": "Estimated hidden covariates with PEER and examined their relation to sequencing/biological covariates. Searched factor counts 5-50 by five, choosing the minimum count maximizing detected eQTLs; the cis-eQTL model used 20 PEER factors.",
+      "implementation_scope_note": "Keep the published higher-BIC covariate-selection wording literal rather than silently changing it. SeqPC/BIC selection and QTLtools optimization are separate from PEER inference. The PEER edition and fitting options remain unknown. This source review is not a complete author workflow or biological reproduction.",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 14,
+          "section": "Subjects and methods / cis-eQTL mapping",
+          "paragraph_sha256": "7e23824a9fee73c2b12d8265fe8bdb3d631fc3311826644949cf90214e6b91c9",
+          "matching_text_sha256": "7e23824a9fee73c2b12d8265fe8bdb3d631fc3311826644949cf90214e6b91c9"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC12614742",
+      "doi": "10.1016/j.ajhg.2025.09.003",
+      "tool_id": "peer",
+      "evidence_paragraph_sha256": "2f101254e8c5b7aba90ee2bd3fabd88ce16dc9a549891793c88ceea6a5f8347b",
+      "use_summary": "Calculated PEER v1.3 factors from inverse-normal-transformed gene-expression residuals. Compared APEX eGene discovery for 0-100 factors by ten and chose the count after which eGene gains were below 1%: 40 for GTEx and 20 for FUSION. Reported PEER edition: 1.3.",
+      "implementation_scope_note": "Zero factors is a no-PEER QTL baseline, not an implicit zero-factor call to the dense core. The gain denominator, tie/boundary handling, author seed and executed commit are unstated; version-label agreement does not prove the paper used this source commit. This source review is not a complete author workflow or biological reproduction.",
+      "version_reported_near_name": "1.3"
+    },
+    {
+      "pmcid": "PMC13277697",
+      "doi": "10.1016/j.ajhg.2026.04.003",
+      "tool_id": "peer",
+      "evidence_paragraph_sha256": "eaad547f17ded46c86d31e17ade4a31d1ca66a8e1141ab6a7bd2dcdb3f26c0ea",
+      "use_summary": "Used two PEER factors from the original single-cell eQTL analysis when residualizing cell-type expression in joint, sex-stratified and sex-interacting eQTL analyses.",
+      "implementation_scope_note": "The text/equations refer to four versus six genotyping PCs in different descriptions; preserve that discrepancy. SCTransform, expression filtering, residualization and correlation/QTL testing are separate. No fresh PEER fit, edition or seed is established. This source review is not a complete author workflow or biological reproduction.",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 20,
+          "section": "Methods / Sex-specific eQTL and sex-interacting eQTL analysis / Joint eQTLs",
+          "paragraph_sha256": "89b942eec78d2336a86d9bd7d2b24dba49a26daf0330b31b2ced5af611f9c9d2",
+          "matching_text_sha256": "89b942eec78d2336a86d9bd7d2b24dba49a26daf0330b31b2ced5af611f9c9d2"
+        },
+        {
+          "paragraph_index": 23,
+          "section": "Methods / Sex-specific eQTL and sex-interacting eQTL analysis / Sex-specific eQTL discovery (stratified approach) / Step 1: Discovery",
+          "paragraph_sha256": "2c1d112a3acedbab2e155b616f23105117c468899ace8bc81aa7d13d2feebce3",
+          "matching_text_sha256": "2c1d112a3acedbab2e155b616f23105117c468899ace8bc81aa7d13d2feebce3"
+        },
+        {
+          "paragraph_index": 29,
+          "section": "Methods / Sex-specific eQTL and sex-interacting eQTL analysis / Sex-interacting eQTLs",
+          "paragraph_sha256": "18db5982ce735594477e9364cf7073b1c00ae004bec217e401b2370046a1ed88",
+          "matching_text_sha256": "18db5982ce735594477e9364cf7073b1c00ae004bec217e401b2370046a1ed88"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC11393713",
+      "doi": "10.1016/j.ajhg.2024.07.010",
+      "tool_id": "peer",
+      "evidence_paragraph_sha256": "3f7e792a1a352fe2a057f53181eb51287badd95eaff5015aaf74df403db638c9",
+      "use_summary": "Estimated 50 PEER factors from rank-normalized whole-skin expression residuals after an LMM with BMI plus family/zygosity effects. A separate residual definition omitted BMI for factor-count discovery experiments; selected 30 factors for primary QTLtools models including BMI and genotyping chip.",
+      "implementation_scope_note": "Keep the two upstream LMM residual definitions distinct. The 50 estimated factors and 30 selected covariates are different counts. QTLtools v1.2 is not a reported PEER edition, and an LMM is not supplied by dense PEER. This source review is not a complete author workflow or biological reproduction.",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 29,
+          "section": "Material and methods / Identification of local skin eQTLs",
+          "paragraph_sha256": "62715c44008fb29f0a9dedbc645583e613b1cdf1d9bab7c7f560fcf515e76b49",
+          "matching_text_sha256": "f5637eec74e5d169e7d7539ee89b75a5a1af5fa6d52c062fb2a994b7cd6a6add"
+        },
+        {
+          "paragraph_index": 30,
+          "section": "Material and methods / Identification of local skin eQTLs",
+          "paragraph_sha256": "df88586e1fb6c3e5cbdf9cf7fa02492464a423f0f95daf45dade105acb422561",
+          "matching_text_sha256": "df88586e1fb6c3e5cbdf9cf7fa02492464a423f0f95daf45dade105acb422561"
+        },
+        {
+          "paragraph_index": 31,
+          "section": "Material and methods / Identification of local skin eQTLs",
+          "paragraph_sha256": "bb98d42a36ce9b7a4a965979f87fdd1fe715b09fe595e5c971816d971977804b",
+          "matching_text_sha256": "ee5f7ae36ee42bc09766ff73456d31054da5ffb1873cf2caeaf24fd78200b0e7"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC13078710",
+      "doi": "10.1016/j.ajhg.2026.03.008",
+      "tool_id": "peer",
+      "evidence_paragraph_sha256": "1cc4dd08b79ec0a8741d68fd2252d06ce3dd9e552a72bf4647a27da5130d969f",
+      "use_summary": "Adjusted JHS rank-inverse-normalized expression for age, sex, ten genotype PCs and 70 PEER factors from the previously described pipeline, using the resulting residuals to evaluate MESA prediction models.",
+      "implementation_scope_note": "Do not substitute a GTEx default factor count or present this JHS validation as MESA PEER training. Exact factor provenance, author edition, seed and full prior preparation remain unrecovered; controlled-access participant data are not downloaded. This source review is not a complete author workflow or biological reproduction."
+    },
+    {
+      "pmcid": "PMC13087463",
+      "doi": "10.1016/j.ajhg.2026.02.022",
+      "tool_id": "peer",
+      "evidence_paragraph_sha256": "a4d4643add294c839875771b49b5278629f702d317b05885fbc9c13a18da2426",
+      "use_summary": "Residualized GTEx expression using the original public covariates, including 60 PEER factors, five genotype PCs, sequencing platform/protocol and sex, to study local co-expression and single-gene effects.",
+      "implementation_scope_note": "The paper reuses supplied covariates; do not claim a new PEER inference run. Its background discussion of latent-factor tools is distinct from the positive supplied-factor use. Covariate regression/co-expression testing remain downstream. This source review is not a complete author workflow or biological reproduction.",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 34,
+          "section": "Results / Transcriptome-wide identification of clusters of co-expressed neighboring genes",
+          "paragraph_sha256": "b99f141a4b87fa006ebebb9278c5cdba828dc89913a0de1ba9972ffbfb5bad2d",
+          "matching_text_sha256": "7c5c503c48bbe523404b1d7b934eae30f283d60ba3f8d7ed32d20ee9376b2290"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC12597824",
+      "doi": "10.1038/s41588-025-02346-4",
+      "tool_id": "peer",
+      "evidence_paragraph_sha256": "b565dc0165669ed183034d862944c8dbe745ea7c3be9ca2e6cf333822e0ba5c9",
+      "use_summary": "Reported PEER correction of raw TPM expression with three GTEx PCs, and showed PEER-corrected GTEx/GEUVADIS expression in paralog-copy-number analyses.",
+      "implementation_scope_note": "Retain the author phrase logistically corrected as unresolved; do not infer a logistic likelihood or replace the dense Gaussian model silently. Factor count, edition and complete preparation are unstated. PLINK-derived GEUVADIS PCs, cross-tissue DESeq2 processing and copy-number models are separate. This source review is not a complete author workflow or biological reproduction.",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 25,
+          "section": "Results / eQTL analysis",
+          "paragraph_sha256": "5a2c4a6fdd4e46014aa94fbee6983f7e8f2fdf6802f796a7a2d8e6c643b1bbc4",
+          "matching_text_sha256": "e6a4a55e90f643b2c41492461f8191f332e8ab9791013217e07fa6fffd316fac"
+        },
+        {
+          "paragraph_index": 28,
+          "section": "Results / eQTL analysis",
+          "paragraph_sha256": "fe166019dac938adbf8c879f0ada9ee27437b15cb02af497468882fecb1a7d78",
+          "matching_text_sha256": "1c91e248cdba091525981f057ad0abcf4a4a8ec9f08924894d75aabae4b72993"
+        }
+      ]
     }
   ]
 }

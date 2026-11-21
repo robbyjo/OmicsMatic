@@ -1,0 +1,9 @@
+# Saved PEER catalog checkpoint
+
+Run `python -B tools/literature/verify_peer_catalog_checkpoint.py --out build/NEW-saved-check` with Python 3.11+ without -O. Add `--restore` to extract saved evidence to new output. The reader checks exact current owner/source/canonical bytes, all 835 manifest entries, archive members, recorded controls/UI checks and counts. It does not execute Git, Java, C++, R, primary XML parsing or scientific models.
+
+One upstream original dense PEER family is credited. Legacy native Java Peer remains unchanged and unqualified. All 1,598 earlier reviews are exact; eighteen new reviews bring totals to 143 scoped families, 1,616 reviewed uses and 1,104 pending. Three expanded-name observations are added, none removed. Both aliases retain zero extra credit.
+
+Two initial independent-harness assertion failures remain retained with exact source snapshots and explanations. Older metadata has two reviewed-status vocabularies (1515+101 admitted reviews) and six pre-existing descriptive registry/inventory differences. The final readback checks the exact reviewed-pair/ledger match and requires those six differences to be exact inherited bytes; no source decision, canonical record or scientific result was changed to clear the harness.
+
+Development helper snapshots contain this machine's paths and preserved-owner references; they are provenance, not portable one-command promises. Use the public guarded admission protocol. Exact runtimes, producer JARs, primary full text, linked author source and complete private evidence require a separate permitted checksummed transfer. Full checkWebsite retains its confirmed pre-existing broad-gsea-tools citation failure; scoped local reports pass. Both reports stay off Pages. No release, complete author workflow or full-goal completion is claimed.

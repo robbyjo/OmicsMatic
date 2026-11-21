@@ -1,5 +1,20 @@
 # Current toolbox handover
 
+**Current: [PEER catalog admission and higher-impact next work](PEER_CATALOG_CHECKPOINT_2026-11-21.md).**
+One original dense PEER upstream family and eighteen source-role reviews are
+admitted. Only P074/P107/P169 observations are added; all 1,598 earlier reviews
+remain exact. Totals are **143 scoped families (26 native +117 upstream), 1,616
+reviewed uses and 1,104 pending**, with 2,720 observations and 835 manifest entries.
+Guarded plan/inspect/apply/fresh verify, 22 model/transaction plus sixteen source
+controls per Windows/Linux host, six CLI refusals and local desktop/mobile
+reports pass. Scientific sources/producer are unchanged; legacy native PEER is
+unqualified. **Next: TwoSampleMR**, remaining individual reviews and implementation
+gaps. Preserve all **38 worktrees** and separately transfer ignored runtimes,
+JARs, primary full text and complete private evidence with checksums. The linked
+checkpoint records inherited descriptive-field differences and the pre-existing
+full website citation-check failure. Both reports remain off Pages; the full
+goal remains unfinished. Lower entries retain historical checkpoints.
+
 **Start here: [21 November 2026 PEER handover and exact remaining work](HANDOVER_2026-11-21_PEER.md).**
 The normal JAR exposes `peer-tools` RUN/VERIFY/REPLAY against the pinned original
 dense FP32 core. All 26 configured tests pass on Windows Java 21/25 and Linux

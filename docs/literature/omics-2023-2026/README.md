@@ -1,5 +1,21 @@
 # 250-paper omics and GWAS toolbox catalog
 
+## PEER: one original-runtime family and 18 reviewed roles
+
+**Warnings and required actions:** SKIP3: DEPENDENT ANALYSIS SKIPPED; supply the named exact permitted source, input, runtime/package or environment and retry NEW output, or retain the skip if unavailable. Downloads and private installation are authorized where the environment permits; absence is not an installation prohibition. If installation is prohibited, name the affected analysis and exact prerequisite and skip it. FAIL2: NO COMPLETE RESULT; preserve raw inputs, initial/fitted/null/partial objects, histories, warnings and failed attempts, resolve the named data/design, numerical/convergence, source/integrity, capacity or process cause and retry NEW output. Never silently repair identifiers, populations, thresholds, editions, estimators or nonfinite values. Read analysis-status.json, WARNINGS.md and original logs. Inspect only the recorded owned process group if cleanup fails. Unknown editions are not substituted; interrupted runs without final status are incomplete. CMake and g++ are needed to build the private runtime; Windows WSL transport additionally needs Python3 in the explicit distribution. Cell Ranger stays excluded. Both literature reports stay withheld from Pages. Ignored exact runtimes, JARs, full text and complete private evidence need a separate checksummed transfer.
+
+250 papers, 446 named tool labels, 2,720 observations, 1,616 individually reviewed positive uses and 1,104 pending. There are 143 scoped integrations (26 native Java and 117 upstream), two validated family aliases with zero extra credit, 259 missing and 30 method-overlap labels; 146 integrations include three existing adapters. All 1,598 earlier reviews remain exact. Full implementation and paper-wide semantic completeness remain unfinished.
+
+Global peer-tools and standalone PeerWorkflowCli expose RUN, offline VERIFY and REPLAY through the unchanged original dense PMBio PEER 1.3 source at 40bc4b2cd92459ce42f44dfe279717436395f3f6, with FP32 matrices and an owned observer. Explicit prepared matrices, known covariates, measurement variance, priors, initialization, seed and stopping options retain original model states, warnings, histories and failures. VERIFY checks inventory, source/input bindings, structural and selected arithmetic invariants and exports without refitting or authenticating. REPLAY preserves parent bytes and lineage.
+
+PEER receives one upstream family credit. The separate legacy native Java Peer API remains unchanged and has no stock-output qualification: FP64, Java random initialization and the initial second moment differ from the original core. No native fallback or second family credit. Eighteen paper roles include supplied GTEx factors and sensitivity-only use; they are not eighteen newly executed fitting pipelines. Only P212 explicitly reports 1.3; no paper-executed commit is established. Preserve P213 four-versus-six PCs, P219 distinct BMI/LMM residual definitions, P203 higher-BIC wording and P249 unresolved logistically corrected wording. Author normalization, factor-count/QTL search, downstream models, sparse prior-guided PEER, older editions and whole-paper reproduction remain unqualified. Build current source; released 0.4.0 predates peer-tools.
+
+Read [the source crosswalk](../PEER_CATALOG_INTEGRATION.md).
+
+<details><summary>Before PEER admission (historical)</summary>
+
+# 250-paper omics and GWAS toolbox catalog
+
 ## Limma/voom: one credited family and 23 reviewed labels
 
 **Warnings and required actions:** SKIP3: DEPENDENT ANALYSIS SKIPPED; supply the named exact permitted source, input, runtime or package and retry NEW output, or retain the skip if it cannot be supplied. Downloads and private installation remain authorized where the environment permits; absence is not an installation prohibition. FAIL2: NO COMPLETE RESULT; preserve raw inputs, original model/null/partial objects, warnings and failed attempts, resolve the named source/data/design, numerical/convergence, integrity, capacity or process cause and retry NEW output. Never silently repair identifiers, populations, thresholds, editions, estimators or nonfinite values. Retain valid infinite prior df and negative unconstrained variance components. All three exact R packages are required by this profile; no generic fallback. Original-R Linux execution is not claimed. Cell Ranger stays excluded. Both literature reports stay withheld from Pages. Ignored exact runtimes, JARs, full text and complete private evidence need a separate checksummed transfer.
@@ -2141,6 +2157,8 @@ Three source-reviewed tool additions retain separate provenance: MALT and HOPS h
 These additions improve the catalog and add no whole-tool or biological credit. The source-tested MALT 0.4.1 development controller does not fulfill the separate 0.5.2 role. Complete HOPS and MaltExtract operations remain unfinished; their unreported versions, settings and resource choices remain unknown. See `MALT_ALIGNMENT.md` and `MALT_HOPS_PAPER_ROLES.md`.
 
 **Required action:** match the declared source version and operation, qualify a permitted runtime, provide the complete dated reference/mapping and query populations, and retain original warnings and failures. If any prerequisite is unavailable or cannot be installed, skip its dependent analysis. A small software-control index does not reproduce the historical 91-spirochete or 7,508-genome bacterial analyses. Insufficient-read candidates remain unassessable.
+
+</details>
 
 </details>
 

@@ -1,0 +1,564 @@
+{
+  "schema_version": 1,
+  "status": "PASS_PEER_CUMULATIVE_ADMISSION_ONE_FAMILY_18_SOURCE_ROLES",
+  "base_commit": "7d51b1c1f8d1714bfa22c715423010baa71b6f18",
+  "source_code": {
+    "tools/literature/peer_catalog/__init__.py": {
+      "bytes": 53,
+      "sha256": "86551e296a2aa28fccdf1e2dc591f3d17803c72169b63ad0582d16fad3d64d05"
+    },
+    "tools/literature/peer_catalog/primary.py": {
+      "bytes": 412,
+      "sha256": "67f36d370329b74224a86f574284f51c0b42dd7a6f839f322336d1593db1d91b"
+    },
+    "tools/literature/peer_catalog/model.py": {
+      "bytes": 16067,
+      "sha256": "fafe075b7d58cad6e05b987229dbf0c578133db4bd6f8b6cff09a4387da71849"
+    },
+    "tools/literature/peer_catalog/evidence.py": {
+      "bytes": 8008,
+      "sha256": "489601b6920dca22983243defae36b684b72fb7c1ac694733e04613191864443"
+    },
+    "tools/literature/peer_catalog/catalog.py": {
+      "bytes": 14065,
+      "sha256": "1191d3112eba395304a2fe809046a234c18ab4604933ca16c8d1bb21162f200d"
+    },
+    "tools/literature/peer_catalog/test_model.py": {
+      "bytes": 8141,
+      "sha256": "8f92fec5770af61b6f347bbbe5de305a86424ea6b4ada7910dc29cffaba76ca4"
+    },
+    "tools/literature/peer_catalog/test_transaction.py": {
+      "bytes": 2336,
+      "sha256": "978981ec830bad735087d134c65dafaf4aa0b2d04d92ae9bc5da84d2242d090d"
+    },
+    "tools/literature/peer_catalog/ADMISSION.md": {
+      "bytes": 2030,
+      "sha256": "3e807ba55e9719176f24ae2c41589e399307c6dd9461a831cf910cd1e3631761"
+    },
+    "tools/literature/close_peer_catalog.py": {
+      "bytes": 140,
+      "sha256": "bd32c943afdb13da10d451d817dbb9f573d2ba332947b46274f0e900b497758d"
+    },
+    "tools/literature/check_peer_catalog_ui.cjs": {
+      "bytes": 4632,
+      "sha256": "ef108ec9e780fac3741fb01f5c386c5ea911855f9e332505371ff4cc17e24004"
+    },
+    "docs/literature/PEER_CATALOG_INTEGRATION.md": {
+      "bytes": 4324,
+      "sha256": "66ab66bf54067eb06de8f4863adcf6ecfb52d708b965faeb57b95bd875d26b1a"
+    }
+  },
+  "before": {
+    "docs/literature/omics-2023-2026/papers.json": {
+      "bytes": 4731347,
+      "sha256": "4f86f2b40ca029a26c1fb44d026bb6b2139e818ebb9a1604b5c1468ff1c4fea8"
+    },
+    "docs/literature/omics-2023-2026/tool-inventory.json": {
+      "bytes": 1386899,
+      "sha256": "79223f6821708ff8dde7dcd2c567559f1efa982ffc56c61281a9bc1253e28a59"
+    },
+    "docs/literature/omics-2023-2026/summary.json": {
+      "bytes": 1375,
+      "sha256": "d8f75728251f6bae88f038e302048d8ed4ad3b84c6d8868ce88509071956bbb9"
+    },
+    "docs/literature/omics-2023-2026/README.md": {
+      "bytes": 251116,
+      "sha256": "1c0b09dc22b47abfcd29c01038ba23bf897a109a7d6b132b16bfdafee88edfdd"
+    },
+    "docs/literature/omics-2023-2026/WARNINGS.md": {
+      "bytes": 361161,
+      "sha256": "1a363edc1f2ec76367821e98cef04aec178b0465ec37a24afc2c92d57ca9fd27"
+    },
+    "tools/literature/reviewed-uses.json": {
+      "bytes": 1728674,
+      "sha256": "e9ae613ee51061e42d85c8c2f76ceb029f8a635dd00e8fd3b2a48575a266014a"
+    },
+    "site/literature-review.html": {
+      "bytes": 5699590,
+      "sha256": "f7b63ff14a21512e14089a49dd31f6734649b9dfd194682d5d087a2eaff47da1"
+    },
+    "site/literature-warnings.html": {
+      "bytes": 483824,
+      "sha256": "1643a2d79f78768ecc1b1de091ca2b09b6d4a48c16455a07d5ac9f7166104f6b"
+    }
+  },
+  "after": {
+    "docs/literature/omics-2023-2026/papers.json": {
+      "bytes": 4792629,
+      "sha256": "3b9b2404987c08fc75e6a158e67395a153aad62f8393b5e00dd4044336860347"
+    },
+    "docs/literature/omics-2023-2026/tool-inventory.json": {
+      "bytes": 1430239,
+      "sha256": "77d5ed86938373cd7fd715d649ce7f7114e81eec07e3dd20f10801695343c475"
+    },
+    "docs/literature/omics-2023-2026/summary.json": {
+      "bytes": 1375,
+      "sha256": "1c8c9a05d0a224012fcad3491f3163726313092e4a14a0c62d71f317f2440a91"
+    },
+    "docs/literature/omics-2023-2026/README.md": {
+      "bytes": 254571,
+      "sha256": "0a96170b23a250650a895f26ec11cd49333a8b50d3ec47b9f069bf511f998175"
+    },
+    "docs/literature/omics-2023-2026/WARNINGS.md": {
+      "bytes": 364624,
+      "sha256": "38223aeac7d553d9988abc77f063b6ef286118cdc02e369d1c09d334870bef6b"
+    },
+    "tools/literature/reviewed-uses.json": {
+      "bytes": 1750176,
+      "sha256": "7f63ef92867abcd2224e539909e0bb1780257e6f65e71ba3dbc4c360c9956c83"
+    },
+    "site/literature-review.html": {
+      "bytes": 5790458,
+      "sha256": "1071d89c052c0a54964d7d8ad7fb16241c1927aec19bb8e9e7f8d77d0dcc57e7"
+    },
+    "site/literature-warnings.html": {
+      "bytes": 487562,
+      "sha256": "8ab5a392fe86fc96123280a17bd4d39646890f65f28766df26cc39d0d1e1c9f1"
+    }
+  },
+  "qualified_dispatcher": {
+    "bytes": 56575,
+    "sha256": "77ba748364a427fcc2f7e13b8c2a227ada36b168287d2d5f6921d7862d3ad9cd"
+  },
+  "result": {
+    "papers": 250,
+    "named_tools": 446,
+    "registry_definitions": 485,
+    "observations": 2720,
+    "reviewed_uses": 1616,
+    "pending_uses": 1104,
+    "existing_reviews_retained": 1598,
+    "new_review_records": 18,
+    "positive_peer_labels": 18,
+    "positive_papers": 18,
+    "observations_added": 3,
+    "observations_removed": 0,
+    "integrations": 143,
+    "native_integrations": 26,
+    "upstream_integrations": 117,
+    "including_existing_adapters": 146,
+    "validated_family_alias_labels": 2,
+    "alias_extra_integration_credit": 0,
+    "method_overlap": 30,
+    "missing": 259,
+    "new_scoped_integration_credit": 1,
+    "upstream_family_credit_added": 1,
+    "native_family_credit_added": 0,
+    "legacy_native_Peer_stock_parity_qualified": false,
+    "whole_tool_qualified": false,
+    "whole_paper_reproduced": false,
+    "whole_goal_complete": false
+  },
+  "qualification": {
+    "result": {
+      "status": "PASS_SAVED_PEER_GLOBAL_ORIGINAL_DENSE_AND18_ROLE_PROPOSALS",
+      "logical_files": 8404,
+      "unique_blobs": 1287,
+      "packaged_tests_per_JVM": 26,
+      "JVMs": 3,
+      "original_control_cases": 24,
+      "original_completed_controls": 6,
+      "explicit_fixed_iteration_partials": 18,
+      "observer_unchanged_original_files": 120,
+      "global_examples": 6,
+      "global_example_verifications": 6,
+      "actual_global_replays": 3,
+      "source_reviewed_labels": 18,
+      "source_reviewed_papers": 18,
+      "source_semantic_controls_per_host": 16,
+      "source_control_hosts": 2,
+      "source_inverse_refusals": 7,
+      "global_command_registered": true,
+      "legacy_native_Peer_stock_parity_qualified": false,
+      "new_catalog_credit": 0,
+      "whole_goal_complete": false,
+      "fresh_Java_CPP_Git_XML_or_model_execution": false
+    },
+    "proof_files": {
+      "docs/literature/peer-workflow-checkpoint/PROFILE.json": {
+        "bytes": 7311,
+        "sha256": "e1c0f895f6a64598009e7f2a57854ea7c7dbe91f6833b79aad63fdb01fadb526"
+      },
+      "docs/literature/peer-workflow-checkpoint/INVENTORY.json": {
+        "bytes": 1731643,
+        "sha256": "c8a969bc3eb21d96941a61eebb6ae4b46e14a8ef8fd67c90ab1dac6d79ef43c1"
+      },
+      "docs/literature/peer-workflow-checkpoint/checks.zip": {
+        "bytes": 2282424,
+        "sha256": "13601d9a4889bfd6cd1c53697f4149586ea0665246092b28723aca3b890055d4"
+      },
+      "docs/literature/peer-source-review-proposal/CENSUS.json": {
+        "bytes": 360992,
+        "sha256": "410353c4b4c995c384576540e12780557c9ac9a27483ed5ba6e5369adc812403"
+      },
+      "tools/literature/verify_peer_workflow_checkpoint.py": {
+        "bytes": 4596,
+        "sha256": "4b118f88d45b1f1cc7c4e2125393a915d4e23ac1e079c93d0292b6a9f4d55e60"
+      },
+      "tools/literature/peer_dispatch_transition.py": {
+        "bytes": 1558,
+        "sha256": "6544740fab51dc4b60fbf8393ca52b26c3c3da8e5554654d98d79dde63c58b1f"
+      },
+      "tools/literature/peer_primary.py": {
+        "bytes": 9091,
+        "sha256": "ad71313af77b261f9f65f1194c27784db8e358e3f31318a3594547a0aec569ed"
+      },
+      "tools/literature/peer_source_roles.py": {
+        "bytes": 11147,
+        "sha256": "b5fd962092ce8737ca5b2169f69fe7be2dc094eb7c347f8198eadc604440e440"
+      },
+      "tools/literature/check_peer_sources.py": {
+        "bytes": 4136,
+        "sha256": "1be11fba2427be48c5813126a44612fb1b18b2210013ceedd5b7b9c5684a1beb"
+      },
+      "tools/literature/peer_global_context.py": {
+        "bytes": 5310,
+        "sha256": "ceee941a641ac622919b83b2a4d8992a3519abbf11d58bb03491b3caa7fc4a4e"
+      },
+      "docs/literature/peer-catalog-controls/CONTROLS.json": {
+        "bytes": 8373,
+        "sha256": "a21d3bcc3654743be8727407edbfe91376e65d813b546197a08352f3f8d22c55"
+      },
+      "docs/literature/peer-catalog-controls/checks.zip": {
+        "bytes": 2962100,
+        "sha256": "29a3d7f3a0102441a887c2148bfd234ce1476966a284c42d8926d6ebf9c3938b"
+      }
+    },
+    "fresh_Java_CPP_or_model_execution": false,
+    "controls": {
+      "status": "PASS_PEER_SOURCE_MODEL_TRANSACTION_CONTROLS_TWO_HOSTS",
+      "source_code": {
+        "tools/literature/peer_catalog/__init__.py": {
+          "bytes": 53,
+          "sha256": "86551e296a2aa28fccdf1e2dc591f3d17803c72169b63ad0582d16fad3d64d05"
+        },
+        "tools/literature/peer_catalog/primary.py": {
+          "bytes": 412,
+          "sha256": "67f36d370329b74224a86f574284f51c0b42dd7a6f839f322336d1593db1d91b"
+        },
+        "tools/literature/peer_catalog/model.py": {
+          "bytes": 16067,
+          "sha256": "fafe075b7d58cad6e05b987229dbf0c578133db4bd6f8b6cff09a4387da71849"
+        },
+        "tools/literature/peer_catalog/evidence.py": {
+          "bytes": 8008,
+          "sha256": "489601b6920dca22983243defae36b684b72fb7c1ac694733e04613191864443"
+        },
+        "tools/literature/peer_catalog/catalog.py": {
+          "bytes": 14065,
+          "sha256": "1191d3112eba395304a2fe809046a234c18ab4604933ca16c8d1bb21162f200d"
+        },
+        "tools/literature/peer_catalog/test_model.py": {
+          "bytes": 8141,
+          "sha256": "8f92fec5770af61b6f347bbbe5de305a86424ea6b4ada7910dc29cffaba76ca4"
+        },
+        "tools/literature/peer_catalog/test_transaction.py": {
+          "bytes": 2336,
+          "sha256": "978981ec830bad735087d134c65dafaf4aa0b2d04d92ae9bc5da84d2242d090d"
+        },
+        "tools/literature/peer_catalog/ADMISSION.md": {
+          "bytes": 2030,
+          "sha256": "3e807ba55e9719176f24ae2c41589e399307c6dd9461a831cf910cd1e3631761"
+        },
+        "tools/literature/close_peer_catalog.py": {
+          "bytes": 140,
+          "sha256": "bd32c943afdb13da10d451d817dbb9f573d2ba332947b46274f0e900b497758d"
+        },
+        "tools/literature/check_peer_catalog_ui.cjs": {
+          "bytes": 4632,
+          "sha256": "ef108ec9e780fac3741fb01f5c386c5ea911855f9e332505371ff4cc17e24004"
+        },
+        "docs/literature/PEER_CATALOG_INTEGRATION.md": {
+          "bytes": 4324,
+          "sha256": "66ab66bf54067eb06de8f4863adcf6ecfb52d708b965faeb57b95bd875d26b1a"
+        }
+      },
+      "results": {
+        "windows": {
+          "exit_code": 0,
+          "tests": 22,
+          "fresh_source_controls": 16,
+          "commands": {
+            "sources": {
+              "command": [
+                "C:/Users/User/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+                "-X",
+                "utf8",
+                "-B",
+                "D:\\projects\\JLinAlg\\build\\pr-2\\tools\\literature\\check_peer_sources.py",
+                "--primary-cache",
+                "D:\\projects\\JLinAlg\\build\\literature-review\\xml",
+                "--out",
+                "D:\\projects\\JLinAlg\\build\\pr-2\\build\\peer-catalog-1\\controls-1\\windows\\sources"
+              ],
+              "exit_code": 0
+            },
+            "unit": {
+              "command": [
+                "C:/Users/User/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+                "-X",
+                "utf8",
+                "-B",
+                "-m",
+                "unittest",
+                "-v",
+                "peer_catalog.test_model",
+                "peer_catalog.test_transaction"
+              ],
+              "exit_code": 0
+            }
+          }
+        },
+        "linux": {
+          "exit_code": 0,
+          "tests": 22,
+          "fresh_source_controls": 16,
+          "commands": {
+            "sources": {
+              "command": [
+                "wsl.exe",
+                "-d",
+                "JLinAlg-Omics-PyMOL-20261026",
+                "--",
+                "env",
+                "PYTHONPATH=/mnt/d/projects/JLinAlg/build/pr-2/tools/literature",
+                "PEER_EXACT_BEFORE=/mnt/d/projects/JLinAlg/build/pr-2/build/peer-catalog-1/controls-1/metadata-before.zip",
+                "python3",
+                "-B",
+                "/mnt/d/projects/JLinAlg/build/pr-2/tools/literature/check_peer_sources.py",
+                "--primary-cache",
+                "/mnt/d/projects/JLinAlg/build/literature-review/xml",
+                "--out",
+                "/mnt/d/projects/JLinAlg/build/pr-2/build/peer-catalog-1/controls-1/linux/sources"
+              ],
+              "exit_code": 0
+            },
+            "unit": {
+              "command": [
+                "wsl.exe",
+                "-d",
+                "JLinAlg-Omics-PyMOL-20261026",
+                "--",
+                "env",
+                "PYTHONPATH=/mnt/d/projects/JLinAlg/build/pr-2/tools/literature",
+                "PEER_EXACT_BEFORE=/mnt/d/projects/JLinAlg/build/pr-2/build/peer-catalog-1/controls-1/metadata-before.zip",
+                "python3",
+                "-B",
+                "-m",
+                "unittest",
+                "-v",
+                "peer_catalog.test_model",
+                "peer_catalog.test_transaction"
+              ],
+              "exit_code": 0
+            }
+          }
+        }
+      },
+      "archive": {
+        "bytes": 2962100,
+        "sha256": "29a3d7f3a0102441a887c2148bfd234ce1476966a284c42d8926d6ebf9c3938b"
+      },
+      "files": {
+        "metadata-before.zip": {
+          "bytes": 2932190,
+          "sha256": "f4369d732cbf4913aaa1ca7f2bd949b5704189456c631892955ffd2c9006120f"
+        },
+        "linux/PROCESS.json": {
+          "bytes": 1126,
+          "sha256": "959f49ec821a44a1681653a0557a6bc19f298fe6a036614f48a05d6096f985ee"
+        },
+        "linux/sources.stderr": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "linux/sources.stdout": {
+          "bytes": 75,
+          "sha256": "d2f87738c7f97d69eeba61ce6aa635b4d5dee625f83f4007e909eeb9d1d7f1f3"
+        },
+        "linux/unit.stderr": {
+          "bytes": 3398,
+          "sha256": "ed450a3e2723b245eee4abc225b4d952bb07e4f1e3f8477618ccee59ddbae803"
+        },
+        "linux/unit.stdout": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "windows/PROCESS.json": {
+          "bytes": 795,
+          "sha256": "1175783847019bb1fca5c583389965b6c151a819d176bacc46159dabd0993cd9"
+        },
+        "windows/sources.stderr": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "windows/sources.stdout": {
+          "bytes": 76,
+          "sha256": "1795827a10db8e7d317b156d7f40d3033d5c8c9fbddc63ed390fde7235790b22"
+        },
+        "windows/unit.stderr": {
+          "bytes": 3424,
+          "sha256": "5dd2c1200d24f71bf870139a5a8055ea92008336c9d6b9196404dd99d02ae8f8"
+        },
+        "windows/unit.stdout": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "linux/sources/RESULT.json": {
+          "bytes": 2763,
+          "sha256": "715d8fd7517bb8845325e6ce786ac7e9a0a15b22655a79b1100303446e99462b"
+        },
+        "sources/docs/literature/PEER_CATALOG_INTEGRATION.md": {
+          "bytes": 4324,
+          "sha256": "66ab66bf54067eb06de8f4863adcf6ecfb52d708b965faeb57b95bd875d26b1a"
+        },
+        "sources/tools/literature/check_peer_catalog_ui.cjs": {
+          "bytes": 4632,
+          "sha256": "ef108ec9e780fac3741fb01f5c386c5ea911855f9e332505371ff4cc17e24004"
+        },
+        "sources/tools/literature/close_peer_catalog.py": {
+          "bytes": 140,
+          "sha256": "bd32c943afdb13da10d451d817dbb9f573d2ba332947b46274f0e900b497758d"
+        },
+        "sources/tools/literature/peer_catalog/ADMISSION.md": {
+          "bytes": 2030,
+          "sha256": "3e807ba55e9719176f24ae2c41589e399307c6dd9461a831cf910cd1e3631761"
+        },
+        "sources/tools/literature/peer_catalog/catalog.py": {
+          "bytes": 14065,
+          "sha256": "1191d3112eba395304a2fe809046a234c18ab4604933ca16c8d1bb21162f200d"
+        },
+        "sources/tools/literature/peer_catalog/evidence.py": {
+          "bytes": 8008,
+          "sha256": "489601b6920dca22983243defae36b684b72fb7c1ac694733e04613191864443"
+        },
+        "sources/tools/literature/peer_catalog/model.py": {
+          "bytes": 16067,
+          "sha256": "fafe075b7d58cad6e05b987229dbf0c578133db4bd6f8b6cff09a4387da71849"
+        },
+        "sources/tools/literature/peer_catalog/primary.py": {
+          "bytes": 412,
+          "sha256": "67f36d370329b74224a86f574284f51c0b42dd7a6f839f322336d1593db1d91b"
+        },
+        "sources/tools/literature/peer_catalog/test_model.py": {
+          "bytes": 8141,
+          "sha256": "8f92fec5770af61b6f347bbbe5de305a86424ea6b4ada7910dc29cffaba76ca4"
+        },
+        "sources/tools/literature/peer_catalog/test_transaction.py": {
+          "bytes": 2336,
+          "sha256": "978981ec830bad735087d134c65dafaf4aa0b2d04d92ae9bc5da84d2242d090d"
+        },
+        "sources/tools/literature/peer_catalog/__init__.py": {
+          "bytes": 53,
+          "sha256": "86551e296a2aa28fccdf1e2dc591f3d17803c72169b63ad0582d16fad3d64d05"
+        },
+        "windows/sources/RESULT.json": {
+          "bytes": 2763,
+          "sha256": "715d8fd7517bb8845325e6ce786ac7e9a0a15b22655a79b1100303446e99462b"
+        }
+      },
+      "canonical_metadata_modified": false,
+      "whole_goal_complete": false
+    }
+  },
+  "retained_predecessor": {
+    "status": "PASS_EXACT_PRECEDING_LIMMA_METADATA_AND_UNCHANGED_PEER_SOURCE_OWNER",
+    "old_proof": {
+      "bytes": 20655,
+      "sha256": "59974bf7b62de68d12e5203d28effb3bc7ae44736ae37481689e18ece45bd6d0"
+    },
+    "previous_source_files": 11,
+    "previous_evidence_files": 20,
+    "old_metadata_files": 8,
+    "old_reviews_retained": 1598,
+    "old_reader_overlay_used": false,
+    "old_hashes_refreshed": false,
+    "receipt": {
+      "bytes": 7173,
+      "sha256": "f956c193867cc7e0f488d251f2683fe5d8d32d0470f898ba0783222797f5c90e"
+    }
+  },
+  "evidence": {
+    "docs/literature/peer-catalog-admission/.gitattributes": {
+      "bytes": 29,
+      "sha256": "730a35ae3d558080083c3103d9ac8100c3f6561678092abe341701dfa331eb1d"
+    },
+    "docs/literature/peer-catalog-admission/metadata-before.zip": {
+      "bytes": 2932190,
+      "sha256": "2a99f050405aa5f57ac5401c02bfae335dacbd97946aff9749233eceb2f7e632"
+    },
+    "docs/literature/peer-catalog-admission/qualified-dispatcher.java": {
+      "bytes": 56575,
+      "sha256": "77ba748364a427fcc2f7e13b8c2a227ada36b168287d2d5f6921d7862d3ad9cd"
+    },
+    "docs/literature/peer-catalog-admission/PREVIOUS-SHA256SUMS": {
+      "bytes": 84211,
+      "sha256": "c4ee8d3840a6a6e6a01d54d40f1469c8d359cf68d4eadb195bbe1c3e32e938c0"
+    },
+    "docs/literature/peer-catalog-admission/PRIMARY.json": {
+      "bytes": 360992,
+      "sha256": "410353c4b4c995c384576540e12780557c9ac9a27483ed5ba6e5369adc812403"
+    },
+    "docs/literature/peer-catalog-admission/QUALIFICATION.json": {
+      "bytes": 11794,
+      "sha256": "a46cb6e9b7a77f8bfe24f7c4ce170d7f40c0848b1fe2b36081e37ab37d48eff4"
+    },
+    "docs/literature/peer-catalog-admission/PREDECESSOR.json": {
+      "bytes": 7173,
+      "sha256": "f956c193867cc7e0f488d251f2683fe5d8d32d0470f898ba0783222797f5c90e"
+    },
+    "docs/literature/peer-catalog-admission/RETAINED.json": {
+      "bytes": 521,
+      "sha256": "ece7da7fd3f2e66a4cefccc635a7db4eec4d7f2bad70d26116f9c68bc91be065"
+    },
+    "docs/literature/peer-catalog-admission/PLAN.json": {
+      "bytes": 9073,
+      "sha256": "a354ce569ca10939f370cde8d654382c25d35580444c52d9379501f77719b0dc"
+    },
+    "docs/literature/peer-catalog-admission/owner-source.zip": {
+      "bytes": 23996,
+      "sha256": "9fdc96f92f6ea2309f43d91e0ce4cf5a0798424261144925920bb58e32982bff"
+    },
+    "docs/literature/peer-catalog-admission/WARNINGS.md": {
+      "bytes": 2161,
+      "sha256": "6b2ffbf882d7c2631124e9c55730d74b353dd5a31ca8822a75bb4d857e4484bf"
+    },
+    "docs/literature/peer-catalog-admission/README.md": {
+      "bytes": 1747,
+      "sha256": "bbe37e5a8b8aa33b9522f7b1d48f9df17e012170a3a3d85fd3777b6c871f986d"
+    },
+    "docs/literature/peer-catalog-admission/context.stdout": {
+      "bytes": 80,
+      "sha256": "7b4ba0fcb98f4dc1739fab69149c4c6470fb4b6eec71c7c68197b2c14dbfffde"
+    },
+    "docs/literature/peer-catalog-admission/context.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "docs/literature/peer-catalog-admission/global.stdout": {
+      "bytes": 744,
+      "sha256": "5046358b4616fb153df9b51c4d169b75edd92cf2b0246517cccd774d55d35d5b"
+    },
+    "docs/literature/peer-catalog-admission/global.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "docs/literature/peer-catalog-admission/PREDECESSOR-PROCESS.json": {
+      "bytes": 1283,
+      "sha256": "5d7bf20e1172f2d0e4f8160d0ff2651142a87e9851c13ebd0a2dbbf034c15af9"
+    },
+    "docs/literature/PEER_CATALOG_INTEGRATION.md": {
+      "bytes": 4324,
+      "sha256": "66ab66bf54067eb06de8f4863adcf6ecfb52d708b965faeb57b95bd875d26b1a"
+    },
+    "docs/literature/omics-2023-2026/peer-source-role-coverage.json": {
+      "bytes": 382147,
+      "sha256": "ae7be2741f5f1f42a452421811058bb5cf041a82489a1d4b20457811a2abe9ec"
+    },
+    "docs/literature/omics-2023-2026/peer-catalog-shared-source-compatibility.json": {
+      "bytes": 2094,
+      "sha256": "2f9f1b6d4c475b62672224d7fce827f7600ee70b88252804e5972ee032238e2d"
+    }
+  },
+  "whole_goal_complete": false
+}
