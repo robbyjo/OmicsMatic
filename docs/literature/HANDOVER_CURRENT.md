@@ -1,5 +1,22 @@
 # Current toolbox handover
 
+**Start here: [21 November 2026 catalog handover and exact remaining work](HANDOVER_2026-11-21_CATALOG.md).**
+The collection is complete at 250 papers. TwoSampleMR is now admitted as one
+upstream family with fourteen reviewed source roles, preserving all 1,616 earlier
+reviews. Current totals are **144 scoped integrations (26 native +118 upstream),
+1,630 reviewed uses and 1,092 pending**, with 259 missing and 29 method-overlap
+labels. The 838-member manifest, thirty model/transaction tests and sixteen source
+controls per host, fresh Windows/Linux verification, six CLI refusals, independent
+readback and desktop/mobile reports pass. Scientific sources and the prior
+858-test producer remain unchanged. **Next: remaining individual reviews and
+high-impact scoped gaps**, beginning with existing Monocle development evidence
+and omics/GWAS candidates in the linked priority list. Preserve all **47 worktrees**.
+**Transfer ignored runtimes, JARs, full text, author source and complete private
+evidence separately with checksums; GitHub is not a machine backup.** The linked
+handover gives exact paths, recovery commands and prominent skip/error actions.
+Both reports remain off Pages. The full goal is unfinished; lower entries retain
+historical checkpoints and their then-current, superseded counts.
+
 **Current: [global TwoSampleMR command and catalog admission next](TWOSAMPLEMR_GLOBAL_CHECKPOINT_2026-11-21.md).**
 The source-built JAR exposes **twosamplemr-tools** for all seven exact profiles.
 All858 tests pass per Windows Java21/25 and Linux Java21; seven global examples,

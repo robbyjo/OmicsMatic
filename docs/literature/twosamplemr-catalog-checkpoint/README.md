@@ -1,0 +1,11 @@
+# Saved TwoSampleMR catalog checkpoint
+
+Run `python -B tools/literature/verify_twosamplemr_catalog_checkpoint.py --out build/NEW-saved-check` with Python3.11+ without `-O`. Add `--restore` to extract saved evidence. The reader checks exact source/proof/canonical bytes, all838 manifest members, archive populations, recorded host controls/UI/CLI checks and the pure catalog transition. It executes no Git, Java, R, primary XML parsing or scientific model, and needs no old checkout. Recorded prior-owner execution is retained provenance, not a fresh execution claim.
+
+One upstream TwoSampleMR family and fourteen source roles are admitted; native helpers add no second family credit. Only P157/P177 observations are added; all1616 earlier reviews remain exact. Totals are144 scoped families (26native+118upstream),1630 reviewed and1092 pending. Neither whole-tool equivalence, author pipeline reproduction nor whole-goal completion is established.
+
+The separate full fresh verifier requires exact source caches and a real clean old global checkout. Use the [current handover](../HANDOVER_2026-11-21_CATALOG.md) for copyable commands, priorities, runtime paths, WSL Git transport and prominent SKIP3/FAIL2 recovery instructions. Old fingerprints and fixtures were not refreshed. Both reports remain off Pages; no release was made.
+
+The packet preserves the initial manual unit invocation failure, failed Linux control attempt and failed full Linux verification, alongside the successful later attempts. The first full Linux failure came from an inherited helper invoking native Git against a Windows-linked worktree; the successful retry changes Git command transport only. Six inherited descriptive registry/inventory differences remain exact. The inherited full-site citation failure remains unresolved.
+
+`INVENTORY.json` maps logical paths to SHA256-addressed blobs in `checks.zip`; identical content is stored once. Plan preview duplicates are omitted because installed canonical metadata and UI captures are retained. Private artifacts listed in `PRIVATE-TRANSFER.json` and earlier manifests need a separate permitted checksummed transfer. The public packet is not a machine backup. Development helper paths are provenance for this machine, not portable one-command promises.

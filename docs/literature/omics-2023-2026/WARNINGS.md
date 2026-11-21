@@ -1,5 +1,21 @@
 # Current literature warnings and required actions
 
+## TwoSampleMR: one original-workflow family and14 reviewed roles
+
+**Warnings and required actions:** SKIP3: DEPENDENT ANALYSIS SKIPPED; supply the named exact permitted runtime, package/profile, PLINK or input, or retain the skip. Downloads/private installation are authorized when allowed; absence is not an installation prohibition. If actually disallowed, name the affected analysis and what the user must supply. FAIL2: NO COMPLETE RESULT; preserve raw/original/null/partial/failed evidence, original errors and logs, correct the named data/design, numerical, integrity, capacity or process cause and retry NEW output. Never silently repair IDs, populations, allele/trait order, thresholds, versions, estimators/providers or nonfinite values. Read WARNINGS.md,analysis-status.json,worker/report.json and source logs. Singleton clumping may bypass reference/significance checks; a complete empty selection or MV preparation supplies no MR estimate. Old source/startup configuration stays private. Cell Ranger remains excluded. Both literature reports remain off Pages. Ignored exact runtimes/JARs/full text and complete private evidence require a separate checksummed transfer.
+
+250 papers, 446 named labels, 2,722 observations, 1,630 individually reviewed uses and 1,092 pending. There are 144 scoped integrations (26 native Java + 118 upstream), two zero-credit validated aliases, 259 missing and 29 method-overlap labels; 147 integrations include three existing adapters. All 1,616 earlier reviews remain exact. Full implementation and paper-wide semantic completeness remain unfinished.
+
+Global twosamplemr-tools provides exact-profile original-package RUN, offline VERIFY and REPLAY. Prepared MR, harmonization, sensitivity and MV preparation are qualified for 0.7.14 and tagged 0.4.9/0.5.6/0.5.7/0.6.8; historical FORMAT and original 0.7.14/0.6.8 local clumping are available with explicit runtime/input/seed/capacities. Complete original returns/errors/RNG and typed exports are retained. VERIFY checks saved integrity, source projections and selected native statistics, not every provider refit or coordinated replacement authentication. REPLAY preserves parents.
+
+One upstream TwoSampleMR family is credited. Its native deterministic Java helpers add no second family credit. Fourteen source roles are reviewed, not fourteen executed author pipelines. Unreported editions remain unknown; release tags and present-day dependencies do not establish paper execution commits or historical dependency eras. The 0.4.9 reference build omits only broken man documentation, preserving all scientific/namespace/data bytes. Older 0.4.9/0.5.6/0.5.7 API clumping, remote reference/authentication, optional/provider scopes and complete author preparation remain unqualified. P157 archived bidirectional harmonise_data/mr attribution is static; P177 IVW is explicitly a separate MendelianRandomization provider, median/mode attribution is an inference, and TEMR/Egger gaps remain explicit. Preserve P112 trait counts, P150 MAF wording, P211 Steiger thresholds and P224 separate MVMR/F. Original R execution is Windows 4.6.1; Linux qualification verifies saved captures. Build current source; released 0.4.0 predates this command.
+
+Read [the source crosswalk](../TWOSAMPLEMR_CATALOG_INTEGRATION.md).
+
+<details><summary>Before TwoSampleMR admission (historical)</summary>
+
+# Current literature warnings and required actions
+
 ## PEER: one original-runtime family and 18 reviewed roles
 
 **Warnings and required actions:** SKIP3: DEPENDENT ANALYSIS SKIPPED; supply the named exact permitted source, input, runtime/package or environment and retry NEW output, or retain the skip if unavailable. Downloads and private installation are authorized where the environment permits; absence is not an installation prohibition. If installation is prohibited, name the affected analysis and exact prerequisite and skip it. FAIL2: NO COMPLETE RESULT; preserve raw inputs, initial/fitted/null/partial objects, histories, warnings and failed attempts, resolve the named data/design, numerical/convergence, source/integrity, capacity or process cause and retry NEW output. Never silently repair identifiers, populations, thresholds, editions, estimators or nonfinite values. Read analysis-status.json, WARNINGS.md and original logs. Inspect only the recorded owned process group if cleanup fails. Unknown editions are not substituted; interrupted runs without final status are incomplete. CMake and g++ are needed to build the private runtime; Windows WSL transport additionally needs Python3 in the explicit distribution. Cell Ranger stays excluded. Both literature reports stay withheld from Pages. Ignored exact runtimes, JARs, full text and complete private evidence need a separate checksummed transfer.
@@ -1674,6 +1690,8 @@ output path. Disconnected infinite pseudotime values remain present. LEARN
 does not admit a pseudotime result. Do not infer roots or repair values to
 conceal failures. Full Batchelor, study reproduction and biological accuracy
 remain unproven; the250-paper goal remains active.
+
+</details>
 
 </details>
 
