@@ -8,9 +8,9 @@
 <div class="container page-layout"><article class="prose"><h2 id="source-pins">Source pins</h2>
 <ul>
 <li>Bioconductor <code>sva</code> 3.60.0, release 3.23, commit
-  <code>87a4798db8134fd0952a516489dd555545a92d36</code>, Artistic-2.0.</li>
+  <code style="overflow-wrap:anywhere">87a4798db8134fd0952a516489dd555545a92d36</code>, Artistic-2.0.</li>
 <li>PMBio PEER 1.3 source, commit
-  <code>40bc4b2cd92459ce42f44dfe279717436395f3f6</code>, GPL-2.0-or-later.</li>
+  <code style="overflow-wrap:anywhere">40bc4b2cd92459ce42f44dfe279717436395f3f6</code>, GPL-2.0-or-later.</li>
 <li>AutoSVA: <code>D:/git/NIH-R/src/sva-lite.R</code>, read as algorithm source rather than
   executable task instructions.</li>
 </ul>
@@ -28,11 +28,14 @@ distance described in the vignette.</p>
 leave-one-feature-out empirical priors, mean-only and reference-batch modes,
 missing continuous values, singleton batches, unchanged zero-within-batch
 features, and the upstream design-confounding checks.</p>
-<p>PEER ports the official dense VBFA update order <code>W, Alpha, X, Eps</code>; Gaussian
-second moments; feature-specific noise Gamma posteriors; factor ARD Gamma
-posteriors; known-covariate prior precision; measurement uncertainty; evidence
-bound and residual-variance stopping rules; and the official default priors.
-Sparse prior-guided PEER (<code>cSPARSEFA</code>) is not claimed by this API.</p>
+<p>The legacy native Java PEER API follows the dense VBFA update schedule
+<code>W, Alpha, X, Eps</code>, but has no stock-output qualification. Its FP64
+matrices, Java random generator and initial second moment differ from the
+original FP32 core. The new source-built <code>peer-tools</code> command instead
+executes the pinned original dense core through a tested adapter. It retains
+known covariates, measurement uncertainty, priors, model states and original
+stopping observations. Sparse prior-guided PEER (<code>cSPARSEFA</code>) remains
+outside this scope.</p>
 <h2 id="frozen-numerical-checks">Frozen numerical checks</h2>
 <p><code>ConfounderRReferenceTest</code> uses one exact feature-by-sample matrix and checks:</p>
 <ul>
@@ -46,11 +49,16 @@ Sparse prior-guided PEER (<code>cSPARSEFA</code>) is not claimed by this API.</p
 <p><code>ConfounderMethodsTest</code> independently covers dominant-factor recovery,
 protected-design SVA, deterministic AutoSVA, ComBat batch removal,
 reference-batch identity, and PEER residual-variance reduction.</p>
-<p>The official PEER source could not be compiled on the Windows validation host
-because no C++ toolchain was installed. PEER therefore has a complete
-source-equation audit and independent synthetic tests, but no same-host native
-PEER numeric fixture. This is an explicit validation boundary, not a claim of
-native-output identity.</p>
+<p>The pinned official dense PEER core has now been compiled in Linux/WSL.
+The original-runtime adapter passes all 26 configured tests per JVM on Windows
+Java 21/25 and Linux Java 21. Six global examples match original model tables;
+three additional global replays include both Windows/Linux directions and
+preserve parent files. These checks qualify the original-runtime adapter;
+they do not qualify the separate legacy native Java implementation.</p>
+<p>Read the <a href="https://github.com/robbyjo/OmicsMatic/blob/main/docs/literature/PEER_WORKFLOWS.md">PEER workflow guide</a>
+and <a href="https://github.com/robbyjo/OmicsMatic/blob/main/docs/literature/HANDOVER_2026-11-21_PEER.md">handover and remaining work</a>
+for exact scope, source pins, required runtimes, prominent skip/failure recovery
+and the pending catalog admission. The released 0.4.0 predates this command.</p>
 <h2 id="performance-design">Performance design</h2>
 <p>All factor methods store the feature-by-sample input because they are global
 matrix procedures. Tall matrices use the sample Gram matrix and backend BLAS,

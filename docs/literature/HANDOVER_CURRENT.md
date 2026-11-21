@@ -1,5 +1,20 @@
 # Current toolbox handover
 
+**Start here: [21 November 2026 PEER handover and exact remaining work](HANDOVER_2026-11-21_PEER.md).**
+The normal JAR exposes `peer-tools` RUN/VERIFY/REPLAY against the pinned original
+dense FP32 core. All 26 configured tests pass on Windows Java 21/25 and Linux
+Java 21; six examples, three cross-host/global replays, original-state comparisons,
+18 source-role proposals and both saved evidence readers pass. **PEER catalog
+admission remains next**, followed by TwoSampleMR. Official totals remain **142
+scoped families, 1,598 reviewed uses and 1,119 pending**. Legacy native PEER is
+unchanged and has no stock-output qualification. Preserve all **37 worktrees**.
+**Ignored runtimes, producer JARs, primary full text and complete private evidence
+need a separate checksummed transfer; GitHub is not a complete machine backup.**
+Read the linked warning recovery and exact resume paths. Both literature reports
+stay off Pages. The full website gate has a confirmed pre-existing missing-citation
+failure in `broad-gsea-tools.md`; the changed PEER page is checked separately.
+The full goal remains unfinished; lower entries retain history.
+
 **Current: [limma/voom catalog admission and prioritized next work](LIMMA_CATALOG_CHECKPOINT_2026-11-21.md).**
 Limma is one upstream family; voom is a validated alias with zero extra credit.
 The guarded transition preserves all 1,575 earlier reviews and appends 23 source
